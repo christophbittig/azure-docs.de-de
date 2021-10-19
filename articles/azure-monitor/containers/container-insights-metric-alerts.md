@@ -3,12 +3,12 @@ title: Metrikwarnungen von Container Insights
 description: In diesem Artikel werden die empfohlenen Metrikwarnungen vorgestellt, die in der öffentlichen Vorschau von Container Insights verfügbar sind.
 ms.topic: conceptual
 ms.date: 10/28/2020
-ms.openlocfilehash: 8280b567adb36511c4eb58d7ec72b775d36feb6a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7036bc7a0f161044312687d6b22171df99821e6a
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346416"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714435"
 ---
 # <a name="recommended-metric-alerts-preview-from-container-insights"></a>Empfohlene Metrikwarnungen von Container Insights (Vorschau)
 
@@ -17,6 +17,9 @@ Zum Auslösen von Warnungen bei Problemen mit Systemressourcen, wenn Bedarfsspit
 In diesem Artikel werden die Funktionen beschrieben. Außerdem sind Anleitungen zum Konfigurieren und Verwalten dieser Warnungsregeln enthalten.
 
 Wenn Sie mit Azure Monitor-Warnungen nicht vertraut sind, lesen Sie zunächst den [Überblick über Warnungen in Microsoft Azure](../alerts/alerts-overview.md). Weitere Informationen zu Metrikwarnungen finden Sie unter [Metrikwarnungen in Azure Monitor](../alerts/alerts-metric-overview.md).
+
+> [!NOTE]
+> Ab dem 8. Oktober 2021 wurden drei Warnungen aktualisiert, um die Warnungsbedingung ordnungsgemäß zu berechnen: **Container-CPU %** , **Arbeitsspeicher für den Containerarbeitssatz %** und **Nutzung des persistenten Volumes %** . Diese neuen Warnungen haben die gleichen Namen wie die entsprechenden zuvor verfügbaren Warnungen, verwenden jedoch neue, aktualisierte Metriken. Es wird empfohlen, die Warnungen zu deaktivieren, die die in diesem Artikel beschriebenen „alten“ Metriken verwenden, und die Metriken „Neu“ zu aktivieren. Die „alten“ Metriken sind in empfohlenen Warnungen nicht mehr verfügbar, nachdem sie deaktiviert wurden. Sie können sie jedoch manuell erneut aktivieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -41,11 +44,11 @@ Zum Auslösen wichtiger Warnungen umfasst Container Insights die folgenden Metri
 
 |Name| BESCHREIBUNG |Standardschwellenwert |
 |----|-------------|------------------|
-|Durchschnittliche CPU-Nutzung für Container in % |Berechnet die durchschnittliche CPU-Nutzung pro Container.|Wenn die durchschnittliche CPU-Nutzung pro Container größer als 95 % ist.| 
-|Durchschnittliche Speichernutzung für Arbeitssatz für Container in % |Berechnet die durchschnittliche Speichernutzung für den Arbeitssatz pro Container.|Wenn die durchschnittliche Speichernutzung für den Arbeitssatz pro Container größer als 95 % ist. |
+|**(Neue) durchschnittliche Container-CPU in %** |Berechnet die durchschnittliche CPU-Nutzung pro Container.|Wenn die durchschnittliche CPU-Nutzung pro Container größer als 95 % ist.| 
+|**(Neuer) durchschnittlicher Speicher für den Containerarbeitssatz in %** |Berechnet die durchschnittliche Speichernutzung für den Arbeitssatz pro Container.|Wenn die durchschnittliche Speichernutzung für den Arbeitssatz pro Container größer als 95 % ist. |
 |Durchschnittliche CPU-Nutzung in % |Berechnet die durchschnittliche CPU-Nutzung pro Knoten. |Wenn die durchschnittliche CPU-Nutzung durch den Knoten größer als 80 % ist. |
 |Durchschnittliche Datenträgernutzung in % |Berechnet die durchschnittliche Datenträgernutzung für einen Knoten.|Wenn die Datenträgernutzung für einen Knoten größer als 80 % ist. |
-|Durchschnittliche Nutzung des persistenten Volumes in % |Berechnet die durchschnittliche PV-Nutzung pro Pod. |Wenn die durchschnittliche PV-Nutzung pro Pod größer als 80 % ist.|
+|**(Neue) durchschnittliche Nutzung des persistenten Volumes in %** |Berechnet die durchschnittliche PV-Nutzung pro Pod. |Wenn die durchschnittliche PV-Nutzung pro Pod größer als 80 % ist.|
 |Durchschnittliche Speichernutzung für Arbeitssatz in % |Berechnet die durchschnittliche Speichernutzung für den Arbeitssatz für einen Knoten. |Wenn die durchschnittliche Speichernutzung für den Arbeitssatz für einen Knoten größer als 80 % ist. |
 |Anzahl der neu gestarteten Container |Berechnet die Anzahl der neu gestarteten Container. | Wenn die Anzahl der Containerneustarts größer als 0 (null) ist. |
 |Anzahl fehlerhafter Pods |Berechnet, ob ein Pod einen fehlerhaften Zustand aufweist.|Wenn die Anzahl von Pods in fehlerhaftem Zustand größer als 0 (null) ist. |
@@ -80,7 +83,7 @@ Die folgenden warnungsbasierten Metriken weisen im Vergleich zu den anderen Metr
 
 ## <a name="metrics-collected"></a>Gesammelte Metriken
 
-Die folgenden Metriken werden, sofern nicht anders angegeben, als Teil dieser Funktion aktiviert und gesammelt:
+Die folgenden Metriken werden, sofern nicht anders angegeben, als Teil dieser Funktion aktiviert und gesammelt. Die **fett formatierten** Metriken mit der Bezeichnung „Alt“ werden durch die Metriken mit der Bezeichnung „Neu“ ersetzt, die für die richtige Warnungsauswertung gesammelt wurden.
 
 |Metriknamespace |Metrik |BESCHREIBUNG |
 |---------|----|------------|
@@ -97,10 +100,14 @@ Die folgenden Metriken werden, sofern nicht anders angegeben, als Teil dieser Fu
 |Insights.container/pods |restartingContainerCount |Anzahl der Containerneustarts nach Controller, Kubernetes-Namespace.|
 |Insights.container/pods |oomKilledContainerCount |Anzahl der aufgrund von Arbeitsspeichermangel beendeten Container nach Controller, Kubernetes-Namespace.|
 |Insights.container/pods |podReadyPercentage |Prozentsatz der Pods im Bereitschaftszustand nach Controller, Kubernetes-Namespace.|
-|Insights.container/containers |cpuExceededPercentage |Prozentuale CPU-Auslastung für Container, die den vom Benutzer konfigurierbaren Schwellenwert überschreiten (Standardwert: 95,0), nach Containername, Controllername, Kubernetes-Namespace, Podname.<br> Gesammelt  |
-|Insights.container/containers |memoryRssExceededPercentage |Prozentualer Arbeitsspeicher-RSS für Container, die den vom Benutzer konfigurierbaren Schwellenwert überschreiten (Standardwert: 95,0), nach Containername, Controllername, Kubernetes-Namespace, Podname.|
-|Insights.container/containers |memoryWorkingSetExceededPercentage |Prozentualer Arbeitssatz für Arbeitsspeicher für Container, die den vom Benutzer konfigurierbaren Schwellenwert überschreiten (Standardwert: 95,0), nach Containername, Controllername, Kubernetes-Namespace, Podname.|
-|Insights.container/persistentvolumes |pvUsageExceededPercentage |Prozentuale PV-Nutzung für persistente Volumes, die den vom Benutzer konfigurierbaren Schwellenwert überschreiten (Standardwert: 60,0), nach Anspruchsname, Kubernetes-Namespace, Volumename, Podname und Knotenname.
+|Insights.container/containers |**(Alt)cpuExceededPercentage** |Prozentuale CPU-Auslastung für Container, die den vom Benutzer konfigurierbaren Schwellenwert überschreiten (Standardwert: 95,0), nach Containername, Controllername, Kubernetes-Namespace, Podname.<br> Gesammelt  |
+|Insights.container/containers |**(Neu)cpuThresholdViolated** |Metrik, die ausgelöst wird, wenn Folgendes gegeben ist: prozentuale CPU-Auslastung für Container, die den vom Benutzer konfigurierbaren Schwellenwert überschreiten (Standardwert: 95,0), nach Containername, Controllername, Kubernetes-Namespace, Podname.<br> Gesammelt  |
+|Insights.container/containers |**(Alt)memoryRssExceededPercentage** |Prozentualer Arbeitsspeicher-RSS für Container, die den vom Benutzer konfigurierbaren Schwellenwert überschreiten (Standardwert: 95,0), nach Containername, Controllername, Kubernetes-Namespace, Podname.|
+|Insights.container/containers |**(Neu)memoryRssThresholdViolated** |Metrik, die ausgelöst wird, wenn Folgendes gegeben ist: Prozentualer Arbeitsspeicher-RSS für Container, die den vom Benutzer konfigurierbaren Schwellenwert überschreiten (Standardwert: 95,0), nach Containername, Controllername, Kubernetes-Namespace, Podname.|
+|Insights.container/containers |**(Alt)memoryWorkingSetExceededPercentage** |Prozentualer Arbeitssatz für Arbeitsspeicher für Container, die den vom Benutzer konfigurierbaren Schwellenwert überschreiten (Standardwert: 95,0), nach Containername, Controllername, Kubernetes-Namespace, Podname.|
+|Insights.container/containers |**(Neu)memoryWorkingSetThresholdViolated** |Metrik, die ausgelöst wird, wenn Folgendes gegeben ist: Prozentualer Arbeitssatz für Arbeitsspeicher für Container, die den vom Benutzer konfigurierbaren Schwellenwert überschreiten (Standardwert: 95,0), nach Containername, Controllername, Kubernetes-Namespace, Podname.|
+|Insights.container/persistentvolumes |**(Alt)pvUsageExceededPercentage** |Prozentuale PV-Nutzung für persistente Volumes, die den vom Benutzer konfigurierbaren Schwellenwert überschreiten (Standardwert: 60,0), nach Anspruchsname, Kubernetes-Namespace, Volumename, Podname und Knotenname.|
+|Insights.container/persistentvolumes |**(Neu)pvUsageThresholdViolated** |Metrik, die ausgelöst wird, wenn Folgendes gegeben ist: Prozentuale PV-Nutzung für persistente Volumes, die den vom Benutzer konfigurierbaren Schwellenwert überschreiten (Standardwert: 60,0), nach Anspruchsname, Kubernetes-Namespace, Volumename, Podname und Knotenname.
 
 ## <a name="enable-alert-rules"></a>Aktivieren von Warnungsregeln
 

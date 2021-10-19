@@ -3,12 +3,12 @@ title: Verwalten von Service Fabric-Clusterupgrades
 description: Verwalten Sie Ort und Art des Updates Ihrer Service Fabric-Clusterruntime.
 ms.topic: how-to
 ms.date: 03/26/2021
-ms.openlocfilehash: 98c3300e5cc51c32d894397839879e25190d979b
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 129bdae4dc131013bd7c13377b61575141c27ccd
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105731162"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714570"
 ---
 # <a name="manage-service-fabric-cluster-upgrades"></a>Verwalten von Service Fabric-Clusterupgrades
 
@@ -40,7 +40,7 @@ Beheben Sie die Probleme, die zu dem Rollback geführt haben, und initiieren Sie
 
 ### <a name="resource-manager-template"></a>Resource Manager-Vorlage
 
-Wenn Sie den Clusterupgrademodus mithilfe einer Resource Manager-Vorlage ändern möchten, geben Sie für die `upgradeMode`-Eigenschaft der Ressourcendefinition *Microsoft.ServiceFabric/clusters* entweder *Automatisch* oder *Manuell* an. Wenn Sie manuelle Upgrades auswählen, legen Sie auch `clusterCodeVersion` auf eine zurzeit [unterstützte Fabric-Version](#query-for-supported-cluster-versions) fest.
+Wenn Sie den Clusterupgrademodus mithilfe einer Resource Manager-Vorlage ändern möchten, geben Sie für die `upgradeMode`-Eigenschaft der Ressourcendefinition *Microsoft.ServiceFabric/clusters* entweder *Automatisch* oder *Manuell* an. Wenn Sie manuelle Upgrades auswählen, legen Sie auch `clusterCodeVersion` auf eine zurzeit [unterstützte Fabric-Version](#check-for-supported-cluster-versions) fest.
 
 :::image type="content" source="./media/service-fabric-cluster-upgrade/ARMUpgradeMode.PNG" alt-text="Screenshot mit Vorlage, in der der Klartext eingerückt ist, um die Struktur widerzuspiegeln. Die Eigenschaften „clusterCodeVersion“ und „upgradeMode“ sind hervorgehoben.":::
 
@@ -126,11 +126,11 @@ Sie können die benutzerdefinierten Integritätsrichtlinien angeben oder die akt
 
 :::image type="content" source="./media/service-fabric-cluster-upgrade/custom-upgrade-policy.png" alt-text="Wählen Sie die Upgraderichtlinienoption „Benutzerdefiniert“ im Abschnitt „Fabric-Upgrades“ Ihrer Clusterressource im Azure-Portal aus, um während des Upgrades benutzerdefinierte Integritätsrichtlinien festzulegen.":::
 
-## <a name="query-for-supported-cluster-versions"></a>Abfrage nach unterstützten Clusterversionen
+## <a name="check-for-supported-cluster-versions"></a>Überprüfen der unterstützten Clusterversionen
+
+Sie können auf [Service Fabric-Versionen](service-fabric-versions.md) verweisen, um weitere Informationen zu unterstützten Versionen und Betriebssystemen zu erhalten.
 
 Mit der [Azure-REST-API](/rest/api/azure/) können Sie alle verfügbaren Service Fabric-Runtimeversionen ([clusterVersions](/rest/api/servicefabric/sfrp-api-clusterversions_list)) auflisten, die für den angegebenen Speicherort und Ihr Abonnement verfügbar sind.
-
-Sie können auch auf [Service Fabric-Versionen](service-fabric-versions.md) verweisen, um weitere Informationen zu unterstützten Versionen und Betriebssystemen zu erhalten.
 
 ```REST
 GET https://<endpoint>/subscriptions/{{subscriptionId}}/providers/Microsoft.ServiceFabric/locations/{{location}}/clusterVersions?api-version=2018-02-01
@@ -171,6 +171,40 @@ GET https://<endpoint>/subscriptions/{{subscriptionId}}/providers/Microsoft.Serv
 ```
 
 `supportExpiryUtc` in der Ausgabe meldet, wenn ein bestimmtes Release abläuft oder abgelaufen ist. Die neueste Version besitzt anstelle eines gültigen Datums den Wert *9999-12-31T23:59:59.9999999*, was bedeutet, dass noch kein Ablaufdatum feststeht.
+
+
+## <a name="check-for-supported-upgrade-path"></a>Überprüfen des unterstützten Upgradepfads
+
+In der Dokumentation zu den [Service Fabric-Versionen](service-fabric-versions.md) finden Sie Informationen zu unterstützten Upgrade-Pfaden und zugehörigen Versionen. 
+
+Mithilfe der Informationen zu unterstützten Zielversionen können Sie die folgenden PowerShell-Schritte verwenden, um den unterstützten Upgradepfad zu überprüfen.
+
+1) Anmelden an Azure
+   ```PowerShell
+   Login-AzAccount
+   ```
+
+2) Auswählen des Abonnements
+   ```PowerShell
+   Set-AzContext -SubscriptionId <your-subscription>
+   ```
+
+3) Aufrufen der API
+   ```PowerShell
+   $params = @{ "TargetVersion" = "<target version>"}
+   Invoke-AzResourceAction -ResourceId -ResourceId <cluster resource id> -Parameters $params -Action listUpgradableVersions -Force
+   ```
+
+   Beispiel: 
+   ```PowerShell
+   $params = @{ "TargetVersion" = "8.1.335.9590"}
+   Invoke-AzResourceAction -ResourceId /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myResourceGroup/providers/Microsoft.ServiceFabric/clusters/myCluster -Parameters $params -Action listUpgradableVersions -Force
+
+   Output
+   supportedPath
+   -------------
+   {8.1.329.9590, 8.1.335.9590}
+   ```
 
 
 ## <a name="next-steps"></a>Nächste Schritte

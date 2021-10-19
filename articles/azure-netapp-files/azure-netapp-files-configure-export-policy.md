@@ -7,13 +7,13 @@ ms.author: b-juche
 ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: how-to
-ms.date: 08/06/2021
-ms.openlocfilehash: f930c52c4b913e9411c6f619231fb50d0bb6cc5c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 10/11/2021
+ms.openlocfilehash: 2412673dd71c6fbe6a1f070451db24d748694a8d
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346371"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129811136"
 ---
 # <a name="configure-export-policy-for-nfs-or-dual-protocol-volumes"></a>Konfigurieren Sie die Exportrichtlinie für NFS- oder Dualprotokollvolumes
 
@@ -44,7 +44,7 @@ Sie können bis zu fünf Exportrichtlinienregeln erstellen.
 
       ![Kerberos-Sicherheitsoptionen](../media/azure-netapp-files/kerberos-security-options.png) 
 
-    * **Root-Zugriff**: Geben Sie an, ob das `root`-Konto auf das Volume zugreifen kann.  Standardmäßig ist der Root-Zugriff auf **Ein** festgelegt, und das `root`-Konto hat Zugriff auf das Volume.
+    * **Root-Zugriff**: Geben Sie an, ob das `root`-Konto auf das Volume zugreifen kann.  Standardmäßig ist der Root-Zugriff auf **Ein** festgelegt, und das `root`-Konto hat Zugriff auf das Volume.  Diese Option ist für NFSv4.1-Kerberos-Volumes nicht verfügbar.
 
       ![Exportrichtlinie](../media/azure-netapp-files/azure-netapp-files-export-policy.png) 
 

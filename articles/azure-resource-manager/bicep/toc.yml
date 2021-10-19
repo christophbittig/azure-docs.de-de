@@ -92,6 +92,8 @@
               href: linter.md
             - name: Linter-Regeln
               items:
+                - name: Administratorbenutzername nicht literal
+                  href: linter-rule-admin-username-should-not-be-literal.md
                 - name: Keine hartcodierten Umgebungs-URLs
                   href: linter-rule-no-hardcoded-environment-urls.md
                 - name: Keine nicht verwendeten Parameter
@@ -157,7 +159,7 @@
     - name: Datentypen
       href: data-types.md
       displayName: 'supported types,arrays,booleans,integers,objects,strings,secure'
-    - name: Bicep-Konfigurationsdatei
+    - name: Konfigurationsdatei
       href: bicep-config.md
     - name: Funktionen
       items:

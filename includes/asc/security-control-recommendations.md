@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 09/05/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: 9e8b25e4cdfe9cb3b54968a524fe030872f2cd91
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 5ef21b7d66532adad450dadf0d6c0c57b73ae8c6
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123646513"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129725826"
 ---
 <table class="tg">
 <thead>
@@ -99,7 +99,7 @@ ms.locfileid: "123646513"
   <tr>
     <td class="tg-lboi"><strong>0</strong></td>
     <td class="tg-lboi"><strong>Azure Defender aktivieren</strong> - Befolgen Sie diese Empfehlungen, um einen beliebigen der <a href="/azure/security-center/azure-defender">Azure Defender-Pläne</a> zu aktivieren.</td>
-    <td class="tg-lboi" width=55%>- Für Kubernetes-Cluster mit Azure Arc-Unterstützung muss die Azure Defender-Erweiterung installiert sein.<br />- Azure Defender für App Service sollte aktiviert werden<br />- Azure Defender für Azure SQL-Datenbank-Server sollte aktiviert werden<br />- Azure Defender für Containerregistrierungen sollte aktiviert werden<br />- Azure Defender für DNS muss aktiviert sein.<br />- Azure Defender für Key Vault sollte aktiviert werden<br />- Azure Defender für Kubernetes sollte aktiviert werden<br />- Azure Defender für Resource Manager muss aktiviert sein.<br />- Azure Defender für Server sollte aktiviert werden<br />- In Ihrem Arbeitsbereich sollte Azure Defender für Server aktiviert sein<br />- Azure Defender für SQL-Server auf Computern sollte aktiviert werden<br />- Azure Defender für Storage sollte aktiviert werden</td>
+    <td class="tg-lboi" width=55%>-Für Azure Arc-fähige Kubernetes-Cluster sollte die Erweiterung von Azure Defender installiert sein<br />- Azure Defender für App Service sollte aktiviert werden<br />- Azure Defender für Azure SQL-Datenbank-Server sollte aktiviert werden<br />- Azure Defender für Containerregistrierungen sollte aktiviert werden<br />- Azure Defender für DNS muss aktiviert sein.<br />- Azure Defender für Key Vault sollte aktiviert werden<br />- Azure Defender für Kubernetes sollte aktiviert werden<br />- Azure Defender für Resource Manager muss aktiviert sein.<br />- Azure Defender für Server sollte aktiviert werden<br />- In Ihrem Arbeitsbereich sollte Azure Defender für Server aktiviert sein<br />- Azure Defender für SQL-Server auf Computern sollte aktiviert werden<br />- Azure Defender für Storage sollte aktiviert werden</td>
   </tr>
 </tbody>
 </table>

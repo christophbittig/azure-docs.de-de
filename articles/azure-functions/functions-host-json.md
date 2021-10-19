@@ -3,12 +3,12 @@ title: host.json-Referenz für Azure Functions 2.x
 description: Referenzdokumentation für die host.json-Datei von Azure Functions mit der v2 Runtime.
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: b646c4d263896e1bf4d63bdaf965209c005b8228
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8844e76c7f01bf33bc81ef2fec733b9e538e34cc
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346899"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129660512"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>host.json-Referenz für Azure Functions 2.x oder höher 
 
@@ -16,12 +16,15 @@ ms.locfileid: "122346899"
 > * [Version 1](functions-host-json-v1.md)
 > * [Version 2 und höher](functions-host-json.md)
 
-Die Metadatendatei *host.json* enthält globale Konfigurationsoptionen, die sich auf alle Funktionen einer Funktionen-App auswirken. In diesem Artikel werden die Einstellungen aufgelistet, die ab Version 2.x der Azure Functions-Laufzeit verfügbar sind.  
+Die Metadatendatei „host.json“ enthält Konfigurationsoptionen, die sich auf alle Funktionen einer Funktions-App-Instanz auswirken. In diesem Artikel werden die Einstellungen aufgelistet, die ab Version 2.x der Azure Functions-Laufzeit verfügbar sind.  
 
 > [!NOTE]
 > Dieser Artikel gilt für Azure Functions 2.x oder höher.  Eine Referenz für „host.json“ in Functions 1.x finden Sie unter [host.json-Referenz für Azure Functions 1.x](functions-host-json-v1.md).
 
-Andere Konfigurationsoptionen für Funktions-Apps werden in den [App-Einstellungen](functions-app-settings.md) (für bereitgestellte Apps) oder in der Datei [local.settings.json](functions-develop-local.md#local-settings-file) (für die lokale Entwicklung) verwaltet.
+Andere Konfigurationsoptionen für Funktions-Apps werden abhängig davon verwaltet, wo die Funktions-App ausgeführt wird:
+
++ **In Azure bereitgestellt**: in den [Anwendungseinstellungen](functions-app-settings.md) 
++ **Auf Ihrem lokalen Computer**: in der Datei [local.settings.json](functions-develop-local.md#local-settings-file).
 
 Konfigurationen in „host.json“, die mit Bindungen im Zusammenhang stehen, werden gleichmäßig auf alle Funktionen in der Funktions-App angewendet. 
 

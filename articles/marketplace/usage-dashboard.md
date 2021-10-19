@@ -7,13 +7,13 @@ ms.topic: article
 author: smannepalle
 ms.author: smannepalle
 ms.reviewer: sroy
-ms.date: 09/27/2021
-ms.openlocfilehash: c50a36c521848956577fd0e8f53bdb2dceaaee8f
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.date: 10/11/2021
+ms.openlocfilehash: 0ef727d47949acb1d095bbfb3890021b273c50db
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129084043"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129811215"
 ---
 # <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>Dashboard „Nutzung“ in Analysen für den kommerziellen Marketplace
 
@@ -43,9 +43,9 @@ Im [Dashboard „Nutzung“](https://go.microsoft.com/fwlink/?linkid=2166106) we
 #### <a name="workspaces-view"></a>[Ansicht „Arbeitsbereiche“](#tab/workspaces-view)
 
 1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
-1. Wählen Sie auf der Startseite die Kachel **Insights** aus.
+1. Wählen Sie auf der Homepage die Kachel **Insights** aus.
 
-    [ ![Veranschaulichung der Kachel „Insights“ auf der Startseite in Partner Center](./media/workspaces/partner-center-insights-tile.png) ](./media/workspaces/partner-center-insights-tile.png#lightbox)
+    [ ![Abbildung der Kachel „Insights“ auf der Homepage von Partner Center.](./media/workspaces/partner-center-insights-tile.png) ](./media/workspaces/partner-center-insights-tile.png#lightbox)
 
 1. Klicken Sie im linken Menü auf **Nutzung**.
 
@@ -191,7 +191,7 @@ _**Tabelle 1: Wörterbuch mit Datenbegriffen**_
 | Aktion ausgeführt um | Aktion ausgeführt um | **Gilt für Angebote mit benutzerdefinierten Verbrauchseinheitsdimensionen**.<br>Gibt den Zeitpunkt an, zu dem der Herausgeber die Überschreitungsnutzung durch den Kunden für die benutzerdefinierte Verbrauchseinheitsdimension des Angebots als Anomalie oder keine Anomalie bestätigt hat.<br>_Wenn der Herausgeber keine Angebote mit benutzerdefinierten Verbrauchseinheitsdimensionen hat und diese Spalte über programmgesteuerten Zugriff exportiert, ist der Wert NULL._ | ActionTakenAt |
 | Aktion ausgeführt von | Aktion ausgeführt von | **Gilt für Angebote mit benutzerdefinierten Verbrauchseinheitsdimensionen**.<br>Gibt die Person an, die die Überschreitungsnutzung durch den Kunden für die benutzerdefinierte Verbrauchseinheitsdimension des Angebots als Anomalie oder keine Anomalie bestätigt hat.<br>_Wenn der Herausgeber keine Angebote mit benutzerdefinierten Verbrauchseinheitsdimensionen hat und diese Spalte über programmgesteuerten Zugriff exportiert, ist der Wert NULL._ | ActionTakenBy |
 | Geschätzte finanzielle Auswirkungen (USD) | Geschätzte finanzielle Auswirkungen in USD | **Gilt für Angebote mit benutzerdefinierten Verbrauchseinheitsdimensionen**.<br>Wenn Partner Center eine Überschreitungsnutzung durch den Kunden für die benutzerdefinierte Verbrauchseinheitsdimension des Angebots als anomal kennzeichnet, gibt das Feld die geschätzten finanziellen Auswirkungen (in USD) der anomalen Überschreitungsnutzung an.<br>_Wenn der Herausgeber keine Angebote mit benutzerdefinierten Verbrauchseinheitsdimensionen hat und diese Spalte programmgesteuert exportiert, ist der Wert NULL._ | EstimatedFinancialImpactUSD |
-| – | Ressourcen-ID | Die vollständig qualifizierte ID der Ressource, einschließlich des Ressourcennamens und des Ressourcentyps. Beachten Sie, dass dies ein Datenfeld ist, das nur in Downloadberichten verfügbar ist.<br>Verwenden Sie folgendes Format:<br> /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name} | – |
+| – | Ressourcen-ID | Die vollständig qualifizierte ID der Ressource, einschließlich des Ressourcennamens und des Ressourcentyps. Beachten Sie, dass dies ein Datenfeld ist, das nur in Downloadberichten verfügbar ist.<br>Verwenden Sie folgendes Format:<br> /subscriptions/{guid}/resourceGroups/{resource-group-name}/{resource-provider-namespace}/{resource-type}/{resource-name}<br>**Hinweis**: Dieses Feld ist am 20.10.2021 veraltet. | – |
 |||||
 
 ### <a name="usage-page-filters"></a>Filter für die Seite „Nutzung“

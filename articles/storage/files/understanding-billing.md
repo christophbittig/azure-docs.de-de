@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/17/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0561e96d40ff5c37587101a2003f5a17addb5a30
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 113dcc4de4ceb1b283f7bdeb1941ced76a9425d0
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128609192"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714564"
 ---
 # <a name="understand-azure-files-billing"></a>Grundlegendes zur Abrechnung für Azure Files
 Für Azure Files gibt es zwei Abrechnungsmodelle: „Bereitgestellt“ und „Nutzungsbasierte Zahlung“. Das Modell „Bereitgestellt“ ist nur für Premium-Dateifreigaben verfügbar, d. h. für Dateifreigaben, die in einem Speicherkonto des Typs **FileStorage** bereitgestellt werden. Das Modell „Nutzungsbasierte Zahlung“ ist nur für Standarddateifreigaben verfügbar, d. h. für Dateifreigaben, die in einem Speicherkonto des Typs **Universell, Version 2** bereitgestellt werden. In diesem Artikel wird die Funktionsweise beider Modelle erklärt, um Ihnen zu helfen, Ihre monatliche Azure Files-Rechnung zu verstehen.
@@ -118,7 +118,7 @@ Freigabeguthaben können drei Zustände aufweisen:
 Neue Dateifreigaben beginnen mit der vollen Anzahl von Guthaben im Burstbucket. Burstguthaben werden nicht angesammelt, wenn der Freigabe-IOPS aufgrund einer Einschränkung durch den Server unter den IOPS-Grundwert fällt.
 
 ## <a name="pay-as-you-go-model"></a>Modell für die nutzungsbasierte Bezahlung
-Azure Files verwendet für Standarddateifreigaben das Geschäftsmodell „Nutzungsbasierte Zahlung“. Bei diesem Geschäftsmodell wird der zu zahlende Betrag dadurch bestimmt, wie viel Sie tatsächlich in Anspruch nehmen, und nicht auf Grundlage einer bereitgestellten Menge. Grundsätzlich zahlen Sie die Kosten einer auf Datenträgern gespeicherte Datenmenge und dann für zusätzliche Transaktionen, die auf der Nutzung dieser Daten basieren. Ein Modell mit nutzungsbasierter Zahlung kann wirtschaftlich sein, da Sie keine Überdimensionierung vornehmen müssen, um künftiges Wachstum oder Leistungsanforderungen zu berücksichtigen. Es muss auch keine Aufhebung von Bereitstellung erfolgen, wenn sich die Workload oder der Datenspeicherbedarf im Laufe der Zeit ändert. Andererseits kann ein Modell mit nutzungsbasierter Zahlung im Rahmen eines Budgetierungsprozesses schwierig zu planen sein, da das Abrechnungsmodell mit nutzungsbasierter Zahlung der Inanspruchnahme durch Endbenutzer unterliegt.
+Azure Files verwendet für Standarddateifreigaben das Geschäftsmodell „Nutzungsbasierte Zahlung“. Bei diesem Geschäftsmodell wird der zu zahlende Betrag dadurch bestimmt, wie viel Sie tatsächlich in Anspruch nehmen, und nicht auf Grundlage einer bereitgestellten Menge. Grundsätzlich zahlen Sie die Kosten einer gespeicherten Menge an logischen Daten und dann für zusätzliche Transaktionen, die auf der Nutzung dieser Daten basieren. Ein Modell mit nutzungsbasierter Zahlung kann wirtschaftlich sein, da Sie keine Überdimensionierung vornehmen müssen, um künftiges Wachstum oder Leistungsanforderungen zu berücksichtigen. Es muss auch keine Aufhebung von Bereitstellung erfolgen, wenn sich die Workload oder der Datenspeicherbedarf im Laufe der Zeit ändert. Andererseits kann ein Modell mit nutzungsbasierter Zahlung im Rahmen eines Budgetierungsprozesses schwierig zu planen sein, da das Abrechnungsmodell mit nutzungsbasierter Zahlung der Inanspruchnahme durch Endbenutzer unterliegt.
 
 ### <a name="differences-in-standard-tiers"></a>Unterschiede bei den Standardtarifen
 Wenn Sie eine Standarddateifreigabe erstellen, haben Sie die Wahl zwischen den Speicherebenen „Transaktionsoptimiert“, „Heiß“ und „Kalt“. Alle drei Ebenen werden auf exakt derselben Standardspeicherhardware gespeichert. Der Hauptunterschied dieser drei Ebenen besteht im Preis für die Speicherung ruhender Daten (bei kälteren Ebenen niedriger) und im Transaktionspreis (bei kälteren Ebenen höher). Dies bedeutet Folgendes:
@@ -132,6 +132,9 @@ Wenn Sie für eine Workload, auf die nur selten zugegriffen wird, die Speichereb
 Ähnlich verhält es sich, wenn Sie eine Workload mit häufigem Zugriff auf die kalte Speicherebene verlagern. Dann zahlen Sie viel mehr für Transaktionen, aber weniger für Datenspeicherung. Dies kann dazu führen, dass die gestiegenen Kosten für Transaktionen die Einsparungen aufgrund niedrigerer Kosten für Datenspeicherung überwiegen. Dies kann bewirken, dass Sie für die kalte Speicherebene mehr zahlen als bei Wahl von „transaktionsoptimiert“. Es ist möglich, dass bei bestimmten Nutzungsgraden die heiße Speicherebene am wirtschaftlichsten ist, während die kalte Speicherebene teurer als „transaktionsoptimiert“ ist.
 
 Welche Ebene für Ihre Standarddateifreigabe am kostengünstigsten ist, hängt von Ihrer Workload und von der Aktivitätsebene ab. In der Praxis lässt sich die wirtschaftlichste Speicherebene am besten ermitteln, indem der tatsächliche Ressourcenverbrauch der Freigabe (gespeicherte Daten, Schreibtransaktionen usw.) untersucht wird.
+
+### <a name="logical-size-versus-physical-size"></a>Logische Größe im Vergleich zur physischen Größe
+Die Gebühr für die Data-at-Rest-Kapazität von Azure Files wird auf der Grundlage der logischen Größe, umgangssprachlich oft als „Größe“ oder „Inhaltslänge“ bezeichnet, der Datei berechnet. Die logische Größe der Datei unterscheidet sich von der physischen Größe der Datei auf dem Datenträger, die häufig als „Größe auf Datenträger“ oder „verwendete Größe“ bezeichnet wird. Die physische Größe der Datei kann groß oder kleiner als die logische Größe der Datei sein.
 
 ### <a name="what-are-transactions"></a>Was sind Transaktionen?
 Transaktionen sind Vorgänge oder Anforderungen an Azure Files, den Inhalt der Dateifreigabe hoch- oder herunterzuladen oder anderweitig zu ändern. Jede Aktion in einer Dateifreigabe führt zu einer oder mehreren Transaktionen. Bei Standardfreigaben mit dem Abrechnungsmodell „Nutzungsbasierte Zahlung“ führt dies zu Transaktionskosten.

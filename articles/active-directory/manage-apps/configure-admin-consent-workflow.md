@@ -1,5 +1,6 @@
 ---
-title: Konfigurieren des Workflows für die Administratoreinwilligung – Azure Active Directory | Microsoft-Dokumentation
+title: Konfigurieren des Workflows für die Administratoreinwilligung (Vorschau)
+titleSuffix: Azure AD
 description: Erfahren Sie, wie Sie für Endbenutzer eine Möglichkeit zur Zugriffsanforderung für Anwendungen konfigurieren, die eine Administratoreinwilligung erfordern.
 services: active-directory
 author: davidmu1
@@ -8,18 +9,18 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/08/2021
+ms.date: 10/06/2021
 ms.author: davidmu
 ms.reviewer: ergreenl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5611de6dde5ef1380a819ba3f3a2e6050d79374b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 07254d54d535616aa3a6b1c17a2b1b81d8fe16bb
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346637"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129659201"
 ---
-# <a name="configure-the-admin-consent-workflow"></a>Konfigurieren des Workflows für die Administratoreinwilligung (Vorschau)
+# <a name="configure-the-admin-consent-workflow-in-azure-active-directory"></a>Konfigurieren Sie den Workflow für die Administratoreinwilligung in Azure Active Directory.
 
 In diesem Artikel wird beschrieben, wie Sie den Workflow für die Administratoreinwilligung aktivieren, mit dem Endbenutzer Zugriff auf Anwendungen anfordern können, für die eine Administratoreinwilligung benötigt wird.
 
@@ -90,7 +91,7 @@ So überprüfen Sie die Anforderungen zur Administratoreinwilligung und ergreife
 
 8. Werten Sie die Anforderung aus, und ergreifen Sie die geeignete Maßnahme:
 
-   * **Genehmigen Sie die Anforderung**. Um eine Anforderung zu genehmigen, erteilen Sie die Administratoreinwilligung für die Anwendung. Sobald eine Anforderung genehmigt wurde, werden alle Anforderer darüber informiert, dass ihnen der Zugriff gewährt wurde.  
+   * **Genehmigen Sie die Anforderung**. Um eine Anforderung zu genehmigen, erteilen Sie die Administratoreinwilligung für die Anwendung. Sobald eine Anforderung genehmigt wurde, werden alle Anforderer darüber informiert, dass ihnen der Zugriff gewährt wurde. Wenn Sie eine Anforderung genehmigen, können alle Benutzer in Ihrem Mandanten auf die Anwendung zugreifen, es sei denn, die Benutzerzuweisung ist anderweitig eingeschränkt. 
    * **Lehnen Sie die Anforderung ab**. Um eine Anforderung abzulehnen, müssen Sie eine Begründung angeben, die allen Anforderern vorgelegt wird. Sobald eine Anforderung abgelehnt wurde, werden alle Anforderer darüber informiert, dass ihnen der Zugriff verweigert wurde. Das Ablehnen einer Anforderung hindert die Benutzer nicht daran, in Zukunft erneut die Einwilligung des Administrators für die App einzuholen.  
    * **Blockieren Sie die Anforderung**. Um eine Anforderung zu blockieren, müssen Sie eine Begründung angeben, die allen Anforderern vorgelegt wird. Sobald eine Anforderung blockiert wurde, werden alle Anforderer darüber informiert, dass ihnen der Zugriff verweigert wurde. Durch das Blockieren einer Anforderung wird in Ihrem Mandanten ein Dienstprinzipalobjekt für die Anwendung erstellt, das sich in einem deaktivierten Zustand befindet. Benutzer können in Zukunft keine Einwilligung des Administrators für die Anwendung mehr anfordern.
 

@@ -32,8 +32,8 @@
           href: howto-restrict-egress.md
     - name: Storage
       items:
-        - name: Verschlüsseln von PVCs mit kundenseitig verwalteten Schlüsseln (Vorschau)
-          href: howto-encrypt-data-disks.md
+        - name: Verschlüsseln von Clusterdaten mit kundenseitig verwalteten Schlüsseln (Vorschau)
+          href: howto-byok.md
         - name: Erstellen einer Azure Files Storage-Klasse
           href: howto-create-a-storageclass.md
         - name: Verwenden der integrierten Containerregistrierung

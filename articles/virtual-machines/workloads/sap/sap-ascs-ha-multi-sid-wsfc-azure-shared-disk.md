@@ -16,34 +16,45 @@ ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 86546995e0b5481daeff32f2fcdae61a4a69524b
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 6b37cdba3f5b95f1e6ecc6b4dab02b5c9d69f109
+ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112284777"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129754382"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-azure-shared-disk"></a>Multi-SID-Hochverfügbarkeit für SAP ASCS/SCS-Instanzen mit Windows Server-Failoverclustering und freigegebenem Azure-Datenträger
 
 > ![Windows-Betriebssystem][Logo_Windows] Windows
->
 
 In diesem Artikel wird der Übergang von einer einzelnen ASCS/SCS-Installation zu einer SAP Multi-SID-Konfiguration durch die Installation zusätzlicher SAP ASCS/SCS-Clusterinstanzen in einem vorhandenen WSFC-Cluster (Windows Server-Failoverclustering) mit freigegebenem Azure-Datenträger behandelt. Wenn dieser Vorgang abgeschlossen ist, haben Sie einen SAP Multi-SID-Cluster konfiguriert.
 
 ## <a name="prerequisites-and-limitations"></a>Voraussetzungen und Einschränkungen
 
-Derzeit können Sie Azure SSD Premium-Datenträger als freigegebenen Azure-Datenträger für die SAP ASCS/SCS-Instanz verwenden. Es gelten die folgenden Einschränkungen:
+Derzeit können Sie Azure SSD Premium-Datenträger als freigegebenen Azure-Datenträger für die SAP ASCS/SCS-Instanz verwenden. Derzeit gelten die folgenden Einschränkungen:
 
--  Ein [Azure Ultra-Datenträger](../../disks-types.md#ultra-disk) wird nicht als freigegebener Azure-Datenträger für SAP-Workloads unterstützt. Derzeit ist es nicht möglich, Azure-VMs mithilfe eines Azure Ultra-Datenträgers in einer Verfügbarkeitsgruppe zu platzieren.
--  Ein [freigegebener Azure-Datenträger](../../disks-shared.md) mit SSD Premium-Datenträgern wird nur für VMs in einer Verfügbarkeitsgruppe unterstützt. Bei der Bereitstellung in Verfügbarkeitszonen wird dies nicht unterstützt. 
+-  Der [Azure Ultra-Datenträger](../../disks-types.md#ultra-disk) und [SSD-Standard-Datenträger](../../disks-types.md#standard-ssd) werden nicht als freigegebener Azure-Datenträger für SAP-Workloads unterstützt.
+-  [Freigegebene Azure-Datenträger](../../disks-shared.md) mit [Premium SSD-Datenträgern](../../disks-types.md#premium-ssd) werden für die SAP-Bereitstellung in Verfügbarkeitsgruppen und Verfügbarkeitszonen unterstützt.
+-  Freigegebener Azure-Datenträger Premium SSD-Datenträgern verfügt über zwei Speicher-SKUs.
+   - Lokal redundanter Speicher (LRS) für freigegebenen Premium-Datenträger (skuName – Premium_LRS) wird bei der Bereitstellung in Verfügbarkeitsgruppen unterstützt.
+   - Zonenredundanter Speicher (ZRS) für freigegebenen Premium-Datenträger (skuName – Premium_ZRS) wird bei der Bereitstellung in Verfügbarkeitszonen unterstützt.
 -  Der Wert [maxShares](../../disks-shared-enable.md?tabs=azure-cli#disk-sizes) des freigegebenen Azure-Datenträgers bestimmt, wie viele Clusterknoten den freigegebenen Datenträger verwenden können. In der Regel werden für SAP ASCS/SCS-Instanzen zwei Knoten im Windows-Failovercluster konfiguriert. Daher muss der Wert für `maxShares` auf zwei festgelegt werden.
--  Alle VMs im SAP ASCS/SCS-Cluster müssen in derselben [Azure-Näherungsplatzierungsgruppe](../../windows/proximity-placement-groups.md) (Proximity Placement Group, PPG) bereitgestellt werden.   
-   Zwar können Sie VMs im Windows-Cluster in einer Verfügbarkeitsgruppe mit freigegebenem Azure-Datenträger ohne PPG bereitstellen, doch gewährleistet PPG die physische Nähe von freigegebenen Azure-Datenträgern und Cluster-VMs und erzielt somit eine geringere Latenz zwischen den VMs und der Speicherebene.    
+-  Bei der Verwendung einer [Azure-Näherungsplatzierungsgruppe](../../windows/proximity-placement-groups.md) für das SAP-System müssen alle virtuellen Computer, die einen Datenträger freigeben, zur selben Näherungsplatzierungsgruppe gehören.
 
-Weitere Informationen zu Einschränkungen für freigegebene Azure-Datenträger finden Sie im Abschnitt [Einschränkungen](../../disks-shared.md#limitations) der entsprechenden Dokumentation.  
+Weitere Informationen zu Einschränkungen für freigegebene Azure-Datenträger finden Sie im Abschnitt [Einschränkungen](../../disks-shared.md#limitations) der entsprechenden Dokumentation.
 
-> [!IMPORTANT]
-> Beachten Sie beim Bereitstellen des SAP ASCS/SCS-Windows-Failoverclusters mit freigegebenem Azure-Datenträger, dass die Bereitstellung mit einem einzelnen freigegebenen Datenträger in nur einem Speichercluster erfolgt. Probleme mit dem Speichercluster, in dem der freigegebene Azure-Datenträger bereitgestellt wird, beeinträchtigen Ihre SAP ASCS/SCS-Instanz.  
+#### <a name="important-consideration-for-premium-shared-disk"></a>Wichtige Überlegungen zum freigegebenen Premium-Datenträger
+
+Im Folgenden sind einige wichtige Punkte angegeben, die für freigegebene Azure Premium Datenträger zu berücksichtigen sind:
+
+- LRS für freigegebenen Premium-Datenträger
+  - Die SAP-Bereitstellung mit LRS für den freigegebenen Premium-Datenträger wird mit einem einzelnen freigegebenen Azure-Datenträger in einem Speichercluster ausgeführt. Probleme mit dem Speichercluster, in dem der freigegebene Azure-Datenträger bereitgestellt wird, beeinträchtigen Ihre SAP ASCS/SCS-Instanz.
+
+- ZRS für freigegebenen Premium-Datenträger
+  - Die Schreiblatenz für ZRS ist aufgrund der zonenübergreifenden Kopie von Daten höher als die von LRS.
+  - Der Abstand zwischen Verfügbarkeitszonen in verschiedenen Regionen variiert und hängt auch von der ZRS-Datenträgerlatenz über Verfügbarkeitszonen hinweg ab. [Vergleichen Sie Ihre Datenträger](../../disks-benchmarks.md), um die Latenz des ZRS-Datenträgers in Ihrer Region zu ermitteln.
+  - ZRS für freigegebene Premium-Datenträger repliziert Daten synchron über drei Verfügbarkeitszonen in der Region. Im Falle eines Problems in einem der Speichercluster wird Ihr SAP ASCS/SCS weiterhin ausgeführt, da das Speicherfailover für die Anwendungsschicht transparent ist.
+  - Weitere Informationen finden Sie im Abschnitt [Einschränkungen](../../disks-redundancy.md#limitations) von ZRS für verwaltete Datenträger.
 
 > [!IMPORTANT]
 > Das Setup muss die folgenden Bedingungen erfüllen:
@@ -99,15 +110,33 @@ Es wird nun zusätzlich zur **vorhandenen gruppierten** SAP ASCS/SCS-Instanz **P
 
 ### <a name="host-names-and-ip-addresses"></a>Hostnamen und IP-Adressen
 
-| Hostnamenrolle | Hostname | Statische IP-Adresse | Verfügbarkeitsgruppe | Näherungsplatzierungsgruppe |
-| --- | --- | --- |---| ---|
-| Erster ASCS-/SCS-Cluster des Clusterknotens |pr1-ascs-10 |10.0.0.4 |pr1-ascs-avset |PR1PPG |
-| Zweiter ASCS-/SCS-Cluster des Clusterknotens |pr1-ascs-11 |10.0.0.5 |pr1-ascs-avset |PR1PPG |
-| Name des Clusternetzwerks | pr1clust |10.0.0.42 (**nur** für Win 2016-Cluster) | – | – |
-| Name des ASCS-Clusternetzwerks von **SID1** | pr1-ascscl |10.0.0.43 | – | – |
-| Name des ERS-Clusternetzwerks von **SID1** (**nur** für ERS2) | pr1-erscl |10.0.0.44 | – | – |
-| Name des ASCS-Clusternetzwerks von **SID2** | pr2-ascscl |10.0.0.45 | – | – |
-| Name des ERS-Clusternetzwerks von **SID2** (**nur** für ERS2) | pr1-erscl |10.0.0.46 | – | – |
+Basierend auf Ihrem Bereitstellungstyp würden die Hostnamen und IP-Adressen des Szenarios wie folgt lauten:
+
+**SAP-Bereitstellung in Azure-Verfügbarkeitsgruppe**
+
+| Hostnamenrolle                                        | Hostname   | Statische IP-Adresse                        | Verfügbarkeitsgruppe | SkuName des Datenträgers |
+| ----------------------------------------------------- | ----------- | ---------------------------------------- | ---------------- | ------------ |
+| Erster ASCS-/SCS-Cluster des Clusterknotens                     | pr1-ascs-10 | 10.0.0.4                                 | pr1-ascs-avset   | Premium_LRS  |
+| Zweiter ASCS-/SCS-Cluster des Clusterknotens                     | pr1-ascs-11 | 10.0.0.5                                 | pr1-ascs-avset   |              |
+| Name des Clusternetzwerks                                  | pr1clust    | 10.0.0.42 (**nur** für Win 2016-Cluster) | –              |              |
+| Name des ASCS-Clusternetzwerks von **SID1**                    | pr1-ascscl  | 10.0.0.43                                | –              |              |
+| Name des ERS-Clusternetzwerks von **SID1** (**nur** für ERS2) | pr1-erscl   | 10.0.0.44                                | –              |              |
+| Name des ASCS-Clusternetzwerks von **SID2**                    | pr2-ascscl  | 10.0.0.45                                | –              |              |
+| Name des ERS-Clusternetzwerks von **SID2** (**nur** für ERS2) | pr1-erscl   | 10.0.0.46                                | –              |              |
+
+**SAP-Bereitstellung in Azure-Verfügbarkeitszonen**
+
+| Hostnamenrolle                                        | Hostname   | Statische IP-Adresse                        | Verfügbarkeitszone | SkuName des Datenträgers |
+| ----------------------------------------------------- | ----------- | ---------------------------------------- | ----------------- | ------------ |
+| Erster ASCS-/SCS-Cluster des Clusterknotens                     | pr1-ascs-10 | 10.0.0.4                                 | AZ01              | Premium_ZRS  |
+| Zweiter ASCS-/SCS-Cluster des Clusterknotens                     | pr1-ascs-11 | 10.0.0.5                                 | AZ02              |              |
+| Name des Clusternetzwerks                                  | pr1clust    | 10.0.0.42 (**nur** für Win 2016-Cluster) | –               |              |
+| Name des ASCS-Clusternetzwerks von **SID1**                    | pr1-ascscl  | 10.0.0.43                                | –               |              |
+| Name des ERS-Clusternetzwerks von **SID2** (**nur** für ERS2) | pr1-erscl   | 10.0.0.44                                | –               |              |
+| Name des ASCS-Clusternetzwerks von **SID2**                    | pr2-ascscl  | 10.0.0.45                                | –               |              |
+| Name des ERS-Clusternetzwerks von **SID2** (**nur** für ERS2) | pr1-erscl   | 10.0.0.46                                | –               |              |
+
+Die in diesem Dokument genannten Schritte bleiben für beide Bereitstellungstypen gleich. Wenn Ihr Cluster jedoch in einer Verfügbarkeitsgruppe ausgeführt wird, müssen Sie LRS für Azure Premium Shared Disk (Premium_LRS) bereitstellen, und wenn der Cluster in einer Verfügbarkeitszone ausgeführt wird, müssen Sie ZRS für Azure Premium Shared Disk (Premium_ZRS) bereitstellen. 
 
 ### <a name="create-azure-internal-load-balancer"></a>Erstellen eines internen Azure Load Balancer
 
@@ -166,33 +195,42 @@ Da Enqueue Replication Server 2 (ERS2) ebenfalls gruppiert ist, muss die virtue
 Führen Sie den folgenden Befehl auf einem der Clusterknoten aus. Sie müssen die Werte für Ihre Ressourcengruppe, die Azure-Region, die SAP-SID usw. anpassen.  
 
 ```powershell
-    $ResourceGroupName = "MyResourceGroup"
-    $location = "MyRegion"
-    $SAPSID = "PR2"
-    $DiskSizeInGB = 512
-    $DiskName = "$($SAPSID)ASCSSharedDisk"
-    $NumberOfWindowsClusterNodes = 2
-    $diskConfig = New-AzDiskConfig -Location $location -SkuName Premium_LRS  -CreateOption Empty  -DiskSizeGB $DiskSizeInGB -MaxSharesCount $NumberOfWindowsClusterNodes
+$ResourceGroupName = "MyResourceGroup"
+$location = "MyRegion"
+$SAPSID = "PR2"
+$DiskSizeInGB = 512
+$DiskName = "$($SAPSID)ASCSSharedDisk"
+$NumberOfWindowsClusterNodes = 2
+
+# For SAP deployment in availability set, use below storage SkuName
+$SkuName = "Premium_LRS"
+# For SAP deployment in availability zone, use below storage SkuName
+$SkuName = "Premium_ZRS"
+
+$diskConfig = New-AzDiskConfig -Location $location -SkuName $SkuName  -CreateOption Empty  -DiskSizeGB $DiskSizeInGB -MaxSharesCount $NumberOfWindowsClusterNodes
     
-    $dataDisk = New-AzDisk -ResourceGroupName $ResourceGroupName -DiskName $DiskName -Disk $diskConfig
-    ##################################
-    ## Attach the disk to cluster VMs
-    ##################################
-    # ASCS Cluster VM1
-    $ASCSClusterVM1 = "pr1-ascs-10"
-    # ASCS Cluster VM2
-    $ASCSClusterVM2 = "pr1-ascs-11"
-    # next free LUN number
-    $LUNNumber = 1
-    # Add the Azure Shared Disk to Cluster Node 1
-    $vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $ASCSClusterVM1 
-    $vm = Add-AzVMDataDisk -VM $vm -Name $DiskName -CreateOption Attach -ManagedDiskId $dataDisk.Id -Lun $LUNNumber
-    Update-AzVm -VM $vm -ResourceGroupName $ResourceGroupName -Verbose
-    # Add the Azure Shared Disk to Cluster Node 2
-    $vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $ASCSClusterVM2
-    $vm = Add-AzVMDataDisk -VM $vm -Name $DiskName -CreateOption Attach -ManagedDiskId $dataDisk.Id -Lun $LUNNumber
-    Update-AzVm -VM $vm -ResourceGroupName $ResourceGroupName -Verbose
-   ```
+$dataDisk = New-AzDisk -ResourceGroupName $ResourceGroupName -DiskName $DiskName -Disk $diskConfig
+##################################
+## Attach the disk to cluster VMs
+##################################
+# ASCS Cluster VM1
+$ASCSClusterVM1 = "pr1-ascs-10"
+# ASCS Cluster VM2
+$ASCSClusterVM2 = "pr1-ascs-11"
+# next free LUN number
+$LUNNumber = 1
+
+# Add the Azure Shared Disk to Cluster Node 1
+$vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $ASCSClusterVM1 
+$vm = Add-AzVMDataDisk -VM $vm -Name $DiskName -CreateOption Attach -ManagedDiskId $dataDisk.Id -Lun $LUNNumber
+Update-AzVm -VM $vm -ResourceGroupName $ResourceGroupName -Verbose
+
+# Add the Azure Shared Disk to Cluster Node 2
+$vm = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $ASCSClusterVM2
+$vm = Add-AzVMDataDisk -VM $vm -Name $DiskName -CreateOption Attach -ManagedDiskId $dataDisk.Id -Lun $LUNNumber
+Update-AzVm -VM $vm -ResourceGroupName $ResourceGroupName -Verbose
+```
+
 ### <a name="format-the-shared-disk-with-powershell"></a>Formatieren des freigegebenen Datenträgers mit PowerShell
 1. Rufen Sie die Datenträgernummer ab. Führen Sie die PowerShell-Befehle auf einem der Clusterknoten aus:
 
@@ -235,7 +273,7 @@ Führen Sie den folgenden Befehl auf einem der Clusterknoten aus. Sie müssen di
 
 4. Registrieren Sie den Datenträger im Cluster.  
    ```powershell
-     # Add the disk to cluster 
+    # Add the disk to cluster 
     Get-ClusterAvailableDisk -All | Add-ClusterDisk
     # Example output 
     # Name           State  OwnerGroup        ResourceType 
@@ -624,8 +662,8 @@ Bei den beschriebenen Failovertests wird davon ausgegangen, dass SAP ASCS auf Kn
 [sap-ha-guide-figure-6005]:media/virtual-machines-shared-sap-high-availability-guide/6005-sap-multi-sid-azure-portal.png
 [sap-ha-guide-figure-6006]:media/virtual-machines-shared-sap-high-availability-guide/6006-sap-multi-sid-sios-replication.png
 
-[sap-ha-guide-figure-6007]:media/virtual-machines-shared-sap-high-availability-guide/6007-sap-multi-sid-ascs-azure-shared-disk-sid1.png
-[sap-ha-guide-figure-6008]:media/virtual-machines-shared-sap-high-availability-guide/6008-sap-multi-sid-ascs-azure-shared-disk-sid2.png
+[sap-ha-guide-figure-6007]:media/virtual-machines-shared-sap-high-availability-guide/6007-sap-multi-sid-ascs-azure-shared-disk-sid-1.png
+[sap-ha-guide-figure-6008]:media/virtual-machines-shared-sap-high-availability-guide/6008-sap-multi-sid-ascs-azure-shared-disk-sid-2.png
 [sap-ha-guide-figure-6009]:media/virtual-machines-shared-sap-high-availability-guide/6009-sap-multi-sid-ascs-azure-shared-disk-dns1.png
 [sap-ha-guide-figure-6010]:media/virtual-machines-shared-sap-high-availability-guide/6010-sap-multi-sid-ascs-azure-shared-disk-dns2.png
 [sap-ha-guide-figure-6011]:media/virtual-machines-shared-sap-high-availability-guide/6011-sap-multi-sid-ascs-azure-shared-disk-dns3.png

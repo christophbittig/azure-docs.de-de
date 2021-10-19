@@ -133,25 +133,25 @@
           href: how-to-integrate-time-series-insights.md
     - name: Überwachung und Problembehandlung
       items:
-        - name: Anzeigen von Metriken in Azure Monitor
+        - name: Metriken
           href: troubleshoot-metrics.md
-        - name: Verwenden von Diagnoseprotokollen
+        - name: Diagnoseprotokolle
           href: troubleshoot-diagnostics.md
-        - name: Aktivieren von Warnungen
+        - name: Alerts
           href: troubleshoot-alerts.md
-        - name: Behandeln von Leistungsproblemen
+        - name: Leistung
           href: troubleshoot-performance.md
-        - name: Grundlegendes zur Ressourcenintegrität
+        - name: Ressourcenintegrität
           href: troubleshoot-resource-health.md
         - name: Bekannte Probleme
           href: troubleshoot-known-issues.md
         - name: Problemlösung
           items:
-            - name: 403 (Unzulässig)
+            - name: Fehler 403 (Unzulässig)
               href: troubleshoot-error-403.md
-            - name: 404 Unterdomäne nicht gefunden
+            - name: Fehler 404 (Unterdomäne nicht gefunden)
               href: troubleshoot-error-404.md
-            - name: Authentifizierung per Azure Digital Twins-Explorer
+            - name: Fehler bei der Azure Digital Twins-Explorer-Authentifizierung
               href: troubleshoot-error-azure-digital-twins-explorer-authentication.md
 - name: Verweis
   items:

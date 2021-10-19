@@ -3,12 +3,12 @@ title: host.json-Referenz für Azure Functions 1.x
 description: Referenzdokumentation für die host.json-Datei von Azure Functions mit der v1 Runtime.
 ms.topic: conceptual
 ms.date: 10/19/2018
-ms.openlocfilehash: 8466827402a5a5f785b65ea70887cc868f8667af
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5893bf8edc60e6a86aacccff6a798bc63ee655d8
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339854"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129660607"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>host.json-Referenz für Azure Functions 1.x
 
@@ -16,7 +16,7 @@ ms.locfileid: "122339854"
 > * [Version 1](functions-host-json-v1.md)
 > * [Version 2](functions-host-json.md)
 
-Die Metadatendatei *host.json* enthält globale Konfigurationsoptionen, die sich auf alle Funktionen einer Funktionen-App auswirken. In diesem Artikel werden die verfügbaren Einstellungen für die v1 Runtime aufgelistet. Das JSON-Schema finden Sie unter http://json.schemastore.org/host.
+Die Metadatendatei *host.json* enthält Konfigurationsoptionen, die sich auf alle Funktionen einer Funktions-App-Instanz auswirken. In diesem Artikel werden die verfügbaren Einstellungen für die Version 1.x Runtime aufgelistet. Das JSON-Schema finden Sie unter http://json.schemastore.org/host.
 
 > [!NOTE]
 > Dieser Artikel gilt für Azure Functions 1.x.  Eine Referenz für „host.json“ in Functions 2x und höheren Versionen finden Sie in der [host.json-Referenz für Azure Functions 2.x oder höher](functions-host-json.md).
@@ -376,4 +376,4 @@ Eine Reihe von [Verzeichnissen mit freigegebenem Code](functions-reference-cshar
 > [Informationen zum Aktualisieren der host.json-Datei](functions-reference.md#fileupdate)
 
 > [!div class="nextstepaction"]
-> [Weitere Informationen finden Sie unter den globalen Einstellungen in Umgebungsvariablen](functions-app-settings.md)
+> [Persistente Einstellungen in Umgebungsvariablen](functions-app-settings.md)

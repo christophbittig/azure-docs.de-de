@@ -6,12 +6,12 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 1/28/2021
-ms.openlocfilehash: d38c2518b3504b79f70c58aff1e6cf832d05c8a5
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 8388df72352669eb81a22df392ca077f91d13cfb
+ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128633905"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129754651"
 ---
 # <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>Compute- und Speicheroptionen in Azure Database for MySQL: Flexible Server (Vorschau)
 
@@ -101,11 +101,11 @@ Wir empfehlen Folgendes: <!--turn on storage auto-grow or to--> Sie sollten eine
 
 ### <a name="storage-auto-grow"></a>Automatische Speichervergrößerung
 
-Die automatische Speichervergrößerung verhindert, dass der Server nicht mehr über genügend Speicherplatz verfügt und schreibgeschützt wird. Wenn die automatische Speichervergrößerung aktiviert ist, wird der Speicher automatisch ohne Beeinträchtigung der Workload vergrößert. Die automatische Speichervergrößerung ist standardmäßig für alle neuen Servererstellungen aktiviert. Bei Servern mit 100 GB oder weniger bereitgestelltem Speicher wird die bereitgestellte Speichergröße um 5 GB erhöht, sobald der freie Speicher unter zehn Prozent des bereitgestellten Speichers sinkt. Bei Servern mit mehr als 100 GB bereitgestelltem Speicher wird die bereitgestellte Speichergröße um fünf Prozent erhöht, sobald der freie Speicherplatz unter 10 GB der bereitgestellten Speichergröße sinkt. Dabei gelten die maximalen, oben beschriebenen Speichergrenzwerte.
+Die automatische Speichervergrößerung verhindert, dass der Server nicht mehr über genügend Speicherplatz verfügt und schreibgeschützt wird. Wenn die automatische Speichervergrößerung aktiviert ist, wird der Speicher automatisch ohne Beeinträchtigung der Workload vergrößert. Die automatische Speichervergrößerung ist standardmäßig für alle neuen Servererstellungen aktiviert. Bei Servern mit 100 GB oder weniger bereitgestelltem Speicher wird die bereitgestellte Speichergröße um 5 GB erhöht, sobald der freie Speicher unter zehn Prozent des bereitgestellten Speichers sinkt. Bei Servern mit mehr als 100 GB bereitgestelltem Speicher wird die bereitgestellte Speichergröße um fünf Prozent erhöht, sobald der freie Speicherplatz unter 10 GB der bereitgestellten Speichergröße sinkt. Dabei gelten die maximalen, oben beschriebenen Speichergrenzwerte. Aktualisieren Sie die Serverinstanz, um den aktualisierten Speicher anzuzeigen, der auf dem Blatt „Compute + Storage“ bereitgestellt wird. 
 
 Wenn Sie also beispielsweise 1000 GB Speicher bereitgestellt haben und die tatsächliche Auslastung 990 GB überschreitet, wird die Speichergröße des Servers auf 1050 GB erhöht. Bei 10 GB bereitgestelltem Speicher wird die Speichergröße alternativ auf 15 GB erhöht, wenn weniger als 1 GB Speicher frei ist.
 
-Beachten Sie, dass der Speicher nur hochskaliert und nicht herunterskaliert werden kann.
+Denken Sie daran, dass der Speicher nach dem automatischen Hochskalieren nicht herunterskaliert werden kann.
 
 ## <a name="iops"></a>IOPS
 

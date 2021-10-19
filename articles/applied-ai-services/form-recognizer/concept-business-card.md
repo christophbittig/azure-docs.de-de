@@ -1,0 +1,125 @@
+---
+title: 'Formularerkennung: Visitenkartenmodell'
+titleSuffix: Azure Applied AI Services
+description: Konzepte für die Datenextraktion und -analyse mit dem vordefinierten Visitenkartenmodell
+author: laujan
+manager: nitinme
+ms.service: applied-ai-services
+ms.subservice: forms-recognizer
+ms.topic: conceptual
+ms.date: 10/05/2021
+ms.author: lajanuar
+recommendations: false
+ms.openlocfilehash: b9517dcab3f748283c7dace99c0e49796dae7f7f
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129716411"
+---
+<!-- markdownlint-disable MD033 -->
+
+# <a name="form-recognizer-business-card-model"></a>Formularerkennung: Visitenkartenmodell
+
+## <a name="overview"></a>Übersicht
+
+Das Visitenkartenmodell kombiniert leistungsstarke OCR-Funktionen (Optical Character Recognition, optische Zeichenerkennung) mit Deep Learning-Modellen, um wichtige Informationen aus Visitenkartenbildern zu analysieren und zu extrahieren. Die API analysiert gedruckte Visitenkarten, extrahiert Schlüsselinformationen wie Vorname, Nachname, Firmenname, E-Mail-Adresse und Telefonnummer und gibt eine strukturierte JSON-Datendarstellung zurück.
+
+***Mustervisitenkarte, bearbeitet mit [Formularerkennung, Musterbeschriftungstool](https://fott-2-1.azurewebsites.net/):***
+
+:::image type="content" source="./media/overview-business-card.jpg" alt-text="Beispielvisitenkarte" lightbox="./media/overview-business-card.jpg":::
+
+## <a name="try-form-recognizer-studio-preview"></a>Ausprobieren von Formularerkennung Studio (Vorschau)
+
+* Formularerkennung Studio ist mit der Vorschau-API (v3.0) verfügbar.
+
+* Extrahieren Sie Name, Position, Adresse, E-Mail-Adresse, Firmenname und mehr mit unserem Visitenkartenfeature von Formularerkennung Studio:
+
+> [!div class="nextstepaction"]
+> [Ausprobieren von Formularerkennung Studio](https://formrecognizer.appliedai.azure.com/studio/prebuilt?formType=businessCard)
+
+## <a name="try-it-sample-labeling-tool"></a>Jetzt testen: Tool für die Beschriftung von Beispielen
+
+Sie können sehen, wie Visitenkartendaten extrahiert werden, indem Sie unser Tool für die Beschriftung von Beispielen ausprobieren. Sie benötigen Folgendes:
+
+* Azure-Abonnement – Sie können ein [kostenloses Abonnement erstellen](https://azure.microsoft.com/free/cognitive-services/)
+
+* Eine [Formularerkennungsinstanz](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) im Azure-Portal Sie können den kostenlosen Tarif (`F0`) verwenden, um den Dienst auszuprobieren. Klicken Sie nach der Bereitstellung Ihrer Ressource auf **Zu Ressource wechseln**, um Ihren API-Schlüssel und Endpunkt abzurufen.
+
+ :::image type="content" source="media/containers/keys-and-endpoint.png" alt-text="Screenshot: Schlüssel und Endpunktspeicherort im Azure-Portal":::
+
+* Ein Visitenkartendokument Sie können unser [Beispieldokument für Visitenkarten](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/businessCard.png) verwenden.
+
+> [!div class="nextstepaction"]
+  > [Testen](https://fott-2-1.azurewebsites.net/prebuilts-analyze)
+
+  Auf der Benutzeroberfläche der Formularerkennung:
+
+  1. Wählen Sie **Verwenden eines vordefinierten Modells zum Abrufen von Daten** aus.
+  1. Wählen Sie **Visitenkarte** aus dem Dropdownmenü **Formulartyp** aus:
+
+  :::image type="content" source="media/try-business-card.png" alt-text="Screenshot: Dropdownmenü des Tools für die Beschriftung von Beispielen für das Auswahlmenü für vordefinierte Modelle":::
+
+## <a name="input-requirements"></a>Eingabeanforderungen
+
+* Die besten Ergebnisse erzielen Sie, wenn Sie pro Dokument ein deutliches Foto oder einen hochwertigen Scan einreichen.
+* Unterstützte Dateiformate: JPEG, PNG, BMP, TIFF und PDF (in Text eingebettet oder gescannt). In Text eingebettete PDF-Dateien sind am besten geeignet, um die Möglichkeit von Fehlern beim Extrahieren und Auffinden von Zeichen auszuschließen.
+* Bei PDF und TIFF können bis zu 2000 Seiten verarbeitet werden (bei einem kostenlosen Abonnement werden nur die ersten beiden Seiten verarbeitet).
+* Die Dateigröße muss weniger als 50 MB betragen.
+* Bei Bildern müssen die Abmessungen zwischen 50 × 50 Pixel und 10.000 × 10.000 Pixel liegen.
+* Die PDF-Abmessungen sind bis zu 17 x 17 Zoll, was dem Papierformat Legal oder A3 entspricht, oder kleiner.
+* Der Gesamtumfang der Trainingsdaten beträgt 500 Seiten oder weniger.
+* Wenn Ihre PDFs passwortgeschützt sind, müssen Sie die Sperre vor der Einreichung aufheben.
+* Für unüberwachtes Lernen (ohne bezeichnete Daten):
+  * Die Daten müssen Schlüssel und Werte enthalten.
+  * Die Schlüssel müssen über oder links von den Werten stehen; sie dürfen nicht unter oder rechts von ihnen stehen.
+
+> [!NOTE]
+> Das [Tool für die Beschriftung von Beispielen](https://fott-2-1.azurewebsites.net/) unterstützt nicht das BMP-Dateiformat. Dies ist eine Einschränkung des Tools, nicht des Formularerkennungsdiensts.
+
+## <a name="supported-languages-and-locales"></a>Unterstützte Sprachen und Gebietsschemas
+
+>[!NOTE]
+ > Es ist nicht erforderlich, ein Gebietsschema anzugeben. Dies ist ein optionaler Parameter. Die Deep Learning-Technologie der Formularerkennung erkennt automatisch die Sprache des Texts in Ihrem Bild.
+
+| Modell | Sprache – Gebietsschemacode | Standard |
+|--------|:----------------------|:---------|
+|Visitenkarte| <ul><li>Englisch (USA) – en-US</li><li> Englisch (Australien) – en-AU</li><li>Englisch (Kanada) – en-CA</li><li>Englisch (Vereinigtes Königreich) – en-GB</li><li>Englisch (Indien) – en-IN</li></ul>  | Automatisch erkannt |
+
+## <a name="key-value-pair-extraction"></a>Schlüssel-Wert-Paarextraktion
+
+|Name| type | BESCHREIBUNG |Standardisierte Ausgabe |
+|:-----|:----|:----|:----:|
+| ContactNames | Array von Objekten | Kontaktname |  |
+| FirstName | Zeichenfolge | Vorname des Kontakts |  |
+| LastName | Zeichenfolge | Nachname des Kontakts |  |
+| CompanyNames | array of strings | Name(n) des Unternehmens|  |
+| Departments | array of strings | Abteilung(en) oder Kontaktorganisation(en) |  |
+| JobTitles | array of strings | Aufgeführte Position(en) des Kontakts |  |
+| E-Mails | array of strings | E-Mail-Adresse(n) des Kontakts |  |
+| Websites | array of strings | Website(s) des Unternehmens |  |
+| Adressen | array of strings | Aus der Visitenkarte extrahierte Adresse(n) | |
+| MobilePhones | Array aus Telefonnummern | Mobiltelefonnummer(n) von der Visitenkarte |+1 xxx xxx xxxx |
+| Faxnummern | Array aus Telefonnummern | Faxnummer(n) von der Visitenkarte | +1 xxx xxx xxxx |
+| WorkPhones | Array aus Telefonnummern | Telefonnummer(n) (geschäftlich) von der Visitenkarte | +1 xxx xxx xxxx | 
+| OtherPhones     | Array aus Telefonnummern | Andere Telefonnummer(n) von der Visitenkarte | +1 xxx xxx xxxx |
+
+## <a name="form-recognizer-preview-v30"></a>Formularerkennung Vorschau v3.0
+
+ Die Vorschauversion der Formularerkennung bietet eine Reihe neuer Features und Möglichkeiten.
+
+* Erfahren Sie, wie Sie die Vorschauversion in Ihren Anwendungen und Workflows verwenden können, indem Sie unseren [**Formularerkennung v3.0 Migrationsleitfaden**](v3-migration-guide.md) befolgen.
+
+* Erkunden Sie unsere [**REST-API (Vorschau)** ](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/AnalyzeDocument), um mehr über die Vorschauversion und neue Funktionen zu erfahren.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+* Durcharbeiten eines Schnellstarts zur Formularerkennung:
+
+  > [!div class="nextstepaction"]
+  > [Formularerkennung: Schnellstart](quickstarts/try-sdk-rest-api.md)
+
+* Erkunden Sie unsere REST-API:
+
+    > [!div class="nextstepaction"]
+    > [Formularerkennung-API Version 2.1](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeBusinessCardAsync)

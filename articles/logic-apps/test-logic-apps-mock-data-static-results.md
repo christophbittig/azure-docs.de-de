@@ -1,145 +1,275 @@
 ---
-title: Testen von Logik-Apps mit simulierten Daten
-description: Einrichten von statischen Ergebnissen zum Testen von Logik-Apps mit Simulationsdaten ohne Auswirkungen auf die Produktionsumgebungen
+title: Modelltestworkflows
+description: Richten Sie Modelldaten ein, um Workflows in Azure Logic Apps ohne Auswirkungen auf Produktionsumgebungen zu testen.
 services: logic-apps
 ms.suite: integration
-author: kevinlam1
-ms.author: klam
-ms.reviewer: estfan, logicappspm
-ms.topic: article
-ms.date: 05/13/2019
-ms.openlocfilehash: 711d753203aeaeba50cea692053a37fcab2e9c7b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.reviewer: estfan, azla
+ms.topic: how-to
+ms.date: 10/08/2021
+ms.openlocfilehash: 4167dcffe0a1b4db50f6d1580ad6284f2cf9321d
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93027702"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129712622"
 ---
-# <a name="test-logic-apps-with-mock-data-by-setting-up-static-results"></a>Testen von Logik-Apps mit Simulationsdaten durch die Einrichtung von statischen Ergebnissen
+# <a name="test-workflows-with-mock-data-in-azure-logic-apps-preview"></a>Testen von Workflows mit Modelldaten in Azure Logic Apps (Vorschau)
 
-Beim Testen von Logik-Apps kann es verschiedene Gründe dafür geben, warum möglicherweise noch keine Apps, Dienste und Systeme aufgerufen werden sollen. In einem solchen Szenario müssen Sie für gewöhnlich verschiedene Bedingungspfade ausführen, Fehler erzwingen, bestimmte Antwortnachrichten bereitstellen oder sogar versuchen, einige Schritte zu überspringen. Wenn Sie aber statische Ergebnisse für eine Aktion in Ihrer Logik-App einrichten, können Sie Simulationsdaten als Ausgabe für diese Aktion generieren. Wenn statische Ergebnisse für eine Aktion aktiviert werden, wird diese nicht ausgeführt. Stattdessen werden Simulationsdaten zurückgegeben.
+> [!NOTE]
+> Diese Funktion befindet sich in der Vorschauphase und unterliegt den [Zusätzlichen Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Wenn Sie beispielsweise statische Ergebnisse für die Outlook 365-Aktion „E-Mail senden“ einrichten, gibt die Engine für Logik-Apps nur die Simulationsdaten zurück, die Sie als statische Ergebnisse angegeben haben. Dabei wird weder Outlook aufgerufen noch wird eine E-Mail gesendet.
+Um Ihre Workflows zu testen, ohne tatsächlich Live-Apps, Daten, Dienste oder Systeme auf aufrufen oder darauf zugreifen zu müssen, können Sie Modellwerte von Aktionen einrichten und zurückgeben. Beispielsweise können Sie verschiedene Aktionspfade basierend auf verschiedenen Bedingungen testen, Fehler erzwingen, bestimmten Nachrichtenantworttext bereitstellen oder sogar versuchen, einige Schritte zu überspringen. Wenn Modelldatentests für eine Aktion eingerichtet werden, wird diese nicht ausgeführt. Stattdessen werden Simulationsdaten zurückgegeben.
+
+Wenn Sie beispielsweise Modelldaten für die Aktion Outlook 365-E-Mail senden einrichten, gibt Azure Logic Apps nur die von Ihnen bereitgestellten Modelldaten zurück, anstatt Outlook aufzurufen und eine E-Mail zu senden.
+
+In diesem Artikel wird gezeigt, wie Sie Modelldaten für eine Aktion in einem Workflow für den [**Logik-App-Ressourcentyp (Verbrauch)** und den **Logik-App-Ressourcentyp (Standard)** einrichten](logic-apps-overview.md#resource-environment-differences). Sie finden vorherige Workflow-Ausführungen, die diese Modelldaten verwenden und vorhandene Aktionsausgaben als Modelldaten wiederverwenden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich <a href="https://azure.microsoft.com/free/" target="_blank">für ein kostenloses Azure-Konto registrieren</a>.
+* Ein Azure-Konto und ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie sich <a href="https://azure.microsoft.com/free/?WT.mc_id=A261C142F" target="_blank">für ein kostenloses Azure-Konto registrieren</a>.
 
-* Grundlegende Kenntnisse über die [Erstellung von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+* Die Logik-App-Ressource und der Workflow, in der bzw. dem Sie Modelldaten einrichten möchten. In diesem Artikel werden ein **Wiederholungstrigger** und eine **HTTP-Aktion** als Beispielworkflow verwendet.
 
-* Die Logik-App, für die Sie statische Ergebnisse einrichten möchten
+  Wenn Sie noch nicht mit Logik-Apps vertraut sind, lesen Sie [Was ist Azure Logic Apps?](logic-apps-overview.md) und [Schnellstart: Erstellen Ihres ersten Logik-App-Workflows](quickstart-create-first-logic-app-workflow.md).
 
-<a name="set-up-static-results"></a>
+<a name="enable-mock-data"></a>
 
-## <a name="set-up-static-results"></a>Einrichten von statischen Ergebnissen
+## <a name="enable-mock-data-output"></a>Aktivieren der Ausgabe von Modelldaten
 
-1. Öffnen Sie, falls noch nicht geschehen, Ihre Logik-App über das [Azure-Portal](https://portal.azure.com) im Designer für Logik-Apps.
+### <a name="consumption"></a>[Verbrauch](#tab/consumption)
 
-1. Führen Sie für die Aktion, für die Sie statische Ergebnisse einrichten möchten, die folgenden Schritte aus: 
+1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) den Logik-App-Workflow im Designer.
 
-   1. Klicken Sie in der Aktion oben rechts zuerst auf die Auslassungspunkte ( *...* ) und dann auf **Statisches Ergebnis**. Z. B.:
+1. Gehen Sie bei der Aktion, bei der Sie Modelldaten zurückgeben möchten, wie folgt vor:
 
-      ![Klicken Sie auf „Statisches Ergebnis“ > „Statisches Ergebnis aktivieren“](./media/test-logic-apps-mock-data-static-results/select-static-result.png)
+   1. Wählen Sie in der rechten oberen Ecke der Aktion die Schaltfläche mit den Auslassungspunkten ( *...* ) und dann **Tests** aus, z. B.:
 
-   1. Aktivieren Sie die Option **Statisches Ergebnis aktivieren**. Geben Sie für die erforderlichen Eigenschaften (mit einem * gekennzeichnet) die Simulationswerte ein, die Sie als Antwort auf die Aktion zurückgeben möchten.
+      ![Der Screenshot zeigt das Azure-Portal, den Workflow-Designer, das Aktionskurzmenü und die Auswahl „Testen“.](./media/test-logic-apps-mock-data-static-results/select-testing.png)
 
-      Die folgenden Eigenschaften sind beispielsweise für die HTTP-Aktion erforderlich:
+   1. Wählen Sie im Bereich **Tests** die Option **Statisches Ergebnis aktivieren (Vorschau)** aus. Wenn die erforderlichen (*) Eigenschaften der Aktion angezeigt werden, geben Sie die Modellausgabewerte an, die Sie als Antwort der Aktion zurückgeben möchten.
+
+      Die Eigenschaften unterscheiden sich je nach ausgewähltem Aktionstyp. Die HTTP-Aktion verfügt beispielsweise über die folgenden erforderlichen Eigenschaften:
 
       | Eigenschaft | BESCHREIBUNG |
       |----------|-------------|
       | **Status** | Der Status der Aktion, der zurückgegeben werden soll |
-      | **Statuscode** | Der genaue Statuscode, der zurückgeben werden soll |
+      | **Statuscode** | Der genaue Statuscode, der als Ausgabe zurückgeben werden soll |
       | **Headers** | Der Headerinhalt, der zurückgegeben werden soll |
       |||
 
-      ![Aktivieren Sie die Option „Statisches Ergebnis aktivieren“](./media/test-logic-apps-mock-data-static-results/enable-static-result.png)
+      ![Screenshot, der den Bereich „Tests“ nach Auswahl von „Statisches Ergebnis aktivieren“ zeigt.](./media/test-logic-apps-mock-data-static-results/enable-static-result.png)
 
-      Wenn Sie die Simulationsdaten im JSON-Format (JavaScript Object Notation) eingeben, klicken Sie auf **Zum JSON-Modus wechseln** (![Auf „Zum JSON-Modus wechseln“ klicken](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png)).
+      > [!TIP]
+      > Wenn Sie die Werte im JSON-Format (JavaScript Object Notation) eingeben, wählen Sie **Zum JSON-Modus wechseln** (![Symbol für „Zum JSON-Modus wechseln“](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png)) aus.
 
    1. Optionale Eigenschaften finden Sie in der Liste **Optionale Felder auswählen**. Öffnen Sie diese, und wählen Sie die Eigenschaften aus, die simuliert werde sollen.
 
-      ![Optionale Eigenschaften auswählen](./media/test-logic-apps-mock-data-static-results/optional-properties.png)
+      ![Screenshot, der Bereich „Testen“ mit geöffneter Liste „Optionale Felder auswählen“ anzeigt.](./media/test-logic-apps-mock-data-static-results/optional-properties.png)
 
-1. Klicken Sie zum Speichern auf **Fertig**.
+1. Wählen Sie abschließend **Fertig** aus.
 
-   Oben rechts in der Aktion wird dann in der Titelleiste ein Becherglas angezeigt (![Symbol für statische Ergebnisse](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)). Daran können Sie erkennen, dass Sie die statischen Ergebnisse aktiviert haben.
+   In der rechten oberen Ecke der Aktion zeigt die Titelleiste jetzt ein Becherglassymbol (![Symbol für statisches Ergebnis](./media/test-logic-apps-mock-data-static-results/static-result-test-beaker-icon.png)), das angibt, dass die statischen Ergebnisse aktiviert sind.
 
-   ![Symbol, das angezeigt wird, wenn statische Ergebnisse aktiviert wurden](./media/test-logic-apps-mock-data-static-results/static-results-enabled.png)
+   ![Screenshot, der eine Aktion mit dem Symbol für statische Ergebnisse zeigt.](./media/test-logic-apps-mock-data-static-results/static-result-enabled.png)
 
-   Informationen dazu, wie Sie frühere Ausführungen finden, bei denen Simulationsdaten verwendet werden, erhalten Sie weiter unten in diesem Artikel im Abschnitt [Suchen von Ausführungen mit statischen Ergebnissen](#find-runs-mock-data).
+   Informationen dazu, wie Sie Workflow-Ausführungen finden, bei denen Simulationsdaten verwendet werden, erhalten Sie weiter unten in diesem Artikel im Abschnitt [Suchen von Ausführungen mit statischen Ergebnissen](#find-runs-mock-data).
 
-<a name="reuse-sample-outputs"></a>
+### <a name="standard"></a>[Standard](#tab/standard)
 
-## <a name="reuse-previous-outputs"></a>Frühere Ausgaben wiederverwenden
+1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) den Logik-App-Workflow im Designer.
 
-Wenn es von einer früheren Ausführung Ihrer Logik-App noch Ausgaben gibt, die Sie als Simulationsausgaben wiederverwenden können, können Sie diese kopieren und entsprechend einfügen.
+1. Wählen Sie im Designer die Aktion aus, an die Sie Modelldaten zurückgeben möchten, damit der Bereich mit den Aktionsdetails angezeigt wird.
 
-1. Öffnen Sie, falls noch nicht geschehen, Ihre Logik-App über das [Azure-Portal](https://portal.azure.com) im Designer für Logik-Apps.
+1. Nachdem der Bereich mit den Aktionsdetails auf der rechten Seite geöffnet wurde, wählen Sie **Testen** aus.
 
-1. Klicken Sie im Hauptmenü Ihrer Logik-App auf **Übersicht**.
+   ![Der Screenshot zeigt das Azure-Portal, den Workflow-Designer, das Aktionsdetailbereich und die Auswahl „Testen“.](./media/test-logic-apps-mock-data-static-results/select-testing-standard.png)
 
-1. Wählen Sie im Abschnitt **Ausführungsverlauf** die gewünschte Ausführung der Logik-App aus.
+1. Wählen Sie in der Registerkarte **Tests** die Option **Statisches Ergebnis aktivieren (Vorschau)** aus. Wenn die erforderlichen (*) Eigenschaften der Aktion angezeigt werden, geben Sie die Modellausgabewerte an, die Sie als Antwort der Aktion zurückgeben möchten.
 
-1. Suchen Sie im Workflow der Logik-App die Aktion mit den gewünschten Ausgaben, und erweitern Sie diese.
+   Die Eigenschaften unterscheiden sich je nach ausgewähltem Aktionstyp. Die HTTP-Aktion verfügt beispielsweise über die folgenden erforderlichen Eigenschaften:
 
-1. Klicken Sie auf den Link **Unformatierte Ausgaben anzeigen**.
+   | Eigenschaft | BESCHREIBUNG |
+   |----------|-------------|
+   | **Status** | Der Status der Aktion, der zurückgegeben werden soll |
+   | **Statuscode** | Der genaue Statuscode, der als Ausgabe zurückgeben werden soll |
+   | **Headers** | Der Headerinhalt, der zurückgegeben werden soll |
+   |||
 
-1. Kopieren Sie entweder das ganze JSON-Objekt oder den genauen Unterabschnitt, den Sie verwenden möchten, z. B. den Abschnitt „Ausgaben“ oder sogar nur den Abschnitt „Header“.
+   ![Screenshot, der die Registerkarte „Tests“ nach Auswahl von „Statisches Ergebnis aktivieren“ zeigt.](./media/test-logic-apps-mock-data-static-results/enable-static-result-standard.png)
 
-1. Führen Sie alle unter [Einrichten von statischen Ergebnissen](#set-up-static-results) beschriebenen notwendigen Schritte aus, um das Feld **Statisches Ergebnis** zu öffnen.
+   > [!TIP]
+   > Wenn Sie die Werte im JSON-Format (JavaScript Object Notation) eingeben, wählen Sie **Zum JSON-Modus wechseln** (![Symbol für „Zum JSON-Modus wechseln“](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png)) aus.
 
-1. Wählen Sie anschließend eine der folgenden beiden Optionen aus **:**
+1. Optionale Eigenschaften finden Sie in der Liste **Optionale Felder auswählen**. Öffnen Sie diese, und wählen Sie die Eigenschaften aus, die simuliert werde sollen.
 
-   * Klicken Sie auf **Zum JSON-Modus wechseln** (![Auf „Zum JSON-Modus wechseln“ klicken](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png)), um ein ganzes JSON-Objekt einzufügen:
+   ![Screenshot, der Bereich „Testen“ mit geöffneter Liste „Optionale Felder auswählen“ anzeigt.](./media/test-logic-apps-mock-data-static-results/optional-properties-standard.png)
 
-     ![Auf „Zum JSON-Modus wechseln“ klicken, um ein ganzes Objekt einzufügen](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button-complete.png)
+1. Wählen Sie abschließend **Fertig** aus.
 
-   * Wenn Sie nur einen JSON-Abschnitt einfügen möchten, klicken Sie neben der Bezeichnung des entsprechenden Abschnitts auf **Zum JSON-Modus wechseln**. Z. B.:
+   In der unteren rechten Ecke der Aktion wird nun ein Bechersymbol für den Test angezeigt (![Symbol für statisches Ergebnis](./media/test-logic-apps-mock-data-static-results/static-result-test-beaker-icon.png)), das angibt, dass die statischen Ergebnisse aktiviert sind.
 
-     ![Auf „Zum JSON-Modus wechseln“ klicken, um Ausgaben einzufügen](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button-outputs.png)
+   ![Screenshot, der eine Aktion mit dem Symbol für statische Ergebnisse auf dem Designer zeigt.](./media/test-logic-apps-mock-data-static-results/static-result-enabled-standard.png)
 
-1. Fügen Sie das zuvor kopierte JSON-Objekt in den JSON-Editor ein.
+   Informationen dazu, wie Sie Workflow-Ausführungen finden, bei denen Simulationsdaten verwendet werden, erhalten Sie weiter unten in diesem Artikel im Abschnitt [Suchen von Ausführungen mit statischen Ergebnissen](#find-runs-mock-data).
 
-   ![JSON-Modus](./media/test-logic-apps-mock-data-static-results/json-editing-mode.png)
-
-1. Klicken Sie auf **Fertig**, wenn Sie fertig sind. Stattdessen können Sie auch auf **Editor-Modus wechseln** (Auf ![„Editor-Modus wechseln“](./media/test-logic-apps-mock-data-static-results/switch-editor-mode-button.png) klicken) klicken, um zum Designer zurückzukehren.
+---
 
 <a name="find-runs-mock-data"></a>
 
-## <a name="find-runs-that-use-static-results"></a>Suchen von Ausführungen mit statischen Ergebnissen
+## <a name="find-runs-that-use-mock-data"></a>Ausführungen suchen, die Modelldaten verwenden
 
-Der Ausführungsverlauf Ihrer Logik-App ermittelt die Ausführungen, bei denen statische Ergebnisse von den Aktionen verwendet werden. Gehen Sie wie folgt vor, um diese Ausführungen zu finden:
+### <a name="consumption"></a>[Verbrauch](#tab/consumption)
 
-1. Klicken Sie im Hauptmenü Ihrer Logik-App auf **Übersicht**. 
+Um frühere Workflow-Ausführungen zu finden, bei denen die Aktionen Modelldaten verwenden, überprüfen Sie den Ausführungsverlauf dieses Workflows.
 
-1. Suchen Sie auf der rechten Seite unter **Ausführungsverlauf** die Spalte **Statische Ergebnisse**. 
+1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) den Logik-App-Workflow im Designer.
 
-   Bei jeder Ausführung, die Aktionen mit Ergebnissen umfasst, ist die Spalte **Statische Ergebnisse** auf **Aktiviert** festgelegt. Z. B.:
+1. Wählen Sie im Ressourcenmenü Ihrer Logik-App die Option **Übersicht** aus.
 
-   ![Ausführungsverlauf: Spalte „Statische Ergebnisse“](./media/test-logic-apps-mock-data-static-results/run-history.png)
+1. Wählen Sie im Abschnitt **Essentials** die Option **Ausführungsverlauf** aus, sofern noch nicht ausgewählt.
 
-1. Wenn Sie Aktionen anzeigen lassen möchten, die statische Ergebnisse verwenden, wählen Sie die gewünschte Ausführung aus, für die die Spalte **Statische Ergebnisse** auf **Aktiviert** festgelegt ist.
+1. Suchen Sie in der Tabelle **Ausführungsverlauf** die Spalte **Statische Ergebnisse**.
 
-   Aktionen, die statische Ergebnisse verwenden, werden mit einem Becherglas gekennzeichnet (![Symbol für statische Ergebnisse](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)). Z. B.:
+   Bei jeder Ausführung, die Aktionen mit Modelldatenausgabe umfasst, ist die Spalte **Statische Ergebnisse** auf **Aktiviert** festgelegt. Z. B.:
 
-   ![Ausführungsverlauf: Aktionen, die statische Ergebnisse verwenden](./media/test-logic-apps-mock-data-static-results/static-results-enabled-run-details.png)
+   ![Screenshot, der den Workflow-Ausführungsverlauf mit der Spalte „Statische Ergebnisse“ anzeigt.](./media/test-logic-apps-mock-data-static-results/run-history.png)
 
-## <a name="disable-static-results"></a>Statische Ergebnisse deaktivieren
+1. Wenn Sie diese Aktionen in einer Ausführung anzeigen möchten, die Modelldaten verwendet, wählen Sie die Ausführung aus, bei der die Spalte **Statische Ergebnisse** **aktiviert** ist.
 
-Wenn Sie die statischen Ergebnisse deaktivieren, werden die Werte Ihres letzten Setups nicht verworfen. Wenn Sie die statischen Ergebnisse das nächste Mal aktivieren, können Sie wieder auf die in der Vergangenheit verwendeten Werte zurückgreifen.
+   Aktionen, die statische Ergebnisse verwenden, zeigen das Bechersymbol für den Test (![Symbol für statisches Ergebnis](./media/test-logic-apps-mock-data-static-results/static-result-test-beaker-icon.png)), zum Beispiel:
 
-1. Suchen Sie die Aktion, für die Sie statische Ausgaben deaktivieren möchten. Klicken Sie oben rechts in der Aktion auf das Becherglas (![Symbol für statische Ergebnisse](./media/test-logic-apps-mock-data-static-results/static-results-test-beaker-icon.png)).
+   ![Screenshot, der den  Workflow-Ausführungsverlauf mit Aktionen zeigt, die statische Ergebnisse verwenden.](./media/test-logic-apps-mock-data-static-results/static-result-enabled-run-details.png)
 
-   ![Screenshot: Eine HTTP-Aktion, bei der Sie das Becherglassymbol auswählen können](./media/test-logic-apps-mock-data-static-results/disable-static-results.png)
+### <a name="standard"></a>[Standard](#tab/standard)
 
-1. Klicken Sie auf **Statisches Ergebnis deaktivieren** > **Fertig**.
+Um andere Workflow-Ausführungen zu finden, bei denen die Aktionen Modelldaten verwenden, müssen Sie jede Ausführung überprüfen.
 
-   ![Screenshot: Auswählbare Option „Statisches Ergebnis deaktivieren“](./media/test-logic-apps-mock-data-static-results/disable-static-results-button.png)
+1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) den Logik-App-Workflow im Designer.
+
+1. Wählen Sie im Menü „Workflow“ die Option **Übersicht** aus.
+
+1. Wählen Sie im Abschnitt **Essentials** die Option **Ausführungsverlauf** aus, sofern noch nicht ausgewählt.
+
+1. Wählen Sie in der Tabelle **Ausführungsverlauf** die Ausführung, die Sie überprüfen möchten.
+
+   ![Screenshot, der den Workflow-Ausführungsverlauf anzeigt.](./media/test-logic-apps-mock-data-static-results/select-run-standard.png)
+
+1. Überprüfen Sie im Bereich „Ausführungsdetails“, ob Aktionen das Bechersymbol für den Test (![Symbol für statisches Ergebnis](./media/test-logic-apps-mock-data-static-results/static-result-test-beaker-icon.png)) anzeigen, zum Beispiel:
+
+   ![Screenshot, der den  Workflow-Ausführungsverlauf mit Aktionen zeigt, die statische Ergebnisse verwenden.](./media/test-logic-apps-mock-data-static-results/run-history-static-result-standard.png)
+
+---
+
+<a name="reuse-sample-outputs"></a>
+
+## <a name="reuse-previous-outputs-as-mock-data"></a>Wiederverwenden vorheriger Ausgaben als Modelldaten
+
+Wenn Sie einen vorherigen Workflow mit Ausgaben ausgeführt haben, können Sie diese Ausgaben als Modelldaten wiederverwenden, indem Sie diese Ausgaben aus dieser Ausführung kopieren und einfügen.
+
+### <a name="consumption"></a>[Verbrauch](#tab/consumption)
+
+1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) den Logik-App-Workflow im Designer.
+
+1. Wählen Sie im Ressourcenmenü Ihrer Logik-App die Option **Übersicht** aus.
+
+1. Wählen Sie im Abschnitt **Essentials** die Option **Ausführungsverlauf** aus, sofern noch nicht ausgewählt. Wählen Sie in der angezeigten Liste die gewünschte Workflow-Ausführung aus.
+
+   ![Screenshot, der den Workflow-Ausführungsverlauf anzeigt.](./media/test-logic-apps-mock-data-static-results/select-run.png)
+
+1. Nachdem der Bereich mit den Ausführungsdetails geöffnet wurde, erweitern Sie die Aktion mit den von Ihnen angezeigten Ausgaben.
+
+1. Wählen Sie im Abschnitt **Ausgaben** die Option **unformatierte Ausgaben anzeigen** aus.
+
+1. Kopieren Sie im Bereich **Ausgaben** entweder das ganze JSON-Objekt oder den genauen Unterabschnitt, den Sie verwenden möchten, z. B. den Abschnitt „Ausgaben“ oder sogar nur den Abschnitt „Header“.
+
+1. Lesen Sie den früheren Abschnitt zum Einrichten [von Modelldaten](#enable-mock-data) für eine Aktion, und führen Sie die Schritte aus, um den Bereich **Tests** der Aktion zu öffnen.
+
+1. Wählen Sie nach dem Öffnen des Bereichs **Tests** einen der beiden Schritte aus:
+
+   * Klicken Sie zum Einfügen eines vollständigen JSON-Objekts neben der Bezeichnung **Tests** auf **In JSON-Modus wechseln**![ (Symbol für „In JSON-Modus wechseln“](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png)):
+
+     ![Screenshot, der das ausgewählte Symbol „In JSON-Modus wechseln“ anzeigt, um das vollständige JSON-Objekt einzufügen.](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button-complete.png)
+
+   * Wenn Sie nur einen JSON-Abschnitt, wie **Ausgabe** oder **Header**, einfügen möchten, wählen Sie **In JSON-Modus wechseln** aus, z. B.:
+
+     ![Screenshot, der das ausgewählte Symbol „In JSON-Modus wechseln“ anzeigt, um einen Abschnitt aus einem JSON-Objekt einzufügen.](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button-output.png)
+
+1. Fügen Sie das zuvor kopierte JSON-Objekt in den JSON-Editor ein.
+
+   ![Screenshot, der den im Editor gespeicherten JSON-Code zeigt.](./media/test-logic-apps-mock-data-static-results/json-editing-mode.png)
+
+1. Klicken Sie auf **Fertig**, wenn Sie fertig sind. Stattdessen können Sie auch **Editor-Modus wechseln** (![Symbol für „Editor-Modus wechseln“](./media/test-logic-apps-mock-data-static-results/switch-editor-mode-button.png)) auswählen, um zum Designer zurückzukehren.
+
+### <a name="standard"></a>[Standard](#tab/standard)
+
+1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) den Logik-App-Workflow im Designer.
+
+1. Wählen Sie im Menü „Workflow“ die Option **Übersicht** aus.
+
+1. Wählen Sie im Abschnitt **Essentials** die Option **Ausführungsverlauf** aus, sofern noch nicht ausgewählt.
+
+1. Wählen Sie in der Tabelle **Ausführungsverlauf** die Ausführung, die Sie überprüfen möchten.
+
+   ![Screenshot, der den Workflow-Ausführungsverlauf anzeigt.](./media/test-logic-apps-mock-data-static-results/select-run-standard.png)
+
+1. Nachdem der Bereich mit den Ausführungsdetails geöffnet wurde, wählen Sie die Aktion mit den von Ihnen angezeigten Ausgaben.
+
+1. Wählen Sie im Abschnitt **Ausgaben** die Option **unformatierte Ausgaben anzeigen** aus.
+
+1. Kopieren Sie im Bereich **Ausgaben** entweder das ganze JSON-Objekt oder den genauen Unterabschnitt, den Sie verwenden möchten, z. B. den Abschnitt „Ausgaben“ oder sogar nur den Abschnitt „Header“.
+
+1. Lesen Sie den früheren Abschnitt zum Einrichten [von Modelldaten](#enable-mock-data) für eine Aktion, und führen Sie die Schritte aus, um die Registerkarte **Tests** der Aktion zu öffnen.
+
+1. Wählen Sie nach dem Öffnen der Registerkarte **Tests** einen der beiden Schritte aus:
+
+   * Klicken Sie zum Einfügen eines vollständigen JSON-Objekts neben der Bezeichnung **Tests** auf **In JSON-Modus wechseln**![ (Symbol für „In JSON-Modus wechseln“](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button.png)):
+
+     ![Screenshot, der das ausgewählte Symbol „In JSON-Modus wechseln“ anzeigt, um das vollständige JSON-Objekt einzufügen.](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button-complete-standard.png)
+
+   * Wenn Sie nur einen JSON-Abschnitt, wie **Ausgabe** oder **Header**, einfügen möchten, wählen Sie **In JSON-Modus wechseln** aus, z. B.:
+
+     ![Screenshot, der das ausgewählte Symbol „In JSON-Modus wechseln“ anzeigt, um einen Abschnitt aus einem JSON-Objekt einzufügen.](./media/test-logic-apps-mock-data-static-results/switch-to-json-mode-button-output-standard.png)
+
+1. Fügen Sie das zuvor kopierte JSON-Objekt in den JSON-Editor ein.
+
+   ![Screenshot, der den im Editor gespeicherten JSON-Code zeigt.](./media/test-logic-apps-mock-data-static-results/json-editing-mode-standard.png)
+
+1. Klicken Sie auf **Fertig**, wenn Sie fertig sind. Stattdessen können Sie auch **Editor-Modus wechseln** (![Symbol für „Editor-Modus wechseln“](./media/test-logic-apps-mock-data-static-results/switch-editor-mode-button.png)) auswählen, um zum Designer zurückzukehren.
+
+---
+
+## <a name="disable-mock-data"></a>Deaktivieren von Modelldaten
+
+Wenn Sie statische Ergebnisse für eine Aktion deaktivieren, werden die Werte nicht aus dem letzten Setup entfernt. Wenn Sie also das statische Ergebnis für dieselbe Aktion erneut aktivieren, können Sie ihre vorherigen Werte weiterhin verwenden.
+
+### <a name="consumption"></a>[Verbrauch](#tab/consumption)
+
+1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) den Logik-App-Workflow im Designer. Suchen Sie die Aktion, für die Sie Modelldaten deaktivieren möchten.
+
+1. Wählen Sie in der rechten oberen Ecke der Aktion das Becherglassymbol (![Symbol für statisches Ergebnis](./media/test-logic-apps-mock-data-static-results/static-result-test-beaker-icon.png)).
+
+   ![Screenshot, der eine Aktion und das ausgewählte Bechersymbol für Tests zeigt.](./media/test-logic-apps-mock-data-static-results/disable-static-result.png)
+
+1. Wählen Sie **Statisches Ergebnis deaktivieren** > **Fertig**.
+
+   ![Screenshot, der die ausgewählte Option „Statisches Ergebnis deaktivieren“ zeigt.](./media/test-logic-apps-mock-data-static-results/disable-static-result-button.png)
+
+### <a name="standard"></a>[Standard](#tab/standard)
+
+1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) den Logik-App-Workflow im Designer. Wählen Sie die Aktion, für die Sie Modelldaten deaktivieren möchten.
+
+1. Wählen Sie im Bereich „Aktionsdetails“ die Registerkarte **Tests** aus.
+
+1. Wählen Sie **Statisches Ergebnis deaktivieren** > **Fertig**.
+
+   ![Screenshot, der die ausgewählte Option „Statisches Ergebnis deaktivieren“ als Standard zeigt.](./media/test-logic-apps-mock-data-static-results/disable-static-result-button-standard.png)
+
+---
 
 ## <a name="reference"></a>Verweis
 
-Weitere Informationen zu dieser Einstellung in Ihren zugrunde liegenden Workflowdefinitionen finden Sie unter [Statische Ergebnisse – Schemareferenz für Workflowdefinitionssprache](../logic-apps/logic-apps-workflow-definition-language.md#static-results) und [runtimeConfiguration.staticResult – Laufzeitkonfigurationseinstellungen](../logic-apps/logic-apps-workflow-actions-triggers.md#runtime-configuration-settings)
+Weitere Informationen zu dieser Einstellung in Ihren zugrunde liegenden Workflowdefinitionen finden Sie unter [Statische Ergebnisse – Schemareferenz für Workflowdefinitionssprache](logic-apps-workflow-definition-language.md#static-results) und [runtimeConfiguration.staticResult – Laufzeitkonfigurationseinstellungen](logic-apps-workflow-actions-triggers.md#runtime-configuration-settings)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zu [Azure Logic Apps](../logic-apps/logic-apps-overview.md)
+* Weitere Informationen zu [Azure Logic Apps](logic-apps-overview.md)
