@@ -1,0 +1,36 @@
+items:
+  - name: IoT-Connector
+    href: index.yml
+  - name: Übersicht
+    expanded: true
+    items:
+      - name: Informationen zum IoT-Connector
+        href: iot-connector-overview.md
+  - name: Schnellstarts
+    expanded: true
+    items:
+      - name: Bereitstellen des IoT-Connectors
+        expanded: true
+        items:
+          - name: Verwenden des Portals
+            href: deploy-iot-connector-in-azure.md
+  - name: Anleitungen
+    expanded: true
+    items:
+      - name: Empfangen von Gerätedaten über Azure IoT Hub
+        href: device-data-through-iot-hub.md
+      - name: IoT-Datenfluss
+        href: iot-data-flow.md
+      - name: Verwenden der Gerätezuordnung
+        href: how-to-use-device-mapping-iot.md
+      - name: Verwenden der FHIR-Zielzuordnung
+        href: how-to-use-fhir-mapping-iot.md
+      - name: Exportieren von IoT-Connectormetriken über Diagnoseeinstellungen
+        href: iot-metrics-diagnostics-export.md
+  - name: Ressourcen
+    expanded: true
+    items:
+      - name: Open-Source-Projekte
+        href: iot-git-projects.md
+      - name: Handbuch zur Problembehandlung
+        href: iot-troubleshoot-guide.md

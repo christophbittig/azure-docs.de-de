@@ -1,0 +1,57 @@
+### YamlMime:Landing
+title: Dokumentation zu Azure API for FHIR
+summary: Bei Azure API for FHIR handelt es sich um eine verwaltete, standardbasierte, konforme API für Gesundheitsdaten von Kliniken, die Lösungen für handlungsrelevante Analysen und maschinelles Lernen ermöglicht.
+metadata:
+  title: 'Dokumentation zu Azure API for FHIR: Tutorials, Schrittanleitungen'
+  description: Bei Azure API for FHIR handelt es sich um eine verwaltete, standardbasierte, konforme API für Gesundheitsdaten von Kliniken, die Lösungen für handlungsrelevante Analysen und maschinelles Lernen ermöglicht.
+  services: healthcare-apis
+  ms.service: healthcare-apis
+  ms.subservice: fhir
+  ms.topic: landing-page
+  ms.collection: collection
+  author: matjazl
+  ms.author: matjazl
+  ms.date: 08/13/2020
+  ms.openlocfilehash: 06681a9940c09eb6f50d44fdad0906681ecdb6e6
+  ms.sourcegitcommit: ddac53ddc870643585f4a1f6dc24e13db25a6ed6
+  ms.translationtype: MT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 08/18/2021
+  ms.locfileid: "122396942"
+landingContent:
+- title: Einstieg in Azure API for FHIR
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Azure API for FHIR?
+      url: overview.md
+    - text: Was ist Azure IoT-Konnektor für FHIR (Vorschauversion)?
+      url: overview.md#azure-iot-connector-for-fhir-preview
+  - linkListType: quickstart
+    links:
+    - text: Bereitstellen des API-Servers für FHIR
+      url: fhir-paas-portal-quickstart.md
+    - text: Bereitstellen von Azure IoT-Konnektor für FHIR (Vorschauversion)
+      url: iot-fhir-portal-quickstart.md
+- title: Setuptutorials
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Bereitstellen einer JavaScript-App zum Lesen von Daten aus dem FHIR-Dienst
+      url: tutorial-web-app-fhir-server.md
+    - text: SMART-Integration für Apps und Patientenakten von Drittanbietern
+      url: use-smart-on-fhir-proxy.md
+    - text: Empfangen von Gerätedaten über Azure IoT Hub
+      url: device-data-through-iot-hub.md
+- title: Registrieren von Apps für die AD-Authentifizierung
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Registrieren einer Ressourcen-App
+      url: register-resource-azure-ad-client-app.md
+    - text: Registrieren einer vertraulichen Client-App
+      url: register-confidential-azure-ad-client-app.md
+    - text: Registrieren einer öffentlichen Client-App
+      url: register-public-azure-ad-client-app.md
+    - text: Registrieren einer Dienstclient-App
+      url: register-service-azure-ad-client-app.md

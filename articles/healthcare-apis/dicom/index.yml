@@ -1,0 +1,51 @@
+### YamlMime:Landing
+title: DICOM-Dokumentation
+summary: Dokumentationsseite des DICOM-Diensts für Azure Healthcare-APIs (Vorschau).
+metadata:
+  title: DICOM-Dienste für Azure Healthcare-APIs
+  description: DICOM-Dokumentationsabschnitt für Azure Healthcare-APIs
+  services: healthcare-apis
+  ms.service: healthcare-apis
+  ms.subservice: fhir
+  ms.topic: landing-page
+  ms.collection: collection
+  author: ginalee-dotcom
+  ms.author: ginle
+  ms.date: 06/21/2021
+  ms.openlocfilehash: dfd82e198623e435fedc48c6ed54a894951fb659
+  ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+  ms.translationtype: MT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 08/13/2021
+  ms.locfileid: "121777671"
+landingContent:
+- title: Starten mit dem DICOM-Dienst
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Informationen zum DICOM-Dienst
+      url: dicom-services-overview.md
+  - linkListType: quickstart
+    links:
+    - text: Bereitstellen von DICOM-Diensten mithilfe der Azure-Portal
+      url: deploy-dicom-services-in-azure.md
+- title: Verwenden Ihres DICOM-Diensts
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: 'Verwenden von DICOMweb-Standard-APIs mit C #'
+      url: dicomweb-standard-apis-c-sharp.md
+    - text: Verwenden von DICOMweb-Standard-APIs mit cURL
+      url: dicomweb-standard-apis-curl.md
+    - text: Verwenden von DICOMweb-Standard-APIs mit Python
+      url: dicomweb-standard-apis-python.md
+- title: DICOM-Änderungsfeed
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Was ist der DICOM-Änderungsfeed?
+      url: dicom-change-feed-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Pullen von DICOM-Änderungen mithilfe des Änderungsfeeds
+      url: pull-dicom-changes-from-change-feed.md

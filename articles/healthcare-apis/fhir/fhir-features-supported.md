@@ -1,23 +1,26 @@
 ---
-title: Unterstützte FHIR-Features in Azure – Azure API for FHIR
-description: In diesem Artikel wird erläutert, welche Features der FHIR-Spezifikation in Azure API for FHIR implementiert sind.
+title: Unterstützte FHIR-Features im FHIR-Dienst
+description: In diesem Artikel wird erläutert, welche Features der FHIR-Spezifikation in Gesundheits-APIs implementiert sind.
 services: healthcare-apis
 author: caitlinv39
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 6/16/2021
+ms.date: 08/03/2021
 ms.author: cavoeg
-ms.openlocfilehash: 3e2d0c051ff882e43b04b2aea4357e78d79e67dc
-ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
+ms.openlocfilehash: c1f40d6129f08b8369885631232b394d66f1d260
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113135949"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130045841"
 ---
-# <a name="features"></a>Features
+# <a name="supported-fhir-features"></a>Unterstützte FHIR-Features
 
-Azure API for FHIR bietet eine vollständig verwaltete Bereitstellung des Microsoft FHIR-Servers für Azure. Der Server ist eine Implementierung des [FHIR](https://hl7.org/fhir)-Standards. In diesem Dokument sind die wichtigsten Features des FHIR-Servers aufgeführt.
+> [!IMPORTANT]
+> Azure Healthcare-APIs befinden sich derzeit in der VORSCHAU. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen für Azure-Features, die sich in der Beta- oder Vorschauphase befinden oder anderweitig noch nicht allgemein verfügbar sind.
+
+Der &reg; FHIR-Dienst in den Azure Healthcare-APIs (auch als FHIR-Dienst bezeichnet) bietet eine vollständig verwaltete Bereitstellung des [Open-Source-FHIR-Servers](https://github.com/microsoft/fhir-server) und ist eine Implementierung des [FHIR-Standards.](https://hl7.org/fhir) In diesem Dokument werden die Hauptfunktionen des FHIR-Diensts aufgeführt.
 
 ## <a name="fhir-version"></a>FHIR-Version
 
@@ -27,80 +30,77 @@ Derzeit ebenfalls unterstützte vorherige Versionen: `3.0.2`
 
 ## <a name="rest-api"></a>REST-API
 
-| API                            | Unterstützt: PaaS | Unterstützt: OSS (SQL) | Unterstützt: OSS (Cosmos DB) | Comment                                             |
-|--------------------------------|-----------|-----------|-----------|-----------------------------------------------------|
-| Lesen                           | Ja       | Ja       | Ja       |                                                     |
-| vread                          | Ja       | Ja       | Ja       |                                                     |
-| aktualisieren                         | Ja       | Ja       | Ja       |                                                     |
-| Update mit optimistischer Sperre | Ja       | Ja       | Ja       |                                                     |
-| update (bedingt)           | Ja       | Ja       | Ja       |                                                     |
-| patch                          | Nein        | Nein        | Nein        |                                                     |
-| delete                         | Ja       | Ja       | Ja       |  Siehe Hinweis weiter unten.                                   |
-| delete (bedingt)           | Ja       | Ja        | Ja        |                                                     |
-| history                        | Ja       | Ja       | Ja       |                                                     |
-| create                         | Ja       | Ja       | Ja       | Unterstützung für POST/PUT                               |
-| create (bedingt)           | Ja       | Ja       | Ja       | Issue [#1382](https://github.com/microsoft/fhir-server/issues/1382) |
-| search                         | Partial   | Partial   | Partial   | Weitere Informationen finden Sie [unter Übersicht über die FHIR-Suche.](overview-of-search.md)                           |
-| Verkettete Suche                 | Partial       | Ja       | Teilweise   | Siehe Hinweis 2 weiter unten.                                   |
-| Umgekehrte verkettete Suche         | Partial       | Ja       | Teilweise   | Siehe Hinweis 2 weiter unten.                                   |
-| capabilities                   | Ja       | Ja       | Ja       |                                                     |
-| Batch                          | Ja       | Ja       | Ja       |                                                     |
-| transaction                    | Nein        | Ja       | Nein        |                                                     |
-| paging                         | Teilweise   | Partial   | Teilweise   | `self` und `next` werden unterstützt                     |
-| intermediaries                 | Nein        | Nein        | Nein        |                                                     |
+| API    | Azure-API für FHIR | FHIR-Dienst in Healthcare-APIs | Comment |
+|--------|--------------------|---------------------------------|---------|
+| Lesen   | Ja                | Ja                             |         |
+| vread  | Ja                | Ja                             |         |
+| aktualisieren | Ja                | Ja                             |         | 
+| Update mit optimistischer Sperre | Ja       | Ja       |
+| update (bedingt)           | Ja       | Ja       |
+| patch                          | Ja       | Ja       | Unterstützung nur für [JSON Patch.](https://www.hl7.org/fhir/http.html#patch) Wir haben eine Problemumgehung für die Verwendung des JSON-Patches in ein Paket in [diesem PR](https://github.com/microsoft/fhir-server/pull/2143)eingefügt.|
+| Patch (bedingt)            | Ja       | Ja       |
+| delete                         | Ja       | Ja       | Weitere Informationen finden Sie weiter unten im Abschnitt "Löschen". |
+| delete (bedingt)           | Ja       | Ja       | Weitere Informationen finden Sie weiter unten im Abschnitt "Löschen". |
+| history                        | Ja       | Ja       |
+| create                         | Ja       | Ja       | Unterstützung für POST/PUT |
+| create (bedingt)           | Ja       | Ja       | Issue [#1382](https://github.com/microsoft/fhir-server/issues/1382) |
+| search                         | Partial   | Partial   | Weitere Informationen finden Sie [unter Übersicht über die FHIR-Suche.](overview-of-search.md) |
+| Verkettete Suche                 | Ja       | Ja       | |
+| Umgekehrte verkettete Suche         | Ja       | Ja       | |
+| Batch                          | Ja       | Ja       |
+| transaction                    | Nein        | Ja       |
+| paging                         | Teilweise   | Teilweise   | `self` und `next` werden unterstützt                     |
+| intermediaries                 | Nein        | Nein        |
 
-> [!Note]
-> Der von der FHIR-Spezifikation definierte Löschvorgang erfordert, dass nach dem Löschen nachfolgende nicht versionsspezifische Lesevorgänge einer Ressource den HTTP-Statuscode 410 zurückgeben und die Ressource beim Suchen nicht mehr gefunden wird. Die Azure-API für FHIR ermöglicht Ihnen außerdem das vollständige Löschen der Ressource (einschließlich des gesamten Verlaufs). Zum vollständigen Löschen der Ressource können Sie eine Einstellung des Parameters `hardDelete` auf TRUE (`DELETE {server}/{resource}/{id}?hardDelete=true`) übergeben. Wenn Sie diesen Parameter nicht übergeben oder für `hardDelete` FALSE festlegen, sind die früheren Versionen der Ressource weiterhin verfügbar.
+### <a name="delete-and-conditional-delete"></a>Löschen und bedingtes Löschen
 
+Der von der FHIR-Spezifikation definierte Löschvorgang erfordert, dass nach dem Löschen nachfolgende nicht versionsspezifische Lesevorgänge einer Ressource den HTTP-Statuscode 410 zurückgeben und die Ressource beim Suchen nicht mehr gefunden wird. Mit dem Azure API for FHIR und dem FHIR-Dienst können Sie die Ressource auch vollständig löschen (einschließlich des gesamten Verlaufs). Zum vollständigen Löschen der Ressource können Sie eine Einstellung des Parameters `hardDelete` auf TRUE (`DELETE {server}/{resource}/{id}?hardDelete=true`) übergeben. Wenn Sie diesen Parameter nicht übergeben oder für `hardDelete` FALSE festlegen, sind die früheren Versionen der Ressource weiterhin verfügbar.
 
- **Hinweis 2**
-* Fügt MVP-Unterstützung für verkettete und umgekehrt verkettete FHIR-Suche in CosmosDB hinzu. 
+Zusätzlich zum Löschen unterstützen die Azure API for FHIR und der FHIR-Dienst das bedingte Löschen, sodass Sie ein Suchkriterium zum Löschen einer Ressource übergeben können. Standardmäßig können Sie mit dem bedingten Löschen jeweils ein Element löschen. Sie können auch den `_count` Parameter angeben, um bis zu 100 Elemente gleichzeitig zu löschen. Im Folgenden finden Sie einige Beispiele für die Verwendung des bedingten Löschens.
 
-  Im Azure API for FHIR und dem open-source-FHIR-Server, der von Cosmos unterstützt wird, ist die verkettete suche und die umgekehrte verkettete Suche eine MVP-Implementierung. Um eine verkettete Suche für Cosmos-Datenbank zu ermöglichen, durchsucht die Implementierung den Suchausdruck und gibt Unterabfragen aus, um die übereinstimmenden Ressourcen zu beheben. Dies erfolgt für jede Ebene des Ausdrucks. Wenn eine Abfrage mehr als 100 Ergebnisse zurückgibt, wird ein Fehler ausgelöst. Standardmäßig befindet sich die verkettete Suche hinter einem Featureflag. Verwenden Sie den Header , um die verkettete Suche Cosmos Datenbank zu `x-ms-enable-chained-search: true` verwenden. Weitere Informationen finden Sie unter [PR 1695](https://github.com/microsoft/fhir-server/pull/1695).
+Um ein einzelnes Element mit bedingtem Löschen zu löschen, müssen Sie Suchkriterien angeben, die ein einzelnes Element zurückgibt.
+``` JSON
+DELETE https://{{hostname}}/Patient?identifier=1032704
+```
+
+Sie können dieselbe Suche durchführen, aber hardDelete=true einschließen, um auch den gesamten Verlauf zu löschen.
+```JSON 
+DELETE https://{{hostname}}/Patient?identifier=1032704&hardDelete=true
+```
+
+Wenn Sie mehrere Ressourcen löschen möchten, können Sie einschließen, `_count=100` wodurch bis zu 100 Ressourcen gelöscht werden, die den Suchkriterien entsprechen. 
+``` JSON
+DELETE https://{{hostname}}/Patient?identifier=1032704&_count=100
+```
 
 ## <a name="extended-operations"></a>Erweiterte Vorgänge
 
-Alle unterstützten Vorgänge zur Erweiterung der RESTful-API.
+Alle Vorgänge, die unterstützt werden, um die REST-API zu erweitern.
 
-| Suchparametertyp | Unterstützt: PaaS | Unterstützt: OSS (SQL) | Unterstützt: OSS (Cosmos DB) | Comment |
-|------------------------|-----------|-----------|-----------|---------|
-| $export (gesamtes System) | Ja       | Ja       | Ja       |         |
-| Patient/$export        | Ja       | Ja       | Ja       |         |
-| Gruppe/$export          | Ja       | Ja       | Ja       |         |
-| $convert-data          | Ja       | Ja       | Ja       |         |
-| $validate              | Ja       | Ja       | Ja       |         |
-| $member-Match          | Ja       | Ja       | Ja       |         |
-| $patient alles    | Ja       | Ja       | Ja       |         |
-
-## <a name="persistence"></a>Persistenz
-
-Der Microsoft FHIR-Server verfügt über ein austauschbares Persistenzmodul (siehe [`Microsoft.Health.Fhir.Core.Features.Persistence`](https://github.com/Microsoft/fhir-server/tree/master/src/Microsoft.Health.Fhir.Core/Features/Persistence)).
-
-Derzeit umfasst der Open-Source-Code für FHIR-Server eine Implementierung für [Azure Cosmos DB](../../cosmos-db/index-overview.md) und [SQL-Datenbank](https://azure.microsoft.com/services/sql-database/).
-
-Cosmos DB ist eine global verteilte Datenbank, die mehrere Modelle (SQL-API, MongoDB-API, usw.) unterstützt. Es unterstützt verschiedene [Konsistenzebenen](../../cosmos-db/consistency-levels.md). Die standardmäßige Bereitstellungsvorlage konfiguriert den FHIR-Server mit `Strong`-Konsistenz, aber die Konsistenzrichtlinie kann auf Anforderungsbasis unter Verwendung des Anforderungsheaders `x-ms-consistency-level` geändert (allgemein gelockert) werden.
+| Suchparametertyp | Azure-API für FHIR | FHIR-Dienst in Healthcare-APIs| Comment |
+|------------------------|-----------|-----------|---------|
+| $export (gesamtes System) | Ja       | Ja       |         |
+| Patient/$export        | Ja       | Ja       |         |
+| Gruppe/$export          | Ja       | Ja       |         |
+| $convert-data          | Ja       | Ja       |         |
+| $validate              | Ja       | Ja       |         |
+| $member-Match          | Ja       | Ja       |         |
+| $patient alles    | Ja       | Ja       |         |
+| $purge-Verlauf         | Ja       | Ja       |         |
 
 ## <a name="role-based-access-control"></a>Rollenbasierte Zugriffssteuerung
 
-Der FHIR-Server verwendet [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) für die Zugriffssteuerung. Insbesondere wird die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) erzwungen, wenn der Konfigurationsparameter `FhirServer:Security:Enabled` auf `true` festgelegt ist, und bei allen Anforderungen (außer `/metadata`) an den FHIR-Server muss der Anforderungsheader `Authorization` auf `Bearer <TOKEN>` festgelegt sein. Das Token muss eine oder mehrere Rollen gemäß der Definition im `roles`-Anspruch enthalten. Eine Anforderung ist zulässig, wenn der Token eine Rolle enthält, die die angegebene Aktion für die angegebene Ressource gestattet.
-
-Derzeit werden die zulässigen Aktionen für eine bestimmte Rolle *global* auf die API angewendet.
+Der FHIR-Dienst verwendet [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) für die Zugriffssteuerung. 
 
 ## <a name="service-limits"></a>Diensteinschränkungen
 
-* [**Anforderungseinheiten (Request Units, RUs):**](../../cosmos-db/concepts-limits.md) Sie können bis zu 10.000 RUs im Portal für Azure API for FHIR konfigurieren. Sie benötigen mindestens 400 RUs oder 40 RUs/GB, je nach Größe. Wenn Sie mehr als 10.000 RUs benötigen, können Sie über ein Supportticket eine Erhöhung des Werts anfordern. Maximal sind 1.000.000 RUs verfügbar.
-
 * **Paketgröße:** Jedes Paket ist auf 500 Elemente beschränkt.
 
-* **Datengröße:** Daten/Dokumente müssen jeweils etwas kleiner als 2 MB sein.
-
-* **Abonnementlimit:** Standardmäßig ist jedes Abonnement auf maximal 10 FHIR-Serverinstanzen beschränkt. Wenn Sie mehr Instanzen pro Abonnement benötigen, öffnen Sie ein Supportticket, und geben Sie Details zu Ihren Anforderungen an.
-
-* **Gleichzeitige Verbindungen und** Instanzen: Standardmäßig verfügen Sie über 15 gleichzeitige Verbindungen auf zwei Instanzen im Cluster (für insgesamt 30 gleichzeitige Anforderungen). Wenn Sie mehr gleichzeitige Anforderungen benötigen, öffnen Sie ein Supportticket, und geben Sie Details zu Ihren Anforderungen an.
+* **Abonnementlimit:** Standardmäßig ist jedes Abonnement auf maximal 10 FHIR-Dienste beschränkt. Der Grenzwert kann in einem oder mehreren Arbeitsbereichen verwendet werden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie Informationen zu den unterstützten FHIR-Features in Azure API for FHIR erhalten. Stellen Sie als Nächstes die Azure API for FHIR bereit.
+In diesem Artikel haben Sie mehr über die unterstützten FHIR-Features im FHIR-Dienst erfahren. Stellen Sie als Nächstes den FHIR-Dienst bereit.
  
 >[!div class="nextstepaction"]
->[Bereitstellen von Azure API for FHIR](fhir-paas-portal-quickstart.md)
+>[Bereitstellen des FHIR-Diensts](fhir-portal-quickstart.md)

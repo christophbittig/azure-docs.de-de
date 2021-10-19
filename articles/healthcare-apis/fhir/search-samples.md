@@ -1,20 +1,23 @@
 ---
-title: Suchbeispiele für die Azure-API für FHIR
-description: Suchen mit verschiedenen Suchparametern, Modifizierern und anderen FHIR-Suchtools
+title: Suchbeispiele für den FHIR-Dienst
+description: Suchen mit verschiedenen Suchparametern, Modifizierern und anderen Suchtools für FHIR
 author: ginalee-dotcom
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 05/21/2021
+ms.date: 08/03/2021
 ms.author: cavoeg
-ms.openlocfilehash: 5be1be72e47af10868867e0dce8b747911509381
-ms.sourcegitcommit: a434cfeee5f4ed01d6df897d01e569e213ad1e6f
+ms.openlocfilehash: 17f2ae17f2dd4677734a71fdf395ac7cdab13b8c
+ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111810804"
+ms.lasthandoff: 08/13/2021
+ms.locfileid: "121722195"
 ---
 # <a name="fhir-search-examples"></a>FHIR-Suchbeispiele
+
+> [!IMPORTANT]
+> Azure Healthcare-APIs sind derzeit als VORSCHAUversion verfügbar. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen für Azure-Features, die sich in der Beta- oder Vorschauphase befinden oder anderweitig noch nicht allgemein verfügbar sind.
 
 Im Folgenden finden Sie einige Beispiele für die Verwendung von FHIR-Suchvorgängen, z. B. Suchparameter und -modifizierer, ketten- und umgekehrte Kettensuche, zusammengesetzte Suche, Anzeigen des nächsten Eintragssets für Suchergebnisse und Suchen mit einer `POST` Anforderung. Weitere Informationen zur Suche finden Sie unter [Übersicht über die FHIR-Suche.](overview-of-search.md)
    
@@ -22,7 +25,7 @@ Im Folgenden finden Sie einige Beispiele für die Verwendung von FHIR-Suchvorgä
 
 ### <a name="_include"></a>_include
 
-`_include` durchsucht ressourcenübergreifend nach ressourcenübergreifenden Ressourcen, die den angegebenen Parameter der Ressource enthalten. Sie können z. B. ressourcenübergreifend suchen, um nur diejenigen zu finden, die Informationen zu den Behandlungen für einen bestimmten Patienten enthalten, der `MedicationRequest` den `reference` Parameter `patient` enthält. Im folgenden Beispiel werden alle Patienten, auf die verwiesen wird, aus `MedicationRequests` dem `MedicationRequests` pullen:
+`_include` sucht nach Ressourcen, die den angegebenen Parameter der Ressource enthalten. Sie können z. B. ressourcenübergreifend suchen, um nur diejenigen zu finden, die Informationen zu den Behandlungen für einen bestimmten Patienten enthalten, der `MedicationRequest` den `reference` Parameter `patient` enthält. Im folgenden Beispiel werden alle Patienten, auf die verwiesen wird, aus `MedicationRequests` dem `MedicationRequests` pullen:
 
 ```rest
  GET [your-fhir-server]/MedicationRequest?_include=MedicationRequest:patient
@@ -81,10 +84,10 @@ GET [your-fhir-server]/Patient?name:exact=Jon
 
 ```
 
-Diese Anforderung gibt `Patient` Ressourcen zurück, deren Name exakt mit identisch `Jon` ist. Wenn die Ressource Patienten mit Namen wie oder enthält, würde die Suche die Ressource ignorieren und überspringen, da sie nicht genau mit dem `Jonathan` `joN` angegebenen Wert übereinstimmen würde.
+Diese Anforderung gibt `Patient` Ressourcen zurück, deren Name exakt mit identisch `Jon` ist. Wenn die Ressource Patienten mit Namen wie oder hatte, würde die Suche die Ressource ignorieren und überspringen, da sie nicht genau mit dem `Jonathan` `joN` angegebenen Wert übereinstimmen würde.
 
 ### <a name="contains"></a>:contains
-`:contains` wird für Parameter verwendet und sucht nach Ressourcen mit partiellen Übereinstimmungen des angegebenen Werts an einer beliebigen Stelle in der Zeichenfolge innerhalb des `string` durchsuchten Felds. `contains` berücksichtigt die Groß-/Kleinschreibung nicht und ermöglicht die Zeichenkonkettung. Beispiel:
+`:contains` wird für Parameter verwendet und sucht nach Ressourcen mit partiellen Übereinstimmungen des angegebenen Werts an einer beliebigen Stelle in der Zeichenfolge innerhalb des `string` durchsuchten Felds. `contains` berücksichtigt die Groß-/Kleinschreibung nicht und ermöglicht die Zeichenkonkettung. Zum Beispiel:
 
 ```rest
 GET [your-fhir-server]/Patient?address:contains=Meadow
@@ -104,14 +107,14 @@ Um eine Reihe von Suchvorgängen durchzuführen, die mehrere Verweisparameter ab
 
 Diese Anforderung würde alle Ressourcen mit `DiagnosticReport` einem Patientensubjekt namens "Sarah" zurückgeben. Der `.` Zeitraum, nach dem das `Patient` Feld die verkettete Suche für den Verweisparameter des Parameters `subject` ausführt.
 
-Eine weitere häufige Verwendung einer regulären Suche (keine verkettete Suche) besteht in der Suche nach allen Gefundenen für einen bestimmten Patienten. `Patient`s verfügen häufig über ein oder mehrere `Encounter` s mit einem Betreff. So suchen Sie nach allen `Encounter` Ressourcen für eine mit dem `Patient` bereitgestellten `id` :
+Eine weitere häufige Verwendung einer regulären Suche (keine verkettete Suche) ist die Suche nach allen Gefundenen für einen bestimmten Patienten. `Patient`s verfügen häufig über ein oder mehrere `Encounter` s mit einem Betreff. So suchen Sie nach allen `Encounter` Ressourcen für eine mit dem `Patient` bereitgestellten `id` :
 
 ```rest
 GET [your-fhir-server]/Encounter?subject=Patient/78a14cbe-8968-49fd-a231-d43e6619399f
 
 ```
 
-Mithilfe der verketteten Suche können Sie alle Ressourcen finden, die mit einer bestimmten Information wie z. `Encounter` `Patient` B. dem -Wert () in Übereinstimmung mit einer bestimmten Information `birthdate` stehen:
+Mithilfe der verketteten Suche können Sie alle Ressourcen finden, die mit einer bestimmten Information `Encounter` wie z.B. dem -Wert () in Übereinstimmung mit einer bestimmten `Patient` Information `birthdate` stehen:
 
 ```rest
 GET [your-fhir-server]/Encounter?subject:Patient.birthdate=1987-02-20
@@ -149,9 +152,6 @@ GET [base]/Patient?_has:Observation:patient:_has:AuditEvent:entity:agent:Practit
 
 ``` 
 
-> [!NOTE]
-> In der Azure API for FHIR und dem von Cosmos unterstützten Open-Source-FHIR-Server ist die verkettete Suche und die umgekehrte verkettete Suche eine MVP-Implementierung. Um eine verkettete Suche auf Cosmos DB zu ermöglichen, durchsucht die Implementierung den Suchausdruck und gibt Unterabfragen aus, um die übereinstimmenden Ressourcen zu beheben. Dies erfolgt für jede Ebene des Ausdrucks. Wenn eine Abfrage mehr als 100 Ergebnisse zurückgibt, wird ein Fehler ausgelöst.
-
 ## <a name="composite-search"></a>Zusammengesetzte Suche
 
 Um nach Ressourcen zu suchen, die mehrere Bedingungen gleichzeitig erfüllen, verwenden Sie die zusammengesetzte Suche, die eine Sequenz einzelner Parameterwerte mit einem Symbol `$` verbindet. Das zurückgegebene Ergebnis wäre die Schnittmenge der Ressourcen, die mit allen Bedingungen übereinstimmen, die von den parametern für die verbundene Suche angegeben werden. Solche Suchparameter werden als zusammengesetzte Suchparameter bezeichnet und definieren einen neuen Parameter, der die mehreren Parameter in einer geschachtelten Struktur kombiniert. Wenn Sie z. B. alle Ressourcen suchen möchten, die einen wert kleiner oder `DiagnosticReport` `Observation` gleich 9,2 enthalten:
@@ -161,7 +161,13 @@ GET [your-fhir-server]/DiagnosticReport?result.code-value-quantity=2823-3$lt9.2
 
 ``` 
 
-Diese Anforderung gibt die Komponente an, die einen Code von `2823-3` enthält, in diesem Fall wäre dies "füllium". Nach dem Symbol wird der Bereich des Werts für die Komponente angegeben, der für "kleiner als oder gleich" und für den `$` `lt` `9.2` Wertbereich "zeichenium" verwendet. 
+Diese Anforderung gibt die Komponente an, die einen Code von `2823-3` enthält, der in diesem Fall "füllium" wäre. Nach dem Symbol wird der Bereich des Werts für die Komponente angegeben, der für "kleiner als oder gleich" und für den `$` `lt` `9.2` Wertbereich "zeichenium" verwendet. 
+
+Zusammengesetzte Suchparameter können auch verwendet werden, um mehrere Komponentencodewertmengen mit einem OR zu filtern. Um z. B. die Abfrage auszudrücken, um einen diastolic-Blutdruck zu finden, der größer als 90 oder systolic-Druck größer als 140 ist:
+
+```rest
+GET [your-fhir-server]/Observation?component-code-value-quantity=http://loinc.org|8462-4$gt90,http://loinc.org|8480-6$gt140
+``` 
 
 ## <a name="search-the-next-entry-set"></a>Suchen des nächsten Eintragssets
 
@@ -187,7 +193,7 @@ Die maximale Anzahl von Einträgen, die pro einzelner Suchabfrage zurückgegeben
 
 ```
 
-Und Sie führen eine GET-Anforderung für die bereitgestellte URL unter dem Feld `relation: next` aus:
+Und Sie würden eine GET-Anforderung für die bereitgestellte URL unter dem Feld `relation: next` erstellen:
 
 ```rest
 GET [your-fhir-server]/Patient?_sort=_lastUpdated&ct=WzUxMDAxNzc1NzgzODc5MjAwODBd
