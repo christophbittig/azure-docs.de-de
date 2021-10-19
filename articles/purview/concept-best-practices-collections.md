@@ -6,13 +6,13 @@ ms.author: zeinam
 ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: conceptual
-ms.date: 09/15/2021
-ms.openlocfilehash: 52eb75c054ec9b930898b86f5a58f5334656523a
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.date: 09/27/2021
+ms.openlocfilehash: 838730453f5d49efd756abce40faec74513d52b2
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129207486"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129390328"
 ---
 # <a name="azure-purview-collections-architectures-and-best-practices"></a>Azure Purview-Sammlungs-Architekturen und bewährte Methoden  
 
@@ -53,7 +53,7 @@ Eine Sammlung stellt auch eine Sicherheitsbegrenzung für Ihre Metadaten in der 
 
 - Datenquellen, Scans und Ressourcen können nur zu einer Sammlung gehören. 
 
-- Eine Sammlungshierarchie in Azure Purview kann bis zu 300 Sammlungen unterstützen, die maximal acht Ebenen tief sein können. Dabei ist die Stammsammlung nicht eingeschlossen. 
+- Eine Sammlungshierarchie in Azure Purview kann bis zu 256 Sammlungen unterstützen, die maximal acht Ebenen tief sein können. Dabei ist die Stammsammlung nicht eingeschlossen. 
 
 - Standardmäßig können Sie Datenquellen nicht mehrmals in einem einzelnen Purview-Konto registrieren. Diese Architektur soll das Risiko vermeiden, dass einer einzelnen Datenquelle verschiedene Ebenen der Zugriffssteuerung zugewiesen werden. Wenn mehrere Teams die Metadaten einer einzelnen Datenquelle nutzen, können Sie die Datenquelle in einer übergeordneten Sammlung registrieren und verwalten. Anschließend können Sie entsprechende Scans in jeder untergeordneten Sammlung erstellen, damit relevante Ressourcen in jeder untergeordneten Sammlung angezeigt werden.
 
@@ -65,7 +65,9 @@ Eine Sammlung stellt auch eine Sicherheitsbegrenzung für Ihre Metadaten in der 
 
 - Das Verschieben von Ressourcen zwischen Sammlungen ist zulässig, wenn dem Benutzer die Datenkurator-Rolle für die Quell- und Zielsammlungen zugewiesen wird. 
 
-- Derzeit sind bestimmte Vorgänge wie das Löschen, Verschieben und Umbenennen einer Sammlung nicht zulässig. 
+- Derzeit sind bestimmte Vorgänge wie das Verschieben und Umbenennen einer Sammlung nicht zulässig. 
+
+- Sie können eine Sammlung löschen, wenn sie keine Objekte, zugeordnete Scans, Datenquellen oder untergeordnete Sammlungen enthält.
 
 - Datenquellen, Scans und Ressourcen müssen zu einer Sammlung gehören, wenn sie in der Azure Purview Data Map vorhanden sind.    
 
@@ -74,9 +76,6 @@ Eine Sammlung stellt auch eine Sicherheitsbegrenzung für Ihre Metadaten in der 
 
 - Moving assets across collections is allowed if the user is granted the Data Curator role for the source and destination collections. 
 
-- Certain operations, like delete, move, and rename of a collection, aren't allowed via the Azure Purview Studio graphical interface. You can use the API to perform such operations directly in your Azure Purview data map. 
-
-- You can delete a collection if there are no assets or data sources associated with the collection. You can delete a collection that has a scan associated with it. 
 -->
 
 ### <a name="design-recommendations"></a>Entwurfsempfehlungen 

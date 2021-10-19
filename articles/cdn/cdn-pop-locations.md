@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/18/2021
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: 9355ddc7b84d2b120ee4c453fe21f0b820ea60a3
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 6d24154c7cbe9e5e17a78b52e5e0117e27b8d026
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129093229"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129359680"
 ---
 # <a name="azure-cdn-coverage-by-metro"></a>Azure CDN-Abdeckung nach Metropolregion 
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "129093229"
 >
 
 
-Dieser Artikel enthält die aktuellen Metropolregionen mit den POP-Standorten (Point of Presence), die nach der Region für Azure CDN-Produkte (Content Delivery Network) sortiert sind. Jede Metropolregion kann mehr als einen POP enthalten. Das Azure CDN von Microsoft verfügt z. B. über 117 POP-Standorte in 100 Metropolregionen. 
+Dieser Artikel enthält die aktuellen Metropolregionen mit den POP-Standorten (Point of Presence), die nach der Region für Azure CDN-Produkte (Content Delivery Network) sortiert sind. Jede Metropolregion kann mehr als einen POP enthalten. Das Azure CDN von Microsoft verfügt z. B. über 118 POP-Standorte in 100 Metropolregionen. 
 
 > [!IMPORTANT]
 > Da jedes Azure CDN-Produkt unterschiedliche Methoden zur Erstellung seiner CDN-Infrastrukturen anwendet, rät Microsoft davon ab, POP-Standorte als Entscheidungskriterium für die Auswahl eines Azure CDN-Produkts heranzuziehen. Stattdessen sollten Sie die jeweiligen Funktionen und Endbenutzerleistung betrachten. Testen Sie die Leistung jedes Azure CDN-Produkts, um das richtige Produkt für Ihre Benutzer auszuwählen. 

@@ -7,12 +7,12 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 09/27/2021
-ms.openlocfilehash: 6efbd254a74d2432985d451adf67a33b74d2e2c4
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: eadbeee57960577f12f880b4582e820eddb63e3c
+ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129081914"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129234374"
 ---
 # <a name="create-a-dynamics-365-for-operations-offer"></a>Erstellen eines Angebots für Dynamics 365 for Operations
 
@@ -104,13 +104,13 @@ Weitere Informationen finden Sie unter [Kundenleads aus Ihrem Marketplace-Angebo
 
 ## <a name="business-applications-isv-program"></a>Business Applications ISV-Programm
 
-Ihr Angebot ist zunächst im Standard-Tarif registriert. Wenn Ihre Lösung die Kriterien zur Berechtigung für ein Programm erfüllt, können Sie ein Upgrade auf den Premium-Tarif anfordern, der erweiterte Programmvorteile bietet. Stellen Sie in diesem Fall sicher, dass Sie das [Co-Selling-Modul](https://aka.ms/BizAppsISVProgram) abschließen, bevor Sie Ihr Angebot veröffentlichen.
+Ihr Angebot ist zunächst im Standard-Tarif registriert.
 
-Aktivieren Sie das Kontrollkästchen, um ein Upgrade auf den Premium-Tarif anzufordern.
+Schließen Sie vor dem Veröffentlichen Ihres Angebots das [Co-Selling-Modul](https://aka.ms/BizAppsISVProgram) ab.
 
 Wählen Sie **Entwurf speichern** aus, bevor Sie mit der nächsten Registerkarte im linken Navigationsmenü (**Eigenschaften**) fortfahren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Konfigurieren von Angebotseigenschaften](dynamics-365-operations-properties.md)
+- Konfigurieren von [Angebotseigenschaften](dynamics-365-operations-properties.md)
 - [Bewährte Methoden für Angebotslistung](gtm-offer-listing-best-practices.md)

@@ -190,7 +190,7 @@
     - name: Unterstützte Linux-Distributionen
       href: ../virtual-machines/linux/endorsed-distros.md
       maintainContext: true
-    - name: Orchestrierungsmodi (Vorschau)
+    - name: Orchestrierungsmodi
       items:
         - name: Übersicht
           href: virtual-machine-scale-sets-orchestration-modes.md
