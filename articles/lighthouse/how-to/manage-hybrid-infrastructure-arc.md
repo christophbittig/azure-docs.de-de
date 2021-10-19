@@ -3,12 +3,12 @@ title: Verwalten einer Hybridinfrastruktur im großen Stil mit Azure Arc
 description: Mit Azure Lighthouse Video können Sie die VMs und Kubernetes-Cluster von Kunden außerhalb von Azure effektiv verwalten.
 ms.date: 09/07/2021
 ms.topic: how-to
-ms.openlocfilehash: 7d544f98d6a88678cb8efc337831aa89becb21ee
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 8761c87daeda97b6c67ce8e79e438ed01d8d3a37
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124736566"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714721"
 ---
 # <a name="manage-hybrid-infrastructure-at-scale-with-azure-arc"></a>Verwalten einer Hybridinfrastruktur im großen Stil mit Azure Arc
 
@@ -20,7 +20,7 @@ Mit [Azure Arc-fähigen Servern](../../azure-arc/servers/overview.md) können Ku
 
 Mithilfe von [Kubernetes mit Azure Arc-Unterstützung](../../azure-arc/kubernetes/overview.md) können Kunden Kubernetes-Cluster innerhalb oder außerhalb von Azure anfügen und konfigurieren. Wenn ein Kubernetes-Cluster an Azure Arc angefügt wird, wird er im Azure-Portal mit einer Azure Resource Manager-ID und einer verwalteten Identität angezeigt. Cluster sind an Azure-Standardabonnements angefügt, befinden sich in einer Ressourcengruppe und können wie jede andere Azure-Ressource Tags erhalten.
 
-Dieses Thema bietet eine Übersicht zur übergreifenden Verwendung von Servern und Kubernetes mit Azure Arc-Unterstützung in skalierbarer Weise über die von Ihnen verwalteten Kundenmandanten hinweg.
+Dieses Thema bietet eine Übersicht darüber, wie Sie Server mit Azure Arc-Unterstützung und Kubernetes mit Azure Arc-Unterstützung in skalierbarer Weise übergreifend über die von Ihnen verwalteten Kundenmandanten hinweg verwenden.
 
 > [!TIP]
 > Zwar beziehen wir uns in diesem Thema auf Dienstanbieter und Kunden, doch gelten diese Anweisungen auch für [Unternehmen, die Azure Lighthouse zum Verwalten mehrerer Mandanten verwenden](../concepts/enterprise.md).
@@ -33,7 +33,7 @@ Sie können diese verbundenen Computer mithilfe von Azure-Konstrukten wie Azure 
 
 Beispielsweise können Sie [sicherstellen, dass dieselben Richtlinien auf allen Hybridcomputern der Kunden angewandt werden](../../azure-arc/servers/learn/tutorial-assign-policy-portal.md). Außerdem können Sie Azure Security Center verwenden, um die Konformität in allen Hybridumgebungen Ihrer Kunden zu überwachen, oder [mithilfe von Azure Monitor Daten direkt von Hybridcomputern erfassen](../../azure-arc/servers/learn/tutorial-enable-vm-insights.md) und in einem Log Analytics-Arbeitsbereich anzeigen. [Erweiterungen für virtuelle Computer](../../azure-arc/servers/manage-vm-extensions.md) können auf Azure-fremden Windows- und Linux-VMs bereitgestellt werden, um die Verwaltung der Hybridcomputer des Kunden zu vereinfachen.
 
-## <a name="manage-hybrid-kubernetes-clusters-at-scale-with-azure-arcenabled-kubernetes"></a>Verwalten von Kubernetes-Hybridclustern im großen Stil mithilfe von Kubernetes mit Azure Arc-Unterstützung
+## <a name="manage-hybrid-kubernetes-clusters-at-scale-with-azure-arc-enabled-kubernetes"></a>Verwalten von Kubernetes-Hybridclustern im großen Stil mithilfe von Kubernetes mit Azure Arc-Unterstützung
 
 Sie können Kubernetes-Cluster, die [mit dem Abonnement eines Kunden mit Azure Arc verbunden wurden](../../azure-arc/kubernetes/quickstart-connect-cluster.md), genauso verwalten, als würden sie in Azure ausgeführt werden.
 
@@ -46,5 +46,5 @@ Sie können auch verbundene Cluster mit Azure Monitor überwachen und [mithilfe 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erkunden Sie die Leitfäden für den schnellen Einstieg und die Beispiele im [GitHub-Repository zu Azure Arc](https://github.com/microsoft/azure_arc).
-- Erfahren Sie, [welche Szenarien für Azure Arc-fähige Server unterstützt werden](../../azure-arc/servers/overview.md#supported-cloud-operations).
+- Lernen Sie die [unterstützten Szenarien für Server mit Azure Arc-Unterstützung](../../azure-arc/servers/overview.md#supported-cloud-operations) kennen.
 - Erfahren Sie, [welche Kubernetes-Distributionen von Azure Arc unterstützt werden](../../azure-arc/kubernetes/overview.md#supported-kubernetes-distributions).

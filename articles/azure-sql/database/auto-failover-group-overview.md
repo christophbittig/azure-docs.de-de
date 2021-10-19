@@ -6,18 +6,17 @@ services: sql-database
 ms.service: sql-db-mi
 ms.subservice: high-availability
 ms.custom: sqldbrb=2
-ms.devlang: ''
 ms.topic: conceptual
 author: BustosMSFT
 ms.author: robustos
 ms.reviewer: mathoma
-ms.date: 10/04/2021
-ms.openlocfilehash: 403f3c82bbb5a387e7611a6d98ce808ded599146
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.date: 10/06/2021
+ms.openlocfilehash: a2b8498b0ff4eab174c0ae77bd29d1e562db508a
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129456288"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129667647"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Verwenden von Autofailover-Gruppen für ein transparentes und koordiniertes Failover mehrerer Datenbanken
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -372,7 +371,7 @@ Wenn Sie eine Failovergruppe zwischen primären und sekundären SQL Managed Inst
 - Die von den Instanzen von SQL Managed Instance verwendeten virtuellen Netzwerke müssen per [VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md) oder [ExpressRoute](../../expressroute/expressroute-howto-circuit-portal-resource-manager.md) verbunden werden. Wenn zwei virtuelle Netzwerke über ein lokales Netzwerk verbunden sind, müssen Sie sicherstellen, dass die Ports 5022 und 11000-11999 nicht durch Firewallregeln blockiert werden. Globales VNET-Peering wird unterstützt. Die einzige Einschränkung ist im folgenden Hinweis beschrieben.
 
    > [!IMPORTANT]
-   > [Am 22.09.2020 wurde globales Peering virtueller Netzwerke für neu erstellte virtuelle Cluster angekündigt](https://azure.microsoft.com/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/). Dies bedeutet, dass globales Peering virtueller Netzwerke sowohl für SQL Managed Instances, die nach dem Ankündigungsdatum in leeren Subnetzen erstellt wurden, als auch für alle späteren verwalteten Instanzen, die in diesen Subnetzen erstellt werden, unterstützt wird. Für alle anderen SQL Managed Instances ist die Peeringunterstützung aufgrund der [Einschränkungen beim globalen Peering virtueller Netzwerke](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints) auf die Netzwerke in derselben Region beschränkt. Ausführliche Informationen finden Sie im entsprechenden Abschnitt des Artikels [Azure Virtual Network – häufig gestellte Fragen](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). Um globales Peering virtueller Netzwerke für verwaltete SQL-Instanzen aus virtuellen Clustern verwenden zu können, die vor dem Ankündigungsdatum erstellt wurden, sollten Sie das [Wartungsfenster](./maintenance-window.md) für die Instanzen konfigurieren, da die Instanzen in neue virtuelle Cluster verschoben werden, die globales Peering virtueller Netzwerke unterstützen.
+   > [Am 22.09.2020 wurde globales Peering virtueller Netzwerke für neu erstellte virtuelle Cluster angekündigt](https://azure.microsoft.com/updates/global-virtual-network-peering-support-for-azure-sql-managed-instance-now-available/). Dies bedeutet, dass globales Peering virtueller Netzwerke sowohl für SQL Managed Instances, die nach dem Ankündigungsdatum in leeren Subnetzen erstellt wurden, als auch für alle späteren verwalteten Instanzen, die in diesen Subnetzen erstellt werden, unterstützt wird. Für alle anderen SQL Managed Instances ist die Peeringunterstützung aufgrund der [Einschränkungen beim globalen Peering virtueller Netzwerke](../../virtual-network/virtual-network-manage-peering.md#requirements-and-constraints) auf die Netzwerke in derselben Region beschränkt. Ausführliche Informationen finden Sie im entsprechenden Abschnitt des Artikels [Azure Virtual Network – häufig gestellte Fragen](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). Um globales Peering virtueller Netzwerke für verwaltete SQL-Instanzen aus virtuellen Clustern verwenden zu können, die vor dem Ankündigungsdatum erstellt wurden, sollten Sie das nicht standardmäßige [Wartungsfenster](./maintenance-window.md) für die Instanzen konfigurieren, da die Instanzen in neue virtuelle Cluster verschoben werden, die globales Peering virtueller Netzwerke unterstützen.
 
 - Die VNETs der beiden SQL Managed Instances dürfen keine überlappenden IP-Adressen aufweisen.
 - Sie müssen die Netzwerksicherheitsgruppen (NSGs) so einrichten, dass die Ports 5022 und der Bereich von 11.000 bis 12.000 für ein- und ausgehende Verbindungen vom Subnetz der jeweils anderen verwalteten Instanz geöffnet sind. Hierdurch wird der Replikationsdatenverkehr zwischen den Instanzen zugelassen.
@@ -409,10 +408,11 @@ Informationen zur Verwendung der Point-in-Time-Wiederherstellung mit Failovergru
 
 Bedenken Sie dabei folgende Einschränkungen:
 
-- Failovergruppen können nicht zwischen zwei Servern oder Instanzen in denselben Azure-Regionen erstellt werden.
+- Failovergruppen können nicht zwischen zwei Servern oder Instanzen in derselben Azure-Region erstellt werden.
 - Failovergruppen können nicht umbenannt werden. Sie müssen die Gruppe löschen und unter einem anderen Namen neu erstellen.
 - Die Datenbankumbenennung wird für Instanzen in der Failovergruppe nicht unterstützt. Sie müssen eine Failovergruppe vorübergehend löschen, um eine Datenbank umzubenennen.
-- Systemdatenbanken werden nicht in die sekundäre Instanz in einer Failovergruppe repliziert. Daher erfordern Szenarien, die von Objekten in den Systemdatenbanken abhängen, dass die Objekte manuell auf den sekundären Instanzen erstellt und auch manuell synchron gehalten werden, nachdem Änderungen an der primären Instanz vorgenommen wurden. Die einzige Ausnahme ist der Diensthauptschlüssel (Service Master Key, SMK) für SQL Managed Instance, der während der Erstellung der Failovergruppe automatisch auf die sekundäre Instanz repliziert wird. Alle nachfolgenden Änderungen des SMK auf der primären Instanz werden jedoch nicht auf die sekundäre Instanz repliziert.
+- In die sekundäre Instanz in einer Failovergruppe **werden Systemdatenbanken nicht repliziert**. Daher erfordern Szenarien, die von Objekten in den Systemdatenbanken abhängen, dass die Objekte manuell auf den sekundären Instanzen erstellt und auch manuell synchron gehalten werden, nachdem Änderungen an der primären Instanz vorgenommen wurden. Die einzige Ausnahme ist der Diensthauptschlüssel (Service Master Key, SMK) für SQL Managed Instance, der während der Erstellung der Failovergruppe automatisch auf die sekundäre Instanz repliziert wird. Alle nachfolgenden Änderungen des SMK auf der primären Instanz werden jedoch nicht auf die sekundäre Instanz repliziert.
+- Wenn eine Instanz Teil einer Autofailover-Gruppe ist, hat das Ändern des [Verbindungstyps](../managed-instance/connection-types-overview.md) der Instanz keine Auswirkungen auf Verbindungen, die über den Listenerendpunkt der Failovergruppe hergestellt werden. Sie müssen die Autofailover-Gruppe vorübergehend löschen und neu erstellen, damit die Änderung des Verbindungstyps wirksam wird.
 
 ## <a name="programmatically-managing-failover-groups"></a>Programmgesteuertes Verwalten von Failovergruppen
 

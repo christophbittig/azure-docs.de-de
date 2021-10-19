@@ -3,12 +3,12 @@ title: Überwachen und Betreiben von Sicherungen mit Backup Center
 description: In diesem Artikel wird erläutert, wie Sie mit Backup Center Sicherungen im gewünschten Umfang überwachen und betreiben.
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.openlocfilehash: 86b81110d6abeb1425e18ee45dfe65a96f69687d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cab9e710cfe4bf43b0d225d64e8f64b16c09e3a6
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102506124"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129659847"
 ---
 # <a name="monitor-and-operate-backups-using-backup-center"></a>Überwachen und Verwalten von Sicherungen mit Backup Center
 
@@ -88,6 +88,14 @@ Mit Backup Center können Sie wichtige Informationen für alle Ihre Sicherungsri
 Wenn Sie das Menüelement **Sicherungsrichtlinien** auswählen, können Sie alle Richtlinien anzeigen, die Sie in Ihrem Sicherungsbestand erstellt haben. Sie können die Liste nach Tresorabonnement, Ressourcengruppe, Datenquellentyp und Tresor filtern. Wenn Sie mit der rechten Maustaste auf ein Element im Raster klicken, können Sie zugehörige Elemente für diese Richtlinie anzeigen, die Richtlinie bearbeiten oder sie bei Bedarf sogar löschen.
 
 ![Backup Center – Richtlinien](./media/backup-center-monitor-operate/backup-center-policies.png)
+
+
+## <a name="resource-centric-views"></a>Ressourcenbezogene Ansichten
+
+Wenn Ihre Organisation mehrere Ressourcen in einem gemeinsamen Tresor sichert und alle Ressourcenbesitzer nur Sicherungsinformationen der Ressourcen anzeigen möchten, die sie jeweils besitzen, können Sie die ressourcenbezogene Ansicht im Backup Center verwenden. Zum Verwenden der ressourcenbezogenen Ansicht aktivieren Sie das Kontrollkästchen "Nur Informationen zu Datenquellen anzeigen, auf die ich Zugriff habe". Diese Option wird derzeit für die folgenden Registerkarten unterstützt: **Übersicht**, **Sicherungsinstanzen**, **Aufträge**, **Warnungen**. Die unterstützten Workloads sind Azure-VMs, SQL in Azure-VMs, SAP HANA in Azure-VMs, Azure-Blobs, Azure-Datenträger.
+
+> [!NOTE]
+> Benutzer müssen weiterhin über die erforderlichen RBAC-Berechtigungen für den Tresor verfügen, auch wenn sie die ressourcenbezogene Ansicht verwenden. Mit dieser Ansicht sollen einzelne Benutzern die Anzeige von Informationen zu Ressourcen (z. B. VMs) vermeiden können, die sie nicht besitzen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

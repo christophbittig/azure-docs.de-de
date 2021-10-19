@@ -11,12 +11,12 @@ ms.author: jhirono
 author: jhirono
 ms.date: 09/24/2021
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, references_regions
-ms.openlocfilehash: 4fe1a4f9966e5342ee4f8a12d2b24b3a449efbae
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 38347644557b2e2e3bf76dc4412381ab52396de2
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129424329"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129658555"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>Schützen einer Azure Machine Learning-Trainingsumgebung mit virtuellen Netzwerken
 
@@ -111,7 +111,7 @@ In diesem Artikel erfahren Sie, wie Sie die folgenden Trainingscomputeressourcen
     * Wenn Sie planen, das __SDK__ zu verwenden, kann sich das Speicherkonto in einem anderen Subnetz befinden.
 
     > [!NOTE]
-    > Das Aktivieren des Kontrollkästchens „Hiermit erlauben Sie vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Konto.“ reicht nicht aus, um die ausgehende Kommunikation der Compute-Instanz zuzulassen.
+    > Das Hinzufügen einer Ressourceninstanz für Ihren Arbeitsbereich oder das Aktivieren des Kontrollkästchens „Hiermit erlauben Sie vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Konto.“ reicht nicht aus, um die ausgehende Kommunikation der Computeinstanz zuzulassen.
 
 * Wenn Ihr Arbeitsbereich einen privaten Endpunkt verwendet, ist der Zugriff auf die Compute-Instanz nur innerhalb des virtuellen Netzwerks möglich. Wenn Sie eine benutzerdefinierte DNS- oder Hostsdatei verwenden, fügen Sie einen Eintrag für `<instance-name>.<region>.instances.azureml.ms` hinzu. Ordnen Sie diesen Eintrag der privaten IP-Adresse des privaten Endpunkts des Arbeitsbereichs zu. Weitere Informationen finden Sie im Artikel [Benutzerdefiniertes DNS](./how-to-custom-dns.md).
 * VNet-Dienstendpunktrichtlinien funktionieren für Systemspeicherkonten des Computeclusters/der Compute-Instanz nicht.

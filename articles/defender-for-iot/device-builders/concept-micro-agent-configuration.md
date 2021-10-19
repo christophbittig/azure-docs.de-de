@@ -1,14 +1,14 @@
 ---
 title: Micro-Agent-Konfigurationen (Vorschau)
 description: Der Collector sendet alle aktuellen Daten unmittelbar nach jeder Konfigurationsänderung. Die Änderungen werden dann übernommen.
-ms.date: 10/04/2021
+ms.date: 10/10/2021
 ms.topic: conceptual
-ms.openlocfilehash: 43a26a73f97c9d424998a4ff35d1304c0baf6fc0
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: e6270e6e3f3f2e9234d4bffae3f0970137d38019
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129428443"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129730335"
 ---
 # <a name="micro-agent-configurations-preview"></a>Micro-Agent-Konfigurationen (Vorschau)
 
@@ -19,7 +19,7 @@ Das Verhalten des Micro-Agents wird durch eine Reihe von Modulzwillingeigenschaf
 Nach jeder Änderung der Konfiguration sendet der Collector sofort alle nicht gesendeten Ereignisdaten. Nachdem die Daten gesendet wurden, werden die Änderungen angewendet, und alle Collectors werden neu gestartet.
 
 > [!Note]
-> Einstellungen für den Aggregationsmodus werden unterstützt, sie sind aber nicht konfigurierbar.
+> Der Aggregationsmodus wird unterstützt, ist aber nicht konfigurierbar.
 
 ## <a name="event-based-collectors-configurations"></a>Konfigurationen von ereignisbasierten Collectors
 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, ladolan, reylons, archidda, sopai, azla
 ms.topic: how-to
 ms.date: 06/03/2021
-ms.openlocfilehash: a3ccea075dd4ce4bce06b31fdbe6dc2a55812ebc
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 17c9eb020d62207910008fb032872bd609df553f
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111754077"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129712304"
 ---
 # <a name="create-and-deploy-single-tenant-based-logic-app-workflows-with-azure-arc-enabled-logic-apps-preview"></a>Erstellen und Bereitstellen von Logik-App-Workflows auf Basis eines einzelnen Mandanten mit Logic Apps mit Azure Arc-Unterstützung (Vorschau)
 
@@ -28,8 +28,8 @@ Weitere Informationen finden Sie in der folgenden Dokumentation:
 - [Vergleich zwischen Umgebungen mit einem Mandanten und mehreren Mandanten bzw. Integrationsdienstumgebung](../logic-apps/single-tenant-overview-compare.md)
 - [Übersicht über Azure Arc](../azure-arc/overview.md)
 - [Übersicht über Azure Kubernetes Service](../aks/intro-kubernetes.md)
-- [Was ist Kubernetes mit Azure Arc-Aktivierung?](../azure-arc/kubernetes/overview.md)
-- [Benutzerdefinierte Speicherorte in Kubernetes-Clustern mit Azure Arc-Unterstützung](../azure-arc/kubernetes/conceptual-custom-locations.md)
+- [Was ist Kubernetes mit Azure Arc-Unterstützung?](../azure-arc/kubernetes/overview.md)
+- [Benutzerdefinierte Standorte in Kubernetes-Clustern mit Azure Arc-Unterstützung](../azure-arc/kubernetes/conceptual-custom-locations.md)
 - [App Service, Funktionen und Logic Apps in Azure Arc (Vorschau)](../app-service/overview-arc-integration.md)
 - [Einrichten eines Kubernetes-Clusters mit Azure Arc-Unterstützung zum Ausführen von App Service, Funktionen und Logic Apps (Vorschau)](../app-service/manage-create-arc-environment.md)
 
@@ -60,7 +60,7 @@ In diesem Abschnitt werden die allgemeinen Voraussetzungen für alle Ansätze un
   Wenn Ihre Workflows von Azure gehostete Verbindungen wie Office 365 Outlook oder Azure Storage verwenden müssen, muss Ihre Logik-App eine Azure AD-Identität für die Authentifizierung verwenden. Logic Apps mit Azure Arc-Unterstützung können in jeder Infrastruktur ausgeführt werden, erfordern jedoch eine Identität, die über die Berechtigung verfügt, von Azure gehostete Verbindungen zu verwenden. Um diese Identität einzurichten, erstellen Sie eine App-Registrierung in Azure AD, die Ihre Logik-App als erforderliche Identität verwendet.
 
   > [!NOTE]
-  > Die Unterstützung verwalteter Identitäten ist für Logic Apps mit Azure Arc-Unterstützung derzeit nicht verfügbar.
+  > Die Unterstützung verwalteter Identitäten ist für Logic Apps mit Azure Arc-Unterstützung derzeit nicht verfügbar.
 
   Führen Sie die folgenden Schritte aus, um eine Azure AD-App-Registrierung (Azure Active Directory) mithilfe der Azure CLI zu erstellen:
 
@@ -296,7 +296,7 @@ Sie können Ihre Logik-App-Workflows von Anfang bis Ende in Visual Studio Code e
 
 Die Bearbeitungsfunktion des portalbasierten Designers wird derzeit für Logic Apps mit Azure Arc-Unterstützung entwickelt. Sie können Ihre Logik-Apps mithilfe des portalbasierten Designers erstellen, bereitstellen und anzeigen, Sie können sie jedoch nach der Bereitstellung nicht mehr im Portal bearbeiten. Vorerst können Sie ein Logik-App-Projekt lokal in Visual Studio Code erstellen und bearbeiten und dann mithilfe von Visual Studio Code, der Azure CLI oder automatisierten Bereitstellungen bereitstellen.
 
-1. Verwenden Sie das Azure-Portal, und [erstellen Sie eine Ressource für eine **Logik- App (Standard)** ](create-single-tenant-workflows-azure-portal.md). Wählen Sie für das Ziel **Veröffentlichen** die Option **Docker-Container** aus. Wählen Sie unter **Region** Ihren zuvor erstellen benutzerdefinierten Speicherort als Speicherort für die App aus.
+1. Verwenden Sie das Azure-Portal, und [erstellen Sie eine Ressource für eine **Logik- App (Standard)**](create-single-tenant-workflows-azure-portal.md). Wählen Sie für das Ziel **Veröffentlichen** die Option **Docker-Container** aus. Wählen Sie unter **Region** Ihren zuvor erstellen benutzerdefinierten Speicherort als Speicherort für die App aus.
 
    Standardmäßig wird die **Logik-App-Ressource (Standard)** in Azure Logic Apps mit einzelnem Mandanten ausgeführt. Für Logic Apps mit Azure Arc-Unterstützung wird Ihre Logik-App-Ressource jedoch an dem benutzerdefinierten Standort ausgeführt, den Sie für Ihre Kubernetes-Umgebung erstellt haben. Außerdem müssen Sie nicht selbst einen App-Service-Plan erstellen – dieser wird für Sie erstellt.
 
@@ -644,7 +644,7 @@ Auf Ihrem Kubernetes-Cluster mit Azure Arc-Unterstützung muss für die zuvor er
 
 ### <a name="change-scaling-threshold"></a>Ändern des Skalierungsschwellenwerts
 
-In Logic Apps mit Azure Arc-Unterstützung löst die Länge der Auftragswarteschlange ein Skalierungsereignis aus und legt einen Schwellenwert fest, wie oft die Skalierung für Ihre Logik-App erfolgt. Sie können die Warteschlangenlänge ändern, bei der der Standardwert auf `20` Aufträge festgelegt ist. Erhöhen Sie die Warteschlangenlänge, um die Häufigkeit der Skalierung zu verringern. Verringern Sie die Warteschlangenlänge, um die Häufigkeit der Skalierung zu erhöhen. Für diesen Prozess sind möglicherweise einige Tests erforderlich.
+In Logic Apps mit Azure Arc-Unterstützung löst die Länge der Auftragswarteschlange ein Skalierungsereignis aus und legt einen Schwellenwert dafür fest, wie oft die Skalierung für Ihre Logik-App erfolgt. Sie können die Warteschlangenlänge ändern, bei der der Standardwert auf `20` Aufträge festgelegt ist. Erhöhen Sie die Warteschlangenlänge, um die Häufigkeit der Skalierung zu verringern. Verringern Sie die Warteschlangenlänge, um die Häufigkeit der Skalierung zu erhöhen. Für diesen Prozess sind möglicherweise einige Tests erforderlich.
 
 Um die Länge der Warteschlange zu ändern, legen Sie in der Datei **host.json** auf der Stammebene Ihres Logik-App-Projekts die `Runtime.ScaleMonitor.KEDA.TargetQueueLength`-Eigenschaft fest. Beispiel:
 
@@ -790,4 +790,4 @@ Wenn Sie protokollierte Daten zu Ihrer Logik-App abrufen möchten, aktivieren Si
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Informationen zu Azure Arc-fähigen Logik-Apps](azure-arc-enabled-logic-apps-overview.md)
+- [Informationen zu Logik-Apps mit Azure Arc-Unterstützung](azure-arc-enabled-logic-apps-overview.md)

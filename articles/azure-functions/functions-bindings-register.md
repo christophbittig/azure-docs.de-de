@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/14/2020
 ms.author: cshoe
-ms.openlocfilehash: 262e0fc02632465a03391dbfeaa0902d1b6b9ec3
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 7267e733971b2abed258ca815a010b13938bc2a6
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128609751"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129613470"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Registrieren von Bindungserweiterungen von Azure Functions
 
@@ -69,7 +69,7 @@ Die folgenden Elemente beschreiben einige Gründe, aus denen Erweiterungen mögl
 * Sie müssen auf eine bestimmte Kombination von Erweiterungen zugreifen, die nicht in einem einzelnen Paket verfügbar ist.
 
 > [!NOTE]
-> Um Erweiterungen mithilfe von Core Tools manuell zu installieren, müssen Sie das [.NET Core 2.x SDK](https://dotnet.microsoft.com/download) installiert haben. Das .NET Core SDK wird von Azure Functions Core Tools zum Installieren von Erweiterungen über NuGet verwendet. Für die Verwendung von Azure Functions-Erweiterungen müssen Sie nicht mit .NET vertraut sein.
+> Um Erweiterungen mithilfe von Core Tools manuell zu installieren, muss das [.NET Core 3.1. SDK](https://dotnet.microsoft.com/download) installiert sein. Das .NET Core SDK wird von Azure Functions Core Tools zum Installieren von Erweiterungen über NuGet verwendet. Für die Verwendung von Azure Functions-Erweiterungen müssen Sie nicht mit .NET vertraut sein.
 
 Bei der expliziten Installation von Erweiterungen wird die .NET-Projektdatei „extensions.csproj“ zum Stamm Ihres Projekts hinzugefügt. Diese Datei definiert die von Ihren Funktionen benötigten NuGet-Pakete. Sie können zwar mit den [NuGet-Paketverweisen](/nuget/consume-packages/package-references-in-project-files) in dieser Datei arbeiten, mit Core Tools können Erweiterungen jedoch installiert werden, ohne die Datei manuell bearbeiten zu müssen.
 

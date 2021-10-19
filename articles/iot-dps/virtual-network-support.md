@@ -1,26 +1,25 @@
 ---
 title: Unterstützung von Azure IoT Device Provisioning Service (DPS) für virtuelle Netzwerke
 description: Verwenden des Verbindungsmusters für virtuelle Netzwerke mit Azure IoT Device Provisioning Service (DPS)
-services: iot-hub
-author: wesmc7777
+services: iot-dps
+author: anastasia-ms
 ms.service: iot-dps
+manager: lizross
 ms.topic: conceptual
-ms.date: 06/30/2020
-ms.author: wesmc
-ms.openlocfilehash: f5b1947a8d037dbdd20a3335a79f90ebf10b2ca6
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.date: 10/06/2021
+ms.author: v-stharr
+ms.openlocfilehash: 8d90a033f5af5afb55be9585756a7235dc6d89d7
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108749895"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129659315"
 ---
 # <a name="azure-iot-hub-device-provisioning-service-dps-support-for-virtual-networks"></a>Unterstützung von Azure IoT Hub Device Provisioning Service (DPS) für virtuelle Netzwerke
 
 In diesem Artikel wird das Verbindungsmuster für virtuelle Netzwerke (VNET) für die Bereitstellung von IoT-Geräten mit IoT-Hubs mithilfe von DPS vorgestellt. Dieses Muster bietet private Konnektivität zwischen den Geräten, DPS und dem IoT-Hub in einem kundeneigenen Azure-VNET. 
 
 In den meisten Szenarien, in denen DPS mit einem VNET konfiguriert ist, wird Ihr IoT-Hub auch im selben VNET konfiguriert. Genauere Informationen zur VNET-Unterstützung und -Konfiguration für IoT-Hubs finden Sie unter [Unterstützung von virtuellen IoT-Hub-Netzwerken](../iot-hub/virtual-network-support.md).
-
-
 
 ## <a name="introduction"></a>Einführung
 
@@ -41,7 +40,6 @@ Zu den gängigen Ansätzen zum Einschränken der Konnektivität gehören [DPS-IP
 Geräte, die in lokalen Netzwerken betrieben werden, können privates Peering mit [virtuellen privaten Netzwerken (VPN)](../vpn-gateway/vpn-gateway-about-vpngateways.md) oder [ExpressRoute](https://azure.microsoft.com/services/expressroute/) verwenden, um eine Verbindung mit einem VNET in Azure herzustellen und über private Endpunkte auf DPS-Ressourcen zuzugreifen. 
 
 Ein privater Endpunkt ist eine private IP-Adresse, die in einem kundeneigenen VNET zugeordnet ist, über das eine Azure-Ressource zugänglich ist. Wenn Sie über einen privaten Endpunkt für Ihre DPS-Ressource verfügen, können Sie zulassen, dass in Ihrem VNET ausgeführte Geräte die Bereitstellung durch Ihre DPS-Ressource anfordern, ohne Datenverkehr an den öffentlichen Endpunkt zu erlauben.
-
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -64,6 +62,11 @@ Beachten Sie die folgenden aktuellen Einschränkungen für DPS bei der Verwendun
 * Die aktuelle VNET-Unterstützung von DPS betrifft nur eingehenden Datenverkehr in DPS. Ausgehender Datenverkehr, also von DPS zu IoT Hub, verwendet einen internen Dienst-zu-Dienst-Mechanismus anstelle eines dedizierten VNET. Eine Unterstützung für die vollständige VNET-basierte Sperrung von ausgehendem Datenverkehr zwischen DPS und IoT Hub ist zurzeit nicht verfügbar.
 
 * Über die Richtlinie mit der niedrigsten Latenzzuordnung wird dem IoT-Hub mit der niedrigsten Latenz ein Gerät zugewiesen. Diese Zuordnungsrichtlinie ist in einer virtuellen Netzwerkumgebung nicht zuverlässig. 
+
+>[!NOTE]
+>**Überlegungen zur Datenresidenz**:
+>
+>DPS stellt einen **globalen Geräteendpunkt** (`global.azure-devices-provisioning.net`) bereit. Wenn Sie jedoch den globalen Endpunkt verwenden, werden Ihre Daten möglicherweise an Orte außerhalb der Region umgeleitet, in der die DPS-Instanz ursprünglich erstellt wurde. Verwenden Sie private Endpunkte, um die Datenresidenz innerhalb der anfänglichen DPS-Region sicherzustellen.
 
 ## <a name="set-up-a-private-endpoint"></a>Einrichten eines privaten Endpunkts
 
@@ -104,13 +107,12 @@ Führen Sie die folgenden Schritte aus, um einen privaten Endpunkt einzurichten:
     Klicken Sie unten auf der Seite auf **Weiter: Konfiguration**, um das VNET für den privaten Endpunkt zu konfigurieren.
 
 4. Wählen Sie auf der Seite „Konfiguration“ von _Privaten Endpunkt erstellen_ Ihr virtuelles Netzwerk und das Subnetz aus, in dem der private Endpunkt erstellt werden soll.
- 
+
     Klicken Sie unten auf der Seite auf **Weiter: Tags**, und stellen Sie optional Tags für Ihre Ressource bereit.
 
     ![Konfigurieren des privaten Endpunkts](./media/virtual-network-support/create-private-endpoint-configuration.png)
 
-6. Klicken Sie auf **Überprüfen und erstellen** und dann auf **Erstellen**, um die Ressource für den privaten Endpunkt zu erstellen.
-
+5. Klicken Sie auf **Überprüfen und erstellen** und dann auf **Erstellen**, um die Ressource für den privaten Endpunkt zu erstellen.
 
 ## <a name="use-private-endpoints-with-devices"></a>Verwenden privater Endpunkte mit Geräten
 
@@ -118,7 +120,7 @@ Um private Endpunkte mit Gerätebereitstellungscode zu verwenden, muss Ihr Berei
 
 `<Your DPS Tenant Name>.azure-devices-provisioning.net`
 
-Die meisten Beispiele, die in unserer Dokumentation und den SDKs gezeigt werden, verwenden den **globalen Geräteendpunkt** (`global.azure-devices-provisioning.net`) und den **ID-Bereich**, um eine bestimmte DPS-Ressource aufzulösen. Verwenden Sie den Dienstendpunkt anstelle des globalen Geräteendpunkts, wenn Sie über private Verbindungen eine Verbindung mit einer DPS-Ressource herstellen, um Ihre Geräte zur Verfügung zu stellen.
+Die meisten Beispiele, die in unserer Dokumentation und den SDKs gezeigt werden, verwenden den **globalen Geräteendpunkt** (`global.azure-devices-provisioning.net`) und den **ID-Bereich**, um eine bestimmte DPS-Ressource aufzulösen. Verwenden Sie den Dienstendpunkt anstelle des globalen Geräteendpunkts, wenn Sie zur Gerätebereitstellung eine Verbindung mit einer DPS-Ressource über private Endpunkte herstellen.
 
 Das Beispiel für den Bereitstellungsgeräteclient ([pro_dev_client_sample](https://github.com/Azure/azure-iot-sdk-c/tree/master/provisioning_client/samples/prov_dev_client_sample)) im [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) ist so konzipiert, dass der **globale Geräteendpunkt** als globaler Bereitstellungs-URI (`global_prov_uri`) in [prov_dev_client_sample.c](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c) verwendet wird.
 
@@ -126,7 +128,7 @@ Das Beispiel für den Bereitstellungsgeräteclient ([pro_dev_client_sample](http
 
 :::code language="c" source="~/iot-samples-c/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c" range="138-144" highlight="3":::
 
-Um das Beispiel mit einer privaten Verbindung zu verwenden, wird der oben hervorgehobene Code so geändert, dass der Dienstendpunkt für Ihre DPS-Ressource verwendet wird. Wenn Ihr Dienstendpunkt z. B. `mydps.azure-devices-provisioning.net` lautet, sieht der Code wie folgt aus.
+Um das Beispiel mit einem privaten Endpunkt zu verwenden, wird der oben hervorgehobene Code so geändert, dass der Dienstendpunkt für Ihre DPS-Ressource verwendet wird. Wenn Ihr Dienstendpunkt z. B. `mydps.azure-devices-provisioning.net` lautet, sieht der Code wie folgt aus.
 
 ```C
 static const char* global_prov_uri = "global.azure-devices-provisioning.net";

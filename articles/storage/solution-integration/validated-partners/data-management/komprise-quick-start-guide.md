@@ -8,25 +8,27 @@ ms.date: 05/20/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: partner
-ms.openlocfilehash: 97ad7067b598ad4aa03f46cc7124dcc05d7f2b42
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: a6333ef4385439afa2e2f0000ae3f452357aa958
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112115690"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129856804"
 ---
 # <a name="analyze-and-migrate-to-azure-with-komprise"></a>Analysieren und Migrieren zu Azure mit Komprise
 
-Dieser Artikel enthält Informationen zur Integration der Komprise Intelligent Data Manager-Infrastruktur mit Azure-Speicherdiensten. Es werden die Aspekte und die Implementierungsschritte zum Analysieren und Migrieren Ihrer Daten beschrieben.
+Dieser Artikel enthält Informationen zur Integration der Komprise Intelligent Data Management-Infrastruktur mit Azure-Speicherdiensten. Es werden die Aspekte und die Implementierungsschritte zum Analysieren und Migrieren Ihrer Daten beschrieben.
 
-Komprise verfügt über Funktionen zum Durchführen von Analysen und Gewinnen von Erkenntnissen zu NAS-Systemen (Network Attached Storage). Die Anwendung ermöglicht die Migration von Daten zu Azure-Speicherdiensten wie Azure Files, Azure NetApp Files, Azure Blob Storage oder ISV NAS-Lösungen. Weitere Informationen finden Sie im Artikel zu den [verifizierten Partnerlösungen für primären und sekundären Speicher](../primary-secondary-storage/partner-overview.md).
+Komprise bietet Analysen und Erkenntnisse zu Datei- und Objektdaten, die sowohl lokal als auch in der Cloud in NAS-Systemen (Network Attached Storage) und Objektspeichern gespeichert sind.  Die Anwendung ermöglicht die Migration von Daten zu Azure-Speicherdiensten wie Azure Files, Azure NetApp Files, Azure Blob Storage oder anderen NAS-Lösungen von ISVs. Weitere Informationen finden Sie im Artikel zu den [verifizierten Partnerlösungen für primären und sekundären Speicher](../primary-secondary-storage/partner-overview.md).
 
-Mit Komprise erhalten Sie Unterstützung in vielen unterschiedlichen Anwendungsfällen, z. B.:
+Zu den gängigen Anwendungsfällen für Komprise gehören folgende:
 
-- Analysieren von lokalen unstrukturierten Daten, um Erkenntnisse in den Bereichen Verwaltung, Verschiebung, Positionierung, Archivierung, Schutz und Beschränkung von Daten zu gewinnen
-- Migrieren von lokalen unstrukturierten Daten zu Azure Files, Azure NetApp Files oder einer ISV NAS-Lösung
-- Kopieren oder Archivieren von lokalen unstrukturierten Daten in Azure Blob Storage mit nativem Zugriff
-- Migrieren von Objektspeicherlösungen zu Azure Blob Storage
+- Analysieren von unstrukturierten Datei- und Objektdaten, um Erkenntnisse in den Bereichen Verwaltung, Verschiebung, Positionierung, Archivierung, Schutz und Beschränkung von Daten zu gewinnen
+- Migration von Dateidaten zu Azure Files, Azure NetApp Files oder ISV-NAS-Lösungen
+- Richtlinienbasiertes Auslagern und Archivieren von Dateidaten in Azure Blob Storage bei gleichzeitiger Beibehaltung des transparenten Zugriffs aus der ursprünglichen NAS-Lösung und Zulassung des nativen Objektzugriffs in Azure
+- Kopieren von Dateidaten in Azure Blob Storage nach konfigurierbaren Zeitplänen unter Beibehaltung des nativen Objektzugriffs in Azure
+- Migration von Objektdaten zu Azure Blob Storage
+- Auslagern und Verwalten des Datenlebenszyklus von Objekten über die Azure Blob Storage-Ebenen „Heiß“, „Kalt“ und „Archiv“, basierend auf der Uhrzeit des letzten Zugriffs
 
 ## <a name="reference-architecture"></a>Referenzarchitektur
 
@@ -34,9 +36,13 @@ Referenzarchitektur für Sicherungsbereitstellungen vom lokalen Standort zu Azur
 
 :::image type="content" source="./media/komprise-quick-start-guide/komprise-architecture.png" alt-text="Referenzarchitektur: Grundlegendes Setup für Komprise Intelligent Data Manager":::
 
+Das folgende Diagramm zeigt eine Referenzarchitektur für die Migration von Cloud- und lokalen Objektworkloads zu Azure Blob Storage.
+
+:::image type="content" source="./media/komprise-quick-start-guide/komprise-architecture-blob.png" alt-text="Referenzarchitektur zur Beschreibung des Setups für die Migration von Cloud- und lokalen Objektworkloads zu Azure Blob Storage":::
+
 Komprise ist eine Softwarelösung, die leicht in einer virtuellen Umgebung bereitgestellt werden kann. Sie umfasst Folgendes:
 - **Director**: Die Verwaltungskonsole für Komprise Grid. Sie wird verwendet, um die Umgebung zu konfigurieren, Aktivitäten zu überwachen, Berichte und Diagramme anzuzeigen und Richtlinien festzulegen.
-- **Observers**: Ermöglichen die Verwaltung und Analyse von Freigaben, die Zusammenfassung von Berichten, die Kommunikation mit der Director-Lösung und die Verarbeitung von NFS-Datenverkehr.
+- **Observers**: Ermöglichen die Verwaltung und Analyse von Freigaben, die Zusammenfassung von Berichten, die Kommunikation mit der Director-Komponente und die Verarbeitung von Objekt- und NFS-Datenverkehr.
 - **Proxys**: Ermöglichen die Vereinfachung und Beschleunigung des SMB/CIFS-Datenflusses und eine einfache Skalierung, um die Leistungsanforderungen einer wachsenden Umgebung zu erfüllen.
 
 ## <a name="before-you-begin"></a>Vorbereitung
@@ -77,7 +83,7 @@ Verwenden Sie die folgenden Methoden, um den Spielraum an Bandbreite zu ermittel
 
 Komprise lässt sich einfach einrichten und ermöglicht das gleichzeitige Ausführen mehrerer Migrationen in drei Schritten:
 
-1.  Analysieren Ihrer Daten zur Ermittlung der Dateien, die migriert oder archiviert werden sollen
+1.  Analysieren Ihrer Daten zur Ermittlung der Dateien und Objekte, die migriert oder archiviert werden sollen
 1.  Definieren von Richtlinien zum Migrieren, Verschieben oder Kopieren unstrukturierter Daten in Azure Storage
 1.  Aktivieren von Richtlinien, mit denen Ihre Daten automatisch verschoben werden
 
@@ -87,14 +93,15 @@ Der erste Schritt ist entscheidend, wenn es um das Ermitteln und Priorisieren de
   - Dateien mit geringerer Zugriffshäufigkeit, die Sie lokal zwischenspeichern oder unter dem schnellen Dateidienst speichern können
   - Kalte Daten, die Sie im Blobspeicher archivieren können
 - Informationen zu den wichtigsten Benutzern, Gruppen oder Freigaben, um die Reihenfolge der Migration zu ermitteln, und zur am stärksten betroffenen Gruppe der Organisation, um die geschäftlichen Auswirkungen zu bewerten
-- Anzahl von Dateien oder Kapazität pro Dateityp, um den Typ der gespeicherten Dateien zu ermitteln, und ob Möglichkeiten zur Bereinigung des Inhalts vorhanden sind. Durch die Bereinigung wird der Migrationsaufwand reduziert, und die Kosten für den Zielspeicher werden gesenkt.
-- Anzahl von Dateien oder Kapazität pro Dateigröße, um die Dauer der Migration zu ermitteln. Die Migration einer großen Anzahl von kleinen Dateien dauert länger als bei einer geringen Anzahl von großen Dateien.
+- Anzahl von Dateien oder Kapazität pro Dateityp, um den Typ der gespeicherten Dateien zu ermitteln, und ob Möglichkeiten zur Bereinigung des Inhalts vorhanden sind. Durch die Bereinigung wird der Migrationsaufwand reduziert, und die Kosten für den Zielspeicher werden gesenkt. Ähnliche Analysen sind für Objektdaten verfügbar.
+- Anzahl von Dateien oder Kapazität pro Dateigröße, um die Dauer der Migration zu ermitteln. Die Migration einer großen Anzahl kleiner Dateien dauert länger als die Migration einer kleinen Anzahl großer Dateien. Ähnliche Analysen sind für Objektdaten verfügbar.
+- Kosten für Objekte nach Speicherebene, um zu bestimmen, ob kalte Daten fälschlicherweise auf teuren Ebenen platziert werden oder ob heiße Daten fälschlicherweise auf kostengünstigeren Ebenen mit hohen Zugriffskosten platziert werden. Die richtige Platzierung von Daten basierend auf Zugriffsmustern ermöglicht die Optimierung der gesamten Cloudspeicherkosten.
 
     :::image type="content" source="./media/komprise-quick-start-guide/komprise-analyze-1.png" alt-text="Analyse nach Dateityp und Zugriffszeit":::
 
     :::image type="content" source="./media/komprise-quick-start-guide/komprise-analyze-shares.png" alt-text="Beispiel für Freigabenanalyse":::
 
-- Filter für Funktionen benutzerdefinierter Abfragen, damit Sie genau die benötigten Dateien erhalten
+- Filter für benutzerdefinierte Abfragefunktionen, damit Sie genau die benötigten Dateien und Objekte erhalten.
 
     :::image type="content" source="./media/komprise-quick-start-guide/komprise-analyze-custom.png" alt-text="Analyse für benutzerdefinierte Abfrage":::
 
@@ -105,7 +112,7 @@ Vor der Bereitstellung von Komprise muss der Zieldienst bereitgestellt werden. W
 - Erstellen einer [Azure-Dateifreigabe](../../../files/storage-how-to-create-file-share.md)
 - Erstellen eines [SMB-Volumes](../../../../azure-netapp-files/azure-netapp-files-create-volumes-smb.md) oder [NFS-Exports](../../../../azure-netapp-files/azure-netapp-files-create-volumes.md) in Azure NetApp Files
 
-Das Komprise Grid wird in einer virtuellen Umgebung (Hyper-V, VMware, KVM) bereitgestellt und dient zur Verbesserung der Geschwindigkeit, Skalierbarkeit und Resilienz. Alternativ können Sie die Umgebung unter Ihrem Azure-Abonnement über den [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/komprise_inc.intelligent_data_management) einrichten.
+Das Komprise Grid wird in einer virtuellen Umgebung (Hyper-V, VMware, KVM) bereitgestellt und dient zur Verbesserung der Geschwindigkeit, Skalierbarkeit und Resilienz. Alternativ dazu können Sie die Umgebung über den [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/komprise_inc.intelligent_data_management) in Ihrem Azure-Abonnement einrichten.
 
 1. Öffnen Sie das Azure-Portal, und suchen Sie nach **Speicherkonten**. 
 
@@ -156,6 +163,8 @@ Das Komprise Grid wird in einer virtuellen Umgebung (Hyper-V, VMware, KVM) berei
 
    4.  Konfigurieren Sie zusätzliche [bewährte Sicherheitsmethoden](../../../blobs/security-recommendations.md).
 
+### <a name="deployment-instructions-for-managing-file-data"></a>Bereitstellungsanweisungen zum Verwalten von Dateidaten
+
 1.  Führen Sie den **Download** des virtuellen Komprise Observer-Geräts aus Director durch, stellen Sie es auf Ihrem Hypervisor bereit, und konfigurieren Sie es mit den Angaben für das Netzwerk und die Domäne. Director wird als Clouddienst bereitgestellt, der von Komprise verwaltet wird. Die für den Zugriff auf Director benötigten Informationen werden in der Begrüßungs-E-Mail gesendet, die Sie nach dem Erwerb der Lösung erhalten.
 
     :::image type="content" source="./media/komprise-quick-start-guide/komprise-setup-1.png" alt-text="Download des entsprechenden Images für Komprise Observer aus Director":::
@@ -184,9 +193,37 @@ Das Komprise Grid wird in einer virtuellen Umgebung (Hyper-V, VMware, KVM) berei
 
     :::image type="content" source="./media/komprise-quick-start-guide/komprise-azure-files-2.png" alt-text="Eingeben von Details für Azure Files":::
 
+### <a name="deployment-instructions-for-managing-object-data"></a>Bereitstellungsanweisungen zum Verwalten von Objektdaten
+
+Die Verwaltung von Objekten unterscheidet sich von der Verwaltung von Dateien. Die Komponenten Director und Observer werden als Clouddienste bereitgestellt, die von Komprise verwaltet werden. Wenn Sie nur Daten in Azure Blob Storage analysieren und archivieren müssen, ist keine weitere Bereitstellung erforderlich. Wenn Sie Migrationen zu Azure Blob Storage durchführen müssen, rufen Sie das virtuelle Komprise Observer-Gerät ab, auf das in der Begrüßungs-E-Mail verwiesen wird, und stellen Sie es auf einem virtuellen Linux-Computer in Ihrer Azure-Cloudinfrastruktur bereit. Führen Sie nach der Bereitstellung die folgenden Schritte in Komprise Director aus.
+
+1. Navigieren Sie zu **Data Stores** (Datenspeicher) und **Add New Object Store**(Neuen Objektspeicher hinzufügen). Wählen Sie **Microsoft Azure** als Anbieter aus.
+
+    :::image type="content" source="./media/komprise-quick-start-guide/komprise-add-object-store.png" alt-text="Screenshot: Hinzufügen eines neuen Objektspeichers":::
+
+1. Fügen Sie Freigaben zum Analysieren und Migrieren hinzu. Diese Schritte müssen für jede Quelle, jede Zielfreigabe und jeden Container wiederholt werden. Es gibt zwei Optionen, um diese Aktion auszuführen:
+    1. **Ermitteln** sämtlicher Container durch folgende Eingaben:
+        - Speicherkontoname
+        - Primärer Zugriffsschlüssel
+        - Anzeigename
+    
+        :::image type="content" source="./media/komprise-quick-start-guide/komprise-discover-storage-account.png" alt-text="Screenshot: Ermitteln von Containern im Speicherkonto":::
+
+        Erforderliche Informationen finden Sie im **[Azure-Portal](https://portal.azure.com/)** , indem Sie unter **Einstellungen** für das Speicherkonto zum Element **Zugriffsschlüssel** navigieren. Klicken Sie auf **Schlüssel anzeigen**, falls die Schlüssel nicht angezeigt werden.
+
+    1. **Angeben** eines bestimmten Containers durch folgende Eingaben:
+        - Containername
+        - Speicherkontoname
+        - Primärer Zugriffsschlüssel
+        - Anzeigename
+
+        :::image type="content" source="./media/komprise-quick-start-guide/komprise-add-container.png" alt-text="Screenshot: Hinzufügen von Containern zum Speicherkonto":::
+
+        Der Containername stellt den Zielcontainer für die Migration dar und muss vor der Migration erstellt werden. Weitere erforderliche Informationen finden Sie im **[Azure-Portal](https://portal.azure.com/)** , indem Sie unter **Einstellungen** für das Speicherkonto zum Element **Zugriffsschlüssel** navigieren. Klicken Sie auf **Schlüssel anzeigen**, falls die Schlüssel nicht angezeigt werden.
+
 ## <a name="migration-guide"></a>Migrationsleitfaden
 
-Komprise ermöglicht eine Livemigration, bei der Endbenutzer und Anwendungen nicht gestört werden und der Zugriff auf die Daten während der Migration weiterhin erfolgen kann. Beim Migrationsprozess wird die Migration von Verzeichnissen, Dateien und Links von einer Quelle zu einem Ziel automatisiert. Bei jedem Schritt wird die Datenintegrität überprüft. Alle Attribute, Berechtigungen und Zugriffssteuerungen der Quelle werden angewendet.
+Komprise ermöglicht eine Livemigration, bei der Endbenutzer und Anwendungen nicht gestört werden und der Zugriff auf die Daten während der Migration weiterhin erfolgen kann. Beim Migrationsprozess wird die Migration von Verzeichnissen, Dateien und Links von einer Quelle zu einem Ziel automatisiert. Bei jedem Schritt wird die Datenintegrität überprüft. Alle Attribute, Berechtigungen und Zugriffssteuerungen der Quelle werden angewendet. Bei der Objektmigration werden die Objekte sowie die Präfixe und Metadaten jedes Objekts migriert.
 
 Führen Sie die folgenden Schritte aus, um eine Migration zu konfigurieren und auszuführen:
 
@@ -195,11 +232,19 @@ Führen Sie die folgenden Schritte aus, um eine Migration zu konfigurieren und a
 
     :::image type="content" source="./media/komprise-quick-start-guide/komprise-new-migrate.png" alt-text="Hinzufügen eines neuen Migrationsauftrags":::
 
-1. Fügen Sie eine Migrationsaufgabe hinzu, indem Sie die richtige Quell- und Zielfreigabe auswählen. Geben Sie einen Migrationsnamen an. Klicken Sie nach der Konfiguration auf **Migration starten**. 
+1. Fügen Sie eine Migrationsaufgabe hinzu, indem Sie die richtige Quell- und Zielfreigabe auswählen. Geben Sie einen Migrationsnamen an. Klicken Sie nach der Konfiguration auf **Migration starten**. Dieser Schritt unterscheidet sich bei Datei- und Objektdatenmigrationen geringfügig.
    
-   :::image type="content" source="./media/komprise-quick-start-guide/komprise-add-migration.png" alt-text="Angeben von Details für den Migrationsauftrag":::
+    1. Dateimigration
 
-   (_Optional_) Legen Sie fest, ob die Zugriffszeit und die SMB-ACLs auf dem Ziel beibehalten werden sollen. Diese Option hängt vom ausgewählten Dateidienst und Protokoll für die Quelle und das Ziel ab.
+       :::image type="content" source="./media/komprise-quick-start-guide/komprise-add-migration.png" alt-text="Angeben von Details für den Migrationsauftrag":::
+
+       Die Dateimigration bietet Optionen zum Beibehalten der Zugriffszeit und der SMB-ACLs im Ziel. Diese Option hängt vom ausgewählten Dateidienst und Protokoll für die Quelle und das Ziel ab.
+
+    1. Objektmigration
+
+        :::image type="content" source="./media/komprise-quick-start-guide/komprise-add-object-migration.png" alt-text="Screenshot: Hinzufügen der Objektmigration":::
+
+        Die Objektmigration bietet Optionen zum Auswählen der Azure-Zielspeicherebene („Heiß“, „Kalt“, „Archiv“). Sie können auch auswählen, dass jede Datenübertragung mithilfe einer MD5-Prüfsumme überprüft wird. Bei MD5-Prüfsummen können Kosten für ausgehenden Datenverkehr entstehen, da Cloudobjekte abgerufen werden müssen, um die MD5-Prüfsumme zu berechnen.
 
 2. Nachdem die Migration gestartet wurde, können Sie **Migrieren** auswählen, um den Status zu überwachen.
 

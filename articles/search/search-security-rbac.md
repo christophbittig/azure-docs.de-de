@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/22/2021
-ms.openlocfilehash: 1968bb34d124fa37a51b296071ee24b3eae47772
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.date: 10/04/2021
+ms.openlocfilehash: 80471da945dcc5fdee690ec477599565777f1beb
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129273721"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129611451"
 ---
 # <a name="use-role-based-authorization-in-azure-cognitive-search"></a>Verwenden der rollenbasierten Autorisierung in Azure Cognitive Search
 
@@ -294,3 +294,19 @@ Um die Schlüsselauthentifizierung erneut zu aktivieren, müssen Sie die letzte 
 
 > [!TIP]
 > Aufrufe der Verwaltungs-REST-API werden von Azure Active Directory authentifiziert. Anleitungen zum Einrichten eines Sicherheitsprinzipals und einer Anforderung finden Sie in diesem Blogbeitrag zu [Azure-REST-APIs mit Postman (2021)](https://blog.jongallant.com/2021/02/azure-rest-apis-postman-2021/). Das vorherige Beispiel wurde anhand der Anweisungen und der Postman-Sammlung im Blogbeitrag getestet.
+
+## <a name="conditional-access"></a>Bedingter Zugriff
+
+Mit dem Tool [Bedingter Zugriff](../active-directory/conditional-access/overview.md) erzwingt Azure Active Directory Organisationsrichtlinien. Mithilfe von Richtlinien für den bedingten Zugriff können Sie bei Bedarf die richtigen Zugriffssteuerungen anwenden, um die Sicherheit Ihrer Organisation zu gewährleisten. Beim Zugriff auf einen Azure Cognitive Search-Dienst mithilfe der rollenbasierten Zugriffssteuerung kann der bedingte Zugriff Organisationsrichtlinien erzwingen.
+
+Führen Sie die folgenden Schritte aus, um eine Richtlinie für bedingten Zugriff für Azure Cognitive Search zu aktivieren:
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Suchen Sie nach **Bedingter Azure AD-Zugriff**.
+1. Wählen Sie **Richtlinien** aus.
+1. Wählen Sie **+ Neue Richtlinie** aus.
+1. Fügen Sie im Abschnitt **Cloud-Apps oder Aktionen** der Richtlinie **Azure Cognitive Search** als Cloud-App hinzu, je nachdem, wie Sie Ihre Richtlinie einrichten möchten.
+1. Aktualisieren Sie die verbleibenden Parameter der Richtlinie. Geben Sie beispielsweise an, für welche Benutzer und Gruppen diese Richtlinie gilt. 
+1. Speichern Sie die Richtlinie.
+
+> [!IMPORTANT]
+> Wenn Ihrem Suchdienst eine verwaltete Identität zugewiesen ist, wird der spezifische Suchdienst als Cloud-App angezeigt, die als Teil der Richtlinie für bedingten Zugriff eingeschlossen oder ausgeschlossen werden kann. Richtlinien für bedingten Zugriff können nicht für einen bestimmten Suchdienst erzwungen werden. Stellen Sie stattdessen sicher, dass Sie die allgemeine Cloud-App für **Azure Cognitive Search** auswählen.

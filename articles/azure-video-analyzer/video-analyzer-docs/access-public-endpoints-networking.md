@@ -3,12 +3,12 @@ title: Öffentliche Endpunkte und Netzwerke
 description: Azure Video Analyzer macht eine Reihe von öffentlichen Netzwerkendpunkten verfügbar, die verschiedene Produktszenarien ermöglichen, einschließlich Verwaltung, Erfassung und Wiedergabe. In diesem Artikel wird erläutert, wie Sie auf öffentliche Endpunkte und Netzwerke zugreifen.
 ms.topic: how-to
 ms.date: 06/01/2021
-ms.openlocfilehash: 0debf9b00bc8c3d78810fb377aa6e065589e6f96
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: ad02a9ddd0ff2893e14d48f6698c83108f1acd63
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129389644"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129659600"
 ---
 # <a name="public-endpoints-and-networking"></a>Öffentliche Endpunkte und Netzwerke
 
@@ -54,7 +54,7 @@ Dieser Abschnitt enthält eine Liste der Video Analyzer-Endpunkte.
 
 ## <a name="azure-storage"></a>Azure Storage
 
-* **Zweck**: Aufzeichnen von Audio-, Video- und Rückschlussdaten, wenn Pipelines(TODO: Link) für die Speicherung von Videodaten in der Cloud über den Knoten der Videosenke (TODO: Link zum Abschnitt in „pipeline.md“) konfiguriert sind.
+* **Zweck**: Aufzeichnen von Audio-, Video- und Rückschlussdaten, wenn [Pipelines](pipeline.md) für die Speicherung von Videodaten in der Cloud über den Knoten der [Videosenke](pipeline.md#video-sink) konfiguriert sind.
 * **Authentifizierung und Autorisierung**: Die Autorisierung wird durchgeführt, indem die Standardvorgänge für die Authentifizierung und Autorisierung von Azure Storage-Diensten erzwungen werden. In diesem Fall erfolgt der Zugriff auf den Speicher über containerspezifische SAS-URLs.
 * **Anforderung**: Der Zugriff auf diesen Endpunkt ist nur erforderlich, wenn eine Video Analyzer-Edgepipeline für die Archivierung des Videos in der Cloud konfiguriert ist.
 
@@ -64,11 +64,11 @@ Dieser Abschnitt enthält eine Liste der Video Analyzer-Endpunkte.
 * **Authentifizierung und Autorisierung**: Weitere Informationen finden Sie in der Azure IoT Hub-Dokumentation.
 * **Anforderung**: Ein richtig konfiguriertes und funktionierendes Edgegerät mit Azure IoT Edge Runtime ist erforderlich, um sicherzustellen, dass das Edgemodul von Azure Video Analyzer korrekt funktioniert.
 
-## <a name="114----tls-encryption"></a>1.1.4 TLS-Verschlüsselung 
+##  <a name="tls-encryption"></a>TLS-Verschlüsselung 
 
 * **Verschlüsselung und Serverauthentifizierung**: Alle Video Analyzer-Endpunkte werden über TLS 1.2-konforme Endpunkte verfügbar gemacht.
 
-## <a name="115----references"></a>1.1.5 Verweise 
+##  <a name="references"></a>Referenzen 
 
 Öffentlich:
 

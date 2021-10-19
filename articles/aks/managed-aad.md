@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 02/1/2021
 ms.author: miwithro
-ms.openlocfilehash: 79193066e8733ebc8b614e7735eed402e1124fda
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f8815258398e6aaa3c54032279645960417756d7
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128642128"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129667191"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>Von AKS verwaltete Azure Active Directory-Integration
 
@@ -182,7 +182,7 @@ Eine erfolgreiche Migration eines von AKS verwalteten Azure AD-Clusters wird im 
   }
 ```
 
-Wenn Sie auf den Cluster zugreifen möchten, befolgen Sie die [hier][access-cluster] beschriebenen Schritte.
+Aktualisieren Sie kubeconfig, um auf den Cluster zuzugreifen, indem Sie die Schritte [hier][access-cluster] ausführen.
 
 ## <a name="non-interactive-sign-in-with-kubelogin"></a>Nicht interaktive Anmeldung per kubelogin
 

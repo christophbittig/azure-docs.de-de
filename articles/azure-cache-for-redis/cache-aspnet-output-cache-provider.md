@@ -7,16 +7,16 @@ ms.service: cache
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 04/22/2018
-ms.openlocfilehash: 7354f0504197742a8c8acf2d0c555a524fef95d9
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 89c76331f9aad8238b596094ad2057df98eea9a9
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129538850"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129659524"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-cache-for-redis"></a>ASP.NET-Ausgabecacheanbieter für Azure Cache for Redis
 
-Der Redis-Ausgabecacheanbieter ist ein prozessunabhängiger Speichermechanismus für Ausgabecachedaten. Diese Daten sind für vollständige HTTP-Antworten bestimmt (Zwischenspeichern von Seitenausgaben). Der Anbieter wird zum neuen Erweiterungspunkt des Ausgabecacheanbieters hinzugefügt, der in ASP.NET 4 eingeführt wurde. Informationen zu ASP.NET Core-Anwendungen finden Sie unter [Zwischenspeichern von Antworten in ASP.NET Core](/aspnet/core/performance/caching/response). 
+Der Redis-Ausgabecacheanbieter ist ein prozessunabhängiger Speichermechanismus für Ausgabecachedaten. Diese Daten sind für vollständige HTTP-Antworten bestimmt (Zwischenspeichern von Seitenausgaben). Der Anbieter wird zum neuen Erweiterungspunkt des Ausgabecacheanbieters hinzugefügt, der in ASP.NET 4 eingeführt wurde. Informationen zu ASP.NET Core-Anwendungen finden Sie unter [Zwischenspeichern von Antworten in ASP.NET Core](/aspnet/core/performance/caching/response).
 
 Zum Verwenden des Redis-Ausgabecacheanbieters konfigurieren Sie zunächst den Cache. Danach konfigurieren Sie Ihre ASP.NET-Anwendung mithilfe des Redis-Ausgabecacheanbieter-NuGet-Pakets. Dieser Artikel enthält eine Anleitung darüber, wie Sie Ihre Anwendung für die Verwendung des Redis-Ausgabecacheanbieters konfigurieren. Informationen über das Erstellen und Konfigurieren einer Azure Cache for Redis-Instanz finden Sie unter [Erstellen eines Caches](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache).
 
@@ -26,14 +26,11 @@ Wählen Sie im Menü **Extras** im **NuGet-Paket-Manager** die Option **Paket-Ma
 
 Führen Sie im Fenster `Package Manager Console` den folgenden Befehl aus.
 
-```
+```powershell
 Install-Package Microsoft.Web.RedisOutputCacheProvider
 ```
 
-Das Redis-Ausgabecacheanbieter-NuGet-Paket steht in einer Abhängigkeitsbeziehung zum Paket „StackExchange.Redis.StrongName“. Wenn das Paket „StackExchange.Redis.StrongName“ nicht in Ihrem Projekt vorhanden ist, wird es installiert. Weitere Informationen zum Redis-Ausgabecacheanbieter-NuGet-Paket finden Sie auf der NuGet-Seite [RedisOutputCacheProvider](https://www.nuget.org/packages/Microsoft.Web.RedisOutputCacheProvider/).
-
->[!NOTE]
->Neben dem Paket „StackExchange.Redis.StrongName“ mit starkem Namen gibt es zudem noch das Paket „StackExchange.Redis“ als Version ohne starken Namen. Wenn in Ihrem Projekt die Version „StackExchange.Redis“ ohne starken Namen verwendet wird, müssen Sie sie deinstallieren. Andernfalls treten Namenskonflikte in Ihrem Projekt auf. Weitere Informationen über diese Pakete finden Sie unter [Konfigurieren der .NET-Cacheclients](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients).
+Das NuGet-Paket für den Redis-Sitzungszustandsanbieter weist eine Abhängigkeit zum Paket „StackExchange.Redis“ auf. Wenn das StackExchange.Redis-Paket in Ihrem Projekt nicht vorhanden ist, wird es installiert. Weitere Informationen zum Redis-Ausgabecacheanbieter-NuGet-Paket finden Sie auf der NuGet-Seite [RedisOutputCacheProvider](https://www.nuget.org/packages/Microsoft.Web.RedisOutputCacheProvider/).
 
 Mit dem heruntergeladenen NuGet-Paket werden die erforderlichen Assemblyverweise sowie der folgende Abschnitt in Ihrer Datei „web.config“ hinzugefügt. Dieser Abschnitt enthält die Konfiguration, die in Ihrer ASP.NET-Anwendung für die Verwendung des Redis-Ausgabecacheanbieters erforderlich ist.
 
@@ -56,7 +53,7 @@ Konfigurieren Sie die Attribute auf der linken Seite mit den Werten aus Ihrem Ca
 | --------- | ---- | ------- | ----------- |
 | *host* | Zeichenfolge | „localhost“ | IP-Adresse oder Hostname des Redis-Servers |
 | *port* | Positive Ganzzahl | 6379 (TLS-/SSL-fremd)<br/>6380 (TLS/SSL) | Redis-Serverport |
-| *accessKey* | Zeichenfolge | "" | Redis-Serverkennwort, wenn Redis-Autorisierung aktiviert ist. Der Wert ist standardmäßig eine leere Zeichenfolge, was bedeutet, dass der Sitzungszustandsanbieter kein Kennwort verwendet, wenn eine Verbindung mit dem Redis-Server hergestellt wird. **Wenn sich Ihr Redis-Server in einem öffentlich zugänglichen Netzwerk wie Azure Cache for Redis befindet, denken Sie daran, die Redis-Autorisierung zu aktivieren, um die Sicherheit zu erhöhen, und ein sicheres Kennwort anzugeben.** |
+| *accessKey* | Zeichenfolge | "" | Redis-Serverkennwort, wenn Redis-Autorisierung aktiviert ist. Der Wert ist standardmäßig eine leere Zeichenfolge, was bedeutet, dass der Sitzungszustandsanbieter beim Herstellen einer Verbindung mit dem Redis-Server kein Kennwort verwendet. **Wenn sich Ihr Redis-Server in einem öffentlich zugänglichen Netzwerk wie Azure Cache for Redis befindet, denken Sie daran, die Redis-Autorisierung zu aktivieren, um die Sicherheit zu erhöhen, und ein sicheres Kennwort anzugeben.** |
 | *ssl* | boolean | **false** | Gibt an, ob die Verbindung mit dem Redis-Server über TLS hergestellt werden soll. Dieser Wert ist standardmäßig auf **false** gestellt, da der TLS von Redis nicht standardmäßig unterstützt wird. **Wenn Sie Azure Cache for Redis verwenden, das standardmäßig SSL unterstützt, sollten Sie diesen Wert auf „true“ setzen, um die Sicherheit zu erhöhen.**<br/><br/>Der TLS-fremde Port ist für neue Caches standardmäßig deaktiviert. Legen Sie diese Einstellung auf **true** fest, um den TLS-fremden Port zu verwenden. Weitere Informationen zum Aktivieren des TLS-fremden Ports finden Sie im Abschnitt [Zugriffsports](cache-configure.md#access-ports) des Artikels [Konfigurieren eines Caches](cache-configure.md). |
 | *databaseIdNumber* | Positive Ganzzahl | 0 | *Dieses Attribut kann nur entweder über „web.config“ oder über „appSettings“ angegeben werden.*<br/><br/>Geben Sie an, welche Redis-Datenbank verwendet werden soll. |
 | *connectionTimeoutInMilliseconds* | Positive Ganzzahl | Wird von „StackExchange.Redis“ angegeben. | Wird zum Festlegen von *ConnectTimeout* verwendet, wenn „StackExchange.Redis.ConnectionMultiplexer“ erstellt wird. |

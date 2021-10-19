@@ -5,18 +5,21 @@ author: mksuni
 ms.author: sumuth
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/01/2021
-ms.openlocfilehash: 9d8c0a4f550442b59a65993aceba37a1672ce078
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.date: 10/06/2021
+ms.openlocfilehash: 02c8e93603672f18c456911a99503f05c78bd323
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129389492"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129658107"
 ---
 # <a name="prepay-for-azure-database-for-postgresql-compute-resources-with-reserved-capacity"></a>Vorauszahlung für Azure Database for PostgreSQL-Computeressourcen mit reservierter Kapazität
 
+[!INCLUDE[applies-to-postgres-single-flexible-server-hyperscale](includes/applies-to-postgres-single-flexible-server-hyperscale.md)]
+
 Mit Azure Database for PostgreSQL können Sie jetzt Geld im Vergleich zur nutzungsbasierten Bezahlung sparen, indem Sie Computeressourcen im Voraus bezahlen. Mit reservierten Azure Database for PostgreSQL-Kapazitäten leisten Sie eine Vorauszahlung für PostgreSQL-Server für einen Zeitraum von einem oder drei Jahren und erhalten dafür einen immensen Rabatt auf die Computekosten. Um reservierte Azure Database for PostgreSQL-Kapazität zu erwerben, müssen Sie die Azure-Region, den Bereitstellungstyp, die Leistungsstufe und die Laufzeit angeben. </br>
 
+## <a name="how-does-the-instance-reservation-work"></a>Wie funktioniert die Instanzreservierung?
 Sie müssen die Reservierung nicht bestimmten Azure Database for PostgreSQL-Servern zuweisen. Azure Database for PostgreSQL-Server, die bereits ausgeführt oder neu bereitgestellt werden, profitieren automatisch von dem Reservierungspreisvorteil. Beim Kauf einer Reservierung bezahlen Sie im Voraus die Computekosten für einen Zeitraum von einem oder drei Jahren. Sobald Sie eine Reservierung gekauft haben, werden die Azure Database for PostgreSQL-Computegebühren, die den Reservierungsattributen entsprechen, nicht mehr zu den Preisen der nutzungsbasierten Bezahlung abgerechnet. Eine Reservierung deckt nicht die Software-, Netzwerk- oder Speichergebühren für den PostgreSQL-Datenbankserver ab. Nach Ablauf der Reservierungslaufzeit erlischt der Abrechnungsvorteil, und die Azure Database for PostgreSQL-Server werden mit den Preisen für die nutzungsbasierte Bezahlung in Rechnung gestellt. Reservierungen werden nicht automatisch verlängert. Weitere Informationen zu den Preisen finden Sie unter [Azure Database for PostgreSQL – Preise](https://azure.microsoft.com/pricing/details/postgresql/). </br>
 
 > [!IMPORTANT]
@@ -30,6 +33,13 @@ Sie können die reservierte Azure Database for PostgreSQL-Kapazität über das [
 
 Einzelheiten zur Berechnung der Reservierung von Kapazitäten für Unternehmenskunden und Kunden mit nutzungsbasierter Bezahlung finden Sie unter [Grundlegendes zur Nutzung von Azure-Reservierungen für den Konzernbeitritt](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md) und [Grundlegendes zur Nutzung von Azure-Reservierungen für das Abonnement mit nutzungsbasierter Bezahlung](../cost-management-billing/reservations/understand-reserved-instance-usage.md).
 
+## <a name="reservation-exchanges-and-refunds"></a>Reservierungen: Umtausch und Rückerstattungen
+
+Sie können eine Reservierung gegen eine andere Reservierung desselben Typs umtauschen. Sie können auch eine Reservierung von Azure Database for PostgreSQL – Einzelserver gegen Flexible Server umtauschen. Sie können auch eine Rückerstattung für eine Reservierung erhalten, wenn Sie sie nicht mehr benötigen. Umtausch und Rückerstattung für eine Reservierung können über das Azure-Portal abgewickelt werden. Weitere Informationen finden Sie unter [Self-Service-Umtausch und -Rückerstattungen für Azure-Reservierungen](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
+
+## <a name="reservation-discount"></a>Rabatt für Reservierungen
+
+Sie können mit reservierten Instanzen bis zu 65 % der Computekosten sparen. Um den Rabatt für Ihren Fall zu ermitteln, besuchen Sie das [Blatt „Reservierung“ im Azure-Portal](https://aka.ms/reservations), und überprüfen Sie die Einsparungen pro Tarif und Region. Mit reservierten Instanzen und einer Vorauszahlung für ein Jahr oder drei Jahre können Sie Ihre Workloads, Budgetplanung und Prognosen besser verwalten. Außerdem können Sie Reservierungen umtauschen oder stornieren, um auf veränderte Geschäftsanforderungen zu reagieren.
 
 ## <a name="determine-the-right-server-size-before-purchase"></a>Bestimmen der richtigen Servergröße vor dem Kauf
 
@@ -61,14 +71,30 @@ In der folgenden Tabelle werden die erforderlichen Felder beschrieben.
 | Begriff | Ein Jahr
 | Menge | Die Menge an Computeressourcen, die im Rahmen der Azure Database for PostgreSQL-Kapazitätsreservierung erworben werden. Die Menge entspricht einer Anzahl von virtuellen Kernen in der ausgewählten Azure-Region und der Leistungsstufe, die reserviert werden und den Abrechnungsrabatt erhalten. Wenn Sie beispielsweise Azure Database for PostgreSQL-Server mit der Gesamtcomputekapazität von 16 virtuellen Gen5-Kernen in der Region „USA, Osten“ ausführen oder deren Ausführung beabsichtigen, geben Sie als Menge „16“ an, um den Vorteil für alle Server zu maximieren.
 
-## <a name="cancel-exchange-or-refund-reservations"></a>Stornieren, Umtauschen oder Rückerstatten von Reservierungen
+## <a name="reserved-instances-api-support"></a>API-Unterstützung für reservierte Instanzen
 
-Reservierungen können unter bestimmten Einschränkungen storniert, umgetauscht oder rückerstattet werden. Weitere Informationen finden Sie unter [Self-Service-Umtausch und -Rückerstattungen für Azure-Reservierungen](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
+Verwenden Sie Azure-APIs, um programmgesteuert Informationen für Ihre Organisation über Azure-Dienst- oder -Softwarereservierungen abzurufen. Verwenden Sie die APIs beispielsweise für Folgendes:
+
+- Suchen nach zu kaufenden Reservierungen
+- Kaufen einer Reservierung
+- Anzeigen von erworbenen Reservierungen
+- Anzeigen und Verwalten des Reservierungszugriffs
+- Aufteilen oder Zusammenführen von Reservierungen
+- Ändern des Reservierungsumfangs
+ 
+Weitere Informationen finden Sie unter [APIs für die Automatisierung von Azure-Reservierungen](../cost-management-billing/reservations/reservation-apis.md).
 
 ## <a name="vcore-size-flexibility"></a>Flexibilität der V-Kern-Größe
 
 Die Flexibilität der V-Kern-Größe ermöglicht ein Hoch- oder Herunterskalieren innerhalb einer Leistungsstufe und Region, ohne den Vorteil reservierter Kapazität einzubüßen. Wenn Sie auf eine höhere Anzahl von virtuellen Kernen skalieren, als Sie reserviert haben, werden Ihnen die überzähligen virtuellen Kerne mittels nutzungsbasierter Bezahlung in Rechnung gestellt.
 
+## <a name="how-to-view-reserved-instance-purchase-details"></a>Anzeigen von Details zum Kauf reservierter Instanzen
+
+Details zum Kauf Ihrer reservierten Instanzen können Sie [links im Azure-Portal über das Menü „Reservierungen“](https://aka.ms/reservations) anzeigen. Weitere Informationen finden Sie unter [Anwendung eines Reservierungsrabatts auf einen Azure Database for PostgreSQL-Einzelserver](../cost-management-billing/reservations/understand-reservation-charges-postgresql.md).
+
+## <a name="reserved-instance-expiration"></a>Ablauf reservierter Instanzen
+
+Sie erhalten E-Mail-Benachrichtigungen: eine 30 Tage vor Ablauf der Reservierung und eine weitere zum Zeitpunkt des Ablaufs. Nach Ablauf der Reservierung werden bereitgestellte virtuelle Computer weiterhin ausgeführt und mit dem Satz für nutzungsbasierte Bezahlung in Rechnung gestellt. Weitere Informationen finden Sie unter [Anwendung eines Reservierungsrabatts auf einen Azure Database for PostgreSQL-Einzelserver](../cost-management-billing/reservations/understand-reservation-charges-postgresql.md).
 
 ## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Kontakt
 

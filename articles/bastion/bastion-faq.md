@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 09/07/2021
 ms.author: cherylmc
-ms.openlocfilehash: d44ccec62a9da63fccc45a0735ff16f615dfbb4b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 99cee6b73fb37caf0ccf09170d60ea4ba3effc2a
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128643135"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714174"
 ---
 # <a name="azure-bastion-faq"></a>Häufig gestellte Fragen zu Azure Bastion
 
@@ -79,7 +79,24 @@ Nein. Für den Zugriff auf virtuelle Windows Server-Computer durch Azure Bastio
 
 ### <a name="which-keyboard-layouts-are-supported-during-the-bastion-remote-session"></a><a name="keyboard"></a>Welche Tastaturlayouts werden während der Bastion-Remotesitzung unterstützt?
 
-Azure Bastion unterstützt derzeit das Tastaturlayout „en-us-qwerty“ innerhalb der VM.  Die Unterstützung anderer Gebietsschemas für das Tastaturlayout ist in Bearbeitung.
+Azure Bastion unterstützt derzeit die folgenden Tastaturlayouts auf dem virtuellen Computer:
+* en-us-qwerty
+* en-gb-qwerty
+* de-ch-qwertz
+* de-de-qwertz
+* fr-be-azerty
+* fr-fr-azerty
+* fr-ch-qwertz
+* hu-hu-qwertz
+* it-it-qwerty
+* ja-jp-qwerty
+* pt-br-qwerty
+* es-es-qwerty
+* es-latam-qwerty
+* sv-se-qwerty
+* tr-tr-qwerty
+
+Das Standardtastaturlayout auf dem virtuellen Zielcomputer stimmt mit Ihrer lokalen Sprache überein, die in den Einstellungen des lokalen Computers geändert werden kann.
 
 ### <a name="does-azure-bastion-support-timezone-configuration-or-timezone-redirection-for-target-vms"></a><a name="timezone"></a>Unterstützt Azure Bastion die Zeitzonenkonfiguration oder Zeitzonenumleitung für virtuelle Zielcomputer?
 

@@ -1,153 +1,166 @@
 ---
 title: Visualisieren von Daten aus Azure Monitor | Microsoft-Dokumentation
-description: Enthält eine Zusammenfassung der verfügbaren Methoden zum Visualisieren von in Azure Monitor gespeicherten Metrik- und Protokolldaten.
+description: Hier erhalten Sie eine Übersicht über die verfügbaren Methoden zum Visualisieren von in Azure Monitor gespeicherten Metrik- und Protokolldaten.
 ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 07/28/2021
-ms.openlocfilehash: 4a98a44cd56691947536779103f55b4e713c74df
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 257ca33952283ba3989ce11a2d933af3feceb8ac
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122338978"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129612349"
 ---
-# <a name="visualizing-data-from-azure-monitor"></a>Visualisieren von Daten aus Azure Monitor
-Dieser Artikel enthält eine Zusammenfassung der verfügbaren Methoden zum Visualisieren von in Azure Monitor gespeicherten Metrik- und Protokolldaten.
+# <a name="visualize-data-from-azure-monitor"></a>Visualisieren von Daten aus Azure Monitor
+Dieser Artikel biete eine Übersicht über die verfügbaren Methoden zum Visualisieren von in Azure Monitor gespeicherten Metrik- und Protokolldaten.
 
-Visualisierungen wie Diagramme und Grafiken können Ihnen die Analyse Ihrer Überwachungsdaten zur Anzeige von Detailinformationen zu Problemen und zum Identifizieren von Mustern erleichtern. Je nach dem Tool, das Sie verwenden, haben Sie vielleicht auch die Möglichkeit, Visualisierungen für andere Benutzer innerhalb und außerhalb Ihrer Organisation freizugeben.
+Visualisierungen wie Diagramme und Grafiken können Ihnen die Analyse Ihrer Überwachungsdaten erleichtern, sodass Sie Detailinformationen zu Problemen anzeigen und Muster identifizieren können. Je nach verwendetem Tool haben Sie möglicherweise auch die Option, Visualisierungen für andere Benutzer innerhalb und außerhalb Ihrer Organisation freizugeben.
 
 ## <a name="workbooks"></a>Arbeitsmappen
-[Arbeitsmappen](./visualize/workbooks-overview.md) sind interaktive Dokumente, die umfassende Einblicke in Ihre Daten, Untersuchungen und die Zusammenarbeit innerhalb des Teams bereitstellen. Spezifische Beispiele, wo Arbeitsmappen hilfreich sind, sind Anleitungen zur Problembehandlung und Nachbesprechungen zu Incidents.
+[Arbeitsmappen](./visualize/workbooks-overview.md) sind interaktive Dokumente, die umfassende Einblicke in Ihre Daten, Untersuchungen und die Zusammenarbeit innerhalb des Teams bereitstellen. Arbeitsmappen sind besonders nützlich für Leitfäden zur Problembehandlung und Incident-Postmortems.
 
-![Das Diagramm zeigt Screenshots mehrerer Seiten einer Arbeitsmappe, einschließlich der Analyse der Seitenaufrufe, der Nutzung und der auf der Seite verbrachten Zeit.](media/visualizations/workbook.png)
+![Diagramm: Screenshots von drei Seiten einer Arbeitsmappe – Analyse der Seitenaufrufe, Nutzung und die auf der Seite verbrachte Zeit.](media/visualizations/workbook.png)
 
-### <a name="advantages"></a>Vorteile
-- Sowohl Metriken als auch Protokolle werden unterstützt.
-- Unterstützt Parameter, die interaktive Berichte ermöglichen, wobei durch die Auswahl eines Elements in einer Tabelle zugeordnete Diagramme und Visualisierungen dynamisch aktualisiert werden.
+Eine Arbeitsmappe bietet u. a. folgende Vorteile:
+
+- Unterstützung sowohl für Metriken als auch für Protokolle.
+- Unterstützung für Parameter, die interaktive Berichte ermöglichen, wobei durch die Auswahl eines Elements in einer Tabelle zugeordnete Diagramme und Visualisierungen dynamisch aktualisiert werden.
 - Dokumentähnlicher Ablauf.
-- Option für persönliche oder freigegebene Arbeitsmappen.
-- Einfache und zusammenarbeitsfreundliche Benutzeroberfläche für die Erstellung.
-- Die Vorlagen unterstützen den öffentlichen Vorlagenkatalog auf GitHub-Basis.
+- Optionen für persönliche oder freigegebene Arbeitsmappen.
+- Einfache Benutzeroberfläche für die Erstellung zur verbesserten Zusammenarbeit.
+- Vorlagen, die einen öffentlichen, GitHub basierten Vorlagenkatalog unterstützen.
 
 
 ## <a name="azure-dashboards"></a>Azure-Dashboards
-[Azure-Dashboards](../azure-portal/azure-portal-dashboards.md) sind die primäre Dashboardtechnologie für Azure. Sie sind besonders nützlich zur Bereitstellung einer zentralen Konsole für Ihre Azure-Infrastruktur und Dienste, sodass Sie wichtige Probleme schnell identifizieren können.
+[Azure-Dashboards](../azure-portal/azure-portal-dashboards.md) sind die primäre Dashboardtechnologie für Azure. Sie bietet eine zentrale Ansicht Ihrer Azure-Infrastruktur und -Dienste, sodass Sie wichtige Aspekte und Probleme schnell identifizieren können.
 
-![Screenshot eines Beispiels für ein Azure-Dashboard mit anpassbaren Informationen](media/visualizations/dashboard.png)
+![Screenshot: Beispiel eines Azure-Dashboards mit anpassbaren Informationen.](media/visualizations/dashboard.png)
 
-Im Folgenden finden Sie eine Videoanleitung zum Erstellen von Dashboards.
+Hier finden Sie eine Videoanleitung zum Erstellen von Dashboards:
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4AslH]
 
-### <a name="advantages"></a>Vorteile
+Ein Dashboard bietet u. a. die folgenden Vorteile:
+
 - Enge Integration in Azure. Visualisierungen von mehreren Azure-Seiten (einschließlich [Metrik-Explorer](essentials/metrics-charts.md), [Log Analytics](logs/log-analytics-overview.md) und [Application Insights](app/app-insights-overview.md)) können an Dashboards angeheftet werden.
-- Sowohl Metriken als auch Protokolle werden unterstützt.
-- Daten aus mehreren Quellen (einschließlich der Ausgabe des [Metrik-Explorers](essentials/metrics-charts.md)) können mit [Protokollabfragen](logs/log-query-overview.md), [Karten](app/app-map.md) und Verfügbarkeit in [Application Insights](app/app-insights-overview.md) kombiniert werden.
-- Option für persönliche oder freigegebene Dashboards. Integriert in [Azure RBAC (Role-Based Access Control, rollenbasierte Zugriffssteuerung in Azure)](../role-based-access-control/overview.md).
-- Automatische Aktualisierung. Metriken werden abhängig vom Zeitbereich mindestens alle fünf Minuten aktualisiert. Protokolle werden stündlich aktualisiert, können mit einer Option für die manuelle Aktualisierung bei Bedarf aktualisiert werden (durch Klicken auf das Symbol „Aktualisieren“ für eine bestimmte Visualisierung) oder werden durch eine Aktualisierung des gesamten Dashboards aktualisiert.
-- Dashboards mit parametrisierten Metriken mit Zeitstempel und benutzerdefinierten Parametern.
+- Unterstützung sowohl für Metriken als auch für Protokolle.
+- Es können Daten aus mehreren Quellen kombiniert werden, z. B. aus Ausgaben des [Metrik-Explorers](essentials/metrics-charts.md), [Protokollabfragen](logs/log-query-overview.md) und [Karten](app/app-map.md), und in [Application Insights](app/app-insights-overview.md) zur Verfügung gestellt werden.
+- Optionen für persönliche oder freigegebene Dashboards durch Integration in die [rollenbasierte Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC)](../role-based-access-control/overview.md).
+- Automatische Aktualisierung. Die Metrikaktualisierung hängt vom Zeitbereich ab, das Minimum beträgt fünf Minuten. Protokolle werden stündlich aktualisiert. Sie können die Daten bei Bedarf manuell aktualisieren, indem Sie in einer Visualisierung das Symbol **Aktualisieren** auswählen oder das gesamte Dashboard aktualisieren.
+- Parametrisierte Metrikdashboards mit Zeitstempeln und benutzerdefinierten Parametern.
 - Flexible Layoutoptionen.
 - Vollbildmodus.
 
 
-### <a name="limitations"></a>Einschränkungen
-- Eingeschränkte Kontrolle über Protokollvisualisierungen ohne Unterstützung für Datentabellen. Die Gesamtanzahl von Datenreihen ist auf 50 begrenzt, wobei weitere Datenreihen unter einem _anderen_ Bucket gruppiert sind.
+Es gelten einige Einschränkungen, u. a. folgende:
+
+- Begrenzte Kontrolle über Protokollvisualisierungen, keine Unterstützung für Datentabellen. Die Gesamtanzahl von Datenreihen ist auf 50 begrenzt. Weitere Datenreihen werden in einem _anderen_ Bucket gruppiert.
 - Benutzerdefinierte Parameter für Protokolldiagramme werden nicht unterstützt.
-- Protokolldiagramme sind auf die letzten 30 Tage beschränkt.
-- Protokolldiagramme können nur in freigegebenen Dashboards angeheftet werden.
+- Begrenzter Zeitraum für Protokolldiagramme (letzte 30 Tage).
+- Protokolldiagramme müssen an freigegebene Dashboards angeheftet werden.
 - Keine Interaktivität mit Dashboarddaten.
 - Eingeschränkte kontextbezogene Anzeige von Detailinformationen.
 
+## <a name="grafana"></a>Grafana
+[Grafana](https://grafana.com/) ist eine offene Plattform, die sich besonders gut für operative Dashboards und die Visualisierung von Leistungs- und Verfügbarkeitsdaten eignet. Sie hilft beim Erkennen, Isolieren und Selektieren von operativen Incidents. Grafana bietet integrierte Unterstützung für Azure Monitor und enthält das [Azure Monitor-Plug-In](https://grafana.com/docs/grafana/latest/datasources/azuremonitor/). Es unterstützt die Visualisierung von Daten aus drei Azure-Diensten:
+- Azure Monitor-Metriken für numerische Zeitreihendaten aus Daten aus Azure-Ressourcen. 
+- Azure Monitor-Protokolle für Protokoll- und Leistungsdaten aus Azure-Ressourcen, mit denen Sie Abfragen mithilfe der leistungsstarken Kusto Query Language (KQL) ausführen können.
+- Azure Resource Graph, um Azure-Ressourcen abonnementübergreifend schnell abzufragen und zu identifizieren.
 
-## <a name="power-bi"></a>Power BI
-[Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/) ist besonders nützlich zum Erstellen von geschäftskritischen Dashboards und Berichten sowie Berichten, die langfristige KPI-Trends analysieren. Sie können [die Ergebnisse einer Protokollabfrage in ein Power BI-Dataset importieren](visualize/powerbi.md), damit Sie dessen Features wie das Kombinieren von Daten aus verschiedenen Quellen und das Freigeben von Berichten im Web und auf mobilen Geräten nutzen können.
+Grafana funktioniert mit einer Vielzahl von Datenquellen und ermöglicht es Ihnen, Dashboards und Panels zu erstellen, die Überwachungsdaten aus Ressourcen in Azure, lokalen Systemen oder anderen Clouds kombinieren. 
 
-![Power BI](media/visualizations/power-bi.png)
+![Screenshot: Grafana-Visualisierungen.](media/visualizations/grafana.png)
 
-### <a name="advantages"></a>Vorteile
+> [!IMPORTANT]
+> Internet Explorer 11 wird nur in Grafana-Versionen vor v6.0 vollständig unterstützt. Weitere Informationen finden Sie unter [Supported web browsers](https://grafana.com/docs/grafana/latest/installation/requirements/#supported-web-browsers) (Unterstützte Browser für Grafana).
+
+Grafana bietet u. a. folgende Vorteile:
+
 - Umfassende Visualisierungen.
-- Umfassende Interaktivität einschließlich Zoomen und Kreuzfilterung.
-- Mühelose Freigabe in Ihrer gesamten Organisation.
+- Ein umfangreiches Ökosystem aus Datenquellen, einschließlich Unterstützung für Nicht-Azure-Datenquellen.
+- Dateninteraktivität einschließlich Zoomen auf Details.
+- Anmerkungen, mit denen Ereignisdaten in Diagramme integriert werden können.
+- Unterstützung für Parameter, einschließlich [Azure Monitor-Variablen](https://grafana.com/docs/grafana/latest/datasources/azuremonitor/template-variables/).
+
+Es gelten einige Einschränkungen, u. a. folgende:
+
+- Dashboards und Modelle können nicht über Azure Resource Manager verwaltet werden.
+- Kosten für die Unterstützung zusätzlicher Grafana-Infrastruktur oder zusätzliche Kosten für Grafana Cloud.
+## <a name="power-bi"></a>Power BI
+[Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/) ist hilfreich bei der Erstellung von Dashboards und Berichte für das Business sowie von Berichten zur Analyse langfristiger KPI-Trends. Sie können [die Ergebnisse einer Protokollabfrage in ein Power BI-Dataset importieren](visualize/powerbi.md) und dann von dessen Features profitieren, z. B. dem Kombinieren von Daten aus verschiedenen Quellen oder dem Freigeben von Berichten im Web und auf mobilen Geräten.
+
+![Screenshot: Power BI-Beispielbericht für IT-Vorgänge.](media/visualizations/power-bi.png)
+
+Power BI bietet u. a. folgende Vorteile:
+
+- Umfassende Visualisierungen.
+- Umfassende Interaktivität einschließlich Zoomen auf Details und Kreuzfilterung.
+- Einfache Freigabe in Ihrer gesamten Organisation.
 - Integration in andere Daten aus mehreren Datenquellen.
 - Bessere Leistung mit Ergebnissen, die in einem Cube zwischengespeichert werden.
 
+Es gelten einige Einschränkungen, u. a. folgende:
 
-### <a name="limitations"></a>Einschränkungen
-- Unterstützt Protokolle, jedoch keine Metriken.
+- Unterstützung für Protokolle, nicht aber für Metriken.
 - Keine Azure-Integration. Dashboards und Modelle können nicht über Azure Resource Manager verwaltet werden.
-- Abfrageergebnisse müssen zum Konfigurieren in ein Power BI-Modell importiert werden. Einschränkung der Ergebnisgröße und Aktualisierung.
-- Einschränkung der Datenaktualisierung auf acht Mal pro Tag.
+- Abfrageergebnisse müssen zur Konfiguration in ein Power BI-Modell importiert werden. 
+- Eingeschränkter Umfang und eingeschränkte Aktualisierungsmöglichkeiten für Ergebnisse.
+- Eingeschränkte Datenaktualisierung (achtmal pro Tag).
 
-
-## <a name="grafana"></a>Grafana
-[Grafana](https://grafana.com/) ist eine offene Plattform, die für operationale Dashboards ideal ist. Sie ist besonders nützlich zum Erkennen, Isolieren und Selektieren von Betriebsincidents. Sie können das [Grafana Azure Monitor-Datenquellen-Plug-in](visualize/grafana-plugin.md) Ihrem Azure-Abonnement hinzufügen, damit es Ihre Azure-Metrikdaten visualisiert.
-
-![Screenshot von Grafana-Visualisierungen](media/visualizations/grafana.png)
-
-> [!IMPORTANT]
-> Der Internet Explorer und ältere Microsoft Edge-Browser sind mit Grafana nicht kompatibel. Sie müssen einen Chromium-basierten Browser einschließlich Microsoft Edge verwenden. Weitere Informationen finden Sie im Grafana-Artikel zu den [unterstützten Browsern](https://grafana.com/docs/grafana/latest/installation/requirements/#supported-web-browsers).
-
-### <a name="advantages"></a>Vorteile
-- Umfassende Visualisierungen.
-- Umfangreiches Datenquellenökosystem.
-- Dateninteraktivität inklusive Zoomen.
-- Unterstützt Parameter.
-
-### <a name="limitations"></a>Einschränkungen
-- Keine Azure-Integration. Dashboards und Modelle können nicht über Azure Resource Manager verwaltet werden.
-- Kosten zur Unterstützung zusätzlicher Grafana-Infrastruktur oder zusätzliche Kosten für Grafana-Cloud.
 
 ## <a name="azure-monitor-partners"></a>Azure Monitor-Partner
-Einige [Azure Monitor-Partner](./partners.md) bieten möglicherweise Visualisierungsfunktionen. Der vorherige Link bietet eine Liste der Partner, die von Microsoft ausgewertet wurden. 
+Einige Azure Monitor-Partner bieten Visualisierungsfunktionen. Eine Liste der von Microsoft bewerteten Partner finden Sie unter [Azure Monitor – integrierte Partnerlösungen](./partners.md). 
 
-### <a name="advantages"></a>Vorteile
-- Angebote für sofort einsetzbare Visualisierungen für Zeiteinsparungen
+Ein Azure Monitor-Partner kann sofort einsatzbereite Visualisierungen bereitstellen, um Ihnen Zeit zu sparen. 
 
-### <a name="limitations"></a>Einschränkungen
-- Möglicherweise zusätzliche Kosten
-- Zeit zum Untersuchen und Auswerten von Partnerangeboten
+Es gelten einige Einschränkungen, u. a. folgende:
 
-## <a name="build-your-own-custom-application"></a>Erstellen Sie Ihre eigene benutzerdefinierte Anwendung
-Sie können auf Protokoll- und Metrikdaten in Azure Monitor mit einem beliebigen REST-Client über die zugehörige API zugreifen, sodass Sie Ihre eigenen benutzerdefinierten Websites und Anwendungen erstellen können.
+- Es können zusätzliche Kosten anfallen.
+- Das Untersuchen und Bewerten von Partnerangeboten nimmt etwas Zeit in Anspruch.
 
-### <a name="advantages"></a>Vorteile
+## <a name="your-own-custom-application"></a>Ihre eigene benutzerdefinierte Anwendung
+Sie können über eine API mit einem beliebigen REST-Client auf Metrik- und Protokolldaten in Azure Monitor zugreifen. Anschließend können Sie eigene benutzerdefinierte Websites und Anwendungen erstellen.
+
+Die Erstellung einer benutzerdefinierten Anwendung bietet u. a. folgende Vorteile:
+
 - Vollständige Flexibilität bei Benutzeroberfläche, Visualisierung, Interaktivität und Funktionen.
-- Kombinieren von Metriken und Protokolldaten mit anderen Datenquellen.
+- Die Möglichkeit, Metrik- und Protokolldaten mit anderen Datenquellen zu kombinieren.
 
-### <a name="disadvantages"></a>Nachteile
-- Großer Entwicklungsaufwand erforderlich.
+Ein wesentlicher Nachteil ist allerdings der erforderliche Entwicklungsaufwand.
 
 ## <a name="azure-monitor-views"></a>Azure Monitor-Ansichten
 
 > [!IMPORTANT]
-> Ansichten werden zurzeit ausgesondert. Anleitungen zum Umwandeln von Ansichten in Arbeitsmappen finden Sie im [Handbuch für den Übergang vom Azure Monitor-Ansicht-Designer zu Arbeitsmappen](visualize/view-designer-conversion-overview.md).
+> Ansichten werden zurzeit ausgesondert. Eine Anleitung zum Konvertieren von Ansichten in Arbeitsmappen finden Sie im [Handbuch für den Übergang](visualize/view-designer-conversion-overview.md).
 
-Mit [Ansichten in Azure Monitor](visualize/view-designer.md) erstellen Sie benutzerdefinierte Visualisierungen mit Protokolldaten. Sie werden von [Überwachungslösungen](insights/solutions.md) zur Präsentation der Daten verwendet, die sie sammeln.
+Mit [Ansichten in Azure Monitor](visualize/view-designer.md) können Sie mithilfe von Protokolldaten benutzerdefinierte Visualisierungen erstellen. [Überwachungslösungen](insights/solutions.md) verwenden Ansichten, um die gesammelten Daten darzustellen.
 
 
-![Screenshot einer Kachel „Containerüberwachungslösung“ und der detaillierten Azure Monitor-Ansicht, die bei deren Auswahl geöffnet wird](media/visualizations/view.png)
+![Screenshot: Kachel einer Containerüberwachungslösung und detaillierte Azure Monitor-Ansicht, die bei Auswahl der Kachel geöffnet wird.](media/visualizations/view.png)
 
-### <a name="advantages"></a>Vorteile
+Ansichten bieten u. a. folgende Vorteile:
+
 - Umfangreiche Visualisierungen für die Protokolldaten.
-- Exportieren und Importieren von Ansichten, um sie in andere Ressourcengruppen und Abonnements zu übertragen.
-- Integriert in das Azure Monitor-Verwaltungsmodell mit Arbeitsbereichen und Überwachungslösungen.
+- Die Möglichkeit zum Exportieren und Importieren von Ansichten, um sie in andere Ressourcengruppen und Abonnements zu übertragen.
+- Integration in das Azure Monitor-Verwaltungsmodell mit Arbeitsbereichen und Überwachungslösungen.
 - [Filtern](visualize/view-designer-filters.md) nach benutzerdefinierten Parametern.
-- Interaktiv, unterstützt Drill-In (Sicht, die Detailinformationen einer anderen Ansicht zeigt) mit mehreren Ebenen.
+- Interaktivität mit Unterstützung für eine Detailanzeige auf mehreren Ebenen (eine Ansicht, die einen Drilldown in eine andere Ansicht ausführt).
 
-### <a name="limitations"></a>Einschränkungen
-- Unterstützt Protokolle, jedoch keine Metriken.
-- Keine persönlichen Ansichten. Für alle Benutzer mit Zugriff auf den Arbeitsbereich verfügbar.
+Es gelten einige Einschränkungen, u. a. folgende:
+
+- Unterstützung für Protokolle, nicht aber für Metriken.
+- Keine persönlichen Ansichten. Ansichten sind für alle Benutzer mit Zugriff auf den Arbeitsbereich verfügbar.
 - Keine automatische Aktualisierung.
 - Begrenzte Layoutoptionen.
 - Keine Unterstützung von Abfragen über mehrere Arbeitsbereiche oder Application Insights-Anwendungen hinweg.
-- Die Antwortgröße für Abfragen ist auf 8MB und die Abfrageausführungszeit auf 110 Sekunden beschränkt.
+- Begrenzte Größe für Abfrageantworten (8 MB) und begrenzte Ausführungszeit von Abfragen (110 Sekunden).
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Weitere Informationen zum [Sammeln von Daten in Azure Monitor](data-platform.md).
+- Erfahren Sie mehr über [von Azure Monitor gesammelte Daten](data-platform.md).
 - Weitere Informationen zum [Erstellen und Freigeben von Dashboards im Azure-Portal](../azure-portal/azure-portal-dashboards.md).
-- [Weitere Informationen zum Metrik-Explorer](essentials/metrics-getting-started.md)
-- Weitere Informationen zu [Arbeitsmappen](./visualize/workbooks-overview.md).
-- Weitere Informationen zum [Importieren von Log Analytics-Daten in Power BI](./visualize/powerbi.md).
-- Weitere Informationen zum [Überwachen Ihrer Azure-Dienste in Grafana](./visualize/grafana-plugin.md).
-- Weitere Informationen zum [Erstellen benutzerdefinierter Ansichten mithilfe des Ansicht-Designers in Log Analytics](visualize/view-designer.md).
+- Erfahren Sie mehr über den [Metrik-Explorer](essentials/metrics-getting-started.md).
+- Erfahren Sie mehr über [Arbeitsmappen](./visualize/workbooks-overview.md).
+- Erfahren Sie mehr über das [Importieren von Protokolldaten in Power BI](./visualize/powerbi.md).
+- Erfahren Sie mehr über das [Azure Monitor-Datenquellen-Plug-In für Grafana](./visualize/grafana-plugin.md).
+- Erfahren Sie mehr über [Ansichten in Azure Monitor](visualize/view-designer.md).

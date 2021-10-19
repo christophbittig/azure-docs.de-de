@@ -3,24 +3,24 @@ title: 'Tutorial: Verringern der Azure-Kosten mit Empfehlungen'
 description: In diesem Tutorial erfahren Sie, wie Sie mithilfe von Optimierungsempfehlungen die Azure-Kosten senken können.
 author: bandersmsft
 ms.author: banders
-ms.date: 09/15/2021
+ms.date: 10/07/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: f8b8b99c1cf2be554703eb49de8c6ff2a39b53be
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: d536f8ceb0ae044320e0331671ec33cea501f6b0
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128567697"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711340"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>Tutorial: Optimieren von Kosten mithilfe von Empfehlungen
 
-Azure Cost Management unterbreitet Ihnen mithilfe von Azure Advisor Empfehlungen zur Kostenoptimierung. Azure Advisor zeigt Ihnen Möglichkeiten der Optimierung und Steigerung der Effizienz auf, indem ungenutzte oder nicht ausreichend genutzte Ressourcen ermittelt werden. Dieses Tutorial führt Sie durch ein Beispiel, bei dem Sie nicht ungenutzte Azure-Ressourcen identifizieren und anschließend Maßnahmen zur Kostenreduzierung ergreifen.
+Cost Management bietet Ihnen mithilfe von Azure Advisor Empfehlungen zur Kostenoptimierung. Azure Advisor zeigt Ihnen Möglichkeiten der Optimierung und Steigerung der Effizienz auf, indem ungenutzte oder nicht ausreichend genutzte Ressourcen ermittelt werden. Dieses Tutorial führt Sie durch ein Beispiel, bei dem Sie nicht ungenutzte Azure-Ressourcen identifizieren und anschließend Maßnahmen zur Kostenreduzierung ergreifen.
 
-Sehen Sie sich das Video zum [Optimieren von Cloudinvestitionen in Azure Cost Management](https://www.youtube.com/watch?v=cSNPoAb-TNc) an, um mehr über die Verwendung von Advisor zur Kostenoptimierung zu erfahren. Weitere Videos finden Sie im [YouTube-Kanal zu Cost Management](https://www.youtube.com/c/AzureCostManagement).
+Sehen Sie sich das Video zum [Optimieren von Cloudinvestitionen in Cost Management](https://www.youtube.com/watch?v=cSNPoAb-TNc) an, um mehr über die Verwendung von Advisor zur Kostenoptimierung zu erfahren. Weitere Videos finden Sie im [YouTube-Kanal zu Cost Management](https://www.youtube.com/c/AzureCostManagement).
 
 >[!VIDEO https://www.youtube.com/embed/cSNPoAb-TNc]
 

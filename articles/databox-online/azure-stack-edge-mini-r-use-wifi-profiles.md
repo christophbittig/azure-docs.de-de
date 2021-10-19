@@ -2,18 +2,18 @@
 title: Verwenden von Wi-Fi-Profilen mit Azure Stack Edge Mini R-Geräten
 description: Beschreibt das Erstellen von Wi-Fi-Profilen für Azure Stack Edge Mini R-Geräte in hochsicheren Unternehmensnetzwerken und privaten Netzwerken.
 services: databox
-author: v-dalc@microsoft.com
+author: v-dalc
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/24/2021
+ms.date: 10/07/2021
 ms.author: alkohli
-ms.openlocfilehash: 90c7c238cef104eae78618e51fa4b284adcc8f42
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 34fe33f3c1d5be747e96ae71567424026c7c7a2a
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105050300"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129669205"
 ---
 # <a name="use-wi-fi-profiles-with-azure-stack-edge-mini-r-devices"></a>Verwenden von Wi-Fi-Profilen mit Azure Stack Edge Mini R-Geräten
 
@@ -97,6 +97,8 @@ In einer hochsicheren Unternehmensumgebung können Sie möglicherweise ein vorha
 
 Gehen Sie folgendermaßen vor, um ein Profil für die Wi-Fi-Schnittstelle auf Ihrem Computer zu exportieren:
 
+1. Stellen Sie sicher, dass der Computer, den Sie zum Exportieren des WLAN-Profils verwenden, eine Verbindung mit dem WLAN herstellen kann, das Ihr Gerät verwenden wird.
+
 1. Um die drahtlos Profile auf Ihrem Computer anzuzeigen, öffnen Sie im **Startmenü** die **Eingabeaufforderung** (cmd.exe), und geben Sie den folgenden Befehl ein:
 
    `netsh wlan show profiles`
@@ -120,14 +122,14 @@ Gehen Sie folgendermaßen vor, um ein Profil für die Wi-Fi-Schnittstelle auf Ih
        All User Profile     : Boat
    ```
 
-2. Um ein Profil zu exportieren, geben Sie den folgenden Befehl ein:
+1. Um ein Profil zu exportieren, geben Sie den folgenden Befehl ein:
 
-   `netsh wlan export profile name=”<profileName>” folder=”<path>\<profileName>"`
+   `netsh wlan export profile name=”<profileName>” folder=”<path>\<profileName>" key=clear`
 
    Der folgende Befehl speichert z. B. das ContosoFTINET-Profil im XML-Format im Ordner Downloads für den Benutzer namens `gusp`.
 
    ```dos
-   C:\Users\gusp>netsh wlan export profile name="ContosoFTINET" folder=c:Downloads
+   C:\Users\gusp>netsh wlan export profile name="ContosoFTINET" folder=c:Downloads key=clear
 
    Interface profile "ContosoFTINET" is saved in file "c:Downloads\ContosoFTINET.xml" successfully.
    ```

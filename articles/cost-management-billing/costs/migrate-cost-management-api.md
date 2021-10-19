@@ -3,21 +3,21 @@ title: Migrieren von EA zu APIs der Microsoft-Kundenvereinbarung
 description: Dieser Artikel hilft Ihnen, die Folgen einer Migration von Microsoft Enterprise Agreement (EA) zu einer Microsoft-Kundenvereinbarung zu verstehen.
 author: bandersmsft
 ms.author: banders
-ms.date: 07/13/2021
+ms.date: 10/07/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
-ms.openlocfilehash: 2d3bae2f6282a4e505e2d5aa9ce2cf3f52b80006
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: fbccab537575720aa92c00f74afcdb82c773423e
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113762259"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711380"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>Migrieren von Enterprise Agreement-APIs zu APIs der Microsoft-Kundenvereinbarung
 
-Dieser Artikel hilft Ihnen, die Unterschiede bezüglich Datenstruktur, API und anderer Aspekte der Systemintegration zwischen EA-Konten (Enterprise Agreement) und MCA-Konten (Microsoft-Kundenvereinbarung) zu verstehen. Azure Cost Management unterstützt APIs für beide Kontotypen. Lesen Sie den Artikel zum [Einrichten des Abrechnungskontos für eine Microsoft-Kundenvereinbarung](../manage/mca-setup-account.md), bevor Sie fortfahren.
+Dieser Artikel hilft Ihnen, die Unterschiede bezüglich Datenstruktur, API und anderer Aspekte der Systemintegration zwischen EA-Konten (Enterprise Agreement) und MCA-Konten (Microsoft-Kundenvereinbarung) zu verstehen. Cost Management unterstützt APIs für beide Kontotypen. Lesen Sie den Artikel zum [Einrichten des Abrechnungskontos für eine Microsoft-Kundenvereinbarung](../manage/mca-setup-account.md), bevor Sie fortfahren.
 
 Organisationen mit einem bestehenden EA-Konto sollten sich diesen Artikel im Zusammenhang mit der Einrichtung eines MCA-Kontos ansehen. Zuvor waren zur Erneuerung eines EA-Kontos einige minimale Arbeitsschritte für den Wechseln von einer alten Registrierung zu einer neuen Registrierung erforderlich. Das Migrieren zu einem MCA-Konto erfordert jedoch zusätzlichen Aufwand. Der zusätzliche Aufwand ergibt sich durch Änderungen im zugrunde liegenden Abrechnungssubsystem, die sich auf alle kostenbezogenen APIs und Dienstangebote auswirken.
 
@@ -28,7 +28,7 @@ MCA-APIs und die neue Integration bieten Ihnen folgende Möglichkeiten:
 - Vollständige API-Verfügbarkeit durch native Azure-APIs
 - Konfigurieren mehrerer Rechnungen in einem einzigen Abrechnungskonto
 - Zugreifen auf eine kombinierte API mit Nutzung von Azure-Diensten, Nutzung des Marketplace von Drittanbietern und Marketplace-Einkäufen
-- Anzeigen von Kosten für alle Abrechnungsprofile (entsprechen den Registrierungen) mit Azure Cost Management
+- Anzeigen von Kosten für alle Abrechnungsprofile (entsprechen den Registrierungen) mithilfe von Cost Management
 - Zugreifen auf neue APIs zum Anzeigen von Kosten, Benachrichtigung, wenn Kosten vorab definierte Schwellenwerte überschreiten, und automatisches Exportieren von Rohdaten
 
 ## <a name="migration-checklist"></a>Migrationscheckliste
@@ -517,7 +517,7 @@ Zum Abrufen von Reservierungszusammenfassungen mit der API für Reservierungszus
 
 ## <a name="power-bi-integration"></a>Power BI-Integration
 
-Sie können Power BI auch für die Kostenberichterstattung verwenden. Mit dem [Azure Cost Management-Connector](/power-bi/desktop-connect-azure-cost-management) für Power BI Desktop können Sie leistungsstarke, benutzerdefinierte Berichte erstellen, die Ihnen helfen, Ihre Azure-Ausgaben besser zu verstehen. Der Azure Cost Management-Connector unterstützt derzeit Kunden mit einer Microsoft-Kundenvereinbarung oder einem Enterprise Agreement.
+Sie können Power BI auch für die Kostenberichterstattung verwenden. Mit dem [Cost Management-Connector](/power-bi/desktop-connect-azure-cost-management) für Power BI Desktop können Sie leistungsstarke benutzerdefinierte Berichte erstellen, die Ihnen helfen, Ihre Azure-Ausgaben besser zu verstehen. Der Cost Management-Connector unterstützt derzeit Kunden mit einer Microsoft-Kundenvereinbarung oder einem Enterprise Agreement (EA).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

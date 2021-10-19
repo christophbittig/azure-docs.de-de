@@ -2,20 +2,53 @@
 title: Neuerungen in Azure Cache for Redis
 description: Neueste Updates für Azure Cache for Redis
 author: curib
+ms.author: cauribeg
 ms.service: cache
 ms.topic: reference
-ms.date: 09/28/2020
-ms.author: cauribeg
-ms.openlocfilehash: 2ab3a60a4ce5034bc2c0b389d6a541eed6594671
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.date: 10/11/2021
+ms.openlocfilehash: c836ed432cb4e138524f3724cb3aa0530039240c
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129534610"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129859359"
 ---
 # <a name="whats-new-in-azure-cache-for-redis"></a>Neuerungen in Azure Cache for Redis
 
-## <a name="azure-tls-certificate-change"></a>TLS-Zertifikatänderungen für Azure
+## <a name="october-2021"></a>Oktober 2021
+
+### <a name="azure-cache-for-redis-60-ga"></a>Azure Cache for Redis 6.0 – allgemeine Verfügbarkeit
+
+Azure Cache for Redis 6.0 ist jetzt allgemein verfügbar. Die neue Version umfasst Folgendes:
+
+- Redis Streams: ein neuer Datentyp
+- Leistungsverbesserungen
+- Verbesserte Entwicklerproduktivität
+- Verstärkte Sicherheit
+
+Sie können jetzt eine Datenstruktur nur zur Anfügung (Redis Streams) verwenden, um kontinuierlich generierte Daten zu erfassen, zu verwalten und zu verstehen.
+
+Darüber hinaus führt Azure Cache for Redis 6.0 zur Verbesserung von Leistung und Benutzerfreundlichkeit neue Befehle ein: `STRALGO`, `ZPOPMIN`, `ZPOPMAX` und `HELP`.
+
+Beginnen Sie noch heute mit Azure Cache for Redis 6.0, und wählen Sie während der Cacheerstellung „Redis 6.0“ aus. Sie können auch ein Upgrade Ihrer vorhandenen Redis 4.0-Cache-Instanzen durchführen. Weitere Informationen finden Sie unter [Festlegen der Version für Azure Cache for Redis](cache-how-to-version.md).
+
+### <a name="diagnostics-for-connected-clients"></a>Diagnose für verbundene Clients
+
+Azure Cache for Redis lässt sich jetzt in Azure-Diagnoseeinstellungen integrieren, um Informationen zu allen Clientverbindungen mit Ihrem Cache zu protokollieren. Dank der Protokollierung und anschließenden Analyse dieser Diagnoseeinstellung können Sie besser verstehen, wer eine Verbindung mit Ihren Caches herstellt und welchen Zeitstempel diese Verbindungen aufweisen. Mit diesen Daten können Sie das Ausmaß einer Sicherheitsverletzung ermitteln und Sicherheitsüberprüfungen durchführen. Benutzer können diese Protokolle an ein Ziel ihrer Wahl weiterleiten, z. B. an ein Speicherkonto oder einen Event Hub.
+
+Weitere Informationen finden Sie unter [Überwachen von Azure Cache for Redis-Daten mithilfe von Diagnoseeinstellungen](cache-monitor-diagnostic-settings.md).
+
+### <a name="azure-cache-for-redis-enterprise-update"></a>Update für Azure Cache for Redis Enterprise
+
+Die öffentliche Vorschauversion der aktiven Georeplikation unterstützt jetzt Folgendes:
+
+- RediSearch-Modul: Bereitstellen von RediSearch mit aktiver Georeplikation.
+- Fünf Caches in einer Replikationsgruppe. Bisher wurden zwei Caches unterstützt.
+- OSS-Clusteringrichtlinie: Eignet sich für Hochleistungsworkloads und bietet eine bessere Skalierbarkeit.
+
+## <a name="october-2020"></a>Oktober 2020
+
+### <a name="azure-tls-certificate-change"></a>TLS-Zertifikatänderungen für Azure
 
 Microsoft aktualisiert Azure-Dienste für die Verwendung von TLS-Serverzertifikaten aus einer anderen Gruppe von Zertifizierungsstellen (Certificate Authorities, CAs). Diese Änderung wird in Phasen zwischen 13. August 2020 und 26. Oktober 2020 (geschätzt) eingeführt. Diese Änderung wird in Azure vorgenommen, da [die aktuellen Zertifikate der Zertifizierungsstellen eine der grundlegenden Anforderungen des Zertifizierungsstellen-/Browserforums nicht erfüllen](https://bugzilla.mozilla.org/show_bug.cgi?id=1649951). Das Problem wurde am 1. Juli 2020 gemeldet und gilt für mehrere beliebte PKI-Anbieter (Public Key-Infrastruktur) weltweit. Die meisten TLS-Zertifikate, die heute von Azure-Diensten verwendet werden, stammen aus der *Baltimore CyberTrust Root*-PKI. Der Azure Cache for Redis-Dienst wird weiterhin mit Baltimore CyberTrust Root verkettet. Seine TLS-Serverzertifikate werden jedoch ab 12. Oktober 2020 von neuen Zwischenzertifizierungsstellen (Intermediate Certificate Authorities, ICAs) ausgestellt.
 
@@ -24,7 +57,7 @@ Microsoft aktualisiert Azure-Dienste für die Verwendung von TLS-Serverzertifika
 >
 >
 
-### <a name="does-this-change-affect-me"></a>Betrifft mich diese Änderung?
+#### <a name="does-this-change-affect-me"></a>Betrifft mich diese Änderung?
 
 Wir gehen davon aus, dass die meisten Kunden von Azure Cache for Redis von der Änderung nicht betroffen sind. Ihre Anwendung kann betroffen sein, wenn darin explizit eine Liste zulässiger Zertifizierungsstellen angegeben wird, ein Verfahren, das als „Certificate Pinning“ bezeichnet wird. Wenn das Zertifikat anstatt Baltimore CyberTrust Root ein Zwischen- oder Blattzertifikat als Grundlage verwendet, sollten Sie **sofort Maßnahmen ergreifen**, um die Zertifikatkonfiguration zu ändern.
 
@@ -35,9 +68,9 @@ Die folgende Tabelle enthält Informationen zu den Zertifikaten, die umgestellt 
 | Root | Fingerabdruck: d4de20d05e66fc53fe1a50882c78db2852cae474<br><br> Ablauf: Montag, 12. Mai 2025, 17:59:00<br><br> Antragstellername:<br> CN = Baltimore CyberTrust Root<br> OU = CyberTrust<br> O = Baltimore<br> C = IE | Keine Änderung | Keine |
 | Zwischenzertifizierungsstellen | Fingerabdrücke:<br> CN = Microsoft IT TLS CA 1<br> Fingerabdruck: 417e225037fbfaa4f95761d5ae729e1aea7e3a42<br><br> CN = Microsoft IT TLS CA 2<br> Fingerabdruck: 54d9d20239080c32316ed9ff980a48988f4adf2d<br><br> CN = Microsoft IT TLS CA 4<br> Fingerabdruck: 8a38755d0996823fe8fa3116a277ce446eac4e99<br><br> CN = Microsoft IT TLS CA 5<br> Fingerabdruck: Ad898ac73df333eb60ac1f5fc6c4b2219ddb79b7<br><br> Ablauf: Freitag, 20. Mai 2024 17:52:38<br><br> Antragstellername:<br> OU = Microsoft IT<br> O = Microsoft Corporation<br> L = Redmond<br> S = Washington<br> C = US<br> | Fingerabdrücke:<br> CN = Microsoft RSA TLS CA 01<br> Fingerabdruck: 703d7a8f0ebf55aaa59f98eaf4a206004eb2516a<br><br> CN = Microsoft RSA TLS CA 02<br> Fingerabdruck: b0c2d2d13cdd56cdaa6ab6e2c04440be4a429c75<br><br> Ablauf: Dienstag, 8. Oktober 2024 12:00:00;<br><br> Antragstellername:<br> O = Microsoft Corporation<br> C = US<br> | Erforderlich |
 
-### <a name="what-actions-should-i-take"></a>Welche Aktionen zieht das für mich nach sich?
+#### <a name="what-actions-should-i-take"></a>Welche Aktionen zieht das für mich nach sich?
 
-Wenn Ihre Anwendung den Zertifikatspeicher des Betriebssystems verwendet oder Baltimore Root angibt, ist keine Aktion erforderlich. 
+Wenn Ihre Anwendung den Zertifikatspeicher des Betriebssystems verwendet oder Baltimore Root angibt, ist keine Aktion erforderlich.
 
 Wenn Ihre Anwendung ein Zwischen- oder Blatt-TLS-Zertifikat angibt, empfiehlt es sich, die folgenden Stämme anzuheften:
 

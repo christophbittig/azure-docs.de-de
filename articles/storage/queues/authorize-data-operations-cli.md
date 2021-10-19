@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.service: storage
 ms.subservice: common
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 480798177797ad83ec01f33297d5fc559c7c3e3d
-ms.sourcegitcommit: f9e368733d7fca2877d9013ae73a8a63911cb88f
+ms.openlocfilehash: c03b482a22f24cf4e8ef325c71a39eab65d2fdb4
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111900465"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129858536"
 ---
 # <a name="choose-how-to-authorize-access-to-queue-data-with-azure-cli"></a>Auswählen der Autorisierung des Zugriffs auf Warteschlangendaten mit der Azure CLI
 
@@ -112,4 +112,4 @@ Sie können Autorisierungsparameter in Umgebungsvariablen angeben, um zu vermeid
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Zuweisen einer Azure-Rolle für den Zugriff auf Warteschlangendaten](assign-azure-role-data-access.md)
-- [Autorisieren des Zugriffs auf Blob- und Warteschlangendaten mit verwalteten Identitäten für Azure-Ressourcen](../common/storage-auth-aad-msi.md)
+- [Autorisieren des Zugriffs auf Warteschlangendaten mit verwalteten Identitäten für Azure-Ressourcen](authorize-managed-identity.md)

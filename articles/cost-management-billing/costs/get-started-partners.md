@@ -1,24 +1,24 @@
 ---
 title: Erste Schritte mit Azure Cost Management für Partner
-description: In diesem Artikel wird erläutert, wie Partner Features von Azure Cost Management verwenden und den Zugriff auf Cost Management für ihre Kunden aktivieren.
+description: In diesem Artikel wird erläutert, wie Partner Cost Management-Features verwenden und den Zugriff für ihre Kunden aktivieren.
 author: bandersmsft
 ms.author: banders
-ms.date: 07/01/2021
+ms.date: 10/07/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 78a2ef8491eea5fa3df5355236f23be730062108
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d402acaf43682a7c025147fd38bccb9baa033683
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349775"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129705988"
 ---
-# <a name="get-started-with-azure-cost-management-for-partners"></a>Erste Schritte mit Azure Cost Management für Partner
+# <a name="get-started-with-cost-management-for-partners"></a>Erste Schritte mit Cost Management für Partner
 
-Azure Cost Management ist für direkte Partner, die ihre Kunden in eine Microsoft-Kundenvereinbarung aufgenommen und [einen Azure-Plan erworben](/partner-center/purchase-azure-plan) haben, nativ verfügbar. In diesem Artikel wird erläutert, wie Partner mithilfe der Funktionen von [Azure Cost Management](../index.yml) Kosten für Abonnements im Azure-Plan einsehen. Außerdem wird beschrieben, wie Partner ihren Kunden den Zugriff auf Cost Management zu Einzelhandelspreisen ermöglichen.
+Cost Management ist nativ für direkte Partner verfügbar, die ihre Kunden in eine Microsoft-Kundenvereinbarung aufgenommen und einen [Azure-Plan erworben](/partner-center/purchase-azure-plan) haben. In diesem Artikel wird erläutert, wie Partner mithilfe der Funktionen von [Cost Management](../index.yml) Kosten für Abonnements im Azure-Plan anzeigen können. Außerdem wird beschrieben, wie Partner ihren Kunden den Zugriff auf Cost Management zu Einzelhandelspreisen ermöglichen.
 
 Bei direkten Partnern und indirekten Anbietern können der globale Administrator und die Administrator-Agents zu den fakturierten Preisen im Partnermandanten auf Cost Management zugreifen und die Kosten verwalten.
 
@@ -43,19 +43,19 @@ Das folgende Beispiel zeigt die Kosten für einen einzelnen Kunden an.
 
 [![Beispiel: Kosten für einen einzelnen Kunden](./media/get-started-partners/customer-costs2.png)](./media/get-started-partners/customer-costs2.png#lightbox)
 
-Alle Funktionen, die in Azure Cost Management verfügbar sind, sind auch mit Rest-APIs verfügbar. Verwenden Sie die APIs, um Kostenverwaltungsaufgaben zu automatisieren.
+Alle in Cost Management verfügbaren Funktionen sind auch mit Rest-APIs verfügbar. Verwenden Sie die APIs, um Kostenverwaltungsaufgaben zu automatisieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Für Partner ist Azure Cost Management nur für Abonnements nativ verfügbar, für die der Azure-Plan gilt.
+Für Partner ist Cost Management nur für Abonnements nativ verfügbar, für die der Azure-Plan gilt.
 
-Wenn Sie Azure Cost Management im Azure-Portal aktivieren möchten, müssen Sie die Microsoft-Kundenvereinbarung im Namen des Kunden akzeptiert und den Kunden in den Azure-Plan übertragen haben. Nur die Kosten für Abonnements, die in den Azure-Plan übertragen wurden, sind in Azure Cost Management verfügbar.
+Wenn Sie Cost Management im Azure-Portal aktivieren möchten, müssen Sie die Microsoft-Kundenvereinbarung im Namen des Kunden akzeptiert und den Kunden in den Azure-Plan übertragen haben. Nur die Kosten für Abonnements, die in den Azure-Plan übertragen wurden, sind in Cost Management verfügbar.
 
-Azure Cost Management erfordert Lesezugriff auf Ihr Abrechnungskonto oder Ihr Abonnement.
+Cost Management erfordert Lesezugriff auf Ihr Abrechnungskonto oder Ihr Abonnement.
 
-Weitere Informationen zum Aktivieren und Zuweisen der Zugriffsrechte auf Azure Cost Management für ein Abrechnungskonto finden Sie unter [Zuweisen von Benutzerrollen und Berechtigungen](/partner-center/permissions-overview). Die Rollen **Globaler Administrator** und **Administrator-Agent** können die Kosten für ein Abrechnungskonto verwalten.
+Weitere Informationen zum Aktivieren und Zuweisen der Zugriffsrechte auf Cost Management für ein Abrechnungskonto finden Sie unter [Zuweisen von Benutzerrollen und Berechtigungen](/partner-center/permissions-overview). Die Rollen **Globaler Administrator** und **Administrator-Agent** können die Kosten für ein Abrechnungskonto verwalten.
 
-Damit der Zugriff auf Azure Cost Management in den Abonnementbereichen möglich ist, können alle Benutzer, die über Azure RBAC-Zugriff auf ein Abonnement verfügen, Kosten zu Einzelhandelspreisen (nutzungsbasierte Bezahlung) anzeigen. Die [Richtlinie für die Sichtbarkeit von Kosten muss für den Kundenmandanten](#enable-the-policy-to-view-azure-usage-charges) aber aktiviert sein. Eine vollständige Liste der unterstützten Kontotypen finden Sie unter [Grundlegendes zu Cost Management-Daten](understand-cost-mgt-data.md).
+Beim Zugriff auf Cost Management auf Abonnementebene können alle Benutzer, die über Azure RBAC-Zugriff auf ein Abonnement verfügen, Kosten zu Einzelhandelspreisen (nutzungsbasierte Bezahlung) anzeigen. Die [Richtlinie für die Sichtbarkeit von Kosten muss für den Kundenmandanten](#enable-the-policy-to-view-azure-usage-charges) aber aktiviert sein. Eine vollständige Liste der unterstützten Kontotypen finden Sie unter [Grundlegendes zu Cost Management-Daten](understand-cost-mgt-data.md).
 
 Beim Übertragen von vorhandenen Abrechnungsvereinbarungen auf einen neuen Partner sind die Cost Management-Funktionen nur für die aktuelle Abrechnungsbeziehung mit dem Partner verfügbar. Die vor der Übertragung auf den neuen Partner angefallenen Kosten werden nicht in das neue Abrechnungskonto übernommen. Im ursprünglich zugeordneten Abrechnungskonto bleibt der Verlauf der Kosten aber erhalten.
 
@@ -145,7 +145,7 @@ Wählen Sie unter **Einstellungen** die Option **Richtlinien** aus.
 Die aktuelle Kostensichtbarkeits-Richtlinie wird für die Gebühren für die **Azure-Nutzung** angezeigt, die den Abonnements für den ausgewählten Kunden zugeordnet ist.
 ![Richtlinie, die Kunden ermöglicht, nutzungsbasierte Gebühren anzuzeigen](./media/get-started-partners/cost-management-billing-policies.png)
 
-Wenn die Richtlinie auf **Nein** festgelegt ist, ist Azure Cost Management für Abonnementbenutzer, die dem Kunden zugeordnet sind, nicht verfügbar. Sofern die Kostensichtbarkeits-Richtlinie nicht von einem Partner aktiviert wird, ist sie standardmäßig für alle Abonnementbenutzer deaktiviert.
+Wenn die Richtlinie auf **Nein** festgelegt ist, ist Cost Management für Abonnementbenutzer, die dem Kunden zugeordnet sind, nicht verfügbar. Sofern die Kostensichtbarkeits-Richtlinie nicht von einem Partner aktiviert wird, ist sie standardmäßig für alle Abonnementbenutzer deaktiviert.
 
 Wenn die Kostenrichtlinie auf **Ja** festgelegt ist, können Abonnementbenutzer, die dem Kundenmandanten zugeordnet sind, nutzungsbasierte Nutzungsgebühren anzeigen.
 
@@ -162,8 +162,6 @@ Kostenanalyse, Budgets und Warnungen sind für die Azure RBAC-Bereiche „Abonne
 In amortisierten Ansichten und für tatsächliche Kosten für reservierte Instanzen in den Azure RBAC-Bereichen werden keine Gebühren angezeigt. Die Anschaffungskosten für Berechtigungen wie reservierte Instanzen und Marketplace-Gebühren werden nur in Abrechnungsbereichen im Mandanten des Kunden angezeigt, in dem die Einkäufe erfolgt sind.
 
 Die Einzelhandelspreise, die zum Berechnen der in der Ansicht enthaltenen Kosten verwendet werden, entsprechen den Preisen, die im Azure-Preisrechner für alle Kunden angezeigt werden. Die angezeigten Kosten enthalten keine Rabatte oder Guthaben, über die der Partner ggf. verfügt, z. B. vom Partner erworbene Guthaben, tarifspezifische Rabatte und Rabatte für globale Dienste.
-
- 
 
 ## <a name="analyze-costs-in-cost-analysis"></a>Analysieren von Kosten mithilfe der Kostenanalyse
 
@@ -229,7 +227,7 @@ Die folgenden Datenfelder befinden sich im Nutzungsdetaildateien und Cost Manage
 | unitOfMeasure | Gibt die Einheit an, in der der Dienst in Rechnung gestellt wird. Beispiele: GB oder Stunden. | Gibt die Einheit an, in der der Dienst in Rechnung gestellt wird. Beispiele sind GB, Stunden und 10.000 s. |
 | pricingCurrency | Die Währung, die den Einheitenpreis definiert. | Die Währung in der Preisliste.|
 | billingCurrency | Die Währung, in der die abgerechneten Kosten definiert sind. | Die auf der Rechnung als Abrechnungswährung definierte Währung |
-| chargeType | Definiert den Gebührentyp, den die Kosten in Azure Cost Management repräsentieren, z. B. Erwerb oder Erstattung. | Der Typ der Gebühr oder Berichtigung. Nicht verfügbar für die aktuelle Aktivität. |
+| chargeType | Definiert den Gebührentyp, den die Kosten in Cost Management repräsentieren, z. B. Erwerb oder Erstattung. | Der Typ der Gebühr oder Berichtigung. Nicht verfügbar für die aktuelle Aktivität. |
 | costinBillingCurrency | Geschätzte erweiterte oder gemischte Kosten vor Steuern in der Abrechnungswährung. | – |
 | costinPricingCurrency | Erweiterte oder gemischte Kosten vor Steuern in der Währung, die mit den Preisen korreliert. | – |
 | **costinUSD** | Geschätzte erweiterte oder gemischte Kosten vor Steuern in USD. | – |
@@ -247,7 +245,7 @@ Die folgenden Datenfelder befinden sich im Nutzungsdetaildateien und Cost Manage
 
 ## <a name="view-partner-earned-credit-pec-resource-costs"></a>Anzeigen der Ressourcenkosten für Partner Earned Credit (PEC)
 
-In Azure Cost Management können Partner die Kostenanalyse verwenden, um die Kosten anzuzeigen, auf die sich die PEC-Vorteile ausgewirkt haben.
+In Cost Management können Partner die Kostenanalyse verwenden, um die Kosten anzuzeigen, auf die sich die PEC-Vorteile ausgewirkt haben.
 
 Melden Sie sich im Azure-Portal beim Partnermandanten an, und wählen Sie **Kostenverwaltung + Abrechnung** aus. Wählen Sie unter **Cost Management** die Option **Kostenanalyse** aus.
 
@@ -261,7 +259,7 @@ Wenn die **PartnerEarnedCreditApplied**-Eigenschaft _True_ ist, wirkt sich der V
 
 Wenn die **PartnerEarnedCreditApplied**-Eigenschaft _False_  ist, haben die zugeordneten Kosten die erforderliche Berechtigung für die Gutschrift nicht erfüllt. Es kann auch sein, dass der erworbene Dienst nicht für Partner Earned Credit berechtigt ist.
 
-In der Regel dauert es 8-24 Stunden, bis Dienstnutzungsdaten in Cost Management angezeigt werden. Weitere Informationen finden Sie unter [Aktualisierung und Aufbewahrung von Kosten- und Nutzungsdaten](understand-cost-mgt-data.md#cost-and-usage-data-updates-and-retention). PEC-Gutschriften werden innerhalb von 48 Stunden ab dem Zeitpunkt des Zugriffs in Azure Cost Management angezeigt.
+In der Regel dauert es 8-24 Stunden, bis Dienstnutzungsdaten in Cost Management angezeigt werden. Weitere Informationen finden Sie unter [Aktualisierung und Aufbewahrung von Kosten- und Nutzungsdaten](understand-cost-mgt-data.md#cost-and-usage-data-updates-and-retention). PEC-Gutschriften werden innerhalb von 48 Stunden nach dem Zeitpunkt des Zugriffs in Cost Management angezeigt.
 
 
 Sie können auch nach der **PartnerEarnedCreditApplied**-Eigenschaft gruppieren und filtern, indem Sie die **Gruppieren nach**-Optionen verwenden. Verwenden Sie die Optionen, um zu überprüfen, auf welche Kosten PEC angewendet wird und auf welche nicht.
@@ -298,7 +296,7 @@ Wählen Sie den Name des Speicherkontos aus, um die Daten in der Exportliste zu 
 
 Partner und Kunden können die in den folgenden Abschnitten für häufige Aufgaben beschriebenen Cost Management-APIs verwenden.
 
-### <a name="azure-cost-management-apis---direct-and-indirect-providers"></a>Azure Cost Management-APIs – Direkte und indirekte Anbieter
+### <a name="cost-management-apis---direct-and-indirect-providers"></a>Cost Management-APIs – direkte und indirekte Anbieter
 
 Partner mit Zugriff auf Abrechnungsbereiche in einem Partnermandanten können die folgenden APIs verwenden, um in Rechnung gestellte Kosten anzuzeigen.
 

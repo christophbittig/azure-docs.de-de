@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 05/01/2017
-ms.openlocfilehash: b1bf95295fbaaa72df50b1aa7c42a6e954ef6ee2
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 7d9d4efb683b7401c4601c86425490957d085d23
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129538804"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129658707"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>ASP.NET-Sitzungszustandsanbieter für Azure Cache for Redis
 
@@ -35,12 +35,7 @@ Install-Package Microsoft.Web.RedisSessionStateProvider
 >
 >
 
-Das Redis-Sitzungszustandsanbieter-NuGet-Paket steht in einer Abhängigkeitsbeziehung zum Paket „StackExchange.Redis.StrongName“. Wenn das Paket „StackExchange.Redis.StrongName“ nicht in Ihrem Projekt vorhanden ist, wird es installiert.
-
->[!NOTE]
->Neben dem Paket „StackExchange.Redis.StrongName“ mit starkem Namen gibt es zudem noch das Paket „StackExchange.Redis“ als Version ohne starken Namen. Wenn in Ihrem Projekt die Version „StackExchange.Redis“ ohne starken Namen verwendet wird, müssen Sie sie deinstallieren. Andernfalls treten Namenskonflikte in Ihrem Projekt auf. Weitere Informationen über diese Pakete finden Sie unter [Konfigurieren der .NET-Cacheclients](cache-dotnet-how-to-use-azure-redis-cache.md#configure-the-cache-clients).
->
->
+Das NuGet-Paket für den Redis-Sitzungszustandsanbieter weist eine Abhängigkeit zum Paket „StackExchange.Redis“ auf. Wenn das StackExchange.Redis-Paket in Ihrem Projekt nicht vorhanden ist, wird es installiert.
 
 Mit dem heruntergeladenen NuGet-Paket werden die erforderlichen Assemblyverweise sowie der folgende Abschnitt in Ihrer Datei „web.config“ hinzugefügt. Dieser Abschnitt enthält die Konfiguration, die in Ihrer ASP.NET-Anwendung für die Verwendung des Azure Cache for Redis-Sitzungszustandsanbieters erforderlich ist.
 
@@ -134,4 +129,3 @@ Weitere Information über das Thema Sitzungszustand und andere bewährte Verfahr
 ## <a name="next-steps"></a>Nächste Schritte
 
 Lesen Sie [ASP.NET-Ausgabecacheanbieter für Azure Cache for Redis](cache-aspnet-output-cache-provider.md).
-

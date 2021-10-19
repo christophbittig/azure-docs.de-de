@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/22/2021
-ms.openlocfilehash: 8a6a2b7acc4f627bb871520ee6a82be920d1135e
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 8728371fab634c9673e264e9cb9fa99c54931e01
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129215907"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129710345"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Übersicht über Azure Monitor-Agents
 
@@ -44,7 +44,7 @@ Die folgenden Tabellen enthalten eine kurze Gegenüberstellung der Azure Monito
 | **Senden von Daten an** | Azure Monitor-Protokolle<br>Azure Monitor-Metriken<sup>1</sup> | Azure Storage<br>Event Hub | Azure Monitor-Metriken | Azure Monitor-Protokolle | Azure Monitor-Protokolle<br>(über den Log Analytics-Agent) |
 | **Dienste und**<br>**features**<br>**Unterstützt** | Log Analytics<br>Metrik-Explorer | | Metrik-Explorer | VM Insights<br>Log Analytics<br>Azure Automation<br>Azure Security Center<br>Azure Sentinel | VM Insights<br>Dienstzuordnung |
 
-<sup>1</sup> [Klicken Sie hier,](../essentials/metrics-custom-overview.md#quotas-and-limits) um weitere Einschränkungen bei der Verwendung von Azure Monitor Metrics zu überprüfen. Unter Linux wird die Verwendung von Azure Monitor-Metriken als einziges Ziel in v.1.10.9.0 oder höher unterstützt. 
+<sup>1</sup> [Klicken Sie hier,](../essentials/metrics-custom-overview.md#quotas-and-limits) um weitere Einschränkungen bei der Verwendung von Azure Monitor-Metriken zu überprüfen. Unter Linux wird die Verwendung von Azure Monitor-Metriken als einziges Ziel in v.1.10.9.0 oder höher unterstützt. 
 
 ## <a name="azure-monitor-agent"></a>Azure Monitor-Agent
 
@@ -52,7 +52,7 @@ Der [Azure Monitor-Agent](azure-monitor-agent-overview.md) soll den Log Analytic
 
 Verwenden Sie den Azure Monitor-Agent zu folgenden Zwecken:
 
-- Sammeln von Gastprotokollen und Metriken von einem beliebigen Computer in Azure, in anderen Clouds oder in lokalen Systemen. (Für Computer außerhalb von Azure sind [Azure Arc-fähige Server](../../azure-arc/servers/overview.md) erforderlich.) 
+- Sammeln von Gastprotokollen und Metriken von einem beliebigen Computer in Azure, in anderen Clouds oder in lokalen Systemen. (Für Computer außerhalb von Azure sind [Server mit Azure Arc-Unterstützung](../../azure-arc/servers/overview.md) erforderlich.) 
 - Zentrales Verwalten der Datensammlungskonfiguration mithilfe von [Datensammlungsregeln](./data-collection-rule-overview.md) und Verwenden von Azure Resource Manager-Vorlagen oder -Richtlinien (ARM) für die Gesamtverwaltung.
 - Senden von Daten an Azure Monitor-Protokolle und Azure Monitor- Metriken (Vorschau) zur Analyse mit Azure Monitor. 
 - Nutzen der Windows-Ereignisfilterung oder Multihoming für Protokolle unter Windows und Linux.
@@ -135,7 +135,7 @@ Beachten Sie bei der Verwendung des Dependency-Agents Folgendes:
 
 Der [Azure Monitor-Agent](./azure-monitor-agent-install.md#virtual-machine-extension-details) ist nur als VM-Erweiterung verfügbar. Durch die Log Analytics-Erweiterung für [Windows](../../virtual-machines/extensions/oms-windows.md) und [Linux](../../virtual-machines/extensions/oms-linux.md) wird der Log Analytics-Agent auf virtuellen Azure-Computern installiert. Durch die Azure Monitor-Dependency-Erweiterung für [Windows](../../virtual-machines/extensions/agent-dependency-windows.md) und [Linux](../../virtual-machines/extensions/agent-dependency-linux.md) wird der Dependency-Agent auf virtuellen Azure-Computern installiert. Hierbei handelt es sich um die oben beschriebenen Agents, allerdings mit der Möglichkeit, sie über [VM-Erweiterungen](../../virtual-machines/extensions/overview.md) zu verwalten. Verwenden Sie zum Installieren und Verwalten der Agents möglichst immer Erweiterungen.
 
-Verwenden Sie für Hybridcomputer [Azure Arc-fähige Server](../../azure-arc/servers/manage-vm-extensions.md), um die Azure Monitor-Agent-, Log Analytics- und Azure Monitor-Dependency-Erweiterungen für VMs bereitzustellen.
+Verwenden Sie für Hybridcomputer [Server mit Azure Arc-Unterstützung](../../azure-arc/servers/manage-vm-extensions.md), um die Azure Monitor-Agent-, Log Analytics- und Azure Monitor-Dependency-Erweiterungen für VMs bereitzustellen.
 
 ## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
 

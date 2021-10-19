@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 07/30/2021
 ms.author: alkohli
-ms.openlocfilehash: 6edb7aafdee046f2dd198d54e566c69b791cc1eb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6dccf76a99c183c9b3d148ee1c4574c560d877f3
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346240"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714813"
 ---
 # <a name="data-residency-and-resiliency-for-azure-stack-edge-preview"></a>Datenresidenz und Resilienz für Azure Stack Edge (Vorschau)
 
@@ -40,7 +40,7 @@ Der Datenresidenzstatus der Azure Stack Edge-Dienste lässt sich hinsichtlich de
 
 Azure Stack Edge-Dienst integriert sich auch in die folgenden abhängigen Dienste, und deren Verhalten wird ebenfalls zusammengefasst: 
 
-- Kubernetes mit Azure Arc-Aktivierung
+- Azure Arc-fähiges Kubernetes
 - Azure IoT Hub und Azure IoT Edge
 <!--- Azure Key Vault -->
 
@@ -77,14 +77,14 @@ For more information, see [Use the Kubernetes dashboard to monitor the Kubernete
 
 ## <a name="azure-stack-edge-dependent-services"></a>Von Azure Stack Edge abhängige Dienste
 
-Kubernetes mit Azure Arc-Aktivierung, Azure IoT Hub und Azure IoT Edge sowie Azure Key Vault sind Dienste, lassen sich in Azure Stack Edge integrieren.
+Kubernetes mit Azure Arc-Unterstützung, Azure IoT Hub und Azure IoT Edge sowie Azure Key Vault sind Dienste, die sich in Azure Stack Edge integrieren lassen.
 
-### <a name="azure-arc-enabled-kubernetes"></a>Kubernetes mit Azure Arc-Aktivierung 
+### <a name="azure-arc-enabled-kubernetes"></a>Azure Arc-fähiges Kubernetes 
 
-Kubernetes mit Azure Arc-Aktivierung ist als Add-On für Azure Stack Edge verfügbar. Für Singapur („Asien, Südosten“) befinden sich Azure Arc-Daten nur in Singapur und werden nicht nach Hongkong (SAR) repliziert. <!--If there is a region-wide outage, the service is not resilient.-->
+Kubernetes mit Azure Arc-Unterstützung ist als Add-On für Azure Stack Edge verfügbar. Für Singapur („Asien, Südosten“) befinden sich Azure Arc-Daten nur in Singapur und werden nicht nach Hongkong (SAR) repliziert. <!--If there is a region-wide outage, the service is not resilient.-->
 
 <!--For all other regions, Azure Arc supports Azure Regional Pair and is resilient to any region-wide outages.--> 
-<!--For more information, see [Data residency and resiliency for Azure Arc enabled Kubernetes clusters]().-->
+<!--For more information, see [Data residency and resiliency for Azure Arc-enabled Kubernetes clusters]().-->
 
 
 ### <a name="azure-iot"></a>Azure IoT

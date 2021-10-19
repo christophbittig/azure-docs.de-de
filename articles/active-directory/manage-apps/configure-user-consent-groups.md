@@ -1,5 +1,6 @@
 ---
-title: Konfigurieren der Gruppenbesitzereinwilligung für Apps, die auf Gruppendaten zugreifen, mithilfe von Azure AD
+title: Konfigurieren der Gruppenbesitzereinwilligung für Apps, die auf Gruppendaten zugreifen
+titleSuffix: Azure AD
 description: Hier erfahren Sie, ob Gruppen- und Teambesitzer in Anwendungen einwilligen können, die Zugriff auf die Daten der Gruppe bzw. des Teams haben werden.
 services: active-directory
 author: davidmu1
@@ -12,14 +13,14 @@ ms.date: 08/31/2021
 ms.author: davidmu
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 94c3280731f40839f462632fedaa30ebc916466e
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 0613875ad8ecfb12590ac7c2ec51924c0523162d
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124754188"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129619764"
 ---
-# <a name="configure-group-owner-consent-to-apps-accessing-group-data"></a>Konfigurieren der Gruppenbesitzereinwilligung für Apps, die auf Gruppendaten zugreifen
+# <a name="configure-group-owner-consent-to-applications-in-azure-active-directory"></a>Konfigurieren der Gruppenbesitzerzustimmung zu Anwendungen in Azure Active Directory
 
 Gruppen- und Teambesitzer können Anwendungen (z. B. von Drittanbietern veröffentlichte Anwendungen) autorisieren, auf die einer Gruppe zugeordneten Daten Ihrer Organisation zuzugreifen. Beispielsweise kann ein Teambesitzer in Microsoft Teams einer App gestatten, alle Teamnachrichten des Teams zu lesen oder das Basisprofil der Mitglieder einer Gruppe aufzulisten. Weitere Informationen finden Sie unter [Resource-specific consent in Microsoft Teams](/microsoftteams/resource-specific-consent) (Ressourcenspezifische Einwilligung in Microsoft Teams).
 

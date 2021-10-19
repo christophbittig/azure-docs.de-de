@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/22/2021
+ms.date: 09/17/2021
 ms.author: monicar
-ms.openlocfilehash: 0f0b624097fdb159fd52adae7ae57830833662f2
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 223e75d0a02997187eec609324014493e2fa34df
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129272944"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129660987"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure-Glossar: Ein Wörterbuch der Cloudterminologie auf der Azure Platform
 
@@ -133,6 +133,9 @@ Weitere Informationen finden Sie unter [Microsoft Online-Abonnementvertrag](http
 ## <a name="tag"></a>tag
 Ein Begriff aus dem Bereich der Indizierung, mit dem Sie Ressourcen gemäß Ihren Anforderungen für die Verwaltung oder Abrechnung kategorisieren können. Die Verwendung von Tags kann hilfreich sein, wenn Sie über eine komplexe Sammlung von Ressourcen verfügen und diese auf möglichst sinnvolle Weise visualisieren möchten. Beispielsweise können Sie Ressourcen markieren, die in Ihrer Organisation eine ähnliche Funktion haben oder zu derselben Abteilung gehören.  
 Weitere Informationen finden Sie unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen](./azure-resource-manager/management/tag-resources.md).
+
+## <a name="tenant"></a>Tenant
+Ein Mandant ist eine Gruppe von Benutzern oder eine Organisation, deren Mitglieder mit bestimmten Berechtigungen gemeinsamen Zugriff auf eine Instanz eines Produkts, Diensts oder einer Anwendung haben. In Azure Active Directory ist ein Mandant eine Instanz von Azure Active Directory, die eine Organisation empfängt, wenn sie sich für eine Cloudanwendung wie Microsoft 365 registriert. Jeder Azure AD-Mandant ist eigenständig und von anderen Azure AD-Mandanten getrennt. Mehrinstanzenfähigkeit bezieht sich auf eine Instanz einer Anwendung, die von mehreren Organisationen gemeinsam genutzt wird, die jeweils separaten Zugriff auf die Instanz haben.
 
 ## <a name="update-domain"></a>Updatedomäne
 Die Sammlung virtueller Computer in einer Verfügbarkeitsgruppe, die gleichzeitig aktualisiert werden. Virtuelle Computer in derselben Updatedomäne werden während einer geplanten Wartung gemeinsam neu gestartet. Azure startet nie mehr als eine Updatedomäne gleichzeitig. Wird auch als Upgradedomäne bezeichnet.  

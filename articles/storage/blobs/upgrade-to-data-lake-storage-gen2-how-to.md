@@ -6,12 +6,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 10/04/2021
 ms.author: normesta
-ms.openlocfilehash: b1f612ee189d47529033fdd9e6c7e7df0f523df9
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: 025aa395fa6d2fd3a8fe98f4781a6b554e2b506d
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129459051"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129710526"
 ---
 #  <a name="upgrade-azure-blob-storage-with-azure-data-lake-storage-gen2-capabilities"></a>Ein Upgrade von Azure Blob Storage mit Azure Data Lake Storage Gen2-Funktionen
 
@@ -41,7 +41,7 @@ Weitere Informationen zu diesen Funktionen und zur Bewertung der Auswirkungen di
 
 6. Erweitern Sie den Abschnitt **Schritt 2: Überprüfen des Kontos vor dem Upgrade** und klicken Sie dann auf **Überprüfung starten**.
 
-   Wenn bei der Überprüfung ein Fehler auftritt, wählen Sie den Link **Fehler anzeigen** aus
+   Wenn bei der Überprüfung ein Fehler auftritt, wird auf der Seite ein Fehler angezeigt. In einigen Fällen wird ein Link **Fehler anzeigen** angezeigt. Wenn dieser Link angezeigt wird, wählen Sie ihn aus. 
 
    > [!div class="mx-imgBorder"]
    > ![Link Fehler anzeigen](./media/upgrade-to-data-lake-storage-gen2-how-to/validation-errors.png)

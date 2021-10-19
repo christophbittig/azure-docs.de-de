@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/04/2021
+ms.date: 10/07/2021
 ms.author: b-juche
-ms.openlocfilehash: b94374d8eaa0efac50989a388686f96d9bae0622
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 6e711f3101426f59aead80b84b88350af86bbd6b
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111537141"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129669186"
 ---
 # <a name="requirements-and-considerations-for-using-cross-region-replication"></a>Regionsübergreifende Replikation: Anforderungen und Überlegungen 
 
@@ -33,7 +33,7 @@ Beachten Sie die folgenden Anforderungen und Überlegungen zur [Verwendung der r
 * Das Zielkonto muss sich in einer anderen Region als das Quellvolume befinden. Sie können auch ein vorhandenes NetApp-Konto in einer anderen Region auswählen.  
 * Das Replikationszielvolume ist schreibgeschützt, bis Sie ein [Failover auf die Zielregion](cross-region-replication-manage-disaster-recovery.md#fail-over-to-destination-volume) durchführen, um das Zielvolume für Lese- und Schreibvorgänge zu aktivieren. 
 * Die Azure NetApp Files-Replikation unterstützt derzeit keine mehreren Abonnements. Alle Replikationen müssen unter einem einzelnen Abonnement ausgeführt werden.
-* Sie können maximal bis zu fünf Volumes innerhalb eines einzelnen Abonnements pro Region für die Replikation einrichten. Sie können ein Supportticket öffnen, um eine Erhöhung des Standardkontingents von fünf Replikationszielvolumes (pro Abonnement in einer Region) anzufordern. 
+* Informationen zur maximalen Anzahl von regionsübergreifenden Replikationszielvolumes finden Sie unter [Ressourcenlimits](azure-netapp-files-resource-limits.md). Sie können ein Supportticket eröffnen, um eine [Erhöhung der Grenzwerte](azure-netapp-files-resource-limits.md#request-limit-increase) im Standardkontingent für Replikationszielvolumes (pro Abonnement in einer Region) anzufordern.
 * Es kann bis zu fünf Minuten dauern, bis in der Oberfläche eine neu hinzugefügte Momentaufnahme auf dem Quellvolume angezeigt wird.  
 * Kaskadierende und nach innen/außen auffächernde Topologien werden nicht unterstützt.
 * Das Konfigurieren der Volumereplikation für Quellvolumes, die aus einer Momentaufnahme erstellt wurden, wird derzeit nicht unterstützt.

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3285c18394c8c59d17e41b3a3eb3fd43428cd61
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 7cda4fe1af43b0bf7f091f34ae03a021c2ac4d20
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129229580"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129667533"
 ---
 # <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>Zuweisen von Vertraulichkeitsbezeichnungen zu Microsoft 365-Gruppen in Azure Active Directory
 
@@ -141,9 +141,9 @@ Bezeichnungen können jederzeit mit denselben folgenden Schritten wie bei der Zu
 1. Wählen Sie auf der Seite der ausgewählten Gruppe **Eigenschaften** und anschließend eine neue Vertraulichkeitsbezeichnung aus der Liste aus.
 1. Wählen Sie **Speichern** aus.
 
-### <a name="group-setting-changes-to-published-labels-are-not-updated-on-the-groups"></a>Änderungen der Gruppeneinstellungen an veröffentlichten Bezeichnungen werden in den Gruppen nicht aktualisiert.
+### <a name="group-setting-changes-to-published-labels-arent-updated-on-the-groups"></a>Änderungen der Gruppeneinstellungen an veröffentlichten Bezeichnungen werden in den Gruppen nicht aktualisiert.
 
-Als bewährte Methode wird nicht empfohlen, dass Sie die Gruppeneinstellungen für eine Bezeichnung ändern, nachdem die Bezeichnung auf Gruppen angewendet wurde. Wenn Sie Änderungen an den Gruppeneinstellungen vornehmen, die veröffentlichten Bezeichnungen im [Microsoft 365 Compliance Center](https://sip.protection.office.com/homepage) zugeordnet sind, werden diese Richtlinienänderungen nicht automatisch auf die betroffenen Gruppen angewendet.
+Wenn Sie Änderungen an den Gruppeneinstellungen für eine veröffentlichte Bezeichnung im [Microsoft 365 Compliance Center](https://sip.protection.office.com/homepage) vornehmen, werden diese Richtlinienänderungen nicht automatisch auf die bezeichneten Gruppen angewendet. Microsoft empfiehlt, die Gruppeneinstellungen für die Bezeichnung nicht im Microsoft 365 Compliance Center zu ändern, nachdem die Vertraulichkeitsbezeichnung veröffentlicht und auf Gruppen angewendet wurde.
 
 Wenn Sie eine Änderung vornehmen müssen, verwenden Sie ein [Azure AD PowerShell-Skript](https://github.com/microsoftgraph/powershell-aad-samples/blob/master/ReassignSensitivityLabelToO365Groups.ps1), um Updates manuell auf die betroffenen Gruppen anzuwenden. Diese Methode stellt sicher, dass alle vorhandenen Gruppen die neue Einstellung erzwingen.
 

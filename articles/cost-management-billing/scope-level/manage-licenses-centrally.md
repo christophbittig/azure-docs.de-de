@@ -4,17 +4,17 @@ description: Dieser Artikel enthält eine ausführliche Erläuterung über die A
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 09/30/2021
+ms.date: 10/07/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: ahb
 ms.reviewer: chrisrin
-ms.openlocfilehash: bc08d9465830043071fd78a6e9735f0443be42ec
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: 69517a84fa28a6c1d9cde0cb51df82a296bd653a
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129547357"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129710160"
 ---
 # <a name="how-azure-applies-assigned-sql-licenses-to-hourly-usage"></a>Die Anwendung zugewiesener SQL-Lizenzen auf die stündliche Nutzung durch Azure
 
@@ -37,7 +37,7 @@ Die in diesem Diagramm gezeigten Preise dienen nur als Beispiel.
 
 :::image type="content" source="./media/manage-licenses-centrally/partially-discounted-consumption.svg" alt-text="Diagramm mit einem zum Teil diskontierten Verbrauch" border="false" lightbox="./media/manage-licenses-centrally/partially-discounted-consumption.svg":::.
 
-Die Azure SQL-Ressourcen, die von den zugewiesenen Core-Lizenzen abgedeckt werden, können von Stunde zu Stunde variieren. Die Varianz hängt davon ab, welche Ressourcen ausgeführt werden und in welcher Reihenfolge das automatisierte System ihre Nutzung verarbeitet. Das System stellt jedoch die maximale Nutzung der zugewiesenen SQL-Lizenzen im ausgewählten Bereich sicher. Sie können die Nutzung mit Azure Cost Management überwachen. Weitere Informationen finden Sie unter [Anleitung zum Nachverfolgen der zugewiesenen Lizenznutzung](create-sql-license-assignments.md#track-assigned-license-use).
+Die Azure SQL-Ressourcen, die von den zugewiesenen Core-Lizenzen abgedeckt werden, können von Stunde zu Stunde variieren. Die Varianz hängt davon ab, welche Ressourcen ausgeführt werden und in welcher Reihenfolge das automatisierte System ihre Nutzung verarbeitet. Das System stellt jedoch die maximale Nutzung der zugewiesenen SQL-Lizenzen im ausgewählten Bereich sicher. Sie können die Nutzung mit Cost Management überwachen. Weitere Informationen finden Sie unter [Anleitung zum Nachverfolgen der zugewiesenen Lizenznutzung](create-sql-license-assignments.md#track-assigned-license-use).
 
 Das folgende Diagramm zeigt, wie die zugewiesenen Microsoft SQL-Server-Lizenzen im Laufe der Zeit angewendet werden, um den maximalen Azure-Hybridvorteil-Rabatt zu erhalten.
 

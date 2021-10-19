@@ -2,16 +2,16 @@
 title: Erstellen und Bereitstellen von Vorlagenspezifikationen
 description: Beschreibt, wie Sie Vorlagenspezifikationen erstellen und diese mit anderen Benutzern in Ihrer Organisation teilen.
 ms.topic: conceptual
-ms.date: 05/04/2021
+ms.date: 10/05/2021
 ms.author: tomfitz
 ms.custom: devx-track-azurepowershell
 author: tfitzmac
-ms.openlocfilehash: bf417b6ca70012a3cf4bce17640aa4bc9ab9fd08
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 8d8b582cdae8b387774402869eccf903a1b394b2
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128611204"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129613432"
 ---
 # <a name="azure-resource-manager-template-specs"></a>Azure Resource Manager-Vorlagenspezifikationen
 
@@ -23,6 +23,8 @@ Zum Bereitstellen der Vorlagenspezifikation verwenden Sie Azure-Standardtools wi
 
 > [!NOTE]
 > Um Vorlagenspezifikationen mit Azure PowerShell zu verwenden, müssen Sie [mindestens Version 5.0.0](/powershell/azure/install-az-ps) installieren. Zur Verwendung mit der Azure CLI verwenden Sie [mindestens Version 2.14.2](/cli/azure/install-azure-cli).
+
+Berücksichtigen Sie beim Entwerfen Ihre Bereitstellung immer den Lebenszyklus der Ressourcen, und gruppieren Sie Ressourcen mit demselben Lebenszyklus in eine einzige Vorlagenspezifikation. Ein Beispiel: Ihre Bereitstellungen umfassen mehrere Instanzen von Cosmos DB, wobei jede Instanz eigene Datenbanken und Container enthält. Unter der Annahme, dass sich die Datenbanken und Container nur wenig ändern werden, sollten Sie eine Vorlagenspezifikation für eine Cosmos DB-Instanz und ihre zugrunde liegenden Datenbanken und Container erstellen. Dann können Sie in Ihren Vorlagen bedingte Anweisungen zusammen mit Kopierschleifen verwenden, um mehrere Instanzen dieser Ressourcen zu erstellen.
 
 ### <a name="microsoft-learn"></a>Microsoft Learn
 

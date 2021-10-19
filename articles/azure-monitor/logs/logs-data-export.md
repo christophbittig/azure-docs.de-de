@@ -6,12 +6,12 @@ ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
 author: bwren
 ms.author: bwren
 ms.date: 05/07/2021
-ms.openlocfilehash: 04662b734f86905f0064bad43ecbecd84bc48042
-ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
+ms.openlocfilehash: beb3d2374e89402795dab0480d840e291c391ec8
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2021
-ms.locfileid: "129401387"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129811569"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Datenexport im Log Analytics-Arbeitsbereich in Azure Monitor (Vorschau)
 Der Datenexport im Log Analytics-Arbeitsbereich in Azure Monitor ermöglicht es Ihnen, Daten aus ausgewählten Tabellen in Ihrem Log Analytics-Arbeitsbereich bei der Sammlung fortlaufend in ein Azure Storage-Konto oder in Azure Event Hubs zu exportieren. In diesem Artikel werden dieses Feature und die Schritte zum Konfigurieren des Datenexports in Ihren Arbeitsbereichen ausführlich beschrieben.
@@ -142,12 +142,46 @@ Wenn Sie Ihr Speicherkonto so konfiguriert haben, dass der Zugriff von ausgewäh
 [![„Firewalls und virtuelle Netzwerke“ unter Ihrem Speicherkonto](media/logs-data-export/storage-account-vnet.png)](media/logs-data-export/storage-account-vnet.png#lightbox)
 
 ### <a name="create-or-update-data-export-rule"></a>Erstellen oder Aktualisieren der Datenexportregel
-Eine Datenexportregel definiert die Tabellen, für die Daten exportiert werden, und das Ziel. Sie können 10 aktivierte Regeln in Ihrem Arbeitsbereich haben, wenn sich jede zusätzliche Regel über 10 im deaktivierten Zustand befinden muss. Ein Ziel muss für alle Exportregeln in Ihrem Arbeitsbereich eindeutig sein.
+Eine Datenexportregel definiert die Tabellen, für die Daten exportiert werden, und das Ziel. In Ihrem Arbeitsbereich können 10 Regeln aktiviert sein. Zusätzliche Regeln können hinzugefügt werden, aber im Status „Deaktivieren“. Ziele müssen für alle Exportregeln im Arbeitsbereich eindeutig sein.
 
-> [!NOTE]
-> Der Datenexport sendet Protokolle an Ziele, deren Eigentümer Sie sind, während diese einige Einschränkungen aufweisen: die [Skalierbarkeit von Speicherkonten](../../storage/common/scalability-targets-standard-account.md#scale-targets-for-standard-storage-accounts), [Event Hub-Namespace-Kontingent](../../event-hubs/event-hubs-quotas.md). Es wird empfohlen, Ihre Ziele auf Drosselung zu überwachen und Maßnahmen anzuwenden, wenn sie sich dem Grenzwert nähern. Beispiel: 
-> - Stellen Sie die automatische Vergrößerungsfunktion im Event-Hub ein, um die Anzahl der TUs (Durchsatzeinheiten) automatisch zu vergrößern und zu erhöhen. Sie können weitere TUs anfordern, wenn die automatische Erhöhung maximal ist
-> - Aufteilen von Tabellen auf mehrere Exportregeln, wobei jede auf verschiedene Ziele verteilt ist
+Datenexportziele weisen Grenzwerte auf, und sie sollten überwacht werden, um Exportdrosselung, Fehler und Latenz zu minimieren. Weitere Informationen finden Sie unter [Skalierbarkeitsziele für Standardspeicherkonten](../../storage/common/scalability-targets-standard-account.md#scale-targets-for-standard-storage-accounts) und [Kontingente und Grenzwerte in Azure Event Hubs](../../event-hubs/event-hubs-quotas.md).
+
+#### <a name="recommendations-for-storage-account"></a>Empfehlungen für Speicherkonten 
+
+1. Verwenden eines separaten Speicherkontos für den Export
+1. Konfigurieren Sie die Warnung für die folgende Metrik mit den folgenden Einstellungen: 
+   - `Operator` Größer als
+   - `Aggregation type` Gesamt
+   - `Aggregation granularity (period)` 5 Minuten
+   - `Frequency of evaluation` Alle 5 Minuten
+  
+    | `Scope` | Metriknamespace | Metric | Aggregation | Schwellenwert |
+    |:---|:---|:---|:---|:---|
+    | Speichername | Konto | Eingehende Daten | Sum | 80 % der maximalen Speichereingangsrate. Beispiel: 60 GBit/s für „Allgemein v2“ in „USA, Westen“ |
+  
+1. Wiederherstellungsmaßnahme
+    - Verwenden eines separaten Event Hub-Namespace für den Export
+    - Azure Storage-Standardkonten unterstützen höhere Eingangsgrenzwerte bei Anforderung. Um eine Steigerung anzufordern, wenden Sie sich an den [Azure-Support](https://azure.microsoft.com/support/faq/).
+    - Aufteilen von Tabellen zwischen zusätzlichen Speicherkonten
+
+#### <a name="recommendations-for-event-hub"></a>Empfehlungen für Event Hub
+
+1. Konfigurieren Sie die Warnung für die folgende Metrik mit den folgenden Einstellungen: 
+   - `Operator` Größer als
+   - `Aggregation type` Gesamt
+   - `Aggregation granularity (period)` 5 Minuten
+   - `Frequency of evaluation` Alle 5 Minuten
+  
+    | `Scope` | Metriknamespace | Metric | Aggregation | Schwellenwert |
+    |:---|:---|:---|:---|:---|
+    | Namespacesname | Event Hub-Standardmetriken | Eingehende Bytes | Sum | 80 % des maximalen Eingangs pro 5 Minuten. Dies sind z. B. 1 MB/s pro TU. |
+    | Namespacesname | Event Hub-Standardmetriken | Eingehende Nachrichten | Sum | 80 % der maximalen Ereignisse pro 5 Minuten. Dies sind z. B. 1000/s pro TU. |
+    | Namespacesname | Event Hub-Standardmetriken | Drosselungsanforderungen | Sum | Zwischen 1 % und 5 % der Anforderung |
+
+1. Wiederherstellungsmaßnahme
+   - Erhöhen der Anzahl von Drosselungseinheiten (TUs)
+   - Aufteilen von Tabellen zwischen zusätzlichen Namespaces
+   - Verwenden der Premium-Event Hub-Ebene für höheren Durchsatz
 
 Die Exportregel sollte Tabellen enthalten, die in Ihrem Arbeitsbereich enthalten sind. Führen Sie diese Abfrage für eine Liste verfügbarer Tabellen in Ihrem Arbeitsbereich aus.
 

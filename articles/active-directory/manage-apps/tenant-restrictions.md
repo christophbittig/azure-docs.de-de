@@ -1,6 +1,7 @@
 ---
-title: Verwalten des Zugriffs auf SaaS-Apps mithilfe von Mandanteneinschränkungen – Azure AD
+title: Verwalten des Zugriffs auf SaaS-Apps mithilfe von Mandanteneinschränkungen
 description: Hier erfahren Sie, wie Sie mithilfe von Mandanteneinschränkungen auf der Grundlage des verwendeten Azure AD-Mandanten steuern, welcher Benutzer auf Apps zugreifen kann.
+titleSuffix: Azure AD
 author: davidmu1
 manager: CelesteDG
 ms.service: active-directory
@@ -11,14 +12,14 @@ ms.date: 7/30/2021
 ms.author: davidmu
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19f3017aafdf15905d4418213fd1020545e57880
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 029328313ac58a5177f5a5e3c75b86fdc3587b43
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128644294"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129613736"
 ---
-# <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Verwalten des Zugriffs auf SaaS-Cloudanwendungen mithilfe von Mandanteneinschränkungen
+# <a name="restrict-access-to-a-tenant-in-azure-active-directory"></a>Einschränken des Zugriffs auf einen Mandanten in Azure Active Directory
 
 Große Organisationen mit hohen Sicherheitsanforderungen, die Clouddienste wie etwa Microsoft 365 nutzen möchten, müssen sich darauf verlassen können, dass ihre Benutzer nur auf genehmigte Ressourcen zugreifen können. Zur Steuerung des Zugriffs schränken Unternehmen in der Regel Domänennamen oder IP-Adressen ein. In einer Welt, in der SaaS-Apps (Software-as-a-Service) in einer öffentlichen Cloud gehostet und unter freigegebenen Domänennamen wie [outlook.office.com](https://outlook.office.com/) und [login.microsoftonline.com](https://login.microsoftonline.com/) ausgeführt werden, ist diese Vorgehensweise jedoch zum Scheitern verurteilt. Die Blockierung der Adressen würde dazu führen, dass Benutzer gar nicht mehr über das Web auf Outlook zugreifen können, anstatt lediglich ihren Zugriff auf genehmigte Identitäten und Ressourcen zu beschränken.
 

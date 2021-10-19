@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/17/2021
 ms.author: danlep
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: 6a6a83ef0e810880ff14ddc8125235229db75787
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 7739411364b187e437e9dda4c72dff85de26d741
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128676168"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129669566"
 ---
 # <a name="protect-a-web-api-backend-in-azure-api-management-using-oauth-20-authorization-with-azure-active-directory"></a>Schützen eines Web-API-Back-Ends in Azure API Management mithilfe der OAuth 2.0-Autorisierung mit Azure Active Directory 
 
@@ -137,7 +137,7 @@ An diesem Punkt haben Sie die Anwendungen in Azure AD erstellt und die erforderl
 
 In diesem Beispiel aktivieren Sie die OAuth 2.0-Benutzerautorisierung in der Entwicklerkonsole (der Client-App).
 
-1. Suchen Sie im Azure-Portal die **Autorisierungsendpunkt-URL** und die **Token-Endpunkt-URL**, und speichern Sie sie zur späteren Verwendung. 
+1. Suchen Sie im Azure-Portal die **Autorisierungsendpunkt-URL** und die **Token-Endpunkt-URL**, und speichern Sie diese zur späteren Verwendung. 
     1. Öffnen Sie die Seite **App-Registrierungen**. 
     1. Wählen Sie **Endpunkte**.
     1. Kopieren Sie den **OAuth 2.0-Autorisierungsendpunkt** und den **OAuth 2.0-Token-Endpunkt**. 

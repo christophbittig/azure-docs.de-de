@@ -3,12 +3,12 @@ title: Überwachen und Schützen von VMs mit nativen Azure-Diensten
 description: Hier erfahren Sie, wie Sie native Microsoft Azure-Tools integrieren und bereitstellen, um Ihre Azure VMware Solution-Workloads zu überwachen und zu verwalten.
 ms.topic: how-to
 ms.date: 08/15/2021
-ms.openlocfilehash: 19453eeb652a0303e0447a80e37b63613aa92255
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: fa3a30ce3908494e1fdf0470781f4057279fe001
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124799318"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714967"
 ---
 # <a name="monitor-and-protect-vms-with-azure-native-services"></a>Überwachen und Schützen von VMs mit nativen Azure-Diensten
 
@@ -92,7 +92,6 @@ Die [Azure-Updateverwaltung](../automation/update-management/overview.md) in Azu
  
 1. Nachdem Sie die Updateverwaltung aktiviert haben, können Sie [Updates auf virtuellen Computern bereitstellen und die Ergebnisse überprüfen](../automation/update-management/deploy-updates.md). 
 
-
 ## <a name="enable-azure-security-center"></a>Aktivieren von Azure Security Center
 
 Bewertet das Sicherheitsrisiko von Azure VMware Solution-VMs und gibt bei Bedarf Warnungen aus Diese Sicherheitswarnungen können zur Behebung an Azure Monitor weitergeleitet werden. Weitere Informationen finden Sie unter [Unterstützte Features für VMs](../security-center/security-center-services.md).
@@ -124,8 +123,7 @@ Erweitern Sie die Azure-Verwaltung auf jede Infrastruktur, einschließlich Azure
 
 
 
-## <a name="onboard-hybrid-kubernetes-clusters-with-arc-enabled-kubernetes"></a>Durchführen des Onboardings für Kubernetes-Hybridcluster mit Kubernetes mit Arc-Aktivierung
-
+## <a name="onboard-hybrid-kubernetes-clusters-with-azure-arc-enabled-kubernetes"></a>Durchführen des Onboardings für Kubernetes-Hybridcluster mit Kubernetes mit Azure Arc-Unterstützung
 
 Fügen Sie einen Kubernetes-Cluster, der in Ihrer Azure VMware Solution-Umgebung gehostet wird, mithilfe von Kubernetes mit Azure Arc-Unterstützung an. Weitere Informationen finden Sie unter [Erstellen eines Azure Arc-fähigen Onboardingdienstprinzipals (Vorschauversion)](../azure-arc/kubernetes/create-onboarding-service-principal.md).
 

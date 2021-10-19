@@ -1,19 +1,19 @@
 ---
-title: Überwachen von Verbrauch und Ausgaben mit Kostenwarnungen
-description: In diesem Artikel wird beschrieben, wie Sie Verbrauch und Ausgaben in Azure Cost Management mithilfe von Kostenwarnungen überwachen können.
+title: Überwachen von Nutzung und Ausgaben mit Kostenwarnungen in Azure Cost Management
+description: In diesem Artikel wird beschrieben, wie Sie Nutzung und Ausgaben mithilfe von Kostenwarnungen in Cost Management überwachen können.
 author: bandersmsft
 ms.author: banders
-ms.date: 09/15/2021
+ms.date: 10/07/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: 14d8408ecec26ea75bc3628ad1f5e35de6833548
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 547dac5984ecc88c452913f406196ade27e74fcd
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128596161"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129705954"
 ---
 # <a name="use-cost-alerts-to-monitor-usage-and-spending"></a>Verwenden von Kostenwarnungen zum Überwachen von Verbrauch und Ausgaben
 

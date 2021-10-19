@@ -9,18 +9,20 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/10/2021
 ms.custom: references_regions
-ms.openlocfilehash: b1c7a8f29c08f00cc69dbd304c8215180f5ace92
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 7d3f76777b717051b7524585abf593f57fedc47d
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124796607"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129707909"
 ---
 # <a name="ai-enrichment-in-azure-cognitive-search"></a>KI-Anreicherung in Azure Cognitive Search
 
 In Azure Cognitive Search bezieht sich KI-Anreicherung auf integrierte kognitive und benutzerdefinierte Skills, die während der Indizierung Inhalte transformieren und generieren. Anreicherungen erstellen neue Informationen, wo bisher keine vorhanden waren: Extrahieren von Informationen aus Bildern, Erkennen von Stimmungen, Schlüsselausdrücke und Entitäten aus Text, um nur einige zu nennen. Anreicherungen fügen auch Struktur zu undifferenziertem Text hinzu. Alle diese Prozesse führen zu Dokumenten, die die Volltextsuche effektiver machen. In vielen Fällen sind angereicherte Dokumente für von der Suche abweichenden Szenarien nützlich, z. B. für das Knowledge Mining.
 
 Die Anreicherung wird durch ein [Skillset](cognitive-search-working-with-skillsets.md) definiert, das mit einem [Indexer](search-indexer-overview.md) verbunden ist. Der Indexer extrahiert den Inhalt und richtet ihn ein, während das Skillset neue Informationen und Strukturen aus Bildern, Blobs und anderen unstrukturierten Datenquellen identifiziert, analysiert und erstellt. Das Ergebnis einer Anreicherungspipeline ist entweder ein [Suchindex](search-what-is-an-index.md) oder ein [Wissensspeicher](knowledge-store-concept-intro.md).
+
+![Diagramm der KI-Anreicherungspipeline](./media/cognitive-search-intro/cogsearch-architecture.png "Übersicht über die KI-Anreicherungspipeline")
 
 Ein Skillset kann integrierte Skills aus Cognitive Search enthalten oder in einem [*benutzerdefinierten Skill*](cognitive-search-create-custom-skill-example.md) bereitgestellte externe Verarbeitung einbetten. Zu Beispielen für benutzerdefinierte Skills zählen ein benutzerdefiniertes Entitätsmodul oder ein benutzerdefinierter Dokumentenklassifizierer, das bzw. der auf eine bestimmte Domäne ausgerichtet ist, wie z. B. Finanzen, wissenschaftliche Veröffentlichungen oder Medizin.
 
@@ -29,8 +31,6 @@ Bei eingebetteten Skills wird zwischen folgenden Kategorien unterschieden:
 + Zu den Skills in Bezug auf die **Verarbeitung natürlicher Sprache** gehören [Entitätserkennung](cognitive-search-skill-entity-recognition-v3.md), [Sprachenerkennung](cognitive-search-skill-language-detection.md), [Schlüsselbegriffserkennung](cognitive-search-skill-keyphrases.md), Textbearbeitung, [Stimmungserkennung (einschließlich Opinion Mining)](cognitive-search-skill-sentiment-v3.md) und [PII-Erkennung](cognitive-search-skill-pii-detection.md). Mit diesen Fähigkeiten wird unstrukturierter Text in Form von durchsuchbaren und filterbaren Feldern in einem Index zugeordnet.
 
 + Die **Bildverarbeitungsfähigkeiten** umfassen [Optical Character Recognition (OCR)](cognitive-search-skill-ocr.md) und die Identifizierung von [visuellen Features](cognitive-search-skill-image-analysis.md), z.B. Gesichtserkennung, Bildinterpretation, Bilderkennung (berühmte Personen und Wahrzeichen) oder Attribute wie Bildausrichtung. Diese Fähigkeiten erstellen Textdarstellungen von Bildinhalt, sodass er mit den Abfragefunktionen von Azure Cognitive Search durchsucht werden kann.
-
-![Diagramm der KI-Anreicherungspipeline](./media/cognitive-search-intro/cogsearch-architecture.png "Übersicht über die KI-Anreicherungspipeline")
 
 Eingebettete Skills in Azure Cognitive Search basieren auf vortrainierten Machine Learning-Modellen in Cognitive Services-APIs: [Maschinelles Sehen](../cognitive-services/computer-vision/index.yml) und [Textanalyse](../cognitive-services/text-analytics/overview.md). Wenn Sie diese Ressourcen während der Inhaltsverarbeitung nutzen möchten, können Sie eine Cognitive Services-Ressource anfügen.
 
@@ -109,11 +109,11 @@ Angereicherte Inhalte werden während der Ausführung des Skillsets generiert un
 
 In Azure Cognitive Search speichert ein Indexer die von ihm erstellte Ausgabe.
 
-Ein [durchsuchbarer Index](search-what-is-an-index.md) ist ein Index der Ausgaben, der immer von einem Indexer erstellt wird. Die Spezifikation eines Indexes ist eine Indexeranforderung, und wenn Sie ein Skillset anfügen, werden die Ausgabe des Skillsets sowie alle Felder, die direkt aus der Quelle importiert werden, verwendet, um den Index zu füllen. In der Regel werden die Ergebnisse bestimmter Skills, z. B. Schlüsselbegriffe oder Stimmungswerte, im Index in zu diesem Zweck erstellten Feldern erfasst.
+Ein [durchsuchbarer Index](search-what-is-an-index.md) ist ein Index der Ausgaben, der immer von einem Indexer erstellt wird. Die Indexangabe ist eine Indexeranforderung, und wenn Sie ein Skillset anfügen, werden die Ausgabe des Skillsets und alle Felder, die direkt aus der Quelle zugeordnet werden, zum Auffüllen des Index verwendet. In der Regel werden die Ergebnisse bestimmter Skills, z. B. Schlüsselbegriffe oder Stimmungswerte, im Index in zu diesem Zweck erstellten Feldern erfasst.
 
 Ein [Wissensspeicher](knowledge-store-concept-intro.md) ist eine optionale Ausgabe, die für nachgeschaltete Apps wie Knowledge Mining verwendet wird. Ein Wissensspeicher wird durch ein Skillset definiert. Seine Definition bestimmt, ob Ihre angereicherten Dokumente als Tabellen oder Objekte (Dateien oder Blobs) projiziert werden. Tabellarische Projektionen eignen sich gut für interaktive Analysen in Tools wie Power BI, während Dateien und Blobs typischerweise in Data Science- oder ähnlichen Prozessen verwendet werden.
 
-Schließlich kann ein Indexer für die potenzielle Wiederverwendung in nachfolgenden Skillsetausführungen [angereicherte Dokumente in Azure Blob Storage zwischenspeichern](cognitive-search-incremental-indexing-conceptual.md). Zwischengespeicherte Anreicherungen können von demselben Skillset verwendet werden, das Sie zu einem späteren Zeitpunkt erneut ausführen. Das Zwischenspeichern ist hilfreich, wenn Ihr Skillset Bildanalyse oder OCR umfasst und Sie Zeit und Kosten für die erneute Verarbeitung von Bilddateien vermeiden möchten.
+Schließlich kann ein Indexer für die potenzielle Wiederverwendung in nachfolgenden Skillsetausführungen [angereicherte Dokumente in Azure Blob Storage zwischenspeichern](cognitive-search-incremental-indexing-conceptual.md). Der Cache dient zur internen Verwendung. Zwischengespeicherte Anreicherungen können von demselben Skillset verwendet werden, das Sie zu einem späteren Zeitpunkt erneut ausführen. Das Zwischenspeichern ist hilfreich, wenn Ihr Skillset Bildanalyse oder OCR umfasst und Sie Zeit und Kosten für die erneute Verarbeitung von Bilddateien vermeiden möchten.
 
 Indizes und Wissensspeicher sind vollständig unabhängig voneinander. Sie müssen zwar einen Index anfügen, um die Indexeranforderungen zu erfüllen, aber wenn Ihr einziges Ziel ein Wissensspeicher ist, können Sie den Index ignorieren, nachdem er aufgefüllt wurde. Löschen Sie ihn jedoch nicht. Wenn Sie den Indexer und das Skillset erneut ausführen möchten, benötigen Sie den Index, damit der Indexer ausgeführt werden kann.
 
@@ -141,7 +141,8 @@ Zur Iteration der oben genannten Schritte [setzen Sie den Indexer zurück](searc
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-+ [Schnellstart: Testen der KI-Anreicherung in einer exemplarischen Vorgehensweise im Portal](cognitive-search-quickstart-blob.md)
++ [Schnellstart: Erstellen eines Skillsets für Textübersetzung und Entität](cognitive-search-quickstart-blob.md)
++ [Schnellstart: Erstellen eines Skillsets für OCR-Bilder](cognitive-search-quickstart-ocr.md)
 + [Tutorial: Informationen zu den REST-APIs für die KI-Anreicherung](cognitive-search-tutorial-blob.md)
 + [Skillsetkonzepte](cognitive-search-working-with-skillsets.md)
 + [Wissensspeicher: Konzepte](knowledge-store-concept-intro.md)

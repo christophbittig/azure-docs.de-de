@@ -11,12 +11,12 @@ ms.custom:
 - amqp
 - mqtt
 - device-developer
-ms.openlocfilehash: bf35868d67dab2cb48aee5c85b964f86abd912e3
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 74dea2337bb40469e4d4e94117df080960faca53
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128653776"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129858770"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Herstellen einer Verbindung mit Azure IoT Central
 
@@ -75,7 +75,7 @@ Mit den folgenden Hilfsprogrammen können Sie ausschließlich zu Testzwecken Sta
 
 So stellen Sie eine Verbindung eines Geräts mit einem Geräte-SAS-Schlüssel mit Ihrer Anwendung her:
 
-1. Erstellen Sie eine *Registrierungsgruppe*, die den Nachweistyp **Shared Access Signature (SAS)** verwendet.
+1. Erstellen Sie eine *Registrierungsgruppe*, die den Nachweistyp **Shared Access Signature (SAS)** verwendet. 
 1. Kopieren Sie den Gruppenprimärschlüssel oder -sekundärschlüssel aus der Registrierungsgruppe.
 1. Verwenden Sie die Azure CLI, um einen Geräteschlüssel aus dem Gruppenschlüssel zu generieren:
 
@@ -84,6 +84,9 @@ So stellen Sie eine Verbindung eines Geräts mit einem Geräte-SAS-Schlüssel mi
     ```
 
 1. Verwenden Sie den generierten Geräteschlüssel, wenn das Gerät eine Verbindung mit ihrer IoT Central-Anwendung herstellt.
+
+> [!NOTE]
+> Um vorhandene SAS-Schlüssel in Ihren Registrierungsgruppen zu verwenden, deaktivieren Sie den Umschalter **Schlüssel automatisch generieren**, und geben Sie die SAS-Schlüssel ein.
 
 ## <a name="individual-enrollment"></a>Individuelle Registrierung
 

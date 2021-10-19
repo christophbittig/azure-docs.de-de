@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a55a49232e18c61f1c5b1915c06cd61e1f13ab0b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 4fe44c7880420d7f2bc89f479e152a23f22909e8
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128674431"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129670212"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Key Vault-VM-Erweiterung für Linux
 
@@ -33,6 +33,9 @@ Die Key Vault-VM-Erweiterung unterstützt folgende Linux-Distributionen:
 > [!NOTE]
 > Um erweiterte sicherheitsbezogene Features zu erhalten, bereiten Sie sich auf ein Upgrade von Ubuntu-1604- und Debian-9-Systemen vor, da diese Versionen das Ende des vorgesehenen Supportzeitraums erreichen.
 > 
+
+> [!NOTE]
+> Die Key Vault-VM-Erweiterung lädt die Zertifikate in den Standardspeicherort oder den durch die Eigenschaft „certStoreLocation“ in den Einstellungen der VM-Erweiterung angegebenen Speicherort herunter. Die Key Vault-VM-Erweiterung aktualisiert die Ordnerberechtigung auf „700 (drwx------)“ und gewährt damit nur dem Besitzer des Ordners Lese-, Schreib- und Ausführungsberechtigungen.
 
 ### <a name="supported-certificate-content-types"></a>Unterstützte Zertifikatsinhaltstypen
 

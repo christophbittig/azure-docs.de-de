@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.date: 03/03/2021
 ms.author: duau
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6c0e01349c56744590f35659edae66d963aeb302
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 17445b90c3923fa6c3772b40024eec5657cae89e
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110697969"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129858593"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Traffic Manager
 
@@ -448,7 +448,7 @@ Wenn keine benutzerdefinierte Hostheadereinstellung angegeben wird, ist der vom 
 
 ### <a name="what-are-the-ip-addresses-from-which-the-health-checks-originate"></a>Wie lauten die IP-Adressen, von denen die Integritätsüberprüfungen stammen?
 
-Klicken Sie [hier](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api-public-preview), um zu erfahren, wie Sie die Listen der IP-Adressen abrufen können, von denen Traffic Manager-Integritätsprüfungen ausgehen können. Sie können die REST-API, die Azure CLI oder Azure PowerShell verwenden, um die aktuelle Liste abzurufen. Überprüfen Sie die aufgelisteten IP-Adressen, um sicherzustellen, dass eingehende Verbindungen von diesen IP-Adressen an den Endpunkten zur Überprüfung des Integritätsstatus zugelassen sind.
+In [diesem Artikel](../virtual-network/service-tags-overview.md#use-the-service-tag-discovery-api) erfahren Sie, wie Sie die Listen der IP-Adressen abrufen können, von denen Traffic Manager-Integritätsprüfungen stammen können. Sie können die REST-API, die Azure CLI oder Azure PowerShell verwenden, um die aktuelle Liste abzurufen. Überprüfen Sie die aufgelisteten IP-Adressen, um sicherzustellen, dass eingehende Verbindungen von diesen IP-Adressen an den Endpunkten zur Überprüfung des Integritätsstatus zugelassen sind.
 
 Beispiel mit Azure PowerShell:
 
