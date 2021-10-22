@@ -280,7 +280,7 @@ Führen Sie die Front-End-App und API zusammen aus, indem Sie die App mit der St
     Übergeben Sie den aktuellen Ordner (`src`) und den API-Ordner (`api`) an die CLI.
      
     ```bash
-    swa start src --api api
+    swa start src --api-location api
     ```
 
     # <a name="angular"></a>[Angular](#tab/angular)
@@ -288,7 +288,7 @@ Führen Sie die Front-End-App und API zusammen aus, indem Sie die App mit der St
     Übergeben Sie den Buildausgabeordner (`dist/angular-basic`) und den API-Ordner (`api`) an die CLI.
 
     ```bash
-    swa start dist/angular-basic --api api
+    swa start dist/angular-basic --api-location api
     ```
 
     # <a name="react"></a>[React](#tab/react)
@@ -296,7 +296,7 @@ Führen Sie die Front-End-App und API zusammen aus, indem Sie die App mit der St
     Übergeben Sie den Buildausgabeordner (`build`) und den API-Ordner (`api`) an die CLI.
 
     ```bash
-    swa start build --api api
+    swa start build --api-location api
     ```
 
     # <a name="vue"></a>[Vue](#tab/vue)
@@ -304,7 +304,7 @@ Führen Sie die Front-End-App und API zusammen aus, indem Sie die App mit der St
     Übergeben Sie den Buildausgabeordner (`dist`) und den API-Ordner (`api`) an die CLI.
 
     ```bash
-    swa start dist --api api
+    swa start dist --api-location api
     ```
 
     ---
