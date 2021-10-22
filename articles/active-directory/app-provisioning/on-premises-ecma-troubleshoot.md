@@ -3,7 +3,7 @@ title: Behandeln von Problemen mit dem ECMA-Connectorhost und Azure AD
 description: Hier wird die Behandlung verschiedener Probleme beschrieben, die bei der Installation und Verwendung des ECMA-Connectorhosts auftreten können.
 services: active-directory
 author: billmath
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
@@ -11,12 +11,12 @@ ms.date: 08/24/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cae6f7285618771f2486c62bfbd3d532db146c8a
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 002c57afde5909a6f02644b554b389d02735def0
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129350619"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129991129"
 ---
 # <a name="troubleshoot-ecma-connector-host-issues"></a>Problembehandlung für den ECMA-Connectorhost
 

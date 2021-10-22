@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 6/1/2021
 ms.topic: tutorial
 ms.service: digital-twins
-ms.openlocfilehash: 50e5a8fb09a3bd54dd4131f6c60de6b315233e86
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 8df2c2a1eb7a16df4d35a8b6530aec82a1632722
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128557654"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129996283"
 ---
 # <a name="tutorial-create-an-azure-digital-twins-graph-using-the-azure-cli"></a>Tutorial: Erstellen eines Azure Digital Twins-Graphen unter Verwendung der Azure CLI
 
@@ -52,7 +52,7 @@ Verwenden Sie die oben bereitgestellten Navigationslinks, und kopieren Sie die D
 
 Für die Arbeit mit Azure Digital Twins in diesem Artikel müssen Sie zuerst **eine Azure Digital Twins-Instanz einrichten** und die für die Nutzung erforderlichen Berechtigungen gewähren. Wenn Sie zuvor bereits eine Azure Digital Twins-Instanz eingerichtet haben, können Sie diese nutzen.
 
-Befolgen Sie andernfalls die Anleitung unter [Einrichten einer Instanz und der Authentifizierung](how-to-set-up-instance-cli.md). Die Anleitung enthält auch Schritte zur Überprüfung, ob Sie jeden Schritt erfolgreich abgeschlossen haben und für die Nutzung Ihrer neuen Instanz bereit sind.
+Befolgen Sie andernfalls die Anleitung unter [Einrichten einer Instanz und der Authentifizierung](how-to-set-up-instance-cli.md#create-the-azure-digital-twins-instance). Die Anleitung enthält auch Schritte zur Überprüfung, ob Sie jeden Schritt erfolgreich abgeschlossen haben und für die Nutzung Ihrer neuen Instanz bereit sind.
 
 Nachdem Sie Ihre Azure Digital Twins-Instanz eingerichtet haben, notieren Sie sich die folgenden Werte, die Sie benötigen, um später eine Verbindung mit der Instanz herzustellen:
 * Den **_Hostnamen_** der Instanz

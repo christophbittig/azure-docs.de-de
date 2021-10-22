@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/20/2021
 ms.author: v-erkel
-ms.openlocfilehash: 0aa704b44a7a61472b3d10c3b7cc94f5e95dd9ff
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 2a8c35db125b80223cbb4f07e8c01ca45428a3a8
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128700149"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130004937"
 ---
 # <a name="load-balance-hpc-cache-client-traffic"></a>Lastenausgleich für HPC Cache-Clientdatenverkehr
 
@@ -37,7 +37,9 @@ Weitere Informationen finden Sie unter [Einbinden der Azure HPC Cache-Instanz](h
 
 ## <a name="use-scripted-load-balancing"></a>Verwenden eines skriptgesteuerten Lastenausgleichs
 
-Es gibt mehrere Möglichkeiten, Clienteinbindungen unter den verfügbaren IP-Adressen programmgesteuert zu rotieren.
+Es gibt mehrere Möglichkeiten, Clienteinbindungen unter den verfügbaren IP-Adressen programmgesteuert zu rotieren. Hier sind zwei Beispiele angegeben.
+
+### <a name="mount-command-script-cksum-example"></a>Beispiel für Einbindungsbefehlsskript „cksum“
 
 Dieser Beispieleinbindungsbefehl verwendet die Hashfunktion ``cksum`` und den Hostnamen des Clients, um die Clientverbindungen automatisch auf alle verfügbaren IP-Adressen in Ihrer HPC Cache-Instanz zu verteilen. Wenn alle Clientcomputer eindeutige Hostnamen haben, können Sie diesen Befehl auf jedem Client ausführen, um sicherzustellen, dass alle verfügbaren Einbindungspunkte verwendet werden.
 
@@ -67,6 +69,35 @@ Hier sehen Sie ein Beispiel eines aufgefüllten Clienteinbindungsbefehls:
 
 ```bash
 mount -o hard,proto=tcp,mountproto=tcp,retry=30 $(X=(10.7.0.{1..3});echo ${X[$(($(hostname|cksum|cut -f 1 -d ' ')%3))]}):/blob-target-1 /hpc-cache/blob1 
+```
+
+### <a name="round-robin-function-example"></a>Beispiel für Roundrobin-Funktion
+
+Dieses Codebeispiel verwendet Client-IP-Adressen als zufälliges Element, um Clients an alle verfügbaren IP-Adressen des HPC Caches zu verteilen.
+
+```bash
+function mount_round_robin() {
+
+  # to ensure the clients are spread out somewhat evenly the default
+  # mount point is based on this client's IP octet4 % number of HPC cache mount IPs.
+
+  declare -a MOUNT_IPS="($(echo ${NFS_IP_CSV} | sed "s/,/ /g"))"
+  HASH=$(hostname | cksum | cut -f 1 -d ' ')
+  DEFAULT_MOUNT_INDEX=$((${HASH} % ${#MOUNT_IPS[@]}))
+  ROUND_ROBIN_IP=${MOUNT_IPS[${DEFAULT_MOUNT_INDEX}]}
+
+  DEFAULT_MOUNT_POINT="${BASE_DIR}/default"
+
+  # no need to write again if it is already there
+  if ! grep --quiet "${DEFAULT_MOUNT_POINT}" /etc/fstab; then
+      echo "${ROUND_ROBIN_IP}:${NFS_PATH} ${DEFAULT_MOUNT_POINT} nfs hard,proto=tcp,mountproto=tcp,retry=30 0 0" >> /etc/fstab
+      mkdir -p "${DEFAULT_MOUNT_POINT}"
+      chown nfsnobody:nfsnobody "${DEFAULT_MOUNT_POINT}"
+  fi
+  if ! grep -qs "${DEFAULT_MOUNT_POINT} " /proc/mounts; then
+      retrycmd_if_failure 12 20 mount "${DEFAULT_MOUNT_POINT}" || exit 1
+  fi
+}
 ```
 
 ## <a name="use-dns-load-balancing"></a>Verwenden des DNS-Lastenausgleichs

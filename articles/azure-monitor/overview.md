@@ -5,12 +5,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2019
-ms.openlocfilehash: afe6e82c3cc9773fbf0c17992fd6894d199d177f
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 02a568d48ca99a58778adfd4068c359b4748ab43
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105937242"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130178449"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor – Übersicht
 
@@ -44,7 +44,7 @@ Für viele Azure-Ressourcen können die von Azure Monitor gesammelten Daten dire
 
 ![Diagramm der Metrikdaten, die zur Verwendung in Visualisierungen an den Metrik-Explorer übermittelt werden](media/overview/metrics.png)
 
-Die in Azure Monitor gesammelten Protokolldaten können mit [Abfragen](logs/log-query-overview.md) analysiert werden, die die gesammelten Daten schnell abrufen, konsolidieren und analysieren.  Sie können Abfragen mithilfe von [Log Analytics](./logs/log-query-overview.md) im Azure-Portal erstellen und testen. Sie die können die Daten dann entweder mit verschiedenen Tools direkt analysieren oder Abfragen zur Verwendung mit [Visualisierungen](visualizations.md) oder [Warnungsregeln](alerts/alerts-overview.md) speichern.
+Die in Azure Monitor gesammelten Protokolldaten können mit [Abfragen](logs/log-query-overview.md) analysiert werden, die die gesammelten Daten schnell abrufen, konsolidieren und analysieren.  Sie können Abfragen mithilfe von [Log Analytics](./logs/log-query-overview.md) im Azure-Portal erstellen und testen. Sie die können die Daten dann entweder mit verschiedenen Tools direkt analysieren oder Abfragen zur Verwendung mit [Visualisierungen](best-practices-analysis.md) oder [Warnungsregeln](alerts/alerts-overview.md) speichern.
 
 Azure Monitor verwendet eine Version der [Kusto-Abfragesprache](/azure/kusto/query/), die für einfache Protokollabfragen geeignet ist, aber auch erweiterte Funktionen enthält, z. B. Aggregationen, Verknüpfungen und intelligente Analysen. Sie können die Abfragesprache schnell erlernen, indem Sie [mehrere Lektionen](logs/get-started-queries.md) nutzen.  Es ist eine spezielle Anleitung für Benutzer vorhanden, die bereits mit [SQL](/azure/data-explorer/kusto/query/sqlcheatsheet) und [Splunk](/azure/data-explorer/kusto/query/splunk-cheat-sheet) vertraut sind.
 
@@ -107,7 +107,7 @@ Bei der automatischen Skalierung können Sie jeweils die richtige Menge an Resso
 ![Diagramm: Autoskalierung mit mehreren Servers auf einer Linie mit der Bezeichnung „Processor Time > 80%“ (Prozessorzeit > 80 %) und zwei Servern als Minimum, drei Servern als aktuelle Kapazität und fünf Servern als Maximum](media/overview/autoscale.png)
 
 ## <a name="visualizing-monitoring-data"></a>Visualisieren von Überwachungsdaten
-[Visualisierungen](visualizations.md) wie Diagramme und Tabellen sind effektive Tools zur Zusammenfassung von Überwachungsdaten und zu ihrer Präsentation für verschiedene Zielgruppen. Azure Monitor verfügt über eigene Features zum Visualisieren von Überwachungsdaten und nutzt andere Azure-Dienste, um sie für verschiedene Zielgruppen zu veröffentlichen.
+[Visualisierungen](best-practices-analysis.md) wie Diagramme und Tabellen sind effektive Tools zur Zusammenfassung von Überwachungsdaten und zu ihrer Präsentation für verschiedene Zielgruppen. Azure Monitor verfügt über eigene Features zum Visualisieren von Überwachungsdaten und nutzt andere Azure-Dienste, um sie für verschiedene Zielgruppen zu veröffentlichen.
 
 ### <a name="dashboards"></a>Dashboards
 Mit [Azure Dashboards](../azure-portal/azure-portal-dashboards.md) können Sie verschiedene Arten von Daten zentral in einem Bereich im [Azure-Portal](https://portal.azure.com) kombinieren. Sie können das Dashboard optional gemeinsam mit anderen Azure-Benutzern nutzen. Fügen Sie einem Azure-Dashboard die Ausgabe einer beliebigen Protokollabfrage oder eines Metrikdiagramms hinzu. Beispielsweise können Sie ein Dashboard erstellen, das Kacheln kombiniert, die ein Diagramm der Metriken, eine Tabelle mit Aktivitätsprotokollen, ein Nutzungsdiagramm von Application Insights und die Ausgabe einer Protokollabfrage zeigen.

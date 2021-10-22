@@ -5,13 +5,13 @@ author: ekpgh
 ms.author: v-erkel
 ms.service: fxt-edge-filer
 ms.topic: tutorial
-ms.date: 06/20/2019
-ms.openlocfilehash: 8d349a0faa2cfc97f029e496b9bd92b1e5057018
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.date: 10/07/2021
+ms.openlocfilehash: c723214962e67ef04f9cf7659f63d29af87a4732
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122867501"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129670048"
 ---
 # <a name="tutorial-configure-the-clusters-network-settings"></a>Tutorial: Konfigurieren der Netzwerkeinstellungen des Clusters
 
@@ -102,42 +102,46 @@ Beachten Sie diese Faktoren bei der Entscheidung, ob Sie einen DNS-Server verwen
 
 ### <a name="round-robin-dns-configuration-details"></a>Konfigurationsdetails für Roundrobin-DNS
 
-Wenn Clients auf den Cluster zugreifen, gleicht RRDNS ihre Anforderungen automatisch zwischen allen verfügbaren Schnittstellen aus.
+Ein RRDNS-System (Roundrobin DNS) leitet Clientanforderungen automatisch an mehrere Adressen weiter.
 
-Konfigurieren Sie Ihren DNS-Server so, dass er clientseitige Clusteradressen wie in der folgenden Abbildung dargestellt verarbeitet, um optimale Leistungen zu erhalten.
+Um dieses System einzurichten, müssen Sie die Konfigurationsdatei des DNS-Servers so anpassen, dass er bei Einbindungsanforderungen an die Hauptdomänenadresse der FXT Edge Filer-Instanz den Datenverkehr allen Bereitstellungspunkten des Clusters zuweist. Clients binden den Cluster unter Verwendung seines Domänennamens als Serverargument ein und werden automatisch zur nächsten IP-Adresse zur Einbindung geroutet.
 
-Auf der linken Seite wird ein virtueller Clusterserver und in der Mitte und auf der rechten Seite werden IP-Adressen angezeigt. Konfigurieren Sie die einzelnen Clientzugriffspunkte mit A-Einträgen und Zeigern, wie in der Abbildung gezeigt.
+Es gibt zwei Hauptschritte zum Konfigurieren von RRDNS:
 
-:::image type="complex" source="media/fxt-cluster-config/fxt-rrdns-diagram.png" alt-text="Diagramm der Cluster-Roundrobin-DNS-Konfiguration.":::
-   <Das Diagramm zeigt Verbindungen zwischen drei Kategorien von Elementen: einem einzelnen vServer (links), drei IP-Adressen (mittlere Spalte) und drei Clientschnittstellen (rechte Spalte). Ein einzelner Kreis auf der linken Seite mit der Bezeichnung „vserver1“ ist durch Pfeile verbunden, die auf drei Kreise zeigen, die mit den IP-Adressen 10.0.0.10, 10.0.0.11 und 10.0.0.12 bezeichnet sind. Die Pfeile vom vserver-Kreis zu den drei IP-Adressenkreisen haben die Beschriftung „A“. Jeder der IP-Adressenkreise ist durch zwei Pfeile mit einem Kreis verbunden, der als Clientschnittstelle bezeichnet ist. Der Kreis mit der IP-Adresse 10.0.0.10 ist mit „vs1-client-IP-10“ verbunden, der Kreis mit der IP-Adresse 10.0.0.11 ist mit „vs1-client-IP-11“ verbunden, und der Kreis mit der IP-Adresse 10.0.0.12 ist mit „vs1-client-IP-12“ verbunden. Die Verbindungen zwischen den IP-Adressenkreisen und den Clientschnittstellenkreisen sind zwei Pfeile: ein Pfeil mit der Bezeichnung „PTR“, der vom IP-Adressenkreis auf den Kreis der Clientschnittstelle zeigt, und ein Pfeil mit der Bezeichnung „A“, der vom Kreis der Clientschnittstelle auf den IP-Adressenkreis zeigt.> :::image-end:::
+1. Ändern Sie die Datei ``named.conf`` Ihres DNS-Servers so, dass eine zyklische Reihenfolge für Abfragen an Ihren FXT-Cluster festgelegt wird. Diese Option veranlasst den Server, alle verfügbaren IP-Adressen zu durchlaufen. Fügen Sie eine Anweisung wie die folgende hinzu:
 
-Jede clientseitige IP-Adresse muss einen eindeutigen Namen für die interne Verwendung durch den Cluster aufweisen. (In diesem Diagramm werden die Client-IPs aus Gründen der Übersichtlichkeit mit „vs1-client-IP-*“ bezeichnet, aber in der Produktionsumgebung sollten Sie eine prägnantere Bezeichnung verwenden, z. B. „client*“.)
+   ```bash
+   options {
+       rrset-order {
+           class IN A name "fxt.contoso.com" order cyclic;
+       };
+   };
+   ```
 
-Clients binden den Cluster über den VServer-Namen als Serverargument ein.
+1. Konfigurieren Sie wie im folgenden Beispiel für jede verfügbare IP-Adresse A- und Zeigereinträge (PTR).
 
-Ändern Sie die Datei ``named.conf`` Ihres DNS-Servers, um die Reihenfolge für Abfragen an Ihren VServer festzulegen. Diese Option stellt sicher, dass alle verfügbaren Werte durchlaufen werden. Fügen Sie eine Anweisung wie die folgende hinzu:
+   Diese ``nsupdate``-Befehle sind ein Beispiel für die korrekte Konfiguration von DNS für einen Azure FXT Edge Filer-Cluster mit dem Domänennamen fxt.contoso.com und drei Einbindungsadressen (10.0.0.10, 10.0.0.11 und 10.0.0.12):
 
-```
-options {
-    rrset-order {
-        class IN A name "vserver1.example.com" order cyclic;
-    };
-};
-```
+   ```bash
+   update add fxt.contoso.com. 86400 A 10.0.0.10
+   update add fxt.contoso.com. 86400 A 10.0.0.11
+   update add fxt.contoso.com. 86400 A 10.0.0.12
+   update add client-IP-10.contoso.com. 86400 A 10.0.0.10
+   update add client-IP-11.contoso.com. 86400 A 10.0.0.11
+   update add client-IP-12.contoso.com. 86400 A 10.0.0.12
+   update add 10.0.0.10.in-addr.arpa. 86400 PTR client-IP-10.contoso.com
+   update add 11.0.0.10.in-addr.arpa. 86400 PTR client-IP-11.contoso.com
+   update add 12.0.0.10.in-addr.arpa. 86400 PTR client-IP-12.contoso.com
+   ```
 
-Die folgenden ``nsupdate``-Befehle sind ein Beispiel für die ordnungsgemäße Konfiguration von DNS:
+   Mit diesen Befehlen wird ein A-Eintrag für jede der Einbindungsadressen des Clusters erstellt. Außerdem werden Zeigereinträge eingerichtet, um Reverse-DNS-Überprüfungen entsprechend zu unterstützen.
 
-```
-update add vserver1.example.com. 86400 A 10.0.0.10
-update add vserver1.example.com. 86400 A 10.0.0.11
-update add vserver1.example.com. 86400 A 10.0.0.12
-update add vs1-client-IP-10.example.com. 86400 A 10.0.0.10
-update add vs1-client-IP-11.example.com. 86400 A 10.0.0.11
-update add vs1-client-IP-12.example.com. 86400 A 10.0.0.12
-update add 10.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-10.example.com
-update add 11.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-11.example.com
-update add 12.0.0.10.in-addr.arpa. 86400 PTR vs1-client-IP-12.example.com
-```
+   Das folgende Diagramm zeigt die grundlegende Struktur dieser Konfiguration.
+
+   :::image type="complex" source="media/round-robin-dns-diagram-fxt.png" alt-text="Diagramm der DNS-Konfiguration der Clienteinbindungspunkte.":::
+   <Das Diagramm zeigt Verbindungen zwischen drei Kategorien von Elementen: einem einzelnen FXT Edge Filer-Clusterdomänennamen (links), drei IP-Adressen (mittlere Spalte) und drei Reverse-DNS-Clientschnittstellen zur internen Verwendung (rechte Spalte). Ein einzelnes Oval auf der linken Seite mit der Bezeichnung „fxt.contoso.com“ ist durch Pfeile verbunden, die auf drei Ovale zeigen, die mit den IP-Adressen 10.0.0.10, 10.0.0.11 und 10.0.0.12 bezeichnet sind. Die Pfeile vom Oval fxt.contoso.com zu den drei Ovalen mit IP-Adressen sind mit „A“ beschriftet. Jedes der Ovale mit IP-Adressen ist durch zwei Pfeile mit einem Oval verbunden, das als Clientschnittstelle beschriftet ist. Das Oval mit der IP-Adresse 10.0.0.10 ist mit client-IP-10.contoso.com verbunden. Das Oval mit der IP-Adresse 10.0.0.11 ist mit client-IP-11.contoso.com verbunden. Und das Oval mit der IP-Adresse 10.0.0.12 ist mit client-IP-11.contoso.com verbunden. Die Verbindungen zwischen den Ovalen mit IP-Adressen und den Clientschnittstellen sind zwei Pfeile: ein Pfeil mit der Beschriftung PTR, der vom Oval mit der IP-Adresse auf das Oval mit der Clientschnittstelle zeigt, und ein Pfeil mit der Beschriftung „A“, der vom Oval mit der Clientschnittstelle auf das Oval mit der IP-Adresse zeigt.> :::image-end:::
+
+Nach der Konfiguration des RRDNS-Systems weisen Sie Ihre Clientsysteme an, die Adresse des FXT-Clusters in ihren Einbindungsbefehlen über dieses System aufzulösen.
 
 ### <a name="enable-dns-in-the-cluster"></a>Aktivieren von DNS im Cluster
 

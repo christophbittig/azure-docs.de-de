@@ -2,16 +2,14 @@
 title: Problembehandlung für auf Azure Monitor-Arbeitsmappen basierende Erkenntnisse
 description: Enthält eine Anleitung zur Problembehandlung für auf Azure Monitor-Arbeitsmappen basierende Erkenntnisse zu Diensten wie Azure Key Vault, Azure Cosmos DB, Azure Storage und Azure Cache for Redis.
 services: azure-monitor
-ms.author: lagayhar
-author: lgayhardt
 ms.topic: conceptual
 ms.date: 06/17/2020
-ms.openlocfilehash: a823b5e2ae31e62ff6d876f0b3468953c0ed9c35
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 005d59f2f9afb8dfa19c642ef89386be51005fd7
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100587157"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130131826"
 ---
 # <a name="troubleshooting-workbook-based-insights"></a>Problembehandlung für arbeitsmappenbasierte Erkenntnisse
 

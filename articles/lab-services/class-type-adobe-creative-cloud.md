@@ -2,15 +2,15 @@
 title: Einrichten eines Labs mit Adobe Creative Cloud unter Verwendung von Azure Lab Services | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie ein Lab für Kurse im Bereich „Digitale Kunst und Medien“ einrichten, bei denen Adobe Creative Cloud zum Einsatz kommt.
 author: nicolela
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/21/2021
 ms.author: nicolela
-ms.openlocfilehash: 210fa647f12a786e357902bef3bbb3b20cca8077
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 3802687b76929bda96e34a9b1cb402096bee40c5
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111962654"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130177154"
 ---
 # <a name="set-up-a-lab-for-adobe-creative-cloud"></a>Einrichten eines Labs für Adobe Creative Cloud
 Bei [Adobe Creative Cloud](https://www.adobe.com/creativecloud.html) handelt es sich um eine Sammlung von Desktopanwendungen und Webdiensten, die für Fotografie, Design, Videos, Web, Benutzererfahrungen und Ähnliches verwendet werden.  Universitäten und weiterführende Schulen nutzen Creative Cloud in Kursen für digitale Kunst und Medien.  Einige der Medienprozesse von Creative Cloud erfordern möglicherweise mehr Rechen- und Visualisierungsleistung (GPU) als bei einem typischen Tablet oder Laptop bzw. bei einer typischen Arbeitsstation zur Verfügung steht.  Mit Azure Lab Services können Sie flexibel zwischen verschiedenen VM-Größen (und auch GPU-Größen) wählen.

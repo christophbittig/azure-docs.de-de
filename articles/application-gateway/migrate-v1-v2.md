@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 4757a8237aa6226b78e7c1e79ba50710e31d28e3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 000daf7c60d0bc823aacdab85de42af3b6cbbf55
+ms.sourcegitcommit: 079426f4980fadae9f320977533b5be5c23ee426
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99594264"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129419047"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Migrieren von Azure Application Gateway und Web Application Firewall von v1 zu v2
 
@@ -84,6 +84,7 @@ So führen Sie das Skript aus
     -resourceId <v1 application gateway Resource ID>
     -subnetAddressRange <subnet space you want to use>
     -appgwName <string to use to append>
+    -AppGwResourceGroupName <resource group name you want to use>
     -sslCertificates <comma-separated SSLCert objects as above>
     -trustedRootCertificates <comma-separated Trusted Root Cert objects as above>
     -privateIpAddress <private IP string>
@@ -101,8 +102,9 @@ So führen Sie das Skript aus
      $appgw.Id
      ```
 
-   * **subnetAddressRange: [Zeichenfolge]:  Erforderlich** – Dies ist der IP-Adressraum, den Sie einem neuen Subnetz, das Ihr neues v2-Gateway enthält, zugewiesen haben (oder zuweisen wollen). Diese Angabe muss in der CIDR-Notation erfolgen. Beispiel: 10.0.0.0/24. Sie müssen dieses Subnetz nicht im Voraus anlegen. Das Skript erstellt es für Sie, wenn es nicht vorhanden ist.
+   * **subnetAddressRange: [Zeichenfolge]:  Erforderlich** – Dies ist der IP-Adressraum, den Sie einem neuen Subnetz, das Ihr neues v2-Gateway enthält, zugewiesen haben (oder zuweisen wollen). Diese Angabe muss in der CIDR-Notation erfolgen. Beispiel: 10.0.0.0/24. Sie müssen dieses Subnetz nicht im Voraus erstellen, aber das CIDR muss Teil des VNET-Adressraums sein. Wenn das Subnetz nicht vorhanden ist, erstellt das Skript es; wenn es vorhanden ist, wird dieses vorhandene Subnetz verwendet. (Stellen Sie sicher, dass das Subnetz leer ist oder nur das v2-Gateway enthält (sofern vorhanden) und über genügend verfügbare Ps verfügt.)
    * **appgwName: [Zeichenfolge]: Optional**. Dies ist eine Zeichenfolge, die als der Name des neuen Standard_v2- oder WAF_v2-Gateways verwendet werden soll. Ist dieser Parameter nicht angegeben, wird der Name Ihres vorhandenen v1-Gateways verwendet, an den das Suffix *_v2* angefügt wird.
+   * **AppGwResourceGroupName: [Zeichenfolge]: Optional**. Name der Ressourcengruppe, in der v2-Anwendungsgateway-Ressourcen erstellt werden sollen (Standardwert ist `<v1-app-gw-rgname>`)
    * **sslCertificates: [PSApplicationGatewaySslCertificate]: Optional**.  Eine Liste aus PSApplicationGatewaySslCertificate-Objekten, die Sie mit Kommas als Trennzeichen erstellt haben und in der die TLS/SSL-Zertifikate aus Ihrem v1-Gateway aufgeführt sind, muss in das neue v2-Gateway hochgeladen werden. Für jedes Ihrer TLS/SSL-Zertifikate, die für Ihr Standard-v1- oder -WAF-v1-Gateway konfiguriert sind, können Sie über den hier gezeigten `New-AzApplicationGatewaySslCertificate`-Befehl ein neues PSApplicationGatewaySslCertificate-Objekt erstellen. Sie benötigen den Pfad zu Ihrer TLS/SSL-Zertifikatsdatei und das Kennwort.
 
      Dieser Parameter ist nur optional, wenn Sie für das v1-Gateway oder die v1-WAF keine HTTPS-Listener konfiguriert haben. Sobald Sie mindestens einen HTTPS-Listener eingerichtet haben, müssen Sie diesen Parameter angeben.
@@ -140,6 +142,7 @@ So führen Sie das Skript aus
       -resourceId /subscriptions/8b1d0fea-8d57-4975-adfb-308f1f4d12aa/resourceGroups/MyResourceGroup/providers/Microsoft.Network/applicationGateways/myv1appgateway `
       -subnetAddressRange 10.0.0.0/24 `
       -appgwname "MynewV2gw" `
+      -AppGwResourceGroupName "MyResourceGroup" `
       -sslCertificates $mySslCert1,$mySslCert2 `
       -trustedRootCertificates $trustedCert `
       -privateIpAddress "10.0.0.1" `

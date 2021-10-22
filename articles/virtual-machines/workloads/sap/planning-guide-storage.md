@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/17/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0af6df954dda4e5af6335776b1f93f929da5834e
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 25cdaf3bd916b587adeeaf200d0c55b0c4001ad2
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122343607"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130074549"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>Azure Storage-Typen für die SAP-Workload
 Azure umfasst zahlreiche Speichertypen, die sich in den Funktionen, dem Durchsatz, der Latenz und den Preisen stark unterscheiden. Einige der Speichertypen sind für SAP-Szenarien nicht oder nur eingeschränkt verwendbar. Dagegen sind verschiedene Azure-Speichertypen für spezifische SAP-Workloadszenarien gut geeignet und optimiert. Speziell für SAP HANA wurden einige Azure-Speichertypen für die Verwendung mit SAP HANA zertifiziert. In diesem Dokument werden die verschiedenen Speichertypen erläutert und ihre Funktionen und Verwendbarkeit mit SAP-Workloads und SAP-Komponenten beschrieben.
@@ -97,15 +97,15 @@ Merkmale der verschiedenen Speichertypen:
 
 | Verwendungsszenario | HDD Standard | SSD Standard | Storage Premium | Ultra-Datenträger | Azure NetApp Files |
 | --- | --- | --- | --- | --- | --- |
-| Durchsatz/IOPS-SLA | nein | Nein | Ja | Ja | ja |
+| Durchsatz/IOPS-SLA | nein | nein | ja | ja | ja |
 | Latenz Lesevorgänge | high | mittel bis hoch | niedrig | unter einer Millisekunde | unter einer Millisekunde |
 | Latenz Schreibvorgänge | high | mittel bis hoch  | niedrig (unter einer Millisekunde<sup>1</sup>) | unter einer Millisekunde | unter einer Millisekunde |
 | Von HANA unterstützt | nein | nein | ja<sup>1</sup> | ja | ja |
-| Datenträger-Momentaufnahmen möglich | ja | Ja | Ja | Nein | ja |
+| Datenträger-Momentaufnahmen möglich | ja | ja | ja | nein | ja |
 | Zuordnung von Datenträgern in verschiedenen Speicherclustern bei Verwendung von Verfügbarkeitsgruppen | über verwaltete Datenträger | über verwaltete Datenträger | über verwaltete Datenträger | Datenträgertyp wird mit über Verfügbarkeitsgruppen bereitgestellten virtuellen Computern nicht unterstützt | nein<sup>3</sup> |
-| Angepasst an Verfügbarkeitszonen | ja | Ja | Ja | ja | erfordert Unterstützung von Microsoft |
+| Angepasst an Verfügbarkeitszonen | ja | ja | ja | ja | erfordert Unterstützung von Microsoft |
 | Zonenredundanz | nicht für verwaltete Datenträger | nicht für verwaltete Datenträger | nicht für verwaltete Datenträger | nein | nein |
-| Georedundanz | nicht für verwaltete Datenträger | nicht für verwaltete Datenträger | nein | Nein | nein |
+| Georedundanz | nicht für verwaltete Datenträger | nicht für verwaltete Datenträger | nein | nein | nein |
 
 
 <sup>1</sup> Mit Verwendung der [Azure-Schreibbeschleunigung](../../how-to-enable-write-accelerator.md) für M/Mv2-VM-Familien für Protokoll- und Wiederholungsprotokollvolumes
@@ -130,7 +130,7 @@ Azure Storage SSD Premium wurde mit dem Ziel eingeführt, Folgendes bereitzustel
 * SLAs für IOPS und Durchsatz
 * Weniger variierende E/A-Latenz
 
-Dieser Speichertyp ist auf DBMS-Workloads, Speicherdatenverkehr, der eine niedrige Latenz im einstelligen Millisekundenbereich erfordert, und SLAs für IOPS und Durchsatz ausgerichtet. Kostenbasis im Fall von Azure Storage Premium ist nicht das tatsächliche auf diesen Datenträgern gespeicherte Datenvolumen, sondern die Größenkategorie des Datenträgers, unabhängig von der auf dem Datenträger gespeicherten Datenmenge. Sie können auch Datenträger in Storage Premium erstellen, die den im Artikel [SSD Premium](../../disks-types.md#premium-ssd) aufgeführten Größenkategorien nicht direkt zugeordnet sind. Aus diesem Artikel ergeben sich folgende Schlussfolgerungen:
+Dieser Speichertyp ist auf DBMS-Workloads, Speicherdatenverkehr, der eine niedrige Latenz im einstelligen Millisekundenbereich erfordert, und SLAs für IOPS und Durchsatz ausgerichtet. Kostenbasis im Fall von Azure Storage Premium ist nicht das tatsächliche auf diesen Datenträgern gespeicherte Datenvolumen, sondern die Größenkategorie des Datenträgers, unabhängig von der auf dem Datenträger gespeicherten Datenmenge. Sie können auch Datenträger in Storage Premium erstellen, die den im Artikel [SSD Premium](../../disks-types.md#premium-ssds) aufgeführten Größenkategorien nicht direkt zugeordnet sind. Aus diesem Artikel ergeben sich folgende Schlussfolgerungen:
 
 - Der Speicher ist in Bereichen organisiert. Datenträger im Kapazitätsbereich von 513 GiB bis 1.024 GiB haben beispielsweise die gleichen Funktionen und die gleichen monatlichen Kosten.
 - Die IOPS pro GiB verteilen sich nicht linear über die Größenkategorien. Kleinere Datenträger unter 32 GiB haben höhere IOPS-Raten pro GiB. Bei Datenträgern über 32 GiB bis 1.024 GiB liegt die IOPS-Rate pro GiB zwischen 4–5 IOPS pro GiB. Bei größeren Datenträgern bis zu 32.767 GiB sinkt die IOPS-Rate pro GiB unter 1.
@@ -190,8 +190,8 @@ Azure Ultra-Datenträger bieten hohen Durchsatz, hohe IOPS und konsistenten Date
 Beim Erstellen eines Ultra-Datenträgers können Sie drei Dimensionen definieren:
 
 - Die Kapazität des Datenträgers. Die Bereiche liegen zwischen 4 GiB und 65.536 GiB.
-- Bereitgestellte IOPS für den Datenträger. Abhängig von der Kapazität des Datenträgers gelten unterschiedliche Maximalwerte. Weitere Informationen finden Sie unter [Ultra-Datenträger](../../disks-types.md#ultra-disk).
-- Bereitgestellte Speicherbandbreite. Abhängig von der Kapazität des Datenträgers gelten unterschiedliche maximale Bandbreiten. Weitere Informationen finden Sie unter [Ultra-Datenträger](../../disks-types.md#ultra-disk).
+- Bereitgestellte IOPS für den Datenträger. Abhängig von der Kapazität des Datenträgers gelten unterschiedliche Maximalwerte. Weitere Informationen finden Sie unter [Ultra-Datenträger](../../disks-types.md#ultra-disks).
+- Bereitgestellte Speicherbandbreite. Abhängig von der Kapazität des Datenträgers gelten unterschiedliche maximale Bandbreiten. Weitere Informationen finden Sie unter [Ultra-Datenträger](../../disks-types.md#ultra-disks).
 
 Die Kosten für einen einzelnen Datenträger werden durch die drei Dimensionen festgelegt, die Sie für die einzelnen Datenträger separat definieren können. 
 

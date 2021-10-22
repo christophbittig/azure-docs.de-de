@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie das Hostkontingent bzw. die Hostkapazität f�
 ms.topic: how-to
 ms.custom: contperf-fy21q3
 ms.date: 09/27/2021
-ms.openlocfilehash: 2b3e2291726f37f3c802d1db24429381e7a2b7d1
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: 985b17183d8e3373f03f156857ee0697c769e28d
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129083237"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130044817"
 ---
 # <a name="request-host-quota-for-azure-vmware-solution"></a>Anfordern des Hostkontingents für Azure VMware Solution
 
@@ -41,7 +41,7 @@ Sie benötigen ein Azure-Konto in einem Azure-Abonnement, das einem der folgende
 
 1. Geben Sie in der **Beschreibung** des Supporttickets auf der Registerkarte **Details** folgende Informationen an:
 
-   - Proof of Concept oder Produktion 
+   - Bereitstellung 
    - Name der Region
    - Anzahl von Hosts
    - Weitere Details
@@ -94,7 +94,7 @@ Greifen Sie unter Verwendung der Prozedur **Administrator im Namen von** (Admin 
    
    1. Geben Sie in der **Beschreibung** des Supporttickets auf der Registerkarte **Details** folgende Informationen an:
    
-      - Proof of Concept oder Produktion 
+      - Bereitstellung 
       - Name der Region
       - Anzahl von Hosts
       - Weitere Details

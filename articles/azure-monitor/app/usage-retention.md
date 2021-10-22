@@ -2,15 +2,13 @@
 title: Analysieren der Benutzerbindung für Web-Apps mit Application Insights
 description: Wie viele Benutzer kehren zu Ihrer App zurück?
 ms.topic: conceptual
-author: lgayhardt
-ms.author: lagayhar
 ms.date: 07/30/2021
-ms.openlocfilehash: de83c898d7a471892f61fa299cdf2091a1f228e7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e99467f43f3a5ce1e9dd300918414a9968bd2045
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346729"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130131902"
 ---
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>Benutzerbindungsanalyse für Webanwendungen mit Azure Application Insights
 

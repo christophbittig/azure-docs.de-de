@@ -10,12 +10,12 @@ ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
 ms.date: 05/05/2021
-ms.openlocfilehash: a25cfb69b0de9561de2093a8e9e91bf4e9f8cb98
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: fc13ac868f2abb1ccd466b245c22682af79ba915
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129424281"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130161270"
 ---
 # <a name="failover-for-business-continuity-and-disaster-recovery"></a>Failover für Business Continuity & Disaster Recovery
 
@@ -188,4 +188,4 @@ Die folgenden Artefakte können mithilfe der [Azure CLI-Erweiterung für Azure M
 > * __Ausführungsausgaben__ werden im Standardspeicherkonto gespeichert, das einem Arbeitsbereich zugeordnet ist. Während bei einem Dienstausfall möglicherweise nicht mehr über die Studio-Benutzeroberfläche auf Ausführungsausgaben zugegriffen werden kann, können Sie direkt über das Speicherkonto auf die Daten zugreifen. Weitere Informationen zum Arbeiten mit in Blobs gespeicherten Daten finden Sie unter [Erstellen, Herunterladen und Auflisten von Blobs mit der Azure-Befehlszeilenschnittstelle](../storage/blobs/storage-quickstart-blobs-cli.md).
 ## <a name="next-steps"></a>Nächste Schritte
 
-Verwenden Sie eine [Azure Resource Manager-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices/machine-learning-advanced), um Azure Machine Learning mit zugeordneten Ressourcen mit Ihren Hochverfügbarkeitseinstellungen bereitzustellen.
+Verwenden Sie eine [Azure Resource Manager-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices/), um Azure Machine Learning mit zugeordneten Ressourcen mit Ihren Hochverfügbarkeitseinstellungen bereitzustellen.

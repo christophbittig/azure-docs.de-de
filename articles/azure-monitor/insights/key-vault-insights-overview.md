@@ -3,15 +3,13 @@ title: Überwachen von Schlüsseltresoren mit Key Vault Insights | Microsoft-Dok
 description: In diesem Artikel wird Key Vault Insights beschrieben.
 services: azure-monitor
 ms.topic: conceptual
-author: lgayhardt
-ms.author: lagayhar
 ms.date: 09/10/2020
-ms.openlocfilehash: 953d6300b8ac19ddfcfe3b37a1cfde50480e19a4
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 0ad400ffcb892c09d6f746c482c9cb78c5627075
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110095120"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130131864"
 ---
 # <a name="monitoring-your-key-vault-service-with-key-vault-insights"></a>Überwachen Ihres Schlüsseltresordiensts mit Key Vault Insights
 Key Vault Insights ermöglicht eine umfassende Überwachung Ihrer Schlüsseltresore. Zu diesem Zweck wird eine einheitliche Darstellung der Anforderungen, Leistung, Fehler und Wartezeit im Zusammenhang mit Key Vault bereitgestellt.

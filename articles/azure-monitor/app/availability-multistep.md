@@ -3,22 +3,25 @@ title: Überwachen mit mehrstufigen Webtests – Azure Application Insights
 description: Einrichten von mehrstufigen Webtests zur Überwachung Ihrer Webanwendungen mit Azure Application Insights
 ms.topic: conceptual
 ms.date: 07/21/2021
-ms.openlocfilehash: d248340aa272a6a1fef386ca755ed46536668ad9
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 6e0cbbc772b9eb2f3ad245fcb9728b047d2d7126
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114447996"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129993224"
 ---
 # <a name="multi-step-web-tests"></a>Webtests mit mehreren Schritten
 
 Sie können eine aufgezeichnete Sequenz von URLs und Interaktionen mithilfe einer Website über mehrstufige Webtests überwachen. In diesem Artikel wird der Prozess ausführlich beschrieben, mit dem Sie mit Visual Studio Enterprise einen mehrstufigen Webtest erstellen können.
 
+> [!IMPORTANT]
+> [Mehrstufige Webtests wurden eingestellt](https://azure.microsoft.com/updates/retirement-notice-transition-to-custom-availability-tests-in-application-insights/). Es empfiehlt sich, [TrackAvailability](/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability)  zu verwenden, um anstelle von mehrstufigen Webtests  [benutzerdefinierte Verfügbarkeitstests](availability-azure-functions.md)  zu übermitteln. Mit TrackAvailability() und benutzerdefinierten Verfügbarkeitstests können Sie Tests auf beliebigen Computeressourcen ausführen und mithilfe von C# ganz einfach neue Tests erstellen.
+
 > [!NOTE]
 > Mehrstufige Webtests werden in der [Azure Government](../../azure-government/index.yml)-Cloud **nicht unterstützt**.
 
-> [!NOTE]
-> Mehrstufige Webtests werden als klassische Tests kategorisiert und befinden sich im Bereich „Verfügbarkeit“ unter **Klassischen Test hinzufügen**.
+
+Mehrstufige Webtests werden als klassische Tests kategorisiert und befinden sich im Bereich „Verfügbarkeit“ unter **Klassischen Test hinzufügen**.
 
 ## <a name="multi-step-webtest-alternative"></a>Alternative für mehrstufige Webtests
 

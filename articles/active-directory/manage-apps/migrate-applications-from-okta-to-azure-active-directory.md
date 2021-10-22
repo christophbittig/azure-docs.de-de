@@ -1,7 +1,7 @@
 ---
 title: Tutorial zum Migrieren Ihrer Anwendungen von Okta zu Azure Active Directory
 titleSuffix: Active Directory
-description: Hier erfahren Sie, wie Sie Ihre Anwendungen von Okta zu Azure Active Directory migrieren.
+description: Erfahren Sie, wie Sie Ihre Anwendungen von Okta zu Azure Active Directory migrieren.
 services: active-directory
 author: gargi-sinha
 manager: martinco
@@ -11,224 +11,227 @@ ms.topic: how-to
 ms.date: 09/01/2021
 ms.author: gasinh
 ms.subservice: app-mgmt
-ms.openlocfilehash: c46410a6998998ace9bc1a9e9809262970a131f2
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 76acf97366407a34faa2f6a6583d5871ba4c5b4a
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124791724"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129355928"
 ---
 # <a name="tutorial-migrate-your-applications-from-okta-to-azure-active-directory"></a>Tutorial: Migrieren Ihrer Anwendungen von Okta zu Azure Active Directory
 
-In diesem Tutorial erfahren Sie, wie Sie Ihre Anwendungen von Okta zu Azure Active Directory (Azure AD) migrieren.
+In diesem Tutorial erfahren Sie, wie Sie Ihre Anwendungen von Okta zu Azure Active Directory (AD) migrieren.
 
 ## <a name="create-an-inventory-of-current-okta-applications"></a>Erstellen eines Bestands aktueller Okta-Anwendungen
 
-Beim Konvertieren von Okta-Anwendungen in Azure AD empfiehlt es sich, vor der Migration zuerst die aktuelle Umgebung und die Anwendungseinstellungen zu dokumentieren.
-
-Okta bietet eine API, mit der diese Informationen von einem zentralen Ort aus gesammelt werden können. Für die Verwendung der API ist ein API-Explorer-Tool wie [Postman](https://www.postman.com/) erforderlich.
+Bevor Sie mit der Migration beginnen, sollten Sie die aktuellen Umgebungs- und Anwendungseinstellungen dokumentieren. Sie können die Okta-API verwenden, um diese Daten von einem zentralen Ort aus zu sammeln. Für die Verwendung der API benötigen Sie ein API-Explorer-Tool wie [Postman](https://www.postman.com/).
 
 Führen Sie zum Erstellen eines Anwendungsbestands die folgenden Schritte aus:
 
-1. Installieren der Postman-App. Generieren Sie nach der Installation über die Okta-Verwaltungskonsole ein API-Token.
+1. Installieren der Postman-App. Generieren Sie anschließend über die Okta-Verwaltungskonsole ein API-Token.
 
-2. Navigieren Sie zum API-Dashboard im Abschnitt „Security“ (Sicherheit), und klicken Sie auf **Tokens** > **Create Token** („Token“ > „Token erstellen“).
+2. Wählen Sie auf dem API-Dashboard unter **Security** (Sicherheit) **Tokens** > **Create Token** („Token“ > „Token erstellen“).
 
-   ![Abbildung zur Tokenerstellung](media/migrate-applications-from-okta-to-azure-active-directory/token-creation.png)
+   ![Screenshot mit der Schaltfläche zum Erstellen eines Token.](media/migrate-applications-from-okta-to-azure-active-directory/token-creation.png)
 
 3. Fügen Sie einen Tokennamen ein, und klicken Sie dann auf **Create Token** (Token erstellen).
 
-   ![Abbildung zum erstellten Token](media/migrate-applications-from-okta-to-azure-active-directory/token-created.png)
+   ![Screenshot, der zeigt, wo Sie den Namen für das Token eingeben.](media/migrate-applications-from-okta-to-azure-active-directory/token-created.png)
 
-4. Nachdem Sie auf **Create Token** (Token erstellen) geklickt haben, notieren Sie sich den Wert, und speichern Sie ihn, da er nach dem Klicken auf **OK, got it** (OK, verstanden) nicht mehr zugänglich ist.
+4. Notieren und speichern Sie den Tokenwert. Der Zugriff ist erst möglich, nachdem Sie **OK, got it** (OK, verstanden) ausgewählt haben.
 
-   ![Abbildung zum Notieren des Tokenwerts](media/migrate-applications-from-okta-to-azure-active-directory/record-created.png)
+   ![Screenshot mit dem Tokenwert.](media/migrate-applications-from-okta-to-azure-active-directory/record-created.png)
 
-5. Nachdem Sie sich das API-Token notiert haben, navigieren Sie zurück zur Postman-App, und klicken Sie im Arbeitsbereich auf **Import** (Importieren).
+5. Wählen Sie im Arbeitsbereich in der Postman-App **Import** (Importieren) aus.
 
-   ![Abbildung zum API-Import](media/migrate-applications-from-okta-to-azure-active-directory/import-api.png)
+   ![Screenshot mit der Import-API.](media/migrate-applications-from-okta-to-azure-active-directory/import-api.png)
 
-6. Klicken Sie auf der Seite „Import“ (Importieren) auf **Link**, und verwenden Sie den folgenden Link zum Importieren der API: <https://developer.okta.com/docs/api/postman/example.oktapreview.com.environment>.
+6. Wählen Sie auf der Seite **Import** (Importieren) **Link** aus. Fügen Sie dann den folgenden Link ein, um die API zu importieren: `https://developer.okta.com/docs/api/postman/example.oktapreview.com.environment`
 
-   ![Abbildung zum Link, mit der die API importiert werden soll](media/migrate-applications-from-okta-to-azure-active-directory/link-to-import.png)
+   ![Screenshot mit dem Link für den Import.](media/migrate-applications-from-okta-to-azure-active-directory/link-to-import.png)
 
->[!NOTE]
->Ändern Sie den Link nicht unter Verwendung Ihrer Mandantenwerte.
+   >[!NOTE]
+   >Ändern Sie den Link nicht in Ihre Mandantenwerte um.
 
-7. Fahren Sie mit dem nächsten Menü fort, indem Sie auf **Import** (Importieren) klicken.
+7. Wählen Sie zum Fortfahren **Import** (Importieren) aus.
 
-   ![Abbildung zum nächsten Menü für den Import](media/migrate-applications-from-okta-to-azure-active-directory/next-import-menu.png)
+   ![Screenshot der nächsten Import-Seite.](media/migrate-applications-from-okta-to-azure-active-directory/next-import-menu.png)
 
-8. Ändern Sie nach dem Importieren die Umgebungsauswahl in **{yourOktaDomain}** .
+8. Ändern Sie nach dem API-Import die Auswahl **Environment** (Umgebung) in **{yourOktaDomain}** .
 
-   ![Abbildung zum Ändern der Umgebung](media/migrate-applications-from-okta-to-azure-active-directory/change-environment.png)
+   :::image type="content" source="media/migrate-applications-from-okta-to-azure-active-directory/change-environment.png" alt-text="Screenshot, der das Ändern der Umgebung zeigt." lightbox="media/migrate-applications-from-okta-to-azure-active-directory/change-environment.png":::
 
-9. Nachdem Sie die Umgebungsauswahl geändert haben, bearbeiten Sie Ihre Okta-Umgebung, indem Sie auf das Auge und dann auf **Edit** (Bearbeiten) klicken.
+9. Klicken Sie auf das Augensymbol, um Ihre Okta-Umgebung zu bearbeiten. Klicken Sie dann auf **Bearbeiten**.
 
-   ![Abbildung zum Bearbeiten der Umgebung](media/migrate-applications-from-okta-to-azure-active-directory/edit-environment.png)
+   ![Screenshot, der das Bearbeiten der Okta-Umgebung zeigt.](media/migrate-applications-from-okta-to-azure-active-directory/edit-environment.png)
 
-10. Aktualisieren Sie die Werte für die URL und den API-Schlüssel in den Feldern **Initial Value** (Anfangswert) und **Current Value** (Aktueller Wert), ändern Sie den Namen entsprechend Ihrer Umgebung, und speichern Sie dann die Werte.
+10. Aktualisieren Sie die Werte für die URL und den API-Schlüssel in den Feldern **Initial Value** (Anfangswert) und **Current Value** (Aktueller Wert). Ändern Sie den Namen, um Ihre Umgebung widerzuspiegeln. Speichern Sie dann die Werte.
 
-    ![Abbildung zum Aktualisieren von Werten für die API](media/migrate-applications-from-okta-to-azure-active-directory/update-values-for-api.png)
+    ![Screenshot, der zeigt, wie die API-Werte aktualisiert werden.](media/migrate-applications-from-okta-to-azure-active-directory/update-values-for-api.png)
 
-11. Nachdem Sie den API-Schlüssel gespeichert haben, [laden Sie die API für die Apps in Postman hoch](https://app.getpostman.com/run-collection/377eaf77fdbeaedced17).
+11. [Laden Sie die API in Postman.](https://app.getpostman.com/run-collection/377eaf77fdbeaedced17)
 
-12. Nachdem die API in Postman geladen wurde, klicken Sie auf das Dropdownmenü **Apps**, dann auf **GET List Apps** und anschließend auf **Send** (Senden).
+12. Wählen Sie **Apps** > **Get List Apps** > **Send** („Anwendungen“ > „Anwendungsliste abrufen“ > „Senden“).
 
-Jetzt können Sie alle Anwendungen in Ihrem Okta-Mandanten ins JSON-Format drucken.
+Jetzt können Sie alle Anwendungen in Ihrem Okta-Mandanten ausgeben. Die Liste liegt im JSON-Format vor:
 
-![Abbildung zur Liste der Anwendungen](media/migrate-applications-from-okta-to-azure-active-directory/list-of-applications.png)
+![Screenshot der Liste der Anwendungen im Okta-Mandanten.](media/migrate-applications-from-okta-to-azure-active-directory/list-of-applications.png)
 
-Es wird empfohlen, diese JSON-Liste mithilfe eines öffentlichen Konverters wie <https://konklone.io/json/> oder PowerShell mit [ConvertFrom-Json](/powershell/module/microsoft.powershell.utility/convertfrom-json) und [ConvertTo-CSV](/powershell/module/microsoft.powershell.utility/convertto-csv) zu kopieren und ins CSV-Format zu konvertieren.
+Es wird empfohlen, diese JSON-Liste zu kopieren und ins CSV-Format umzuwandeln. Dafür können Sie einen öffentlichen Konverter wie [Konklone](https://konklone.io/json/) verwenden. In der PowerShell können Sie auch [ConvertFrom-Json](/powershell/module/microsoft.powershell.utility/convertfrom-json) und [ConvertTo-CSV](/powershell/module/microsoft.powershell.utility/convertto-csv) verwenden.
 
-Nach dem Herunterladen der CSV-Datei wurden die Anwendungen in Ihrem Okta-Mandanten erfolgreich für die zukünftige Referenz erfasst.
+Laden Sie die CSV-Datei herunter, um einen Datensatz der Anwendungen in Ihrem Okta-Mandanten für eine zukünftige Verwendung zu speichern.
 
 ## <a name="migrate-a-saml-application-to-azure-ad"></a>Migrieren einer SAML-Anwendung zu Azure AD
 
-Um eine SAML 2.0-Anwendung zu Azure AD zu migrieren, konfigurieren Sie zuerst die Anwendung in Ihrem Azure AD-Mandanten für den Anwendungszugriff. In diesem Beispiel wird eine Salesforce-Instanz konvertiert. Befolgen Sie die Schritte in [diesem Tutorial](../saas-apps/salesforce-tutorial.md), um das Onboarding für die Anwendungen durchzuführen.
+Um eine SAML 2.0-Anwendung zu Azure AD zu migrieren, konfigurieren Sie zuerst die Anwendung in Ihrem Azure AD-Mandanten für den Anwendungszugriff. In diesem Beispiel wird eine Salesforce-Instanz konvertiert. Befolgen Sie die Schritte in [diesem Tutorial](../saas-apps/salesforce-tutorial.md), um die Anwendungen zu konfigurieren.
 
-Wiederholen Sie zum Abschließen des Migrationsprozesses die Konfigurationsschritte für alle Anwendungen, die im Okta-Mandanten gefunden wurden.
+Wiederholen Sie zum Abschließen des Migrationsvorgangs die Konfigurationsschritte für alle Anwendungen, die im Okta-Mandanten entdeckt wurden.
 
-1. Navigieren Sie zum [Azure AD-Portal](https://aad.portal.azure.com), und klicken Sie auf **Azure Active Directory** > **Unternehmensanwendungen** > **Neue Anwendung**.
+1. Klicken Sie im [Azure AD-Portal](https://aad.portal.azure.com) auf **Azure Active Directory** > **Unternehmensanwendungen** > **Neue Anwendung**.
 
-   ![Abbildung zur Liste der neuen Anwendungen](media/migrate-applications-from-okta-to-azure-active-directory/list-of-new-applications.png)
+   ![Screenshot von einer Liste der neuen Anwendungen.](media/migrate-applications-from-okta-to-azure-active-directory/list-of-new-applications.png)
 
-2. Salesforce ist im Azure AD-Katalog verfügbar. Suchen Sie nach Salesforce, wählen Sie die Anwendung aus, und klicken Sie dann auf **Erstellen**.
+2. Suchen Sie im **Azure AD-Katalog** nach **Salesforce**, wählen Sie die Anwendung aus, und klicken Sie dann auf **Erstellen**.
 
-   ![Abbildung zur Salesforce-Anwendung](media/migrate-applications-from-okta-to-azure-active-directory/salesforce-application.png)
+   ![Screenshot mit der Salesforce-Anwendung im Azure AD-Katalog.](media/migrate-applications-from-okta-to-azure-active-directory/salesforce-application.png)
 
-3. Navigieren Sie nach dem Erstellen der Anwendung zur Registerkarte **Einmaliges Anmelden** (SSO), und wählen Sie **SAML** aus.
+3. Wählen Sie nach dem Erstellen der Anwendung auf der Registerkarte **Einmaliges Anmelden** (SSO) **SAML** aus.
 
-   ![Abbildung zur SAML-Anwendung](media/migrate-applications-from-okta-to-azure-active-directory/saml-application.png)
+   ![Screenshot der SAML-Anwendung.](media/migrate-applications-from-okta-to-azure-active-directory/saml-application.png)
 
-4. Nachdem Sie SAML ausgewählt haben, laden Sie die **Verbundmetadaten-XML-Datei und das Zertifikat (Rohdaten)** für den Import in Salesforce herunter.
+4. Laden Sie die **Verbundmetadaten-XML-Datei und das Zertifikat (Rohdaten)** für den Import in Salesforce herunter.
 
-   ![Abbildung zum Herunterladen von Verbundmetadaten](media/migrate-applications-from-okta-to-azure-active-directory/federation-metadata.png)
+   ![Screenshot, der zeigt, wo die Verbundmetadaten heruntergeladen werden.](media/migrate-applications-from-okta-to-azure-active-directory/federation-metadata.png)
 
-5. Nachdem die XML-Datei heruntergeladen wurde, navigieren Sie zur Salesforce-Verwaltungskonsole, und klicken Sie dann auf **Identity** > **Single sign-on Settings** > **New from Metadata File** („Identität“ > „Einzelanmeldungseinstellungen“ > „Neu aus Metadatendatei“).
+5. Klicken Sie auf der Salesforce-Verwaltungskonsole auf **Identity** > **Single sign-on Settings** > **New from Metadata File** („Identität“ > „Einzelanmeldungseinstellungen“ > „Neu aus Metadatendatei“).
 
-   ![Abbildung zur Salesforce-Verwaltungskonsole](media/migrate-applications-from-okta-to-azure-active-directory/salesforce-admin-console.png)
+   ![Screenshot der Salesforce-Verwaltungskonsole.](media/migrate-applications-from-okta-to-azure-active-directory/salesforce-admin-console.png)
 
-6. Laden Sie die aus dem Azure AD-Portal heruntergeladene XML-Datei hoch, und klicken Sie dann auf **Erstellen**.
+6. Laden Sie die aus dem Azure AD-Portal heruntergeladene XML-Datei hoch. Klicken Sie anschließend auf **Erstellen**.
 
-   ![Abbildung zum Hochladen der XML-Datei](media/migrate-applications-from-okta-to-azure-active-directory/upload-xml-file.png)
+   :::image type="content" source="media/migrate-applications-from-okta-to-azure-active-directory/upload-xml-file.png" alt-text="Screenshot, der zeigt, wo die XML-Datei hochgeladen werden soll." lightbox="media/migrate-applications-from-okta-to-azure-active-directory/upload-xml-file.png":::
 
-7. Laden Sie das aus Azure heruntergeladene Zertifikat hoch, und klicken Sie dann im nächsten Menü auf **Speichern**, um den SAML-Anbieter in Salesforce zu erstellen.
+7. Laden Sie das Zertifikat hoch, das Sie von Azure heruntergeladen haben. Klicken Sie dann auf **Save** (Speichern), um den SAML-Anbieter in Salesforce zu erstellen.
 
-   ![Abbildung zum Erstellen eines SAML-Anbieters](media/migrate-applications-from-okta-to-azure-active-directory/create-saml-provider.png)
+   ![Screenshot, der das Erstellen des SAML-Anbieters in Salesforce zeigt.](media/migrate-applications-from-okta-to-azure-active-directory/create-saml-provider.png)
 
-8. Notieren Sie sich für die Verwendung in Azure die Werte **Entitäts-ID**, **URL für Anmeldung** und **Abmelde-URL**, und klicken Sie dann auf die Option **Metadaten herunterladen**.
+8. Notieren Sie die Werte in den folgenden Feldern. Diese Werte benötigen Sie in Azure. 
+   * **Entitäts-ID**
+   * **Anmelde-URL** 
+   * **Abmelde-URL** 
 
-   ![Abbildung zu den erfassten Werten in Azure](media/migrate-applications-from-okta-to-azure-active-directory/record-values-for-azure.png)
+   Wählen Sie dann **Download metadata** (Metadaten herunterladen) aus.
 
-9. Navigieren Sie zurück zum Azure AD-Menü für Unternehmensanwendungen, und laden Sie die Metadatendatei über die Option **Metadatendatei hochladen** in das Azure AD-Portal in die Einzelanmeldungseinstellungen hoch. Vergewissern Sie sich vor dem Speichern, dass die importierten Werte mit den notierten Werten übereinstimmen.
+   ![Screenshot, der die Werte zeigt, die Sie für die Verwendung in Azure notieren müssen.](media/migrate-applications-from-okta-to-azure-active-directory/record-values-for-azure.png)
 
-   ![Abbildung zum Hochladen der Metadatendatei in Azure AD](media/migrate-applications-from-okta-to-azure-active-directory/upload-metadata-file.png)
+9. Wählen Sie auf der Azure AD-Seite für **Unternehmensanwendungen** in den SAML-SSO-Einstellungen **Metadatendatei hochladen** aus, um die Datei in Azure AD-Portal hochzuladen. Stellen Sie vor dem Speichern sicher, dass die importierten Werte mit den notierten Werten übereinstimmen.
 
-10. Nachdem die SSO-Konfiguration gespeichert wurde, navigieren Sie zurück zur Salesforce-Verwaltungskonsole, und klicken Sie auf **Company Settings** > **My Domain** („Unternehmenseinstellungen“ > „Meine Domäne“). Navigieren Sie zu **Authentication Configuration** (Authentifizierungskonfiguration), und klicken Sie auf **Edit** (Bearbeiten).
+   ![Screenshot der das Hochladen der Metadatendatei in Azure AD zeigt.](media/migrate-applications-from-okta-to-azure-active-directory/upload-metadata-file.png)
 
-    ![Abbildung zum Bearbeiten von Unternehmenseinstellungen](media/migrate-applications-from-okta-to-azure-active-directory/edit-company-settings.png)
+10. Klicken Sie in der Salesforce-Verwaltungskonsole auf **Company Settings** > **My Domain** („Unternehmenseinstellungen“ > „Meine Domäne“). Navigieren Sie zu **Authentication Configuration** (Authentifizierungskonfiguration), und klicken Sie auf **Edit** (Bearbeiten).
 
-11. Wählen Sie den neuen SAML-Anbieter aus, der in den vorherigen Schritten als verfügbare Anmeldeoption konfiguriert wurde, und klicken Sie auf **Speichern**.
+    ![Screenshot, der das Bearbeiten der Unternehmenseinstellungen zeigt.](media/migrate-applications-from-okta-to-azure-active-directory/edit-company-settings.png)
 
-    ![Abbildung zur Option zum Speichern des SAML-Anbieters](media/migrate-applications-from-okta-to-azure-active-directory/save-saml-provider.png)
+11. Wählen Sie für eine Anmeldeoption den neuen SAML-Anbieter aus, den Sie zuvor konfiguriert haben. Klicken Sie dann auf **Speichern**.
 
-12. Navigieren Sie zurück zur Unternehmensanwendung in Azure AD, klicken Sie auf **Benutzer und Gruppen**, und fügen Sie **Testbenutzer** hinzu.
+    ![Screenshot, der zeigt, wo die SAML-Anbieter-Option gespeichert wird.](media/migrate-applications-from-okta-to-azure-active-directory/save-saml-provider.png)
 
-    ![Abbildung zum Hinzufügen von Testbenutzer*innen](media/migrate-applications-from-okta-to-azure-active-directory/add-test-user.png)
+12. Klicken Sie in Azure AD auf der Seite **Unternehmensanwendungen** auf **Benutzer und Gruppen**. Fügen Sie dann Testbenutzer hinzu.
 
-13. Melden Sie sich zum Testen mit einem Konto der Testbenutzer*innen an, navigieren Sie zu <https://aka.ms/myapps>, und wählen Sie die Kachel **Salesforce** aus.
+    ![Screenshot mit hinzugefügten Testbenutzern.](media/migrate-applications-from-okta-to-azure-active-directory/add-test-user.png)
 
-    ![Abbildung zum Anmelden als Testbenutzer*innen](media/migrate-applications-from-okta-to-azure-active-directory/test-user-sign-in.png)
+13. Melden Sie sich zum Testen der Konfiguration als einer der Testbenutzer an. Navigieren Sie zum Microsoft-[App-Katalog](https://aka.ms/myapps), und wählen Sie dann **Salesforce** aus.
 
-14. Klicken Sie nach dem Auswählen der Kachel „Salesforce“ für die Anmeldung auf den neu konfigurierten Identitätsanbieter (IdP).
+    ![Screenshot, der das Öffnen von Salesforce über den App-Katalog zeigt.](media/migrate-applications-from-okta-to-azure-active-directory/test-user-sign-in.png)
 
-    ![Abbildung zum Auswählen eines neuen Identitätsanbieters](media/migrate-applications-from-okta-to-azure-active-directory/new-identity-provider.png)
+14. Wählen Sie den neu konfigurierten Identitätsanbieter (IdP) für die Anmeldung aus.
 
-15. Wenn alles ordnungsgemäß konfiguriert wurde, wird Benutzer*innen die Salesforce-Startseite angezeigt. Falls Probleme auftreten, befolgen Sie den [Debugleitfaden](../manage-apps/debug-saml-sso-issues.md).
+    ![Screenshot, der zeigt, wo Sie sich anmelden können.](media/migrate-applications-from-okta-to-azure-active-directory/new-identity-provider.png)
 
-16. Kehren Sie nach dem Testen der SSO-Verbindung in Azure zur Unternehmensanwendung zurück, und weisen Sie der Salesforce-Anwendung die verbleibenden Benutzer*innen mit den richtigen Rollen zu.
+    Wenn alles ordnungsgemäß konfiguriert wurde, wird dem Testbenutzer die Salesforce-Startseite angezeigt. Informationen zur Problembehandlung finden Sie im [Debugging-Leitfaden](../manage-apps/debug-saml-sso-issues.md).
 
->[!NOTE]
->Nachdem Sie die verbleibenden Benutzer*innen zur Azure AD-Anwendung hinzugefügt haben, wird empfohlen, dass Benutzer*innen die Verbindung testen und sicherstellen, dass keine Probleme im Zusammenhang mit dem Zugriff bestehen, bevor sie mit dem nächsten Schritt fortfahren.
+16. Weisen Sie auf der Seite **Unternehmensanwendungen** der Salesforce-Anwendung die verbleibenden Benutzer mit den richtigen Rollen zu.
 
-17. Nachdem die Benutzer*innen bestätigt haben, dass keine Probleme bei der Anmeldung vorliegen, navigieren Sie zurück zur Salesforce-Verwaltungskonsole, und klicken Sie auf **Company Settings** > **My Domain** („Unternehmenseinstellungen“ > „Meine Domäne“).
+    >[!NOTE]
+    >Nachdem Sie die verbleibenden Benutzer der Azure AD Anwendung hinzugefügt haben, sollten die Benutzer die Verbindung testen und überprüfen, ob sie Zugriff haben. Testen Sie die Verbindung, bevor Sie mit dem nächsten Schritt fortfahren.
 
-18. Navigieren Sie zur **Authentication Configuration** (Authentifizierungskonfiguration), klicken Sie auf **Edit** (Bearbeiten), und deaktivieren Sie Okta als Authentifizierungsdienst.
+17. Klicken Sie in der Salesforce-Verwaltungskonsole auf **Company Settings** > **My Domain** („Unternehmenseinstellungen“ > „Meine Domäne“).
 
-    ![Abbildung zum Deaktivieren von Okta als Authentifizierungsdienst](media/migrate-applications-from-okta-to-azure-active-directory/deselect-okta.png)
+18. Klicken Sie unter **Authentication Configuration** (Authentifizierungskonfiguration) auf **Edit** (Bearbeiten). Heben Sie die Auswahl von **Okta** als Authentifizierungsdienst auf.
 
-Salesforce wurde nun erfolgreich für das einmalige Anmelden bei Azure AD konfiguriert. Schritte zum Bereinigen des Okta-Portals werden später in diesem Dokument beschrieben.
+    ![Screenshot, der zeigt, wo die Auswahl von Okta als Authentifizierungsdienst aufgehoben wird.](media/migrate-applications-from-okta-to-azure-active-directory/deselect-okta.png)
+
+Salesforce wurde nun erfolgreich mit Azure AD für SSO konfiguriert.
 
 ## <a name="migrate-an-oidcoauth-20-application-to-azure-ad"></a>Migrieren einer OIDC-/OAuth 2.0-Anwendung zu Azure AD
 
-Konfigurieren Sie zunächst die Anwendung in Ihrem Azure AD-Mandanten für den Anwendungszugriff. In diesem Beispiel konvertieren Sie eine benutzerdefinierte OIDC-App.
+Um eine OpenID Connect (OIDC)-Anwendung oder eine OAuth 2.0-Anwendung zu Azure AD zu migrieren, konfigurieren Sie zunächst in Ihrem Azure AD-Mandanten die Anwendung für den Zugriff. In diesem Beispiel konvertieren wir eine benutzerdefinierte OIDC-App.
 
-Wiederholen Sie zum Abschließen des Migrationsprozesses die Konfigurationsschritte für alle Anwendungen, die im Okta-Mandanten gefunden wurden.
+Wiederholen Sie zum Abschließen des Migrationsvorgangs die folgenden Konfigurationsschritte für alle Anwendungen, die im Okta-Mandanten entdeckt wurden.
 
-1. Navigieren Sie zum [Azure AD-Portal](https://aad.portal.azure.com), und klicken Sie auf **Azure Active Directory** > **Unternehmensanwendungen**. Klicken Sie im Menü **Alle Anwendungen** auf **Neue Anwendung**.
+1. Wählen Sie im [Azure-Portal](https://aad.portal.azure.com) die Optionen **Azure Active Directory** > **Unternehmensanwendungen** aus. Wählen Sie unter **Alle Anwendungen** die Option **Neue Anwendung** aus.
 
-2. Wählen Sie **Eigene Anwendung erstellen** aus. Geben Sie der OIDC-App im angezeigten Seitenmenü einen Namen. Klicken Sie zunächst auf das Optionsfeld für **Von Ihnen bearbeitete Anwendung für die Integration mit Azure AD registrieren** und dann auf **Erstellen**.
+2. Wählen Sie **Eigene Anwendung erstellen** aus. Geben Sie im daraufhin geöffneten Menü einen Namen für die OIDC-App ein, und wählen Sie dann **Von Ihnen bearbeitete Anwendung für die Integration in Azure AD registrieren** aus. Klicken Sie anschließend auf **Erstellen**.
 
-   ![Abbildung zur neuen OIDC-Anwendung](media/migrate-applications-from-okta-to-azure-active-directory/new-oidc-application.png)
+   :::image type="content" source="media/migrate-applications-from-okta-to-azure-active-directory/new-oidc-application.png" alt-text="Screenshot, der das Erstellen einer OIDC-Anwendung zeigt." lightbox="media/migrate-applications-from-okta-to-azure-active-directory/new-oidc-application.png":::
 
-3. Auf der nächsten Seite wird Ihnen eine Auswahl für den Mandanten Ihrer Anwendungsregistrierung angezeigt. Nähere Einzelheiten finden Sie in [diesem Artikel](../develop/single-and-multi-tenant-apps.md).
+3. Richten Sie auf der nächsten Seite den Mandant ihrer Anwendungsregistrierung ein. Weitere Informationen hierzu finden Sie unter [Mandanten in Azure Active Directory](../develop/single-and-multi-tenant-apps.md).
 
-Wählen Sie in diesem Beispiel **Konten in einem beliebigen Organisationsverzeichnis** **(Beliebiges Azure AD-Verzeichnis – mehrere Mandanten)** aus, und klicken Sie dann auf **Registrieren**.
+   In diesem Beispiel wählen wir **Konten in einem beliebigen Organisationsverzeichnis (beliebiges Azure AD-Verzeichnis – mehrinstanzenfähig)**  > **Registrieren** aus.
 
-![Abbildung zum Azure AD-Verzeichnis mit mehreren Mandanten](media/migrate-applications-from-okta-to-azure-active-directory/multitenant-azure-ad-directory.png)
+   ![Screenshot, der die Auswahl des mehrinstanzenfähigen Azure AD-Verzeichnisses zeigt.](media/migrate-applications-from-okta-to-azure-active-directory/multitenant-azure-ad-directory.png)
 
-4. Navigieren Sie nach dem Registrieren der Anwendung unter **Azure Active Directory** zur Seite **App-Registrierungen**, und öffnen Sie die neu erstellte Registrierung.
+4. Öffnen Sie auf der Seite **App-Registrierungen** unter **Azure Active Directory** die neu erstellte Registrierung.
 
-   Je nach [Anwendungsszenario](../develop/authentication-flows-app-scenarios.md) sind möglicherweise verschiedene Konfigurationsaktionen erforderlich. Da die meisten Szenarios ein App-Clientgeheimnis erfordern, werden diese Beispiele beschrieben.
+   Je nach [Anwendungsszenario](../develop/authentication-flows-app-scenarios.md) sind möglicherweise verschiedene Konfigurationsaktionen erforderlich. Die meisten Szenarios erfordern einen App-Clientschlüssel. Daher werden diese Beispiele beschrieben.
 
-5. Notieren Sie sich die Anwendungs-ID (Client) auf der Seite **Übersicht** zur späteren Verwendung in Ihrer Anwendung.
+5. Notieren Sie auf der Seite **Übersicht** die **Anwendungs-ID (Client)** . Diese ID verwenden Sie in Ihrer Anwendung.
 
-   ![Abbildung zur Anwendungs-ID (Client)](media/migrate-applications-from-okta-to-azure-active-directory/application-client-id.png)
+   ![Screenshot mit der Client-ID der Anwendung.](media/migrate-applications-from-okta-to-azure-active-directory/application-client-id.png)
 
-6. Nachdem Sie sich die Anwendungs-ID notiert haben, klicken Sie im Menü links auf **Zertifikate und Geheimnisse**. Klicken Sie auf **Neuer geheimer Clientschlüssel**, benennen Sie diesen, und legen Sie danach das Ablaufdatum fest.
+6. Wählen Sie links **Zertifikate und Geheimnisse** aus. Wählen Sie dann **Neuer geheimer Clientschlüssel** aus. Legen Sie einen Namen und ein Ablaufdatum für den Clientschlüssel fest.
 
-   ![Abbildung zum neuen geheimen Clientschlüssel](media/migrate-applications-from-okta-to-azure-active-directory/new-client-secret.png)
+   ![Screenshot des neuen Clientschlüssels.](media/migrate-applications-from-okta-to-azure-active-directory/new-client-secret.png)
 
-7. Notieren Sie sich den Wert und die ID des Geheimnisses, bevor Sie diese Seite schließen.
+7. Notieren Sie sich den Wert und die ID des Clientschlüssels.
 
->[!NOTE]
->Sie können sich diese Informationen später nicht mehr notieren. Stattdessen müssen Sie das Geheimnis neu erstellen, wenn die Daten verloren gehen.
+   >[!NOTE]
+   >Wenn Sie den geheimen Clientschlüssel verlieren, können Sie ihn nicht erneut abrufen. Stattdessen müssen Sie einen neuen Schlüssel generieren.
 
-8. Nachdem Sie sich die Informationen aus den vorherigen Schritten notiert haben, klicken Sie links auf **API-Berechtigungen**, und gewähren Sie der Anwendung Zugriff auf den OIDC-Stapel.
+8. Wählen Sie links **API-Berechtigungen** aus. Gewähren Sie dann der Anwendung Zugriff auf den OIDC-Stapel.
 
-9. Klicken Sie zunächst auf **Berechtigung hinzufügen**, wählen Sie **Microsoft Graph** aus, und klicken Sie dann auf **Delegierte Berechtigungen**.
+9. Wählen Sie **Berechtigung hinzufügen** > **Microsoft Graph** > **Delegierte Berechtigungen** aus.
 
-10. Fügen Sie im Abschnitt **OpenId-Berechtigungen** „email“, „OpenID“ und „profile“ hinzu. Klicken Sie dann auf **Berechtigungen hinzufügen**.
+10. Wählen Sie im Bereich **OpenID-Berechtigungen** die Optionen **E-Mail**, **OpenID** und **Profil** aus. Klicken Sie dann auf **Berechtigungen hinzufügen**.
 
-    ![Abbildung zum Hinzufügen von OpenId-Berechtigungen](media/migrate-applications-from-okta-to-azure-active-directory/add-openid-permission.png)
+    :::image type="content" source="media/migrate-applications-from-okta-to-azure-active-directory/add-openid-permission.png" alt-text="Screenshot, der zeigt, wo OpenID-Berechtigungen hinzugefügt werden." lightbox="media/migrate-applications-from-okta-to-azure-active-directory/add-openid-permission.png":::
 
-11. Nachdem Sie die Berechtigungen hinzugefügt haben, klicken Sie auf die Option **Grant admin consent for Tenant Domain Name** (Administratorzustimmung für „Mandantendomänenname“ erteilen), und warten Sie, bis der Status **Gewährt** angezeigt wird. Auf diese Weise können die Benutzerfreundlichkeit verbessert und Aufforderungen zur Benutzereinwilligung unterdrückt werden.
+11. Um die Benutzerfreundlichkeit zu verbessern und Eingabeaufforderungen für die Benutzereinwilligung zu unterdrücken, wählen Sie **Administratorzustimmung für „Mandantendomänenname“ erteilen** aus. Warten Sie dann, bis der Status **Gewährt** angezeigt wird.
 
-    ![Abbildung zum Erteilen der Administratorzustimmung](media/migrate-applications-from-okta-to-azure-active-directory/grant-admin-consent.png)
+    ![Screenshot, der zeigt, wo die Administratoreinwilligung erteilt wird.](media/migrate-applications-from-okta-to-azure-active-directory/grant-admin-consent.png)
 
-12. Wenn Ihre Anwendung über einen Umleitungs-URI oder eine Antwort-URL verfügt, navigieren Sie zur Registerkarte **Authentifizierung**, dann zu **Plattform hinzufügen** und anschließend zu **Web**. Geben Sie die entsprechende URL ein, wählen Sie unten „Zugriffstoken“ und „ID tokens“ (ID-Token) aus, und klicken Sie dann auf **Konfigurieren**.
+12. Wenn Ihre Anwendung über einen Umleitungs-URI verfügt, geben Sie den entsprechenden URI ein. Wenn die Antwort-URL auf die Registerkarte **Authentifizierung** verweist, gefolgt von **Plattform hinzufügen** und **Web**, geben Sie die entsprechende URL ein. Wählen Sie **Zugriffstoken** und **ID-Token** aus. Klicken Sie anschließend auf **Konfigurieren**.
 
-    ![Abbildung zum Konfigurieren von Token](media/migrate-applications-from-okta-to-azure-active-directory/configure-tokens.png)
+    :::image type="content" source="media/migrate-applications-from-okta-to-azure-active-directory/configure-tokens.png" alt-text="Screenshot, der das Konfigurieren von Token zeigt." lightbox="media/migrate-applications-from-okta-to-azure-active-directory/configure-tokens.png":::
+    
+    Wählen Sie bei Bedarf im Menü **Authentifizierung** unter **Erweiterte Einstellungen** und **Öffentliche Clientflows zulassen** **Ja** aus.
 
-    Ändern Sie im Menü „Authentifizierung“ unter **Erweiterte Einstellungen** bei Bedarf die Einstellung für die Option **Öffentliche Clientflows zulassen** in „Ja“.
+    ![Screenshot, der das Zulassen öffentlicher Clientflows zeigt.](media/migrate-applications-from-okta-to-azure-active-directory/allow-client-flows.png)
 
-    ![Abbildung zur Option „Öffentliche Clientflows zulassen“](media/migrate-applications-from-okta-to-azure-active-directory/allow-client-flows.png)
-
-13. Navigieren Sie zurück zu Ihrer konfigurierten OIDC-Anwendung, und importieren Sie vor dem Testen die Anwendungs-ID und den geheimen Clientschlüssel in Ihre Anwendung. Konfigurieren Sie Ihre Anwendung für die Verwendung der zuvor genannten Konfiguration (z. B. „Client-ID“, „Geheimnis“ und „Bereiche“).
+13. Importieren Sie vor dem Testen in Ihrer OIDC-konfigurierten Anwendung die Anwendungs-ID und den Clientschlüssel. Führen Sie die vorherigen Schritte aus, um Ihre Anwendung mit Einstellungen wie Client-ID, Geheimnis und Geltungsbereichen zu konfigurieren.
 
 ## <a name="migrate-a-custom-authorization-server-to-azure-ad"></a>Migrieren eines benutzerdefinierten Autorisierungsservers zu Azure AD
 
 Okta-Autorisierungsserver ordnen Anwendungsregistrierungen, [die eine API verfügbar machen](../develop/quickstart-configure-app-expose-web-apis.md#add-a-scope), 1:1 zu.
 
-Der Okta-Standardautorisierungsserver sollte Microsoft Graph-Bereichen bzw. -Berechtigungen zugeordnet werden.
+Der standardmäßige Okta-Autorisierungsserver sollte Microsoft Graph-Bereichen bzw. -Berechtigungen zugeordnet werden.
 
-![Abbildung zur Okta-Standardautorisierung](media/migrate-applications-from-okta-to-azure-active-directory/default-okta-authorization.png)
+![Screenshot der standardmäßigen Okta-Autorisierung.](media/migrate-applications-from-okta-to-azure-active-directory/default-okta-authorization.png)
 
 ## <a name="next-steps"></a>Nächste Schritte 
 
 - [Tutorial: Migrieren des Okta-Verbunds zur verwalteten Azure Active Directory-Authentifizierung](migrate-okta-federation-to-azure-active-directory.md)
 
-- [Migrieren der Okta-Synchronisierungsbereitstellung zu Azure AD Connect-basierter Synchronisierung](migrate-okta-sync-provisioning-to-azure-active-directory.md)
+- [Migrieren der Okta-Synchronisierungsbereitstellung zu Azure AD Connect-basierter Synchronisierung](migrate-okta-sync-provisioning-to-azure-active-directory.md)
 
 - [Migrieren von Okta-Anmelderichtlinien zu bedingtem Azure AD-Zugriff](migrate-okta-sign-on-policies-to-azure-active-directory-conditional-access.md)

@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 08/16/2021
+ms.date: 10/08/2021
 ms.author: memildin
-ms.openlocfilehash: 529a88c2af5c47cb329006b58f2439ab95f40ba2
-ms.sourcegitcommit: da9335cf42321b180757521e62c28f917f1b9a07
+ms.openlocfilehash: 174540ecdfe54073c30cdc7b71952c0621a66ba8
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122350875"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129710717"
 ---
 # <a name="protect-your-endpoints-with-security-centers-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Schützen Sie Ihre Endpunkte mit der in Security Center integrierten EDR-Lösung: Microsoft Defender für den Endpunkt
 
@@ -37,7 +37,7 @@ Microsoft Defender für den Endpunkt ist eine ganzheitliche, cloudbasierte Lösu
 |----------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Status des Release:                               | • Integration in Defender für Endpunkt für Windows: allgemeine Verfügbarkeit (General Availability, GA)<br> • Integration in Defender für Endpunkt für Linux: Vorschauversion                                                                                                                                     |
 | Preise:                                     | Erfordert [Azure Defender für Server](defender-for-servers-introduction.md)                                                                                                                                                                                                           |
-| Unterstützte Umgebungen:                      | :::image type="icon" source="./media/icons/yes-icon.png"::: Azure Arc-Computer unter Windows/Linux<br>:::image type="icon" source="./media/icons/yes-icon.png":::Virtuelle Azure-Computer unter Linux ([unterstützte Versionen](/microsoft-365/security/defender-endpoint/microsoft-defender-endpoint-linux))<br>:::image type="icon" source="./media/icons/yes-icon.png"::: Virtuelle Azure-Computer unter Windows Server 2019, 2016, 2012 R2, 2008 R2 SP1, [Windows Virtual Desktop (WVD)](../virtual-desktop/overview.md), [Windows 10 Enterprise Multisession](../virtual-desktop/windows-10-multisession-faq.yml) (ehemals Enterprise for Virtual Desktops (EVD)<br>:::image type="icon" source="./media/icons/no-icon.png"::: Virtuelle Azure-Computer unter Windows 10 (außer EVD oder WVD)           |
+| Unterstützte Umgebungen:                      | :::image type="icon" source="./media/icons/yes-icon.png"::: Azure Arc-Computer unter Windows/Linux<br>:::image type="icon" source="./media/icons/yes-icon.png":::Virtuelle Azure-Computer unter Linux ([unterstützte Versionen](/microsoft-365/security/defender-endpoint/microsoft-defender-endpoint-linux))<br>:::image type="icon" source="./media/icons/yes-icon.png"::: Virtuelle Azure-Computer unter Windows Server 2022, 2019, 2016, 2012 R2, 2008 R2 SP1, [Windows Virtual Desktop (WVD)](../virtual-desktop/overview.md), [Windows 10 Enterprise Multisession](../virtual-desktop/windows-10-multisession-faq.yml) (ehemals Enterprise for Virtual Desktops (EVD)<br>:::image type="icon" source="./media/icons/no-icon.png"::: Virtuelle Azure-Computer unter Windows 10 (außer EVD oder WVD)           |
 | Erforderliche Rollen und Berechtigungen:              | • Zum Aktivieren/Deaktivieren der Integration: **Sicherheitsadministrator** oder **Besitzer**<br>• Zum Anzeigen von Defender für Endpunkt-Warnungen in Security Center: **Sicherheitsleseberechtigter**, **Leser**, **Ressourcengruppenmitwirkender**, **Ressourcengruppenbesitzer**, **Sicherheitsadministrator**, **Abonnementbesitzer** oder **Abonnementmitwirkender** |
 | Clouds:                                      | :::image type="icon" source="./media/icons/yes-icon.png"::: Kommerzielle Clouds<br>:::image type="icon" source="./media/icons/yes-icon.png"::: Azure Government<br>:::image type="icon" source="./media/icons/no-icon.png"::: Azure China 21Vianet                                                         |
 |                                              |                                                                                                                                                                                                                                                                                       |
@@ -47,6 +47,10 @@ Microsoft Defender für den Endpunkt ist eine ganzheitliche, cloudbasierte Lösu
 Microsoft Defender für den Endpunkt bietet folgende Features:
 
 - **Erweiterte Erkennungssensoren für Sicherheitsverletzungen**. Sensoren von Defender für den Endpunkt sammeln eine Vielzahl von verhaltensbezogenen Signalen von Ihren Computern.
+
+- **Sicherheitsrisikobewertung durch die Lösung zum Bedrohungs- und Sicherheitsrisikomanagement von Microsoft**. Wenn Microsoft Defender für Endpunkt aktiviert ist, kann das Security Center vom Bedrohungs- und Sicherheitsrisikomanagement-Modul entdeckte Sicherheitsrisiken anzeigen und dieses Modul auch als unterstützte Lösung zur Sicherheitsrisikobewertung anbieten. Weitere Informationen finden Sie unter [Untersuchen Sie Schwachstellen mit dem Bedrohungs- und Schwachstellenmanagement von Microsoft Defender for Endpoint](deploy-vulnerability-assessment-tvm.md).
+
+    Dieses Modul enthält auch die unter [Zugreifen auf einen Softwarebestand](asset-inventory.md#access-a-software-inventory) beschriebenen Softwarebestandsfeatures und kann automatisch mit [Einstellungen für die automatische Bereitstellung](auto-deploy-vulnerability-assessment.md) für unterstützte Computer aktiviert werden.
 
 - **Auf Analysen basierende, cloudgestützte Erkennung von Sicherheitsverletzungen**. Defender für den Endpunkt nimmt eine schnelle Anpassung an sich ändernde Bedrohungen vor. Das Produkt verwendet fortschrittliche Analysen und Big Data. Es wird durch die Leistungsfähigkeit von Intelligent Security Graph mit Signalen aus Windows, Azure und Office verstärkt, um unbekannte Bedrohungen zu erkennen. Das Produkt stellt aussagekräftige Warnmeldungen zur Verfügung und ermöglicht eine schnelle Reaktion.
 
@@ -78,9 +82,12 @@ Vergewissern Sie sich, dass Ihr Computer die erforderlichen Anforderungen für D
 
     - **Virtuelle Azure-Computer (Windows oder Linux)** : Konfigurieren Sie die Netzwerkeinstellungen, die unter Konfigurieren von Geräteproxy- und Internetkonnektivitätseinstellungen beschrieben werden: [Windows](/windows/security/threat-protection/microsoft-defender-atp/configure-proxy-internet) oder [Linux](/microsoft-365/security/defender-endpoint/linux-static-proxy-configuration).
 
-    - **Lokale Computer**: Verbinden Sie die Zielcomputer mit Azure Arc wie beschrieben unter [Verbinden von Hybridcomputern mit Servern mit Azure Arc-Unterstützung](../azure-arc/servers/learn/quick-enable-hybrid-vm.md).
+    - **Lokale Computer**: Verbinden Sie die Zielcomputer wie unter [Verbinden von Hybridcomputern mit Servern mit Azure Arc-Unterstützung](../azure-arc/servers/learn/quick-enable-hybrid-vm.md) beschrieben mit Azure Arc.
 
 1. Aktivieren Sie **Azure Defender für Server**. Siehe [Schnellstart: Aktivieren von Azure Defender](enable-azure-defender.md).
+
+    > [!IMPORTANT]
+    > Die Integration von Security Center mit Microsoft Defender für Endpunkt ist standardmäßig aktiviert. Wenn Sie Azure Defender aktivieren, erteilen Sie damit also die Zustimmung für Azure Defender für Server, auf die Daten von Microsoft Defender für Endpoint im Zusammenhang mit Sicherheitsrisiken, installierter Software und Warnungen für Ihre Endpunkte zuzugreifen.
 
 1. Wenn Sie Ihr Abonnement zwischen Azure-Mandanten verschoben haben, sind auch einige manuelle Vorbereitungsschritte erforderlich. Ausführliche Informationen erhalten Sie vom [Microsoft-Support](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 
@@ -258,14 +265,14 @@ Für Endpunkte unter Linux:
 
 ### <a name="whats-this-mdewindows--mdelinux-extension-running-on-my-machine"></a>Worum handelt es sich bei der „MDE.Windows“- bzw. „MDE.Linux“-Erweiterung, die auf meinem Computer ausgeführt wird?
 
-In der Vergangenheit wurde Microsoft Defender für Endpunkt vom Log Analytics-Agent bereitgestellt. Als wir die [Unterstützung um Windows Server 2019 ](release-notes.md#microsoft-defender-for-endpoint-integration-with-azure-defender-now-supports-windows-server-2019-and-windows-10-virtual-desktop-wvd-released-for-general-availability-ga) und Linux erweitert haben, haben wir auch eine Erweiterung zum Ausführen des automatischen Onboardings hinzugefügt. 
+In der Vergangenheit wurde Microsoft Defender für Endpunkt vom Log Analytics-Agent bereitgestellt. Als wir die [Unterstützung um Windows Server 2019 ](release-notes-archive.md#microsoft-defender-for-endpoint-integration-with-azure-defender-now-supports-windows-server-2019-and-windows-10-virtual-desktop-wvd-released-for-general-availability-ga) und Linux erweitert haben, haben wir auch eine Erweiterung zum Ausführen des automatischen Onboardings hinzugefügt. 
 
 Die Erweiterung wird von Security Center auf Computern mit folgenden Betriebssystemen automatisch bereitgestellt:
 
 - Windows Server 2019
 - Windows 10 Virtual Desktop (WVD)
 - Andere Versionen von Windows Server, wenn Security Center die Betriebssystemversion nicht erkennt (z. B. wenn ein benutzerdefiniertes VM-Image verwendet wird). In diesem Fall wird Microsoft Defender für Endpunkt weiterhin vom Log Analytics-Agent bereitgestellt.
-- Linux
+- Linux.
 
 > [!IMPORTANT]
 > Wenn Sie die MDE.Windows-Erweiterung löschen, entfernt dies nicht Microsoft Defender für Endpunkt. Informationen zum Offboarden finden Sie unter [Offboarding von Windows-Servern](/microsoft-365/security/defender-endpoint/configure-server-endpoints).

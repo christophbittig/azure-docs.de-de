@@ -9,18 +9,18 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 07/27/2021
 ms.author: banders
-ms.openlocfilehash: fb37278a30e935d2bb65a7b132177a1bd588117d
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: 18d8a363a21e8086b3ebcd01c0b32b0ae119a483
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114731169"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130000421"
 ---
 # <a name="add-or-update-a-credit-card-for-azure"></a>Hinzufügen oder Aktualisieren einer Kreditkarte für Azure
 
 Dieses Dokument gilt für Kunden, die sich online mit einer Kreditkarte für Azure registriert haben.
 
-Im Azure-Portal können Sie Ihre Standardzahlungsmethode auf eine neue Kreditkarte festlegen und Ihre Kreditkartendetails aktualisieren. Diese Änderungen können nur von einem [Kontoadministrator](../understand/subscription-transfer.md#whoisaa) oder von einem Benutzer mit den entsprechenden [MCA-Berechtigungen](understand-mca-roles.md) vorgenommen werden. Sie können auch Ihre aktuelle Kreditkarte für alle Abonnements ersetzen.
+Im Azure-Portal können Sie Ihre Standardzahlungsmethode auf eine neue Kreditkarte festlegen und Ihre Kreditkartendetails aktualisieren. Diese Änderungen können nur von einem [Kontoadministrator](add-change-subscription-administrator.md#whoisaa) oder von einem Benutzer mit den entsprechenden [MCA-Berechtigungen](understand-mca-roles.md) vorgenommen werden.
 
 Wenn Sie eine Kreditkarte löschen möchten, finden Sie weitere Informationen hierzu unter [Löschen einer Zahlungsmethode für die Azure-Abrechnung](delete-azure-payment-method.md).
 

@@ -3,12 +3,12 @@ title: Auswählen verwalteter Datenträgertypen für verwaltete Service Fabric-C
 description: Erfahren Sie, wie Sie verwaltete Datenträgertypen für verwaltete Service Fabric-Clusterknoten auswählen und in einer ARM-Vorlage konfigurieren.
 ms.topic: how-to
 ms.date: 5/10/2021
-ms.openlocfilehash: c9daef02b9249d44d5d202f5066bac40f807ec58
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: d0113ff161c000480f0e2f233f9acf6851f9d222
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129546328"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130068853"
 ---
 # <a name="select-managed-disk-types-for-service-fabric-managed-cluster-nodes"></a>Auswählen verwalteter Datenträgertypen für verwaltete Service Fabric-Clusterknoten
 
@@ -21,7 +21,7 @@ Verwaltete Azure Service Fabric-Cluster unterstützen die folgenden verwalteten 
     * Lokal redundanter HDD Standard-Speicher. Am besten für Sicherungen, nicht kritischen und seltenen Zugriff geeignet. 
 * SSD Standard *Standard*
     * Lokal redundanter SSD Standard-Speicher. Am besten für Webserver, wenig genutzte Unternehmensanwendungen und Enticklung/Testen geeignet.
-* SSD Premium *Kompatibel mit bestimmten VM-Größen*. Weitere Informationen finden Sie unter [SSD Premium](../virtual-machines/disks-types.md#premium-ssd).
+* SSD Premium *Kompatibel mit bestimmten VM-Größen*. Weitere Informationen finden Sie unter [SSD Premium](../virtual-machines/disks-types.md#premium-ssds).
     * Lokal redundanter SSD Premium-Speicher. Am besten für Produktions- und leistungsabhängige Workloads geeignet.
 
 >[!NOTE]

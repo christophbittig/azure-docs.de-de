@@ -10,12 +10,12 @@ ms.date: 03/17/2021
 ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: c871a1ec4feec89cc3250f1fbfefefa69ed927bb
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b5d33e9bfe123b0c0b2fceacc3d59e8f1f35de7f
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128589319"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130066773"
 ---
 # <a name="configure-network-routing-preference-for-azure-storage"></a>Konfigurieren der Netzwerkroutingpräferenz für Azure Storage
 
@@ -131,7 +131,7 @@ Diese Einstellung wirkt sich nur auf den routenspezifischen Endpunkt aus. Diese 
 
    - Legen Sie zum Erstellen eines routenspezifischen Endpunkts, der die Routingeinstellungen für das Microsoft-Netzwerk verwendet, den `-PublishMicrosoftEndpoint`-Parameter auf `true` fest.
 
-   - Legen Sie zum Erstellen eines routenspezifischen Endpunkts, der die Internetroutingeinstellungen verwendet, den `-PublishInternetEndpointTo`- Parameter auf `true` fest.
+   - Legen Sie zum Erstellen eines routenspezifischen Endpunkts, der die Internetroutingeinstellungen verwendet, den `-PublishInternetEndpoint`- Parameter auf `true` fest.
 
    Im folgenden Beispiel wird ein routenspezifischer Endpunkt erstellt, der die Routingeinstellungen für das Microsoft-Netzwerk verwendet.
 

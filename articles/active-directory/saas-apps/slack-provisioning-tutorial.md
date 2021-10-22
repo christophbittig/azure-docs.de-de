@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: arvinh
-ms.openlocfilehash: 673dca65726a4258e267e8dd3e403329b47f6d98
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 5a14f9367a1b46a641f371b8c17a62b9f58c5756
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108739977"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130001312"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Slack für die automatische Benutzerbereitstellung
 
@@ -37,7 +37,7 @@ Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über 
 
 * [Einen Azure AD-Mandanten](../develop/quickstart-create-new-tenant.md)
 * Ein Benutzerkonto in Azure AD mit der [Berechtigung](../roles/permissions-reference.md) für die Konfiguration von Bereitstellungen (z. B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator).
-* Einen Slack-Mandanten, für den mindestens der [Plus-Plan](https://aadsyncfabric.slack.com/pricing) aktiviert ist.
+* Einen Slack-Mandanten, für den mindestens der [Plus-Plan](https://slack.com/pricing) aktiviert ist.
 * Ein Benutzerkonto mit Teamadministratorberechtigungen in Slack.
 
 > [!NOTE]

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: allensu
-ms.openlocfilehash: e983494b41e2fe0187f9468a66242c71c9bd3280
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 372953e9a2a11cbb614cc6afd6ccde629344e0c2
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129368258"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130132776"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network"></a>Was ist IPv6 für Azure Virtual Network?
 
@@ -57,7 +57,6 @@ IPv6 für Azure VNET beinhaltet die folgenden Funktionen:
     - Mehrere optionale Front-End-Konfigurationen, sodass ein einzelner Lastenausgleich mehrere öffentliche IPv6-Adressen nutzen kann. (Für verschiedene Front-End-Adressen können das gleiche Front-End-Protokoll und der gleiche Port verwendet werden.)
     - Optionale IPv6-Ports können mithilfe der Funktion *Floating IP* der Lastenausgleichsregeln in Back-End-Instanzen wiederverwendet werden. 
     - Hinweis: Der Lastenausgleich führt keine Protokollübersetzung durch (kein NAT64). 
-    - Hinweis: Für IPv6 kann nur ein Lastenausgleich auf die primäre Netzwerkschnittstelle (NIC) auf Azure-VMs ausgeführt werden. 
 - Unterstützung einer [internen IPv6-Load Balancer Standard-Instanz](../../virtual-network/ipv6-dual-stack-standard-internal-load-balancer-powershell.md) zur Erstellung resilienter Anwendungen mit mehreren Ebenen innerhalb von Azure VNETs.   
 - Unterstützung einer öffentlichen IPv6-Load Balancer Basic-Instanz für die Kompatibilität mit Legacy-Bereitstellungen
 - [Reservierte öffentliche IPv6-IP-Adressen und IPv6-Adressbereiche](public-ip-address-prefix.md) bieten stabile vorhersagbare IPv6-Adressen, die die Filterung der in Azure gehosteten Anwendungen für Ihr Unternehmen und Ihre Kunden vereinfachen.

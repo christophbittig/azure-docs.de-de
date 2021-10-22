@@ -3,29 +3,30 @@ title: 'Schnellstart: Azure Blob Storage-Bibliothek v12: .NET'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mit der Azure Blob Storage-Clientbibliothek Version 12 für .NET einen Container und ein Blob in Blob Storage (Objektspeicher) erstellen. Als Nächstes erfahren Sie, wie Sie den Blob auf Ihren lokalen Computer herunterladen, und wie Sie alle Blobs in einem Container auflisten.
 author: normesta
 ms.author: normesta
-ms.date: 03/03/2021
+ms.date: 10/06/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c71a362c7e8e3073929967abce4bcdc4566b8ce9
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f695d344401598256d89dee83a69b886768e2774
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128652908"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129659581"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>Schnellstart: Azure Blob Storage-Clientbibliothek v12 für .NET
 
 Erfahren Sie etwas über die ersten Schritte mit der Azure Blob Storage-Clientbibliothek v12 für .NET. Azure Blob Storage ist die Objektspeicherlösung von Microsoft für die Cloud. Führen Sie die Schritte zum Installieren des Pakets aus, und testen Sie den Beispielcode für grundlegende Aufgaben. Blobspeicher ist für die Speicherung großer Mengen unstrukturierter Daten optimiert.
 
-Mit der Azure Blob Storage-Clientbibliothek v12 für .NET ist Folgendes möglich:
+In den Beispielen in dieser Schnellstartanleitung wird gezeigt, wie Sie die Azure Blob Storage-Clientbibliothek v12 für .NET für Folgendes nutzen:
 
-- Erstellen eines Containers
-- Hochladen eines Blobs in Azure Storage
-- Auflisten aller Blobs in einem Container
-- Herunterladen des Blobs auf den lokalen Computer
-- Löschen eines Containers
+- [Abrufen der Verbindungszeichenfolge](#get-the-connection-string)
+- [Container erstellen](#create-a-container)
+- [Hochladen eines Blobs in einen Container](#upload-a-blob-to-a-container)
+- [Listet Blobs in einem Container auf.](#list-blobs-in-a-container)
+- [Herunterladen eines Blobs](#download-a-blob)
+- [Löschen eines Containers](#delete-a-container)
 
 Zusätzliche Ressourcen:
 
@@ -109,14 +110,7 @@ Verwenden Sie die folgenden .NET-Klassen zur Interaktion mit folgenden Ressource
 
 ## <a name="code-examples"></a>Codebeispiele
 
-Mit den Beispielcodeausschnitten wird veranschaulicht, wie folgende Vorgänge mit der Azure Blob Storage-Clientbibliothek für .NET durchgeführt werden:
-
-- [Abrufen der Verbindungszeichenfolge](#get-the-connection-string)
-- [Container erstellen](#create-a-container)
-- [Hochladen von Blobs in einen Container](#upload-blobs-to-a-container)
-- [Auflisten der Blobs in einem Container](#list-the-blobs-in-a-container)
-- [Herunterladen von Blobs](#download-blobs)
-- [Löschen eines Containers](#delete-a-container)
+In den Beispielcodeausschnitten in den folgenden Abschnitten wird gezeigt, wie Sie grundlegende Datenvorgänge mit der Azure Blob Storage-Clientbibliothek für .NET ausführen.
 
 ### <a name="get-the-connection-string"></a>Abrufen der Verbindungszeichenfolge
 
@@ -139,7 +133,7 @@ Fügen Sie diesen Code am Ende der `Main`-Methode hinzu:
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/quickstarts/dotnet/BlobQuickstartV12/Program.cs" id="Snippet_CreateContainer":::
 
-### <a name="upload-blobs-to-a-container"></a>Hochladen von Blobs in einen Container
+### <a name="upload-a-blob-to-a-container"></a>Hochladen eines Blobs in einen Container
 
 Der folgende Codeausschnitt führt folgende Aktionen durch:
 
@@ -151,7 +145,7 @@ Fügen Sie diesen Code am Ende der `Main`-Methode hinzu:
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/quickstarts/dotnet/BlobQuickstartV12/Program.cs" id="Snippet_UploadBlobs":::
 
-### <a name="list-the-blobs-in-a-container"></a>Auflisten der Blobs in einem Container
+### <a name="list-blobs-in-a-container"></a>Listet Blobs in einem Container auf.
 
 Listen Sie die Blobs im Container auf, indem Sie die [GetBlobsAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsasync)-Methode aufrufen. In diesem Fall wurde dem Container nur ein Blob hinzugefügt, sodass beim Auflisten auch nur ein Blob zurückgegeben wird.
 
@@ -159,7 +153,7 @@ Fügen Sie diesen Code am Ende der `Main`-Methode hinzu:
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/quickstarts/dotnet/BlobQuickstartV12/Program.cs" id="Snippet_ListBlobs":::
 
-### <a name="download-blobs"></a>Herunterladen von Blobs
+### <a name="download-a-blob"></a>Herunterladen eines Blobs
 
 Laden Sie das zuvor erstellte Blob herunter, indem Sie die [DownloadToAsync](/dotnet/api/azure.storage.blobs.specialized.blobbaseclient.downloadtoasync)-Methode aufrufen. Im Beispielcode wird das Suffix „DOWNLOADED“ an den Dateinamen angefügt, damit beide Dateien im lokalen Dateisystem angezeigt werden können.
 

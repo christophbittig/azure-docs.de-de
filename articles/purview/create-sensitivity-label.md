@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/27/2021
-ms.openlocfilehash: 0cc474ba9566737cb0117cc3a0f2bfb079cdf3d9
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: f6769cfc95ff06ef67d9020ff109993772b36bf0
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129616510"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130000837"
 ---
 # <a name="labeling-in-azure-purview"></a>Bezeichnungen in Azure Purview
 
@@ -35,7 +35,7 @@ Mit Azure Purview können Sie Vertraulichkeitsbezeichnungen auf Ressourcen anwen
 * **Automatische Bezeichnung:** Bezeichnungen können basierend auf der Vertraulichkeit der Daten automatisch angewendet werden. Wenn eine Ressource auf vertrauliche Daten überprüft wird, werden Regeln für die automatische Bezeichnung verwendet, um zu entscheiden, welche Vertraulichkeitsbezeichnung angewendet werden soll. Sie können Regeln für die automatische Bezeichnung für jede Vertraulichkeitsbezeichnung erstellen und definieren, welcher Typ von Klassifizierung bzw. vertraulichen Informationen eine Bezeichnung ausmacht.
 * **Anwenden von Bezeichnungen auf Dateien und Datenbankspalten:** Bezeichnungen können auf Dateien im Speicher (z. B. Azure Data Lake, Azure Files usw.) und auf schematisierte Daten (z. B. Spalten in Azure SQL DB, Cosmos DB usw.) angewendet werden.
 
-Vertraulichkeitsbezeichnungen sind Tags, die Sie auf Ressourcen anwenden können, um Ihre Daten zu klassifizieren und zu schützen. Weitere Informationen zu Vertraulichkeitsbezeichnungen finden Sie [hier](/microsoft-365/compliance/create-sensitivity-labels.md).
+Vertraulichkeitsbezeichnungen sind Tags, die Sie auf Ressourcen anwenden können, um Ihre Daten zu klassifizieren und zu schützen. Weitere Informationen zu Vertraulichkeitsbezeichnungen finden Sie [hier](/microsoft-365/compliance/create-sensitivity-labels).
 
 ## <a name="how-to-apply-labels-to-assets-in-azure-purview"></a>Anwenden von Bezeichnungen auf Ressourcen in Azure Purview
 

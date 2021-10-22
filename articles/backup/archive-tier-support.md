@@ -2,14 +2,14 @@
 title: Unterstützung für Archivspeicherebene
 description: Informationen zur Unterstützung der Zugriffsebene „Archiv“ für Azure Backup
 ms.topic: conceptual
-ms.date: 09/10/2021
+ms.date: 09/29/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0468e463caa6d589b22596d2fe845014e96e10b8
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: bc3ea68353f7e6cc3bb16a11e8a7868df2b02310
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128632460"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129534914"
 ---
 # <a name="archive-tier-support"></a>Unterstützung für Archivspeicherebene
 
@@ -232,8 +232,8 @@ Durch das Beenden des Schutzes und das Löschen der Daten werden alle Wiederhers
 
 | Arbeitsauslastungen | Vorschau | Allgemein verfügbar |
 | --- | --- | --- |
-| SQL Server auf Azure-VM | „USA, Süden-Mitte“, „USA, Norden-Mitte“, „Europa, Westen“ | „Australien, Osten“, „Indien, Mitte“, „Europa, Norden“, „Asien, Südosten“, „Australien, Südosten“, „Kanada, Mitte“, „Brasilien, Süden“, „Kanada, Osten“, „Frankreich, Mitte“, „Frankreich, Süden“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „Südkorea, Süden“, „Indien, Süden“, „Vereinigtes Königreich, Westen“, „Vereinigtes Königreich, Süden“, „USA, Mitte“, „USA, Osten 2“, „USA, Westen“, „USA, Westen 2“, „USA, Westen-Mitte“, „USA, Osten“ |
-| Azure-VMs | „USA, Osten“, „USA, Osten 2“, „USA, Mitte“, „USA, Süden-Mitte“, „USA, Westen“, „USA, Westen 2“, „USA, Westen-Mitte“, „USA, Norden-Mitte“, „Brasilien, Süden“, „Kanada, Osten“, „Kanada, Mitte“, „Europa, Westen“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „Asien, Osten“, „Japan, Osten“, „Indien, Süden“, „Asien, Südosten“, „Australien, Osten“, „Indien, Mitte“, „Europa, Mitte“, „Australien, Südosten“, „Frankreich, Mitte“, „Frankreich, Süden“, „Japan, Westen“, „Südkorea, Mitte“, „Südkorea, Süden“ | Keine |
+| SQL Server auf Azure-VM | Keine | „Australien, Osten“, „Indien, Mitte“, „Europa, Norden“, „Asien, Südosten“, „Asien, Osten“, „Australien, Südosten“, „Kanada, Mitte“, „Brasilien, Süden“, „Kanada, Osten“, „Frankreich, Mitte“, „Frankreich, Süden“, „Japan, Osten“, „Japan, Westen“, „Korea, Mitte“, „Korea, Süden“, „Indien, Süden“, „Vereinigtes Königreich, Westen“, „Vereinigtes Königreich, Süden“, „USA, Mitte“, „USA, Osten 2“, „USA, Westen“, „USA, Westen 2“, „USA, Westen-Mitte“, „USA, Osten“, „USA, Süden-Mitte“, „USA, Norden-Mitte“, „Europa, Westen“, „US Gov TX“, „US GOV AZ“. |
+| Azure-VMs | „USA, Osten“, „USA, Osten 2“, „USA, Mitte“, „USA, Süden-Mitte“, „USA, Westen“, „USA, Westen 2“, „USA, Westen-Mitte“, „USA, Norden-Mitte“, „Brasilien, Süden“, „Kanada, Osten“, „Kanada, Mitte“, „Europa, Westen“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „Asien, Osten“, „Japan, Osten“, „Indien, Süden“, „Asien, Südosten“, „Australien, Osten“, „Indien, Mitte“, „Europa, Mitte“, „Australien, Südosten“, „Frankreich, Mitte“, „Frankreich, Süden“, „Japan, Westen“, „Südkorea, Mitte“, „Südkorea, Süden“. | Keine |
 
 ## <a name="error-codes-and-troubleshooting-steps"></a>Fehlercodes und Schritte zur Problembehandlung
 

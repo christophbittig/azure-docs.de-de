@@ -2,18 +2,16 @@
 title: Kachelvisualisierungen für Azure Monitor-Arbeitsmappen
 description: Erfahren Sie mehr über die zahlreichen Kachelvisualisierungen für Azure Monitor-Arbeitsmappen.
 services: azure-monitor
-author: lgayhardt
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/04/2020
-ms.author: lagayhar
-ms.openlocfilehash: 07de9fcd01559e59a1bcd5d8928075aebcf79cc7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fa486647f124e374087abab959ced16cbddad539
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100601116"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130131636"
 ---
 # <a name="tile-visualizations"></a>Kachelvisualisierungen
 

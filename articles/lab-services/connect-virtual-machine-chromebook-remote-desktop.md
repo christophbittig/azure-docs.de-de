@@ -3,15 +3,15 @@ title: Herstellen einer Verbindung mit einer Azure Lab Services-VM über ein Chr
 description: Hier erfahren Sie, wie Sie über ein Chromebook eine Verbindung mit einem virtuellen Computer in Azure Lab Services herstellen.
 services: devtest-lab, lab-services, virtual-machines
 author: nicolela
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: 74135c0b36f533ebfbba6422bc79af47825a1a3b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 7fb33b580aa0984366b47f0358df7f915a77730b
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97813223"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130176147"
 ---
 # <a name="connect-to-a-vm-using-remote-desktop-protocol-on-a-chromebook"></a>Herstellen einer Verbindung mit einem virtuellen Computer mithilfe des Remotedesktopprotokolls auf einem Chromebook
 

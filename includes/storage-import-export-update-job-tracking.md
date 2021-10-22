@@ -1,19 +1,19 @@
 ---
-title: include file
-description: include file
+title: Datei einfügen
+description: Datei einfügen
 author: alkohli
 services: storage
 ms.service: storage
 ms.topic: include
-ms.date: 07/17/2018
+ms.date: 09/28/2021
 ms.author: alkohli
 ms.custom: include file
-ms.openlocfilehash: 8ed57cd39580474925e781f3ec8fb05a2299a937
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5aca82d0a3ee290ec7e0f6ad3a32396b51b2aa59
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98701643"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129709598"
 ---
 Wechseln Sie nach dem Versand der Datenträger zurück zur Seite **Import/Export** im Azure-Portal. 
 
@@ -27,3 +27,7 @@ Um die Nachverfolgungsnummer zu aktualisieren, führen Sie die folgenden Schritt
 3. Aktivieren Sie das Kontrollkästchen für **Mark as shipped** (Als versendet kennzeichnen).
 4. Geben Sie den **Spediteur** und die **Nachverfolgungsnummer** an.
 5. Sie können den Status des Auftrags im Dashboard des Portals nachverfolgen. Eine Beschreibung der einzelnen Auftragsstatus finden Sie unter [Anzeigen des Auftragsstatus](../articles/import-export/storage-import-export-view-drive-status.md).
+
+> [!NOTE] 
+> Sie können einen Auftrag nur im Zustand „Wird erstellt“ stornieren. Nachdem Sie Nachverfolgungsdetails angegeben haben, ändert sich der Auftragsstatus in „Versand“, und der Auftrag kann nicht mehr storniert werden.
+

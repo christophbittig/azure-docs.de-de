@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/28/2021
+ms.date: 10/15/2021
 ms.author: b-juche
-ms.openlocfilehash: 705cc540097ea41bc0039336d7cc9fdc025dd247
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 8dace313ed9296dd514fb059e8ed681a6276af0f
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129218382"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130074530"
 ---
 # <a name="enable-continuous-availability-on-existing-smb-volumes"></a>Aktivieren der fortlaufenden Verfügbarkeit auf vorhandenen SMB-Volumes
 
@@ -34,8 +34,11 @@ Sie können das SMB-Feature „Fortlaufende Verfügbarkeit“ (Continuous Availa
 ## <a name="steps"></a>Schritte
 
 1. Stellen Sie sicher, dass Sie das Feature [SMB-Freigaben „Fortlaufende Verfügbarkeit“](https://aka.ms/anfsmbcasharespreviewsignup) registriert haben.  
-2. Klicken Sie auf das SMB-Volume, für das die SMB-Zertifizierungsstelle aktiviert sein soll. Klicken Sie dann auf **Bearbeiten**.  
-3. Aktivieren Sie im angezeigten Fenster „Bearbeiten“ das Kontrollkästchen **Fortlaufende Verfügbarkeit aktivieren**.   
+
+    Sie sollten „Fortlaufende Verfügbarkeit nur für SQL Server und [FSLogix-Benutzerprofilcontainer](../virtual-desktop/create-fslogix-profile-container.md) aktivieren. Die Verwendung von SMB-Freigaben der fortlaufenden Verfügbarkeit für andere Workloads als SQL Server und FSLOGIX- Benutzerprofilcontainern wird *nicht* unterstützt. Dieses Feature wird derzeit für SQL Server unter Windows unterstützt. SQL Server unter Linux wird zurzeit nicht unterstützt. Wenn Sie für die Installation von SQL Server ein Nicht-Administratorkonto bzw. ein Nicht-Administratordomänenkonto verwenden, stellen Sie sicher, dass dem Konto die erforderlichen Sicherheitsberechtigungen zugewiesen sind. Wenn das Domänenkonto nicht über die erforderliche Sicherheitsberechtigung (`SeSecurityPrivilege`) verfügt und die Berechtigung nicht auf Domänenebene festgelegt werden kann, können Sie dem Konto die Berechtigung über das Feld **Benutzer mit Sicherheitsberechtigungen** der Active Directory-Verbindungen zuweisen. Weitere Informationen finden Sie unter [Erstellen einer Active Directory Domain Services-Verbindung](create-active-directory-connections.md#create-an-active-directory-connection).
+            
+3. Klicken Sie auf das SMB-Volume, für das die SMB-Zertifizierungsstelle aktiviert sein soll. Klicken Sie dann auf **Bearbeiten**.  
+4. Aktivieren Sie im angezeigten Fenster „Bearbeiten“ das Kontrollkästchen **Fortlaufende Verfügbarkeit aktivieren**.   
     ![Momentaufnahme mit der Option „Fortlaufende Verfügbarkeit aktivieren“.](../media/azure-netapp-files/enable-continuous-availability.png)
 
 4. Starten Sie die Windows-Systeme neu, die eine Verbindung mit der vorhandenen SMB-Freigabe herstellen.   

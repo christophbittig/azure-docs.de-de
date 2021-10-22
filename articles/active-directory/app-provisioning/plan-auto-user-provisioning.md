@@ -3,7 +3,7 @@ title: Planen einer automatischen Benutzerbereitstellung für Azure Active Direc
 description: Leitfaden für die Planung und Ausführung einer automatischen Benutzerbereitstellung in Azure Active Directory
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/13/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 9e58650a98539b815173040cf0e47c200045b2bb
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: e4be8f3bac712136fc2cbfea5a6a6febbd81e0e1
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113728496"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129991088"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment-in-azure-active-directory"></a>Planen einer automatischen Benutzerbereitstellung in Azure Active Directory
 

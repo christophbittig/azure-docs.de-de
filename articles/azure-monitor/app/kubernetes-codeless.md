@@ -2,15 +2,13 @@
 title: 'Überwachen von Anwendungen in Azure Kubernetes Service (AKS) mit Application Insights: Azure Monitor | Microsoft-Dokumentation'
 description: Azure Monitor kann nahtlos in Ihre in Kubernetes ausgeführte Anwendung integriert werden und ermöglicht eine blitzschnelle Erkennung von Problemen mit Ihren Apps.
 ms.topic: conceptual
-author: MS-jgol
-ms.author: jgol
 ms.date: 05/13/2020
-ms.openlocfilehash: 52bd6d2a98e5126ff2463de1ef99da03ca555567
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 63584a3d753f0b20e91697d0d49e4290348fe22b
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87075305"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130129793"
 ---
 # <a name="zero-instrumentation-application-monitoring-for-kubernetes---azure-monitor-application-insights"></a>Anwendungsüberwachung ohne Instrumentierung für Kubernetes: Azure Monitor Application Insights
 

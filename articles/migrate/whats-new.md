@@ -7,16 +7,19 @@ ms.author: anvar
 ms.manager: bsiva
 ms.date: 08/04/2021
 ms.custom: mvc
-ms.openlocfilehash: ca3a4a3bbcfd1de92906b75ed56351afb04b4b17
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: bf10074292dd123a7f732c2afc11a28edbedb3ed
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129389435"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130068872"
 ---
 # <a name="whats-new-in-azure-migrate"></a>Neuerungen in Azure Migrate
 
 [Azure Migrate](migrate-services-overview.md) unterstützt Sie beim Ermitteln, Bewerten und Migrieren von lokalen Servern, Apps und Daten in die Microsoft Azure Cloud. In diesem Artikel werden die neuen Releases und Features in Azure Migrate zusammengefasst.
+
+## <a name="update-october-2021"></a>Update (Oktober 2021)
+- Azure Migrate unterstützt jetzt neue geografische Bereiche und Regionen der öffentlichen Cloud. [Weitere Informationen](migrate-support-matrix.md#supported-geographies-public-cloud)
 
 ## <a name="update-september-2021"></a>Update (September 2021)
 - Das Entdecken, Bewerten und Migrieren von Servern über ein privates Netzwerk mithilfe von [Azure Private Link](../private-link/private-endpoint-overview.md)  befindet sich jetzt in [unterstützten Government Cloud-Geografien](migrate-support-matrix.md#supported-geographies-azure-government) in der Vorschau. [Weitere Informationen](how-to-use-azure-migrate-with-private-endpoints.md)
@@ -26,7 +29,7 @@ ms.locfileid: "129389435"
 ## <a name="update-august-2021"></a>Update (August 2021)
 
 - Die bedarfsorientierte Ermittlung und Bewertung von ASP.NET-Web-Apps, die auf IIS-Servern in Ihrer VMware-Umgebung ausgeführt werden, befindet sich jetzt in der Vorschauphase. [Weitere Informationen](concepts-azure-webapps-assessment-calculation.md). Informationen zu den ersten Schritten finden Sie in den Tutorials zur [Ermittlung](tutorial-discover-vmware.md) und [Bewertung](tutorial-assess-webapps.md).
-- Unterstützung für Azure [Ultra-Datenträger](../virtual-machines/disks-types.md#ultra-disk) in der Azure-VM-Bewertungsempfehlung.
+- Unterstützung für Azure [Ultra-Datenträger](../virtual-machines/disks-types.md#ultra-disks) in der Azure-VM-Bewertungsempfehlung.
 - Allgemeine Verfügbarkeit von bedarfsorientierter Softwareinventur und Abhängigkeitsanalyse ohne Agent für virtuelle VMware-Computer.
 - Updates der Azure Migrate-Appliance:
     - Diagnostizieren und Beheben von Problemen mit der Appliance, damit Benutzer Probleme mit der Appliance erkennen und selbst bewerten können.

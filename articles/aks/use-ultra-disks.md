@@ -3,15 +3,15 @@ title: Aktivieren der Unterstützung für Disk Ultra in Azure Kubernetes Service
 description: Erfahren Sie, wie Sie Ultra Disks in einem Azure Kubernetes Service-Cluster (AKS) aktivieren und konfigurieren.
 services: container-service
 ms.topic: article
-ms.date: 07/10/2020
-ms.openlocfilehash: d42834252416a2aeed40db5fe307cd97f1bbada9
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.date: 10/12/2021
+ms.openlocfilehash: 07d43fc72d10f1739fb67124feadacc9632206be
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112007299"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129984856"
 ---
-# <a name="use-azure-ultra-disks-on-azure-kubernetes-service-preview"></a>Verwenden von Azure Ultra Disks in Azure Kubernetes Service (Vorschauversion)
+# <a name="use-azure-ultra-disks-on-azure-kubernetes-service"></a>Verwenden von Azure Ultra Disks in Azure Kubernetes Service
 
 [Azure Ultra Disks](../virtual-machines/disks-enable-ultra-ssd.md) bieten hohen Durchsatz, einen hohen IOPS-Wert und einen Datenträgerspeicher mit durchgängig geringer Latenz für zustandsbehaftete Anwendungen. Ein Hauptvorteil von Ultra Disks ist die Möglichkeit zum dynamischen Ändern der SSD-Leistung zusammen mit Ihren Workloads, ohne dass Sie Ihre Agent-Knoten neu starten müssen. Ultra Disks eignen sich für datenintensive Workloads.
 
@@ -21,18 +21,6 @@ Diese Funktion kann nur bei der Erstellung des Clusters oder bei der Erstellung 
 
 > [!IMPORTANT]
 > Azure Ultra Disks erfordern Knotenpools in Verfügbarkeitszonen und Regionen, die diese Datenträger unterstützen, sowie bestimmte VM-Serien. Weitere Informationen finden Sie unter [**Umfang und Einschränkungen für die allgemeine Verfügbarkeit von Ultra Disks**](../virtual-machines/disks-enable-ultra-ssd.md#ga-scope-and-limitations).
-
-### <a name="install-aks-preview-cli-extension"></a>Installieren der CLI-Erweiterung „aks-preview“
-
-Um einen AKS-Cluster oder Knotenpool zu erstellen, der Ultra Disks verwenden kann, benötigen Sie die aktuelle CLI-Erweiterung *aks-preview*. Installieren Sie die Azure CLI-Erweiterung *aks-preview* mit dem Befehl [az extension add][az-extension-add], oder installieren Sie mit dem Befehl [az extension update][az-extension-update] alle verfügbaren Updates:
-
-```azurecli-interactive
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-``` 
 
 ### <a name="limitations"></a>Einschränkungen
 - Weitere Informationen finden Sie unter [**Umfang und Einschränkungen für die allgemeine Verfügbarkeit von Ultra Disks**](../virtual-machines/disks-enable-ultra-ssd.md#ga-scope-and-limitations).

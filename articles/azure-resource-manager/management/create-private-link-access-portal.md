@@ -3,12 +3,12 @@ title: Erstellen einer privaten Verbindung zum Verwalten von Ressourcen – Azur
 description: Erstellen Sie im Azure-Portal eine private Verbindung zum Verwalten von Ressourcen.
 ms.topic: conceptual
 ms.date: 07/29/2021
-ms.openlocfilehash: efe1fdb47bf550b996f4f44eed9f2d41f2a1083d
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 4d829dbc75aa384e57f706f3e689e8b36365a9c1
+ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123227349"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130137768"
 ---
 # <a name="use-portal-to-create-private-link-for-managing-azure-resources"></a>Erstellen einer privaten Verbindung zum Verwalten von Azure-Ressourcen im Azure-Portal
 
@@ -38,7 +38,7 @@ Wenn Sie eine private Verbindung zur Verwaltung von Ressourcen erstellen, wird d
 
 Erstellen Sie nun einen privaten Endpunkt, der auf die private Ressourcenmanagementverbindung verweist.
 
-1. Navigieren Sie zum **Private Link Center**. Klicken Sie auf **Private Verbindung erstellen**.
+1. Navigieren Sie zum **Private Link Center**. Wählen Sie **Privaten Endpunkt erstellen** aus.
 
    :::image type="content" source="./media/create-private-link-access-portal/private-link-center.png" alt-text="Private Link Center":::
 

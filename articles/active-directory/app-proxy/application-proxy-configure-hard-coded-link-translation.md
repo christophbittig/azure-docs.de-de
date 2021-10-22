@@ -3,20 +3,20 @@ title: Verschieben von Links und URLs – Azure Active Directory-Anwendungsproxy
 description: Erfahren Sie, wie Sie hartcodierte Links für Apps, die mit dem Azure Active Directory-Anwendungsproxy veröffentlicht wurden, umleiten.
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-proxy
 ms.workload: identity
 ms.topic: how-to
 ms.date: 04/27/2021
 ms.author: kenwith
-ms.reviewer: japere
-ms.openlocfilehash: 08782f57ecf82924f48e25a1e8f1a62a1a94264b
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.reviewer: ashishj
+ms.openlocfilehash: 8d86a37d0bd15eae55cbe2dce10c40ce77d99720
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129613831"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129990024"
 ---
 # <a name="redirect-hard-coded-links-for-apps-published-with-azure-active-directory-application-proxy"></a>Umleiten von hartcodierte Links für Apps, die mit dem Azure Active Directory-Anwendungsproxy veröffentlicht wurden.
 

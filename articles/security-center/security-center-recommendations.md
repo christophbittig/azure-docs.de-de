@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 01/24/2021
 ms.author: memildin
-ms.openlocfilehash: 5921ad250934121223c35012d2278165b3dcc262
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: 186c155ea1ec4d69abde6147997fe4659a3e833f
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112237184"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130003597"
 ---
 # <a name="review-your-security-recommendations"></a>Überprüfen Ihrer Sicherheitsempfehlungen
 
@@ -37,13 +37,26 @@ Security Center analysiert den Sicherheitsstatus Ihrer Ressourcen, um mögliche 
     Inhalt der Seite:
 
     1. Für unterstützte Empfehlungen zeigt die obere Symbolleiste eine oder alle der folgenden Schaltflächen an:
-        - **Erzwingen** und **Ablehnen** (Weitere Informationen finden Sie unter [Verhindern von Fehlkonfigurationen mit den Optionen zum Erzwingen/Ablehnen für Empfehlungen](prevent-misconfigurations.md).)
-        - **Richtliniendefinitionen anzeigen**, um direkt zum Azure Policy-Eintrag der zugrunde liegenden Richtlinie zu gelangen
-        - **Abfrage öffnen**: Alle Empfehlungen haben die Möglichkeit, die detaillierten Informationen zu den betroffenen Ressourcen mithilfe des Azure Resource Graph-Explorers anzuzeigen.
-    1. **Angabe des Schweregrads**
-    1. **Aktualisierungsintervall** (sofern relevant)
+        - **Erzwingen** und **Ablehnen** (siehe [Verhindern von Fehlkonfigurationen mit „Erzwingen“/“Ablehnen“-Empfehlungen](prevent-misconfigurations.md)).
+        - **Richtliniendefinition anzeigen**, um direkt zum Azure Policy-Eintrag der zugrunde liegenden Richtlinie zu gelangen.
+        - **Abfrage öffnen**: Alle Empfehlungen bieten die Möglichkeit, die detaillierten Informationen zu den betroffenen Ressourcen mithilfe des Azure Resource Graph-Explorers anzuzeigen.
+    1. **Angabe des Schweregrads**.
+    1. **Aktualisierungsintervall** (sofern relevant).
     1. **Anzahl ausgenommener Ressourcen**: Wenn für diese Empfehlung Ausnahmen vorhanden sind, wird die Anzahl der ausgenommenen Ressourcen angezeigt.
-    1. **Beschreibung**: Eine kurze Beschreibung des Problems
+    1. **Beschreibung**: Eine kurze Beschreibung des Sicherheitsproblems.
+    1. Falls relevant, enthält die Detailseite auch eine Tabelle **verwandter Empfehlungen**:
+
+        Tabellenbeziehungstypen sind:
+
+        - **Voraussetzung**: Eine Empfehlung, die vor der ausgewählten Empfehlung abgeschlossen werden muss.
+        - **Alternative**: Eine andere Empfehlung, die eine weitere Möglichkeit bietet, die Ziele der ausgewählten Empfehlung zu erreichen.
+        - **Abhängig**: Eine Empfehlung, für die die ausgewählte Empfehlung eine Voraussetzung ist.
+
+        Für jede verwandte Empfehlung wird in der Spalte „Betroffene Ressourcen“ die Anzahl fehlerhafter Ressourcen angezeigt.
+
+        > [!TIP]
+        > Wenn eine verwandte Empfehlung ausgegraut ist, ist ihre Abhängigkeit noch nicht abgeschlossen und die Empfehlung ist daher nicht verfügbar.
+
     1. **Schritte zur Bereinigung**: Eine Beschreibung der manuellen Schritte, die erforderlich sind, um das Sicherheitsproblem für die betroffenen Ressourcen zu beheben. Für Empfehlungen mit der Option **Korrigieren**** können Sie **Korrekturlogik anzeigen** auswählen, bevor Sie die vorgeschlagene Korrektur auf die Ressourcen anwenden.
     1. **Betroffene Ressourcen**: Die Ressourcen sind in Registerkarten unterteilt:
         - **Fehlerfreie Ressourcen**: Relevante Ressourcen, die entweder nicht beeinträchtigt sind oder bei denen das Problem bereits behoben wurde.

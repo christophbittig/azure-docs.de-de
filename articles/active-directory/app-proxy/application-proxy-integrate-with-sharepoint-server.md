@@ -3,20 +3,20 @@ title: Aktivieren des Remotezugriffs auf SharePoint – Azure Active Directory-A
 description: Im Folgenden werden die Grundlagen zur Integration einer lokalen SharePoint Server-Instanz in den Azure Active Directory-Anwendungsproxy beschrieben.
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-proxy
 ms.workload: identity
 ms.topic: how-to
 ms.date: 04/27/2021
 ms.author: kenwith
-ms.reviewer: japere
-ms.openlocfilehash: d5e46dec7fb1ecde4a7b00ef0f963c621a295c61
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.reviewer: ashishj
+ms.openlocfilehash: 261faaa471956a1f91bf09a21656a6d01203cdfc
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129232354"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129989302"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-active-directory-application-proxy"></a>Aktivieren des Remotezugriffs auf SharePoint mit dem Azure Active Directory-Anwendungsproxy
 

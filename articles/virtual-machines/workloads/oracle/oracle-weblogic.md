@@ -11,12 +11,14 @@ ms.author: rezar
 ms.custom:
 - devx-track-java
 - devx-track-javaee
-ms.openlocfilehash: efe8b2f2befda9b7117d7839073cfb8323d67110
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+- devx-track-javaee-wls
+- devx-track-javaee-wls-vm
+ms.openlocfilehash: 93af58494e4492d7871e530e596b171a7089e521
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129360431"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130005803"
 ---
 # <a name="what-are-solutions-for-running-oracle-weblogic-server-on-azure-virtual-machines"></a>Welche Lösungen zum Ausführen von Oracle WebLogic Server in Azure Virtual Machines gibt es?
 

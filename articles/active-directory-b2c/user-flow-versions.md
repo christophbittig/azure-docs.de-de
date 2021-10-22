@@ -1,21 +1,21 @@
 ---
-title: Benutzerflowversionen in Azure Active Directory B2C | Microsoft-Dokumentation
+title: Benutzerflowversionen in Azure Active Directory B2C
 description: Erfahren Sie, welche Versionen von Benutzerflows in Azure Active Directory B2C verfügbar sind.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 08/17/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: ff22ed8c1ef96d1839767ac56a7215737ae18c14
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: e6d259d86e9c38a7b5c2d2c15d3bd65ece259d92
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122343618"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130043869"
 ---
 # <a name="user-flow-versions-in-azure-active-directory-b2c"></a>Benutzerflowversionen in Azure Active Directory B2C
 

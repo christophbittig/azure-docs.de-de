@@ -11,16 +11,24 @@ ms.topic: overview
 ms.date: 09/27/2021
 ms.author: pafarley
 ms.custom: contperf-fy21q3, contperf-fy22q1
-ms.openlocfilehash: f727846a13566832d8549b5fa76ae5011a1be2ee
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 77e3eb54f344039130f5971f87ccdca1e6461afd
+ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129351848"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129808327"
 ---
 # <a name="whats-new-in-azure-face-service"></a>Neuerungen in Azure Gesichtserkennung
 
 Der Azure-Dienst „Gesichtserkennung“ wird fortlaufend aktualisiert. In diesem Artikel finden Sie aktuelle Informationen zu Featureverbesserungen, Fixes und Dokumentationsaktualisierungen.
+
+## <a name="july-2021"></a>Juli 2021
+
+### <a name="new-headpose-and-landmarks-improvements-for-detection_03"></a>Neue Verbesserungen für HeadPose und Landmarks in Detection_03
+
+* Das Modell „Detection_03“ wurde aktualisiert, um Gesichtsmerkmale zu unterstützen.
+* Das Feature für Merkmale in Detection_03 ist insbesondere bei den Augapfelmerkmalen viel präziser, die für die Blicknachverfolgung entscheidend sind.
+
 
 ## <a name="april-2021"></a>April 2021
 

@@ -1,14 +1,14 @@
 ---
 title: Einrichten eines Labs für ethisches Hacken mit Azure Lab Services | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie mithilfe von Azure Lab Services ein Lab einrichten, um ethisches Hacken zu vermitteln.
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 97cdf13f39cc73ee7f35fb402229469195f1456c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 649646e560906c499cacda13c7745be3f2f3f758
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97616421"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130176907"
 ---
 # <a name="set-up-a-lab-to-teach-ethical-hacking-class"></a>Einrichten eines Labs zum Vermitteln von Kursen für ethisches Hacken
 

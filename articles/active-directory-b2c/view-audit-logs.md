@@ -3,21 +3,21 @@ title: Zugreifen auf und Überprüfen von Überwachungsprotokollen
 titleSuffix: Azure AD B2C
 description: Hier erfahren Sie, wie Sie programmgesteuert und im Azure-Portal auf Azure AD B2C-Überwachungsprotokolle zugreifen.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.date: 02/20/2020
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 04d5a989fcaf3cef3eea3b782842fb3255d4b317
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 16aae510920216a433e985654ac98b4a4a741ba5
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98661101"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130043622"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Zugriff auf Active Directory B2C-Überwachungsprotokolle
 

@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 07/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: c2fb5175b077275d0c2ef5b0a37f6d4ead76b9d5
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b7b99f1a5b4c52fb07b2e58c8952eb9ace1f1567
+ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339153"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130138245"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Häufig gestellte Fragen sind: Azure-zu-Azure-Notfallwiederherstellung
 
@@ -285,7 +285,7 @@ Ein [Wiederherstellungsplan](site-recovery-create-recovery-plans.md) in Site Rec
 
 ### <a name="how-does-sequencing-work"></a>Wie funktioniert die Sequenzierung?
 
-Sie können in einem Wiederherstellungsplan mehrere VM-Gruppen für die Sequenzierung erstellen. Für Gruppen – und damit auch für die enthaltenen VMs – wird das Failover gleichzeitig ausgeführt. [Weitere Informationen](recovery-plan-overview.md#model-apps)
+Sie können in einem Wiederherstellungsplan bis zu sieben VM-Gruppen für die Sequenzierung erstellen. Für Gruppen – und damit auch für die enthaltenen VMs – wird das Failover gleichzeitig ausgeführt. [Weitere Informationen](recovery-plan-overview.md#model-apps)
 
 ### <a name="how-can-i-find-the-rto-of-a-recovery-plan"></a>Wie kann ich die RTO eines Wiederherstellungsplans finden?
 

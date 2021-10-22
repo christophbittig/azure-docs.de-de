@@ -1,15 +1,15 @@
 ---
 title: Hinzufügen von Benutzern als Lab-Ersteller in Azure Lab Services
 description: In diesem Artikel erfahren Sie, wie Sie einen Benutzer der Rolle „Lab-Ersteller“ für ein Labkonto in Azure Lab Services hinzufügen. Die Lab-Ersteller können Labs in diesem Labkonto erstellen.
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/26/2021
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: a2135ab6580d39d6c63f7e948a29f0f0ede4efd6
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.openlocfilehash: 08377ce7884b9f9a7f974402a799e83ce6fb57bf
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122634193"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130177325"
 ---
 # <a name="add-lab-creators-to-a-lab-account-in-azure-lab-services"></a>Hinzufügen von Lab-Erstellern zu einem Labkonto in Azure Lab Services
 In diesem Artikel erfahren Sie, wie Sie Benutzer als Lab-Ersteller zu einem Labkonto in Azure Lab Services hinzufügen. Diese Benutzer können dann Labs im Labkonto erstellen. 
@@ -22,15 +22,15 @@ Um Lehrkräften die Berechtigungzu geben, Labs für ihre Klassen zu erstellen, f
 
 1. Wählen Sie auf der Seite **Lab Konto** **Zugriffssteuerung (IAM)**
 
-1. Wählen Sie **Hinzufügen** > **Rollenzuweisung hinzufügen (Vorschau)** .
+1. Wählen Sie **Hinzufügen** > **Rollenzuweisung hinzufügen (Vorschau)** aus.
 
-    ![Seite „Zugriffssteuerung (IAM)“ mit geöffnetem Menü „Rollenzuweisung hinzufügen“.](../../includes/role-based-access-control/media/add-role-assignment-menu-generic.png)
+    ![Seite „Zugriffssteuerung (IAM)“ mit offenem Menü Rollenzuweisung hinzufügen“](../../includes/role-based-access-control/media/add-role-assignment-menu-generic.png)
 
-1. Wählen Sie auf der Registerkarte **Rolle** die Rolle **Lab Autor**.
+1. Wählen Sie auf der Registerkarte **Rolle** die Rolle **Lab-Ersteller** aus.
 
-    ![Seite „Rollenzuweisung hinzufügen“ mit ausgewählter Registerkarte „Rolle“.](../../includes/role-based-access-control/media/add-role-assignment-role-generic.png)
+    ![Seite „Rollenzuweisung hinzufügen“ mit ausgewählter Registerkarte „Rolle“](../../includes/role-based-access-control/media/add-role-assignment-role-generic.png)
 
-1. Wählen Sie auf der Registerkarte **Members** den Benutzer, den Sie der Rolle Lab Autors hinzufügen möchten
+1. Wählen Sie auf der Registerkarte **Verwalten** den Benutzer aus, den Sie der Rolle „Lab-Ersteller“ hinzufügen möchten.
 
 1. Wählen Sie auf der Registerkarte **Überprüfen und zuweisen** die Option **Überprüfen und zuweisen** aus, um die Rolle zuzuweisen.
 

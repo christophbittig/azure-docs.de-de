@@ -4,12 +4,12 @@ description: Dieser Artikel bietet eine Übersicht über die Unterstützung der 
 ms.topic: overview
 ms.date: 05/10/2021
 ms.custom: references_regions
-ms.openlocfilehash: 6ac6361643d9baafb41259e6db69f816d747b1d8
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: bde8b8c436783c4a7248c449bbee536490e2b740
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129534828"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130066164"
 ---
 # <a name="azure-schema-registry-in-event-hubs-preview"></a>Azure-Schemaregistrierung in Event Hubs (Vorschau)
 In vielen Ereignisstreaming- und Messagingszenarien enthält die Ereignis- oder Nachrichtennutzlast strukturierte Daten, die entweder serialisiert oder mithilfe eines schemagesteuerten Formats wie Apache Avro deserialisiert werden. Absender und Empfänger können die Integrität der Daten mit einem Schemadokument wie bei einem JSON-Schema überprüfen. Bei schemagesteuerten Formaten ist die Bereitstellung des Schemas für den Nachrichtenconsumer eine Voraussetzung für den Consumer, und die Daten deserialisieren zu können. 
@@ -38,7 +38,7 @@ Schemas definieren den Vertrag zwischen den Producern und den Consumern. Ein Sch
 Sie können eine der folgenden Bibliotheken verwenden, die ein Avro-Serialisierungsprogramm enthalten, das Sie verwenden können, um Nutzlasten zu serialisieren und zu deserialisieren, die Schemabezeichner der Schemaregistrierung und Avro-codierte Daten enthalten.
 
 - [.NET: Microsoft.Azure.Data.SchemaRegistry.ApacheAvro](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/schemaregistry/Microsoft.Azure.Data.SchemaRegistry.ApacheAvro)
-- [Java: azure-data-schemaregistry-avro](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/schemaregistry/azure-data-schemaregistry-avro/)
+- [Java: azure-data-schemaregistry-avro](https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/schemaregistry/azure-data-schemaregistry-apacheavro)
 - [Python: azure-schemaregistry-avroserializer](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/schemaregistry/azure-schemaregistry-avroserializer)
 - [JavaScript: @azure/schema-registry-avro](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/schemaregistry/schema-registry-avro)
 - [Apache Kafka](https://github.com/Azure/azure-schema-registry-for-kafka/): Führen Sie in Kafka integrierte Apache Avro-Serialisierungs- und Deserialisierungsmodule aus, die von der Azure-Schemaregistrierung unterstützt werden. Das Apache Kafka-Clientserialisierungsmodul des Java-Clients für die Azure-Schemaregistrierung kann in jedem Apache Kafka-Szenario und mit einer beliebigen Apache Kafka®-basierten Bereitstellung oder einem Clouddienst verwendet werden. 
@@ -67,7 +67,7 @@ Anweisungen zum Erstellen und Registrierung einer Anwendung mit dem Azure-Portal
 - Informationen zum Erstellen einer Schemaregistrierung mit dem Azure-Portal finden Sie unter [Erstellen einer Event Hubs-Schemaregistrierung mithilfe des Azure-Portals](create-schema-registry.md).
 - Weitere Informationen finden Sie in den folgenden Beispielen zur **Schemaregistrierung der Avro-Clientbibliothek**.
     - [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/schemaregistry/Microsoft.Azure.Data.SchemaRegistry.ApacheAvro/tests/Samples)
-    - [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/schemaregistry/azure-data-schemaregistry-avro/src/samples)
+    - [Java](https://github.com/Azure/azure-sdk-for-java/tree/main/sdk/schemaregistry/azure-data-schemaregistry-apacheavro/src/samples)
     - [JavaScript](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/schemaregistry/schema-registry-avro/samples )
     - [Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/schemaregistry/azure-schemaregistry-avroserializer/samples )
     - [Kafka Avro-Integration für die Azure-Schemaregistrierung](https://github.com/Azure/azure-schema-registry-for-kafka/tree/master/csharp/avro/samples)

@@ -3,22 +3,28 @@ title: Grundlegende Informationen zum Gastkonfigurationsfeature von Azure Policy
 description: Hier erfahren Sie, wie Azure Policy mithilfe des Gastkonfigurationsfeatures Einstellungen in VMs überwacht und konfiguriert.
 ms.date: 07/15/2021
 ms.topic: conceptual
-ms.openlocfilehash: d9da1454fa531bcc6526cc11dda3b341be0688df
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: d562842da341394247a02516c08b062ee12a01cc
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129092621"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130042634"
 ---
 # <a name="understand-the-guest-configuration-feature-of-azure-policy"></a>Grundlegende Informationen zum Gastkonfigurationsfeature von Azure Policy
 
-Mit Azure Policy können Einstellungen innerhalb eines Computers überwacht werden. Dies gilt sowohl für in Azure ausgeführte Computer als auch für [Arc-fähige Computer](../../../azure-arc/servers/overview.md).
-Hierbei werden alle Tasks vom Gastkonfigurations-Agent in Windows oder Linux ausgeführt.
-Die Gastkonfigurationserweiterung verwaltet über den Agent beispielsweise die folgenden Einstellungen:
+Das Gastkonfigurationsfeature von Azure Policy bietet native Funktionen zum Überprüfen oder Konfigurieren von Betriebssystemeinstellungen als Code, sowohl für Computer, die in Azure ausgeführt werden, als auch für hybride [Computer mit Arc-Unterstützung](../../../azure-arc/servers/overview.md).
+Das Feature kann direkt pro Computer oder in großem Umfang von Azure Policy orchestriert verwendet werden.
 
-- Die Konfiguration des Betriebssystems
+Konfigurationen unterscheiden sich von Richtliniendefinitionen. Die Gastkonfiguration nutzt Azure Policy, um Computern Konfigurationen dynamisch zuzuweisen. Sie können Computern Konfigurationen auch [manuell](/guest-configuration-assignments.md#manually-creating-guest-configuration-assignments) oder mithilfe anderer Azure-Dienste wie [AutoManage](../../../automanage/automanage-virtual-machines.md) zuweisen.
+
+Konfigurationsressourcen in Azure sind als [Erweiterungsressourcen](../../../azure-resource-manager/management/extension-resource-types.md) konzipiert.
+Sie können sich jede Konfiguration als zusätzlichen Satz von Eigenschaften für den Computer vorstellen. Konfigurationen können Einstellungen enthalten wie:
+
+- Betriebssystemeinstellungen
 - Die Konfiguration oder das Vorhandensein der Anwendung
 - Umgebungseinstellungen
+
+Die Ergebnisse der einzelnen Konfigurationen können entweder auf der Seite [Gastzuweisungen](../how-to/determine-non-compliance.md#compliance-details-for-guest-configuration) angezeigt werden, oder wenn die Konfiguration durch eine Azure Policy-Zuweisung orchestriert wird, indem Sie auf der Seite [Compliancedetails](../how-to/determine-non-compliance.md#view-configuration-assignment-details-at-scale) auf den Link „Zuletzt ausgewertete Ressource“ klicken.
 
 [Für dieses Dokument ist ein Video zur exemplarischen Vorgehensweise verfügbar](https://youtu.be/t9L8COY-BkM).
 
@@ -78,8 +84,8 @@ Die Angabe „.x“ steht symbolisch für neue Nebenversionen von Linux-Distribu
 |Herausgeber|Name|Versionen|
 |-|-|-|
 |Amazon|Linux|2|
-|Canonical|Ubuntu Server|16.04 – 20.x|
-|Credativ|Debian|9 – 10.x|
+|Canonical|Ubuntu Server|14.04 - 20.x|
+|Credativ|Debian|8 - 10.x|
 |Microsoft|Windows Server|2012–2019|
 |Microsoft|Windows-Client|Windows 10|
 |Oracle|Oracle-Linux|7.x–8.x|

@@ -4,13 +4,13 @@ description: Hier werden die Funktionen beschrieben, die in einer Bicep-Datei f�
 author: mumian
 ms.author: jgao
 ms.topic: conceptual
-ms.date: 09/10/2021
-ms.openlocfilehash: d94f2b97a9ff78b715682052a647f02af6286af3
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 10/01/2021
+ms.openlocfilehash: e8691fd357b8f8cbde87309f4881fa7424f7f44e
+ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124794080"
+ms.lasthandoff: 10/02/2021
+ms.locfileid: "129389075"
 ---
 # <a name="string-functions-for-bicep"></a>Zeichenfolgenfunktionen für Bicep
 
@@ -21,6 +21,8 @@ In diesem Artikel werden die Bicep-Funktionen für die Arbeit mit Zeichenfolgen 
 `base64(inputString)`
 
 Rückkehr zur base64-Darstellung der Eingabezeichenfolge.
+
+Namespace: [sys](bicep-functions.md#namespaces-for-functions).
 
 ### <a name="parameters"></a>Parameter
 
@@ -61,6 +63,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 `base64tojson`
 
 Konvertiert eine base64-Darstellung in ein JSON-Objekt.
+
+Namespace: [sys](bicep-functions.md#namespaces-for-functions).
 
 ### <a name="parameters"></a>Parameter
 
@@ -103,6 +107,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 Konvertiert eine base64-Darstellung in eine Zeichenfolge.
 
+Namespace: [sys](bicep-functions.md#namespaces-for-functions).
+
 ### <a name="parameters"></a>Parameter
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
@@ -141,7 +147,7 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 ## <a name="concat"></a>concat
 
-Verwenden Sie anstelle der concat-Funktion die Zeichenfolgeninterpolation. 
+Verwenden Sie anstelle der concat-Funktion die Zeichenfolgeninterpolation.
 
 ```bicep
 param prefix string = 'prefix'
@@ -155,15 +161,19 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 | ---- | ---- | ----- |
 | concatOutput | String | prefixAnd5yj4yjf5mbg72 |
 
+Namespace: [sys](bicep-functions.md#namespaces-for-functions).
+
 ## <a name="contains"></a>contains
 
 `contains (container, itemToFind)`
 
 Überprüft, ob ein Array einen Wert enthält, ein Objekt einen Schlüssel enthält oder eine Zeichenfolge eine Teilzeichenfolge enthält. Die Groß-/Kleinschreibung wird beim Zeichenfolgenvergleich beachtet. Wenn Sie jedoch testen, ob ein Objekt einen Schlüssel enthält, wird die Groß-/Kleinschreibung beim Vergleich nicht beachtet.
 
+Namespace: [sys](bicep-functions.md#namespaces-for-functions).
+
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | Typ | Beschreibung |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | Container |Ja |Array, Objekt oder Zeichenfolge |Der Wert, der den zu suchenden Wert enthält. |
 | itemToFind |Ja |Zeichenfolge oder ganze Zahl |Der zu suchende Wert. |
@@ -216,6 +226,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 Konvertiert einen Wert in einen Daten-URI.
 
+Namespace: [sys](bicep-functions.md#namespaces-for-functions).
+
 ### <a name="parameters"></a>Parameter
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
@@ -251,6 +263,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 Konvertiert einen als Daten-URI formatierten Wert in eine Zeichenfolge.
 
+Namespace: [sys](bicep-functions.md#namespaces-for-functions).
+
 ### <a name="parameters"></a>Parameter
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
@@ -285,6 +299,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 `empty(itemToTest)`
 
 Bestimmt, ob ein Array, Objekt oder eine Zeichenfolge leer ist.
+
+Namespace: [sys](bicep-functions.md#namespaces-for-functions).
 
 ### <a name="parameters"></a>Parameter
 
@@ -323,6 +339,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 `endsWith(stringToSearch, stringToFind)`
 
 Bestimmt, ob eine Zeichenfolge mit einem Wert endet. Bei dem Vergleich wird Groß- und Kleinschreibung nicht unterschieden.
+
+Namespace: [sys](bicep-functions.md#namespaces-for-functions).
 
 ### <a name="parameters"></a>Parameter
 
@@ -365,6 +383,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 Gibt das erste Zeichen der Zeichenfolge oder das erste Element des Arrays zurück.
 
+Namespace: [sys](bicep-functions.md#namespaces-for-functions).
+
 ### <a name="parameters"></a>Parameter
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
@@ -403,6 +423,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 Erstellt eine formatierte Zeichenfolge aus Eingabewerten.
 
+Namespace: [sys](bicep-functions.md#namespaces-for-functions).
+
 ### <a name="parameters"></a>Parameter
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
@@ -438,6 +460,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 `guid(baseString, ...)`
 
 Erstellt einen Wert im Format eines Globally Unique Identifiers basierend auf den als Parameter angegebenen Werten.
+
+Namespace: [sys](bicep-functions.md#namespaces-for-functions).
 
 ### <a name="parameters"></a>Parameter
 
@@ -492,6 +516,8 @@ output guidPerDeployment string = guid(resourceGroup().id, deployment().name)
 
 Gibt die erste Position eines Werts innerhalb einer Zeichenfolge zurück. Bei dem Vergleich wird Groß- und Kleinschreibung nicht unterschieden.
 
+Namespace: [sys](bicep-functions.md#namespaces-for-functions).
+
 ### <a name="parameters"></a>Parameter
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
@@ -533,11 +559,15 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 Konvertiert eine gültige JSON-Zeichenfolge in einen JSON-Datentyp. Weitere Informationen finden Sie unter [json-Funktion](./bicep-functions-object.md#json).
 
+Namespace: [sys](bicep-functions.md#namespaces-for-functions).
+
 ## <a name="last"></a>last
 
 `last (arg1)`
 
 Gibt das letzte Zeichen der Zeichenfolge bzw. das letzte Element des Arrays zurück.
+
+Namespace: [sys](bicep-functions.md#namespaces-for-functions).
 
 ### <a name="parameters"></a>Parameter
 
@@ -566,7 +596,7 @@ output stringOutput string = last('One Two Three')
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Type | Wert |
+| Name | Typ | Wert |
 | ---- | ---- | ----- |
 | arrayOutput | String | three |
 | stringOutput | String | e |
@@ -577,9 +607,11 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 Gibt die letzte Position eines Werts innerhalb einer Zeichenfolge zurück. Bei dem Vergleich wird Groß- und Kleinschreibung nicht unterschieden.
 
+Namespace: [sys](bicep-functions.md#namespaces-for-functions).
+
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | stringToSearch |Ja |Zeichenfolge |Der Wert, der das zu suchende Element enthält. |
 | stringToFind |Ja |Zeichenfolge |Der zu suchende Wert. |
@@ -602,7 +634,7 @@ output notFound int = indexOf('abcdef', 'z')
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Type | Wert |
+| Name | Typ | Wert |
 | ---- | ---- | ----- |
 | firstT | Int | 0 |
 | lastT | Int | 3 |
@@ -616,9 +648,11 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 Gibt die Anzahl von Zeichen in einer Zeichenfolge, Elementen in einem Array oder Eigenschaften auf Stammebene in einem Objekt zurück.
 
+Namespace: [sys](bicep-functions.md#namespaces-for-functions).
+
 ### <a name="parameters"></a>Parameter
 
-| Parameter | Erforderlich | type | BESCHREIBUNG |
+| Parameter | Erforderlich | Typ | BESCHREIBUNG |
 |:--- |:--- |:--- |:--- |
 | arg1 |Ja |Array, Zeichenfolge oder Objekt |Das Array, von dem die Anzahl der Elemente ermittelt werden soll, die Zeichenfolge, von der die Anzahl der Zeichen ermittelt werden soll, oder das Objekt, von dem die Anzahl der Eigenschaften auf Stammebene ermittelt werden soll. |
 
@@ -654,7 +688,7 @@ output objectLength int = length(objectToTest)
 
 Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
-| Name | Type | Wert |
+| Name | Typ | Wert |
 | ---- | ---- | ----- |
 | arraylength | Int | 3 |
 | stringLength | Int | 13 |
@@ -665,6 +699,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 `newGuid()`
 
 Gibt einen Wert im Format einer GUID (eindeutiger Bezeichner) zurück. **Diese Funktion kann nur für den Standardwert eines Parameters verwendet werden.**
+
+Namespace: [sys](bicep-functions.md#namespaces-for-functions).
 
 ### <a name="remarks"></a>Bemerkungen
 
@@ -734,6 +770,8 @@ Die Ausgabe des vorherigen Beispiels variiert bei jeder Bereitstellung. Sie soll
 
 Gibt eine rechtsbündig ausgerichtete Zeichenfolge zurück, indem links Zeichen hinzugefügt werden, bis die angegebene Gesamtlänge erreicht ist.
 
+Namespace: [sys](bicep-functions.md#namespaces-for-functions).
+
 ### <a name="parameters"></a>Parameter
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
@@ -770,6 +808,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 Gibt eine neue Zeichenfolge zurück, in der alle Instanzen einer Zeichenfolge durch eine andere Zeichenfolge ersetzt wurden.
 
+Namespace: [sys](bicep-functions.md#namespaces-for-functions).
+
 ### <a name="parameters"></a>Parameter
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
@@ -805,6 +845,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 `skip(originalValue, numberToSkip)`
 
 Gibt eine Zeichenfolge mit allen Zeichen gemäß der angegebenen Anzahl von Zeichen oder ein Array mit allen Elementen gemäß der angegebenen Anzahl von Elementen zurück.
+
+Namespace: [sys](bicep-functions.md#namespaces-for-functions).
 
 ### <a name="parameters"></a>Parameter
 
@@ -848,6 +890,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 Gibt ein Array mit Zeichenfolgen zurück, das die Teilzeichenfolgen der Eingabezeichenfolge getrennt durch die angegebenen Trennzeichen enthält.
 
+Namespace: [sys](bicep-functions.md#namespaces-for-functions).
+
 ### <a name="parameters"></a>Parameter
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
@@ -889,6 +933,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 Stellt fest, ob eine Zeichenfolge mit einem bestimmten Wert beginnt. Bei dem Vergleich wird Groß- und Kleinschreibung nicht unterschieden.
 
+Namespace: [sys](bicep-functions.md#namespaces-for-functions).
+
 ### <a name="parameters"></a>Parameter
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
@@ -929,6 +975,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 `string(valueToConvert)`
 
 Konvertiert den angegebenen Wert in eine Zeichenfolge.
+
+Namespace: [sys](bicep-functions.md#namespaces-for-functions).
 
 ### <a name="parameters"></a>Parameter
 
@@ -975,6 +1023,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 Gibt eine Teilzeichenfolge zurück, die an der angegebenen Zeichenposition beginnt und die angegebene Anzahl von Zeichen enthält.
 
+Namespace: [sys](bicep-functions.md#namespaces-for-functions).
+
 ### <a name="parameters"></a>Parameter
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
@@ -1018,6 +1068,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 Gibt eine Zeichenfolge mit der angegebenen Anzahl von Zeichen ab dem Anfang der Zeichenfolge bzw. ein Array mit der angegebenen Anzahl von Elementen ab dem Anfang des Arrays zurück.
 
+Namespace: [sys](bicep-functions.md#namespaces-for-functions).
+
 ### <a name="parameters"></a>Parameter
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
@@ -1060,6 +1112,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 Konvertiert die angegebene Zeichenfolge in Kleinbuchstaben.
 
+Namespace: [sys](bicep-functions.md#namespaces-for-functions).
+
 ### <a name="parameters"></a>Parameter
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
@@ -1093,6 +1147,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 `toUpper(stringToChange)`
 
 Konvertiert die angegebene Zeichenfolge in Großbuchstaben.
+
+Namespace: [sys](bicep-functions.md#namespaces-for-functions).
 
 ### <a name="parameters"></a>Parameter
 
@@ -1128,6 +1184,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 Entfernt alle führenden und nachgestellten Leerzeichen aus der angegebenen Zeichenfolge.
 
+Namespace: [sys](bicep-functions.md#namespaces-for-functions).
+
 ### <a name="parameters"></a>Parameter
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
@@ -1159,6 +1217,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 `uniqueString (baseString, ...)`
 
 Erstellt auf der Grundlage der als Parameter angegebenen Werte eine deterministische Hashzeichenfolge.
+
+Namespace: [sys](bicep-functions.md#namespaces-for-functions).
 
 ### <a name="parameters"></a>Parameter
 
@@ -1204,7 +1264,7 @@ resource mystorage 'Microsoft.Storage/storageAccounts@@2018-07-01' = {
 }
 ```
 
-Wenn Sie bei jeder Bereitstellung einer Bicep-Datei einen neuen eindeutigen Namen erstellen müssen und die Ressource nicht aktualisieren möchten, können Sie die [utcNow](./bicep-functions-date.md#utcnow)-Funktion mit uniqueString verwenden. Diesen Ansatz können Sie in einer Testumgebung verwenden. Ein Beispiel finden Sie unter [utcNow](./bicep-functions-date.md#utcnow).
+Wenn Sie bei jeder Bereitstellung einer Bicep-Datei einen neuen eindeutigen Namen erstellen müssen und die Ressource nicht aktualisieren möchten, können Sie die [utcNow](./bicep-functions-date.md#utcnow)-Funktion mit uniqueString verwenden. Diesen Ansatz können Sie in einer Testumgebung verwenden. Ein Beispiel finden Sie unter [utcNow](./bicep-functions-date.md#utcnow). Beachten Sie, dass Sie die utcNow-Funktion nur in einem Ausdruck für den Standardwert eines Parameters verwendet werden können.
 
 ### <a name="return-value"></a>Rückgabewert
 
@@ -1224,6 +1284,8 @@ output uniqueDeploy string = uniqueString(resourceGroup().id, deployment().name)
 `uri (baseUri, relativeUri)`
 
 Erstellt einen absoluten URI durch Kombinieren der baseUri- und der relativeUri-Zeichenfolge.
+
+Namespace: [sys](bicep-functions.md#namespaces-for-functions).
 
 ### <a name="parameters"></a>Parameter
 
@@ -1282,6 +1344,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 Codiert einen URI.
 
+Namespace: [sys](bicep-functions.md#namespaces-for-functions).
+
 ### <a name="parameters"></a>Parameter
 
 | Parameter | Erforderlich | Typ | BESCHREIBUNG |
@@ -1320,6 +1384,8 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 `uriComponentToString(uriEncodedString)`
 
 Gibt eine Zeichenfolge des als URI codierten Werts zurück.
+
+Namespace: [sys](bicep-functions.md#namespaces-for-functions).
 
 ### <a name="parameters"></a>Parameter
 

@@ -9,12 +9,12 @@ ms.subservice: nat
 ms.topic: tutorial
 ms.date: 03/02/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 82b5892b027627871e5492e3c6cd3776a923632b
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: c8375a7e7a404c257b80f48b8824f26bb3af309c
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113438781"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130162547"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal"></a>Tutorial: Erstellen eines NAT-Gateways mithilfe des Azure-Portals
 
@@ -141,8 +141,8 @@ In diesem Abschnitt erstellen Sie einen virtuellen Computer, um das NAT-Gateway 
     | **Instanzendetails** |   |
     | Name des virtuellen Computers | Geben Sie **myVM** ein. |
     | Region | Wählen Sie **(Europa) Europa, Westen** aus. |
-    | Verfügbarkeitsoptionen | Übernehmen Sie die Standardeinstellung (keine Redundanz erforderlich). |
-    | Image | Wählen Sie **Windows Server 2019 Datacenter – Gen1** aus. |
+    | Verfügbarkeitsoptionen | Wählen Sie die Option **Keine Infrastrukturredundanz erforderlich** aus. |
+    | Image | Wählen Sie **Windows Server 2019 Datacenter – Gen2** aus. |
     | Size | Wählen Sie **Standard_DS1_v2** aus. |
     | **Administratorkonto** |   |
     | Username | Geben Sie einen Benutzernamen für den virtuellen Computer ein. |

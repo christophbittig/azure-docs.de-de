@@ -2,15 +2,15 @@
 title: Einrichten eines SOLIDWORKS-Labs für Engineeringkurse mit Azure Lab Services | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie mithilfe von SOLIDWORKS ein Lab für Engineeringkurse einrichten.
 author: nicolela
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: 3a7e8c47977f0518a3a3e9f8a6fd2e57454e1c42
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0b12526362cf7747768b3c4c8829a041dc499728
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99626103"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130176527"
 ---
 # <a name="set-up-a-lab-for-engineering-classes-using-solidworks"></a>Einrichten eines Labs für Engineeringkurse mithilfe von SOLIDWORKS
 

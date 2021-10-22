@@ -1,18 +1,18 @@
 ---
 title: Konfigurieren der ASE v1
 description: Konfiguration, Verwaltung und Überwachung der App Service-Umgebung v1 Dieses Dokument wird nur für Kunden bereitgestellt, die die ASE-Legacyumgebung v1 verwenden.
-author: ccompy
+author: madsd
 ms.assetid: b5a1da49-4cab-460d-b5d2-edd086ec32f4
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: ccompy
+ms.author: madsd
 ms.custom: seodec18
-ms.openlocfilehash: 598e43d07c213cfeb25f0ecbc7bd02b6ec54b7ed
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c1d2023d0b258b0bcc2ab72bff9bb019f91f61f0
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88962586"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129998787"
 ---
 # <a name="configuring-an-app-service-environment-v1"></a>Konfigurieren einer App Service-Umgebung v1
 
@@ -72,7 +72,7 @@ Jede App Service-Umgebung ist mit 500 GB Speicherplatz konfiguriert. Dieser Spei
 Die Datenbank enthält Informationen, die die Umgebung definieren, und außerdem Details zu den darin ausgeführten Apps. Dies ist ein Teil des Azure-Abonnements. Es besteht keine Möglichkeit, diesen Teil direkt zu ändern. Wenn Sie Anpassungen am Routing oder an der Sicherheit Ihres virtuellen Netzwerks vornehmen, muss sichergestellt sein, dass weiterhin auf SQL Azure zugegriffen werden kann. Andernfalls ist die App Service-Umgebung nicht funktionsfähig.
 
 ### <a name="network"></a>Netzwerk
-Beim VNet, das mit Ihrer App Service-Umgebung verwendet wird, kann es sich um ein Netzwerk handeln, das Sie beim Erstellen der App Service-Umgebung eingerichtet haben, oder um ein bereits vorab erstelltes Netzwerk. Wenn Sie das Subnetz während der Erstellung der App Service-Umgebung erstellen, wird erzwungen, dass sich die App Service-Umgebung in derselben Ressourcengruppe wie das virtuelle Netzwerk befindet. Wenn sich die von Ihrer App Service-Umgebung verwendete Ressourcengruppe von der Ihres VNET unterscheiden soll, müssen Sie Ihre App Service-Umgebung mithilfe einer Resource Manager-Vorlage erstellen.
+Beim VNet, das mit Ihrer App Service-Umgebung verwendet wird, kann es sich um ein Netzwerk handeln, das Sie beim Erstellen der App Service-Umgebung eingerichtet haben, oder um ein bereits vorab erstelltes Netzwerk. Wenn Sie das Subnetz während der Erstellung der App Service-Umgebung erstellen, wird erzwungen, dass sich die App Service-Umgebung in derselben Ressourcengruppe wie das virtuelle Netzwerk befindet. Wenn sich die von Ihrer App Service-Umgebung verwendete Ressourcengruppe von der Ihres VNET unterscheiden soll, müssen Sie Ihre App Service-Umgebung mithilfe einer Azure Resource Manager-Vorlage erstellen.
 
 Für das virtuelle Netzwerk, das für eine App Service-Umgebung verwendet wird, gelten einige Einschränkungen:
 
@@ -96,7 +96,7 @@ Es gibt zwei Hauptmethoden, um eingehenden Datenverkehr für Ihre ASE zu steuern
 
 Wenn Sie eine ASE erstellen, wird im virtuellen Netzwerk eine VIP erstellt.  Es gibt zwei VIP-Typen: extern und intern.  Wenn Sie eine ASE mit einer externen VIP erstellen, kann auf Ihre Apps in der ASE mit einer über das Internet routbaren IP-Adresse zugegriffen werden. Bei Auswahl der internen Option wird die ASE mit einem ILB konfiguriert und ist nicht direkt über das Internet zugänglich.  Für eine ILB-ASE ist trotzdem eine externe VIP erforderlich, aber sie wird nur für den Zugriff zum Durchführen der Azure-Verwaltung und -Wartung verwendet.  
 
-Während der ILB-ASE-Erstellung geben Sie die von der ILB-ASE verwendete Unterdomäne an und müssen Ihr eigenes DNS für die angegebene Unterdomäne verwalten.  Da Sie den Namen der Unterdomäne festlegen, müssen Sie auch das für den HTTPS-Zugriff verwendete Zertifikat verwalten.  Nach der ASE-Erstellung werden Sie aufgefordert, das Zertifikat anzugeben.  Weitere Informationen zur Erstellung und Verwendung einer ILB-ASE finden Sie unter [Verwenden einen internen Lastenausgleichs mit einer App Service-Umgebung][ILBASE]. 
+Während der ILB-ASE-Erstellung geben Sie die von der ILB-ASE verwendete Unterdomäne an und müssen Ihr eigenes DNS für die angegebene Unterdomäne verwalten.  Da Sie den Namen der Unterdomäne festlegen, müssen Sie auch das für den HTTPS-Zugriff verwendete Zertifikat verwalten.  Nach der ASE-Erstellung werden Sie aufgefordert, das Zertifikat anzugeben.  Weitere Informationen zum Erstellen und Verwenden einer ILB-ASE finden Sie unter [Erstellen einer ASEv1 aus einer Vorlage](app-service-app-service-environment-create-ilb-ase-resourcemanager.md). 
 
 ## <a name="portal"></a>Portal
 Sie können die App Service-Umgebung mit der Benutzeroberfläche im Azure-Portal verwalten und überwachen. Wenn für Sie eine App Service-Umgebung vorhanden ist, sehen Sie normalerweise in der Randleiste das App Service-Symbol. Im Azure-Portal werden App Service-Umgebungen mit folgendem Symbol dargestellt:
@@ -185,7 +185,7 @@ Wenn Sie eine App Service-Umgebung löschen möchten, verwenden Sie einfach die 
 ![Benutzeroberfläche „App Service-Umgebung löschen“][9]  
 
 ## <a name="getting-started"></a>Erste Schritte
-Informationen zum Einstieg in App Service-Umgebungen finden Sie unter [Erstellen einer App Service-Umgebung](app-service-web-how-to-create-an-app-service-environment.md).
+Informationen zum Einstieg in App Service-Umgebungen finden Sie unter [Erstellen einer ASEv1 aus einer Vorlage](app-service-app-service-environment-create-ilb-ase-resourcemanager.md).
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 
@@ -203,7 +203,6 @@ Informationen zum Einstieg in App Service-Umgebungen finden Sie unter [Erstellen
 <!--Links-->
 [WhatisASE]: app-service-app-service-environment-intro.md
 [Appserviceplans]: ../overview-hosting-plans.md
-[HowtoCreateASE]: app-service-web-how-to-create-an-app-service-environment.md
 [HowtoScale]: app-service-web-scale-a-web-app-in-an-app-service-environment.md
 [ControlInbound]: app-service-app-service-environment-control-inbound-traffic.md
 [virtualnetwork]: ../../virtual-network/virtual-networks-faq.md
