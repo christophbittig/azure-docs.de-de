@@ -2,18 +2,18 @@
 title: Plug-In für die automatische Erfassung von Klickanalysen für das Application Insights-JavaScript-SDK
 description: Installation und Verwendung des Plug-Ins für die automatische Erfassung von Klickanalysen für das Application Insights-JavaScript-SDK.
 services: azure-monitor
-author: lgayhardt
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/14/2021
-ms.author: lagayhar
-ms.openlocfilehash: 2eabbfb5928fea861874e78fa68ac196d16134d3
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+author: mattmccleary
+ms.author: mmcc
+ms.openlocfilehash: e1a0ab71ce8d5970b1239f70a058ee7a663117da
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108291332"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130132700"
 ---
 # <a name="click-analytics-auto-collection-plugin-for-application-insights-javascript-sdk"></a>Plug-In für die automatische Erfassung von Klickanalysen für das Application Insights-JavaScript-SDK
 

@@ -3,19 +3,19 @@ title: 'Schnellstart: Aufrufen von Microsoft Graph über eine Node.js-Desktop-Ap
 titleSuffix: Microsoft identity platform
 description: In dieser Schnellstartanleitung erfahren Sie, wie eine Node.js Electron-Desktopanwendung Benutzer anmelden und ein Zugriffstoken abrufen kann, um eine durch einen Microsoft Identity Platform-Endpunkt geschützte API aufzurufen.
 services: active-directory
-author: derisen
+author: KarenH444
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.date: 02/17/2021
-ms.author: v-doeris
-ms.openlocfilehash: 8e791392386f6a2f74f6d59e7999afeb272249aa
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.author: karenhoran
+ms.openlocfilehash: 362fdcddc9a8d58da30f269be44fc195870949e1
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128605751"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130163746"
 ---
 # <a name="quickstart-acquire-an-access-token-and-call-the-microsoft-graph-api-from-an-electron-desktop-app"></a>Schnellstart: Abrufen eines Zugriffstokens und Aufrufen der Microsoft Graph-API über eine Electron-Desktop-App
 
@@ -37,7 +37,7 @@ In dieser Schnellstartanleitung wird die [Microsoft-Authentifizierungsbibliothek
 > Führen Sie die folgenden Schritte aus, um Ihre Anwendung zu registrieren und Ihrer Projektmappe manuell die Registrierungsinformationen Ihrer App hinzuzufügen:
 >
 > 1. Melden Sie sich beim <a href="https://portal.azure.com/" target="_blank">Azure-Portal</a> an.
-> 1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, in dem Sie die Anwendung registrieren möchten.
+> 1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, für den Sie die Anwendung registrieren möchten.
 > 1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
 > 1. Wählen Sie unter **Verwalten** Folgendes aus: **App-Registrierungen** > **Neue Registrierung**.
 > 1. Geben Sie unter **Name** einen Namen für Ihre Anwendung ein (beispielsweise `msal-node-desktop`). Benutzern Ihrer App wird wahrscheinlich dieser Namen angezeigt. Sie können ihn später ändern.

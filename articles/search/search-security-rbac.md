@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/04/2021
-ms.openlocfilehash: 80471da945dcc5fdee690ec477599565777f1beb
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: ceb65226c30d6ee9768388bb18807dd7cf6d6f85
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129611451"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130070582"
 ---
 # <a name="use-role-based-authorization-in-azure-cognitive-search"></a>Verwenden der rollenbasierten Autorisierung in Azure Cognitive Search
 
@@ -23,14 +23,12 @@ Azure bietet ein [Autorisierungssystem mit rollenbasierter Zugriffssteuerung](..
 
 + Verwenden Sie für die Inhaltsverwaltung (Erstellen und Verwalten von Indizes und anderen Objekten der obersten Ebene) neue Vorschaurollen, [**die beantragt werden können**](https://aka.ms/azure-cognitive-search/rbac-preview).
 
-> [!NOTe]
+> [!NOTE]
 > „Suchdienstmitwirkender“ ist eine allgemein verfügbare Rolle mit Vorschaumöglichkeiten. Es ist die einzige Rolle, die eine echte Hybridlösung für Dienst- und Inhaltsverwaltungsaufgaben unterstützt und alle Vorgänge für einen bestimmten Suchdienst zulässt. Um in den Genuss der Vorschaufunktionen bei der Inhaltsverwaltung für diese Rolle zu kommen, [**registrieren Sie sich für die Vorschauversion**](https://aka.ms/azure-cognitive-search/rbac-preview).
 
 Einige RBAC-Szenarien werden **nicht** unterstützt bzw. nicht in diesem Artikel behandelt:
 
 + Ausgehende Indexerverbindungen sind unter [Einrichten einer Indexerverbindung mit einer Datenquelle mithilfe einer verwalteten Identität](search-howto-managed-identities-data-sources.md) dokumentiert. Wenn einem Suchdienst eine verwaltete Identität zugewiesen ist, können Sie Rollenzuweisungen erstellen, die externen Datendiensten wie z. B. Azure Blob Storage Lesezugriff auf Blobs durch Ihren vertrauenswürdigen Suchdienst erlauben.
-
-+ [Benutzerdefinierte Rollen](../role-based-access-control/custom-roles.md) werden nicht unterstützt.
 
 + Zugriff auf Benutzeridentitäten über Suchergebnisse (zuweilen als Sicherheit auf Zeilen- oder Dokumentebene bezeichnet) wird nicht unterstützt. Bei der Sicherheit auf Dokumentebene besteht ein Workaround darin, [Sicherheitsfilter](search-security-trimming-for-azure-search.md) zu verwenden, um die Ergebnisse basierend auf der Benutzeridentität einzuschränken, sodass Dokumente entfernt werden, auf die der Anfragende keinen Zugriff haben sollte.
 

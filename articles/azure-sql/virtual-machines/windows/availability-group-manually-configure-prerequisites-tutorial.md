@@ -3,7 +3,7 @@ title: 'Tutorial: Voraussetzungen für eine Verfügbarkeitsgruppe'
 description: In diesem Tutorial erfahren Sie, wie Sie die Voraussetzungen zum Erstellen einer SQL Server Always On-Verfügbarkeitsgruppe in Azure Virtual Machines erfüllen.
 services: virtual-machines
 documentationCenter: na
-author: MashaMSFT
+author: rajeshsetlem
 editor: monicar
 tags: azure-service-management
 ms.assetid: c492db4c-3faa-4645-849f-5a1a663be55a
@@ -13,14 +13,15 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/29/2018
-ms.author: mathoma
+ms.author: rsetlem
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 21d9c4cebfdb22fb694cef8064991572159dcf48
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.reviewer: mathoma
+ms.openlocfilehash: 2b605fff61f358f513cb1e9a7a6f3d8353370751
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111569834"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130167156"
 ---
 # <a name="tutorial-prerequisites-for-creating-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Tutorial: Voraussetzungen für die Erstellung von Verfügbarkeitsgruppen für SQL Server in Azure Virtual Machines
 
@@ -545,7 +546,7 @@ Nachdem Sie die Voraussetzungen konfiguriert haben, beginnen Sie mit dem [Konfig
 
 Weitere Informationen finden Sie unter:
 
-- [Windows Server-Failovercluster mit SQL Server auf Azure-VMs](hadr-windows-server-failover-cluster-overview.md)
+- [Windows Server-Failovercluster mit SQL Server auf Azure-VMs](hadr-windows-server-failover-cluster-overview.md)
 - [Always On-Verfügbarkeitsgruppen mit SQL Server auf Azure-VMs](availability-group-overview.md)
 - [Übersicht über Always On-Verfügbarkeitsgruppen](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)
 - [HADR-Einstellungen für SQL Server auf Azure-VMs](hadr-cluster-best-practices.md)

@@ -3,7 +3,7 @@ title: Bereitstellen einer Windows-VM mit SQL Server über das Azure-Portal
 description: In diesem Leitfaden werden die verfügbaren Optionen behandelt, wie SQL Server im Azure-Portal auf einer Windows-VM bereitgestellt werden kann.
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: bluefooted
 tags: azure-resource-manager
 ms.assetid: 1aff691f-a40a-4de2-b6a0-def1384e086e
 ms.service: virtual-machines-sql
@@ -12,15 +12,15 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 11/07/2019
-ms.author: mathoma
-ms.reviewer: jroth
+ms.author: pamela
+ms.reviewer: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 4a6671b19cf4af84891cb1aeb3d81da54de64983
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 2bc4efc0be1e216a10328f5476f592a3dc1156f0
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112078885"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130167101"
 ---
 # <a name="how-to-use-the-azure-portal-to-provision-a-windows-virtual-machine-with-sql-server"></a>Bereitstellen einer Windows-VM mit SQL Server im Azure-Portal
 

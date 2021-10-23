@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: victorh
-ms.openlocfilehash: 15119b3196735e2358b76c1a804ca25f67b05efa
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: c44691496df3610688f13843f3c5ccbfe20f625a
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129809936"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130004063"
 ---
 # <a name="tls-termination-with-key-vault-certificates"></a>TLS-Terminierung mit Key Vault-Zertifikaten
 
@@ -47,7 +47,7 @@ Das Azure-Portal unterstützt nur KeyVault-Zertifikate, keine Geheimnisse. Appli
 
 ## <a name="certificate-settings-in-key-vault"></a>Zertifikateinstellungen in Key Vault
 
-Für den TLS-Abschluss unterstützt Application Gateway Zertifikate im PFX-Format (Personal Information Exchange). Sie können dann entweder ein vorhandenes Zertifikat importieren oder ein neues in Ihrem Schlüsseltresor erstellen. Um Ausfälle zu vermeiden, stellen Sie sicher, dass der Status des Zertifikats in Key Vault auf **Aktiviert** festgelegt ist.
+Für den TLS-Abschluss unterstützt Application Gateway nur Zertifikate im PFX-Format (Personal Information Exchange). Sie können dann entweder ein vorhandenes Zertifikat importieren oder ein neues in Ihrem Schlüsseltresor erstellen. Um Ausfälle zu vermeiden, stellen Sie sicher, dass der Status des Zertifikats in Key Vault auf **Aktiviert** festgelegt ist.
 
 ## <a name="how-integration-works"></a>Funktionsweise der Integration
 

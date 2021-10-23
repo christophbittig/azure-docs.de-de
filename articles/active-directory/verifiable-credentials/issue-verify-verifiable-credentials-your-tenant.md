@@ -3,7 +3,7 @@ title: 'Tutorial: Ausstellen und Überprüfen von Nachweisen mithilfe Ihres Azur
 description: Ändern des Nachweiscodebeispiels für Ihren Azure-Mandanten
 documentationCenter: ''
 author: barclayn
-manager: daveba
+manager: karenh444
 ms.service: active-directory
 ms.topic: how-to
 ms.subservice: verifiable-credentials
@@ -11,12 +11,12 @@ ms.date: 07/20/2021
 ms.author: barclayn
 ms.reviewer: ''
 ROBOTS: NOINDEX
-ms.openlocfilehash: 34904f0183e96f8b0f59be42ea605d86ff34fed7
-ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
+ms.openlocfilehash: 3b2c4e49e7d7b892b581876918152acc4bbe6aa3
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129729556"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130006734"
 ---
 # <a name="tutorial---issue-and-verify-verifiable-credentials-using-your-tenant-preview"></a>Tutorial: Ausstellen und Überprüfen von Nachweisen mithilfe Ihres Mandanten (Vorschau)
 

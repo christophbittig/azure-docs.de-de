@@ -2,16 +2,14 @@
 title: Einrichten von Warnungen zur Verfügbarkeit mit Azure Application Insights | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Webtests in Application Insights einrichten. Erhalten Sie Benachrichtigungen, wenn eine Website nicht mehr zur Verfügung steht oder langsam reagiert.
 ms.topic: conceptual
-author: lgayhardt
-ms.author: lagayhar
 ms.date: 06/19/2019
 ms.reviewer: sdash
-ms.openlocfilehash: cbafa7997d203cf06a3e91965355258f0088d77e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5d5d746c1d1df00118a8b08816440c7d92372e0a
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100589889"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130134087"
 ---
 # <a name="availability-alerts"></a>Verfügbarkeitswarnungen
 

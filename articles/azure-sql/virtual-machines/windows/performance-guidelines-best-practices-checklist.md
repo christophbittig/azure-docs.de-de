@@ -3,7 +3,7 @@ title: 'Checkliste: Bewährte Methoden und Richtlinien'
 description: Bietet bewährte Methoden und Richtlinien für den Speicher, um die Leistung Ihrer SQL Server-Instanz auf Azure Virtual Machines (VM) zu optimieren.
 services: virtual-machines-windows
 documentationcenter: na
-author: dplessMSFT
+author: bluefooted
 editor: ''
 tags: azure-service-management
 ms.service: virtual-machines-sql
@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/01/2021
-ms.author: dpless
+ms.author: pamela
 ms.custom: contperf-fy21q3
-ms.reviewer: jroth
-ms.openlocfilehash: f5c6a0864790003e115d201c1a50b181df63c5ac
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.reviewer: mathoma
+ms.openlocfilehash: 1dd05395d921e2a75a56db353e0b0c740b094e49
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128666702"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130164513"
 ---
 # <a name="checklist-best-practices-for-sql-server-on-azure-vms"></a>Checkliste: Bewährte Methoden für SQL Server auf Azure-VMs
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -58,9 +58,9 @@ Im folgenden finden Sie eine kurze Checkliste mit bewährten Methoden für die S
 - Überwachen Sie die Anwendung, und [bestimmen Sie die Anforderungen an die Speicherbandbreite und Wartezeit](../../../virtual-machines/premium-storage-performance.md#counters-to-measure-application-performance-requirements) für SQL Server-Daten-, Protokoll- und tempdb-Dateien, bevor Sie den Datenträgertyp auswählen. 
 - Um die Speicherleistung zu optimieren, planen Sie für die höchsten verfügbaren nicht zwischengespeicherten IOPS, und verwenden Sie Datenzwischenspeicherung als Leistungsmerkmal für Datenlesevorgänge, während Sie die [Begrenzung virtueller Computer und Datenträger](../../../virtual-machines/premium-storage-performance.md#throttling) vermeiden.
 - Platzieren Sie Daten-, Protokoll- und tempdb-Dateien auf separaten Laufwerken.
-    - Verwenden Sie für das Datenlaufwerk nur [Premium P30- und P40-Datenträger](../../../virtual-machines/disks-types.md#premium-ssd), um die Verfügbarkeit der Cacheunterstützung sicherzustellen.
-    - Planen Sie für das Protokolllaufwerk die Kapazität und testen die Leistung im Verhältnis zu den Kosten, während Sie die [Premium-Datenträger P30-P80](../../../virtual-machines/disks-types.md#premium-ssd) bewerten.
-      - Wenn eine Speicherwartezeit von weniger als einer Millisekunde erforderlich ist, verwenden Sie [Azure Ultra-Datenträger](../../../virtual-machines/disks-types.md#ultra-disk) für das Transaktionsprotokoll. 
+    - Verwenden Sie für das Datenlaufwerk nur [Premium P30- und P40-Datenträger](../../../virtual-machines/disks-types.md#premium-ssds), um die Verfügbarkeit der Cacheunterstützung sicherzustellen.
+    - Planen Sie für das Protokolllaufwerk die Kapazität und testen die Leistung im Verhältnis zu den Kosten, während Sie die [Premium-Datenträger P30-P80](../../../virtual-machines/disks-types.md#premium-ssds) bewerten.
+      - Wenn eine Speicherwartezeit von weniger als einer Millisekunde erforderlich ist, verwenden Sie [Azure Ultra-Datenträger](../../../virtual-machines/disks-types.md#ultra-disks) für das Transaktionsprotokoll. 
       - Für Bereitstellungen von virtuellen Computern der M-Serie sollten Sie eine [Schreibbeschleunigung](../../../virtual-machines/how-to-enable-write-accelerator.md) der Verwendung von Azure-Ultra-Datenträgern vorziehen.
     - Platzieren Sie [tempdb](/sql/relational-databases/databases/tempdb-database) auf dem lokalen kurzlebigen SSD-Standardlaufwerk `D:\` für die meisten SQL Server-Workloads, nachdem Sie die optimale VM-Größe ausgewählt haben. 
       - Wenn die Kapazität des lokalen Laufwerks für „tempdb“ nicht ausreicht, können Sie die Vergrößerung der VM in Erwägung ziehen. Weitere Informationen finden Sie unter [Richtlinien für das Zwischenspeichern von Datendateien](performance-guidelines-best-practices-storage.md#data-file-caching-policies).

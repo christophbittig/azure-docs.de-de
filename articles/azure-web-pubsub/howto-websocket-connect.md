@@ -6,12 +6,12 @@ ms.author: lianwei
 ms.service: azure-web-pubsub
 ms.topic: how-to
 ms.date: 08/26/2021
-ms.openlocfilehash: 939bc5b6c4b272174d99787e89f04a7431a45d68
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 02e7afa9b8c454b3520db933d76149973b50c699
+ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124827464"
+ms.lasthandoff: 09/29/2021
+ms.locfileid: "129275162"
 ---
 #  <a name="start-a-websocket-connection-to-azure-web-pubsub"></a>Starten einer WebSocket-Verbindung zu Azure Web PubSub
 
@@ -31,7 +31,7 @@ Das Portal bietet auch ein Tool, um die Client-URL mit dem Token dynamisch zu ge
 > Achten Sie darauf, dass Sie bei der Erstellung des Tokens nur die erforderlichen Rollen angeben.
 >
 
-In den folgenden Abschnitten verwenden wir zur Vereinfachung des Beispiel-Workflows diese vorübergehend vom Portal generierte URL für die Verbindung des Clients. Wir verwenden `<Client_URL_From_Portal>`, um den Wert darzustellen. Das generierte Token läuft standardmäßig nach 50 Minuten ab. Vergessen Sie daher nicht, ein neues Token zu generieren, wenn das Token abläuft.
+In den folgenden Abschnitten verwenden wir zur Vereinfachung des Beispiel-Workflows diese vorübergehend vom Portal generierte URL für die Verbindung des Clients. Wir verwenden `<Client_URL_From_Portal>`, um den Wert darzustellen. Das generierte Token läuft standardmäßig nach 60 Minuten ab. Vergessen Sie daher nicht, ein neues Token zu generieren, wenn das Token abläuft.
 
 Es werden zwei Arten von WebSocket-Clients unterstützt: ein einfacher WebSocket-Client und ein PubSub-WebSocket-Client. Hier wird gezeigt, wie diese beiden Clienttypen eine Verbindung mit dem Dienst herstellen. Weitere Informationen zu diesen Clients finden Sie unter [WebSocket-Clientprotokolle für Azure Web PubSub](./concept-client-protocols.md).
 

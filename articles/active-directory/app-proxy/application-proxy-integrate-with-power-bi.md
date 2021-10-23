@@ -3,21 +3,21 @@ title: Aktivieren des Remotezugriffs auf Power BI mit dem Azure Active Director
 description: Hier werden die Grundlagen für die Integration einer lokalen Power BI-Instanz mit dem Azure Active Directory-Anwendungsproxy erläutert.
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-proxy
 ms.workload: identity
 ms.topic: how-to
 ms.date: 04/28/2021
 ms.author: kenwith
-ms.reviewer: japere
+ms.reviewer: ashishj
 ms.custom: has-adal-ref
-ms.openlocfilehash: e96a9d50698c1b9e0f9e0c8306d97124d2159985
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 7199e973aa24ea93e85798c6b5a8645a84adb024
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122419269"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129989340"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-active-directory-application-proxy"></a>Aktivieren des Remotezugriffs auf Power BI Mobile mit dem Azure Active Directory-Anwendungsproxy
 

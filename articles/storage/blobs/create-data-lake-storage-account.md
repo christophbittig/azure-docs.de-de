@@ -4,16 +4,16 @@ description: Erfahren Sie, wie Sie ein Speicherkonto für die Verwendung mit Azu
 author: normesta
 ms.topic: how-to
 ms.author: normesta
-ms.date: 04/27/2021
+ms.date: 10/14/2021
 ms.service: storage
 ms.reviewer: stewu
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: a2d9c23e5a6819c9e74cea10e78caab242d5cb35
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 35761e10cecf1cb209f004f99f773c09d91dc0e5
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128600321"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130046865"
 ---
 # <a name="create-a-storage-account-to-use-with-azure-data-lake-storage-gen2"></a>Erstellen eines Speicherkontos für die Verwendung mit Azure Data Lake Storage Gen2
 
@@ -43,14 +43,14 @@ Wählen Sie **Premium** aus, um ein Premium-Konto vom Typ „Blockblob“ zu ers
 
 ## <a name="enable-the-hierarchical-namespace"></a>Aktivieren des hierarchischen Namespace
 
-Sie aktivieren Data Lake Storage-Funktionen, indem Sie auf der Seite **Speicherkonto erstellen** auf der Registerkarte **Erweitert** die Einstellung **Hierarchischer Namespace aktivieren** auswählen. Diese Einstellung müssen Sie beim Erstellen des Kontos aktivieren. Später können Sie sie nicht mehr aktivieren.
+Sie aktivieren Data Lake Storage-Funktionen, indem Sie auf der Seite **Speicherkonto erstellen** auf der Registerkarte **Erweitert** die Einstellung **Hierarchischer Namespace aktivieren** auswählen. 
 
 In der folgenden Abbildung wird diese Einstellung auf der Seite **Speicherkonto erstellen** gezeigt.
 
 > [!div class="mx-imgBorder"]
 > ![Einstellung „Hierarchischer Namespace“](./media/create-data-lake-storage-account/hierarchical-namespace-feature.png)
 
-Wenn Sie ein vorhandenes Speicherkonto mit Data Lake Storage verwenden möchten und die Einstellung „Hierarchischer Namespace“ deaktiviert ist, müssen Sie die Daten zu einem neuen Speicherkonto migrieren, in dem die Einstellung aktiviert ist.
+Informationen zum Aktivieren von Data Lake Storage-Funktionen für ein vorhandenes Konto finden Sie unter [Ein Upgrade von Azure Blob Storage mit Azure Data Lake Storage Gen2-Funktionen](upgrade-to-data-lake-storage-gen2-how-to.md).
 
 > [!NOTE]
 > **Datenschutz** und hierarchischer Namespace können nicht gleichzeitig aktiviert werden.
@@ -58,5 +58,5 @@ Wenn Sie ein vorhandenes Speicherkonto mit Data Lake Storage verwenden möchten 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Speicherkontoübersicht](../common/storage-account-overview.md)
-- [Verwenden von Azure Data Lake Storage Gen2 für Big Data-Anforderungen](data-lake-storage-data-scenarios.md)
+- [Upgrade von Azure Blob Storage mit Azure Data Lake Storage Gen2-Funktionen](upgrade-to-data-lake-storage-gen2-how-to.md)
 - [Zugriffssteuerung in Azure Data Lake Storage Gen2](data-lake-storage-access-control.md)

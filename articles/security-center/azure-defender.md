@@ -3,16 +3,16 @@ title: Übersicht über Azure Defender und die verfügbaren Pläne
 description: Erfahren Sie mehr über die Pläne, Schutzmaßnahmen und Warnungen von Azure Defender. Aktivieren Sie anschließend Azure Defender für zusätzliche Sicherheit für Ihre Abonnements.
 author: memildin
 ms.author: memildin
-ms.date: 9/30/2020
+ms.date: 10/07/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: cfbb8badd4a0d9a8b9776d810d33f77a051b3a39
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: 34d450535b25b8d3ba1bcc69b54a27d6aab73115
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112238968"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129715389"
 ---
 # <a name="introduction-to-azure-defender"></a>Einführung in Azure Defender
 
@@ -57,7 +57,7 @@ Außerdem können Sie Ihrer Hybrid Cloud-Umgebung Azure Defender-Funktionen hinz
 
 Sie erhalten eine angepasste Threat Intelligence und priorisierte Warnungen Ihrer spezifischen Umgebung entsprechend, damit Sie sich auf das konzentrieren können, was für Sie am wichtigsten ist.
 
-Stellen Sie [Azure Arc](https://azure.microsoft.com/services/azure-arc/) bereit, und aktivieren Sie Azure Defender, um den Schutz auf virtuelle Computer und SQL-Datenbanken mit mehreren Clouds oder lokal auszuweiten. Azure Arc für Server ist ein kostenloser Dienst. Dienste, die auf Arc-fähigen Servern verwendet werden, wie etwa Azure Defender, werden jedoch zu den Preisen für den jeweiligen Dienst abgerechnet. Weitere Informationen finden Sie unter [Hinzufügen eines Azure-fremden Computers mit Azure Arc](quickstart-onboard-machines.md#add-non-azure-machines-with-azure-arc).
+Stellen Sie [Azure Arc](https://azure.microsoft.com/services/azure-arc/) bereit, und aktivieren Sie Azure Defender, um den Schutz auf virtuelle Computer und SQL-Datenbanken mit mehreren Clouds oder lokal auszuweiten. Azure Arc für Server ist ein kostenloser Dienst. Dienste, die auf Servern mit Azure Arc-Unterstützung verwendet werden, wie etwa Azure Defender, werden jedoch zu den Preisen für den jeweiligen Dienst abgerechnet. Weitere Informationen finden Sie unter [Hinzufügen eines Azure-fremden Computers mit Azure Arc](quickstart-onboard-machines.md#add-non-azure-machines-with-azure-arc).
 
 > [!TIP]
 > Der native Connector für AWS verarbeitet die Azure Arc-Bereitstellung transparent für Sie. Weitere Informationen finden Sie unter [Verbinden Ihrer AWS-Konten mit Azure Security Center](quickstart-onboard-aws.md).
@@ -84,13 +84,18 @@ Verwenden Sie die Kacheln für den erweiterten Schutz im Azure Defender-Dashboar
 
 ## <a name="vulnerability-assessment-and-management"></a>Sicherheitsrisikobewertung und -management
 
-Azure Defender beinhaltet auch das Überprüfen von Sicherheitsrisiken für Ihre virtuellen Computer und Containerregistrierungen, ohne dass dafür zusätzliche Kosten entstehen. Die Überprüfungen werden von Qualys unterstützt, Sie benötigen jedoch keine Qualys-Lizenz und auch kein Qualys-Konto – alles erfolgt nahtlos innerhalb von Security Center. 
+Azure Defender beinhaltet auch die Sicherheitsrisikobewertung für Ihre virtuellen Computer und Containerregistrierungen ohne zusätzliche Kosten. Einige der Überprüfungen werden von Qualys unterstützt, Sie benötigen jedoch keine Qualys-Lizenz und auch kein Qualys-Konto – alles erfolgt nahtlos innerhalb von Security Center. 
+
+Wenn Sie die [Integration in Microsoft Defender für Endpunkt](security-center-wdatp.md) aktiviert haben, haben Sie Zugriff auf die Sicherheitsrisikoergebnisse von **Microsoft Bedrohungs- und Sicherheitsrisikomanagement**. Weitere Informationen finden Sie unter [Untersuchen von Schwachstellen mit dem Bedrohungs- und Sicherheitsrisikomanagement von Microsoft Defender für Endpunkt](deploy-vulnerability-assessment-tvm.md).
 
 Überprüfen Sie die Ergebnisse dieser Sicherheitsrisikoüberprüfungen, und reagieren Sie in Security Center darauf. Dadurch wird Security Center zur zentralen Benutzeroberfläche für alle Ihre Bemühungen im Bereich Cloudsicherheit.
 
+> [!IMPORTANT]
+> Die Integration von Security Center mit Microsoft Defender für Endpunkt ist standardmäßig aktiviert. Wenn Sie Azure Defender aktivieren, erteilen Sie damit also die Zustimmung für Azure Defender für Server, auf die Daten von Microsoft Defender für Endpoint im Zusammenhang mit Sicherheitsrisiken, installierter Software und Warnungen für Ihre Endpunkte zuzugreifen.
+
 Weitere Informationen finden Sie auf den folgenden Seiten:
 
-- [Integrierte Security Center-Lösung zur Sicherheitsrisikobewertung für virtuelle Computer](deploy-vulnerability-assessment-vm.md)
+- [Integrierte Azure Defender-Lösung zur Sicherheitsrisikobewertung für Azure- und Hybridcomputer](deploy-vulnerability-assessment-vm.md)
 - [Identifizieren von Sicherheitsrisiken in Images in Azure-Containerregistrierungen](defender-for-container-registries-usage.md#identify-vulnerabilities-in-images-in-other-container-registries)
 
 

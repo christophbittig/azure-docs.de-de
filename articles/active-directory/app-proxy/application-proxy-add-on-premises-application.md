@@ -3,21 +3,21 @@ title: 'Tutorial: Hinzufügen einer lokalen App – Anwendungsproxy in Azure Act
 description: Mit einem Anwendungsproxydienst in Azure Active Directory (Azure AD) können Benutzer auf lokale Anwendungen zugreifen, indem sie sich mit ihrem Azure AD-Konto anmelden. In diesem Tutorial wird veranschaulicht, wie Sie Ihre Umgebung für die Nutzung mit einem Anwendungsproxy vorbereiten. Anschließend wird das Azure-Portal verwendet, um Ihrem Azure AD-Mandanten eine lokale Anwendung hinzuzufügen.
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-proxy
 ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.author: kenwith
-ms.reviewer: japere
+ms.reviewer: ashishj
 ms.custom: contperf-fy21q3-portal
-ms.openlocfilehash: 60c0eefea2b141a76445837e1031f73e593520f6
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: e561b34ae624b800d65885999f7029235fce31b6
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129235837"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129990385"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Tutorial: Hinzufügen einer lokalen Anwendung für den Remotezugriff über den Anwendungsproxy in Azure Active Directory
 

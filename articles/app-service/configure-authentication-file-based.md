@@ -3,12 +3,12 @@ title: Dateibasierte Konfiguration von AuthN/AuthZ
 description: Konfigurieren der Authentifizierung und Autorisierung in App Service mithilfe einer Konfigurationsdatei, um bestimmte Vorschaufunktionen zu aktivieren.
 ms.topic: article
 ms.date: 07/15/2021
-ms.openlocfilehash: 2875c529e644b46d08251ae57ee9f424492a2433
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 990ce0caf05134d173afb7325682d05d9feb14ea
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128657213"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130047340"
 ---
 # <a name="file-based-configuration-in-azure-app-service-authentication"></a>Dateibasierte Konfiguration in Azure App Service-Authentifizierung
 
@@ -43,7 +43,7 @@ Im Folgenden finden Sie mögliche Konfigurationsoptionen in der Datei:
         "enabled": <true|false>
     },
     "globalValidation": {
-        "unauthenticatedClientAction": "RedirectToLoginPage|AllowAnonymous|Return401|Return403",
+        "unauthenticatedClientAction": "RedirectToLoginPage|AllowAnonymous|RejectWith401|RejectWith404",
         "redirectToProvider": "<default provider alias>",
         "excludedPaths": [
             "/path1",

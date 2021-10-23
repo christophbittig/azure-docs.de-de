@@ -10,12 +10,12 @@ ms.subservice: orchestration
 ms.custom: synapse
 ms.topic: conceptual
 ms.date: 09/09/2021
-ms.openlocfilehash: e5594ea57dce2d7cf03989da9288ab2869e28e06
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: a272e5c7f4d467dadfe618f6d70b9a36225c48ff
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124743809"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130175824"
 ---
 # <a name="system-variables-supported-by-azure-data-factory-and-azure-synapse-analytics"></a>Von Azure Data Factory und Azure Synapse Analytics unterstützte Systemvariablen
 
@@ -73,6 +73,9 @@ Auf diese Systemvariablen kann überall im Trigger-JSON für Trigger vom Typ [Bl
 | @triggerBody().folderPath  |Pfad zu dem Ordner, der die durch `@triggerBody().fileName`angegebene Datei enthält. Das erste Segment des Ordnerpfads ist der Name des Azure Blob Storage-Containers.  |
 | @trigger().startTime |Zeitpunkt, zu dem der Trigger ausgelöst wurde, um die Pipelineausführung aufzurufen. |
 
+   > [!NOTE]
+   > Wenn Sie die Pipeline und den Trigger in [Azure Synapse Analytics](../synapse-analytics/overview-what-is.md) erstellen, müssen Sie `@trigger().outputs.body.fileName` und `@trigger().outputs.body.folderPath` als Parameter verwenden. Diese beiden Eigenschaften erfassen Blobinformationen. Verwenden Sie diese Eigenschaften anstelle von `@triggerBody().fileName` und `@triggerBody().folderPath`.
+
 ## <a name="custom-event-trigger-scope"></a>Triggerbereich für benutzerdefinierte Ereignisse
 
 Auf diese Systemvariablen kann überall im Trigger-JSON für Trigger vom Typ [CustomEventsTrigger](concepts-pipeline-execution-triggers.md#event-based-trigger) verwiesen werden.
@@ -80,7 +83,7 @@ Auf diese Systemvariablen kann überall im Trigger-JSON für Trigger vom Typ [Cu
 >[!NOTE]
 >Der Dienst erwartet, dass benutzerdefinierte Ereignisse gemäß [Azure Event Grid-Ereignisschema](../event-grid/event-schema.md) formatiert werden.
 
-| Variablenname | Beschreibung
+| Variablenname | BESCHREIBUNG
 | --- | --- |
 | @triggerBody().event.eventType | Hierbei handelt es sich um den Typ der Ereignisse, die die Ausführung des Triggers für benutzerdefinierte Ereignisse ausgelöst hat. Der Ereignistyp ist ein vom Kunden definiertes Feld und akzeptiert alle Werte vom Typ „string“ (Zeichenfolge). |
 | @triggerBody().event.subject | Hierbei handelt es sich um den Antragsteller des benutzerdefinierten Ereignisses, der den Trigger ausgelöst hat. |

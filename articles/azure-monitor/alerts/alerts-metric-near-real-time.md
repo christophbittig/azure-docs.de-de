@@ -5,13 +5,13 @@ author: harelbr
 ms.author: harelbr
 services: monitoring
 ms.topic: conceptual
-ms.date: 06/03/2021
-ms.openlocfilehash: 1228f89c2037e1a181fd1f881a1a8d0262b4dbbd
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.date: 10/14/2021
+ms.openlocfilehash: 38564ba8d607dc82a13757669b7d352359fb29e8
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111410133"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129994744"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Unterstützte Ressourcen für Metrikwarnungen in Azure Monitor
 
@@ -39,6 +39,7 @@ Im Folgenden finden Sie die vollständige Liste der Azure Monitor-Metrikquellen,
 |Microsoft.Bing/accounts | Ja | Nein | [Bing-Konten](../essentials/metrics-supported.md#microsoftbingaccounts) |
 |Microsoft.BotService/botServices | Ja | Nein  | [Botdienste](../essentials/metrics-supported.md#microsoftbotservicebotservices) |
 |Microsoft.Cache/redis | Ja | Ja | [Azure Cache for Redis](../essentials/metrics-supported.md#microsoftcacheredis) |
+|Microsoft.Cache/redisEnterprise | Ja | Nein | [Azure Cache for Redis-Enterprise](../essentials/metrics-supported.md#microsoftcacheredisenterprise) |
 |microsoft.Cdn/profiles | Ja | Nein | [CDN-Profile](../essentials/metrics-supported.md#microsoftcdnprofiles) |
 |Microsoft.ClassicCompute/domainNames/slots/roles | Nein | Nein | [Cloud Services (klassisch)](../essentials/metrics-supported.md#microsoftclassiccomputedomainnamesslotsroles) |
 |Microsoft.ClassicCompute/virtualMachines | Nein | Nein | [Virtuelle Computer (klassisch)](../essentials/metrics-supported.md#microsoftclassiccomputevirtualmachines) |
@@ -104,6 +105,7 @@ Im Folgenden finden Sie die vollständige Liste der Azure Monitor-Metrikquellen,
 |Microsoft.Peering/peerings | Ja | Nein | [Peerings](../essentials/metrics-supported.md#microsoftpeeringpeerings) |
 |Microsoft.Peering/peeringServices | Ja | Nein | [Peeringdienste](../essentials/metrics-supported.md#microsoftpeeringpeeringservices) |
 |Microsoft.PowerBIDedicated/capacities | Nein | Nein | [Kapazitäten](../essentials/metrics-supported.md#microsoftpowerbidedicatedcapacities) |
+|Microsoft.RecoveryServices/vaults | Ja | Ja | [Recovery Services-Tresore](../essentials/metrics-supported.md#microsoftrecoveryservicesvaults) |
 |Microsoft.Relay/namespaces | Ja | Nein | [Relays](../essentials/metrics-supported.md#microsoftrelaynamespaces) |
 |Microsoft.Search/searchServices | Nein | Nein | [Suchdienste](../essentials/metrics-supported.md#microsoftsearchsearchservices) |
 |Microsoft.ServiceBus/namespaces | Ja | Nein | [Service Bus](../essentials/metrics-supported.md#microsoftservicebusnamespaces) |

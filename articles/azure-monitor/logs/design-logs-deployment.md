@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/20/2019
-ms.openlocfilehash: 8502c35a145e4a041f9d44b8396fe16f5db3febc
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 89288c0e5205ba99a51104ffe24eb016aeb27f06
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106384203"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130179372"
 ---
 # <a name="designing-your-azure-monitor-logs-deployment"></a>Entwerfen Ihrer Azure Monitor-Protokollbereitstellung
 
@@ -103,7 +103,7 @@ Die Zugriffsmodi werden in der folgenden Tabelle zusammengefasst:
 | Für wen ist das jeweilige Modell vorgesehen? | Zentraladministration. Administratoren, die die Datensammlung konfigurieren müssen, und Benutzer, die Zugriff auf eine Vielzahl von Ressourcen benötigen. Zurzeit auch erforderlich für Benutzer, die Zugriff auf Protokolle für Ressourcen außerhalb von Azure benötigen. | Anwendungsteams. Administratoren von Azure-Ressourcen, die überwacht werden. |
 | Was ist für einen Benutzer erforderlich, um Protokolle anzuzeigen? | Berechtigungen für den Arbeitsbereich. Informationen finden Sie unter **Arbeitsbereichsberechtigungen** im Abschnitt [Zugriffsverwaltung mithilfe von Arbeitsbereichsberechtigungen](./manage-access.md#manage-access-using-workspace-permissions). | Lesezugriff auf die Ressource. Informationen finden Sie unter **Ressourcenberechtigungen** im Abschnitt [Zugriffsverwaltung mithilfe von Azure-Berechtigungen](./manage-access.md#manage-access-using-azure-permissions). Berechtigungen können vererbt (z.B. aus der enthaltenden Ressourcengruppe) oder der Ressource direkt zugeordnet werden. Die Berechtigung für die Protokolle für die Ressource wird automatisch zugewiesen. |
 | Welchen Geltungsbereich haben Berechtigungen? | Den Arbeitsbereich. Benutzer mit Zugriff auf den Arbeitsbereich können alle Protokolle in diesem Arbeitsbereich aus Tabellen abfragen, für die sie über Berechtigungen verfügen. Siehe [Tabellenzugriffssteuerung](./manage-access.md#table-level-azure-rbac). | Die Azure-Ressource. Der Benutzer kann Protokolle für bestimmte Ressourcen, Ressourcengruppen oder ein Abonnement, auf die bzw. das er Zugriff hat, aus jedem Arbeitsbereich abfragen, aber nicht Protokolle für andere Ressourcen. |
-| Wie kann der Benutzer auf Protokolle zugreifen? | <ul><li>Starten von **Protokolle** im **Azure Monitor**-Menü</li></ul> <ul><li>Starten von **Protokolle** unter **Log Analytics-Arbeitsbereiche**</li></ul> <ul><li>Über Azure Monitor-[Arbeitsmappen](../visualizations.md#workbooks)</li></ul> | <ul><li>Starten von **Protokolle** im Menü für die Azure-Ressource</li></ul> <ul><li>Starten von **Protokolle** im **Azure Monitor**-Menü</li></ul> <ul><li>Starten von **Protokolle** unter **Log Analytics-Arbeitsbereiche**</li></ul> <ul><li>Über Azure Monitor-[Arbeitsmappen](../visualizations.md#workbooks)</li></ul> |
+| Wie kann der Benutzer auf Protokolle zugreifen? | <ul><li>Starten von **Protokolle** im **Azure Monitor**-Menü</li></ul> <ul><li>Starten von **Protokolle** unter **Log Analytics-Arbeitsbereiche**</li></ul> <ul><li>Über Azure Monitor-[Arbeitsmappen](../best-practices-analysis.md#workbooks)</li></ul> | <ul><li>Starten von **Protokolle** im Menü für die Azure-Ressource</li></ul> <ul><li>Starten von **Protokolle** im **Azure Monitor**-Menü</li></ul> <ul><li>Starten von **Protokolle** unter **Log Analytics-Arbeitsbereiche**</li></ul> <ul><li>Über Azure Monitor-[Arbeitsmappen](../best-practices-analysis.md#workbooks)</li></ul> |
 
 ## <a name="access-control-mode"></a>Zugriffssteuerungsmodus
 

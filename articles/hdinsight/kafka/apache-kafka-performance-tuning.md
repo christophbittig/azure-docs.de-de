@@ -4,12 +4,12 @@ description: Überblick über Techniken zum Optimieren von Apache Kafka-Workload
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/19/2019
-ms.openlocfilehash: d24527efe6adce6f16b7c890f23c755545f5d5a0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b5c149499fe21940e58c795dbed2407c046ac43d
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98935889"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130044419"
 ---
 # <a name="performance-optimization-for-apache-kafka-hdinsight-clusters"></a>Leistungsoptimierung für Apache Kafka HDInsight-Cluster
 
@@ -53,7 +53,7 @@ Die Datenkomprimierung erhöht die Anzahl der Datensätze, die auf einem Datentr
 
 ## <a name="broker-settings"></a>Brokereinstellungen
 
-In den folgenden Abschnitten werden einige der wichtigsten Einstellungen zur Optimierung der Leistung Ihrer Kafka-Broker vorgestellt. Eine ausführliche Erläuterung aller Brokereinstellungen finden Sie in der [Apache Kafka-Dokumentation zu Brokerkonfigurationen](https://kafka.apache.org/documentation/#producerconfigs).
+In den folgenden Abschnitten werden einige der wichtigsten Einstellungen zur Optimierung der Leistung Ihrer Kafka-Broker vorgestellt. Eine ausführliche Erläuterung aller Brokereinstellungen finden Sie in der [Apache Kafka-Dokumentation zu Brokerkonfigurationen](https://kafka.apache.org/documentation/#brokerconfigs).
 
 ### <a name="number-of-disks"></a>Anzahl der Datenträger
 

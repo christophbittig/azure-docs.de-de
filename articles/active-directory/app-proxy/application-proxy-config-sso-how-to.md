@@ -3,20 +3,20 @@ title: Grundlagen des einmaligen Anmeldens mit einer lokalen App mithilfe des An
 description: Grundlagen des einmaligen Anmeldens mit einer lokalen App mithilfe des Anwendungsproxys.
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-proxy
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: kenwith
-ms.reviewer: japere, asteen
-ms.openlocfilehash: 33276b986f951a1ad343a25229b2ee23c33e05b8
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.reviewer: ashishj, asteen
+ms.openlocfilehash: 420851665b1f32a99779b10dcef7ed3a6079e3d1
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129232392"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129990157"
 ---
 # <a name="how-to-configure-single-sign-on-to-an-application-proxy-application"></a>Konfigurieren des einmaligen Anmeldens bei einer Anwendungsproxyanwendung
 

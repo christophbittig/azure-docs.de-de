@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 01/29/2021
 ms.author: pafarley
-ms.openlocfilehash: 58de8de28b796d67f9368224ced24c9c592cfdb6
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: f88c5d4746fbafaf8255f2a767cef1cc2f145954
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112033813"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130074511"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>Tutorial: Moderieren von Facebook-Posts und -Kommentaren mit Azure Content Moderator
 
@@ -121,7 +121,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, und führen S
     > [!IMPORTANT]
     > Im Jahr 2018 wurde von Facebook eine strengere Überprüfung von Facebook-Apps eingeführt. Die Abschnitte 2, 3 und 4 können nur ausgeführt werden, wenn Ihre App vom Facebook-Überprüfungsteam überprüft und genehmigt wurde.
 
-    1. Navigieren Sie zu [Facebook](https://www.facebook.com/bookmarks/pages), und erstellen Sie eine **neue Facebook-Seite**.
+    1. Navigieren Sie zu [Facebook](https://www.facebook.com/pages), und erstellen Sie eine **neue Facebook-Seite**.
     1. Lassen Sie für die Facebook-App den Zugriff auf diese Seite zu, indem Sie die folgenden Schritte ausführen:
         1. Navigieren Sie zum [Graph-API-Explorer](https://developers.facebook.com/tools/explorer/).
         1. Wählen Sie die Option **Anwendung**.

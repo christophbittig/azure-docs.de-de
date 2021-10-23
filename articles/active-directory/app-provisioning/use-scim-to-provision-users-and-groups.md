@@ -3,7 +3,7 @@ title: 'Tutorial: Entwickeln eines SCIM-Endpunkts für die Benutzerbereitstellun
 description: Das System für die domänenübergreifende Identitätsverwaltung (System for Cross-domain Identity Management, SCIM) standardisiert die automatische Benutzerbereitstellung. In diesem Tutorial erfahren Sie, wie Sie einen SCIM-Endpunkt entwickeln, Ihre SCIM-API mit Azure Active Directory integrieren und mit der Automatisierung der Bereitstellung von Benutzern und Gruppen in Ihren Cloudanwendungen beginnen.
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 07/26/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 539daea27b83203794fb4bf09969a288e2e570dd
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 03e2ce2c2d40c5edfa35515dd746802307d05f4b
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124759869"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129990651"
 ---
 # <a name="tutorial-develop-and-plan-provisioning-for-a-scim-endpoint-in-azure-active-directory"></a>Tutorial: Entwickeln eines SCIM-Endpunkts und Planen seiner Bereitstellung in Azure Active Directory
 
