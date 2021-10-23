@@ -7,18 +7,18 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: tutorial
-ms.date: 09/15/2021
+ms.date: 10/07/2021
 ms.author: banders
-ms.openlocfilehash: a7c67b364fba771ad485eee8b93a62b9bdabc841
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: acff6020d401390ab514c168241db8daca801691
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128643040"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129705810"
 ---
 # <a name="tutorial-review-your-microsoft-partner-agreement-invoice"></a>Tutorial: Überprüfen der Rechnung Ihrer Microsoft Partner-Vereinbarung
 
- Im Abrechnungskonto für eine Microsoft-Partnervereinbarung wird jeden Monat eine Rechnung für jedes Abrechnungsprofil generiert. Die Rechnung enthält alle Kundengebühren des vorherigen Monats. Durch Analysieren der einzelnen Transaktionen im Azure-Portal können Sie die Gebühren auf Ihrer Rechnung verstehen. Sie können Ihre Rechnungen auch im Azure-Portal anzeigen und die Gebühren mit der Nutzungsdetaildatei vergleichen.
+Im Abrechnungskonto für eine Microsoft-Partnervereinbarung wird jeden Monat eine Rechnung für jedes Abrechnungsprofil generiert. Die Rechnung enthält alle Kundengebühren des vorherigen Monats. Durch Analysieren der einzelnen Transaktionen im Azure-Portal können Sie die Gebühren auf Ihrer Rechnung verstehen. Sie können Ihre Rechnungen auch im Azure-Portal anzeigen und die Gebühren mit der Nutzungsdetaildatei vergleichen.
 
 Weitere Informationen finden Sie unter [Anzeigen und Herunterladen der Microsoft Azure-Rechnung](download-azure-invoice.md).
 
@@ -132,7 +132,7 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > * Überprüfen der ausstehenden Gebühren zum Schätzen Ihrer nächsten Rechnung
 > * Analysieren Ihrer Azure-Nutzungsgebühren
 
-Erfahren Sie etwas über die Verwendung von Azure Cost Management für Partner.
+Erfahren Sie mehr über die Verwendung von Cost Management für Partner.
 
 > [!div class="nextstepaction"]
-> [Erste Schritte mit Azure Cost Management für Partner](../costs/get-started-partners.md)
+> [Erste Schritte mit Cost Management für Partner](../costs/get-started-partners.md)

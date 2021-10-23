@@ -12,12 +12,12 @@ author: vladai78
 ms.author: vladiv
 ms.reviewer: mathoma, vladiv, sachinp
 ms.date: 09/28/2021
-ms.openlocfilehash: 86b823ca368223c2d789ff651fe831b76bbd5c58
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: c399b5eb082c8521ba14996bef035f9ea94371c3
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129613375"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130041707"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Übersicht über Ressourcenlimits für Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -73,8 +73,8 @@ SQL Managed Instance umfasst zwei Dienstebenen: [Universell](../database/service
 | Max. Datenbankgröße | Bis zur derzeit verfügbaren Instanzgröße (max. 2 TB–8 TB, 16 TB [Vorschau], je nach Anzahl von virtuellen Kernen) | Bis zur derzeit verfügbaren Instanzgröße (max. 1 TB – 4 TB, abhängig von der Anzahl der virtuellen Kerne). |
 | Max. TempDB-Größe | Begrenzt auf 24 GB/V-Kern (96 – 1.920 GB) und die derzeit verfügbare Instanzspeichergröße.<br/>Fügen Sie weitere virtuelle Kerne hinzu, um mehr TempDB-Speicherplatz zu erhalten.<br/> Die Größe der Protokolldatei ist auf 120 GB begrenzt.| Bis zur aktuell verfügbaren Instanzspeichergröße. |
 | Max. Anzahl von Datenbanken pro Instanz | 100 Benutzerdatenbanken (es sei denn, der Grenzwert für die Instanzspeichergröße wurde erreicht). | 100 Benutzerdatenbanken (es sei denn, der Grenzwert für die Instanzspeichergröße wurde erreicht). |
-| Max. Anzahl von Datenbankdateien pro Instanz | Bis zu 280, außer wenn die Instanzspeichergröße oder der Grenzwert für [Azure Premium Disk-Speicherbelegungsplatz](../database/doc-changes-updates-release-notes.md#exceeding-storage-space-with-small-database-files) erreicht wurde. | 32.767 Dateien pro Datenbank, außer wenn der Grenzwert für die Instanzspeichergröße erreicht wurde. |
-| Maximale Größe der Datendatei | Begrenzt auf die derzeit verfügbare Instanzspeichergröße (max. 2 TB – 8 TB) und den [Azure Premium Disk-Speicherbelegungsplatz](../database/doc-changes-updates-release-notes.md#exceeding-storage-space-with-small-database-files). Verwenden Sie bei Datenbanken über 8 TB mindestens zwei Datendateien. | Begrenzt auf die derzeit verfügbare Instanzspeichergröße (bis zu 1 TB – 4 TB). |
+| Max. Anzahl von Datenbankdateien pro Instanz | Bis zu 280, außer wenn die Instanzspeichergröße oder der Grenzwert für [Azure Premium Disk-Speicherbelegungsplatz](doc-changes-updates-known-issues.md#exceeding-storage-space-with-small-database-files) erreicht wurde. | 32.767 Dateien pro Datenbank, außer wenn der Grenzwert für die Instanzspeichergröße erreicht wurde. |
+| Maximale Größe der Datendatei | Begrenzt auf die derzeit verfügbare Instanzspeichergröße (max. 2 TB – 8 TB) und den [Azure Premium Disk-Speicherbelegungsplatz](doc-changes-updates-known-issues.md#exceeding-storage-space-with-small-database-files). Verwenden Sie bei Datenbanken über 8 TB mindestens zwei Datendateien. | Begrenzt auf die derzeit verfügbare Instanzspeichergröße (bis zu 1 TB – 4 TB). |
 | Maximale Protokolldateigröße | Begrenzt auf 2 TB und die derzeit verfügbare Instanzspeichergröße. | Begrenzt auf 2 TB und die derzeit verfügbare Instanzspeichergröße. |
 | Daten-/Protokoll-IOPS (ungefähr) | Bis zu 30-40.000 IOPS pro Instanz*, 500 – 7.500 pro Datei<br/>\*[Erhöhen Sie die Dateigröße, um den IOPS-Wert zu erhöhen](#file-io-characteristics-in-general-purpose-tier)| 16.000 – 320.000 (4.000 IOPS/virtueller Kern)<br/>Fügen Sie weitere virtuelle Kerne hinzu, um die E/A-Leistung zu verbessern. |
 | Grenzwert für den Protokollschreibdurchsatz (pro Instanz) | 3 MB/Sek. pro virtuellem Kern<br/>Max. 120 MB/Sek. pro Instanz<br/>22 – 65 MB/Sek. pro Datenbank<br/>\*[Erhöhen Sie die Dateigröße, um die E/A-Leistung zu verbessern.](#file-io-characteristics-in-general-purpose-tier) | 4 MB/Sek. pro virtuellem Kern<br/>Max. 96 MB/Sek. |

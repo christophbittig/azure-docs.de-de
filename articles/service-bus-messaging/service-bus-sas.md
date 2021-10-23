@@ -2,14 +2,14 @@
 title: Azure Service Bus -Zugriffssteuerung mit SAS (Shared Access Signatures)
 description: Übersicht über Service Bus-Zugriffssteuerung mithilfe von Shared Access Signatures, Informationen zur SAS-Autorisierung mit Azure Service Bus.
 ms.topic: article
-ms.date: 04/27/2021
+ms.date: 10/18/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5659e159604c80ffe19cbc4b57dea5d99c1acb98
-ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
+ms.openlocfilehash: 5a31ce93c603f1bc1f0765fb2de438476e1f63de
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112379814"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130164973"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Service Bus-Zugriffssteuerung mit Shared Access Signatures
 
@@ -261,9 +261,9 @@ Die folgende Tabelle zeigt die Zugriffsrechte, die für verschiedene Vorgänge f
 | Abrufen des einer Themensitzung zugeordneten Status |Lauschen |../myTopic/Subscriptions/mySubscription |
 | Festlegen des einer Themensitzung zugeordneten Status |Lauschen |../myTopic/Subscriptions/mySubscription |
 | **Regeln** | | |
-| Erstellen einer Regel |Verwalten |../myTopic/Subscriptions/mySubscription |
-| Löschen einer Regel |Verwalten |../myTopic/Subscriptions/mySubscription |
-| Aufzählen von Regeln |Verwalten oder Lauschen |../myTopic/Subscriptions/mySubscription/Rules
+| Erstellen einer Regel | Lauschen |../myTopic/Subscriptions/mySubscription |
+| Löschen einer Regel | Lauschen |../myTopic/Subscriptions/mySubscription |
+| Aufzählen von Regeln | Lauschen |../myTopic/Subscriptions/mySubscription/Rules
 
 ## <a name="next-steps"></a>Nächste Schritte
 

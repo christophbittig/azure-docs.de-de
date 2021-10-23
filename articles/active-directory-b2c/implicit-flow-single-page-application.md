@@ -3,20 +3,20 @@ title: Single-Page-Anmeldung mit implizitem Flow
 titleSuffix: Azure AD B2C
 description: Erfahren Sie, wie Sie Single-Page-Anmeldung mithilfe des impliziten OAuth 2.0-Flow mit Azure Active Directory B2C hinzufügen.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/19/2019
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 16c024926ddb863e3b40eac07f494c8d5dbeae9c
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 9003d6eb0d0f9ebc364ee84c307e85c32357c6d7
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129617984"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130038686"
 ---
 # <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>Single-Page-Anmeldung mithilfe des impliziten OAuth 2.0-Flusses in Azure Active Directory B2C
 

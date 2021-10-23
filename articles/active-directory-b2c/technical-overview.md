@@ -2,20 +2,20 @@
 title: Technische und Funktionsübersicht – Azure Active Directory B2C
 description: Eine ausführliche Einführung in die Funktionen und Technologien in Azure Active Directory B2C.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
 ms.date: 10/01/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 0aad268f8721d2f4747c4e3dec3860e52dd7112a
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 5a01eb29caee02874cf828d1b2dd6b2df7440b4d
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129352809"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130043052"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>Technische und Funktionsübersicht für Azure Active Directory B2C
 
@@ -299,6 +299,12 @@ Weitere Informationen zu Überwachungsprotokollen finden Sie unter [Zugriff auf 
 Durch die Integration von Azure Application Insights in benutzerdefinierte Azure AD B2C-Richtlinien erhalten Sie Informationen zur Registrierung, Anmeldung, Kennwortzurücksetzung und Profilbearbeitung von Benutzern. Mit diesem Wissen können Sie datengesteuerte Entscheidungen über die zukünftigen Entwicklungszyklen treffen.
 
 Weitere Informationen finden Sie unter [Verfolgen des Benutzerverhaltens in Azure AD B2C mithilfe von Application Insights](analytics-with-application-insights.md).
+
+## <a name="automation-using-microsoft-graph-api"></a>Automatisierung mithilfe der Microsoft Graph-API
+
+Verwenden Sie die Microsoft Graph-API für die Verwaltung Ihres Azure AD B2C-Verzeichnisses. Sie können das Azure AD B2C-Verzeichnis auch selbst erstellen. Sie können Benutzer, Identitätsanbieter, Benutzerabläufe, benutzerdefinierte Richtlinien und vieles mehr verwalten. 
+
+Weitere Informationen finden Sie unter [Verwalten von Azure AD B2C mit Microsoft Graph](microsoft-graph-operations.md). 
 
 ## <a name="azure-ad-b2c-service-limits-and-restrictions"></a>Dienstlimits und -einschränkungen für Azure AD B2C
 Erfahren Sie mehr über [Dienstlimits und -einschränkungen für Azure AD B2C](service-limits.md).

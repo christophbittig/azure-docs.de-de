@@ -3,12 +3,12 @@ title: Änderungen am Verhalten in PowerShell Desired State Configuration für d
 description: Dieser Artikel bietet eine Übersicht über die Plattform, die zum Übermitteln von Konfigurationsänderungen an Computer über Azure Policy verwendet wird.
 ms.date: 05/31/2021
 ms.topic: how-to
-ms.openlocfilehash: ee5165ea9e8a80fc31863389df018548859e9b20
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: b501305513e99963ec9d00a49e6e7aa1c74b3683
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123257164"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130045330"
 ---
 # <a name="changes-to-behavior-in-powershell-desired-state-configuration-for-guest-configuration"></a>Änderungen am Verhalten in PowerShell Desired State Configuration für die Gastkonfiguration
 
@@ -72,6 +72,7 @@ Die Funktionsmethode `Get` hat spezielle Anforderungen an die Gastkonfiguration 
 - Die zurückgegebene Hashtabelle muss eine Eigenschaft namens **Reasons** (Gründe) enthalten.
 - Die Reasons-Eigenschaft muss ein Array sein.
 - Jedes Element im Array sollte eine Hashtabelle mit Schlüsseln namens **Code** und **Phrase** sein.
+- Es sollten keine anderen Werte als die Hashtabelle zurückgegeben werden.
 
 Die Eigenschaft „Reasons“ wird vom Dienst verwendet, um die Konformität von Informationen zu standardisieren. Sie können sich jedes Element in Reasons als „Grund“ vorstellen, dass die Ressource konform oder nicht konform ist. Die Eigenschaft ist ein Array, da eine Ressource aus mehr als einem Grund nicht konform sein könnte.
 
@@ -93,6 +94,8 @@ return @{
     reasons = $reasons
 }
 ```
+
+Wenn Sie Befehlszeilentools verwenden, um Informationen abzurufen, die in Get zurückgegeben werden, werden Sie möglicherweise feststellen, dass das Tool Ausgaben zurückgibt, die Sie nicht erwartet haben. Obwohl Sie die Ausgabe in PowerShell erfassen, wird die Ausgabe möglicherweise auch in den Standardfehler geschrieben. Um dieses Problem zu vermeiden, sollten Sie erwägen, die Ausgabe an NULL umzuleiten.
 
 ### <a name="the-reasons-property-embedded-class"></a>Die eingebettete Reasons-Eigenschaftsklasse
 
@@ -172,6 +175,8 @@ Das Modul `PsDscResources` im PowerShell-Katalog und das Modul `PSDesiredStateCo
 
 - Verwenden Sie keine Ressourcen aus dem Modul `PSDesiredStateConfiguration`, das mit Windows geliefert wird. Wechseln Sie stattdessen zu `PSDscResources`.
 - Verwenden Sie nicht die Ressourcen `WindowsFeature` und `WindowsFeatureSet` in `PsDscResources`. Wechseln Sie stattdessen zu den Ressourcen `WindowsOptionalFeature` und `WindowsOptionalFeatureSet`.
+  
+Die „nx“-Ressourcen für Linux, die im [DSC für Linux](https://github.com/microsoft/PowerShell-DSC-for-Linux/tree/master/Providers)-Repository enthalten waren, wurden in einer Kombination der Sprachen C und Python geschrieben. Da die Pfadweiterleitung für DSC unter Linux die Verwendung von PowerShell ist, sind die vorhandenen „nx“-Ressourcen mit DSCv3 nicht kompatibel. Bis ein neues Modul verfügbar ist, das unterstützte Ressourcen für Linux enthält, ist es erforderlich, benutzerdefinierte Ressourcen zu erstellen.
 
 ## <a name="coexistance-with-dsc-version-3-and-previous-versions"></a>Parallelität mit der DSC Version 3 und früheren Versionen
 
@@ -180,10 +185,10 @@ Die Implementierungen sind getrennt. Es gibt jedoch keine Konflikterkennung übe
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Übersicht über die [Gastkonfiguration](./guest-configuration.md).
+- Lesen Sie den Artikel mit [Informationen zu Guest Configuration von Azure Policy](./guest-configuration.md).
 - Richten Sie eine [Entwicklungsumgebung](../how-to/guest-configuration-create-setup.md) für ein benutzerdefiniertes Gastkonfigurationspaket ein.
 - [Erstellen Sie ein Paketartefakt](../how-to/guest-configuration-create.md) für Gastkonfigurationen.
-- [Testen Sie das Paketartefakt](../how-to/guest-configuration-create-test.md) aus Ihrer Entwicklungsumgebung.
-- Verwenden Sie das Modul `GuestConfiguration` zum [Erstellen einer Azure Policy Definition](../how-to/guest-configuration-create-definition.md) für die skalierungsorientierte Verwaltung Ihrer Umgebung.
-- [Weisen Sie Ihre Richtliniendefinition](../assign-policy-portal.md) mithilfe des Azure-Portals zu.
-- Erfahren Sie, wie Sie die [Konformitätsdetails für die Zuweisung von Gastkonfigurationsrichtlinien](../how-to/determine-non-compliance.md#compliance-details-for-guest-configuration) anzeigen.
+- [Testen Sie das Paketartefakt](../how-to/guest-configuration-create-test.md) in Ihrer Entwicklungsumgebung.
+- Verwenden Sie das Modul `GuestConfiguration` zum [Erstellen einer Azure Policy-Definition](../how-to/guest-configuration-create-definition.md) für die Verwaltung Ihrer Umgebung im großen Stil.
+- [Weisen Sie Ihre benutzerdefinierte Richtliniendefinition](../assign-policy-portal.md) mithilfe des Azure-Portals zu.
+- Informieren Sie sich, wie Sie die [Compliancedetails für die Richtlinienzuweisungen der Gastkonfiguration](../how-to/determine-non-compliance.md#compliance-details-for-guest-configuration) anzeigen.

@@ -1,19 +1,20 @@
 ---
 title: Erstellen einer SQL Server-VM mithilfe einer ARM-Vorlage
 description: Es wird beschrieben, wie Sie eine SQL Server-Instanz auf einem virtuellen Azure-Computer (VM) erstellen, indem Sie eine Azure Resource Manager-Vorlage (ARM-Vorlage) verwenden.
-author: MashaMSFT
+author: bluefooted
 ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurepowershell
-ms.author: mathoma
+ms.author: pamela
 ms.date: 06/29/2020
 ms.service: virtual-machines-sql
 ms.subservice: deployment
-ms.openlocfilehash: 89df657e1b1e9164769880ff29217833d6e96c9b
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.reviewer: mathoma
+ms.openlocfilehash: 211dfa97c8eb437c0d7cc933935d8fa4a125a61f
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112006273"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130163449"
 ---
 # <a name="quickstart-create-sql-server-vm-using-an-arm-template"></a>Schnellstart: Erstellen einer SQL Server-VM mithilfe einer ARM-Vorlage
 

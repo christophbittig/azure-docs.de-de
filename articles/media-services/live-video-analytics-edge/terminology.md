@@ -3,12 +3,12 @@ title: Terminologie zu Azure Live Video Analytics in IoT Edge
 description: Dieser Artikel bietet eine Übersicht über die Terminologie zu Azure Live Video Analytics in IoT Edge.
 ms.topic: conceptual
 ms.date: 05/30/2020
-ms.openlocfilehash: 7a017a7ddb946bf5bb8c01b9a61c322843c9815f
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 69da3515987387b62b59d33657e9a0b0a28a1389
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110378402"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130073903"
 ---
 # <a name="live-video-analytics-terminology"></a>Terminologie für Live Video Analytics
 
@@ -44,7 +44,7 @@ Im Kontext eines Videoverwaltungssystems für Sicherheitskameras bezieht sich di
 
 ## <a name="streaming"></a>Streaming
 
-Wenn Sie sich ein Video von Diensten wie Netflix, YouTube oder anderen auf einem mobilen Gerät angesehen haben, handelte es sich um ein Streamingvideo. Die Wiedergabe beginnt kurz nach dem Auswählen von „Wiedergeben“ (sofern Sie über ausreichende Bandbreite verfügen), und Sie können auf der Zeitachse des Videos vor- und zurückspringen. Beim Streaming besteht die Idee darin, nur den Teil des Videos zu übermitteln, der gerade angesehen wird. Der Benutzer kann die Wiedergabe des Videos beginnen, während die Daten noch von einem Server an den Wiedergabeclient übertragen werden. Im Kontext von Azure Media Services bezieht sich [Streaming](https://en.wikipedia.org/wiki/Streaming_media) auf den Prozess der Übermittlung von Medien aus [Azure Media Services](../azure-media-player/azure-media-player-overview.md) an einen Streamingclient (z. B. Azure Media Player). Sie können Azure Media Services verwenden, um Videos mithilfe von Branchenstandards für HTTP-basierte Medienstreamingprotokolle wie [HTTP Live Streaming (HLS)](https://developer.apple.com/streaming/) und [MPEG-DASH](https://dashif.org/about/) an Clients zu streamen. HLS wird von Azure Media Player und Webplayern wie [JW-Player](https://www.jwplayer.com/), [hls.js](https://github.com/video-dev/hls.js/), [VideoJS](https://videojs.com/) und [Shaka Player von Google](https://github.com/google/shaka-player) unterstützt. Sie können aber auch das native Rendering in mobilen Apps wie dem [ExoPlayer](https://github.com/google/ExoPlayer) für Android oder [AV Foundation](https://developer.apple.com/av-foundation/) für iOS nutzen. MPEG-DASH wird von Azure Media Player ebenfalls unterstützt. Eine Liste mit Clients finden Sie auf [dieser Seite](https://dashif.org/clients/). 
+Wenn Sie sich ein Video von Diensten wie Netflix, YouTube oder anderen auf einem mobilen Gerät angesehen haben, handelte es sich um ein Streamingvideo. Die Wiedergabe beginnt kurz nach dem Auswählen von „Wiedergeben“ (sofern Sie über ausreichende Bandbreite verfügen), und Sie können auf der Zeitachse des Videos vor- und zurückspringen. Beim Streaming besteht die Idee darin, nur den Teil des Videos zu übermitteln, der gerade angesehen wird. Der Benutzer kann die Wiedergabe des Videos beginnen, während die Daten noch von einem Server an den Wiedergabeclient übertragen werden. Im Kontext von Azure Media Services bezieht sich [Streaming](https://en.wikipedia.org/wiki/Streaming_media) auf den Prozess der Übermittlung von Medien aus [Azure Media Services](../azure-media-player/azure-media-player-overview.md) an einen Streamingclient (z. B. Azure Media Player). Sie können Azure Media Services verwenden, um Videos mithilfe von Branchenstandards für HTTP-basierte Medienstreamingprotokolle wie [HTTP Live Streaming (HLS)](https://developer.apple.com/streaming/) und [MPEG-DASH](https://dashif.org/about/) an Clients zu streamen. HLS wird von Azure Media Player und Webplayern wie [JW-Player](https://www.jwplayer.com/), [hls.js](https://github.com/video-dev/hls.js/), [VideoJS](https://videojs.com/) und [Shaka Player von Google](https://github.com/google/shaka-player) unterstützt. Sie können aber auch das native Rendering in mobilen Apps wie dem [ExoPlayer](https://github.com/google/ExoPlayer) für Android oder [AV Foundation](https://developer.apple.com/av-foundation/) für iOS nutzen. MPEG-DASH wird von Azure Media Player ebenfalls unterstützt. Eine Liste mit Clients finden Sie auf [dieser Seite](https://dashif.org/members/). 
 
 Wenn Sie [Mediendiagramme](#media-graph) verwenden, um Videos in einem Medienobjekt in Azure Media Services aufzuzeichnen, können Sie mithilfe der Streamingfunktionen von Media Services Videostreams in HLS und DASH bereitstellen. Weitere Informationen hierzu finden Sie im Artikel [Videowiedergabe](video-playback-concept.md).
 

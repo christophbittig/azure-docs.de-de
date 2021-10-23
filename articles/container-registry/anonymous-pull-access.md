@@ -4,18 +4,18 @@ description: Aktivieren Sie optional den anonymen Pull-Zugriff, um die Inhalte I
 ms.topic: how-to
 ms.date: 09/17/2021
 ms.custom: ''
-ms.openlocfilehash: 816e99cd5ba2ba83958a9ec7b9b0ad679e4a6550
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: e82bb43ee8865642ae7939a94291e0c9f5432198
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129547353"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130161969"
 ---
 # <a name="make-your-container-registry-content-publicly-available"></a>Machen Sie den Inhalt Ihrer Container-Registrierung öffentlich zugänglich
 
 Das Einrichten einer Azure Container-Registrierung für anonymen (nicht authentifizierten) Pull-Zugriff ist eine optionale Funktion, die es jedem Benutzer mit Internetzugang ermöglicht, beliebige Inhalte aus der Registrierung zu pullen.
 
-Der anonyme Pull-Zugriff ist eine Previewfunktion, die in der Standard- und Premium-[Dienstebene](container-registry-skus.md) verfügbar ist. Um den anonymen Pull-Zugriff zu konfigurieren, aktualisieren Sie eine Registrierung unter Verwendung der Azure CLI (Version 2.21.0 oder höher). Informationen zum Ausführen einer Installation oder eines Upgrades finden Sie unter [Installieren der Azure CLI](/cli/azure-install-cli).
+Der anonyme Pull-Zugriff ist eine Previewfunktion, die in der Standard- und Premium-[Dienstebene](container-registry-skus.md) verfügbar ist. Um den anonymen Pull-Zugriff zu konfigurieren, aktualisieren Sie eine Registrierung unter Verwendung der Azure CLI (Version 2.21.0 oder höher). Informationen zum Ausführen einer Installation oder eines Upgrades finden Sie unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="about-anonymous-pull-access"></a>Der anonyme Pull-Zugriff
 

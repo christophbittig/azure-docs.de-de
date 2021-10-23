@@ -7,12 +7,12 @@ ms.service: azure-cdn
 ms.topic: how-to
 ms.date: 11/07/2020
 ms.author: allensu
-ms.openlocfilehash: 8ab4f698c7149d8d57f790e221ccbe35ec090fe6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 025950ffcc264a3cfad1185ac1629c6a8fd44814
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94369836"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129992570"
 ---
 # <a name="onboard-a-root-or-apex-domain-to-an-existing-azure-cdn-endpoint"></a>Onboarding einer Stamm- oder Apex-Domäne an einem vorhandenen Azure CDN-Endpunkt
 
@@ -20,7 +20,7 @@ Azure CDN verwendet CNAME-Einträge zum Überprüfen des Domänenbesitzes beim O
 
 Das DNS-Protokoll verhindert die Zuweisung von CNAME-Einträgen am Zonen-Apex. Wenn die Domäne beispielsweise `contoso.com` heißt, können Sie CNAME-Einträge für `somelabel.contoso.com`, aber keinen CNAME-Eintrag für `contoso.com` selbst erstellen. Diese Einschränkung stellt Anwendungsbesitzer, die über Anwendungen mit Lastenausgleich hinter Azure CDN verfügen, vor ein Problem. Da für die Verwendung eines CDN-Profils die Erstellung eines CNAME-Eintrags erforderlich ist, kann im Zonen-Apex-Eintrag nicht auf das CDN-Profil verwiesen werden.
 
-Dieses Problem kann mithilfe von Aliaseinträgen in Azure DNS gelöst werden. Anders als CNAME-Einträge werden Aliaseinträge im Zonen-Apex erstellt. Anwendungsbesitzer können diese verwenden, um ihren Zonen-Apex-Eintrag auf ein CDN-Profil zu verweisen, das über öffentliche Endpunkte verfügt. Anwendungsbesitzer verweisen auf das gleiche CDN-Profil, das auch für andere Domänen innerhalb ihrer DNS-Zone verwendet wird. Beispielsweise können `contoso.com` und `www.contoso.com` beide auf dasselbe CDN-Profil verweisen. 
+Dieses Problem kann mithilfe von Aliaseinträgen in Azure DNS gelöst werden. Anders als CNAME-Einträge werden Aliaseinträge im Zonen-Apex erstellt. Anwendungsbesitzer können diese verwenden, um ihren Zonen-Apex-Eintrag auf ein CDN-Profil zu verweisen, das über öffentliche Endpunkte verfügt. Anwendungsbesitzer verweisen auf das gleiche CDN-Profil, das auch für andere Domänen innerhalb ihrer DNS-Zone verwendet wird. Beispielsweise können `contoso.com` und `www.contoso.com` beide auf dasselbe CDN-Profil verweisen. 
 
 Wenn Sie Ihre Apex- oder Stammdomäne dem CDN-Profil zuordnen, ist CNAME-Vereinfachung oder DNS-Verfolgung erforderlich. Dies ist ein Mechanismus, bei dem der DNS-Anbieter den CNAME-Eintrag rekursiv auflöst, bis er auf eine IP-Adresse trifft. Diese Funktion wird in Azure DNS für CDN-Endpunkte unterstützt. 
 

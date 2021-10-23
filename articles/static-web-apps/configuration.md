@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 08/27/2021
 ms.author: cshoe
-ms.openlocfilehash: 25358033e88fbfb1590289e6fbad8e4109e0dbbf
-ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
+ms.openlocfilehash: ce46cbaf5a368d3278f4ccdf0c012f212fbfb48a
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2021
-ms.locfileid: "129399582"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130004215"
 ---
 # <a name="configure-azure-static-web-apps"></a>Konfigurieren von Azure Static Web Apps
 
@@ -202,7 +202,7 @@ Die nachstehende Beispieldateistruktur zeigt, dass die folgenden Ergebnisse mit 
 
 ## <a name="global-headers"></a>Globale Header
 
-Der Abschnitt `globalHeaders` stellt eine Gruppe von [HTTP-Headern](https://developer.mozilla.org/docs/Web/HTTP/Headers) bereit, die auf jede Antwort angewendet werden, es sei denn, sie werden durch eine Regel für [Routenheader](#route-headers) überschrieben. Andernfalls wird die Vereinigung sowohl der Header aus der Route als auch der globalen Header zurückgegeben.
+Der Abschnitt `globalHeaders` stellt eine Gruppe von HTTP-Headern bereit, die auf jede Antwort angewendet werden, es sei denn, sie werden durch eine Regel für [Routenheader](#route-headers) überschrieben. Andernfalls wird die Vereinigung sowohl der Header aus der Route als auch der globalen Header zurückgegeben.
 
 Beispiele der Nutzung finden Sie unter [Beispielkonfigurationsdatei](#example-configuration-file).
 

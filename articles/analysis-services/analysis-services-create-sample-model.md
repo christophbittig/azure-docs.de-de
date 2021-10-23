@@ -4,15 +4,15 @@ description: In diesem Tutorial erfahren Sie, wie Sie ein Beispielmodell in Azur
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 08/31/2020
+ms.date: 10/12/2021
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f882a40940a5c7202e9cf1f5c8b8927f008f4a39
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2949fe4e739e1afb7e41221675c90611d1ddb72e
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92013609"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130000667"
 ---
 # <a name="tutorial-add-a-sample-model-from-the-portal"></a>Tutorial: Hinzufügen eines Beispielmodells über das Portal
 

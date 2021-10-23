@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: conceptual
 ms.date: 09/13/2021
-ms.openlocfilehash: a94abb3b2c640dbd0bcd372e83844d660af514cd
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b7e418c6e8fd282bc04f7a4a95c90d085e86deae
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128548190"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130067077"
 ---
 # <a name="devops-deployment-for-single-tenant-azure-logic-apps"></a>DevOps-Bereitstellung für Azure Logic Apps-Instanzen mit nur einem Mandanten
 
@@ -43,7 +43,7 @@ Azure Logic Apps-Instanzen mit nur einem Mandanten erben viele Funktionen und Vo
 
 ### <a name="local-development-and-testing"></a>Lokale Entwicklung und Tests
 
-Wenn Sie Visual Studio Code mit der Erweiterung Azure Logic Apps (Standard) verwenden, können Sie auf einem einzelnen Mandanten basierende Logik-App-Workflows lokal in Ihrer Entwicklungsumgebung entwickeln, erstellen und ausführen, ohne eine Bereitstellung in Azure durchführen zu müssen. Sie können Ihre Workflows überall dort ausführen, wo auch Azure Functions ausgeführt werden kann. Erfordert Ihr Szenario z. B. Container, können Sie Logik-Apps containerisieren und als Container bereitstellen.
+Wenn Sie Visual Studio Code mit der Erweiterung Azure Logic Apps (Standard) verwenden, können Sie auf einem einzelnen Mandanten basierende Logik-App-Workflows lokal in Ihrer Entwicklungsumgebung entwickeln, erstellen und ausführen, ohne eine Bereitstellung in Azure durchführen zu müssen. Wenn Ihr Szenario Container erfordert, können Sie über [Logik-Apps mit Azure Arc-Unterstützung](azure-arc-enabled-logic-apps-overview.md) erstellen und bereitstellen.
 
 Verglichen mit dem mehrinstanzenfähigen Modell, bei dem Sie für eine vorhandene, in Azure ausgeführte Ressource entwickeln müssen, bietet diese Funktion eine erhebliche Verbesserung und einen entscheidenden Vorteil.
 
@@ -174,7 +174,7 @@ Zum Aufrufen in Azure Functions erstellter und gehosteter Funktionen verwenden S
 
 ## <a name="authentication"></a>Authentifizierung
 
-In Azure Logic Apps-Instanzen mit nur einem Mandanten ist das Hostingmodell für Logik-App-Workflows ein einzelner Mandant, bei dem Ihre Workloads von einer größeren Isolation als beim mehrinstanzenfähigen Modell profitieren. Darüber hinaus ist die Runtime für Azure Logic Apps-Instanzen mit nur einem Mandanten portabel. Das bedeutet, dass Sie Ihre Workflows überall dort ausführen können, wo Azure Functions ausgeführt werden kann. Dennoch erfordert dieser Entwurf, dass Logik-Apps eine Möglichkeit erhalten, ihre Identität zu authentifizieren, damit sie auf das Ökosystem der verwalteten Connectors in Azure zugreifen können. Ihre Apps benötigen auch die richtigen Berechtigungen zum Ausführen von Vorgängen, wenn verwaltete Verbindungen verwendet werden.
+In Azure Logic Apps-Instanzen mit nur einem Mandanten ist das Hostingmodell für Logik-App-Workflows ein einzelner Mandant, bei dem Ihre Workloads von einer größeren Isolation als beim mehrinstanzenfähigen Modell profitieren. Darüber hinaus ist die Azure Logic Apps-Runtime für Einzelmandanten portierbar, was bedeutet, dass Sie Ihre Workflows in anderen Umgebungen ausführen können, z. B. lokal in Visual Studio Code. Dennoch erfordert dieser Entwurf, dass Logik-Apps eine Möglichkeit erhalten, ihre Identität zu authentifizieren, damit sie auf das Ökosystem der verwalteten Connectors in Azure zugreifen können. Ihre Apps benötigen auch die richtigen Berechtigungen zum Ausführen von Vorgängen, wenn verwaltete Verbindungen verwendet werden.
 
 Standardmäßig verfügt jede auf einem einzelnen Mandanten basierende Logik-App über eine automatisch aktivierte systemseitig zugewiesene verwaltete Identität. Diese Identität unterscheidet sich von den Anmeldeinformationen für die Authentifizierung oder der Verbindungszeichenfolge, die Sie verwenden, wenn Sie eine Verbindung herstellen. Zur Runtime verwendet Ihre Logik-App diese Identität, um ihre Verbindungen über Azure-Zugriffsrichtlinien zu authentifizieren. Wenn Sie diese Identität deaktivieren, funktionieren Verbindungen zur Laufzeit nicht.
 

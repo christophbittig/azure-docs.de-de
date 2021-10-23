@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/15/2021
-ms.openlocfilehash: 9a5d14c3363f5d4b4d25e0592b184b6e706fef6b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d2872d2293802c435eb4bbd67078e6d1e973a6b9
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355249"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130004595"
 ---
 # <a name="enable-sql-insights-preview"></a>Aktivieren von SQL Insights (Vorschau)
 In diesem Artikel wird beschrieben, wie Sie [SQL Insights](sql-insights-overview.md) zum Überwachen Ihrer SQL-Bereitstellungen aktivieren. Die Überwachung erfolgt über einen virtuellen Azure-Computer, der eine Verbindung mit Ihren SQL-Bereitstellungen herstellt und dynamische Verwaltungssichten (Dynamic Management Views, DMVs) verwendet, um Überwachungsdaten zu erfassen. Sie können mithilfe eines Überwachungsprofils steuern, welche Datasets mit welcher Häufigkeit gesammelt werden.
@@ -225,7 +225,7 @@ Geben Sie Ihre Verbindungszeichenfolge in dieser Form ein:
 
 ```
 "sqlManagedInstanceConnections": [ 
-      "Server= mysqlserver.database.windows.net;Port=1433;User Id=$username;Password=$password;", 
+      "Server= mysqlserver.database.windows.net;Port=1433;User Id=$username;Password=$password;" 
     ] 
 ```
 Rufen Sie die Details aus dem Menüelement **Verbindungszeichenfolgen** für die verwaltete Instanz ab.

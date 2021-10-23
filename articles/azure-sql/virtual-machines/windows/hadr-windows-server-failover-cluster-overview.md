@@ -3,7 +3,7 @@ title: Übersicht über Windows Server-Failovercluster
 description: 'Lernen Sie die Unterschiede bei der Windows Server-Failoverclustertechnologie bei Verwendung mit SQL Server auf Azure-VMs kennen, z. B. Verfügbarkeitsgruppen und Failoverclusterinstanzen. '
 services: virtual-machines
 documentationCenter: na
-author: MashaMSFT
+author: rajeshsetlem
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
@@ -12,13 +12,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/01/2021
-ms.author: mathoma
-ms.openlocfilehash: f85c603f7bfa4113edaeaed1eb92d907d06fe09d
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.author: rsetlem
+ms.reviewer: mathoma
+ms.openlocfilehash: dc007e4aeb68d3cecd156a650bd3c04de1fd26e0
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112581923"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130162193"
 ---
 # <a name="windows-server-failover-cluster-with-sql-server-on-azure-vms"></a>Windows Server-Failovercluster mit SQL Server auf Azure-VMs
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]

@@ -3,21 +3,21 @@ title: Migrieren einer Node.js-Anwendung von ADAL zu MSAL | Azure
 titleSuffix: Microsoft identity platform
 description: Erfahren Sie, wie Sie eine vorhandene Node.js-Anwendung so aktualisieren, dass anstelle der Active Directory-Authentifizierungsbibliothek (ADAL) die Microsoft-Authentifizierungsbibliothek (MSAL) für die Authentifizierung und Autorisierung verwendet wird.
 services: active-directory
-author: derisen
+author: KarenH444
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
 ms.date: 04/26/2021
-ms.author: v-doeris
+ms.author: karenhoran
 ms.custom: has-adal-ref
-ms.openlocfilehash: 663898ea4c1bc4a881a84956c227a4ca7719b55b
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 79fbcde40289cf04d45edb9bcf1b249e88408544
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124786862"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130163856"
 ---
 # <a name="how-to-migrate-a-nodejs-app-from-adal-to-msal"></a>Migrieren einer Node.js-Anwendung von ADAL zu MSAL
 

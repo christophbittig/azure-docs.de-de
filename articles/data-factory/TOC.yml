@@ -114,6 +114,8 @@ items:
         items:
           - name: Transformieren von Daten mit Zuordnungsdatenflüssen
             items:
+              - name: Adventure Works-Einzelhandelsbeispiel für Synapse-Pipelines
+                href: tutorial-data-flow-adventure-works-retail-template.md
               - name: "Bewährte Methoden für das Platzieren von Daten im Lake mit ADLS\_Gen2"
                 href: tutorial-data-flow-write-to-lake.md
               - name: Dynamisches Festlegen von Spaltennamen

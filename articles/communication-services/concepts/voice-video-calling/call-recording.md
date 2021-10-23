@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.custom: references_regions
 ms.service: azure-communication-services
 ms.subservice: calling
-ms.openlocfilehash: a6e5f1ecb5686145718d83febf3faf5c520db6fe
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 103ced05c6b88c5f7f60de398f78f89cc460daf9
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128609515"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129667305"
 ---
 # <a name="calling-recording-overview"></a>Übersicht über die Anrufaufzeichnung
 
@@ -30,11 +30,12 @@ Von der Anrufaufzeichnung wird eine Reihe von APIs zum Starten, Beenden, Anhalte
 ![Diagramm zum Konzept der Anrufaufzeichnung](../media/call-recording-concept.png)
 
 ## <a name="media-output-types"></a>Medienausgabetypen
-Von der Anrufaufzeichnung wird derzeit das gemischte MP4-Ausgabeformat für Audio und Video unterstützt. Das Ausgabemedium entspricht Besprechungsaufzeichnungen, die durch die Aufzeichnungsfunktion von Microsoft Teams generiert werden.
+Für die Anrufaufzeichnung werden derzeit das gemischte MP4-Ausgabeformat für Audio und Video und das gemischte MP3/WAV-Ausgabeformat für Audio unterstützt. Das Ausgabemedium für das gemischte Audio-/Videoformat entspricht Besprechungsaufzeichnungen, die durch die Aufzeichnungsfunktion von Microsoft Teams generiert werden.
 
 | Channeltyp | Inhaltsformat | Video | Audio |
 | :----------- | :------------- | :---- | :--------------------------- |
 | audioVideo | MP4 | Video (1.920 × 1.080, 8 FPS) aller Teilnehmer in Standardkachelanordnung | Gemischtes Audio (16 kHz, MP4A) aller Teilnehmer |
+| audioOnly| MP3/WAV | – | Gemischtes Audio (16 kHz, MP3/WAV) aller Teilnehmer |
 
 
 ## <a name="run-time-control-apis"></a>Runtimesteuerungs-APIs

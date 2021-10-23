@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 10/11/2021
 author: mattmccleary
 ms.author: mmcc
-ms.openlocfilehash: eb20d283e092be8b5932d1427f7e7064afa9c654
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: 8f8daa67c22f8a505014ff326ca3961fa86f21f5
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129859629"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130160832"
 ---
 # <a name="enable-azure-monitor-opentelemetry-exporter-for-net-nodejs-and-python-applications-preview"></a>Aktivieren von Azure Monitor OpenTelemetry Exporter für .NET-, Node.js- und Python-Anwendungen (Vorschau)
 
@@ -313,10 +313,13 @@ Führen Sie Ihre Anwendung aus, und öffnen Sie die Registerkarte der Applicatio
 > [!NOTE]
 > Wenn Sie die Anwendung nicht ausführen oder Daten nicht wie erwartet abrufen können, navigieren Sie zu [Problembehandlung](#troubleshooting).
 
-:::image type="content" source="media/opentelemetry/server-requests.png" alt-text="Screenshot der Registerkarte „Übersicht“ von Application Insights mit hervorgehobenen Serveranforderungen und der Serverantwortzeit.":::
+:::image type="content" source="media/opentelemetry/server-requests.png" alt-text="Screenshot der Registerkarte „Übersicht“ von Application Insights mit hervorgehobenen Serveranforderungen und der Serverantwortzeit":::
 
 > [!IMPORTANT]
 > Wenn Sie über zwei oder mehr Dienste verfügen, die Telemetriedaten an dieselbe Application Insights-Ressource ausgeben, müssen Sie [Cloudrollennamen festlegen](#set-cloud-role-name-and-cloud-role-instance), um sie ordnungsgemäß in der Anwendungszuordnung darzustellen.
+
+> [!NOTE]
+> Im Rahmen der Verwendung der Application Insights-Instrumentierung sammeln und senden wir Diagnosedaten an Microsoft. Diese Daten helfen uns bei der Ausführung und Verbesserung von Application Insights. Sie haben die Möglichkeit, die Sammlung nicht wesentlicher Daten zu deaktivieren. [Weitere Informationen](./statsbeat.md).
 
 ## <a name="set-cloud-role-name-and-cloud-role-instance"></a>Festlegen von Cloudrollennamen und Cloudrolleninstanz
 

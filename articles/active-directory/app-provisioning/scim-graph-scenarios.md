@@ -3,7 +3,7 @@ title: Verwenden von SCIM, Microsoft Graph und Azure Active Directory zum Bereit
 description: Durch die gemeinsame Nutzung von SCIM und Microsoft Graph in Azure Active Directory können Sie Benutzer bereitstellen und Ihre Anwendung mit den benötigten Daten anreichern.
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 05/11/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 3e3b8670aebb52c1b1bf36d9ce933113b17b7714
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: ac78950f4268155c4c7c0f37e20229044d62ab81
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109784897"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129990708"
 ---
 # <a name="using-scim-and-microsoft-graph-together-to-provision-users-and-enrich-your-application-with-the-data-it-needs"></a>Durch die gemeinsame Nutzung von SCIM und Microsoft Graph können Sie Benutzer bereitstellen und Ihre Anwendung mit den benötigten Daten anreichern
 

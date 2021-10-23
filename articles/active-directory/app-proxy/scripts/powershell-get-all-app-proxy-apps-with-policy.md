@@ -3,20 +3,20 @@ title: 'PowerShell-Beispiel: Auflisten aller Azure Active Directory-Anwendungspr
 description: Hier finden Sie ein PowerShell-Beispiel, das alle in Ihrem Verzeichnis enthaltenen Anwendungsproxyanwendungen von Azure Active Directory (Azure AD) auflistet, die über eine Richtlinie für die Tokengültigkeitsdauer verfügen.
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-proxy
 ms.workload: identity
 ms.topic: sample
 ms.date: 04/29/2021
 ms.author: kenwith
-ms.reviewer: japere
-ms.openlocfilehash: 0c0d8c73fd292e02aa7dfdff61007ec6fae374dd
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.reviewer: ashishj
+ms.openlocfilehash: 79a0cabfc8874ec2ad8c4bfefe9e7ef733bbdf07
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108293693"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129988086"
 ---
 # <a name="get-all-application-proxy-apps-with-a-token-lifetime-policy"></a>Abrufen aller Anwendungsproxy-Apps mit einer Richtlinie für die Tokengültigkeitsdauer
 

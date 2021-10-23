@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/07/2021
 ms.author: lajanuar
 recommendations: false
-ms.openlocfilehash: 4b73526ad245d9364b0ada997fc014e0dd16df40
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 98364df02238c36f7e15f00eaff6ec124631987c
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129716416"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130178237"
 ---
 <!-- markdownlint-disable MD033 -->
 
@@ -46,7 +46,7 @@ Indem Sie unser Tool für die Beschriftung von Beispielen ausprobieren, können 
 
  :::image type="content" source="media/containers/keys-and-endpoint.png" alt-text="Screenshot: Schlüssel und Endpunktspeicherort im Azure-Portal.":::
 
-* Ein ID-Dokument. Sie können unser [ID-Beispieldokument](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/id-license.jpg) verwenden.
+* Ein ID-Dokument. Sie können unser [ID-Beispieldokument](https://raw.githubusercontent.com/MicrosoftDocs/azure-docs/master/articles/applied-ai-services/form-recognizer/media/id-license.jpg) verwenden.
 
 > [!div class="nextstepaction"]
   > [Testen](https://fott-2-1.azurewebsites.net/prebuilts-analyze)
@@ -126,7 +126,7 @@ Gehen Sie auf der Benutzeroberfläche der Formularerkennung folgendermaßen vor:
 
 * Im [**Migrationsleitfaden für die Formularerkennung v3.0**](v3-migration-guide.md) erfahren Sie, wie Sie die Vorschauversion in Ihren Anwendungen und Workflows verwenden können.
 
-* Erkunden Sie die [**REST-API (Vorschau)** ](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/AnalyzeDocument), um mehr über die Vorschauversion und neue Funktionen zu erfahren.
+* Erkunden Sie die [**REST-API (Vorschau)**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/AnalyzeDocument), um mehr über die Vorschauversion und neue Funktionen zu erfahren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

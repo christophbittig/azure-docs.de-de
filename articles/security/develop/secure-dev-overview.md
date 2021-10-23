@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: baaa311620f5c10948aa3494002ce359cc5dab28
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3b0ebb1989e350962317adce64c0542b4a296924
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94517171"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130000762"
 ---
 # <a name="secure-development-best-practices-on-azure"></a>Sichere Entwicklung in Azure – bewährte Methoden
 In diese Artikelreihe werden Sicherheitsaktivitäten und -kontrollen vorgestellt, die Sie berücksichtigen sollten, wenn Sie Anwendungen für die Cloud entwickeln. Es werden die Phasen des Microsoft Security Development Lifecycle (SDL) sowie Sicherheitsfragen und -konzepte behandelt, die in jeder Phase des Lebenszyklus zu berücksichtigen sind. Das Ziel ist, Ihnen dabei zu helfen, Aktivitäten und Azure-Dienste zu definieren, die Sie in jeder Phase des Lebenszyklus verwenden können, um eine sicherere Anwendung zu entwerfen, zu entwickeln und bereitzustellen.
@@ -46,7 +46,7 @@ Die SDL-Phasen sind:
   - Entwurf
   - Implementierung
   - Überprüfung
-  - Release
+  - Freigabe
   - Antwort
 
 ![Security Development Lifecycle](./media/secure-dev-overview/01-sdl-phase.png)
@@ -67,7 +67,7 @@ Verwenden Sie die folgenden Ressourcen, um mehr über die Entwicklung sicherer A
 
 [Open Web Application Security Project (OWASP)](https://www.owasp.org/index.php/Main_Page): OWASP ist eine Onlinecommunity, von der frei verfügbare Artikel, Methoden, Dokumentationen, Tools und Technologien im Bereich Sicherheit von Webanwendungen erstellt werden.
 
-[Pushing Left, Like a Boss](https://code.likeagirl.io/pushing-left-like-a-boss-part-1-80f1f007da95?WT.mc_id=docs-blog-tajanca): Eine Reihe von Onlineartikeln, in denen verschiedene Arten von Anwendungssicherheitsaktivitäten beschrieben sind, die Entwickler ausführen sollten, um sichereren Code zu erstellen.
+[Pushing Left, Like a Boss](https://wehackpurple.com/pushing-left-like-a-boss-part-1/): Eine Reihe von Onlineartikeln, in denen verschiedene Arten von Anwendungssicherheitsaktivitäten beschrieben sind, die Entwickler ausführen sollten, um sichereren Code zu erstellen.
 
 [Microsoft Identity Platform](../../active-directory/develop/index.yml): Die Microsoft Identity Platform ist eine Weiterentwicklung des Azure AD-Identitätsdiensts und der zugehörigen Entwicklerplattform. Es handelt sich um eine Plattform mit vollem Funktionsumfang, die einen Authentifizierungsdienst, Open-Source-Bibliotheken, Anwendungsregistrierung und -konfiguration, eine vollständige Entwicklerdokumentation, Codebeispiele und andere Inhalte für Entwickler umfasst. Microsoft Identity Platform unterstützt die branchenüblichen Protokolle wie OAuth 2.0 und OpenID Connect.
 

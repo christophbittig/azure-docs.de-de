@@ -2,21 +2,21 @@
 title: Aktivieren der Authentifizierung in einer Single-Page-Webanwendung mithilfe der Bausteine von Azure Active Directory B2C
 description: Dieser Artikel erläutert die Bausteine von Azure Active Directory B2C zum Registrieren und Anmelden von Benutzern für eine Single-Page-Webanwendung (Single Page Application, SPA).
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 06/25/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: e3d46a2843f84fa13c0d80288ccf43e1e474e2b5
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 535cecf04857810d002843159d7ef3ce968e169b
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122354740"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130041042"
 ---
 # <a name="enable-authentication-in-your-own-single-page-application-by-using-azure-ad-b2c"></a>Aktivieren der Authentifizierung in Ihrer eigenen Single-Page-Webanwendung mithilfe von Azure AD B2C
 

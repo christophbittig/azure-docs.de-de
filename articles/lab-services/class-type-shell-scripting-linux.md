@@ -1,14 +1,14 @@
 ---
 title: Einrichten eines Linux-Labs zur Shell-Skripterstellung mit Azure Lab Services | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie ein Lab für Schulungen zu Shellskripts unter Linux einrichten.
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: ba14f2fb5263367014b57741c78d6e509df044b3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0faf5c9a11ad4aed3bf1157bc18dbeb84f60030b
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85444963"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130176546"
 ---
 # <a name="set-up-a-lab-to-teach-shell-scripting-on-linux"></a>Einrichten eines Labs zur Schulung in Shellskripts unter Linux
 Erfahren Sie, wie Sie unter Linux ein Lab für Schulungen zum Erstellen von Shellskripts einrichten. Die Skripterstellung empfiehlt sich bei der Systemverwaltung, um Administratoren sich wiederholende Aufgaben abzunehmen. In diesem beispielhaften Kurs geht es um klassische Bash-Skripts und erweiterte Skripts. Erweiterte Skripts sind Skripts, die Bash-Befehle und Ruby kombinieren. Dieser Ansatz ermöglicht Ruby das Weiterleiten von Daten, während Bash-Befehle mit der Shell interagieren können. 

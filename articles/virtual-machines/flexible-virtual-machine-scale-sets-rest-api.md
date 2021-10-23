@@ -9,14 +9,14 @@ ms.subservice: flexible-scale-sets
 ms.date: 08/05/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli, vmss-flex
-ms.openlocfilehash: 64fc87455b035503891319de1b8fd06090586b4b
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 571894779b05a823b4de2e841a3b198dc334ab1f
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122699110"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130166545"
 ---
-# <a name="preview-create-virtual-machines-in-a-flexible-scale-set-using-an-arm-template"></a>Preview: Erstellen von VMs in einer flexiblen Skalierungsgruppe mithilfe einer ARM-Vorlage
+# <a name="create-virtual-machines-in-a-flexible-scale-set-using-an-arm-template"></a>Erstellen von VMs in einer flexiblen Skalierungsgruppe mithilfe einer ARM-Vorlage
 
 **Gilt für:** :heavy_check_mark: Flexible Skalierungsgruppen
 
@@ -24,11 +24,11 @@ ms.locfileid: "122699110"
 In diesem Artikel wird beschrieben, wie Sie die ARM-Vorlage verwenden sollten, um eine VM-Skalierungsgruppe im flexiblen Orchestrierungsmodus zu erstellen. Weitere Informationen über flexible Skalierungsgruppen finden Sie unter [Flexibler Orchestrierungsmodus für Skalierungsgruppen für VM](flexible-virtual-machine-scale-sets.md). 
 
 
-> [!IMPORTANT]
-> Das Feature für VM-Skalierungsgruppen im Orchestrierungsmodus „Flexibel“ befindet sich derzeit in der öffentlichen Vorschauphase. Es ist ein Opt-in-Verfahren erforderlich, um die unten beschriebenen Funktionen der öffentlichen Vorschauversion zu nutzen.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+[!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
+Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
+
+[![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fquickstarts%2Fmicrosoft.compute%2Fvmss-flexible-orchestration-quickstart%2Fazuredeploy.json)
 
 > [!CAUTION]
 > Der Orchestrierungsmodus wird beim Erstellen der Skalierungsgruppe festgelegt und kann später nicht mehr geändert oder aktualisiert werden.
@@ -36,10 +36,6 @@ In diesem Artikel wird beschrieben, wie Sie die ARM-Vorlage verwenden sollten, u
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
-
-## <a name="register-for-flexible-orchestration-mode"></a>Registrieren für den Orchestrierungsmodus „Flexibel“
-
-Bevor Sie VM-Skalierungsgruppen im Orchestrierungsmodus „Flexibel“ bereitstellen können, müssen Sie [Ihr Abonnement zunächst für die Previewfunktion registrieren](flexible-virtual-machine-scale-sets.md#register-for-flexible-orchestration-mode). Die Registrierung kann mehrere Minuten dauern.
 
 ## <a name="arm-template"></a>ARM-Vorlage 
 

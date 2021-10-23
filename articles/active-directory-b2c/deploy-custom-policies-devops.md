@@ -3,20 +3,20 @@ title: Bereitstellen benutzerdefinierter Richtlinien mit Azure Pipelines
 titleSuffix: Azure AD B2C
 description: Hier erfahren Sie, wie Sie in Azure AD B2C mithilfe von Azure Pipelines benutzerdefinierte Richtlinien in einer CI/CD-Pipeline bereitstellen.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 08/26/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: d24e1cf8394b697348492ffcddc4634646ebbbb6
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: f042131bd67c27041ca464fde1be6f4d4915d7a6
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122967086"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130039655"
 ---
 # <a name="deploy-custom-policies-with-azure-pipelines"></a>Bereitstellen benutzerdefinierter Richtlinien mit Azure Pipelines
 
@@ -176,13 +176,13 @@ Eine Pipelineaufgabe ist ein vorgepacktes Skript, das eine Aktion ausführt. Fü
 
 
         ```PowerShell
-        -ClientID $(clientId) -ClientSecret $(clientSecret) -TenantId $(tenantId) -Folder $(System.DefaultWorkingDirectory)/policyRepo/B2CAssets/ -Files "TrustFrameworkBase.xml,TrustFrameworkExtensions.xml,SignUpOrSignin.xml,ProfileEdit.xml,PasswordReset.xml"
+        -ClientID $(clientId) -ClientSecret $(clientSecret) -TenantId $(tenantId) -Folder $(System.DefaultWorkingDirectory)/policyRepo/B2CAssets/ -Files "TrustFrameworkBase.xml,TrustFrameworkLocalization.xml,TrustFrameworkExtensions.xml,SignUpOrSignin.xml,ProfileEdit.xml,PasswordReset.xml"
         ```
         
         Der Parameter `-Files` ist eine Liste mit Kommatrennzeichen der bereitzustellenden Richtliniendateien. Aktualisieren Sie die Liste mit Ihren Richtliniendateien.
         
         > [!IMPORTANT]
-        >  Stellen Sie sicher, dass die Richtlinien in der richtigen Reihenfolge hochgeladen werden. Zuerst die Basisrichtlinie, dann die Erweiterungsrichtlinie und anschließend die Richtlinien der vertrauenden Seite. z. B. `TrustFrameworkBase.xml,TrustFrameworkExtensions.xml,SignUpOrSignin.xml`.
+        >  Stellen Sie sicher, dass die Richtlinien in der richtigen Reihenfolge hochgeladen werden. Zuerst die Basisrichtlinie, dann die Erweiterungsrichtlinie und anschließend die Richtlinien der vertrauenden Seite. z. B. `TrustFrameworkBase.xml,TrustFrameworkLocalization.xml,TrustFrameworkExtensions.xml,SignUpOrSignin.xml`.
         
 1. Wählen Sie **Speichern** aus, um den Agent-Auftrag zu speichern.
 

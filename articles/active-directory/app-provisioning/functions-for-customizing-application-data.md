@@ -3,7 +3,7 @@ title: Referenz zum Schreiben von Ausdrücken für Attributzuordnungen bei der A
 description: Erfahren Sie, wie Ausdruckszuordnungen verwendet werden können, um Attributwerte während der automatisierten Bereitstellung von SaaS-App-Objekten in Azure Active Directory in ein akzeptables Format zu transformieren. Enthält eine Referenzliste mit Funktionen
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/21/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 2173afc4d96bd387f264d313696c41f0e6cbd84e
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 5922fab330409391ba9857b76595f5834469d966
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129272180"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129991449"
 ---
 # <a name="reference-for-writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Referenz zum Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Directory
 

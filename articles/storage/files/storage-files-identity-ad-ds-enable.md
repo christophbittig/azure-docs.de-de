@@ -5,15 +5,15 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: how-to
-ms.date: 07/20/2021
+ms.date: 10/05/2021
 ms.author: rogarana
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cb66ed6c1a00c049c2fff6d9fccb22acbcb9fbee
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 9012f74f29c1e3ed768a32a6988c7aae527b44ce
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114462504"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129999148"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>Teil 1: Aktivieren der AD DS-Authentifizierung für Ihre Dateifreigaben in Azure 
 
@@ -104,11 +104,11 @@ Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGrou
 
 Wenn Sie das oben beschriebene Skript `Join-AzStorageAccountForAuth` bereits erfolgreich ausgeführt haben, fahren Sie mit dem nächsten Abschnitt [Überprüfen der Aktivierung des Features](#confirm-the-feature-is-enabled) fort. Die folgenden manuellen Schritte müssen Sie nicht ausführen.
 
-### <a name="checking-environment"></a>Überprüfen der Umgebung
+### <a name="check-the-environment"></a>Überprüfung der Umgebung
 
 Sie müssen als ersten Schritt den Zustand der Umgebung überprüfen. Insbesondere müssen Sie überprüfen, ob [Active Directory PowerShell](/powershell/module/activedirectory/) installiert ist und die Shell mit Administratorrechten ausgeführt wird. Überprüfen Sie dann, ob das [Modul „Az.Storage 2.0“ (oder höher)](https://www.powershellgallery.com/packages/Az.Storage/2.0.0) installiert ist. Ist dies nicht der Fall, installieren Sie das Modul. Wenn Sie diese beiden Überprüfungen durchgeführt haben, überprüfen Sie, ob Ihre AD DS-Umgebung ein bereits vorhandenes [Computerkonto](/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (Standardwert) oder ein [Dienstanmeldekonto](/windows/win32/ad/about-service-logon-accounts) mit dem SPN/UPN „cifs/ihr-speicherkontoname.file.core.windows.net“ aufweist. Wenn das Konto nicht vorhanden ist, erstellen Sie wie im folgenden Abschnitt beschrieben ein Konto.
 
-### <a name="creating-an-identity-representing-the-storage-account-in-your-ad-manually"></a>Manuelles Erstellen einer Identität, die das Speicherkonto in Ihrem AD darstellt
+### <a name="create-an-identity-representing-the-storage-account-in-your-ad-manually"></a>Manuelles Erstellen einer Identität, die das Speicherkonto in Ihrem AD darstellt
 
 Um dieses Konto manuell zu erstellen, erstellen Sie einen neuen Kerberos-Schlüssel für Ihr Speicherkonto. Verwenden Sie den Kerberos-Schlüssel dann als Kennwort für Ihr Konto mit den PowerShell-Cmdlets unten. Dieser Schlüssel wird nur während der Einrichtung verwendet und kann nicht für Vorgänge auf Steuerungs- oder Datenebene für das Speicherkonto verwendet werden. 
 
@@ -129,9 +129,37 @@ Wenn Ihre Organisationseinheit den Ablauf von Kennwörtern erzwingt, müssen Sie
 
 Notieren Sie sich die SID für die neu erstellte Identität. Sie benötigen sie im nächsten Schritt. Die soeben erstellte Identität, die das Speicherkonto repräsentiert, muss nicht mit Azure AD synchronisiert werden.
 
+#### <a name="optional-enable-aes256-encryption"></a>(Optional) Aktivieren der AES256-Verschlüsselung
+
+Wenn Sie die AES 256-Verschlüsselung aktivieren möchten, führen Sie die Schritte in diesem Abschnitt aus. Wenn Sie RC4 verwenden möchten, können Sie diesen Abschnitt überspringen.
+
+Das Domänenobjekt, das Ihr Speicherkonto darstellt, muss die folgenden Anforderungen erfüllen:
+- Der Name des Speicherkontos darf nicht mehr als 15 Zeichen umfassen.
+- Das Domänenobjekt muss als Computerobjekt in der lokalen AD-Domäne erstellt werden.
+- Mit Ausnahme des nachstehenden „$“ muss der Name des Speicherkontos mit dem SamAccountName des Computerobjekts identisch sein.
+
+Wenn Ihr Domänenobjekt diese Anforderungen nicht erfüllt, löschen Sie es und erstellen ein neues Domänenobjekt, das den Anforderungen entspricht.
+
+Ersetzen Sie `<domain-object-identity>` und `<domain-name>` durch Ihre Werte, und konfigurieren Sie anschließend die AES256-Unterstützung mit dem folgenden Befehl: 
+
+```powershell
+Set-ADComputer -Identity <domain-object-identity> -Server <domain-name> -KerberosEncryptionType "AES256"
+```
+
+Ersetzen Sie nach dem Ausführen dieses Befehls `<domain-object-identity>` im folgenden Skript durch Ihren Wert. Führen Sie dann das Skript aus, um Ihr Kennwort für das Domänenobjekt zu aktualisieren:
+
+```powershell
+$KeyName = "kerb1" # Could be either the first or second kerberos key, this script assumes we're refreshing the first
+$KerbKeys = New-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName -KeyName $KeyName
+$KerbKey = $KerbKeys | Where-Object {$_.KeyName -eq $KeyName} | Select-Object -ExpandProperty Value
+$NewPassword = ConvertTo-SecureString -String $KerbKey -AsPlainText -Force
+
+Set-ADAccountPassword -Identity <domain-object-identity> -Reset -NewPassword $NewPassword
+```
+
 ### <a name="enable-the-feature-on-your-storage-account"></a>Aktivieren des Features für Ihr Speicherkonto
 
-Sie können nun das Feature für Ihr Speicherkonto aktivieren. Geben Sie einige Konfigurationsdetails für die Domäneneigenschaften im folgenden Befehl ein, und führen Sie ihn dann aus. Die im folgenden Befehl erforderliche SID für das Speicherkonto ist die SID der Identität, die Sie im [vorherigen Abschnitt](#creating-an-identity-representing-the-storage-account-in-your-ad-manually) in Ihrer AD DS-Umgebung erstellt haben.
+Sie können nun das Feature für Ihr Speicherkonto aktivieren. Geben Sie einige Konfigurationsdetails für die Domäneneigenschaften im folgenden Befehl ein, und führen Sie ihn dann aus. Die im folgenden Befehl erforderliche SID für das Speicherkonto ist die SID der Identität, die Sie im [vorherigen Abschnitt](#create-an-identity-representing-the-storage-account-in-your-ad-manually) in Ihrer AD DS-Umgebung erstellt haben.
 
 ```PowerShell
 # Set the feature flag on the target storage account and provide the required AD domain information

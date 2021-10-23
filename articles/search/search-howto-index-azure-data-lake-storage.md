@@ -6,13 +6,13 @@ author: markheff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/17/2021
-ms.openlocfilehash: e0364b3242a0be3e4704ade75f2514c8c63aa779
-ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
+ms.date: 10/01/2021
+ms.openlocfilehash: a0ad2bcbccac87d19a5026ae72416f6d793bad90
+ms.sourcegitcommit: 079426f4980fadae9f320977533b5be5c23ee426
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2021
-ms.locfileid: "112983228"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129418744"
 ---
 # <a name="index-data-from-azure-data-lake-storage-gen2"></a>Indizieren von Daten aus Azure Data Lake Storage Gen2
 
@@ -20,13 +20,19 @@ In diesem Artikel erfahren Sie, wie Sie einen Azure Data Lake Storage Gen2-Index
 
 Azure Data Lake Storage Gen2 ist über Azure Storage verfügbar. Beim Einrichten eines Azure-Speicherkontos haben Sie die Möglichkeit, einen [hierarchischen Namespace](../storage/blobs/data-lake-storage-namespace.md) zu aktivieren. Auf diese Weise kann die Sammlung von Inhalten in einem Konto in einer Hierarchie von Verzeichnissen und geschachtelten Unterverzeichnissen organisiert werden. Durch das Aktivieren eines hierarchischen Namespace aktivieren Sie [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md).
 
+In den Beispielen in diesem Artikel werden das Portal und REST-APIs verwendet. Beispiele in C# finden Sie unter [Index Data Lake Gen2 using Azure AD](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/data-lake-gen2-acl-indexing/README.md) auf GitHub.
+
 ## <a name="supported-access-tiers"></a>Unterstützte Zugriffsebenen
 
-Die Data Lake Storage Gen2-[Zugriffsebenen](../storage/blobs/storage-blob-storage-tiers.md) umfassen die heiße, kalte und Archivebene. Indexer können nur auf die heiße und kalte Ebene zugreifen.
+Die Data Lake Storage Gen2-[Zugriffsebenen](../storage/blobs/access-tiers-overview.md) umfassen die heiße, kalte und Archivebene. Indexer können nur auf die heiße und kalte Ebene zugreifen.
 
 ## <a name="access-control"></a>Zugriffssteuerung
 
-Data Lake Storage Gen2 implementiert ein [Zugriffssteuerungsmodell](../storage/blobs/data-lake-storage-access-control.md), das sowohl die rollenbasierte Zugriffssteuerung (Role Based Access Control, RBAC) in Azure als auch POSIX-ähnliche Zugriffssteuerungslisten (Access Control Lists, ACLs) unterstützt. Beim Indizieren von Inhalten aus Data Lake Storage Gen2 extrahiert Azure Cognitive Search keine Azure RBAC- und ACL-Informationen aus den Inhalten. Als Ergebnis sind diese Informationen nicht in Ihrem Azure Cognitive Search-Index enthalten.
+Data Lake Storage Gen2 implementiert ein [Zugriffssteuerungsmodell](../storage/blobs/data-lake-storage-access-control.md), das sowohl die rollenbasierte Zugriffssteuerung (Role Based Access Control, RBAC) in Azure als auch POSIX-ähnliche Zugriffssteuerungslisten (Access Control Lists, ACLs) unterstützt. Zugriffssteuerungslisten werden in Azure Cognitive Search-Szenarien teilweise unterstützt:
+
++ Die Unterstützung der Zugriffssteuerung ist für den Indexerzugriff auf Inhalte in Data Lake Storage Gen2 aktiviert. Für einen Suchdienst mit einem System oder einer benutzerseitig zugewiesenen verwalteten Identität können Sie Rollenzuweisungen definieren, die den Indexerzugriff auf bestimmte Dateien und Ordner in Azure Storage kontrollieren.
+
++ Unterstützung von Berechtigungen auf Dokumentebene auf einem Index ist nicht verfügbar. Wenn bei Ihren Zugriffssteuerungen die Zugriffsebene je nach Benutzer variieren, können diese Berechtigungen nicht in einen Suchindex in Ihrem Suchdienst übertragen werden. Alle Benutzer haben dieselbe Zugriffsebene für alle durchsuchbaren und abrufbaren Inhalte im Index.
 
 Wenn die Verwaltung der Zugriffssteuerung für jedes Dokument im Index wichtig ist, kann der Anwendungsentwickler [Sicherheitsfilter](./search-security-trimming-for-azure-search.md) implementieren.
 
@@ -38,11 +44,11 @@ Der Blobindexer von Azure Cognitive Search kann Text aus den folgenden Dokumentf
 
 [!INCLUDE [search-blob-data-sources](../../includes/search-blob-data-sources.md)]
 
-## <a name="getting-started-with-the-azure-portal"></a>Erste Schritte mit dem Azure-Portal
+## <a name="indexing-through-the-azure-portal"></a>Indizierung über das Azure-Portal
 
 Der Azure-Portal unterstützt das Importieren von Daten aus Azure Data Lake Storage Gen2. Navigieren Sie zum Importieren von Daten aus Data Lake Storage Gen2 zu Ihrer Azure Cognitive Search-Dienstseite im Azure-Portal, wählen Sie **Daten importieren** aus, wählen Sie **Azure Data Lake Storage Gen2** aus, und folgen Sie dann dem „Daten importieren“-Ablauf, um Ihre Datenquelle, Ihr Skillset, Ihren Index und Ihren Indexer zu erstellen.
 
-## <a name="getting-started-with-the-rest-api"></a>Erste Schritte mit der REST-API
+## <a name="indexing-with-the-rest-api"></a>Indizierung mit der REST-API
 
 Der Data Lake Storage Gen2-Indexer wird von der REST-API unterstützt. Befolgen Sie die nachstehenden Anweisungen, um eine Datenquelle, einen Index und einen Indexer zu erstellen.
 
@@ -93,7 +99,7 @@ Die SAS muss über Listen- und Leseberechtigungen für den Container verfügen. 
 
 ### <a name="step-2---create-an-index"></a>Schritt 2 – Erstellen eines Index
 
-Mit dem Index werden die Felder in einem Dokument, Attribute und andere Konstrukte für die Suchoberfläche angegeben. Bei allen Indexern müssen Sie eine Suchindexdefinition als Ziel angeben. Im folgenden Beispiel wird ein einfacher Index mithilfe der [Rest-API zum Erstellen eines Index](/rest/api/searchservice/create-index) erstellt. 
+Mit dem Index werden die Felder in einem Dokument, Attribute und andere Konstrukte für die Suchoberfläche angegeben. Bei allen Indexern müssen Sie eine Suchindexdefinition als Ziel angeben. Im folgenden Beispiel wird [Create Index (REST-API)](/rest/api/searchservice/create-index) verwendet. 
 
 ```http
     POST https://[service name].search.windows.net/indexes?api-version=2020-06-30
@@ -117,7 +123,7 @@ Sie könnten auch Felder für beliebige Blobmetadaten hinzufügen, die Sie im In
 
 ### <a name="step-3---configure-and-run-the-indexer"></a>Schritt 3 – Konfigurieren und Ausführen des Indexers
 
-Nach der Erstellung von Index und Datenquelle können Sie den Indexer erstellen:
+Nachdem Sie den Index und die Datenquelle erstellt haben, können Sie den [Indexer](/rest/api/searchservice/create-indexer) erstellen:
 
 ```http
     POST https://[service name].search.windows.net/indexers?api-version=2020-06-30
@@ -134,11 +140,7 @@ Nach der Erstellung von Index und Datenquelle können Sie den Indexer erstellen:
     }
 ```
 
-Dieser Indexer wird alle zwei Stunden ausgeführt (das Planungsintervall ist auf „PT2H“ festgelegt). Um einen Indexer alle 30 Minuten auszuführen, legen Sie das Intervall auf „PT30M“ fest. Das kürzeste unterstützte Intervall beträgt fünf Minuten. Der Zeitplan ist optional. Ohne Zeitplan wird ein Indexer nur einmal bei seiner Erstellung ausgeführt. Allerdings können Sie ein Indexer bei Bedarf jederzeit ausführen.   
-
-Weitere Informationen zur API zum Erstellen eines Indexers finden Sie unter [Erstellen eines Indexers](/rest/api/searchservice/create-indexer).
-
-Weitere Informationen zum Definieren von Indexerzeitplänen finden Sie unter [Festlegen eines Zeitplans für Indexer in der kognitiven Azure-Suche](search-howto-schedule-indexers.md).
+Dieser Indexer wird zunächst umgehend und danach [planmäßig](search-howto-schedule-indexers.md) alle zwei Stunden ausgeführt (das Planungsintervall ist auf „PT2H“ festgelegt). Um einen Indexer alle 30 Minuten auszuführen, legen Sie das Intervall auf „PT30M“ fest. Das kürzeste unterstützte Intervall beträgt fünf Minuten. Der Zeitplan ist optional. Ohne Zeitplan wird ein Indexer nur einmal bei seiner Erstellung ausgeführt. Allerdings können Sie ein Indexer bei Bedarf jederzeit ausführen.
 
 <a name="DocumentKeys"></a>
 
@@ -265,7 +267,11 @@ Wichtig ist der Hinweis, dass Sie nicht für alle der oben genannten Eigenschaft
 
 ## <a name="how-to-control-which-blobs-are-indexed"></a>Steuern der zu indizierenden Blobs
 
-Sie können steuern, welche Blobs indiziert und welche übersprungen werden, indem Sie den Dateityp des Blobs festlegen oder Eigenschaften für den Blob selbst so festlegen, dass der Indexer sie überspringt.
+Sie können steuern, welche Blobs indiziert und welche übersprungen werden, indem Sie Rollenzuweisungen, den Dateityp des Blobs oder Eigenschaften für den Blob selbst festlegen, sodass der Indexer sie überspringt.
+
+### <a name="use-access-controls-and-role-assignments"></a>Verwenden von Zugriffssteuerungen und Rollenzuweisungen
+
+Indexer, die auf einem System oder einer benutzerseitig zugewiesenen verwalteten Identität ausgeführt werden, können entweder einer Leser- oder Storage-Blobdatenleser-Rolle angehören, die Leseberechtigungen für bestimmte Dateien und Ordner gewährt.
 
 ### <a name="include-specific-file-extensions"></a>Einschließen bestimmter Dateierweiterungen
 
@@ -381,6 +387,7 @@ Sie können auch [Blobkonfigurationseigenschaften](/rest/api/searchservice/creat
 
 ## <a name="see-also"></a>Weitere Informationen
 
++ [Beispiel für C#: Index Data Lake Gen2 using Azure AD](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/data-lake-gen2-acl-indexing/README.md)
 + [Indexer in der kognitiven Azure-Suche](search-indexer-overview.md)
 + [Erstellen eines Indexers](search-howto-create-indexers.md)
 + [Übersicht über die KI-Anreicherung über Blobs](search-blob-ai-integration.md)

@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erstellen eines Blobs mithilfe des Azure-Portals'
+title: 'Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs – Azure-Portal'
 titleSuffix: Azure Storage
 description: In dieser Schnellstartanleitung verwenden Sie das Azure-Portal im Objektspeicher (Blob). Anschließend verwenden Sie das Azure-Portal, um ein Blob in Azure Storage hochzuladen, ein Blob herunterzuladen und die Blobs in einem Container aufzulisten.
 services: storage
@@ -9,12 +9,12 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.date: 04/29/2021
 ms.author: tamram
-ms.openlocfilehash: 2e181394a67cb6762965e600ada46ab48c753fbc
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: e5dcd34491c2b8b06b7739eae606ba8618dbdef6
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108317455"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129619045"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-the-azure-portal"></a>Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit dem Azure-Portal
 

@@ -3,7 +3,7 @@ title: Lokale Azure AD-Anwendungsbereitstellung in SCIM-fähigen Apps
 description: In diesem Artikel wird beschrieben, wie Sie mithilfe des Azure AD-Bereitstellungsdiensts Benutzer in einer lokalen, SCIM-fähigen App bereitstellen.
 services: active-directory
 author: billmath
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/16/2021
 ms.author: billmath
 ms.reviewer: arvinh
-ms.openlocfilehash: 0bc74d9c9bab1337638249900de92bee39a40a68
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b1fb5523f0a487b4076c469e04cc97db01fa36b5
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128571680"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129991107"
 ---
 # <a name="azure-ad-on-premises-application-provisioning-to-scim-enabled-apps"></a>Lokale Azure AD-Anwendungsbereitstellung in SCIM-fähigen Apps
 

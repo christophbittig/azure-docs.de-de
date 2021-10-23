@@ -3,20 +3,20 @@ title: Überprüfen von Ansprüchen mithilfe von Anzeigesteuerelementen
 titleSuffix: Azure AD B2C
 description: Erfahren Sie, wie Sie mithilfe von Azure AD B2C-Anzeigesteuerelementen die Ansprüche in den von Ihren benutzerdefinierten Richtlinien angegebenen User Journeys überprüfen.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 12/10/2019
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: bd90be6d93dc5ca399ac87daba0ca44fa7e88ff8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 2a6a7a22d5d9ee19d396739b508de6afe9484c8e
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94532493"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130037289"
 ---
 # <a name="verification-display-control"></a>Anzeigesteuerselemente zur Überprüfung
 

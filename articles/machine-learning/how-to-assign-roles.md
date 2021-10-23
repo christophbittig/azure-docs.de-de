@@ -4,19 +4,19 @@ titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Sie mit der rollenbasierten Zugriffssteuerung in Azure (Role-Based Access Control, RBAC) auf einen Azure Machine Learning-Arbeitsbereich zugreifen.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: enterprise-readiness
 ms.topic: how-to
 ms.reviewer: Blackmist
 ms.author: johwu
 author: johnwu0604
 ms.date: 03/26/2021
 ms.custom: how-to, seodec18, devx-track-azurecli, contperf-fy21q2
-ms.openlocfilehash: 51846db6f54baaec89a6a9a1164e2d5001c9dbb9
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 4e7f708622156b5d214bfb1fb566a9d47639c385
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128679631"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130042779"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Verwalten des Zugriffs auf einen Azure Machine Learning-Arbeitsbereich
 
@@ -486,7 +486,6 @@ Im Folgenden finden Sie einige Aspekte, die Sie bei der Verwendung der rollenbas
     Weitere Informationen zur rollenbasierten Zugriffssteuerung von Azure in Netzwerken finden Sie unter [Integrierte Netzwerkrollen](../role-based-access-control/built-in-roles.md#networking).
 
 - Es kann bis zu einer Stunde dauern, bis neue Rollenzuweisungen über zwischengespeicherte Berechtigungen im gesamten Stapel wirksam werden.
-- Der [bedingte Zugriff](../role-based-access-control/conditional-access-azure-management.md) wird derzeit nicht mit Azure Machine Learning unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

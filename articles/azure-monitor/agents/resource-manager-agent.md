@@ -5,12 +5,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2020
-ms.openlocfilehash: 7df94ff656cc862a2b6efd6998745531bba94d6d
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: d7a674a7ecc17f8f3f11c65d5fa6393a593501db
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111956429"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706354"
 ---
 # <a name="resource-manager-template-samples-for-agents-in-azure-monitor"></a>Beispiele für Resource Manager-Vorlagen für Agents in Azure Monitor
 Dieser Artikel enthält Beispiele für [Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/syntax.md) zum Bereitstellen und Konfigurieren des [Log Analytics-Agents](./log-analytics-agent.md) und der [Diagnoseerweiterung](./diagnostics-extension-overview.md) für virtuelle Computer in Azure Monitor. Jedes Beispiel umfasst eine Vorlagendatei und eine Parameterdatei mit Beispielwerten für die Vorlage.
@@ -19,7 +19,7 @@ Dieser Artikel enthält Beispiele für [Azure Resource Manager-Vorlagen](../../a
 
 
 ## <a name="azure-monitor-agent-preview"></a>Azure Monitor-Agent (Vorschau)
-Die Beispiele in diesem Abschnitt betreffen den Azure Monitor-Agent (Vorschau) unter Windows und Linux. Dies umfasst die Installation des Agents auf virtuellen Computern in Azure und auf Servern mit Azure Arc-Unterstützung. 
+Die Beispiele in diesem Abschnitt betreffen den Azure Monitor-Agent (Vorschau) unter Windows und Linux. Dies umfasst die Installation des Agents auf virtuellen Computern in Azure und auf Servern mit Azure Arc-Unterstützung. 
 
 ### <a name="windows-azure-virtual-machine"></a>Virtueller Windows-Computer in Azure
 Im folgenden Beispiel wird der Azure Monitor-Agent auf einem virtuellen Windows-Computer in Azure installiert.
@@ -123,8 +123,8 @@ Im folgenden Beispiel wird der Azure Monitor-Agent auf einem virtuellen Linux-Co
 }
 ```
 
-### <a name="windows-azure-arc-enabled-server"></a>Server mit Azure Arc-Unterstützung unter Windows
-Im folgenden Beispiel wird der Azure Monitor-Agent auf einem Server mit Azure Arc-Unterstützung unter Windows installiert.
+### <a name="windows-azure-arc-enabled-server"></a>Server mit Azure Arc-Unterstützung unter Windows
+Im folgenden Beispiel wird der Azure Monitor-Agent auf einem Server mit Azure Arc-Unterstützung unter Windows installiert.
 
 #### <a name="template-file"></a>Vorlagendatei
 
@@ -174,7 +174,7 @@ Im folgenden Beispiel wird der Azure Monitor-Agent auf einem Server mit Azure Ar
 ```
 
 ### <a name="linux-azure-arc-enabled-server"></a>Server mit Azure Arc-Unterstützung unter Linux
-Im folgenden Beispiel wird der Azure Monitor-Agent auf einem Server mit Azure Arc-Unterstützung unter Linux installiert.
+Im folgenden Beispiel wird der Azure Monitor-Agent auf einem Server mit Azure Arc-Unterstützung unter Linux installiert.
 
 #### <a name="template-file"></a>Vorlagendatei
 

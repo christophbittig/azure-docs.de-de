@@ -4,16 +4,16 @@ description: Das Feature „Zeitpunktwiederherstellung“ von Azure Cosmos DB h
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/29/2021
+ms.date: 10/18/2021
 ms.author: govindk
 ms.reviewer: sngun
 ms.custom: references_regions
-ms.openlocfilehash: e7d46d1680e11307eb873383e91e6e682f545549
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: c0e08a9aadc7389fa064ba03fbd026ace197cae1
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129546537"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130165541"
 ---
 # <a name="continuous-backup-with-point-in-time-restore-in-azure-cosmos-db"></a>Fortlaufende Sicherung mit der Zeitpunktwiederherstellung von Azure Cosmos DB
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -105,13 +105,11 @@ Für die Zeitpunktwiederherstellungsfunktion gelten derzeit die folgenden Einsch
 
 * Für die fortlaufende Sicherung werden nur Azure Cosmos DB-APIs für SQL und MongoDB unterstützt. Cassandra-, Table- und Gremlin-APIs werden noch nicht unterstützt.
 
-* Azure Sovereign- und Azure Government-Cloudregionen werden noch nicht unterstützt.
-
 * Für Konten mit kundenseitig verwalteten Schlüsseln wird die fortlaufende Sicherung noch nicht unterstützt.
 
 * Konten für Schreibvorgänge in mehreren Regionen werden nicht unterstützt.
 
-* Azure Synapse Link und der regelmäßige Sicherungsmodus können in demselben Datenbankkonto gleichzeitig vorhanden sein. Analysespeicherdaten sind jedoch nicht in den Sicherungen und Wiederherstellungen enthalten. Wenn Synapse Link aktiviert ist, erstellt Azure Cosmos DB weiterhin automatisch im geplanten Sicherungsintervall Sicherungen Ihrer Daten im Transaktionsspeicher. 
+* Azure Synapse Link und der regelmäßige Sicherungsmodus können in demselben Datenbankkonto gleichzeitig vorhanden sein. Analysespeicherdaten sind jedoch nicht in den Sicherungen und Wiederherstellungen enthalten. Wenn Synapse Link aktiviert ist, erstellt Azure Cosmos DB weiterhin automatisch im geplanten Sicherungsintervall Sicherungen Ihrer Daten im Transaktionsspeicher.
 
 * Azure Synapse Link und der fortlaufende Sicherungsmodus können nicht in demselben Datenbankkonto gleichzeitig vorhanden sein. Derzeit können Datenbankkonten mit Synapse Link-Aktivierung den fortlaufenden Sicherungsmodus nicht verwenden und umgekehrt.
 

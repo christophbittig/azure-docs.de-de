@@ -1,55 +1,61 @@
 ---
-title: 'Metadatenrichtlinien und -rollen-APIs für Azure Purview-Sammlungen – Schnellstart: Verwalten der rollenbasierten Zugriffssteuerung für Purview-Sammlungen'
-description: In diesem Tutorial wird die Verwaltung der rollenbasierten Zugriffssteuerung für diese Sammlungen durch Benutzer, Gruppen oder Dienstprinzipale in Ihrem Unternehmen über Azure Purview-APIs erklärt.
+title: Informationen zu Metadatenrichtlinien und Rollen-APIs für Azure Purview-Sammlungen
+description: In diesem Tutorial wird erläutert, wie Sie die rollenbasierte Zugriffssteuerung für Azure Purview-Sammlungen für Benutzer, Gruppen oder Dienstprinzipale verwalten.
 author: abandyop
 ms.author: arindamba
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 09/24/2021
-ms.openlocfilehash: 52c38e40d96b6d6f650a8b57fe2d5826a9a81842
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: cfb62050da2b1c72ec8e620f9a4222552f50daa2
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129219683"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129728682"
 ---
-# <a name="tutorial-use-rest-apis-to-manage-role-based-access-control-rbac-on-azure-purview-collections"></a>Tutorial: Verwenden von REST-APIs zum Verwalten der rollenbasierten Zugriffssteuerung für Azure Purview-Sammlungen 
+# <a name="tutorial-use-rest-apis-to-manage-role-based-access-control-on-azure-purview-collections"></a>Tutorial: Verwenden von REST-APIs zum Verwalten der rollenbasierten Zugriffssteuerung für Azure Purview-Sammlungen 
 
-Im August 2021 wurde die Zugriffssteuerung in Purview von Azure IAM (Steuerungsebene) in [Azure Purview Collections](how-to-create-and-manage-collections.md) (Datenebene) verschoben. Diese Änderung ermöglicht es Datenkuratoren und Administratoren eines Unternehmens eine präzisere Zugriffssteuerung für ihre Datenquellen, die von Purview überprüft werden, und bietet Organisationen die Möglichkeit, den richtigen Zugriff und die richtige Nutzung ihrer Daten zu überwachen.
+Im August 2021 wurde die Zugriffssteuerung in Azure Purview von Azure Identity & Access Management (Steuerungsebene) zu [Azure Purview-Sammlungen](how-to-create-and-manage-collections.md) (Datenebene) verlagert. Mit dieser Änderung erhalten Datenkuratoren und Administratoren in Unternehmen eine präzisere, differenzierte Zugriffskontrolle auf ihre von Azure Purview gescannten Datenquellen. Die Änderung ermöglicht es Organisationen auch, den richtigen Zugriff und die richtige Verwendung ihrer Daten zu überwachen.
 
-Dieses Tutorial führt Sie durch die schrittweise Verwendung der **[Azure Purview Metadata Policy-APIs](/rest/api/purview/metadatapolicydataplane/Metadata-Policy.yml)** , um Benutzer, Gruppen oder Dienstprinzipale zu einer Sammlung hinzuzufügen und deren Rollen in der betreffenden Sammlung zu verwalten oder zu entfernen. REST-APIs sind eine alternative Methode zur Verwendung des Azure-Portals oder von Purview Studio, um die gleiche präzise rollenbasierte Zugriffssteuerung zu erreichen.
+Dieses Tutorial führt Sie durch die schrittweise Verwendung der Azure Purview Metadata Policy-APIs, um Benutzer, Gruppen oder Dienstprinzipale einer Sammlung hinzuzufügen und deren Rollen in der betreffenden Sammlung zu verwalten oder zu entfernen. REST-APIs sind eine alternative Methode zur Verwendung des Azure-Portals oder von Azure Purview Studio, um die gleiche differenzierte rollenbasierte Zugriffssteuerung zu erreichen.
 
-Der [Leitfaden zu Purview-Berechtigungen](catalog-permissions.md#roles) enthält weitere Informationen zu den einzelnen integrierten Rollen in Azure Purview und ordnet die Rolle der Ebene der Zugriffsberechtigungen zu, die dem Benutzer gewährt werden.
+Weitere Informationen zu den integrierten Rollen in Azure Purview finden Sie im [Leitfaden für Azure Purview-Berechtigungen](catalog-permissions.md#roles), Der Leitfaden ordnet die Rollen der Ebene der Zugriffsberechtigungen zu, die Benutzern gewährt werden.
+
+## <a name="metadata-policy-api-reference-summary"></a>API-Referenz für Metadatenrichtlinien: Zusammenfassung
+Die folgende Tabelle enthält eine Übersicht über die [API-Referenz für Azure Purview-Metadatenrichtlinien](/rest/api/purview/metadatapolicydataplane/Metadata-Policy.yml). 
+
+Ersetzen Sie {pv-acc-name} durch den Namen Ihres Azure Purview-Kontos, bevor Sie diese APIs ausführen. Wenn Ihr Purview-Kontoname beispielsweise *FabrikamPurviewAccount* ist, heißen Ihre API-Endpunkte *FabrikamPurviewAccount.purview.azure.com*.
+
+| API-Funktion | REST-Methode | API-Endpunkt | BESCHREIBUNG | 
+| :- | :- | :- | :- | 
+| Alle Metadatenrollen lesen| GET| https://{pv-acc-name}.purview.azure.com /policystore/metadataroles?&api-version=2021-07-01| Liest alle Metadatenrollen aus Ihrem Azure Purview-Konto.| 
+| Metadatenrichtlinie anhand Sammlungsname lesen| GET| https://{pv-acc-name}.purview.azure.com /policystore/collections/{collectionName}/metadataPolicy?&api-version=2021-07-01| Liest die Metadatenrichtlinie unter Verwendung eines angegebenen Sammlungsnamens (der zufällige Name mit sechs Zeichen, der von Azure Purview beim Erstellen der Richtlinie generiert wird).| 
+| Metadatenrichtlinie anhand Richtlinien-ID lesen| GET| https://{pv-acc-name}.purview.azure.com /policystore/metadataPolicies/{policyId}?&api-version=2021-07-01| Liest die Metadatenrichtlinie mithilfe einer angegebenen Richtlinien-ID. Die Richtlinien-ID weist das GUID-Format auf.| 
+| Alle Metadatenrichtlinien lesen| GET| https://{pv-acc-name}.purview.azure.com /policystore/metadataPolicies?&api-version=2021-07-01| Liest alle Metadatenrichtlinien aus Ihrem Azure Purview-Konto. Sie können eine bestimmte Richtlinie, die Sie verwenden möchten, in der von dieser API generierten JSON-Ausgabeliste auswählen.| 
+| Metadatenrichtlinie aktualisieren/erstellen| PUT| https://{pv-acc-name}.purview.azure.com /policystore/metadataPolicies/{policyId}?&api-version=2021-07-01| Aktualisiert die Metadatenrichtlinie mithilfe einer angegebenen Richtlinien-ID. Die Richtlinien-ID weist das GUID-Format auf.|
+| | | 
+
+## <a name="azure-purview-catalog-collections-api-reference-summary"></a>API-Referenz für Azure Purview-Katalogsammlungen: Zusammenfassung
+Die folgende Tabelle enthält eine Übersicht über die APIs für Azure Purview-Sammlungen. Wählen Sie in der linken Spalte den API-Vorgang aus, um eine vollständige Dokumentation zu den einzelnen APIs zu erhalten.
+
+| Vorgang | BESCHREIBUNG | 
+| :- | :- | 
+| [Sammlung erstellen oder aktualisieren](/rest/api/purview/accountdataplane/collections/create-or-update-collection) | Erstellt oder aktualisiert eine Sammlungsentität. | 
+| [Sammlung löschen](/rest/api/purview/accountdataplane/collections/delete-collection) | Löscht eine Sammlungsentität. | 
+| [Abrufen der Sammlung](/rest/api/purview/accountdataplane/collections/get-collection) | Ruft eine Sammlung ab.| 
+| [Sammlungspfad abrufen](/rest/api/purview/accountdataplane/collections/get-collection-path) | Ruft die Ketten für den übergeordneten Namen und den Anzeigenamen ab, die den Sammlungspfad darstellen.| 
+| [Namen untergeordneter Sammlungen auflisten](/rest/api/purview/accountdataplane/collections/list-child-collection-names) | Listet die Namen der untergeordneten Sammlungen in der Sammlung auf.| 
+| [Sammlungen auflisten](/rest/api/purview/accountdataplane/collections/list-collections) | Listet die Sammlungen im Konto auf.| 
 
 
-## <a name="metadata-policy-api-reference-summary"></a>API-Referenz für Metadatenrichtlinien – Zusammenfassung
-Diese Tabelle enthält eine Übersicht über die **[API-Referenz für Azure Purview-Metadatenrichtlinien](/rest/api/purview/metadatapolicydataplane/Metadata-Policy.yml)** . Ersetzen Sie {pv-acc-name} durch den Namen Ihres Purview-Kontos, bevor Sie diese APIs ausführen. Wenn Ihr Purview-Kontoname beispielsweise „FabrikamPurviewAccount“ ist, lauten Ihre API-Endpunkte „FabrikamPurviewAccount.purview.azure.com“.
+- Bei Verwendung der API muss dem Dienstprinzipal, dem Benutzer oder der Gruppe, der/die die API ausführt, die Rolle [Sammlungsadministrator](how-to-create-and-manage-collections.md#check-permissions) in Azure Purview zugewiesen sein, damit diese API erfolgreich ausgeführt werden kann.
 
-|**API-Funktion**|**REST-Methode**|**API-Endpunkt**|**Beschreibung**|
-|:-|:-|:-|:-|
-|Alle Metadatenrollen lesen|GET|https://{pv-acc-name}.purview.azure.com /policystore/metadataroles?&api-version=2021-07-01| Liest alle Metadatenrollen aus Ihrem Purview-Konto.|
-|Metadatenrichtlinie anhand Sammlungsname lesen|GET|https://{pv-acc-name}.purview.azure.com /policystore/collections/{collectionName}/metadataPolicy?&api-version=2021-07-01| Liest die Metadatenrichtlinie anhand eines angegebenen Sammlungsnamens (der willkürliche sechsstellige Name, der von Purview beim Erstellen der Richtlinie generiert wurde).|
-|Metadatenrichtlinie anhand Richtlinien-ID lesen|GET|https://{pv-acc-name}.purview.azure.com /policystore/metadataPolicies/{policyId}?&api-version=2021-07-01| Liest die Metadatenrichtlinie anhand einer angegebenen Richtlinien-ID. Die Richtlinien-ID weist das GUID-Format auf.|
-|Alle Metadatenrichtlinien lesen|GET|https://{pv-acc-name}.purview.azure.com /policystore/metadataPolicies?&api-version=2021-07-01| Liest alle Metadatenrichtlinien aus Ihrem Purview-Konto. Sie können eine bestimmte Richtlinie, die Sie verwenden möchten, in der JSON-Ausgabeliste auswählen, die von dieser API ausgegeben wird.|
-|Metadatenrichtlinie aktualisieren/erstellen|PUT|https://{pv-acc-name}.purview.azure.com /policystore/metadataPolicies/{policyId}?&api-version=2021-07-01| Aktualisiert die Metadatenrichtlinie anhand einer angegebenen Richtlinien-ID. Die Richtlinien-ID weist das GUID-Format auf.|
+- Für alle Azure Purview-APIs, die {collectionName} erfordern, müssen Sie *„name“* (und nicht *„friendlyName“* ) verwenden. Ersetzen Sie {collectionName} durch die tatsächliche sechsstellige alphanumerische Zeichenfolge für den Sammlungsnamen. 
+   > [!NOTE]
+   > Dieser Name stimmt nicht mit dem Anzeigenamen überein, den Sie beim Erstellen der Sammlung angegeben haben. Wenn Sie {collectionName} nicht zur Hand haben, können Sie die [Sammlung auflisten](/rest/api/purview/accountdataplane/collections/list-collections)-API verwenden, um den Sammlungsnamen mit sechs Zeichen in der JSON-Ausgabe auszuwählen.
 
-## <a name="purview-catalog-collections-api-reference-summary"></a>API-Referenz für Purview-Katalogsammlungen – Zusammenfassung
-Diese Tabelle enthält eine Übersicht über die **APIs für Purview-Sammlungen**. Klicken Sie unten auf die einzelnen API-VORGÄNGE, um eine vollständige Dokumentation zur jeweiligen API zu erhalten.
-
-| **VORGÄNGE** | **Beschreibung** |
-|:-|:-|
-| [Sammlung erstellen oder aktualisieren](/rest/api/purview/accountdataplane/collections/create-or-update-collection) | Erstellt oder aktualisiert eine Sammlungsentität. |
-| [Löschen einer Sammlung](/rest/api/purview/accountdataplane/collections/delete-collection) |Löscht eine Sammlungsentität. |
-| [Sammlung abrufen](/rest/api/purview/accountdataplane/collections/get-collection) |Sammlungen abrufen|
-| [Sammlungspfad abrufen](/rest/api/purview/accountdataplane/collections/get-collection-path) |Ruft die Ketten für den übergeordneten Namen und den Anzeigenamen ab, die den Sammlungspfad darstellen.|
-| [Untergeordnete Sammlungsnamen auflisten](/rest/api/purview/accountdataplane/collections/list-child-collection-names) |Listet die Namen der untergeordneten Sammlungen in der Sammlung auf.|
-| [Sammlungen auflisten](/rest/api/purview/accountdataplane/collections/list-collections) |Listet die Sammlungen im Konto auf.|
-
-
-- Bei Verwendung der API muss dem Dienstprinzipal (SP), dem Benutzer oder der Gruppe, der/die die API ausführt, die Rolle [Sammlungsadministrator](how-to-create-and-manage-collections.md#check-permissions) in Purview zugewiesen sein, damit diese API erfolgreich ausgeführt werden kann.
-- Für alle Purview-APIs, die {collectionName} erfordern, benötigen Sie „name“ (und nicht „friendlyName“). Ersetzen Sie {collectionName} durch die tatsächliche sechsstellige alphanumerische Zeichenfolge für den Sammlungsnamen. Beachten Sie, dass diese nicht mit dem Anzeigenamen übereinstimmt, den Sie beim Erstellen der Sammlung angegeben haben. Wenn Sie {collectionName} nicht zur Hand haben, können Sie die [Sammlung auflisten](/rest/api/purview/accountdataplane/collections/list-collections)-API verwenden, um den sechsstelligen Sammlungsnamen in der JSON-Ausgabe auszuwählen.
-- JSON-Beispiel: 
+Hier sehen Sie ein Beispiel für eine JSON-Datei: 
 
 ```json
 {
@@ -72,36 +78,42 @@ Diese Tabelle enthält eine Übersicht über die **APIs für Purview-Sammlungen*
 ```
 
 ### <a name="policy-json-description"></a>JSON-Beschreibung der Richtlinie
-Details zu einigen wichtigen Bezeichnern in der JSON-Ausgabe, die von den Sammlungs-APIs erhalten wurde.
+
+Hier finden Sie einige wichtige Bezeichner in der JSON-Ausgabe, die von den Sammlungs-APIs erhalten wurde:
 
 **Name**: Der Name der Richtlinie. 
 
-**Id**: Der eindeutige Bezeichner für die Richtlinie.
+**ID**: Der eindeutige Bezeichner für die Richtlinie.
 
-**Version**: Die letzte Versionsnummer der Richtlinie. \*\*(Die Versionsnummer wird jedes Mal erhöht, wenn die „Metadatenrichtlinie aktualisieren“-API aufgerufen wird. Stellen Sie sicher, dass Sie die neueste Kopie der Richtlinie abrufen, indem Sie die „Richtlinie anhand Richtlinien-ID abrufen“-API aufrufen. Diese Aktualisierung muss jedes Mal ausgeführt werden, bevor die „Richtlinie aktualisieren/erstellen“-API aufgerufen wird, damit Sie immer über die neueste Version des JSON-Codes verfügen.)
+**Version**: Die aktuelle Versionsnummer der Richtlinie. 
+   > [!IMPORTANT]
+   > Die Versionsnummer wird jedes Mal erhöht, wenn die „Metadatenrichtlinie aktualisieren“-API aufgerufen wird. Stellen Sie sicher, dass Sie die neueste Kopie der Richtlinie abrufen, indem Sie die „Richtlinie anhand Richtlinien-ID abrufen“-API aufrufen. Führen Sie diese Aktualisierung jedes Mal aus, bevor Sie die „Richtlinie aktualisieren/erstellen“-API aufrufen, damit Sie immer über die aktuelle Version der JSON-Datei verfügen.
 
-**DecisionRules:** Listet die Regeln und die Auswirkung dieser Richtlinie auf. Bei Metadatenrichtlinien ist die Auswirkung immer „Permit“.
+**DecisionRules:** Listet die Regeln und die Auswirkung dieser Richtlinie auf. Bei Metadatenrichtlinien ist die Auswirkung immer *„Permit“* .
 
-## <a name="use-purview-rest-apis-to-add-or-remove-usergroupserviceprincipal-to-a-collection-or-role"></a>Verwenden von Purview-REST-APIs, um Benutzer, Gruppen, Dienstprinzipale zu einer Sammlung oder Rolle hinzuzufügen oder daraus zu entfernen
-Zusammen mit JSON-Beispielausgaben wird die Verwendung der APIs ausführlich beschrieben. Es wird dringend empfohlen, den folgenden Schritten nacheinander zu folgen, um ein besseres Verständnis der Purview-APIs für Metadatenrichtlinien zu erhalten.
+## <a name="add-or-remove-users-from-a-collection-or-role"></a>Hinzufügen oder Entfernen von Benutzern in einer Sammlung oder Rolle
+
+Verwenden Sie die Azure Purview-REST-APIs, um einen Benutzer, eine Gruppe oder einen Dienstprinzipal in einer Sammlung oder Rolle hinzuzufügen oder zu entfernen. Eine detaillierte API-Nutzung wird zusammen mit JSON-Beispielausgaben bereitgestellt. Es wird dringend empfohlen, die Anweisungen in den nächsten Abschnitten nacheinander zu befolgen, um die Azure Purview-Metadatenrichtlinien-APIs besser zu verstehen.
 
 ## <a name="get-all-metadata-roles"></a>Abrufen aller Metadatenrollen
+
+Führen Sie den folgenden Befehl aus, um alle verfügbaren Zugriffsberechtigungsrollen für Metadaten aufzulisten:
+
 ```ruby
 GET https://{your_purview_account_name}.purview.azure.com/policystore/metadataroles?api-version=2021-07-01
 ```
-Listet alle verfügbaren Metadatenzugriffsberechtigungsrollen auf.
 
 Die JSON-Ausgabe beschreibt die Rollen und die zugehörigen Berechtigungen in diesem Format.
 
-### <a name="default-metadata-roles"></a>Standardmetadatenrollen
+Die Standardmetadatenrollen sind in der folgenden Tabelle aufgeführt:
 
-|**Rollen-ID**|**Berechtigungen**|**Rollenbeschreibung**|
-|:-|:-|:-|
-|purviewmetadatarole\_builtin\_data-source-administrator|Microsoft.Purview/accounts/scan/read Microsoft.Purview/accounts/scan/write Microsoft.Purview/accounts/collection/read|Gewährt anderen Zugriff zum Lesen und Schreiben von Sammlungen, Registrieren von Datenquellen und Auslösen von Überprüfungen.|
-|purviewmetadatarole\_builtin\_collection-administrator|Microsoft.Purview/accounts/collection/read Microsoft.Purview/accounts/collection/write|Gewährt Vollzugriff auf die gesamte Sammlung auf Administratorebene, einschließlich Hinzufügen und Entfernen von Benutzern und Dienstprinzipalnamen zur bzw. aus der Sammlung, Verwalten von Rechten, Gewähren und Widerrufen des Zugriffs. In einigen Fällen kann der Sammlungsadministrator vom Ersteller der Sammlung abweichen.|
-|purviewmetadatarole\_builtin\_purview-reader|Microsoft.Purview/accounts/data/read Microsoft.Purview/accounts/collection/read|Gewährt nur Lesezugriff für die Datenbehandlung und alle Metadaten, z. B. Klassifizierungen, Vertraulichkeitsbezeichnungen, Erkenntnissen, Lesen von Ressourcen in einer Sammlung, mit Ausnahme von Überprüfungsbindungen.|
-|purviewmetadatarole\_builtin\_data-curator|Microsoft.Purview/accounts/data/read Microsoft.Purview/accounts/data/write Microsoft.Purview/accounts/collection/read|Gewährt Vollzugriff für die Datenbehandlung und alle Metadaten, z. B. Klassifizierungen, Vertraulichkeitsbezeichnungen, Erkenntnissen, Lesen von Ressourcen in einer Sammlung, mit Ausnahme von Überprüfungsbindungen.|
-|purviewmetadatarole\_builtin\_data-share-contributor|Microsoft.Purview/accounts/share/read Microsoft.Purview/accounts/share/write|Gewährt Zugriff auf Datenfreigaben als Mitwirkender.|
+| Rollen-ID | Berechtigungen | Rollenbeschreibung | 
+| :- | :- | :- | 
+| purviewmetadatarole\_builtin\_data-source-administrator| Microsoft.Purview/accounts/scan/read Microsoft.Purview/accounts/scan/write Microsoft.Purview/accounts/collection/read| Gewährt anderen Zugriff zum Lesen und Schreiben von Sammlungen, Registrieren von Datenquellen und Auslösen von Überprüfungen.| 
+| purviewmetadatarole\_builtin\_collection-administrator| Microsoft.Purview/accounts/collection/read Microsoft.Purview/accounts/collection/write| Vollzugriff auf die gesamte Sammlung auf Administratorebene, einschließlich Hinzufügen oder Entfernen von Benutzern und Dienstprinzipalnamen (SPNs) in der Sammlung, Verwaltungsrechten und Gewähren oder Widerrufen von Zugriff. In einigen Fällen kann der Sammlungsadministrator vom Ersteller der Sammlung abweichen.| 
+| purviewmetadatarole\_builtin\_purview-reader| Microsoft.Purview/accounts/data/read Microsoft.Purview/accounts/collection/read| Gewährt nur Lesezugriff für die Datenbehandlung und alle Metadaten, z. B. Klassifizierungen, Vertraulichkeitsbezeichnungen, Erkenntnisse, und das Lesen von Ressourcen in einer Sammlung, mit Ausnahme von Überprüfungsbindungen.| 
+| purviewmetadatarole\_builtin\_data-curator| Microsoft.Purview/accounts/data/read Microsoft.Purview/accounts/data/write Microsoft.Purview/accounts/collection/read| Gewährt Vollzugriff für die Datenbehandlung und alle Metadaten, z. B. Klassifizierungen, Vertraulichkeitsbezeichnungen, Erkenntnisse, und das Lesen von Ressourcen in einer Sammlung, mit Ausnahme von Überprüfungsbindungen.| 
+| purviewmetadatarole\_builtin\_data-share-contributor| Microsoft.Purview/accounts/share/read Microsoft.Purview/accounts/share/write| Gewährt Zugriff auf Datenfreigaben als Mitwirkender. | 
 
 ```json
 {
@@ -223,10 +235,12 @@ Die JSON-Ausgabe beschreibt die Rollen und die zugehörigen Berechtigungen in di
 ```
 
 ## <a name="get-all-metadata-policies"></a>Abrufen aller Metadatenrichtlinien
+
 ```ruby
 GET https://{your_purview_account_name}.purview.azure.com/policystore/metadataPolicies?api-version=2021-07-01
 ```
-Listet alle Metadatenrichtlinien, die in der gesamten Sammlungshierarchie verfügbar sind, beginnend mit der Stammsammlung und alle untergeordneten Richtlinien in einem hierarchischen Format auf. Die Hierarchie beginnt mit der Stammsammlung am Anfang, gefolgt von den untergeordneten Sammlungen. Jede untergeordnete Sammlung kapselt die jeweiligen untergeordnete Sammlungen der nächsten Ebene.
+Der vorangehende Befehl listet alle verfügbaren Metadatenrichtlinien in der gesamten Sammlungshierarchie in Form einer Baumstruktur auf, von der Stammsammlung an der Spitze bis zu allen untergeordneten Richtlinien. Jede untergeordnete Sammlung enthält alle untergeordneten Sammlungen der nächsten Ebene.
+
 Beispiel:
 
 ```json
@@ -591,112 +605,135 @@ Beispiel:
 }
 ```
 
-## <a name="get-selected-metadata-policy"></a>Abrufen einer bestimmten Metadatenrichtlinie 
-Es gibt zwei APIs zum Abrufen der JSON-Struktur der Metadatenrichtlinie einer bestimmten Sammlung – entweder durch Angabe von {collectionName} oder {PolicyID}.
-Beide APIs (in den folgenden beiden Abschnitten beschrieben) dienen demselben Zweck, und die JSON-Ausgaben beider APIs sind identisch.
+## <a name="get-the-selected-metadata-policy"></a>Abrufen der ausgewählten Metadatenrichtlinie 
 
-### <a name="get-metadatapolicy-of-the-collection-by-collectionname"></a>Abrufen der Metadatenrichtlinie der Sammlung anhand des Sammlungsnamens
+Sie können eine von zwei APIs verwenden, um die JSON-Struktur der Metadatenrichtlinie einer bestimmten Sammlung abzurufen, indem Sie entweder {collectionName} oder {PolicyID} angeben.
+
+Wie in den folgenden beiden Abschnitten beschrieben, dienen beide APIs demselben Zweck, und die JSON-Ausgaben beider sind genau gleich.
+
+### <a name="get-the-metadata-policy-of-the-collection-by-using-the-collection-name"></a>Abrufen der Metadatenrichtlinie der Sammlung mithilfe des Sammlungsnamens
+
 ```ruby
 GET https://{your_purview_account_name}.purview.azure.com/policystore/collections/{collectionName}/metadataPolicy?api-version=2021-07-01
 ```
-1. Der Name des Purview-Kontos ist {your_purview_account_name}. Ersetzen Sie ihn durch den Namen Ihres Purview-Kontos.
-1. Suchen Sie in der JSON-Ausgabe der vorherigen API „Alle Metadatenrichtlinien abrufen“ den Abschnitt { "type": "CollectionReference", "referenceName": "7xkdg2"}.
-1. Ersetzen Sie „{collectionName}“ in der API-URL durch den Wert von „referenceName“: „{6-char-collection-name}“. Wenn der sechsstellige Sammlungsname „7xkdg2“ ist, sieht die API-URL also wie folgt aus: https://{your_purview_account_name}.purview.azure.com/policystore/collections/7xkdg2/metadataPolicy?api-version=2021-07-01
-1. Führen Sie diese API jetzt aus. 
 
-```json
-{
-  "name": "policy_qu45fs",
-  "id": "c6639bb2-9c41-4be0-912b-775750e725de",
-  "version": 0,
-  "properties": {
-    "description": "",
-    "decisionRules": [
-      {
-        "kind": "decisionrule",
-        "effect": "Permit",
-        "dnfCondition": [
-          [
-            {
-              "attributeName": "resource.purview.collection",
-              "attributeValueIncludes": "qu45fs"
-            },
-            {
-              "fromRule": "permission:qu45fs",
-              "attributeName": "derived.purview.permission",
-              "attributeValueIncludes": "permission:qu45fs"
-            }
-          ]
-        ]
-      }
-    ],
-    "attributeRules": [
-      {
-        "kind": "attributerule",
-        "id": "purviewmetadatarole_builtin_collection-administrator:qu45fs",
-        "name": "purviewmetadatarole_builtin_collection-administrator:qu45fs",
-        "dnfCondition": [
-          [
-            {
-              "attributeName": "principal.microsoft.id",
-              "attributeValueIncludedIn": [
-                "2f656762-e440-4b62-9eb6-a991d17d64b0"
+1. Der Name des Azure Purview-Kontos ist {your_purview_account_name}. Ersetzen Sie ihn durch den Namen Ihres Azure Purview-Kontos.
+
+1. Suchen Sie in der JSON-Ausgabe der vorherigen API „Alle Metadatenrichtlinien abrufen“ den folgenden Abschnitt: 
+
+    { "type": "CollectionReference", "referenceName": "7xkdg2"}
+
+1. Ersetzen Sie „{collectionName}“ in der API-URL durch den Wert von „referenceName“: „{6-char-collection-name}“. Wenn Ihr sechsstelliger Sammlungsname beispielsweise „7xkdg2“ lautet, wird die API-URL wie folgt formatiert: 
+
+   https://{your_purview_account_name}.purview.azure.com/policystore/collections/7xkdg2/metadataPolicy?api-version=2021-07-01
+
+1. Führen Sie die folgende API aus: 
+
+    ```json
+    {
+      "name": "policy_qu45fs",
+      "id": "c6639bb2-9c41-4be0-912b-775750e725de",
+      "version": 0,
+      "properties": {
+        "description": "",
+        "decisionRules": [
+          {
+            "kind": "decisionrule",
+            "effect": "Permit",
+            "dnfCondition": [
+              [
+                {
+                  "attributeName": "resource.purview.collection",
+                  "attributeValueIncludes": "qu45fs"
+                },
+                {
+                  "fromRule": "permission:qu45fs",
+                  "attributeName": "derived.purview.permission",
+                  "attributeValueIncludes": "permission:qu45fs"
+                }
               ]
-            },
-            {
-              "fromRule": "purviewmetadatarole_builtin_collection-administrator",
-              "attributeName": "derived.purview.role",
-              "attributeValueIncludes": "purviewmetadatarole_builtin_collection-administrator"
-            }
-          ],
-          [
-            {
-              "fromRule": "purviewmetadatarole_builtin_collection-administrator:fabrikampurview",
-              "attributeName": "derived.purview.permission",
-              "attributeValueIncludes": "purviewmetadatarole_builtin_collection-administrator:fabrikampurview"
-            }
-          ]
-        ]
-      },
-      {
-        "kind": "attributerule",
-        "id": "permission:qu45fs",
-        "name": "permission:qu45fs",
-        "dnfCondition": [
-          [
-            {
-              "fromRule": "purviewmetadatarole_builtin_collection-administrator:qu45fs",
-              "attributeName": "derived.purview.permission",
-              "attributeValueIncludes": "purviewmetadatarole_builtin_collection-administrator:qu45fs"
-            }
-          ],
-          [
-            {
-              "fromRule": "permission:fabrikampurview",
-              "attributeName": "derived.purview.permission",
-              "attributeValueIncludes": "permission:fabrikampurview"
-            }
-          ]
-        ]
+            ]
+          }
+        ],
+        "attributeRules": [
+          {
+            "kind": "attributerule",
+            "id": "purviewmetadatarole_builtin_collection-administrator:qu45fs",
+            "name": "purviewmetadatarole_builtin_collection-administrator:qu45fs",
+            "dnfCondition": [
+              [
+                {
+                  "attributeName": "principal.microsoft.id",
+                  "attributeValueIncludedIn": [
+                    "2f656762-e440-4b62-9eb6-a991d17d64b0"
+                  ]
+                },
+                {
+                  "fromRule": "purviewmetadatarole_builtin_collection-administrator",
+                  "attributeName": "derived.purview.role",
+                  "attributeValueIncludes": "purviewmetadatarole_builtin_collection-administrator"
+                }
+              ],
+              [
+                {
+                  "fromRule": "purviewmetadatarole_builtin_collection-administrator:fabrikampurview",
+                  "attributeName": "derived.purview.permission",
+                  "attributeValueIncludes": "purviewmetadatarole_builtin_collection-administrator:fabrikampurview"
+                }
+              ]
+            ]
+          },
+          {
+            "kind": "attributerule",
+            "id": "permission:qu45fs",
+            "name": "permission:qu45fs",
+            "dnfCondition": [
+              [
+                {
+                  "fromRule": "purviewmetadatarole_builtin_collection-administrator:qu45fs",
+                  "attributeName": "derived.purview.permission",
+                  "attributeValueIncludes": "purviewmetadatarole_builtin_collection-administrator:qu45fs"
+                }
+              ],
+              [
+                {
+                  "fromRule": "permission:fabrikampurview",
+                  "attributeName": "derived.purview.permission",
+                  "attributeValueIncludes": "permission:fabrikampurview"
+                }
+              ]
+            ]
+          }
+        ],
+        "collection": {
+          "type": "CollectionReference",
+          "referenceName": "qu45fs"
+        },
+        "parentCollectionName": "fabrikampurview"
       }
-    ],
-    "collection": {
-      "type": "CollectionReference",
-      "referenceName": "qu45fs"
-    },
-    "parentCollectionName": "fabrikampurview"
-  }
-}
-```
+    }
+    ```
 
-### <a name="get-metadatapolicy-of-the-collection-by-policyid"></a>Abrufen der Metadatenrichtlinie der Sammlung anhand der Richtlinien-ID
+### <a name="get-the-metadata-policy-of-the-collection-by-using-the-policy-id"></a>Abrufen der Metadatenrichtlinie der Sammlung mithilfe der Richtlinien-ID
+
 ```ruby
 GET https://{your_purview_account_name}.purview.azure.com/policystore/metadataPolicies/{policyId}?api-version=2021-07-01
 ```
-1. Der Name des Purview-Kontos ist {your_purview_account_name}. Ersetzen Sie ihn durch den Namen Ihres Purview-Kontos.
-1. Suchen Sie in der JSON-Ausgabe der vorherigen API „Alle Metadatenrichtlinien abrufen“ den Abschnitt {.... "name": "policy_qu45fs", "id": "{policy-guid}", "version": N ....}.
-1. Ersetzen Sie „{policyId}“ in der API-URL durch den Wert von „id“. Wenn „{policy-guid}“ „c6639bb2-9c41-4be0-912b-775750e725de“ ist, sieht die API-URL also wie folgt aus: https://{your_purview_account_name}.purview.azure.com/policystore/metadataPolicies/c6639bb2-9c41-4be0-912b-775750e725de?api-version=2021-07-01
-1. Führen Sie diese API jetzt aus. Beachten Sie, dass die Ausgabe dieses API-Aufrufs und die Ausgabe des vorherigen API-Aufrufs identisch sind. Sie können eine der beiden wie zuvor im Tutorial erwähnt auswählen.
+
+1. Der Name des Azure Purview-Kontos ist {your_purview_account_name}. Ersetzen Sie ihn durch den Namen Ihres Azure Purview-Kontos.
+
+1. Suchen Sie in der JSON-Ausgabe der vorherigen API „Alle Metadatenrichtlinien abrufen“ den folgenden Abschnitt: 
+
+    {.... "name": "policy_qu45fs", "id": "{policy-guid}", "version": N ....}
+
+1. Ersetzen Sie „{policyId}“ in der API-URL durch den Wert von „id“. Wenn Ihre „{policy-guid}“ beispielsweise „c6639bb2-9c41-4be0-912b-775750e725de“ ist, wird die API-URL wie folgt formatiert:
+ 
+   https://{your_purview_account_name}.purview.azure.com/policystore/metadataPolicies/c6639bb2-9c41-4be0-912b-775750e725de?api-version=2021-07-01
+
+1. Führen Sie nun die folgende API aus: 
+
+   > [!NOTE]
+   > Die Ausgabe dieses API-Aufrufs und die Ausgabe des vorherigen API-Aufrufs sind identisch. Wie bereits erwähnt, können Sie jede der beiden APIs wählen.
 
 ```json
 {
@@ -784,18 +821,23 @@ GET https://{your_purview_account_name}.purview.azure.com/policystore/metadataPo
 ```
 
 
-## <a name="update-policy-addremove-usergroup-from-collection"></a>Aktualisieren der Richtlinie: Benutzer/Gruppe zur Sammlung hinzufügen bzw. daraus entfernen
+## <a name="update-the-collection-policy"></a>Aktualisieren der Sammlungsrichtlinie
+
 ```ruby
 PUT https://{your_purview_account_name}.purview.azure.com/policystore/metadataPolicies/{policyId}?api-version=2021-07-01
 ```
 
-In diesem Schritt wird der im vorherigen Schritt erhaltene JSON-Richtliniencode aktualisiert und mithilfe einer PUT-REST-Methode an den Purview-Dienst gepusht.
-Unabhängig davon, ob Sie einen Benutzer, eine Gruppe oder einen Dienstprinzipal **hinzufügen** bzw. **entfernen** möchten, führen Sie den gleichen API-Prozess aus.
+In diesem Abschnitt aktualisieren Sie die Richtlinien-JSON, die Sie im vorangegangenen Schritt erhalten haben, indem Sie einen Benutzer, eine Gruppe oder einen Dienstprinzipal in der Sammlung hinzufügen oder entfernen. Anschließend übermitteln Sie es mit einer PUT-REST-Methode an den Azure Purview-Dienst.
 
-1. Geben Sie die Objekt-IDs {guid} für den Benutzer, die Gruppe oder den Dienstprinzipal im Array „attributeValueIncludedIn“ des JSON-Codes an.
-1. Suchen Sie in der JSON-Ausgabe der „Richtlinie anhand der Richtlinien-ID abrufen“-API im vorherigen das Array „attributeValueIncludedIn“ und fügen Sie die Objekt-ID für den Benutzer, die Gruppe, den Dienstprinzipal im Array **hinzu** oder **entfernen** Sie diese. Wenn Sie sich nicht sicher sind, wie Sie die Benutzer- oder Gruppenobjekt-ID abrufen, finden Sie entsprechende Informationen im Tutorial [Get-AzureADUser](/powershell/module/azuread/get-azureaduser).
-1. Beachten Sie, dass die JSON-Zuordnung zu allen vier Rollen mehrere Abschnitte umfasst. Verwenden Sie für die Berechtigungsrolle als Sammlungsadministrator den Abschnitt mit der ID „purviewmetadatarole_builtin_collection-administrator“. Verwenden Sie ebenso den entsprechenden Abschnitt für die anderen Rollen.
-1. Um den Vorgang zum Hinzufügen/Entfernen besser zu verstehen, sollten Sie den Unterschied zwischen der JSON-Ausgabe der vorherigen API und der folgenden genau untersuchen. Sie werden feststellen, dass in der folgenden JSON-Ausgabe die Benutzer-ID „3a3a3a3a-2c2c-4b4b-1c1c-2a3b4c5d6e7f“ als Sammlungsadministrator hinzugefügt wurde.
+Unabhängig davon, ob Sie einen Benutzer, eine Gruppe oder einen Dienstprinzipal hinzufügen oder entfernen, führen Sie denselben API-Prozess aus.
+
+1. Geben Sie die Objekt-ID {guid} für den Benutzer, die Gruppe oder den Dienstprinzipal im Array „attributeValueIncludedIn“ des JSON-Codes an.
+
+1. Suchen Sie in der JSON-Ausgabe der „Richtlinie anhand der Richtlinien-ID abrufen“-API im vorherigen das Array „attributeValueIncludedIn“ und fügen Sie die Objekt-ID für den Benutzer, die Gruppe, den Dienstprinzipal im Array hinzu oder entfernen Sie diese. Wenn Sie nicht sicher sind, wie die Objekt-ID des Benutzers, der Gruppe oder des Dienstprinzipals abgerufen wird, finden Sie weitere Informationen unter [Get-AzureADUser](/powershell/module/azuread/get-azureaduser).
+
+1. Die JSON-Zuordnung enthält mehrere Abschnitte für jede der vier Rollen. Verwenden Sie für die Berechtigungsrolle als Sammlungsadministrator den Abschnitt mit der ID „purviewmetadatarole_builtin_collection-administrator“. Verwenden Sie ebenso den entsprechenden Abschnitt für die anderen Rollen.
+
+1. Um den Vorgang zum Hinzufügen/Entfernen besser zu verstehen, sollten Sie den Unterschied zwischen der JSON-Ausgabe der vorherigen API und der folgenden Ausgabe genau ansehen. In der folgenden JSON-Ausgabe wurde die Benutzer-ID „3a3a3a3a-2c2c-4b4b-1c1c-2a3b4c5d6e7f“ als Sammlungsadministrator hinzugefügt.
 
 ```json
 {
@@ -882,29 +924,26 @@ Unabhängig davon, ob Sie einen Benutzer, eine Gruppe oder einen Dienstprinzipal
   }
 }
 ```
-## <a name="add-root-collection-admin"></a>Hinzufügen eines Stammsammlungsadministrators
-Standardmäßig ist der Benutzer, der das Purview-Konto erstellt hat, der Stammsammlungsadministrator (Administrator der obersten Ebene in der Sammlungshierarchie). In einigen Fällen muss eine Organisation jedoch den Stammsammlungsadministrator u. U. mit der API ändern. Es kann beispielsweise sein, dass der aktuelle Stammsammlungsadministrator nicht mehr in der Organisation vorhanden ist. In diesen Fällen ist das Azure-Portal möglicherweise für niemanden in der Organisation zugänglich. Daher ist die Verwendung der API zum Zuweisen eines neuen Sammlungsadministrators und Verwalten von Sammlungsberechtigungen unvermeidbar und die einzige Möglichkeit, den Zugriff auf das Purview-Konto zurückzuerlangen.
+## <a name="add-the-root-collection-administrator-role"></a>Hinzufügen der Rolle „Stammsammlungsadministrator“
+Standardmäßig ist der Benutzer, der das Azure Purview-Konto erstellt hat, der Stammsammlungsadministrator (d. h. Administrator der obersten Ebene in der Sammlungshierarchie). In einigen Fällen muss eine Organisation jedoch den Stammsammlungsadministrator mithilfe der API ändern. Es kann beispielsweise sein, dass der aktuelle Stammsammlungsadministrator nicht mehr in der Organisation vorhanden ist. In einem solchen Fall kann in der Organisation möglicherweise nicht auf das Azure-Portal zugegriffen werden. Dann ist die Verwendung der API für die Zuweisung eines neuen Stammsammlungsadministrators und die Verwaltung von Sammlungsberechtigungen die einzige Möglichkeit, um wieder Zugriff auf das Azure Purview-Konto zu erhalten.
 
 ```ruby
 POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Purview/accounts/{accountName}/addRootCollectionAdmin?api-version=2021-07-01
 ```
-Sie müssen lediglich die Objekt-ID des neuen Stammsammlungsadministrators übergeben. Wie bereits erwähnt, kann die Objekt-ID die ID eines beliebigen Benutzers, einer Gruppe oder eines Dienstprinzipals sein.
+Um den vorherigen Befehl auszuführen, müssen Sie nur die Objekt-ID des neuen Stammsammlungsadministrators übergeben. Wie bereits erwähnt, kann die Objekt-ID die ID eines beliebigen Benutzers, einer Gruppe oder eines Dienstprinzipals sein.
+
 ```json
 {"objectId": "{guid}"}
 ```
-Wenn der Vorgang erfolgreich war, geben alle REST-APIs die HTTP-Antwort 200 – OK zurück.
 
 > [!NOTE]
-> Der Benutzer, der diese API aufruft, benötigt Berechtigung „Besitzer“ oder „Benutzerzugriffsadministrator“ für das Purview-Konto, um eine Schreibaktion für das Konto auszuführen.
+> Benutzer, die diese API aufrufen, müssen über die Berechtigungen „Besitzer“ oder „Benutzerkonto“ und „Authentifizierung“ (UAA) für das Azure Purview-Konto verfügen, um eine Schreibaktion für das Konto auszuführen.
 
+## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-##  <a name="purview-rest-api-combined-archive"></a>Kombiniertes Archiv für die Purview-REST-API
-Damit Sie schnell die ersten Schritte mit Purview-APIs durchführen können, können Sie folgendermaßen vorgehen: Laden Sie ein Archiv aller Purview-REST-API-Spezifikationen [herunter](https://github.com/Azure/Azure-Purview-API-PowerShell/blob/main/azure-purview-rest-api-specs.zip), die in der Datei [azure-purview-rest-api-specs.zip](https://github.com/Azure/Azure-Purview-API-PowerShell/blob/main/azure-purview-rest-api-specs.zip) zusammengefasst sind. Sie können diese API-Vorlagen verwenden, um die Code-, Skript-, Automatisierungs-, [AutoRest](https://github.com/Azure/autorest)- oder Postman-Sammlungen von Purview-APIs besser zu verstehen und eigene zu erstellen.
+Sie können Azure Purview-REST-APIs mithilfe des [PowerShell-Hilfsprogramms](https://aka.ms/purview-api-ps) ausführen. Es kann direkt über den PowerShell-Katalog installiert werden. Mit diesem Hilfsprogramm können Sie die gleichen Befehle ausführen, allerdings über Windows PowerShell.
 
-## <a name="powershell-utility-to-run-purview-apis"></a>PowerShell-Hilfsprogramm zum Ausführen von Purview-APIs
-Sie können Purview-REST-APIs mithilfe des PowerShell-Hilfsprogramms [Purview-API-PowerShell](https://aka.ms/purview-api-ps) ausführen. Es kann direkt über den PowerShell-Katalog installiert werden. Sie können damit alle Befehle ausführen, allerdings in Windows PowerShell.
+## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"] 
 > [Purview-API-PowerShell](https://aka.ms/purview-api-ps) 
-
-

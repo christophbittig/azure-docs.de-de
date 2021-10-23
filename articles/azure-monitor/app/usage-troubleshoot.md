@@ -2,15 +2,13 @@
 title: Problembehandlung in Tools zur Analyse von Benutzerverhalten – Application Insights
 description: Leitfaden zur Problembehandlung – Analysieren von Website- und Appnutzung mithilfe von Application Insights.
 ms.topic: conceptual
-author: lgayhardt
-ms.author: lagayhar
 ms.date: 07/30/2021
-ms.openlocfilehash: 8bd40f64a8c0e7bf0cbbdc427b44dd83965c52db
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 05d7af4fd56d79e34400fe999375502563eedd45
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346814"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130131807"
 ---
 # <a name="troubleshoot-user-behavior-analytics-tools-in-application-insights"></a>Problembehandlung in Analysetools für Benutzerverhalten in Application Insights
 Haben Sie Fragen zu [Analysetools für das Benutzerverhalten in Application Insights](usage-overview.md): [Benutzer, Sitzungen, Ereignisse](usage-segmentation.md), [Trichter](usage-funnels.md), [Benutzerabläufe](usage-flows.md), [Vermerkdauer](usage-retention.md) oder Kohorten? Hier finden Sie ein paar Antworten.

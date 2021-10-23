@@ -1,5 +1,5 @@
 ---
-title: Erstellen eines Angebots für verwaltete Dienste im Azure Marketplace
+title: Erstellen eines Angebots für verwaltete Dienste für den kommerziellen Marketplace
 description: Erstellen eines neuen Angebots für verwaltete Dienste für den Azure Marketplace
 author: Microsoft-BradleyWright
 ms.author: brwrigh
@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/27/2021
-ms.openlocfilehash: 545e868a902390929254ae6c03d668f8e0d1d10f
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: 6aa296d3dfa6f85504974083887de18b42d71577
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129079718"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130045368"
 ---
 # <a name="create-a-managed-service-offer-for-the-commercial-marketplace"></a>Erstellen eines Angebots für verwaltete Dienste für den kommerziellen Marketplace
 
@@ -29,7 +29,7 @@ Zum Veröffentlichen eines Angebots für einen verwalteten Dienst müssen Sie ü
 
 1. Melden Sie sich bei [Partner Center](https://go.microsoft.com/fwlink/?linkid=2166002) an.
 
-1. Wählen Sie auf der Startseite die Kachel **Marketplace offers** (Marketplace-Angebote) aus.
+1. Wählen Sie auf der Startseite die Kachel **Marktplatzangebote**.
 
     [ ![Veranschaulichung der Kachel „Marketplace offers“ (Marketplace-Angebote) auf der Startseite in Partner Center](./media/workspaces/partner-center-home.png) ](./media/workspaces/partner-center-home.png#lightbox)
 

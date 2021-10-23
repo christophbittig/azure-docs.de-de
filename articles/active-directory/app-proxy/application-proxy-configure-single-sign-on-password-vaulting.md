@@ -3,20 +3,20 @@ title: Einmaliges Anmelden bei Apps mit einem Azure Active Directory-Anwendung
 description: Aktivieren Sie einmaliges Anmelden für Ihre veröffentlichten lokalen Anwendungen mit dem Azure Active Directory-Anwendungsproxy im Azure-Portal.
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-proxy
 ms.workload: identity
 ms.topic: how-to
 ms.date: 04/27/2021
 ms.author: kenwith
-ms.reviewer: japere
-ms.openlocfilehash: a6cbca54c13b42af059831f69131a23e16463c14
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.reviewer: ashishj
+ms.openlocfilehash: 2589dcd1c077d50c80f7e6ec82fdf75f82cba27f
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108186447"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129989853"
 ---
 # <a name="password-vaulting-for-single-sign-on-with-application-proxy"></a>Kennworttresore (Password Vaulting) für einmaliges Anmelden mit Anwendungsproxy
 

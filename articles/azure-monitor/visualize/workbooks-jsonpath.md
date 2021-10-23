@@ -2,19 +2,16 @@
 title: 'Azure Monitor-Arbeitsmappen: Transformieren von JSON-Daten mit JSONPath'
 description: Erfahren Sie, wie Sie JSONPath in Azure Monitor-Arbeitsmappen verwenden, um die Ergebnisse von JSON-Daten, die von einem abgefragten Endpunkt zurückgegeben werden, in das gewünschte Format zu transformieren.
 services: azure-monitor
-author: lgayhardt
-manager: carmonm
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 05/06/2020
-ms.author: lagayhar
-ms.openlocfilehash: 142853f0d5ed787d0b7aaee1bb118a001f144227
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f43fde52d8b85483a5d10548053fb7ca421f93c1
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101722924"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130132377"
 ---
 # <a name="how-to-use-jsonpath-to-transform-json-data-in-workbooks"></a>Verwenden von JSONPath zum Transformieren von JSON-Daten in Arbeitsmappen
 

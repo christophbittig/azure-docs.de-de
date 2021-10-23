@@ -3,7 +3,7 @@ title: Benutzerdefinierte Startseite für veröffentlichte Apps – Azure Active
 description: Hier finden Sie grundlegende Informationen zu Azure Active Directory-Anwendungsproxyconnectors.
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-proxy
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: harshja
-ms.openlocfilehash: fbeadc3a8c947f673ca134e0daf8a0a1c1d68b80
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 8a74bbffc487117aa38f541093961fa21450eaa4
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124787507"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129990062"
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-active-directory-application-proxy"></a>Festlegen einer benutzerdefinierten Startseite für veröffentlichte Apps mithilfe eines Azure Active Directory-Anwendungsproxys
 

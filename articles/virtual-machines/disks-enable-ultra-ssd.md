@@ -8,18 +8,18 @@ ms.date: 08/17/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 5ea12e47b67f79ab2d5aa559f3afc1db587e1a55
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 2f1c56070a2b86945494bf0a8625f223d017f326
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122695913"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130070817"
 ---
 # <a name="using-azure-ultra-disks"></a>Verwenden von Azure Ultra-Datenträgern
 
 **Gilt für:** :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
-In diesem Artikel wird erläutert, wie eine Disk Ultra bereitgestellt und verwendet wird. Konzeptionelle Informationen zu Disk Ultra finden Sie unter [Welche Datenträgertypen sind in Azure verfügbar?](disks-types.md#ultra-disk).
+In diesem Artikel wird erläutert, wie eine Disk Ultra bereitgestellt und verwendet wird. Konzeptionelle Informationen zu Disk Ultra finden Sie unter [Welche Datenträgertypen sind in Azure verfügbar?](disks-types.md#ultra-disks).
 
 Azure Ultra-Datenträger bieten hohen Durchsatz, einen hohen IOPS-Wert und einen Datenträgerspeicher mit durchgängig geringer Latenz für virtuelle Azure IaaS-Computer (VMs). Dieses neue Angebot bietet Spitzenleistung auf den gleichen Verfügbarkeitsebenen wie unsere vorhandenen Datenträgerangebote. Ein Hauptvorteil von Ultra-Datenträgern ist die Möglichkeit zum dynamischen Ändern der SSD-Leistung zusammen mit Ihren Workloads, ohne dass Sie Ihre VMs neu starten müssen. Ultra-Datenträger eignen sich für datenintensive Workloads wie SAP HANA, führende Datenbanksysteme und Workloads mit vielen Transaktionen.
 

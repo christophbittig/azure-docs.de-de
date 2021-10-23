@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 08/13/2020
 ms.author: cshoe
-ms.openlocfilehash: ef3072d5c30a8e07f9073539e877ca37837a68a4
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 035a13eeb09f60ca8e16a4f41281341b2ea9dae0
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123428324"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130003513"
 ---
 # <a name="quickstart-building-your-first-static-site-using-the-azure-cli"></a>Schnellstart: Erstellen Ihrer ersten statischen Website mithilfe der Azure CLI
 
@@ -61,7 +61,7 @@ Nachdem das Repository erstellt wurde, können Sie nun über die Azure CLI eine 
         -s https://github.com/<YOUR_GITHUB_ACCOUNT_NAME>/my-first-static-web-app \
         -l <LOCATION> \
         -b main \
-        --app-artifact-location "src" \
+        --app-location "src" \
         --token <YOUR_GITHUB_PERSONAL_ACCESS_TOKEN>
     ```
 
@@ -74,7 +74,7 @@ Nachdem das Repository erstellt wurde, können Sie nun über die Azure CLI eine 
         -s https://github.com/<YOUR_GITHUB_ACCOUNT_NAME>/my-first-static-web-app \
         -l <LOCATION> \
         -b main \
-        --app-artifact-location "dist/angular-basic" \
+        --app-location "dist/angular-basic" \
         --token <YOUR_GITHUB_PERSONAL_ACCESS_TOKEN>
     ```
 
@@ -87,7 +87,7 @@ Nachdem das Repository erstellt wurde, können Sie nun über die Azure CLI eine 
         -s https://github.com/<YOUR_GITHUB_ACCOUNT_NAME>/my-first-static-web-app \
         -l <LOCATION> \
         -b main \
-        --app-artifact-location "build" \
+        --app-location "build" \
         --token <YOUR_GITHUB_PERSONAL_ACCESS_TOKEN>
     ```
 
@@ -100,7 +100,7 @@ Nachdem das Repository erstellt wurde, können Sie nun über die Azure CLI eine 
         -s https://github.com/<YOUR_GITHUB_ACCOUNT_NAME>/my-first-static-web-app \
         -l <LOCATION> \
         -b main \
-        --app-artifact-location "dist" \
+        --app-location "dist" \
         --token <YOUR_GITHUB_PERSONAL_ACCESS_TOKEN>
     ```
 

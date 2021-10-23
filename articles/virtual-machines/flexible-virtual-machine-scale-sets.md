@@ -6,25 +6,25 @@ ms.author: fisteele
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: flexible-scale-sets
-ms.date: 08/11/2021
+ms.date: 10/13/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli, vmss-flex
-ms.openlocfilehash: dc687c2f3d14c2da02fa3ce5b3a3357292977771
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6b1f1468b85695facac7143389f863599d9f9d3e
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128648960"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130161949"
 ---
-# <a name="preview-flexible-orchestration-for-virtual-machine-scale-sets-in-azure"></a>Vorschau: Flexible Orchestrierung für VM-Skalierungsgruppen in Azure
+# <a name="flexible-orchestration-for-virtual-machine-scale-sets-in-azure"></a>Flexible Orchestrierung für VM-Skalierungsgruppen in Azure
 
 **Gilt für:** :heavy_check_mark: Flexible Skalierungsgruppen
 
-VM-Skalierungsgruppen mit der Orchestrierung „Flexibel“ ermöglichen Ihnen das Kombinieren der Skalierbarkeit von [VM-Skalierungsgruppen](../virtual-machine-scale-sets/overview.md) mit den regionalen Verfügbarkeitsgarantien von [Verfügbarkeitsgruppen](availability-set-overview.md).
+VM-Skalierungsgruppen im Orchestrierungsmodus „Flexibel“ ermöglichen Ihnen das Kombinieren der Skalierbarkeit von [VM-Skalierungsgruppen im Orchestrierungsmodus „Uniform“ (einheitlich)](../virtual-machine-scale-sets/overview.md) mit den regionalen Verfügbarkeitsgarantien von [Verfügbarkeitsgruppen](availability-set-overview.md).
 
 Mit Azure-VM-Skalierungsgruppen können Sie eine Gruppe VMs mit Lastenausgleich erstellen und verwalten. Die Anzahl von VM-Instanzen kann automatisch erhöht oder verringert werden, wenn sich der Bedarf ändert, oder es kann ein Zeitplan festgelegt werden. Skalierungsgruppen verfügen über die folgenden wichtigen Vorteile:
 - Einfaches Erstellen und Verwalten von mehreren VMs
-- Bietet Hochverfügbarkeit und Anwendungsresilienz durch das fehlerdomänenübergreifende Bereitstellen von VMs
+- Bietet Hochverfügbarkeit und Anwendungsresilienz durch das Verteilen von VMs auf Verfügbarkeitszonen oder Fehlerdomänen.
 - Automatische Skalierung der Anwendung bei sich änderndem Ressourcenbedarf
 - Großer Umfang
 
@@ -36,85 +36,45 @@ Im Orchestrierungsmodus „Flexibel“ können Sie im gesamten Azure-VM-Ökosyst
 - Dienste, bei denen VM-Typen gemischt oder Spot- und On-Demand-VMs zusammen genutzt werden sollen
 - Vorhandene Verfügbarkeitsgruppen-Anwendungen
 
-Informieren Sie sich unter [Vorschau: Orchestrierungsmodi für VM-Skalierungsgruppen in Azure](../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md) über die Unterschiede der Skalierungsgruppen vom Typ „Einheitlich“ und „Flexibel“.
-
-
 > [!IMPORTANT]
-> Das Feature für VM-Skalierungsgruppen im Orchestrierungsmodus „Flexibel“ befindet sich derzeit in der öffentlichen Vorschauphase. Es ist ein Opt-in-Verfahren erforderlich, um die unten beschriebenen Funktionen der öffentlichen Vorschauversion zu nutzen.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> In diesem Artikel geht es um VM-Skalierungsgruppen im Orchestrierungsmodus „Flexibel“, der für alle neuen Bereitstellungen von Skalierungsgruppen empfohlen wird. Informationen zu einheitlichen (Uniform) Skalierungsgruppen finden Sie in der Dokumentation [VM-Skalierungsgruppen im Orchestrierungsmodus „Uniform“ (einheitlich)](../virtual-machine-scale-sets/overview.md).
 
+Informieren Sie sich unter [Vorschau: Orchestrierungsmodi für VM-Skalierungsgruppen in Azure](../virtual-machine-scale-sets/virtual-machine-scale-sets-orchestration-modes.md) über die Unterschiede der Skalierungsgruppen vom Typ „Einheitlich“ und „Flexibel“.
 
 > [!CAUTION]
 > Der Orchestrierungsmodus wird beim Erstellen der Skalierungsgruppe festgelegt und kann später nicht mehr geändert oder aktualisiert werden.
 
 
-## <a name="register-for-flexible-orchestration-mode"></a>Registrieren für den Orchestrierungsmodus „Flexibel“
-Bevor Sie VM-Skalierungsgruppen im Orchestrierungsmodus „Flexibel“ bereitstellen können, müssen Sie Ihr Abonnement zunächst für die Previewfunktion registrieren. Die Registrierung kann mehrere Minuten dauern. Sie können für die Registrierung das Azure-Portal, Azure PowerShell oder die Azure CLI verwenden.
+## <a name="why-use-virtual-machine-scale-sets"></a>Gründe für die Verwendung von VM-Skalierungsgruppen
+Zur Sicherstellung von Redundanz und einer höheren Leistung werden Anwendungen normalerweise auf mehrere Instanzen verteilt. Kunden können auf Ihre Anwendung über ein Lastenausgleichsmodul zugreifen, mit dem Anforderungen jeweils auf eine der Anwendungsinstanzen verteilt werden. Wenn Sie Wartungsarbeiten durchführen oder eine Anwendungsinstanz aktualisieren müssen, müssen Ihre Kunden auf eine andere verfügbare Anwendungsinstanz verteilt werden. Unter Umständen müssen Sie die Anzahl von Anwendungsinstanzen erhöhen, die Ihre Anwendung ausführen, um die zusätzliche Kundennachfrage zu decken.
 
-### <a name="azure-portal"></a>Azure-Portal
+Über Azure-VM-Skalierungsgruppen werden die Verwaltungsfunktionen für Anwendungen, die auf vielen VMs ausgeführt werden, die automatische Skalierung von Ressourcen und der Lastenausgleich für Datenverkehr bereitgestellt. Skalierungsgruppen verfügen über die folgenden wichtigen Vorteile:
 
-1. Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
-1. Navigieren Sie zu Ihren **Abonnements**.
-1. Navigieren Sie zur Detailseite für das Abonnement, für das Sie eine Skalierungsgruppe im Modus „Flexible Orchestrierung“ erstellen möchten, indem Sie den Namen des Abonnements auswählen.
-1. Wählen Sie im Menü unter **Einstellungen** die Option **Previewfunktionen** aus.
-1. Wählen Sie die folgenden vier zu aktivierenden Orchestrator-Funktionen aus: *VMOrchestratorSingleFD*, *VMOrchestratorMultiFD*, *VMScaleSetFlexPreview*, and *SkipPublicIpWriteRBACCheckForVMNetworkInterfaceConfigurationsPublicPreview*.
-1. Wählen Sie **Registrieren**.
+- **Einfaches Erstellen und Verwalten von mehreren VMs**
+    - Wenn Sie über viele VMs verfügen, auf denen Ihre Anwendung ausgeführt wird, ist es wichtig, für Ihre gesamte Umgebung eine einheitliche Konfiguration zu nutzen. Eine zuverlässige Leistung der Anwendung wird erzielt, wenn die VM-Größe, Datenträgerkonfiguration und Anwendungsinstallationen für alle VMs gleich sind.
+    - Bei Skalierungsgruppen werden alle VM-Instanzen aus demselben Betriebssystem-Basisimage und derselben Konfiguration erstellt. Mit diesem Ansatz können Sie problemlos Hunderte von VMs ohne zusätzliche Konfigurationstasks oder Netzwerkverwaltung verwalten.
+    - Skalierungsgruppen unterstützen die Verwendung von [Azure Load Balancer](../load-balancer/load-balancer-overview.md) für eine grundlegende Layer-4-Datenverkehrsverteilung und von [Azure Application Gateway](../application-gateway/overview.md) für eine erweiterte Layer-7-Datenverkehrsverteilung und TLS-Terminierung.
 
-Nachdem Sie die Features für Ihr Abonnement registriert haben, schließen Sie den Opt-in-Prozess ab, indem Sie die Änderung an den Computeressourcenanbieter weitergeben. 
+- **Hochverfügbarkeit und Anwendungsresilienz**
+    - Skalierungsgruppen werden verwendet, um mehrere Instanzen Ihrer Anwendung auszuführen. Wenn für eine dieser VM-Instanzen ein Problem besteht, können Kunden nach einer minimalen Unterbrechung über eine der anderen VM-Instanzen weiter auf Ihre Anwendung zugreifen.
+    - Zur Steigerung der Verfügbarkeit können Sie [Verfügbarkeitszonen](../availability-zones/az-overview.md) einsetzen. Hierbei werden VM-Instanzen einer Skalierungsgruppe in einem Rechenzentrum oder rechenzentrumsübergreifend automatisch verteilt.
 
-1. Wählen Sie im Menü unter **Einstellungen** die Option **Ressourcenanbieter** aus.
-1. Wählen Sie `Microsoft.compute` aus.
-1. Wählen Sie **Erneut registrieren** aus.
+- **Automatische Skalierung der Anwendung bei sich änderndem Ressourcenbedarf**
+    - Die Kundennachfrage nach Ihrer Anwendung kann sich innerhalb eines Tages oder einer Woche ändern. Zur Erfüllung der Kundennachfrage können Skalierungsgruppen die Anzahl von VM-Instanzen automatisch erhöhen, wenn der Bedarf für die Anwendung zunimmt, und sie dann wieder verringern, wenn der Bedarf sinkt.
+    - Die automatische Skalierung verringert auch die Anzahl von unnötigen VM-Instanzen, auf denen Ihre Anwendung ausgeführt wird, wenn die Nachfrage gering ist. Kunden erhalten weiterhin eine akzeptable Leistungsebene, wenn die Nachfrage zunimmt und automatisch weitere VM-Instanzen hinzugefügt werden. Diese Möglichkeit trägt zur Reduzierung von Kosten und zur effizienten bedarfsabhängigen Erstellung von Azure-Ressourcen bei.
+
+- **Großer Umfang**
+    - Skalierungsgruppen unterstützen bis zu 1.000 VM-Instanzen für Marketplace-Standardimages und benutzerdefinierte Images über Shared Image Gallery. Wenn Sie eine Skalierungsgruppe mithilfe eines verwalteten Images erstellen, beträgt der Grenzwert 600 VM-Instanzen.
+    - Verwenden Sie [Azure Managed Disks](../virtual-machines/managed-disks-overview.md), um für Produktionsworkloads die beste Leistung zu erzielen.
 
 
-### <a name="azure-powershell"></a>Azure PowerShell
-Verwenden Sie das Cmdlet [Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature), um die Vorschauversion für Ihr Abonnement zu aktivieren.
-
-```azurepowershell-interactive
-Register-AzProviderFeature -FeatureName VMOrchestratorMultiFD -ProviderNamespace Microsoft.Compute `
-Register-AzProviderFeature -FeatureName VMOrchestratorSingleFD -ProviderNamespace Microsoft.Compute `
-Register-AzProviderFeature -FeatureName VMScaleSetFlexPreview -ProviderNamespace Microsoft.Compute `
-Register-AzProviderFeature -FeatureName SkipPublicIpWriteRBACCheckForVMNetworkInterfaceConfigurationsPublicPreview -ProviderNamespace Microsoft.Compute
-```
-
-Die Featureregistrierung kann bis zu 15 Minuten dauern. So überprüfen Sie den Registrierungsstatus:
-
-```azurepowershell-interactive
-Get-AzProviderFeature -FeatureName VMOrchestratorMultiFD -ProviderNamespace Microsoft.Compute
-```
-
-Schließen Sie den Opt-in-Prozess ab, nachdem Sie das Feature für Ihr Abonnement registriert haben, indem Sie die Änderung an den Computeressourcenanbieter weitergeben.
-
-```azurepowershell-interactive
-Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
-```
-
-### <a name="azure-cli-20"></a>Azure CLI 2.0
-Verwenden Sie [az feature register](/cli/azure/feature#az_feature_register), um die Vorschauversion für Ihr Abonnement zu aktivieren.
-
-```azurecli-interactive
-az feature register --namespace Microsoft.Compute --name VMOrchestratorMultiFD
-az feature register --namespace microsoft.compute --name VMOrchestratorSingleFD
-az feature register --namespace Microsoft.Compute --name VMScaleSetFlexPreview 
-az feature register --namespace Microsoft.Compute --name SkipPublicIpWriteRBACCheckForVMNetworkInterfaceConfigurationsPublicPreview
-```
-
-Die Featureregistrierung kann bis zu 15 Minuten dauern. So überprüfen Sie den Registrierungsstatus:
-
-```azurecli-interactive
-az feature show --namespace Microsoft.Compute --name VMOrchestratorMultiFD
-```
-
-Schließen Sie den Opt-in-Prozess ab, nachdem Sie das Feature für Ihr Abonnement registriert haben, indem Sie die Änderung an den Computeressourcenanbieter weitergeben.
-
-```azurecli-interactive
-az provider register --namespace Microsoft.Compute
-```
 
 ## <a name="get-started-with-flexible-orchestration-mode"></a>Erste Schritte mit dem Orchestrierungsmodus „Flexibel“
 
 Führen Sie die ersten Schritte im Orchestrierungsmodus „Flexibel“ für Ihre Skalierungsgruppen über das [Azure-Portal](flexible-virtual-machine-scale-sets-portal.md), die [Azure CLI](flexible-virtual-machine-scale-sets-cli.md), [Azure PowerShell](flexible-virtual-machine-scale-sets-powershell.md) oder eine [ARM-Vorlage](flexible-virtual-machine-scale-sets-rest-api.md) aus. 
+
+> [!IMPORTANT]
+> Vergewissern Sie sich, dass Sie über explizite ausgehende Netzwerkkonnektivität verfügen. Erfahren Sie mehr darüber in [Virtuelle Netzwerke und virtuelle Computer in Azure](../virtual-network/network-overview.md), und stellen Sie sicher, dass Sie die [bewährten Methoden](../virtual-network/concepts-and-best-practices.md) für Netzwerke von Azure beachten.
 
 
 ## <a name="add-instances-with-autoscaling-or-manually"></a>Hinzufügen von Instanzen mithilfe der automatischen Skalierung oder durch manuelles Hinzufügen
@@ -130,7 +90,7 @@ VM-Skalierungsgruppen mit der Orchestrierung „Flexibel“ fungieren als dünne
 
 - **Festlegen einer Skalierungsgruppe beim Erstellen einer VM**
 
-    Wenn Sie eine VM erstellen, können Sie optional festlegen, dass diese zu einer VM-Skalierungsgruppe hinzugefügt wird. Eine VM kann nur zum Zeitpunkt ihrer Erstellung zu einer Skalierungsgruppe hinzugefügt werden.
+    Wenn Sie eine VM erstellen, können Sie optional festlegen, dass diese zu einer VM-Skalierungsgruppe hinzugefügt wird. Eine VM kann nur zum Zeitpunkt ihrer Erstellung zu einer Skalierungsgruppe hinzugefügt werden. Der neu erstellte virtuelle Computer muss sich unabhängig von den Bereitstellungsmethoden in derselben Ressourcengruppe wie die flexible Skalierungsgruppe finden.
 
 Der flexible Orchestrierungsmodus kann mit VM-SKUs verwendet werden, die [speichererhaltende Updates oder Livemigration](../virtual-machines/maintenance-and-updates.md#maintenance-that-doesnt-require-a-reboot) unterstützen. Dies umfasst 90 % aller iaaS-VMs, die in Azure bereitgestellt werden. Im Großen und Ganzen schließt dies universelle Größenfamilien ein, wie virtuelle Computer der B-, D-, E- und F-Serie. Derzeit kann der flexible Modus nicht über VM-SKUs oder Familien orchestrieren, die keine speichererhaltenden Updates unterstützen, einschließlich virtueller Computer der G-, H-, L-, M-, N-Serie. Sie können die [Computeressourcen-SKUs-API](/rest/api/compute/resource-skus/list) verwenden, um zu bestimmen, ob eine bestimmte VM-SKU unterstützt wird.
 
@@ -138,124 +98,90 @@ Der flexible Orchestrierungsmodus kann mit VM-SKUs verwendet werden, die [speich
 az vm list-skus -l eastus --size standard_d2s_v3 --query "[].capabilities[].[name, value]" -o table
 ```
 
-## <a name="explicit-network-outbound-connectivity-required"></a>Explizite ausgehende Netzwerkkonnektivität erforderlich 
+## <a name="features"></a>Funktionen
+In den folgenden Tabellen sind die Features des Orchestrierungsmodus „Flexibel“ sowie Links zur entsprechenden Dokumentation aufgeführt.
 
-Um die Standardnetzwerksicherheit zu verbessern, erfordern VM-Skalierungsgruppen mit der Orchestrierung „Flexibel“, dass implizit über das Profil für die automatische Skalierung erstellte Instanzen über ausgehende Konnektivität verfügen, die explizit durch eine der folgenden Methoden definiert wird: 
+### <a name="basic-setup"></a>Grundlegende Einrichtung
 
-- Für die meisten Szenarios werden die unter [Tutorial: Erstellen eines NAT-Gateways mithilfe des Azure-Portals](../virtual-network/nat-gateway/tutorial-create-nat-gateway-portal.md) beschrieben Schritte empfohlen.
-- Im Fall von Szenarien mit hohen Sicherheitsanforderungen oder bei Verwendung von Azure Firewall oder virtuellen Netzwerkappliances (Network Virtual Appliance, NVA) können Sie eine benutzerdefinierte Route als nächsten Hop durch die Firewall festlegen. 
-- Instanzen befinden sich im Back-End-Pool einer Azure Load Balancer-Instanz der Standard-SKU. 
-- Sie fügen eine öffentliche IP-Adresse an die Netzwerkschnittstelle der Instanz an. 
-
-Bei Einzelinstanz-VMs und VM-Skalierungsgruppen mit der Orchestrierung „Einheitlich“ wird ausgehende Konnektivität automatisch bereitgestellt. 
-
-Dies sind häufige Szenarios, die explizite ausgehende Konnektivität erfordern: 
-
-- Die Aktivierung einer Windows-VM erfordert, dass Sie ausgehende Konnektivität zwischen der VM-Instanz mit dem Schlüsselverwaltungsdienst (Key Management Service, KMS) definiert haben. Weitere Informationen finden Sie unter [Behandlung von Problemen bei der VM-Aktivierung](/troubleshoot/azure/virtual-machines/troubleshoot-activation-problems).  
-- Zugriff auf Speicherkonten oder Key Vault. Die Verbindung mit Azure-Diensten kann auch über [Private Link](../private-link/private-link-overview.md) hergestellt werden. 
-
-Weitere Details zum Definieren von sicheren ausgehenden Verbindungen finden Sie unter [Ausgehender Standardzugriff in Azure](https://aka.ms/defaultoutboundaccess).
-
-
-## <a name="assign-fault-domain-during-vm-creation"></a>Zuweisen einer Fehlerdomäne während der VM-Erstellung
-Sie können die Anzahl von Fehlerdomänen für die Skalierungsgruppe mit flexibler Orchestrierung auswählen. Wenn Sie eine VM einer flexiblen Skalierungsgruppe hinzufügen, werden die Instanzen von Azure gleichmäßig auf die Fehlerdomänen verteilt. Unsere Empfehlung lautet zwar, die Fehlerdomäne von Azure zuweisen zu lassen, aber für erweiterte oder Problembehandlungsszenarien können Sie dieses Standardverhalten außer Kraft setzen und die Fehlerdomäne angeben, in der die Instanz angeordnet werden soll.
-
-```azurecli-interactive
-az vm create –vmss "myVMSS"  –-platform_fault_domain 1
-```
-
-## <a name="instance-naming"></a>Benennung von Instanzen
-Wenn Sie eine VM erstellen und einer flexiblen Skalierungsgruppe hinzufügen, haben Sie über die Azure-Regeln für die Namenskonvention die vollständige Kontrolle über die Instanznamen. Wenn VMs der Skalierungsgruppe über die Autoskalierung automatisch hinzugefügt werden, geben Sie ein Präfix an, und Azure fügt am Ende des Namens dann eine eindeutige Zahl an. 
-
-## <a name="list-scale-sets-vm-api-changes"></a>Auflisten der API-Änderungen für VMs einer Skalierungsgruppe
-Mit VM-Skalierungsgruppen können Sie die Instanzen auflisten, die zur Skalierungsgruppe gehören. Bei der flexiblen Orchestrierung wird mit dem Befehl zum Auflisten der VMs einer VM-Skalierungsgruppe eine Liste angezeigt, die die IDs der VMs einer Skalierungsgruppe enthält. Anschließend können Sie die GET-Befehle für die VMs einer VM-Skalierungsgruppe verwenden, um weitere Details zur Zusammenarbeit zwischen Skalierungsgruppe und VM-Instanz abzurufen. Verwenden Sie zum Abrufen der vollständigen Details zur VM die GET-VM-Standardbefehle oder [Azure Resource Graph](../governance/resource-graph/overview.md).
+| Feature | Von flexibler Orchestrierung für Skalierungsgruppen unterstützt |
+|---|---|
+| Typ des virtuellen Computers  | Azure IaaS-Standard-VM (Microsoft.compute /virtualmachines)  |
+| Maximale Anzahl von Instanzen (mit Garantien für die Fehlerdomänen)  | 1000  |
+| Unterstützte SKUs  | D-Serie, E-Serie, F-Serie, A-Serie, B-Serie, Intel, AMD; spezielle SKUs (G, H, L, M, N) werden nicht unterstützt. |
+| Vollständige Kontrolle über VM, NICs, Datenträger  | Ja  |
+| RBAC-Berechtigungen erforderlich  | Compute-VMSS Schreiben, Compute-VM Schreiben, Netzwerk |
+| Beschleunigte Netzwerke  | Ja  |
+| Spot-Instanzen und Preise   | Ja. Sie können sowohl Spot-Instanzen als auch Instanzen mit regulärer Priorität verwenden.  |
+| Mischung von Betriebssystemen  | Ja. Linux und Windows können in derselben flexiblen Skalierungsgruppe vorhanden sein.  |
+| Datenträgertypen  | Nur verwaltete Datenträger, alle Speichertypen  |
+| Schreibbeschleunigung   | Nein  |
+| Näherungsplatzierungsgruppen   | Ja. Weitere Informationen finden Sie unter [Erstellen und Verwenden von Näherungsplatzierungsgruppen mit PowerShell](../virtual-machine-scale-sets/proximity-placement-groups.md). |
+| Dedizierte Azure-Hosts   | Nein  |
+| Verwaltete Identität  | Nur benutzerseitig zugewiesene Identität  |
+| Hinzufügung/Entfernung einer vorhandenen VM für Gruppe  | Nein  |
+| Service Fabric  | Nein  |
+| Azure Kubernetes Service (AKS)-/AKE-/k8s-Knotenpool  | Nein  |
+| UserData  | Partiell, UserData können für einzelne VMs angegeben werden. |
 
 
-## <a name="query-instances-for-power-state"></a>Abfragen des Energiezustands von Instanzen
-Die bevorzugte Methode ist hierbei die Verwendung von Azure Resource Graph zum Abfragen aller VMs einer VM-Skalierungsgruppe. Azure Resource Graph verfügt über effiziente Abfragefunktionen, mit denen Azure-Ressourcen im großen Stil abonnementübergreifend abgefragt werden können.
+### <a name="autoscaling-and-instance-orchestration"></a>Autoskalierung und Instanzorchestrierung
 
-```
-| where type =~ 'Microsoft.Compute/virtualMachines'
-| where properties.virtualMachineScaleSet contains "demo"
-| extend powerState = properties.extended.instanceView.powerState.code
-| project name, resourceGroup, location, powerState
-| order by resourceGroup desc, name desc
-```
-
-Die Funktion zum Abfragen von Ressourcen von [Azure Resource Graph](../governance/resource-graph/overview.md) ist eine bequeme und effiziente Möglichkeit, um Azure-Ressourcen abzufragen, und verringert die Anzahl von API-Aufrufen des Ressourcenanbieters. Azure Resource Graph ist letztlich ein konsistenter Cache, in dem neue oder aktualisierte Ressourcen ggf. bis zu 60 Sekunden lang nicht widergespiegelt werden. Ihre Möglichkeiten:
-- Auflisten einer Ressourcengruppe oder eines Abonnements
-- Verwenden der Option „Erweitern“ zum Abrufen der Instanzansicht (Zuweisung von Fehlerdomänen, Energie- und Bereitstellungsstatus) für alle VMs Ihres Abonnements
-- Verwenden der Get-VM-API und der Befehle zum Abrufen der Modell- und Instanzansicht für eine einzelne Instanz
-
-
-## <a name="scale-sets-vm-batch-operations"></a>Batchvorgänge für VMs von Skalierungsgruppen
-Verwenden Sie die VM-Standardbefehle zum Starten, Beenden, Neustarten oder Löschen von Instanzen (anstelle der APIs für die VMs einer VM-Skalierungsgruppe). Die VM-Batchvorgänge für VM-Skalierungsgruppen (Alle starten, Alle beenden, Reimaging für alle usw.) werden im Orchestrierungsmodus „Flexibel“ nicht verwendet.
-
-
-## <a name="monitor-application-health"></a>Überwachen der Anwendungsintegrität
-Beim Überwachen der Anwendungsintegrität kann Ihre Anwendung für Azure einen Heartbeat bereitstellen, damit ermittelt werden kann, ob Ihre Anwendung fehlerfrei oder fehlerhaft ist. Azure kann fehlerhafte VM-Instanzen automatisch austauschen. Bei flexiblen Skalierungsgruppeninstanzen müssen Sie die Erweiterung zur Anwendungsintegrität auf dem virtuellen Computer installieren und konfigurieren. Für einheitliche Skalierungsgruppeninstanzen können Sie entweder die Erweiterung für die Anwendungsintegrität verwenden oder die Integrität mit einem benutzerdefinierten Azure Load Balancer-Integritätstest messen.
-
-
-## <a name="retrieve-boot-diagnostics-data"></a>Abrufen von Startdiagnosedaten
-Verwenden Sie die Standard-VM-APIs und -Befehle, um Daten und Screenshots zur Startdiagnose abzurufen. Die Startdiagnose-APIs und -befehle für VMs einer VM-Skalierungsgruppe werden für Instanzen mit dem Orchestrierungsmodus „Flexibel“ nicht verwendet.
-
-
-## <a name="vm-extensions"></a>VM-Erweiterungen
-Verwenden Sie für Standard-VMs bestimmte Erweiterungen, und keine Erweiterungen, die für Instanzen mit dem Orchestrierungsmodus „Einheitlich“ bestimmt sind.
-
-
-## <a name="features"></a>Features
-In der folgenden Liste sind die Features des Orchestrierungsmodus „Flexibel“ und Links zur entsprechenden Dokumentation aufgeführt.
-
-| Funktion | Von flexibler Orchestrierung unterstützt (Vorschau) |
-|-|-|
-| Typ des virtuellen Computers | Azure IaaS-Standard-VM (Microsoft.compute /virtualmachines) |
-| Maximale Anzahl von Instanzen (mit Verfügbarkeitsgarantie für die Fehlerdomänen) | 1000 |
-| Unterstützte SKUs | D-Serie, E-Serie, F-Serie, A-Serie, B-Serie, Intel, AMD |
-| Verfügbarkeitszonen | Geben Sie optional an, dass alle Instanzen in nur einer Verfügbarkeitszone angeordnet sein sollen. |
-| Fehlerdomäne – Maximale Verteilung (Azure verteilt die Instanzen maximal) | Ja |
-| Fehlerdomäne – Feste Verteilung | 2 bis 3 Fehlerdomänen (je nach regionalem Maximum für Fehlerdomänen), 1 Fehlerdomäne für zonale Bereitstellungen |
-| Updatedomänen | Veraltete, von Fehlerdomäne durchgeführte Plattformwartung |
-| Verfügbarkeits-SLA | Keine (während der Vorschau) |
-| Vollständige Kontrolle über VM, NICs, Datenträger | Ja |
-| Zuweisung eines virtuellen Computers zu einer bestimmten Fehlerdomäne | Ja |
-| Beschleunigte Netzwerke | Nein (während der Vorschau) |
-| Sicherheitspatches auf Gastbetriebssystem | Ja |
-| Spot-Instanzen und Preise  | Ja. Sie können sowohl Spot-Instanzen als auch Instanzen mit regulärer Priorität verwenden. |
-| Mischung von Betriebssystemen | Ja. Linux und Windows können in derselben flexiblen Skalierungsgruppe vorhanden sein. |
-| Überwachung der Anwendungsintegrität | Erweiterung für Anwendungsintegrität |
-| SSD Ultra-Datenträger  | Ja |
-| Näherungsplatzierungsgruppen  | Ja. Weitere Informationen finden Sie unter [Erstellen und Verwenden von Näherungsplatzierungsgruppen mit PowerShell](../virtual-machine-scale-sets/proximity-placement-groups.md). |
-| Azure Load Balancer Standard-SKU | Ja |
+| Feature | Von flexibler Orchestrierung für Skalierungsgruppen unterstützt |
+|---|---|
 | Auflistung von VMs einer Gruppe | Ja |
-| Azure Backup | Ja |
+| Automatische Skalierung (manuell, basierend auf Metriken, basierend auf einem Zeitplan) | Ja |
+| Automatische Entfernung von NICs und Datenträgern beim Löschen von VM-Instanzen | Ja |
+| Upgraderichtlinie (VM-Skalierungsgruppen) | Nein, die Upgraderichtlinie muss während der Erstellung NULL oder [] sein |
+| Automatische Betriebssystemupdates (VM-Skalierungsgruppen) | Nein |
+| Sicherheitspatches auf Gastbetriebssystem | Ja |
 | Beendigung von Benachrichtigungen (VM-Skalierungsgruppen) | Ja. Weitere Informationen finden Sie unter [Beendigungsbenachrichtigung für Instanzen von Azure-VM-Skalierungsgruppen](../virtual-machine-scale-sets/virtual-machine-scale-sets-terminate-notification.md). |
+| Überwachung der Anwendungsintegrität | Erweiterung für Anwendungsintegrität |
 | Instanzreparatur (VM-Skalierungsgruppen) | Ja. Weitere Informationen finden Sie unter [Automatische Instanzreparaturen für Azure-VM-Skalierungsgruppen](../virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-instance-repairs.md). |
-| Autoskalierung | Ja |
-| Entfernung von NICs und Datenträgern beim Löschen von VM-Instanzen | Ja |
-| Upgraderichtlinie (VM-Skalierungsgruppen) | Nein |
-| Automatische imagebasierte Betriebssystemupdates | Nein |
-| InfiniBand  | Nein |
-| Schreibbeschleunigung  | Nein |
-| Dedizierte Azure-Hosts  | Nein |
-| Basis-SLB  | Nein |
-| Application Gateway | Ja |
-| Wartungssteuerung  | Nein |
-| Azure-Warnungen | Nein |
-| VM Insights | Nein |
-| Azure Site Recovery |  Ja, über PowerShell |
-| Service Fabric | Nein |
-| Azure Kubernetes Service (AKS) | Nein |
-| Vertrauenswürdige virtuelle Computer (Vorschau) | Ja |
-| Automatische Erweiterungsaktualisierungen | Ja |
+| Instanzschutz | Nein, verwenden Sie [Azure-Ressourcensperre](../azure-resource-manager/management/lock-resources.md). |
+| Richtlinie für Abskalieren | Nein |
+| VMSS-Instanzansicht abrufen | Nein |
+| Wartung durchführen | Wartung auf jeder Instanz mithilfe der VM-API auslösen |
+| VM-Batchvorgänge (Alle starten, Alle beenden, Teilmenge löschen usw.) | Nein (kann Vorgänge auf jeder Instanz mithilfe der VM-API auslösen) |
 
+### <a name="high-availability"></a>Hochverfügbarkeit 
+
+| Feature | Von flexibler Orchestrierung für Skalierungsgruppen unterstützt |
+|---|---|
+| Verfügbarkeits-SLA | 99,95 % für auf Fehlerdomänen verteilte Instanzen; 99,99 % für auf mehrere Zonen verteilte Instanzen |
+| Verfügbarkeitszonen | Geben Sie an, dass Instanzen in einer, zwei oder drei Verfügbarkeitszonen angeordnet sein sollen |
+| VM zu einer bestimmten Verfügbarkeitszone zuweisen | Ja |
+| Fehlerdomäne – Maximale Verteilung (Azure verteilt die Instanzen maximal) | Ja |
+| Fehlerdomäne – Feste Verteilung | 2 bis 3 Fehlerdomänen (je nach regionaler maximaler Anzahl der Fehlerdomänen), 1 für zonale Bereitstellungen |
+| Zuweisung eines virtuellen Computers zu einer bestimmten Fehlerdomäne | Ja |
+| Updatedomänen | Veraltet (Plattformwartung wird nacheinander für jede Fehlerdomäne einzeln durchgeführt) |
+| Wartung durchführen | Wartung auf jeder Instanz mithilfe der VM-API auslösen | Ja | – |
+
+### <a name="networking"></a>Netzwerk 
+
+| Feature | Von flexibler Orchestrierung für Skalierungsgruppen unterstützt |
+|---|---|
+| Standardmäßige ausgehende Konnektivität | Nein, es muss [explizite ausgehende Konnektivität](../virtual-network/ip-services/default-outbound-access.md) vorhanden sein. |
+| Azure Load Balancer Standard-SKU | Ja |
+| Application Gateway | Ja |
+| InfiniBand-Netzwerk | Nein |
+| Basis-SLB | Nein |
+| Netzwerkportweiterleitung | Ja (NAT-Regeln für einzelne Instanzen) |
+
+### <a name="backup-and-recovery"></a>Sicherung und Wiederherstellung 
+
+| Feature | Von flexibler Orchestrierung für Skalierungsgruppen unterstützt |
+|---|---|
+| Azure Backup  | Ja |
+| Azure Site Recovery | Ja (über PowerShell) |
+| Azure-Warnungen  | Ja |
+| VM Insights  | Kann auf einzelnen VMs installiert werden. |
 
 ### <a name="unsupported-parameters"></a>Nicht unterstützte Parameter
 
-Die folgenden Parameter für VM-Skalierungsgruppen werden während der Public Preview der Orchestrierung „Flexibel“ für VM-Skalierungsgruppen derzeit nicht unterstützt:
+Die folgenden Parameter für VM-Skalierungsgruppen werden für VM-Skalierungsgruppen im Orchestrierungsmodus „Flexibel“ derzeit nicht unterstützt:
 - Einzelne Platzierungsgruppe: Sie müssen `singlePlacementGroup=False` auswählen.
-- Bereitstellung in mehreren Zonen: Bereitstellungen sind regional, oder alle VMs befinden sich in einer einzelnen Zone.
 - Bereitstellung mithilfe von speziellen SKUs: VM-Familien der Serien G, H, L, M und N
+- Ultra-Datenträgerkonfiguration: `diskIOPSReadWrite`, `diskMBpsReadWrite`
 - Überbereitstellung von VM-Skalierungsgruppen
 - Imagebasierte automatische Betriebssystemupgrades
 - Anwendungsintegrität über SLB-Integritätstest: Verwenden Sie die Erweiterung für Anwendungsintegrität für Instanzen.
@@ -264,7 +190,6 @@ Die folgenden Parameter für VM-Skalierungsgruppen werden während der Public Pr
 - Nicht verwaltete Datenträger
 - Abskalierungsrichtlinie für VM-Skalierungsgruppen
 - Schutz von VM-Skalierungsgruppeninstanzen
-- Beschleunigter Netzwerkbetrieb
 - Load Balancer Basic
 - Portweiterleitung über Load Balancer Standard-NAT-Pools: Sie können NAT-Regeln für bestimmte Instanzen konfigurieren.
 
@@ -273,46 +198,10 @@ Die folgenden Parameter für VM-Skalierungsgruppen werden während der Public Pr
 Ermitteln Sie die richtige Lösung für Ihr Problembehandlungsszenario.
 
 <!-- error -->
-### <a name="invalidparameter-parameter-virtualmachineprofile-is-not-allowed"></a>Fehlermeldung: InvalidParameter. Parameter 'virtualMachineProfile' is not allowed.
+### <a name="invalidparameter-the-specified-fault-domain-count-3-must-fall-in-the-range-1-to-2"></a>Fehlermeldung: InvalidParameter. Die angegebene Fehlerdomänenanzahl 3 muss im Bereich 1 bis 2 liegen.
 
 ```
-InvalidParameter. Parameter 'virtualMachineProfile' is not allowed.
-```
-
-**Ursache:** Das Abonnement ist nicht für den Orchestrierungsmodus „Flexibel“ (öffentliche Vorschauphase) registriert.
-
-**Lösung:** Sie müssen das VMScaleSetPublicPreview-Feature für Ihr Abonnement registrieren. Befolgen Sie die obige Anleitung, um die Registrierung für den Orchestrierungsmodus „Flexibel“ (Public Preview) durchzuführen.
-
-
-<!-- error -->
-### <a name="badrequest-creating-a-virtual-machine-with-a-public-ip-address-via-networkinterfaceconfigurations"></a>Fehlermeldung: BadRequest. Creating a Virtual Machine with a Public IP Address via NetworkInterfaceConfigurations
-
-```
-BadRequest. Creating a Virtual Machine with a Public IP Address via NetworkInterfaceConfigurations during the Public Preview of VM NetworkInterfaceConfigurations initially requires the feature 'Microsoft.Compute/SkipPublicIpWriteRBACCheckForVMNetworkInterfaceConfigurationsPublicPreview'.
-```
-
-**Ursache:** Das Abonnement ist nicht für den Orchestrierungsmodus „Flexibel“ (öffentliche Vorschauphase) registriert.
-
-**Lösung:** Sie müssen das `SkipPublicIpWriteRBACCheckForVMNetworkInterfaceConfigurationsPublicPreview`-Feature für Ihr Abonnement registrieren. Befolgen Sie die obige Anleitung, um die Registrierung für den Orchestrierungsmodus „Flexibel“ (Public Preview) durchzuführen.
-
-
-<!-- error -->
-### <a name="invalidparameter-the-value-false-of-parameter-singleplacementgroup-is-not-allowed-allowed-values-are-true"></a>Fehlermeldung: InvalidParameter. The value 'False' of parameter 'singlePlacementGroup' is not allowed. Allowed values are: True
-
-```
-InvalidParameter. The value 'False' of parameter 'singlePlacementGroup' is not allowed. Allowed values are: True
-```
-
-**Ursache:** Das Abonnement ist nicht für den Orchestrierungsmodus „Flexibel“ (öffentliche Vorschauphase) registriert.
-
-**Lösung:** Befolgen Sie die obige Anleitung, um die Registrierung für den Orchestrierungsmodus „Flexibel“ (öffentliche Vorschauphase) durchzuführen.
-
-
-<!-- error -->
-### <a name="invalidparameter-the-specified-fault-domain-count-2-must-fall-in-the-range-1-to-1"></a>Fehlermeldung: InvalidParameter. The specified fault domain count 2 must fall in the range 1 to 1.
-
-```
-InvalidParameter. The specified fault domain count 2 must fall in the range 1 to 1.
+InvalidParameter. The specified fault domain count 3 must fall in the range 1 to 2.
 ```
 
 **Ursache:** Der Parameter `platformFaultDomainCount` ist für die ausgewählte Region oder Zone ungültig.
@@ -338,10 +227,20 @@ OperationNotAllowed. Deletion of Virtual Machine Scale Set is not allowed as it 
 ```
 InvalidParameter. The value 'True' of parameter 'singlePlacementGroup' is not allowed. Allowed values are: False.
 ```
-**Ursache:** Das Abonnement ist für den Orchestrierungsmodus „Flexibel“ (Vorschau) registriert, aber der Parameter `singlePlacementGroup` ist auf *True* festgelegt.
+**Ursache:** Der Parameter `singlePlacementGroup` ist auf *True* festgelegt.
 
 **Lösung:** `singlePlacementGroup` muss auf *False* festgelegt werden.
 
+
+<!-- error -->
+### <a name="outboundconnectivitynotenabledonvm-no-outbound-connectivity-configured-for-virtual-machine"></a>OutboundConnectivityNotEnabledOnVM. Für den virtuellen Computer ist keine ausgehende Konnektivität konfiguriert.
+
+```
+OutboundConnectivityNotEnabledOnVM. No outbound connectivity configured for virtual machine.
+```
+**Ursache:** Es wurde versucht, eine VM-Skalierung gruppe im Orchestrierungsmodus „Flexibel“ ohne ausgehende Internetverbindung zu erstellen.
+
+**Lösung:** Aktivieren Sie sicheren ausgehenden Zugriff für Ihre VM-Skalierungsgruppe auf die für Ihre Anwendung am besten geeignete Weise. Der ausgehende Zugriff kann mit einem NAT Gateway in Ihrem Subnetz, durch Hinzufügen von Instanzen zu einem Load Balancer-Back-End-Pool oder durch Hinzufügen einer expliziten öffentlichen IP-Adresse pro Instanz aktiviert werden. Für hochsichere Anwendungen können Sie angepasste benutzerdefinierte Routen (UDRs) über Ihre Firewall oder virtuellen Netzwerkanwendungen angeben. Weitere Detailinformationen finden Sie unter [Standardmäßiger ausgehender Zugriff](../virtual-network/ip-services/default-outbound-access.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 > [!div class="nextstepaction"]

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/12/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 7205fa7095608084140f7ac6e1c3965b1296a8fe
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: bebedbcd2c36203ec122ebf597ac8a0c64fb1ae4
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122336004"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129679906"
 ---
 |**VPN<br>Gateway-<br>Generation** |**SKU**   | **S2S/VNet-zu-VNet-<br>Tunnels** | **P2S<br> SSTP-Verbindungen** | **P2S<br>-IKEv2/OpenVPN-Verbindungen** | **Benchmark für<br>aggregierten Durchsatz** | **BGP** | **Zonenredundant** |
 |---            |---         | ---        | ---       | ---            | ---       | ---       | ---|
@@ -36,7 +36,7 @@ ms.locfileid: "122336004"
 
 (\*) Verwenden Sie [Virtual WAN](../articles/virtual-wan/virtual-wan-about.md), wenn Sie mehr als 30 S2S-VPN-Tunnel benötigen.
 
-* Größenänderungen für VpnGw-SKUs sind innerhalb der gleichen Generation möglich. Dies gilt jedoch nicht für die Basic-SKU. Die Basic-SKU ist eine Legacy-SKU und unterliegt Featureeinschränkungen. Wenn Sie von der Basic-SKU zu einer anderen VpnGw-SKU wechseln möchten, müssen Sie das VPN-Gateway der Basic-SKU löschen und ein neues Gateway mit der gewünschten Generation und SKU-Größe erstellen.
+* Größenänderungen für VpnGw-SKUs sind innerhalb der gleichen Generation möglich. Dies gilt jedoch nicht für die Basic-SKU. Die Basic-SKU ist eine Legacy-SKU und unterliegt Featureeinschränkungen. Wenn Sie von der Basic-SKU zu einer anderen VpnGw-SKU wechseln möchten, müssen Sie das VPN-Gateway der Basic-SKU löschen und ein neues Gateway mit der gewünschten Generation und SKU-Größe erstellen. Sie können die Größe eines Basic-Gateways nur in eine andere Legacy-SKU ändern (siehe [Arbeiten mit SKUs für virtuelle Netzwerkgateways (Legacy-SKUs)](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md)).
 
 * Diese Verbindungsgrenzwerte sind voneinander getrennt. Sie können beispielsweise 128 SSTP-Verbindungen und 250 IKEv2-Verbindungen in der SKU „VpnGw1“ nutzen.
 

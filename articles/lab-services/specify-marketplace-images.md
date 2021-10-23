@@ -1,14 +1,14 @@
 ---
 title: Angeben von Marketplace-Images für ein Lab in Azure Lab Services
 description: In diesem Artikel wird gezeigt, wie Sie die Marketplace-Images angeben, die Lab-Ersteller zum Erstellen von Labs in einem Lab-Konto in Azure Lab Services verwenden können.
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 5c81c8d7a15d67055729a29e98f5b7e30f3d0764
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ccd304d1a12d38ae18891f9400beaf8c9d90b889
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96434735"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130177648"
 ---
 # <a name="specify-marketplace-images-available-to-lab-creators"></a>Angeben von für Lab-Ersteller verfügbare Marketplace-Images
 Als Lab-Kontobesitzer können Sie die Marketplace-Images festlegen, die Lab-Ersteller zum Erstellen von Labs im Lab-Konto verwenden können. 

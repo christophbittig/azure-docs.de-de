@@ -3,12 +3,12 @@ title: Unterstützungsmatrix für VMware- oder physische Notfallwiederherstellun
 description: Fasst die Unterstützung der Notfallwiederherstellung von VMware-VMs und physische Server in Azure mit Azure Site Recovery zusammen.
 ms.topic: conceptual
 ms.date: 08/02/2021
-ms.openlocfilehash: ba92dacf320d35c53d31de877079a3e19b56c317
-ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
+ms.openlocfilehash: 2557292af835f13792673c2cfbb1eb82542b7725
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129670174"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129994478"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Unterstützungsmatrix für die Notfallwiederherstellung von virtuellen VMware-Computern und physischen Servern in Azure
 
@@ -59,7 +59,7 @@ Art der IP-Adresse | statischen
 Ports | 443 für die Steuerkanalorchestrierung<br/>9443 für den Datentransport
 
 > [!NOTE]
-Das Betriebssystem muss mit dem englischen Gebietsschema installiert werden. Die Konvertierung des Gebietsschemas nach der Installation kann zu potenziellen Problemen führen.
+> Das Betriebssystem muss mit dem englischen Gebietsschema installiert werden. Die Konvertierung des Gebietsschemas nach der Installation kann zu potenziellen Problemen führen.
 
 
 

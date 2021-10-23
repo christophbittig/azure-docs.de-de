@@ -5,14 +5,14 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: overview
-ms.date: 05/14/2021
+ms.date: 10/05/2021
 ms.author: cshoe
-ms.openlocfilehash: 489f714c9900c0b759a5ecf7bc9a5ffc12cae884
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a29a13e11416e533a27020a745daddf6e26ef919
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121746213"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129729632"
 ---
 # <a name="azure-static-web-apps-hosting-plans"></a>Hostingpläne für Azure Static Web Apps
 
@@ -32,6 +32,7 @@ Azure Static Web Apps wird mit zwei Plänen angeboten: Free und Standard. Inform
 | Benutzerdefinierte Domänen | 2 pro App | 5 pro App |
 | APIs über Azure Functions | Verwaltet | Verwaltet oder<br>[Eigene Funktions-App verwenden](functions-bring-your-own.md) |
 | Integration des Authentifizierungsanbieters | [Vorkonfiguriert](authentication-authorization.md)<br>(Vom Dienst definiert) | [Benutzerdefinierte Registrierungen](authentication-custom.md) |
+| [Zuweisen benutzerdefinierter Rollen mit einer Funktion](authentication-authorization.md?tabs=function#role-management) | - | ✔ |
 | Private Endpunkte | - | ✔ |
 | [Vereinbarung zum Servicelevel (SLA)](https://azure.microsoft.com/support/legal/sla/app-service-static/v1_0/) | Ohne  | ✔ |
 

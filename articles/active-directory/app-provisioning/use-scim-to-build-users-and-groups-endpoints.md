@@ -3,7 +3,7 @@ title: Erstellen eines SCIM-Endpunkts für die Benutzerbereitstellung in Apps au
 description: Hier erfahren Sie, wie Sie einen SCIM-Endpunkt entwickeln, Ihre SCIM-API mit Azure Active Directory integrieren und mit der Automatisierung der Bereitstellung von Benutzern und Gruppen in Ihren Cloudanwendungen beginnen.
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/11/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: ac876ff4370c20ca0b4db59575a3d8ab49b7b0a3
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 5f1799b6a8fe0ff4feb69797deec11c29c69a81c
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109784843"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129990594"
 ---
 # <a name="tutorial-develop-a-sample-scim-endpoint-in-azure-active-directory"></a>Tutorial: Entwickeln eines SCIM-Beispielendpunkts in Azure Active Directory
 

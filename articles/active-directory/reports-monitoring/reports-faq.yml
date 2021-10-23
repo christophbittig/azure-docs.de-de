@@ -17,12 +17,12 @@ metadata:
   ms.author: markvi
   ms.reviewer: dhanyahk
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: fe6775a15dc878bb31c60df592ca5d24b29b2c6a
-  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+  ms.openlocfilehash: f74612097e1ad6edc059625c89f22003d15884af
+  ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/13/2021
-  ms.locfileid: "124838965"
+  ms.lasthandoff: 10/19/2021
+  ms.locfileid: "130162878"
 title: Häufig gestellte Fragen zu Azure Active Directory-Berichten
 summary: "Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Active Directory-Berichten (Azure AD). Weitere Informationen finden Sie unter [Azure Active Directory-Berichterstellung](overview-reports.md). \n"
 sections:
@@ -35,7 +35,7 @@ sections:
   - question: >
       Ich verwende derzeit die Endpunkt-APIs unter „`https://graph.windows.net/<tenant-name>/reports/`“ zum programmgesteuerten Abrufen der Azure AD-Sicherheitsberichte (bestimmte Arten von Erkennungen, z.B. kompromittierte Anmeldeinformationen oder Anmeldungen über anonyme IP-Adressen) in unsere Berichtssysteme. Welche Umstellung sollte ich vornehmen?
     answer: >
-      Sie können die [API für Identity Protection-Risikoerkennungen](../identity-protection/howto-identity-protection-graph-api.md) für den Zugriff auf Sicherheitserkennungen über Microsoft Graph verwenden. Dieses neue Format ermöglicht höhere Flexibilität beim Abfragen von Daten mit erweiterter Filterung, Feldauswahl und vielem mehr, und standardisiert Risikoerkennungen in einem Typ zur einfacheren Integration in SIEMs und andere Tools zur Datensammlung. Da die Daten in einem anderen Format vorliegen, können Sie Ihre alten Abfragen nicht durch eine neue Abfrage ersetzen. Allerdings [verwendet die neue API Microsoft Graph](/graph/api/resources/identityriskevent?view=graph-rest-beta&preserve-view=true), den Microsoft-Standard für diese APIs wie Microsoft 365 oder Azure AD. So können Sie entweder Ihre aktuellen Microsoft Graph-Investitionen erweitern oder die Umstellung auf diese neue Standardplattform beginnen.
+      Sie können die [API für Identity Protection-Risikoerkennungen](../identity-protection/howto-identity-protection-graph-api.md) für den Zugriff auf Sicherheitserkennungen über Microsoft Graph verwenden. Dieses neue Format ermöglicht höhere Flexibilität beim Abfragen von Daten mit erweiterter Filterung, Feldauswahl und vielem mehr, und standardisiert Risikoerkennungen in einem Typ zur einfacheren Integration in SIEMs und andere Tools zur Datensammlung. Da die Daten in einem anderen Format vorliegen, können Sie Ihre alten Abfragen nicht durch eine neue Abfrage ersetzen. Allerdings [verwendet die neue API Microsoft Graph](/graph/api/resources/identityprotection-root), den Microsoft-Standard für diese APIs wie Microsoft 365 oder Azure AD. So können Sie entweder Ihre aktuellen Microsoft Graph-Investitionen erweitern oder die Umstellung auf diese neue Standardplattform beginnen.
   - question: >
       Wie erhalte ich eine Premium-Lizenz?
     answer: >

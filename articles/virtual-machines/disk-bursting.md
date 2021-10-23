@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 7cd3c1d4a0da5ca0741f6d7f05a1cf082d2e922e
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: d6e326bdc08b58d4dc32eb8a3d7592f3fd85b4af
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122696539"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130074409"
 ---
 # <a name="managed-disk-bursting"></a>Verwaltetes Datenträgerbursting
 
@@ -31,12 +31,12 @@ Die folgenden Szenarien können von einem Bursting stark profitieren:
 
 ## <a name="disk-level-bursting"></a>Bursting auf Datenträgerebene
 
-Derzeit gibt es zwei verwaltete Datenträgertypen, für die Bursting möglich ist: [SSD Premium](disks-types.md#premium-ssd) und [SSD Standard](disks-types.md#standard-ssd). Für andere Datenträgertypen ist derzeit kein Bursting möglich. Es gibt zwei Burstingmodelle für Datenträger:
+Derzeit gibt es zwei verwaltete Datenträgertypen, für die Bursting möglich ist: [SSD Premium](disks-types.md#premium-ssds) und [SSD Standard](disks-types.md#standard-ssds). Für andere Datenträgertypen ist derzeit kein Bursting möglich. Es gibt zwei Burstingmodelle für Datenträger:
 
 - Ein bedarfsgesteuertes Burstingmodell (Vorschau), bei dem der Datenträger immer dann ein Bursting vornimmt, wenn die Anforderungen seine aktuelle Kapazität übersteigen. Bei diesem Modell fallen zusätzliche Gebühren beim Bursting auf dem Datenträger an. Bedarfsgesteuertes Bursting ist nur für Premium-SSDs verfügbar, die größer als 512 GiB sind.
 - Ein auf Guthaben basierendes Modell, bei dem das Bursting auf dem Datenträger nur erfolgt, wenn Guthaben für das Bursting im Guthaben-Bucket akkumuliert wurde. Bei diesem Modell fallen keine zusätzlichen Gebühren an, wenn das Bursting auf dem Datenträger erfolgt. Das guthabenbasierte Bursting ist nur für SSD-Datenträger vom Typ Premium und Standard mit maximal 512 GiB verfügbar.
 
-Bei Azure [SSD Premium](disks-types.md#premium-ssd) können Sie beide Burstingmodelle verwenden, bei [SSD Standard](disks-types.md#standard-ssd) ist derzeit jedoch nur das guthabenbasierte Bursting möglich.
+Bei Azure [SSD Premium](disks-types.md#premium-ssds) können Sie beide Burstingmodelle verwenden, bei [SSD Standard](disks-types.md#standard-ssds) ist derzeit jedoch nur das guthabenbasierte Bursting möglich.
 
 Zusätzlich kann die [Leistungsstufe der verwalteten Datenträger geändert werden](disks-change-performance.md), was ideal sein kann, wenn Ihr Workload sonst im Burstmodus ausgeführt wird.
 

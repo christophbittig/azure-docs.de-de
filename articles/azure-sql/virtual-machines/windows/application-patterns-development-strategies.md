@@ -3,7 +3,7 @@ title: SQL Server-Anwendungsmuster auf VMs | Microsoft-Dokumentation
 description: In diesem Artikel werden die Anwendungsmuster für SQL Server auf Azure Virtual Machines behandelt. Er bietet Lösungsarchitekten und Entwicklern eine Grundlage für gute Anwendungsarchitektur und deren Entwurf.
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: bluefooted
 editor: ''
 tags: azure-service-management,azure-resource-manager
 ms.assetid: 41863c8d-f3a3-4584-ad86-b95094365e05
@@ -13,13 +13,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
-ms.author: mathoma
-ms.openlocfilehash: e877f775c6a7bc83ce6c4a559c9f74b606c952fc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: pamela
+ms.reviewer: mathoma
+ms.openlocfilehash: 06c15ae57b5ab2e76cc7736a004e58237a2a0f9a
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97359488"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130166587"
 ---
 # <a name="application-patterns-and-development-strategies-for-sql-server-on-azure-virtual-machines"></a>Anwendungsmuster und Entwicklungsstrategien für SQL Server auf Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]

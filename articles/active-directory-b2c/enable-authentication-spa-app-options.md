@@ -2,21 +2,21 @@
 title: Aktivieren von SPA-Anwendungsoptionen mit Azure Active Directory B2C
 description: In diesem Artikel werden mehrere Möglichkeiten zum Aktivieren der Verwendung von SPA-Anwendungen erläutert.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 07/05/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: 675db9c9d0a21b805ce8b4edeaff1a3b29ae7bfd
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.openlocfilehash: fb4d234f2ec6d991faa1c671a6b311eeff5ed299
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340512"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130037110"
 ---
 # <a name="configure-authentication-options-in-a-single-page-application-by-using-azure-ad-b2c"></a>Konfigurieren der Authentifizierung in einer Single-Page-Webanwendung (SPA) mit Azure AD B2C
 

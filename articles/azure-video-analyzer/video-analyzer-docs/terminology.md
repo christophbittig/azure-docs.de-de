@@ -4,12 +4,12 @@ description: Dieser Artikel vermittelt einen Überblick über die Begriffe des A
 ms.service: azure-video-analyzer
 ms.topic: conceptual
 ms.date: 06/01/2021
-ms.openlocfilehash: 59ed8f85f1196328b6ab477faae77ed35d054223
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: 1b9de2608d3b6ccb3922636f8cd473e79eff5e00
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114601854"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130070240"
 ---
 # <a name="azure-video-analyzer-terminology"></a>Azure Video Analyzer-Begriffe
 
@@ -40,7 +40,7 @@ Sie können Azure Video Analyzer verwenden, um Videoressourcen zu erstellen und 
 
 ## <a name="streaming"></a>Streaming
 
-Sie können Azure Video Analyzer verwenden, um Videoaufzeichnungen mithilfe von Branchenstandards für HTTP-basierte Medienstreamingprotokolle wie [HTTP Live Streaming (HLS)](https://developer.apple.com/streaming/) und [MPEG-DASH](https://dashif.org/about/) an Clients zu streamen. Sie können die [Player-Widgets (Webkomponenten)](https://github.com/Azure/video-analyzer/blob/main/widgets/readme.md) vom Azure Video Analyzer verwenden, um Videoressourcen wiederzugeben. Zusätzlich wird HLS von Web-Playern wie [JW Player](https://www.jwplayer.com/), [hls.js](https://github.com/video-dev/hls.js/), [VideoJS](https://videojs.com/), dem [Shaka Player von Google](https://github.com/google/shaka-player) unterstützt, oder Sie können nativ in mobilen Apps mit dem [Exoplayer](https://github.com/google/ExoPlayer) von Android und der [AV Foundation](https://developer.apple.com/av-foundation/) von iOS wiedergeben. MPEG-DASH wird ebenfalls von einer [Liste von Clients auf dieser Seite unterstützt](https://dashif.org/clients/).
+Sie können Azure Video Analyzer verwenden, um Videoaufzeichnungen mithilfe von Branchenstandards für HTTP-basierte Medienstreamingprotokolle wie [HTTP Live Streaming (HLS)](https://developer.apple.com/streaming/) und [MPEG-DASH](https://dashif.org/about/) an Clients zu streamen. Sie können die [Player-Widgets (Webkomponenten)](https://github.com/Azure/video-analyzer/blob/main/widgets/readme.md) vom Azure Video Analyzer verwenden, um Videoressourcen wiederzugeben. Zusätzlich wird HLS von Web-Playern wie [JW Player](https://www.jwplayer.com/), [hls.js](https://github.com/video-dev/hls.js/), [VideoJS](https://videojs.com/), dem [Shaka Player von Google](https://github.com/google/shaka-player) unterstützt, oder Sie können nativ in mobilen Apps mit dem [Exoplayer](https://github.com/google/ExoPlayer) von Android und der [AV Foundation](https://developer.apple.com/av-foundation/) von iOS wiedergeben. MPEG-DASH wird ebenfalls von einer [Liste von Clients auf dieser Seite unterstützt](https://dashif.org/members/).
 
 ## <a name="vms"></a>VMS
 

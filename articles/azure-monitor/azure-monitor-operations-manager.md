@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/11/2021
-ms.openlocfilehash: ccc46073ef81977f5cd467c84dc96946980cc8c8
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: e6c09cfb749542f268c6a6bf749328698b98688e
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129714469"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130178460"
 ---
 # <a name="azure-monitor-for-existing-operations-manager-customers"></a>Azure Monitor für bestehende Operations Manager-Kunden
 Dieser Artikel enthält Anleitungen für Kunden, die derzeit [System Center Operations Manager](/system-center/scom/welcome) verwenden und bei der Migration von Geschäftsanwendungen und anderen Ressourcen zu Azure einen Übergang zu [Azure Monitor](overview.md) planen. Es wird davon ausgegangen, dass das letztendliche Ziel ein vollständiger Übergang in die Cloud ist, bei dem so viele Operations Manager-Funktionen wie möglich durch Azure Monitor ersetzt werden, ohne dass die betrieblichen Anforderungen Ihres Geschäfts- und IT-Bereichs beeinträchtigt werden. 
@@ -25,7 +25,7 @@ In diesem Artikel wird davon ausgegangen, dass Sie [Operations Manager](/system-
 
 
 ## <a name="general-strategy"></a>Allgemeine Strategie
-Es gibt keine Migrationstools zum Konvertieren von Ressourcen von Operations Manager zu Azure Monitor, da sich die Plattformen grundlegend unterscheiden. Bei der Migration handelt es sich stattdessen um eine [Azure Monitor-Standardimplementierung](deploy.md), wobei Sie Operations Manager weiterhin verwenden. Während Sie Azure Monitor entsprechend Ihren Anforderungen für verschiedene Anwendungen und Komponenten anpassen und immer mehr Funktionen hinzukommen, können Sie damit beginnen, die Nutzung verschiedener Management Packs und Agents in Operations Manager einzustellen.
+Es gibt keine Migrationstools zum Konvertieren von Ressourcen von Operations Manager zu Azure Monitor, da sich die Plattformen grundlegend unterscheiden. Bei der Migration handelt es sich stattdessen um eine [Azure Monitor-Standardimplementierung](best-practices.md), wobei Sie Operations Manager weiterhin verwenden. Während Sie Azure Monitor entsprechend Ihren Anforderungen für verschiedene Anwendungen und Komponenten anpassen und immer mehr Funktionen hinzukommen, können Sie damit beginnen, die Nutzung verschiedener Management Packs und Agents in Operations Manager einzustellen.
 
 Die in diesem Artikel empfohlene allgemeine Strategie entspricht derjenigen im [Leitfaden zur Cloudüberwachung](/azure/cloud-adoption-framework/manage/monitor/), die ein [Überwachen der Hybrid Cloud](/azure/cloud-adoption-framework/manage/monitor/cloud-models-monitor-overview#hybrid-cloud-monitoring) empfiehlt und Ihnen somit einen schrittweisen Übergang zur Cloud ermöglicht. Obwohl sich einige Funktionen überlappen können, bietet Ihnen diese Strategie die Möglichkeit, die vorhandenen Geschäftsprozesse beizubehalten, während Sie sich mit der neuen Plattform vertraut machen. Stellen Sie die Verwendung von Operations Manager-Funktionen lediglich dann ein, wenn Sie sie durch Azure Monitor ersetzen können. Die Verwendung mehrerer Überwachungstools erhöht zwar die Komplexität, bietet Ihnen jedoch die Möglichkeit, die Vorteile von Azure Monitor zur Überwachung von Cloudworkloads der nächsten Generation zu nutzen und gleichzeitig die Überwachung von Serversoftware und Infrastrukturkomponenten, die möglicherweise lokal oder in anderen Clouds vorhanden sind, durch Operations Manager beizubehalten. 
 

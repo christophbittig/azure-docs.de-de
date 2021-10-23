@@ -3,21 +3,21 @@ title: Veröffentlichen lokaler Apps mit dem Azure Active Directory-Anwendungspr
 description: Erfahren Sie, warum zum externen Veröffentlichen lokaler Webanwendungen für Remotebenutzer der Anwendungsproxy verwendet werden sollte. Sie erhalten Informationen über die Architektur, Connectors, Authentifizierungsmethoden und Sicherheitsvorteile des Anwendungsproxys.
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-proxy
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 04/27/2021
 ms.author: kenwith
-ms.reviewer: japere
+ms.reviewer: ashishj
 ms.custom: has-adal-ref
-ms.openlocfilehash: cb6241443f4ec7aa9d60501aab50ca21ed1d147d
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 5968de16c25fd8f559caebaa2af5a9292688076c
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129235856"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129987782"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>Veröffentlichen von lokalen Apps für Remotebenutzer mit dem Azure AD-Anwendungsproxy
 
@@ -92,7 +92,7 @@ Es gibt mehrere Möglichkeiten, eine Anwendung für einmaliges Anmelden zu konfi
 
 Der Anwendungsproxy eignet sich für Apps, die das folgende Protokoll für die native Authentifizierung verwenden:
 
-* [**Integrierte Windows-Authentifizierung (IWA)** ](./application-proxy-configure-single-sign-on-with-kcd.md) Bei IWA verwenden die Anwendungsproxyconnectors die eingeschränkte Kerberos-Delegierung (Kerberos Constrained Delegation, KCD), um Benutzer für die Kerberos-Anwendung zu authentifizieren.
+* [**Integrierte Windows-Authentifizierung (IWA)**](./application-proxy-configure-single-sign-on-with-kcd.md) Bei IWA verwenden die Anwendungsproxyconnectors die eingeschränkte Kerberos-Delegierung (Kerberos Constrained Delegation, KCD), um Benutzer für die Kerberos-Anwendung zu authentifizieren.
 
 Der Anwendungsproxy unterstützt auch die folgenden Authentifizierungsprotokolle mit Drittanbieterintegration oder in bestimmten Konfigurationsszenarien:
 

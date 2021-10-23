@@ -12,12 +12,12 @@ metadata:
   ms.date: 04/27/2021
   ms.author: kenwith
   ms.reviewer: japere
-  ms.openlocfilehash: f0d27693bcf378988d70bae2ad45babedea4b858
-  ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+  ms.openlocfilehash: d144b160a940132bdab71362b6322b1e51679006
+  ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/29/2021
-  ms.locfileid: "129234317"
+  ms.lasthandoff: 10/06/2021
+  ms.locfileid: "129619160"
 title: Häufig gestellte Fragen zum Azure Active Directory-Anwendungsproxy (Azure AD-Anwendungsproxy)
 summary: Auf dieser Seite werden häufig gestellte Fragen zum Anwendungsproxy von Azure Active Directory (Azure AD) beantwortet.
 sections:
@@ -43,7 +43,7 @@ sections:
     answer: ''
   - question: >
       Warum verwendet mein Connector noch eine ältere Version und wird nicht automatisch auf die neueste Version aktualisiert?
-    answer: "Dies kann darauf zurückzuführen sein, dass der Updatedienst nicht ordnungsgemäß funktioniert oder keine neuen Updates verfügbar sind, die der Dienst installieren kann.\n\nDer Updatedienst funktioniert fehlerfrei, wenn er ausgeführt wird und im Ereignisprotokoll keine Fehler aufgezeichnet sind (Anwendungs- und Dienstprotokolle -> Microsoft -> AadApplicationProxy -> Updater -> Admin). \n\n> [!IMPORTANT]\n> Nur Hauptversionen werden für das automatische Upgrade veröffentlicht. Es wird empfohlen, Ihren Connector nur dann manuell zu aktualisieren, wenn dies unbedingt erforderlich ist. Beispielsweise können Sie nicht auf ein großes Release warten, da Sie ein bekanntes Problem beheben müssen oder ein neues Feature verwenden möchten. Weitere Informationen zu neuen Releases und zum Versionstyp (Download, automatisches Upgrade), Fehlerbehebungen und neue Funktionen finden Sie unter [Azure AD-Anwendungsproxy: Verlauf der Versionsveröffentlichungen](./application-proxy-release-version-history.md).\n\nSo aktualisieren Sie einen Connector manuell\n\n- Laden Sie die neueste Version des Connectors herunter. (Sie finden die Version im Azure-Portal unter „Anwendungsproxy“). Sie finden den Link auch unter [Azure AD-Anwendungsproxy: Verlauf der Versionsveröffentlichungen](./application-proxy-release-version-history.md).\n-   Das Installationsprogramm startet die Azure AD-Anwendungsproxyconnector-Dienste neu. In einigen Fällen ist möglicherweise ein Neustart des Servers erforderlich, wenn das Installationsprogramm nicht alle Dateien ersetzen kann. Daher empfiehlt es sich, alle Anwendungen (d. h. Ereignisanzeige) zu schließen, bevor Sie das Upgrade starten.\n-   Führen Sie das Installationsprogramm aus. Der Upgradevorgang ist schnell und erfordert keine Angabe von Anmeldeinformationen. Der Connector wird nicht erneut registriert.\n"
+    answer: "Dies kann darauf zurückzuführen sein, dass der Updatedienst nicht ordnungsgemäß funktioniert oder keine neuen Updates verfügbar sind, die der Dienst installieren kann.\n\nDer Updatedienst funktioniert fehlerfrei, wenn er ausgeführt wird und im Ereignisprotokoll keine Fehler aufgezeichnet sind (Anwendungs- und Dienstprotokolle -> Microsoft -> AadApplicationProxy -> Updater -> Admin). \n\n> [!IMPORTANT]\n> Nur Hauptversionen werden für das automatische Upgrade veröffentlicht. Es wird empfohlen, Ihren Connector nur dann manuell zu aktualisieren, wenn dies unbedingt erforderlich ist. Beispielsweise können Sie nicht auf ein großes Release warten, da Sie ein bekanntes Problem beheben müssen oder ein neues Feature verwenden möchten. Weitere Informationen zu neuen Releases und zum Versionstyp (Download, automatisches Upgrade), Fehlerbehebungen und neue Funktionen finden Sie unter [Azure AD-Anwendungsproxy: Verlauf der Versionsveröffentlichungen](./application-proxy-release-version-history.md).\n\nSo aktualisieren Sie einen Connector manuell\n\n- Laden Sie die neueste Version des Connectors herunter. (Sie finden die Version im Azure-Portal unter „Anwendungsproxy“.) Sie finden den Link auch unter [Azure AD-Anwendungsproxy: Verlauf der Versionsveröffentlichungen](./application-proxy-release-version-history.md).\n-   Das Installationsprogramm startet die Azure AD-Anwendungsproxyconnector-Dienste neu. In einigen Fällen ist möglicherweise ein Neustart des Servers erforderlich, wenn das Installationsprogramm nicht alle Dateien ersetzen kann. Daher empfiehlt es sich, alle Anwendungen (d. h. Ereignisanzeige) zu schließen, bevor Sie das Upgrade starten.\n-   Führen Sie das Installationsprogramm aus. Der Upgradevorgang ist schnell und erfordert keine Angabe von Anmeldeinformationen. Der Connector wird nicht erneut registriert.\n"
   - question: >
       Können Anwendungsproxyconnector-Dienste in einem anderen als dem Standardbenutzerkontext ausgeführt werden?
     answer: >
@@ -118,13 +118,29 @@ sections:
     answer: >
       Auf der Seite „Anwendungsregistrierungen“ können Sie die Homepage-URL in die gewünschte externe URL der Landing Page ändern. Die angegebene Seite wird geladen, wenn die Anwendung über „Meine Apps“ oder das Office 365-Portal gestartet wird. Die Konfigurationsschritte finden Sie unter [Festlegen einer benutzerdefinierten Startseite für veröffentlichte Apps mithilfe eines Azure AD-Anwendungsproxys](application-proxy-configure-custom-home-page.md).
   - question: >
+      Warum werde ich an eine abgeschnittene URL umgeleitet, wenn ich auf meine veröffentlichte Anwendung zugreifen möchte und die URL ein Rautezeichen (#) enthält?
+    answer: >
+      Wenn die Azure AD-Vorauthentifizierung konfiguriert ist und die Anwendungs-URL beim ersten Versuch, auf die Anwendung zuzugreifen, das Rautezeichen enthält, werden Sie zur Authentifizierung zu Azure AD (login.microsoftonline.com) umgeleitet. Nachdem Sie die Authentifizierung abgeschlossen haben, werden Sie an den URL-Teil vor dem Rautezeichen umgeleitet, und der Teil nach dem Rautezeichen wird scheinbar ignoriert bzw. entfernt. Wenn die URL beispielsweise `https://www.contoso.com/#/home/index.html` lautet, wird der Benutzer nach Abschluss der Azure AD-Authentifizierung zu `https://www.contoso.com/` umgeleitet.
+
+      Dies ist das vorgesehene Verhalten aufgrund der Verarbeitung des Rautezeichens durch den Browser.
+
+
+      Mögliche Lösungen/Alternativen:
+
+
+      - Richten Sie eine Umleitung von `https://www.contoso.com` zu `https://contoso.com/#/home/index.html` ein. Der Benutzer muss zuerst auf `https://www.contoso.com` zugreifen.
+
+      - Die für den ersten Zugriffsversuch verwendete URL muss das Rautezeichen (#) in codierter Form (%23) enthalten. Dies wird vom veröffentlichten Server möglicherweise nicht akzeptiert.
+
+      - Konfigurieren Sie den Vorauthentifizierungstyp „Passthrough“ (nicht empfohlen).
+  - question: >
       Können nur IIS-basierte Anwendungen veröffentlicht werden? Wie sieht es mit Webanwendungen aus, die auf Nicht-Windows-Webservern ausgeführt werden? Muss der Connector auf einem Server installiert sein, auf dem IIS installiert ist?
     answer: >
       Nein, es gibt keine IIS-Anforderung für Anwendungen, die veröffentlicht werden. Sie können Webanwendungen veröffentlichen, die auf Servern ausgeführt werden, die nicht auf Windows Server basieren. Abhängig davon, ob der Webserver die Aushandlung (Kerberos-Authentifizierung) unterstützt, können Sie jedoch möglicherweise keine Vorauthentifizierung bei einem Nicht-Windows-Server verwenden. IIS ist nicht auf dem Server erforderlich, auf dem der Connector installiert ist.
   - question: >
       Kann ich den Anwendungsproxy so konfigurieren, dass der HSTS-Header hinzugefügt wird?
     answer: >
-      Der Anwendungsproxy fügt HTTPS-Antworten nicht automatisch den HTTP Strict-Transport-Security-Header hinzu, behält jedoch den Header bei, wenn er sich in der ursprünglichen Antwort befindet, die von der veröffentlichten Anwendung gesendet wurde. Die Suche nach einer Einstellung zur Aktivierung dieser Funktion ist in Planung. Wenn Sie an einer Vorschau interessiert sind, die das Hinzufügen des HSTS-Headers zu Antworten ermöglicht, wenden Sie sich an aadapfeedback@microsoft.com, um weitere Informationen zu erhalten.
+      Der Anwendungsproxy fügt HTTPS-Antworten nicht automatisch den HTTP Strict-Transport-Security-Header hinzu, behält jedoch den Header bei, wenn er sich in der ursprünglichen Antwort befindet, die von der veröffentlichten Anwendung gesendet wurde. Die Suche nach einer Einstellung zur Aktivierung dieser Funktion ist in Planung.
   - question: >
       Integrierte Windows-Authentifizierung
     answer: ''
@@ -210,7 +226,7 @@ sections:
   - question: >
       Funktioniert die WebSocket-Unterstützung auch bei anderen Anwendungen als QlikSense und den Remotedesktop-Webclient (HTML5)?
     answer: >
-      Derzeit befindet sich die WebSocket-Protokollunterstützung noch in der öffentlichen Vorschauphase und funktioniert möglicherweise nicht für andere Anwendungen. Einige Kunden verzeichneten einen gemischten Erfolg beim Verwenden des WebSocket-Protokolls mit anderen Anwendungen. Wenn Sie solche Szenarien testen, würden wir uns über Feedback zu Ihren Ergebnissen freuen. Senden Sie uns Ihr Feedback an aadapfeedback@microsoft.com.
+      Derzeit befindet sich die WebSocket-Protokollunterstützung noch in der öffentlichen Vorschauphase und funktioniert möglicherweise nicht für andere Anwendungen. Einige Kunden verzeichneten einen gemischten Erfolg beim Verwenden des WebSocket-Protokolls mit anderen Anwendungen.
 
 
       Features (Ereignisprotokolle, PowerShell und Remotedesktopdienste) im Windows Admin Center (WAC) oder Remotedesktop-Webclient funktionieren derzeit nicht über den Azure AD-Anwendungsproxy.

@@ -7,12 +7,12 @@ ms.date: 10/09/2020
 ms.author: helohr
 ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: 481b81edb0ee5709e712f213036fa8df53aca7c4
-ms.sourcegitcommit: d90cb315dd90af66a247ac91d982ec50dde1c45f
+ms.openlocfilehash: 282044d0ee3d07ae4eaa2c63d8d0bcebae0251aa
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/04/2021
-ms.locfileid: "113287922"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129544487"
 ---
 # <a name="customize-remote-desktop-protocol-rdp-properties-for-a-host-pool"></a>Anpassen der RDP-Eigenschaften (Remotedesktopprotokoll) für einen Hostpool
 
@@ -38,6 +38,7 @@ RDP-Dateien haben standardmäßig die folgenden Eigenschaften:
 >[!NOTE]
 >- Der Modus mit mehreren Monitoren wird nur für Desktop-App-Gruppen aktiviert und für RemoteApp-App-Gruppen ignoriert.
 >- Alle Standardeigenschaften von RDP-Dateien werden im Azure-Portal verfügbar gemacht.
+>- Standardmäßig ist das CustomRdpProperty-Feld im Azure-Portal auf Null festgelegt. Wenn das CustomRdpProperty-Feld auf Null festgelegt ist, werden alle standardmäßigen RDP-Eigenschaften auf Ihren Hostpool angewendet. Wenn das CustomRdpProperty-Feld leer ist, werden keine standardmäßigen RDP-Eigenschaften auf Ihren Hostpool angewendet.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

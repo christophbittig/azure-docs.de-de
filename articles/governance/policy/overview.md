@@ -3,12 +3,12 @@ title: Übersicht zu Azure-Richtlinien
 description: Azure Policy ist ein Dienst in Azure, mit dem Sie Richtliniendefinitionen in Ihrer Azure-Umgebung erstellen, zuweisen und verwalten können.
 ms.date: 07/27/2021
 ms.topic: overview
-ms.openlocfilehash: 9462281ce37e066a920c17d1dc142a177b97fb2a
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: aff8dc3aa4ff97438a4ebc457a6946f30dccb142
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122770548"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129660854"
 ---
 # <a name="what-is-azure-policy"></a>Was ist Azure Policy?
 
@@ -74,7 +74,7 @@ Azure Policy verfügt über verschiedene Berechtigungen (als Vorgänge bezeichne
 - [Microsoft.Authorization](../../role-based-access-control/resource-provider-operations.md#microsoftauthorization)
 - [Microsoft.PolicyInsights](../../role-based-access-control/resource-provider-operations.md#microsoftpolicyinsights)
 
-Zahlreiche integrierte Rollen erteilen Berechtigungen für Azure Policy-Ressourcen. Die Rolle **Mitwirkender bei Ressourcenrichtlinien** umfasst die meisten Vorgänge in Azure Policy. Die Rolle **Besitzer** verfügt über die vollständigen Berechtigungen. Sowohl **Mitwirkender** als auch **Leser** haben Zugriff auf alle Azure Policy-_Lesevorgänge_. **Mitwirkende** können eine Ressourcenwartung auslösen, aber keine Definitionen oder Zuweisungen _erstellen_. Die Berechtigung **Benutzerzugriffsadministrator** ist erforderlich, um der verwalteten Identität unter den Zuweisungen **deployIfNotExists** oder **modify** die benötigten Berechtigungen zu gewähren.
+Zahlreiche integrierte Rollen erteilen Berechtigungen für Azure Policy-Ressourcen. Die Rolle **Mitwirkender bei Ressourcenrichtlinien** umfasst die meisten Vorgänge in Azure Policy. Die Rolle **Besitzer** verfügt über die vollständigen Berechtigungen. Sowohl **Mitwirkender** als auch **Leser** haben Zugriff auf alle Azure Policy-_Lesevorgänge_. **Mitwirkende** können eine Ressourcenwartung auslösen, aber keine Definitionen oder Zuweisungen _erstellen_. Die Berechtigung **Benutzerzugriffsadministrator** ist erforderlich, um der verwalteten Identität unter den Zuweisungen **deployIfNotExists** oder **modify** die benötigten Berechtigungen zu gewähren. Alle Richtlinienobjekte sind für alle Rollen innerhalb des Bereichs lesbar.
 
 Wenn keine der integrierten Rollen über die erforderlichen Berechtigungen verfügt, erstellen Sie eine [benutzerdefinierte Rolle](../../role-based-access-control/custom-roles.md).
 

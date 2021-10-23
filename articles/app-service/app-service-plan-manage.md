@@ -6,12 +6,12 @@ ms.assetid: 4859d0d5-3e3c-40cc-96eb-f318b2c51a3d
 ms.topic: article
 ms.date: 10/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: bae05ac9f7b8287cf7e66a0c1a0e634e8d541489
-ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
+ms.openlocfilehash: 1d0454c4de9831e4ed4062607a04a8cc7bec6210
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112678784"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129987611"
 ---
 # <a name="manage-an-app-service-plan-in-azure"></a>Verwalten eines App Service-Plans in Azure
 
@@ -20,7 +20,7 @@ Ein [Azure App Service-Plan](overview-hosting-plans.md) stellt Ressourcen bereit
 ## <a name="create-an-app-service-plan"></a>Wie erstelle ich einen Plan?
 
 > [!TIP]
-> Falls Sie eine App Service-Umgebung haben, finden Sie Informationen dazu im Abschnitt [Create an App Service plan (Erstellen eines App Service-Plans)](environment/app-service-web-how-to-create-a-web-app-in-an-ase.md#createplan).
+> Wenn Sie einen Plan in einer App Service-Umgebung erstellen möchten, können Sie ihn in der **Region** auswählen und die restlichen Schritte wie unten beschrieben ausführen.
 
 Sie können einen leeren App Service-Plan erstellen; Sie können einen Plan aber auch im Rahmen der App-Erstellung erstellen.
 

@@ -3,7 +3,7 @@ title: Erstellen der FCI mit „Direkte Speicherplätze“
 description: Verwenden Sie „Direkte Speicherplätze“, um eine Failoverclusterinstanz (FCI) mit SQL Server auf Azure-VMs zu erstellen.
 services: virtual-machines
 documentationCenter: na
-author: MashaMSFT
+author: rajeshsetlem
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
@@ -13,13 +13,14 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
-ms.author: mathoma
-ms.openlocfilehash: 7c15dad5d82f538f6c6e81b0b99fed23d9bb0ae9
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.author: rsetlem
+ms.reviewer: mathoma
+ms.openlocfilehash: 44b6035ed328ffdc3a0b6a1a6ef14ab1c593e844
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123226776"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130166972"
 ---
 # <a name="create-an-fci-with-storage-spaces-direct-sql-server-on-azure-vms"></a>Erstellen einer FCI mit „Direkte Speicherplätze“ (SQL-Server auf Azure-VMs)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]

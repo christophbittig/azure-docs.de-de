@@ -3,7 +3,7 @@ title: Konfigurieren von Azure Load Balancer für einen VNN einer Failovercluste
 description: Erfahren Sie, wie Sie einen Azure Load Balancer zum Weiterleiten von Datenverkehr an den virtuellen Netzwerknamen (VNN) für Ihre Failoverclusterinstanz (FCI) mit SQL Server auf Azure-VMs für Hochverfügbarkeit und Notfallwiederherstellung (High Availability und Disaster Recovery, HADR) konfigurieren.
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: rajeshsetlem
 manager: jroth
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
@@ -13,14 +13,14 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
-ms.author: mathoma
-ms.reviewer: jroth
-ms.openlocfilehash: 66b762cac767987a1ea2cf74b9e706e7a7939d51
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.author: rsetlem
+ms.reviewer: mathoma
+ms.openlocfilehash: 327c030708f37bffab05aa72884422a487b6b729
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122356135"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130166943"
 ---
 # <a name="configure-azure-load-balancer-for-an-fci-vnn"></a>Konfigurieren von Azure Load Balancer für einen FCI-VNN
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -273,7 +273,7 @@ Weitere Informationen finden Sie unter:
 
 - [Windows Server-Failovercluster mit SQL Server auf Azure-VMs](hadr-windows-server-failover-cluster-overview.md)
 - [Failoverclusterinstanzen mit SQL Server auf Azure-VMs](failover-cluster-instance-overview.md)
-- [Übersicht über Failoverclusterinstanzen](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+- [AlwaysOn-Failoverclusterinstanzen (SQL Server)](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
 - [HADR-Einstellungen für SQL Server auf Azure-VMs](hadr-cluster-best-practices.md)
 
 
