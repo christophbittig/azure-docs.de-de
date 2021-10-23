@@ -62,7 +62,7 @@
                 - name: Lastenausgleich für virtuelle Computer über Verfügbarkeitszonen hinweg mit Azure (CLI)
                   href: ../load-balancer/quickstart-load-balancer-standard-public-cli.md
         - name: Öffentliche IP-Adresse
-          href: ../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address
+          href: ../virtual-network/ip-services/virtual-network-public-ip-address.md#create-a-public-ip-address
         - name: SQL-Datenbank
           items:
             - name: Verfügbarkeitszonen mit SQL-Datenbank im Tarif „Universell“

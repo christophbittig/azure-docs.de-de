@@ -11,12 +11,12 @@ metadata:
   author: KumudD
   ms.author: kumud
   ms.date: 01/28/2021
-  ms.openlocfilehash: bb05b2a2b3aa42cc83f4f014aa00082dc00e6aa9
-  ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+  ms.openlocfilehash: 12e03cad862d3ef1f9704639f2e386312369fd10
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/20/2021
-  ms.locfileid: "122514531"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130257763"
 landingContent:
 - title: Informationen zu Virtual Network
   linkLists:
@@ -53,7 +53,7 @@ landingContent:
     - text: Häufig gestellte Fragen zur Sicherheit virtueller Netzwerke
       url: virtual-networks-faq.md#security
     - text: Standardzugriff in ausgehender Richtung
-      url: default-outbound-access.md
+      url: ./ip-services/default-outbound-access.md
   - linkListType: tutorial
     links:
     - text: Filtern des Netzwerkdatenverkehrs mithilfe von Netzwerksicherheitsgruppen
@@ -111,31 +111,31 @@ landingContent:
   - linkListType: concept
     links:
     - text: IP-Adresstypen und Zuordnungsmethoden
-      url: ./public-ip-addresses.md
+      url: ./ip-services/public-ip-addresses.md
   - linkListType: how-to-guide
     links:
     - text: Erstellen, Ändern oder Löschen einer öffentlichen IP-Adresse
-      url: virtual-network-public-ip-address.md
+      url: ./ip-services/virtual-network-public-ip-address.md
     - text: Hinzufügen einer öffentlichen IP-Adresse zu einem virtuellen Computer
-      url: associate-public-ip-address-vm.md
+      url: ./ip-services/associate-public-ip-address-vm.md
     - text: Erstellen eines virtuellen Computers mit statischer IP-Adresse
-      url: virtual-network-deploy-static-pip-arm-portal.md
+      url: ./ip-services/virtual-network-deploy-static-pip-arm-portal.md
     - text: Konfigurieren einer statischen privaten IP-Adresse für einen virtuellen Computer
-      url: virtual-networks-static-private-ip-arm-pportal.md
+      url: ./ip-services/virtual-networks-static-private-ip-arm-pportal.md
     - text: Zuweisen mehrerer IP-Adressen zu einem virtuellen Computer
-      url: virtual-network-multiple-ip-addresses-powershell.md
+      url: ./ip-services/virtual-network-multiple-ip-addresses-powershell.md
 - title: Erstellen von IPv6 für virtuelle Netzwerke
   linkLists:
   - linkListType: concept
     links:
     - text: Was ist IPv6 für Azure Virtual Network?
-      url: ipv6-overview.md
+      url: ./ip-services/ipv6-overview.md
   - linkListType: deploy
     links:
     - text: Bereitstellen einer IPv6-Anwendung mit dualem Stapel – Load Balancer Standard
-      url: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md
+      url: ../load-balancer/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md
     - text: Bereitstellen einer IPv6-Anwendung mit dualem Stapel – Load Balancer Basic
-      url: virtual-network-ipv4-ipv6-dual-stack-powershell.md
+      url: ../load-balancer/virtual-network-ipv4-ipv6-dual-stack-powershell.md
 - title: Überwachen virtueller Netzwerke
   linkLists:
   - linkListType: concept
@@ -153,19 +153,19 @@ landingContent:
   - linkListType: concept
     links:
     - text: IP-Adresstypen und Zuordnungsmethoden
-      url: ./public-ip-addresses.md
+      url: ./ip-services/public-ip-addresses.md
     - text: Was ist IPv6 für Azure Virtual Network?
-      url: ipv6-overview.md
+      url: ./ip-services/ipv6-overview.md
     - text: Präfix für öffentliche IP-Adressen
-      url: public-ip-address-prefix.md
+      url: ./ip-services/public-ip-address-prefix.md
   - linkListType: how-to-guide
     links:
     - text: Erstellen, Ändern oder Löschen einer öffentlichen IP-Adresse
-      url: virtual-network-public-ip-address.md
+      url: ./ip-services/virtual-network-public-ip-address.md
     - text: Bereitstellen einer IPv6-Anwendung mit dualem Stapel
-      url: virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md
+      url: ../load-balancer/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md
     - text: Erstellen, Ändern oder Löschen des Präfix einer öffentlichen IP-Adresse
-      url: manage-public-ip-address-prefix.md
+      url: ./ip-services/manage-public-ip-address-prefix.md
 - title: Verweis
   linkLists:
   - linkListType: reference
