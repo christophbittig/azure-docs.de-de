@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 ms.custom: mvc
-ms.openlocfilehash: d911f5f0ee1670177e6de23b7afd647582253a8a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6fd1592e1f0b7d5da44fac15e20b03b8f237ad0a
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121748783"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129997343"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-by-using-azure-maps"></a>Tutorial: Implementieren der räumlichen IoT-Analyse mit Azure Maps
 
@@ -116,7 +116,7 @@ Nachdem Sie die Erstellung Ihres Speicherkontos erfolgreich abgeschlossen haben,
 
 Verwenden Sie als Nächstes die [Postman-App](https://www.getpostman.com), um den [Geofence für Azure Maps hochzuladen](./geofence-geojson.md). Der Geofence definiert den autorisierten geografischen Bereich für unser Mietfahrzeug. Sie verwenden den Geofence in Ihrer Azure-Funktion, um zu bestimmen, ob ein Fahrzeug außerhalb des Geofencebereichs bewegt wurde.
 
-Führen Sie die folgenden Schritte aus, um den Geofence mit der Datenupload-API von Azure Maps hochzuladen: 
+Führen Sie die folgenden Schritte aus, um den Geofence mit der Datenupload-API von Azure Maps hochzuladen:
 
 1. Öffnen Sie die Postman-App und wählen Sie noch einmal **Neu** aus. Wählen Sie in dem Fenster **Neu erstellen** die Option **HTTP-Anforderung** aus und geben Sie einen Namen für die Anforderung ein.
 
@@ -246,7 +246,6 @@ Sobald Ihre Azure-Funktion ausgeführt wird, können Sie Telemetriedaten an die 
     dotnet run
     ```
 
-
   Ihr lokales Terminal sollte wie folgt aussehen.
 
 :::image type="content" source="./media/tutorial-iot-hub-maps/terminal.png" alt-text="Screenshot: Terminalausgabe":::
@@ -283,7 +282,6 @@ Es sind keine zu bereinigenden Ressourcen vorhanden.
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zum Senden von Telemetriedaten von einem Gerät an die Cloud (und umgekehrt) finden Sie unter:
-
 
 > [!div class="nextstepaction"]
 > [Senden von Telemetriedaten von einem Gerät](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp)

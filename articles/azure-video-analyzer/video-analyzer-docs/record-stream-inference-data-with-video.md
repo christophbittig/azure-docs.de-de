@@ -4,12 +4,12 @@ description: In diesem Tutorial erfahren Sie, wie Sie Azure Video Analyzer verwe
 ms.service: azure-video-analyzer
 ms.topic: how-to
 ms.date: 06/01/2021
-ms.openlocfilehash: 3122ea07fdab20c93ed4720d0c43f180cce5306d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0e2df2b89efb974e6336cf4df0ce4e06a63d528a
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355192"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129996302"
 ---
 # <a name="tutorial-record-and-stream-inference-metadata-with-video"></a>Tutorial: Aufzeichnen und Streamen von Rückschlussmetadaten mit Video
   
@@ -101,7 +101,7 @@ Navigieren Sie als Nächstes zum Ordner „src/cloud-to-device-console-app“. H
    > [!div class="mx-imgBorder"]
    > :::image type="content" source="./media/analyze-live-video-use-your-model-http/deployment-single-device.png" alt-text= "Screenshot of Create Deployment for Single Device":::
 
-1. Wählen Sie **ava-sample-iot-edge-device** aus, wenn Sie zum Auswählen eines IoT Hub-Geräts aufgefordert werden.
+1. Wählen Sie **avasample-iot-edge-device** aus, wenn Sie zum Auswählen eines IoT Hub-Geräts aufgefordert werden.
 1. Aktualisieren Sie nach ungefähr 30 Sekunden unten links im Fenster den Dienst „Azure IoT Hub“. Das Edge-Gerät zeigt nun die folgenden bereitgestellten Module an:
 
    - Das **avaedge**-Modul, bei dem es sich um das Video Analyzer-Modul handelt.

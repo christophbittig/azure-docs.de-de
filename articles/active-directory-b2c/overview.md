@@ -1,6 +1,6 @@
 ---
 title: Was ist Azure Active Directory B2C?
-description: Erfahren Sie, wie Sie Azure Active Directory B2C zur Unterstützung externer Identitäten in Ihren Anwendungen verwenden können, einschließlich der Anmeldung bei sozialen Netzwerken mit Facebook, Google und anderen Identitätsanbietern.
+description: Hier erfahren Sie, wie Sie Azure Active Directory B2C zur Unterstützung externer Identitäten in Ihren Anwendungen verwenden, einschließlich der Registrierung bei sozialen Netzwerken mit Facebook, Google und anderen Identitätsanbietern.
 services: active-directory-b2c
 author: msmimart
 manager: celestedg
@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 10/01/2021
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 916c5191acb0f7245c929c6ef1db5fca4fc3841b
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 54af9f4b8584500faa9c3134f350a436da54c24b
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129352459"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129709964"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Was ist Azure Active Directory B2C?
 
@@ -25,10 +25,10 @@ Azure Active Directory B2C ermöglicht die Benutzeridentifizierung für Unterneh
 
 Azure AD B2C ist eine CIAM-Lösung (Customer Identity Access Management), die Millionen von Benutzer*innen und Milliarden von Authentifizierungen pro Tag unterstützt. Es sorgt für die Skalierung und Sicherheit der Authentifizierungsplattform sowie die Überwachung und automatische Behandlung von Bedrohungen wie Denial-of-Service-, Kennwort-Spray- oder Brute-Force-Angriffen.
 
-Azure AD B2C ist ein von [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) getrennter Dienst. Er basiert auf der gleichen Technologie wie Azure AD, dient aber einem anderen Zweck. Er soll Unternehmen ermöglichen, kundenorientierte Anwendungen zu erstellen, bei denen sich dann alle Benutzer*innen ohne Einschränkungen des Benutzerkontos registrieren können.
+Azure AD B2C ist ein von [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) getrennter Dienst. Er basiert auf der gleichen Technologie wie Azure AD, dient aber einem anderen Zweck. Er ermöglicht es Unternehmen, kundenorientierte Anwendungen zu erstellen, bei denen sich dann alle Benutzer ohne Einschränkungen des Benutzerkontos registrieren können.
    
 ## <a name="who-uses-azure-ad-b2c"></a>Zielgruppe von Azure AD B2C
-Alle Unternehmen oder Personen, die es allen Benutzer*innen gestatten möchten, sich bei Web- oder mobilen Anwendungen zu registrieren. 
+Alle Unternehmen oder Einzelpersonen, die Endbenutzer mithilfe einer White-Label-Authentifizierungslösung bei ihren webbasierten/mobilen Anwendungen authentifizieren möchten. Neben der Authentifizierung wird der Azure AD B2C-Dienst für die Autorisierung verwendet, etwa für den Zugriff authentifizierter Benutzer auf API-Ressourcen. Azure AD B2C ist für die Nutzung durch **IT-Administratoren** und **Entwickler** vorgesehen.
 
 ## <a name="custom-branded-identity-solution"></a>Identitätslösung mit benutzerdefiniertem Branding
 

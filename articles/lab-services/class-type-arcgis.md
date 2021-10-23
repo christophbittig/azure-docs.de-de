@@ -2,15 +2,15 @@
 title: Einrichten eines Labs für ArcMap\ArcGIS Desktop mit Azure Lab Services | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie ein Lab für Klassen mit ArcGIS einrichten.
 author: nicolela
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/04/2021
 ms.author: nicolela
-ms.openlocfilehash: 530597a72b19afa1e80b5c7640b105d86479b1c1
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.openlocfilehash: dad2beae5248d8f73ceb2dfa747d0c4f45333a80
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "101740102"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130177192"
 ---
 # <a name="set-up-a-lab-for-arcmaparcgis-desktop"></a>Einrichten eines Labs für ArcMap\ArcGIS Desktop
 

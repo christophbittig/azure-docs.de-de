@@ -7,12 +7,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 12/04/2020
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: d4cb278fbfd6feb3fb2be0e2a113092ff24644cc
-ms.sourcegitcommit: ee5d9cdaf691f578f2e390101bf5350859d85c67
+ms.openlocfilehash: 328d99d2e690004f87d7224253e81ed6815a2e75
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129740263"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129984043"
 ---
 # <a name="application-insights-java-in-process-agent-in-azure-spring-cloud"></a>Application Insights - Java-Prozess-Agent in der Azure Spring Cloud
 
@@ -177,7 +177,7 @@ resource "azurerm_spring_cloud_service" "example" {
 Sie können Application Insights mit Azure CLI-Befehlen verwalten. Stellen Sie sicher, dass Sie in den folgenden Befehlen den Text *\<placeholder>* durch die beschriebenen Werte ersetzen. Der Platzhalter *\<service-name>* bezieht sich auf den Namen Ihrer Azure Spring Cloud-Instanz.
 
 Um Application Insights beim Erstellen einer Azure Spring Cloud-Instanz zu konfigurieren, verwenden Sie den folgenden Befehl. Für das Argument `app-insights` können Sie einen Application Insights-Namen oder eine Ressourcen-ID angeben.
-   
+
 ```azurecli
 az spring-cloud create \
     --resource-group <resource-group-name> \
@@ -187,7 +187,7 @@ az spring-cloud create \
 ```
 
 Sie können auch eine Application Insights-Verbindungszeichenfolge (bevorzugt) oder einen Instrumentierungsschlüssel verwenden, wie im folgenden Beispiel gezeigt.
-   
+
 ```azurecli
 az spring-cloud create \
     --resource-group <resource-group-name> \
@@ -289,9 +289,14 @@ Wenn Daten in Application Insights gespeichert werden, enthält es den Verlauf v
   * Drei Instanzen in der Anwendungsübersicht mit Zeitbereichen in den letzten 24 Stunden sowie Fehler, Leistung und Metriken.
   * Zwei Instanzen in der Anwendungsübersicht mit Zeitbereichen in der letzten Stunde sowie Fehler, Leistung und Metriken.
   * Zwei Instanzen in Livemetriken.
-
 ## <a name="see-also"></a>Weitere Informationen
 
 * [Verwenden der verteilten Ablaufverfolgung mit Azure Spring Cloud](./how-to-distributed-tracing.md)
 * [Analysieren von Protokollen und Metriken](diagnostic-services.md)
 * [Streamen von Protokollen in Echtzeit](./how-to-log-streaming.md)
+* [Anwendungszuordnung](/azure/azure-monitor/app/app-map)
+* [Livemetriken](/azure/azure-monitor/app/live-stream)
+* [Leistung](/azure/azure-monitor/app/tutorial-performance)
+* [Fehler](/azure/azure-monitor/app/tutorial-runtime-exceptions)
+* [Metriken](/azure/azure-monitor/essentials/tutorial-metrics-explorer)
+* [Protokolle](/azure/azure-monitor/logs/data-platform-logs)

@@ -8,12 +8,12 @@ ms.date: 07/09/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 81c448b39dcbed56d0208f3e8931eacabd5331f0
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.openlocfilehash: 7d36bace70e8e539d03e75808152a79b17b35423
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129661811"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130063391"
 ---
 # <a name="create-and-provision-iot-edge-devices-at-scale-with-a-tpm-on-linux"></a>Bedarfsgerechtes Erstellen und Bereitstellen von IoT Edge-Geräten mit einem TPM unter Linux
 
@@ -107,7 +107,7 @@ Mit einem virtuellen Switch können Sie Ihren virtuellen Computer mit einem phys
 
 Erstellen Sie einen neuen virtuellen Computer aus einer startbaren Imagedatei.
 
-1. Laden Sie eine für Ihren virtuellen Computer zu verwendende Festplatten-Imagedatei herunter, und speichern Sie sie lokal. Beispiel: [Ubuntu-Server 18.04](http://releases.ubuntu.com/18.04/). Informationen zu unterstützten Betriebssystemen für IoT Edge-Geräte finden Sie unter [Von Azure IoT Edge unterstützte Systeme](/support.md).
+1. Laden Sie eine für Ihren virtuellen Computer zu verwendende Festplatten-Imagedatei herunter, und speichern Sie sie lokal. Beispiel: [Ubuntu-Server 18.04](http://releases.ubuntu.com/18.04/). Informationen zu unterstützten Betriebssystemen für IoT Edge-Geräte finden Sie unter [Von Azure IoT Edge unterstützte Systeme](/azure/iot-edge/support).
 
 1. Wählen Sie im Hyper-V-Manager im Menü **Aktionen** nacheinander **Aktion** > **Neu** > **Virtueller Computer** aus.
 

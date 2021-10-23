@@ -12,13 +12,13 @@ ms.topic: overview
 ms.date: 09/22/2021
 ms.author: davidmu
 ms.reviewer: ergreenl
-ms.custom: contperf-fy21q1
-ms.openlocfilehash: c3b2cc9f3fa6656cf4d5e493f725c17b64f4d7d8
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.custom: contperf-fy21q1, contperf-fy22q2
+ms.openlocfilehash: 478998d69a12c7b2a708bc3fe0a2b1bd5b9a88be
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129233576"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129997457"
 ---
 # <a name="what-is-single-sign-on-in-azure-active-directory"></a>Was ist einmaliges Anmelden in Azure Active Directory?
 
@@ -32,7 +32,7 @@ Die Auswahl einer Methode für einmaliges Anmelden hängt davon ab, wie die Anwe
 
 - **Verbund**: Wenn Sie einmaliges Anmelden für mehrere Identitätsanbieter einrichten, wird dies als Verbund bezeichnet. Eine SSO-Implementierung auf der Grundlage von Verbundprotokollen verbessert die Sicherheit, Zuverlässigkeit, Endbenutzerfreundlichkeit und Implementierung. 
 
-    Mit Verbund-SSO nimmt Azure AD die Authentifizierung des Benutzers bei der Anwendung mithilfe seines Azure AD-Kontos vor. Diese Methode wird für [SAML 2.0](../develop/single-sign-on-saml-protocol.md)-, WS-Verbund- oder [OpenID Connect](../develop/active-directory-v2-protocols.md)-Anwendungen unterstützt. Verbund-SSO ist der umfangreichste SSO-Modus. Verwenden Sie Verbund-SSO anstelle von kennwortbasiertem SSO und Active Directory-Verbunddiensten (AD FS) mit Azure AD, wenn eine Anwendung dies unterstützt.
+    Mit Verbund-SSO nimmt Azure AD die Authentifizierung des Benutzers bei der Anwendung mithilfe seines Azure AD-Kontos vor. Diese Methode wird für SAML 2.0-, WS-Verbund- oder OpenID Connect-Anwendungen unterstützt. Verbund-SSO ist der umfangreichste SSO-Modus. Verwenden Sie Verbund-SSO anstelle von kennwortbasiertem SSO und Active Directory-Verbunddiensten (AD FS) mit Azure AD, wenn eine Anwendung dies unterstützt.
 
     Es gibt einige Szenarien, in denen die SSO-Option für eine Unternehmensanwendung nicht vorhanden ist. Wenn die Anwendung mithilfe von **App-Registrierungen** im Portal registriert wurde, wird die Funktion zum einmaligen Anmelden so konfiguriert, dass standardmäßig OpenID Connect und OAuth verwendet werden. In diesem Fall wird die Option zum einmaligen Anmelden in der Navigation unter Unternehmensanwendungen nicht angezeigt.
 
@@ -40,7 +40,7 @@ Die Auswahl einer Methode für einmaliges Anmelden hängt davon ab, wie die Anwe
 
     > [!VIDEO https://www.youtube.com/embed/CjarTgjKcX8]
 
-- **Kennwort:** Lokale Anwendungen können für einmaliges Anmelden die Methoden „Kennwort“, „Integrierte Windows-Authentifizierung“, „Header“ oder „Verknüpft“ verwenden. Die lokalen Optionen funktionieren, wenn Anwendungen für den [Anwendungsproxy](../app-proxy/what-is-application-proxy.md) konfiguriert wurden.
+- **Kennwort**: Lokale Anwendungen können für einmaliges Anmelden die Methoden „Kennwort“, „Integrierte Windows-Authentifizierung“, „Header“ oder „Verknüpft“ verwenden. Die lokalen Optionen funktionieren, wenn die Anwendungen für den Anwendungsproxy konfiguriert wurden.
 
     Bei kennwortbasierter einmaliger Anmeldung melden sich Benutzer mit einem Benutzernamen und einem Kennwort bei der Anwendung an, wenn sie erstmals auf sie zugreifen. Nach der ersten Anmeldung werden der Benutzername und das Kennwort von Azure AD für die Anwendung bereitgestellt. Kennwortbasiertes einmaliges Anmelden ermöglicht die sichere Speicherung des Anwendungskennworts und dessen Wiedergabe mit einer Webbrowsererweiterung oder einer mobilen App. Diese Option verwendet den von der Anwendung bereitgestellten vorhandenen Anmeldevorgang, ermöglicht es einem Administrator, die Kennwörter zu verwalten, und erfordert nicht, dass der Benutzer das Kennwort kennt.
 
@@ -64,12 +64,12 @@ Webanwendungen werden von verschiedenen Unternehmen gehostet und als Dienst zur 
 
 Die Art der Implementierung von SSO richtet sich danach, wo die Anwendung gehostet wird. Das Hosting ist aufgrund der Art und Weise wichtig, wie Netzwerkdatenverkehr für den Zugriff auf die Anwendung weitergeleitet wird. Benutzer müssen nicht das Internet für den Zugriff auf lokale Anwendungen (gehostet in einem lokalen Netzwerk) verwenden. Wenn die Anwendung in der Cloud gehostet wird, benötigen Benutzer das Internet, um sie zu verwenden. In der Cloud gehostete Anwendungen werden auch als SaaS-Anwendungen (Software-as-a-Service) bezeichnet.
 
-Für Cloudanwendungen werden Verbundprotokolle verwendet. Sie können einmaliges Anmelden auch für lokale Anwendungen nutzen. Sie können den Anwendungsproxy verwenden, um Zugriff für Ihre lokale Anwendung zu konfigurieren. Weitere Informationen finden Sie unter [Remotezugriff auf lokale Anwendungen über den Azure AD-Anwendungsproxy](../app-proxy/application-proxy.md).
+Für Cloudanwendungen werden Verbundprotokolle verwendet. Sie können einmaliges Anmelden auch für lokale Anwendungen nutzen. Sie können den Anwendungsproxy verwenden, um Zugriff für Ihre lokale Anwendung zu konfigurieren. Weitere Informationen finden Sie unter Remotezugriff auf lokale Anwendungen über den Azure AD-Anwendungsproxy.
 
 ## <a name="my-apps"></a>Meine Apps
 
-Als Benutzer einer Anwendung interessieren Sie die SSO-Details wahrscheinlich nicht sonderlich. Sie möchten nur die Anwendungen nutzen, mit denen Sie produktiv arbeiten können, ohne häufig Ihr Kennwort eingeben zu müssen. Sie finden und verwalten Ihre Anwendungen im [Portal „Meine Apps“](https://myapps.microsoft.com). 
+Als Benutzer einer Anwendung interessieren Sie die SSO-Details wahrscheinlich nicht sonderlich. Sie möchten nur die Anwendungen nutzen, mit denen Sie produktiv arbeiten können, ohne häufig Ihr Kennwort eingeben zu müssen. Sie finden und verwalten Ihre Anwendungen im Portal „Meine Apps“. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Planen einer Bereitstellung für einmaliges Anmelden in Azure Active Directory](plan-sso-deployment.md)
+- [Aktivieren des einmaligen Anmeldens](add-application-portal-setup-sso.md)

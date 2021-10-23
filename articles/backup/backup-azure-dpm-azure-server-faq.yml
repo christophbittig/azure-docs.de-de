@@ -5,13 +5,13 @@ metadata:
   ms.reviewer: srinathv
   ms.topic: article
   ms.service: backup
-  ms.date: 07/05/2019
-  ms.openlocfilehash: edd3ad16f6fc223ec08a99e4bf2a992cbd69c6e5
-  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+  ms.date: 10/13/2021
+  ms.openlocfilehash: a46b7b990e8ea9deb929430d15a8c208434ff0e2
+  ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/17/2021
-  ms.locfileid: "122252156"
+  ms.lasthandoff: 10/14/2021
+  ms.locfileid: "129998559"
 title: Azure Backup Server und DPM – häufig gestellte Fragen
 summary: ''
 sections:
@@ -29,6 +29,10 @@ sections:
       Kann ich mit DPM Apps in Azure Stack sichern?
     answer: >
       Nein. Sie können Azure Stack mit Azure Backup schützen, das Sichern von Apps in Azure Stack mit DPM wird von Azure Backup jedoch nicht unterstützt.
+  - question: >
+      Was geschieht, wenn bei der erwarteten wöchentlichen, monatlichen oder jährlichen Sicherung ein Fehler auftritt?
+    answer: >
+      Wenn bei der Sicherung ein Fehler auftritt, wird die nächste erfolgreiche Sicherung nach der erwarteten wöchentlichen, monatlichen oder jährlichen Sicherung je nach Aufbewahrungsdauer für wöchentliche, monatliche und jährliche Wiederherstellungspunkte (Langzeitaufbewahrungspunkte) gemäß der Sicherungsrichtlinie beibehalten. Bei dieser erfolgreichen Sicherung kann es sich um eine Ad-hoc-Sicherung oder im Fall des MARS-Agents um eine geplante Sicherung handeln.
   - question: >
       Kann ich System Center DPM zum Sichern von lokalen Workloads in Azure installieren, wenn ich den Azure Backup-Agent zum Schutz meiner Dateien und Ordner installiert habe?
     answer: >

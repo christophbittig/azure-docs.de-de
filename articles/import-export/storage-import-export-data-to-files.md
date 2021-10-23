@@ -1,36 +1,50 @@
 ---
-title: Verwenden des Azure Import/Export-Diensts zum Übertragen von Daten in Azure Files | Microsoft-Dokumentation
+title: Tutorial zum Übertragen von Daten in Azure Files mit Azure Import/Export | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Import- und Exportaufträge im Azure-Portal erstellen, um Daten in Azure Files zu übertragen.
 author: alkohli
 services: storage
 ms.service: storage
-ms.topic: how-to
-ms.date: 09/03/2021
+ms.topic: tutorial
+ms.date: 10/06/2021
 ms.author: alkohli
 ms.subservice: common
-ms.custom: devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
-ms.openlocfilehash: 344d513f823c3eb04e869c66ca79bfb611c3eb6a
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.custom: tutorial, devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
+ms.openlocfilehash: 4f8d984d97c046891008c1e1e3904ef065198f98
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129079749"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129709590"
 ---
-# <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Verwenden des Azure Import/Export-Diensts zum Importieren von Daten in Azure Files
+# <a name="tutorial-transfer-data-to-azure-files-with-azure-importexport"></a>Tutorial: Übertragen von Daten in Azure Files mit Azure Import/Export
 
 Dieser Artikel enthält schrittweise Anweisungen zur Verwendung des Azure Import/Export-Diensts, um große Datenmengen sicher in Azure Files zu importieren. Zum Importieren von Daten erfordert der Dienst, dass Sie unterstützte Datenträger versenden, die die Daten enthalten, die im Azure-Rechenzentrum gespeichert werden sollen.
 
 Der Import/Export-Dienst unterstützt nur den Import von Azure Files zu Azure Storage. Das Exportieren von Azure Files wird nicht unterstützt.
+
+In diesem Tutorial lernen Sie Folgendes:
+
+> [!div class="checklist"]
+> * Voraussetzungen für den Import von Daten in Azure Files
+> * Schritt 1: Vorbereiten der Laufwerke
+> * Schritt 2: Erstellen eines Importauftrags
+> * Schritt 3: Versenden der Laufwerke an das Azure-Rechenzentrum
+> * Schritt 4: Aktualisieren des Auftrags mit Nachverfolgungsinformationen
+> * Schritt 5: Überprüfen des Datenuploads in Azure
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Vor dem Erstellen eines Importauftrags zum Übertragen von Daten in Azure Files überprüfen Sie sorgfältig die folgende Liste der Voraussetzungen, und führen Sie sie aus. Die Voraussetzungen lauten wie folgt:
 
 - Ein aktives Azure-Abonnement zur Verwendung mit dem Import/Export-Dienst.
-- Mindestens ein Azure Storage-Konto Hier finden Sie die Liste der [für den Import/Export-Dienst unterstützten Speicherkonten und Speichertypen](storage-import-export-requirements.md). Weitere Informationen zum Erstellen eines neuen Speicherkontos finden Sie unter [Erstellen eines Speicherkontos](../storage/common/storage-account-create.md).
+- Mindestens ein Azure Storage-Konto Hier finden Sie die Liste der [für den Import/Export-Dienst unterstützten Speicherkonten und Speichertypen](storage-import-export-requirements.md).
+  - Konfigurieren Sie ggf. große Dateifreigaben im Speicherkonto. Wenn eine Dateifreigabe während der Importvorgänge in Azure Files nicht über genügend freien Speicherplatz verfügt, wird die automatische Aufteilung der Daten auf mehrere Azure-Dateifreigaben nicht mehr unterstützt, und beim Kopiervorgang tritt ein Fehler auf. Anweisungen finden Sie unter [Aktivieren großer Dateifreigaben für ein vorhandenes Konto](../storage/files/storage-how-to-create-file-share.md?tabs=azure-portal#enable-large-files-shares-on-an-existing-account).
+  - Informationen zum Erstellen eines neuen Speicherkontos finden Sie unter [Erstellen eines Speicherkontos](../storage/common/storage-account-create.md).
 - Eine angemessene Anzahl von Datenträgern der [unterstützten Typen](storage-import-export-requirements.md#supported-disks)
-- Ein Windows-System, auf dem eine [unterstützte Betriebssystemversion](storage-import-export-requirements.md#supported-operating-systems) ausgeführt wird.
-- [Laden Sie Version 2 von WAImportExport](https://aka.ms/waiev2) auf das Windows-System herunter. Entzippen Sie die Dateien in den Standardordner `waimportexport`. Beispiel: `C:\WaImportExport`.
+- Ein Windows-System, auf dem eine [unterstützte Betriebssystemversion](storage-import-export-requirements.md#supported-operating-systems) ausgeführt wird
+- Laden Sie das aktuelle Release von Version 2 des Azure Import/Export-Tools für Dateien auf das Windows-System herunter:
+  1. [Herunterladen der Version 2 von WAImportExport.](https://aka.ms/waiev2) Die aktuelle Version ist 2.2.0.300.
+  1. Entzippen Sie die Dateien in den Standardordner `WaImportExportV2`. Beispiel: `C:\WaImportExportV2`.
 - Sie benötigen ein FedEx/DHL-Konto. Wenn Sie einen anderen Spediteur als FedEx/DHL verwenden möchten, wenden Sie sich unter `adbops@microsoft.com` an das Azure Data Box Operations-Team.
     - Das Konto muss gültig sein, es muss Guthaben vorhanden sein und es muss der Rückversand aktiviert sein.
     - Generieren Sie eine Nachverfolgungsnummer für den Exportauftrag.
@@ -53,24 +67,27 @@ Führen Sie zum Vorbereiten der Laufwerke die folgenden Schritte aus.
    - **So importieren Sie eine Datei:** Im folgenden Beispiel befinden sich die zu kopierenden Daten auf dem Laufwerk „F:“. Die Datei *MyFile1.txt* wird auf das Stammverzeichnis von *MyAzureFileshare1* kopiert. Wenn *MyAzureFileshare1* nicht vorhanden ist, wird es im Azure Storage-Konto erstellt. Die Ordnerstruktur wird beibehalten.
 
        ```
-           BasePath,DstItemPathOrPrefix,ItemType,Disposition,MetadataFile,PropertiesFile
-           "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
+           BasePath,DstItemPathOrPrefix,ItemType
+           "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file
+       ```
+
+   - **So importieren Sie einen Ordner**: Alle Dateien und Ordner in *MyFolder2* werden rekursiv in die Dateifreigabe kopiert. Die Ordnerstruktur wird beibehalten. Wenn Sie eine Datei mit dem gleichen Namen wie eine vorhandene Datei im Zielordner importieren, überschreibt die importierte Datei diese Datei.
 
        ```
-   - **So importieren Sie einen Ordner**: Alle Dateien und Ordner in *MyFolder2* werden rekursiv in die Dateifreigabe kopiert. Die Ordnerstruktur wird beibehalten.
-
+           "F:\MyFolder2\","MyAzureFileshare1/",file
        ```
-           "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None
+   
+       > [!NOTE]
+       > Der Parameter „/Disposition“, mit dem Sie festlegen können, was beim Importieren einer Datei geschehen soll, die bereits in früheren Versionen des Tools vorhanden ist, wird in Version 2.2.0.300 von Azure Import/Export nicht unterstützt. In früheren Toolversionen wurde eine importierte Datei, die den gleichen Namen wie eine vorhandene Datei hat, standardmäßig umbenannt.
 
-       ```
      Mehrere Einträge können gemäß importierter Ordner oder Dateien in derselben Datei vorgenommen werden.
 
        ```
-           "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file,rename,"None",None
-           "F:\MyFolder2\","MyAzureFileshare1/",file,rename,"None",None
-
+           "F:\MyFolder1\MyFile1.txt","MyAzureFileshare1/MyFile1.txt",file
+           "F:\MyFolder2\","MyAzureFileshare1/",file
        ```
-     Erfahren Sie mehr über das [Vorbereiten der Dataset-CSV-Datei](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import).
+
+<!--ARCHIVED ARTICLE -Learn more about [preparing the dataset CSV file](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import).-->
 
 
 4. Ändern Sie die Datei *driveset.csv* im Stammverzeichnis, in dem sich das Tool befindet. Fügen Sie Einträge in der Datei *driveset.csv* wie in den folgenden Beispielen hinzu. Die Driveset-Datei enthält die Liste der Datenträger und die entsprechenden Laufwerkbuchstaben, damit das Tool die Liste der vorzubereitenden Datenträger richtig auswählen kann.
@@ -361,7 +378,11 @@ Install-Module -Name Az.ImportExport
 
 ## <a name="step-5-verify-data-upload-to-azure"></a>Schritt 5: Überprüfen des Datenuploads in Azure
 
-Überwachen Sie den Auftrag bis zu seinem Abschluss. Sobald der Auftrag abgeschlossen ist, überprüfen Sie, ob Ihre Daten in Azure hochgeladen wurden. Löschen Sie die lokalen Daten erst, wenn Sie überprüft haben, ob die Daten erfolgreich hochgeladen wurden.
+Überwachen Sie den Auftrag bis zu seinem Abschluss. Sobald der Auftrag abgeschlossen ist, überprüfen Sie, ob Ihre Daten in Azure hochgeladen wurden. Überprüfen Sie Ihre Kopierprotokolle auf Fehler. Weitere Informationen finden Sie unter [Überprüfen des Status von Azure Import/Export-Aufträgen mithilfe von Kopierprotokolldateien](storage-import-export-tool-reviewing-job-status-v1.md). Löschen Sie die lokalen Daten erst, wenn Sie überprüft haben, ob die Daten erfolgreich hochgeladen wurden.
+
+> [!NOTE]
+> In der neuesten Version des Azure Import/Export-Tools für Dateien (2.2.0.300) werden die Daten nicht mehr automatisch auf mehrere Azure-Dateifreigaben aufgeteilt, wenn eine Dateifreigabe nicht über genügend freien Speicherplatz verfügt. Stattdessen tritt beim Kopiervorgang ein Fehler auf, und Sie werden vom Support kontaktiert. Sie müssen entweder große Dateifreigaben im Speicherkonto konfigurieren oder einige Daten verschieben, um Speicherplatz auf der Freigabe freizugeben. Weitere Informationen finden Sie unter [Aktivieren großer Dateifreigaben für ein vorhandenes Konto](../storage/files/storage-how-to-create-file-share.md?tabs=azure-portal#enable-large-files-shares-on-an-existing-account).
+
 
 ## <a name="samples-for-journal-files"></a>Beispiele für Journaldateien
 
@@ -397,4 +418,4 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2  /DataSet:dataset
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Anzeigen von Auftrags- und Laufwerkstatus](storage-import-export-view-drive-status.md)
-* [Überprüfen der Import/Export-Anforderungen](storage-import-export-requirements.md)
+* [Überprüfen der Kopierprotokolle für Import/Export](storage-import-export-tool-reviewing-job-status-v1.md)

@@ -2,15 +2,15 @@
 title: Verwenden von externem Dateispeicher in Azure Lab Services | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie ein Lab einrichten, das externen Dateispeicher in Lab Services verwendet.
 author: emaher
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/30/2021
 ms.author: enewman
-ms.openlocfilehash: 86dd9290c640829049f4f6cb7b784aacba3cf7ce
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: f7c92e4369491a5b371c2f99fbcbdc4609b376f7
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124768741"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130180968"
 ---
 # <a name="use-external-file-storage-in-lab-services"></a>Verwenden von externem Dateispeicher in Lab Services
 

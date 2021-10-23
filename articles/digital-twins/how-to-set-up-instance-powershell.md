@@ -4,16 +4,16 @@ titleSuffix: Azure Digital Twins
 description: Hier erhalten Sie Informationen zum Einrichten einer Instanz des Azure Digital Twins-Diensts mithilfe von Azure PowerShell.
 author: baanders
 ms.author: baanders
-ms.date: 12/16/2020
+ms.date: 9/3/2021
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1e2751c7df1cd3b43ce6c700bc51b51faf95963f
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: c5af0d96b8e639494b556f875a23f13781cbfbec
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114468694"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129996226"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-powershell"></a>Einrichten einer Azure Digital Twins-Instanz und der Authentifizierung (PowerShell)
 
@@ -22,9 +22,6 @@ ms.locfileid: "114468694"
 Dieser Artikel behandelt die Schritte zum **Einrichten einer neuen Azure Digital Twins-Instanz**, einschließlich des Erstellens der Instanz und des Einrichtens der Authentifizierung. Nachdem Sie diesen Artikel durchgearbeitet haben, verfügen Sie über eine Azure Digital Twins-Instanz, die für die Programmierung bereitsteht.
 
 In dieser Version dieses Artikels werden diese Schritte manuell nacheinander mithilfe von [Azure PowerShell](/powershell/azure/new-azureps-module-az) durchlaufen.
-
-* Wenn Sie diese Schritte manuell im Azure-Portal durchlaufen möchten, finden Sie weitere Informationen in der Portal-Version dieses Artikels unter [Einrichten einer Instanz und der Authentifizierung (Portal)](how-to-set-up-instance-portal.md).
-* Ein Beispiel zur Ausführung einer automatisierten Einrichtung mit einem Bereitstellungsskript finden Sie in der Skriptversion dieses Artikels unter [Einrichten einer Instanz und der Authentifizierung (per Skript)](how-to-set-up-instance-scripted.md).
 
 [!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
 

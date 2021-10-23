@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 07/07/2021
+ms.date: 10/05/2021
 ms.author: memildin
-ms.openlocfilehash: 1d8feb49be378abed2a63030c6329e9e8a13d48a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e2b1b238e7f893df5eb56818f256eb324c5be6aa
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340240"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129536051"
 ---
 # <a name="continuously-export-security-center-data"></a>Fortlaufendes Exportieren von Security Center-Daten
 
@@ -209,6 +209,9 @@ Ihnen werden nun neue Azure Security Center-Warnungen oder -Empfehlungen (abhän
 ## <a name="manual-one-time-export-of-alerts-and-recommendations"></a>Manueller einmaliger Export von Warnungen und Empfehlungen
 
 Wenn Sie einen CSV-Bericht für Warnungen oder Empfehlungen herunterladen möchten, öffnen Sie die Seite **Sicherheitswarnungen** oder **Empfehlungen**, und wählen Sie **CSV-Bericht herunterladen** aus.
+
+> [!TIP]
+> Aufgrund der Einschränkungen von Azure Resource Graph sind die Berichte auf eine Dateigröße von 13.000 Zeilen beschränkt. Wenn Fehler im Zusammenhang mit zu vielen exportierten Daten auftreten, versuchen Sie, die Ausgabe einzuschränken, indem Sie eine kleinere Menge an Abonnements auswählen, die exportiert werden sollen.
 
 :::image type="content" source="./media/continuous-export/download-alerts-csv.png" alt-text="Herunterladen von Warnungsdaten als CSV-Datei." lightbox="./media/continuous-export/download-alerts-csv.png":::
 

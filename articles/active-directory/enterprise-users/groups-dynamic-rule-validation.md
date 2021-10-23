@@ -4,7 +4,7 @@ description: Vorgehensweise beim Testen von Mitgliedern anhand einer Mitgliedsch
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: daveba
+manager: KarenH444
 ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: yukarppa
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b4d4e87464012d96650a46b93f2bd7d664a5ec03
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: ee84f80110975f6a12a6371ae204ca85401a2adf
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123426614"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129986509"
 ---
 # <a name="validate-a-dynamic-group-membership-rule-preview-in-azure-active-directory"></a>Überprüfen der Mitgliedschaftregel für eine dynamische Gruppe (Vorschau) in Azure Active Directory
 

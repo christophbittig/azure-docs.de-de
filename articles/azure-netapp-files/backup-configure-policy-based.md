@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/27/2021
+ms.date: 10/13/2021
 ms.author: b-juche
-ms.openlocfilehash: acdb84621af21cc29feb3f750a5ea60cb21e3d4a
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 06d7e334205de142b60f73d1e98f0c4167c65b7d
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129094971"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129993148"
 ---
 # <a name="configure-policy-based-backups-for-azure-netapp-files"></a>Konfigurieren Sie richtlinienbasierte Sicherungen für Azure NetApp Dateien 
 
@@ -48,7 +48,7 @@ Durch die Zuweisung einer Richtlinie wird eine Baselinemomentaufnahme erstellt, 
 Sie müssen eine Momentaufnahmerichtlinie erstellen und die Snapshot-Richtlinie dem Volume zuordnen, das Sie sichern möchten. Eine einzelne Momentaufnahmerichtlinie kann an mehrere Volumes angehängt werden. Änderungen an der Momentaufnahmerichtlinie können die Sicherungsfunktionalität eines Volumes beeinträchtigen. 
 
 1. Melden Sie sich am Azure-Portal an und navigieren Sie zu **Azure NetApp Files**.    
-2. Wählen Sie Ihr Azure NetApp Files-Abonnement aus.   
+2. Wählen Sie Ihr Azure NetApp Files-Konto aus.   
 3. **Momentaufnahmerichtlinie** auswählen   
 
     ![Screenshot, der zeigt, wie Sie zur Option „Momentaufnahmerichtlinie“ navigieren.](../media/azure-netapp-files/backup-navigate-snapshot-policy.png)   
@@ -88,7 +88,7 @@ Sie müssen eine Sicherungsrichtlinie erstellen und die Sicherungsrichtlinie mit
 So aktivieren Sie eine richtlinienbasierte (geplante) Sicherung: 
 
 1. Melden Sie sich am Azure-Portal an und navigieren Sie zu **Azure NetApp Files**. 
-2. Wählen Sie Ihr Azure NetApp Files-Abonnement aus.
+2. Wählen Sie Ihr Azure NetApp Files-Konto aus.
 3. Wählen Sie **Sicherungen** aus. 
 
     ![Screenshot, der zeigt, wie Sie zur Option Sicherungen navigieren.](../media/azure-netapp-files/backup-navigate.png)

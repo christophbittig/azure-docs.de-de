@@ -1,18 +1,18 @@
 ---
 title: Automatische Bereitstellung für Gerätegruppen – Azure IoT Edge | Microsoft-Dokumentation
 description: Verwenden Sie automatische Bereitstellungen in Azure IoT Edge, um Gerätegruppen basierend auf freigegebenen Tags zu verwalten.
-author: kgremban
-ms.author: kgremban
-ms.date: 01/30/2020
+author: anastasia-ms
+ms.author: v-stharr
+ms.date: 10/18/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 601015658b2d2de6c855ac285b4dfbec6cb15ca8
-ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
+ms.openlocfilehash: 349ad022876b2504fe31be6f162255ae4d6d6a65
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129670231"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130179467"
 ---
 # <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>Grundlegendes zu automatischen IoT Edge-Bereitstellungen für einzelne Geräte oder nach Bedarf
 
@@ -78,7 +78,7 @@ Beachten Sie diese Einschränkungen, wenn Sie eine Zielbedingung erstellen:
 * Sie können auf einem Gerätezwilling eine Zielbedingung nur mithilfe von Tags, gemeldeten Eigenschaften oder von „deviceId“ erstellen.
 * Doppelte Anführungszeichen sind in keinem Teil der Zielbedingung zulässig. Verwenden Sie einfache Anführungszeichen.
 * Einfache Anführungszeichen werden für die Werte der Zielbedingung verwendet. Daher müssen Sie für ein einfaches Anführungszeichen ein weiteres einfaches Anführungszeichen als Escapezeichen verwenden, wenn es Teil des Gerätenamens ist. Geben Sie für die Zielbedingung des Geräts mit dem Namen `operator'sDevice` beispielsweise `deviceId='operator''sDevice'` an.
-* In Werten für Zielbedingungen sind Zahlen, Buchstaben und folgende Zeichen zulässig: `-:.+%_#*?!(),=@;$`.
+* In Werten für Zielbedingungen sind Zahlen, Buchstaben und folgende Zeichen zulässig: `“()<>@,;:\\"/?={} \t\n\r`.
 * Die folgenden Zeichen sind in Zielbedingungsschlüsseln nicht zulässig: `/;`.
 
 ### <a name="priority"></a>Priority

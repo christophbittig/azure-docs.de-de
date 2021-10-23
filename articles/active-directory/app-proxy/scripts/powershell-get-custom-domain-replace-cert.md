@@ -3,20 +3,20 @@ title: 'PowerShell-Beispiel: Ersetzen des Zertifikats in Azure Active Directory-
 description: Hier finden Sie ein PowerShell-Beispiel, das ein Zertifikat für Anwendungsproxyanwendungen von Azure Active Directory (Azure AD) in einem Massenvorgang ersetzt (Massenersetzen).
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-proxy
 ms.workload: identity
 ms.topic: sample
 ms.date: 04/29/2021
 ms.author: kenwith
-ms.reviewer: japere
-ms.openlocfilehash: 7897cc324095c38e6b626c2057bd2bbca921b397
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.reviewer: ashishj
+ms.openlocfilehash: 3af6898fa29fd9f7acf2f69fe09d109a714611c3
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108293653"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129988486"
 ---
 # <a name="get-all-azure-active-directory-application-proxy-applications-published-with-the-identical-certificate-and-replace-it"></a>Abrufen aller mit einem identischen Zertifikat veröffentlichten Azure Active Directory-Anwendungsproxyanwendungen und Ersetzen des Zertifikats
 

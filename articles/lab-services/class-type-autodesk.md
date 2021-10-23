@@ -2,15 +2,15 @@
 title: Einrichten eines Labs mit Autodesk mithilfe von Azure Lab Services
 description: Erfahren Sie, wie Sie Labs einrichten, um Kurse für Ingenieurswesen mit Autodesk abzuhalten.
 author: nicolela
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/21/2021
 ms.author: nicolela
-ms.openlocfilehash: 6cc983907349ca8eab0731b18c18d526f2b75ba5
-ms.sourcegitcommit: 43be2ce9bf6d1186795609c99b6b8f6bb4676f47
+ms.openlocfilehash: 2c9abda8f42023ebc54de77caadbe2860afe137f
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108281115"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130177059"
 ---
 # <a name="set-up-labs-for-autodesk"></a>Einrichten von Labs für Autodesk
 

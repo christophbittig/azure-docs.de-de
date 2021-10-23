@@ -1,14 +1,14 @@
 ---
 title: Herstellen einer Verbindung mit einem Peernetzwerk in Azure Lab Services | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie eine Peerverbindung zwischen Ihrem Labnetzwerk und einem anderen Netzwerk herstellen. Sie können z. B. Ihr lokales Organisations- oder Schul-/Universitätsnetzwerk mit dem virtuellen Netzwerk eines Labs in Azure verbinden.
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 645e99681f5615c3082d784e4e540a6200f618b8
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: dd549061c5b40447afa11b82dfcfdb07d6b635ab
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108755133"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130180702"
 ---
 # <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>Verbinden des Netzwerks Ihres Labs mit einem virtuellen Peernetzwerk in Azure Lab Services
 

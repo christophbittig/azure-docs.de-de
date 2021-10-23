@@ -3,7 +3,7 @@ title: 'Tutorial: Erstellen einer Angular-App mit Autorisierungscodeflow, die Mi
 titleSuffix: Microsoft identity platform
 description: In diesem Tutorial erstellen Sie eine Angular-Single-Page-Webanwendung (SPA) mit Autorisierungscodeflow, die Microsoft Identity Platform zum Anmelden von Benutzern und zum Abrufen eines Zugriffstokens verwendet, um im Namen der Benutzer die Microsoft Graph-API aufzurufen.
 services: active-directory
-author: joarroyo
+author: jo-arroyo
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/14/2021
 ms.author: joarroyo
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: 01c35297a35b41b58b83aaf361aaa47a76cfecee
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: b116c7481dcbbdf05bf7aba476feeef853c0c87f
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129230853"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129993642"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application-spa-using-auth-code-flow"></a>Tutorial: Anmelden von Benutzern und Aufrufen der Microsoft Graph-API über eine Angular-Single-Page-Webanwendung (SPA) unter Verwendung des Autorisierungscodeflows
 
@@ -449,7 +449,7 @@ Wenn bestimmte Komponenten der Benutzeroberfläche nur für authentifizierte Ben
 1. Fügen Sie `MsalBroadcastService` zu *src/app/app.component.ts* hinzu, und abonnieren Sie das observable-Element `inProgress$`, um vor dem Rendern der Benutzeroberfläche zu überprüfen, ob die Interaktion abgeschlossen und ein Konto angemeldet ist. Ihr Code sollte jetzt folgendermaßen aussehen:
 
     ```javascript
-    import { Component, OnInit } from '@angular/core';
+    import { Component, OnInit, OnDestroy } from '@angular/core';
     import { MsalService, MsalBroadcastService } from '@azure/msal-angular';
     import { InteractionStatus } from '@azure/msal-browser';
     import { Subject } from 'rxjs';
@@ -460,7 +460,7 @@ Wenn bestimmte Komponenten der Benutzeroberfläche nur für authentifizierte Ben
       templateUrl: './app.component.html',
       styleUrls: ['./app.component.css']
     })
-    export class AppComponent implements OnInit {
+    export class AppComponent implements OnInit, OnDestroy {
       title = 'msal-angular-tutorial';
       isIframe = false;
       loginDisplay = false;
@@ -653,7 +653,7 @@ MSAL Angular bietet mit `MsalGuard` eine Klasse, mit der Sie Routen schützen u
 3. Passen Sie die Anmeldeaufrufe in *src/app/app.component.ts* an, um den Satz `authRequest` in den Wächterkonfigurationen zu berücksichtigen. Ihr Code sollte nun wie folgt aussehen:
 
     ```javascript
-    import { Component, OnInit, Inject } from '@angular/core';
+    import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
     import { MsalService, MsalBroadcastService, MSAL_GUARD_CONFIG, MsalGuardConfiguration } from '@azure/msal-angular';
     import { InteractionStatus, RedirectRequest } from '@azure/msal-browser';
     import { Subject } from 'rxjs';
@@ -664,7 +664,7 @@ MSAL Angular bietet mit `MsalGuard` eine Klasse, mit der Sie Routen schützen u
       templateUrl: './app.component.html',
       styleUrls: ['./app.component.css']
     })
-    export class AppComponent implements OnInit {
+    export class AppComponent implements OnInit, OnDestroy {
       title = 'msal-angular-tutorial';
       isIframe = false;
       loginDisplay = false;
@@ -873,7 +873,7 @@ Aktualisieren Sie den Code in *src/app/app.component.html* zur bedingten Anzeige
 Aktualisieren Sie den Code in *src/app/app.component.ts*, um einen Benutzer unter Verwendung von Umleitungen abzumelden:
 
 ```javascript
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
 import { MsalService, MsalBroadcastService, MSAL_GUARD_CONFIG, MsalGuardConfiguration } from '@azure/msal-angular';
 import { InteractionStatus, RedirectRequest } from '@azure/msal-browser';
 import { Subject } from 'rxjs';
@@ -884,7 +884,7 @@ import { filter, takeUntil } from 'rxjs/operators';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   title = 'msal-angular-tutorial';
   isIframe = false;
   loginDisplay = false;
@@ -935,7 +935,7 @@ export class AppComponent implements OnInit {
 Aktualisieren Sie den Code in *src/app/app.component.ts*, um einen Benutzer unter Verwendung von Popups abzumelden:
 
 ```javascript
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
 import { MsalService, MsalBroadcastService, MSAL_GUARD_CONFIG, MsalGuardConfiguration } from '@azure/msal-angular';
 import { InteractionStatus, PopupRequest } from '@azure/msal-browser';
 import { Subject } from 'rxjs';
@@ -946,7 +946,7 @@ import { filter, takeUntil } from 'rxjs/operators';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   title = 'msal-angular-tutorial';
   isIframe = false;
   loginDisplay = false;

@@ -1,14 +1,14 @@
 ---
 title: Verwenden von Azure Lab Services für Hackathons
 description: In diesem Artikel wird beschrieben, wie Sie mithilfe von Azure Lab Services Labs zum Ausführen von Hackathons erstellen.
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: d4648def48557d70547ef7d41d6c3e516671849e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 00a00228231152a1ac0817ea1562f84635d7090e
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102452729"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130181120"
 ---
 # <a name="use-azure-lab-services-for-your-next-hackathon"></a>Verwenden von Azure Lab Services für Ihren nächsten Hackathon
 Azure Lab Services ist einfach und benutzerfreundlich. Sie können damit im Handumdrehen ein neues Lab mit VMs für Ihren Hackathon einrichten.  Mit der folgenden Checkliste können Sie sicherstellen, dass Ihr Hackathon so reibungslos wie möglich verläuft. Sie sollte von den Mitarbeitern Ihrer IT-Abteilung oder Ihres Lehrkörpers erledigt werden, die für die Erstellung und Verwaltung des Hackathon-Labs verantwortlich sind. 

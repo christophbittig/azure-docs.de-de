@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/08/2021
-ms.openlocfilehash: be90a868ca4ef738f0275b06fb49abec761c7a0c
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: c0ccdf22928a824194015858592c7dd1c3d98ed6
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129538185"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130063182"
 ---
 # <a name="configure-redis-clustering-for-a-premium-azure-cache-for-redis-instance"></a>Konfigurieren des Redis-Clusterings für eine Azure Cache for Redis-Instanz im Premium-Tarif
 
@@ -90,7 +90,7 @@ Beispielcode zum Arbeiten mit Clustering mit dem StackExchange.Redis-Client find
 
 Klicken Sie zum Ändern der Clustergröße in einem ausgeführten Premium-Cache mit aktiviertem Clustering im **Ressourcenmenü** auf **Clustergröße**.
 
-![Redis-Clustergröße][redis-cache-redis-cluster-size]
+:::image type="content" source="media/cache-how-to-premium-clustering/redis-cache-redis-cluster-size.png" alt-text="Redis-Clustergröße":::
 
 Verwenden Sie den Schieberegler, oder geben Sie im Textfeld **Shardanzahl** eine Zahl zwischen 1 und 10 ein, um die Clustergröße zu ändern. Wählen Sie dann **OK** aus, um die Änderung zu speichern.
 
@@ -201,11 +201,3 @@ Wenn Sie StackExchange.Redis und Clustering verwenden und dabei `MOVE` -Ausnahme
 Erfahren Sie mehr über Azure Cache for Redis-Features.
 
 * [Premium-Dienstebenen für Azure Cache for Redis](cache-overview.md#service-tiers)
-
-<!-- IMAGES -->
-
-[redis-cache-clustering]: ./media/cache-how-to-premium-clustering/redis-cache-clustering.png
-
-[redis-cache-clustering-selected]: ./media/cache-how-to-premium-clustering/redis-cache-clustering-selected.png
-
-[redis-cache-redis-cluster-size]: ./media/cache-how-to-premium-clustering/redis-cache-redis-cluster-size.png

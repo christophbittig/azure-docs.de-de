@@ -1,6 +1,6 @@
 ---
-title: include file
-description: include file
+title: Datei einfügen
+description: Datei einfügen
 services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 10/07/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 02ced43f8c3fc7c83359b78362e8ad0feeab3070
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5c1ee4676942462e6e92ddc6c33b1044ea24483f
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "72168408"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130050582"
 ---
 >[!NOTE]
->Wenn Sie mit Standardrichtlinien arbeiten, kann Azure beim Setup eines IPsec-Tunnels sowohl als Initiator als auch als Antwortdienst fungieren. Azure in der ausschließlichen Verwendung als Antwortdienst wird nicht unterstützt.
+>Wenn Sie mit Standardrichtlinien arbeiten, kann Azure beim Setup eines IPsec-Tunnels sowohl als Initiator als auch als Antwortdienst fungieren.
 >
 
 ### <a name="initiator"></a>Initiator

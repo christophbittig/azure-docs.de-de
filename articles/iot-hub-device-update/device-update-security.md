@@ -1,35 +1,35 @@
 ---
 title: Sicherheit für Device Update for IoT Hub | Microsoft-Dokumentation
 description: Erfahren Sie, wie Device Update for IoT Hub sicherstellt, dass Geräte auf sichere Weise aktualisiert werden.
-author: lichris
-ms.author: lichris
-ms.date: 4/15/2021
+author: andrewbrownmsft
+ms.author: andbrown
+ms.date: 10/5/2021
 ms.topic: conceptual
 ms.service: iot-hub
-ms.openlocfilehash: b10049e03e26cfe8da2bd57cc9f69dd933af706b
-ms.sourcegitcommit: 590f14d35e831a2dbb803fc12ebbd3ed2046abff
+ms.openlocfilehash: 5c9684a3cb4798fbcba23a04cb21ba1da36b39ad
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107567297"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129545433"
 ---
 # <a name="device-update-security-model"></a>Device Update-Sicherheitsmodell
 
 Device Update for IoT Hub bietet eine sichere Methode zum Bereitstellen von Updates für Gerätefirmware, Images und Anwendungen auf Ihren IoT-Geräten. Der Workflow bietet einen sicheren End-to-End-Kanal mit einem vollständigen Überwachungsmodell, das von einem Gerät verwendet werden kann, um nachzuweisen, dass ein Update vertrauenswürdig, unverändert und beabsichtigt ist.
 
-Jeder Schritt im Device Update-Workflow wird durch verschiedene Sicherheitsfeatures und -prozesse geschützt, um sicherzustellen, dass jeder Schritt in der Pipeline eine abgesicherte Übergabe an den nächsten Schritt vornimmt. Mit dem Device Update-Client werden alle nicht legitimen Updateanforderungen identifiziert und ordnungsgemäß verwaltet. Der Client überprüft auch jeden Download, um sicherzustellen, dass der Inhalt vertrauenswürdig, unverändert und beabsichtigt ist.
+Jeder Schritt im Device Update-Workflow wird durch verschiedene Sicherheitsfeatures und -prozesse geschützt, um sicherzustellen, dass jeder Schritt in der Pipeline eine abgesicherte Übergabe an den nächsten Schritt vornimmt. Mit dem Device Update-Agent-Referenzcode werden alle nicht unzulässigen Updateanforderungen identifiziert und ordnungsgemäß verwaltet. Der Referenz-Agent überprüft auch jeden Download, um sicherzustellen, dass der Inhalt vertrauenswürdig, unverändert und beabsichtigt ist.
 
-## <a name="for-solution-operators"></a>Für Lösungsoperatoren
+## <a name="summary"></a>Zusammenfassung
 
-Da Lösungsoperatoren Updates in Ihre Device Update-Instanz importieren, lädt der Dienst die Updatebinärdateien hoch und überprüft diese, um sicherzustellen, dass sie nicht von einem böswilligen Benutzer geändert oder ausgetauscht wurden. Nach der Überprüfung generiert der Device Update-Dienst ein internes [Updatemanifest](./update-manifest.md) mit Dateihashes aus dem Importmanifest und anderen Metadaten. Dieses Updatemanifest wird dann vom Device Update-Dienst signiert.
+Da Updates in eine Device Update-Instanz importiert werden, lädt der Dienst die Updatebinärdateien hoch und überprüft sie, um sicherzustellen, dass sie nicht von einem böswilligen Benutzer geändert oder ausgetauscht wurden. Nach der Überprüfung generiert der Device Update-Dienst ein internes [Updatemanifest](./update-manifest.md) mit Dateihashes aus dem Importmanifest und anderen Metadaten. Dieses Updatemanifest wird dann vom Device Update-Dienst signiert.
 
 Nachdem sie im Dienst erfasst und in Azure gespeichert wurden, werden die Binärdateien für Updates und die zugehörigen Kundenmetadaten vom Azure-Speicherdienst automatisch im Ruhezustand verschlüsselt. Der Device Update-Dienst bietet keine automatische zusätzliche Verschlüsselung, gibt Entwicklern jedoch die Möglichkeit, Inhalte selbst zu verschlüsseln, bevor der Inhalt den Device Update-Dienst erreicht.
 
-Wenn der Lösungsoperator die Aktualisierung eines Geräts anfordert, wird eine signierte Nachricht über den geschützten IoT Hub-Kanal an das Gerät gesendet. Die Signatur der Anforderung wird vom Device Update-Agent des Geräts als authentisch bestätigt. 
+Wenn ein Update vom Device Update-Dienst auf Geräten bereitgestellt wird, wird eine signierte Nachricht über den geschützten IoT Hub-Kanal an das Gerät gesendet. Die Signatur der Anforderung wird vom Device Update-Agent des Geräts als authentisch bestätigt. 
 
-Jeder sich ergebende binäre Download wird durch Validierung der Signatur des Updatemanifests gesichert. Das Updatemanifest enthält die Binärdateihashes. Sobald das Manifest vertrauenswürdig ist, vertraut der Device Update-Agent den Hashwerten und gleicht sie mit den Binärdateien ab. Nachdem die Updatebinärdatei heruntergeladen und überprüft wurde, wird sie auf sichere Weise an das Installationsprogramm auf dem Gerät übergeben.
+Jeder sich ergebende binäre Download wird durch Validierung der Signatur des Updatemanifests gesichert. Das Updatemanifest enthält die Binärdateihashes. Sobald das Manifest vertrauenswürdig ist, vertraut der Device Update-Agent den Hashwerten und gleicht sie mit den Binärdateien ab. Nachdem die Updatebinärdatei heruntergeladen und überprüft wurde, wird sie an das Installationsprogramm auf dem Gerät übergeben.
 
-## <a name="for-device-builders"></a>Für Gerätegeneratoren
+## <a name="implementation-details"></a>Details zur Implementierung
 
 Um sicherzustellen, dass der Device Update-Dienst auf einfache Geräte mit geringer Leistung herunterskaliert werden kann, verwendet das Sicherheitsmodell asymmetrische Rohschlüssel und Rohsignaturen. Diese verwenden JSON-basierte Formate wie JSON Web Token und JSON Web Keys.
 
@@ -66,9 +66,9 @@ JSON Web Token sind eine offene [Standardmethode](https://tools.ietf.org/html/rf
 
 ### <a name="root-keys"></a>Stammschlüssel
 
-Jedes Device Update-Gerät enthält einen Satz von Stammschlüsseln. Diese Schlüssel sind bilden den Vertrauensstamm für alle Signaturen von Device Update. Jede Signatur muss mit einem dieser Stammschlüssel verkettet werden, damit sie als legitim eingestuft wird.
+Jedes Device Update-Gerät muss einen Satz von Stammschlüsseln enthalten. Diese Schlüssel sind bilden den Vertrauensstamm für alle Signaturen von Device Update. Jede Signatur muss mit einem dieser Stammschlüssel verkettet werden, damit sie als legitim eingestuft wird.
 
-Der Satz von Stammschlüsseln ändert sich im Laufe der Zeit, da Signaturschlüssel aus Sicherheitsgründen regelmäßig rotiert werden müssen. Folglich muss sich die Software des Device Update-Agents mit dem aktuellen Satz von Stammschlüsseln aktualisieren. 
+Der Satz von Stammschlüsseln ändert sich im Laufe der Zeit, da Signaturschlüssel aus Sicherheitsgründen regelmäßig rotiert werden müssen. Daher muss die Software des Device Update-Agenten in zeitlichen Abständen, die vom Device Update-Team vorgegeben werden, mit dem neuesten Satz von Stammschlüsseln aktualisiert werden. 
 
 ### <a name="signatures"></a>Signaturen
 
@@ -80,18 +80,10 @@ Signaturschlüssel werden in einem viel kürzeren Intervall als Stammschlüssel 
 
 Die Sperrung eines Signaturschlüssels wird vom Device Update-Dienst verwaltet, sodass Benutzer nicht versuchen sollten, Signaturschlüssel zwischenzuspeichern. Verwenden Sie immer den Signaturschlüssel, der eine Signatur begleitet.
 
-### <a name="receiving-updates"></a>Empfangen von Updates
-
-Von einem Device Update-Agent empfangene Updateanforderungen enthalten ein signiertes Updatemanifest (UM-Dokument). Der Agent muss überprüfen, ob die Signatur des UM-Dokuments ordnungsgemäß und intakt ist. Dies erfolgt durch Überprüfung, ob der Signaturschlüssel der UM-Signatur durch einen ordnungsgemäßen Stammschlüssel signiert wurde. Anschließend überprüft der Agent die UM-Signatur anhand des Signaturschlüssels.
-
-Nachdem die UM-Signatur überprüft wurde, kann sie vom Device Update-Agent als „Source of Truth“ und damit als vertrauenswürdig eingestuft werden. Alle weiteren Sicherheitsvertrauensstellungen werden von dieser Quelle abgeleitet. 
-
-Das UM-Dokument enthält URLs und Dateihashes von Inhalten, die heruntergeladen und installiert werden sollen. Nachdem der Agent eine Updatebinärdatei heruntergeladen hat, muss er das Update anhand des im UM-Dokument gefundenen Dateihash überprüfen. Dadurch wird ein transitives Vertrauensstellungsmodell für die Downloadvalidierung bereitstellt. Es wird nicht nur sichergestellt, dass der Inhalt intakt (nicht geändert) ist, sondern auch bestätigt, dass der Download tatsächlich der beabsichtigte Download ist. 
-
 ### <a name="securing-the-device"></a>Sichern des Geräts
 
-Es ist wichtig, sicherzustellen, dass die auf Device Update bezogenen Sicherheitsressourcen auf Ihrem Gerät ordnungsgemäß gesichert und geschützt werden. Ressourcen wie Stammschlüssel müssen vor Änderungen geschützt werden. Hierfür gibt es verschiedene Möglichkeiten, z. B. das Verwenden von Sicherheitsgeräten (TPM, SGX, HSM, andere Sicherheitsgeräte) oder sogar das Hardcodieren im Device Update-Agent. Letzteres erfordert, dass der Code des Device Update-Agents digital signiert wird und die Unterstützung der Codeintegrität des Systems zum Schutz vor böswilliger Änderung des Agent-Codes aktiviert ist.
+Es ist wichtig, sicherzustellen, dass die auf Device Update bezogenen Sicherheitsressourcen auf Ihrem Gerät ordnungsgemäß gesichert und geschützt werden. Ressourcen wie Stammschlüssel müssen vor Änderungen geschützt werden. Hierfür gibt es verschiedene Möglichkeiten, z. B. das Verwenden von Sicherheitsgeräten (TPM, SGX, HSM, andere Sicherheitsgeräte) oder sogar das Hardcodieren im Device Update-Agent, wie es heute in der Referenzimplementierung der Fall ist. Letzteres erfordert, dass der Code des Device Update-Agents digital signiert wird und die Unterstützung der Codeintegrität des Systems zum Schutz vor böswilliger Änderung des Agent-Codes aktiviert ist.
 
-Zusätzliche Sicherheitsmaßnahmen können gerechtfertigt sein, z. B. um sicherzustellen, dass die Übergabe von Komponente zu Komponente auf sichere Weise erfolgt. Beispielsweise das Registrieren eines bestimmten isolierten Kontos, um die verschiedenen Komponenten auszuführen. Und das Beschränken der netzwerkbasierten Kommunikation (z. B. Aufrufe der REST-API) ausschließlich auf localhost.
+Zusätzliche Sicherheitsmaßnahmen können gerechtfertigt sein, z. B. um sicherzustellen, dass die Übergabe von Komponente zu Komponente auf sichere Weise erfolgt. Dazu gehören z. B. die Registrierung eines bestimmten isolierten Kontos zum Ausführen der verschiedenen Komponenten oder die Beschränkung der netzwerkbasierten Kommunikation (wie REST-API-Aufrufe) auf den localhost.
 
 **[Nächster Schritt: Weitere Informationen dazu, wie Device Update Azure RBAC verwendet](.\device-update-control-access.md)**

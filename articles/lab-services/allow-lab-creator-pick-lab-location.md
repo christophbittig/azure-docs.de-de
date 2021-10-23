@@ -1,14 +1,14 @@
 ---
 title: Zulassen der Auswahl des Standorts in Azure Lab Services durch den Ersteller des Labs
 description: In diesem Artikel wird beschrieben, wie ein Labkontoadministrator Lab-Erstellern das Auswählen von Standorten für ihre Labs gestatten kann.
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 3b6c2d83414b1abc763755fbf15402b122c2186b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f9dbafe6b297d7b94b1d1ec5eb419345cb140457
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85444198"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130177249"
 ---
 # <a name="allow-lab-creator-to-pick-location-for-the-lab-in-azure-lab-services"></a>Zulassen der Auswahl des Standorts für das Lab in Azure Lab Services durch den Ersteller des Labs
 In Azure Lab Services kann ein Labkontobesitzer Lab-Erstellern (Dozenten) erlauben, einen Standort für das Lab auszuwählen, das sie erstellen. Dieser Ort kann sich vom Standort des Labkontos unterscheiden. Ein Standort ist eine Gruppe von Azure-Regionen. Der Standort „USA“ ist beispielsweise eine Gruppe von Regionen wie „USA, Osten“, „USA, Westen“ usw. 
@@ -57,7 +57,7 @@ Wenn ein Standort eingeschränkt ist, wird er standardmäßig nicht in der Liste
 
 ![Anzeigen nicht verfügbarer Standorte](./media/allow-lab-creator-pick-lab-location/show-unavailable-locations.png)
 
-## <a name="cost"></a>„Cost“ (Kosten)
+## <a name="cost"></a>Cost
 Früher basierten die Preise auf der VM-Größe, die Sie für das Lab auswählten. Jetzt basiert der Preis auf der Kombination aus Betriebssystem (BS), Größe und Standort. 
 
 ## <a name="next-steps"></a>Nächste Schritte

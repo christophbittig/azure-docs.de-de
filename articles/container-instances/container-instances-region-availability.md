@@ -4,12 +4,12 @@ description: Verfügbarkeit von Compute- und Arbeitsspeicherressourcen für den 
 ms.topic: article
 ms.date: 04/27/2020
 ms.custom: references_regions
-ms.openlocfilehash: 69dc12c0a74855535e173868951c15a3acfcfd75
-ms.sourcegitcommit: b59e0afdd98204d11b7f9b6a3e55f5a85d8afdec
+ms.openlocfilehash: d48f9a13b24caab86b6d2cdfba039583f1b75c70
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114371517"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129998540"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Ressourcenverfügbarkeit für Azure Container Instances in Azure-Regionen
 
@@ -85,60 +85,60 @@ Die folgenden Regionen und maximalen Ressourcen stehen Containergruppen mit [unt
 ###  <a name="windows-server-2016"></a>Windows Server 2016
 
 > [!NOTE]
-> Weitere Informationen zu den 1B-, 2B- und 3B-Hosts finden Sie unter [Kompatibilität der Host- und Containerversionen](/virtualization/windowscontainers/deploy-containers/update-containers#host-and-container-version-compatibility).
+> 1B- und 2B-Hosts wurden für Windows Server 2016 eingestellt. Weitere Informationen zu den 1B-, 2B- und 3B-Hosts finden Sie unter [Kompatibilität der Host- und Containerversionen](/virtualization/windowscontainers/deploy-containers/update-containers#host-and-container-version-compatibility).
 
-| Region | 1B/2B: max. CPU | 1B/2B: max. Arbeitsspeicher (GB) |3B: max. CPU | 3B: max. Arbeitsspeicher (GB) | Speicher (GB) |
-| -------- | :---: | :---: | :----: | :-----: | :-------: |
-| Australien (Osten) | 2 | 8 | 2 | 8 | 20 |
-| Brasilien Süd | 4 | 16 | 4 | 16 | 20 |
-| Kanada, Mitte | 2 | 8 | 2 | 3,5 | 20 |
-| Indien, Mitte | 2 | 3,5 | 2 | 3,5 | 20 |
-| USA (Mitte) | 2 | 8 | 2 | 3,5 | 20 |
-| Asien, Osten | 2 | 3,5 | 2 | 3,5 | 20 |
-| East US | 2 | 8 | 2 | 8 | 20 |
-| USA (Ost) 2 | 2 | 8 | 4 | 16 | 20 |
-| Japan, Osten | 4 | 16 | 4 | 16 | 20 |
-| Korea, Mitte | 4 | 16 | 4 | 16 | 20 |
-| USA Nord Mitte | 2 | 8 | 4 | 16 | 20 |
-| Nordeuropa | 2 | 8 | 2 | 8 | 20 |
-| USA Süd Mitte | 2 | 8 | 2 | 8 | 20 |
-| Asien, Südosten | – | – | 2 | 3,5 | 20 |
-| Indien (Süden) | 2 | 3,5 | 2 | 3,5 | 20 |
-| UK, Süden | 2 | 8 | 2 | 3,5 | 20 |
-| USA, Westen-Mitte | 2 | 8 | 2 | 8 | 20 |
-| Europa, Westen | 4 | 16 | 4 | 16 | 20 |
-| USA (Westen) | 2 | 8 | 2 | 8 | 20 |
-| USA, Westen 2 | 2 | 8 | 2 | 3,5 | 20 |
+| Region |3B: max. CPU | 3B: max. Arbeitsspeicher (GB) | Speicher (GB) |
+| -------- | :----: | :-----: | :-------: |
+| Australien (Osten) | 2 | 8 | 20 |
+| Brasilien Süd | 4 | 16 | 20 |
+| Kanada, Mitte  | 2 | 3,5 | 20 |
+| Indien, Mitte | 2 | 3,5 | 20 |
+| USA (Mitte) | 2 | 3,5 | 20 |
+| Asien, Osten | 2 | 3,5 | 20 |
+| East US | 2 | 8 | 20 |
+| USA (Ost) 2 | 4 | 16 | 20 |
+| Japan, Osten | 4 | 16 | 20 |
+| Korea, Mitte | 4 | 16 | 20 |
+| USA Nord Mitte | 4 | 16 | 20 |
+| Nordeuropa | 2 | 8 | 20 |
+| USA Süd Mitte | 2 | 8 | 20 |
+| Asien, Südosten | 2 | 3,5 | 20 |
+| Indien (Süden) | 2 | 3,5 | 20 |
+| UK, Süden | 2 | 3,5 | 20 |
+| USA, Westen-Mitte | 2 | 8 | 20 |
+| Europa, Westen | 4 | 16 | 20 |
+| USA (Westen) | 2 | 8 | 20 |
+| USA, Westen 2 | 2 | 3,5 | 20 |
 
 
 ### <a name="windows-server-2019-ltsc"></a>Windows Server 2019 LTSC
 
 > [!NOTE]
-> Weitere Informationen zu den 1B-, 2B- und 3B-Hosts finden Sie unter [Kompatibilität der Host- und Containerversionen](/virtualization/windowscontainers/deploy-containers/update-containers#host-and-container-version-compatibility).
+> 1B- und 2B-Hosts wurden für Windows Server 2019 LTSC eingestellt. Weitere Informationen zu den 1B-, 2B- und 3B-Hosts finden Sie unter [Kompatibilität der Host- und Containerversionen](/virtualization/windowscontainers/deploy-containers/update-containers#host-and-container-version-compatibility).
 
-| Region | 1B/2B: max. CPU | 1B/2B: max. Arbeitsspeicher (GB) |3B: max. CPU | 3B: max. Arbeitsspeicher (GB) | Speicher (GB) |
-| -------- | :---: | :---: | :----: | :-----: | :-------: |
-| Australien (Osten) | 4 | 16 | 4 | 16 | 20 |
-| Brasilien Süd | 4 | 16 | 4 | 16 | 20 |
-| Kanada, Mitte | 4 | 16 | 4 | 16 | 20 |
-| Indien, Mitte | 4 | 16 | 4 | 16 | 20 |
-| USA (Mitte) | 4 | 16 | 4 | 16 | 20 |
-| Asien, Osten | 4 | 16 | 4 | 16 | 20 |
-| East US | 4 | 16 | 4 | 16 | 20 |
-| USA (Ost) 2 | 2 | 3,5 | 2 | 3,5 | 20 |
-| Frankreich, Mitte | 4 | 16 | 4 | 16 | 20 |
-| Japan, Osten | – | N/V | 4 | 16 | 20 |
-| Korea, Mitte | 4 | 16 | 4 | 16 | 20 |
-| USA Nord Mitte | 4 | 16 | 4 | 16 | 20 |
-| Nordeuropa | 4 | 16 | 4 | 16 | 20 |
-| USA Süd Mitte | 4 | 16 | 4 | 16 | 20 |
-| Asien, Südosten | 4 | 16 | 4 | 16 | 20 |
-| Indien (Süden) | 4 | 16 | 4 | 16 | 20 |
-| UK, Süden | 4 | 16 | 4 | 16 | 20 |
-| USA, Westen-Mitte | 4 | 16 | 4 | 16 | 20 |
-| Europa, Westen | 4 | 16 | 4 | 16 | 20 |
-| USA (Westen) | 4 | 16 | 4 | 16 | 20 |
-| USA, Westen 2 | 2 | 8 | 4 | 16 | 20 |
+| Region | 3B: max. CPU | 3B: max. Arbeitsspeicher (GB) | Speicher (GB) |
+| -------- | :----: | :-----: | :-------: |
+| Australien (Osten) | 4 | 16 | 20 |
+| Brasilien Süd | 4 | 16 | 20 |
+| Kanada, Mitte | 4 | 16 | 20 |
+| Indien, Mitte | 4 | 16 | 20 |
+| USA (Mitte) | 4 | 16 | 20 |
+| Asien, Osten | 4 | 16 | 20 |
+| East US | 4 | 16 | 20 |
+| USA (Ost) 2 | 2 | 3,5 | 20 |
+| Frankreich, Mitte | 4 | 16 | 20 |
+| Japan, Osten | 4 | 16 | 20 |
+| Korea, Mitte | 4 | 16 | 20 |
+| USA Nord Mitte | 4 | 16 | 20 |
+| Nordeuropa | 4 | 16 | 20 |
+| USA Süd Mitte | 4 | 16 | 20 |
+| Asien, Südosten | 4 | 16 | 20 |
+| Indien (Süden) | 4 | 16 | 20 |
+| UK, Süden | 4 | 16 | 20 |
+| USA, Westen-Mitte | 4 | 16 | 20 |
+| Europa, Westen | 4 | 16 | 20 |
+| USA (Westen) | 4 | 16 | 20 |
+| USA, Westen 2 | 4 | 16 | 20 |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

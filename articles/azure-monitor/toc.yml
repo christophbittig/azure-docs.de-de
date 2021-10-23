@@ -151,8 +151,6 @@
           href: alerts/alerts-unified-log.md
         - name: Aktivitätsprotokollwarnungen
           href: alerts/activity-log-alerts.md
-    - name: Visualisieren von Daten
-      href: visualizations.md
     - name: Partnerintegrationen
       href: partners.md
     - name: Sicherheit
@@ -166,6 +164,18 @@
   items:
     - name: Szenarien
       items:
+        - name: Best Practices für Azure Monitor
+          items:
+            - name: Übersicht
+              href: best-practices.md
+            - name: Planung
+              href: best-practices-plan.md
+            - name: Konfigurieren der Datensammlung
+              href: best-practices-data-collection.md
+            - name: Analyse und Visualisierungen
+              href: best-practices-analysis.md
+            - name: Warnungen und automatisierte Aktionen
+              href: best-practices-alerts.md
         - name: Überwachen einer Azure-Ressource
           href: essentials/monitor-azure-resource.md
         - name: Überwachen virtueller Maschinen
@@ -185,13 +195,6 @@
           displayname: VM
         - name: Überwachen von Kubernetes
           href: ../aks/monitor-aks.md?toc=/azure/azure-monitor/toc.json
-    - name: Bereitstellen
-      items:
-        - name: Bereitstellen von Azure Monitor
-          href: deploy.md
-        - name: Bedarfsorientiertes Bereitstellen
-          displayName: 'Azure Policy, Policy'
-          href: deploy-scale.md
     - name: Verwalten und Konfigurieren
       items:
         - name: Berechtigungen und Sicherheit für Rollen
@@ -402,9 +405,6 @@
             - name: Datensammlung
               displayname: 'data collection rule,Azure Monitor agent'
               href: agents/data-collection-rule-azure-monitor-agent.md
-            - name: Bedarfsorientiertes Bereitstellen
-              displayname: Deploy Azure Monitor agent at scale
-              href: deploy-scale.md#azure-monitor-agent
             - name: Migrieren von Legacy-Agents
               displayname: Migrate to Azure Monitor agent
               href: agents/azure-monitor-agent-migration.md

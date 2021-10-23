@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 09/09/2021
 ms.author: allensu
-ms.openlocfilehash: 692bcd4900ae960928a66eaa63b02c6ddf12f2bf
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 485cd0d3d7ce2c64bfb0f37e07d785dee8808e3a
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129705289"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130062669"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Was ist privater Endpunkt in Azure?
 
@@ -98,6 +98,7 @@ In der folgenden Tabelle sind die verfügbaren Ressourcen aufgeführt, die priva
 | **Private Link-Dienst** (Ihr eigener Dienst) |  Microsoft.Network/privateLinkServices | empty |
 | **Power BI** | Microsoft.PowerBI/privateLinkServicesForPowerBI | Power BI |
 | **Azure Purview** | Microsoft.Purview/accounts | account |
+| **Azure Purview** | Microsoft.Purview/accounts | Portal |
 | **Azure Backup** | Microsoft.RecoveryServices/vaults | Tresor |
 | **Azure Relay** | Microsoft.Relay/namespaces | Namespace |
 | **Microsoft Search** | Microsoft.Search/searchServices | Suchdienst |
@@ -176,10 +177,10 @@ Die folgende Tabelle enthält eine Liste der bekannten Einschränkungen bei Verw
 | Flag AllowVirtualNetworkAccess | Kund*innen, die das VNet-Peering für ihr VNet (VNet A) so einstellen, dass das Flag **AllowVirtualNetworkAccess** für die Peeringverbindung mit einem anderen VNet (VNet B) auf „false“ festgelegt ist, können das Tag **VirtualNetwork** nicht verwenden, um Datenverkehr von VNet B abzulehnen, der auf Ressourcen für private Endpunkte zugreift. Sie müssen explizit einen Block für das Adresspräfix von VNet B einfügen, um Datenverkehr an den privaten Endpunkt abzulehnen. | September |
 | Dualport-NSG-Regeln werden nicht unterstützt. | Wenn bei NSG-Regeln mehrere Portbereiche verwendet werden, wird bei Zulassungs- und Ablehnungsregeln nur der erste Portbereich berücksichtigt. Regeln mit mehreren Portbereichen sind standardmäßig so konfiguriert, dass alle Ports abgelehnt werden statt nur bestimmte Ports. </br> **Weitere Informationen finden Sie im folgenden Regelbeispiel.** | September |
 
-| Priority | Quellport | Zielport | Aktion | Effektive Aktion |
+| Priorität | Quellport | Zielport | Aktion | Effektive Aktion |
 | -------- | ----------- | ---------------- | ------ | ---------------- |
 | 10 | 10–12 | 10–12 | Allow/Deny | Ein einzelner Portbereich für Quell- und Zielports funktioniert erwartungsgemäß. |
-| 10 | 10–12, 13–14 | 14–15, 16–17 | Allow | Nur die Quellports 10–12 und die Zielports 14–15 sind zulässig. |
+| 10 | 10–12, 13–14 | 14–15, 16–17 | Zulassen | Nur die Quellports 10–12 und die Zielports 14–15 sind zulässig. |
 | 10 | 10–12, 13–14 | 120–130, 140–150 | Verweigern | Datenverkehr von allen Quellports an alle Zielports wird abgelehnt, da mehrere Quell- und Zielportbereiche angegeben sind. |
 | 10 | 10–12, 13–14 | 120–130 | Verweigern | Datenverkehr von allen Quellports wird nur für die Zielports 120–130 abgelehnt. Es gibt mehrere Quellportbereiche und einen einzelnen Zielportbereich. |
 

@@ -1,24 +1,34 @@
 ---
-title: Verwenden von Azure Import/Export zum Exportieren von Daten aus Azure-Blob | Microsoft-Dokumentation
+title: Tutorial zum Exportieren von Daten aus Azure Blob-Speicher mit Azure Import/Export | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Exportaufträge im Azure-Portal erstellen und Daten aus Azure-Blobs übertragen.
 author: alkohli
 services: storage
 ms.service: storage
-ms.topic: how-to
-ms.date: 03/03/2021
+ms.topic: tutorial
+ms.date: 10/01/2021
 ms.author: alkohli
 ms.subservice: common
-ms.custom: devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
-ms.openlocfilehash: 32605a78336c8d9e1aeb730be50441d43b8fe45c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.custom: tutorial, devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
+ms.openlocfilehash: ccda14f4046efe32370b206577807dca558d9f25
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128659132"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129709652"
 ---
-# <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Verwenden des Azure Import/Export-Diensts zum Exportieren von Daten aus Azure Blob Storage
+# <a name="tutorial-export-data-from-azure-blob-storage-with-azure-importexport"></a>Tutorial: Exportieren von Daten aus Azure Blob-Speicher mit Azure Import/Export
 
 Dieser Artikel enthält ausführliche Anweisungen zum Verwenden des Azure Import/Export-Diensts, um große Datenmengen sicher aus Azure Blob Storage zu exportieren. Für diesen Dienst müssen Sie leere Laufwerke an das Azure-Rechenzentrum senden. Der Dienst exportiert Daten aus Ihrem Speicherkonto auf die Laufwerke und versendet diese dann zurück.
+
+In diesem Tutorial lernen Sie Folgendes:
+
+> [!div class="checklist"]
+> * Voraussetzungen zum Exportieren von Daten aus Azure Blob-Speicher mit Azure Import/Export
+> * Schritt 1: Erstellen eines Exportauftrags
+> * Schritt 2: Versenden der Laufwerke
+> * Schritt 3: Aktualisieren des Auftrags mit Nachverfolgungsinformationen
+> * Schritt 4: Empfangen der Datenträger
+> * Schritt 5: Entsperren der Datenträger
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -27,7 +37,7 @@ Die Voraussetzungen lauten wie folgt:
 
 - Ein aktives Azure-Abonnement, das für den Import/Export-Dienst verwendet werden kann
 - Mindestens ein Azure Storage-Konto Hier finden Sie die Liste der [für den Import/Export-Dienst unterstützten Speicherkonten und Speichertypen](storage-import-export-requirements.md). Weitere Informationen zum Erstellen eines neuen Speicherkontos finden Sie unter [Erstellen eines Speicherkontos](../storage/common/storage-account-create.md).
-- Eine angemessene Anzahl von Datenträgern der [unterstützten Typen](storage-import-export-requirements.md#supported-disks)
+- Eine angemessene Anzahl von Datenträgern der [unterstützten Typen](storage-import-export-requirements.md#supported-disks) Sie können mithilfe des Azure Import/Export-Tools bestimmen, wie viele Datenträger bereitgestellt werden sollen. Die entsprechenden Schritte finden Sie unter [Bestimmen der Anzahl benötigter Laufwerke](storage-import-export-determine-drives-for-export.md#determine-how-many-drives-you-need).
 - Sie benötigen ein FedEx/DHL-Konto. Wenn Sie einen anderen Spediteur als FedEx/DHL verwenden möchten, wenden Sie sich unter `adbops@microsoft.com` an das Azure Data Box Operations-Team.
   - Das Konto muss gültig sein, es muss Guthaben vorhanden sein und es muss der Rückversand aktiviert sein.
   - Generieren Sie eine Nachverfolgungsnummer für den Exportauftrag.
@@ -83,7 +93,7 @@ Führen Sie die folgenden Schritte aus, um im Azure-Portal einen Exportauftrag z
         |Option|BESCHREIBUNG|
         |------|-----------|      
         |**Container hinzufügen**|Bei dieser Option werden alle Blobs in einem Container exportiert.<br>Wählen Sie **Container hinzufügen** aus, und geben Sie die einzelnen Containernamen ein.|
-        |**Blobs hinzufügen**|Bei dieser Option können Sie einzelne zu exportierende Blobs angeben.<br>Wählen Sie **Blobs hinzufügen** aus. Geben Sie anschließend den relativen Pfad des Blobs an (beginnend mit dem Containernamen). Verwenden Sie *$root* , um den Stammcontainer festzulegen.<br>Sie müssen die Blobpfade in einem gültigen Format angeben, um Fehler während der Verarbeitung zu vermeiden. Dies ist in diesem Screenshot dargestellt. Weitere Informationen finden Sie unter [Beispiele für gültige Blobpfade](#examples-of-valid-blob-paths).|
+        |**Blobs hinzufügen**|Bei dieser Option können Sie einzelne zu exportierende Blobs angeben.<br>Wählen Sie **Blobs hinzufügen** aus. Geben Sie anschließend den relativen Pfad des Blobs an (beginnend mit dem Containernamen). Verwenden Sie *$root* , um den Stammcontainer festzulegen.<br>Sie müssen die Blobpfade in einem gültigen Format angeben, um Fehler während der Verarbeitung zu vermeiden. Dies ist in diesem Screenshot dargestellt. Weitere Informationen finden Sie unter [Beispiele für gültige Blobpfade](storage-import-export-determine-drives-for-export.md#examples-of-valid-blob-paths).|
         |**Präfixe hinzufügen**|Verwenden Sie ein Präfix, um eine Gruppe ähnlich benannter Container oder ähnlich benannter Blobs in einem Container auszuwählen. Bei dem Präfix kann es sich um das Präfix des Containernamens, den vollständigen Containernamen oder einen vollständigen Containernamen gefolgt vom Präfix des Blobnamens handeln. |
 
         ![Exportieren ausgewählter Container und Blobs](./media/storage-import-export-data-from-blobs/export-from-blob-5.png)
@@ -126,61 +136,6 @@ Führen Sie die folgenden Schritte aus, um im Azure-Portal einen Exportauftrag z
    ![Überprüfen und Erstellen des Exportauftrags](./media/storage-import-export-data-from-blobs/export-from-blob-6-a.png)
 
  1. Wenn die Überprüfung erfolgreich war, wählen Sie **Erstellen** aus.
-
-<!--Replaced text: Steps 4 - end of "Create an export job." Wizard design changes required both screen and text updates.
-
-4. In **Basics**:
-
-    - Select **Export from Azure**.
-    - Enter a descriptive name for the export job. Use the name you choose to track the progress of your jobs.
-        - The name may contain only lowercase letters, numbers, hyphens, and underscores.
-        - The name must start with a letter, and may not contain spaces.
-    - Select a subscription.
-    - Enter or select a resource group.
-
-        ![Basics](./media/storage-import-export-data-from-blobs/export-from-blob-3.png)
-
-5. In **Job details**:
-
-    - Select the storage account where the data to be exported resides. Use a storage account close to where you are located.
-    - The dropoff location is automatically populated based on the region of the storage account selected.
-    - Specify the blob data you wish to export from your storage account to your blank drive or drives.
-    - Choose to **Export all** blob data in the storage account.
-
-         ![Export all](./media/storage-import-export-data-from-blobs/export-from-blob-4.png)
-
-    - You can specify which containers and blobs to export.
-        - **To specify a blob to export**: Use the **Equal To** selector. Specify the relative path to the blob, beginning with the container name. Use *$root* to specify the root container.
-        - **To specify all blobs starting with a prefix**: Use the **Starts With** selector. Specify the prefix, beginning with a forward slash '/'. The prefix may be the prefix of the container name, the complete container name, or the complete container name followed by the prefix of the blob name. You must provide the blob paths in valid format to avoid errors during processing, as shown in this screenshot. For more information, see [Examples of valid blob paths](#examples-of-valid-blob-paths).
-
-           ![Export selected containers and blobs](./media/storage-import-export-data-from-blobs/export-from-blob-5.png)
-
-    - You can export from  the blob list file.
-
-        ![Export from blob list file](./media/storage-import-export-data-from-blobs/export-from-blob-6.png)
-
-   > [!NOTE]
-   > If the blob to be exported is in use during data copy, Azure Import/Export service takes a snapshot of the blob and copies the snapshot.
-
-6. In **Return shipping info**:
-
-    - Select the carrier from the dropdown list. If you want to use a carrier other than FedEx/DHL, choose an existing option from the dropdown. Contact Azure Data Box Operations team at `adbops@microsoft.com`  with the information regarding the carrier you plan to use.
-    - Enter a valid carrier account number that you have created with that carrier. Microsoft uses this account to ship the drives back to you once your export job is complete.
-    - Provide a complete and valid contact name, phone, email, street address, city, zip, state/province, and country/region.
-
-        > [!TIP]
-        > Instead of specifying an email address for a single user, provide a group email. This ensures that you receive notifications even if an admin leaves.
-
-7. In **Summary**:
-
-    - Review the details of the job.
-    - Make a note of the job name and provided Azure datacenter shipping address for shipping disks to Azure.
-
-        > [!NOTE]
-        > Always send the disks to the datacenter noted in the Azure portal. If the disks are shipped to the wrong datacenter, the job will not be processed.
-
-    - Click **OK** to complete export job creation.
--->
 
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
@@ -240,7 +195,7 @@ Führen Sie die folgenden Schritte aus, um im Azure-Portal einen Exportauftrag z
     blob-path-prefix=/myiecontainer
     ```
 
-   Weitere Informationen finden Sie unter [Beispiele für gültige Blobpfade](#examples-of-valid-blob-paths).
+   Weitere Informationen finden Sie unter [Beispiele für gültige Blobpfade](storage-import-export-determine-drives-for-export.md#examples-of-valid-blob-paths).
 
    > [!NOTE]
    > Wenn das zu exportierende Blob während des Kopierens der Daten verwendet wird, erstellt der Azure Import/Export-Dienst eine Momentaufnahme des Blobs und kopiert die Momentaufnahme.
@@ -327,7 +282,7 @@ Install-Module -Name Az.ImportExport
    -ExportBlobListblobPath '/myiecontainer'
    ```
 
-   Weitere Informationen finden Sie unter [Beispiele für gültige Blobpfade](#examples-of-valid-blob-paths).
+   Weitere Informationen finden Sie unter [Beispiele für gültige Blobpfade](storage-import-export-determine-drives-for-export.md#examples-of-valid-blob-paths).
 
    > [!NOTE]
    > Wenn das zu exportierende Blob während des Kopierens der Daten verwendet wird, erstellt der Azure Import/Export-Dienst eine Momentaufnahme des Blobs und kopiert die Momentaufnahme.
@@ -346,11 +301,9 @@ Install-Module -Name Az.ImportExport
 
 ---
 
-<!--## (Optional) Step 2: -->
-
 ## <a name="step-2-ship-the-drives"></a>Schritt 2: Versenden der Laufwerke
 
-Wenn Sie die Anzahl der benötigten Laufwerke nicht kennen, fahren Sie mit [Überprüfen der Anzahl der Laufwerke](#check-the-number-of-drives) fort. Wenn Sie die Anzahl der Laufwerke kennen, fahren Sie mit dem Versenden der Laufwerke fort.
+Wenn Sie die Anzahl der benötigten Laufwerke nicht kennen, finden Sie weitere Informationen unter [Bestimmen der Anzahl benötigter Laufwerke](storage-import-export-determine-drives-for-export.md#determine-how-many-drives-you-need). Wenn Sie die Anzahl der Laufwerke kennen, fahren Sie mit dem Versenden der Laufwerke fort.
 
 [!INCLUDE [storage-import-export-ship-drives](../../includes/storage-import-export-ship-drives.md)]
 
@@ -383,84 +336,7 @@ Hier sehen Sie eine Beispieleingabe.
 
 Zu diesem Zeitpunkt können Sie den Auftrag löschen oder belassen. Aufträge werden nach 90 Tagen automatisch gelöscht.
 
-## <a name="check-the-number-of-drives"></a>Überprüfen der Anzahl der Laufwerke
-
-Mit diesem *optionalen* Schritt können Sie die Anzahl von Laufwerken ermitteln, die für den Exportauftrag erforderlich sind. Führen Sie diesen Schritt auf einem Windows-System aus, auf dem eine [unterstützte Betriebssystemversion](storage-import-export-requirements.md#supported-operating-systems) ausgeführt wird.
-
-1. [Laden Sie Version 1 von WAImportExport](https://www.microsoft.com/download/details.aspx?id=42659) auf das Windows-System herunter.
-2. Entzippen Sie die Dateien in den Standardordner `waimportexportv1`. Beispiel: `C:\WaImportExportV1`.
-3. Öffnen Sie ein PowerShell- oder Befehlszeilenfenster mit Administratorrechten. Um das Verzeichnis in den Ordner mit den entzippten Daten zu ändern, führen Sie den folgenden Befehl aus:
-
-   `cd C:\WaImportExportV1`
-
-4. Um die erforderliche Anzahl von Datenträgern für die ausgewählten Blobs zu überprüfen, führen Sie den folgenden Befehl aus:
-
-   `WAImportExport.exe PreviewExport /ExportBlobListFile:<Path to XML blob list file> /DriveSize:<Size of drives used>`
-
-    Die Parameter werden in der folgenden Tabelle beschrieben:
-
-    |Befehlszeilenparameter|BESCHREIBUNG|
-    |--------------------------|-----------------|
-    |**/logdir:**|Optional. Das Protokollverzeichnis In dieses Verzeichnis werden ausführliche Protokolldateien geschrieben. Ohne spezielle Angabe wird das aktuelle Verzeichnis als Protokollverzeichnis verwendet.|
-    |**/ExportBlobListFile:**|Erforderlich. Pfad zur XML-Datei mit der Liste der Blobpfade oder Blobpfadpräfixe für die zu exportierenden Blobs. Das Dateiformat entspricht dem Format, das im Element `BlobListBlobPath` im [Put Job](/rest/api/storageimportexport/jobs)-Vorgang der REST-API des Import/Export-Diensts verwendet wird.|
-    |**/DriveSize:**|Erforderlich. Die Größe der Laufwerke, die für einen Exportauftrag verwendet werden sollen, *beispielsweise* 500 GB oder 1,5 TB.|
-
-    Weitere Informationen finden Sie unter [Beispiel für den Befehl PreviewExport](#example-of-previewexport-command).
-
-5. Überprüfen Sie, ob Sie Lese-/Schreibzugriff auf die Laufwerke haben, die für den Exportauftrag versendet werden sollen.
-
-### <a name="example-of-previewexport-command"></a>Beispiel für den Befehl PreviewExport
-
-Das folgende Beispiel veranschaulicht die Verwendung des Befehls `PreviewExport`:
-
-```powershell
-    WAImportExport.exe PreviewExport /ExportBlobListFile:C:\WAImportExport\mybloblist.xml /DriveSize:500GB
-```
-
-Die Datei mit der Blobliste für den Export kann wie hier gezeigt Blobnamen und Blobpräfixe enthalten:
-
-```xml
-<?xml version="1.0" encoding="utf-8"?>
-<BlobList>
-<BlobPath>pictures/animals/koala.jpg</BlobPath>
-<BlobPathPrefix>/vhds/</BlobPathPrefix>
-<BlobPathPrefix>/movies/</BlobPathPrefix>
-</BlobList>
-```
-
-Das Azure Import/Export-Tool listet alle zu exportierenden Blobs auf, berechnet unter Berücksichtigung des notwendigen Mehraufwands, wie diese in Laufwerke der angegebenen Größe gepackt werden, und schätzt dann die erforderliche Anzahl von Laufwerken für die Blobs sowie Informationen zur Laufwerknutzung.
-
-Hier sehen Sie ein Beispiel der Ausgabe ohne Informationsprotokolle:
-
-```powershell
-Number of unique blob paths/prefixes:   3
-Number of duplicate blob paths/prefixes:        0
-Number of nonexistent blob paths/prefixes:      1
-
-Drive size:     500.00 GB
-Number of blobs that can be exported:   6
-Number of blobs that cannot be exported:        2
-Number of drives needed:        3
-        Drive #1:       blobs = 1, occupied space = 454.74 GB
-        Drive #2:       blobs = 3, occupied space = 441.37 GB
-        Drive #3:       blobs = 2, occupied space = 131.28 GB
-```
-
-## <a name="examples-of-valid-blob-paths"></a>Beispiele für gültige Blobpfade
-
-Die folgende Tabelle enthält Beispiele für gültige Blob-Pfade:
-
-   | Auswahl | Blob-Pfad | BESCHREIBUNG |
-   | --- | --- | --- |
-   | Starts With |/ |Exportiert alle Blobs im Speicherkonto |
-   | Starts With |/$root/ |Exportiert alle Blobs im Stammcontainer |
-   | Starts With |/book |Exportiert alle Blobs in allen Containern mit dem Präfix **book** |
-   | Starts With |/music/ |Exportiert alle Blobs im Container **music** |
-   | Starts With |/music/love |Exportiert alle Blobs im Container **music**, die mit dem Präfix **love** beginnen |
-   | Equal To |$root/logo.bmp |Exportiert das Blob **logo.bmp** im Stammcontainer |
-   | Equal To |videos/story.mp4 |Exportiert das Blob **story.mp4** im Container **videos** |
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Anzeigen von Auftrags- und Laufwerkstatus](storage-import-export-view-drive-status.md)
-- [Überprüfen der Import/Export-Anforderungen](storage-import-export-requirements.md)
+* [Anzeigen von Auftrags- und Laufwerkstatus](storage-import-export-view-drive-status.md)
+* [Überprüfen der Kopierprotokolle für Import/Export](storage-import-export-tool-reviewing-job-status-v1.md)

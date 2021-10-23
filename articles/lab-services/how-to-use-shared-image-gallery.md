@@ -1,14 +1,14 @@
 ---
 title: Verwenden eines Katalogs mit freigegebenen Images in Azure Lab Services | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie ein Labkonto für die Verwendung eines Katalogs mit freigegebenen Images konfigurieren, sodass ein Benutzer ein Image für andere freigeben und ein anderer Benutzer mithilfe dieses Images eine Vorlage für virtuelle Computer im Lab erstellen kann.
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/11/2020
-ms.openlocfilehash: 8a0cd273d2444281fd2c43823aaa822b5e476ed0
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: cadb95d4946eef02c98a322e61489588bd8ea767
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123450546"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130179942"
 ---
 # <a name="use-a-shared-image-gallery-in-azure-lab-services"></a>Verwenden eines Katalogs mit freigegebenen Images in Azure Lab Services
 

@@ -100,8 +100,20 @@
           href: set-up-customize-master-image.md
         - name: Installieren von Office für ein VHD-Masterimage
           href: install-office-on-wvd-master-image.md
-    - name: Automatisches Skalieren von Sitzungshosts
-      href: set-up-scaling-script.md
+    - name: Skalieren von Sitzungshosts mit Azure Automation
+      items:
+        - name: Einrichten eines Skalierungsskripts
+          href: set-up-scaling-script.md
+    - name: Autoskalierung (Vorschauversion)
+      items:
+        - name: Verwenden der Funktion für die Autoskalierung (Vorschau)
+          href: autoscale-scaling-plan.md
+        - name: Autoskalierung von Sitzungshosts (Vorschau)
+          href: autoscale-new-existing-host-pool.md
+        - name: Diagnose für die Autoskalierung (Vorschauversion)
+          href: autoscale-diagnostics.md
+        - name: Häufig gestellte Fragen zur Funktion für die Autoskalierung (Vorschau)
+          href: autoscale-faq.yml
     - name: Feed anpassen
       href: customize-feed-for-virtual-desktop-users.md
     - name: Verwenden der Service-Diagnose

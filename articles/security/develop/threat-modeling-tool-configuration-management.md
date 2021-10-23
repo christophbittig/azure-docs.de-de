@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 8cbe6b39bda0815c4981c497c07750136bcc9dba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f4179a79df5bb952ca4a374602cb4dea8bf4dbbd
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94517483"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130178256"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>Sicherheitsrahmen: Konfigurationsverwaltung | Risikominderung 
 | Produkt/Dienst | Artikel |
@@ -46,7 +46,7 @@ ms.locfileid: "94517483"
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | –  |
 | **Referenzen**              | [An Introduction to Content Security Policy](https://www.html5rocks.com/en/tutorials/security/content-security-policy/) (Eine Einführung in die Inhaltssicherheitsrichtlinie), [Content Security Policy Reference](https://content-security-policy.com/) (Referenz für die Inhaltssicherheitsrichtlinie), [Security features](https://developer.microsoft.com/microsoft-edge/platform/documentation/dev-guide/security/) (Sicherheitsfeatures), [Introduction to content security policy](https://github.com/webplatform/webplatform.github.io/tree/master/docs/tutorials/content-security-policy) (Einführung in die Inhaltssicherheitsrichtlinie), [Can I use CSP?](https://caniuse.com/#feat=contentsecuritypolicy) (Kann ich die Inhaltssicherheitsrichtlinie verwenden?) |
-| **Schritte** | <p>Die Inhaltssicherheitsrichtlinie (Content Security Policy, CSP) ist ein umfassender defensiver Sicherheitsmechanismus – ein W3C-Standard, mit dem Besitzer von Webanwendungen den in Ihre Website eingebetteten Inhalt steuern können. CSP wird auf dem Webserver als HTTP-Antwortheader hinzugefügt und clientseitig vom Browser erzwungen. Die Richtlinie basiert auf einer Zulassungsliste: Eine Website kann einen Satz vertrauenswürdiger Domänen deklarieren, aus denen aktive Inhalte wie etwa JavaScript geladen werden können.</p><p>CSP bietet folgende Sicherheitsvorteile:</p><ul><li>**Schutz vor XSS**:  Wenn eine Seite für XSS anfällig ist, kann dies von einem Angreifer auf zwei Arten ausgenutzt werden:<ul><li>Der Angreifer kann `<script>malicious code</script>` einschleusen. Dieser Exploit funktioniert aufgrund der Basiseinschränkung 1 von CSP nicht.</li><li>Der Angreifer kann `<script src="http://attacker.com/maliciousCode.js"/>` einschleusen. Dieser Exploit funktioniert nicht, da die vom Angreifer gesteuerte Domäne nicht in der CSP-Liste der zulässigen Domänen enthalten ist.</li></ul></li><li>**Kontrolle über die Ausschleusung von Daten**: Wenn schädlicher Inhalt auf einer Webseite versucht, eine Verbindung mit einer externen Website herzustellen und Daten zu stehlen, wird die Verbindung von CSP getrennt. Dies liegt daran, dass die Zieldomäne nicht in der CSP-Zulassungsliste enthalten ist.</li><li>**Schutz vor Clickjacking:** Bei einem Clickjacking-Angriff kann ein Angreifer eine Originalwebsite mit einem Frame versehen und Benutzer zum Klicken auf Benutzeroberflächenelemente bewegen. Zum Schutz vor Clickjacking wird momentan ein Antwortheader mit X-Frame-Optionen konfiguriert. Dieser Header wird nicht von allen Browsern beachtet, und in Zukunft wird CSP als eine der Standardmaßnahmen gegen Clickjacking verwendet.</li><li>**Echtzeitberichte zu Angriffen**: Bei einem Einschleusungsangriff auf eine CSP-fähige Website benachrichtigt der Browser automatisch einen für den Webserver konfigurierten Endpunkt. Somit fungiert CSP als Echtzeitwarnsystem.</li></ul> |
+| **Schritte** | <p>Die Inhaltssicherheitsrichtlinie (Content Security Policy, CSP) ist ein umfassender defensiver Sicherheitsmechanismus – ein W3C-Standard, mit dem Besitzer von Webanwendungen den in Ihre Website eingebetteten Inhalt steuern können. CSP wird auf dem Webserver als HTTP-Antwortheader hinzugefügt und clientseitig vom Browser erzwungen. Die Richtlinie basiert auf einer Zulassungsliste: Eine Website kann einen Satz vertrauenswürdiger Domänen deklarieren, aus denen aktive Inhalte wie etwa JavaScript geladen werden können.</p><p>CSP bietet folgende Sicherheitsvorteile:</p><ul><li>**Schutz vor XSS:** Wenn eine Seite für XSS anfällig ist, kann dies von einem Angreifer auf zwei Arten ausgenutzt werden:<ul><li>Der Angreifer kann `<script>malicious code</script>` einschleusen. Dieser Exploit funktioniert aufgrund der Basiseinschränkung 1 von CSP nicht.</li><li>Der Angreifer kann `<script src="http://attacker.com/maliciousCode.js"/>` einschleusen. Dieser Exploit funktioniert nicht, da die vom Angreifer gesteuerte Domäne nicht in der CSP-Liste der zulässigen Domänen enthalten ist.</li></ul></li><li>**Kontrolle über die Ausschleusung von Daten**: Wenn schädlicher Inhalt auf einer Webseite versucht, eine Verbindung mit einer externen Website herzustellen und Daten zu stehlen, wird die Verbindung von CSP getrennt. Dies liegt daran, dass die Zieldomäne nicht in der CSP-Zulassungsliste enthalten ist.</li><li>**Schutz vor Clickjacking:** Bei einem Clickjacking-Angriff kann ein Angreifer eine Originalwebsite mit einem Frame versehen und Benutzer zum Klicken auf Benutzeroberflächenelemente bewegen. Zum Schutz vor Clickjacking wird momentan ein Antwortheader mit X-Frame-Optionen konfiguriert. Dieser Header wird nicht von allen Browsern beachtet, und in Zukunft wird CSP als eine der Standardmaßnahmen gegen Clickjacking verwendet.</li><li>**Echtzeitberichte zu Angriffen**: Bei einem Einschleusungsangriff auf eine CSP-fähige Website benachrichtigt der Browser automatisch einen für den Webserver konfigurierten Endpunkt. Somit fungiert CSP als Echtzeitwarnsystem.</li></ul> |
 
 ### <a name="example"></a>Beispiel
 Beispielrichtlinie: 
@@ -57,15 +57,15 @@ Bei dieser Richtlinie können Skripts nur vom Server der Webanwendung und vom Go
 
 ### <a name="example"></a>Beispiel
 Es werden keine Inlineskripts ausgeführt. Beispiele für Inlineskripts: 
-```javascript
+```JavaScript
 <script> some Javascript code </script>
-Event handling attributes of HTML tags (e.g., <button onclick="function(){}">
+Event handling attributes of HTML tags (for example, <button onclick="function(){}">
 javascript:alert(1);
 ```
 
 ### <a name="example"></a>Beispiel
 Zeichenfolgen werden nicht als Code ausgewertet. 
-```javascript
+```JavaScript
 Example: var str="alert(1)"; eval(str);
 ```
 
@@ -192,7 +192,7 @@ Oder auf Anwendungsebene:
    </system.web>
 </configuration>
 ```
-Hinweis: Das Anforderungsüberprüfungsfeature wird nicht unterstützt und ist nicht Teil der MVC6-Pipeline. 
+Beachten Sie, dass das Anforderungsüberprüfungsfeature nicht unterstützt wird und nicht Teil der MVC6-Pipeline ist. 
 
 ## <a name="use-locally-hosted-latest-versions-of-javascript-libraries"></a><a id="local-js"></a>Verwenden Sie die neuesten Versionen von JavaScript-Bibliotheken (lokal gehostet).
 
@@ -513,7 +513,7 @@ Wenn Sie CORS für einen Controller oder eine Aktion deaktivieren möchten, verw
 | **Referenzen**              | [Enabling Secure Boot and BitLocker Device Encryption on Windows 10 IoT Core](/windows/iot-core/secure-your-device/securebootandbitlocker) (Aktivieren des sicheren Starts und der BitLocker-Geräteverschlüsselung unter Windows 10 IoT Core) |
 | **Schritte** | Der sichere UEFI-Start sorgt mittels Einschränkung des Systems dafür, dass nur Binärdateien ausgeführt werden können, die von einer angegebenen Stelle signiert wurden. Dieses Feature verhindert die Ausführung von unbekanntem Code auf der Plattform und damit eine potenzielle Beeinträchtigung ihres Sicherheitsstatus. Aktivieren Sie den sicheren UEFI-Start, und schränken Sie die Liste mit den vertrauenswürdigen Zertifizierungsstellen ein, die Code signieren können. Lassen Sie sämtlichen Code, der auf dem Gerät bereitgestellt wird, von einer der vertrauenswürdigen Zertifizierungsstellen signieren. |
 
-## <a name="encrypt-os-and-additional-partitions-of-iot-device-with-bit-locker"></a><a id="partition-iot"></a>Verschlüsseln Sie die Betriebssystempartition und andere Partitionen des IoT-Geräts mit BitLocker.
+## <a name="encrypt-os-and-other-partitions-of-iot-device-with-bitlocker"></a><a id="partition-iot"></a>Verschlüsseln Sie die Betriebssystempartition und andere Partitionen des IoT-Geräts mit BitLocker.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
@@ -535,7 +535,7 @@ Wenn Sie CORS für einen Controller oder eine Aktion deaktivieren möchten, verw
 | **Referenzen**              | –  |
 | **Schritte** | Lassen Sie alle Features oder Dienste des Betriebssystems, die nicht für den ordnungsgemäßen Betrieb der Lösung benötigt werden, deaktiviert, bzw. deaktivieren Sie sie. Falls für das Gerät also beispielsweise keine Benutzeroberfläche bereitgestellt werden muss, installieren Sie Windows IoT Core im monitorlosen Modus. |
 
-## <a name="encrypt-os-and-additional-partitions-of-iot-field-gateway-with-bit-locker"></a><a id="field-bit-locker"></a>Verschlüsseln Sie die Betriebssystempartition und andere Partitionen des zwischengeschalteten IoT-Gateways mit BitLocker.
+## <a name="encrypt-os-and-other-partitions-of-iot-field-gateway-with-bitlocker"></a><a id="field-bit-locker"></a>Verschlüsseln Sie die Betriebssystempartition und andere Partitionen des zwischengeschalteten IoT-Gateways mit BitLocker.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
@@ -565,7 +565,7 @@ Wenn Sie CORS für einen Controller oder eine Aktion deaktivieren möchten, verw
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | Wahl des Gateways: Azure IoT Hub |
-| **Referenzen**              | [Übersicht über die Geräteverwaltung mit IoT Hub](../../iot-hub/iot-hub-device-management-overview.md), [How to update Device Firmware](../../iot-hub/tutorial-firmware-update.md) (Aktualisieren der Gerätefirmware) |
+| **Referenzen**              | [Übersicht über die IoT Hub-Geräteverwaltung](../../iot-hub-device-update/device-update-agent-overview.md),[Tutorial: Device Update for Azure IoT Hub unter Verwendung des Raspberry Pi 3 B+-Referenzimages](../../iot-hub-device-update/device-update-raspberry-pi.md). |
 | **Schritte** | LWM2M ist ein Protokoll der Open Mobile Alliance zur Verwaltung von IoT-Geräten. Die Azure IoT-Geräteverwaltung ermöglicht die Interaktion mit physischen Geräten über Geräteaufträge. Stellen Sie sicher, dass das Cloudgateway einen Prozess implementiert, der das Gerät und andere Konfigurationsdaten mithilfe der Geräteverwaltung von Azure IoT Hub regelmäßig auf den neuesten Stand bringt. |
 
 ## <a name="ensure-that-devices-have-end-point-security-controls-configured-as-per-organizational-policies"></a><a id="controls-policies"></a>Stellen Sie sicher, dass für Geräte organisationsrichtlinienkonforme Endpunktsicherheitskontrollen konfiguriert sind.

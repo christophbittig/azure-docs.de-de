@@ -7,19 +7,17 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/10/2021
-ms.openlocfilehash: d87ec3fa05e1740b5cba7b4230894f1df822ac1f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 10/15/2021
+ms.openlocfilehash: 8be37bfc85b56af67784fb1abb457da95b9565fc
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124784625"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130067039"
 ---
 # <a name="view-a-knowledge-store-with-storage-explorer"></a>Anzeigen eines Wissensspeichers mit Storage-Explorer
 
 Bei einem [Wissensspeicher](knowledge-store-concept-intro.md) handelt es sich um Inhalte, die von einem Azure Cognitive Search-Skillset erstellt und in Azure Storage gespeichert werden. In diesem Artikel wird erläutert, wie Sie mit dem Storage-Explorer im Azure-Portal den Inhalt eines Wissensspeichers anzeigen.
-
-## <a name="prerequisites"></a>Voraussetzungen
 
 Beginnen Sie mit einem vorhandenen Wissensspeicher, der im [Azure-Portal](knowledge-store-create-portal.md) oder mithilfe der [REST-APIs](knowledge-store-create-rest.md) erstellt wurde. Sowohl mit den exemplarischen Vorgehensweisen für das Portal als auch für REST können Sie Wissensspeicher in Azure Table Storage erstellen.
 
@@ -29,7 +27,7 @@ Beginnen Sie mit einem vorhandenen Wissensspeicher, der im [Azure-Portal](knowle
 
 1. Klicken Sie im linken Navigationsbereich des Speicherkontos auf **Storage-Explorer**.
 
-## <a name="edit-and-query-tables"></a>Bearbeiten und Abfragen von Tabellen
+## <a name="view-edit-and-query-tables"></a>Anzeigen, Bearbeiten und Abfragen von Tabellen
 
 1. Erweitern Sie die Liste **TABELLEN**, um eine Liste der Azure-Tabellenprojektionen anzuzeigen, die beim Erstellen des Wissensspeichers erstellt wurden. Wenn Sie den Wissensspeicher mithilfe des Schnellstarts oder REST-Artikels erstellt haben, enthalten die Tabellen Inhalte im Zusammenhang mit Kundenbewertungen eines europäischen Hotels.
 
