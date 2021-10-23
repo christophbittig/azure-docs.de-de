@@ -2,15 +2,15 @@
 title: Einrichten eines Labs zum Lehren von Big Data-Analysen mit Azure Lab Services | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie mithilfe der Docker-Bereitstellung von Hortonworks Data Platform (HDP) ein Lab zum Lehren von Big Data-Analysen einrichten.
 author: nicolela
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: 5eb9cd00350c41645d4427e30a6f25a6c163358c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 280ed6f2804e7a3aef6da8da9512a59da6e8c5f4
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94659895"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130177040"
 ---
 # <a name="set-up-a-lab-for-big-data-analytics-using-docker-deployment-of-hortonworks-data-platform"></a>Einrichten eines Labs zum Lehren von Big Data-Analysen mithilfe der Docker-Bereitstellung von HortonWorks Data Platform
 

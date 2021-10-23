@@ -12,12 +12,12 @@ author: misliplavo
 ms.author: mlazic
 ms.reviewer: mathoma
 ms.date: 09/13/2021
-ms.openlocfilehash: f683bbd008e47a154fac11d89e8d06f0e07b87f2
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 3c8df890cb8772c919d70e790f7a2c62eb757e87
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128674208"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130041278"
 ---
 # <a name="quickstart-restore-a-database-to-azure-sql-managed-instance-with-ssms"></a>Schnellstart: Wiederherstellen einer Datenbank in Azure SQL Managed Instance mit SSMS
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -51,69 +51,69 @@ Führen Sie in SSMS die folgenden Schritte aus, um die Wide World Importers-Date
 1. Öffnen Sie SSMS, und stellen Sie eine Verbindung mit Ihrer verwalteten Instanz her.
 2. Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf die Datenbanken der verwalteten Instanz, und wählen Sie **Datenbank wiederherstellen** aus, um den Wiederherstellungs-Assistenten zu öffnen.
 
-    ![Screenshot: Öffnen des Wiederherstellungs-Assistenten](./media/restore-sample-database-quickstart/restore-wizard-start.png)
+    :::image type="content" source="./media/restore-sample-database-quickstart/restore-wizard-start.png" alt-text="Screenshot: Öffnen des Wiederherstellungs-Assistenten":::
 
 3. Wählen Sie im neuen Wiederherstellungs-Assistenten die Auslassungspunkte ( **...** ) aus, um die Quelle der zu verwendenden Sicherungsdatei auszuwählen.
 
-    ![Screenshot: Öffnen eines neuen Fensters des Wiederherstellungs-Assistenten](./media/restore-sample-database-quickstart/new-restore-wizard.png)
+    :::image type="content" source="./media/restore-sample-database-quickstart/new-restore-wizard.png" alt-text="Screenshot: Öffnen eines neuen Fensters des Wiederherstellungs-Assistenten":::
 
 4. Wählen Sie unter **Sicherungsmedien auswählen** die Option **Hinzufügen** aus. Unter **Sicherungsmedientyp** wird nur die Option **URL** angezeigt, da dies der einzige unterstützte Quelltyp ist. Klicken Sie auf **OK**.
 
-    ![Screenshot: Auswählen des Geräts](./media/restore-sample-database-quickstart/restore-wizard-select-device.png)
+    :::image type="content" source="./media/restore-sample-database-quickstart/restore-wizard-select-device.png" alt-text="Screenshot: Auswählen des Geräts":::
 
 5. Unter **Speicherort für Sicherungsdatei auswählen** können Sie zwischen drei Optionen wählen, um Informationen zum Speicherort von Sicherungsdateien anzugeben:
     - Wählen Sie in der Dropdownliste einen vorab registrierten Speichercontainer aus.
     - Geben Sie einen neuen Speichercontainer und eine SAS (Shared Access Signature) ein. (Neue SQL-Anmeldeinformationen werden für Sie registriert.) 
     - Wählen Sie **Hinzufügen** aus, um weitere Speichercontainer aus Ihrem Azure-Abonnement zu durchsuchen.
 
-    ![Screenshot: Auswählen des Speicherorts der Sicherungsdatei](./media/restore-sample-database-quickstart/restore-wizard-backup-file-location.png)
+    :::image type="content" source="./media/restore-sample-database-quickstart/restore-wizard-backup-file-location.png" alt-text="Screenshot: Auswählen des Speicherorts der Sicherungsdatei":::
 
     Führen Sie die nächsten Schritte aus, wenn Sie die Schaltfläche **Hinzufügen** auswählen. Wenn Sie den Speicherort der Sicherungsdatei mithilfe einer anderen Methode angeben, fahren Sie mit Schritt 12 fort.
 6. Wählen Sie unter **Verbindung mit einem Microsoft-Abonnement herstellen** die Option **Anmelden** aus, um sich bei Ihrem Azure-Abonnement anzumelden:
 
-    ![Screenshot: Anmeldung beim Azure-Abonnement](./media/restore-sample-database-quickstart/restore-wizard-connect-subscription-sign-in.png)
+    :::image type="content" source="./media/restore-sample-database-quickstart/restore-wizard-connect-subscription-sign-in.png" alt-text="Screenshot: Anmeldung beim Azure-Abonnement":::
 
 7. Melden Sie sich bei Ihrem Microsoft-Konto an, um die Sitzung in Azure zu initiieren:
 
-    ![Screenshot: Anmelden bei der Azure-Sitzung](./media/restore-sample-database-quickstart/restore-wizard-sign-in-session.png)
+    :::image type="content" source="./media/restore-sample-database-quickstart/restore-wizard-sign-in-session.png" alt-text="Screenshot: Anmelden bei der Azure-Sitzung":::
 
 8. Wählen Sie das Abonnement aus, in dem sich das Speicherkonto mit den Sicherungsdateien befindet:
 
-    ![Screenshot: Auswählen des Abonnements](./media/restore-sample-database-quickstart/restore-wizard-select-subscription.png)
+    :::image type="content" source="./media/restore-sample-database-quickstart/restore-wizard-select-subscription.png" alt-text="Screenshot: Auswählen des Abonnements":::
 
 9. Wählen Sie das Speicherkonto aus, in dem sich die Sicherungsdateien befinden:
 
-    ![Screenshot: Speicherkonto](./media/restore-sample-database-quickstart/restore-wizard-select-storage-account.png)
+    :::image type="content" source="./media/restore-sample-database-quickstart/restore-wizard-select-storage-account.png" alt-text="Screenshot: Speicherkonto":::
 
 10. Wählen Sie den Blobcontainer aus, in dem sich die Sicherungsdateien befinden:
 
-    ![Auswählen des Blobcontainers](./media/restore-sample-database-quickstart/restore-wizard-select-container.png)
+    :::image type="content" source="./media/restore-sample-database-quickstart/restore-wizard-select-container.png" alt-text="Auswählen des Blobcontainers":::
 
 11. Geben Sie das Ablaufdatum der SAS-Richtlinie an, und wählen Sie **Anmeldeinformationen erstellen** aus. Eine SAS mit den richtigen Berechtigungen wird erstellt. Klicken Sie auf **OK**.
 
-    ![Screenshot: Generieren der SAS](./media/restore-sample-database-quickstart/restore-wizard-generate-shared-access-signature.png)
+    :::image type="content" source="./media/restore-sample-database-quickstart/restore-wizard-generate-shared-access-signature.png" alt-text="Screenshot: Generieren der SAS":::
 
 12. Erweitern Sie im linken Bereich die Ordnerstruktur, um den Ordner anzuzeigen, in dem sich die Sicherungsdateien befinden. Wählen Sie alle Sicherungsdateien aus, die mit dem wiederherzustellenden Sicherungssatz verknüpft sind, und wählen Sie dann **OK** aus:
 
-    ![Screenshot: Auswahl der Sicherungsdatei](./media/restore-sample-database-quickstart/restore-wizard-backup-file-selection.png)
+    :::image type="content" source="./media/restore-sample-database-quickstart/restore-wizard-backup-file-selection.png" alt-text="Screenshot: Auswahl der Sicherungsdatei":::
 
     SSMS überprüft den Sicherungssatz. Der Vorgang dauert abhängig von der Größe des Sicherungssatzes bis zu einigen Sekunden.
 
 13. Wurde die Sicherung überprüft, geben Sie den Namen der Zieldatenbank an, oder übernehmen Sie den Datenbanknamen des Sicherungssatzes, und klicken Sie dann auf **OK**:
 
-    ![Screenshot: Starten der Wiederherstellung](./media/restore-sample-database-quickstart/restore-wizard-start-restore.png)
+    :::image type="content" source="./media/restore-sample-database-quickstart/restore-wizard-start-restore.png" alt-text="Screenshot: Starten der Wiederherstellung":::
 
     Die Wiederherstellung wird gestartet. Die Dauer hängt von der Größe des Sicherungssatzes ab.
 
-    ![Screenshot: Ausführen der Wiederherstellung](./media/restore-sample-database-quickstart/restore-wizard-running-restore.png)
+    :::image type="content" source="./media/restore-sample-database-quickstart/restore-wizard-running-restore.png" alt-text="Screenshot: Ausführen der Wiederherstellung":::
 
 14. Nach Abschluss der Wiederherstellung wird in einem Dialogfeld angezeigt, dass sie erfolgreich war. Klicken Sie auf **OK**.
 
-    ![Screenshot: Abgeschlossene Wiederherstellung](./media/restore-sample-database-quickstart/restore-wizard-finish-restore.png)
+    :::image type="content" source="./media/restore-sample-database-quickstart/restore-wizard-finish-restore.png" alt-text="Screenshot: Abgeschlossene Wiederherstellung":::
 
 15. Überprüfen Sie die wiederhergestellte Datenbank im Objekt-Explorer:
 
-    ![Screenshot: Wiederhergestellte Datenbank](./media/restore-sample-database-quickstart/restore-wizard-restored-database.png)
+    :::image type="content" source="./media/restore-sample-database-quickstart/restore-wizard-restored-database.png" alt-text="Screenshot: Wiederhergestellte Datenbank":::
 
 
 ## <a name="restore-from-a-backup-file-using-t-sql"></a>Wiederherstellen aus einer Sicherungsdatei mithilfe von T-SQL
@@ -133,7 +133,7 @@ Führen Sie in SQL Server Management Studio die folgenden Schritte aus, um die W
    , SECRET = 'sv=2017-11-09&ss=bfqt&srt=sco&sp=rwdlacup&se=2028-09-06T02:52:55Z&st=2018-09-04T18:52:55Z&spr=https&sig=WOTiM%2FS4GVF%2FEEs9DGQR9Im0W%2BwndxW2CQ7%2B5fHd7Is%3D'
    ```
 
-    ![Erstellen von Anmeldeinformationen](./media/restore-sample-database-quickstart/credential.png)
+    :::image type="content" source="./media/restore-sample-database-quickstart/credential.png" alt-text="Erstellen von Anmeldeinformationen":::
 
 4. Führen Sie zum Überprüfen Ihrer Anmeldeinformationen das folgende Skript aus. Dieses Skript verwendet eine [Container](https://azure.microsoft.com/services/container-instances/)-URL, um eine Sicherungsdateiliste abzurufen.
 
@@ -142,7 +142,7 @@ Führen Sie in SQL Server Management Studio die folgenden Schritte aus, um die W
       'https://mitutorials.blob.core.windows.net/databases/WideWorldImporters-Standard.bak'
    ```
 
-    ![Dateiliste](./media/restore-sample-database-quickstart/file-list.png)
+    :::image type="content" source="./media/restore-sample-database-quickstart/file-list.png" alt-text="Dateiliste":::
 
 5. Führen Sie das folgende Skript aus, um die Wide World Importers-Datenbank wiederherzustellen.
 
@@ -151,7 +151,7 @@ Führen Sie in SQL Server Management Studio die folgenden Schritte aus, um die W
      'https://mitutorials.blob.core.windows.net/databases/WideWorldImporters-Standard.bak'
    ```
 
-    ![Screenshot zeigt das Skript, das in Objekt-Explorer ausgeführt wird, mit einer Erfolgsmeldung.](./media/restore-sample-database-quickstart/restore.png)
+    :::image type="content" source="./media/restore-sample-database-quickstart/restore.png" alt-text="Screenshot zeigt das Skript, das in Objekt-Explorer ausgeführt wird, mit einer Erfolgsmeldung.":::
 
 6. Führen Sie das folgende Skript aus, um den Status Ihrer Wiederherstellung nachzuverfolgen.
 

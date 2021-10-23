@@ -1,14 +1,14 @@
 ---
 title: Anzeigen und Löschen von Labs in einem Labkonto in Azure Lab Services
 description: Hier erfahren Sie, wie Sie alle Labs in einem Labkonto anzeigen und ein Lab aus dem Labkonto löschen.
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: cc097e97430462e36a33b982a7394a20c308eab5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f7d2c356d9e3a9851093ab387e7fbd943908165a
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95993617"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130179676"
 ---
 # <a name="manage-labs-in-a-lab-account"></a>Verwalten von Labs in einem Labkonto
 In diesem Artikel erfahren Sie, wie ein Labkontobesitzer oder -administrator alle Labs in einem Labkonto anzeigen und ein Lab im Labkonto löschen kann. 

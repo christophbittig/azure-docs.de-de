@@ -1,14 +1,14 @@
 ---
 title: Einrichten von Project Lead The Way-Labs mit Azure Lab Services
 description: Hier erfahren Sie, wie Sie Labs einrichten, um Project Lead The Way-Kurse zu unterrichten.
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/28/2020
-ms.openlocfilehash: 85e8b8d55ed5a91c21c2554ce15e3ef893e30f15
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9ee9c0dfdd9174691c27ee007c1dc0070249afbe
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355437"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130176774"
 ---
 # <a name="set-up-labs-for-project-lead-the-way-classes"></a>Einrichten von Labs für Project Lead The Way-Kurse
 
