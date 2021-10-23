@@ -14,12 +14,12 @@ ms.custom:
 - mvc
 - devx-track-azurecli
 - mode-arm
-ms.openlocfilehash: 5934c20c2c7749b75b05bdb80b6d9dee85d6d3c1
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: da540d63c78e9029addf098b76ec24773e63a782
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112007011"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130131066"
 ---
 # <a name="quickstart-create-an-key-vault-managed-hsm-using-an-azure-resource-manager-template"></a>Schnellstart: Erstellen eines verwalteten Key Vault-Hardwaresicherheitsmoduls (HSM) mithilfe einer Azure Resource Manager-Vorlage
 
@@ -81,7 +81,7 @@ Möglicherweise benötigen Sie auch die Mandanten-ID. Ermitteln Sie sie mithilfe
 
     - **Abonnement**: Wählen Sie ein Azure-Abonnement aus.
     - **Ressourcengruppe**: Wählen Sie die Option **Neu erstellen** aus, geben Sie einen eindeutigen Namen für die Ressourcengruppe ein, und klicken Sie dann auf **OK**.
-    - **Standort**: Wählen Sie einen Standort aus. Beispiel: **USA, Süden-Mitte**
+    - **Standort**: Wählen Sie einen Standort aus. Beispiel: **USA, Mitte**.
     - **managedHSMName**: Geben Sie einen Namen für das verwaltete HSM ein.
     - **Mandanten-ID**: Die Vorlagenfunktion ruft automatisch Ihre Mandanten-ID ab. Ändern Sie den Standardwert nicht.  Ist kein Wert vorhanden, geben Sie die Mandanten-ID ein, die Sie unter [Voraussetzungen](#prerequisites) abgerufen haben.
     * **initialAdminObjectIds**: Geben Sie die Objekt-ID ein, die Sie unter [Voraussetzungen](#prerequisites) abgerufen haben.

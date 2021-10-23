@@ -3,7 +3,7 @@ title: Konfigurieren von Speicher für SQL Server-VMs | Microsoft-Dokumentation
 description: In diesem Thema wird beschrieben, wie Azure den Speicher für SQL Server-VMs während der Bereitstellung konfiguriert (Azure Resource Manager-Bereitstellungsmodell). Außerdem wird erläutert, wie Sie den Speicher für Ihre vorhandenen SQL Server-VMs konfigurieren können.
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: bluefooted
 tags: azure-resource-manager
 ms.assetid: 169fc765-3269-48fa-83f1-9fe3e4e40947
 ms.service: virtual-machines-sql
@@ -12,13 +12,14 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/26/2019
-ms.author: mathoma
-ms.openlocfilehash: 3ddcd99257eb7605322fe81f1002123d4876456b
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.author: pamela
+ms.reviewer: mathoma
+ms.openlocfilehash: 5a30cfbd95f660e470854977a63b4dc469a3f769
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113435414"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130162450"
 ---
 # <a name="configure-storage-for-sql-server-vms"></a>Konfigurieren von Speicher für SQL Server-VMs
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -54,7 +55,7 @@ Wenn Sie entweder **Transaktionale Verarbeitung** (OLTP) oder **Data Warehousing
 
 Die Datenträgerkonfiguration ist vollständig anpassbar, sodass Sie die Speichertopologie, den Datenträgertyp und den IOPs konfigurieren können, die Sie für Ihre SQL Server-VM-Workload benötigen. Sie haben auch die Möglichkeit, UltraSSD (Vorschau) als Option für den **Datenträgertyp** zu verwenden, wenn sich Ihre SQL Server-VM in einer der unterstützten Regionen (USA, Osten 2, Asien, Südosten und Europa, Norden) befindet und Sie [Ultra-Datenträger für Ihr Abonnement](../../../virtual-machines/disks-enable-ultra-ssd.md) aktiviert haben.
 
-Zusätzlich haben Sie die Möglichkeit, die Zwischenspeicherung für die Datenträger festzulegen. Azure VMs verfügen über eine mehrschichtige Zwischenspeicherungstechnologie namens [Blobcache](../../../virtual-machines/premium-storage-performance.md#disk-caching), wenn sie mit [Premium-Datenträgern](../../../virtual-machines/disks-types.md#premium-ssd) verwendet werden. Blobcache verwendet für das Zwischenspeichern eine Kombination aus RAM des virtuellen Computers und lokalem SSD-Laufwerk.
+Zusätzlich haben Sie die Möglichkeit, die Zwischenspeicherung für die Datenträger festzulegen. Azure VMs verfügen über eine mehrschichtige Zwischenspeicherungstechnologie namens [Blobcache](../../../virtual-machines/premium-storage-performance.md#disk-caching), wenn sie mit [Premium-Datenträgern](../../../virtual-machines/disks-types.md#premium-ssds) verwendet werden. Blobcache verwendet für das Zwischenspeichern eine Kombination aus RAM des virtuellen Computers und lokalem SSD-Laufwerk.
 
 Die Datenträgerzwischenspeicherung für SSD Premium kann die Werte *ReadOnly*, *ReadWrite* oder *None* aufweisen.
 

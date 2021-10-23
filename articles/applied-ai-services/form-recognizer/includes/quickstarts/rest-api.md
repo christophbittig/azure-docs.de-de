@@ -8,12 +8,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 05/25/2021
 ms.author: lajanuar
-ms.openlocfilehash: 6c768f18aa8e58ee82519a1b42c078685db25b0e
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 48d8747883bfb3d47368d96cc2d4e52d07c599d9
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128652545"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129715410"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -970,7 +970,7 @@ Dieser JSON-Inhalt wurde gekürzt, um die Lesbarkeit zu verbessern. Auf [GitHub]
 
 ## <a name="analyze-identity-id-documents"></a>Analysieren von Ausweisdokumenten
 
-Verwenden Sie den folgenden cURL-Befehl, um mit dem Analysieren eines Ausweisdokuments zu beginnen. Weitere Informationen zur Ausweisdokumentanalyse finden Sie im [Konzeptleitfaden für Ausweisdokumente](../../concept-identification-cards.md). Rufen Sie mit dem folgenden cURL-Befehl die **[Analyze ID Document](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5f74a7738978e467c5fb8707)** -API auf, um mit dem Analysieren eines Ausweisdokuments zu beginnen. Nehmen Sie die folgenden Änderungen vor, bevor Sie den Befehl ausführen:
+Verwenden Sie den folgenden cURL-Befehl, um mit dem Analysieren eines Ausweisdokuments zu beginnen. Weitere Informationen zur Ausweisdokumentanalyse finden Sie im [Konzeptleitfaden für Ausweisdokumente](../../concept-identification-cards.md). Rufen Sie mit dem folgenden cURL-Befehl die API **[Analyze ID Document](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5f74a7738978e467c5fb8707)** auf, um mit dem Analysieren eines Ausweisdokuments zu beginnen. Nehmen Sie die folgenden Änderungen vor, bevor Sie den Befehl ausführen:
 
 1. Ersetzen Sie `{endpoint}` durch den Endpunkt, den Sie mit Ihrem Abonnement für die Formularerkennung erhalten haben.
 1. Ersetzen Sie `{your ID document URL}` mit der URL-Adresse eines Verkaufsbelegbilds.
@@ -979,7 +979,7 @@ Verwenden Sie den folgenden cURL-Befehl, um mit dem Analysieren eines Ausweisdok
 #### <a name="request"></a>Anforderung
 
 ```bash
-curl -i -X POST "https://{endpoint}/formrecognizer/v2.1/prebuilt/idDocument/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your identity document URL}'}"
+curl -i -X POST "https://{endpoint}/formrecognizer/v2.1/prebuilt/idDocument/analyze" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {subscription key}" --data-ascii "{ 'source': '{your ID document URL}'}"
 ```
 
 #### <a name="operation-location"></a>Operation-Location
@@ -1572,7 +1572,7 @@ Sie erhalten eine `204`-Erfolgsmeldung, in der angegeben ist, dass Ihr Modell zu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie die REST-API der Formularerkennung verwendet, um auf unterschiedliche Weise Modelle zu trainieren und Formulare zu analysieren. Lesen Sie als Nächstes die Referenzdokumentation, um die Formularerkennungs-API eingehender kennenzulernen.
+In dieser Schnellstartanleitung haben Sie die REST-API für die Formularerkennung verwendet, um auf unterschiedliche Weise Formulare zu analysieren. Lesen Sie als Nächstes die Referenzdokumentation, um die Formularerkennungs-API eingehender kennenzulernen.
 
 > [!div class="nextstepaction"]
 > [Referenzdokumentation zur Rest-API](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeWithCustomForm)

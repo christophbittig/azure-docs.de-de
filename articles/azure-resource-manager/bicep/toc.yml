@@ -56,22 +56,7 @@
             - name: Erstellen einer privaten Registrierung
               href: private-module-registry.md
         - name: Schleifen
-          items:
-            - name: Ressourcen
-              displayName: 'iteration,copy,multiple,batches,child,condition,filter'
-              href: loop-resources.md
-            - name: Module
-              displayName: 'iteration,copy,multiple,batches,condition,filter'
-              href: loop-modules.md
-            - name: Eigenschaften
-              displayName: 'iteration,copy,multiple'
-              href: loop-properties.md
-            - name: Variables
-              displayName: 'iteration,copy,multiple'
-              href: loop-variables.md
-            - name: Ausgaben
-              displayName: 'iteration,copy,multiple'
-              href: loop-outputs.md
+          href: loops.md
         - name: Bereiche
           items:
             - name: Resource group

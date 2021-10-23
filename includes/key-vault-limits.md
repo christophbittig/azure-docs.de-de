@@ -4,12 +4,12 @@ ms.service: key-vault
 ms.topic: include
 ms.date: 05/28/2021
 ms.author: ambapat
-ms.openlocfilehash: 3539e222407fee63a829e80db986f2b0eed02e24
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 2918ae1a7fcca250de91e61ecc9b2c64a2d9a0aa
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111761374"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130019134"
 ---
 Der Azure Key Vault-Dienst unterstützt zwei Arten von Ressourcen: Tresore und verwaltete HSMs. In den beiden folgenden Abschnitten werden jeweils die entsprechenden Diensteinschränkungen beschrieben.
 
@@ -86,7 +86,7 @@ In diesem Abschnitt werden die Diensteinschränkungen für den Ressourcentyp `ma
 
 |Element|Grenzwerte|
 |----|------:|
-Anzahl von HSM-Instanzen pro Abonnement und Region|1 
+Anzahl von HSM-Instanzen pro Abonnement und Region|5 
 Anzahl von Schlüsseln pro HSM-Pool|5.000
 Anzahl von Versionen pro Schlüssel|100
 Anzahl benutzerdefinierter Rollendefinitionen pro HSM|50

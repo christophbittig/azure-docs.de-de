@@ -2,15 +2,13 @@
 title: Resource Manager-Vorlagenbeispiele für Azure-Funktions-App und Application Insights-Ressourcen
 description: Beispiele für Azure Resource Manager-Vorlagen zum Bereitstellen einer Azure-Funktions-App mit einer Application Insights-Ressource.
 ms.topic: sample
-author: lgayhardt
-ms.author: lagayhar
 ms.date: 08/06/2020
-ms.openlocfilehash: 5c08ee5a1418165300987e288dc61edcb783bf98
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 9ddd693d6b3fccc7d1faa478ef6da52866e0a7c9
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111964304"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130132092"
 ---
 # <a name="resource-manager-template-sample-for-creating-azure-function-apps-with-application-insights-monitoring"></a>Resource Manager-Vorlagenbeispiel zum Erstellen von Azure-Funktions-Apps mit Application Insights-Überwachung
 

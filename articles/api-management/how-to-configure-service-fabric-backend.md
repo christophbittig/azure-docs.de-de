@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/29/2021
 ms.author: danlep
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 01a7a7c34b7253acdcf046c47643d42dcdee2cb6
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 4239e9a9abc5e7e63a99ac72a50ec7f238386a20
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128666759"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130004766"
 ---
 # <a name="set-up-a-service-fabric-backend-in-api-management-using-the-azure-portal"></a>Einrichten eines Service Fabric-Back-Ends in API Management über das Azure-Portal
 
@@ -139,5 +139,4 @@ Wenn die HTTP-Antwort ordnungsgemäß konfiguriert ist, werden ein HTTP-Erfolgsc
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Erfahren Sie, wie Sie [Richtlinien konfigurieren](api-management-advanced-policies.md), um Anforderungen an ein Back-End weiterzuleiten.
-* Back-Ends können auch über die [REST-API](/rest/api/apimanagement/2020-06-01-preview/backend), mit [Azure PowerShell](/powershell/module/az.apimanagement/new-azapimanagementbackend) oder [Azure Resource Manager-Vorlagen](../service-fabric/service-fabric-tutorial-deploy-api-management.md) in API Management konfiguriert werden.
-
+* Back-Ends können auch über die [REST-API](/rest/api/apimanagement/2021-01-01-preview/backend), mit [Azure PowerShell](/powershell/module/az.apimanagement/new-azapimanagementbackend) oder [Azure Resource Manager-Vorlagen](../service-fabric/service-fabric-tutorial-deploy-api-management.md) in API Management konfiguriert werden.

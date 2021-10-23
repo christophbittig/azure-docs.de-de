@@ -12,12 +12,12 @@ ms.custom: references_regions
 ms.topic: article
 ms.date: 03/17/2021
 ms.author: inhenkel
-ms.openlocfilehash: 4a2c4959d6a84e8561ac23924207744b6c65f88b
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 90f6470171db4be4e0d883196495ddaba16772fb
+ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129053487"
+ms.lasthandoff: 10/01/2021
+ms.locfileid: "129362781"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Versionshinweise zu Azure Media Services v3
 
@@ -32,6 +32,9 @@ Damit Sie bezüglich der aktuellen Entwicklungen auf dem neuesten Stand bleiben,
 
 ## <a name="september-2021"></a>September 2021
 
+### <a name="new-basic-pass-through-live-event-sku"></a>Neue Passthrough-Liveereignis-Basic-SKU
+
+Mit der neuen Passthrough-Liveereignis-Basic-SKU können Kunden Liveereignisse zu einem [niedrigeren Preispunkt](https://azure.microsoft.com/pricing/details/media-services/) erstellen. Dies ähnelt den standardmäßigen Passthrough-Liveereignissen, hat jedoch geringere Grenzwerte für die Eingabebandbreite, weniger zulässige Liveausgaben, andere Grenzwerte für die DVR-Fensterlänge und bietet keinen Zugriff auf Livetranskription. Weitere Informationen finden Sie im Artikel [Vergleich von Liveereignistypen](./live-event-types-comparison-reference.md#types-comparison).
 
 ### <a name="improved-scale-management-and-monitoring-for-a-streaming-endpoint-in-the-portal"></a>Verbesserte Skalierungsverwaltung und -überwachung für einen Streamingendpunkt im Portal
 
@@ -209,7 +212,7 @@ Weitere Informationen finden Sie in der offiziellen [Ankündigung zu Azure-Updat
 
 ### <a name="standard-encoder-support-for-v2-api-features"></a>Standard-Encoder-Unterstützung für Features von Version 2 der API
 
-Neben der neu hinzugefügten Unterstützung für HEVC-Codierung (H.265) sind in Version 2020-05-01 der Codierungs-API jetzt die folgenden Features verfügbar.
+Neben der neu hinzugefügten Unterstützung der HEVC-Codierung (H.265) sind in Version 2020-05-01 (oder höher) der Codierungs-API jetzt die folgenden Features verfügbar.
 
 - Das Zusammenfügen mehrerer Eingabedateien wird jetzt unterstützt dank der neuen **JobInputClip**-Unterstützung.
     - Es ist ein Beispiel für .NET verfügbar, in dem gezeigt wird, wie Sie [zwei Objekte zusammenfügen](https://github.com/Azure-Samples/media-services-v3-dotnet/tree/main/VideoEncoding/Encoding_StitchTwoAssets).
