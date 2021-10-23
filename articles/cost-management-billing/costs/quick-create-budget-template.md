@@ -7,14 +7,14 @@ tags: azure-resource-manager
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.topic: quickstart
-ms.date: 09/15/2021
+ms.date: 10/07/2021
 ms.custom: subject-armqs, devx-track-azurepowershell
-ms.openlocfilehash: b7ae1fa6533067c977952cdfc3ae73244e50d941
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ac32afdf2197c32f43c94c6b0126688ed363902f
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128584921"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711397"
 ---
 # <a name="quickstart-create-a-budget-with-an-arm-template"></a>Schnellstart: Erstellen eines Budgets mit einer ARM-Vorlage
 
@@ -161,7 +161,7 @@ Write-Host "Press [ENTER] to continue..."
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie ein Azure-Budget für die Bereitstellung erstellt. Weitere Informationen zur Azure-Kostenverwaltung und -Abrechnung sowie zu Azure Resource Manager finden Sie in den folgenden Artikeln:
+In dieser Schnellstartanleitung haben Sie ein Azure-Budget für die Bereitstellung erstellt. Weitere Informationen zu Azure Cost Management and Billing sowie zu Azure Resource Manager finden Sie in den folgenden Artikeln:
 
 - Übersicht: [Was ist die Azure-Kostenverwaltung und -Abrechnung?](../cost-management-billing-overview.md)
 - [Tutorial: Erstellen und Verwalten von Azure-Budgets](tutorial-acm-create-budgets.md) über das Azure-Portal

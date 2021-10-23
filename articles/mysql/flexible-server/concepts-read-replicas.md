@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/17/2021
-ms.openlocfilehash: 3684c038ab96fe16d28802012293357c0a8f4e5b
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 7040b9b813d57d1ad10b2406e8167ac2ec0cd690
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129232012"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130166397"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql---flexible-server"></a>Lesereplikate in Azure Database for MySQL – Flexible Server
 
@@ -97,7 +97,7 @@ Erfahren Sie, wie Sie die [Replikation auf ein Replikat beenden](how-to-read-rep
 
 Zwischen Quell- und Replikatservern erfolgt kein automatisiertes Failover.
 
-Lesereplikate sind für die Skalierung leseintensiver Workloads gedacht und sind nicht dafür ausgelegt, die Hochverfügbarkeitsanforderungen eines Servers zu erfüllen. Zwischen Quell- und Replikatservern erfolgt kein automatisiertes Failover. Das Beenden der Replikation bei einem Lesereplikat, um es im Lese-/Schreibmodus online zu schalten, ist die Methode, mit der dieser manuelle Failover durchgeführt wird.
+Lesereplikate sind für die Skalierung leseintensiver Workloads gedacht und sind nicht dafür ausgelegt, die Hochverfügbarkeitsanforderungen eines Servers zu erfüllen. Das Beenden der Replikation bei einem Lesereplikat, um es im Lese-/Schreibmodus online zu schalten, ist die Methode, mit der dieser manuelle Failover durchgeführt wird.
 
 Da die Replikation asynchron erfolgt, gibt es eine Verzögerung zwischen der Quelle und dem Replikat. Die Verzögerungsdauer kann durch viele Faktoren beeinflusst werden, z. B. durch den Umfang der Workload auf dem Quellserver und die Wartezeit zwischen Rechenzentren. In den meisten Fällen beträgt die Replikatverzögerung einige Sekunden bis zu einigen Minuten. Sie können die tatsächliche Replikatverzögerung mithilfe der Metrik *Replikatverzögerung* nachverfolgen, die für jedes Replikat verfügbar ist. Diese Metrik zeigt die seit der letzten wiedergegebenen Transaktion verstrichene Zeit an. Es wird empfohlen, die durchschnittliche Verzögerung zu ermitteln, indem Sie die Replikatverzögerung über einen bestimmten Zeitraum hinweg beobachten. Sie können eine Warnung für die Replikatverzögerung festlegen, sodass Sie Maßnahmen ergreifen können, wenn sie sich außerhalb des erwarteten Bereichs befindet.
 

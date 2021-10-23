@@ -2,13 +2,13 @@
 title: Bicep-Funktionen
 description: Es werden die Funktionen beschrieben, die in einer Bicep-Datei zum Abrufen von Werten, Arbeiten mit Zeichenfolgen und numerischen Werten sowie Abrufen von Bereitstellungsinformationen verwendet werden.
 ms.topic: conceptual
-ms.date: 09/30/2021
-ms.openlocfilehash: 6fabd0bdbe6341382344c0e63ca711519275a3f4
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.date: 10/15/2021
+ms.openlocfilehash: 429dca8bd4544e1dd8b22406811e53d0ed2ea623
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129351685"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130070563"
 ---
 # <a name="bicep-functions"></a>Bicep-Funktionen
 
@@ -45,6 +45,7 @@ Die folgenden Funktionen sind für die Arbeit mit Arrays verfügbar. All diese F
 * [empty](./bicep-functions-array.md#empty)
 * [first](./bicep-functions-array.md#first)
 * [intersection](./bicep-functions-array.md#intersection)
+* [items](./bicep-functions-array.md#items)
 * [last](./bicep-functions-array.md#last)
 * [length](./bicep-functions-array.md#length)
 * [min](./bicep-functions-array.md#min)

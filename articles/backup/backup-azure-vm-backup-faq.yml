@@ -5,12 +5,12 @@ metadata:
   ms.topic: article
   ms.service: backup
   ms.date: 08/19/2021
-  ms.openlocfilehash: 2b7ecc95117201d9ab60a39acf1d0f6ae60896a0
-  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+  ms.openlocfilehash: 7ccfe8d814cc06e7c637b6de3a8df6edb43f52bd
+  ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/13/2021
-  ms.locfileid: "124799299"
+  ms.lasthandoff: 10/15/2021
+  ms.locfileid: "130069442"
 title: Häufig gestellte Fragen – Sicherung von Azure-VMs
 summary: >
   Dieser Artikel enthält Antworten auf häufig gestellte Fragen zur Sicherung von Azure-VMs mit dem Dienst [Azure Backup](./backup-overview.md).
@@ -80,7 +80,7 @@ sections:
     answer: Azure Backup erstellt eine separate Ressourcengruppe im Format `AzureBackupRG_<geo>_<number>`, um ResourcePointCollections-Objekte zu speichern. Da sich diese Ressourcengruppe im Besitz des Diensts befindet, führt das Sperren bei Sicherungen zu einem Fehler. Sperren können nur auf von Kunden erstellte Ressourcengruppen angewandt werden.
   - question: Unterstützt Azure Backup verwaltete SSD Standard-Datenträger?
     answer: >
-      Ja, Azure Backup unterstützt [verwaltete SSD Standard-Datenträger](../virtual-machines/disks-types.md#standard-ssd).
+      Ja, Azure Backup unterstützt [verwaltete SSD Standard-Datenträger](../virtual-machines/disks-types.md#standard-ssds).
   - question: Können ich eine VM mit einem Datenträger mit aktivierter Schreibbeschleunigung sichern?
     answer: Momentaufnahmen können nur auf Datenträgern für Daten mit aktivierter Schreibbeschleunigung aktiviert werden, nicht auf Betriebssystemdatenträgern. Daher können nur Datenträger mit aktivierter Schreibbeschleunigung geschützt werden.
   - question: Ich verfüge über eine VM mit Datenträgern mit Schreibbeschleunigung und installiertem SAP HANA. Wie kann ich diese sichern?

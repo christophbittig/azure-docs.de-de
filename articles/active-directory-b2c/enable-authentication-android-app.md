@@ -2,21 +2,21 @@
 title: Aktivieren der Authentifizierung in einer Android-App – Azure AD B2C
 description: Aktivieren Sie die Authentifizierung in einer Android-Anwendung mithilfe der Bausteine von Azure Active Directory B2C. Erfahren Sie, wie Sie Azure AD B2C für die Anmeldung und Registrierung von Benutzern in einer Android-Anwendung verwenden.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/16/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: b2c-support, has-adal-ref
-ms.openlocfilehash: 4dca649048a393adaba58614ab8f63dec5db29e2
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 74cb2971ee59a36e72a964a4b1b5202844801edd
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128575169"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130039636"
 ---
 # <a name="enable-authentication-in-your-own-android-app-by-using-azure-ad-b2c"></a>Aktivieren der Authentifizierung in Ihrer eigenen Android -App mithilfe von Azure AD B2C
 

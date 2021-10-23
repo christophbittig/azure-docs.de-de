@@ -6,12 +6,12 @@ ms.service: private-multi-access-edge-compute-mec
 ms.topic: overview
 ms.date: 06/16/2021
 ms.author: kumud
-ms.openlocfilehash: d5c5c579ecc60e561d34b305468913d0a8635d81
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: 1875a2cfaa89a6eeeb45ae2efe84959ff6771268
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114286908"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129707332"
 ---
 # <a name="what-is-azure-private-multi-access-edge-compute"></a>Was ist privates Multi-Access Edge Computing in Azure?
 
@@ -54,7 +54,7 @@ Fusion Core ermöglicht ISVs die Bereitstellung von Anwendungen auf demselben Az
 
 **Azure Network Function Manager (NFM)** : Azure NFM ermöglicht die Bereitstellung von Netzwerkfunktionen am Edge mit konsistenten Azure-Tools und -Schnittstellen. Verwenden Sie diesen Dienst, um Paketkern- und SD-WAN-Netzwerkfunktionen in Azure Stack Edge bereitzustellen. Weitere Informationen finden Sie unter [Was ist Azure Network Function Manager (Vorschau)?](../network-function-manager/overview.md).
 
-**Arc-fähige Kubernetes-Instanz**: Mit Azure Arc-fähigen Kubernetes-Instanzen können Sie Kubernetes-Cluster anfügen und konfigurieren, die sich entweder innerhalb oder außerhalb von Azure befinden. Sie können mit richtlinienbasierten Bereitstellungen im großen Stil überwachen und verwalten sowie konsistente Sicherheitskonfigurationen im großen Stil anwenden. Kubernetes mit Azure Arc-Aktivierung funktioniert mit jedem Kubernetes-Cluster, der eine CNCF-Zertifizierung (Cloud Native Computing Foundation) besitzt. Weitere Informationen finden Sie unter [Azure Arc](https://azure.microsoft.com/services/azure-arc/).
+**Kubernetes mit Arc-Unterstützung**: Mit Kubernetes mit Azure Arc-Unterstützung können Sie Kubernetes-Cluster anfügen und konfigurieren, die sich entweder innerhalb oder außerhalb von Azure befinden. Sie können mit richtlinienbasierten Bereitstellungen im großen Stil überwachen und verwalten sowie konsistente Sicherheitskonfigurationen im großen Stil anwenden. Kubernetes mit Azure Arc-Unterstützung funktioniert mit jedem Kubernetes-Cluster, der eine CNCF-Zertifizierung (Cloud Native Computing Foundation) besitzt. Weitere Informationen finden Sie unter [Azure Arc](https://azure.microsoft.com/services/azure-arc/).
 
 ### <a name="azure-stack-hardware-and-services"></a>Azure Stack-Hardware und -Dienste
 **Azure Stack Edge**: Azure Stack Edge bietet ein Portfolio von Geräten, mit denen Computeressourcen, Speicher und Intelligence am Edge bereitgestellt werden – genau dort, wo die Daten erstellt werden. Die Geräte sind mit 1U-Racks kompatible Appliances mit ein bis zwei NVIDIA T4-GPUs. Mit Azure IoT Edge können Sie Container über IoT Hub bereitstellen und verwalten und mit Azure IoT-Lösungen in Azure Stack Edge integrieren. Die Azure Stack Edge Pro-SKU ist für die Ausführung von Netzwerkfunktionen am Edge zertifiziert. Weitere Informationen finden Sie unter [Azure Stack Edge](https://azure.microsoft.com/products/azure-stack/edge/).

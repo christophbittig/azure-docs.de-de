@@ -1,22 +1,22 @@
 ---
-title: Bereitstellen eines Machine Learning-Modells mit einem verwalteten Onlineendpunkt (Vorschau)
+title: Bereitstellen eines ML-Modells mit einem verwalteten Onlineendpunkt (Vorschau)
 titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Sie Ihr Machine Learning-Modell als Webdienst bereitstellen, der automatisch von Azure verwaltet wird.
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.author: seramasu
 ms.reviewer: laobri
 author: rsethur
 ms.date: 08/05/2021
 ms.topic: how-to
 ms.custom: how-to, devplatv2
-ms.openlocfilehash: 0c421148571b99bb182de6841586caafb116df42
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 882f0d8d140d7394e82aa23bf9a5b72b477940e5
+ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122418428"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129423612"
 ---
 # <a name="deploy-and-score-a-machine-learning-model-by-using-a-managed-online-endpoint-preview"></a>Bereitstellen und Bewerten eines Machine Learning-Modells mit einem verwalteten Onlineendpunkt (Vorschau)
 

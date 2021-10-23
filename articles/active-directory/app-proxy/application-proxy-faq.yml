@@ -4,20 +4,20 @@ metadata:
   description: Hier finden Sie Antworten auf häufig gestellte Fragen (Frequently Asked Questions, FAQ) zur Verwendung des Azure AD-Anwendungsproxys zum Veröffentlichen interner, lokaler Anwendungen für Remotebenutzer.
   services: active-directory
   author: kenwith
-  manager: mtillman
+  manager: karenh444
   ms.service: active-directory
   ms.subservice: app-proxy
   ms.workload: identity
   ms.topic: reference
   ms.date: 04/27/2021
   ms.author: kenwith
-  ms.reviewer: japere
-  ms.openlocfilehash: d144b160a940132bdab71362b6322b1e51679006
-  ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+  ms.reviewer: ashishj
+  ms.openlocfilehash: 73de062b8db9fcd04949517edf312588428d600b
+  ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/06/2021
-  ms.locfileid: "129619160"
+  ms.lasthandoff: 10/14/2021
+  ms.locfileid: "129989435"
 title: Häufig gestellte Fragen zum Azure Active Directory-Anwendungsproxy (Azure AD-Anwendungsproxy)
 summary: Auf dieser Seite werden häufig gestellte Fragen zum Anwendungsproxy von Azure Active Directory (Azure AD) beantwortet.
 sections:
