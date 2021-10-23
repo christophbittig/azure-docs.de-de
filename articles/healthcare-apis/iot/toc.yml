@@ -30,6 +30,8 @@ items:
   - name: Ressourcen
     expanded: true
     items:
+      - name: Häufig gestellte Fragen
+        href: iot-connector-faqs.md
       - name: Open-Source-Projekte
         href: iot-git-projects.md
       - name: Handbuch zur Problembehandlung

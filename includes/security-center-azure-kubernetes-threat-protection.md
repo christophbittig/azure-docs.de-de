@@ -4,12 +4,12 @@ ms.author: memildin
 manager: rkarlin
 ms.date: 04/07/2021
 ms.topic: include
-ms.openlocfilehash: 24f466e7c9a9e5630510f73652fcf515540bee10
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 0d0a5faa2941e429fab1d6250ef443257024a616
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123646493"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129725707"
 ---
 Azure Defender bietet einen Echtzeit-Bedrohungsschutz für Ihre Containerumgebungen und generiert Warnungen für verdächtige Aktivitäten. Mit diesen Informationen können Sie schnell Sicherheitsprobleme lösen und die Sicherheit Ihrer Container verbessern.
 
@@ -25,7 +25,7 @@ Azure Defender bietet Bedrohungsschutz auf unterschiedlichen Ebenen:
     Eine Liste der Warnungen auf Hostebene finden Sie in der [Referenztabelle der Warnungen](../articles/security-center/alerts-reference.md#alerts-containerhost).
 
 
-* **Clusterebene (bereitgestellt von Azure Defender für Kubernetes):** Auf Clusterebene basiert der Bedrohungsschutz auf der Analyse der Überwachungsprotokolle von Kubernetes. Aktivieren Sie Azure Defender, um diese Überwachung **ohne Agents** zu ermöglichen. Wenn Ihr Cluster lokal oder von einem anderen Cloudanbieter gehostet wird, aktivieren Sie [Kubernetes mit Arc-Unterstützung und die Azure Defender-Erweiterung](../articles/security-center/defender-for-kubernetes-azure-arc.md).
+* **Clusterebene (bereitgestellt von Azure Defender für Kubernetes):** Auf Clusterebene basiert der Bedrohungsschutz auf der Analyse der Überwachungsprotokolle von Kubernetes. Aktivieren Sie Azure Defender, um diese Überwachung **ohne Agents** zu ermöglichen. Wenn Ihr Cluster lokal oder von einem anderen Cloudanbieter gehostet wird, aktivieren Sie [Kubernetes mit Azure Arc-Unterstützung und die Azure Defender-Erweiterung](../articles/security-center/defender-for-kubernetes-azure-arc.md).
 
     Azure Defender überwacht die Protokolle Ihres Clusters, um Warnungen auf dieser Ebene zu generieren. Beispiele für Ereignisse auf dieser Ebene sind verfügbar gemachte Kubernetes-Dashboards und die Erstellung von Rollen mit hohen Berechtigungen und von sensiblen Einbindungen.
 

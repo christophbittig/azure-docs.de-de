@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/20/2021
-ms.openlocfilehash: ef34ec8531242dfdb20e984c4c6d8f86d08b8fcf
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 28bd435e8c6f6144b1dafd11df174d69f763d45d
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122354832"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129987459"
 ---
 # <a name="query-packs-in-azure-monitor-logs-preview"></a>Die Abfragepakete in Azure Monitor-Protokollen (Vorschau)
 Ein Abfragepaket ist ein Resource Manager-Objekt, das als Container für die Protokollabfragen in Azure Monitor fungiert. Diese bieten die Möglichkeit, die Protokollabfragen zu speichern und sie für mehrere Arbeitsbereiche und andere Kontexte in Log Analytics zu teilen. 
@@ -79,11 +79,8 @@ Jede Abfrage im Abfragepaket verfügt über die folgenden Eigenschaften.
 | bezogen     | Die verwandten Kategorien, Ressourcentypen und Lösungen für die Abfrage. Diese wird für die Gruppierung und Filterung in Log Analytics durch den Benutzer verwendet, um das Auffinden seiner Anfrage zu erleichtern. Jede Abfrage kann bis zu zehn von jedem Typ aufweisen. Das Abrufen zulässiger Werte aus https://api.loganalytics.io/v1/metadata?select=resourceTypes, Lösungen, Kategorien. |
 | tags        | Die zusätzlichen Tags, die vom Benutzer zum Sortieren und Filtern in Log Analytics verwendet werden. Jedes Tag wird beim [Gruppieren und Filtern von den Abfragen](queries.md#finding-and-filtering-queries) zu Kategorie, dem Ressourcentyp und der Lösung hinzugefügt. |
 
-
-
-
 ## <a name="create-a-query-pack"></a>Erstellen eines Abfragepakets
-Die einzige Möglichkeit zum Installieren eines Abfragepakets ist derzeit die REST-API. 
+Sie können ein Abfragepaket im Azure-Portal auf dem Blatt „Log Analytics-Abfragepakete“ oder mithilfe der REST-API erstellen. 
 
 ### <a name="create-token"></a>Erstellen eines Tokens
 Sie benötigen ein Token für die Authentifizierung der API-Anforderung. Es gibt mehrere Methoden, ein Token zu erhalten, einschließlich der Verwendung von **armclient**.

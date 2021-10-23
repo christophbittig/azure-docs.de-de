@@ -2,15 +2,15 @@
 metadata:
   title: Labs in Azure Lab Services – Häufig gestellte Fragen | Microsoft-Dokumentation
   description: Dieser Artikel bietet Antworten auf häufig gestellte Fragen (FAQ) zu Labs in Azure Lab Services.
-  ms.topic: article
+  ms.topic: how-to
   ms.service: lab-services
   ms.date: 06/26/2020
-  ms.openlocfilehash: 0e129eebbc74c3f400195995e0d4bcec81c18ed2
-  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+  ms.openlocfilehash: 50aed3f3b515a2387efcefbfdf19fb9b1f51d905
+  ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/17/2021
-  ms.locfileid: "122253760"
+  ms.lasthandoff: 10/19/2021
+  ms.locfileid: "130181253"
 title: 'Labs in Azure Lab Services: Häufig gestellte Fragen (FAQ)'
 summary: Hier erhalten Sie Antworten auf einige der am häufigsten gestellten Fragen zu Labs in Azure Lab Services.
 sections:

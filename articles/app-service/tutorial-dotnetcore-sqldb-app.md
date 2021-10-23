@@ -3,27 +3,27 @@ title: 'Tutorial: ASP.NET Core mit Azure SQL-Datenbank'
 description: Hier erfahren Sie, wie Sie eine .NET Core-App in Azure App Service mit einer Verbindung mit einer Azure SQL-Datenbank ausführen.
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 04/29/2021
+ms.date: 10/06/2021
 ms.custom: devx-track-csharp, mvc, cli-validate, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 45214579e599ab83dfa97470276c85c225c5473b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5db5a4a1d390164cff0f4acee56ca49687ebddfb
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121730647"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129658429"
 ---
 # <a name="tutorial-build-an-aspnet-core-and-azure-sql-database-app-in-azure-app-service"></a>Tutorial: Erstellen einer ASP.NET Core- und Azure SQL-Datenbank-App in Azure App Service
 
 ::: zone pivot="platform-windows"  
 
-[Azure App Service](overview.md) bietet einen hochgradig skalierbaren Webhostingdienst mit Self-Patching in Azure. In diesem Tutorial wird gezeigt, wie Sie eine .NET Core-App erstellen und mit einer SQL-Datenbank verbinden. Wenn Sie diese Schritte ausgeführt haben, verfügen Sie über eine .NET Core MVC-App, die in App Service unter Windows ausgeführt wird.
+[Azure App Service](overview.md) bietet einen hochgradig skalierbaren Webhostingdienst mit Self-Patching in Azure. In diesem Tutorial wird gezeigt, wie Sie eine ASP.NET Core-App erstellen und mit SQL-Datenbank verbinden. Wenn Sie diese Schritte ausgeführt haben, verfügen Sie über eine .NET MVC-App, die in App Service unter Windows ausgeführt wird.
 
 ::: zone-end
 
 ::: zone pivot="platform-linux"
 
-[Azure App Service](overview.md) bietet einen hochgradig skalierbaren Webhostingdienst mit Self-Patching unter dem Linux-Betriebssystem. In diesem Tutorial wird gezeigt, wie Sie eine .NET Core-App erstellen und mit einer SQL-Datenbank verbinden. Wenn Sie diese Schritte ausgeführt haben, verfügen Sie über eine .NET Core MVC-App, die in App Service unter Linux ausgeführt wird.
+[Azure App Service](overview.md) bietet einen hochgradig skalierbaren Webhostingdienst mit Self-Patching unter dem Linux-Betriebssystem. In diesem Tutorial wird gezeigt, wie Sie eine ASP.NET Core-App erstellen und mit SQL-Datenbank verbinden. Wenn Sie diese Schritte ausgeführt haben, verfügen Sie über eine ASP.NET Core MVC-App, die in App Service unter Linux ausgeführt wird.
 
 ::: zone-end
 
@@ -33,7 +33,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Erstellen einer SQL-Datenbank in Azure
-> * Herstellen einer Verbindung einer .NET Core-App mit SQL-Datenbank
+> * Herstellen einer Verbindung mit SQL-Datenbank für eine ASP.NET Core-App
 > * Bereitstellen der Anwendung in Azure
 > * Aktualisieren des Datenmodells und erneutes Bereitstellen der App
 > * Streamen von Diagnoseprotokollen aus Azure
@@ -46,13 +46,13 @@ In diesem Tutorial lernen Sie Folgendes:
 Für dieses Tutorial benötigen Sie Folgendes:
 
 - <a href="https://git-scm.com/" target="_blank">Installation von Git</a>
-- <a href="https://dotnet.microsoft.com/download/dotnet-core/3.1" target="_blank">Installation des aktuellen .NET Core 3.1 SDK</a>
+- <a href="https://dotnet.microsoft.com/download/dotnet/5.0" target="_blank">Installieren Sie das aktuelle .NET 5.0 SDK.</a>
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-## <a name="create-local-net-core-app"></a>Erstellen einer lokalen .NET Core-App
+## <a name="create-local-aspnet-core-app"></a>Erstellen einer lokalen ASP.NET Core-App
 
-In diesem Schritt richten Sie das lokale .NET Core-Projekt ein.
+In diesem Schritt richten Sie das lokale ASP.NET Core-Projekt ein.
 
 ### <a name="clone-the-sample-application"></a>Klonen der Beispielanwendung
 
@@ -90,7 +90,7 @@ In diesem Schritt richten Sie das lokale .NET Core-Projekt ein.
 
     ![Erfolgreiche Verbindung mit SQL-Datenbank](./media/tutorial-dotnetcore-sqldb-app/local-app-in-browser.png)
 
-1. Sie können .NET Core jederzeit beenden, indem Sie im Terminal `Ctrl+C` drücken.
+1. Sie können ASP.NET Core jederzeit beenden, indem Sie im Terminal `Ctrl+C` drücken.
 
 ## <a name="create-production-sql-database"></a>Erstellen der SQL-Datenbank für die Produktion
 
@@ -169,7 +169,7 @@ az sql db show-connection-string --client ado.net --server <server-name> --name 
 
 Ersetzen Sie in der Befehlsausgabe *\<username>* und *\<password>* durch die zuvor verwendeten Anmeldeinformationen des Datenbankadministrators.
 
-Dies ist die Verbindungszeichenfolge für Ihre .NET Core-App. Kopieren Sie sie für die spätere Verwendung.
+Dies ist die Verbindungszeichenfolge für Ihre ASP.NET Core-App. Kopieren Sie sie für die spätere Verwendung.
 
 ### <a name="configure-app-to-connect-to-production-database"></a>Konfigurieren der App zum Herstellen einer Verbindung mit der Produktionsdatenbank
 
@@ -200,7 +200,7 @@ Führen Sie am Repositorystamm die folgenden Befehle aus. Ersetzen Sie *\<connec
 ```
 # Delete old migrations
 rm -r Migrations
-# Recreate migrations
+# Recreate migrations with UseSqlServer (see previous snippet)
 dotnet ef migrations add InitialCreate
 
 # Set connection string to production database
@@ -236,7 +236,7 @@ Sie können Ihren Code jetzt bereitstellen.
 
 ## <a name="deploy-app-to-azure"></a>Bereitstellen von Apps in Azure
 
-In diesem Schritt stellen Sie die mit der SQL-Datenbank verbundene .NET Core-Anwendung für App Service bereit.
+In diesem Schritt stellen Sie die mit SQL-Datenbank verbundene ASP.NET Core-Anwendung für App Service bereit.
 
 ### <a name="configure-local-git-deployment"></a>Konfigurieren der lokalen Git-Bereitstellung
 
@@ -275,7 +275,7 @@ In diesem Schritt stellen Sie die mit der SQL-Datenbank verbundene .NET Core-Anw
 Verwenden Sie zum Festlegen von Verbindungszeichenfolgen für Ihre Azure-App den Befehl [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) in Cloud Shell. Ersetzen Sie im folgenden Befehl sowohl *\<app-name>* als auch den Parameter *\<connection-string>* durch die Verbindungszeichenfolge, die Sie zuvor erstellt haben.
 
 ```azurecli-interactive
-az webapp config connection-string set --resource-group myResourceGroup --name <app-name> --settings MyDbConnection="<connection-string>" --connection-string-type SQLAzure
+az webapp config connection-string set --resource-group myResourceGroup --name <app-name> --settings MyDbConnection='<connection-string>' --connection-string-type SQLAzure
 ```
 
 In ASP.NET Core können Sie diese Verbindungszeichenfolge (`MyDbConnection`) genau wie eine Verbindungszeichenfolge in *appsettings.json* mit dem Standardmuster verwenden. In diesem Fall wird `MyDbConnection` ebenfalls in der Datei *appsettings.json* definiert. Bei der Ausführung in App Service hat die in App Service definierte Verbindungszeichenfolge Vorrang vor der in der Datei *appsettings.json* definierten Verbindungszeichenfolge. Im Rahmen der lokalen Entwicklung verwendet der Code den Wert *appsettings.json*. Bei der Bereitstellung verwendet der gleiche Code dann allerdings den App Service-Wert.
@@ -361,7 +361,7 @@ Informationen dazu, wie im Code auf die Verbindungszeichenfolge verwiesen wird, 
 
     ![In App Service ausgeführte App](./media/tutorial-dotnetcore-sqldb-app/azure-app-in-browser.png)
 
-**Glückwunsch!** Sie führen eine datengesteuerte .NET Core-App in App Service aus.
+**Glückwunsch!** Sie führen eine datengesteuerte ASP.NET Core-App in App Service aus.
 
 ## <a name="update-locally-and-redeploy"></a>Lokales Aktualisieren und erneutes Bereitstellen
 
@@ -468,12 +468,12 @@ Ihre gesamten vorhandenen Aufgaben werden weiterhin angezeigt. Wenn Sie die ASP.
 
 Wenn die ASP.NET Core-App in Azure App Service ausgeführt wird, können Sie die Konsolenprotokolle an Cloud Shell umleiten. Auf diese Weise erhalten Sie die gleichen Diagnosemeldungen, die Ihnen beim Debuggen von Anwendungsfehlern helfen.
 
-Im Beispielprojekt wird die Anleitung unter [Protokollierung in ASP.NET Core.](/aspnet/core/fundamentals/logging#azure-app-service-provider) mit zwei Konfigurationsänderungen bereits befolgt:
+Im Beispielprojekt wird die Anleitung für [Protokollierungsanbieter in Azure App Service](/dotnet/core/extensions/logging-providers#azure-app-service) mit zwei Konfigurationsänderungen bereits befolgt:
 
 - Enthält einen Verweis auf `Microsoft.Extensions.Logging.AzureAppServices` in *DotNetCoreSqlDb.csproj*.
 - Ruft `loggerFactory.AddAzureWebAppDiagnostics()` in *Program.cs* auf.
 
-1. Zum Festlegen der [Protokollebene](/aspnet/core/fundamentals/logging#log-level) für ASP.NET Core in App Service von der Standardebene `Error` auf `Information` verwenden Sie den Befehl [`az webapp log config`](/cli/azure/webapp/log#az_webapp_log_config) in Cloud Shell.
+1. Zum Festlegen der [Protokollebene](/dotnet/core/extensions/logging#log-level) für ASP.NET Core in App Service von der Standardebene `Error` auf `Information` verwenden Sie den Befehl [`az webapp log config`](/cli/azure/webapp/log#az_webapp_log_config) in Cloud Shell.
 
     ```azurecli-interactive
     az webapp log config --name <app-name> --resource-group myResourceGroup --application-logging filesystem --level information
@@ -492,21 +492,7 @@ Im Beispielprojekt wird die Anleitung unter [Protokollierung in ASP.NET Core.](/
 
 1. Um das Protokollstreaming jederzeit zu beenden, geben Sie `Ctrl`+`C` ein.
 
-Weitere Informationen zum Anpassen der ASP.NET Core-Protokolle finden Sie unter [Protokollierung in ASP.NET Core](/aspnet/core/fundamentals/logging).
-
-## <a name="manage-your-azure-app"></a>Verwalten der Azure-App
-
-1. Um die von Ihnen erstellte App anzuzeigen, suchen Sie im [Azure-Portal](https://portal.azure.com) nach **App Services**, und wählen Sie diese Option aus.
-
-    ![Auswählen von „App Services“ im Azure-Portal](./media/tutorial-dotnetcore-sqldb-app/app-services.png)
-
-1. Wählen Sie auf der Seite **App Services** den Namen Ihrer Azure-App aus.
-
-    ![Portalnavigation zur Azure-App](./media/tutorial-dotnetcore-sqldb-app/access-portal.png)
-
-    Standardmäßig wird im Portal die Seite **Übersicht** Ihrer App angezeigt. Diese Seite bietet einen Überblick über den Status Ihrer App. Hier können Sie auch einfache Verwaltungsaufgaben wie Durchsuchen, Beenden, Neustarten und Löschen durchführen. Die Registerkarten links auf der Seite zeigen die verschiedenen Konfigurationsseiten, die Sie öffnen können.
-
-    ![App Service-Seite im Azure-Portal](./media/tutorial-dotnetcore-sqldb-app/web-app-blade.png)
+Weitere Informationen zum Anpassen der ASP.NET Core-Protokolle finden Sie unter [Protokollierung in .NET](/dotnet/core/extensions/logging).
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
@@ -517,7 +503,7 @@ Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Erstellen einer SQL-Datenbank in Azure
-> * Herstellen einer Verbindung einer .NET Core-App mit SQL-Datenbank
+> * Herstellen einer Verbindung mit SQL-Datenbank für eine ASP.NET Core-App
 > * Bereitstellen der Anwendung in Azure
 > * Aktualisieren des Datenmodells und erneutes Bereitstellen der App
 > * Streamen von Protokollen von Azure auf Ihr Terminal

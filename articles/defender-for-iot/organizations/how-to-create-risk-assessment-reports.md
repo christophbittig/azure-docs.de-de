@@ -3,12 +3,12 @@ title: Erstellen von Risikobewertungsberichten
 description: Gewinnen Sie Erkenntnisse zu Netzwerkrisiken, die von einzelnen Sensoren erkannt wurden, oder eine aggregierte Ansicht der von allen Sensoren erkannten Risiken.
 ms.date: 12/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 567660d1e1e55ee3dde0cbf5e5c09748cbb2cf0c
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 908a78f659dc17d0207d81613b6be7dd2295a1d2
+ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113017517"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130138615"
 ---
 # <a name="risk-assessment-reporting"></a>Berichterstellung zur Risikobewertung
 
@@ -44,7 +44,10 @@ Berichte zur Risikobewertung bieten Folgendes:
 
 ### <a name="risk-mitigation"></a>Risikominderung
 
-Die Berichte enthalten Empfehlungen, die Ihnen helfen, Ihre Sicherheitsbewertung zu verbessern. Installieren Sie z. B. die neuesten Sicherheitsupdates, führen Sie ein Upgrade der Firmware auf die neueste Version durch oder verfolgen Sie mögliche Warnungen nach.
+Die Berichte enthalten Empfehlungen, die Ihnen helfen, Ihre Sicherheitsbewertung zu verbessern. Zum Beispiel:
+- Installieren Sie die neuesten Sicherheitsupdates.
+- Upgraden Sie Firmware auf die neueste Version.
+- Untersuchen Sie SPSs in unsicheren Zuständen.
 
 ## <a name="about-security-scores"></a>Informationen zu Sicherheitsbewertungen
 
@@ -112,4 +115,3 @@ So importieren Sie ein Firmenlogo:
 ## <a name="see-also"></a>Weitere Informationen
 
 [Berichte zu Angriffsvektoren](how-to-create-attack-vector-reports.md)
-

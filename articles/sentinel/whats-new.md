@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 10/11/2021
-ms.openlocfilehash: 07e48fba8bfb554604d875f9f4a041fed466dbe7
-ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
+ms.openlocfilehash: 5523b04235ce386e62abc175ac498f4df34b0641
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129754708"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130132301"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Neuerungen in Azure Sentinel
 
@@ -35,9 +35,14 @@ Elemente, die älter als sechs Monate sind, finden Sie im [Archiv zu den Neuerun
 
 ## <a name="october-2021"></a>Oktober 2021
 
+- [Defender für Office 365-Ereignisse jetzt im M365 Defender-Connector verfügbar (Öffentliche Vorschau)](#defender-for-office-365-events-now-available-in-the-m365-defender-connector-public-preview)
 - [Spielbuchvorlagen und Galerie jetzt verfügbar (Öffentliche Vorschau)](#playbook-templates-and-gallery-now-available-public-preview)
 - [Verwaltung von Vorlagenversionen für Ihre geplanten Analyseregeln (Öffentliche Vorschau)](#manage-template-versions-for-your-scheduled-analytics-rules-public-preview)
 - [DHCP-Normalisierungsschema (Öffentliche Vorschau)](#dhcp-normalization-schema-public-preview)
+
+### <a name="defender-for-office-365-events-now-available-in-the-m365-defender-connector-public-preview"></a>Defender für Office 365-Ereignisse jetzt im M365 Defender-Connector verfügbar (Öffentliche Vorschau)
+
+Zusätzlich zu den Ereignissen von Microsoft Defender für Endpoint können Sie jetzt über unformatierte (rohe) [erweiterte Hunting-Ereignisse](/microsoft-365/security/defender/advanced-hunting-overview) von [Microsoft Defender für Office 365](/microsoft-365/security/office-365-security/overview) über den [Microsoft 365 Defender-Connector](connect-microsoft-365-defender.md) erfassen. [Weitere Informationen](microsoft-365-defender-sentinel-integration.md#advanced-hunting-event-collection).
 
 ### <a name="playbook-templates-and-gallery-now-available-public-preview"></a>Playbook-Vorlagen und Galerie jetzt verfügbar (Öffentliche Vorschau)
 
@@ -53,7 +58,7 @@ Wenn Sie Analyseregeln aus [eingebauten Azure Sentinel-Regelvorlagen](detect-thr
 
 Allerdings merken sich Regeln, die aus Vorlagen ***merken*** sich, aus welchen Vorlagen sie stammen, was Ihnen zwei Vorteile bietet:
 
-- Wenn Sie bei der Erstellung einer Regel aus einer Vorlage (oder zu einem beliebigen späteren Zeitpunkt) Änderungen an der Regel vorgenommen haben, können Sie die Regel jederzeit auf ihre ursprüngliche Version (als Kopie der Vorlage) zurücksetzen.
+- Wenn Sie beim Erstellen einer Regel aus einer Vorlage (oder zu einem beliebigen späteren Zeitpunkt) Änderungen an der Regel vorgenommen haben, können Sie die Regel jederzeit auf ihre ursprüngliche Version (als Kopie der Vorlage) zurücksetzen.
 
 - Sie können sich benachrichtigen lassen, wenn eine Vorlage aktualisiert wird, und haben dann die Wahl, Ihre Regeln auf die neue Version ihrer Vorlagen zu aktualisieren oder sie so zu belassen, wie sie sind.
 
@@ -90,7 +95,7 @@ Weitere Informationen finden Sie unter:
 - **Allgemeine Gewusst-wie-Artikel**:
 
    - [Verbinden mit Azure-, Windows-, Microsoft- und Amazon-Diensten](connect-azure-windows-microsoft-services.md)
-   - [Verbinden Ihrer Datenquelle mit der Datensammler-API von Azure Sentinel zur Datenerfassung](connect-rest-api-template.md)
+   - [Verbinden Ihrer Datenquelle mit der Datensammler-API von Azure Sentinel zur Erfassung von Daten](connect-rest-api-template.md)
    - [Abrufen von Protokollen im CEF-Format von Ihrem Gerät oder Ihrer Appliance in Azure Sentinel](connect-common-event-format.md)
    - [Sammeln von Daten aus Linux-basierten Quellen mithilfe von Syslog](connect-syslog.md)
    - [Sammeln von Daten in benutzerdefinierten Protokollformaten für Azure Sentinel mit dem Log Analytics-Agent](connect-custom-logs.md)
@@ -122,7 +127,7 @@ Es werden nur die Speichertypen angezeigt, für die Sie tatsächlich Ressourcen 
 
 Standardmäßig werden Incidentsuchvorgänge nur für die Werte **Incident-ID**, **Titel**, **Tags**, **Besitzer** und **Produktname** ausgeführt. Azure Sentinel bietet jetzt [erweiterte Suchoptionen](investigate-cases.md#search-for-incidents) für die Suche in größeren Datenmengen, einschließlich Warnungsdetails, Beschreibungen, Entitäten, Taktiken und mehr.
 
-Beispiel:
+Zum Beispiel:
 
 :::image type="content" source="media/tutorial-investigate-cases/advanced-search.png" alt-text="Screenshot der Seite „Incidents“ mit erweiterten Suchoptionen":::
 
@@ -199,7 +204,6 @@ Weitere Informationen finden Sie unter:
 - [Watchlists sind allgemein verfügbar](#watchlists-are-in-general-availability)
 - [Unterstützung für Datenresidenz in mehr geografischen Standorten](#support-for-data-residency-in-more-geos)
 - [Bidirektionale Synchronisierung in Azure Defender Connector (öffentliche Vorschau)](#bidirectional-sync-in-azure-defender-connector-public-preview)
-
 
 ### <a name="microsoft-threat-intelligence-matching-analytics-public-preview"></a>Microsoft Threat Intelligence Matching Analytics (öffentliche Vorschau)
 

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 578ff0997375b62b3fd5a90ec44967ead1b9cd63
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 392d457ead16d0bcfc057282886669a01e24ff3e
+ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123253799"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129730373"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Verwenden von „OPENROWSET“ mit einem serverlosen SQL-Pool in Azure Synapse Analytics
 
@@ -98,6 +98,7 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal' | 'json_path'] })
 [ , HEADER_ROW = { TRUE | FALSE } ]
 [ , DATAFILETYPE = { 'char' | 'widechar' } ]
 [ , CODEPAGE = { 'ACP' | 'OEM' | 'RAW' | 'code_page' } ]
+[ , ROWSET_OPTIONS = '{"READ_OPTIONS":["ALLOW_INCONSISTENT_READS"]}' ]
 ```
 
 ## <a name="arguments"></a>Argumente
@@ -242,15 +243,19 @@ Einzelheiten zu CSV-Parserversion 2.0:
 
 HEADER_ROW = { TRUE | FALSE }
 
-Gibt an, ob die CSV-Datei eine Kopfzeile enthält. Standardwert: FALSE. Unterstützt in: PARSER_VERSION='2.0'. Bei „TRUE“ werden Spaltennamen aus der ersten Zeile gelesen (gemäß FIRSTROW-Argument). Bei „TRUE“ und Schemaangabe mit „WITH“ wird für die Bindung von Spaltennamen der Spaltenname und nicht die Ordinalposition herangezogen.
+Gibt an, ob eine CSV-Datei eine Kopfzeile enthält. Standardwert: `FALSE.` Unterstützt in: PARSER_VERSION='2.0'. Bei „TRUE“ werden die Spaltennamen aus der ersten Zeile gelesen (gemäß FIRSTROW-Argument). Bei „TRUE“ und Schemaangabe mit „WITH“ wird für die Bindung von Spaltennamen der Spaltenname und nicht die Ordinalposition herangezogen.
 
 DATAFILETYPE = { 'char' | 'widechar' }
 
-Gibt die Codierung an: „char“ wird für UTF8 verwendet, „widechar“ für UTF16-Dateien.
+Gibt die Codierung an: `char` wird für UTF8 verwendet, `widechar` für UTF16-Dateien.
 
 CODEPAGE = { 'ACP' | 'OEM' | 'RAW' | 'code_page' }
 
 Gibt die Codepage für die in der Datendatei enthaltenen Daten an. Der Standardwert ist 65001 (UTF-8-Codierung). Weitere Details zu dieser Option finden Sie [hier](/sql/t-sql/functions/openrowset-transact-sql?view=sql-server-ver15&preserve-view=true#codepage).
+
+ROWSET_OPTIONS = '{"READ_OPTIONS":["ALLOW_INCONSISTENT_READS"]}'
+
+Mit dieser Option wird die Überprüfung von Dateiänderungen während der Abfrageausführung deaktiviert, und es werden die Dateien gelesen, die während der Abfrageausführung aktualisiert werden. Dies ist eine nützliche Option, wenn Sie Dateien vom Typ „Nur anfügen“ lesen müssen, in denen während der Abfrageausführung Daten hinzugefügt werden. In erweiterbaren Dateien wird der vorhandene Inhalt nicht aktualisiert, und es werden nur neue Zeilen hinzugefügt. Dadurch wird die Wahrscheinlichkeit falscher Ergebnisse im Vergleich zu den aktualisierbaren Dateien minimiert. Mit dieser Option können Sie ggf. die häufig erweiterten Dateien lesen, ohne die Fehler behandeln zu müssen. Weitere Informationen finden Sie im Abschnitt [Abfragen von erweiterbaren Dateien](query-single-csv-file.md#querying-appendable-files).
 
 ## <a name="fast-delimited-text-parsing"></a>Schnelle Analyse von Text mit Trennzeichen
 

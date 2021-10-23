@@ -4,16 +4,16 @@ description: Bietet eine Übersicht über das Azure HDInsight Accelerated Writes
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/24/2020
-ms.openlocfilehash: c42a9d47cabd803944b858fc470c1bedc39d2d77
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 76e2211eb146178d8e491237370147c3bfed7079
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104868901"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130070202"
 ---
 # <a name="azure-hdinsight-accelerated-writes-for-apache-hbase"></a>Azure HDInsight Accelerated Writes für Apache HBase
 
-Dieser Artikel bietet Hintergrundinformationen zum **Accelerated Writes**-Feature für Apache HBase in Azure HDInsight und zu dessen effektiver Verwendung zur Verbesserung der Schreibleistung. **Accelerated Writes** verwendet [verwaltete Azure-Premium-SSD-Datenträger](../../virtual-machines/disks-types.md#premium-ssd) zur Verbesserung der Leistung des Apache HBase-Write-Ahead-Protokolls (Write Ahead Log, WAL). Weitere Informationen zu Apache HBase finden Sie unter [Überblick über Apache HBase in HDInsight: Eine NoSQL-Datenbank, die BigTable-ähnliche Funktionen für Apache Hadoop bereitstellt](apache-hbase-overview.md).
+Dieser Artikel bietet Hintergrundinformationen zum **Accelerated Writes**-Feature für Apache HBase in Azure HDInsight und zu dessen effektiver Verwendung zur Verbesserung der Schreibleistung. **Accelerated Writes** verwendet [verwaltete Azure-Premium-SSD-Datenträger](../../virtual-machines/disks-types.md#premium-ssds) zur Verbesserung der Leistung des Apache HBase-Write-Ahead-Protokolls (Write Ahead Log, WAL). Weitere Informationen zu Apache HBase finden Sie unter [Überblick über Apache HBase in HDInsight: Eine NoSQL-Datenbank, die BigTable-ähnliche Funktionen für Apache Hadoop bereitstellt](apache-hbase-overview.md).
 
 ## <a name="overview-of-hbase-architecture"></a>Übersicht über die HBase-Architektur
 

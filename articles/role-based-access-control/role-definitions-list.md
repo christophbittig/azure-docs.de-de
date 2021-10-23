@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 07/30/2021
+ms.date: 10/15/2021
 ms.author: rolyon
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 49ca89112f011f8f1c6d411ab187697b29523eeb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 15d8b077feadefb95d40014e257b9c300ef1aba2
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122354999"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130069849"
 ---
 # <a name="list-azure-role-definitions"></a>Auflisten von Azure-Rollendefinitionen
 
@@ -38,9 +38,6 @@ Führen Sie diese Schritte aus, um alle Rollen im Azure-Portal aufzulisten.
 1. Klicken Sie auf die Registerkarte **Rollen**, um eine Liste aller integrierten und benutzerdefinierten Rollen anzuzeigen.
 
    ![Screenshot der Liste „Rollen“ mit neuer Benutzeroberfläche](./media/shared/roles-list.png)
-
-    > [!TIP]
-    > Wenn Sie zur vorherigen Benutzeroberfläche der Rollenliste wechseln möchten, können Sie auf **Use classic experience** (Klassische Benutzeroberfläche verwenden) klicken.
   
 1. Klicken Sie in der Spalte **Details** auf den Link **Ansicht**, um die Berechtigungen für eine bestimmte Rolle anzuzeigen.
 

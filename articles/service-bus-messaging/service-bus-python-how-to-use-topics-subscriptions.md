@@ -10,12 +10,12 @@ ms.devlang: python
 ms.custom:
 - devx-track-python
 - mode-api
-ms.openlocfilehash: 49e80e277c6df5372341293861d5bda0580f3e8c
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 920aadf1cc800a8ea9d7c764cf0bcfa7cf9287f3
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107537156"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129614021"
 ---
 # <a name="send-messages-to-an-azure-service-bus-topic-and-receive-messages-from-subscriptions-to-the-topic-python"></a>Senden von Nachrichten an ein Azure Service Bus-Thema und Empfangen von Nachrichten von Abonnements für das Thema (Python)
 In diesem Artikel wird veranschaulicht, wie Sie Python zum Senden von Nachrichten an ein Service Bus-Thema und Empfangen von Nachrichten von einem Abonnement für das Thema verwenden. 
@@ -23,7 +23,7 @@ In diesem Artikel wird veranschaulicht, wie Sie Python zum Senden von Nachrichte
 ## <a name="prerequisites"></a>Voraussetzungen
 - Ein Azure-Abonnement. Sie können [Ihre Visual Studio-oder MSDN-Abonnentenvorteile aktivieren](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/?WT.mc_id=A85619ABF) oder [sich für ein kostenloses Konto anmelden](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF).
 - Befolgen Sie die Schritte im [Schnellstart: Erstellen eines Service Bus-Themas und eines oder mehrerer Abonnements dieses Themas im Azure-Portal](service-bus-quickstart-topics-subscriptions-portal.md). Notieren Sie sich die Verbindungszeichenfolge, den Themennamen und einen Abonnementnamen. Für diese Schnellstartanleitung verwenden Sie nur ein Abonnement. 
-- Python 2.7 oder höher mit installiertem [Azure Python SDK][Azure Python-Paket]. Weitere Informationen finden Sie im [Python-Installationshandbuch](/azure/developer/python/azure-sdk-install).
+- Python 3.5 oder höher mit installiertem [Azure Python SDK][Azure Python-Paket]. Weitere Informationen finden Sie im [Python-Installationshandbuch](/azure/developer/python/azure-sdk-install).
 
 ## <a name="send-messages-to-a-topic"></a>Senden von Nachrichten an ein Thema
 

@@ -8,18 +8,18 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 08/24/2021
-ms.openlocfilehash: f9dacea4d80591b6ec5b83ae93564cd8b03aff9c
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 4af576587d5d0e87053fb31cdd2c1d073d1ea97e
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129212454"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714766"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Schnellstart: Erstellen eines Index für Azure Cognitive Search im Azure-Portal
 
 Erstellen Sie Ihren ersten Suchindex mithilfe des **Datenimport-Assitenten** und einer integrierten Beispieldatenquelle, die fiktive Hotels enthält. Der Assistent führt Sie durch die Erstellung eines Suchindex („hotels-sample-index“), sodass Sie innerhalb weniger Minuten interessante Abfragen schreiben können. 
 
-Der Assistent enthält auch eine Seite für KI-Anreicherung, sodass Sie Text und eine Struktur aus Bilddateien und unstrukturiertem Text extrahieren können. In dieser Schnellstartanleitung werden diese Optionen jedoch nicht verwendet. Eine ähnliche exemplarische Vorgehensweise, die KI-Anreicherung umfasst, finden Sie unter [Schnellstart: Erstellen eines kognitiven Skillsets](cognitive-search-quickstart-blob.md).
+Der Assistent enthält auch eine Seite für KI-Anreicherung, sodass Sie Text und eine Struktur aus Bilddateien und unstrukturiertem Text extrahieren können. In dieser Schnellstartanleitung werden diese Optionen jedoch nicht verwendet. Eine ähnliche exemplarische Vorgehensweise mit KI-Anreicherung finden Sie unter [Schnellstart: Übersetzen von Text und Erkennen von Entitäten mithilfe des Datenimport-Assistenten](cognitive-search-quickstart-blob.md) oder [Schnellstart: Anwenden von OCR und Bildanalyse mithilfe des Datenimport-Assistenten](cognitive-search-quickstart-ocr.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

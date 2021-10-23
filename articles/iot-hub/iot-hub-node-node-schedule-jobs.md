@@ -9,12 +9,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 08/16/2019
 ms.custom: mqtt, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 591e7c43b26bbd8668bbe50bc78965f04f194c36
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6061b0ccba7448bbb51dcc93bacecce27c63b910
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339230"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130179277"
 ---
 # <a name="schedule-and-broadcast-jobs-nodejs"></a>Planen und Übertragen von Aufträgen (Node.js)
 
@@ -297,6 +297,6 @@ Sie können nun die Anwendungen ausführen.
 
 In diesem Tutorial haben Sie einen Auftrag zum Planen einer direkten Methode für ein Gerät und eines Updates der Eigenschaften eines Gerätezwillings verwendet.
 
-Informationen zu den weiteren Schritten mit IoT Hub und Geräteverwaltungsmustern, z. B. drahtlose Firmware-Remoteupdates, finden Sie unter [Tutorial: Implementieren eines Updateprozesses für die Gerätefirmware](tutorial-firmware-update.md).
+Informationen zu den weiteren ersten Schritten mit IoT Hub und Geräteverwaltungsmustern wie z. B. einem imagebasierten End-to-End-Update finden Sie im [Tutorial „Device Update for Azure IoT Hub unter Verwendung des Raspberry Pi 3 B+-Referenzimages“](../iot-hub-device-update/device-update-raspberry-pi.md).
 
 Informationen zu den weiteren ersten Schritten mit IoT Hub finden Sie unter [Erste Schritte mit Azure IoT Edge](../iot-edge/quickstart-linux.md).

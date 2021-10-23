@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: b29fb382e51a351291868e4417a819e969a1d249
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: e36b45f5ac202936e26f238f2082cf811195b235
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123097550"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130071547"
 ---
 # <a name="ddv4-and-ddsv4-series"></a>Ddv4- und Ddsv4-Serie
 
@@ -99,7 +99,7 @@ Die neuen Ddsv4-VM-Größen umfassen schnellen, größeren lokalen SSD-Speicher 
 
 Preisrechner: [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 
-Weitere Informationen zu Datenträgertypen: [Datenträgertypen](./disks-types.md#ultra-disk)
+Weitere Informationen zu Datenträgertypen: [Datenträgertypen](./disks-types.md#ultra-disks)
 
 
 ## <a name="next-steps"></a>Nächste Schritte

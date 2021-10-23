@@ -11,7 +11,7 @@ Die folgende Tabelle enthält die Grenzwerte, die sich für die Tarife „Basic�
 | Anzahl von Consumergruppen pro Event Hub | 1 | 20 | 100 | 1000<br/>Kein Grenzwert pro CU  |
 | Anzahl vermittelter Verbindungen pro Namespace | 100 | 5\.000 | 10000 pro PU | 100000 pro CU |
 | Maximale Aufbewahrungsdauer von Ereignisdaten | 1 Tag | 7 Tage | 90 Tage<br/>1 TB pro PU | 90 Tage<br/>10 TB pro CU |
-| Maximale Anzahl von TUs, PUs oder CUs |20 TUs | 40 TUs | 16 PUs | 20 CUs |
+| Maximale Anzahl von TUs, PUs oder CUs | 40 TUs | 40 TUs | 16 PUs | 20 CUs |
 | Anzahl von Partitionen pro Event Hub | 32 | 32 | 100 | 1\.024 pro Event Hub<br/> 2000 pro CU |
 | Anzahl von Namespaces pro Abonnement | 1000 | 1000 | 1000 | 1000 (50 pro CU) |
 | Anzahl von Event Hubs pro Namespace | 10 | 10 | 100 pro PU | 1000 |

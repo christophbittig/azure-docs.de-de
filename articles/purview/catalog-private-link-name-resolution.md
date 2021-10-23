@@ -6,13 +6,13 @@ ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 09/27/2021
-ms.openlocfilehash: 26667d513e0bd2bf849361f6c7e5cbce2ca5d245
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.date: 10/18/2021
+ms.openlocfilehash: 95d14afebd6567e18aed6e4585c930a3d46ccb42
+ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129277725"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130137685"
 ---
 # <a name="configure-and-verify-dns-name-resolution-for-azure-purview-private-endpoints"></a>Konfigurieren und Überprüfen der DNS-Namensauflösung für private Azure Purview-Endpunkte
 
@@ -79,7 +79,7 @@ Wenn Sie die Azure Purview-Endpunkt-URL von einem Punkt außerhalb des virtuelle
 
 Wenn ein Azure Purview-Kontoname beispielsweise "Contoso-Purview" lautet, wird er von außerhalb des virtuellen Netzwerks, das den privaten Endpunkt hostet, aufgelöst:
 
-| Name | Typ | Wert |
+| Name | type | Wert |
 | ---------- | -------- | --------------- |
 | `Contoso-Purview.purview.azure.com` | CNAME | `Contoso-Purview.privatelink.purview.azure.com` |
 | `Contoso-Purview.privatelink.purview.azure.com` | CNAME | \<Purview public endpoint\> |
@@ -88,7 +88,7 @@ Wenn ein Azure Purview-Kontoname beispielsweise "Contoso-Purview" lautet, wird e
 
 Die DNS-Ressourceneinträge für Contoso-Purview lauten, wenn sie in dem virtuellen Netzwerk, das den privaten Endpunkt hostet, aufgelöst werden:
 
-| Name | Typ | Wert |
+| Name | type | Wert |
 | ---------- | -------- | --------------- |
 | `Contoso-Purview.purview.azure.com` | CNAME | `Contoso-Purview.privatelink.purview.azure.com` |
 | `Contoso-Purview.privatelink.purview.azure.com` | Ein | \<Purview account private endpoint IP address\> |
@@ -148,7 +148,7 @@ Wenn Sie die Azure Purview-Endpunkt-URL von einem Punkt außerhalb des virtuelle
 
 Wenn ein Azure Purview-Kontoname beispielsweise "Contoso-Purview" lautet, wird er von außerhalb des virtuellen Netzwerks, das den privaten Endpunkt hostet, aufgelöst:
 
-| Name | Typ | Wert |
+| Name | type | Wert |
 | ---------- | -------- | --------------- |
 | `Contoso-Purview.purview.azure.com` | CNAME | `Contoso-Purview.privatelink.purview.azure.com` |
 | `Contoso-Purview.privatelink.purview.azure.com` | CNAME | \<Purview public endpoint\> |
@@ -157,7 +157,7 @@ Wenn ein Azure Purview-Kontoname beispielsweise "Contoso-Purview" lautet, wird e
 
 Die DNS-Ressourceneinträge für Contoso-Purview lauten, wenn sie in dem virtuellen Netzwerk, das den privaten Endpunkt hostet, aufgelöst werden:
 
-| Name | Typ | Wert |
+| Name | type | Wert |
 | ---------- | -------- | --------------- |
 | `Contoso-Purview.purview.azure.com` | CNAME | `Contoso-Purview.privatelink.purview.azure.com` |
 | `Contoso-Purview.privatelink.purview.azure.com` | Ein | \<Purview account private endpoint IP address\> |
@@ -170,7 +170,7 @@ Wenn Sie keine DNS-Weiterleitung verwenden und A-Einträge stattdessen direkt au
 > [!NOTE]
 > Aktualisieren Sie alle Namen mit `Contoso-Purview`, `scaneastusabcd1234` und `atlas-12345678-1234-1234-abcd-123456789abc`mit den entsprechenden Azure-Ressourcennamen in Ihrer Umgebung. Verwenden Sie beispielsweise anstelle von `scaneastusabcd1234` den Namen Ihres verwalteten Azure Purview-Speicherkontos.
 
-| Name | Typ | Wert |
+| Name | type | Wert |
 | ---------- | -------- | --------------- |
 | `web.purview.azure.com` | Ein | \<portal private endpoint IP address of Azure Purview> |
 | `scaneastusabcd1234.blob.core.windows.net` | Ein | \<blob-ingestion private endpoint IP address of Azure Purview> |
@@ -181,17 +181,18 @@ Wenn Sie keine DNS-Weiterleitung verwenden und A-Einträge stattdessen direkt au
 | `Contoso-Purview.catalog.Purview.azure.com` | Ein | \<account private endpoint IP address of Azure Purview\> |
 | `Contoso-Purview.proxy.purview.azure.com` | Ein | \<account private endpoint IP address of Azure Purview\> |
 | `Contoso-Purview.guardian.purview.azure.com` | Ein | \<account private endpoint IP address of Azure Purview\> |
+| `gateway.purview.azure.com` | Ein | \<account private endpoint IP address of Azure Purview\> |
 | `Contoso-Purview.web.purview.azure.com` | Ein | \<portal private endpoint IP address of Azure Purview\> |
-| `Contoso-Purview.manifest.prod.ext.web.purview.azure.com` | Ein | \<portal private endpoint IP address of Azure Purview\> |
-| `Contoso-Purview.cdn.prod.ext.web.purview.azure.com` | Ein | \<portal private endpoint IP address of Azure Purview\> |
-| `Contoso-Purview.hub.prod.ext.web.purview.azure.com` | Ein | \<portal private endpoint IP address of Azure Purview\> |
-| `Contoso-Purview.catalog.prod.ext.web.purview.azure.com` | Ein | \<portal private endpoint IP address of Azure Purview\> |
-| `Contoso-Purview.cseo.prod.ext.web.purview.azure.com` | Ein | \<portal private endpoint IP address of Azure Purview\> |
-| `Contoso-Purview.datascan.prod.ext.web.purview.azure.com` | Ein | \<portal private endpoint IP address of Azure Purview\> |
-| `Contoso-Purview.datashare.prod.ext.web.purview.azure.com` | Ein | \<portal private endpoint IP address of Azure Purview\> |
-| `Contoso-Purview.datasource.prod.ext.web.purview.azure.com` | Ein | \<portal private endpoint IP address of Azure Purview\> |
-| `Contoso-Purview.policy.prod.ext.web.purview.azure.com` | Ein | \<portal private endpoint IP address of Azure Purview\> |
-| `Contoso-Purview.sensitivity.prod.ext.web.purview.azure.com` | A | \<portal private endpoint IP address of Azure Purview\> |
+| `manifest.prod.ext.web.purview.azure.com` | Ein | \<portal private endpoint IP address of Azure Purview\> |
+| `cdn.prod.ext.web.purview.azure.com` | Ein | \<portal private endpoint IP address of Azure Purview\> |
+| `hub.prod.ext.web.purview.azure.com` | Ein | \<portal private endpoint IP address of Azure Purview\> |
+| `catalog.prod.ext.web.purview.azure.com` | Ein | \<portal private endpoint IP address of Azure Purview\> |
+| `cseo.prod.ext.web.purview.azure.com` | Ein | \<portal private endpoint IP address of Azure Purview\> |
+| `datascan.prod.ext.web.purview.azure.com` | Ein | \<portal private endpoint IP address of Azure Purview\> |
+| `datashare.prod.ext.web.purview.azure.com` | Ein | \<portal private endpoint IP address of Azure Purview\> |
+| `datasource.prod.ext.web.purview.azure.com` | Ein | \<portal private endpoint IP address of Azure Purview\> |
+| `policy.prod.ext.web.purview.azure.com` | Ein | \<portal private endpoint IP address of Azure Purview\> |
+| `sensitivity.prod.ext.web.purview.azure.com` | A | \<portal private endpoint IP address of Azure Purview\> |
 
 
 ## <a name="verify-and-dns-test-name-resolution-and-connectivity"></a>Überprüfen und Testen von DNS-Namensauflösung und Konnektivität 

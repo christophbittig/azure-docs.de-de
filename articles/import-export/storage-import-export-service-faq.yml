@@ -6,15 +6,15 @@ metadata:
   services: storage
   ms.service: storage
   ms.topic: conceptual
-  ms.date: 09/07/2021
+  ms.date: 10/04/2021
   ms.author: alkohli
   ms.subservice: common
-  ms.openlocfilehash: 7a4344ed0aa7346d3c87d36d96e4772c08080327
-  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+  ms.openlocfilehash: 7217f10d9d54931d0f37ec0400c8df3132076f87
+  ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/13/2021
-  ms.locfileid: "124763555"
+  ms.lasthandoff: 10/09/2021
+  ms.locfileid: "129709464"
 title: 'Azure Import/Export-Dienst: Häufig gestellte Fragen'
 summary: >
   Es folgen Fragen, die Sie möglicherweise stellen, wenn Sie Ihren Azure Import/Export-Dienst zum Übertragen von Daten in Azure Storage verwenden, und die zugehörigen Antworten.
@@ -22,9 +22,9 @@ sections:
 - name: Info zum Azure Import/Export-Dienst
   questions:
   - question: >
-      Kann ich den Azure Import/Export-Dienst verwenden, um in Azure File Storage zu kopieren?
+      Kann ich den Azure Import/Export-Dienst verwenden, um in Azure Files-Speicher zu kopieren?
     answer: >
-      Ja. Der Azure Import/Export-Dienst unterstützt den Import in Azure File Storage. Derzeit wird der Export von Azure-Dateien nicht unterstützt.
+      Ja. Der Azure Import/Export-Dienst unterstützt den Import in Azure Files-Speicher. Der Export aus Azure Files wird derzeit nicht unterstützt.
   - question: >
       Ist der Azure Import/Export-Dienst für CSP-Abonnements verfügbar?
     answer: >
@@ -56,7 +56,7 @@ sections:
   - question: >
       Kann ich meinen Auftrag stornieren?
     answer: >
-      Ja. Sie können einen Auftrag stornieren, solange dieser den Status **Wird erstellt** oder **Wird versendet** hat. Nach diesen Phasen kann der Auftrag nicht abgebrochen werden und wird bis zur letzten Phase fortgesetzt.
+      Ja. Sie können einen Auftrag stornieren, solange dieser den Status **Wird erstellt** hat. Nach der Eingabe von Nachverfolgungsinformationen ändert sich jedoch der Status eines Auftrags in **Versand**, und der Auftrag kann nicht mehr storniert werden.
   - question: >
       Wie lange kann ich den Status abgeschlossener Aufträge im Azure-Portal anzeigen?
     answer: >
@@ -68,9 +68,13 @@ sections:
 
       Weitere Informationen und Anleitungen für den Fall, dass die Datenkapazität mehrere Datenträgerimportaufträge umfasst, erhalten Sie vom Microsoft-Support.
   - question: >
+      Ich habe Probleme in den Datenkopierprotokollen für einen Import-/Exportauftrag festgestellt. Kann ich den Auftrag reparieren?
+    answer: >
+      Nein. Die aktuellen Versionen des Azure Import/Export-Tools (Version 1.5.0.300 für Blobs und Version 2.2.0.300 für Dateien) unterstützen die Auftragsreparatur nicht. Sie müssen einen neuen Import-/Exportauftrag erstellen, nachdem Sie das Probleme behoben haben. Weitere Informationen finden Sie unter [Verwenden des Azure Import/Export-Diensts zum Importieren von Daten in Azure Blob Storage](storage-import-export-data-to-blobs.md#step-2-create-an-import-job) oder [Verwenden des Azure Import/Export-Diensts zum Importieren von Daten in Azure Files](storage-import-export-data-to-files.md#step-2-create-an-import-job).
+  - question: >
       Für das hochgeladenen Blob wird der Status „Eine Lease ist abgelaufen“ angezeigt. Wie sollte ich vorgehen?
     answer: >
-      Sie können das Feld „Eine Lease ist abgelaufen“ ignorieren. Der Import/Export beansprucht das Blob während des Uploads für sich, damit kein anderer Prozess das Blob parallel updaten kann. Der Status „Eine Lease ist abgelaufen“ bedeutet, dass der Import/Export-Prozess nun nichts mehr hochlädt und Ihnen das Blob zur Verfügung steht.
+      Sie können das Feld **Eine Lease ist abgelaufen** ignorieren. Der Import/Export beansprucht das Blob während des Uploads für sich, damit kein anderer Prozess das Blob parallel updaten kann. Der Status **Eine Lease ist abgelaufen** bedeutet, dass der Import- oder Exportprozess nun nichts mehr in das Blob hochlädt und Ihnen das Blob zur Verfügung steht.
 - name: Datenträgerversand
   questions:
   - question: >
@@ -137,7 +141,13 @@ sections:
   - question: >
       Wenn eine Festplatte Dateien enthält, die in meinem Speicherkonto bereits vorhanden sind, werden die entsprechenden Blobs oder Dateien dann vom Dienst überschrieben?
     answer: >
-      Das ist unterschiedlich. Beim Vorbereiten der Festplatte können Sie angeben, ob die Zieldateien überschrieben oder ignoriert werden sollen. Hierfür verwenden Sie das Feld „Disposition:<rename|no-overwrite|overwrite>“ (umbenennen, nicht überschreiben, überschreiben) in der Dataset-CSV-Datei. In der Standardeinstellung benennt der Dienst die neuen Dateien um, anstatt vorhandene Blobs oder Dateien zu überschreiben.
+      Ja. Die neuesten Releases des Azure Import/Export-Tools (Version 1.5.0.300 für Blobs und Version 2.2.0.300 für Dateien) überschreiben automatisch Blobs oder Dateien, die bereits in Ihrem Speicher vorhanden sind, wenn ein Import eine Datei oder ein Blob mit dem gleichen Namen enthält. Bei früheren Toolversionen wurde eine eingehende Datei standardmäßig umbenannt, wenn ein vorhandenes Blob oder eine vorhandene Datei denselben Namen hatte. Im Feld „Disposition“ in der CSV-Datei des Datasets können Sie angeben, ob die Zieldatei oder das Zielblob umbenannt, nicht überschrieben oder überschrieben werden soll. Das Feld „Disposition“ hat das folgende Format: `Disposition:<rename|no-overwrite|overwrite>`.
+  - question: >
+      Ich erstelle einen neuen Auftrag. Kann ich weiterhin das alte Azure Import/Export-Tool verwenden?
+    answer: >
+      Sie können weiterhin das alte Azure Import/Export-Tool für Ihre vorhandenen Aufträge verwenden. Es wird jedoch dringend empfohlen, für neue Import-/Exportaufträge zur aktuellen Toolversion zu wechseln, da das alte Tool außer Betrieb genommen wird. Sie erhalten eine Benachrichtigung im Azure-Portal, wenn das alte Tool nicht mehr unterstützt wird.
+
+      Hier finden Sie die aktuellen Toolversionen: [Downloadseite für die WAImportExport-Version 1.5.0.300](https://www.microsoft.com/download/details.aspx?id=42659) für Blobs. [Downloadseite für die WAImportExport-Version 2.2.0.300](https://aka.ms/waiev2) für Dateien.
   - question: >
       Ist das WAImportExport-Tool mit dem 32-Bit-Windows-Betriebssystem kompatibel?
     answer: >
@@ -145,9 +155,9 @@ sections:
   - question: >
       Welche maximale Blockblob- und Seitenblobgröße wird von Azure Import/Export unterstützt?
     answer: >
-      - Die maximale Blockblobgröße beträgt ungefähr 4,768 TB oder 5.000.000 MB.
+      - Die maximale Blockblobgröße beträgt ungefähr 4.768 TB oder 5.000.000 MB.
 
-      - Die maximale Seitenblobgröße ist 8 TB.
+      - Die maximale Seitenblobgröße ist 8 TB.
   - question: >
       Unterstützt Azure Import/Export die AES-256-Verschlüsselung?
     answer: >

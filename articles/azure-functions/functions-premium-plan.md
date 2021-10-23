@@ -9,12 +9,12 @@ ms.custom:
 - references_regions
 - fasttrack-edit
 - devx-track-azurecli
-ms.openlocfilehash: f2ac7aa7d5078359f747e141971eabeba21eab3e
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 2bbef3190a38d1c0f9b058f2c57050ecd85756e3
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122968730"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129984761"
 ---
 # <a name="azure-functions-premium-plan"></a>Premium-Tarif für Azure Functions
 
@@ -173,37 +173,45 @@ Auf der [Azure-Website](https://azure.microsoft.com/global-infrastructure/servic
 |Australien, Südosten | 100 | 20 |
 |Brasilien Süd| 100 | 20 |
 |Kanada, Mitte| 100 | 20 |
+|Indien, Mitte| 100 | 20 |
 |USA (Mitte)| 100 | 20 |
 |China, Osten 2| 100 | 20 |
 |China, Norden 2| 100 | 20 |
 |Asien, Osten| 100 | 20 |
-|East US | 100 | 20 |
+|East US | 100 | 40 |
 |USA (Ost) 2| 100 | 20 |
 |Frankreich, Mitte| 100 | 20 |
-|Deutschland, Westen-Mitte| 100 | Nicht verfügbar. |
+|Deutschland, Westen-Mitte| 100 | 20 |
 |Japan, Osten| 100 | 20 |
 |Japan, Westen| 100 | 20 |
+|Jio Indien, Westen| 100 | 20 |
 |Korea, Mitte| 100 | 20 |
 |Korea, Süden| Nicht verfügbar | 20 |
 |USA Nord Mitte| 100 | 20 |
 |Nordeuropa| 100 | 20 |
 |Norwegen, Osten| 100 | 20 |
+|Südafrika, Norden| 100 | 20 |
 |USA Süd Mitte| 100 | 20 |
 |Indien (Süden) | 100 | Nicht verfügbar. |
 |Asien, Südosten| 100 | 20 |
-|Schweiz, Norden| 100 | Nicht verfügbar. |
-|Schweiz, Westen| 100 | Nicht verfügbar. |
+|Schweiz, Norden| 100 | 20 |
+|Schweiz, Westen| 100 | 20 |
+|Vereinigte Arabische Emirate, Norden| 100 | 20 |
 |UK, Süden| 100 | 20 |
 |UK, Westen| 100 | 20 |
 |US Gov Arizona| 100 | 20 |
+|US Gov Texas| 100 | Nicht verfügbar. |
 |US Government, Virginia| 100 | 20 |
 |US Nat East| 100 | Nicht verfügbar. |
 |US Nat West| 100 | Nicht verfügbar. |
+|US Sec East| 100 | 20 |
+|US Sec West| 100 | 20 |
+|USA, Westen-Mitte| 100 | 20 |
 |Europa, Westen| 100 | 20 |
 |Indien, Westen| 100 | 20 |
-|USA, Westen-Mitte| 100 | 20 |
 |USA (Westen)| 100 | 20 |
 |USA, Westen 2| 100 | 20 |
+|USA, Westen 3| 100 | 20 |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

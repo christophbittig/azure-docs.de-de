@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/17/2021
+ms.date: 10/04/2021
 ms.author: b-juche
-ms.openlocfilehash: a3db25adec1ffb8d56134b6f7e651a4707d613a6
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 546f3ad04a371277903f9b11f6d62bba50794051
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128577067"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129536250"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Erstellen eines SMB-Volumes für Azure NetApp Files
 
@@ -29,7 +29,7 @@ In diesem Artikel wird veranschaulicht, wie Sie ein SMB3-Volume erstellen. Infor
 
 ## <a name="before-you-begin"></a>Voraussetzungen 
 
-* Sie müssen bereits einen Kapazitätspool eingerichtet haben. Siehe [Einrichten eines Kapazitätspools](azure-netapp-files-set-up-capacity-pool.md).     
+* Sie müssen bereits einen Kapazitätspool eingerichtet haben. Informationen dazu finden Sie unter [Einrichten eines Kapazitätspools](azure-netapp-files-set-up-capacity-pool.md).     
 * Ein Subnetz muss an Azure NetApp Files delegiert werden. Siehe [Delegieren eines Subnetzes an Azure NetApp Files](azure-netapp-files-delegate-subnet.md).
 
 ## <a name="configure-active-directory-connections"></a>Konfigurieren von Active Directory-Verbindungen 
@@ -80,6 +80,9 @@ Bevor Sie ein SMB-Volume erstellen, müssen Sie zunächst eine Active Directory-
         ![Erstellen eines Volumes](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
         ![Erstellen eines Subnetzes](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
+
+    * **Netzwerkfunktionen**  
+        In unterstützten Regionen können Sie angeben, ob Sie für das Volume **Basic**- oder **Standard**-Netzwerkfeatures verwenden möchten. Ausführlichere Informationen finden Sie unter [Konfigurieren von Netzwerkfeatures für ein Volume](configure-network-features.md) und [Richtlinien für die Azure NetApp Files-Netzwerkplanung](azure-netapp-files-network-topologies.md).
 
     * Wenn Sie eine vorhandene Momentaufnahmerichtlinie auf das Volume anwenden möchten, klicken Sie auf **Abschnitt „Erweitert“ anzeigen**, um den Bereich zu erweitern, geben Sie an, ob Sie den Momentaufnahmepfad ausblenden möchten, und wählen Sie im Pulldownmenü eine Momentaufnahmerichtlinie aus. 
 

@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/08/2021
+ms.date: 10/14/2021
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 11572f957fc2d305f5d6f17303bb8386345abc7b
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 6a612621ef316e7d4e7c248968b3cc87c04b85ae
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129714070"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130046258"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Bekannte Probleme mit Azure Data Lake Storage Gen2
 
@@ -68,7 +68,7 @@ Die Möglichkeit, ACL-Änderungen aus dem übergeordneten Verzeichnis rekursiv a
 
 ## <a name="access-control-lists-acl-and-anonymous-read-access"></a>Zugriffssteuerungslisten (Access Control Lists, ACLs) und anonymer Lesezugriff
 
-Wenn [anonymer Lesezugriff](./anonymous-read-access-configure.md) für einen Container gewährt wurde, haben ACLs keine Auswirkungen auf diesen Container oder die darin enthaltenen Dateien.
+Wenn [anonymer Lesezugriff](./anonymous-read-access-configure.md) für einen Container gewährt wurde, haben ACLs keine Auswirkungen auf diesen Container oder die darin enthaltenen Dateien.  Dies wirkt sich nur auf Leseanforderungen aus.  Bei Schreibanforderungen werden die ACLs weiterhin berücksichtigt.
 
 <a id="known-issues-tools"></a>
 
@@ -98,15 +98,11 @@ Drittanbieteranwendungen, die REST-APIs verwenden, funktionieren auch weiterhin,
 
 Die Einstellung für die Aufbewahrungsdauer wird noch nicht unterstützt. Sie können Protokolle jedoch manuell löschen, indem Sie ein beliebiges unterstütztes Tool wie Azure Storage Explorer, REST oder ein SDK verwenden.
 
-## <a name="lifecycle-management-policies-with-premium-tier-for-azure-data-lake-storage"></a>Richtlinien für die Lebenszyklusverwaltung im Premium-Tarif für Azure Data Lake Storage
+## <a name="windows-azure-storage-blob-wasb-driver"></a>WASB-Treiber (Windows Azure Storage Blob)
 
-Daten, die im Premium-Tarif gespeichert sind, können nicht zwischen den Ebenen „Heiß“, „Kalt“ und „Archiv“ verschoben werden. Sie können jedoch Daten aus dem Premium-Tarif auf die Zugriffsebene „Heiß“ in einem anderen Konto kopieren.
+Derzeit treten beim WASB-Treiber, der nur für die Verwendung mit der Blob-API entwickelt wurde, in einigen gängigen Szenarien Probleme auf. Dies gilt insbesondere, wenn es sich um einen Client für ein Speicherkonto mit aktiviertem hierarchischem Namespace handelt. Durch einen Multiprotokollzugriff für Data Lake Storage lassen sich diese Probleme nicht beheben.
 
-## <a name="windows-azure-storage-blob-wasb-driver-unsupported-with-data-lake-storage-gen2"></a>WASB-Treiber (Windows Azure Storage Blob) (bei Data Lake Storage Gen2 nicht unterstützt)
-
-Derzeit treten beim WASB-Treiber, der nur für die Verwendung mit der Blob-API entwickelt wurde, in einigen gängigen Szenarien Probleme auf. Dies gilt insbesondere, wenn es sich um einen Client für ein Speicherkonto mit aktiviertem hierarchischen Namespace handelt. Durch einen Multiprotokollzugriff für Data Lake Storage lassen sich diese Probleme nicht beheben.
-
-Zum gegenwärtigen Zeitpunkt (und wahrscheinlich auch in absehbarer Zukunft) werden Kunden, die den WASB-Treiber als Client für ein Speicherkonto mit aktiviertem hierarchischen Namespace verwenden, nicht unterstützt. Stattdessen wird empfohlen, den [ABFS](data-lake-storage-abfs-driver.md)-Treiber (Azure Blob File System) in der Hadoop-Umgebung zu verwenden. Wenn Sie versuchen, eine Migration von einer lokalen Hadoop-Umgebung mit einer früheren Version als Hadoop Branch-3 durchzuführen, öffnen Sie ein Azure-Supportticket, damit wir uns mit Ihnen in Verbindung setzen können, um den richtigen Weg für Sie und Ihre Organisation zu finden.
+Die Verwendung des WASB-Treibers als Client für ein Speicherkonto mit aktiviertem hierarchischem Namespace wird nicht unterstützt. Stattdessen empfehlen wir, in Ihrer Hadoop-Umgebung den [ABFS](data-lake-storage-abfs-driver.md)-Treiber (Azure Blob File System) zu verwenden. Wenn Sie versuchen, eine Migration von einer lokalen Hadoop-Umgebung mit einer früheren Version als Hadoop Branch-3 durchzuführen, öffnen Sie ein Azure-Supportticket, damit wir uns mit Ihnen in Verbindung setzen können, um den richtigen Weg für Sie und Ihre Organisation zu finden.
 
 ## <a name="soft-delete-for-blobs-capability-currently-in-preview"></a>Vorläufiges Löschen für Blobsfunktion (derzeit in der Vorschauversion)
 

@@ -3,7 +3,7 @@ title: 'Tutorial: Anpassen von Azure Active Directory-Attributzuordnungen in der
 description: Hier erfahren Sie, was Attributzuordnungen für SaaS-Apps (Software-as-a-Service) in der Azure Active Directory-Anwendungsbereitstellung sind und wie Sie sie an Ihre geschäftlichen Anforderungen anpassen können.
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 07/07/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: a7839ec1b131377cd9a6614c570dacd829c6c46a
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 1e08dc5c0dc0d8e427de9ae1ebc53f16cb8e015a
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123310964"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130043603"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Tutorial: Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory
 
@@ -120,7 +120,7 @@ Folgende Anwendungen und Systeme unterstützen die Anpassung der Attributliste:
 
 
 > [!NOTE]
-> Das Bearbeiten der Liste unterstützter Attribute wird nur für Administratoren empfohlen, die das Schema ihrer Anwendungen und Systeme angepasst haben und aus erster Hand wissen, wie ihre benutzerdefinierten Attribute definiert wurden bzw. ob ein Quellattribut nicht automatisch auf der Benutzeroberfläche des Azure-Portals angezeigt wird. Dies erfordert mitunter Kenntnisse der von einer Anwendung oder einem System bereitgestellten APIs und Entwicklertools. Die Möglichkeit zum Bearbeiten der Liste unterstützter Attribute ist standardmäßig gesperrt, aber Kunden können die Funktion aktivieren, indem sie zur folgenden URL navigieren: https://portal.azure.com/?Microsoft_AAD_IAM_forceSchemaEditorEnabled=true. Anschließend können Sie zu Ihrer Anwendung navigieren, um die Attributliste wie [oben](#editing-the-list-of-supported-attributes) beschrieben anzuzeigen. 
+> Das Bearbeiten der Liste unterstützter Attribute wird nur für Administratoren empfohlen, die das Schema ihrer Anwendungen und Systeme angepasst haben und aus erster Hand wissen, wie ihre benutzerdefinierten Attribute definiert wurden bzw. ob ein Quellattribut nicht automatisch auf der Benutzeroberfläche des Azure-Portals angezeigt wird. Dies erfordert mitunter Kenntnisse der von einer Anwendung oder einem System bereitgestellten APIs und Entwicklertools. Die Möglichkeit zum Bearbeiten der Liste unterstützter Attribute ist standardmäßig gesperrt, aber Kunden können die Funktion aktivieren, indem sie zur folgenden URL navigieren: https://portal.azure.com/?Microsoft_AAD_Connect_Provisioning_forceSchemaEditorEnabled=true. Anschließend können Sie zu Ihrer Anwendung navigieren, um die Attributliste wie [oben](#editing-the-list-of-supported-attributes) beschrieben anzuzeigen. 
 
 Beim Bearbeiten der Liste unterstützter Attribute sind die folgenden Eigenschaften verfügbar:
 

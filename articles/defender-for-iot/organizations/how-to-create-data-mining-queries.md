@@ -3,12 +3,12 @@ title: Erstellen von Data Mining-Berichten
 description: Es wird beschrieben, wie Sie umfassende und detaillierte Informationen zu Ihren Netzwerkgeräten auf unterschiedlichen Ebenen generieren, z. B. Protokolle, Firmwareversionen oder Programmierbefehle.
 ms.date: 01/20/2021
 ms.topic: how-to
-ms.openlocfilehash: 99754959e7a3a08b4d763b85b0b9315476969774
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 460edc5aa21461f37bbcdf35d070ef3674d509d3
+ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113017535"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130138120"
 ---
 # <a name="sensor-data-mining-queries"></a>Data Mining-Abfragen für Sensoren
 
@@ -59,10 +59,11 @@ Mithilfe von Abfragen können Sie einen großen Bereich an Sicherheitsanforderun
 
 - **Transparenz**: Generieren Sie einen Bericht, der alle Abfragepunkte abdeckt, um alle Baselineparameter Ihres Netzwerks darzustellen.
 
+- **PLC-Sicherheit**: Verbessern Sie die Sicherheit, indem Sie PLCs in unsicheren Zuständen erkennen, z. B. Programm- und Remotezustände.
+
 ## <a name="data-mining-storage"></a>Speicherung von Data Mining-Daten
 
 Data Mining-Informationen werden fortlaufend gespeichert und archiviert, außer wenn ein Gerät gelöscht wird. Data Mining-Ergebnisse können exportiert und extern auf einem sicheren Server archiviert werden. Außerdem führt der Sensor automatisch täglich Sicherungen durch, um die Systemkontinuität und den Erhalt von Daten sicherzustellen.
-
 
 ## <a name="predefined-data-mining-queries"></a>Vordefinierte Data Mining-Abfragen
 

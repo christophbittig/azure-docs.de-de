@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: contperf-fy22q1
-ms.openlocfilehash: 2391fbdf586c652f7567b5c4b08757a68546314a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 52afb1398217fc8a3a885704ea1e689a6f4b1393
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121731976"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711453"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Schnellstart: Ermitteln und Analysieren von Kosten mit der Kostenanalyse
 
@@ -32,7 +32,7 @@ In dieser Schnellstartanleitung wird Folgendes vermittelt:
 
 Die Kostenanalyse unterstützt verschiedene Arten von Azure-Kontotypen. Die vollständige Liste der unterstützten Kontotypen finden Sie unter [Grundlegendes zu Cost Management-Daten](understand-cost-mgt-data.md). Um Kostendaten anzeigen zu können, müssen Sie mindestens über Lesezugriff auf Ihr Azure-Konto verfügen.
 
-Informationen zum Zuweisen des Zugriffs auf Azure Cost Management-Daten finden Sie unter [Zuweisen des Zugriffs auf Cost Management-Daten](./assign-access-acm-data.md).
+Informationen zum Zuweisen des Zugriffs auf Cost Management-Daten finden Sie unter [Zuweisen des Zugriffs auf Daten in Cost Management](./assign-access-acm-data.md).
 
 Bei einem neuen Abonnement können Cost Management-Features nicht sofort genutzt werden. Es kann bis zu 48 Stunden dauern, bis Sie alle Cost Management-Features verwenden können.
 
@@ -113,7 +113,7 @@ Im Allgemeinen können Sie erwarten, dass Daten oder Benachrichtigungen zu verbr
 
 Die meisten Azure-Ressourcen unterstützen die Markierung durch Tags. Einige Tags sind aber in Cost Management und für die Abrechnung nicht verfügbar. Darüber hinaus werden Ressourcengruppentags nicht unterstützt. Die Tag-Unterstützung betrifft nur die Nutzung, die gemeldet wird, *nachdem* das Tag auf die Ressource angewendet wurde. Tags werden nicht rückwirkend für die Kostenkalkulation angewendet.
 
-Sehen Sie sich das Video [How to review tag policies with Azure Cost Management](https://www.youtube.com/watch?v=nHQYcYGKuyw) (Überprüfen von Tagrichtlinien mithilfe von Azure Cost Management) an, um mehr zur Verwendung von Azure-Tagrichtlinen zum Verbessern der Sichtbarkeit von Kosten zu erfahren.
+Sehen Sie sich das Video [Überprüfen von Tagrichtlinien mithilfe von Azure Cost Management](https://www.youtube.com/watch?v=nHQYcYGKuyw) an, um mehr zur Verwendung von Azure-Tagrichtlinen zum Verbessern der Sichtbarkeit von Kosten zu erfahren.
 
 Hier ist eine Ansicht der Azure-Dienstkosten für den aktuellen Monat dargestellt.
 

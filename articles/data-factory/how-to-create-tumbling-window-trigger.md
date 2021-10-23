@@ -10,12 +10,12 @@ ms.subservice: orchestration
 ms.custom: synapse
 ms.topic: conceptual
 ms.date: 09/09/2021
-ms.openlocfilehash: 7b0af3fbd090eec36c69f784639ff401f5d80c46
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 44f41d0adebe21eaec28aced556f67e8c1aeda1d
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124831439"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130047226"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Erstellen eines Triggers zum Ausführen einer Pipeline für ein rollierendes Fenster
 
@@ -25,9 +25,9 @@ Dieser Artikel enthält die Schritte zum Erstellen, Starten und Überwachen eine
 
 Trigger für ein rollierendes Fenster werden ab einem angegebenen Startzeitpunkt in regelmäßigen Zeitintervallen ausgelöst, während der Zustand beibehalten wird. Bei rollierenden Fenstern handelt es sich um eine Reihe von nicht überlappenden, aneinandergrenzenden Zeitintervallen mit einer festen Größe. Ein Trigger für ein rollierendes Fenster hat eine 1:1-Beziehung zu einer Pipeline und kann nur auf eine einzelne Pipeline verweisen. Der Trigger für ein rollierendes Fenster ist eine leistungsstärkere Alternative für einen Zeitplantrigger und verfügt über eine Suite mit Funktionen für komplexe Szenarien ([Abhängigkeit von anderen Triggern für ein rollierendes Fenster](#tumbling-window-trigger-dependency), [Erneutes Ausführen eines fehlgeschlagenen Auftrags](tumbling-window-trigger-dependency.md#monitor-dependencies) und [Festlegen der Benutzerwiederholung für Pipelines](#user-assigned-retries-of-pipelines)). Weitere Informationen zum Unterschied zwischen dem Zeitplantrigger und dem Trigger für ein rollierendes Fenster finden Sie [hier](concepts-pipeline-execution-triggers.md#trigger-type-comparison).
 
-## <a name="ui-experience"></a>Benutzeroberfläche
+## <a name="azure-data-factory-and-synapse-portal-experience"></a>Azure Data Factory und Synapse-Portal
 
-1. Zum Erstellen eines Triggers für ein rollierendes Fenster in der Benutzeroberfläche wählen Sie die Registerkarte **Trigger** und dann **Neu** aus. 
+1. Zum Erstellen eines Triggers für ein rollierendes Fenster im Azure-Portal wählen Sie die Registerkarte **Trigger** und dann **Neu** aus. 
 1. Nachdem der Bereich für die Triggerkonfiguration geöffnet wurde, wählen Sie **Rollierendes Fenster** aus und definieren dann die Triggereigenschaften des rollierenden Fensters. 
 1. Klicken Sie auf **Speichern**, wenn Sie fertig sind.
 
@@ -199,11 +199,23 @@ Sie können ein abgebrochenes Fenster auch erneut ausführen. Bei der erneuten A
 
 ---
 
-## <a name="sample-for-azure-powershell"></a>Beispiel für Azure PowerShell
+## <a name="sample-for-azure-powershell-and-azure-cli"></a>Beispiel für Azure PowerShell und Azure-Befehlszeilenschnittstelle
+
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
+
+In diesem Abschnitt erfahren Sie, wie Sie mit Azure PowerShell einen Trigger erstellen, starten und überwachen.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-In diesem Abschnitt erfahren Sie, wie Sie mit Azure PowerShell einen Trigger erstellen, starten und überwachen.
+### <a name="prerequisites"></a>Voraussetzungen
+
+- **Azure-Abonnement**. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen. 
+
+- **Azure PowerShell**. Befolgen Sie die Anweisungen unter [Installieren von Azure PowerShell unter Windows mit PowerShellGet](/powershell/azure/install-az-ps). 
+
+- **Azure Data Factory** Führen Sie die Anleitungen in [Erstellen einer Azure Data Factory mithilfe von PowerShell](/azure/data-factory/quickstart-create-data-factory-powershell) aus, um eine Data Factory und eine Pipeline zu erstellen.
+
+### <a name="sample-code"></a>Beispielcode
 
 1. Erstellen Sie im Ordner „C:\ADFv2QuickStartPSH“ eine JSON-Datei mit dem Namen **MyTrigger.json** und dem folgenden Inhalt:
 
@@ -219,6 +231,7 @@ In diesem Abschnitt erfahren Sie, wie Sie mit Azure PowerShell einen Trigger ers
           "frequency": "Minute",
           "interval": "15",
           "startTime": "2017-09-08T05:30:00Z",
+          "endTime" : "2017-09-08T06:30:00Z",
           "delay": "00:00:01",
           "retryPolicy": {
             "count": 2,
@@ -241,35 +254,115 @@ In diesem Abschnitt erfahren Sie, wie Sie mit Azure PowerShell einen Trigger ers
     }
     ```
 
-2. Erstellen Sie mit dem Cmdlet **Set-AzDataFactoryV2Trigger** einen Trigger:
+2. Erstellen Sie mit dem Cmdlet [Set-AzDataFactoryV2Trigger](/powershell/module/az.datafactory/set-azdatafactoryv2trigger) einen Trigger:
 
     ```powershell
     Set-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger" -DefinitionFile "C:\ADFv2QuickStartPSH\MyTrigger.json"
     ```
 
-3. Vergewissern Sie sich, dass der Status des Triggers **Beendet** lautet, indem Sie das Cmdlet **Get-AzDataFactoryV2Trigger** verwenden:
+3. Vergewissern Sie sich, dass der Status des Triggers **Beendet** lautet, indem Sie das Cmdlet [Get-AzDataFactoryV2Trigger](/powershell/module/az.datafactory/get-azdatafactoryv2trigger) verwenden:
 
     ```powershell
     Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-4. Starten Sie den Trigger mithilfe des Cmdlets **Start-AzDataFactoryV2Trigger**:
+4. Starten Sie den Trigger mithilfe des Cmdlets [Start-AzDataFactoryV2Trigger](/powershell/module/az.datafactory/start-azdatafactoryv2trigger):
 
     ```powershell
     Start-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-5. Vergewissern Sie sich, dass der Status des Triggers **Gestartet** lautet, indem Sie das Cmdlet **Get-AzDataFactoryV2Trigger** verwenden:
+5. Vergewissern Sie sich, dass der Status des Triggers **Gestartet** lautet, indem Sie das Cmdlet [Get-AzDataFactoryV2Trigger](/powershell/module/az.datafactory/get-azdatafactoryv2trigger) verwenden:
 
     ```powershell
     Get-AzDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
     ```
 
-6. Rufen Sie Triggerausführungen in Azure PowerShell mit dem Cmdlet **Get-AzDataFactoryV2TriggerRun** ab. Führen Sie in regelmäßigen Abständen den folgenden Befehl aus, um die Informationen zu den Triggerausführungen abzurufen. Aktualisieren Sie die Werte **TriggerRunStartedAfter** und **TriggerRunStartedBefore** entsprechend den Werten in Ihrer Triggerdefinition:
+6. Rufen Sie Triggerausführungen in Azure PowerShell mit dem Cmdlet [Get-AzDataFactoryV2TriggerRun](/powershell/module/az.datafactory/get-azdatafactoryv2triggerrun) ab. Führen Sie in regelmäßigen Abständen den folgenden Befehl aus, um die Informationen zu den Triggerausführungen abzurufen. Aktualisieren Sie die Werte **TriggerRunStartedAfter** und **TriggerRunStartedBefore** entsprechend den Werten in Ihrer Triggerdefinition:
 
     ```powershell
     Get-AzDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "MyTrigger" -TriggerRunStartedAfter "2017-12-08T00:00:00" -TriggerRunStartedBefore "2017-12-08T01:00:00"
     ```
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+In diesem Abschnitt erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle (Azure CLI) einen Trigger erstellen, starten und überwachen können.
+
+### <a name="prerequisites"></a>Voraussetzungen
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+
+- Führen Sie die Anleitungen in [Erstellen einer Azure Data Factory mithilfe der Azure-Befehlszeilenschnittstelle](/azure/data-factory/quickstart-create-data-factory-azure-cli) aus, um eine Data Factory und eine Pipeline zu erstellen.
+
+### <a name="sample-code"></a>Beispielcode
+
+1. Erstellen Sie in Ihrem Arbeitsverzeichnis die JSON-Datei **MyTrigger.json** mit den Eigenschaften für den Trigger. Verwenden Sie für dieses Beispiel den folgenden Inhalt:
+
+    > [!IMPORTANT]
+    > Bevor Sie die JSON-Datei speichern, legen Sie den Wert von **referenceName** auf den Namen Ihrer Pipeline fest. Legen Sie den Wert des Elements **startTime** auf die aktuelle UTC-Zeit fest. Legen Sie den Wert des **endTime**-Elements auf eine Stunde nach der aktuellen UTC-Zeit fest.
+
+    ```json
+    {
+        "type": "TumblingWindowTrigger",
+        "typeProperties": {
+          "frequency": "Minute",
+          "interval": "15",
+          "startTime": "2017-12-08T00:00:00Z",
+          "endTime": "2017-12-08T01:00:00Z",
+          "delay": "00:00:01",
+          "retryPolicy": {
+            "count": 2,
+            "intervalInSeconds": 30
+          },
+          "maxConcurrency": 50
+        },
+        "pipeline": {
+          "pipelineReference": {
+            "type": "PipelineReference",
+            "referenceName": "DynamicsToBlobPerfPipeline"
+          },
+          "parameters": {
+            "windowStart": "@trigger().outputs.windowStartTime",
+            "windowEnd": "@trigger().outputs.windowEndTime"
+          }
+        },
+        "runtimeState": "Started"
+    }
+    ```
+
+2. Erstellen Sie einen Trigger mit dem Befehl [az datafactory trigger create](/cli/azure/datafactory/trigger#az_datafactory_trigger_create):
+
+    > [!IMPORTANT]
+    > Ersetzen Sie `ResourceGroupName` bei diesem Schritt und allen nachfolgenden Schritten durch den Namen Ihrer Ressourcengruppe. Ersetzen Sie `DataFactoryName` durch den Namen Ihrer Data Factory.
+
+    ```azurecli
+    az datafactory trigger create --resource-group "ResourceGroupName" --factory-name "DataFactoryName"  --name "MyTrigger" --properties @MyTrigger.json  
+    ```
+
+3. Vergewissern Sie sich mithilfe des Befehls [az datafactory trigger show](/cli/azure/datafactory/trigger#az_datafactory_trigger_show), dass der Status des Triggers **Beendet** lautet:
+
+    ```azurecli
+    az datafactory trigger show --resource-group "ResourceGroupName" --factory-name "DataFactoryName" --name "MyTrigger" 
+    ```
+
+4. Starten Sie den Trigger mit dem Befehl [az datafactory trigger start](/cli/azure/datafactory/trigger#az_datafactory_trigger_start):
+
+    ```azurecli
+    az datafactory trigger start --resource-group "ResourceGroupName" --factory-name "DataFactoryName" --name "MyTrigger" 
+    ```
+
+5. Vergewissern Sie sich mithilfe des Befehls [az datafactory trigger show](/cli/azure/datafactory/trigger#az_datafactory_trigger_show), dass der Status des Triggers **Gestartet** lautet:
+
+    ```azurecli
+    az datafactory trigger show --resource-group "ResourceGroupName" --factory-name "DataFactoryName" --name "MyTrigger" 
+    ```
+
+6. Rufen Sie die Triggerausführungen in der Azure-Befehlszeilenschnittstelle mit dem Befehl [az datafactory trigger-run query-by-factory](/cli/azure/datafactory/trigger-run#az_datafactory_trigger_run_query_by_factory) ab. Führen Sie in regelmäßigen Abständen den folgenden Befehl aus, um die Informationen zu den Triggerausführungen abzurufen. Aktualisieren Sie die Werte **last-updated-after** und **last-updated-before**, damit sie den Werten in Ihrer Triggerdefinition entsprechen:
+
+    ```azurecli
+    az datafactory trigger-run query-by-factory --resource-group "ResourceGroupName" --factory-name "DataFactoryName" --filters operand="TriggerName" operator="Equals" values="MyTrigger" --last-updated-after "2017-12-08T00:00:00Z" --last-updated-before "2017-12-08T01:00:00Z"
+    ```
+---
 
 Informationen zum Überwachen von Trigger- bzw. Pipelineausführungen im Azure-Portal finden Sie unter [Überwachen der Pipelineausführungen](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline).
 

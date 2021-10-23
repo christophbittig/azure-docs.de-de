@@ -3,18 +3,18 @@ title: Erste Schritte mit Azure Cost Management für Partner
 description: In diesem Artikel wird erläutert, wie Partner Cost Management-Features verwenden und den Zugriff für ihre Kunden aktivieren.
 author: bandersmsft
 ms.author: banders
-ms.date: 10/07/2021
+ms.date: 10/13/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: d402acaf43682a7c025147fd38bccb9baa033683
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 747dc5829315091d6a42fbf6c0749af104c5e1ac
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129705988"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129984062"
 ---
 # <a name="get-started-with-cost-management-for-partners"></a>Erste Schritte mit Cost Management für Partner
 
@@ -211,6 +211,7 @@ Die folgenden Datenfelder befinden sich im Nutzungsdetaildateien und Cost Manage
 | Abonnement-ID | Der eindeutige von Microsoft generierte Bezeichner für das Azure-Abonnement. | EntitlementID |
 | subscriptionName | Der Name des Azure-Abonnements. | – |
 | Begriff | Zeigt den Zeitraum für die Gültigkeit des Angebots an. Für reservierte Instanzen werden beispielsweise 12 Monate eines Jahreszeitraums der reservierten Instanz angezeigt. Bei einmaligen oder wiederkehrenden Käufen für SaaS, Azure Marketplace und Support zeigt der Zeitraum einen Monat an. Dies gilt nicht für die Azure-Nutzung. | – |
+| Provider | Bezeichner für Produkt und Branche. Die Kosten werden nach Anbietertyp unterteilt: Azure, Microsoft 365, Dynamics 365, AWS und so weiter.  | – |
 | publisherType (firstParty, thirdPartyReseller, thirdPartyAgency) | Der Herausgebertyp, der den Herausgeber als Erstanbieter, Drittanbieter-Handelspartner oder Drittanbieter-Agentur identifiziert. | – |
 | partNumber | Teilenummer für nicht genutzte reservierte Instanzen und Azure Marketplace-Dienste. | – |
 | publisherName | Name des Herausgebers des Diensts – Microsoft oder anderer Herausgeber. | Der Name des Herausgebers des Produkts.|

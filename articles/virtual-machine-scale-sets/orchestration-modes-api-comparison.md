@@ -8,21 +8,16 @@ ms.service: virtual-machine-scale-sets
 ms.date: 08/05/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli, vmss-flex
-ms.openlocfilehash: 9fd4d2171aa54da469aacfaa7090025c296dd0c1
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: db141f863389d724cc1437beeed3b00b44020098
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124804076"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130161841"
 ---
-# <a name="preview-orchestration-modes-api-comparison"></a>Preview: Vergleich der Orchestrierungsmodi-API 
+# <a name="orchestration-modes-api-comparison"></a>Vergleich der Orchestrierungsmodi-API 
 
 In diesem Artikel werden die API-Unterschiede zwischen dem einheitlichen und [dem flexiblen Orchestrierungsmodus](..\virtual-machines\flexible-virtual-machine-scale-sets.md) für Skalierungsgruppen für VMs verglichen. Weitere Informationen zu einheitlichen und flexiblen Skalierungsgruppen für VMs finden Sie unter [Orchestrierungsmodi](virtual-machine-scale-sets-orchestration-modes.md).
-
-> [!IMPORTANT]
-> Das Feature für VM-Skalierungsgruppen im Orchestrierungsmodus „Flexibel“ befindet sich derzeit in der öffentlichen Vorschauphase. Es ist ein Opt-in-Verfahren erforderlich, um die unten beschriebenen Funktionen der öffentlichen Vorschauversion zu nutzen.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 
 ## <a name="instance-view"></a>Instanzansicht
@@ -66,7 +61,7 @@ Aufrufen der API für einen einzelnen VM:
 
 ### <a name="uniform-api"></a>Einheitliche API
 `VMSS List Instances`: 
-- Gibt die Skalierungssatz-ID zurück, die jeder Instanz während dieser Preview zugeordnet ist 
+- Gibt die Skalierungsgruppen-ID zurück, die jeder Instanz zugeordnet ist.
 
 ### <a name="flexible-alternative"></a>Flexible Alternative
 Azure Resource Graph: 
@@ -95,6 +90,8 @@ resources
 ### <a name="flexible-alternative"></a>Flexible Alternative
 Aufrufen von Vorgängen auf einzelnen VMs.
 
+Vorgänge für virtuelle Computer:
+- [Reimaging durchführen](/rest/api/compute/virtual-machines/reimage): Einzelne VM-API aufrufen – Reimaging durchführen nur auf kurzlebigen Betriebssystem-VMs
 
 ## <a name="vm-extension"></a>VM-Erweiterung
 
