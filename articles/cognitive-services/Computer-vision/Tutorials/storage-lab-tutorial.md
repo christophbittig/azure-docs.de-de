@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 07/06/2021
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f97f01ecb1b11af6ca4292c8b2bfd3ebdb50e943
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 12734d32322fe6cdc0fcaa48486d76d9d7bddd70
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129360254"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130047680"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>Tutorial: Verwenden von „Maschinelles Sehen“ zum Generieren von Bildmetadaten in Azure Storage
 
@@ -419,7 +419,7 @@ Als Nächstes fügen Sie den Code hinzu, der den Dienst „Maschinelles Sehen“
 1. Fahren Sie dann mit der **Upload**-Methode fort. Hierbei werden Bilder konvertiert und in den Blobspeicher hochgeladen. Fügen Sie den folgenden Code direkt nach dem Block hinzu, der mit `// Generate a thumbnail` beginnt (oder am Ende Ihres Prozesses für die Erstellung von Bildblobs). In diesem Code wird für das Blob, in dem das Bild (`photo`) enthalten ist, Maschinelles Sehen verwendet, um eine Beschreibung für das Bild zu generieren. Mit der Maschinelles Sehen-API wird auch eine Liste mit Schlüsselwörtern generiert, die auf das Bild angewendet werden. Die generierte Beschreibung und die Schlüsselwörter werden in den Metadaten des Blobs gespeichert, damit sie später abgerufen werden können.
 
     ```csharp
-    // Submit the image to Azure's Computer Vision API
+    // Submit the image to the Azure Computer Vision API
     ComputerVisionClient vision = new ComputerVisionClient(
         new ApiKeyServiceClientCredentials(ConfigurationManager.AppSettings["SubscriptionKey"]),
         new System.Net.Http.DelegatingHandler[] { });

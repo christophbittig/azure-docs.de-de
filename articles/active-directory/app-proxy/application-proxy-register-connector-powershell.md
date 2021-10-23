@@ -3,20 +3,20 @@ title: Automatische Installation des Azure Active Directory-Anwendungsproxyconne
 description: Hier wird erläutert, wie Sie eine unbeaufsichtigte Installation des Azure Active Directory-Anwendungsproxyconnectors durchführen, um sicheren Remotezugriff auf Ihre lokalen Apps zu gewähren.
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-proxy
 ms.workload: identity
 ms.topic: how-to
 ms.date: 04/27/2021
 ms.author: kenwith
-ms.reviewer: japere
-ms.openlocfilehash: 2176ab26efc49f46c81c5d99bd53bc37b0adf433
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.reviewer: ashishj
+ms.openlocfilehash: 657588c9f74bd2a7b4da8acb73c4dc40aa987baf
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108186266"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129988922"
 ---
 # <a name="create-an-unattended-installation-script-for-the-azure-active-directory-application-proxy-connector"></a>Erstellen eines Skripts für die unbeaufsichtigte Installation des Azure Active Directory-Anwendungsproxyconnectors
 

@@ -12,22 +12,19 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/27/2021
+ms.date: 10/14/2021
 ms.author: b-juche
 ms.custom: references_regions
-ms.openlocfilehash: f97e4ec774dc9ed703a41cdd75fb88747fb627e5
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: c8cef623e26882443379fff73edcc1999463ec3e
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129090911"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130045766"
 ---
 # <a name="cross-region-replication-of-azure-netapp-files-volumes"></a>Regionsübergreifende Replikation von Azure NetApp Files-Volumes
 
 Die Replikationsfunktion für Azure NetApp Files bietet Datenschutz durch regionsübergreifende Volumereplikation. Sie können Daten asynchron aus einem Azure NetApp Files-Volume (Quelle) in einer Region in ein anderes Azure NetApp Files-Volume (Ziel) in einer anderen Region replizieren.  Diese Funktion ermöglicht es Ihnen, bei einem regionsweiten Ausfall oder Notfall ein Failover für Ihre kritische Anwendung durchzusetzen.
-
-> [!IMPORTANT]
-> Das Feature für die regionsübergreifende Replikation befindet sich derzeit in der Vorschauphase. Sie müssen eine Wartelistenanforderung für den Zugriff auf das Feature über die [Seite für Wartelistenanforderungen für die regionsübergreifende Replikation von Azure NetApp Files-Volumes](https://aka.ms/anfcrrpreviewsignup) übermitteln. Warten Sie auf eine offizielle Bestätigungs-E-Mail des Azure NetApp Files-Teams, bevor Sie das Feature für die regionsübergreifende Replikation verwenden.
 
 ## <a name="supported-cross-region-replication-pairs"></a><a name="supported-region-pairs"></a>Unterstützte regionsübergreifende Replikationspaare
 
@@ -133,7 +130,7 @@ Die reguläre Gebühr für die Azure NetApp Files-Speicherkapazität für Monat 
 * [Erstellen der Volumereplikation](cross-region-replication-create-peering.md)
 * [Anzeigen des Integritätsstatus der Replikationsbeziehung](cross-region-replication-display-health-status.md)
 * [Verwalten der Notfallwiederherstellung](cross-region-replication-manage-disaster-recovery.md)
-* [Ändern der Größe eines Volumes](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-a-cross-region-replication-destination-volume)
+* [Ändern der Größe eines regionsübergreifenden Replikationszielvolumes](azure-netapp-files-resize-capacity-pools-or-volumes.md#resize-a-cross-region-replication-destination-volume)
 * [Metriken für die Volumereplikation](azure-netapp-files-metrics.md#replication)
 * [Löschen von Volumereplikationen oder Volumes](cross-region-replication-delete.md)
 * [Problembehandlung für die regionsübergreifende Replikation](troubleshoot-cross-region-replication.md)

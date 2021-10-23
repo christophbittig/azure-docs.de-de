@@ -3,7 +3,7 @@ title: Verwenden von Azure Storage für die Sicherung und Wiederherstellung von 
 description: Erfahren Sie, wie Sie SQL Server in Azure Storage sichern. Erläutert die Vorteile der Sicherung von SQL-Datenbanken in Azure Storage.
 services: virtual-machines-windows
 documentationcenter: ''
-author: MashaMSFT
+author: rajeshsetlem
 tags: azure-service-management
 ms.assetid: 0db7667d-ef63-4e2b-bd4d-574802090f8b
 ms.service: virtual-machines-sql
@@ -12,13 +12,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/31/2017
-ms.author: mathoma
-ms.openlocfilehash: 52e9ba6dcf0a8f6f987206cac2881ada098a8bcc
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.author: rsetlem
+ms.reviewer: mathoma
+ms.openlocfilehash: 4fa127876f966dc3471ded97dba5e13abbf8da56
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122635184"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130166042"
 ---
 # <a name="use-azure-storage-for-sql-server-backup-and-restore"></a>Verwenden von Azure Storage für die Sicherung und Wiederherstellung von SQL Server
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]

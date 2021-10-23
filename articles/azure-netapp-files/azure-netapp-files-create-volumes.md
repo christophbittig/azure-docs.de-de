@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/06/2021
+ms.date: 10/04/2021
 ms.author: b-juche
-ms.openlocfilehash: e9d3f2443d73f75e96e0036d5c546d00238a58d8
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: d1aafd863e35d8cb19f529928c22645496fff671
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128614370"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129536257"
 ---
 # <a name="create-an-nfs-volume-for-azure-netapp-files"></a>Erstellen eines NFS-Volumes für Azure NetApp Files
 
@@ -29,7 +29,7 @@ In diesem Artikel wird veranschaulicht, wie Sie ein NFS-Volume erstellen. Inform
 
 ## <a name="before-you-begin"></a>Voraussetzungen 
 * Sie müssen bereits einen Kapazitätspool eingerichtet haben.  
-    Siehe [Einrichten eines Kapazitätspools](azure-netapp-files-set-up-capacity-pool.md).   
+    Informationen dazu finden Sie unter [Einrichten eines Kapazitätspools](azure-netapp-files-set-up-capacity-pool.md).   
 * Ein Subnetz muss an Azure NetApp Files delegiert werden.  
     Siehe [Delegieren eines Subnetzes an Azure NetApp Files](azure-netapp-files-delegate-subnet.md).
 
@@ -93,6 +93,9 @@ In diesem Artikel wird veranschaulicht, wie Sie ein NFS-Volume erstellen. Inform
         ![Erstellen eines Volumes](../media/azure-netapp-files/azure-netapp-files-new-volume.png)
     
         ![Erstellen eines Subnetzes](../media/azure-netapp-files/azure-netapp-files-create-subnet.png)
+
+    * **Netzwerkfunktionen**  
+        In unterstützten Regionen können Sie angeben, ob Sie für das Volume **Basic**- oder **Standard**-Netzwerkfeatures verwenden möchten. Ausführlichere Informationen finden Sie unter [Konfigurieren von Netzwerkfeatures für ein Volume](configure-network-features.md) und [Richtlinien für die Azure NetApp Files-Netzwerkplanung](azure-netapp-files-network-topologies.md).
 
     * Wenn Sie eine vorhandene Momentaufnahmerichtlinie auf das Volume anwenden möchten, klicken Sie auf **Abschnitt „Erweitert“ anzeigen**, um den Bereich zu erweitern, geben Sie an, ob Sie den Momentaufnahmepfad ausblenden möchten, und wählen Sie im Pulldownmenü eine Momentaufnahmerichtlinie aus. 
 

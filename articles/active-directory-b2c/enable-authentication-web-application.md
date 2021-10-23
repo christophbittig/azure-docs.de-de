@@ -2,21 +2,21 @@
 title: Aktivieren der Authentifizierung in einer Web-App mit den Bausteinen von Azure Active Directory B2C
 description: In diesem Artikel wird erörtert, wie Sie die Bausteine von Azure Active Directory B2C für die Anmeldung und Registrierung von Benutzern in einer ASP.NET-Web-App verwenden.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 06/11/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: 8cb836752ff75a32465d5c8df0e88210c323fb26
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 66b37e5464d548559b8d4e08922f1970e0c8bb7f
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124740101"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130040814"
 ---
 # <a name="enable-authentication-in-your-own-web-app-by-using-azure-ad-b2c"></a>Aktivieren der Authentifizierung in Ihrer eigenen Web-App mit Azure AD B2C
 

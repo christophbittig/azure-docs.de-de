@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erstellen eines Blobs mit PowerShell'
+title: 'Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs – Azure PowerShell'
 titleSuffix: Azure Storage
 description: In dieser Schnellstartanleitung verwenden Sie Azure PowerShell im Objektspeicher (Blobspeicher). Anschließend verwenden Sie PowerShell, um ein Blob in Azure Storage hochzuladen, ein Blob herunterzuladen und die Blobs in einem Container aufzulisten.
 services: storage
@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 03/31/2020
 ms.author: tamram
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 56919745c893a8ba05538c8b1e342b4bbdd0e6fc
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 9060660328367d08d849c7a72ca0e69b68a0c20a
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128662557"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129616529"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-powershell"></a>Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit PowerShell
 

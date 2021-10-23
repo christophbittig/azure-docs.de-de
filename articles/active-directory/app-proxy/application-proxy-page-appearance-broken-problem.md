@@ -3,7 +3,7 @@ title: App-Seite für eine Anwendungsproxy-App wird nicht ordnungsgemäß angeze
 description: Hilfestellung beim Beheben von Problemen mit der Anzeige der Seite für eine in Azure Active Directory integrierte Anwendungsproxyanwendung
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-proxy
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 04/27/2021
 ms.author: kenwith
 ms.reviewer: asteen
-ms.openlocfilehash: 96a6ddfe6bd6bd8cd742c5a005cb67126c9d7f5e
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: 0467d156b7bfe252317f866991a8c8763c61963f
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108186281"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129989036"
 ---
 # <a name="application-page-does-not-display-correctly-for-an-application-proxy-application"></a>Anwendungsseite für eine Anwendungsproxyanwendung nicht richtig angezeigt
 

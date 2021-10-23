@@ -6,13 +6,13 @@ author: markheff
 ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/02/2021
-ms.openlocfilehash: 7dd06e48d6d610b99f6c52affcd1d6101e04c9ba
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.date: 10/01/2021
+ms.openlocfilehash: 139fa020459804571129d63819a0e82e3f1737e2
+ms.sourcegitcommit: 079426f4980fadae9f320977533b5be5c23ee426
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122356405"
+ms.lasthandoff: 10/04/2021
+ms.locfileid: "129418649"
 ---
 # <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity"></a>Einrichten einer Verbindung mit einem Azure Storage-Konto mithilfe einer verwalteten Identität
 
@@ -20,7 +20,8 @@ Auf dieser Seite wird beschrieben, wie Sie eine Indexerverbindung mit einer Azur
 
 Sie können eine systemseitig zugewiesene verwaltete Identität oder eine benutzerseitig zugewiesene verwaltete Identität (Vorschau) verwenden.
 
-Bevor Sie mehr über diese Funktion erfahren, sollten Sie wissen, was ein Indexer ist, und wie Sie einen Indexer für Ihre Datenquelle einrichten. Weitere Informationen finden Sie unter den folgenden Links:
+In diesem Artikel wird davon ausgegangen, dass Sie mit den Konzepten und der Konfiguration von Indexern vertraut sind. Wenn Sie noch nicht mit Indexern gearbeitet haben, beginnen Sie mit den folgenden Links:
+
 * [Indexer (Übersicht)](search-indexer-overview.md)
 * [Azure-Blobindexer](search-howto-indexing-azure-blob-storage.md)
 * [Azure Data Lake Storage Gen2-Indexer](search-howto-index-azure-data-lake-storage.md)
@@ -28,7 +29,9 @@ Bevor Sie mehr über diese Funktion erfahren, sollten Sie wissen, was ein Indexe
 
 ## <a name="1---set-up-a-managed-identity"></a>1: Einrichten einer verwalteten Identität
 
-Richten Sie die [verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md) mit einer der folgenden Optionen ein.
+Richten Sie die [verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md) für einen Azure Cognitive Search-Dienst mit einer der folgenden Optionen ein. 
+
+Der Suchdienst muss Basic-Stufe oder höher sein.
 
 ### <a name="option-1---turn-on-system-assigned-managed-identity"></a>Option 1: Aktivieren einer systemseitig zugewiesenen verwalteten Identität
 
@@ -39,26 +42,32 @@ Wenn eine systemseitig zugewiesene verwaltete Identität aktiviert ist, wird in 
 Nach dem Auswählen von **Speichern** wird eine Objekt-ID angezeigt, die dem Suchdienst zugewiesen wurde.
 
 ![Objekt-ID](./media/search-managed-identities/system-assigned-identity-object-id.png "ObjectID")
- 
+
 ### <a name="option-2---assign-a-user-assigned-managed-identity-to-the-search-service-preview"></a>Option 2: Zuweisen einer benutzerseitig zugewiesenen verwalteten Identität zum Suchdienst (Vorschau)
 
 Wenn Sie noch keine benutzerseitig zugewiesene verwaltete Identität erstellt haben, müssen Sie sie erstellen. Eine benutzerseitig verwaltete Identität ist eine Azure-Ressource.
 
 1. Melden Sie sich im [Azure-Portal](https://portal.azure.com/) an.
+
 1. Wählen Sie **+ Ressource erstellen**.
+
 1. Suchen Sie in der Suchleiste „Dienste und Marketplace durchsuchen“ nach „Benutzerseitig zugewiesene verwaltete Identität“, und wählen Sie dann **Erstellen** aus.
+
 1. Geben Sie einen beschreibenden Namen für die Identität ein.
 
 Weisen Sie dann dem Suchdienst eine benutzerseitig zugewiesene verwaltete Identität zu. Dies kann mithilfe der [Verwaltungs-API 2021-04-01-preview](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update) erfolgen.
 
 Die Identitätseigenschaft verwendet einen Typ und mindestens eine vollqualifizierte vom Benutzer zugewiesene Identität:
 
-* **type** ist der Typ der Identität. Gültige Werte sind „SystemAssigned“, „UserAssigned“ oder „SystemAssigned, UserAssigned“, wenn Sie beides verwenden möchten. Der Wert „None“ löscht alle zuvor zugewiesenen Identitäten aus dem Suchdienst.
-* **userAssignedIdentities** enthält die Details der benutzerseitig zugewiesenen verwalteten Identität.
-    * Format der benutzerseitig zugewiesenen verwalteten Identität: 
-        * /subscriptions/**Abonnement-ID**/resourcegroups/**Name der Ressourcengruppe**/providers/Microsoft.ManagedIdentity/userAssignedIdentities/**Name der verwalteten Identität**
+* **type** ist der Typ der Identität. Gültige Werte sind „SystemAssigned“, „UserAssigned“ oder „SystemAssigned, UserAssigned“ für beide. Der Wert „None“ löscht alle zuvor zugewiesenen Identitäten aus dem Suchdienst.
 
-Beispiel für das Zuweisen einer benutzerseitig zugewiesenen verwalteten Identität zu einem Suchdienst:
+* **userAssignedIdentities** enthält die Details der benutzerseitig zugewiesenen verwalteten Identität. Das Format lautet:
+
+  ```bash
+    /subscriptions/<your-subscription-ID>/resourcegroups/<your-resource-group-name>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<your-managed-identity-name>
+  ```
+
+Beispiel für eine Zuweisung einer benutzerseitig zugewiesenen verwalteten Identität:
 
 ```http
 PUT https://management.azure.com/subscriptions/[subscription ID]/resourceGroups/[resource group name]/providers/Microsoft.Search/searchServices/[search service name]?api-version=2021-04-01-preview
@@ -88,17 +97,22 @@ Content-Type: application/json
 In diesem Schritt erteilen Sie entweder dem Azure Cognitive Search-Dienst oder der benutzerseitig zugewiesenen verwalteten Identität die Berechtigung, Daten aus Ihrem Speicherkonto zu lesen.
 
 1. Navigieren Sie im Azure-Portal zu dem Speicherkonto, in dem die Daten gespeichert werden, die indiziert werden sollen.
+
 2. Wählen Sie **Zugriffssteuerung (IAM)** aus.
+
 3. Klicken Sie auf **Hinzufügen** und dann auf **Rollenzuweisung hinzufügen**.
 
     ![Hinzufügen der Rollenzuweisung](./media/search-managed-identities/add-role-assignment-storage.png "Rollenzuweisung hinzufügen")
 
 4. Wählen Sie die entsprechenden Rollen je nach Speicherkontotyp aus, den Sie indizieren möchten:
-    1. Bei Azure Blob Storage müssen Sie Ihren Suchdienst der Rolle **Storage-Blobdatenleser** hinzufügen.
-    1. Azure Data Lake Storage Gen2 erfordert, dass Sie Ihren Suchdienst zur Rolle **Storage-Blobdatenleser** hinzufügen.
-    1. Bei Azure Table Storage müssen Sie Ihren Suchdienst der Rolle **Lese- und Datenzugriff** hinzufügen.
-5.  Behalten Sie unter **Zugriff zuweisen zu** die Option **Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal** bei.
-6.  Wenn Sie eine systemseitig zugewiesene verwaltete Identität verwenden, suchen Sie nach Ihrem Suchdienst, und wählen Sie ihn aus. Wenn Sie eine benutzerseitig zugewiesene verwaltete Identität verwenden, suchen Sie nach dem Namen der benutzerseitig zugewiesenen verwalteten Identität, und wählen Sie sie aus. Wählen Sie **Speichern** aus.
+
+    * Bei Azure Blob Storage müssen Sie Ihren Suchdienst der Rolle **Storage-Blobdatenleser** hinzufügen.
+    * Azure Data Lake Storage Gen2 erfordert, dass Sie Ihren Suchdienst zur Rolle **Storage-Blobdatenleser** hinzufügen.
+    * Bei Azure Table Storage müssen Sie Ihren Suchdienst der Rolle **Lese- und Datenzugriff** hinzufügen.
+
+5. Behalten Sie unter **Zugriff zuweisen zu** die Option **Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal** bei.
+
+6. Wenn Sie eine systemseitig zugewiesene verwaltete Identität verwenden, suchen Sie nach Ihrem Suchdienst, und wählen Sie ihn aus. Wenn Sie eine benutzerseitig zugewiesene verwaltete Identität verwenden, suchen Sie nach dem Namen der benutzerseitig zugewiesenen verwalteten Identität, und wählen Sie sie aus. Wählen Sie **Speichern** aus.
 
     Beispiel für Azure Blob Storage und Azure Data Lake Storage Gen2 unter Verwendung einer vom System zugewiesenen verwalteten Identität:
 
@@ -107,6 +121,8 @@ In diesem Schritt erteilen Sie entweder dem Azure Cognitive Search-Dienst oder d
     Beispiel für Azure Table Storage unter Verwendung einer vom System zugewiesenen verwalteten Identität:
 
     ![Hinzufügen der Rollenzuweisung „Lese- und Datenzugriff“](./media/search-managed-identities/add-role-assignment-reader-and-data-access.png "Hinzufügen der Rollenzuweisung „Lese- und Datenzugriff“")
+
+Codebeispiele in C# finden Sie unter [Index Data Lake Gen2 using Azure AD](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/data-lake-gen2-acl-indexing/README.md) auf GitHub.
 
 ## <a name="3---create-the-data-source"></a>3\. Erstellen der Datenquelle
 
@@ -241,14 +257,13 @@ Weitere Informationen zur API zum Erstellen eines Indexers finden Sie unter [Ers
 
 Weitere Informationen zum Definieren von Indexerzeitplänen finden Sie unter [Festlegen eines Zeitplans für Indexer in der kognitiven Azure-Suche](search-howto-schedule-indexers.md).
 
-## <a name="accessing-secure-data-in-storage-accounts"></a>Zugreifen auf sichere Daten in Speicherkonten
+## <a name="accessing-network-secured-data-in-storage-accounts"></a>Zugreifen auf im Netzwerk gesicherte Daten in Speicherkonten
 
 Azure-Speicherkonten können mithilfe von Firewalls und virtuellen Netzwerken weiter geschützt werden. Wenn Sie Inhalte aus einem Blobspeicherkonto oder Data Lake Gen2-Speicherkonto indizieren möchten, das mit einer Firewall oder einem virtuellen Netzwerk geschützt wird, befolgen Sie die Anweisungen unter [Sicheres Zugreifen auf Daten in Speicherkonten über eine Ausnahme für einen vertrauenswürdigen Dienst](search-indexer-howto-access-trusted-service-exception.md).
 
 ## <a name="see-also"></a>Weitere Informationen
 
-Weitere Informationen zu Azure Storage-Indexern:
-
 * [Azure-Blobindexer](search-howto-indexing-azure-blob-storage.md)
 * [Azure Data Lake Storage Gen2-Indexer](search-howto-index-azure-data-lake-storage.md)
 * [Azure-Tabellenindexer](search-howto-indexing-azure-tables.md)
+* [C#-Beispiel: Index Data Lake Gen2 using Azure AD (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/data-lake-gen2-acl-indexing/README.md)

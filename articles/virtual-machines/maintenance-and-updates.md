@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 10/06/2021
 ms.author: shants
-ms.openlocfilehash: cb1a4cc1e0c1539ab56b986a35084fa761d85438
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.openlocfilehash: fdeffdd1b3ad6c37773d39e729cf821df1b8c1f8
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129657528"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130164898"
 ---
 # <a name="maintenance-for-virtual-machines-in-azure"></a>Wartung für VMs in Azure
 
@@ -86,16 +86,6 @@ Wenn Sie bis zur Phase für die geplante Wartung warten möchten, sollten Sie ei
 
 Jede Azure-Region ist mit einer anderen Region innerhalb desselben geografischen Gebiets gekoppelt. Zusammen bilden sie ein Regionspaar. Während der Phase der geplanten Wartung aktualisiert Azure nur die virtuellen Computer in einer einzelnen Region eines Regionspaars. Wenn z.B. die VMs in der Region „USA, Norden-Mitte“ aktualisiert werden, aktualisiert Azure nicht gleichzeitig die VMs in der Region „USA, Süden-Mitte“. Andere Regionen wie Nordeuropa können jedoch gleichzeitig mit USA (Ost) gewartet werden. Sie sollten mit der Funktionsweise von Regionspaaren vertraut sein, um Ihre virtuellen Computer besser auf Regionen verteilen zu können. Weitere Informationen finden Sie unter [Geschäftskontinuität und Notfallwiederherstellung: Azure-Regionspaare](../best-practices-availability-paired-regions.md).
 
-#### <a name="availability-sets-and-scale-sets"></a>Verfügbarkeitsgruppen und Skalierungsgruppen
-
-Wenn Sie eine Workload auf virtuellen Azure-Computern bereitstellen, können Sie die virtuellen Computer in einer *Verfügbarkeitsgruppe* erstellen, um die Hochverfügbarkeit der Anwendung zu erreichen. Mit Verfügbarkeitsgruppen können Sie sicherstellen, dass während eines Ausfalls oder Wartungsereignissen, die einen Neustart erfordern, mindestens ein virtueller Computer verfügbar ist.
-
-Innerhalb einer Verfügbarkeitsgruppe werden einzelne VMs auf bis zu 20 Updatedomänen verteilt. Während einer geplanten Wartung wird zu einem gegebenen Zeitpunkt immer nur jeweils eine Updatedomäne aktualisiert. Updatedomänen werden nicht unbedingt in ihrer Reihenfolge aktualisiert. 
-
-VM-*Skalierungsgruppen* sind eine Azure-Computeressource, mit der Sie eine Gruppe identischer virtueller Computer als Einzelressource bereitstellen und verwalten können. Die Skalierungsgruppe wird automatisch Updatedomänen übergreifend bereitgestellt – genau wie virtuelle Computer in einer Verfügbarkeitsgruppe. Genau wie bei Verfügbarkeitsgruppen wird auch bei Skalierungsgruppen während einer geplanten Wartung immer nur jeweils eine UD aktualisiert.
-
-Weitere Informationen zur Einrichtung Ihrer VMs, Hochverfügbarkeit zu erreichen, finden Sie unter [Verfügbarkeitsoptionen für virtuelle Computer in Azure](./availability.md) bzw. im entsprechenden Artikel für [Linux](./availability.md).
-
 #### <a name="availability-zones"></a>Verfügbarkeitszonen
 
 Verfügbarkeitszonen sind eindeutige physische Standorte in einer Azure-Region. Jede Zone besteht aus mindestens einem Rechenzentrum, dessen Stromversorgung, Kühlung und Netzwerkbetrieb unabhängig funktionieren. Zur Gewährleistung der Resilienz sind in allen aktivierten Regionen mindestens drei separate Zonen vorhanden. 
@@ -103,6 +93,22 @@ Verfügbarkeitszonen sind eindeutige physische Standorte in einer Azure-Region. 
 Eine Verfügbarkeitszone ist eine Kombination aus einer Fehlerdomäne und einer Updatedomäne. Wenn Sie drei oder mehr virtuelle Computer über drei Zonen verteilt in einer Azure-Region erstellen, werden Ihre virtuellen Computer effektiv auf drei Fehlerdomänen und drei Updatedomänen verteilt. Die Azure-Plattform erkennt diese Updatedomänen übergreifende Verteilung, um sicherzustellen, dass virtuelle Computer in unterschiedlichen Zonen nicht gleichzeitig aktualisiert werden.
 
 Jedes Infrastrukturupdate wird innerhalb einer einzelnen Region zonenweise ausgeführt. Sie können jedoch die Bereitstellung in Zone 1 und eine andere Bereitstellung in Zone 2 gleichzeitig ausführen. Bereitstellungen werden nicht alle serialisiert. Eine einzelne Bereitstellung wird jedoch nur für jeweils eine Zone auf einmal ausgeführt, um Risiken zu verringern.
+
+#### <a name="virtual-machine-scale-sets"></a>VM-Skalierungsgruppen
+
+VM-Skalierungsgruppen im Orchestrierungsmodus **Flexibel** sind eine Azure Compute-Ressource und ermöglichen Ihnen das Kombinieren der Skalierbarkeit von VM-Skalierungsgruppen im Orchestrierungsmodus „Uniform“ (einheitlich) mit den regionalen Verfügbarkeitsgarantien von Verfügbarkeitsgruppen.
+
+Bei der flexiblen Orchestrierung können Sie auswählen, ob Ihre Instanzen auf mehrere Zonen oder auf Fehlerdomänen innerhalb einer einzelnen Region verteilt werden. 
+
+#### <a name="availability-sets-and-uniform-scale-sets"></a>Verfügbarkeitsgruppen und einheitliche (Uniform) Skalierungsgruppen
+
+Wenn Sie eine Workload auf virtuellen Azure-Computern bereitstellen, können Sie die virtuellen Computer in einer *Verfügbarkeitsgruppe* erstellen, um die Hochverfügbarkeit der Anwendung zu erreichen. Mit Verfügbarkeitsgruppen können Sie sicherstellen, dass während eines Ausfalls oder Wartungsereignissen, die einen Neustart erfordern, mindestens ein virtueller Computer verfügbar ist.
+
+Innerhalb einer Verfügbarkeitsgruppe werden einzelne VMs auf bis zu 20 Updatedomänen verteilt. Während einer geplanten Wartung wird zu einem gegebenen Zeitpunkt immer nur jeweils eine Updatedomäne aktualisiert. Updatedomänen werden nicht unbedingt in ihrer Reihenfolge aktualisiert. 
+
+VM-*Skalierungsgruppen* im Orchestrierungsmodus **Uniform** (einheitlich) sind eine Azure Compute-Ressource, mit der Sie eine Gruppe identischer virtueller Computer als Einzelressource bereitstellen und verwalten können. Die Skalierungsgruppe wird automatisch Updatedomänen übergreifend bereitgestellt – genau wie virtuelle Computer in einer Verfügbarkeitsgruppe. Genau wie bei Verfügbarkeitsgruppen wird auch bei einheitlichen (Uniform) Skalierungsgruppen während einer geplanten Wartung immer nur jeweils eine Updatedomäne (UD) aktualisiert.
+
+Weitere Informationen zur Einrichtung Ihrer VMs, Hochverfügbarkeit zu erreichen, finden Sie unter [Verfügbarkeitsoptionen für virtuelle Computer in Azure](./availability.md) bzw. im entsprechenden Artikel für [Linux](./availability.md).
 
 ## <a name="next-steps"></a>Nächste Schritte 
 

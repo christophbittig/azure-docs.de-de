@@ -1,14 +1,14 @@
 ---
 title: Verwalten des Agents für Azure Arc-fähige Server
 description: In diesem Artikel werden die verschiedenen Verwaltungsaufgaben beschrieben, die Sie typischerweise während des Lebenszyklus des Connected Machine-Agents für Azure Arc-fähige Server ausführen.
-ms.date: 08/17/2021
+ms.date: 10/14/2021
 ms.topic: conceptual
-ms.openlocfilehash: d8a8613a6fc97fd2510779715d392b9534598950
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: d0b4d32100a8063346d9a6f7bd2b4bd70156d868
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124807443"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130041175"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Verwalten des Connected Machine-Agent
 
@@ -125,13 +125,13 @@ Das aktuelle Agent-Paket können Sie über das [Microsoft-Paketrepository](https
 1. Führen Sie den folgenden Befehl aus, um den lokalen Paketindex mit den neuesten Änderungen in den Repositorys zu aktualisieren:
 
     ```bash
-    apt update
+    sudo apt update
     ```
 
 2. Führen Sie den folgenden Befehl aus, um Ihr System upzugraden:
 
     ```bash
-    apt upgrade
+    sudo apt upgrade azcmagent
     ```
 
 Aktionen des Befehls [apt](https://help.ubuntu.com/lts/serverguide/apt.html) wie Installation und Entfernung von Paketen werden in der `/var/log/dpkg.log`-Protokolldatei protokolliert.
@@ -141,13 +141,13 @@ Aktionen des Befehls [apt](https://help.ubuntu.com/lts/serverguide/apt.html) wie
 1. Führen Sie den folgenden Befehl aus, um den lokalen Paketindex mit den neuesten Änderungen in den Repositorys zu aktualisieren:
 
     ```bash
-    yum check-update
+    sudo yum check-update
     ```
 
 2. Führen Sie den folgenden Befehl aus, um Ihr System upzugraden:
 
     ```bash
-    yum update
+    sudo yum update azcmagent
     ```
 
 Aktionen des Befehls [yum](https://access.redhat.com/articles/yum-cheat-sheet) wie Installation und Entfernung von Paketen werden in der `/var/log/yum.log`-Protokolldatei protokolliert. 
@@ -157,13 +157,13 @@ Aktionen des Befehls [yum](https://access.redhat.com/articles/yum-cheat-sheet) w
 1. Führen Sie den folgenden Befehl aus, um den lokalen Paketindex mit den neuesten Änderungen in den Repositorys zu aktualisieren:
 
     ```bash
-    zypper refresh
+    sudo zypper refresh
     ```
 
 2. Führen Sie den folgenden Befehl aus, um Ihr System upzugraden:
 
     ```bash
-    zypper update
+    sudo zypper update azcmagent
     ```
 
 Aktionen des Befehls [zypper](https://en.opensuse.org/Portal:Zypper) wie Installation und Entfernung von Paketen werden in der `/var/log/zypper.log`-Protokolldatei protokolliert.

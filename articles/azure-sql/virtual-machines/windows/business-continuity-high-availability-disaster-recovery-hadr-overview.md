@@ -3,7 +3,7 @@ title: Hochverfügbarkeit, Notfallwiederherstellung, Geschäftskontinuität
 description: Erfahren Sie mehr über die Optionen für Hochverfügbarkeit, Notfallwiederherstellung und Geschäftskontinuität, die für SQL Server auf Azure-VMs verfügbar sind, etwa Always On-Verfügbarkeitsgruppen, Failoverclusterinstanzen, Datenbankspiegelung, Protokollversand sowie Sicherung und Wiederherstellen in Azure Storage.
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: rajeshsetlem
 editor: ''
 tags: azure-service-management
 ms.assetid: 53981f7e-8370-4979-b26a-93a5988d905f
@@ -13,13 +13,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2020
-ms.author: mathoma
-ms.openlocfilehash: a5fe3157d419b199f1e83f44485e507812c0b80c
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.author: rsetlem
+ms.reviewer: mathoma
+ms.openlocfilehash: f5dd02d8abf70d3812fe0d07baa8ddf08bdc8a7a
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113434817"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130166071"
 ---
 # <a name="business-continuity-and-hadr-for-sql-server-on-azure-virtual-machines"></a>Geschäftskontinuität und HADR für SQL Server in Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]

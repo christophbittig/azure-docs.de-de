@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 991306a115fdfe88f9646d1c65059bfe2699cb8d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: fe61b971dbe1a3a82a085228ff8723f3cf47df20
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128613391"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129638440"
 ---
 In diesem Dokument werden die Schritte beschrieben, die Sie ausführen müssen, um Benutzer aus Azure Active Directory (Azure AD) automatisch in einer SQL-Datenbank bereitzustellen und deren Bereitstellungen wieder aufzuheben.  Es wird erläutert, wie Sie den generischen SQL-Connector mit dem Azure AD-ECMA-Connectorhost einrichten und verwenden. 
  
@@ -32,6 +32,8 @@ Je nachdem, welche Optionen Sie auswählen, sind einige Bildschirme des Assisten
 * Oracle 10 und 11g
 * Oracle 12c und 18c
 * MySQL 5.x
+
+Hinweis: Für den generischen SQL-Connector muss bei Spaltennamen die Groß-/Kleinschreibung nicht beachtet werden. Bei MySQL muss die Groß-/Kleinschreibung unter Linux und bei Postgres plattformübergreifend beachtet werden. Daher werden diese Systeme derzeit nicht unterstützt. 
 
 ### <a name="cloud-requirements"></a>Cloudanforderungen
 
@@ -193,7 +195,7 @@ Der generische SQL-Connector ist eine DSN-Datei zum Herstellen einer Verbindung 
       - **DN:** In den meisten Fällen sollte die Option **Automatisch generiert** aktiviert werden. Falls sie deaktiviert ist, stellen Sie sicher, dass das DN-Attribut einem Attribut in Azure AD zugeordnet ist, das den DN in diesem Format speichert: CN = anchorValue, Object = objectType.  Weitere Informationen zu Ankern und dem DN finden Sie unter [Grundlegendes zu Ankerattributen und DNs (Distinguished Names)](../articles/active-directory/app-provisioning/on-premises-application-provisioning-architecture.md#about-anchor-attributes-and-distinguished-names).
      ![Screenshot: Seite „Objekttypen“](.\media\active-directory-app-provisioning-sql\conn-12.png)</br>
      
-     |Eigenschaft|Beschreibung|
+     |Eigenschaft|BESCHREIBUNG|
      |-----|-----|
      |Zielobjekt|Benutzer|
      |Anchor|ContosoLogin|

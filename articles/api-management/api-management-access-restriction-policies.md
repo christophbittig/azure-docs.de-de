@@ -8,12 +8,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 08/20/2021
 ms.author: danlep
-ms.openlocfilehash: 13c62c36eb532ab7073165e382f8b52772a99acc
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 32fa405a612026fc16257447cb2cc858101c729c
+ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128669168"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129536505"
 ---
 # <a name="api-management-access-restriction-policies"></a>API Management-Richtlinien für die Zugriffsbeschränkung
 
@@ -56,7 +56,7 @@ Verwenden Sie die `check-header`-Richtlinie, um zu erzwingen, dass eine Anforder
 
 ### <a name="elements"></a>Elemente
 
-| Name         | Beschreibung                                                                                                                                   | Erforderlich |
+| Name         | BESCHREIBUNG                                                                                                                                   | Erforderlich |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | check-header | Stammelement                                                                                                                                 | Ja      |
 | value        | Zulässiger HTTP-Headerwert. Wenn mehrere Wertelemente angegeben sind, wird die Überprüfung als erfolgreich gewertet, wenn für einen beliebigen dieser Werte eine Übereinstimmung vorhanden ist. | Nein       |
@@ -255,7 +255,7 @@ Im folgenden Beispiel lässt die Richtlinie nur Anfragen zu, die entweder von de
 
 ### <a name="elements"></a>Elemente
 
-| Name                                      | Beschreibung                                         | Erforderlich                                                       |
+| Name                                      | BESCHREIBUNG                                         | Erforderlich                                                       |
 | ----------------------------------------- | --------------------------------------------------- | -------------------------------------------------------------- |
 | ip-filter                                 | Stammelement                                       | Ja                                                            |
 | address                                   | Gibt eine einzelne IP-Adresse an, nach der gefiltert werden soll.   | Mindestens ein `address`- oder `address-range`-Element ist erforderlich. |
@@ -378,7 +378,7 @@ Im folgenden Beispiel wird das Kontingent anhand der IP-Adresse des Aufrufers be
 
 ### <a name="elements"></a>Elemente
 
-| Name  | Beschreibung   | Erforderlich |
+| Name  | BESCHREIBUNG   | Erforderlich |
 | ----- | ------------- | -------- |
 | quota | Stammelement | Ja      |
 
@@ -391,6 +391,9 @@ Im folgenden Beispiel wird das Kontingent anhand der IP-Adresse des Aufrufers be
 | counter-key         | Der Schlüssel, der für die Kontingentrichtlinie verwendet werden soll.                                                                      | Ja                                                              | –     |
 | increment-condition | Der boolesche Ausdruck, der angibt, ob die Anforderung für das Kontingent gezählt werden soll (`true`).             | Nein                                                               | –     |
 | renewal-period      | Der Zeitraum in Sekunden, nach dem das Kontingent zurückgesetzt wird. Wenn der Wert auf `0` festgelegt ist, wird der Zeitraum auf „Unendlich“ gesetzt.                                                   | Ja                                                              | –     |
+
+> [!NOTE]
+> Der `counter-key`-Attributwert muss für alle APIs im API Management eindeutig sein, wenn Sie den Gesamtwert nicht zwischen den anderen APIs teilen möchten.
 
 ### <a name="usage"></a>Verwendung
 
@@ -560,7 +563,7 @@ Dieses Beispiel zeigt die Verwendung der Richtlinie [JWT überprüfen](api-manag
 
 ### <a name="attributes"></a>Attributes
 
-| Name                            | Beschreibung                                                                                                                                                                                                                                                                                                                                                                                                                                            | Erforderlich                                                                         | Standard                                                                           |
+| Name                            | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                                                                                                                            | Erforderlich                                                                         | Standard                                                                           |
 | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
 | clock-skew                      | Zeitspanne. Verwenden Sie diese Option, um die maximal erwartete Zeitdifferenz zwischen den Systemuhren des Tokenausstellers und der API Management-Instanz anzugeben.                                                                                                                                                                                                                                                                                                               | Nein                                                                               | 0 Sekunden                                                                         |
 | failed-validation-error-message | Die Fehlermeldung, die im HTTP-Antworttext zurückgegeben werden soll, wenn das JWT die Überprüfung nicht besteht. In dieser Meldung müssen alle Sonderzeichen ordnungsgemäß mit Escapezeichen versehen sein.                                                                                                                                                                                                                                                                                                 | Nein                                                                               | Die Standardfehlermeldung hängt vom Überprüfungsproblem ab, z.B. „JWT nicht vorhanden“. |
@@ -650,21 +653,21 @@ Im folgenden Beispiel wird ein Clientzertifikat überprüft, um die Standardübe
 ### <a name="attributes"></a>Attributes
 
 | Name                            | BESCHREIBUNG      | Erforderlich |  Standard    |
-| ------------------------------- |   ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| ------------------------------- | -----------------| -------- | ----------- |
 | validate-revocation  | Boolesch. Gibt an, ob das Zertifikat anhand der Onlinesperrliste überprüft wird.  | Nein   | True  |
 | validate-trust | Boolesch. Gibt an, ob die Validierung fehlschlagen soll, falls die Kette nicht erfolgreich zu einer vertrauenswürdigen Zertifizierungsstelle konstruiert werden kann. | Nein | True |
-| validate-not-before | Boolesch. Überprüft den Wert anhand der aktuellen Zeit. | Nein | True | 
-| validate-not-after  | Boolesch. Überprüft den Wert anhand der aktuellen Zeit. | Nein | True| 
-| ignore-error  | Boolesch. Gibt an, ob die Richtlinie mit dem nächsten Handler fortfahren oder bei einer fehlgeschlagenen Überprüfung zu „Bei Fehler“ (on-error) springen soll. | Nr. | Falsch |  
-| Identität | Eine Zeichenfolge. Kombination aus Zertifikatanspruchswerten, durch die das Zertifikat gültig wird. | ja | – | 
+| validate-not-before | Boolesch. Überprüft den Wert anhand der aktuellen Zeit. | Nein | True |
+| validate-not-after  | Boolesch. Überprüft den Wert anhand der aktuellen Zeit. | Nein | True|
+| ignore-error  | Boolesch. Gibt an, ob die Richtlinie mit dem nächsten Handler fortfahren oder bei einer fehlgeschlagenen Überprüfung zu „Bei Fehler“ (on-error) springen soll. | nein | Falsch |
+| Identität | Eine Zeichenfolge. Kombination aus Zertifikatanspruchswerten, durch die das Zertifikat gültig wird. | ja | – |
 | thumbprint | Zertifikatfingerabdruck. | Nein | – |
 | serial-number | Seriennummer des Zertifikats. | Nein | – |
 | common-name | Allgemeiner Name des Zertifikats (Teil der Antragstellerzeichenfolge). | Nein | – |
 | subject | Antragstellerzeichenfolge. Muss das Format des Distinguished Name einhalten. | Nein | – |
-| dns-name | Wert des „dnsName“-Eintrags innerhalb des Anspruchs „Alternativer Antragstellername“ (Subject Alternative Name). | Nein | – | 
-| issuer-subject | Aussteller. Muss das Format des Distinguished Name einhalten. | Nein | – | 
-| issuer-thumbprint | Fingerabdruck des Ausstellers. | Nein | – | 
-| issuer-certificate-id | Bezeichner der vorhandenen Zertifikatentität, die den öffentlichen Schlüssel des Ausstellers darstellt. Schließt sich mit anderen Ausstellerattributen gegenseitig aus.  | Nein | – | 
+| dns-name | Wert des „dnsName“-Eintrags innerhalb des Anspruchs „Alternativer Antragstellername“ (Subject Alternative Name). | Nein | – |
+| issuer-subject | Antragsteller des Ausstellers. Muss das Format des Distinguished Name einhalten. | Nein | – |
+| issuer-thumbprint | Fingerabdruck des Ausstellers. | Nein | – |
+| issuer-certificate-id | Bezeichner der vorhandenen Zertifikatentität, die den öffentlichen Schlüssel des Ausstellers darstellt. Schließt sich mit anderen Ausstellerattributen gegenseitig aus.  | Nein | – |
 
 ### <a name="usage"></a>Verwendung
 

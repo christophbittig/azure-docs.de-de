@@ -3,7 +3,7 @@ title: Konfigurieren des Clusterquorums
 description: 'Hier erfahren Sie, wie Sie einen Datenträgerzeugen, Cloudzeugen oder Dateifreigabenzeugen als Quorum für einen Windows Server-Failovercluster auf SQL Server Azure-VMs konfigurieren. '
 services: virtual-machines
 documentationCenter: na
-author: cawrites
+author: rajeshsetlem
 editor: ''
 tags: azure-service-management
 ms.service: virtual-machines-sql
@@ -12,13 +12,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/01/2021
-ms.author: chadam
-ms.openlocfilehash: b1db3b5d809c8dd80b0d03d5bdd15636115fdef0
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.author: rsetlem
+ms.reviewer: mathoma
+ms.openlocfilehash: 575e8a5ab43e38b723bd0b2084709a1216b477fe
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112581941"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130163436"
 ---
 # <a name="configure-cluster-quorum-for-sql-server-on-azure-vms"></a>Konfigurieren des Clusterquorums für SQL Server auf Azure-VMs
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]

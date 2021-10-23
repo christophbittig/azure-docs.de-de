@@ -1,17 +1,17 @@
 ---
 title: Benutzerdefinierte Metriken in Azure Monitor (Vorschau)
 description: Hier erfahren Sie mehr über benutzerdefinierte Metriken in Azure Monitor und wie sie modelliert werden.
-author: anirudhcavale
-ms.author: ancav
+author: rboucher
+ms.author: robb
 services: azure-monitor
 ms.topic: conceptual
 ms.date: 06/01/2021
-ms.openlocfilehash: a63c690f8b742638b73b5624971f5351ed8c6a2f
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: 770a308fe293140b4d9c56b51c931e426aa1ac81
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129455055"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130063011"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Benutzerdefinierte Metriken in Azure Monitor (Vorschau)
 
@@ -231,15 +231,17 @@ Auch hier gilt dieser Grenzwert nicht für eine einzelne Metrik. Es handelt sich
 
 Dimensionen **Metriken mit hoher Kardinalität**. Bei Metriken mit zu vielen gültigen Werten in einer Dimension (*hohe Kardinalität*) ist es sehr viel wahrscheinlicher, dass die 50.000er Grenze erreicht wird. Im Allgemeinen sollten Sie niemals einen sich ständig ändernden Wert in einer Dimension verwenden. Der Zeitstempel zum Beispiel sollte nie eine Dimension sein. Sie können Server-, Kunden- oder Produkt-IDs verwenden, aber nur, wenn Sie eine geringere Anzahl von jedem dieser Typen haben. 
 
-Fragen Sie sich als Test, ob Sie solche Daten in einem Diagramm anzeigen würden. Wenn Sie über 10 oder vielleicht sogar 100 Server verfügen, kann es hilfreich sein, sie für den Vergleich alle in einem Diagramm anzuzeigen. Wenn Sie jedoch 1.000 Werte haben, wäre das resultierende Diagramm wahrscheinlich schwierig oder unmöglich zu lesen. 
-
-Am besten ist es, die Zahl der gültigen Werte auf weniger als 100 zu beschränken. Bis zu 300 ist eine Grauzone. Wenn Sie diese Anzahl übergehen müssen, verwenden Sie Azure Monitor benutzerdefinierte Protokolle.   
+Fragen Sie sich als Test, ob Sie solche Daten in einem Diagramm anzeigen würden. Wenn Sie über 10 oder vielleicht sogar 100 Server verfügen, kann es hilfreich sein, sie für den Vergleich alle in einem Diagramm anzuzeigen. Wenn Sie jedoch 1.000 Werte haben, wäre das resultierende Diagramm wahrscheinlich schwierig oder unmöglich zu lesen. Am besten ist es, die Zahl der gültigen Werte auf weniger als 100 zu beschränken. Bis zu 300 ist eine Grauzone. Wenn Sie diese Anzahl übergehen müssen, verwenden Sie Azure Monitor benutzerdefinierte Protokolle.   
 
 Wenn Sie eine Variable im Namen oder eine Dimension mit hoher Kardinalität haben, kann Folgendes passieren:
 - Die Metriken werden aufgrund von Drosselung unzuverlässig.
 - Der Metrics Explorer funktioniert nicht mehr.
 - Alerting und Benachrichtigungen werden unvorhersehbar.
 - Die Kosten können unerwartet steigen. Microsoft erhebt keine Gebühren für benutzerdefinierte Metriken mit Dimensionen, solange sich diese Funktion in der öffentlichen Vorschau befindet. Wenn jedoch in Zukunft Gebühren anfallen, werden Sie mit unerwarteten Kosten konfrontiert. Es ist geplant, den Verbrauch von Metriken auf der Grundlage der Anzahl der überwachten Zeitreihen und der Anzahl der API-Aufrufe zu berechnen.
+
+Wenn der Metrikname oder Dimensionswert aus Versehen mit einem Bezeichner oder einer Dimension mit hoher Kardinalität aufgefüllt wird, können Sie dies problemlos beheben, indem Sie den Variablenteil entfernen.
+
+Wenn jedoch eine hohe Kardinalität für Ihr Szenario wichtig ist, sind die aggregierten Metriken wahrscheinlich nicht die richtige Wahl. Wechseln Sie zur Verwendung benutzerdefinierter Protokolle (d. h. trackMetric-API-Aufrufe mit [trackEvent](/azure/azure-monitor/app/api-custom-events-metrics#trackevent)). Beachten Sie jedoch, dass Protokolle keine Werte aggregieren, weshalb jeder einzelne Eintrag gespeichert wird. Wenn Sie also in einem kleinen Zeitraum über eine große Menge von Protokollen verfügen (z. B. 1 Million pro Sekunde), kann dies zu Drosselung und Erfassungsverzögerungen führen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Verwenden Sie benutzerdefinierte Metriken aus verschiedenen Diensten: 

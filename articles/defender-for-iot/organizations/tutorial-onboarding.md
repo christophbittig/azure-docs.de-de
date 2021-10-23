@@ -4,14 +4,14 @@ description: In diesem Tutorial erfahren Sie, wie Sie das Onboarding für Azure 
 author: ElazarK
 ms.author: v-ekrieg
 ms.topic: tutorial
-ms.date: 10/05/2021
+ms.date: 10/07/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 717b65b78d177e277922687c4c290035b57ab6ab
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: e509b3a1c12c7c7d118eca0b3a2adabe01bdc977
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129537045"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129660303"
 ---
 # <a name="tutorial-azure-defender-for-iot-trial-setup"></a>Tutorial: Setup der Testversion von Azure Defender für IoT
 
@@ -246,7 +246,7 @@ Für die Überprüfung nach der Installation müssen Sie Tests ausführen, um si
 
 ## <a name="configure-a-span-port"></a>Konfigurieren eines SPAN-Ports
 
-Ein vSwitch enthält keine Spiegelungsfunktionen, aber Sie können einen SPAN-Port mithilfe einer Problemumgehung implementieren. Sie können die Problemumgehung entweder mit ESXi oder Hyper-V implementieren.
+Ein virtueller Switch verfügt nicht über Spiegelungsfunktionen. Sie können jedoch den promisken Modus in einer Umgebung mit virtuellen Switches verwenden. Der promiske Modus ist ein Betriebsmodus sowie eine Sicherheits-, Überwachungs- und Verwaltungstechnik, die auf der Ebene des virtuellen Switches oder der Portgruppe definiert ist. Der promiske Modus ist standardmäßig deaktiviert. Bei Aktivierung des promisken Modus verwenden die Netzwerkschnittstellen des virtuellen Computers, die sich in derselben Portgruppe befinden, den promisken Modus, um den gesamten Netzwerkdatenverkehr anzuzeigen, der diesen virtuellen Switch durchläuft. Sie können eine Problemumgehung entweder mit ESXi oder Hyper-V implementieren.
 
 :::image type="content" source="media/tutorial-onboarding/purdue-model.png" alt-text="Screenshot der Stelle in Ihrer Architektur, an der der Sensor platziert werden soll.":::
 
@@ -476,5 +476,5 @@ Möglicherweise müssen Sie den Bildschirm aktualisieren, nachdem Sie das von ei
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich über das Einrichten [zusätzlicher Appliances](how-to-install-software.md#about-defender-for-iot-appliances).
+Informieren Sie sich über das Einrichten [weiterer Appliances](how-to-install-software.md#about-defender-for-iot-appliances).
 Erfahren Sie mehr über die [Architektur ohne Agent](architecture.md).

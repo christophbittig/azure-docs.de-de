@@ -1,27 +1,29 @@
 ---
-title: Übersicht über den Azure IoT Hub Device Provisioning-Dienst | Microsoft-Dokumentation
+title: Übersicht über Microsoft Azure IoT Hub Device Provisioning Service | Microsoft-Dokumentation
 description: Hier finden Sie Informationen zur Gerätebereitstellung in Azure mit Device Provisioning Service (DPS) und IoT Hub.
-author: wesmc7777
-ms.author: wesmc
-ms.date: 04/04/2019
+author: anastasia-ms
+ms.author: v-stharr
+ms.date: 10/06/2021
 ms.topic: overview
 ms.service: iot-dps
 services: iot-dps
-manager: eliotgra
+manager: lizross
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: d65ef555ff0f05ca8020b3598bc6ac3022a708dd
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: eab01abee0ee75df0e342aa7cec1ef7e6c8a4b55
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129272716"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129659505"
 ---
 # <a name="what-is-azure-iot-hub-device-provisioning-service"></a>Was ist Azure IoT Hub Device Provisioning Service?
+
 Microsoft Azure bietet einen umfangreichen Satz von integrierten öffentlichen Clouddiensten für alle Ihre IoT-Lösunganforderungen. IoT Hub Device Provisioning Service (DPS) ist ein Hilfsdienst für IoT Hub und ermöglicht eine unbeaufsichtigte Just-In-Time-Bereitstellung im richtigen IoT-Hub ganz ohne Benutzereingriff. DPS ermöglicht die skalierbare und sichere Bereitstellung von Millionen von Geräten.
 
 ## <a name="when-to-use-device-provisioning-service"></a>Wann sollte der Device Provisioning-Dienst verwendet werden?
+
 DPS ist in vielen Bereitstellungsszenarien eine hervorragende Wahl, um Geräte mit IoT Hub zu verbinden für IoT Hub zu konfigurieren. Beispiele wären etwa:
 
 * Bereitstellung ohne manuelles Eingreifen für eine einzelne IoT-Lösung ohne werkseitige Hartcodierung von IoT Hub-Verbindungsinformationen (Anfangssetup)
@@ -31,6 +33,14 @@ DPS ist in vielen Bereitstellungsszenarien eine hervorragende Wahl, um Geräte m
 * Herstellen der Verbindung eines Geräts mit IoT Hub mit der geringsten Wartezeit (Geo-Sharding)
 * Erneute Bereitstellung basierend auf einer Änderung im Gerät
 * Wechseln der Schlüssel, die vom Gerät verwendet werden, um eine Verbindung mit IoT Hub herzustellen (wenn keine X. 509-Zertifikate verwendet werden, um Verbindungen herstellen)
+
+>[!NOTE]
+>**Überlegungen zur Datenresidenz:**
+>
+>DPS verwendet den gleichen [Endpunkt für die Gerätebereitstellung](concepts-service.md#device-provisioning-endpoint) für alle Bereitstellungsdienstinstanzen und führt den Lastenausgleich des Datenverkehrs für den nächstgelegenen verfügbaren Dienstendpunkt durch. Daher können Authentifizierungsgeheimnisse vorübergehend außerhalb der Region übertragen werden, in der die DPS-Instanz ursprünglich erstellt wurde. Sobald das Gerät verbunden ist, werden die Gerätedaten jedoch direkt in die ursprüngliche Region der DPS-Instanz übertragen.
+>
+>Verwenden Sie einen privaten Endpunkt, um sicherzustellen, dass Ihre Daten nicht die Region verlassen, in der Ihre DPS-Instanz erstellt wurde.  Informationen zum Einrichten privater Endpunkte finden Sie unter [Unterstützung von Azure IoT Hub Device Provisioning Service (DPS) für virtuelle Netzwerke](virtual-network-support.md#private-endpoint-limitations).
+
 
 ## <a name="behind-the-scenes"></a>Abläufe im Hintergrund
 Alle im vorherigen Abschnitt aufgelisteten Szenarien können per DPS für die Bereitstellung ohne manuelles Eingreifen mit dem gleichen Ablauf implementiert werden. Viele der normalerweise mit der Bereitstellung verbundenen manuellen Schritte sind bei DPS automatisiert, um die Bereitstellung von IoT-Geräten zu beschleunigen und das Risiko manueller Fehler zu verringern. Im Folgenden wird beschrieben, was bei der Bereitstellung eines Geräts im Hintergrund geschieht. Der erste Schritt ist manuell, alle folgenden Schritte sind automatisiert.

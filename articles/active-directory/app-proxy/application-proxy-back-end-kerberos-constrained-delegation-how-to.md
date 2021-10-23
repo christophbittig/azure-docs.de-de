@@ -3,20 +3,20 @@ title: Problembehandlung der eingeschränkten Kerberos-Delegierung – Anwendung
 description: Problembehandlung von Konfigurationen der eingeschränkten Kerberos-Delegierung für den Anwendungsproxy
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-proxy
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 04/27/2021
 ms.author: kenwith
-ms.reviewer: asteen, japere
-ms.openlocfilehash: d143d5a9a2e9ca4ed4414c99407311c445bc4398
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.reviewer: asteen, ashishj
+ms.openlocfilehash: bec7c2113ccf09da83e8dd998fba2c083bc661fb
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108186591"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129990442"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Problembehandlung von Konfigurationen der eingeschränkten Kerberos-Delegierung für den Anwendungsproxy
 

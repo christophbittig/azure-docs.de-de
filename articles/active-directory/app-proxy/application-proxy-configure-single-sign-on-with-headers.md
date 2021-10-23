@@ -3,20 +3,20 @@ title: Headerbasiertes einmaliges Anmelden für lokale Apps mit dem Azure AD-Anw
 description: Es wird beschrieben, wie Sie einmaliges Anmelden für lokale Anwendungen bereitstellen, die per headerbasierter Authentifizierung geschützt sind.
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-proxy
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 02/22/2021
 ms.author: kenwith
-ms.reviewer: japere
-ms.openlocfilehash: 6b81ad97a99115ab9741b2200437774b502b4fa6
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.reviewer: ashishj
+ms.openlocfilehash: 28f5cbcd124363f3e7a004bd80f254248dd80e95
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108227216"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130162418"
 ---
 # <a name="header-based-single-sign-on-for-on-premises-apps-with-azure-ad-app-proxy"></a>Headerbasiertes einmaliges Anmelden für lokale Apps mit dem Azure AD-Anwendungsproxy
 
@@ -50,7 +50,7 @@ In der folgenden Tabelle sind die allgemeinen Funktionen angegeben, die für Anw
 
 ## <a name="how-it-works"></a>Funktionsweise
 
-:::image type="content" source="./media/application-proxy-configure-single-sign-on-with-headers/how-it-works.png" alt-text="Funktionsweise des headerbasierten einmaligen Anmeldens mit Anwendungsproxy" lightbox="./media/application-proxy-configure-single-sign-on-with-headers/how-it-works.png":::
+:::image type="content" source="./media/application-proxy-configure-single-sign-on-with-headers/how-it-works-updated.png" alt-text="Funktionsweise des headerbasierten einmaligen Anmeldens mit Anwendungsproxy" lightbox="./media/application-proxy-configure-single-sign-on-with-headers/how-it-works-updated.png":::
 
 1. Der Administrator passt die Attributzuordnungen, die für die Anwendung benötigt werden, im Azure AD-Portal an. 
 2. Wenn ein Benutzer auf die App zugreift, wird mit dem Anwendungsproxy sichergestellt, dass der Benutzer von Azure AD authentifiziert wird. 

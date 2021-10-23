@@ -4,7 +4,7 @@ description: Grundlegendes zur Datenunabhängigkeit Ihrer Azure Active Directory
 services: active-directory
 documentationcenter: ''
 author: curtand
-manager: daveba
+manager: KarenH444
 ms.service: active-directory
 ms.subservice: enterprise-users
 ms.topic: overview
@@ -14,12 +14,12 @@ ms.author: curtand
 ms.custom: it-pro
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79673341845504590d1c70f802a04c644d20b7db
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e7cd7550fa3e39669d60afa87a436c64bc85a959
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121750547"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129985920"
 ---
 # <a name="understand-how-multiple-azure-active-directory-tenant-organizations-interact"></a>Grundlegendes zur Interaktion zwischen Azure Active Directory-Organisationen mit mehreren Mandanten
 

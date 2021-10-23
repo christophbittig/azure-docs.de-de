@@ -3,20 +3,20 @@ title: Verwenden von vorhandenen lokalen Proxyservern und Azure Active Directory
 description: Hier wird erläutert, wie vorhandene lokale Proxyserver bei Azure Active Directory verwendet werden können.
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-proxy
 ms.workload: identity
 ms.topic: how-to
 ms.date: 04/27/2021
 ms.author: kenwith
-ms.reviewer: japere
-ms.openlocfilehash: 517b7221a3eefc3438ce60160860feb9e3e4568f
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.reviewer: ashishj
+ms.openlocfilehash: f126fd6322be95329b7c0952740afea54027eda2
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108186538"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129990176"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Verwenden von vorhandenen lokalen Proxyservern
 

@@ -3,20 +3,20 @@ title: PowerShell-Beispiele für den Azure Active Directory-Anwendungsproxy
 description: Verwenden Sie diese PowerShell-Beispiele für den Azure Active Directory-Anwendungsproxy, um Informationen zu Anwendungsproxy-Apps und Connectors in Ihrem Verzeichnis abzurufen, Apps Benutzer und Gruppen zuzuweisen und Zertifikatinformationen abzurufen.
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-proxy
 ms.workload: identity
 ms.topic: sample
 ms.date: 04/29/2021
 ms.author: kenwith
-ms.reviewer: japere
-ms.openlocfilehash: 6d1e98f3ea7399a00f99397b65f41c6aee0c6548
-ms.sourcegitcommit: fc9fd6e72297de6e87c9cf0d58edd632a8fb2552
+ms.reviewer: ashishj
+ms.openlocfilehash: cd37d281ce3c6506bb09a650d215240d5208dacc
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108293701"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129988941"
 ---
 # <a name="azure-active-directory-application-proxy-powershell-examples"></a>PowerShell-Beispiele für den Azure Active Directory-Anwendungsproxy
 

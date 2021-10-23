@@ -4,16 +4,16 @@ description: Azure Cosmos DB unterstützt derzeit nur eine irreversible Migratio
 author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
-ms.date: 08/26/2021
+ms.date: 10/04/2021
 ms.author: sngun
 ms.topic: how-to
 ms.reviewer: sngun
-ms.openlocfilehash: 270c0fd585c2232b86011673e460737173106b09
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: b6821435f2f6ce04f1b8ba4b3af8b8f47097c2fa
+ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123479074"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129545996"
 ---
 # <a name="migrate-an-azure-cosmos-db-account-from-periodic-to-continuous-backup-mode"></a>Migrieren eines Azure Cosmos DB-Kontos vom zyklischen Sicherungsmodus zum fortlaufenden Sicherungsmodus
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -78,6 +78,24 @@ Installieren Sie die [neueste Version von Azure PowerShell](/powershell/azure/in
      -Name "myAccount" `
      -BackupPolicyType Continuous
    ```
+
+### <a name="check-the-migration-status"></a>Überprüfen des Migrationstatus
+
+Führen Sie den folgenden Befehl aus und prüfen SIe die Eigenschaften **status**, **targetType** des Objekts **backupPolicy**. Der Status wird nach Beginn der Migration als „wird ausgeführt“ angezeigt:
+
+```azurepowershell-interactive
+az cosmosdb show -n "myAccount" -g "myrg"
+```
+
+:::image type="content" source="./media/migrate-continuous-backup/migration-status-started-powershell.png" alt-text="Überprüfen des Migrationsstatus mit dem PowerShell-Befehl":::
+
+Wenn die Migration abgeschlossen ist, ändert sich der Sicherungstyp in **Fortlaufend**. Führen Sie denselben Befehl erneut aus, um den Status zu überprüfen:
+
+```azurepowershell-interactive
+az cosmosdb show -n "myAccount" -g "myrg"
+```
+
+:::image type="content" source="./media/migrate-continuous-backup/migration-status-complete-powershell.png" alt-text="Nach Abschluss der Migration ändert sich der Sicherungstyp in „Fortlaufend“.":::
 
 ## <a name="migrate-using-cli"></a><a id="cli"></a>Migrieren mithilfe der CLI
 

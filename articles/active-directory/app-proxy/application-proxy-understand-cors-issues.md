@@ -3,20 +3,20 @@ title: Verstehen und Beheben von CORS-Problemen für den Azure Active Director
 description: Hier finden Sie grundlegende Informationen zu CORS im Azure Active Directory-Anwendungsproxy, und Sie erfahren, wie Sie CORS-Probleme verstehen, erkennen und beheben können.
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-proxy
 ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 04/28/2021
 ms.author: kenwith
-ms.reviewer: japere
-ms.openlocfilehash: c9331acc65b5a3e4b1f0acdda4ecccb5a6ca3044
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.reviewer: ashishj
+ms.openlocfilehash: dc8a48c52c6312c3fcdf9e450a8aa609dc7090d7
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108229968"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129988580"
 ---
 # <a name="understand-and-solve-azure-active-directory-application-proxy-cors-issues"></a>Verstehen und Beheben von CORS-Problemen für den Azure Active Directory-Anwendungsproxy
 

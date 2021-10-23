@@ -8,12 +8,12 @@ ms.service: api-management
 ms.topic: how-to
 ms.date: 09/28/2021
 ms.author: danlep
-ms.openlocfilehash: 900692d5f38e0ed1796a3cac213407a3bec29660
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 553f7ce69d63ceebcdaacc3b29b0abc2a01987f7
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129212910"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129984552"
 ---
 # <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>Autorisieren von Entwicklerkonten mithilfe von Azure Active Directory B2C in Azure API Management
 
@@ -116,7 +116,7 @@ Das Widget **Registrierungsformular: OAuth** stellt ein Formular dar, das zum Re
 [!INCLUDE [api-management-portal-legacy.md](../../includes/api-management-portal-legacy.md)]
 
 > [!NOTE]
-> Um B2C ordnungsgemäß in das Legacy-Entwicklerportal zu integrieren, verwenden Sie **Standard v1**-Benutzerflows in Kombination mit der Aktivierung der [Kennwortzurücksetzung](/active-directory-b2c/user-flow-self-service-password-reset.md), bevor Sie sich mithilfe von Azure Active Directory B2C bei einem Entwicklerkonto registrieren bzw. anmelden. 
+> Um B2C ordnungsgemäß in das Legacy-Entwicklerportal zu integrieren, verwenden Sie **Standard v1**-Benutzerflows in Kombination mit der Aktivierung der [Kennwortzurücksetzung](/azure/active-directory-b2c/user-flow-self-service-password-reset), bevor Sie sich mithilfe von Azure Active Directory B2C bei einem Entwicklerkonto registrieren bzw. anmelden. 
 
 1. Öffnen Sie ein neues Browserfenster, und wechseln Sie zum Legacy-Entwicklerportal. Klicken Sie auf die Schaltfläche **Registrieren**.
 

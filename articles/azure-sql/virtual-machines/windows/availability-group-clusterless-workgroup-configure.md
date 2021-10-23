@@ -3,7 +3,7 @@ title: Konfigurieren einer domänenunabhängigen Verfügbarkeitsgruppe für eine
 description: Erfahren Sie, wie Sie eine domänenunabhängige Active Directory-Always On-Verfügbarkeitsgruppe für eine Arbeitsgruppe auf einem virtuellen SQL-Server-Computer in Azure konfigurieren.
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: rajeshsetlem
 editor: ''
 tags: azure-service-management
 ms.assetid: 53981f7e-8370-4979-b26a-93a5988d905f
@@ -13,13 +13,14 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/29/2020
-ms.author: mathoma
-ms.openlocfilehash: 86714655c05968a32e16c83b714705929baf1ca7
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.author: rsetlem
+ms.reviewer: mathoma
+ms.openlocfilehash: 6eb8af995b733fb796827d508ee003d83e46c67f
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129233671"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130167308"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>Konfigurieren einer Verfügbarkeitsgruppe für eine Arbeitsgruppe 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]

@@ -3,7 +3,7 @@ title: 'Tutorial: Konfigurieren einer SQL Server-Always On-Verfügbarkeitsgrup
 description: In diesem Tutorial erfahren Sie, wie Sie eine SQL Server Always On-Verfügbarkeitsgruppe in Azure Virtual Machines erstellen.
 services: virtual-machines
 documentationCenter: na
-author: MashaMSFT
+author: rajeshsetlem
 editor: monicar
 tags: azure-service-management
 ms.assetid: 08a00342-fee2-4afe-8824-0db1ed4b8fca
@@ -13,14 +13,15 @@ ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
-ms.author: mathoma
+ms.author: rsetlem
 ms.custom: seo-lt-2019
-ms.openlocfilehash: fa14a42ceffae476ad4df669898d6ce31c163620
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.reviewer: mathoma
+ms.openlocfilehash: ecbb65a61c229a018e48340b022137ac90ec6e05
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111569978"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130166190"
 ---
 # <a name="tutorial-manually-configure-an-availability-group-sql-server-on-azure-vms"></a>Tutorial: Manuelles Konfigurieren einer Verfügbarkeitsgruppe (SQL Server auf virtuellen Azure-Computern)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -415,7 +416,7 @@ Zum Konfigurieren des Lastenausgleichs müssen Sie einen Back-End-Pool und einen
 
 1. Legen Sie den Integritätstest für den Listener wie folgt fest:
 
-   | Einstellung | Beschreibung | Beispiel
+   | Einstellung | BESCHREIBUNG | Beispiel
    | --- | --- |---
    | **Name** | Text | SQLAlwaysOnEndPointProbe |
    | **Protokoll** | Wählen Sie „TCP“ aus. | TCP |
@@ -431,7 +432,7 @@ Zum Konfigurieren des Lastenausgleichs müssen Sie einen Back-End-Pool und einen
 
 1. Konfigurieren Sie die Lastenausgleichsregeln für den Listener wie folgt:
 
-   | Einstellung | Beschreibung | Beispiel
+   | Einstellung | BESCHREIBUNG | Beispiel
    | --- | --- |---
    | **Name** | Text | SQLAlwaysOnEndPointListener |
    | **Frontend IP address** (Front-End-IP-Adresse) | Wählen Sie eine Adresse aus. |Verwenden Sie die Adresse, die Sie beim Erstellen des Lastenausgleichs erstellt haben. |
@@ -459,7 +460,7 @@ Die WSFC IP-Adresse muss auf dem Lastenausgleich ebenfalls vorhanden sein.
 
 1. Legen Sie den Integritätstest für die IP-Adresse der Hauptressourcen des WSFC-Clusters wie folgt fest:
 
-   | Einstellung | Beschreibung | Beispiel
+   | Einstellung | BESCHREIBUNG | Beispiel
    | --- | --- |---
    | **Name** | Text | WSFCEndPointProbe |
    | **Protokoll** | Wählen Sie „TCP“ aus. | TCP |
@@ -473,7 +474,7 @@ Die WSFC IP-Adresse muss auf dem Lastenausgleich ebenfalls vorhanden sein.
 
 1. Konfigurieren Sie die Lastenausgleichsregeln für die IP-Adresse der Hauptressourcen des Clusters wie folgt:
 
-   | Einstellung | Beschreibung | Beispiel
+   | Einstellung | BESCHREIBUNG | Beispiel
    | --- | --- |---
    | **Name** | Text | WSFCEndPoint |
    | **Frontend IP address** (Front-End-IP-Adresse) | Wählen Sie eine Adresse aus. |Verwenden Sie die Adresse, die Sie beim Konfigurieren der WSFC-IP-Adresse erstellt haben. Diese unterscheidet sich von der IP-Adresse des Listeners. |
@@ -545,7 +546,7 @@ Die sqlcmd-Verbindung wird automatisch mit der SQL Server-Instanz hergestellt, d
 
 Weitere Informationen finden Sie unter:
 
-- [Windows Server-Failovercluster mit SQL Server auf Azure-VMs](hadr-windows-server-failover-cluster-overview.md)
+- [Windows Server-Failovercluster mit SQL Server auf Azure-VMs](hadr-windows-server-failover-cluster-overview.md)
 - [Always On-Verfügbarkeitsgruppen mit SQL Server auf Azure-VMs](availability-group-overview.md)
 - [Übersicht über Always On-Verfügbarkeitsgruppen](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)
 - [HADR-Einstellungen für SQL Server auf Azure-VMs](hadr-cluster-best-practices.md)

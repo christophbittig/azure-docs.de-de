@@ -1,19 +1,19 @@
 ---
-title: Interoperabilität von Teams-Besprechungen
+title: Teams-Interoperabilität
 titleSuffix: An Azure Communication Services concept document
-description: Beitreten zu Teams-Besprechungen
+description: Teams-Interoperabilität
 author: chpalm
 ms.author: chpalm
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 ms.subservice: teams-interop
-ms.openlocfilehash: 85616e754df0eebc76dd3dceea48dfefe4acf971
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 32067409bb6289b283d8dd3b4de18e1a83f8e374
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129362371"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129856047"
 ---
 # <a name="teams-interoperability"></a>Teams-Interoperabilität
 
@@ -58,15 +58,9 @@ Wenn ein Endpunkt unter Verwendung einer Teams-Identität über die Azure Commu
 
 Die Verwendung eigener Identitäten (Bring Your Own Identity, BYOI) ist das gängige Modell für die Verwendung von Azure Communication Services und Teams-Interoperabilität. Es unterstützt alle Identitätsanbieter und Authentifizierungsschemas. Im ersten ermöglichten Szenario kann Ihre Anwendung Microsoft Teams-Besprechungen beitreten, und Teams behandelt die entsprechenden Benutzer als anonyme externe Konten – genau wie Benutzer, die über die anonyme Teams-Webanwendung beitreten. Dies eignet sich perfekt für B2C-Anwendungen, die (mit Teams vertraute) Mitarbeiter und externe Benutzer (mit einer benutzerdefinierten Anwendungsumgebung) in einer Besprechungsumgebung zusammenbringen. Später kommen noch weitere Szenarien hinzu. Dazu zählen beispielsweise direkte Anrufe und Chats, die es Ihrer Anwendung ermöglichen, Anrufe und Chats mit Teams-Benutzern außerhalb des Kontexts einer Teams-Besprechung zu initiieren.
 
-Die Möglichkeit für Communication Services-Benutzer, Teams-Besprechungen als anonyme Benutzer beizutreten, wird durch die bereits vorhandene Konfiguration zum Zulassen des anonymen Besprechungsbeitritts gesteuert. Diese steuert auch den vorhandenen anonymen Besprechungsbeitritt von Teams.  Diese Einstellung kann in [Teams Admin Center](https://admin.teams.microsoft.com/meetings/settings) oder mithilfe des Teams-PowerShell-Cmdlets [Set-CsTeamsMeetingConfiguration](/powershell/module/skype/set-csteamsmeetingconfiguration) aktualisiert werden. Genau wie beim anonymen Besprechungsbeitritt von Teams muss Ihre Anwendung über den Besprechungslink für den Beitritt verfügen. Dieser kann über die Graph-API oder aus dem Kalender in Microsoft Teams abgerufen werden.  Der in Teams angezeigte Name von Communication Services-Benutzern kann über das Calling SDK von Communication Services konfiguriert werden.
+Weitere Informationen finden Sie unter [Teilnehmen an einer Teams-Besprechung](join-teams-meeting.md).
 
-Externe Benutzer können grundlegende Audio-, Video-, Bildschirmfreigabe- und Chatfunktionen über Azure Communication Services-SDKs verwenden. Features wie das Heben der Hand, der Zusammen-Modus und Gruppenräume stehen nur Teams-Benutzern zur Verfügung. Communication Services-Benutzer können Nachrichten nur senden und empfangen, solange sie sich in der Teams-Besprechung befinden und die Besprechung nicht für einen Kanal geplant ist. 
-
-Die Liste der unterstützten Nachrichtentypen für Communication Services-Benutzer*innen finden Sie in unseren [Chatkonzepten](./chat/concepts.md#message-types). Nicht unterstützte Nachrichtentypen können ignoriert werden.
-
-Ihre benutzerdefinierte Anwendung sollte die Benutzerauthentifizierung und andere Sicherheitsmaßnahmen zum Schutz von Teams-Besprechungen berücksichtigen. Seien Sie sich der Auswirkungen auf die Sicherheit bewusst, wenn Sie anonymen Benutzern die Teilnahme an Besprechungen ermöglichen, und verwenden Sie den [Teams-Sicherheitsleitfaden](/microsoftteams/teams-security-guide#addressing-threats-to-teams-meetings), um die für anonyme Benutzer verfügbaren Funktionen zu konfigurieren.
-
-Weitere Informationen zu erforderlichen Dataflows für den Beitritt zu Teams-Besprechungen finden Sie auf der Seite [Client- und Serverarchitektur](client-and-server-architecture.md). Das [Hero-Beispiel für Gruppenanrufe](../samples/calling-hero-sample.md) enthält Beispielcode für den Beitritt zu einer Teams-Besprechung über eine Webanwendung.
+Zurzeit ist es für einen Teams-Benutzer nicht möglich, einem Anruf beizutreten, der über das Azure Communication Services Calling SDK initiiert wurde.
 
 ## <a name="microsoft-365-teams-identity"></a>Microsoft 365-Teams-Identität
 Das Calling SDK von Azure Communication Services kann mit Microsoft 365-Teams-Identitäten verwendet werden, um Teams-ähnliche Umgebungen für die Teams-Interoperabilität zu unterstützen. Microsoft 365-Teams-Identitäten werden von Azure Active Directory bereitgestellt und authentifiziert. Ihre App kann Anrufe mit einer regulären Microsoft 365-Identität tätigen oder annehmen. Alle Attribute und Details im Zusammenhang mit dem Benutzer sind an den Azure Active Directory-Benutzer gebunden.
@@ -88,7 +82,7 @@ Wenn Sie mehr über die Funktion erfahren möchten, können Sie dem TAP-Early A
 |Authentifizierung und Autorisierung|Benutzerdefiniert*| Azure Active Directory und benutzerdefiniert*|
 |Telefonie verfügbar über | Calling SDKs von Communication Services | Calling SDKs von Communication Services |
 |Chat verfügbar über | Chat SDKs von Communication Services | Graph-API |
-|Telefonfestnetzunterstützung| Ausgehende Sprachanrufe, ausgehendes Direct Routing, [Details](./telephony-sms/telephony-concept.md) | Eingehende Anrufe mit Teams-Identitätszuweisung, ausgehende Anrufe mit Telefontarif|
+|Telefonfestnetzunterstützung| Nicht unterstützt für Communication Services-Benutzer in Teams-Besprechungen | Eingehende Anrufe mit Teams-Identitätszuweisung, ausgehende Anrufe mit Telefontarif|
 
 \* Durch die Serverlogik zum Ausstellen von Zugriffstoken kann eine beliebige benutzerdefinierte Authentifizierung und Autorisierung der Anforderung vorgenommen werden.
 
@@ -108,5 +102,4 @@ Azure Communication Services-Interoperabilität ist derzeit nicht mit Teams-Be
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Schnellstart: Beitreten mit einer Telefonie-App zu einer Teams-Besprechung](../quickstarts/voice-video-calling/get-started-teams-interop.md)
-> [Schnellstart: Einrichten und Verwalten von Teams-Zugriffstoken](../quickstarts/manage-teams-identity.md)
+> [Authentifizieren von Microsoft 365-Benutzern](../quickstarts/manage-teams-identity.md)
