@@ -10,12 +10,12 @@ ms.subservice: automanage
 ms.workload: infrastructure
 ms.custom:
 - mode-portal
-ms.openlocfilehash: faf51735ae6805f0ff7db98416e9b05731c08642
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 7836e15c307a0dcfcf4bfa4b8c56fbeea869d315
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123426452"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129709754"
 ---
 # <a name="quickstart-enable-azure-automanage-for-virtual-machines-in-the-azure-portal"></a>Schnellstart: Aktivieren der automatischen Azure-Verwaltung für virtuelle Computer im Azure-Portal
 
@@ -50,7 +50,7 @@ Melden Sie sich beim [Azure-Portal](https://aka.ms/AutomanagePortal-Ignite21) an
     1. Aktivieren Sie das Kontrollkästchen für jeden virtuellen Computer, den Sie integrieren möchten.
     1. Klicken Sie auf die Schaltfläche **Auswählen**.
     > [!NOTE]
-    > Sie können sowohl Azure-VMs als auch Server mit Arc-Unterstützung auswählen.
+    > Sie können sowohl Azure-VMs als auch Server mit Azure Arc-Unterstützung auswählen.
 
     :::image type="content" source="media\quick-create-virtual-machine-portal\existing-vm-select-machine.png" alt-text="Auswählen eines vorhandenen virtuellen Computers aus der Liste verfügbarer virtueller Computer":::
 

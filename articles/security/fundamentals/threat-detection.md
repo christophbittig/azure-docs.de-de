@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2021
 ms.author: terrylan
-ms.openlocfilehash: 19944b336a9140a7133b2f96d7821c56a59abe7e
-ms.sourcegitcommit: 16580bb4fbd8f68d14db0387a3eee1de85144367
+ms.openlocfilehash: 36410c2c6f4f5054f04d017f944b840c6251ec8c
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112676850"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130003570"
 ---
 # <a name="azure-threat-protection"></a>Azure-Bedrohungsschutz
 
@@ -253,7 +253,7 @@ Erkennungsmodule für SQL-Datenbank-Bedrohungen verwenden eine der folgenden Met
 
 ### <a name="application-gateway-web-application-firewall"></a>Web Application Firewall für Application Gateway
 
-[Web Application Firewall (WAF)](../../app-service/environment/app-service-app-service-environment-web-application-firewall.md) ist ein Feature von [Azure Application Gateway](../../web-application-firewall/ag/ag-overview.md), das Schutz für Webanwendungen bietet, die ein Anwendungsgateway für ADC-Standardfunktionen ([Application Delivery Control](https://kemptechnologies.com/in/application-delivery-controllers), Steuerung der Anwendungsbereitstellung) nutzen. Web Application Firewall schützt vor den [zehn häufigsten Websicherheitsrisiken, die im Open Web Application Security Project (OWASP) angegeben sind](https://owasp.org/www-project-top-ten/).
+[Web Application Firewall (WAF)](../../app-service/environment/integrate-with-application-gateway.md) ist ein Feature von [Azure Application Gateway](../../web-application-firewall/ag/ag-overview.md), das Schutz für Webanwendungen bietet, die ein Anwendungsgateway für ADC-Standardfunktionen ([Application Delivery Control](https://kemptechnologies.com/in/application-delivery-controllers), Steuerung der Anwendungsbereitstellung) nutzen. Web Application Firewall schützt vor den [zehn häufigsten Websicherheitsrisiken, die im Open Web Application Security Project (OWASP) angegeben sind](https://owasp.org/www-project-top-ten/).
 
 ![Web Application Firewall für Application Gateway – Diagramm](./media/threat-detection/azure-threat-detection-fig13.png)
 

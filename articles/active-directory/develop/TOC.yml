@@ -733,9 +733,9 @@
     - name: Videos
       href: identity-videos.md
     - name: Entwicklerblog zu Microsoft Identity Platform
-      href: 'https://developer.microsoft.com/en-us/identity/blogs/'
+      href: 'https://developer.microsoft.com/identity/blogs/'
     - name: Azure AD-Blog
-      href: 'https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory'
+      href: 'https://techcommunity.microsoft.com/t5/azure-active-directory-identity/bg-p/Identity'
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
     - name: „Mit Microsoft anmelden“ testen

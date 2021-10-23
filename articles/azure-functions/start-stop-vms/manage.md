@@ -5,18 +5,18 @@ services: azure-functions
 ms.subservice: start-stop-vms
 ms.date: 06/25/2021
 ms.topic: conceptual
-ms.openlocfilehash: cf2461484d290dc05912121a6964b42ca58194cc
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: 1bb5a7bf62bd16274a168ecb8b3147c07afc8860
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129455520"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130175862"
 ---
 # <a name="how-to-manage-startstop-vms-v2-preview"></a>Verwalten von „VMs starten/beenden v2 (Vorschau)“
 
 ## <a name="azure-dashboard"></a>Azure-Dashboard
 
-„VMs starten/beenden v2 (Vorschau)“ enthält ein [Dashboard](../../azure-monitor/visualizations.md#azure-dashboards), mit dem Sie den Verwaltungsbereich und die aktuellen Vorgänge mit Ihren VMs besser verstehen können. Es ist eine schnelle und einfache Möglichkeit, den Status jedes Vorgangs zu überprüfen, der auf Ihren Azure-VMs ausgeführt wird. Die Visualisierung in jeder Kachel basiert auf einer Protokollabfrage. Um die Abfrage anzuzeigen, wählen Sie die Option **Auf Blatt „Protokolle“ öffnen** in der rechten Ecke der Kachel aus. Dadurch wird das [Log Analytics](../../azure-monitor/logs/log-analytics-overview.md#starting-log-analytics)-Tool im Azure-Portal geöffnet, von wo aus Sie die Abfrage auswerten und so ändern können, dass sie Ihre Anforderungen erfüllt, wie z. B. benutzerdefinierte [Protokollwarnungen](../../azure-monitor/alerts/alerts-log.md), eine benutzerdefinierte [Arbeitsmappe](../../azure-monitor/visualize/workbooks-overview.md) usw.
+„VMs starten/beenden v2 (Vorschau)“ enthält ein [Dashboard](../../azure-monitor/best-practices-analysis.md#azure-dashboards), mit dem Sie den Verwaltungsbereich und die aktuellen Vorgänge mit Ihren VMs besser verstehen können. Es ist eine schnelle und einfache Möglichkeit, den Status jedes Vorgangs zu überprüfen, der auf Ihren Azure-VMs ausgeführt wird. Die Visualisierung in jeder Kachel basiert auf einer Protokollabfrage. Um die Abfrage anzuzeigen, wählen Sie die Option **Auf Blatt „Protokolle“ öffnen** in der rechten Ecke der Kachel aus. Dadurch wird das [Log Analytics](../../azure-monitor/logs/log-analytics-overview.md#starting-log-analytics)-Tool im Azure-Portal geöffnet, von wo aus Sie die Abfrage auswerten und so ändern können, dass sie Ihre Anforderungen erfüllt, wie z. B. benutzerdefinierte [Protokollwarnungen](../../azure-monitor/alerts/alerts-log.md), eine benutzerdefinierte [Arbeitsmappe](../../azure-monitor/visualize/workbooks-overview.md) usw.
 
 Die Protokolldaten, die auf jeder Kachel im Dashboard angezeigt werden, werden stündlich aktualisiert, können mit einer Option für die manuelle Aktualisierung bei Bedarf aktualisiert werden (durch Klicken auf das Symbol **Aktualisieren** für eine bestimmte Visualisierung) oder werden durch eine Aktualisierung des gesamten Dashboards aktualisiert.
 

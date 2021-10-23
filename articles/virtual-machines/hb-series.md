@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/22/2021
 ms.author: amverma
 ms.reviewer: jushiman
-ms.openlocfilehash: 20e7f9f79e90aa382c94f4b013f1fd32390e4c2d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 3cff97959a897d20acf693926c75f6c20774d361
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124803890"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130071452"
 ---
 # <a name="hb-series"></a>HB-Serie
 
@@ -26,7 +26,7 @@ VMs der HB-Serie unterstützen Mellanox EDR InfiniBand mit 100 Gbit/s. Diese VMs
 [ACU](acu.md): 199-216<br>
 [Storage Premium](premium-storage-performance.md): Unterstützt<br>
 [Storage Premium-Zwischenspeicherung:](premium-storage-performance.md) Unterstützt<br>
-[Ultra Disks](disks-types.md#ultra-disk): Unterstützt ([Weitere Informationen](https://techcommunity.microsoft.com/t5/azure-compute/ultra-disk-storage-for-hpc-and-gpu-vms/ba-p/2189312) zur Verfügbarkeit, Verwendung und Leistung) <br>
+[Ultra Disks](disks-types.md#ultra-disks): Unterstützt ([Weitere Informationen](https://techcommunity.microsoft.com/t5/azure-compute/ultra-disk-storage-for-hpc-and-gpu-vms/ba-p/2189312) zur Verfügbarkeit, Verwendung und Leistung) <br>
 [Livemigration:](maintenance-and-updates.md) Nicht unterstützt<br>
 [Updates mit Speicherbeibehaltung:](maintenance-and-updates.md) Nicht unterstützt<br>
 [Unterstützung von VM-Generationen:](generation-2.md) Generation 1 und 2<br>

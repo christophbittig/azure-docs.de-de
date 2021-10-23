@@ -3,15 +3,15 @@ title: Filtern von Azure Application Insights-Telemetriedaten in einer Java-Web-
 description: Telemetriedatenverkehr lässt sich reduzieren, indem Sie die Ereignisse herausfiltern, die Sie nicht überwachen müssen.
 ms.topic: conceptual
 ms.date: 3/14/2019
-author: MS-jgol
 ms.custom: devx-track-java
-ms.author: jgol
-ms.openlocfilehash: c8c3e1e73a1504a5da519144ee5c3e9968fb89b9
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+author: mattmccleary
+ms.author: mmcc
+ms.openlocfilehash: 26addfdcd7b7b2d9ec3b049040e5d387d7c5bb86
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110104175"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130133954"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>Filtern von Telemetriedaten in einer Java-Web-App
 
@@ -85,7 +85,7 @@ Fügen Sie der Datei „ApplicationInsights.xml“ wie in diesem Beispiel den Ab
 
 ```
 
-[Überprüfen des vollständigen Satzes integrierter Prozessoren](https://github.com/microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal).
+[Überprüfen des vollständigen Satzes integrierter Prozessoren](https://github.com/microsoft/ApplicationInsights-Java/tree/main/agent/agent-tooling/src/main/java/com/microsoft/applicationinsights/agent/internal).
 
 ## <a name="built-in-filters"></a>Integrierte Filter
 

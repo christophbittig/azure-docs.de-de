@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: dlepow
 ms.author: danlep
 ms.date: 11/27/2020
-ms.openlocfilehash: 0cf99dfe2fb697b0a28db1fbacecaa2e2021a9d4
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ca142ec96bf4ec45cc7c2f612a38ee0d10bf9615
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128622016"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130000573"
 ---
 # <a name="api-management-soft-delete-preview"></a>Azure API Management – Vorläufiges Löschen (Vorschau)
 
@@ -22,19 +22,19 @@ ms.locfileid: "128622016"
 
 ## <a name="supporting-interfaces"></a>Unterstützende Schnittstellen
 
-Das Feature zum vorläufigen Löschen ist über die [REST-API](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/restore) verfügbar.
+Das Feature zum vorläufigen Löschen ist über die [REST-API](/rest/api/apimanagement/2021-01-01-preview/api-management-service/restore) verfügbar.
 
 > [!TIP]
 > Tipps und Tools für den Aufruf von Azure-REST-APIs finden Sie unter [Azure-REST-API-Referenz](/rest/api/azure/).
 
 | Vorgang | BESCHREIBUNG | API Management-Namespace | API-Mindestversion |
 |--|--|--|--|
-| [Erstellen oder Aktualisieren](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/createorupdate) | Erstellt oder aktualisiert einen API Management-Dienst.  | API Management-Dienst | Any |
-| [Erstellen oder Aktualisieren](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/createorupdate), wobei die `restore`-Eigenschaft auf **true** festgelegt ist. | Hebt das Löschen des API Management-Diensts auf, wenn er zuvor vorläufig gelöscht wurde. Wenn `restore` angegeben und auf `true` festgelegt wird, werden alle anderen Eigenschaften ignoriert.  | API Management-Dienst |  2020-06-01-preview |
-| [Löschen](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/delete) | Löscht einen vorhandenen API Management-Dienst. | API Management-Dienst | 2020-06-01-preview|
-| [Get By Name](/rest/api/apimanagement/2020-06-01-preview/deletedservices/getbyname) (Nach Name abrufen): | Einen vorläufig gelöschten API Management-Dienst über den Namen abrufen. | Gelöschte Dienste | 2020-06-01-preview |
-| [List By Subscription](/rest/api/apimanagement/2020-06-01-preview/deletedservices/listbysubscription) (Nach Abonnement auflisten): | Listet alle vorläufig gelöschten Dienste auf, die für das Aufheben der Löschung für das angegebene Abonnement verfügbar sind. | Gelöschte Dienste | 2020-06-01-preview
-| [Bereinigen](/rest/api/apimanagement/2020-06-01-preview/deletedservices/purge) | Bereinigt den API Management-Dienst (löscht ihn ohne die Möglichkeit, ihn wiederherzustellen). | Gelöschte Dienste | 2020-06-01-preview
+| [Erstellen oder Aktualisieren](/rest/api/apimanagement/2021-01-01-preview/api-management-service/create-or-update) | Erstellt oder aktualisiert einen API Management-Dienst.  | API Management-Dienst | Any |
+| [Erstellen oder Aktualisieren](/rest/api/apimanagement/2021-01-01-preview/api-management-service/create-or-update), wobei die `restore`-Eigenschaft auf **true** festgelegt ist. | Hebt das Löschen des API Management-Diensts auf, wenn er zuvor vorläufig gelöscht wurde. Wenn `restore` angegeben und auf `true` festgelegt wird, werden alle anderen Eigenschaften ignoriert.  | API Management-Dienst |  2020-06-01-preview |
+| [Löschen](/rest/api/apimanagement/2021-01-01-preview/api-management-service/delete) | Löscht einen vorhandenen API Management-Dienst. | API Management-Dienst | 2020-06-01-preview|
+| [Get By Name](/rest/api/apimanagement/2021-01-01-preview/deleted-services/get-by-name) (Nach Name abrufen): | Einen vorläufig gelöschten API Management-Dienst über den Namen abrufen. | Gelöschte Dienste | 2020-06-01-preview |
+| [List By Subscription](/rest/api/apimanagement/2021-01-01-preview/deleted-services/list-by-subscription) (Nach Abonnement auflisten): | Listet alle vorläufig gelöschten Dienste auf, die für das Aufheben der Löschung für das angegebene Abonnement verfügbar sind. | Gelöschte Dienste | 2020-06-01-preview
+| [Bereinigen](/rest/api/apimanagement/2021-01-01-preview/deleted-services/purge) | Bereinigt den API Management-Dienst (löscht ihn ohne die Möglichkeit, ihn wiederherzustellen). | Gelöschte Dienste | 2020-06-01-preview
 
 ## <a name="soft-delete-behavior"></a>Verhalten des vorläufigen Löschens
 
@@ -48,11 +48,11 @@ Wenn Ihre APIM-Instanz nicht innerhalb von 48 Stunden wiederhergestellt wird, wi
 
 ## <a name="list-deleted-apim-instances"></a>Auflisten gelöschter APIM-Instanzen
 
-Sie können überprüfen, ob eine vorläufig gelöschte APIM-Instanz zum Wiederherstellen verfügbar ist, indem Sie entweder die Vorgänge [Get By Name](/rest/api/apimanagement/2020-06-01-preview/deletedservices/getbyname) (Nach Name abrufen) oder [List By Subscription](/rest/api/apimanagement/2020-06-01-preview/deletedservices/listbysubscription) (Nach Abonnement auflisten) für vorläufiges Löschen verwenden.
+Sie können überprüfen, ob eine vorläufig gelöschte APIM-Instanz zum Wiederherstellen verfügbar ist, indem Sie entweder die Vorgänge [Get By Name](/rest/api/apimanagement/2021-01-01-preview/deleted-services/get-by-name) (Nach Name abrufen) oder [List By Subscription](/rest/api/apimanagement/2021-01-01-preview/deleted-services/list-by-subscription) (Nach Abonnement auflisten) für vorläufiges Löschen verwenden.
 
 ### <a name="get-a-soft-deleted-instance-by-name"></a>Abrufen einer vorläufig gelöschten Instanz über den Namen
 
-Verwenden Sie den API Management-Vorgang [Get By Name](/rest/api/apimanagement/2020-06-01-preview/deletedservices/getbyname) (Abrufen nach Name), wobei `{subscriptionId}`, `{location}` und `{serviceName}` durch Ihr Azure-Abonnement, den Speicherort der Azure-Ressource und den Namen der API Management-Instanz ersetzt werden:
+Verwenden Sie den API Management-Vorgang [Get By Name](/rest/api/apimanagement/2021-01-01-preview/deleted-services/get-by-name) (Abrufen nach Name), wobei `{subscriptionId}`, `{location}` und `{serviceName}` durch Ihr Azure-Abonnement, den Speicherort der Azure-Ressource und den Namen der API Management-Instanz ersetzt werden:
 
 ```rest
 GET https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.ApiManagement/locations/{location}/deletedservices/{serviceName}?api-version=2020-06-01-preview
@@ -76,7 +76,7 @@ Falls zum Aufheben des Löschvorgangs verfügbar, gibt Azure einen Datensatz der
 
 ### <a name="list-all-soft-deleted-instances-for-a-given-subscription"></a>Auflisten aller vorläufig gelöschten Instanzen für ein bestimmtes Abonnement
 
-Verwenden Sie den API Management-Vorgang [List By Subscription](/rest/api/apimanagement/2020-06-01-preview/deletedservices/listbysubscription) (Nach Abonnement auflisten), wobei Sie `{subscriptionId}` durch Ihre Abonnement-ID ersetzen:
+Verwenden Sie den API Management-Vorgang [List By Subscription](/rest/api/apimanagement/2021-01-01-preview/deleted-services/list-by-subscription) (Nach Abonnement auflisten), wobei Sie `{subscriptionId}` durch Ihre Abonnement-ID ersetzen:
 
 ```rest
 GET https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.ApiManagement/deletedservices?api-version=2020-06-01-preview
@@ -86,10 +86,11 @@ Dies gibt eine Liste aller vorläufig gelöschten Dienste zurück, die unter dem
 
 ## <a name="recover-a-deleted-apim-instance"></a>Wiederherstellen einer gelöschten APIM-Instanz
 
-Verwenden Sie den API Management-Vorgang [Create Or Update](/rest/api/apimanagement/2020-06-01-preview/apimanagementservice/createorupdate) (Erstellen oder Aktualisieren), wobei `{subscriptionId}`, `{resourceGroup}` und `{apimServiceName}` durch Ihr Azure-Abonnement, den Ressourcengruppennamen und den Namen der API Management-Instanz ersetzt werden:
+Verwenden Sie den API Management-Vorgang [Create Or Update](/rest/api/apimanagement/2021-01-01-preview/api-management-service/create-or-update) (Erstellen oder Aktualisieren), wobei `{subscriptionId}`, `{resourceGroup}` und `{apimServiceName}` durch Ihr Azure-Abonnement, den Ressourcengruppennamen und den Namen der API Management-Instanz ersetzt werden:
 
 ```rest
-PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.ApiManagement/service/{apimServiceName}?api-version=2020-06-01-preview
+PUT
+https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.ApiManagement/service/{apimServiceName}?api-version=2021-01-01-preview
 ```
 
 . . . und legen Sie die Eigenschaft `restore` im Anforderungstext auf `true` fest. (Wenn dieses Flag angegeben und auf *true* festgelegt wird, werden alle anderen Eigenschaften ignoriert.) Beispiel:
@@ -111,7 +112,7 @@ PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
 
 ## <a name="purge-a-soft-deleted-apim-instance"></a>Bereinigen einer vorläufig gelöschten APIM-Instanz
 
-Verwenden Sie den API Management-Vorgang [Purge](/rest/api/apimanagement/2020-06-01-preview/deletedservices/purge) (Bereinigen), wobei `{subscriptionId}`, `{location}` und `{serviceName}` durch Ihr Azure-Abonnement, den Speicherort der Azure-Ressource und den Namen der API Management-Instanz ersetzt werden:
+Verwenden Sie den API Management-Vorgang [Purge](/rest/api/apimanagement/2021-01-01-preview/deleted-services/purge) (Bereinigen), wobei `{subscriptionId}`, `{location}` und `{serviceName}` durch Ihr Azure-Abonnement, den Speicherort der Azure-Ressource und den Namen der API Management-Instanz ersetzt werden:
 
 ```rest
 DELETE https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.ApiManagement/locations/{location}/deletedservices/{serviceName}?api-version=2020-06-01-preview

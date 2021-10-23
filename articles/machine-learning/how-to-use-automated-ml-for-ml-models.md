@@ -11,12 +11,12 @@ ms.reviewer: nibaccam
 ms.date: 06/11/2021
 ms.topic: how-to
 ms.custom: automl, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: e49a1560e45b801de2c6031d09e4fa3133d71823
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: a48fa9df38b9892c740713b1463010c1f601506d
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129429051"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130000022"
 ---
 # <a name="set-up-no-code-automl-training-with-the-studio-ui"></a>Einrichten des Trainings für automatisiertes maschinelles Lernen ohne Code über die Studio-Benutzeroberfläche 
 
@@ -114,7 +114,7 @@ Andernfalls wird eine Liste Ihrer letzten Experimente für automatisiertes masch
 
     Wählen Sie **Weiter** aus.
 
-1. Wählen Sie auf dem Formular **Aufgabentyp und Einstellungen** den Aufgabentyp aus: Klassifizierung, Regression oder Prognose (Vorhersage). Weitere Informationen finden Sie unter [Unterstützte Aufgabentypen](concept-automated-ml.md#when-to-use-automl-classification-regression--forecasting).
+1. Wählen Sie auf dem Formular **Aufgabentyp und Einstellungen** den Aufgabentyp aus: Klassifizierung, Regression oder Prognose (Vorhersage). Weitere Informationen finden Sie unter [Unterstützte Aufgabentypen](concept-automated-ml.md#when-to-use-automl-classification-regression-forecasting--computer-vision).
 
     1. Für die **Klassifizierung** können Sie auch Deep Learning aktivieren.
     

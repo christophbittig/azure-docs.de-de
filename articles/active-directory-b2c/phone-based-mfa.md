@@ -3,20 +3,20 @@ title: Schützen der telefonbasierten mehrstufigen Authentifizierung (MFA) in Az
 titleSuffix: Azure AD B2C
 description: Hier finden Sie Tipps, wie Sie mit Azure Monitor Log Analytics-Berichten und -Warnungen die telefonbasierte mehrstufige Authentifizierung (MFA) in Ihrem Azure AD B2C-Mandanten schützen. Verwenden Sie unsere Arbeitsmappe, um betrügerische Authentifizierungen per Telefon zu identifizieren und betrügerische Anmeldungen auf ein Minimum zu beschränken. =
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.topic: how-to
 ms.workload: identity
 ms.date: 09/20/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 112fe68a1d8682b03a9f08839d827b71ebadf1d1
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 30e9f10b1c39aa1b05a5e8fcc395373a502f8c33
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128571767"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130035739"
 ---
 # <a name="securing-phone-based-multi-factor-authentication-mfa"></a>Schützen der telefonbasierten mehrstufigen Authentifizierung (MFA)
 

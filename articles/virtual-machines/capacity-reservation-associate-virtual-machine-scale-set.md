@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/09/2021
 ms.reviewer: cynthn, jushiman
 ms.custom: template-how-to
-ms.openlocfilehash: e2563f7addb773b256a56dc67b2ec892b7231372
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 9f8f9f14099c20259d26e9cf031695a1e72171a9
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129532649"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130066279"
 ---
 # <a name="associate-a-virtual-machine-scale-set-to-a-capacity-reservation-group-preview"></a>Zuordnen einer VM-Skalierungsgruppe zu einer Kapazitätsreservierungsgruppe (Vorschau)
 
@@ -82,6 +82,21 @@ Fügen Sie die `capacityReservationGroup`-Eigenschaft in `virtualMachineProfile`
     } 
 ```
 
+### <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/cli1)
+
+Verwenden Sie `az vmss create`, um eine neue VM-Skalierungsgruppe zu erstellen und die `capacity-reservation-group`-Eigenschaft hinzuzufügen, um die Skalierungsgruppe einer vorhandenen Kapazitätsreservierungsgruppe zuzuordnen. Das folgende Beispiel erstellt eine einheitliche Skalierungsgruppe für eine Standard_Ds1_v2-VM am Standort „USA, Osten“ und ordnet die Skalierungsgruppe einer Kapazitätsreservierungsgruppe zu.
+
+```azurecli-interactive
+az vmss create 
+--resource-group myResourceGroup 
+--name myVMSS 
+--location eastus 
+--vm-sku Standard_Ds1_v2 
+--image UbuntuLTS 
+--capacity-reservation-group /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName} 
+```
+
+
 ### <a name="powershell"></a>[PowerShell](#tab/powershell1) 
 
 Verwenden Sie `New-AzVmss`, um eine neue VM-Skalierungsgruppe zu erstellen und die `CapacityReservationGroupId`-Eigenschaft hinzuzufügen, um die Skalierungsgruppe einer vorhandenen Kapazitätsreservierungsgruppe zuzuordnen. Das folgende Beispiel erstellt eine einheitliche Skalierungsgruppe für eine Standard_Ds1_v2-VM am Standort „USA, Osten“ und ordnet die Skalierungsgruppe einer Kapazitätsreservierungsgruppe zu.
@@ -149,6 +164,26 @@ Um in der öffentlichen Vorschau eine vorhandene einheitliche VM-Skalierungsgrup
                 }
         }
     }
+    ```
+
+### <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/cli2)
+
+1. Heben Sie die Zuordnung der VM-Skalierungsgruppe auf. 
+
+    ```azurecli-interactive
+    az vmss deallocate 
+    --location eastus
+    --resource-group myResourceGroup 
+    --name myVMSS 
+    ```
+
+1. Ordnen Sie die Skalierungsgruppe der Kapazitätsreservierungsgruppe zu. 
+
+    ```azurecli-interactive
+    az vmss update 
+    --resource-group myResourceGroup 
+    --name myVMSS 
+    --capacity-reservation-group /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/capacityReservationGroups/{capacityReservationGroupName}
     ```
 
 ### <a name="powershell"></a>[PowerShell](#tab/powershell2) 
@@ -236,6 +271,14 @@ GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{
     } 
 } 
 ```  
+
+### <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/cli3)
+
+```azurecli-interactive
+az capacity reservation group show 
+-g myResourceGroup
+-n myCapacityReservationGroup 
+``` 
 
 ### <a name="powershell"></a>[PowerShell](#tab/powershell3) 
 

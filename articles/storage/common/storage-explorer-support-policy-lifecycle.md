@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 07/10/2020
 ms.author: marayerm
-ms.openlocfilehash: 37486f22aba1be1ac987238d38e69b95553a8629
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: c43f0873cd2b233df08438fdf796f4e389886972
+ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128638214"
+ms.lasthandoff: 10/05/2021
+ms.locfileid: "129458792"
 ---
 # <a name="azure-storage-explorer-support-lifecycle-and-policy"></a>Supportlebenszyklus und -richtlinie für den Azure Storage-Explorer
 
@@ -33,14 +33,17 @@ Der Storage-Explorer unterliegt der [modernen Lebenszyklusrichtlinie](https://su
 
 Ab Version 1.14.1 werden alle Storage-Explorer-Releases, die älter sind als 12 Monate sind, nicht mehr unterstützt. Alle Releases vor Version 1.14.1 werden ab dem 14. Juli 2021 nicht mehr unterstützt. Bei Versionen, die nicht mehr unterstützt werden, ist nicht mehr sichergestellt, dass diese vollständig wie vorgesehen und erwartet funktionieren. Eine Liste mit allen Releases, deren Veröffentlichungsdatum und dem jeweiligen Supportende finden Sie unter [Releases](#releases).
 
-Ab Version 1.13.0 wird eine In-App-Warnung angezeigt, wenn eine Version in ungefähr einem Monat nicht mehr unterstützt wird. Diese Warnung rät den Benutzern dazu, den Storage-Explorer auf die aktuelle Version zu aktualisieren. Sobald eine Version nicht mehr unterstützt wird, wird die In-App-Warnung bei jedem Start angezeigt.
+Ab Version 1.13.0 kann eine In-App-Warnung angezeigt werden, wenn eine Version in ungefähr einem Monat nicht mehr unterstützt wird. Diese Warnung rät den Benutzern dazu, den Storage-Explorer auf die aktuelle Version zu aktualisieren. Sobald eine Version nicht mehr unterstützt wird, kann die In-App-Warnung bei jedem Start angezeigt werden.
 
 ## <a name="releases"></a>Releases
 
 In der folgenden Tabelle sind jeweils das Veröffentlichungsdatum und das Supportende für die einzelnen Azure Storage-Explorer-Releases aufgeführt.
 
-| Storage-Explorer-Version  | Veröffentlichungsdatum         | Supportende |
+| Storage-Explorer-Version  | Veröffentlichungsdatum       | Supportende |
 |:-------------------------:|:------------------:|:-------------------:|
+| v1.21.2                   | 28. September 2021 | 28. September 2022  |
+| v1.21.1                   | 22. September 2021 | 22. September 2022  |
+| v1.21.0                   | 8. September 2021  | 8\. September 2022   |
 | v1.20.1                   | 23. Juli 2021      | 23. Juli 2022       |
 | v1.20.0                   | 25. Juni 2021      | 25. Juni 2022       |
 | v1.19.1                   | 29. April 2021     | 29. April 2022      |
@@ -56,7 +59,7 @@ In der folgenden Tabelle sind jeweils das Veröffentlichungsdatum und das Suppor
 | 1\.14.0                   | 24. Juni 2020      | 14. Juli 2021       |
 | 1\.13.1                   | 18. Mai 2020       | 14. Juli 2021       |
 | 1\.13.0                   | 1\. Mai 2020        | 14. Juli 2021       |
-| 1\.12.0                   | 16. Januar 2020     | 14. Juli 2021       |
+| 1\.12.0                   | 16. Januar 2020   | 14. Juli 2021       |
 | 1\.11.2                   | 17. Dezember 2019  | 14. Juli 2021       |
 | 1\.11.1                   | 20. November 2019  | 14. Juli 2021       |
 | 1\.11.0                   | 4\. November 2019   | 14. Juli 2021       |
@@ -69,7 +72,7 @@ In der folgenden Tabelle sind jeweils das Veröffentlichungsdatum und das Suppor
 | 1\.6.2                    | 8\. Januar 2019    | 14. Juli 2021       |
 | 1\.6.1                    | 18. Dezember 2018  | 14. Juli 2021       |
 | 1\.6.0                    | 4\. Dezember 2018   | 14. Juli 2021       |
-| 1\.5.0                    | 29. Oktober 2018     | 14. Juli 2021       |
+| 1\.5.0                    | 29. Oktober 2018   | 14. Juli 2021       |
 | 1\.4.4                    | 15. Oktober 2018   | 14. Juli 2021       |
 | 1\.4.2                    | 24. September 2018 | 14. Juli 2021       |
 | 1\.4.1                    | 28. August 2018    | 14. Juli 2021       |

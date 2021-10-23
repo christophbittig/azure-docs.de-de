@@ -8,12 +8,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 05/12/2021
 ms.author: lajanuar
-ms.openlocfilehash: 050a587ba5fb91ce6c9483d31cccd90f1943e567
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1bf3f8e082a54e7f48fa43040e40cb54001b1d19
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128652531"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129715464"
 ---
 <!-- markdownlint-disable MD024 -->
 <!-- markdownlint-disable MD033 -->
@@ -190,7 +190,7 @@ Verwenden Sie die Methode `begin_recognize_invoices_from_url`, um Rechnungen unt
 > [!TIP]
 > Mit Methoden vom Typ [FormRecognizerClient](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient) (beispielsweise `begin_recognize_invoices`) können Sie auch lokale Bilder von Rechnungen analysieren. 
 
-## <a name="analyze-identity-documents"></a>Analysieren von Ausweisdokumenten
+## <a name="analyze-id-documents"></a>Analysieren von Ausweisdokumenten
 
 In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe des vordefinierten Formularerkennungs-ID-Modells wichtige Informationen aus von staatlichen Behörden ausgestellten Ausweisdokumenten (internationale Reisepässe und US-Führerscheine) analysieren und extrahieren. Weitere Informationen zur Ausweisdokumentanalyse finden Sie unter [Vordefiniertes ID-Modell der Formularerkennung für Ausweise](../../concept-identification-cards.md).
 

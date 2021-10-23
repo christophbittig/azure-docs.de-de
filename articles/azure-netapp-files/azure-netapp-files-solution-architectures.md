@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/13/2021
+ms.date: 10/07/2021
 ms.author: b-juche
-ms.openlocfilehash: 4311070b594b7cfadde4845bf7e9f8380b8657bf
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 3cbfd4349c96457e7278327d9edc3e31cd521211
+ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128577012"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129659961"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Lösungsarchitekturen mit Azure NetApp Files
 Dieser Artikel enthält Verweise auf bewährte Methoden, die Ihnen helfen können, die Lösungsarchitekturen für die Verwendung von Azure NetApp Files zu verstehen.  
@@ -43,6 +43,7 @@ In diesem Abschnitt finden Sie Referenzen zu Lösungen für Linux OSS-Anwendunge
 ### <a name="machine-learning"></a>Machine Learning
 *   [Cloudera Machine Learning](https://docs.cloudera.com/machine-learning/cloud/requirements-azure/topics/ml-requirements-azure.html)
 *   [Verteiltes Training in Azure: Lane-Erkennung – Lösungsentwurf](https://www.netapp.com/media/32427-tr-4896-design.pdf)
+*   [Verteiltes Training in Azure: Vorhersage der Durchklickrate (Click-Through)– Lösungsentwurf](https://docs.netapp.com/us-en/netapp-solutions/ai/aks-anf_introduction.html)
 
 ### <a name="education"></a>Education
 * [Moodle unter Azure NetApp Files-NFS-Speicher](https://techcommunity.microsoft.com/t5/azure-architecture-blog/azure-netapp-files-for-nfs-storage-with-moodle/ba-p/2300630)
@@ -53,6 +54,7 @@ In diesem Abschnitt finden Sie Referenzen zu Lösungen für Windows-Anwendungen 
 
 ### <a name="file-sharing-and-global-file-caching"></a>Dateifreigaben und globales Dateicaching
 
+* [Notfallwiederherstellung für Enterprise-Dateifreigaben mit Azure NetApp Files und DFS-Namespaces](https://techcommunity.microsoft.com/t5/azure-architecture-blog/disaster-recovery-for-enterprise-file-shares/ba-p/2808757)
 * [Build Your Own Azure NFS? Wrestling Linux File Shares into Cloud](https://cloud.netapp.com/blog/ma-anf-blg-build-your-own-linux-nfs-file-shares) (Erstellen eines eigenen NFS: Verschieben von Linux-Dateifreigaben in die Cloud)
 * [Globally Distributed Enterprise File Sharing with Azure NetApp Files and NetApp Global File Cache](https://f.hubspotusercontent20.net/hubfs/525875/NA-580-0521-Architecture-Doc-R3.pdf) (Global verteilte Unternehmens-Dateifreigaben mit Azure NetApp Files und NetApp Global File Cache)
 * [Cloud-Compliance für Azure NetApp Files](https://cloud.netapp.com/hubfs/Cloud%20Compliance%20for%20Azure%20NetApp%20Files%20-%20November%202020.pdf)

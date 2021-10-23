@@ -3,7 +3,7 @@ title: Überspringen des Löschvorgangs für Benutzer außerhalb des Gültigkeit
 description: Hier erfahren Sie, wie Sie in Azure Active Directory das Standardverhalten beim Aufheben der Bereitstellung von Benutzern außerhalb des Gültigkeitsbereichs außer Kraft setzen.
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: how-to
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/11/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 6d9483ee7d6d131b28f58ce559f0313f3eddbb34
-ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
+ms.openlocfilehash: 3aa0176db0bba82d1a793fd196c6a7bead4d531f
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113231798"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129990746"
 ---
 # <a name="skip-deletion-of-user-accounts-that-go-out-of-scope-in-azure-active-directory"></a>Überspringen des Löschvorgangs von Benutzerkonten außerhalb des Gültigkeitsbereichs in Azure Active Directory
 

@@ -3,7 +3,7 @@ title: Bekannte Probleme bei der Anwendungsbereitstellung in Azure Active Direct
 description: Hier finden Sie Informationen über bekannte Probleme bei der Arbeit mit der automatisierten Anwendungsbereitstellung in Azure Active Directory.
 author: kenwith
 ms.author: kenwith
-manager: mtillman
+manager: karenh444
 services: active-directory
 ms.service: active-directory
 ms.subservice: app-provisioning
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/07/2021
 ms.reviewer: arvinh
-ms.openlocfilehash: 1180852bdaa88f1c717ab6a44d85d84412c5b155
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 6c790baf2dfc7c08306bdf96598e33e8bdc6b9c6
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114449605"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129991221"
 ---
 # <a name="known-issues-for-application-provisioning-in-azure-active-directory"></a>Bekannte Probleme bei der Anwendungsbereitstellung in Azure Active Directory
 In diesem Artikel werden bekannte Probleme erläutert, die Sie bei der App-Bereitstellung beachten sollten. Geben Sie Ihr Feedback zum Anwendungsbereitstellungsdienst über UserVoice ab. Weitere Informationen finden Sie auf der [UserVoice-Seite zur Azure AD-Anwendungsbereitstellung (Azure Active Directory)](https://aka.ms/appprovisioningfeaturerequest). Wir beobachten UserVoice genau, damit wir den Dienst verbessern können.

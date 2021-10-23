@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 4cb7fdf7f32070de66e81736d7572e0b48aad896
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 7e7ea41a95c2b59e124f8f605be52f3ba774f763
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123429494"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129998635"
 ---
 # <a name="add-a-bar-chart-layer"></a>Hinzufügen einer Balkendiagrammebene
 
@@ -56,6 +56,14 @@ Im Folgenden finden Sie alle Einstellungen im Bereich **Format**, die im Abschni
 > Wenn die Balken einen niedrigen Breitenwert aufweisen und die Option **Breite beim Zoomen skalieren** deaktiviert ist, werden die Balken beim Herauszoomen möglicherweise nicht mehr dargestellt, weil ihre gerenderte Breite weniger als einen Pixel beträgt. Ist die Option **Breite beim Zoomen skalieren** jedoch aktiviert, werden bei Änderung des Zoomfaktors zusätzliche Berechnungen durchgeführt, die sich bei großen Datasets auf die Leistung auswirken können.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
+Ändern Sie, wie Ihre Daten auf der Karte angezeigt werden:
+
+> [!div class="nextstepaction"]
+> [Hinzufügen einer Blasenebene](power-bi-visual-add-bubble-layer.md)
+
+> [!div class="nextstepaction"]
+> [Hinzufügen einer Wärmebildebene](power-bi-visual-add-heat-map-layer.md)
 
 Fügen Sie der Karte mehr Kontext hinzu:
 

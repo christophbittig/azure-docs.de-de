@@ -3,7 +3,7 @@ title: Konfigurieren eines Verfügbarkeitsgruppe (Azure-Portal)
 description: Verwenden Sie das Azure-Portal, um den Windows-Failovercluster, den Verfügbarkeitsgruppenlistener und den internen Lastenausgleich auf einer SQL Server-VM in Azure zu erstellen.
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: rajeshsetlem
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.subservice: hadr
@@ -11,15 +11,15 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/20/2020
-ms.author: mathoma
-ms.reviewer: jroth
+ms.author: rsetlem
+ms.reviewer: mathoma
 ms.custom: seo-lt-2019, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: ece52b707418ba9a0c92bffc39f5a8b17b720336
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.openlocfilehash: 36b2d461b73b778541b79142633a6aafca9509e0
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111572476"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130162925"
 ---
 # <a name="use-azure-portal-to-configure-an-availability-group-preview-for-sql-server-on-azure-vm"></a>Verwenden des Azure-Portals zum Konfigurieren einer Verfügbarkeitsgruppe (Vorschau) für SQL Server auf einem virtuellen Azure-Computer 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -178,7 +178,7 @@ Sie können den Status Ihrer Bereitstellung im **Aktivitätsprotokoll** überpr�
 
 ## <a name="configure-quorum"></a>Konfigurieren des Quorums
 
-Obwohl der Datenträgerzeuge die resilienteste Quorumoption ist, erfordert er einen freigegebenen Azure-Datenträger, der einige Einschränkungen für die Verfügbarkeitsgruppe erzwingt. Daher ist der Cloudzeuge die empfohlene Quorumlösung für Cluster, die Verfügbarkeitsgruppen für SQL Server auf Azure-VMs hosten. 
+Obwohl der Datenträgerzeuge die resilienteste Quorumoption ist, erfordert er einen freigegebenen Azure-Datenträger, der einige Einschränkungen für die Verfügbarkeitsgruppe mit sich bringt. Daher ist der Cloudzeuge die empfohlene Quorumlösung für Cluster, die Verfügbarkeitsgruppen für SQL Server auf Azure-VMs hosten. 
 
 Wenn Sie im Cluster über eine gerade Anzahl von Stimmen verfügen, konfigurieren Sie die [Quorumlösung](hadr-cluster-quorum-configure-how-to.md), die Ihren Geschäftsanforderungen am besten entspricht. Weitere Informationen finden Sie unter [Quorum mit SQL Server-VMs](hadr-windows-server-failover-cluster-overview.md#quorum). 
 
@@ -283,6 +283,6 @@ Nachdem die Verfügbarkeitsgruppe bereitgestellt wurde, sollten Sie die [HADR-Ei
 
 Weitere Informationen finden Sie unter:
 
-- [Windows Server-Failovercluster mit SQL Server auf Azure-VMs](hadr-windows-server-failover-cluster-overview.md)
+- [Windows Server-Failovercluster mit SQL Server auf Azure-VMs](hadr-windows-server-failover-cluster-overview.md)
 - [Always On-Verfügbarkeitsgruppen mit SQL Server auf Azure-VMs](availability-group-overview.md)
 - [Übersicht über Always On-Verfügbarkeitsgruppen](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)

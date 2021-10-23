@@ -2,20 +2,20 @@
 title: Benutzerprofilattribute in Azure Active Directory B2C
 description: Hier finden Sie Informationen zu den Attributen von Benutzerressourcentypen, die vom Azure AD B2C-Verzeichnisbenutzerprofil unterstützt werden. Informieren Sie sich über integrierte Attribute, Erweiterungen und darüber, wie Attribute Microsoft Graph zugeordnet werden.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/24/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: c11227d975f572d6d473a22f62f4616ad024af3b
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 2b3970504811b3dd97002b0da57d6af6ddf9413b
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129061445"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130043755"
 ---
 # <a name="user-profile-attributes"></a>Benutzerprofilattribute
 
@@ -39,7 +39,7 @@ In der nachstehenden Tabelle sind die Attribute von [Benutzerressourcentypen](/g
 - Ob das Attribut in einem Benutzerflow verwendet werden kann
 - Ob das Attribut in einem [technischen Azure AD-Profil](active-directory-technical-profile.md) in einer benutzerdefinierten Richtlinie verwendet werden kann und in welchem Abschnitt (&lt;InputClaims&gt;, &lt;OutputClaims&gt; oder &lt;PersistedClaims&gt;)
 
-|Name     |Typ     |Beschreibung|Azure-Portal|Benutzerabläufe|Benutzerdefinierte Richtlinie|
+|Name     |type     |BESCHREIBUNG|Azure-Portal|Benutzerabläufe|Benutzerdefinierte Richtlinie|
 |---------|---------|----------|------------|----------|-------------|
 |accountEnabled  |Boolean|Gibt an, ob das Benutzerkonto aktiviert oder deaktiviert ist: **true**, wenn das Konto aktiviert ist, andernfalls **false**.|Ja|Nein|Persistent, Ausgabe|
 |ageGroup        |String|Die Altersgruppe des Benutzers. Mögliche Werte: „Null“, „Undefined“, „Minor“, „Adult“ und „NotAdult“.|Ja|Nein|Persistent, Ausgabe|
@@ -115,7 +115,7 @@ Ein Benutzer mit einem Kundenkonto kann sich mit mehreren Identitäten anmelden.
 
 In der Microsoft Graph-API werden sowohl lokale als auch Verbundidentitäten im Benutzerattribut `identities` gespeichert, das den Typ [objectIdentity](/graph/api/resources/objectidentity) aufweist. Die Sammlung `identities` stellt einen Satz von Identitäten dar, die für die Anmeldung bei einem Benutzerkonto verwendet werden. Diese Sammlung ermöglicht dem Benutzer, sich mit den zugehörigen Identitäten beim Benutzerkonto anzumelden. Das „identities“-Attribut kann bis zu zehn [objectIdentity](/graph/api/resources/objectidentity)-Objekte enthalten. Jedes Objekt enthält die folgenden Eigenschaften:
 
-| Name   | Typ |BESCHREIBUNG|
+| Name   | type |BESCHREIBUNG|
 |:---------------|:--------|:----------|
 |signInType|Zeichenfolge| Gibt die Benutzeranmeldetypen in Ihrem Verzeichnis an. Für ein lokales Konto: `emailAddress`, `emailAddress1`, `emailAddress2`, `emailAddress3`, `userName` oder ein beliebiger anderer Typ. Bei einem Konto für soziale Netzwerke muss dies auf `federated` festgelegt werden.|
 |Issuer (Aussteller)|Zeichenfolge|Gibt den Aussteller der Identität an. Bei lokalen Konten (bei denen **signInType** nicht `federated` ist) ist diese Eigenschaft der Standarddomänenname des lokalen B2C-Mandanten, z. B. `contoso.onmicrosoft.com`. Bei einer Identität für ein soziales Netzwerk (bei der der **signInType** `federated` ist) entspricht der Wert dem Namen des Ausstellers, z. B. `facebook.com`.|

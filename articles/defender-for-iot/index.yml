@@ -15,14 +15,14 @@ metadata:
   ms.date: 06/16/2021
 highlightedContent:
   items:
-    - title: Was ist Azure Defender für IoT für Organisationen?
+    - title: Was ist Azure Defender für IoT für Endbenutzerorganisationen?
       itemType: overview
       url: organizations/overview.md
-    - title: Neues für Organisationen
+    - title: Neues für Endbenutzerorganisationen
       itemType: whats-new
       url: organizations/release-notes.md
-    - title: Unternehmenslösung ohne Agent
-      itemType: overview
+    - title: Architektur der Lösung ohne Agent für Endbenutzerorganisationen
+      itemType: architecture
       url: organizations/architecture.md
     - title: Was ist Azure Defender für IoT für Gerätehersteller?
       itemType: overview
@@ -30,19 +30,19 @@ highlightedContent:
     - title: Neues für Geräteentwickler
       itemType: whats-new
       url: device-builders/release-notes.md
-    - title: Agent-basierte Lösung für Gerätehersteller
-      itemType: overview
+    - title: Architektur einer Agent-basierten Lösung für Gerätehersteller
+      itemType: architecture
       url: device-builders/architecture-agent-based.md
 conceptualContent:
   items:
-    - title: Azure Defender für IoT für Organisationen
+    - title: Azure Defender für IoT für Endbenutzerorganisationen
       links:
         - url: organizations/quickstart-system-prerequisites.md
           itemType: quickstart
           text: Systemanforderungen
         - url: organizations/getting-started.md
           itemType: quickstart
-          text: Erste Schritte mit Azure Defender für IoT für Organisationen
+          text: Erste Schritte mit Azure Defender für IoT für Endbenutzerorganisationen
         - url: organizations/concept-key-concepts.md
           itemType: quickstart
           text: Wichtige Begriffe

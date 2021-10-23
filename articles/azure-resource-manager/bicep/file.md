@@ -3,12 +3,12 @@ title: BICEP-Dateistruktur und-Syntax
 description: Beschreibt die Struktur und die Eigenschaften einer BICEP-Datei mithilfe von deklarativer Syntax.
 ms.topic: conceptual
 ms.date: 10/07/2021
-ms.openlocfilehash: 8251c490b61f3bbb739fd9519c10b1b124f9064c
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.openlocfilehash: 8cdeb75aa676b9121d69ba8bf612067157328ee0
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129661120"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130067153"
 ---
 # <a name="understand-the-structure-and-syntax-of-bicep-files"></a>Verstehen der Struktur und Syntax von ARM-Vorlagen
 
@@ -129,7 +129,7 @@ Zulässige Werte sind:
 * **managementGroup** - wird für [Bereitstellungen der Verwaltungsgruppe](deploy-to-management-group.md) verwendet.
 * **Tenant** - Verwendet für [Tenant-Bereitstellungen](deploy-to-tenant.md).
 
-In einem Modul können Sie einen Bereich definieren, der sich vom Bereich für den Rest der Bicep-Datei unterscheiden kann. Weitere Informationen finden Sie unter [Online-Backup konfigurieren](modules.md#configure-module-scopes).
+In einem Modul können Sie einen Bereich definieren, der sich vom Bereich für den Rest der Bicep-Datei unterscheiden kann. Weitere Informationen finden Sie unter [Online-Backup konfigurieren](modules.md#set-module-scope).
 
 ## <a name="parameters"></a>Parameter
 

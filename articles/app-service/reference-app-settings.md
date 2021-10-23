@@ -3,12 +3,12 @@ title: Referenz zu Umgebungsvariablen und App-Einstellungen
 description: Dieser Artikel beschreibt die häufig verwendeten Umgebungsvariablen und welche mit App-Einstellungen geändert werden können.
 ms.topic: article
 ms.date: 06/14/2021
-ms.openlocfilehash: d3c34f64aa4e13fe0dce371d9848f6422e7b1f63
-ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
+ms.openlocfilehash: 3a51f620cefef67e8e2cd2256ad6dba19b915bf4
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2021
-ms.locfileid: "129399810"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130005127"
 ---
 # <a name="environment-variables-and-app-settings-in-azure-app-service"></a>Umgebungsvariablen und App-Einstellungen in Azure App Service
 
@@ -74,8 +74,14 @@ Die folgende Tabelle zeigt Umgebungsvariablenpräfixe, die von App Service für 
 | `POSTGRESQLCONNSTR_` | Gibt eine PostgreSQL-Verbindungszeichenfolge in der App-Konfiguration an. Sie wird als Verbindungszeichenfolge in eine .NET-App eingefügt. |
 | `CUSTOMCONNSTR_` | Gibt eine benutzerdefinierte Verbindungszeichenfolge in der App-Konfiguration an. Sie wird als Verbindungszeichenfolge in eine .NET-App eingefügt. |
 | `MYSQLCONNSTR_` | Gibt eine Azure SQL-Datenbank-Verbindungszeichenfolge in der App-Konfiguration an. Sie wird als Verbindungszeichenfolge in eine .NET-App eingefügt. |
-| `AZUREFILESSTORAGE_` | Eine Verbindungszeichenfolge zu einer benutzerdefinierten Azure-Dateifreigabe für eine Container-App. |
-| `AZUREBLOBSTORAGE_` | Eine Verbindungszeichenfolge zu einem benutzerdefinierten Azure Blob Storage für eine Container-App. |
+| `AZUREFILESSTORAGE_` | Eine Verbindungszeichenfolge zu einer benutzerdefinierten Freigabe für eine Container-App in Azure Files. |
+| `AZUREBLOBSTORAGE_` | Eine Verbindungszeichenfolge zu einem benutzerdefinierten Speicherkonto für eine Container-App in Azure Blob Storage. |
+| `NOTIFICATIONHUBCONNSTR_` | Gibt eine Verbindungszeichenfolge zu einem Notification Hub in Azure Notification Hubs an. |
+| `SERVICEBUSCONNSTR_` | Gibt eine Verbindungszeichenfolge zu einer Instanz von Azure Service Bus an. |
+| `EVENTHUBCONNSTR_` | Gibt eine Verbindungszeichenfolge zu einem Event Hub in Azure Event Hubs an. |
+| `DOCDBCONNSTR_` | Gibt eine Verbindungszeichenfolge zu einer Datenbank von Azure Cosmos DB an. |
+| `REDISCACHECONNSTR_` | Gibt eine Verbindungszeichenfolge zu einem Cache in Azure Cache for Redis an. |
+| `FILESHARESTORAGE_` | Gibt eine Verbindungszeichenfolge zu einer benutzerdefinierten Dateifreigabe an. |
 
 ## <a name="deployment"></a>Bereitstellung
 

@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 08/26/2021
 ms.author: allensu
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6d4671823f5eb3f186007aea46983860269d916b
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 03fa5b7e05a842addd88a890ee41829834910650
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129361761"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130036453"
 ---
 # <a name="manage-network-policies-for-private-endpoints"></a>Verwalten von Netzwerkrichtlinien für private Endpunkte
 
@@ -75,11 +75,11 @@ $vnet | Set-AzVirtualNetwork
 In diesem Abschnitt wird beschrieben, wie Sie Subnetzrichtlinien für private Endpunkte mit der Azure CLI deaktivieren können. Verwenden Sie [az network vnet subnet update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update), um die Richtlinie zu deaktivieren.
 
 ```azurecli
-az network vnet subnet update \ 
+az network vnet subnet update \
   --disable-private-endpoint-network-policies true \
-  --name default \ 
-  --resource-group myResourceGroup \ 
-  --vnet-name myVirtualNetwork \ 
+  --name default \
+  --resource-group myResourceGroup \
+  --vnet-name myVirtualNetwork
   
 ```
 
@@ -88,11 +88,11 @@ az network vnet subnet update \
 In diesem Abschnitt wird beschrieben, wie Sie Subnetzrichtlinien für private Endpunkte mit der Azure CLI aktivieren können. Verwenden Sie [az network vnet subnet update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update), um die Richtlinie zu aktivieren.
 
 ```azurecli
-az network vnet subnet update \ 
+az network vnet subnet update \
   --disable-private-endpoint-network-policies false \
-  --name default \ 
-  --resource-group myResourceGroup \ 
-  --vnet-name myVirtualNetwork \ 
+  --name default \
+  --resource-group myResourceGroup \
+  --vnet-name myVirtualNetwork
   
 ```
 ## <a name="resource-manager-template"></a>Resource Manager-Vorlage

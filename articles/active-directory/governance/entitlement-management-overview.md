@@ -17,12 +17,12 @@ ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: dcbc2f726d4c7c935462743578f863efc8762f79
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 076ca7918aee424dc6805f6a6bc997d1b0f060a1
+ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121749201"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130138634"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Was ist die Azure AD-Berechtigungsverwaltung?
 
@@ -121,11 +121,11 @@ Zum besseren Verständnis der Berechtigungsverwaltung und der dazugehörigen Dok
 
 | Begriff | BESCHREIBUNG |
 | --- | --- |
-| Zugriffspaket | Ein Ressourcenpaket, das von einem Team oder Projekt benötigt wird und Richtlinien unterliegt. Zugriffspakete sind immer in einem Katalog enthalten. Sie erstellen ein neues Zugriffspaket für ein Szenario, in dem Benutzer Zugriff anfordern müssen.  |
-| Zugriffsanforderung | Die Anforderung des Zugriffs auf die Ressourcen in einem Zugriffspaket. Eine Anforderung durchläuft in der Regel einen Genehmigungsworkflow.  Bei einer Genehmigung erhält der anfordernde Benutzer eine Zugriffspaketzuweisung. |
-| Zuweisung | Die Zuweisung eines Zugriffspakets für einen Benutzer stellt sicher, dass der Benutzer über alle Ressourcenrollen des betreffenden Zugriffspakets verfügt.  Zugriffspaketzuweisungen sind normalerweise zeitlich begrenzt, bevor sie ablaufen. |
-| catalog | Ein Container verwandter Ressourcen und Zugriffspakete.  Kataloge werden für die Delegierung verwendet, damit Nicht-Administratoren eigene Zugriffspakete erstellen können. Katalogbesitzer können Ressourcen, deren Besitzer sie sind, zu einem Katalog hinzufügen. |
-| Katalogersteller | Eine Auflistung der Benutzer, die berechtigt sind, neue Kataloge zu erstellen.  Wenn ein Nicht-Administratorbenutzer, der als Katalogersteller autorisiert wurde, einen neuen Katalog erstellt, wird er automatisch Besitzer des betreffenden Katalogs. |
+| Zugriffspaket | Ein Ressourcenpaket, das von einem Team oder Projekt benötigt wird und Richtlinien unterliegt. Zugriffspakete sind immer in einem Katalog enthalten. Sie erstellen ein neues Zugriffspaket für ein Szenario, in dem Benutzer Zugriff anfordern müssen. |
+| Zugriffsanforderung | Die Anforderung des Zugriffs auf die Ressourcen in einem Zugriffspaket. Eine Anforderung durchläuft in der Regel einen Genehmigungsworkflow. Bei einer Genehmigung erhält der anfordernde Benutzer eine Zugriffspaketzuweisung. |
+| Zuweisung | Die Zuweisung eines Zugriffspakets für einen Benutzer stellt sicher, dass der Benutzer über alle Ressourcenrollen des betreffenden Zugriffspakets verfügt. Zugriffspaketzuweisungen sind normalerweise zeitlich begrenzt, bevor sie ablaufen. |
+| catalog | Ein Container verwandter Ressourcen und Zugriffspakete. Kataloge werden für die Delegierung verwendet, damit Nicht-Administratoren eigene Zugriffspakete erstellen können. Katalogbesitzer können Ressourcen, deren Besitzer sie sind, zu einem Katalog hinzufügen. |
+| Katalogersteller | Eine Auflistung der Benutzer, die berechtigt sind, neue Kataloge zu erstellen. Wenn ein Nicht-Administratorbenutzer, der als Katalogersteller autorisiert wurde, einen neuen Katalog erstellt, wird er automatisch Besitzer des betreffenden Katalogs. |
 | Verbundene Organisation | Ein externes Azure AD-Verzeichnis bzw. eine externe Domäne, zu der eine Beziehung besteht. Die Benutzer einer verbundenen Organisation können in einer Richtlinie als Benutzer angegeben werden, die Zugriff anfordern dürfen. |
 | policy | Mehrere Regeln, die den Zugriffslebenszyklus definieren. Sie legen beispielsweise fest, wie Benutzer Zugriff erhalten, wer den Zugriff genehmigen darf und wie lange Benutzer durch eine Zuweisung Zugriff haben. Eine Richtlinie ist mit einem Zugriffspaket verknüpft. Ein Zugriffspaket kann beispielsweise zwei Richtlinien enthalten: eine für Mitarbeiter, um Zugriff anzufordern, und eine zweite für externe Benutzer, um Zugriff anzufordern. |
 | resource | Ein Asset, z. B. eine Office-Gruppe, eine Sicherheitsgruppe, eine Anwendung oder eine SharePoint Online-Website, mit einer Rolle, für die einem Benutzer Berechtigungen erteilt werden können. |

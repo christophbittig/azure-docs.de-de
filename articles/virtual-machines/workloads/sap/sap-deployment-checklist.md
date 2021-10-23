@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3c91961eb6e89533ee5b995eb56fdd172d21b6f2
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 45a18ade65a08b378652248bc0b0f62cb8f97e84
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124730178"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130072763"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Prüfliste für die Planung und Bereitstellung von SAP-Workloads in Azure
 
@@ -110,9 +110,9 @@ Es empfiehlt sich, im Rahmen einer Pilotbereitstellung eine vollständige HADR-L
            -  [Größen für virtuelle Linux-Computer in Azure](../../sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Für die Dimensionierung müssen Sie den *maximalen Durchsatz des Datenträgers ohne Cache* berücksichtigen.
    2. Speicher
         - Lesen Sie das Dokument [Azure-Speichertypen für SAP-Workloads](./planning-guide-storage.md).
-        - Verwenden Sie mindestens [Azure SSD-Standardspeicher](../../disks-types.md#standard-ssd) für VMs, die SAP-Anwendungsschichten darstellen, und für nicht leistungskritische DBMS-Bereitstellungen
-        - Im Allgemeinen empfehlen wir die Verwendung von [Azure HDD-Standarddatenträgern](../../disks-types.md#standard-hdd) nicht.
-        - Verwenden Sie [Azure Storage Premium](../../disks-types.md#premium-ssd) für alle DBMS-VMs, die auch nur entfernt leistungskritisch sind
+        - Verwenden Sie mindestens [Azure SSD-Standardspeicher](../../disks-types.md#standard-ssds) für VMs, die SAP-Anwendungsschichten darstellen, und für nicht leistungskritische DBMS-Bereitstellungen
+        - Im Allgemeinen empfehlen wir die Verwendung von [Azure HDD-Standarddatenträgern](../../disks-types.md#standard-hdds) nicht.
+        - Verwenden Sie [Azure Storage Premium](../../disks-types.md#premium-ssds) für alle DBMS-VMs, die auch nur entfernt leistungskritisch sind
         - Verwenden Sie [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/)
         - Verwenden Sie Azure-Schreibbeschleunigung für die DBMS-Protokolllaufwerke mit M-Serie. Beachten Sie die Grenzwerte für die Schreibbeschleunigung und die Nutzung. Eine Beschreibung finden Sie unter [Schreibbeschleunigung](../../how-to-enable-write-accelerator.md).
         - Überprüfen Sie für die verschiedenen DBMS-Typen die [allgemeine SAP-bezogene DBMS-Dokumentation](./dbms_guide_general.md) und die DBMS-spezifische Dokumentation, auf die das allgemeine Dokument verweist.

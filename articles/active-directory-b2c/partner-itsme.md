@@ -3,20 +3,20 @@ title: itsme OpenID Connect mit Azure Active Directory B2C
 titleSuffix: Azure AD B2C
 description: Es wird beschrieben, wie Sie die Azure AD B2C-Authentifizierung mit itsme OIDC integrieren, indem Sie die Benutzerflowrichtlinie „client_secret“ verwenden. itsme ist eine App für digitale IDs. Sie ermöglicht Ihnen das sichere Anmelden, ohne dass Sie Kartenleser, Kennwörter, die zweistufige Authentifizierung oder mehrere PIN-Codes verwenden müssen.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 09/20/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 03b2f3a4b0a9876b1880194233c81138589d1331
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 4d33746fb39d54fdeb9ed6a6754f22aea14a2a7c
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128583295"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130035902"
 ---
 # <a name="configure-itsme-openid-connect-oidc-with-azure-active-directory-b2c"></a>Konfigurieren von itsme OpenID Connect (OIDC) mit Azure Active Directory B2C
 
@@ -40,7 +40,7 @@ Zunächst benötigen Sie Folgendes:
 Please clarify step 1 in the description below - we don't have steps in this tutorial for "adapting in the Azure AD B2C Custom Policy- User Journeys" - should this be added somewhere?
 -->
 
-| Schritt | Beschreibung |
+| Schritt | BESCHREIBUNG |
 |------|------|
 |1     | Fügen Sie auf Ihrer Website bzw. in Ihrer Anwendung die Schaltfläche **Log in with itsme** (Mit itsme anmelden) hinzu, indem Sie den Azure AD B2C-Benutzerflow anpassen. Der Interaktionsfluss beginnt, wenn Benutzer auf diese Schaltfläche klicken.  |
 |2     | Azure AD B2C startet den OpenID Connect-Ablauf, indem eine „Authorize“-Anforderung an die itsme-API für den geheimen Clientschlüssel gesendet wird. Es ist ein bekannter bzw. OpenID-Konfigurationsendpunkt verfügbar, der Informationen zu den Endpunkten enthält.  |

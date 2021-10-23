@@ -3,7 +3,7 @@ title: Erstellen einer FCI mit freigegebenen Azure-Datenträgern
 description: Verwenden Sie freigegebene Azure-Datenträger, um eine Failoverclusterinstanz (FCI) mit SQL Server in Azure Virtual Machines zu erstellen.
 services: virtual-machines
 documentationCenter: na
-author: MashaMSFT
+author: rajeshsetlem
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
@@ -13,13 +13,14 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/26/2020
-ms.author: mathoma
-ms.openlocfilehash: 33beb3000c056d5fdb0e3ff2b859d103bfe7219b
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.author: rsetlem
+ms.reviewer: mathoma
+ms.openlocfilehash: 2964c068c9d60e9922b6544ca29dce20b2ac3dc2
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129532763"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130167030"
 ---
 # <a name="create-an-fci-with-azure-shared-disks-sql-server-on-azure-vms"></a>Erstellen einer FCI mit freigegebenen Azure-Datenträgern (SQL Server auf Azure-VMs)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]

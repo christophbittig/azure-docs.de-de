@@ -9,18 +9,18 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: a61eaa10420a9a4a413074559a158e2a32f5cf95
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 8bdb31d13f35f2ffbc4713623e5509675433ddd8
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128634993"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129997174"
 ---
 # <a name="resolve-past-due-balance-for-your-azure-subscription"></a>Begleichen überfälliger Zahlungen für Ihr Azure-Abonnement
 
 Dieser Artikel gilt für Kunden, die sich online mit einer Kreditkarte für Azure registriert haben und über ein Abrechnungskonto für das Microsoft Online Services-Programm verfügen. Informationen zum Überprüfen des Abrechnungskontotyps finden Sie [hier](#check-the-type-of-your-account). Falls Sie über ein Abrechnungskonto für eine Microsoft-Kundenvereinbarung verfügen, lesen Sie stattdessen den Artikel [Bezahlen Ihrer Rechnung für Microsoft Azure](../understand/pay-bill.md).
 
-Falls Ihre Zahlung nicht eingegangen ist oder wir die Zahlung nicht verarbeiten können, erhalten Sie eine E-Mail mit der Information, dass die Zahlung für Ihr Abonnement überfällig ist, und im Azure-Portal wird eine entsprechende Warnung angezeigt. Wenn Sie standardmäßig per Kreditkarte bezahlen, kann der [Kontoadministrator](../understand/subscription-transfer.md#whoisaa) die ausstehenden Gebühren über das Azure-Portal begleichen. Bei Zahlung auf Rechnung (Scheck/Überweisung) muss die Zahlung an den Empfänger gesendet werden, der unten auf der Rechnung angegeben ist.
+Falls Ihre Zahlung nicht eingegangen ist oder wir die Zahlung nicht verarbeiten können, erhalten Sie eine E-Mail mit der Information, dass die Zahlung für Ihr Abonnement überfällig ist, und im Azure-Portal wird eine entsprechende Warnung angezeigt. Wenn Sie standardmäßig per Kreditkarte bezahlen, kann der [Kontoadministrator](add-change-subscription-administrator.md#whoisaa) die ausstehenden Gebühren über das Azure-Portal begleichen. Bei Zahlung auf Rechnung (Scheck/Überweisung) muss die Zahlung an den Empfänger gesendet werden, der unten auf der Rechnung angegeben ist.
 
 > [!IMPORTANT]
 > * Wenn Sie über mehrere Abonnements verfügen, für die dieselbe Kreditkarte genutzt wird und die alle überfällige Zahlungen aufweisen, müssen Sie die gesamte ausstehende Summe auf einmal begleichen.

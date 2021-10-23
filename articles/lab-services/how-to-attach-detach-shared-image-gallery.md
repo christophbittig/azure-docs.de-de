@@ -1,14 +1,14 @@
 ---
 title: Anfügen oder Trennen eines Katalogs mit freigegebenen Images in Azure Lab Services | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie einen freigegebenen Imagekatalog an ein Classroom-Lab in Azure Lab Services anfügen.
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/11/2020
-ms.openlocfilehash: 62020f30b000292bf3e6af4cab61364e99ce4b5c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 496b88617fd6ae28a57b19e930002120e3352a4f
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355435"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130180987"
 ---
 # <a name="attach-or-detach-a-shared-image-gallery-in-azure-lab-services"></a>Anfügen oder Trennen eines Katalogs mit freigegebenen Images in Azure Lab Services
 Dieser Artikel zeigt, wie Sie einen Katalog mit freigegebenen Images einem Labkonto anfügen können. 

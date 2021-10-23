@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 10/11/2021
 ms.author: sajagtap
-ms.openlocfilehash: e476f6da88688cb055c741f0888001d864908bae
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: 2a336955ba40c8f3beb5b1e7575bee07cc3ef170
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129812413"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129997913"
 ---
 # <a name="form-recognizer-studio--preview"></a>Formularerkennung Studio | Vorschau
 
@@ -41,6 +41,10 @@ Die folgenden Features des Formularerkennungsdiensts sind in Studio verfügbar.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+* Befolgen Sie unser [**Migrationshandbuch zur Formularerkennung v3.0**](v3-migration-guide.md), um die Unterschiede zur vorherigen Version der REST-API kennen zu lernen.
+* Erkunden Sie unsere [**Schnellstartanleitungen zum Vorschau-SDK**](quickstarts/try-v3-python-sdk.md), um die Previewfunktionen in Ihren Anwendungen mithilfe der neuen SDKs auszuprobieren.
+* Sehen Sie sich unsere [**Schnellstartanleitungen zur Vorschau-REST-API**](quickstarts/try-v3-rest-api.md) an, um die Previewfunktionen mithilfe der neuen REST-API auszuprobieren.
+
 > [!div class="nextstepaction"]
-> [Erste Schritte: Formularerkennung Studio (Vorschau)](https://formrecognizer.appliedai.azure.com)
+> [Schnellstart: Formularerkennung Studio (Vorschau)](quickstarts/try-v3-form-recognizer-studio.md)
 

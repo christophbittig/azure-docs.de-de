@@ -3,7 +3,7 @@ title: Leitfaden zum Bereitstellen von SQL Server auf Azure-VMs mit Azure PowerS
 description: Enthält Schritte und PowerShell-Befehle zum Erstellen eines virtuellen Azure-Computers über Images aus dem Katalog von virtuellen Computern mit SQL Server.
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: bluefooted
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 98d50dd8-48ad-444f-9031-5378d8270d7b
@@ -13,15 +13,15 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/21/2018
-ms.author: mathoma
-ms.reviewer: jroth
+ms.author: pamela
+ms.reviewer: mathoma
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a3f51a07b274320d1cd9f12b33703d8ec7f21f49
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 02145b3007b2e7655d3d5e5643e873bdc1b4c9a5
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97359658"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130164581"
 ---
 # <a name="how-to-use-azure-powershell-to-provision-sql-server-on-azure-virtual-machines"></a>Bereitstellen von SQL Server auf virtuellen Azure-Computern mit Azure PowerShell
 
@@ -62,7 +62,7 @@ $ResourceGroupName = "sqlvm2"
 
 Definieren Sie das Speicherkonto und die Art des Speichers für den virtuellen Computer.
 
-Ändern Sie die Werte nach Bedarf, und führen Sie das folgende Cmdlet aus, um diese Variablen zu initialisieren. Für Produktionsworkloads werden [SSD Premium-Datenträger](../../../virtual-machines/disks-types.md#premium-ssd) empfohlen.
+Ändern Sie die Werte nach Bedarf, und führen Sie das folgende Cmdlet aus, um diese Variablen zu initialisieren. Für Produktionsworkloads werden [SSD Premium-Datenträger](../../../virtual-machines/disks-types.md#premium-ssds) empfohlen.
 
 ```powershell
 $StorageName = $ResourceGroupName + "storage"

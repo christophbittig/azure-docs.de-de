@@ -3,18 +3,16 @@ title: Preisszenarien für Anrufe (Sprache/Video) und Chats
 titleSuffix: An Azure Communication Services concept document
 description: Enthält eine Beschreibung des Preismodells für Communication Services.
 author: nmurav
-manager: nmurav
-services: azure-communication-services
 ms.author: nmurav
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: d2ea2c510aa9e6225de215da128670514f1dba3b
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 5d08f964899faf9fe438a0df68c6fe4401fd01c7
+ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129360443"
+ms.lasthandoff: 10/12/2021
+ms.locfileid: "129859378"
 ---
 # <a name="pricing-scenarios"></a>Preisszenarien
 
@@ -119,6 +117,35 @@ Die Ärztin Alice hat eine Besprechung mit dem Patienten Bob. Alice tritt über 
 - Benutzer, der über das Communication Services JavaScript SDK teilnimmt: 0,004 USD + 0,116 USD + 0,0024 USD = 0,1224 USD
 - Benutzer, der über die Teams-Desktopanwendung teilnimmt: 0 USD (abgedeckt durch die Teams-Lizenz)
 
+
+## <a name="call-recording"></a>Anrufaufzeichnung
+
+Mit Azure Communication Services können Telefonfestnetz-, WebRTC-, Konferenz- und SIP-Schnittstellenanrufe aufgezeichnet werden. Für die Anrufaufzeichnung werden derzeit das gemischte MP4-Ausgabeformat für Audio und Video und das gemischte MP3/WAV-Ausgabeformat für Audio unterstützt. Aufrufaufzeichnung-SDKs sind für Java und C# verfügbar. Weitere Informationen finden Sie auf [dieser Seite](../quickstarts/voice-video-calling/call-recording-sample.md).
+
+### <a name="price"></a>Preis
+
+Ihnen werden 0,01 USD/Minute für das gemischte Audio-/Videoformat und 0,002 USD/Minute für das gemischte Audioformat in Rechnung gestellt.
+
+### <a name="pricing-example-record-a-call-in-a-mixed-audiovideo-format"></a>Preisbeispiel: Aufzeichnen eines Anrufs im gemischten Audio-/Videoformat
+
+Alice hat einen Gruppenanruf mit ihren Kollegen Bob und Charlie durchgeführt. 
+
+- Der Anruf hat insgesamt 60 Minuten gedauert. Die Aufzeichnungsfunktion war 60 Minuten lang aktiv.
+- Bob hat 30 Minuten lang an einem Anruf teilgenommen, und Alice und Charlie 60 Minuten lang.
+
+**Berechnung der Kosten**
+- Ihnen wird die Dauer der Besprechung in Rechnung gestellt. (Die Dauer der Besprechung ist der Zeitraum, der mit dem Starten einer Aufzeichnung durch den Benutzer beginnt und endet, wenn die Besprechung explizit beendet wird oder alle Teilnehmer die Besprechung verlassen haben.)
+- 60 Minuten x 0,01 USD pro Aufzeichnung und Minute = 0,6 USD
+
+### <a name="pricing-example-record-a-call-in-a-mixed-audioonly-format"></a>Preisbeispiel: Aufzeichnen eines Anrufs im gemischten Audioformat
+
+Alice ruft Jane an. 
+
+- Der Anruf hat insgesamt 60 Minuten gedauert. Die Aufzeichnung hat 45 Minuten gedauert.
+
+**Berechnung der Kosten**
+- Ihnen wird die Dauer der Aufzeichnung in Rechnung gestellt. 
+- 45 Minuten x 0,002 USD pro Aufzeichnung und Minute = 0,09 USD
 
 ## <a name="chat"></a>Chat
 

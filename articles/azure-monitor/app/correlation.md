@@ -2,17 +2,15 @@
 title: Korrelation der Azure Application Insights-Telemetrie | Microsoft-Dokumentation
 description: Korrelation der Application Insights-Telemetrie
 ms.topic: conceptual
-author: lgayhardt
-ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: 450dd67c272de8ee250f0af66522ab3be26f63e5
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: d5511d2a04bcb40b267ccef15799b870ea96842a
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110077210"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130134068"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Telemetriekorrelation in Application Insights
 

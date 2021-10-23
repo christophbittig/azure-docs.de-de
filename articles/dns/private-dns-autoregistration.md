@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 04/26/2021
 ms.author: rohink
-ms.openlocfilehash: 0854412a83f941e43e79ebcde2f70ae62dabdf15
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 4357d3bc347d000ebcdd7c2a9a01069eb64a9343
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122965160"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130003797"
 ---
 # <a name="what-is-the-auto-registration-feature-in-azure-dns-private-zones"></a>Was ist die Funktion zur automatischen Registrierung in privaten Azure DNS-Zonen?
 
@@ -30,7 +30,7 @@ Zum Aktivieren der automatischen Registrierung wählen Sie beim Erstellen der VN
 * DNS-Einträge werden nur für die primäre NIC des virtuellen Computers automatisch erstellt. Wenn Ihre virtuellen Computer über mehr als eine Netzwerkkarte verfügen, können Sie die DNS-Einträge für andere Netzwerkschnittstellen manuell erstellen.
 * DNS-Einträge werden nur dann automatisch erstellt, wenn die primäre NIC des virtuellen Computers DHCP verwendet. Wenn Sie statische IP-Adressen verwenden, z. B. eine Konfiguration mit [mehreren IP-Adressen in Azure](../virtual-network/virtual-network-multiple-ip-addresses-portal.md#os-config), werden bei der automatischen Registrierung keine Einträge für diesen virtuellen Computer erstellt.
 * Die automatische Registrierung für IPv6 (AAAA-Einträge) wird nicht unterstützt.
-* Die automatische Registrierung für private DNS-Zonen ist auf ein einzelnes VNET beschränkt.
+* Ein bestimmtes virtuelles Netzwerk kann nur mit genau einer privaten DNS-Zone verknüpft werden, wenn die automatische DNS-Registrierung für VMs aktiviert ist. Sie können jedoch mehrere virtuelle Netzwerke mit einer einzelnen DNS-Zone verknüpfen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

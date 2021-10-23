@@ -3,16 +3,16 @@ title: Azure Defender für Server – Vorteile und Features
 description: Erfahren Sie etwas über die Vorteile und Features von Azure Defender für Server.
 author: memildin
 ms.author: memildin
-ms.date: 08/09/2021
+ms.date: 09/05/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 5ffa11472227375867be215ed73ee0b7fc203b9c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1a7b5d1e7ed3c4c1de2c535fb126b67f3ffadecd
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121743093"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129711704"
 ---
 # <a name="introduction-to-azure-defender-for-servers"></a>Einführung in Azure Defender für Server
 
@@ -32,13 +32,15 @@ Zu den Funktionen für Bedrohungserkennung und Schutz von Azure Defender für Se
     Wenn Defender für Endpunkt eine Bedrohung erkennt, wird eine Warnung ausgelöst. Die Warnung wird in Security Center angezeigt. Über Security Center können Sie auch zur Defender für Endpunkt-Konsole wechseln und eine ausführliche Untersuchung durchführen, um das Ausmaß des Angriffs zu ermitteln. Erfahren Sie mehr zu Microsoft Defender für Endpunkt.
 
     > [!IMPORTANT]
-    > Der **Microsoft Defender für Endpunkt**-Sensor wird automatisch auf Windows-Computern aktiviert, für die Security Center verwendet wird.
+    > Die Integration von Security Center mit Microsoft Defender für Endpunkt ist standardmäßig aktiviert. Wenn Sie Azure Defender aktivieren, erteilen Sie damit also die Zustimmung für Azure Defender für Server, auf die Daten von Microsoft Defender für Endpoint im Zusammenhang mit Sicherheitsrisiken, installierter Software und Warnungen für Ihre Endpunkte zuzugreifen.
     >
-    > Derzeit bieten wir den Sensor für Linux-Computer in der Vorschauversion an. Weitere Informationen finden Sie unter [Schützen Sie Ihre Endpunkte mit der in Security Center integrierten EDR-Lösung: Microsoft Defender für den Endpunkt](security-center-wdatp.md). 
+    > Derzeit bieten wir den Sensor für Linux-Computer in der Vorschauversion an. Weitere Informationen finden Sie unter [Schützen Sie Ihre Endpunkte mit der in Security Center integrierten EDR-Lösung: Microsoft Defender für den Endpunkt](security-center-wdatp.md).
 
-- **Überprüfung der Sicherheitsrisikobewertung für VMs**: Azure Defender für Server umfasst eine von Qualys unterstützte Überprüfung auf Sicherheitsrisiken.
+- **Tools zur Sicherheitsrisikobewertung für Computer:** Azure Defender für Server umfasst eine Auswahl von Tools zur Ermittlung und Verwaltung von Sicherheitsrisiken für Ihre Computer. Auf den Security Center-Einstellungsseiten können Sie auswählen, welche dieser Tools auf Ihren Computern bereitgestellt werden sollen, und die gefundenen Sicherheitsrisiken werden in einer Sicherheitsempfehlung angezeigt.
 
-    Der Scanner von Qualys ist eines der führenden Tools für die Echtzeiterkennung von Sicherheitsrisiken auf Ihren Azure- und Hybrid-VMs. Sie benötigen keine Qualys-Lizenz und auch kein Qualys-Konto – alles erfolgt nahtlos innerhalb von Security Center. Weitere Informationen finden Sie unter [Integrierte Azure Defender-Lösung zur Sicherheitsrisikobewertung für Azure- und Hybridcomputer](deploy-vulnerability-assessment-vm.md).
+    - **Microsoft Bedrohungs- und Sicherheitsrisikomanagement:** Entdecken Sie mit Microsoft Defender für Endpunkt Sicherheitsrisiken und Fehlkonfigurationen in Echtzeit, ohne dass zusätzliche Agents oder regelmäßige Überprüfungen erforderlich sind. Beim [Bedrohungs- und Sicherheitsrisikomanagement](/microsoft-365/security/defender-endpoint/next-gen-threat-and-vuln-mgt) werden die Sicherheitsrisiken basierend auf der Bedrohungsumgebung, den Erkennungen in Ihrer Organisation, der Vertraulichkeit der Informationen auf anfälligen Geräten und dem geschäftlichen Kontext priorisiert. Weitere Informationen finden Sie unter [Untersuchen von Schwachstellen mit dem Bedrohungs- und Sicherheitsrisikomanagement von Microsoft Defender für Endpunkt](deploy-vulnerability-assessment-tvm.md).
+
+    - **Überprüfung auf Sicherheitsrisiken von Qualys:** Der Scanner von Qualys ist eines der führenden Tools für die Echtzeiterkennung von Sicherheitsrisiken auf Ihren Azure- und Hybrid-VMs. Sie benötigen keine Qualys-Lizenz und auch kein Qualys-Konto – alles erfolgt nahtlos innerhalb von Security Center. Weitere Informationen finden Sie unter [Integrierte Azure Defender-Lösung zur Sicherheitsrisikobewertung für Azure- und Hybridcomputer](deploy-vulnerability-assessment-vm.md).
 
 - **Just-In-Time-Zugriff (JIT) auf virtuellen Computer (VM):** Bedrohungsakteure suchen aktiv nach zugänglichen Computern mit offenen Verwaltungsports, z. B. für RDP oder SSH. Alle Ihre virtuellen Computer sind potenzielle Ziele für Angriffe. Wenn eine VM erfolgreich kompromittiert wurde, wird sie als Einstiegspunkt verwendet, um weitere Ressourcen in Ihrer Umgebung anzugreifen.
 
@@ -55,6 +57,7 @@ Zu den Funktionen für Bedrohungserkennung und Schutz von Azure Defender für Se
 - **Adaptive Netzwerkhärtung (ANH):** Der Einsatz von Netzwerksicherheitsgruppen (NSGs) zum Filtern von ein- und ausgehendem Datenverkehr für Ressourcen verbessert den Sicherheitsstatus Ihres Netzwerks. Es gibt jedoch Situationen, in denen es sich bei dem Datenverkehr, der die NSG durchläuft, um eine Teilmenge der definierten NSG-Regeln handelt. In diesen Fällen lässt sich der Sicherheitsstatus durch eine Härtung der NSG-Regeln auf der Grundlage tatsächlicher Datenverkehrsmuster noch weiter verbessern.
 
     Die adaptive Netzwerkhärtung liefert Empfehlungen zur weiteren Härtung der NSG-Regeln. Dabei kommt ein Machine Learning-Algorithmus zum Einsatz, der Faktoren wie tatsächlichen Datenverkehr, bekannte vertrauenswürdige Konfiguration und Bedrohungsinformationen sowie weitere Anzeichen einer Kompromittierung berücksichtigt und auf der Grundlage dieser Faktoren Empfehlungen abgibt, um nur Datenverkehr von bestimmten IP-/Port-Tupeln zuzulassen. Weitere Informationen finden Sie unter [Verbessern des Netzwerksicherheitsstatus mit adaptiver Netzwerkhärtung](security-center-adaptive-network-hardening.md).
+
 
 - **Docker-Hosthärtung:** Azure Security Center identifiziert nicht verwaltete Container, die auf IaaS-Linux-VMs oder anderen Linux-Computern gehostet werden, auf denen Docker-Container ausgeführt werden. Security Center bewertet kontinuierlich die Konfigurationen dieser Container. Anschließend werden sie mit dem Docker-Benchmark von Center for Internet Security (CIS) verglichen. Security Center umfasst den gesamten Regelsatz des CIS-Docker-Benchmark und benachrichtigt Sie, sobald Ihre Container eine der Steuerungen nicht erfüllen. Weitere Informationen finden Sie unter [Härten Ihrer Docker-Hosts](harden-docker-hosts.md).
 
