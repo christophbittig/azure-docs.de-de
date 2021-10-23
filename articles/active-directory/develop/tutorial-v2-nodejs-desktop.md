@@ -3,19 +3,19 @@ title: 'Tutorial: Anmelden von Benutzern und Aufrufen der Microsoft Graph-API i
 titleSuffix: Microsoft identity platform
 description: In diesem Tutorial erstellen Sie eine Electron-Desktop-App, mit der sich Benutzer anmelden können, und verwenden den Autorisierungscodeflow, um ein Zugriffstoken von Microsoft Identity Platform zu erhalten und die Microsoft Graph-API aufzurufen.
 services: active-directory
-author: derisen
+author: KarenH444
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 02/17/2021
-ms.author: v-doeris
-ms.openlocfilehash: e9e36a3ed2cab05eb63168452bc8472656ab5efb
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: karenhoran
+ms.openlocfilehash: 2036a0317aef3d383d065cdd2ad6143342ea1d91
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101644288"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130161861"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-in-an-electron-desktop-app"></a>Tutorial: Anmelden von Benutzern und Aufrufen der Microsoft Graph-API in einer Electron-Desktop-App
 

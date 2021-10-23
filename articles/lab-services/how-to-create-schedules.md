@@ -1,14 +1,14 @@
 ---
 title: Erstellen eines Zeitplans für Labs in Azure Lab Services | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Zeitpläne für Labs in Azure Lab Services erstellen, sodass virtuelle Computer in den Labs zu einem bestimmten Zeitpunkt gestartet und heruntergefahren werden.
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 2a827c3d9f3022cb7d27ee43c9c95227c44f97e7
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 01ba9448ae22c80ee3a4833c8569b46af370c45e
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96434024"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130180607"
 ---
 # <a name="create-and-manage-schedules-for-labs-in-azure-lab-services"></a>Erstellen und Verwalten von Zeitplänen für Labs in Azure Lab Services 
 Mithilfe von Zeitplänen können Sie ein Classroom-Lab so konfigurieren, dass VMs im Lab automatisch zu einem bestimmten Zeitpunkt gestartet und heruntergefahren werden. Sie können einen einmaligen Zeitplan oder einen sich wiederholenden Zeitplan definieren. Die folgenden Verfahren zeigen die Schritte zum Erstellen und Verwalten von Zeitplänen für ein Classroom-Lab: 

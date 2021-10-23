@@ -2,10 +2,8 @@
 title: Azure Virtual Machines – SQL Server-DBMS-Bereitstellung für SAP-Workload | Microsoft-Dokumentation
 description: Azure Virtual Machines – SQL Server-DBMS-Bereitstellung für SAP-Workload
 services: virtual-machines-linux,virtual-machines-windows
-documentationcenter: ''
 author: msjuergent
 manager: bburns
-editor: ''
 tags: azure-resource-manager
 keywords: Azure, SQL Server, SAP, Always On
 ms.service: virtual-machines-sap
@@ -15,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 06/08/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 66426b6e48c15882f884657fbf8e75f44e500eb8
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 74c67e9aa143dafcf63c242cd83c20a85236c66e
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114467637"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130070449"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>Azure Virtual Machines – SQL Server-DBMS-Bereitstellung für SAP NetWeaver
 
@@ -320,7 +318,7 @@ Dieses Dokument behandelt verschiedene wichtige Themen für die Bereitstellung v
 
 Generell wird empfohlen, die neuesten SQL Server-Releases zu verwenden, um SAP-Workload in Azure IaaS auszuführen. Die neuesten SQL Server-Releases bieten eine bessere Integration in einige Azure-Dienste und -Funktionen. Außerdem umfassen sie Änderungen, die Abläufe in einer Azure IaaS-Infrastruktur optimieren.
 
-Es wird empfohlen, den Artikel [Was ist SQL Server auf Azure Virtual Machines (Windows)?][https://docs.microsoft.com/azure/azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview ] zu lesen, bevor Sie fortfahren.
+Es wird empfohlen, den Artikel [Was ist SQL Server auf Azure Virtual Machines (Windows)](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md) zu lesen, bevor Sie fortfahren.
 
 In den folgenden Abschnitten werden Inhalte aus dieser Dokumentation unter dem oben genannten Link zusammengefasst und erwähnt. Außerdem werden Besonderheiten in Bezug auf SAP erwähnt, und einige Konzepte werden ausführlicher beschrieben. Es wird jedoch dringend empfohlen, zuerst die oben genannte Dokumentation durchzuarbeiten, bevor Sie die SQL Server-spezifische Dokumentation lesen.
 
@@ -382,7 +380,7 @@ SQL Server 2014 und höher bietet die Möglichkeit, Datenbankdateien direkt in A
 * Die bereits genannten Überlegungen im Hinblick auf die Verteilung von VHDs auf verschiedene Azure Storage-Konten gelten auch für diese Bereitstellungsmethode. Dies bedeutet, dass die E/A-Vorgänge für die Grenzwerte des Azure-Speicherkontos eingerechnet werden.
 * Anstatt mit dem E/A-Speicherkontingent der VM verrechnet zu werden, wird der Datenverkehr mit Speicherblobs verrechnet, die die SQL Server-Daten und Protokolldateien darstellen, und zählt so zur Netzwerkbandbreite der VM des jeweiligen VM-Typs. Weitere Informationen zur Netzwerk- und Speicherbandbreite eines bestimmten VM-Typs finden Sie im Artikel [Größen für virtuelle Windows-Computer in Azure](../../sizes.md).
 * Indem Sie den E/A-Dateidurchsatz über das Netzwerkkontingent leiten, vergeuden Sie das Speicherkontingent zu weiten Teilen und nutzen die gesamte Bandbreite der VM daher nur teilweise.
-* Die Leistungsziele des IOPS- und E/A-Durchsatzes, die Azure Storage Premium für die verschiedenen Datenträgergrößen hat, gelten nicht mehr. Dies gilt auch für von Ihnen erstellte und in Azure Storage Premium gespeicherte Blobs. Die Ziele finden Sie unter [Storage Premium-Hochleistungsspeicher und verwaltete Datenträger für VMs](../../disks-types.md#premium-ssd). Da SQL Server-Datendateien und -Protokolldateien direkt auf Blobs platziert werden, die in Azure Storage Premium gespeichert sind, können die Leistungsmerkmale im Vergleich zu VHDs in Azure Storage Premium unterschiedlich sein.
+* Die Leistungsziele des IOPS- und E/A-Durchsatzes, die Azure Storage Premium für die verschiedenen Datenträgergrößen hat, gelten nicht mehr. Dies gilt auch für von Ihnen erstellte und in Azure Storage Premium gespeicherte Blobs. Die Ziele finden Sie unter [Storage Premium-Hochleistungsspeicher und verwaltete Datenträger für VMs](../../disks-types.md#premium-ssds). Da SQL Server-Datendateien und -Protokolldateien direkt auf Blobs platziert werden, die in Azure Storage Premium gespeichert sind, können die Leistungsmerkmale im Vergleich zu VHDs in Azure Storage Premium unterschiedlich sein.
 * Hostbasiertes Caching, wie es für Azure Storage Premium-Datenträger verfügbar ist, steht nicht zur Verfügung, wenn Sie SQL Server-Datendateien direkt in Azure-Blobs platzieren.
 * Auf VMs der M-Serie kann Azure-Schreibbeschleunigung nicht verwendet werden, um Schreibvorgänge im Bereich unter Millisekunden für SQL Server-Transaktionsprotokolldateien zu unterstützen. 
 
@@ -488,9 +486,9 @@ Die von SAP unterstützte Datenbankspiegelung (siehe SAP-Hinweis [965908]) basie
 
 Für Nur-Cloud-Bereitstellungen besteht die einfachste Methode darin, eine weitere Domäne in Azure einzurichten, damit sich die DBMS-VMs (und im Idealfall die dedizierten SAP-VMs) innerhalb einer Domäne befinden.
 
-Wenn keine weitere Domäne möglich ist, können Sie auch Zertifikate für die Endpunkte der Datenbankspiegelung verwenden, wie hier beschrieben: <https://docs.microsoft.com/sql/database-engine/database-mirroring/use-certificates-for-a-database-mirroring-endpoint-transact-sql>
+Wenn eine Domäne nicht möglich ist, können auch Zertifikate für die Datenbankspiegelungsendpunkte verwendet werden, wie unter folgendem Link beschrieben wird: [Verwenden von Zertifikaten für einen Datenbankspiegelungs-Endpunkt (Transact-SQL)](/sql/database-engine/database-mirroring/use-certificates-for-a-database-mirroring-endpoint-transact-sql)
 
-Ein Tutorial zum Einrichten der Datenbankspiegelung in Azure finden Sie hier: <https://docs.microsoft.com/sql/database-engine/database-mirroring/database-mirroring-sql-server> 
+Ein Tutorial zum Einrichten der Datenbankspiegelung in Azure finden Sie hier: [Datenbankspiegelung (SQL Server)](/sql/database-engine/database-mirroring/database-mirroring-sql-server)
 
 ### <a name="sql-server-always-on"></a>SQL Server Always On
 Da Always On für lokale SAP-Bereitstellungen unterstützt wird (siehe SAP-Hinweis [1772688]), wird Always On auch in Kombination mit SAP in Azure unterstützt. Bei der Bereitstellung des SQL Server-Verfügbarkeitsgruppenlisteners (nicht zu verwechseln mit der Azure-Verfügbarkeitsgruppe) sind einige Besonderheiten zu beachten, da Azure zurzeit die Erstellung eines AD-/DNS-Objekts nicht zulässt, wie es lokal möglich ist. Daher sind einige abweichende Installationsschritte notwendig, um das spezifische Verhalten von Azure zu umgehen.

@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: c2010bdb442112af6e62ed30abc8323b669b5166
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 93335dfe5b6cf5cb84975f332585060b07d8ca43
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122688335"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130071243"
 ---
 # <a name="memory-optimized-dv2-and-dsv2-series"></a>Arbeitsspeicheroptimierte Dv2- und Dsv2-Serie
 
@@ -85,7 +85,7 @@ Die DSv2-Serie wird auf dem Intel® Xeon® Platinum 8272CL-Prozessor (Cascade La
 
 Preisrechner: [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 
-Weitere Informationen zu Datenträgertypen: [Datenträgertypen](./disks-types.md#ultra-disk)
+Weitere Informationen zu Datenträgertypen: [Datenträgertypen](./disks-types.md#ultra-disks)
 
 
 ## <a name="next-steps"></a>Nächste Schritte

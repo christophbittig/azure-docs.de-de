@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 05/12/2021
 ms.author: lajanuar
 ms.custom: devx-track-js
-ms.openlocfilehash: 18111fcce10b5c139105d19edd3eda68c5dff33c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 880f27665b191df2459cbdc15b6a8afa47fd3f8c
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128652565"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129715417"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -87,7 +87,7 @@ Mit der Formularerkennung können Sie zwei verschiedene Clienttypen erstellen. D
 
 * Erkennen von Formularfeldern und -inhalten mithilfe von benutzerdefinierten Modellen, die zur Analyse Ihrer benutzerdefinierten Formulare trainiert wurden. Diese Werte werden in einer Sammlung von `RecognizedForm`-Objekten zurückgegeben.
 * Erkennen von Formularinhalten (einschließlich Tabellen, Zeilen und Wörtern), ohne dass ein Modell trainiert werden muss. Der Formularinhalt wird in einer Sammlung von `FormPage`-Objekten zurückgegeben.
-* Erkennen allgemeiner Felder in US-amerikanischen Belegen, Visitenkarten, Rechnungen und Ausweisdokumenten unter Verwendung eines vorab trainierten Modells für den Formularerkennungsdienst
+* Erkennen gängiger Felder in US-amerikanischen Belegen, Visitenkarten, Rechnungen und Ausweisdokumenten unter Verwendung eines vorab trainierten Modells für den Formularerkennungsdienst
 
 ### <a name="formtrainingclient"></a>FormTrainingClient
 
@@ -190,7 +190,7 @@ Verwenden Sie die Methode `beginRecognizeInvoicesFromUrl`, um Rechnungen unter e
 > [!TIP]
 > Mit Methoden vom Typ [FormRecognizerClient](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient) (beispielsweise **beginRecognizeInvoices**) können Sie auch lokale Bilder von Belegen analysieren. 
 
-## <a name="analyze-identity-documents"></a>Analysieren von Ausweisdokumenten
+## <a name="analyze-id-documents"></a>Analysieren von Ausweisdokumenten
 
 In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe des vordefinierten Formularerkennungs-ID-Modells wichtige Informationen aus von staatlichen Behörden ausgestellten Ausweisdokumenten (internationale Reisepässe und US-Führerscheine) analysieren und extrahieren. Weitere Informationen zur Ausweisdokumentanalyse finden Sie unter [Vordefiniertes ID-Modell der Formularerkennung für Ausweise](../../concept-identification-cards.md).
 

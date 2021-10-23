@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: a489b8fd416c750071fa5e292bf916f23c83dab5
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 946fe1e1700cfa90af6f329dc6786c5801e526a6
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340117"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130073941"
 ---
 # <a name="sap-businessobjects-bi-platform-planning-and-implementation-guide-on-azure"></a>Planungs- und Implementierungsleitfaden für die SAP BusinessObjects BI-Plattform in Azure
 
@@ -243,7 +243,7 @@ Azure Storage stellt Kunden verschiedene Speichertypen zur Verfügung und Inform
 
 - Verwaltete Azure-Datenträger
 
-  Dabei handelt es sich um ein Speichervolume auf Blockebene, das von Azure verwaltet wird. Sie können die Datenträger für Anwendungsserver und Datenbanken der SAP BOBI-Plattform verwenden, wenn sie auf virtuellen Azure-Computern installiert sind. Es sind verschiedene Arten von [verwalteten Azure-Datenträgern](../../managed-disks-overview.md) verfügbar, aber es wird empfohlen, [SSD Premium](../../disks-types.md#premium-ssd) für Anwendungen und Datenbanken der SAP BOBI-Plattform zu verwenden.
+  Dabei handelt es sich um ein Speichervolume auf Blockebene, das von Azure verwaltet wird. Sie können die Datenträger für Anwendungsserver und Datenbanken der SAP BOBI-Plattform verwenden, wenn sie auf virtuellen Azure-Computern installiert sind. Es sind verschiedene Arten von [verwalteten Azure-Datenträgern](../../managed-disks-overview.md) verfügbar, aber es wird empfohlen, [SSD Premium](../../disks-types.md#premium-ssds) für Anwendungen und Datenbanken der SAP BOBI-Plattform zu verwenden.
 
   Im folgenden Beispiel wird SSD Premium für das Installationsverzeichnis der BOBI-Plattform verwendet. Für Datenbanken, die auf einem virtuellen Computer installiert sind, können Sie gemäß den Richtlinien verwaltete Datenträger für Daten- und Protokollvolumes verwenden. CMS- und Überwachungsdatenbanken sind in der Regel klein und haben nicht dieselben Anforderungen an die Speicherleistung wie andere SAP OLTP/OLAP-Datenbanken.
 

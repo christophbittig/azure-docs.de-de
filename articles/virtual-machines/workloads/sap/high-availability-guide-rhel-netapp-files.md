@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/11/2021
 ms.author: radeltch
-ms.openlocfilehash: 8629a706ddc28ea79f67e6cabcebbbd87eba2419
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 02d79729f7629e2f74937374dfc255c8fcd080ff
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124730156"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130071433"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux-with-azure-netapp-files-for-sap-applications"></a>Hochverfügbarkeit von Azure Virtual Machines für SAP NetWeaver unter Red Hat Enterprise Linux mit Azure NetApp Files für SAP-Anwendungen
 
@@ -154,7 +154,7 @@ Die in diesem Artikel vorgestellte SAP NetWeaver-Architektur verwendet einen ein
    6. sap<b>QAS</b>-Volume (nfs://192.168.24.5/usrsap<b>qas</b>/usrsap<b>QAS</b>pas)
    7. sap<b>QAS</b>-Volume (nfs://192.168.24.5/usrsap<b>qas</b>/usrsap<b>QAS</b>aas)
   
-In diesem Beispiel haben wir Azure NetApp Files für alle SAP NetWeaver-Dateisysteme verwendet, um die Verwendung von Azure NetApp Files zu veranschaulichen. Die SAP-Dateisysteme, die nicht über NFS eingebunden werden müssen, können auch als [Azure Disk Storage](../../disks-types.md#premium-ssd) bereitgestellt werden. In diesem Beispiel müssen <b>a-e</b> als Azure NetApp Files bereitgestellt werden, und <b>f-g</b> (d. h. „/usr/sap/<b>QAS</b>/D<b>02</b>“ und „/usr/sap/<b>QAS</b>/D<b>03</b>“) können als Azure Disk Storage bereitgestellt werden. 
+In diesem Beispiel haben wir Azure NetApp Files für alle SAP NetWeaver-Dateisysteme verwendet, um die Verwendung von Azure NetApp Files zu veranschaulichen. Die SAP-Dateisysteme, die nicht über NFS eingebunden werden müssen, können auch als [Azure Disk Storage](../../disks-types.md#premium-ssds) bereitgestellt werden. In diesem Beispiel müssen <b>a-e</b> als Azure NetApp Files bereitgestellt werden, und <b>f-g</b> (d. h. „/usr/sap/<b>QAS</b>/D<b>02</b>“ und „/usr/sap/<b>QAS</b>/D<b>03</b>“) können als Azure Disk Storage bereitgestellt werden. 
 
 ### <a name="important-considerations"></a>Wichtige Hinweise
 

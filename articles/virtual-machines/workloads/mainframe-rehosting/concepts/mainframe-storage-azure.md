@@ -7,12 +7,12 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: mainframe-rehosting
-ms.openlocfilehash: 27f625e7fced5ff710a6fa0e8b2045a8c5434258
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 853fee40417bc09168fa1cfba1428b8e99bf9a86
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104954359"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130072744"
 ---
 # <a name="move-mainframe-storage-to-azure"></a>Verschieben von Mainframespeicher zu Azure
 
@@ -52,7 +52,7 @@ Azure-Speicher steht in Form von [Azure-Datenträgern](../../../managed-disks-ov
 
 <table>
 <thead>
-    <tr><th>Typ</th><th>Beschreibung</th><th>Für diese Zwecke geeignet:</th></tr>
+    <tr><th>type</th><th>BESCHREIBUNG</th><th>Für diese Zwecke geeignet:</th></tr>
 </thead>
 <tbody>
 <tr><td>Azure Files
@@ -109,7 +109,7 @@ Blob-Speicher bietet das größte Speichervolumen auf Azure. Neben der Speicherg
 - [Mainframerehosting auf virtuellen Azure-Computern](../overview.md)
 - [Verschieben von Mainframe-Computing zu Azure](mainframe-compute-Azure.md)
 - [Deciding when to use Azure Blobs, Azure Files, or Azure Disks (Kriterien für den Einsatz von Azure-Blobs, Azure-Dateifreigaben und verwalteten Azure-Datenträgern)](../../../../storage/common/storage-introduction.md)
-- [Verwaltete SSD Standard-Datenträger für Azure-VM-Workloads](../../../disks-types.md#standard-ssd)
+- [Verwaltete SSD Standard-Datenträger für Azure-VM-Workloads](../../../disks-types.md#standard-ssds)
 
 ### <a name="ibm-resources"></a>IBM-Ressourcen
 

@@ -3,7 +3,7 @@ title: Konfigurieren der Bereitstellung mithilfe von Microsoft Graph-APIs
 description: Erfahren Sie, wie Sie Zeit sparen können, indem Sie die Konfiguration der automatischen Bereitstellung mithilfe von Microsoft Graph-APIs automatisieren.
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 06/03/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 4bede3a7f5c39f8665d47984fb91cf2503842cae
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b5e9fda1932c367555ff54c98c0079332d274528
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339785"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129991848"
 ---
 # <a name="configure-provisioning-using-microsoft-graph-apis"></a>Konfigurieren der Bereitstellung mithilfe von Microsoft Graph-APIs
 

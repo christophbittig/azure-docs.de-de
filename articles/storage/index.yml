@@ -43,7 +43,7 @@ additionalContent:
           links:
             - url: ./blobs/data-lake-storage-introduction.md
               text: Informationen zu Speicher für Data Lakes für Unternehmen (Data Lake Storage)
-            - url: ./blobs/data-lake-storage-data-scenarios.md
+            - url: ./blobs/data-lake-storage-best-practices.md
               text: "Grundlegendes zu Optionen und Tools für die Big\_Data-Verarbeitung"
         - title: In der Cloud gehostete Dateifreigaben
           links:

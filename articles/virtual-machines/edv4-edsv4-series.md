@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: f00188c93bc664395ddb9b72fc5150ede31bf670
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: f1f31fe80a0ac156fdb7f2e01ec9a783c4220189
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123105407"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130071224"
 ---
 # <a name="edv4-and-edsv4-series"></a>Edv4- und Edsv4-Serie
 
@@ -97,7 +97,7 @@ Die Edsv4-Serie läuft auf Intel-Prozessoren des Typs Intel&reg; Xeon&reg; Plati
 
 Preisrechner: [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 
-Weitere Informationen zu Datenträgertypen: [Datenträgertypen](./disks-types.md#ultra-disk)
+Weitere Informationen zu Datenträgertypen: [Datenträgertypen](./disks-types.md#ultra-disks)
 
 
 ## <a name="next-steps"></a>Nächste Schritte

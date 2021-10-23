@@ -3,12 +3,12 @@ title: Registrierungstarife und -funktionen
 description: Erfahren Sie mehr über die Features und Beschränkungen (Kontingente) der Diensttarife (SKUs) „Basic“, „Standard“ und „Premium“ von Azure Container Registry.
 ms.topic: article
 ms.date: 08/12/2021
-ms.openlocfilehash: 7f9fe5d461dede4510d3fc8069f42e7950803984
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: e15824ec342ffd21f1a0f40dcc87c34c015112a1
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128582332"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130003267"
 ---
 # <a name="azure-container-registry-service-tiers"></a>Azure Container Registry-Tarife
 
@@ -65,7 +65,7 @@ Eine Drosselung kann vorübergehend auftreten, wenn Sie innerhalb eines sehr kur
 
 ## <a name="show-registry-usage"></a>Registrierungsnutzung anzeigen
 
-Verwenden Sie den Befehl [az acr show-usage](/cli/az/acr#az_acr_show_usage) oder die REST-API [Nutzungen auflisten](/rest/api/containerregstry/registries/list-usages), um eine Momentaufnahme Ihres Speicherverbrauchs und anderer Ressourcen im Vergleich zu den Grenzwerten für die Dienstebene dieser Registrierung zu erhalten. Speicherverwendung wird auch auf der Seite **Übersicht** der Registrierung im Portal angezeigt.
+Verwenden Sie den Befehl [az acr show-usage](/cli/azure/acr#az_acr_show_usage) oder die REST-API [Nutzungen auflisten](/rest/api/containerregistry/registries/list-usages), um eine Momentaufnahme Ihres Speicherverbrauchs und anderer Ressourcen im Vergleich zu den Grenzwerten für die Dienstebene dieser Registrierung zu erhalten. Speicherverwendung wird auch auf der Seite **Übersicht** der Registrierung im Portal angezeigt.
 
 Nutzungsinformationen helfen Ihnen, Entscheidungen zum [Ändern der Dienstebene](#changing-tiers) zu treffen, wenn sich ihre Registrierung einem Grenzwert nähert. Diese Informationen helfen Ihnen auch dabei, [Ihren Verbrauch unter Kontrolle zu halten](container-registry-best-practices.md#manage-registry-size). 
 

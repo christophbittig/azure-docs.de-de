@@ -1,14 +1,14 @@
 ---
 title: Leitfaden für beschleunigte Lab-Konto-Einrichtung für Azure Lab Services
 description: Dieser Leitfaden unterstützt Administratoren beim schnellen Einrichten eines Lab-Kontos für die Verwendung innerhalb ihrer Bildungseinrichtung.
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: e1f36b6d0983c10926a790d42edef3736e848a59
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8b233464da7e6a5c5529e0057240d839282faf46
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "104669388"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130177344"
 ---
 # <a name="lab-account-setup-guide"></a>Einrichtungsleitfaden für Lab-Konten
 Als Administrator müssen Sie vor dem Einrichten Ihrer Azure Lab Services-Umgebung zuerst ein *Lab-Konto* in Ihrem Azure-Abonnement erstellen. Ein Lab-Konto ist ein Container für eines oder mehrere Labs, dessen Einrichtung nur wenige Minuten in Anspruch nimmt.

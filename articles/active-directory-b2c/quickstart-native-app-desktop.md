@@ -3,21 +3,21 @@ title: 'Schnellstart: Einrichten der Anmeldung für eine Desktop-App'
 titleSuffix: Azure AD B2C
 description: In dieser Schnellstartanleitung führen Sie eine WPF-Desktopbeispielanwendung aus, bei der die Kontoanmeldung über Azure Active Directory B2C erfolgt.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 08/16/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: e2e1ce1e2935f97176e238c899a929019b26ba6d
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 964de300a9a37a4a2d5248778fe0e81d3d05fd3c
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123475348"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130035579"
 ---
 # <a name="quickstart-set-up-sign-in-for-a-desktop-app-using-azure-active-directory-b2c"></a>Schnellstart: Einrichten der Anmeldung für eine Desktop-App mit Azure Active Directory B2C
 

@@ -2,14 +2,14 @@
 title: Supportmatrix für Azure-Blobsicherung
 description: Dieser Artikel bietet eine Zusammenfassung der Unterstützungseinstellungen und Einschränkungen bei der Sicherung von Azure-Blobs.
 ms.topic: conceptual
-ms.date: 07/07/2021
+ms.date: 10/07/2021
 ms.custom: references_regions
-ms.openlocfilehash: 0d9dbcb9bb4497de4c8355ca42597b8e9eecd0e9
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: d0b524ba2865aa72f6fce88e326fffde435f71c3
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124799242"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714161"
 ---
 # <a name="support-matrix-for-azure-blobs-backup"></a>Supportmatrix für Azure-Blobsicherung
 
@@ -17,13 +17,13 @@ In diesem Artikel erhalten Sie einen Überblick über die regionale Verfügbarke
 
 ## <a name="supported-regions"></a>Unterstützte Regionen
 
-Operative Sicherungen für Blobs sind derzeit in den folgenden Regionen verfügbar: „Australien, Mitte“, „Australien, Mitte 2“, „Australien, Osten“, „Australien, Südosten“, „Brasilien, Süden“, „Brasilien, Südosten“, „Kanada, Mitte“, „Kanada, Osten“, „Indien, Mitte“, „USA, Mitte“, „Asien, Osten“, „USA, Osten“, „USA, Osten 2“, „Frankreich, Mitte“, „Deutschland, Norden“, „Deutschland, Westen-Mitte“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „Südkorea, Süden“, „USA, Norden-Mitte“, „Europa, Norden“, „Norwegen, Osten“, „Norwegen, Westen“, „Südafrika, Norden“, „USA, Süden-Mitte“, „Asien, Südosten“, „Indien, Süden“, „Schweiz, Norden“, „Schweiz, Westen“, „VAE, Mitte“, „VAE, Norden“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „USA, Westen-Mitte“, „Europa, Westen“, „Indien, Westen“, „USA, Westen“ und „USA, Westen 2“.
+Die operative Sicherung für Blobs ist in allen öffentlichen Cloudregionen verfügbar, mit Ausnahme von „Frankreich, Süden“ und „Südafrika, Westen“. Sie ist auch in Sovereign Cloud-Regionen verfügbar – allen Azure Government-Regionen und China-Regionen (mit Ausnahme von „China, Osten“).
 
 ## <a name="limitations"></a>Einschränkungen
 
 Die operative Sicherung von Blobs verwendet die Zeitpunktwiederherstellung von Blobs, Blobversionierung, vorläufiges Löschen für Blobs, einen Änderungsfeed für Blobs und eine Löschsperre, um eine lokale Sicherungslösung bereitzustellen. Daher gelten Einschränkungen dieser einzelnen Funktionen auch für die operative Sicherung.
 
-**Unterstützte Szenarien:** Die operative Sicherung unterstützt nur Blockblobs in Standardspeicherkonten vom Typ „Allgemein v2“. ADLS Gen2-Konten werden daher nicht unterstützt. Außerdem werden Seitenblobs, Anfügeblobs und Premium-Blobs in Ihrem Speicherkonto nicht wiederhergestellt. Nur Blockblobs werden wiederhergestellt.
+**Unterstützte Szenarien:** Die operative Sicherung unterstützt nur Blockblobs in Standardspeicherkonten vom Typ „Allgemein v2“. Storage Konten mit aktivierten hierarchischen Namespaces (d. h. ADLS Gen2-Konten) werden nicht unterstützt.   <br><br>   Außerdem werden Seitenblobs, Anfügeblobs und Premium-Blobs in Ihrem Speicherkonto nicht wiederhergestellt. Nur Blockblobs werden wiederhergestellt.
 
 **Weitere Einschränkungen:**
 

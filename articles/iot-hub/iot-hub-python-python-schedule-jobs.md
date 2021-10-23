@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: robinsh
 ms.custom: devx-track-python
-ms.openlocfilehash: 305d3103e9f0f0bdfb3ce49f5c801ca0f2f975ff
-ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
+ms.openlocfilehash: 93374b3cf4f2383039f0a3a670388803511881f2
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122835241"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130178973"
 ---
 # <a name="schedule-and-broadcast-jobs-python"></a>Planen und Übertragen von Aufträgen (Python)
 
@@ -342,4 +342,4 @@ Sie können nun die Anwendungen ausführen.
 
 In diesem Tutorial haben Sie einen Auftrag zum Planen einer direkten Methode für ein Gerät und eines Updates der Eigenschaften eines Gerätezwillings verwendet.
 
-Informationen zu den weiteren Schritten mit IoT Hub und Geräteverwaltungsmustern, z. B. drahtloses Firmware-Remoteupdate, finden Sie unter [Durchführen eines Firmwareupdates](tutorial-firmware-update.md).
+Informationen zu den weiteren ersten Schritten mit IoT Hub und Geräteverwaltungsmustern wie z. B. einem imagebasierten End-to-End-Update finden Sie im [Tutorial „Device Update for Azure IoT Hub unter Verwendung des Raspberry Pi 3 B+-Referenzimages“](../iot-hub-device-update/device-update-raspberry-pi.md).

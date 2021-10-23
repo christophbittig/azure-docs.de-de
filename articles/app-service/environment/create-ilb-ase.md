@@ -1,18 +1,18 @@
 ---
 title: Erstellen einer ILB-ASE mit ARM
 description: Hier erfahren Sie, wie Sie mit Azure Resource Manager-Vorlagen eine App Service-Umgebung mit einem internen Lastenausgleich (ILB-ASE) erstellen. Isolieren Sie Ihre Apps vollständig vom Internet.
-author: ccompy
+author: madsd
 ms.assetid: 0f4c1fa4-e344-46e7-8d24-a25e247ae138
 ms.topic: quickstart
 ms.date: 09/16/2020
-ms.author: ccompy
+ms.author: madsd
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 331a91f645c64f0b70ff6c4de922b455eb344ce2
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: ae6e4be378df9b626f17b6bd5b0fd2b620a17392
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113433254"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130005165"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>Erstellen und Verwenden einer App Service-Umgebung für internen Lastenausgleich 
 > [!NOTE]
@@ -171,7 +171,7 @@ Bei ILB-ASEs, die vor Mai 2019 erstellt wurden, mussten Sie das Domänensuffix w
 [ARMOverview]: ../../azure-resource-manager/management/overview.md
 [ConfigureSSL]: ../configure-ssl-certificate.md
 [Kudu]: https://azure.microsoft.com/resources/videos/super-secret-kudu-debug-console-for-azure-web-sites/
-[ASEWAF]: app-service-app-service-environment-web-application-firewall.md
+[ASEWAF]: integrate-with-application-gateway.md
 [AppGW]: ../../web-application-firewall/ag/ag-overview.md
 [customdomain]: ../app-service-web-tutorial-custom-domain.md
 [linuxapp]: ../overview.md#app-service-on-linux

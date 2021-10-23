@@ -8,12 +8,12 @@ ms.date: 06/29/2021
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: b72066dbeda75ae651b26c76b99697d978986a50
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: ebc655cc772f0d05ef44a453076d5e17d217a54d
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123435292"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130038382"
 ---
 # <a name="change-your-performance-tier-without-downtime-using-the-azure-powershell-module-or-the-azure-cli"></a>Ändern der Leistungsstufe ohne Ausfallzeiten mithilfe des Azure PowerShell-Moduls oder der Azure CLI
 
@@ -85,20 +85,7 @@ New-AzDisk -DiskName $diskName -Disk $diskConfig -ResourceGroupName $resourceGro
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-1. Sie müssen das Feature für Ihr Abonnement aktivieren, bevor Sie die Leistungsstufe eines Datenträgers ohne Downtime ändern können. Durch die folgenden Schritte wird das Feature für Ihr Abonnement aktiviert:
-
-    1.  Führen Sie den folgenden Befehl aus, um das Feature für Ihr Abonnement zu registrieren.
-
-        ```azurecli
-        az feature register --namespace Microsoft.Compute --name LiveTierChange
-        ```
-
-    1.  Überprüfen Sie mithilfe des folgenden Befehls, ob der Registrierungsstatus **Registriert** lautet (dies kann einige Minuten dauern), bevor Sie das Feature ausprobieren.
-
-        ```azurecli
-        az feature show --namespace Microsoft.Compute --name LiveTierChange
-        ```
-2. Aktualisieren der Ebene eines Datenträgers, selbst wenn er an eine aktuell ausgeführte VM angefügt ist
+1. Aktualisieren der Ebene eines Datenträgers, selbst wenn er an eine aktuell ausgeführte VM angefügt ist
 
     ```azurecli
     resourceGroupName=<yourResourceGroupNameHere>
@@ -110,20 +97,7 @@ New-AzDisk -DiskName $diskName -Disk $diskConfig -ResourceGroupName $resourceGro
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-1. Sie müssen das Feature für Ihr Abonnement aktivieren, bevor Sie die Leistungsstufe eines Datenträgers ohne Downtime ändern können. Durch die folgenden Schritte wird das Feature für Ihr Abonnement aktiviert:
-
-    1.  Führen Sie den folgenden Befehl aus, um das Feature für Ihr Abonnement zu registrieren.
-
-        ```azurepowershell
-         Register-AzProviderFeature -FeatureName "LiveTierChange" -ProviderNamespace "Microsoft.Compute" 
-        ```
-
-    1.  Überprüfen Sie mithilfe des folgenden Befehls, ob der Registrierungsstatus **Registriert** lautet (dies kann einige Minuten dauern), bevor Sie das Feature ausprobieren.
-
-        ```azurepowershell
-        Register-AzProviderFeature -FeatureName "LiveTierChange" -ProviderNamespace "Microsoft.Compute" 
-        ```
-2. Aktualisieren der Ebene eines Datenträgers, selbst wenn er an eine aktuell ausgeführte VM angefügt ist
+1. Aktualisieren der Ebene eines Datenträgers, selbst wenn er an eine aktuell ausgeführte VM angefügt ist
 
     ```azurepowershell
     $resourceGroupName='yourResourceGroupName'

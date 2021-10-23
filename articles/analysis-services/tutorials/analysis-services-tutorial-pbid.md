@@ -4,15 +4,15 @@ author: minewiskan
 description: In diesem Tutorial erfahren Sie, wie Sie einen Analysis Services-Servernamen aus dem Azure-Portal abrufen und dann mit Power BI Desktop eine Verbindung mit dem Server herstellen können.
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 08/31/2020
+ms.date: 10/12/2021
 ms.author: owend
 ms.reviewer: owend
-ms.openlocfilehash: 46805427e6d00e858cf869eef68bf68549f57fb9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dcee9b5cb2f2117c6ccec68ca9fff63ada8abe5b
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92018116"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130001806"
 ---
 # <a name="tutorial-connect-with-power-bi-desktop"></a>Tutorial: Herstellen einer Verbindung unter Verwendung von Power BI Desktop
 

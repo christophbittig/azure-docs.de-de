@@ -10,12 +10,12 @@ ms.date: 08/16/2021
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 47445520e92f6c7f4a8e5eb78c404b6875dbe017
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 187c4c1808133308f607bf9cb70b851a16d50e57
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129274062"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130039123"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>Ändern der Replikation eines Speicherkontos
 
@@ -108,9 +108,9 @@ Wenn Sie Ihr Speicherkonto von LRS zu ZRS in der primären Region migrieren müs
 
 Während einer Livemigration können Sie ohne jegliche Verluste hinsichtlich Dauerhaftigkeit oder Verfügbarkeit auf die Daten in Ihrem Speicherkonto zugreifen. Die Azure Storage-SLA wird während des Migrationsprozesses aufrechterhalten. Bei einer Livemigration treten keine Datenverluste auf. Dienstendpunkte, Zugriffsschlüssel, Shared Access Signatures und andere Kontooptionen sind auch nach der Migration unverändert.
 
-In der Leistungsstufe „Standard“ unterstützt ZRS nur Konten vom Typ „Universell V2“. Führen Sie deshalb ein Upgrade für Ihr Speicherkonto durch, wenn es sich um ein Konto vom Typ „Universell V1“ handelt, bevor Sie eine Anforderung für eine Livemigration zu ZRS übermitteln. Weitere Informationen finden Sie unter [Durchführen eines Upgrades auf ein Speicherkonto vom Typ „Allgemein v2“](storage-account-upgrade.md). Ein Speicherkonto muss Daten enthalten, damit eine Livemigration durchgeführt werden kann.
+Bei Standardleistung unterstützt ZRS nur Konten vom Typ „Universell V2“. Führen Sie deshalb ein Upgrade für Ihr Speicherkonto durch, wenn es sich um ein Konto vom Typ „Universell V1“ handelt, bevor Sie eine Anforderung für eine Livemigration zu ZRS übermitteln. Weitere Informationen finden Sie unter [Durchführen eines Upgrades auf ein Speicherkonto vom Typ „Allgemein v2“](storage-account-upgrade.md). Ein Speicherkonto muss Daten enthalten, damit eine Livemigration durchgeführt werden kann.
 
-In der Leistungsstufe „Premium“ wird die Livemigration für Premium-Dateifreigabekonten unterstützt, jedoch nicht für Premium-Blockblob- oder Premium-Seitenblobkonten.
+Bei Premiumleistung wird die Livemigration für Premium-Dateifreigabekonten unterstützt, aber nicht für Premium-Blockblob- oder Premium-Seitenblobkonten.
 
 Wenn Ihr Konto RA-GRS verwendet, müssen Sie zuerst den Replikationstyp Ihres Kontos in LRS oder GRS ändern, bevor Sie mit einer Livemigration fortfahren. Dieser Zwischenschritt entfernt den sekundären schreibgeschützten Endpunkt, der von RA-GRS bereitgestellt wird.
 

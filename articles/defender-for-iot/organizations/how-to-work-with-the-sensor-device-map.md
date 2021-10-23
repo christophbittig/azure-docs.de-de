@@ -3,12 +3,12 @@ title: Arbeiten mit der Sensorgerätezuordnung
 description: Die Geräteübersicht bietet eine grafische Darstellung erkannter Netzwerkgeräte. Mithilfe der Übersicht können Sie Geräteinformationen und Netzwerksegmente analysieren und verwalten sowie Berichte generieren.
 ms.date: 1/7/2021
 ms.topic: how-to
-ms.openlocfilehash: f7579cbca618baef404236556993c9831dd84bdf
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 58ccb69606f41a279424d0faa0241befbe9914bf
+ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113016526"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130137799"
 ---
 # <a name="investigate-sensor-detections-in-the-device-map"></a>Untersuchen von Sensorerkennungen in der Geräteübersicht
 
@@ -320,7 +320,7 @@ Die folgenden Informationen können manuell geändert werden. Manuell eingegeben
 | Betriebssystem | Das vom Sensor erkannte Betriebssystem des Geräts. |
 | Purdue-Ebene | Die vom Sensor für dieses Gerät erkannte Purdue-Ebene wie z. B.: <br /> Automatisch <br /> Prozesssteuerung <br /> Aufsicht <br /> – Enterprise |
 | BESCHREIBUNG | Ein Feld für die freie Texteingabe. <br /> Fügen Sie weitere Informationen zum Gerät hinzu. |
-| Attributes | Alle zusätzlichen Informationen, die in der Lernphase über das Gerät entdeckt wurden und nicht zu anderen Kategorien gehören, werden im Abschnitt „Attribute“ angezeigt. <br /> Diese Informationen sind schreibgeschützt. |
+| Attributes | Auf dem Gerät wurden zusätzliche Informationen entdeckt. Zeigen Sie beispielsweise den SPS-Ausführungs- und -Schlüsselstatus, den sicheren Status der SPS oder Informationen dazu an, wann sich der Zustand geändert hat.  <br /> Die Informationen sind schreibgeschützt und können aus dem Abschnitt „Attribute“ nicht aktualisiert werden. |
 | Einstellungen | Sie können Geräteeinstellungen manuell ändern, um falsch positive Ergebnisse zu vermeiden: <br /> - **Autorisiertes Gerät**: In der Lernphase werden alle im Netzwerk erkannten Geräte als autorisierte Geräte identifiziert. Wenn ein Gerät nach der Lernphase erkannt wird, wird es standardmäßig als nicht autorisiertes Gerät ausgewiesen. Sie können diese Festlegung manuell ändern. <br /> - **Als Scanner bekannt**: Aktivieren Sie diese Option, wenn Sie wissen, dass dieses Gerät als Scanner bekannt ist und keine Notwendigkeit besteht, Sie davor zu warnen. <br /> - **Programmiergerät**: Aktivieren Sie diese Option, wenn Sie wissen, dass dieses Gerät als Programmiergerät bekannt ist und zur Vornahme von Programmierungsänderungen verwendet wird. Wenn Sie es als Programmiergerät identifizieren, werden Warnungen wegen Programmierungsänderungen verhindert, die von dieser Ressource stammen. |
 | Benutzerdefinierte Gruppen | Die benutzerdefinierten Gruppen in der Geräteübersicht, zu denen dieses Gerät gehört. |
 | State | Der Sicherheits- und Autorisierungsstatus des Geräts: <br /> Der Status ist `Secured`, wenn keine Warnungen vorhanden sind. <br /> Wenn Warnungen zum Gerät vorliegen, wird die Anzahl der Warnungen angezeigt. <br /> Der Status `Unauthorized` wird für Geräte angezeigt, die nach der Lernphase dem Netzwerk hinzugefügt wurden. Sie können das Gerät in den Einstellungen manuell als `Authorized Device` festlegen. <br /> Für den Fall, dass die Adresse dieses Geräts als dynamische Adresse festgelegt ist, wird `DHCP` dem Status hinzugefügt. |

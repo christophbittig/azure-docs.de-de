@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: 0c5321625f9963a15527d8fb0edef73f0701bd6e
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: 89714a766dfd4ddc2c952554ab12068121543044
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129856383"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130070772"
 ---
 # <a name="dcsv2-series"></a>DCsv2-Serie
 
@@ -22,7 +22,8 @@ Die virtuellen Computer der DCsv2-Serie können Ihnen beim Schutz der Vertraulic
 
 Diese Computer werden von 3,7 GHz Intel® Xeon E-2288G (Coffee Lake) mit SGX-Technologie unterstützt. Mit der Intel® Turbo Boost Max Technology 3.0 können diese Computer bis zu 5,0 GHz erreichen. 
 
-[!NOTE] Hyperthreading ist deaktiviert, um den Sicherheitsstatus zu verbessern. Die Preise basieren auf der im Vergleich zu virtuellen Kernen überlegenen Leistung physischer Kerne sowie auf den einzigartigen Sicherheitsfunktionen der DC-Serie.
+> [!NOTE]
+> Hyperthreading ist deaktiviert, um den Sicherheitsstatus zu verbessern. Die Preise basieren auf der im Vergleich zu virtuellen Kernen überlegenen Leistung physischer Kerne sowie auf den einzigartigen Sicherheitsfunktionen der DC-Serie.
 
 Beispiele für vertrauliche Anwendungsfälle sind Datenbanken, Blockchain, Analyse von Mehrparteiendaten, Betrugserkennung, Geldwäschebekämpfung, Nutzungsanalyse, Business Intelligence-Analyse und maschinelles Lernen.
 
@@ -63,7 +64,7 @@ Beispiele für vertrauliche Anwendungsfälle sind Datenbanken, Blockchain, Analy
 - [High Performance Computing](sizes-hpc.md)
 - [Vorherige Generationen](sizes-previous-gen.md)
 - [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
-- [Weitere Informationen zu Datenträgertypen](./disks-types.md#ultra-disk)
+- [Weitere Informationen zu Datenträgertypen](./disks-types.md#ultra-disks)
 
 Preisrechner: [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 

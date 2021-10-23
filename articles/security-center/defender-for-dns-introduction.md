@@ -3,25 +3,22 @@ title: 'Azure Defender für DNS: Vorteile und Features'
 description: Enthält eine Beschreibung der Vorteile und Features von Azure Defender für DNS.
 author: memildin
 ms.author: memildin
-ms.date: 08/18/2021
+ms.date: 10/11/2021
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: cffe4947e321cbd1f2cbb8a4d22141039129c1e1
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: ad2b761a747401646c48dcbf32385b8e5ec153c1
+ms.sourcegitcommit: ee5d9cdaf691f578f2e390101bf5350859d85c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122419594"
+ms.lasthandoff: 10/11/2021
+ms.locfileid: "129740225"
 ---
 # <a name="introduction-to-azure-defender-for-dns"></a>Einführung in Azure Defender für DNS
 
-[Azure DNS](../dns/dns-overview.md) ist ein Hostingdienst für DNS-Domänen, der eine Namensauflösung mittels Microsoft Azure-Infrastruktur bietet. Indem Sie Ihre Domänen in Azure hosten, können Sie Ihre DNS-Einträge unter Verwendung der gleichen Anmeldeinformationen, APIs, Tools und Abrechnungsabläufe wie bei Ihren anderen Azure-Diensten verwalten.
+Azure Defender für DNS bietet eine zusätzliche Schutzebene für Ressourcen, die die Azure DNS-Funktion [Von Azure bereitgestellte Namensauflösung](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#azure-provided-name-resolution) nutzen. 
 
-Azure Defender für DNS bietet durch folgende Maßnahmen eine zusätzliche Schutzebene für Ihre Ressourcen, die mit Azure DNS verbunden sind:
-
-- Kontinuierliche Überwachung aller DNS-Abfragen Ihrer Azure-Ressourcen
-- Durchführung erweiterter Sicherheitsanalysen, um Sie auf verdächtige Aktivitäten aufmerksam zu machen
+In Azure DNS überwacht Defender für DNS die Abfragen von diesen Ressourcen und erkennt verdächtige Aktivitäten, ohne dass zusätzliche Agents für Ihre Ressourcen erforderlich sind.
 
 ## <a name="availability"></a>Verfügbarkeit
 
@@ -34,12 +31,12 @@ Azure Defender für DNS bietet durch folgende Maßnahmen eine zusätzliche Schut
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-dns"></a>Welche Vorteile bietet Azure Defender für DNS?
 
-Azure Defender für DNS schützt Ressourcen, die mit Azure DNS verbunden sind, u. a. gegen folgende Probleme:
+Azure Defender für DNS erkennt etwa folgende verdächtige und anomale Aktivitäten:
 
-- Datenexfiltration aus Ihren Azure-Ressourcen mittels DNS-Tunneling
-- Schadsoftware, die mit dem C&C-Server kommuniziert
-- Kommunikation mit schädlichen Domänen (beispielsweise Phishing und Kryptografiemining)
-- DNS-Angriffe (Kommunikation mit schädlichen DNS-Resolvern) 
+- **Datenexfiltration** aus Ihren Azure-Ressourcen mittels DNS-Tunneling
+- **Schadsoftware**, die mit Command-and-Control-Servern kommuniziert
+- **DNS-Angriffe** (Kommunikation mit schädlichen DNS-Resolvern) 
+- **Kommunikation mit Domänen, die für schädliche Aktivitäten verwendet werden** (etwa Phishing und Crypto Mining)
 
 Eine vollständige Liste der Warnungen, die von Azure Defender für DNS bereitgestellt werden, finden Sie auf der [Referenzseite zu Warnungen](alerts-reference.md#alerts-dns).
 

@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/13/2021
+ms.date: 10/14/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: fe6397b79ff37074342b40880aa5284e020cd8a1
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: 86cf5cfaf5d64c9aa1f1cda17df543b953a5ed17
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129859188"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130066982"
 ---
 # <a name="authorize-access-to-blobs-using-azure-active-directory"></a>Autorisieren des Zugriffs auf Blobs mithilfe von Azure Active Directory
 
@@ -32,15 +32,17 @@ Wenn ein Sicherheitsprinzipal (ein Benutzer, eine Gruppe oder eine Anwendung) ve
 
 Für den Authentifizierungsschritt ist es erforderlich, dass eine Anwendung zur Laufzeit ein OAuth 2.0-Zugriffstoken anfordert. Wenn eine Anwendung in einer Azure-Entität, z. B. einer Azure-VM, einer VM-Skalierungsgruppe oder einer Azure Functions-App, ausgeführt wird, kann der Zugriff auf Blobdaten über eine [verwaltete Identität](../../active-directory/managed-identities-azure-resources/overview.md) erfolgen. Informationen zur Autorisierung von Anforderungen über eine verwaltete Identität an den Azure Blob-Dienst finden Sie unter [Autorisieren des Zugriffs auf Blobdaten mit verwalteten Identitäten für Azure-Ressourcen](authorize-managed-identity.md).
 
-Der Autorisierungsschritt erfordert, dass dem Sicherheitsprinzipal mindestens eine Azure-Rolle zugewiesen wird. Azure Storage umfasst Azure-Rollen mit gängigen Gruppen von Berechtigungen für Blobdaten. Die möglichen Berechtigungen eines Sicherheitsprinzipals sind durch die Rollen vorgegeben, die dem Prinzipal zugewiesen sind. Weitere Informationen zum Zuweisen von Azure-Rollen für den Blobzugriff finden Sie unter [Zuweisen einer Azure-Rolle für den Zugriff auf Blobdaten](../blobs/assign-azure-role-data-access.md).
+Der Autorisierungsschritt erfordert es, dass dem Sicherheitsprinzipal, der die Anforderung sendet, mindestens eine Azure RBAC-Rolle zugewiesen wird. Weitere Informationen finden Sie unter [Zuweisen von Azure-Rollen für Zugriffsrechte](#assign-azure-roles-for-access-rights).
 
 Für native Anwendungen und Webanwendungen, die Anforderungen an den Azure Blob-Dienst senden, kann die Autorisierung auch mit Azure AD erfolgen. Informationen zum Anfordern eines Zugriffstokens und seiner Verwendung zum Autorisieren der Anforderungen für Blobdaten finden Sie unter [Autorisieren des Zugriffs auf Azure Storage mit Azure AD über eine Azure Storage-Anwendung](../common/storage-auth-aad-app.md).
 
 ## <a name="assign-azure-roles-for-access-rights"></a>Zuweisen von Azure-Rollen für Zugriffsrechte
 
-Azure Active Directory (Azure AD) autorisiert Rechte für den Zugriff auf geschützte Ressourcen über die [rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)](../../role-based-access-control/overview.md). Azure Storage definiert eine Reihe von in Azure integrierten Rollen mit allgemeinen Berechtigungssätzen für den Zugriff auf Blobdaten. Außerdem können Sie benutzerdefinierte Rollen für den Zugriff auf Blobdaten definieren.
+Azure Active Directory (Azure AD) autorisiert Rechte für den Zugriff auf geschützte Ressourcen über die Azure RBAC. Azure Storage definiert eine Reihe von in Azure integrierten RBAC-Rollen mit allgemeinen Berechtigungssätzen für den Zugriff auf Blobdaten. Außerdem können Sie benutzerdefinierte Rollen für den Zugriff auf Blobdaten definieren. Weitere Informationen zum Zuweisen von Azure-Rollen für den Blobzugriff finden Sie unter [Zuweisen einer Azure-Rolle für den Zugriff auf Blobdaten](../blobs/assign-azure-role-data-access.md).
 
-Wenn einem Azure AD-Sicherheitsprinzipal eine Azure-Rolle zugewiesen wird, gewährt Azure diesem Sicherheitsprinzipal Zugriff auf diese Ressourcen. Eine Azure AD-Sicherheitsprinzipal kann ein Benutzer, eine Gruppe, ein Anwendungsdienstprinzipal oder eine [verwaltete Identität für Azure-Ressourcen](../../active-directory/managed-identities-azure-resources/overview.md) sein.
+Eine Azure AD-Sicherheitsprinzipal kann ein Benutzer, eine Gruppe, ein Anwendungsdienstprinzipal oder eine [verwaltete Identität für Azure-Ressourcen](../../active-directory/managed-identities-azure-resources/overview.md) sein. Die möglichen Berechtigungen eines Sicherheitsprinzipals sind durch die ihm zugewiesenen RBAC-Rollen vorgegeben. Weitere Informationen zum Zuweisen von Azure-Rollen für den Blobzugriff finden Sie unter [Zuweisen einer Azure-Rolle für den Zugriff auf Blobdaten](../blobs/assign-azure-role-data-access.md).
+
+In einigen Fällen müssen Sie möglicherweise einen feinen Zugriff auf Blobressourcen aktivieren oder Berechtigungen vereinfachen, wenn Sie über eine große Anzahl von Rollenzuweisungen für eine Speicherressource verfügen. Mithilfe von attributbasierter Zugriffssteuerung für Azure (Azure Attribute-Based Access Control, Azure ABAC) können Sie Bedingungen für Rollenzuweisungen konfigurieren. Sie können Bedingungen bei einer [benutzerdefinierten Rolle](../../role-based-access-control/custom-roles.md) verwenden oder integrierte Rollen auswählen. Weitere Informationen zum Konfigurieren von Bedingungen für Azure-Speicherressourcen mit ABAC finden Sie unter [Autorisieren des Zugriffs auf Blobs mithilfe von Bedingungen für die Azure-Rollenzuweisung (Vorschau)](../common/storage-auth-abac.md). Einzelheiten zu unterstützten Bedingungen für Blobdatenvorgänge finden Sie unter [Aktionen und Attribute für Azure-Rollenzuweisungsbedingungen in Azure Storage (Vorschau)](../common/storage-auth-abac-attributes.md).
 
 ### <a name="resource-scope"></a>Ressourcenumfang
 

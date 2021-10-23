@@ -1,16 +1,14 @@
 ---
 title: Überwachen von Azure Cosmos DB mit Cosmos DB-Erkenntnissen von Azure Monitor | Microsoft-Dokumentation
 description: In diesem Artikel wird das Feature für Cosmos DB-Erkenntnisse von Azure Monitor beschrieben, das Cosmos DB-Besitzern ein schnelles Verständnis der Leistungs- und Nutzungsprobleme bei ihren CosmosDB-Konten ermöglicht.
-author: lgayhardt
-ms.author: lagayhar
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: b6666e43e1dc3461bf7e0cc5849d26c1a8fef70e
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 3a3a87a3d639c2f5d0211e488340ab918c339ba0
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110095084"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130131921"
 ---
 # <a name="explore-azure-monitor-cosmos-db-insights"></a>Informationen zu Cosmos DB-Erkenntnissen von Azure Monitor
 

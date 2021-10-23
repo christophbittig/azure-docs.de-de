@@ -7,13 +7,13 @@ author: nabhishek
 ms.author: abnarain
 ms.reviewer: jburchel
 ms.topic: conceptual
-ms.date: 08/23/2021
-ms.openlocfilehash: 921db5e082748ce814a19c96c5de4ac3061750e2
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.date: 10/14/2021
+ms.openlocfilehash: 3c14373567bf0860f59b44cd7f6042ad9aeb1adb
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129219489"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130066963"
 ---
 # <a name="automated-publishing-for-continuous-integration-and-delivery"></a>Automatisiertes Veröffentlichen für Continuous Integration und Delivery
 
@@ -69,6 +69,9 @@ Im aktuellen CI/CD-Flow ist die Benutzeroberfläche der Vermittler zum Erstellen
 
 > [!NOTE]
 > Sie können weiterhin den vorhandenen Mechanismus, d. h. den `adf_publish`-Branch, oder den neuen Flow verwenden. Beide Verfahren werden unterstützt.
+
+> [!WARNING]
+> Bei der Verwendung von automatisiertem Veröffentlichen wird die Konfiguration **In ARM-Vorlage einschließen** bei globalen Parametern nicht unterstützt. Dies führt dazu, dass die Git-Konfiguration der Factory nach Bereitstellung der ARM-Vorlage entfernt wird. Verwenden Sie stattdessen die [PowerShell-Skriptmethode](author-global-parameters.md#cicd), um globale Parameter in Ihren Azure-Pipelines bereitzustellen.
 
 ## <a name="package-overview"></a>Paketübersicht
 

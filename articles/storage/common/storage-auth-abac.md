@@ -6,33 +6,33 @@ services: storage
 author: santoshc
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/06/2021
+ms.date: 10/14/2021
 ms.author: santoshc
 ms.reviewer: jiacfan
 ms.subservice: common
-ms.openlocfilehash: 355eaa0c7e907dea1e1fe88e0640d3b09463fa09
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 0aeb8766822bbfe19dfdd70ed242e7176dd44117
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113729018"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130062781"
 ---
 # <a name="authorize-access-to-blobs-using-azure-role-assignment-conditions-preview"></a>Autorisieren des Zugriffs auf Blobs mithilfe von Bedingungen für die Azure-Rollenzuweisung (Vorschau)
 
+Die attributbasierte Zugriffssteuerung (Attribute-Based Access Control, ABAC) ist eine Autorisierungsstrategie, mit der der Zugriff anhand von Attributen definiert wird, die Sicherheitsprinzipalen, Ressourcen, Anforderungen und der Umgebung zugeordnet sind. Azure ABAC baut auf der rollenbasierten Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC) auf, indem [Azure-Rollenzuweisungen Bedingungen](../../role-based-access-control/conditions-overview.md) im vorhandenen Identitäts- und Zugriffsverwaltungssystem (Identity and Access Management, IAM) hinzugefügt werden. Diese Vorschau bietet Unterstützung für Rollenzuweisungsbedingungen für Blobs und Data Lake Storage Gen2. Sie ermöglicht es Ihnen, Rollenzuweisungsbedingungen basierend auf Ressourcen- und Anforderungsattributen zu autorisieren.
+
 > [!IMPORTANT]
-> Azure RBAC und Azure-Rollenzuweisungsbedingungen befinden sich derzeit in der Vorschauphase.
+> Azure ABAC und Azure-Rollenzuweisungsbedingungen befinden sich derzeit in der Vorschauphase.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
 > Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Die attributbasierte Zugriffssteuerung (Attribute-Based Access Control, ABAC) ist eine Autorisierungsstrategie, mit der der Zugriff anhand von Attributen definiert wird, die Sicherheitsprinzipalen, Ressourcen, Anforderungen und der Umgebung zugeordnet sind. Azure ABAC baut auf der rollenbasierten Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC) auf, indem [Azure-Rollenzuweisungen Bedingungen](../../role-based-access-control/conditions-overview.md) im vorhandenen Identitäts- und Zugriffsverwaltungssystem (Identity and Access Management, IAM) hinzugefügt werden. Diese Vorschau bietet Unterstützung für Rollenzuweisungsbedingungen für Blobs und Data Lake Storage Gen2. Sie ermöglicht es Ihnen, Rollenzuweisungsbedingungen basierend auf Ressourcen- und Anforderungsattributen zu autorisieren.
-
 ## <a name="overview-of-conditions-in-azure-storage"></a>Übersicht über Bedingungen in Azure Storage
 
-Azure Storage ermöglicht die [Verwendung von Azure Active Directory](authorize-data-access.md) (Azure AD) zum Autorisieren von Anforderungen an Blob- und Warteschlangenspeicher. Azure AD autorisiert Zugriffsrechte auf gesicherte Ressourcen mithilfe von Azure RBAC. Azure Storage definiert eine Reihe von in Azure [integrierten Rollen](../../role-based-access-control/built-in-roles.md#storage) mit allgemeinen Berechtigungssätzen für den Zugriff auf Blob- oder Warteschlangendaten. Sie können auch benutzerdefinierte Rollen mit einem ausgewählten Berechtigungssatz definieren. Azure Storage unterstützt Rollenzuweisungen für Speicherkonten oder Blobcontainer.
+Azure Storage ermöglicht die [Verwendung von Azure Active Directory](authorize-data-access.md) (Azure AD) zum Autorisieren von Anforderungen an Blob-, Warteschlangen- und Tabellenressourcen. Azure AD autorisiert Zugriffsrechte auf gesicherte Ressourcen mithilfe von Azure RBAC. Azure Storage definiert eine Reihe von in Azure [integrierten Rollen](../../role-based-access-control/built-in-roles.md#storage) mit allgemeinen Berechtigungssätzen für den Zugriff auf Blob- oder Warteschlangendaten. Sie können auch benutzerdefinierte Rollen mit einem ausgewählten Berechtigungssatz definieren. Azure Storage unterstützt Rollenzuweisungen für Speicherkonten oder Blobcontainer.
 
-In einigen Fällen müssen Sie jedoch möglicherweise einen feineren Zugriff auf Speicherressourcen aktivieren oder die Hunderte von Rollenzuweisungen für eine Speicherressource vereinfachen. Sie können [Bedingungen für Rollenzuweisungen](../../role-based-access-control/conditions-overview.md) für [DataActions](../../role-based-access-control/role-definitions.md#dataactions) konfigurieren, um diese Ziele zu erreichen. Sie können Bedingungen bei einer [benutzerdefinierten Rolle](../../role-based-access-control/custom-roles.md) verwenden oder integrierte Rollen auswählen. Beachten Sie, dass Bedingungen für [Verwaltungsaktionen](../../role-based-access-control/role-definitions.md#actions) über den [Speicherressourcenanbieter](/rest/api/storagerp) nicht unterstützt werden.
+In einigen Fällen müssen Sie jedoch möglicherweise einen feineren Zugriff auf Ressourcen aktivieren oder die Hunderte von Rollenzuweisungen für eine Speicherressource vereinfachen. Sie können [Bedingungen für Rollenzuweisungen](../../role-based-access-control/conditions-overview.md) für [DataActions](../../role-based-access-control/role-definitions.md#dataactions) konfigurieren, um diese Ziele zu erreichen. Sie können Bedingungen bei einer [benutzerdefinierten Rolle](../../role-based-access-control/custom-roles.md) verwenden oder integrierte Rollen auswählen. Beachten Sie, dass Bedingungen für [Verwaltungsaktionen](../../role-based-access-control/role-definitions.md#actions) über den [Speicherressourcenanbieter](/rest/api/storagerp) nicht unterstützt werden.
 
-Bedingungen in Azure Storage werden für Blobs unterstützt. Sie können Bedingungen bei Konten verwenden, für die das Feature [hierarchischer Namespace](../blobs/data-lake-storage-namespace.md) (HNS) aktiviert wurde. Bedingungen werden für Dateien, Warteschlangen und Tabellen zurzeit nicht unterstützt.
+Bedingungen in Azure Storage werden für Blobs unterstützt. Sie können Bedingungen bei Konten verwenden, für die das Feature [hierarchischer Namespace](../blobs/data-lake-storage-namespace.md) (HNS) aktiviert wurde. Bedingungen werden bei Warteschlangen-, Tabellen- oder Dateiressourcen in Azure Storage zurzeit nicht unterstützt.
 
 ## <a name="supported-attributes-and-operations"></a>Unterstützte Attribute und Vorgänge
 

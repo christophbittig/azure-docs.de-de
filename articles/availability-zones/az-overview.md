@@ -8,12 +8,12 @@ ms.date: 10/01/2021
 ms.author: prsandhu
 ms.reviewer: cynthn
 ms.custom: references_regions
-ms.openlocfilehash: e4d7bd4628e4a84d197fd6976a44c64cde77cd5f
-ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
+ms.openlocfilehash: bc31ebc507eed47caab3118aa32332cb26005f7a
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129667514"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130003342"
 ---
 # <a name="regions-and-availability-zones"></a>Regionen und Verfügbarkeitszonen
 
@@ -53,7 +53,7 @@ Azure ist umfassender vertreten als jeder andere Cloudanbieter, und es werden in
 | USA (Mitte) | Nordeuropa | | Japan, Osten |
 | East US | Norwegen, Osten | | Korea, Mitte |
 | USA (Ost) 2 | UK, Süden | | Asien, Südosten |
-| USA Süd Mitte | Europa, Westen | | |
+| USA Süd Mitte | Europa, Westen |  | Asien (Osten)* |
 | US Government, Virginia | Schweden* | | |
 | USA, Westen 2 | | | |
 | USA, Westen 3 | | | |

@@ -6,15 +6,15 @@ author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: troubleshooting
-ms.date: 10/01/2021
+ms.date: 10/13/2021
 ms.author: jianleishen
 ms.custom: has-adal-ref, synapse
-ms.openlocfilehash: 64a49592609b2cb7fd262264bb9802de58db5f04
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: b12666fdd66b3c85702b7222f2f2edca7136e323
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129390547"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130062750"
 ---
 # <a name="troubleshoot-the-parquet-format-connector-in-azure-data-factory-and-azure-synapse"></a>Problembehandlung für den Parquet-Format-Connector in Azure Data Factory und Azure Synapse Analytics
 
@@ -172,6 +172,14 @@ Dieser Artikel enthält Vorschläge zur Behandlung häufiger Probleme mit dem Pa
 - **Ursache**: Der Spaltenname enthält ungültige Zeichen.
 
 - **Lösung**: Fügen Sie die Spaltenzuordnung hinzu, oder ändern Sie sie, um den Namen der Senkenspalte gültig zu machen.
+
+## <a name="the-file-created-by-the-copy-data-activity-extracts-a-table-that-contains-a-varbinary-max-column"></a>Die von der Kopierdatenaktivität erstellte Datei extrahiert eine Tabelle mit einer Spalte des Typs „varbinary (max)“.
+
+- **Symptome**: Die von der Kopierdatenaktivität erstellte Parquet-Datei extrahiert eine Tabelle mit einer Spalte des Typs „varbinary (max)“.
+
+- **Ursache**: Dieses Problem wird durch den Bibliotheksfehler „Parquet-mr“ beim Lesen großer Spalten verursacht. 
+
+- **Lösung**: Versuchen Sie, kleinere Dateien (Größe < 1G) mit einer Einschränkung von 1.000 Zeilen pro Datei zu generieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

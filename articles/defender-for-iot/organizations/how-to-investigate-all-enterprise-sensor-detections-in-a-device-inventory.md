@@ -3,12 +3,12 @@ title: Informationen zu Geräten, die von allen Unternehmenssensoren erkannt wer
 description: Sie können sich über den Gerätebestand in der lokalen Verwaltungskonsole einen umfassenden Überblick über die Geräteinformationen von verbundenen Sensoren verschaffen. Verwenden Sie die Tools zum Importieren, Exportieren und Filtern, um diese Informationen zu verwalten.
 ms.date: 12/02/2020
 ms.topic: how-to
-ms.openlocfilehash: 0ae59123b59cfb54cba2a2ee9bdeefb411c8793b
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: 8016efe809d03cbc00bdb94b67f99caa7f98ac4c
+ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113017134"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130137786"
 ---
 # <a name="investigate-all-enterprise-sensor-detections-in-the-device-inventory"></a>Untersuchen aller Unternehmenssensorerkennungen im Gerätebestand
 
@@ -42,6 +42,7 @@ Im Folgenden werden die Spalten in der Gerätebestandstabelle beschrieben.
 | **Gruppen** | Gruppen, an denen dieses Gerät teilnimmt |
 | **Letzte Aktivität** | Die letzte Aktivität, die das Gerät ausgeführt hat |
 | **Discovered** | Wann dieses Gerät zum ersten Mal im Netzwerk erkannt wurde |
+| **PLC-Modus (Vorschau)** | Der PLC-Betriebsmodus umfasst den Schlüsselzustand (physisch) und den Ausführungszustand (logisch). Mögliche **Schlüsselzustände** sind: „Ausführen“, „Programm“, „Remote“, „Beenden“, „Ungültig“, „Programmieren deaktiviert.Mögliche Ausführung“. Die möglichen **Ausführungszustände** sind: „Ausführen“, „Programm", „Beenden“, „Pausiert“, „Ausnahme“, „Angehalten“, „Eingeschlossen“, „Leerlauf“, „Offline“. Wenn beide Zustände identisch sind, wird nur ein Zustand angezeigt. |
 
 ## <a name="integrate-data-into-the-enterprise-device-inventory"></a>Integrieren von Daten in den Gerätebestand des Unternehmens
 

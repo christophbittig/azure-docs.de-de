@@ -2,20 +2,20 @@
 title: Sichern einer Azure API Management-API mithilfe von Azure Active Directory B2C
 description: Erfahren Sie, wie Sie von Azure Active Directory B2C ausgestellte Zugriffstoken zum Sichern eines Azure API Management-API-Endpunkts verwenden.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 09/20/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 6dd813d2bd046d6b4256bd17b447b8d5660bdea2
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: d5d32f9a95c555cc69878d10e2c292ffaba4efda
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128564038"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130035351"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Sichern einer Azure API Management-API mit Azure AD B2C
 

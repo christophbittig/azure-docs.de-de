@@ -1,14 +1,14 @@
 ---
 title: Festlegen von Kennwörtern für VMs in Azure Lab Services | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Kennwörter für virtuelle Computer (VMs) in Labs in Azure Lab Services festlegen und zurücksetzen.
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 6ae577ee4c0c7e31760e0fb12afeaeac1ef8b7e2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b39dcae2f9568785313a77c9a3b2a9afd4f0a581
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96434225"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130180094"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>Einrichten und Verwalten eines VM-Pools 
 In diesem Artikel wird gezeigt, wie Sie Folgendes durchführen:

@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: c0a13010be851e42ed1c50dc95330d497ab29c20
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 7d7666e82970114cad352c702cdf13e29c4f86f6
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124780963"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130071965"
 ---
 # <a name="updated-ndv2-series"></a>Aktualisierte NDv2-Serie
 
@@ -37,7 +37,7 @@ Entscheidend ist, dass die NDv2-Serie sowohl auf rechenintensive Workloads zum z
 
 [Storage Premium:](premium-storage-performance.md) Unterstützt<br>
 [Storage Premium-Zwischenspeicherung:](premium-storage-performance.md) Unterstützt<br>
-[Ultra Disks](disks-types.md#ultra-disk): Unterstützt ([Weitere Informationen](https://techcommunity.microsoft.com/t5/azure-compute/ultra-disk-storage-for-hpc-and-gpu-vms/ba-p/2189312) zur Verfügbarkeit, Verwendung und Leistung) <br>
+[Ultra Disks](disks-types.md#ultra-disks): Unterstützt ([Weitere Informationen](https://techcommunity.microsoft.com/t5/azure-compute/ultra-disk-storage-for-hpc-and-gpu-vms/ba-p/2189312) zur Verfügbarkeit, Verwendung und Leistung) <br>
 [Livemigration:](maintenance-and-updates.md) Nicht unterstützt<br>
 [Updates mit Speicherbeibehaltung:](maintenance-and-updates.md) Nicht unterstützt<br>
 [Unterstützung von VM-Generationen:](generation-2.md) Generation 2<br>

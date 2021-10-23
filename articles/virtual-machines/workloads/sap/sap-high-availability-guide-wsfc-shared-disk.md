@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 07/29/2021
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dc233e3aac51255be4b6b7befde322216ae7f053
-ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
+ms.openlocfilehash: 9e59347ec1c38c8d315de9ee7332a4955427770b
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129754556"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130068967"
 ---
 # <a name="cluster-an-sap-ascsscs-instance-on-a-windows-failover-cluster-by-using-a-cluster-shared-disk-in-azure"></a>Gruppieren einer SAP ASCS/SCS-Instanz in einem Windows-Failovercluster mithilfe freigegebener Clusterdatenträger in Azure
 
@@ -130,8 +130,8 @@ Beachten Sie beim Auswählen der Technologie für freigegebene Datenträger die 
 **Freigegebener Azure-Datenträger für SAP-Workloads**
 
 - Ermöglicht das gleichzeitige Anfügen verwalteter Azure-Datenträger an mehrere VMs, ohne dass zusätzliche Software gewartet und ausgeführt werden muss.
-- [Freigegebene Azure-Datenträger](../../disks-shared.md) mit [SSD Premium](../../disks-types.md#premium-ssd)-Datenträgern werden für die SAP-Bereitstellung in Verfügbarkeitsgruppen und Verfügbarkeitszonen unterstützt.
-- Der [Azure Ultra-Datenträger](../../disks-types.md#ultra-disk) und [Azure-Standard-Datenträger](../../disks-types.md#standard-ssd) werden nicht als freigegebener Azure-Datenträger für SAP-Workloads unterstützt.
+- [Freigegebene Azure-Datenträger](../../disks-shared.md) mit [SSD Premium](../../disks-types.md#premium-ssds)-Datenträgern werden für die SAP-Bereitstellung in Verfügbarkeitsgruppen und Verfügbarkeitszonen unterstützt.
+- Der [Azure Ultra-Datenträger](../../disks-types.md#ultra-disks) und [Azure-Standard-Datenträger](../../disks-types.md#standard-ssds) werden nicht als freigegebener Azure-Datenträger für SAP-Workloads unterstützt.
 - Stellen Sie sicher, dass der Azure-Premium-Datenträger mit einer minimalen Datenträgergröße entsprechend den Angaben unter [SSD Premium-Bereiche](../../disks-shared.md#disk-sizes) bereitgestellt wird, um die erforderliche Anzahl von VMs gleichzeitig anfügen zu können (normalerweise zwei für den SAP ASCS-Windows-Failovercluster).
  
 **SIOS**
@@ -148,8 +148,8 @@ Microsoft bietet [freigegebene Azure-Datenträger](../../disks-shared.md) an, mi
 
 Derzeit können Sie Azure SSD Premium-Datenträger als freigegebenen Azure-Datenträger für die SAP ASCS/SCS-Instanz verwenden. Derzeit gelten die folgenden Einschränkungen:
 
--  Der [Azure Ultra-Datenträger](../../disks-types.md#ultra-disk) und [SSD-Standard-Datenträger](../../disks-types.md#standard-ssd) werden nicht als freigegebener Azure-Datenträger für SAP-Workloads unterstützt.
--  [Freigegebene Azure-Datenträger](../../disks-shared.md) mit [SSD Premium-Datenträgern](../../disks-types.md#premium-ssd) werden für die SAP-Bereitstellung in Verfügbarkeitsgruppen und Verfügbarkeitszonen unterstützt.
+-  Der [Azure Ultra-Datenträger](../../disks-types.md#ultra-disks) und [SSD-Standard-Datenträger](../../disks-types.md#standard-ssds) werden nicht als freigegebener Azure-Datenträger für SAP-Workloads unterstützt.
+-  [Freigegebene Azure-Datenträger](../../disks-shared.md) mit [SSD Premium-Datenträgern](../../disks-types.md#premium-ssds) werden für die SAP-Bereitstellung in Verfügbarkeitsgruppen und Verfügbarkeitszonen unterstützt.
 -  Freigegebener Azure-Datenträger SSD Premium-Datenträgern verfügt über zwei Speicher-SKUs.
    - Lokal redundanter Speicher (LRS) für freigegebenen Premium-Datenträger (skuName – Premium_LRS) wird bei der Bereitstellung in azure-Verfügbarkeitsgruppen unterstützt.
    - Zonenredundanter Speicher (ZRS) für freigegebenen Premium-Datenträger (skuName – Premium_ZRS) wird bei der Bereitstellung in Azure-Verfügbarkeitszonen unterstützt.

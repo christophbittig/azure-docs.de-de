@@ -3,19 +3,19 @@ title: 'Schnellstart: Erstellen einer Funktions-App auf Azure Arc in einem benut
 description: Starten Sie mit Azure Functions auf Azure Arc, indem Sie Ihre erste Funktions-App in einem benutzerdefinierten Linux-Container bereitstellen.
 ms.topic: quickstart
 ms.date: 05/11/2021
-ms.openlocfilehash: 48940e70e1678e4426efb34e40b3b16b742e4f5c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a22907387a647ca46a5784661324d3f6edcc3594
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121746748"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129706932"
 ---
 # <a name="create-your-first-function-on-azure-arc-using-a-custom-container-preview"></a>Erstellen Sie Ihre erste Funktion auf Azure Arc unter Verwendung eines benutzerdefinierten Containers (Vorschau)
 
 In diesem Schnellstart erstellen Sie ein Azure Functions-Projekt, das in einem benutzerdefinierten Container ausgeführt wird, und stellen es über Ihr Docker Hub-Konto in einem [Azure Arc-fähigen Kubernetes-Cluster](../azure-arc/kubernetes/overview.md) bereit. Weitere Informationen finden Sie unter [App Service, Funktionen und Logic Apps auf Azure Arc](../app-service/overview-arc-integration.md). Dieses Szenario unterstützt nur Funktions-Apps, die auf Linux ausgeführt werden.   
 
 > [!NOTE]
-> Die Unterstützung für die Ausführung von Funktionen auf einem Arc-fähigen Kubernetes-Cluster befindet sich derzeit in der Vorschau.  
+> Die Unterstützung für die Ausführung von Funktionen auf einem Kubernetes-Cluster mit Azure Arc-Unterstützung befindet sich derzeit in der Vorschau.  
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -223,7 +223,7 @@ Dieser Code muss entweder in der Cloud Shell oder in Bash auf Ihrem lokalen Comp
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Jetzt, nachdem Ihre Funktions-App in einem Container und einer Arc-fähigen App Service Kubernetes-Umgebung ausgeführt wird, können Sie diese mit Azure Storage verbinden, indem Sie eine Ausgangsbindung für Queue Storage hinzufügen.
+Ihre Funktions-App wird nun in einem Container und einer App Service Kubernetes-Umgebung mit Azure Arc-Unterstützung ausgeführt. Sie können diese jetzt mit Azure Storage verbinden, indem Sie eine Ausgangsbindung für Queue Storage hinzufügen.
 
 # <a name="c"></a>[C\#](#tab/csharp)  
 

@@ -6,12 +6,12 @@ ms.author: rywinter
 ms.service: iot-develop
 ms.topic: conceptual
 ms.date: 01/11/2021
-ms.openlocfilehash: 482acaa4fbec2991bf61f949602958b14144c2ce
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 21eea79a6a448cd65bd12cde33efb6acabd3ada5
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108226892"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130003646"
 ---
 # <a name="overview-of-azure-iot-device-types"></a>Übersicht über Azure IoT-Gerätetypen
 IoT-Geräte sind auf einer breiten Auswahl von Hardwareplattformen vorhanden. Es gibt kleine 8-Bit-Mikrocontroller bis hin zu den neuesten x86-CPUs in einem Desktopcomputer. Bei der Auswahl der Hardware für ein IoT-Gerät spielen viele Variablen eine Rolle. In diesem Artikel werden einige der wichtigsten Unterschiede beschrieben.
@@ -43,7 +43,7 @@ In der folgenden Tabelle werden einige wesentliche Unterschiede zwischen auf Mik
 |**CPU**| Kleiner | Mehr |
 |**RAM**| Kleiner | Mehr |
 |**Blinken**| Kleiner | Mehr |
-|**Betriebssystem**| Kein Betriebssystem oder Echtzeitbetriebssystem (RTOS) | Universell |
+|**Betriebssystem**| Bare-Metal/RTOS | Universell (Windows/Linux) |
 |**Entwicklungsschwierigkeit**| Schwieriger | Einfacher |
 |**Stromverbrauch**| Geringer | Höher |
 |**Kosten**| Geringer | Höher |

@@ -1,0 +1,99 @@
+### YamlMime:FAQ
+metadata:
+  title: 'Konfigurieren von privaten Angeboten von ISVs für Cloudhandelspartner: Häufig gestellte Fragen'
+  description: Enthält Informationen dazu, wie Sie in Partner Center private Angebote von ISVs für Cloudhandelspartner konfigurieren.
+  ms.service: marketplace
+  ms.subservice: partnercenter-marketplace-publisher
+  ms.topic: troubleshooting
+  ms.date: 10/07/2021
+  author: emerb19
+  ms.author: emerb
+  ms.openlocfilehash: 005ac60253e2eb75a25df632015b4e4fb60dd3fa
+  ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 10/15/2021
+  ms.locfileid: "130071074"
+title: Häufig gestellte Fragen zum Konfigurieren von privaten Angeboten von ISVs für Cloudhandelspartner
+summary: Dieser Artikel enthält Antworten auf Fragen zur Konfiguration von privaten Angeboten von ISVs (Independent Software Vendor, Unabhängiger Softwareanbieter) für Cloudhandelspartner.
+sections:
+- name: Einrichten eines privaten Angebots
+  questions:
+  - question: Für welche Angebotstypen können ISVs ein privates Angebot erweitern?
+    answer: >
+      Das Angebot muss transaktionsfähig sein, und der Verkauf über den CSP-Kanal (Cloud Solution Provider, Cloudlösungsanbieter) muss akzeptiert worden sein. Dies gilt sowohl für lizenz- als auch für nutzungsbasierte Angebotstypen.
+  - question: Handelt ein CSP-Partner eine Marge mit einem ISV aus, oder wendet der ISV einfach eine pauschale Marge auf alle CSP-Partner an?
+    answer: "Die Marge sollte von ISVs und CSP-Partnern ausgehandelt werden. ISVs können auch eine Marge gewähren, ohne Rücksprache mit einem CSP-Partner zu halten. Pro Angebot gilt ein Grenzwert von 400 CSP-Mandanten. \n"
+  - question: Wie lange ist das private Angebot gültig? Ist diese Dauer mit der Angebotslaufzeit identisch?
+    answer: >
+      Jedes private Angebot verfügt über ein Start- und ein Enddatum. Bei Angebotstypen mit monatlicher Abrechnung und Laufzeit gilt die Marge bis zum Enddatum des privaten Angebots. Beim nächsten Abrechnungsereignis nach dem Enddatum des privaten Angebots wird dem CSP-Partner der Preis ohne Marge in Rechnung gestellt, sofern vom ISV kein neues privates Angebot für dieses Angebot und den CSP-Partner erstellt wurde.
+
+
+      Bei einer jährlichen Laufzeit (jährliche Abrechnung) wird dem CSP der Preis mit der angewendeten Marge in Rechnung gestellt, falls das Abrechnungsereignis während der Laufzeit des privaten Angebots eintritt.
+
+
+      Derzeit sind keine Angebote mit monatlicher Abrechnung und jährlicher Laufzeit verfügbar.
+  - question: Kann der ISV die Marge auf Kundenebene oder nur auf Ebene des CSP-Partners anwenden?
+    answer: >
+      Die Marge wird auf der Mandantenebene des CSP-Partners angewendet. Der CSP-Partner erhält eine Marge für jede Transaktion, die er für einen Kunden durchführt. Die Möglichkeit zur Anwendung einer Marge auf Kundenebene (Kunde eines CSP-Partners) wird derzeit geprüft.
+  - question: Muss der ISV in jeder Region ein privates Angebot erstellen?
+    answer: "Nein. Wenn ein ISV ein Angebot veröffentlicht, kann er auswählen, in welchen Ländern das Angebot verfügbar sein soll. Wenn ein ISV ein privates Angebot für einen CSP-Partner erstellt, kann er für dieses private Angebot CSP-Mandanten aus einer beliebigen Region auswählen. \n"
+  - question: Kann ein ISV für verschiedene CSP-Partner unterschiedliche Margenprozentsätze gewähren?
+    answer: >
+      Ja. Der ISV kann pro CSP-Partner eine Marge auf Angebots- bzw. Planebene konfigurieren. Für unterschiedliche Prozentsätze bei den Margen sind separate private Angebote erforderlich.
+  - question: Wie lange dauert es nach der Erstellung, bis ein privates Angebot aktiviert wird?
+    answer: >
+      Das ist unterschiedlich. Wenn das Angebot angenommen und der CSP-Partner vom ISV bereits für den Angebotsverkauf ausgewählt wurde, erfolgt die Aktivierung in sehr kurzer Zeit (innerhalb von 15 Minuten). Die Wartezeit ist ggf. länger (bis zu sechs Stunden), wenn das Angebot zunächst angenommen werden muss, damit es vom CSP verkauft werden kann, oder wenn der CSP-Partner für den Verkauf des ISV-Angebots autorisiert werden muss.
+  - question: 'Was passiert, wenn ein ISV Folgendes versucht: Gewähren einer Marge für einen CSP-Partner, den er noch nicht angenommen hat, oder Bereitstellen eines Angebots, für das der Verkauf über den CSP noch nicht angenommen wurde?'
+    answer: >
+      Wenn Sie ein privates Angebot für einen CSP erstellen, den Sie noch nicht für den Verkauf Ihres Angebots ausgewählt haben, wird der Verkauf Ihres Angebots durch den CSP automatisch aktiviert. Analog hierzu gilt Folgendes: Wenn ein Angebot noch nicht für den Verkauf durch den CSP angenommen wurde und der ISV eine Marge für einen CSP erstellt, wird das Angebot nur für den Verkauf durch diesen CSP (nicht alle CSPs) aktiviert.
+  - question: Wenn ein ISV nach einem Partner für die Gewährung einer Marge sucht, aber keinen findet, kann er dann einen Partner hinzufügen?
+    answer: >
+      Nein. Partner müssen am CSP-Programm von Microsoft teilnehmen, und es muss sich um einen direkten CSP- oder indirekten Anbieter handeln, damit eine Marge gewährt werden kann. Wenn ein Partner bei der Suche nicht zurückgegeben wird, liegt dies wahrscheinlich daran, dass er entweder nicht am CSP-Programm von Microsoft teilnimmt oder ein indirekter Handelspartner ist. CSP-Partner finden Informationen zur Registrierung für das Programm unter [Registrieren für das Programm für Cloud-Lösungsanbieter](/partner-center/enrolling-in-the-csp-program).
+  - question: 'Angenommen, ein ISV arbeitet mit einem indirekten Handelspartner zusammen, der seine Käufe über einen Vertriebspartner oder indirekten Handelspartner tätigt: Wie kann der ISV sein Angebot dann über den indirekten Handelspartner verkaufen?'
+    answer: >
+      Der ISV muss den indirekten Anbieter auswählen, bei dem der indirekte Handelspartner seine Käufe tätigt, und der indirekte Anbieter muss auswählen, ob das Angebot des ISV über seine indirekten Handelspartner verkauft werden soll.
+
+
+      Ein ISV kann eine Marge bzw. ein privates Angebot nicht direkt für einen indirekten Handelspartner bereitstellen, aber der indirekte Anbieter kann die Entscheidung treffen, eine Marge an seinen indirekten Handelspartner weiterzugeben.
+  - question: 'Angenommen, ein ISV hat den Verkauf an alle CSP-Partner zugelassen: Kann er dann nur für eine ausgewählte Gruppe von CSP-Partnern eine Marge gewähren?'
+    answer: >
+      Ja. Pro Angebot gilt ein Grenzwert von 400 CSP-Mandanten.
+  - question: Wenn sich ein ISV für die Gewährung einer Marge auf Angebotsebene entscheidet, umfasst dies dann alle Pläne des Angebots?
+    answer: >
+      Ja. Dies umfasst alle vorhandenen und zukünftigen Pläne des ausgewählten Angebots.
+  - question: Für welche Arten von Partnern gilt der Grenzwert von 400 CSP-Mandanten?
+    answer: "Dieser Grenzwert gilt für die Anzahl von indirekten Anbietern und CSP Direct Bill Partner-Mandanten. Wenn ein indirekter Anbieter über Tausende von indirekten Handelspartnern verfügt, werden diese Mandanten nicht in den Gesamtgrenzwert eingerechnet. \n"
+- name: Bearbeiten eines privaten Angebots
+  questions:
+  - question: Was passiert, wenn ein ISV die Laufzeit eines privaten Angebots ändern möchte?
+    answer: >
+      Nachdem ein ISV ein privates Angebot verlängert hat, kann er die Laufzeit des Angebots nicht vor dem Enddatum und auch das Enddatum selbst nicht ändern. Nachdem der CSP-Partner ein privates Angebot erhalten hat, gilt es bis zum angegebenen Enddatum.
+
+
+      Wenn der ISV ein neues privates Angebot hinzufügt, mit dem er dem CSP-Partner einen höheren Prozentsatz für die Marge gewährt, und sich der Zeitraum mit dem Zeitraum des aktuellen Angebots überschneidet, gilt der höhere Prozentsatz für die Marge.
+  - question: Kann ein privates Angebot storniert werden?
+    answer: >
+      Ein ISV kann anfordern, dass ein privates Angebot storniert bzw. widerrufen werden soll. Wenn der CSP-Partner für das Angebot noch keine Transaktion durchgeführt hat, wird diese Anforderung genehmigt.
+
+
+      Falls der CSP-Partner für seinen Kunden eine Transaktion für das Angebot durchgeführt hat, kann der ISV das private Angebot nicht vor dem Ende der Laufzeit stornieren.
+  - question: Kann der ISV ein privates Angebot bearbeiten, wenn er einen Fehler gemacht und das Angebot mit einem falschen Prozentsatz für die Marge erstellt hat?
+    answer: >
+      Nachdem das private Angebot übermittelt wurde, kann es erst wieder nach dem Ende der Laufzeit bearbeitet werden. Der ISV kann nur dann die Stornierung des ursprünglichen privaten Angebots anfordern (per Widerrufsanforderung), wenn der CSP-Partner dafür noch keine Transaktion durchgeführt hat.
+  - question: Kann ein ISV einen CSP-Partner aus einem vorhandenen privaten Angebot entfernen?
+    answer: "Nein. Ein ISV kann einen CSP-Partner nicht entfernen, wenn der Partner für ein Angebot eine Transaktion durchgeführt hat.\n\nFalls kein Partner eine Transaktion für ein Angebot basierend auf dem ursprünglichen privaten Angebot durchgeführt hat, kann der ISV ein neues privates Angebot erstellen und den entsprechenden CSP davon ausschließen. Anschließend muss er das ursprüngliche private Angebot stornieren. \n\nWenn ein anderer CSP-Partner, der über das private Angebot verfügt, eine Transaktion für das Angebot durchgeführt hat, nicht aber der zu entfernende CSP-Partner, gilt Folgendes: Der ISV kann ein neues privates Angebot ohne den CSP-Partner erstellen, der entfernt werden soll. Er kann das ursprüngliche private Angebot dann über die Widerrufsfunktion stornieren. \n"
+  - question: Kann der ISV einem vorhandenen privaten Angebot weitere Partner hinzufügen?
+    answer: >
+      Nein. Der ISV muss ein neues privates Angebot erstellen, um einen neuen CSP-Partner hinzuzufügen.
+  - question: Wie kann ein ISV das Enddatum eines vorhandenen privaten Angebots verlängern?
+    answer: "Das Enddatum eines vorhandenen privaten Angebots kann nicht verlängert werden. Der ISV-Partner sollte stattdessen ein neues privates Angebot erstellen. \n"
+- name: Nach dem Kauf
+  questions:
+  - question: Gilt die Marge auch für die zugehörigen Azure-Nutzungsgebühren, die ggf. berechnet werden?
+    answer: >
+      Nein. Die Marge gilt nur für den Preis der Software, der vom ISV für sein Produkt festgelegt wird, und nicht für die zugehörigen Azure-Nutzungsgebühren.
+  - question: Was passiert, wenn der CSP-Partner die Anzahl von Arbeitsplätzen für einen Kunden mit einem Jahresabonnement erhöht, nachdem ein privates Angebot abgelaufen ist?
+    answer: "*Jahresabonnements gelten nur für berechtigungsbasierte Angebote*.\n\nAuch für die neu hinzugefügten Arbeitsplätze gilt weiterhin der reduzierte Preis, da das Abonnement während der Laufzeit des ursprünglichen privaten Angebots erworben wurde. Dies gilt bis zum Ende der Laufzeit des Jahresabonnements. \n\nWenn der CSP-Partner die Anzahl von Arbeitsplätzen für Angebote mit getakteter Abrechnung erhöht, werden die Rabattpreise für den berechtigungsbasierten Teil der Gebühren bis zum Ende der Laufzeit des Jahresabonnements beibehalten. Die Marge, die auf den Preis für die getaktete Abrechnung angewendet wurde, wird nach dem Ende der Laufzeit des privaten Angebots dagegen nicht beibehalten. Die Problemumgehung besteht hierbei darin, dass ISVs für diesen CSP-Partner ein neues privates Angebot bis zum Ende der Abonnementlaufzeit erstellen.\n\nDas gleiche Konzept gilt auch für Monatsabonnements (und die Abrechnung). Wenn ein privates Angebot in einem Monat endet, wird dem CSP-Partner im folgenden Monat der gesamte Preis in Rechnung gestellt.\n\nDas Enddatum für ein privates Angebot ist immer das Monatsende.\n"
+  - question: Wie wirkt sich die Marge auf die Berichterstellung für die Auszahlung aus?
+    answer: In Bezug auf die Darstellung der Auszahlungsberichte ergeben sich keinerlei Änderungen. Der Auszahlungsbetrag und die Vermittlungsgebühr, die Microsoft erhebt, basieren auf dem Preis nach Anwendung der Marge für Positionen, denen eine Marge zugeordnet ist.

@@ -6,12 +6,12 @@ ms.author: deseelam
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 05/10/2020
-ms.openlocfilehash: efe9f6ce21e59df3d7f8009b7ff540a77b4cc50a
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 773a22fb1fbd94540f8d56fb417a88bbcfccdd3a
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129094498"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130003135"
 ---
 # <a name="use-azure-migrate-with-private-endpoints"></a>Verwenden von Azure Migrate mit privaten Endpunkten
 
@@ -27,7 +27,7 @@ Es wird empfohlen, die Verbindung über private Endpunkte herzustellen, wenn die
 
 ### <a name="supported-geographies"></a>Unterstützte geografischer Regionen
 
-Die Funktionalität befindet sich in unterstützten [öffentlichen](/azure/migrate/migrate-support-matrix#supported-geographies-public-cloud) und [behördlichen Cloudgeografien](/azure/migrate-support-matrix#supported-geographies-azure-government) jetzt in der Vorschau.
+Die Funktionalität befindet sich in unterstützten [öffentlichen](/azure/migrate/migrate-support-matrix#supported-geographies-public-cloud) und [behördlichen Cloudgeografien](/azure/migrate/migrate-support-matrix#supported-geographies-azure-government) jetzt in der Vorschau.
 
 ### <a name="required-permissions"></a>Erforderliche Berechtigungen
 
@@ -136,7 +136,7 @@ Stellen Sie sicher, dass der Server die [Hardwareanforderungen](./migrate-applia
 
 3. Ändern Sie das PowerShell-Verzeichnis in den Ordner, in den die Inhalte der gezippten Datei extrahiert wurden, die Sie heruntergeladen haben.
 
-4. Führen Sie das Skript mit dem Namen `AzureMigrateInstaller.ps1` aus, indem Sie den folgenden Befehl ausführen:
+4. Führen Sie das Skript `AzureMigrateInstaller.ps1` mit folgendem Befehl aus:
 
    `PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1`
 
