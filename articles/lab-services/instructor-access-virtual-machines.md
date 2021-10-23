@@ -1,14 +1,14 @@
 ---
 title: Zugriff auf VMs in Azure Lab Services durch einen Lehrer/Dozenten
 description: In diesem Artikel wird erläutert, wie Lehrer/Dozenten über die Lehrer-/Dozentenansicht auf ihre Kursteilnehmer-VMs zugreifen können. Ein Tutor kann z. B. ein Lehrer/Dozent für eine Klasse, aber ein Kursteilnehmer in anderen Klassen sein.
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: ad4f9cfd11b372e5c6da5c17eaeba82b0cd8a91f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d20d95f7f86e3116d9daf42417a3a0aae5855bbb
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85445099"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130179638"
 ---
 # <a name="access-virtual-machines-as-a-student-from-the-educator-view"></a>Zugreifen auf virtuelle Computer als Kursteilnehmer in der Lehrer-/Dozentenansicht
 In diesem Artikel wird gezeigt, wie Lehrer/Dozenten auf ihre VMs für Klassen zugreifen können, die sie als Kursteilnehmer besuchen. 

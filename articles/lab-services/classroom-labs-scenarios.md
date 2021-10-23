@@ -1,14 +1,14 @@
 ---
 title: Verwenden von Labs für Schulungen – Azure Lab Services
 description: In diesem Artikel wird beschrieben, wie Sie Azure DevTest Labs zum Erstellen von Labs in Azure für Schulungsszenarien verwenden.
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: f9eb3d44d470a978e676f6268cd693b283dd2703
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e99c3f9d8f27571a88fcdf6d62fa16a86d180a1c
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96433559"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130178612"
 ---
 # <a name="use-labs-for-trainings"></a>Verwenden von Labs zu Schulungszwecken
 Azure Lab Services ermöglicht es Lehrern/Dozenten (Lehrkräften, Professoren, Ausbildern oder Tutoren usw.), schnell und einfach ein Online-Lab zu erstellen, um vorkonfigurierte Lernumgebungen für die Lab-Benutzer bereitzustellen. Jeder Lab-Benutzer könnte identische und isolierte Umgebungen für die Schulung verwenden. Richtlinien können angewendet werden, um sicherzustellen, dass Schulungsumgebungen für jeden Lab-Benutzer nur bei Bedarf verfügbar sind und genügend Ressourcen – z. B. virtuelle Computer – enthalten, die zur Schulung erforderlich sind. 

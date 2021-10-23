@@ -2,15 +2,15 @@
 metadata:
   title: Häufig gestellte Fragen zum Sichern von Azure Files
   description: In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen zum Schützen von Azure-Dateifreigaben mit dem Azure Backup-Dienst.
-  ms.date: 04/22/2020
+  ms.date: 10/08/2021
   ms.topic: article
   ms.service: backup
-  ms.openlocfilehash: 22aeb3771f0a1c1d1f7baafc4ce4a2e5885aa4bc
-  ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+  ms.openlocfilehash: 67ee18a0ae7654ad9ff704e66d4e0a70d00dbb4f
+  ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/05/2021
-  ms.locfileid: "129533117"
+  ms.lasthandoff: 10/09/2021
+  ms.locfileid: "129714193"
 title: Fragen zum Sichern von Azure Files
 summary: >
   In diesem Artikel werden allgemeine Fragen zum Sichern von Azure Files beantwortet. Einige Antworten enthalten Links zu Artikeln mit umfassenderen Informationen. Sie können auch auf der [Frageseite von Microsoft Q&A (Fragen und Antworten)](/answers/topics/azure-backup.html) Fragen zum Azure Backup-Dienst posten.
@@ -157,7 +157,7 @@ sections:
   - question: >
       Welche Auswirkung ergibt sich für die vorhandenen Wiederstellungspunkte, wenn ich eine vorhandene GFS-Richtlinie ändere?
     answer: >
-      Wenn eine neue Richtlinie auf Dateifreigaben angewendet wird, werden alle zukünftigen geplanten Sicherungen gemäß dem Zeitplan erstellt, der in der geänderten Richtlinie konfiguriert ist.  Die Aufbewahrung aller vorhandenen Wiederherstellungspunkte basiert auf den neuen konfigurierten Werten für die Aufbewahrung. Wenn die Aufbewahrung erweitert wird, werden vorhandene Wiederherstellungspunkte so gekennzeichnet, dass sie gemäß der neuen Richtlinie aufbewahrt werden. Bei einer Reduzierung der Aufbewahrung werden sie für die Löschung im Rahmen des nächsten Bereinigungsauftrags gekennzeichnet und dann entsprechend gelöscht.
+      Wenn eine neue Richtlinie auf Dateifreigaben angewendet wird, werden alle zukünftigen geplanten Sicherungen gemäß dem Zeitplan erstellt, der in der geänderten Richtlinie konfiguriert ist.  Die Aufbewahrung aller vorhandenen Wiederherstellungspunkte basiert auf den neuen konfigurierten Werten für die Aufbewahrung. Wenn die Aufbewahrung verlängert wird, werden vorhandene Wiederherstellungspunkte so gekennzeichnet, dass sie gemäß der neuen Richtlinie aufbewahrt werden. Bei einer Reduzierung der Aufbewahrung werden sie für die Löschung im Rahmen des nächsten Bereinigungsauftrags gekennzeichnet und dann entsprechend gelöscht.
 
 
       Hier ist ein Beispiel für diesen Vorgang angegeben:
@@ -207,4 +207,67 @@ sections:
       >[!NOTE]
 
       >Die Richtlinienänderungen wirken sich nur auf die Wiederherstellungspunkte aus, die im Rahmen des geplanten Sicherungsvorgangs erstellt werden. Bei bedarfsgesteuerten Sicherungen richtet sich die Aufbewahrung nach dem Wert für **Aufbewahren bis**, der bei der Durchführung des Sicherungsvorgangs angegeben wurde.
+  - question: >
+      Was bedeutet das Attribut „duration“ in der Azure Files-Sicherungsrichtlinie?
+    answer: "Mithilfe des Attributs **duration** können Sie den Zeitstempel für die letzte Sicherung des Tages ermitteln. \n\nBeispiel: Wenn für **start time** (Startzeit) die Uhrzeit „x Uhr“ und für **duration** (Dauer) die Dauer „y Stunden“ festgelegt ist, werden die Sicherungen zwischen „x Uhr“ und (x Uhr + y Stunden) geplant. Grundlage dafür ist das in der Richtlinie definierte Attribut **schedule** (Zeitplan). Mit diesem Attribut können Sie sicherstellen, dass Sicherungen nur während der Arbeitszeit ausgelöst werden, wenn der Inhalt der Dateifreigaben häufig aktualisiert wird. Daher schützt das Erstellen mehrerer Momentaufnahmen Daten vor versehentlichen Änderungen.\n"
+  - question: >
+      Wie werden die Sicherungen basierend auf den Attributen „start time“, „schedule“ und „duration“ geplant?
+    answer: >
+      Sie haben beispielsweise eine Richtlinie mit der folgenden Konfiguration erstellt:
+
+
+      - **Startzeit:** 9 Uhr
+
+      - **Zeitplan:** Alle 4 Stunden
+
+      - **Dauer:** 12 Stunden
+
+
+      Basierend auf diesen Werten wird das Sicherungsfenster wie folgt berechnet: 9 Uhr bis (9 Uhr + 12 Stunden), d. h. 9 Uhr bis 21 Uhr. Daher werden alle Sicherungen innerhalb dieses Fensters geplant.
+
+
+      Die erste Sicherung des Tages wird zu der in der Richtlinie angegebenen Startzeit ausgelöst, d. h. um 9 Uhr. Das Attribut **schedule** bestimmt den Zeitunterschied zwischen aufeinanderfolgenden Sicherungen, d. h. 4 Stunden. Bei dieser Berechnung würde Ihr Sicherungszeitplan wie folgt lauten: 9 Uhr, 13 Uhr (9 Uhr + 4 Stunden), 17 Uhr (13 Uhr + 4 Stunden) und 21 Uhr (17 Uhr + 4 Stunden).
+
+
+      Da die Endzeit des berechneten Sicherungsfensters 21 Uhr war, wird nach diesem Zeitpunkt keine Sicherung mehr ausgelöst.
+  - question: >
+      Warum erhalte ich die Fehlermeldung „Die ausgewählte Konfiguration löst nur 1 Sicherung pro Tag aus.“?
+    answer: >
+      Dieser Fehler tritt auf, wenn Sie für **schedule** einen größeren Wert als für **duration** angegeben haben. Beispiel: Sie haben für **start time** die Uhrzeit „9 Uhr“, für **schedule** einen Zeitplan von 6 Stunden und für **duration** eine Dauer von 4 Stunden konfiguriert. In diesem Szenario kann der Sicherungsauftrag nur um 9 Uhr ausgelöst werden, da der nächste Sicherungszeitpunkt um 15 Uhr (9 Uhr + 6 Stunden) außerhalb des Sicherungsfensters liegt: 9 Uhr bis 13 Uhr (9 Uhr + 4 Stunden).
+
+
+      Um dieses Problem zu beheben, wird empfohlen, den Zeitplan oder die Dauer anzupassen oder für die Frequenz die Option **Täglich** anstelle von **Stündlich** auszuwählen.
+  - question: >
+      Warum erhalte ich die Fehlermeldung „Die ausgewählte Konfiguration erweitert das Sicherungsfenster auf den nächsten Tag.“?
+    answer: >
+      Dieser Fehler tritt auf, wenn die **Startzeit** und die **Endzeit** basierend auf dem **Zeitplan** und der **Dauer** der Sicherung auf zwei verschiedene Tage fallen.
+
+
+      Sie haben beispielsweise eine Richtlinie mit den folgenden Parametern konfiguriert:
+
+
+      - **Zeitplan:** Alle 4 Stunden
+
+      - **Startzeit:** 12 Uhr
+
+      - **Dauer:** 15 Stunden
+
+
+      Basierend auf dieser Konfiguration ergibt dies ein Sicherungsfenster von 12 Uhr bis 3 Uhr (12 Uhr + 15 Stunden). Da die Start- und Endzeiten auf zwei verschiedene Tage fallen, wird empfohlen, die **Startzeit** oder die **Dauer** anzupassen, um sicherzustellen, dass sie auf den gleichen Tag fallen.
+
+
+      Angenommen, Sie ändern die Startzeit in der obigen Konfiguration in 6 Uhr. Das ergibt ein Sicherungsfenster von 6 Uhr bis 21 Uhr (6 Uhr + 15 Stunden). Dies ist eine unterstützte Konfiguration.
+  - question: >
+      Welche Auswirkungen hat es auf die vorhandenen Wiederherstellungspunkte, wenn ich die Frequenz von „Täglich“ in „Stündlich“ ändere?
+    answer: >
+      Wenn Sie die Frequenz von **Täglich** in **Stündlich** ändern, sieht das Verhalten wie folgt aus:
+
+
+      - **Aufbewahrung**: Wenn Sie beim Ändern der Richtlinie die wöchentliche, monatliche bzw. jährliche Aufbewahrung hinzufügen, werden alle zukünftigen Wiederherstellungspunkte, die im Rahmen der geplanten Sicherung erstellt werden, gemäß der neuen Richtlinie mit Tags gekennzeichnet. Alle vorhandenen Wiederherstellungspunkte werden weiterhin als tägliche Wiederherstellungspunkte angesehen und daher nicht mit Tags als „Wöchentlich“, „Monatlich“ bzw. „Jährlich“ gekennzeichnet.
+
+
+      - **Bereinigung von Momentaufnahmen und Wiederherstellungspunkten**:
+
+        - Bei einer Erweiterung der täglichen Aufbewahrung wird das Ablaufdatum der vorhandenen täglichen Wiederherstellungspunkte gemäß dem Wert für die tägliche Aufbewahrung aktualisiert, der in der neuen Richtlinie konfiguriert ist.
+        - Bei einer Reduzierung der täglichen Aufbewahrung werden die vorhandenen täglichen Wiederherstellungspunkte und Momentaufnahmen für die Löschung bei der nächsten Bereinigung gekennzeichnet (basierend auf dem Wert für die tägliche Aufbewahrung, der in der neuen Richtlinie konfiguriert ist) und dann entsprechend gelöscht.
 additionalContent: "\n## <a name=\"next-steps\"></a>Nächste Schritte\n- [Behandeln von Problemen beim Sichern von Azure-Dateifreigaben](troubleshoot-azure-files.md)"

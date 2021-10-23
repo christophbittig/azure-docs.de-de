@@ -3,16 +3,16 @@ title: Anfügen von Datenträgerpools an Azure VMware Solution-Hosts (Vorschau)
 description: Hier erfahren Sie, wie Sie einen Datenträgerpool anfügen, der über ein iSCSI-Ziel als VMware-Datenspeicher einer privaten Azure VMware Solution-Cloud verfügbar gemacht wird. Sobald der Datenspeicher konfiguriert ist, können Sie darin Volumes erstellen und an Ihre VMware-Instanzen anfügen.
 ms.topic: how-to
 ms.date: 08/20/2021
-ms.openlocfilehash: 2487e26d887935f0d66f13d51ce7894edb2b2b6e
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 72af6f2e2186b2c4f79d6e49e8f8a272cc6a6326
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122769300"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130073200"
 ---
 # <a name="attach-disk-pools-to-azure-vmware-solution-hosts-preview"></a>Anfügen von Datenträgerpools an Azure VMware Solution-Hosts (Vorschau)
 
-[Azure-Datenträgerpools](../virtual-machines/disks-pools.md) bieten persistenten Blockspeicher für Anwendungen und Workloads, die von Azure Disks unterstützt werden. Sie können Datenträger als persistenten Speicher für Azure VMware Solution einsetzen, um sowohl die Kosten als auch die Leistung zu optimieren. Wenn Sie speicherintensive Workloads hosten, können Sie anstelle einer Clusterskalierung z. B. eine Hochskalierung mithilfe von Datenträgerpools vornehmen. Datenträger können zudem für die Replikation von Daten aus lokalen oder primären VMware-Umgebungen in Datenspeicher für den sekundären Standort verwendet werden. Wenn Speicher unabhängig von den Azure VMware Solution-Hosts skaliert werden soll, werden [Ultra-Datenträger](../virtual-machines/disks-types.md#ultra-disk) und [SSD Premium-Datenträger](../virtual-machines/disks-types.md#premium-ssd) als Datenspeicher unterstützt.  
+[Azure-Datenträgerpools](../virtual-machines/disks-pools.md) bieten persistenten Blockspeicher für Anwendungen und Workloads, die von Azure Disks unterstützt werden. Sie können Datenträger als persistenten Speicher für Azure VMware Solution einsetzen, um sowohl die Kosten als auch die Leistung zu optimieren. Wenn Sie speicherintensive Workloads hosten, können Sie anstelle einer Clusterskalierung z. B. eine Hochskalierung mithilfe von Datenträgerpools vornehmen. Datenträger können zudem für die Replikation von Daten aus lokalen oder primären VMware-Umgebungen in Datenspeicher für den sekundären Standort verwendet werden. Wenn Speicher unabhängig von den Azure VMware Solution-Hosts skaliert werden soll, werden [Ultra-Datenträger](../virtual-machines/disks-types.md#ultra-disks) und [SSD Premium-Datenträger](../virtual-machines/disks-types.md#premium-ssds) als Datenspeicher unterstützt.  
 
 >[!IMPORTANT]
 >Azure-Datenträgerpools in Azure VMware Solution (Vorschau) sind derzeit als öffentliche Vorschauversion verfügbar.

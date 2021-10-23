@@ -1,14 +1,14 @@
 ---
 title: Zugreifen auf eine VM (Ansicht für Lernende) in Azure Lab Services in Teams
 description: Erfahren Sie, wie Sie in Azure Lab Services in Teams auf eine VM (Ansicht für Lernende) zugreifen.
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/07/2020
-ms.openlocfilehash: 31195cc7c8b4bc0e579f8aeb9107b14229dd8877
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 541d3c519a795d73de1704720ccc40db92610f24
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92218271"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130181082"
 ---
 # <a name="access-a-vm-student-view-in-azure-lab-from-teams"></a>Zugreifen auf eine VM (Ansicht für Lernende) in Azure Lab Services in Teams
 

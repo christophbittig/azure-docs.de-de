@@ -3,7 +3,7 @@ title: Einführung in Nachweise für Azure Active Directory (Vorschauphase)
 description: Übersicht über Nachweise für Azure Active Directory
 services: active-directory
 author: barclayn
-manager: daveba
+manager: karenh444
 editor: ''
 ms.service: active-directory
 ms.subservice: verifiable-credentials
@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 04/01/2021
 ms.author: barclayn
 ms.reviewer: ''
-ms.openlocfilehash: 1203562d088efeafd20a0b6c58698fcfe10b79e6
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e87105a05cde1a32a89d3e4fd404ad222245dce0
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124816191"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129996511"
 ---
 # <a name="introduction-to-azure-active-directory-verifiable-credentials-preview"></a>Einführung in Nachweise für Azure Active Directory (Vorschauphase)
 
@@ -81,7 +81,7 @@ Um diese Versprechen zu erfüllen, benötigen wir eine technische Grundlage mit 
 
 **4. Microsoft Resolver** Diese API stellt die Verbindung mit unserem ION-Knoten her, um DIDs mithilfe der ```did:ion```-Methode zu suchen und aufzulösen und das DID-Dokumentobjekt (DDO) zurückzugeben. Das DDO umfasst DPKI-Metadaten, die den DID zugeordnet sind. Das sind z. B. öffentliche Schlüssel und Dienstendpunkte. 
 
-**5. Azure Active Directory Verified Credentials Service** Dies ist eine API und ein Open Source SDK zur Ausstellung und Verifizierung von [W3C-Nachweisen, die mit der](https://www.w3.org/TR/vc-data-model/)-Methode signiert wurden. Sie ermöglichen es den Besitzern einer Identität, Zusicherungen zu generieren, vorzulegen und zu überprüfen. Dies bildet die Grundlage der Vertrauensstellung zwischen den Benutzern der Systeme.
+**5. Azure Active Directory Verified Credentials Service:** Ein Dienst in Azure und eine REST-API zur Ausstellung und Verifizierung von [W3C-Nachweisen](https://www.w3.org/TR/vc-data-model/), die mit der Methode ```did:ion``` signiert wurden. Sie ermöglichen es den Besitzern einer Identität, Zusicherungen zu generieren, vorzulegen und zu überprüfen. Dies bildet die Grundlage der Vertrauensstellung zwischen den Benutzern der Systeme.
 
 ## <a name="a-sample-scenario"></a>Ein Beispielszenario
 

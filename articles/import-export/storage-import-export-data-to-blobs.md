@@ -1,24 +1,35 @@
 ---
-title: Verwenden des Azure Import/Export-Diensts zum Übertragen von Daten in Azure Blob Storage | Microsoft-Dokumentation
+title: Tutorial zum Importieren von Daten in Azure Blob Storage mit dem Azure Import/Export-Dienst | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Import- und Exportaufträge im Azure-Portal erstellen und Daten von und in Azure Blob Storage übertragen.
 author: alkohli
 services: storage
 ms.service: storage
-ms.topic: how-to
-ms.date: 09/02/2021
+ms.topic: tutorial
+ms.date: 10/04/2021
 ms.author: alkohli
 ms.subservice: common
-ms.custom: devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
-ms.openlocfilehash: 51e70fb16988c0f72cb9b1a35444f55e164839c9
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.custom: tutorial, devx-track-azurepowershell, devx-track-azurecli, contperf-fy21q3
+ms.openlocfilehash: 10f2103049b47366a267fdf0412a7e3fb95a95cd
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123451797"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129709619"
 ---
-# <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Verwenden des Azure Import/Export-Diensts zum Importieren von Daten in Azure Blob Storage
+# <a name="tutorial-import-data-to-blob-storage-with-azure-importexport-service"></a>Tutorial: Importieren von Daten in Blob Storage mit dem Azure Import/Export-Dienst
 
 Dieser Artikel enthält schrittweise Anweisungen zum Verwenden des Azure Import/Export-Diensts, um große Datenmengen sicher in Azure Blob Storage zu importieren. Wenn Sie Daten in Azure Blob Storage importieren möchten, müssen Sie als Dienstvoraussetzung verschlüsselte Datenträger mit den Daten an ein Azure-Rechenzentrum senden.
+
+In diesem Tutorial lernen Sie Folgendes:
+
+> [!div class="checklist"]
+> * Voraussetzungen für den Import von Daten in Azure Blob Storage
+> * Schritt 1: Vorbereiten der Laufwerke
+> * Schritt 2: Erstellen eines Importauftrags
+> * Schritt 3: Konfigurieren des kundenseitig verwalteten Schlüssels (optional)
+> * Schritt 4: Versenden der Laufwerke
+> * Schritt 5: Aktualisieren des Auftrags mit Nachverfolgungsinformationen
+> * Schritt 6: Überprüfen des Datenuploads in Azure
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -28,13 +39,13 @@ Die Voraussetzungen lauten wie folgt:
 * Ein aktives Azure-Abonnement, das für den Import/Export-Dienst verwendet werden kann
 * Mindestens ein Azure Storage-Konto mit einem Speichercontainer. Hier finden Sie die Liste der [für den Import/Export-Dienst unterstützten Speicherkonten und Speichertypen](storage-import-export-requirements.md).
   * Weitere Informationen zum Erstellen eines neuen Speicherkontos finden Sie unter [Erstellen eines Speicherkontos](../storage/common/storage-account-create.md).
-  * Informationen zu Speichercontainern finden Sie unter [Erstellen eines Speichercontainers](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container).
+  * Informationen zum Erstellen von Speichercontainern finden Sie unter [Erstellen eines Speichercontainers](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container).
 * Eine angemessene Anzahl von Datenträgern der [unterstützten Typen](storage-import-export-requirements.md#supported-disks)
-* Ein Windows-System, auf dem eine [unterstützte Betriebssystemversion](storage-import-export-requirements.md#supported-operating-systems) ausgeführt wird.
+* Ein Windows-System, auf dem eine [unterstützte Betriebssystemversion](storage-import-export-requirements.md#supported-operating-systems) ausgeführt wird
 * Aktivierte BitLocker-Verschlüsselung auf dem Windows-System. Lesen Sie hierzu die [Schrittweise Anleitung zur Windows BitLocker-Laufwerkverschlüsselung](https://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/).
-* [Laden Sie die aktuelle Version 1 von WAImportExport](https://www.microsoft.com/download/details.aspx?id=42659) auf das Windows-System herunter. Die Sicherheitsupdates der neuesten Version des Tools bieten eine externe Schutzvorrichtung für den BitLocker-Schlüssel und das aktualisierte Entsperrmodusfeature.
-
-  * Entzippen Sie die Dateien in den Standardordner `waimportexportv1`. Beispiel: `C:\WaImportExportV1`.
+* Laden Sie das aktuelle Release von Version 1 des Azure Import/Export-Tools für Blobs auf das Windows-System herunter:
+  1. [Herunterladen der Version 1 von WAImportExport.](https://www.microsoft.com/download/details.aspx?id=42659) Die aktuelle Version ist 1.5.0.300.
+  1. Entzippen Sie die Dateien in den Standardordner `WaImportExportV1`. Beispiel: `C:\WaImportExportV1`.
 * Sie benötigen ein FedEx/DHL-Konto. Wenn Sie einen anderen Spediteur als FedEx/DHL verwenden möchten, wenden Sie sich unter `adbops@microsoft.com` an das Azure Data Box Operations-Team.
   * Das Konto muss gültig sein, es muss Guthaben vorhanden sein und es muss der Rückversand aktiviert sein.
   * Generieren Sie eine Nachverfolgungsnummer für den Exportauftrag.
@@ -89,6 +100,9 @@ Führen Sie zum Vorbereiten der Laufwerke die folgenden Schritte aus.
     |/blobtype:     |Diese Option gibt den Typ des Blobs an, in den die Daten importiert werden sollen. Bei Blockblobs ist der Blobtyp `BlockBlob`, für Seitenblobs `PageBlob`.         |
     |/skipwrite:     | Gibt an, dass keine neuen Daten kopiert werden müssen und vorhandene Daten auf dem Datenträger vorbereitet werden sollen.          |
     |/enablecontentmd5:     |Wenn diese Option aktiviert ist, wird sichergestellt, dass MD5 berechnet und als `Content-md5`-Eigenschaft für jeden Blob festgelegt wird. Verwenden Sie diese Option nur, wenn Sie nach dem Hochladen der Daten in Azure das Feld `Content-md5` verwenden möchten. <br> Diese Option wirkt sich nicht auf die Datenintegritätsprüfung aus (diese wird standardmäßig ausgeführt). Durch diese Einstellung wird die Zeit zum Hochladen von Daten in die Cloud nicht verlängert.          |
+
+    > [!NOTE]
+    > Wenn Sie ein Blob mit dem gleichen Namen wie ein vorhandenes Blob im Zielcontainer importieren, überschreibt das importierte Blob das vorhandene Blob. In früheren Toolversionen (vor 1.5.0.300) wurde das importierte Blob standardmäßig umbenannt. Mit dem Parameter „\Disposition“ können Sie angeben, ob das Blob im Import umbenannt, überschrieben oder ignoriert werden soll.
 
 8. Wiederholen Sie den vorherigen Schritt für jeden Datenträger, der versendet werden muss. 
 
@@ -352,9 +366,9 @@ Install-Module -Name Az.ImportExport
 
 ## <a name="step-6-verify-data-upload-to-azure"></a>Schritt 6: Überprüfen des Datenuploads in Azure
 
-Überwachen Sie den Auftrag bis zu seinem Abschluss. Sobald der Auftrag abgeschlossen ist, überprüfen Sie, ob Ihre Daten in Azure hochgeladen wurden. Löschen Sie die lokalen Daten erst, wenn Sie überprüft haben, dass die Daten erfolgreich hochgeladen wurden.
+Überwachen Sie den Auftrag bis zu seinem Abschluss. Sobald der Auftrag abgeschlossen ist, überprüfen Sie, ob Ihre Daten in Azure hochgeladen wurden. Löschen Sie die lokalen Daten erst, wenn Sie überprüft haben, ob die Daten erfolgreich hochgeladen wurden. Weitere Informationen finden Sie unter [Überprüfen des Status von Azure Import/Export-Aufträgen mithilfe von Kopierprotokolldateien](storage-import-export-tool-reviewing-job-status-v1.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Anzeigen von Auftrags- und Laufwerkstatus](storage-import-export-view-drive-status.md)
-* [Überprüfen der Import/Export-Anforderungen](storage-import-export-requirements.md)
+* [Überprüfen der Kopierprotokolle für Import/Export](storage-import-export-tool-reviewing-job-status-v1.md)

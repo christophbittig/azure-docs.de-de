@@ -5,12 +5,12 @@ ms.service: site-recovery
 ms.topic: tutorial
 ms.date: 08/19/2021
 ms.custom: MVC
-ms.openlocfilehash: 66bd4e5f24423ef022f8930b618b3cee9b5c9631
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: cfed44e293ce95dbe174f1bb92cbfa96669ab551
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124777334"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130071775"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms---preview"></a>Einrichten der Notfallwiederherstellung in Azure für lokale VMware-VMs – Vorschau
 
@@ -123,7 +123,7 @@ Gehen Sie folgendermaßen vor, um die Replikation zu aktivieren:
       Standardmäßig wird von Azure Site Recovery ein neues Speicherkonto vom Typ „LRS v1“ für den ersten aktivierten Replikationsvorgang in einem Tresor erstellt. Für die nächsten Vorgänge wird dasselbe Cachespeicherkonto wiederverwendet.
     -  Verwaltete Datenträger
 
-       Standardmäßig werden verwaltete HDD Standard-Datenträger in Azure erstellt. Sie können den Typ der verwalteten Datenträger anpassen, indem Sie **Anpassen** auswählen. Wählen Sie den Datenträgertyp basierend auf den geschäftlichen Anforderungen aus. Stellen Sie sicher, dass basierend auf den IOPS der Datenträger des Quellcomputers ein [geeigneter Datenträgertyp ausgewählt](../virtual-machines/disks-types.md#disk-comparison) wird. Preisinformationen finden Sie [hier](https://azure.microsoft.com/pricing/details/managed-disks/) in der Preisübersicht für verwaltete Datenträger.
+       Standardmäßig werden verwaltete HDD Standard-Datenträger in Azure erstellt. Sie können den Typ der verwalteten Datenträger anpassen, indem Sie **Anpassen** auswählen. Wählen Sie den Datenträgertyp basierend auf den geschäftlichen Anforderungen aus. Stellen Sie sicher, dass basierend auf den IOPS der Datenträger des Quellcomputers ein [geeigneter Datenträgertyp ausgewählt](../virtual-machines/disks-types.md#disk-type-comparison) wird. Preisinformationen finden Sie [hier](https://azure.microsoft.com/pricing/details/managed-disks/) in der Preisübersicht für verwaltete Datenträger.
 
        >[!NOTE]
        > Wenn der Mobilitätsdienst vor dem Aktivieren der Replikation manuell installiert wird, können Sie den Typ des verwalteten Datenträgers auf Datenträgerebene ändern. Andernfalls kann standardmäßig ein verwalteter Datenträgertyp auf Computerebene ausgewählt werden.

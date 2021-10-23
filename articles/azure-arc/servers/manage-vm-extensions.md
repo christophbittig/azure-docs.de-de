@@ -3,12 +3,12 @@ title: Verwaltung von VM-Erweiterungen mit Azure Arc-fähigen Servern
 description: Mit Azure Arc-fähigen Servern kann die Bereitstellung von Erweiterungen für virtuelle Computer verwaltet werden, die Konfigurations- und Automatisierungsaufgaben nach der Bereitstellung für nicht in Azure gehostete VMs bereitstellen.
 ms.date: 09/30/2021
 ms.topic: conceptual
-ms.openlocfilehash: d79bae8b84a9e776e64dbe5d93038f88db5bb04c
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 83fb74673b5da94cc656b512886ce1ee5d772ac1
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129354511"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130064397"
 ---
 # <a name="virtual-machine-extension-management-with-azure-arc-enabled-servers"></a>Verwaltung von Erweiterungen für virtuelle Computer mit Azure Arc-fähigen Servern
 
@@ -59,6 +59,7 @@ Arc-fähige Server unterstützen das Verschieben von Computern, auf denen eine o
 |Erweiterung |Herausgeber |type |Zusätzliche Informationen |
 |----------|----------|-----|-----------------------|
 |In Azure Defender integrierter Scanner für Sicherheitsrisiken |Qualys |WindowsAgent.AzureSecurityCenter |[Integrierte Azure Defender-Lösung zur Sicherheitsrisikobewertung für Azure- und Hybridcomputer](../../security-center/deploy-vulnerability-assessment-vm.md)|
+|Microsoft Antimalware-Erweiterung |Microsoft.Azure.Security |IaaSAntimalware |[Microsoft Antimalware-Erweiterung für Windows](../../virtual-machines/extensions/iaas-antimalware-windows.md) |
 |Benutzerdefinierte Skripterweiterung |Microsoft.Compute | CustomScriptExtension |[Erweiterung für benutzerdefinierte Windows-Skripts](../../virtual-machines/extensions/custom-script-windows.md)|
 |Log Analytics-Agent |Microsoft.EnterpriseCloud.Monitoring |MicrosoftMonitoringAgent |[Log Analytics-Erweiterung für virtuelle Computer für Windows](../../virtual-machines/extensions/oms-windows.md)|
 |Azure Monitor für VMs (Insights) |Microsoft.Azure.Monitoring.DependencyAgent |DependencyAgentWindows | [VM-Erweiterung für den Dependency-Agent für Windows](../../virtual-machines/extensions/agent-dependency-windows.md)|

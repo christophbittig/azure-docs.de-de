@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: jushiman
-ms.openlocfilehash: dbb10405408250be55bf10f49d3c557a0205df92
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 81ede4b26bcc1eb5234fa8374a0c3faab7949e36
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122692868"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130073371"
 ---
 # <a name="av2-series"></a>Av2-Serie
 
@@ -53,7 +53,7 @@ Die VMs der Av2-Reihe können auf vielen verschiedenen Hardwaretypen und Prozess
 
 Preisrechner: [Preisrechner](https://azure.microsoft.com/pricing/calculator/)
 
-Weitere Informationen zu Datenträgertypen: [Datenträgertypen](./disks-types.md#ultra-disk)
+Weitere Informationen zu Datenträgertypen: [Datenträgertypen](./disks-types.md#ultra-disks)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

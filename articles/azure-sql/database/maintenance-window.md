@@ -9,13 +9,13 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma
 ms.custom: references_regions
-ms.date: 09/14/2021
-ms.openlocfilehash: bf37cfc156d45eb668a7f7da240e8a9437aa51d9
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.date: 10/15/2021
+ms.openlocfilehash: 123ea592e46c270830bccef1dc06f9caa3e8fd6e
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129216971"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130071871"
 ---
 # <a name="maintenance-window-preview"></a>Wartungsfenster (Vorschau)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -66,7 +66,6 @@ Wartungsbenachrichtigungen können so konfiguriert werden, dass Sie über bevors
 ### <a name="supported-service-level-objectives"></a>Unterstützte Servicelevelziele
 
 Die Auswahl eines anderen Wartungsfensters anstelle des Standardwartungsfensters ist **mit folgenden Ausnahmen** für alle Servicelevelziele (Service Level Objectives, SLOs) verfügbar:
-* Hyperscale 
 * Instanzenpools
 * Legacy Gen4 vCore
 * Basis, S0 und S1 
@@ -78,6 +77,8 @@ Die Auswahl eines anderen Wartungsfensters anstelle des Standardwartungsfensters
 
 | Azure-Region | Verwaltete SQL-Instanz | SQL-Datenbank | SQL-Datenbank in einer [Azure-Verfügbarkeitszone](high-availability-sla.md) | 
 |:---|:---|:---|:---|
+| Australien, Mitte 1 | Ja | | |
+| Australien, Mitte 2 | Ja | | |
 | Australien (Osten) | Ja | Ja | Ja |
 | Australien, Südosten | Ja | Ja | |
 | Brasilien Süd | Ja | Ja |  |
@@ -93,6 +94,7 @@ Die Auswahl eines anderen Wartungsfensters anstelle des Standardwartungsfensters
 | Frankreich, Mitte | Ja | Ja | |
 | Frankreich, Süden | Ja | Ja | |
 | Deutschland, Westen-Mitte | Ja | Ja |  |
+| Deutschland, Norden | Ja |  |  |
 | Japan, Osten | Ja | Ja | Ja |
 | Japan, Westen | Ja | Ja | |
 | Korea, Mitte | Ja | | |
@@ -100,15 +102,19 @@ Die Auswahl eines anderen Wartungsfensters anstelle des Standardwartungsfensters
 | USA Nord Mitte | Ja | Ja | |
 | Nordeuropa | Ja | Ja | Ja |
 | Südafrika, Norden | Ja | | | 
+| Südafrika, Westen | Ja | | | 
 | USA Süd Mitte | Ja | Ja | Ja |
 | Indien (Süden) | Ja | Ja | |
 | Asien, Südosten | Ja | Ja | Ja |
 | Schweiz, Norden | Ja | Ja | |
+| Schweiz, Westen | Ja | | |
 | VAE, Mitte | Ja | | |
+| Vereinigte Arabische Emirate, Norden | Ja | | |
 | UK, Süden | Ja | Ja | Ja |
 | UK, Westen | Ja | Ja | |
 | USA, Westen-Mitte | Ja | Ja | |
 | Europa, Westen | Ja | Ja | Ja |
+| Indien, Westen | Ja | | |
 | USA (Westen) | Ja | Ja |  |
 | USA, Westen 2 | Ja | Ja | Ja |
 | | | | | 

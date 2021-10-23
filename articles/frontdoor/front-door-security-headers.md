@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2020
 ms.author: duau
-ms.openlocfilehash: e8462b98aee1d34b6c7a2ed671667223eca45a25
-ms.sourcegitcommit: b0557848d0ad9b74bf293217862525d08fe0fc1d
+ms.openlocfilehash: 48f70bd0cd71ffc517d7955f645c579f1ffa2b48
+ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106551916"
+ms.lasthandoff: 10/09/2021
+ms.locfileid: "129714870"
 ---
 # <a name="tutorial-add-security-headers-with-rules-engine"></a>Tutorial: Hinzufügen von Sicherheitsheadern mit Regel-Engines
 
@@ -43,7 +43,7 @@ In diesem Tutorial lernen Sie Folgendes:
 1. Fügen Sie den Headernamen **Content-Security-Policy** hinzu, und definieren Sie die Werte, die dieser Header akzeptieren soll. In diesem Szenario haben wir *„script-src ‚self‘ https://apiphany.portal.azure-api.net“ ausgewählt.*
 
    > [!NOTE]
-   > Kopfzeilennamen sind auf 128 Zeichen beschränkt.
+   > Kopfzeilenwerte sind auf 640 Zeichen beschränkt.
 
 1. Nachdem Sie alle gewünschten Regeln zu Ihrer Konfiguration hinzugefügt haben, vergessen Sie nicht, zu Ihrer bevorzugten Route zu navigieren und Ihre Regelmodulkonfiguration mit Ihrer Routenregel zu verknüpfen. Dieser Schritt ist erforderlich, damit die Regel funktioniert. 
 

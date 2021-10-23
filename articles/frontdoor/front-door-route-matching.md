@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: duau
-ms.openlocfilehash: 1aaabce5dc13098d183ee595d27b5b45a3fd0caa
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 815f7500266c175585fa1b27292e593fc73fd8d7
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128586286"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130003778"
 ---
 # <a name="how-requests-are-matched-to-a-routing-rule"></a>Abgleichen von Anforderungen mit einer Routingregel
 
@@ -74,7 +74,9 @@ Nach dem Ermitteln des Front-End-Hosts und dem Filtern möglicher Routingregeln,
 3. Wenn keine Routingregeln mit einem übereinstimmenden Pfad gefunden werden, wird die Anforderung abgelehnt und eine HTTP-Antwort „400: Ungültige Anforderung“ gesendet.
 
 >[!NOTE]
-> Alle Pfade ohne Platzhalter gelten als exakte Treffer für den Pfad. Selbst wenn ein Pfad mit einem Schrägstrich endet, wird er dennoch als exakter Treffer betrachtet.
+> * Alle Pfade ohne Platzhalter gelten als exakte Treffer für den Pfad. Selbst wenn ein Pfad mit einem Schrägstrich endet, wird er dennoch als exakter Treffer betrachtet.
+> * Bei Pfaden für abzugleichende Muster wird die Groß-/Kleinschreibung nicht beachtet. Dies bedeutet, dass Pfade mit unterschiedlichen Schreibweise als Duplikate behandelt werden. Beispielsweise verfügen Sie bei den Pfaden `/FOO` und `/foo` über den gleichen Host, der das gleiche Protokoll verwendet. Diese Pfade werden als Duplikate betrachtet, was in der Einstellung „Abzugleichende Muster“ nicht zulässig ist.
+> 
 
 Sehen wir uns weitere Beispiele an, um dies genauer zu erläutern:
 

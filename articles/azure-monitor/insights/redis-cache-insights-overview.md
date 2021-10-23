@@ -2,15 +2,13 @@
 title: Azure Monitor für Azure Cache for Redis | Microsoft-Dokumentation
 description: In diesem Artikel wird das Azure Monitor für Azure Redis Cache-Feature beschrieben, das Cachebesitzern ein schnelles Verständnis der Leistungs- und Nutzungsprobleme ermöglicht.
 ms.topic: conceptual
-author: lgayhardt
-ms.author: lagayhar
 ms.date: 09/10/2020
-ms.openlocfilehash: fee454073c50b9542e140576ef0629a39b8f4294
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 922909d3c66d53168188257063f943385db0a3d0
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100573455"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130132130"
 ---
 # <a name="explore-azure-monitor-for-azure-cache-for-redis"></a>Informationen zu Azure Monitor für Azure Cache for Redis
 
@@ -79,7 +77,7 @@ Wenn Sie den blau hervorgehobenen Azure Cache for Redis-Ressourcennamen auswähl
 - **Cachefehler**
 - **Fehler (max.)**
 
-### <a name="operations"></a>Vorgänge
+### <a name="operations"></a>Operationen (Operations)
 
 Wenn Sie oben auf der Seite **Vorgänge** auswählen, wird die Tabelle **Vorgänge** der Arbeitsmappenvorlage geöffnet. Darin sind folgende Spalten enthalten:
 

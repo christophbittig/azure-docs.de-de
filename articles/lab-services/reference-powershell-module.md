@@ -1,14 +1,14 @@
 ---
 title: PowerShell-Modul für Azure Lab Services | Microsoft-Dokumentation
 description: Dieser Artikel enthält Informationen zu einem PowerShell-Modul, das die Verwaltung von Artefakten in Azure Lab Services unterstützt.
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 4f990b35a41f040d34fab156d3f3d450ad7561a2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 81ed7d689105aa459151d698466b98f71f7b352e
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94646524"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130177686"
 ---
 # <a name="azlabservices-powershell-module-preview"></a>PowerShell-Modul „Az.LabServices“ (Vorschauversion)
 Az.LabServices ist ein PowerShell-Modul, das die Verwaltung von Azure Lab Services vereinfacht. Das Modul enthält kombinierbare Funktionen zum Erstellen, Abfragen, Aktualisieren und Löschen von Lab-Konten, Labs, VMs und Images. Weitere Informationen zu diesem Modul finden Sie auf der [Az.LabServices-Startseite auf GitHub](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Modules/Library).

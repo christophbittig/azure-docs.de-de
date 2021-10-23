@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 10/07/2021
 ms.author: lajanuar
 recommendations: false
-ms.openlocfilehash: abd279b8464e4477a99aa0da8be480844bf18563
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 55e3d529b0f0e713be1c19e9f2ae4736d9b6a9ca
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129716463"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130177515"
 ---
 # <a name="how-to-use-custom-and-composed-models"></a>Vorgehensweise: Verwenden benutzerdefinierter und zusammengesetzter Modelle
 
@@ -31,11 +31,11 @@ In diesem Artikel untersuchen wir die Vorgehensweise beim Erstellen benutzerdefi
 
 Sie können sehen, wie Daten aus benutzerdefinierten Formularen extrahiert werden, indem Sie unser Tool für die Bezeichnung von Beispielen ausprobieren. Sie benötigen Folgendes:
 
-* Azure-Abonnement – Sie können ein [kostenloses Abonnement erstellen](https://azure.microsoft.com/free/cognitive-services/)
+* Azure-Abonnement – Sie können ein [kostenloses Abonnement erstellen](https://azure.microsoft.com/free/cognitive-services/).
 
-* Eine [Formularerkennungsinstanz](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) im Azure-Portal Sie können den kostenlosen Tarif (`F0`) verwenden, um den Dienst auszuprobieren. Klicken Sie nach der Bereitstellung Ihrer Ressource auf **Zu Ressource wechseln**, um Ihren API-Schlüssel und Endpunkt abzurufen.
+* Eine [Instanz der Formularerkennung](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) im Azure-Portal. Sie können den kostenlosen Tarif (`F0`) verwenden, um den Dienst auszuprobieren. Klicken Sie nach der Bereitstellung Ihrer Ressource auf **Zu Ressource wechseln**, um Ihren API-Schlüssel und -Endpunkt abzurufen.
 
- :::image type="content" source="media/containers/keys-and-endpoint.png" alt-text="Screenshot: Schlüssel und Endpunktspeicherort im Azure-Portal":::
+ :::image type="content" source="media/containers/keys-and-endpoint.png" alt-text="Screenshot: Schlüssel und Endpunktspeicherort im Azure-Portal.":::
 
 > [!div class="nextstepaction"]
 > [Testen](https://fott-2-1.azurewebsites.net/projects/create)
@@ -161,9 +161,9 @@ Mithilfe der **REST-API** können Sie eine Anforderung zum [**Zusammensetzen ben
 
 Verwenden Sie den Programmiersprachencode Ihrer Wahl, um ein zusammengesetztes Modell zu erstellen, das mit einer einzelnen Modell-ID aufgerufen wird. Im Folgenden finden Sie Links zu Codebeispielen, die veranschaulichen, wie sie ein zusammengesetztes Modell aus vorhandenen benutzerdefinierten Modellen erstellen:
 
-* [**C#/.NET**](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/Sample8_ModelCompose.md).
+* [**C#/.NET**](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/Sample_ModelCompose.md).
 
-* [**Java**](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/java/com/azure/ai/formrecognizer/CreateComposedModel.java)
+* [**Java**](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/java/com/azure/ai/formrecognizer/administration/CreateComposedModel.java)
 
 * [**JavaScript**](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/formrecognizer/ai-form-recognizer/samples/v3/javascript/createComposedModel.js)
 
@@ -195,9 +195,9 @@ Mithilfe der REST-API können Sie eine [Formularanalyse](https://westus.dev.cogn
 
 Verwenden Sie die Programmiersprache Ihrer Wahl, um ein Formular oder Dokument mit einem benutzerdefinierten oder zusammengesetzten Modell zu analysieren. Sie benötigen Ihren Formularerkennungsendpunkt, den API-Schlüssel und die Modell-ID.
 
-* [**C#/.NET**](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/Sample8_ModelCompose.md#recognize-a-custom-form-using-a-composed-model)
+* [**C#/.NET**](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/Sample_ModelCompose.md)
 
-* [**Java**](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/java/com/azure/ai/formrecognizer/RecognizeCustomFormsFromUrl.java)
+* [**Java**](https://github.com/Azure/azure-sdk-for-java/blob/main/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/java/com/azure/ai/formrecognizer/AnalyzeCustomDocumentFromUrl.java)
 
 * [**JavaScript**](https://github.com/Azure/azure-sdk-for-js/blob/main/sdk/formrecognizer/ai-form-recognizer/samples/v3/javascript/recognizeCustomForm.js)
 

@@ -9,12 +9,12 @@ author: yorek
 ms.author: damauri
 ms.reviewer: ''
 ms.date: 9/24/2021
-ms.openlocfilehash: e2785f965cdbb94af081e937f0b2290578c04796
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 38dd0f42b8c318d94c266b4837f2b67eda1f9ed9
+ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129059528"
+ms.lasthandoff: 10/07/2021
+ms.locfileid: "129667856"
 ---
 # <a name="hyperscale-secondary-replicas"></a>Sekundäre Hyperscale-Replikate
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -62,6 +62,11 @@ Benannte Replikate unterscheiden sich in den folgenden Punkten von Hochverfügba
 - Benannte Replikate verfügen über ein eigenes Servicelevelziel, das unabhängig vom primären Replikat festgelegt und geändert werden kann.
 - Es werden bis zu 30 benannte Replikate unterstützt (pro primärem Replikat).
 - Es werden verschiedene Authentifizierungslösungen für jedes benannte Replikat unterstützt, indem verschiedene Anmeldungen für logische Server erstellt werden, die benannte Replikate hosten.
+
+Daher bieten benannte Replikate gegenüber Hochverfügbarkeitsreplikaten mehrere Vorteile, was schreibgeschützte Workloads betrifft:
+
+- Bei Benutzern, die mit einem benannten Replikat verbunden sind, wird die Verbindung nicht getrennt, wenn das primäre Replikat hoch- oder herunterskaliert wird. Gleichzeitig sind Benutzer, die mit dem primären Replikat verbunden sind, vom Hoch- oder Herunterskalieren der benannten Replikate nicht betroffen.
+-   Workloads, die auf einem beliebigen Replikat (primär oder benannt) ausgeführt werden, sind von zeitintensiven Abfragen auf anderen Replikaten nicht betroffen.
 
 Das Hauptziel benannter Replikate besteht darin, umfangreiche OLTP-Szenarien mit [horizontaler Leseskalierung](read-scale-out.md) zu ermöglichen und HTAP-Workloads (Hybrid Transactional and Analytical Processing, hybride Transaktions- und Analyseverarbeitung) zu optimieren. Beispiele für das Erstellen solcher Lösungen finden Sie hier:
 

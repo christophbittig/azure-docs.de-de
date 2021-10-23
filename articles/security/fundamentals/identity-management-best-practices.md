@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: e7241944f6178b80ad684ff35684b5b5d3f53e94
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 0e3797e7f78b0938a50e2803f46962b4cacdcd33
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124784525"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129998160"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure-Identitätsverwaltung und Sicherheit der Zugriffssteuerung – Bewährte Methoden
 
@@ -145,7 +145,7 @@ Die Identitätssicherheitsbewertung basiert auf einer Reihe empfohlener Sicherhe
 Wenn Sie mehrere Mandanten verwenden oder Benutzern das [Zurücksetzen ihres Kennworts](https://support.microsoft.com/account-billing/reset-your-work-or-school-password-using-security-info-23dde81f-08bb-4776-ba72-e6b72b9dda9e) ermöglichen möchten, ist es wichtig, dass Sie zur Verhinderung von Missbrauch geeignete Sicherheitsrichtlinien verwenden.
 
 **Bewährte Methode**: Richten Sie Self-Service-Kennwortzurücksetzung (SSPR, Self-Service Password Reset) für Ihre Benutzer ein.  
-**Detail**: Verwenden Sie das Feature [Self-Service-Kennwortzurücksetzung](../../active-directory-b2c/user-flow-self-service-password-reset.md) in Azure AD.
+**Detail**: Verwenden Sie das Feature [Self-Service-Kennwortzurücksetzung](../../active-directory/authentication/tutorial-enable-sspr.md) in Azure AD.  
 
 **Bewährte Methode**: Überwachen Sie, wie oder ob SSPR tatsächlich verwendet wird.  
 **Detail**: Überwachen Sie die Benutzer, die sich registrieren, mit dem [Bericht zur Registrierung für die Kennwortzurücksetzung](../../active-directory/authentication/howto-sspr-reporting.md) von Azure AD. Über die Berichtsfunktion, die von Azure AD bereitgestellt wird, können Sie Fragen beantworten, indem Sie vordefinierte Berichte verwenden. Wenn Sie eine ordnungsgemäße Lizenz haben, können Sie auch benutzerdefinierte Abfragen erstellen.

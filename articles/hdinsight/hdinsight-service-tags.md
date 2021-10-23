@@ -4,13 +4,14 @@ description: Verwenden Sie HDInsight-Diensttags, um eingehenden Datenverkehr von
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 06/23/2021
-ms.openlocfilehash: 988e3249580408147b74409856bea1e45df4e966
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.date: 10/07/2021
+ms.author: guyhay
+ms.openlocfilehash: f85ad29b11e45f5e906bfbf50321c86d16670f89
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129857111"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130004349"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>Diensttags von Netzwerksicherheitsgruppen für Azure HDInsight
 
@@ -59,11 +60,14 @@ Wenn sich Ihr Cluster in einer Region befindet, die in dieser Tabelle aufgeliste
 | Australien | Australien (Osten) | HDInsight.AustraliaEast |
 | &nbsp; | Australien, Südosten | HDInsight.AustraliaSoutheast |
 | &nbsp; | Australien, Mitte | HDInsight.AustraliaCentral |
+| Asia | Asien, Osten | HDInsight.EastAsia |
+| &nbsp; | Asien, Südosten | HDInsight.SoutheastAsia |
 | Brasilien | Brasilien Süd | HDInsight.BrazilSouth |
 | &nbsp; | Brasilien, Südosten | HDInsight.BrazilSoutheast |
 | China | China, Osten 2 | HDInsight.ChinaEast2 |
 | &nbsp; | China, Norden 2 | HDInsight.ChinaNorth2 |
-| Japan | Japan, Westen | HDInsight.JapanWest |
+| Japan | Japan, Osten | HDInsight.JapanEast |
+| &nbsp; | Japan, Westen | HDInsight.JapanWest |
 | Korea | Korea, Mitte | HDInsight.KoreaCentral |
 | &nbsp; | Korea, Süden | HDInsight.KoreaSouth |
 | Indien | Indien, Mitte | HDInsight.CentralIndia |
@@ -72,14 +76,19 @@ Wenn sich Ihr Cluster in einer Region befindet, die in dieser Tabelle aufgeliste
 | Südafrika | Südafrika, Norden | HDInsight.SouthAfricaNorth |
 | Vereinigte Arabische Emirate | Vereinigte Arabische Emirate, Norden | HDInsight.UAENorth |
 | &nbsp; | VAE, Mitte | HDInsight.UAECentral |
+| Europa | Nordeuropa | HDInsight.NorthEurope |
+| &nbsp; | Europa, Westen | HDInsight.WestEurope |
 | Frankreich | Frankreich, Mitte| HDInsight.FranceCentral |
 | Deutschland | Deutschland, Westen-Mitte| HDInsight.GermanyWestCentral |
 | Norwegen | Norwegen, Osten | HDInsight.NorwayEast |
+| Schweden | Schweden, Mitte | HDInsight.SwedenCentral |
+| &nbsp; | Schweden, Süden | HDInsight.SwedenSouth |
 | Schweiz | Schweiz, Norden | HDInsight.SwitzerlandNorth |
 | &nbsp; | Schweiz, Westen | HDInsight.SwitzerlandWest |
 | UK | UK, Süden | HDInsight.UKSouth |
 | &nbsp; | UK, Westen | HDInsight.UKWest |
 | USA | USA Nord Mitte | HDInsight.NorthCentralUS |
+| &nbsp; | USA (Mitte) | HDInsight.CentralUS |
 | &nbsp; | USA, Westen 2 | HDInsight.WestUS2 |
 | &nbsp; | USA, Westen 3 | HDInsight.WestUS3 |
 | &nbsp; | USA, Westen-Mitte | HDInsight.WestCentralUS |

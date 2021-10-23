@@ -7,12 +7,12 @@ ms.service: frontdoor
 ms.topic: how-to
 ms.date: 05/17/2021
 ms.author: qixwang
-ms.openlocfilehash: 8b25f56b238c7f0c42a1ba589f7da2d68344c915
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: a9f0095ebd82ab82003c03c1ca9d59f70d908c9f
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110464389"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130006107"
 ---
 # <a name="configure-an-azure-front-door-standardpremium-route"></a>Konfigurieren einer Route für Azure Front Door Standard/Premium
 
@@ -52,11 +52,11 @@ Informationen zum Einrichten einer Ursprungsgruppe finden Sie unter [Erstellen e
 
     :::image type="content" source="../media/how-to-configure-route/add-route-page.png" alt-text="Screenshot der Seite „Route hinzufügen“" lightbox="../media/how-to-configure-route/add-route-page-expanded.png"::: 
 
-    | Einstellung | Beschreibung |
+    | Einstellung | BESCHREIBUNG |
     | --- | --- |
     | Name | Geben Sie einen eindeutigen Namen für die neue Route ein. |   
     | Domain| Wählen Sie mindestens eine Domäne aus, die überprüft wurde und keiner anderen Route zugeordnet ist. |
-    | Abzugleichende Muster  | Konfigurieren Sie alle URL-Pfadmuster, die diese Route akzeptiert. Beispielsweise können Sie diese Einstellung auf `/images/*` festlegen, um alle Anforderungen für die URL `www.contoso.com/images/*` zu akzeptieren. Die Azure Front Door versucht zunächst, den Datenverkehr auf Grundlage einer genauen Übereinstimmung zu ermitteln. Wenn keine genau übereinstimmenden Pfade gefunden werden, wird nach einem übereinstimmenden Platzhalterpfad gesucht. Wenn keine Routingregeln mit einem übereinstimmenden Pfad gefunden werden, wird die Anforderung abgelehnt und eine HTTP-Antwort „400: Ungültige Anforderung“ gesendet. |
+    | Abzugleichende Muster  | Konfigurieren Sie alle URL-Pfadmuster, die diese Route akzeptiert. Beispielsweise können Sie diese Einstellung auf `/images/*` festlegen, um alle Anforderungen für die URL `www.contoso.com/images/*` zu akzeptieren. Die Azure Front Door versucht zunächst, den Datenverkehr auf Grundlage einer genauen Übereinstimmung zu ermitteln. Wenn keine genau übereinstimmenden Pfade gefunden werden, wird nach einem übereinstimmenden Platzhalterpfad gesucht. Wenn keine Routingregeln mit einem übereinstimmenden Pfad gefunden werden, wird die Anforderung abgelehnt und eine HTTP-Antwort „400: Ungültige Anforderung“ gesendet. Bei Pfaden für abzugleichende Muster wird die Groß-/Kleinschreibung nicht beachtet. Dies bedeutet, dass Pfade mit unterschiedlichen Schreibweise als Duplikate behandelt werden. Beispielsweise verfügen Sie bei den Pfaden `/FOO` und `/foo` über den gleichen Host, der das gleiche Protokoll verwendet. Diese Pfade werden als Duplikate betrachtet, was in der Einstellung „Abzugleichende Muster“ nicht zulässig ist. |
     | Akzeptierte Protokolle | Geben Sie die Protokolle an, die Azure Front Door akzeptieren soll, wenn der Client die Anforderung sendet. |
     | Umleiten | Geben Sie an, ob HTTPS für eine eingehende Anforderung mit HTTP-Anforderung erzwungen wird. |
     | Ursprungsgruppe | Wählen Sie aus, an welche Ursprungsgruppe eine Weiterleitung erfolgen soll, wenn eine Anforderung zurück an Ursprung auftritt. |
