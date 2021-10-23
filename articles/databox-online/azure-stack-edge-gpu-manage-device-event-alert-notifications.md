@@ -1,25 +1,25 @@
 ---
-title: Verwalten von Warnbenachrichtigungen zu Geräteereignissen für Azure Stack Edge Pro-Ressourcen | Microsoft-Dokumentation
-description: Hier wird beschrieben, wie Sie im Azure-Portal Warnungen für Geräteereignisse in Ihren Azure Stack Edge Pro-Ressourcen verwalten.
+title: Verwenden von Aktionsregeln zum Verwalten von Warnungsbenachrichtigungen auf Azure Stack Edge-Geräten | Microsoft-Dokumentation
+description: Hier wird beschrieben, wie Aktionsregeln zum Verwalten von Warnungsbenachrichtigungen für Azure Stack Edge-Geräte im Azure-Portal definiert werden.
 services: databox
 author: v-dalc
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 02/22/2021
+ms.date: 10/11/2021
 ms.author: alkohli
-ms.openlocfilehash: 585343137a4a8fd8a1fb591c640e1183d71c0fd3
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 804d956f934774b01b29301e0be8f9c1a6fd2657
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102443096"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130043356"
 ---
-# <a name="manage-device-event-alert-notifications-on-azure-stack-edge-pro-resources"></a>Verwalten von Warnbenachrichtigungen zu Geräteereignissen für Azure Stack Edge Pro-Ressourcen
+# <a name="use-action-rules-to-manage-alert-notifications-on-azure-stack-edge-devices"></a>Verwenden von Aktionsregeln zum Verwalten von Warnungsbenachrichtigungen auf Azure Stack Edge-Geräten
 
 [!INCLUDE [applies-to-GPU-and-pro-r-and-mini-r-skus](../../includes/azure-stack-edge-applies-to-gpu-pro-r-mini-r-sku.md)]
 
-In diesem Artikel wird beschrieben, wie Sie im Azure-Portal Aktionsregeln erstellen, um Warnbenachrichtigungen für Geräteereignisse, die in einer Ressourcengruppe, einem Azure-Abonnement oder einer einzelnen Azure Stack Edge-Ressource auftreten, auszulösen oder zu unterdrücken. Dieser Artikel bezieht sich auf alle Azure Stack Edge-Modelle.  
+In diesem Artikel wird beschrieben, wie Sie im Azure-Portal Aktionsregeln erstellen, um Warnbenachrichtigungen für Geräteereignisse, die in einer Ressourcengruppe, einem Azure-Abonnement oder einer einzelnen Azure Stack Edge-Ressource auftreten, auszulösen oder zu unterdrücken.  
 
 ## <a name="about-action-rules"></a>Informationen zu Aktionsregeln
 
@@ -125,8 +125,6 @@ Die E-Mail-Benachrichtigung sieht in etwa wie folgt aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-<!-- - See [Create and manage action groups in the Azure portal](../azure-monitor/alerts/action-groups.md) for guidance on creating a new action group.
-- See [Configure an action rule](../azure-monitor/alerts/alerts-action-rules.md?tabs=portal#configuring-an-action-rule) for more info about creating action rules that send or suppress alert notifications. -2 bullets referenced above. Making room for local tasks in "Next Steps." --> 
-- Informationen zum Überprüfen von Geräteereignissen, Hardwarestatus und Metrikdiagrammen finden Sie unter [Überwachen Ihres Azure Stack Edge Pro-Geräts](azure-stack-edge-monitor.md). 
-- Informationen zum Optimieren von Azure Monitor für Azure Stack Edge Pro-GPU-Geräte finden Sie unter [Verwenden von Azure Monitor](azure-stack-edge-gpu-enable-azure-monitor.md).
-- Informationen zum Verwalten von einzelnen Warnungen finden Sie unter [Erstellen, Anzeigen und Verwalten von Metrikwarnungen mit Azure Monitor](../azure-monitor/alerts/alerts-metric.md).
+- [Anzeigen von Gerätewarnungen](azure-stack-edge-alerts.md)
+- [Arbeiten mit Warnungsmetriken](../azure-monitor/alerts/alerts-metric.md)
+- [Einrichten von Azure Monitor](azure-stack-edge-gpu-enable-azure-monitor.md)

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/14/2021
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: cb19372e5b97a9f508367366faa9ae49d0d11261
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a05935f547815ffba419e2e4302c5197d1907bbf
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128596959"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130045273"
 ---
 # <a name="storage-account-overview"></a>Speicherkontoübersicht
 
@@ -31,7 +31,7 @@ In der folgenden Tabelle werden die Typen von Speicherkonten beschrieben, die vo
 | Speicherkontotyp | Unterstützte Speicherdienste | Redundanzoptionen | Verbrauch |
 |--|--|--|--|
 | Standard „Allgemein v2“ | Blob (einschließlich Data Lake Storage<sup>1</sup>), Warteschlange und Tabellenspeicher, Azure Files  | LRS/GRS/RA-GRS<br /><br />ZRS/GZRS/RA-GZRS<sup>2</sup> | Standard-Speicherkontotyp für Blobs, Dateifreigaben, Warteschlangen und Tabellen. Empfohlen für die meisten Azure Storage-Szenarien. Hinweis: Wenn Sie NFS-Dateifreigaben in Azure Files unterstützen möchten, verwenden Sie den Kontotyp „Premium-Dateifreigaben“. |
-| Premium-Blockblobs<sup>3</sup> | Blob Storage (einschließlich Data Lake Storage Storage<sup>1</sup>) | LRS<br /><br />ZRS<sup>2</sup> | Kontotyp „Premium Storage“ für Block- und Anfügeblobs. Empfohlen für Szenarien mit hohen Transaktionsraten oder Szenarien, die kleinere Objekte verwenden oder aber eine gleichbleibend geringe Speicherlatenz erfordern. [Weitere Informationen zu Beispielworkloads.](../blobs/storage-blob-performance-tiers.md#premium-performance) |
+| Premium-Blockblobs<sup>3</sup> | Blob Storage (einschließlich Data Lake Storage Storage<sup>1</sup>) | LRS<br /><br />ZRS<sup>2</sup> | Kontotyp „Premium Storage“ für Block- und Anfügeblobs. Empfohlen für Szenarien mit hohen Transaktionsraten oder Szenarien, die kleinere Objekte verwenden oder aber eine gleichbleibend geringe Speicherlatenz erfordern. [Weitere Informationen zu Beispielworkloads.](../blobs/storage-blob-block-blob-premium.md) |
 | Premium-Dateifreigaben<sup>3</sup> | Azure Files | LRS<br /><br />ZRS<sup>2</sup> | Kontotyp „Premium Storage“ nur für Dateifreigaben. Empfohlen für Unternehmens- oder Hochleistungsanwendungen. Verwenden Sie diesen Kontotyp, wenn Ihr Speicherkonto sowohl SMB- als auch NFS-Dateifreigaben unterstützen soll. |
 | Premium-Seitenblobs<sup>3</sup> | Nur Seiten-BLOBs | LRS | Storage Premium-Kontotyp nur für Seitenblobs. [Informieren Sie sich ausführlicher über Seitenblobs und Beispiel-Anwendungsfälle.](../blobs/storage-blob-pageblob-overview.md) |
 
@@ -39,7 +39,7 @@ In der folgenden Tabelle werden die Typen von Speicherkonten beschrieben, die vo
 
 <sup>2</sup> Zonenredundanter Speicher (ZRS) und geozonenredundanter Speicher (GZRS/RA-GZRS) stehen in bestimmten Regionen nur für Standardkonten des Typs „Universell V2“ sowie für Konten des Typs „Premium-Blockblobs“ und „Premium-Dateifreigaben“ zur Verfügung. Weitere Informationen finden Sie unter [Azure Storage-Redundanz](storage-redundancy.md).
 
-<sup>3</sup> Speicherkonten in einer Premium-Leistungsstufe verwenden SSD-Datenträger (Solid State Drives, SSDs) für niedrige Latenz und hohen Durchsatz.
+<sup>3</sup> Speicherkonten einer Premium-Leistungsstufe verwenden SSD-Datenträger (Solid State Drives, SSDs) für niedrige Latenz und hohen Durchsatz.
 
 Legacy-Speicherkonten werden ebenfalls unterstützt. Weitere Informationen finden Sie unter [Legacy-Speicherkontotypen](#legacy-storage-account-types).
 

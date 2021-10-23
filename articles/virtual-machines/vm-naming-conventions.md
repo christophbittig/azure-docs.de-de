@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 7/22/2020
 ms.author: mimckitt
 ms.custom: sttsinar
-ms.openlocfilehash: 931a80078c4e808ac394bdd226fb972807ed4563
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 17a32881cdfc8e5152d3004a841416e7f0dd3778
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122697240"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130071167"
 ---
 # <a name="azure-virtual-machine-sizes-naming-conventions"></a>Namenskonventionen für Azure-VM-Größen
 
@@ -31,7 +31,7 @@ Diese Seite gibt einen Überblick über die Namenskonventionen, die für Azure V
 | *Unterfamilie | Wird nur für spezialisierte VM-Differenzierungen verwendet|
 | Anzahl der vCPUs| Gibt die Anzahl der vCPUs des virtuellen Computers an |
 | * Eingeschränkte vCPUs| Werden nur für bestimmte VM-Größen verwendet Gibt die Anzahl der vCPUs für die [eingeschränkte vCPU-fähige Größe](./constrained-vcpu.md) an |
-| Zusätzliche Features | Mindestens ein Kleinbuchstabe bezeichnet zusätzliche Features. Beispiele: <br> a = AMD-basierter Prozessor <br> d = Datenträger voll (lokaler temporärer Datenträger ist vorhanden). Dies gilt für neuere Azure-VMS (siehe [Ddv4- und Ddsv4-Serie](./ddv4-ddsv4-series.md)) <br> i = isolierte Größe <br> l = geringer Arbeitsspeicher; eine niedrigere Arbeitsspeichermenge als die arbeitsspeicherintensive Größe <br> m = arbeitsspeicherintensiv; die höchste Arbeitsspeichermenge einer bestimmten Größe <br> t = sehr geringer Arbeitsspeicher; die kleinste Arbeitsspeichermenge einer bestimmten Größe <br> s = Storage Premium-fähig, einschließlich der möglichen Verwendung von [SSD Ultra](./disks-types.md#ultra-disk) (Hinweis: einige neuere Größen ohne das Attribut „s“ können noch Storage Premium unterstützen, z. B. M128, M64 usw.)<br> |
+| Zusätzliche Features | Mindestens ein Kleinbuchstabe bezeichnet zusätzliche Features. Beispiele: <br> a = AMD-basierter Prozessor <br> d = Datenträger voll (lokaler temporärer Datenträger ist vorhanden). Dies gilt für neuere Azure-VMS (siehe [Ddv4- und Ddsv4-Serie](./ddv4-ddsv4-series.md)) <br> i = isolierte Größe <br> l = geringer Arbeitsspeicher; eine niedrigere Arbeitsspeichermenge als die arbeitsspeicherintensive Größe <br> m = arbeitsspeicherintensiv; die höchste Arbeitsspeichermenge einer bestimmten Größe <br> t = sehr geringer Arbeitsspeicher; die kleinste Arbeitsspeichermenge einer bestimmten Größe <br> s = Storage Premium-fähig, einschließlich der möglichen Verwendung von [SSD Ultra](./disks-types.md#ultra-disks) (Hinweis: einige neuere Größen ohne das Attribut „s“ können noch Storage Premium unterstützen, z. B. M128, M64 usw.)<br> |
 | *Beschleunigertyp | Gibt den Typ des Hardwarebeschleunigers in den spezialisierten/GPU-SKUs an. Nur die neuen spezialisierten/GPU-SKUs, die ab dem 3. Quartal 2020 auf den Markt kommen, werden den Hardwarebeschleuniger im Namen tragen. |
 | Version | Bezeichnet die Version der Serie der VM-Familie |
 
