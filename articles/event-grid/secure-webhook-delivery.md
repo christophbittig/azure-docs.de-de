@@ -3,14 +3,14 @@ title: Sichere WebHook-Zustellung mit Azure AD in Azure Event Grid
 description: Beschreibt, wie Ereignisse mittels Azure Event Grid an HTTPS-Endpunkte zugestellt werden, die von Azure Active Directory geschützt werden.
 ms.topic: how-to
 ms.date: 09/29/2021
-ms.openlocfilehash: ef5bbb33f738a102277870c6227813f6ce8ad257
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 18db7a5244cb498ff54999646082d3d5628468e1
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129616847"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130066884"
 ---
-# <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>Veröffentlichen von Ereignissen auf mit Azure Active Directory geschützten Endpunkten
+# <a name="deliver-events-to-azure-active-directory-protected-endpoints"></a>Bereitstellen von Ereignissen auf mit Azure Active Directory geschützten Endpunkten
 Dieser Artikel beschreibt, wie Sie Azure Active Directory (Azure AD) verwenden, um die Verbindung zwischen Ihrem **Ereignisabonnement** und Ihrem **Webhook-Endpunkt** sichern. Eine Übersicht über Azure AD-Anwendungen und -Dienstprinzipale finden Sie unter [Microsoft Identity Platform (v2.0): Übersicht](../active-directory/develop/v2-overview.md).
 
 In diesem Artikel wird das Azure-Portal zur Demonstration verwendet. Die Funktion kann jedoch auch über mit der CLI, der PowerShell oder den SDKs aktiviert werden.
@@ -18,7 +18,7 @@ In diesem Artikel wird das Azure-Portal zur Demonstration verwendet. Die Funktio
 > [!IMPORTANT]
 > Im Rahmen der Erstellung oder Aktualisierung des Ereignisabonnements am 30. März 2021 wurde eine zusätzliche Zugriffsüberprüfung eingeführt, um ein Sicherheitsrisiko zu entschärfen. Der Dienstprinzipal des Abonnentenclients muss entweder ein Besitzer sein oder über eine Rollenzuweisung auf dem Dienstprinzipal der Zielanwendung verfügen. Konfigurieren Sie Ihre AAD-Anwendung neu, indem Sie die folgenden neuen Anweisungen befolgen.
 
-## <a name="single-tenant-events-with-azure-ad-and-webhooks"></a>Einzelmandantenereignisse mit Azure AD und Webhooks
+## <a name="deliver-events-to-a-webhook-in-the-same-azure-ad-tenant"></a>Übermitteln von Ereignissen an einen Webhook im gleichen Azure AD-Mandanten
 
 ![Sichere WebHook-Zustellung mit Azure AD in Azure Event Grid](./media/secure-webhook-delivery/single-tenant-diagram.png)
 
@@ -59,7 +59,7 @@ Führen Sie basierend auf der Abbildung oben die nächsten Schritte aus, um den 
     4. Führen Sie auf der Registerkarte **Zusätzliche Features** die folgenden Schritte aus:
         1. Wählen Sie **AAD-Authentifizierung verwenden** aus, und konfigurieren Sie die Mandanten-ID und die Anwendungs-ID:
         2. Kopieren Sie die Azure AD-Mandanten-ID aus der Ausgabe des Skripts, und geben Sie sie in das Feld **AAD-Mandanten-ID** ein.
-        3. Kopieren Sie die Azure AD-Anwendungs-ID aus der Ausgabe des Skripts, und geben Sie sie in das Feld **AAD-Anwendungs-ID** ein. Alternativ dazu können Sie den URI der AAD-Anwendungs-ID verwenden. Weitere Informationen zum URI der Anwendungs-ID finden Sie in [diesem Artikel](../app-service/configure-authentication-provider-aad.md).
+        3. Kopieren Sie die Azure AD-Anwendungs-ID aus der Ausgabe des Skripts, und geben Sie sie in das Feld **AAD-Anwendungs-ID** ein. Sie können den AAD-Anwendungs-ID-URI anstelle der Anwendungs-ID verwenden. Weitere Informationen zum URI der Anwendungs-ID finden Sie in [diesem Artikel](../app-service/configure-authentication-provider-aad.md).
     
             ![Sichere Webhookaktion](./media/secure-webhook-delivery/aad-configuration.png)
 
@@ -114,7 +114,7 @@ Führen Sie basierend auf der Abbildung oben die nächsten Schritte aus, um den 
     > [!NOTE]
     > Zu diesem Zeitpunkt übergibt Event Grid das Azure AD-Bearertoken in jeder Nachricht an den Webhookclient. Sie müssen das Autorisierungstoken in Ihrem Webhook validieren.
 
-## <a name="multitenant-events-with-azure-ad-and-webhooks"></a>Ereignisse mehrerer Mandanten mit Azure AD und Webhooks
+## <a name="deliver-events-to-a-webhook-in-a-different-azure-ad-tenant"></a>Übermitteln von Ereignissen an einen Webhook in einem anderen Azure AD-Mandanten 
 
 Um ein sicheres Webhookabonnement über mehrere Mandanten hinweg zu aktivieren, müssen Sie diese Aufgabe mithilfe einer Azure AD-Anwendung durchführen. Dieser Prozess ist derzeit nicht verfügbar, wenn Sie den Azure AD-Benutzer aus dem Portal verwenden.
 

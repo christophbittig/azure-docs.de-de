@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/09/2021
 ms.reviewer: cynthn, jushiman
 ms.custom: template-how-to
-ms.openlocfilehash: 8b6e2ba3c65b5fd521bdb6326069ce5d8be05599
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 25b6eaea3c639d39721bd80aaad08cf2c6f80380
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128564883"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130066469"
 ---
 # <a name="modify-a-capacity-reservation-preview"></a>Ändern einer Kapazitätsreservierung (Vorschau)
 
@@ -65,6 +65,17 @@ Beachten Sie, dass die Eigenschaft `capacity` in diesem Beispiel jetzt auf 5 fes
 1. Wählen Sie oben **Reservierungen verwalten** aus. 
 1. Geben Sie auf der Seite *Reservierungen verwalten* die neue Menge ein, die im Feld **Instanzen** reserviert werden soll. 
 1. Wählen Sie **Speichern** aus. 
+
+### <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/cli1)
+Um die reservierte Menge zu aktualisieren, verwenden Sie `az capacity reservation update` mit der aktualisierten Eigenschaft `capacity `.
+
+ ```azurecli-interactive
+ az capacity reservation update 
+ -c myCapacityReservationGroup 
+ -n myCapacityReservation 
+ -g myResourceGroup2 
+ --capacity 5
+ ```
 
 ### <a name="powershell"></a>[PowerShell](#tab/powershell1)
 
@@ -160,6 +171,32 @@ Wenn die Größe der zu ändernden VM derzeit an eine Kapazitätsreservierungsgr
 1. Schauen Sie sich die für jede Reservierung reservierte *VM-Größe* an. 
     1. Wenn die Ziel-VM-Größe nicht Teil der Gruppe ist, [erstellen Sie eine neue Kapazitätsreservierung](capacity-reservation-create.md) für die Ziel-VM. 
     1. Wenn die Größe des virtuellen Zielcomputers bereits in der Gruppe vorhanden ist, [ändern Sie die Größe des virtuellen Computers](resize-vm.md). 
+
+### <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/cli2)
+
+1. Rufen Sie die Namen aller Kapazitätsreservierungen innerhalb der Kapazitätsreservierungsgruppe mit `az capacity reservation group show` ab.
+
+    ```azurecli-interactive
+    az capacity reservation group show 
+    -g myResourceGroup
+    -n myCapacityReservationGroup 
+    ```
+
+1. Suchen Sie in der Antwort nach den Namen aller Kapazitätsreservierungen.
+
+1. Führen Sie die folgenden Befehle aus, um die für jede Reservierung reservierten VM-Größen zu ermitteln.
+
+    ```azurecli-interactive
+    az capacity reservation show
+    -g myResourceGroup
+    -c myCapacityReservationGroup 
+    -n myCapacityReservation 
+    ```
+
+1. Beachten Sie Folgendes: 
+    1. Wenn die Ziel-VM-Größe nicht Teil der Gruppe ist, [erstellen Sie eine neue Kapazitätsreservierung](capacity-reservation-create.md) für die Ziel-VM. 
+    1. Wenn die Größe des virtuellen Zielcomputers bereits in der Gruppe vorhanden ist, [ändern Sie die Größe des virtuellen Computers](resize-vm.md). 
+
 
 ### <a name="powershell"></a>[PowerShell](#tab/powershell2)
 
@@ -285,6 +322,38 @@ DELETE https://management.azure.com/subscriptions/{subscriptionId}/resourceGroup
     1. Navigieren Sie zur Kapazitätsreservierungsgruppe.
     1. Wählen Sie am oberen Rand der Seite die Option **Löschen** aus.
 
+### <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/cli3)
+
+Suchen Sie alle VMs, die der Kapazitätsreservierungsgruppe zugeordnet sind, und heben Sie die Zuordnung auf.
+
+1. Führen Sie Folgendes aus: 
+    
+    ```azurecli-interactive
+    az capacity reservation group show
+    -g myResourceGroup
+    -n myCapacityReservationGroup
+    ```
+
+1. Ermitteln Sie in der obigen Antwort die Namen aller virtuellen Computer unter der Eigenschaft `VirtualMachinesAssociated`, und entfernen Sie sie aus der Kapazitätsreservierungsgruppe, indem Sie die Schritte unter [Entfernen einer Zuordnung virtueller Computer aus einer Kapazitätsreservierungsgruppe](capacity-reservation-remove-vm.md) ausführen.
+
+1. Nachdem alle VMs aus der Gruppe entfernt wurden, fahren Sie mit den nächsten Schritten fort. 
+
+1. Löschen der Kapazitätsreservierung:
+
+    ```azurecli-interactive
+    az capacity reservation delete 
+    -g myResourceGroup 
+    -c myCapacityReservationGroup 
+    -n myCapacityReservation 
+    ```
+
+1. Löschen der Kapazitätsreservierungsgruppe:
+
+    ```azurecli-interactive
+    az capacity reservation group delete 
+    -g myResourceGroup 
+    -n myCapacityReservationGroup
+    ```
 
 ### <a name="powershell"></a>[PowerShell](#tab/powershell3)
 

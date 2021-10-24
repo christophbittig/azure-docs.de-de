@@ -1,14 +1,14 @@
 ---
-title: 'Azure Lab Services: Einrichten von Supportinformationen (Labkontobesitzer)'
+title: Einrichten von Supportinformationen (Lab-Kontobesitzer)
 description: Erfahren Sie, wie ein Labkontobesitzer Kontaktinformationen für den Support festlegen kann. Lab-Ersteller und Labbenutzer können diese Informationen anzeigen und verwenden, um Hilfe zu erhalten.
 ms.date: 06/26/2020
 ms.topic: how-to
-ms.openlocfilehash: 17456f61352b1e26a33c042b27faa2d3aa44d73a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e2143ad161dc426c26810656a5bba7d1614b67d0
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85445082"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130179619"
 ---
 # <a name="set-up-support-information-lab-account-owner-in-azure-lab-services"></a>Einrichten von Supportinformationen (Labkontobesitzer in Azure Lab Services)
 In diesem Artikel wird erläutert, wie Sie (als Labkontobesitzer) Supportinformationen angeben können, die Lab-Ersteller (Lehrkräfte) und Labbenutzer (Kursteilnehmer) verwenden können, um Hilfe zu erhalten, wenn bei der Verwendung des Labkontos oder des Labs technische Probleme auftreten. 

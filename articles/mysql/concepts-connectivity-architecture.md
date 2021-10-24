@@ -5,13 +5,13 @@ author: Bashar-MSFT
 ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 2/11/2021
-ms.openlocfilehash: b1f41696b80c85df8a9131ee2066f5ee76330ec8
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.date: 10/15/2021
+ms.openlocfilehash: 56a678529dcbe12fc0c8f501bcef75c2ff73e895
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122639769"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130071112"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mysql"></a>Verbindungsarchitektur in Azure Database for MySQL
 
@@ -32,7 +32,7 @@ Der Gatewaydienst wird in einer Gruppe von zustandslosen Serverknoten gehostet, 
 
 Im Rahmen der kontinuierlichen Dienstwartung wird die Computehardware, auf der die Gateways gehostet werden, regelmäßig aktualisiert, um eine möglichst sichere und leistungsfähige Umgebung bereitzustellen. Bei einer Aktualisierung der Gatewayhardware wird zuerst ein neuer Ring von Serverknoten erstellt. Dieser neue Ring dient dem Datenverkehr für alle neu erstellten Azure Database for MySQL-Server. Er verfügt über eine andere IP-Adresse als frühere Gatewayringe in derselben Region, damit der Datenverkehr unterschieden werden kann. Sobald der neue Ring voll funktionsfähig ist, wird für die ältere Gatewayhardware, die für die vorhandenen Server genutzt wurde, die Außerbetriebnahme geplant. Kunden, die ihre Server auf der Gatewayhardware ausführen und eine Verbindung mit älteren Gatewayringen herstellen, werden drei Monate vor der Außerbetriebnahme der Gatewayhardware per E-Mail und im Azure-Portal benachrichtigt. Die Außerbetriebnahme von Gateways kann sich in den folgenden Fällen auf die Konnektivität Ihrer Server auswirken: 
 
-* Sie codieren die Gateway-IP-Adressen fest in die Verbindungszeichenfolgen Ihrer Anwendung ein. Dies wird **nicht empfohlen**. Sie sollten den vollqualifizierten Domänennamen (FQDN) Ihres Servers im Format „<servername>.mysql.database.azure.com“ in der Verbindungszeichenfolge für Ihre Anwendung verwenden. 
+* Sie codieren die Gateway-IP-Adressen fest in die Verbindungszeichenfolgen Ihrer Anwendung ein. Dies wird **nicht empfohlen**. Sie sollten den vollqualifizierten Domänennamen (FQDN) Ihres Servers im Format `<servername>.mysql.database.azure.com` in der Verbindungszeichenfolge für Ihre Anwendung verwenden. 
 * Sie aktualisieren die neuen Gateway-IP-Adressen nicht in der clientseitigen Firewall, sodass ausgehender Datenverkehr die neuen Gatewayringe nicht erreichen kann.
 
 Die folgende Tabelle enthält die Gateway-IP-Adressen des Azure Database for MySQL-Gateways für alle Datenregionen. In dieser Tabelle werden immer die aktuellsten Informationen zu den Gateway-IP-Adressen für die einzelnen Regionen aufgeführt. Die Spalten in der folgenden Tabelle stellen Folgendes dar:
@@ -43,50 +43,53 @@ Die folgende Tabelle enthält die Gateway-IP-Adressen des Azure Database for MyS
 
 |  **Regionsname**       |  **Gateway-IP-Adressen**                                  | **Gateway-IP-Adressen (Außerbetriebnahme)**  |  **Gateway-IP-Adressen (außer Betrieb genommen)**  |
 |------------------------|------------------------------------------------------------|-----------------------------------------------|-----------------------------------------------|
-|  Australien, Mitte     |  20.36.105.0                                               |                                               |                                               |
-|  Australien, Mitte 2    |  20.36.113.0                                               |                                               |                                               |
-|  Australien (Osten)        |  13.75.149.87, 40.79.161.1                                 |                                               |                                               |
-|  Australien, Südosten  | 191.239.192.109, 13.73.109.251                             |                                               |                                               |
-|  Brasilien Süd          |  191.233.201.8, 191.233.200.16                             |                                               |  104.41.11.5                                  |
-|  Kanada, Mitte        |  40.85.224.249                                             |                                               |                                               |
-|  Kanada, Osten           |  40.86.226.166                                             |                                               |                                               |
-|  USA (Mitte)            |  23.99.160.139, 52.182.136.37,   52.182.136.38             |  13.67.215.62                                 |                                               |
-|  China, Osten            |  139.219.130.35                                            |                                               |                                               |
-|  China, Osten 2          |  40.73.82.1                                                |                                               |                                               |
-|  China, Norden           |  139.219.15.17                                             |                                               |                                               |
-|  China, Norden 2         |  40.73.50.0                                                |                                               |                                               |
-|  Asien, Osten             |  191.234.2.139, 52.175.33.150,   13.75.33.20, 13.75.33.21  |                                               |                                               |
-|  East US               |  40.71.8.203, 40.71.83.113                                 |  40.121.158.30                                |  191.238.6.43                                 |
-|  USA (Ost) 2             |  40.70.144.38, 52.167.105.38                               |  52.177.185.181                               |                                               |
-|  Frankreich, Mitte        |  40.79.137.0, 40.79.129.1                                  |                                               |                                               |
-|  Frankreich, Süden          |  40.79.177.0                                               |                                               |                                               |
-|  Deutschland, Mitte       |  51.4.144.100                                              |                                               |                                               |
-|  Deutschland, Norden         |  51.116.56.0                                               |                                               |                                               |
-|  Deutschland, Nordosten    |  51.5.144.179                                              |                                               |                                               |
-|  Deutschland, Westen-Mitte  |  51.116.152.0                                              |                                               |                                               |
-|  Indien, Mitte         |  104.211.96.159                                            |                                               |                                               |
-|  Indien, Süden           |  104.211.224.146                                           |                                               |                                               |
-|  Indien, Westen            |  104.211.160.80                                            |                                               |                                               |
-|  Japan, Osten            |  40.79.192.23, 40.79.184.8                                 |  13.78.61.196                                 |                                               |
-|  Japan, Westen            |  191.238.68.11, 40.74.96.6,   40.74.96.7                   |  104.214.148.156                              |                                               |
-|  Korea, Mitte         |  52.231.17.13                                              |  52.231.32.42                                 |                                               |
-|  Korea, Süden           |  52.231.145.3                                              |  52.231.200.86                                |                                               |
-|  USA Nord Mitte      |  52.162.104.35, 52.162.104.36                              |  23.96.178.199                                |                                               |
-|  Nordeuropa          |  52.138.224.6, 52.138.224.7                                |  40.113.93.91                                 |  191.235.193.75                               |
-|  Südafrika, Norden    |  102.133.152.0                                             |                                               |                                               |
-|  Südafrika, Westen     |  102.133.24.0                                              |                                               |                                               |
-|  USA Süd Mitte      |  104.214.16.39, 20.45.120.0                                |  13.66.62.124                                 | 23.98.162.75                                  |
-|  Südostasien       |  40.78.233.2, 23.98.80.12                                  |  104.43.15.0                                  |                                               |
-|  Schweiz, Norden     |  51.107.56.0                                               |                                               |                                               |
-|  Schweiz, Westen      |  51.107.152.0                                              |                                               |                                               |
-|  VAE, Mitte           |  20.37.72.64                                               |                                               |                                               |
-|  Vereinigte Arabische Emirate, Norden             |  65.52.248.0                                               |                                               |                                               |
-|  Vereinigtes Königreich, Süden            |  51.140.144.32                                             |  51.140.184.11                                |                                               |
-|  Vereinigtes Königreich, Westen             |  51.141.8.11                                               |                                               |                                               |
-|  USA, Westen-Mitte       |  13.78.145.25                                              |                                               |                                               |
+|  Australien, Mitte     |  20.36.105.0 |  |       |
+|  Australien, Mitte 2    |  20.36.113.0  |  |        |
+|  Australien (Osten)        |  13.75.149.87, 40.79.161.1   |    |         |
+|  Australien, Südosten  | 13.73.109.251, 13.77.49.32, 13.77.48.10     |        |            |
+|  Brasilien Süd          |  191.233.201.8, 191.233.200.16     |       |  104.41.11.5                                  |
+|  Kanada, Mitte        |  40.85.224.249, 52.228.35.221             |                                               |                                               |
+|  Kanada, Osten           |  40.86.226.166, 52.242.30.154                  |                                               |                                               |
+|  USA (Mitte)            |  23.99.160.139, 52.182.136.37,   52.182.136.38       |  13.67.215.62      |                                               |
+|  China, Osten            |  139.219.130.35            |                                               |                                               |
+|  China, Osten 2          |  40.73.82.1, 52.130.120.89            | 
+|  China, Osten 3          |  52.131.155.192      | 
+|  China, Norden           |  139.219.15.17    |        |                                               |
+|  China, Norden 2         |  40.73.50.0          |                                        |
+|  China, Norden 3         |  52.131.27.192     |          |
+|  Asien, Osten             |  13.75.33.20, 52.175.33.150, 13.75.33.20, 13.75.33.21  |                |                                               |
+|  East US               |  40.71.8.203, 40.71.83.113                                 |  40.121.158.30                  |  191.238.6.43                   |
+|  USA (Ost) 2             |  40.70.144.38, 52.167.105.38                               |  52.177.185.181  |                                               |
+|  Frankreich, Mitte        |  40.79.137.0, 40.79.129.1                                  |   |                                               |
+|  Frankreich, Süden          |  40.79.177.0                                               |                      |                                               |
+|  Deutschland, Mitte       |  51.4.144.100                                              |                           |                                               |
+|  Deutschland, Norden         |  51.116.56.0                                               |                                  |                                               |
+|  Deutschland, Nordosten    |  51.5.144.179                                              |                  |                                               |
+|  Deutschland, Westen-Mitte  |  51.116.152.0                                              |             |                                               |
+|  Indien, Mitte         |  104.211.96.159                                            |                      |                                               |
+|  Indien, Süden           |  104.211.224.146                                           |                     |                                               |
+|  Indien, Westen            |  104.211.160.80                                            |           |                                               |
+|  Japan, Osten            |  40.79.192.23, 40.79.184.8                                 |  13.78.61.196           |                                               |
+|  Japan, Westen            |  191.238.68.11, 40.74.96.6,   40.74.96.7                   |  104.214.148.156                |                                               |
+|  Korea, Mitte         |  52.231.17.13                                              |  52.231.32.42                    |                                               |
+|  Korea, Süden           |  52.231.145.3, 52.231.151.97                                              |  52.231.200.86     |                                               |
+|  USA Nord Mitte      |  52.162.104.35, 52.162.104.36                              |  23.96.178.199       |                                               |
+|  Nordeuropa          |  52.138.224.6, 52.138.224.7                                |  40.113.93.91                        |  191.235.193.75       |
+|  Südafrika, Norden    |  102.133.152.0                                             |                 |                                               |
+|  Südafrika, Westen     |  102.133.24.0                                              |                |                                               |
+|  USA Süd Mitte      |  104.214.16.39, 20.45.120.0                                |  13.66.62.124              | 23.98.162.75                                  |
+|  Südostasien       |  40.78.233.2, 23.98.80.12                                  |  104.43.15.0         |                                               |
+|  Schweiz, Norden     |  51.107.56.0                                               |       |                                               |
+|  Schweiz, Westen      |  51.107.152.0                                              |                       |                                               |
+|  VAE, Mitte           |  20.37.72.64                                               |                      |                                               |
+|  Vereinigte Arabische Emirate, Norden             |  65.52.248.0                                               |                         |                                               |
+|  Vereinigtes Königreich, Süden            |  51.140.144.32, 51.105.64.0                 |  51.140.184.11                                |                                               |
+|  Vereinigtes Königreich, Westen             |  51.141.8.11                                               |                                 |                                               |
+|  USA, Westen-Mitte       |  13.78.145.25, 52.161.100.158                              |                       |                                               |
 |  Europa, Westen           |  13.69.105.208, 104.40.169.187                             |  40.68.37.158                                 |  191.237.232.75                               |
 |  USA (Westen)               |  13.86.216.212, 13.86.217.212                              |  104.42.238.205                               |  23.99.34.75                                  |
-
+|  USA, Westen 2               |  13.66.136.195, 13.66.136.192, 13.66.226.202                              |       |                                   |
+|  USA, Westen 3              |  20.150.184.2                |                               |                                 |
 ## <a name="connection-redirection"></a>Verbindungsumleitung
 
 Azure Database for MySQL unterstützt eine zusätzliche Verbindungsrichtlinie, **Umleitung**, mit der die Netzwerklatenz zwischen Clientanwendungen und MySQL-Servern reduziert werden kann. Bei der Umleitung gibt der Server die Back-End-Adresse des Knotens, auf dem der MySQL-Server gehostet wird, an den Client zurück, nachdem die erste TCP-Sitzung mit dem Azure Database for MySQL-Server eingerichtet wurde. Anschließend werden alle nachfolgenden Pakete direkt an den Server übertragen, wobei das Gateway umgangen wird. Wenn Pakete direkt an den Server übertragen werden, wird die Leistung von Latenz und Durchsatz verbessert.

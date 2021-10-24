@@ -6,19 +6,21 @@ ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 08/03/2021
-ms.openlocfilehash: 5bf02173d105ab81807bdc4ee68e3b8f9bc8e0a4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 10/15/2021
+ms.openlocfilehash: e182ea6e5e7e14777614723bc6105c73a94b848e
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122347139"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130073504"
 ---
 # <a name="azure-database-for-postgresql--hyperscale-citus-limits-and-limitations"></a>Azure Database for PostgreSQL: Einschränkungen von Hyperscale (Citus)
 
 In den folgenden Abschnitten werden die Kapazitäts- und funktionalen Beschränkungen in Hyperscale (Citus) beschrieben.
 
-## <a name="maximum-connections"></a>Maximale Anzahl der Verbindungen
+## <a name="networking"></a>Netzwerk
+
+### <a name="maximum-connections"></a>Maximale Anzahl der Verbindungen
 
 Jede PostgreSQL-Verbindung (auch inaktive Verbindungen) verwendet mindestens 10 MB Arbeitsspeicher, daher ist es wichtig, gleichzeitige Verbindungen einzuschränken. Dies sind die Grenzwerte, die wir ausgewählt haben, um Knoten fehlerfrei zu halten:
 
@@ -37,23 +39,50 @@ Jede PostgreSQL-Verbindung (auch inaktive Verbindungen) verwendet mindestens 10�
 
 Verbindungsversuche über diese Grenzwerte hinaus führen zu einem Fehler. Das System reserviert drei Verbindungen für die Überwachung von Knoten. Aus diesem Grund sind für Benutzerabfragen drei Verbindungen weniger verfügbar als Verbindungen insgesamt.
 
-### <a name="connection-pooling"></a>Verbindungspooling
+#### <a name="connection-pooling"></a>Verbindungspooling
 
 Sie können Verbindungen über ein [Verbindungspooling](concepts-hyperscale-connection-pool.md) weiter skalieren. Hyperscale (Citus) bietet einen verwalteten pgBouncer-Verbindungspooler, der für bis zu 2.000 gleichzeitige Clientverbindungen konfiguriert ist.
 
-## <a name="storage-scaling"></a>Speicherskalierung
+### <a name="private-access-preview"></a>Privater Zugriff (Vorschau)
+
+#### <a name="server-group-name"></a>Servergruppenname
+
+Um mit [privatem Zugriff](concepts-hyperscale-private-access.md) kompatibel zu sein, muss einer Hyperscale-Servergruppe (Citus) einen Namen aufweisen, der maximal 40 Zeichen lang ist.
+
+#### <a name="regions"></a>Regions
+
+Das Feature für privaten Zugriff ist in der Vorschauversion nur in den folgenden Regionen verfügbar:
+
+* Amerika
+    * East US
+    * USA (Ost) 2
+    * USA, Westen 2
+* Asien-Pazifik
+    * Japan, Osten
+    * Japan, Westen
+    * Korea, Mitte
+* Europa
+    * Deutschland, Westen-Mitte
+    * UK, Süden
+    * Europa, Westen
+
+## <a name="storage"></a>Storage
+
+### <a name="storage-scaling"></a>Speicherskalierung
 
 Der Speicher auf Koordinator- und Workerknoten kann hochskaliert (vergrößert) werden, er kann aber nicht herunterskaliert werden.
 
-## <a name="storage-size"></a>Speichergröße
+### <a name="storage-size"></a>Speichergröße
 
 Für Koordinator- und Workerknoten wird eine Speicherkapazität von bis zu 2 TiB unterstützt. Weitere Informationen finden Sie in den verfügbaren Speicheroptionen und der IOPS-Berechnung [oben](concepts-hyperscale-configuration-options.md#compute-and-storage) für Knoten- und Clustergrößen.
 
-## <a name="database-creation"></a>Datenbankerstellung
+## <a name="postgresql"></a>PostgreSQL
+
+### <a name="database-creation"></a>Datenbankerstellung
 
 Im Azure-Portal werden Anmeldeinformationen bereitgestellt, um eine Verbindung mit genau einer Datenbank pro Hyperscale (Citus)-Servergruppe herzustellen, der `citus`-Datenbank. Das Erstellen einer anderen Datenbank ist zurzeit nicht zulässig, und der CREATE DATABASE-Befehl verursacht einen Fehler.
 
-## <a name="columnar-storage"></a>Spaltenbasierter Speicher
+### <a name="columnar-storage"></a>Spaltenbasierter Speicher
 
 In Hyperscale (Citus) gelten derzeit die folgenden Einschränkungen für [spaltenbasierte Tabellen](concepts-hyperscale-columnar.md):
 

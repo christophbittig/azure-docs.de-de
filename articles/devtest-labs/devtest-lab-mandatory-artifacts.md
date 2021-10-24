@@ -1,21 +1,22 @@
 ---
-title: Angeben verbindlicher Artefakte
+title: Angeben verbindlicher Artefakte in Azure DevTest Labs
 description: Erfahren Sie, wie Sie erforderliche Elemente angeben, die vor der Installation der vom Benutzer ausgewählten Elemente auf virtuellen Computern (VMs) im Lab installiert werden müssen.
 ms.topic: how-to
-ms.date: 06/26/2020
-ms.openlocfilehash: 8963db2f99cc893937365a4eac0a656e1ba90613
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/19/2021
+ms.openlocfilehash: 1f755266a3176ed0cdc5a7426850c09d20b2af86
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128678495"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130179239"
 ---
 # <a name="specify-mandatory-artifacts-for-your-lab-in-azure-devtest-labs"></a>Festlegen verbindlicher Artefakte für Ihr Lab in Azure DevTest Labs
-Als Besitzer eines Labs können Sie die verbindlichen Elemente festlegen, die auf jeden Computer im Lab angewendet werden. Stellen Sie sich ein Szenario vor, in dem jeder Computer in Ihrem Lab mit dem Unternehmensnetzwerk verbunden werden soll. In diesem Fall müsste jeder Lab-Benutzer beim Erstellen eines virtuellen Computers ein Artefakt für den Domänenbeitritt erstellen, um sicherzustellen, dass ihr Computer mit der Domäne des Unternehmens verbunden ist. Lab-Benutzer müssten also einen Computer neu erstellen, wenn sie vergessen, erforderliche Artefakte auf ihrem Computer anzuwenden. Als Besitzer eines Labs legen Sie das Artefakt für den-Domänenbeitritt als obligatorisches Artefakt in Ihrem Lab fest. So wird sichergestellt, dass jeder Computer mit dem Unternehmensnetzwerk verbunden ist und Ihre Lab-Benutzer Zeit und Aufwand sparen.
+
+Als Besitzer eines Labs können Sie die verbindlichen Elemente festlegen, die auf jeden Computer im Lab angewendet werden. Stellen Sie sich ein Szenario vor, in dem auf jedem Computer in Ihrem Lab Visual Studio Code installiert sein soll. In diesem Fall müsste jeder Lab-Benutzer während der Erstellung des virtuellen Computers ein Visual Studio Code-Artefakt hinzufügen, um sicherzustellen, dass sein Computer Visual Studio Code empfangen hat. Lab-Benutzer müssten also einen Computer neu erstellen, wenn sie vergessen, erforderliche Artefakte auf ihrem Computer anzuwenden. Als Besitzer eines Labs legen Sie das Visual Studio Code-Artefakt als obligatorisches Artefakt in Ihrem Lab fest. Dieser Schritt stellt sicher, dass jeder Computer mit Visual Studio Code ausgestattet ist, und spart Ihren Lab-Benutzern Zeit und Mühe.
  
 Weitere erforderliche Artefakte wären beispielsweise ein gängiges Tool, das Ihr Team verwendet, oder ein plattformbezogenes Sicherheitspaket, das standardmäßig auf jedem Computer installiert werden muss. Kurz gesagt, ist jede allgemeine Software, die alle Computer im Lab benötigen, ein verbindliches Artefakt. Wenn Sie ein benutzerdefiniertes Image von einem Computer erstellen, auf dem erforderliche Artefakte angewendet wurden und dann einen neuen Computer aus diesem Image erstellen, werden die verbindlichen Artefakte während der Erstellung erneut auf den Computer angewendet. Auch wenn das benutzerdefinierte Image veraltet ist, werden durch dieses Verhalten bei jedem Erstellen eines Computers aus der aktuellen Version die verbindlichen Artefakte angewendet. 
  
-Nur Elemente ohne Parameter können als verbindlich festgelegt werden. Ihr Lab-Benutzer muss bei der Lab-Erstellung keine zusätzlichen Parameter erstellen. Das erleichtert den Prozess der Erstellung des virtuellen Computers wesentlich. 
+Nur Elemente ohne Parameter können als verbindlich festgelegt werden. Ihr Lab-Benutzer muss bei der Lab-Erstellung keine anderen Parameter eingeben. Das erleichtert den Prozess der VM-Erstellung wesentlich. 
 
 ## <a name="specify-mandatory-artifacts"></a>Angeben verbindlicher Artefakte
 Sie können verbindliche Artefakte für Windows- und Linux-Computer separat festlegen. Sie können auch die Reihenfolge ändern, in der diese Artefakte angewendet werden sollen. 
@@ -32,7 +33,7 @@ Sie können verbindliche Artefakte für Windows- und Linux-Computer separat fest
 6. Wählen Sie zum Hinzufügen eines weiteren Artefakts den Artikel aus, und wählen Sie **Hinzufügen**. In diesem Beispiel wird **Chrome** als zweites verbindliches Artefakt hinzugefügt.
 
     ![Seite mit verbindlichen Artefakten – Chrome hinzufügen](media/devtest-lab-mandatory-artifacts/add-chrome.png)
-7. Auf der Seite **Verbindliche Artefakte** wird eine Meldung mit der Anzahl der ausgewählten Artefakte angezeigt. Wenn Sie auf die Meldung klicken, sehen Sie die Artefakte, die Sie ausgewählt haben. Wählen Sie **Speichern**. 
+7. Auf der Seite **Verbindliche Artefakte** wird eine Meldung mit der Anzahl der ausgewählten Artefakte angezeigt. Wenn Sie die Meldung auswählen, sehen Sie die Artefakte, die Sie ausgewählt haben. Wählen Sie **Speichern**. 
 
     ![Seite mit verbindlichen Artefakten – Artefakte speichern](media/devtest-lab-mandatory-artifacts/save-artifacts.png)
 8. Wiederholen Sie die Schritte, um alle verbindlichen Artefakte für virtuelle Linux-Computer anzugeben. 

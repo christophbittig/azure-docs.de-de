@@ -2,13 +2,13 @@
 title: Webhook-Ereignisbereitstellung
 description: In diesem Artikel werden die Webhook-Ereignisbereitstellung und die Endpunktüberprüfung bei der Verwendung von Webhooks beschrieben.
 ms.topic: conceptual
-ms.date: 09/29/2021
-ms.openlocfilehash: 77908b7f36c51ca729915b09cb1e813c978235e3
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.date: 10/13/2021
+ms.openlocfilehash: 35b088f18b4261760d7908a8e779dbc1bda56501
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129614364"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130062992"
 ---
 # <a name="webhook-event-delivery"></a>Webhook-Ereignisbereitstellung
 Ein Webhook ist eine der vielen Möglichkeiten, um Ereignisse aus Azure Event Grid zu empfangen. Wenn ein neues Ereignis bereit ist, sendet der Event Grid-Dienst per POST-Vorgang eine HTTP-Anforderung an den konfigurierten Endpunkt, wobei das Ereignis im Anforderungstext enthalten ist.
@@ -20,11 +20,12 @@ Wie viele andere Dienste, die Webhooks unterstützen, müssen Sie bei Event Grid
 - Azure Functions mit [Event Grid-Trigger](../azure-functions/functions-bindings-event-grid.md)
 
 ## <a name="endpoint-validation-with-event-grid-events"></a>Endpunktüberprüfung mit Event Grid-Ereignissen
+
 Falls Sie einen anderen Typ von Endpunkt nutzen, z. B. eine auf einem HTTP-Trigger basierende Azure-Funktion, muss Ihr Endpunktcode an einem Überprüfungshandshake mit Event Grid beteiligt sein. Event Grid unterstützt zwei Methoden zur Überprüfung des Abonnements.
 
-1. **Synchroner Handshake**: Zum Zeitpunkt der Erstellung des Ereignisabonnements sendet Event Grid ein Ereignis zur Überprüfung des Abonnements an Ihren Endpunkt. Das Schema dieses Ereignisses ähnelt dem aller anderen Event Grid-Ereignisse. Der Datenteil dieses Ereignisses umfasst eine `validationCode`-Eigenschaft. Ihre Anwendung überprüft, ob es sich bei der Überprüfungsanforderung um ein erwartetes Ereignisabonnement handelt, und gibt den Überprüfungscode synchron in der Antwort zurück. Dieser Handshakemechanismus wird in allen Event Grid-Versionen unterstützt.
+- **Synchroner Handshake**: Zum Zeitpunkt der Erstellung des Ereignisabonnements sendet Event Grid ein Ereignis zur Überprüfung des Abonnements an Ihren Endpunkt. Das Schema dieses Ereignisses ähnelt dem aller anderen Event Grid-Ereignisse. Der Datenteil dieses Ereignisses umfasst eine `validationCode`-Eigenschaft. Ihre Anwendung überprüft, ob es sich bei der Überprüfungsanforderung um ein erwartetes Ereignisabonnement handelt, und gibt den Überprüfungscode synchron in der Antwort zurück. Dieser Handshakemechanismus wird in allen Event Grid-Versionen unterstützt.
 
-2. **Asynchroner Handshake**: In bestimmten Fällen können Sie den Überprüfungscode nicht synchron in der Antwort zurückgeben. Wenn Sie beispielsweise einen Drittanbieterdienst nutzen (z. B. [`Zapier`](https://zapier.com) oder [IFTTT](https://ifttt.com/)), können Sie unter Umständen nicht programmgesteuert mit dem Überprüfungscode antworten.
+- **Asynchroner Handshake**: In bestimmten Fällen können Sie den Überprüfungscode nicht synchron in der Antwort zurückgeben. Wenn Sie beispielsweise einen Drittanbieterdienst nutzen (z. B. [`Zapier`](https://zapier.com) oder [IFTTT](https://ifttt.com/)), können Sie unter Umständen nicht programmgesteuert mit dem Überprüfungscode antworten.
 
    Ab Version 2018-05-01-preview unterstützt Event Grid einen manuellen Überprüfungshandshake. Wenn Sie ein Ereignisabonnement mit einem SDK oder Tool erstellen, für die diese neue API-Version (2018-05-01-preview oder höher) verwendet wird, sendet Event Grid im Datenteil des Abonnementüberprüfungsereignisses eine `validationUrl`-Eigenschaft. Um den Handshake abzuschließen, suchen Sie diese URL in den Ereignisdaten und senden ihr eine GET-Anforderung. Sie können entweder einen REST-Client oder Ihren Webbrowser verwenden.
 
@@ -83,12 +84,8 @@ Ein Beispiel für die Handhabung des Handshakes zur Abonnementüberprüfung find
 ## <a name="endpoint-validation-with-cloudevents-v10"></a>Endpunktüberprüfung mit CloudEvents 1.0
 CloudEvents 1.0 implementiert eine eigene [Semantik für den Schutz vor Missbrauch](webhook-event-delivery.md) über die **HTTP OPTIONS**-Methode. Weitere Informationen dazu finden Sie [hier](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection). Wenn das CloudEvents-Schema für die Ausgabe verwendet wird, verwendet Event Grid anstelle des Event Grid-Mechanismus für Überprüfungsereignisse den Missbrauchschutz von CloudEvents 1.0.
 
-## <a name="event-subscriptions-considerations"></a>Hinweise zu Ereignisabonnements
-
-Verwenden Sie diese Referenz, um die Kompatibilität zwischen Themen- und Abonnementschemas zu überprüfen und Probleme während der Erstellung des Abonnements zu vermeiden. Beim Erstellen eines Themas wird ein Schema für eingehende Ereignisse definiert, und beim Erstellen des Abonnements wird ein Schema für ausgehende Ereignisse definiert.
-
-> [!NOTE]
-> Diese Kompatibilitätstabellenreferenz gilt für benutzerdefinierte Themen und Ereignisdomänen.
+## <a name="event-schema-compatibility"></a>Ereignisschemakompatibilität
+Wenn ein Thema erstellt wird, wird ein Schema für eingehende Ereignisse definiert. Wenn ein Abonnement erstellt wird, wird ein Schema für ausgehende Ereignisse definiert. Die folgende Tabelle zeigt die Kompatibilität, die beim Erstellen eines Abonnements zulässig ist. 
 
 | Schema für eingehende Ereignisse | Schema für ausgehende Ereignisse | Unterstützt |
 | ---- | ---- | ---- |

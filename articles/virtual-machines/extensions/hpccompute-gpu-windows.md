@@ -10,15 +10,15 @@ ms.collection: windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/15/2021
+ms.date: 10/14/2021
 ms.author: amverma
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 220b2da56791fde38301bd1f69f5e134be77982c
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 8e164fad73fd04ea2f9093e99b454f43aa441088
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114446004"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130038306"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>NVIDIA-GPU-Treibererweiterung für Windows
 
@@ -62,7 +62,7 @@ Der folgende JSON-Code zeigt das Schema für die Erweiterung.
   "properties": {
     "publisher": "Microsoft.HpcCompute",
     "type": "NvidiaGpuDriverWindows",
-    "typeHandlerVersion": "1.3",
+    "typeHandlerVersion": "1.4",
     "autoUpgradeMinorVersion": true,
     "settings": {
     }
@@ -77,10 +77,38 @@ Der folgende JSON-Code zeigt das Schema für die Erweiterung.
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.HpcCompute | Zeichenfolge |
 | type | NvidiaGpuDriverWindows | Zeichenfolge |
-| typeHandlerVersion | 1.3 | INT |
+| typeHandlerVersion | 1.4 | INT |
 
 
 ## <a name="deployment"></a>Bereitstellung
+
+### <a name="azure-portal"></a>Azure-Portal
+
+Sie können Azure Nvidia-VM-Erweiterungen im Azure-Portal bereitstellen.
+
+1. Wechseln Sie in einem Browser zum [Azure-Portal](https://portal.azure.com).
+
+2. Navigieren Sie zu der VM, auf der Sie den Treiber installieren möchten.
+
+3. Wählen Sie im Menü auf der linken Seite die Option **Erweiterungen** aus.
+
+    :::image type="content" source="./media/nvidia-ext-portal/extensions-menu.png" alt-text="Screenshot: Auswahl von Erweiterungen im Menü des Azure-Portals.":::
+
+4. Wählen Sie **Hinzufügen**.
+
+    :::image type="content" source="./media/nvidia-ext-portal/add-extension.png" alt-text="Screenshot: Hinzufügen einer VM-Erweiterung für die ausgewählte VM.":::
+
+5. Scrollen Sie zu **NVIDIA GPU-Treibererweiterung**, wählen Sie sie aus, und wählen Sie dann **Weiter** aus.
+
+    :::image type="content" source="./media/nvidia-ext-portal/select-nvidia-extension.png" alt-text="Screenshot: Auswählen des NVIDIA GPU-Treibers.":::
+
+6. Wählen Sie **Überprüfen und erstellen** aus, und warten Sie einige Minuten, bis der Treiber bereitgestellt wurde.
+
+    :::image type="content" source="./media/nvidia-ext-portal/create-nvidia-extension.png" alt-text="Screenshot: Auswählen der Schaltfläche „Überprüfen und Erstellen“.":::
+  
+7. Bestätigen Sie, dass die Erweiterung der Liste der installierten Erweiterungen hinzugefügt wird.
+
+    :::image type="content" source="./media/nvidia-ext-portal/verify-extension.png" alt-text="Screenshot: Neue Erweiterung in der Liste der Erweiterungen für die VM":::.
 
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager-Vorlage 
 
@@ -102,7 +130,7 @@ Im folgenden Beispiel wird davon ausgegangen, dass die Erweiterung in der VM-Res
   "properties": {
     "publisher": "Microsoft.HpcCompute",
     "type": "NvidiaGpuDriverWindows",
-    "typeHandlerVersion": "1.3",
+    "typeHandlerVersion": "1.4",
     "autoUpgradeMinorVersion": true,
     "settings": {
     }
@@ -120,7 +148,7 @@ Set-AzVMExtension
     -Publisher "Microsoft.HpcCompute" `
     -ExtensionName "NvidiaGpuDriverWindows" `
     -ExtensionType "NvidiaGpuDriverWindows" `
-    -TypeHandlerVersion 1.3 `
+    -TypeHandlerVersion 1.4 `
     -SettingString '{ `
     }'
 ```
@@ -133,7 +161,7 @@ az vm extension set \
   --vm-name myVM \
   --name NvidiaGpuDriverWindows \
   --publisher Microsoft.HpcCompute \
-  --version 1.3 \
+  --version 1.4 \
   --settings '{ \
   }'
 ```

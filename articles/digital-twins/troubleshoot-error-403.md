@@ -1,19 +1,20 @@
 ---
-title: 'Fehler bei Azure Digital Twins-Anforderung mit Status: 403 (Unzulässig)'
-description: 'Ursachen und Behebungen für „Fehler bei Service Request. Status: 403 (Unzulässig)“ bei Azure Digital Twins.'
+title: 'Problembehandlung bei einer fehlerhaften Dienstanforderung: Fehler 403 (Verboten)'
+titleSuffix: Azure Digital Twins
+description: Erfahren Sie, wie Sie Statusantworten des Fehlers 403 (Verboten) aus Azure Digital Twins diagnostizieren und beheben.
 ms.service: digital-twins
 author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
-ms.date: 8/20/2021
-ms.openlocfilehash: b3ad9c84e35483cf81bde83703b01ef0ff3d8a9d
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.date: 9/23/2021
+ms.openlocfilehash: 60c553faad2917ec57fd6e622348e9a694ff6fe2
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122772330"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130134239"
 ---
-# <a name="service-request-failed-status-403-forbidden"></a>Fehler bei Service Request. Status: 403 (Unzulässig)
+# <a name="troubleshooting-failed-service-request-error-403-forbidden"></a>Problembehandlung bei einer fehlerhaften Dienstanforderung: Fehler 403 (Verboten)
 
 In diesem Artikel werden die Ursachen und Schritte zur Behebung beim Empfang eines 403-Fehlers bei Service Requests an Azure Digital Twins beschrieben. 
 

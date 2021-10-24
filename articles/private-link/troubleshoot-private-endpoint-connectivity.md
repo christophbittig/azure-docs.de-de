@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2020
 ms.author: rdhillon
-ms.openlocfilehash: 0df95d90d0119f8bc513fe2a26ed731d87401b3d
-ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
+ms.openlocfilehash: 77295f2d47f0645b8d4610af3834f0b8a64ec7a0
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129154259"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130064455"
 ---
 # <a name="troubleshoot-azure-private-endpoint-connectivity-problems"></a>Behandeln von Problemen mit der Konnektivität privater Azure-Endpunkte
 
@@ -103,8 +103,9 @@ Vergewissern Sie sich mithilfe der folgenden Schritte, dass alle üblichen Konfi
 1. Für den virtuellen Quellcomputer sollte die Route zur privaten Endpunkt-IP für den nächsten Hop als InterfaceEndpoints in den effektiven NIC-Routen enthalten sein. 
 
     a. Überprüfen Sie, ob die folgenden Gegebenheiten vorliegen, wenn die private Endpunktroute nicht im virtuellen Quellcomputer angezeigt wird: 
-     - Der virtuelle Quellcomputer und der private Endpunkt gehören demselben VNET an. Wenn das der Fall ist, müssen Sie den Support kontaktieren. 
-     - Der virtuelle Quellcomputer und der private Endpunkt gehören unterschiedlichen VNETs an. In diesem Fall müssen Sie die IP-Konnektivität zwischen diesen VNETs überprüfen. Wenn die IP-Konnektivität gegeben ist und die Route dennoch nicht angezeigt wird, kontaktieren Sie den Support. 
+     - Die Quell-VM und der private Endpunkt gehören dem gleichen VNet an. Wenn das der Fall ist, müssen Sie den Support kontaktieren. 
+     - Die Quell-VM und der private Endpunkt sind Teil verschiedener VNets, die miteinander durch direktes Peering verbunden sind. Wenn das der Fall ist, müssen Sie den Support kontaktieren.
+     - Die Quell-VM und der private Endpunkt gehören unterschiedlichen VNets an, die nicht miteinander durch direktes Peering verbunden sind. In diesem Fall müssen Sie die IP-Konnektivität zwischen diesen VNets überprüfen.
 
 1. Wenn die Ergebnisse der Verbindung überprüft wurden, kann das Konnektivitätsproblem mit anderen Aspekten wie Geheimnissen, Token und Kennwörtern auf der Anwendungsebene zusammenhängen.
    - Überprüfen Sie in diesem Fall die Konfiguration der Private Link-Ressource, die dem privaten Endpunkt zugeordnet ist. Weitere Informationen finden Sie unter [Behandlung von Konnektivitätsproblemen bei Azure Private Link](troubleshoot-private-link-connectivity.md).

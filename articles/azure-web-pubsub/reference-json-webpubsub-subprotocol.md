@@ -6,12 +6,12 @@ ms.author: lianwei
 ms.service: azure-web-pubsub
 ms.topic: conceptual
 ms.date: 08/16/2021
-ms.openlocfilehash: 724ffa23cf533133603db717b4d01ebbd81894a1
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 8f1710246158e953492fec23869ba91a77c78e60
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122446847"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130177819"
 ---
 #  <a name="azure-web-pubsub-supported-json-websocket-subprotocol"></a>Azure Web PubSub unterstütztes JSON-WebSocket-Unterprotokoll
      
@@ -83,17 +83,18 @@ Format:
     "type": "sendToGroup",
     "group": "<group_name>",
     "ackId" : 1, // optional
+    "noEcho": true|false,
     "dataType" : "json|text|binary",
     "data": {}, // data can be string or valid json token depending on the dataType 
 }
 ```
 
 * `ackId` ist optional, es handelt sich um eine inkrementelle ganze Zahl für diese Befehlsmeldung. Wenn die `ackId` angegeben ist, sendet der Dienst eine [ack-Antwortnachricht](#ack-response) zurück an den Client, wenn der Befehl ausgeführt wird.
-
-`dataType` kann `json`, `text` oder `binary` sein.
-* `json`: `data` kann ein beliebiger Typ sein, der von JSON unterstützt und in seinem jeweiligen Zustand veröffentlicht wird. Wenn `dataType` nicht angegeben ist, wird dieser Wert standardmäßig auf `json` festgelegt.
-* `text`: `data` sollte im Zeichenfolgenformat vorliegen, und die Zeichenfolgendaten werden veröffentlicht.
-* `binary`: `data` sollte im Base64-Format vorliegen, und die Binärdaten werden veröffentlicht.
+* `noEcho` ist optional. Wenn diese Meldung auf TRUE festgelegt ist, wird sie nicht an dieselbe Verbindung zurückgesendet. Wenn keine Festlegung erfolgt, ist der Standardwert FALSE.
+* `dataType` kann `json`, `text` oder `binary` sein.
+     * `json`: `data` kann ein beliebiger Typ sein, der von JSON unterstützt und in seinem jeweiligen Zustand veröffentlicht wird. Wenn `dataType` nicht angegeben ist, wird dieser Wert standardmäßig auf `json` festgelegt.
+     * `text`: `data` sollte im Zeichenfolgenformat vorliegen, und die Zeichenfolgendaten werden veröffentlicht.
+     * `binary`: `data` sollte im Base64-Format vorliegen, und die Binärdaten werden veröffentlicht.
 
 #### <a name="case-1-publish-text-data"></a>Fall 1: Veröffentlichen von Textdaten:
 ```json
@@ -194,7 +195,7 @@ Format:
 }
 ```
 
-Was der Upstream-Ereignishandler empfängt (siehe unten). Der `Content-Type` der CloudEvents-HTTP-Anforderung ist `text/plain` für `dataType`=`text`.
+Was der Upstream-Ereignishandler empfängt (siehe unten); der `Content-Type` der CloudEvents-HTTP-Anforderung ist `text/plain` für `dataType`=`text`.
 
 ```HTTP
 POST /upstream HTTP/1.1
@@ -229,7 +230,7 @@ text data
 }
 ```
 
-Was der Upstream-Ereignishandler wie unten angegeben empfängt. Der `Content-Type` der CloudEvents-HTTP-Anforderung ist `application/json` für `dataType`=`json`.
+Was der Upstream-Ereignishandler empfängt (siehe unten); der `Content-Type` der CloudEvents-HTTP-Anforderung ist `application/json` für `dataType`=`json`.
 
 ```HTTP
 POST /upstream HTTP/1.1
@@ -327,6 +328,7 @@ Clients können Nachrichten entweder von einer Gruppe empfangen, in die der Clie
         "group": "<group_name>",
         "dataType": "json|text|binary",
         "data" : {} // The data format is based on the dataType
+        "fromUserId": "abc"
     }
     ```
 

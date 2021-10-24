@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/09/2020
-ms.openlocfilehash: a882e0e1f0a5cf0dd9ea3690453887478319268e
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 0463ea748c4d82cc4c098ddd137a12c70f55afb2
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129538954"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130006069"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Häufig gestellte Fragen zur Ermittlung, Bewertung und Abhängigkeitsanalyse
 
@@ -81,6 +81,16 @@ Die Zuverlässigkeitsstufe wird für Bewertungen vom Typ „Leistungsbasiert“ 
 
 - Für Azure-VM- und Azure VMware Solution-Bewertungen: Nach dem Start der Ermittlung wurden einige Server erstellt. Beispiel: Angenommen, Sie erstellen eine Bewertung für den Leistungsverlauf des letzten Monats, einige Server in der Umgebung wurden jedoch erst letzte Woche erstellt. In diesem Fall stehen für die gesamte Dauer keine Leistungsdaten für die neuen Server zur Verfügung, und die Zuverlässigkeitsstufe wäre gering. [Weitere Informationen](./concepts-assessment-calculation.md#confidence-ratings-performance-based)
 - Bei Azure SQL-Bewertungen wurden einige SQL-Instanzen oder -Datenbanken nach dem Start der Ermittlung erstellt. Beispiel: Angenommen, Sie erstellen eine Bewertung für den Leistungsverlauf des letzten Monats, einige SQL-Instanzen oder Datenbanken in der Umgebung wurden jedoch erst letzte Woche erstellt. In diesem Fall stehen für die gesamte Dauer keine Leistungsdaten für die neuen Server zur Verfügung, und die Zuverlässigkeitsstufe wäre gering. [Weitere Informationen](./concepts-azure-sql-assessment-calculation.md#confidence-ratings)
+
+## <a name="why-is-my-ram-utilization-greater-than-100"></a>Warum ist meine RAM-Auslastung größer als 100 %?
+
+Wenn in Hyper-V der maximal bereitgestellte Arbeitsspeicher kleiner ist als für die VM erforderlich, zeigt die Bewertung an, dass die Arbeitsspeicherauslastung mehr als 100 % beträgt.
+
+## <a name="why-cant-i-see-all-azure-vm-families-in-the-azure-vm-assessment-properties"></a>Warum werden nicht alle Azure-VM-Produktfamilien in den Azure-VM-Bewertungseigenschaften angezeigt?
+
+Dafür kann es zwei Gründe geben:
+- Sie haben eine Azure-Region ausgewählt, in der eine bestimmte Serie nicht unterstützt wird. Azure-VM-Produktfamilien, die in den Azure-VM-Bewertungseigenschaften angezeigt werden, hängen von der Verfügbarkeit der VM-Serie am ausgewählten Azure-Standort, vom Speichertyp und von der reservierten Instanz ab. 
+- Die VM-Serie wird in der Bewertung nicht unterstützt und ist nicht in der Auswertungslogik der Bewertung enthalten. Wir unterstützen derzeit keine burstfähigen, beschleunigten und hochleistungsfähigen SKU-Serien der B-Serie. Wir versuchen, die VM-Serie auf dem neuesten Stand zu halten, und die erwähnten VMs sind in unserer Roadmap enthalten. 
 
 ## <a name="the-number-of-azure-vm-or-avs-assessments-on-the-discovery-and-assessment-tool-are-incorrect"></a>Die Anzahl der Azure VM- oder AVS-Bewertungen auf dem Discovery- und Bewertungstool ist inkorrekt
 

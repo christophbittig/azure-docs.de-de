@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: troubleshooting
 ms.date: 07/28/2021
-ms.openlocfilehash: eca62eccca6f53935f29a16bca0afc382896212c
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: d23daba1618a606ee53b117518324604d47f3fe3
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124810368"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129998258"
 ---
 # <a name="troubleshoot-assessment"></a>Behandeln von Problemen bei der Bewertung
 
@@ -142,6 +142,10 @@ Die Zuverlässigkeitsstufe wird für **leistungsbasierte** Bewertungen anhand de
 
 - Für Azure-VM- und Azure VMware Solution-Bewertungen: Nach dem Start der Ermittlung wurden einige Server erstellt. Beispiel: Angenommen, Sie erstellen eine Bewertung für den Leistungsverlauf des letzten Monats, einige Server in der Umgebung wurden jedoch erst letzte Woche erstellt. In diesem Fall stehen für die gesamte Dauer keine Leistungsdaten für die neuen Server zur Verfügung, und die Zuverlässigkeitsstufe wäre gering. [Weitere Informationen](./concepts-assessment-calculation.md#confidence-ratings-performance-based)
 - Bei Azure SQL-Bewertungen wurden einige SQL-Instanzen oder -Datenbanken nach dem Start der Ermittlung erstellt. Beispiel: Angenommen, Sie erstellen eine Bewertung für den Leistungsverlauf des letzten Monats, einige SQL-Instanzen oder -Datenbanken in der Umgebung wurden jedoch erst letzte Woche erstellt. In diesem Fall stehen für die gesamte Dauer keine Leistungsdaten für die neuen Server zur Verfügung, und die Zuverlässigkeitsstufe wäre gering. [Weitere Informationen](./concepts-azure-sql-assessment-calculation.md#confidence-ratings)
+
+## <a name="why-is-my-ram-utilization-greater-than-100"></a>Warum ist meine RAM-Auslastung größer als 100 %?
+
+Wenn in Hyper-V der maximal bereitgestellte Arbeitsspeicher kleiner ist als für die VM erforderlich, zeigt die Bewertung an, dass die Arbeitsspeicherauslastung mehr als 100 % beträgt.
 
 ## <a name="is-the-operating-system-license-included-in-an-azure-vm-assessment"></a>Ist die Betriebssystemlizenz in einer Azure-VM-Bewertung inbegriffen?
 

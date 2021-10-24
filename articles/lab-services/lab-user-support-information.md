@@ -1,14 +1,14 @@
 ---
-title: 'Azure Lab Services: Anzeigen von Supportinformationen (Labbenutzer)'
+title: Anzeigen von Supportinformationen (Benutzer des Labs)
 description: In diesem Artikel wird erläutert, wie ein Labbenutzer oder Lehrer/Dozent Supportinformationen anzeigen kann, um Hilfe zu erhalten.
 ms.date: 06/26/2020
 ms.topic: how-to
-ms.openlocfilehash: 8d0c8a3ad8ba92e606f19480bdb36483f377fa04
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 04789394209a076d0fc47757c12038b20ef54c39
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85443501"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130179657"
 ---
 # <a name="view-support-information-lab-user-in-azure-lab-services"></a>Anzeigen von Supportinformationen (Labbenutzer in Azure Lab Services)
 In diesem Artikel wird erläutert, wie Sie (als Labbenutzer) die folgenden Supportinformationen anzeigen können:

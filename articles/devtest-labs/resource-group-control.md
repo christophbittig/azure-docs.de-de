@@ -1,23 +1,23 @@
 ---
-title: Angeben einer Ressourcengruppe für virtuelle Computer
+title: Angeben der Ressourcengruppe für Azure-VMs in DevTest Labs
 description: Erfahren Sie, wie Sie eine Ressourcengruppe für virtuelle Computer in einem Lab in Azure DevTest Labs angeben.
 ms.topic: how-to
-ms.date: 06/26/2020
-ms.openlocfilehash: f8800674ca7d324037d026142cff41b4fbd018d0
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/18/2021
+ms.openlocfilehash: baeab2c54ae594cf9ecb70ae8c4ec7dd2b66588f
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128635430"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130178897"
 ---
 # <a name="specify-a-resource-group-for-lab-virtual-machines-in-azure-devtest-labs"></a>Angeben einer Ressourcengruppe für virtuelle Labcomputer in Azure DevTest Labs
 
-Als Labbesitzer können Sie Ihre Lab-VMs so konfigurieren, dass sie in einer bestimmten Ressourcengruppe erstellt werden. Dieses Feature ist in folgenden Szenarien hilfreich:
+Standardmäßig erstellt Azure DevTest Labs eine neue Ressourcengruppe, wenn ein neuer virtueller Computer erstellt wird. Als Labbesitzer können Sie Ihre Lab-VMs so konfigurieren, dass sie in einer bestimmten Ressourcengruppe erstellt werden. Dieses Feature ist in folgenden Szenarien hilfreich:
 
 - Es werden weniger Ressourcengruppen von Labs in Ihrem Abonnement erstellt.
 - Die Labs werden in einem festen Satz von Ressourcengruppen ausgeführt, die Sie konfigurieren.
 - Einschränkungen und Genehmigungen, die zum Erstellen von Ressourcengruppen in Ihrem Azure-Abonnement erforderlich sind, werden umgangen.
-- Alle Lab-Ressourcen werden in einer einzelnen Ressourcengruppe konsolidiert, damit Sie diese Ressourcen leichter nachverfolgen und [Richtlinien](../governance/policy/overview.md) zur Verwaltung auf Ressourcengruppenebene anwenden können.
+- Kombinieren Sie alle Lab-Ressourcen in einer einzelnen Ressourcengruppe, damit Sie diese Ressourcen leichter nachverfolgen und [Richtlinien](../governance/policy/overview.md) zur Verwaltung auf Ressourcengruppenebene anwenden können.
 
 Mit dieser Funktion können Sie mithilfe eines Skripts eine neue oder vorhandene Ressourcengruppe in Ihrem Azure-Abonnement für all Ihre virtuellen Lab-Computer angeben. Azure DevTest Labs unterstützt diese Funktion derzeit über eine API.
 

@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/01/2021
 ms.author: cshoe
-ms.openlocfilehash: dbeec528e22d3622b374d6cfee2d51a61b989aac
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.openlocfilehash: d0b97d65a9c543c6afd4ae8afa9e75bf37b9f7a3
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129661158"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130071205"
 ---
 # <a name="azure-cosmos-db-trigger-and-bindings-for-azure-functions-2x-and-higher-overview"></a>Übersicht über Azure Cosmos DB-Trigger und -Bindungen für Azure Functions 2.x oder höher
 
@@ -55,7 +55,11 @@ Das Arbeiten mit Triggern und Bindungen erfordert, dass Sie auf das entsprechend
 
 ### <a name="cosmos-db-extension-4x-and-higher"></a>Cosmos DB-Erweiterung 4.x oder höher
 
-Eine neue Version der Cosmos DB-Bindungserweiterung ist als [NuGet-Vorschaupaket](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB/4.0.0-preview1) verfügbar. Diese Vorschau bietet die Möglichkeit, eine [Verbindung mit einer Identität anstelle eines Geheimnisses](./functions-reference.md#configure-an-identity-based-connection) herzustellen. Für .NET-Anwendungen werden auch die Typen geändert, mit denen eine Bindung erfolgen kann. Dabei werden die Typen aus den v2 SDK `Microsoft.Azure.DocumentDB` durch neuere Typen aus dem v3 SDK [Microsoft.Azure.Cosmos](../cosmos-db/sql/sql-api-sdk-dotnet-standard.md) ersetzt. Weitere Informationen zu den Unterschieden zwischen diesen neuen Typen und zur Migration zu ihnen finden Sie im [SDK-Migrationsleitfaden](../cosmos-db/sql/migrate-dotnet-v3.md) sowie in den Beispielen zu [Triggern](./functions-bindings-cosmosdb-v2-trigger.md), [Eingabebindungen](./functions-bindings-cosmosdb-v2-input.md) und [Ausgabebindungen](./functions-bindings-cosmosdb-v2-output.md).
+Eine neue Version der Cosmos DB-Bindungserweiterung ist als Vorschau verfügbar. Sie bietet die Möglichkeit, eine [Verbindung mit einer Identität anstelle eines Geheimnisses](./functions-reference.md#configure-an-identity-based-connection) herzustellen. Für .NET-Anwendungen werden auch die Typen geändert, mit denen eine Bindung erfolgen kann. Dabei werden die Typen aus den v2 SDK `Microsoft.Azure.DocumentDB` durch neuere Typen aus dem v3 SDK [Microsoft.Azure.Cosmos](../cosmos-db/sql/sql-api-sdk-dotnet-standard.md) ersetzt. Weitere Informationen zu den Unterschieden zwischen diesen neuen Typen und zur Migration zu ihnen finden Sie im [SDK-Migrationsleitfaden](../cosmos-db/sql/migrate-dotnet-v3.md) sowie in den Beispielen zu [Triggern](./functions-bindings-cosmosdb-v2-trigger.md), [Eingabebindungen](./functions-bindings-cosmosdb-v2-input.md) und [Ausgabebindungen](./functions-bindings-cosmosdb-v2-output.md).
+
+Diese Bindungsversion ist als [NuGet-Vorschaupaket] verfügbar. Weitere Informationen finden Sie unter [Aktualisieren Ihrer Erweiterungen].
+
+[NuGet-Vorschaupaket]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.CosmosDB/4.0.0-preview2
 
 > [!NOTE]
 > Derzeit ist Authentifizierung mit einer Identität anstelle eines Geheimnisses mithilfe der Vorschauerweiterung 4.x nur für Pläne für Elastic Premium verfügbar. 

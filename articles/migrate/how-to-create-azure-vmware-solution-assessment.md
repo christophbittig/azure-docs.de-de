@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: cfa3004b0587bbfe74157bf2922dd98cd8741597
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 89c7c903d382d67d9be64829118bdddf8ee4bd31
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355558"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130005993"
 ---
 # <a name="create-an-azure-vmware-solution-assessment"></a>Erstellen einer Azure VMware Solution-Bewertung
 
@@ -123,9 +123,10 @@ Es gibt zwei Arten von Kriterien zur Größenanpassung, die Sie für die Erstell
 Eine Bewertung vom Typ „Azure VMware Solution (AVS)“ beschreibt Folgendes:
 
 - **AVS-Bereitschaft (Azure VMware Solution)** : Ermittelt, ob die lokalen Server für die Migration zu Azure VMware Solution (AVS) geeignet sind.
-- **Anzahl von AVS-Knoten**: Geschätzte Anzahl von AVS-Knoten, die zur Ausführung der Server erforderlich sind.
+- **Anzahl Azure VMware Solution-Knoten**: Geschätzte Anzahl Azure VMware Solution-Knoten, die zum Ausführen der Server erforderlich sind.
 - **Übergreifende Nutzung auf AVS-Knoten**: Projizierte CPU-, Arbeitsspeicher- und Speicherauslastung über alle Knoten hinweg.
     - Die Nutzung beinhaltet Voraus-Factoring in den folgenden Mehraufwandsbereichen der Clusterverwaltung wie vCenter Server, NSX-Manager (groß) und NSX Edge, wenn HCX bereitgestellt ist, außerdem den HCX-Manager und die IX-Appliance, das ~44vCPU (11 CPU), 75 GB RAM und 722 GB Speicher vor Komprimierung und Deduplizierung beansprucht.
+    - Der begrenzende Faktor bestimmt die Anzahl der Hosts/Knoten, die für die Ressourcen erforderlich sind.
 - **Geschätzte monatliche Kosten**: Die geschätzten monatlichen Kosten für alle AVS-Knoten (Azure VMware Solution), auf denen die lokalen virtuellen Computer ausgeführt werden.
 
 
@@ -137,7 +138,7 @@ Eine Bewertung vom Typ „Azure VMware Solution (AVS)“ beschreibt Folgendes:
 
     :::image type="content" source="./media/tutorial-assess-vmware-azure-vmware-solution/avs-assessment-summary.png" alt-text="Zusammenfassung der AVS-Bewertung":::
 
-1. Sehen Sie sich die Zusammenfassung der Bewertung an. Sie können auch die Bewertungseigenschaften bearbeiten oder die Bewertung neu berechnen.
+1. Sehen Sie sich die Zusammenfassung der Bewertung an. Sie können auf **Größenannahmen** klicken, um die Annahmen zu verstehen, die in Berechnungen zur Knotengröße und Ressourcenauslastung berücksichtigt wurden. Sie können auch die Bewertungseigenschaften bearbeiten oder die Bewertung neu berechnen.
 
 ### <a name="review-azure-vmware-solution-avs-readiness"></a>Überprüfen der AVS-Bereitschaft (Azure VMware Solution)
 
@@ -173,8 +174,6 @@ In dieser Ansicht werden die geschätzten Kosten für die Ausführung der Server
 ### <a name="review-confidence-rating"></a>Prüfen der Zuverlässigkeitsstufe
 
 Wenn Sie leistungsbasierte Bewertungen ausführen, wird der Bewertung eine Zuverlässigkeitsstufe zugewiesen.
-
-![Zuverlässigkeitsstufe](./media/how-to-create-assessment/confidence-rating.png)
 
 - Es wird eine Bewertung zwischen einem Stern (niedrigste Stufe) und fünf Sternen (höchste Stufe) vergeben.
 - Anhand der Zuverlässigkeitsstufe können Sie die Zuverlässigkeit der von der Bewertung bereitgestellten Größenempfehlungen besser einschätzen.

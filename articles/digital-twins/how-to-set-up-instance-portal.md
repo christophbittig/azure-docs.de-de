@@ -4,26 +4,24 @@ titleSuffix: Azure Digital Twins
 description: Informationen zum Einrichten einer Instanz des Azure Digital Twins-Diensts mithilfe des Azure-Portals
 author: baanders
 ms.author: baanders
-ms.date: 7/23/2020
+ms.date: 9/2/2021
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy21q2, subject-rbac-steps
-ms.openlocfilehash: f520ed1054c5d0d9dd6c053e22a984a813840131
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 2b7522c91ce5cb60683ce9be905a263a5cb99e52
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114468774"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129984818"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-portal"></a>Einrichten einer Azure Digital Twins-Instanz und der Authentifizierung (Portal)
 
 [!INCLUDE [digital-twins-setup-selector.md](../../includes/digital-twins-setup-selector.md)]
 
-Dieser Artikel behandelt die Schritte zum **Einrichten einer neuen Azure Digital Twins-Instanz**, einschließlich des Erstellens der Instanz und des Einrichtens der Authentifizierung. Nachdem Sie diesen Artikel durchgearbeitet haben, verfügen Sie über eine Azure Digital Twins-Instanz, die für die Programmierung bereitsteht.
+Dieser Artikel behandelt die Schritte zum **Einrichten einer neuen Azure Digital Twins-Instanz**, einschließlich des Erstellens der Instanz und des Einrichtens der Authentifizierung. Nachdem Sie die Schritte in diesem Artikel durchgeführt haben, verfügen Sie über eine Azure Digital Twins-Instanz, die zum Programmieren bereitsteht.
 
 In dieser Version dieses Artikels werden diese Schritte manuell nacheinander mithilfe des Azure-Portals durchlaufen. Das Azure-Portal ist eine webbasierte, zentrale Konsole, die eine Alternative zu Befehlszeilentools darstellt.
-* Wenn Sie diese Schritte manuell mithilfe der Befehlszeilenschnittstelle durchführen möchten, finden Sie weitere Informationen in der entsprechenden Version dieses Artikels unter [Einrichten einer Instanz und der Authentifizierung (CLI)](how-to-set-up-instance-cli.md).
-* Ein Beispiel zur Ausführung einer automatisierten Einrichtung mit einem Bereitstellungsskript finden Sie in der Skriptversion dieses Artikels unter [Einrichten einer Instanz und der Authentifizierung (per Skript)](how-to-set-up-instance-scripted.md).
 
 [!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
 
@@ -49,7 +47,7 @@ In dieser Version dieses Artikels werden diese Schritte manuell nacheinander mit
 Im Folgenden finden Sie die zusätzlichen Optionen, die Sie während der Einrichtung mithilfe der anderen Registerkarten im Prozess **Ressource erstellen** verwenden können.
 
 * **Netzwerk**: Auf dieser Registerkarte können Sie private Endpunkte mithilfe von [Azure Private Link](../private-link/private-link-overview.md) aktivieren, um zu verhindern, dass über ein öffentliches Netzwerk auf Ihre Instanz zugegriffen werden kann. Anweisungen dazu finden Sie unter [Aktivieren des privaten Zugriffs mit Private Link (Vorschau)](./how-to-enable-private-link.md?tabs=portal#add-a-private-endpoint-during-instance-creation).
-* **Erweitert**: Auf dieser Registerkarte können Sie eine vom System verwaltete Identität für Ihre Instanz aktivieren, die beim Weiterleiten von Ereignissen an [Endpunkte](concepts-route-events.md) verwendet werden kann. Weitere Informationen zur Verwendung systemseitig verwalteter Identitäten mit Azure Digital Twins finden Sie unter [Sicherheit für Azure Digital Twins-Lösungen](concepts-security.md#managed-identity-for-accessing-other-resources-preview).
+* **Erweitert**: Auf dieser Registerkarte können Sie eine vom System verwaltete Identität für Ihre Instanz aktivieren, die beim Weiterleiten von Ereignissen an [Endpunkte](concepts-route-events.md) verwendet werden kann. Weitere Informationen zur Verwendung systemseitig verwalteter Identitäten mit Azure Digital Twins finden Sie unter [Sicherheit für Azure Digital Twins-Lösungen](concepts-security.md#managed-identity-for-accessing-other-resources).
 * **Tags**: Auf dieser Registerkarte können Sie Ihrer Instanz Tags hinzufügen, die Ihnen dabei helfen, die Instanz und andere Azure-Ressourcen zu verwalten. Weitere Informationen zu den Azure-Ressourcentags finden Sie unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen und Verwaltungshierarchie](../azure-resource-manager/management/tag-resources.md).
 
 ### <a name="verify-success-and-collect-important-values"></a>Überprüfen des Erfolgs und Erfassen wichtiger Werte
@@ -58,12 +56,12 @@ Nachdem Sie die Einrichtung Ihrer Instanz durch das Klicken auf **Erstellen** ab
 
 :::image type="content" source="media/how-to-set-up-instance/portal/notifications-deployment.png" alt-text="Screenshot der Azure-Benachrichtigungen mit einer erfolgreichen Bereitstellung und Hervorhebung der Schaltfläche „Zu Ressource wechseln“ im Azure-Portal.":::
 
-Wenn bei der Bereitstellung ein Fehler auftritt, wird in der Benachrichtigung alternativ die Ursache angegeben. Beachten Sie die Ratschläge in der Fehlermeldung, und versuchen Sie dann erneut, die Instanz zu erstellen.
+Wenn bei der Bereitstellung ein Fehler auftritt, wird in der Benachrichtigung die Ursache angegeben. Beachten Sie die Ratschläge in der Fehlermeldung, und versuchen Sie dann erneut, die Instanz zu erstellen.
 
 >[!TIP]
 >Nachdem die Instanz erstellt wurde, können Sie jederzeit zu ihrer Seite zurückkehren, indem Sie in der Suchleiste des Azure-Portals nach dem Namen Ihrer Instanz suchen.
 
-Notieren Sie sich von der Seite *Übersicht* der Instanz den *Namen*, die *Ressourcengruppe* und den *Hostnamen*. Dies sind alles wichtige Werte, die Sie möglicherweise benötigen, wenn Sie mit Ihrer Azure Digital Twins-Instanz weiterarbeiten. Wenn andere Benutzer in der Instanz programmieren, sollten Sie diese Werte mit ihnen teilen.
+Notieren Sie sich von der Seite *Übersicht* der Instanz den **Namen**, die **Ressourcengruppe** und den **Hostnamen**. Diese Werte sind alle wichtig. Sie benötigen Sie möglicherweise, wenn Sie mit Ihrer Azure Digital Twins-Instanz weiterarbeiten. Wenn andere Benutzer in der Instanz programmieren, sollten Sie diese Werte mit ihnen teilen.
 
 :::image type="content" source="media/how-to-set-up-instance/portal/instance-important-values.png" alt-text="Screenshot des Azure-Portals, der die wichtigen Werte auf der Seite „Übersicht“ der Azure Digital Twins-Instanz hervorhebt.":::
 

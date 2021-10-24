@@ -4,31 +4,28 @@ titleSuffix: Azure Digital Twins
 description: Informationen zum Einrichten einer Instanz des Azure Digital Twins-Diensts mithilfe der CLI
 author: baanders
 ms.author: baanders
-ms.date: 7/23/2020
+ms.date: 10/13/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 6f64791df0c564183900fd75c718ac4e5f9d0976
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.custom: contperf-fy22q2
+ms.openlocfilehash: 615680552bc1854c650477f314c4ab14815dbc01
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114468842"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130000212"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-cli"></a>Einrichten einer Azure Digital Twins-Instanz und der Authentifizierung (CLI)
 
 [!INCLUDE [digital-twins-setup-selector.md](../../includes/digital-twins-setup-selector.md)]
 
-Dieser Artikel behandelt die Schritte zum **Einrichten einer neuen Azure Digital Twins-Instanz**, einschließlich des Erstellens der Instanz und des Einrichtens der Authentifizierung. Nachdem Sie diesen Artikel durchgearbeitet haben, verfügen Sie über eine Azure Digital Twins-Instanz, die für die Programmierung bereitsteht.
-
-In der vorliegenden Version dieses Artikels werden diese Schritte manuell nacheinander mithilfe der CLI durchlaufen.
-* Wenn Sie diese Schritte manuell im Azure-Portal durchlaufen möchten, finden Sie weitere Informationen in der Portal-Version dieses Artikels unter [Einrichten einer Instanz und der Authentifizierung (Portal)](how-to-set-up-instance-portal.md).
-* Ein Beispiel zur Ausführung einer automatisierten Einrichtung mit einem Bereitstellungsskript finden Sie in der Skriptversion dieses Artikels unter [Einrichten einer Instanz und der Authentifizierung (per Skript)](how-to-set-up-instance-scripted.md).
+Dieser Artikel behandelt die Schritte zum **Einrichten einer neuen Azure Digital Twins-Instanz**, einschließlich des Erstellens der Instanz und des Einrichtens der Authentifizierung. Nachdem Sie die Schritte in diesem Artikel durchgeführt haben, verfügen Sie über eine Azure Digital Twins-Instanz, die zum Programmieren bereitsteht.
 
 [!INCLUDE [digital-twins-setup-steps.md](../../includes/digital-twins-setup-steps.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="set-up-cloud-shell-session"></a>Einrichten einer Cloud Shell-Sitzung
+### <a name="set-up-cloud-shell-session"></a>Einrichten einer Cloud Shell-Sitzung
 [!INCLUDE [Cloud Shell for Azure Digital Twins](../../includes/digital-twins-cloud-shell.md)]
 
 ## <a name="create-the-azure-digital-twins-instance"></a>Erstellen der Azure Digital Twins-Instanz
@@ -53,7 +50,7 @@ Wenn die Instanz erfolgreich erstellt wurde, sieht das Ergebnis in Cloud Shell i
 
 :::image type="content" source="media/how-to-set-up-instance/cloud-shell/create-instance.png" alt-text="Screenshot: Fenster „Cloud Shell“ mit erfolgreicher Erstellung einer Ressourcengruppe und Azure Digital Twins-Instanz im Azure-Portal.":::
 
-Beachten Sie die Angaben für **hostName**, **name** und **resourceGroup** der Azure Digital Twins-Instanz in der Ausgabe. Dies sind alles wichtige Werte, die Sie möglicherweise benötigen, wenn Sie mit Ihrer Azure Digital Twins-Instanz weiterarbeiten, um die Authentifizierung und die zugehörigen Azure-Ressourcen einzurichten. Wenn andere Benutzer in der Instanz programmieren, sollten Sie ihnen diese Werte mitteilen.
+Beachten Sie die Angaben für **hostName**, **name** und **resourceGroup** der Azure Digital Twins-Instanz in der Ausgabe. Diese Werte sind alle wichtig. Sie benötigen sie möglicherweise, wenn Sie mit Ihrer Azure Digital Twins-Instanz weiterarbeiten, um die Authentifizierung und die zugehörigen Azure-Ressourcen einzurichten. Wenn andere Benutzer in der Instanz programmieren, sollten Sie ihnen diese Werte mitteilen.
 
 > [!TIP]
 > Sie können diese Eigenschaften sowie alle Eigenschaften Ihrer Instanz jederzeit durch Ausführen von `az dt show --dt-name <your-Azure-Digital-Twins-instance>` einsehen.
@@ -72,7 +69,7 @@ Die Azure Digital Twins-Instanz ist jetzt einsatzbereit. Im nächsten Schritt st
 
 Um einem Benutzer Berechtigungen zum Verwalten einer Azure Digital Twins-Instanz zu gewähren, müssen Sie ihm die Rolle **Azure Digital Twins Data Owner** (Azure Digital Twins-Datenbesitzer) innerhalb der Instanz zuweisen.
 
-Verwenden Sie den folgenden Befehl, um die Rolle zuzuweisen (dieser Vorgang muss von einem Benutzer mit [ausreichenden Berechtigungen](#prerequisites-permission-requirements) im Azure-Abonnement ausgeführt werden). In diesem Befehl müssen Sie den *Benutzerprinzipalnamen* im Azure AD-Konto für den Benutzer übergeben, dem die Rolle zugewiesen werden soll. In den meisten Fällen entspricht dieser Name der E-Mail-Adresse des Benutzers im Azure AD-Konto.
+Verwenden Sie den folgenden Befehl, um die Rolle zuzuweisen (dieser Vorgang muss von einem Benutzer mit [ausreichenden Berechtigungen](#prerequisites-permission-requirements) im Azure-Abonnement ausgeführt werden). In diesem Befehl müssen Sie den *Benutzerprinzipalnamen* im Azure AD-Konto für den Benutzer übergeben, dem die Rolle zugewiesen werden soll. In den meisten Fällen entspricht dieser Wert der E-Mail-Adresse des Benutzers im Azure AD-Konto.
 
 ```azurecli-interactive
 az dt role-assignment create --dt-name <your-Azure-Digital-Twins-instance> --assignee "<Azure-AD-user-principal-name-of-user-to-assign>" --role "Azure Digital Twins Data Owner"

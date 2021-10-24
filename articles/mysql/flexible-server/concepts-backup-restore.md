@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 7564db786084964fa0aca38c6ce8b722b0f3a95a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 67a38e0d9a209c12925e54f208c8cc3a614fbe34
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355432"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130065987"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql-flexible-server-preview"></a>Sicherung und Wiederherstellung in Azure Database for MySQL Flexible Server (Vorschau)
 
@@ -32,9 +32,33 @@ Diese Sicherungsdateien können nicht exportiert werden. Die Sicherungen können
 
 Sicherungen auf flexiblen Servern basieren auf Momentaufnahmen. Die erste Momentaufnahmensicherung ist für unmittelbar nach Erstellung des Servers geplant. Momentaufnahmesicherungen werden einmal täglich erstellt. Transaktionsprotokollsicherungen finden alle fünf Minuten statt.
 
+## <a name="backup-redundancy-options"></a>Optionen für Sicherungsredundanz
+
+Azure Database for MySQL speichert immer mehrere Kopien Ihrer Sicherungen, damit Ihre Daten vor geplanten und ungeplanten Ereignissen geschützt sind – von vorübergehend auftretenden Hardwarefehlern über Netzwerk- oder Stromausfälle bis hin zu schweren Naturkatastrophen. Bei Azure Database for MySQL können Sie in den Tarifen „Basic“, „Universell“ und „Arbeitsspeicheroptimiert“ flexibel zwischen lokal redundantem, zonenredundantem und georedundantem Sicherungsspeicher wählen. Standardmäßig ist Azure Database for MySQL Serversicherungsspeicher lokal redundant für Server mit Hochverfügbarkeit in gleicher Zone oder ohne Hochverfügbarkeitskonfiguration und zonenredundant für Server mit zonenredundanter Hochverfügbarkeitskonfiguration.
+
+Sicherungsredundanz stellt sicher, dass Ihre Datenbank ihre Verfügbarkeits- und Dauerhaftigkeitsziele auch bei Ausfällen erfüllt, und Azure Database for MySQL erweitert drei Optionen für Benutzer: 
+
+- **Lokal redundanter Sicherungsspeicher**: Wenn die Sicherungen in einem lokal redundanten Sicherungsspeicher gespeichert werden, werden mehrere Kopien von Sicherungen im selben Rechenzentrum gespeichert. Diese Option schützt Ihre Daten vor Serverrack- und Laufwerkfehlern. Darüber hinaus bietet dies eine Dauerhaftigkeit von mindestens 99,999999999 % (11 9en) von Sicherungsobjekten für die Dauer eines Jahres. Standardmäßig ist Sicherungsspeicher für Server mit Hochverfügbarkeit in gleicher Zone oder ohne Hochverfügbarkeitskonfiguration auf lokal redundant festgelegt.  
+
+- **Zonenredundanter Sicherungsspeicher**: Wenn die Sicherungen in zonenredundantem Sicherungsspeicher gespeichert werden, werden mehrere Kopien nicht nur in der Verfügbarkeitszone gespeichert, in der Ihr Server gehostet wird, sondern auch in eine andere Verfügbarkeitszone in derselben Region repliziert. Diese Option kann für Szenarien genutzt werden, die Hochverfügbarkeit erfordern, oder um die Replikation von Daten in einem Land bzw. einer Region einzuschränken, um Anforderungen an Datenresidenz zu erfüllen. Darüber hinaus bietet dies eine Dauerhaftigkeit von mindestens 99,9999999999 % (12 9en) von Sicherungsobjekten für die Dauer eines Jahres. Sie können die Option „Zonenredundante Hochverfügbarkeit“ zum Zeitpunkt der Servererstellung auswählen, um zonenredundanten Sicherungsspeicher sicherzustellen. Hochverfügbarkeit für einen Server kann nach der Erstellung deaktiviert werden, der Sicherungsspeicher bleibt jedoch weiterhin zonenredundant.  
+
+- **Georedundanter Sicherungsspeicher**: Wenn die Sicherungen in einem georedundanten Sicherungsspeicher gespeichert werden, werden mehrere Kopien nicht nur in der Region gespeichert, in der Ihr Server gehostet wird. Sie werden außerdem an die gekoppelte Region repliziert. Dies erhöht den Schutz und ermöglicht in einem Notfall die Wiederherstellung Ihres Servers in einer anderen Region. Darüber hinaus bietet dies eine Dauerhaftigkeit von mindestens 99,99999999999999 % (16 9en) von Sicherungsobjekten für die Dauer eines Jahres. Sie können die Option „Georedundanz“ zum Zeitpunkt der Servererstellung aktivieren, um georedundanten Sicherungsspeicher sicherzustellen. Georedundanz wird für Server unterstützt, die in einer der [gekoppelten Azure-Regionen](../../best-practices-availability-paired-regions.md) gehostet werden. 
+
+> [!NOTE]
+> Georedundanz und zonenredundante Hochverfügbarkeit zur Unterstützung von Zonenredundanz werden derzeit nur als Vorgang zur Erstellungszeit zur Verfügung gestellt.
+
+## <a name="moving-from-other-backup-storage-options-to-geo-redundant-backup-storage"></a>Umstieg von anderen Sicherungsspeicheroptionen auf georedundanten Sicherungsspeicher 
+
+Das Konfigurieren von georedundantem Speicher für die Sicherung ist nur während der Erstellung des Servers zulässig. Nachdem der Server bereitgestellt wurde, können Sie die Option für die Sicherungsspeicherredundanz nicht mehr ändern. Sie können ihren vorhandenen Sicherungsspeicher jedoch mithilfe der folgenden vorgeschlagenen Methoden in georedundanten Speicher verschieben: 
+
+- **Wechsel von lokal redundantem zu georedundantem Sicherungsspeicher**: Um Ihren Sicherungsspeicher von lokal redundantem Speicher auf georedundanten Speicher umzustellen, können Sie einen Point-in-Time-Wiederherstellungsvorgang durchführen und die Serverkonfiguration „Compute und Speicher“ ändern, um Georedundanz für den lokal redundanten Quellserver zu aktivieren. Zonenredundante Hochverfügbarkeitsserver derselben Zone können auch auf ähnliche Weise wie ein georedundanter Server wiederhergestellt werden, da der zugrunde liegende Sicherungsspeicher lokal redundant ist. 
+
+- **Wechsel von zonenredundantem zu georedundantem Sicherungsspeicher**: Azure Database for MySQL unterstützt keine Konvertierung von zonenredundantem Speicher in georedundanten Speicher durch Änderung von Einstellungen von „Compute und Speicher“ oder einen Point-in-Time-Wiederherstellungsvorgang. Wenn Sie Ihren Sicherungsspeicher von zonenredundantem Speicher auf georedundanten Speicher umstellen möchten, ist das Erstellen eines neuen Servers und Migrieren der Daten mithilfe von [Sicherung und Wiederherstellung](../concepts-migrate-dump-restore.md) die einzige unterstützte Option.
+
+
 ## <a name="backup-retention"></a>Sicherungsaufbewahrung
 
-Datenbanksicherungen werden in einem lokal redundanten Speicher gespeichert, der innerhalb einer Region in drei Kopien gespeichert wird. Sicherungen werden basierend auf der Einstellung für den Aufbewahrungszeitraum der Sicherung auf dem Server beibehalten. Sie können einen Aufbewahrungszeitraum von 1 bis 35 Tagen auswählen, wobei die standardmäßige Beibehaltungsdauer sieben Tage beträgt. Sie können den Aufbewahrungszeitraum bei der Servererstellung oder später festlegen, indem Sie die Sicherungskonfiguration mithilfe des Azure-Portals aktualisieren.
+Sicherungen werden basierend auf der Einstellung für den Aufbewahrungszeitraum der Sicherung auf dem Server beibehalten. Sie können einen Aufbewahrungszeitraum von 1 bis 35 Tagen auswählen, wobei die standardmäßige Beibehaltungsdauer sieben Tage beträgt. Sie können den Aufbewahrungszeitraum bei der Servererstellung oder später festlegen, indem Sie die Sicherungskonfiguration mithilfe des Azure-Portals aktualisieren.
 
 Der Aufbewahrungszeitraum für Sicherungen legt fest, wie weit zurück in der Zeit ein Zeitpunktwiederherstellungsvorgang durchgeführt werden kann, da er auf verfügbaren Sicherungen basiert. Der Aufbewahrungszeitraum kann auch als Wiederherstellungsfenster im Hinblick auf die Wiederherstellung behandelt werden. Alle Sicherungen, die zum Durchführen einer Zeitpunktwiederherstellung innerhalb des Aufbewahrungszeitraums für die Sicherung erforderlich sind, werden im Sicherungsspeicher beibehalten. Wenn der Aufbewahrungszeitraum für Sicherungen z. B. auf sieben Tage festgelegt ist, entspricht das Wiederherstellungsfenster einer Dauer von sieben Tagen. In diesem Szenario bleiben alle Sicherungen erhalten, die zum Wiederherstellen des Servers in den letzten sieben Tagen erforderlich sind. Bei einem Fenster für die Aufbewahrung von Sicherungen von sieben Tagen werden Datenbankmomentaufnahmen und Transaktionsprotokollsicherungen für die letzten acht Tage (ein Tag vor dem Fenster) gespeichert.
 
@@ -42,15 +66,32 @@ Der Aufbewahrungszeitraum für Sicherungen legt fest, wie weit zurück in der Ze
 
 Für die Flexible Server-Instanz werden bis zu 100 % Ihres bereitgestellten Serverspeichers ohne zusätzliche Kosten als Sicherungsspeicher zur Verfügung gestellt. Wenn zusätzlicher Sicherungsspeicher verwendet wird, wird dies in GB pro Monat berechnet. Beispiel: Wenn Sie einen Server mit 250 GB bereitgestellt haben, verfügen Sie über 250 GB an Speicher, der ohne zusätzliche Kosten für Serversicherungen zur Verfügung steht. Wenn die tägliche Sicherheitsauslastung 25 GB beträgt, können Sie für bis zu 10 Tage über kostenlosen Sicherungsspeicher verfügen. Der für Sicherungen verwendete Speicher über 250 GB wird gemäß dem [Preismodell](https://azure.microsoft.com/pricing/details/mysql/) abgerechnet.
 
-Sie können die im Azure-Portal in Azure Monitor verfügbare Metrik für den [verwendeten Sicherungsspeicher](./concepts-monitoring.md) zum Überwachen des von einem Server genutzten Sicherungsspeichers verwenden. Die Metrik für den belegten **Sicherungsspeicher** stellt den gesamten Speicherplatz dar, der von allen Datenbank- und Protokollsicherungen beansprucht wurde, die auf Grundlage des für den Server festgelegten Aufbewahrungszeitraums für Sicherungen aufbewahrt wurden. Eine hohe Transaktionsaktivität auf dem Server kann dazu führen, dass die Sicherungsspeicherauslastung unabhängig von der Gesamtgröße der Datenbank zunimmt.
+Sie können die im Azure-Portal in Azure Monitor verfügbare Metrik für den [verwendeten Sicherungsspeicher](./concepts-monitoring.md) zum Überwachen des von einem Server genutzten Sicherungsspeichers verwenden. Die Metrik für den belegten **Sicherungsspeicher** stellt den gesamten Speicherplatz dar, der von allen Datenbank- und Protokollsicherungen beansprucht wurde, die auf Grundlage des für den Server festgelegten Aufbewahrungszeitraums für Sicherungen aufbewahrt wurden. Eine hohe Transaktionsaktivität auf dem Server kann dazu führen, dass die Sicherungsspeicherauslastung unabhängig von der Gesamtgröße der Datenbank zunimmt. Der für einen georedundanten Server verwendete Sicherungsspeicher ist doppelt so groß wie für einen lokal redundanten Server.
 
 Das primäre Mittel zur Kostenkontrolle bei der Speicherung von Sicherungen ist die Festlegung eines angemessenen Aufbewahrungszeitraums für Sicherungen. Sie können einen Aufbewahrungszeitraum zwischen 1 und 35 Tagen auswählen.
 
 > [!IMPORTANT]
 > Sicherungen von einem Datenbankserver, der in einer zonenredundanten Hochverfügbarkeitskonfiguration konfiguriert ist, erfolgen vom primären Datenbankserver, da der Mehraufwand bei Momentaufnahmensicherungen minimal ist.
 
-> [!IMPORTANT]
-> Georedundante Sicherungen werden derzeit für Flexible Server nicht unterstützt.
+## <a name="restore"></a>Restore
+
+Wenn in Azure Database for MySQL eine Wiederherstellung durchgeführt wird, wird aus den Sicherungen des ursprünglichen Servers ein neuer Server erstellt. Es gibt zwei Arten der Wiederherstellung: 
+
+- Point-in-Time-Wiederherstellung: Ist für beide Sicherungsredundanzoptionen verfügbar. Es wird ein neuer Server in derselben Region wie der ursprüngliche Server erstellt.
+- Geowiederherstellung: Ist nur verfügbar, wenn Sie Ihren Server für georedundanten Speicher konfiguriert haben. Hierbei können Sie den Server in der geografisch gekoppelten Region wiederherstellen. Geowiederherstellung in anderen Regionen wird derzeit nicht unterstützt. 
+
+Die geschätzte Zeit für die Wiederherstellung des Servers ist von mehreren Faktoren abhängig: 
+
+- Größe der Datenbanken 
+- Anzahl der beteiligten Transaktionsprotokolle 
+- Menge der erneut auszuführenden Aktivitäten, um den Wiederherstellungspunkt wiederherzustellen 
+- Netzwerkbandbreite, sofern die Wiederherstellung in einer anderen Region erfolgt 
+- Anzahl der gleichzeitigen Wiederherstellungsanforderungen, die aktuell in der Zielregion verarbeitet werden 
+- Vorhandensein eines Primärschlüssels in den Tabellen in der Datenbank. Um die Wiederherstellung zu beschleunigen, sollten Sie für alle Tabellen in der Datenbank einen Primärschlüssel hinzufügen.  
+
+
+> [!NOTE]
+> Ein für Hochverfügbarkeit aktivierter Server wird nach der Wiederherstellung sowohl für Point-in-Time-Wiederherstellung als auch für Geowiederherstellung zu einem Server ohne Hochverfügbarkeit (Hochverfügbarkeit deaktiviert). 
 
 ## <a name="point-in-time-restore"></a>Wiederherstellung bis zu einem bestimmten Zeitpunkt
 
@@ -78,6 +119,22 @@ Die geschätzte Wiederherstellungszeit hängt von mehreren Faktoren ab, einschli
 
 > [!IMPORTANT]
 > Gelöschte Server **können nicht** wiederhergestellt werden. Wenn Sie den Server löschen, werden auch alle Datenbanken gelöscht, die zum Server gehören, und können nicht wiederhergestellt werden. Um Serverressourcen nach der Bereitstellung vor versehentlichem Löschen oder unerwarteten Änderungen zu schützen, können Administratoren [Verwaltungssperren](../../azure-resource-manager/management/lock-resources.md) nutzen.
+
+## <a name="geo-restore"></a>Geowiederherstellung
+
+Sie können einen Server in seiner [geografisch gekoppelten Region](../../best-practices-availability-paired-regions.md) wiederherstellen, in der der Dienst verfügbar ist, wenn Sie Ihren Server für georedundante Sicherungen konfiguriert haben. Geowiederherstellung in anderen Regionen wird derzeit nicht unterstützt. 
+
+Die Geowiederherstellung ist die Standardoption für die Wiederherstellung, wenn Ihr Server aufgrund eines Incidents in der Region, in der der Server gehostet wird, nicht verfügbar ist. Wenn Ihre Datenbankanwendung wegen eines umfangreichen Incidents in einer Region nicht mehr verfügbar ist, können Sie einen Server aus den georedundanten Sicherungen auf einem Server in einer beliebigen anderen Region wiederherstellen. Bei der Geowiederherstellung wird die aktuellste Sicherung des Servers verwendet. Zwischen der Erstellung einer Sicherung und der Replikation in einer anderen Region kommt es zu einer Verzögerung. Diese Verzögerung kann bis zu einer Stunde betragen. Folglich kann bei einem Notfall ein Datenverlust von bis zu einer Stunde auftreten. 
+
+Während der Geowiederherstellung enthalten die Serverkonfigurationen, die geändert werden können, nur die Sicherheitskonfiguration (Firewallregeln und Einstellungen für virtuelle Netzwerke). Das Ändern anderer Serverkonfigurationen wie Compute, Speicher oder Tarif („Basic“, „Universell“ oder „Speicheroptimiert“) während der Geowiederherstellung wird nicht unterstützt. 
+
+Die geschätzte Wiederherstellungszeit hängt von verschiedenen Faktoren ab, z.B. der Datenbankgröße, Transaktionsprotokollgröße und Netzwerkbandbreite sowie der Gesamtzahl von Datenbanken, die gleichzeitig in derselben Region wiederhergestellt werden müssen. 
+
+> [!NOTE]
+> Wenn Sie für einen flexiblen Server Geowiederherstellung ausführen, der mit zonenredundanter Hochverfügbarkeit konfiguriert ist, wird der wiederhergestellte Server in der geografisch gekoppelten Region und gleichen Zone wie Ihr primärer Server konfiguriert und als einzelner flexibler Server in einem Modus ohne Hochverfügbarkeit bereitgestellt. Weitere Informationen finden Sie unter [Zonenredundante Hochverfügbarkeit](concepts-high-availability.md) für flexible Server.
+
+> [!IMPORTANT]
+> Wenn die primäre Region ausfällt, können keine georedundanten Server in der jeweiligen geografisch gekoppelten Region erstellt werden, da der Speicher nicht in der primären Region bereitgestellt werden kann. Sie müssen warten, bis die primäre Region verfügbar ist, um georedundante Server in der geografisch gekoppelten Region bereitstellen zu können. Wenn die primäre Region ausfällt, kann für den Quellserver weiterhin Geowiederherstellung in der geografisch gekoppelten Region ausgeführt werden, indem die Option „Georedundanz“ unter den Einstellungen „Compute und Speicher“ zum Konfigurieren von Servern im Wiederherstellungsportal deaktiviert wird und die Wiederherstellung als lokal redundanter Server erfolgt, um Geschäftskontinuität sicherzustellen.  
 
 ## <a name="perform-post-restore-tasks"></a>Durchführen der Aufgaben nach der Wiederherstellung
 
@@ -117,7 +174,7 @@ Neun, Sicherungen werden intern als Teil des verwalteten Diensts ausgelöst und 
 Azure Database for MySQL erstellt Serversicherungen automatisch und speichert sie in einem vom Benutzer konfigurierten lokal redundanten oder georedundanten Speicher. Diese Sicherungsdateien können nicht exportiert werden. Die Standardaufbewahrungsdauer für Sicherungen beträgt sieben Tage. Sie können die Sicherung der Datenbank optional von 1 bis 35 Tagen konfigurieren.
 
 - **Wie kann ich meine Sicherungen validieren?**
-Die beste Möglichkeit, die Verfügbarkeit gültiger Sicherungen zu validieren, ist es regelmäßig Point-in-Time-Wiederherstellung durchzuführen und zu und bestätigen, dass die Sicherungen gültig und wiederherstellbar sind. Sicherungsvorgänge oder -dateien sind für Endbenutzer nicht zugänglich.
+Die beste Möglichkeit, die Verfügbarkeit gültiger Sicherungen zu validieren, ist es regelmäßig Point-in-Time-Wiederherstellung durchzuführen und zu und bestätigen, dass die Sicherungen gültig und wiederherstellbar sind. Sicherungsvorgänge oder -dateien werden den Endbenutzern nicht verfügbar gemacht.
 
 - **Wo kann ich den Speicherverbrauch für Sicherungen einsehen?**
 Im Azure-Portal finden Sie auf der Registerkarte „Überwachung“ im Abschnitt „Metriken“ die Metrik [Verwendeter Sicherungsspeicher](./concepts-monitoring.md), die den gesamten Verbrauch für Sicherungen anzeigt.
@@ -129,7 +186,7 @@ Wenn Sie den Server löschen, werden auch alle Sicherungen gelöscht, die zum Se
 Für die Flexible Server-Instanz werden bis zu 100 % Ihres bereitgestellten Serverspeichers ohne zusätzliche Kosten als Sicherungsspeicher zur Verfügung gestellt. Jeder zusätzlich genutzte Sicherungsspeicher wird gemäß dem [Preismodell](https://azure.microsoft.com/pricing/details/mysql/server/) in GB pro Monat in Rechnung gestellt. Die Abrechnung des Sicherungsspeichers hängt auch von der ausgewählten Aufbewahrungsfrist für Sicherungen und der gewählten Redundanzoption ab, abgesehen von der Transaktionsaktivität auf dem Server, die sich direkt auf den gesamten verwendeten Sicherungsspeicher auswirkt.
 
 - **Wie werden Sicherungen für angehaltene Server beibehalten?**
-Für angehaltene Server werden keine neuen Sicherungen ausgeführt. Alle älteren Sicherungen (innerhalb des Aufbewahrungszeitfensters) zum Zeitpunkt des Anhaltens des Servers werden bis zum erneuten Starten des Servers aufbewahrt, wonach die Aufbewahrung der Sicherungen für den aktiven Server durch dessen Aufbewahrungszeitfenster bestimmt wird.
+Für beendete Server werden keine neuen Sicherungen ausgeführt. Alle älteren Sicherungen (innerhalb des Aufbewahrungszeitfensters) zum Zeitpunkt des Anhaltens des Servers werden bis zum erneuten Starten des Servers aufbewahrt, wonach die Aufbewahrung der Sicherungen für den aktiven Server durch dessen Aufbewahrungszeitfenster bestimmt wird.
 
 - **Wie werden mir Sicherungen angehaltener Server in Rechnung gestellt?**
 Während Ihre Serverinstanz angehalten wird, werden Ihnen bereitgestellter Speicher (einschließlich bereitgestellter IOPS) und Sicherungsspeicher (Sicherungen, die im angegebenen Aufbewahrungszeitfenster gespeichert sind) in Rechnung gestellt. Der kostenlose Sicherungsspeicher ist auf die Größe Ihrer bereitgestellten Datenbank beschränkt und gilt nur für aktive Server. 

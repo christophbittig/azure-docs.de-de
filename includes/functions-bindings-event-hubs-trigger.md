@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: 32f98eb9b98168bdab270ecff07446c31f8d706d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: c8d3e988edd48d33c1bbf7e1680b9a777725727d
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105729816"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130019085"
 ---
 Der Funktionstrigger kann verwendet werden, um auf ein Ereignis zu reagieren, das an einen Event Hub-Datenstrom gesendet wird. Sie benötigen Lesezugriff auf den zugrunde liegenden Event Hub, um den Trigger einzurichten. Beim Auslösen der Funktion wird die an die Funktion übergebene Nachricht als Zeichenfolge eingegeben.
 
@@ -360,9 +360,11 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 |**eventHubName** |**EventHubName** | Functions 2.x und höher Der Name des Event Hubs. Wenn der Event Hub-Name auch in der Verbindungszeichenfolge enthalten ist, setzt dieser Wert diese Eigenschaft zur Laufzeit außer Kraft. Darauf kann über [App-Einstellungen](../articles/azure-functions/functions-bindings-expressions-patterns.md#binding-expressions---app-settings) `%eventHubName%` verwiesen werden. |
 |**consumerGroup** |**ConsumerGroup** | Eine optionale Eigenschaft, die zum Festlegen der [Consumergruppe](../articles/event-hubs/event-hubs-features.md#event-consumers) verwendet wird, mit der Ereignisse im Hub abonniert werden. Wird sie nicht angegeben, wird die Consumergruppe `$Default` verwendet. |
 |**cardinality** | – | Wird für alle Sprachen außer C# verwendet. Legen Sie hierfür `many` fest, um Batchverarbeitung zu aktivieren.  Wenn diese Eigenschaft nicht angegeben oder auf `one` festgelegt ist, wird eine einzelne Nachricht an die Funktion übergeben.<br><br>In C# wird diese Eigenschaft automatisch zugewiesen, wenn der Auslöser ein Array für den Typ aufweist.|
-|**connection** |**Connection** | Der Name einer App-Einstellung, die die Zeichenfolge für die Verbindung mit dem Namespace des Event Hubs enthält. Kopieren Sie diese Verbindungszeichenfolge, indem Sie für den [Namespace](../articles/event-hubs/event-hubs-create.md#create-an-event-hubs-namespace) (nicht für den eigentlichen Event Hub) auf die Schaltfläche **Verbindungsinformationen** klicken. Diese Verbindungszeichenfolge muss mindestens über Leseberechtigungen verfügen, um den Trigger zu aktivieren.<br><br>Wenn Sie [Version 5.x oder höher der Erweiterung](../articles/azure-functions/functions-bindings-event-hubs.md#event-hubs-extension-5x-and-higher) verwenden, können Sie anstelle einer Verbindungszeichenfolge einen Verweis auf einen Konfigurationsabschnitt angeben, der die Verbindung definiert. Siehe [Verbindungen](../articles/azure-functions/functions-reference.md#connections).|
+|**connection** |**Connection** | Der Name einer App-Einstellung oder -Einstellungssammlung, die angibt, wie eine Verbindung mit Event Hubs hergestellt wird. Siehe [Verbindungen](#connections).|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]
+
+[!INCLUDE [functions-event-hubs-connections](./functions-event-hubs-connections.md)]
 
 ## <a name="usage"></a>Verwendung
 
@@ -404,7 +406,7 @@ Weitere Detailinformationen finden Sie im [Triggerbeispiel](#example) für Java.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Weitere Detailinformationen finden Sie im [Triggerbeispiel](#example) für JavaScript.
+Weitere Informationen finden Sie im [Triggerbeispiel](#example) für JavaScript.
 
 # <a name="python"></a>[Python](#tab/python)
 

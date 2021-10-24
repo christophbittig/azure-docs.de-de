@@ -12,15 +12,15 @@ ms.collection: windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/01/2021
+ms.date: 10/14/2021
 ms.author: amverma
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 65d6302ea0c73673f675dcff8fd8fcc71ace3cf2
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 0f2e6d04542df5795bd3c30763f0197295a21f78
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110662744"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130038344"
 ---
 # <a name="infiniband-driver-extension-for-windows"></a>InfiniBand-Treibererweiterung für Windows
 
@@ -36,8 +36,8 @@ Diese Erweiterung unterstützt die folgenden Betriebssystem-Distributionen, abh�
 
 | Distribution | InfiniBand-NIC-Treiber |
 |---|---|
-| Windows 10 | CX5, CX6 |
-| Windows Server 2019 | CX5, CX6 |
+| Windows 10 | CX3-Pro, CX5, CX6 |
+| Windows Server 2019 | CX3-Pro, CX5, CX6 |
 | Windows Server 2016 | CX3-Pro, CX5, CX6 |
 | Windows Server 2012 R2 | CX3-Pro, CX5, CX6 |
 | Windows Server 2012 | CX3-Pro, CX5, CX6 |
@@ -62,7 +62,7 @@ Der folgende JSON-Code zeigt das Schema für die Erweiterung.
   "properties": {
     "publisher": "Microsoft.HpcCompute",
     "type": "InfiniBandDriverWindows",
-    "typeHandlerVersion": "1.2",
+    "typeHandlerVersion": "1.5",
     "autoUpgradeMinorVersion": true,
     "settings": {
     }
@@ -77,7 +77,7 @@ Der folgende JSON-Code zeigt das Schema für die Erweiterung.
 | apiVersion | 2015-06-15 | date |
 | publisher | Microsoft.HpcCompute | Zeichenfolge |
 | type | InfiniBandDriverWindows | Zeichenfolge |
-| typeHandlerVersion | 1.2 | INT |
+| typeHandlerVersion | 1.5 | INT |
 
 
 
@@ -104,7 +104,7 @@ Im folgenden Beispiel wird davon ausgegangen, dass die Erweiterung in der VM-Res
   "properties": {
     "publisher": "Microsoft.HpcCompute",
     "type": "InfiniBandDriverWindows",
-    "typeHandlerVersion": "1.2",
+    "typeHandlerVersion": "1.5",
     "autoUpgradeMinorVersion": true,
     "settings": {
     }
@@ -122,7 +122,7 @@ Set-AzVMExtension
     -Publisher "Microsoft.HpcCompute" `
     -ExtensionName "InfiniBandDriverWindows" `
     -ExtensionType "InfiniBandDriverWindows" `
-    -TypeHandlerVersion 1.2 `
+    -TypeHandlerVersion 1.5 `
     -SettingString '{ `
     }'
 ```
@@ -135,16 +135,16 @@ az vm extension set \
   --vm-name myVM \
   --name InfiniBandDriverWindows \
   --publisher Microsoft.HpcCompute \
-  --version 1.2 
+  --version 1.5 
 ```
 
 ### <a name="add-extension-to-a-virtual-machine-scale-set"></a>Hinzufügen einer Erweiterung zu einer VM-Skalierungsgruppe
 
-Durch folgendes Beispiel wird die neueste Version (1.2) der Erweiterung „InfiniBandDriverWindows“ auf allen RDMA-fähigen VMs in einer vorhandenen VM-Skalierungsgruppe mit dem Namen *myVMSS* installiert, die in der Ressourcengruppe mit dem Namen *myResourceGroup* bereitgestellt wurde:
+Durch folgendes Beispiel wird die neueste Version (1.5) der Erweiterung „InfiniBandDriverWindows“ auf allen RDMA-fähigen VMs in einer vorhandenen VM-Skalierungsgruppe mit dem Namen *myVMSS* installiert, die in der Ressourcengruppe mit dem Namen *myResourceGroup* bereitgestellt wurde:
 
   ```powershell
   $VMSS = Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS"
-  Add-AzVmssExtension -VirtualMachineScaleSet $VMSS -Name "InfiniBandDriverWindows" -Publisher "Microsoft.HpcCompute" -Type "InfiniBandDriverWindows" -TypeHandlerVersion "1.2"
+  Add-AzVmssExtension -VirtualMachineScaleSet $VMSS -Name "InfiniBandDriverWindows" -Publisher "Microsoft.HpcCompute" -Type "InfiniBandDriverWindows" -TypeHandlerVersion "1.5"
   Update-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "MyVMSS" -VirtualMachineScaleSet $VMSS
   Update-AzVmssInstance -ResourceGroupName "myResourceGroup" -VMScaleSetName "myVMSS" -InstanceId "*"
 ```

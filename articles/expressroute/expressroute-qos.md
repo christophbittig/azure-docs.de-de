@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: duau
-ms.openlocfilehash: 7f14f43fa341df40ecd35340b7311e1acd18004c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 41035593a31a854e8bb2bb325c51ba5abb8e3f72
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92204706"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130069936"
 ---
 # <a name="expressroute-qos-requirements"></a>QoS-Anforderungen für ExpressRoute
 Skype for Business umfasst verschiedene Workloads mit jeweils unterschiedlichen QoS-Anforderungen. Wenn Sie Sprachdienste über ExpressRoute bereitstellen möchten, sollten die im Folgenden beschriebenen Anforderungen erfüllt sein.
@@ -20,7 +20,7 @@ Skype for Business umfasst verschiedene Workloads mit jeweils unterschiedlichen 
 ![Diagramm: Über ExpressRoute geleitete Sprachdienste](./media/expressroute-qos/expressroute-qos.png)
 
 > [!NOTE]
-> Die QoS-Anforderungen gelten nur für das Microsoft-Peering. Die DSCP-Werte in Ihrem Netzwerkdatenverkehr, der über öffentliches und privates Azure-Peering empfangen wird, werden auf 0 zurückgesetzt. 
+> Die QoS-Anforderungen gelten nur für das Microsoft-Peering. Die DSCP-Werte in Ihrem Netzwerkdatenverkehr, der über privates Azure-Peering empfangen wird, werden unverändert beibehalten, aber sie werden nicht verwendet, um den Datenverkehr im Microsoft-Netzwerk zu priorisieren. 
 > 
 > 
 

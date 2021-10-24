@@ -4,12 +4,12 @@ description: Dieser Artikel zeigt Ihnen, wie Sie bestimmte virtuelle Netzwerkauf
 ms.topic: conceptual
 ms.date: 3/13/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 1e04a43a7a9b2eb8b3d29be6ced0d92d8bcc8308
-ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
+ms.openlocfilehash: 0a431abe5d32bdc59bb163f32e4c5f636c870335
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114202920"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130063038"
 ---
 # <a name="how-to-configure-azure-functions-with-a-virtual-network"></a>Konfigurieren von Azure Functions mit einem virtuellen Netzwerk
 
@@ -20,7 +20,7 @@ In diesem Artikel erfahren Sie, wie Sie Aufgaben im Zusammenhang mit der Konfigu
 Beim Erstellen einer Funktions-App müssen Sie ein allgemeines Azure Storage-Konto erstellen oder verknüpfen, das Blob-, Queue- und Table Storage unterstützt. Sie können dieses Speicherkonto durch eines ersetzen, das mit Dienstendpunkten oder privaten Endpunkten geschützt ist. Beim Konfigurieren Ihres Speicherkontos mit privaten Endpunkten wird der öffentliche Zugriff auf Ihre Funktions-App automatisch deaktiviert, und auf Ihre Funktions-App kann nur über das virtuelle Netzwerk zugegriffen werden. 
 
 > [!NOTE]  
-> Dieses Feature kann derzeit für alle von virtuellen Windows-Netzwerken unterstützten SKUs im Plan „Dedicated“ (App Service) und für Windows-Pläne vom Typ „Elastisch Premium“ verwendet werden. Es wird auch bei privatem DNS für von virtuellen Linux-Netzwerken unterstützte SKUs unterstützt. Nutzung und benutzerdefiniertes DNS für Linux-Pläne werden nicht unterstützt. 
+> Dieses Feature kann derzeit für alle von virtuellen Windows-Netzwerken unterstützten SKUs im Plan „Dedicated“ (App Service) und für Windows-Pläne vom Typ „Elastisch Premium“ verwendet werden. ASEv3 wird noch nicht unterstützt. Es wird auch bei privatem DNS für von virtuellen Linux-Netzwerken unterstützte SKUs unterstützt. Nutzung und benutzerdefiniertes DNS für Linux-Pläne werden nicht unterstützt. 
 
 Einrichten einer Funktion mit einem auf ein privates Netzwerk beschränkten Speicherkonto:
 

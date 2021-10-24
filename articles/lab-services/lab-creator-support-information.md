@@ -1,14 +1,14 @@
 ---
-title: 'Azure Lab Services: Anzeigen von Supportinformationen (Lab-Ersteller)'
+title: Anzeigen von Supportinformationen (Ersteller des Labs)
 description: In diesem Artikel wird erläutert, wie ein Lab-Ersteller Supportinformationen anzeigen kann, um Hilfe zu erhalten.
 ms.date: 06/26/2020
 ms.topic: how-to
-ms.openlocfilehash: 3e04245c3f2d9b0a4f4e98ae21287983cf679ec6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: add69ad733a639b6277fd0c9bfcacf30d9ba281d
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85445048"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130179600"
 ---
 # <a name="view-support-information-lab-creator-in-azure-lab-services"></a>Anzeigen von Supportinformationen (Lab-Ersteller in Azure Lab Services)
 In diesem Artikel wird erläutert, wie Sie (als Lab-Ersteller) die folgenden Supportinformationen anzeigen können:

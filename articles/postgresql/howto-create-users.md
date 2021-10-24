@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2019
-ms.openlocfilehash: a91b334b5494d8db44c86352c95fd7b4d1ea2c14
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 887138730d0d023a388b3203367a45e8a677fd1e
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128604073"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130005974"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---single-server"></a>Erstellen von Benutzern auf einem Azure Database for PostgreSQL-Einzelserver
 
@@ -31,7 +31,7 @@ Der Azure Database for PostgreSQL-Server wird erstellt und verfügt über drei d
 
 Der Serveradministratorbenutzer ist ein Mitglied der Rolle „azure_pg_admin“. Das Serveradministratorkonto ist jedoch nicht Mitglied der Rolle „azure_superuser“. Da dieser Dienst ein verwalteter PaaS-Dienst ist, ist nur Microsoft Mitglied der Administratorrolle.
 
-Die PostgreSQL-Engine nutzt Berechtigungen zum Steuern des Zugriffs auf Datenbankobjekte, wie in der [PostgreSQL-Produktdokumentation](https://www.postgresql.org/docs/current/static/sql-createrole.html) erläutert. In Azure Database for PostgreSQL werden dem Serveradministrator folgende Berechtigungen gewährt: LOGIN, NOSUPERUSER, INHERIT, CREATEDB, CREATEROLE, NOREPLICATION
+Die PostgreSQL-Engine nutzt Berechtigungen zum Steuern des Zugriffs auf Datenbankobjekte, wie in der [PostgreSQL-Produktdokumentation](https://www.postgresql.org/docs/current/static/sql-createrole.html) erläutert. In Azure Database for PostgreSQL werden dem Serveradministratorbenutzer die folgenden Berechtigungen gewährt: LOGIN, NOSUPERUSER, INHERIT, CREATEDB, CREATEROLE, REPLICATION.
 
 Mit dem Konto des Serveradministratorbenutzers können zusätzliche Benutzer erstellt und der Rolle „azure_pg_admin“ zugeordnet werden. Außerdem kann das Serveradministratorkonto genutzt werden, um Benutzer und Rollen mit weniger Berechtigungen zu erstellen, die Zugriff auf einzelne Datenbanken und Schemas haben.
 

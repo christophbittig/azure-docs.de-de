@@ -1,19 +1,20 @@
 ---
-title: 'Fehler bei Azure Digital Twins-Anforderung mit folgendem Status: 404 Unterdomäne nicht gefunden'
-description: 'Ursachen und Behebungen für „Fehler bei Service Request. Status: 404 Unterdomäne nicht gefunden“ für Azure Digital Twins.'
+title: 'Problembehandlung bei einer fehlerhaften Dienstanforderung: Fehler 404 (Unterdomäne nicht gefunden)'
+titleSuffix: Azure Digital Twins
+description: Erfahren Sie, wie Sie Statusantworten des Fehlers 404 (Unterdomäne nicht gefunden) aus Azure Digital Twins diagnostizieren und beheben.
 ms.service: digital-twins
 author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
-ms.date: 4/13/2021
-ms.openlocfilehash: 774642e15b7d7371872c1ec97455c8f56f8b8789
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.date: 9/23/2021
+ms.openlocfilehash: 91125140632d689eaab18a74b7da75fe3c69800b
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114456083"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130132244"
 ---
-# <a name="service-request-failed-status-404-sub-domain-not-found"></a>Fehler bei Service Request. Status: 404 Unterdomäne nicht gefunden
+# <a name="troubleshooting-failed-service-request-error-404-sub-domain-not-found"></a>Problembehandlung bei einer fehlerhaften Dienstanforderung: Fehler 404 (Unterdomäne nicht gefunden)
 
 In diesem Artikel werden die Ursachen sowie die Schritte zur Behebung im Falle eines 404-Fehlers bei Service Requests für Azure Digital Twins beschrieben. 
 

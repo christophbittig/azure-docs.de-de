@@ -5,21 +5,29 @@ author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 10/02/2019
+ms.date: 10/04/2021
 ms.author: sngun
-ms.openlocfilehash: 91c433edd48c560f2938b50540d9a654e3eee2e7
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 6f9c1effadf4415bdcd2278080900ff7be2dd6e7
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123114815"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129614876"
 ---
-# <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Herstellen einer Azure Cosmos DB-Verbindung mithilfe von BI-Analysetools per ODBC-Treiber
+# <a name="connect-to-azure-cosmos-db-from-bi-and-data-integration-tools-with-the-odbc-driver"></a>Herstellen einer Verbindung mit Azure Cosmos DB aus BI- und Datenintegrationstools mit dem ODBC-Treiber
+
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
 
-Mit dem Azure Cosmos DB-ODBC-Treiber können Sie eine Verbindung mit Azure Cosmos DB über die BI-Analysetools herstellen, z. B. SQL Server Integration Services, Power BI Desktop und Tableau, um Visualisierungen Ihrer Azure Cosmos DB-Daten in diesen Lösungen zu analysieren und zu erstellen.
+Der ODBC-Treiber von Azure Cosmos DB ermöglicht Ihnen eine Verbindung mit Azure Cosmos DB über Lösungen wie SQL Server Integration Services, Alteryx, QlikSense, Tableau und andere Analyse-, BI- und Datenintegrationstools, damit Sie Ihre Azure Cosmos DB-Daten analysieren, verschieben, transformieren und Visualisierungen erstellen können.
 
 Der Azure Cosmos DB-ODBC-Treiber ist ODBC 3.8-konform und unterstützt die ANSI SQL-92-Syntax. Der Treiber verfügt über umfassende Features zum Renormalisieren von Daten in Azure Cosmos DB. Mit dem Treiber können Sie Daten in Azure Cosmos DB als Tabellen und Ansichten darstellen. Sie können damit SQL-Vorgänge für die Tabellen und Ansichten durchführen, z.B. das Gruppieren nach Abfragen, Einfügungen, Updates und Löschungen.
+
+> [!NOTE]
+> Wenn Sie Power BI verwenden, lesen Sie die [Dokumentation](powerbi-visualize.md) zu unserem nativen Connector.
+
+> [!NOTE]
+> Wenn Sie QlikSense verwenden, lesen Sie die [Dokumentation](../visualize-qlik-sense.md) zur Verwendung.
+
 
 > [!NOTE]
 > Das Herstellen einer Verbindung mit Azure Cosmos DB mit dem ODBC-Treiber wird derzeit nur für Azure Cosmos DB-SQL-API-Konten unterstützt.
