@@ -4,20 +4,20 @@ description: Informationen zum Konfigurieren von kundenseitig verwalteten Schlü
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 04/23/2021
+ms.date: 10/15/2021
 ms.author: thweiss
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4f9f9c9688340a153efab189cc24ace13fc4da6e
-ms.sourcegitcommit: b5508e1b38758472cecdd876a2118aedf8089fec
+ms.openlocfilehash: d22b299cca557774ed47ecf6d8309f780f32fee8
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113589207"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130133061"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Konfigurieren von kundenseitig verwalteten Schlüsseln für Ihr Azure Cosmos-Konto mit Azure Key Vault
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Die in Ihrem Azure Cosmos-Konto gespeicherten Daten werden automatisch und nahtlos mit von Microsoft verwalteten Schlüsseln (**vom Dienst verwaltete Schlüssel**) verschlüsselt. Sie können optional eine zweite Verschlüsselungsschicht mit von Ihnen verwalteten Schlüsseln (**vom Kunden verwaltete Schlüssel**) hinzufügen.
+Die in Ihrem Azure Cosmos-Konto gespeicherten Daten werden automatisch und nahtlos mit von Microsoft verwalteten Schlüsseln (**vom Dienst verwaltete Schlüssel**) verschlüsselt. Optional können Sie eine zweite Verschlüsselungsebene mit von Ihnen verwalteten Schlüsseln (**Customer-managed keys** oder CMK) hinzufügen.
 
 :::image type="content" source="./media/how-to-setup-cmk/cmk-intro.png" alt-text="Verschlüsselungsschicht um Kundendaten":::
 
@@ -238,37 +238,80 @@ Diese Zugriffsrichtlinie stellt sicher, dass Ihr Azure Cosmos DB-Konto auf Ihre 
 - Mit der Erstanbieteridentität von Azure Cosmos DB können Sie Zugriff auf den Azure Cosmos DB-Dienst gewähren.
 - Mit der [verwalteten Identität](how-to-setup-managed-identity.md) Ihres Azure Cosmos DB-Kontos können Sie speziell Zugriff auf Ihr Konto gewähren.
 
+### <a name="to-use-a-system-assigned-managed-identity"></a>So verwenden Sie eine vom System zugewiesene verwaltete Identität
+
 Da eine vom System zugewiesene verwaltete Identität nur nach der Erstellung Ihres Kontos abgerufen werden kann, müssen Sie Ihr Konto noch zunächst wie [oben](#add-access-policy) beschrieben mit der Erstanbieteridentität erstellen. Führen Sie dann folgende Schritte aus:
 
-1. Wenn dies nicht während der Kontoerstellung erfolgt ist, [aktivieren Sie eine vom System zugewiesene verwaltete Identität](how-to-setup-managed-identity.md) in Ihrem Konto, und kopieren Sie die zugewiesene `principalId`.
+1.  Wenn dies nicht während der Kontoerstellung erfolgt ist, [aktivieren Sie eine vom System zugewiesene verwaltete Identität](./how-to-setup-managed-identity.md#add-a-system-assigned-identity) in Ihrem Konto, und kopieren Sie die zugewiesene `principalId`.
 
-1. Fügen Sie Ihrem Azure Key Vault-Konto wie [oben](#add-access-policy) beschrieben eine neue Zugriffsrichtlinie hinzu, aber verwenden Sie die `principalId`, die Sie im vorherigen Schritt kopiert haben, anstelle der Erstanbieteridentität von Azure Cosmos DB.
+1.  Fügen Sie eine neue Zugriffsrichtlinie zu Ihrem Azure Key Vault-Konto hinzu, wie oben [ beschrieben](#add-access-policy), aber verwenden Sie die `principalId`, die Sie im vorherigen Schritt kopiert haben, anstelle der Erstanbieter-Identität von Azure Cosmos DB.
 
-1. Aktualisieren Sie Ihr Azure Cosmos DB-Konto, um anzugeben, dass Sie die vom System zugewiesene verwaltete Identität beim Zugriff auf Ihre Verschlüsselungsschlüssel in Azure Key Vault verwenden möchten. Dazu können Sie folgende Aktionen ausführen:
+1.  Aktualisieren Sie Ihr Azure Cosmos DB-Konto, um anzugeben, dass Sie die vom System zugewiesene verwaltete Identität beim Zugriff auf Ihre Verschlüsselungsschlüssel in Azure Key Vault verwenden möchten. Dazu können Sie folgende Aktionen ausführen:
 
-   - diese Eigenschaft in der Azure Resource Manager-Vorlage Ihres Kontos angeben:
+    - diese Eigenschaft in der Azure Resource Manager-Vorlage Ihres Kontos angeben:
 
-     ```json
-     {
-         "type": " Microsoft.DocumentDB/databaseAccounts",
-         "properties": {
-             "defaultIdentity": "SystemAssignedIdentity",
-             // ...
-         },
-         // ...
-     }
-     ```
+    ```json
+    {
+        "type": " Microsoft.DocumentDB/databaseAccounts",
+        "properties": {
+            "defaultIdentity": "SystemAssignedIdentity",
+            // ...
+        },
+        // ...
+    }
+    ```
 
-   - Ihr Konto mit Azure CLI aktualisieren:
+    - Ihr Konto mit Azure CLI aktualisieren:
 
-     ```azurecli
-     resourceGroupName='myResourceGroup'
-     accountName='mycosmosaccount'
-     
-     az cosmosdb update --resource-group $resourceGroupName --name $accountName --default-identity "SystemAssignedIdentity"
-     ```
+    ```azurecli
+        resourceGroupName='myResourceGroup'
+        accountName='mycosmosaccount'
 
-1. Optional können Sie die Erstanbieteridentität von Azure Cosmos DB aus Ihrer Azure Key Vault-Zugriffsrichtlinie entfernen.
+        az cosmosdb update --resource-group $resourceGroupName --name $accountName --default-identity "SystemAssignedIdentity"
+    ```
+  
+1.  Optional können Sie die Erstanbieteridentität von Azure Cosmos DB aus Ihrer Azure Key Vault-Zugriffsrichtlinie entfernen.
+
+### <a name="to-use-a-user-assigned-managed-identity"></a>So verwenden Sie eine vom Benutzer zugewiesene verwaltete Identität
+
+1.  Wenn Sie die neue Zugriffsrichtlinie in Ihrem Azure Key Vault-Konto wie [oben beschrieben](#add-access-policy) erstellen, verwenden Sie die `Object ID` der verwalteten Identität, die Sie anstelle der Erstanbieter-Identität von Azure Cosmos DB verwenden möchten.
+
+1.  Bei der Erstellung Ihres Azure Cosmos DB-Kontos müssen Sie die dem Benutzer zugewiesene verwaltete Identität aktivieren und angeben, dass Sie diese Identität beim Zugriff auf Ihre Verschlüsselungsschlüssel in Azure Key Vault verwenden möchten. Dazu können Sie folgende Aktionen ausführen:
+
+    - in einer Azure Resource Manager-Vorlage:
+
+    ```json
+    {
+        "type": "Microsoft.DocumentDB/databaseAccounts",
+        "identity": {
+            "type": "UserAssigned",
+            "userAssignedIdentities": {
+                "<identity-resource-id>": {}
+            }
+        },
+        // ...
+        "properties": {
+            "defaultIdentity": "UserAssignedIdentity=<identity-resource-id>"
+            "keyVaultKeyUri": "<key-vault-key-uri>"
+            // ...
+        }
+    }
+    ```
+
+    - mit der Azure CLI:
+
+    ```azurecli
+    resourceGroupName='myResourceGroup'
+    accountName='mycosmosaccount'
+    keyVaultKeyUri = 'https://<my-vault>.vault.azure.net/keys/<my-key>'
+
+    az cosmosdb create \
+        -n $accountName \
+        -g $resourceGroupName \
+        --key-uri $keyVaultKeyUri
+        --assign-identity <identity-resource-id>
+        --default-identity "UserAssignedIdentity=<identity-resource-id>"  
+    ```
 
 ## <a name="key-rotation"></a>Schlüsselrotation
 
@@ -305,7 +348,7 @@ Der vorherige Schlüssel oder die vorherige Schlüsselversion kann deaktiviert w
     
 ## <a name="error-handling"></a>Fehlerbehandlung
 
-Wenn bei der Verwendung von kundenseitig verwalteten Schlüsseln (Customer-Managed Keys, CMK) in Azure Cosmos DB Fehler auftreten, gibt Azure Cosmos DB die Fehlerdetails zusammen mit einem HTTP-Unterstatuscode in der Antwort zurück. Mit diesem Unterstatuscode können Sie die Grundursache des Problems debuggen. Eine Liste der unterstützten HTTP-Unterstatuscodes finden Sie im Artikel [HTTP-Statuscodes für Azure Cosmos DB](/rest/api/cosmos-db/http-status-codes-for-cosmosdb).
+Wenn bei der Verwendung von kundenverwalteten Schlüsseln in Azure Cosmos DB Fehler auftreten, gibt Azure Cosmos DB die Fehlerdetails zusammen mit einem HTTP-Sub-Statuscode in der Antwort zurück. Mit diesem Unterstatuscode können Sie die Grundursache des Problems debuggen. Eine Liste der unterstützten HTTP-Unterstatuscodes finden Sie im Artikel [HTTP-Statuscodes für Azure Cosmos DB](/rest/api/cosmos-db/http-status-codes-for-cosmosdb).
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
@@ -357,7 +400,9 @@ Sie können die Details Ihres Azure Cosmos-Kontos auch programmgesteuert abrufen
 
 ### <a name="how-do-customer-managed-keys-affect-a-backup"></a>Wie wirken sich vom Kunden verwaltete Schlüssel auf eine Sicherung aus?
 
-Azure Cosmos DB erstellt [regelmäßige und automatische Sicherungen](./online-backup-and-restore.md) der in Ihrem Konto gespeicherten Daten. Bei diesem Vorgang werden die verschlüsselten Daten gesichert. Um die wiederhergestellte Sicherung verwenden zu können, ist der zum Zeitpunkt der Sicherung verwendete Verschlüsselungsschlüssel erforderlich. Das bedeutet, dass keine Sperrung erfolgt ist und die zum Zeitpunkt der Sicherung verwendete Version des Schlüssels weiterhin aktiviert ist.
+Azure Cosmos DB erstellt [regelmäßige und automatische Sicherungen](./online-backup-and-restore.md) der in Ihrem Konto gespeicherten Daten. Bei diesem Vorgang werden die verschlüsselten Daten gesichert. Die folgenden Bedingungen sind für die erfolgreiche Wiederherstellung eines Backups erforderlich:
+- Der Verschlüsselungsschlüssel, den Sie zum Zeitpunkt des Backups verwendet haben, ist erforderlich und muss in Azure Key Vault verfügbar sein. Dies bedeutet, dass kein Widerruf erfolgt ist und die Version des Schlüssels, die zum Zeitpunkt der Sicherung verwendet wurde, noch aktiviert ist.
+- Wenn Sie [verwaltete Identitäten in der Azure Key Vault-Zugriffsrichtlinie](#using-managed-identity) verwendet haben, darf die auf dem Quellkonto konfigurierte Identität nicht gelöscht worden sein und muss noch in der Zugriffsrichtlinie der Azure Key Vault-Instanz angegeben sein.
 
 ### <a name="how-do-i-revoke-an-encryption-key"></a>Wie sperre/widerrufe ich einen Verschlüsselungsschlüssel?
 

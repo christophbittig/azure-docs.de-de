@@ -13,12 +13,12 @@ ms.date: 09/09/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev, has-adal-ref
-ms.openlocfilehash: 3c44d6f6c5c3dabe1fb2e5d22083cc31c2294e72
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.openlocfilehash: 2698d958746aaea86a7dbb290468ffaf1f8c2eec
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122429114"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129993719"
 ---
 # <a name="considerations-for-using-xamarin-ios-with-msalnet"></a>Überlegungen zur Verwendung von Xamarin iOS mit MSAL.NET
 
@@ -78,6 +78,29 @@ Aktivieren Sie den Keychainzugriff außerdem in der `Entitlements.plist`-Datei. 
 Wenn Sie die `WithIosKeychainSecurityGroup()`-API verwenden, hängt MSAL automatisch Ihre Sicherheitsgruppe an das Ende der *Team ID* (`AppIdentifierPrefix`) Ihrer Anwendung an. MSAL fügt Ihre Sicherheitsgruppe hinzu, denn dies erfolgt ebenfalls, wenn Sie Ihre Anwendung in Xcode erstellen. Aus diesem Grund müssen die Berechtigungen in der `Entitlements.plist`-Datei `$(AppIdentifierPrefix)` vor der Keychainzugriffsgruppe aufnehmen.
 
 Weitere Informationen finden Sie in der [Dokumentation der iOS-Berechtigungen](https://developer.apple.com/documentation/security/keychain_services/keychain_items/sharing_access_to_keychain_items_among_a_collection_of_apps).
+
+#### <a name="troubleshooting-keychain-access"></a>Fehlerbehebung beim KeyChain-Zugang
+
+Wenn Sie eine Fehlermeldung wie "Die Anwendung kann nicht auf den iOS-Schlüsselbund für den Herausgeber der Anwendung zugreifen (die TeamId ist null)" erhalten, bedeutet dies, dass MSAL nicht auf den Schlüsselbund zugreifen kann. Dies ist ein Konfigurationsproblem. Versuchen Sie zur Fehlerbehebung, selbst auf den Schlüsselbund zuzugreifen, zum Beispiel: 
+
+```csharp
+var queryRecord = new SecRecord(SecKind.GenericPassword)
+{
+    Service = "",
+    Account = "SomeTeamId",
+    Accessible = SecAccessible.Always
+};
+
+SecRecord match = SecKeyChain.QueryAsRecord(queryRecord, out SecStatusCode resultCode);
+
+if (resultCode == SecStatusCode.ItemNotFound)
+{
+    SecKeyChain.Add(queryRecord);
+    match = SecKeyChain.QueryAsRecord(queryRecord, out resultCode);
+}
+
+// Make sure that  resultCode == SecStatusCode.Success
+```
 
 ### <a name="enable-token-cache-sharing-across-ios-applications"></a>Aktivieren der Tokencachefreigabe über iOS-Anwendungen hinweg
 

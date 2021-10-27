@@ -16,12 +16,13 @@ ms.date: 12/10/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 15deae3de20de579bff880a6cb7c9e44719a63ed
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ROBOTS: NOINDEX
+ms.openlocfilehash: 33e1c6653769a0fa5d03f86efa50d631e5590db8
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107776427"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130041992"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>Tutorial: Verwenden der systemseitig zugewiesenen verwalteten Identität eines virtuellen Windows-Computers für den Zugriff auf Azure Cosmos DB
 

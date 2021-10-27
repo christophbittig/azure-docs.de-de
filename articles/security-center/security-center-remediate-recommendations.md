@@ -7,12 +7,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/04/2021
 ms.author: memildin
-ms.openlocfilehash: c35b9de3b4660c3a5f809fe519040618142490dd
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 18871a1c8b98efd7bd759f3114d089f885e8be22
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124763365"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130047017"
 ---
 # <a name="remediate-recommendations-in-azure-security-center"></a>Umsetzen von Empfehlungen in Azure Security Center
 
@@ -68,7 +68,7 @@ So führen Sie eine **Korrektur** aus:
 
 ## <a name="fix-actions-logged-to-the-activity-log"></a>Die Korrektur-Maßnahmen werden im Aktivitätsprotokoll protokolliert <a name="activity-log"></a>
 
-Beim Korrekturvorgang wird ein Vorlagenbereitstellungs- oder REST PATCH-API-Aufruf verwendet, um die Konfiguration auf die Ressource anzuwenden. Diese Vorgänge werden im [Azure-Aktivitätsprotokoll](../azure-monitor/essentials/activity-log.md) protokolliert.
+Beim Korrekturvorgang wird eine Vorlagenbereitstellungs- oder REST-API-`PATCH`-Anforderung verwendet, um die Konfiguration auf die Ressource anzuwenden. Diese Vorgänge werden im [Azure-Aktivitätsprotokoll](../azure-monitor/essentials/activity-log.md) protokolliert.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

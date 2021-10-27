@@ -8,12 +8,12 @@ ms.date: 10/15/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 ms.subservice: teams-interop
-ms.openlocfilehash: 6be59e810f504e6909818a8e7ceb57b23174238b
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: 88025243a379b18b5b24cb3c47caee4713b47585
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129855876"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130131541"
 ---
 # <a name="join-a-teams-meeting"></a>Teilnehmen an einer Teams-Besprechung
 
@@ -30,7 +30,9 @@ Zurzeit ist es für einen Teams-Benutzer nicht möglich, einem Anruf beizutreten
 
 ## <a name="enabling-anonymous-meeting-join-in-your-teams-tenant"></a>Aktivieren des anonymen Beitritts zu Besprechungen in Ihrem Teams-Mandanten
 
-Wenn ein BYOI-Benutzer einer Teams-Besprechung beitritt, wird er wie ein anonymer externer Benutzer behandelt, ähnlich wie Benutzer, die einer Teams-Besprechung anonym über die Teams-Webanwendung beitreten. Die Möglichkeit für BYOI-Benutzer, Teams-Besprechungen als anonyme Benutzer beizutreten, wird durch die bereits vorhandene Konfiguration zum Zulassen des anonymen Besprechungsbeitritts gesteuert. Diese steuert auch den vorhandenen anonymen Besprechungsbeitritt von Teams. Diese Einstellung kann in [Teams Admin Center](https://admin.teams.microsoft.com/meetings/settings) oder mithilfe des Teams-PowerShell-Cmdlets [Set-CsTeamsMeetingConfiguration](/powershell/module/skype/set-csteamsmeetingconfiguration) aktualisiert werden. Ihre benutzerdefinierte Anwendung sollte die Benutzerauthentifizierung und andere Sicherheitsmaßnahmen zum Schutz von Teams-Besprechungen berücksichtigen. Seien Sie sich der Auswirkungen auf die Sicherheit bewusst, wenn Sie anonymen Benutzern die Teilnahme an Besprechungen ermöglichen, und verwenden Sie den [Teams-Sicherheitsleitfaden](/microsoftteams/teams-security-guide#addressing-threats-to-teams-meetings), um die für anonyme Benutzer verfügbaren Funktionen zu konfigurieren.
+Wenn ein BYOI-Benutzer einer Teams-Besprechung beitritt, wird er wie ein anonymer externer Benutzer behandelt, ähnlich wie Benutzer, die einer Teams-Besprechung anonym über die Teams-Webanwendung beitreten. Die Möglichkeit für BYOI-Benutzer, Teams-Besprechungen als anonyme Benutzer beizutreten, wird durch die bereits vorhandene Konfiguration zum Zulassen des anonymen Besprechungsbeitritts gesteuert. Diese steuert auch den vorhandenen anonymen Besprechungsbeitritt von Teams. Diese Einstellung kann in [Teams Admin Center](https://admin.teams.microsoft.com/meetings/settings) oder mithilfe des Teams-PowerShell-Cmdlets [Set-CsTeamsMeetingConfiguration](/powershell/module/skype/set-csteamsmeetingconfiguration) aktualisiert werden.  
+
+Benutzerdefinierte Anwendungen, die mit Azure Communication Services erstellt wurden, um mit Teams-Benutzern eine Verbindung herzustellen und zu kommunizieren, können von Endbenutzern oder Bots verwendet werden. In ihrer Darstellung für Teams-Benutzer unterscheiden sie sich nur dann, wenn der Entwickler der Anwendung dies explizit im Rahmen der Kommunikation angibt. Ihre benutzerdefinierte Anwendung sollte die Benutzerauthentifizierung und andere Sicherheitsmaßnahmen zum Schutz von Teams-Besprechungen berücksichtigen. Seien Sie sich der Auswirkungen auf die Sicherheit bewusst, wenn Sie anonymen Benutzern die Teilnahme an Besprechungen ermöglichen, und verwenden Sie den [Teams-Sicherheitsleitfaden](/microsoftteams/teams-security-guide#addressing-threats-to-teams-meetings), um die für anonyme Benutzer verfügbaren Funktionen zu konfigurieren.
 
 ## <a name="meeting-experience"></a>Benutzererfahrung während der Besprechung
 
@@ -48,11 +50,13 @@ Microsoft gibt Ihnen über die Azure Communication Services-API einen Hinweis, d
 ## <a name="limitations-and-known-issues"></a>Einschränkungen und bekannte Probleme
 
 - Ein BYOI-Benutzer darf an einer Teams-Besprechung teilnehmen, die für einen Teams-Kanal geplant ist, sowie Audio- und Videodaten verwenden. Er kann aber keine Chatnachrichten senden oder empfangen, weil er kein Mitglied des Kanals ist.
-- Wenn Sie Microsoft Graph verwenden, um [die Teilnehmer einer Teams-Besprechung aufzulisten](https://docs.microsoft.com/graph/api/call-list-participants), werden derzeit keine Details für Communication Services-Benutzer berücksichtigt.
+- Wenn Sie Microsoft Graph verwenden, um [die Teilnehmer einer Teams-Besprechung aufzulisten](/graph/api/call-list-participants), werden derzeit keine Details für Communication Services-Benutzer berücksichtigt.
 - Teams-Besprechungen unterstützen bis zu 1.000 Teilnehmer, aber das Anruf-SDK von Azure Communication Services unterstützt derzeit nur 350 Teilnehmer.
-- Bei [Cloud Video Interop für Microsoft Teams](https://docs.microsoft.com/microsoftteams/cloud-video-interop) wurden auf einigen Geräten Probleme festgestellt, wenn ein Communication Services-Benutzer den Bildschirm teilte.
+- Bei [Cloud Video Interop für Microsoft Teams](/microsoftteams/cloud-video-interop) wurden auf einigen Geräten Probleme festgestellt, wenn ein Communication Services-Benutzer den Bildschirm teilte.
 - Features wie das Heben der Hand, der Zusammen-Modus und Gruppenräume stehen nur Teams-Benutzern zur Verfügung.
 - Untertitel für Teams-Besprechungen werden vom Anruf-SDK derzeit nicht unterstützt.
+- Communication Services-Benutzer können [Teams-Liveereignissen](/microsoftteams/teams-live-events/what-are-teams-live-events) nicht beitreten
+- [Teams-Aktivitätshandlerereignisse](/microsoftteams/platform/bots/bot-basics?tabs=csharp) für Bots werden nicht ausgelöst, wenn Communication Services-Benutzer einer Teams-Besprechung beitreten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/08/2020
 ms.author: RamaKoni
-ms.reviewer: sqlblt, daleche
+ms.reviewer: sqlblt, daleche, mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 8428f9ce69bc58a206eb5c60b3602ffbb17f7c19
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: b28a2872667ed49b74c6b1ece86280e3dfdec4b6
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123225670"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130166002"
 ---
 # <a name="in-place-change-of-sql-server-version-on-azure-vm"></a>Direktes Ändern der SQL Server-Version auf Azure-VMs
 
@@ -33,7 +33,7 @@ In diesem Artikel wird beschrieben, wie Sie die Version von Microsoft SQL Server
 Für ein direktes Upgrade von SQL Server gelten die folgenden Bedingungen:
 
 - Die Setupmedien der gewünschten SQL Server-Version sind erforderlich. Kunden mit [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) können Ihre Installationsmedien im [Microsoft Business Center](https://www.microsoft.com/Licensing/servicecenter/default.aspx) abrufen. Kunden ohne Software Assurance können die Setupmedien in einem SQL Server-VM-Image aus Azure Marketplace mit einer späteren SQL Server-Version verwenden (in der Regel unter C:\SQLServerFull zu finden).
-- Editionsupgrades sollten den [unterstützten Upgradepfaden folgen](/sql/database-engine/install-windows/supported-version-and-edition-upgrades-version-15).
+- Versionsupgrades sollten den [unterstützten Upgradepfaden folgen](/sql/database-engine/install-windows/supported-version-and-edition-upgrades-version-15).
 
 ## <a name="planning-for-version-change"></a>Planen der Versionsänderung
 
@@ -124,4 +124,4 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 - [Übersicht über SQL Server auf einem virtuellen Windows-Computer](sql-server-on-azure-vm-iaas-what-is-overview.md)
 - [Häufig gestellte Fragen zu SQL Server auf virtuellen Windows-Computern](frequently-asked-questions-faq.yml)
 - [Preisinformationen für SQL Server auf virtuellen Windows-Computern](pricing-guidance.md)
-- [SQL Server auf Windows-VMs – Versionshinweise](doc-changes-updates-release-notes.md)
+* [Neuerungen für SQL Server auf virtuellen Azure-Computern](doc-changes-updates-release-notes-whats-new.md)

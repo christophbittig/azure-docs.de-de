@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mingshen
 ms.author: mingshen
 ms.date: 07/05/2021
-ms.openlocfilehash: f222245af177380a59f4c2adc9987b144a1c9b6f
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 6ea06820a9f66c831847808d9f6de9a6bf4803b1
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122864668"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130073960"
 ---
 # <a name="plans-and-pricing-for-commercial-marketplace-offers"></a>Pläne und Preise für Angebote im kommerziellen Marketplace
 
@@ -135,7 +135,7 @@ Nachdem Sie das Angebot mit einem privaten Plan veröffentlicht haben, können S
 > [!NOTE]
 > Eine private Zielgruppe unterscheidet sich von einer Vorschauzielgruppe. Für einige Angebotstypen können Sie auf der Seite **Verfügbarkeit** eine Zielgruppe definieren, die eine Vorschau Ihres Angebots anzeigen kann, bevor das Angebot im kommerziellen Marketplace veröffentlicht wird. Die Festlegung als private Zielgruppe gilt nur für einen bestimmten Plan. Für die Vorschauzielgruppe können alle Pläne (private und nicht private Pläne) angezeigt werden, jedoch nur während des eingeschränkten Vorschauzeitraums, in dem der Plan getestet und überprüft wird.
 
-Sie können den Plan auch vollständig aus dem Azure Marketplace ausblenden, wenn Ihr Angebot als Teil einer verwalteten Anwendung oder Lösungsvorlage bereitgestellt wird.
+Sie können den Plan auch vollständig aus Azure Marketplace ausblenden, wenn Ihr Angebot als Teil einer verwalteten Anwendung oder Lösungsvorlage bereitgestellt wird.
 
 ## <a name="free-trials"></a>Kostenlose Testversionen
 

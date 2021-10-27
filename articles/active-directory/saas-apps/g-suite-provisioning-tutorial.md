@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/18/2021
 ms.author: thwimmer
-ms.openlocfilehash: eb283ab73180bed43c90f57fd7ad09c045f82bc4
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: fca85673ba31b71eda9e9b4242062093ae588aed
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113763821"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130046979"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von G Suite für die automatische Benutzerbereitstellung
 
@@ -110,11 +110,11 @@ Mit dem Azure AD-Bereitstellungsdienst können Sie anhand der Zuweisung zur Anwe
 In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitstellungsdiensts zum Erstellen, Aktualisieren und Deaktivieren von Benutzern bzw. Gruppen in ServiceNow auf der Grundlage von Benutzer- oder Gruppenzuweisungen in Azure AD erläutert.
 
 > [!NOTE]
-> Weitere Informationen über den Directory-API-Endpunkt von G Suite finden Sie unter [Directory-API](https://developers.google.com/admin-sdk/directory).
+> Weitere Informationen zum Directory-API-Endpunkt von G Suite finden Sie in der [Referenzdokumentation zur Directory-API](https://developers.google.com/admin-sdk/directory).
 
 ### <a name="to-configure-automatic-user-provisioning-for-g-suite-in-azure-ad"></a>So konfigurieren Sie die automatische Benutzerbereitstellung für G Suite in Azure AD:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen**. Benutzer müssen sich unter „portal.azure.com“ anmelden und können nicht „aad.portal.azure.com“ verwenden.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen**. Benutzer müssen sich unter `portal.azure.com` anmelden und können nicht `aad.portal.azure.com` verwenden.
 
     ![Blatt „Unternehmensanwendungen“](./media/g-suite-provisioning-tutorial/enterprise-applications.png)
 

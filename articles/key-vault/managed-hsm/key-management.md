@@ -8,12 +8,12 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 418bc82a503822a79f138fc71213f9ec5c9b5266
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 71cc84defc8eb791b8d1f1189162b97ee44db9ec
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114471275"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130129204"
 ---
 # <a name="manage-a-managed-hsm-using-the-azure-cli"></a>Verwalten eines verwalteten HSM über die Azure-Befehlszeilenschnittstelle
 
@@ -47,6 +47,8 @@ Weitere Informationen zu den Anmeldeoptionen für die Befehlszeilenschnittstelle
 > [!NOTE]
 > In allen nachfolgenden Befehlen werden zwei Verwendungsmethoden gezeigt: eine mit den Parametern **--hsm-name** und **--name** (für den Schlüsselnamen) und eine mit dem Parameter **--id**, um die Angabe der gesamten URL (ggf. einschließlich des Schlüsselnamens) zu ermöglichen. Letztere Methode ist hilfreich, wenn der Aufrufer (ein Benutzer oder eine Anwendung) keinen Lesezugriff auf die Steuerungsebene und nur eingeschränkten Zugriff auf die Datenebene hat.
 
+> [!NOTE]
+> Einige Interaktionen mit Schlüsseldaten erfordern bestimmte lokale RBAC-Berechtigungen. Eine vollständige Liste der integrierten lokalen RBAC-Rollen und -Berechtigungen finden Sie unter [Integrierte Rollen der lokalen RBAC für verwaltete HSMs](./built-in-roles.md). Informationen zum Zuweisen dieser Berechtigungen zu einem Benutzer finden Sie unter [Schützen des Zugriffs auf Ihre verwalteten HSMs](./secure-your-managed-hsm.md).
 ## <a name="create-an-hsm-key"></a>Erstellen eines HSM-Schlüssels
 
 > [!NOTE]
@@ -176,7 +178,7 @@ az keyvault key purge --hsm-name ContosoHSM --name myrsakey
 ## OR
 # Note the key name (myaeskey) in the URI
 
-az keyvault key recover --id https://ContosoMHSM.managedhsm.azure.net/deletedKeys/myrsakey
+az keyvault key purge --id https://ContosoMHSM.managedhsm.azure.net/deletedKeys/myrsakey
 
 ```
 
@@ -202,12 +204,12 @@ Verwenden Sie `az keyvault key restore`, um einen einzelnen Schlüssel wiederher
 > Die Wiederherstellung ist nicht erfolgreich, wenn ein gleichnamiger Schlüssel im aktiven oder gelöschten Zustand vorhanden ist.
 
 ```azurecli-interactive
-az keyvault key restore --hsm-name ContosoHSM --name myrsakey --file myrsakey.bakup
+az keyvault key restore --hsm-name ContosoHSM --name myrsakey --file myrsakey.backup
 
 ## OR
 # Note the key name (myaeskey) in the URI
 
-az keyvault key recover --id https://ContosoMHSM.managedhsm.azure.net/deletedKeys/myrsakey --file myrsakey.bakup
+az keyvault key restore --id https://ContosoMHSM.managedhsm.azure.net/deletedKeys/myrsakey --file myrsakey.backup
 
 ```
 

@@ -7,18 +7,30 @@ ms.service: azure-percept
 ms.topic: conceptual
 ms.date: 08/23/2021
 ms.custom: template-concept
-ms.openlocfilehash: f957ad88d89b9d31ab8e073214e765dbbdb13094
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: dd0d2c3e8466d0f5b4486be7c15b0092d7026a5e
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123224936"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129996245"
 ---
 # <a name="azure-percept-dk-software-release-notes"></a>Versionshinweise zur Azure Percept DK-Software
 
 Diese Seite enthält Informationen zu Änderungen und Fixes für jedes Azure Percept DK-Betriebssystem und Firmwarerelease.
 
 Navigieren Sie zu [Azure Percept DK-Softwarereleases zum Aktualisieren über USB](./software-releases-usb-cable-updates.md) oder [Azure Percept DK-Softwarereleases für das OTA-Update](./software-releases-over-the-air-updates.md), um die Updateimages herunterzuladen.
+
+## <a name="september-2109-release"></a>Release vom September (2109)
+
+- WLAN:
+  - Verwenden eines festen Kanals anstelle der automatischen Kanalauswahl, um zu vermeiden, dass hostapd.service ständig wiederholen und neu starten muss.
+- Setup:
+  - OOBE-Serversystemfehler sind lokalisiert.
+  - Unterstützung für mehrere IPv6-Routingtabellen.
+- Betriebssystem
+  - Neueste Sicherheitsfixes.
+  - Der Nginx-Dienst wird als Nicht-Root-Benutzer ausgeführt.
+
 
 ## <a name="july-2107-release"></a>Release von Juli (2107)
 

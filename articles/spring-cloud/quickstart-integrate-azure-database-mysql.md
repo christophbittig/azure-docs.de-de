@@ -5,14 +5,14 @@ author: karlerickson
 ms.author: karler
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 05/13/2021
+ms.date: 10/15/2021
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: 86795c29f5eaaedb1ea08975a69b6afde9d755c1
-ms.sourcegitcommit: 0396ddf79f21d0c5a1f662a755d03b30ade56905
+ms.openlocfilehash: 9f9043b7ff667903ed9d2318e4ec20363cae71f9
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122271485"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130063657"
 ---
 # <a name="quickstart-integrate-azure-spring-cloud-with-azure-database-for-mysql"></a>Schnellstart: Integrieren von Azure Spring Cloud mit Azure Database for MySQL
 
@@ -34,6 +34,10 @@ export MYSQL_DATABASE_NAME=petclinic
 
 ## <a name="prepare-an-azure-database-for-mysql-instance"></a>Vorbereiten einer Azure Database for MySQL-Instanz
 
+1. Falls Sie die folgenden Befehle in den vorherigen Schnellstartanleitungen nicht ausgeführt haben, legen Sie die CLI-Standardwerte fest.
+    ```azcli
+    az configure --defaults group=<resource group name> spring-cloud=<service name>
+    ```
 1. Erstellen eines Azure-Datenbank für MySQL-Servers 
 
     ```azcli
@@ -162,5 +166,5 @@ az spring-cloud app update --name visits-service \
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Binden einer Azure Database for MySQL-Instanz an Ihre Azure Spring Cloud-Anwendung](how-to-bind-mysql.md)
-* [Verwenden einer verwalteten Identität zum Herstellen einer Verbindung zwischen Azure SQL-Datenbank und der Azure Spring Cloud-App](./connect-managed-identity-to-azure-sql.md)
+* [Binden einer Azure Database for MySQL-Instanz an Ihre Anwendung in Azure Spring Cloud](how-to-bind-mysql.md)
+* [Verwenden einer verwalteten Identität zum Herstellen einer Verbindung zwischen Azure SQL-Datenbank und einer App in Azure Spring Cloud](./connect-managed-identity-to-azure-sql.md)

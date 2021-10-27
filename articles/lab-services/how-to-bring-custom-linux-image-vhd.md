@@ -1,14 +1,14 @@
 ---
-title: 'Azure Lab Services: Hochladen eines benutzerdefinierten Linux-Images aus einer physischen Laborumgebung'
+title: Wie Sie ein benutzerdefiniertes Linux-Image aus Ihrer physischen Laborumgebung mitbringen
 description: Beschreibt, wie ein benutzerdefiniertes Linux-Image aus einer physischen Laborumgebung importiert wird.
 ms.date: 07/27/2021
 ms.topic: how-to
-ms.openlocfilehash: 9a8591d383ac5230085bc83d1d791e9de830a99e
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 6f044c062b770c6653a1e239ca7c1074ed969b9c
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124771363"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130180892"
 ---
 # <a name="bring-a-linux-custom-image-from-your-physical-lab-environment"></a>Importieren eines benutzerdefinierten Linux-Images aus einer physischen Laborumgebung
 
@@ -26,11 +26,11 @@ Wenn Sie Images aus einer physischen Laborumgebung in Lab Services verschieben, 
 
 ## <a name="prepare-a-custom-image-by-using-hyper-v-manager"></a>Vorbereiten eines benutzerdefinierten Images mit Hyper-V-Manager
 
-Die folgenden Schritte zeigen, wie Sie ein Ubuntu-Image für die Distributionen 16.04/18.04/20.04 aus einer Hyper-V-VM mithilfe des Windows Hyper-V-Managers erstellen.
+Die folgenden Schritte zeigen, wie Sie ein Ubuntu 18.04\20.04-Image aus einer virtuellen Hyper-V-Maschine (VM) mit dem Windows Hyper-V Manager erstellen.
 
 1. Laden Sie das offizielle Image für [Linux Ubuntu Server](https://ubuntu.com/server/docs) auf Ihren Windows-Hostcomputer herunter, den Sie zum Einrichten des benutzerdefinierten Images auf einer Hyper-V-VM verwenden.
 
-   Es wird empfohlen, ein Ubuntu-Image zu verwenden, auf dem der [GNOME](https://www.gnome.org/)-GUI-Desktop *nicht* installiert ist. GNOME weist derzeit einen Konflikt mit dem Azure Linux-Agent auf, der erforderlich ist, damit das Image in Lab Services ordnungsgemäß funktioniert. Verwenden Sie beispielsweise das Ubuntu Server-Image, und installieren Sie einen anderen GUI-Desktop wie XFCE oder MATE.
+   Wenn Sie Ubuntu 18.04 LTS verwenden, empfehlen wir, ein Image zu verwenden, auf dem *nicht* die grafischen Desktops [GNOME](https://www.gnome.org/) oder [MATE](https://mate-desktop.org/) installiert sind. GNOME und MATE haben derzeit einen Netzwerkkonflikt mit dem Azure-Linux-Agenten, der benötigt wird, damit das Image in Azure Lab Services ordnungsgemäß funktioniert. Verwenden Sie stattdessen ein Ubuntu Server-Image und installieren Sie einen anderen grafischen Desktop, z. B. [XFCE](https://www.xfce.org/).  Eine weitere Möglichkeit ist die Installation von [GNOME\MATE](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/LinuxGraphicalDesktopSetup/GNOME_MATE/ReadMe.md) unter Verwendung einer Laborvorlage-VM.
 
    Ubuntu veröffentlicht auch vordefinierte [Azure-VHDs für den Download](https://cloud-images.ubuntu.com/). Diese VHDs sind für die Erstellung benutzerdefinierter Images von einem Linux-Hostcomputer und Hypervisor (etwa KVM) vorgesehen. Diese VHDs erfordern, dass Sie zuerst das Standardbenutzerkennwort festlegen. Dies kann nur mit Linux-Tools wie QEMU durchgeführt werden, die für Windows nicht verfügbar sind. Wenn Sie ein benutzerdefiniertes Image mit Windows Hyper-V erstellen, können Sie daher keine Verbindung mit diesen VHDs herstellen, um Imageanpassungen vorzunehmen. Weitere Informationen zu den vordefinierten Azure-VHDs finden Sie in der [Dokumentation zu Ubuntu](https://help.ubuntu.com/community/UEC/Images?_ga=2.114783623.1858181609.1624392241-1226151842.1623682781#QEMU_invocation).
 
@@ -54,7 +54,9 @@ Die folgenden Schritte zeigen, wie Sie ein Ubuntu-Image für die Distributionen�
     - Der letzte Schritt besteht darin, die **VHDX**-Datei in eine **VHD**-Datei zu konvertieren. Im Folgenden finden Sie entsprechende Schritte, die zeigen, wie dies mit dem **Hyper-V-Manager** ausgeführt wird:
 
         1. Navigieren Sie zu **Hyper-V-Manager** > **Aktion** > **Datenträger bearbeiten**.
-        1. **Konvertieren** Sie nun den Datenträger von einer VHDX in eine VHD.
+        1. Suchen Sie den zu konvertierenden VHDX-Datenträger.
+        1. Wählen Sie dann **Konvertieren** des Datenträgers.
+        1. Wählen Sie die Option zum Konvertieren in ein **VHD-Datenträgerformat**.
         1. Wählen Sie für **Datenträgertyp** die Option **Feste Größe** aus.
             - Wenn Sie die Datenträgergröße an diesem Punkt erweitern, stellen Sie sicher, dass Sie 128 GB *nicht* überschreiten.
             :::image type="content" source="./media/upload-custom-image-shared-image-gallery/choose-action.png" alt-text="Screenshot des Bildschirms „Aktion auswählen“":::
@@ -67,13 +69,14 @@ Um die Größe der VHD zu ändern und die Konvertierung in eine VHDX auszuführe
 ## <a name="upload-the-custom-image-to-a-shared-image-gallery"></a>Hochladen des benutzerdefinierten Images in eine Shared Image Gallery
 
 1. Laden Sie die VHD-Datei in Azure hoch, um einen verwalteten Datenträger zu erstellen.
-    1. Sie können entweder Storage-Explorer oder AzCopy in der Befehlszeile verwenden, wie unter [Hochladen einer VHD in Azure oder Kopieren eines verwalteten Datenträgers in eine andere Region](../virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell.md) beschrieben.
+    1. Sie können entweder Azure Storage Explorer oder AzCopy von der Befehlszeile aus verwenden, wie in [Hochladen einer VHD auf Azure oder Kopieren einer verwalteten Festplatte in eine andere Region](../virtual-machines/windows/disks-upload-vhd-to-managed-disk-powershell.md) gezeigt.
+
+        > [!WARNING]
+        > Wenn Ihr Computer in den Energiesparmodus wechselt oder gesperrt wird, wird der Uploadvorgang möglicherweise unterbrochen, und es tritt ein Fehler auf. Stellen Sie außerdem sicher, dass Sie nach Abschluss von AzCopy den SAS-Zugriff auf den Datenträger widerrufen. Andernfalls wird beim Versuch, ein Image aus dem Datenträger zu erstellen, dieser Fehler angezeigt: „Der Vorgang ‚Image erstellen‘ wird für den Datenträger ‚Ihr Datenträgername‘ im Status ‚Aktiver Upload‘ nicht unterstützt. Fehlercode: OperationNotAllowed*“.
 
     1. Nachdem Sie die VHD hochgeladen haben, sollten Sie nun über einen verwalteten Datenträger verfügen, den Sie im Azure-Portal anzeigen können.
 
-    Wenn Ihr Computer in den Energiesparmodus wechselt oder gesperrt wird, wird der Uploadvorgang möglicherweise unterbrochen, und es tritt ein Fehler auf. Stellen Sie außerdem sicher, dass Sie nach Abschluss von AzCopy den SAS-Zugriff auf den Datenträger widerrufen. Andernfalls wird beim Versuch, ein Image aus dem Datenträger zu erstellen, dieser Fehler angezeigt: „Der Vorgang ‚Image erstellen‘ wird für den Datenträger ‚Ihr Datenträgername‘ im Status ‚Aktiver Upload‘ nicht unterstützt. Fehlercode: OperationNotAllowed*“.
-
-    Auf der Registerkarte **Größe und Leistung** des verwalteten Datenträgers im Azure-Portal können Sie die Datenträgergröße ändern. Wie bereits erwähnt, darf die Größe *nicht* größer als 128 GB sein.
+        Sie können die Registerkarte **Größe+Leistung** des Azure-Portals für die verwaltete Festplatte verwenden, um die Größe der Festplatte zu ändern. Wie bereits erwähnt, darf die Größe *nicht* größer als 128 GB sein.
 
 1. Erstellen Sie in einer Shared Image Gallery eine Imagedefinition und -version:
     1. [Erstellen Sie eine Imagedefinition:](../virtual-machines/image-version.md)
@@ -81,16 +84,16 @@ Um die Größe der VHD zu ändern und die Konvertierung in eine VHDX auszuführe
         - Wählen Sie unter **Betriebssystem** die Option **Linux** aus.
         - Wählen Sie unter **Betriebssystemstatus** die Option **Generalisiert** aus.
 
-    Weitere Informationen zu den Werten, die Sie für eine Imagedefinition angeben können, finden Sie unter [Imagedefinitionen](../virtual-machines/shared-image-galleries.md#image-definitions).
+        Weitere Informationen zu den Werten, die Sie für eine Imagedefinition angeben können, finden Sie unter [Imagedefinitionen](../virtual-machines/shared-image-galleries.md#image-definitions).
 
-    Sie können auch eine vorhandene Imagedefinition verwenden und eine neue Version für Ihr benutzerdefiniertes Image erstellen.
+        Sie können auch eine vorhandene Imagedefinition verwenden und eine neue Version für Ihr benutzerdefiniertes Image erstellen.
 
-1. [Erstellen Sie eine Imageversion:](../virtual-machines/image-version.md)
-    - Die Eigenschaft **Versionsnummer** verwendet das folgende Format: *MajorVersion.MinorVersion.Patch*. Wenn Sie Lab Services verwenden, um ein Lab zu erstellen und ein benutzerdefiniertes Image auswählen, wird automatisch die neueste Version des Images verwendet. Die aktuellste Version wird basierend auf dem höchsten Wert von MajorVersion, MinorVersion und Patch ausgewählt.
-    - Wählen Sie als **Quelle** in der Dropdownliste die Option **Datenträger und/oder Momentaufnahmen** aus.
-    - Wählen Sie für die Eigenschaft **Betriebssystemdatenträger** den Datenträger aus, den Sie in den vorherigen Schritten erstellt haben.
+    1. [Erstellen Sie eine Imageversion:](../virtual-machines/image-version.md)
+        - Die Eigenschaft **Versionsnummer** verwendet das folgende Format: *MajorVersion.MinorVersion.Patch*. Wenn Sie Lab Services verwenden, um ein Lab zu erstellen und ein benutzerdefiniertes Image auswählen, wird automatisch die neueste Version des Images verwendet. Die aktuellste Version wird basierend auf dem höchsten Wert von MajorVersion, MinorVersion und Patch ausgewählt.
+        - Wählen Sie als **Quelle** in der Dropdownliste die Option **Datenträger und/oder Momentaufnahmen** aus.
+        - Wählen Sie für die Eigenschaft **Betriebssystemdatenträger** den Datenträger aus, den Sie in den vorherigen Schritten erstellt haben.
 
-    Weitere Informationen zu den Werten, die Sie für eine Imagedefinition angeben können, finden Sie unter [Imageversionen](../virtual-machines/shared-image-galleries.md#image-versions).
+        Weitere Informationen über die Werte, die Sie für eine Bildversion angeben können, finden Sie unter [Bildversionen](../virtual-machines/shared-image-galleries.md#image-versions).
 
 ## <a name="create-a-lab"></a>Erstellen eines Labs
 

@@ -5,13 +5,13 @@ author: Bashar-MSFT
 ms.author: bahusse
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 2/11/2021
-ms.openlocfilehash: f7cc091d5e90df67b51bb90e799f6a6c57921756
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 10/15/2021
+ms.openlocfilehash: bc4905e14a18613a4af9e1ba97df070ed99c5d7d
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124804908"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130072459"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Verbindungsarchitektur in Azure Database for PostgreSQL
 In diesem Artikel wird die Verbindungsarchitektur von Azure Database for PostgreSQL beschrieben, und Sie erfahren, wie Datenverkehr von Clients innerhalb und außerhalb von Azure an Ihre Azure Database for PostgreSQL-Datenbankinstanz weitergeleitet wird.
@@ -45,16 +45,18 @@ Die folgende Tabelle enthält die Gateway-IP-Adressen des Azure Database for Pos
 | Australien, Mitte| 20.36.105.0  | | |
 | Australien, Mitte 2     | 20.36.113.0  | | |
 | Australien (Osten) | 13.75.149.87, 40.79.161.1     |  | |
-| Australien, Südosten |191.239.192.109, 13.73.109.251     |  | |
+| Australien, Südosten |13.77.48.10, 13.77.49.32, 13.73.109.251     |  | |
 | Brasilien Süd |191.233.201.8, 191.233.200.16     |  | 104.41.11.5|
-| Kanada, Mitte |40.85.224.249     | | |
-| Kanada, Osten | 40.86.226.166     | | |
+| Kanada, Mitte |40.85.224.249, 52.228.35.221     | | |
+| Kanada, Osten | 40.86.226.166, 52.242.30.154     | | |
 | USA (Mitte) | 23.99.160.139, 52.182.136.37, 52.182.136.38 | 13.67.215.62 | |
-| China, Osten | 139.219.130.35     | | |
-| China, Osten 2 | 40.73.82.1     | | |
+| China, Osten            |  139.219.130.35            |      |    |
+| China, Osten 2          |  40.73.82.1, 52.130.120.89     | 
+| China, Osten 3          |  52.131.155.192        | 
 | China, Norden | 139.219.15.17     | | |
 | China, Norden 2 | 40.73.50.0     | | |
-| Asien, Osten | 191.234.2.139, 52.175.33.150, 13.75.33.20, 13.75.33.21     | | |
+| China, Norden 3 | 52.131.27.192     | | |
+| Asien, Osten | 13.75.33.20, 52.175.33.150, 13.75.33.20, 13.75.33.21     | | |
 | East US |40.71.8.203, 40.71.83.113 |40.121.158.30|191.238.6.43 |
 | USA (Ost) 2 | 40.70.144.38, 52.167.105.38  | 52.177.185.181 | |
 | Frankreich, Mitte | 40.79.137.0, 40.79.129.1     | | |
@@ -67,9 +69,9 @@ Die folgende Tabelle enthält die Gateway-IP-Adressen des Azure Database for Pos
 | Indien, Süden | 104.211.224.146     | | |
 | Indien, Westen | 104.211.160.80     | | |
 | Japan, Osten | 40.79.192.23, 40.79.184.8 | 13.78.61.196 | |
-| Japan, Westen | 191.238.68.11, 40.74.96.6, 40.74.96.7     | 104.214.148.156 | |
+| Japan, Westen | 104.214.148.156, 40.74.96.6, 40.74.96.7     | 104.214.148.156 | |
 | Korea, Mitte | 52.231.17.13     | 52.231.32.42 | |
-| Korea, Süden | 52.231.145.3     | 52.231.200.86 | |
+| Korea, Süden | 52.231.145.3     | 52.231.151.97 | |
 | USA Nord Mitte | 52.162.104.35, 52.162.104.36     | 23.96.178.199 | |
 | Nordeuropa | 52.138.224.6, 52.138.224.7     | 40.113.93.91 |191.235.193.75 |
 | Südafrika, Norden  | 102.133.152.0     | | |
@@ -80,12 +82,13 @@ Die folgende Tabelle enthält die Gateway-IP-Adressen des Azure Database for Pos
 | Schweiz, Westen | 51.107.152.0| ||
 | VAE, Mitte | 20.37.72.64     | | |
 | Vereinigte Arabische Emirate, Norden | 65.52.248.0     | | |
-| UK, Süden | 51.140.184.11     | | |
-| UK, Westen | 51.141.8.11     | | |
-| USA, Westen-Mitte | 13.78.145.25     | | |
+| UK, Süden | 51.140.184.11, 51.140.144.32, 51.105.64.0     | | |
+| UK, Westen | 51.141.8.11     | |  |
+| USA, Westen-Mitte | 13.78.145.25, 52.161.100.158     | | |
 | Europa, Westen |13.69.105.208, 104.40.169.187 | 40.68.37.158 | 191.237.232.75 |
 | USA (Westen) |13.86.216.212, 13.86.217.212 |104.42.238.205  | 23.99.34.75|
-| USA, Westen 2 | 13.66.226.202     | | |
+| USA, Westen 2 | 13.66.226.202, 13.66.136.192,13.66.136.195     | | |
+| USA, Westen 3 | 20.150.184.2     | | |
 ||||
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 09/27/2021
-ms.openlocfilehash: 7f784773ff2f29b7f5b9c244811f818861f5ae42
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: b8d72d3b2e32f22cd3fc6bbe8a89b11469b343c4
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129080618"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130072212"
 ---
 # <a name="azure-consumption-commitment-enrollment"></a>Registrierung für Azure Consumption Commitment
 
@@ -40,7 +40,7 @@ Ein Angebot muss die folgenden Anforderungen erfüllen, um im MACC-Programm regi
 #### <a name="workspaces-view"></a>[Ansicht „Arbeitsbereiche“](#tab/workspaces-view)
 
 1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
-1. Wählen Sie auf der Startseite die Kachel **Marketplace offers** (Marketplace-Angebote) aus.
+1. Wählen Sie auf der Startseite die Kachel **Marktplatzangebote**.
 
     [ ![Veranschaulichung der Kachel „Marketplace offers“ (Marketplace-Angebote) auf der Startseite in Partner Center](./media/workspaces/partner-center-home.png) ](./media/workspaces/partner-center-home.png#lightbox)
 

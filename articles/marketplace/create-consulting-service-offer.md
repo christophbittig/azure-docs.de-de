@@ -1,6 +1,6 @@
 ---
-title: Erstellen eines Beratungsdienstangebots im kommerziellen Microsoft-Marketplace
-description: In diesem Artikel erfahren Sie, wie Sie ein neues Angebot für Beratungsdienste für Microsoft AppSource oder den Azure Marketplace mithilfe des kommerziellen Marketplace-Programms in Microsoft Partner Center erstellen.
+title: Erstellen eines Beratungsdienstangebots für den kommerziellen Marketplace
+description: Erstellen Sie mithilfe von Partner Center ein Beratungsdienstangebot für Microsoft AppSource oder Azure Marketplace.
 author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.reviewer: anbene
@@ -8,29 +8,29 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/27/2021
-ms.openlocfilehash: af8e238d57d6168e8c9620177cbf8e97a7d08727
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: 5556859fb350354fd2c307412ceaed1215620df8
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129083016"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130042161"
 ---
-# <a name="how-to-create-a-consulting-service-offer-in-the-commercial-marketplace"></a>Erstellen eines Angebots für einen Beratungsdienst im kommerziellen Marketplace
+# <a name="create-a-consulting-service-offer"></a>Erstellen eines Beratungsdienstangebots
 
-In diesem Artikel wird erläutert, wie Sie ein Angebot für einen Beratungsdienst für den kommerziellen Microsoft-Marketplace mithilfe von Partner Center erstellen.
+In diesem Artikel wird erläutert, wie Sie ein Beratungsdienstangebot für den kommerziellen Marketplace mithilfe von Partner Center erstellen.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Zum Veröffentlichen eines Beratungsdienstangebots müssen Sie gewisse Berechtigungsvoraussetzungen erfüllen, die Ihre Kenntnisse in Ihrem Feld belegen. Lesen Sie den Artikel [Planen eines Beratungsdienstangebots für den kommerziellen Marketplace](./plan-consulting-service-offer.md), wenn Sie dies noch nicht getan haben. Darin werden die Voraussetzungen für einen Beratungsdienst und die Ressourcen beschrieben, die Sie zum Erstellen des Angebots mit Partner Center benötigen.
+Zum Veröffentlichen eines Beratungsdienstangebots müssen Sie gewisse Berechtigungsvoraussetzungen erfüllen, die Ihre Kenntnisse in Ihrem Feld belegen. Lesen Sie den Artikel [Planen eines Beratungsdienstangebots](./plan-consulting-service-offer.md), wenn Sie dies noch nicht getan haben. Hier werden die Voraussetzungen und Ressourcen beschrieben, die Sie zum Erstellen eines Beratungsdienstangebots in Partner Center benötigen.
 
-## <a name="create-a-new-consulting-service-offer"></a>Erstellen eines neuen Beratungsdienstangebots
+## <a name="create-a-consulting-service-offer"></a>Erstellen eines Beratungsdienstangebots
 
 [!INCLUDE [Workspaces view note](./includes/preview-interface.md)]
 
 #### <a name="workspaces-view"></a>[Ansicht „Arbeitsbereiche“](#tab/workspaces-view)
 
 1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
-1. Wählen Sie auf der Startseite die Kachel **Marketplace offers** (Marketplace-Angebote) aus.
+1. Wählen Sie auf der Startseite die Kachel **Marktplatzangebote**.
 
     [ ![Veranschaulichung der Kachel „Marketplace offers“ (Marketplace-Angebote) auf der Startseite in Partner Center](./media/workspaces/partner-center-home.png) ](./media/workspaces/partner-center-home.png#lightbox)
 

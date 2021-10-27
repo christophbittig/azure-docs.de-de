@@ -1,6 +1,6 @@
 ---
-title: Konfigurieren der Preise und Verfügbarkeit Ihres Beratungsdiensts im Microsoft Partner Center
-description: Hier erfahren Sie, wie Sie die Preisdetails und Marktverfügbarkeit Ihres Beratungsdienstangebots im kommerziellen Marketplace von Microsoft im Partner Center konfigurieren.
+title: Konfigurieren der Preise und Verfügbarkeit Ihres Beratungsdiensts für den kommerziellen Marketplace
+description: Hier erfahren Sie, wie Sie mithilfe von Partner Center die Preisdetails und Marktverfügbarkeit Ihres Beratungsdienstangebots im kommerziellen Marketplace von Microsoft konfigurieren.
 author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.reviewer: anbene
@@ -8,14 +8,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 10/27/2020
-ms.openlocfilehash: 6b386238bd759714bc0c8ad81d67c29aa1774aba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: cf6290632a1c9d78265961ccaa47b25fc1734a1b
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96780228"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130065956"
 ---
-# <a name="how-to-configure-your-consulting-service-pricing-and-availability"></a>Konfigurieren der Preise und Verfügbarkeit Ihres Beratungsdiensts
+# <a name="configure-consulting-service-offer-pricing-and-availability"></a>Konfigurieren von Preisen und Verfügbarkeit eines Beratungsdienstangebots
 
 In diesem Artikel wird erläutert, wie Sie die Marktverfügbarkeit und Preisdetails für Ihr Beratungsdienstangebot im kommerziellen Marketplace von Microsoft definieren.
 

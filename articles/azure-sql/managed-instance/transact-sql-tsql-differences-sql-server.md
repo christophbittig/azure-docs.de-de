@@ -11,12 +11,12 @@ ms.author: danil
 ms.reviewer: mathoma, bonova, danil
 ms.date: 8/18/2021
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 801bfe634281ffc795bd0f9c56089f915be52ac6
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: 1f8d848c87979419b4c2605560c3c371edfa5147
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129083788"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130045690"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>Unterschiede bei T-SQL zwischen SQL Server und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -38,7 +38,7 @@ Es gibt einige PaaS-Einschränkungen, die in SQL Managed Instance eingeführt we
 
 Die meisten dieser Features sind architekturbezogene Einschränkungen und stellen Dienstfeatures dar.
 
-Temporäre bekannte Probleme, die in SQL Managed Instance erkannt wurden und in Zukunft behoben werden, sind in den [Versionshinweisen](../database/doc-changes-updates-release-notes.md) beschrieben.
+Temporäre bekannte Probleme, die in SQL Managed Instance erkannt und in Zukunft behoben werden, sind unter den [Neuerungen](doc-changes-updates-release-notes-whats-new.md) beschrieben.
 
 ## <a name="availability"></a>Verfügbarkeit
 
@@ -70,7 +70,7 @@ Einschränkungen:
 - Bei SQL Managed Instance können Sie eine Instanzdatenbank in einer Sicherung mit bis zu 32 Stripes sichern. Dies ist ausreichend für Datenbanken mit bis zu 4 TB, wenn die Sicherungskomprimierung verwendet wird.
 - Sie können `BACKUP DATABASE ... WITH COPY_ONLY` nicht in einer Datenbank ausführen, die mit vom Dienst verwalteter Transparent Data Encryption (TDE) verschlüsselt ist. Die vom Dienst verwaltete TDE erzwingt die Verschlüsselung von Sicherungen mit einem internen TDE-Schlüssel. Der Schlüssel kann nicht exportiert werden, daher können Sie die Sicherung nicht wiederherstellen. Verwenden Sie automatische Sicherungen und die Point-in-Time-Wiederherstellung, oder verwenden Sie stattdessen [vom Kunden verwaltete Transparent Data Encryption – BYOK (Bring Your Own Key)](../database/transparent-data-encryption-tde-overview.md#customer-managed-transparent-data-encryption---bring-your-own-key). Sie können die Verschlüsselung für die Datenbank auch deaktivieren.
 - Native Sicherungen, die auf einer verwalteten Instanz erstellt wurden, können nicht auf einer SQL Server-Instanz wiederhergestellt werden. Dies liegt daran, dass die verwaltete Instanz im Vergleich zu einer SQL Server-Version eine höhere interne Datenbankversion aufweist.
-- Zum Sichern oder Wiederherstellen einer Datenbank in bzw. aus einem Azure-Speicher ist es erforderlich, eine Shared Access Signature (SAS) mit einem URI zu erstellen, der Ihnen eingeschränkte Zugriffsrechte für Azure Storage-Ressourcen gewährt. [Weitere Informationen zu diesem Thema](https://docs.microsoft.com/azure/azure-sql/managed-instance/restore-sample-database-quickstart#restore-from-a-backup-file-using-t-sql). Die Verwendung von Zugriffsschlüsseln für diese Szenarios wird nicht unterstützt.
+- Zum Sichern oder Wiederherstellen einer Datenbank in bzw. aus einem Azure-Speicher ist es erforderlich, eine Shared Access Signature (SAS) mit einem URI zu erstellen, der Ihnen eingeschränkte Zugriffsrechte für Azure Storage-Ressourcen gewährt. [Weitere Informationen zu diesem Thema](restore-sample-database-quickstart.md#restore-from-a-backup-file-using-t-sql). Die Verwendung von Zugriffsschlüsseln für diese Szenarios wird nicht unterstützt.
 - Die maximale Stripegröße für Sicherungen mit dem Befehl `BACKUP` in SQL Managed Instance beträgt 195 GB. Dies ist die maximale Blobgröße. Erhöhen Sie die Streifenanzahl im Backup-Befehl, um die einzelne Streifengröße zu reduzieren und innerhalb dieser Einschränkungen zu bleiben.
 
     > [!TIP]
@@ -561,5 +561,6 @@ SQL Managed Instance stellt ausführliche Informationen in Fehlerprotokollen zur
 
 - Weitere Informationen zu SQL Managed Instance finden Sie unter [Was ist SQL Managed Instance?](sql-managed-instance-paas-overview.md).
 - Informationen zu den Features und eine Vergleichsliste finden Sie unter [Funktionsvergleich: Azure SQL Managed Instance](../database/features-comparison.md).
-- Informationen zu Releaseupdates und bekannten Problemen finden Sie in den [Versionshinweisen zu SQL Managed Instance](../database/doc-changes-updates-release-notes.md).
+- Informationen zu Releaseupdates finden Sie unter [Neuerungen](doc-changes-updates-release-notes-whats-new.md).
+- Informationen zu Problemen, Problemumgehungen und Lösungen finden Sie unter [Bekannte Probleme](doc-changes-updates-known-issues.md).
 - Einen Schnellstart zum Erstellen einer neuen Instanz von SQL Managed Instance finden Sie unter [Erstellen einer Instanz von SQL Managed Instance](instance-create-quickstart.md).

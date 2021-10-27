@@ -3,20 +3,20 @@ title: ISV-Partnerkatalog für Azure AD B2C
 titleSuffix: Azure AD B2C
 description: Erfahren Sie, wie Sie mit unseren ISV-Partnern zusammenarbeiten können, um die Endbenutzererfahrung auf Ihre Anforderungen abzustimmen. Unser Partnernetzwerk erweitert unsere Lösungskapazitäten, um MFA, sichere Kundenauthentifizierung und rollenbasierte Zugriffssteuerung zu aktivieren sowie Betrug durch Identitätsüberprüfung und -nachweis zu bekämpfen.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 01/11/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 4935b42efa6e6fd17d66ddfba744ae36653ed952
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: a80b5b6340ddf0660961874281cbc6207ffea859
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122419211"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130063570"
 ---
 # <a name="azure-active-directory-b2c-isv-partners"></a>Azure Active Directory B2C-ISV-Partner
 
@@ -72,6 +72,7 @@ Microsoft kooperiert mit den folgenden ISVs, um sicheren Hybridzugriff auf lokal
 | ISV-Partner | Beschreibung und exemplarische Vorgehensweisen für die Integration |
 |:-------------------------|:--------------|
 | ![Screenshot des Datawiza-Logos](./media/partner-gallery/datawiza-logo.png) | [Datawiza](./partner-datawiza.md) ermöglicht SSO und eine differenzierte Zugriffskontrolle für Ihre Anwendungen und ist eine Erweiterung für Azure AD B2C zum Schutz älterer lokaler Anwendungen.  |
+| ![Screenshot eines F5-Logos](./media/partner-gallery/f5-logo.png) | [F5](./partner-f5.md) ermöglicht es, Legacy-Anwendungen durch BIG-IP-Sicherheit in Kombination mit Azure AD B2C-Vorauthentifizierung, Conditional Access (CA) und SSO sicher dem Internet auszusetzen.  |
 | ![Screenshot eines Ping-Logos](./media/partner-gallery/ping-logo.png) | [Ping Identity](./partner-ping-identity.md) ermöglicht einen sicheren Hybridzugriff auf lokale Legacyanwendungen über mehrere Clouds hinweg. |
 | ![Screenshot eines Strata-Logos](./media/partner-gallery/strata-logo.png) | [Strata](./partner-strata.md) bietet sicheren Hybridzugriff auf lokale Anwendungen, indem einheitliche Zugriffsrichtlinien erzwungen und Identitäten synchron gehalten werden und der Umstieg von Anwendungen von älteren Identitätsanbietern auf die standardbasierte Authentifizierung und Zugriffssteuerung von Azure AD B2C vereinfacht wird. |
 | ![Screenshot eines Zscaler-Logos](./media/partner-gallery/zscaler-logo.png) | [Zscaler](./partner-zscaler.md) ermöglicht einen richtlinienbasierten, sicheren Zugriff auf private Anwendungen und Ressourcen ohne die Kosten, den Aufwand oder die Sicherheitsrisiken eines VPN. |

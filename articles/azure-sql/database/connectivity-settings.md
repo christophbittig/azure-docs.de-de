@@ -11,12 +11,12 @@ ms.author: rohitna
 ms.reviewer: mathoma, vanto
 ms.date: 08/03/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: de6af2c8581c157634ee1f8676e3dbc84ccd1803
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f31c53d57b64254c1be654f58b387d7524974e92
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128590671"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129987440"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Azure SQL-Konnektivitätseinstellungen
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa-formerly-sqldw.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "128590671"
 In diesem Artikel werden Einstellungen vorgestellt, die die Konnektivität mit dem Server für Azure SQL-Datenbank und dem [dedizierten SQL-Pool (früher „SQL DW“)](../../synapse-analytics\sql-data-warehouse\sql-data-warehouse-overview-what-is.md) in Azure Synapse Analytics steuern. Diese Einstellungen gelten für alle SQL-Datenbank-Datenbanken und die Datenbanken des dedizierten SQL-Pools (früher „SQL DW“), die dem Server zugeordnet sind.
 
 > [!IMPORTANT]
-> Dieser Artikel gilt nicht für Azure SQL Managed Instance. Dieser Artikel gilt auch nicht für dedizierte SQL-Pools in Azure Synapse Analytics-Arbeitsbereichen. Unter [Azure Synapse Analytics: IP-Firewallregeln](../../synapse-analytics/security/synapse-workspace-ip-firewall.md) finden Sie Anleitungen zum Konfigurieren von IP-Firewallregeln für Azure Synapse Analytics-Arbeitsbereiche.
+> Dieser Artikel gilt nicht für Azure SQL Managed Instance. Dieser Artikel gilt auch nicht für dedizierte SQL-Pools in Azure Synapse Analytics-Workspaces. Unter [Azure Synapse Analytics: IP-Firewallregeln](../../synapse-analytics/security/synapse-workspace-ip-firewall.md) finden Sie Anleitungen zum Konfigurieren von IP-Firewallregeln für Azure Synapse Analytics-Arbeitsbereiche.
 
 Die Konnektivitätseinstellungen können über den Bildschirm **Firewalls und virtuelle Netzwerke** aufgerufen werden, wie im folgenden Screenshot gezeigt:
 

@@ -3,7 +3,7 @@ title: Konfigurieren von Verfügbarkeitsgruppenlistenern und Lastenausgleich (Po
 description: Es wird beschrieben, wie Sie Verfügbarkeitsgruppenlistener unter dem Azure Resource Manager-Modell konfigurieren, indem Sie ein internes Lastenausgleichsmodul mit einer oder mehreren IP-Adressen verwenden.
 services: virtual-machines
 documentationcenter: na
-author: MashaMSFT
+author: rajeshsetlem
 editor: monicar
 ms.assetid: 14b39cde-311c-4ddf-98f3-8694e01a7d3b
 ms.service: virtual-machines-sql
@@ -12,14 +12,15 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/06/2019
-ms.author: mathoma
+ms.author: rsetlem
 ms.custom: seo-lt-2019, devx-track-azurepowershell
-ms.openlocfilehash: 3c58814943d844ec1e644412eef926745e2df620
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.reviewer: mathoma
+ms.openlocfilehash: c7b2bff6f4c927090dfdff92f324b4957b645644
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111572388"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130167727"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Konfigurieren von Always On-Verfügbarkeitsgruppenlistenern – Resource Manager
 
@@ -137,7 +138,7 @@ foreach($VMName in $VMNames)
 
 ## <a name="example-script-add-an-ip-address-to-an-existing-load-balancer-with-powershell"></a><a name="Add-IP"></a> Beispielskript: Hinzufügen einer IP-Adresse zu einem vorhandenen Lastenausgleich mit PowerShell
 
-Wenn Sie mehrere Verfügbarkeitsgruppen verwenden möchten, fügen Sie dem Load Balancer eine zusätzliche IP-Adresse hinzu. Für jede IP-Adresse sind eine eigene Lastenausgleichsregel, ein Testport und ein Front-End-Port erforderlich.
+Wenn Sie mehrere Verfügbarkeitsgruppen verwenden möchten, fügen Sie dem Load Balancer eine zusätzliche IP-Adresse hinzu. Für jede IP-Adresse sind eine eigene Lastenausgleichsregel, ein Testport und ein Front-End-Port erforderlich. Fügen Sie dem Back-End-Pool des Lastenausgleichs nur die primäre IP-Adresse des virtuellen Computers hinzu, da die [IP-Adresse des sekundären virtuellen Computers keine Floating-IP-Adresse unterstützt](/azure/load-balancer/load-balancer-floating-ip).
 
 Der Front-End-Port ist der Port, der von Anwendungen zum Herstellen einer Verbindung mit der SQL Server-Instanz genutzt wird. IP-Adressen für unterschiedliche Verfügbarkeitsgruppen können denselben Front-End-Port verwenden.
 
@@ -255,7 +256,7 @@ Verwenden Sie die folgenden PowerShell-Cmdlets, um ein internes Lastenausgleichs
 
 Weitere Informationen finden Sie unter:
 
-- [Windows Server-Failovercluster mit SQL Server auf Azure-VMs](hadr-windows-server-failover-cluster-overview.md)
+- [Windows Server-Failovercluster mit SQL Server auf Azure-VMs](hadr-windows-server-failover-cluster-overview.md)
 - [Always On-Verfügbarkeitsgruppen mit SQL Server auf Azure-VMs](availability-group-overview.md)
 - [Übersicht über Always On-Verfügbarkeitsgruppen](/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)
 - [HADR-Einstellungen für SQL Server auf Azure-VMs](hadr-cluster-best-practices.md)

@@ -8,12 +8,13 @@ ms.service: api-management
 ms.topic: tutorial
 ms.date: 04/26/2021
 ms.author: danlep
-ms.openlocfilehash: 2e88bef36179a0e923ad6dfa8c7744f20d0a4d33
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 07b200c67b831b7d7fb01ea8da657e9bcc9b3b18
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128623967"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129997003"
 ---
 # <a name="add-an-api-manually"></a>Manuelles Hinzufügen einer API
 
@@ -110,6 +111,9 @@ Testen Sie den Vorgang im Azure-Portal.  Alternativ können Sie ihn auch im **En
 1. Klicken Sie auf **Senden**.
 
     Die Antwort, die der Vorgang „http://httpbin.org/headers“ generiert, wird angezeigt. Wenn Sie Ihre Vorgänge transformieren möchten, lesen Sie unter [Transformieren und Schützten Ihrer API](transform-api.md) nach.
+  
+>[!NOTE] 
+> Möglicherweise ist es wichtig, zu verstehen, wie der Host für die Back-End-API, die Sie für die Integration nutzen, nachgestellte Schrägstriche für eine Vorgangs-URL verarbeitet. Weitere Informationen finden Sie im Artikel mit [häufig gestellten Fragen zu API Management](./api-management-faq.yml#how-does-api-management-handle-trailing-slashes-when-calling-backend-services-).
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-append-apis.md)]
 

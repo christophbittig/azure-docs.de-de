@@ -2,15 +2,13 @@
 title: 'Überwachen von Anwendungen, die in Azure Functions mit Application Insights ausgeführt werden: Azure Monitor | Microsoft-Dokumentation'
 description: Azure Monitor kann nahtlos in Ihre in Azure Functions ausgeführte Anwendung integriert werden und ermöglicht die Überwachung der Leistung sowie eine blitzschnelle Erkennung von Problemen mit Ihren Apps.
 ms.topic: conceptual
-author: MS-jgol
-ms.author: jgol
 ms.date: 08/27/2021
-ms.openlocfilehash: ac160463dbfa5fd66afb351c0c0edc5f59b61b30
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 5be1c91fae86c4c15f9a6d835c36e53aa0f29f14
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124751037"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130132016"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-application-insights"></a>Überwachen von Azure Functions mit Azure Monitor Application Insights
 
@@ -44,9 +42,14 @@ XDT_MicrosoftApplicationInsights_Java -> 1
 ApplicationInsightsAgent_EXTENSION_VERSION -> ~2
 ```
 
-#### <a name="linux"></a>Linux
+#### <a name="linux-dedicatedpremium"></a>Linux Dediziert/Prämium
 ```
 ApplicationInsightsAgent_EXTENSION_VERSION -> ~3
+```
+
+#### <a name="linux-consumption"></a>Linux: Verbrauch
+```
+APPLICATIONINSIGHTS_ENABLE_AGENT: true
 ```
 
 ## <a name="distributed-tracing-for-python-function-apps"></a>Verteilte Ablaufverfolgung für Python-Funktions-Apps

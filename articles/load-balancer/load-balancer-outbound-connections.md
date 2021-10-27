@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: contperf-fy21q1
 ms.date: 07/01/2021
 ms.author: allensu
-ms.openlocfilehash: e17bc129268f8bc93d107492912c868e8efebae1
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: adeca1558fd97c1f8534539b7a4ad134d364e4d8
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128671144"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129996131"
 ---
 # <a name="using-source-network-address-translation-snat-for-outbound-connections"></a>Verwendung von SNAT (Source Network Address Translation) für ausgehende Verbindungen
 
@@ -30,7 +30,7 @@ Ausgehende Verbindungen mit dem Internet können auf folgende Weise aktiviert we
 | 2 | Zuordnen eines NAT-Gateways zum Subnetz | Statisch, explizit | Yes | Sehr hoch | 
 | 3 | Zuweisen einer öffentlichen IP-Adresse zum virtuellen Computer | Statisch, explizit | Yes | OK | 
 | 4 | Verwenden der Front-End-IP-Adressen eines Load Balancers für ausgehende (und eingehende) Daten | Implizit | Nein | Zweitschlechtest |
-| 5 | Verwenden von ausgehendem Standardzugriff | Implizit | No | Minimum |
+| 5 | Verwenden des [ausgehendem Standardzugriffs](../virtual-network/default-outbound-access.md) | Implizit | No | Minimum |
 
 ## <a name="using-the-frontend-ip-address-of-a-load-balancer-for-outbound-via-outbound-rules"></a><a name="outboundrules"></a>Verwenden der Front-End-IP-Adresse eines Load Balancers für ausgehende Daten über Ausgangsregeln
 

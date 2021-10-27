@@ -6,13 +6,13 @@ ms.author: zeinam
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
-ms.date: 09/27/2021
-ms.openlocfilehash: 073b4bf8c1be14aa26141e20d5f6d6f4abdf9ff1
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.date: 10/15/2021
+ms.openlocfilehash: cb41c6bd06541f414b5cd8f353e59f6094182d13
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129208792"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130063354"
 ---
 # <a name="troubleshooting-private-endpoint-configuration-for-purview-accounts"></a>Problembehandlung bei der Konfiguration privater Endpunkte für Purview-Konten
 
@@ -164,7 +164,7 @@ Beim Durchführen einer neuen Überprüfung wird möglicherweise die folgende Fe
   `message: Unable to setup config overrides for this scan. Exception:'Type=Microsoft.WindowsAzure.Storage.StorageException,Message=The remote server returned an error: (404) Not Found.,Source=Microsoft.WindowsAzure.Storage,StackTrace= at Microsoft.WindowsAzure.Storage.Core.Executor.Executor.EndExecuteAsync[T](IAsyncResult result)`
 
 ### <a name="cause"></a>Ursache 
-Dies kann ein Hinweis auf die Ausführung einer älteren Version der selbstgehosteten Integration Runtime sein. Wenn Sie Ihr Azure Purview-Konto nach dem 18. August 2021 erstellt haben, müssen Sie die selbstgehostete Integration Runtime-Version 5.9.7885.3 verwenden.
+Dies kann ein Hinweis auf die Ausführung einer älteren Version der selbstgehosteten Integration Runtime sein. Wenn Sie Ihr Azure Purview-Konto nach dem 18. August 2021 erstellt haben, müssen Sie die Version 5.9.7885.3 der selbstgehosteten Integration Runtime verwenden.
 
 ### <a name="resolution"></a>Lösung 
 Führen Sie ein Upgrade der selbstgehosteten Integration Runtime auf Version 5.9.7885.3 durch.
@@ -196,6 +196,18 @@ Benutzer*innen versuchen über einen öffentlichen Endpunkt eine Verbindung mit 
 
 ### <a name="resolution"></a>Lösung
 Verwenden Sie in diesem Fall zum Öffnen von Azure Purview Studio entweder einen Computer, der im gleichen virtuellen Netzwerk wie der private Endpunkt des Azure Purview-Portals bereitgestellt wurde, oder eine VM, die mit einem Unternehmensnetzwerk verbunden ist, in dem die Hybridkonnektivität zulässig ist.
+
+### <a name="issue"></a>Problem
+Beim Scannen eines SQL-Servers mit einer selbst gehosteten Integrationslaufzeit wird möglicherweise die folgende Fehlermeldung angezeigt:
+
+  `Message=This implementation is not part of the Windows Platform FIPS validated cryptographic algorithms`
+
+### <a name="cause"></a>Ursache 
+Die selbst gehostete Integrations-Laufzeitmaschine hat den FIPS-Modus aktiviert.
+FIPS (Federal Information Processing Standards) definiert eine bestimmte Gruppe von Kryptografiealgorithmen, die verwendet werden können. Wenn der FIPS-Modus auf dem Computer aktiviert ist, werden einige kryptografische Klassen, von denen die aufgerufenen Prozesse abhängen, in einigen Szenarien blockiert.
+
+### <a name="resolution"></a>Lösung
+Deaktivieren Sie den FIPS-Modus auf dem selbst gehosteten Integrationsserver.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

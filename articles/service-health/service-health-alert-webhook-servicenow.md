@@ -4,12 +4,12 @@ description: Erhalten Sie personalisierte Benachrichtigungen zu Service Health-E
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.custom: devx-track-js
-ms.openlocfilehash: df6596dd9853a792b5bfdb333361a2b9cd02a347
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dd806768e0ce73de824ea398ef954121d5ae86bd
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100588187"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130040529"
 ---
 # <a name="send-azure-service-health-alerts-with-servicenow-using-webhooks"></a>Senden von Azure Service-Integritätswarnungen mit ServiceNow mit Webhooks
 
@@ -66,8 +66,8 @@ In diesem Artikel erfahren Sie, wie Sie Azure Service Health-Warnungen mit Webho
                 } else {
                     inc.initialize();
                 }
-                var short_description = "Azure Service Health&quot;;
-                if (event.data.context.activityLog.properties.incidentType == &quot;Incident") {
+                var short_description = "Azure Service Health";
+                if (event.data.context.activityLog.properties.incidentType == "Incident") {
                     short_description += " - Service Issue - ";
                 } else if (event.data.context.activityLog.properties.incidentType == "Maintenance") {
                     short_description += " - Planned Maintenance - ";

@@ -11,19 +11,16 @@ ms.custom:
 - mvc
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: b6e79ee61440ffeb9fdd5f05cdb840480112a14a
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 552475edc586c015d89fb12db91376852fa88460
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123304791"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130165459"
 ---
 # <a name="tutorial-using-openssl-to-create-self-signed-certificates"></a>Tutorial: Verwenden von OpenSSL zum Erstellen selbstsignierter Zertifikate
 
-Sie können ein Gerät mit zwei selbstsignierten Gerätezertifikaten bei Ihrer IoT Hub-Instanz authentifizieren. Dies wird manchmal auch als Fingerabdruckauthentifizierung bezeichnet, da die Zertifikate Fingerabdrücke (Hashwerte) enthalten, die Sie an den IoT-Hub übermitteln. In den folgenden Schritten erfahren Sie, wie Sie zwei selbstsignierte Zertifikate erstellen.
-
-> [!NOTE]
-> Dieses Beispiel wurde mithilfe von Cygwin64 für Windows erstellt. Cygwin ist eine Open Source-Toolsammlung, mit der Unix- oder Linux-Anwendungen unter Windows innerhalb einer Linux-ähnlichen Schnittstelle ausgeführt werden können. CygWin64 ist mit OpenSSL gebündelt. Wenn Sie Linux verwenden, ist OpenSSL wahrscheinlich bereits installiert. 
+Sie können ein Gerät mit zwei selbstsignierten Gerätezertifikaten bei Ihrer IoT Hub-Instanz authentifizieren. Dies wird manchmal auch als Fingerabdruckauthentifizierung bezeichnet, da die Zertifikate Fingerabdrücke (Hashwerte) enthalten, die Sie an den IoT-Hub übermitteln. In den folgenden Schritten erfahren Sie, wie Sie zwei selbstsignierte Zertifikate erstellen. Dieser Zertifikatstyp wird hauptsächlich für Tests verwendet.
 
 ## <a name="step-1---create-a-key-for-the-first-certificate"></a>Schritt 1: Erstellen eines Schlüssels für das erste Zertifikat
 
@@ -111,4 +108,8 @@ Navigieren Sie im Azure-Portal zu Ihrer IoT Hub-Instanz, und erstellen Sie eine
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wechseln Sie zum [Testen der Zertifikat Authentifizierung](tutorial-x509-test-certificate.md), um festzustellen, ob Ihr Gerät Ihr Gerät für Ihre IOT Hub authentifizieren kann.
+Wechseln Sie zum [Testen der Zertifikat Authentifizierung](tutorial-x509-test-certificate.md), um festzustellen, ob Ihr Gerät Ihr Gerät für Ihre IOT Hub authentifizieren kann. Für den Code auf dieser Seite müssen Sie ein PFX-Zertifikat verwenden. Verwenden Sie den folgenden OpenSSL-Befehl, um das CRT-Zertifikat Ihres Geräts in das PFX-Format zu konvertieren.
+
+```bash
+openssl pkcs12 -export -in device.crt -inkey device.key -out device.pfx
+```

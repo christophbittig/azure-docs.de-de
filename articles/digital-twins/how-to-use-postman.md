@@ -1,20 +1,20 @@
 ---
 title: Senden von API-Anforderungen mit Postman
 titleSuffix: Azure Digital Twins
-description: Hier erfahren Sie, wie Sie Postman konfigurieren und zum Aufrufen von Azure Digital Twins-APIs verwenden.
+description: Hier erfahren Sie, wie Sie Postman zum Aufrufen von Azure Digital Twins-APIs autorisieren, konfigurieren und verwenden.
 ms.author: baanders
 author: baanders
 ms.service: digital-twins
 services: digital-twins
 ms.topic: how-to
-ms.date: 6/16/2021
+ms.date: 10/8/2021
 ms.custom: contperf-fy21q4
-ms.openlocfilehash: 3974b080c2a763db4ffa0f344ef18ce129959a53
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 6aeb16ea38d18082b445f8f1e12301e1ae6144b7
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114459451"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130133004"
 ---
 # <a name="how-to-use-postman-to-send-requests-to-the-azure-digital-twins-apis"></a>Verwenden von Postman zum Senden von Anforderungen an die Azure Digital Twins-APIs
 

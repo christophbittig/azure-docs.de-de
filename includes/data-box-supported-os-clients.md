@@ -3,19 +3,19 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: include
-ms.date: 07/10/2019
+ms.date: 09/14/2021
 ms.author: alkohli
-ms.openlocfilehash: 2c95095147f6984fb67ba3faa476ec42c9e7ec4e
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: acbb239a6fb839f12b31f8521e4a07fc6083458e
+ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "67812551"
+ms.lasthandoff: 09/24/2021
+ms.locfileid: "130000068"
 ---
 Im Folgenden finden Sie eine Liste der unterstützten Betriebssysteme für Datenkopiervorgänge über die Clients, die mit Ihrem Gerät verbunden sind.
 
-| **Betriebssystem** | **Versionen** |
-| --- | --- |
-| Windows Server |2008 R2 SP1 <br> 2012 <br> 2012 R2 <br> 2016 <br> 2019 |
-| Windows |7, 8, 10 |
-| Linux    |         |
+| **Betriebssystem** | **Versionen** | **Hinweise** |
+| --- | --- | --- |
+| Windows Server |2016 RS1 und höher<br> 2019 RS5 und höher | Bei früheren Editionen dieser Betriebssysteme können Sie RoboCopy nicht im Sicherungsmodus (`robocopy /B`) verwenden, um Dateien zu kopieren, die alternative Datenströme (ADS) enthalten oder erweiterte Attribute (EAs) in ihren Zugriffssteuerungslisten (Access Control Lists, ACLs) verwenden. |
+| Windows |7, 8, 10 |   |
+| Linux    |         |   |

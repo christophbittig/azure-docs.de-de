@@ -1,21 +1,21 @@
 ---
-title: Angeben der Überprüfungsanforderung der Anforderungsdienst-REST-API
+title: Angeben der Überprüfungsanforderung der Anforderungsdienst-REST-API (Vorschau)
 titleSuffix: Azure Active Directory Verifiable Credentials
 description: Informationen zum Starten einer Präsentationsanforderung für Nachweise
 documentationCenter: ''
 author: barclayn
-manager: daveba
+manager: karenh444
 ms.service: active-directory
 ms.topic: reference
 ms.subservice: verifiable-credentials
 ms.date: 10/08/2021
 ms.author: barclayn
-ms.openlocfilehash: 264fbdf3f0e7640e1a247288cec56b38e57485fc
-ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
+ms.openlocfilehash: 30da74a6d94f2460a980737670d65442c0ddb3ac
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129730612"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129984400"
 ---
 # <a name="request-service-rest-api-presentation-specification-preview"></a>Spezifikation der Anforderungsdienst-REST-API-Präsentation (Vorschau)
 

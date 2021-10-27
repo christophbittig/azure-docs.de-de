@@ -136,7 +136,7 @@
           href: expressroute-howto-set-global-reach.md
         - name: Azure CLI
           href: expressroute-howto-set-global-reach-cli.md
-    - name: Hinzufügen von IPv6-Unterstützung für privates Peering (Vorschau)
+    - name: Hinzufügen von IPv6-Unterstützung für privates Peering
       items:
         - name: Azure-Portal
           href: expressroute-howto-add-ipv6-portal.md

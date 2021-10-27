@@ -1,6 +1,6 @@
 ---
-title: Konfigurieren der Eigenschaften eines Beratungsdienstangebots in Microsoft Partner Center
-description: Hier erfahren Sie, wie Sie mithilfe von Partner Center die Eigenschaften für ein Beratungsdienstangebot im kommerziellen Marketplace von Microsoft konfigurieren.
+title: Konfigurieren der Eigenschaften eines Angebots für einen Beratungsdienst für den kommerziellen Marketplace
+description: Hier erfahren Sie, wie Sie über Partner Center die Eigenschaften eines Angebots für einen Beratungsdienst im kommerziellen Marketplace konfigurieren.
 author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.reviewer: anbene
@@ -8,16 +8,16 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 10/27/2020
-ms.openlocfilehash: a77414e794073771f7bf5fe9346e4196b6b4b836
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 60f4d1d8e86eed6a3dab390ebf8e46296f4644d2
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129715778"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130040187"
 ---
-# <a name="how-to-configure-your-consulting-service-offer-properties"></a>Konfigurieren der Eigenschaften eines Beratungsdienstangebots
+# <a name="configure-consulting-service-offer-properties"></a>Konfigurieren der Eigenschaften eines Angebots für einen Beratungsdienst
 
-In diesem Artikel wird beschrieben, wie Sie die Eigenschaften eines Beratungsdienstangebots im kommerziellen Marketplace von Microsoft konfigurieren.
+In diesem Artikel wird beschrieben, wie Sie die Eigenschaften eines Angebots für einen Beratungsdienst im kommerziellen Marketplace von Microsoft konfigurieren.
 
 Auf der Registerkarte **Eigenschaften** Ihres Angebots in Partner Center definieren Sie das primäre Produkt Ihres Beratungsdiensts, den Diensttyp und die Branchen, für die er verwendet werden kann. Außerdem geben Sie auch die relevanten Kompetenzen im Zusammenhang mit Microsoft an, die Sie erworben haben. Mit den Informationen auf dieser Registerkarte wird sichergestellt, dass Ihr Beratungsdienst im kommerziellen Marketplace ordnungsgemäß angezeigt und für die richtige Kundengruppe angeboten wird.
 

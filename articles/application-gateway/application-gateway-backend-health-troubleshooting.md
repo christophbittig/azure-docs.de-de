@@ -2,18 +2,18 @@
 title: Behandeln von Problemen mit der Back-End-Integrität in Azure Application Gateway
 description: Beschreibt, wie Sie Probleme mit der Back-End-Integrität in Azure Application Gateway behandeln.
 services: application-gateway
-author: surajmb
+author: vhorne
 ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/09/2020
-ms.author: surmb
+ms.author: victorh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3bb3a89443cdefeedbe5df254d215dfcec770983
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 3cc75c637dd286cb87ca745d713a55a0a2cf8834
+ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109737845"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130137698"
 ---
 # <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Behandeln von Problemen mit der Back-End-Integrität in Application Gateway
 
@@ -121,6 +121,37 @@ Um den Wert des Timeouts zu erhöhen, führen Sie die folgenden Schritte aus:
 1.  Wenn Sie eine Azure-DNS-Standardadresse verwenden, überprüfen Sie bei Ihrer Domänennamen-Registrierungsstelle, ob eine ordnungsgemäße Zuordnung eines A-Eintrags oder CNAME-Eintrags vorgenommen wurde.
 
 1.  Wenn die Domäne privat oder intern ist, versuchen Sie, Sie von einem virtuellen Computer aus im selben virtuellen Netzwerk aufzulösen. Wenn Sie sie auflösen können, starten Sie Application Gateway neu, und überprüfen Sie es noch mal. Um Application Gateway neu zu starten, müssen Sie die in diesen verlinkten Ressourcen beschriebenen PowerShell-Befehle zum [Beenden (stop)](/powershell/module/azurerm.network/stop-azurermapplicationgateway) und [Starten (start)](/powershell/module/azurerm.network/start-azurermapplicationgateway) verwenden.
+
+### <a name="updates-to-the-dns-entries-of-the-backend-pool"></a>Aktualisierungen der DNS-Einträge des Back-End-Pools
+
+**Meldung**: Der Back-End-Integritätsstatus konnte nicht abgerufen werden. Dies geschieht, wenn eine NSG/UDR/Firewall im Application Gateway-Subnetz den Datenverkehr an den Ports 65503–65534 im Fall der v1-SKU und an den Ports 65200–65535 im Fall der v2-SKU blockiert oder der im Back-End-Pool konfigurierte FQDN nicht in eine IP-Adresse aufgelöst werden konnte. Weitere Informationen finden Sie hier: https://aka.ms/UnknownBackendHealth.
+
+**Ursache**: Die DNS-Einträge für den Back-End-Pool werden von Application Gateway zum Zeitpunkt des Starts aufgelöst und während der Ausführung nicht dynamisch aktualisiert.
+
+**Lösung:**
+
+Application Gateway muss nach jeder Änderung an den DNS-Einträgen des Back-End-Servers neu gestartet werden, damit die neuen IP-Adressen verwendet werden.  Dieser Vorgang kann über Azure PowerShell oder die Azure CLI durchgeführt werden.
+
+#### <a name="azure-powershell"></a>Azure PowerShell
+```
+# Get Azure Application Gateway
+$appgw=Get-AzApplicationGateway -Name <appgw_name> -ResourceGroupName <rg_name>
+ 
+# Stop the Azure Application Gateway
+Stop-AzApplicationGateway -ApplicationGateway $appgw
+ 
+# Start the Azure Application Gateway
+Start-AzApplicationGateway -ApplicationGateway $appgw
+```
+
+#### <a name="azure-cli"></a>Azure CLI
+```
+# Stop the Azure Application Gateway
+az network application-gateway stop -n <appgw_name> -g <rg_name>
+
+# Start the Azure Application Gateway
+az network application-gateway start -n <appgw_name> -g <rg_name>
+```
 
 ### <a name="tcp-connect-error"></a>TCP-Verbindungsfehler
 

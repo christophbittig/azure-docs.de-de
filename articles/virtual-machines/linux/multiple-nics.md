@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: cynthn
-ms.openlocfilehash: b6b8f300fe4e9f89e58afca14d39ac938b08b644
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: e2a76e251f1013c6f67c205d1e3f7f170d9b9b30
+ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128673177"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130138299"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Erstellen eines virtuellen Linux-Computers in Azure mit mehreren Netzwerkschnittstellenkarten
 
@@ -221,7 +221,7 @@ ssh azureuser@137.117.58.232
 
 Zum Senden an oder von einer sekundären Netzwerkschnittstelle müssen Sie manuell für jede sekundäre Netzwerkschnittstelle beständige Routen zum Betriebssystem hinzufügen. In diesem Artikel ist *eth1* die sekundäre Schnittstelle. Anweisungen zum Hinzufügen beständiger Routen zum Betriebssystem variieren je nach Distribution. Anweisungen finden Sie in der Dokumentation für Ihre Distribution.
 
-Wenn Sie die Route zum Betriebssystem hinzufügen, lautet die Gatewayadresse für jedes Subnetz, in dem sich die Netzwerkschnittstelle befindet, *.1*. Wenn die Netzwerkschnittstelle beispielsweise der Adresse *10.0.2.4* zugewiesen ist, legen Sie für die Route das Gateway *10.0.2.1* fest. Sie können ein bestimmtes Netzwerk für das Ziel der Route definieren oder das Ziel *0.0.0.0* angeben, wenn der gesamte Datenverkehr für die Schnittstelle das angegebene Gateway durchlaufen soll. Das Gateway für jedes Subnetz wird vom virtuellen Netzwerk verwaltet.
+Wenn Sie die Route zum Betriebssystem hinzufügen, ist die Gatewayadresse die erste Adresse des Subnetzes, in dem sich die Netzwerkschnittstelle befindet. Wenn dem Subnetz beispielsweise der Bereich *10.0.2.0/24* zugewiesen wurde, ist das Gateway, das Sie für die Route angeben, *10.0.2.1*. Wenn dem Subnetz der Bereich *10.0.2.128/25* zugewiesen wurde, lautete das Gateway, das Sie für die Route angeben, *10.0.2.129*. Sie können ein bestimmtes Netzwerk für das Ziel der Route definieren oder das Ziel *0.0.0.0* angeben, wenn der gesamte Datenverkehr für die Schnittstelle das angegebene Gateway durchlaufen soll. Das Gateway für jedes Subnetz wird vom virtuellen Netzwerk verwaltet.
 
 Nachdem Sie die Route für eine sekundäre Schnittstelle hinzugefügt haben, prüfen Sie, ob die Route in der Routingtabelle mit `route -n` enthalten ist. Die folgende Beispielausgabe gilt für die Routingtabelle, die die beiden Netzwerkschnittstellen enthält, die in diesem Artikel dem virtuellen Computer hinzugefügt wurden:
 

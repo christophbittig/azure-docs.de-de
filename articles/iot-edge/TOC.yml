@@ -117,14 +117,24 @@
   items:
     - name: Erstellen eines IoT Edge-Geräts
       items:
-        - name: Registrieren eines Geräts in IoT Hub
-          href: how-to-register-device.md
-        - name: Installieren und Bereitstellen von IoT Edge
+        - name: Manuelles Bereitstellen eines einzelnen Geräts
           items:
-            - name: Installieren von IoT Edge für Linux
-              href: how-to-install-iot-edge.md
-            - name: "Installieren von IoT\_Edge für Linux unter Windows"
-              href: how-to-install-iot-edge-on-windows.md
+            - name: X.509-Zertifikatnachweis
+              items:
+                - name: Linux
+                  href: how-to-provision-single-device-linux-x509.md
+                - name: Linux-Container unter Windows
+                  href: how-to-provision-single-device-linux-on-windows-x509.md
+                - name: Windows
+                  href: how-to-provision-single-device-windows-x509.md
+            - name: Nachweis des symmetrischen Schlüssels
+              items:
+                - name: Linux
+                  href: how-to-provision-single-device-linux-symmetric.md
+                - name: Linux-Container unter Windows
+                  href: how-to-provision-single-device-linux-on-windows-symmetric.md
+                - name: Windows
+                  href: how-to-provision-single-device-windows-symmetric.md
         - name: Aktualisieren von IoT Edge
           href: how-to-update-iot-edge.md
         - name: Verwalten von Gerätezertifikaten
@@ -137,8 +147,6 @@
           href: gpu-acceleration.md
     - name: Alternative Geräteszenarien
       items:
-        - name: Ausführen von IoT Edge mit Windows-Containern
-          href: how-to-install-iot-edge-windows-on-windows.md
         - name: Ausführen von IoT Edge in Kubernetes
           href: how-to-install-iot-edge-kubernetes.md
         - name: Bereitstellen eines virtuellen IoT Edge-Computers mithilfe einer ARM-Vorlage

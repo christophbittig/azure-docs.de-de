@@ -3,7 +3,7 @@ title: Ausführen einer SQL Server-VM auf einem Azure Dedicated Host
 description: Erfahren Sie, wie Sie eine SQL Server-VM auf einem Azure Dedicated Host ausführen.
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: bluefooted
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.subservice: management
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/12/2019
-ms.author: mathoma
-ms.reviewer: jroth
-ms.openlocfilehash: 7b1259843a1195301ff66e7c8d1ad7650f9ca686
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.author: pamela
+ms.reviewer: mathoma
+ms.openlocfilehash: a53b35ef7371d6608283374cfef1086cf9f0bbfd
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112078742"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130162217"
 ---
 # <a name="run-sql-server-vm-on-an-azure-dedicated-host"></a>Ausführen einer SQL Server-VM auf einem Azure Dedicated Host 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -78,4 +78,4 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 * [Übersicht über SQL Server auf einem virtuellen Windows-Computer](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [Häufig gestellte Fragen zu SQL Server auf virtuellen Windows-Computern](frequently-asked-questions-faq.yml)
 * [Preisinformationen für SQL Server auf virtuellen Windows-Computern](pricing-guidance.md)
-* [SQL Server auf Windows-VMs – Versionshinweise](doc-changes-updates-release-notes.md)
+* [Neuerungen für SQL Server auf virtuellen Azure-Computern](doc-changes-updates-release-notes-whats-new.md)

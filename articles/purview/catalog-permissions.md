@@ -6,12 +6,12 @@ ms.author: viseshag
 ms.service: purview
 ms.topic: conceptual
 ms.date: 09/27/2021
-ms.openlocfilehash: fc2ea92f8e5a3d727db130cc4dce7c13c449a9fa
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 8e6f9840f89d3e4c180da366f45548ef54a678dc
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129209051"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130042653"
 ---
 # <a name="access-control-in-azure-purview"></a>Zugriffssteuerung in Azure Purview
 
@@ -31,9 +31,9 @@ Eine Sammlung ist ein Tool, das in Azure Purview zum Gruppieren von Ressourcen, 
 Azure Purview verwendet eine Reihe vordefinierter Rollen, um zu steuern, wer innerhalb des Kontos worauf zugreifen kann. Diese Rollen sind derzeit:
 
 - **Collection admin** (Sammlungsadministrator): Dies ist eine Rolle für Benutzer*innen, die anderen Benutzer*innen in Azure Purview Rollen zuweisen oder Sammlungen verwalten müssen. Sammlungsadministrator*innen können Benutzer*innen zu Rollen für Sammlungen hinzufügen, deren Administrator*innen sie sind. Darüber hinaus können sie Sammlungen und deren Details bearbeiten und untergeordnete Sammlungen hinzufügen.
-- **Data curator** (Datenkurator): Diese Rolle bietet Zugriff auf den Datenkatalog, um Ressourcen zu verwalten, benutzerdefinierte Klassifizierungen zu konfigurieren, Glossarbegriffe einzurichten und Erkenntnisse zu überprüfen. Datenkurator*innen können Ressourcen erstellen, lesen, bearbeiten, verschieben, Anmerkungen auf Ressourcen anwenden und Ressourcen löschen.
-- **Data source admin** (Datenquellenadministrator): Mit dieser Rolle können Datenquellen und Überprüfungen verwaltet werden. Benutzer*innen, die nur über die Rolle „Data source admin“ (Datenquellenadministrator) verfügen, können nicht auf Azure Purview Studio zugreifen. Das Kombinieren dieser Rolle mit der Rolle „Data reader“ (Datenleser) oder „Data curator“(Datenkurator) bietet einen umfassenderen Zugriff.
-- **Data reader** (Datenleser): Diese Rolle bietet schreibgeschützten Zugriff auf Datenressourcen, Klassifizierungen, Klassifizierungsregeln, Sammlungen, das Glossar und Erkenntnisse.
+- **Datenkuratoren** - eine Rolle, die Zugriff auf den Datenkatalog bietet, um Assets zu verwalten, benutzerdefinierte Klassifizierungen zu konfigurieren, Glossarbegriffe einzurichten und Einblicke zu erhalten. Datenkuratoren können Assets erstellen, lesen, ändern, verschieben und löschen. Sie können auch Anmerkungen auf Assets anwenden.
+- **Datenleser** - eine Rolle, die nur Lesezugriff auf Datenbestände, Klassifizierungen, Klassifizierungsregeln, Sammlungen, Glossarbegriffe und Einblicke bietet.
+- **Datenquellen-Administratoren** - eine Rolle, die es einem Benutzer ermöglicht, Datenquellen und Scans zu verwalten. Ein Benutzer in der Rolle Datenquellen-Admin hat keinen Zugriff auf Azure Purview Studio. Die Kombination dieser Rolle mit den Rollen Datenleser oder Datenkurator in einem beliebigen Sammlungsbereich bietet Zugriff auf Azure Purview Studio.
 
 ## <a name="who-should-be-assigned-to-what-role"></a>Wem sollte welche Rolle zugewiesen werden?
 

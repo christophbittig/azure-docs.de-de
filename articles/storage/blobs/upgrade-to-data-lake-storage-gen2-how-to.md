@@ -4,14 +4,14 @@ description: In diesem Artikel erfahren Sie, wie Sie Resource Manager Vorlagen v
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/04/2021
+ms.date: 10/12/2021
 ms.author: normesta
-ms.openlocfilehash: 025aa395fa6d2fd3a8fe98f4781a6b554e2b506d
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 3f6b82e447fec4ce4e1c2e9b1f700f9b976d6a3d
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129710526"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129994385"
 ---
 #  <a name="upgrade-azure-blob-storage-with-azure-data-lake-storage-gen2-capabilities"></a>Ein Upgrade von Azure Blob Storage mit Azure Data Lake Storage Gen2-Funktionen
 
@@ -22,7 +22,15 @@ Weitere Informationen zu diesen Funktionen und zur Bewertung der Auswirkungen di
 > [!IMPORTANT]
 > Ein Upgrade ist eine unidirektionale Aktion. Nachdem Sie das Upgrade durchgeführt haben, gibt es keine Möglichkeit, Ihr Konto wiederherzustellen. Wir empfehlen Ihnen, das Upgrade in einer Nichtproduktionsumgebung zu testen.
 
+## <a name="review-feature-support"></a>Überprüfen der Featureunterstützung
+
+Ihr Konto ist möglicherweise für die Verwendung von Features konfiguriert, die in Data Lake Storage Gen2-fähigen Konten noch nicht unterstützt werden. Wenn Ihr Konto ein Feature verwendet, das noch nicht unterstützt wird, besteht das Upgrade den Validierungsschritt nicht. 
+
+Informationen zum Identifizieren nicht unterstützter Features finden Sie im Artikel [Unterstützung von Blob-Storage-Funktionen in Azure Storage-Konten](storage-feature-support-in-storage-accounts.md). Wenn Sie eines dieser nicht unterstützten Features in Ihrem Konto verwenden, stellen Sie sicher, dass Sie es deaktivieren, bevor Sie mit dem Upgrade beginnen.
+
 ## <a name="perform-the-upgrade"></a>Durchführen des Upgrades
+
+### <a name="portal"></a>[Portal](#tab/azure-portal)
 
 1. Melden Sie sich zunächst beim [Azure-Portal](https://portal.azure.com/) an.
 
@@ -78,6 +86,186 @@ Weitere Informationen zu diesen Funktionen und zur Bewertung der Auswirkungen di
 
    > [!div class="mx-imgBorder"]
    > ![Seite: Migration abgeschlossen](./media/upgrade-to-data-lake-storage-gen2-how-to/upgrade-to-an-azure-data-lake-gen2-account-completed.png)
+
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+1. Öffnen Sie ein Windows PowerShell-Befehlsfenster.
+
+2. Stellen Sie sicher, dass das neueste Azure PowerShell-Modul installiert ist. Weitere Informationen finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-Az-ps).
+
+3. Melden Sie sich mit dem Befehl `Connect-AzAccount` bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm.
+
+   ```powershell
+   Connect-AzAccount
+   ```
+
+4. Wenn Ihre Identität mehreren Abonnements zugeordnet ist, legen Sie das aktive Abonnement fest.
+
+   ```powershell
+   $context = Get-AzSubscription -SubscriptionId <subscription-id>
+   Set-AzContext $context
+   ```
+
+   Ersetzen Sie den Platzhalterwert `<subscription-id>` durch die ID Ihres Abonnements.
+
+6. Überprüfen Sie Ihr Speicherkonto mit dem folgenden Befehl.
+
+   ```powershell
+   $result = Invoke-AzStorageAccountHierarchicalNamespaceUpgrade -ResourceGroupName "<resource-group-name>" -Name "<storage-account-name>" -RequestType Validation -AsJob
+   ```
+
+   - Ersetzen Sie den Platzhalterwert `<resource-group-name>` durch den Namen Ihrer Ressourcengruppe.
+
+   - Ersetzen Sie den Platzhalterwert `<storage-account-name>` durch den Namen Ihres Speicherkontos.
+
+   Je nach Größe Ihres Kontos kann dieser Vorgang einige Zeit in Anspruch nehmen. Sie können die Option `asJob` verwenden, um den Befehl in einem Hintergrundauftrag auszuführen, damit Ihr Client nicht blockiert wird. Der Befehl wird remote ausgeführt, aber der Auftrag befindet sich auf Ihrem lokalen Computer oder auf der VM, von der aus Sie den Befehl ausführen. Die Ergebnisse werden an Ihren lokalen Computer oder die VM übertragen.
+
+7. Um den Status des Auftrags zu überprüfen und alle Eigenschaften des Auftrags in einer Liste anzuzeigen, geben Sie die Rückgabevariable an das Cmdlet `Format-List` weiter. 
+
+   ```powershell
+   $result | Format-List -Property *
+   ```
+
+   Wenn die Validierung erfolgreich ist, wird die Eigenschaft **State** auf **Completed** festgelegt.
+
+   Wenn bei der Validierung ein Fehler auftritt, wird die Eigenschaft **State** auf **Failed** festgelegt, und die Eigenschaft **Error** zeigt Validierungsfehler an. 
+
+   Die folgende Ausgabe zeigt, dass im Konto eine inkompatibles Funktion aktiviert ist. In diesem Fall würden Sie die Funktion deaktivieren und dann den Überprüfungsprozess erneut starten.
+
+   > [!div class="mx-imgBorder"]
+   > ![Validierungsfehler](./media/upgrade-to-data-lake-storage-gen2-how-to/validation-error-powershell.png)
+
+   In einigen Fällen gibt die Eigenschaft **Error** einen Pfad zu einer Datei mit dem Namen **error.json** an. Sie können diese Datei öffnen, um zu ermitteln, warum der Validierungsschritt für das Konto nicht erfolgreich war. 
+
+   Der folgende JSON-Code gibt an, dass eine inkompatibles Funktion für das Konto aktiviert ist. In diesem Fall würden Sie die Funktion deaktivieren und dann den Überprüfungsprozess erneut starten.
+
+   ```json
+   {
+    "startTime": "2021-08-04T18:40:31.8465320Z",
+    "id": "45c84a6d-6746-4142-8130-5ae9cfe013a0",
+    "incompatibleFeatures": [
+        "Blob Delete Retention Enabled"
+    ],
+    "blobValidationErrors": [],
+    "scannedBlobCount": 0,
+    "invalidBlobCount": 0,
+    "endTime": "2021-08-04T18:40:34.9371480Z"
+   }
+   ```
+
+8. Nachdem Ihr Konto erfolgreich validiert wurde, starten Sie das Upgrade, indem Sie den folgenden Befehl ausführen.
+   
+   ```powershell
+   $result = Invoke-AzStorageAccountHierarchicalNamespaceUpgrade -ResourceGroupName "<resource-group-name>" -Name "<storage-account-name>" -RequestType Upgrade -AsJob -Force
+   ```
+
+   Wie im obigen Validierungsbeispiel wird in diesem Beispiel die Option `asJob` verwendet, um den Befehl in einem Hintergrundauftrag auszuführen. Die Option `Force` überschreibt Eingabeaufforderungen zur Bestätigung des Upgrades.  Wenn Sie die Option `AsJob` nicht verwenden, müssen Sie auch die Option `Force` nicht verwenden, da Sie einfach auf die Eingabeaufforderungen reagieren können.
+
+   > [!IMPORTANT]
+   > Schreibvorgänge sind während des Upgrades Ihres Kontos deaktiviert. Lesevorgänge sind nicht deaktiviert, aber wir empfehlen dringend, dass Sie Lesevorgänge anhalten, da diese den Upgrade-Prozess destabilisieren könnten.
+
+   Zum Überprüfen des Auftragsstatus verwenden Sie dieselben Techniken, die in den vorherigen Schritten beschrieben wurden. Während der Prozess ausgeführt wird, wird die Eigenschaft **State** auf **Running** festgelegt.
+
+   Wenn die Migration erfolgreich abgeschlossen wurde, wird die Eigenschaft **State** auf **Completed** festgelegt, und die Eigenschaft **Error** zeigt keine Fehler an.
+   
+   > [!div class="mx-imgBorder"]
+   > ![Ausgabe nach erfolgreichem Abschluss](./media/upgrade-to-data-lake-storage-gen2-how-to/success-message-powershell.png)
+
+
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+1. Öffnen Sie zunächst [Azure Cloud Shell](../../cloud-shell/overview.md), oder falls Sie die Azure-CLI lokal [installiert](/cli/azure/install-azure-cli) haben, öffnen Sie eine Befehlskonsolenanwendung wie Windows PowerShell.
+
+2. Überprüfen Sie mit dem folgenden Befehl, ob die installierte Version der Azure-Befehlszeilenschnittstelle `2.29.0` oder höher ist.
+
+   ```azurecli
+    az --version
+   ```
+
+   Wenn Ihre Version der Azure-Befehlszeilenschnittstelle niedriger ist als `2.29.0`, installieren Sie die neueste Version. Weitere Informationen finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli).
+
+2. Wenn Ihre Identität mehreren Abonnements zugeordnet ist, legen Sie das aktive Abonnement fest.
+
+   ```azurecli
+      az account set --subscription <subscription-id>
+   ```
+
+   Ersetzen Sie den Platzhalterwert `<subscription-id>` durch die ID Ihres Abonnements.
+
+3. Überprüfen Sie Ihr Speicherkonto mit dem folgenden Befehl.
+
+   ```azurecli
+   az storage account hns-migration start --type validation -n <storage-account-name> -g <resource-group-name>
+   ```
+
+   - Ersetzen Sie den Platzhalterwert `<resource-group-name>` durch den Namen Ihrer Ressourcengruppe.
+
+   - Ersetzen Sie den Platzhalterwert `<storage-account-name>` durch den Namen Ihres Speicherkontos.
+
+   Wenn die Validierung erfolgreich ist, wird der Prozess abgeschlossen, und es werden keine Fehler angezeigt.
+   
+   Wenn die Validierung nicht erfolgreich ist, wird in der Konsole ein Validierungsfehler angezeigt. Der Fehler `(IncompatibleValuesForAccountProperties) Values for account properties are incompatible: Versioning Enabled` beispielsweise gibt an, dass ein inkompatibles Feature (Versionsverwaltung) im Konto aktiviert ist. In diesem Fall würden Sie die Funktion deaktivieren und dann den Überprüfungsprozess erneut starten.
+
+   In einigen Fällen wird der Pfad zu einer Datei mit dem Namen **error.json** in der Konsole angezeigt. Sie können diese Datei öffnen, um zu ermitteln, warum der Validierungsschritt für das Konto nicht erfolgreich war. 
+
+   Der folgende JSON-Code gibt an, dass eine inkompatibles Funktion für das Konto aktiviert ist. In diesem Fall würden Sie die Funktion deaktivieren und dann den Überprüfungsprozess erneut starten.
+
+   ```json
+   {
+    "startTime": "2021-08-04T18:40:31.8465320Z",
+    "id": "45c84a6d-6746-4142-8130-5ae9cfe013a0",
+    "incompatibleFeatures": [
+        "Blob Delete Retention Enabled"
+    ],
+    "blobValidationErrors": [],
+    "scannedBlobCount": 0,
+    "invalidBlobCount": 0,
+    "endTime": "2021-08-04T18:40:34.9371480Z"
+   }
+   ```
+
+5. Nachdem Ihr Konto erfolgreich validiert wurde, starten Sie das Upgrade, indem Sie den folgenden Befehl ausführen.
+   
+   ```azurecli
+   az storage account hns-migration start --type upgrade -n storage-account-name -g <resource-group-name>
+   ```
+
+   > [!IMPORTANT]
+   > Schreibvorgänge sind während des Upgrades Ihres Kontos deaktiviert. Lesevorgänge sind nicht deaktiviert, aber wir empfehlen dringend, dass Sie Lesevorgänge anhalten, da diese den Upgrade-Prozess destabilisieren könnten.
+
+   Wenn die Migration erfolgreich ist, wird der Prozess abgeschlossen, und es werden keine Fehler angezeigt.
+
+---
+
+## <a name="stop-the-upgrade"></a>Abbrechen des Upgrades
+
+Sie können die Migration beenden, bevor sie abgeschlossen ist. Hier finden Sie Informationen dazu, was in diesem Fall geschieht.
+
+### <a name="portal"></a>[Portal](#tab/azure-portal)
+
+Um das Upgrade zu beenden, bevor es abgeschlossen ist, wählen Sie **Upgrade abbrechen** aus, während das Upgrade ausgeführt wird.
+
+> [!div class="mx-imgBorder"]
+> ![Upgrade abbrechen](./media/upgrade-to-data-lake-storage-gen2-how-to/cancel-the-upgrade.png)
+
+### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+Um das Upgrade zu beenden, bevor es abgeschlossen ist, verwenden Sie den Befehl `Stop-AzStorageAccountHierarchicalNamespaceUpgrade`.
+
+```powershell
+Stop-AzStorageAccountHierarchicalNamespaceUpgrade -ResourceGroupName <resource-group-name> -Name <storage-account-name>
+```
+
+### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+Um das Upgrade zu beenden, bevor es abgeschlossen ist, verwenden Sie den Befehl `az storage account hns-migration stop`.
+
+```azurecli
+az storage account hns-migration stop -n <storage-account-name> -g <resource-group-name>
+```
+
+---
+
 
 ## <a name="migrate-data-workloads-and-applications"></a>Migrieren von Daten, Workloads und Anwendungen 
 

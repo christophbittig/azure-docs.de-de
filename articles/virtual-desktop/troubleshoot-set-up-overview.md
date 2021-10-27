@@ -3,15 +3,15 @@ title: 'Problembehandlung von Azure Virtual Desktop: Übersicht – Azure'
 description: Eine Übersicht zur Problembehandlung bei der Einrichtung einer Azure Virtual Desktop-Umgebung.
 author: Heidilohr
 ms.topic: troubleshooting
-ms.date: 12/04/2020
+ms.date: 10/14/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: c847c87a24dedc994da39a37f37def3caeef4db1
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: f8abe1cc793b5e7e5528d377ee0a7226d5415909
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124818625"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130045292"
 ---
 # <a name="troubleshooting-overview-feedback-and-support-for-azure-virtual-desktop"></a>Problembehandlung von Übersicht, Feedback und Support für Azure Virtual Desktop
 
@@ -19,6 +19,10 @@ ms.locfileid: "124818625"
 >Dieser Inhalt gilt für Azure Virtual Desktop mit Azure Virtual Desktop-Objekten für Azure Resource Manager. Wenn Sie Azure Virtual Desktop (klassisch) ohne Azure Resource Manager-Objekte verwenden, finden Sie weitere Informationen in [diesem Artikel](./virtual-desktop-fall-2019/troubleshoot-set-up-overview-2019.md).
 
 Dieser Artikel gibt einen Überblick über die Probleme, die bei der Einrichtung einer Azure Virtual Desktop-Umgebung auftreten können, und beschreibt Möglichkeiten, diese Probleme zu lösen.
+
+## <a name="troubleshoot-deployment-and-connection-issues"></a>Behandeln von Bereitstellungs- und Verbindungsproblemen
+
+[Azure Monitor für Windows Virtual Desktop](azure-monitor.md) ist ein Dashboard, das auf Azure Monitor-Arbeitsmappen basiert und Probleme in Ihrer Windows Virtual Desktop-Umgebung für Sie schnell beheben und identifizieren kann. Wenn Sie lieber mit Kusto-Abfragen arbeiten, empfiehlt es sich, stattdessen das integrierte Diagnosefeature [Log Analytics](diagnostics-log-analytics.md) zu verwenden.
 
 ## <a name="report-issues"></a>Melden von Problemen
 

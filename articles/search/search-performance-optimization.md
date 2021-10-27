@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/04/2021
 ms.custom: references_regions
-ms.openlocfilehash: c3cb2a64cd2981c73a673776c01ec98bf44c8041
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: 60dd14be7d420d5aac5da5ba85d3e78e72a5ba42
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129458186"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130002527"
 ---
 # <a name="availability-and-business-continuity-in-azure-cognitive-search"></a>Verfügbarkeit und Geschäftskontinuität in Azure Cognitive Search
 
@@ -32,6 +32,10 @@ Für jeden einzelnen Suchdienst garantiert Microsoft eine Verfügbarkeit von min
 + Drei oder mehr Replikate für Hochverfügbarkeit von Lese-/Schreibworkloads (Abfragen und Indizierung) 
 
 Für den Free-Tarif wird keine SLA bereitgestellt. Weitere Informationen finden Sie unter [SLA für Azure Cognitive Search](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
+
+## <a name="data-residency"></a>Datenresidenz
+
+Azure Cognitive Search speichert Kundendaten ohne Ihre Autorisierung nicht außerhalb der vom Kunden angegebenen Region.
 
 <a name="availability-zones"></a>
 

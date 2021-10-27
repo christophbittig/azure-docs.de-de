@@ -12,12 +12,12 @@ ms.date: 6/4/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, has-adal-ref
-ms.openlocfilehash: cf7821b8227b21efb063850b02222f2675a245b7
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.openlocfilehash: 606d1d06a76a1783b38841f2344f2e5273add915
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122429024"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130069563"
 ---
 # <a name="whats-new-for-authentication"></a>Neuerungen bei der Authentifizierung
 
@@ -34,6 +34,30 @@ Für das Authentifizierungssystem werden fortlaufend Änderungen vorgenommen und
 > Diese Seite wird regelmäßig aktualisiert. Daher sollten Sie die Seite oft besuchen. Sofern nicht anders angegeben, werden diese Änderungen nur für neu registrierte Anwendungen umgesetzt.
 
 ## <a name="upcoming-changes"></a>Bevorstehende Änderungen
+
+## <a name="october-2021"></a>Oktober 2021
+
+### <a name="appid-uri-in-single-tenant-applications-will-require-use-of-default-scheme-or-verified-domains"></a>Der AppId-URI in Anwendungen mit einem Mandanten erfordert die Verwendung des Standardschemas oder überprüfter Domänen.
+
+**Gültig ab**: Oktober 2021
+
+**Betroffene Endpunkte:** v2.0 und v1.0
+
+**Betroffenes Protokoll:** Alle Flows
+
+**Änderung**
+
+Bei Anwendungen mit einem Mandanten wird durch eine Anforderung zum Hinzufügen/Aktualisieren des AppId-URI (identifierUris) überprüft, ob die Domäne im Wert des URI Teil der Liste der überprüften Domänen im Kundenmandanten ist oder der Wert das von AAD bereitgestellte Standardschema (`api://{appId}`) verwendet.
+Dies könnte verhindern, dass Anwendungen einen AppId-URI hinzufügen, wenn sich die Domäne nicht in der Liste der überprüften Domänen befindet oder der Wert nicht das Standardschema verwendet.
+Weitere Informationen zu überprüften Domänen finden Sie in der [Dokumentation Benutzerdefinierte Domänen](../../active-directory/fundamentals/add-custom-domain.md).
+
+Die Änderung wirkt sich nicht auf vorhandene Anwendungen aus, die nicht überprüfte Domänen in ihrem AppID-URI verwenden. Die Überprüfung erfolgt nur für neue Anwendungen oder wenn eine vorhandene Anwendung einen Bezeichner-URI aktualisiert oder der identifierUri-Sammlung einen neuen hinzufügt. Die neuen Einschränkungen gelten nur für URIs, die der identifierUris-Sammlung einer App nach dem 15.10.2021 hinzugefügt wurden. AppId-URIs, die sich bereits in der identifierUris-Sammlung einer Anwendung befinden, wenn die Einschränkung am 15.10.2021 gültig wird, funktionieren auch dann weiterhin, wenn Sie dieser Sammlung neue URIs hinzufügen.
+
+Wenn eine Anforderung bei der Überprüfung fehlschlägt, gibt die Anwendungs-API für die Erstellung/Aktualisierung `400 badrequest` an den Client zurück, womit HostNameNotOnVerifiedDomain angegeben wird.
+
+[!INCLUDE [active-directory-identifierUri](../../../includes/active-directory-identifier-uri-patterns.md)]
+
+## <a name="june-2021"></a>Juni 2021
 
 ### <a name="the-device-code-flow-ux-will-now-include-an-app-confirmation-prompt"></a>Der UX-Gerätecodeflow enthält jetzt eine Eingabeaufforderung zur App-Bestätigung
 

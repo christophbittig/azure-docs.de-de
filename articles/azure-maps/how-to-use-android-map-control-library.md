@@ -1,20 +1,20 @@
 ---
 title: Erste Schritte mit dem Android-Kartensteuerelement | Microsoft Azure Maps
 description: Machen Sie sich mit dem Azure Maps Android SDK vertraut. Erfahren Sie, wie Sie ein Projekt in Android Studio erstellen, das SDK installieren und eine interaktive Karte erstellen.
-author: anastasia-ms
-ms.author: v-stharr
+author: stevemunk
+ms.author: v-munksteve
 ms.date: 2/26/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
-manager: cpendle
+manager: eriklind
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 21442101f1cde2717f079aac550a5e8c587451f2
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 137b0d56a566d2e62f5559a30b391e6418139e59
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123430646"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130005070"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Erste Schritte mit dem Android SDK für Azure Maps
 
@@ -22,44 +22,23 @@ Das Android SDK in Azure Maps ist eine Vektorenzuordnungsbibliothek für Android
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Stellen Sie sicher, dass Sie die Schritte im Dokument [Schnellstart: Erstellen einer Android-App](quick-android-map.md) ausführen.
+Führen Sie die Schritte im Artikel [Schnellstart: Erstellen einer Android-App](quick-android-map.md) aus.
 
 ## <a name="localizing-the-map"></a>Lokalisieren der Karte
 
-Das Android SDK für Azure Maps bietet drei verschiedene Möglichkeiten zum Festlegen der Sprache und der regionalen Ansicht für die Karte. Der folgende Code zeigt, wie die Sprache auf Französisch („fr-FR“) und die regionale Ansicht auf „Auto“ festgelegt werden.
+Das Azure Maps Android SDK bietet drei verschiedene Möglichkeiten, die Sprache und die regionale Ansicht der Karte festzulegen. Der folgende Code zeigt, wie die Sprache auf Französisch („fr-FR“) und die regionale Ansicht auf „Auto“ festgelegt werden.
 
-Die erste Option besteht darin, die Informationen zur Sprache und regionalen Ansicht mithilfe der statischen Methoden `setLanguage` und `setView` global an die Klasse `AzureMaps` zu übergeben. Durch diesen Code werden die Standardsprache und die regionale Ansicht für alle Azure Maps-Steuerelemente in Ihrer App geladen.
-
-::: zone pivot="programming-language-java-android"
-
-```java
-static {
-    //Alternatively use Azure Active Directory authenticate.
-    AzureMaps.setAadProperties("<Your aad clientId>", "<Your aad AppId>", "<Your aad Tenant>");
-
-    //Set your Azure Maps Key.
-    //AzureMaps.setSubscriptionKey("<Your Azure Maps Key>");   
-
-    //Set the language to be used by Azure Maps.
-    AzureMaps.setLanguage("fr-FR");
-
-    //Set the regional view to be used by Azure Maps.
-    AzureMaps.setView("Auto");
-}
-```
-
-::: zone-end
-
-::: zone pivot="programming-language-kotlin"
-
-```kotlin
-companion object {
-    init {
+1. Übergeben Sie die Informationen zu Sprache und regionaler Ansicht mithilfe der statischen Eigenschaften `setLanguage` und `setView` an die Klasse `AzureMaps`. Damit werden die Standardsprache und die Eigenschaften der regionalen Ansicht in Ihrer App festgelegt.
+    
+    ::: zone pivot="programming-language-java-android"
+    
+    ```java
+    static {
         //Alternatively use Azure Active Directory authenticate.
         AzureMaps.setAadProperties("<Your aad clientId>", "<Your aad AppId>", "<Your aad Tenant>");
-
+    
         //Set your Azure Maps Key.
-        //AzureMaps.setSubscriptionKey("<Your Azure Maps Key>");
+        //AzureMaps.setSubscriptionKey("<Your Azure Maps Key>");   
     
         //Set the language to be used by Azure Maps.
         AzureMaps.setLanguage("fr-FR");
@@ -67,77 +46,97 @@ companion object {
         //Set the regional view to be used by Azure Maps.
         AzureMaps.setView("Auto");
     }
-}
-```
+    ```
+    
+    ::: zone-end
+    
+    ::: zone pivot="programming-language-kotlin"
+    
+    ```kotlin
+    companion object {
+        init {
+            //Alternatively use Azure Active Directory authenticate.
+            AzureMaps.setAadProperties("<Your aad clientId>", "<Your aad AppId>", "<Your aad Tenant>");
+    
+            //Set your Azure Maps Key.
+            //AzureMaps.setSubscriptionKey("<Your Azure Maps Key>");
+        
+            //Set the language to be used by Azure Maps.
+            AzureMaps.setLanguage("fr-FR");
+        
+            //Set the regional view to be used by Azure Maps.
+            AzureMaps.setView("Auto");
+        }
+    }
+    ```
+    
+    ::: zone-end
 
-::: zone-end
+1. Sie können die Informationen zu Sprache und regionaler Ansicht auch an den XML-Code des Kartensteuerelements übergeben.
 
-Die zweite Option besteht darin, die Informationen zur Sprache und Ansicht an die Kartensteuerelement-XML zu übergeben.
+    ```XML
+    <com.azure.android.maps.control.MapControl
+        android:id="@+id/myMap"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:azure_maps_language="fr-FR"
+        app:azure_maps_view="Auto"
+        />
+    ```
+1. Die dritte Möglichkeit, die Eigenschaften von Sprache und regionaler Ansicht programmgesteuert festzulegen, verwendet die `setStyle`-Methode für Karten. Dies kann jederzeit geschehen, um die Sprache und regionale Ansicht der Karte zu ändern.
 
-```XML
-<com.azure.android.maps.control.MapControl
-    android:id="@+id/myMap"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    app:azure_maps_language="fr-FR"
-    app:azure_maps_view="Auto"
-    />
-```
+    ::: zone pivot="programming-language-java-android"
 
-Die dritte Option besteht darin, die Sprache und regionale Ansicht der Karte mithilfe der Kartenmethode `setStyle` programmgesteuert festzulegen. Diese Methode zum Ändern der Sprache und der regionalen Ansicht der Karte kann jederzeit verwendet werden.
+    ```java
+    mapControl.onReady(map -> {
+        map.setStyle(
+            language("fr-FR"),
+            view("Auto")
+        );
+    });
+    ```
 
-::: zone pivot="programming-language-java-android"
+    ::: zone-end
 
-```java
-mapControl.onReady(map -> {
-    map.setStyle(
-        language("fr-FR"),
-        view("Auto")
-    );
-});
-```
+    ::: zone pivot="programming-language-kotlin"
 
-::: zone-end
+    ```kotlin
+    mapControl.onReady(OnReady { map: AzureMap ->
+        map.setStyle(
+            language("fr-FR"),
+            view("Auto")
+        )
+    })
+    ```
 
-::: zone pivot="programming-language-kotlin"
-
-```kotlin
-mapControl.onReady(OnReady { map: AzureMap ->
-    map.setStyle(
-        language("fr-FR"),
-        view("Auto")
-    )
-})
-```
-
-::: zone-end
+    ::: zone-end
 
 Hier ist ein Beispiel für Azure Maps, bei dem die Sprache auf „fr-FR“ und die regionale Ansicht auf „Auto“ festgelegt wurden.
 
 ![Azure Maps, Kartenbild mit Beschriftungen in Französisch](media/how-to-use-android-map-control-library/android-localization.png)
 
-Eine vollständige Liste der unterstützten Sprachen und regionalen Ansichten ist [hier](supported-languages.md) dokumentiert.
+Eine vollständige Liste der unterstützten Sprachen und regionalen Ansichten finden Sie unter [Unterstützte Sprachen in Azure Maps](supported-languages.md).
 
 ## <a name="navigating-the-map"></a>Navigieren auf einer Karte
 
 Es gibt verschiedene Möglichkeiten für das Zoomen, Schwenken, Drehen und Neigen der Karte. Im Folgenden werden die verschiedenen Möglichkeiten zum Navigieren auf der Karte erläutert.
 
-**Zoomen der Karte**
+### <a name="zoom-the-map"></a>Zoomen der Karte
 
 * Berühren Sie die Karte mit zwei Fingern, und führen Sie diese zusammen, um zu verkleinern, oder führen Sie die Finger auseinander, um zu vergrößern.
 * Doppeltippen Sie auf die Karte, um um eine Ebene zu vergrößern.
 * Doppeltippen Sie mit zwei Fingern, um die Karte um eine Ebene zu verkleinern.
 * Tippen Sie zweimal, halten Sie beim zweiten Tippen den Finger auf der Karte, und ziehen Sie nach oben, um zu vergrößern, oder nach unten, um zu verkleinern.
 
-**Schwenken der Karte**
+### <a name="pan-the-map"></a>Schwenken der Karte
 
 * Berühren Sie die Karte, und ziehen Sie sie in eine beliebige Richtung.
 
-**Drehen der Karte**
+### <a name="rotate-the-map"></a>Drehen der Karte
 
 * Berühren Sie die Karte mit zwei Fingern, und drehen Sie sie.
 
-**Neigen der Karte**
+### <a name="pitch-the-map"></a>Neigen der Karte
 
 * Berühren Sie die Karte mit zwei Fingern, und ziehen Sie diese zusammen nach oben oder unten.
 

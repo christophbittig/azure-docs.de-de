@@ -12,12 +12,12 @@ ms.date: 07/15/2021
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0a3c2b380160ef68655f0727f4d47280cd5cd02
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 12e86dc602e52fb96b7f9cea3a52079fc80c201b
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124754277"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130041688"
 ---
 # <a name="security-operations-for-infrastructure"></a>Sicherheitsvorgänge für die Infrastruktur
 
@@ -39,7 +39,7 @@ Ein erster Schritt für die Erkennung unerwarteter Ereignisse und potenzieller A
 
 ## <a name="where-to-look"></a>Zu verwendende Ressourcen
 
-Zur Untersuchung und Überwachung werden folgende Protokolldateien verwendet: 
+Zur Untersuchung und Überwachung verwenden Sie die folgenden Protokolldateien: 
 
 * [Azure AD-Überwachungsprotokolle](../reports-monitoring/concept-audit-logs.md)
 
@@ -57,7 +57,7 @@ Im Azure-Portal können Sie die Azure AD-Überwachungsprotokolle anzeigen und a
 
 * [Azure Event Hubs](../../event-hubs/event-hubs-about.md) mit Integration in ein SIEM-System: [Azure AD-Protokolle können über die Azure Event Hub-Integration in andere SIEM-Systeme integriert werden](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md), z. B. in Splunk, ArcSight, QRadar und Sumo Logic.
 
-* [Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) (MCAS): Ermöglicht Ihnen das Ermitteln und Verwalten von Apps, eine Apps und Ressourcen übergreifende Governance und die Überprüfung der Konformität Ihrer Cloud-Apps. 
+* [Microsoft Cloud App Security (MCAS)](/cloud-app-security/what-is-cloud-app-security) - ermöglicht Ihnen die Erkennung und Verwaltung von Apps, die Steuerung von Apps und Ressourcen sowie die Überprüfung der Compliance Ihrer Cloud-Apps. 
 
 Im restlichen Teil dieses Artikels wird beschrieben, welche Ereignisse Sie überwachen und wofür Sie Warnungen erstellen sollten, wobei die Inhalte nach der Art der Bedrohung organisiert sind. Wenn es spezielle vorgefertigte Lösungen gibt, finden Sie im Anschluss an die Tabelle entsprechende Links. Andernfalls können Sie Warnungen mithilfe der oben genannten Tools erstellen.
 
