@@ -11,12 +11,12 @@ ms.reviewer: Luis.Quintanilla
 ms.date: 07/09/2020
 ms.topic: how-to
 ms.custom: devx-track-python, responsible-ml
-ms.openlocfilehash: 803a70b01a39d20080a9724b6ab1780c9a81d354
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 878af265e99c1d6ea431f027e19a6b930eb1ded6
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129425409"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130001445"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python-preview"></a>Erläutern von ML-Modellen und -Vorhersagen in Python mithilfe des Interpretierbarkeitspakets (Vorschauversion)
 
@@ -565,6 +565,15 @@ Sie können den Explainer zusammen mit dem ursprünglichen Modell bereitstellen 
 ## <a name="troubleshooting"></a>Problembehandlung
 
 * **Keine Unterstützung von Daten mit geringer Dichte**: Da für das Dashboard für die Modellerklärungen Fehler auftreten können bzw. die Leistung erheblich verringert werden kann, wenn eine große Zahl von Features vorhanden ist, werden Daten mit geringer Dichte derzeit nicht unterstützt. Darüber hinaus treten bei großen Datasets und einer großen Anzahl von Features allgemeine Speicherprobleme auf. 
+* **Matrix für unterstützte Erklärungsfeatures**
+
+Unterstützte Erklärungsregisterkarte | Rohfeatures (dicht) | Rohfeatures (mit geringer Dichte) | Entwickelte Features (dicht) | Entwickelte Features (mit geringer Dichte)
+:----- | :--- | :--- | :---- | :---- |
+Modellleistung   | Unterstützt (keine Vorhersage) | Unterstützt (keine Vorhersage)  | Unterstützt | Unterstützt |
+Dataset-Explorer  | Unterstützt (keine Vorhersage)   | Wird nicht unterstützt. Da Daten mit geringer Dichte nicht hochgeladen werden und die Benutzeroberfläche Probleme beim Rendern von Daten mit geringer Dichte hat. | Unterstützt | Wird nicht unterstützt. Da Daten mit geringer Dichte nicht hochgeladen werden und die Benutzeroberfläche Probleme beim Rendern von Daten mit geringer Dichte hat. | 
+ Aggregierte Featurerelevanz | Unterstützt | Unterstützt | Unterstützt | Unterstützt |
+ Individuelle Featurerelevanz| Unterstützt (keine Vorhersage)   | Wird nicht unterstützt. Da Daten mit geringer Dichte nicht hochgeladen werden und die Benutzeroberfläche Probleme beim Rendern von Daten mit geringer Dichte hat. | Unterstützt | Wird nicht unterstützt. Da Daten mit geringer Dichte nicht hochgeladen werden und die Benutzeroberfläche Probleme beim Rendern von Daten mit geringer Dichte hat. | 
+
 
 * **Vorhersagemodelle werden für Modellerklärungen nicht unterstützt**: Die Funktion für die Interpretierbarkeit (Erklärung des besten Modells) ist nicht für Vorhersageexperimente mit automatisiertem maschinellem Lernen verfügbar, von denen die folgenden Algorithmen als bestes Modell empfohlen werden: TCNForecaster, AutoArima, Prophet, ExponentialSmoothing, Average, Naive, Seasonal Average und Seasonal Naive. Bei Vorhersagen mit automatisiertem maschinellem Lernen unterstützen Regressionsmodelle auch Erklärungen. Im Erklärungsdashboard wird die Registerkarte „Individuelle Featurerelevanz“ aufgrund der Komplexität der Datenpipelines aber nicht für Vorhersagen unterstützt.
 

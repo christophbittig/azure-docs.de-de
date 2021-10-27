@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: cherylmc
 ms.custom: references_regions
-ms.openlocfilehash: c5d548105b5fd749865132ae0629eaac17462da2
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: a7c94118b1b1a08f4bbd7b58faec6008f9ebc0f8
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124818061"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130002736"
 ---
 # <a name="virtual-wan-partners-and-virtual-hub-locations"></a>Standorte von Virtual WAN-Partnern und -Hubs
 
@@ -63,7 +63,7 @@ Diese Partner verfügen über Angebote für **verwaltete Anwendungen**, die jetz
 |[Cisco Cloud Service Router (CSR) vWAN](https://aka.ms/ciscoMarketPlaceOffer)| Die Integration der Cisco SD-WAN-Lösung in Azure Virtual WAN erweitert Cloud OnRamp für Multicloudbereitstellungen und ermöglicht die Konfiguration von Cisco Catalyst 8000V Edge Software (Cisco Catalyst 8000V) als virtuelles Netzwerkgerät (Network Virtual Appliance, NVA) in Azure Virtual WAN-Hubs. Sehen Sie sich den [Konfigurationsleitfaden für Cisco SD-WAN Cloud OnRamp, Cisco IOS XE Release 17.x](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/cloudonramp/ios-xe-17/cloud-onramp-book-xe/cloud-onramp-multi-cloud.html#Cisco_Concept.dita_c61e0e7a-fff8-4080-afee-47b81e8df701) an. 
 |[VMware SD-WAN im Virtual WAN-Hub](https://sdwan.vmware.com/partners/microsoft) | Anweisungen zur Wiedergabe der VMware SD-WAN-Appliance im Virtual WAN-Hub finden Sie im [Bereitstellungshandbuch für VMware SD-WAN](https://kb.vmware.com/s/article/82746). Um die Bereitstellung zu erstellen, greifen Sie [hier](https://azuremarketplace.microsoft.com/marketplace/apps/velocloud.vmware_sdwan_in_vwan) auf die verwaltete Anwendung zu.|
 
-Es ist vorgesehen, dass die folgenden Partner in naher Zukunft Angebote für NVAs im virtuellen Hub bereitstellen: Aviatrix, Citrix und Versa Networks.
+Es ist vorgesehen, dass die folgenden Partner in naher Zukunft Angebote für virtuelle Netzwerkgeräte im virtuellen Hub bereitstellen: Aviatrix, Citrix, Versa Networks und Silver Peak.
 
 ## <a name="locations"></a><a name="locations"></a>Standorte
 

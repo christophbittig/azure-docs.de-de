@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac53f16e80904216a4e19b03772dcd2820882f94
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.openlocfilehash: 618283c64268f279b0a63ffb35779ea6e8ef55d0
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129657890"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130043546"
 ---
 # <a name="enable-passwordless-security-key-sign-in-to-on-premises-resources-with-azure-active-directory"></a>Aktivieren der kennwortlosen Anmeldung mit Sicherheitsschlüsseln bei lokalen Ressourcen mit Azure Active Directory 
 
@@ -223,6 +223,11 @@ Stellen Sie sicher, dass genügend Domänencontroller gepatcht sind, damit sie r
 
 > [!NOTE]
 > Der `/keylist`-Schalter im `nltest`-Befehl ist im Windows 10 v2004-Client und höher verfügbar.
+
+
+### <a name="is-fido2-security-keys-works-on-windows-login-with-rodc-present-in-the-hybrid-enviornment"></a>Funktionieren FIDO2-Sicherheitsschlüssel für eine Windows-Anmeldung, wenn RODC in der Hybridumgebung vorhanden ist?
+
+Die FIOD2-Windows-Anmeldung sucht nach einem beschreibbarem DC, um das Benutzer-TGT zu tauschen. Solange Sie mindestens einen beschreibbaren DC pro Standort haben, funktioniert das einwandfrei. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

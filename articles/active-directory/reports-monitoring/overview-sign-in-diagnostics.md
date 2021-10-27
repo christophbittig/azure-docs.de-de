@@ -4,7 +4,7 @@ description: Dieser Artikel enthält eine allgemeine Übersicht über die Anmeld
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: daveba
+manager: karenhoran
 editor: ''
 ms.assetid: e2b3d8ce-708a-46e4-b474-123792f35526
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 07/07/2021
+ms.date: 09/30/2021
 ms.author: markvi
 ms.reviewer: tspring
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30ec59a2b74ffb1a9de8bbf03271bf4699c98b6b
-ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
+ms.openlocfilehash: 99e3999eaa137a26680ff5741f38d434d2a9f618
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113552609"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129998901"
 ---
 # <a name="what-is-the-sign-in-diagnostic-in-azure-ad"></a>Was ist die Anmeldediagnose für Azure AD?
 
@@ -50,29 +50,39 @@ Aufgrund der größeren Flexibilität des Systems, auf einen Anmeldeversuch zu r
 
 Um den Diagnosevorgang zu starten und auszuführen, müssen Sie folgende Schritte befolgen:   
 
-1. **Ereignis identifizieren:** Geben Sie Informationen über das Anmeldeereignis ein. 
+1. **Ereignis identifizieren:**  Starten Sie die Diagnose, und überprüfen Sie die gekennzeichneten Ereignisse, für die Benutzer Unterstützung anfordern. Geben Sie alternativ Informationen zu dem Anmeldeereignis an, das untersucht werden soll. 
 
-2. **Ereignis auswählen:** Wählen Sie basierend auf den geteilten Informationen ein Ereignis aus. 
+2. **Ereignis auswählen:**  Wählen Sie basierend auf den geteilten Informationen ein Ereignis aus. 
 
-3. **Aktion ausführen:** Überprüfen Sie die Diagnoseergebnisse und führen Sie die empfohlenen Schritte aus.
+3. **Aktion ausführen:**  Überprüfen Sie die Diagnoseergebnisse, und führen Sie die empfohlenen Schritte aus. 
+
 
 
 ### <a name="identify-event"></a>Ereignis identifizieren 
 
-Um die richtigen Ereignisse zu identifizieren, können Sie diese auf Grundlage der folgenden Optionen filtern:
+Bei der Diagnose kann mit zwei Methoden nach Ereignissen gesucht werden, die untersucht werden sollen:  
 
-- Name des Benutzers
+- Anmeldefehler, die Benutzer [für die Unterstützung gekennzeichnet](overview-flagged-sign-ins.md) haben 
+- Suchen nach bestimmten Ereignissen anhand des Benutzers und zusätzlicher Kriterien 
+
+Gekennzeichnete Anmeldungen werden automatisch in einer Liste mit bis zu 100 Einträgen angezeigt. Sie können sofort eine Diagnose für ein Ereignis ausführen, indem Sie darauf klicken.  
+
+Sie können nach einem bestimmten Ereignis suchen, indem Sie die Registerkarte „Suche“ auswählen, auch wenn gekennzeichnete Anmeldungen vorhanden sind. Bei der Suche nach bestimmten Ereignissen können Sie anhand der folgenden Optionen filtern: 
+
+- Name des Benutzers 
+
 - Application 
-- Korrelations-ID oder Anforderungs-ID 
-- Datum und Uhrzeit
 
-![Screenshot des Filters](./media/overview-sign-in-diagnostics/sign-in-diagnostics.png)
+- Korrelations-ID oder Anforderungs-ID 
+
+- Datum und Uhrzeit 
 
 
 
 ### <a name="select-event"></a>Ereignis auswählen  
 
-Anhand Ihrer Suchkriterien ruft Azure AD alle übereinstimmenden Anmeldeereignisse ab und zeigt sie in Listenform in einer Authentifizierungsübersicht an.  
+Bei gekennzeichneten Anmeldungen oder nach Durchführung einer Suche ruft Azure AD alle übereinstimmenden Anmeldeereignisse ab und zeigt sie in einer Listenansicht der Authentifizierungsübersicht an. 
+
 
 ![Screenshot der Authentifizierungsübersicht](./media/overview-sign-in-diagnostics/review-sign-ins.png)
 

@@ -6,12 +6,12 @@ ms.author: chrhar
 ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 01/25/2021
-ms.openlocfilehash: 63bbc978f4927dc6922d92e1f339282f74e4fb4e
-ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
+ms.openlocfilehash: a048937226f979db58996eb4bf996b9f254d9182
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109814296"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130132448"
 ---
 # <a name="tutorial-access-data-in-cosmos-db-using-mongoose-with-azure-static-web-apps"></a>Tutorial: Zugreifen auf Daten in Cosmos DB per Mongoose mit Azure Static Web Apps
 
@@ -44,16 +44,14 @@ Erstellen Sie als Erstes ein Konto vom Typ [Cosmos DB serverlos](../cosmos-db/s
 3. Geben Sie im Suchfeld den Suchbegriff **Azure Cosmos DB** ein.
 4. Klicken Sie auf **Azure Cosmos DB**.
 5. Klicken Sie auf **Erstellen**
-6. Konfigurieren Sie Ihr Azure Cosmos DB-Konto mit den folgenden Informationen:
+6. Wählen Sie unter **Azure Cosmos DB-API für MongoDB** die Option **Erstellen** aus.
+7. Konfigurieren Sie Ihr Azure Cosmos DB-Konto mit den folgenden Informationen:
     - Abonnement: Wählen Sie das gewünschte Abonnement aus.
     - Ressource: Klicken Sie auf **Neu erstellen**, und legen Sie den Namen auf **aswa-mongoose** fest.
     - Kontoname: Der Name muss ein eindeutiger Wert sein.
-    - API: **Azure Cosmos DB für MongoDB-API**
-    - Notebooks (Vorschau): **Aus**
     - Standort: **USA, Westen 2**
     - Kapazitätsmodus: **Serverlos (Vorschau)**
-    - Version: **3.6**
-    - Verfügbarkeitszonen: **Deaktivieren**
+    - Version: **4.0**
 :::image type="content" source="media/add-mongoose/cosmos-db.png" alt-text="Erstellen einer neuen Cosmos DB-Instanz":::
 7. Klicken Sie auf **Überprüfen und erstellen**.
 8. Klicken Sie auf **Erstellen**
@@ -70,7 +68,7 @@ In diesem Tutorial wird als Hilfestellung für die Erstellung Ihrer Anwendung ei
 4. Klicken Sie auf **Create repository from template** (Repository aus Vorlage erstellen).
 5. Wechseln Sie zurück zum [Azure-Portal](https://portal.azure.com).
 6. Klicken Sie auf **Ressource erstellen**.
-7. Geben Sie im Suchfeld den Suchbegriff **static web apps** ein.
+7. Geben Sie im Suchfeld den Suchbegriff **static web app** ein.
 8. Wählen Sie **Static Web Apps** aus.
 9. Klicken Sie auf **Erstellen**
 10. Konfigurieren Sie Ihre Azure Static Web App-Instanz mit den folgenden Informationen:
@@ -80,27 +78,26 @@ In diesem Tutorial wird als Hilfestellung für die Erstellung Ihrer Anwendung ei
     - Region: **USA, Westen 2**
     - Klicken Sie auf **Mit GitHub anmelden**.
     - Klicken Sie in der angezeigten Aufforderung auf **Autorisieren**, um für Azure Static Web Apps die Erstellung der GitHub-Aktion für die Bereitstellung zuzulassen.
-    - Organisation: Ihr Kontoname
+    - Organisation: Ihr GitHub-Kontoname
     - Repository: **aswa-mongoose-tutorial**
     - Branch: **main**
     - Buildvoreinstellungen: Wählen Sie **Benutzerdefiniert** aus.
     - App-Speicherort: **/public**
     - API-Speicherort: **api**
-    - Speicherort für App-Artefakte: *Leer lassen*
+    - Ausgabespeicherort: *Lassen Sie dieses Feld leer.*
     :::image type="content" source="media/add-mongoose/azure-static-web-apps.png" alt-text="Ausgefülltes Azure Static Web Apps-Formular":::
 11. Klicken Sie auf **Überprüfen und erstellen**.
 12. Klicken Sie auf **Erstellen**
-
-Der Erstellungsvorgang dauert einige Minuten. Sie können auf **Zu Ressource wechseln** klicken, nachdem die App bereitgestellt wurde.
+13. Der Erstellungsvorgang dauert einen Moment. Sie können auf **Zu Ressource wechseln** klicken, nachdem die statische Web-App bereitgestellt wurde.
 
 ## <a name="configure-database-connection-string"></a>Konfigurieren der Datenbankverbindungszeichenfolge
 
-Damit die Web-App mit der Datenbank kommunizieren kann, wird die Datenbankverbindungszeichenfolge als Anwendungseinstellung gespeichert. Sie können das Objekt `process.env` nutzen, um in Node.js auf die Einstellungswerte zuzugreifen.
+Damit die Web-App mit der Datenbank kommunizieren kann, wird die Datenbankverbindungszeichenfolge als [Anwendungseinstellung](application-settings.md) gespeichert. Sie können das Objekt `process.env` nutzen, um in Node.js auf die Einstellungswerte zuzugreifen.
 
 1. Klicken Sie oben links im Azure-Portal auf **Startseite** (oder navigieren Sie zurück zu [https://portal.azure.com](https://portal.azure.com)).
 2. Klicken Sie auf **Ressourcengruppen**.
 3. Klicken Sie auf **aswa-mongoose**.
-4. Klicken Sie auf den Namen Ihres Datenbankkontos. Der Typ des Kontos lautet **Azure Cosmos DB-Konto**.
+4. Klicken Sie auf den Namen Ihres Datenbankkontos. Der Typ des Kontos lautet **Azure Cosmos DB-API für Mongo DB**.
 5. Klicken Sie unter **Einstellungen** auf **Verbindungszeichenfolge**.
 6. Kopieren Sie die Verbindungszeichenfolge, die unter **PRIMÄRE VERBINDUNGSZEICHENFOLGE** angegeben ist.
 7. Klicken Sie in der Brotkrümelnavigation auf **aswa-mongoose**.
@@ -119,6 +116,8 @@ Sie können die statische Web-App jetzt erkunden.
 1. Klicken Sie auf **Übersicht**.
 1. Klicken Sie auf die URL, die oben rechts angezeigt wird.
     1. Sie hat in etwa das folgende Format: `https://calm-pond-05fcdb.azurestaticapps.net`.
+1. Klicken Sie auf **Please login to see your list of tasks** (Melden Sie sich an, um Ihre Aufgabenliste anzuzeigen.)
+1. Klicken Sie auf **Einwilligung erteilen**, um auf die Anwendung zuzugreifen.
 1. Erstellen Sie eine neue Aufgabe, indem Sie einen Titel eingeben und auf **Aufgabe hinzufügen** klicken.
 1. Vergewissern Sie sich, dass die Aufgabe angezeigt wird (dies kann einen Moment dauern).
 1. Markieren Sie die Aufgabe als abgeschlossen, indem Sie das **Kontrollkästchen aktivieren**.

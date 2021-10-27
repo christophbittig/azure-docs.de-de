@@ -3,7 +3,7 @@ title: Bewährte Methoden der HADR-Konfiguration
 description: Erfahren Sie mehr über die unterstützten Clusterkonfigurationen beim Konfigurieren von Hochverfügbarkeit und Notfallwiederherstellung (HADR) für SQL Server auf Azure Virtual Machines, z. B. unterstützte Quoren oder Verbindungsroutingoptionen.
 services: virtual-machines
 documentationCenter: na
-author: MashaMSFT
+author: rajeshsetlem
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
@@ -12,13 +12,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/01/2021
-ms.author: mathoma
-ms.openlocfilehash: b9aa10e9a11ee1268c8bb49d5cb32d0550c2ca3a
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.author: rsetlem
+ms.reviewer: mathoma
+ms.openlocfilehash: 40c68a77a3e432c5ff03da2a99e93255719e8898
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112582076"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130163409"
 ---
 # <a name="hadr-configuration-best-practices-sql-server-on-azure-vms"></a>Bewährte Methoden der HADR-Konfiguration (SQL Server auf Azure-VMs)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -284,7 +285,9 @@ Grenzwerte für virtuelle Computer oder Datenträger können zu einem Ressourcen
 
 ## <a name="networking"></a>Netzwerk
 
-Verwenden Sie eine einzelne NIC pro Server (Clusterknoten) und ein einzelnes Subnetz. Azure-Netzwerktechnologie bietet physische Redundanz, die zusätzliche Netzwerkkarten und Subnetze in einem Azure-VM-Gastcluster überflüssig macht. Der Clusterüberprüfungsbericht weist Sie darauf hin, dass die Knoten nur in einem einzigen Netzwerk erreichbar sind. Diese Warnung kann für Azure-VM-Gastfailovercluster ignoriert werden.
+Verwenden Sie eine einzelne NIC pro Server (Clusterknoten). Azure-Netzwerktechnologie bietet physische Redundanz, die zusätzliche Netzwerkkarten (NICs) in einem Azure-VM-Gastcluster überflüssig macht. Der Clusterüberprüfungsbericht weist Sie darauf hin, dass die Knoten nur in einem einzigen Netzwerk erreichbar sind. Diese Warnung kann für Azure-VM-Gastfailovercluster ignoriert werden. 
+
+Die Bandbreitenlimits für einen bestimmten virtuellen Computer werden von NICs gemeinsam genutzt, und das Hinzufügen einer zusätzlichen NIC verbessert die Verfügbarkeitsgruppenleistung für SQL Server auf virtuellen Azure-Computern nicht. Daher ist es nicht erforderlich, eine zweite NIC hinzuzufügen. 
 
 Der nicht RFC-kompatible DHCP-Dienst in Azure kann dazu führen, dass die Erstellung bestimmter Failoverclusterkonfigurationen fehlschlägt. Dieser Fehler tritt auf, weil dem Clusternetzwerknamen eine doppelte IP-Adresse zugewiesen wird, z. B. die gleiche IP-Adresse wie einer der Clusterknoten. Dies stellt bei der Verwendung von Verfügbarkeitsgruppen ein Problem dar, da diese vom Windows-Failoverclusterfeature abhängen.
 

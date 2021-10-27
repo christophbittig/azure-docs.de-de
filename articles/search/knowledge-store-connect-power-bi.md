@@ -7,21 +7,21 @@ ms.author: heidist
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/07/2021
-ms.openlocfilehash: 97a0025437b7f055f9fcf2e7860e926e9693cde6
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 10/18/2021
+ms.openlocfilehash: 14a6cd5ec07d9c4c5ee584312e9ba20b2251d0ef
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124766930"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130178301"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>Herstellen einer Verbindung mit einem Wissensspeicher mit Power BI
 
-In diesem Artikel erfahren Sie, wie Sie mithilfe von Power Query in der Power BI Desktop-App eine Verbindung mit einem Wissensspeicher herstellen und ihn anschließend erkunden. Sie können mit Vorlagen schneller beginnen oder ein benutzerdefiniertes Dashboard von Grund auf neu erstellen.
+In diesem Artikel erfahren Sie, wie Sie mithilfe von Power Query in der Power BI Desktop-App eine Verbindung mit einem Wissensspeicher herstellen und anschließend abfragen. Sie können mit Vorlagen schneller beginnen oder ein benutzerdefiniertes Dashboard von Grund auf neu erstellen.
 
 Ein Wissensspeicher, der aus Tabellen in Azure Storage besteht, funktioniert am besten in Power BI. Wenn die Tabellen Projektionen aus demselben Skillset und derselben Projektionsgruppe enthalten, können Sie sie einfach „verknüpfen“, um Tabellenvisualisierungen mit Feldern aus verknüpften Tabellen zu erstellen.
 
-Folgen Sie den Schritten in diesem Artikel unter Verwendung der Beispieldaten und des Wissensspeichers, die im [Azure-Portal](knowledge-store-create-portal.md) oder über [Postman und REST-APIs](knowledge-store-create-rest.md) erstellt wurden. 
+Folgen Sie den Schritten in diesem Artikel unter Verwendung von Beispieldaten und eines Wissensspeichers, wie [in diesem Portal-Schnellstart](knowledge-store-create-portal.md) oder über [Postman und REST-APIs](knowledge-store-create-rest.md) erstellt. 
 
 ## <a name="connect-to-azure-storage"></a>Verbinden mit Azure Storage
 
@@ -45,11 +45,11 @@ Folgen Sie den Schritten in diesem Artikel unter Verwendung der Beispieldaten un
 
    ![Power Query öffnen](media/knowledge-store-connect-power-bi/powerbi-edit-queries.png "Power Query öffnen")
 
-1. Wählen Sie *hotelReviewsSsDocument* aus, und entfernen Sie anschließend die Spalten *PartitionKey*, *RowKey* und *Timestamp*. 
+1. Öffnen Sie *hotelReviewsDocument*, und entfernen Sie die Spalten *PartitionKey*, *RowKey* und *Timestamp*. Diese Spalten werden für Tabellenbeziehungen in Azure Table Storage verwendet. In Power BI werden sie nicht benötigt. Es sollte eine Spalte mit dem Namen „Inhalt“ übrig bleiben, in der jeweils ein *Datensatz* angezeigt wird. 
 
    ![Tabellen bearbeiten](media/knowledge-store-connect-power-bi/powerbi-edit-table.png "Tabellen bearbeiten")
 
-1. Klicken Sie rechts oben in der Tabelle auf das Symbol mit den entgegengesetzten Pfeilen, um den *Inhalt* zu erweitern. Wenn die Liste mit Spalten angezeigt wird, wählen Sie alle Spalten aus, und heben Sie anschließend die Markierung der Spalten auf, die mit „metadata“ beginnen. Klicken Sie auf **OK**, um die ausgewählten Spalten anzuzeigen.
+1. Klicken Sie rechts oben in der Tabelle auf das Symbol mit den entgegengesetzten Pfeilen, um *Inhalt* zu erweitern. Wenn die Liste der Spalten angezeigt wird, wählen Sie alle Spalten aus. Löschen Sie Spalten, die mit „metadata“ beginnen. Klicken Sie auf **OK**, um die ausgewählten Spalten einzubeziehen.
 
    ![Inhalt erweitern](media/knowledge-store-connect-power-bi/powerbi-expand-content-table.png "Inhalt erweitern")
 
@@ -60,9 +60,9 @@ Folgen Sie den Schritten in diesem Artikel unter Verwendung der Beispieldaten un
 
    ![Datentypen ändern](media/knowledge-store-connect-power-bi/powerbi-change-type.png "Datentypen ändern")
 
-1. Wählen Sie *hotelReviewsSsPages* aus, und wiederholen Sie dann die Schritte 9 und 10, um die Spalten zu löschen und den *Inhalt* zu erweitern.
+1. Öffnen Sie *hotelReviewsSsPages*, und wiederholen Sie die Schritte zum Löschen von Spalten, indem Sie *Inhalt* erweitern, um Spalten aus den Datensätzen auszuwählen. Für diese Tabelle sind keine Datentypänderungen erforderlich.
 
-1. Wählen Sie *hotelReviewsSsKeyPhrases*, und wiederholen Sie die Schritte 9 und 10, um die Spalten zu löschen und den *Inhalt* zu erweitern. Für diese Tabelle sind keine Datentypänderungen erforderlich.
+1. Öffnen Sie *hotelReviewsSsKeyPhrases*, und wiederholen Sie die Schritte zum Löschen von Spalten, indem Sie *Inhalt* erweitern, um Spalten aus den Datensätzen auszuwählen. Für diese Tabelle sind keine Datentypänderungen erforderlich.
 
 1. Klicken Sie in der Befehlsleiste auf **Close and Apply** (Schließen und Anwenden).
 

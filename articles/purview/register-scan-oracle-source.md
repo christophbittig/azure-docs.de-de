@@ -6,13 +6,13 @@ ms.author: kchandra
 ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: overview
-ms.date: 09/27/2021
-ms.openlocfilehash: 1a8956971e48529c75f07db54c196867a6c5955e
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.date: 10/18/2021
+ms.openlocfilehash: 110f2b5847a1a56bfae91c4567762b88915ec6f7
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129216940"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130181405"
 ---
 # <a name="register-and-scan-oracle-source"></a>Oracle-Quelle registrieren und überprüfen
 
@@ -21,6 +21,8 @@ In diesem Artikel erfahren Sie, wie Sie eine Oracle-Datenbank in Purview registr
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
 Die Oracle-Quelle unterstützt die **vollständige Überprüfung**, um Metadaten aus einer Oracle-Datenbank zu extrahieren, und ruft die **Herkunft** zwischen Datasets ab.
+
+Der Proxyserver wird beim Überprüfen der Oracle-Quelle nicht unterstützt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -39,31 +41,34 @@ Die Oracle-Quelle unterstützt die **vollständige Überprüfung**, um Metadaten
 5.  Unterstützte Versionen von Oracle-Datenbanken sind 6i bis 19c.
 
 6.  Benutzerberechtigung: Schreibgeschützter Zugriff auf Systemtabellen ist erforderlich. Der Benutzer muss über die Berechtigung zum Erstellen einer Sitzung sowie die Rolle SELECT\_CATALOG\_ROLE verfügen. Alternativ kann dem Benutzer die SELECT-Berechtigung für jede einzelne Systemtabelle erteilt werden, von der dieser Connector Metadaten abfragt:
-       > grant create session to \[Benutzer\];\
-        grant select on all\_users to \[Benutzer\];\
-        grant select on dba\_objects to \[Benutzer\];\
-        grant select on dba\_tab\_comments to \[Benutzer\];\
-        grant select on dba\_external\_locations to \[Benutzer\];\
-        grant select on dba\_directories to \[Benutzer\];\
-        grant select on dba\_mviews to \[Benutzer\];\
-        grant select on dba\_clu\_columns to \[Benutzer\];\
-        grant select on dba\_tab\_columns to \[Benutzer\];\
-        grant select on dba\_col\_comments to \[Benutzer\];\
-        grant select on dba\_constraints to \[Benutzer\];\
-        grant select on dba\_cons\_columns to \[Benutzer\];\
-        grant select on dba\_indexes to \[Benutzer\];\
-        grant select on dba\_ind\_columns to \[Benutzer\];\
-        grant select on dba\_procedures to \[Benutzer\];\
-        grant select on dba\_synonyms to \[Benutzer\];\
-        grant select on dba\_views to \[Benutzer\];\
-        grant select on dba\_source to \[Benutzer\];\
-        grant select on dba\_triggers to \[Benutzer\];\
-        grant select on dba\_arguments to \[Benutzer\];\
-        grant select on dba\_sequences to \[Benutzer\];\
-        grant select on dba\_dependencies to \[Benutzer\];\
-        grant select on dba\_type\_attrs to \[user\];\
-        grant select on V\_\$INSTANCE to \[Benutzer\];\
-        grant select on v\_\$database to \[Benutzer\];
+
+    ```sql
+    grant create session to [user];
+    grant select on all_users to [user];
+    grant select on dba_objects to [user];
+    grant select on dba_tab_comments to [user];
+    grant select on dba_external_locations to [user];
+    grant select on dba_directories to [user];
+    grant select on dba_mviews to [user];
+    grant select on dba_clu_columns to [user];
+    grant select on dba_tab_columns to [user];
+    grant select on dba_col_comments to [user];
+    grant select on dba_constraints to [user];
+    grant select on dba_cons_columns to [user];
+    grant select on dba_indexes to [user];
+    grant select on dba_ind_columns to [user];
+    grant select on dba_procedures to [user];
+    grant select on dba_synonyms to [user];
+    grant select on dba_views to [user];
+    grant select on dba_source to [user];
+    grant select on dba_triggers to [user];
+    grant select on dba_arguments to [user];
+    grant select on dba_sequences to [user];
+    grant select on dba_dependencies to [user];
+    grant select on dba_type_attrs to [user];
+    grant select on V_$INSTANCE to [user];
+    grant select on v_$database to [user];
+    ```
     
 ## <a name="setting-up-authentication-for-a-scan"></a>Einrichten der Authentifizierung für eine Überprüfung
 
@@ -88,7 +93,10 @@ Gehen Sie auf dem Bildschirm **Quellen registrieren (Oracle)** wie folgt vor:
     - Ein Hostname, der von JDBC verwendet wird, um eine Verbindung mit dem Datenbankserver herzustellen. Beispielsweise MyDatabaseServer.com oder eine
     - IP-Adresse. Beispielsweise 192.169.1.2 oder
     - Es ist eine vollqualifizierte JDBC-Verbindungszeichenfolge. Beispiel:
-        jdbc:oracle:thin:@(DESCRIPTION=(LOAD\_BALANCE=on)(ADDRESS=(PROTOCOL=TCP)(HOST=oracleserver1)(PORT=1521))(ADDRESS=(PROTOCOL=TCP)(HOST=oracleserver2)(PORT=1521))(ADDRESS=(PROTOCOL=TCP)(HOST=oracleserver3)(PORT=1521))(CONNECT\_DATA=(SERVICE\_NAME=orcl)))
+
+        ```
+        jdbc:oracle:thin:@(DESCRIPTION=(LOAD_BALANCE=on)(ADDRESS=(PROTOCOL=TCP)(HOST=oracleserver1)(PORT=1521))(ADDRESS=(PROTOCOL=TCP)(HOST=oracleserver2)(PORT=1521))(ADDRESS=(PROTOCOL=TCP)(HOST=oracleserver3)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=orcl)))
+        ```
 
 3.  Geben Sie die **Portnummer** ein, die von JDBC verwendet wird, um eine Verbindung mit dem Datenbankserver herzustellen (standardmäßig 1521 für Oracle).
 

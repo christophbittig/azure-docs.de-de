@@ -1,26 +1,32 @@
 ---
-title: Firewallregeln – Hyperscale (Citus) – Azure Database for PostgreSQL
-description: In diesem Artikel werden die Firewallregeln für Azure Database for PostgreSQL – Hyperscale (Citus) beschrieben.
+title: Öffentlicher Zugriff – Hyperscale (Citus) – Azure Database for PostgreSQL
+description: In diesem Artikel wird der öffentliche Zugriff für Azure Database for PostgreSQL – Hyperscale (Citus) beschrieben.
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
-ms.date: 9/12/2019
-ms.openlocfilehash: 559c5eca6fa8a6eceb37ade003d4f1983c0a1a1b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/15/2021
+ms.openlocfilehash: cb695514fe4fd1b3d0ed72dd70aeb8b5d6ca4253
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90902094"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130072181"
 ---
-# <a name="firewall-rules-in-azure-database-for-postgresql---hyperscale-citus"></a>Firewallregeln in Azure Database for PostgreSQL – Hyperscale (Citus)
+# <a name="public-access-in-azure-database-for-postgresql---hyperscale-citus"></a>Öffentlicher Zugriff in Azure Database for PostgreSQL – Hyperscale (Citus)
+
+[!INCLUDE [azure-postgresql-hyperscale-access](../../includes/azure-postgresql-hyperscale-access.md)]
+
+Auf dieser Seite wird die Option des öffentlichen Zugriffs beschrieben. Informationen zum privaten Zugriff finden Sie [hier](concepts-hyperscale-private-access.md).
+
+## <a name="firewall-overview"></a>Firewallübersicht
+
 Die Azure Database for PostgreSQL-Serverfirewall verhindert jeglichen Zugriff auf Ihren Hyperscale (Citus)-Koordinatorknoten, bis Sie angeben, welche Computer zugriffsberechtigt sind. Die Firewall gewährt den Serverzugriff auf der Grundlage der Ursprungs-IP-Adresse der jeweiligen Anforderung.
 Zum Konfigurieren der Firewall erstellen Sie Firewallregeln, die Bereiche zulässiger IP-Adressen festlegen. Sie können Firewallregeln auf Serverebene erstellen.
 
 **Firewallregeln**: Diese Regeln ermöglichen es Clients, auf Ihren Hyperscale (Citus)-Koordinatorknoten zuzugreifen (also auf alle Datenbanken innerhalb desselben logischen Servers). Firewallregeln auf Serverebene können über das Azure-Portal konfiguriert werden. Zum Erstellen von Firewallregeln auf Serverebene müssen Sie der Besitzer oder ein Mitwirkender des Abonnements sein.
 
-## <a name="firewall-overview"></a>Firewallübersicht
 Jeglicher Datenbankzugriff auf den Koordinatorknoten wird standardmäßig durch die Firewall blockiert. Damit Sie Ihren Server über einen anderen Computer verwenden können, müssen Sie eine oder mehrere Firewallregeln auf Serverebene angeben, die Zugriff auf Ihren Server ermöglichen. Legen Sie mithilfe der Firewallregeln fest, welche IP-Adressbereiche aus dem Internet zugelassen werden sollen. Der Zugriff auf die Website des Azure-Portals selbst wird durch die Firewallregeln nicht beeinträchtigt.
 Verbindungsversuche über das Internet und über Azure müssen zunächst die Firewall passieren, bevor sie Ihre PostgreSQL-Datenbank erreichen (wie im folgenden Diagramm dargestellt):
 

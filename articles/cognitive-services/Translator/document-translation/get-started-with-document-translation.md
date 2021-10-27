@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 09/16/2021
 ms.author: lajanuar
 recommendations: false
-ms.openlocfilehash: 0e1192e310c658e93c4cfe5738e9ad4d36984113
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 051e218b8c0bce8249c6fbe3dd785d797130b61f
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128580870"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130062726"
 ---
 # <a name="get-started-with-document-translation"></a>Erste Schritte bei der Dokumentübersetzung
 
@@ -117,7 +117,7 @@ Jede Anforderung der API für die Dokumentübersetzung enthält die folgenden He
 * Die `targetUrl` für die einzelnen Zielsprachen muss jeweils eindeutig sein.
 
 >[!NOTE]
-> Wenn am Ziel bereits eine Datei mit dem gleichen Namen vorhanden ist, wird sie überschrieben.
+> Wenn am Ziel bereits eine Datei mit dem gleichen Namen vorhanden ist, tritt beim Auftrag ein Fehler auf.
 
 <!-- markdownlint-disable MD024 -->
 ### <a name="translate-all-documents-in-a-container"></a>Übersetzen aller Dokumente in einem Container

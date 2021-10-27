@@ -13,16 +13,16 @@ ms.reviewer: ''
 ms.date: 11/30/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d3c159c615d928a8d56d3913c8e1cab846c7580
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: fede718111b6f1dcc9e49e8c96ec88a967b31b20
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114462091"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130042332"
 ---
 # <a name="resilient-interfaces-with-external-processes"></a>Robuste Schnittstellen mit externen Prozessen
 
-In diesem Artikel erfahren Sie, wie Sie die RESTFul-APIs in der User Journey planen und implementieren und die Anwendung robuster gegen API-Ausfälle gestalten.
+In diesem Artikel erfahren Sie, wie Sie die RESTful-APIs in der User Journey planen und implementieren und die Anwendung robuster gegen API-Ausfälle gestalten.
 
 ![Abbildung: Schnittstellen mit externen Prozesskomponenten](media/resilient-external-processes/external-processes-architecture.png)
 
@@ -40,7 +40,7 @@ Mithilfe der IEF-Richtlinien (Identity Experience Framework) können Sie ein ext
 
 - Verwenden Sie nach Möglichkeit die [API-Connectors des integrierten Flows für die Benutzerregistrierung](../../active-directory-b2c/api-connectors-overview.md) zur Integration in Web-APIs, entweder nach dem Erstellen eines Verbunds mit einem Identitätsanbieter oder vor dem Erstellen des Benutzers. Da die Benutzerflows bereits ausgiebig getestet wurden, ist es wahrscheinlich, dass Sie keine Funktions-, Leistungs- oder Skalierungstests auf Benutzerflowebene durchführen müssen. Sie müssen Ihre Anwendungen weiterhin auf Funktionalität, Leistung und Skalierung testen.
 
-- [Technische Profile](../../active-directory-b2c/restful-technical-profile.md) der RESTFul-API von Azure AD stellen kein Zwischenspeicherungsverhalten zur Verfügung. Stattdessen implementiert das RESTFul-API-Profil eine Wiederholungslogik und ein Timeout, das in die Richtlinie integriert ist.
+- [Technische Profile](../../active-directory-b2c/restful-technical-profile.md) der RESTful-API von Azure AD stellen kein Zwischenspeicherungsverhalten zur Verfügung. Stattdessen implementiert das RESTful-API-Profil eine Wiederholungslogik und ein Timeout, das in die Richtlinie integriert ist.
 
 - Für APIs, die Daten schreiben müssen, können Sie einen Task in eine Warteschlange stellen, damit solche Tasks von einem Hintergrundworker ausgeführt werden. Dienste wie [Azure-Warteschlangen](../../storage/queues/storage-queues-introduction.md) können verwendet werden. Dies führt dazu, dass die Rückgabe der API effizient erfolgt und die Ausführungsleistung der Richtlinie erhöht wird.  
 
@@ -52,7 +52,7 @@ Da sich die APIs außerhalb des Azure AD B2C-Systems befinden, ist eine ordnung
 
 - Eine API kann aus verschiedenen Gründen fehlschlagen. Sorgen Sie dafür, dass Ihre Anwendung gegenüber solchen Fehlern resistent ist. [Geben Sie eine HTTP 4xx-Fehlermeldung zurück](../../active-directory-b2c/restful-technical-profile.md#returning-validation-error-message), wenn die API die Anforderung nicht abschließen kann. Versuchen Sie in der Azure AD B2C-Richtlinie, die Nichtverfügbarkeit der API ordnungsgemäß zu behandeln, und rendern Sie ggf. eine verringerte Benutzeroberfläche.
 
-- [Behandeln Sie vorübergehende Fehler ordnungsgemäß](../../active-directory-b2c/restful-technical-profile.md#error-handling). Das RESTFul-API-Profil ermöglicht es Ihnen, Fehlermeldungen für verschiedene [Störfälle](/azure/architecture/patterns/circuit-breaker) zu konfigurieren.
+- [Behandeln Sie vorübergehende Fehler ordnungsgemäß](../../active-directory-b2c/restful-technical-profile.md#error-handling). Das RESTful-API-Profil ermöglicht es Ihnen, Fehlermeldungen für verschiedene [Störfälle](/azure/architecture/patterns/circuit-breaker) zu konfigurieren.
 
 - Überwachen und verwenden Sie proaktiv Continuous Integration/Continuous Delivery (CI/CD), und rotieren Sie die Anmeldeinformationen für den API-Zugriff, z. B. Kennwörter und Zertifikate, die von der [Engine des technischen Profils](../../active-directory-b2c/restful-technical-profile.md) verwendet werden.
 
@@ -72,5 +72,5 @@ Wenn Sie die RESTful-APIs bereitstellen und das technische RESTful-Profil konfig
   - [Resiliente Endbenutzerumgebung](resilient-end-user-experience.md)
   - [Resilienz durch bewährte Entwicklermethoden](resilience-b2c-developer-best-practices.md)
   - [Resilienz durch Überwachung und Analyse](resilience-with-monitoring-alerting.md)
-- [Schaffen von Resilienz für die Authentifizierungsinfrastruktur](resilience-in-infrastructure.md)
+- [Erzielen von Resilienz in der Authentifizierungsinfrastruktur](resilience-in-infrastructure.md)
 - [Steigern der Resilienz für Authentifizierung und Autorisierung in Ihren Anwendungen](resilience-app-development-overview.md)

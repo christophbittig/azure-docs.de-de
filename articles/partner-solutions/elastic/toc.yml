@@ -1,0 +1,17 @@
+- name: 'Integration von Elastic in Azure: Dokumentation'
+  href: index.yml
+- name: Übersicht
+  items:
+    - name: Was ist Elastic?
+      href: overview.md
+- name: Schnellstarts
+  expanded: true
+  items:
+    - name: Erstellen einer Elastic-Ressource
+      href: create.md
+- name: Anleitung
+  items:
+    - name: Verwalten der Integration
+      href: manage.md
+    - name: Problembehandlung
+      href: troubleshoot.md

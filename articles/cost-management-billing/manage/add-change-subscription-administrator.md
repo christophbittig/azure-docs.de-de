@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 06/27/2021
 ms.author: banders
-ms.openlocfilehash: b4bd2615dd99145bd75fd7c1095056961d3b2d80
-ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
+ms.openlocfilehash: 913ab605d17e47d5fa8f1ec751a618fe5dbfe123
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2021
-ms.locfileid: "112988353"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130000970"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Hinzufügen oder Ändern von Azure-Abonnementadministratoren
 
@@ -30,17 +30,28 @@ Microsoft empfiehlt das Verwalten des Zugriffs auf Ressourcen mithilfe der Azure
 
 Weitere Informationen finden Sie unter [Azure Resource Manager und klassische Bereitstellung](../../azure-resource-manager/management/deployment-models.md) und [Azure classic subscription administrators](../../role-based-access-control/classic-administrators.md) (Klassische Azure-Abonnementadministratoren).
 
-<a name="add-an-admin-for-a-subscription"></a>
+## <a name="determine-account-billing-administrator"></a>Ermitteln des Abrechnungsadministrators
+
+<a name="whoisaa"></a>
+
+Der Abrechnungsadministrator ist die Person, die über Berechtigungen zum Verwalten der Abrechnung für ein Konto verfügt. Sie ist berechtigt, im [Azure-Portal](https://portal.azure.com) auf die Abrechnung zuzugreifen und verschiedene Abrechnungsaufgaben durchzuführen (Abonnements erstellen, Rechnungen anzeigen und bezahlen, Zahlungsmethoden aktualisieren und Ähnliches).
+
+Um Konten zu identifizieren, für die Sie der Abrechnungsadministrator sind, besuchen Sie die Seite [„Kostenverwaltung + Abrechnung“ im Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/Overview). Wählen Sie dann im linken Bereich die Option **Alle Abrechnungsbereiche** aus. Auf der Seite „Abonnements“ werden alle Abonnements aufgelistet, für die Sie als Abrechnungsadministrator fungieren.
+
+Wenn Sie sich nicht sicher sind, wer der Kontoadministrator für ein Abonnement ist, besuchen Sie die [Seite „Abonnements“ im Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade). Wählen Sie dann das zu überprüfende Abonnement aus, und sehen Sie unter **Einstellungen** nach. Wählen Sie **Eigenschaften** aus, und der Kontoadministrator des Abonnements wird im Feld **Kontoadministrator** angezeigt.
+
 
 ## <a name="assign-a-subscription-administrator"></a>Zuweisen eines Abonnementadministrators
 
-Wenn ein Administrator einen Benutzer zum Administrator für ein Azure-Abonnement machen möchte, weist er ihm die Rolle [Besitzer](../../role-based-access-control/built-in-roles.md#owner) (eine Azure-Rolle) im Abonnementbereich zu. Durch die Rolle „Besitzer“ erhält der Benutzer vollständigen Zugriff auf alle Ressourcen im Abonnement, einschließlich des Rechts, den Zugriff an andere Personen zu delegieren. Diese Schritte sind identisch mit allen anderen Rollenzuweisungen.
+<a name="add-an-admin-for-a-subscription"></a>
 
-Verwenden Sie die folgenden Schritte für die Ermittlung, wenn Sie nicht sicher sind, wer der Kontoadministrator für ein Abonnement ist.
+Um einen Benutzer zum Administrator eines Azure-Abonnements zu machen, weist ihm ein vorhandener Rechnungsadministrator die Rolle [Owner](../../role-based-access-control/built-in-roles.md#owner) (eine Azure-Rolle) im Abonnementbereich zu. Durch die Rolle „Besitzer“ erhält der Benutzer vollständigen Zugriff auf alle Ressourcen im Abonnement, einschließlich des Rechts, den Zugriff an andere Personen zu delegieren. Diese Schritte sind identisch mit allen anderen Rollenzuweisungen.
+
+Wenn Sie nicht sicher sind, wer der Administrator für die Rechnungsstellung für ein Abonnement ist, führen Sie die folgenden Schritte aus, um dies herauszufinden.
 
 1. Öffnen Sie die [Seite „Abonnements“ im Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
 1. Wählen Sie das zu überprüfende Abonnement aus, und sehen Sie unter **Einstellungen** nach.
-1. Wählen Sie **Eigenschaften** aus. Der Kontoadministrator des Abonnements wird im Feld **Kontoadministrator** angezeigt.
+1. Wählen Sie **Eigenschaften** aus. Der Kontoverwalter des Abonnements wird im Feld **Kontoverwalter** angezeigt.
 
 ### <a name="to-assign-a-user-as-an-administrator"></a>Zuweisen eines Benutzers als Administrator
 

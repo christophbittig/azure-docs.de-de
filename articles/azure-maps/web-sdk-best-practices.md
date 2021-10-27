@@ -6,12 +6,12 @@ ms.author: v-stharr
 ms.date: 3/22/2021
 ms.topic: conceptual
 ms.service: azure-maps
-ms.openlocfilehash: 3bcf3125e09ee2023e36b3eefc5d34d4a1215c4e
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 0d21b23c9b1192f2f660615079da0831c1ec92fc
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123439360"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130006354"
 ---
 # <a name="azure-maps-web-sdk-best-practices"></a>Best Practices für das Azure Maps-Web-SDK
 
@@ -27,8 +27,11 @@ Der wichtigste Teil Ihrer Anwendung ist deren Sicherheit. Wenn Ihre Anwendung ni
 
 > [!IMPORTANT]
 > Azure Maps bietet zwei Authentifizierungsmethoden.
+>
 > * Authentifizierung mit einem Abonnementschlüssel
-> * Authentifizierung mit Azure Active Directory. Verwenden Sie Azure Active Directory in allen Produktionsanwendungen.
+> * Authentifizierung über Azure Active Directory
+>
+> Verwenden Sie Azure Active Directory in allen Produktionsanwendungen.
 > Die Authentifizierung mit einem Abonnementschlüssel ist einfach. Die meisten Kartenplattformen nutzen diese als einfache Methode, um die Nutzung der Plattform für Abrechnungszwecke zu messen. Es handelt sich dabei jedoch um eine Art der Authentifizierung, die nicht sicher ist und nur lokal bei der Entwicklung von Apps verwendet werden sollte. Einige Plattformen bieten die Möglichkeit, Einschränkungen für die in Anforderungen enthaltenen IP-Adressen und/oder HTTP-Referrer festzulegen. Diese Informationen können jedoch leicht gespooft werden. Wenn Sie Abonnementschlüssel verwenden, stellen Sie sicher, dass Sie [diese regelmäßig rotieren](how-to-manage-authentication.md#manage-and-rotate-shared-keys).
 > Azure Active Directory ist ein Identitätsdienst für Unternehmen, der eine große Auswahl an Sicherheitsfeatures und -einstellungen für alle Arten von Anwendungsszenarios bietet. Microsoft empfiehlt für alle Produktionsanwendungen, die Azure Maps verwenden, die Verwendung von Azure Active Directory für die Authentifizierung.
 > Weitere Informationen zur Verwaltung der Authentifizierung in Azure Maps finden Sie in [diesem Dokument](how-to-manage-authentication.md).
@@ -130,7 +133,7 @@ Wenn Ihr Dataset Features enthält, die in Ihrer App nicht verwendet werden, ent
 * Die Anzahl der beim Rendern der Daten in einer Schleife zu durchlaufenden Features wird verringert.
 * Manchmal kann es hilfreich sein, datengesteuerte Ausdrücke und Filter zu vereinfachen oder zu entfernen. So muss zur Renderingzeit weniger verarbeitet werden.
 
-Wenn Features über viele Eigenschaften oder Inhalte verfügen, kann eine deutlich bessere Leistung erzielt werden, wenn der Datenquelle nur die für das Rendering benötigten Eigenschaften oder Inhalte hinzugefügt werden und zum Abrufen weiterer Eigenschaften oder Inhalte bei Bedarf eine separate Methode oder ein separater Dienst verwendet wird. Ein Beispiel wäre eine einfache Karte mit verschiedenen Orten, für die ausführliche Inhalte angezeigt werden, wenn der Benutzer darauf klickt. Wenn Sie datengesteuerte Stile verwenden möchten, um anzupassen, wie die Orte auf der Karte gerendert werden, laden Sie nur die benötigten Eigenschaften in die Datenquelle. Wenn Sie die ausführlichen Inhalte anzeigen möchten, verwenden Sie die ID des Features, um die zusätzlichen Inhalte separat abzurufen. Wenn die Inhalte auf Serverseite gespeichert werden, können sie mit einem Dienst asynchron abgerufen werden, wodurch die beim anfänglichen Laden der Karte herunterzuladende Datenmenge stark verringert wird.
+Wenn Features über zahlreiche Eigenschaften oder Inhalte verfügen, kann eine deutlich bessere Leistung erzielt werden, wenn der Datenquelle nur die für das Rendering benötigten Eigenschaften oder Inhalte hinzugefügt werden und zum Abrufen weiterer Eigenschaften oder Inhalte bei Bedarf eine separate Methode oder ein separater Dienst verwendet wird. Ein Beispiel wäre eine einfache Karte mit verschiedenen Orten, für die ausführliche Inhalte angezeigt werden, wenn der Benutzer darauf klickt. Wenn Sie datengesteuerte Stile verwenden möchten, um anzupassen, wie die Orte auf der Karte gerendert werden, laden Sie nur die benötigten Eigenschaften in die Datenquelle. Wenn Sie die ausführlichen Inhalte anzeigen möchten, verwenden Sie die ID des Features, um die zusätzlichen Inhalte separat abzurufen. Wenn die Inhalte auf Serverseite gespeichert werden, können sie mit einem Dienst asynchron abgerufen werden, wodurch die beim anfänglichen Laden der Karte herunterzuladende Datenmenge stark verringert wird.
 
 Darüber hinaus kann durch das Reduzieren der Anzahl signifikanter Stellen in den Koordinaten von Features die Datengröße deutlich reduziert werden. Es ist nicht unüblich, dass Koordinaten zwölf oder mehr Dezimalstellen enthalten. Allerdings bieten sechs Dezimalstellen bereits eine Genauigkeit von ungefähr 0,1 Metern, was oft schon genauer als nötig für den Ort ist, für den die Koordinate steht (sechs Dezimalstellen werden empfohlen, wenn mit Ortsdaten für ein kleines Gebiet gearbeitet wird, z. B. solchen in Bezug auf die Raumaufteilung in Gebäuden). Die Verwendung von mehr als sechs Dezimalstellen wirkt sich wahrscheinlich nicht darauf aus, wie die Daten gerendert werden, und sorgt lediglich dafür, dass der Benutzer mehr Daten herunterladen muss, ohne dass dies irgendwelche Vorteile bietet.
 
@@ -294,7 +297,7 @@ Weitere Informationen finden Sie im Abschnitt über Clustering und Wärmebilder 
 
 ### <a name="keep-image-resources-small"></a>Verwenden kleiner Bildressourcen
 
-Bilder können dem Kartenbildsprite zum Rendern von Icons auf einer Symbolebene oder Mustern auf einer Polygonebene hinzugefügt werden. Verwenden Sie hierfür kleine Bilder, um die Datenmenge, die heruntergeladen werden muss, sowie den von diesen Bildern genutzten Platz im Kartenbildsprite zu minimieren. Wenn Sie eine Symbolebene verwenden, die das Icon mithilfe der Option `size` skaliert, verwenden Sie ein Bild, das die für das Anzeigen auf der Karte geplante Maximalgröße aufweist und nicht mehr. Dadurch wird sichergestellt, dass das Icon mit einer hohen Auflösung gerendert wird, während die verwendeten Ressourcen minimiert werden. Darüber hinaus kann auch SVG als kleineres Dateiformat für einfache Symbolbilder verwendet werden.
+Bilder können dem Kartenbildsprite zum Rendern von Icons auf einer Symbolebene oder Mustern auf einer Polygonebene hinzugefügt werden. Verwenden Sie hierfür kleine Bilder, um die Datenmenge, die heruntergeladen werden muss, sowie den von diesen Bildern genutzten Platz im Kartenbildsprite zu minimieren. Wenn Sie eine Symbolebene verwenden, die das Icon mithilfe der Option `size` skaliert, verwenden Sie ein Bild, das die für das Anzeigen auf der Karte geplante Maximalgröße aufweist und nicht mehr. Dadurch wird sichergestellt, dass das Symbol mit einer hohen Auflösung bei minimaler Ressourcennutzung gerendert wird. Darüber hinaus kann auch SVG als kleineres Dateiformat für einfache Symbolbilder verwendet werden.
 
 ## <a name="optimize-expressions"></a>Optimieren von Ausdrücken
 
@@ -361,6 +364,7 @@ Gehen Sie folgendermaßen vor:
 * Vergewissern Sie sich, dass Sie einen [unterstützten Browser](supported-browsers.md) verwenden.
 
 **All meine Daten werden auf der anderen Seite der Welt angezeigt. Was ist passiert?**
+
 Für Koordinaten (auch Positionen genannt) in den Azure Maps-SDKs wird das in der Branche für räumliche Daten übliche Standardformat `[longitude, latitude]` verwendet. Im GeoJSON-Schema wird für Koordinaten ebenfalls dieses Format verwendet. Hierbei handelt es sich um das Datenformat, das hauptsächlich in den Azure Maps-SDKs verwendet wird. Wenn Ihre Daten auf der gegenüberliegenden Seite der Welt angezeigt werden, liegt dies höchstwahrscheinlich daran, dass die Werte für die Längen- und Breitengrade in den Koordinaten-/Positionsinformationen umgekehrt wurden.
 
 **Warum werden HTML-Marker in der Websteuerung an der falschen Stelle angezeigt?**
@@ -372,6 +376,7 @@ Für Koordinaten (auch Positionen genannt) in den Azure Maps-SDKs wird das in de
 * Sehen Sie sich das DOM-Element des HTML-Markers an, um zu überprüfen, ob sich CSS-Code aus Ihrer App an den Marker angehängt hat und die Position beeinflusst.
 
 **Warum werden Icons oder Text auf der Symbolebene an der falschen Stelle angezeigt?**
+
 Überprüfen Sie, ob die Optionen `anchor` und `offset` richtig so konfiguriert sind, dass der gewünschte Teil Ihres Bilds oder Texts an der Koordinate auf der Karte ausgerichtet wird.
 Wenn das Symbol nur an der falschen Stelle ist, wenn die Karte gedreht wird, überprüfen Sie die Option `rotationAlignment`. Standardmäßig drehen sich die Symbole mit dem Kartenviewport, sodass sie dem Benutzer stehend angezeigt werden. Abhängig von Ihrem Szenario kann es jedoch wünschenswert sein, die Ausrichtung der Karte als Grundlage für die Ausrichtung des Symbols zu verwenden. Legen Sie hierzu die Option `rotationAlignment` auf `'map'` fest.
 Wenn das Symbol nur dann an der falschen Stelle angezeigt wird, wenn die Karte geneigt/gekippt wird, überprüfen Sie die Option `pitchAlignment`. Standardmäßig werden Symbole für den Kartenviewport stehend angezeigt, wenn die Karte geneigt oder gekippt wird. Abhängig von Ihrem Szenario kann es jedoch wünschenswert sein, die Neigung der Karte als Grundlage für die Ausrichtung des Symbols zu verwenden. Legen Sie hierzu die Option `pitchAlignment` auf `'map'` fest.
@@ -387,7 +392,10 @@ Wenn das Symbol nur dann an der falschen Stelle angezeigt wird, wenn die Karte g
 
 **Kann ich das Azure Maps-Web-SDK in einem iframe in einer Sandbox verwenden?**
 
-Ja. Beachten Sie, dass [ein Fehler in Safari](https://bugs.webkit.org/show_bug.cgi?id=170075) verhindert, dass iframes in einer Sandbox Worker ausführen. Dies ist für die Verwendung des Azure Maps-Web-SDK jedoch erforderlich. Die Lösung für dieses Problem besteht darin, der Sandboxeigenschaft des iframe das Tag `"allow-same-origin"` hinzuzufügen.
+Ja.
+
+> [!TIP]
+> Ein [Fehler](https://bugs.webkit.org/show_bug.cgi?id=170075) in Safari verhindert, dass iframes in einer Sandbox Worker ausführen. Dies ist für die Verwendung des Azure Maps-Web-SDK jedoch erforderlich. Die Lösung für dieses Problem besteht darin, der Sandboxeigenschaft des iframe das Tag `"allow-same-origin"` hinzuzufügen.
 
 ## <a name="get-support"></a>Support
 
@@ -395,19 +403,22 @@ Im Folgenden sind die verschiedenen Wege aufgeführt, auf denen Sie je nach Art 
 
 **Wie melde ich ein Datenproblem oder ein Problem mit einer Adresse?**
 
-Azure Maps verfügt über ein Tool für Feedback zu Daten, in dem Datenprobleme gemeldet und nachverfolgt werden können ([https://feedback.azuremaps.com/](https://feedback.azuremaps.com/)). Für jedes gemeldete Datenproblem wird eine eindeutige URL generiert, über die Sie den Fortschritt beim Lösen des Problems nachverfolgen können. Die für das Lösen eines Datenproblems benötigte Zeit variiert abhängig von der Art des Problems sowie davon, wie leicht überprüft werden kann, ob die Änderung richtig ist. Wenn das Problem behoben wurde, wird das Update für den Renderingdienst im Rahmen des wöchentlichen Updates bereitgestellt, bei anderen Diensten wie Geocodierungs- und Routingdiensten im monatlichen Update. Eine ausführliche Anleitung für das Melden von Datenproblemen finden Sie in [diesem Dokument](how-to-use-feedback-tool.md).
+Melden Sie Datenprobleme mithilfe des [Feedbacktools für Azure Maps-Daten](https://feedback.azuremaps.com). Ausführliche Anweisungen zum Melden von Datenproblemen finden Sie im Artikel [Bereitstellen von Datenfeedback in Azure Maps](how-to-use-feedback-tool.md).
+
+> [!NOTE]
+> Für jedes übermittelte Problem wird eine eindeutige URL zur Nachverfolgung generiert. Die Lösungszeiten variieren je nach Problemtyp und der Zeit, die zum Überprüfen der Richtigkeit der Änderung erforderlich ist. Die Änderungen werden im wöchentlichen Update der Renderdienste angezeigt, während andere Dienste wie Geocodierung und Routing monatlich aktualisiert werden.
 
 **Wie melde ich einen Fehler in einem Dienst oder einer API?**
 
-https://azure.com/support
+Melden Sie Probleme auf der Azure-Seite [Hilfe und Support](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview), indem Sie auf die Schaltfläche **Supportanfrage erstellen** klicken.
 
 **Wo erhalte ich technische Hilfe zu Azure Maps?**
 
-Für das Azure Maps-Visual in Power BI erhalten Sie technische Hilfe unter https://powerbi.microsoft.com/support/, für alle anderen Azure Maps-Dienste unter https://azure.com/support. Alternativ können Sie die Entwicklerforen unter [https://docs.microsoft.com/answers/topics/azure-maps.html](/answers/topics/azure-maps.html) nutzen.
+* Wenn Sie im Zusammenhang mit dem Azure Maps-Visual in Power BI Fragen haben, wenden Sie sich an den [Power BI-Support](https://powerbi.microsoft.com/support/).
 
-**Wie stelle ich eine Featureanfrage?**
+* Für alle anderen Azure Maps-Dienste wenden Sie sich an den [Azure-Support](https://azure.com/support).
 
-Featureanfragen können auf unserer UserVoice-Website unter https://feedback.azure.com/forums/909172-azure-maps gestellt werden.
+* Wenn Sie Fragen oder Anmerkungen zu bestimmten Azure Maps-Features haben, besuchen Sie die [Azure Maps-Entwicklerforen](/answers/topics/azure-maps.html).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

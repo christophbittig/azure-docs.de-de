@@ -5,12 +5,12 @@ author: erscorms
 ms.author: erscor
 ms.date: 02/11/2020
 ms.topic: reference
-ms.openlocfilehash: f62a07ef7109c669c6abc90d4e1b4a2ee83ece23
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 06e266460e12218f531c85c2c6ca48c1e9658053
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100530245"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130003021"
 ---
 # <a name="limitations"></a>Einschränkungen
 
@@ -32,7 +32,7 @@ Für die Front-End-API (C++ und C#) gelten die folgenden Einschränkungen:
 * **Animation:** Animationen sind auf die Animation einzelner Transformationen von [Spielobjekten](../concepts/entities.md) beschränkt. Skelettanimationen („Rigging“) mit Skinning- oder Vertexanimationen werden nicht unterstützt. Animationsspuren aus der Quellmedienobjektdatei werden nicht beibehalten. Stattdessen müssen Transformationsanimationen von Objekten durch Clientcode gesteuert werden.
 * **Benutzerdefinierte Shader:** Das Erstellen benutzerdefinierter Shader wird nicht unterstützt. Es können nur [Farbmaterialien](../overview/features/color-materials.md) oder [PBR-Materialien](../overview/features/pbr-materials.md) verwendet werden.
 * **Maximale Anzahl unterschiedlicher Materialien** in einem Medienobjekt: 65.535. Weitere Informationen zur Verringerung der automatischen Materialanzahl finden Sie im Kapitel [Deduplizierung von Materialien](../how-tos/conversion/configure-model-conversion.md#material-de-duplication).
-* **Maximale Dimension einer einzelnen Textur:** 16.384 x 16.384. Größere Quelltexturen werden durch den Konvertierungsprozess verkleinert.
+* **Maximale Dimension einer einzelnen Textur:** 16.384 x 16.384. Größere Texturen können vom Renderer nicht verwendet werden. Der Konvertierungsprozess kann manchmal größere Texturen verkleinern, aber im Allgemeinen können Texturen, die diesen Grenzwert überschreiten, nicht verarbeitet werden.
 
 ### <a name="overall-number-of-polygons"></a>Gesamtanzahl von Polygonen
 

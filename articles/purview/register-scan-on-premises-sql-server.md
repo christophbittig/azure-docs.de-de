@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 09/27/2021
-ms.openlocfilehash: 4cef99adecadc73f105dfffcdc72163c8b622cc3
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 1921349be07d129e9889da3af6c72a7b25a58ff5
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129208645"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130074435"
 ---
 # <a name="register-and-scan-an-on-premises-sql-server"></a>Registrieren und Überprüfen einer lokalen SQL Server-Datenquelle
 
@@ -93,7 +93,9 @@ Führen Sie die folgenden Schritte aus, wenn Sie eine neue Anmeldung und einen n
 
    :::image type="content" source="media/register-scan-on-premises-sql-server/set-up-sql-data-source.png" alt-text="Die SQL Server-Datenquelle einrichten":::
 
-5. Geben Sie einen Anzeigenamen und Serverendpunkt an, und wählen Sie dann **Fertig stellen** aus, um die Datenquelle zu registrieren. Hat Ihre SQL Server-Datenquelle z. B. den FQDN **foobar.database.windows.net**, geben Sie *foobar* als Serverendpunkt ein.
+1. Geben Sie einen Anzeigenamen an. Dies ist ein Kurzname, den Sie zum Identifizieren Ihres Servers und des Server-Endpunkts verwenden können. 
+ 
+1. Wählen Sie **Fertigstellen**, um die Datenquelle zu registrieren.
 
 ## <a name="creating-and-running-a-scan"></a>Erstellen und Ausführen einer Überprüfung
 

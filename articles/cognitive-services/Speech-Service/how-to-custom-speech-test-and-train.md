@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/16/2021
+ms.date: 10/08/2021
 ms.author: pafarley
-ms.openlocfilehash: 046499f32050bf856e6eb39874f3f7b0f0fa2e51
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: fa62d0e7c24c6a63c63f082333823b5e74a24cf0
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128569490"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130132279"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Vorbereiten von Daten für Custom Speech
 
@@ -69,7 +69,10 @@ Dateien sollten nach Typ in einem Dataset gruppiert und als ZIP-Datei hochgelade
 
 ## <a name="upload-data"></a>Hochladen von Daten
 
-Navigieren Sie zum Hochladen der Daten zum <a href="https://speech.microsoft.com/customspeech" target="_blank">Custom Speech-Portal</a>. Navigieren Sie nach dem Erstellen eines Projekts zur Registerkarte **Speech-Datasets**, und klicken Sie auf **Daten hochladen**, um den Assistenten zu starten und Ihr erstes Dataset zu erstellen. Wählen Sie einen Speech-Datentyp für Ihr Dataset aus, und laden Sie Ihre Daten hoch.
+Navigieren Sie zum Hochladen Ihrer Daten zu [Speech Studio](https://aka.ms/speechstudio/customspeech). Navigieren Sie nach dem Erstellen eines Projekts zur Registerkarte **Speech-Datasets**, und klicken Sie auf **Daten hochladen**, um den Assistenten zu starten und Ihr erstes Dataset zu erstellen. Wählen Sie einen Speech-Datentyp für Ihr Dataset aus, und laden Sie Ihre Daten hoch.
+
+> [!NOTE]
+> Wenn Ihre Datasetdateigröße 128 MB überschreitet, können Sie sie nur mithilfe der Option *Azure-Blob oder freigegebener Speicherort* hochladen. Sie können auch die [Spracherkennungs-REST-API v3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30) verwenden, um ein Dataset [beliebiger zulässiger Größe](speech-services-quotas-and-limits.md#model-customization) hochzuladen. Weitere Details finden Sie im [nächsten Abschnitt](#upload-data-using-speech-to-text-rest-api-v30).
 
 Zunächst müssen Sie angeben, ob das Dataset für **Training** oder **Testen** verwendet werden soll. Es gibt viele Arten von Daten, die hochgeladen und zum **Trainieren** oder **Testen** verwendet werden können. Jedes hochgeladene Dataset muss vor dem Upload korrekt formatiert werden und den Anforderungen für den ausgewählten Datentyp entsprechen. Die Anforderungen sind in den folgenden Abschnitten aufgelistet.
 
@@ -78,6 +81,35 @@ Nach dem Hochladen des Datasets haben Sie verschiedene Möglichkeiten:
 * Sie können zur Registerkarte **Benutzerdefinierte Modelle trainieren** navigieren, um ein benutzerdefiniertes Modell zu trainieren.
 * Sie können zur Registerkarte **Testmodelle** navigieren, um die Qualität nur mit Audiodaten visuell zu überprüfen oder die Genauigkeit mit Audio- und Humantranskriptionsdaten auszuwerten.
 
+### <a name="upload-data-using-speech-to-text-rest-api-v30"></a>Hochladen von Daten mithilfe der Spracherkennungs-REST-API v3.0
+
+Sie können die [Spracherkennungs-REST-API v3.0](rest-speech-to-text.md#speech-to-text-rest-api-v30) verwenden, um alle Vorgänge im Zusammenhang mit Ihren benutzerdefinierten Modellen zu automatisieren. Insbesondere können Sie damit ein Dataset hochladen. Dies ist besonders nützlich, wenn Ihre Datasetdatei 128 MB überschreitet, da derart große Dateien nicht mit der Option *Lokale Datei* in Speech Studio hochgeladen werden können. (Sie können für denselben Zweck auch die Option *Azure-Blob oder freigegebener Speicherort* in Speech Studio verwenden, wie im vorherigen Abschnitt beschrieben).
+
+Verwenden Sie eine der folgenden Anforderungen, um ein Dataset zu erstellen und hochzuladen:
+* [Create Dataset (Dataset erstellen)](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CreateDataset)
+* [Create Dataset from Form (Dataset aus Formular erstellen)](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/UploadDatasetFromForm)
+
+**Mit der REST-API erstellte Datasets und Speech Studio-Projekte**
+
+Ein mit der Spracherkennungs-REST-API v3.0 erstelltes Dataset wird mit *keinem* der Speech Studio-Projekte verbunden, es sei denn, es wird ein spezieller Parameter im Anforderungstext angegeben (siehe unten). Die Verbindung mit einem Speech Studio-Projekt ist für *keine* Vorgänge zur Modellanpassung erforderlich, wenn sie über die REST-API durchgeführt werden.
+
+Wenn Sie sich bei Speech Studio anmelden, werden Sie über die Benutzeroberfläche benachrichtigt, wenn ein nicht verbundenes Objekt gefunden wird (z. B. Datasets, die über die REST-API ohne Projektreferenz hochgeladen wurden), und es wird angeboten, solche Objekte mit einem bestehenden Projekt zu verbinden. 
+
+Um das neue Dataset während des Hochladens mit einem bestehenden Projekt im Speech Studio zu verbinden, verwenden Sie [Create Dataset](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CreateDataset) (Dataset erstellen) oder [Create Dataset from Form](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/UploadDatasetFromForm) (Dataset aus Formular erstellen), und füllen Sie die Anforderung gemäß dem folgenden Format aus:
+```json
+{
+  "kind": "Acoustic",
+  "contentUrl": "https://contoso.com/mydatasetlocation",
+  "locale": "en-US",
+  "displayName": "My speech dataset name",
+  "description": "My speech dataset description",
+  "project": {
+    "self": "https://westeurope.api.cognitive.microsoft.com/speechtotext/v3.0/projects/c1c643ae-7da5-4e38-9853-e56e840efcb2"
+  }
+}
+```
+
+Die für das `project`-Element erforderliche Projekt-URL kann mit der Anforderung [Get Projects](https://westeurope.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetProjects) (Projekte abrufen) ermittelt werden.
 
 ## <a name="audio--human-labeled-transcript-data-for-trainingtesting"></a>Audio- und Humantranskriptionsdaten für Training/Tests
 

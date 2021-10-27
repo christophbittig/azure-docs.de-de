@@ -6,12 +6,12 @@ author: enkrumah
 ms.author: ebnkruma
 ms.topic: how-to
 ms.date: 05/30/2021
-ms.openlocfilehash: 2d65b537ef0bad56127fcfcc1e87f1b1cfc15f2d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ad8142bf5ab65bb6ae4ff49aeb7b4e661d2761a8
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128583763"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130045860"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi"></a>Verwenden von verwalteten Identitäten zum Authentifizieren von Azure Stream Analytics-Aufträgen in Power BI
 
@@ -148,7 +148,7 @@ Mit Azure Resource Manager können Sie die Bereitstellung Ihres Stream Analytics
     }
     ```
 
-    Wenn Sie die REST-API von Power BI zum Hinzufügen des Stream Analytics Auftrags zu Ihrem Power BI-Arbeitsbereich verwenden möchten, notieren Sie sich die zurückgegebene principalId.
+    Wenn Sie die Power BI-REST-API zum Hinzufügen des Stream Analytics-Auftrags zu Ihrem Power BI-Arbeitsbereich verwenden möchten, notieren Sie sich die zurückgegebene principalId.
 
 3. Nachdem der Auftrag nun erstellt wurde, fahren Sie mit dem Abschnitt [Erteilen des Zugriffs auf Ihren Power BI-Arbeitsbereich für den Stream Analytics-Auftrag](#give-the-stream-analytics-job-access-to-your-power-bi-workspace) in diesem Artikel fort.
 

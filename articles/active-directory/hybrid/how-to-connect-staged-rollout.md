@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e35f88ef38367a9c25da6a77b556f4009880af0
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 35dcb1125451e378d79aa7bab4c4e066ccab9acb
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355412"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130044306"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout"></a>Migrieren zur Cloudauthentifizierung mithilfe eines gestaffelten Rollouts
 
@@ -96,6 +96,8 @@ Die folgenden Szenarien werden für gestaffelten Rollout nicht unterstützt:
 - Wenn Sie ein nicht persistentes VDI-Setup mit Windows 10 Version 1903 oder höher verwenden, müssen Sie in einer Verbunddomäne verbleiben. Das Verschieben in eine verwaltete Domäne wird für nicht persistente VDI nicht unterstützt. Weitere Informationen finden Sie unter [Geräteidentität und Desktopvirtualisierung](../devices/howto-device-identity-virtual-desktop-infrastructure.md).
 
 - Wenn Sie über eine Windows Hello for Business-Hybridzertifikat-Vertrauensstellung mit Zertifikaten verfügen, die entweder über Ihren Verbundserver, der als Registrierungszertifizierungsstelle agiert oder über Smartcardbenutzer ausgestellt werden, wird kein gestaffelter Rollout unterstützt. 
+
+- Die Autopilot-Registrierung wird beim gestaffelten Rollout nicht unterstützt. Benutzer, die für den gestaffelten Rollout aktiviert sind, verwenden zum Zeitpunkt der Autopilot-Registrierung weiterhin die Verbundauthentifizierung. Wenn Ihr Gerät über Windows 10 Version 1903 oder höher verfügt, erfolgen nach der Autopilot-Registrierung alle Authentifizierungsanforderungen über den gestaffelten Rollout. 
 
   >[!NOTE]
   >Die endgültige Umstellung von Verbundauthentifizierung auf Cloudauthentifizierung muss weiterhin mithilfe von Azure AD Connect oder PowerShell erfolgen. Bei einem gestaffelten Rollout werden Domänen nicht von Verbunddomänen auf verwaltete Domänen umgestellt.  Weitere Informationen zur Domänenumstellung finden Sie unter [Migrieren vom Verbund zur Kennworthashsynchronisierung für Azure Active Directory](./migrate-from-federation-to-cloud-authentication.md) und [Migrieren vom Verbund zur Passthrough-Authentifizierung für Azure Active Directory](./migrate-from-federation-to-cloud-authentication.md).

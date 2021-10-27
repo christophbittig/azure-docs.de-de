@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 01/22/2021
-ms.openlocfilehash: fa1ac05766a95754631c5a6c78f80b9abdc4e3a7
-ms.sourcegitcommit: ca38027e8298c824e624e710e82f7b16f5885951
+ms.openlocfilehash: a8d5b2ca155917c5b08f11167da6309da9df7e6b
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112573668"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130047169"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>Tutorial: Verwenden von Apache HBase in Azure HDInsight
 
@@ -41,7 +41,7 @@ Im folgenden Verfahren wird eine Azure Resource Manager-Vorlage verwendet, um ei
 
 2. Geben Sie im Dialogfeld **Benutzerdefinierte Bereitstellung** die folgenden Werte ein:
 
-    |Eigenschaft |Beschreibung |
+    |Eigenschaft |BESCHREIBUNG |
     |---|---|
     |Subscription|Wählen Sie Ihr Azure-Abonnement aus, das zum Erstellen des Clusters verwendet wird.|
     |Resource group|Erstellen Sie eine neue Azure Resource Management-Gruppe, oder verwenden Sie eine vorhandene Ressourcengruppe.|
@@ -221,11 +221,11 @@ HBase-Daten können auch über Hive abgefragt werden, indem HBase mit aktivierte
 > [!NOTE]
 > Nachdem beide Cluster skaliert wurden, muss `/etc/hosts` erneut angefügt werden.
 
-## <a name="use-hbase-rest-apis-using-curl"></a>Verwenden der HBase-REST-APIs mit Curl
+## <a name="use-the-hbase-rest-api-via-curl"></a>Verwenden der HBase-REST-API über Curl
 
-Die REST-API wird durch [Standardauthentifizierung](https://en.wikipedia.org/wiki/Basic_access_authentication)gesichert. Sie sollten Anforderungen immer über HTTPS (Secure HTTP) stellen, um sicherzustellen, dass Ihre Anmeldeinformationen sicher an den Server gesendet werden.
+Die HBase-REST-API wird durch [Standardauthentifizierung](https://en.wikipedia.org/wiki/Basic_access_authentication) geschützt. Sie sollten Anforderungen immer über HTTPS (Secure HTTP) stellen, um sicherzustellen, dass Ihre Anmeldeinformationen sicher an den Server gesendet werden.
 
-1. Fügen Sie das folgende benutzerdefinierte Startskript im Abschnitt **Skriptaktion** hinzu, um HBase-REST-APIs im HDInsight-Cluster zu aktivieren. Sie können das Startskript beim Erstellen des Clusters oder nach Abschluss des Vorgangs hinzufügen. Wählen Sie unter **Knotentyp** die Option **Regionsserver** aus, um sicherzustellen, dass das Skript nur auf HBase-Regionsservern ausgeführt wird.
+1. Fügen Sie das folgende benutzerdefinierte Startskript im Abschnitt **Skriptaktion** hinzu, um die HBase-REST-API im HDInsight-Cluster zu aktivieren. Sie können das Startskript beim Erstellen des Clusters oder nach Abschluss des Vorgangs hinzufügen. Wählen Sie unter **Knotentyp** die Option **Regionsserver** aus, um sicherzustellen, dass das Skript nur auf HBase-Regionsservern ausgeführt wird.
 
 
     ```bash
@@ -359,7 +359,7 @@ Wenn Sie diese Anwendung nicht mehr benötigen, gehen Sie wie folgt vor, um den 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie gelernt, wie Sie einen Apache HBase-Cluster erstellen. Sie haben auch gelernt, wie Sie mit der HBase-Shell Tabellen erstellen und die Daten in diesen Tabellen anzeigen. Darüber hinaus wissen Sie jetzt, wie Sie eine Hive-Abfrage mit Daten in HBase-Tabellen verwenden. Außerdem haben Sie gelernt, wie Sie die C#-REST-APIs für HBase verwenden, um eine HBase-Tabelle zu erstellen und Daten aus dieser Tabelle abzurufen. Weitere Informationen finden Sie unter:
+In diesem Tutorial haben Sie gelernt, wie Sie einen Apache HBase-Cluster erstellen. Sie haben auch gelernt, wie Sie mit der HBase-Shell Tabellen erstellen und die Daten in diesen Tabellen anzeigen. Darüber hinaus wissen Sie jetzt, wie Sie eine Hive-Abfrage mit Daten in HBase-Tabellen verwenden. Außerdem haben Sie gelernt, wie Sie die C#-REST-API für HBase verwenden, um eine HBase-Tabelle zu erstellen und Daten aus dieser Tabelle abzurufen. Weitere Informationen finden Sie unter:
 
 > [!div class="nextstepaction"]
 > [HDInsight HBase overview (Übersicht über HDInsight HBase)](./apache-hbase-overview.md)

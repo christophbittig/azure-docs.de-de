@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f9f580c903ccc806ab4cfe5229c4931a4810bf8
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 9086e3df2022822e890af4d187f35a55bad5ae03
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114481480"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130074112"
 ---
 # <a name="secure-your-api-used-an-api-connector-in-azure-ad-external-identities-self-service-sign-up-user-flows"></a>Schützen Ihrer API, die als API-Connector in Benutzerflows für die Self-Service-Registrierung von Azure AD External Identities verwendet wird
 
@@ -63,7 +63,7 @@ Zum Erstellen eines Zertifikats können Sie den [Azure Key Vault](../../key-vaul
 
 Sie können dann [das Zertifikat exportieren](../../key-vault/certificates/how-to-export-certificate.md).
 
-#### <a name="option-2-prepare-a-self-sized-certificate-using-powershell-module"></a>Option 2: Vorbereiten eines selbstsignierten Zertifikats per PowerShell-Modul
+#### <a name="option-2-prepare-a-self-signed-certificate-using-powershell"></a>Option 2: Erstellen eines selbstsignierten Zertifikats mit PowerShell
 
 [!INCLUDE [active-directory-b2c-create-self-signed-certificate](../../../includes/active-directory-b2c-create-self-signed-certificate.md)]
 
@@ -93,7 +93,7 @@ Um ein neues Zertifikat in einen bestehenden API-Anschluss hochzuladen, wählen 
 
 ## <a name="api-key-authentication"></a>Authentifizierung mit API-Schlüssel
 
-Von einigen Dienste wird ein API-Schlüsselmechanismus verwendet, um den Zugriff auf Ihre HTTP-Endpunkte während der Entwicklung zu verschleiern. In diesem Fall muss der Aufrufer einen eindeutigen Schlüssel als HTTP-Header oder HTTP-Abfrageparameter einschließen. Für [Azure Functions](../../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) können Sie dies erreichen, indem Sie `code` als Abfrageparameter in die **Endpunkt-URL** Ihres API-Connectors einschließen. Beispiel: `https://contoso.azurewebsites.net/api/endpoint`<b>`?code=0123456789`</b>. 
+Von einigen Diensten wird ein API-Schlüsselmechanismus verwendet, um den Zugriff auf Ihre HTTP-Endpunkte während der Entwicklung zu verschleiern. In diesem Fall muss der Aufrufer einen eindeutigen Schlüssel als HTTP-Header oder HTTP-Abfrageparameter einschließen. Für [Azure Functions](../../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) können Sie dies erreichen, indem Sie `code` als Abfrageparameter in die **Endpunkt-URL** Ihres API-Connectors einschließen. Beispiel: `https://contoso.azurewebsites.net/api/endpoint`<b>`?code=0123456789`</b>. 
 
 Hierbei handelt es sich nicht um einen Mechanismus, der allein in der Produktion verwendet werden sollte. Daher ist die Konfiguration für die Standard- oder Zertifikatauthentifizierung immer erforderlich. Wenn Sie für Entwicklungszwecke keine Authentifizierungsmethode implementieren möchten (nicht empfohlen), können Sie in der API-Connectorkonfiguration die Standardauthentifizierung auswählen und temporäre Werte für `username` und `password` verwenden, die von der API ignoriert werden können, während Sie die ordnungsgemäße Autorisierung implementieren.
 

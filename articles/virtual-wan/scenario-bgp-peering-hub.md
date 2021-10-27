@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 08/06/2021
 ms.author: cherylmc
-ms.openlocfilehash: e570e5f06af814a6d0cbb581275d1c70ebf0df8a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 5cc5b3dd26d0cb88460fabbd2ceb3cd28b107121
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124780792"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130129071"
 ---
 # <a name="scenario-bgp-peering-with-a-virtual-hub-preview"></a>Szenario: BGP-Peering mit einem virtuellen Hub (Vorschau)
 
@@ -61,6 +61,8 @@ Der Router für virtuelle Hubs bietet auch die Möglichkeit, selbst eine Peering
    | Resource | Begrenzung |
    |---|---|
    |  Anzahl von Routen, die jeder BGP-Peer dem virtuellen Hub anbieten kann| Der Hub kann nur maximal 10.000 Routen (insgesamt) von seinen verbundenen Ressourcen akzeptieren. Wenn ein virtueller Hub beispielsweise über insgesamt 6.000 Routen aus den verbundenen virtuellen Netzwerken, Branches, virtuellen Hubs usw. verfügt, kann ein NVA nur bis zu 4.000 Routen anbieten, wenn ein neues BGP-Peering mit diesem NVA konfiguriert wird. |
+* Routen von einer virtuellen Netzwerkappliance in einem virtuellen Netzwerk, die spezifischer sind als der Adressraum des virtuellen Netzwerks, werden nicht an die lokale Umgebung weiterverteilt, wenn sie dem virtuellen Hub über BGP angekündigt werden.
+* Datenverkehr an Adressen in dem virtuellen Netzwerk, das direkt mit dem virtuellen Hub verbunden ist, kann nicht so konfiguriert werden, dass ein Routing über die virtuelle Netzwerkappliance mithilfe eines BGP-Peerings zwischen dem Hub und dem virtuellen Netzwerk erfolgt. Dies liegt daran, dass der virtuelle Hub automatisch über Systemrouten informiert wird, die Adressen im virtuellen Spoke-Netzwerk zugeordnet sind, sobald die Spoke-VNet-Verbindung erstellt wird. Diese automatisch erlernten Systemrouten werden den Routen vorgezogen, die vom Hub über BGP erlernt werden.
 
 ## <a name="bgp-peering-scenarios"></a>BGP-Peeringszenarios
 

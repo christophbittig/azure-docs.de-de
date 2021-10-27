@@ -1,164 +1,172 @@
 ### YamlMime:Landing
 title: Dokumentation zu Azure App Configuration
-summary: 'Hier erfahren Sie, wie Sie Azure App Configuration verwenden. Dabei handelt es sich um einen verwalteten Dienst, mit dem Entwickler ihre Anwendungs- und Featureeinstellungen einfach und sicher zentralisieren können.'
+summary: Hier erfahren Sie, wie Sie Azure App Configuration verwenden. Dabei handelt es sich um einen verwalteten Dienst, mit dem Entwickler ihre Anwendungs- und Featureeinstellungen einfach und sicher zentralisieren können.
 metadata:
   title: Dokumentation zu Azure App Configuration
-  description: 'Hier erfahren Sie, wie Sie Azure App Configuration verwenden. Dabei handelt es sich um einen verwalteten Dienst, mit dem Entwickler ihre Anwendungs- und Featureeinstellungen einfach und sicher zentralisieren können.'
+  description: Hier erfahren Sie, wie Sie Azure App Configuration verwenden. Dabei handelt es sich um einen verwalteten Dienst, mit dem Entwickler ihre Anwendungs- und Featureeinstellungen einfach und sicher zentralisieren können.
   author: AlexandraKemperMS
   ms.author: alkemper
   ms.service: azure-app-configuration
   ms.topic: landing-page
   ms.date: 02/03/2020
+  ms.openlocfilehash: 0cec6db0776190d37901a8a572b209bff79475ff
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130227091"
 landingContent:
-  - title: Informationen zu Azure App Configuration
-    linkLists:
-      - linkListType: overview
-        links:
-          - text: Was ist Azure App Configuration?
-            url: overview.md
-          - text: Häufig gestellte Fragen
-            url: faq.yml
-          - text: Bewährte Methoden
-            url: howto-best-practices.md
-      - linkListType: video
-        links:
-          - text: Erste Schritte mit Azure App Configuration
-            url: 'https://channel9.msdn.com/Shows/Azure-Friday/Getting-started-with-Azure-App-Configuration'
-          - text: Funktionsverwaltung
-            url: 'https://channel9.msdn.com/Shows/NET-Community-Standups/ASPNET-Community-Standup-May-21st-2019-Introducing-MicrosoftFeatureManagement'
-          - text: Einfache zentralisierte Konfiguration
-            url: 'https://channel9.msdn.com/Events/dotnetConf/NET-Conf-2019/B210'
-          - text: Azure App Configuration in The Cloud Native Show
-            url: 'https://www.youtube.com/watch?v=DJqmA5PcfzE'
-          - text: Rollout neuer Features
-            url: 'https://channel9.msdn.com/Shows/Azure-Friday/How-Azure-App-Configuration-helps-developers-roll-out-new-features?ocid=AID747781&wt.mc_id=azfr-c9-scottha&wt.mc_id=CFID0553'
-      - linkListType: whats-new
-        links:
-          - text: Aktuelle Ankündigungen
-            url: 'https://github.com/Azure/AppConfiguration-Announcements/issues/'
-          - text: Azure-Updateinformationen
-            url: 'https://azure.microsoft.com/updates/?query=%22App%20Configuration%22'
-      - linkListType: concept
-        links:
-          - text: Schlüssel und Werte
-            url: concept-key-value.md
-          - text: Point-in-Time-Momentaufnahme
-            url: concept-point-time-snapshot.md
-  - title: Erstellen und Programmieren mit Azure App Configuration
-    linkLists:
-      - linkListType: quickstart
-        links:
-          - text: "Programmieren einer ASP.NET\_Core-App"
-            url: quickstart-aspnet-core-app.md
-          - text: Programmieren einer .NET Core-App
-            url: quickstart-dotnet-core-app.md
-          - text: Programmieren einer .NET Framework-App
-            url: quickstart-dotnet-app.md
-          - text: Programmieren einer Azure Functions-App in C#
-            url: quickstart-azure-functions-csharp.md
-          - text: "Programmieren einer Java\_Spring-App"
-            url: quickstart-java-spring-app.md
-          - text: Programmieren einer Python-App
-            url: quickstart-python.md
-          - text: Azure Resource Manager-Vorlage
-            url: quickstart-resource-manager.md
-          - text: Programmieren einer .NET-App in Visual Studio
-            url: /visualstudio/azure/vs-azure-tools-connected-services-app-configuration
-      - linkListType: tutorial
-        links:
-          - text: "Verwenden einer dynamischen Konfiguration in ASP.NET\_Core"
-            url: enable-dynamic-configuration-aspnet-core.md
-          - text: "Verwenden einer dynamischen Konfiguration in .NET\_Core"
-            url: enable-dynamic-configuration-dotnet-core.md
-          - text: "Verwenden einer dynamischen Konfiguration in .NET\_Framework"
-            url: enable-dynamic-configuration-dotnet.md
-          - text: Verwenden einer dynamischen Konfiguration in Azure Functions
-            url: enable-dynamic-configuration-azure-functions-csharp.md
-          - text: Verwenden einer dynamischen Konfiguration in Spring Boot
-            url: enable-dynamic-configuration-java-spring-app.md
-          - text: Integrieren der dynamischen Konfiguration mithilfe des Pushmodells in .NET Core
-            url: enable-dynamic-configuration-dotnet-core-push-refresh.md
-          - text: Integrieren der dynamischen Konfiguration mithilfe des Pushmodells in Java Spring
-            url: enable-dynamic-configuration-java-spring-push-refresh.md
-      - linkListType: tutorial
-        links:
-          - text: Pushen von Daten mithilfe von Azure Pipelines
-            url: push-kv-devops-pipeline.md
-          - text: Pullen von Daten mithilfe von Azure Pipelines
-            url: pull-key-value-devops-pipeline.md
-          - text: Pushen von Daten mithilfe von GitHub Actions
-            url: concept-github-action.md
-          - text: Exportieren in eine Projektkonfigurationsdatei
-            url: integrate-ci-cd-pipeline.md
-          - text: Durchführen der Bereitstellung für Kubernetes mit Helm
-            url: integrate-kubernetes-deployment-helm.md
-      - linkListType: tutorial
-        links:
-          - text: Verwenden von Key Vault-Verweisen in einer ASP.NET Core-App
-            url: use-key-vault-references-dotnet-core.md
-          - text: "Verwenden von Key Vault-Verweisen in einer Spring\_Boot-App"
-            url: use-key-vault-references-spring-boot.md
-      - linkListType: sample
-        links:
-          - text: Arbeiten mit Schlüsselwerten in der Azure CLI
-            url: scripts/cli-work-with-keys.md
-  - title: Hinzufügen von Featureflags zu einer App
-    linkLists:
-      - linkListType: concept
-        links:
-          - text: Was sind Featureflags?
-            url: concept-feature-management.md
-      - linkListType: quickstart
-        links:
-          - text: ASP.NET Core-App
-            url: quickstart-feature-flag-aspnet-core.md
-          - text: .NET Core-App
-            url: use-feature-flags-dotnet-core.md
-          - text: .NET Framework-App
-            url: quickstart-feature-flag-dotnet.md
-          - text: Spring Boot-App
-            url: quickstart-feature-flag-spring-boot.md
-      - linkListType: tutorial
-        links:
-          - text: Verwalten von Featureflags
-            url: manage-feature-flags.md
-          - text: "Verwenden von Featureflags in ASP.NET\_Core"
-            url: use-feature-flags-dotnet-core.md
-          - text: Verwenden von Featureflags in Spring Boot
-            url: use-feature-flags-spring-boot.md
-          - text: Aktivieren einer Funktion für bestimmte Benutzer/Gruppen
-            url: howto-targetingfilter-aspnet-core.md
-      - linkListType: reference
-        links:
-          - text: .NET Core-Bibliothek
-            url: /dotnet/api/microsoft.featuremanagement
-          - text: .NET Core-Filterbibliothek
-            url: /dotnet/api/microsoft.featuremanagement.featurefilters
-  - title: Konfigurations-SDKs und Beispiele
-    linkLists:
-      - linkListType: sample
-        links:
-          - text: Azure CLI-Beispiele
-            url: cli-samples.md
-      - linkListType: reference
-        links:
-          - text: Azure CLI
-            url: /cli/azure/appconfig
-          - text: PowerShell
-            url: /powershell/module/az.appconfiguration/
-          - text: Terraform
-            url: 'https://www.terraform.io/docs/providers/azurerm/r/app_configuration.html'
-          - text: .NET Core-Anbieter
-            url: /dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration
-          - text: "Spring\_Boot-Anbieter"
-            url: 'https://github.com/microsoft/spring-cloud-azure/tree/master/'
-          - text: Azure SDK für .NET
-            url: 'https://go.microsoft.com/fwlink/?linkid=2092056'
-          - text: Azure SDK für Java
-            url: 'https://go.microsoft.com/fwlink/?linkid=2098196'
-          - text: Azure SDK für Python
-            url: 'https://go.microsoft.com/fwlink/?linkid=2103727'
-          - text: Azure SDK für JavaScript
-            url: 'https://go.microsoft.com/fwlink/?linkid=2103664'
-          - text: REST-API auf Datenebene
-            url: rest-api.md
+- title: Informationen zu Azure App Configuration
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Azure App Configuration?
+      url: overview.md
+    - text: Häufig gestellte Fragen
+      url: faq.yml
+    - text: Bewährte Methoden
+      url: howto-best-practices.md
+  - linkListType: video
+    links:
+    - text: Erste Schritte mit Azure App Configuration
+      url: https://channel9.msdn.com/Shows/Azure-Friday/Getting-started-with-Azure-App-Configuration
+    - text: Funktionsverwaltung
+      url: https://channel9.msdn.com/Shows/NET-Community-Standups/ASPNET-Community-Standup-May-21st-2019-Introducing-MicrosoftFeatureManagement
+    - text: Einfache zentralisierte Konfiguration
+      url: https://channel9.msdn.com/Events/dotnetConf/NET-Conf-2019/B210
+    - text: Azure App Configuration in The Cloud Native Show
+      url: https://www.youtube.com/watch?v=DJqmA5PcfzE
+    - text: Rollout neuer Features
+      url: https://channel9.msdn.com/Shows/Azure-Friday/How-Azure-App-Configuration-helps-developers-roll-out-new-features?ocid=AID747781&wt.mc_id=azfr-c9-scottha&wt.mc_id=CFID0553
+  - linkListType: whats-new
+    links:
+    - text: Aktuelle Ankündigungen
+      url: https://github.com/Azure/AppConfiguration-Announcements/issues/
+    - text: Azure-Updateinformationen
+      url: https://azure.microsoft.com/updates/?query=%22App%20Configuration%22
+  - linkListType: concept
+    links:
+    - text: Schlüssel und Werte
+      url: concept-key-value.md
+    - text: Point-in-Time-Momentaufnahme
+      url: concept-point-time-snapshot.md
+- title: Erstellen und Programmieren mit Azure App Configuration
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Programmieren einer ASP.NET Core-App
+      url: quickstart-aspnet-core-app.md
+    - text: Programmieren einer .NET Core-App
+      url: quickstart-dotnet-core-app.md
+    - text: Programmieren einer .NET Framework-App
+      url: quickstart-dotnet-app.md
+    - text: Programmieren einer Azure Functions-App in C#
+      url: quickstart-azure-functions-csharp.md
+    - text: Programmieren einer Java Spring-App
+      url: quickstart-java-spring-app.md
+    - text: Programmieren einer Python-App
+      url: quickstart-python.md
+    - text: Azure Resource Manager-Vorlage
+      url: quickstart-resource-manager.md
+    - text: Programmieren einer .NET-App in Visual Studio
+      url: /visualstudio/azure/vs-azure-tools-connected-services-app-configuration
+  - linkListType: tutorial
+    links:
+    - text: Verwenden einer dynamischen Konfiguration in ASP.NET Core
+      url: enable-dynamic-configuration-aspnet-core.md
+    - text: Verwenden einer dynamischen Konfiguration in ASP.NET (.NET Framework)
+      url: enable-dynamic-configuration-aspnet-netfx.md
+    - text: Verwenden einer dynamischen Konfiguration in .NET Core
+      url: enable-dynamic-configuration-dotnet-core.md
+    - text: Verwenden einer dynamischen Konfiguration in .NET Framework
+      url: enable-dynamic-configuration-dotnet.md
+    - text: Verwenden einer dynamischen Konfiguration in Azure Functions
+      url: enable-dynamic-configuration-azure-functions-csharp.md
+    - text: Verwenden einer dynamischen Konfiguration in Spring Boot
+      url: enable-dynamic-configuration-java-spring-app.md
+    - text: Integrieren der dynamischen Konfiguration mithilfe des Pushmodells in .NET Core
+      url: enable-dynamic-configuration-dotnet-core-push-refresh.md
+    - text: Integrieren der dynamischen Konfiguration mithilfe des Pushmodells in Java Spring
+      url: enable-dynamic-configuration-java-spring-push-refresh.md
+  - linkListType: tutorial
+    links:
+    - text: Pushen von Daten mithilfe von Azure Pipelines
+      url: push-kv-devops-pipeline.md
+    - text: Pullen von Daten mithilfe von Azure Pipelines
+      url: pull-key-value-devops-pipeline.md
+    - text: Pushen von Daten mithilfe von GitHub Actions
+      url: concept-github-action.md
+    - text: Exportieren in eine Projektkonfigurationsdatei
+      url: integrate-ci-cd-pipeline.md
+    - text: Durchführen der Bereitstellung für Kubernetes mit Helm
+      url: integrate-kubernetes-deployment-helm.md
+  - linkListType: tutorial
+    links:
+    - text: Verwenden von Key Vault-Verweisen in einer ASP.NET Core-App
+      url: use-key-vault-references-dotnet-core.md
+    - text: Verwenden von Key Vault-Verweisen in einer Spring Boot-App
+      url: use-key-vault-references-spring-boot.md
+  - linkListType: sample
+    links:
+    - text: Arbeiten mit Schlüsselwerten in der Azure CLI
+      url: scripts/cli-work-with-keys.md
+- title: Hinzufügen von Featureflags zu einer App
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Was sind Featureflags?
+      url: concept-feature-management.md
+  - linkListType: quickstart
+    links:
+    - text: ASP.NET Core-App
+      url: quickstart-feature-flag-aspnet-core.md
+    - text: .NET Core-App
+      url: use-feature-flags-dotnet-core.md
+    - text: .NET Framework-App
+      url: quickstart-feature-flag-dotnet.md
+    - text: Spring Boot-App
+      url: quickstart-feature-flag-spring-boot.md
+  - linkListType: tutorial
+    links:
+    - text: Verwalten von Featureflags
+      url: manage-feature-flags.md
+    - text: Verwenden von Featureflags in ASP.NET Core
+      url: use-feature-flags-dotnet-core.md
+    - text: Verwenden von Featureflags in Spring Boot
+      url: use-feature-flags-spring-boot.md
+    - text: Aktivieren einer Funktion für bestimmte Benutzer/Gruppen
+      url: howto-targetingfilter-aspnet-core.md
+  - linkListType: reference
+    links:
+    - text: .NET Core-Bibliothek
+      url: /dotnet/api/microsoft.featuremanagement
+    - text: .NET Core-Filterbibliothek
+      url: /dotnet/api/microsoft.featuremanagement.featurefilters
+- title: Konfigurations-SDKs und Beispiele
+  linkLists:
+  - linkListType: sample
+    links:
+    - text: Azure CLI-Beispiele
+      url: cli-samples.md
+  - linkListType: reference
+    links:
+    - text: Azure CLI
+      url: /cli/azure/appconfig
+    - text: PowerShell
+      url: /powershell/module/az.appconfiguration/
+    - text: Terraform
+      url: https://www.terraform.io/docs/providers/azurerm/r/app_configuration.html
+    - text: .NET Core-Anbieter
+      url: /dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration
+    - text: Spring Boot-Anbieter
+      url: https://github.com/microsoft/spring-cloud-azure/tree/master/
+    - text: Azure SDK für .NET
+      url: https://go.microsoft.com/fwlink/?linkid=2092056
+    - text: Azure SDK für Java
+      url: https://go.microsoft.com/fwlink/?linkid=2098196
+    - text: Azure SDK für Python
+      url: https://go.microsoft.com/fwlink/?linkid=2103727
+    - text: Azure SDK für JavaScript
+      url: https://go.microsoft.com/fwlink/?linkid=2103664
+    - text: REST-API auf Datenebene
+      url: rest-api.md

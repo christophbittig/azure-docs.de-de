@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cc7cfdf0c7cf578ea12bc1acf2c572445dd864c
-ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
+ms.openlocfilehash: 30e8d0234014e710506e0a6897edd218b93b442b
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129668369"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130178935"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Optionen für die kennwortlose Authentifizierung für Azure Active Directory
 
@@ -145,6 +145,7 @@ Die folgenden Anbieter bieten FIDO2-Sicherheitsschlüssel in verschiedenen Formf
 | IDmelon Technologies Inc. | ![j]              | ![j]| ![j]| ![j]| ![n]           | https://www.idmelon.com/#idmelon                                                                    |
 | Kensington                | ![j]              | ![j]| ![n]| ![n]| ![n]           | https://www.kensington.com/solutions/product-category/why-biometrics/                               |
 | KONA I                    | ![j]              | ![n]| ![j]| ![j]| ![n]           | https://konai.com/business/security/fido                                                            |
+| NEOWAVE                   | ![n]              | ![j]| ![j]| ![n]| ![n]           | https://neowave.fr/en/products/fido-range/                                                          |
 | Nymi                      | ![j]              | ![n]| ![j]| ![n]| ![n]           | https://www.nymi.com/nymi-band                                                                      | 
 | Octatco                   | ![j]              | ![j]| ![n]| ![n]| ![n]           | https://octatco.com/                                                                                |
 | OneSpan Inc.              | ![n]              | ![j]| ![n]| ![j]| ![n]           | https://www.onespan.com/products/fido                                                               |
@@ -154,7 +155,6 @@ Die folgenden Anbieter bieten FIDO2-Sicherheitsschlüssel in verschiedenen Formf
 | TrustKey-Lösungen        | ![j]              | ![j]| ![n]| ![n]| ![n]           | https://www.trustkeysolutions.com/security-keys/                                                    |
 | VinCSS                    | ![n]              | ![j]| ![n]| ![n]| ![n]           | https://passwordless.vincss.net                                                                     |
 | Yubico                    | ![j]              | ![j]| ![j]| ![n]| ![j]           | https://www.yubico.com/solutions/passwordless/                                                      |
-
 
 
 <!--Image references-->

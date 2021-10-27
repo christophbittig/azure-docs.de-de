@@ -1,23 +1,23 @@
 ---
-title: Geben Sie die Anforderung für den Dienste-REST-API-Ausgabe an
+title: Angeben der Ausstellungsanforderung für die Anforderungsdienst-REST-API (Vorschau)
 titleSuffix: Azure Active Directory Verifiable Credentials
 description: Erfahren Sie, wie Sie eine von Ihnen ausgestellte Nachweis Bescheinigung ausstellen können
 documentationCenter: ''
 author: barclayn
-manager: daveba
+manager: karenh444
 ms.service: active-directory
 ms.topic: reference
 ms.subservice: verifiable-credentials
 ms.date: 10/08/2021
 ms.author: barclayn
-ms.openlocfilehash: 6b1a33ee563123d5fb724f0bc29c3e7c753a86ea
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: 837b42b5cb46743b7d486def32d01ab2333db54a
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129811048"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130006677"
 ---
-# <a name="request-service-rest-api-issuance-specification-preview"></a>Spezifikation für die Ausgabe von Anforderungen an den Dienste-REST-API (Vorschau)
+# <a name="request-service-rest-api-issuance-specification-preview"></a>Spezifikation der Ausstellung für die Anforderungsdienst-REST-API (Vorschau)
 
 Azure Active Directory (Azure AD) verifizierbare Berechtigungsnachweise Anforderung Dienste-REST-API ermöglicht es Ihnen, einen verifizierbaren Berechtigungsnachweis auszustellen und zu überprüfen. In diesem Artikel wird die Dienste-REST-API für die Anforderung der Ausstellung von Dokumenten beschrieben.
 
@@ -34,10 +34,10 @@ Für die Anforderung des Dienste-REST-API sind folgende HTTP-Header erforderlich
 
 | Methode |Wert  |
 |---------|---------|
-|`Authorization`| Fügen Sie das Zugriffstoken als Bearer-Token an den Authorization-Header einer HTTP-Anforderung an. Beispiel: `Authorization: Bearer <token>`.|
+|`Authorization`| Fügen Sie das Zugriffstoken als Bearertoken an den Autorisierungsheader einer HTTP-Anforderung an. Beispiel: `Authorization: Bearer <token>`.|
 |`Content-Type`| `Application/json`|
 
-Konstruieren Sie eine HTTP-POST-Anforderung an die Dienste-REST-API. Ersetzen Sie die `{tenantID}` durch Ihre [Mieter-ID](verifiable-credentials-configure-issuer.md#gather-credentials-and-environment-details-to-set-up-your-sample-application) oder Ihren Mieternamen.
+Erstellen Sie eine HTTP POST-Anforderung für die Anforderungsdienst-REST-API. Ersetzen Sie die `{tenantID}` durch Ihre [Mieter-ID](verifiable-credentials-configure-issuer.md#gather-credentials-and-environment-details-to-set-up-your-sample-application) oder Ihren Mieternamen.
 
 ```http
 https://beta.did.msidentity.com/v1.0/{tenantID}/verifiablecredentials/request
@@ -63,7 +63,7 @@ Authorization: Bearer  <token>
 }
 ```  
 
-Für die Anforderung der Dienste-REST-API ist die folgende Berechtigung erforderlich. Weitere Informationen finden Sie unter [Erteilung von Berechtigungen zum Abrufen von Zugriffstokens](verifiable-credentials-configure-tenant.md#31-grant-permissions-to-get-access-tokens).
+Für die Anforderung der Dienste-REST-API ist die folgende Berechtigung erforderlich. Weitere Informationen finden Sie unter [Erteilen von Berechtigungen zum Abrufen von Zugriffstoken](verifiable-credentials-configure-tenant.md#31-grant-permissions-to-get-access-tokens).
 
 | Berechtigungstyp | Berechtigung  |
 |---------|---------|
@@ -89,6 +89,7 @@ Die Nutzdaten der Ausgabeanforderung enthalten Informationen über Ihre Anforder
     },
     "issuance": {
         "type": "VerifiedCredentialExpert",
+        "manifest": "https://beta.did.msidentity.com/v1.0/12345678-0000-0000-0000-000000000000/verifiableCredential/contracts/VerifiedCredentialExpert",
         "pin": {
             "value": "3539",
             "length": 4
@@ -114,7 +115,7 @@ Die Nutzlast enthält die folgenden Eigenschaften.
 
 ### <a name="requestregistration-type"></a>RequestRegistration-Typ
 
-Der Typ RequestRegistration dient der Informationsregistrierung für den Ausgeber. Der RequestRegistration-Typ enthält die folgenden Eigenschaften:
+Der Typ „RequestRegistration“ stellt Informationen zur Registrierung für den Aussteller bereit. Der Typ „RequestRegistration“ enthält die folgenden Eigenschaften:
 
 |Eigenschaft |type |BESCHREIBUNG |
 |---------|---------|---------|
@@ -160,17 +161,17 @@ Der PIN-Typ definiert einen PIN-Code, der als Teil der Ausgabe angezeigt werden 
 
 ### <a name="callback-type"></a>Rückruftyp
 
-Die Dienste-REST-API für Anforderungen erzeugt mehrere Ereignisse für den Callback-Endpunkt. Diese Ereignisse ermöglichen es Ihnen, die Benutzeroberfläche zu aktualisieren und den Prozess fortzusetzen, sobald die Ergebnisse an die Anwendung zurückgegeben werden. Der Typ Callback enthält die folgenden Eigenschaften:
+Die Anforderungsdienst-REST-API generiert mehrere Ereignisse für den Rückrufendpunkt. Mit diesen Ereignissen können Sie die Benutzeroberfläche aktualisieren und den Prozess fortsetzen, sobald die Ergebnisse an die Anwendung zurückgegeben werden. Der Typ „Callback“ (Rückruf) enthält die folgenden Eigenschaften:
 
 |Eigenschaft |type |BESCHREIBUNG |
 |---------|---------|---------|
-| `url` | Zeichenfolge| URI auf den Callback-Endpunkt Ihrer Anwendung. |
-| `state` | Zeichenfolge| Assoziiert mit dem in der ursprünglichen Nutzlast übergebenen Zustand. |
-| `headers` | Zeichenfolge| [Optional] Sie können eine Sammlung von HTTP-Headern einfügen, die von der empfangenden Seite der POST-Nachricht benötigt werden. Die Header sollten nur den Api-Schlüssel oder einen für die Autorisierung erforderlichen Header enthalten.|
+| `url` | Zeichenfolge| URI zum Rückrufendpunkt Ihrer Anwendung. |
+| `state` | Zeichenfolge| Assoziiert mit dem in den ursprünglichen Nutzdaten übergebenen Zustand. |
+| `headers` | Zeichenfolge| [Optional] Sie können eine Sammlung von HTTP-Headern einfügen, die von der empfangenden Seite der POST-Nachricht benötigt werden. Die Header dürfen nur den API-Schlüssel oder einen für die Autorisierung erforderlichen Header enthalten.|
 
 ## <a name="successful-response"></a>Erfolgreiche Antwort
 
-Bei Erfolg gibt diese Methode einen HTTP 201 Created-Antwortcode und eine Sammlung von Ereignisobjekten im Antwortkörper zurück. Das folgende JSON zeigt eine erfolgreiche Antwort:
+Bei Erfolg gibt diese Methode einen „HTTP 201 Created“-Antwortcode und eine Sammlung von Ereignisobjekten im Antworttext zurück. Im folgenden JSON-Beispiel wird eine erfolgreiche Antwort dargestellt:
 
 ```json
 {  
@@ -185,7 +186,7 @@ Die Antwort enthält die folgenden Eigenschaften:
 
 |Eigenschaft |type |BESCHREIBUNG |
 |---------|---------|---------|
-| `requestId`| Zeichenfolge | Autogenerierte Korrelations-ID. Der [Callback](#callback-events) verwendet die gleiche Anforderung. Ermöglicht die Verfolgung der Anforderung und ihrer Rückrufe. |
+| `requestId`| Zeichenfolge | Automatisch generierte Korrelations-ID. Der [Callback](#callback-events) verwendet die gleiche Anforderung. Ermöglicht die Verfolgung der Anforderung und ihrer Rückrufe. |
 | `url`|  Zeichenfolge| Eine URL, mit der die Authenticator-App gestartet wird und der Ausstellungsprozess beginnt. Sie können dem Benutzer diese URL präsentieren, wenn er den QR-Code nicht scannen kann. |
 | `expiry`| integer| Gibt an, wann die Antwort abläuft. |
 | `qrCode`| Zeichenfolge | Ein QR-Code, den der Benutzer scannen kann, um den Ausgabestrom zu starten. |
@@ -194,7 +195,7 @@ Wenn Ihre App die Antwort erhält, muss sie dem Benutzer den QR-Code präsentier
 
 ## <a name="error-response"></a>Fehlerantwort
 
-Auch Fehlerantworten können zurückgegeben werden, damit die Anwendung sie entsprechend behandeln kann. Das folgende JSON zeigt eine nicht autorisierte Fehlermeldung.
+Auch Fehlerantworten können zurückgegeben werden, damit die Anwendung sie entsprechend behandeln kann. Im folgenden JSON-Beispiel wird eine nicht autorisierte Fehlermeldung dargestellt.
 
 
 ```json
@@ -212,7 +213,7 @@ Die Antwort enthält die folgenden Eigenschaften:
 
 |Eigenschaft |type |BESCHREIBUNG |
 |---------|---------|---------|
-| `requestId`| Zeichenfolge | Automatisch generierte ID der Anforderung.|
+| `requestId`| Zeichenfolge | Automatisch generierte Anforderungs-ID.|
 | `date`| date| Der Zeitpunkt des Fehlers. |
 | `error.code` | Zeichenfolge| Der zurückgegebene Fehlercode. |
 | `error.message`| Zeichenfolge| Die Fehlermeldung. |
@@ -224,7 +225,7 @@ Der Callback-Endpunkt wird aufgerufen, wenn ein Benutzer den QR-Code scannt, den
 
 |Eigenschaft |type |BESCHREIBUNG |
 |---------|---------|---------|
-| `requestId`| Zeichenfolge | Wird der ursprünglichen Anforderung zugeordnet, als die Nutzdaten an den Dienst für überprüfbare Nachweise gesendet wurden.|
+| `requestId`| Zeichenfolge | Wird der ursprünglichen Anforderung zugeordnet, wenn die Nutzdaten an den Nachweisdienst gesendet werden.|
 | `code` |Zeichenfolge |Der Code, der zurückgegeben wird, wenn die Anforderung von der Authentifikator-App abgerufen wurde. Mögliche Werte: <ul><li>`request_retrieved` der Benutzer hat den QR-Code gescannt oder auf den Link geklickt, der den Ausstellungsablauf startet.</li><li>`issuance_successful` die Ausstellung der überprüfbaren Berechtigungsnachweise war erfolgreich.</li><li>`Issuance_error` bei der Ausstellung ist ein Fehler aufgetreten. Einzelheiten finden Sie in der Eigenschaft `error`.</li></ul>    |
 | `state` |Zeichenfolge| Der Status gibt den Statuswert zurück, den Sie in der ursprünglichen Nutzlast übergeben haben.   |
 | `error`| error | Wenn `code` `Issuance_error` ist, enthält diese Eigenschaft Informationen über den Fehler.| 
@@ -279,4 +280,4 @@ Das folgende Beispiel zeigt eine Callback-Payload, wenn ein Fehler aufgetreten i
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Lernen Sie [, wie man die Dienste-REST-API für Anforderungen aufruft](get-started-request-api.md)
+Lesen Sie die Informationen zum [Aufrufen der Anforderungsdienst-REST-API](get-started-request-api.md).

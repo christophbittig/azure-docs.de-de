@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: b1be9681246711cfd722bdc4d4806d75875f3429
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: d405d08f7050da3b3767c23b37f8c71c2f499282
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122342730"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129998654"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure Blob Storage-Trigger für Azure Functions
 
@@ -334,9 +334,11 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 |**direction** | – | Muss auf `in` festgelegt sein. Diese Eigenschaft wird automatisch festgelegt, wenn Sie den Trigger im Azure Portal erstellen. Ausnahmen sind im Abschnitt [Verwendung](#usage) angegeben. |
 |**name** | – | Der Name der Variablen, die das Blob im Funktionscode darstellt. |
 |**path** | **BlobPath** |Der zu überwachende [Container](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources).  Kann ein [Blobnamensmuster](#blob-name-patterns) sein. |
-|**connection** | **Connection** | Der Name einer App-Einstellung, die die Storage-Verbindungszeichenfolge für diese Bindung enthält. Falls der Name der App-Einstellung mit „AzureWebJobs“ beginnt, können Sie hier nur den Rest des Namens angeben. Wenn Sie `connection` also beispielsweise auf „MyStorage“ festlegen, sucht die Functions-Laufzeit nach einer App-Einstellung namens „AzureWebJobsMyStorage“. Ohne Angabe für `connection` verwendet die Functions-Laufzeit die standardmäßige Storage-Verbindungszeichenfolge aus der App-Einstellung `AzureWebJobsStorage`.<br><br>Bei der Verbindungszeichenfolge muss es sich um eine Verbindungszeichenfolge für ein allgemeines Speicherkonto (nicht für ein [Blobspeicherkonto](../storage/common/storage-account-overview.md#types-of-storage-accounts)) handeln.<br><br>Wenn Sie [Version 5.x oder höher der Erweiterung](./functions-bindings-storage-blob.md#storage-extension-5x-and-higher) verwenden, können Sie anstelle einer Verbindungszeichenfolge einen Verweis auf einen Konfigurationsabschnitt angeben, der die Verbindung definiert. Siehe [Verbindungen](./functions-reference.md#connections).|
+|**connection** | **Connection** | Der Name einer App-Einstellung oder -Einstellungssammlung, die angibt, wie eine Verbindung mit Azure-Blobs hergestellt wird. Siehe [Verbindungen](#connections).|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
+
+[!INCLUDE [functions-storage-blob-connections](../../includes/functions-storage-blob-connections.md)]
 
 ## <a name="usage"></a>Verwendung
 

@@ -1,20 +1,20 @@
 ---
 title: Hinzufügen einer Wärmebildebene zu einer Karte | Microsoft Azure Maps
 description: Informationen zum Erstellen eines Wärmebilds. Erfahren Sie, wie Sie einer Karte mit dem Azure Maps Web SDK eine Wärmebildebene hinzufügen. Lernen Sie, Wärmebildebenen anzupassen.
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 07/29/2019
-ms.topic: conceptual
+author: stevemunk
+ms.author: v-munksteve
+ms.date: 10/06/2021
+ms.topic: how-to
 ms.service: azure-maps
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 181cd714f85195157b767062cac99caadd32e817
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: e3827deeb1b87471f215028ac7479a83c24231fb
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123432754"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129992634"
 ---
-# <a name="add-a-heat-map-layer"></a>Hinzufügen einer Wärmebildebene
+# <a name="add-a-heat-map-layer-to-a-map"></a>Hinzufügen einer Wärmebildebene zu einer Karte
 
 Bei Wärmebildern (auch Punktdichtekarten genannt) handelt es sich um einen Datenvisualisierungstyp. Sie dienen dazu, die Dichte von Daten mithilfe von Farbbereichen darzustellen und die „Hotspots“ der Daten auf einer Karte zu zeigen. Wärmebilder sind eine hervorragende Möglichkeit, Datensätze mit einer großen Anzahl von Punkten zu rendern.
 
@@ -65,14 +65,14 @@ Hier finden Sie das vollständige, ausführbare Codebeispiel für den oben erlä
 
 Im vorherigen Beispiel wurde das Wärmebild angepasst, indem der Radius und die Deckkraft angepasst wurden. Auf der Wärmebildebene können verschiedene Optionen angepasst werden, z. B.:
 
-* `radius`: Definiert einen Pixelradius, in dem die einzelnen Datenpunkte gerendert werden sollen. Der Radius kann als feste Zahl oder als Ausdruck festgelegt werden. Mithilfe eines Ausdrucks können Sie den Radius auf der Grundlage des Zoomfaktors skalieren. Er stellt dann ein zusammenhängendes räumliches Gebiet auf der Karte dar (beispielsweise einen 5-Meilen-Radius).
-* `color`: Gibt an, welche Farben für das Wärmebild verwendet werden. Ein Farbverlauf ist ein häufiges Merkmal von Wärmebildern. Sie können den Effekt mit einem `interpolate`-Ausdruck erreichen. Sie können auch einen `step`-Ausdruck für die farbige Darstellung des Wärmebilds verwenden. In diesem Fall wird die Dichte visuell in Bereiche gegliedert, die einer Kontur- oder Radarkarte ähneln. Durch diese Farbpaletten werden die Farben kleinsten bis zum größten Dichtewert definiert.
+- `radius`: Definiert einen Pixelradius, in dem die einzelnen Datenpunkte gerendert werden sollen. Der Radius kann als feste Zahl oder als Ausdruck festgelegt werden. Mithilfe eines Ausdrucks können Sie den Radius auf der Grundlage des Zoomfaktors skalieren. Er stellt dann ein zusammenhängendes räumliches Gebiet auf der Karte dar (beispielsweise einen 5-Meilen-Radius).
+- `color`: Gibt an, welche Farben für das Wärmebild verwendet werden. Ein Farbverlauf ist ein häufiges Merkmal von Wärmebildern. Sie können den Effekt mit einem `interpolate`-Ausdruck erreichen. Sie können auch einen `step`-Ausdruck für die farbige Darstellung des Wärmebilds verwenden. In diesem Fall wird die Dichte visuell in Bereiche gegliedert, die einer Kontur- oder Radarkarte ähneln. Durch diese Farbpaletten werden die Farben kleinsten bis zum größten Dichtewert definiert.
 
   Sie geben die Farbwerte für Wärmebilder als Ausdruck im `heatmap-density`-Wert an. Die Farbe des Bereichs, in dem keine Daten vorhanden sind, wird bei Index 0 des „Interpolation“-Ausdrucks oder der Standardfarbe eines „abgestuften“ Ausdrucks definiert. Sie können diesen Wert verwenden, um eine Hintergrundfarbe zu definieren. Häufig wird hierfür ein transparenter Wert oder ein halbtransparentes Schwarz festgelegt.
 
   Nachfolgend finden Sie Beispiele für Farbausdrücke:
 
-  | Ausdruck für Farbinterpolation | Ausdruck für eine abgestufte Farbpalette | 
+  | Ausdruck für Farbinterpolation | Ausdruck für eine abgestufte Farbpalette |
   |--------------------------------|--------------------------|
   | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;'interpolate',<br/>&nbsp;&nbsp;&nbsp;&nbsp;\['linear'\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;\['heatmap-density'\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;0, 'transparent',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.01, 'purple',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.5, '#fb00fb',<br/>&nbsp;&nbsp;&nbsp;&nbsp;1, '#00c3ff'<br/>\] | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;'step',<br/>&nbsp;&nbsp;&nbsp;&nbsp;\['heatmap-density'\],<br/>&nbsp;&nbsp;&nbsp;&nbsp;'transparent',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.01, 'navy',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.25, 'green',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.50, 'yellow',<br/>&nbsp;&nbsp;&nbsp;&nbsp;0.75, 'red'<br/>\] |
 
@@ -118,11 +118,13 @@ Der `zoom`-Ausdruck kann nur in `step`- und `interpolate`-Ausdrücken verwendet 
 
 > [!TIP]
 > Wenn Sie das Clustering für die Datenquelle aktivieren, werden die Punkte, die nah beieinander liegen, zu einem Punkt gruppiert. Sie können die Punktzahl der einzelnen Cluster als Gewichtungsausdruck für das Wärmebild verwenden. Dadurch kann die Anzahl der zu rendernden Punkte erheblich reduziert werden. Die Anzahl der Punkte in einem Cluster wird wie im Folgenden veranschaulicht in einer `point_count`-Eigenschaft der point-Funktion gespeichert.
+>
 > ```JavaScript
 > var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 >    weight: ['get', 'point_count']
 > });
 > ```
+>
 > Wenn der Radius für das Clustering nur wenige Pixel beträgt, gibt es beim Rendern nur geringe sichtbare Unterschiede. Bei einem größeren Radius werden mehr Punkte zusammengefasst und damit die Leistung des Wärmebilds verbessert.
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -130,7 +132,7 @@ Der `zoom`-Ausdruck kann nur in `step`- und `interpolate`-Ausdrücken verwendet 
 Erfahren Sie mehr zu den in diesem Artikel verwendeten Klassen und Methoden:
 
 > [!div class="nextstepaction"]
-> [HtmlMarker-Klasse](/javascript/api/azure-maps-control/atlas.htmlmarker)
+> [HtmlMarker-Klasse](/javascript/api/azure-maps-control/atlas.layer.heatmaplayer)
 
 > [!div class="nextstepaction"]
 > [HeatMapLayerOptions-Schnittstelle](/javascript/api/azure-maps-control/atlas.heatmaplayeroptions)

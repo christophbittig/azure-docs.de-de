@@ -3,20 +3,20 @@ title: Referenz zur Integration von Azure Active Directory mit SAP SuccessFactor
 description: Fundierte technische Einblicke in die HR-Bereitstellung mit SAP SuccessFactors für Azure Active Directory.
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
 ms.workload: identity
-ms.date: 05/11/2021
+ms.date: 10/11/2021
 ms.author: kenwith
 ms.reviewer: chmutali
-ms.openlocfilehash: 7c7ba58383481e2b776b27015f98080b35f3084d
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 8c215c8b032fb3981771d2091b449b1934e78533
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109784933"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129990824"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-sap-successfactors"></a>Integration der Azure Active Directory-Bereitstellung mit SAP SuccessFactors 
 
@@ -31,7 +31,7 @@ In diesem Artikel wird erläutert, wie die Integration funktioniert und wie Sie 
 ## <a name="establishing-connectivity"></a>Herstellen von Verbindungen 
 Der Azure AD-Bereitstellungsdienst verwendet für Verbindungen mit den OData-API-Endpunkten von Employee Central die Standardauthentifizierung. Wenn Sie die App für die SuccessFactors-Bereitstellung einrichten, verwenden Sie den Parameter *Mandanten-URL* im Abschnitt mit den *Administratoranmeldeinformationen*, um die [URL des API-Rechenzentrums](https://apps.support.sap.com/sap/support/knowledge/en/2215682) zu konfigurieren. 
 
-Um die Konnektivität zwischen dem Azure AD-Bereitstellungsdienst und SuccessFactors besser zu schützen, können Sie der SuccessFactors-IP-Zulassungsliste mithilfe der unten beschriebenen Schritte die Azure AD-IP-Adressbereiche hinzufügen:
+Um die Konnektivität zwischen dem Azure AD-Bereitstellungsdienst und SuccessFactors besser zu schützen, können Sie die Azure AD-IP-Adressbereiche mithilfe der unten beschriebenen Schritte der SuccessFactors-IP-Positivliste hinzufügen:
 
 1. Laden Sie die [aktuellen IP-Adressbereiche](https://www.microsoft.com/download/details.aspx?id=56519) für die öffentliche Azure-Cloud herunter. 
 1. Öffnen Sie die Datei, und suchen Sie nach dem Tag **AzureActiveDirectory**. 
@@ -41,7 +41,7 @@ Um die Konnektivität zwischen dem Azure AD-Bereitstellungsdienst und SuccessFa
 
 1. Kopieren Sie alle IP-Adressbereiche, die innerhalb des-Elements *addressPrefixes* aufgeführt sind, und verwenden Sie den Bereich, um eine eigene Liste zur IP-Adresseinschränkung zu erstellen.
 1. Übersetzen Sie die CIDR-Werte in IP-Adressbereiche.  
-1. Melden Sie sich beim SuccessFactors-Administratorportal an, um der Zulassungsliste IP-Adressbereiche hinzuzufügen. Weitere Informationen finden Sie im [SAP-Supporthinweis Nr. 2253200](https://apps.support.sap.com/sap/support/knowledge/en/2253200). Sie können nun in diesem Tool [IP-Adressbereiche](https://answers.sap.com/questions/12882263/whitelisting-sap-cloud-platform-ip-address-range-i.html) eingeben. 
+1. Melden Sie sich beim SuccessFactors-Administratorportal an, um der Positivliste IP-Adressbereiche hinzuzufügen. Weitere Informationen finden Sie im [SAP-Supporthinweis Nr. 2253200](https://apps.support.sap.com/sap/support/knowledge/en/2253200). Sie können nun in diesem Tool [IP-Adressbereiche](https://answers.sap.com/questions/12882263/whitelisting-sap-cloud-platform-ip-address-range-i.html) eingeben. 
 
 ## <a name="supported-entities"></a>Unterstützte Entitäten
 Der Azure AD-Bereitstellungsdienst ruft für jeden Benutzer in SuccessFactors die folgenden Entitäten ab. Jede Entität wird mit dem Abfrageparameter *$expand* der OData-API erweitert. Weitere Informationen finden Sie unten in der Spalte *Abrufregel*. Einige Entitäten werden standardmäßig erweitert, während andere Entitäten nur erweitert werden, wenn ein bestimmtes Attribut in der Zuordnung vorhanden ist. 
@@ -72,6 +72,8 @@ Der Azure AD-Bereitstellungsdienst ruft für jeden Benutzer in SuccessFactors d
 | 22 | EmployeeClass (Auswahlliste)                 | employmentNav/jobInfoNav/employeeClassNav | Nur, wenn `employeeClass` zugeordnet ist |
 | 23 | EmplStatus (Auswahlliste)                    | employmentNav/jobInfoNav/emplStatusNav | Nur, wenn `emplStatus` zugeordnet ist |
 | 24 | AssignmentType (Auswahlliste)                | employmentNav/empGlobalAssignmentNav/assignmentTypeNav | Nur, wenn `assignmentType` zugeordnet ist |
+| 25 | Position                               | employmentNav/jobInfoNav/positionNav | Nur, wenn `positioNav` zugeordnet ist |
+| 26 | Manager-Benutzer                           | employmentNav/jobInfoNav/managerUserNav | Nur, wenn `managerUserNav` zugeordnet ist |
 
 ## <a name="how-full-sync-works"></a>Funktionsweise der vollständigen Synchronisierung
 Basierend auf der Attributzuordnung sendet der Azure AD-Bereitstellungsdienst während der vollständigen Synchronisierung die folgende GET-Abfrage der OData-API, um die tatsächlichen Daten aller aktiven Benutzer abzurufen. 
@@ -285,6 +287,16 @@ Wenn ein Benutzer in Employee Central über mehrere/gleichzeitige Aufträge verf
 1. Speichern Sie die Zuordnung. 
 1. Starten Sie die Bereitstellung erneut. 
 
+### <a name="retrieving-position-details"></a>Abrufen von Positionsdetails
+
+Der SuccessFactors-Connector unterstützt die Erweiterung des Positionsobjekts. Um Positionsobjektattribute wie Tätigkeitsstufen oder Positionsbezeichnungen in einer bestimmten Sprache zu erweitern und abzurufen, können Sie JSONPath-Ausdrücke (wie unten dargestellt) verwenden. 
+
+| Attributname | JSONPath-Ausdruck |
+| -------------- | ------------------- |
+| positionJobLevel | $.employmentNav.results[0].jobInfoNav.results[0].positionNav.jobLevel |
+| positionNameFR | $.employmentNav.results[0].jobInfoNav.results[0].positionNav.externalName_fr_FR |
+| positionNameDE | $.employmentNav.results[0].jobInfoNav.results[0].positionNav.externalName_de_DE |
+
 ## <a name="writeback-scenarios"></a>Szenarien für das Rückschreiben
 
 In diesem Abschnitt werden verschiedene Szenarien für das Rückschreiben behandelt. Die Empfehlungen für die Konfigurationsansätze basieren darauf, wie E-Mail-Adressen und Telefonnummern in SuccessFactors eingerichtet wurden.
@@ -302,6 +314,36 @@ In diesem Abschnitt werden verschiedene Szenarien für das Rückschreiben behand
 * Wenn in der Attributzuordnung für das Rückschreiben keine Zuordnung für die Telefonnummer enthalten ist, wird nur die E-Mail-Adresse in den Rückschreibvorgang eingeschlossen.
 * Während des Onboardings einer Neueinstellung in Employee Central sind die geschäftliche E-Mail-Adresse und Telefonnummer möglicherweise noch nicht verfügbar. Wenn das Festlegen der geschäftlichen E-Mail-Adresse und Telefonnummer als primär während des Onboardings obligatorisch ist, können Sie bei der Erstellung des neu eingestellten Mitarbeiters Platzhalterwerte für geschäftliche Telefonnummer und E-Mail-Adresse festlegen, die später von der Rückschreib-App aktualisiert werden.
  
+### <a name="enabling-writeback-with-userid"></a>Aktivieren des Rückschreibens mit UserID
+
+Die Writeback-App von SuccessFactors verwendet die folgende Logik, um Benutzerobjektattribute zu aktualisieren: 
+* Zuerst sucht sie im Changeset nach dem Attribut *userId*. Wenn dies vorhanden ist, wird „UserId“ zum Durchführen des SuccessFactors-API-Aufrufs verwendet. 
+* Wird *userId* nicht gefunden, wird standardmäßig der Attributwert *personIdExternal* verwendet. 
+
+In der Regel entspricht der Attributwert *personIdExternal* in SuccessFactors dem Wert des Attributs *userId*. In Szenarien wie Wiedereinstellung und Mitarbeiterkonvertierung verfügt ein Mitarbeiter in SuccessFactors möglicherweise über zwei Mitarbeiterdatensätze: einen aktiven und einen inaktiven. Aktualisieren Sie in solchen Szenarien die Konfiguration der SuccessFactors-Bereitstellungs-Apps wie unten beschrieben, um sicherzustellen, dass durch das Zurückschreiben das aktive Benutzerprofil aktualisiert wird. Diese Konfiguration sorgt dafür, dass *userId* immer in dem für den Connector sichtbaren Changeset vorhanden ist und beim SuccessFactors-API-Aufruf verwendet wird.
+
+1. Öffnen Sie SuccessFactors für die Azure AD-Benutzerbereitstellungs-App oder SuccessFactors für die lokale AD-Benutzerbereitstellungs-App. 
+1. Stellen Sie sicher, dass in einem Attribut des Typs „extensionAttribute“ *(extensionAttribute1-15)* in Azure AD immer der Wert *userId* aus dem aktiven Mitarbeiterdatensatz der einzelnen Mitarbeiter gespeichert wird. Dazu müssen Sie das Attribut *userId* von SuccessFactors einem der Attribute des Typs „extensionAttribute“ in Azure AD zuordnen. 
+    > [!div class="mx-imgBorder"]
+    > ![Zuordnung von eingehenden UserID-Attributen](./media/sap-successfactors-integration-reference/inbound-userid-attribute-mapping.png)
+1. Anweisungen zu JSONPath-Einstellungen finden Sie im Abschnitt [Umgang mit Wiedereinstellungen](#handling-rehire-scenario). Damit können Sie sicherstellen, dass der Wert *userId* des aktuellen Mitarbeiterdatensatzes an Azure AD übertragen wird. 
+1. Speichern Sie die Zuordnung. 
+1. Führen Sie den Bereitstellungsauftrag aus, um zu gewährleisten, dass die Werte des Attributs *userId* an Azure AD übertragen werden. 
+    > [!NOTE]
+    > Wenn Sie SuccessFactors für die lokale Active Directory-Benutzerbereitstellung verwenden, konfigurieren Sie AAD Connect so, dass der Attributwert *UserId* von der lokalen Active Directory-Instanz mit Azure AD synchronisiert wird.   
+1. Öffnen Sie die SuccessFactors-Writeback-App im Azure-Portal. 
+1. Ordnen Sie das gewünschte *extensionAttribute*, das den Wert „userId“ enthält, dem SuccessFactors-Attribut *userId* zu.
+    > [!div class="mx-imgBorder"]
+    > ![Rückschreiben der UserID-Attributzuordnung](./media/sap-successfactors-integration-reference/userid-attribute-mapping.png)
+1. Speichern Sie die Zuordnung. 
+1. Wechseln Sie zu *Attributzuordnung -> Erweitert -> Schema überprüfen*, um den JSON-Schema-Editor zu öffnen.
+1. Laden Sie eine Kopie des Schemas als Sicherung herunter. 
+1. Drücken Sie im Schema-Editor STRG+F, und suchen Sie nach dem JSON-Knoten, der die userId-Zuordnung zu einem Azure AD-Quellattribut enthält. 
+1. Aktualisieren Sie das Attribut „flowBehavior“ von „FlowWhenChanged“ in „FlowAlways“, wie unten dargestellt. 
+    > [!div class="mx-imgBorder"]
+    > ![Verhaltensaktualisierung des Zuordnungsflows](./media/sap-successfactors-integration-reference/mapping-flow-behavior-update.png)
+1. Speichern Sie die Zuordnung, und testen Sie das Rückschreibeszenario mit einer bedarfsorientierten Bereitstellung. 
+
 ### <a name="unsupported-scenarios-for-phone-and-email-write-back"></a>Nicht unterstützte Szenarien für das Rückschreiben von Telefonnummern und E-Mail-Adressen
 
 * In Employee Central werden während des Onboardings die persönliche E-Mail-Adresse und die persönliche Telefonnummer als primär festgelegt. Diese Einstellung kann von der Rückschreib-App nicht geändert werden, um die geschäftliche E-Mail-Adresse und die geschäftliche Telefonnummer als primär festzulegen.

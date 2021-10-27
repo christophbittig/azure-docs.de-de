@@ -5,12 +5,12 @@ author: rashi-ms
 ms.author: rajosh
 ms.topic: conceptual
 ms.date: 02/07/2021
-ms.openlocfilehash: c9319465c4e77eab294606ed046f7946948f2cc1
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: bba3965dc3f03bb0b42595ba6bdf5d8889b483ee
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108140369"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130004291"
 ---
 # <a name="assessment-overview-migrate-to-azure-sql"></a>Bewertungsübersicht (Migration zu Azure SQL)
 
@@ -26,7 +26,7 @@ Sie können drei Arten von Bewertungen mit dem Azure Migrate-Tool zur Ermittlung
 **Bewertungstyp** | **Details**
 --- | --- 
 **Azure-VM** | Bewertungen zum Migrieren Ihrer lokalen Server zu virtuellen Azure-Computern. <br/><br/> Sie können Ihre lokalen Server in der [VMware](how-to-set-up-appliance-vmware.md)- und [Hyper-V](how-to-set-up-appliance-hyper-v.md)-Umgebung und [physischen Server](how-to-set-up-appliance-physical.md) für die Migration zu Azure-VMs mit diesem Bewertungstyp bewerten.
-**Azure SQL** | Bewertungen zum Migrieren Ihrer lokalen SQL Server-Instanzen aus Ihrer VMware-Umgebung zu Azure SQL-Datenbank oder Azure SQL Managed Instance.
+**Azure SQL** | Bewertungen zum Migrieren Ihrer lokalen SQL Server-Instanzen aus Ihrer VMware-Umgebung zu Azure SQL-Datenbank oder Azure SQL Managed Instance. <br/><br/> Wenn Ihre SQL Server-Instanzen auf einer Nicht-VMware-Plattform ausgeführt werden, können Sie die Bereitschaft mithilfe des [Datenmigrations-Assistenten](/sql/dma/dma-assess-sql-data-estate-to-sqldb) bewerten.
 **Azure VMware Solution (AVS)** | Bewertungen zum Migrieren Ihrer lokalen Server zu [Azure VMware Solution (AVS)](../azure-vmware/introduction.md). <br/><br/> Sie können Ihre lokalen [VMware-VMs](how-to-set-up-appliance-vmware.md) für die Migration zu Azure VMware Solution (AVS) bewerten, indem Sie diesen Bewertungstyp verwenden. [Weitere Informationen](concepts-azure-vmware-solution-assessment-calculation.md)
 
 > [!NOTE]

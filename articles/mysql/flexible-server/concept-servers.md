@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: a0ce6658168bd86188875d9d89f218ee26ef7941
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: c368e94d8d2b07e3d1487d1b6e505d2a87a89e91
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122639756"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129994079"
 ---
 # <a name="server-concepts-in-azure-database-for-mysql-flexible-server-preview"></a>Serverkonzepte in Azure Database for MySQL Flexible Server (Vorschau)
 
@@ -51,7 +51,7 @@ Azure Database for MySQL Flexible Server bietet Ihnen die Möglichkeit, den Serv
 Wenn sich der Server im Status **Angehalten** befindet, wird das Compute des Servers nicht in Rechnung gestellt. Der Speicher wird jedoch weiterhin in Rechnung gestellt, da der Speicher des Servers verbleibt, um sicherzustellen, dass die Datendateien verfügbar sind, wenn der Server wieder gestartet wird.
 
 > [!IMPORTANT]
-> Wenn Sie den Server **anhalten**, bleibt er für die nächsten sieben Tage in diesem Zustand. Wenn Sie ihn während dieser Zeit nicht manuell **starten**, wird der Server nach Ablauf von sieben Tagen automatisch gestartet. Wenn Sie den Server nicht verwenden, können Sie ihn wieder **anhalten**.
+> Wenn Sie den Server **anhalten**, bleibt er die nächsten 30 Tage lang in diesem Zustand. Wenn Sie den Server während dieser Zeit nicht manuell **starten**, wird er nach Ablauf der 30 Tage automatisch gestartet. Wenn Sie den Server nicht verwenden, können Sie ihn wieder **anhalten**.
 
 Während der Zeit, in der der Server angehalten ist, können keine Verwaltungsvorgänge auf dem Server durchgeführt werden. Sie müssen [den Server starten](how-to-stop-start-server-portal.md), um Konfigurationseinstellungen auf dem Server zu ändern. Weitere Informationen finden Sie unter den [Einschränkungen zum Anhalten/Starten](./concepts-limitations.md#stopstart-operation).
 

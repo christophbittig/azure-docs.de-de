@@ -3,7 +3,7 @@ title: Die Erweiterung für den SQL Server-IaaS-Agent
 description: In diesem Artikel erfahren Sie, wie die SQL Server-IaaS-Agent-Erweiterung bei der Automatisierung bestimmter SQL Server-Verwaltungsaufgaben auf Azure-VMs hilft. Hierzu gehören Features wie automatisierte Sicherungen und Patches, Azure Key Vault-Integration, Lizenzierungsverwaltung, Speicherkonfiguration und zentrale Verwaltung aller SQL Server-VM-Instanzen.
 services: virtual-machines-windows
 documentationcenter: ''
-author: MashaMSFT
+author: adbadram
 editor: ''
 tags: azure-resource-manager
 ms.assetid: effe4e2f-35b5-490a-b5ef-b06746083da4
@@ -14,15 +14,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 9/01/2021
-ms.author: mathoma
-ms.reviewer: jroth
+ms.author: adbadram
+ms.reviewer: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e5c4dd695cb9761721386eb98e18f00ad53bdc26
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: b5a0aa73a2017323657a6e1300bc18775824b1f6
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129231309"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130163739"
 ---
 # <a name="automate-management-with-the-sql-server-iaas-agent-extension"></a>Automatisieren der Verwaltung mit der SQL Server-IaaS-Agent-Erweiterung
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -118,7 +118,7 @@ Es gibt drei Möglichkeiten, VMs mit der Erweiterung zu registrieren:
 
 ### <a name="named-instance-support"></a>Unterstützung für benannte Instanzen
 
-Die SQL Server-IaaS-Agent-Erweiterung funktioniert mit einer benannten Instanz von SQL Server, wenn es sich dabei um die einzige SQL Server-Instanz handelt, die auf der VM verfügbar ist. Die Erweiterung kann nicht auf virtuellen Computern installiert werden, die mehrere benannte SQL Server-Instanzen aufweisen, wenn es keine Standardinstanz auf dem virtuellen Computer gibt. 
+Die SQL Server-IaaS-Agent-Erweiterung funktioniert mit einer benannten Instanz von SQL Server, wenn es sich dabei um die einzige SQL Server-Instanz handelt, die auf der VM verfügbar ist. Wenn ein virtueller Computer über mehrere benannte SQL Server-Instanzen und keine Standardinstanz verfügt, wird die SQL-IaaS-Erweiterung im Lightweight-Modus registriert und wählt entweder die Instanz mit der höchsten Edition oder die erste Instanz aus, wenn alle Instanzen dieselbe Edition aufweisen. 
 
 Wenn Sie eine benannte Instanz von SQL Server verwenden möchten, stellen Sie eine Azure-VM bereit, installieren Sie eine einzelne benannte SQL Server-Instanz darauf, und registrieren Sie die SQL Server-VM dann mit der [SQL-IaaS-Erweiterung](sql-agent-extension-manually-register-single-vm.md).
 
@@ -166,6 +166,9 @@ Die SQL-IaaS-Agent-Erweiterung unterstützt nur Folgendes:
 
 - Über den Azure Resource Manager bereitgestellte SQL Server-VMs. SQL Server-VMs, die mit dem klassischen Modell bereitgestellt wurden, werden nicht unterstützt. 
 - In der öffentlichen Cloud oder Azure Government-Cloud bereitgestellte SQL Server-VMs. Bereitstellungen in anderen privaten Clouds oder Government Clouds werden nicht unterstützt. 
+- Failoverclusterinstanzen (FCIs) im Lightweight-Modus. 
+- Benannte Instanzen mit mehreren Instanzen auf einem einzelnen virtuellen Computer im Lightweight-Modus. 
+
 
 
 ## <a name="in-region-data-residency"></a>Data Residency in der Region

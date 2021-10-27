@@ -4,12 +4,12 @@ description: Erfahren Sie mehr über die Verschlüsselung ruhender Daten Ihrer A
 ms.topic: how-to
 ms.date: 09/13/2021
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: a5fd3140474b1d6d7c36d686c14f2dc4e6a9ef73
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: cd15a42585f5722432d32d9cffdfa89e2c17f8a2
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128561601"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130046428"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>Verschlüsseln der Registrierung mithilfe eines kundenseitig verwalteten Schlüssels
 
@@ -17,7 +17,7 @@ Wenn Sie Images und andere Artefakte in einer Azure Container Registry speichern
 
 Die serverseitige Verschlüsselung mit kundenseitig verwalteten Schlüsseln wird durch die Integration mit [Azure Key Vault](../key-vault/general/overview.md) unterstützt: 
 
-* Sie können Ihre eigenen Verschlüsselungsschlüssel erstellen und in einem Schlüsseltresor speichern oder mit Azure Key Vault-APIs Schlüssel generieren. 
+* Sie können Ihre eigenen Verschlüsselungsschlüssel erstellen und in einem Schlüsseltresor speichern oder mithilfe von Azure Key Vault-APIs Schlüssel generieren. 
 * Mit Azure Key Vault können Sie auch die Schlüsselverwendung überwachen.
 * Azure Container Registry unterstützt die automatische Rotation von Registrierungsverschlüsselungsschlüsseln, wenn eine neue Schlüsselversion in Azure Key Vault verfügbar ist. Sie können Registrierungsverschlüsselungsschlüssel auch manuell rotieren.
 

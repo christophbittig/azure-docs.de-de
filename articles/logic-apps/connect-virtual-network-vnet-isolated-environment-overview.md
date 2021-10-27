@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: conceptual
 ms.date: 05/16/2021
-ms.openlocfilehash: 8e377ae50d19df3b9c86b05cbe207479c2b0597d
-ms.sourcegitcommit: aaaa6ee55f5843ed69944f5c3869368e54793b48
+ms.openlocfilehash: 6abcc030d77f9b7d06f9d5f43d32611a0670053b
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113664177"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130162375"
 ---
 # <a name="access-to-azure-virtual-networks-from-azure-logic-apps-using-an-integration-service-environment-ise"></a>Zugreifen auf virtuelle Azure-Netzwerken aus Azure Logic Apps mithilfe einer Integrationsdienstumgebung (ISE)
 
-Manchmal benötigen Ihre Logik-App-Flows Zugriff auf geschützte Ressourcen wie virtuelle Computer (virtual machines, VMs) und andere Systeme oder Dienste, die sich innerhalb eines virtuellen Azure-Netzwerks befinden oder damit verbunden sind. Um direkt aus Workflows heraus auf diese Ressourcen zuzugreifen, die in der Regel in mehrinstanzenfähigen Azure Logic Apps ausgeführt werden, können Sie Ihre Logik-Apps stattdessen in einer *Integrationsdienstumgebung* (ISE) erstellen und ausführen. Eine ISE ist eigentlich eine Instanz von Azure Logic Apps, die gesondert auf dedizierten Ressourcen ausgeführt wird, getrennt von der globalen, mehrinstanzenfähigen Azure-Umgebung.
+Manchmal benötigen Ihre Logik-App-Flows Zugriff auf geschützte Ressourcen wie virtuelle Computer (virtual machines, VMs) und andere Systeme oder Dienste, die sich innerhalb eines virtuellen Azure-Netzwerks befinden oder damit verbunden sind. Um direkt aus Workflows heraus auf diese Ressourcen zuzugreifen, die in der Regel in mehrinstanzenfähigen Azure Logic Apps ausgeführt werden, können Sie Ihre Logik-Apps stattdessen in einer *Integrationsdienstumgebung* (ISE) erstellen und ausführen. Eine ISE ist eigentlich eine Instanz von Azure Logic Apps, die unabhängig von der globalen mehrinstanzenfähigen Azure-Umgebung separat auf dedizierten Ressourcen ausgeführt wird und keine [Daten außerhalb der Region speichert, verarbeitet oder repliziert, in der Sie die ISE bereitstellen](https://azure.microsoft.com/global-infrastructure/data-residency#select-geography).
 
 Einige virtuelle Azure-Netzwerke verwenden beispielsweise private Endpunkte ([Azure Private Link](../private-link/private-link-overview.md)), um den Zugriff auf Azure-PaaS-Dienste wie Azure Storage, Azure Cosmos DB oder Azure SQL-Datenbank sowie auf Partnerdienste oder auf Kundendienste zu ermöglichen, die in Azure gehostet werden. Wenn Ihre Logik-App-Workflows Zugriff auf virtuelle Netzwerke erfordern, die private Endpunkte verwenden, haben Sie die folgenden Optionen:
 

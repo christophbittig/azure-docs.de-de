@@ -6,12 +6,12 @@ ms.author: andbrown
 ms.date: 2/25/2021
 ms.topic: conceptual
 ms.service: iot-hub-device-update
-ms.openlocfilehash: 9d3cc8cb8ed36179e2297da7c057851345e1c02e
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 839d5f7cd096b9b820e3a137f48efa8882fd3d1c
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129536918"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130003116"
 ---
 # <a name="importing-updates-into-device-update-for-iot-hub---schema-and-other-information"></a>Importieren von Updates in Device Update für IoT Hub – Schema und weitere Informationen
 Wenn Sie ein Update in Device Update für IoT Hub importieren möchten, müssen Sie zuerst die [Konzepte](import-concepts.md) und die [Schrittanleitung](import-update.md) lesen. Wenn Sie an den Details des Schemas interessiert sind, das beim Erstellen eines Importmanifests verwendet wird, sowie mehr zu verknüpften Objekten erfahren möchten, informieren Sie sich weiter unten.
@@ -83,7 +83,7 @@ Wenn Sie die Beispielausgabe des Importmanifests von der Seite [Hinzufügen eine
 }
 ```
 
-## <a name="oauth-authorization-when-calling-import-apis"></a>OAuth-Autorisierung beim Aufruf von Import-APIs
+## <a name="oauth-authorization-when-calling-device-update-apis"></a>OAuth-Autorisierung beim Aufruf von Device Update-APIs
 
 **azure_auth**
 

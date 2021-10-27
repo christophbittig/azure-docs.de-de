@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 03/25/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 81c1e8315bdc51b1806016c3a895a031185ccac6
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 41ba1bb39b4cf92b84ccc6ff0365cb6735a65bcc
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123539346"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130143792"
 ---
 In dieser Schnellstartanleitung werden gängige Entwurfsmuster für die Sprachsynthese per Speech SDK vermittelt. Hierzu werden zunächst eine grundlegende Konfiguration und eine einfache Synthese durchgeführt, gefolgt von komplexeren Beispielen für die Entwicklung benutzerdefinierter Anwendungen:
 
@@ -81,6 +81,24 @@ public class Program
 }
 ```
 
+## <a name="select-synthesis-language-and-voice"></a>Auswählen von Synthesesprache und Stimme
+
+Der Sprachsynthesedienst von Azure unterstützt mehr als 250 Stimmen und über 70 Sprachen und Varianten.
+Sie können die [vollständige Liste](../../../language-support.md#neural-voices) abrufen oder die [Demo für die Sprachsynthese](https://azure.microsoft.com/services/cognitive-services/text-to-speech/#features) ausprobieren.
+Geben Sie die Sprache oder Stimme von [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig) entsprechend Ihres Eingabetexts an, und verwenden Sie die gewünschte Stimme.
+
+```csharp
+static async Task SynthesizeAudioAsync()
+{
+    var config = SpeechConfig.FromSubscription("<paste-your-speech-key-here>", "<paste-your-speech-location/region-here>");
+    // Note: if only language is set, the default voice of that language is chosen.
+    config.SpeechSynthesisLanguage = "<your-synthesis-language>"; // e.g. "de-DE"
+    // The voice setting will overwrite language setting.
+    // The voice setting will not overwrite the voice element in input SSML.
+    config.SpeechSynthesisVoiceName = "<your-wanted-voice>";
+}
+```
+
 ## <a name="synthesize-speech-to-a-file"></a>Synthetisieren von Sprache in eine Datei
 
 Als Nächstes erstellen Sie das Objekt [`SpeechSynthesizer`](/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesizer), mit dem Konvertierungen von Text in Sprache und Ausgaben an Lautsprecher, in Dateien oder andere Ausgabestreams erfolgen. Für [`SpeechSynthesizer`](/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesizer) werden folgende Parameter akzeptiert: das Objekt [`SpeechConfig`](/dotnet/api/microsoft.cognitiveservices.speech.speechconfig) aus dem vorherigen Schritt und das Objekt [`AudioConfig`](/dotnet/api/microsoft.cognitiveservices.speech.audio.audioconfig), mit dem angegeben wird, wie Ausgabeergebnisse verarbeitet werden sollten.
@@ -135,7 +153,7 @@ Diese Änderung lässt sich einfach am vorherigen Beispiel vornehmen. Entfernen 
 > [!NOTE]
 > Wenn `null` für `AudioConfig` übergeben wird, anstatt dieses Element wie im obigen Beispiel für die Lautsprecherausgabe wegzulassen, werden die Audiodaten auf dem derzeit aktiven Ausgabegerät nicht standardmäßig wiedergegeben.
 
-Dieses Mal speichern Sie das Ergebnis in einer Variablen des Typs [`SpeechSynthesisResult`](/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesisresult). Die `AudioData`-Eigenschaft gibt ein `byte []`-Element der Ausgabedaten zurück. Sie können dieses `byte []`-Element manuell nutzen oder die [`AudioDataStream`](/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream)-Klasse verwenden, um den InMemory-Datenstrom zu verwalten. In diesem Beispiel verwenden Sie die statische Funktion `AudioDataStream.FromResult()`, um einen Datenstrom aus dem Ergebnis abzurufen.
+Dieses Mal speichern Sie das Ergebnis in einer Variablen des Typs [`SpeechSynthesisResult`](/dotnet/api/microsoft.cognitiveservices.speech.speechsynthesisresult). Die `AudioData`-Eigenschaft gibt ein `byte []`-Element der Ausgabedaten zurück. Sie können dieses `byte []`-Element manuell nutzen oder die [`AudioDataStream`](/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream)-Klasse verwenden, um den speicherinternen Stream zu verwalten. In diesem Beispiel verwenden Sie die statische Funktion `AudioDataStream.FromResult()`, um einen Datenstrom aus dem Ergebnis abzurufen.
 
 ```csharp
 static async Task SynthesizeAudioAsync()

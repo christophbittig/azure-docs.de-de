@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: c29477a7e9f5ed7ea9f26d4169b092ba8307e30a
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 2e133f84888a7a987ca7888f68e5bb195a905f88
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123539567"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130003968"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Tutorial: Sprachaktivierung für Ihren Bot mithilfe des Speech SDK
 
@@ -234,19 +234,20 @@ Sie müssen eine kleine Konfigurationsänderung vornehmen, damit der Bot über W
 
 ## <a name="create-a-channel-registration"></a>Erstellen einer Kanalregistrierung
 
-Nach dem Erstellen einer Azure App Service-Instanz zum Hosten Ihres Bots wird im nächsten Schritt eine **Botkanalregistrierung** erstellt. Das Erstellen einer Kanalregistrierung ist eine Voraussetzung für die Registrierung des Bots bei Bot Framework-Kanälen, einschließlich des Direct Line Speech-Kanals. Wenn Sie mehr darüber erfahren möchten, wie Bots Kanäle nutzen, finden Sie entsprechende Informationen unter [Verbinden eines Bots mit Kanälen](/azure/bot-service/bot-service-manage-channels).
+Nach dem Erstellen einer Azure App Service-Instanz zum Hosten Ihres Bots wird im nächsten Schritt ein **Azure-Bot** erstellt. Das Erstellen einer Kanalregistrierung ist eine Voraussetzung für die Registrierung des Bots bei Bot Framework-Kanälen, einschließlich des Direct Line Speech-Kanals. Wenn Sie mehr darüber erfahren möchten, wie Bots Kanäle nutzen, finden Sie entsprechende Informationen unter [Verbinden eines Bots mit Kanälen](/azure/bot-service/bot-service-manage-channels).
 
-1. <a href="https://ms.portal.azure.com/#create/Microsoft.BotServiceConnectivityGalleryPackage" target="_blank">Erstellen einer Azure-Botkanalregistrierung </a>
-2. Sie werden aufgefordert, einige Informationen anzugeben:
+1. <a href="https://ms.portal.azure.com/#create/Microsoft.AzureBot" target="_blank">Erstellen eines Azure-Bots</a>
+1. Sie werden aufgefordert, einige Informationen anzugeben:
    * Geben Sie als **Bot-Handle** die Zeichenfolge **SpeechEchoBotTutorial-BotRegistration-####** ein, und ersetzen Sie **####** durch eine Zahl Ihrer Wahl. Beachten Sie, dass der Bot-Handle global eindeutig sein muss. Wenn Sie einen Bot-Handle eingeben und die Fehlermeldung _Die angeforderte Bot-ID ist nicht verfügbar_ erhalten, wählen Sie eine andere Zahl aus. In den folgenden Beispielen wird „8726“ verwendet.
    * Wählen Sie unter **Abonnement** die Option **Kostenlose Testversion** aus.
    * Wählen Sie unter **Ressourcengruppe** die Gruppe **SpeechEchoBotTutorial-ResourceGroup** aus.
-   * Wählen Sie unter **Standort** die Option **USA, Westen** aus.
-     * Wählen Sie unter **Tarif** die Option **F0** aus.
-     * Geben Sie unter **Messaging endpoint** (Messagingendpunkt) die URL für Ihre Web-App mit dem am Ende angefügten Pfad `/api/messages` ein. Wenn der global eindeutige App-Name beispielsweise **EchoBot20190805125647** ist, lautet der Messagingendpunkt `https://EchoBot20190805125647.azurewebsites.net/api/messages/`.
-     * Für **Application Insights** können Sie diese Einstellung auf **Aus** festlegen. Weitere Informationen finden Sie unter [Botanalyse](/azure/bot-service/bot-service-manage-analytics).
-     * Ignorieren Sie **Auto create App ID and password** (App-ID und Kennwort automatisch erstellen).
-5. Klicken Sie unten auf dem Blatt **Bot Channels Registration** (Botkanalregistrierung) auf **Erstellen**.
+     * Wählen Sie unter **Standort** die Option **USA, Westen** aus.
+   * Wählen Sie unter **Tarif** die Option **F0** aus.
+   * Ignorieren Sie **Auto create App ID and password** (App-ID und Kennwort automatisch erstellen).
+1. Wählen Sie unten auf dem Blatt **Azure-Bot** die Option **Erstellen** aus.
+1. Nachdem Sie die Ressource erstellt haben, öffnen Sie Ihre Ressource **SpeechEchoBotTutorial-BotRegistration-####** im Azure-Portal.
+1. Wählen Sie aus der Navigation für **Einstellungen** die Option **Configuration** (Konfiguration) aus.
+1. Geben Sie unter **Messaging endpoint** (Messagingendpunkt) die URL für Ihre Web-App mit dem angefügten Pfad `/api/messages` ein. Wenn der global eindeutige App-Name beispielsweise **EchoBot20190805125647** ist, lautet der Messagingendpunkt `https://EchoBot20190805125647.azurewebsites.net/api/messages/`.
 
 Überprüfen Sie hier die Ressourcengruppe **SpeechEchoBotTutorial-ResourceGroup** im Azure-Portal. Es sollte jetzt mindestens vier Ressourcen anzeigen:
 
@@ -254,46 +255,48 @@ Nach dem Erstellen einer Azure App Service-Instanz zum Hosten Ihres Bots wird im
 |------|-------|----------|
 | EchoBot20190805125647 | App Service | USA (Westen) |
 | SpeechEchoBotTutorial-AppServicePlan | App Service-Plan | USA (Westen) |
-| SpeechEchoBotTutorial-BotRegistration-8726 | Botkanalregistrierung | Global |
+| SpeechEchoBotTutorial-BotRegistration-8726 | Azure Bot | Global |
 | SpeechEchoBotTutorial-Speech | Cognitive Services | USA (Westen) |
 
 > [!IMPORTANT]
-> In der Ressource der Botkanalregistrierung wird die globale Region angezeigt, auch wenn Sie „USA, Westen“ ausgewählt haben. Dies entspricht dem erwarteten Verhalten.
+> In der Azure-Bot-Ressource wird die globale Region angezeigt, auch wenn Sie „USA, Westen“ ausgewählt haben. Dies entspricht dem erwarteten Verhalten.
 
 ## <a name="optional-test-in-web-chat"></a>Optional: Testen im Webchat
 
-Die Seite für die Azure-Botkanalregistrierung enthält unter **Botverwaltung** die Option **In Web Chat testen**. Sie funktioniert nicht standardmäßig mit Ihrem Bot, da sich der Webchat bei Ihrem Bot authentifizieren muss. Wenn Sie den bereitgestellten Bot mit Texteingaben testen möchten, führen Sie die folgenden Schritte aus. Beachten Sie, dass diese Schritte optional und für die nächsten Schritte des Tutorials nicht erforderlich sind. 
+Auf der Seite für „Azure-Bot“ gibt es unter den **Einstellungen** die Option **Test in Web Chat** (Im Webchat testen). Sie funktioniert nicht standardmäßig mit Ihrem Bot, da sich der Webchat bei Ihrem Bot authentifizieren muss. Wenn Sie den bereitgestellten Bot mit Texteingaben testen möchten, führen Sie die folgenden Schritte aus. Beachten Sie, dass diese Schritte optional und für die nächsten Schritte des Tutorials nicht erforderlich sind. 
 
 1. Suchen und öffnen Sie die Ressource **EchoBotTutorial-BotRegistration-####** im [Azure-Portal](https://portal.azure.com).
-1. Wählen Sie im Navigationsbereich unter **Botverwaltung** die Option **Einstellungen** aus. Kopieren Sie den Wert unter **Microsoft-App-ID**.
+1. Wählen Sie aus der Navigation für **Einstellungen** die Option **Configuration** (Konfiguration) aus. Kopieren Sie den Wert unter **Microsoft-App-ID**.
 1. Öffnen Sie die Visual Studio-Projektmappe „EchoBot“. Suchen Sie im Projektmappen-Explorer nach **appsettings.json**, und doppelklicken Sie darauf.
 1. Ersetzen Sie die leere Zeichenfolge neben **MicrosoftAppId** in der JSON-Datei durch den kopierten ID-Wert.
-1. Navigieren Sie zum Azure-Portal zurück, wählen Sie im Navigationsbereich unter **Botverwaltung** die Option **Einstellungen** aus, und klicken Sie neben **Microsoft-App-ID** auf **(Verwalten)** .
+1. Navigieren Sie zum Azure-Portal zurück, wählen Sie im Navigationsbereich unter den **Einstellungen** die Option **Configuration** (Konfiguration) aus, und klicken Sie neben der **Microsoft-App-ID** auf **(Manage)** (Verwalten).
 1. Klicken Sie auf **Neuer geheimer Clientschlüssel**. Fügen Sie eine Beschreibung (z. B. „Webchat“) hinzu, und klicken Sie auf **Hinzufügen**. Kopieren Sie das neue Geheimnis.
 1. Ersetzen Sie die leere Zeichenfolge neben **MicrosoftAppPassword** in der JSON-Datei durch den kopierten Wert des Geheimnisses.
 1. Speichern Sie die JSON-Datei. Der Bericht könnte beispielsweise wie folgt aussehen:
-```json
-{
-  "MicrosoftAppId": "3be0abc2-ca07-475e-b6c3-90c4476c4370",
-  "MicrosoftAppPassword": "-zRhJZ~1cnc7ZIlj4Qozs_eKN.8Cq~U38G"
-}
-```
-9. Veröffentlichen Sie die App erneut. (Klicken Sie im Projektmappen-Explorer von Visual Studio mit der rechten Maustaste auf das Projekt **EchoBot**, wählen Sie **Veröffentlichen** aus, und klicken Sie auf die Schaltfläche **Veröffentlichen**.)
-10. Jetzt können Sie den Bot im Webchat testen.
+
+   ```json
+   {
+     "MicrosoftAppId": "3be0abc2-ca07-475e-b6c3-90c4476c4370",
+     "MicrosoftAppPassword": "-zRhJZ~1cnc7ZIlj4Qozs_eKN.8Cq~U38G"
+   }
+   ```
+
+1. Veröffentlichen Sie die App erneut. (Klicken Sie im Projektmappen-Explorer von Visual Studio mit der rechten Maustaste auf das Projekt **EchoBot**, wählen Sie **Veröffentlichen** aus, und klicken Sie auf die Schaltfläche **Veröffentlichen**.)
+1. Jetzt können Sie den Bot im Webchat testen.
 
 ## <a name="register-the-direct-line-speech-channel"></a>Registrieren des Direct Line Speech-Kanals
 
 Nun muss der Bot beim Direct Line Speech-Kanal registriert werden. Dieser Kanal erstellt eine Verbindung zwischen Ihrem Bot und einer Client-App, die mit dem Speech SDK kompiliert wurde.
 
 1. Suchen und öffnen Sie die Ressource **SpeechEchoBotTutorial-BotRegistration-####** im [Azure-Portal](https://portal.azure.com).
-1. Wählen Sie im Navigationsbereich unter **Botverwaltung** die Option **Kanäle** aus.
+1. Wählen Sie aus der Navigation für **Einstellungen** die Option **Channels** (Kanäle) aus.
    * Klicken Sie unter **Weitere Kanäle** auf **Direct Line Speech**.
    * Überprüfen Sie den Text auf der Seite **Configure Direct line Speech** (Direct Line Speech konfigurieren), und erweitern Sie dann das Dropdownmenü **Cognitive Services-Konto**.
    * Wählen Sie im Menü die zuvor erstellte Speech-Ressource (z. B. **SpeechEchoBotTutorial-Speech**) aus, um Ihren Bot dem Speech-Abonnementschlüssel zuzuordnen.
    * Ignorieren Sie die restlichen optionalen Felder.
    * Klicken Sie auf **Speichern**.
 
-1. Klicken Sie im Navigationsbereich **Botverwaltung** auf **Einstellungen**.
+1. Wählen Sie aus der Navigation für **Einstellungen** die Option **Configuration** (Konfiguration) aus.
    * Aktivieren Sie das Kontrollkästchen **Enable Streaming Endpoint** (Streamingendpunkt aktivieren). Dies ist erforderlich, um zwischen dem Bot und dem Direct Line Speech-Kanal ein Kommunikationsprotokoll auf der Basis von Websockets zu erstellen.
    * Klicken Sie auf **Speichern**.
 

@@ -11,12 +11,12 @@ author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: mathoma, urmilano, wiassaf
 ms.date: 06/25/2019
-ms.openlocfilehash: 818a783a85fd9117738f8199e612d97a0fb95b99
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d6dd794a9eb0a7af1ed2e91a04c27d5321e14ca3
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355078"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130179334"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>Dynamisches Skalieren von Datenbankressourcen bei minimaler Downtime
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -38,17 +38,17 @@ Azure SQL-Datenbank bietet das [DTU-basierte Kaufmodell](service-tiers-dtu.md) u
 - Das [DTU-basierte Kaufmodell](service-tiers-dtu.md) bietet zur Unterstützung von einfachen bis hin zu komplexen Datenbankworkloads eine Mischung aus Compute-, Arbeitsspeicher- und E/A-Ressourcen auf drei Dienstebenen: Basic, Standard und Premium. Leistungsstufen auf den einzelnen Ebenen bieten unterschiedliche Ressourcenzusammenstellungen, durch zusätzliche Speicherressourcen ergänzt werden können.
 - Beim [vCore-basierten Kaufmodell](service-tiers-vcore.md) können Sie die Anzahl virtueller Kerne, die Arbeitsspeichermenge sowie Menge und Geschwindigkeit des Speichers auswählen. Dieses Kaufmodell bietet drei Dienstebenen: „Universell“, „Unternehmenskritisch“ und „Hyperscale“.
 
-Sie können zu einer geringen monatlichen Gebühr Ihre erste App in einer kleinen Einzeldatenbank in den Dienstebenen „Basic“, „Standard“ oder „Universell“ erstellen und diese dann jederzeit manuell oder programmgesteuert in die Dienstebenen „Premium“ oder „Unternehmenskritisch“ ändern, um die Anforderungen Ihrer Lösung zu erfüllen. Die Leistungsanpassung ist möglich, ohne dass es für die App oder für Ihre Kunden zu Ausfallzeiten kommt. Dank der dynamischen Skalierbarkeit kann Ihre Datenbank in transparenter Form auf sich schnell ändernde Ressourcenanforderungen reagieren, und Sie zahlen nur für die Ressourcen, die Sie jeweils benötigen.
+Die Grenzwerte für Dienstebene, Computeebene und Ressourcen für eine Datenbank, einen Pool für elastische Datenbanken oder eine verwaltete Instanz können jederzeit geändert werden. Sie können beispielsweise Ihre erste App in einer Einzeldatenbank erstellen und dazu die serverlose Computeebene verwenden, und dann manuell oder programmgesteuert jederzeit die Dienstebene (Tarif) in die bereitgestellte Computeebene ändern, um die Anforderungen Ihrer Lösung zu erfüllen.
 
 > [!NOTE]
-> Dynamische Skalierbarkeit ist nicht dasselbe wie automatische Skalierung. Bei der automatischen Skalierung wird ein Dienst automatisch auf der Grundlage von Kriterien skaliert. Die dynamische Skalierbarkeit ermöglicht dagegen eine manuelle Skalierung mit minimaler Downtime.
+> Es gibt jedoch auch wichtige Ausnahmen, bei denen Sie die Dienstebene einer Datenbank nicht ändern können:
+> - Datenbanken auf der Dienstebene „Hyperscale“ können derzeit nicht in eine andere Dienstebene geändert werden.
+> - Datenbanken, die Features verwenden, die [nur in den Dienstebenen „Unternehmenskritisch/Premium“ verfügbar](features-comparison.md#features-of-sql-database-and-sql-managed-instance) sind, können nicht geändert werden, um die Dienstebene „Universell/Standard“ zu verwenden.
 
-Einzeldatenbanken in Azure SQL-Datenbank unterstützen die manuelle dynamische Skalierbarkeit, aber keine Autoskalierung. Ein höheres Maß an *Automatisierung* lässt sich bei Bedarf mithilfe von Pools für elastische Datenbanken erzielen, die die gemeinsame Nutzung eines Ressourcenpools auf der Grundlage individueller Datenbankanforderungen ermöglichen.
-Es gibt allerdings auch Skripts, die Sie bei der Automatisierung der Skalierbarkeit für eine einzelne Datenbank in Azure SQL-Datenbank unterstützen. Ein Beispiel finden Sie unter [Überwachen und Skalieren einer einzelnen SQL­-Datenbank mit PowerShell](scripts/monitor-and-scale-database-powershell.md).
+Sie können die Ihrer Datenbank zugeordneten Ressourcen anpassen, indem Sie das Dienstziel ändern oder skalieren, um Workloadanforderungen zu erfüllen. Durch diese Möglichkeit brauchen Sie nur die Ressourcen zu bezahlen, die Sie benötigen, und wenn Sie sie benötigen. Beachten Sie den [Hinweis](#impact-of-scale-up-or-scale-down-operations) zu den potenziellen Auswirkungen, die ein Skalierungsvorgang auf eine Anwendung haben kann.
 
-Sie können [DTU-Dienstebenen](service-tiers-dtu.md) oder [V-Kern-Merkmale](resource-limits-vcore-single-databases.md) jederzeit ändern und die Ausfallzeiten für Ihre Anwendung dabei gering halten (im Durchschnitt meist unter vier Sekunden). Für viele Unternehmen und Apps genügt es, wenn Datenbanken erstellt werden können und sich die Leistung nach oben oder unten anpassen lässt – insbesondere, wenn die Nutzungsmuster relativ gut vorhersagbar sind. Bei unvorhersagbaren Nutzungsmustern kann es jedoch schwer sein, die Kosten und Ihr Geschäftsmodell zu verwalten. In diesem Szenario verwenden Sie einen Pool für elastische Datenbanken mit einer bestimmten Anzahl von eDTUs, die von mehreren Datenbanken im Pool gemeinsam genutzt werden.
-
-![Einführung in SQL-Datenbank: Einzeldatenbank-DTUs nach Dienst- und Leistungsebene](./media/scale-resources/single_db_dtus.png)
+> [!NOTE]
+> Dynamische Skalierbarkeit ist nicht dasselbe wie automatische Skalierung. Bei der automatischen Skalierung wird ein Dienst automatisch auf der Grundlage von Kriterien skaliert. Die dynamische Skalierbarkeit ermöglicht dagegen eine manuelle Skalierung mit minimaler Downtime. Einzeldatenbanken in Azure SQL-Datenbank können manuell skaliert oder bei der [Serverlosen Ebene](serverless-tier-overview.md) so festgelegt werden, dass die Computeressourcen automatisch skaliert werden. [Pools für elastische Datenbanken](elastic-pool-overview.md), mit denen Datenbanken Ressourcen in einem Pool gemeinsam nutzen können, können derzeit nur manuell skaliert werden.
 
 Azure SQL-Datenbank ermöglicht ein dynamisches Skalieren Ihrer Datenbanken:
 
@@ -59,7 +59,9 @@ In Azure SQL Managed Instance ist ebenfalls ein Skalieren möglich:
 
 - [SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md) verwendet den Modus [Virtuelle Kerne](../managed-instance/sql-managed-instance-paas-overview.md#vcore-based-purchasing-model) und ermöglicht Ihnen das Definieren der maximalen Anzahl von CPU-Kernen und des maximalen Speichers für Ihre Instanz. Alle Datenbanken innerhalb der verwalteten Instanz nutzen die der Instanz zugeordneten Ressourcen gemeinsam.
 
-Wenn Sie die Aktion zum Hoch- oder Herunterskalieren in einer der Varianten initiieren, wird der Datenbank-Engine-Prozess neu gestartet und bei Bedarf auf einen anderen virtuellen Computer verschoben. Das Verschieben des Datenbank-Engine-Prozesses auf einen neuen virtuellen Computer ist ein **Onlineprozess**, bei dem Sie den vorhandenen Azure SQL-Datenbank-Dienst weiterhin verwenden können, während der Prozess ausgeführt wird. Sobald die Zieldatenbank-Engine vollständig initialisiert und zum Verarbeiten der Abfragen bereit ist, werden die Verbindungen [von der Quell- zur Zieldatenbank-Engine umgeleitet](single-database-scale.md#impact).
+## <a name="impact-of-scale-up-or-scale-down-operations"></a>Auswirkungen von Skalierungsvorgängen (Hoch- bzw. Herunterskalieren)
+
+Wenn Sie bei einer der vorgenannten Varianten eine Aktion zum Hoch- oder Herunterskalieren initiieren, wird der Datenbank-Engine-Prozess neu gestartet und bei Bedarf auf einen anderen virtuellen Computer verschoben. Das Verschieben des Datenbank-Engine-Prozesses auf einen neuen virtuellen Computer ist ein **Onlineprozess**, während dem Sie den vorhandenen Azure SQL-Datenbankdienst weiterhin verwenden können. Sobald die Zieldatenbank-Engine für die Verarbeitung von Abfragen bereit ist, werden geöffnete Verbindungen zur aktuellen Datenbank-Engine [beendet](single-database-scale.md#impact), und für Transaktionen ohne ausgeführten Commit erfolgt ein Rollback. Es werden neue Verbindungen zur Zieldatenbank-Engine hergestellt.
 
 > [!NOTE]
 > Es wird davon abgeraten, dass Sie Ihre verwaltete Instanz skalieren, wenn eine Transaktion mit langer Laufzeit – z. B. ein Datenimport, Datenverarbeitungsaufträge, eine Indexneuerstellung usw. – ausgeführt wird oder wenn es eine aktive Verbindung mit der Instanz gibt. Wenn Sie verhindern möchten, dass die Skalierung länger als üblich dauert, sollten Sie die Instanz nach Abschluss aller Vorgänge mit langer Laufzeit skalieren.
@@ -80,3 +82,4 @@ Die Skalierung von Ressourcen ist die einfachste und effektivste Möglichkeit, d
 - Informationen zur Optimierung Ihrer Datenbank mit integrierter Datenbank-Intelligence finden Sie unter [Automatische Optimierung](automatic-tuning-overview.md).
 - Informationen zur horizontalen Leseskalierung in Azure SQL-Datenbank finden Sie unter [Verwenden von schreibgeschützten Replikaten für den Lastenausgleich schreibgeschützter Abfrageworkloads](read-scale-out.md).
 - Informationen zum Datenbank-Sharding finden Sie unter [Horizontales Hochskalieren mit Azure SQL-Datenbank](elastic-scale-introduction.md).
+- Ein Beispiel für die Verwendung von Skripts zum Überwachen und Skalieren einer Einzeldatenbank finden Sie unter [Verwenden von PowerShell zum Überwachen und Skalieren einer einzelnen SQL-Datenbank](scripts/monitor-and-scale-database-powershell.md).

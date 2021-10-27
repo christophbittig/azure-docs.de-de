@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 04/08/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 4e01f431ab9074286c701a6661e2bf58db125e56
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 26b5e7f65ca688eb1f849fa582f2f02af6e470c0
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114446015"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130131370"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines – Planung und Implementierung für SAP NetWeaver
 
@@ -66,6 +66,7 @@ ms.locfileid: "114446015"
 [2233094]:https://launchpad.support.sap.com/#/notes/2233094
 [2243692]:https://launchpad.support.sap.com/#/notes/2243692
 
+[azure-cli-inst]:../../../cli/azure/install-classic-cli
 [azure-cli]:../../../cli-install-nodejs.md
 [azure-portal]:https://portal.azure.com
 [azure-ps]:/powershell/azure/
@@ -167,7 +168,8 @@ ms.locfileid: "114446015"
 [ha-guide-classic]:https://go.microsoft.com/fwlink/?LinkId=613056
 
 [install-extension-cli]:virtual-machines-linux-enable-aem.md
-
+[azure-cli-install]:/cli/azure/install-azure-cli
+ 
 [Logo_Linux]:media/virtual-machines-shared-sap-shared/Linux.png
 [Logo_Windows]:media/virtual-machines-shared-sap-shared/Windows.png
 
@@ -722,18 +724,17 @@ Windows PowerShell ist ein leistungsfähiges und erweiterbares Framework, das ge
 
 Der Vorgang zum Aktivieren eines lokalen Desktops/Laptops für die Verwendung der Azure PowerShell-Cmdlets und deren Konfiguration für die Verwendung mit Azure-Abonnements wird in [diesem Artikel][powershell-install-configure] beschrieben.
 
-Ausführlichere Schritte zum Installieren, Aktualisieren und Konfigurieren der Azure PowerShell-Cmdlets finden Sie auch in [diesem Kapitel des Bereitstellungshandbuchs][deployment-guide-4.1].
-
-Bisherige Erfahrungen der Kunden zeigen PowerShell (PS) mit Sicherheit als das leistungsstärkere Tool für die Bereitstellung von VMs und die Erstellung benutzerdefinierter Schritte innerhalb der Bereitstellung von VMs. Alle Kunden, die SAP-Instanzen in Azure ausführen, verwenden PS-Cmdlets zur Ergänzung Ihrer Verwaltungsaufgaben im Azure-Portal bzw. sogar ausschließlich zur Verwaltung ihrer Bereitstellungen in Azure. Da für die Azure-spezifischen Cmdlets dieselben Namenskonventionen gelten wie für die mehr als 2000 Windows-spezifischen Cmdlets, fällt Windows-Administratoren die Übernahme dieser Cmdlets nicht schwer.
+Ausführlichere Schritte zum Installieren, Aktualisieren und Konfigurieren der Azure PowerShell-Cmdlets finden Sie auch unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps).
+Bisherige Erfahrungen der Kunden zeigen PowerShell mit Sicherheit als das leistungsstärkere Tool für die Bereitstellung von VMs und die Erstellung benutzerdefinierter Schritte innerhalb der Bereitstellung von VMs. Alle Kunden, die SAP-Instanzen in Azure ausführen, verwenden PowerShell-Cmdlets zur Ergänzung Ihrer Verwaltungsaufgaben im Azure-Portal bzw. sogar ausschließlich zur Verwaltung ihrer Bereitstellungen in Azure. Da für die Azure-spezifischen Cmdlets dieselben Namenskonventionen gelten wie für die mehr als 2000 Windows-spezifischen Cmdlets, fällt Windows-Administratoren die Übernahme dieser Cmdlets nicht schwer.
 
 Ein Beispiel finden Sie hier: <https://blogs.technet.com/b/keithmayer/archive/2015/07/07/18-steps-for-end-to-end-iaas-provisioning-in-the-cloud-with-azure-resource-manager-arm-powershell-and-desired-state-configuration-dsc.aspx>
 
 
 Die Bereitstellung der Azure-Erweiterung für SAP (siehe Kapitel [Azure-Erweiterung für SAP][planning-guide-9.1] in diesem Dokument) ist nur über PowerShell oder die Befehlszeilenschnittstelle möglich. Daher muss PowerShell oder die Befehlszeilenschnittstelle bei der Bereitstellung oder Verwaltung eines SAP NetWeaver-Systems in Azure installiert und konfiguriert werden.
 
-Da Azure eine erweiterte Funktionalität bietet, werden neue PS-Cmdlets hinzugefügt, weshalb ein Update der Cmdlets erforderlich ist. Daher ist es sinnvoll, mindestens einmal im Monat die Azure-Downloadwebsite (<https://azure.microsoft.com/downloads/>) auf neue Cmdlet-Versionen zu prüfen. Die neue Version wird zusätzlich zur älteren Version installiert.
+Da Azure eine erweiterte Funktionalität bietet, werden neue PowerShell-Cmdlets hinzugefügt, weshalb ein Update der Cmdlets erforderlich ist. Daher ist es sinnvoll, mindestens einmal im Monat die Azure-Downloadwebsite (<https://azure.microsoft.com/downloads/>) auf neue Cmdlet-Versionen zu prüfen. Die neue Version wird zusätzlich zur älteren Version installiert.
 
-Eine allgemeine Liste von Azure-bezogenen PowerShell-Befehlen finden hier: </powershell/azure/>.
+Eine allgemeine Liste von Azure-bezogenen PowerShell-Befehlen finden Sie hier: [Dokumentation zu Azure PowerShell][azure-ps].
 
 ### <a name="management-via-microsoft-azure-cli-commands"></a>Verwaltung mit den Befehlen der Microsoft Azure-Befehlszeilenschnittstelle
 
@@ -743,10 +744,9 @@ Die Azure-Befehlszeilenschnittstelle stellt eine Reihe von plattformübergreifen
 Informationen zur Installation, Konfiguration und Verwendung der Befehle der Befehlszeilenschnittstelle für die Ausführung von Azure-Aufgaben finden Sie unter den folgenden Themen:
 
 * [Installieren der klassischen Azure CLI][xplat-cli]
-* [Bereitstellen und Verwalten von virtuellen Computern mit Azure Resource Manager-Vorlagen und der Azure-CLI][../../linux/create-ssh-secured-vm-from-template.md]
+* [Installieren der Azure CLI 2.0][azure-cli-install]
+* [Bereitstellen und Verwalten von virtuellen Computern mit Azure Resource Manager-Vorlagen und der Azure CLI](/articles/virtual-machines/linux/create-ssh-secured-vm-from-template)
 * [Verwenden von Azure-Ressourcen und Ressourcengruppen mit der Azure CLI][xplat-cli-azure-resource-manager]
-
-Weitere Informationen zur Verwendung der Azure-Befehlszeilenschnittstelle zum Bereitstellen der Azure-Erweiterung für SAP finden Sie im [Bereitstellungshandbuch][planning-guide] im Kapitel [Azure CLI für virtuelle Linux-Computer][deployment-guide-4.5.2].
 
 
 ## <a name="first-steps-planning-a-deployment"></a>Erste Schritte bei der Planung einer Bereitstellung
@@ -780,7 +780,7 @@ Aufgrund der spezifischen Patch-Anforderungen Ihrer Betriebssystem- bzw. DBMS-Ve
 ---
 > ![Windows-Logo][Logo_Windows] Windows
 >
-> Weitere Informationen finden Sie hier: </azure/virtual-machines/windows/upload-generalized-managed>. Die Windows-Einstellungen (wie die Windows-SID und der Hostname) müssen auf der lokalen VM über den Sysprep-Befehl abstrahiert/generalisiert werden.
+> Weitere Informationen finden Sie unter [Hochladen einer generalisierten Windows-VHD und Verwendung dieser zum Erstellen neuer VMs in Azure](/azure/virtual-machines/windows/upload-generalized-managed). Die Windows-Einstellungen (wie die Windows-SID und der Hostname) müssen auf der lokalen VM über den Sysprep-Befehl abstrahiert/generalisiert werden.
 >
 >
 > ![Linux-Logo][Logo_Linux] Linux
@@ -874,7 +874,7 @@ Wenn die VM ausreichend vorbereitet ist, um generisch und letztendlich unabhäng
 ### <a name="transferring-vms-and-vhds-between-on-premises-to-azure"></a>Übertragen von virtuellen Computern und VHDs vom lokalen Standort nach Azure
 Zum Hochladen von VM-Images und -Datenträgern in Azure ist das Azure-Portal ungeeignet. Verwenden Sie hierzu stattdessen die PowerShell-Cmdlets bzw. die Befehlszeilenschnittstelle von Azure. Ebenso können Sie das Tool „AzCopy“ verwenden. Das Tool kann VHDs in beiden Richtungen zwischen lokalem Standort und Azure kopieren. Mit ihm können Sie auch VHDs zwischen Azure-Regionen kopieren. Download und Verwendung von „AzCopy“ werden in [dieser Dokumentation][storage-use-azcopy] beschrieben.
 
-Eine weitere Alternative sind die verschiedenen auf dem Markt erhältlichen GUI-ähnlichen Tools von Drittanbietern. Vor der Verwendung eines solchen Tools sollten Sie jedoch sicherstellen, dass das Tool Azure-Seitenblobs unterstützt. Zu unseren Zwecken müssen wir den Azure-Seitenblobspeicher verwenden (die Unterschiede werden hier beschrieben: </rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>). Mit den von Azure bereitgestellten Tools lassen sich die VMs und VHDs vor dem Upload auch effizient komprimieren. Dadurch reduziert sich die zum Hochladen benötigte Zeit (die ohnehin schon je nach Upload-Link zum Internet zwischen dem lokalen Standort und der gewünschten Azure-Bereitstellungsregion variiert). Es ist leicht nachzuvollziehen, dass das Hochladen von VMs oder VHDs von einem europäischen Standort in ein Azure-Rechenzentrum in den USA länger dauert als das Hochladen derselben VMs/VHDs in ein Azure-Rechenzentrum in Europa.
+Eine weitere Alternative sind die verschiedenen auf dem Markt erhältlichen GUI-ähnlichen Tools von Drittanbietern. Vor der Verwendung eines solchen Tools sollten Sie jedoch sicherstellen, dass das Tool Azure-Seitenblobs unterstützt. Zu unseren Zwecken müssen wir den Azure-Seitenblobspeicher verwenden (die Unterschiede werden unter [Grundlegendes zu Blockblobs, Anfügeblobs und Seitenblobs](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) beschrieben). Mit den von Azure bereitgestellten Tools lassen sich die VMs und VHDs vor dem Upload auch effizient komprimieren. Dadurch reduziert sich die zum Hochladen benötigte Zeit (die ohnehin schon je nach Upload-Link zum Internet zwischen dem lokalen Standort und der gewünschten Azure-Bereitstellungsregion variiert). Es ist leicht nachzuvollziehen, dass das Hochladen von VMs oder VHDs von einem europäischen Standort in ein Azure-Rechenzentrum in den USA länger dauert als das Hochladen derselben VMs/VHDs in ein Azure-Rechenzentrum in Europa.
 
 #### <a name="uploading-a-vhd-from-on-premises-to-azure"></a><a name="a43e40e6-1acc-4633-9816-8f095d5a7b6a"></a>Hochladen einer virtuellen Festplatte vom lokalen Standort in Azure
 Eine vorhandene VM oder VHD, die Sie aus dem lokalen Netzwerk hochladen möchten, muss die Anforderungen erfüllen, die in diesem Dokument im Kapitel [Vorbereitung des Verschiebens eines virtuellen lokalen Computers mit einem nicht generalisierten Datenträger in Azure][planning-guide-5.2.1] beschrieben werden.
@@ -887,12 +887,12 @@ In diesem Fall möchten wir eine VHD mit oder ohne Betriebssystem hochladen und 
 **PowerShell**
 
 * Melden Sie sich mit *Connect-AzAccount* bei Ihrem Abonnement an.
-* Legen Sie das Abonnement Ihres Kontexts mit *Set-AzContext* und dem Parameter SubscriptionId oder SubscriptionName fest – siehe </powershell/module/az.accounts/set-Azcontext>.
-* Laden Sie die VHD mithilfe von *Add-AzVhd* auf ein Azure Storage-Konto hoch – siehe </powershell/module/az.compute/add-Azvhd>.
-* (Optional) Erstellen Sie einen verwalteten Datenträger aus der VHD mit *New-AzDisk* – siehe </powershell/module/az.compute/new-Azdisk>.
-* Legen Sie den Betriebssystemdatenträger einer neuen VM-Konfiguration auf die VHD oder den verwalteten Datenträger mit *Set-AzVMOSDisk* fest – siehe </powershell/module/az.compute/set-Azvmosdisk>.
-* Erstellen Sie eine neue VM aus der VM-Konfiguration mit *New-AzVM* – siehe </powershell/module/az.compute/new-Azvm>.
-* Fügen Sie einen neuen Datenträger für Daten zu einer neuen VM mit *Add-AzVMDataDisk* hinzu – siehe </powershell/module/az.compute/add-Azvmdatadisk>.
+* Legen Sie das Abonnement Ihres Kontexts mit *Set-AzContext* und dem Parameter SubscriptionId oder SubscriptionName fest – siehe [Set-AzContext](/powershell/module/az.accounts/set-azcontext).
+* Laden Sie die VHD mit *Add-AzVhd* in ein Azure Storage-Konto hoch – siehe [Add-AzVhd](/powershell/module/az.compute/add-azvhd).
+* (Optional) Erstellen Sie mit *New-AzDisk* einen verwalteten Datenträger aus der VHD – siehe [New-AzDisk](/powershell/module/az.compute/new-azdisk).
+* Legen Sie mit *Set-AzVMOSDisk* den Betriebssystem-Datenträger der neuen VM-Konfiguration auf die VHD oder den verwalteten Datenträger fest – siehe [Set-AzVMOSDisk](/powershell/module/az.compute/set-azvmosdisk).
+* Erstellen Sie mit *New-AzVM* einen neuen virtuellen Computer aus der VM-Konfiguration – siehe [New-AzVM](/powershell/module/az.compute/new-azvm).
+* Fügen Sie einem neuen virtuellen Computer mit *Add-AzVMDataDisk* einen Datenträger hinzu – siehe [Add-AzVMDataDisk](/powershell/module/az.compute/add-azvmdatadisk).
 
 **Azure-Befehlszeilenschnittstelle**
 
@@ -914,13 +914,13 @@ Eine vorhandene VM oder VHD, die Sie aus dem lokalen Netzwerk hochladen möchten
 
 * Verwenden Sie *sysprep* (unter Windows) bzw. *waagent -deprovision* (unter Linux), um die VM zu generalisieren (siehe [Technische Referenz zu Sysprep](/previous-versions/windows/it-pro/windows-vista/cc766049(v=ws.10)) für Windows bzw. [Erfassen eines virtuellen Linux-Computers zur Verwendung als Resource Manager-Vorlage][capture-image-linux-step-2-create-vm-image] für Linux).
 * Melden Sie sich mit *Connect-AzAccount* bei Ihrem Abonnement an.
-* Legen Sie das Abonnement Ihres Kontexts mit *Set-AzContext* und dem Parameter SubscriptionId oder SubscriptionName fest – siehe </powershell/module/az.accounts/set-Azcontext>.
-* Laden Sie die VHD mithilfe von *Add-AzVhd* auf ein Azure Storage-Konto hoch – siehe </powershell/module/az.compute/add-Azvhd>.
-* (Optional) Erstellen Sie ein verwaltetes Datenträgerimage aus der VHD mit *New-AzImage* – siehe </powershell/module/az.compute/new-Azimage>.
+* Legen Sie das Abonnement Ihres Kontexts mit *Set-AzContext* und dem Parameter SubscriptionId oder SubscriptionName fest – siehe [Set-AzContext](/powershell/module/az.accounts/set-azcontext).
+* Laden Sie die VHD mit *Add-AzVhd* in ein Azure Storage-Konto hoch – siehe [Add-AzVhd](/powershell/module/az.compute/add-azvhd).
+* (Optional) Erstellen Sie mit *New-AzImage* ein Image für einen verwalteten Datenträger aus der VHD – siehe [New-AzImage](/powershell/module/az.compute/new-azimage).
 * Legen Sie den Betriebssystem-Datenträger der neuen VM-Konfiguration auf
-  * VHD mit *Set-AzVMOSDisk -SourceImageUri -CreateOption fromImage* – siehe </powershell/module/az.compute/set-Azvmosdisk>.
-  * Verwaltetes Datenträgerimage mit *Set-AzVMSourceImage* – siehe </powershell/module/az.compute/set-Azvmsourceimage>.
-* Erstellen Sie eine neue VM aus der VM-Konfiguration mit *New-AzVM* – siehe </powershell/module/az.compute/new-Azvm>.
+  * VHD mit *Set-AzVMOSDisk -SourceImageUri -CreateOption fromImage* – siehe [Set-AzVMOSDisk](/powershell/module/az.compute/set-azvmosdisk).
+  * Image für einen verwalteten Datenträger *Set-AzVMSourceImage* – siehe [Set-AzVMSourceImage](/powershell/module/az.compute/set-azvmsourceimage).
+* Erstellen Sie mit *New-AzVM* einen neuen virtuellen Computer aus der VM-Konfiguration – siehe [New-AzVM](/powershell/module/az.compute/new-azvm).
 
 **Azure-Befehlszeilenschnittstelle**
 
@@ -928,7 +928,7 @@ Eine vorhandene VM oder VHD, die Sie aus dem lokalen Netzwerk hochladen möchten
 * Melden Sie sich mit *az login* bei Ihrem Abonnement an.
 * Wählen Sie mit *azure account set - subscription`<subscription name or id`>* Ihr Abonnement aus.
 * Laden Sie die VHD mit *az storage blob upload* hoch – siehe [Verwenden der Azure-Befehlszeilenschnittstelle mit Azure Storage][storage-azure-cli].
-* (Optional) Erstellen Sie mit *az image create* aus der VHD ein Image für einen verwalteten Datenträger – siehe [az image](/cli/azure/image].
+* (Optional) Erstellen Sie mit *az image create* aus der VHD ein Image für einen verwalteten Datenträger (siehe [az image](/cli/azure/image)).
 * Erstellen Sie mit *azure vm create* und dem Parameter *--attach-os-disk* eine neue VM, wobei Sie die hochgeladene VHD oder das Image des verwalteten Datenträgers als Betriebssystem-Datenträger angeben.
 
 **Vorlage**
@@ -967,7 +967,7 @@ Während des Downloads dürfen die VHDs oder Managed Disks allerdings nicht akti
   Save-AzVhd -ResourceGroupName <resource group name of storage account> -SourceUri http://<storage account name>.blob.core.windows.net/<container name>/sapidedata.vhd -LocalFilePath E:\Azure_downloads\sapidesdata.vhd
   ```
 
-  Weitere Informationen zum Cmdlet „Save-AzVhd“ finden Sie hier: </powershell/module/az.compute/save-Azvhd>.
+  Weitere Informationen zum Cmdlet „Save-AzVhd“ finden Sie unter [Save-AzVhd](/powershell/module/az.compute/save-azvhd).
 
 #### <a name="azure-cli"></a>Azure CLI
 * Herunterladen eines verwalteten Datenträgers: Zuerst müssen Sie Zugriff auf das zugrunde liegende Blob des verwalteten Datenträgers erhalten. Dann können Sie den zugrundeliegenden Blob in ein neues Speicherkonto kopieren und den Blob aus diesem Speicherkonto herunterladen.
@@ -1078,10 +1078,10 @@ Diese Aufgabe kann nicht im Azure-Portal ausgeführt werden. Verwenden Sie statt
 ##### <a name="powershell"></a>PowerShell
 Sie können VHDs auch von einem Abonnement ins andere kopieren. Weitere Informationen finden Sie [in diesem Artikel][storage-powershell-guide-full-copy-vhd].
 
-Die grundlegende Abfolge der Logik des PS-Cmdlets sieht wie folgt aus:
+Die grundlegende Abfolge der Logik des PowerShell-Cmdlets sieht wie folgt aus:
 
-* Erstellen Sie mit *New-AzStorageContext* einen Speicherkontokontext für das **Quellspeicherkonto** – siehe </powershell/module/az.storage/new-AzStoragecontext>.
-* Erstellen Sie mit *New-AzStorageContext* einen Speicherkontokontext für das **Zielspeicherkonto** – siehe </powershell/module/az.storage/new-AzStoragecontext>.
+* Erstellen Sie mit *New-AzStorageContext* einen Speicherkontokontext für das **Quellspeicherkonto** – siehe [New-AzStorageContext](/powershell/module/az.storage/new-azstoragecontext).
+* Erstellen Sie mit *New-AzStorageContext* einen Speicherkontokontext für das **Zielspeicherkonto** – siehe [New-AzStorageContext](/powershell/module/az.storage/new-azstoragecontext).
 * Starten Sie die Kopie mit:
 
 ```powershell
@@ -1259,9 +1259,7 @@ Die Architekturunterschiede zwischen dem klassischen Modell und ARM werden in [d
 
 #### <a name="configuration-of-the-sap-system-and-sap-gui-connectivity-over-the-internet"></a>Konfiguration des SAP-Systems und der SAP-GUI-Konnektivität über das Internet
 
-In diesem Artikel finden Sie ausführliche Informationen zu diesem Thema: 
-
-</archive/blogs/saponsqlserver/sap-gui-connection-closed-when-connecting-to-sap-system-in-azure>
+Weitere Informationen zu diesem Thema finden Sie in dem Artikel [SAP GUI connection closed when connecting to SAP system in Azure](/archive/blogs/saponsqlserver/sap-gui-connection-closed-when-connecting-to-sap-system-in-azure) (SAP GUI-Verbindung beim Herstellen einer Verbindung mit SAP-System in Azure geschlossen).
 
 #### <a name="changing-firewall-settings-within-vm"></a>Ändern der Firewalleinstellungen in der VM
 
@@ -1606,7 +1604,7 @@ Das Einrichten Ihre lokalen TCP/IP-basierten Netzwerkdrucker auf einem virtuelle
 > ![Linux-Logo][Logo_Linux] Linux
 >
 > * Befolgen Sie wie für Windows einfach das Standardverfahren zum Installieren eines Netzwerkdruckers.
-> * Halten Sie sich beim Hinzufügen eines Druckers an die Anweisungen aus den öffentlich verfügbaren Linux-Handbüchern für [SUSE](https://www.suse.com/documentation/sles-12/book_sle_deployment/data/sec_y2_hw_print.html) oder [Red Hat und Oracle Linux](https://access.redhat.com/documentation/red_hat_enterprise_linux/6/html/deployment_guide/sec-printer_configuration).
+> * Halten Sie sich beim Hinzufügen eines Druckers an die Anweisungen aus den öffentlich verfügbaren Linux-Handbüchern für [SUSE](https://www.suse.com/documentation/sles-12/book_sle_deployment/data/sec_y2_hw_print.html) oder [Red Hat und Oracle Linux](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/sec-printer_configuration).
 >
 >
 
@@ -1691,12 +1689,12 @@ Gewusst wie:
 
 In standortübergreifenden Szenarios mit Standort-zu-Standort-Verbindung kann zwischen dem lokalen System und Azure eine beträchtlich Latenz vorliegen. Wenn wir die Schritte des Objekttransports von der Entwicklung über Testsysteme bis hin zur Produktion verfolgen oder die Anwendung von Transportfunktionen oder Supportpaketen auf die unterschiedlichen Systeme erwägen, fällt auf, dass je nach Speicherort im zentralen Transportverzeichnis bei manchen Systemen eine hohe Latenz beim Lesen und Schreiben von Daten im zentralen Transportverzeichnis auftritt. Die Situation ähnelt der Konfiguration von SAP-Landschaften, in denen die verschiedenen Systeme auf unterschiedliche Rechenzentren verteilt sind, die in beträchtlichem Abstand zueinander liegen.
 
-Um solche Latenzen zu umgehen und schnelle Lese- oder Schreibvorgänge in oder aus dem Transportverzeichnis zu ermöglichen, können Sie zwei STMS-Transportdomänen einrichten (eine für das lokale System und eine für die Systeme in Azure), und diese anschließend verbinden. Lesen Sie diese [Dokumentation] (https://help.sap.com/saphelp_me60/helpdata/en/c4/6045377b52253de10000009b38f889/content.htm?frameset=/en/57/38dd924eb711d182bf0000e829fbfe/frameset.htm). Darin werden die grundlegenden Prinzipien für dieses Konzept im SAP TMS erläutert.
+Um solche Latenzen zu umgehen und schnelle Lese- oder Schreibvorgänge in oder aus dem Transportverzeichnis zu ermöglichen, können Sie zwei STMS-Transportdomänen einrichten (eine für das lokale System und eine für die Systeme in Azure), und diese anschließend verbinden. Lesen Sie diese [Dokumentation](https://help.sap.com/saphelp_me60/helpdata/en/c4/6045377b52253de10000009b38f889/content.htm?frameset=/en/57/38dd924eb711d182bf0000e829fbfe/frameset.htm). Darin werden die grundlegenden Prinzipien für dieses Konzept im SAP TMS erläutert.
 
 
 Gewusst wie:
 
-* Richten Sie mit der Transaktion STMS eine Transportdomäne für jeden Standort (lokal und Azure) ein (siehe https://help.sap.com/viewer/4a368c163b08418890a406d413933ba7/202009.001/en-US/44b4a0b47acc11d1899e0000e829fbbd.html?q=Set%20up%20a%20transport%20domain).
+* [Richten Sie eine Transportdomäne](https://help.sap.com/viewer/4a368c163b08418890a406d413933ba7/202009.001/en-US/44b4a0b47acc11d1899e0000e829fbbd.html?q=Set%20up%20a%20transport%20domain) für jeden Standort (lokal und Azure) ein, indem Sie die Transaktion STMS verwenden.
 * [Verbinden Sie die Domänen über eine Domänenverknüpfung](https://help.sap.com/viewer/4a368c163b08418890a406d413933ba7/202009.001/en-US/14c795388d62e450e10000009b38f889.html?q=Link%20the%20domains%20with%20a%20domain%20link), und bestätigen Sie die Verknüpfung zwischen den beiden Domänen.
 * Verteilen Sie die Konfiguration auf das verknüpfte System.
 
@@ -1972,9 +1970,9 @@ Andere virtuelle Computer im SAP-System können mit der Sicherungsfunktion für 
 > Theoretisch können virtuelle Computer, auf denen Datenbanken ausgeführt werden, konsistent gesichert werden, wenn die DBMS-Systeme den Volumeschattenkopie-Dienst (Volume Shadow Copy Service <https://msdn.microsoft.com/library/windows/desktop/bb968832(v=vs.85).aspx>) von Windows unterstützen, wie es etwa bei SQL Server der Fall ist.
 > Bedenken Sie jedoch, dass auf Basis der Sicherungen virtueller Azure-Computer keine Zeitpunktwiederherstellung von Datenbanken möglich ist. Daher wird empfohlen, die Sicherung von Datenbanken mit DBMS-Funktionen durchzuführen und nicht die Sicherung virtueller Azure-Computer zu verwenden.
 >
-> Hier können Sie sich mit der Sicherung virtueller Azure-Computer vertraut machen: </azure/backup/backup-azure-vms>.
+> Hier können Sie sich mit der Sicherung virtueller Azure-Computer vertraut machen: [Sichern einer Azure-VM über die VM-Einstellungen](/../../../azure/backup/backup-azure-vms).
 >
-> Zudem können Sie Datenbanken mit einer Kombination aus Microsoft Data Protection Manager, der auf einem virtuellen Azure-Computer installiert ist, und der Azure-Sicherung sichern/wiederherstellen. Weitere Informationen finden Sie hier: </azure/backup/backup-azure-dpm-introduction>.
+> Zudem können Sie Datenbanken mit einer Kombination aus Microsoft Data Protection Manager, der auf einem virtuellen Azure-Computer installiert ist, und der Azure-Sicherung sichern/wiederherstellen. Weitere Informationen finden Sie hier: [Vorbereiten der Sicherung von Workloads in Azure mit System Center DPM](/../../../azure/backup/backup-azure-dpm-introduction).
 >
 > ![Linux-Logo][Logo_Linux] Linux
 >
@@ -1986,7 +1984,7 @@ Andere virtuelle Computer im SAP-System können mit der Sicherungsfunktion für 
 
 Seit Mitte 2014 ermöglichen Erweiterungen verschiedener Komponenten zu Hyper-V, System Center und Azure die Verwendung von Azure als DR-Standort für lokal auf der Basis von Hyper-V ausgeführte VMs.
 
-Einen Blog mit Informationen zum Bereitstellen dieser Lösung finden Sie hier: </archive/blogs/saponsqlserver/protecting-sap-solutions-with-azure-site-recovery>.
+Einen Blog mit Informationen zum Bereitstellen dieser Lösung finden Sie hier: [Protecting SAP Solutions with Azure Site Recovery](/archive/blogs/saponsqlserver/protecting-sap-solutions-with-azure-site-recovery) (Schützen von SAP-Lösungen mit Azure Site Recovery).
 
 ## <a name="summary-for-high-availability-for-sap-systems"></a>Zusammenfassung zur Hochverfügbarkeit bei SAP-Systemen
 
@@ -2009,4 +2007,4 @@ Lesen Sie die folgenden Artikel:
 
 - [Azure Virtual Machines – Bereitstellung für SAP NetWeaver](./deployment-guide.md)
 - [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload](./dbms_guide_general.md)
-- [SAP HANA-Infrastrukturkonfigurationen und -Vorgänge in Azure](/- azure/virtual-machines/workloads/sap/hana-vm-operations)
+- [SAP HANA-Infrastrukturkonfigurationen und -Vorgänge in Azure](./hana-vm-operations.md)

@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: sql
 ms.topic: tutorial
 ms.date: 04/15/2021
-ms.openlocfilehash: 8a8e8fae151b0d9be318d4dfad832ead34ef04da
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 492f8d42a072418586a6646a9beed2e750849b31
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109738084"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129996984"
 ---
 # <a name="analyze-data-with-a-serverless-sql-pool"></a>Analysieren von Daten mit einem serverlosen SQL-Pool
 
@@ -58,7 +58,7 @@ Wenn Sie die Datenuntersuchung fortsetzen, möchten Sie vielleicht jedoch einige
 - Datenbankbenutzer mit Zugriffsberechtigungen für einige Datenquellen oder Datenbankobjekte
 - Hilfsprogrammsichten, -prozeduren und -funktionen, die Sie in den Abfragen verwenden können
 
-1. Erstellen Sie eine separate Datenbank, um diese Objekte zu verwenden. Benutzerdefinierte Datenbankobjekte können nicht in der `master`-Datenbank erstellt werden.
+1. Verwenden Sie die `master`-Datenbank, um eine separate Datenbank für benutzerdefinierte Datenbankobjekte zu erstellen. Benutzerdefinierte Datenbankobjekte können nicht in der `master`-Datenbank erstellt werden.
 
     ```sql
     CREATE DATABASE DataExplorationDB 
@@ -76,15 +76,15 @@ Wenn Sie die Datenuntersuchung fortsetzen, möchten Sie vielleicht jedoch einige
     ```
 
    > [!NOTE]
-   > Eine externe Datenquelle kann ohne Anmeldeinformationen erstellt werden. In diesem Fall wird die Identität des Aufrufers für den Zugriff auf eine externe Datenquelle verwendet.
+   > Eine externe Datenquelle kann ohne Anmeldeinformationen erstellt werden. Wenn keine Anmeldeinformationen vorhanden sind, wird die Identität des Aufrufers für den Zugriff auf die externe Datenquelle verwendet.
 
-3. Erstellen Sie optional eine Anmeldung für einen Benutzer in `DataExplorationDB`, der auf externe Daten zugreift:
+3. Erstellen Sie mithilfe der master-Datenbank optional eine Anmeldung für einen Benutzer in `DataExplorationDB`, der auf externe Daten zugreift:
 
     ```sql
     CREATE LOGIN data_explorer WITH PASSWORD = 'My Very Strong Password 1234!';
     ```
 
-    Erstellen Sie einen Datenbankbenutzer in `DataExplorationDB` für die Anmeldung, und erteilen Sie die Berechtigung `ADMINISTER DATABASE BULK OPERATIONS`.
+    Erstellen Sie anschließend einen Datenbankbenutzer in `DataExplorationDB` für die Anmeldung, und erteilen Sie die Berechtigung `ADMINISTER DATABASE BULK OPERATIONS`.
     ```sql
     CREATE USER data_explorer FOR LOGIN data_explorer;
     GO

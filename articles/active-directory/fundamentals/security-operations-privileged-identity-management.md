@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f17ff93dde6c4bbb7df57d177bc7d1e3d746b347
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: ac4f2982166fabf7a49a92966ca783a260ca875a
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124814619"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130038724"
 ---
 # <a name="azure-active-directory-security-operations-for-privileged-identity-management-pim"></a>Azure Active Directory-Sicherheitsvorgänge für Privileged Identity Management (PIM)
 
@@ -50,7 +50,7 @@ Dieser Artikel ist ein Leitfaden zum Festlegen von Baselines und Überwachen der
 
 ## <a name="where-to-look"></a>Zu verwendende Ressourcen
 
-Zur Untersuchung und Überwachung werden folgende Protokolldateien verwendet: 
+Zur Untersuchung und Überwachung verwenden Sie die folgenden Protokolldateien: 
 
 * [Azure AD-Überwachungsprotokolle](../reports-monitoring/concept-audit-logs.md)
 
@@ -68,7 +68,7 @@ Im Azure-Portal können Sie die Azure AD-Überwachungsprotokolle anzeigen und a
 
 * [**Azure Event Hubs**](../../event-hubs/event-hubs-about.md) **mit Integration mit einem SIEM-System:** - [ Azure AD-Protokolle können über die Azure Event Hubs-Integration in andere SIEM-Systeme](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) wie Splunk, ArcSight, QRadar und Sumo Logic integriert werden.
 
-* [**Microsoft Cloud App Security**](/cloud-app-security/what-is-cloud-app-security) (MCAS): ermöglicht Ihnen das Entdecken und Verwalten von Apps, eine Apps- und ressourcenübergreifende Governance und Konformitätsprüfungen Ihrer Cloud-Apps 
+* [**Microsoft Cloud App Security (MCAS)** ](/cloud-app-security/what-is-cloud-app-security): Ermöglicht das Entdecken und Verwalten von Apps, eine App- und ressourcenübergreifende Steuerung sowie Konformitätsprüfungen Ihrer Cloud-Apps. 
 
 Der übrige Teil dieses Artikels enthält Empfehlungen zum Festlegen einer Baseline, die mithilfe eines Ebenenmodells organisiert ist und auf deren Grundlage die Überwachung und Warnungen erfolgen. Links zu vorgefertigten Lösungen sind im Anschluss an die Tabelle aufgeführt. Sie können Warnungen auch mithilfe der oben genannten Tools erstellen. Der Inhalt ist in die folgenden PIM-Themenbereiche unterteilt:
 

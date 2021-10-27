@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 09/03/2021
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: cabddc920971d75bc609ce5b0b736cefca6ce1d4
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 8839fb93bd04e3a26538d6753ce59f2304adbde2
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123535967"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130050815"
 ---
 ### <a name="combine-results-from-two-queries-into-a-single-result"></a>Vereinen von Ergebnissen aus zwei Abfragen in einem einzigen Ergebnis
 
@@ -1254,7 +1254,7 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 
 ### <a name="show-resource-types-and-api-versions"></a>Anzeigen von Ressourcentypen und API-Versionen
 
-Resource Graph verwendet hauptsächlich die neueste Version (keine Vorschauversion) der API eines Ressourcenanbieters, um mittels `GET` Ressourceneigenschaften während einer Aktualisierung abzurufen. In einigen Fällen wurde die verwendete API-Version überschrieben, um in den Ergebnissen neuere oder gängigere Eigenschaften bereitzustellen. In der folgenden Abfrage wird die API-Version veranschaulicht, die zum Sammeln von Eigenschaften für die einzelnen Ressourcentypen verwendet wird:
+Resource Graph verwendet hauptsächlich die neueste Version (keine Vorschauversion) einer Ressourcenanbieter-API, um mittels `GET` Ressourceneigenschaften während einer Aktualisierung abzurufen. In einigen Fällen wurde die verwendete API-Version überschrieben, um in den Ergebnissen neuere oder gängigere Eigenschaften bereitzustellen. In der folgenden Abfrage wird die API-Version veranschaulicht, die zum Sammeln von Eigenschaften für die einzelnen Ressourcentypen verwendet wird:
 
 ```kusto
 Resources

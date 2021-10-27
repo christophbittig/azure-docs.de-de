@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 5d94625e3eb121e556b28038cf59626be1332966
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 015c61b7f02bec8cec274f3f746b3d693ccdffed
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102455804"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129992731"
 ---
 # <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>Azure Queue Storage-Ausgabebindungen für Azure Functions
 
@@ -398,9 +398,11 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 |**direction** | – | Muss auf `out` festgelegt sein. Diese Eigenschaft wird automatisch festgelegt, wenn Sie den Trigger im Azure Portal erstellen. |
 |**name** | – | Der Name der Variablen, die die Warteschlange im Funktionscode darstellt. Legen Sie diesen Wert auf `$return` fest, um auf den Rückgabewert der Funktion zu verweisen.|
 |**queueName** |**QueueName** | Der Name der Warteschlange. |
-|**connection** | **Connection** |Der Name einer App-Einstellung, die die Storage-Verbindungszeichenfolge für diese Bindung enthält. Falls der Name der App-Einstellung mit „AzureWebJobs“ beginnt, können Sie hier nur den Rest des Namens angeben.<br><br>Wenn Sie `connection` also beispielsweise auf „MyStorage“ festlegen, sucht die Functions-Runtime nach einer App-Einstellung namens „MyStorage“. Ohne Angabe für `connection` verwendet die Functions-Laufzeit die standardmäßige Storage-Verbindungszeichenfolge aus der App-Einstellung `AzureWebJobsStorage`.<br><br>Wenn Sie [Version 5.x oder höher der Erweiterung](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher) verwenden, können Sie anstelle einer Verbindungszeichenfolge einen Verweis auf einen Konfigurationsabschnitt angeben, der die Verbindung definiert. Weitere Informationen finden Sie unter [Verbindungen](./functions-reference.md#connections).|
+|**connection** | **Connection** |Der Name einer App-Einstellung oder -Einstellungssammlung, die angibt, wie eine Verbindung mit Azure Queues hergestellt wird. Siehe [Verbindungen](#connections).|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
+
+[!INCLUDE [functions-storage-queue-connections](../../includes/functions-storage-queue-connections.md)]
 
 ## <a name="usage"></a>Verwendung
 

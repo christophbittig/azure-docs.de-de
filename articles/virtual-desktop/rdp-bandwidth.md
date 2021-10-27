@@ -6,12 +6,12 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: 1b43a76e417505d4894396503ca93fc87f508d4c
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 3153abcc4a0fa76b0ebb6c0a9715020af6a646ec
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111753159"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130181481"
 ---
 # <a name="remote-desktop-protocol-rdp-bandwidth-requirements"></a>Bandbreitenanforderungen des Remotedesktopprotokolls
 
@@ -99,7 +99,7 @@ In den meisten Szenarien muss die Bandbreitennutzung nicht begrenzt werden, da e
 In solchen Fällen können Sie ausgehenden RDP-Netzwerkdatenverkehr begrenzen, indem Sie in der QoS-Richtlinie eine Drosselungsrate angeben.
 
   >[!NOTE]
-  > [Stellen Sie sicher, dass RDP Shortpath aktiviert ist](./shortpath.md): Eine Begrenzung der Drosselungsrate wird für den Datentransport in umgekehrten Verbindungen nicht unterstützt.
+  > [Stellen Sie sicher, dass RDP Shortpath für verwaltete Netzwerke aktiviert ist](./shortpath.md): Eine Begrenzung der Drosselungsrate wird für den Datentransport in umgekehrten Verbindungen nicht unterstützt.
 
 ### <a name="implement-throttle-rate-limiting-on-session-host-using-group-policy"></a>Implementieren der Begrenzung per Drosselungsrate auf dem Sitzungshost mithilfe einer Gruppenrichtlinie
 
@@ -139,14 +139,14 @@ Die neuen Richtlinien, die Sie erstellt haben, werden erst wirksam, wenn die Gru
 
 ### <a name="implement-throttle-rate-limiting-on-session-host-using-powershell"></a>Implementieren der Begrenzung per Drosselungsrate auf dem Sitzungshost mithilfe von PowerShell
 
-Sie können die Drosselungsrate für RDP Shortpath mithilfe des folgenden PowerShell-Cmdlets festlegen:
+Sie können die Drosselungsrate für RDP Shortpath für verwaltete Netzwerke mithilfe des folgenden PowerShell-Cmdlets festlegen:
 
 ```powershell
-New-NetQosPolicy -Name "RDP Shortpath" -AppPathNameMatchCondition "svchost.exe" -IPProtocolMatchCondition UDP -IPSrcPortStartMatchCondition 3390 -IPSrcPortEndMatchCondition 3390 -DSCPAction 46 -NetworkProfile All
+New-NetQosPolicy -Name "RDP Shortpath for managed networks" -AppPathNameMatchCondition "svchost.exe" -IPProtocolMatchCondition UDP -IPSrcPortStartMatchCondition 3390 -IPSrcPortEndMatchCondition 3390  -ThrottleRateActionBitsPerSecond 10mb -NetworkProfile All
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zu den Bandbreitenanforderungen für Azure Virtual Desktop finden Sie unter [Grundlegendes zu Bandbreitenanforderungen für das Remotedesktopprotokoll (RDP)](rdp-bandwidth.md).
+* Informationen zu den Bandbreitenanforderungen für Azure Virtual Desktop finden Sie unter [Grundlegendes zu Bandbreitenanforderungen für das Remotedesktopprotokoll (RDP) in Azure Virtual Desktop](rdp-bandwidth.md).
 * Weitere Informationen zur Netzwerkkonnektivität von Azure Virtual Desktop finden Sie unter [Grundlegendes zur Azure Virtual Desktop-Netzwerkkonnektivität](network-connectivity.md).
 * Informationen zu den ersten Schritten mit Quality of Service (QoS) für Azure Virtual Desktop finden Sie unter [Implementieren von Quality of Service (QoS) für Azure Virtual Desktop](rdp-quality-of-service-qos.md).

@@ -11,12 +11,12 @@ ms.date: 09/27/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: Gesichtserkennung, Gesichtserkennungssoftware, Gesichtsanalyse, Gesichtsabgleich, Gesichtserkennungs-App, Gesichtserkennungssuche nach Bild, Gesichtserkennungssuche
-ms.openlocfilehash: 3cb63bb5fb98eddee84677bb8e2d8d11ed86c876
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 90a2b656d66c15eed10d68be8e5af5c35f35d135
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129362757"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130005689"
 ---
 # <a name="what-is-the-azure-face-service"></a>Was ist der Azure-Gesichtserkennungsdienst?
 
@@ -57,7 +57,7 @@ Moderne Unternehmen und Apps können mit den Gesichtsidentifikations- und Gesich
 
 ### <a name="identification"></a>Identifikation
 
-Die Gesichtserkennung kann den „1:n“-Abgleich eines Gesichts in einem Bild mit einer Gruppe von Gesichtern in einem sicheren Repository adressieren. Übereinstimmungskandidaten werden basierend auf der Genauigkeit der Übereinstimmung ihrer Gesichtsdaten mit dem Abfragegesicht zurückgegeben. Dieses Szenario wird verwendet, um einer bestimmten Gruppe von Personen Zugang zu einem Gebäude zu gewähren oder den Benutzer eines Geräts zu überprüfen.
+Die Gesichtserkennung kann den „1:n“-Abgleich eines Gesichts in einem Bild mit einer Gruppe von Gesichtern in einem sicheren Repository adressieren. Übereinstimmungskandidaten werden basierend auf der Genauigkeit der Übereinstimmung ihrer Gesichtsdaten mit dem Abfragegesicht zurückgegeben. Dieses Szenario wird verwendet, um einer bestimmten Gruppe von Personen Zugang zu einem Gebäude oder zum Flughafen zu gewähren oder den Benutzer eines Geräts zu überprüfen.
 
 Die folgende Abbildung enthält ein Beispiel für eine Datenbank mit dem Namen `"myfriends"`. Jede Gruppe kann bis zu 1 Million unterschiedliche Personenobjekte enthalten. Für jedes Personenobjekt können bis zu 248 Gesichter registriert sein.
 
@@ -69,9 +69,7 @@ Nachdem Sie eine Gruppe erstellt und trainiert haben, können Sie die Identifizi
 
 Der Überprüfungsvorgang beantwortet die Frage „Gehören diese beiden Gesichter zu derselben Person?“. 
 
-Die Überprüfung ist auch ein 1:1-Abgleich eines Gesichts in einem Bild mit einem Gesicht in einem sicheren Repository oder Foto.
-
-Die Überprüfung kann in Identitätsüberprüfungs- oder Zugriffssteuerungsszenarien verwendet werden, um zu überprüfen, ob ein Bild mit einem zuvor aufgenommenen Bild übereinstimmt (z. B. ein Foto von einem von einer Behörde ausgegebenen Ausweis).
+Die Überprüfung ist auch ein 1:1-Abgleich eines Gesichts in einem Bild mit einem einzelnen Gesicht in einem sicheren Repository oder Foto, um sicherzustellen, dass es sich um die gleiche Person handelt. Die Überprüfung kann für die Identitätsüberprüfung verwendet werden, z. B. in einer Banking-App, die es Benutzern ermöglicht, remote ein Kreditkonto zu eröffnen, indem sie ein Selfie und ein Foto eines Lichtbildausweises zur Bestätigung ihrer Identität aufnehmen. 
 
 Weitere Informationen zur Überprüfung der Identifikation finden Sie im Konzeptleitfaden zur [Gesichtserkennung](concepts/face-recognition.md) oder in der Referenzdokumentation zur [Identify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)- und [Verify](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a)-API.
 

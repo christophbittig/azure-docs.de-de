@@ -3,12 +3,12 @@ title: Systemthemen in Azure Event Grid
 description: Hier werden die Systemthemen in Azure Event Grid beschrieben.
 ms.topic: conceptual
 ms.date: 07/19/2021
-ms.openlocfilehash: cb054b8085c422f56a6cf8c6cc492470aaa4be95
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 2c0bf2879ce2b137faf33f1ec00d456ab884ccf8
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114437032"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130035104"
 ---
 # <a name="system-topics-in-azure-event-grid"></a>Systemthemen in Azure Event Grid
 Ein Systemthema in Event Grid stellt ein oder mehrere Ereignisse dar, die von Azure-Diensten wie Azure Storage und Azure Event Hubs veröffentlicht wurden. Beispielsweise kann ein Systemthema **alle Blobereignisse** oder nur für ein **bestimmtes Speicherkonto** veröffentlichte **Bloberstellungs-** und **Bloblöschungsereignisse** darstellen. Wenn in diesem Beispiel ein Blob in das Speicherkonto hochgeladen wird, veröffentlicht der Dienst Azure Storage ein **Bloberstellungsereignis** im Systemthema in Event Grid. Event Grid leitet dieses Ereignis dann an die [Abonnenten](event-handlers.md) des Themas weiter, die es empfangen und verarbeiten. 
@@ -57,7 +57,12 @@ Sie können ein Systemthema auf zwei Arten erstellen:
 
 Wenn Sie die [CLI](create-view-manage-system-topics-cli.md), [REST](/rest/api/eventgrid/version2020-06-01/eventsubscriptions/createorupdate) oder eine [Azure Resource Manager-Vorlage](create-view-manage-system-topics-arm.md) verwenden, können Sie jede der oben genannten Methoden verwenden. Es wird empfohlen, dass Sie zuerst ein Systemthema erstellen und dann ein Abonnement für das Thema, da dies die aktuellste Methode zum Erstellen von Systemthemen ist.
 
+### <a name="failure-to-create-system-topics"></a>Fehler bei der Erstellung von Systemthemen
 Beim Erstellen von Systemthemen tritt ein Fehler auf, wenn Sie Azure-Richtlinien so eingerichtet haben, dass der Dienst Event Grid keine Systemthemen erstellen kann. Möglicherweise verfügen Sie z. B. über eine Richtlinie, die nur das Erstellen von bestimmten Ressourcentypen (z. B. Azure Storage oder Azure Event Hubs) im Abonnement zulässt. 
+
+In solchen Fällen bleibt die Ereignisflussfunktionalität erhalten. Die Metrik- und Diagnosefunktionen von Systemthemen sind jedoch nicht verfügbar.
+
+Wenn Sie diese Funktionalität benötigen, erlauben Sie die Erstellung von Ressourcen des Typs Systemthema und erstellen Sie das fehlende Systemthema wie im Abschnitt [Lebenszyklus von Systemthemen](#lifecycle-of-system-topics) beschrieben.
 
 ## <a name="location-and-resource-group-for-a-system-topic"></a>Ort und Ressourcengruppe für ein Systemthema
 Für Azure-Ereignisquellen, die sich in einer bestimmten Region bzw. einem bestimmten Speicherort befinden, wird das Systemthema am gleichen Speicherort erstellt wie die Azure-Ereignisquelle. Wenn Sie beispielsweise ein Ereignisabonnement für Azure Blob Storage in der Region „USA, Osten“ erstellen, wird das Systemthema in „USA, Osten“ erstellt. Für globale Azure-Ereignisquellen wie Azure-Abonnements, Ressourcengruppen oder Azure Maps erstellt Event Grid das Systemthema an einem **globalen** Speicherort. 

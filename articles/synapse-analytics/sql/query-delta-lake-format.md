@@ -2,19 +2,19 @@
 title: Abfragen des Delta Lake-Formats mithilfe eines serverlosen SQL-Pools (Preview)
 description: In diesem Artikel erfahren Sie, wie Sie im Apache Delta Lake-Format gespeicherte Dateien mithilfe eines serverlosen SQL-Pools abfragen.
 services: synapse analytics
-author: jovanpop-msft
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: sql
-ms.date: 04/27/2021
+ms.date: 07/15/2021
+author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: jrasnick
-ms.openlocfilehash: 096cee4aca9830acf9e74d3d60d08e6a79590cb4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.reviewer: jrasnick, wiassaf
+ms.openlocfilehash: c06826fa8d08a06ed49bdd56e86c999aff849899
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122347017"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130002832"
 ---
 # <a name="query-delta-lake-files-preview-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Abfragen von Delta Lake-Dateien (Preview) mithilfe eines serverlosen SQL-Pools in Azure Synapse Analytics
 
@@ -174,7 +174,8 @@ Das zweite Argument der `DeltaTable.convertToDeltaLake` Funktion stellt die Part
 
 ## <a name="limitations"></a>Einschränkungen
 
-Dieses Feature befindet sich in der Public Preview. Es sind einige Probleme und Einschränkungen bekannt. Überprüfen Sie die bekannten Probleme auf der [Selbsthilfeseite bei Problemen mit serverlosen Synapse-SQL-Pools](resources-self-help-sql-on-demand.md#delta-lake)
+- Dieses Feature befindet sich in der Public Preview. Es sind einige Probleme und Einschränkungen bekannt. Überprüfen Sie die bekannten Probleme auf der [Selbsthilfeseite bei Problemen mit serverlosen Synapse-SQL-Pools](resources-self-help-sql-on-demand.md#delta-lake)
+- Derzeit unterstützen sowohl der Spark-Pool als auch der serverlose SQL-Pool in Azure Synapse Analytics das Delta Lake-Format. Serverlose SQL-Pools unterstützen keine Aktualisierung von Delta Lake-Dateien. Nur Tabellen im Parquet-Format werden von Spark-Pools für einen serverlosen SQL-Pool freigegeben. Weitere Informationen finden Sie unter [Gemeinsam genutzte Spark-Tabellen](../metadata/table.md#shared-spark-tables).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

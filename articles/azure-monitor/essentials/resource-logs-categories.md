@@ -2,13 +2,13 @@
 title: Unterstützte Kategorien für Azure Monitor-Ressourcenprotokolle
 description: Hier finden Sie Erläuterungen zu den unterstützten Diensten und Ereignisschemas für Azure Monitor-Ressourcenprotokolle.
 ms.topic: reference
-ms.date: 09/10/2021
-ms.openlocfilehash: 9c41c714d2913247a6b0d00e3b242da9c59e038e
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.date: 10/05/2021
+ms.openlocfilehash: bf7d5371a170f28e79828619aef9fc16e15a303a
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129457751"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130006373"
 ---
 # <a name="supported-categories-for-azure-monitor-resource-logs"></a>Unterstützte Kategorien für Azure Monitor-Ressourcenprotokolle
 
@@ -65,6 +65,9 @@ Wenn Sie noch etwas vermissen, können Sie unten in diesem Artikel einen GitHub-
 |ApplicationAuditLogs|Anwendungsüberwachungsprotokolle|Ja|
 |FarmManagementLogs|Farmverwaltungsprotokolle|Ja|
 |FarmOperationLogs|Farmbetriebsprotokolle|Ja|
+|InsightLogs|Insight-Protokolle|Ja|
+|JobProcessedLogs|Auftragsverarbeitungs-Protokolle|Ja|
+|ModelInferenceLogs|Modellrückschlussprotokolle|Ja|
 |ProviderAuthLogs|Anbieterauthentifizierungsprotokolle|Ja|
 |SatelliteLogs|Satellitenprotokolle|Ja|
 |WeatherLogs|Wetterprotokolle|Ja|
@@ -99,6 +102,7 @@ Wenn Sie noch etwas vermissen, können Sie unten in diesem Artikel einen GitHub-
 |Category|Anzeigename der Kategorie|Exportkosten|
 |---|---|---|
 |ApplicationConsole|Anwendungskonsole|Nein|
+|BuildLogs|Buildprotokolle|Ja|
 |IngressLogs|Eingangsprotokolle|Ja|
 |SystemLogs|Systemprotokolle|Nein|
 
@@ -230,8 +234,8 @@ Wenn Sie noch etwas vermissen, können Sie unten in diesem Artikel einen GitHub-
 |Category|Anzeigename der Kategorie|Exportkosten|
 |---|---|---|
 |AuthOperational|Protokolle zum Authentifizierungsbetrieb|Ja|
-|CallDiagnosticsPRIVATEPREVIEW|Anrufdiagnoseprotokolle – PRIVATE VORSCHAU|Ja|
-|CallSummaryPRIVATEPREVIEW|Anrufzusammenfassungsprotokolle – PRIVATE VORSCHAU|Ja|
+|CallDiagnostics|Anrufdiagnose-Protokolle|Ja|
+|CallSummary|Anrufzusammenfassungsprotokolle|Ja|
 |ChatOperational|Protokolle zum Chatbetrieb|Nein|
 |SMSOperational|Protokolle zum SMS-Betrieb|Nein|
 |Verwendung|Verwendungsdatensätze|Nein|
@@ -241,6 +245,7 @@ Wenn Sie noch etwas vermissen, können Sie unten in diesem Artikel einen GitHub-
 
 |Category|Anzeigename der Kategorie|Exportkosten|
 |---|---|---|
+|Audit|MCVP-Überwachungsprotokolle|Ja|
 |Protokolle|MCVP-Protokolle|Ja|
 
 
@@ -642,6 +647,7 @@ Wenn Sie noch etwas vermissen, können Sie unten in diesem Artikel einen GitHub-
 |Category|Anzeigename der Kategorie|Exportkosten|
 |---|---|---|
 |AuditEvent|Überwachungsprotokolle|Nein|
+|AzurePolicyEvaluationDetails|Azure Policy – Auswertungsdetails|Ja|
 
 
 ## <a name="microsoftkustoclusters"></a>Microsoft.Kusto/Clusters
@@ -716,8 +722,9 @@ Wenn Sie noch etwas vermissen, können Sie unten in diesem Artikel einen GitHub-
 
 |Category|Anzeigename der Kategorie|Exportkosten|
 |---|---|---|
-|PipelineDiagnostics|Pipelinediagnoseprotokolle|Ja|
-|PipelineOperational|Pipelinebetriebsprotokolle|Ja|
+|Audit|Überwachungsprotokolle|Ja|
+|Diagnose|Diagnoseprotokolle|Ja|
+|Bei Betrieb|Betriebsprotokolle|Ja|
 
 
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft.Network/applicationgateways
@@ -947,6 +954,13 @@ Wenn Sie noch etwas vermissen, können Sie unten in diesem Artikel einen GitHub-
 |MessagingLogs|Messagingprotokolle für den Azure Web PubSub-Dienst.|Ja|
 
 
+## <a name="microsoftsingularityaccounts"></a>microsoft.singularity/accounts
+
+|Category|Anzeigename der Kategorie|Exportkosten|
+|---|---|---|
+|Ausführung|Ausführungsprotokolle|Ja|
+
+
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft.Sql/managedInstances
 
 |Category|Anzeigename der Kategorie|Exportkosten|
@@ -1110,7 +1124,6 @@ Wenn Sie noch etwas vermissen, können Sie unten in diesem Artikel einen GitHub-
 |AppServiceAppLogs|App Service-Anwendungsprotokolle|Nein|
 |AppServiceAuditLogs|Zugriffsüberwachungsprotokolle|Nein|
 |AppServiceConsoleLogs|App Service-Konsolenprotokolle|Nein|
-|AppServiceDiagnosticToolsLogs|Protokolle des Berichtsdiagnosetools|Ja|
 |AppServiceFileAuditLogs|Überwachungsprotokolle für Website-Inhaltsänderungen|Nein|
 |AppServiceHTTPLogs|HTTP-Protokolle|Nein|
 |AppServiceIPSecAuditLogs|IPSecurity-Überwachungsprotokolle|Nein|

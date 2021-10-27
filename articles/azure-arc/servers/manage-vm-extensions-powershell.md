@@ -1,15 +1,15 @@
 ---
 title: Aktivieren der VM-Erweiterung mithilfe von Azure PowerShell
 description: In diesem Artikel wird beschrieben, wie Sie mit Azure PowerShell VM-Erweiterungen auf Azure Arc-fähigen Servern bereitstellen, die in hybriden Cloudumgebungen ausgeführt werden.
-ms.date: 08/05/2021
+ms.date: 10/15/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 9a626e42b5447cafcf0fe99876eb0146a02c25f3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c759510c3ab81b15b65315015a16507dadf2658a
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346420"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130074568"
 ---
 # <a name="enable-azure-vm-extensions-using-azure-powershell"></a>Aktivieren von Azure-VM-Erweiterungen mithilfe von Azure PowerShell
 
@@ -22,7 +22,9 @@ In diesem Artikel erfahren Sie, wie Sie Azure-VM-Erweiterungen, die von Azure Ar
 
 - Einen Computer mit Azure PowerShell. Anweisungen hierzu finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/).
 
-Bevor Sie Azure PowerShell zum Verwalten von VM-Erweiterungen auf Ihrem Hybridserver verwenden können, der von Arc-fähigen Servern verwaltet wird, müssen Sie das Modul `Az.ConnectedMachine` installieren. Führen Sie auf Ihrem Server mit Arc-Unterstützung den folgenden Befehl aus:
+Bevor Sie Azure PowerShell zum Verwalten von VM-Erweiterungen auf Ihrem Hybridserver verwenden können, der von Azure Arc-fähigen Servern verwaltet wird, müssen Sie das Modul `Az.ConnectedMachine` installieren. Diese Verwaltungsvorgänge können von Ihrer Arbeitsstation aus ausgeführt werden. Sie müssen sie nicht auf dem Azure Arc-fähigen Server ausführen.
+
+Führen Sie auf Ihrem Azure Arc-fähigen Server den folgenden Befehl aus:
 
 `Install-Module -Name Az.ConnectedMachine`.
 
@@ -32,31 +34,38 @@ Nach Abschluss der Installation wird die folgende Meldung zurückgegeben:
 
 ## <a name="enable-extension"></a>Aktivieren der Erweiterung
 
-Verwenden Sie [New-AzConnectedMachineExtension](/powershell/module/az.connectedmachine/new-azconnectedmachineextension) mit den Parametern `-Name`, `-ResourceGroupName`, `-MachineName`, `-Location`, `-Publisher`, -`ExtensionType` und `-Settings`, um eine VM-Erweiterung auf dem Arc-fähigen Server zu aktivieren.
+Verwenden Sie [New-AzConnectedMachineExtension](/powershell/module/az.connectedmachine/new-azconnectedmachineextension) mit den Parametern `-Name`, `-ResourceGroupName`, `-MachineName`, `-Location`, `-Publisher`, -`ExtensionType` und `-Settings`, um eine VM-Erweiterung auf dem Azure Arc-fähigen Server zu aktivieren.
 
-Im folgenden Beispiel wird die Log Analytics-VM-Erweiterung auf einem Linux-Server mit Arc-Unterstützung aktiviert:
-
-```powershell
-PS C:\> $Setting = @{ "workspaceId" = "workspaceId" }
-PS C:\> $protectedSetting = @{ "workspaceKey" = "workspaceKey" }
-PS C:\> New-AzConnectedMachineExtension -Name OMSLinuxAgent -ResourceGroupName "myResourceGroup" -MachineName "myMachine" -Location "eastus" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -Settings $Setting -ProtectedSetting $protectedSetting -ExtensionType "OmsAgentForLinux"
-```
-
-Ändern Sie im vorherigen Beispiel den Wert für den Parameter `-ExtensionType` in `"MicrosoftMonitoringAgent"`, um die Log Analytics-VM-Erweiterung auf einem Windows-Server mit Arc-Unterstützung zu aktivieren.
-
-Im folgenden Beispiel wird die Erweiterung für benutzerdefinierte Skripts auf einem Server mit Arc-Unterstützung aktiviert:
+Im folgenden Beispiel wird die Log Analytics-VM-Erweiterung auf einem Azure Arc-fähigen Linux-Server aktiviert:
 
 ```powershell
-PS C:\> $Setting = @{ "commandToExecute" = "powershell.exe -c Get-Process" }
-PS C:\> New-AzConnectedMachineExtension -Name custom -ResourceGroupName myResourceGroup -MachineName myMachineName -Location eastus -Publisher "Microsoft.Compute"  -Settings $Setting -ExtensionType CustomScriptExtension
+$Setting = @{ "workspaceId" = "workspaceId" }
+$protectedSetting = @{ "workspaceKey" = "workspaceKey" }
+New-AzConnectedMachineExtension -Name OMSLinuxAgent -ResourceGroupName "myResourceGroup" -MachineName "myMachineName" -Location "regionName" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -Settings $Setting -ProtectedSetting $protectedSetting -ExtensionType "OmsAgentForLinux"
 ```
 
-### <a name="key-vault-vm-extension"></a>Azure Key Vault-VM-Erweiterung 
+Ändern Sie im vorherigen Beispiel den Wert für den Parameter `-ExtensionType` in `"MicrosoftMonitoringAgent"`, um die Log Analytics-VM-Erweiterung auf einem Azure Arc-fähigen Windows-Server zu aktivieren.
+
+Im folgenden Beispiel wird die Erweiterung für benutzerdefinierte Skripts auf einem Server mit Azure Arc-Unterstützung aktiviert:
+
+```powershell
+$Setting = @{ "commandToExecute" = "powershell.exe -c Get-Process" }
+New-AzConnectedMachineExtension -Name "custom" -ResourceGroupName "myResourceGroup" -MachineName "myMachineName" -Location "regionName" -Publisher "Microsoft.Compute"  -Settings $Setting -ExtensionType CustomScriptExtension
+```
+
+Das folgende Beispiel aktiviert die Microsoft Antimalware-Erweiterung auf einem Azure Arc-fähigen Windows-Server:
+
+```powershell
+$Setting = @{ "AntimalwareEnabled" = $true }
+New-AzConnectedMachineExtension -Name "IaaSAntimalware" -ResourceGroupName "myResourceGroup" -MachineName "myMachineName" -Location "regionName" -Publisher "Microsoft.Azure.Security" -Settings $Setting -ExtensionType "IaaSAntimalware"
+```
+
+### <a name="key-vault-vm-extension"></a>Azure Key Vault-VM-Erweiterung
 
 > [!WARNING]
 > PowerShell-Clients fügen `"` häufig `\` in der Datei „settings.json“ hinzu. Dies verursacht bei akvvm_service folgenden Fehler: `[CertificateManagementConfiguration] Failed to parse the configuration settings with:not an object.`
 
-Im folgenden Beispiel wird die Key Vault-VM-Erweiterung auf einem Server mit Arc-Unterstützung aktiviert:
+Das folgende Beispiel aktiviert die Key Vault-VM-Erweiterung auf einem Server mit Azure Arc-Unterstützung:
 
 ```powershell
 # Build settings
@@ -84,7 +93,7 @@ Im folgenden Beispiel wird die Key Vault-VM-Erweiterung auf einem Server mit Arc
 
 ## <a name="list-extensions-installed"></a>Auflisten der Installierten Erweiterungen
 
-Verwenden Sie [Get-AzConnectedMachineExtension](/powershell/module/az.connectedmachine/get-azconnectedmachineextension) mit den Parametern `-MachineName` und `-ResourceGroupName`, um eine Liste der VM-Erweiterungen auf dem Arc-fähigen Server abzurufen.
+Verwenden Sie [Get-AzConnectedMachineExtension](/powershell/module/az.connectedmachine/get-azconnectedmachineextension) mit den Parametern `-MachineName` und `-ResourceGroupName`, um eine Liste der VM-Erweiterungen auf dem Azure Arc-fähigen Server abzurufen.
 
 Beispiel:
 
@@ -98,7 +107,7 @@ custom  westus2   CustomScriptExtension Succeeded
 
 ## <a name="remove-an-installed-extension"></a>Entfernen einer installierten Erweiterung
 
-Verwenden Sie [Remove-AzConnectedMachineExtension](/powershell/module/az.connectedmachine/remove-azconnectedmachineextension) mit den Parametern `-Name`, `-MachineName` und `-ResourceGroupName`, um eine installierte VM-Erweiterung auf dem Arc-fähigen Server zu entfernen.
+Verwenden Sie [Remove-AzConnectedMachineExtension](/powershell/module/az.connectedmachine/remove-azconnectedmachineextension) mit den Parametern `-Name`, `-MachineName` und `-ResourceGroupName`, um eine installierte VM-Erweiterung auf dem Azure Arc-fähigen Server zu entfernen.
 
 Um beispielsweise die Log Analytics-VM-Erweiterung für Linux zu entfernen, führen Sie den folgenden Befehl aus:
 

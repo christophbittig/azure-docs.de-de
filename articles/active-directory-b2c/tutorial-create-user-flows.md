@@ -2,21 +2,21 @@
 title: 'Tutorial: Erstellen von Benutzerflows und benutzerdefinierten Richtlinien – Azure Active Directory B2C'
 description: In diesem Tutorial erfahren Sie, wie Sie Benutzerflows und benutzerdefinierte Richtlinien im Azure-Portal erstellen, um das Registrieren, Anmelden und Bearbeiten von Benutzerprofilen für Ihre Anwendungen in Azure Active Directory B2C zu ermöglichen.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/20/2021
-ms.author: mimart
+ms.date: 10/18/2021
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 07c3b88bd4cb5b7c0b0121bc2b9e12b7f9d5a441
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 63af3b70ebfde53078d71955a95e55e03a6c591b
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128598040"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130162491"
 ---
 # <a name="tutorial-create-user-flows-and-custom-policies-in-azure-active-directory-b2c"></a>Tutorial: Erstellen von Benutzerflows und benutzerdefinierten Richtlinien in Azure Active Directory B2C
 
@@ -53,7 +53,7 @@ Mithilfe eines Benutzerflows können Sie feststellen, wie Benutzer mit Ihrer Anw
 
 - Wenn Sie noch nicht über einen Azure AD B2C-Mandanten verfügen, [erstellen Sie einen](tutorial-create-tenant.md), der mit Ihrem Azure-Abonnement verknüpft ist.
 - [Registrieren Sie eine Webanwendung](tutorial-register-applications.md), und [aktivieren Sie die implizite Gewährung von ID-Token](tutorial-register-applications.md#enable-id-token-implicit-grant).
-- [Erstellen einer Facebook-Anwendung.](identity-provider-facebook.md#create-a-facebook-application) Überspringen Sie die Voraussetzungen und die übrigen Schritte im Artikel [Einrichten der Registrierung und Anmeldung mit einem Facebook-Konto mithilfe von Azure Active Directory B2C](identity-provider-facebook.md). Wenngleich für die Verwendung von benutzerdefinierten Richtlinien keine Facebook-Anwendung erforderlich ist, wird in dieser exemplarischen Vorgehensweise eine solche Anwendung verwendet, um die Aktivierung des Soziale Medien-Logins in einer benutzerdefinierten Richtlinie zu veranschaulichen.
+
 
 ::: zone-end
 
@@ -171,16 +171,6 @@ Wenn Sie Benutzern die Profilbearbeitung in Ihrer Anwendung ermöglichen möchte
 1. Wählen Sie für **Schlüsselverwendung** die Option **Verschlüsselung** aus.
 1. Klicken Sie auf **Erstellen**.
 
-### <a name="create-the-facebook-key"></a>Erstellen des Facebook-Schlüssels
-
-Fügen Sie das [App-Geheimnis](identity-provider-facebook.md) der Facebook-Anwendung als Richtlinienschlüssel hinzu. Sie können das App-Geheimnis der Anwendung verwenden, das Sie unter „Voraussetzungen“ in diesem Artikel erstellt haben.
-
-1. Klicken Sie erst auf **Richtlinienschlüssel** und anschließend auf **Hinzufügen**.
-1. Klicken Sie unter **Optionen** auf `Manual`.
-1. Geben Sie unter **Name**`FacebookSecret` ein. Das Präfix `B2C_1A_` wird möglicherweise automatisch hinzugefügt.
-1. Geben Sie unter **Geheimnis** das *App-Geheimnis* der Facebook-Anwendung aus developers.facebook.com ein. Bei diesem Wert handelt sich um das Geheimnis und nicht um die Anwendungs-ID.
-1. Wählen Sie unter **Schlüsselverwendung** **Signatur** aus.
-1. Klicken Sie auf **Erstellen**.
 
 ## <a name="register-identity-experience-framework-applications"></a>Registrieren von Identity Experience Framework-Anwendungen
 
@@ -226,8 +216,11 @@ Stellen Sie nun die API bereit, indem Sie einen Bereich hinzufügen:
 Geben Sie nun an, dass die Anwendung als öffentlicher Client behandelt werden soll:
 
 1. Wählen Sie im linken Menü unter **Verwalten** die Option **Authentifizierung** aus.
-1. Legen Sie unter **Erweiterte Einstellungen** im Abschnitt **Öffentliche Clientflows zulassen** die Option **Folgende Flows für Mobilgerät und Desktop aktivieren** auf **Ja** fest. Stellen Sie sicher, dass **„allowPublicClient“: true** im Anwendungsmanifest festgelegt ist. 
+1. Legen Sie unter **Erweiterte Einstellungen** im Abschnitt **Öffentliche Clientflows zulassen** die Option **Folgende Flows für Mobilgerät und Desktop aktivieren** auf **Ja** fest. 
 1. Wählen Sie **Speichern** aus.
+1. Stellen Sie sicher, dass **„allowPublicClient“: true** im Anwendungsmanifest festgelegt ist.
+    1. Wählen Sie im Menü auf der linken Seite unter **Verwalten** die Option **Manifest** aus, um das Anwendungsmanifest zu öffnen.
+    1. Suchen Sie nach dem Schlüssel **allowPublicClient**, und vergewissern Sie sich, dass er auf **true** festgelegt ist.
 
 Erteilen Sie nun Berechtigungen für den API-Bereich, den Sie zuvor in der Registrierung *IdentityExperienceFramework* verfügbar gemacht haben:
 
@@ -236,10 +229,9 @@ Erteilen Sie nun Berechtigungen für den API-Bereich, den Sie zuvor in der Regis
 1. Wählen Sie die Registerkarte **Meine APIs** aus, und wählen Sie dann die Anwendung **IdentityExperienceFramework** aus.
 1. Wählen Sie unter **Berechtigung** den Bereich **user_impersonation** aus, den Sie zuvor definiert haben.
 1. Wählen Sie **Berechtigungen hinzufügen** aus. Warten Sie einige Minuten, bevor Sie mit dem nächsten Schritt fortfahren.
-1. Wählen Sie **Administratorzustimmung für (Name Ihres Mandanten) erteilen** aus.
-1. Wählen Sie das derzeit angemeldete Administratorkonto aus, oder melden Sie sich mit einem Konto bei Ihrem Azure AD B2C-Mandanten an, dem mindestens die Rolle *Cloudanwendungsadministrator* zugewiesen wurde.
-1. Wählen Sie **Akzeptieren** aus.
-1. Wählen Sie **Aktualisieren** aus, und vergewissern Sie sich, dass für die Bereiche „offline_access“, „openid“ und „user_impersonation“ unter **Status** der Status „Gewährt für...“ angezeigt wird. Es kann einige Minuten dauern, bis die Berechtigungen weitergegeben wurden.
+1. Wählen Sie **Administratorzustimmung für *<Name Ihres Mandanten> erteilen*** aus.
+1. Wählen Sie **Ja** aus.
+1. Wählen Sie **Aktualisieren** aus, und vergewissern Sie sich, dass für den Bereich unter **Status** der Status „Gewährt für...“ angezeigt wird.
 
 * * *
 
@@ -255,6 +247,7 @@ Benutzerdefinierte Richtlinien sind ein Satz von XML-Dateien, die Sie in den Azu
 Die einzelnen Starter Packs enthalten Folgendes:
 
 - **Basisdatei**: Es sind einige Änderungen an der Basisdatei erforderlich. Beispiel: *TrustFrameworkBase.xml*
+- **Lokalisierungsdatei:** In dieser Datei werden Konfigurationsänderungen vorgenommen. Beispiel: *TrustFrameworkLocalization.xml*
 - **Erweiterungsdatei**: In dieser Datei werden die meisten Konfigurationsänderungen vorgenommen. Beispiel: *TrustFrameworkExtensions.xml*
 - **Dateien der vertrauenden Seite**: aufgabenspezifische Dateien, die von Ihrer Anwendung aufgerufen werden. Beispiele: *SignUpOrSignin.xml*, *ProfileEdit.xml*, *PasswordReset.xml*
 
@@ -289,10 +282,11 @@ Fügen Sie die Anwendung-ID zur Erweiterungsdatei *TrustFrameworkExtensions.xml*
 1. Wählen Sie **Benutzerdefinierte Richtlinie hochladen** aus.
 1. Laden Sie die Richtliniendateien in dieser Reihenfolge hoch:
     1. *TrustFrameworkBase.xml*
-    1. *TrustFrameworkExtensions.xml*
-    1. *SignUpOrSignin.xml*
-    1. *ProfileEdit.xml*
-    1. *PasswordReset.xml*
+    2. *TrustFrameworkLocalization.xml*
+    3. *TrustFrameworkExtensions.xml*
+    4. *SignUpOrSignin.xml*
+    5. *ProfileEdit.xml*
+    6. *PasswordReset.xml*
 
 Wenn Sie die Dateien hochladen, fügt Azure jeder Datei das Präfix `B2C_1A_` hinzu.
 
@@ -305,14 +299,35 @@ Wenn Sie die Dateien hochladen, fügt Azure jeder Datei das Präfix `B2C_1A_` hi
 1. Wählen Sie auf der Übersichtsseite der benutzerdefinierten Richtlinie unter **Anwendung auswählen** die Webanwendung namens *webapp1* aus, die Sie zuvor registriert haben.
 1. Stellen Sie sicher, dass die **Antwort-URL**`https://jwt.ms` lautet.
 1. Wählen Sie **Jetzt ausführen** aus.
-1. Registrieren Sie sich mit einer E-Mail-Adresse.
+1. Registrieren Sie sich mit einer E-Mail-Adresse. Verwenden Sie die Option **Facebook** noch nicht. 
 1. Wählen Sie erneut **Jetzt ausführen** aus.
 1. Melden Sie sich zur Bestätigung der richtigen Konfiguration mit demselben Konto an.
 
 ## <a name="add-facebook-as-an-identity-provider"></a>Hinzufügen von Facebook als Identitätsanbieter
 
-Wie unter [Voraussetzungen](#prerequisites) erwähnt, ist Facebook *nicht* erforderlich, um benutzerdefinierte Richtlinien zu verwenden. Die Anwendung wird hier jedoch verwendet, um zu veranschaulichen, wie Sie die Soziale Medien-Verbundanmeldung in einer benutzerdefinierten Richtlinie aktivieren können.
+Das Starter Pack **SocialAndLocalAccounts** beinhaltet die Facebook-Anmeldung für soziale Netzwerke. Facebook ist *nicht* erforderlich, um benutzerdefinierte Richtlinien zu verwenden. Die Anwendung wird hier jedoch verwendet, um zu veranschaulichen, wie Sie die Verbundanmeldung bei sozialen Netzwerken in einer benutzerdefinierten Richtlinie aktivieren können.
 
+### <a name="create-facebook-application"></a>Erstellen einer Facebook-Anwendung
+
+Führen Sie die Schritte unter [Erstellen einer Facebook-Anwendung](identity-provider-facebook.md#create-a-facebook-application) aus, um eine *App-ID* und ein *App-Geheimnis* für Facebook zu erhalten. Überspringen Sie die Voraussetzungen und die übrigen Schritte im Artikel [Einrichten der Registrierung und Anmeldung mit einem Facebook-Konto mithilfe von Azure Active Directory B2C](identity-provider-facebook.md). 
+
+### <a name="create-the-facebook-key"></a>Erstellen des Facebook-Schlüssels
+
+Fügen Sie das [App-Geheimnis](identity-provider-facebook.md) der Facebook-Anwendung als Richtlinienschlüssel hinzu. Sie können das App-Geheimnis der Anwendung verwenden, das Sie unter „Voraussetzungen“ in diesem Artikel erstellt haben.
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
+1. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option dann aus.
+1. Wählen Sie auf der Übersichtsseite unter **Richtlinien** die Option **Identity Experience Framework** aus.
+1. Klicken Sie erst auf **Richtlinienschlüssel** und anschließend auf **Hinzufügen**.
+1. Klicken Sie unter **Optionen** auf `Manual`.
+1. Geben Sie unter **Name**`FacebookSecret` ein. Das Präfix `B2C_1A_` wird möglicherweise automatisch hinzugefügt.
+1. Geben Sie unter **Geheimnis** das *App-Geheimnis* der Facebook-Anwendung aus developers.facebook.com ein. Bei diesem Wert handelt sich um das Geheimnis und nicht um die Anwendungs-ID.
+1. Wählen Sie unter **Schlüsselverwendung** **Signatur** aus.
+1. Klicken Sie auf **Erstellen**.
+
+### <a name="update-trustframeworkextensionsxml-in-custom-policy-starter-pack"></a>Aktualisieren von „TrustFrameworkExtensions.xml“ im Starter Pack für benutzerdefinierte Richtlinien
 1. Ersetzen Sie in der Datei `SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`** den Wert `client_id` durch die ID der Facebook-Anwendung:
 
    ```xml

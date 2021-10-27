@@ -12,13 +12,13 @@ ms.topic: how-to
 ms.date: 06/01/2021
 ms.author: davidmu
 ms.reviewer: arvindh, luleon, phsignor
-ms.custom: contperf-fy21q2
-ms.openlocfilehash: 5289f9a6ed602df67d85cbb5b11875befec916f5
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.custom: contperf-fy21q2, contperf-fy22q2
+ms.openlocfilehash: cbdf0ed80397d5cd63cd7c38f12f6432e420ec7c
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129614895"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129998027"
 ---
 # <a name="configure-how-end-users-consent-to-applications-using-azure-active-directory"></a>Konfigurieren der Einwilligung von Endbenutzern in Anwendungen mithilfe von Azure Active Directory
 
@@ -58,27 +58,25 @@ So konfigurieren Sie die Einstellungen für die Benutzereinwilligung über das A
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Sie können mithilfe des neuesten Azure AD PowerShell-Vorschaumoduls, [AzureADPreview](/powershell/azure/active-directory/install-adv2?preserve-view=true&view=azureadps-2.0-preview), auswählen, welche Richtlinie zur Einwilligung für die App die Benutzereinwilligung für Anwendungen regeln soll.
+Sie können mithilfe des neuesten [Azure AD PowerShell-Moduls](/powershell/module/azuread/?view=azureadps-2.0&preserve-view=true) auswählen, welche Richtlinie zur Einwilligung für die App die Benutzereinwilligung für Anwendungen regeln soll.
 
 #### <a name="disable-user-consent"></a>Benutzereinwilligung deaktivieren
 
 Legen Sie zum Deaktivieren der Benutzereinwilligung die Einwilligungsrichtlinien zur Steuerung dieser Einwilligung als „leer“ fest:
 
-  ```powershell
-  Set-AzureADMSAuthorizationPolicy `
-     -Id "authorizationPolicy" `
-     -PermissionGrantPolicyIdsAssignedToDefaultUserRole @()
-  ```
+```powershell
+Set-AzureADMSAuthorizationPolicy -DefaultUserRolePermissions @{
+    "PermissionGrantPoliciesAssigned" = @() }
+```
 
 #### <a name="allow-user-consent-subject-to-an-app-consent-policy"></a>Benutzereinwilligung zulassen, die einer Richtlinie zur Einwilligung für die App unterliegt
 
 Wählen Sie zum Zulassen der Benutzereinwilligung aus, welche Richtlinie zur Einwilligung für die App die Autorisierung von Benutzern zum Erteilen einer Einwilligung für Apps steuern soll:
 
-  ```powershell
-  Set-AzureADMSAuthorizationPolicy `
-     -Id "authorizationPolicy" `
-     -PermissionGrantPolicyIdsAssignedToDefaultUserRole @("managePermissionGrantsForSelf.{consent-policy-id}")
-  ```
+```powershell
+Set-AzureADMSAuthorizationPolicy -DefaultUserRolePermissions @{
+    "PermissionGrantPoliciesAssigned" = @("managePermissionGrantsForSelf.{consent-policy-id}") }
+```
 
 Ersetzen Sie `{consent-policy-id}` durch die ID der Richtlinie, die Sie anwenden möchten. Sie können eine von Ihnen erstellte [benutzerdefinierte Richtlinie zur Einwilligung für die App](manage-app-consent-policies.md#create-a-custom-app-consent-policy) wählen oder aus den folgenden integrierten Richtlinien auswählen:
 
@@ -90,9 +88,8 @@ Ersetzen Sie `{consent-policy-id}` durch die ID der Richtlinie, die Sie anwenden
 So aktivieren Sie beispielsweise eine Benutzereinwilligung, die der integrierten Richtlinie `microsoft-user-default-low` unterliegt:
 
 ```powershell
-Set-AzureADMSAuthorizationPolicy `
-   -Id "authorizationPolicy" `
-   -PermissionGrantPolicyIdsAssignedToDefaultUserRole @("managePermissionGrantsForSelf.microsoft-user-default-low")
+Set-AzureADMSAuthorizationPolicy -DefaultUserRolePermissions @{
+    "PermissionGrantPoliciesAssigned" = @("managePermissionGrantsForSelf.microsoft-user-default-low") }
 ```
 
 ---

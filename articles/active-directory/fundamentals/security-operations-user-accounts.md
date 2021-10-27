@@ -12,12 +12,12 @@ ms.date: 07/15/2021
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f78765e7b0d26b2767dabf4b1fdc4ccdd6873123
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 6a1ee521cdde76284c09f6bf34ad7945e188ee1c
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124803601"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130042426"
 ---
 # <a name="azure-active-directory-security-operations-for-user-accounts"></a>Azure Active Directory-Sicherheitsvorgänge für Benutzerkonten
 
@@ -75,7 +75,7 @@ Weitere Informationen zum Absichern und Überwachen lokaler Konten finden Sie un
 
 ## <a name="where-to-look"></a>Zu untersuchende Protokolle
 
-Zur Untersuchung und Überwachung werden folgende Protokolldateien verwendet: 
+Zur Untersuchung und Überwachung verwenden Sie die folgenden Protokolldateien: 
 
 * [Azure AD-Überwachungsprotokolle](../reports-monitoring/concept-audit-logs.md)
 
@@ -97,7 +97,7 @@ Im Azure-Portal können Sie die Azure AD-Überwachungsprotokolle anzeigen und a
 
 * **[Azure Event Hubs](../../event-hubs/event-hubs-about.md) mit Integration in ein SIEM-System**- [Azure AD-Protokolle können über die Azure Event Hub-Integration in andere SIEM-Systeme wie Splunk, ArcSight, QRadar und Sumo Logic integriert](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) werden.
 
-* **[Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security)** (MCAS): Ermöglicht das Entdecken und Verwalten von Apps, eine App- und ressourcenübergreifende Steuerung und Konformitätsprüfungen Ihrer Cloud-Apps. 
+* **[Microsoft Cloud App Security (MCAS)](/cloud-app-security/what-is-cloud-app-security)** : Ermöglicht das Entdecken und Verwalten von Apps, eine App- und ressourcenübergreifende Steuerung sowie Konformitätsprüfungen Ihrer Cloud-Apps. 
 
 Ein Großteil der Überwachung und zugehörigen Warnungen hängt von den Auswirkungen Ihrer Richtlinien für bedingten Zugriff ab. Sie können die Arbeitsmappe [Erkenntnisse und Berichterstellung zum bedingten Zugriff](../conditional-access/howto-conditional-access-insights-reporting.md) verwenden, um die Auswirkungen einer oder mehrerer Richtlinien für bedingten Zugriff auf Ihre Anmeldungen sowie die Ergebnisse von Richtlinien, einschließlich Gerätestatus, zu untersuchen. Diese Arbeitsmappe bietet Ihnen die Möglichkeit, eine Zusammenfassung der Auswirkungen anzuzeigen und die Auswirkungen über einen bestimmten Zeitraum zu ermitteln. Sie können mithilfe der Arbeitsmappe auch die Anmeldungen eines bestimmten Benutzers untersuchen. 
 
@@ -187,7 +187,7 @@ Sobald Sie eine Protokollüberwachungs- und Warnstrategie entwerfen und umsetzen
 | Zu überwachende Elemente | Risikostufe | Hierbei gilt: | Filter/Unterfilter | Notizen |
 | - | - | - | - | - |
 | Erkennung von Benutzerrisiken: kompromittierte Anmeldeinformationen| Hoch| Azure AD-Risikoerkennungsprotokolle| Benutzererfahrung: kompromittierte Anmeldeinformationen <br><br>API: Weitere Informationen finden Sie unter [Ressourcentyp riskDetection: Microsoft Graph-Betaversion](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)| Weitere Informationen finden Sie unter [Was ist Risiko? Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md) |
-| Azure AD Threat Intelligence: Erkennung von Benutzerrisiken| Hoch| Azure AD-Risikoerkennungsprotokolle| Benutzererfahrung: Azure AD Threat Intelligence <br><br>API: Weitere Informationen finden Sie unter [riskDetection-Ressourcentyp: Microsoft Graph-Betaversion](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)| Weitere Informationen finden Sie unter [Was ist Risiko? Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md) |
+| Azure AD Threat Intelligence: Erkennung von Benutzerrisiken| Hoch| Azure AD-Risikoerkennungsprotokolle| Benutzererfahrung: Azure AD Threat Intelligence <br><br>API: Weitere Informationen finden Sie unter [Ressourcentyp riskDetection: Microsoft Graph-Betaversion](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)| Weitere Informationen finden Sie unter [Was ist Risiko? Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md) |
 | Risikoerkennung: Anmeldung mit anonymer IP-Adresse| Varies| Azure AD-Risikoerkennungsprotokolle| Benutzererfahrung: anonyme IP-Adresse <br><br>API: Weitere Informationen finden Sie unter [Ressourcentyp riskDetection: Microsoft Graph-Betaversion](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)| Weitere Informationen finden Sie unter [Was ist Risiko? Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md) |
 | Risikoerkennung: ungewöhnlicher Ortswechsel bei der Anmeldung| Varies| Azure AD-Risikoerkennungsprotokolle| Benutzererfahrung: ungewöhnlicher Ortswechsel <br><br>API: Weitere Informationen finden Sie unter [Ressourcentyp riskDetection: Microsoft Graph-Betaversion](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)| Weitere Informationen finden Sie unter [Was ist Risiko? Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md) |
 | Anomales Token| Varies| Azure AD-Risikoerkennungsprotokolle| Benutzererfahrung: anomales Token <br><br>API: Weitere Informationen finden Sie unter [Ressourcentyp riskDetection: Microsoft Graph-Betaversion](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)| Weitere Informationen finden Sie unter [Was ist Risiko? Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md) |
@@ -201,7 +201,7 @@ Sobald Sie eine Protokollüberwachungs- und Warnstrategie entwerfen und umsetzen
 | Risikoerkennung: Anmeldung aus neuem Land/neuer Region| Varies| Azure AD-Risikoerkennungsprotokolle| Benutzererfahrung: neues Land/neue Region<br><br>API: Weitere Informationen finden Sie unter [Ressourcentyp riskDetection: Microsoft Graph-Betaversion](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)| Weitere Informationen finden Sie unter [Was ist Risiko? Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md) |
 | Risikoerkennung: Aktivität über anonyme IP-Adresse| Varies| Azure AD-Risikoerkennungsprotokolle| Benutzererfahrung: Aktivität über anonyme IP-Adresse<br><br>API: Weitere Informationen finden Sie unter [Ressourcentyp riskDetection: Microsoft Graph-Betaversion](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)| Weitere Informationen finden Sie unter [Was ist Risiko? Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md) |
 | Risikoerkennung: verdächtige Weiterleitung des Posteingangs| Varies| Azure AD-Risikoerkennungsprotokolle| Benutzererfahrung: verdächtige Weiterleitung des Posteingangs<br><br>API: Weitere Informationen finden Sie unter [Ressourcentyp riskDetection: Microsoft Graph-Betaversion](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)| Weitere Informationen finden Sie unter [Was ist Risiko? Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md) |
-| Risikoerkennung: Azure AD Threat Intelligence-Anmeldung| Hoch| Azure AD-Risikoerkennungsprotokolle| Benutzererfahrung: Azure AD Threat Intelligence<br>API: Weitere Informationen finden Sie unter [riskDetection-Ressourcentyp: Microsoft Graph-Betaversion](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)| Weitere Informationen finden Sie unter [Was ist Risiko? Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md) |
+| Risikoerkennung: Azure AD Threat Intelligence-Anmeldung| Hoch| Azure AD-Risikoerkennungsprotokolle| Benutzererfahrung: Azure AD Threat Intelligence<br>API: Weitere Informationen finden Sie unter [Ressourcentyp riskDetection: Microsoft Graph-Betaversion](/graph/api/resources/riskdetection?view=graph-rest-beta&preserve-view=true)| Weitere Informationen finden Sie unter [Was ist Risiko? Azure AD Identity Protection](../identity-protection/concept-identity-protection-risks.md) |
 
 Weitere Informationen finden Sie unter [Was ist Identity Protection?](../identity-protection/overview-identity-protection.md). 
 

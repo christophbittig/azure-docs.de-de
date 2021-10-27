@@ -7,15 +7,20 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 10/11/2021
 ms.author: turao
-ms.openlocfilehash: 469dc3f87bb7c783f2c3138e2bcf592c85312006
-ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
+ms.openlocfilehash: 2e110aeb7cf5395a9aea8d0efae9c0f97b6e74ce
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129754975"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130003873"
 ---
 # <a name="prevent-rate-limiting-errors-for-azure-cosmos-db-api-for-cassandra-operations"></a>Verhindern von Ratenbegrenzungsfehlern bei Vorgängen der Azure Cosmos DB-API für Cassandra
 [!INCLUDE[appliesto-cassandra-api](../includes/appliesto-cassandra-api.md)]
+
+> [!IMPORTANT]
+> Das Verhindern von Ratenbegrenzungsfehlern durch Aktivieren von serverseitigen Wiederholungen bei der Cosmos DB-API für Cassandra befindet sich derzeit in der öffentlichen Vorschau.
+> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
+> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Die Kosten sämtlicher Datenbankvorgänge werden von Azure Cosmos DB normalisiert und als Anforderungseinheiten (Request Units, RUs) ausgedrückt. Anforderungseinheiten stellen praktisch die „Währung“ zur Abstrahierung von Systemressourcen wie CPU, IOPS und Arbeitsspeicher dar, die zum Ausführen der von Azure Cosmos DB unterstützten Datenbankvorgänge erforderlich sind.
 
@@ -69,8 +74,16 @@ Die serverseitige Wiederholung (Server-Side Retry, SSR) ist besonders nützlich,
 
 Nachdem SSR aktiviert wurde, sollte die Client-App das Lesetimeout auf einen höheren Wert als die Wiederholungseinstellung des Servers von 60 Sekunden festlegen. Um auf der sichereren Seite zu sein, werden 90 Sekunden empfohlen.
 
-SocketOptions setReadTimeoutMillis DefaultDriverOption.REQUEST_TIMEOUT
-
+Codebeispiel für Treiber 3
+```java
+SocketOptions socketOptions = new SocketOptions()
+    .setReadTimeoutMillis(90000); 
+```
+Codebeispiel für Treiber 4  
+```java
+ProgrammaticDriverConfigLoaderBuilder configBuilder = DriverConfigLoader.programmaticBuilder()
+    .withDuration(DefaultDriverOption.REQUEST_TIMEOUT, Duration.ofSeconds(90)); 
+```
 
 ### <a name="how-can-i-monitor-the-effects-of-a-server-side-retry"></a>Wie kann ich die Auswirkungen einer serverseitigen Wiederholung überwachen?
 

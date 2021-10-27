@@ -4,18 +4,18 @@ description: Es wird beschrieben, wie Sie Ihre Funktions-App zur Überwachung mi
 ms.date: 8/31/2020
 ms.topic: how-to
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 5007009d9aabf9a1c1c6e1d5c2f286c0ba25b340
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 3afe10184ba2b3f0eba02111b98b31e86b26e075
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99493752"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130006479"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>Konfigurieren der Überwachung für Azure Functions
 
 Die Integration von Azure Functions mit Application Insights ermöglicht Ihnen eine bessere Überwachung Ihrer Funktions-Apps. Application Insights, ein Feature von Azure Monitor, ist ein erweiterbarer Dienst für die Steuerung der Anwendungsleistung (Application Performance Management, APM), mit dem von Ihrer Funktions-App generierte Daten gesammelt werden (z. B. auch Informationen, die von Ihrer App in Protokolle geschrieben werden). Die Application Insights-Integration wird in der Regel beim Erstellen Ihrer Funktions-App aktiviert. Wenn für Ihre App kein Instrumentierungsschlüssel festgelegt ist, müssen Sie die [Application Insights-Integration zunächst aktivieren](#enable-application-insights-integration). 
 
-Sie können Application Insights ganz ohne benutzerdefinierte Konfiguration verwenden. Die Standardkonfiguration kann zu großen Datenmengen führen. Wenn Sie ein Visual Studio Azure-Abonnement verwenden, erreichen Sie unter Umständen Ihr Datenlimit für Application Insights. Weitere Informationen zu den Application Insights-Kosten finden Sie unter [Verwalten der Nutzung und der Kosten für Application Insights](../azure-monitor/app/pricing.md).
+Sie können Application Insights ganz ohne benutzerdefinierte Konfiguration verwenden. Die Standardkonfiguration kann zu großen Datenmengen führen. Wenn Sie ein Visual Studio Azure-Abonnement verwenden, erreichen Sie unter Umständen Ihr Datenlimit für Application Insights. Weitere Informationen zu den Application Insights-Kosten finden Sie unter [Verwalten der Nutzung und der Kosten für Application Insights](../azure-monitor/app/pricing.md). Weitere Informationen finden Sie unter [Lösungen mit großen Mengen an Telemetriedaten](#solutions-with-high-volume-of-telemetry).
 
 Später in diesem Artikel erfahren Sie, wie Sie die Daten konfigurieren und anpassen, die Ihre Funktionen an Application Insights senden. Für eine Funktions-App wird die Protokollierung in der Datei [host.json] konfiguriert. 
 
@@ -140,6 +140,16 @@ Wenn [host.json] mehrere Protokolle enthält, die mit der gleichen Zeichenfolge 
 ---
 
 Sie können die Protokollstufeneinstellung `None` verwenden, um zu verhindern, dass Protokolle für eine Kategorie geschrieben werden. 
+
+> [!CAUTION]
+> Azure Functions lässt sich in Application Insights integrieren, indem Telemetrieereignisse in Application Insights-Tabellen gespeichert werden. Das Festlegen einer Kategorieprotokollebene auf einen anderen Wert als `Information` verhindert, dass die Telemetriedaten in diese Tabellen einfließen. Daher können Sie die zugehörigen Daten weder in Application Insights noch auf der Registerkarte „Überwachung“ für die Funktion anzeigen.
+>
+> Für die obigen Beispiele gilt Folgendes:
+> * Wenn die Kategorie `Host.Results` auf die Protokollebene `Error` festgelegt ist, werden in der Tabelle `requests` nur Telemetrieereignisse zur Hostausführung für fehlerhafte Funktionsausführungen gesammelt. Dadurch wird verhindert, dass Details zu erfolgreichen Hostausführungen in Application Insights und auf der Registerkarte „Überwachung“ für die Funktion angezeigt werden.
+> * Wenn die Kategorie `Function` auf die Protokollebene `Error` festgelegt ist, wird das Sammeln von Funktionstelemetriedaten im Zusammenhang mit `dependencies`, `customMetrics` und `customEvents` für alle Funktionen beendet, und diese Daten werden nicht in Application Insights angezeigt. Es werden nur `traces` gesammelt, die mit der Ebene `Error` protokolliert werden. 
+>
+> In beiden Fällen sammeln Sie weiterhin Fehler- und Ausnahmedaten in Application Insights und auf der „Überwachung“ für die Funktion. Weitere Informationen finden Sie unter [Lösungen mit großen Mengen an Telemetriedaten](#solutions-with-high-volume-of-telemetry).
+
 
 ## <a name="configure-the-aggregator"></a>Konfigurieren des Aggregators
 
@@ -280,6 +290,130 @@ Wenn Sie Application Insights aktivieren, deaktivieren Sie die integrierte Proto
 
 Löschen Sie die App-Einstellung `AzureWebJobsDashboard`, um die integrierte Protokollierung zu deaktivieren. Informationen zum Löschen von App-Einstellungen im Azure-Portal finden Sie im Abschnitt **Anwendungseinstellungen** unter [Verwalten einer Funktionen-App im Azure-Portal](functions-how-to-use-azure-function-app-settings.md#settings). Stellen Sie vor dem Löschen der App-Einstellung sicher, dass sie nicht für vorhandene Funktionen in derselben Funktions-App für Azure Storage-Trigger oder -Bindungen verwendet wird.
 
+## <a name="solutions-with-high-volume-of-telemetry"></a>Lösungen mit großen Mengen an Telemetriedaten 
+
+Ihre Funktions-Apps können ein wesentlicher Bestandteil von Lösungen sein, die naturgemäß große Mengen an Telemetriedaten verursachen (IoT-Lösungen, ereignisgesteuerte Lösungen, Finanzsysteme mit hoher Auslastung, Integrationssysteme ...). In diesem Fall sollten Sie eine zusätzliche Konfiguration in Betracht ziehen, um Kosten zu senken und gleichzeitig die Beobachtbarkeit aufrechtzuerhalten.
+
+Je nachdem, wie die generierten Telemetriedaten genutzt werden – Echtzeitdashboards, Warnungen, detaillierte Diagnosen usw. –, müssen Sie eine Strategie definieren, um die Menge an generierten Daten zu reduzieren. Mit dieser Strategie können Sie Ihre Funktions-Apps in einer Produktionsumgebung ordnungsgemäß überwachen, betreiben und diagnostizieren. Ziehen Sie folgende Optionen in Betracht:
+
+* **Stichprobenentnahme verwenden**: Wie [oben](#configure-sampling) erwähnt, kann damit die Menge der erfassten Telemetrieereignisse erheblich reduziert werden, während statistisch korrekte Analysen erhalten bleiben. Es kann vorkommen, dass Sie selbst bei Stichprobenentnahmen immer noch eine große Menge an Telemetriedaten erhalten. Überprüfen Sie die Optionen, die die [adaptive Stichprobenerstellung](../azure-monitor/app/sampling.md#configuring-adaptive-sampling-for-aspnet-applications) bietet. Sie können beispielsweise `maxTelemetryItemsPerSecond` auf einen Wert festlegen, der das generierte Volume gegen Ihre Überwachungsanforderungen ausbalanciert. Beachten Sie, dass die Stichprobenentnahme für Telemetrie für jeden Host angewendet wird, der Ihre Funktions-App ausführt. 
+
+* **Standardprotokollebene**: Verwenden Sie `Warning` oder `Error` als Standardwert für alle Telemetriekategorien. Nun können Sie entscheiden, welche [Kategorien](#configure-categories) Sie als `Information` festlegen möchten, damit Sie Ihre Funktionen ordnungsgemäß überwachen und diagnostizieren können.
+
+* **Funktionstelemetrie optimieren**: Wenn die Standardprotokollebene auf `Error` oder `Warning` festgelegt ist, werden keine detaillierten Informationen von jeder Funktion gesammelt (Abhängigkeiten, benutzerdefinierte Metriken, benutzerdefinierte Ereignisse und Ablaufverfolgungen). Definieren Sie für die Funktionen, die für die Produktionsüberwachung von entscheidender Bedeutung sind, einen expliziten Eintrag für die Kategorie `Function.<YOUR_FUNCTION_NAME>`, und legen Sie die Kategorie auf `Information` fest, um ausführliche Informationen sammeln zu können. Um das Sammeln von [benutzergenerierten Protokolle](functions-monitoring.md#writing-to-logs) auf der Ebene `Information` zu vermeiden, legen Sie an diesem Punkt die Kategorie `Function.<YOUR_FUNCTION_NAME>.User` auf die Protokollebene `Error` oder `Warning` fest.
+
+* **Host.Aggregator-Kategorie**: Wie unter [Konfigurieren von Kategorien](#configure-categories)beschrieben, stellt diese Kategorie aggregierte Informationen zu Funktionsaufrufen bereit. Die Informationen aus dieser Kategorie werden in der Application Insights-Tabelle `customMetrics` gesammelt und im Azure-Portal auf der Registerkarte „Übersicht“ für die Funktion angezeigt. Je nachdem, wie Sie den Aggregator konfigurieren, ziehen Sie in Betracht, dass es bei den gesammelten Telemetriedaten zu einer Verzögerung kommt, die von `flushTimeout` bestimmt wird. Wenn Sie diese Kategorie auf einen anderen Wert als `Information` festlegen, wird das Sammeln der Daten in der Tabelle `customMetrics` beendet, und auf der Registerkarte „Übersicht“ für die Funktion werden keine Metriken angezeigt.
+
+  Der folgende Screenshot zeigt Host.Aggregator-Telemetriedaten, die auf der Registerkarte „Übersicht“ für die Funktion angezeigt werden. :::image type="content" source="media/configure-monitoring/host-aggregator-function-overview.png" alt-text="Screenshot: auf der Registerkarte „Übersicht“ für die Funktion angezeigte Host.Aggregator-Telemetriedaten." lightbox="media/configure-monitoring/host-aggregator-function-overview-big.png":::
+
+  Der folgende Screenshot zeigt Host.Aggregator-Telemetriedaten in der Application Insights-Tabelle „customMetrics“.
+  :::image type="content" source="media/configure-monitoring/host-aggregator-custom-metrics.png" alt-text="Screenshot: Host.Aggregator-Telemetriedaten in der Application Insights-Tabelle „customMetrics“." lightbox="media/configure-monitoring/host-aggregator-custom-metrics-big.png":::
+
+* **Host.Results-Kategorie**: Wie unter [Konfigurieren von Kategorien](#configure-categories) beschrieben, stellt diese Kategorie die zur Laufzeit generierten Protokolle bereit, die eine erfolgreiche oder fehlerhafte Ausführung eines Funktionsaufrufs angeben. Die Informationen aus dieser Kategorie werden in der Application Insights-Tabelle `requests` gesammelt und auf der Registerkarte „Überwachung“ für die Funktion sowie in verschiedenen Application Insights-Dashboards angezeigt (Leistung, Fehler ...). Wenn Sie diese Kategorie auf einen anderen Wert als `Information` festlegen, werden nur Telemetriedaten gesammelt, die auf der definierten Protokollebene (oder höher) generiert wurden. Durch Festlegung auf `error` werden beispielsweise Anforderungsdaten nur für fehlerhafte Ausführungen nachverfolgt. 
+
+  Der folgende Screenshot zeigt die Host.Results-Telemetriedaten, die auf der Registerkarte „Überwachung“ für die Funktion angezeigt werden. :::image type="content" source="media/configure-monitoring/host-results-function-monitor.png" alt-text="Screenshot: Host.Results-Telemetriedaten auf der Registerkarte „Überwachung“ für die Funktion." lightbox="media/configure-monitoring/host-results-function-monitor-big.png":::
+
+  Der folgende Screenshot zeigt die Host.Results-Telemetriedaten, die im Application Insights-Dashboard „Leistung“ angezeigt werden.
+  :::image type="content" source="media/configure-monitoring/host-results-application-insights.png" alt-text="Screenshot: Host.Results-Telemetriedaten im Application Insights-Dashboard „Leistung“." lightbox="media/configure-monitoring/host-results-application-insights-big.png":::
+
+* **Host.Aggregator im Vergleich zu Host.Results**: Beide Kategorien bieten gute Erkenntnisse zu Funktionsausführungen. Bei Bedarf können Sie die ausführlichen Informationen aus einer dieser Kategorien entfernen, sodass Sie die andere für Überwachung und Warnungen verwenden können.
+Hier ein Beispiel:
+# <a name="v2x"></a>[Ab v2.x](#tab/v2)
+
+``` json
+{
+  "version": "2.0",  
+  "logging": {
+    "logLevel": {
+      "default": "Warning",
+      "Function": "Error",
+      "Host.Aggregator": "Error",
+      "Host.Results": "Information", 
+      "Function.Function1": "Information",
+      "Function.Function1.User": "Error"
+    },
+    "applicationInsights": {
+      "samplingSettings": {
+        "isEnabled": true,
+        "maxTelemetryItemsPerSecond": 1,
+        "excludedTypes": "Exception"
+      }
+    }
+  }
+} 
+```
+# <a name="v1x"></a>[v1.x](#tab/v1) 
+```json
+{
+  "logger": {
+    "categoryFilter": {
+      "defaultLevel": "Warning",
+      "categoryLevels": {
+        "Function": "Error",
+        "Host.Aggregator": "Error",
+        "Host.Results": "Information",
+        "Host.Executor": "Warning"
+      }
+    }
+  },
+  "applicationInsights": {
+    "sampling": {
+      "isEnabled": true,
+      "maxTelemetryItemsPerSecond" : 5
+    }
+  }
+}
+```
+---
+
+Diese Konfiguration bietet Folgendes:
+
+* Der Standardwert für alle Funktionen und Telemetriekategorien ist auf `Warning` festgelegt (einschließlich Microsoft- und Workerkategorien), sodass standardmäßig alle Fehler und Warnungen gesammelt werden, die sowohl von der Runtime als auch von der benutzerdefinierten Protokollierung generiert werden. 
+
+* Die Kategorieprotokollebene `Function` ist auf `Error` festgelegt, sodass für alle Funktionen standardmäßig nur Ausnahmen und Fehlerprotokolle gesammelt werden (Abhängigkeiten sowie benutzergenerierte Metriken und Ereignisse werden übersprungen).
+
+* Da die Kategorie `Host.Aggregator` auf die Protokollebene `Error` festgelegt ist, werden in der Application Insights-Tabelle `customMetrics` keine aggregierten Informationen aus Funktionsaufrufen gesammelt, und im Dashboard der Funktionsübersicht werden keine Informationen zur Anzahl von Ausführungen (Gesamtanzahl, erfolgreich, Fehler ...) angezeigt.
+
+* Für die Kategorie `Host.Results` werden alle Informationen zur Hostausführung in der Application Insights-Tabelle `requests` gesammelt. Alle Aufrufergebnisse werden im Dashboard der Funktionsüberwachung und in Application Insights-Dashboards angezeigt.
+
+* Für die Funktion namens `Function1` haben wir die Protokollebene auf `Information` festgelegt, sodass für diese konkrete Funktion alle Telemetriedaten gesammelt werden (Abhängigkeit, benutzerdefinierte Metriken, benutzerdefinierte Ereignisse). Für dieselbe Funktion wird die Kategorie `Function1.User` (vom Benutzer generierte Ablaufverfolgungen) auf `Error` festgelegt, sodass nur die benutzerdefinierte Fehlerprotokollierung gesammelt wird. Beachten Sie, dass die funktionsbasierte Konfiguration in v1.x nicht unterstützt wird. 
+
+* Die Stichprobenentnahme ist so konfiguriert, dass pro Sekunde und Typ ein Telemetrieelement gesendet wird, außer für Ausnahmen. Diese Stichprobenentnahme erfolgt für jeden Serverhost, auf dem unsere Funktions-App ausgeführt wird. Wenn wir also über vier Instanzen verfügen, gibt diese Konfiguration vier Telemetrieelemente pro Sekunde und Typ sowie alle Ausnahmen aus, die möglicherweise auftreten. Beachten Sie Folgendes: Die Anzahl von Metrikdaten wie z. B. die Anforderungs- und Ausnahmerate wird zum Kompensieren der Stichprobenrate angepasst, sodass im Metrik-Explorer annähernd korrekte Werte angezeigt werden.  
+
+> [!TIP]
+> Experimentieren Sie mit verschiedenen Konfigurationen, um Ihre Anforderungen an Protokollierung, Überwachung und Warnungen zu erfüllen. Stellen Sie sicher, dass Sie über detaillierte Diagnosen für unerwartete Fehler oder Fehlfunktionen verfügen.
+
+### <a name="overriding-monitoring-configuration-at-runtime"></a>Außerkraftsetzen der Überwachungskonfiguration zur Laufzeit
+Es kann Situationen geben, in denen Sie das Protokollierungsverhalten einer bestimmten Kategorie in der Produktionsumgebung schnell ändern müssen und Sie nicht nur für eine Änderung in der Datei `host.json` eine vollständige Bereitstellung erstellen möchten. In solchen Fällen können Sie die [Werte in der Datei „host.json“](functions-host-json.md#override-hostjson-values) außer Kraft setzen.
+
+
+Um diese Werte auf App-Einstellungsebene zu konfigurieren (und eine erneute Bereitstellung nur bei Änderungen an „host.json“ zu vermeiden), sollten Sie bestimmte `host.json`-Werte außer Kraft setzen, indem Sie einen entsprechenden Wert als Anwendungseinstellung erstellen. Wenn die Runtime eine Anwendungseinstellung im Format `AzureFunctionsJobHost__path__to__setting` ermittelt, wird die entsprechende `host.json`-Einstellung in der host.json-Datei unter `path.to.setting` außer Kraft gesetzt. Bei der Angabe als Anwendungseinstellung wird der Punkt (`.`), mit dem die JSON-Hierarchie angegeben wird, durch einen doppelten Unterstrich (`__`) ersetzt. Sie können Sie die folgenden App-Einstellungen beispielsweise verwenden, um einzelne Funktionsprotokollebenen zu konfigurieren, wie oben in `host.json` geschehen.
+
+
+| Host.json-Pfad | App-Einstellung |
+|----------------|-------------|
+| logging.logLevel.default  | AzureFunctionsJobHost__logging__logLevel__default  |
+| logging.logLeve.Host.Aggregator | AzureFunctionsJobHost__logging__logLevel__Host__Aggregator |
+| logging.logLevel.Function | AzureFunctionsJobHost__logging__logLevel__Function |
+| logging.logLevel.Function.Function1 | AzureFunctionsJobHost__logging__logLevel__Function1 |
+| logging.logLevel.Function.Function1.User | AzureFunctionsJobHost__logging__logLevel__Function1.User |
+
+
+Sie können die Einstellungen direkt im Azure-Portal auf dem Blatt „Konfiguration von Funktions-App“ oder mithilfe eines Azure CLI-Befehls oder PowerShell-Skripts überschreiben.
+
+# <a name="az-cli"></a>[az cli](#tab/v2)
+```azurecli-interactive
+az functionapp config appsettings set --name MyFunctionApp --resource-group MyResourceGroup --settings "AzureFunctionsJobHost__logging__logLevel__Host__Aggregator=Information"
+```
+# <a name="powershell"></a>[PowerShell](#tab/v1) 
+```powershell
+Update-AzFunctionAppSetting -Name MyAppName -ResourceGroupName MyResourceGroupName -AppSetting @{"AzureFunctionsJobHost__logging__logLevel__Host__Aggregator" = "Information"}
+```
+---
+
+> [!NOTE]
+> Wenn Sie die `host.json`-Datei durch Ändern der App-Einstellungen außer Kraft setzen, wird Ihre Funktions-App neu gestartet.
+ 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zur Überwachung finden Sie unter folgenden Themen:

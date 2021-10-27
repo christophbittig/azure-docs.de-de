@@ -2,19 +2,19 @@
 title: Beispiele für die Kommunikation mit Ausgabediensten (Vorschau) - Azure Active Directory überprüfbare Anmeldeinformationen
 description: Details zur Kommunikation zwischen Identitätsanbieter und Ausgabedienst
 author: barclayn
-manager: davba
+manager: karenh444
 ms.service: active-directory
 ms.subservice: verifiable-credentials
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: 66e939bae0716cbcbde5614159e47a412990564f
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 6420825d8ed758658db0e652dc2b88fea91ce908
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110466005"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129994782"
 ---
 # <a name="issuer-service-communication-examples-preview"></a>Beispiele für die Kommunikation des Ausstellerdiensts (Vorschau)
 
@@ -27,7 +27,7 @@ Der Dienst zum Ausstellen von überprüfbaren Berechtigungsnachweisen von Azure 
 
 Zum Ausstellen von überprüfbaren Anmelde Informationen wird der Authentifikator durch Herunterladen des Vertrags angewiesen, um Eingaben vom Benutzer zu erfassen und diese Informationen an den ausstellenden Dienst zu senden. Wenn Sie ein ID-Token verwenden müssen, müssen Sie Ihren Identitätsanbieter so einrichten, dass der Authenticator einen Benutzer über das OpenID Connect-Protokoll anmelden kann. Die Angaben im resultierenden ID-Token werden verwendet, um den Inhalt Ihres verifizierbaren Berechtigungsnachweises aufzufüllen. Der Authentifikator authentifiziert den Benutzer mithilfe des OpenID Connect-Autorisierungs Kode-Flusses. Ihr OpenID-Anbieter muss die folgenden OpenID Connect-Features unterstützen: 
 
-| Funktion | Beschreibung |
+| Funktion | BESCHREIBUNG |
 | ------- | ----------- |
 | Gewährungstyp | Muss den Grant-Typ-Berechtigungscode unterstützen. |
 | Tokenformat | Es muss unverschlüsselte kompakte JWTs erzeugen. |

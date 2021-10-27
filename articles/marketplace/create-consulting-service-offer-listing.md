@@ -1,6 +1,6 @@
 ---
-title: Konfigurieren der Auflistungsdetails Ihres Beratungsdienstangebots in Microsoft Partner Center
-description: Hier erfahren Sie, wie Sie mithilfe von Partner Center die Auflistungsdetails für Ihr Beratungsdienstangebot im kommerziellen Marketplace von Microsoft konfigurieren.
+title: Konfigurieren der Auflistungsdetails eines Beratungsdienstangebots für den kommerziellen Marketplace
+description: Hier erfahren Sie, wie Sie mithilfe von Partner Center die Auflistungsdetails eines Beratungsdienstangebots im kommerziellen Marketplace von Microsoft konfigurieren.
 author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.reviewer: anbene
@@ -8,14 +8,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 10/27/2020
-ms.openlocfilehash: 2476d60cacc9690c24d7d3d2f7e21f04c6811500
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b810c78cdbee84c23cb810a4a622b2ddceb19471
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92754256"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130039066"
 ---
-# <a name="how-to-configure-your-consulting-service-offer-listing-details"></a>Konfigurieren der Auflistungsdetails Ihres Beratungsdienstangebots
+# <a name="configure-consulting-service-offer-listing-details"></a>Konfigurieren der Auflistungsdetails eines Beratungsdienstangebots
 
 Die Informationen, die Sie auf der Partner Center-Seite **Angebotsliste** angeben, werden in den Onlineshops des kommerziellen Microsoft Marketplace angezeigt. Hierzu zählen der Name Ihres Angebots und die Beschreibung sowie Medien und andere Marketingressourcen.
 

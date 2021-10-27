@@ -1,260 +1,261 @@
 ---
-title: 'Die Azure App-Containerisierung: ASP.NET; Containerisierung und Migration von ASP.NET-Anwendungen zum Azure App Service.'
-description: 'Tutorial: Das Containerisieren und Migrieren von ASP.NET-Anwendungen zum Azure App Service.'
+title: ASP.NET-Anwendungscontainerisierung und -migration zu App Service
+description: In diesem Tutorial wird veranschaulicht, wie Sie ASP.NET-Anwendungen containerisieren und zu Azure App Service migrieren.
 services: ''
 author: rahug1190
 manager: bsiva
 ms.topic: tutorial
 ms.date: 07/02/2021
 ms.author: rahugup
-ms.openlocfilehash: e574b7b71f9ea2c968020a11c7b18c3ff4f0a64b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 14af442ff9a25178da2f8c6289bd988cae3bafd7
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128621439"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130046941"
 ---
 # <a name="aspnet-app-containerization-and-migration-to-azure-app-service"></a>Das Containerisieren und Migrieren von ASP.NET-Apps zum Azure App Service
 
-In diesem Artikel erfahren Sie, wie Sie ASP.NET-Anwendungen unter der Verwendung des App-Containerisierungstools von Azure Migrate containerisieren und sie dann zum [Azure App Service](https://azure.microsoft.com/services/app-service/) migrieren können. Für den Containerisierungsvorgang ist kein Zugriff auf Ihre Codebasis erforderlich, zudem erfolgt die Containerisierung vorhandener Apps mühelos. Das Tool ermittelt anhand des Ausführungsstatus der Apps auf dem Server die App-Komponenten und packt diese in ein Containerimage. Die containerisierte Anwendung kann dann in Azure App Service bereitgestellt werden.
+In diesem Artikel erfahren Sie, wie Sie ASP.NET-Anwendungen mit dem Anwendungscontainerisierungstool von Azure Migrate containerisieren und dann zu [Azure App Service](https://azure.microsoft.com/services/app-service/) migrieren. Für den Containerisierungsprozess ist kein Zugriff auf Ihre Codebasis erforderlich, und vorhandene Anwendungen können leicht containerisiert werden. Das Tool ermittelt anhand des Ausführungsstatus der Anwendungen auf einem Server die Anwendungskomponenten. Anschließend können Sie sie als Containerimage verpacken. Sie können die containerisierte Anwendung dann in Azure App Service bereitstellen.
 
-Das App-Containerisierungstool von Azure Migrate unterstützt derzeit die folgenden Vorgänge:
+Vom Anwendungscontainerisierungstool von Azure Migrate wird derzeit Folgendes unterstützt:
 
 - Das Containerisieren von ASP.NET-Apps und das Bereitstellen dieser Apps in Windows-Containern in App Service.
-- Das Containerisieren von ASP.NET-Apps und das Bereitstellen dieser Apps in Windows-Containern in Azure Kubernetes Service. [Weitere Informationen](./tutorial-app-containerization-aspnet-kubernetes.md)
-- Containerisieren von Java-Web-Apps unter Apache Tomcat (auf Linux-Servern) und Bereitstellen dieser Apps in Linux-Containern in AKS [Weitere Informationen](./tutorial-app-containerization-java-kubernetes.md)
-- Das Containerisieren von Java-Web-Apps unter Apache Tomcat (auf Linux-Servern) und das Bereitstellen dieser Apps in Linux-Containern in App Service. [Weitere Informationen](./tutorial-app-containerization-java-app-service.md)
+- Das Containerisieren von ASP.NET-Apps und das Bereitstellen dieser Apps in Windows-Containern in Azure Kubernetes Service (AKS). [Lesen Sie die weiteren Informationen zu diesem Containerisierungsszenario](./tutorial-app-containerization-aspnet-kubernetes.md).
+- Das Containerisieren von Java-Web-Apps unter Apache Tomcat (auf Linux-Servern) und das Bereitstellen dieser Apps in Linux-Containern in AKS. [Lesen Sie die weiteren Informationen zu diesem Containerisierungsszenario](./tutorial-app-containerization-java-kubernetes.md).
+- Containerisieren von Java-Web-Apps unter Apache Tomcat (auf Linux-Servern) und Bereitstellen dieser Apps in Linux-Containern in App Service. [Lesen Sie die weiteren Informationen zu diesem Containerisierungsszenario](./tutorial-app-containerization-java-app-service.md).
 
-Das App-Containerisierungstool von Azure Migrate unterstützt Sie bei den folgenden Vorgängen:
+Mit dem Anwendungscontainerisierungstool können Sie Folgendes durchführen:
 
-- **App analysieren:** Das Tool stellt eine Remoteverbindung mit den Anwendungsservern her, auf denen Ihre ASP.NET-Anwendungen ausgeführt wird, und ermittelt die App-Komponenten. Dann erstellt das Tool ein Dockerfile, das zum Erstellen eines Containerimages für die App verwendet werden kann.
-- **Containerimage erstellen:** Sie können das Dockerfile ansehen, an die Anforderungen der App anpassen und es anschließend verwenden, um das Containerimage für die App zu erstellen. Das Containerimage für die App wird an eine von Ihnen festgelegte Azure Container Registry-Instanz gepusht.
-- **Das Bereitstellen in Azure App Service**: Das Tool generiert dann die Bereitstellungsdateien, die zum Bereitstellen der containerisierten Anwendung in Azure App Service erforderlich sind.
+- **Ermitteln Ihrer Anwendungskomponenten** Das Tool stellt eine Remoteverbindung mit den Anwendungsservern her, auf denen Ihre ASP.NET-Anwendung ausgeführt wird, und ermittelt die Anwendungskomponenten. Es wird ein Dockerfile erstellt, das Sie zum Erstellen eines Containerimages für die Anwendung verwenden können.
+- **Erstellen des Containerimages** Sie können das Dockerfile untersuchen und basierend auf Ihren Anwendungsanforderungen weiter anpassen. Anschließend können Sie es verwenden, um das Containerimage für Ihre Anwendung zu erstellen. Das Containerimage für die Anwendung wird an eine von Ihnen angegebene Azure-Containerregistrierung gepusht.
+- **Bereitstellen in Azure App Service**  Das Tool generiert dann die Bereitstellungsdateien, die zum Bereitstellen der containerisierten Anwendung in Azure App Service erforderlich sind.
 
 > [!NOTE]
-> Das App-Containerisierungstool von Azure Migrate ermittelt die App-Typen (ASP.NET- und Java-Web-Apps unter Apache Tomcat) und die App-Komponenten auf einem Anwendungsserver. Verwenden Sie die Ermittlungs- und Bewertungsfunktion von Azure Migrate, um Server sowie den Bestand an Apps, Rollen und Features zu ermitteln, die auf lokalen Computern ausgeführt werden. [Weitere Informationen](./tutorial-discover-vmware.md)
+> Mit dem Anwendungscontainerisierungstool von Azure Migrate können Sie bestimmte Anwendungstypen (ASP.NET- und Java-Web-Apps unter Apache Tomcat) und die zugehörigen Komponenten auf einem Anwendungsserver ermitteln. Verwenden Sie das [Azure Migrate-Tool zur Ermittlung und Bewertung](./tutorial-discover-vmware.md), um Server sowie den Bestand an Apps, Rollen und Features zu ermitteln, die auf lokalen Computern ausgeführt werden.
 
-Nicht alle Apps profitieren von einer Umstellung auf Container ohne erhebliche Überarbeitungen. Unter anderem ergeben sich durch die Verschiebung vorhandener Apps in Container ohne Überarbeitung jedoch folgende Vorteile:
+Nicht alle Anwendungen profitieren von einer direkten Umstellung auf Container ohne größere Änderungen an der Architektur. Es gibt aber einige Vorteile der Umstellung vorhandener Apps auf Container ohne Umschreibeaufwand, z. B.:
 
-- **Verbesserte Infrastrukturauslastung:** Mithilfe von Containern können mehrere Apps dieselben Ressourcen nutzen und in derselben Infrastruktur gehostet werden. Dadurch können Sie die Infrastruktur konsolidieren und die Auslastung verbessern.
-- **Vereinfachte Verwaltung**: Indem Sie Ihre Anwendungen auf einer modernen verwalteten Plattform wie AKS und App Service hosten, können Sie Ihre Verwaltungspraktiken vereinfachen. Das können Sie erreichen, indem Sie Wartungs- und Verwaltungsvorgänge für die Infrastruktur einstellen oder reduzieren, die Sie für Ihre eigene Infrastruktur normalerweise durchführen würden.
-- **Anwendungsportabilität:** Durch die zunehmende Nutzung und Standardisierung von Containerspezifikationsformaten und -plattformen stellt die Anwendungsportabilität keine Herausforderungen mehr dar.
-- **Moderne Verwaltung mit DevOps**: Dies ermöglicht Ihnen die Einführung und Standardisierung moderner Verwaltungs- und Sicherheitsverfahren sowie den Übergang zu DevOps.
+- **Verbesserte Auslastung der Infrastruktur** Bei Verwendung von Containern können Ressourcen von mehreren Anwendungen gemeinsam genutzt und auf derselben Infrastruktur gehostet werden. Dadurch können Sie die Infrastruktur konsolidieren und die Auslastung verbessern.
+- **Vereinfachte Verwaltung** Indem Sie Ihre Anwendungen auf modernen verwalteten Plattformen wie AKS und App Service hosten, können Sie Ihre Verwaltungsmethoden vereinfachen. Diese Vereinfachung können Sie erreichen, indem Sie Ihre normalerweise durchgeführten Wartungs- und Verwaltungsvorgänge für Ihre eigene Infrastruktur ganz einstellen oder reduzieren.
+- **Anwendungsportabilität** Aufgrund der zunehmenden Nutzung und Standardisierung von Containerspezifikationsformaten und -plattformen stellt die Anwendungsportabilität keine Herausforderung mehr dar.
+- **Moderne Verwaltung mit DevOps** Die Nutzung von Containern ermöglicht Ihnen die Einführung und Standardisierung moderner Verwaltungs- und Sicherheitsverfahren sowie die Umstellung auf DevOps.
 
 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Einrichten eines Azure-Kontos
-> * Installieren des App-Containerisierungstools von Azure Migrate
+> * Installieren des Anwendungscontainerisierungstools von Azure Migrate
 > * Erkunden Ihrer ASP.NET-Anwendung
 > * Erstellen des Containerimages
 > * Das Bereitstellen der containerisierten Anwendung in App Service.
 
 > [!NOTE]
-> In den Tutorials wird der einfachste Bereitstellungspfad für ein Szenario erläutert, damit Sie schnell einen Proof of Concept einrichten können. Die Tutorials verwenden nach Möglichkeit Standardoptionen und zeigen nicht alle möglichen Einstellungen und Pfade.
+> In den Tutorials wird der einfachste Bereitstellungspfad für ein Szenario beschrieben, damit Sie schnell einen Proof of Concept-Vorgang einrichten können. Nach Möglichkeit werden in den Tutorials Standardoptionen verwendet und nicht alle Einstellungen und Pfade angezeigt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Bevor Sie mit diesem Tutorial beginnen, sollten folgende Voraussetzungen erfüllt sein:
+Bevor Sie mit diesem Tutorial beginnen, sollten Sie zunächst:
 
 **Anforderung** | **Details**
 --- | ---
-**Computer für die Installation des Tools** | Sie benötigen einen Windows-Computer, auf dem das App-Containerisierungstool von Azure Migrate installiert und ausgeführt werden kann. Auf diesem Windows-Computer kann ein Server- (Windows Server 2016 oder höher) oder ein Clientbetriebssystem (Windows 10) ausgeführt werden. Das Tool ist also für Desktopcomputer geeignet. <br/><br/> Der Windows-Computer, auf dem das Tool ausgeführt wird, sollte über eine Netzwerkverbindung zu den Servern bzw. VMs verfügen, auf denen die ASP.NET-Apps gehostet werden, die containerisiert werden sollen.<br/><br/> Auf dem Windows-Computer, auf dem das App-Containerisierungstool von Azure Migrate ausgeführt wird, muss mindestens 6 GB freier Speicherplatz für die Anwendungsartefakte vorhanden sein. <br/><br/> Der Windows-Computer sollte direkt oder über einen Proxy auf das Internet zugreifen können. <br/> <br/>Installieren Sie (falls noch nicht geschehen) das Microsoft Web Deploy-Tool auf dem Computer, auf dem das App-Containerisierungstool und der Anwendungsserver ausgeführt werden. Sie können das Tool [hier](https://aka.ms/webdeploy3.6) herunterladen.
-**Anwendungsserver** | Aktivieren Sie das PowerShell-Remoting auf den Anwendungsservern: Melden Sie sich beim Anwendungsserver an, und befolgen Sie [diese](/powershell/module/microsoft.powershell.core/enable-psremoting) Anweisungen, um das PowerShell-Remoting zu aktivieren. <br/><br/> Wenn auf dem Anwendungsserver Windows Server 2008 R2 ausgeführt wird, stellen Sie sicher, dass PowerShell 5.1 auf dem Anwendungsserver installiert ist. Befolgen Sie [dieser Anweisung](/powershell/scripting/windows-powershell/wmf/setup/install-configure), um PowerShell 5.1 auf dem Anwendungsserver herunterzuladen und zu installieren. <br/><br/> Installieren Sie (falls noch nicht geschehen) das Microsoft Web Deploy-Tool auf dem Computer, auf dem das App-Containerisierungstool und der Anwendungsserver ausgeführt werden. Sie können das Tool [hier](https://aka.ms/webdeploy3.6) herunterladen.
-**ASP.NET-Anwendung** | Das Tool unterstützt zurzeit: <br/><br/> – ASP.NET-Anwendungen, die Microsoft .NET Framework 3.5 oder höher verwenden<br/> – Anwendungsserver, auf denen Windows Server 2008 R2 oder höher ausgeführt wird (auf Anwendungsservern muss PowerShell Version 5.1 ausgeführt werden) <br/> – Anwendungen, die auf Internetinformationsdiensten Version 7.5 (IIS) oder höher ausgeführt werden <br/><br/> Das Tool unterstützt zurzeit nicht: <br/><br/> – Anwendungen, die eine Windows-Authentifizierung erfordern (gMSA wird derzeit nicht von AKS unterstützt) <br/> – Anwendungen, die von anderen Windows-Diensten abhängen, die außerhalb von IIS gehostet werden
+**Identifizieren eines Computers für die Installation des Tools** | Sie benötigen einen Windows-Computer, auf dem das Anwendungscontainerisierungstool von Azure Migrate installiert und ausgeführt werden kann. Auf dem Windows-Computer kann ein Server- (Windows Server 2016 oder höher) oder Clientbetriebssystem (Windows 10) ausgeführt werden. (Das Tool kann auf Ihrem Desktop ausgeführt werden.) <br/><br/> Der Windows-Computer, auf dem das Tool ausgeführt wird, sollte über eine Netzwerkverbindung mit den Servern bzw. virtuellen Computern verfügen, auf denen die zu containerisierenden ASP.NET-Anwendungen gehostet werden.<br/><br/> Vergewissern Sie sich, dass auf dem Windows-Computer, auf dem das Anwendungscontainerisierungstool von Azure Migrate ausgeführt wird, 6 GB freier Speicherplatz vorhanden sind. Dieser Platz dient zum Speichern von Anwendungsartefakten. <br/><br/> Der Windows-Computer sollte direkt oder über einen Proxy auf das Internet zugreifen können. <br/> <br/>Falls noch nicht geschehen: Installieren Sie das Microsoft-Webbereitstellungstool auf dem Computer, auf dem das Anwendungscontainerisierungstool und der Anwendungsserver ausgeführt werden. Sie können das [Tool herunterladen](https://aka.ms/webdeploy3.6).
+**Anwendungsserver** | Aktivieren Sie das PowerShell-Remoting auf den Anwendungsservern: Melden Sie sich beim Anwendungsserver an, und befolgen Sie [diese Anleitung](/powershell/module/microsoft.powershell.core/enable-psremoting) zur Aktivierung des PowerShell-Remotings. <br/><br/> Wenn auf dem Anwendungsserver Windows Server 2008 R2 ausgeführt wird, stellen Sie sicher, dass PowerShell 5.1 auf dem Anwendungsserver installiert ist. Befolgen Sie [diese Anleitung zum Herunterladen und Installieren von PowerShell 5.1](/powershell/scripting/windows-powershell/wmf/setup/install-configure) auf dem Anwendungsserver. <br/><br/> Falls noch nicht geschehen: Installieren Sie das Microsoft-Webbereitstellungstool auf dem Computer, auf dem das Anwendungscontainerisierungstool und der Anwendungsserver ausgeführt werden. Sie können das [Tool herunterladen](https://aka.ms/webdeploy3.6).
+**ASP.NET-Anwendung** | Vom Tool wird derzeit Folgendes unterstützt: <br> <ul><li> ASP.NET-Anwendungen, für die .NET Framework 3.5 oder höher verwendet wird.<br/> <li>Anwendungsserver, auf denen Windows Server 2008 R2 oder höher ausgeführt wird. (Auf Anwendungsservern sollte PowerShell 5.1 ausgeführt werden.) <br/><li> Anwendungen, die unter Internetinformationsdienste 7.5 oder höher ausgeführt werden.</ul> <br/><br/> Folgendes wird vom Tool derzeit nicht unterstützt: <br/> <ul><li>Anwendungen, für die eine Windows-Authentifizierung erforderlich ist. (Von AKS wird gMSA derzeit nicht unterstützt.) <br/> <li> Anwendungen, die von anderen Windows-Diensten abhängig sind, für die das Hosten außerhalb von Internetinformationsdienste erfolgt.
 
 
 ## <a name="prepare-an-azure-user-account"></a>Vorbereiten eines Azure-Benutzerkontos
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/pricing/free-trial/) erstellen, bevor Sie beginnen.
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/pricing/free-trial/), bevor Sie beginnen.
 
-Sobald Ihr Abonnement eingerichtet ist, benötigen Sie ein Azure-Benutzerkonto mit den folgenden Berechtigungen:
+Nachdem Ihr Abonnement eingerichtet wurde, benötigen Sie ein Azure-Benutzerkonto mit den folgenden Berechtigungen:
 - Besitzerberechtigungen für das Azure-Abonnement
 - Berechtigungen zum Registrieren von Azure Active Directory-Apps
 
 Wenn Sie gerade erst ein kostenloses Azure-Konto erstellt haben, sind Sie der Besitzer Ihres Abonnements. Wenn Sie nicht der Besitzer des Abonnements sind, müssen Sie mit dem Besitzer zusammenarbeiten, um die Berechtigungen wie folgt zuzuweisen:
 
-1. Suchen Sie im Azure-Portal nach „Abonnements“, und wählen Sie unter **Dienste** die Option **Abonnements** aus.
+1. Suchen Sie im Azure-Portal nach „Abonnements“. Wählen Sie unter **Dienste** die Option **Abonnements** aus:
 
-    ![Suchfeld, mit dem nach dem Azure-Abonnement gesucht wird](./media/tutorial-discover-vmware/search-subscription.png)
+    ![Screenshot: Suchfeld für die Suche nach einem Azure-Abonnement](./media/tutorial-discover-vmware/search-subscription.png)
 
-2. Wählen Sie auf der Seite **Abonnements** das Abonnement aus, in dem Sie ein Azure Migrate-Projekt erstellen möchten.
-3. Wählen Sie im Abonnement die Option **Zugriffssteuerung (IAM)**  > **Zugriff überprüfen** aus.
-4. Suchen Sie unter **Zugriff überprüfen** nach dem entsprechenden Benutzerkonto.
-5. Klicken Sie unter **Rollenzuweisung hinzufügen** auf **Hinzufügen**.
+2. Wählen Sie auf der Seite **Abonnements** das Abonnement aus, unter dem Sie ein Azure Migrate-Projekt erstellen möchten.
+3. Wählen Sie im Abonnement im linken Bereich die Option **Zugriffssteuerung (IAM)** aus.
+4. Suchen Sie auf der Registerkarte **Zugriff überprüfen** nach dem relevanten Benutzerkonto.
+5. Wählen Sie unter **Rollenzuweisung hinzufügen** die Option **Hinzufügen** aus:
 
-    ![Suche nach einem Benutzerkonto, um den Zugriff zu überprüfen und eine Rolle zuzuweisen](./media/tutorial-discover-vmware/azure-account-access.png)
+    ![Screenshot: Suche nach einem Benutzerkonto zur Überprüfung des Zugriffs und zur Zuweisung einer Rolle](./media/tutorial-discover-vmware/azure-account-access.png)
 
-6. Wählen Sie unter **Rollenzuweisung hinzufügen** die Rolle „Besitzer“ und das Konto aus (in diesem Beispiel „azmigrateuser“). Klicken Sie anschließend auf **Speichern**.
+6. Wählen Sie auf der Seite **Rollenzuweisung hinzufügen** die Rolle **Besitzer** und anschließend das Konto aus (in diesem Beispiel **azmigrateuser**). Klicken Sie dann auf **Speichern**.
 
-    ![Die Seite „Rollenzuweisung“ wird geöffnet, auf der Sie dem Konto eine Rolle zuweisen können.](./media/tutorial-discover-vmware/assign-role.png)
+    ![Screenshot der Seite „Rollenzuweisung hinzufügen“](./media/tutorial-discover-vmware/assign-role.png)
 
-7. Ihr Azure-Konto benötigt zudem **Berechtigungen zum Registrieren von Azure Active Directory-Apps**.
+   Ihr Azure-Konto benötigt zudem Berechtigungen zum Registrieren von Azure Active Directory-Apps.
 8. Navigieren Sie im Azure-Portal zu **Azure Active Directory** > **Benutzer** > **Benutzereinstellungen**.
-9. Vergewissern Sie sich unter **Benutzereinstellungen**, dass Azure AD-Benutzer Anwendungen registrieren können (standardmäßig auf **Ja** festgelegt).
+9. Vergewissern Sie sich unter **Benutzereinstellungen**, dass Azure AD-Benutzer Anwendungen registrieren können. (Standardmäßig ist diese Option auf **Ja** festgelegt.)
 
-      ![Überprüfung in den Benutzereinstellungen, ob Benutzer Active Directory-Apps registrieren können](./media/tutorial-discover-vmware/register-apps.png)
+      ![Screenshot: Seite „Benutzereinstellungen“](./media/tutorial-discover-vmware/register-apps.png)
 
-10. Wenn die Einstellungen für die *App-Registrierungen* auf *Nein* festgelegt sind, können Sie beim Mandantenadministrator/globalen Administrator anfordern, Ihnen die erforderliche Berechtigung zuzuweisen. Alternativ kann der Mandantenadministrator bzw. der globale Administrator einem Konto die Rolle **Anwendungsentwickler** zuweisen, um die Registrierung von Azure Active Directory-Apps zuzulassen. [Weitere Informationen](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md)
+10. Wenn die Option **App-Registrierungen** auf **Nein** festgelegt ist, können Sie den Mandantenadministrator bzw. globalen Administrator darum bitten, Ihnen die erforderliche Berechtigung zuzuweisen. Alternativ kann der Mandantenadministrator bzw. globale Administrator einem Konto die Rolle „Anwendungsentwickler“ zuweisen, um die Registrierung von Azure Active Directory-Apps zu ermöglichen. Weitere Informationen finden Sie unter [Zuweisen von Rollen zu Benutzern](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md).
 
-## <a name="download-and-install-azure-migrate-app-containerization-tool"></a>Herunterladen und Installieren des App-Containerisierungstools von Azure Migrate
+## <a name="download-and-install-the-azure-migrate-app-containerization-tool"></a>Herunterladen und Installieren des Anwendungscontainerisierungstools von Azure Migrate
 
-1. Laden Sie das [Installationsprogramm](https://go.microsoft.com/fwlink/?linkid=2134571) für das App-Containerisierungstool von Azure Migrate auf einen Windows-Computer herunter.
-2. Starten Sie PowerShell im Administratormodus, und ändern Sie das PowerShell-Verzeichnis in den Ordner, der das Installationsprogramm enthält.
-3. Führen Sie das Installationsskript mithilfe des folgenden Befehls aus:
+1. [Laden Sie das Installationsprogramm für das Anwendungscontainerisierungstool von Azure Migrate auf einen Windows-Computer herunter.](https://go.microsoft.com/fwlink/?linkid=2134571)
+2. Öffnen Sie PowerShell im Administratormodus, und ändern Sie das PowerShell-Verzeichnis in den Ordner, der das Installationsprogramm enthält.
+3. Führen Sie das Installationsskript mit dem folgenden Befehl aus:
 
    ```powershell
    .\AppContainerizationInstaller.ps1
    ```
 
-## <a name="launch-the-app-containerization-tool"></a>Starten des App-Containerisierungstools
+## <a name="open-the-app-containerization-tool"></a>Öffnen des Anwendungscontainerisierungstools
 
-1. Öffnen Sie auf einem Computer, der eine Verbindung mit dem Windows-Computer herstellen kann, auf dem das Anwendungscontainerisierungstool ausgeführt wird, in einem Browser die URL für das Tool: **https://*Computername oder IP-Adresse* 44369**.
+1. Öffnen Sie einen Browser auf einem beliebigen Computer, von dem aus eine Verbindung mit dem Windows-Computer hergestellt werden kann, auf dem das Anwendungscontainerisierungstool ausgeführt wird. Navigieren Sie zur URL des Tools: **https://*Name oder IP-Adresse des Computers*: 44369**.
 
-   Alternativ können Sie auch auf dem Desktop auf die App-Verknüpfung klicken, um die App zu öffnen.
+   Alternativ können Sie die App über Ihren Desktop öffnen, indem Sie die entsprechende Verknüpfung verwenden.
 
-2. Wenn eine Warnung angezeigt wird, dass die Verbindung nicht privat ist, klicken Sie auf „Erweitert“ und wählen Sie die Option aus, dennoch zur Website zu wechseln. Diese Warnung wird angezeigt, da die Webschnittstelle ein selbstsigniertes TLS/SSL-Zertifikat verwendet.
-3. Verwenden Sie auf dem Anmeldebildschirm das lokale Administratorkonto um sich auf dem Computer anzumelden.
+2. Wählen Sie die Option **Advanced** (Erweitert) aus, wenn eine Warnung mit dem Hinweis angezeigt wird, dass Ihre Verbindung nicht privat ist. Fahren Sie anschließend auf der Website fort. Diese Warnung wird angezeigt, weil für die Webschnittstelle ein selbstsigniertes TLS/SSL-Zertifikat genutzt wird.
+3. Verwenden Sie auf dem Anmeldebildschirm das lokale Administratorkonto des Computers, um sich anzumelden.
 4. Wählen Sie **ASP.NET Web-Apps** als den Anwendungstyp aus, den Sie containerisieren möchten.
-5. Um den Azure-Zieldienst anzugeben, wählen Sie **Container in Azure App Service** aus.
-![Standard-Load-up für das App-Containerisierungstool](./media/tutorial-containerize-apps-aks/tool-home.png)
+5. Wählen Sie in der Liste **Target Azure service** (Azure-Zieldienst) die Option **Containers on Azure App Service** (Container in Azure App Service) aus:
 
-### <a name="complete-tool-pre-requisites"></a>Erfüllen der Voraussetzungen für das Tool
-1. Akzeptieren Sie die **Lizenzbedingungen**, und lesen Sie die Drittanbieterinformationen.
-6. Gehen Sie in der Web-App für das Tool unter **Erforderliche Komponenten einrichten** wie folgt vor:
+   ![Screenshot: Listen für Anwendungstyp und Ziel](./media/tutorial-containerize-apps-aks/tool-home.png)
+
+### <a name="complete-the-tool-prerequisites"></a>Ausführen der erforderlichen Vorbereitungsschritte für das Tool
+1. Akzeptieren Sie die Lizenzbedingungen und lesen Sie die Drittanbieterinformationen.
+6. Führen Sie in der Tool-Web-App mit dem Namen **Set up prerequisites** (Erforderliche Komponenten einrichten) die folgenden Schritte aus:
    - **Konnektivität**: Das Tool überprüft, ob der Windows-Computer über Internetzugriff verfügt. Falls der Computer einen Proxy verwendet:
-     - Klicken Sie auf **Proxy einrichten**, um die Proxyadresse (im IP-Adressformat oder als FQDN) und den lauschenden Port anzugeben.
-     - Geben Sie die Anmeldeinformationen an, wenn der Proxy eine Authentifizierung erfordert.
-     - Es werden nur HTTP-Proxys unterstützt.
-     - Wenn Sie Proxydetails hinzugefügt oder den Proxy und/oder die Authentifizierung deaktiviert haben, klicken Sie auf **Speichern**, um die Konnektivitätsprüfung noch mal auszulösen.
-   - **Updates installieren**: Das Tool sucht automatisch nach den aktuellsten Updates und installiert diese. Sie können die aktuelle Version des Tools auch [hier](https://go.microsoft.com/fwlink/?linkid=2134571) herunterladen und manuell installieren.
-   - **Microsoft Web Deploy-Tool erstellen:** Das Tool überprüft, dass das Microsoft Web Deploy-Tool auf dem Windows-Computer installiert ist, der Azure Migrate ausführt (App-Containerisierungstool).
-   - **PowerShell-Remoting aktivieren:** Das Tool erinnert Sie daran, sicherzustellen, dass das PowerShell-Remoting auf den Anwendungsservern aktiviert ist, die ASP.NET-Anwendungen ausführen, die containerisiert werden sollen.
+     1. Wählen Sie die Option **Set up proxy** (Proxy einrichten) aus, um die Proxyadresse (als IP-Adresse oder FQDN) und den lauschenden Port anzugeben.
+     1. Geben Sie die Anmeldeinformationen an, wenn der Proxy eine Authentifizierung erfordert.
+       
+     1. Wenn Sie Proxydetails hinzugefügt oder den Proxy oder die Authentifizierung deaktiviert haben, wählen Sie die Option **Save** (Speichern) aus, um die Konnektivitätsprüfung erneut auszulösen.
+     
+     Es werden nur HTTP-Proxys unterstützt.
+   - **Installation von Updates**: Das Tool sucht automatisch nach den neuesten Updates und installiert sie. Sie können die [aktuelle Version des Tools auch manuell installieren](https://go.microsoft.com/fwlink/?linkid=2134571).
+   - **Installation des Microsoft-Webbereitstellungstools**: Das Tool überprüft, ob das Microsoft-Webbereitstellungstool auf dem Windows-Computer installiert ist, auf dem das Anwendungscontainerisierungstool von Azure Migrate ausgeführt wird.
+   - **Aktivierung von PowerShell-Remoting**: Sie erhalten im Tool eine Aufforderung, Folgendes sicherzustellen: PowerShell-Remoting ist auf den Anwendungsservern aktiviert, auf denen die ASP.NET-Anwendungen ausgeführt werden, die Sie containerisieren möchten.
 
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
-Klicken Sie auf **Anmelden**, um sich bei Ihrem Azure-Konto anzumelden.
+1. Wählen Sie **Sign in** (Anmelden) aus, um sich bei Ihrem Azure-Konto anzumelden.
 
-1. Für die Authentifizierung bei Azure benötigen Sie einen Gerätecode. Wenn Sie auf „Anmelden“ klicken, wird ein modales Dialogfeld mit dem Gerätecode angezeigt.
-2. Klicken Sie auf **Code kopieren und anmelden**, um den Gerätecode zu kopieren und eine Azure-Anmeldeaufforderung auf einer neuen Registerkarte im Browser zu öffnen. Sollte keine Aufforderung angezeigt werden, vergewissern Sie sich, dass Sie den Popupblocker im Browser deaktiviert haben.
+   Für die Authentifizierung bei Azure benötigen Sie einen Gerätecode. Nach dem Auswählen von **Sign in** (Anmelden) sollte ein Fenster geöffnet werden, das den Gerätecode enthält. Falls das Fenster nicht angezeigt wird, sollten Sie sich vergewissern, dass Sie den Popupblocker im Browser deaktiviert haben.
+2. Wählen Sie die Option **Copy code and Sign in** (Code kopieren und anmelden) aus, um den Gerätecode zu kopieren und eine Azure-Anmeldeaufforderung in einem neuen Browsertab zu öffnen:
 
-    ![Modales Dialogfeld mit Gerätecode](./media/tutorial-containerize-apps-aks/login-modal.png)
+    ![Screenshot: Fenster mit Gerätecode für Azure-Anmeldung](./media/tutorial-containerize-apps-aks/login-modal.png)
 
-3. Fügen Sie auf der neuen Registerkarte den Gerätecode ein, und melden Sie sich mit den Anmeldeinformationen für Ihr Azure-Konto an. Sobald Sie angemeldet sind, können Sie die Registerkarte im Browser schließen und zur Weboberfläche des App-Containerisierungstools zurückkehren.
+3. Fügen Sie auf dem neuen Tab den Gerätecode ein, und melden Sie sich mit den Anmeldeinformationen für Ihr Azure-Konto an. Nach der Anmeldung können Sie den Browsertab schließen und zurück zur Weboberfläche des Anwendungscontainerisierungstools wechseln.
 4. Wählen Sie den **Azure-Mandanten** aus, den Sie verwenden möchten.
 5. Geben Sie das gewünschte **Azure-Abonnement** an.
 
 ## <a name="discover-aspnet-applications"></a>Erkunden von ASP.NET-Anwendungen
 
-Das App-Containerisierungstool stellt unter Verwendung der angegebenen Anmeldeinformationen eine Remoteverbindung mit den Anwendungsservern her und versucht, ASP.NET-Anwendungen zu ermitteln, die auf den Anwendungsservern gehostet werden.
+Das Anwendungscontainerisierungstool stellt mit den angegebenen Anmeldeinformationen eine Remoteverbindung mit den Anwendungsservern her und versucht, ASP.NET-Anwendungen zu ermitteln, die auf den Anwendungsservern gehostet werden.
 
-1. Geben Sie die **IP-Adresse oder den FQDN und die Anmeldeinformationen** für den Server an, auf dem die ASP.NET-Anwendung ausgeführt wird. Diese Daten sollen verwendet werden, um eine Remoteverbindung mit dem Server zur Anwendungsermittlung herzustellen.
+1. Geben Sie die **IP-Adresse oder den FQDN des Servers** und die Anmeldeinformationen für den Server an, auf dem die ASP.NET-Anwendung ausgeführt wird. Diese Daten dienen dazu, zur Anwendungsermittlung eine Remoteverbindung mit dem Server herzustellen.
     - Die angegebenen Anmeldeinformationen müssen für einen lokalen Administrator (Windows) auf dem Anwendungsserver angegeben werden.
-    - Bei Domänenkonten (der Benutzer muss Administrator auf dem Anwendungsserver sein) müssen Sie dem Domänennamen den Benutzernamen voranstellen ( *<Domäne\Benutzername>* ).
-    - Bei lokalen Konten (der Benutzer muss Administrator auf dem Anwendungsserver sein) müssen Sie dem Benutzernamen den Hostnamen voranstellen ( *<Hostname\Benutzername>* ).
+    - Bei Domänenkonten (der Benutzer muss Administrator auf dem Anwendungsserver sein) müssen Sie dem Benutzernamen den Domänennamen im folgenden Format voranstellen: *<Domäne\Benutzername>* .
+    - Bei lokalen Konten (der Benutzer muss Administrator auf dem Anwendungsserver sein) müssen Sie dem Benutzernamen den Hostnamen im folgenden Format voranstellen: *<Hostname\Benutzername>* .
     - Sie können die Anwendungsermittlung für bis zu fünf Server gleichzeitig ausführen.
 
-2. Klicken Sie auf **Überprüfen**, um sich zu vergewissern, dass der Anwendungsserver von dem Computer aus erreichbar ist, auf dem das Tool ausgeführt wird, und dass die Anmeldeinformationen gültig sind. Bei erfolgreicher Überprüfung wird der Status in der entsprechenden Spalte als **Zugeordnet** angezeigt.  
+2. Wählen Sie **Validate** (Überprüfen) aus, um sich zu vergewissern, dass der Anwendungsserver von dem Computer aus erreichbar ist, auf dem das Tool ausgeführt wird, und dass die Anmeldeinformationen gültig sind. Bei erfolgreicher Überprüfung wird in der Spalte **Status** der Status **Mapped** (Zugeordnet) angezeigt:
 
-    ![Screenshot: IP-Adresse und Anmeldeinformationen für den Server](./media/tutorial-containerize-apps-aks/discovery-credentials-asp.png)
+    ![Screenshot: Serverstatus „Mapped“ (Zugeordnet)](./media/tutorial-containerize-apps-aks/discovery-credentials-asp.png)
 
-3. Klicken Sie auf **Weiter**, um die Anwendungsermittlung auf den ausgewählten Anwendungsservern zu starten.
+3. Wählen Sie **Continue** (Weiter) aus, um die Anwendungsermittlung auf den ausgewählten Anwendungsservern zu starten.
 
-4. Nach erfolgreichem Abschluss der Anwendungsermittlung können Sie die Liste der zu containerisierenden Anwendungen auswählen.
+4. Wählen Sie nach Abschluss der Anwendungsermittlung die Anwendungen aus, die Sie containerisieren möchten:
 
-    ![Screenshot der ermittelten ASP.NET-Anwendung](./media/tutorial-containerize-apps-aks/discovered-app-asp.png)
+    ![Screenshot: Ermittelte ASP.NET-Anwendung](./media/tutorial-containerize-apps-aks/discovered-app-asp.png)
 
-
-5. Verwenden Sie das Kontrollkästchen, um die zu containerisierenden Anwendungen auszuwählen.
-6. **Containername angeben**: Legen Sie Namen für die Zielcontainer der ausgewählten Anwendungen fest. Der Containername sollte im Format <*Name:Tag*> angegeben werden, wobei „Tag“ für das Containerimage verwendet wird. Sie können den Zielcontainernamen beispielsweise auf *appname:v1* festlegen.   
+6. Geben Sie einen Namen für den Zielcontainer jeder ausgewählten Anwendung an. Geben Sie den Containernamen im Format <*name:tag*> an, wobei *tag* für das Containerimage verwendet wird. Sie können den Zielcontainernamen beispielsweise auf *appname:v1* festlegen.   
 
 ### <a name="parameterize-application-configurations"></a>Parametrisieren von Anwendungskonfigurationen
-Durch das Parametrisieren der Konfiguration steht diese zur Bereitstellungszeit als Parameter zur Verfügung. Das bedeutet, dass Sie diese Einstellung während der Anwendungsbereitstellung konfigurieren können, anstatt sie in einem bestimmten Wert im Containerimage hartzucodieren. Diese Option ist beispielsweise für Parameter wie Datenbank-Verbindungszeichenfolgen nützlich.
-1. Klicken Sie auf **App-Konfigurationen**, um erkannte Konfigurationen anzuzeigen.
-2. Aktivieren Sie das Kontrollkästchen, um die erkannten Anwendungskonfigurationen zu parametrisieren.
-3. Wählen Sie die zu parametrisierenden Konfigurationen aus, und klicken Sie dann auf **Anwenden**.
+Durch das Parametrisieren der Konfiguration steht diese zur Bereitstellungszeit als Parameter zur Verfügung. Dank der Parametrisierung können Sie eine Einstellung bei der Anwendungsbereitstellung konfigurieren, anstatt diese in einem bestimmten Wert im Containerimage hartzucodieren. Diese Option ist beispielsweise für Parameter wie Datenbank-Verbindungszeichenfolgen nützlich.
+1. Wählen Sie die Option **app configurations** (App-Konfigurationen) aus, um die erkannten Konfigurationen anzuzeigen.
+2. Wählen Sie die Parameter, die Sie parametrisieren möchten, und dann die Option **Apply** (Übernehmen) aus:
 
-   ![Screenshot: Parametrisierung der Konfiguration einer ASP.NET-App](./media/tutorial-containerize-apps-aks/discovered-app-configs-asp.png)
+   ![Screenshot: Liste mit erkannten Konfigurationen](./media/tutorial-containerize-apps-aks/discovered-app-configs-asp.png)
 
 ### <a name="externalize-file-system-dependencies"></a>Externalisieren von Dateisystemabhängigkeiten
 
- Sie können weitere Ordner hinzufügen, die von der Anwendung verwendet werden. Legen Sie fest, ob sie Teil des Container-Images sein sollen oder über Azure-Datenfreigabe in den persistenten Speicher ausgelagert werden sollen. Die Verwendung von externem persistentem Speicher ist für zustandsbehaftete Anwendungen ideal, die den Zustand außerhalb des Containers speichern oder statische Inhalte im Dateisystem gespeichert haben.
+ Sie können weitere Ordner hinzufügen, die von der Anwendung verwendet werden. Geben Sie an, ob diese Teil des Containerimages sein oder per Azure-Dateifreigabe in persistenten Speicher ausgelagert werden sollen. Die Verwendung von externem persistentem Speicher ist für zustandsbehaftete Anwendungen ideal, die den Zustand außerhalb des Containers speichern oder statische Inhalte im Dateisystem gespeichert haben.
 
-1. Klicken Sie unter „App-Ordner“ auf **Bearbeiten**, um die erkannten Anwendungsordner anzuzeigen. Bei den erkannten Anwendungsordnern handelt es sich um für die Anwendung erforderliche Artefakte, deshalb werden sie ins Containerimage kopiert.
+1. Wählen Sie unter **Application folders** (Anwendungsordner) die Option **Edit** (Bearbeiten) aus, um die erkannten Anwendungsordner anzuzeigen. Diese Ordner wurden als obligatorische Artefakte identifiziert, die von der Anwendung benötigt werden. Sie werden in das Containerimage kopiert.
 
-2. Klicken Sie auf **Ordner hinzufügen**, und geben Sie die Pfade der Ordner an, die hinzugefügt werden sollen.
-3. Wenn Sie mehrere Ordner zum selben Volume hinzufügen möchten, müssen Sie diese mit einem Trennzeichen (`,`) trennen.
+2. Wählen Sie die Option **Add folder** (Ordner hinzufügen) aus, und geben Sie die Ordnerpfade an, die Sie hinzufügen möchten.
+3. Trennen Sie die Werte durch Kommas, falls Sie für ein Volume mehrere Ordner angeben möchten.
 4. Wählen Sie **Azure-Datenfreigabe** als Speicheroption aus, wenn die Ordner außerhalb des Containers in einem persistenten Speicher gespeichert werden sollen.
-5. Klicken Sie nach der Überprüfung der Anwendungsordner auf **Speichern**.
-   ![Screenshot: Speicherauswahl für App-Volumes](./media/tutorial-containerize-apps-aks/discovered-app-volumes-asp.png)
+5. Wählen Sie **Save** (Speichern) aus, nachdem Sie die Anwendungsordner überprüft haben:
 
-6. Klicken Sie auf **Weiter**, um zur Buildphase des Containerimages zu wechseln.
+   ![Screenshot: Fenster für die Bearbeitung von Anwendungsordnern](./media/tutorial-containerize-apps-aks/discovered-app-volumes-asp.png)
+
+6. Wählen Sie **Continue** (Weiter) aus, um mit der Buildphase des Containerimages fortzufahren.
 
 ## <a name="build-container-image"></a>Erstellen des Containerimage
 
 
-1. **Azure Container Registry-Instanz auswählen**: Wählen Sie über das Dropdownmenü eine [Azure Container Registry-Instanz](../container-registry/index.yml) aus, die zum Erstellen und Speichern der Containerimages für die App verwendet werden soll. Sie können eine vorhandene Azure Container Registry-Instanz wählen oder über die Option „Create new registry“ (Neue Registrierung erstellen) eine neue erstellen.
+1. Wählen Sie in der Dropdownliste eine [Azure-Containerregistrierung](../container-registry/index.yml) aus, die zum Erstellen und Speichern der Containerimages für die Apps verwendet werden soll. Sie können eine vorhandene Azure-Containerregistrierung verwenden oder eine neue erstellen, indem Sie die Option **Create new registry** (Neue Registrierung erstellen) auswählen:
 
-    ![Screenshot: ACR-Auswahl für die App](./media/tutorial-containerize-apps-aks/build-aspnet-app.png)
+    ![Screenshot: Fenster für Buildvorgang für Images](./media/tutorial-containerize-apps-aks/build-aspnet-app.png)
 
-> [!NOTE]
-> Es werden nur Azure-Containerregister mit aktiviertem Administratorbenutzer angezeigt. Das Administratorkonto ist derzeit für die Bereitstellung eines Images aus einer Azure-Containerregistrierung für Azure App Service erforderlich. [Weitere Informationen](../container-registry/container-registry-authentication.md#admin-account)
+   > [!NOTE]
+   > Es werden nur Azure-Containerregistrierungen angezeigt, für die das Administratorbenutzerkonto aktiviert ist. Das Administratorbenutzerkonto ist derzeit für die Bereitstellung eines Images aus einer Azure-Containerregistrierung für Azure App Service erforderlich. Weitere Informationen finden Sie unter [Authentifizieren mit einer Azure-Containerregistrierung](../container-registry/container-registry-authentication.md#admin-account).
 
-2. **Dockerfile überprüfen**: Das Dockerfile, das für die Erstellung der Containerimage für die ausgewählten Apps benötigt wird, wird zu Beginn des Buildschritts generiert. Klicken Sie auf **Überprüfen**, um das Dockerfile zu öffnen. Im Überprüfungsschritt können Sie auch sämtliche notwendigen Anpassungen am Dockerfile vornehmen und die Änderung speichern, bevor Sie den Buildprozess einleiten.
+2. Die Dockerfiles, die für die Erstellung der Containerimages für die einzelnen ausgewählten Anwendungen benötigt werden, werden zu Beginn des Buildschritts generiert. Wählen Sie **Review** (Überprüfen) aus, um das Dockerfile für die Überprüfung anzuzeigen. Im Überprüfungsschritt können Sie auch alle erforderlichen Anpassungen am Dockerfile vornehmen und die Änderungen speichern, bevor Sie den Buildprozess starten.
 
-3. **Buildprozess auslösen**: Wählen Sie die Apps aus, für die Images erstellt werden sollen, und klicken Sie auf **Erstellen**. Wenn Sie auf „Erstellen“ klicken, werden die Containerimages für die einzelnen Apps erstellt. Das Tool überwacht den Buildstatus kontinuierlich. Wenn der Buildprozess abgeschlossen ist, können Sie mit dem nächsten Schritt fortfahren.
+3. Wählen Sie die Anwendungen, für die Sie Images erstellen möchten, und dann die Option **Build** (Erstellen) aus. Wenn Sie **Build** (Erstellen) auswählen, wird der Buildvorgang für die Containerimages der einzelnen Anwendungen gestartet. Das Tool überwacht den Buildstatus und ermöglicht Ihnen die Ausführung des nächsten Schritts, nachdem der Buildvorgang abgeschlossen ist.
 
-4. **Buildstatus nachverfolgen**: Sie können den Fortschritt des Buildschritts überwachen, indem Sie unter der Statusspalte auf **Buildvorgang wird ausgeführt** klicken. Der Link ist erst einige Minuten nach Beginn des Buildprozesses verfügbar.  
+4.  Sie können den Status des Buildvorgangs überwachen, indem Sie in der Spalte „Status“ die Option **Build in Progress** (Buildvorgang wird ausgeführt) auswählen. Der Link wird einige Minuten nach dem Auslösen des Buildprozesses aktiv.  
 
-5. Wenn der Build abgeschlossen ist, klicken Sie auf **Weiter**, um die Bereitstellungseinstellungen festzulegen.
+5. Wählen Sie nach Abschluss des Buildvorgangs die Option **Continue** (Weiter) aus, um die Bereitstellungseinstellungen anzugeben:
 
-    ![Screenshot: Abschluss des Buildprozesses für App-Containerimages](./media/tutorial-containerize-apps-aks/build-aspnet-app-completed.png)
+    ![Screenshot: Link „Review“ (Überprüfen), Status des Containerimages und Schaltflächen „Build“ (Erstellen) und „Continue“ (Weiter)](./media/tutorial-containerize-apps-aks/build-aspnet-app-completed.png)
 
 ## <a name="deploy-the-containerized-app-on-azure-app-service"></a>Das Bereitstellen der containerisierten App auf dem Azure App Service
 
-Nachdem das Containerimage erstellt wurde, ist der nächste Schritt, die Anwendung als einen Container in [Azure App Service](https://azure.microsoft.com/services/app-service/) bereitzustellen.
+Nachdem das Containerimage erstellt wurde, besteht der nächste Schritt darin, die Anwendung als Container in [Azure App Service](https://azure.microsoft.com/services/app-service/) bereitzustellen.
 
-1. **Wählen Sie den Azure App Service Plan aus**: Geben Sie den Azure App Service Plan an, den die Anwendung verwenden soll.
+1. Wählen Sie den Azure App Service-Plan aus, der von der Anwendung verwendet werden soll.
 
-     - Wenn Sie über keinen App Service Plan verfügen oder einen neuen App Service Plan erstellen möchten, können Sie einen über das Tool erstellen, indem Sie auf die Funkion **Neuen App Service Plan erstellen** klicken.      
-     - Wählen Sie den App Service-Plan aus, und klicken Sie auf **Weiter**.
+   Falls Sie keinen App Service-Plan besitzen oder einen neuen erstellen möchten, können Sie die Option **Create new App Service plan** (Neuen App Service-Plan erstellen) auswählen.      
+1. Wählen Sie **Continue** (Weiter) aus, nachdem Sie den App Service-Plan ausgewählt haben.
 
-2. **Das Angeben des Geheimnisspeichers**: Wenn Sie sich für die Parametrisierung von Anwendungskonfigurationen entschieden haben, geben Sie den geheimen Speicher an, der für die Anwendung verwendet werden soll. Sie können den Azure Key Vault oder die App Service Anwendungseinstellungen auswählen, um Ihre Anwendungsgeheimnisse zu verwalten. [Weitere Informationen](../app-service/configure-common.md#configure-connection-strings)
+2. Geben Sie den Geheimnisspeicher an, der für die Anwendung verwendet werden soll, falls Sie Anwendungskonfigurationen parametrisiert haben. Sie können Azure Key Vault oder die App Service-Anwendungseinstellungen auswählen, um Ihre Anwendungsgeheimnisse zu verwalten. Weitere Informationen finden Sie unter [Konfigurieren von Verbindungszeichenfolgen](../app-service/configure-common.md#configure-connection-strings).
 
-     - Wenn Sie App Service-Anwendungseinstellungen für die Verwaltung von Geheimnissen ausgewählt haben, klicken Sie auf **Weiter**.
-     - Wenn Sie eine Azure Key Vault-Instanz zum Verwalten Ihrer Anwendungsgeheimnisse verwenden möchten, geben Sie die gewünschte Azure Key Vault-Instanz an.     
-         - Wenn Sie über keinen Azure Key Vault verfügen oder einen neuen Key Vault erstellen möchten, können Sie ihn über das Tool erstellen, indem Sie auf die Funktion **Neuen Azure Key Vault erstellen** klicken.
-         - Das Tool weist automatisch die erforderlichen Berechtigungen zum Verwalten von Geheimnissen über den Key Vault zu.
+     - Wählen Sie **Continue** (Weiter) aus, wenn Sie App Service-Anwendungseinstellungen für die Verwaltung Ihrer Geheimnisse ausgewählt haben.
+     - Falls Sie einen Azure-Schlüsseltresor zum Verwalten Ihrer Anwendungsgeheimnisse verwenden möchten, geben Sie den entsprechenden Schlüsseltresor an.     
+         - Falls Sie keinen Azure-Schlüsseltresor besitzen oder einen neuen erstellen möchten, können Sie die Option **Create new Azure Key Vault** (Neuen Azure-Schlüsseltresor erstellen) auswählen.
+         - Das Tool weist automatisch die erforderlichen Berechtigungen für die Verwaltung von Geheimnissen über den Schlüsseltresor zu.
 
-3. **Angeben der Azure-Dateifreigabe**: Wenn Sie mehrere Verzeichnisse/Ordner hinzugefügt haben und die Option „Azure-Datenfreigabe“ für das persistente Speichern ausgewählt haben, geben Sie nun die Azure-Dateifreigabe an, die das App-Containerisierungstool von Azure Migrate während des Bereitstellungsprozesses verwenden soll. Das Tool kopiert die Anwendungsverzeichnisse/Ordner, die für Azure Files konfiguriert sind, und bindet sie bei der Bereitstellung in den Anwendungscontainer ein. 
+3. Falls Sie weitere Ordner hinzugefügt und die Option „Azure-Dateifreigabe“ für persistenten Speicher ausgewählt haben, müssen Sie die entsprechende Azure-Dateifreigabe für die Verwendung durch das Anwendungscontainerisierungstool während der Bereitstellung angeben. Das Tool kopiert die Anwendungsordner, die Sie für Azure Files konfiguriert haben, an den neuen Speicherort und bindet sie während der Bereitstellung in den Anwendungscontainer ein. 
 
-     - Wenn Sie keine Azure-Dateifreigabe besitzen oder eine neue erstellen möchten, können Sie hierzu im Tool auf **Create new Storage Account and file share** (Neues Speicherkonto und neue Dateifreigabe erstellen) klicken.  
+   Falls Sie keine Azure-Dateifreigabe besitzen oder eine neue erstellen möchten, können Sie die Option **Create new Storage Account and file share** (Neues Speicherkonto und Dateifreigabe erstellen) auswählen.  
 
-4. **Konfiguration für die Anwendungsbereitstellung**: Nachdem Sie die obigen Schritte abgeschlossen haben, müssen Sie die Bereitstellungskonfiguration für die App festlegen. Klicken Sie auf **Konfigurieren**, um die Bereitstellung der App anzupassen. Im Konfigurationsschritt können Sie die folgenden Anpassungen vornehmen:
-     - **Name**: Geben Sie einen eindeutigen App-Namen für die Anwendung an. Dieser Name wird zum Generieren der Anwendungs-URL und als Präfix für andere Ressourcen verwendet, die im Rahmen dieser Bereitstellung erstellt werden.
-     - **Anwendungskonfiguration**: Geben Sie für alle parametrisierte Anwendungskonfigurationen die Werte an, die für die aktuelle Bereitstellung verwendet werden sollen.
-     - **Speicherkonfiguration**: Überprüfen Sie die Informationen für alle Anwendungsverzeichnisse/Ordner, die für den persistenten Speicher konfiguriert wurden.
+4. Nun müssen Sie die Bereitstellungskonfiguration für die Anwendung angeben. Wählen Sie **Configure** (Konfigurieren) aus, um die Bereitstellung für die Anwendung anzupassen. Im Konfigurationsschritt können Sie die folgenden Anpassungen vornehmen:
+     - **Name**. Geben Sie einen eindeutigen App-Namen für die Anwendung an. Dieser Name wird verwendet, um die Anwendungs-URL zu generieren. Darüber hinaus wird er als Präfix für andere Ressourcen verwendet, die im Rahmen der Bereitstellung erstellt werden.
+     - **Anwendungskonfiguration**: Geben Sie für alle parametrisierten Anwendungskonfigurationen die Werte an, die für die aktuelle Bereitstellung verwendet werden sollen.
+     - **Speicherkonfiguration**: Sehen Sie sich die Informationen zu den Anwendungsordnern an, die für die persistente Speicherung konfiguriert wurden.
 
-    ![Screenshot: Bereitstellungskonfiguration für die App](./media/tutorial-containerize-apps-aks/deploy-aspnet-app-config.png)
+    ![Screenshot: Bereitstellungskonfiguration](./media/tutorial-containerize-apps-aks/deploy-aspnet-app-config.png)
 
-5. **App bereitstellen**: Sobald die Bereitstellungskonfiguration für die App gespeichert wurde, generiert das Tool die Kubernetes-Bereitstellungsdatei (YAML) für diese.
-     - Klicken Sie auf **Überprüfen**, um die Bereitstellungskonfiguration für die Anwendungen zu überprüfen.
-     - Wählen Sie die bereitzustellende App aus.
-     - Klicken Sie auf **Bereitstellen**, um mit der Bereitstellung der ausgewählten Apps zu beginnen.
+5. Nachdem Sie die Bereitstellungskonfiguration für die Anwendung gespeichert haben, generiert das Tool die Kubernetes-Bereitstellungsdatei mit dem YAML-Code für die Anwendung.
+     - Wähen Sie **Review** (Überprüfen) aus, um die Bereitstellungskonfiguration für die Anwendungen zur Überprüfung anzuzeigen.
+     - Wählen Sie die Anwendungen aus, die Sie bereitstellen möchten.
+     - Wählen Sie **Deploy** (Bereitstellen) aus, um die Bereitstellung für die ausgewählten Anwendungen zu starten.
 
-         ![Screenshot: Bereitstellungskonfiguration für die App](./media/tutorial-containerize-apps-aks/deploy-java-app-deploy.png)
+         ![Screenshot: Schaltfläche „Deploy“ (Bereitstellen)](./media/tutorial-containerize-apps-aks/deploy-java-app-deploy.png)
 
-     - Nachdem die App bereitgestellt wurde, können Sie auf die Spalte *Bereitstellungsstatus* klicken, um die Ressourcen nachzuverfolgen, die für die App bereitgestellt wurden.
+     - Nachdem die Anwendung bereitgestellt wurde, können Sie die Spalte **Deployment status** (Bereitstellungsstatus) auswählen, um die Ressourcen nachzuverfolgen, die für die Anwendung bereitgestellt wurden.
 
 
-## <a name="troubleshoot-issues"></a>Behandeln von Problemen
+## <a name="troubleshoot-problems"></a>Behandeln von Problemen
 
-Wenn Sie Probleme mit dem Tool behandeln müssen, sollten Sie sich die Protokolldateien auf dem Windows-Computer ansehen, auf dem das App-Containerisierungstool ausgeführt wird. Die Protokolldateien für das Tool befinden sich im Ordner *C:\ProgramData\Microsoft Azure Migrate App Containerization\Logs*.
+Wenn Sie Probleme mit dem Anwendungscontainerisierungstool behandeln müssen, können Sie sich die Protokolldateien auf dem Windows-Computer ansehen, auf dem das Tool ausgeführt wird. Die Protokolldateien für das Tool befinden sich unter *C:\ProgramData\Microsoft Azure Migrate App Containerization\Logs*.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Das Containerisieren von ASP.NET Web-Apps und das Bereitstellen dieser Apps in Windows-Containern in AKS. [Weitere Informationen](./tutorial-app-containerization-aspnet-kubernetes.md)
-- Das Containerisieren von Java-Web-Apps unter Apache Tomcat (auf Linux-Servern) und das Bereitstellen dieser Apps in Linux-Containern in AKS. [Weitere Informationen](./tutorial-app-containerization-java-kubernetes.md)
-- Containerisieren von Java-Web-Apps unter Apache Tomcat (auf Linux-Servern) und Bereitstellen dieser Apps in Linux-Containern in App Service. [Weitere Informationen](./tutorial-app-containerization-java-app-service.md)
+- [Containerisieren und Migrieren von ASP.NET-Apps zu Azure Kubernetes Service](./tutorial-app-containerization-aspnet-kubernetes.md)
+- [Containerisieren und Migrieren von Java-Web-Apps zu Azure Kubernetes Service](./tutorial-app-containerization-java-kubernetes.md)
+- [Containerisieren und Migrieren von Java-Web-Apps zu Azure App Service](./tutorial-app-containerization-java-app-service.md)

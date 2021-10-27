@@ -11,12 +11,12 @@ author: justinha
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: ff38cf413f6e1812c72d410c31088b965af1b3dd
-ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+ms.openlocfilehash: a2b716d2b0187e90e71156f2259a380d6fde7db4
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123213919"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130073257"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>Tutorial: Aktivieren des Rückschreibens von Azure Active Directory-Self-Service-Kennzurücksetzungen in eine lokale Umgebung
 
@@ -92,7 +92,7 @@ Kennwortrichtlinien in der lokalen AD DS-Umgebung verhindern unter Umständen, 
 Warten Sie beim Aktualisieren der Gruppenrichtlinie, bis die aktualisierte Richtlinie repliziert wurde, oder verwenden Sie den Befehl `gpupdate /force`.
 
 > [!Note]
-> Damit Kennwörter sofort geändert werden können, muss für das Kennwortrückschreiben die Einstellung „0“ festgelegt werden. Wenn sich Benutzer aber an die lokalen Richtlinien halten und *Minimales Kennwortalter* auf einen höheren Wert als „0“ festgelegt ist, funktioniert das Kennwortrückschreiben auch nach dem Auswerten der lokalen Richtlinien noch.
+> Damit Kennwörter sofort geändert werden können, muss für *Mindestalter für Kennwörter* die Einstellung „0“ festgelegt werden. Wenn sich Benutzer aber an die lokalen Richtlinien halten und *Minimales Kennwortalter* auf einen höheren Wert als „0“ festgelegt ist, funktioniert das Kennwortrückschreiben auch nach dem Auswerten der lokalen Richtlinien noch.
 
 ## <a name="enable-password-writeback-in-azure-ad-connect"></a>Aktivieren des Kennwortrückschreibens in Azure AD Connect
 

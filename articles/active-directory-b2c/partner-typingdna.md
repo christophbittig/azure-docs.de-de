@@ -3,19 +3,19 @@ title: Verwenden von TypingDNA mit Azure Active Directory B2C
 titleSuffix: Azure AD B2C
 description: Erfahren Sie, wie Sie TypingDNA in die Azure AD B2C-Authentifizierung integrieren, um die Identitätsüberprüfung basierend auf Benutzereingabemustern zu unterstützen. TypingDNA bietet ID-Überprüfungslösungen, die eine mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) erzwingen und unterstützt Sie bei der Einhaltung von SCA-Anforderungen für die Zahlungsdiensterichtlinie PSD2 (Payment Services Directive 2).
 author: gargi-sinha
-manager: celestedg
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 06/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: afaac48d263082a17c7ba58996f4000366de0211
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.openlocfilehash: 7c580974206a5eb4186180c997a33a5be2d02090
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107256547"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130035788"
 ---
 # <a name="tutorial-for-configuring-typingdna-with-azure-active-directory-b2c"></a>Tutorial zum Konfigurieren von TypingDNA mit Azure Active Directory B2C
 

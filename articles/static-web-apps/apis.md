@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 08/24/2021
 ms.author: cshoe
-ms.openlocfilehash: 95e180d34577f94f96b3e35c1f2432d85eb946a9
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 15df9d0bf25739fd1271f0f51f693e1a1d368637
+ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129361417"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130138444"
 ---
 # <a name="api-support-in-azure-static-web-apps-with-azure-functions"></a>API-Unterstützung in Azure Static Web Apps mit Azure Functions
 
@@ -22,7 +22,7 @@ Von Azure Static Web Apps werden serverlose API-Endpunkte über [Azure Functions
 
 - **Nahtloses Routing**, durch das die _API-Route_ ganz ohne benutzerdefinierte CORS-Regeln auf sichere Weise für die Web-App verfügbar gemacht wird
 
-Azure Static Web Apps-APIs werden von zwei möglichen Konfigurationen unterstützt:
+Azure Static Web Apps-APIs werden je nach [Hostingplan](plans.md#features) von zwei möglichen Konfigurationen unterstützt:
 
 - **Verwaltete Funktionen**: Standardmäßig ist die API einer statischen Web-App eine Azure Functions-Anwendung, die von Azure Static Web Apps verwaltet und bereitgestellt wird, was mit ein paar Einschränkungen einhergeht.
 

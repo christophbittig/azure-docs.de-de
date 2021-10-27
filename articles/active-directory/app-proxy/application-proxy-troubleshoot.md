@@ -3,20 +3,20 @@ title: Behandeln von Problemen mit dem Azure Active Directory-Anwendungsproxy
 description: Hier wird die Problembehandlung von Azure Active Directory-Anwendungsproxys behandelt.
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-proxy
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 04/27/2021
+ms.date: 10/12/2021
 ms.author: kenwith
-ms.reviewer: japere
-ms.openlocfilehash: 798f381ef067af174370fb21893c32386390449a
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.reviewer: ashishj
+ms.openlocfilehash: 12a07bb3dca953d134f3532701521ae4797358ef
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129617281"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129988599"
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>Beheben von Problemen mit Anwendungsproxys und Fehlermeldungen
 
@@ -36,7 +36,7 @@ Wenn Sie beispielsweise den Pfad `https://yourapp/app` veröffentlichen, die Anw
 
 ## <a name="connector-errors"></a>Connectorfehler
 
-Wenn während der Connector-Installation durch den Assistenten ein Fehler bei der Registrierung auftritt, haben Sie zwei Möglichkeiten, um den Grund dafür anzuzeigen. Sehen Sie entweder im Ereignisprotokoll unter **Anwendungs- und Dienstprotokolle\Microsoft\AadApplicationProxy\Connector\Admin** nach, oder führen Sie den folgenden Windows PowerShell-Befehl aus:
+Wenn während der Connector-Installation durch den Assistenten ein Fehler bei der Registrierung auftritt, haben Sie zwei Möglichkeiten, um den Grund dafür anzuzeigen. Schauen Sie entweder im Ereignisprotokoll unter **Windows Logs\Application** (Filter nach Quelle = "Microsoft AAD Application Proxy Connector" , oder führen Sie den folgenden Windows PowerShell-Befehl aus:
 
 ```powershell
 Get-EventLog application –source "Microsoft AAD Application Proxy Connector" –EntryType "Error" –Newest 1

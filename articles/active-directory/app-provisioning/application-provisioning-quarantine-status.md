@@ -3,7 +3,7 @@ title: Quarantänestatus bei der Azure Active Directory-Anwendungsbereitstellung
 description: Wenn Sie eine Anwendung für die automatische Benutzerbereitstellung konfiguriert haben, lesen Sie diesen Artikel, um zu erfahren, was der Bereitstellungsstatus „Quarantäne“ bedeutet und wie Sie ihn löschen können.
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 05/11/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: c3cdf8ab99506afd644d59fa8e74ed59fa1af853
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: f18fa1af869f0335214cff5725bbc7e6dc1293ea
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109783169"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129991658"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>Anwendungsbereitstellung im Quarantänestatus
 
@@ -71,7 +71,7 @@ Ein Auftrag kann unabhängig von der Anzahl von Fehlern, z. B. in Verbindung mi
 - Wenn bei mehr als 40 % der Bereitstellungsereignisse Fehler auftreten oder mehr als 40.000 Fehler auftreten, wird der Bereitstellungsauftrag unter Quarantäne gestellt. Verweisfehler werden nicht als Teil des Schwellenwerts von 40 % oder des 40.000-Schwellenwerts gezählt. Ein Fehler beim Aktualisieren eines Managers oder eines Gruppenmitglieds ist beispielsweise ein Verweisfehler.
 - Ein Auftrag, bei dem die Bereitstellung bei 45.000 Benutzern erfolglos verlief, würde zur Quarantäne führen, weil er den 40.000-Schwellenwert überschreitet.
 - Ein Auftrag, bei dem die Bereitstellung bei 30.000 Benutzern erfolglos verlief und bei 5.000 erfolgreich war, würde zu einer Quarantäne führen, weil er den Schwellenwert von 40 % und einem Minimum von 5.000 überschreitet.
-- Ein Auftrag mit 20.000 Fehlern und 100.000 Erfolgen würde nicht unter Quarantäne gestellt, weil er den Fehlerschwellenwert von 40 % oder den Höchstwert von 40.000 nicht überschreitet.  
+- Ein Auftrag mit 20.000 Fehlern und 100.000 Erfolgen würde nicht unter Quarantäne gestellt, weil er den Fehlerschwellenwert von 40 % oder den Höchstwert von 40.000 Fehlern nicht überschreitet.  
 - Bei einem absoluten Schwellenwert von 60.000 Fehlern werden sowohl Verweis- als auch Nicht-Verweisfehler berücksichtigt. Beispiel: Die Bereitstellung konnte für 40.000 Benutzer nicht durchgeführt werden, und bei 21.000 Managerupdates ist ein Fehler aufgetreten. Die Summe beträgt 61.000 Fehler und überschreitet den Grenzwert von 60.000.
 
 

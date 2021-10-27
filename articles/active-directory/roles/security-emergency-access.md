@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f840d72698790be10630fe182f4655554ff23962
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 115b0c01fd80b3c0542ee9ef1ce152b06c880599
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124748376"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129993471"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Verwalten von Konten für den Notfallzugriff in Azure AD
 
@@ -97,7 +97,29 @@ Organisationen sollten die von den Notfallkonten ausgehenden Anmelde- und Überw
     1. Geben Sie unter **Suchabfrage** die folgende Abfrage ein, und fügen Sie die Objekt-IDs der beiden Konten für den Notfallzugriff ein.
         > [!NOTE]
         > Fügen Sie für jedes weitere Konto für den Notfallzugriff, das Sie einschließen möchten, ein weiteres „or UserId == "ObjectGuid"“ in die Abfrage ein.
-
+                
+        Beispielabfragen:
+        ```kusto
+        // Search for a single Object ID (UserID)
+        SigninLogs
+        | project UserId 
+        | where UserId == "f66e7317-2ad4-41e9-8238-3acf413f7448"
+        ```
+        
+         ```kusto
+        // Search for multiple Object IDs (UserIds)
+        SigninLogs
+        | project UserId 
+        | where UserId == "f66e7317-2ad4-41e9-8238-3acf413f7448" or UserId == "0383eb26-1cbc-4be7-97fd-e8a0d8f4e62b"
+        ```
+        
+        ```kusto
+        // Search for a single UserPrincipalName
+        SigninLogs
+        | project UserPrincipalName 
+        | where UserPrincipalName == "user@yourdomain.onmicrosoft.com"
+        ```
+        
         ![Hinzufügen der Objekt-IDs der Konten für den Notfallzugriff zu einer Warnungsregel](./media/security-emergency-access/query-image1.png)
 
     1. Geben Sie unter **Warnungslogik** Folgendes ein:

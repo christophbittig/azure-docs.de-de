@@ -7,19 +7,19 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 06/16/2021
+ms.date: 10/13/2021
 ms.author: banders
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: b8b59db6b73cdc2ecae3ca60741a892580162602
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 01261b31f1c471d030ddb095fba1fd1d7b5e2e0b
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112287753"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129998454"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>Zahlen für Ihr Azure-Abonnement auf Rechnung
 
-Dieser Artikel gilt für Kunden mit einer Microsoft-Kundenvereinbarung (Microsoft Customer Agreement, MCA), die sich über die Azure-Website für Azure registriert haben. [Überprüfen des Zugriffs auf eine Microsoft-Kundenvereinbarung](#check-access-to-a-microsoft-customer-agreement) Wenn Sie sich über einen Microsoft-Vertreter für Azure registriert haben, ist die Standardzahlungsmethode bereits auf *Scheck oder Überweisung* festgelegt.
+Dieser Artikel gilt für Kunden mit einer Microsoft-Kundenvereinbarung (Microsoft Customer Agreement, MCA) sowie für Kunden, die sich über die Azure-Website für Azure angemeldet haben (für ein Microsoft Online Services-Programmkonto, das auch als Konto mit nutzungsbasierter Bezahlung bezeichnet wird). [Überprüfen des Zugriffs auf eine Microsoft-Kundenvereinbarung](#check-access-to-a-microsoft-customer-agreement) Wenn Sie sich über einen Microsoft-Vertreter für Azure registriert haben, ist die Standardzahlungsmethode bereits auf *Scheck oder Überweisung* festgelegt.
 
 Wenn Sie zur Zahlung auf Rechnung wechseln, bedeutet dies, dass Sie Ihre Rechnung innerhalb von 30 Tagen nach dem Rechnungsdatum per Scheck bzw. Überweisung bezahlen. Um Ihr Azure-Abonnement auf Rechnung bezahlen zu können, senden Sie einen entsprechenden Antrag an den Azure-Support. Nachdem Ihr Antrag genehmigt wurde, können Sie im Azure-Portal zur Zahlung per Rechnung (Scheck/Überweisung) wechseln.
 
@@ -68,7 +68,7 @@ Wenn Sie aufgrund der Höhe des Guthabens, das Sie benötigen, eine Guthabenprü
 
 Nachdem Sie die Genehmigung für die Zahlung per Rechnung erhalten haben, können Sie im Azure-Portal zur Zahlung per Rechnung (Scheck/Überweisung) wechseln.
 
-Wenn Sie über ein Microsoft Online Services-Programmkonto verfügen, können Sie Ihr Azure-Abonnement auf Scheck/Überweisung umstellen. Bei einer Microsoft-Kundenvereinbarung können Sie Ihr Abrechnungsprofil auf Scheck/Überweisung umstellen.
+Wenn Sie über ein Microsoft Online Services-Programmkonto (Konto mit nutzungsbasierter Bezahlung) verfügen, können Sie Ihr Azure-Abonnement auf Scheck/Überweisung umstellen. Bei einer Microsoft-Kundenvereinbarung können Sie Ihr Abrechnungsprofil auf Scheck/Überweisung umstellen.
 
 ### <a name="switch-azure-subscription-to-checkwire-transfer"></a>Umstellen des Azure-Abonnements auf Scheck/Überweisung
 

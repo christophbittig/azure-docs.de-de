@@ -7,7 +7,7 @@ ms.author: wesmc
 ms.service: iot-hub
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 06/21/2019
+ms.date: 10/13/2021
 ms.custom:
 - mvc
 - mqtt
@@ -15,12 +15,12 @@ ms.custom:
 - 'Role: IoT Device'
 - devx-track-js
 - devx-track-azurecli
-ms.openlocfilehash: 7dbc0404679927bcef1647dfdf46ce3360216a79
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 21055be377dff564753844e779cae287cab63b03
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98733299"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130176014"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
@@ -261,7 +261,7 @@ az group delete --name tutorial-iot-hub-rg
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial wurde beschrieben, wie Sie Statusinformationen zwischen Ihren Geräten und Ihrem IoT Hub synchronisieren. Fahren Sie mit dem nächsten Tutorial fort, in dem beschrieben wird, wie Sie Gerätezwillinge zum Implementieren eines Prozesses zur Aktualisierung der Firmware verwenden.
+In diesem Tutorial wurde beschrieben, wie Sie Statusinformationen zwischen Ihren Geräten und Ihrem IoT Hub synchronisieren. Im nächsten Tutorial wird beschrieben, wie Sie Gerätezwillinge zum Implementieren eines Prozesses zur Geräteaktualisierung verwenden.
 
 > [!div class="nextstepaction"]
-> [Implementieren eines Updateprozesses für die Gerätefirmware](tutorial-firmware-update.md)
+> [Device Update for Azure IoT Hub unter Verwendung des Raspberry Pi 3 B+-Referenzimages](../iot-hub-device-update/device-update-raspberry-pi.md)

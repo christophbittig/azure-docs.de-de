@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/09/2021
 ms.reviewer: cynthn, jushiman
 ms.custom: template-how-to
-ms.openlocfilehash: fe50e8db24f0f280365e435d8a205e9b45ac6ccb
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: b2fa87d140a9a86c3ced814d15a3898b34c9d4d1
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124774486"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130072934"
 ---
 # <a name="on-demand-capacity-reservation-preview"></a>Reservierung von Bedarfskapazitäten (Vorschau)
 
@@ -38,54 +38,6 @@ Sobald Azure eine Reservierungsanforderung akzeptiert, kann sie von VMs mit ents
 
 > [!NOTE]
 > Die Kapazitätsreservierung enthält auch die Azure-Verfügbarkeits-SLA für die Verwendung mit virtuellen Computern. Die SLA wird während der öffentlichen Vorschau nicht erzwungen und erst definiert, wenn die Kapazitätsreservierung allgemein verfügbar ist.
-
-
-## <a name="register-for-capacity-reservation"></a>Registrieren für die Kapazitätsreservierung 
-
-Bevor Sie das Feature zur Kapazitätsreservierung verwenden können, müssen Sie Ihr Abonnement für die Vorschauversion registrieren. Die Registrierung kann mehrere Minuten dauern. Sie können die Azure CLI oder PowerShell verwenden, um die Featureregistrierung abzuschließen.
-
-### <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/cli1)
-
-1. Verwenden Sie [az feature register](/cli/azure/feature#az_feature_register), um die Vorschauversion für Ihr Abonnement zu aktivieren:
-
-    ```azurecli-interactive
-    az feature register --namespace Microsoft.Compute --name CapacityReservationPreview
-    ```
-
-1. Die Featureregistrierung kann bis zu 15 Minuten dauern. Überprüfen des Registrierungsstatus:
-
-    ```azurecli-interactive
-    az feature show --namespace Microsoft.Compute --name CapacityReservationPreview
-    ```
-
-1. Schließen Sie den Aktivierungsvorgang ab, nachdem Sie das Feature für Ihr Abonnement registriert haben, indem Sie die Änderung an den Computeressourcenanbieter weitergeben:
-
-    ```azurecli-interactive
-    az provider register --namespace Microsoft.Compute
-    ``` 
-
-### <a name="powershell"></a>[PowerShell](#tab/powershell1)
-
-1. Verwenden Sie das Cmdlet [Register-AzProviderFeature](/powershell/module/az.resources/register-azproviderfeature), um die Vorschauversion für Ihr Abonnement zu aktivieren:
-
-    ```powershell-interactive
-    Register-AzProviderFeature -FeatureName CapacityReservationPreview -ProviderNamespace Microsoft.Compute
-    ``` 
-
-1. Die Featureregistrierung kann bis zu 15 Minuten dauern. Überprüfen des Registrierungsstatus:
-
-    ```powershell-interactive
-    Get-AzProviderFeature -FeatureName CapacityReservationPreview -ProviderNamespace Microsoft.Compute
-    ``` 
-
-1. Schließen Sie den Aktivierungsvorgang ab, nachdem Sie das Feature für Ihr Abonnement registriert haben, indem Sie die Änderung an den Computeressourcenanbieter weitergeben:
-
-    ```powershell-interactive
-    Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
-    ``` 
-
---- 
-<!-- The three dashes above show that your section of tabbed content is complete. Don't remove them :) -->
 
 ## <a name="benefits-of-capacity-reservation"></a>Vorteile der Kapazitätsreservierung 
 
@@ -120,6 +72,18 @@ Kapazitätsreservierungen werden mit der gleichen Rate wie die zugrunde liegende
 Wenn Sie dann eine D2s_v3-VM bereitstellen und die Reservierung als Eigenschaft angeben, wird die Kapazitätsreservierung verwendet. Sobald sie verwendet wird, zahlen Sie nur für die VM. Es entstehen keine Extrakosten für die Kapazitätsreservierung. Angenommen, Sie stellen fünf D2s_v3-VMs für die zuvor erwähnte Kapazitätsreservierung bereit. Es wird eine Rechnung für 5 D2s_v3-VMs und 5 ungenutzte Kapazitätsreservierungen angezeigt, die beide zum gleichen Tarif wie eine D2s_v3-VM berechnet werden.    
 
 Sowohl die verwendete als auch die nicht verwendete Kapazitätsreservierung ist für Laufzeitrabatte für reservierte Instanzen berechtigt. Wenn Sie im Beispiel oben reservierte Instanzen für 2 D2s_v3-VMs in derselben Azure-Region haben, wird die Abrechnung für 2 Ressourcen (entweder VM oder ungenutzte Kapazitätsreservierung) auf Null gesetzt, und Sie zahlen nur für die restlichen 8 Ressourcen (d. h. 5 ungenutzte Kapazitätsreservierungen und 3 D2s_v3-VMs). In diesem Fall können die Laufzeitrabatte entweder auf die VM oder auf die ungenutzte Kapazitätsreservierung angewendet werden, die beide zum gleichen PAYG-Tarif in Rechnung gestellt werden. 
+
+## <a name="difference-between-on-demand-capacity-reservation-and-reserved-instances"></a>Unterschied zwischen On-Demand-Kapazitätsreservierung und reservierten Instanzen 
+
+
+| Unterschiede | On-demand-Kapazitätsreservierung | Reservierte Instanzen|
+|---|---|---|
+| Begriff | Keine Laufzeitverpflichtung erforderlich. Kann je nach Bedarf des Kunden erstellt und gelöscht werden | Feste Laufzeit von entweder einem Jahr oder drei Jahren|
+| Rabatt bei der Rechnungsstellung | Abrechnung zum Pay-as-you-go-Tarif für die zugrunde liegende VM-Größe* | Erhebliche Kosteneinsparungen gegenüber Pay-as-you-go-Tarifen |
+| Kapazitäts-SLA | Bietet eine Kapazitätsgarantie an einem bestimmten Standort (Region oder Verfügbarkeitszone) | Bietet keine Kapazitätsgarantie. Kunden können "Kapazitätspriorität" wählen, um einen besseren Zugang zu erhalten, aber diese Option ist nicht mit einer SLA verbunden. |
+| Region vs. Availability Zones | Kann pro Region oder pro Verfügbarkeitszone eingesetzt werden | Nur auf regionaler Ebene verfügbar |
+
+*Berechtigt zu einem Rabatt für Reserved Instances, wenn separat erworben
 
 
 ## <a name="work-with-capacity-reservation"></a>Arbeiten mit Kapazitätsreservierung 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/15/2021
 ms.author: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c4a9afd9e2470085509c809153fd2abd9a63c27
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 467c5ad44b38e237b1ad9b947f438dcef1006750
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124796436"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130038838"
 ---
 # <a name="security-operations-for-privileged-accounts"></a>Sicherheitsvorgänge für privilegierte Konten
 
@@ -36,7 +36,7 @@ Sie sind in vollem Umfang für alle Sicherheitsebenen Ihrer lokalen IT-Umgebung 
 
 ## <a name="where-to-look"></a>Zu verwendende Ressourcen
 
-Zur Untersuchung und Überwachung werden folgende Protokolldateien verwendet: 
+Zur Untersuchung und Überwachung verwenden Sie die folgenden Protokolldateien: 
 
 * [Azure AD-Überwachungsprotokolle](../reports-monitoring/concept-audit-logs.md)
 
@@ -52,7 +52,7 @@ Im Azure-Portal können Sie die Azure AD-Überwachungsprotokolle anzeigen und a
 
 * [Azure Event Hubs](../../event-hubs/event-hubs-about.md) integriert in ein SIEM-System: [Azure AD-Protokolle können über die Azure Event Hub-Integration in andere SIEM-Systeme](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) wie Splunk, ArcSight, QRadar und Sumo Logic übertragen werden.
 
-* [Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) (MCAS): Ermöglicht Ihnen das Entdecken und Verwalten von Apps, eine apps- und ressourcenübergreifende Governance und das Überprüfen der Konformität Ihrer Cloud-Apps. 
+* [Microsoft Cloud App Security (MCAS)](/cloud-app-security/what-is-cloud-app-security): Ermöglicht das Entdecken und Verwalten von Apps, eine App- und ressourcenübergreifende Steuerung sowie Konformitätsprüfungen Ihrer Cloud-Apps. 
 
 * Microsoft Graph: Sie können die Daten exportieren und mit Microsoft Graph weitere Analysen durchführen. Weitere Informationen zu Microsoft Graph finden Sie unter [Azure Active Directory Identity Protection und das Microsoft Graph PowerShell SDK](../identity-protection/howto-identity-protection-graph-api.md). 
 

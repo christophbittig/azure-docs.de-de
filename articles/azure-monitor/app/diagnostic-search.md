@@ -3,16 +3,16 @@ title: Verwenden von Search in Azure Application Insights | Microsoft-Dokumentat
 description: Durchsuchen und filtern Sie unformatierte Telemetriedaten, die von Ihrer Web-App gesendet werden.
 ms.topic: conceptual
 ms.date: 07/30/2019
-ms.openlocfilehash: 020e602ec52c40c66439df09275f7d4936a57229
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 8a025210fc399c1d36fa416c3a4795331eca2293
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112293075"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130134201"
 ---
 # <a name="using-search-in-application-insights"></a>Verwenden von Search in Application Insights
 
-Search ist eine Funktion in [Application Insights](./app-insights-overview.md), mit der Sie einzelne Telemetrieelemente wie Seitenaufrufe, Ausnahmen und Webanforderungen suchen und untersuchen können. Außerdem können Sie Protokollablaufverfolgungen und Ereignisse anzeigen, die Sie programmiert haben.
+Die Transaktionssuche ist eine Funktion von [Application Insights](./app-insights-overview.md), mit der Sie einzelne Telemetrieelemente wie Seitenaufrufe, Ausnahmen oder Webanfragen finden und untersuchen können. Außerdem können Sie Protokollablaufverfolgungen und Ereignisse anzeigen, die Sie programmiert haben.
 
 (Verwenden Sie [Analytics](../logs/log-analytics-tutorial.md) zum Anwenden komplexerer Abfragen auf Ihre Daten.)
 
@@ -20,7 +20,7 @@ Search ist eine Funktion in [Application Insights](./app-insights-overview.md), 
 
 ### <a name="in-the-azure-portal"></a>Im Azure-Portal
 
-Sie können die Diagnosesuche über die Application Insights-Registerkarte „Übersicht“ Ihrer Anwendung (auf der oberen Leiste) oder über die Option „Untersuchen“ auf der linken Seite öffnen.
+Sie können die Transaktionssuche über die Registerkarte "Application Insights Overview" Ihrer Anwendung (in der oberen Leiste) oder unter "Investigate" auf der linken Seite öffnen.
 
 ![Registerkarte „Suche“](./media/diagnostic-search/view-custom-events.png)
 

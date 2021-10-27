@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: overview
-ms.date: 07/13/2021
+ms.date: 10/13/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 357049d855aacbacb4b1455304e4fb84565bfb27
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 8c633d162803b6c0f617c3bcaafc9907a559ef32
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113759820"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130070354"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Was ist der Gastzugriff in Azure Active Directory-B2B?
 
@@ -26,7 +26,7 @@ Die B2B-Zusammenarbeit (Business-to-Business) von Azure Active Directory (Azure�
 >
 > - Wenn Azure AD B2B-Kunden ab dem **12. Juli 2021** neue Google-Integrationen für die Self-Service-Registrierung für ihre benutzerdefinierten oder branchenspezifischen Anwendungen einrichten, funktioniert die Authentifizierung mit Google-Identitäten erst, wenn Authentifizierungen in die Systemwebansichten verschoben werden. [Weitere Informationen](google-federation.md#deprecation-of-web-view-sign-in-support)
 > - Ab dem **30. September 2021** wird Google die [Unterstützung für die Anmeldung in der eingebetteten Webansicht einstellen](https://developers.googleblog.com/2016/08/modernizing-oauth-interactions-in-native-apps.html). Wenn Ihre Apps Benutzer mit einer eingebetteter Webansicht authentifizieren und Sie den Google-Verbund mit [ Azure AD B2C](../../active-directory-b2c/identity-provider-google.md) oder Azure AD B2B für [externe Benutzereinladungen](google-federation.md) oder die [Self-Service-Registrierung](identity-providers.md) verwenden, werden sich Google Gmail-Benutzer nicht authentifizieren können. [Weitere Informationen](google-federation.md#deprecation-of-web-view-sign-in-support)
-> - **Ab Oktober 2021** wird das Einlösen von Einladungen durch die Erstellung von nicht verwalteten Azure AD-Konten und -Mandanten für B2B Collaboration-Szenarien von Microsoft nicht mehr unterstützt. Zur Vorbereitung hierauf wird Kunden die allgemein verfügbare [Authentifizierung mit Einmalkennung per E-Mail](one-time-passcode.md) empfohlen.
+> - **Ab dem 1. November 2021** unterstützt Microsoft nicht mehr das Einlösen von Einladungen durch die Erstellung von nicht verwalteten Azure AD-Konten und -Mandanten für B2B-Zusammenarbeit. Zu diesem Zeitpunkt werden wir damit beginnen, die Einmalkennung per E-Mail für alle bestehenden Mandanten zu aktivieren und für neue Mandanten zur Standardeinstellung zu machen. Wenn Sie nicht möchten, dass diese Funktion automatisch aktiviert wird, können Sie sie [deaktivieren](one-time-passcode.md#disable-email-one-time-passcode).
 
 ## <a name="collaborate-with-any-partner-using-their-identities"></a>Zusammenarbeit mit jedem Partner über seine Identitäten
 

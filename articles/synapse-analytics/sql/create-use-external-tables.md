@@ -6,15 +6,15 @@ author: vvasic-msft
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql
-ms.date: 04/15/2020
+ms.date: 07/23/2021
 ms.author: vvasic
-ms.reviewer: jrasnick
-ms.openlocfilehash: 35a56131c55549cc5d33989579514fec3a0184c8
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.reviewer: jrasnick, wiassaf
+ms.openlocfilehash: 50464db5c62ffa0b5f6c48a323a9a23a43b06315
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123428234"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129994022"
 ---
 # <a name="create-and-use-native-external-tables-using-sql-pools-in-azure-synapse-analytics"></a>Erstellen und Verwenden nativer externer Tabellen mithilfe von SQL-Pools in Azure Synapse Analytics
 
@@ -25,7 +25,7 @@ Externe Tabellen sind nützlich, um den Zugriff auf externe Daten in einem Synap
 - Geschützter Speicher, in dem Benutzer mithilfe von SAS-Anmeldeinformationen, Azure AD-Identität oder verwalteter Identität des Synapse-Arbeitsbereichs auf Speicherdateien zugreifen.
 
 > [!NOTE]
->  In dedizierten SQL-Pools können Sie nur native externe Parquet-Tabellen verwenden. Native externe Parquet-Tabellen befinden sich in den dedizierten SQL-Pools in der eingeschränkten öffentlichen Vorschauphase, weil dieses Feature noch immer nicht in allen Regionen verfügbar ist. Wenden Sie sich an Ihren Microsoft Technical Account Manager/Cloud Solution Architect, wenn Sie der öffentlichen Vorschau beitreten und überprüfen möchten, ob Sie die native externe Parquet-Tabelle in Ihren dedizierten Pools verwenden können. Wenn Sie allgemein verfügbare Funktionen in dedizierten SQL-Pools verwenden möchten oder auf CSV- oder ORC-Dateien zugreifen müssen, nutzen Sie externe Hadoop-Tabellen. Native externe Tabellen sind in serverlosen SQL-Pools allgemein verfügbar.
+> In dedizierten SQL-Pools können Sie nur native externe Tabellen mit dem Parquet-Dateityp verwenden, und dieses Feature befindet sich in der **öffentlichen Vorschauphase**. Wenn Sie allgemein verfügbare Parquet-Lesefunktionen in dedizierten SQL-Pools verwenden möchten oder auf CSV- oder ORC-Dateien zugreifen müssen, nutzen Sie externe Hadoop-Tabellen. Native externe Tabellen sind in serverlosen SQL-Pools allgemein verfügbar.
 > Weitere Informationen zu den Unterschieden zwischen nativen externen Tabellen und externen Hadoop-Tabellen finden Sie unter [Verwenden externer Tabellen mit Synapse SQL](develop-tables-external-tables.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/22/2021
 ms.author: v-jansk
-ms.openlocfilehash: ae867a4383b5644eca2cabf2651c2c40797ed49a
-ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
+ms.openlocfilehash: 39173fbd5fd6725d8307d2e390bec6b397406cb7
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112540598"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130062688"
 ---
 # <a name="start-translation"></a>Starten der Übersetzung
 
@@ -25,7 +25,7 @@ Der Präfix- und Suffixfilter (falls angegeben) wird zum Filtern von Ordnern ver
 
 Glossare/Translation Memory können in die Anforderung aufgenommen werden und werden vom Dienst angewendet, wenn das Dokument übersetzt wird.
 
-Wenn das Glossar während der Übersetzung ungültig ist oder nicht erreichbar ist, wird im Dokumentstatus ein Fehler ausgegeben. Wenn am Ziel bereits eine Datei mit dem gleichen Namen vorhanden ist, wird sie überschrieben. Die Ziel-URL für die einzelnen Zielsprachen muss jeweils eindeutig sein.
+Wenn das Glossar während der Übersetzung ungültig ist oder nicht erreichbar ist, wird im Dokumentstatus ein Fehler ausgegeben. Wenn am Ziel bereits eine Datei mit dem gleichen Namen vorhanden ist, tritt beim Auftrag ein Fehler auf. Die Ziel-URL für die einzelnen Zielsprachen muss jeweils eindeutig sein.
 
 ## <a name="request-url"></a>Anfrage-URL
 

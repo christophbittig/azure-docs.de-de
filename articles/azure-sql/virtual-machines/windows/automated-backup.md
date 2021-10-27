@@ -3,7 +3,7 @@ title: Automatisierte Sicherung v2 für virtuelle Azure-Computer mit SQL Server 
 description: In diesem Artikel wird das Feature „Automatisierte Sicherung“ für in Azure ausgeführte VMs mit SQL Server 2016/2017 erläutert. Dieser Artikel bezieht sich speziell auf VMs, die das Resource Manager-Modell verwenden.
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: bluefooted
 tags: azure-resource-manager
 ms.assetid: ebd23868-821c-475b-b867-06d4a2e310c7
 ms.service: virtual-machines-sql
@@ -12,15 +12,15 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/03/2018
-ms.author: mathoma
-ms.reviewer: jroth
+ms.author: pamela
+ms.reviewer: mathoma
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a93214a8577dc298551e4e819282a58f10a72f38
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 047280e5db0ce67a80b44dee224196d2ac6668c4
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122347163"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130166236"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Automatisierte Sicherung v2 für virtuelle Azure-Computer (Resource Manager)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -112,8 +112,9 @@ Das nächste verfügbare Sicherungszeitfenster ist also am Montag ab 10 Uhr für
 
 Am Dienstag wird dann ab 10 Uhr erneut für sechs Stunden eine vollständige Sicherung aller Datenbanken durchgeführt.
 
+
 > [!IMPORTANT]
-> Bei der Planung täglicher Sicherungen empfiehlt sich die Verwendung eines großzügigen Zeitfensters, um sicherzustellen, dass alle Datenbanken gesichert werden können. Dies ist besonders wichtig, wenn große Datenmengen gesichert werden müssen.
+> Sicherungen werden in jedem Intervall sequenziell durchgeführt. Planen Sie für Instanzen mit einer großen Anzahl von Datenbanken das Sicherungsintervall mit ausreichend Zeit, um alle Sicherungen zu ermöglichen. Wenn Sicherungen innerhalb des angegebenen Intervalls nicht abgeschlossen werden können, werden möglicherweise einige Sicherungen übersprungen, und die Zeit zwischen den Sicherungen für eine einzelne Datenbank ist möglicherweise höher als die konfigurierte Sicherungsintervallzeit, was sich negativ auf die Restore Point Objective (RPO) auswirken könnte. 
 
 ## <a name="configure-new-vms"></a>Konfigurieren neuer VMs
 

@@ -2,93 +2,106 @@
 title: Linterregel – keine hartcodierte Umgebungs-URL
 description: Linterregel – keine hartcodierte Umgebungs-URL
 ms.topic: conceptual
-ms.date: 09/14/2021
-ms.openlocfilehash: d35736860dd672ffc00ea1d4cde52d8f4d4ef8c9
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/14/2021
+ms.openlocfilehash: 8bb3bbd4be61259d1a11184d879f737d970399cd
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128598436"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130165379"
 ---
 # <a name="linter-rule---no-hardcoded-environment-url"></a>Linterregel – keine hartcodierte Umgebungs-URL
 
-Der Linter vereinfacht das Erzwingen von Codierungsstandards, indem er während der Entwicklung Leitfäden bereitstellt. Der aktuelle Satz von Linterregeln ist minimal und stammt aus [arm-ttk-Testfällen](../templates/template-test-cases.md):
+Diese Regel findet alle fest kodierten URLs, die je nach Cloud-Umgebung variieren.
 
-- [no-hardcoded-env-urls](./linter-rule-no-hardcoded-environment-urls.md)
-- [no-unused-params](./linter-rule-no-unused-parameters.md)
-- [no-unused-vars](./linter-rule-no-unused-variables.md)
-- [prefer-interpolation](./linter-rule-prefer-interpolation.md)
-- [secure-parameter-default](./linter-rule-secure-parameter-default.md)
-- [simplify-interpolation](./linter-rule-simplify-interpolation.md)
-
-Weitere Informationen finden Sie unter [Verwenden von Biceps-Linter](./linter.md).
-
-## <a name="code"></a>Code
+## <a name="returned-code"></a>Zurückgegebener Code
 
 `no-hardcoded-env-urls`
 
-## <a name="description"></a>BESCHREIBUNG
+## <a name="solution"></a>Lösung
 
-Die Umgebungs-URLs in Ihrer Vorlage dürfen nicht hartcodiert werden. Verwenden Sie stattdessen die [Umgebungsfunktion](../templates/template-functions-deployment.md#environment), um diese URLs während der Bereitstellung dynamisch abzurufen. Eine Liste der blockierten URL-Hosts finden Sie in der Standardliste von `DisallowedHosts` in [bicepconfig.json](https://github.com/Azure/bicep/blob/main/src/Bicep.Core/Configuration/bicepconfig.json).
-
-## <a name="examples"></a>Beispiele
+Anstatt URLs in Ihrer Bicep-Datei fest zu kodieren, verwenden Sie die Funktion [environment](../templates/template-functions-deployment.md#environment), um diese URLs während der Bereitstellung dynamisch abzurufen. Die Umgebungsfunktion gibt je nach der Cloud-Umgebung, in der Sie bereitstellen, unterschiedliche URLs zurück.
 
 Im folgenden Beispiel ist der Test nicht erfolgreich, weil die URL hartcodiert ist.
 
 ```bicep
-var AzureURL = 'https://management.azure.com'
+var managementURL = 'https://management.azure.com'
 ```
 
 Der Test ist auch bei Verwendung von concat oder urinicht erfolgreich.
 
 ```bicep
-var AzureSchemaURL1 = concat('https://','gallery.azure.com')
-var AzureSchemaURL2 = uri('gallery.azure.com','test')
+var galleryURL1 = concat('https://','gallery.azure.com')
+var galleryURL2 = uri('gallery.azure.com','test')
 ```
 
-Im folgenden Beispiel ist der Test erfolgreich.
+Sie können das Problem beheben, indem Sie die fest codierte URL durch die Funktion `environment()` ersetzen.
 
 ```bicep
-var AzureSchemaURL = environment().gallery
+var galleryURL = environment().gallery
+```
+
+In einigen Fällen können Sie das Problem beheben, indem Sie eine Eigenschaft einer von Ihnen bereitgestellten Ressource abrufen. Anstatt beispielsweise den Endpunkt für Ihr Speicherkonto zu erstellen, rufen Sie ihn mit `.properties.primaryEndpoints` ab.
+
+```bicep
+param storageAccountName string
+
+resource sa 'Microsoft.Storage/storageAccounts@2021-04-01' = {
+  name: storageAccountName
+  location: 'westus'
+  sku: {
+    name: 'Standard_LRS'
+  }
+  kind: 'StorageV2'
+  properties: {
+    accessTier: 'Hot'
+  }
+}
+
+output endpoint string = sa.properties.primaryEndpoints.web
 ```
 
 ## <a name="configuration"></a>Konfiguration
 
-Der Satz von URL-Hosts, die nicht zugelassen werden sollen, kann mithilfe der Eigenschaft „disallowedHosts“ in der Datei "bicepconfig.json" wie folgt angepasst werden:
+Standardmäßig verwendet diese Regel die folgenden Einstellungen, um zu bestimmen, welche URLs nicht zulässig sind. 
 
 ```json
-{
-  "analyzers": {
-    "core": {
-      "enabled": true,
-      "rules": {
-        "no-hardcoded-env-urls": {
-          "level": "warning",
-          "disallowedHosts": [
-            "gallery.azure.com",
-            "management.core.windows.net",
-            "management.azure.com",
-            "database.windows.net",
-            "core.windows.net",
-            "login.microsoftonline.com",
-            "graph.windows.net",
-            "trafficmanager.net",
-            "datalake.azure.net",
-            "azuredatalakestore.net",
-            "azuredatalakeanalytics.net",
-            "vault.azure.net",
-            "api.loganalytics.io",
-            "asazure.windows.net",
-            "region.asazure.windows.net",
-            "batch.core.windows.net"
-          ]
-        }
+"analyzers": {
+  "core": {
+    "verbose": false,
+    "enabled": true,
+    "rules": {
+      "no-hardcoded-env-urls": {
+        "level": "warning",
+        "disallowedhosts": [
+          "gallery.azure.com",
+          "management.core.windows.net",
+          "management.azure.com",
+          "database.windows.net",
+          "core.windows.net",
+          "login.microsoftonline.com",
+          "graph.windows.net",
+          "trafficmanager.net",
+          "datalake.azure.net",
+          "azuredatalakestore.net",
+          "azuredatalakeanalytics.net",
+          "vault.azure.net",
+          "api.loganalytics.io",
+          "asazure.windows.net",
+          "region.asazure.windows.net",
+          "batch.core.windows.net"
+        ],
+        "excludedhosts": [
+          "schema.management.azure.com"
+        ]
       }
     }
   }
 }
 ```
 
+Sie können sie anpassen, indem Sie eine bicepconfig.json-Datei hinzufügen und neue Einstellungen anwenden.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Verwendung von Visual Studio Code und der BICEP-Erweiterung finden Sie unter [Schnellstart: Erstellen von BICEP-Dateien mit Visual Studio Code](./quickstart-create-bicep-use-visual-studio-code.md).
+Weitere Informationen über den Linter finden Sie unter [Verwendung des Bicep-Linters](./linter.md).

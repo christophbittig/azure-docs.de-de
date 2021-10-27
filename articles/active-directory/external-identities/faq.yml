@@ -6,19 +6,19 @@ metadata:
   ms.service: active-directory
   ms.subservice: B2B
   ms.topic: reference
-  ms.date: 05/27/2021
+  ms.date: 10/13/2021
   ms.author: mimart
   author: msmimart
   manager: celestedg
   ms.reviewer: mal
   ms.custom: it-pro, seo-update-azuread-jan
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: 91048761eaaf81d2bdb582669e926cf106cdca4c
-  ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+  ms.openlocfilehash: a714fbb9f5483c8b52480d5fbe41229d655609c8
+  ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 06/10/2021
-  ms.locfileid: "111953457"
+  ms.lasthandoff: 10/15/2021
+  ms.locfileid: "130072555"
 title: Häufig gestellte Fragen zur Azure Active Directory B2B-Zusammenarbeit
 summary: >
   Diese häufig gestellten Fragen (FAQs) zur Azure AD B2B-Zusammenarbeit (Azure Active Directory Business-to-Business) werden regelmäßig mit neuen Themen aktualisiert.
@@ -28,7 +28,7 @@ summary: >
 
   > - **Am 4. Januar 2021** wird Google [die Unterstützung für die WebView-Anmeldung einstellen](https://developers.googleblog.com/2020/08/guidance-for-our-effort-to-block-less-secure-browser-and-apps.html). Wenn Sie einen Google-Verbund oder die Self-Service-Registrierung mit Gmail verwenden, sollten Sie [Ihre nativen Branchenanwendungen auf Kompatibilität testen](google-federation.md#deprecation-of-web-view-sign-in-support).
 
-  > - **Ab Oktober 2021** wird das Einlösen von Einladungen durch die Erstellung von nicht verwalteten Azure AD-Konten und -Mandanten für B2B Collaboration-Szenarien von Microsoft nicht mehr unterstützt. Zur Vorbereitung hierauf wird Kunden die allgemein verfügbare [Authentifizierung mit Einmalkennung per E-Mail](one-time-passcode.md) empfohlen.
+  > - **Ab dem 1. November 2021** unterstützt Microsoft nicht mehr das Einlösen von Einladungen durch die Erstellung von nicht verwalteten Azure AD-Konten und -Mandanten für B2B-Zusammenarbeit. Zu diesem Zeitpunkt werden wir damit beginnen, die Einmalkennung per E-Mail für alle bestehenden Mandanten zu aktivieren und für neue Mandanten zur Standardeinstellung zu machen. Wenn Sie nicht möchten, dass diese Funktion automatisch aktiviert wird, können Sie sie [deaktivieren](one-time-passcode.md#disable-email-one-time-passcode).
 sections:
 - name: Allgemein
   questions:
@@ -49,17 +49,17 @@ sections:
     answer: >
       Mithilfe der [B2B-Einladungs-APIs](customize-invitation-api.md) können Sie nahezu jedes Element des Einladungsprozesses anpassen.
   - question: >
-      Können Gastbenutzer ihre Multi-Factor Authentication-Methode zurücksetzen?
+      Können Gastbenutzer ihre MFA-Methode zurücksetzen?
     answer: >
-      Ja. Gastbenutzer können ihre Multi-Factor Authentication-Methode auf dieselbe Weise zurücksetzen wie normale Benutzer.
+      Ja. Gastbenutzer können ihre MFA-Methode auf dieselbe Weise zurücksetzen wie normale Benutzer.
   - question: >
-      Welche Organisation ist für Multi-Factor Authentication-Lizenzen verantwortlich?
+      Welche Organisation ist für MFA-Lizenzen verantwortlich?
     answer: >
-      Die einladende Organisation führt Multi-Factor Authentication durch. Die einladende Organisation muss sicherstellen, dass die Organisation genügend Lizenzen für B2B-Benutzer besitzt, die Multi-Factor Authentication verwenden.
+      Die einladende Organisation führt MFA durch. Die einladende Organisation muss sicherstellen, dass die Organisation genügend Lizenzen für B2B-Benutzer besitzt, die MFA verwenden.
   - question: >
-      Was geschieht, wenn eine Partnerorganisation bereits Multi-Factor Authentication eingerichtet hat? Können wir ihrer Multi-Factor Authentication vertrauen und auf die Verwendung unserer eigenen Multi-Factor Authentication verzichten?
+      Was geschieht, wenn eine Partnerorganisation bereits MFA eingerichtet hat? Können wir ihrer MFA vertrauen und auf die Verwendung unserer eigenen MFA verzichten?
     answer: >
-      Diese Funktion wird derzeit nicht unterstützt. Wenn für den Zugriff auf die Ressourcen Ihrer Organisation eine mehrstufige Authentifizierung erforderlich ist, muss sich die Partnerorganisation in Ihrer (der einladenden) Organisation für die mehrstufige Authentifizierung registrieren.
+      Diese Funktion wird derzeit nicht unterstützt. Wenn für den Zugriff auf die Ressourcen Ihrer Organisation MFA erforderlich ist, muss sich die Partnerorganisation in Ihrer (der einladenden) Organisation für MFA registrieren.
   - question: >
       Wie kann ich verzögerte Einladungen senden?
     answer: >
@@ -67,7 +67,7 @@ sections:
   - question: >
       Kann ich Gastbenutzer in der globalen Adressliste von Exchange sichtbar machen?
     answer: >
-      Ja. Gastobjekte sind in der globalen Adressliste (GAL) Ihrer Organisation standardmäßig nicht sichtbar. Sie können jedoch Azure Active Directory PowerShell verwenden, um diese sichtbar zu machen. Weitere Informationen finden Sie unter [Kann ich Gastobjekte in der globalen Adressliste sichtbar machen?](/office365/admin/create-groups/manage-guest-access-in-groups#add-guests-to-the-global-address-list)
+      Ja. Gastobjekte sind in der globalen Adressliste Ihres Unternehmens standardmäßig nicht sichtbar. Sie können jedoch Azure Active Directory PowerShell verwenden, um diese sichtbar zu machen. Weitere Informationen finden Sie im Artikel [Verhindern, dass Gäste einer bestimmten Microsoft 365-Gruppe oder einem Microsoft Teams-Team hinzugefügt werden](/microsoft-365/solutions/per-group-guest-access) unter „Hinzufügen von Gästen zur globalen Adressliste“.
   - question: >
       Kann ich einen Gastbenutzer in einen eingeschränkten Administrator konvertieren?
     answer: >
@@ -80,9 +80,9 @@ sections:
       Kann ich den Zugriff auf das Azure-Portal für Gastbenutzer sperren?
     answer: "Ja. Sie können eine Richtlinie für bedingten Zugriff erstellen, durch die der Zugriff auf das Azure-Portal für alle Gast- und externen Benutzer blockiert wird. Gehen Sie beim Konfigurieren dieser Richtlinie umsichtig vor, um zu vermeiden, dass versehentlich der Zugriff für Mitglieder und Administratoren gesperrt wird.\n\n1. Melden Sie sich am [Azure-Portal](https://portal.azure.com/) als Sicherheitsadministrator oder Administrator für bedingten Zugriff an.\n2. Wählen Sie im Azure-Portal die Option **Azure Active Directory** aus. \n3. Wählen Sie unter **Verwalten** die Option **Sicherheit** aus.\n4. Wählen Sie unter **Schützen** die Option **Bedingter Zugriff** aus. Wählen Sie **Neue Richtlinie**.\n5. Geben Sie auf der Seite **Neu** im Textfeld **Name** einen Namen für die Richtlinie ein (z. B. „Blockieren des Zugriffs auf das Portal durch Gastbenutzer“).\n6. Klicken Sie unter **Zuweisungen** auf **Benutzer und Gruppen**.\n7. Wählen Sie auf der Registerkarte **Einschließen** die Option **Benutzer und Gruppen auswählen** aus, und wählen Sie dann **Alle Gast- und externen Benutzer (Vorschau)** aus.\n9. Wählen Sie **Fertig** aus.\n10. Wählen Sie auf der Seite **Neu** im Abschnitt **Zuweisungen** die Option **Cloud-Apps oder -aktionen** aus.\n11. Wählen Sie auf der Seite **Cloud-Apps oder -aktionen** die Option **Apps auswählen** aus, und wählen Sie dann **Auswählen** aus.\n12. Wählen Sie auf der Seite **Auswählen** die Option **Microsoft Azure-Verwaltung** und dann **Auswählen** aus.\n13. Wählen Sie auf der Seite **Cloud-Apps oder -aktionen** die Option **Fertig** aus.\n"
   - question: >
-      Unterstützt die Azure AD B2B-Zusammenarbeit Multi-Factor Authentication und E-Mail-Konten für Consumer?
+      Unterstützt die Azure AD B2B-Zusammenarbeit MFA und E-Mail-Konten für Consumer?
     answer: >
-      Ja. Sowohl Multi-Factor Authentication als auch E-Mail-Konten für Consumer werden für die Azure AD B2B-Zusammenarbeit unterstützt.
+      Ja. Sowohl MFA als auch E-Mail-Konten für Consumer werden für die Azure AD B2B-Zusammenarbeit unterstützt.
   - question: >
       Wird die Kennwortzurücksetzung für Azure AD B2B-Zusammenarbeitsbenutzer unterstützt?
     answer: "Wenn Ihr Azure AD-Mandant das Basisverzeichnis für einen Benutzer ist, können Sie [das Kennwort des Benutzers über das Azure-Portal zurücksetzen](../fundamentals/active-directory-users-reset-password-azure-portal.md). Aber Sie können das Kennwort für einen Gastbenutzer nicht direkt zurücksetzen, wenn er sich mit einem Konto anmeldet, das von einem anderen Azure AD-Verzeichnis oder einem externen Identitätsanbieter verwaltet wird. Nur der Gastbenutzer oder ein Administrator im Basisverzeichnis des Benutzers kann das Kennwort zurücksetzen. Hier sind einige Beispiele für die Funktionsweise der Kennwortzurücksetzung für Gastbenutzer:\n \n* Gastbenutzer in einem Azure AD-Mandanten, die als „Gast“ (UserType==Guest) gekennzeichnet sind, können sich nicht über [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) für SSPR registrieren. Diese Art von Gastbenutzer kann SSPR nur über [https://aka.ms/sspr](https://aka.ms/sspr) ausführen. \n* Gastbenutzer, die sich mit einem Microsoft-Konto anmelden (z.B. guestuser@live.com), können ihre eigenen Kennwörter über die Self-Service-Kennwortzurücksetzung (SSPR) für Microsoft-Konten zurücksetzen. Informationen finden Sie unter [Zurücksetzen des Kennworts Ihres Microsoft-Kontos](https://support.microsoft.com/help/4026971/microsoft-account-how-to-reset-your-password).\n* Gastbenutzer, die sich mit einem Google-Konto oder einem anderen externen Identitätsanbieter anmelden, können ihre eigenen Kennwörter mit der SSPR-Methode ihres Identitätsanbieters zurücksetzen. Beispielsweise kann ein Gastbenutzer mit dem Google-Konto guestuser@gmail.com sein Kennwort mithilfe der Anweisungen in [Passwort ändern oder zurücksetzen](https://support.google.com/accounts/answer/41078) zurücksetzen.\n* Wenn der Identitätsmandant ein Just-In-Time-Mandant (JIT) oder ein „viraler“ Mandant ist (es sich also um einen separaten, nicht verwalteten Azure-Mandanten handelt), kann nur der Gastbenutzer sein Kennwort zurücksetzen. In einigen Fällen [übernimmt die Organisation die Verwaltung der viralen Mandanten](../enterprise-users/domains-admin-takeover.md), die erstellt werden, wenn Mitarbeiter ihre geschäftliche E-Mail-Adresse für die Anmeldung bei Diensten verwenden. Wenn die Organisation einen viralen Mandanten übernommen hat, kann nur ein Administrator in dieser Organisation das Kennwort des Benutzers zurücksetzen oder SSPR aktivieren. Bei Bedarf können Sie als einladende Organisation das Gastkonto für den Benutzer aus dem Verzeichnis entfernen und erneut eine Einladung senden.\n\n* Wenn das Basisverzeichnis des Gastbenutzers Ihr Azure AD-Mandant ist, können Sie das Kennwort des Benutzers zurücksetzen. Sie könnten beispielsweise einen Benutzer erstellen oder einen Benutzer über Ihr lokales Active Directory-Verzeichnis synchronisieren und „UserType“ auf „Gast“ festlegen. Da sich dieser Benutzer in Ihrem Verzeichnis befindet, können Sie sein Kennwort über das Azure-Portal zurücksetzen.\n"
@@ -119,12 +119,12 @@ sections:
       Welche Anwendungen und Dienste unterstützen Azure B2B-Gastbenutzer?
     answer: "Alle in Azure AD integrierten Anwendungen unterstützen Azure B2B-Gastbenutzer, aber sie müssen einen als Mandant eingerichteten Endpunkt verwenden, um Gastbenutzer zu authentifizieren. Sie müssen möglicherweise auch [die Ansprüche im SAML-Token anpassen](claims-mapping.md), das ausgegeben wird, wenn sich ein Gastbenutzer bei der App authentifiziert. \n"
   - question: >
-      Kann Multi-Factor Authentication für B2B-Gastbenutzer erzwungen werden, wenn unsere Partner nicht über Multi-Factor Authentication verfügen?
+      Kann MFA für B2B-Gastbenutzer erzwungen werden, wenn unsere Partner nicht über MFA verfügen?
     answer: >
       Ja. Weitere Informationen finden Sie unter [Bedingter Zugriff für Benutzer der B2B-Zusammenarbeit](conditional-access.md).
   - question: >
       In SharePoint können Listen für das Zulassen und Ablehnen des Zugriffs durch externe Benutzer definiert werden. Ist dies in Azure möglich?
-    answer: "Ja. Die Azure AD B2B-Zusammenarbeit unterstützt Zulassungs- und Verweigerungslisten. \n"
+    answer: "Ja. Die Azure AD B2B-Zusammenarbeit unterstützt Positiv- und Sperrlisten. \n"
   - question: >
       Welche Lizenzen sind für die Verwendung von Azure AD B2B erforderlich?
     answer: >

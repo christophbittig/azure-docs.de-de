@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/11/2021
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, subject-rbac-steps
-ms.openlocfilehash: f04dc73c6137e311b309a2009d6493414591eda5
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: 9bcc18a16566f63678fb739b2d453ecc6ffdf3d5
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129858889"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129993889"
 ---
 # <a name="use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal
 
@@ -40,7 +40,7 @@ Sie müssen über ausreichende Berechtigungen verfügen, um eine Anwendung bei I
 1. Wählen Sie **Azure Active Directory** aus.
 1. Suchen Sie unter **Übersicht**->**Mein Feed** nach Ihrer Rolle. Wenn Sie über die Rolle **Benutzer** verfügen, müssen Sie sicherstellen, dass keine Administratorrechte benötigt werden, um Anwendungen zu registrieren.
 
-   :::image type="content" source="media/howto-create-service-principal-portal/view-user-info.png" alt-text="Suchen Sie nach Ihrer Rolle. Wenn Ihnen die Rolle „Benutzer“ zugewiesen ist, stellen Sie sicher, dass Nicht-Administratoren Apps registrieren können.":::
+   :::image type="content" source="media/howto-create-service-principal-portal/view-user-info.png" alt-text="Screenshot: Finden Ihrer Rolle":::
 
 1. Wählen Sie im linken Bereich **Benutzer** und dann **Benutzereinstellungen** aus.
 1. Überprüfen Sie die Einstellung **App-Registrierungen**. Dieser Wert kann nur von einem Administrator festgelegt werden. Die Einstellung **Ja** bedeutet, dass jeder Benutzer im Azure AD-Mandanten eine App registrieren kann.
@@ -69,7 +69,7 @@ So überprüfen Sie die Berechtigungen Ihres Abonnements:
 
 1. Wählen Sie **Rollenzuweisungen** aus, um die Ihnen zugewiesenen Rollen anzuzeigen, und ermitteln Sie, ob Sie über die erforderlichen Berechtigungen verfügen, um einer AD-App eine Rolle zuweisen zu können. Wenn dies nicht der Fall ist, bitten Sie Ihren Abonnementadministrator, Sie zur Rolle „Benutzerzugriffsadministrator“ hinzuzufügen. In der folgenden Abbildung ist dem Benutzer die Rolle „Besitzer“ zugewiesen. Dies bedeutet, dass der Benutzer über die erforderlichen Berechtigungen verfügt.
 
-   :::image type="content" source="media/howto-create-service-principal-portal/view-user-role.png" alt-text="In diesem Beispiel ist dem Benutzer die Rolle „Besitzer“ zugewiesen.":::
+   :::image type="content" source="media/howto-create-service-principal-portal/view-user-role.png" alt-text="Screenshot: Dem Benutzer ist die Rolle „Besitzer“ zugewiesen.":::
 
 ## <a name="register-an-application-with-azure-ad-and-create-a-service-principal"></a>Registrieren einer Anwendung mit Azure AD und Erstellen eines Dienstprinzipals
 

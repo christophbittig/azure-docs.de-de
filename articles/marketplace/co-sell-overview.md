@@ -8,12 +8,12 @@ author: vamahtan
 ms.author: vamahtan
 ms.reviewer: stmummer
 ms.date: 07/13/2021
-ms.openlocfilehash: c50db3a7127959539d4a03f7f9a04cb2943dec79
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: eccc66085ae8a3df93315054a1acdea994310d28
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122866952"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130065519"
 ---
 # <a name="co-sell-with-microsoft-sales-teams-and-partners-overview"></a>Co-Selling mit Microsoft-Vertriebsteams und -Partnern: Übersicht
 

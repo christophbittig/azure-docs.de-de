@@ -11,12 +11,12 @@ ms.author: jhirono
 author: jhirono
 ms.date: 09/24/2021
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, references_regions
-ms.openlocfilehash: 38347644557b2e2e3bf76dc4412381ab52396de2
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.openlocfilehash: 7f0d206b9327cad0c58cc92dbec16227c1c22644
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129658555"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130000125"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>Schützen einer Azure Machine Learning-Trainingsumgebung mit virtuellen Netzwerken
 
@@ -63,7 +63,7 @@ In diesem Artikel erfahren Sie, wie Sie die folgenden Trainingscomputeressourcen
     * Ein Computecluster kann dynamisch skaliert werden. Wenn nicht ausreichend freie IP-Adressen vorhanden sind, wird der Cluster teilweise zugeordnet.
     * Eine Compute-Instanz erfordert nur eine IP-Adresse.
 
-* Um eine Compute-Instanz [ohne öffentliche IP-Adresse](#no-public-ip) zu erstellen (eine Vorschaufunktion), muss Ihr Arbeitsbereich einen privaten Endpunkt für die Verbindung mit dem VNet verwenden. Weitere Informationen finden Sie unter [„Konfigurieren eines privaten Endpunkts für Azure Machine Learning Workspace“](how-to-configure-private-link.md).
+* Um einen Computecluster oder eine Compute-Instanz [ohne öffentliche IP-Adresse](#no-public-ip) zu erstellen (eine Previewfunktion), muss Ihr Arbeitsbereich einen privaten Endpunkt für die Verbindung mit dem VNet verwenden. Weitere Informationen finden Sie unter [„Konfigurieren eines privaten Endpunkts für Azure Machine Learning Workspace“](how-to-configure-private-link.md).
 * Stellen Sie sicher, dass keine Sicherheitsrichtlinien oder Sperren vorhanden sind, die Berechtigungen zum Verwalten des virtuellen Netzwerks einschränken. Wenn Sie auf Richtlinien oder Sperren prüfen, betrachten Sie sowohl das Abonnement als auch die Ressourcengruppe für das virtuelle Netzwerk.
 * Überprüfen Sie, ob Berechtigungen für die Verwaltung des virtuellen Netzwerks durch Ihre Sicherheitsrichtlinien oder -sperren für das Abonnement oder die Ressourcengruppe Ihres virtuellen Netzwerks eingeschränkt werden. 
 * Wenn Sie das virtuelle Netzwerk durch Einschränkung des Datenverkehrs sichern möchten, lesen Sie den Abschnitt [Erforderlicher öffentlicher Internetzugriff](#required-public-internet-access).
@@ -91,10 +91,9 @@ In diesem Artikel erfahren Sie, wie Sie die folgenden Trainingscomputeressourcen
 
 
         > [!TIP]
-        > Wenn Ihre Compute-Instanz keine öffentliche IP-Adresse verwendet (eine Vorschaufunktion), sind diese eingehenden NSG-Regeln nicht erforderlich. Wenn Sie auch einen Compute-Cluster verwenden, sind diese Regeln auch für den Cluster erforderlich.
-    * Für Compute-Cluster eine öffentliche IP-Adresse. Wenn Sie Azure-Richtlinienzuweisungen haben, die die Erstellung von öffentlichen IPs verbieten, wird die Bereitstellung des Compute fehlschlagen.
-
-    * Bei Compute-Instanzen ist es jetzt möglich, die öffentliche IP-Adresse zu entfernen (eine Vorschaufunktion). Wenn Sie Azure-Richtlinienzuweisungen haben, die die Erstellung einer öffentlichen IP verbieten, wird die Bereitstellung der Compute-Instance erfolgreich sein.
+        > Wenn Ihr Computecluster oder Ihre Compute-Instanz keine öffentliche IP-Adresse verwendet (eine Previewfunktion), sind diese eingehenden NSG-Regeln nicht erforderlich. 
+        
+    * Bei Computeclustern oder Compute-Instanzen ist es jetzt möglich, die öffentliche IP-Adresse zu entfernen (eine Previewfunktion). Wenn Sie Azure-Richtlinienzuweisungen haben, die die Erstellung einer öffentlichen IP verbieten, wird die Bereitstellung des Computeclusters oder der Compute-Instanz erfolgreich sein.
 
     * Ein Lastenausgleichsmodul
 
@@ -220,6 +219,31 @@ except ComputeTargetException:
 Nach Abschluss des Erstellungsprozesses trainieren Sie Ihr Modell, indem Sie den Cluster in einem Experiment verwenden. Weitere Informationen finden Sie unter [Auswählen und Verwenden eines Computeziels für das Training](how-to-set-up-training-targets.md).
 
 [!INCLUDE [low-pri-note](../../includes/machine-learning-low-pri-vm.md)]
+
+### <a name="no-public-ip-for-compute-clusters-preview"></a><a name="no-public-ip-amlcompute"></a>Keine öffentliche IP-Adresse für Computecluster (Vorschau)
+
+Wenn Sie **keine öffentliche IP** aktivieren, verwendet Ihr Computecluster keine öffentliche IP für die Kommunikation mit anderen Abhängigkeiten. Stattdessen kommuniziert sie ausschließlich innerhalb des virtuellen Netzwerks über das Azure Private Link-Ökosystem sowie über Service-/Privat-Endpunkte, wodurch die Notwendigkeit einer öffentlichen IP vollständig entfällt. Keine öffentliche IP-Adresse verhindert den Zugang und die Auffindbarkeit von Computeclusterknoten aus dem Internet und eliminiert damit einen wichtigen Bedrohungsvektor. Cluster **ohne öffentliche IP-Adresse** helfen bei der Einhaltung von Richtlinien für öffentliche IP-Adressen, über die viele Unternehmen verfügen. 
+
+Ein Computecluster, bei dem **keine öffentliche IP** aktiviert ist, hat im Vergleich zu einem Computecluster mit öffentlicher IP **keine Anforderungen an die eingehende Kommunikation** aus dem öffentlichen Internet. Insbesondere ist keine der beiden NSG-Regeln für den Eingang (`BatchNodeManagement`, `AzureMachineLearning`) erforderlich. Sie müssen den Eingang von der **VirtualNetwork**-Quelle und beliebigen Portquellen zum **VirtualNetwork**-Ziel und dem Zielport **29876, 29877** zulassen.
+
+**Keine öffentliche IP**-Cluster sind von [Azure Private Link](how-to-configure-private-link.md) für Azure Machine Learning Workspace abhängig. Für einen Computecluster mit **keiner öffentlichen IP** müssen Sie außerdem private Endpunkt-Netzwerkrichtlinien und private Link-Service-Netzwerkrichtlinien deaktivieren. Diese Anforderungen stammen von Azure Private Link Service und Private Endpoints und sind nicht Azure Machine Learning-spezifisch. Befolgen Sie die Anweisungen unter [Deaktivieren der Netzwerkrichtlinien für den Private Link-Dienst](../private-link/disable-private-link-service-network-policy.md), um die Parameter `disable-private-endpoint-network-policies` und `disable-private-link-service-network-policies` für das Subnetz des virtuellen Netzwerks festzulegen.
+
+Damit **ausgehende Verbindungen** funktionieren, müssen Sie eine Egress-Firewall wie die Azure-Firewall mit benutzerdefinierten Routen einrichten. Sie können beispielsweise eine Firewall mit [ein- und ausgehender Konfiguration](how-to-access-azureml-behind-firewall.md) verwenden und den Datenverkehr dorthin leiten, indem Sie eine Routentabelle in dem Teilnetz definieren, in dem der Computecluster bereitgestellt wird. Der Eintrag in der Routentabelle kann den nächsten Hop der privaten IP-Adresse der Firewall mit dem Adresspräfix 0.0.0.0/0 einrichten.
+
+Sie können einen Dienstendpunkt oder privaten Endpunkt für Ihre Azure Container Registry und Azure Storage in dem Subnetz verwenden, in dem der Cluster bereitgestellt wird.
+
+Um einen Computecluster ohne öffentliche IP-Adresse (eine Previewfunktion) in Studio zu erstellen, aktivieren Sie das Kontrollkästchen **Keine öffentliche IP** im Abschnitt „Virtuelles Netzwerk“.
+Sie können einen Computecluster ohne öffentliche IP-Adresse auch über eine ARM-Vorlage erstellen. Setzen Sie in der ARM-Vorlage den Parameter „enableNodePublicIP“ auf „false“.
+
+[!INCLUDE [no-public-ip-info](../../includes/machine-learning-no-public-ip-availibility.md)]
+
+**Problembehandlung**
+
+* Wenn Sie bei der Erstellung eines Clusters die Fehlermeldung „Im angegebenen Subnetz ist PrivateLinkServiceNetworkPolicies oder PrivateEndpointNetworkEndpoints aktiviert“ erhalten, befolgen Sie bitte die Anweisungen unter [Deaktivieren von Netzwerkrichtlinien für den Private Link-Dienst](../private-link/disable-private-link-service-network-policy.md) und [Deaktivieren von Netzwerkrichtlinien für den privaten Endpunkt](../private-link/disable-private-endpoint-network-policy.md).
+
+* Wenn bei der Ausführung des Auftrags aufgrund von Verbindungsproblemen mit ACR oder Azure Storage ein Fehler auftritt, überprüfen Sie, ob der Kunde ACR- und Azure Storage-Dienstendpunkte/private Endpunkte zum Subnetz hinzugefügt hat und ob ACR/Azure Storage den Zugriff über das Subnetz zulässt.
+
+* Um sicherzustellen, dass Sie einen Cluster ohne öffentliche IP-Adresse erstellt haben, sehen Sie in Studio bei den Clusterdetails, dass die Eigenschaft **Keine öffentliche IP** unter den Ressourceneigenschaften auf **true** festgelegt ist.
 
 ## <a name="compute-instance"></a>Compute-Instanz
 

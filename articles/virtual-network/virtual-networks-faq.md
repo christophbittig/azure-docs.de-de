@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 936e031e72a98f2329202df4fb3b7a97e7f9d237
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 3ac75e3cf3ae08d9b7d49077cf54d05fdbabdbad
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124754470"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130039047"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – häufig gestellte Fragen
 
@@ -162,7 +162,7 @@ Ja. Alle Netzwerkschnittstellen (NICs) einer VM, die mit dem Resource Manager-Be
   - **Resource Manager:** Eine mit der dynamischen oder statischen Methode zugewiesene private IP-Adresse bleibt einem virtuellen Computer (Resource Manager) zugewiesen, bis die Ressource gelöscht wird. Der Unterschied besteht darin, dass bei Verwendung der statischen Methode Sie die zuzuweisende Adresse auswählen und bei Verwendung der dynamischen Methode Azure die Adresse auswählt. 
   - **Klassisch:** Eine mit der dynamischen Methode zugewiesene private IP-Adresse ändert sich möglicherweise, wenn ein virtueller Computer (klassisch) neu gestartet wird, nachdem er sich im Zustand „Beendet“ (Zuordnung aufgehoben) befand. Wenn Sie sicherstellen müssen, dass sich die private IP-Adresse einer Ressource, die über das klassische Bereitstellungsmodell bereitgestellt wurde, nie ändert, weisen Sie eine private IP-Adresse mit der statischen Methode zu.
 
-* **Öffentlich:** Kann optional NICs von VMs zugewiesen werden, die über das Azure Resource Manager-Bereitstellungsmodell bereitgestellt wurden. Die Adresse kann mit der statischen oder der dynamischen Zuteilungsmethode zugewiesen werden. Alle VMs und Cloud Services-Rolleninstanzen, die über das klassische Bereitstellungsmodell bereitgestellt werden, sind in einem Clouddienst vorhanden, dem eine *dynamische* öffentliche virtuelle IP-Adresse (VIP) zugewiesen ist. Eine öffentliche *statische* IP-Adresse, die als [reservierte IP-Adresse](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip) bezeichnet wird, kann optional als VIP zugewiesen werden. Sie können öffentliche IP-Adressen einzelnen VMs oder Cloud Services-Rolleninstanzen zuweisen, die mit dem klassischen Bereitstellungsmodell bereitgestellt wurden. Diese Adressen werden als [ILPIP-Adressen](/previous-versions/azure/virtual-network/virtual-networks-instance-level-public-ip) (Instance Level Public IP, öffentliche IP auf Instanzebene) bezeichnet und können dynamisch zugewiesen werden.
+* **Öffentlich:** Kann optional NICs von VMs zugewiesen werden, die über das Azure Resource Manager-Bereitstellungsmodell bereitgestellt wurden. Die Adresse kann mit der statischen oder der dynamischen Zuteilungsmethode zugewiesen werden. Alle VMs und Cloud Services-Rolleninstanzen, die über das klassische Bereitstellungsmodell bereitgestellt werden, sind in einem Clouddienst vorhanden, dem eine *dynamische* öffentliche virtuelle IP-Adresse (VIP) zugewiesen ist. Eine öffentliche *statische* IP-Adresse, die als [reservierte IP-Adresse](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip) bezeichnet wird, kann optional als VIP zugewiesen werden. Sie können öffentliche IP-Adressen einzelnen VMs oder Cloud Services-Rolleninstanzen zuweisen, die mit dem klassischen Bereitstellungsmodell bereitgestellt wurden. Diese Adressen werden als [ILPIP-Adressen](/previous-versions/azure/virtual-network/virtual-networks-instance-level-public-ip) (Instance Level Public IP, öffentliche IP-Adresse auf Instanzebene) bezeichnet und können dynamisch zugewiesen werden.
 
 ### <a name="can-i-reserve-a-private-ip-address-for-a-vm-that-i-will-create-at-a-later-time"></a>Kann ich eine private IP-Adresse für einen virtuellen Computer reservieren, den ich zu einem späteren Zeitpunkt erstelle?
 Nein. Eine private IP-Adresse kann nicht reserviert werden. Wenn eine private IP-Adresse verfügbar ist, wird sie einem virtuellen Computer oder einer Rolleninstanz durch den DHCP-Server zugewiesen. Der virtuelle Computer kann der Computer sein, dem Sie die interne IP-Adresse zuweisen möchten. Es kann aber auch ein anderer Computer sein. Sie können aber die private IP-Adresse eines bereits erstellten virtuellen Computers in eine verfügbare private IP-Adresse ändern.
@@ -194,7 +194,7 @@ Ja. Für alle in einem VNet bereitgestellten VMs und Cloud Services-Rolleninstan
 Ja. Sie können Web-Apps in einem VNet bereitstellen. Dazu verwenden Sie eine ASE (App Service-Umgebung), verbinden das Back-End Ihrer Apps mit Ihren VNets mit VNet-Integration und sperren den eingehenden Datenverkehr zu Ihrer App mit Dienstendpunkten. Weitere Informationen finden Sie in den folgenden Artikeln:
 
 * [App Service-Netzwerkfunktionen](../app-service/networking-features.md)
-* [Erstellen von Web-Apps in einer App Service-Umgebung](../app-service/environment/app-service-web-how-to-create-a-web-app-in-an-ase.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+* [Erstellen von Web-Apps in einer App Service-Umgebung](../app-service/environment/using.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 * [Integrieren Ihrer App in ein Azure Virtual Network](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 * [Azure App Service – Zugriffseinschränkungen](../app-service/app-service-ip-restrictions.md)
 

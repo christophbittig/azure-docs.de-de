@@ -9,12 +9,12 @@ metadata:
   ms.date: 02/19/2020
   ms.author: alkemper
   ms.custom: references_regions
-  ms.openlocfilehash: fdfc62b4b5c61cd1b064e6623464147d01dbc58e
-  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+  ms.openlocfilehash: e68cc85c5c4512fe5f60344b77e38920d703b015
+  ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/24/2021
-  ms.locfileid: "128603104"
+  ms.lasthandoff: 10/19/2021
+  ms.locfileid: "130179345"
 title: Häufig gestellte Fragen zu Azure App Configuration
 summary: In diesem Artikel werden häufig gestellte Fragen zu Azure App Configuration beantwortet.
 sections:
@@ -60,7 +60,11 @@ sections:
 
       Sie können Einstellungen auch zwischen App Service und App Configuration importieren und exportieren. Diese Funktion ermöglicht Ihnen, schnell einen neuen App Configuration-Speicher auf Basis vorhandener App Service-Einstellungen einzurichten. Sie können die Konfiguration auch für eine vorhandene App freigeben, die auf App Service-Einstellungen basiert.
   - question: Gibt es Größenbeschränkungen für Schlüssel und Werte, die in App Configuration gespeichert sind?
-    answer: Für ein einzelnes Schlüssel-Wert-Element gilt eine Beschränkung von 10 KB.
+    answer: >
+      Für ein einzelnes Schlüssel-Wert-Element, einschließlich Attributen wie Bezeichnung, Inhaltstyp, Tags und weiteren Metadaten, gilt eine Beschränkung von 10 KB.
+
+
+      Dieser Grenzwert sollte für eine einzelne Einstellung in den meisten Anwendungen ausreichen. Wenn Sie feststellen, dass Ihre Einstellung diesen Grenzwert überschreitet, können Sie Ihre Daten ggf. an anderer Stelle speichern und in App Configuration [einen Verweis auf diese Daten hinzufügen](./howto-best-practices.md#references-to-external-data).
   - question: Wie sollte ich Konfigurationen für mehrere Umgebungen (Test, Staging, Produktion usw.) speichern?
     answer: >
       Sie kontrollieren auf Speicherebene (also pro Speicher), wer Zugriff auf App Configuration hat. Verwenden Sie für jede Umgebung, die andere Berechtigungen erfordert, einen separaten Speicher. Dieser Ansatz bietet Ihnen die beste Sicherheitsisolierung.
@@ -77,7 +81,7 @@ sections:
 
       - Free-Tarif
 
-      - Standard-Tarif.
+      - Standard-Tarif
 
 
       Wenn Sie vor der Einführung des Standard-Tarifs einen Speicher erstellt haben, wird er bei allgemeiner Verfügbarkeit automatisch in den Free-Tarif verschoben. Sie können ein Upgrade auf den Standard-Tarif durchführen, oder im Free-Tarif verbleiben.
@@ -161,7 +165,7 @@ sections:
       Der App Configuration-Speicher kann erst in einem anderen Abonnement oder einer anderen Ressourcengruppe erstellt werden, wenn der Aufbewahrungszeitraum abgelaufen ist. Die Ressource kann jedoch im ursprünglichen Abonnement bzw. der ursprünglichen Ressourcengruppe neu erstellt und dann in ein neues Abonnement bzw. eine neue Ressourcengruppe verschoben werden, indem Sie [diese Anweisungen](../azure-resource-manager/management/move-resource-group-and-subscription.md#use-the-portal) befolgen.
 
 
-      Das erneute Erstellen eines App Configuration-Speichers während des Aufbewahrungszeitraums wird derzeit nur von der Azure CLI mithilfe des [hier](/cli/azure/appconfig?view=azure-cli-latest#az_appconfig_create) beschriebenen Befehls `az appconfig create` unterstützt.
+      Das erneute Erstellen eines App Configuration-Speichers während des Aufbewahrungszeitraums wird derzeit nur von der Azure CLI mithilfe des [Befehls](/cli/azure/appconfig?view=azure-cli-latest#az_appconfig_create) `az appconfig create` unterstützt.
   - question: Wie kann ich einen App Configuration-Speicher wiederherstellen, den ich fälschlicherweise gelöscht habe?
     answer: >
       App Configuration-Speicher im Standard-Tarif können innerhalb von sieben Tagen nach dem Löschen wiederhergestellt werden. Wenden Sie sich an den Microsoft-Support, um einen fälschlicherweise gelöschten App Configuration-Speicher wiederherstellen zu lassen.

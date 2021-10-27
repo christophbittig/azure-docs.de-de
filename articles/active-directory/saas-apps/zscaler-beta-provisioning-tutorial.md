@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 8c93eb34fe577684c212c0f22b5b724a7e3ac247
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 809e400bd2dc8e5426670fde9cafd298c8e64ec8
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113760489"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130045671"
 ---
 # <a name="tutorial-configure-zscaler-beta-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Zscaler Beta für die automatische Benutzerbereitstellung
 
@@ -100,7 +100,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
-    ![Der automatische Modus wurde in der Dropdownliste „Bereitstellungsmodus“ ausgewählt. Es gibt Felder für Administratoranmeldeinformationen, die zum Herstellen einer Verbindung mit der Zscaler Beta-API verwendet werden, und die Schaltfläche „Verbindung testen“.](./media/zscaler-beta-provisioning-tutorial/provisioning-credentials.png)
+    ![Der automatische Modus wurde in der Dropdownliste „Bereitstellungsmodus“ ausgewählt. Es gibt Felder für Administratoranmeldeinformationen, die zum Herstellen einer Verbindung mit der Zscaler Beta-API verwendet werden, und die Schaltfläche „Verbindung testen“.](./media/zscaler-beta-provisioning-tutorial/provisioning-credentials.png)
 
 5. Geben Sie im Abschnitt **Admin Credentials** (Administratoranmeldeinformationen) wie in Schritt 6 beschrieben die **Mandanten-URL** und das **geheime Token** Ihres Zscaler Beta-Kontos ein.
 

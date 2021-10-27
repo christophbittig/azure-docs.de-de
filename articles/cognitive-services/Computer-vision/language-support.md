@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: 5053bda835eba508fb84f20a7a8607bf40e37134
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 684af3b73d9e7b56db5cc5d077510727bed89618
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129535583"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130044514"
 ---
 # <a name="language-support-for-computer-vision"></a>Sprachunterstützung für maschinelles Sehen
 
@@ -25,40 +25,45 @@ Einige Features des maschinellen Sehens unterstützen mehrere Sprachen; alle hie
 
 Die OCR-APIs für maschinelles Sehen unterstützen verschiedene Sprachen. Read kann Text aus Bildern und Dokumenten mit gemischten Sprachen extrahieren (einschließlich derselben Textzeile), ohne dass ein Sprachparameter erforderlich ist. Weitere Informationen finden Sie in der [Übersicht über die optische Zeichenerkennung (OCR)](overview-ocr.md).
 
+
 > [!NOTE]
-> **Optionaler Sprachparameter**
+> **Sprachcode (optional)**
 >
-> Die Read-API verwendet universelle Skriptmodelle, um den gesamten mehrsprachigen Text in Ihren Bildern oder Dokumenten zu extrahieren, einschließlich mehrsprachiger Textzeilen. Geben Sie den Sprachparameter nur an, wenn Sie sicher sind, dass im Bild oder Dokument nur eine Sprache vorhanden ist. Andernfalls gibt der Dienst möglicherweise unvollständigen und fehlerhaften Text zurück.
+> Die auf Deep Learning basierenden universellen Modelle der Read-OCR extrahieren den gesamten mehrsprachigen Text in Ihren Dokumenten (einschließlich Textzeilen mit gemischten Sprachen) und erfordern keine Angabe eines Sprachcodes. Geben Sie den Sprachcode nicht als Parameter an, es sei denn, Sie sind sich hinsichtlich der Sprache sicher und möchten erzwingen, dass der Dienst nur das relevante Modell anwendet. Andernfalls gibt der Dienst möglicherweise unvollständigen und fehlerhaften Text zurück.
 
 Informationen zu den Sprachen und Features während der Vorschau finden Sie unter [Angeben der Modellversion](./Vision-API-How-to-Topics/call-read-api.md#determine-how-to-process-the-data-optional). Das Vorschaumodell enthält alle Verbesserungen an der derzeit allgemein verfügbaren Version.
 
-### <a name="handwritten-text"></a>Handschriftlicher Text
+### <a name="handwritten-languages"></a>Handschriftliche Sprachen
+In der folgenden Tabelle sind die handschriftlichen Sprachen aufgeführt, die von Read unterstützt werden.
+
 |Sprache| Sprachcode (optional) | Lesen |
 |:-----|:----:|:-----|
 |Englisch|`en`|✅ |
-|Chinesisch (vereinfacht) |`zh-Hans`|✅ (Vorschau) |
-|Französisch|`fr`|✅ (Vorschau)|
-|Deutsch |`de`|✅ (Vorschau) |
-|Italienisch|`it`|✅ (Vorschau) |
-|Portugiesisch |`pt`|✅ (Vorschau) |
-|Spanisch |`es`|✅ (Vorschau) |
+|Chinesisch (vereinfacht) |`zh-Hans`|✅ Vorschau |
+|Französisch|`fr`|✅ Vorschau|
+|Deutsch |`de`|✅ Vorschau |
+|Italienisch|`it`|✅ Vorschau |
+|Portugiesisch |`pt`|✅ Vorschau |
+|Spanisch |`es`|✅ Vorschau |
 
-### <a name="print-text"></a>Drucken von Text
+### <a name="print-languages"></a>Drucksprachen
+In der folgenden Tabelle sind die Drucksprachen aufgeführt, die von den OCR-APIs unterstützt werden.
+
 |Sprache| Sprachcode (optional) | Lesen | OCR |
 |:-----|:----:|:-----|:---:|
 |Afrikaans|`af`|✅ | |
 |Albanisch |`sq`|✅ | |
 |Arabisch | `ar`|  | ✅ |
 |Asturisch |`ast`|✅ | |
-|Aserbaidschanisch (Lateinisch) | `az` | ✅ (Vorschau) | |
+|Aserbaidschanisch (Lateinisch) | `az` | ✅ Vorschau | |
 |Baskisch  |`eu`| ✅ | |
-|Belarussisch (Kyrillisch) | `be` |✅ (Vorschau) | |
-|Belarussisch (Lateinisch) | `be` |✅ (Vorschau) | |
+|Belarussisch (Kyrillisch) | `be` |✅ Vorschau | |
+|Belarussisch (Lateinisch) | `be` |✅ Vorschau | |
 |Bislama   |`bi`|✅ | |
-|Bosnisch (Lateinisch)   |`bs`|✅ (Vorschau) | |
+|Bosnisch (Lateinisch)   |`bs`|✅ Vorschau | |
 |Bretonisch    |`br`|✅ | |
-|Bulgarisch |`bg`|✅ (Vorschau) | |
-|Burjatisch (Kyrillisch)|`bua`|✅ (Vorschau) | |
+|Bulgarisch |`bg`|✅ Vorschau | |
+|Burjatisch (Kyrillisch)|`bua`|✅ Vorschau | |
 |Katalanisch    |`ca`|✅ | |
 |Cebuano    |`ceb`|✅ | |
 |Chamorro  |`ch`|✅| |
@@ -67,20 +72,20 @@ Informationen zu den Sprachen und Features während der Vorschau finden Sie unte
 |Kornisch     |`kw`|✅ | |
 |Korsisch      |`co`|✅ | |
 |Krimtatarisch (Lateinisch)|`crh`| ✅ | |
-|Kroatisch |`hr`|✅ (Vorschau) | |
+|Kroatisch |`hr`|✅ Vorschau | |
 |Tschechisch | `cs` |✅ | ✅ |
 |Dänisch | `da` |✅ | ✅ |
 |Niederländisch | `nl` |✅ |✅ |
 |Englisch | `en` |✅ |✅|
-|Ersjanisch (Kyrillisch) |`myv`|✅ (Vorschau) | |
+|Ersjanisch (Kyrillisch) |`myv`|✅ Vorschau | |
 |Estnisch  |`et`|✅ | |
-|Färöisch |`fo`|✅ (Vorschau) | |
+|Färöisch |`fo`|✅ Vorschau | |
 |Fidschi |`fj`|✅ | |
 |Filipino  |`fil`|✅ | |
 |Finnisch | `fi` |✅ |✅ |
 |Französisch | `fr` |✅ |✅ |
 |Friaulisch  | `fur` |✅ | |
-|Gagausisch (Lateinisch) |`gag`|✅ (Vorschau) | |
+|Gagausisch (Lateinisch) |`gag`|✅ Vorschau | |
 |Galizisch   | `gl` |✅ | |
 |Deutsch | `de` |✅ |✅ |
 |Gilbertese    | `gil` |✅ | |
@@ -88,11 +93,11 @@ Informationen zu den Sprachen und Features während der Vorschau finden Sie unte
 |Grönländisch   | `kl` |✅ | |
 |Haitianisches Kreolisch  | `ht` |✅ | |
 |Hani  | `hni` |✅ | |
-|Hawaiianisch |`haw`|✅ (Vorschau) | |
+|Hawaiianisch |`haw`|✅ Vorschau | |
 |Hmong Daw (Lateinisch)| `mww` | ✅ | |
 |Ungarisch | `hu` | ✅ |✅ |
-|Isländisch |`is`|✅ (Vorschau) | |
-|Inari-Samisch |`smn`|✅ (Vorschau) | |
+|Isländisch |`is`|✅ Vorschau | |
+|Inari-Samisch |`smn`|✅ Vorschau | |
 |Indonesisch   | `id` |✅ | |
 |Interlingual  | `ia` |✅ | |
 |Inuktitut (Lateinisch) | `iu` | ✅ | |
@@ -104,69 +109,69 @@ Informationen zu den Sprachen und Features während der Vorschau finden Sie unte
 |Kabuverdianu | `kea` |✅ | |
 |Kachin (Lateinisch) | `kac` |✅ | |
 |Karakalpakisch (Lateinisch) | `kaa` | ✅ | |
-|Karakalpakisch (Kyrillisch) | `kaa-cyrl` | ✅ (Vorschau) | |
-|Karatschai-Balkarisch |`krc`|✅ (Vorschau) | |
+|Karakalpakisch (Kyrillisch) | `kaa-cyrl` | ✅ Vorschau | |
+|Karatschai-Balkarisch |`krc`|✅ Vorschau | |
 |Kaschubisch | `csb` |✅ | |
-|Kasachisch (Kyrillisch) |`kk-cyrl`|✅ (Vorschau) | |
-|Kasachisch (Lateinisch) |`kk-latn`|✅ (Vorschau) | |
+|Kasachisch (Kyrillisch) |`kk-cyrl`|✅ Vorschau | |
+|Kasachisch (Lateinisch) |`kk-latn`|✅ Vorschau | |
 |Khasi  | `kha` | ✅ | |
 |Koreanisch | `ko` |✅ |✅ |
-|Korjakisch |`kpy`|✅ (Vorschau) | |
-|Kosraeanisch |`kos`|✅ (Vorschau) | |
-|Kumykisch (Kyrillisch) |`kum`|✅ (Vorschau) | |
+|Korjakisch |`kpy`|✅ Vorschau | |
+|Kosraeanisch |`kos`|✅ Vorschau | |
+|Kumykisch (Kyrillisch) |`kum`|✅ Vorschau | |
 |Kurdisch (lateinisch)| `kur` |✅ | |
-|Kirgisisch (Kyrillisch) |`ky`|✅ (Vorschau) | |
-|Lakota |`lkt`|✅ (Vorschau) | |
-|Lateinisch|`la`|✅ (Vorschau) | |
-|Litauisch|`lt`|✅ (Vorschau) | |
-|Niedersorbisch|`dsb`|✅ (Vorschau) | |
-|Lule-Samisch|`smj`|✅ (Vorschau) | |
+|Kirgisisch (Kyrillisch) |`ky`|✅ Vorschau | |
+|Lakota |`lkt`|✅ Vorschau | |
+|Lateinisch|`la`|✅ Vorschau | |
+|Litauisch|`lt`|✅ Vorschau | |
+|Niedersorbisch|`dsb`|✅ Vorschau | |
+|Lule-Samisch|`smj`|✅ Vorschau | |
 |Luxemburgisch  | `lb` | ✅ | |
 |Malaiisch (Lateinisch) | `ms` | ✅ | |
-|Maltesisch|`mt`|✅ (Vorschau) | |
+|Maltesisch|`mt`|✅ Vorschau | |
 |Manx  | `gv` | ✅ | |
-|Maori|`mi`|✅ (Vorschau) | |
-|Mongolisch (Kyrillisch)|`mn`|✅ (Vorschau) | |
-|Montenegrinisch (Kyrillisch)|`cnr-cyrl`|✅ (Vorschau) | |
-|Montenegrinisch (Lateinisch)|`cnr-latn`|✅ (Vorschau) | |
+|Maori|`mi`|✅ Vorschau | |
+|Mongolisch (Kyrillisch)|`mn`|✅ Vorschau | |
+|Montenegrinisch (Kyrillisch)|`cnr-cyrl`|✅ Vorschau | |
+|Montenegrinisch (Lateinisch)|`cnr-latn`|✅ Vorschau | |
 |Neapolitanisch   | `nap` | ✅ | |
-|Niue|`niu`|✅ (Vorschau) | |
-|Nogaisch|`nog`|✅ (Vorschau) | |
-|Nordsamisch (Lateinisch)|`sme`|✅ (Vorschau) | |
+|Niue|`niu`|✅ Vorschau | |
+|Nogaisch|`nog`|✅ Vorschau | |
+|Nordsamisch (Lateinisch)|`sme`|✅ Vorschau | |
 |Norwegisch | `no` | ✅ | |
 |Okzitanisch | `oc` | ✅ | |
-|Ossetisch|`os`|✅ (Vorschau) | |
+|Ossetisch|`os`|✅ Vorschau | |
 |Polnisch | `pl` | ✅ |✅ |
 |Portugiesisch | `pt` |✅ |✅ |
-|Ripuarisch|`ksh`|✅ (Vorschau) | |
-|Rumänisch | `ro` | ✅ (Vorschau)| ✅|
+|Ripuarisch|`ksh`|✅ Vorschau | |
+|Rumänisch | `ro` | ✅ Vorschau | ✅|
 |Rätoromanisch  | `rm` | ✅ | |
-|Russisch | `ru` |✅ (Vorschau) |✅ |
-|Samoanisch (Lateinisch)|`sm`|✅ (Vorschau) | |
+|Russisch | `ru` |✅ Vorschau |✅ |
+|Samoanisch (Lateinisch)|`sm`|✅ Vorschau | |
 |Schotten  | `sco` | ✅ | |
 |Schottisch-Gälisch  | `gd` |✅ | |
 |Serbisch (Kyrillisch) | `sr-cyrl` | |✅ |
-|Serbisch (Lateinisch) | `sr-latn` | ✅ (Vorschau) |✅ |
-|Skolt-Samisch|`sms`|✅ (Vorschau) | |
-|Slowakisch | `sk` | ✅ (Vorschau) |✅ |
+|Serbisch (Lateinisch) | `sr-latn` | ✅ Vorschau |✅ |
+|Skolt-Samisch|`sms`|✅ Vorschau | |
+|Slowakisch | `sk` | ✅ Vorschau |✅ |
 |Slowenisch  | `slv` | ✅ ||
-|Südsamisch|`sma`|✅ (Vorschau) | |
+|Südsamisch|`sma`|✅ Vorschau | |
 |Spanisch | `es` |✅ |✅ |
 |Suaheli (Lateinisch)  | `sw` |✅ | |
 |Schwedisch | `sv` |✅ |✅ |
-|Tadschikisch (Kyrillisch)|`tg`|✅ (Vorschau) | |
+|Tadschikisch (Kyrillisch)|`tg`|✅ Vorschau | |
 |Tatarisch (Lateinisch)  | `tat` | ✅ |
 |Tetum    | `tet` |✅ |  |
-|Tongaisch|`to`|✅ (Vorschau) | |
+|Tongaisch|`to`|✅ Vorschau | |
 |Türkisch | `tr` |✅ | ✅ |
-|Turkmenisch (Lateinisch)|`tk`|✅ (Vorschau) | |
-|Tuwinisch|`tyv`|✅ (Vorschau) | |
+|Turkmenisch (Lateinisch)|`tk`|✅ Vorschau | |
+|Tuwinisch|`tyv`|✅ Vorschau | |
 |Obersorbisch  | `hsb` |✅ |  |
 |Usbekisch (kyrillisch)  | `uz-cyrl` |✅ |  |
 |Usbekisch (Lateinisch)     | `uz` |✅ |  |
 |Volapük   | `vo` | ✅ | |
 |Walser    | `wae` | ✅ | |
-|Walisisch     | `cy` |✅ (Vorschau) |  |
+|Walisisch     | `cy` |✅ Vorschau |  |
 |Westfriesisch | `fy` | ✅ | |
 |Yukatekisches Maya | `yua` | ✅ | |
 |Zhuang | `za` |✅ |  |

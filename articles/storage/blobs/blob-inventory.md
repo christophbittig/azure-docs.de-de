@@ -4,18 +4,18 @@ description: Der Azure Storage-Bestand ist ein Tool, mit dem Sie eine Übersicht
 services: storage
 author: normesta
 ms.service: storage
-ms.date: 08/16/2021
+ms.date: 10/11/2021
 ms.topic: conceptual
 ms.author: normesta
 ms.reviewer: klaasl
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 6962688a574d7f7c11f8cbfc71ccdb29ac3b6445
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 712cf4c6002983a47e44fb87be983bfca575f534
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129619386"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129996815"
 ---
 # <a name="azure-storage-blob-inventory"></a>Azure Storage-Blobbestand
 
@@ -55,7 +55,7 @@ Wenn Sie die Azure Storage-Blobinventur bereits nutzen und sie vor Juni 2021 kon
 
 ## <a name="inventory-policy"></a>Inventurrichtlinie
 
-Eine Inventurrichtlinie ist eine Sammlung von Regeln in einem JSON-Dokument.
+Sie konfigurieren einen Bestandsbericht, indem Sie eine Inventurrichtlinie mit mindestens einer Regel hinzufügen. Eine Inventurrichtlinie ist eine Sammlung von Regeln in einem JSON-Dokument.
 
 ```json
 {
@@ -197,7 +197,7 @@ Sie zeigen den JSON-Code für Inventurrichtlinien an, indem Sie im Azure-Portal 
 
 ## <a name="inventory-run"></a>Inventurausführung
 
-Es wird automatisch eine tägliche Blobinventur geplant. Die Inventur kann bis zum Abschluss bis zu 24 Stunden benötigen. Sie konfigurieren einen Bestandsbericht, indem Sie eine Inventurrichtlinie mit mindestens einer Regel hinzufügen.
+Es wird automatisch eine tägliche Blobinventur geplant. Die Inventur kann bis zum Abschluss bis zu 24 Stunden benötigen. Bei Konten mit aktivierten hierarchischen Namespaces kann eine Ausführung bis zu zwei Tage dauern. Je nach Anzahl der verarbeiteten Dateien ist die Ausführung nach diesen zwei Tagen möglicherweise nicht abgeschlossen. Wenn eine Ausführung nicht erfolgreich abgeschlossen wird, überprüfen Sie, ob nachfolgende Ausführungen abgeschlossen werden, bevor Sie sich an den Support wenden. Die Leistung einer Ausführung kann variieren. Wenn eine Ausführung also nicht abgeschlossen wird, ist es dennoch möglich, dass nachfolgende Ausführungen abgeschlossen werden.
 
 Bestandsrichtlinien werden vollständig gelesen oder geschrieben. Teilaktualisierungen werden nicht unterstützt.
 
@@ -254,12 +254,17 @@ Jede Inventurregel generiert Dateien im angegebenen Inventur-Zielcontainer für 
 
 Bei jeder Inventur für eine Regel werden die folgenden Dateien generiert:
 
-- **Inventurdatei:** Eine Inventurausführung für eine Regel generiert mindestens eine Datei im CSV- oder Apache Parquet-Format. Wenn die Anzahl der übereinstimmenden Objekte sehr hoch ist, werden mehrere Dateien erstellt. Jede dieser Dateien enthält die übereinstimmenden Objekte und ihre Metadaten. Die erste Zeile in einer CSV-Datei enthält immer das Schema. Die folgende Abbildung zeigt eine in Microsoft Excel geöffnete CSV-Bestandsdatei.
-
-  :::image type="content" source="./media/blob-inventory/csv-file-excel.png" alt-text="Screenshot einer in Microsoft Excel geöffneten CSV-Bestandsdatei":::
+- **Inventurdatei:** Eine Inventurausführung für eine Regel generiert mindestens eine Datei im CSV- oder Apache Parquet-Format. Wenn die Anzahl der übereinstimmenden Objekte sehr hoch ist, werden mehrere Dateien erstellt. Jede dieser Dateien enthält die übereinstimmenden Objekte und ihre Metadaten. 
 
   > [!NOTE]
   > In Berichten Apache Parquet-Format werden Daten im folgenden Format dargestellt: `timestamp_millis [number of milliseconds since 1970-01-01 00:00:00 UTC`.
+
+  Die erste Zeile in einer CSV-Datei enthält immer das Schema. Die folgende Abbildung zeigt eine in Microsoft Excel geöffnete CSV-Bestandsdatei.
+
+  :::image type="content" source="./media/blob-inventory/csv-file-excel.png" alt-text="Screenshot einer in Microsoft Excel geöffneten CSV-Bestandsdatei":::
+
+  > [!IMPORTANT]
+  > Die Blobpfade in einer Inventurdatei werden möglicherweise in keiner bestimmten Reihenfolge angezeigt. 
 
 - **Prüfsummendatei:** Eine Prüfsummendatei enthält die MD5-Prüfsumme des Inhalts der Datei „manifest.json“. Der Name der Prüfsummendatei lautet `<ruleName>-manifest.checksum`. Die Generierung der Prüfsummendatei markiert das Ende der Inventur für eine Regel.
 
@@ -341,7 +346,7 @@ In diesem Abschnitt werden Einschränkungen und bekannte Probleme des Azure Stor
 
 ### <a name="inventory-job-fails-to-complete-for-hierarchical-namespace-enabled-accounts"></a>Inventurauftrag kann für Konten mit aktiviertem hierarchischen Namespace nicht abgeschlossen werden
 
-Für ein Konto mit hunderten Millionen von Blobs und aktiviertem hierarchischen Namespace kann der Inventurauftrag möglicherweise nicht innerhalb von 24 Stunden abgeschlossen werden. In diesem Fall wird keine Bestandsdatei erstellt.
+Für ein Konto mit hunderten Millionen von Blobs und aktiviertem hierarchischen Namespace kann der Inventurauftrag möglicherweise nicht innerhalb von 2 Tagen abgeschlossen werden. In diesem Fall wird keine Bestandsdatei erstellt. Wenn ein Auftrag nicht erfolgreich abgeschlossen wird, überprüfen Sie, ob nachfolgende Aufträge abgeschlossen werden, bevor Sie sich an den Support wenden. Die Leistung eines Auftrags kann variieren. Wenn ein Auftrag also nicht abgeschlossen wird, ist es dennoch möglich, dass nachfolgende Aufträge abgeschlossen werden.
 
 ### <a name="inventory-job-cannot-write-inventory-reports"></a>Inventurauftrag kann keine Inventurberichte schreiben
 

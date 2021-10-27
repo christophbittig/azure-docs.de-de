@@ -9,13 +9,13 @@ ms.topic: how-to
 author: AlainDormehlMSFT
 ms.author: aldorme
 ms.reviewer: mathoma, wiassaf
-ms.date: 09/21/2021
-ms.openlocfilehash: 9452b12a8ad26ec2da5c488dc83f624863a4c647
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/13/2021
+ms.openlocfilehash: 333b6faabd6603f09c4522f09a18b52c5503f357
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128582561"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130004633"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-and-sql-managed-instance-diagnostic-telemetry"></a>Konfigurieren des Streamingexports von Diagnosetelemetrie aus Azure SQL Database und SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -47,9 +47,10 @@ Zusätzlich zum Streamen des Exports des Intelligent Insights-Protokolls können
 | [Deadlocks](#deadlocks-dataset): Enthält Informationen zu Deadlockereignissen für eine Datenbank. | Ja | Nein |
 | [AutomaticTuning](#automatic-tuning-dataset): Enthält Informationen zu automatischen Optimierungsempfehlungen für eine Datenbank. | Ja | Nein |
 | [SQLInsights](#intelligent-insights-dataset): Enthält Intelligent Insights-Informationen zur Leistung für eine Datenbank. Weitere Informationen finden Sie unter [Intelligent Insights](intelligent-insights-overview.md). | Ja | Ja |
+| Workloadverwaltung: (*Nur für Azure Synapse verfügbar*) Weitere Informationen finden Sie unter [Azure Synapse Analytics – Überwachung des Arbeitsauslastungsverwaltungsportals](/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor).| Nein | Nein | 
 
 > [!NOTE]
-> Diagnoseeinstellungen können nicht für die **Systemdatenbanken** wie master-, msdb-, model-, resource- und tempdb-Datenbanken konfiguriert werden.
+> Diagnoseeinstellungen können für die **Systemdatenbanken** wie `master`, `msdb`, `model` „resource“ und `tempdb` nicht konfiguriert werden.
 
 ## <a name="streaming-export-destinations"></a>Streamingexportziele
 

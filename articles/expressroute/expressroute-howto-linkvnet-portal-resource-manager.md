@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 08/10/2021
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 91e95bd6b269558353d74cbaa51dce94539001c1
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 66b22007636ef7ffb6452e5ce19cee7cfa15ba1f
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128606397"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130000989"
 ---
 # <a name="tutorial-connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>Tutorial: Verbinden eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung mithilfe des Portals
 
@@ -127,6 +127,9 @@ Sie können eine Verbindung löschen, indem Sie das Symbol **Löschen** für den
 :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/delete-authorization-key.png" alt-text="Löschen des Autorisierungsschlüssels":::
 
 Wenn Sie die Verbindung löschen, den Autorisierungsschlüssel aber beibehalten möchten, können Sie die Verbindung auf der entsprechenden Verbindungsseite der Leitung löschen.
+> [!NOTE]
+  > In verschiedenen Abonnements eingelöste Verbindungen werden nicht auf der Seite mit den Leitungsverbindungen angezeigt. Navigieren Sie zu dem Abonnement, für das die Autorisierung eingelöst wurde, und löschen Sie die Verbindungsressource der obersten Ebene.
+  >
 
 :::image type="content" source="./media/expressroute-howto-linkvnet-portal-resource-manager/delete-connection-owning-circuit.png" alt-text="Löschen der Leitung, die Besitzer der Verbindung ist":::
 

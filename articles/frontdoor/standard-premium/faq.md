@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 05/18/2021
 ms.author: duau
-ms.openlocfilehash: 378ba28eaa4b68cb1d05fa0af5c11ca95bd52a8b
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 3a56f01c210fb9b6e29294e00a1cb13715108b42
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129210324"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130167557"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door-standardpremium-preview"></a>Häufig gestellte Fragen zu Azure Front Door Standard/Premium (Vorschauversion)
 
@@ -96,7 +96,7 @@ Eine Alternative zum Sperren Ihrer Anwendung, damit Datenverkehr nur von Ihrer s
 
 * Konfigurieren Sie IP-ACLs für Ihre Back-Ends so, dass sie nur Datenverkehr aus dem Back-End-IP-Adressraum von Azure Front Door und den Infrastrukturdiensten von Azure akzeptieren. Lesen Sie sich die folgenden Informationen zum Einrichten einer Zugriffssteuerungsliste für Ihr Back-End durch:
  
-    * Sehen Sie sich den Abschnitt *AzureFrontDoor.Backend* unter [IP-Bereiche und Diensttags in Azure](https://www.microsoft.com/download/details.aspx?id=56519) für den IPv4-Back-End-IP-Adressbereich von Front Door an. Sie können auch das Diensttag *AzureFrontDoor.Backend* in Ihren [Netzwerksicherheitsgruppen](../../virtual-network/network-security-groups-overview.md#security-rules) verwenden.
+    * Sehen Sie sich den Abschnitt *AzureFrontDoor.Backend* unter [IP-Bereiche und Diensttags in Azure](https://www.microsoft.com/download/details.aspx?id=56519) für den Back-End-IP-Adressbereich von Front Door an. Sie können auch das Diensttag *AzureFrontDoor.Backend* in Ihren [Netzwerksicherheitsgruppen](../../virtual-network/network-security-groups-overview.md#security-rules) verwenden.
     * [Grundlegende Infrastrukturdienste](../../virtual-network/network-security-groups-overview.md#azure-platform-considerations) von Azure über virtualisierte IP-Hostadressen: `168.63.129.16` und `169.254.169.254`.
 
     > [!WARNING]
@@ -127,7 +127,7 @@ Eine Alternative zum Sperren Ihrer Anwendung, damit Datenverkehr nur von Ihrer s
     </configuration>
     ```
 
-* Azure Front Door unterstützt auch das Diensttag *AzureFrontDoor.Frontend*, das die Liste der IP-Adressen bietet, die Clients beim Herstellen einer Verbindung mit Front Door verwenden. Sie können das Diensttag *AzureFrontDoor.Frontend* verwenden, wenn Sie den ausgehenden Datenverkehr steuern, der zugelassen werden sollte, um eine Verbindung mit den hinter Azure Front Door bereitgestellten Diensten herzustellen. Azure Front Door unterstützt auch das zusätzliche Diensttag *AzureFrontDoor.FirstParty* zum internen Integrieren mit anderen Azure-Diensten. Weitere Informationen zu Anwendungsfällen für Azure Front Door-Diensttags finden Sie unter [Verfügbare Diensttags](../../virtual-network/service-tags-overview.md#available-service-tags).
+* Azure Front Door unterstützt auch das Diensttag *AzureFrontDoor.Frontend*, das die Liste der IP-Adressen angibt, die Clients beim Herstellen einer Verbindung mit Front Door verwenden. Sie können das Diensttag *AzureFrontDoor.Frontend* verwenden, wenn Sie den ausgehenden Datenverkehr steuern, der zugelassen werden sollte, um eine Verbindung mit den hinter Azure Front Door bereitgestellten Diensten herzustellen. Azure Front Door unterstützt zudem das zusätzliche Diensttag *AzureFrontDoor.FirstParty* zum internen Integrieren mit anderen Azure-Diensten. Weitere Informationen zu Anwendungsfällen für Azure Front Door-Diensttags finden Sie unter [Verfügbare Diensttags](../../virtual-network/service-tags-overview.md#available-service-tags).
 
 ### <a name="can-the-anycast-ip-change-over-the-lifetime-of-my-front-door"></a>Kann sich die Anycast-IP-Adresse während der Lebensdauer meiner Front Door-Instanz ändern?
 

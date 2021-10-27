@@ -12,12 +12,12 @@ ms.date: 07/8/2021
 ms.custom: template-concept
 ms.author: cchiedo
 ms.reviewer: saumadan, marsma
-ms.openlocfilehash: 55633a1a3a6f4377abbfc413d866af031f57a31c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7c3398b6f7a2f4de99adfbdf137886278e69a007
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355644"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130071715"
 ---
 # <a name="azure-ad-application-registration-security-best-practices"></a>Bewährte Methoden für die Sicherheit bei der Azure AD-Anwendungsregistrierung
 
@@ -83,15 +83,9 @@ Es ist zwar praktisch, Kennwortgeheimnisse als Anmeldeinformationen zu verwenden
 ## <a name="appid-uri-configuration"></a>AppId-URI-Konfiguration
 
 Bestimmte Anwendungen können Ressourcen (über WebAPI) verfügbar machen und müssen daher einen AppId-URI definieren, der die Ressource in einem Mandanten eindeutig identifiziert. Es wird empfohlen, API oder HTTPS als URI-Schema zu verwenden und den AppId-URI in den folgenden Formaten festzulegen, um URI-Konflikte in Ihrer Organisation zu vermeiden.
+Der AppId-URI dient als Präfix für die Bereiche, auf die im API-Code verwiesen wird, und muss eine verifizierte kundeneigene Domäne verwenden. Bei mandantenfähigen Anwendungen muss der Wert auch global eindeutig sein.
 
-**Gültige API-Schemas:**
-
-- api:// _{appId}_
-- api:// _{tenantId}/{appId}_
-- api:// _{tenantId}/{string}_
-- https:// _{verifiedCustomerDomain}/{string}_
-- https:// _{string}.{verifiedCustomerDomain}_
-- https:// _{string}.{verifiedCustomerDomain}/{string}_
+[!INCLUDE [active-directory-identifierUri](../../../includes/active-directory-identifier-uri-patterns.md)]
 
 ![Anwendungs-ID-URI](media/active-directory-application-registration-best-practices/app-id-uri.png)
 
@@ -102,6 +96,7 @@ Bestimmte Anwendungen können Ressourcen (über WebAPI) verfügbar machen und m�
 | Vermeiden von Konflikten durch Verwendung von gültigen URI-Formaten | Verwenden von AppId-URIs mit Platzhaltern |
 | Verwenden einer überprüften Domäne in branchenspezifischen Apps | Fehlerhaft formatierter URI    |
 | Inventarisieren Ihrer AppId-URIs                    |      -----             |
+| Verwenden Sie AppId Uri, um WebApi in Ihrer Organisation zu veröffentlichen| Verwenden Sie AppId Uri, um die Anwendung zu identifizieren, verwenden Sie stattdessen die appId-Eigenschaft|
 
 ## <a name="app-ownership-configuration"></a>Konfiguration des App-Besitzes
 

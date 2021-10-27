@@ -4,12 +4,12 @@ description: Schreiben Sie Telemetrieprozessoren und Telemetrieinitialisierer f�
 ms.topic: conceptual
 ms.date: 11/23/2016
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 5fe23d6cae1b363cdb0c70cba561953368412361
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 293de0f963829516e3fdb119e3bcbf592f9ad113
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128645130"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130063410"
 ---
 # <a name="filter-and-preprocess-telemetry-in-the-application-insights-sdk"></a>Filtern und Vorverarbeiten von Telemetriedaten im Application Insights-SDK
 
@@ -512,6 +512,9 @@ Was ist der Unterschied zwischen Telemetrieprozessoren und Telemetrieinitialisie
 * Mit Telemetrieprozessoren können Sie ein Telemetrieelement vollständig ersetzen oder verwerfen.
 * Alle registrierten Telemetrieinitialisierer werden für jedes Telemetrieelement garantiert aufgerufen. Bei Telemetrieprozessoren wird mit dem SDK der erste Telemetrieprozessor garantiert aufgerufen. Je nach vorangehenden Telemetrieprozessoren werden die restlichen Prozessoren anschließend aufgerufen oder nicht.
 * Mit Telemetrieinitialisierern können Sie Telemetriedaten mit zusätzlichen Eigenschaften anreichern oder die vorhandenen Daten überschreiben. Mit einem Telemetrieprozessor können Telemetriedaten herausgefiltert werden.
+
+> [!NOTE]
+> JavaScript hat nur Telemetrie-Initialisierer, die mit ITelemetryInitializer[ Ereignisse herausfiltern können](#javascript-web-applications)
 
 ## <a name="troubleshoot-applicationinsightsconfig"></a>Behandeln von Problemen mit „ApplicationInsights.config“
 

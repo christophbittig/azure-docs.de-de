@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/10/2018
-ms.openlocfilehash: 86eb2a3faf2d431fe78a46b1d3935fe60404171a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 69e3e65155745d829b75640d2d342a1a24cabffd
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128643097"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130036890"
 ---
 # <a name="get-images-from-your-custom-view"></a>Abrufen von Bildern aus der benutzerdefinierten Ansicht
 

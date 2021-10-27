@@ -6,14 +6,14 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 10/14/2021
 ms.reviewer: sngun
-ms.openlocfilehash: 01fb12957a9dce42a53861daebab796047cb6f84
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: f66b5a19c6d7deff947ed3208d78c64b95e7a304
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123115131"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130045311"
 ---
 # <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>Serverlose, ereignisbasierte Architekturen mit Azure Cosmos DB und Azure Functions
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -32,7 +32,7 @@ Mit dem [Azure Functions-Trigger für Cosmos DB](../../azure-functions/functions
 Um einen serverlosen, ereignisbasierten Flow zu implementieren, ist Folgendes erforderlich:
 
 * **Überwachter Container:** Dies ist der überwachte Azure Cosmos-Container, der die Daten enthält, aus denen der Änderungsfeed generiert wird. Alle Einfügungen und Aktualisierungen für den überwachten Container werden im Änderungsfeed des Containers berücksichtigt.
-* **Leasecontainer:** Der Leasecontainer verwaltet den Zustand für mehrere und dynamische serverlose Azure Functions-Instanzen und ermöglicht die dynamische Skalierung. Dieser Leasecontainer kann manuell oder automatisch vom Azure Functions-Trigger für Cosmos DB erstellt werden. Legen Sie das Flag *CreateLeaseCollectionIfNotExists* in der [Konfiguration](../../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) fest, um den Leasecontainer automatisch zu erstellen. Partitionierte Leasecontainer benötigen die Partitionsschlüsseldefinition `/id`.
+* **Leasecontainer:** Der Leasecontainer verwaltet den Zustand für mehrere und dynamische serverlose Azure Functions-Instanzen und ermöglicht die dynamische Skalierung. Sie können den Leasecontainer automatisch mit dem Azure Functions-Trigger für Cosmos DB erstellen. Sie können den Leasecontainer auch manuell erstellen. Legen Sie das Flag *CreateLeaseCollectionIfNotExists* in der [Konfiguration](../../azure-functions/functions-bindings-cosmosdb-v2-trigger.md#configuration) fest, um den Leasecontainer automatisch zu erstellen. Partitionierte Leasecontainer benötigen die Partitionsschlüsseldefinition `/id`.
 
 ## <a name="create-your-azure-functions-trigger-for-cosmos-db"></a>Erstellen eines Azure Functions-Triggers für Cosmos DB
 

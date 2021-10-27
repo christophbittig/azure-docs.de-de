@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 61253ab7360253e1c6902b6a7b38c9fb53faa3eb
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 039a32d1f1ec1327ee032c17af36dc910f363eed
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129611746"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130045973"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Konfigurieren Ihrer App Service- oder Azure Functions-App zur Verwendung der Azure AD-Anmeldung
 
@@ -70,14 +70,15 @@ Gehen Sie wie folgt vor, um die App zu registrieren:
 1. Nachdem die App-Registrierung erstellt wurde, kopieren Sie die **Anwendungs-ID (Client)** und die **Verzeichnis-ID (Mandant)** , damit Sie diese später verwenden können.
 1. Wählen Sie **Authentifizierung** aus. Aktivieren Sie unter **Implizite Genehmigung** die Option **ID-Token**, um OpenID Connect-Benutzeranmeldungen von App Service zuzulassen.
 1. (Optional) Wählen Sie **Branding** aus. Geben Sie in **URL der Startseite** die URL Ihrer App Service-App ein, und wählen Sie **Speichern** aus.
-1. Wählen Sie **Eine API verfügbar machen** > **Festlegen** aus. Fügen Sie für eine Einzelmandanten-App die URL Ihrer App Service-App ein, und wählen Sie **Speichern** aus, und fügen Sie für eine mehrinstanzenfähige App die URL ein, die auf einer von Mandanten verifizierten Domäne basiert, und wählen Sie dann **Speichern** aus.
+1. Wählen Sie **Eine API verfügbar machen** aus, und klicken Sie neben „Anwendungs-ID-URI“ auf **Festlegen**. Dieser Wert identifiziert die Anwendung eindeutig, wenn sie als Ressource verwendet wird, sodass Token angefordert werden können, die Zugriff gewähren. Er wird als Präfix für Bereiche verwendet, die Sie erstellen.
 
-   > [!NOTE]
-   > Dieser Wert ist der **Anwendungs-ID-URI** der App-Registrierung. Wenn Ihre Web-App Zugriff auf eine API in der Cloud erfordert, benötigen Sie den **Anwendungs-ID-URI** der Web-App, wenn Sie die App Service-Cloudressource konfigurieren. Sie können dies beispielsweise verwenden, wenn der Clouddienst explizit Zugriff auf die Web-App gewähren soll.
+    Für eine App mit nur einem Mandanten können Sie den Standardwert verwenden, der die Form `api://<application-client-id>` aufweist. Sie können auch einen besser lesbaren URI wie `https://contoso.com/api` basierend auf einer der überprüften Domänen für Ihren Mandanten angeben. Für eine mehrinstanzenfähige App müssen Sie einen benutzerdefinierten URI angeben. Weitere Informationen zu akzeptierten Formaten für App-ID-URIs finden Sie in der [Referenz zu bewährten Methoden für App-Registrierungen](../active-directory/develop/security-best-practices-for-app-registration.md#appid-uri-configuration).
+
+    Nachdem Sie den Wert eingegeben haben, klicken Sie auf **Speichern**.
 
 1. Wählen Sie **Bereich hinzufügen**.
    1. Geben Sie in **Bereichsname** den Namen *user_impersonation* ein.
-   1. Geben Sie in die Textfelder den Namen und die Beschreibung für den Einwilligungsbereich ein, die Benutzern auf der Einwilligungsseite angezeigt werden sollen. Geben Sie z. B. *Zugriff auf meine App* ein.
+   1. Geben Sie in die Textfelder den Namen und die Beschreibung für den Einwilligungsbereich ein, die Benutzern auf der Einwilligungsseite angezeigt werden sollen. Geben Sie z. B. *Zugriff auf &lt;Anwendungsname&gt;* ein.
    1. Wählen Sie **Bereich hinzufügen** aus.
 1. (Optional) Um einen geheimen Clientschlüssel zu erstellen, wählen Sie **Zertifikate und Geheimnisse** > **Neuer geheimer Clientschlüssel** > **Hinzufügen** aus. Kopieren Sie den Wert des geheimen Clientschlüssels, der auf der Seite angezeigt wird. Er wird nicht noch einmal angezeigt.
 1. (Optional) Wenn Sie mehrere **Antwort-URLs** hinzufügen möchten, wählen Sie **Authentifizierung** aus.
@@ -100,7 +101,7 @@ Gehen Sie wie folgt vor, um die App zu registrieren:
 
 1. Wenn dies der erste Identitätsanbieter ist, der für die Anwendung konfiguriert wurde, wird auch ein Abschnitt mit den **Einstellungen für die App-Dienst-Authentifizierung** angezeigt. Andernfalls können Sie mit dem nächsten Schritt fortfahren.
     
-    Diese Optionen bestimmen, wie Ihre Anwendung auf nicht authentifizierte Anfragen reagiert, und die Standardeinstellungen leiten alle Anfragen zur Anmeldung mit diesem neuen Anbieter um. Sie können dieses Verhalten jetzt anpassen oder diese Einstellungen später über den Hauptbildschirm der **Authentifizierung** anpassen, indem Sie neben den **Authentifizierungs-Einstellungen** die Option **Bearbeiten** auswählen. Weitere Informationen zu diesen Optionen finden Sie unter [Authentifizierungs-Verlauf](overview-authentication-authorization.md#authentication-flow).
+    Diese Optionen bestimmen, wie Ihre Anwendung auf nicht authentifizierte Anfragen reagiert, und die Standardeinstellungen leiten alle Anfragen zur Anmeldung mit diesem neuen Anbieter um. Sie können dieses Verhalten jetzt anpassen oder diese Einstellungen später über den Hauptbildschirm der **Authentifizierung** anpassen, indem Sie neben den **Authentifizierungs-Einstellungen** die Option **Bearbeiten** auswählen. Weitere Informationen zu diesen Optionen finden Sie unter [Authentifizierungs-Fluss](overview-authentication-authorization.md#authentication-flow).
 
 1. Klicken Sie auf **Hinzufügen**.
 

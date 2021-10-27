@@ -1,18 +1,18 @@
 ---
 title: Einführung in die ASE v1
 description: Erfahren Sie etwas über die Features der App Service-Umgebung v1. Dieses Dokument wird nur für Kunden bereitgestellt, die die ASE-Legacyumgebung v1 verwenden.
-author: stefsch
+author: madsd
 ms.assetid: 78e6d4f5-da46-4eb5-a632-b5fdc17d2394
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: ccompy
+ms.author: madsd
 ms.custom: seodec18
-ms.openlocfilehash: 878cef39ade0487c03dba83c9e3631fe3c72088f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b0ea6176f43a5373eb24437a42972eeced26094b
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96008622"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129999775"
 ---
 # <a name="introduction-to-app-service-environment-v1"></a>Einführung in die App Service-Umgebung v1
 
@@ -38,7 +38,7 @@ Eine ausführliche Betrachtung von horizontaler Skalierung mit mehreren App Serv
 
 Informationen darüber, wie die in AzureCon Deep Dive gezeigte Sicherheitsarchitektur konfiguriert wurde, finden Sie im Artikel über das Implementieren einer [Mehrschicht-Sicherheitsarchitektur](app-service-app-service-environment-layered-security.md) in App Service-Umgebungen.
 
-Der Zugriff von Apps für App-Umgebungen kann durch Upstreamgeräte wie z. B. Web Application Firewalls (WAF) abgegrenzt werden.  Im Artikel zum [Konfigurieren einer Web Application Firewall (WAF) für eine App Service-Umgebung](app-service-app-service-environment-web-application-firewall.md) wird dieses Szenario behandelt.
+Der Zugriff von Apps für App-Umgebungen kann durch Upstreamgeräte wie z. B. Web Application Firewalls (WAF) abgegrenzt werden.  Im Artikel zum [Konfigurieren einer Web Application Firewall (WAF) für eine App Service-Umgebung](integrate-with-application-gateway.md) wird dieses Szenario behandelt.
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -72,7 +72,7 @@ Weitere Details zur Funktionsweise der App Service-Umgebungen mit virtuellen und
 
 ## <a name="getting-started"></a>Erste Schritte
 
-Informationen zum Einstieg in App Service-Umgebungen finden Sie unter [Erstellen einer App Service-Umgebung][HowToCreateAnAppServiceEnvironment]
+Informationen zum Einstieg in App Service-Umgebungen finden Sie unter [Erstellen einer ASEv1 aus einer Vorlage](app-service-app-service-environment-create-ilb-ase-resourcemanager.md).
 
 Eine Übersicht über die Netzwerkarchitektur der App Service-Umgebung finden Sie im Artikel [Übersicht über die Netzwerkarchitektur][NetworkArchitectureOverview].
 
@@ -84,7 +84,6 @@ Informationen zur Verwendung einer App Service-Umgebung mit ExpressRoute finden 
 [PremiumTier]: https://azure.microsoft.com/pricing/details/app-service/
 [MoreInfoOnVirtualNetworks]: ../../virtual-network/virtual-networks-faq.md
 [AppServicePlan]: ../overview-hosting-plans.md
-[HowToCreateAnAppServiceEnvironment]: app-service-web-how-to-create-an-app-service-environment.md
 [LogicApps]: ../../logic-apps/logic-apps-overview.md
 [AzureConDeepDive]:  https://azure.microsoft.com/documentation/videos/azurecon-2015-deploying-highly-scalable-and-secure-web-and-mobile-apps/
 [GeodistributedAppFootprint]:  app-service-app-service-environment-geo-distributed-scale.md

@@ -6,17 +6,17 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/20/2021
-ms.openlocfilehash: ae45647369cde2cc0b427fe128f4fea44de79bf4
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 465d399e699f4ae4491c2964646c9c75956d0014
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129058916"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130070335"
 ---
 # <a name="consistency-levels-in-azure-cosmos-db"></a>Konsistenzebenen in Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Verteilte Datenbanken, die auf Replikation angewiesen sind, um Hochverfügbarkeit, niedrige Latenzzeiten oder beides sicherzustellen, bilden den grundlegenden Kompromiss zwischen Lesekonsistenz, Verfügbarkeit, Latenz sowie Durchsatz, wie in dem [PACLC-Theorem](https://en.wikipedia.org/wiki/PACELC_theorem) definiert. Die Linearisierbarkeit oder das Modell für starke Konsistenz ist der Goldstandard bei der Datenprogrammierbarkeit. Aber die höheren Schreiblatenzen, die dadurch entstehen, dass Daten über große Entfernungen repliziert und übertragen werden müssen, verursachen zusätzliche Kosten. Eine hohe Konsistenz kann auch Nachteile durch eine geringere Verfügbarkeit (bei Ausfällen) haben, da die Daten nicht in jeder Region repliziert und committet werden können. Die letztliche Konsistenz führt zu höherer Verfügbarkeit und besserer Leistung, aber es ist schwieriger, Anwendungen zu programmieren, da die Daten möglicherweise nicht in allen Regionen vollständig konsistent sind.
+Verteilte Datenbanken, die auf Replikation angewiesen sind, um Hochverfügbarkeit, niedrige Latenzzeiten oder beides sicherzustellen, bilden den grundlegenden Kompromiss zwischen Lesekonsistenz, Verfügbarkeit, Latenz sowie Durchsatz, wie in dem [PACELC-Theorem](https://en.wikipedia.org/wiki/PACELC_theorem) definiert. Die Linearisierbarkeit oder das Modell für starke Konsistenz ist der Goldstandard bei der Datenprogrammierbarkeit. Aber die höheren Schreiblatenzen, die dadurch entstehen, dass Daten über große Entfernungen repliziert und übertragen werden müssen, verursachen zusätzliche Kosten. Eine hohe Konsistenz kann auch Nachteile durch eine geringere Verfügbarkeit (bei Ausfällen) haben, da die Daten nicht in jeder Region repliziert und committet werden können. Die letztliche Konsistenz führt zu höherer Verfügbarkeit und besserer Leistung, aber es ist schwieriger, Anwendungen zu programmieren, da die Daten möglicherweise nicht in allen Regionen vollständig konsistent sind.
 
 Die meisten kommerziell verfügbaren, verteilten NoSQL-Datenbanken, die heute auf dem Markt erhältlich sind, bieten ausschließlich eine hohe und letztliche Konsistenz. Azure Cosmos DB bietet fünf klar definierte Ebenen. Diese sind (von der stärksten bis zur schwächsten Ebene):
 
@@ -170,18 +170,18 @@ Die exakte RTT-Latenz richtet sich nach der physischen Entfernung und der Azure-
 
 ## <a name="consistency-levels-and-data-durability"></a><a id="rto"></a>Konsistenzebenen und Datendauerhaftigkeit
 
-Bei einer global verteilten Datenbankumgebung besteht eine direkte Beziehung zwischen der Konsistenzebene und der Datendauerhaftigkeit bei einem Ausfall in der gesamten Region. Wenn Sie Ihren Plan für die Geschäftskontinuität entwickeln, müssen Sie wissen, wie viel Zeit maximal vergehen darf, bis die Anwendung nach einer Störung vollständig wiederhergestellt ist. Die Zeit, die für die vollständige Wiederherstellung einer Anwendung erforderlich ist, wird als **RTO** (**Recovery Time Objective**) bezeichnet. Sie müssen auch wissen, über welchen Zeitraum kürzlich durchgeführte Datenupdates maximal verloren gehen dürfen, wenn die Anwendung nach einer Störung wiederhergestellt wird. Der Zeitraum der Updates, der verloren gehen darf, wird als **RPO** (**Recovery Point Objective**) bezeichnet.
+Bei einer global verteilten Datenbankumgebung besteht eine direkte Beziehung zwischen der Konsistenzebene und der Datendauerhaftigkeit bei einem Ausfall in der gesamten Region. Bei der Entwicklung Ihres Business-Continuity-Plans müssen Sie sich darüber im Klaren sein, über welchen Zeitraum kürzlich durchgeführte Datenupdates maximal verloren gehen dürfen, wenn die Anwendung nach einer Störung wiederhergestellt wird. Der Zeitraum der Updates, der verloren gehen darf, wird als **RPO** (**Recovery Point Objective**) bezeichnet.
 
-In der folgenden Tabelle wird die Beziehung zwischen dem Konsistenzmodell und der Datendauerhaftigkeit bei einem regionsweiten Ausfall definiert. Beachten Sie unbedingt, dass es in einem verteilten System auch bei starker Konsistenz unmöglich ist, eine verteilte Datenbank mit einem RPO- und RTO-Wert von 0 (null) zu erzielen. Grund ist das [CAP-Theorem](https://en.wikipedia.org/wiki/CAP_theorem).
+In der folgenden Tabelle wird die Beziehung zwischen dem Konsistenzmodell und der Datendauerhaftigkeit bei einem regionsweiten Ausfall definiert.
 
-|**Region(en)**|**Replikationsmodus**|**Konsistenzebene**|**RPO**|**RTO**|
-|---------|---------|---------|---------|---------|
-|1|Eine oder mehrere Schreibregionen|Jede Konsistenzebene|< 240 Minuten|< 1 Woche|
-|> 1|Eine Schreibregion|Sitzung, Präfixkonsistenz, Letztlich|< 15 Minuten|< 15 Minuten|
-|> 1|Eine Schreibregion|Begrenzte Veraltung (Bounded staleness)|*K* & *T*|< 15 Minuten|
-|> 1|Eine Schreibregion|STARK (Strong)|0|< 15 Minuten|
-|> 1|Mehrere Schreibregionen|Sitzung, Präfixkonsistenz, Letztlich|< 15 Minuten|0|
-|> 1|Mehrere Schreibregionen|Begrenzte Veraltung (Bounded staleness)|*K* & *T*|0|
+|**Region(en)**|**Replikationsmodus**|**Konsistenzebene**|**RPO**|
+|---------|---------|---------|---------|
+|1|Eine oder mehrere Schreibregionen|Jede Konsistenzebene|< 240 Minuten|
+|> 1|Eine Schreibregion|Sitzung, Präfixkonsistenz, Letztlich|< 15 Minuten|
+|> 1|Eine Schreibregion|Begrenzte Veraltung (Bounded staleness)|*K* & *T*|
+|> 1|Eine Schreibregion|STARK (Strong)|0|
+|> 1|Mehrere Schreibregionen|Sitzung, Präfixkonsistenz, Letztlich|< 15 Minuten|
+|> 1|Mehrere Schreibregionen|Begrenzte Veraltung (Bounded staleness)|*K* & *T*|
 
 *K* = Anzahl von *„K“* -Versionen (d. h. Updates) eines Elements.
 

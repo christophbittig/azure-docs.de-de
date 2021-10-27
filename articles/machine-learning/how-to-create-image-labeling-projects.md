@@ -9,12 +9,12 @@ ms.subservice: mldata
 ms.topic: how-to
 ms.date: 09/24/2021
 ms.custom: data4ml
-ms.openlocfilehash: e600c5d6d880a5aba0a714173897660e306aa853
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: b8681974510b6d3fbee74248aab95b33de443109
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129424557"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130003816"
 ---
 # <a name="create-an-image-labeling-project-and-export-labels"></a>Erstellen eines Datenbeschriftungsprojekts und Exportieren von Beschriftungen
 
@@ -59,7 +59,7 @@ Bilddaten können Dateien eines der folgenden Typen sein: JPG, JPEG, PNG, JPE, J
 
 1. Wählen Sie **Weiter**, wenn Sie bereit sind, fortzufahren.
 
-## <a name="add-workforce-optional"></a>Hinzufügen von Mitarbeiter*innen (optional)
+## <a name="add-workforce-optional"></a>Arbeitskräfte hinzufügen (optional)
 
 [!INCLUDE [outsource](../../includes/machine-learning-data-labeling-outsource.md)]
 
@@ -169,7 +169,7 @@ Auf der Registerkarte **Dashboard** wird der Fortschritt der Beschriftungsaufgab
 
 :::image type="content" source="./media/how-to-create-labeling-projects/labeling-dashboard.png" alt-text="Dashboard für Datenbeschriftung":::
 
-Die Fortschrittsübersicht zeigt, wie viele Elemente beschriftet, übersprungen oder noch nicht erledigt wurden bzw. noch überprüft werden müssen.  Bewegen Sie den Mauszeiger auf das Diagramm, um die Anzahl der Elemente in den einzelnen Abschnitten anzuzeigen.
+Die Fortschrittsübersicht zeigt, wie viele Elemente beschriftet, übersprungen oder noch nicht erledigt wurden bzw. noch überprüft werden müssen.  Bewegen Sie den Mauszeiger über das Diagramm, um die Anzahl der Artikel in jedem Abschnitt zu sehen.
 
 Der mittlere Abschnitt zeigt die Warteschlange der Aufgaben, die noch zugewiesen werden müssen. Wenn die ML-gestützte Beschriftung deaktiviert ist, wird in diesem Abschnitt die Anzahl der manuellen Aufgaben angezeigt, die zugewiesen werden müssen. Wenn die ML-gestützte Beschriftung aktiviert ist, wird auch Folgendes angezeigt:
 
@@ -187,7 +187,7 @@ Auf der rechten Seite befindet sich eine Verteilung der Beschriftungen für abge
 
 ### <a name="data-tab"></a>Registerkarte „Daten“
 
-Auf der Registerkarte **Daten** können Sie Ihr Dataset anzeigen und beschriftete Daten überprüfen. Scrollen Sie durch die beschrifteten Daten, um die Beschriftungen anzuzeigen. Wenn Sie falsch beschriftete Daten sehen, können Sie diese auswählen und auf **Ablehnen** klicken. Dadurch werden die Beschriftungen entfernt und die Daten wieder in die Warteschlange der unbeschrifteten Daten eingereiht.
+Auf der Registerkarte **Daten** können Sie Ihr Dataset anzeigen und beschriftete Daten überprüfen. Blättern Sie durch die beschrifteten Daten, um die Beschriftungen zu sehen. Wenn Sie falsch beschriftete Daten sehen, können Sie diese auswählen und auf **Ablehnen** klicken. Dadurch werden die Beschriftungen entfernt und die Daten wieder in die Warteschlange der unbeschrifteten Daten eingereiht.
 
 ### <a name="details-tab"></a>Registerkarte „Details“
 
@@ -219,6 +219,8 @@ Verwenden Sie die Schaltfläche **Exportieren** auf der Seite **Projektdetails**
 Sie können im Abschnitt **Datasets** von Machine Learning auf das exportierte Azure Machine Learning-Dataset zugreifen. Die Seite mit Datasetdetails bietet auch Beispielcode für den Zugriff auf Ihre Beschriftungen aus Python.
 
 ![Exportiertes Dataset](./media/how-to-create-labeling-projects/exported-dataset.png)
+
+Nachdem Sie Ihre beschrifteten Daten in ein Azure Machine Learning-Dataset exportiert haben, können Sie mithilfe des automatisierten ML Modelle für maschinelles Sehen erstellen, die mit Ihren beschrifteten Daten trainiert werden. Informationen zum Einrichten von automatisiertem ML für das Trainieren von Modellen für maschinelles Sehen mit Python (Vorschau) finden Sie [hier](how-to-auto-train-image-models.md).
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

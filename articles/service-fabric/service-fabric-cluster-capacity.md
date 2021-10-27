@@ -4,12 +4,12 @@ description: Knotentypen, Dauerhaftigkeit, Zuverlässigkeit und andere Faktoren 
 ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
-ms.openlocfilehash: 0b04bc99abc2f9864ed22078f809702390d9f547
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 3bc3edfa2f3adf7dd29d7f6f1dfee3b95107950c
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110695447"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130064303"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Überlegungen zur Kapazitätsplanung für Service Fabric-Cluster
 
@@ -64,7 +64,7 @@ Ein weiterer zu berücksichtigender Aspekt für Ihre Knotentypeigenschaften ist 
 Der *Dauerhaftigkeitsgrad* entscheidet über die Berechtigungen Ihrer Service Fabric-VMs in der zugrunde liegenden Azure-Infrastruktur. Mit dieser Berechtigung kann Service Fabric Infrastrukturanforderungen auf VM-Ebene anhalten (z. B. einen Neustart, ein Reimaging oder eine Migration), die sich auf die Quorumanforderungen für Service Fabric-Systemdienste und Ihre zustandsbehafteten Dienste auswirken.
 
 > [!IMPORTANT]
-> Der Dauerhaftigkeitsgrad wird pro Knotentyp festgelegt. Wenn kein Wert angegeben ist, wird *Bronze* verwendet, es werden jedoch keine automatischen Betriebssystemupgrades durchgeführt. Die Dauerhaftigkeit *Silber* oder *Gold* wird für Produktionsworkloads empfohlen.
+> Der Dauerhaftigkeitsgrad wird pro Knotentyp festgelegt. Wenn nichts festgelegt ist, wird die *Bronze*-Ebene verwendet. Produktionsworkloads erfordern eine Dauerhaftigkeitsstufe von Silber oder Gold, um Datenverluste durch Infrastrukturanforderungen auf VM-Ebene zu vermeiden.
 
 In der folgenden Tabelle werden die Dauerhaftigkeitsgrade für Service Fabric sowie die jeweiligen Anforderungen aufgeführt.
 

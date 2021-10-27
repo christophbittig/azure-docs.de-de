@@ -3,20 +3,20 @@ title: Bereitstellen benutzerdefinierter Richtlinien mit GitHub Actions
 titleSuffix: Azure AD B2C
 description: Hier lernen Sie, wie Sie Azure AD B2C benutzerdefinierte Richtlinien in einer CI/CD-Pipeline unter Verwendung von GitHub Actions bereitstellen.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 08/25/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 956803f14d9df49e99411eae2cb6a76db7636b03
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: 7ce060e9e251313b93930200a73dde9b747c2d75
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123187844"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130037366"
 ---
 # <a name="deploy-custom-policies-with-github-actions"></a>Bereitstellen benutzerdefinierter Richtlinien mit GitHub Actions
 
@@ -98,7 +98,7 @@ Gehen Sie zum Erstellen eines Workflows wie folgt vor:
           uses: azure-ad-b2c/deploy-trustframework-policy@v3
           with:
             folder: "./Policies"
-            files: "TrustFrameworkBase.xml,TrustFrameworkExtensions.xml,SignUpOrSignin.xml"
+            files: "TrustFrameworkBase.xml,TrustFrameworkLocalization.xml,TrustFrameworkExtensions.xml,SignUpOrSignin.xml"
             tenant: ${{ env.tenant }}
             clientId: ${{ env.clientId }}
             clientSecret: ${{ secrets.clientSecret }}
@@ -111,12 +111,13 @@ Gehen Sie zum Erstellen eines Workflows wie folgt vor:
     | `env` | `clientId` | **Anwendungs-(Client-)ID** der Anwendung, die Sie im Schritt [ Registrieren einer MS Graph-Anwendung](#register-a-microsoft-graph-application) registriert haben. |
     |`env`| `tenant` | Ihr Azure AD B2C [Mandantenname](tenant-management.md#get-your-tenant-name) (z. B. contoso.onmicrosoft.com). |
     | `with`| `folder`| Ein Ordner, in dem die benutzerdefinierten Richtliniendateien gespeichert sind, z. B.`./Policies`|
-    | `with`| `files` | Durch Kommas getrennte Liste der bereitzustellenden Richtliniendateien, z. B.`TrustFrameworkBase.xml,TrustFrameworkExtensions.xml,SignUpOrSignin.xml`|
+    | `with`| `files` | Durch Kommas getrennte Liste der bereitzustellenden Richtliniendateien, z. B.`TrustFrameworkBase.xml,TrustFrameworkLocalization.xml,TrustFrameworkExtensions.xml,SignUpOrSignin.xml`|
     
     > [!IMPORTANT]
     > Achten Sie beim Ausführen der Agenten und Hochladen der Richtliniendateien darauf, dass sie in der richtigen Reihenfolge hochgeladen werden:
     >
     > 1. *TrustFrameworkBase.xml*
+    > 1. *TrustFrameworkLocalization.xml*
     > 1. *TrustFrameworkExtensions.xml*
     > 1. *SignUpOrSignin.xml*
     > 1. *ProfileEdit.xml*

@@ -10,12 +10,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b4635b461441b4ac4ed193a48cbd8e14790ac835
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 50504d2e36c490c90c7c8bdbb8b737837b64eaff
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129060666"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130163026"
 ---
 # <a name="about-azure-key-vault"></a>Informationen zu Azure Key Vault
 
@@ -39,7 +39,7 @@ Ihre Anwendungen können mithilfe von URIs sicher auf benötigte Informationen z
 
 Ein Aufrufer (Benutzer oder Anwendung) kann erst nach ordnungsgemäßer Authentifizierung und Autorisierung auf einen Schlüsseltresor zugreifen. Bei der Authentifizierung wird die Identität des Aufrufers ermittelt. Bei der Autorisierung wird dagegen bestimmt, welche Vorgänge der Aufrufer ausführen darf.
 
-Die Authentifizierung erfolgt über Azure Active Directory. Für die Autorisierung kann die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC) oder eine Key Vault-Zugriffsrichtlinie verwendet werden. Azure RBAC kommt bei der Verwaltung der Tresore zum Einsatz. Eine Key Vault-Zugriffsrichtlinie wird für den Zugriff auf gespeicherte Daten in einem Tresor verwendet.
+Die Authentifizierung erfolgt über Azure Active Directory. Für die Autorisierung kann die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC) oder eine Key Vault-Zugriffsrichtlinie verwendet werden. Azure RBAC kann sowohl für die Verwaltung der Tresore als auch für den Zugriff auf in einem Tresor gespeicherte Daten verwendet werden. Die Schlüsseltresor-Zugriffsrichtlinie kann hingegen nur verwendet werden, wenn versucht wird, auf in einem Tresor gespeicherte Daten zuzugreifen.
 
 Azure Key Vaults kann entweder durch Software geschützt oder mit der Azure Key Vault-Ebene „Premium“ durch Hardwaresicherheitsmodule (HSMs) per Hardware geschützt sein. Durch Software geschützte Schlüssel, Geheimnisse und Zertifikate werden von Azure mithilfe von branchenüblichen Algorithmen und Schlüssellängen geschützt.  In Szenarien mit erhöhten Sicherheitsanforderungen können Sie Schlüssel in Hardwaresicherheitsmodule (HSMs) importieren oder darin generieren. Diese Schlüssel bleiben immer innerhalb der HSM-Grenzen. Azure Key Vault verwendet nCipher-HSMs, die nach den Federal Information Processing Standards (FIPS) 140-2 Level 2 überprüft wurden. Sie können nCipher-Tools verwenden, um einen Schlüssel aus Ihrem HSM zu Azure Key Vault zu verschieben.
 

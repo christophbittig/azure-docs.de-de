@@ -7,12 +7,12 @@ ms.author: danlep
 ms.date: 04/15/2021
 ms.service: api-management
 ms.topic: how-to
-ms.openlocfilehash: f3e0004115b417c85914c7cc40fd98acf3c63d73
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: dc709f96c44ddf6ee701493e49c006d01533ede8
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128592639"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130040510"
 ---
 # <a name="self-host-the-api-management-developer-portal"></a>Selbsthosten des API Management-Entwicklerportals
 
@@ -68,7 +68,7 @@ Die Einrichtung Ihrer lokalen Umgebung umfasst das Klonen des Repositorys, den W
 
 ## <a name="step-2-configure-json-files-static-website-and-cors-settings"></a>Schritt 2: Konfigurieren von JSON-Dateien, statischer Website und CORS-Einstellungen
 
-Für das Entwicklerportal wird die REST-API von API Management benötigt, um den Inhalt verwalten zu können.
+Für das Entwicklerportal wird die REST-API von API Management benötigt, um den Inhalt zu verwalten.
 
 ### <a name="configdesignjson-file"></a>Datei „config.design.json“
 

@@ -6,8 +6,8 @@
       href: azure-netapp-files-introduction.md
     - name: Neues
       href: whats-new.md
-    - name: Speicherhierarchie von Azure NetApp Files
-      href: azure-netapp-files-understand-storage-hierarchy.md
+    - name: Azure NetApp Files für Azure Government
+      href: azure-government.md
 - name: Schnellstarts
   expanded: true
   items:
@@ -15,12 +15,30 @@
       href: azure-netapp-files-quickstart-set-up-account-create-volumes.md
 - name: Konzepte
   items:
-    - name: Dienstebenen für Azure NetApp Files
-      href: azure-netapp-files-service-levels.md
-    - name: Ressourcenlimits für Azure NetApp Files
-      href: azure-netapp-files-resource-limits.md
-    - name: Metriken für Azure NetApp Files
-      href: azure-netapp-files-metrics.md
+    - name: 'Azure NetApp Files: Grundlagen'
+      items:
+        - name: Speicherhierarchie von Azure NetApp Files
+          href: azure-netapp-files-understand-storage-hierarchy.md
+        - name: Dienstebenen für Azure NetApp Files
+          href: azure-netapp-files-service-levels.md
+        - name: Richtlinien für die Azure NetApp Files-Netzwerkplanung
+          href: azure-netapp-files-network-topologies.md
+        - name: Ressourcenlimits für Azure NetApp Files
+          href: azure-netapp-files-resource-limits.md
+        - name: Metriken für Azure NetApp Files
+          href: azure-netapp-files-metrics.md
+        - name: Speicherdienst-Add-Ons
+          href: storage-service-add-ons.md
+        - name: Kostenmodell für Azure NetApp Files
+          href: azure-netapp-files-cost-model.md
+    - name: Kontingente
+      items:
+        - name: Grundlegendes zum Volumekontingent
+          href: volume-quota-introduction.md
+        - name: Grundlegendes zum festen Volumekontingent
+          href: volume-hard-quota-guidelines.md
+        - name: Regionales Kapazitätskontingent
+          href: regional-capacity-quota.md
     - name: Leistung
       items:
         - name: Überlegungen zur Leistung für Azure NetApp Files
@@ -49,29 +67,25 @@
               href: azure-netapp-files-smb-performance.md
             - name: Bewährte Methoden für SKUs für virtuelle Azure-Computer
               href: performance-virtual-machine-sku.md
-    - name: Kostenmodell für Azure NetApp Files
-      href: azure-netapp-files-cost-model.md
-    - name: Grundlegendes zum Volumekontingent
-      href: volume-quota-introduction.md
-    - name: Richtlinien für die Azure NetApp Files-Netzwerkplanung
-      href: azure-netapp-files-network-topologies.md
-    - name: Manueller QoS-Kapazitätspool
-      href: manual-qos-capacity-pool-introduction.md
-    - name: Funktionsweise von Azure NetApp Files-Momentaufnahmen
-      href: snapshots-introduction.md
-    - name: Azure NetApp Files-Sicherung
+    - name: Schutz von Daten
       items:
-        - name: Grundlegendes zur Azure NetApp Files-Sicherung
-          href: backup-introduction.md
-        - name: 'Azure NetApp Files-Sicherung: Anforderungen und Überlegungen'
-          href: backup-requirements-considerations.md
-    - name: Regionsübergreifende Replikation
-      items:
-        - name: Grundlegendes zur regionsübergreifenden Replikation
-          href: cross-region-replication-introduction.md
-        - name: 'Regionsübergreifende Replikation: Anforderungen und Überlegungen'
-          href: cross-region-replication-requirements-considerations.md
-    - name: Lösungen
+        - name: Funktionsweise von Azure NetApp Files-Momentaufnahmen
+          href: snapshots-introduction.md
+        - name: Azure NetApp Files-Sicherung
+          items:
+            - name: Grundlegendes zur Azure NetApp Files-Sicherung
+              href: backup-introduction.md
+            - name: 'Azure NetApp Files-Sicherung: Anforderungen und Überlegungen'
+              href: backup-requirements-considerations.md
+        - name: Regionsübergreifende Replikation
+          items:
+            - name: Grundlegendes zur regionsübergreifenden Replikation
+              href: cross-region-replication-introduction.md
+            - name: 'Regionsübergreifende Replikation: Anforderungen und Überlegungen'
+              href: cross-region-replication-requirements-considerations.md
+        - name: Worum handelt es sich beim Tool für konsistente Momentaufnahmen in Azure-Anwendungen?
+          href: azacsnap-introduction.md
+    - name: Lösungen und Vorteile
       items:
         - name: Lösungsarchitekturen mit Azure NetApp Files
           href: azure-netapp-files-solution-architectures.md
@@ -85,16 +99,28 @@
               href: solutions-windows-virtual-desktop.md
             - name: "Vorteile der Verwendung von Azure NetApp Files für die SQL\_Server-Bereitstellung"
               href: solutions-benefits-azure-netapp-files-sql-server.md
-    - name: Häufig gestellte Fragen zu Azure NetApp Files
-      href: azure-netapp-files-faqs.md
-    - name: Worum handelt es sich beim Tool für konsistente Momentaufnahmen in Azure-Anwendungen?
-      href: azacsnap-introduction.md
-    - name: Speicherdienst-Add-Ons
-      href: storage-service-add-ons.md
-    - name: Bedeutung der Umstellung auf harte Kontingentgrenzen für Volumes
-      href: volume-hard-quota-guidelines.md
-    - name: Azure NetApp Files für Azure Government
-      href: azure-government.md
+    - name: Häufig gestellte Fragen
+      items:
+        - name: Häufig gestellte Fragen zum Netzwerk
+          href: faq-networking.md
+        - name: Häufig gestellte Fragen zur Kapazitätsverwaltung
+          href: faq-capacity-management.md
+        - name: Häufig gestellte Fragen zu NFS
+          href: faq-nfs.md
+        - name: Häufig gestellte Fragen zu SMB
+          href: faq-smb.md
+        - name: Häufig gestellte Fragen zur Leistung
+          href: faq-performance.md
+        - name: Häufig gestellte Fragen zur App-Resilienz
+          href: faq-application-resilience.md
+        - name: Häufig gestellte Fragen zu Datenmigration und -schutz
+          href: faq-data-migration-protection.md
+        - name: Häufig gestellte Fragen zur Azure NetApp Files-Sicherung
+          href: faq-backup.md
+        - name: Häufig gestellte Fragen zur Sicherheit
+          href: faq-security.md
+        - name: Häufig gestellte Fragen zur Integration
+          href: faq-integration.md
 - name: Exemplarische Vorgehensweisen
   items:
     - name: Registrieren und einrichten
@@ -219,20 +245,14 @@
           href: azure-netapp-files-sdk-cli.md
     - name: Problembehandlung
       items:
-        - name: Problembehandlung für Kapazitätspools
+        - name: Behandeln von Kapazitätspoolfehlern
           href: troubleshoot-capacity-pools.md
-        - name: Problembehandlung für die regionsübergreifende Replikation
-          href: troubleshoot-cross-region-replication.md
         - name: Behandeln von Volumefehlern
           href: troubleshoot-volumes.md
-        - name: Problembehandlung für SMB-Volumes und Volumes mit dualem Protokoll
-          href: troubleshoot-dual-protocol-volumes.md
-        - name: Problembehandlung für NFSv4.1-Kerberos-Volumes
-          href: troubleshoot-nfsv41-kerberos-volumes.md
-        - name: Problembehandlung für Momentaufnahmenrichtlinien
+        - name: Behandeln von Fehlern bei Momentaufnahmerichtlinien
           href: troubleshoot-snapshot-policies.md
-        - name: Behandeln von Problemen mit LDAP-Volumes
-          href: troubleshoot-ldap-volumes.md
+        - name: Behandeln von Fehlern bei der regionsübergreifenden Replikation
+          href: troubleshoot-cross-region-replication.md
         - name: Beheben von Ressourcenanbieterfehlern
           href: azure-netapp-files-troubleshoot-resource-provider-errors.md
 - name: Verweis

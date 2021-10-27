@@ -113,6 +113,16 @@
           href: active-directory-architecture.md
         - name: Integrieren all Ihrer Apps in Azure AD
           href: five-steps-to-full-application-integration-with-azure-ad.md
+        - name: Mehrstufige Benutzerverwaltung
+          items:
+            - name: Einführung in die mehrstufige Benutzerverwaltung
+              href: multi-tenant-user-management-introduction.md
+            - name: Häufige Szenarien
+              href: multi-tenant-user-management-scenarios.md
+            - name: Allgemeine Überlegungen
+              href: multi-tenant-common-considerations.md
+            - name: Gängige Lösungen
+              href: multi-tenant-common-solutions.md
         - name: Authentifizierungs- und Bereitstellungsprotokolle
           items:
             - name: Übersicht

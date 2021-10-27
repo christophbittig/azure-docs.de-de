@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/18/2020
-ms.openlocfilehash: 6aa960eb7aed7a579c3fc95748b6e32601201a61
-ms.sourcegitcommit: b4fbb7a6a0aa93656e8dd29979786069eca567dc
+ms.openlocfilehash: 6c8353064f96868c99a1e4f1feb270e6cd984bce
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/13/2021
-ms.locfileid: "107305122"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129994250"
 ---
 # <a name="send-data-from-windows-azure-diagnostics-extension-to-azure-event-hubs"></a>Senden von Daten aus der Windows Azure-Diagnoseerweiterung an Azure Event Hubs
 Die Azure-Diagnoseerweiterung ist ein Agent in Azure Monitor, der Überwachungsdaten vom Gastbetriebssystem und Workloads von virtuellen Azure-Computern und anderen Computeressourcen sammelt. In diesem Artikel wird beschrieben, wie Daten aus der Windows Azure-Diagnoseerweiterung (WAD) an [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) gesendet werden, damit Sie diese an Speicherorte außerhalb von Azure weiterleiten können.
@@ -164,7 +164,7 @@ Im folgenden Beispiel wird das **sinks**-Attribut direkt auf drei Leistungsindik
 ```
 
 ## <a name="validating-configuration"></a>Überprüfen der Konfiguration
-Sie können anhand einer Vielzahl von Methoden überprüfen, ob Daten an den Event Hub gesendet werden. Eine einfache Methode ist die Verwendung von Event Hubs Capture, wie es unter [Erfassen von Ereignissen über Azure Event Hubs in Azure Blob Storage oder Azure Data Lake Storage](../../event-hubs/event-hubs-capture-overview.md) beschrieben ist. 
+Sie können anhand einer Vielzahl von Methoden überprüfen, ob Daten an den Event Hub gesendet werden. Eine einfache Methode ist die Verwendung von Event Hubs Capture gemäß der Beschreibung unter [Erfassen von Ereignissen über Azure Event Hubs in Azure Blob Storage oder Azure Data Lake Storage](../../event-hubs/event-hubs-capture-overview.md). 
 
 
 ## <a name="troubleshoot-event-hubs-sinks"></a>Beheben von Problemen mit Event Hubs-Senken

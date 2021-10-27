@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 06/30/2021
 ms.author: cherylmc
-ms.openlocfilehash: d1ac031b79372987561651044e81da2e3d2d2779
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: fd0eeb94bb35248aababa3f3a8d9fe820d4abe7f
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128636481"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130002869"
 ---
 # <a name="monitoring-virtual-wan"></a>Überwachen von Virtual WAN
 
@@ -96,6 +96,12 @@ Die folgenden Metriken sind für Azure ExpressRoute-Gateways verfügbar:
 | --- | --- |
 | **BitsInPerSecond** | Eingehende Bits für Azure pro Sekunde|
 | **BitsOutPerSecond** | Ausgehende Bits für Azure pro Sekunde |
+| **CPU-Auslastung** | CPU-Auslastung des ExpressRoute-Gateways.|
+| **Pakete pro Sekunde** | Paketanzahl von ExpressRoute-Gateways.|
+| **Anzahl der für Peer angekündigten Routen**| Anzahl der für Peer angekündigten Routen nach ExpressRoute-Gateway. | 
+| **Anzahl der von Peer gelernten Routen**| Anzahl der von Peer gelernten Routen nach ExpressRoute-Gateway.|
+| **Häufigkeit von Routenänderungen** | Häufigkeit der Routenänderung in ExpressRoute-Gateway.|
+| **Anzahl der virtuellen Computer im virtuellen Netzwerk**| Anzahl der VMs, die dieses ExpressRoute-Gateway verwenden.|
 
 ### <a name="view-gateway-metrics"></a><a name="metrics-steps"></a>Anzeigen von Gatewaymetriken
 

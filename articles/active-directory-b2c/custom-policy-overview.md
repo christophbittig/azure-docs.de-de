@@ -1,22 +1,22 @@
 ---
-title: Übersicht über benutzerdefinierte Richtlinien in Azure Active Directory B2C | Microsoft-Dokumentation
+title: Übersicht über benutzerdefinierte Richtlinien in Azure Active Directory B2C
 description: Ein Thema zu benutzerdefinierten Azure Active Directory B2C-Richtlinien und zum Identity Experience Framework
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/08/2021
-ms.author: mimart
+ms.date: 10/14/2021
+ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: 5c27384e58a23501224e279e987115e4981ebf99
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.openlocfilehash: 6da41c32b3b67cbd4e418f844ee73ff4ee85341e
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122633607"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130037393"
 ---
 # <a name="azure-ad-b2c-custom-policy-overview"></a>Übersicht über Benutzerdefinierte Azure AD B2C-Richtlinien
 
@@ -35,7 +35,7 @@ Das [Starter Pack](tutorial-create-user-flows.md?pivots=b2c-custom-policy#get-th
 - **SocialAndLocalAccounts** ermöglicht sowohl die Verwendung von lokalen Konten als auch von Konten für soziale Netzwerke. Die meisten unserer Beispiele beziehen sich auf diese Richtlinie.
 - **SocialAndLocalAccountsWithMFA** ermöglicht lokale Optionen und Optionen für soziale Netzwerke sowie zur Multi-Factor Authentication.
 
-Im [Azure AD B2C Beispiele GitHub Repository](https://github.com/azure-ad-b2c/samples) finden Sie Beispiele für mehrere erweiterte Azure AD B2C benutzerdefinierte CIAM-User Journeys, z. B. Verbesserungen der lokalen Kontorichtlinie, Richtlinienerweiterungen für Konten sozialer Netzwerke, MFA-Erweiterungen, Verbesserungen der Benutzeroberfläche, generische Erweiterungen, App-Migration, Benutzermigration, bedingter Zugriff, Webtest und CI/CD.
+Unter den [Azure AD B2C-Beispielen im GitHub-Repository](https://github.com/azure-ad-b2c/samples) finden Sie mehrere erweiterte benutzerdefinierte Azure AD B2C-User Journeys zu CIAM (Customer Identity and Access Management, Kundenidentitäts- und Zugriffsverwaltung). Dazu zählen beispielsweise Verbesserungen der Richtlinien für lokale und Social Media-Konten, Verbesserungen der mehrstufigen Authentifizierung (MFA) sowie der Benutzeroberfläche, allgemeine Verbesserungen, App-Migration, Benutzermigration, bedingter Zugriff, Webtest und CI/CD.
  
 ## <a name="understanding-the-basics"></a>Verstehen der Grundlagen 
 
@@ -56,7 +56,7 @@ Beim Ausführen der Richtlinie sendet Azure AD B2C Ansprüche an interne und ex
 
 ### <a name="customize-and-localize-your-ui"></a>Anpassen und Lokalisieren Ihrer Benutzeroberfläche
 
-Wenn Sie Informationen von Ihren Benutzern sammeln möchten, indem Sie eine Seite in ihrem Webbrowser anzeigen, verwenden Sie das [selbstbestätigte technische Profil](self-asserted-technical-profile.md). Sie können Ihr selbstbestätigtes technisches Profil bearbeiten, indem Sie [Ansprüche hinzufügen und Benutzereingaben anpassen](./configure-user-input.md).
+Um Informationen von Ihren Benutzern zu sammeln, indem Sie eine Seite in ihrem Webbrowser anzeigen, verwenden Sie das [selbstbestätigte technische Profil](self-asserted-technical-profile.md). Sie können Ihr selbstbestätigtes technisches Profil bearbeiten, indem Sie [Ansprüche hinzufügen und Benutzereingaben anpassen](./configure-user-input.md).
 
 Zum [Anpassen der Benutzeroberfläche](customize-ui-with-html.md) für Ihr selbstbestätigtes technisches Profil geben Sie im [ContentDefinition](contentdefinitions.md)-Element eine URL mit benutzerdefiniertem HTML-Inhalt an. Verweisen Sie im selbstbestätigten technischen Profil auf die ID dieser Inhaltsdefinition.
 
@@ -112,8 +112,9 @@ Im folgenden Diagramm wird veranschaulicht, wie Azure AD B2C die Benutzeranmeld
 Jedes Starter Pack enthält die folgenden Dateien:
 
 - Eine **Basisdatei** enthält die meisten Definitionen. Um die Problembehandlung und langfristige Verwaltung Ihrer Richtlinien zu vereinfachen, sollten Sie versuchen, möglichst wenige Änderungen an dieser Datei vorzunehmen.
-- Eine **Erweiterungendatei** enthält die eindeutigen Konfigurationsänderungen für Ihren Mandanten. Diese Richtliniendatei wird von der Basisdatei abgeleitet. Verwenden Sie diese Datei, um neue Funktionalität hinzufügen oder vorhandene Funktionen zu überschreiben. Sie verwenden diese Datei z.B. für einen Verbund mit neuen Identitätsanbietern.
-- Eine **Datei der vertrauenden Seite** stellt die einzige aufgabenorientierte Datei dar, die direkt von der Anwendung der vertrauenden Seite aufgerufen wird, z.B. Ihren Web-, mobilen oder Desktopanwendungen. Jede eindeutige Aufgabe wie das Registrieren oder Anmelden, das Zurücksetzen des Kennworts oder die Profilbearbeitung erfordert eine eigene Richtliniendatei der vertrauenden Seite. Diese Richtliniendatei wird von der Erweiterungsdatei abgeleitet.
+- Eine **Lokalisierungsdatei**, welche die Lokalisierungszeichenfolgen enthält. Diese Richtliniendatei wird von der Basisdatei abgeleitet. Verwenden Sie in dieser Datei verschiedene Sprachen, um die Anforderungen Ihrer Kunden zu erfüllen.
+- Eine **Erweiterungendatei** enthält die eindeutigen Konfigurationsänderungen für Ihren Mandanten. Diese Richtliniendatei wird von der Lokalisierungsdatei abgeleitet. Verwenden Sie diese Datei, um neue Funktionalität hinzufügen oder vorhandene Funktionen zu überschreiben. Sie verwenden diese Datei z.B. für einen Verbund mit neuen Identitätsanbietern.
+- Eine **Datei der vertrauenden Seite** stellt die einzige aufgabenorientierte Datei dar, die direkt von der Anwendung der vertrauenden Seite aufgerufen wird, z.B. Ihren Web-, mobilen oder Desktopanwendungen. Jede eindeutige Aufgabe wie das Registrieren, Anmelden oder Bearbeiten des Profils,setzt eine eigene Richtliniendatei für die vertrauende Seite voraus. Diese Richtliniendatei wird von der Erweiterungsdatei abgeleitet.
 
 Das Vererbungsmodell lautet wie folgt:
 
@@ -132,7 +133,7 @@ Das folgende Diagramm zeigt die Beziehung zwischen den Richtliniendateien und de
 
 Sie können Ihre eigene Geschäftslogik in eine benutzerdefinierte Azure AD B2C-Richtlinie integrieren, um die gewünschten Benutzerumgebungen zu erstellen und die Funktionalität des Diensts zu erweitern. Dazu stehen Ihnen verschiedene bewährte Methoden und Empfehlungen für den Einstieg zur Verfügung.
 
-- Erstellen Sie Ihre Logik in der **Erweiterungsrichtlinie** oder in der **Richtlinie der vertrauenden Seite**. Sie können neue Elemente hinzufügen, die die Basisrichtlinie überschreiben, indem Sie auf dieselbe ID verweisen. Auf diese Weise können Sie Ihr Projekt aufskalieren und gleichzeitig spätere Upgrades der Basisrichtlinie vereinfachen, wenn Microsoft neue Starter Packs veröffentlicht.
+- Erstellen Sie Ihre Logik in der **Erweiterungsrichtlinie** oder in der **Richtlinie der vertrauenden Seite**. Sie können neue Elemente hinzufügen, die die Basisrichtlinie überschreiben, indem Sie auf dieselbe ID verweisen. Mit diesem Ansatz können Sie Ihr Projekt horizontal skalieren und gleichzeitig spätere Upgrades der Basisrichtlinie vereinfachen, wenn Microsoft neue Starter Packs veröffentlicht.
 - Es wird dringend davon abgeraten, Änderungen an der **Basisrichtlinie** vorzunehmen. Falls doch Änderungen vorgenommen werden müssen, fügen Sie an den entsprechenden Stellen Kommentare ein.
 - Falls Sie ein Element überschreiben (z. B. die Metadaten eines technischen Profils), vermeiden Sie das Kopieren des gesamten technischen Profils aus der Basisrichtlinie. Kopieren Sie stattdessen nur den benötigten Abschnitt des Elements. Ein Beispiel für diese Änderung finden Sie unter [Deaktivieren der E-Mail-Überprüfung während der Kundenregistrierung in Azure Active Directory B2C](./disable-email-verification.md).
 - Um doppelte technische Profile mit identischer Kernfunktionalität zu minimieren, nutzen Sie die [Inklusion technischer Profile](technicalprofiles.md#include-technical-profile).
@@ -173,4 +174,4 @@ Nachdem Sie Ihre Azure AD B2C-Richtlinie eingerichtet und getestet haben, könn
 - [Lokalisieren der Benutzeroberfläche Ihrer Anwendung mit einer benutzerdefinierten Richtlinie](./language-customization.md). Erfahren Sie, wie Sie eine Liste mit unterstützten Sprachen einrichten und sprachspezifische Bezeichnungen bereitstellen, indem Sie das Element mit lokalisierten Ressourcen hinzufügen.
 - Während Sie Ihre Richtlinie entwickeln und testen, können Sie die [E-Mail-Überprüfung deaktivieren](./disable-email-verification.md). Erfahren Sie, wie Sie die Metadaten eines technischen Profils überschreiben.
 - [Einrichten der Anmeldung mit einem Google-Konto mithilfe benutzerdefinierter Richtlinien](./identity-provider-google.md). Erfahren Sie, wie Sie einen neuen Anspruchsanbieter mit einem technischen OAuth2-Profil erstellen. Passen Sie dann die User Journey so an, dass sie eine Option zur Anmeldung mit Google bietet.
-- Um Probleme mit Ihren benutzerdefinierten Richtlinien zu diagnostizieren, können Sie [Azure Active Directory B2C-Protokolle mit Application Insights sammeln](troubleshoot-with-application-insights.md). Erfahren Sie, wie Sie neue technische Profile hinzufügen und die Richtlinie für die vertrauende Seite konfigurieren.
+- Um Probleme mit Ihren benutzerdefinierten Richtlinien zu diagnostizieren, können Sie [mit Application Insights Azure Active Directory B2C-Protokolle sammeln](troubleshoot-with-application-insights.md). Erfahren Sie, wie Sie neue technische Profile hinzufügen und die Richtlinie für die vertrauende Seite konfigurieren.

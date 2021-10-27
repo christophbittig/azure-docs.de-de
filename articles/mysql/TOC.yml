@@ -592,6 +592,8 @@
           href: flexible-server/sample-scripts-azure-cli.md
 - name: Migration
   items:
+    - name: Auswählen der richtigen Tools für die Migration zu Azure Database for MySQL
+      href: how-to-decide-on-right-migration-tools.md
     - name: Migrieren von lokalen MySQL-Daten zu Azure Database for MySQL >
       href: migrate/mysql-on-premises-azure-db/01-mysql-migration-guide-intro.md
     - name: Migrieren von Daten mit „mysqldump“ oder „phpmyadmin“

@@ -4,14 +4,12 @@ description: Dieser Artikel beschreibt die Verwendung von Azure Data Explorer In
 services: azure-monitor
 ms.topic: conceptual
 ms.date: 01/05/2021
-author: lgayhardt
-ms.author: lagayhar
-ms.openlocfilehash: b522e510968b97d80917bc6fa4123d33e4480cbf
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: fc40608b7c9faa4acdef999fdef787d787aca720
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128662208"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130132814"
 ---
 # <a name="azure-data-explorer-insights"></a>Azure Data Explorer Insights
 
@@ -112,6 +110,8 @@ Auf der Registerkarte **Verbrauch** können Benutzer Details zur Leistung der Be
 - Identifizieren Sie die wichtigsten Workloadgruppen, Benutzer und Anwendungen anhand von fehlgeschlagenen Abfragen.
 - Identifizieren Sie die jüngsten Änderungen in der Anzahl der Abfragen im Vergleich zum historischen Tagesdurchschnitt (über die letzten 16 Tage), aufgeschlüsselt nach Workloadgruppen, Benutzern und Anwendungen.
 - Identifizieren Sie Trends und Spitzen bei der Anzahl der Abfragen, dem Speicher- und CPU-Verbrauch nach Workloadgruppe, Benutzer, Anwendung und Befehlstyp.
+
+Die Registerkarte **Nutzung** umfasst Aktionen, die direkt von Benutzern ausgeführt werden. Interne Clustervorgänge sind auf dieser Registerkarte nicht enthalten.
 
 [![Screenshot der Betriebsansicht mit Ringdiagrammen in Bezug zu Befehlen und Abfragen.](./media/data-explorer/usage.png)](./media/data-explorer/usage.png#lightbox)
 

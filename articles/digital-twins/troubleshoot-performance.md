@@ -1,18 +1,18 @@
 ---
-title: Behandeln von Leistungsproblemen
+title: 'Problembehandlung: Leistung'
 titleSuffix: Azure Digital Twins
 description: Tipps zur Behandlung von Leistungsproblemen einer Azure Digital Twins Instanz.
 author: baanders
 ms.author: baanders
-ms.date: 5/11/2021
+ms.date: 10/8/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 252eeea15e5c9ebde19c5925423615cd7c50234c
-ms.sourcegitcommit: bc29cf4472118c8e33e20b420d3adb17226bee3f
+ms.openlocfilehash: 67f182ffbaf439d2c6b592854156073d6104efa7
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2021
-ms.locfileid: "113493097"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130131427"
 ---
 # <a name="troubleshooting-azure-digital-twins-performance"></a>Problembehandlung von Azure Digital Twins: Leistung
 
@@ -20,7 +20,7 @@ Wenn bei der Arbeit mit Azure Digital Twins Verzögerungen oder andere Leistungs
 
 ## <a name="isolate-the-source-of-the-delay"></a>Isolieren der Quelle der Verzögerung
 
-Bestimmen Sie, ob die Verzögerung von Azure Digital Twins oder einem anderen Dienst in Ihrer Lösung stammt. Um diese Verzögerung zu untersuchen, können Sie die Metrik **API-Wartezeit** in [Azure Monitor](../azure-monitor/essentials/quick-monitor-azure-resource.md) über das Azure-Portal verwenden. Anweisungen zum Anzeigen Azure Monitor-Metriken für eine Azure Digital Twins-Instanz finden Sie unter [Problembehandlung: Anzeigen von Metriken mit Azure Monitor](troubleshoot-metrics.md).
+Bestimmen Sie, ob die Verzögerung von Azure Digital Twins oder einem anderen Dienst in Ihrer Lösung stammt. Um diese Verzögerung zu untersuchen, können Sie die Metrik **API-Wartezeit** in [Azure Monitor](../azure-monitor/essentials/quick-monitor-azure-resource.md) über das Azure-Portal verwenden. Anweisungen zum Anzeigen von Azure Monitor-Metriken für eine Azure Digital Twins-Instanz finden Sie unter [Problembehandlung: Metriken](troubleshoot-metrics.md).
 
 ## <a name="check-regions"></a>Überprüfen von Regionen
 
@@ -28,7 +28,7 @@ Wenn Ihre Lösung Azure Digital Twins in Kombination mit anderen Azure-Diensten 
 
 ## <a name="check-logs"></a>Überprüfen der Protokolle
 
-Azure Digital Twins kann Protokolle für Ihre Dienstinstanz zur Überwachung von Leistung, Zugriff und anderen Daten erfassen. Protokolle können an [Log Analytics](../azure-monitor/logs/log-analytics-overview.md) oder Ihren benutzerdefinierten Speichermechanismus gesendet werden. Um die Protokollierung in Ihrer Instanz zu aktivieren, befolgen Sie die Anweisungen unter [Problembehandlung: Einrichten der Diagnose](troubleshoot-diagnostics.md). Anhand einer Analyse der Zeitstempel in den Protokollen können Sie Wartezeiten messen, bewerten, ob sie konsistent sind, und ihre Quelle ermitteln.
+Azure Digital Twins kann Protokolle für Ihre Dienstinstanz zur Überwachung von Leistung, Zugriff und anderen Daten erfassen. Protokolle können an [Log Analytics](../azure-monitor/logs/log-analytics-overview.md) oder Ihren benutzerdefinierten Speichermechanismus gesendet werden. Um die Protokollierung in Ihrer Instanz zu aktivieren, befolgen Sie die Anweisungen unter [Problembehandlung: Diagnoseprotokolle](troubleshoot-diagnostics.md). Anhand einer Analyse der Zeitstempel in den Protokollen können Sie Wartezeiten messen, bewerten, ob sie konsistent sind, und ihre Quelle ermitteln.
 
 ## <a name="check-api-frequency"></a>Überprüfen der API-Häufigkeit
 
@@ -46,7 +46,7 @@ Folgen Sie diesen Schritten:
 ## <a name="next-steps"></a>Nächste Schritte
 
 Lesen Sie in den folgenden Artikeln über andere Möglichkeiten zur Problembehandlung Ihrer Azure Digital Twins-Instanz:
-* [Problembehandlung: Anzeigen von Metriken mit Azure Monitor](troubleshoot-metrics.md)
-* [Problembehandlung: Einrichten der Diagnose](troubleshoot-diagnostics.md).
-* [Problembehandlung: Einrichten von Warnungen](troubleshoot-alerts.md).
-* [Problembehandlung: Grundlegendes zur Ressourcenintegrität](troubleshoot-resource-health.md)
+* [Problembehandlung: Metriken](troubleshoot-metrics.md)
+* [Problembehandlung: Diagnoseprotokolle](troubleshoot-diagnostics.md)
+* [Problembehandlung: Warnungen](troubleshoot-alerts.md)
+* [Problembehandlung: Ressourcenintegrität](troubleshoot-resource-health.md)

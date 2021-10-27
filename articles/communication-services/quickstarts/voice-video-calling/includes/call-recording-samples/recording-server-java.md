@@ -10,12 +10,12 @@ ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: joseys
-ms.openlocfilehash: 7208519302ea9c12a9a0db7c3cee7032eab85d64
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: b71ae256329d9fe8d28f0b5154f0b732de61009f
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114339730"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130050550"
 ---
 ## <a name="sample-code"></a>Beispielcode
 Den fertigen Code für diese Schnellstartanleitung finden Sie auf [GitHub](https://github.com/Azure-Samples/communication-services-java-quickstarts/tree/main/ServerRecording).
@@ -27,9 +27,9 @@ Den fertigen Code für diese Schnellstartanleitung finden Sie auf [GitHub](https
 - [Java Development Kit (JDK)](/azure/developer/java/fundamentals/java-jdk-install), Version 11 oder höher.
 - [Apache Maven](https://maven.apache.org/download.cgi).
 - [Spring Boot Framework v- 2.5.0](https://spring.io/projects/spring-boot)
-- Erstellen Sie eine Azure Communication Services-Ressource. Ausführlichere Informationen hierzu finden Sie unter [Schnellstart: Erstellen und Verwalten einer Communication Services-Ressource](https://docs.microsoft.com/azure/communication-services/quickstarts/create-communication-resource). Sie müssen die **Verbindungszeichenfolge** Ihrer Ressource für diese Schnellstartanleitung aufzeichnen.
-- Ausführliche Informationen zu einem Azure-Speicherkonto und -Container finden Sie unter [Erstellen eines Speicherkontos](https://docs.microsoft.com/azure/storage/common/storage-account-create?tabs=azure-portal). Sie müssen die **Verbindungszeichenfolge** und den **Containernamen** für diese Schnellstartanleitung aufzeichnen.
-- Ein [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview) Webhook.
+- Erstellen Sie eine Azure Communication Services-Ressource. Ausführlichere Informationen hierzu finden Sie unter [Schnellstart: Erstellen und Verwalten einer Communication Services-Ressource](../../../create-communication-resource.md). Sie müssen die **Verbindungszeichenfolge** Ihrer Ressource für diese Schnellstartanleitung aufzeichnen.
+- Ausführliche Informationen zu einem Azure-Speicherkonto und -Container finden Sie unter [Erstellen eines Speicherkontos](../../../../../storage/common/storage-account-create.md?tabs=azure-portal). Sie müssen die **Verbindungszeichenfolge** und den **Containernamen** für diese Schnellstartanleitung aufzeichnen.
+- Ein [Azure Event Grid](../../../../../event-grid/overview.md) Webhook.
 
 ## <a name="object-model"></a>Objektmodell
 
@@ -101,9 +101,27 @@ Verwenden Sie die Serveraufruf-ID, die während der Initiierung des Aufrufs empf
 URI recordingStateCallbackUri = new URI("<CallbackUri>");
 
 Response<StartCallRecordingResult> response = this.callingServerClient.initializeServerCall("<serverCallId>")
-.startRecordingWithResponse(String.valueOf(recordingStateCallbackUri),null);
+.startRecordingWithResponse(String.valueOf(recordingStateCallbackUri), null, null);
 ```
 Die `startRecordingWithResponse`-API-Antwort enthält die Aufzeichnungs-ID der Aufzeichnungssitzung.
+
+## <a name="start-recording-session-with-startrecordingoptions-using-startrecordingwithresponse-server-api"></a>Starten der Aufzeichnungssitzung mit „StartRecordingOptions“ mithilfe der Server-API „startRecordingWithResponse“
+
+Verwenden Sie die Serveraufruf-ID, die während der Initiierung des Aufrufs empfangen wurde.
+
+- „RecordingContent“ wird zum Übergeben des Inhaltstyp der Aufzeichnung verwendet. Beispiel: AUDIO/AUDIO_VIDEO.
+- „RecordingChannel“ wird zum Übergeben des Kanaltyps der Aufzeichnung verwendet. Beispiel: MIXED/UNMIXED.
+- „RecordingFormat“ wird zum Übergeben des Formats der Aufzeichnung verwendet. Beispiel: MP4/MP3/WAV.
+
+```java
+URI recordingStateCallbackUri = new URI("<CallbackUri>");
+StartRecordingOptions recordingOptions = new StartRecordingOptions();
+recordingOptions.setRecordingContent(RecordingContent.AUDIO_VIDEO);
+recordingOptions.setRecordingChannel(RecordingChannel.MIXED);
+recordingOptions.setRecordingFormat(RecordingFormat.MP4);
+Response<StartCallRecordingResult> response = this.callingServerClient.initializeServerCall("<serverCallId>")
+.startRecordingWithResponse(String.valueOf(recordingStateCallbackUri), recordingOptions, null);
+```
 
 ## <a name="stop-recording-session-using-stoprecordingwithresponse-server-api"></a>Beenden der Aufzeichnungssitzung mithilfe der Server-API „stopRecordingWithResponse“
 

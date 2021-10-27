@@ -3,23 +3,23 @@ title: 'Verknüpfen Ihrer Domäne mit Ihrem dezentralisierten Bezeichner (Decent
 description: Hier finden Sie Informationen zur DNS-Bindung.
 documentationCenter: ''
 author: barclayn
-manager: daveba
+manager: karenh444
 ms.service: active-directory
 ms.topic: how-to
 ms.subservice: verifiable-credentials
 ms.date: 04/01/2021
 ms.author: barclayn
-ms.openlocfilehash: c1254176966a902f81cd42b68db17557288aa241
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: d1a74d0019c931c8d52dccdc14ddd11a5ed7a1f3
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110466178"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130006867"
 ---
-# <a name="link-your-domain-to-your-decentralized-identifier-did"></a>Verknüpfen Ihrer Domäne mit Ihrem dezentralisierten Bezeichner (Decentralized Identifier, DID)
+# <a name="link-your-domain-to-your-decentralized-identifier-did-preview"></a>Verknüpfen Ihrer Domäne mit Ihrem dezentralisierten Bezeichner (Decentralized Identifier, DID) (Vorschau)
 
 > [!IMPORTANT]
-> Azure Active Directory-Nachweise befinden sich derzeit in der Public Preview-Phase.
+> Nachweise für Azure Active Directory befinden sich derzeit in der öffentlichen Vorschauphase.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 In diesem Artikel:

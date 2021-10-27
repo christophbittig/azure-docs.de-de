@@ -3,7 +3,7 @@ title: Registrieren mehrerer SQL Server-VMs mit der SQL-IaaS-Agent-Erweiterung 
 description: Durch eine Massenregistrierung von SQL Server-VMs mit der SQL-IaaS-Agent-Erweiterung können Sie die Verwaltbarkeit verbessern.
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: adbadram
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.subservice: management
@@ -12,15 +12,15 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 11/07/2020
-ms.author: mathoma
-ms.reviewer: jroth
+ms.author: adbadram
+ms.reviewer: mathoma
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6b2066ef94cb87a9ab9c000615c018938cbeddb1
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: bc4bfc48c9b8f6891c45730215f2c49e84467a42
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123220634"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130161885"
 ---
 # <a name="register-multiple-sql-vms-in-azure-with-the-sql-iaas-agent-extension"></a>Registrieren mehrerer SQL Server-VMs mit der SQL-IaaS-Agent-Erweiterung in Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -249,4 +249,4 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 * [Übersicht über SQL Server auf einem virtuellen Windows-Computer](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [Häufig gestellte Fragen zu SQL Server auf virtuellen Windows-Computern](frequently-asked-questions-faq.yml)
 * [Preisinformationen für SQL Server auf virtuellen Windows-Computern](pricing-guidance.md)
-* [SQL Server auf Windows-VMs – Versionshinweise](../../database/doc-changes-updates-release-notes.md)
+* [Neuerungen für SQL Server auf virtuellen Azure-Computern](doc-changes-updates-release-notes-whats-new.md)

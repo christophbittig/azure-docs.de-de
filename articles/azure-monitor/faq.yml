@@ -8,12 +8,12 @@ metadata:
   author: bwren
   ms.author: bwren
   ms.date: 10/08/2020
-  ms.openlocfilehash: b3f18899eada6773fb8d2d78d7635bb47fa79d64
-  ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+  ms.openlocfilehash: 439248f37075f7cbc91af0e15dcdf6b029e95b92
+  ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/29/2021
-  ms.locfileid: "129278859"
+  ms.lasthandoff: 10/15/2021
+  ms.locfileid: "130066697"
 title: Häufig gestellte Fragen zu Azure Monitor
 summary: >
   Dieser Microsoft-Artikel enthält eine Liste häufig gestellter Fragen zu Azure Monitor. Wenn Sie weiteren Fragen haben, können Sie diese im [Diskussionsforum](/answers/questions/topics/single/24223.html) stellen. Wenn eine Frage häufiger gestellt wird, fügen wir sie diesem Artikel hinzu, damit sie schnell und einfach gefunden werden kann.
@@ -169,7 +169,7 @@ sections:
   - question: >
       Worin unterscheiden sich die Azure Monitor-Agents?
     answer: >
-      Die Azure-Diagnoseerweiterung wird für virtuelle Azure-Computer verwendet und sammelt Daten in Azure Monitor-Metriken, Azure Storage und Azure Event Hubs. Der Log Analytics-Agent wird für virtuelle Computer in Azure, einer anderen Cloudumgebung oder lokal verwendet und sammelt Daten in Azure Monitor-Protokollen. Der Dependency-Agent erfordert den Log Analytics-Agent sowie gesammelte Prozessdetails und Abhängigkeiten. Der Azure Monitor-Agent ist der neue, verbesserte Agent, der die Funktionen aller oben genannten Agents im Laufe der Zeit konsolidiert und gleichzeitig zusätzliche Vorteile, wie die zentralisierte Datensammlung, die Filterung, das Multi-Homing und mehr bietet. Weitere Informationen finden Sie in der [Übersicht über die Azure Monitor-Agents](agents/agents-overview.md).
+      Die Azure-Diagnoseerweiterung wird für virtuelle Azure-Computer verwendet und sammelt Daten in Azure Monitor-Metriken, Azure Storage und Azure Event Hubs. Der Log Analytics-Agent wird für virtuelle Computer in Azure, einer anderen Cloudumgebung oder lokal verwendet und sammelt Daten in Azure Monitor-Protokollen. Der Dependency-Agent erfordert den Log Analytics-Agent sowie gesammelte Prozessdetails und Abhängigkeiten. Der Azure Monitor-Agent ist der neue, verbesserte Agent, der die Funktionen aller oben genannten Agents im Laufe der Zeit konsolidiert und gleichzeitig zusätzliche Vorteile wie zentralisierte Datensammlung, Filterung, Multi-Homing und mehr bietet. Weitere Informationen finden Sie in der [Übersicht über die Azure Monitor-Agents](agents/agents-overview.md).
   - question: >
       Wird für den Agent-Datenverkehr meine ExpressRoute-Verbindung verwendet?
     answer: >
@@ -219,7 +219,7 @@ sections:
       Siehe [Migrieren vom Log Analytics-Agent](./agents/azure-monitor-agent-migration.md).
   - question: >
       Wie lautet der Upgradepfad vom Log Analytics-Agent (MMA) zum Azure Monitor-Agent (AMA) für die Überwachung von System Center Operations Manager? Können wir den AMA für System Center Operations Manager-Szenarien verwenden?
-    answer: "Hier sind die Auswirkungen des AMA auf die beiden Überwachungsszenarien mit System Center Operations Manager angegeben:\n- **Szenario 1**: Zur Überwachung des Windows-Betriebssystems von System Center Operations Manager ist der Upgradepfad derselbe wie bei jedem anderen Computer, und Sie können vom MMA (Version 2016 und 2019) zum AMA migrieren, sobald die erforderlichen Paritätsfeatures auf dem AMA verfügbar sind.\n- **Szenario 2**: Da das Onboarding/Verbinden von System Center Operations Manager mit Log Analytics-Arbeitsbereichen über einen System Center Operations Manager-Connector für Log Analytics/Azure Monitor aktiviert wird, muss weder der MMA noch der AMA auf dem SCOM-Verwaltungsserver installiert werden. Daher bestehen aus AMA-Sicht für diesen Anwendungsfall keine Auswirkungen.  \n\n> [!NOTE] \n> Sie können beide oben genannten Szenarien mit dem MMA und dem AMA parallel ausführen, ohne dass es Auswirkungen hat.\n"
+    answer: "Hier sind die Auswirkungen des AMA auf die beiden Überwachungsszenarien mit System Center Operations Manager angegeben:\n- **Szenario 1**: Zur Überwachung des Windows-Betriebssystems von System Center Operations Manager ist der Upgradepfad derselbe wie bei jedem anderen Computer, und Sie können vom MMA (Version 2016 und 2019) zum AMA migrieren, sobald die erforderlichen Paritätsfeatures auf dem AMA verfügbar sind.\n- **Szenario 2**: Da das Onboarding/Verbinden von System Center Operations Manager mit Log Analytics-Arbeitsbereichen über einen System Center Operations Manager-Connector für Log Analytics/Azure Monitor aktiviert wird, muss weder der MMA noch der AMA auf dem SCOM-Verwaltungsserver installiert werden. Daher bestehen aus AMA-Sicht für diesen Anwendungsfall keine Auswirkungen.  \n\n> [!NOTE] \n> Sie können beide oben genannten Szenarien mit dem MMA und dem AMA parallel ausführen, ohne dass es Auswirkungen hat.\n"
   - question: >
       Unterstützt der neue Azure Monitor-Agent die Datensammlung für die verschiedenen Log Analytics-Lösungen und Azure-Dienste wie Security Center, Sentinel usw.?
     answer: "Sehen Sie sich die Liste der [aktuell als Vorschauversion verfügbaren AMA-Erweiterungen](./agents/azure-monitor-agent-overview.md#supported-services-and-features) an. Dies sind dieselben Lösungen und Dienste, die jetzt stattdessen mit dem neuen Azure Monitor-Agent verfügbar sind. Möglicherweise werden zusätzliche Erweiterungen für die Lösung/den Dienst installiert. Dies dient dem Sammeln zusätzlicher Daten oder dem Durchführen von Transformationen/Verarbeitungen, die für die Lösung/den Dienst erforderlich sind, um anschließend AMA zum Weiterleiten der endgültigen Daten an Azure Monitor zu verwenden. \n\nIm folgenden Diagramm wird die **neue Erweiterbarkeitsarchitektur** veranschaulicht:\n\n![Erweiterungsarchitektur](agents/media/azure-monitor-agent/extensibility-arch-new.png)\n"
@@ -767,7 +767,7 @@ sections:
       Die wichtigsten Wertversprechen von OpenTelemetry sind, dass es anbieterneutral ist und über einheitliche APIs und SDKs für alle Sprachen verfügt.
 
 
-      Wir glauben, dass Azure Monitor-Kunden in Zukunft mithilfe von OpenTelemetry Anwendungen verfolgen können, die in anderen als den von uns [unterstützten Sprachen](https://review.docs.microsoft.com/azure/azure-monitor/app/platforms) geschrieben wurden, und für Kunden eine größere Zahl von [Instrumentierungsbibliotheken](https://opentelemetry.io/docs/concepts/components/#instrumentation-libraries) bereitgestellt werden kann. Vor allem ermöglicht das OpenTelemetry .NET SDK bei aufwendigeren Vorgängen eine höhere Leistung als sein Vorgänger (Application Insights SDK).
+      Wir glauben, dass Azure Monitor-Kunden in Zukunft mithilfe von OpenTelemetry Anwendungen verfolgen können, die in anderen als den von uns [unterstützten Sprachen](https://review.docs.microsoft.com/azure/azure-monitor/app/platforms) geschrieben wurden, und für Kunden eine größere Zahl von [Instrumentierungsbibliotheken](https://opentelemetry.io/docs/concepts/components/#instrumentation-libraries) bereitgestellt werden kann. Vor allem ermöglicht das OpenTelemetry .NET SDK bei aufwendigeren Vorgängen eine höhere Leistung als sein Vorgänger (Application Insights SDK).
 
 
       Darüber hinaus ist OpenTelemetry an der Microsoft-Strategie zur [Förderung von Open Source](https://opensource.microsoft.com/) ausgerichtet.
@@ -801,7 +801,7 @@ sections:
       Dies ist nicht empfehlenswert. Weitere Informationen finden Sie in den [zusätzlichen Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
   - question: >
       Was ist der Unterschied zwischen manueller und automatischer Instrumentierung?
-    answer: "Bei der manuellen Instrumentierung wird anhand der OpenTelemetry-API programmiert, und normalerweise wird ein sprachspezifisches SDK in einer Anwendung installiert. „Manuell“ bedeutet nicht, dass Sie komplexen Code schreiben müssen, um Zeitspannen für verteilte Ablaufverfolgungen zu definieren (obwohl dies eine Option ist). Mit einer umfassenden und [wachsenden Gruppe von Instrumentierungsbibliotheken](https://opentelemetry.io/registry/), die von OpenTelemetry-Mitwirkenden gepflegt werden, können Sie mühelos Telemetriesignale für gängige Frameworks und Bibliotheken erfassen. \n\nDie automatische Instrumentierung ermöglicht die Erfassung von Telemetriedaten über die Konfiguration, ohne dass der Code der Anwendung bearbeitet werden muss. Dies ist zwar ein sehr bequemer Ansatz, aber Sie haben häufig weniger Konfigurationsoptionen, und er ist nicht in allen Sprachen verfügbar.\n\nDie automatische Instrumentierung für OpenTelemetry umfasst auch ein Java-Angebot, das von Microsoft über eine Distribution mit dem Namen [Java 3.X](app/java-in-process-agent.md) unterstützt wird. Für [Python](https://github.com/open-telemetry/opentelemetry-python/tree/main/opentelemetry-instrumentation) und [.NET](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation) befindet sich die automatische Instrumentierung im Status „Experimental“ (Experimentell), aber dies wird von Microsoft derzeit nicht unterstützt. Bei allen anderen OpenTelemetry-Sprachen wird die manuelle Instrumentierung genutzt.\n"
+    answer: "Bei der manuellen Instrumentierung wird anhand der OpenTelemetry-API programmiert, und normalerweise wird ein sprachspezifisches SDK in einer Anwendung installiert. „Manuell“ bedeutet nicht, dass Sie komplexen Code schreiben müssen, um Zeitspannen für verteilte Ablaufverfolgungen zu definieren (obwohl dies eine Option ist). Mit einer umfassenden und [wachsenden Gruppe von Instrumentierungsbibliotheken](https://opentelemetry.io/registry/), die von OpenTelemetry-Mitwirkenden gepflegt werden, können Sie mühelos Telemetriesignale für gängige Frameworks und Bibliotheken erfassen. \n\nDie automatische Instrumentierung ermöglicht die Erfassung von Telemetriedaten über die Konfiguration, ohne dass der Code der Anwendung bearbeitet werden muss. Dies ist zwar ein sehr bequemer Ansatz, aber Sie haben häufig weniger Konfigurationsoptionen, und er ist nicht in allen Sprachen verfügbar.\n\nDie automatische Instrumentierung für OpenTelemetry umfasst auch ein Java-Angebot, das von Microsoft über eine Distribution mit dem Namen [Java 3.X](app/java-in-process-agent.md) unterstützt wird. Für [Python](https://github.com/open-telemetry/opentelemetry-python/tree/main/opentelemetry-instrumentation) und [.NET](https://github.com/open-telemetry/opentelemetry-dotnet-instrumentation) befindet sich die automatische Instrumentierung im Status „Experimental“ (Experimentell), aber dies wird von Microsoft derzeit nicht unterstützt. Bei allen anderen OpenTelemetry-Sprachen wird nur die manuelle Instrumentierung genutzt.\n"
   - question: >
       Kann ich den OpenTelemetry-Collector verwenden?
     answer: "Einige Kunden haben damit begonnen, den [OpenTelemetry-Collector](https://github.com/open-telemetry/opentelemetry-collector/blob/main/docs/design.md) als Agent-Alternative zu nutzen, obwohl ein Agent-basierter Ansatz für die Anwendungsüberwachung von Microsoft noch nicht offiziell unterstützt wird. In der Zwischenzeit wurde von der Open-Source-Community ein [Azure Monitor-Exportprogramm für den OpenTelemetry-Collector](https://github.com/open-telemetry/opentelemetry-collector-contrib/tree/main/exporter/azuremonitorexporter) bereitgestellt, der von einigen Kunden zum Senden von Daten an Azure Monitor Application Insights verwendet wird.\n\nFür die Zukunft planen wir die Unterstützung eines Agent-basierten Ansatzes, aber die Details und der Zeitplan sind hierfür noch nicht verfügbar. Unser Ziel besteht darin, es für alle unterstützten OpenTelemetry-Sprachen zu ermöglichen, Daten über das [OpenTelemetry-Protokoll (OTLP)](https://github.com/open-telemetry/opentelemetry-specification/blob/main/specification/protocol/README.md) an Azure Monitor zu senden. Kunden können dann auch Anwendungen verfolgen, die in anderen als den von uns [unterstützten Sprachen](https://review.docs.microsoft.com/azure/azure-monitor/app/platforms) geschrieben wurden. \n"
@@ -885,7 +885,7 @@ sections:
 
       //now join ContainerLog table with the 'jointed table' above and project-away redundant fields/columns and rename columns that were re-written
 
-      //Outer left is safer so you dont lose logs even if we cannot find container metadata for loglines (due to latency, time skew between data types etc...)
+      //Outer left is safer so you don't lose logs even if we cannot find container metadata for loglines (due to latency, time skew between data types etc...)
 
       ContainerLog
 
@@ -961,6 +961,9 @@ sections:
       Welche Ports und Domänen muss ich für den Agent öffnen bzw. zulassen?
     answer: >
       Die Proxy- und Firewall-Konfigurationsinformationen, die für den Container-Agent mit den Clouds „Azure“, „Azure US Government“ und „Azure China 21Vianet“ erforderlich sind, finden Sie unter den [Netzwerkfirewallanforderungen](containers/container-insights-onboard.md#network-firewall-requirements).
+  - question: >
+      Gibt es Unterstützung für das Sammeln von Kubernetes-Überwachungsprotokollen für ARO-Cluster?
+    answer: Nein, Container Insights unterstützt die Sammlung von Kubernetes-Überwachungsprotokollen nicht.
 - name: VM Insights
   questions:
   - question: >

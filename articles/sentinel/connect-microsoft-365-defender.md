@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2019
 ms.author: yelevin
-ms.openlocfilehash: c31ed32e13e8b71b5ad6253d5e157b5adc2096bf
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: a70e6429ab535222f2ff7b86a807e5fc4a4b2a7a
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123260022"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130133745"
 ---
 # <a name="connect-data-from-microsoft-365-defender-to-azure-sentinel"></a>Verknüpfen von Daten aus Microsoft 365 Defender mit Azure Sentinel
 
@@ -29,6 +29,8 @@ ms.locfileid: "123260022"
 >
 > **Microsoft Defender for Endpoint** wurde bisher als **Microsoft Defender Advanced Threat Protection** oder **MDATP** bezeichnet.
 >
+> **Microsoft Defender für Office 365** war früher bekannt als **Office 365 Advanced Threat Protection**.
+>
 > Die alten Namen werden möglicherweise eine Zeit lang weiterhin verwendet.
 
 [!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
@@ -37,9 +39,9 @@ ms.locfileid: "123260022"
 
 Der [Microsoft 365 Defender](/microsoft-365/security/mtp/microsoft-threat-protection)-Connector (M365D) von Azure Sentinel mit Incidentintegration ermöglicht es Ihnen, alle M365D-Incidents und -Warnungen in Azure Sentinel zu streamen. Außerdem sorgt er dafür, dass Incidents zwischen den Portalen synchronisiert werden. M365D-Incidents enthalten alle dazugehörigen Warnungen, Entitäten und andere relevante Informationen. Diese Informationen werden angereichert. Warnungen aus den Komponentendiensten von M365D, **Microsoft Defender für Endpunkt**, **Microsoft Defender for Identity**, **Microsoft Defender für Office 365** und **Microsoft Cloud App Security**, werden zusammen gruppiert.
 
-Der Connector ermöglicht Ihnen auch das Streamen von Ereignissen der **erweiterten Bedrohungssuche** aus Microsoft Defender für Endpunkt zu Azure Sentinel. So können Sie erweiterte Abfragen der erweiterten Bedrohungssuche in Defender für Endpunkt in Azure Sentinel kopieren, Sentinel-Warnungen mit Rohereignisdaten aus Defender für Endpunkt anreichen, um zusätzliche Erkenntnisse zu ermöglichen, und die Protokolle mit erhöhter Aufbewahrungsdauer in Log Analytics speichern.
+Mit dem Connector können Sie auch **Advanced Hunting-Ereignisse** von Microsoft Defender for Endpoint und Microsoft Defender for Office 365 in Azure Sentinel streamen. So können Sie die Advanced Hunting-Abfragen dieser Defender-Komponenten in Azure Sentinel kopieren, Sentinel-Warnungen mit den Ereignisrohdaten der Defender-Komponenten anreichern, um zusätzliche Erkenntnisse zu gewinnen, und die Protokolle mit erhöhter Aufbewahrungsdauer in Log Analytics speichern.
 
-Weitere Informationen zur Incidentintegration und zur Erfassung von Ereignissen der erweiterten Bedrohungssuche finden Sie unter [Microsoft 365 Defender-Integration mit Azure Sentinel](microsoft-365-defender-sentinel-integration.md).
+Weitere Informationen zur Incidentintegration und zur Erfassung von Ereignissen der erweiterten Bedrohungssuche finden Sie unter [Microsoft 365 Defender-Integration mit Azure Sentinel](microsoft-365-defender-sentinel-integration.md#advanced-hunting-event-collection).
 
 > [!IMPORTANT]
 >
@@ -68,23 +70,37 @@ Weitere Informationen zur Incidentintegration und zur Erfassung von Ereignissen 
     | where ProviderName == "Microsoft 365 Defender"
     ```
 
-1. Wenn Sie Ereignisse der erweiterten Bedrohungssuche aus Microsoft Defender für Endpunkt erfassen möchten, können die folgenden Ereignistypen aus den entsprechenden Tabellen für die erweiterte Bedrohungssuche erfasst werden.
+1. Wenn Sie erweiterte Suchereignisse von Microsoft Defender für Endpoint oder Microsoft Defender für Office 365 sammeln möchten, können die folgenden Ereignistypen aus den entsprechenden erweiterten Suchtabellen gesammelt werden.
 
     1. Aktivieren Sie die Kontrollkästchen der Tabellen mit den Ereignistypen, die Sie erfassen möchten:
 
+       # <a name="defender-for-endpoint"></a>[Defender für Endpunkt](#tab/MDE)
+
        | Tabellenname | Ereignistyp |
        |-|-|
-       | DeviceInfo | Computerinformationen (einschließlich Betriebssysteminformationen) |
-       | DeviceNetworkInfo | Netzwerkeigenschaften von Computern |
-       | DeviceProcessEvents | Prozesserstellung und zugehörige Ereignisse |
-       | DeviceNetworkEvents | Netzwerkverbindung und zugehörige Ereignisse |
-       | DeviceFileEvents | Dateierstellung, Änderung und andere Dateisystemereignisse |
-       | DeviceRegistryEvents | Erstellen und Ändern von Registrierungseinträgen |
-       | DeviceLogonEvents | Anmeldungen und andere Authentifizierungsereignisse |
-       | DeviceImageLoadEvents | DLL-Ladeereignisse |
-       | DeviceEvents | Weitere Ereignistypen |
-       | DeviceFileCertificateInfo | Zertifikatinformationen der signierten Dateien |
+       | **[DeviceInfo](/microsoft-365/security/defender/advanced-hunting-deviceinfo-table)** | Maschineninformationen, einschließlich Betriebssysteminformationen |
+       | **[DeviceNetworkInfo](/microsoft-365/security/defender/advanced-hunting-devicenetworkinfo-table)** | Netzwerkeigenschaften von Geräten, einschließlich physischer Adapter, IP- und MAC-Adressen sowie verbundener Netzwerke und Domänen |
+       | **[DeviceProcessEvents](/microsoft-365/security/defender/advanced-hunting-deviceprocessevents-table)** | Prozesserstellung und zugehörige Ereignisse |
+       | **[DeviceNetworkEvents](/microsoft-365/security/defender/advanced-hunting-devicenetworkevents-table)** | Netzwerkverbindung und zugehörige Ereignisse |
+       | **[DeviceFileEvents](/microsoft-365/security/defender/advanced-hunting-devicefileevents-table)** | Dateierstellung, Änderung und andere Dateisystemereignisse |
+       | **[DeviceRegistryEvents](/microsoft-365/security/defender/advanced-hunting-deviceregistryevents-table)** | Erstellen und Ändern von Registrierungseinträgen |
+       | **[DeviceLogonEvents](/microsoft-365/security/defender/advanced-hunting-devicelogonevents-table)** | Anmeldungen und andere Authentifizierungsereignisse auf Geräten |
+       | **[DeviceImageLoadEvents](/microsoft-365/security/defender/advanced-hunting-deviceimageloadevents-table)** | DLL-Ladeereignisse |
+       | **[DeviceEvents](/microsoft-365/security/defender/advanced-hunting-deviceevents-table)** | Mehrere Ereignistypen, einschließlich Ereignissen, die durch Sicherheitskontrollen wie Windows Defender Antivirus und Exploit-Schutz ausgelöst werden |
+       | **[DeviceFileCertificateInfo](/microsoft-365/security/defender/advanced-hunting-DeviceFileCertificateInfo-table)** | Zertifikatsinformationen von signierten Dateien, die aus Zertifikatsüberprüfungsereignissen auf Endpunkten gewonnen werden |
        |
+
+       # <a name="defender-for-office-365"></a>[Defender für Office 365](#tab/MDO)
+
+       | Tabellenname | Ereignistyp |
+       |-|-|
+       | **[EmailAttachmentInfo](/microsoft-365/security/defender/advanced-hunting-emailattachmentinfo-table)** | Informationen über an E-Mails angehängte Dateien |
+       | **[EmailEvents](/microsoft-365/security/defender/advanced-hunting-emailevents-table)** | Microsoft 365 E-Mail-Ereignisse, einschließlich E-Mail-Zustellungs- und Blockierungsereignisse |
+       | **[EmailPostDeliveryEvents](/microsoft-365/security/defender/advanced-hunting-emailpostdeliveryevents-table)** | Sicherheitsereignisse, die nach der Zustellung auftreten, nachdem Microsoft 365 die E-Mails an das Empfängerpostfach zugestellt hat |
+       | **[EmailUrlInfo](/microsoft-365/security/defender/advanced-hunting-emailurlinfo-table)** | Informationen über URLs in E-Mails |
+       |
+
+       ---
 
     1. Klicken Sie auf **Apply Changes**.
 
@@ -131,7 +147,7 @@ Auf der Registerkarte **Next steps** (Weitere Schritte) finden Sie hilfreiche Ar
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie erfahren, wie Sie Microsoft 365 Defender-Incidents sowie Ereignisdaten der erweiterten Bedrohungssuche aus Microsoft Defender für Endpunkt in Azure Sentinel integrieren. Dafür haben Sie den Microsoft 365 Defender-Connector verwendet. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
+In diesem Dokument erfahren Sie, wie Sie Microsoft 365 Defender-Vorfälle und erweiterte Jagd-Ereignisdaten aus Microsoft Defender für Endpoint und Defender für Office 365 mithilfe des Microsoft 365 Defender-Connectors in Azure Sentinel integrieren. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
 
 - Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](get-visibility.md).
 - Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](./detect-threats-built-in.md).

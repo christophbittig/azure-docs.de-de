@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/12/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0db83f9f2f5e7f93686506ec0f7f94153ef3501e
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 7a31cad4f2828a505eb89782bf28b01049a46cfc
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112080487"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129998008"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Verwenden von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer zum Abrufen eines Zugriffstokens 
 
@@ -54,7 +54,7 @@ Eine Clientanwendung kann ein [App-exklusives Zugriffstoken](../develop/develope
 | [Abrufen eines Tokens über C#](#get-a-token-using-c) | Beispiel für die Verwendung des REST-Endpunkts für verwaltete Identitäten für Azure-Ressourcen über einen C#-Client |
 | [Abrufen eines Tokens mit Java](#get-a-token-using-java) | Beispiel für die Verwendung von verwalteten Identitäten für den REST-Endpunkt von Azure-Ressourcen über einen Java-Client |
 | [Abrufen eines Tokens über Go](#get-a-token-using-go) | Beispiel für die Verwendung des REST-Endpunkts für verwaltete Identitäten für Azure-Ressourcen über einen Go-Client |
-| [Abrufen eines Tokens über Azure PowerShell](#get-a-token-using-azure-powershell) | Beispiel für die Verwendung des REST-Endpunkts für verwaltete Identitäten für Azure-Ressourcen über einen PowerShell-Client |
+| [Abrufen eines Tokens mit PowerShell](#get-a-token-using-powershell) | Beispiel für die Verwendung des REST-Endpunkts für verwaltete Identitäten für Azure-Ressourcen über einen PowerShell-Client |
 | [Abrufen eines Tokens über cURL](#get-a-token-using-curl) | Beispiel für die Verwendung des REST-Endpunkts für verwaltete Identitäten für Azure-Ressourcen über einen Bash/cURL-Client |
 | Behandlung der Token-Zwischenspeicherung | Anleitung zur Behandlung abgelaufener Zugriffstoken |
 | [Fehlerbehandlung](#error-handling) | Anleitung zur Behandlung von HTTP-Fehlern, die vom Tokenendpunkt für verwaltete Identitäten für Azure-Ressourcen zurückgegeben werden |
@@ -282,7 +282,7 @@ func main() {
 }
 ```
 
-## <a name="get-a-token-using-azure-powershell"></a>Abrufen eines Tokens über Azure PowerShell
+## <a name="get-a-token-using-powershell"></a>Abrufen eines Tokens mit PowerShell
 
 Im folgenden Beispiel wird veranschaulicht, wie Sie den REST-Endpunkt für verwaltete Identitäten für Azure-Ressourcen über einen PowerShell-Client für Folgendes verwenden:
 

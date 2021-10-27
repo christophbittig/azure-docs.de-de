@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: troubleshooting
-ms.date: 06/10/2021
+ms.date: 10/18/2021
 ms.author: alkohli
 ms.custom: contperf-fy21q4
-ms.openlocfilehash: 82f8fe0574ec98c71ace2aaddda2d0bc2bc6e99f
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: e2c2bc7b34316b3d18b8f10a4f1be35e7ab52e0a
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112006345"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130175843"
 ---
 # <a name="run-diagnostics-collect-logs-to-troubleshoot-azure-stack-edge-device-issues"></a>Ausführen von Diagnosen und Sammeln von Protokollen zum Behandeln von Problemen bei Azure Stack Edge-Geräten
 
@@ -27,9 +27,28 @@ In diesem Artikel wird beschrieben, wie Sie Diagnosen ausführen, ein Supportpak
 
 Zum Diagnostizieren und Behandeln von Gerätefehlern können Sie die Diagnosetests ausführen. Gehen Sie auf der lokalen Webbenutzeroberfläche Ihres Geräts wie folgt vor, um Diagnosetests auszuführen:
 
-1. Navigieren Sie auf der lokalen Webbenutzeroberfläche zu **Problembehandlung > Diagnosetests**. Wählen Sie den gewünschten Test aus, und klicken Sie auf **Test ausführen**. Mit dem Test werden mögliche Probleme mit Ihren Netzwerk-, Geräte-, Webproxy-, Zeit- oder Cloudeinstellungen diagnostiziert. Sie werden benachrichtigt, dass auf dem Gerät Tests ausgeführt werden.
+1. Navigieren Sie auf der lokalen Webbenutzeroberfläche zu **Problembehandlung > Diagnosetests**. Wählen Sie den gewünschten Test aus, und klicken Sie auf **Test ausführen**. Sie werden benachrichtigt, dass auf dem Gerät Tests ausgeführt werden. 
 
     ![Auswählen von Tests ](media/azure-stack-edge-gpu-troubleshoot/run-diag-1.png)
+
+    Die folgende Tabelle beschreibt jeden Diagnosetest, der auf Ihrem Azure Stack Edge-Gerät ausgeführt wird.
+
+    | Prüfungsname                        | BESCHREIBUNG        |
+    |----------------------------------|---------------------------------------------------------------------------------------------------------|
+    | Azure-Portalkonnektivität        |  Der Test überprüft die Konnektivität zwischen Ihrem Azure Stack Edge-Gerät und dem Azure-Portal.      |
+    | Azure-konsistente Integritätsdienste | Auf Ihrem Geräte werden verschiedene Dienste ausgeführt, darunter Azure Resource Manager, Computeressourcenanbieter, Netzwerkressourcenanbieter und der Blob Storage-Dienst. Diese Dienste stellen zusammen einen Azure-konsistenten Stapel bereit. Die Integritätsprüfung stellt sicher, dass diese Azure-konsistenten Dienste betriebsbereit sind. |
+    | Zertifikate                     | Der Test überprüft das Ablaufdatum und die Auswirkungen von Geräte- und DNS-Domänenänderungen auf Zertifikate. Bei der Integritätsprüfung wurde sichergestellt, dass alle Zertifikate importiert und auf alle Geräteknoten angewendet wurden.                                                                                      |
+    | Runtime für Azure-Edgecomputing       | Der Test überprüft, ob der Kubernetes Service von Azure Stack Edge wie erwartet funktioniert. Dies schließt die Überprüfung der Kubernetes-VM-Integrität sowie des Status des von Ihrem Gerät bereitgestellten Kubernetes Service ein.  |
+    | Datenträger                            |  Der Test überprüft, ob alle Gerätedatenträger verbunden sind und funktionieren. Dies schließt eine Überprüfung ein, ob auf den Datenträgern die richtige Firmware installiert ist und BitLocker ordnungsgemäß konfiguriert ist. |
+    | Stromversorgungseinheiten                             |  Der Test überprüft, ob alle Netzteile verbunden sind und funktionieren.  |
+    | Netzwerkschnittstellen               | Der Test überprüft, ob alle Netzwerkschnittstellen auf Ihrem Gerät verbunden sind, und ob die Netzwerktopologie für dieses System den Erwartungen entspricht.    |
+    | Zentralprozessoren (CPUs)                             |  Der Test überprüft, ob CPUs im System über die richtige Konfiguration verfügen sowie aktuell und funktionsfähig sind.    |
+    | Computebeschleunigung             | Der Test überprüft, ob die Computebeschleunigung hinsichtlich Hardware und Software erwartungsgemäß funktioniert. Je nach Gerätemodell kann die Computebeschleunigung über eine GPU (Graphical Processing Unit) oder eine VPU (Vision Processing Unit) oder ein FPGA (Field Programmable Gate Array) erfolgen.   |
+    | Netzwerkeinstellungen                 |  Dieser Test überprüft die Netzwerkkonfiguration des Geräts.    |
+    | Internetkonnektivität            |  Dieser Test überprüft die Internetkonnektivität des Geräts.   |
+    | Systemsoftware                  |  Mit diesem Test wird überprüft, ob der Systemspeicher und der Softwarestapel wie erwartet funktionieren.   |
+    | Zeitsynchronisierung                        |  Dieser Test überprüft die Zeiteinstellungen des Geräts und stellt sicher, dass der auf dem Gerät konfigurierte Zeitserver gültig und zugänglich ist.     |
+    | Bereitschaft für Softwareupdates        |  Dieser Test überprüft, ob der konfigurierte Updateserver gültig und zugänglich ist.   |
  
 2. Nach Abschluss der Tests werden die Ergebnisse angezeigt. 
 

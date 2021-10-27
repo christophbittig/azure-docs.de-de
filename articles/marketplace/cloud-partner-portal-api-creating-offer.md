@@ -7,12 +7,12 @@ ms.topic: reference
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/29/2020
-ms.openlocfilehash: dba47073a6676b17c091af048f583ca3e7712999
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9ea679864d722306b9a7375e732a8ce90d1eed9f
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87420225"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130069898"
 ---
 # <a name="create-or-modify-an-offer"></a>Erstellen oder Ändern ein Angebots
 
@@ -275,7 +275,7 @@ Im folgenden Beispiel wird ein Angebot mit der Angebots-ID (offerId) `contosovir
 
 ## <a name="uploading-artifacts"></a>Hochladen von Artefakten
 
-Artefakte, etwa Bilder und Logos, sollten freigegeben werden, indem sie in einen zugänglichen Speicherort im Internet hochgeladen und anschließend jeweils als URI in die PUT-Anforderung eingefügt werden (siehe obiges Beispiel). Das System erkennt, dass diese Dateien nicht im Azure Marketplace-Speicher vorhanden sind, und lädt diese Dateien in den Speicher herunter.  Daher werden Sie feststellen, dass zukünftige GET-Anforderungen eine Azure Marketplace-Dienst-URL für diese Dateien zurückgeben.
+Artefakte, etwa Bilder und Logos, sollten freigegeben werden, indem sie in einen zugänglichen Speicherort im Internet hochgeladen und anschließend jeweils als URI in die PUT-Anforderung eingefügt werden (siehe obiges Beispiel). Das System erkennt, dass diese Dateien nicht im Azure Marketplace-Speicher vorhanden sind und lädt sie herunter. Daher werden Sie feststellen, dass zukünftige GET-Anforderungen eine Azure Marketplace-Dienst-URL für diese Dateien zurückgeben.
 
 ## <a name="categories-and-industries"></a>Kategorien und Branchen
 
@@ -392,9 +392,9 @@ Diese Kategorien und Schlüssel gelten für folgende Angebotstypen: Azure-Apps, 
 
 ### <a name="microsoft-appsource-categories"></a>Microsoft AppSource-Kategorien
 
-Diese Kategorien und Schlüssel gelten für folgende Angebotstypen: SaaS, Power BI-App, Dynamics 365 Business Central, Dynamics 365 for Customer Engagement und Dynamics 365 for Operations. Fett und kursiv formatierte Textelemente (z. B. ***Analyse***) sind Kategorien, und normal formatierte Textelemente (z. B. „Erweiterte Analyse“) sind zugehörige Unterkategorien. Verwenden Sie die genauen Schlüsselwerte, ohne den Zeichenabstand oder die Groß-/Kleinschreibung zu ändern.
+Diese Kategorien und ihre jeweiligen Schlüssel gelten für die Angebotstypen SaaS, Power BI App, Dynamics 365 Business Central, Dynamics 365 for Customer Engagement und Dynamics 365 for Operation. Fett und kursiv formatierte Textelemente (z. B. ***Analyse***) sind Kategorien, und normal formatierte Textelemente (z. B. „Erweiterte Analyse“) sind zugehörige Unterkategorien. Verwenden Sie die genauen Schlüsselwerte, ohne den Zeichenabstand oder die Groß-/Kleinschreibung zu ändern.
 
-| Category | SaaS-Schlüssel | Schlüssel für Dynamics 365 Business Central, Dynamics 365 for Customer Engagement und Dynamics 365 for Operations | Power BI-App-Schlüssel |
+| Category | SaaS-Schlüssel | Schlüssel für Dynamics 365 Business Central, Dynamics 365 for Customer Engagement und Dynamics 365 for Operations | Power BI-Anwendungstasten |
 | --- | --- | --- | --- |
 | ***Analysen** _ | _*_analytics_*_ | _*_Analyse_*_ | _ *_Analytics_** |
 | Erweiterte Analyse | advanced-analytics | advanced-analytics | advanced-analytics |
@@ -494,9 +494,9 @@ Diese Kategorien und Schlüssel gelten für folgende Angebotstypen: SaaS, Power�
 
 ### <a name="microsoft-appsource-industries"></a>Microsoft AppSource-Branchen
 
-Diese Branchen und Schlüssel gelten für folgende Angebotstypen: SaaS, Power BI-App, Dynamics 365 Business Central, Dynamics 365 for Customer Engagement und Dynamics 365 for Operations. Fett und kursiv formatierte Textelemente (z. B. ***Automobile***) sind Kategorien, und normal formatierte Textelemente (z. B. „Automobilbau“) sind zugehörige Unterkategorien. Verwenden Sie die genauen Schlüsselwerte, ohne den Zeichenabstand oder die Groß-/Kleinschreibung zu ändern.
+Diese Branchen und ihre jeweiligen Schlüssel gelten für die Angebotsarten SaaS, Power BI App, Dynamics 365 Business Central, Dynamics 365 for Customer Engagement und Dynamics 365 for Operation. Fett und kursiv formatierte Textelemente (z. B. ***Automobile***) sind Kategorien, und normal formatierte Textelemente (z. B. „Automobilbau“) sind zugehörige Unterkategorien. Verwenden Sie die genauen Schlüsselwerte, ohne den Zeichenabstand oder die Groß-/Kleinschreibung zu ändern.
 
-| Branche | Schlüssel für SaaS, Dynamics 365 Business Central, Dynamics 365 for Customer Engagement und Dynamics 365 for Operations | Power BI-App-Schlüssel |
+| Branche | Schlüssel für SaaS, Dynamics 365 Business Central, Dynamics 365 for Customer Engagement und Dynamics 365 for Operations | Schlüssel für Power BI-Anwendungen |
 | --- | --- | --- |
 | ***Automobilindustrie** _ | _*_Automobilindustrie_*_ | _ *_automotive_** |
 | Automobilbau | AutomotiveL2 | AutomotiveL2 |

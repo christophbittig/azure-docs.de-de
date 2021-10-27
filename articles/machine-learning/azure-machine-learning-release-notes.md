@@ -2,19 +2,18 @@
 title: Neuerungen im Release
 titleSuffix: Azure Machine Learning
 description: Erfahren Sie mehr über die neuesten Updates für Azure Machine Learning und Python SDKs für maschinelles Lernen und Datenaufbereitung.
-services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 ms.author: larryfr
 author: BlackMist
 ms.date: 10/04/2021
-ms.openlocfilehash: 598cc1944cb49024d91da476b95f9aa0b25f6279
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: 8807aa11ce8f9d4c96ae27656d9d29a4f5f7e7f1
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129811093"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129994174"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning: Anmerkungen zu dieser Version
 
@@ -42,7 +41,7 @@ __RSS-Feed__: Lassen Sie sich benachrichtigen, wenn diese Seite aktualisiert wir
   + **azureml-responsibleai**
     + Verbesserte Fehlermeldung bei fehlgeschlagenem Dashboard-Download
   + **azureml-train-automl-client**
-    + Zusätzliche Unterstützung für Computer-Vision-Aufgaben wie Bildklassifizierung, Objekterkennung und Instanzsegmentierung. Eine ausführliche Dokumentation finden Sie unter: https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-image-models
+    + Zusätzliche Unterstützung für Computer-Vision-Aufgaben wie Bildklassifizierung, Objekterkennung und Instanzsegmentierung. Eine ausführliche Dokumentation finden Sie unter [Automatisches Trainieren von Modellen für Bilder](how-to-auto-train-image-models.md).
     + Binäre Metrik-Berechnung aktivieren
   + **azureml-train-automl-runtime**
     + Hinzufügen von TCNForecaster-Unterstützung für Modelltestläufe.

@@ -4,16 +4,17 @@ description: Lernen Sie Azure Analysis Services kennen, eine vollständig verwal
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 03/29/2021
+ms.date: 10/12/2021
 ms.author: owend
 ms.reviewer: minewiskan
+recommendations: false
 ms.custom: references_regions
-ms.openlocfilehash: c3b95b92f2b76e669b4e207163f76f8cec2d3244
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 815fe276f4c44085eebfa91f33167c2428c31c1f
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105731682"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129992866"
 ---
 # <a name="what-is-azure-analysis-services"></a>Was ist Azure Analysis Services?
 
@@ -129,13 +130,13 @@ Azure Analysis Services wird in Regionen weltweit unterstützt. Die unterstützt
 
 Sie können den Tarif erhöhen oder verringern oder die Ausführung Ihres Servers anhalten. Verwenden Sie das Azure-Portal, oder nutzen Sie PowerShell für umfassende Steuerungsmöglichkeiten. Sie bezahlen nur für die tatsächliche Nutzung.  
 
-### <a name="scale-out-resources-for-fast-query-responses"></a>Aufskalieren von Ressourcen zur Erzielung von schnellen Reaktionen auf Abfragen
+### <a name="scale-out-resources-for-fast-query-response"></a>Horizontales Skalieren von Ressourcen zur Erzielung von schnellen Reaktionen auf Abfragen
 
-Beim Aufskalieren werden Clientabfragen auf mehrere *Abfragereplikate* in einem Abfragepool verteilt. Abfragereplikate verfügen über synchronisierte Kopien Ihrer tabellarischen Modelle. Indem die Abfrageworkload verteilt wird, können die Antwortzeiten bei einer hohen Auslastung mit Abfrageworkloads reduziert werden. Vorgänge zur Modellverarbeitung können vom Abfragepool getrennt werden, sodass sichergestellt ist, dass Clientabfragen durch Verarbeitungsvorgänge nicht negativ beeinträchtigt werden. 
+Bei der horizontalen Skalierung werden Clientabfragen auf mehrere *Abfragereplikate* in einem Abfragepool verteilt. Abfragereplikate verfügen über synchronisierte Kopien Ihrer tabellarischen Modelle. Indem die Abfrageworkload verteilt wird, können die Antwortzeiten bei einer hohen Auslastung mit Abfrageworkloads reduziert werden. Vorgänge zur Modellverarbeitung können vom Abfragepool getrennt werden, sodass sichergestellt ist, dass Clientabfragen durch Verarbeitungsvorgänge nicht negativ beeinträchtigt werden. 
 
 Sie können einen Abfragepool mit bis zu sieben zusätzlichen Replikaten erstellen (mit Ihrem Server insgesamt acht). Die mögliche Anzahl von Abfragereplikaten in Ihrem Pool hängt vom gewählten Plan und der gewählten Region ab. Abfragereplikate können nicht außerhalb der Region Ihres Servers verteilt werden. Abfragereplikate werden mit dem gleichen Tarif wie Ihr Server abgerechnet.
 
-Wie beim Ändern des Tarifs auch, können Sie Abfragereplikate gemäß Ihren Anforderungen aufskalieren. Konfigurieren Sie das Aufskalieren im Portal oder mit den REST-APIs. Weitere Informationen finden Sie unter [Aufskalieren von Azure Analysis Services](analysis-services-scale-out.md).
+Wie beim Ändern des Tarifs auch, können Sie Abfragereplikate gemäß Ihren Anforderungen aufskalieren. Konfigurieren Sie das horizontale Hochskalieren im Portal oder mit den REST-APIs. Weitere Informationen finden Sie unter [Azure Analysis Services scale-out](analysis-services-scale-out.md) (Azure Analysis Services – Horizontales Hochskalieren).
 
 ## <a name="pricing"></a>Preise
 
@@ -147,7 +148,7 @@ Azure Analysis Services ist mit zahlreichen praktischen Features kompatibel, die
 
 Tabellarische Modelle werden sowohl im In-Memory- als auch im DirectQuery-Modus unterstützt. Für tabellarische Modelle im In-Memory-Modus (Standard) werden mehrere Datenquellen unterstützt. Da Modelldaten stark komprimiert und im Speicher zwischengespeichert werden, ermöglicht dieser Modus für große Datenmengen die schnellste Reaktion auf Abfragen. Außerdem bietet er die größtmögliche Flexibilität in Bezug auf komplexe Datasets und Abfragen. 
 
-Die Partitionierung ermöglicht inkrementelle Lasten, erhöht die Parallelität und verringert den Speicherverbrauch. Andere erweiterte Features der Datenmodellierung, z.B. berechnete Tabellen, und alle DAX-Funktionen werden unterstützt. In-Memory-Modelle müssen aktualisiert (verarbeitet) werden, um zwischengespeicherte Daten von Datenquellen zu aktualisieren. Mit dem Azure-Dienstprinzipalsupport kann mit unbeaufsichtigten Aktualisierungsvorgängen per PowerShell, TOM, TMSL und REST flexibel sichergestellt werden, dass Ihre Modelldaten immer auf dem aktuellen Stand sind. 
+Die Partitionierung ermöglicht inkrementelle Lasten, erhöht die Parallelität und verringert den Speicherverbrauch. Andere erweiterte Features der Datenmodellierung, z. B. berechnete Tabellen, und alle DAX-Funktionen werden unterstützt. In-Memory-Modelle müssen aktualisiert (verarbeitet) werden, um zwischengespeicherte Daten von Datenquellen zu aktualisieren. Mit dem Azure-Dienstprinzipalsupport kann mit unbeaufsichtigten Aktualisierungsvorgängen per PowerShell, TOM, TMSL und REST flexibel sichergestellt werden, dass Ihre Modelldaten immer auf dem aktuellen Stand sind. 
 
 Im DirectQuery-Modus* wird die relationale Back-End-Datenbank für die Speicherung und Abfragenausführung genutzt. Sehr große Datasets werden in einzelnen Datenquellen von SQL Server, SQL Server Data Warehouse, Azure SQL-Datenbank, Azure Synapse Analytics, Oracle und Teradata unterstützt. Für Back-End-Datasets kann der verfügbare Speicher für Serverressourcen überschritten werden. Komplexe Aktualisierungsszenarien für Datenmodelle sind nicht erforderlich. Es gelten auch einige Einschränkungen, z. B. eine begrenzte Zahl von Datenquellentypen, DAX-Formelbeschränkungen und fehlende Unterstützung einiger Features für die erweiterte Datenmodellierung. Lesen Sie die Informationen zum [DirectQuery-Modus](/analysis-services/tabular-models/directquery-mode-ssas-tabular), bevor Sie den für Sie am besten geeigneten Modus ermitteln.
 
@@ -186,7 +187,7 @@ Das Installieren und Konfigurieren eines [lokalen Datengateways](analysis-servic
 
 Für Analysis Services wird die [rollenbasierte Autorisierung](/analysis-services/tabular-models/roles-ssas-tabular) verwendet, bei der der Zugriff auf Server- und Modelldatenbankvorgänge, -objekte und -daten gewährt wird. Alle Benutzer, die auf einen Server oder eine Datenbank zugreifen, verwenden hierfür ihr Azure AD-Benutzerkonto im Rahmen einer zugewiesenen Rolle. Die Serveradministratorrolle ist auf der Serverressourcenebene angeordnet. Standardmäßig wird das Konto, das beim Erstellen eines Servers verwendet wird, automatisch in die Rolle „Serveradministratoren“ eingefügt. Zusätzliche Benutzer- und Gruppenkonten werden über das Portal oder per SSMS oder PowerShell hinzugefügt.
   
-Endbenutzern ohne Administratorrechte, die Daten abfragen, wird der Zugriff über Datenbankrollen gewährt. Eine Datenbankrolle wird als separates Objekt in der Datenbank erstellt und gilt nur für die Datenbank, in der diese Rolle erstellt wird. Datenbankrollen werden über die Berechtigungen „Administrator“ (Datenbank), „Lesen“ und „Lesen und verarbeiten“ definiert. Benutzer- und Gruppenkonten werden per SSMS oder PowerShell hinzugefügt.
+Benutzern ohne Administratorrechte, die Daten abfragen, wird der Zugriff über Datenbankrollen gewährt. Eine Datenbankrolle wird als separates Objekt in der Datenbank erstellt und gilt nur für die Datenbank, in der diese Rolle erstellt wird. Datenbankrollen werden über die Berechtigungen „Administrator“ (Datenbank), „Lesen“ und „Lesen und verarbeiten“ definiert. Benutzer- und Gruppenkonten werden per SSMS oder PowerShell hinzugefügt.
 
 ### <a name="row-level-security"></a>Sicherheit auf Zeilenebene
 
@@ -194,7 +195,7 @@ Tabellarische Modelle aller Kompatibilitätsgrade unterstützen die Sicherheit a
 
 ### <a name="object-level-security"></a>Sicherheit auf Objektebene 
 
-Tabellarische Modelle mit dem Kompatibilitätsgrad 1400 unterstützen die Sicherheit auf Objektebene, zu der die Sicherheit auf Tabellenebene und die Sicherheit auf Spaltenebene gehören. Die Sicherheit auf Objektebene wird in den JSON-basierten Metadaten in der Datei „Model.bim“ per TMSL oder TOM festgelegt. Weitere Informationen finden Sie unter [Object-level security](/analysis-services/tabular-models/object-level-security) (Sicherheit auf Objektebene).
+Tabellarische Modelle mit dem Kompatibilitätsgrad 1400 und höher unterstützen die Sicherheit auf Objektebene, zu der die Sicherheit auf Tabellenebene und die Sicherheit auf Spaltenebene gehören. Die Sicherheit auf Objektebene wird in den JSON-basierten Metadaten per TMSL oder TOM festgelegt. Weitere Informationen finden Sie unter [Object-level security](/analysis-services/tabular-models/object-level-security) (Sicherheit auf Objektebene).
 
 ### <a name="automation-through-service-principals"></a>Automatisierung durch Dienstprinzipale
 

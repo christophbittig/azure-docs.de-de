@@ -6,23 +6,24 @@ services: active-directory
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
-ms.topic: how-to
+ms.topic: conceptual
 ms.workload: identity
-ms.date: 02/13/2020
+ms.date: 10/08/2021
 ms.author: davidmu
 ms.custom: aaddev
-ms.openlocfilehash: 2e689e620a5aeb7c5028f1a1b30dd6def8e447ab
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: a0159f1c633806c26bda39ffe0c8a295bec46982
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107529981"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129993700"
 ---
 # <a name="microsoft-graph-api"></a>Microsoft Graph-API
 
 Die Microsoft Graph-API ist eine RESTful-Web-API, die Ihnen den Zugriff auf Microsoft Cloud-Dienstressourcen ermöglicht. Nachdem Sie Ihre App registriert und Authentifizierungstoken für einen Benutzer oder Dienst abgerufen haben, können Sie Anforderungen an die Microsoft Graph-API senden. Weitere Informationen finden Sie in der [Übersicht zu Microsoft Graph](/graph/overview).
 
-Microsoft Graph macht Rest-APIs und Clientbibliotheken für den Zugriff auf Daten für die folgenden Microsoft 365-Dienste verfügbar:
+Microsoft Graph stellt REST-APIs und Client-Bibliotheken für den Zugriff auf Daten in den folgenden Microsoft Cloud-Diensten bereit:
+
 - Microsoft 365-Dienste: Delve, Excel, Microsoft Bookings, Microsoft Teams, OneDrive, OneNote, Outlook/Exchange, Planner und SharePoint
 - Enterprise Mobility + Security-Dienste: Advanced Threat Analytics, Advanced Threat Protection, Azure Active Directory, Identity Manager und Intune
 - Windows 10-Dienste: Aktivitäten, Geräte, Benachrichtigungen
@@ -30,15 +31,17 @@ Microsoft Graph macht Rest-APIs und Clientbibliotheken für den Zugriff auf Date
 
 ## <a name="versions"></a>Versionen
 
-Microsoft Graph unterstützt derzeit zwei Versionen: v1.0 und Beta. Die Version v1.0 enthält allgemein verfügbare APIs. Verwenden Sie die Version v1.0 für alle Produktions-Apps. Die Betaversion enthält APIs, die sich derzeit in der Vorschau befinden. Weil wir möglicherweise wichtige Änderungen (Breaking Changes) an unseren Beta-APIs einführen, empfehlen wir, die Betaversion nur zum Testen von Apps zu verwenden, die sich in der Entwicklung befinden. Verwenden Sie Beta-APIs nicht in Ihren Produktions-Apps. Weitere Informationen finden Sie unter [Versionsverwaltung, Support und Breaking Change-Richtlinien für Microsoft Graph](/graph/versioning-and-support).
+Die folgenden Versionen der Microsoft Graph API sind derzeit verfügbar:
 
-Wenn Sie mit der Verwendung der Beta-APIs beginnen möchten, lesen Sie [Microsoft Graph beta endpoint reference](/graph/api/overview?view=graph-rest-beta&preserve-view=true) (Microsoft Graph – Beta-Endpunkt-Referenz).
+- **Beta-Version**: Die Betaversion enthält APIs, die sich derzeit in der Vorschau befinden und über den Endpunkt `https://graph.microsoft.com/beta` zugänglich sind. Wenn Sie mit der Verwendung der Beta-APIs beginnen möchten, lesen Sie [Microsoft Graph beta endpoint reference](/graph/api/overview?view=graph-rest-beta&preserve-view=true) (Microsoft Graph – Beta-Endpunkt-Referenz).
+- Version **v1.0 Version**: Die Version v1.0 enthält APIs, die allgemein verfügbar und für den Produktionseinsatz bereit sind. Die Version v1.0 ist über den Endpunkt `https://graph.microsoft.com/v1.0` zugänglich. Wenn Sie mit der Verwendung der v1.0-APIs beginnen möchten, lesen Sie [Microsoft Graph REST API v1.0 reference](/graph/api/overview?view=graph-rest-1.0&preserve-view=true) (Microsoft Graph – REST-API v1.0-Referenz).
 
-Wenn Sie mit der Verwendung der v1.0-APIs beginnen möchten, lesen Sie [Microsoft Graph REST API v1.0 reference](/graph/api/overview?view=graph-rest-1.0&preserve-view=true) (Microsoft Graph – REST-API v1.0-Referenz).
+Weitere Informationen zu Microsoft Graph API-Versionen finden Sie unter [Versions-, Support- und Änderungsrichtlinien für Microsoft Graph](/graph/versioning-and-support).
+
 
 ## <a name="get-started"></a>Erste Schritte
 
-Zum Lesen aus einer oder Schreiben in eine Ressource, z. B. einen Benutzer oder eine E-Mail-Nachricht, erstellen Sie eine Anforderung, die folgendermaßen aussieht:
+Um von einer Ressource, z. B. einem Benutzer oder einer E-Mail-Nachricht, zu lesen oder in sie zu schreiben, erstellen Sie eine Anfrage, die wie das folgende Muster aussieht:
 
 `{HTTP method} https://graph.microsoft.com/{version}/{resource}?{query-parameters}`
 
@@ -46,6 +49,7 @@ Weitere Informationen zu den Elementen der erstellten Anforderung finden Sie unt
 
 Schnellstartbeispiele stehen zur Verfügung, die Ihnen zeigen sollen, wie Sie auf die Leistung der Microsoft Graph-API zugreifen können. Die verfügbaren Beispiele greifen auf zwei Dienste mit einer Authentifizierung zu: Microsoft-Konto und Outlook. Jeder Schnellstart greift auf Informationen aus den Benutzerprofilen des Microsoft-Kontos zu und zeigt Ereignisse aus dem Kalender dieser Benutzer an.
 Die Schnellstarts umfassen vier Schritte:
+
 - Auswählen Ihrer Plattform
 - Abrufen Ihrer App-ID (Client-ID)
 - Erstellen des Beispiels
@@ -55,6 +59,13 @@ Nach Abschluss des Schnellstarts verfügen Sie über eine ausführungsbereite Ap
 
 ## <a name="tools"></a>Tools
 
-Der Microsoft Graph-Tester ist ein webbasiertes Tool, mit dem Sie Anforderungen über die Microsoft Graph-APIs erstellen und testen können. Sie können auf den Microsoft Graph-Tester zugreifen unter: `https://developer.microsoft.com/graph/graph-explorer`.
+**Der Microsoft Graph Explorer** ist ein webbasiertes Tool, mit dem Sie Anfragen an die Microsoft Graph API erstellen und testen können. Zugriff auf Microsoft Graph Explorer unter https://developer.microsoft.com/graph/graph-explorer.
 
-Postman ist ein Tool, mit dem Sie Anforderungen über die Microsoft Graph-APIs ebenfalls erstellen und testen können. Sie können Postman herunterladen unter: `https://www.getpostman.com/`. Für die Interaktion mit Microsoft Graph in Postman verwenden Sie die Microsoft Graph-Sammlung in Postman. Weitere Informationen finden Sie unter [Use Postman with the Microsoft Graph API](/graph/use-postman) (Verwenden von Postman bei der Microsoft Graph-API).
+**Postman** ist ein weiteres Tool, mit dem Sie Anfragen an die Microsoft Graph API stellen können. Sie können Postman unter https://www.getpostman.com herunterladen. Um mit Microsoft Graph in Postman zu interagieren, verwenden Sie die [Microsoft Graph Postman Sammlung](/graph/use-postman).
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Weitere Informationen zu Microsoft Graph, einschließlich Informationen zur Verwendung und Tutorials, finden Sie unter:
+
+- [Verwenden der Microsoft Graph-API](/graph/use-the-api)
+- [ Microsoft Graph-Tutorials ](/graph/tutorials)

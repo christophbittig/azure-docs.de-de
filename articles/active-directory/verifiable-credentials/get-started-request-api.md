@@ -1,21 +1,21 @@
 ---
-title: Aufrufen der Anforderungsdienst-REST-API
+title: Aufrufen der Anforderungsdienst-REST-API (Vorschau)
 titleSuffix: Azure Active Directory Verifiable Credentials
 description: Informationen zu Ausstellung und Überprüfung mithilfe der Anforderungsdienst-REST-API
 documentationCenter: ''
 author: barclayn
-manager: daveba
+manager: karenh444
 ms.service: active-directory
 ms.topic: how-to
 ms.subservice: verifiable-credentials
 ms.date: 10/08/2021
 ms.author: barclayn
-ms.openlocfilehash: 6dff1940219aa666453d150ed24d84f8eb0165da
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: f4c3a42108e6098cfde3509bc5f365b78d9a4bba
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129809866"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130073542"
 ---
 # <a name="request-service-rest-api-preview"></a>Anforderungsdienst-REST-API (Vorschau)
 
@@ -180,7 +180,7 @@ const result = await mainApp.msalCca.acquireTokenByClientCredential(mainApp.msal
 
 Führen Sie die folgenden Schritte aus, um einen Nachweis auszustellen oder zu überprüfen:
 
-1. Erstellen Sie eine HTTP POST-Anforderung für die Anforderungsdienst-REST-API. Ersetzen Sie `{tenantID}` durch Ihre [Mandanten-ID](https://TBD) oder durch den Namen Ihres Mandanten.
+1. Erstellen Sie eine HTTP POST-Anforderung für die Anforderungsdienst-REST-API. Ersetzen Sie `{tenantID}` durch Ihre **Mandanten-ID** oder durch den Namen Ihres Mandanten.
 
     ```http
     POST https://beta.did.msidentity.com/v1.0/{tenantID}/verifiablecredentials/request

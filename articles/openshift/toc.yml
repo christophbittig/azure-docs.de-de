@@ -14,12 +14,18 @@
       href: tutorial-connect-cluster.md
     - name: 3. Löschen eines ARO-Clusters
       href: tutorial-delete-cluster.md
+- name: Schnellstarts
+  items:
+    - name: Bereitstellen eines ARO-Clusters mit dem Azure-Portal
+      href: quickstart-portal.md
 - name: Anleitungen
   items:
     - name: Clustervorgänge
       items:
         - name: Aktualisieren eines ARO-Clusters
           href: howto-upgrade.md
+        - name: Verwenden von Spot-Knoten
+          href: howto-spot-nodes.md
     - name: Netzwerk
       items:
         - name: Erstellen eines privaten ARO-Clusters

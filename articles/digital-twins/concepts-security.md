@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 6/1/2021
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 253d763cffc8b70d134182c13678320f4ac50f4c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 59fa14f66e5fdb1424a4bac30a30cf70118149b4
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128586322"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130131466"
 ---
 # <a name="secure-azure-digital-twins"></a>Schützen von Azure Digital Twins
 
@@ -82,7 +82,7 @@ In der folgenden Liste werden die Ebenen beschrieben, auf denen Sie den Zugriff 
 
 ### <a name="troubleshooting-permissions"></a>Problembehandlung bei Berechtigungen
 
-Wenn ein Benutzer versucht, eine Aktion auszuführen, die für seine Rolle nicht zulässig ist, wird möglicherweise der folgende Fehler von der Dienstanforderung zurückgegeben: `403 (Forbidden)`. Weitere Informationen und Hilfe bei der Problembehandlung finden Sie unter [Problembehandlung: Fehler bei Azure Digital Twins-Anforderung mit dem Status ''403 (Forbidden)'' (403 (Unzulässig))](troubleshoot-error-403.md) .
+Wenn ein Benutzer versucht, eine Aktion auszuführen, die für seine Rolle nicht zulässig ist, wird möglicherweise der folgende Fehler von der Dienstanforderung zurückgegeben: `403 (Forbidden)`. Weitere Informationen und Schritte zur Problembehandlung finden Sie unter [Problembehandlung bei einer fehlerhaften Dienstanforderung: Fehler 403 (Verboten)](troubleshoot-error-403.md).
 
 ## <a name="managed-identity-for-accessing-other-resources"></a>Verwaltete Identität für Zugriff auf andere Ressourcen
 

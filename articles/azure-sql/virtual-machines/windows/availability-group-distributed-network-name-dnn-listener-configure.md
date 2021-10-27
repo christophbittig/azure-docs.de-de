@@ -3,7 +3,7 @@ title: Konfigurieren eines DNN-Listeners für eine Verfügbarkeitsgruppe
 description: Erfahren Sie, wie Sie einen DNN-Listener (Distributed Network Name, Name des verteilten Netzwerks) konfigurieren, um den VNN-Listener (Virtual Network Name, Name des virtuellen Netzwerks) zu ersetzen und Datenverkehr an Ihre AlwaysOn-Verfügbarkeitsgruppen auf SQL Server auf Azure-VMs weiterzuleiten.
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: rajeshsetlem
 manager: jroth
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
@@ -13,14 +13,14 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/07/2020
-ms.author: mathoma
-ms.reviewer: jroth
-ms.openlocfilehash: 50984f7a22caa6e1340b6ed4d927d9450eccdf9e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.author: rsetlem
+ms.reviewer: mathoma
+ms.openlocfilehash: 3ad963def4866e7528527400ff259502441c9dbf
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122356067"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130165643"
 ---
 # <a name="configure-a-dnn-listener-for-an-availability-group"></a>Konfigurieren eines DNN-Listeners für eine Verfügbarkeitsgruppe
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,7 +29,6 @@ Bei SQL Server auf Azure-VMs wird über den DNN (Distributed Network Name, Name 
 
 In diesem Artikel erfahren Sie, wie Sie einen DNN-Listener konfigurieren, durch den der VNN-Listener ersetzt und Datenverkehr an Ihre Verfügbarkeitsgruppe mit SQL Server auf Azure-VMs für Hochverfügbarkeit und Notfallwiederherstellung (HADR) weitergeleitet wird.
 
-Die DNN-Listener-Funktionalität ist zurzeit nur ab SQL Server 2019 CU8 unter Windows Server 2016 und höher verfügbar.
 
 Als alternative Konnektivitätsoption bietet sich ein [VNN-Listener mit Azure Load Balancer-Objekt](availability-group-vnn-azure-load-balancer-configure.md) an.
 
@@ -46,12 +45,11 @@ Verwenden Sie den DNN-Listener, um einen vorhandenen VNN-Listener zu ersetzen, o
 
 Bevor Sie die in diesem Artikel aufgeführten Schritte ausführen, sollten Sie über Folgendes verfügen:
 
-- SQL Server 2019 mit CU8 oder höher unter Windows Server 2016 und höher
+- SQL Server ab [SQL Server 2019 CU8](https://support.microsoft.com/topic/cumulative-update-8-for-sql-server-2019-ed7f79d9-a3f0-a5c2-0bef-d0b7961d2d72) und höher, [SQL Server 2017 CU25](https://support.microsoft.com/topic/kb5003830-cumulative-update-25-for-sql-server-2017-357b80dc-43b5-447c-b544-7503eee189e9) und höher oder [SQL Server 2016 SP3](https://support.microsoft.com/topic/kb5003279-sql-server-2016-service-pack-3-release-information-46ab9543-5cf9-464d-bd63-796279591c31) und höher unter Windows Server 2016 und höher.
 - Sie sollten entschieden haben, dass der Name des verteilten Netzwerks die geeignete [Konnektivitätsoption für die HADR-Lösung](hadr-cluster-best-practices.md#connectivity) ist.
 - Sie sollten Ihre [AlwaysOn-Verfügbarkeitsgruppe](availability-group-overview.md) konfiguriert haben. 
 - Sie müssen die neueste Version von [PowerShell](/powershell/azure/install-az-ps) installiert haben. 
 - Identifiziert den eindeutigen Port, der für den DNN-Listener verwendet werden soll. Der für einen DNN-Listener verwendete Port muss in allen Replikaten der Verfügbarkeitsgruppe oder der Failoverclusterinstanz eindeutig sein.  Keine andere Verbindung kann denselben Port gemeinsam nutzen.
-- Der Client, der eine Verbindung mit dem DNN-Listener herstellt, muss den Parameter `MultiSubnetFailover=True` in der Verbindungszeichenfolge unterstützen. 
 
 
 
@@ -146,7 +144,11 @@ Der Wert `1` für `is_distributed_network_name` kennzeichnet, dass der Listener 
 
 ## <a name="update-connection-string"></a>Aktualisieren der Verbindungszeichenfolge
 
-Aktualisieren Sie die Verbindungszeichenfolgen für Anwendungen, sodass sie Verbindungen mit dem DNN-Listener herstellen. Verbindungszeichenfolgen für DNN-Listener müssen die DNN-Portnummer angeben. Fügen Sie `MultiSubnetFailover=True` zur Verbindungszeichenfolge hinzu, wenn der SQL-Client dies unterstützt, um bei einem Failover eine schnelle Konnektivität sicherzustellen.
+Aktualisieren Sie die Verbindungszeichenfolge für jede Anwendung, die eine Verbindung mit dem DNN-Listener herstellen muss. Die Verbindungszeichenfolge für den DNN-Listener muss die DNN-Portnummer angeben, und geben Sie `MultiSubnetFailover=True` in der Verbindungszeichenfolge an. Wenn der SQL-Client den Parameter `MultiSubnetFailover=True` nicht unterstützt, ist er nicht mit einem DNN-Listener kompatibel.  
+
+Im Folgenden finden Sie ein Beispiel für eine Verbindungszeichenfolge für den Listener mit dem Namen **DNN_Listener** und Port 6789: 
+
+`DataSource=DNN_Listener,6789,MultiSubnetFailover=True`
 
 ## <a name="test-failover"></a>Testfailover
 
@@ -173,8 +175,8 @@ Testen Sie die Konnektivität Ihres DNN-Listeners mit den folgenden Schritten:
 
 ## <a name="limitations"></a>Einschränkungen
 
-- Derzeit wird ein DNN-Listener für eine Verfügbarkeitsgruppe nur für SQL Server 2019 CU8 und höher unter Windows Server 2016 und höher unterstützt. 
 - DNN-Listener **MÜSSEN** mit einem eindeutigen Port konfiguriert werden.  Der Port kann nicht gemeinsam mit anderen Verbindungen auf einem Replikat verwendet werden.
+- Der Client, der eine Verbindung mit dem DNN-Listener herstellt, muss den Parameter `MultiSubnetFailover=True` in der Verbindungszeichenfolge unterstützen. 
 - Es gibt möglicherweise weitere Überlegungen, wenn Sie mit anderen SQL Server-Features und einer Verfügbarkeitsgruppe mit einem DNN arbeiten. Weitere Informationen finden Sie unter [Funktionsinteroperabilität mit VG und DNN-Listener](availability-group-dnn-interoperability.md). 
 
 ## <a name="port-considerations"></a>Überlegungen zum Port

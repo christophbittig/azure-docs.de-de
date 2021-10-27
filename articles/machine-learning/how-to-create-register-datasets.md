@@ -11,12 +11,12 @@ ms.author: yogipandey
 author: ynpandey
 ms.reviewer: nibaccam
 ms.date: 07/06/2021
-ms.openlocfilehash: f640165420f06a85633d4db30d6338f4bfa205c4
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: a125ee289f9f3ea87f1015136b07ec2ad76cef32
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129428367"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130003040"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Erstellen von Azure Machine Learning-Datasets
 
@@ -117,6 +117,8 @@ Verwenden Sie die Methode [`from_files()`](/python/api/azureml-core/azureml.data
 Wenn sich Ihr Speicher hinter einem virtuellen Netzwerk oder einer Firewall befindet, legen Sie den Parameter `validate=False` in Ihrer `from_files()`-Methode fest. Dadurch wird der erste Überprüfungsschritt umgangen und sichergestellt, dass Sie Ihr Dataset aus diesen sicheren Dateien erstellen können. Informieren Sie sich über die [Verwendung von Datenspeichern und Datasets in einem virtuellen Netzwerk](how-to-secure-workspace-vnet.md#datastores-and-datasets).
 
 ```Python
+from azureml.core import Workspace, Datastore, Dataset
+
 # create a FileDataset pointing to files in 'animals' folder and its subfolders recursively
 datastore_paths = [(datastore, 'animals')]
 animal_ds = Dataset.File.from_files(path=datastore_paths)
@@ -126,12 +128,22 @@ web_paths = ['https://azureopendatastorage.blob.core.windows.net/mnist/train-ima
              'https://azureopendatastorage.blob.core.windows.net/mnist/train-labels-idx1-ubyte.gz']
 mnist_ds = Dataset.File.from_files(path=web_paths)
 ```
-[Registrieren Sie Ihr Dataset](#register-datasets), um Datasets in Ihrem Arbeitsbereich experimentübergreifend wiederverwenden und freigeben zu können. 
 
-> [!TIP] 
-> Laden Sie Dateien aus einem lokalen Verzeichnis hoch, und erstellen Sie ein FileDataset-Element in einer einzelnen Methode mit der öffentlichen Vorschaumethode [upload_directory()](/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory#upload-directory-src-dir--target--pattern-none--overwrite-false--show-progress-true-). Diese Methode ist eine [experimentelle](/python/api/overview/azure/ml/#stable-vs-experimental) Previewfunktion und kann jederzeit geändert werden. 
-> 
->  Mit dieser Methode werden Daten in den zugrunde liegenden Speicher hochgeladen, was zu Speicherkosten führt. 
+Wenn Sie alle Dateien aus einem lokalen Verzeichnis hochladen möchten, erstellen Sie ein FileDataset in einer einzelnen Methode mit [upload_directory()](/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory#upload-directory-src-dir--target--pattern-none--overwrite-false--show-progress-true-). Mit dieser Methode werden Daten in den zugrunde liegenden Speicher hochgeladen, was zu Speicherkosten führt. 
+
+```Python
+from azureml.core import Workspace, Datastore, Dataset
+from azureml.data.datapath import DataPath
+
+ws = Workspace.from_config()
+datastore = Datastore.get(ws, '<name of your datastore>')
+ds = Dataset.File.upload_directory(src_dir='<path to you data>',
+           target=DataPath(datastore,  '<path on the datastore>'),
+           show_progress=True)
+
+```
+
+[Registrieren Sie Ihr Dataset](#register-datasets), um Datasets in Ihrem Arbeitsbereich experimentübergreifend wiederverwenden und freigeben zu können. 
 
 ### <a name="create-a-tabulardataset"></a>Erstellen eines TabularDataset-Elements
 
@@ -317,36 +329,20 @@ titanic_ds.take(3).to_pandas_dataframe()
 
 ## <a name="create-a-dataset-from-pandas-dataframe"></a>Erstellen eines Datasets aus Pandas-Datenrahmen
 
-Um ein TabularDataset aus einem In-Memory-Pandas-Datenrahmen zu erstellen, schreiben Sie die Daten in eine lokale Datei, z. B. eine CSV-Datei, und erstellen Sie Ihr Dataset aus dieser Datei. Der folgende Code veranschaulicht diesen Workflow.
+Um ein TabularDataset aus einem speicherinternen Pandas-Datenrahmen zu erstellen, verwenden Sie die [`register_pandas_dataframe()`](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#register-pandas-dataframe-dataframe--target--name--description-none--tags-none--show-progress-true-)-Methode. Diese Methode registriert das TabularDataset im Arbeitsbereich und lädt die Daten in den zugrunde liegenden Speicher hoch, wodurch Speicherkosten entstehen. 
 
 ```python
-# azureml-core of version 1.0.72 or higher is required
-# azureml-dataprep[pandas] of version 1.1.34 or higher is required
+from azureml.core import Workspace, Datastore, Dataset
+import pandas as pd
 
-from azureml.core import Workspace, Dataset
-local_path = 'data/prepared.csv'
-dataframe.to_csv(local_path)
+pandas_df = pd.read_csv('<path to your csv file>')
+ws = Workspace.from_config()
+datastore = Datastore.get(ws, '<name of your datastore>')
+dataset = Dataset.Tabular.register_pandas_dataframe(pandas_df, datastore, "dataset_from_pandas_df", show_progress=True)
 
-# upload the local file to a datastore on the cloud
-
-subscription_id = 'xxxxxxxxxxxxxxxxxxxxx'
-resource_group = 'xxxxxx'
-workspace_name = 'xxxxxxxxxxxxxxxx'
-
-workspace = Workspace(subscription_id, resource_group, workspace_name)
-
-# get the datastore to upload prepared data
-datastore = workspace.get_default_datastore()
-
-# upload the local file from src_dir to the target_path in datastore
-datastore.upload(src_dir='data', target_path='data')
-
-# create a dataset referencing the cloud location
-dataset = Dataset.Tabular.from_delimited_files(path = [(datastore, ('data/prepared.csv'))])
 ```
-
 > [!TIP]
-> Erstellen und registrieren Sie ein TabularDataset-Element aus einem In-Memory-Spark- oder -Pandas-Datenrahmen mit einer einzelnen Methode mithilfe der öffentlichen Vorschaumethoden [`register_spark_dataframe()`](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#methods) und [`register_pandas_dataframe()`](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#methods). Diese Registrierungsmethoden sind [experimentelle](/python/api/overview/azure/ml/#stable-vs-experimental) Previewfunktionen und können jederzeit geändert werden. 
+> Erstellen und registrieren Sie ein TabularDataset aus einem speicherinternen Spark-Datenrahmen oder einem Dask-Datenrahmen mit den öffentlichen Vorschaumethoden, [`register_spark_dataframe()`](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory##register-spark-dataframe-dataframe--target--name--description-none--tags-none--show-progress-true-) und [`register_dask_dataframe()`](/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory#register-dask-dataframe-dataframe--target--name--description-none--tags-none--show-progress-true-). Diese Methoden sind [experimentelle](/python/api/overview/azure/ml/#stable-vs-experimental) Previewfunktionen und können jederzeit geändert werden. 
 > 
 >  Mit ihnen werden Daten in den zugrunde liegenden Speicher hochgeladen, was zu Speicherkosten führt. 
 
@@ -365,13 +361,7 @@ titanic_ds = titanic_ds.register(workspace=workspace,
 Unter [https://github.com/Azure/azure-quickstart-templates/tree/master//quickstarts/microsoft.machinelearningservices](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices) werden viele Vorlagen zur Verfügung gestellt, die zum Erstellen von Datasets verwendet werden können.
 
 Informationen zur Verwendung dieser Vorlagen finden Sie unter [Verwenden einer Azure Resource Manager-Vorlage zum Erstellen eines Arbeitsbereichs für Azure Machine Learning](how-to-create-workspace-template.md).
-
-
-## <a name="create-datasets-from-azure-open-datasets"></a>Erstellen von Datasets auf der Grundlage von Azure Open Datasets
-
-[Öffentliche Azure-Datasets](https://azure.microsoft.com/services/open-datasets/) sind kuratierte öffentliche Datasets, mit denen Sie Lösungen mit maschinellem Lernen szenariospezifische Features hinzufügen können, um genauere Modelle zu erzielen. Die Datasets umfassen gemeinfreie Daten für Wetter, Volkszählungen, Feiertage, öffentliche Sicherheit und Orte, mit denen Sie Machine Learning-Modelle trainieren und Vorhersagelösungen anreichern können. Open Datasets befindet sich in der Cloud unter Microsoft Azure und ist sowohl im SDK als auch in Studio enthalten.
-
-Erfahren Sie, wie Sie [Azure Machine Learning-Datasets aus Azure Open Datasets](../open-datasets/how-to-create-azure-machine-learning-dataset-from-open-dataset.md) erstellen. 
+ 
 
 ## <a name="train-with-datasets"></a>Trainieren mit Datasets
 

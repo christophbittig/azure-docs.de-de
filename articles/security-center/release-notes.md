@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
-ms.date: 10/06/2021
+ms.date: 10/17/2021
 ms.author: memildin
-ms.openlocfilehash: bd8ebca221041684a47bb66bb01c176fd1b65ba6
-ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
+ms.openlocfilehash: bd75b5fff78c213bc9d0541fb1824969b7a798a3
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129729518"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130129147"
 ---
 # <a name="whats-new-in-azure-security-center"></a>Neuerungen in Azure Security Center
 
@@ -34,6 +34,7 @@ Updates im Oktober:
 - [Schwachstellenbewertungslösungen können jetzt automatisch aktiviert werden (in der Vorschau)](#vulnerability-assessment-solutions-can-now-be-auto-enabled-in-preview)
 - [Software-Inventarisierungsfilter zum Bestandsverzeichnis hinzugefügt (in Vorschau)](#software-inventory-filters-added-to-asset-inventory-in-preview)
 - [Ändern des Präfix einiger Warnungstypen von „ARM_“ in „VM_“](#changed-prefix-of-some-alert-types-from-arm_-to-vm_)
+- [Empfehlungen Detailseiten zeigen nun verwandte Empfehlungen an](#recommendations-details-pages-now-show-related-recommendations)
 
 
 ### <a name="microsoft-threat-and-vulnerability-management-added-as-vulnerability-assessment-solution-in-preview"></a>Microsoft Threat and Vulnerability Management als Lösung zur Schwachstellenbewertung hinzugefügt (in der Vorschau)
@@ -109,6 +110,42 @@ Mit diesem Update haben wir die Präfixe dieser Warnungen so geändert, dass sie
 |||
 
 Hier finden Sie weitere Informationen zu den Plänen [Azure Defender für Resource Manager](defender-for-resource-manager-introduction.md) und [Azure Defender für Server](defender-for-servers-introduction.md).
+
+### <a name="recommendations-details-pages-now-show-related-recommendations"></a>Empfehlungen Detailseiten zeigen nun verwandte Empfehlungen an
+
+Um die Beziehungen zwischen verschiedenen Empfehlungen zu verdeutlichen, haben wir den Detailseiten vieler Empfehlungen den Bereich **Verwandte Empfehlungen** hinzugefügt. 
+
+Die drei Beziehungstypen, die auf diesen Seiten angezeigt werden, sind:
+
+- **Voraussetzung**: Eine Empfehlung, die vor der ausgewählten Empfehlung abgeschlossen werden muss.
+- **Alternative**: Eine andere Empfehlung, die eine weitere Möglichkeit bietet, die Ziele der ausgewählten Empfehlung zu erreichen.
+- **Abhängig**: Eine Empfehlung, für die die ausgewählte Empfehlung eine Voraussetzung ist.
+
+Für jede verwandte Empfehlung wird in der Spalte „Betroffene Ressourcen“ die Anzahl fehlerhafter Ressourcen angezeigt.
+
+> [!TIP]
+> Wenn eine verwandte Empfehlung ausgegraut ist, ist ihre Abhängigkeit noch nicht abgeschlossen und die Empfehlung ist daher nicht verfügbar.
+
+Ein Beispiel für verwandte Empfehlungen:
+
+1. Security Center überprüft Ihre Computer auf unterstützte Lösungen zur Sicherheitsrisikobewertung:<br>
+    **Auf Ihren virtuellen Computern muss eine Lösung zur Sicherheitsrisikobewertung installiert werden**
+
+1. Wenn eine gefunden wird, werden Sie über erkannte Sicherheitsrisiken benachrichtigt:<br>
+    **Sicherheitsrisiken für VMs müssen behoben werden**
+
+Natürlich können Security Center Sie nicht über erkannte Sicherheitsrisiken benachrichtigen, solange keine unterstützte Lösungen zur Sicherheitsrisikobewertung gefunden werden.
+
+Deshalb gilt Folgendes:
+
+ - Empfehlung 1 ist eine Voraussetzung für Empfehlung 2
+ - Empfehlung 2 hängt von Empfehlung 1 ab
+
+:::image type="content" source="media/release-notes/related-recommendations-solution-not-found.png" alt-text="Screenshot der Empfehlung zum Bereitstellen einer Lösung zur Sicherheitsrisikobewertung.":::
+
+:::image type="content" source="media/release-notes/related-recommendations-vulnerabilities-found.png" alt-text="Screenshot der Empfehlung zum Beheben von entdeckten Sicherheitsrisiken.":::
+
+
 
 ## <a name="september-2021"></a>September 2021
 

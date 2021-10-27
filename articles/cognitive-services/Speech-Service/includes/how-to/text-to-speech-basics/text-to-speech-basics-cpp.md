@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/02/2021
 ms.author: pafarley
-ms.openlocfilehash: b887683361f13bb2ae670571093c967159d4d4c2
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 28707f7f0f779b6c4cebc522be90c038e2d3c8fd
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123539341"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130143790"
 ---
 In dieser Schnellstartanleitung werden gängige Entwurfsmuster für die Sprachsynthese per Speech SDK vermittelt. Hierzu werden zunächst eine grundlegende Konfiguration und eine einfache Synthese durchgeführt, gefolgt von komplexeren Beispielen für die Entwicklung benutzerdefinierter Anwendungen:
 
@@ -82,6 +82,24 @@ int wmain()
 void synthesizeSpeech()
 {
     auto config = SpeechConfig::FromSubscription("<paste-your-speech-key-here>", "<paste-your-speech-location/region-here>");
+}
+```
+
+## <a name="select-synthesis-language-and-voice"></a>Auswählen von Synthesesprache und Stimme
+
+Der Sprachsynthesedienst von Azure unterstützt mehr als 250 Stimmen und über 70 Sprachen und Varianten.
+Sie können die [vollständige Liste](../../../language-support.md#neural-voices) abrufen oder die [Demo für die Sprachsynthese](https://azure.microsoft.com/services/cognitive-services/text-to-speech/#features) ausprobieren.
+Geben Sie die Sprache oder Stimme von [`SpeechConfig`](/cpp/cognitive-services/speech/speechconfig) entsprechend Ihres Eingabetexts an, und verwenden Sie die gewünschte Stimme.
+
+```cpp
+void synthesizeSpeech()
+{
+    auto config = SpeechConfig::FromSubscription("<paste-your-speech-key-here>", "<paste-your-speech-location/region-here>");
+    // Note: if only language is set, the default voice of that language is chosen.
+    config->SetSpeechSynthesisLanguage("<your-synthesis-language>"); // e.g. "de-DE"
+    // The voice setting will overwrite language setting.
+    // The voice setting will not overwrite the voice element in input SSML.
+    config->SetSpeechSynthesisVoiceName("<your-wanted-voice>");
 }
 ```
 

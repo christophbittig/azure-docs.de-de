@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/19/2020
+ms.date: 10/12/2021
 ms.author: marsma
 ms.custom: aaddev
-ms.openlocfilehash: 61c8cf7261e3479683381a004baef3448cba099d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6b7c54dcac287574559a135b664e19f1150b80bc
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128587098"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129987079"
 ---
 # <a name="single-page-application-app-registration"></a>Single-Page-Webanwendung: App-Registrierung
 
@@ -75,7 +75,7 @@ Bei einer mithilfe der SPA-Plattformkonfiguration erstellten App-Registrierung w
 
 Wie bereits erwähnt, sind Single-Page-Webanwendungen, die MSAL.js 1.3 verwenden, auf den Flow zur impliziten Genehmigung beschränkt. In den aktuellen [bewährten Methoden für OAuth 2.0](v2-oauth2-auth-code-flow.md) wird für SPAs die Verwendung des Autorisierungscodeflows anstelle des impliziten Flows empfohlen. Außerdem tragen Aktualisierungstoken mit begrenzter Lebensdauer zur Anpassung Ihrer Anwendung an die [in Bezug auf die Einschränkungen von Cookies geltenden Datenschutzbestimmungen moderner Browser](reference-third-party-cookies-spas.md) (z. B. an Safari ITP) bei.
 
-Wenn alle von einer App-Registrierung dargestellten Single-Page-Webanwendungen in Ihrer Produktionsumgebung MSAL.js 2.0 und den Autorisierungscodeflow verwenden, deaktivieren Sie im Azure-Portal im Bereich **Authentifizierung** der App-Registrierung die Einstellungen für die implizite Genehmigung. Anwendungen, die MSAL.js 1.x und den impliziten Flow verwenden, funktionieren weiterhin, aber dazu muss der implizite Flow aktiviert bleiben.
+Wenn alle durch eine App-Registrierung dargestellten Single-Page-Anwendungen in der Produktion MSAL.js 2.0 und den Autorisierungscodefluss verwenden, deaktivieren Sie die Einstellungen für die implizite Gewährung im Bereich **Authentifizierung** der App-Registrierung im Azure-Portal. Anwendungen, die MSAL.js 1.x und den impliziten Flow verwenden, funktionieren weiterhin, aber dazu muss der implizite Flow aktiviert bleiben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

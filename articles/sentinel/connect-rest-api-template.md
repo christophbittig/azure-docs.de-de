@@ -1,6 +1,6 @@
 ---
-title: Verbinden Ihrer Datenquelle mit der Datensammler-API von Azure Sentinel zur Erfassung von Daten | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie externe Systeme mit der Datensammler-API von Azure Sentinel verbinden, um deren Protokolldaten in benutzerdefinierten Protokollen in Ihrem Arbeitsbereich zu erfassen.
+title: Verbinden Ihrer Datenquelle mit der Azure Sentinel-Datensammler-API zur Erfassung von Daten | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie externe Systeme mit der Azure Sentinel-Datensammler-API verbinden, um deren Protokolldaten in benutzerdefinierten Protokollen in Ihrem Arbeitsbereich zu erfassen.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/17/2021
 ms.author: yelevin
-ms.openlocfilehash: aa30b85047460bffe0177c9154152d18262b44be
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 3b268d95eed0456b858ab5d8d93b895faca1ee7b
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124823839"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130038420"
 ---
-# <a name="connect-your-data-source-to-azure-sentinels-data-collector-api-to-ingest-data"></a>Verbinden Ihrer Datenquelle mit der Datensammler-API von Azure Sentinel zur Erfassung von Daten
+# <a name="connect-your-data-source-to-the-azure-sentinel-data-collector-api-to-ingest-data"></a>Verbinden Ihrer Datenquelle mit der Azure Sentinel-Datensammler-API zur Erfassung von Daten
 
 [!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
@@ -62,7 +62,7 @@ Es kann bis zu 20 Minuten dauern, bis Ihre Protokolle in Log Analytics angezeig
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Dokument haben Sie erfahren, wie Sie externe Datenquellen mit der Datensammler-API von Azure Sentinel verbinden. Wenn Sie die Vorteile der integrierten Funktionen dieser Datenconnectors in vollem Umfang nutzen möchten, klicken Sie auf der Datenconnectorseite auf die Registerkarte **Nächste Schritte**. Dort finden Sie einige vorgefertigte Beispielabfragen, Arbeitsmappen und Vorlagen für Analyseregeln, die Ihnen die Suche nach nützlichen Informationen erleichtern.
+In diesem Dokument haben Sie erfahren, wie Sie externe Datenquellen mit der Azure Sentinel-Datensammler-API verbinden. Wenn Sie die Vorteile der integrierten Funktionen dieser Datenconnectors in vollem Umfang nutzen möchten, klicken Sie auf der Datenconnectorseite auf die Registerkarte **Nächste Schritte**. Dort finden Sie einige vorgefertigte Beispielabfragen, Arbeitsmappen und Vorlagen für Analyseregeln, die Ihnen die Suche nach nützlichen Informationen erleichtern.
 
 Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
 

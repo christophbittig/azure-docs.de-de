@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/21/2021
 ms.author: normesta
 ms.reviewer: yzheng
-ms.openlocfilehash: 8fb4583fbf04637c58795d6532dcce82ccb8168e
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1268df1aaf095fd6a965b447d48a9ef4978325d7
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128624973"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130046884"
 ---
 # <a name="network-file-system-nfs-30-performance-considerations-in-azure-blob-storage"></a>Überlegungen zur NFS 3.0-Leistung (Network File System) in Azure Blob Storage
 
@@ -23,17 +23,17 @@ Blob Storage unterstützt jetzt das NFS 3.0-Protokoll (Network File System). Di
 
 Azure Blob Storage wird linear skaliert, bis der Maximalwert für eingehende und ausgehende Daten für das Speicherkonto erreicht ist. Daher können Ihre Anwendungen durch Verwenden von mehr Clients einen höheren Durchsatz erzielen. Die Maximalwerte für eingehende und ausgehende Daten für das Speicherkonto finden Sie unter [Skalierbarkeits- und Leistungsziele für Standardspeicherkonten](../common/scalability-targets-standard-account.md).
 
-Das folgende Diagramm zeigt, wie die Bandbreite zunimmt, wenn Sie mehr Clients hinzufügen. In diesem Diagramm ist ein Client ein virtueller Computer (VM), und das Konto nutzt die Leistungsstufe „Standard“.
+Das folgende Diagramm zeigt, wie die Bandbreite zunimmt, wenn Sie mehr Clients hinzufügen. In diesem Diagramm handelt es sich bei einem Client um einen virtuellen Computer (VM) mit einem Speicherkonto vom Standardspeicher vom Typ „Standard, Universell V2“.
 
 > [!div class="mx-imgBorder"]
 > ![Standardleistung](./media/network-file-system-protocol-support-performance/standard-performance-tier.png)
 
-Das folgende Diagramm zeigt den Effekt, wenn dieser Vorgang auf ein Konto in der Leistungsstufe „Premium“ angewendet wird.
+Das folgende Diagramm zeigt denselben Effekt bei Anwendung auf ein Premium-Blockblobspeicherkonto.
 
 > [!div class="mx-imgBorder"]
 > ![Premium-Leistung](./media/network-file-system-protocol-support-performance/premium-performance-tier.png)
 
-## <a name="use-premium-performance-tier-for-small-scale-applications"></a>Verwenden der Leistungsstufe „Premium“ für kleinere Anwendungen
+## <a name="use-premium-block-blob-storage-accounts-for-small-scale-applications"></a>Verwenden von Premium-Blockblobspeicherkonten für kleine Anwendungen
 
 Nicht alle Anwendungen lassen sich durch Hinzufügen von mehr Clients hochskalieren. Für solche Anwendungen bietet das [Azure-Premium-Blockblob-Speicherkonto](../common/storage-account-create.md) konsistente hohe Transaktionsraten mit niedriger Latenz. Das Premium-Blockblob-Speicherkonto kann die maximale Bandbreite mit weniger Threads und Clients erreichen. Ein Beispiel: Mit einem einzelnen Client kann ein Premium-Blockblob-Speicherkonto **2,3-mal** so viel Bandbreite erreichen wie dasselbe Setup mit einem Speicherkonto vom Typ „Universell v2“ mit Standardleistung.
 

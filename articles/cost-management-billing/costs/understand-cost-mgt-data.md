@@ -3,24 +3,24 @@ title: Grundlegendes zu Azure Cost Management-Daten
 description: In diesem Artikel erfahren Sie mehr über die Daten, die in Cost Management enthalten sind, und wie häufig diese verarbeitet, gesammelt, angezeigt und geschlossen werden.
 author: bandersmsft
 ms.author: banders
-ms.date: 10/07/2021
+ms.date: 10/13/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: 0e67812e07229ee8dc13bcd79fc6d546a2618009
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 5025e1579f52b23c8f26de97212a695c34639285
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129711305"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130001046"
 ---
 # <a name="understand-cost-management-data"></a>Grundlegendes zu Cost Management-Daten
 
 Dieser Artikel soll Ihnen helfen, die in Cost Management enthaltenen Azure-Kosten und -Nutzungsdaten besser zu verstehen. Zudem wird darin erläutert, wie oft Daten verarbeitet, gesammelt, angezeigt und geschlossen werden. Die Nutzung von Azure wird Ihnen monatlich in Rechnung gestellt. Bei Abrechnungszeiträumen/Abrechnungszyklen handelt es sich um monatliche Zeiträume. Die Start- und Enddaten von Zyklen variieren jedoch je nach Abonnementtyp. Wie oft Cost Management Nutzungsdaten erhält, hängt von verschiedenen Faktoren ab. Zu diesen Faktoren gehört unter anderem, wie lange die Verarbeitung der Daten dauert und wie häufig Azure-Dienste die Nutzung an das Abrechnungssystem weitergeben.
 
-Cost Management umfasst alle Nutzungen und Käufe, einschließlich Reservierungen und Angebote von Drittanbietern für Enterprise Agreement-Konten (EA). Konten der Microsoft-Kundenvereinbarung und einzelne Abonnements in Tarifen mit nutzungsbasierter Bezahlung umfassen nur die Nutzung von Azure- und Marketplace-Diensten. Support- und andere Kosten sind nicht enthalten. Kosten werden so lange geschätzt, bis eine Rechnung generiert wurde, und sie werden bei Guthaben nicht berücksichtigt.
+Cost Management umfasst alle Nutzungen und Käufe, einschließlich Reservierungen und Angebote von Drittanbietern für Enterprise Agreement-Konten (EA). Konten der Microsoft-Kundenvereinbarung und einzelne Abonnements in Tarifen mit nutzungsbasierter Bezahlung umfassen nur die Nutzung von Azure- und Marketplace-Diensten. Support- und andere Kosten sind nicht enthalten. Kosten werden so lange geschätzt, bis eine Rechnung generiert wurde, und sie werden bei Guthaben nicht berücksichtigt. Das Kostenmanagement umfasst auch Kosten im Zusammenhang mit New Commerce-Produkten wie Microsoft 365 und Dynamics 365, die zusammen mit Azure in Rechnung gestellt werden. Derzeit können nur Partner New Commerce-Produkte ohne Azure erwerben.
 
 Bei einem neuen Abonnement können Cost Management-Features nicht sofort genutzt werden. Es kann bis zu 48 Stunden dauern, bis Sie alle Cost Management-Features verwenden können.
 
@@ -96,12 +96,15 @@ Die folgenden Tabellen zeigen Daten, die in Cost Management enthalten sind oder 
 | Marketplace-Käufe<sup>5</sup>      | Gutschriften – Weitere Informationen finden Sie unter [Erläuterung der Rechnungsbedingungen](../understand/understand-invoice.md). |
 | Reservierungskäufe<sup>6</sup>      |  |
 | Amortisierung von Reservierungskäufen<sup>6</sup>      |  |
+| Neue Commerce-Nicht-Azure-Produkte (Microsoft 365 und Dynamics 365) <sup>7</sup> | |
 
 _<sup>**4**</sup> Die Nutzung des Azure-Diensts basiert auf Reservierungen und ausgehandelten Preisen._
 
 _<sup>**5**</sup> Marketplace-Käufe sind für MSDN- und Visual Studio-Angebote derzeit nicht verfügbar._
 
 _<sup>**6**</sup> Reservierungskäufe sind zurzeit nur für EA-Konten (Enterprise Agreement) und Konten mit Microsoft-Kundenvereinbarung verfügbar._
+
+_<sup>**7**</sup> Nur für Partner verfügbar_
 
 ## <a name="how-tags-are-used-in-cost-and-usage-data"></a>Verwendung von Tags in Kosten- und Nutzungsdaten
 

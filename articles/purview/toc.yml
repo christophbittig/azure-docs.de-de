@@ -40,16 +40,18 @@ items:
         href: use-purview-studio.md
       - name: Best Practices und Richtlinien
         items:
+          - name: Richtlinien für Preise
+            href: concept-guidelines-pricing.md
           - name: Best Practices für die Bereitstellung
             href: deployment-best-practices.md
           - name: Kontoarchitektur
             href: concept-best-practices-accounts.md
           - name: Sammlungsarchitektur
             href: concept-best-practices-collections.md
-          - name: Richtlinien für Preise
-            href: concept-guidelines-pricing.md
           - name: Netzwerkarchitektur
             href: concept-best-practices-network.md
+          - name: Bewährte Methoden für die Überprüfung
+            href: concept-best-practices-scanning.md
       - name: "Azure\_Purview-Berechtigungen"
         href: catalog-permissions.md
       - name: Datenzuordnung
@@ -233,8 +235,6 @@ items:
             href: classification-insights.md
           - name: Erkenntnisse zu Vertraulichkeitsbezeichnungen anzeigen
             href: sensitivity-insights.md
-          - name: Erkenntnisse zu Dateierweiterungen anzeigen
-            href: file-extension-insights.md
       - name: Netzwerk und Sicherheit
         items:
           - name: Private Endpunkte

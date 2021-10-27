@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 05/01/2021
+ms.date: 10/12/2021
 ms.author: banders
-ms.openlocfilehash: 395f6804e0fdea88e65879817b83b9a8aabdd0f1
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 79e32c7514e561cc3c245464038130f5d4bef763
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111748065"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130001008"
 ---
 # <a name="assign-roles-to-azure-enterprise-agreement-service-principal-names"></a>Zuweisen von Rollen zu Azure Enterprise Agreement-Dienstprinzipalnamen
 
@@ -206,6 +206,10 @@ Jetzt können Sie den SPN verwenden, um automatisch auf EA-APIs zuzugreifen. Der
    Die Antwort `200 OK` bedeutet, dass der SPN erfolgreich hinzugefügt wurde.
 
 Jetzt können Sie den SPN verwenden, um automatisch auf EA-APIs zuzugreifen. Der SPN verfügt über die Rolle „SubscriptionCreator“.
+
+## <a name="troubleshoot"></a>Problembehandlung
+
+Sie müssen die Objekt-ID der Unternehmensanwendung identifizieren und verwenden, in der Sie die EA-Rolle vergeben haben. Wenn Sie die Objekt-ID einer anderen Anwendung verwenden, werden API-Aufrufe fehlschlagen. Vergewissern Sie sich, dass Sie die richtige Objekt-ID der Enterprise-Anwendung verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

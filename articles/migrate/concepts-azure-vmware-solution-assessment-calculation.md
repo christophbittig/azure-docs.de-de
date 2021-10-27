@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 06/25/2020
-ms.openlocfilehash: ef1f069dbcf932475a062b309324a77932a88809
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5d917de831227dcfa7a9b5803f79a1cadbaf3112
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349583"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130006031"
 ---
 # <a name="assessment-overview-migrate-to-azure-vmware-solution"></a>Bewertungsübersicht (Migration zu Azure VMware Solution)
 
@@ -119,7 +119,7 @@ Eine AVS-Bewertung umfasst Folgendes:
 | - | - |
 | **Zielstandort** | Gibt den Standort der privaten AVS-Cloud an, zu der Sie migrieren möchten. |
 | **Speichertyp** | Gibt die Speicher-Engine an, die in AVS verwendet werden soll. AVS unterstützt derzeit nur vSAN als Standardspeichertyp, jedoch sind für die Zukunft weitere Speicheroptionen geplant. |
-| **Reservierte Instanzen (RI)** | Mit dieser Eigenschaft können Sie reservierte Instanzen in AVS (sofern erworben) und ihre Gültigkeitsdauer angeben. Wird zum Berechnen der Kosten verwendet. |
+| **Reservierte Instanzen (RI)** | Mit dieser Eigenschaft können Sie reservierte Instanzen in AVS (sofern erworben) und ihre Gültigkeitsdauer angeben. Wird zum Berechnen der Kosten verwendet. Dies ist derzeit deaktiviert und standardmäßig auf *Keine reservierten Instanzen* festgelegt. [Azure VMware Solution unterstützt reservierte Instanzen](../azure-vmware/reserved-instance.md), und in Bewertungen wird diese Eigenschaft in Kürze aktiviert.|
 | **Knotentyp** | Gibt den in Azure zu verwendenden [AVS-Knotentyp](../azure-vmware/concepts-private-clouds-clusters.md) an. Der Standardknotentyp ist AV36. In Zukunft sind möglicherweise weitere Knotentypen verfügbar.  Azure Migrate empfiehlt eine erforderliche Anzahl von Knoten für die VMs, die zu AVS migriert werden sollen. |
 | **FTT-Einstellung, RAID-Ebene** | Gibt die gültigen Kombinationen zu tolerierender Fehler und RAID-Ebenen an. Die ausgewählte FTT-Option in Kombination mit der RAID-Ebene und der lokalen VM-Datenträgeranforderung bestimmt den gesamten in AVS erforderlichen vSAN-Speicher. Der gesamte verfügbare Speicher nach Berechnungen umfasst auch a) für Verwaltungsobjekte, z. B. vCenter, reservierten Speicherplatz und b) 25 % erforderlichen Schlupfspeicher für vSAN-Vorgänge. |
 | **Größenkriterium** | Legt die Kriterien zur Bestimmung von Arbeitsspeicher-, CPU- und Speicheranforderungen für AVS-Knoten fest. Sie können für die Dimensionierung *Leistungsbasiert* oder *Wie lokal* auswählen, ohne den Leistungsverlauf zu berücksichtigen. Wählen Sie „Wie lokal“ aus, wenn Sie per Lift & Shift migrieren möchten. Wählen Sie „Leistungsbasiert“ aus, wenn die Dimensionierung auf der Nutzung basieren soll. |
@@ -164,6 +164,10 @@ Neben den VM-Eigenschaften untersucht die Bewertung auch das Gastbetriebssystem 
 Nachdem ein Server als „bereit für AVS“ markiert wurde, gibt die AVS-Bewertung Empfehlungen zur Knotendimensionierung ab, die die Identifizierung der entsprechenden lokalen VM-Anforderungen und die Ermittlung der Gesamtanzahl der erforderlichen AVS-Knoten umfassen. Die Empfehlungen variieren je nach den angegebenen Bewertungseigenschaften.
 
 - Wenn die Bewertung eine *leistungsbasierte Dimensionierung* verwendet, berücksichtigt Azure Migrate den Leistungsverlauf des Servers, um die geeignete Empfehlung zur Dimensionierung für AVS abzugeben. Diese Methode ist besonders hilfreich, wenn Sie die lokalen virtuellen Computer überbelegt haben, die Auslastung jedoch gering ist, und Sie die Größe der virtuellen Computer in AVS optimal anpassen möchten, um Kosten zu sparen. Diese Methode ist hilfreich, um die Größen bei der Migration zu optimieren.
+
+> [!NOTE] 
+>Beim Importieren von Servern mithilfe einer CSV-Datei werden die von Ihnen angegebenen Leistungswerte (CPU-Auslastung, Arbeitsspeicherauslastung, Datenträger-IOPS und Durchsatz) verwendet, wenn Sie die leistungsbasierte Größenanpassung auswählen. Sie können keine Leistungsverlaufs- und Perzentilinformationen bereitstellen.
+
 - Wenn Sie die Leistungsdaten für die VM-Größe nicht berücksichtigen und stattdessen die lokalen Server unverändert zu AVS übertragen möchten, können Sie die Dimensionierungskriterien auf „Wie lokal“ festlegen. Anschließend wird die Größe der virtuellen Computer basierend auf der lokalen Konfiguration ohne Berücksichtigung der Nutzungsdaten von der Bewertung berechnet.
 
 ### <a name="ftt-sizing-parameters"></a>FTT-Parameter für die Größenanpassung

@@ -1,6 +1,6 @@
 ---
 title: Voraussetzungen für den programmgesteuerten Zugriff auf Analysedaten
-description: Informieren Sie sich über die Anforderungen, die Sie erfüllen müssen, bevor Sie programmgesteuert auf Analysedaten für den kommerziellen Marketplace zugreifen können.
+description: Informieren Sie sich in Partner Center über die Anforderungen, die Sie erfüllen müssen, bevor Sie programmgesteuert auf Analysedaten für den kommerziellen Marketplace zugreifen können.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
@@ -8,12 +8,12 @@ author: smannepalle
 ms.author: smannepalle
 ms.reviewer: sroy
 ms.date: 3/08/2021
-ms.openlocfilehash: a3c27a8e91ef1f202fbc757eb1a21eeddfc1d3d8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 842314bb514f74de73ab4eb077b09057ea914d50
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340157"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130064170"
 ---
 # <a name="prerequisites-to-programmatically-access-analytics-data"></a>Voraussetzungen für den programmgesteuerten Zugriff auf Analysedaten
 
@@ -35,7 +35,7 @@ Die Azure AD-Anwendung, die Sie im Azure-Portal erstellt haben, muss mit Ihrem 
 1. Wählen Sie in der rechten oberen Ecke das Zahnradsymbol und dann **Kontoeinstellungen** aus.
 1. Wählen Sie im Menü **Kontoeinstellungen** die Option **Benutzerverwaltung** aus.
 1. Wählen Sie **Azure AD-Anwendungen** und dann **+ Azure AD-Anwendung erstellen** aus.
-1. Wählen Sie die Azure AD-Anwendung aus, die Sie im Azure-Portal erstellt haben, und klicken Sie auf **Weiter**.
+1. Wählen Sie die Azure AD-Anwendung aus, die Sie im Azure-Portal erstellt haben, und klicken Sie anschließend auf **Weiter**.
 1. Aktivieren Sie das Kontrollkästchen **Manager (Windows)** , und wählen Sie dann **Hinzufügen** aus.
 
     :::image type="content" source="./media/analytics-programmatic-access/azure-ad-roles.png" alt-text="Abbildung der Seite „Azure AD-Anwendung erstellen“ mit den Kontrollkästchen zum Auswählen von Rollen":::

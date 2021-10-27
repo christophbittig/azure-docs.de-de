@@ -3,22 +3,22 @@ title: Einrichten der Registrierung und Anmeldung mit einem Facebook-Konto
 titleSuffix: Azure AD B2C
 description: Bereitstellen von Registrierung und Anmeldung für Kunden mit Facebook-Konten in Ihren Anwendungen mithilfe von Azure Active Directory B2C.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 09/16/2021
 ms.custom: project-no-code
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 6d7180b92ba4f4dbcc23f19bdc2581072446a15f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: d9fb37bd05c6cddf1509d40433783692864e588d
+ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128574917"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130137837"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Einrichten der Registrierung und Anmeldung mit einem Facebook-Konto mithilfe von Azure Active Directory B2C
 
@@ -42,7 +42,7 @@ Wenn Sie noch nicht über ein Facebook-Konto verfügen, können Sie sich unter [
 
 1. Melden Sie sich auf der [Facebook-Entwicklerwebsite](https://developers.facebook.com/apps) mit den Anmeldeinformationen für Ihr Facebook-Entwicklerkonto an.
 1. Wählen Sie **App erstellen** aus.
-1. Wählen Sie unter **Select an app type** (App-Typ auswählen) die Option **Consumer** und dann **Continue** (Weiter) aus.
+1. Wählen Sie unter **App-Typ auswählen** die Option **Consumer** und dann **Weiter** aus.
 1. Geben Sie einen App-Anzeigenamen (**App Display Name**) und eine gültige Kontakt-E-Mail-Adresse für die App (**App Contact Email**) an.
 1. Wählen Sie **App erstellen** aus. Für diesen Schritt müssen Sie möglicherweise die Richtlinien für die Facebook-Plattform akzeptieren und eine Online-Sicherheitsüberprüfung durchführen.
 1. Wählen Sie **Settings** > **Basic** (Einstellungen > Allgemeines) aus.
@@ -55,7 +55,7 @@ Wenn Sie noch nicht über ein Facebook-Konto verfügen, können Sie sich unter [
 1. Wählen Sie unten auf der Seite die Option **Add Platform** (Plattform hinzufügen) und dann **Website** aus.
 1. Geben Sie im Feld **Website-URL** die Adresse Ihrer Website (z. B. `https://contoso.com`) ein. 
 1. Klicken Sie auf **Save changes** (Änderungen speichern).
-1. Wählen Sie im Menü das **Pluszeichen** neben **PRODUCTS** (Produkte) aus. Wählen Sie unter **Add Products to Your App** (Produkte Ihrer App hinzufügen) unter **Facebook Login** (Facebook-Anmeldung) **Set up** (Einrichten) aus.
+1. Wählen Sie im Menü das **Pluszeichen** oder den Link **Produkt hinzufügen** neben **PRODUKTE** aus. Wählen Sie unter **Add Products to Your App** (Produkte Ihrer App hinzufügen) unter **Facebook Login** (Facebook-Anmeldung) **Set up** (Einrichten) aus.
 1. Wählen Sie im Menü **Facebook Login** (Facebook-Anmeldung) und dann **Settings** (Einstellungen) aus.
 1. Geben Sie `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` unter **Valid OAuth redirect URIs** (Gültige OAuth-Umleitungs-URIs) ein. Bei Verwendung einer [benutzerdefinierten Domäne](custom-domain.md) geben Sie `https://your-domain-name/your-tenant-name.onmicrosoft.com/oauth2/authresp` ein. Ersetzen Sie `your-tenant-name` durch den Namen Ihres Mandanten und `your-domain-name` durch Ihre benutzerdefinierte Domäne. 
 1. Wählen Sie unten auf der Seite die Option **Save Changes** (Änderungen speichern) aus.

@@ -5,21 +5,21 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 10/05/2021
+ms.date: 10/13/2021
 ms.author: memildin
-ms.openlocfilehash: e6d1c8cf55687a8e4d7612ca432a314ae38256bc
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: e019e0acefe8acb8bf56f829fad38c6ac2a3c1c2
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129534410"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130129014"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Wichtige bevorstehende Änderungen an Azure Security Center
 
 > [!IMPORTANT]
 > Die Informationen auf dieser Seite beziehen sich auf Vorabversionen von Produkten oder Features, die vor einer möglichen Veröffentlichung für den Handel wesentlich verändert werden können. Microsoft gewährt in Bezug auf die hier angegebenen Informationen keine Zusicherungen oder Garantien, weder ausdrücklich noch konkludent.
 
-Auf dieser Seite erfahren Sie, welche Änderungen für Security Center geplant sind. Es werden geplante Änderungen am Produkt beschrieben, die sich auf Dinge wie Ihre Sicherheitsbewertung oder Workflows auswirken könnten.
+Auf dieser Seite erfahren Sie, welche Änderungen für Security Center geplant sind. Auf der Seite werden geplante Änderungen am Produkt beschrieben, die sich auf Dinge wie Ihre Sicherheitsbewertung oder Workflows auswirken könnten.
 
 Die neuesten Versionshinweise finden Sie unter [Neuerungen in Azure Security Center](release-notes.md).
 
@@ -30,8 +30,11 @@ Die neuesten Versionshinweise finden Sie unter [Neuerungen in Azure Security Cen
 |----------------------|---------------------------|
 | [Veraltete Vorschauwarnung: ARM.MCAS_ActivityFromAnonymousIPAddresses](#deprecating-a-preview-alert-armmcas_activityfromanonymousipaddresses)             | Oktober 2021|
 | [Die Legacy-Implementierung von ISO 27001 wird durch die neue ISO-Norm 27001:2013 ersetzt.](#legacy-implementation-of-iso-27001-is-being-replaced-with-new-iso-270012013)| Oktober 2021|
-| [Änderungen an Empfehlungen für die Verwaltung von Endpoint Protection-Lösungen](#changes-to-recommendations-for-managing-endpoint-protection-solutions)             | Oktober 2021    |
-| [Verbesserungen bei der Empfehlung zur Klassifizierung vertraulicher Daten in den SQL Datenbanken](#enhancements-to-recommendation-to-classify-sensitive-data-in-sql-databases)   | Q1 2022    |
+| [Änderungen an Empfehlungen für die Verwaltung von Endpoint Protection-Lösungen](#changes-to-recommendations-for-managing-endpoint-protection-solutions)             | November 2021| 
+| [Für die Bestandsanzeige von lokalen Computern wird eine andere Vorlage für den Ressourcennamen verwendet.](#inventory-display-of-on-premises-machines-will-use-different-template-for-resource-name)    | November 2021    |
+| [Mehrere Änderungen an Identitätsempfehlungen](#multiple-changes-to-identity-recommendations)                                                                                          | November 2021    |
+| [Änderungen an einer Sicherheitswarnung von Azure Defender für Storage](#changes-to-a-security-alert-from-azure-defender-for-storage)  | November 2021    |
+| [Verbesserungen bei der Empfehlung zur Klassifizierung vertraulicher Daten in den SQL Datenbanken](#enhancements-to-recommendation-to-classify-sensitive-data-in-sql-databases)                              | Q1 2022    |
 |||
 
 ### <a name="deprecating-a-preview-alert-armmcas_activityfromanonymousipaddresses"></a>Veraltete Vorschauwarnung: ARM.MCAS_ActivityFromAnonymousIPAddresses
@@ -57,7 +60,7 @@ Die Legacyimplementierung von ISO 27001 wird vom Security Center-Dashboard fü
 
 ### <a name="changes-to-recommendations-for-managing-endpoint-protection-solutions"></a>Änderungen an Empfehlungen für die Verwaltung von Endpoint Protection-Lösungen
 
-**Geschätztes Datum für die Änderung:** Oktober 2021
+**Geschätztes Datum für die Änderung:** November 2021
 
 Im August 2021 wurden zwei neue **Vorschau**-Empfehlungen für die Bereitstellung und Wartung der Endpoint Protection-Lösungen auf Ihren Computern hinzugefügt. Ausführliche Informationen finden Sie in den [Versionshinweisen](release-notes.md#two-new-recommendations-for-managing-endpoint-protection-solutions-in-preview).
 
@@ -74,6 +77,87 @@ Wenn die Empfehlungen für die allgemeine Verfügbarkeit freigegeben werden, ers
 Weitere Informationen:
 - [Von Azure Security Center unterstützte Endpoint Protection-Lösungen](security-center-services.md#endpoint-supported)
 - [Bewerten des Status Ihrer bereitgestellten Lösungen durch diese Empfehlungen](security-center-endpoint-protection.md)
+
+
+
+### <a name="inventory-display-of-on-premises-machines-will-use-different-template-for-resource-name"></a>Für die Bestandsanzeige von lokalen Computern wird eine andere Vorlage für den Ressourcennamen verwendet.
+
+**Geschätztes Datum für die Änderung:** November 2021
+
+Um die Darstellung von Ressourcen unter [Ressourcenbestand](asset-inventory.md) zu verbessern, wird das Element „source-computer-IP“ aus der Vorlage für die Benennung von lokalen Computern entfernt.
+
+- **Aktuelles Format:** ``machine-name_source-computer-id_VMUUID``
+- **Nach dem Update:** ``machine-name_VMUUID``
+
+
+### <a name="multiple-changes-to-identity-recommendations"></a>Mehrere Änderungen an Identitätsempfehlungen
+
+**Geschätztes Datum für die Änderung:** November 2021
+
+Security Center enthält mehrere Empfehlungen zur Verbesserung der Verwaltung von Benutzern und Konten. Im November werden die nachfolgend beschriebenen Änderungen vorgenommen:
+
+- **Verbessertes Aktualisierungsintervall:** Derzeit gilt für die Identitätsempfehlungen ein Aktualisierungsintervall von 24 Stunden. Durch dieses Update wird dieses Intervall auf zwölf Stunden reduziert.
+
+- **Kontoausnahmefunktion:** Security Center verfügt über viele Features zum Anpassen der Informationen, und um sicherzustellen, dass Ihre Sicherheitsbewertung die Sicherheitsprioritäten Ihrer Organisation angemessen widerspiegelt. Die Option „Ausnahme“ für Sicherheitsempfehlungen ist ein solches Feature. Eine vollständige Übersicht und Anweisungen finden Sie unter [Ausschließen von Ressourcen und Empfehlungen aus der Sicherheitsbewertung](exempt-resource.md). Mit diesem Update können bestimmte Konten von der Auswertung durch die acht Empfehlungen aus der folgenden Tabelle ausgenommen werden.
+
+    In der Regel würden Sie Notfallkonten aus MFA-Empfehlungen ausschließen, da solche Konten häufig absichtlich von den MFA-Anforderungen der Organisation ausgenommen werden. Sie verfügen unter Umständen über externe Konten, für die Sie den Zugriff zulassen möchten, für die MFA jedoch nicht aktiviert ist.
+
+    > [!TIP]
+    > Wenn Sie ein Konto ausgenommen haben, wird es nicht als fehlerhaft angezeigt. Es führt auch nicht dazu, dass ein Abonnement als fehlerhaft angezeigt wird.
+
+    |Empfehlung| Bewertungsschlüssel|
+    |-|-|
+    |[MFA sollte für Konten mit Besitzerberechtigungen in Ihrem Abonnement aktiviert sein](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/94290b00-4d0c-d7b4-7cea-064a9554e681)|94290b00-4d0c-d7b4-7cea-064a9554e681|
+    |[MFA sollte für Ihre Abonnementkonten mit Leseberechtigungen aktiviert sein](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/151e82c5-5341-a74b-1eb0-bc38d2c84bb5)|151e82c5-5341-a74b-1eb0-bc38d2c84bb5|
+    |[MFA sollte für Konten mit Schreibberechtigungen für Ihr Abonnement aktiviert werden](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/57e98606-6b1e-6193-0e3d-fe621387c16b)|57e98606-6b1e-6193-0e3d-fe621387c16b|
+    |[Externe Konten mit Besitzerberechtigungen sollten aus Ihrem Abonnement entfernt werden](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/c3b6ae71-f1f0-31b4-e6c1-d5951285d03d)|c3b6ae71-f1f0-31b4-e6c1-d5951285d03d|
+    |[Externe Konten mit Leseberechtigungen sollten aus Ihrem Abonnement entfernt werden](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/a8c6a4ad-d51e-88fe-2979-d3ee3c864f8b)|a8c6a4ad-d51e-88fe-2979-d3ee3c864f8b|
+    |[Externe Konten mit Schreibberechtigungen sollten aus Ihrem Abonnement entfernt werden](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/04e7147b-0deb-9796-2e5c-0336343ceb3d)|04e7147b-0deb-9796-2e5c-0336343ceb3d|
+    |[Veraltete Konten mit Besitzerberechtigungen sollten aus Ihrem Abonnement entfernt werden](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/e52064aa-6853-e252-a11e-dffc675689c2)|e52064aa-6853-e252-a11e-dffc675689c2|
+    |[Veraltete Konten sollten aus Ihrem Abonnement entfernt werden](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/00c6d40b-e990-6acf-d4f3-471e747a27c4)|00c6d40b-e990-6acf-d4f3-471e747a27c4|
+    |||
+ 
+- **Umbenannte Empfehlungen:** In diesem Update werden zwei Empfehlungen umbenannt. Außerdem werden ihre Beschreibungen überarbeitet. Die Bewertungsschlüssel bleiben unverändert. 
+
+
+    |Eigenschaft  |Aktueller Wert  | Nach dem Update|
+    |---------|---------|---------|
+    |Bewertungsschlüssel     | e52064aa-6853-e252-a11e-dffc675689c2        | Unverändert|
+    |Name     |[Veraltete Konten mit Besitzerberechtigungen sollten aus Ihrem Abonnement entfernt werden](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/e52064aa-6853-e252-a11e-dffc675689c2)         |Abonnements sollten aus Konten gelöscht werden, die in Active Directory blockiert sind und über Besitzerberechtigungen verfügen.        |
+    |BESCHREIBUNG     |Benutzerkonten, für die die Anmeldung blockiert wurde, sollten aus Ihren Abonnements entfernt werden.<br>Diese Konten können Ziele für Angreifer sein, die versuchen, unbemerkt auf Ihre Daten zuzugreifen.|Benutzerkonten, für die die Anmeldung bei Active Directory blockiert wurde, sollten aus Ihren Abonnements entfernt werden. Diese Konten können Ziele für Angreifer sein, die versuchen, unbemerkt auf Ihre Daten zuzugreifen.<br>Weitere Informationen zum Schützen des Identitätsumkreises finden Sie unter [Azure-Identitätsverwaltung und Sicherheit bei der Zugriffssteuerung: Best Practices](/azure/security/fundamentals/identity-management-best-practices).|
+    |Zugehörige Richtlinie     |[Veraltete Konten mit Besitzerberechtigungen sollten aus Ihrem Abonnement entfernt werden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2febb62a0c-3560-49e1-89ed-27e074e9f8ad)         |Abonnements sollten aus Konten gelöscht werden, die in Active Directory blockiert sind und über Besitzerberechtigungen verfügen. |
+    |||
+
+    |Eigenschaft  |Aktueller Wert  | Nach dem Update|
+    |---------|---------|---------|
+    |Bewertungsschlüssel     | 00c6d40b-e990-6acf-d4f3-471e747a27c4        | Unverändert|
+    |Name     |[Veraltete Konten sollten aus Ihrem Abonnement entfernt werden](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/00c6d40b-e990-6acf-d4f3-471e747a27c4)|Abonnements sollten aus Konten gelöscht werden, die in Active Directory blockiert sind und über Lese- und Schreibberechtigungen verfügen.|
+    |BESCHREIBUNG     |Benutzerkonten, für die die Anmeldung blockiert wurde, sollten aus Ihren Abonnements entfernt werden.<br>Diese Konten können Ziele für Angreifer sein, die versuchen, unbemerkt auf Ihre Daten zuzugreifen.|Benutzerkonten, für die die Anmeldung bei Active Directory blockiert wurde, sollten aus Ihren Abonnements entfernt werden. Diese Konten können Ziele für Angreifer sein, die versuchen, unbemerkt auf Ihre Daten zuzugreifen.<br>Weitere Informationen zum Schützen des Identitätsumkreises finden Sie unter [Azure-Identitätsverwaltung und Sicherheit bei der Zugriffssteuerung: Best Practices](/azure/security/fundamentals/identity-management-best-practices).|
+    |Zugehörige Richtlinie     |[Veraltete Konten sollten aus Ihrem Abonnement entfernt werden](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f6b1cbf55-e8b6-442f-ba4c-7246b6381474)|Abonnements sollten aus Konten gelöscht werden, die in Active Directory blockiert sind und über Lese- und Schreibberechtigungen verfügen.|
+    |||
+ 
+
+
+
+
+### <a name="changes-to-a-security-alert-from-azure-defender-for-storage"></a>Änderungen an einer Sicherheitswarnung von Azure Defender für Storage
+
+**Geschätztes Datum für die Änderung:** November 2021
+
+Eine der Vorschauwarnungen von Azure Defender für Storage wird in zwei neue Empfehlungen unterteilt, um mehr Informationen zu den erkannten verdächtigen Ereignisse bereitzustellen. Diese Warnung ist nur für Azure Blob Storage relevant.
+
+**Der Warnungstyp ändert sich ebenfalls.**
+
+- Vor der Änderung lautete die Warnung:<br>
+    „Vorschau: Anonyme Überprüfung von öffentlichen Speichercontainern“<br>(Storage.Blob_ContainerAnonymousScan)
+
+- Nach dieser Änderung gibt es zwei Empfehlungen:
+
+    - „Open storage containers discovered by external scanning tool or script“ (Offene Speichercontainer durch externes Überprüfungstool oder -skript erkannt)<br>(Storage.Blob_OpenContainersScanning.FailedAttempt)
+    - „Successful discovery of open storage containers by external scanning script or tool“ (Erfolgreiche Ermittlung offener Speichercontainer durch externes Überprüfungsskript oder -tool erkannt)<br>(Storage.Blob_OpenContainersScanning.SuccessfulDiscovery)
+
+Weitere Details zu diesen Warnungen werden bei Freigabe der Änderung veröffentlicht.
+
 
 ### <a name="enhancements-to-recommendation-to-classify-sensitive-data-in-sql-databases"></a>Verbesserungen bei der Empfehlung zur Klassifizierung vertraulicher Daten in den SQL Datenbanken
 

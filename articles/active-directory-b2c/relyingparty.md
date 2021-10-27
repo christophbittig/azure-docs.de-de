@@ -1,22 +1,22 @@
 ---
-title: 'Azure Active Directory B2C: RelyingParty | Microsoft-Dokumentation'
+title: RelyingParty – Azure Active Directory B2C
 description: Erfahren Sie, wie Sie das RelyingParty-Element einer benutzerdefinierten Richtlinie in Azure Active Directory B2C angeben.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 06/27/2021
 ms.custom: project-no-code
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 0ce866514aef703f3b79980d94fba156c83b10f5
-ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
+ms.openlocfilehash: b4344626318799a79fa668784e5674730e1731cd
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2021
-ms.locfileid: "112981464"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130065489"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -221,6 +221,7 @@ Das **TechnicalProfile**-Element enthält die folgenden Attribute:
 | BESCHREIBUNG | 0:1 | Die Zeichenfolge, die die Beschreibung des technischen Profils enthält. |
 | Protocol | 1:1 | Das Protokoll, das für den Verbund verwendet wird. |
 | Metadaten | 0:1 | Die Sammlung von *Elementen* von Schlüssel-Wert-Paaren, die vom Protokoll für die Kommunikation mit dem Endpunkt im Verlauf einer Transaktion verwendet wird, um die Interaktion zwischen der vertrauenden Seite und anderen Teilnehmern der Community zu konfigurieren. |
+| InputClaims | 1:1 | Eine Liste von Anspruchstypen, die im technischen Profil als Eingabe verwendet werden. Jedes dieser Elemente enthält einen Verweis auf ein **ClaimType**-Element, das bereits im **ClaimsSchema**-Abschnitt oder in einer Richtlinie, die diese Richtliniendatei erbt, definiert wurde. |
 | OutputClaims | 1:1 | Eine Liste von Anspruchstypen, die im technischen Profil als Ausgabe verwendet werden. Jedes dieser Elemente enthält einen Verweis auf ein **ClaimType**-Element, das bereits im **ClaimsSchema**-Abschnitt oder in einer Richtlinie, die diese Richtliniendatei erbt, definiert wurde. |
 | SubjectNamingInfo | 1:1 | Der Antragstellername, der in Tokens verwendet wird. |
 
@@ -244,6 +245,21 @@ Wenn `SAML` das Protokoll ist, enthält ein Metadatenelement die folgenden Eleme
 | WantsSignedResponses| Nein | Gibt an, ob Azure AD B2C den Abschnitt `Response` der SAML-Antwort signiert. Mögliche Werte: `true` (Standard) oder `false`.  |
 | RemoveMillisecondsFromDateTime| Nein | Gibt an, ob die Millisekunden aus DateTime-Werten in der SAML-Antwort entfernt werden sollen (dazu gehören „IssueInstant“, „NotBefore“, „NotOnOrAfter“ und „AuthnInstant“). Mögliche Werte: `false` (Standard) oder `true`.  |
 
+### <a name="inputclaims"></a>InputClaims
+
+Das **InputClaims**-Element enthält das folgende Element:
+
+| Element | Vorkommen | BESCHREIBUNG |
+| ------- | ----------- | ----------- |
+| InputClaim | 0:n | Ein erwarteter Eingabeanspruchstyp. |
+
+Das **InputClaim**-Element enthält die folgenden Attribute:
+
+| attribute | Erforderlich | BESCHREIBUNG |
+| --------- | -------- | ----------- |
+| ClaimTypeReferenceId | Ja | Ein Verweis auf ein **ClaimType**-Element, das bereits im **ClaimsSchema**-Abschnitt der Richtliniendatei definiert wurde. |
+| DefaultValue | Nein | Ein Standardwert, der verwendet werden kann, wenn der Wert des Anspruchs leer ist. |
+| PartnerClaimType | Nein | Sendet den Anspruch wie in der ClaimType-Definition konfiguriert über einen anderen Namen. |
 
 ### <a name="outputclaims"></a>OutputClaims
 

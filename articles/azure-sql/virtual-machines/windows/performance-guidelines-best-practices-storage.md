@@ -3,7 +3,7 @@ title: 'Speicher: Bewährte Methoden und Richtlinien zur Leistung'
 description: Bietet bewährte Methoden und Richtlinien für den Speicher, um die Leistung Ihrer SQL Server-Instanz auf Azure Virtual Machines (VM) zu optimieren.
 services: virtual-machines-windows
 documentationcenter: na
-author: dplessMSFT
+author: bluefooted
 editor: ''
 tags: azure-service-management
 ms.assetid: a0c85092-2113-4982-b73a-4e80160bac36
@@ -14,14 +14,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/25/2021
-ms.author: dpless
-ms.reviewer: jroth
-ms.openlocfilehash: 86db0ce090c68f1a610aae6c69ed74dcf303416a
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.author: pamela
+ms.reviewer: mathoma
+ms.openlocfilehash: 83d47a3b1d42233df6f90690e88a898feaccb70b
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "122635202"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130161508"
 ---
 # <a name="storage-performance-best-practices-for-sql-server-on-azure-vms"></a>Speicher: Bewährte Methoden zur Leistung für SQL Server auf Azure-VMs
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -39,9 +39,9 @@ In der folgenden Prüfliste finden Sie eine kurze Übersicht über die bewährte
 - Überwachen Sie die Anwendung, und [bestimmen Sie die Anforderungen an die Speicherbandbreite und Wartezeit](../../../virtual-machines/premium-storage-performance.md#counters-to-measure-application-performance-requirements) für SQL Server-Daten-, Protokoll- und tempdb-Dateien, bevor Sie den Datenträgertyp auswählen. 
 - Um die Speicherleistung zu optimieren, planen Sie für die höchsten verfügbaren nicht zwischengespeicherten IOPS, und verwenden Sie Datenzwischenspeicherung als Leistungsmerkmal für Datenlesevorgänge, während Sie die [Begrenzung virtueller Computer und Datenträger](../../../virtual-machines/premium-storage-performance.md#throttling) vermeiden.
 - Platzieren Sie Daten-, Protokoll- und tempdb-Dateien auf separaten Laufwerken.
-    - Verwenden Sie für das Datenlaufwerk nur [Premium P30- und P40-Datenträger](../../../virtual-machines/disks-types.md#premium-ssd), um die Verfügbarkeit der Cacheunterstützung sicherzustellen.
-    - Für das Protokolllaufwerk planen Sie die Kapazität und testen die Leistung im Verhältnis zu den Kosten, während Sie die [Premium-Datenträger P30-P80](../../../virtual-machines/disks-types.md#premium-ssd) bewerten.
-      - Wenn eine Speicherwartezeit von weniger als einer Millisekunde erforderlich ist, verwenden Sie [Azure Ultra-Datenträger](../../../virtual-machines/disks-types.md#ultra-disk) für das Transaktionsprotokoll. 
+    - Verwenden Sie für das Datenlaufwerk nur [Premium P30- und P40-Datenträger](../../../virtual-machines/disks-types.md#premium-ssds), um die Verfügbarkeit der Cacheunterstützung sicherzustellen.
+    - Für das Protokolllaufwerk planen Sie die Kapazität und testen die Leistung im Verhältnis zu den Kosten, während Sie die [Premium-Datenträger P30-P80](../../../virtual-machines/disks-types.md#premium-ssds) bewerten.
+      - Wenn eine Speicherwartezeit von weniger als einer Millisekunde erforderlich ist, verwenden Sie [Azure Ultra-Datenträger](../../../virtual-machines/disks-types.md#ultra-disks) für das Transaktionsprotokoll.
       - Für Bereitstellungen von virtuellen Computern der M-Serie sollten Sie eine [Schreibbeschleunigung](../../../virtual-machines/how-to-enable-write-accelerator.md) der Verwendung von Azure-Ultra-Datenträgern vorziehen.
     - Platzieren Sie [tempdb](/sql/relational-databases/databases/tempdb-database) auf das lokale kurzlebige SSD-Laufwerk `D:\` für die meisten SQL Server-Workloads, nachdem Sie die optimale VM-Größe gewählt haben. 
       - Wenn die Kapazität des lokalen Laufwerks für „tempdb“ nicht ausreicht, können Sie die Vergrößerung der VM in Erwägung ziehen. Weitere Informationen finden Sie unter [Richtlinien für das Zwischenspeichern von Datendateien](#data-file-caching-policies).
@@ -71,7 +71,7 @@ Der Typ des Datenträgers hängt sowohl von dem Dateityp ab, der auf dem Datentr
 
 Sie haben die Wahl bei der Leistungsstufe für Ihre Datenträger. Die Typen der verwalteten Datenträger, die als zugrunde liegender Speicher verfügbar sind (aufgelistet nach aufsteigender Leistungsfähigkeit), sind Standard-Festplatten (HDD), SSD Standard-, SSD Premium-Datenträger (SSD) und Ultra Disks. 
 
-Die Leistung des Datenträgers steigt mit der Kapazität, gruppiert nach [Premium-Datenträgerbezeichnungen](../../../virtual-machines/disks-types.md#premium-ssd) wie der P1 mit 4 GiB Speicherplatz und 120 IOPS bis zum P80 mit 32 TiB Speicherplatz und 20.000 IOPS. Premium-Speicher unterstützt einen Speichercache, der die Lese- und Schreibleistung für einige Workloads verbessert. Weitere Informationen finden Sie in der [Übersicht über verwaltete Datenträger](../../../virtual-machines/managed-disks-overview.md). 
+Die Leistung des Datenträgers steigt mit der Kapazität, gruppiert nach [Premium-Datenträgerbezeichnungen](../../../virtual-machines/disks-types.md#premium-ssds) wie der P1 mit 4 GiB Speicherplatz und 120 IOPS bis zum P80 mit 32 TiB Speicherplatz und 20.000 IOPS. Premium-Speicher unterstützt einen Speichercache, der die Lese- und Schreibleistung für einige Workloads verbessert. Weitere Informationen finden Sie in der [Übersicht über verwaltete Datenträger](../../../virtual-machines/managed-disks-overview.md). 
 
 Es gibt auch drei hauptsächliche [Datenträgertypen](../../../virtual-machines/managed-disks-overview.md#disk-roles), die Sie für Ihre SQL Server-Instanz auf Azure VM in Betracht ziehen sollten – einen Datenträger für das Betriebssystem, einen temporären Datenträger und Ihre Datenträger für Daten. Wählen Sie sorgfältig aus, was auf dem Betriebssystemlaufwerk `(C:\)` und dem kurzlebigen temporären Laufwerk `(D:\)` gespeichert wird. 
 
@@ -97,7 +97,10 @@ Fügen Sie die Mindestanzahl von Datenträgern an, die den IOPS-, Durchsatz- und
 
 Legen Sie Daten und Protokolldateien auf Datenträgern für Daten ab, die den Leistungsanforderungen am besten entsprechen. 
 
-Formatieren Sie den Datenträger, um die Größe der Zuordnungseinheiten für 64 KB für alle Datendateien zu verwenden, die auf einem anderen Laufwerk als dem temporären Laufwerk abgelegt werden `D:\` (Standardwert: 4 KB). SQL Server-VMs, die über Azure Marketplace bereitgestellt werden, werden mit Datenträgern geliefert, die mit der Größe der Zuordnungseinheit und dem Interleave für den Speicherpool auf 64 KB formatiert sind. 
+Formatieren Sie den Datenträger, um die Größe der Zuordnungseinheiten für 64 KB für alle Datendateien zu verwenden, die auf einem anderen Laufwerk als dem temporären Laufwerk abgelegt werden `D:\` (Standardwert: 4 KB). SQL Server über Azure Marketplace bereitgestellten virtuellen Computer verfügen über Datenträger, die mit der Größe der Zuordnungseinheit formatiert sind, und Interleave für den Speicherpool auf 64 KB. 
+
+> [!NOTE]
+> Es ist auch möglich, Ihre SQL Server-Datenbankdateien direkt in [Azure Blob Storage](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure) oder im [SMB-Speicher](/sql/database-engine/install-windows/install-sql-server-with-smb-fileshare-as-a-storage-option) (z. B. [Azure Premium-Dateifreigaben](../../../storage/files/storage-how-to-create-file-share.md)) zu hosten. Es wird jedoch empfohlen, [verwaltete Azure-Datenträger](../../../virtual-machines/managed-disks-overview.md) zu verwenden, um die beste Leistung, Zuverlässigkeit und Funktionsverfügbarkeit zu erzielen.
 
 ## <a name="premium-disks"></a>Premium-Datenträger
 
@@ -109,7 +112,7 @@ Stimmen Sie bei OLTP-Workloads die Ziel-IOPS pro Datenträger (oder Speicherpool
 
 Verwenden Sie Speicherplätze, um eine optimale Leistung zu erreichen, konfigurieren Sie zwei Pools, einen für die Protokolldatei(en) und den anderen für die Datendateien. Wenn Sie kein Datenträgerstriping verwenden, sollten Sie zwei Datenträger vom Typ SSD Premium verwenden, die separaten Datenträgern zugeordnet sind, wobei sich auf einem Laufwerk die Protokolldatei und auf dem anderen die Daten befinden.
 
-Die [bereitgestellten IOPS und der Durchsatz](../../../virtual-machines/disks-types.md#premium-ssd) pro Datenträger, die als Teil Ihres Speicherpools verwendet werden. Die kombinierte IOPS- und Durchsatzleistung der Datenträger ist die maximale Leistung bis zu den Durchsatzgrenzwerten des virtuellen Computers.
+Die [bereitgestellten IOPS und der Durchsatz](../../../virtual-machines/disks-types.md#premium-ssds) pro Datenträger, die als Teil Ihres Speicherpools verwendet werden. Die kombinierte IOPS- und Durchsatzleistung der Datenträger ist die maximale Leistung bis zu den Durchsatzgrenzwerten des virtuellen Computers.
 
 Die bewährte Methode besteht darin, die geringstmögliche Anzahl von Datenträgern zu verwenden und gleichzeitig die Mindestanforderungen an IOPS (und Durchsatz) und Kapazität zu erfüllen. Das Verhältnis von Preis und Leistung ist jedoch tendenziell besser bei einer großen Anzahl kleiner Datenträger als bei einer kleinen Anzahl großer Datenträger.
 
@@ -127,15 +130,15 @@ Weitere Informationen finden Sie unter [Leistungsstufen für verwaltete Datentr�
 
 ## <a name="azure-ultra-disk"></a>Azure Ultra-Datenträger
 
-Wenn Antwortzeiten unterhalb des Millisekundenbereichs mit reduzierter Latenz erforderlich sind, ist die Verwendung von [Azure Ultra-Datenträgern](../../../virtual-machines/disks-types.md#ultra-disk) für das SQL Server-Protokolllaufwerk oder sogar das Datenlaufwerk für Anwendungen, die extrem empfindlich auf die E/A-Latenz reagieren, zu erwägen. 
+Wenn Antwortzeiten unterhalb des Millisekundenbereichs mit reduzierter Latenz erforderlich sind, ist die Verwendung von [Azure Ultra-Datenträgern](../../../virtual-machines/disks-types.md#ultra-disks) für das SQL Server-Protokolllaufwerk oder sogar das Datenlaufwerk für Anwendungen, die extrem empfindlich auf die E/A-Latenz reagieren, zu erwägen.
 
 Ultra Disk kann so konfiguriert werden, dass Kapazität und IOPS unabhängig voneinander skaliert werden können. Mit Ultra Disk können Administratoren einen Datenträger mit den Anforderungen an Kapazität, IOPS und Durchsatz basierend auf den Anwendungsanforderungen bereitstellen. 
 
-Ultra Disk wird nicht von allen VM-Serien unterstützt und hat weitere Einschränkungen wie Regionsverfügbarkeit, Redundanz und Unterstützung für Azure Backup. Eine vollständige Liste der Einschränkungen finden Sie unter [Verwendung von Azure Ultra-Datenträgern](../../../virtual-machines/disks-enable-ultra-ssd.md). 
+Ultra Disk wird nicht von allen VM-Serien unterstützt und hat weitere Einschränkungen wie Regionsverfügbarkeit, Redundanz und Unterstützung für Azure Backup. Eine vollständige Liste der Einschränkungen finden Sie unter [Verwendung von Azure Ultra-Datenträgern](../../../virtual-machines/disks-enable-ultra-ssd.md).
 
 ## <a name="standard-hdds-and-ssds"></a>Datenträger vom Typ „HDD Standard“ und „SSD Standard“
 
-Datenträger vom Typ [HDD Standard](../../../virtual-machines/disks-types.md#standard-hdd) und SSD Standard verfügen über unterschiedliche Latenzen und Bandbreiten und sollten nur für Dev/Test-Workloads verwendet werden. Für Produktionsworkloads sollte SSD Premium verwendet werden. Wenn Sie einen SSD Standard-Datenträger verwenden (Dev/Test-Szenarien), sollten Sie die maximale Anzahl von Datenträgern für Daten hinzufügen, die von Ihrer [VM-Größe](../../../virtual-machines/sizes.md?toc=/azure/virtual-machines/windows/toc.json) unterstützt wird, und Datenträgerstriping mit Speicherplätzen verwenden, um die beste Leistung zu erzielen.
+Datenträger vom Typ [HDD Standard](../../../virtual-machines/disks-types.md#standard-hdds) und SSD Standard verfügen über unterschiedliche Latenzen und Bandbreiten und sollten nur für Dev/Test-Workloads verwendet werden. Für Produktionsworkloads sollte SSD Premium verwendet werden. Wenn Sie einen SSD Standard-Datenträger verwenden (Dev/Test-Szenarien), sollten Sie die maximale Anzahl von Datenträgern für Daten hinzufügen, die von Ihrer [VM-Größe](../../../virtual-machines/sizes.md?toc=/azure/virtual-machines/windows/toc.json) unterstützt wird, und Datenträgerstriping mit Speicherplätzen verwenden, um die beste Leistung zu erzielen.
 
 ## <a name="caching"></a>Zwischenspeicherung
 

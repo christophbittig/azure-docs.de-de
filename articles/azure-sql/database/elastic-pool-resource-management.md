@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: mathoma
-ms.date: 09/16/2020
-ms.openlocfilehash: 48d037e4fe18f214af0f5ecaf9eb4e9b7e3ed59e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 10/13/2021
+ms.openlocfilehash: 1bc89a91bde0cc720b56f52900c2e0b57542dfa4
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339494"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129984155"
 ---
 # <a name="resource-management-in-dense-elastic-pools"></a>Ressourcenverwaltung in umfangreichen Pools für elastische Datenbanken
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -37,6 +37,8 @@ Diese Vorgehensweise ermöglicht Kunden die Verwendung von umfangreichen Pools f
 > In dichten Pools mit zahlreichen aktiven Datenbanken ist es ggf. nicht möglich, die Anzahl der Datenbanken im Pool bis zu den dokumentierten Höchstwerten für [DTU](resource-limits-dtu-elastic-pools.md) und [vCore](resource-limits-vcore-elastic-pools.md) für Pools mit elastischen Datenbanken zu steigern.
 >
 > Die Anzahl der Datenbanken, die in dichten Pools platziert werden können, ohne dass es zu Ressourcenkonflikten und Leistungsproblemen kommt, hängt von der Anzahl der gleichzeitig aktiven Datenbanken und vom Ressourcenverbrauch der Benutzerworkloads in den einzelnen Datenbanken ab. Diese Zahl kann sich im Laufe der Zeit ändern, sobald sich die Workloads von Benutzern ändern.
+> 
+> Außerdem wird, wenn die Mindestanzahl virtueller Kerne pro Datenbank oder Mindestanzahl von DTUs pro Datenbank auf einen Wert größer als 0 (null) festgelegt ist, die maximale Anzahl von Datenbanken im Pool implizit begrenzt. Weitere Informationen finden Sie unter [Eigenschaften von Pooldatenbanken](resource-limits-vcore-elastic-pools.md#database-properties-for-pooled-databases) und [Eigenschaften von Pooldatenbanken](resource-limits-dtu-elastic-pools.md#database-properties-for-pooled-databases).
 
 Falls es in einem dicht gepackten Pool zu Ressourcenkonflikten kommt, können Kunden eine oder mehrere der folgenden Aktionen auswählen, um diese zu beheben:
 
@@ -75,6 +77,9 @@ Zusätzlich zu diesen Metriken bietet Azure SQL-Datenbank eine Ansicht, in der d
 |[sys.dm_resource_governor_workload_groups_history_ex](/sql/relational-databases/system-dynamic-management-views/sys-dm-resource-governor-workload-groups-history-ex-azure-sql-database)|Gibt die Nutzungsstatistik der Arbeitsauslastungsgruppe für die letzten 32 Minuten zurück. Jede Zeile steht für ein Intervall von 20 Sekunden. In den `delta_`-Spalten werden jeweils die Änderungen der Statistik für das Intervall zurückgegeben.|
 |||
 
+> [!TIP]
+> Wenn Sie diese und andere dynamische Verwaltungssichten mit einem anderen Prinzipal als dem Serveradministrator abfragen möchten, fügen Sie diesen Prinzipal der `##MS_ServerStateReader##`-[Serverrolle](security-server-roles.md) hinzu.
+
 Diese Ansichten können verwendet werden, um die Ressourcennutzung zu überwachen und Probleme aufgrund von Ressourcenkonflikten nahezu in Echtzeit zu behandeln. Die Benutzerarbeitsauslastung auf den primären und lesbaren sekundären Replikaten, einschließlich Georeplikaten, wird als Ressourcenpool `SloSharedPool1` und Arbeitsauslastungsgruppe `UserPrimaryGroup.DBId[N]` klassifiziert, wobei `N` für den Datenbank-ID-Wert steht.
 
 Zusätzlich zur Überwachung der aktuellen Ressourcennutzung können Kunden, die umfangreiche Pools nutzen, Verlaufsdaten zur Ressourcennutzung in einem separaten Datenspeicher aufbewahren. Diese Daten können für Vorhersageanalysen verwendet werden, um die Ressourcennutzung basierend auf verlaufsabhängigen und saisonalen Trends proaktiv zu verwalten.
@@ -104,9 +109,7 @@ Wenn die Trends beim genutzten Speicherplatz im Pool (Gesamtgröße der Daten in
 
 **Vermeiden Sie Server mit übermäßiger Dichte**. Azure SQL-Datenbank [unterstützt](./resource-limits-logical-server.md) bis zu 5000 Datenbanken pro Server. Kunden, die Pools für elastische Datenbanken mit Tausenden von Datenbanken verwenden, können erwägen, mehrere Pools für elastische Datenbanken auf einem einzelnen Server anzuordnen und in Bezug auf die unterstützte maximale Anzahl von Datenbanken ans Limit zu gehen. Server mit vielen Tausenden Datenbanken sind aber mit besonderen Anforderungen an den Betrieb verbunden, die bewältigt werden müssen. Vorgänge, bei denen alle Datenbanken auf einem Server aufgelistet werden müssen, z. B. beim Anzeigen von Datenbanken im Portal, benötigen mehr Zeit. Betriebsbezogene Fehler, z. B. die fehlerhafte Änderung von Anmeldungen auf Serverebene oder von Firewallregeln, wirken sich auf eine größere Zahl von Datenbanken aus. Nach dem versehentlichen Löschen des Servers benötigen Sie Hilfe vom Microsoft-Support, um die Datenbanken auf dem gelöschten Server wiederherstellen zu lassen, und es kommt für alle betroffenen Datenbanken zu einem längeren Ausfall.
 
-Wir empfehlen Ihnen, die Anzahl von Datenbanken pro Server auf eine niedrigere Anzahl als den maximal unterstützten Wert festzulegen. In vielen Szenarien ist die Nutzung von maximal 1.000 - 2.000 Datenbanken pro Server optimal. Um die Wahrscheinlichkeit zu verringern, dass ein Server versehentlich gelöscht wird, empfehlen wir Ihnen das Einfügen einer [Löschsperre](../../azure-resource-manager/management/lock-resources.md) auf dem Server oder in der zugehörigen Ressourcengruppe.
-
-In der Vergangenheit war es der Fall, dass bestimmte Vorgänge mit einer Verschiebung von Datenbanken in, aus oder zwischen Pools für elastische Datenbanken auf demselben Server schneller als das Verschieben von Datenbanken zwischen Servern waren. Derzeit werden alle Datenbankverschiebungen unabhängig vom Quell- und Zielserver mit der gleichen Geschwindigkeit ausgeführt.
+Sie sollten die Anzahl von Datenbanken pro Server auf eine niedrigere Anzahl als den maximal unterstützten Wert festzulegen. In vielen Szenarien ist die Nutzung von maximal 1.000 - 2.000 Datenbanken pro Server optimal. Um die Wahrscheinlichkeit zu verringern, dass ein Server versehentlich gelöscht wird, sollten Sie eine [Löschsperre](../../azure-resource-manager/management/lock-resources.md) auf dem Server oder in der zugehörigen Ressourcengruppe hinzufügen.
 
 ## <a name="examples"></a>Beispiele
 

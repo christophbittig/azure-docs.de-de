@@ -5,17 +5,17 @@ author: karlerickson
 ms.author: karler
 ms.service: spring-cloud
 ms.topic: quickstart
-ms.date: 09/08/2020
+ms.date: 10/12/2021
 ms.custom: devx-track-java, fasttrack-edit
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: f3a3e4897904dcfd02b6ef3879736d1afb533747
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: f4b4eeaac6e32335937f42e1b35abe3929f6e972
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122014715"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130005259"
 ---
-# <a name="quickstart-set-up-azure-spring-cloud-configuration-server"></a>Schnellstart: Einrichten des Azure Spring Cloud-Konfigurationsservers
+# <a name="quickstart-set-up-azure-spring-cloud-config-server"></a>Schnellstart: Einrichten eines Azure Spring Cloud-Konfigurationsservers
 
 Der Azure Spring Cloud-Konfigurationsserver ist ein zentralisierter Konfigurationsdienst für verteilte Systeme. Er nutzt eine austauschbare Repositoryebene, die derzeit lokalen Speicher, Git und Subversion unterstützt. In dieser Schnellstartanleitung richten Sie den Konfigurationsserver zum Abrufen von Daten aus einem Git-Repository ein.
 
@@ -42,7 +42,7 @@ Der Azure Spring Cloud-Konfigurationsserver ist ein zentralisierter Konfiguratio
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* [Installation von JDK 8](/java/azure/jdk/)
+* [Installieren Sie JDK 8 oder JDK 11](/azure/developer/java/fundamentals/java-jdk-install).
 * [Registrierung für ein Azure-Abonnement](https://azure.microsoft.com/free/)
 * (Optional) [Installation der Azure CLI, Version 2.0.67 oder höher](/cli/azure/install-azure-cli) und Installation der Azure Spring Cloud-Erweiterung mit dem Befehl `az extension add --name spring-cloud`
 * (Optional) [Installation des Azure-Toolkits für IntelliJ](https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij/) und [Anmeldung](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)

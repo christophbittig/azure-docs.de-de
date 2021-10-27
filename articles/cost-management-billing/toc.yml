@@ -126,6 +126,8 @@
           href: understand/mpa-overview.md
         - name: "Erste Schritte im Azure\_EA-Portal"
           href: manage/ea-portal-get-started.md
+        - name: Erste Schritte im Azure-Portal für direkte EA-Kunden
+          href: manage/ea-direct-portal-get-started.md
         - name: 'Anfordern einer Quellensteuergutschrift: Indien'
           href: manage/withholding-tax-credit-india.md
     - name: Sicherheit

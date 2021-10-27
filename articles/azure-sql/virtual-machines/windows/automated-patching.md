@@ -3,7 +3,7 @@ title: Automatisiertes Patchen für virtuelle SQL Server-Computer (Resource Mana
 description: Dieser Artikel erläutert die Funktion „Automatisiertes Patchen“ für virtuelle SQL Server-Computer in Azure unter Verwendung des Resource Manager.
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: bluefooted
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 58232e92-318f-456b-8f0a-2201a541e08d
@@ -13,15 +13,15 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/07/2018
-ms.author: mathoma
-ms.reviewer: jroth
+ms.author: pamela
+ms.reviewer: mathoma
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 44dae9d8c8bc5ee3896bfc65340dfeee7679d54e
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 689b7565acad65ec963cf28d0f1fb164446e8764
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123223189"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130162380"
 ---
 # <a name="automated-patching-for-sql-server-on-azure-virtual-machines-resource-manager"></a>Automatisiertes Patchen für SQL Server auf Azure-VMs (Resource Manager)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -123,6 +123,10 @@ In der folgenden Tabelle wird basierend auf diesem Beispiel die tatsächliche Au
 Die Installation und Konfiguration des SQL Server-IaaS-Agents kann mehrere Minuten in Anspruch nehmen.
 
 Führen Sie zum Deaktivieren des automatisierten Patchens das gleiche Skript ohne den Parameter **-Enable** für **New-AzVMSqlServerAutoPatchingConfig** aus. Das Fehlen des Parameters **-Enable** signalisiert dem Befehl, die Funktion zu deaktivieren.
+
+> [!NOTE]
+> Es gibt auch mehrere andere Möglichkeiten, das automatische Patchen von virtuellen Azure-Computern zu aktivieren, z. B. die [Updateverwaltung](/azure/automation/update-management/overview) oder die [automatischen VM-Gastpatches](/azure/virtual-machines/automatic-vm-guest-patching). Wählen Sie nur eine Option aus, um Ihren virtuellen Computer automatisch zu aktualisieren, da überlappende Tools zu fehlerhaften Updates führen können. 
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informationen zu anderen verfügbaren Automatisierungsaufgaben finden Sie unter [SQL Server-Agent-Erweiterung für virtuelle SQL Server-Computer (klassisch)](sql-server-iaas-agent-extension-automate-management.md).

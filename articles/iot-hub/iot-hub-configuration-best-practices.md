@@ -7,12 +7,12 @@ ms.date: 06/28/2019
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 26d81a492b12cd2dd7f1d4de260aa22ac4e73a3e
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 2003e4b6f143f9220b9618a57a2894e678014602
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129234450"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130175634"
 ---
 # <a name="best-practices-for-device-configuration-within-an-iot-solution"></a>Bewährte Methoden für die Gerätekonfiguration innerhalb einer IoT-Lösung
 
@@ -90,4 +90,4 @@ Hier sind bewährte Methoden für IoT-Lösungsoperatoren aufgeführt, die eine u
 
 * Gehen Sie unter [Bedarfsgerechtes Konfigurieren und Überwachen von IoT-Geräten mit dem Azure-Portal](./iot-hub-automatic-device-management.md) die Schritte zum Erstellen, Aktualisieren oder Löschen einer automatischen Gerätekonfiguration durch.
 
-* Implementieren Sie ein Muster für Firmwareupdates, indem Sie das [Tutorial: Implementieren eines Updateprozesses für die Gerätefirmware](tutorial-firmware-update.md) durcharbeiten und Gerätezwillinge und automatische Gerätekonfigurationen verwenden.
+* Im [Tutorial: Device Update for Azure IoT Hub unter Verwendung des Raspberry Pi 3 B+-Referenzimages](../iot-hub-device-update/device-update-raspberry-pi.md) erfahren Sie, wie Sie ein imagebasiertes End-to-End-Update ausführen.

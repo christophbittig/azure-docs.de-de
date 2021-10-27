@@ -12,12 +12,12 @@ ms.date: 07/15/2021
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a03b30c1e2628342246430089e3c6fbb47c98a7
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: bfe41b61a21aea87a35446f1b5c7052f62595b29
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124754343"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130046618"
 ---
 # <a name="azure-active-directory-security-operations-guide-for-applications"></a>Leitfaden für Azure Active Directory-Sicherheitsvorgänge für Anwendungen
 
@@ -66,7 +66,7 @@ Wenn Sie Ihre Anwendungen auf sicherheitsbezogene Incidents überwachen, sollten
 
 ## <a name="where-to-look"></a>Zu untersuchende Protokolle
 
-Zur Untersuchung und Überwachung werden folgende Protokolldateien verwendet:
+Zur Untersuchung und Überwachung verwenden Sie die folgenden Protokolldateien:
 
 * [Azure AD-Überwachungsprotokolle](../reports-monitoring/concept-audit-logs.md)
 
@@ -84,7 +84,7 @@ Im Azure-Portal können Sie die Azure AD-Überwachungsprotokolle anzeigen und a
 
 * **[Azure Event Hubs](../../event-hubs/event-hubs-about.md) mit Integration in ein SIEM-System**- [Azure AD-Protokolle können über die Azure Event Hub-Integration in andere SIEM-Systeme wie Splunk, ArcSight, QRadar und Sumo Logic integriert](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) werden.
 
-* **[Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) (MCAS)** ermöglicht Ihnen das Entdecken und Verwalten von Apps, eine Apps und Ressourcen übergreifende Governance und Überprüfung der Konformität Ihrer Cloud-Apps.
+* **[Microsoft Cloud App Security (MCAS)](/cloud-app-security/what-is-cloud-app-security)** : Ermöglicht das Entdecken und Verwalten von Apps, eine App- und ressourcenübergreifende Steuerung sowie Konformitätsprüfungen Ihrer Cloud-Apps.
 
 Ein Großteil der Überwachung und zugehörigen Warnungen hängt von den Auswirkungen Ihrer Richtlinien für bedingten Zugriff ab. Sie können die Arbeitsmappe [Erkenntnisse und Berichterstellung zum bedingten Zugriff](../conditional-access/howto-conditional-access-insights-reporting.md) verwenden, um die Auswirkungen einer oder mehrerer Richtlinien für bedingten Zugriff auf Ihre Anmeldungen sowie die Ergebnisse von Richtlinien, einschließlich Gerätestatus, zu untersuchen. Diese Arbeitsmappe bietet Ihnen die Möglichkeit, eine Zusammenfassung der Auswirkungen anzuzeigen und die Auswirkungen über einen bestimmten Zeitraum zu ermitteln. Sie können mithilfe der Arbeitsmappe auch die Anmeldungen eines bestimmten Benutzers untersuchen. 
 

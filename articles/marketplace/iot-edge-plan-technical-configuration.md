@@ -7,12 +7,12 @@ ms.topic: how-to
 author: aarathin
 ms.author: aarathin
 ms.date: 05/21/2021
-ms.openlocfilehash: acae63eff8be41453c4483a2d8364531ee109f71
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 28e9bbcb4086cc9a9bd5e18ef27eb1264f086e29
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111955693"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130070297"
 ---
 # <a name="set-plan-technical-configuration-for-an-iot-edge-module-offer"></a>Festlegen der technischen Konfiguration des Plans für ein IoT Edge-Modulangebot
 
@@ -57,7 +57,7 @@ Geben Sie den **Repositorynamen innerhalb der Azure Container Registry** an, die
 
 ## <a name="image-versions"></a>Imageversionen
 
-Kunden müssen imstande sein, Updates beim Azure Marketplace automatisch abzurufen, wenn Sie ein Update veröffentlichen. Wenn sie kein Update ausführen möchten, müssen sie die Möglichkeit haben, bei einer bestimmten Version Ihres Images zu bleiben. Sie können dies erreichen, indem Sie für jedes Update des Images neue Imagetags hinzufügen.
+Kunden müssen imstande sein, Updates beim Azure Marketplace automatisch zu erhalten, wenn Sie ein Update veröffentlichen. Wenn sie kein Update ausführen möchten, müssen sie die Möglichkeit haben, bei einer bestimmten Version Ihres Images zu bleiben. Sie können dies erreichen, indem Sie für jedes Update des Images neue Imagetags hinzufügen.
 
 Wählen Sie **Imageversion hinzufügen** aus, um ein **Imagetag** hinzuzufügen, das auf die neueste Version Ihres Images auf allen unterstützten Plattformen verweist. Es muss außerdem ein Versionstag enthalten (beispielsweise beginnend mit xx.xx.xx, wobei xx eine Zahl ist). Kunden sollten [Manifesttags](https://github.com/estesp/manifest-tool) verwenden, um mehrere Zielplattformen anzugeben. Zudem müssen alle Tags, auf die von einem Manifesttag verwiesen wird, hinzugefügt werden, damit wir sie hochladen können. Alle Manifesttags (mit Ausnahme des aktuellsten Tags) müssen entweder mit X.Y- oder X.Y.Z- beginnen, wobei X, Y und Z ganze Zahlen sind. Wenn ein aktuelles Tag beispielsweise auf `1.0.1-linux-x64`, `1.0.1-linux-arm32` und `1.0.1-windows-arm32` verweist, müssen diese sechs Tags zum Feld hinzugefügt werden. Weitere Details zu Tags und Versionsverwaltung finden Sie unter [Vorbereiten der technischen Ressourcen für das IoT-Edge-Modul](iot-edge-technical-asset.md).
 

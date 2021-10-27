@@ -1,5 +1,5 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: event-hubs
 author: spelluru
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/30/2021
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: b5406fa20d0ca01f75e23e2bf1c7836943c4833e
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 64ce44dc96571447c8d6baa4afd4b60ed4c68932
+ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123226331"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130143869"
 ---
 In Event Hubs werden Sequenzen von an einen Event Hub gesendeten Ereignissen in einer oder mehreren Partitionen organisiert. Neu eingehende Ereignisse werden am Ende dieser Sequenz hinzugefügt. 
 
@@ -32,7 +32,7 @@ Event Hubs wurde zur Unterstützung der Verarbeitung von großen Ereignismengen 
 ### <a name="number-of-partitions"></a>Anzahl von Partitionen
 Die Anzahl von Partitionen wird zum Zeitpunkt der Erstellung eines Event Hubs angegeben. Sie muss zwischen 1 und der maximal zulässigen Partitionsanzahl für jeden Tarif liegen. Informationen zum Grenzwert für die Partitionsanzahl für jeden Tarif finden Sie in [diesem Artikel](../event-hubs-quotas.md#basic-vs-standard-vs-premium-vs-dedicated-tiers). 
 
-Wir empfehlen, mindestens so viele Partitionen auszuwählen, wie Sie voraussichtlich während der Spitzenauslastung Ihrer Anwendung für den entsprechenden Event Hub benötigen. Sie können die Partitionsanzahl für einen Event Hub nach seiner Erstellung nur für den Event Hub in einem dedizierten Cluster ändern. Die Partitionsanzahl für einen Event Hub in einem [dedizierten Event Hubs-Cluster](../event-hubs-dedicated-overview.md) kann nach seiner Erstellung [erhöht](../dynamically-add-partitions.md) werden, aber dann ändert sich die Verteilung von Datenströmen auf die Partitionen, da sich die Zuordnung von Partitionsschlüsseln zu den Partitionen ändert. Daher sollten Sie Änderungen dieser Art unbedingt vermeiden, falls die relative Reihenfolge der Ereignisse in Ihrer Anwendung wichtig ist.
+Wir empfehlen, mindestens so viele Partitionen auszuwählen, wie Sie voraussichtlich während der Spitzenauslastung Ihrer Anwendung für den entsprechenden Event Hub benötigen. Sie können die Partitionsanzahl für einen Event Hub nach seiner Erstellung nur für den Event Hub in einem dedizierten Cluster und im Premium-Tarif ändern. Die Partitionsanzahl für einen Event Hub in einem [dedizierten Event Hubs-Cluster](../event-hubs-dedicated-overview.md) kann nach seiner Erstellung [erhöht](../dynamically-add-partitions.md) werden, aber dann ändert sich die Verteilung von Datenströmen auf die Partitionen, da sich die Zuordnung von Partitionsschlüsseln zu den Partitionen ändert. Daher sollten Sie Änderungen dieser Art unbedingt vermeiden, falls die relative Reihenfolge der Ereignisse in Ihrer Anwendung wichtig ist.
 
 Es ist verlockend, die Anzahl von Partitionen auf den zulässigen Höchstwert festzulegen. Hierbei sollten Sie aber stets beachten, dass Ihre Ereignisdatenströme so strukturiert sein müssen, dass Sie wirklich mehrere Partitionen nutzen können. Falls bei Ihnen die Reihenfolge für alle Ereignisse oder auch nur eine Handvoll untergeordneter Datenströme unbedingt beibehalten werden muss, kommen Sie ggf. nicht in den Genuss der Vorteile, die sich aus der Verwendung von mehreren Partitionen ergeben. Wenn mehrere Partitionen genutzt werden, erhöht sich zudem die Komplexität der Verarbeitungsseite. 
 

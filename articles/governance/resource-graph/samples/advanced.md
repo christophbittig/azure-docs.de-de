@@ -3,12 +3,12 @@ title: Beispiele erweiterter Abfragen
 description: Verwenden Sie Azure Resource Graph, um einige erweiterte Abfragen auszuführen, z. B. mit Verwendung von Spalten, zum Auflisten sämtlicher verwendeter Tags und zum Abgleichen von Ressourcen mit regulären Ausdrücken.
 ms.date: 10/01/2021
 ms.topic: sample
-ms.openlocfilehash: 7c24a3c660587e1ff70c9d208e6bf87c84c5bf1e
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 53c478a051f279da6a307e65da6daee51fce1f57
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129355225"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130045898"
 ---
 # <a name="advanced-resource-graph-query-samples"></a>Erweiterte Beispiele für Resource Graph-Abfragen
 
@@ -39,7 +39,7 @@ Azure CLI (über eine Erweiterung) und Azure PowerShell (über ein Modul) unters
 
 ## <a name="show-resource-types-and-api-versions"></a><a name="apiversion"></a>Anzeigen von Ressourcentypen und API-Versionen
 
-Resource Graph verwendet hauptsächlich die neueste Version (keine Vorschauversion) der API eines Ressourcenanbieters, um mittels `GET` Ressourceneigenschaften während einer Aktualisierung abzurufen. In einigen Fällen wurde die verwendete API-Version überschrieben, um in den Ergebnissen neuere oder gängigere Eigenschaften bereitzustellen. In der folgenden Abfrage wird die API-Version veranschaulicht, die zum Sammeln von Eigenschaften für die einzelnen Ressourcentypen verwendet wird:
+Resource Graph verwendet hauptsächlich die neueste Version (keine Vorschauversion) einer Ressourcenanbieter-API, um mittels `GET` Ressourceneigenschaften während einer Aktualisierung abzurufen. In einigen Fällen wurde die verwendete API-Version überschrieben, um in den Ergebnissen neuere oder gängigere Eigenschaften bereitzustellen. In der folgenden Abfrage wird die API-Version veranschaulicht, die zum Sammeln von Eigenschaften für die einzelnen Ressourcentypen verwendet wird:
 
 ```kusto
 Resources

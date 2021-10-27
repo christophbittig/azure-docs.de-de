@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/06/2021
-ms.openlocfilehash: 714dc6ac27f466c98e5c74bc16a9cfa3c5cd30cf
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 07442ce360baa152b36bcc1145e0636d73d6fedb
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129620277"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130132719"
 ---
 # <a name="features-of-azure-cognitive-search"></a>Azure Cognitive Search-Features
 
@@ -33,9 +33,9 @@ In der folgenden Tabelle sind die Features nach Kategorie zusammengefasst. Weite
 
 | Kategorie &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Features |
 |-------------------|----------|
-|KI-Verarbeitung während der Indizierung | [**KI-Anreicherung**](cognitive-search-concept-intro.md) für Bild- und Textanalyse kann auf eine Indizierungspipeline angewandt werden, um Textinformationen aus Rohdateninhalten zu extrahieren. Zu den [integrierten Skills](cognitive-search-predefined-skills.md) zählen beispielsweise die optische Zeichenerkennung (ermöglicht das Durchsuchen gescannter JPEG-Dateien), die Entitätserkennung (Ermitteln einer Organisation, eines Namens oder eines Standorts) und die Schlüsselbegriffserkennung. Sie können auch [benutzerdefinierte Skills codieren](cognitive-search-create-custom-skill-example.md) und sie an die Pipeline anfügen. Sie können auch [von Azure Machine Learning erstellte Qualifikationen integrieren](./cognitive-search-tutorial-aml-custom-skill.md). |
-| Speichern von angereicherten Inhalten für die Analyse und Nutzung in Szenarien ohne Suche | Der [**Wissensspeicher**](knowledge-store-concept-intro.md) ist eine alternative Ausgabe einer Indizierungspipeline. Anstatt mit Token versehene Begriffe an einen Index zu senden, können Sie von der Indizierungspipeline erstellte angereicherte Dokumente an einen Wissensspeicher senden, der sich je nach Konfiguration entweder in Azure Blob Storage oder in Table Storage befindet. Wissensspeicher werden aus KI-basierten Indizierungen (Skillsets) erstellt. Der Zweck eines Wissensspeichers ist die Unterstützung von Downstreamanalysen oder -verarbeitungen. Mit neuen Informationen und Strukturen in einem Wissensspeicher können Sie diesen an einen Machine Learning-Prozess anfügen oder eine Verbindung von Power BI aus herstellen, um die Daten zu untersuchen.<br/><br/> |
-| Zwischengespeicherte Inhalte | Bei der [**inkrementellen Anreicherung (Vorschauversion)**](cognitive-search-incremental-indexing-conceptual.md) ist die Verarbeitung auf nur die Dokumente beschränkt, die durch eine spezifische Bearbeitung der Pipeline geändert werden, wobei für die unveränderten Teile der Pipeline zwischengespeicherte Inhalte verwendet werden. |
+|KI-Verarbeitung während der Indizierung | [**Die KI-Anreicherung**](cognitive-search-concept-intro.md) bezieht sich auf die eingebettete Verarbeitung von Bildern und natürlicher Sprache in einer Indexer-Pipeline, die Text und Informationen aus Inhalten extrahiert, die sonst nicht für die Volltextsuche indiziert werden können. Die KI-Verarbeitung wird durch das Hinzufügen und Kombinieren von Fähigkeiten in einem Skillset erreicht, das dann an einen Indexer angeschlossen wird. Bei der KI kann es sich entweder um [integrierte Fähigkeiten](cognitive-search-predefined-skills.md) von Microsoft handeln, wie z. B. Textübersetzung oder optische Zeichenerkennung (OCR), oder um [angepasste Fähigkeiten](cognitive-search-create-custom-skill-example.md), die Sie bereitstellen. |
+| Speichern von angereicherten Inhalten für die Analyse und Nutzung in Szenarien ohne Suche | [**Ein Wissensspeicher**](knowledge-store-concept-intro.md) ist eine dauerhafte Speicherung von angereicherten Inhalten, die für Nicht-Such-Szenarien wie Knowledge-Mining und Data-Science-Verarbeitung gedacht ist. Ein Wissensspeicher wird in einem Skillset definiert, aber in Azure Storage als Objekte oder tabellarische Rowsets erstellt.|
+| Angereicherte Inhalte im Cache | [**Incremental Enrichment (Vorschau)** ](cognitive-search-incremental-indexing-conceptual.md) bezieht sich auf zwischengespeicherte Anreicherungen, die während der Skillset-Ausführung wiederverwendet werden können. Die Zwischenspeicherung ist besonders wertvoll bei Skillsets, die OCR und Bildanalyse beinhalten, die teuer in der Verarbeitung sind. |
 
 ## <a name="query-and-user-experience"></a>Abfrage und Benutzeroberfläche
 

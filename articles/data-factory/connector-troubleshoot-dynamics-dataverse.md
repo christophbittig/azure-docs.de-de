@@ -6,15 +6,15 @@ author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: troubleshooting
-ms.date: 10/01/2021
+ms.date: 10/13/2021
 ms.author: jianleishen
 ms.custom: has-adal-ref, synapse
-ms.openlocfilehash: 8552cbcb79522933e0b2cf9ffe369cefdf900b79
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: 28aa7fee3ab7cf2bbc8f10d1ba2f5ea54a792cd6
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129390552"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130066666"
 ---
 # <a name="troubleshoot-the-dynamics-365-dataverse-common-data-service-and-dynamics-crm-connectors-in-azure-data-factory-and-azure-synapse"></a>Fehlerbehebung bei den Dynamics 365-, Dataverse- (Common Data Service) und Dynamics CRM-Konnektoren in Azure Data Factory und Azure Synapse
 
@@ -148,6 +148,40 @@ Dieser Artikel enthält Vorschläge zur Fehlerbehebung bei allgemeinen Problemen
 - **Ursache**: Senkenspalten in der Spaltenzuordnung haben keine Type-Eigenschaft. 
  
 - **Empfehlung**: Sie können die Type-Eigenschaft diesen Spalten in der Spaltenzuordnung hinzufügen, indem Sie den JSON-Editor im Portal verwenden. 
+
+## <a name="the-copy-activity-from-the-dynamics-365-reads-more-rows-than-the-actual-number"></a>Bei der Kopieraktivität von Dynamics 365 werden mehr Zeilen als die tatsächliche Anzahl gelesen.
+
+- **Symptome**: Bei der Kopieraktivität von Dynamics 365 werden mehr Zeilen als die tatsächliche Anzahl gelesen.
+
+- **Ursache**: Der Dynamics 365-Server gibt grundsätzlich mehr verfügbare Datensätze an. 
+
+- **Empfehlung**: Verwenden Sie **XrmToolBox**, um die FetchXML mit Paging zu testen. **XrmToolBox** mit einigen installierten Tools kann die Anzahl der Datensätze abrufen. Weitere Informationen finden Sie unter [XrmToolBox](https://www.xrmtoolbox.com/).
+
+## <a name="cannot-access-virtual-columns-from-dynamics-sources-in-the-copy-activity"></a>Auf virtuelle Spalten aus Dynamics-Quellen kann bei der Kopieraktivität nicht zugegriffen werden.
+
+- **Symptome**: Sie können auf virtuelle Spalten aus Dynamics-Quellen bei der Kopieraktivität nicht zugreifen.
+
+- **Ursache**: Die virtuelle Spalte wird jetzt nicht unterstützt. 
+
+- **Empfehlung**: Für den Optionssatz-Wert folgen Sie den unten aufgeführten Optionen, um ihn abzurufen:
+  - Sie können den Objekttypcode abrufen, indem Sie die Informationen unter [How to Find the Object Type Code for Any Entity](https://powerobjects.com/tips-and-tricks/find-object-type-code-entity/) (Suchen des Objekttypcodes für eine beliebige Entität) und im [Dynamics 365-Blog](https://dynamicscrmdotblog.wordpress.com/) lesen.
+  - Sie können die StringMap-Entität mit Ihrer Zielentität verknüpfen und die zugeordneten Werte abrufen.
+
+## <a name="the-parallel-copy-in-a-dynamics-crm-data-store"></a>Die parallele Kopie in einem Dynamics CRM-Datenspeicher
+
+- **Symptoms**: Sie wissen nicht, ob es möglich ist, die parallele Kopie in einem Dynamics CRM-Datenspeicher zu konfigurieren, und sie kennen auch nicht den Wertebereich, der im Abschnitt „Parallelitätsgrad für Kopiervorgänge“ festgelegt werden kann.
+
+- **Empfehlung**: Die parallele Kopie steuert die Parallelität, und der Abschnitt „Parallelitätsgrad für Kopiervorgänge“ kann auf einen Wert ungleich 0 (null) festgelegt werden. Eine große Anzahl kann zu einer Drosselung auf Dynamics Server-Seite führen, was den Durchsatz reduzieren kann, aber nun erfolgt die Drosselung, indem das öffentliche SDK verwendet wird.
+
+  :::image type="content" source="./media/connector-troubleshoot-guide/degree-of-copy-parallelism-section.png" alt-text="Diagramm des Abschnitts „Parallelitätsgrad für Kopiervorgänge“":::
+
+## <a name="dynamics-type-conversion"></a>Dynamics-Typkonvertierung
+
+- **Symptome**: Sie versuchen, die GUID in der Dynamics-Quelle in eine Zeichenfolge zu konvertieren, es tritt jedoch ein Fehler auf.
+
+- **Ursache**: Wenn Dynamics als Quelle verwendet wird, wird die Typkonvertierung nicht unterstützt.
+
+- **Empfehlung**: Aktivieren Sie das Staging, und versuchen Sie es erneut.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

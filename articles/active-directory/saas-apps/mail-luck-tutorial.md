@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Mail Luck! | Microsoft-Dokumentation'
+title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD mit Mail Luck!'
 description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Mail Luck! konfigurieren.
 services: active-directory
 author: jeevansd
@@ -9,24 +9,22 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/24/2019
+ms.date: 10/11/2021
 ms.author: jeedes
-ms.openlocfilehash: 0936261765e4f2e80800509c11576e8b5e279993
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 181878683dba0dbb744e0521500a41fbc71d6dab
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124808839"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129994839"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-mail-luck"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Mail Luck!
+# <a name="tutorial-azure-ad-sso-integration-with-mail-luck"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD mit Mail Luck!
 
 In diesem Tutorial erfahren Sie, wie Sie Mail Luck! in Aha! integrieren. Die Integration von Mail Luck! in Azure AD ermöglicht Folgendes:
 
 * Steuern Sie in Azure AD, wer Zugriff auf Mail Luck! hat.
 * Ermöglichen Sie es Ihren Benutzern, sich mit ihren Azure AD-Konten automatisch bei Aha! anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
-
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -39,50 +37,50 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Mail Luck! unterstützt **SP-initiiertes** einmaliges Anmelden.
+* Mail Luck! unterstützt **SP**-initiiertes einmaliges Anmelden.
 
-## <a name="adding-mail-luck-from-the-gallery"></a>Hinzufügen von Mail Luck! aus dem Katalog
+## <a name="add-mail-luck-from-the-gallery"></a>Hinzufügen von Mail Luck! aus dem Katalog
 
 Für das Konfigurieren der Integration von Mail Luck! in Azure AD müssen Sie Mail Luck! aus dem Katalog der Liste der verwalteten SaaS-Apps hinzufügen.
 
-1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim Azure-Portal an.
 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
 1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Mail Luck!** in das Suchfeld ein.
 1. Wählen Sie **Mail Luck!** im Ergebnisbereich aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-mail-luck"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Mail Luck!
+## <a name="configure-and-test-azure-ad-sso-for-mail-luck"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Mail Luck!
 
 Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Mail Luck! mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Mail Luck! eingerichtet werden.
 
-Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Mail Luck! die folgenden Schritte aus:
+Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Mail Luck! die folgenden Schritte aus:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-sso)** , um Ihren Benutzern die Verwendung dieses Features zu ermöglichen.
-    * **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
-    * **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
+    1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit dem Testbenutzer B. Simon zu testen.
+    1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)** , um B. Simon die Verwendung des einmaligen Anmeldens von Azure AD zu ermöglichen.
 1. **[Konfigurieren des einmaligen Anmeldens für Mail Luck!](#configure-mail-luck-sso)** , um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
-    * **[Erstellen eines Mail Luck!-Testbenutzers](#create-mail-luck-test-user)** , um eine Entsprechung von B. Simon in Mail Luck! zu erhalten, die mit ihrer Azure AD-Darstellung verknüpft ist.
+    1. **[Erstellen eines Mail Luck!-Testbenutzers](#create-mail-luck-test-user)** , um eine Entsprechung von B. Simon in Mail Luck! zu erhalten, die mit ihrer Azure AD-Darstellung verknüpft ist.
 1. **[Testen des einmaligen Anmeldens](#test-sso)** , um zu überprüfen, ob die Konfiguration funktioniert
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurieren des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Mail Luck!** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Mail Luck!** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
+1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://manage<UNITID>.ml-sgw.jp/<TENANT_NAME>/saml/sign_in`.
+    a. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://manage<UNITID>.ml-sgw.jp/<TENANT_NAME>/saml/`.
 
-    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://manage<UNITID>.ml-sgw.jp/<TENANT_NAME>/saml/`.
+    b. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://manage<UNITID>.ml-sgw.jp/<TENANT_NAME>/saml/sign_in`.
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Diese Werte erhalten Sie vom [Supportteam für den Aha!-Client](https://customer.nttpc.co.jp/cgi-bin/form/inquiry_index.cgi), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch den tatsächlichen Bezeichner und die tatsächliche Anmelde-URL. Diese Werte erhalten Sie vom [Supportteam für den Aha!-Client](https://customer.nttpc.co.jp/cgi-bin/form/inquiry_index.cgi), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **App-Verbundmetadaten-URL** zu kopieren, und speichern Sie sie auf Ihrem Computer.
 
@@ -107,13 +105,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
 1. Wählen Sie in der Anwendungsliste **Mail Luck!** aus.
 1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
-
-   ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
-
 1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
-
-    ![Link „Benutzer hinzufügen“](common/add-assign-user.png)
-
 1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
 1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen**.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
@@ -128,16 +120,14 @@ In diesem Abschnitt erstellen Sie in Mail Luck! einen Benutzer namens B. Simon
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Mail Luck!“ klicken, sollten Sie automatisch bei der Mail Luck!-Instanz angemeldet werden, für die Sie SSO eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für Mail Luck! weitergeleitet, wo Sie den Anmeldeflow initiieren können. 
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+* Rufen Sie direkt die Mail Luck!- Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „Mail Luck!“ klicken, werden Sie weitergeleitet zur Mail Luck!- Anmelde-URL. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>Nächste Schritte
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](../conditional-access/overview.md)
-
-- [Mail Luck! mit Azure AD ausprobieren](https://aad.portal.azure.com/)
+Nach dem Konfigurieren von Mail Luck! können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

@@ -1,32 +1,32 @@
 ---
 title: Netzwerkarchitektur v1
-description: Übersicht über die Architektur der Netzwerktopologie von App Service-Umgebungen. Dieses Dokument wird nur für Kunden bereitgestellt, die die ASE-Legacyumgebung v1 verwenden.
-author: stefsch
+description: Übersicht über die Architektur der Netzwerktopologie von App Service-Umgebungen (ASE). Dieses Dokument wird nur für Kunden bereitgestellt, die die ASE-Legacyumgebung v1 verwenden.
+author: madsd
 ms.assetid: 13d03a37-1fe2-4e3e-9d57-46dfb330ba52
 ms.topic: article
 ms.date: 10/04/2016
-ms.author: stefsch
+ms.author: madsd
 ms.custom: seodec18
-ms.openlocfilehash: b1b866f3be789c59eea38c5c22b5557d557440be
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5aee53f0febfe63a2d69fd6d226b4ccec5a82e7c
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84701812"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130000497"
 ---
 # <a name="network-architecture-overview-of-app-service-environments"></a>Übersicht über die Netzwerkarchitektur von App Service-Umgebungen
 App Service-Umgebungen werden stets in einem Subnetz eines [virtuellen Netzwerks][virtualnetwork] erstellt. Apps, die in einer App Service-Umgebung ausgeführt werden, können mit privaten Endpunkten kommunizieren, die sich in derselben virtuellen Netzwerktopologie befinden.  Da Kunden Teile ihrer virtuellen Netzwerkinfrastruktur sperren können, ist es wichtig, die Arten von Netzwerkkommunikationsabläufen zu kennen, die in einer App Service-Umgebung vorkommen.
 
 ## <a name="general-network-flow"></a>Allgemeiner Netzwerkdatenfluss
-Wenn eine App Service-Umgebung (App Service Environment, ASE) eine öffentliche virtuelle IP-Adresse (VIP) für Apps verwendet, läuft der gesamte eingehende Datenverkehr über diese öffentliche VIP.  Dazu zählen der HTTP- und HTTPS-Datenverkehr für Apps sowie anderer Datenverkehr für FTP, Remotedebuggingfunktionalität und Azure-Verwaltungsvorgänge.  Eine vollständige Liste der spezifischen (erforderlichen und optionalen) Ports, die für die öffentliche VIP verfügbar sind, finden Sie im Artikel zum [Steuern des eingehenden Datenverkehrs][controllinginboundtraffic] in eine App Service-Umgebung. 
+Wenn eine App Service-Umgebung (App Service Environment, ASE) eine öffentliche virtuelle IP-Adresse (VIP) für Apps verwendet, läuft der gesamte eingehende Datenverkehr über diese öffentliche VIP.  Dazu zählen der HTTP- und HTTPS-Datenverkehr für Apps und anderer Datenverkehr für FTP, Remotedebuggingfunktionalität und Azure-Verwaltungsvorgänge.  Eine vollständige Liste der spezifischen (erforderlichen und optionalen) Ports, die für die öffentliche VIP verfügbar sind, finden Sie im Artikel zum [Steuern des eingehenden Datenverkehrs][controllinginboundtraffic] in eine App Service-Umgebung. 
 
-App Service-Umgebungen unterstützen auch die Ausführung von Apps, die nur an eine interne Adresse des virtuelles Netzwerks gebunden sind, auch als ILB-Adresse (Internal Load Balancer, interner Lastenausgleich) bezeichnet.  In einer ASE, in der ILB aktiviert ist, gehen sowohl HTTP- und HTTPS-Datenverkehr für Apps als auch Remotedebuggingaufrufe über die ILB-Adresse ein.  In den am häufigsten verwendeten ILB-ASE-Konfigurationen geht FTP/FTPS-Datenverkehr auch über die ILB-Adresse ein.  Azure-Verwaltungsvorgänge fließen jedoch immer noch über die Ports 454/455 der öffentlichen VIP-Adresse einer ASE, in der ILB aktiviert ist.
+App Service-Umgebungen unterstützen auch die Ausführung von Apps, die nur an eine interne Adresse des virtuelles Netzwerks gebunden sind, auch als ILB-Adresse (Internal Load Balancer, interner Lastenausgleich) bezeichnet.  In einer ASE, in der ILB aktiviert ist, gehen HTTP- und HTTPS-Datenverkehr für Apps und Remotedebuggingaufrufe über die ILB-Adresse ein.  In den am häufigsten verwendeten ILB-ASE-Konfigurationen geht FTP/FTPS-Datenverkehr auch über die ILB-Adresse ein.  Azure-Verwaltungsvorgänge fließen jedoch immer noch über die Ports 454/455 der öffentlichen VIP-Adresse einer ASE, in der ILB aktiviert ist.
 
 Das folgende Diagramm zeigt eine Übersicht der verschiedenen ein- und ausgehenden Netzwerkflüsse einer App Service-Umgebung, in der die Apps an eine öffentliche virtuelle IP-Adresse gebunden sind:
 
 ![Allgemeine Netzwerkdatenflüsse][GeneralNetworkFlows]
 
-Eine App Service-Umgebung kann mit einer Vielzahl privater Kundenendpunkte kommunizieren.  Beispielsweise können Apps, die in der App Service-Umgebung ausgeführt werden, sich mit Datenbankservern auf virtuellen IaaS-Computern in der gleichen virtuellen Netzwerktopologie verbinden.
+Eine App Service-Umgebung kann mit privaten Kundenendpunkten kommunizieren.  Beispielsweise können Apps, die in der App Service-Umgebung ausgeführt werden, sich mit Datenbankservern auf virtuellen IaaS-Computern in der gleichen virtuellen Netzwerktopologie verbinden.
 
 > [!IMPORTANT]
 > Im Netzwerkdiagramm sehen Sie, dass „Weitere Compute-Ressourcen“ in einem anderen Subnetz als die App Service-Umgebung bereitgestellt werden. Durch Bereitstellung im gleichen Subnetz wie die App Service-Umgebung würde die Verbindung der Umgebung mit diesen Ressourcen blockiert (ausgenommen spezifische Routen innerhalb der Umgebung). Stellen Sie die Ressourcen daher in einem anderen Subnetz innerhalb des gleichen VNETs bereit. Dann kann die App Service-Umgebung eine Verbindung herstellen. Es ist keine zusätzliche Konfiguration erforderlich.
@@ -42,7 +42,7 @@ Details zum Zulassen ausgehender Internetverbindungen aus einer App Service-Umge
 ## <a name="outbound-network-addresses"></a>Ausgehende Netzwerkadressen
 Wenn eine App Service-Umgebung ausgehende Aufrufe ausführt, ist den ausgehenden Aufrufen stets eine IP-Adresse zugeordnet.  Die spezifische verwendete IP-Adresse hängt davon ab, ob sich der Endpunkt innerhalb oder außerhalb der virtuellen Netzwerktopologie befindet.
 
-Wenn sich der aufgerufene Endpunkt **außerhalb** der Topologie des virtuellen Netzwerks befindet, ist die ausgehende Adresse (d.h. die ausgehende NAT-Adresse), die verwendet wird, die öffentliche VIP der App Service-Umgebung.  Diese Adresse finden Sie auf der Portalbenutzeroberfläche der App Service-Umgebung auf dem Blatt "Eigenschaften".
+Wenn sich der aufgerufene Endpunkt **außerhalb** der Topologie des virtuellen Netzwerks befindet, ist die ausgehende Adresse (auch ausgehende NAT-Adresse genannt), die verwendet wird, die öffentliche VIP der App Service-Umgebung.  Diese Adresse finden Sie auf der Portalbenutzeroberfläche der App Service-Umgebung im Abschnitt „Eigenschaften“.
 
 ![Ausgehende IP-Adresse][OutboundIPAddress]
 
@@ -64,11 +64,11 @@ Für dieses Diagramm gilt:
 ## <a name="calls-between-app-service-environments"></a>Aufrufe zwischen App Service-Umgebungen
 Ein komplexeres Szenario kann auftreten, wenn Sie mehrere App Service-Umgebungen im gleichen virtuellen Netzwerk bereitstellen und ausgehende Aufrufe von einer App Service-Umgebung in eine andere App Service-Umgebung ausführen.  Diese Art von Aufrufen zwischen App Service-Umgebungen wird auch wie "Internetaufrufe" behandelt.
 
-Das folgende Diagramm zeigt ein Beispiel einer mehrschichtigen Architektur mit Apps in einer App Service-Umgebung (z. B. "Eingangstür"-Web-Apps), die Apps in einer zweiten App Service-Umgebung aufrufen (z. B. interne Back-End-API-Apps, die nicht aus dem Internet zugänglich sein sollen). 
+Das folgende Diagramm zeigt ein Beispiel einer mehrschichtigen Architektur mit Apps in einer App Service-Umgebung (zum Beispiel "Eingangstür"-Web-Apps), die Apps in einer zweiten App Service-Umgebung aufrufen (zum Beispiel interne Back-End-API-Apps, die nicht aus dem Internet zugänglich sein sollen). 
 
 ![Aufrufe zwischen App Service-Umgebungen][CallsBetweenAppServiceEnvironments] 
 
-Im obigen Beispiel hat die App Service-Umgebung "ASE One" die ausgehende IP-Adresse 192.23.1.2.  Wenn eine App, die in dieser App Service-Umgebung ausgeführt wird, einen ausgehenden Aufruf einer App durchführt, die in einer zweiten App Service-Umgebung ("ASE Two") im gleichen virtuellen Netzwerk ausgeführt wird, wird der ausgehende Aufruf als "Internetaufruf" behandelt.  Als Ergebnis wird für den in der zweiten App Service-Umgebung eingehenden Netzwerkverkehr die Ursprungs-IP-Adresse 192.23.1.2 angezeigt (d. h. nicht der Subnetzadressbereich der ersten App Service-Umgebung).
+Im obigen Beispiel hat die App Service-Umgebung "ASE One" die ausgehende IP-Adresse 192.23.1.2.  Wenn eine App, die in dieser App Service-Umgebung ausgeführt wird, einen ausgehenden Aufruf einer App durchführt, die in einer zweiten App Service-Umgebung ("ASE Two") im gleichen virtuellen Netzwerk ausgeführt wird, wird der ausgehende Aufruf als "Internetaufruf" behandelt.  Als Ergebnis wird für den in der zweiten App Service-Umgebung eingehenden Netzwerkverkehr die Ursprungs-IP-Adresse 192.23.1.2 angezeigt (das heißt, nicht der Subnetzadressbereich der ersten App Service-Umgebung).
 
 Zwar werden Aufrufe zwischen verschiedenen App Service-Umgebungen als "Internetaufrufe" behandelt, dennoch bleibt der Netzwerkverkehr im regionalen Azure-Netzwerk und fließt nicht physisch über das öffentliche Internet, wenn sich beide App Service-Umgebungen in derselben Azure-Region befinden.  Als Ergebnis können Sie eine Netzwerksicherheitsgruppe im Subnetz der zweiten App Service-Umgebung verwenden, um nur eingehende Aufrufe von der ersten App Service-Umgebung (mit der ausgehenden IP-Adresse 192.23.1.2) zuzulassen, und somit die sichere Kommunikation zwischen den App Service-Umgebungen ermöglichen.
 

@@ -1,24 +1,24 @@
 ---
 title: Konfigurieren benutzerdefinierter Einstellungen
 description: Konfigurieren Sie Einstellungen, die für die gesamte Azure App Service-Umgebung gelten. Hier erfahren Sie, wie Sie dazu Azure Resource Manager-Vorlagen verwenden.
-author: ccompy
+author: madsd
 ms.assetid: 1d1d85f3-6cc6-4d57-ae1a-5b37c642d812
 ms.topic: tutorial
 ms.date: 01/29/2021
-ms.author: ccompy
+ms.author: madsd
 ms.custom: mvc, seodec18
-ms.openlocfilehash: e871778576266d772f37c23ee174dda7df6a6a75
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: e95f8a4434f0ca27c57791edfe8663df9e77bbaa
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112027423"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130002711"
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>Benutzerdefinierte Konfigurationseinstellungen für App Service-Umgebungen
 ## <a name="overview"></a>Übersicht
 Da App Service-Umgebungen (App Service Environments, ASEs) isoliert für einen einzelnen Kunden eingerichtet werden, gibt es bestimmte Konfigurationseinstellungen, die exklusiv auf eine App Service-Umgebung angewendet werden können. In diesem Artikel werden die verschiedenen Anpassungen dokumentiert, die für App Service-Umgebungen verfügbar sind.
 
-Informationen zum Erstellen einer App Service-Umgebung finden Sie [hier](app-service-web-how-to-create-an-app-service-environment.md).
+Besitzen Sie keine App Service-Umgebung, finden Sie unter [Gewusst wie: Erstellen einer ILB-ASE mit Azure Resource Manager-Vorlagen](app-service-app-service-environment-create-ilb-ase-resourcemanager.md) Informationen zu ihrer Erstellung.
 
 Sie können Anpassungen der App Service-Umgebung mithilfe eines Arrays im neuen Attribut **clusterSettings** speichern. Dieses Attribut befindet sich im Wörterbuch „Eigenschaften“ der Azure Resource Manager-Entität *hostingEnvironments* .
 

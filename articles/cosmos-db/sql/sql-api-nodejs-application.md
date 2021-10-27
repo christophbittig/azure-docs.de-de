@@ -6,15 +6,15 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 08/26/2021
+ms.date: 10/18/2021
 ms.author: sngun
 ms.custom: devx-track-js
-ms.openlocfilehash: e83c245960815630891407a042303f1d8ae58b35
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: e9ee6ef04563466cb47f1bc6fe8f92929dd11950
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123117704"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130177553"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>Tutorial: Erstellen einer Node.js-Web-App mit dem JavaScript SDK zum Verwalten eines SQL API-Kontos in Azure Cosmos DB 
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -92,7 +92,7 @@ Nun erfahren Sie, wie Sie ein einfaches „Hallo Welt“-Node.js-Projekt mithilf
 
 ## <a name="install-the-required-modules"></a><a name="install-modules"></a>Installieren der erforderlichen Module
 
-Die Datei **package.json** ist eine der im Stammverzeichnis des Projekts erstellten Dateien. Diese Datei enthält eine Liste zusätzlicher Module, die für Ihre Node.js-Anwendung erforderlich sind. Wenn Sie diese Anwendung in Azure bereitstellen, wird anhand dieser Datei bestimmt, welche Module in Azure installiert werden müssen, um Ihre Anwendung zu unterstützen. Installieren Sie für dieses Tutorial zwei weitere Pakete.
+Die Datei **package.json** ist eine der im Stammverzeichnis des Projekts erstellten Dateien. Diese Datei enthält eine Liste weiterer Module, die für Ihre Node.js-Anwendung erforderlich sind. Wenn Sie diese Anwendung in Azure bereitstellen, wird anhand dieser Datei bestimmt, welche Module in Azure installiert werden müssen, um Ihre Anwendung zu unterstützen. Installieren Sie für dieses Tutorial zwei weitere Pakete.
 
 1. Installieren Sie das **\@azure/cosmo** s-Modul über npm. 
 
@@ -455,25 +455,17 @@ Nachdem Sie die Anwendung erstellt haben, können Sie sie lokal ausführen, inde
 
 5. Drücken Sie zum Beenden der Anwendung STRG+C im Terminalfenster, und wählen Sie anschließend **J** aus, um den Batchauftrag zu beenden.
 
-## <a name="deploy-your-application-to-web-apps"></a><a name="deploy-app"></a>Bereitstellen der Anwendung für Web-Apps
+## <a name="deploy-your-application-to-app-service"></a><a name="deploy-app"></a>Bereitstellen Ihrer Anwendung in App Service
 
-Nachdem Ihre Anwendung lokal erfolgreich ausgeführt wurde, können Sie sie mit den folgenden Schritten in Azure bereitstellen:
+Nachdem Ihre Anwendung lokal erfolgreich ausgeführt wurde, können Sie sie in Azure App Service bereitstellen. Stellen Sie im Terminal sicher, dass Sie sich im App-Verzeichnis *todo* befinden. Stellen Sie den Code in Ihrem lokalen Ordner (todo) mit dem folgenden Befehl vom Typ [az webapp up](/cli/azure/webapp?view=azure-cli-latest#az_webapp_up&preserve-view=true) bereit:
 
-1. Falls noch nicht geschehen, aktivieren Sie ein Git-Repository für Ihre Web-Apps-Anwendung.
+```azurecli
+az webapp up --sku F1 --name <app-name>
+```
 
-2. Fügen Sie Ihre Web-Apps-Anwendung als ein Git-Remoteverzeichnis hinzu.
-   
-   ```bash
-   git remote add azure https://username@your-azure-website.scm.azurewebsites.net:443/your-azure-website.git
-   ```
+Ersetzen Sie <app_name> durch einen Namen, der innerhalb von Azure eindeutig ist (gültige Zeichen: a-z, 0-9 und -). Ein bewährtes Muster ist eine Kombination aus Ihrem Firmennamen und einer App-ID. Weitere Informationen zur App-Bereitstellung finden Sie im Artikel [Erstellen einer Node.js-Web-App in Azure](../../app-service/quickstart-nodejs.md?tabs=linux&pivots=development-environment-cli#deploy-to-azure).
 
-3. Pushen Sie die Anwendung an die Remoteinstanz, um sie bereitzustellen.
-   
-   ```bash
-   git push azure main
-   ```
-
-4. Wenige Sekunden später wird Ihre Webanwendung veröffentlicht und in einem Browser gestartet.
+Die Ausführung dieses Befehls kann einige Minuten in Anspruch nehmen. Bei der Ausführung werden Meldungen zum Erstellen der Ressourcengruppe, dem App Service-Plan und der App-Ressource, zur Konfiguration der Protokollierung und zur ZIP-Bereitstellung angezeigt. Anschließend erhalten Sie eine URL zum Starten der App unter `http://<app-name>.azurewebsites.net`. Dies ist die URL der App in Azure.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -482,12 +474,11 @@ Wenn die Ressourcengruppe, das Azure Cosmos DB-Konto und die dazugehörigen Ress
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Versuchen Sie, die Kapazitätsplanung für eine Migration zu Azure Cosmos DB durchzuführen? Sie können Informationen zu Ihrem vorhandenen Datenbankcluster für die Kapazitätsplanung verwenden.
-    * Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](../convert-vcore-to-request-unit.md) 
-    * Wenn Sie die typischen Anforderungsraten für Ihre aktuelle Datenbank-Workload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](estimate-ru-with-capacity-planner.md)
+  * Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](../convert-vcore-to-request-unit.md) 
+  * Wenn Sie die typischen Anforderungsraten für Ihre aktuelle Datenbank-Workload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](estimate-ru-with-capacity-planner.md)
 
 > [!div class="nextstepaction"]
 > [Erstellen von mobilen Anwendungen mit Xamarin und Azure Cosmos DB](mobile-apps-with-xamarin.md)
-
 
 [Node.js]: https://nodejs.org/
 [Git]: https://git-scm.com/

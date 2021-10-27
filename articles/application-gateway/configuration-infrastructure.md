@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 06/14/2021
 ms.author: surmb
-ms.openlocfilehash: f838b1821e38e6046014f5cd8233694db7f2ef87
-ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
+ms.openlocfilehash: 841583de276e4657384854f8430bbb82d75517d3
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129729841"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130045917"
 ---
 # <a name="application-gateway-infrastructure-configuration"></a>Konfigurieren der Application Gateway-Infrastruktur
 
@@ -62,9 +62,10 @@ Verwenden Sie für dieses Szenario Netzwerksicherheitsgruppen im Application Gat
 
 1. Erlauben Sie eingehenden Datenverkehr aus einer Quell-IP oder einem IP-Adressbereich mit dem Ziel des gesamten Application Gateway-Subnetzadressbereichs und dem Zielport als eingehenden Zugriffsport, z. B. Port 80 für den HTTP-Zugriff.
 2. Erlauben Sie eingehende Anforderungen von der Quelle **GatewayManager**-Diensttag und dem Ziel **Beliebig** sowie den Zielports 65503-65534 für die Application Gateway v1-SKU und den Ports 65200-65535 für v2-SKU für die [Kommunikation des Back-End-Integritätsstatus](./application-gateway-diagnostics.md). Dieser Portbereich ist für die Kommunikation mit der Azure-Infrastruktur erforderlich. Diese Ports werden von Azure-Zertifikaten geschützt (gesperrt). Ohne entsprechende Zertifikate können externe Entitäten keine Änderungen an diesen Endpunkten vornehmen.
-3. Lassen Sie eingehende Azure Load Balancer-Tests (*AzureLoadBalancer-Tag*) und eingehenden virtuellen Netzwerkdatenverkehr (*VirtualNetwork*-Tag) für die [Netzwerksicherheitsgruppe](../virtual-network/network-security-groups-overview.md) zu.
-4. Blockieren Sie den gesamten übrigen eingehenden Datenverkehr mit einer Alle-verweigern-Regel.
-5. Zulassen von ausgehendem Datenverkehr an das Internet für alle Ziele.
+3. Lassen Sie eingehende Azure Load Balancer-Tests (*AzureLoadBalancer*-Tag) für die [Netzwerksicherheitsgruppe](../virtual-network/network-security-groups-overview.md) zu.
+4. Lassen Sie eingehenden virtuellen Netzwerkdatenverkehr (*VirtualNetwork*-Tag) für die [Netzwerksicherheitsgruppe](../virtual-network/network-security-groups-overview.md) zu.
+5. Blockieren Sie den gesamten übrigen eingehenden Datenverkehr mit einer Alle-verweigern-Regel.
+6. Zulassen von ausgehendem Datenverkehr an das Internet für alle Ziele.
 
 ## <a name="supported-user-defined-routes"></a>Unterstützte benutzerdefinierte Routen 
 

@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: Verwaltung des Azure-Hybridvorteils auf Bereichsebene
-summary: Azure-Hybridvorteil ist ein Lizenzierungsvorteil, mit dem Sie Ihre lokalen core-basierten Windows Server- und SQL Server-Lizenzen mit aktiver Software Assurance (oder aktivem Abonnement) in Azure bereitstellen können. Mit dem Azure-Hybridvorteil können Sie die Kosten für das Ausführen Ihrer Workloads in der Cloud beträchtlich senken. Sie können nun im Azure-Portal Ihren Azure-Hybridvorteil für SQL Server verwalten, indem Sie Lizenzen dem Bereich eines gesamten Azure-Abonnements oder eines gesamten Abrechnungskontos zuweisen.
+title: Zentral verwalteter Azure-Hybridvorteil
+summary: Azure-Hybridvorteil ist ein Lizenzierungsvorteil, mit dem Sie Ihre lokalen core-basierten Windows Server- und SQL Server-Lizenzen mit aktiver Software Assurance (oder aktivem Abonnement) in Azure bereitstellen können. Mit dem Azure-Hybridvorteil können Sie die Kosten für das Ausführen Ihrer Workloads in der Cloud beträchtlich senken. Sie können nun im Azure-Portal Ihren Azure-Hybridvorteil für SQL Server zentral verwalten, indem Sie Lizenzen dem Bereich eines gesamten Azure-Abonnements oder eines gesamten Abrechnungskontos zuweisen.
 metadata:
   title: Dokumentation zum Azure-Hybridvorteil
-  description: Azure-Hybridvorteil ist ein Lizenzierungsvorteil, mit dem Sie Ihre lokalen core-basierten Windows Server- und SQL Server-Lizenzen mit aktiver Software Assurance (oder aktivem Abonnement) in Azure bereitstellen können. Mit dem Azure-Hybridvorteil können Sie die Kosten für das Ausführen Ihrer Workloads in der Cloud beträchtlich senken. Sie können nun im Azure-Portal Ihren Azure-Hybridvorteil für SQL Server verwalten, indem Sie Lizenzen dem Bereich eines gesamten Azure-Abonnements oder eines gesamten Abrechnungskontos zuweisen.
+  description: Azure-Hybridvorteil ist ein Lizenzierungsvorteil, mit dem Sie Ihre lokalen core-basierten Windows Server- und SQL Server-Lizenzen mit aktiver Software Assurance (oder aktivem Abonnement) in Azure bereitstellen können. Mit dem Azure-Hybridvorteil können Sie die Kosten für das Ausführen Ihrer Workloads in der Cloud beträchtlich senken. Sie können nun im Azure-Portal Ihren Azure-Hybridvorteil für SQL Server zentral verwalten, indem Sie Lizenzen dem Bereich eines gesamten Azure-Abonnements oder eines gesamten Abrechnungskontos zuweisen.
   ms.service: cost-management-billing
   ms.subservice: ahb
   ms.topic: landing-page
@@ -11,22 +11,22 @@ metadata:
   author: bandersmsft
   ms.author: banders
   ms.date: 09/30/2021
-  ms.openlocfilehash: ae18a0f65423219f6ba0035c8ebe7fe6df1aeba6
-  ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+  ms.openlocfilehash: f9383ccbda8bedef23435b2b909a5025529f28c3
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/05/2021
-  ms.locfileid: "129547167"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130226600"
 landingContent:
 - title: Erste Schritte
   linkLists:
   - linkListType: overview
     links:
-    - text: Was ist die Verwaltung auf Bereichsebene?
+    - text: Was ist die zentrale Verwaltung?
       url: overview-azure-hybrid-benefit-scope.md?toc=/azure/cost-management-billing/scope-level/toc.json
   - linkListType: tutorial
     links:
-    - text: Optimieren des Azure-Hybridvorteils auf Bereichsebene
+    - text: Optimieren des zentral verwalteten Azure-Hybridvorteils
       url: tutorial-azure-hybrid-benefits-sql.md?toc=/azure/cost-management-billing/scope-level/toc.json
   - linkListType: how-to-guide
     links:
@@ -36,7 +36,7 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Übergang zum Azure-Hybridvorteil auf Bereichsebene
+    - text: Übergang zum zentral verwalteten Azure-Hybridvorteil
       url: transition-existing.md?toc=/azure/cost-management-billing/scope-level/toc.json
   - linkListType: reference
     links:

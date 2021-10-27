@@ -10,22 +10,22 @@ ms.topic: overview
 ms.custom: sqldbrb=1, fasttrack-edit
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: dd9fe79249fe5e02ad8a4adaf8dda02e72c954c6
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 2c63e6c858ec4d6ed35faec16c0778cb1246ef17
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123039156"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130004576"
 ---
 # <a name="azure-private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Azure Private Link für Azure SQL-Datenbank und Azure Synapse Analytics
-[!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
+[!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa-formerly-sqldw.md)] 
 
 Private Link ermöglicht die Verbindungsherstellung mit verschiedenen PaaS-Diensten in Azure über einen **privaten Endpunkt**. Eine Liste der PaaS-Dienste, die die Private Link-Funktion unterstützen, finden Sie in der [Private Link-Dokumentation](../../private-link/index.yml). Ein privater Endpunkt ist eine private IP-Adresse in einem bestimmten [VNET](../../virtual-network/virtual-networks-overview.md) und Subnetz.
 
 > [!IMPORTANT]
-> Dieser Artikel gilt sowohl für Azure SQL-Datenbank als auch für Azure Synapse Analytics. Der Einfachheit halber wird der Begriff „Datenbank“ verwendet, wenn auf Datenbanken sowohl in Azure SQL-Datenbank als auch in Azure Synapse Analytics verwiesen wird. Ebenso bezieht sich der Begriff „Server“ auf den [logischen SQL-Server](logical-servers.md), der Azure SQL-Datenbank und Azure Synapse Analytics hostet. Dieser Artikel gilt *nicht* für **Azure SQL Managed Instance**.
+> Dieser Artikel gilt für Azure SQL-Datenbank und den [dedizierten SQL-Pool (vormals SQL DW)](../../synapse-analytics\sql-data-warehouse\sql-data-warehouse-overview-what-is.md) in Azure Synapse Analytics. Diese Einstellungen gelten für alle SQL-Datenbank-Datenbanken und die Datenbanken des dedizierten SQL-Pools (früher „SQL DW“), die dem Server zugeordnet sind. Der Einfachheit halber wird der Begriff „Datenbank“ verwendet, wenn auf Datenbanken sowohl in Azure SQL-Datenbank als auch in Azure Synapse Analytics verwiesen wird. Ebenso bezieht sich der Begriff „Server“ auf den [logischen SQL-Server](logical-servers.md), der Azure SQL-Datenbank und den dedizierten SQL-Pool (vormals SQL DW) in Azure Synapse Analytics hostet. Dieser Artikel gilt *nicht* für Azure SQL Managed Instance oder dedizierte SQL-Pools in Azure Synapse Analytics-Arbeitsbereichen.
 
-## <a name="how-to-set-up-private-link-for-azure-sql-database"></a>Einrichten von Private Link für Azure SQL-Datenbank 
+## <a name="how-to-set-up-private-link"></a>Einrichten von Private Link 
 
 ### <a name="creation-process"></a>Erstellungsprozess
 Private Endpunkte können über das Azure-Portal, mithilfe von PowerShell oder über die Azure CLI erstellt werden:

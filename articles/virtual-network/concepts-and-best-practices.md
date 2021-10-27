@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/03/2020
 ms.author: kumud
-ms.openlocfilehash: 0a9945a58aa6ec49ad58f3a0a0d03ea75e30f6d8
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d2f39d06046cd9d51baef0a2b09be00a37a35ca3
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98223617"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129993946"
 ---
 # <a name="azure-virtual-network-concepts-and-best-practices"></a>Azure Virtual Network – Konzepte und bewährte Methoden
 
@@ -36,7 +36,7 @@ Beim Erstellen Ihres Netzwerks in Azure sind folgende allgemeine Entwurfsprinzip
 - Stellen Sie sicher, dass sich Adressräume nicht überschneiden. Stellen Sie sicher, dass der Adressraum Ihres VNET (CIDR-Block) sich nicht mit anderen Netzwerkbereichen Ihrer Organisation überschneidet.
 - Die Subnetze sollten nicht den gesamten Adressraum des VNET ausmachen. Planen Sie voraus, und reservieren Sie Adressraum für die Zukunft.
 - Es empfiehlt sich, einige große VNETs anstelle vieler kleiner VNETs zu erstellen. Dadurch verringert sich der Verwaltungsaufwand.
-- Schützen Sie Ihre virtuellen Netzwerke, indem Sie den untergeordneten Subnetzen Netzwerksicherheitsgruppen (NSGs) zuweisen.
+- Schützen Sie Ihre virtuellen Netzwerke, indem Sie den untergeordneten Subnetzen Netzwerksicherheitsgruppen (NSGs) zuweisen. Weitere Informationen zu Netzwerksicherheitskonzepten finden Sie unter [Übersicht über die Netzwerksicherheit in Azure](../security/fundamentals/network-overview.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

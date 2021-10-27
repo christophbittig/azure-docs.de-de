@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: conceptual
 ms.date: 08/23/2021
-ms.openlocfilehash: e83ea29b4894827ac68af6b243ce0e19842f2d87
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: d6a43a64cbe24bc547ef1c6e61d4c0e3c340d76f
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122769813"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130067267"
 ---
 # <a name="usage-metering-billing-and-pricing-models-for-azure-logic-apps"></a>Modelle für Verwendungsmessung, Abrechnung und Preise in den Azure Logic Apps
 
@@ -74,9 +74,9 @@ Diese Tipps helfen Ihnen beim Schätzen genauerer Nutzungskosten:
 In Azure Logic Apps mit einem Mandanten wird für eine Logik-App und ihren Workflow der [**Standardplan**](https://azure.microsoft.com/pricing/details/logic-apps/) für Preise und Abrechnung verwendet. Sie erstellen solche Logik-Apps auf unterschiedliche Weisen, z. B. wenn Sie den Ressourcentyp **Logik-App (Standard)** auswählen oder die Erweiterung **Azure Logic Apps (Standard)** in Visual Studio Code verwenden. Für dieses Preismodell müssen Logik-Apps einen Hostingplan und einen Tarif verwenden. Dies unterscheidet sich vom Verbrauchsplan insofern, dass Ihnen reservierte Kapazitäten und dedizierte Ressourcen in Rechnung gestellt werden, unabhängig davon, ob Sie sie verwenden.
 
 > [!IMPORTANT]
-> Wenn Sie neue Logik-Apps basierend auf dem Ressourcentyp **Logik-App (Standard)** erstellen oder bereitstellen, können Sie den Hostingplan „Hosting Standard“ in allen Azure-Regionen verwenden. Sie können alternativ den App Service-Hostingplan verwenden, jedoch nur, wenn Sie die Region **App Service-Umgebung v3** auf der Registerkarte **Grundlagen** auswählen.
+> Wenn Sie Logik-Apps mit dem Ressourcentyp **Logik-App (Standard)** erstellen oder bereitstellen, können Sie den Hostingplan „Workflow-Standard“ in allen Azure-Regionen verwenden. Sie können einen App Service-Hostingplan *nur* verwenden, wenn Sie eine vorhandene **App Service-Umgebung v3 (ASEv3)** -Ressource als die Region verwenden, in der Sie Ihre Logik-App-Ressource erstellen und bereitstellen.
 >
-> Obwohl Sie mit dem Vorschauressourcentyp **Logik-App (Standard)** den App Service-Plan, den Functions Premium-Plan, App Service-Umgebung v1 und App Service-Umgebung v2 verwenden können, sind diese Optionen für die öffentliche Veröffentlichung dieses Azure Logic Apps-Ressourcentyps nicht mehr verfügbar oder werden nicht mehr unterstützt.
+> Die folgenden Optionen sind in der öffentlichen Version des Ressourcentyps **Logik-App (Standard)** in Azure-Regionen nicht mehr verfügbar oder werden dort nicht mehr unterstützt: Functions Premium-Plan, App Service-Umgebung v1 und App Service-Umgebung v2. Der App Service-Plan ist nicht verfügbar und wird nicht unterstützt, mit Ausnahme von ASEv3.
 
 In der folgenden Tabelle wird zusammengefasst, wie das Standardmodell die Verbrauchsmessung und Abrechnung für die folgenden Komponenten verarbeitet, wenn es mit einer Logik-App und einem Workflow in Azure Logic Apps mit einem Mandanten verwendet wird:
 
@@ -178,7 +178,7 @@ In der folgenden Tabelle wird zusammengefasst, wie das ISE-Modell die folgenden 
 | Vorgangsart | BESCHREIBUNG | Messung und Abrechnung |
 |----------------|-------------|----------------------|
 | [*Integriert*](../connectors/built-in.md) | Diese Vorgänge werden direkt und nativ mit der Azure Logic Apps-Runtime und in derselben ISE wie Ihr Logik-App-Workflow ausgeführt. Im Designer finden Sie diese Vorgänge unter der Bezeichnung **Integriert**, es wird aber für jeden Vorgang auch die Bezeichnung **CORE** angezeigt. <p>Beispielsweise sind die Trigger „HTTP“ und „Anforderung“ integrierte Trigger. Die Aktionen „HTTP“ und „Antwort“ sind hingegen integrierte Aktionen. Andere integrierte Vorgänge umfassen Workflowsteuerungsaktionen wie Schleifen und Bedingungen, Datenvorgänge, Batchvorgänge usw. | Das ISE-Modell enthält diese Vorgänge *kostenlos*, es gelten aber die [ISE-Grenzwerte in Azure Logic Apps](logic-apps-limits-and-config.md#integration-service-environment-ise). |
-| [*Verwalteter Connector*](../connectors/managed.md) | Unabhängig davon, ob es sich um *Standard*- oder *Unternehmensconnectors* handelt, werden Vorgänge für verwaltete Connectors in Ihrer ISE oder in Azure mit mehreren Mandanten ausgeführt. Dies hängt davon ab, ob für den Connector oder Vorgang die Bezeichnung **ISE** angezeigt wird. <p><p>- **ISE**-Bezeichnung: Diese Vorgänge werden in derselben ISE wie Ihre Logik-App ausgeführt und benötigen kein [lokales Datengateway](#data-gateway). <p><p>– Keine **ISE**-Bezeichnung: Diese Vorgänge werden in Azure mit mehreren Mandanten ausgeführt. | Das ISE-Modell enthält Vorgänge mit und ohne **ISE**-Bezeichnung *kostenlos*, es gelten aber die [ISE-Grenzwerte in Azure Logic Apps](logic-apps-limits-and-config.md#integration-service-environment-ise). |
+| [*Verwalteter Connector*](../connectors/managed.md) | Unabhängig davon, ob es sich um *Standard*- oder *Unternehmensconnectors* handelt, werden Vorgänge für verwaltete Connectors in Ihrer ISE oder in Azure mit mehreren Mandanten ausgeführt. Dies hängt davon ab, ob für den Connector oder Vorgang die Bezeichnung **ISE** angezeigt wird. <p><p>- **ISE**-Bezeichnung: Diese Vorgänge werden in derselben ISE wie Ihre Logik-App ausgeführt und benötigen kein [lokales Datengateway](#data-gateway). <p><p>– Keine **ISE**-Bezeichnung: Diese Vorgänge werden in Azure mit mehreren Mandanten ausgeführt. | Das ISE-Modell enthält Vorgänge mit **ISE**- und ohne **ISE**- Bezeichnung *kostenlos*, es gelten aber die [ISE-Grenzwerte in Azure Logic Apps](logic-apps-limits-and-config.md#integration-service-environment-ise). |
 | [*Benutzerdefinierter Connector*](../connectors/apis-list.md#custom-apis-and-connectors) | Im Designer finden Sie diese Vorgänge unter der Bezeichnung **Benutzerdefiniert**. | Das ISE-Modell enthält diese Vorgänge *kostenlos*, es gelten aber die [Grenzwerte für benutzerdefinierte Connectors in Azure Logic Apps](logic-apps-limits-and-config.md#custom-connector-limits). |
 ||||
 

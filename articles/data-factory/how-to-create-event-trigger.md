@@ -10,12 +10,12 @@ ms.author: chez
 ms.reviewer: jburchel
 ms.topic: conceptual
 ms.date: 09/09/2021
-ms.openlocfilehash: bea14b1630cbe5d1c4035e9abea62130cd546964
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e2621a6eea481866bb5351623065e7d113e8e9bd
+ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124831420"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130138673"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-a-storage-event"></a>Erstellen eines Triggers zum Ausführen einer Pipeline als Reaktion auf ein Speicherereignis
 
@@ -119,7 +119,7 @@ Dieser Abschnitt enthält Beispiele für die Einstellungen für Speicherereignis
 
 In Azure Data Factory- und Synapse-Pipelines wird mithilfe der rollenbasierten Zugriffssteuerung von Azure (Azure RBAC) sichergestellt, dass unbefugte Zugriffe zum Lauschen auf, Abonnieren von Aktualisierungen aus und Auslösen von Pipelines, die mit Blobereignissen verknüpft sind, streng verboten sind.
 
-* Zum erfolgreichen Erstellen eines neuen oder Aktualisieren eines vorhandenen Speicherereignisauslösers muss das beim Dienst angemeldete Azure-Konto entsprechenden Zugriff auf das relevante Speicherkonto haben. Andernfalls schlägt der Vorgang mit der Meldung _Zugriff verweigert_ fehl.
+* Zum erfolgreichen Erstellen eines neuen oder Aktualisieren eines vorhandenen Speicherereignisauslösers muss das beim Dienst angemeldete Azure-Konto entsprechenden Zugriff auf das relevante Speicherkonto haben. Andernfalls verursacht der Vorgang einen Fehler mit der Meldung _Zugriff verweigert_.
 * Azure Data Factory und Azure Synapse benötigen keine spezielle Berechtigung für Ihr Event Grid, und Sie müssen dem Data Factory- oder Azure Synapse-Dienstprinzipal _keine_ spezielle RBAC-Berechtigung für den Vorgang zuweisen.
 
 Folgende RBAC-Einstellungen eignen sich für einen Speicherereignisauslöser:

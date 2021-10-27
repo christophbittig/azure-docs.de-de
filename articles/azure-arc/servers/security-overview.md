@@ -3,14 +3,14 @@ title: Sicherheitsübersicht
 description: Sicherheitsinformationen zu Azure Arc-fähigen Servern.
 ms.topic: conceptual
 ms.date: 08/30/2021
-ms.openlocfilehash: 0f3e093dc07c1fddb4598138078003425456c8d1
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e5fc087dac29a01f6463766c8d3b3ae0ae26596b
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124832218"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130069480"
 ---
-# <a name="azure-arc-for-servers-security-overview"></a>Sicherheitsübersicht über Azure Arc für Server
+# <a name="azure-arc-enabled-servers-security-overview"></a>Sicherheitsübersicht für Azure Arc-fähige Server
 
 In diesem Artikel werden die Sicherheitskonfiguration und entsprechenden Aspekte beschrieben, die Sie vor der Bereitstellung von Azure Arc-fähigen Servern in Ihrem Unternehmen auswerten sollten.
 

@@ -1,6 +1,6 @@
 ---
-title: Planen eines Angebots für verwaltete Dienste für den kommerziellen Microsoft-Marketplace
-description: In diesem Artikel erfahren Sie, wie Sie ein neues Angebot für verwaltete Dienste für Azure Marketplace mithilfe des kommerziellen Marketplace-Programms in Microsoft Partner Center planen.
+title: Erstellen eines Angebots für verwaltete Dienste für den kommerziellen Marketplace
+description: Planen Sie ein Angebot für verwaltete Dienste für Azure Marketplace in Partner Center.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
@@ -8,16 +8,16 @@ author: Microsoft-BradleyWright
 ms.author: brwrigh
 ms.reviewer: anbene
 ms.date: 12/23/2020
-ms.openlocfilehash: ffa7e35bed1713a5ef9e04b59a8dbdb692b9630f
-ms.sourcegitcommit: 32ee8da1440a2d81c49ff25c5922f786e85109b4
+ms.openlocfilehash: 0f167cd82c6a66a175923b3b318623ab9a2bd1cf
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109790953"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130070848"
 ---
-# <a name="how-to-plan-a-managed-service-offer-for-the-microsoft-commercial-marketplace"></a>Vorgehensweise beim Planen eines Angebots für verwaltete Dienste für den kommerziellen Microsoft-Marketplace
+# <a name="plan-a-managed-service-offer"></a>Planen eines Angebots für einen verwalteten Dienst
 
-In diesem Artikel werden die Anforderungen zum Veröffentlichen eines Angebots für verwaltete Dienste für den kommerziellen Marketplace von Microsoft über das Partner Center erläutert.
+In diesem Artikel werden die Anforderungen zum Veröffentlichen eines Angebots für verwaltete Dienste für den kommerziellen Marketplace über das Partner Center erläutert.
 
 Verwaltete Dienste sind Azure Marketplace-Angebote, die mandantenübergreifende und mehrinstanzenfähige Verwaltung mit Azure Lighthouse ermöglichen. Weitere Informationen finden Sie unter [Was ist Azure Lighthouse?](../lighthouse/overview.md) Wenn ein Kunde ein Angebot für verwaltete Dienste erwirbt, kann er ein oder mehrere Abonnements oder Ressourcengruppen delegieren. Anschließend können Sie mithilfe der Funktionen für die [delegierte Azure-Ressourcenverwaltung](../lighthouse/concepts/architecture.md) von Azure Lighthouse mit diesen Ressourcen arbeiten.
 
@@ -74,7 +74,7 @@ Um das Angebot einfacher zu gestalten, können Sie einige dieser Elemente vorab 
 
 **Zusammenfassung der Suchergebnisse**: Beschreiben Sie hier den Zweck oder das Ziel Ihres Angebots mit höchstens 100 Zeichen. Diese Zusammenfassung wird in den Suchergebnissen verwendet, die aus den Angeboten im kommerziellen Marketplace erfasst werden. Sie sollte nicht mit dem Titel identisch sein. Fügen Sie ggf. Ihre wichtigsten SEO-Schlüsselwörter ein.
 
-**Kurze Beschreibung**: Geben Sie eine kurze Beschreibung Ihres Angebots ein (bis zu 256 Zeichen). Sie wird in der Angebotsauflistung im Azure-Portal angezeigt.
+**Kurze Beschreibung**: Geben Sie eine kurze Beschreibung Ihres Angebots ein (bis zu 256 Zeichen). Sie wird in der Angebotsliste im Azure-Portal angezeigt.
 
 **Beschreibung**: Beschreiben Sie Ihr Angebot in maximal 3.000 Zeichen. Diese Beschreibung wird im Angebot im kommerziellen Marketplace angezeigt. Fügen Sie gegebenenfalls auch ein Nutzenversprechen, die wichtigsten Vorteile, die Zusammenhänge mit Kategorien oder Branchen und etwaige Offenlegungen hinzu.
 
@@ -98,9 +98,9 @@ Die Beschreibung kann mithilfe von HTML-Tags formatiert werden. Weitere Informat
 
 **Marketplace-Medien – Logos**: Stellen Sie eine PNG-Datei für das große Logo Ihres Angebots bereit. Hiermit werden in Partner Center mittelgroße und kleine Logos erstellt. Sie können diese Logos später durch ein anderes Bild ersetzen.
 
-* Das große Logo (zwischen 216 x 216 und 350 x 350 px) wird in Ihrer Angebotsauflistung im Azure Marketplace angezeigt.
-* Das mittlere Logo (90 x 90 px) wird angezeigt, wenn eine neue Ressource erstellt wird.
-* In den Azure Marketplace-Suchergebnissen wird das kleine Logo (48 x 48 px) verwendet.
+* Das große Logo (zwischen 216 x 216 und 350 x 350 Pixel) wird in Ihrem Angebotseintrag im Azure Marketplace angezeigt.
+* Das mittlere Logo (90 x 90 Pixel) wird angezeigt, wenn eine neue Ressource erstellt wird.
+* In den Azure Marketplace-Suchergebnissen wird das kleine Logo (48 x 48 Pixel) verwendet.
 
 Befolgen Sie die folgenden Richtlinien für Ihre Logos:
 
@@ -110,9 +110,9 @@ Befolgen Sie die folgenden Richtlinien für Ihre Logos:
 * Wenn Sie einen transparenten Hintergrund verwenden, stellen Sie sicher, dass das Logo und der Text nicht weiß, schwarz oder blau sind.
 * Ihr Logo sollte klar aussehen. Vermeiden Sie Farbverläufe. Platzieren Sie keinen Text auf dem Logo, auch nicht Ihren Firmen- oder Markennamen.
 
-**Marketplace-Medien – Screenshots** (optional): Fügen Sie bis zu fünf Bilder hinzu, die zeigen, wie Ihr Angebot funktioniert. Alle Bilder müssen 1.280 × 720 Pixel groß sein und im PNG-Format vorliegen.
+**Marketplace-Medien – Screenshots** (optional): Fügen Sie bis zu fünf Bilder hinzu, die zeigen, wie Ihr Angebot funktioniert. Alle Bilder müssen 1280 x 720 Pixel groß sein und im PNG-Format vorliegen.
 
-**Marketplace-Medien – Videos** (optional): Laden Sie bis zu fünf Videos hoch, die Ihr Angebot veranschaulichen. Die Videos müssen auf YouTube oder Vimeo gehostet werden und eine Vorschauminiatur aufweisen (1280 × 720, PNG-Datei).
+**Marketplace-Medien – Videos** (optional): Laden Sie bis zu fünf Videos hoch, die Ihr Angebot veranschaulichen. Die Videos müssen auf YouTube oder Vimeo gehostet werden und eine Vorschauminiatur aufweisen (1280 × 720, PNG-Datei).
 
 ## <a name="preview-audience"></a>Vorschauzielgruppe
 

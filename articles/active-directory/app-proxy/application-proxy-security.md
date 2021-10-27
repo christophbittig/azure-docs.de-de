@@ -3,20 +3,20 @@ title: Sicherheitsaspekte beim Azure Active Directory-Anwendungsproxy
 description: Die Sicherheitsaspekte bei Verwendung des Azure AD-Anwendungsproxys werden beschrieben.
 services: active-directory
 author: kenwith
-manager: mtillman
+manager: karenh444
 ms.service: active-directory
 ms.subservice: app-proxy
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/21/2021
 ms.author: kenwith
-ms.reviewer: japere
-ms.openlocfilehash: a6951b6d52fad3b0d2bbed41422600d5f28892f0
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.reviewer: ashishj
+ms.openlocfilehash: 96d2fac930b65ffb9bc05330e37e52bc7af3d4dc
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108186221"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130043527"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-active-directory-application-proxy"></a>Sicherheitsaspekte beim Remotezugriff auf Apps mit dem Azure Active Directory-Anwendungsproxy
 
@@ -158,9 +158,9 @@ Die Anforderung enthält Elemente aus der Anwendung, z.B. Anforderungsheader und
 
 Auf Grundlage der Anforderung führt der Anwendungsproxy eine der folgenden Aktionen durch:
 
-* Wenn die Anforderung ein einfacher Vorgang ist, z.B. ohne Daten im Text wie bei einer *GET*-RESTful-Anforderung, stellt der Connector eine Verbindung mit der internen Zielressource her und wartet dann auf eine Antwort.
+* Wenn die Anforderung ein einfacher Vorgang ist, z. B. ohne Daten im Text wie bei einer RESTful-API-`GET`-Anforderung, stellt der Connector eine Verbindung mit der internen Zielressource her und wartet dann auf eine Antwort.
 
-* Wenn in der Anforderung im Textbereich Daten zugeordnet sind, z.B. bei einem *POST*-RESTful-Vorgang, stellt der Connector mit dem Clientzertifikat eine ausgehende Verbindung mit der Anwendungsproxyinstanz her. Die Verbindung wird zum Anfordern der Daten und zum Öffnen einer Verbindung mit der internen Ressource hergestellt. Nach Erhalt der Anforderung vom Connector beginnt der Anwendungsproxydienst damit, Inhalte vom Benutzer zu akzeptieren und Daten an den Connector weiterzuleiten. Der Connector leitet die Daten wiederum an die interne Ressource weiter.
+* Wenn in der Anforderung im Textbereich Daten zugeordnet sind, z. B. bei einem RESTful-API`POST`-Vorgang, stellt der Connector mithilfe des Clientzertifikats eine ausgehende Verbindung mit der Anwendungsproxyinstanz her. Die Verbindung wird zum Anfordern der Daten und zum Öffnen einer Verbindung mit der internen Ressource hergestellt. Nach Erhalt der Anforderung vom Connector beginnt der Anwendungsproxydienst damit, Inhalte vom Benutzer zu akzeptieren und Daten an den Connector weiterzuleiten. Der Connector leitet die Daten wiederum an die interne Ressource weiter.
 
 #### <a name="4-the-connector-waits-for-a-response"></a>4. Der Connector wartet auf eine Antwort.
 

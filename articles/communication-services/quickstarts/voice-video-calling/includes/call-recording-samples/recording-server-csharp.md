@@ -10,12 +10,12 @@ ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: joseys
-ms.openlocfilehash: f025f33a041dd40970b3ea34ff723e1270d16ea6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3f3b673da2809e45af88ae887eb289edb4e5c65f
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121800902"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130050808"
 ---
 ## <a name="sample-code"></a>Beispielcode
 Den fertigen Code für diese Schnellstartanleitung finden Sie auf [GitHub](https://github.com/Azure-Samples/communication-services-dotnet-quickstarts/tree/main/ServerRecording).
@@ -93,6 +93,19 @@ Verwenden Sie die Serveraufruf-ID, die während der Initiierung eines Aufrufs em
 
 ```csharp
 var startRecordingResponse = await callingServerClient.InitializeServerCall("<servercallid>").StartRecordingAsync("<callbackuri>").ConfigureAwait(false);
+```
+Die `StartRecordingAsync` API-Antwort enthält die Aufzeichnungs-ID der Aufzeichnungssitzung.
+
+## <a name="start-recording-session-with-options-using-startrecordingasync-server-api"></a>Starten der Aufzeichnungssitzung mit Optionen mithilfe der Server-API „StartRecordingAsync“
+
+Verwenden Sie die Serveraufruf-ID, die während der Initiierung eines Aufrufs empfangen wurde.
+
+- „RecordingContent“ wird zum Übergeben des Inhaltstyp der Aufzeichnung verwendet. Beispiel: audio/audiovideo
+- „RecordingChannel“ wird zum Übergeben des Kanaltyps der Aufzeichnung verwendet. Beispiel: mixed/unmixed
+- „RecordingFormat“ wird zum Übergeben des Formats der Aufzeichnung verwendet. Beispiel: mp4/mp3/wav
+
+```csharp
+var startRecordingResponse = await callingServerClient.InitializeServerCall("<servercallid>").StartRecordingAsync("<callbackuri>","<RecordingContent>","<RecordingChannel>","<RecordingFormat>").ConfigureAwait(false);
 ```
 Die `StartRecordingAsync` API-Antwort enthält die Aufzeichnungs-ID der Aufzeichnungssitzung.
 

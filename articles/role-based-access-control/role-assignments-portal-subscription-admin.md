@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 06/25/2021
+ms.date: 10/15/2021
 ms.author: rolyon
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: af88edbb788afa3576d3317d4e1cd54dea6f4deb
-ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
+ms.openlocfilehash: b4801d18454ad93c4ffa7284ab5bfaabea254cd1
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2021
-ms.locfileid: "112988065"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130074207"
 ---
 # <a name="assign-a-user-as-an-administrator-of-an-azure-subscription"></a>Zuweisen von Administratorzugriff für ein Azure-Abonnement
 
@@ -49,11 +49,11 @@ Die Zuweisung von Rollen zum Gewähren von Zugriff auf Azure-Ressourcen erfolgt 
 
 1. Klicken Sie auf die Registerkarte **Rollenzuweisungen**, um die Rollenzuweisungen für diesen Bereich anzuzeigen.
 
-1. Klicken Sie auf **Hinzufügen** > **Rollenzuweisung hinzufügen (Vorschau)** .
+1. Klicken Sie auf **Hinzufügen** > **Rollenzuweisung hinzufügen**.
 
    Wenn Sie keine Berechtigungen zum Zuweisen von Rollen haben, ist die Option „Rollenzuweisung hinzufügen“ deaktiviert.
 
-    ![Screenshot: Menü „Hinzufügen > Rollenzuweisung hinzufügen“ in der Benutzeroberfläche der Vorschauversion.](./media/shared/add-role-assignment-menu-preview.png)
+    ![Screenshot: Menü „Hinzufügen > Rollenzuweisung hinzufügen“.](./media/shared/add-role-assignment-menu.png)
 
     Die Seite „Rollenzuweisung hinzufügen“ wird geöffnet.
 
@@ -65,7 +65,7 @@ Die Zuweisung von Rollen zum Gewähren von Zugriff auf Azure-Ressourcen erfolgt 
 
     Sie können nach einer Rolle anhand des Namens oder der Beschreibung suchen. Sie können Rollen auch nach Typ und Kategorie filtern.
 
-   ![Screenshot: Seite „Rollenzuweisung hinzufügen“ mit der Registerkarte „Rollen“ auf der Benutzeroberfläche der Vorschauversion](./media/shared/roles.png)
+   ![Screenshot: Seite „Rollenzuweisung hinzufügen“ mit der Registerkarte „Rollen“](./media/shared/roles.png)
 
 1. Klicken Sie auf **Weiter**.
 
@@ -73,7 +73,7 @@ Die Zuweisung von Rollen zum Gewähren von Zugriff auf Azure-Ressourcen erfolgt 
 
 1. Wählen Sie auf der Registerkarte **Mitglieder** die Option **Benutzer, Gruppe oder Dienstprinzipal** aus.
 
-   ![Screenshot: Seite „Rollenzuweisung hinzufügen“ mit der Registerkarte „Mitglieder hinzufügen“ in der Benutzeroberfläche der Vorschauversion.](./media/shared/members.png)
+   ![Screenshot: Seite „Rollenzuweisung hinzufügen“ mit der Registerkarte „Mitglieder hinzufügen“.](./media/shared/members.png)
 
 1. Klicken Sie auf **Mitglieder auswählen**.
 
@@ -81,7 +81,7 @@ Die Zuweisung von Rollen zum Gewähren von Zugriff auf Azure-Ressourcen erfolgt 
 
     Sie können im Feld **Auswählen** einen Begriff eingeben, um das Verzeichnis nach Anzeigename oder E-Mail-Adresse zu durchsuchen.
 
-   ![Screenshot: Bereich „Mitglieder auswählen“ auf der Benutzeroberfläche der Vorschauversion](./media/shared/select-members.png)
+   ![Screenshot: Bereich „Mitglieder auswählen“.](./media/shared/select-members.png)
 
 1. Klicken Sie auf **Speichern**, um den Benutzer der Liste „Mitglieder“ hinzuzufügen.
 
@@ -99,7 +99,7 @@ Die Zuweisung von Rollen zum Gewähren von Zugriff auf Azure-Ressourcen erfolgt 
 
    Kurz darauf wird dem Benutzer die Rolle „Besitzer“ für das Abonnement zugewiesen.
 
-    ![Screenshot: Liste der Rollenzuweisungen nach dem Zuweisen einer Rolle in der Benutzeroberfläche der Vorschauversion.](./media/role-assignments-portal-subscription-admin/sub-role-assignments-owner.png)
+    ![Screenshot: Rollenzuweisungsliste nach dem Zuweisen einer Rolle.](./media/role-assignments-portal-subscription-admin/sub-role-assignments-owner.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

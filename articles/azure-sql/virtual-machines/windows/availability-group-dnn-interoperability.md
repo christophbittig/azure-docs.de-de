@@ -3,7 +3,7 @@ title: Featureinteroperabilität mit Verfügbarkeitsgruppen und DNN-Listener
 description: 'Enthält eine Beschreibung der zusätzlichen Erwägungen beim Arbeiten mit bestimmten SQL Server-Features und eines DNN-Listeners (Distributed Network Name, verteilter Netzwerkname) mit einer Always On-Verfügbarkeitsgruppe in SQL Server auf Azure-VMs. '
 services: virtual-machines
 documentationCenter: na
-author: MashaMSFT
+author: rajeshsetlem
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
@@ -12,13 +12,14 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/08/2020
-ms.author: mathoma
-ms.openlocfilehash: e7ff8eaaca03a2c977311c6469e06714c87ce53f
-ms.sourcegitcommit: ff1aa951f5d81381811246ac2380bcddc7e0c2b0
+ms.author: rsetlem
+ms.reviewer: mathoma
+ms.openlocfilehash: dd8713bcbe96c16e24305e05f693bbf15af327ab
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111572359"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130163061"
 ---
 # <a name="feature-interoperability-with-ag-and-dnn-listener"></a>Featureinteroperabilität mit Verfügbarkeitsgruppe und DNN-Listener 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -128,6 +129,9 @@ Konfigurieren Sie den Verbindungsserver mit dem Namen und Port des DNN-Listeners
 
    Ja. Der Cluster verknüpft den DNN im DNS mit den physischen IP-Adressen aller Replikate in der Verfügbarkeitsgruppe unabhängig vom Subnetz. Der SQL-Client probiert unabhängig vom Subnetz alle IP-Adressen des DNS-Namens aus. 
 
+- Unterstützt der DNN-Listener der Verfügbarkeitsgruppe schreibgeschütztes Routing? 
+
+   Ja. Schreibgeschütztes Routing wird vom DNN-Listener unterstützt. 
 
 
 ## <a name="next-steps"></a>Nächste Schritte

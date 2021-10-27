@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: azure-maps
 services: azure-maps
 ms.custom: mvc, references_regions
-ms.openlocfilehash: f9b307aeba76f3d5c5ef43ad88f86163b7fc2f57
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 339e6059ae1dd55e55dfe143d8ea4dd5dcbb2236
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129273854"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130003304"
 ---
 # <a name="what-is-azure-maps"></a>Was ist Azure Maps?
 
@@ -24,7 +24,6 @@ Azure Maps ist eine Sammlung von Geodiensten und SDKs, bei denen aktuelle Karten
 * Suchdienste für die Suche nach Adressen, Orten und Points of Interest auf der ganzen Welt
 * Verschiedene Routenplanungsoptionen – beispielsweise von A nach B, mehrere Punkte, Optimierung bei Verwendung mehrerer Punkte, Isochrone, Elektrofahrzeuge, gewerbliche Fahrzeuge, Berücksichtigung der Verkehrslage und Matrixroutenplanung
 * Anzeige von Verkehrsfluss und -störungen für Anwendungen, die Verkehrsinformationen in Echtzeit benötigen
-* Mobilitätsdienste (Vorschauversion) zum Anfordern von Informationen zum öffentlichen Nahverkehr und Planen von Routen durch Kombinieren verschiedener Transportmittel und Ankunftszeiten in Echtzeit
 * Zeitzonen- und Geolocationdienste
 * Höhenangabendienste mit digitalem Höhenmodell
 * Geofencingdienst und Speicher für Kartendaten mit in Azure gehosteten Standortinformationen
@@ -67,12 +66,6 @@ Daten sind für Karten unverzichtbar. Mit dem Datendienst können Sie räumliche
 Mit dem Geolocationdienst können Sie den zweistelligen Länder-/Regionscode für eine IP-Adresse abrufen. Mithilfe dieses Diensts können Sie die Benutzeroberfläche verbessern, indem Sie angepasste Anwendungsinhalte auf der Grundlage des geografischen Standorts bereitstellen.
 
 Weitere Informationen finden Sie in der [Dokumentation zum Geolocationdienst](/rest/api/maps/geolocation).
-
-### <a name="mobility-services-preview"></a>Vorschauversion der Mobilitätsdienste
-
-Die Mobilitätsdienste für Azure Maps verbessern die Entwicklungszeit für Anwendungen mit Features für den öffentlichen Nahverkehr, z. B. Verkehrsroutenplanung und Suche nach nahe gelegenen Haltestellen des öffentlichen Nahverkehrs. Benutzer können ausführliche Informationen zu Haltestellen, Linien und Fahrplänen abrufen. Der Mobilitätsdienst ermöglicht Benutzern außerdem das Abrufen von Geometrien für Haltestellen und Fahrpläne, Warnungen für Haltestellen, Linien und Betriebsbereiche sowie Ankunfts- und Betriebsbenachrichtigungen in Echtzeit für den öffentlichen Nahverkehr. Darüber hinaus bieten die Mobilitätsdienste Routenplanungsfunktionen mit Optionen für eine multimodale Routenplanung. Bei der multimodalen Routenplanung werden Optionen für Fußgänger und Fahrradfahrer sowie öffentliche Verkehrsmittel für eine Strecke berücksichtigt. Benutzer können auf detaillierte und multimodale ausführliche Routen zugreifen.
-
-Weitere Informationen zu diesem Dienst finden Sie in der [Dokumentation zu Mobilitätsdiensten](/rest/api/maps/mobility).
 
 ### <a name="render-service"></a>Renderingdienst
 
@@ -227,7 +220,7 @@ Für den Zugriff auf Azure Maps-Dienste wechseln Sie zum [Azure-Portal](https://
 Für Azure Maps wird ein schlüsselbasiertes Authentifizierungsschema verwendet. Wenn Sie Ihr Konto erstellen, werden zwei Schlüssel generiert. Für die Authentifizierung bei Azure Maps-Diensten können Sie beide Schlüssel verwenden.
 
 > [!NOTE]
-> Azure Maps gibt vom Kunden bereitgestellte Adress- oder Standortabfragen („Abfragen“) für die Zuordnungsfunktionalität an den Drittanbieter TomTom weiter. Abfragen werden nicht mit Kunden oder Endbenutzern verknüpft, wenn sie für TomTom bereitgestellt werden, und können nicht für die Identifikation von Personen verwendet werden. Die Mobilitätsdienste, die die Integration in Moovit beinhalten, befinden sich derzeit in der [Vorschauphase](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Azure Maps gibt vom Kunden bereitgestellte Adress- oder Standortabfragen für die Zuordnungsfunktionalität an den Drittanbieter TomTom weiter. Diese Abfragen werden nicht mit Kunden oder Endbenutzern verknüpft, wenn sie für TomTom bereitgestellt werden, und können nicht für die Identifikation von Personen verwendet werden.
 
 Microsoft ist derzeit dabei, TomTom, Moovit und AccuWeather zur Liste der Onlinedienstzulieferer hinzuzufügen.
 

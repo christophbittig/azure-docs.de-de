@@ -4,17 +4,17 @@ description: Diese Dokumentation ist ein Leitfaden für ISVs, die Azure-Anwendun
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 07/01/2021
+ms.date: 10/15/2021
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 1571ae7a735f9d7cf05ce0724cfe3aeb9de70f0b
-ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
+ms.openlocfilehash: a067e7bbb649adf8f184cbdee5a2a3edb4a2d962
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113231303"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130131997"
 ---
-# <a name="managed-application-metered-billing"></a>Getaktete Abrechnung für verwaltete Anwendungen 
+# <a name="managed-application-metered-billing"></a>Getaktete Abrechnung für verwaltete Anwendungen
 
 Mit dem Marketplace-Messungsdienst können Sie verwaltete Anwendungspläne für Azure-Anwendungsangebote erstellen, die nach nicht standardmäßigen Einheiten abgerechnet werden. Vor der Veröffentlichung dieses Angebots definieren Sie die Abrechnungsdimensionen wie Bandbreite, Tickets oder verarbeitete E-Mails. Kunden zahlen dann auf der Grundlage ihrer Nutzung dieser Dimensionen.  Ihr System informiert Microsoft über die Marketplace-Messungsdienst-API über abrechenbare Ereignisse, sobald diese auftreten.
 
@@ -33,9 +33,12 @@ Bei der Definition des Angebots und seiner Preismodelle ist es wichtig, die Ange
 
 * Jedes Azure-Anwendungsangebot kann über Lösungsvorlagenpläne oder verwaltete Anwendungspläne verfügen.
 * Die getaktete Abrechnung wird nur bei verwalteten Anwendungsplänen implementiert.
-* Jedem verwalteten Anwendungsplan ist ein Preismodell zugeordnet. 
+* Jedem verwalteten Anwendungsplan ist ein Preismodell zugeordnet.
 * Das Preismodell weist eine laufende Monatsgebühr auf, die auf 0 (null) USD festgelegt sein kann.
 * Zusätzlich zur laufenden Gebühr kann der Plan auch optionale Dimensionen enthalten, die dem Kunden für nicht in der Pauschale enthaltene Nutzung berechnet werden. Jede Dimension stellt eine abrechenbare Einheit dar, die Ihr Dienst über die [Marketplace-Messungsdienst-API](marketplace-metering-service-apis.md) an Microsoft übermittelt.
+
+    > [!IMPORTANT]
+    > Sie müssen die Nutzung in Ihrem Code nachverfolgen und nur für die Nutzung, die über der Grundgebühr liegt, Nutzungsereignisse an Microsoft senden.
 
 ## <a name="sample-offer"></a>Beispielangebot
 

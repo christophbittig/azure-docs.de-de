@@ -4,15 +4,15 @@ description: Erfahren Sie mehr über flexible Abrechnungsmodelle für SaaS-Angeb
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 10/15/2021
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: c84f48d7a41a43b1425663b2ceed9ba74276f3f9
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 104d8665a1a7754475e0bcad14546775335c389f
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111955617"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130131256"
 ---
 # <a name="metered-billing-for-saas-using-the-commercial-marketplace-metering-service"></a>Volumenabrechnung für SaaS mit dem Messungsdienst für den kommerziellen Marketplace
 
@@ -43,9 +43,12 @@ Bei der Definition des Angebots und seiner Preismodelle ist es wichtig, die Ange
     - Wiederkehrende **Jahresgebühr**: Pauschale Jahresgebühr, die jährlich im Voraus bezahlt wird, wenn der Benutzer den Tarif erwirbt
 - Zusätzlich zu den wiederkehrenden Gebühren kann der Pauschaltarif auch optionale, benutzerdefinierte Dimensionen enthalten, mit denen dem Kunden die zusätzliche, nicht in der Pauschale enthaltene Nutzung berechnet wird.  Jede Dimension stellt eine abrechenbare Einheit dar, die Ihr Dienst über die [API für den Messungsdienst für den kommerziellen Marketplace](../marketplace-metering-service-apis.md) an Microsoft übermittelt.
 
+> [!IMPORTANT]
+> Sie müssen die Nutzung in Ihrem Code nachverfolgen und nur für die Nutzung, die über der Grundgebühr liegt, Nutzungsereignisse an Microsoft senden.
+
 ## <a name="sample-offer"></a>Beispielangebot
 
-In diesem Beispiel ist Contoso ein Herausgeber mit einem SaaS-Dienst namens Contoso Notification Services (CNS). Mit CNS können Kunden Benachrichtigungen entweder per E-Mail oder per SMS senden. Contoso ist in Partner Center als Herausgeber für das kommerzielle Marketplace-Programm registriert und kann Angebote für Azure-Kunden veröffentlichen.  CNS sind zwei Pläne zugeordnet:
+In diesem Beispiel ist Contoso ein Herausgeber mit einem SaaS-Dienst namens Contoso Notification Services (CNS). Mit CNS können Kunden Benachrichtigungen entweder per E-Mail oder per SMS senden. Contoso ist in Partner Center als Herausgeber für das kommerzielle Marketplace-Programm registriert und kann Angebote für Azure-Kunden veröffentlichen.  Es gibt drei Pläne, die mit dem CNS verbunden sind (siehe unten):
 
 - Basic-Tarif
     - Bis 10.000 E-Mails und 1.000 SMS für 0 USD pro Monat (monatliche Pauschalgebühr)
@@ -71,14 +74,17 @@ Je nach ausgewähltem Tarif kann ein Azure-Kunde, der ein Abonnement für ein CN
 
 ## <a name="billing-dimensions"></a>Abrechnungsdimensionen
 
-Jede Abrechnungsdimension definiert eine benutzerdefinierte Einheit, mit der ein unabhängiger Softwarehersteller Nutzungsereignisse senden kann.  Mithilfe von Abrechnungsdimensionen werden Kunden außerdem darüber informiert, wie ihre Softwarenutzung abgerechnet wird.  Sie sind wie folgt definiert:
+Jede Abrechnungsdimension definiert eine benutzerdefinierte Einheit, mit der ein unabhängiger Softwarehersteller Nutzungsereignisse senden kann.  Abrechnungsdimensionen werden auch verwendet, um dem Kunden mitzuteilen, wie er für die Nutzung der Software abgerechnet wird. Sie sind wie folgt definiert:
 
 - **Kennung:** Die unveränderliche Dimensionskennung, auf die bei der Ausgabe von Nutzungsereignissen verwiesen wird
 - **Anzeigename:** Der Anzeigename, der der Dimension zugeordnet ist, z. B. „Gesendete SMS“
 - **Maßeinheit:** Die Beschreibung der Abrechnungseinheit, z. B. „pro SMS“ oder „pro 100 E-Mails“
-- **Preis pro Einheit in USD:** Der Preis für eine Einheit der Dimension.  Kann 0 (Null) entsprechen. 
+- **Preis pro Einheit in USD:** Der Preis für eine Einheit der Dimension.  Kann 0 (Null) entsprechen.
 - **Grundsätzlich enthaltene monatliche Menge:** Die Menge, die pro Monat für diese Dimension im Lieferumfang enthalten ist, wenn Kunden die wiederkehrende Monatsgebühr bezahlen. Muss eine ganze Zahl sein. Der Wert kann 0 oder höher (unbegrenzt) sein.
 - **Grundsätzlich enthaltene jährliche Menge:** Die Menge, die pro Jahr für diese Dimension im Lieferumfang enthalten ist, wenn Kunden die wiederkehrende Jahresgebühr bezahlen. Muss eine ganze Zahl sein. Der Wert kann 0 oder höher (unbegrenzt) sein.
+
+> [!IMPORTANT]
+> Sie müssen die Nutzung in Ihrem Code nachverfolgen und nur für die Nutzung, die über der Grundgebühr liegt, Nutzungsereignisse an Microsoft senden.
 
 Abrechnungsdimensionen werden in allen Plänen für ein Angebot verwendet.  Manche Attribute gelten für die Dimension über alle Pläne hinweg, andere Attribute sind dagegen planspezifisch.
 
@@ -92,14 +98,14 @@ Die anderen Attribute einer Dimension sind planspezifisch und können von Plan z
 
 - Preis pro Einheit in USD
 - Grundsätzlich enthaltene monatliche Menge  
-- Grundsätzlich enthaltene jährliche Menge  
+- Grundsätzlich enthaltene jährliche Menge
 
 Dimensionen verfügen auch über zwei spezielle Konzepte: „aktiviert“ und „unbegrenzt“:
 
 - **Aktiviert** gibt an, dass dieser Plan Teil dieser Dimension ist.  Wenn Sie einen neuen Tarif erstellen, der keine auf dieser Dimension basierenden Nutzungsereignisse sendet, sollten Sie diese Option deaktiviert lassen.  Außerdem werden alle neuen Dimensionen, die nach der ersten Veröffentlichung eines Plans hinzugefügt wurden, für den bereits veröffentlichten Plan als „nicht aktiviert“ angezeigt.  Eine deaktivierte Dimension wird in keiner Dimensionenliste für einen Plan angezeigt, der für Kunden sichtbar ist.
 - **Unbegrenzt**, dargestellt durch das Unendlichkeitssymbol „∞“, gibt an, dass diese Dimension in diesem Tarif zwar enthalten ist, die Nutzung aber nicht anhand dieser Dimension gemessen wird.  Dadurch können Sie Ihren Kunden vermitteln, dass die durch diese Dimension dargestellte Funktion im Plan enthalten und die Nutzung nicht begrenzt ist.  Eine Dimension mit unbegrenzter Nutzung wird in Dimensionenlisten für einen Plan, der für Kunden sichtbar ist, mit dem Hinweis angezeigt, dass dadurch für diesen Plan keine Kosten entstehen.
 
->[!Note] 
+>[!Note]
 >Folgende Szenarien werden explizit unterstützt: <br> - Sie können einem neuen Plan eine neue Dimension hinzufügen.  Die neue Dimension wird nicht für bereits veröffentlichte Pläne aktiviert. <br> - Sie können einen **pauschalen** Plan ohne Dimensionen veröffentlichen und anschließend einen neuen Plan hinzufügen und eine neue Dimension für diesen Plan konfigurieren. Die neue Dimension wird nicht für bereits veröffentlichte Pläne aktiviert.
 
 ### <a name="setting-dimension-price-per-unit-per-supported-market"></a>Festlegen des Dimensionspreises pro Einheit und unterstütztem Markt
@@ -110,7 +116,7 @@ Ebenso wie Pauschalgebühren können auch die Preise von Abrechnungsdimensionen 
 1. Exportieren Sie diese Daten in eine Datei.
 1. Fügen Sie die korrekten Preise pro Land oder Region ein, und importieren Sie die Datei in Partner Center.
 
-Die Benutzeroberfläche des Messungsdiensts wird aktualisiert und zeigt nun an, dass die Preise der Dimension nur noch in der Datei angezeigt werden können.
+Die Benutzeroberfläche des Messgeräts ändert sich so, dass die Preise der Dimension nur in der Datei zu sehen sind.
 
 [![Dimensionen des Messungsdiensts für den kommerziellen Marketplace](media/metering-service-dimensions.png "Für vergrößerte Ansicht klicken")](media/metering-service-dimensions.png)
 
@@ -126,7 +132,7 @@ Die getaktete Abrechnung mit dem Messungsdienst für den kommerziellen Marketpla
 
 ### <a name="locking-behavior"></a>Sperrverhalten
 
-Da eine mit dem Messungsdienst für den kommerziellen Marketplace verwendete Dimension bestimmt, wie ein Kunde für den Dienst bezahlt, können die Details einer Dimension nach der Veröffentlichung nicht mehr bearbeitet werden.  Daher ist es wichtig, dass Sie Ihre Dimensionen vor der Veröffentlichung vollständig für einen Plan definiert wurden.
+Da eine Dimension, die mit dem kommerziellen Marktplatz-Metering-Service verwendet wird, eine Vorstellung davon vermittelt, wie ein Kunde für den Service bezahlen wird, sind alle Details für eine Dimension nicht mehr editierbar, nachdem Sie sie veröffentlicht haben.  Daher ist es wichtig, dass Sie Ihre Dimensionen vor der Veröffentlichung vollständig für einen Plan definiert wurden.
 
 Sobald ein Angebot mit einer Dimension veröffentlicht wurde, können die Details der Angebotsebene für diese Dimension nicht mehr geändert werden:
 
@@ -157,4 +163,4 @@ Um die Supportoptionen für Herausgeber zu verstehen und ein Supportticket für 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Marketplace-Messungsdienst-APIs](../marketplace-metering-service-apis.md)
+- [APIs für getaktete Abrechnung im Marketplace](../marketplace-metering-service-apis.md)

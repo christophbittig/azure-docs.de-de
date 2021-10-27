@@ -7,12 +7,12 @@ ms.date: 04/27/2021
 ms.author: helohr
 ms.reviewer: denisgun
 manager: femila
-ms.openlocfilehash: c8df5cbcc241877e5637abd89804071b4dcbf938
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: d90f6106d94777c58418a209097d84fe69458d06
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111753087"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130177572"
 ---
 # <a name="proxy-server-guidelines-for-azure-virtual-desktop"></a>Proxyserverrichtlinien für Azure Virtual Desktop
 
@@ -36,9 +36,9 @@ Wenn die Netzwerk- und Sicherheitsrichtlinien Ihrer Organisation Proxyserver fü
 
 - Azure-Diensttags in Azure Firewall
 - Proxyserverumgehung unter Verwendung von PAC-Dateien (Proxy Auto Configuration)
-- Umgehungsliste in der lokalen Proxykonfiguration 
-- Verwendung von Proxyservern für die benutzerspezifische Konfiguration 
-- Verwendung von RDP Shortpath für die RDP-Verbindung unter Beibehaltung des Dienstdatenverkehrs über den Proxy 
+- Umgehungsliste in der lokalen Proxykonfiguration
+- Verwendung von Proxyservern für die benutzerspezifische Konfiguration
+- Verwenden von RDP Shortpath für die RDP-Verbindung unter Beibehaltung des Dienstdatenverkehrs über den Proxy
 
 ## <a name="recommendations-for-using-proxy-servers"></a>Empfehlungen zur Verwendung von Proxyservern
 
@@ -48,9 +48,9 @@ Einige Organisationen setzen voraus, dass der gesamte Benutzerdatenverkehr zur N
 
 Bei Verwendung eines Proxyservers wird mit diesem die gesamte Kommunikation in der Azure Virtual Desktop-Infrastruktur verarbeitet und die DNS-Auflösung und das Anycast-Routing in der nächstgelegenen Azure Front Door-Instanz ausgeführt. Wenn die Proxyserver weit entfernt oder über eine geografische Azure-Region verteilt sind, ist die geografische Auflösung weniger genau. Diese ungenaue geografische Auflösung führt dazu, dass Verbindungen an einen weiter entfernten Azure Virtual Desktop-Cluster weitergeleitet werden. Dies lässt sich vermeiden, indem Sie nur Proxyserver verwenden, die sich geografisch in der Nähe des Azure Virtual Desktop-Clusters befinden.
 
-### <a name="use-rdp-shortpath-for-desktop-connectivity"></a>Verwenden von RDP Shortpath für die Desktop-Konnektivität
+### <a name="use-rdp-shortpath-for-managed-networks-for-desktop-connectivity"></a>Verwenden von RDP Shortpath für verwaltete Netzwerke für Desktopkonnektivität
 
-Wenn Sie RDP Shortpath aktivieren, werden RDP-Daten nach Möglichkeit durch Umgehen des Proxyservers weitergeleitet. Das Umgehen des Proxyservers ermöglicht ein optimales Routing durch Verwendung des UDP-Transportprotokolls. Sonstiger Azure Virtual Desktop-Datenverkehr, z. B. Broker, Orchestrierung und Diagnose, erfolgt weiterhin über den Proxyserver. 
+Wenn Sie RDP Shortpath für verwaltete Netzwerke aktivieren, werden RDP-Daten nach Möglichkeit durch Umgehen des Proxyservers weitergeleitet. Das Umgehen des Proxyservers ermöglicht ein optimales Routing durch Verwendung des UDP-Transportprotokolls. Sonstiger Azure Virtual Desktop-Datenverkehr, z. B. Broker, Orchestrierung und Diagnose, erfolgt weiterhin über den Proxyserver.
 
 ### <a name="dont-use-ssl-termination-on-the-proxy-server"></a>Deaktivieren der SSL-Terminierung auf dem Proxyserver
 
@@ -115,7 +115,7 @@ In der folgenden Tabelle sind die Azure Virtual Desktop-Clients aufgeführt, die
 | macOS | Ja |
 | Windows Store | Ja |
 
-Weitere Informationen zur Proxyunterstützung auf Linux-basierten Thin Clients finden Sie unter [Thin Client-Unterstützung](linux-overview.md).
+Weitere Informationen zur Proxyunterstützung auf Linux-basierten Thin Clients finden Sie unter [Thin Client-Unterstützung](./user-documentation/linux-overview.md).
 
 ## <a name="support-limitations"></a>Einschränkungen bei der Unterstützung
 

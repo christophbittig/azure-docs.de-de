@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/23/2021
 ms.author: justinha
-ms.openlocfilehash: ce3587d0e70c2dec04e60bed5a23f16bd6c7688b
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 3cbc6d9b0f51b939a03378c45845c50f91c4549f
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129233029"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129991981"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Tutorial: Konfigurieren von Secure LDAP (LDAPS) für eine verwaltete Azure AD Domain Services-Domäne
 
@@ -290,6 +290,9 @@ Gehen Sie wie folgt vor, um die in Ihrer verwalteten Domäne gespeicherten Objek
     ![Suchen nach Objekten in Ihrer verwalteten Domäne mit „LDP.exe“](./media/tutorial-configure-ldaps/ldp-query.png)
 
 Wenn Sie einen bestimmten Container direkt abfragen möchten, können Sie im Menü **Ansicht > Struktur** einen Wert vom Typ **BaseDN** angeben (z. B. *OU=AADDC Users,DC=AADDSCONTOSO,DC=COM* oder *OU=AADDC Computers,DC=AADDSCONTOSO,DC=COM*). Weitere Informationen zum Formatieren und Erstellen von Abfragen finden Sie unter [Grundlagen zu LDAP-Abfragen][ldap-query-basics].
+
+> [!NOTE]
+> Stellen Sie bei Verwendung eines selbstsignierten Zertifikats sicher, dass dieses Zertifikat den vertrauenswürdigen Stammzertifizierungsstellen hinzugefügt wurde, damit LDAPS mit LDP.exe funktioniert.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

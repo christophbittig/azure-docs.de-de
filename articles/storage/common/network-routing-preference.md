@@ -11,12 +11,12 @@ ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
 ms.custom: references_regions
-ms.openlocfilehash: f3a665df26e504eee1c9bea77f8bf6bf5631193f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 0a80fe8bc2cf2cfa86b5b8b1a9c78684d718e68f
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128591024"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130038363"
 ---
 # <a name="network-routing-preference-for-azure-storage"></a>Netzwerkroutingpräferenz für Azure Storage
 
@@ -25,7 +25,7 @@ Sie können die [Netzwerkroutingpräferenz](../../virtual-network/routing-prefer
 Das Konfigurieren von Routingpräferenzen bietet Ihnen die Flexibilität, Ihren Datenverkehr entweder für eine erstklassige Netzwerkleistung oder hinsichtlich der Kosten zu optimieren. Wenn Sie eine Routingpräferenz konfigurieren, geben Sie an, wie der Datenverkehr für Ihr Speicherkonto standardmäßig zum öffentlichen Endpunkt geleitet wird. Sie können auch routenspezifische Endpunkte für Ihr Speicherkonto veröffentlichen.
 
 > [!NOTE]
-> Dieses Feature wird nicht in Speicherkonten unterstützt, die so konfiguriert sind, dass sie die Premium-Leistungsstufe oder zonenredundanten Speicher (ZRS) verwenden.
+> Dieses Feature wird nicht in Premium-Leistungs-Speicherkonten oder Konten unterstützt, die so konfiguriert sind, dass sie die zonenredundanten Speicher (ZRS) verwenden.
 
 ## <a name="microsoft-global-network-versus-internet-routing"></a>Globales Microsoft-Netzwerk und Internetrouting
 

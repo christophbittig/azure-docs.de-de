@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 10/11/2021
 ms.author: banders
-ms.openlocfilehash: ae2d16b6164f201bae8f34c62876f66b45862cfa
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: ae265fd760a20c1e79032f2a7d0d97a459dd5c69
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129855344"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129999452"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Grundlegendes zu den Bedingungen in der Datei für die Azure-Nutzung und -Gebühren
 
@@ -86,7 +86,7 @@ ProductId<sup>1</sup> | MCA | Der eindeutige Bezeichner für das Produkt.
 ProductOrderId | All | Der eindeutige Bezeichner für die Produktbestellung.
 ProductOrderName | All | Der eindeutige Name für die Produktbestellung.
 PublisherName | All | Herausgeber für Marketplace-Dienste.
-PublisherType | All | Typ des Herausgebers (Werte: **Azure**, **AWS**, **Marketplace**).
+PublisherType | All | Typ des Herausgebers. Die Kosten werden nach Microsoft/Azure-, Marketplace- und AWS-Kosten unterteilt.  Werte sind `Microsoft` für MCA-Konten und `Azure` für EA-Konten und Konten mit nutzungsbasierter Bezahlung.|
 Menge | All | Die Anzahl der erworbenen oder genutzten Einheiten.
 ReservationId | EA, MCA | Der eindeutige Bezeichner für die erworbene Reservierungsinstanz.
 ReservationName | EA, MCA | Der Name der erworbenen Reservierungsinstanz.
@@ -112,7 +112,7 @@ _<sup>**1**</sup> Felder zum Erstellen einer eindeutigen ID für einen einzelnen
 Beachten Sie, dass einige Felder bei den verschiedenen Kontotypen in Groß-/Kleinschreibung und Abstand abweichen können.
 Ältere Versionen von Pay-as-you-go-Nutzungsdateien verfügen über separate Abschnitte für Abrechnung und tägliche Nutzung.
 
-Beachten Sie für Kunden mit einer MCA-Vereinbarung, dass es Änderungen an den Werten für das Feld `PublisherType` gibt. Weitere Informationen finden Sie unter [Änderungen an Werten für den Herausgebertyp](../costs/group-filter.md#changes-to-publisher-type-values).
+Beachten Sie für Kunden mit einer MCA-Vereinbarung, dass es Änderungen an den Werten für das Feld `PublisherType` gibt. Weitere Informationen finden Sie unter [Änderungen an Werten für den Herausgebertyp](../costs/group-filter.md#publisher-type-value-changes).
 
 ### <a name="list-of-terms-from-older-apis"></a>Liste der Begriffe aus älteren APIs
 In der folgenden Tabelle werden die in älteren APIs verwendeten Begriffe den neuen Begriffen zugeordnet. Diese Beschreibungen finden Sie in der obigen Tabelle.

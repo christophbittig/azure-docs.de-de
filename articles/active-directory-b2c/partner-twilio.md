@@ -3,20 +3,20 @@ title: Twilio Verify App mit Azure Active Directory B2C
 titleSuffix: Azure AD B2C
 description: Es wird beschrieben, wie Sie eine Beispiel-App für Onlinezahlungen mit der Twilio Verify API in Azure AD B2C integrieren. Erfüllen Sie die Anforderungen für PSD2-Transaktionen (Payment Services Directive 2) durch dynamisches Verknüpfen und eine sichere Kundenauthentifizierung.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 09/20/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 6937318e3d2e8d1a42279242a0d8b476cdab892f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 10fc0f015d67d6b0ab8b728156e161c91d1ffc8c
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128606682"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130035826"
 ---
 # <a name="integrating-twilio-verify-app-with-azure-active-directory-b2c"></a>Integrieren der Twilio Verify App mit Azure Active Directory B2C
 
@@ -48,7 +48,7 @@ Die Twilio-Lösung besteht aus den folgenden Komponenten:
 | 2     | Der Benutzer initiiert eine Transaktion mit hohem Risiko, z. B. eine Überweisung von 50,00 US-Dollar. Das aktuelle Zugriffstoken des Benutzers wird in Bezug auf die PolicyId ausgewertet, um zu ermitteln, ob sich der Benutzer bereits mit einer benutzerdefinierten Step-up-Richtlinie authentifiziert hat.     |
 | 3     | Die Anwendung zeichnet den Transaktionswert und den Empfänger (50,00 USD und John Doe) auf und generiert ein signiertes Token. Das Token wird als `id_token_hint` bezeichnet und enthält den folgenden Anspruch: `amount:$500, payee:john doe`. `id_token_hint` wird zusammen mit der Anforderung an die benutzerdefinierte Azure AD B2C-Richtlinie gesendet, die in Twilio integriert ist.     |
 | 4     | Azure AD B2C verifiziert die Signatur von „id_token_hint“, indem der OpenID Connect-Endpunkt vom Typ `/.well-known` für die Anwendung überprüft wird. Nach der Überprüfung werden die Ansprüche aus diesem Token extrahiert (also `amount` und `payee`). Dem Benutzer wird eine Seite angezeigt, auf der die Mobiltelefonnummer per SMS-Nachricht überprüft wird.     |
-| 5     | Der Benutzer fordert die Überprüfung seiner Telefonnummer per SMS-Nachricht an, und Azure AD B2C sendet eine REST-API-Anforderung an den Verify API-Endpunkt von Twilio. Darüber hinaus werden die Elemente `amount` und `payee` der Transaktion im Rahmen des PSD2-Prozesses gesendet, um die Einmalkennung (One-Time-Passcode, OTP) zu generieren. Twilio sendet eine SMS-Nachricht an die registrierte Telefonnummer des Benutzers.     |
+| 5     | Der Benutzer fordert die Überprüfung seiner Telefonnummer per SMS-Nachricht an, und Azure AD B2C sendet eine REST-API-Anforderung an den Verify-API-Endpunkt von Twilio. Darüber hinaus werden die Elemente `amount` und `payee` der Transaktion im Rahmen des PSD2-Prozesses gesendet, um die Einmalkennung (One-Time-Passcode, OTP) zu generieren. Twilio sendet eine SMS-Nachricht an die registrierte Telefonnummer des Benutzers.     |
 | 6     |  Der Benutzer gibt die Einmalkennung (OTP) ein, die er per SMS-Nachricht erhalten hat, und sendet sie an Azure AD B2C. Azure AD B2C sendet eine API-Anforderung mit dieser Einmalkennung an die Verify API von Twilio, um ihre Richtigkeit zu überprüfen. Abschließend wird ein Token für die Anwendung ausgestellt, das über eine neue PolicyId verfügt. Hiermit wird für den Benutzer angegeben, dass er den Step-up-Vorgang für die Authentifizierung durchgeführt hat.    |
 |      |      |
 

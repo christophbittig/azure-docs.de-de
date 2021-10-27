@@ -1,0 +1,49 @@
+### YamlMime:Landing
+title: Datadog-Integration in Azure
+summary: Bietet Überwachung und Analyse für umfangreiche Anwendungen.
+metadata:
+  title: Dokumentation zu Datadog mit Azure
+  description: Datadog mit Azure bietet Überwachung und Analyse für umfangreiche Anwendungen.
+  ms.service: partner-services
+  ms.topic: landing-page
+  ms.collection: na
+  author: tfitzmac
+  ms.author: tomfitz
+  ms.date: 10/22/2021
+  ms.openlocfilehash: 721d810132a78c2de2f6fef5e880f9a8b8e82748
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130269106"
+landingContent:
+- title: Informationen zu Datadog in Azure
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Datadog?
+      url: overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Verwalten der Datadog-Ressource
+      url: manage.md
+- title: Datadog-Ressource erstellen
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Erste Schritte mit Datadog durch Erstellen einer neuen Instanz
+      url: create.md
+    - text: Link zu vorhandener Datadog-Organisation
+      url: link-to-existing-organization.md
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurieren der Umgebung vor der Datadog-Bereitstellung
+      url: prerequisites.md
+    - text: Beheben allgemeiner Fehler bei Datadog in Azure
+      url: troubleshoot.md
+- title: Erkunden des Referenzinhalts
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Azure CLI
+      url: /cli/azure/datadog

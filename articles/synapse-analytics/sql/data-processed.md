@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 11/05/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 1e87198d66e94204b0465919e7a94e0d04f9c885
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: b1439eb4b2f1f014608c2fe411176d14177c4487
+ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108128845"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130137302"
 ---
 # <a name="cost-management-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Kostenverwaltung für serverlose SQL-Pools in Azure Synapse Analytics
 
@@ -139,6 +139,14 @@ Um anzuzeigen, wie viele Daten während des aktuellen Tags, der Woche oder des M
 ```sql
 SELECT * FROM sys.dm_external_data_processed
 ```
+
+## <a name="exceeding-the-limits-defined-in-the-cost-control"></a>Überschreiten der in der Kostenkontrolle definierten Grenzwerte
+
+Wenn während der Abfrageausführung ein Grenzwert überschritten wird, wird die Abfrage nicht beendet.  
+
+Bei Überschreiten eines Grenzwerts wird die neue Abfrage mit einer Fehlermeldung abgelehnt, die Details zum Zeitraum, zum definierten Grenzwert für diesen Zeitraum und zu den für diesen Zeitraum verarbeiteten Daten enthält. Wenn z. B. eine neue Abfrage ausgeführt wird, bei der das wöchentliche Limit auf 1 TB festgelegt und überschritten wurde, lautet die Fehlermeldung wie folgt: 
+
+```Query is rejected because SQL Serverless budget limit for a period is exceeded. (Period = Weekly: Limit = 1 TB, Data processed = 1 TB))```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

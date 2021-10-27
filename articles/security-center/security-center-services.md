@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 08/18/2021
 ms.custom: references_regions
 ms.author: memildin
-ms.openlocfilehash: 21c453da9a2e84e4e936b92f04748854cbd928d3
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 4bb46ed8146067c44f2d4a602f3c8b1831340d7a
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129710744"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130003532"
 ---
 # <a name="feature-coverage-for-machines"></a>Funktionsabdeckung für Computer
 
@@ -93,8 +93,13 @@ Informationen darüber, wann Empfehlungen für die einzelnen Schutzfunktionen ge
 | Symantec v12.1.1100+                                      | Windows Server (alle)                                   | Nein                           | Ja                       |
 | McAfee v10+                                               | Windows Server (alle)                                   | Nein                           | Ja                       |
 | McAfee v10+                                               | Linux (Vorschauversion)                                        | Nein                           | Ja                       |
+| Microsoft Defender für Endpoint für Linux<sup>[1](#footnote1)</sup>  | Linux (Vorschauversion)                                        | Per Erweiterung                | Nein                        |  
 | Sophos V9+                                                | Linux (Vorschauversion)                                        | Nein                           | Ja                       |
 |                                                           |                                                        |                              |                           |
+
+<sup><a name="footnote1" /></a>1</sup> Microsoft Defender für Endpoint auf dem Linux-Computer reicht nicht aus: Der Computer wird nur als fehlerfrei angezeigt, wenn die AV-Komponente aktiv ist.
+Standardmäßig ist die AV-Komponente **deaktiviert**, um Konflikte mit anderer AV-Software zu vermeiden.
+
 
 
 
@@ -147,7 +152,7 @@ Informationen darüber, wann Empfehlungen für die einzelnen Schutzfunktionen ge
 
 <sup><a name="footnote3" /></a>3</sup> Erfordert Azure Defender für Containerregistrierungen
 
-<sup><a name="footnote4" /></a>4</sup> Teilweise allgemeine Verfügbarkeit: Die Unterstützung für Cluster mit Azure Arc-Unterstützung befindet sich in der öffentlichen Vorschauphase und ist in Azure Government nicht verfügbar.
+<sup><a name="footnote4" /></a>4</sup> Teilweise allgemeine Verfügbarkeit: Die Unterstützung für Azure Arc-fähige Cluster befindet sich in der öffentlichen Vorschauphase und ist in Azure Government nicht verfügbar.
 
 <sup><a name="footnote5" /></a>5</sup> Erfordert Azure Defender für Kubernetes
 

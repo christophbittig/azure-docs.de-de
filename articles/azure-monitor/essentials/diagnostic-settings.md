@@ -6,12 +6,12 @@ ms.author: bwren
 services: azure-monitor
 ms.topic: conceptual
 ms.date: 06/09/2021
-ms.openlocfilehash: 0a161c2341137abc047d81b408058ca56e192526
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 50eb92441c248884930e556551a92acb9e43661b
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122444833"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130176404"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Erstellen von Diagnoseeinstellungen zum Senden von Plattformprotokollen und Metriken an verschiedene Ziele
 [Plattformprotokolle](./platform-logs-overview.md) in Azure, z. B. das Azure-Aktivitätsprotokoll und Ressourcenprotokolle, liefern ausführliche Diagnose- und Überwachungsinformationen für Azure-Ressourcen und die Azure-Plattform, von der sie abhängen. [Plattformmetriken](./data-platform-metrics.md) werden standardmäßig gesammelt und in der Regel in der Azure Monitor-Metrikdatenbank gespeichert. Dieser Artikel enthält Details zum Erstellen und Konfigurieren von Diagnoseeinstellungen, um Plattformmetriken und -protokolle an verschiedene Ziele zu senden.
@@ -196,19 +196,89 @@ Informationen zum Erstellen oder Aktualisieren von Diagnoseeinstellungen mithilf
 ## <a name="create-using-rest-api"></a>Erstellen mithilfe der REST-API
 Informationen zum Erstellen oder Aktualisieren von Diagnoseeinstellungen mithilfe der [Azure Monitor-REST-API](/rest/api/monitor/) finden Sie unter [Diagnoseeinstellungen](/rest/api/monitor/diagnosticsettings).
 
-## <a name="create-using-azure-policy"></a>Erstellen mithilfe von Azure Policy
-Da für jede Azure-Ressource eine Diagnoseeinstellung erstellt werden muss, können Sie mit Azure Policy beim Erstellen der einzelnen Ressourcen automatisch eine Diagnoseeinstellung erstellen. Weitere Informationen finden Sie unter [Bedarfsorientiertes Bereitstellen von Azure Monitor mithilfe von Azure Policy](../deploy-scale.md).
+## <a name="create-at-scale-using-azure-policy"></a>Erstellen im großen Stil mit Azure Policy
+Da für jede Azure-Ressource eine Diagnoseeinstellung erstellt werden muss, können Sie mit Azure Policy beim Erstellen der einzelnen Ressourcen automatisch eine Diagnoseeinstellung erstellen. Jeder Azure-Ressourcentyp verfügt über einen eindeutigen Satz von Kategorien, die in der Diagnoseeinstellung aufgelistet werden müssen. Daher ist für jeden Ressourcentyp eine separate Richtliniendefinition erforderlich. Einige Ressourcentypen verfügen über integrierte Richtliniendefinitionen, die Sie ohne Änderungen zuweisen können. Bei anderen Ressourcentypen müssen Sie eine benutzerdefinierte Definition erstellen.
 
-## <a name="error-metric-category-is-not-supported"></a>Fehler: Nicht unterstützte Metrikkategorie
-Beim Bereitstellen einer Diagnoseeinstellung können Sie die folgende Fehlermeldung erhalten:
+### <a name="built-in-policy-definitions-for-azure-monitor"></a>Integrierte Richtliniendefinitionen für Azure Monitor
+Es gibt zwei integrierte Richtliniendefinitionen für jeden Ressourcentyp, eine zum Senden an den Log Analytics-Arbeitsbereich und eine andere zum Senden an einen Event Hub. Wenn Sie nur einen Speicherort benötigen, weisen Sie diese Richtlinie für den Ressourcentyp zu. Wenn Sie beide benötigen, weisen Sie beiden Richtliniendefinitionen für die Ressource zu.
 
-   „Die Metrikkategorie '*xxxx*' wird nicht unterstützt.“
+Die folgende Abbildung zeigt z. B. die integrierten Richtliniendefinitionen für die Diagnoseeinstellung für Azure Data Lake Analytics.
 
-Beispiel: 
+![Teilscreenshot der Seite „Definitionen“ von Azure Policy mit zwei integrierten Richtliniendefinitionen für die Diagnoseeinstellung für Data Lake Analytics](media/diagnostic-settings/builtin-diagnostic-settings.png)
 
-   „Die Metrikkategorie 'ActionsFailed' wird nicht unterstützt.“
+### <a name="custom-policy-definitions"></a>Benutzerdefinierte Richtliniendefinitionen
+Für Ressourcentypen, die über keine integrierte Richtlinie verfügen, müssen Sie eine benutzerdefinierte Richtliniendefinition erstellen. Sie können hierzu manuell im Azure-Portal eine vorhandene integrierte Richtlinie kopieren und dann für Ihren Ressourcentyp ändern. Es ist jedoch effizienter, die Richtlinie programmgesteuert mithilfe eines Skripts im PowerShell-Katalog zu erstellen.
 
-Dies kann in Fällen auftreten, in denen Ihre Bereitstellung zuvor erfolgreich war. 
+Das Skript [Create-AzDiagPolicy](https://www.powershellgallery.com/packages/Create-AzDiagPolicy) erstellt Richtliniendateien für einen bestimmten Ressourcentyp, die Sie mithilfe von PowerShell oder der Azure CLI installieren können. Erstellen Sie mit folgendem Verfahren eine benutzerdefinierte Richtliniendefinition für Diagnoseeinstellungen:
+
+1. Vergewissern Sie sich, dass [Azure PowerShell](/powershell/azure/install-az-ps) installiert ist.
+2. Installieren Sie das Skript mit dem folgenden Befehl:
+  
+    ```azurepowershell
+    Install-Script -Name Create-AzDiagPolicy
+    ```
+
+3. Führen Sie das Skript mit den Parametern aus, die angeben, wohin die Protokolle gesendet werden sollen. Sie werden aufgefordert, ein Abonnement und einen Ressourcentyp anzugeben. 
+
+   Wenn Sie z. B. eine Richtliniendefinition erstellen möchten, die Protkolle an einen Log Analytics-Arbeitsbereich und einen Event Hub sendet, verwenden Sie den folgenden Befehl:
+
+   ```azurepowershell
+   Create-AzDiagPolicy.ps1 -ExportLA -ExportEH -ExportDir ".\PolicyFiles"  
+   ```
+
+   Alternativ können Sie ein Abonnement und einen Ressourcentyp im Befehl angeben. Wenn Sie z. B. eine Richtliniendefinition erstellen möchten, die an einen Log Analytics-Arbeitsbereich und einen Event Hub für Azure SQL Server-Datenbanken sendet, verwenden Sie den folgenden Befehl:
+
+   ```azurepowershell
+   Create-AzDiagPolicy.ps1 -SubscriptionID xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -ResourceType Microsoft.Sql/servers/databases  -ExportLA -ExportEH -ExportDir ".\PolicyFiles"  
+   ```
+
+5. Das Skript erstellt separate Ordner für jede Richtliniendefinition. Jeder Ordner enthält drei Dateien mit den Namen *azurepolicy.json*, *azurepolicy.rules.json* und *azurepolicy.parameters.json*. Wenn Sie die Richtlinie manuell im Azure-Portal erstellen möchten, können Sie den Inhalt von *azurepolicy.json* kopieren und einfügen, da diese Datei die gesamte Richtliniendefinition enthält. Verwenden Sie die anderen beiden Dateien mit PowerShell oder der Azure CLI, um die Richtliniendefinition über eine Befehlszeile zu erstellen.
+
+   In den folgenden Beispielen wird gezeigt, wie die Richtliniendefinition sowohl über PowerShell als auch über die Azure CLI installiert wird. Beide Beispiele enthalten Metadaten zum Angeben einer Kategorie zur **Überwachung**, um die neue Richtliniendefinition mit den integrierten Richtliniendefinitionen zu gruppieren.
+
+   ```azurepowershell
+   New-AzPolicyDefinition -name "Deploy Diagnostic Settings for SQL Server database to Log Analytics workspace" -policy .\Apply-Diag-Settings-LA-Microsoft.Sql-servers-databases\azurepolicy.rules.json -parameter .\Apply-Diag-Settings-LA-Microsoft.Sql-servers-databases\azurepolicy.parameters.json -mode All -Metadata '{"category":"Monitoring"}'
+   ```
+
+   ```azurecli
+   az policy definition create --name 'deploy-diag-setting-sql-database--workspace' --display-name 'Deploy Diagnostic Settings for SQL Server database to Log Analytics workspace'  --rules 'Apply-Diag-Settings-LA-Microsoft.Sql-servers-databases\azurepolicy.rules.json' --params 'Apply-Diag-Settings-LA-Microsoft.Sql-servers-databases\azurepolicy.parameters.json' --subscription 'AzureMonitor_Docs' --mode All
+   ```
+
+### <a name="initiative"></a>Initiative
+Anstatt für jede Richtliniendefinition eine Zuweisung zu erstellen, ist es eine gängige Strategie, eine Initiative zu erstellen, die die Richtliniendefinitionen umfasst, um Diagnoseeinstellungen für jeden Azure-Dienst zu erstellen. Erstellen Sie abhängig von der Art der Verwaltung Ihrer Umgebung eine Zuweisung zwischen der Initiative und einer Verwaltungsgruppe, einem Abonnement oder einer Ressourcengruppe. Diese Strategie bietet folgende Vorteile:
+
+- Erstellen Sie eine einzelne Zuweisung für die Initiative anstelle mehrerer Zuweisungen für jeden Ressourcentyp. Verwenden Sie dieselbe Initiative für mehrere Überwachungsgruppen, Abonnements oder Ressourcengruppen.
+- Ändern Sie die Initiative, wenn Sie einen neuen Ressourcentyp oder ein neues Ziel hinzufügen müssen. Beispielsweise können die ersten Anforderungen darin bestehen, Daten nur an einen Log Analytics-Arbeitsbereich zu senden, aber später möchten Sie einen Event Hub hinzufügen. Ändern Sie die Initiative, anstatt neue Zuweisungen zu erstellen.
+
+Ausführliche Informationen zum Erstellen einer Initiative finden Sie unter [Erstellen und Zuweisen einer Initiativdefinition](../../governance/policy/tutorials/create-and-manage.md#create-and-assign-an-initiative-definition). Beachten Sie die folgenden Empfehlungen:
+
+- Legen Sie **Kategorie** auf **Überwachung** fest, um sie mit zugehörigen integrierten und benutzerdefinierten Richtliniendefinitionen zu gruppieren.
+- Anstatt die Details für den Log Analytics-Arbeitsbereich und den Event Hub für die Richtliniendefinition in der Initiative anzugeben, verwenden Sie einen allgemeinen Initiativparameter. Mit diesem Parameter können Sie auf einfache Weise einen allgemeinen Wert für alle Richtliniendefinitionen angeben und diesen Wert bei Bedarf ändern.
+
+![Screenshot: Einstellungen für die Initiativdefinition](media/diagnostic-settings/initiative-definition.png)
+
+### <a name="assignment"></a>Zuweisung 
+Weisen Sie die Initiative abhängig vom Umfang ihrer zu überwachenden Ressourcen einer Azure-Verwaltungsgruppe, einem Abonnement oder einer Ressourcengruppe zu. Eine [Verwaltungsgruppe](../../governance/management-groups/overview.md) ist nützlich für bereichsbezogene Richtlinien, insbesondere wenn Ihre Organisation über mehrere Abonnements verfügt.
+
+![Screenshot: Einstellungen auf der Registerkarte „Grundlagen“ im Abschnitt „Initiative zuweisen“ der Diagnoseeinstellungen für den Log Analytics-Arbeitsbereich im Azure-Portal](media/diagnostic-settings/initiative-assignment.png)
+
+Mithilfe von Initiativparametern können Sie den Arbeitsbereich oder andere Details einmal für alle Richtliniendefinitionen in der Initiative angeben. 
+
+![Screenshot: Initiativenparameter auf der Registerkarte „Parameter“](media/diagnostic-settings/initiative-parameters.png)
+
+### <a name="remediation"></a>Wiederherstellung
+Die Initiative gilt für jeden virtuellen Computer, während er erstellt wird. Mit einem [Wartungstask](../../governance/policy/how-to/remediate-resources.md) werden die Richtliniendefinitionen in der Initiative für vorhandene Ressourcen bereitgestellt, sodass Sie Diagnoseeinstellungen für alle Ressourcen erstellen können, die bereits erstellt wurden. 
+
+Wenn Sie die Zuweisung mithilfe des Azure-Portals erstellen, können Sie gleichzeitig einen Wartungstask erstellen. Weitere Informationen zur Wartung finden Sie unter [Korrigieren nicht konformer Ressourcen mit Azure Policy](../../governance/policy/how-to/remediate-resources.md).
+
+![Screenshot: Korrektur eines Log Analytics-Arbeitsbereichs im Rahmen einer Initiative](media/diagnostic-settings/initiative-remediation.png)
+
+
+## <a name="troubleshooting"></a>Problembehandlung
+
+### <a name="metric-category-is-not-supported"></a>Nicht unterstützte Metrikkategorie
+
+Beim Bereitstellen einer Diagnoseeinstellung erhalten Sie eine Fehlermeldung ähnlich wie *Metrikkategorie „xxxx“ wird nicht unterstützt*. Dieser Fehler wird möglicherweise angezeigt, auch wenn ihre vorige Bereitstellung erfolgreich war. 
 
 Dieses Problem tritt auf, wenn eine Resource Manager-Vorlage, die REST-API für Diagnoseeinstellungen, die Azure CLI oder Azure PowerShell verwendet wird. Über das Azure-Portal erstellte Diagnoseeinstellungen sind nicht betroffen, da nur die unterstützten Kategorienamen angezeigt werden.
 
@@ -216,7 +286,7 @@ Das Problem wird von einer vor Kurzem erfolgten Änderung an der zugrunde liegen
 
 Wenn Sie diesen Fehler erhalten, aktualisieren Sie Ihre Bereitstellungen, sodass alle Metrikkategorienamen durch 'AllMetrics' ersetzt werden, um das Problem zu beheben. Wenn bei der Bereitstellung zuvor mehrere Kategorien hinzugefügt wurden, sollten Sie nur den 'AllMetrics'-Verweis beibehalten. Wenn das Problem weiterhin auftritt, wenden Sie sich über das Azure-Portal an den Azure-Support. 
 
-## <a name="error-setting-disappears-due-to-non-ascii-characters-in-resourceid"></a>Fehler: Einstellung wird aufgrund von Nicht-ASCII-Zeichen in resourceID nicht mehr angezeigt
+## <a name="setting-disappears-due-to-non-ascii-characters-in-resourceid"></a>Einstellung wird aufgrund von Nicht-ASCII-Zeichen in resourceID nicht mehr angezeigt
 
 Diagnoseeinstellungen unterstützen keine resourceIDs mit Nicht-ASCII-Zeichen (z. B. „Präproduktion“). Da Sie Ressourcen in Azure nicht umbenennen können, besteht Ihre einzige Möglichkeit darin, eine neue Ressource ohne die Nicht-ASCII-Zeichen zu erstellen. Wenn sich die Zeichen in einer Ressourcengruppe befinden, können Sie die darin enthaltenen Ressourcen in eine neue verschieben. Andernfalls müssen Sie die Ressource neu erstellen. 
 

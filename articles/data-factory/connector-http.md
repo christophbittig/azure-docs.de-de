@@ -9,12 +9,12 @@ ms.custom: synapse
 ms.topic: conceptual
 ms.date: 09/09/2021
 ms.author: jianleishen
-ms.openlocfilehash: c4702172923bd070ad59c4c36265e525308d82af
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 7bb163d0864290962465f18b65a73236e3ff3ecb
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124831733"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130040415"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory-or-azure-synapse-analytics"></a>Kopieren von Daten aus einem HTTP-Endpunkt mit Azure Data Factory oder Azure Synapse Analytics
 
@@ -29,7 +29,7 @@ In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data F
 Die Unterschiede zwischen diesem HTTP-Connector, dem [REST-Connector](connector-rest.md) und dem [Webtabellenconnector](connector-web-table.md) sind die folgenden:
 
 - **REST-Connector:** Dieser unterstützt insbesondere das Kopieren von Daten aus RESTful-APIs. 
-- **HTTP-Connector:** Dieser dient allgemein dazu, Daten von jedem HTTP-Endpunkt abzurufen, z. B. um Dateien herunterzuladen. Solange der REST-Connector noch nicht verfügbar ist, verwenden Sie möglicherweise den HTTP-Connector, um Daten aus RESTful-APIs zu kopieren. Dieser wird unterstützt, hat jedoch weniger Funktionen als der REST-Connector.
+- **HTTP-Connector:** Dieser dient allgemein dazu, Daten von jedem HTTP-Endpunkt abzurufen, z. B. um Dateien herunterzuladen. Solange der REST-Connector noch nicht verfügbar ist, verwenden Sie möglicherweise den HTTP-Connector, um Daten aus RESTful-APIs zu kopieren. Dieser wird unterstützt, umfasst jedoch weniger Funktionen als der REST-Connector.
 - **Webtabellenconnector:** Dieser extrahiert Tabelleninhalte aus einer HTML-Webseite.
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
@@ -88,7 +88,7 @@ In den folgenden Abschnitten finden Sie Details zu den Eigenschaften, mit denen 
 
 Folgende Eigenschaften werden für den mit HTTP verknüpften Dienst unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft muss auf **HttpServer** festgelegt werden. | Ja |
 | url | Die Basis-URL zum Webserver. | Ja |
@@ -101,7 +101,7 @@ Folgende Eigenschaften werden für den mit HTTP verknüpften Dienst unterstützt
 
 Legen Sie die **authenticationType**-Eigenschaft auf **Basic**, **Digest** oder **Windows** fest. Geben Sie zusätzlich zu den im vorherigen Abschnitt beschriebenen generischen Eigenschaften die folgenden Eigenschaften an:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | userName | Der Benutzername, der für den Zugriff auf den HTTP-Endpunkt verwendet werden soll. | Ja |
 | password | Das Kennwort für den Benutzer (der Wert **userName**). Markieren Sie dieses Feld als Typ **SecureString**, um es sicher zu speichern. Sie können auch [auf ein Geheimnis verweisen, das in Azure Key Vault](store-credentials-in-key-vault.md) gespeichert ist. | Ja |
@@ -134,7 +134,7 @@ Legen Sie die **authenticationType**-Eigenschaft auf **Basic**, **Digest** oder 
 
 Um ClientCertificate-Authentifizierung zu verwenden, legen Sie die Eigenschaft **authenticationType** auf **ClientCertificate** fest. Geben Sie zusätzlich zu den im vorherigen Abschnitt beschriebenen generischen Eigenschaften die folgenden Eigenschaften an:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | embeddedCertData | Base64-codierte Zertifikatdaten. | Geben Sie **embeddedCertData** oder **certThumbprint** an. |
 | certThumbprint | Der Fingerabdruck des Zertifikats, das im Zertifikatspeicher Ihres Computers für die selbstgehostete Integration Runtime installiert wurde. Ist nur anwendbar, wenn für die **connectVia**-Eigenschaft eine Integration Runtime vom Typ „selbstgehostet“ angegeben wird. | Geben Sie **embeddedCertData** oder **certThumbprint** an. |
@@ -228,7 +228,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Folgende Eigenschaften werden für HTTP unter den `location`-Einstellungen in formatbasierten Datasets unterstützt:
 
-| Eigenschaft    | Beschreibung                                                  | Erforderlich |
+| Eigenschaft    | BESCHREIBUNG                                                  | Erforderlich |
 | ----------- | ------------------------------------------------------------ | -------- |
 | type        | Die „type“-Eigenschaft unter `location` im Dataset muss auf **HttpServerLocation** festgelegt werden. | Ja      |
 | relativeUrl | Eine relative URL zu der Ressource, die die Daten enthält. Der HTTP-Connector kopiert Daten aus der kombinierten URL: `[URL specified in linked service][relative URL specified in dataset]`.   | Nein       |
@@ -274,7 +274,7 @@ Eine vollständige Liste mit den verfügbaren Abschnitten und Eigenschaften zum 
 
 Folgende Eigenschaften werden für HTTP unter den `storeSettings`-Einstellungen in der formatbasierten Kopierquelle unterstützt:
 
-| Eigenschaft                 | Beschreibung                                                  | Erforderlich |
+| Eigenschaft                 | BESCHREIBUNG                                                  | Erforderlich |
 | ------------------------ | ------------------------------------------------------------ | -------- |
 | type                     | Die „type“-Eigenschaft unter `storeSettings` muss auf **HttpReadSettings** festgelegt werden. | Ja      |
 | requestMethod            | Die HTTP-Methode. <br>Zulässige Werte sind **Get** (Standardwert) und **Post**. | Nein       |
@@ -335,7 +335,7 @@ Ausführliche Informationen zu den Eigenschaften finden Sie unter [Lookup-Aktivi
 
 ### <a name="legacy-dataset-model"></a>Legacy-Datasetmodell
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft des Datasets muss auf **HttpFile** festgelegt werden. | Ja |
 | relativeUrl | Eine relative URL zu der Ressource, die die Daten enthält. Wenn die Eigenschaft nicht angegeben ist, wird nur die URL verwendet, die in der Definition des verknüpften Diensts angegeben ist. | Nein |

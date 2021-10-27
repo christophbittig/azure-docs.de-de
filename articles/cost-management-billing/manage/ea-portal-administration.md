@@ -3,18 +3,18 @@ title: Azure EA-Portalverwaltung
 description: In diesem Artikel werden die häufigsten Aufgaben erläutert, die Administratoren im Azure EA-Portal durchführen.
 author: bandersmsft
 ms.author: banders
-ms.date: 09/28/2021
+ms.date: 10/13/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: sapnakeshari
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: ede22b400b597c8cc474d49f65341bb5b24ea118
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: aeb817f2d76306e2c2f3e571fb4a5bc67e98d098
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129216762"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130000307"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA-Portalverwaltung
 
@@ -122,7 +122,7 @@ Die Struktur von Konten und Abonnements wirkt sich darauf aus, wie diese verwalt
 
 So fügen Sie ein Konto hinzu:
 
-1. Wählen Sie im Azure Enterprise Portal im Navigationsbereich auf der linken Seite die Option **Verwalten** aus.
+1. Wählen Sie im Azure Enterprise Portal im Navigationsbereich auf der linken Seite die Option **Verwalten** und dann eine Registrierung aus.
 1. Klicken Sie auf die Registerkarte **Konto**. Klicken Sie auf der Seite **Konto** auf **+ Konto hinzufügen**.
 1. Wählen Sie eine Abteilung aus, oder lassen Sie sie nicht zugewiesen, und wählen Sie dann den gewünschten Authentifizierungstyp aus.
 1. Geben Sie einen Anzeigenamen ein, damit Sie das Konto in Berichten identifizieren können.
@@ -140,6 +140,19 @@ So bestätigen Sie den Kontobesitz:
 
    Der Status sollte sich von **Ausstehend** in **Start-/Enddatum** ändern. Das Start-/Enddatum ist das Datum, an dem der Benutzer sich zuerst angemeldet hat, und das Enddatum der Vereinbarung.
 1. Wenn die **Warnmeldung** angezeigt wird, muss der Kontobesitzer auf **Weiter** klicken, um das Konto bei der erstmaligen Anmeldung beim Azure Enterprise Portal zu aktivieren.
+
+## <a name="add-an-account-from-another-azure-ad-tenant"></a>Hinzufügen eines Kontos von einem anderen Azure AD-Mandanten
+
+Standardmäßig ist eine Registrierung einem bestimmten Azure AD-Mandanten zugeordnet. Nur Konten von diesem Mandanten dürfen zum Einrichten eines Azure-Registrierungskontos verwendet werden. Sie ändern das Verhalten jedoch so, dass ein Konto von einem beliebigen Azure AD-Mandanten verknüpft werden kann.
+
+Gehen Sie wie folgt vor, um ein Konto von einem beliebigen Mandanten hinzuzufügen:
+
+1.  Wählen Sie im Azure Enterprise Portal im Navigationsbereich auf der linken Seite die Option **Verwalten** aus.
+1. Wählen Sie die entsprechende Registrierung aus. Notieren Sie sich die aktuelle Einstellung für **Authentifizierungsebene**, falls Sie die Einstellung später wiederherstellen möchten.
+1.  Falls noch nicht konfiguriert, ändern Sie die Authentifizierungsebene in **Geschäfts- und Schulkonto – Mandanten-übergreifend**.
+1. Fügen Sie das Konto mithilfe der Azure AD-Anmeldeinformationen hinzu, wie im vorherigen Abschnitt beschrieben.
+1.  Setzen Sie die **Authentifizierungsebene** auf die vorherige Einstellung zurück, oder legen Sie sie auf **Geschäfts-, Schul- roder Unikonto** fest.
+1.  Melden Sie sich beim EA-Portal an, um zu überprüfen, ob Sie die entsprechenden Abonnementangebote anzeigen können, damit Sie anschließend Abonnements im Azure-Portal hinzufügen können.
 
 ## <a name="change-azure-subscription-or-account-ownership"></a>Ändern des Besitzes von Azure-Abonnements oder -Konten
 

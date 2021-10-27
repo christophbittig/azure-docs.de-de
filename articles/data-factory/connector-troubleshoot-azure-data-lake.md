@@ -6,15 +6,15 @@ author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: troubleshooting
-ms.date: 10/01/2021
+ms.date: 10/13/2021
 ms.author: jianleishen
 ms.custom: has-adal-ref, synapse
-ms.openlocfilehash: 1c36fa5295acafb96e57484cf34429091dd634e9
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: e5300e8c2008d99ec7757ed3850b8b31698ac8a9
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129390524"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130064341"
 ---
 # <a name="troubleshoot-the-azure-data-lake-storage-connectors-in-azure-data-factory-and-azure-synapse"></a>Problembehandlung für Azure Data Lake Storage-Connectors in Azure Data Factory und Azure Synapse
 
@@ -100,6 +100,16 @@ Dieser Artikel enthält Vorschläge zur Behandlung häufiger Probleme mit den Co
             }
         }
         ```
+
+### <a name="the-copy-activity-is-not-able-to-pick-files-from-azure-data-lake-storage-gen2"></a>Die Kopieraktivität kann keine Dateien aus Azure Data Lake Storage Gen2 auswählen.
+
+- **Symptome**: Die Kopieraktivität kann keine Dateien aus Azure Data Lake Storage Gen2 auswählen, wenn der Dateiname „Asset_Metadata“ ist. Das Problem tritt nur im Dataset vom Typ Parquet auf. Andere Typen von Datasets mit demselben Dateinamen funktionieren ordnungsgemäß.
+
+- **Ursache:** Aus Gründen der Abwärtskompatibilität wird `_metadata` im Dateinamen als reservierte Teilzeichenfolge behandelt. 
+
+- **Empfehlung**: Ändern Sie den Dateinamen, um die reservierte Liste für Parquet zu vermeiden: 
+    1. Der Dateiname enthält `_metadata`.
+    2. Der Dateiname beginnt mit `.` (Punkt).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

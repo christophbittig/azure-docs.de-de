@@ -58,6 +58,8 @@
           href: /office365/admin/security-and-compliance/set-up-multi-factor-authentication
         - name: Häufig gestellte Fragen
           href: multi-factor-authentication-faq.yml
+        - name: Operatorunterstützung
+          href: concept-authentication-operator-assistance.md
     - name: Kennwortschutz
       items:
         - name: Kombinierte Kennwortrichtlinienüberprüfung

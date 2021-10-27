@@ -3,7 +3,7 @@ title: Konfigurieren einer Verfügbarkeitsgruppe (Azure-Schnellstartvorlage)
 description: Verwenden Sie Azure-Schnellstartvorlagen, um den Windows-Failovercluster zu erstellen, SQL Server-VMs darin einzubinden, den Listener zu erstellen und den internen Lastenausgleich in Azure zu konfigurieren.
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: rajeshsetlem
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
@@ -12,15 +12,15 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/04/2019
-ms.author: mathoma
-ms.reviewer: jroth
+ms.author: rsetlem
+ms.reviewer: mathoma
 ms.custom: seo-lt-2019, devx-track-azurepowershell
-ms.openlocfilehash: 0f9d98eb2a4fe09728a890af59b4c54afbed3737
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 612280242c528065c8ba74ccd745cca28e7af1bd
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112291653"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130167059"
 ---
 # <a name="use-azure-quickstart-templates-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>Verwenden von Azure-Schnellstartvorlagen zum Konfigurieren von Verfügbarkeitsgruppen für SQL Server auf Azure-VMs
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -46,7 +46,8 @@ Wenn Sie die Einrichtung einer Always On-Verfügbarkeitsgruppe mithilfe von Schn
 - Ein [Azure-Abonnement](https://azure.microsoft.com/free/).
 - Eine Ressourcengruppe mit einem Domänencontroller. 
 - Mindestens ein in eine Domäne eingebundener [virtueller Computer in Azure mit der Enterprise Edition von SQL Server 2016 (oder höher)](./create-sql-vm-portal.md), der sich in der gleichen Verfügbarkeitsgruppe oder -zone befindet und [bei der Erweiterung für den SQL-IaaS-Agent registriert](sql-agent-extension-manually-register-single-vm.md) wurde.  
-- Zwei verfügbare (von keiner Entität verwendete ) IP-Adressen, eine für den internen Lastenausgleich und eine für den Verfügbarkeitsgruppenlistener im gleichen Subnetz wie die Verfügbarkeitsgruppe. Wenn ein vorhandener Lastenausgleich verwendet wird, wird nur eine verfügbare IP-Adresse benötigt.  
+- Eine interne Azure Load Balancer-Instanz und eine verfügbare (von keiner Entität verwendete) IP-Adresse für den Verfügbarkeitsgruppenlistener in demselben Subnetz wie die SQL Server-VM. 
+
 
 ## <a name="permissions"></a>Berechtigungen
 Die folgenden Berechtigungen sind erforderlich, um die Always On-Verfügbarkeitsgruppe mithilfe von Azure-Schnellstartvorlagen zu konfigurieren: 
@@ -232,5 +233,5 @@ Weitere Informationen finden Sie unter:
 * [Was ist SQL Server auf virtuellen Azure-Computern? (Windows)](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [Häufig gestellte Fragen zu SQL Server auf virtuellen Windows-Computern in Azure](frequently-asked-questions-faq.yml)
 * [Preisinformationen für virtuelle Azure-Computer mit SQL Server](pricing-guidance.md)
-* [SQL Server auf Azure-VMs – Versionshinweise](../../database/doc-changes-updates-release-notes.md)
+* [Neuerungen in SQL Server auf Azure-VMs](doc-changes-updates-release-notes-whats-new.md)
 * [Ändern des Lizenzierungsmodells für eine SQL Server-VM in Azure](licensing-model-azure-hybrid-benefit-ahb-change.md)

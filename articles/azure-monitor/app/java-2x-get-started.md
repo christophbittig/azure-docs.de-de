@@ -3,24 +3,24 @@ title: 'Schnellstart: Java-Web-App-Analyse mit Azure Application Insights'
 description: 'Überwachung der Anwendungsleistung für Java-Web-Apps mithilfe von Application Insights. '
 ms.topic: conceptual
 ms.date: 11/22/2020
-author: MS-jgol
 ms.custom: devx-track-java
-ms.author: jgol
-ms.openlocfilehash: 043287d8a66ee6954e171dc0c09b42963f522fac
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+author: mattmccleary
+ms.author: mmcc
+ms.openlocfilehash: 53dc6c6f757c65842512ab9c215161058d451962
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110103947"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130134030"
 ---
-# <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>Schnellstart: Erste Schritte mit Application Insights in einem Java-Webprojekt
+# <a name="get-started-with-application-insights-in-a-java-web-project"></a>Erste Schritte mit Application Insights in einem Java-Webprojekt
 
 > [!CAUTION]
 > Dieses Dokument gilt für Application Insights Java 2.x. Diese Version wird jedoch nicht mehr empfohlen.
 >
 > Die Dokumentation für die neueste Version finden Sie unter [Application Insights Java 3.x](./java-in-process-agent.md).
 
-In dieser Schnellstartanleitung verwenden Sie das Application Insights SDK, um Anforderungen zu instrumentieren, Abhängigkeiten zu verfolgen und Leistungsindikatoren zu sammeln, Leistungsprobleme und Ausnahmen zu diagnostizieren und Code zu schreiben, um die Aktivitäten der Benutzer Ihrer App zu verfolgen.
+In diesem Tutorial verwenden Sie das Application Insights SDK, um Anfragen zu instrumentieren, Abhängigkeiten zu verfolgen und Leistungszähler zu sammeln, Leistungsprobleme und Ausnahmen zu diagnostizieren und Code zu schreiben, um zu verfolgen, was Benutzer mit Ihrer Anwendung tun.
 
 Application Insights ist ein erweiterbarer Analysedienst für Webentwickler, der Ihnen dabei hilft, die Leistung und die Verwendung der Liveanwendung zu verstehen. Application Insights unterstützt Java-Apps, die unter Linux, Unix oder Windows ausgeführt werden.
 

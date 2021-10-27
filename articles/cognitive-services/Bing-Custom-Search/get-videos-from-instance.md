@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/10/2018
-ms.openlocfilehash: 4bd2c63bb6fc494cb93c4fc666150c0e1a5477f7
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1266349f169875d788ad65f7fc6fa7382908e31b
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128644047"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130039161"
 ---
 # <a name="get-videos-from-your-custom-view"></a>Abrufen von Videos aus der benutzerdefinierten Ansicht
 

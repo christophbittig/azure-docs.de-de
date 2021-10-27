@@ -2,13 +2,13 @@
 title: 'Bicep-Befehlszeilenschnittstelle: Befehle und Übersicht'
 description: Hier werden die Befehle beschrieben, die Sie in der Bicep-Befehlszeilenschnittstelle verwenden können. Diese Befehle umfassen das Erstellen von Azure Resource Manager-Vorlagen über Bicep.
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: dd1f292d4ce60353d2f8cecaaa83e38b26bdfaa3
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.date: 10/18/2021
+ms.openlocfilehash: ff5eea15c5e8e3b4f92cdde73d1dfd25865488f0
+ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111540812"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130137613"
 ---
 # <a name="bicep-cli-commands"></a>Befehle der Bicep-Befehlszeilenschnittstelle
 
@@ -29,7 +29,7 @@ az bicep build --file main.bicep
 Im nächsten Beispiel wird _main.json_ in einem anderen Verzeichnis gespeichert.
 
 ```azurecli
- az bicep build --file main.bicep --outdir c:\jsontemplates
+az bicep build --file main.bicep --outdir c:\jsontemplates
 ```
 
 Im nächsten Beispiel werden der Name und der Speicherort der zu erstellenden Datei angegeben.
@@ -43,6 +43,24 @@ Verwenden Sie zum Ausgeben der Datei in `stdout` Folgendes:
 ```azurecli
 az bicep build --file main.bicep --stdout
 ```
+
+Wenn Ihre Bicep-Datei ein Modul enthält, das auf eine externe Registrierung verweist, ruft der Buildbefehl automatisch [restore](#restore) auf. Der restore-Befehl ruft die Datei aus der Registrierung ab und speichert sie im lokalen Cache.
+
+Verwenden Sie die Option `--no-restore`, um „restore“ nicht automatisch aufzurufen:
+
+```azurecli
+az bicep build --no-restore <bicep-file>
+```
+
+Der Buildprozess mit der Option `--no-restore` ist nicht erfolgreich, wenn eines der externen Module noch nicht zwischengespeichert wurde:
+
+```error
+The module with reference "br:exampleregistry.azurecr.io/bicep/modules/storage:v1" has not been restored.
+```
+
+Wenn dieser Fehler auftritt, führen Sie entweder den Befehl `build` ohne Option `--no-restore` aus, oder führen Sie zuerst `bicep restore` aus.
+
+Um die Option `--no-restore` zu verwenden, benötigen Sie die Bicep-CLI-Version **0.4.1008 oder höher**.
 
 ## <a name="decompile"></a>decompile
 
@@ -98,6 +116,60 @@ Der Befehl gibt ein Array verfügbarer Versionen zurück.
   "v0.1.37-alpha",
   "v0.1.1-alpha"
 ]
+```
+
+## <a name="publish"></a>Veröffentlichen
+
+Der Befehl `publish` fügt einer Registrierung ein Modul hinzu. Die Azure-Containerregistrierung muss vorhanden sein, und das in der Registrierung veröffentlichte Konto muss über die richtigen Berechtigungen verfügen. Weitere Informationen zum Einrichten einer Modulregistrierung finden Sie unter [Verwenden einer privaten Registrierung für Bicep-Module](private-module-registry.md).
+
+Nachdem Sie die Datei in der Registrierung veröffentlicht haben, können Sie [in einem Modul darauf verweisen](modules.md#file-in-registry).
+
+Um den publish-Befehl zu verwenden, benötigen Sie die Bicep-CLI-Version **0.4.1008 oder höher**.
+
+Verwenden Sie den folgenden Befehl, um ein Modul in einer Registrierung zu veröffentlichen:
+
+```azurecli
+az bicep publish <bicep-file> --target br:<registry-name>.azurecr.io/<module-path>:<tag>
+```
+
+Zum Beispiel:
+
+```azurecli
+az bicep publish storage.bicep --target br:exampleregistry.azurecr.io/bicep/modules/storage:v1
+```
+
+Der Befehl `publish` erkennt keine Aliase, die Sie in einer Datei [bicepconfig.json](bicep-config.md) definiert haben. Geben Sie den vollständigen Modulpfad an.
+
+> [!WARNING]
+> Durch eine Veröffentlichung im selben Ziel wird das alte Modul überschrieben. Es wird empfohlen, die Versionsnummer beim Aktualisieren zu erhöhen.
+
+## <a name="restore"></a>Wiederherstellen
+
+Wenn Ihre Bicep-Datei Module verwendet, die in einer Registrierung veröffentlicht werden, ruft der Befehl `restore` Kopien aller benötigten Module aus der Registrierung ab. Diese Kopien werden in einem lokalen Cache gespeichert. Eine Bicep-Datei kann nur erstellt werden, wenn die externen Dateien im lokalen Cache verfügbar sind. In der Regel müssen Sie `restore` nicht ausführen, weil der Befehl automatisch durch `build` aufgerufen wird.
+
+Um den restore-Befehl zu verwenden, benötigen Sie die Bicep-CLI-Version **0.4.1008 oder höher**.
+
+Verwenden Sie den folgenden Befehl, um die externen Module für eine Datei manuell wiederherzustellen:
+
+```azurecli
+az bicep restore <bicep-file>
+```
+
+Die angegebene Bicep-Datei ist die Datei, die Sie bereitstellen möchten. Sie muss ein Modul enthalten, das mit einer Registrierung verknüpft ist. Sie können beispielsweise die folgende Datei wiederherstellen:
+
+```bicep
+module stgModule 'br:exampleregistry.azurecr.io/bicep/modules/storage:v1' = {
+  name: 'storageDeploy'
+  params: {
+    storagePrefix: 'examplestg1'
+  }
+}
+```
+
+Der lokale Cache befindet sich hier:
+
+```path
+%USERPROFILE%\.bicep\br\<registry-name>.azurecr.io\<module-path\<tag>
 ```
 
 ## <a name="upgrade"></a>upgrade

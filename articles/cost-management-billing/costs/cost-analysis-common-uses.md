@@ -3,17 +3,17 @@ title: Häufige Anwendungsbereiche der Kostenanalyse in Azure Cost Management
 description: In diesem Artikel wird erläutert, wie Sie in Cost Management Ergebnisse für gängige Kostenanalyseaufgaben erhalten.
 author: bandersmsft
 ms.author: banders
-ms.date: 10/07/2021
+ms.date: 10/13/2021
 ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
-ms.openlocfilehash: 0fa5eba77727676f21a7b45848171859395b00f0
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 642c9ba475690b05723601f4e6ff429e382f29bb
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129706003"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129992489"
 ---
 # <a name="common-cost-analysis-uses"></a>Häufige Anwendungsbereiche der Kostenanalyse
 
@@ -67,6 +67,18 @@ Um Azure- und AWS-Kosten zusammen anzuzeigen, verwenden Sie Verwaltungsgruppenbe
 1. Weisen Sie die *gleiche* Verwaltungsgruppe dem verknüpften Konto des Connectors zu.
 1. Navigieren Sie zu „Kostenanalyse“, und wählen Sie **Kumulierte Kosten** aus.
 1. Wählen Sie **Gruppieren nach** - **Anbieter** aus.
+
+## <a name="view-new-commerce-license-and-consumption-costs"></a>Anzeigen der Lizenz- und Verbrauchskosten im neuen E-Commerce-Verfahren
+
+Sie können Ihre Lizenz- und Verbrauchsprodukte im neuen E-Commerce-Verfahren zusammen mit Ihren Azure-Gebühren in der Kostenanalyse anzeigen. Wählen Sie die Filterliste und dann **Anbieter** aus. Anschließend wählen Sie eine Option aus der Liste aus, z. B. Microsoft 365 und Dynamics 365.
+
+:::image type="content" source="./media/cost-analysis-common-uses/filter-select-provider.png" alt-text="Screenshot der Filterauswahl für „Anbieter“" lightbox="./media/cost-analysis-common-uses/filter-select-provider.png" :::
+
+Mit dem Filter **Gebührentyp** und den Werten **Kauf** oder **Nutzung** können Sie die Anzeige auf bestimmte arbeitsplatzbasierte oder Verbrauchsgebühren beschränken.
+
+:::image type="content" source="./media/cost-analysis-common-uses/filter-charge-type.png" alt-text="Screenshot der Filterauswahl für „Gebührentyp“" lightbox="./media/cost-analysis-common-uses/filter-charge-type.png" :::
+
+Derzeit ist der Kauf von Produkten im neuen E-Commerce-Verfahren nur für Partner verfügbar.
 
 ## <a name="view-cost-breakdown-by-azure-service"></a>Anzeigen der Kostenaufschlüsselung nach Azure-Dienst
 

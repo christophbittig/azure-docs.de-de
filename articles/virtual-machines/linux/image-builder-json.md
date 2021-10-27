@@ -9,12 +9,12 @@ ms.topic: reference
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d10c64af28f6b8dacdbc28d7d29c691fe50580e2
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ec39fb3ec368d315d6d9fa4a17d2cb763e49bce6
+ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128569331"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130137587"
 ---
 # <a name="create-an-azure-image-builder-template"></a>Erstellen einer Azure Image Builder-Vorlage 
 
@@ -292,7 +292,7 @@ Folgendes ist bei Verwendung von `customize` zu beachten:
 Der Abschnitt „customize“ ist ein Array. Azure Image Builder durchläuft die Anpassungen in sequenzieller Reihenfolge. Wenn ein Fehler bei einer beliebigen Anpassung auftritt, schlägt der gesamte Buildprozess fehl. 
 
 > [!NOTE]
-> Inlinebefehle können in der Imagevorlagendefinition und vom Microsoft-Support bei der Hilfe in einem Supportfall angezeigt werden. Wenn Sie über sensible Informationen verfügen, sollten diese in Skripts in Azure Storage verschoben werden, wo der Zugriff eine Authentifizierung erfordert.
+> Inlinebefehle können in der Imagevorlagendefinition angezeigt werden. Wenn Sie über sensible Informationen wie Kennwörter, SAS-Token oder Authentifizierungstoken verfügen, sollten diese in Skripts in Azure Storage verschoben werden, weil dort für den Zugriff eine Authentifizierung erforderlich ist.
  
 ### <a name="shell-customizer"></a>Shellanpassung
 
@@ -328,7 +328,7 @@ Anpassungseigenschaften:
     * Um sha256Checksum mithilfe eines Terminals unter Mac/Linux zu generieren, führen Sie Folgendes aus: `sha256sum <fileName>`
 
 > [!NOTE]
-> Inlinebefehle werden als Teil der Imagevorlagendefinition gespeichert, Sie können diese sehen, wenn Sie die Imagedefinition ausgeben. Sie sind auch für den Microsoft-Support im Falle eines Supportfalls zu Zwecken der Problembehandlung sichtbar. Wenn Sie vertrauliche Befehle oder Werte verwenden, wird dringend empfohlen, diese in Skripts zu verschieben und eine Benutzeridentität zur Authentifizierung bei Azure Storage zu verwenden.
+> Inlinebefehle werden als Bestandteil der Imagevorlagendefinition gespeichert. Sie können sie anzeigen, indem Sie die Imagedefinition ausgeben. Wenn Sie vertrauliche Befehle oder Werte wie Kennwörter, SAS-Token oder Authentifizierungstoken verwenden, wird dringend empfohlen, diese in Skripts zu verschieben und eine Benutzeridentität zur Authentifizierung bei Azure Storage zu verwenden.
 
 #### <a name="super-user-privileges"></a>Administratorrechte
 Damit Befehle mit Administratorrechten ausgeführt werden, muss ihnen das Präfix `sudo` vorangestellt werden. Dieses Präfix können Sie in Skripts einfügen oder als Inlinebefehle verwenden, beispielsweise:
@@ -399,7 +399,7 @@ Die Shellanpassung unterstützt das Ausführen von PowerShell-Skripts und Inline
      ], 
 ```
 
-Betriebssystemunterstützung: Windows und Linux
+Betriebssystemunterstützung: Windows
 
 Anpassungseigenschaften:
 

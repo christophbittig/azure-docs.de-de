@@ -3,13 +3,13 @@ title: Wiederherstellen von Oracle Database
 description: Hier erfahren Sie, wie Sie Ihre Oracle Database in der BareMetal-Infrastruktur mithilfe von SnapCenter wiederherstellen.
 ms.topic: how-to
 ms.subservice: baremetal-oracle
-ms.date: 05/07/2021
-ms.openlocfilehash: 3d7f417b6881fd44d67011d33e4fdde87ff2a6e1
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.date: 10/12/2021
+ms.openlocfilehash: e4acd2b0c438ebee80571360b540e235ccb2c0f8
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110576364"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130001540"
 ---
 # <a name="restore-oracle-database"></a>Wiederherstellen von Oracle Database
 
@@ -20,7 +20,7 @@ Sie haben mehrere Möglichkeiten, Ihre Oracle Database in der BareMetal-Infrastr
 In der Regel stellen Sie die aktuellsten Momentaufnahmen für Daten- und Archivprotokollvolumes wieder her, da das Ziel darin besteht, die Datenbank auf den letzten bekannten Wiederherstellungspunkt wiederherzustellen. Das Wiederherstellen von Momentaufnahmen ist ein permanenter Prozess. 
 
 >[!IMPORTANT]
->Achten Sie darauf, dass die entsprechende Momentaufnahme wiederhergestellt wird. Beim Wiederherstellen aus einer Momentaufnahme werden alle anderen Momentaufnahmen und die zugehörigen Daten gelöscht. Dies umfasst noch mehr aktuelle Momentaufnahmen als die Momentaufnahmen, die Sie für die Wiederherstellung auswählen. Daher wird empfohlen, beim Wiederherstellungsprozess vorsichtig vorzugehen. Verwenden Sie lieber zuerst eine neuere Momentaufnahme, wenn die Frage aufkommt, welche Momentaufnahme wiederhergestellt werden soll.
+>Achten Sie darauf, dass die entsprechende Momentaufnahme wiederhergestellt wird. Beim Wiederherstellen aus einer Momentaufnahme werden alle anderen Momentaufnahmen und die zugehörigen Daten gelöscht. Dies umfasst noch mehr aktuelle Momentaufnahmen als die Momentaufnahmen, die Sie für die Wiederherstellung auswählen. Daher wird empfohlen, beim Wiederherstellungsprozess vorsichtig vorzugehen. Wenn Sie sich nicht sicher sind, welcher Snapshot wiederhergestellt werden soll, verwenden Sie lieber einen aktuelleren Snapshot.
 
 ## <a name="restore-database-locally-with-restored-archive-logs"></a>Lokales Wiederherstellen der Datenbank mit wiederhergestellten Archivprotokollen
 
@@ -70,7 +70,7 @@ Vor dem Wiederherstellungsversuch muss die Datenbank offline geschaltet werden, 
 
 12. Auf der Registerkarte **Summary** (Zusammenfassung): Überprüfen Sie, ob alle Details richtig sind. Wählen Sie **Fertig stellen** aus.
 
-13. Sie können den Wiederherstellungsstatus anzeigen, indem Sie den Wiederherstellungsauftrag im unteren Bildschirm **Activity** (Aktivität) auswählen. Sie können den Fortschritt verfolgen, indem Sie die grünen Pfeile auswählen, um jeden Wiederherstellungsunterabschnitt und seinen Fortschritt zu öffnen.
+13. Sie können den Wiederherstellungsstatus anzeigen, indem Sie den Wiederherstellungsauftrag im unteren Bildschirm **Activity** (Aktivität) auswählen. Verfolgen Sie den Fortschritt, indem Sie auf die grünen Pfeile klicken, um die einzelnen Wiederherstellungsunterabschnitte und deren Fortschritt anzuzeigen.
 
     :::image type="content" source="media/netapp-snapcenter-integration-oracle-baremetal/restore-job-details.png" alt-text="Screenshot: Details des Wiederherstellungsauftrags":::
 
@@ -86,9 +86,9 @@ Das Klonen der Datenbank ähnelt dem Wiederherstellungsprozess. Der Vorgang zum 
 
 ### <a name="create-a-clone"></a>Erstellen eines Klons
 
-Das Erstellen eines Klons ist ein Feature in SnapCenter, mit dem Sie eine Momentaufnahme als Point-in-Time-Verweis verwenden können, um eine ähnliche Menge von Daten zwischen dem übergeordneten Volume und dem geklonten Volume mithilfe von Zeigern zu erfassen. Das geklonte Volume ist dann lesbar/beschreibbar und wird nur durch Schreibvorgänge erweitert, während alle Lesevorgänge weiterhin auf dem übergeordneten Volume erfolgen. Mit diesem Feature können Sie ein „Duplikat“ der Daten erstellen, die für einen Host verfügbar sind, ohne die Daten zu beeinträchtigen, die auf dem übergeordneten Volume vorhanden sind. 
+SnapCenter ermöglicht es Ihnen, einen Klon zu erstellen, so dass Sie einen Snapshot als Point-in-Time-Referenz verwenden können. Sie können dann mit Hilfe von Zeigern einen ähnlichen Datensatz zwischen dem übergeordneten Volume und dem geklonten Volume erfassen. Der geklonte Datenträger ist lesend beschreibbar und wird nur durch Schreibvorgänge erweitert. Lesevorgänge finden jedoch weiterhin auf dem übergeordneten Volume statt. Mit diesem Feature können Sie ein „Duplikat“ der Daten erstellen, die für einen Host verfügbar sind, ohne die Daten zu beeinträchtigen, die auf dem übergeordneten Volume vorhanden sind. 
 
-Dieses Feature ist besonders nützlich für Notfallwiederherstellungstests, da ein temporäres Dateisystem basierend auf den gleichen Momentaufnahmen, die bei einer tatsächlichen Wiederherstellung verwendet werden, erstellt werden kann. Sie können die Daten überprüfen und sicherstellen, dass Anwendungen wie erwartet funktionieren, und dann den Notfallwiederherstellungstest herunterfahren, ohne die Notfallwiederherstellungsvolumes oder die Replikation zu beeinträchtigen.
+Diese Funktion ist besonders nützlich für Disaster-Recovery-Tests. Ein temporäres Dateisystem kann auf der Grundlage der gleichen Snapshots eingerichtet werden, die bei einer tatsächlichen Wiederherstellung verwendet werden. Sie können die Daten überprüfen und sicherstellen, dass Anwendungen wie erwartet funktionieren, und dann den Notfallwiederherstellungstest herunterfahren, ohne die Notfallwiederherstellungsvolumes oder die Replikation zu beeinträchtigen.
 
 So wird eine Datenbank geklont: 
 
@@ -109,7 +109,7 @@ So wird eine Datenbank geklont:
 
     :::image type="content" source="media/netapp-snapcenter-integration-oracle-baremetal/clone-database-select-host.png" alt-text="Screenshot: Auswählen eines Hosts für das Klonen":::
 
-5. Auf der Registerkarte **Credentials** (Anmeldeinformationen): Die Werte für Anmeldeinformationen und „Oracle Home Settings“ (Oracle Home-Einstellungen) werden vom vorhandenen Produktionsspeicherort aus gepullt. Es wird empfohlen, diese unverändert zu lassen, es sei denn, Sie wissen, dass der sekundäre Speicherort andere Werte als der primäre Speicherort hat. Wählen Sie **Weiter** aus.
+5. Auf der Registerkarte **Credentials** (Anmeldeinformationen): Die Werte für Anmeldeinformationen und „Oracle Home Settings“ (Oracle Home-Einstellungen) werden vom vorhandenen Produktionsspeicherort aus gepullt. Es wird empfohlen, diese Werte nicht zu ändern, es sei denn, Sie wissen, dass der sekundäre Standort andere Werte hat als der primäre Standort. Wählen Sie **Weiter** aus.
 
     :::image type="content" source="media/netapp-snapcenter-integration-oracle-baremetal/clone-database-credentials.png" alt-text="Screenshot: Eingabe der Datenbankanmeldeinformationen für den Klon":::
 
@@ -123,7 +123,7 @@ So wird eine Datenbank geklont:
 
 10. Der Klonauftrag wird im aktiven Popupfenster am unteren Bildschirmrand angezeigt. Wählen Sie die Klonaktivität aus, um die Auftragsdetails anzuzeigen. Sobald die Aktivität abgeschlossen ist, werden auf der Seite „Job Details“ (Auftragsdetails) ausschließlich grüne Häkchen angezeigt, und die Abschlusszeit wird angegeben. Das Klonen dauert in der Regel etwa 7 bis 10 Minuten.
 
-11. Wechseln Sie nach Abschluss des Auftrags zu dem Host, der als Ziel für den Klon verwendet wird, und überprüfen Sie die Bereitstellungspunkte mit „cat /etc/fstab“. Diese Überprüfung stellt sicher, dass die entsprechenden Bereitstellungspunkte für die Datenbank vorhanden sind, die während der Ausführung des Klon-Assistenten aufgelistet wurden, und hebt außerdem die im Assistenten eingegebene Datenbank-SID hervor. Im folgenden Beispiel ist die SID „dbsc4“, wie von den Bereitstellungspunkten auf dem Host angegeben.
+11. Wechseln Sie nach Abschluss des Auftrags zu dem Host, der als Ziel für den Klon verwendet wird, und überprüfen Sie die Bereitstellungspunkte mit „cat /etc/fstab“. Diese Überprüfung stellt sicher, dass die entsprechenden Einhängepunkte für die im Klon-Assistenten angegebene Datenbank vorhanden sind. Sie hebt auch die im Assistenten eingegebene Datenbank-SID hervor. Im folgenden Beispiel ist die SID „dbsc4“, wie von den Bereitstellungspunkten auf dem Host angegeben.
 
     :::image type="content" source="media/netapp-snapcenter-integration-oracle-baremetal/clone-database-switch-to-target-host.png" alt-text="Screenshot: Befehl zum Wechseln zum Zielhost":::
 
@@ -133,7 +133,7 @@ So wird eine Datenbank geklont:
 
 13. Geben Sie **sqlplus / as sysdba** ein. Da die Tabelle unter einem anderen Benutzer erstellt wurde, werden der ursprüngliche, ungültige Benutzername und das Kennwort automatisch eingegeben. Geben Sie den richtigen Benutzernamen und das Kennwort ein. Die SQL>-Eingabeaufforderung wird angezeigt, sobald die Anmeldung erfolgreich war.
 
-Geben Sie eine Abfrage der Basisdatenbank ein, um zu überprüfen, ob die entsprechenden Daten empfangen werden. Im folgenden Beispiel haben wir die Archivprotokolle verwendet, um ein Rollforward für die Datenbank auszuführen. Das folgende Beispiel zeigt, dass die Archivprotokolle entsprechend verwendet wurden, da der Clonetest-Eintrag erstellt wurde, nachdem die Datensicherung erstellt wurde. Wenn für die Archivprotokolle kein Rollforward ausgeführt worden wäre, würde dieser Eintrag nicht aufgeführt.
+Geben Sie eine Abfrage der Basisdatenbank ein, um zu überprüfen, ob die entsprechenden Daten empfangen werden. Im folgenden Beispiel haben wir die Archivprotokolle verwendet, um ein Rollforward für die Datenbank auszuführen. Die folgende Abbildung zeigt, dass die Archivprotokolle ordnungsgemäß verwendet wurden, da der Eintrag für den Klontest nach der Erstellung der Datensicherung erstellt wurde. Würden die Archivierungsprotokolle also nicht fortgeschrieben, wäre dieser Eintrag nicht aufgeführt.
 
 ```sql
 SQL> select * from acolvin.t;
@@ -177,7 +177,7 @@ BILLY
 
 ### <a name="delete-a-clone"></a>Löschen eines Klons
 
-Es ist wichtig, einen Klon zu löschen, wenn Sie diesen nicht mehr benötigen. Wenn Sie den Klon weiterhin verwenden möchten, sollten Sie ihn teilen. Eine Momentaufnahme, die das übergeordnete Element für einen Klon ist, kann nicht gelöscht werden und wird im Rahmen der Aufbewahrungszählung übersprungen. Wenn Sie Klone, die Sie nicht mehr benötigen, nicht löschen, könnte die Anzahl der von Ihnen beibehaltenen Momentaufnahmen übermäßig viel Speicher belegen. 
+Es ist wichtig, einen Klon zu löschen, wenn Sie diesen nicht mehr benötigen. Wenn Sie den Klon weiterhin verwenden möchten, sollten Sie ihn teilen. Ein Snapshot, der als übergeordneter Snapshot für einen Klon dient, kann nicht gelöscht werden und wird im Rahmen der Aufbewahrungszählung übersprungen. Wenn Sie Klone, die Sie nicht mehr benötigen, nicht löschen, könnte die Anzahl der von Ihnen beibehaltenen Momentaufnahmen übermäßig viel Speicher belegen. 
 
 Ein geteilter Klon kopiert die Daten aus dem vorhandenen Volume und die Momentaufnahme in ein neues Volume. Bei diesem Prozess wird die Beziehung zwischen dem Klon und der übergeordneten Momentaufnahme entfernt, sodass die Momentaufnahme gelöscht werden kann, wenn die Aufbewahrungsnummer erreicht ist. Wenn die Aufbewahrungsnummer bereits erreicht wurde, wird die Momentaufnahme bei der nächsten Momentaufnahme gelöscht. Trotzdem entstehen bei einem geteilten Klon auch Speicherkosten.
 
@@ -201,9 +201,9 @@ Wenn ein Klon erstellt wird, listet die Registerkarte „Resource“ (Ressource)
 
 ### <a name="split-a-clone"></a>Teilen eines Klons
 
-Beim Teilen eines Klons wird eine Kopie des übergeordneten Volumes erstellt, indem alle Daten auf dem übergeordneten Volume bis zu dem Punkt repliziert werden, an dem die Momentaufnahme erstellt wurde, die zum Erstellen des Klons verwendet wurde. Bei diesem Prozess wird das übergeordnete Volume vom Klonvolume getrennt, und die zum Erstellen des Klonvolumes verwendete Sperre der Momentaufnahme wird entfernt. Die Momentaufnahme kann dann im Rahmen der Aufbewahrungsrichtlinie gelöscht werden.
+Die Aufteilung eines Klons erstellt eine Kopie des übergeordneten Volumes. Dabei werden alle Daten auf dem übergeordneten Volume bis zu dem Punkt repliziert, an dem der zur Erstellung des Klons verwendete Snapshot erstellt wurde. Dadurch wird das übergeordnete Volume vom Klon-Volume getrennt und die Sperrung des Snapshots, der zur Erstellung des Klon-Volumes verwendet wurde, aufgehoben. Die Momentaufnahme kann dann im Rahmen der Aufbewahrungsrichtlinie gelöscht werden.
 
-Das Teilen eines Klons ist nützlich, um Daten entweder in der Produktionsumgebung oder in der Notfallwiederherstellungsumgebung aufzufüllen. Durch die Teilung können die neuen Volumes unabhängig vom übergeordneten Volume funktionieren.
+Das Teilen eines Klons ist nützlich, um Daten entweder in der Produktionsumgebung oder in der Notfallwiederherstellungsumgebung aufzufüllen. Dadurch können die neuen Datenträger unabhängig vom übergeordneten Datenträger funktionieren.
 
 >[!NOTE]
 >Der Prozess zum Teilen des Klons kann nicht rückgängig gemacht oder abgebrochen werden.
@@ -219,7 +219,7 @@ So teilen Sie einen Klon:
     >[!NOTE]
     >Je nachdem, wie viele Daten kopiert werden müssen, je nach Layout der Datenbank im Speicher und der Aktivitätsebene des Speichers kann der Teilungsprozess sehr lange dauern.
 
-Nach Abschluss des Prozesses wird der Klon, der geteilt wurde, aus der Liste der Sicherungen entfernt, und die dem Klon zugeordnete Momentaufnahme kann jetzt im Rahmen des normalen Aufbewahrungsplans in SnapCenter entfernt werden.
+Nach Abschluss des Vorgangs wird der geteilte Klon aus der Liste der Backups entfernt. Der Snapshot, der mit dem Klon verknüpft ist, kann nun im Rahmen des normalen Aufbewahrungsplans auf SnapCenter entfernt werden.
 
 ## <a name="restore-database-remotely-after-disaster-recovery-event"></a>Remotewiederherstellung der Datenbank nach einem Notfallwiederherstellungsereignis
 
@@ -227,7 +227,7 @@ SnapCenter ist derzeit nicht für die Automatisierung des Failoverprozesses konz
 
 ## <a name="restart-all-rac-nodes-after-restore"></a>Neustarten aller RAC-Knoten nach der Wiederherstellung
 
-Nachdem Sie die Datenbank in SnapCenter wiederhergestellt haben, ist sie wie unten dargestellt nur auf dem RAC-Knoten aktiv, den Sie beim Wiederherstellen der Datenbank ausgewählt haben. In diesem Beispiel haben wir die Datenbank auf „bn6sc2“ wiederhergestellt, um zu veranschaulichen, dass Sie einen beliebigen RAC-Knoten für die Wiederherstellung auswählen können.
+Nachdem Sie die Datenbank in SnapCenter wiederhergestellt haben, ist sie wie unten dargestellt nur auf dem RAC-Knoten aktiv, den Sie beim Wiederherstellen der Datenbank ausgewählt haben. In diesem Beispiel haben wir die Datenbank auf bn6sc2 wiederhergestellt, um zu zeigen, dass Sie einen beliebigen RAC-Knoten für die Wiederherstellung auswählen können.
 
 :::image type="content" source="media/netapp-snapcenter-integration-oracle-baremetal/restore-database-example-output-rac-node.png" alt-text="Screenshot: auf „bn6sc2“ wiederhergestellte Datenbank":::
 
@@ -248,7 +248,7 @@ Nach dem Klonen oder Wiederherstellen einer Datenbank sollte die Bereitstellung 
 4. Sie können den Status des Auftrags zum Aufheben der Bereitstellung anzeigen, indem Sie im linken Menü **Monitor** (Überwachen) auswählen. Wenn die Bereitstellung des Volumes aufgehoben wurde, wird ein grünes Häkchen angezeigt.
 
 >[!NOTE]
->Wenn Sie „Unmount“ (Bereitstellung aufheben) auswählen, wird der Eintrag aus „/etc/fstab“ auf dem Host entfernt, auf dem er bereitgestellt wurde. Durch das Aufheben der Bereitstellung wird die Sicherung nach Bedarf im Rahmen der in der Schutzrichtlinie festgelegten Aufbewahrungsrichtlinie zur Löschung freigegeben.
+>Wenn Sie unmounten wählen, wird der Eintrag aus der /etc/fstab auf dem Rechner, auf dem er eingehängt ist, entfernt. Durch das Aufheben der Bereitstellung wird die Sicherung nach Bedarf im Rahmen der in der Schutzrichtlinie festgelegten Aufbewahrungsrichtlinie zur Löschung freigegeben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -7,12 +7,12 @@ services: firewall-manager
 ms.topic: article
 ms.date: 09/14/2020
 ms.author: victorh
-ms.openlocfilehash: 71ff23e749139087f24da406474403167dcc1c0d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 36c43448abba82ef084a16e13e70700ddf12bdc2
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90563147"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130042011"
 ---
 # <a name="what-are-the-azure-firewall-manager-architecture-options"></a>Welche Optionen bietet die Azure Firewall Manager-Architektur?
 
@@ -36,7 +36,7 @@ In der folgenden Tabelle werden diese beiden Architekturoptionen miteinander ver
 |**Hub and Spoke**     |Verwendet das Peering virtueller Netzwerke|Automatisiert über virtuelle Hubnetzwerkverbindung|
 |**Lokale Konnektivität**     |VPN Gateway mit bis zu 10 Gbit/s und 30 Site-to-Site-Verbindungen; ExpressRoute|Besser skalierbares VPN Gateway mit bis zu 20 Gbit/s und 1000 Site-to-Site-Verbindungen; ExpressRoute|
 |**Automatisierte Branchkonnektivität über SDWAN**      |Nicht unterstützt|Unterstützt|
-|**Hubs pro Region**     |Mehrere virtuelle Netzwerke pro Region|Ein geschützter virtueller Hub pro Region; mehrere Hubs möglich mit mehreren Virtual WANs|
+|**Hubs pro Region**     |Mehrere virtuelle Netzwerke pro Region|Mehrere virtuelle Hubs pro Region|
 |**Azure Firewall – mehrere öffentliche IP-Adressen**      |Vom Kunden bereitgestellt|Automatisch generiert|
 |**Azure Firewall-Verfügbarkeitszonen**     |Unterstützt|Noch nicht verfügbar|
 |**Erweiterte Internetsicherheit mit Security-as-a-Service-Lösungen von Drittanbietern**     |Vom Kunden hergestellte und verwaltet VPN-Konnektivität mit dem gewünschten Partnerdienst|Automatisiert über Flow für Sicherheitspartneranbieter und Partnerverwaltungslösung|

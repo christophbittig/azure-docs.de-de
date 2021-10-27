@@ -4,12 +4,12 @@ description: Anwendungsleistungsverwaltung und Nachverfolgen der Nutzung Ihrer a
 ms.topic: overview
 ms.date: 06/03/2019
 ms.custom: mvc
-ms.openlocfilehash: 6104cef3a3ba1850163964778e6fa000fc6981b6
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 361c48af9ada73bd717aa375302ddc97a62f424f
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129060553"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130133764"
 ---
 # <a name="what-is-application-insights"></a>Was ist Application Insights?
 Application Insights, ein Feature von [Azure Monitor](../overview.md), ist ein erweiterbarer Dienst zur Verwaltung der Anwendungsleistung (Application Performance Management, APM) für Entwickler und DevOps-Profis. Überwachen Sie damit Ihre aktiven Anwendungen. Der Dienst erkennt automatisch Leistungsanomalien und verfügt über leistungsstarke Analysetools, mit denen Sie Probleme diagnostizieren und nachvollziehen können, wie Ihre App von den Benutzern verwendet wird.  Der Dienst unterstützt Sie bei der kontinuierlichen Verbesserung der Leistung und Benutzerfreundlichkeit Ihrer App. Er lässt sich für Apps auf einer Vielzahl von Plattformen einsetzen. Dazu zählen unter anderem .NET, Node.js, Java und Python (lokal gehostet, als Hybridmodell oder in einer öffentlichen Cloud). Der Dienst lässt sich in Ihren DevOps-Prozess integrieren und verfügt über Verbindungspunkte mit einer Vielzahl von Entwicklungstools. Sie können Telemetriedaten von mobilen Apps durch die Integration in Visual Studio App Center überwachen und analysieren.
@@ -53,7 +53,7 @@ Es gibt zahlreiche Möglichkeiten, Ihre Daten zu untersuchen. Informationen find
 | [**Anwendungszuordnung**](./app-map.md)<br/>Untersuchen Sie die Komponenten der App mit wichtigen Metriken und Warnungen. |![Anwendungszuordnung](./media/app-insights-overview/appmap-tn.png)  |
 | [**Profilerstellung**](./profiler.md)<br/>Untersuchen Sie die Ausführungsprofile von erfassten Anforderungen. |![Screenshot: Ausführungsprofile von erfassten Anforderungen](./media/app-insights-overview/profiler.png) |
 | [**Nutzungsanalyse**](./usage-overview.md)<br/>Analysieren Sie Benutzersegmentierung und Vermerkdauer.|![Vermerkdauer-Tool](./media/app-insights-overview/retention.png) |
-| [**Diagnosesuche für Instanzdaten**](./diagnostic-search.md)<br/>Suchen und filtern Sie Ereignisse wie Anforderungen, Ausnahmen, Abhängigkeitsaufrufe, Protokollablaufverfolgungen und Seitenaufrufe.  |![Suchen von Telemetriedaten](./media/app-insights-overview/search-tn.png) |
+| [**Transaktionssuche für Instanzdaten**](./diagnostic-search.md)<br/>Suchen und filtern Sie Ereignisse wie Anforderungen, Ausnahmen, Abhängigkeitsaufrufe, Protokollablaufverfolgungen und Seitenaufrufe.  |![Suchen von Telemetriedaten](./media/app-insights-overview/search-tn.png) |
 | [**Metrik-Explorer für aggregierte Daten**](../essentials/metrics-charts.md)<br/>Durchsuchen, filtern und segmentieren Sie aggregierte Daten wie z.B. Anforderungs-, Fehler- und Ausnahmeraten, Antwortzeiten und Seitenladezeiten. |![Metriken](./media/app-insights-overview/metrics-tn.png) |
 | [**Dashboards**](./overview-dashboard.md)<br/>Kombinieren Sie Daten aus mehreren Ressourcen, und geben Sie sie für andere frei. Dies ist sehr gut für Anwendungen mit mehreren Komponenten und für die kontinuierliche Anzeige im Teamraum geeignet. |![Beispiel für Dashboards](./media/app-insights-overview/dashboard-tn.png) |
 | [**Live Metrics Stream**](./live-stream.md)<br/>Wenn Sie einen neuen Build bereitstellen, sehen Sie sich diese beinahe in Echtzeit verfügbaren Leistungsindikatoren an, um sicherzustellen, dass alles wie erwartet funktioniert. |![Beispiel für Livemetriken](./media/app-insights-overview/live-metrics-tn.png) |

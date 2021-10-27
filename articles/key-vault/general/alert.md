@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 03/31/2021
 ms.author: mbaldwin
-ms.openlocfilehash: d74cb93cd28f3dc02b37a6c29832d9e8412ef098
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: c7661f91475b85ad8d606770ff74777bb3b8abab
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129458906"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129994269"
 ---
 # <a name="configure-azure-key-vault-alerts"></a>Konfigurieren von Azure Key Vault-Warnungen
 
@@ -85,7 +85,7 @@ Als Nächstes erstellen Sie eine Regel und konfigurieren die Schwellenwerte, die
 4. Wählen Sie die Schwellenwerte aus, die die Logik für Ihre Warnungen definieren, und wählen Sie dann **Hinzufügen**. Das Key Vault-Team empfiehlt die Konfiguration der folgenden Warnungsschwellenwerte: 
 
     + Key Vault-Verfügbarkeit fällt unter 100 Prozent (statischer Schwellenwert)
-    + Key Vault-Wartezeit übersteigt 500 ms (statischer Schwellenwert) 
+    + Key Vault-Wartezeit übersteigt 1000 ms (statischer Schwellenwert) 
     + „Tresorauslastung insgesamt“ übersteigt 75 Prozent (statischer Schwellenwert) 
     + „Tresorauslastung insgesamt“ überschreitet den Durchschnitt (dynamischer Schwellwert)
     + „Fehlercodes gesamt“ liegt über dem Durchschnitt (dynamischer Schwellwert) 
@@ -105,7 +105,7 @@ Als Nächstes erstellen Sie eine Regel und konfigurieren die Schwellenwerte, die
    + Legen Sie **Schwellenwert** auf **Statisch** fest. 
    + Legen Sie **Operator** auf **Größer als** fest.
    + Legen Sie **Aggregationstyp** auf **Durchschnitt** fest.
-   + Legen Sie **Schwellenwert** auf **500** fest.
+   + Legen Sie **Schwellenwert** auf **1000** fest.
    + Legen Sie **Aggregationsgranularität (Zeitraum)** auf **5 Minuten** fest.
    + Legen Sie **Häufigkeit der Auswertung** auf **Jede Minute** fest.
 

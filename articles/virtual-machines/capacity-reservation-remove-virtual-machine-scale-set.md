@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/09/2021
 ms.reviewer: cynthn, jushiman
 ms.custom: template-how-to
-ms.openlocfilehash: 2d8f9c7c73b4cb5d0f617893a7d981b94d30b344
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: cc3b433b0ae36076a0442c8dc91e502020bdfd04
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128553095"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130063638"
 ---
 # <a name="remove-a-virtual-machine-scale-set-association-from-a-capacity-reservation-group"></a>Entfernen einer Skalierungsgruppenzuordnung von einem virtuellen Computer aus einer Kapazitätsreservierungsgruppe 
 
@@ -28,14 +28,6 @@ Es gibt es zwei Möglichkeiten, eine Zuordnung zu ändern:
 > [!IMPORTANT]
 > Die Kapazitätsreservierung befindet sich derzeit in der öffentlichen Vorschau.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-## <a name="register-for-capacity-reservation"></a>Registrieren für Kapazitätsreservierung 
-
-Bevor Sie das Feature zur Kapazitätsreservierung verwenden können, müssen Sie [Ihr Abonnement für die Vorschauversion registrieren](capacity-reservation-overview.md#register-for-capacity-reservation). Die Registrierung kann mehrere Minuten dauern. Sie können die Azure CLI oder PowerShell verwenden, um die Funktionsregistrierung abzuschließen.
-
-> [!NOTE]
-> Bedarfsbasierte Kapazitätsreservierung ist nur in ausgewählten Regionen für die Skalierungsgruppen virtueller Computer im einheitlichen Orchestrierungsmodus verfügbar. Um zu überprüfen, ob Ihre Region unterstützt wird, wechseln Sie zu [Bereitstellungsverfolgung für eine einheitliche Skalierungsgruppe für virtuelle Computer](https://aka.ms/vmssuniformdeploymenttracker).
-
 
 ## <a name="deallocate-the-virtual-machine-scale-set"></a>Aufheben der Zuordnung einer Skalierungsgruppe für virtuelle Computer
 
@@ -72,6 +64,27 @@ Navigieren Sie zu [Aktualisieren von Richtlinien](#upgrade-policies) um weitere 
     }
     }
     ```
+
+### <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/cli1)
+
+1. Aufheben der Zuordnung der Skalierungsgruppe für virtuelle Computer. Im Folgenden wird die Zuordnung aller virtuellen Computer innerhalb der Skalierungsgruppe freigegeben: 
+
+    ```azurecli-interactive
+    az vmss deallocate
+    --location eastus
+    --resource-group myResourceGroup 
+    --name myVMSS 
+    ```
+
+1. Aktualisieren der Skalierungsgruppe für virtuelle Computer, um die Zuordnung zu der Kapazitätsreservierungsgruppe zu entfernen. Durch Festlegen der Eigenschaft `capacity-reservation-group` auf „Keine“ wird die Zuordnung der Skalierungsgruppe zur Kapazitätsreservierungsgruppe entfernt: 
+
+    ```azurecli-interactive
+    az vmss update 
+    --resource-group myresourcegroup 
+    --name myVMSS 
+    --capacity-reservation-group None
+    ```
+
 
 ### <a name="powershell"></a>[PowerShell](#tab/powershell1)
 
@@ -154,6 +167,27 @@ Navigieren Sie zu [Aktualisieren von Richtlinien](#upgrade-policies) um weitere 
         }
     }
     }
+    ```
+
+### <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/cli2)
+
+1. Aktualisieren Sie die reservierte Menge auf null:
+
+    ```azurecli-interactive
+    az capacity reservation update 
+    -g myResourceGroup 
+    -c myCapacityReservationGroup 
+    -n myCapacityReservation 
+    --capacity 0
+    ```
+
+2. Aktualisieren Sie die Skalierungsgruppe, um die Zuordnung zur Kapazitätsreservierungsgruppe zu entfernen, indem Sie die Eigenschaft `capacity-reservation-group` auf „Keine“ festlegen: 
+
+    ```azurecli-interactive
+    az vmss update 
+    --resource-group myResourceGroup 
+    --name myVMSS 
+    --capacity-reservation-group None
     ```
 
 ### <a name="powershell"></a>[PowerShell](#tab/powershell2)

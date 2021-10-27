@@ -13,12 +13,12 @@ ms.date: 07/22/2021
 ms.author: shermanouko
 ms.custom: aaddev, has-adal-ref
 ms.reviewer: aiwang, marsma
-ms.openlocfilehash: 1f4a710beba53987ce555aad5526298f81d0a43c
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: c0b54b7c7e424c8c7f645fe41d7b7b57c105ca65
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129232297"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129993775"
 ---
 # <a name="get-a-complete-list-of-apps-using-adal-in-your-tenant"></a>Abrufen einer vollständigen Liste von Apps, die in Ihrem Mandanten die ADAL verwenden
 
@@ -40,9 +40,9 @@ In der Arbeitsmappe Anmeldungen wird kein aufgetretenes Anmeldeereignis angezeig
 
 Nachdem Sie Ihre Azure AD-Anmelde- und -Überwachungsprotokolle wie in der Azure Monitor-Integration angegeben in Azure Monitor integriert haben, greifen Sie auf die Anmeldungen-Arbeitsmappe zu:
 
-   1. Anmelden beim Azure-Portal 
-   1. Navigieren Sie zu  **Azure Active Directory** > **Überwachung** > **Arbeitsmappen**. 
-   1. Öffnen Sie im Abschnitt **Nutzung** die Arbeitsmappe  **Anmeldungen**. 
+   1. Anmelden beim Azure-Portal
+   1. Navigieren Sie zu **Azure Active Directory** > **Überwachung** > **Arbeitsmappen**
+   1. Öffnen Sie im Abschnitt **Benutzung** die Arbeitsmappe **Sign-ins**
 
    :::image type="content" source="media/howto-get-list-of-all-active-directory-auth-library-apps/sign-in-workbook.png" alt-text="Screenshot der Azure Active Directory-Portalarbeitsmappen-Benutzeroberfläche mit Hervorhebung der Anmeldungen-Arbeitsmappe.":::
 

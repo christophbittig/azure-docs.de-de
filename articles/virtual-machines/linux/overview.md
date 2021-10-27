@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 89766dd612a43a60456199ae1fdc9de35c9dd061
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: b419b816de822c72e3c33acddd9d9b6c50745b7f
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124774213"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130047849"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Virtuelle Linux-Computer in Azure
 
@@ -44,11 +44,11 @@ Beim Einrichten einer Anwendungsinfrastruktur in Azure müssen immer zahlreiche 
 * Die zugehörigen Ressourcen, die der virtuelle Computer benötigt
 
 ### <a name="locations"></a>Standorte
-Alle in Azure erstellten Ressourcen werden auf [geografische Regionen](https://azure.microsoft.com/regions/) auf der ganzen Welt verteilt. Bei der Erstellung eines virtuellen Computers wird die Region in der Regel als **Standort** bezeichnet. Der Standort gibt für einen virtuellen Computer an, wo die virtuellen Festplatten gespeichert sind.
+Es gibt mehrere [geografische Regionen](https://azure.microsoft.com/regions/) weltweit, in denen Sie Azure-Ressourcen erstellen können. Bei der Erstellung eines virtuellen Computers wird die Region in der Regel als **Standort** bezeichnet. Der Standort gibt für einen virtuellen Computer an, wo die virtuellen Festplatten gespeichert werden.
 
 Die folgende Tabelle enthält einige Methoden, mit denen Sie eine Liste verfügbarer Standorte abrufen können:
 
-| Methode | Beschreibung |
+| Methode | BESCHREIBUNG |
 | --- | --- |
 | Azure-Portal |Wählen Sie beim Erstellen eines virtuellen Computers einen Standort aus der Liste aus. |
 | Azure PowerShell |Verwenden Sie den Befehl [Get-AzLocation](/powershell/module/az.resources/get-azlocation). |

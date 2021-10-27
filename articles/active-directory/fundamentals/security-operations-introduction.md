@@ -12,12 +12,12 @@ ms.date: 07/15/2021
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c219ab9c1503fdd3bbd85bf704786ef2c097d52a
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: bf83185b5c36723621ad586839d6b92260e1a99a
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129808654"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130046200"
 ---
 # <a name="azure-active-directory-security-operations-guide"></a>Azure Active Directory: Leitfaden zu Sicherheitsvorgängen
 
@@ -126,7 +126,7 @@ Im Azure-Portal können Sie die Azure AD-Überwachungsprotokolle anzeigen und a
 
 * **[Azure Event Hubs](../../event-hubs/event-hubs-about.md) mit Integration in ein SIEM-System**- [Azure AD-Protokolle können über die Azure Event Hub-Integration in andere SIEM-Systeme wie Splunk, ArcSight, QRadar und Sumo Logic integriert](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) werden.
 
-* **[Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) (MCAS)** ermöglicht Ihnen das Entdecken und Verwalten von Apps, eine Apps und Ressourcen übergreifende Governance und Überprüfung der Konformität Ihrer Cloud-Apps.
+* **[Microsoft Cloud App Security (MCAS)](/cloud-app-security/what-is-cloud-app-security)** : Ermöglicht das Entdecken und Verwalten von Apps, eine App- und ressourcenübergreifende Steuerung sowie Konformitätsprüfungen Ihrer Cloud-Apps.
 
 Ein Großteil der Überwachung und zugehörigen Warnungen hängt von den Auswirkungen Ihrer Richtlinien für bedingten Zugriff ab. Sie können die Arbeitsmappe [Erkenntnisse und Berichterstellung zum bedingten Zugriff](../conditional-access/howto-conditional-access-insights-reporting.md) verwenden, um die Auswirkungen einer oder mehrerer Richtlinien für bedingten Zugriff auf Ihre Anmeldungen sowie die Ergebnisse von Richtlinien, einschließlich Gerätestatus, zu untersuchen. Diese Arbeitsmappe bietet Ihnen die Möglichkeit, eine Zusammenfassung der Auswirkungen anzuzeigen und die Auswirkungen über einen bestimmten Zeitraum zu ermitteln. Sie können mithilfe der Arbeitsmappe auch die Anmeldungen eines bestimmten Benutzers untersuchen. 
 

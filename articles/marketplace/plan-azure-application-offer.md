@@ -1,6 +1,6 @@
 ---
 title: Planen eines Azure-Anwendungsangebots für den kommerziellen Marketplace
-description: Erfahren Sie, wie Sie ein neues Azure-Anwendungsangebot zum Auflisten oder Verkaufen im Azure Marketplace oder über das CSP-Programm (Cloud Solution Provider) über das Portal für den kommerziellen Marketplace in Microsoft Partner Center planen.
+description: Planen Sie ein Azure-Anwendungsangebot für Azure Marketplace unter Verwendung von Partner Center.
 author: aarathin
 ms.author: aarathin
 ms.reviewer: dannyevers
@@ -8,16 +8,16 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: c8faefa8f1793275e4c93bf772e89ebf852b33d4
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: d8058181ea56fdfc7465748f7ebf519c51422f64
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112283445"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130070886"
 ---
-# <a name="plan-an-azure-application-offer-for-the-commercial-marketplace"></a>Planen eines Azure-Anwendungsangebots für den kommerziellen Marketplace
+# <a name="plan-an-azure-application-offer"></a>Planen eines Azure-Anwendungsangebots
 
-In diesem Artikel werden die verschiedenen Optionen und Anforderungen für das Veröffentlichen eines Azure-Anwendungsangebots im kommerziellen Microsoft-Marketplace erläutert.
+In diesem Artikel werden die verschiedenen Optionen und Anforderungen für das Veröffentlichen eines Azure-Anwendungsangebots im kommerziellen Marketplace erläutert.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -95,7 +95,7 @@ Eine CRM-Verbindung kann während der Angebotserstellung zu einem beliebigen Zei
 
 ## <a name="categories-and-subcategories"></a>Kategorien und Unterkategorien
 
-Sie können zwischen ein und zwei Kategorien auswählen, um Ihr Angebot in den entsprechenden Suchbereichen des kommerziellen Marketplace zu platzieren. Sie können bis zu zwei Unterkategorien für jede primäre oder sekundäre Kategorie auswählen. Eine vollständige Liste der Kategorien und Unterkategorien finden Sie unter [Bewährte Methoden für Angebotslistung](gtm-offer-listing-best-practices.md#categories).
+Sie können zwischen ein und zwei Kategorien auswählen, um Ihr Angebot in den entsprechenden Suchbereichen des kommerziellen Marketplace zu platzieren. Sie können bis zu zwei Unterkategorien für jede primäre oder sekundäre Kategorie auswählen. Eine vollständige Liste der Kategorien und Unterkategorien finden Sie unter [Bewährte Methoden für Angebotslistung](marketplace-categories-industries.md#categories).
 
 ## <a name="legal-contracts"></a>Verträge
 
@@ -155,9 +155,9 @@ Um das Angebot einfacher zu gestalten, können Sie einige dieser Elemente vorab 
   - **Technischer Ansprechpartner**: Geben Sie den Namen, die Telefonnummer und die E-Mail-Adresse an, die Microsoft direkt verwenden kann, wenn es Probleme mit Ihrem Angebot gibt. Diese Kontaktinformationen sind nicht im kommerziellen Marketplace aufgeführt.
   - **Ansprechpartner für CSP-Programm** (optional): Geben Sie den Namen, die Telefonnummer und die E-Mail-Adresse an, wenn Sie sich für das CSP-Programm (Cloud Solution Provider) entscheiden, damit Sie bei Fragen von Partnern kontaktiert werden können. Sie können auch eine URL zu Ihren Marketingmaterialien hinzufügen.
 - **Medien – Logos**: Geben Sie eine PNG-Datei für das **große** Logo an. Dies wird in Partner Center verwendet, um ein **kleines** und ein **mittleres** Logo zu erstellen. Sie können diese Logos später durch andere Bilder ersetzen.
-  - Groß (von 216 × 216 bis 350 × 350 Pixel, erforderlich)
-  - Mittel (90 × 90 Pixel, optional)
-  - Klein (48 × 48 Pixel, optional)
+  - Groß (von 216 x 216 bis 350 x 350 Pixel, erforderlich)
+  - Mittel (90 x 90 Pixel, optional)
+  - Klein (48 x 48 Pixel, optional)
 
   Diese Logos werden an unterschiedlichen Stellen in den Onlineshops verwendet:
   - Das kleine Logo wird in Azure Marketplace-Suchergebnissen angezeigt.
@@ -173,13 +173,13 @@ Um das Angebot einfacher zu gestalten, können Sie einige dieser Elemente vorab 
   - Stellen Sie sicher, dass das Logo nicht verzerrt wird.
 
 - **Medien – Screenshots** (optional): Es wird empfohlen, Screenshots hinzuzufügen, die zeigen, wie Ihr Angebot funktioniert. Fügen Sie gemäß den folgenden Anforderungen bis zu fünf Screenshots hinzu, die Ihr Angebot veranschaulichen:
-  - 1280 x 720 Pixel
+  - 1280 x 720 Pixel
   - PNG-Datei
   - Beschriftung erforderlich
 - **Medien – Videos** (optional): Fügen Sie gemäß den folgenden Anforderungen bis zu fünf Videos hinzu, die Ihr Angebot veranschaulichen:
   - Name
   - URL: Video darf nur auf YouTube oder Vimeo gehostet werden.
-  - Miniaturansicht: PNG-Datei (1280 x 720)
+  - Miniaturansicht: 1280 x 720, PNG-Datei
 
 > [!NOTE]
 > Ihr Angebot muss für die Veröffentlichung im kommerziellen Marketplace die allgemeinen [Zertifizierungsrichtlinien für den kommerziellen Marketplace](/legal/marketplace/certification-policies#100-general.md) erfüllen.

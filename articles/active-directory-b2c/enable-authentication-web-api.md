@@ -2,21 +2,21 @@
 title: Aktivieren der Authentifizierung in einer Web-API mit Azure Active Directory B2C
 description: In diesem Artikel wird erläutert, wie Sie Azure Active Directory B2C verwenden, um eine Web-API zu schützen.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 06/25/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: a67cdd9ba92e3c78c5cb29a827cf537ba2e372ae
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 8bb890fb92352be9a0771cb0b80d2f1565dc664c
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124740201"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130065690"
 ---
 # <a name="enable-authentication-in-your-own-web-api-by-using-azure-ad-b2c"></a>Aktivieren der Authentifizierung in Ihrer eigenen Web-API mit Azure AD B2C
 
@@ -377,7 +377,7 @@ Die Authentifizierungsfunktion überprüft auch, ob die Web-API mit den richtige
 
 ## <a name="step-5-configure-the-web-server"></a>Schritt 5: Konfigurieren des Web-Servers
 
-Legen Sie in einer Entwicklungsumgebung für die Web-API fest, dass sie auf die Portnummer eingehender HTTP-Anforderungen lauscht. Verwenden Sie in diesem Beispiel HTTP-Port 6000. Der Basis-URI der Web-API wird <„http://localhost:6000“> sein.
+Legen Sie in einer Entwicklungsumgebung fest, dass die Web-API an der Portnummer für eingehende HTTP- oder HTTPS-Anforderungen lauscht. Verwenden Sie in diesem Beispiel HTTP-Port 6000 und HTTPS-Port 6001. Der Basis-URI der Web-API ist `http://localhost:6000` für HTTP und `https://localhost:6001` für HTTPS. Es ist auch möglich, [HTTP- und HTTPS-Endpunkte für die Node-Anwendung einzurichten](https://github.com/expressjs/express/wiki/Migrating-from-2.x-to-3.x#application-function).
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/csharpclient)
 
@@ -388,7 +388,10 @@ Fügen Sie der Datei *appsettings.json* den folgenden JSON-Ausschnitt hinzu.
     "EndPoints": {
       "Http": {
         "Url": "http://localhost:6000"
-      }
+      },
+      "Https": {
+         "Url": "https://localhost:6001"   
+        }
     }
   }
 ```

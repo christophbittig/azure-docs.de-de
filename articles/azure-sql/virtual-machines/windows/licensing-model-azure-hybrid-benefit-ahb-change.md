@@ -3,7 +3,7 @@ title: Ändern des Lizenzierungsmodells für eine SQL-VM in Azure
 description: Es wird beschrieben, wie Sie die Lizenzierung für einen virtuellen SQL Server-Computer in Azure von „nutzungsbasierter Bezahlung“ (Pay-as-you-go, PAYG) in „Bring-Your-Own-License“ (BYOL) ändern, indem Sie den Azure-Hybridvorteil nutzen.
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: bluefooted
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.devlang: na
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.subservice: management
 ms.workload: iaas-sql-server
 ms.date: 11/13/2019
-ms.author: mathoma
-ms.reviewer: jroth
+ms.author: pamela
+ms.reviewer: mathoma
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6d840893de2c516137e54d015123fa9249b93d54
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: 6f6e2a4216284776b0d566caac0f79ccfaeb349b
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113434622"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130162234"
 ---
 # <a name="change-the-license-model-for-a-sql-virtual-machine-in-azure"></a>Ändern des Lizenzierungsmodells für einen virtuellen SQL-Computer in Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -117,7 +117,7 @@ Das Ändern des Lizenzmodells
    - ist nur für Kunden mit [Software Assurance](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-overview) verfügbar.
    - wird nur für die Standard Edition und Enterprise Edition von SQL Server unterstützt. unterstützt keine Lizenzänderungen für Express, Web und Developer. 
    - wird nur für virtuelle Computer unterstützt, die mit dem Azure Resource Manager-Modell bereitgestellt wurden. unterstützt keine SQL Server-VMs, die mit dem klassischen Modell bereitgestellt wurden. 
-   - Nur für öffentliche oder Azure Government-Clouds verfügbar. 
+   - Nur für öffentliche oder Azure Government-Clouds verfügbar. Derzeit nicht für die Azure China-Region verfügbar. 
 
 > [!Note]
 > Der Azure-Hybridvorteil kann nur für die core-basierte SQL Server-Lizenzierung mit Software Assurance- oder Abonnementlizenzen genutzt werden. Wenn Sie die Server- und CAL-Lizenzierung für SQL Server verwenden und über Software Assurance verfügen, können Sie BYOL für ein Azure SQL Server-VM-Image verwenden, um die Lizenzmobilität für diese Server zu nutzen. Die anderen AHB-Features können Sie jedoch nicht nutzen. 
@@ -143,5 +143,5 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 * [Übersicht über SQL Server auf einem virtuellen Windows-Computer](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [Häufig gestellte Fragen zu SQL Server auf virtuellen Windows-Computern](frequently-asked-questions-faq.yml)
 * [Preisinformationen für SQL Server auf virtuellen Windows-Computern](pricing-guidance.md)
-* [SQL Server auf Windows-VMs – Versionshinweise](../../database/doc-changes-updates-release-notes.md)
+* [Neuerungen für SQL Server auf virtuellen Azure-Computern](doc-changes-updates-release-notes-whats-new.md)
 * [Übersicht über die Erweiterung für den SQL-IaaS-Agent](./sql-server-iaas-agent-extension-automate-management.md)

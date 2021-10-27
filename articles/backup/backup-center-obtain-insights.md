@@ -2,13 +2,13 @@
 title: Gewinnen von Erkenntnissen mithilfe von Backup Center
 description: Erfahren Sie, wie Sie mit Backup Center historische Trends analysieren und tiefere Erkenntnisse aus Ihren Sicherungen gewinnen.
 ms.topic: conceptual
-ms.date: 09/01/2020
-ms.openlocfilehash: c48173749a9b47be7eeb906e9f8eec716e0cb200
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/19/2021
+ms.openlocfilehash: 5244ba6edaac3b58550107c2519b90447ff197e0
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102506009"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130177838"
 ---
 # <a name="obtain-insights-using-backup-center"></a>Gewinnen von Erkenntnissen mithilfe von Backup Center
 
@@ -24,7 +24,7 @@ Zum Analysieren von historischen Trends und Gewinnen von tieferen Erkenntnissen 
 
 ## <a name="supported-scenarios"></a>Unterstützte Szenarien
 
-- Sicherungsberichte sind derzeit für Sicherungen von Azure Database for PostgreSQL-Servern nicht verfügbar.
+- Sicherungsberichte werden derzeit nicht für Workloads unterstützt, die mithilfe von Sicherungstresoren gesichert werden.
 
 - Eine ausführliche Liste der unterstützten und nicht unterstützten Szenarien finden Sie in der [Supportmatrix](backup-center-support-matrix.md).
 
@@ -56,7 +56,7 @@ Im Folgenden finden Sie die verfügbaren Ansichten:
 
 7. **Einhaltung von Richtlinien**: Verwenden Sie diese Registerkarte, um zu prüfen, ob für jede Sicherungsinstanz mindestens eine erfolgreiche Sicherung pro Tag vorhanden ist. [Weitere Informationen](./configure-reports.md#policy-adherence)
 
-Sie können auch mithilfe der Funktion [E-Mail-Bericht](backup-reports-email.md) E-Mails zu diesen Berichten konfigurieren.
+Sie können auch mithilfe des Features [E-Mail-Bericht](backup-reports-email.md) E-Mails zu diesen Berichten konfigurieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

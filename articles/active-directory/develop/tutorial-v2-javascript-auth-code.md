@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 07/17/2020
+ms.date: 10/12/2021
 ms.author: marsma
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: d9944b2e3ac68cc2b04b4a6052e9dd0647fe91ad
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: ffd447d4fcacad1185d8ad95778e0a9d22cb16ce
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129229618"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130066013"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-app-spa-using-auth-code-flow"></a>Tutorial: Anmelden von Benutzern und Aufrufen der Microsoft Graph-API aus einer JavaScript-Single-Page-Webanwendung (SPA) mithilfe des Autorisierungscodeflusses
 
@@ -49,13 +49,13 @@ In diesem Tutorial wird die folgende Bibliothek verwendet:
 
 ## <a name="get-the-completed-code-sample"></a>Abrufen des abgeschlossenen Codebeispiels
 
-Möchten Sie stattdessen lieber das abgeschlossene Beispielprojekt dieses Tutorials herunterladen? Um das Projekt mit einem lokalen Webserver auszuführen, z. B. Node.js, klonen Sie das Repository [ms-identity-javascript-v2](https://github.com/Azure-Samples/ms-identity-javascript-v2):
+Möchten Sie stattdessen lieber das abgeschlossene Beispielprojekt dieses Tutorials herunterladen? Klonen Sie das Repository [ms-identity-javascript-v2](https://github.com/Azure-Samples/ms-identity-javascript-v2). 
 
 `git clone https://github.com/Azure-Samples/ms-identity-javascript-v2`
 
-Um das Codebeispiel zu konfigurieren, bevor Sie es ausführen, wechseln Sie dann zum [Konfigurationsschritt](#register-your-application).
+Um das heruntergeladene Projekt in Ihrer lokalen Entwicklungsumgebung ausführen zu können, erstellen Sie zunächst einen Localhost-Server für Ihre Anwendung, wie in Schritt 1 unter [Erstellen Ihres Projekts](#create-your-project) beschrieben. Sobald Sie fertig sind, können Sie das Codebeispiel konfigurieren, indem Sie mit dem [Konfigurationsschritt](#register-your-application) fortfahren.
 
-Um mit dem Tutorial fortzufahren und die Anwendung selbst zu erstellen, fahren Sie mit dem nächsten Abschnitt, [Voraussetzungen](#prerequisites), fort.
+Wenn Sie mit dem Tutorial fortfahren und die Anwendung selbst erstellen möchten, fahren Sie mit dem nächsten Abschnitt ([Erstellen Ihres Projekts](#create-your-project)) fort.
 
 ## <a name="create-your-project"></a>Erstellen Ihres Projekts
 

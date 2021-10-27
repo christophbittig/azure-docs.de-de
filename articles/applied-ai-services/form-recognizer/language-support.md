@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: overview
-ms.date: 05/10/2021
+ms.date: 10/07/2021
 ms.author: lajanuar
-ms.openlocfilehash: fa825186a050326aaf6c9cf21cbe380dabd6c223
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 5c9df61e7f4430a623f354294863b2a1bc06b7c8
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128626283"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130164262"
 ---
 # <a name="language-support-for-form-recognizer"></a>Sprachunterstützung für die Formularerkennung
 
@@ -25,83 +25,157 @@ ms.locfileid: "128626283"
 
 ## <a name="layout-and-custom-model"></a>Layout und benutzerdefiniertes Modell
 
-|Sprache| Sprachcode |
-|:-----|:----:|
-|Afrikaans|`af`|
-|Albanisch |`sq`|
-|Asturisch |`ast`|
-|Baskisch  |`eu`|
-|Bislama   |`bi`|
-|Bretonisch    |`br`|
-|Katalanisch    |`ca`|
-|Cebuano    |`ceb`|
-|Chamorro  |`ch`|
-|Chinesisch (vereinfacht) | `zh-Hans`|
-|Chinesisch (traditionell) | `zh-Hant`|
-|Kornisch     |`kw`|
-|Korsisch      |`co`|
-|Krimtatarisch (Lateinisch)  |`crh`|
-|Tschechisch | `cs` |
-|Dänisch | `da` |
-|Niederländisch | `nl` |
-|Englisch (gedruckt und handschriftlich) | `en` |
-|Estnisch  |`et`|
-|Fidschi |`fj`|
-|Filipino  |`fil`|
-|Finnisch | `fi` |
-|Französisch | `fr` |
-|Friaulisch  | `fur` |
-|Galizisch   | `gl` |
-|Deutsch | `de` |
-|Gilbertese    | `gil` |
-|Grönländisch   | `kl` |
-|Haitianisches Kreolisch  | `ht` |
-|Hani  | `hni` |
-|Hmong Daw (Lateinisch) | `mww` |
-|Ungarisch | `hu` |
-|Indonesisch   | `id` |
-|Interlingual  | `ia` |
-|Inuktitut (Lateinisch)  | `iu`  |
-|Irisch    | `ga` |
-|Italienisch | `it` |
-|Japanisch | `ja` |
-|Javanisch | `jv` |
-|K’iche’  | `quc` |
-|Kabuverdianu | `kea` |
-|Kachin (Lateinisch) | `kac` |
-|Kara-Kalpak | `kaa` |
-|Kaschubisch | `csb` |
-|Khasi  | `kha` |
-|Koreanisch | `ko` |
-|Kurdisch (Lateinisch) | `kur` |
-|Luxemburgisch  | `lb` |
-|Malaiisch (Lateinisch)  | `ms` |
-|Manx  | `gv` |
-|Neapolitanisch   | `nap` |
-|Norwegisch | `no` |
-|Okzitanisch | `oc` |
-|Polnisch | `pl` |
-|Portugiesisch | `pt` |
-|Rätoromanisch  | `rm` |
-|Schotten  | `sco` |
-|Schottisch-Gälisch  | `gd` |
-|Slowenisch  | `slv` |
-|Spanisch | `es` |
-|Suaheli (Lateinisch)  | `sw` |
-|Schwedisch | `sv` | 
-|Tatarisch (Lateinisch)  | `tat` |
-|Tetum    | `tet` |
-|Türkisch | `tr` |
-|Obersorbisch  | `hsb` |
-|Usbekisch (Lateinisch)     | `uz` |
-|Volapük   | `vo` |
-|Walser    | `wae` |
-|Westfriesisch | `fy` |
-|Yukatekisches Maya | `yua` |
-|Zhuang | `za` |
-|Zulu  | `zu` |
+In den folgenden Listen werden die derzeit allgemein verfügbaren Sprachen in Version 2.1 und neue Vorschauversionen in der Vorschauversion 3.0 der Formularerkennung behandelt. Diese Sprachen werden von Layoutmodellen und benutzerdefinierten Modellen unterstützt. Das Vorschaurelease enthält unter Umständen Verbesserungen an den derzeit allgemein verfügbaren Sprachen.
 
-## <a name="prebuilt-receipt-and-business-card"></a>Vordefinierter Beleg und Visitenkarte
+> [!NOTE]
+> **Sprachcode optional**
+>
+> Die auf Deep Learning basierenden universellen Modelle der Formularerkennung extrahieren den gesamten mehrsprachigen Text in Ihren Dokumenten (einschließlich Textzeilen mit gemischten Sprachen) und erfordern keine Angabe eines Sprachcodes. Geben Sie den Sprachcode nicht als Parameter an, es sei denn, Sie sind sich hinsichtlich der Sprache sicher und möchten erzwingen, dass der Dienst nur das relevante Modell anwendet. Andernfalls gibt der Dienst möglicherweise unvollständigen und fehlerhaften Text zurück.
+
+Wenn Sie die Vorschausprachen in Layoutmodellen und benutzerdefinierten Modellen verwenden möchten, finden Sie im [Migrationshandbuch für die v3.0-REST-API](/v3-migration-guide.md#changes-to-the-rest-api-endpoints) Informationen zu den Unterschieden zur allgemein verfügbaren v2.1-API. Sehen Sie sich außerdem die Artikel [Schnellstart: Python-Clientbibliothek-SDKs für Formularerkennung v3.0 | Vorschau](quickstarts/try-v3-python-sdk.md) und [Erste Schritte: REST-API für Formularerkennung | Vorschau](quickstarts/try-v3-rest-api.md) an.
+
+### <a name="handwritten-languages"></a>Handschriftliche Sprachen
+In der folgenden Tabelle sind die handschriftlichen Sprachen aufgeführt, die von den Formularerkennungsfunktionen für Layoutmodelle und benutzerdefinierte Modelle unterstützt werden.
+
+|Sprache| Sprachcode (optional) | Vorschau?  |
+|:-----|:----:|:----:|
+|Englisch|`en`||
+|Chinesisch (vereinfacht) |`zh-Hans`| preview
+|Französisch |`fr`| preview
+|Deutsch |`de`| preview
+|Italienisch|`it`| preview
+|Portugiesisch |`pt`| preview
+|Spanisch |`es`| preview
+
+### <a name="print-languages"></a>Drucksprachen
+In der folgenden Tabelle sind die Drucksprachen aufgeführt, die von den Formularerkennungsfunktionen für Layoutmodelle und benutzerdefinierte Modelle unterstützt werden.
+
+|Sprache| Sprachcode (optional) | Vorschau? |
+|:-----|:----:|:----:|
+|Afrikaans|`af`||
+|Albanisch |`sq`||
+|Asturisch |`ast`| |
+|Aserbaidschanisch (Lateinisch) | `az` | preview |
+|Baskisch  |`eu`| |
+|Belarussisch (Kyrillisch) | `be` | preview |
+|Belarussisch (Lateinisch) | `be` | preview |
+|Bislama   |`bi`| |
+|Bosnisch (Lateinisch)   |`bs`| preview |
+|Bretonisch    |`br`| |
+|Bulgarisch |`bg`| preview |
+|Burjatisch (Kyrillisch)|`bua`| preview |
+|Katalanisch    |`ca`| |
+|Cebuano    |`ceb`| |
+|Chamorro  |`ch`| |
+|Chinesisch (vereinfacht) | `zh-Hans`| |
+|Chinesisch (traditionell) | `zh-Hant`| |
+|Kornisch     |`kw`| |
+|Korsisch      |`co`| |
+|Krimtatarisch (Lateinisch)|`crh`| |
+|Kroatisch |`hr`| preview |
+|Tschechisch | `cs` | |
+|Dänisch | `da` | |
+|Niederländisch | `nl` | |
+|Englisch | `en` | |
+|Ersjanisch (Kyrillisch) |`myv`| preview |
+|Estnisch  |`et`|  |
+|Färöisch |`fo`| preview |
+|Fidschi |`fj`| |
+|Filipino  |`fil`| |
+|Finnisch | `fi` | |
+|Französisch | `fr` | |
+|Friaulisch  | `fur` | |
+|Gagausisch (Lateinisch) |`gag`| preview |
+|Galizisch   | `gl` | |
+|Deutsch | `de` | |
+|Gilbertese    | `gil` | |
+|Grönländisch   | `kl` | |
+|Haitianisches Kreolisch  | `ht` | |
+|Hani  | `hni` | |
+|Hawaiianisch |`haw`| preview |
+|Hmong Daw (Lateinisch)| `mww` | |
+|Ungarisch | `hu` | |
+|Isländisch |`is`| preview |
+|Inari-Samisch |`smn`| preview |
+|Indonesisch   | `id` | |
+|Interlingual  | `ia` | |
+|Inuktitut (Lateinisch) | `iu` | |
+|Irisch    | `ga` | |
+|Italienisch | `it` | |
+|Japanisch | `ja` | |
+|Javanisch | `jv` | |
+|K'iche'  | `quc` | |
+|Kabuverdianu | `kea` | |
+|Kachin (Lateinisch) | `kac` | |
+|Karatschai-Balkarisch |`krc`| preview |
+|Karakalpakisch (Lateinisch) | `kaa` | |
+|Karakalpakisch (Kyrillisch) | `kaa-cyrl` | preview |
+|Kaschubisch | `csb` | |
+|Kasachisch (Kyrillisch) |`kk-cyrl`| preview |
+|Kasachisch (Lateinisch) |`kk-latn`| preview |
+|Khasi  | `kha` |  |
+|Koreanisch | `ko` | |
+|Korjakisch |`kpy`| preview |
+|Kosraeanisch |`kos`| preview |
+|Kumykisch (Kyrillisch) |`kum`| preview |
+|Kurdisch (lateinisch)| `kur` | |
+|Kirgisisch (Kyrillisch) |`ky`| preview |
+|Lakota |`lkt`| preview |
+|Lateinisch|`la`| preview |
+|Litauisch|`lt`| preview |
+|Niedersorbisch|`dsb`| preview |
+|Lule-Samisch|`smj`| preview |
+|Luxemburgisch  | `lb` |  |
+|Malaiisch (Lateinisch) | `ms` |  |
+|Maltesisch|`mt`| preview |
+|Manx  | `gv` |  |
+|Maori|`mi`| preview |
+|Mongolisch (Kyrillisch)|`mn`| preview |
+|Montenegrinisch (Kyrillisch)|`cnr-cyrl`| preview |
+|Montenegrinisch (Lateinisch)|`cnr-latn`| preview |
+|Neapolitanisch   | `nap` | |
+|Niue|`niu`| preview |
+|Nogaisch|`nog`| preview |
+|Nordsamisch (Lateinisch)|`sme`| preview |
+|Norwegisch | `no` |  |
+|Okzitanisch | `oc` | |
+|Ossetisch|`os`| preview |
+|Polnisch | `pl` | |
+|Portugiesisch | `pt` | |
+|Ripuarisch|`ksh`| preview |
+|Rumänisch | `ro` | preview |
+|Rätoromanisch  | `rm` | |
+|Russisch | `ru` | preview |
+|Samoanisch (Lateinisch)|`sm`| preview |
+|Schotten  | `sco` | |
+|Schottisch-Gälisch  | `gd` | |
+|Serbisch (Lateinisch) | `sr-latn` | preview |
+|Skolt-Samisch|`sms`| preview |
+|Slowakisch | `sk` | preview |
+|Slowenisch  | `slv` | |
+|Südsamisch|`sma`| preview |
+|Spanisch | `es` | |
+|Suaheli (Lateinisch)  | `sw` | |
+|Schwedisch | `sv` | |
+|Tadschikisch (Kyrillisch)|`tg`| preview |
+|Tatarisch (Lateinisch)  | `tat` | |
+|Tetum    | `tet` |  |
+|Tongaisch|`to`|(Vorschauversion) |
+|Türkisch | `tr` | |
+|Turkmenisch (Lateinisch)|`tk`| preview |
+|Tuwinisch|`tyv`| preview |
+|Obersorbisch  | `hsb` | |
+|Usbekisch (kyrillisch)  | `uz-cyrl` |  |
+|Usbekisch (Lateinisch)     | `uz` |  |
+|Volapük   | `vo` | |
+|Walser    | `wae` |  |
+|Walisisch     | `cy` | preview |
+|Westfriesisch | `fy` |  |
+|Yukatekisches Maya | `yua` |  |
+|Zhuang | `za` | |
+|Zulu  | `zu` |  |
+
+## <a name="receipt-and-business-card-models"></a>Beleg- und Visitenkartenmodelle
 
 >[!NOTE]
  > Es ist nicht erforderlich, ein Gebietsschema anzugeben. Dies ist ein optionaler Parameter. Die Deep Learning-Technologie der Formularerkennung erkennt automatisch die Sprache des Texts in Ihrem Bild.
@@ -116,15 +190,22 @@ Vordefinierte Belege und Visitenkarten unterstützen alle englischen Belege und 
 |Englisch (Indien)|`en-in`|
 |Englisch (USA)| `en-us`|
 
-## <a name="prebuilt-invoice"></a>Vordefinierte Rechnung
+## <a name="invoice-model"></a>Rechnungsmodell
 
 Sprache| Code des Gebietsschemas |
 |:-----|:----:|
 |Englisch (USA)|de-de|
 
-## <a name="prebuilt-identity-documents"></a>Vordefinierte Identitätsdokumente
+## <a name="id-documents"></a>Ausweisdokumente
 
 Diese Technologie ist derzeit für US-Führerscheine und die biografische Seite von internationalen Reisepässen (ohne Visa und andere Reisedokumente) verfügbar.
 
 > [!div class="nextstepaction"]
 > [Formularerkennung ausprobieren](https://aka.ms/fott-2.1-ga)
+
+## <a name="general-document"></a>Allgemeines Dokument
+
+Sprache| Code des Gebietsschemas |
+|:-----|:----:|
+|Englisch (USA)|de-de|
+

@@ -9,12 +9,12 @@ ms.subservice: certificates
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: fb69068ddac311a8020a76eec9b18fab3256fea6
-ms.sourcegitcommit: 6686a3d8d8b7c8a582d6c40b60232a33798067be
+ms.openlocfilehash: 09161b73c177642b327ed8bd57cbff13229085a4
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107752532"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130042124"
 ---
 # <a name="about-azure-key-vault-certificates"></a>Informationen zu Azure Key Vault-Zertifikaten
 
@@ -154,6 +154,19 @@ Zertifikatkontakte enthalten Kontaktinformationen zum Senden von Benachrichtigun
 ## <a name="certificate-access-control"></a>Zertifikatzugriffssteuerung
 
  Die Zugriffssteuerung für Zertifikate wird von Key Vault verwaltet und wird von der Key Vault-Instanz bereitgestellt, die diese Zertifikate enthält. Die Zugriffssteuerungsrichtlinie für Zertifikate unterscheidet sich von der Zugriffssteuerungsrichtlinie für Schlüssel und Geheimnisse im selben Key Vault. Benutzer können einen oder mehrere Tresore zum Speichern von Zertifikaten erstellen und müssen für eine dem Szenario entsprechende Segmentierung und Verwaltung von Zertifikaten sorgen.  Weitere Informationen zur Zertifikatzugriffssteuerung finden Sie [hier](certificate-access-control.md).
+
+
+## <a name="certificate-use-cases"></a>Anwendungsfälle für Zertifikate
+
+### <a name="secure-communication-and-authentication"></a>Sichere Kommunikation und Authentifizierung
+
+TLS-Zertifikate können dabei helfen, die Kommunikation über das Internet zu verschlüsseln und die Identität von Websites einzurichten. Dadurch werden der Einstiegspunkt und der Kommunikationsmodus geschützt.  Darüber hinaus kann mit einem von einer öffentlichen Zertifizierungsstelle signierten verketteten Zertifikat überprüft werden, ob die Entitäten mit den Zertifikaten, diejenigen sind, die sie zu sein vorgeben. Nachfolgend werden beispielsweise einige hervorragende Anwendungsfälle für die Verwendung von Zertifikaten zum Sichern der Kommunikation und zum Aktivieren der Authentifizierung beschrieben:
+* Intranet-/Internetwebsites: Schützen Sie den Zugriff auf Ihre Intranetwebsite, und stellen Sie mit TLS-Zertifikaten eine verschlüsselte Datenübertragung über das Internet sicher.
+* IoT- und Netzwerkgeräte: Schützen Sie Ihre Geräte mithilfe von Zertifikaten für die Authentifizierung und Kommunikation.
+* Cloud/mehrere Clouds: Schützen Sie cloudbasierte Anwendungen lokal, cloudübergreifend oder im Mandanten Ihres Cloudanbieters.
+
+### <a name="code-signing"></a>Codesignierung
+Ein Zertifikat kann zum Schutz des Codes bzw. Skripts der Software beitragen und so sicherstellen, dass der Autor die Software über das Internet freigeben kann, ohne dass er durch böswillige Entitäten geändert wird. Sobald der Autor den Code mithilfe eines Zertifikats signiert, das die Codesignaturtechnologie nutzt, wird die Software darüber hinaus mit einem Authentifizierungsstempel gekennzeichnet, der den Autor und seine Website anzeigt. Aus diesem Grund hilft das bei der Codesignierung verwendete Zertifikat dabei, die Authentizität der Software zu überprüfen und die End-to-End-Sicherheit zu fördern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

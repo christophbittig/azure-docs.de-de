@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 09/15/2021
+ms.date: 10/13/2021
 ms.author: banders
-ms.openlocfilehash: 4e494b38bea9b799a6a2ee82b3fbb9847446d699
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: db7dbf6da5405b0b86a6231b31572cfeaffe12f0
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128611706"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130000193"
 ---
 # <a name="terms-in-the-azure-usage-and-charges-file-for-a-microsoft-customer-agreement"></a>Begriffe in der Datei zu Azure-Nutzung und -Gebühren für eine Microsoft-Kundenvereinbarung
 
@@ -97,7 +97,7 @@ Abonnement-ID | Der eindeutige Bezeichner für das Abonnement, für das die Geb�
 subscriptionName | Der Name des Abonnements, für das die Gebühren anfallen
 reservationId | Der eindeutige Bezeichner für die erworbene Reservierungsinstanz
 reservationName | Der Name der erworbenen Reservierungsinstanz
-publisherType | Die Art des Herausgebers (Werte: firstParty, thirdPartyReseller, thirdPartyAgency)
+publisherType | Microsoft/Azure-, Marketplace- und AWS-Kosten.  Werte sind `Microsoft` für Konten mit Microsoft-Kundenvereinbarung und `Azure` für EA-Konten und Konten mit nutzungsbasierter Bezahlung.
 publisherName | Der Herausgeber für Marketplace-Dienste
 resourceGroupId | Der eindeutiger Bezeichner für die der Ressourcengruppe zugeordnete Ressource
 resourceGroupName | Der Name der Ressourcengruppe, die der Ressource zugeordnet ist

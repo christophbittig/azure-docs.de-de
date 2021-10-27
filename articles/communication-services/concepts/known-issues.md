@@ -8,12 +8,12 @@ ms.author: rifox
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 73a30e7052faaaa644511fec65796a4575e5ab4a
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 3016fb18827c0c1323cb151024303a15a2454c5a
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123259140"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130177933"
 ---
 # <a name="known-issues"></a>Bekannte Probleme
 Dieser Artikel enthält Informationen zu Einschränkungen und bekannten Problemen im Zusammenhang mit Azure Communication Services Calling SDKs und Azure Communication Services-APIs für die Anrufautomatisierung.
@@ -127,6 +127,8 @@ Entwicklern wird empfohlen, folgende Schritte zu unternehmen:
 ##### <a name="possible-causes"></a>Mögliche Ursachen
 In einigen Browsern (z. B. Safari) hat das Abrufen Ihres eigenen Datenstroms vom selben Gerät den Nebeneffekt, dass Racebedingungen eintreten. Das Abrufen von Datenströmen von anderen Geräten kann dazu führen, dass der Benutzer nicht über genügend USB-/E/A-Bandbreite verfügt und die „SourceUnavailableError“-Rate extrem steigt.  
 
+#### <a name="support-for-simulcast"></a>Unterstützung für Simulcast
+Simulcast ist ein Verfahren, bei dem ein Client denselben Videostream zweimal in unterschiedlichen Auflösungen und Bitraten codiert und die ACS-Infrastruktur entscheiden lässt, welchen Stream ein Client empfangen soll. Das ACS-Anrufbibliothek-SDK für Windows, Android oder iOS unterstützt das Senden von Simulcast-Streams. Das ACS-Web-SDK unterstützt derzeit nicht das Senden von Simulcast-Streams.
 
 ## <a name="azure-communication-services-call-automation-apis"></a>Azure Communication Services-APIs für die Anrufautomatisierung
 

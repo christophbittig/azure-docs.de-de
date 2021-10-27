@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: overview
 ms.date: 02/17/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 74d08095b8ea1df0ffb34264c2f0ca3af64b5dd8
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: ef1725161630e4a79b078a3c473f56e3d14a06ca
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122772693"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129994516"
 ---
 # <a name="about-keys"></a>Informationen zu Schlüsseln
 
@@ -59,17 +59,17 @@ Key Vault unterstützt RSA- und EC-Schlüssel. Verwaltete HSMs unterstützen RSA
 
 |Schlüsseltyp|Tresore (nur Premium-SKU)|Verwaltete HSMs|
 |--|--|--|
-|**EC-HSM**: Elliptic Curve-Schlüssel | Unterstützt | Unterstützt|
-|**RSA-HSM**: RSA-Schlüssel|Unterstützt|Unterstützt|
-|**oct-HSM**: symmetrischer Schlüssel|Nicht unterstützt|Unterstützt|
+|**EC-HSM**: Elliptic Curve-Schlüssel | Unterstützt (P-256, P-384, P-521, P-256K)| Unterstützt (P-256, P-256K, P-384, P-521)|
+|**RSA-HSM**: RSA-Schlüssel|Unterstützt (2048 Bit, 3072 Bit, 4096 Bit)|Unterstützt (2048 Bit, 3072 Bit, 4096 Bit)|
+|**oct-HSM**: symmetrischer Schlüssel|Nicht unterstützt|Unterstützt (128 Bit, 192 Bit, 256 Bit)|
 |||
 
 ### <a name="software-protected-keys"></a>Softwaregeschützte Schlüssel
 
 |Schlüsseltyp|Tresore|Verwaltete HSMs|
 |--|--|--|
-**RSA**: Softwaregeschützter RSA-Schlüssel|Unterstützt|Nicht unterstützt
-**EC**: Softwaregeschützter Elliptic Curve-Schlüssel.|Unterstützt|Nicht unterstützt
+**RSA**: Softwaregeschützter RSA-Schlüssel|Unterstützt (2048 Bit, 3072 Bit, 4096 Bit)|Nicht unterstützt
+**EC**: Softwaregeschützter Elliptic Curve-Schlüssel. |Unterstützt (P-256, P-384, P-521, P-256K)|Nicht unterstützt
 |||
 
 ### <a name="compliance"></a>Kompatibilität

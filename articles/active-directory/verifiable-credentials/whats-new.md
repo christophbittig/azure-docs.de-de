@@ -1,18 +1,19 @@
 ---
-title: Neuerungen im Azure Active Directory-Nachweisdienst
+title: Neuerungen für den Azure Active Directory-Nachweisdienst (Vorschau)
 description: Aktuelle Updates für Azure Active Directory-Nachweise
 author: barclayn
+manager: karenh444
 ms.service: active-directory
 ms.subservice: verifiable-credentials
 ms.topic: reference
 ms.date: 10/08/2021
 ms.author: barclayn
-ms.openlocfilehash: 44c3d652671b83a34e5884b02558a79453ac4424
-ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
+ms.openlocfilehash: 42194075a3f97c13a3c45535ba68d2b4d23de0b8
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129730621"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129984913"
 ---
 # <a name="whats-new-in-azure-active-directory-verifiable-credentials-preview"></a>Neuerungen im Azure Active Directory-Nachweisdienst (Vorschau)
 
@@ -22,8 +23,9 @@ In diesem Dokument finden Sie die neuesten Features, Verbesserungen und Änderun
 
 **Öffentliche Vorschau der Anforderungsdienst-API.**
 
-Mit der neuen [Anforderungsdienst-API](get-started-request-api.md) können Entwickler auf einfache Weise Anwendungen erstellen, die Nachweise ausstellen und/oder überprüfen können, wobei eine beliebige Programmiersprache verwendet werden kann. Diese neue REST-API bietet eine verbesserte Abstraktionsschicht und Integration in den Azure AD-Nachweisdienst.
-Mit der Veröffentlichung der Anforderungsdienst-API wenden wir uns von unserem ursprünglichen NodeJS-basierten SDK ab, und wir empfehlen Ihnen dringend, die API zu verwenden, weil das NodeJS SDK in den nächsten Monaten eingestellt wird. Unsere Dokumentation und Beispiele wurden für die Verwendung der Anforderungsdienst-API aktualisiert. Erfahren Sie mehr über die [Anforderungsdienst-API](get-started-request-api.md).
+- Mit der neuen [Anforderungsdienst-API](get-started-request-api.md) können Entwickler auf einfache Weise Anwendungen erstellen, die Nachweise ausstellen und überprüfen können, wobei eine beliebige Programmiersprache verwendet werden kann. Diese neue REST-API bietet eine verbesserte Abstraktionsschicht und Integration in den Azure AD-Nachweisdienst.
+
+- Mit der Veröffentlichung der Anforderungsdienst-API wenden wir uns von unserem ursprünglichen NodeJS-basierten SDK ab, und wir empfehlen Ihnen dringend, die API zu verwenden, weil das NodeJS SDK in den nächsten Monaten eingestellt wird. Unsere Dokumentation und Beispiele wurden für die Verwendung der Anforderungsdienst-API aktualisiert. Erfahren Sie mehr über die [Anforderungsdienst-API](get-started-request-api.md).
 
 ## <a name="april-2021"></a>April 2021
 

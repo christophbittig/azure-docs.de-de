@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 09/09/2021
 ms.custom: template-quickstart
 keywords: Kubernetes, Arc, Azure, Cluster
-ms.openlocfilehash: 10c97945a78867d92b9ed4887e9655d49b195e33
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 6716ae8b85893b9af4b439ea76eca631bff525bf
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129273759"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130066450"
 ---
 # <a name="quickstart-connect-an-existing-kubernetes-cluster-to-azure-arc"></a>Schnellstart: Herstellen einer Verbindung eines vorhandenen Kubernetes-Clusters mit Azure Arc
 
@@ -27,7 +27,7 @@ In diesem Schnellstart lernen Sie die Vorteile von Azure Arc-aktiviertem Kuberne
 
 * [Installieren oder aktualisieren Sie Azure CLI](/cli/azure/install-azure-cli) auf eine Version >= 2.16.0
 
-* Installieren Sie die Azure CLI-Erweiterung **connectedk8s** von Version >= 1.0.0:
+* Installieren Sie mindestens Version 1.2.0 der Azure CLI-Erweiterung **connectedk8s**:
 
   ```console
   az extension add --name connectedk8s
@@ -48,8 +48,6 @@ In diesem Schnellstart lernen Sie die Vorteile von Azure Arc-aktiviertem Kuberne
 
 * Eine `kubeconfig`-Datei und ein Kontext, der auf Ihren Cluster verweist.
 * Lese- und Schreibberechtigungen für den Azure Arc-aktivierten Kubernetes-Ressourcentyp (`Microsoft.Kubernetes/connectedClusters`).
-
-* Installieren Sie [Helm 3](https://helm.sh/docs/intro/install). Stellen Sie sicher, dass die Helm 3-Version &lt; 3.7.0 ist.
 
 ### <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
@@ -87,8 +85,8 @@ In diesem Schnellstart lernen Sie die Vorteile von Azure Arc-aktiviertem Kuberne
 ## <a name="meet-network-requirements"></a>Erfüllen von Netzwerkanforderungen
 
 > [!IMPORTANT]
-> Azure Arc-Agents müssen über beide der folgenden Protokolle/Ports/Ausgehende URLs verfügen, um funktionieren zu können:
-> * TCP an Port 443: `https://:443`
+> Azure Arc-Agents müssen über die folgenden ausgehenden URLs unter `https://:443` verfügen, um zu funktionieren:
+> Für `*.servicebus.windows.net` müssen Websockets für den ausgehenden Zugriff auf die Firewall und den Proxy aktiviert werden.
 
 | Endpunkt (DNS) | BESCHREIBUNG |
 | ----------------- | ------------- |
@@ -99,6 +97,7 @@ In diesem Schnellstart lernen Sie die Vorteile von Azure Arc-aktiviertem Kuberne
 | `https://gbl.his.arc.azure.com` (für Azure Cloud), `https://gbl.his.arc.azure.us` (für Azure US Government) |  Erforderlich, um den regionalen Endpunkt zum Abrufen von Zertifikaten systemseitig zugewiesener verwalteter Identitäten per Pull zu erhalten. |
 | `https://*.his.arc.azure.com` (für Azure Cloud), `https://usgv.his.arc.azure.us` (für Azure US Government) |  Erforderlich zum Pullen vom System zugewiesener Zertifikate für verwaltete Identitäten. |
 |`*.servicebus.windows.net`, `guestnotificationservice.azure.com`, `*.guestnotificationservice.azure.com`, `sts.windows.net` | Für Szenarien, die auf [Cluster Connect](cluster-connect.md) und [benutzerdefinierten Speicherorten](custom-locations.md) basieren. |
+|`https://k8connecthelm.azureedge.net` | `az connectedk8s connect` verwendet Helm 3 zum Bereitstellen von Azure Arc-Agents im Kubernetes-Cluster. Dieser Endpunkt wird für den Helm-Clientdownload benötigt, um die Bereitstellung des Helm-Charts für den Agent zu vereinfachen. |
 
 ## <a name="1-register-providers-for-azure-arc-enabled-kubernetes"></a>1. Registrieren von Anbietern für Kubernetes mit Azure Arc-Unterstützung
 

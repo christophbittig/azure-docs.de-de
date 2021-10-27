@@ -41,10 +41,6 @@
 - name: Konzepte
   expanded: true
   items:
-    - name: Bewährte Methoden für die App-Verwaltung
-      href: application-management-fundamentals.md
-    - name: Allgemeine App-Verwaltungsszenarien
-      href: common-scenarios.md
     - name: Richtlinie zur Startbereichsermittlung
       href: home-realm-discovery-policy.md
     - name: Planen der Integration von Cloud-Apps
@@ -148,8 +144,10 @@
               href: f5-aad-integration.md
             - name: Bereitstellung von F5 BIG-IP VE in Azure IaaS
               href: f5-bigip-deployment-guide.md
-            - name: F5 Big-IP mit Azure AD für kennwortloses VPN
+            - name: F5 BIG-IP mit Azure AD für kennwortloses VPN
               href: f5-aad-password-less-vpn.md
+            - name: F5 BIG-IP mit Azure AD für einmaliges Anmelden mit formularbasierter Authentifizierung
+              href: f5-big-ip-forms-advanced.md
         - name: Silverfort
           href: silverfort-azure-ad-integration.md
     - name: Einmaliges Anmelden

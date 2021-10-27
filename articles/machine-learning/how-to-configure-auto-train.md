@@ -11,12 +11,12 @@ ms.subservice: automl
 ms.date: 09/27/2021
 ms.topic: how-to
 ms.custom: devx-track-python,contperf-fy21q1, automl, contperf-fy21q4, FY21Q4-aml-seo-hack, contperf-fy22q1
-ms.openlocfilehash: 340c558d695a9a63bc5fe818e48b6f6ed76df144
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 473cf460460bf6fb13353587d49509cb192219b7
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129429165"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130044647"
 ---
 # <a name="set-up-automl-training-with-python"></a>Einrichten von AutoML-Training mit Python
 
@@ -44,7 +44,7 @@ Für diesen Artikel ist Folgendes erforderlich:
 
 ## <a name="select-your-experiment-type"></a>Auswählen der Experimentart
 
-Legen Sie vor Experimentbeginn fest, welche Art von Problem des maschinellen Lernens Sie lösen möchten. Das automatisierte maschinelle Lernen unterstützt die Aufgabentypen `classification`, `regression` und `forecasting`. Weitere Informationen zu [Aufgabentypen](concept-automated-ml.md#when-to-use-automl-classification-regression--forecasting)
+Legen Sie vor Experimentbeginn fest, welche Art von Problem des maschinellen Lernens Sie lösen möchten. Das automatisierte maschinelle Lernen unterstützt die Aufgabentypen `classification`, `regression` und `forecasting`. Weitere Informationen zu [Aufgabentypen](concept-automated-ml.md#when-to-use-automl-classification-regression-forecasting--computer-vision)
 
 Der folgende Code nutzt den Parameter `task` im Konstruktor `AutoMLConfig`, um den Experimenttyp `classification` anzugeben.
 
@@ -200,6 +200,7 @@ Klassifizierung | Regression | Zeitreihe und Vorhersage
 ||| Average
 ||| SeasonalAverage
 ||| [ExponentialSmoothing](https://www.statsmodels.org/v0.10.2/generated/statsmodels.tsa.holtwinters.ExponentialSmoothing.html)
+||| Arimax
 
 ### <a name="primary-metric"></a>Primary metric (Primäre Metrik)
 

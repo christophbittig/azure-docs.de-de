@@ -6,12 +6,12 @@ ms.author: sunaray
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/26/2021
-ms.openlocfilehash: 95cc91298945c50174f1edec6ca766e3f7df59c8
-ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
+ms.openlocfilehash: 276bcd288f519a5060f859bf6b5a74c0453e7c79
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129153727"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129994060"
 ---
 # <a name="high-availability-in-azure-database-for-mysql---flexible-server-preview"></a>Hochverfügbarkeit in Azure Database for MySQL Flexible Server (Vorschau)
 
@@ -120,7 +120,7 @@ Auf Protokolle im ZRS kann auch dann zugegriffen werden, wenn der primäre Serve
 **Muss ich nach einem Failover Maßnahmen ergreifen?**</br>
 Failover sind für die Clientanwendung vollständig transparent. Sie müssen keine Maßnahmen ergreifen. Die Anwendungen sollten lediglich die Wiederholungslogik für ihre Verbindungen nutzen. </br>
 **Was geschieht, wenn ich keine spezifische Zone für mein Standbyreplikat auswähle? Kann ich die Zone später ändern?**</br>
-Wenn Sie keine Zone auswählen, wird nach dem Zufallsprinzip eine Zone ausgewählt. Dies ist nicht die Zone, die für den primären Server verwendet wird. Um die Zone später zu ändern, können Sie den **Hochverfügbarkeitsmodus** auf **Deaktiviert** festlegen und dann im Bereich **Hochverfügbarkeit** die **Zonenredundanz** mit einer Zone Ihrer Wahl erneut aktivieren.</br>
+Wenn Sie keine Zone auswählen, wird nach dem Zufallsprinzip eine Zone ausgewählt. Dies ist nicht die Zone, die für den primären Server verwendet wird. Um die Zone später zu ändern, können Sie **Hochverfügbarkeit** auf **Deaktiviert** festlegen und dann im Bereich **Hochverfügbarkeit** die **Zonenredundanz** mit einer Zone Ihrer Wahl erneut aktivieren.</br>
 **Erfolgt die Replikation zwischen dem primären Replikat und den Standbyreplikaten synchron?**</br>
  Die Replikation zwischen dem primären Replikat und dem Standbyreplikat ähnelt dem [semisynchronen Modus](https://dev.mysql.com/doc/refman/5.7/en/replication-semisync.html) von MySQL. Wenn eine Transaktion committet wird, erfolgt nicht unbedingt ein Commit auf den Standbyserver. Wenn das primäre Replikat jedoch nicht verfügbar ist, repliziert der Standbyserver alle Datenänderungen aus dem primären Replikat, um sicherzustellen, dass keine Datenverluste auftreten.</br> 
 **Wird bei allen ungeplanten Ausfällen ein Failover auf das Standbyreplikat durchgeführt?**</br>
@@ -132,7 +132,7 @@ Geplante Ereignisse wie die Computeskalierung und Nebenversionsupgrades werden g
 **Kann ich eine Zeitpunktwiederherstellung (Point-in-Time Restore, PITR) für meinen Hochverfügbarkeitsserver durchführen?**</br>
 Sie können eine [Zeitpunktwiederherstellung](./concepts-backup-restore.md#point-in-time-restore) für Azure Database for MySQL Flexible Server mit aktivierter Hochverfügbarkeit auf eine neue Azure Database for MySQL Flexible Server-Instanz mit deaktivierter Hochverfügbarkeit durchführen. Wenn der Quellserver mit zonenredundanter Hochverfügbarkeit erstellt wurde, können Sie später die zonenredundante Hochverfügbarkeit oder Hochverfügbarkeit in gleicher Zone für den wiederhergestellten Server aktivieren. Wenn der Quellserver mit Hochverfügbarkeit in gleicher Zone erstellt wurde, können Sie für den wiederhergestellten Server nur Hochverfügbarkeit in gleicher Zone aktivieren.</br>
 **Kann ich Hochverfügbarkeit auf einem Server aktivieren, nachdem der Server erstellt wurde?**</br>
-Nach dem Erstellen des Servers können Sie die Hochverfügbarkeit in gleicher Zone aktivieren. Die zonenredundante Hochverfügbarkeit muss während der Erstellung des Servers aktiviert werden.</br> 
+Die zonenredundante Hochverfügbarkeit muss während der Erstellung des Servers aktiviert werden. Nach dem Erstellen des Servers können Sie die Hochverfügbarkeit in gleicher Zone aktivieren. Bevor Sie die Hochverfügbarkeit für dieselbe Zone aktivieren, stellen Sie sicher, dass die Serverparameter „enforce_gtid_consistency“ und [gtid_mode](./concepts-read-replicas.md#global-transaction-identifier-gtid) auf ON festgelegt sind.</br> 
 **Kann ich die Hochverfügbarkeit für einen Server deaktivieren, nachdem dieser erstellt wurde?** </br>
 Sie können die Hochverfügbarkeit für einen Server deaktivieren, nachdem dieser erstellt wurde. Die Abrechnung wird sofort beendet.  </br>
 **Wie kann ich die Downtime verkürzen?**</br>
@@ -150,6 +150,8 @@ Die Datenreplikation wird für Hochverfügbarkeitsserver nicht unterstützt. Die
 **Kann ich während eines Serverneustarts oder beim Hoch- bzw. Herunterskalieren ein Failover auf den Standbyserver durchführen, um die Downtime zu verringern?** </br>
 Wenn Sie derzeit einen Vorgang zum Hoch- oder Herunterskalieren durchführen, werden Standby- und primärer Server gleichzeitig skaliert. Ein Failover ist also nicht hilfreich. Die Möglichkeit, zunächst den Standbyserver hochzuskalieren und dann nach dem Failover den primären Server hochzuskalieren ist Teil unserer Roadmap, wird derzeit aber noch nicht unterstützt.</br>
 
+**Können wir den Verfügbarkeitsmodus (zonenredundante Hochverfügbarkeit/selbe Zone) des Servers ändern?** </br>
+Wenn Sie den Server mit aktiviertem zonenredundanten Hochverfügbarkeitsmodus erstellen, können Sie von der zonenredundanten Hochverfügbarkeit in dieselbe Zone und umgekehrt wechseln. Um den Hochverfügbarkeitsmodus später zu ändern, können Sie im Bereich **Hochverfügbarkeit** die Option **Hochverfügbarkeit** auf **Deaktiviert** festlegen und dann wieder auf **Zonenredundanz bzw. dieselbe Zone** zurücksetzen und **Hochverfügbarkeitsmodus** auswählen.</br>  
 
 ## <a name="next-steps"></a>Nächste Schritte
 

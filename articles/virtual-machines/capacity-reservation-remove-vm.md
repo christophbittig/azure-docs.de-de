@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/09/2021
 ms.reviewer: cynthn, jushiman
 ms.custom: template-how-to
-ms.openlocfilehash: 546215d70341402fcc66d2865d291211960cb4a1
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f0c84e4b44218aa4f7659376251d1931ffc9516b
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128557060"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130063619"
 ---
 # <a name="remove-a-vm-association-from-a-capacity-reservation-group-preview"></a>Entfernen einer VM-Zuordnung aus einer Kapazitätsreservierungsgruppe (Vorschauversion)
 
@@ -28,11 +28,6 @@ Es gibt es zwei Möglichkeiten, eine Zuordnung zu ändern:
 > [!IMPORTANT]
 > Die Kapazitätsreservierung befindet sich derzeit in der öffentlichen Vorschau.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-## <a name="register-for-capacity-reservation"></a>Registrieren für Kapazitätsreservierung 
-
-Bevor Sie das Feature zur Kapazitätsreservierung verwenden können, müssen Sie [Ihr Abonnement für die Vorschauversion registrieren](capacity-reservation-overview.md#register-for-capacity-reservation). Die Registrierung kann mehrere Minuten dauern. Sie können die Azure CLI oder PowerShell verwenden, um die Featureregistrierung abzuschließen.
-
 
 ## <a name="deallocate-the-vm"></a>Aufheben der Zuordnung der VM
 
@@ -78,6 +73,27 @@ Als erste Option können Sie die Zuordnung des virtuellen Computers aufheben, di
 1. Wählen Sie **Konfiguration** aus.
 1. Legen Sie den Wert der **Kapazitätsreservierungsgruppe** auf *Keiner* fest.
     - Der virtuelle Computer ist nicht mehr der Kapazitätsreservierungsgruppe zugeordnet. 
+
+### <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/cli1)
+
+1. Heben Sie die Zuordnung des virtuellen Computers auf.
+
+    ```azurecli-interactive
+    az vm deallocate 
+    -g myResourceGroup 
+    -n myVM
+    ```
+
+    Nachdem sich der Status in **Beendet (Nicht zugewiesen)** ändert, wissen Sie, dass die VM nicht mehr zugewiesen ist.
+
+1. Aktualisieren Sie die VM, um die Zuordnung zur Kapazitätsreservierungsgruppe zu entfernen, indem Sie die Eigenschaft `capacity-reservation-group` auf „Keine“ festlegen:
+
+    ```azurecli-interactive
+    az vm update 
+    -g myresourcegroup 
+    -n myVM 
+    --capacity-reservation-group None
+    ```
 
 ### <a name="powershell"></a>[PowerShell](#tab/powershell1)
 
@@ -173,6 +189,28 @@ Diese Option funktioniert gut, wenn die Zuordnung des virtuellen Computers nicht
 1. Wählen Sie Ihren virtuellen Computer aus, und klicken Sie auf **Konfiguration**.
 1. Legen Sie den Wert der **Kapazitätsreservierungsgruppe** auf *Keiner* fest.
     - Beachten Sie: Der virtuelle Computer ist nicht mehr der Kapazitätsreservierungsgruppe zugeordnet.
+
+### <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/cli2)
+
+1. Aktualisieren der reservierten Menge auf null
+
+   ```azurecli-interactive
+   az capacity reservation update 
+   -g myResourceGroup
+   -c myCapacityReservationGroup 
+   -n myCapacityReservation 
+   --capacity 0
+   ```
+
+1. Aktualisieren Sie die VM, um die Zuordnung zur Kapazitätsreservierungsgruppe zu entfernen, indem Sie die Eigenschaft `capacity-reservation-group` auf „Keine“ festlegen:
+
+    ```azurecli-interactive
+    az vm update 
+    -g myresourcegroup 
+    -n myVM 
+    --capacity-reservation-group None
+    ```
+
 
 ### <a name="powershell"></a>[PowerShell](#tab/powershell2)
 

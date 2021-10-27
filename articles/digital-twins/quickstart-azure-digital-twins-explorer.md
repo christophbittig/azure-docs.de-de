@@ -1,24 +1,24 @@
 ---
 title: 'Schnellstart: Erste Schritte mit Azure Digital Twins-Explorer'
 titleSuffix: Azure Digital Twins
-description: 'Schnellstart: Verwenden des Azure Digital Twins-Explorer-Beispiels, um ein vordefiniertes Szenario zu visualisieren und zu untersuchen.'
+description: In dieser Demo erfahren Sie, wie Sie Azure Digital Twins-Explorer verwenden. Sie nutzen Modelle, um Zwillinge zu instanziieren und mit dem Zwillingsgraphen zu interagieren.
 author: baanders
 ms.author: baanders
-ms.date: 4/27/2021
+ms.date: 10/4/2021
 ms.topic: quickstart
 ms.service: digital-twins
-ms.openlocfilehash: 92b1eeb5317f5a7535406d1b3781a4b0b66cad45
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 174efb47f8770496fbac8fa781b26b93c1b6b601
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129272451"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130133023"
 ---
 # <a name="quickstart---get-started-with-a-sample-scenario-in-azure-digital-twins-explorer"></a>Schnellstart: Erste Schritte mit einem Beispielszenario in Azure Digital Twins-Explorer
 
-Mit Azure Digital Twins können Sie Livemodelle Ihrer realen Umgebungen erstellen und mit ihnen interagieren. Zuerst modellieren Sie einzelne Elemente als **digitale Zwillinge**. Anschließend verbinden Sie sie mit einem **Wissensgraphen**, der auf Liveereignisse reagieren und nach Informationen abgefragt werden kann.
+In diesem Schnellstart untersuchen Sie einen vordefinierten Azure Digital Twins-Graphen mit [Azure Digital Twins-Explorer](concepts-azure-digital-twins-explorer.md). Mit diesem Tool können Sie Ihre Azure Digital Twins-Daten innerhalb des Azure-Portals visualisieren und mit ihnen interagieren.
 
-In diesem Schnellstart untersuchen Sie einen vordefinierten Azure Digital Twins-Graphen mit [Azure Digital Twins-Explorer](concepts-azure-digital-twins-explorer.md). Mit diesem Tool können Sie Ihre Azure Digital Twins-Daten innerhalb des Azure-Portals visualisieren und mit ihnen interagieren. 
+Mit Azure Digital Twins können Sie Livemodelle Ihrer realen Umgebungen erstellen und mit ihnen interagieren. Diese können Teil größerer IoT-Lösungen sein. Zuerst modellieren Sie einzelne Elemente als **digitale Zwillinge**. Anschließend verbinden Sie sie mit einem **Wissensgraphen**, der auf Liveereignisse reagieren und nach Informationen abgefragt werden kann.
 
 Sie führen die folgenden Schritte aus:
 
@@ -28,7 +28,7 @@ Sie führen die folgenden Schritte aus:
 1. Vornehmen von Änderungen am Graphen.
 1. Überprüfen Ihrer Erkenntnisse aus dieser Erfahrung.
 
-Der Beispielgraph, den Sie verwenden, stellt ein Gebäude mit zwei Etagen und zwei Räumen dar. Floor0 enthält Room0, Floor1 enthält Room1. Der Graph sieht wie die folgende Abbildung aus:
+Der Azure Digital Twins-Beispielgraph, den Sie verwenden, stellt ein Gebäude mit zwei Etagen und zwei Räumen dar. Floor0 enthält Room0, Floor1 enthält Room1. Der Graph sieht wie die folgende Abbildung aus:
 
 :::image type="content" source="media/quickstart-azure-digital-twins-explorer/graph-view-full.png" alt-text="Screenshot eines Graphen aus vier kreisförmigen Knoten, die in Azure Digital Twins-Explorer durch Pfeile verbunden sind":::
 
@@ -39,10 +39,10 @@ Der Beispielgraph, den Sie verwenden, stellt ein Gebäude mit zwei Etagen und zw
 
 Für diese Schnellstartanleitung ist ein Azure-Abonnement erforderlich. Bei Bedarf können Sie [jetzt kostenlos ein Abonnement erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
-Sie müssen auch die Materialien für den im Schnellstart verwendeten Beispielgraphen herunterladen. Mithilfe der nachstehenden Links und Anweisungen können Sie die drei erforderlichen Dateien aus dem [GitHub-Repository „digital-twins-explorer“](https://github.com/Azure-Samples/digital-twins-explorer) herunterladen.
-* [Room.json](https://raw.githubusercontent.com/Azure-Samples/digital-twins-explorer/main/client/examples/Room.json): Navigieren Sie zum Link, klicken Sie mit der rechten Maustaste auf eine beliebige Stelle des Bildschirms, und wählen Sie im Kontextmenü Ihres Browsers **Speichern unter** aus. Speichern Sie die Datei im folgenden Fenster „Speichern unter“ irgendwo auf Ihrem Computer unter dem Namen **Room.json**.
-* [Floor.json](https://raw.githubusercontent.com/Azure-Samples/digital-twins-explorer/main/client/examples/Floor.json): Navigieren Sie zum Link, klicken Sie mit der rechten Maustaste auf eine beliebige Stelle des Bildschirms, und wählen Sie im Kontextmenü Ihres Browsers **Speichern unter** aus. Speichern Sie die Datei im folgenden Fenster „Speichern unter“ am selben Speicherort wie **Room.json** unter dem Namen **Floor.json**.
-* [buildingScenario.xlsx](https://github.com/Azure-Samples/digital-twins-explorer/blob/main/client/examples/buildingScenario.xlsx): Navigieren Sie zum Link, und wählen Sie die Schaltfläche **Herunterladen** aus. Dadurch wird die Datei an Ihren Standardspeicherort für Downloads heruntergeladen.
+Sie müssen auch die Materialien für den im Schnellstart verwendeten Beispielgraphen herunterladen. Mithilfe der nachstehenden Links und Anweisungen können Sie die drei erforderlichen Dateien aus dem [GitHub-Repository „digital-twins-explorer“](https://github.com/Azure-Samples/digital-twins-explorer) herunterladen. Später befolgen Sie weitere Anweisungen zum Hochladen in Azure Digital Twins.
+* [Room.json:](https://raw.githubusercontent.com/Azure-Samples/digital-twins-explorer/main/client/examples/Room.json) Diese Modelldatei stellt einen Raum in einem Gebäude dar. Navigieren Sie zum Link, klicken Sie mit der rechten Maustaste auf eine beliebige Stelle des Bildschirms, und wählen Sie im Kontextmenü Ihres Browsers **Speichern unter** aus. Speichern Sie die Datei im folgenden Fenster „Speichern unter“ irgendwo auf Ihrem Computer unter dem Namen **Room.json**.
+* [Floor.json:](https://raw.githubusercontent.com/Azure-Samples/digital-twins-explorer/main/client/examples/Floor.json) Diese Modelldatei stellt eine Etage in einem Gebäude dar. Navigieren Sie zum Link, klicken Sie mit der rechten Maustaste auf eine beliebige Stelle des Bildschirms, und wählen Sie im Kontextmenü Ihres Browsers **Speichern unter** aus. Speichern Sie die Datei im folgenden Fenster „Speichern unter“ am selben Speicherort wie **Room.json** unter dem Namen **Floor.json**.
+* [buildingScenario.xlsx:](https://github.com/Azure-Samples/digital-twins-explorer/blob/main/client/examples/buildingScenario.xlsx) Diese Datei enthält einen Graphen von Raum- und Etagenzwillingen sowie der Beziehungen zwischen ihnen. Navigieren Sie zum Link, und wählen Sie die Schaltfläche **Herunterladen** aus. Dadurch wird die Datei an Ihren Standardspeicherort für Downloads heruntergeladen.
 
     :::image type="content" source="media/quickstart-azure-digital-twins-explorer/download-building-scenario.png" alt-text="Screenshot der Datei „digital-twins-explorer/client/examples/buildingScenario.xlsx“ in GitHub. Die Schaltfläche „Herunterladen“ ist hervorgehoben." lightbox="media/quickstart-azure-digital-twins-explorer/download-building-scenario.png":::
 
@@ -85,9 +85,9 @@ Dadurch wird ein Fenster mit Azure Digital Twins-Explorer Fenster geöffnet, das
 
 :::image type="content" source="media/quickstart-azure-digital-twins-explorer/explorer-blank.png" alt-text="Screenshot: Azure Digital Twins-Explorer in einem Internetbrowser." lightbox="media/quickstart-azure-digital-twins-explorer/explorer-blank.png":::
 
-## <a name="add-the-sample-data"></a>Hinzufügen der Beispieldaten
+## <a name="upload-the-sample-materials"></a>Hochladen des Beispielmaterials
 
-Importieren Sie nun das Beispielszenario und den Graphen in Azure Digital Twins-Explorer. Das Beispielszenario befindet sich in dem Ordner **digital-twins-explorer-main**, den Sie im Abschnitt [Voraussetzungen](#prerequisites) heruntergeladen haben.
+Importieren Sie nun die Beispielmodelle und den Graphen in Azure Digital Twins-Explorer. Sie verwenden die Modelldateien und die Graphdatei, die Sie im Abschnitt [Voraussetzungen](#prerequisites) auf Ihren Computer heruntergeladen haben.
 
 ### <a name="models"></a>Modelle
 
@@ -106,9 +106,9 @@ In diesem Schnellstart wurden die Modelldateien bereits für Sie geschrieben und
 * Etage
 * Raum
 
-#### <a name="upload-models"></a>Hochladen von Modellen
+#### <a name="upload-the-models-json-files"></a>Hochladen der Modelle (JSON-Dateien)
 
-Führen Sie die folgenden Schritte aus, um Modelle hochzuladen.
+Führen Sie die folgenden Schritte aus, um Modelle hochzuladen (die zuvor heruntergeladenen *JSON*-Dateien):
 
 1. Wählen Sie im Panel **Modelle** das Symbol **Modell hochladen** aus, das einen in eine Wolke zeigenden Pfeil darstellt.
 
@@ -142,9 +142,9 @@ In diesem Abschnitt werden vorab erstellte Zwillinge hochgeladen, die in einem v
 * Floor1 (Etage1)
     - Enthält Room1 (Raum1)
 
-#### <a name="import-the-graph"></a>Importieren des Graphen
+#### <a name="import-the-graph-xlsx-file"></a>Importieren des Graphen (XLSX-Datei)
 
-Führen Sie diese Schritte aus, um den Graphen zu importieren.
+Führen Sie die folgenden Schritte aus, um den Graphen (die zuvor heruntergeladene *XLSX*-Datei) zu importieren.
 
 1. Wählen Sie im Panel **Zwillingsdiagramm** das Symbol **Diagramm importieren**, das einen in eine Wolke zeigenden Pfeil darstellt.
 
@@ -156,13 +156,7 @@ Führen Sie diese Schritte aus, um den Graphen zu importieren.
 
 3. Wählen Sie zum Bestätigen des Hochladens des Graphen rechts oben im Panel „Graph (Vorschau)“ das Symbol **Speichern** aus.
 
-   :::row:::
-    :::column:::
-        :::image type="content" source="media/quickstart-azure-digital-twins-explorer/graph-preview-save.png" alt-text="Screenshot des Azure Digital Twins-Explorers mit hervorgehobenem Symbol „Speichern“ im Bereich „Graph (Vorschau)“." lightbox="media/quickstart-azure-digital-twins-explorer/graph-preview-save.png":::
-    :::column-end:::
-    :::column:::
-    :::column-end:::
-   :::row-end:::
+    :::image type="content" source="media/quickstart-azure-digital-twins-explorer/graph-preview-save.png" alt-text="Screenshot des Azure Digital Twins-Explorers mit hervorgehobenem Symbol „Speichern“ im Bereich „Graph (Vorschau)“." lightbox="media/quickstart-azure-digital-twins-explorer/graph-preview-save.png":::
 
 4. Azure Digital Twins-Explorer nutzt die hochgeladene Datei, um die angeforderten Zwillinge und Beziehungen zwischen ihnen zu erstellen. Wenn der Vorgang abgeschlossen ist, wird ein Dialogfeld angezeigt. Klicken Sie auf **Schließen**.
 

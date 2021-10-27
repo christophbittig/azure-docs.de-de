@@ -1,23 +1,23 @@
 ---
-title: Konfigurieren von Token – Azure Active Directory B2C | Microsoft-Dokumentation
+title: Konfigurieren von Token – Azure Active Directory B2C
 description: Erfahren Sie, wie Sie die Lebensdauer der Token und die Kompatibilitätseinstellungen in Azure Active Directory B2C konfigurieren.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/08/2021
+ms.date: 10/15/2021
 ms.custom: project-no-code
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 9ca7d1b5f5e8a9958d072317bfb2d01bd7a9199e
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 70be31920e96c651285c4e77ace161b65ccd3118
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129611824"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130066032"
 ---
 # <a name="configure-tokens-in-azure-active-directory-b2c"></a>Konfigurieren von Token in Azure Active Directory B2C
 
@@ -158,10 +158,10 @@ Um die Einstellungen für die Tokenkompatibilität zu ändern, legen Sie in der 
     </ClaimType>
     ```
 
-    Fügen Sie im **OutputClaims**-Element dieses Element hinzu:
+    Fügen Sie in der [Richtlinie für die vertrauende Seite](relyingparty.md)unter dem **OutputClaims**-Element den folgenden Ausgabeanspruch hinzu:
 
     ```xml
-    <OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />
+    <OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" PartnerClaimType="tfp" />
     ```
 
     Entfernen Sie für ACR das Element **AuthenticationContextReferenceClaimPattern**.

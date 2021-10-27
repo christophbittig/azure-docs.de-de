@@ -3,7 +3,7 @@ title: Verwalten von SQL Server-VMs in Azure im Azure-Portal | Microsoft-Dokumen
 description: Erfahren Sie, wie Sie im Azure-Portal auf die Ressource „Virtuelle SQL-Computer“ für eine in Azure gehostete SQL Server-VM zugreifen, um SQL Server-Einstellungen zu ändern.
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: bluefooted
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.subservice: management
@@ -11,14 +11,14 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/30/2021
-ms.author: mathoma
-ms.reviewer: jroth
-ms.openlocfilehash: 37b4f063f2d08c137c44784c55cc3c47569a3c56
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.author: pamela
+ms.reviewer: mathoma
+ms.openlocfilehash: a25f5bf28feb8fcb3903094f45568e96388ec0bd
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113434605"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130162168"
 ---
 # <a name="manage-sql-server-vms-by-using-the-azure-portal"></a>Verwalten von SQL Server-VMs über das Azure-Portal
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -132,6 +132,6 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 * [Übersicht über SQL Server auf einem virtuellen Windows-Computer](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [Häufig gestellte Fragen zu SQL Server auf virtuellen Windows-Computern](frequently-asked-questions-faq.yml)
 * [Preisinformationen für SQL Server auf virtuellen Windows-Computern](pricing-guidance.md)
-* [SQL Server auf Windows-VMs – Versionshinweise](doc-changes-updates-release-notes.md)
+* [Neuerungen für SQL Server auf virtuellen Azure-Computern](doc-changes-updates-release-notes-whats-new.md)
 
 

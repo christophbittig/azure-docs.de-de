@@ -7,12 +7,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 01/13/2021
-ms.openlocfilehash: fc206254180e2b5b35f10538bfb4940970b1609e
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: fac788db67bd96f60a2655f10d5f0a74d02b2c01
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128560805"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130165500"
 ---
 # <a name="troubleshoot-replication-latency-in-azure-database-for-mysql"></a>Behandeln von Problemen mit der Replikationswartezeit in Azure Database for MySQL
 
@@ -104,7 +104,7 @@ Die Ausgabe enthält viele Informationen. Normalerweise müssen Sie sich nur auf
 |Slave_IO_Running| Kennzeichnet, ob der E/A-Thread ausgeführt wird. Der Wert sollte `Yes` lauten. Lautet der Wert `NO`, ist die Replikation wahrscheinlich beschädigt.|
 |Slave_SQL_Running| Kennzeichnet, ob der SQL-Thread ausgeführt wird. Der Wert sollte `Yes` lauten. Lautet der Wert `NO`, ist die Replikation wahrscheinlich beschädigt.|
 |Exec_Master_Log_Pos| Zeigt die Position aus „Relay_Master_Log_File“ an, die im Replikat angewendet wird. Gibt es eine Wartezeit, sollte diese Positionssequenz kleiner sein als „Read_Master_Log_Pos“.|
-|Relay_Log_Space|Gibt die Obergrenze für die Größe des Relaisprotokolls an. Sie können die Größe überprüfen, indem Sie `SHOW GLOBAL VARIABLES` wie `relay_log_space_limit` abfragen.|
+|Relay_Log_Space|Zeigt die kombinierte Gesamtgröße aller vorhandenen Relais-Protokolldateien an. Sie können die obere Grenzgröße überprüfen, indem Sie `SHOW GLOBAL VARIABLES` wie `relay_log_space_limit` abfragen.|
 |Seconds_Behind_Master| Zeigt die Replikationswartezeit in Sekunden an.|
 |Last_IO_Errno|Zeigt ggf. den Fehlercode des E/A-Threads an. Weitere Informationen zu diesen Codes finden Sie in der [Referenz der MySQL-Serverfehlermeldungen](https://dev.mysql.com/doc/mysql-errors/5.7/en/server-error-reference.html).|
 |Last_IO_Error| Zeigt ggf. die Fehlermeldung des E/A-Threads an.|

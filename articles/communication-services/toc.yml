@@ -63,8 +63,6 @@ items:
             href: 'https://azure.github.io/communication-ui-library/?path=/story/quickstarts-statefulclient--page'
           - name: Erste Schritte mit Benutzeroberflächenkomponenten
             href: 'https://azure.github.io/communication-ui-library/?path=/story/quickstarts-uicomponents--page'
-          - name: Hinzufügen zusammengesetzter Komponenten für Anrufe zu Ihrer mobilen App
-            href: quickstarts/ui-library/get-started-call.md
       - name: Zugreifen auf TURN-Relays
         href: quickstarts/relay-token.md
   - name: Tutorials
@@ -125,8 +123,8 @@ items:
             href: concepts/call-flows.md
           - name: Aufrufen von Flowtopologien
             href: concepts/detailed-call-flows.md
-          - name: Anrufdiagnose
-            href: concepts/voice-video-calling/call-diagnostics.md
+          - name: Benutzerseitige Diagnose
+            href: concepts/voice-video-calling/user-facing-diagnostics.md
           - name: Bewährte Methoden für das Web
             href: concepts/best-practices.md
           - name: Bekannte Probleme
@@ -137,10 +135,6 @@ items:
             href: concepts/ui-library/ui-library-overview.md
           - name: Anwendungsfälle der UI-Bibliothek
             href: concepts/ui-library/ui-library-use-cases.md
-          - name: Übersicht über die mobile UI-Bibliothek
-            href: concepts/ui-library/mobile-ui-library.md
-          - name: Anwendungsfälle der mobilen UI-Bibliothek
-            href: concepts/ui-library/mobile-ui-use-cases.md
       - name: SDKs und REST-APIs
         href: concepts/sdk-options.md
       - name: Client- und Serverarchitektur

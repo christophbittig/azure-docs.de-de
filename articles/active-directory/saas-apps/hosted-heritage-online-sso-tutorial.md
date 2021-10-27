@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Hosted Heritage Online SSO | Microsoft-Dokumentation'
+title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD mit Hosted Heritage Online SSO'
 description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Hosted Heritage Online SSO konfigurieren.
 services: active-directory
 author: jeevansd
@@ -9,24 +9,22 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/17/2019
+ms.date: 10/11/2021
 ms.author: jeedes
-ms.openlocfilehash: 24d0c4d7d8812192fe256b15076196c9020b3c92
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 087272765d725e50ac9157fb71fbde3c9d7d5314
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124773073"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130003418"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hosted-heritage-online-sso"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Hosted Heritage Online SSO
+# <a name="tutorial-azure-ad-sso-integration-with-hosted-heritage-online-sso"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD mit Hosted Heritage Online SSO
 
 In diesem Tutorial erfahren Sie, wie Sie Hosted Heritage Online SSO in Azure Active Directory (Azure AD) integrieren. Die Integration von Hosted Heritage Online SSO in Azure AD ermöglicht Folgendes:
 
 * Sie können in Azure AD steuern, wer Zugriff auf Hosted Heritage Online SSO haben soll.
 * Sie können es Ihren Benutzern ermöglichen, sich mit ihrem Azure AD-Konto automatisch bei Hosted Heritage Online SSO anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
-
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -39,20 +37,20 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Hosted Heritage Online SSO unterstützt **SP-initiiertes** einmaliges Anmelden.
+* Hosted Heritage Online SSO unterstützt **SP**-initiiertes einmaliges Anmelden.
 
-## <a name="adding-hosted-heritage-online-sso-from-the-gallery"></a>Hinzufügen von Hosted Heritage Online SSO aus dem Katalog
+## <a name="add-hosted-heritage-online-sso-from-the-gallery"></a>Hinzufügen von Hosted Heritage Online SSO aus dem Katalog
 
 Um die Integration von Hosted Heritage Online SSO in Azure AD zu konfigurieren, müssen Sie Hosted Heritage Online SSO über den Katalog Ihrer Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
+1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim Azure-Portal an.
 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
 1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Hosted Heritage Online SSO** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **Hosted Heritage Online SSO** aus, und fügen Sie die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-hosted-heritage-online-sso"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Hosted Heritage Online SSO
+## <a name="configure-and-test-azure-ad-sso-for-hosted-heritage-online-sso"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Hosted Heritage Online SSO
 
 Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Hosted Heritage Online SSO mithilfe eines Testbenutzers namens **B.Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Hosted Heritage Online SSO eingerichtet werden.
 
@@ -69,20 +67,20 @@ Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD 
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Hosted Heritage Online SSO** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
+1. Navigieren Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Hosted Heritage Online SSO** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
+1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.cirqahosting.com/Shibboleth.sso/Login`.
+    a. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.cirqahosting.com/shibboleth`.
 
-    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.cirqahosting.com/shibboleth`.
+    b. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.cirqahosting.com/Shibboleth.sso/Login`.
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Kundensupportteam von Hosted Heritage Online SSO](mailto:support@isoxford.com), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch den tatsächlichen Bezeichner und die tatsächliche Anmelde-URL. Wenden Sie sich an das [Kundensupportteam von Hosted Heritage Online SSO](mailto:support@isoxford.com), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **App-Verbundmetadaten-URL** zu kopieren, und speichern Sie sie auf Ihrem Computer.
 
@@ -107,13 +105,7 @@ In diesem Abschnitt ermöglichen Sie B.Simon die Verwendung des einmaligen Anmel
 1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
 1. Wählen Sie in der Anwendungsliste die Option **Hosted Heritage Online SSO** aus.
 1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
-
-   ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
-
 1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
-
-    ![Link „Benutzer hinzufügen“](common/add-assign-user.png)
-
 1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
 1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen**.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
@@ -128,16 +120,14 @@ In diesem Abschnitt erstellen Sie in Hosted Heritage Online SSO einen Benutzer 
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Hosted Heritage Online SSO“ klicken, sollten Sie automatisch bei der Hosted Heritage Online SSO-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://support.microsoft.com/account-billing/sign-in-and-start-apps-from-the-my-apps-portal-2f3b1bae-0e5a-4a86-a33e-876fbd2a4510).
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für Hosted Heritage Online SSO weitergeleitet, wo Sie den Anmeldeflow initiieren können. 
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+* Navigieren Sie direkt zur Anmelde-URL von Hosted Heritage Online SSO, und initiieren Sie dort den Anmeldeflow.
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „Hosted Heritage Online SSO“ klicken, werden Sie zur Anmelde-URL von Hosted Heritage Online SSO umgeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](../user-help/my-apps-portal-end-user-access.md).
 
-- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+## <a name="next-steps"></a>Nächste Schritte
 
-- [Was ist der bedingte Zugriff in Azure Active Directory?](../conditional-access/overview.md)
-
-- [Ausprobieren von Hosted Heritage Online SSO mit Azure AD](https://aad.portal.azure.com/)
+Nach dem Konfigurieren von Hosted Heritage Online SSO können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

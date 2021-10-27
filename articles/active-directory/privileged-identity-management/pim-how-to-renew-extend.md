@@ -12,17 +12,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: pim
-ms.date: 10/07/2021
+ms.date: 10/11/2021
 ms.author: curtand
 ms.reviewer: shaunliu
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 748abad646342f2f13a554212fcd84393b8d3391
-ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
+ms.openlocfilehash: 7ba5d47c33b276b1585ad6200058439be4c4bc02
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129669642"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129993585"
 ---
 # <a name="extend-or-renew-azure-ad-role-assignments-in-privileged-identity-management"></a>Verlängern oder Erneuern von Azure AD-Rollenzuweisungen in Privileged Identity Management
 
@@ -48,7 +48,7 @@ Benutzer oder Gruppen, die einer Rolle zugewiesen sind, können die Verlängerun
 
 ![Azure AD-Rollen – Seite „Meine Rollen“, auf der die berechtigten Rollen mit der Spalte „Aktion“ aufgelistet werden](./media/pim-how-to-renew-extend/pim-extend-link-in-portal.png)
 
-Wenn Enddatum und -uhrzeit der Zuweisung innerhalb von 14 Tagen liegen, wird die Schaltfläche **Verlängern** auf der Benutzeroberfläche zu einem aktiven Link. Im folgenden Beispiel wird angenommen, dass der 27. März das aktuelle Datum ist.
+Wenn Enddatum und -uhrzeit der Zuweisung innerhalb von 14 Tagen liegen, wird die Schaltfläche **Verlängern** auf der Benutzeroberfläche zu einem aktiven Link. Im folgenden Beispiel wird angenommen, dass der 27. März das aktuelle Datum ist. Für eine Gruppe, die einer Rolle zugeordnet ist, wird der Link **Erweitern** nie verfügbar, so dass ein einzelner Benutzer mit einer geerbten Zuordnung die Gruppenzuordnung nicht erweitern kann.
 
 ![Spalte „Aktion“ mit Links zum Aktivieren oder Verlängern](./media/pim-how-to-renew-extend/pim-extend-within-fourteen.png)
 

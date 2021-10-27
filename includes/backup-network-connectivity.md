@@ -9,16 +9,16 @@ ms.topic: include
 ms.date: 06/04/2021
 ms.author: v-amallick
 ms.custom: include file
-ms.openlocfilehash: 36a45be18e5614371e3e29dc2907f5c25ba772b9
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 234d2510f115edf646ac490126e316a7dd3369c1
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111952996"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130019137"
 ---
-Der MARS-Agent benötigt Zugriff auf Azure Active Directory, Azure Storage und Azure Backup-Dienstendpunkte. Informationen zum Abrufen der öffentlichen IP-Adressbereiche finden Sie in der [JSON-Datei](https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519&preserveview=true). Lassen Sie den Zugriff auf die IPs zu, die Azure Backup (AzureBackup), Azure Storage (Storage) und Azure Active Directory (AzureActiveDirectory) entsprechen. Außerdem benötigen Netzwerkkonnektivitätsprüfungen des Betriebssystems abhängig von Ihrer Windows-Version Zugriff auf `www.msftconnecttest.com` oder `www.msftncsi.com`.
+Der MARS-Agent benötigt Zugriff auf Azure Active Directory, Azure Storage und Azure Backup-Dienstendpunkte. Informationen zum Abrufen der öffentlichen IP-Adressbereiche finden Sie in der [JSON-Datei](https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519&preserveview=true). Erlauben Sie den Zugriff auf die IPs für Azure Backup (`AzureBackup`), Azure Storage (`Storage`) und Azure Active Directory (`AzureActiveDirectory`). Außerdem benötigen Netzwerkkonnektivitätsprüfungen des Betriebssystems abhängig von Ihrer Windows-Version Zugriff auf `www.msftconnecttest.com` oder `www.msftncsi.com`.
 
-Wenn Ihr Computer über eingeschränkten Internetzugriff verfügt, stellen Sie sicher, dass Firewall-, Proxy- und Netzwerkeinstellungen den Zugriff auf die folgenden FQDNs und öffentlichen IP-Adressen zulassen.
+Wenn Ihr Rechner nur begrenzten Internetzugang hat, stellen Sie sicher, dass die Firewall-, Proxy- und Netzwerkeinstellungen den Zugriff auf die folgenden FQDNs und öffentlichen IP-Adressen erlauben.
 
 ### <a name="url-and-ip-access"></a>Zugriff auf URLs und IP-Adressen
 
@@ -26,24 +26,24 @@ Wenn Ihr Computer über eingeschränkten Internetzugriff verfügt, stellen Sie s
 
 - `www.msftncsi.com`
 - `www.msftconnecttest.com`
-- *.microsoft.com
-- *.windowsazure.com
-- *.microsoftonline.com
-- *.windows.net
+- `*.microsoft.com`
+- `*.windowsazure.com`
+- `*.microsoftonline.com`
+- `*.windows.net`
 
 **IP-Adressen**
 
-- 20.190.128.0/18
-- 40.126.0.0/18
+- `20.190.128.0/18`
+- `40.126.0.0/18`
 
 Wenn Sie US Government-Kunde sind, stellen Sie sicher, dass Sie Zugriff auf die folgenden URLs haben:
 
 - `www.msftncsi.com`
-- *.microsoft.com
-- *.windowsazure.us
-- *.microsoftonline.us
-- *.windows.net
-- *.usgovcloudapi.net
+- `*.microsoft.com`
+- `*.windowsazure.us`
+- `*.microsoftonline.us`
+- `*.windows.net`
+- `*.usgovcloudapi.net`
 
 Beim Zugriff auf alle oben aufgeführten URLs und IP-Adressen wird das HTTPS-Protokoll auf Port 443 verwendet.
 
@@ -69,14 +69,14 @@ Stellen Sie zur Verwendung von öffentlichem Peering sicher, dass Sie an Port 44
 
 - `www.msftncsi.com`
 - `www.msftconnecttest.com`
-- *.microsoft.com
-- *.windowsazure.com
-- *.microsoftonline.com
-- *.windows.net
+- `*.microsoft.com`
+- `*.windowsazure.com`
+- `*.microsoftonline.com`
+- `*.windows.net`
 
 **IP-Adressen**
-- 20.190.128.0/18
-- 40.126.0.0/18
+- `20.190.128.0/18`
+- `40.126.0.0/18`
 
 Um Microsoft-Peering zu verwenden, wählen Sie die folgenden Dienste, Regionen und relevanten Communitywerte aus:
 - Azure Active Directory (12076:5060)
@@ -95,12 +95,11 @@ Sie können nun private Endpunkte verwenden, um Ihre Daten von Servern sicher in
 
 Wenn Sie den MARS-Agent zur Sicherung Ihrer lokalen Ressourcen verwenden, stellen Sie sicher, dass Ihr lokales Netzwerk (das die zu sichernden Ressourcen enthält) ein Peering mit dem virtuellen Azure-Netzwerk aufweist, das einen privaten Endpunkt für den Tresor enthält. Sie können dann mit der Installation des MARS-Agents fortfahren und die Sicherung konfigurieren. Sie müssen jedoch sicherstellen, dass die gesamte Kommunikation für die Sicherung ausschließlich über das Peeringnetzwerk erfolgt.
 
-Wenn Sie private Endpunkte für den Tresor entfernen, nachdem ein MARS-Agent bei ihm registriert wurde, müssen Sie den Container erneut beim Tresor registrieren. Sie müssen den Schutz für sie nicht aufheben.
-Weitere Informationen zu privaten Endpunkten für Azure Backup finden Sie [hier](../articles/backup/private-endpoints.md).
+Wenn Sie private Endpunkte für den Tresor entfernen, nachdem ein MARS-Agent bei ihm registriert wurde, müssen Sie den Container erneut beim Tresor registrieren. Sie müssen den Schutz für sie nicht aufheben. Weitere Informationen finden Sie unter [Private Endpunkte für Azure Backup](../articles/backup/private-endpoints.md).
 
 ### <a name="throttling-support"></a>Unterstützung für Drosselung
 
-**Feature** | **Details**
---- | ---
-Bandbreitensteuerung | Unterstützt. Verwenden Sie im MARS-Agent **Eigenschaften ändern**, um die Bandbreite anzupassen.
-Netzwerkdrosselung | Nicht verfügbar für gesicherte Computer, auf denen Windows Server 2008 R2, Windows Server 2008 SP2 oder Windows 7 ausgeführt wird.
+| Funktion | Details |
+|---|---|
+| Bandbreitensteuerung | Unterstützt. Verwenden Sie im MARS-Agent **Eigenschaften ändern**, um die Bandbreite anzupassen. |
+| Netzwerkdrosselung | Nicht verfügbar für gesicherte Computer, auf denen Windows Server 2008 R2, Windows Server 2008 SP2 oder Windows 7 ausgeführt wird. |

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/27/2021
 ms.author: thwimmer
-ms.openlocfilehash: ffe327d2389ef86a8d11b802a3eb6d8e5e466a4f
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: 9b50ef87ba6ea41d3ab983d1f93bcf94043064af
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129812463"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130004804"
 ---
 # <a name="tutorial-configure-zero-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Zero für die automatische Benutzerbereitstellung
 
@@ -30,7 +30,7 @@ In diesem Tutorial werden die Schritte beschrieben, die Sie sowohl in Zero als a
 > * Entfernen von Benutzern aus Zero, wenn diese keinen Zugriff mehr benötigen
 > * Synchronisieren von Benutzerattributen zwischen Azure AD und Zero
 > * Bereitstellen von Gruppen und Gruppenmitgliedschaften in Zero
-> * [Einmaliges Anmelden](../manage-apps/add-application-portal-setup-oidc-sso.md) bei Chaos (empfohlen)
+> * [Einmaliges Anmelden](../manage-apps/add-application-portal-setup-oidc-sso.md) bei Zero (empfohlen)
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -48,7 +48,7 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
 ## <a name="step-2-configure-zero-to-support-provisioning-with-azure-ad"></a>Schritt 2: Konfigurieren von Zero für die Unterstützung der Bereitstellung mit Azure AD
 
-1. Sie benötigen zunächst ein Zero-Administratorkonto. Fordern Sie anschließend beim [Zero-Support](https://help.teamzero.com/) Ihr geheimes SCIM-Token an. Dieser Wert wird im Azure-Portal auf der Registerkarte „Bereitstellung“ der Zero-Anwendung in das Feld „Geheimes Token“ eingegeben.
+1. Bitten Sie den ZERO-Kontoadministrator, das geheime SCIM-Token vom [Zero-Support](https://help.teamzero.com/) anzufordern. Dieser Wert wird im Azure-Portal auf der Registerkarte „Bereitstellung“ der Zero-Anwendung in das Feld „Geheimes Token“ eingegeben.
 1. Die Mandanten-URL lautet `https://api.teamzero.com/scim/v2/`. Dieser Wert wird im Azure-Portal auf der Registerkarte „Bereitstellung“ der Zero-Anwendung in das Feld „Mandanten-URL“ eingegeben.
 
 ## <a name="step-3-add-zero-from-the-azure-ad-application-gallery"></a>Schritt 3: Hinzufügen von Zero aus dem Azure AD-Anwendungskatalog

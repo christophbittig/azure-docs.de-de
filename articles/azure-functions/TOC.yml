@@ -93,6 +93,12 @@
           href: functions-create-private-site-access.md
         - name: Verwenden eines NAT-Gateways für ausgehende Daten
           href: functions-how-to-use-nat-gateway.md
+    - name: Identitätsbasierte Verbindungen
+      items:
+        - name: Verwenden der Identität für Hostverbindungen
+          href: functions-identity-based-connections-tutorial.md
+        - name: Verwenden der Identität für Trigger und Bindungen
+          href: functions-identity-based-connections-tutorial-2.md
     - name: Ändern der Imagegröße mit Event Grid
       href: ../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2fazure%2fazure-functions%2ftoc.json
     - name: Erstellen einer serverlosen Web-App

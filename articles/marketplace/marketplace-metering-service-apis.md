@@ -4,19 +4,22 @@ description: Mit der API für Nutzungsereignisse können Sie Nutzungsereignisse 
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 10/12/2021
+ms.date: 10/15/2021
 author: saasguide
 ms.author: souchak
-ms.openlocfilehash: 056fd364902ccd530b1aa2d540cd7d0457e0276b
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: 84e55aa971eae4c67bc6ec2dcaa4618b55c8f737
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129855857"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130134106"
 ---
 # <a name="marketplace-metered-billing-apis"></a>APIs für getaktete Abrechnung im Marketplace
 
 Die APIs für getaktete Abrechnung sollten verwendet werden, wenn der Herausgeber benutzerdefinierte Messungsdimensionen für ein Angebot erstellt, das im Partner Center veröffentlicht werden soll. Für alle erworbenen Angebote, die über einen oder mehrere Pläne mit benutzerdefinierten Dimensionen zur Ausgabe von Nutzungsereignissen verfügen, ist eine Integration in die APIs für getaktete Abrechnung erforderlich.
+
+> [!IMPORTANT]
+> Sie müssen die Nutzung in Ihrem Code nachverfolgen und nur für die Nutzung, die über der Grundgebühr liegt, Nutzungsereignisse an Microsoft senden.
 
 Weitere Informationen zum Erstellen benutzerdefinierter Messungsdimensionen für SaaS finden Sie unter [Getaktete SaaS-Abrechnung](partner-center-portal/saas-metered-billing.md).
 

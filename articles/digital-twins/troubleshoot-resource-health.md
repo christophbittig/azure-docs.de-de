@@ -1,19 +1,19 @@
 ---
-title: Grundlegendes zur Ressourcenintegrität
+title: 'Problembehandlung: Ressourcenintegrität'
 titleSuffix: Azure Digital Twins
-description: Erfahren Sie, wie Sie Azure Resource Health verwenden können, um die Integrität Ihrer Azure Digital Twins-Instanz zu überprüfen.
+description: Erfahren Sie, wie Sie mithilfe von Azure Resource Health die Integrität Ihrer Azure Digital Twins-Instanz überprüfen.
 author: baanders
 ms.author: baanders
-ms.date: 8/27/2021
+ms.date: 10/7/2021
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy22q1
-ms.openlocfilehash: 551193ebcddb023010f1cea1029571c99176afb9
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 9c816e613fe6f495de9abb57e2ac041960bffdbe
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123113090"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130131446"
 ---
 # <a name="troubleshooting-azure-digital-twins-resource-health"></a>Problembehandlung von Azure Digital Twins: Ressourcenintegrität
 
@@ -47,7 +47,7 @@ Weitere Informationen zur Verwendung von Azure Service Health finden Sie unter [
 
 ## <a name="use-azure-status"></a>Verwenden von Azure-Status
 
-Die Seite [Azure-Status](../service-health/azure-status-overview.md) bietet eine globale Ansicht der Integrität von Azure-Diensten und -Regionen. Sie ist nicht so personalisiert wie Azure Service Health oder Azure Resource Health und kann nützlich sein, um Vorfälle mit weitreichenden Auswirkungen zu verstehen.
+Die Seite [Azure-Status](../service-health/azure-status-overview.md) bietet eine globale Ansicht der Integrität von Azure-Diensten und -Regionen. Während Azure Service Health und Azure Resource Health auf Ihre spezifische Ressource personalisiert sind, umfasst der Azure-Status einen größeren Bereich und kann nützlich sein, um Incidents mit weitreichenden Auswirkungen zu verstehen.
 
 Navigieren Sie zur Seite [Azure-Status](https://status.azure.com/status/), um den Azure-Status zu überprüfen. Auf der Seite wird eine Tabelle mit Azure-Diensten zusammen mit Integritätsindikatoren pro Region angezeigt. Sie können Azure Digital Twins anzeigen, indem Sie nach dem entsprechenden Tabelleneintrag auf der Seite suchen.
 
@@ -56,6 +56,6 @@ Weitere Informationen zur Verwendung der Azure-Statusseite finden Sie unter [Azu
 ## <a name="next-steps"></a>Nächste Schritte
 
 Lesen Sie in den folgenden Artikeln über andere Möglichkeiten, Ihre Azure Digital Twins-Instanz zu überwachen:
-* [Problembehandlung: Anzeigen von Metriken mit Azure Monitor](troubleshoot-metrics.md)
-* [Problembehandlung: Einrichten der Diagnose](troubleshoot-diagnostics.md).
-* [Problembehandlung: Einrichten von Warnungen](troubleshoot-alerts.md).
+* [Problembehandlung: Metriken](troubleshoot-metrics.md)
+* [Problembehandlung: Diagnoseprotokolle](troubleshoot-diagnostics.md)
+* [Problembehandlung: Warnungen](troubleshoot-alerts.md)

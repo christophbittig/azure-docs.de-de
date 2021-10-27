@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2021
 ms.author: jeedes
-ms.openlocfilehash: 851a396fe848306223f2e875ac81fc7b2fcb5da1
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 94e025c3a76ac2a6722e0fa21b39718624d8645c
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124803040"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130042824"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Cisco Webex
 
@@ -91,7 +91,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     d. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://web.ciscospark.com/idb/Consumer/metaAlias/<ID>/sp`
     
     > [!NOTE]
-    > Dieser Wert entspricht nicht dem tatsächlichen Wert. Kopieren Sie den Wert der lateralen Antwort-URL, und fügen Sie ihn `https://web.ciscospark.com/` hinzu, um den tatsächlichen Wert für die Anmelde-URL zu formulieren.
+    > Dieser Wert entspricht nicht dem tatsächlichen Wert. Kopieren Sie den Literalwert der Antwort-URL, und fügen Sie ihn `https://web.ciscospark.com/` hinzu, um den tatsächlichen Wert für die Anmelde-URL zu formulieren.
 
 1. Die Cisco Webex-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute.
 

@@ -11,19 +11,19 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: ac0b1b78291d895e97cb967e047ae36da6ff7469
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: bc1be378d16388ad3814596f3e49d434af350a96
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108746835"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130004956"
 ---
 # <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>Erkunden von Azure Machine Learning mit Jupyter Notebook-Instanzen
 
 > [!NOTE] 
 > Ein Communityrepository mit Beispielen finden Sie unter https://github.com/Azure/azureml-examples.
 
-Das [Repository mit Beispielnotebooks für Azure Machine Learning](https://github.com/azure/machinelearningnotebooks) enthält die neuesten Python-SDK-Beispiele für Azure Machine Learning. Diese Juypter-Notebooks helfen Ihnen dabei, sich mit dem SDK vertraut zu machen, und fungieren als Modelle für Ihre eigenen Machine Learning-Projekte.
+Das [Repository mit Beispielnotebooks für Azure Machine Learning](https://github.com/azure/machinelearningnotebooks) enthält die neuesten Python-SDK-Beispiele für Azure Machine Learning. Diese Jupyter-Notebooks helfen Ihnen dabei, sich mit dem SDK vertraut zu machen, und fungieren als Modelle für Ihre eigenen Machine Learning-Projekte.
 
 In diesem Artikel erfahren Sie, wie Sie von den folgenden Umgebungen aus auf das Repository zugreifen:
 

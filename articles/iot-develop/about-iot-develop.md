@@ -6,12 +6,12 @@ ms.author: rywinter
 ms.service: iot-develop
 ms.topic: overview
 ms.date: 01/11/2021
-ms.openlocfilehash: 7b23569b07893ebbecf86336a40e52cd8627851a
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.openlocfilehash: 128bea34a2e391a44b4dba68d844c68f7331cb06
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111590070"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129994535"
 ---
 # <a name="what-is-azure-iot-device-and-application-development"></a>Worum handelt es sich bei der Entwicklung von Azure IoT-Geräten und -Anwendungen?
 
@@ -33,10 +33,10 @@ Im vorliegenden Artikel werden zwei gängige Rollen beschrieben, die auf viele G
 ### <a name="device-application-development"></a>Entwicklung von Geräteanwendungen
 Entwickler von Geräteanwendungen passen vorhandene Geräte an, sodass diese eine Verbindung mit der Cloud herstellen und in IoT-Lösungen integriert werden können. Diese Geräte können Sprachen höherer Ordnung unterstützen – wie z. B. C# oder Python – und unterstützen häufig ein stabiles universelles Betriebssystem wie Windows oder Linux. Gängige Zielgeräte sind beispielsweise PCs, Container, Raspberry Pis und mobile Geräte. 
 
-Anstatt im großen Stil Anwendungen für eingeschränkte Geräte zu entwickeln, konzentrieren sich diese Entwickler darauf, ein bestimmtes IoT-Szenario zu ermöglichen, das für ihre Cloudlösung erforderlich ist. Einige dieser Entwickler arbeiten auch an eingeschränkten Geräten für ihre Cloudlösung. Informationen zur Entwicklung von eingeschränkten Geräten finden Sie im Abschnitt [Entwicklung von eingebetteten Geräten](#embedded-device-development) weiter unten.
+Anstatt im großen Stil Anwendungen für eingeschränkte Geräte zu entwickeln, konzentrieren sich diese Entwickler darauf, ein bestimmtes IoT-Szenario zu ermöglichen, das für ihre Cloudlösung erforderlich ist. Einige dieser Entwickler arbeiten auch an eingeschränkten Geräten für ihre Cloudlösung. Informationen zur Entwicklung von Geräten mit Ressourceneinschränkungen finden Sie weiter unten im Abschnitt [Entwicklung von eingebetteten Geräten](#embedded-device-development).
 
-> [!TIP]
-> Informationen zu den ersten Schritten finden Sie unter [SDKs für nicht eingeschränkte Geräte](about-iot-sdks.md#unconstrained-device-sdks).
+> [!IMPORTANT]
+> Informationen zu den ersten Schritten finden Sie unter [Entwicklung von eingebetteten Geräten](about-iot-sdks.md#device-sdks).
 
 ### <a name="embedded-device-development"></a>Entwicklung von eingebetteten Geräten
 Die Entwicklung von eingebetteten Geräten wird für Geräte genutzt, die nur über eingeschränkte Arbeitsspeicher- und Verarbeitungskapazitäten verfügen. Bei diesen Geräten sind die Möglichkeiten im Vergleich zu einer herkömmlichen Entwicklungsplattform eingeschränkt.
@@ -47,8 +47,8 @@ Die aktuellen SDKs für eingebettete Geräte zielen auf die Programmiersprache *
 
 Wenn Ihr Gerät ein universelles Betriebssystem ausführen kann, sollten Sie den Abschnitt [Entwicklung von Geräteanwendungen](#device-application-development) lesen. Damit erhalten Sie umfassendere Entwicklungsoptionen.
 
-> [!TIP]
-> Informationen zu den ersten Schritten finden Sie unter [SDKs für eingeschränkte Geräte](about-iot-sdks.md#constrained-device-sdks).
+> [!IMPORTANT]
+> Informationen zu den ersten Schritten finden Sie unter [SDKs für eingebettete Geräte](about-iot-sdks.md#embedded-device-sdks).
 
 ## <a name="choosing-your-hardware"></a>Auswählen der Hardware
 Azure IoT-Geräte sind die grundlegenden Bausteine einer IoT-Lösung und sind dafür zuständig, ihre Umgebung zu beobachten und mit ihr zu interagieren. Es gibt viele verschiedene Arten von IoT-Geräten. Es ist nützlich, diese Arten zu kennen und zu verstehen, wie sie sich auf den Entwicklungsprozess auswirken.

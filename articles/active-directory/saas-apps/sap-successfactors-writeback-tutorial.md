@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 10/14/2020
+ms.date: 10/11/2021
 ms.author: chmutali
-ms.openlocfilehash: 3260787dec4ae26cd6ef7cc3bd562f39db8e3655
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 39bd92afa4de12eafce7bff9f73f6f43d6e18f42
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99526974"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129993509"
 ---
 # <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>Tutorial: Konfigurieren des Rückschreibens von Attributen aus Azure AD in SAP SuccessFactors
 In diesem Tutorial werden die Schritte zum Rückschreiben von Attributen aus Azure AD in SuccessFactors Employee Central beschrieben. 
@@ -290,6 +290,7 @@ In diesem Abschnitt konfigurieren Sie den Fluss von Benutzerdaten aus SuccessFac
    | 11 | mobile | cellPhoneNumber | Verwenden Sie diese Zuordnung, um *telephoneNumber* von Azure AD an die geschäftliche Telefonnummer von SuccessFactors zu übergeben. |
    | 12 | 10606 | cellPhoneType | Dieser konstante Wert ist der SuccessFactors-ID-Wert, der mit dem Mobiltelefon verknüpft ist. Aktualisieren Sie diesen Wert, und passen Sie ihn an Ihre SuccessFactors-Umgebung an. Die Schritte zum Festlegen dieses Werts sind im Abschnitt [Abrufen des konstanten Werts für „phoneType“](#retrieve-constant-value-for-phonetype) beschrieben. |
    | 13 | false | cellPhoneIsPrimary | Verwenden Sie dieses Attribut, um das primäre Flag für die Mobiltelefonnummer festzulegen. Gültige Werte sind „true“ oder „false“. |
+   | 14 | [extensionAttribute1-15] | userId | Verwenden Sie diese Zuordnung, um sicherzustellen, dass der aktive Datensatz in SuccessFactors aktualisiert wird, wenn mehrere Mitarbeiterdatensätze für denselben Benutzer vorhanden sind. Ausführlichere Informationen finden Sie unter [Aktivieren des Rückschreibens mit UserID](../app-provisioning/sap-successfactors-integration-reference.md#enabling-writeback-with-userid). |
  
 1. Validieren und überprüfen Sie Ihre Attributzuordnungen. 
  

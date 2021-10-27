@@ -9,12 +9,12 @@ ms.subservice: managed-hsm
 ms.topic: quickstart
 ms.date: 06/21/2021
 ms.author: mbaldwin
-ms.openlocfilehash: f47ce2ea3d805bfc5e5cdd4fd328195c12fe516d
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: 13eba035fc81b6ca26ccf56cefc8c955d9af972e
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122821584"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130132225"
 ---
 # <a name="quickstart-provision-and-activate-a-managed-hsm-using-azure-cli"></a>Schnellstart: Bereitstellen und Aktivieren eines verwalteten HSM mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -41,10 +41,10 @@ az login
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *ContosoResourceGroup* am Standort *eastus2* erstellt.
+Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *ContosoResourceGroup* am Standort *centralus*.
 
 ```azurecli-interactive
-az group create --name "ContosoResourceGroup" --location eastus2
+az group create --name "ContosoResourceGroup" --location centralus
 ```
 
 ## <a name="create-a-managed-hsm"></a>Erstellen eines verwalteten HSM
@@ -62,11 +62,11 @@ Für die Erstellung einer Ressource vom Typ „Verwaltetes HSM“ sind folgende 
 - Azure-Standort.
 - Eine Liste mit den anfänglichen Administratoren.
 
-Im Beispiel unten wird ein HSM mit dem Namen **ContosoMHSM** in der Ressourcengruppe **ContosoResourceGroup** am Standort **USA, Osten 2** erstellt. Hierbei ist **der derzeit angemeldete Benutzer** der einzige Administrator, und für das vorläufige Löschen gilt ein **Aufbewahrungszeitraum von 28 Tagen**. Weitere Informationen über das vorläufige Löschen für verwaltete HSMs finden Sie [hier](soft-delete-overview.md).
+Im Beispiel unten wird ein HSM mit dem Namen **ContosoMHSM** in der Ressourcengruppe **ContosoResourceGroup** am Standort **USA, Mitte** erstellt. Hierbei ist **der derzeit angemeldete Benutzer** der einzige Administrator, und für das vorläufige Löschen gilt ein **Aufbewahrungszeitraum von 28 Tagen**. Weitere Informationen über das vorläufige Löschen für verwaltete HSMs finden Sie [hier](soft-delete-overview.md).
 
 ```azurecli-interactive
 oid=$(az ad signed-in-user show --query objectId -o tsv)
-az keyvault create --hsm-name "ContosoMHSM" --resource-group "ContosoResourceGroup" --location "East US 2" --administrators $oid --retention-days 28
+az keyvault create --hsm-name "ContosoMHSM" --resource-group "ContosoResourceGroup" --location "centralus" --administrators $oid --retention-days 28
 ```
 
 > [!NOTE]

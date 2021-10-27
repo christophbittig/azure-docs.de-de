@@ -10,17 +10,17 @@ ms.subservice: verifiable-credentials
 ms.date: 07/20/2021
 ms.author: baselden
 ms.custom: references_regions
-ms.openlocfilehash: 0bc7f6a01dc2e537e91f162ba76eb6e505518747
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 984b680c207c8c7e6bf404a7ced08f2fdcfd7b71
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340018"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129984438"
 ---
-# <a name="plan-your-azure-active-directory-verifiable-credentials--verification-solution-preview"></a>Planen Ihrer Überprüfungslösung für Azure Active Directory-Nachweise (Vorschau)
+# <a name="plan-your-azure-active-directory-verifiable-credentials--verification-solution-preview"></a>Planen einer Überprüfungslösung für Azure Active Directory-Nachweise (Vorschau)
 
 >[!IMPORTANT]
-> Überprüfbare Anmeldeinformationen für Azure Active Directory-befinden sich derzeit in der öffentlichen Vorschauphase. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Nachweise für Azure Active Directory befinden sich derzeit in der öffentlichen Vorschauphase. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Mit dem Dienst „Azure Active Directory-Nachweise“ (Azure AD VC) von Microsoft können Sie den Nachweis der Benutzeridentität vertrauen, ohne Ihre Vertrauensgrenze zu erweitern, indem Sie Konten oder einen Verbund mit einem anderen Identitätsanbieter erstellen. Durch die Verwendung von Nachweisen (überprüfbaren Anmeldeinformationen), die auf einem offenen Standard basieren, ermöglicht ein Überprüfungsaustausch Anwendungen, Anmeldeinformationen anzufordern, die nicht an eine bestimmte Domäne gebunden sind. Dies erleichtert das Anfordern und Überprüfen von Anmeldeinformationen im großen Stil.
 
@@ -266,7 +266,7 @@ Sie können Informationen in den dargestellten Nachweisen verwenden, um ein Benu
 
 Wie bei jeder Lösung müssen Sie Aspekte im Hinblick auf die Leistung planen. Zu den Schwerpunktbereichen gehören Latenz, Durchsatz, Speicher und Skalierbarkeit. In den Anfangsphasen eines Releasezyklus sollte die Leistung kein Problem sein. Wenn die Einführung Ihrer Ausstellungslösung jedoch dazu führt, dass viele Nachweise ausgestellt werden, kann die Leistungsplanung zu einem wichtigen Bestandteil Ihrer Lösung werden.
 
-Im Folgenden finden Sie Bereiche, die bei der Leistungsplanung zu berücksichtigen sind:
+Im Folgenden werden die bei der Leistungsplanung zu berücksichtigenden Bereiche aufgeführt:
 
 * Dienst zur Ausstellung von Azure AD-Nachweisen wird in den Azure-Regionen „Europa, Westen“, „Europa, Norden“, „USA, Westen 2“ und „USA, Westen-Mitte“ bereitgestellt. Um die Latenz zu begrenzen, stellen Sie Ihr Überprüfungs-Front-End (Website) und Ihren Schlüsseltresor in der oben aufgeführten Region bereit, die dem Ursprung der Anforderungen am nächsten liegt.
 

@@ -6,16 +6,16 @@ ms.topic: conceptual
 author: noakup
 ms.author: noakuper
 ms.date: 05/06/2021
-ms.openlocfilehash: 0d5fb976bfeb496e6c69e7df401ed0a756985475
-ms.sourcegitcommit: 6ea4d4d1cfc913aef3927bef9e10b8443450e663
+ms.openlocfilehash: c56a90ab18467e67360653c83d32c7cfc6f84078
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/05/2021
-ms.locfileid: "113295882"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130133251"
 ---
-# <a name="log-analytics-workspace-insights-preview"></a>Die Log Analytics-Arbeitsbereich Insights (Vorschau)
+# <a name="log-analytics-workspace-insights"></a>Log Analytics-Arbeitsbereich Insights
 
-Die Log Analytics-Arbeitsbereich Insights (Vorschau) bietet eine umfassende Überwachung Ihrer Arbeitsbereiche durch eine einheitliche Ansicht von der Nutzung, Leistung, Integrität, des Agents, der Abfragen und des Änderungsprotokolls Ihres Arbeitsbereichs. Dieser Artikel hilft Ihnen zu Verstehen wie die Log Analytics-Arbeitsbereich Insights (Vorschau) integriert und verwendet werden.
+Die Log Analytics-Arbeitsbereich Insights bieten eine umfassende Überwachung Ihrer Arbeitsbereiche durch eine einheitliche Ansicht von der Nutzung, Leistung, Integrität, des Agents, der Abfragen und des Änderungsprotokolls Ihres Arbeitsbereichs. In diesem Artikel erfahren Sie, wie Sie Log Analytics Workspace Insights einbinden und verwenden können.
 
 ## <a name="overview-your-log-analytics-workspaces"></a>Eine Übersicht der Log Analytics-Arbeitsbereiche
 
@@ -29,7 +29,7 @@ Führen Sie die folgenden Schritte aus, um die Log Analytics-Arbeitsbereich Insi
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-2. Wählen Sie im linken Bereich des Microsoft Azure-Portals **Monitor** und im Abschnitt „Insights-Hub“ die Option **Log Analytics-Arbeitsbereich Insights (Vorschau)** aus.
+2. Wählen Sie **Monitor** im linken Bereich des Azure-Portals und wählen Sie unter dem Abschnitt Insights Hub **Protokollanalysen Arbeitsbereich-Insights**.
 
 ## <a name="view-insights-for-a-log-analytics-workspace"></a>Anzeigen der Log Analytics-Arbeitsbereich Insights
 

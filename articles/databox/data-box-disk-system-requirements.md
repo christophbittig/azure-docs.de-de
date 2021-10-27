@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 02/22/2021
+ms.date: 10/07/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 750ed8f65db04199ea284e69693bced65a1dc8d9
-ms.sourcegitcommit: c27a20b278f2ac758447418ea4c8c61e27927d6a
+ms.openlocfilehash: 171297be3e0e8e5215c5c551e984a45d0516507e
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/03/2021
-ms.locfileid: "101703132"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130003154"
 ---
 ::: zone target="docs"
 
@@ -74,11 +74,16 @@ Der Clientcomputer, auf dem sich die Daten befinden, muss über einen USB 3.0-An
 
 Im Folgenden finden Sie eine Liste der unterstützten Speichertypen für den Data Box-Datenträger.
 
-| **Speicherkonto** | **Hinweise** |
+| **Speicherkonto** | **Unterstützte Zugriffsebenen** |
 | --- | --- |
-| Klassisch | Standard |
-| Universell  |Standard: sowohl V1 als auch V2 werden unterstützt. Es werden sowohl „heiße“ als auch „kalte“ Ebenen unterstützt. |
+| Klassisch Standard | |
+| Universell V1 Standard  | Heiße Ebene, kalte Ebene |
+| Universell V1 Premium   |  |
+| Universell V2 Standard<sup>*</sup> | Heiße Ebene, kalte Ebene |
+| Universell V2 Premium   |  |
 | Blob-Speicherkonto | |
+
+<sup>*</sup> *Azure Data Lake Storage Gen2 (ADLS Gen2) wird unterstützt.*
 
 > [!IMPORTANT]
 > Die Unterstützung für das NFS 3.0-Protokoll (Network File System, Netzwerkdateisystem) in Azure Blog Storage wird nicht mit Data Box Disk unterstützt.

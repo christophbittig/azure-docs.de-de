@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 04/22/2021
 ms.topic: how-to
 ms.custom: fasttrack-edit, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: fc0cdbcb85470fb9f1e0eb4d4bf6cc43c3ae4e23
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 9d4ad2b71d9ef5e3632344cb715926d2e5ebd343
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123034412"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130072656"
 ---
 # <a name="manage-azure-machine-learning-workspaces-in-the-portal-or-with-the-python-sdk"></a>Verwalten von Azure Machine Learning-Arbeitsbereichen im Portal oder mit dem Python SDK
 
@@ -38,7 +38,7 @@ Beim Erstellen eines Arbeitsbereichs wird standardmäßig auch eine Azure Contai
 
 # <a name="python"></a>[Python](#tab/python)
 
-* **Standardspezifikation** Standardmäßig werden sowohl abhängige Ressourcen als auch die Ressourcengruppe automatisch erstellt. Dieser Code erstellt einen Arbeitsbereich namens `myworkspace` und eine Ressourcengruppe namens `myresourcegroup` in `eastus2`.
+* **Standardspezifikation** Standardmäßig werden abhängige Ressourcen und die Ressourcengruppe automatisch erstellt. Dieser Code erstellt einen Arbeitsbereich namens `myworkspace` und eine Ressourcengruppe namens `myresourcegroup` in `eastus2`.
     
     ```python
     from azureml.core import Workspace
@@ -338,6 +338,8 @@ Workspace.list('<subscription-id>')
 ## <a name="delete-a-workspace"></a>Löschen eines Arbeitsbereichs
 
 Wenn Sie einen Arbeitsbereich nicht mehr benötigen, löschen Sie ihn.  
+
+[!INCLUDE [machine-learning-delete-workspace](../../includes/machine-learning-delete-workspace.md)]
 
 # <a name="python"></a>[Python](#tab/python)
 

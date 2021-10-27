@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/21/2021
 ms.author: yelevin
-ms.openlocfilehash: 86a998e304755085a9ae1e15e011df3b242c4df8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 97e7c6a21eaf33e2f32d3277e14b4da74decc6cc
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122345908"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130132548"
 ---
 # <a name="microsoft-365-defender-integration-with-azure-sentinel"></a>Microsoft 365 Defender-Integration in Azure Sentinel
 
@@ -31,6 +31,8 @@ ms.locfileid: "122345908"
 > **Microsoft 365 Defender** wurde bisher als **Microsoft Threat Protection** oder **MTP** bezeichnet.
 >
 > **Microsoft Defender for Endpoint** wurde bisher als **Microsoft Defender Advanced Threat Protection** oder **MDATP** bezeichnet.
+>
+> **Microsoft Defender für Office 365** war früher bekannt als **Office 365 Advanced Threat Protection**.
 >
 > Die alten Namen werden möglicherweise eine Zeit lang weiterhin verwendet.
 
@@ -94,13 +96,13 @@ Im Microsoft 365 Defender können alle Warnungen aus einem Vorfall in einen ande
 
 ## <a name="advanced-hunting-event-collection"></a>Erfassung erweiterter Huntingereignisse
 
-Mit dem Microsoft 365 Defender-Connector können Sie auch **erweiterte Huntingereignisse** (eine Art von Ereignisrohdaten) aus Microsoft 365 Defender und den zugehörigen Komponentendiensten in Azure Sentinel streamen. Sie können derzeit [erweiterte Huntingereignisse](/windows/security/threat-protection/microsoft-defender-atp/advanced-hunting-overview) von [Microsoft Defender für Endpunkt (MDATP)](/windows/security/threat-protection/microsoft-defender-atp/microsoft-defender-advanced-threat-protection) erfassen und diese direkt in eigens erstellte Tabellen in Ihrem Azure Sentinel-Arbeitsbereich streamen. Diese Tabellen bauen auf dem gleichen Schema auf, das im Microsoft 365 Defender-Portal verwendet wird, wodurch Sie vollständigen Zugriff auf die gesamte Reihe erweiterter Huntingereignisse erhalten und Folgendes erreichen können:
+Mit dem Microsoft 365 Defender-Connector können Sie auch **erweiterte Huntingereignisse** (eine Art von Ereignisrohdaten) aus Microsoft 365 Defender und den zugehörigen Komponentendiensten in Azure Sentinel streamen. Sie können derzeit [erweiterte Huntingereignisse](/microsoft-365/security/defender/advanced-hunting-overview) aus Microsoft Defender für Endpunkt und *(seit Oktober 2021)* aus Microsoft Defender für Office 365 erfassen und diese direkt in eigens erstellte Tabellen in Ihrem Azure Sentinel-Arbeitsbereich streamen. Diese Tabellen bauen auf dem gleichen Schema auf, das im Microsoft 365 Defender-Portal verwendet wird, wodurch Sie vollständigen Zugriff auf die gesamte Reihe erweiterter Huntingereignisse erhalten und Folgendes erreichen können:
 
-- Einfaches Kopieren Ihrer vorhandenen erweiterten Huntingabfragen für Microsoft Defender für Endpunkt in Azure Sentinel.
+- Kopieren Sie Ihre vorhandenen erweiterten Huntingabfragen für Microsoft Defender für Endpunkt/Office 365 einfach in Azure Sentinel.
 
 - Verwenden Sie die rohen Ereignisprotokolle, um weitere Erkenntnisse für Ihre Warnungen, die Suche und die Untersuchung zu gewinnen, und diese Ereignisse mit Ereignissen aus anderen Datenquellen im Azure Sentinel korrelieren zu können.
 
-- Speichern der Protokolle mit verlängerter Aufbewahrungsdauer, jenseits der Standardaufbewahrungsdauer von 30 Tagen in Microsoft Defender for Endpoint oder Microsoft 365 Defender. Dies erreichen Sie durch Konfigurieren der Aufbewahrungsdauer Ihres Arbeitsbereichs oder der tabellenweisen Aufbewahrung in Log Analytics.
+- Speichern Sie die Protokolle mit verlängerter Aufbewahrungsdauer, jenseits der Standardaufbewahrungsdauer von 30 Tagen in Microsoft Defender für Endpunkt//Office 365 oder Microsoft 365 Defender. Dies erreichen Sie durch Konfigurieren der Aufbewahrungsdauer Ihres Arbeitsbereichs oder der tabellenweisen Aufbewahrung in Log Analytics.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

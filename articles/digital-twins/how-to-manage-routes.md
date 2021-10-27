@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/30/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 99fbf0a6ecd232ae646639e84864addd103c1f5a
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: fb27a56dcf1661a95b6c7926a3c11628f6341446
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129807775"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130133897"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins"></a>Verwalten von Endpunkten und Routen in Azure Digital Twins
 
@@ -476,7 +476,7 @@ Suchen Sie auf der Startseite des Portals nach Ihrer Azure Digital Twins-Instanz
 
 Von hier aus können Sie die Metriken für Ihre Instanz anzeigen und benutzerdefinierte Ansichten erstellen.
 
-Weitere Informationen zum Anzeigen von Azure Digital Twins-Metriken finden Sie unter [Anzeigen von Metriken mit Azure Monitor](troubleshoot-metrics.md).
+Weitere Informationen zur Anzeige von Azure Digital Twins-Metriken finden Sie unter [Fehlerbehebung: Metriken](troubleshoot-metrics.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

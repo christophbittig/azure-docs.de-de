@@ -3,14 +3,14 @@ title: Von der Azure Automation-Updateverwaltung unterstützte Clients
 description: Dieser Artikel behandelt die von der Azure Automation-Updateverwaltung unterstützten Windows- und Linux-Betriebssysteme.
 services: automation
 ms.subservice: update-management
-ms.date: 07/14/2021
+ms.date: 10/12/2021
 ms.topic: conceptual
-ms.openlocfilehash: a470a3c8d4ab9ac4f390f7b18133f65f44fed096
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 790544818a207d0a7bb0453f03b890b0dbf5510f
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129711645"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129992803"
 ---
 # <a name="operating-systems-supported-by-update-management"></a>Von der Updateverwaltung unterstützte Betriebssysteme
 
@@ -32,7 +32,7 @@ Bei allen Betriebssystemen wird von einer x64-Architektur ausgegangen. x86 wird 
 |CentOS 6, 7 und 8       | Linux-Agents erfordern Zugriff auf ein Updaterepository. Für klassifizierungsbasiertes Patchen muss `yum` Sicherheitsdaten zurückgeben, über die CentOS in den RTM-Releases nicht verfügt. Weitere Informationen zu klassifizierungsbasiertem Patching unter CentOS finden Sie unter [Lösung für die Updateverwaltung in Azure](view-update-assessments.md#linux).          |
 |Oracle Linux 6.x, 7.x, 8x | Linux-Agents erfordern Zugriff auf ein Updaterepository.        |
 |Red Hat Enterprise 6, 7 und 8      | Linux-Agents erfordern Zugriff auf ein Updaterepository.        |
-|SUSE Linux Enterprise Server 12, 15, 15.1 und 15.2      | Linux-Agents erfordern Zugriff auf ein Updaterepository.     |
+|SUSE Linux Enterprise Server 12, 15 und 15.1      | Linux-Agents erfordern Zugriff auf ein Updaterepository.     |
 |Ubuntu 14.04 LTS, 16.04 LTS, 18.04 LTS und 20.04 LTS       |Linux-Agents erfordern Zugriff auf ein Updaterepository.         |
 
 > [!NOTE]

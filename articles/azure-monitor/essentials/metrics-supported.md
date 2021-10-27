@@ -4,14 +4,14 @@ description: Liste der Metriken, die mit Azure Monitor für jeden Ressourcentyp 
 author: rboucher
 services: azure-monitor
 ms.topic: reference
-ms.date: 09/10/2021
+ms.date: 10/05/2021
 ms.author: robb
-ms.openlocfilehash: 15e8ea8c1622ec846d9ab36452d8982c1a64a084
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: e0843f9e25b3059bbdd0102e4a830f151b0e87b0
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129458148"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129996910"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Unterstützte Metriken von Azure Monitor
 
@@ -58,7 +58,6 @@ Der Azure Monitor-Agent ersetzt die Azure-Diagnoseerweiterung und den Log Anal
 ## <a name="table-formatting"></a>Tabellenformatierung
 
 Mit dem aktuellen Update wird eine neue Spalte hinzugefügt, und die Metriken werden alphabetisch sortiert. Das bedeutet, dass je nach Größe Ihres Browserfensters am unteren Rand ggf. eine horizontale Scrollleiste bei den Tabellen vorhanden ist. Wenn Sie bestimmte Informationen nicht finden könnten, zeigen Sie mithilfe der Scrollleiste die gesamte Tabelle an.
-
 
 ## <a name="microsoftaadiamazureadmetrics"></a>microsoft.aadiam/azureADMetrics
 
@@ -280,7 +279,6 @@ Mit dem aktuellen Update wird eine neue Spalte hinzugefügt, und die Metriken we
 |UnusableNodeCount|Nein|Anzahl nicht verwendbarer Knoten|Anzahl|Gesamt|Anzahl nicht verwendbarer Knoten|Keine Dimensionen|
 |WaitingForStartTaskNodeCount|Nein|Anzahl von Knoten, die auf den Starttask warten|Anzahl|Gesamt|Anzahl von Knoten, die auf den Abschluss des Starttasks warten|Keine Dimensionen|
 
-
 ## <a name="microsoftbatchaiworkspaces"></a>Microsoft.BatchAI/workspaces
 
 |Metrik|Über Diagnoseeinstellungen exportierbar?|Metrikanzeigename|Einheit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
@@ -300,7 +298,6 @@ Mit dem aktuellen Update wird eine neue Spalte hinzugefügt, und die Metriken we
 |Knoten insgesamt|Ja|Knoten insgesamt|Anzahl|Average|Gesamtanzahl von Knoten|Scenario, ClusterName|
 |Nicht verwendbare Kerne|Ja|Nicht verwendbare Kerne|Anzahl|Average|Anzahl der nicht verwendbaren Kerne|Scenario, ClusterName|
 |Unusable Nodes (Nicht verwendbare Knoten)|Ja|Unusable Nodes (Nicht verwendbare Knoten)|Anzahl|Average|Anzahl nicht verwendbarer Knoten|Scenario, ClusterName|
-
 
 ## <a name="microsoftbingaccounts"></a>microsoft.bing/accounts
 
@@ -455,7 +452,7 @@ Mit dem aktuellen Update wird eine neue Spalte hinzugefügt, und die Metriken we
 |cachemisses7|Ja|Cachefehler (Shard 7)|Anzahl|Gesamt|Die Anzahl fehlerhafter Schlüsselsuchen. Weitere Details finden Sie unter https://aka.ms/redis/metrics.|Keine Dimensionen|
 |cachemisses8|Ja|Cachefehler (Shard 8)|Anzahl|Gesamt|Die Anzahl fehlerhafter Schlüsselsuchen. Weitere Details finden Sie unter https://aka.ms/redis/metrics.|Keine Dimensionen|
 |cachemisses9|Ja|Cachefehler (Shard 9)|Anzahl|Gesamt|Die Anzahl fehlerhafter Schlüsselsuchen. Weitere Details finden Sie unter https://aka.ms/redis/metrics.|Keine Dimensionen|
-|cachemissrate|Ja|Cachefehlerrate|Percent|cachemissrate|Der Prozentsatz fehlerhafter Get-Anforderungen. Weitere Details finden Sie unter https://aka.ms/redis/metrics.|ShardId|
+|cachemissrate|Ja|Cachefehlerrate|Percent|Gesamt|Der Prozentsatz fehlerhafter Get-Anforderungen. Weitere Details finden Sie unter https://aka.ms/redis/metrics.|ShardId|
 |cacheRead|Ja|Cache-Lesevorgänge|Bytes pro Sekunde|Maximum|Die Menge an Daten in Megabyte pro Sekunde (MB/s), die aus dem Cache gelesen wurden. Weitere Details finden Sie unter https://aka.ms/redis/metrics.|ShardId|
 |cacheRead0|Ja|Cachelesevorgänge (Shard 0)|Bytes pro Sekunde|Maximum|Die Menge an Daten in Megabyte pro Sekunde (MB/s), die aus dem Cache gelesen wurden. Weitere Details finden Sie unter https://aka.ms/redis/metrics.|Keine Dimensionen|
 |cacheRead1|Ja|Cachelesevorgänge (Shard 1)|Bytes pro Sekunde|Maximum|Die Menge an Daten in Megabyte pro Sekunde (MB/s), die aus dem Cache gelesen wurden. Weitere Details finden Sie unter https://aka.ms/redis/metrics.|Keine Dimensionen|
@@ -961,7 +958,7 @@ Mit dem aktuellen Update wird eine neue Spalte hinzugefügt, und die Metriken we
 |VmAvailabilityMetric|Ja|VM-Verfügbarkeitsmetrik (Vorschau)|Anzahl|Average|Maß für die Verfügbarkeit virtueller Computer im Zeitverlauf. Hinweis: Diese Metrik wird derzeit nur für eine kleine Gruppe von Kunden als Vorschauversion angezeigt, da wir die Verbesserung der Datenqualität und -konsistenz priorisieren. Im Rahmen der Verbesserung unseres Datenstandards werden wir dieses Feature phasenweise für die gesamte Flotte einführen.|Keine Dimensionen|
 
 
-## <a name="microsoftcomputevirtualmachinescalesets"></a>Microsoft.Compute/virtualMachineScaleSets
+## <a name="microsoftcomputevirtualmachinescalesets"></a>Microsoft.Compute/virtualmachineScaleSets
 
 |Metrik|Über Diagnoseeinstellungen exportierbar?|Metrikanzeigename|Einheit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
 |---|---|---|---|---|---|---|
@@ -1015,6 +1012,7 @@ Mit dem aktuellen Update wird eine neue Spalte hinzugefügt, und die Metriken we
 |Verbrauchte von der VM zwischengespeicherte IOPS in Prozent|Ja|Verbrauchte von der VM zwischengespeicherte IOPS in Prozent|Percent|Average|Prozentsatz der von der VM beanspruchten zwischengespeicherten Datenträger-IOPS|VMName|
 |Prozentsatz der von der VM beanspruchten nicht zwischengespeicherten Bandbreite|Ja|Prozentsatz der von der VM beanspruchten nicht zwischengespeicherten Bandbreite|Percent|Average|Prozentsatz der von der VM beanspruchten nicht zwischengespeicherten Datenträgerbandbreite|VMName|
 |Verbrauchte von der VM nicht zwischengespeicherte IOPS in Prozent|Ja|Verbrauchte von der VM nicht zwischengespeicherte IOPS in Prozent|Percent|Average|Prozentsatz der von der VM beanspruchten nicht zwischengespeicherten Datenträger-IOPS|VMName|
+|VmAvailabilityMetric|Ja|VM-Verfügbarkeitsmetrik (Vorschau)|Anzahl|Average|Maß für die Verfügbarkeit virtueller Computer im Zeitverlauf. Hinweis: Diese Metrik wird derzeit nur für eine kleine Gruppe von Kunden als Vorschauversion angezeigt, da wir die Verbesserung der Datenqualität und -konsistenz priorisieren. Im Rahmen der Verbesserung unseres Datenstandards werden wir dieses Feature phasenweise für die gesamte Flotte einführen.|VMName|
 
 
 ## <a name="microsoftcomputevirtualmachinescalesetsvirtualmachines"></a>Microsoft.Compute/virtualMachineScaleSets/virtualMachines
@@ -1077,16 +1075,19 @@ Mit dem aktuellen Update wird eine neue Spalte hinzugefügt, und die Metriken we
 
 |Metrik|Über Diagnoseeinstellungen exportierbar?|Metrikanzeigename|Einheit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
 |---|---|---|---|---|---|---|
-|ClaimsProviderRequestLatency|Ja|Ausführungszeit der Anspruchsanforderung|Millisekunden|Average|Die durchschnittliche Ausführungszeit von Anforderungen an den Endpunkt des Anspruchsanbieters für Kunden in Millisekunden.|VehicleId, DeviceName|
-|ClaimsProviderRequests|Ja|Anforderungen des Anspruchsanbieters|Anzahl|Gesamt|Anzahl der Anforderungen an den Anspruchsanbieter|VehicleId, DeviceName|
-|ConnectionServiceRequestRuntime|Ja|Ausführungszeit der Anforderung an den Fahrzeugverbindungsdienst|Millisekunden|Average|Durchschnittliche Ausführungszeit der Fahrzeugverbindungsanforderung in Millisekunden|VehicleId, DeviceName|
-|ConnectionServiceRequests|Ja|Anforderungen des Fahrzeugverbindungsdiensts|Anzahl|Gesamt|Gesamtzahl der Fahrzeugverbindungsanforderungen|VehicleId, DeviceName|
-|ProvisionerServiceRequestRuntime|Ja|Ausführungszeit der Fahrzeugbereitstellung|Millisekunden|Average|Die durchschnittliche Ausführungszeit von Fahrzeugbereitstellungsanforderungen in Millisekunden|VehicleId, DeviceName|
-|ProvisionerServiceRequests|Ja|Anforderungen des Fahrzeugbereitstellungsdiensts|Anzahl|Gesamt|Gesamtzahl der Fahrzeugbereitstellungsanforderungen|VehicleId, DeviceName|
-|StateStoreReadRequestLatency|Ja|Ausführungszeit von Lesevorgängen im Zustandsspeicher|Millisekunden|Average|Durchschnittliche Ausführungszeit von Leseanforderungen im Zustandsspeicher in Millisekunden.|VehicleId, DeviceName|
-|StateStoreReadRequests|Ja|Leseanforderungen des Zustandsspeichers|Anzahl|Gesamt|Anzahl der Leseanforderungen an den Zustandsspeicher|VehicleId, DeviceName|
-|StateStoreWriteRequestLatency|Ja|Ausführungszeit von Schreibvorgängen im Zustandsspeicher|Millisekunden|Average|Durchschnittliche Ausführungszeit von Schreibanforderungen im Zustandsspeicher in Millisekunden.|VehicleId, DeviceName|
-|StateStoreWriteRequests|Ja|Schreibanforderungen des Zustandsspeichers|Anzahl|Gesamt|Anzahl der Schreibanforderungen an den Zustandsspeicher|VehicleId, DeviceName|
+|ClaimsProviderRequestLatency|Ja|Ausführungszeit der Anspruchsanforderung|Millisekunden|Average|Die durchschnittliche Ausführungszeit von Anforderungen an den Endpunkt des Anspruchsanbieters für Kunden in Millisekunden.|VehicleId, DeviceName, IsSuccessful, FailureCategory|
+|ClaimsProviderRequests|Ja|Anforderungen des Anspruchsanbieters|Anzahl|Gesamt|Anzahl der Anforderungen an den Anspruchsanbieter|VehicleId, DeviceName, IsSuccessful, FailureCategory|
+|ConnectionServiceRequestRuntime|Ja|Ausführungszeit der Anforderung an den Fahrzeugverbindungsdienst|Millisekunden|Average|Durchschnittliche Ausführungszeit der Fahrzeugverbindungsanforderung in Millisekunden|VehicleId, DeviceName, IsSuccessful, FailureCategory|
+|ConnectionServiceRequests|Ja|Anforderungen des Fahrzeugverbindungsdiensts|Anzahl|Gesamt|Gesamtzahl der Fahrzeugverbindungsanforderungen|VehicleId, DeviceName, IsSuccessful, FailureCategory|
+|DataPipelineMessageCount|Ja|Anzahl von Datenpipelinenachrichten|Anzahl|Gesamt|Die Gesamtanzahl von Nachrichten, die zur Speicherung an die MCVP-Datenpipeline gesendet werden.|VehicleId, DeviceName, IsSuccessful, FailureCategory|
+|ExtensionInvocationCount|Ja|Anzahl von Aufrufen der Erweiterung|Anzahl|Gesamt|Die Gesamtanzahl von Aufrufen einer Erweiterung.|VehicleId, DeviceName, ExtensionName, IsSuccessful, FailureCategory|
+|ExtensionInvocationRuntime|Ja|Ausführungszeit des Erweiterungsaufrufs|Millisekunden|Average|Die durchschnittliche Ausführungszeit in einer Erweiterung in Millisekunden.|VehicleId, DeviceName, ExtensionName, IsSuccessful, FailureCategory|
+|ProvisionerServiceRequestRuntime|Ja|Ausführungszeit der Fahrzeugbereitstellung|Millisekunden|Average|Die durchschnittliche Ausführungszeit von Fahrzeugbereitstellungsanforderungen in Millisekunden|VehicleId, DeviceName, IsSuccessful, FailureCategory|
+|ProvisionerServiceRequests|Ja|Anforderungen des Fahrzeugbereitstellungsdiensts|Anzahl|Gesamt|Gesamtzahl der Fahrzeugbereitstellungsanforderungen|VehicleId, DeviceName, IsSuccessful, FailureCategory|
+|StateStoreReadRequestLatency|Ja|Ausführungszeit von Lesevorgängen im Zustandsspeicher|Millisekunden|Average|Durchschnittliche Ausführungszeit von Leseanforderungen im Zustandsspeicher in Millisekunden.|VehicleId, DeviceName, ExtensionName, IsSuccessful, FailureCategory|
+|StateStoreReadRequests|Ja|Leseanforderungen des Zustandsspeichers|Anzahl|Gesamt|Anzahl der Leseanforderungen an den Zustandsspeicher|VehicleId, DeviceName, ExtensionName, IsSuccessful, FailureCategory|
+|StateStoreWriteRequestLatency|Ja|Ausführungszeit von Schreibvorgängen im Zustandsspeicher|Millisekunden|Average|Durchschnittliche Ausführungszeit von Schreibanforderungen im Zustandsspeicher in Millisekunden.|VehicleId, DeviceName, ExtensionName, IsSuccessful, FailureCategory|
+|StateStoreWriteRequests|Ja|Schreibanforderungen des Zustandsspeichers|Anzahl|Gesamt|Anzahl der Schreibanforderungen an den Zustandsspeicher|VehicleId, DeviceName, ExtensionName, IsSuccessful, FailureCategory|
 
 
 ## <a name="microsoftcontainerinstancecontainergroups"></a>Microsoft.ContainerInstance/containerGroups
@@ -1583,7 +1584,7 @@ Mit dem aktuellen Update wird eine neue Spalte hinzugefügt, und die Metriken we
 |---|---|---|---|---|---|---|
 |AddRegion|Ja|Region hinzugefügt|Anzahl|Anzahl|Region hinzugefügt|Region|
 |AutoscaleMaxThroughput|Nein|Autoskalierung – Maximaler Durchsatz|Anzahl|Maximum|Maximaler Durchsatz für Autoskalierung|DatabaseName, CollectionName|
-|AvailableStorage|Nein|Verfügbarer Speicher (veraltet)|Byte|Gesamt|Die Metrik „Verfügbarer Speicher“ wird Ende September 2023 aus Azure Monitor entfernt. Die Speichergröße für Cosmos DB-Sammlungen ist jetzt unbegrenzt. Die einzige Einschränkung besteht darin, dass die Speichergröße für jeden logischen Partitionsschlüssel 20 GB beträgt. Sie können PartitionKeyStatistics im Diagnoseprotokoll aktivieren, um den Speicherverbrauch der wichtigsten Partitionsschlüssel zu ermitteln. Weitere Informationen zum Speicherkontingent für Cosmos DB finden Sie im Dokument [Kontingente im Azure Cosmos DB-Dienst](../../cosmos-db/concepts-limits.md). Nach diesem Datum werden verbleibende Warnungsregeln, die noch für die veraltete Metrik definiert sind, automatisch deaktiviert.|CollectionName, DatabaseName, Region|
+|AvailableStorage|Nein|Verfügbarer Speicher (veraltet)|Byte|Gesamt|Die Metrik „Verfügbarer Speicher“ wird Ende September 2023 aus Azure Monitor entfernt. Die Speichergröße für Cosmos DB-Sammlungen ist jetzt unbegrenzt. Die einzige Einschränkung besteht darin, dass die Speichergröße für jeden logischen Partitionsschlüssel 20 GB beträgt. Sie können PartitionKeyStatistics im Diagnoseprotokoll aktivieren, um den Speicherverbrauch der wichtigsten Partitionsschlüssel zu ermitteln. Weitere Informationen zum Speicherkontingent für Cosmos DB finden Sie in diesem Dokument [https://docs.microsoft.com/azure/cosmos-db/concepts-limits](/azure/cosmos-db/concepts-limits). Nach diesem Datum werden verbleibende Warnungsregeln, die noch für die veraltete Metrik definiert sind, automatisch deaktiviert.|CollectionName, DatabaseName, Region|
 |CassandraConnectionClosures|Nein|Abschluss von Cassandra-Verbindungen|Anzahl|Gesamt|Anzahl von Cassandra-Verbindungen, die geschlossen wurden, gemeldet mit einer Granularität von einer Minute|APIType, Region, ClosureReason|
 |CassandraConnectorAvgReplicationLatency|Nein|Cassandra-Connector – Durchschnittliche Replikationslatenz|Millisekunden|Average|Durchschnittliche Replikationslatenz im Cassandra-Connector|Keine Dimensionen|
 |CassandraConnectorReplicationHealthStatus|Nein|Cassandra-Connector – Integritätsstatus|Anzahl|Anzahl|Integritätsstatus des Cassandra-Connectors|NotStarted, ReplicationInProgress, Error|
@@ -1620,6 +1621,10 @@ Mit dem aktuellen Update wird eine neue Spalte hinzugefügt, und die Metriken we
 |IntegratedCacheItemHitRate|Nein|IntegratedCacheItemHitRate|Percent|Average|Anzahl der Punktlesevorgänge, die den integrierten Cache verwendet haben, dividiert durch die Anzahl der Punktlesevorgänge, die über das dedizierte Gateway mit letztlicher Konsistenz weitergeleitet wurden|Region, CacheEntryType|
 |IntegratedCacheQueryExpirationCount|Nein|IntegratedCacheQueryExpirationCount|Anzahl|Average|Anzahl der Abfragen, die aufgrund von TTL-Ablauf aus dem integrierten Cache entfernt wurden|Region, CacheEntryType|
 |IntegratedCacheQueryHitRate|Nein|IntegratedCacheQueryHitRate|Percent|Average|Anzahl der Abfragen, die den integrierten Cache verwendet haben, dividiert durch die Anzahl der Abfragen, die über das dedizierte Gateway mit letztlicher Konsistenz weitergeleitet wurden|Region, CacheEntryType|
+|MaterializedViewCatchupGapInMinutes|Nein|Aufhollücke bei materialisierten Sichten in Minuten|Anzahl|Maximum|Maximaler Zeitunterschied in Minuten zwischen Daten im Quellcontainer und an eine materialisierte Sicht propagierte Daten|Region, TargetContainerName, BuildType|
+|MaterializedViewsBuilderAverageCPUUsage|Nein|Durchschnittliche CPU-Auslastung durch Generator für materialisierte Sichten|Percent|Average|Durchschnittliche CPU-Auslastung über Instanzen des Generators für materialisierte Sichten hinweg, die zum Auffüllen von Daten in materialisierten Sichten verwendet werden|Region, MetricType|
+|MaterializedViewsBuilderAverageMemoryUsage|Nein|Arbeitsspeicherauslastung durch Generator für materialisierte Sichten|Byte|Average|Durchschnittliche Arbeitsspeicherauslastung über Instanzen des Generators für materialisierte Sichten hinweg, die zum Auffüllen von Daten in materialisierten Sichten verwendet werden|Region|
+|MaterializedViewsBuilderMaximumCPUUsage|Nein|Maximale CPU-Auslastung durch Generator für materialisierte Sichten|Percent|Average|Durchschnittliche maximale CPU-Auslastung über Instanzen des Generators für materialisierte Sichten hinweg, die zum Auffüllen von Daten in materialisierten Sichten verwendet werden|Region, MetricType|
 |MetadataRequests|Nein|Anforderungen von Metadaten|Anzahl|Anzahl|Anzahl der Metadatenanforderungen. Cosmos DB unterhält eine Sammlung von Systemmetadaten für jedes Konto, wodurch Sie Sammlungen, Datenbanken usw. und deren Konfigurationen ohne anfallende Kosten auflisten können.|DatabaseName, CollectionName, Region, StatusCode, Role|
 |MongoCollectionCreate|Nein|Mongo-Sammlung erstellt|Anzahl|Anzahl|Mongo-Sammlung erstellt|ResourceName, ChildResourceName, ApiKind, ApiKindResourceType, IsThroughputRequest, OperationType|
 |MongoCollectionDelete|Nein|Mongo-Sammlung gelöscht|Anzahl|Anzahl|Mongo-Sammlung gelöscht|ResourceName, ChildResourceName, ApiKind, ApiKindResourceType, OperationType|
@@ -1928,7 +1933,7 @@ Mit dem aktuellen Update wird eine neue Spalte hinzugefügt, und die Metriken we
 |exceptions/server|Nein|Serverausnahmen|Anzahl|Anzahl|Anzahl nicht erfasster Ausnahmen, die in der Serveranwendung ausgelöst wurden.|cloud/roleName, cloud/roleInstance|
 |pageViews/count|Ja|Seitenaufrufe|Anzahl|Anzahl|Anzahl der Seitenaufrufe|operation/synthetic, cloud/roleName|
 |pageViews/duration|Ja|Ladezeit der Seitenansicht|Millisekunden|Average|Ladezeit der Seitenansicht|operation/synthetic, cloud/roleName|
-|performanceCounters/exceptionsPerSecond|Ja|Ausnahmerate|Anzahl pro Sekunde|Average|Die Anzahl der behandelten Ausnahmen und Ausnahmefehler, die an Windows gemeldet werden, einschließlich .NET-Ausnahmen und nicht verwalteten Ausnahmen, die in .NET-Ausnahmen konvertiert werden|cloud/roleInstance|
+|performanceCounters/exceptionsPerSecond|Ja|Ausnahmerate|Anzahl pro Sekunde|Average|Die Anzahl der behandelten Ausnahmen und Ausnahmefehler, die an Windows gemeldet werden, einschließlich .NET-Ausnahmen und nicht verwalteten Ausnahmen, die in .NET-Ausnahmen konvertiert werden.|cloud/roleInstance|
 |performanceCounters/memoryAvailableBytes|Ja|Verfügbarer Arbeitsspeicher|Byte|Average|Physischer Speicher ist sofort für die Zuordnung zu einem Prozess oder für die Systemnutzung verfügbar.|cloud/roleInstance|
 |performanceCounters/processCpuPercentage|Ja|Prozess-CPU|Percent|Average|Der Prozentsatz der verstrichenen Zeit für alle Prozessthreads, die den Prozessor zur Ausführung von Anweisungen verwendet haben. Dies kann zwischen 0 und 100 variieren. Diese Metrik gibt ausschließlich die Leistung des w3wp-Prozesses an.|cloud/roleInstance|
 |performanceCounters/processIOBytesPerSecond|Ja|E/A-Rate für Prozess|Bytes pro Sekunde|Average|Gesamtanzahl von pro Sekunde in Dateien, im Netzwerk und auf Geräten gelesenen und geschriebenen Bytes.|cloud/roleInstance|
@@ -2204,6 +2209,7 @@ Mit dem aktuellen Update wird eine neue Spalte hinzugefügt, und die Metriken we
 |ContentKeyPolicyCount|Ja|Anzahl der Richtlinien für Inhaltsschlüssel|Anzahl|Average|Anzahl der bereits im aktuellen Media Services-Konto erstellten Inhaltsschlüssel-Richtlinien|Keine Dimensionen|
 |ContentKeyPolicyQuota|Ja|Kontingent der Richtlinien für Inhaltsschlüssel|Anzahl|Average|Anzahl der zulässigen Inhaltsschlüssel-Richtlinien für das aktuelle Media Services-Konto|Keine Dimensionen|
 |ContentKeyPolicyQuotaUsedPercentage|Ja|Prozentsatz des Kontingents der Richtlinien für Inhaltsschlüssel|Percent|Average|Prozentualer Anteil der verwendeten Inhaltsschlüssel-Richtlinien im aktuellen Media Services-Konto|Keine Dimensionen|
+|JobQuota|Ja|Auftragskontingent|Anzahl|Average|Das Auftragskontingent für das aktuelle Mediendienstkonto.|Keine Dimensionen|
 |JobsScheduled|Ja|Geplante Aufträge|Anzahl|Average|Die Anzahl von Aufträgen im Zustand „Geplant“. Die Anzahl für diese Metrik spiegelt nur Aufträge wider, die über die v3-API übermittelt wurden. Aufträge, die über die v2-API (Legacy) übermittelt werden, werden nicht gezählt.|Keine Dimensionen|
 |MaxChannelsAndLiveEventsCount|Ja|Maximales Liveereigniskontingent|Anzahl|Average|Die Maximalzahl der im aktuellen Media Services-Konto zulässigen Liveereignisse|Keine Dimensionen|
 |MaxRunningChannelsAndLiveEventsCount|Ja|Maximal ausgeführtes Liveereigniskontingent|Anzahl|Average|Die Maximalzahl der im aktuellen Media Services-Konto zulässigen ausgeführten Liveereignisse|Keine Dimensionen|
@@ -2211,6 +2217,7 @@ Mit dem aktuellen Update wird eine neue Spalte hinzugefügt, und die Metriken we
 |StreamingPolicyCount|Ja|Anzahl der Streamingrichtlinien|Anzahl|Average|Anzahl der im aktuellen Media Services-Konto bereits erstellten Streamingrichtlinien|Keine Dimensionen|
 |StreamingPolicyQuota|Ja|Kontingent der Streamingrichtlinien|Anzahl|Average|Anzahl der zulässigen Streamingrichtlinien für das aktuelle Media Services-Konto|Keine Dimensionen|
 |StreamingPolicyQuotaUsedPercentage|Ja|Prozentsatz des verwendeten Kontingents der Streamingrichtlinien|Percent|Average|Prozentualer Anteil der verwendeten Streamingrichtlinien im aktuellen Media Services-Konto|Keine Dimensionen|
+|TransformQuota|Ja|Transformationskontingent|Anzahl|Average|Das Transformationskontingent für das aktuelle Mediendienstkonto.|Keine Dimensionen|
 
 
 ## <a name="microsoftmediamediaservicesliveevents"></a>Microsoft.Media/mediaservices/liveEvents
@@ -2238,7 +2245,7 @@ Mit dem aktuellen Update wird eine neue Spalte hinzugefügt, und die Metriken we
 
 |Metrik|Über Diagnoseeinstellungen exportierbar?|Metrikanzeigename|Einheit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
 |---|---|---|---|---|---|---|
-|ReceivedBytes|Ja|Empfangene Bytes|Byte|Gesamt|Die Anzahl der vom Pipelineknoten empfangenen Bytes.|PipelineTopology, Pipeline, Knoten|
+|IngressBytes|Ja|Eingehende Bytes|Byte|Gesamt|Die Anzahl von eingehenden Bytes im Pipelineknoten.|PipelineTopology, Pipeline, Knoten|
 
 
 ## <a name="microsoftmixedrealityremoterenderingaccounts"></a>Microsoft.MixedReality/remoteRenderingAccounts
@@ -2516,8 +2523,8 @@ Mit dem aktuellen Update wird eine neue Spalte hinzugefügt, und die Metriken we
 
 |Metrik|Über Diagnoseeinstellungen exportierbar?|Metrikanzeigename|Einheit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
 |---|---|---|---|---|---|---|
-|PEBytesIn|Nein|Bytes In|Anzahl|Gesamt|Gesamtanzahl ausgehender Bytes|Keine Dimensionen|
-|PEBytesOut|Nein|Bytes Out|Anzahl|Gesamt|Gesamtanzahl ausgehender Bytes|Keine Dimensionen|
+|PEBytesIn|Ja|Bytes In|Anzahl|Gesamt|Gesamtanzahl ausgehender Bytes|Keine Dimensionen|
+|PEBytesOut|Ja|Bytes Out|Anzahl|Gesamt|Gesamtanzahl ausgehender Bytes|Keine Dimensionen|
 
 
 ## <a name="microsoftnetworkprivatelinkservices"></a>Microsoft.Network/privateLinkServices
@@ -2837,6 +2844,7 @@ Mit dem aktuellen Update wird eine neue Spalte hinzugefügt, und die Metriken we
 |Metrik|Über Diagnoseeinstellungen exportierbar?|Metrikanzeigename|Einheit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
 |---|---|---|---|---|---|---|
 |PrefixLatency|Ja|Präfixlatenz|Millisekunden|Average|Medianwert der Präfixlatenz|PrefixName|
+|RoundTripTime|Ja|Roundtripzeit|Millisekunden|Average|Durchschnittliche Roundtripzeit|ConnectionMonitorTestName|
 
 
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/capacities
@@ -3503,7 +3511,7 @@ Mit dem aktuellen Update wird eine neue Spalte hinzugefügt, und die Metriken we
 |Gen1Collections|Ja|Garbage Collections der Generation 1|Anzahl|Gesamt|Die Häufigkeit, mit der seit dem Start des App-Prozesses eine Garbage Collection für die Objekte der Generation 1 ausgeführt wurde. In Garbage Collections höherer Generationen sind alle Garbage Collections niedrigerer Generationen enthalten. Für WebApps und FunctionApps.|Instanz|
 |Gen2Collections|Ja|Garbage Collections der Generation 2|Anzahl|Gesamt|Die Häufigkeit, mit der seit dem Start des App-Prozesses eine Garbage Collection für die Objekte der Generation 2 ausgeführt wurde. Für WebApps und FunctionApps.|Instanz|
 |Ziehpunkte|Ja|Anzahl von Handles|Anzahl|Average|Die Gesamtanzahl von Handles, die aktuell durch den App-Prozess geöffnet sind. Für WebApps und FunctionApps.|Instanz|
-|HealthCheckStatus|Ja|Status der Integritätsüberprüfung|Anzahl|Average|Status der Integritätsprüfung für WebApps und FunctionApps.|Instanz|
+|HealthCheckStatus|Ja|Status der Integritätsüberprüfung|Anzahl|Average|Status der Integritätsüberprüfung. Für WebApps und FunctionApps.|Instanz|
 |Http101|Ja|HTTP 101|Anzahl|Gesamt|Die Anzahl von Anforderungen, die zum HTTP-Statuscode 101 führen. Für WebApps und FunctionApps.|Instanz|
 |Http2xx|Ja|HTTP 2xx|Anzahl|Gesamt|Die Anzahl von Anforderungen, die zu einem HTTP-Statuscode = 200, aber < 300 führen. Für WebApps und FunctionApps.|Instanz|
 |Http3xx|Ja|HTTP 3xx|Anzahl|Gesamt|Die Anzahl von Anforderungen, die zu einem HTTP-Statuscode = 300, aber < 400 führen. Für WebApps und FunctionApps.|Instanz|
@@ -3588,18 +3596,17 @@ Mit dem aktuellen Update wird eine neue Spalte hinzugefügt, und die Metriken we
 
 |Metrik|Über Diagnoseeinstellungen exportierbar?|Metrikanzeigename|Einheit|Aggregationstyp|BESCHREIBUNG|Dimensionen|
 |---|---|---|---|---|---|---|
-|Bytes pro Sekunde|Ja|Bytes pro Sekunde|Bytes pro Sekunde|Average|Für einen Migrator genutzte Durchsatzgeschwindigkeit in Bytes/Sekunde||
-|DirectoriesCreatedCount|Ja|Anzahl der erstellten Verzeichnisse|Anzahl|Gesamt|Fortlaufende Ansicht, wie viele Verzeichnisse im Rahmen einer Migration erstellt wurden||
-|FileMigrationCount|Ja|Anzahl der migrierten Dateien|Anzahl|Gesamt|Fortlaufende Gesamtanzahl der migrierten Dateien||
-|InitialScanDataMigratedInBytes|Ja|Migrierte Bytes nach anfänglichem Scanvorgang|Byte|Gesamt|Zeigt die Gesamtanzahl der Bytes an, die als Ergebnis des anfänglichen Scanvorgangs des lokalen Dateisystems in einem neuen Migrator übertragen wurden. Daten, die der Migration nach dem anfänglichen Scanvorgang hinzugefügt werden, sind NICHT in dieser Metrik enthalten.||
-|LiveDataMigratedInBytes|Ja|Migrierte Livedaten in Bytes|Anzahl|Gesamt|Fortlaufende Gesamtanzahl von Livedaten, die seit Beginn der Migration aufgrund von Clientaktivitäten geändert wurden||
-|MigratorCPULoad|Ja|CPU-Auslastung durch Migrator|Percent|Average|CPU-Verbrauch durch den Migratorprozess||
-|NumberOfExcludedPaths|Ja|Anzahl der ausgeschlossenen Pfade|Anzahl|Gesamt|Fortlaufende Anzahl der Pfade, die aufgrund von Ausschlussregeln von der Migration ausgeschlossen wurden||
-|NumberOfFailedPaths|Ja|Anzahl der Pfade mit Fehlern|Anzahl|Gesamt|Anzahl der Pfade, die nicht migriert werden konnten||
-|SystemCPULoad|Ja|CPU-Auslastung durch System|Percent|Average|CPU-Gesamtverbrauch||
-|TotalMigratedDataInBytes|Ja|Gesamtmenge der migrierten Daten in Bytes|Byte|Gesamt|Ansicht der erfolgreich migrierten Bytes für einen bestimmten Migrator||
-|TotalTransactions|Ja|Transaktionen gesamt|Anzahl|Gesamt|Eine fortlaufende Gesamtanzahl der Datentransaktionen, die dem Benutzer in Rechnung gestellt werden könnten||
-
+|Bytes pro Sekunde|Ja|Bytes pro Sekunde|Bytes pro Sekunde|Average|Für einen Migrator genutzte Durchsatzgeschwindigkeit in Bytes/Sekunde|Keine Dimensionen|
+|DirectoriesCreatedCount|Ja|Anzahl der erstellten Verzeichnisse|Anzahl|Gesamt|Fortlaufende Ansicht, wie viele Verzeichnisse im Rahmen einer Migration erstellt wurden|Keine Dimensionen|
+|FileMigrationCount|Ja|Anzahl der migrierten Dateien|Anzahl|Gesamt|Fortlaufende Gesamtanzahl der migrierten Dateien|Keine Dimensionen|
+|InitialScanDataMigratedInBytes|Ja|Migrierte Bytes nach anfänglichem Scanvorgang|Byte|Gesamt|Zeigt die Gesamtanzahl der Bytes an, die als Ergebnis des anfänglichen Scanvorgangs des lokalen Dateisystems in einem neuen Migrator übertragen wurden. Daten, die der Migration nach dem anfänglichen Scanvorgang hinzugefügt werden, sind NICHT in dieser Metrik enthalten.|Keine Dimensionen|
+|LiveDataMigratedInBytes|Ja|Migrierte Livedaten in Bytes|Anzahl|Gesamt|Fortlaufende Gesamtanzahl von Livedaten, die seit Beginn der Migration aufgrund von Clientaktivitäten geändert wurden|Keine Dimensionen|
+|MigratorCPULoad|Ja|CPU-Auslastung durch Migrator|Percent|Average|CPU-Verbrauch durch den Migratorprozess|Keine Dimensionen|
+|NumberOfExcludedPaths|Ja|Anzahl der ausgeschlossenen Pfade|Anzahl|Gesamt|Fortlaufende Anzahl der Pfade, die aufgrund von Ausschlussregeln von der Migration ausgeschlossen wurden|Keine Dimensionen|
+|NumberOfFailedPaths|Ja|Anzahl der Pfade mit Fehlern|Anzahl|Gesamt|Anzahl der Pfade, die nicht migriert werden konnten|Keine Dimensionen|
+|SystemCPULoad|Ja|CPU-Auslastung durch System|Percent|Average|CPU-Gesamtverbrauch|Keine Dimensionen|
+|TotalMigratedDataInBytes|Ja|Gesamtmenge der migrierten Daten in Bytes|Byte|Gesamt|Ansicht der erfolgreich migrierten Bytes für einen bestimmten Migrator|Keine Dimensionen|
+|TotalTransactions|Ja|Transaktionen gesamt|Anzahl|Gesamt|Eine fortlaufende Gesamtanzahl der Datentransaktionen, die dem Benutzer in Rechnung gestellt werden könnten|Keine Dimensionen|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

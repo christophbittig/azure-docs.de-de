@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 05/13/2021
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: cf15fd428c7e487b82823586be6edfd21f6cab48
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: e9344aae6dd001a660549d85ac1b1527c332f2d8
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129057396"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130178574"
 ---
 # <a name="add-a-tlsssl-certificate-in-azure-app-service"></a>Hinzufügen eines TLS-/SSL-Zertifikats in Azure App Service
 
@@ -176,7 +176,7 @@ Klicken Sie auf **App Service-Überprüfung**. Da Sie die Domäne bereits Ihrer 
 > - **App Service**: Die einfachste Option, wenn die Domäne bereits einer App Service-App im gleichen Abonnement zugeordnet ist. Sie nutzt die Tatsache aus, dass die App Service-App den Domänenbesitz bereits überprüft hat.
 > - **Domäne**: Mit dieser Option wird eine [App Service-Domäne überprüft, die Sie von Azure erworben haben](manage-custom-dns-buy-domain.md). Azure fügt die TXT-Überprüfungseinträge automatisch für Sie hinzu und schließt den Vorgang ab.
 > - **E-Mail**: Mit dieser Option wird die Domäne überprüft, indem Sie eine E-Mail an den Domänenadministrator senden. Anweisungen werden bei Auswahl der Option bereitgestellt.
-> - **Manuell**: Hiermit wird die Domäne entweder mit einer HTML-Seite (nur **Standard**-Zertifikat) oder einem DNS-TXT-Eintrag überprüft. Anweisungen werden bei Auswahl der Option bereitgestellt.
+> - **Manuell**: Hiermit wird die Domäne entweder mit einer HTML-Seite (nur **Standard**-Zertifikat) oder einem DNS-TXT-Eintrag überprüft. Anweisungen werden bei Auswahl der Option bereitgestellt. Die HTML-Seitenoption funktioniert nicht für Web-Apps, für die die Option „Nur HTTPS“ aktiviert ist.
 
 ### <a name="import-certificate-into-app-service"></a>Importieren des Zertifikats in App Service
 
@@ -334,7 +334,9 @@ Beim Ersatz eines ablaufenden Zertifikats kann sich die Art der Aktualisierung d
 ### <a name="renew-an-app-service-certificate"></a>Verlängern eines App Service-Zertifikats
 
 > [!NOTE]
-> Ab dem 23. September 2021 ist für App Service-Zertifikate alle 395 Tage eine Domänenüberprüfung erforderlich. Im Gegensatz zu einem von App Service verwalteten Zertifikat wird die erneute Domänenüberprüfung für App Service Certificate NICHT automatisiert.
+> Ab dem 23. September 2021 ist für App Service-Zertifikate alle 395 Tage eine Domänenüberprüfung erforderlich. Dies liegt an einer neuen Richtlinie, die vom Zertifizierungsstellen-/Browserforum erzwungen wird und die von Zertifizierungsstellen eingehalten werden muss. 
+> 
+> Im Gegensatz zu einem von App Service verwalteten Zertifikat wird die erneute Domänenüberprüfung für App Service Certificate NICHT automatisiert. Weitere Informationen zum Überprüfen des App Service-Zertifikats finden Sie unter [Überprüfen des Domänenbesitzes](#verify-domain-ownership).
 
 > [!NOTE]
 > Der Verlängerungsprozess erfordert, dass [der bekannte Dienstprinzipal für App Service über die erforderlichen Berechtigungen für Ihren Schlüsseltresor verfügt](deploy-resource-manager-template.md#deploy-web-app-certificate-from-key-vault). Diese Berechtigung wird für Sie konfiguriert, wenn Sie eine App Service Certificate-Instanz über das Portal importieren. Sie sollte nicht aus Ihrem Schlüsseltresor entfernt werden.

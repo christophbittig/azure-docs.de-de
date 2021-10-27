@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 09/21/2021
+ms.date: 10/13/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a30dc564dced8d3306c4645ca48b6331e1f6959b
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 0ad562e46b88772cd38e3e3d39920e7fdcf29d23
+ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129355764"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130137321"
 ---
 # <a name="conditional-access-session"></a>Bedingter Zugriff: Sitzung
 
@@ -26,7 +26,7 @@ In einer Richtlinie für bedingten Zugriff kann ein Administrator Sitzungssteuer
 
 ## <a name="application-enforced-restrictions"></a>Durch die Anwendung erzwungene Einschränkungen
 
-Organisationen können dieses Steuerelement verwenden, um zu erzwingen, dass Azure AD die Geräteinformationen an die ausgewählten Cloud-Apps übergibt. Mithilfe der Geräteinformationen können Cloud-Apps herausfinden, ob eine Verbindung von einem konformen oder einem in die Domäne eingebundenen Gerät initiiert wird, und die Sitzungserfahrung ändern. Diese Steuermöglichkeit unterstützt nur SharePoint Online und Exchange Online als ausgewählte Cloud-Apps. Wenn diese Option ausgewählt ist, verwendet die Cloud-App die Geräteinformationen, um Benutzern je nach Gerätestatus eine eingeschränkte (wenn das Gerät nicht verwaltet wird) oder eine vollständige Erfahrung (wenn das Gerät verwaltet wird und kompatibel ist) zu bieten.
+Organisationen können dieses Steuerelement verwenden, um zu erzwingen, dass Azure AD die Geräteinformationen an die ausgewählten Cloud-Apps übergibt. Mithilfe der Geräteinformationen können Cloud-Apps herausfinden, ob eine Verbindung von einem konformen oder einem in die Domäne eingebundenen Gerät initiiert wird, und die Sitzungserfahrung ändern. Diese Steuermöglichkeit unterstützt nur SharePoint Online und Exchange Online als ausgewählte Cloud-Apps. Wenn diese Option ausgewählt ist, verwendet die Cloud-App die Geräteinformationen, um Benutzern je nach Gerätestatus eine eingeschränkte (für nicht verwaltete Geräte) oder eine vollständige Funktionalität (für verwaltete und konforme Geräte) zu bieten.
 
 Weitere Informationen zum Verwenden und Konfigurieren von durch die App erzwungenen Einschränkungen finden Sie in den folgenden Artikeln:
 

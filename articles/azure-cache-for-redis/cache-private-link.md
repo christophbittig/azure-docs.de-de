@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 3/31/2021
-ms.openlocfilehash: 39d1d5cbffdc35880ab5065171092c473961e99d
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: 25572c32eff7fcdaffe3bad2bbf349bc8ca885f7
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129546987"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130045804"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link"></a>Azure Cache for Redis mit Azure Private Link
 
@@ -238,7 +238,7 @@ Sie können einen Befehl wie `nslookup` aus dem VNet ausführen, das mit dem pri
 ### <a name="how-can-i-change-my-private-endpoint-to-be-disabled-or-enabled-from-public-network-access"></a>Wie kann ich meinen privaten Endpunkt so ändern, dass der öffentliche Netzwerkzugriff auf ihn deaktiviert oder aktiviert ist?
 
 Es gibt ein `publicNetworkAccess`-Flag, das standardmäßig `Disabled` ist.
-Wenn dieses Flag auf `Enabled` gesetzt ist, erlaubt es sowohl öffentlichen als auch privaten Endpunkten den Zugriff auf den Cache. Wenn es auf `Disabled` gesetzt ist, erlaubt es nur den Zugriff privater Endpunkte. Sie können den Wert auf `Disabled` oder `Enabled` im Azure-Portal oder mit einer Rest-API-Patchanforderung festlegen.
+Wenn dieses Flag auf `Enabled` gesetzt ist, erlaubt es sowohl öffentlichen als auch privaten Endpunkten den Zugriff auf den Cache. Wenn es auf `Disabled` gesetzt ist, erlaubt es nur den Zugriff privater Endpunkte. Sie können den Wert im Azure-Portal oder mit einer RESTful-API-Patchanforderung auf `Disabled` oder `Enabled` festlegen.
 
 Gehen Sie folgendermaßen vor, um den Wert im Azure-Portal zu ändern.
 
@@ -250,7 +250,7 @@ Gehen Sie folgendermaßen vor, um den Wert im Azure-Portal zu ändern.
 
 1. Wählen Sie die Schaltfläche **Öffentlichen Netzwerkzugriff aktivieren** aus.
 
-Informationen zum Ändern des Werts durch eine Rest-API-Patchanforderung finden Sie unten, und bearbeiten Sie den Wert, um das für den Cache gewünschte Flag widerzuspiegeln.
+Informationen zum Ändern des Werts durch eine RESTful-API-Patchanforderung finden Sie unten, und bearbeiten Sie den Wert, um das für den Cache gewünschte Flag widerzuspiegeln.
 
 ```http
 PATCH  https://management.azure.com/subscriptions/{subscription}/resourceGroups/{resourcegroup}/providers/Microsoft.Cache/Redis/{cache}?api-version=2020-06-01
@@ -270,7 +270,7 @@ Um mehrere private Endpunkte in unterschiedlichen virtuellen Netzwerken zu verwe
 
 ### <a name="what-happens-if-i-delete-all-the-private-endpoints-on-my-cache"></a>Was passiert, wenn ich alle privaten Endpunkte in meinem Cache lösche?
 
-Nachdem Sie die privaten Endpunkte in Ihrem Cache gelöscht haben, kann Ihre Cache-Instanz unerreichbar werden, bis Sie entweder den öffentlichen Netzwerkzugriff explizit aktivieren oder einen anderen privaten Endpunkt hinzufügen. Sie können `publicNetworkAccess` Flag entweder für den Azure-Portal oder eine Rest-API-Patchanforderung ändern. Weitere Informationen zum Ändern des Werts finden Sie in den [häufig gestellten Fragen](#how-can-i-change-my-private-endpoint-to-be-disabled-or-enabled-from-public-network-access).
+Nachdem Sie die privaten Endpunkte in Ihrem Cache gelöscht haben, kann Ihre Cache-Instanz unerreichbar werden, bis Sie entweder den öffentlichen Netzwerkzugriff explizit aktivieren oder einen anderen privaten Endpunkt hinzufügen. Sie können die Flag `publicNetworkAccess` entweder auf dem Azure-Portal oder mit einer RESTful-API-Patchanforderung ändern. Weitere Informationen zum Ändern des Werts finden Sie in den [häufig gestellten Fragen](#how-can-i-change-my-private-endpoint-to-be-disabled-or-enabled-from-public-network-access).
 
 ### <a name="are-network-security-groups-nsg-enabled-for-private-endpoints"></a>Sind Netzwerksicherheitsgruppen (NSGs) für private Endpunkte aktiviert?
 

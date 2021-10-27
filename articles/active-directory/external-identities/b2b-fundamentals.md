@@ -5,25 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 02/12/2021
+ms.date: 10/13/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ddb2a002969b031f25dae2511d679cc520928ff6
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: d15fa618f7195dee15a071b11735b1cfc7276003
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108737781"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130069671"
 ---
 # <a name="azure-active-directory-b2b-best-practices"></a>Best Practices für B2B-Funktionen in Azure Active Directory
 Dieser Artikel enthält Empfehlungen und Best Practices für die B2B-Zusammenarbeit (Business-to-Business) in Azure Active Directory (Azure AD).
 
-   > [!IMPORTANT]
-   > **Ab Oktober 2021** wird das Einlösen von Einladungen durch die Erstellung von nicht verwalteten Azure AD-Konten und -Mandanten („viral“ oder „just in time“) für B2B Collaboration-Szenarien von Microsoft nicht mehr unterstützt. Zu diesem Zeitpunkt wird das Feature für die Einmalkennung per E-Mail für alle vorhandenen Mandanten aktiviert und für neue Mandanten standardmäßig aktiviert. Wir aktivieren das Feature für die Einmalkennung per E-Mail, da es eine nahtlose Fallbackauthentifizierungsmethode für Ihre Gastbenutzer bietet. Sie können dieses Feature jedoch deaktivieren, wenn Sie es nicht verwenden möchten. Weitere Informationen finden Sie unter [Authentifizierung mit Einmalkennung per E-Mail](one-time-passcode.md).
+> [!IMPORTANT]
+> **Ab dem 1. November 2021** wird Microsoft die Einlösung von Einladungen durch die Erstellung von nicht verwalteten ("viralen" oder "just-in-time") Azure AD-Konten und -Tenants für B2B-Kollaborationsszenarien nicht mehr unterstützen. Zu diesem Zeitpunkt werden wir damit beginnen, eine Änderung einzuführen, um die E-Mail-Einmalpasscode-Funktion für alle bestehenden Mandanten zu aktivieren und sie standardmäßig für neue Mandanten zu aktivieren. Wir aktivieren die Funktion „Einmalkennung per E-Mail“, da sie eine nahtlose alternative Authentifizierungsmethode für Ihre Gastbenutzer bietet. Wenn Sie jedoch nicht möchten, dass sich diese Funktion automatisch einschaltet, können Sie sie [deaktivieren](one-time-passcode.md#disable-email-one-time-passcode).
 
 
 ## <a name="b2b-recommendations"></a>B2B-Empfehlungen
@@ -34,7 +34,7 @@ Dieser Artikel enthält Empfehlungen und Best Practices für die B2B-Zusammenarb
 | Hinzufügen eines Unternehmensbrandings zu Ihrer Anmeldeseite | Sie können Ihre Anmeldeseite anpassen, damit sie für B2B-Gastbenutzer intuitiver ist. Informationen dazu finden Sie unter [Hinzufügen von Unternehmensbranding zur Anmelde- und Zugriffsbereichsseite](../fundamentals/customize-branding.md). |
 | Fügen Sie Ihre Datenschutzerklärung zum Einlösungsprozess der B2B-Gastbenutzer hinzu. | Sie können die URL zur Datenschutzerklärung Ihrer Organisation in den Prozess zum Einlösen einer Einladung einfügen, sodass ein eingeladener Benutzer diesen Bestimmungen zustimmen muss, um fortfahren zu können. Weitere Informationen finden Sie unter [Vorgehensweise: Hinzufügen der Datenschutzinformationen mit Azure Active Directory](../fundamentals/active-directory-properties-area.md). |
 | Verwenden Sie das Feature für Masseneinladungen (Vorschau), um mehrere B2B-Gastbenutzer gleichzeitig einzuladen. | Laden Sie mithilfe des Features für Masseneinladungen (Vorschau) im Azure-Portal mehrere Gastbenutzer gleichzeitig in Ihre Organisation ein. Mit diesem Feature können Sie eine CSV-Datei hochladen, um per Massenvorgang B2B-Gastbenutzer zu erstellen und Einladungen zu senden. Weitere Informationen finden Sie unter [Tutorial: Masseneinladen von B2B-Benutzern](tutorial-bulk-invite.md). |
-| Erzwingen Sie Richtlinien für bedingten Zugriff für die Multi-Factor Authentication (MFA). | Es wird empfohlen, MFA-Richtlinien in den Apps zu erzwingen, die Sie für B2B-Benutzer von Partnern freigeben möchten. Auf diese Weise wird die MFA in allen Apps in Ihrem Mandanten erzwungen, unabhängig davon, ob die Partnerorganisation die MFA verwendet. Weitere Informationen finden Sie unter [Bedingter Zugriff für Benutzer von B2B Collaboration](conditional-access.md). |
+| Durchsetzung von Richtlinien für bedingten Zugriff für Azure Active Directory Multi-Faktor-Authentifizierung (MFA) | Es wird empfohlen, MFA-Richtlinien in den Apps zu erzwingen, die Sie für B2B-Benutzer von Partnern freigeben möchten. Auf diese Weise wird die MFA in allen Apps in Ihrem Mandanten erzwungen, unabhängig davon, ob die Partnerorganisation die MFA verwendet. Weitere Informationen finden Sie unter [Bedingter Zugriff für Benutzer von B2B Collaboration](conditional-access.md). |
 | Wenn Sie gerätebasierte Richtlinien für bedingten Zugriff erzwingen, verwenden Sie Ausschlusslisten, um B2B-Benutzern Zugriff zu gewähren. | Wenn in Ihrer Organisation gerätebasierte Richtlinien für bedingten Zugriff aktiviert sind, werden Geräte von B2B-Gastbenutzern blockiert, weil sie nicht von Ihrer Organisation verwaltet werden. Sie können jedoch Ausschlusslisten mit bestimmten Partnerbenutzern erstellen, die von der gerätebasierten Richtlinie für bedingten Zugriff ausgeschlossen werden sollen. Weitere Informationen finden Sie unter [Bedingter Zugriff für Benutzer von B2B Collaboration](conditional-access.md). |
 | Verwenden Sie beim Bereitstellen von direkten Links für Ihre B2B-Gastbenutzer eine mandantenspezifische URL. | Alternativ zur Einladungs-E-Mail können Sie einem Gast einen direkten Link zu Ihrer App oder Ihrem Portal zur Verfügung stellen. Dieser direkte Link muss mandantenspezifisch sein, also eine Mandanten-ID oder eine überprüfte Domäne enthalten, damit der Gast in Ihrem Mandanten, in dem sich die freigegebene App befindet, authentifiziert werden kann. Weitere Informationen finden Sie unter [Einlösung von Einladungen](redemption-experience.md). |
 | Verwenden Sie beim Entwickeln einer App die UserType-Eigenschaft, um die Funktionalität für Gastbenutzer festzulegen.  | Wenn Sie eine Anwendung entwickeln und für Mandantenbenutzer und Gastbenutzer unterschiedliche Funktionalitäten bereitstellen möchten, verwenden Sie die Eigenschaft „UserType“. Der UserType-Anspruch ist derzeit nicht im Token enthalten. Anwendungen sollten die Microsoft Graph-API verwenden, um zum Abrufen der UserType-Eigenschaft eines Benutzers das Verzeichnis abzufragen. |

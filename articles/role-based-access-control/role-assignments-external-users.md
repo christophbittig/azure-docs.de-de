@@ -10,15 +10,15 @@ ms.devlang: ''
 ms.topic: how-to
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 06/28/2021
+ms.date: 10/15/2021
 ms.author: rolyon
 ms.custom: it-pro,subject-rbac-steps
-ms.openlocfilehash: 175beacc486c4b59919bf20300bbd06f7b9aa1a7
-ms.sourcegitcommit: 1c12bbaba1842214c6578d914fa758f521d7d485
+ms.openlocfilehash: 808e8e1dc5bcdcdddad490f30338c8f7a9e7ffa3
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/28/2021
-ms.locfileid: "112988504"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130074264"
 ---
 # <a name="assign-azure-roles-to-external-guest-users-using-the-azure-portal"></a>Zuweisen von Azure-Rollen zu externen Gastbenutzern über das Azure-Portal
 
@@ -80,25 +80,25 @@ In Azure RBAC weisen Sie zum Gewähren des Zugriffs eine Rolle zu. Um einem Gast
 
     Die folgende Abbildung zeigt ein Beispiel der Seite „Zugriffssteuerung (IAM)“ für eine Ressourcengruppe.
 
-    ![Screenshot: Seite „Zugriffssteuerung (IAM)“ für eine Ressourcengruppe in der Benutzeroberfläche der Vorschauversion.](./media/shared/rg-access-control.png)
+    ![Screenshot: Seite „Zugriffssteuerung (IAM)“ für eine Ressourcengruppe.](./media/shared/rg-access-control.png)
 
 1. Klicken Sie auf die Registerkarte **Rollenzuweisungen**, um die Rollenzuweisungen für diesen Bereich anzuzeigen.
 
-1. Klicken Sie auf **Hinzufügen** > **Rollenzuweisung hinzufügen (Vorschau)** .
+1. Klicken Sie auf **Hinzufügen** > **Rollenzuweisung hinzufügen**.
 
     Wenn Sie keine Berechtigungen zum Zuweisen von Rollen haben, ist die Option „Rollenzuweisung hinzufügen“ deaktiviert.
 
-    ![Screenshot: Menü „Hinzufügen > Rollenzuweisung hinzufügen“ in der Benutzeroberfläche der Vorschauversion.](./media/shared/add-role-assignment-menu-preview.png)
+    ![Screenshot: Menü „Hinzufügen > Rollenzuweisung hinzufügen“.](./media/shared/add-role-assignment-menu.png)
 
     Die Seite „Rollenzuweisung hinzufügen“ wird geöffnet.
 
 1. Wählen Sie auf der Registerkarte **Rolle** eine Rolle aus, etwa **Mitwirkender für virtuelle Computer**.
 
-   ![Screenshot: Seite „Rollenzuweisung hinzufügen“ mit der Registerkarte „Rollen“ auf der Benutzeroberfläche der Vorschauversion](./media/shared/roles.png)
+   ![Screenshot: Seite „Rollenzuweisung hinzufügen“ mit der Registerkarte „Rollen“](./media/shared/roles.png)
 
 1. Wählen Sie auf der Registerkarte **Mitglieder** die Option **Benutzer, Gruppe oder Dienstprinzipal** aus.
 
-   ![Screenshot: Seite „Rollenzuweisung hinzufügen“ mit der Registerkarte „Mitglieder“ auf der Benutzeroberfläche der Vorschauversion](./media/shared/members.png)
+   ![Screenshot: Seite „Rollenzuweisung hinzufügen“ mit der Registerkarte „Mitglieder“](./media/shared/members.png)
 
 1. Klicken Sie auf **Mitglieder auswählen**.
 
@@ -106,7 +106,7 @@ In Azure RBAC weisen Sie zum Gewähren des Zugriffs eine Rolle zu. Um einem Gast
 
     Sie können im Feld **Auswählen** einen Begriff eingeben, um das Verzeichnis nach Anzeigename oder E-Mail-Adresse zu durchsuchen.
 
-    ![Screenshot: Bereich „Mitglieder auswählen“ auf der Benutzeroberfläche der Vorschauversion](./media/role-assignments-external-users/select-members.png)
+    ![Screenshot: Bereich „Mitglieder auswählen“.](./media/role-assignments-external-users/select-members.png)
 
 1. Klicken Sie auf **Auswählen**, um den Gastbenutzer der Mitgliederliste hinzuzufügen.
 
@@ -130,11 +130,11 @@ Wenn sich der Gastbenutzer noch nicht in Ihrem Verzeichnis befindet, können Sie
 
 1. Klicken Sie auf **Zugriffssteuerung (IAM)** .
 
-1. Klicken Sie auf **Hinzufügen** > **Rollenzuweisung hinzufügen (Vorschau)** .
+1. Klicken Sie auf **Hinzufügen** > **Rollenzuweisung hinzufügen**.
 
     Wenn Sie keine Berechtigungen zum Zuweisen von Rollen haben, ist die Option „Rollenzuweisung hinzufügen“ deaktiviert.
 
-    ![Screenshot: Menü „Hinzufügen > Rollenzuweisung hinzufügen“ in der Benutzeroberfläche der Vorschauversion.](./media/shared/add-role-assignment-menu-preview.png)
+    ![Screenshot: Menü „Hinzufügen > Rollenzuweisung hinzufügen“.](./media/shared/add-role-assignment-menu.png)
 
     Die Seite „Rollenzuweisung hinzufügen“ wird geöffnet.
 
@@ -142,7 +142,7 @@ Wenn sich der Gastbenutzer noch nicht in Ihrem Verzeichnis befindet, können Sie
 
 1. Wählen Sie auf der Registerkarte **Mitglieder** die Option **Benutzer, Gruppe oder Dienstprinzipal** aus.
 
-   ![Screenshot: Seite „Rollenzuweisung hinzufügen“ mit der Registerkarte „Mitglieder“ auf der Benutzeroberfläche der Vorschauversion](./media/shared/members.png)
+   ![Screenshot: Seite „Rollenzuweisung hinzufügen“ mit der Registerkarte „Mitglieder“](./media/shared/members.png)
 
 1. Klicken Sie auf **Mitglieder auswählen**.
 

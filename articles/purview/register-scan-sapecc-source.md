@@ -6,13 +6,13 @@ ms.author: kchandra
 ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: overview
-ms.date: 09/27/2021
-ms.openlocfilehash: 6d6764d98b71c01abef66fbd7392017fe638ba5a
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.date: 10/18/2021
+ms.openlocfilehash: 37371081cd9ef132491dbed4a840517853dad475
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129212044"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130181367"
 ---
 # <a name="register-and-scan-sap-ecc-source"></a>Registrieren und Überprüfen einer SAP ECC-Quelle
 
@@ -24,8 +24,10 @@ Die SAP ECC-Quelle unterstützt die **vollständige Überprüfung**, um Metadate
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-1.  Richten Sie die neueste [selbstgehostete Integration Runtime](https://www.microsoft.com/download/details.aspx?id=39717) ein.
-    Weitere Informationen finden Sie unter [Erstellen und Konfigurieren einer selbstgehosteten Integration Runtime](../data-factory/create-self-hosted-integration-runtime.md).
+1.  Richten Sie die neueste [selbstgehostete Integration Runtime](https://www.microsoft.com/download/details.aspx?id=39717) ein. Weitere Informationen finden Sie unter [Erstellen und Konfigurieren einer selbstgehosteten Integration Runtime](../data-factory/create-self-hosted-integration-runtime.md). 
+
+    >[!NOTE] 
+    >Die Überprüfung von SAP ECC ist ein speicherintensiver Vorgang. Es wird empfohlen, die selbstgehostete Integration Runtime auf einem Computer mit großem Arbeitsspeicher (z. B. 128 GB) zu installieren.
 
 2.  Stellen Sie sicher, dass [JDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) auf dem virtuellen Computer installiert ist, auf dem auch die selbstgehostete Integration Runtime installiert ist.
 
@@ -104,17 +106,15 @@ Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
 
     e.  **JCo-Bibliothekspfad**: der Verzeichnispfad, in dem sich die JCo-Bibliotheken befinden
 
-    f.  **Maximal verfügbarer Arbeitsspeicher**: Maximaler Arbeitsspeicher (in GB), der auf dem virtuellen Computer des Kunden für Überprüfungsprozesse verfügbar ist. Abhängig von der Größe der zu überprüfenden SAP ECC-Quelle.
-    > [!Note] 
-    > Faustregel: 1 GB Arbeitsspeicher pro 1000 Tabellen.
-
+    f.  **Maximal verfügbarer Arbeitsspeicher**: Maximaler Arbeitsspeicher (in GB), der auf dem Computer mit der selbstgehosteten Integration Runtime für Überprüfungsprozesse verfügbar ist. Abhängig von der Größe der zu überprüfenden SAP ECC-Quelle. Es wird empfohlen, einen großen verfügbaren Arbeitsspeicher bereitzustellen, z. B. 100.
+    
     :::image type="content" source="media/register-scan-sapecc-source/scan-sapecc.png" alt-text="SAP ECC überprüfen" border="true":::
 
 6.  Wählen Sie **Weiter**.
 
 7.  Wählen Sie den **Auslöser für die Überprüfung**. Sie können einen Zeitplan einrichten oder die Überprüfung einmalig ausführen.
 
-8.  Sehen Sie sich Ihre Überprüfung noch einmal an, und wählen Sie dann **Speichern und ausführen** aus.
+8.  Sehen Sie sich Ihre Überprüfung noch einmal an, und wählen Sie **Speichern und ausführen** aus.
 
 ## <a name="viewing-your-scans-and-scan-runs"></a>Anzeigen Ihrer Überprüfungen und Überprüfungsausführungen
 

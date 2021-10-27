@@ -1,29 +1,29 @@
 ---
 title: 'Schnellstart: Interaktive Kartensuche mit Azure Maps'
 description: 'Schnellstart: Hier wird erläutert, wie Sie interaktive, durchsuchbare Karten erstellen. Hier erfahren Sie, wie Sie ein Azure Maps-Konto erstellen, einen Primärschlüssel abrufen und mithilfe des Web SDK Kartenanwendungen einrichten.'
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 04/26/2021
+author: stevemunk
+ms.author: v-munksteve
+ms.date: 09/30/2021
 ms.topic: quickstart
 ms.service: azure-maps
 services: azure-maps
 ms.custom: mvc
-ms.openlocfilehash: a61fdab9814ecaff7ef8a54749968d2ba1b6dd38
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e4c4cdeeb032b0d6a6691987cec43c8ac1b2d437
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121750194"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130043375"
 ---
 # <a name="quickstart-create-an-interactive-search-map-with-azure-maps"></a>Schnellstart: Erstellen einer interaktiven Kartensuche mit Azure Maps
 
-In diesem Artikel wird gezeigt, wie Sie Azure Maps verwenden, um eine Karte mit einer interaktiven Sucherfahrung zu erstellen. Die folgenden grundlegenden Schritte werden erläutert:
+In dieser Schnellstartanleitung wird gezeigt, wie Sie Azure Maps verwenden, um eine Karte mit einer interaktiven Sucherfahrung zu erstellen. Die folgenden grundlegenden Schritte werden erläutert:
 
 * Erstellen eines eigenen Azure Maps-Kontos
 * Abrufen Ihres Primärschlüssels zur Verwendung in der Demowebanwendung
 * Herunterladen und Öffnen der Karten-Demoanwendung.
 
-In dieser Schnellstartanleitung wird das Azure Maps Web SDK verwendet, aber die Azure Maps-Dienste können mit jedem Kartensteuerelement verwendet werden. [Hier](open-source-projects.md#third-part-map-control-plugins) finden Sie einige beliebte Open-Source-Kartensteuerelemente, für die das Azure Maps-Team Plug-Ins erstellt hat.
+In dieser Schnellstartanleitung wird das Azure Maps Web SDK verwendet. Der Azure Maps-Dienst kann jedoch mit jedem Kartensteuerelement verwendet werden, etwa mit [diesen beliebten Open-Source-Kartensteuerelementen](open-source-projects.md#third-part-map-control-plugins), für die das Azure Maps-Team Plug-Ins erstellt hat.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -48,7 +48,7 @@ Erstellen Sie mithilfe der folgenden Schritte ein neues Azure Maps-Konto:
     * Lesen Sie die *Lizenzbedingungen* und die *Datenschutzerklärung*, und aktivieren Sie zum Akzeptieren der Bestimmungen das Kontrollkästchen.
     * Klicken Sie auf die Schaltfläche **Erstellen** .
 
-    :::image type="content" source="./media/quick-demo-map-app/create-account.png" alt-text="Erstellen eines Maps-Kontos im Portal":::
+    :::image type="content" source="./media/quick-demo-map-app/create-account.png" alt-text="Erstellen eines Maps-Kontos im Portal" lightbox="./media/quick-demo-map-app/create-account.png":::
 
 <a id="getkey"></a>
 
@@ -60,16 +60,19 @@ Rufen Sie nach der Erstellung des Maps-Kontos den Primärschlüssel ab, mit dem 
 2. Wählen Sie im Abschnitt „Einstellungen“ die Option **Authentifizierung** aus.
 3. Kopieren Sie den **Primärschlüssel** in die Zwischenablage. Speichern Sie ihn lokal zur späteren Verwendung in diesem Tutorial.
 
+:::image type="content" source="./media/quick-demo-map-app/get-key.png" alt-text="Abrufen des Azure Maps-Primärschlüssels im Azure-Portal" lightbox="./media/quick-demo-map-app/get-key.png":::
+
 >[!NOTE]
-> Wenn Sie den Abonnementschlüssel anstelle des Primärschlüssels verwenden, wird Ihre Karte nicht ordnungsgemäß gerendert. Außerdem wird aus Sicherheitsgründen empfohlen, dass Sie zwischen Ihrem Primär- und Sekundärschlüssel wechseln. Aktualisieren Sie zur Schlüsselrotation Ihre App, um den Sekundärschlüssel zu verwenden. Stellen Sie dann die App bereit, und drücken Sie die Taste für die Aktualisierung neben dem Primärschlüssel, um einen neuen Primärschlüssel zu generieren. Der alte Primärschlüssel wird deaktiviert. Weitere Informationen zur Schlüsselrotation finden Sie unter [Einrichten von Azure Key Vault mit Schlüsselrotation und Überwachung](../key-vault/secrets/tutorial-rotation-dual.md)
+> In dieser Schnellstartanleitung wird zu Demonstrationszwecken der Ansatz zur Authentifizierung mit [gemeinsam verwendetem Schlüssel](azure-maps-authentication.md#shared-key-authentication) verwendet. Der bevorzugte Ansatz für jede Produktionsumgebung ist jedoch die Verwendung der Authentifizierung über [Azure Active Directory](azure-maps-authentication.md#azure-ad-authentication).
 
-:::image type="content" source="./media/quick-demo-map-app/get-key.png" alt-text="Abrufen des Azure Maps-Primärschlüssels im Azure-Portal":::
-
-## <a name="download-the-demo-application"></a>Herunterladen der Demoanwendung
+## <a name="download-and-update-the-azure-maps-demo"></a>Herunterladen und Aktualisieren der Azure Maps-Demo
 
 1. Wechseln Sie zu [interactiveSearch.html](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/interactiveSearch.html). Kopieren Sie den Inhalt der Datei.
 2. Speichern Sie den Inhalt dieser Datei lokal unter **AzureMapDemo.html**. Öffnen Sie die Datei in einem Text-Editor.
-3. Suchen Sie nach der Zeichenfolge `<Your Azure Maps Key>`. Ersetzen Sie sie durch den **Primärschlüssel**, den Sie im vorherigen Abschnitt kopiert haben.
+3. Fügen Sie den Wert für **Primärschlüssel** hinzu, den Sie im vorherigen Abschnitt kopiert haben.
+    1. Kommentieren Sie den gesamten Code in der Funktion `authOptions` aus. Dieser Code wird für die Azure Active Directory-Authentifizierung verwendet.
+    1. Heben Sie die Auskommentierung der letzten beiden Zeilen in der Funktion `authOptions` auf. Dieser Code wird für die Authentifizierung mit gemeinsam verwendetem Schlüssel verwendet. Dieser Ansatz wird in dieser Schnellstartanleitung verwendet.
+    1. Ersetzen Sie `<Your Azure Maps Key>` durch den **Primärschlüssel**, den Sie im vorherigen Abschnitt kopiert haben.
 
 ## <a name="open-the-demo-application"></a>Öffnen der Demoanwendung
 
@@ -79,8 +82,7 @@ Rufen Sie nach der Erstellung des Maps-Kontos den Primärschlüssel ab, mit dem 
 4. Probieren Sie die interaktiven Suchfunktionen aus. Geben Sie **Restaurants** in das Suchfeld in der oberen linken Ecke der Demowebanwendung ein.
 5. Bewegen Sie den Mauszeiger über die Liste der Adressen und Standorte, die unterhalb des Suchfelds angezeigt wird. Beachten Sie dabei, wie über dem entsprechenden Pin auf der Karte Informationen zum jeweiligen Standort angezeigt werden. Zum Schutz von Privatunternehmen werden fiktive Namen und Adressen angezeigt.
 
-    :::image type="content" source="./media/quick-demo-map-app/interactive-search.png" alt-text="Webanwendung für die interaktive Kartensuche":::
-
+    :::image type="content" source="./media/quick-demo-map-app/interactive-search.png" alt-text="Webanwendung für die interaktive Kartensuche" lightbox="./media/quick-demo-map-app/interactive-search.png":::
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -95,9 +97,8 @@ Falls Sie nicht mit den Tutorials fortfahren möchten, führen Sie die folgenden
 
 Weitere Codebeispiele und eine interaktive Codierumgebung finden Sie in den folgenden Anleitungen:
 
-[Suchen nach einer Adresse mit dem Suchdienst von Azure Maps](how-to-search-for-address.md)
-
-[Verwenden des Azure Maps-Kartensteuerelements](how-to-use-map-control.md)
+* [Suchen nach einer Adresse mit dem Suchdienst von Azure Maps](how-to-search-for-address.md)
+* [Verwenden des Azure Maps-Kartensteuerelements](how-to-use-map-control.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

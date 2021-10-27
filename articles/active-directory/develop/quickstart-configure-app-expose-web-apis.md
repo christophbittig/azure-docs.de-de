@@ -13,12 +13,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, contperf-fy21q1
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: 820bc7dfe9123db495c151cd5cd0ea5ae337619f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4d5f4a92955aab2d920c21e73ec71bdf56bf76e9
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100103973"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130044344"
 ---
 # <a name="quickstart-configure-an-application-to-expose-a-web-api"></a>Schnellstart: Konfigurieren einer Anwendung für das Verfügbarmachen einer Web-API
 
@@ -55,6 +55,8 @@ Führen Sie zuerst die folgenden Schritte aus, um einen Beispielbereich namens `
 1. Sie werden aufgefordert, einen **Anwendungs-ID-URI** festzulegen, falls Sie noch keinen konfiguriert haben.
 
    Der APP-ID-URI fungiert als Präfix für die Bereiche, auf die Sie in Ihrem API-Code verweisen, und muss global eindeutig sein. Sie können den bereitgestellten Standardwert im Format `api://<application-client-id>` verwenden, oder einen besser lesbaren URI wie `https://contoso.com/api` angeben.
+   
+   Weitere Informationen zu gültigen App-ID-URI-Mustern finden Sie in der [Azure AD-App-Manifestreferenz](reference-app-manifest.md).
 
 1. Geben Sie als Nächstes unter **Bereich hinzufügen** die Attribute des Bereichs an. Für diese exemplarische Vorgehensweise können Sie die Beispielwerte verwenden oder eigene Werte angeben.
 

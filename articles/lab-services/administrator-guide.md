@@ -1,14 +1,14 @@
 ---
-title: Azure Lab Services – Administratorhandbuch | Microsoft-Dokumentation
+title: Administratorhandbuch | Microsoft-Dokumentation
 description: Dieses Handbuch hilft Administratoren, die Lab-Konten mit Azure Lab Services erstellen und verwalten.
-ms.topic: article
+ms.topic: how-to
 ms.date: 10/20/2020
-ms.openlocfilehash: 567a6ad5cd7eae6fb6963dbcdb781fc2d7667f79
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 698b6ddb6474031e7d19f2029156197b7d6a7741
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355438"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130177268"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services – Administratorhandbuch
 IT-Administratoren, die die Cloudressourcen einer Universität verwalten, sind in der Regel auch dafür verantwortlich, das Lab-Konto für diese Universität einzurichten. Nachdem sie ein Lab-Konto eingerichtet haben, erstellen Administratoren oder Dozenten Labs, die im Lab-Konto enthalten sind. Dieser Artikel bietet eine allgemeine Übersicht über die beteiligten Azure-Ressourcen und die Anleitungen zu deren Erstellung.

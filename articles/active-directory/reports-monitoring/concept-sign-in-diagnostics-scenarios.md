@@ -17,12 +17,12 @@ ms.date: 07/08/2021
 ms.author: markvi
 ms.reviewer: tspring
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c327de515699ed0d0d8b74e0c393d206864fef85
-ms.sourcegitcommit: cc099517b76bf4b5421944bd1bfdaa54153458a0
+ms.openlocfilehash: 4301caa11079604a19b8679311daf1e082b35b1f
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113553086"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129993490"
 ---
 # <a name="sign-in-diagnostics-for-azure-ad-scenarios"></a>Anmeldediagnose für Azure AD Szenarien
 
@@ -278,7 +278,13 @@ In diesem Szenario blockiert die Identity Protection-Richtlinie einen Anmeldever
 Weitere Informationen finden Sie unter [Gewusst wie: Konfigurieren und Aktivieren von Richtlinien](../identity-protection/howto-identity-protection-configure-risk-policies.md). 
 
 
+### <a name="pass-through-authentication"></a>Passthrough-Authentifizierung 
 
+Da bei der Passtrough-Authentifizierung lokale und cloudbasierte Authentifizierungstechnologien integriert werden, kann es schwierig sein, die Ursache des Problems zu ermitteln. Diese Diagnose soll das Diagnostizieren und Auflösen dieser Szenarien vereinfachen. 
+
+In diesem Diagnoseszenario werden benutzerspezifische Anmeldeprobleme identifiziert, wenn als Authentifizierungsmethode die Passthrough-Authentifizierung (Pass-Through Authentication, PTA) verwendet wird und ein PTA-spezifischer Fehler auftritt. Fehler aufgrund anderer Probleme werden auch dann ordnungsgemäß diagnostiziert, wenn die PTA-Authentifizierung verwendet wird. 
+
+Bei der Diagnose werden Kontextinformationen zum Fehler und zum angemeldeten Benutzer, zusätzliche Gründe für Anmeldefehler sowie empfohlene Aktionen angezeigt, die der Administrator ergreifen kann, um das Problem zu beheben. Weitere Informationen finden Sie unter [Behandlung von Problemen bei der Azure Active Directory-Passthrough-Authentifizierung](../hybrid/tshoot-connect-pass-through-authentication.md). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

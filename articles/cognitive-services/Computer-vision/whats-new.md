@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 05/24/2021
 ms.author: pafarley
-ms.openlocfilehash: 395b9d2670a488ab0743a987b1e8b857f6f2fb2f
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: c2cdf1dc396a04adb106ee1b3777eb11e7c36279
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129708308"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130045482"
 ---
 # <a name="whats-new-in-computer-vision"></a>Neuerungen beim maschinellen Sehen
 

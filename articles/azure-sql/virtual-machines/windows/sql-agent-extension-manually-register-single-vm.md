@@ -3,7 +3,7 @@ title: Registrieren eines virtuellen Computers mit der SQL-IaaS-Agent-Erweiterun
 description: Registrieren Sie Ihren virtuellen Azure SQL Server-Computer mit der SQL-IaaS-Agent-Erweiterung, um Features für virtuelle SQL Server-Computer zu aktivieren, die außerhalb von Azure Marketplace bereitgestellt werden, und um Compliance und eine einfachere Verwaltung zu gewährleisten.
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: adbadram
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.subservice: management
@@ -12,21 +12,21 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 09/01/2021
-ms.author: mathoma
-ms.reviewer: jroth
+ms.author: adbadram
+ms.reviewer: mathoma
 ms.custom: devx-track-azurecli, devx-track-azurepowershell, contperf-fy21q2
-ms.openlocfilehash: 3dfcfcab7421b6aa8710310fdffa08f54688c4fd
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: b66b7c86cf7ba6d23cb09c7feed1f3ced19fd531
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123219925"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130160956"
 ---
 # <a name="register-sql-server-vm-with-sql-iaas-agent-extension"></a>Registrieren einer SQL Server-VM mit der SQL-IaaS-Agent-Erweiterung
 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Wenn Sie Ihre SQL Server-VM mit der [SQL-IaaS-Agent-Erweiterung](sql-server-iaas-agent-extension-automate-management.md) registrieren, können Sie viele Features für SQL Server auf Azure-VMs nutzen.
+Wenn Sie Ihre SQL Server-VM mit der [SQL-IaaS-Agent-Erweiterung](sql-server-iaas-agent-extension-automate-management.md) registrieren, können Sie viele Features für SQL Server auf Azure-VMs nutzen. Standardmäßig werden virtuelle Azure-Computer, auf denen SQL Server 2016 oder höher installiert ist, automatisch bei der Erweiterung für den SQL-IaaS-Agent registriert, wenn sie vom [CEIP-Dienst](/sql/sql-server/usage-and-diagnostic-data-configuration-for-sql-server) erkannt werden.  Weitere Informationen finden Sie unter [Ergänzende Datenschutzbestimmungen zu SQL Server](/sql/sql-server/sql-server-privacy#non-personal-data).
 
 In diesem Artikel erfahren Sie, wie Sie eine einzelne SQL Server-VM mit der SQL-IaaS-Agent-Erweiterung registrieren. Alternativ können Sie alle SQL Server-VMs in einem Abonnement [automatisch](sql-agent-extension-automatic-registration-all-vms.md) oder [mehrere VMs per Skript in einem Massenvorgang](sql-agent-extension-manually-register-vms-bulk.md) registrieren.
 
@@ -51,6 +51,7 @@ Um Ihre SQL Server-VM mit der Erweiterung registrieren zu können, benötigen S
 - Ein [Azure-Abonnement](https://azure.microsoft.com/free/).
 - Ein in der öffentlichen Cloud oder Azure Government-Cloud bereitgestelltes Azure-Ressourcenmodell des Typs [Windows Server 2008-VM (oder höher)](../../../virtual-machines/windows/quick-create-portal.md) mit [SQL Server 2008 (oder höher)](https://www.microsoft.com/sql-server/sql-server-downloads).
 - Die aktuelle Version von [Azure CLI](/cli/azure/install-azure-cli) oder [Azure PowerShell (mindestens 5.0)](/powershell/azure/install-az-ps).
+- Mindestens .NET Framework 4.5.1.
 
 ## <a name="register-subscription-with-rp"></a>Registrieren eines Abonnements mit RP
 
@@ -382,4 +383,4 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 * [Übersicht über SQL Server auf einem virtuellen Windows-Computer](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [Häufig gestellte Fragen zu SQL Server auf virtuellen Windows-Computern](frequently-asked-questions-faq.yml)
 * [Preisinformationen für SQL Server auf virtuellen Windows-Computern](pricing-guidance.md)
-* [SQL Server auf Windows-VMs – Versionshinweise](../../database/doc-changes-updates-release-notes.md)
+* [Neuerungen für SQL Server auf virtuellen Azure-Computern](doc-changes-updates-release-notes-whats-new.md)

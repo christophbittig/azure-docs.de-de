@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: iqshah
-ms.date: 07/26/2021
-ms.openlocfilehash: 9994e37d747419bd42820bd4c3c4c5ed1e147708
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.date: 10/13/2021
+ms.openlocfilehash: fd4d93b09328ad0b8de982a065567ffbadd87be3
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129360187"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130004386"
 ---
 # <a name="create-plans-for-a-virtual-machine-offer"></a>Erstellen von Plänen für ein VM-Angebot
 
@@ -130,13 +130,13 @@ Sie können Ihren Kunden für einen Monat, drei oder sechs Monate eine **kostenl
 
 ### <a name="plan-visibility"></a>Sichtbarkeit des Plans
 
-Sie können jeden Plan so entwerfen, dass er für alle Benutzer oder nur für eine vorab ausgewählte Zielgruppe sichtbar ist. Weisen Sie die Mitgliedschaften in dieser eingeschränkten Zielgruppe mithilfe von Azure-Abonnement-IDs zu.
+Sie können jeden Plan so entwerfen, dass er für alle Benutzer oder nur für eine vorab ausgewählte Zielgruppe sichtbar ist. Weisen Sie die Mitgliedschaften in dieser eingeschränkten Zielgruppe mithilfe von Azure-Mandanten-IDs, Azure-Abonnement-IDs oder beiden ID-Typen zu.
 
 **Öffentlich**: Ihr Plan kann von allen Benutzern eingesehen werden.
 
 **Privat**: Machen Sie Ihren Plan nur für eine vorab ausgewählte Zielgruppe sichtbar. Nachdem er als privater Plan veröffentlicht wurde, können Sie die Zielgruppe aktualisieren oder ihn in „öffentlich“ ändern. Nachdem Sie einen Plan öffentlich gemacht haben, muss er auch öffentlich bleiben. Er kann nicht wieder in einen privaten Plan geändert werden.
 
-Weisen Sie anhand von **Azure-Abonnement-IDs** die Zielgruppe zu, die auf diesen privaten Plan zugreifen darf. Optional können Sie eine **Beschreibung** der einzelnen zugewiesenen Azure-Abonnement-IDs einschließen. Fügen Sie bis zu 10 Abonnement-IDs manuell oder bis zu 20.000 durch Importieren eines CSV-Arbeitsblatts hinzu. Azure-Abonnement-IDs werden als GUIDs dargestellt, und alle Buchstaben müssen in Kleinschreibung angegeben werden.
+Weisen Sie anhand von *Azure-Mandanten-IDs*, *Azure-Abonnement-IDs* oder beiden ID-Typen die Zielgruppe zu, die auf diesen privaten Plan zugreifen darf. Optional können Sie eine **Beschreibung** der einzelnen zugewiesenen Azure-Mandanten-IDs oder Azure-Abonnement-IDs einschließen. Fügen Sie bis zu zehn Abonnement-IDs und Mandanten-IDs manuell hinzu, oder importieren Sie eine CSV-Tabelle, falls mehr als zehn IDs erforderlich sind.
 
 > [!NOTE]
 > Eine private oder eingeschränkte Zielgruppe unterscheidet sich von der im Bereich **Vorschau** definierten Vorschauzielgruppe. Eine Vorschauzielgruppe kann auf das Angebot zugreifen, *bevor* es im Azure Marketplace live veröffentlicht wird. Auch wenn die Auswahl der privaten Zielgruppe nur für einen bestimmten Plan gilt, kann die private Zielgruppe alle Pläne (private und nicht private Pläne) zu Validierungszwecken anzeigen.

@@ -3,12 +3,12 @@ title: Neuerungen in Azure Defender für IoT
 description: In diesem Artikel wird beschrieben, welche Neuerungen das aktuelle Release von Defender für IoT enthält.
 ms.topic: overview
 ms.date: 05/05/2021
-ms.openlocfilehash: e731d45d527a3bb2a59e532065fefc78a3237fd5
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.openlocfilehash: bb039f53228b5b6abc05708ba7f6efd79c349672
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113011097"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130179543"
 ---
 # <a name="whats-new-in-azure-defender-for-iot"></a>Neuerungen in Azure Defender für IoT  
 
@@ -30,6 +30,62 @@ Microsoft plant, mindestens vierteljährlich Updates für Azure Defender für Io
 |--|--|--|
 | 10.0 | 01/2021 | 10/2021 |
 | 10.3 | 04/2021 | 02/2022 |
+
+## <a name="october-2021"></a>Oktober 2021
+
+Die folgenden Featureverbesserungen werden mit der Version 10.5.2 von Azure Defender für IoT verfügbar gemacht:
+
+- [SPS-Betriebsmoduserkennungen (Public Preview)](#plc-operating-mode-detections-public-preview)
+
+- [PCAP-API](#pcap-api)
+
+- [Überwachung der lokalen Verwaltungskonsole](#on-premises-management-console-audit)
+
+- [Webhook erweitert](#webhook-extended)
+
+- [Unicode-Unterstützung für Zertifikatpassphrasen](#unicode-support-for-certificate-passphrases) 
+
+### <a name="plc-operating-mode-detections-public-preview"></a>SPS-Betriebsmoduserkennungen (Public Preview)
+
+Benutzer können jetzt Zustände, Änderungen und Risiken des SPS-Betriebsmodus anzeigen. Der SPS-Betriebsmodus besteht aus dem logischen SPS-Ausführungszustand und dem physischen Schlüsselzustand, sofern ein physischer Schlüsselschalter für die SPS vorhanden ist.
+Diese neue Funktion trägt durch die Erkennung *unsicherer* SPS zur Verbesserung der Sicherheit und somit zur Verhinderung von Angriffen wie etwa SPS-Programmdownloads bei. Der Triton-Angriff von 2017 auf ein petrochemisches Werk zeigt, welche Auswirkungen solche Risiken haben können.
+Durch diese Information erhalten Betriebstechniker außerdem einen wichtigen Einblick in den Betriebsmodus von Unternehmens-SPS.
+
+#### <a name="what-is-an-unsecure-mode"></a>Was ist ein unsicherer Modus?
+
+Wenn der Schlüsselzustand als „Programm“ oder der Ausführungszustand als „Remote“ oder „Programm“ erkannt wird, wird die SPS von Defender für IoT als *Unsicher* definiert.
+
+#### <a name="visibility-and-risk-assessment"></a>Transparenz und Risikobewertung
+
+- Verwenden Sie den Gerätebestand, um den SPS-Zustand von Organisations-SPS sowie kontextbezogene Geräteinformationen anzuzeigen. Verwenden Sie das Dialogfeld mit den Gerätebestandseinstellungen, um diese Spalte dem Bestand hinzuzufügen.
+
+    :::image type="content" source="media/release-notes/device-inventory-plc.png" alt-text="Gerätebestand mit dem SPS-Betriebsmodus":::
+
+- Im Abschnitt „Attribute“ des Bildschirms mit den Geräteeigenschaften können Sie den SPS-Sicherheitsstatus sowie Informationen zur letzten Änderung für die einzelnen SPS anzeigen. Wenn der Schlüsselzustand als „Programm“ oder der Ausführungszustand als „Remote“ oder „Programm“ erkannt wird, wird die SPS von Defender für IoT als *Unsicher* definiert. Die Option „PLG gesichert“ in den Geräteeigenschaften lautet „false“. Weitere Informationen finden Sie unter [Anzeigen und Verwalten von Geräteeigenschaften](how-to-work-with-the-sensor-device-map.md#view-and-manage-device-properties).
+
+    :::image type="content" source="media/release-notes/attributes-plc.png" alt-text="Bildschirm „Attribute“ mit SPS-Informationen":::
+
+- Sie können alle Statuswerte für Netzwerk-SPS-Ausführung und Schlüsselzustand anzeigen, indem Sie Data Mining mit Informationen zum SPS-Betriebsmodus erstellen.
+
+    :::image type="content" source="media/release-notes/data-mining-plc.png" alt-text="Bildschirm „Datenbestand“ mit SPS-Option":::
+
+- Der Risikobewertungsbericht gibt Aufschluss über die Anzahl von Netzwerk-SPS im unsicheren Modus und enthält zusätzliche Informationen zur Behandlung von Risiken durch unsichere SPS.
+
+### <a name="pcap-api"></a>PCAP-API
+
+Mit der neuen PCAP-API kann der Benutzer über die lokale Verwaltungskonsole PCAP-Dateien des Sensors mit und ohne direkten Zugriff auf den Sensor abrufen. Hierzu wird die Verwaltungskonsole als Proxy verwendet.
+
+### <a name="on-premises-management-console-audit"></a>Überwachung der lokalen Verwaltungskonsole
+
+Überwachungsprotokolle für die Bereitstellung Ihres Sensors sind jetzt über die lokale Verwaltungskonsole verfügbar.
+
+### <a name="webhook-extended"></a>Webhook erweitert
+
+Der erweiterte Webhook kann verwendet werden, um alle Informationen in der Webhookwarnung sowie zusätzliche Daten an den Endpunkt zu senden.
+
+### <a name="unicode-support-for-certificate-passphrases"></a>Unicode-Unterstützung für Zertifikatpassphrasen 
+
+Bei Passphrasen für Sensorzertifikate werden jetzt Unicode-Zeichen unterstützt. Weitere Informationen finden Sie unter [Informationen zu Zertifikaten](how-to-deploy-certificates.md#about-certificates).
 
 ## <a name="april-2021"></a>April 2021
 
@@ -103,20 +159,6 @@ Dieses Feature ist in der lokalen Verwaltungskonsole mit Veröffentlichung von V
 Sie können die Sicherheit Ihrer Bereitstellung nun verbessern, indem Sie Ihrer lokalen Verwaltungskonsole eine zweite Netzwerkschnittstelle hinzufügen. Mit diesem Feature können Sie die verbundenen Sensoren Ihrer lokalen Verwaltung in einem sicheren Netzwerk verwenden und gleichzeitig Ihren Benutzern den Zugriff auf die lokale Verwaltungskonsole über eine zweite separate Netzwerkschnittstelle ermöglichen.
 
 Dieses Feature ist in der lokalen Verwaltungskonsole mit Veröffentlichung von Version 10.2 verfügbar.
-
-### <a name="device-builder---new-micro-agent-public-preview"></a>Gerätehersteller: neuer Mikro-Agent (öffentliche Vorschau)
-
-Ein neues Geräteherstellermodul ist verfügbar. Das Modul, das als Micro-Agent bezeichnet wird, ermöglicht Folgendes:
-
-- **Integration in Azure IoT Hub und Azure Defender für IoT** : Integrieren Sie mehr Endpunktsicherheit direkt in Ihre IoT-Geräte, indem Sie sie mit der Überwachungsoption von Azure IoT Hub und Azure Defender für IoT verbinden.
-- **Flexible Bereitstellungsoptionen mit Unterstützung für IoT-Standardbetriebssysteme** können entweder als binäres Paket oder als modifizierbarer Quellcode bereitgestellt werden, mit Unterstützung für IoT-Standardbetriebssysteme wie Linux und Azure RTOS.
-- **Minimale Ressourcenanforderungen ohne Kernelabhängigkeiten vom Betriebssystem**: geringer Platzbedarf, geringe CPU-Auslastung und keine Kernelabhängigkeiten vom Betriebssystem.
-- **Verwaltung des Sicherheitsstatus**: Sie können den Sicherheitsstatus Ihrer IoT-Geräte aktiv verwalten.
-- **Kontinuierliche Erkennung von IoT/OT-Bedrohungen in Echtzeit**: Erkennung von Bedrohungen wie Botnets, Brute-Force-Angriffen, Krypto-Minern und verdächtigen Netzwerkaktivitäten
-
-Die veraltete Dokumentation zum Defender für IoT-Micro-Agent wird in den Ordner *Agent-basierte Lösung für Gerätehersteller > Classic* verschoben.
-
-Diese Featuregruppe ist in der aktuellen öffentlichen Vorschauversion verfügbar.
 
 ## <a name="january-2021"></a>Januar 2021
 

@@ -393,7 +393,7 @@
         - name: Übersicht
           href: agents/agents-overview.md
         - name: Häufig gestellte Fragen
-          href: /azure/azure-monitor/faq#agents
+          href: ./faq.yml
         - name: Azure Monitor-Agent
           items:
             - name: Übersicht
@@ -410,7 +410,7 @@
               href: agents/azure-monitor-agent-migration.md
             - name: Häufig gestellte Fragen
               displayname: Azure Monitor agent FAQ
-              href: /azure/azure-monitor/faq#azure-monitor-agent
+              href: ./faq.yml
         - name: Log Analytics-Agent
           items:
             - name: Übersicht
@@ -661,7 +661,7 @@
           href: app/app-insights-overview.md
         - name: Häufig gestellte Fragen
           href: /azure/azure-monitor/faq#application-insights
-        - name: Codebasierte Überwachung
+        - name: SDKs für Application Insights
           items:
             - name: .NET
               items:
@@ -736,7 +736,7 @@
               href: app/api-custom-events-metrics.md
             - name: Entfernen von Application Insights
               href: app/remove-application-insights.md
-        - name: Überwachung ohne Code
+        - name: Automatische Instrumentierung
           items:
             - name: Übersicht
               href: app/codeless-overview.md
@@ -762,7 +762,7 @@
               href: app/monitor-functions.md
             - name: Azure Kubernetes Service
               href: app/kubernetes-codeless.md
-            - name: Lokale Server
+            - name: Beliebige Umgebung
               items:
                 - name: ASP.NET
                   items:
@@ -779,7 +779,7 @@
                       href: app/status-monitor-v2-api-reference.md
                 - name: Java
                   href: app/java-on-premises.md
-        - name: OpenTelemetry
+        - name: OpenTelemetry-basierte Instrumentierung
           items:
             - name: Übersicht
               href: app/opentelemetry-overview.md
@@ -814,7 +814,7 @@
             - name: Python
               href: app/opentelemetry-enable.md?tabs=python
             - name: Häufig gestellte Fragen
-              href: /azure/azure-monitor/faq#opentelemetry
+              href: ./faq.yml
         - name: Erstellen einer Ressource (klassisch)
           href: app/create-new-resource.md
         - name: Erstellen einer Ressource (arbeitsbereichsbasiert)
@@ -1054,7 +1054,7 @@
         - name: 'Allgemeine Verfügbarkeit: häufig gestellte Fragen'
           href: vm/vminsights-ga-release-faq.yml
         - name: Häufig gestellte Fragen
-          href: /azure/azure-monitor/faq#vm-insights
+          href: ./faq.yml
         - name: Konfigurieren des Arbeitsbereichs
           href: vm/vminsights-configure-workspace.md
         - name: Installieren von Agents
@@ -1106,7 +1106,7 @@
         - name: Übersicht
           href: containers/container-insights-overview.md
         - name: Häufig gestellte Fragen
-          href: /azure/azure-monitor/faq#container-insights
+          href: ./faq.yml
         - name: Aktivieren der Überwachung
           items:
             - name: 'Aktivieren der Überwachung: Übersicht'
@@ -1200,7 +1200,7 @@
             - name: Übersicht
               href: insights/sql-insights-overview.md
             - name: Häufig gestellte Fragen
-              href: /azure/azure-monitor/faq#sql-insights-(preview)
+              href: ./faq.yml
             - name: Aktivieren
               href: insights/sql-insights-enable.md
             - name: Alerts

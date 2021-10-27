@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 07/05/2021
-ms.openlocfilehash: ce68d4161762d47b8754cb69633a3918848085d0
-ms.sourcegitcommit: 2cff2a795ff39f7f0f427b5412869c65ca3d8515
+ms.date: 10/15/2021
+ms.openlocfilehash: 1988668640a0c9e6d60c0dd9f09e6e8831ce0809
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/10/2021
-ms.locfileid: "113593831"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130132605"
 ---
 # <a name="create-plans-for-a-saas-offer"></a>Erstellen von Plänen für ein SaaS-Angebot
 
@@ -73,6 +73,9 @@ Diese Option ist nur verfügbar, wenn Sie „Pauschalgebühr“ ausgewählt habe
 1. Geben Sie im Feld **Grundsätzlich enthaltene monatliche Menge** die Menge der Dimension (als ganze Zahl) ein, die für Kunden, die die wiederkehrende monatliche Gebühr zahlen, jeden Monat inklusive ist. Aktivieren Sie stattdessen das Kontrollkästchen, wenn Sie eine unbegrenzte Anzahl festlegen möchten.
 1. Geben Sie im Feld **Grundsätzlich enthaltene jährliche Menge** die Menge der Dimension (als ganze Zahl) ein, die für Kunden, die die wiederkehrende jährliche Gebühr zahlen, jeden Monat inklusive ist. Aktivieren Sie stattdessen das Kontrollkästchen, wenn Sie eine unbegrenzte Anzahl festlegen möchten.
 1. Zum Hinzufügen einer weiteren benutzerdefinierten Dimension für die Verbrauchseinheit wählen Sie den Link **Weitere Dimension hinzufügen** aus, und wiederholen Sie dann die Schritte 1 bis 7.
+
+> [!IMPORTANT]
+> Sie müssen die Nutzung in Ihrem Code nachverfolgen und nur für die Nutzung, die über der Grundgebühr liegt, Nutzungsereignisse an Microsoft senden.
 
 ### <a name="configure-per-user-pricing"></a>Konfigurieren von Preisen pro Benutzer
 

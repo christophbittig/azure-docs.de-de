@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 01/29/2021
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f4bf378db5d9091cb48f2b0c813a92823bc72589
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 54069c9b37b33ab343c11b8eb3ef02712e29ea3e
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112031743"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130038762"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>Tutorial: Moderieren von E-Commerce-Produktbildern mit Azure Content Moderator
 
@@ -80,7 +80,7 @@ Sehen Sie sich den folgenden Code in der Methode **Main** an. Er durchläuft ein
 
 ## <a name="evaluateadultracy-method"></a>Methode „EvaluateAdultRacy“
 
-Sehen Sie sich die Methode **EvaluateAdultRacy** in der Klasse **Program** an. Diese Methode akzeptiert eine Bild-URL und ein Array von Schlüssel-Wert-Paaren als Parameter. Sie ruft (unter Verwendung von REST) die Bild-API von Content Moderator auf, um die Ergebnisse für nicht jugendfreie und freizügige Inhalte des Bilds zu erhalten. Ist eines der Ergebnisse größer als 0,4 (der mögliche Bereich liegt zwischen 0 und 1), wird der entsprechende Wert im Array **ReviewTags** auf **true** festgelegt.
+Sehen Sie sich die Methode **EvaluateAdultRacy** in der Klasse **Program** an. Diese Methode akzeptiert eine Bild-URL und ein Array von Schlüssel-Wert-Paaren als Parameter. Sie ruft die Bild-REST-API von Content Moderator auf, um die Ergebnisse für nicht jugendfreie und freizügige Inhalte des Bilds zu erhalten. Ist eines der Ergebnisse größer als 0,4 (der mögliche Bereich liegt zwischen 0 und 1), wird der entsprechende Wert im Array **ReviewTags** auf **true** festgelegt.
 
 [!code-csharp[define EvaluateAdultRacy method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=73-113)]
 

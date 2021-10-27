@@ -1,19 +1,19 @@
-- name: Dokumentation zum Azure-Hybridvorteil auf Bereichsebene
+- name: Dokumentation zum zentral verwalteten Azure-Hybridvorteil
   href: index.yml?toc=/azure/cost-management-billing/scope-level/toc.json
 - name: Übersicht
   expanded: true
   items:
-    - name: Worum handelt es sich bei der Verwaltung des Azure-Hybridvorteils auf Bereichsebene?
+    - name: Was ist der zentral verwaltete Azure-Hybridvorteil?
       href: overview-azure-hybrid-benefit-scope.md?toc=/azure/cost-management-billing/scope-level/toc.json
 - name: Tutorials
   expanded: true
   items:
-    - name: Optimieren des Azure-Hybridvorteils auf Bereichsebene
+    - name: Optimieren des zentral verwalteten Azure-Hybridvorteils
       href: tutorial-azure-hybrid-benefits-sql.md?toc=/azure/cost-management-billing/scope-level/toc.json
 - name: Konzepte
   expanded: false
   items:
-    - name: Anwenden zugewiesener Lizenzen durch Azure
+    - name: Anwenden zentral zugewiesener Lizenzen durch Azure
       href: manage-licenses-centrally.md?toc=/azure/cost-management-billing/scope-level/toc.json
     - name: "SQL\_Server-HADR und Azure-Hybridvorteil"
       href: sql-server-hadr-licenses.md?toc=/azure/cost-management-billing/scope-level/toc.json
@@ -22,7 +22,7 @@
   items:
     - name: "Erstellen von SQL\_Server-Lizenzzuweisungen"
       href: create-sql-license-assignments.md?toc=/azure/cost-management-billing/scope-level/toc.json
-    - name: Übergang zum Azure-Hybridvorteil auf Bereichsebene
+    - name: Übergang zum zentral verwalteten Azure-Hybridvorteil
       href: transition-existing.md?toc=/azure/cost-management-billing/scope-level/toc.json
 - name: Ressourcen
   items:

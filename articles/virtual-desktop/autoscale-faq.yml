@@ -1,0 +1,35 @@
+### YamlMime:FAQ
+metadata:
+  title: 'Häufig gestellte Fragen zur Autoskalierung in Azure Virtual Desktop: Azure'
+  description: Häufig gestellte Fragen und Best Practices für Azure Virtual Desktop
+  author: Heidilohr
+  ms.topic: conceptual
+  ms.date: 10/19/2021
+  ms.author: helohr
+  ms.custom: devx-track-azurepowershell
+  manager: femila
+  ms.openlocfilehash: 7024b24b27e8a33cd79c3ad199dcd9e4040588d5
+  ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 10/19/2021
+  ms.locfileid: "130181793"
+title: Häufig gestellte Fragen zur Autoskalierung in Azure Virtual Desktop (Vorschau)
+summary: In diesem Artikel werden häufig gestellte Fragen zur Verwendung des Features für die Autoskalierung (Vorschau) für Azure Virtual Desktop beantwortet.
+sections:
+- name: Wird ignoriert.
+  questions:
+  - question: >
+      Wie konfiguriere ich die Autoskalierung, sodass außerhalb der Arbeitszeiten keine Sitzungshosts ausgeführt werden?
+    answer: "Im Minimalmodus wird immer die geringstmögliche Anzahl von Sitzungshosts verwendet. Wenn jedoch aktive Sitzungen vorhanden sind, ist die niedrigste Anzahl verwendbarer Sitzungshosts nicht null. Konfigurieren Sie eine Zeitlimitrichtlinie, um alle getrennten Benutzer abzumelden und zu verhindern, dass außerhalb der Arbeitszeiten verwendbare Sitzungshosts vorhanden sind.\n \n"
+  - question: >
+      Werden bei der Autoskalierung virtuelle Computer basierend auf der Dienstauslastung erstellt oder gelöscht?
+    answer: >
+      Nein.
+  - question: >
+      Kann ich die Skalierung für bestimmte Tage wie Feiertage konfigurieren?
+    answer: >
+      Nein. Die Autoskalierung unterstützt derzeit das Minimieren an bestimmten Tagen nicht.
+  - question: >
+      Fallen zusätzliche Kosten für die Verwendung des Features für die Autoskalierung an?
+    answer: Nein. Weitere Informationen zu Preisen finden Sie auf der [Seite mit der Preisübersicht](https://azure.microsoft.com/pricing/details/virtual-desktop/).

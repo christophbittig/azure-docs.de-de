@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 7/07/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: a007f567b6f137f1bff225f90c3f52dfaf71c1f2
-ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
+ms.openlocfilehash: 87cce83adcd24c9933d1d0668e4b9ce5a8fb6c2e
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114228582"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130036073"
 ---
 # <a name="tutorial-configure-azure-ad-b2c-with-datawiza-to-provide-secure-hybrid-access"></a>Tutorial: Konfigurieren von Azure AD B2C mit Datawiza zum Bereitstellen eines sicheren Hybridzugriffs
 
@@ -112,7 +112,7 @@ Wenden Sie sich an [Datawiza](https://login.datawiza.com/df3f213b-68db-4966-bee4
 
 ## <a name="pass-user-attributes-to-the-header-based-application"></a>Übergeben von Benutzerattributen an die headerbasierte Anwendung
 
-1. DAB ruft Benutzerattribute vom Identitätsanbieter ab und kann die Benutzerattribute per Header oder Cookie an die Anwendung übergeben. Lesen Sie die Anweisungen zum [Übergeben von Benutzerattributen](https://docs.datawiza.com/step-by-step/step4.html) wie z. B. E-Mail-Adresse, Vorname und Nachname an die headerbasierte Anwendung. 
+1. DAB ruft Benutzerattribute vom Identitätsanbieter ab und kann die Benutzerattribute per Header oder Cookie an die Anwendung übergeben. Lesen Sie die Anweisungen zum [Übergeben von Benutzerattributen](https://docs.datawiza.com/step-by-step/step4.html) (z. B. E-Mail-Adresse, Vornamen und Nachname) an die headerbasierte Anwendung. 
 
 2. Nach der erfolgreichen Konfiguration der Benutzerattribute sollte für jedes Benutzerattribute ein grünes Häkchen angezeigt werden.
 

@@ -2,21 +2,21 @@
 title: Webanmeldungen mit OpenID Connect – Azure Active Directory B2C
 description: Erstellen von Webanwendungen mit dem OpenID Connect-Authentifizierungsprotokoll in Azure Active Directory B2C.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/20/2021
-ms.author: mimart
+ms.date: 10/05/2021
+ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ab62cae223b60103043df0c9dd79acf64e552358
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 7b9cb3fb0a3c856741217ffd29c963735eef028d
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128588939"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130036111"
 ---
 # <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Webanmeldungen mit OpenID Connect in Azure Active Directory B2C
 
@@ -271,9 +271,9 @@ Fehlerantworten sehen aus wie folgt:
 
 ## <a name="send-a-sign-out-request"></a>Senden einer Abmeldeanforderung
 
-Wenn Sie den Benutzer bei der Anwendung abmelden möchten, reicht es nicht aus, die Cookies der Anwendung zu löschen oder die Sitzung mit dem Benutzer auf andere Weise zu beenden. Leiten Sie den Benutzer für die Abmeldung zu Azure AD B2C um. Wenn Sie dies versäumen, kann sich der Benutzer möglicherweise erneut bei Ihrer Anwendung authentifizieren, ohne die Anmeldeinformationen erneut eingeben zu müssen. Weitere Informationen finden Sie unter [Azure AD B2C-Sitzung](session-behavior.md).
+Wenn Sie den Benutzer bei der Anwendung abmelden möchten, reicht es nicht aus, die Cookies der Anwendung zu löschen oder die Sitzung mit dem Benutzer auf andere Weise zu beenden. Leiten Sie den Benutzer für die Abmeldung zu Azure AD B2C um. Wenn Sie dies versäumen, kann sich der Benutzer möglicherweise erneut bei Ihrer Anwendung authentifizieren, ohne die Anmeldeinformationen erneut eingeben zu müssen. Weitere Informationen finden Sie unter [Azure AD B2C-Sitzungsverhalten](session-behavior.md).
 
-Um den Benutzer abzumelden, leiten Sie ihn an den `end_session`-Endpunkt um, der im oben beschriebenen OpenID Connect-Metadatendokument aufgeführt wird:
+Um den Benutzer abzumelden, leiten Sie ihn an den `end_session_endpoint` um, der im oben beschriebenen OpenID Connect-Metadatendokument aufgeführt wird:
 
 ```http
 GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/logout?post_logout_redirect_uri=https%3A%2F%2Fjwt.ms%2F
@@ -282,11 +282,13 @@ GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/
 | Parameter | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | {tenant} | Ja | Name des Azure AD B2C-Mandanten. |
-| {policy} | Ja | Der Benutzerfluss, der in der Berechtigungsanfrage verwendet wurde. Wenn sich der Benutzer beispielsweise mit dem Benutzerfluss `b2c_1_sign_in` anmeldet, geben Sie `b2c_1_sign_in` in der Abmeldeanforderung an. |
+| {policy} | Ja | Der Benutzerflow, der in der Autorisierungsanforderung verwendet wurde. Wenn sich der Benutzer beispielsweise mit dem Benutzerflow `b2c_1_sign_in` angemeldet hat, geben Sie `b2c_1_sign_in` in der Abmeldeanforderung an. |
 | id_token_hint| Nein  | Ein zuvor ausgestelltes ID-Token, das an den Abmelde-Endpunkt als Hinweis bezüglich der aktuellen authentifizierten Sitzung des Endbenutzers mit dem Client übergeben werden soll. Der `id_token_hint` stellt sicher, dass der `post_logout_redirect_uri` eine registrierte Antwort-URL in Ihren Azure AD B2C-Anwendungseinstellungen darstellt. Weitere Informationen finden Sie unter [Sichern der Umleitung beim Abmelden](#secure-your-logout-redirect). |
 | client_id | Nein* | Die Anwendungs-ID, die das [Azure-Portal](https://portal.azure.com/) Ihrer Anwendung zugewiesen hat.<br><br>\**Dies ist erforderlich, wenn die `Application`-Isolation-SSO-Konfiguration verwendet wird und _ID-Token erforderlich_ in der Abmeldeanforderung auf `No` festgelegt ist.* |
 | post_logout_redirect_uri | Nein  | Die URL, an die der Benutzer nach erfolgreicher Abmeldung umgeleitet werden soll. Wenn sie nicht angegeben ist, gibt Azure AD B2C eine generische Nachricht an den Benutzer aus. Wenn Sie keinen `id_token_hint` angeben, sollten Sie diese URL nicht als Antwort-URL in Ihren Azure AD B2C-Anwendungseinstellungen registrieren. |
-| state | Nein  | Wenn ein Parameter `state` in der Anforderung enthalten ist, sollte der gleiche Wert in der Antwort angezeigt werden. Die Anwendung sollte überprüfen, ob die `state`-Werte in der Anforderung und in der Antwort identisch sind. |
+| state | Nein  | Wenn ein Parameter `state` in der Autorisierungsanforderung enthalten ist, wird der gleiche Wert in der Antwort an den `post_logout_redirect_uri` zurückgegeben. Die Anwendung sollte überprüfen, ob die `state`-Werte in der Anforderung und in der Antwort identisch sind. |
+
+Bei einer Abmeldeanforderung erklärt Azure AD B2C die cookiebasierte Azure AD B2C-Sitzung für ungültig und versucht, sich von Verbundidentitätsanbietern abzumelden. Weitere Informationen finden Sie unter [Einmaliges Abmelden](session-behavior.md?pivots=b2c-custom-policy#single-sign-out).
 
 ### <a name="secure-your-logout-redirect"></a>Sichern der Umleitung beim Abmelden
 

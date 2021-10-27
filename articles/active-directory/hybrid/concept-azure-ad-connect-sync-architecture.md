@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b27055ce84bbb073045b69b942fd13f4fde4e3b3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dfc0ca4250cc6cfefbf7c68d27996ccd81fd2857
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "90563861"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129993623"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-architecture"></a>Azure AD Connect-Synchronisierung: Grundlagen der Architektur
 In diesem Thema wird die grundlegende Architektur für Azure AD Connect Sync beschrieben. In vielen Punkten ähnelt sie den Vorgängern MIIS 2003, ILM 2007 und FIM 2010. Azure AD Connect Sync ist die Weiterentwicklung dieser Technologien. Wenn Sie sich mit einer dieser früheren Technologien auskennen, wird Ihnen auch der Inhalt dieses Themas vertraut sein. Dieses Thema ist für Sie auch geeignet, falls Sie sich mit der Synchronisierung noch nicht auskennen. Es ist jedoch nicht erforderlich, alle Details dieses Themas zu kennen, um erfolgreich Anpassungen an Azure AD Connect Sync (in diesem Thema als „Synchronisierungsmodul“ bezeichnet) vornehmen zu können.
@@ -193,7 +193,7 @@ Die Synchronisierung umfasst zwei zusammenhängende Prozesse:
 * Die eingehende Synchronisierung, bei der der Inhalt des Metaverse anhand der Daten im Connectorbereich aktualisiert wird.
 * Die ausgehende Synchronisierung, bei der der Inhalt des Connectorbereichs anhand der Daten im Metaverse aktualisiert wird.
 
-Mit den im Connectorbereich bereitgestellten Informationen erstellt der Prozess der eingehenden Synchronisierung im Metaverse die integrierte Ansicht der Daten, die in den verbundenen Datenquellen gespeichert sind. Es werden entweder alle Stagingobjekte oder nur diejenigen mit Informationen vom Typ „Import steht aus“ aggregiert. Dies hängt von den Regeln ab, die Sie konfiguriert haben.
+Durch die Verwendung der im Konnektorraum bereitgestellten Informationen schafft der eingehende Synchronisierungsprozess eine integrierte Sicht auf die Daten im Metaverse, die in den verbundenen Datenquellen gespeichert sind. Es werden entweder alle Stagingobjekte oder nur diejenigen mit Informationen vom Typ „Import steht aus“ aggregiert. Dies hängt von den Regeln ab, die Sie konfiguriert haben.
 
 Beim Prozess der ausgehenden Synchronisierung werden Exportobjekte aktualisiert, wenn sich Metaverseobjekte ändern.
 

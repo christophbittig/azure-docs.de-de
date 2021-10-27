@@ -11,17 +11,72 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/8/2021
+ms.date: 10/18/2021
 ms.author: gunnarc
-ms.openlocfilehash: 76807a8f653de9a48c91c5d6429869ae0e5c9312
-ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
+ms.openlocfilehash: 194e425ca62cbe36fa163efaf88a75fb7e1f09f9
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129728872"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130175881"
 ---
 # <a name="azure-guest-os"></a>Azure-Gastbetriebssystem
 Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MSRC), die auf das Azure-Gastbetriebssystem angewendet wurden. Durchsuchen Sie diesen Artikel, um zu ermitteln, ob ein bestimmtes Update für das Gastbetriebssystem gilt, das Sie verwenden. Updates werden für die [Familie][family-explain], in der sie eingeführt wurden, immer in die jeweils neueste Version übertragen.
+
+>[!NOTE] 
+
+>Das Gastbetriebssystem für Oktober wird derzeit auf Clouddienst-VMs eingeführt, die für automatische Updates konfiguriert sind. Wenn die Bereitstellung abgeschlossen ist, wird diese Version für manuelle Updates über das Azure-Portal und Konfigurationsdateien verfügbar gemacht. Die folgenden Patches sind im Gastbetriebssystem für Oktober enthalten. Änderungen der Liste vorbehalten. 
+
+## <a name="october-2021-guest-os"></a>Gastbetriebssystem für Oktober 2021
+| Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |
+| --- | --- | --- | --- | --- |
+|  Rel 21-10 |  [5006672]  |  Letztes kumulatives Update | 6.36 | 12. Oktober 2021 |
+|  Rel 21-10 |  [5006671]  |  Kumulative IE-Updates | 2.115, 3.102, 4.95 | 12. Oktober 2021 |
+|  Rel 21-10 |  [5006699]  |  Kumulative IE-Updates | 7.00 | 12. Oktober 2021 |
+|  Rel 21-10 |  [5006669]  |  Letztes kumulatives Update | 5.60 | 12. Oktober 2021 |
+|  Rel 21-10 |  [4578952]  |  .NET Framework 3.5: Sicherheits- und Qualitätsrollup  | 2.115 | 16. Februar 2021 |
+|  Rel 21-10 |  [4578955]  |  .NET Framework 4.5.2: Sicherheits- und Qualitätsrollup  | 2.115 | 8\. Juni 2021 |
+|  Rel 21-10 |  [4578953]  |  .NET Framework 3.5: Sicherheits- und Qualitätsrollup  | 4.95 | 16. Februar 2021 |
+|  Rel 21-10 |  [4578956]  |  .NET Framework 4.5.2: Sicherheits- und Qualitätsrollup  | 4.95 | 16. Februar 2021 |
+|  Rel 21-10 |  [4578950]  |  .NET Framework 3.5: Sicherheits- und Qualitätsrollup  | 3.102 | 16. Februar 2021 |
+|  Rel 21-10 |  [4578954]  |  . .NET Framework 4.5.2: Sicherheits- und Qualitätsrollup  | 3.102 | 16. Februar 2021 |
+|  Rel 21-10 |  [5004335]  |  . Kumulatives Update für .NET Framework 3.5 und 4.7.2  | 6.36 | 10. August 2021 |
+|  Rel 21-10 |  [5006743]  |  Monatlicher Rollup  | 2.115 | 14. September 2021 |
+|  Rel 21-10 |  [5006739]  |  Monatlicher Rollup  | 3.102 | 14. September 2021 |
+|  Rel 21-10 |  [5006714]  |  Monatlicher Rollup  | 4.95 | 14. September 2021 |
+|  Rel 21-10 |  [5001401]  |  Wartungsstapelaktualisierung  | 3.102 | 13. April 2021 |
+|  Rel 21-10 |  [5001403]  |  Wartungsstapelaktualisierung  | 4.95 | 13. April 2021 |
+|  Rel 21-10 OOB |  [4578013]  |  Eigenständiges Sicherheitsupdate  | 4.95 | 19. August 2020 |
+|  Rel 21-10 |  [5005698]  |  Wartungsstapelaktualisierung  | 5.60 | 14. September 2021 |
+|  Rel 21-10 |  [5006749]  |  Wartungsstapelaktualisierung  | 2.115 | 13. Juli 2021 |
+|  Rel 21-10 |  [5005701]  |  Wartungsstapelaktualisierung  | 6.36 | 10. August 2021 |
+|  Rel 21-10 |  [4494175]  |  Microcode  | 5.60 | 1\. September 2020 |
+|  Rel 21-10 |  [4494174]  |  Microcode  | 6.36 | 1\. September 2020 |
+
+[5006672]: https://support.microsoft.com/kb/5006672
+[5006671]: https://support.microsoft.com/kb/5006671
+[5006699]: https://support.microsoft.com/kb/5006699
+[5006669]: https://support.microsoft.com/kb/5006669
+[4578952]: https://support.microsoft.com/kb/4578952
+[4578955]: https://support.microsoft.com/kb/4578955
+[4578953]: https://support.microsoft.com/kb/4578953
+[4578956]: https://support.microsoft.com/kb/4578956
+[4578950]: https://support.microsoft.com/kb/4578950
+[4578954]: https://support.microsoft.com/kb/4578954
+[5004335]: https://support.microsoft.com/kb/5004335
+[5006743]: https://support.microsoft.com/kb/5006743
+[5006739]: https://support.microsoft.com/kb/5006739
+[5006714]: https://support.microsoft.com/kb/5006714
+[5001401]: https://support.microsoft.com/kb/5001401
+[5001403]: https://support.microsoft.com/kb/5001403
+[4578013]: https://support.microsoft.com/kb/4578013
+[5005698]: https://support.microsoft.com/kb/5005698
+[5006749]: https://support.microsoft.com/kb/5006749
+[5005701]: https://support.microsoft.com/kb/5005701
+[4494175]: https://support.microsoft.com/kb/4494175
+[4494174]: https://support.microsoft.com/kb/4494174
+
+
 
 ## <a name="september-2021-guest-os"></a>Gastbetriebssystem für September 2021
 

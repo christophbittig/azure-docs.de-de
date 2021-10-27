@@ -10,12 +10,12 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 11/08/2019
 ms.author: cshoe
-ms.openlocfilehash: ea418576ab8fe06964a61e48f16393e1a0566ce8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 42d35abfb3b3cea82355d2ed610a2ccc72c13f6d
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102182246"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130004538"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Azure Functions-Trigger für die Aufwärmphase
 
@@ -240,7 +240,7 @@ Wenn eine Aufwärmfunktion aufgerufen wird, werden keine weiteren Informationen 
 
 ## <a name="trigger---limits"></a>Trigger – Grenzwerte
 
-* Der Trigger für die Aufwärmphase ist nur für Apps verfügbar, die im [Premium-Plan](./functions-premium-plan.md) ausgeführt werden.
+* Der Aufwärmtrigger ist für Apps im [Verbrauchsplan](./consumption-plan.md) nicht verfügbar.
 * Der Trigger für die Aufwärmphase wird nur während des horizontalen Skalierens aufgerufen und nicht bei Neustarts oder anderen nicht skalierbaren Startups. Sie müssen sicherstellen, dass Ihre Logik alle notwendigen Abhängigkeiten laden kann, ohne den Trigger für die Aufwärmphase zu verwenden. Lazy Loading ist ein gutes Muster, um dies zu erreichen.
 * Der Trigger für die Aufwärmphase kann nicht aufgerufen werden, sobald eine Instanz bereits ausgeführt wird.
 * Pro Funktions-App kann nur eine Triggerfunktion für die Aufwärmphase vorhanden sein.

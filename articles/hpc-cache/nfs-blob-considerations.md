@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/12/2021
 ms.author: v-erkel
-ms.openlocfilehash: 090003e25c2d8ca13be27bf94bc12b4941cda798
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e9d31ae4ccaa7bffaf1ce38a9f044993277f5f2f
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124814652"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130041669"
 ---
 # <a name="use-nfs-mounted-blob-storage-with-azure-hpc-cache"></a>Verwenden von in NFS eingebundenem Blobspeicher mit Azure HPC Cache
 
@@ -42,7 +42,7 @@ In einem NFS-fähigen Blobcontainer kann *eine Datei nur von dem Protokoll bearb
 
 Es ist kein Problem für den Cache, wenn Ihr Container leer ist, oder wenn die Dateien mithilfe von NFS erstellt wurden.
 
-Wenn die Dateien in Ihrem Container mit der REST-API des Azure-Blobs anstelle von NFS erstellt wurden, ist Azure HPC Cache auf die folgenden Aktionen für die ursprünglichen Dateien beschränkt:
+Wenn die Dateien in Ihrem Container mit der Azure Blob REST API anstelle von NFS erstellt wurden, ist Azure HPC Cache auf diese Aktionen für die Originaldateien beschränkt:
 
 * Auflisten der Dateien in einem Verzeichnis
 * Lesen der Datei (und Speichern im Cache für nachfolgende Lesezugriffe)

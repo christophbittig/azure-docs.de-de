@@ -15,20 +15,16 @@ ms.custom: devx-track-csharp
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.author: jken
-ms.openlocfilehash: bb0c83536f8973a07d656844439a8816dea83346
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 9a2a8f88cd39b452a54d6fc668737fc1b5be68cc
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105625703"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129996965"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-core-app"></a>Tutorial: Verwenden der dynamischen Konfiguration in einer .NET Core-App
 
-Die .NET Core-Clientbibliothek von App Configuration unterstützt die bedarfsgesteuerte Aktualisierung der Konfigurationseinstellungen, ohne dass eine Anwendung neu gestartet werden muss. Dies kann implementiert werden, indem zuerst eine Instanz von `IConfigurationRefresher` aus den Optionen für den Konfigurationsanbieter abgerufen und anschließend `TryRefreshAsync` für diese Instanz an einer beliebigen Stelle Ihres Codes aufgerufen wird.
-
-Um die Einstellungen auf dem aktuellen Stand zu halten und zu viele Aufrufe des Konfigurationsspeichers zu vermeiden, wird ein Cache für jede Einstellung verwendet. Bis der zwischengespeicherte Wert einer Einstellung abgelaufen ist, wird der Wert vom Aktualisierungsvorgang nicht aktualisiert. Dies gilt auch, wenn sich der Wert im Konfigurationsspeicher geändert hat. Die Standardablaufzeit jeder Anforderung beträgt 30 Sekunden, aber dies kann bei Bedarf außer Kraft gesetzt werden.
-
-In diesem Tutorial wird veranschaulicht, wie Sie dynamische Konfigurationsupdates in Ihrem Code implementieren können. Dies baut auf der App auf, die in den Schnellstartanleitungen vorgestellt wurde. Durchlaufen Sie zuerst die Schnellstartanleitung zum [Erstellen einer .NET Core-App mit Azure App Configuration](./quickstart-dotnet-core-app.md), bevor Sie fortfahren.
+Die .NET-Anbieterbibliothek von App Configuration unterstützt die bedarfsgesteuerte Aktualisierung der Konfigurationseinstellungen, ohne dass eine Anwendung neu gestartet werden muss. In diesem Tutorial wird veranschaulicht, wie Sie dynamische Konfigurationsupdates in Ihrem Code implementieren können. Dies baut auf der App auf, die in der Schnellstartanleitung vorgestellt wurde. Durchlaufen Sie die Schnellstartanleitung zum [Erstellen einer .NET Core-App mit Azure App Configuration](./quickstart-dotnet-core-app.md), bevor Sie fortfahren.
 
 Für die Ausführung der Schritte dieses Tutorials können Sie einen beliebigen Code-Editor verwenden. [Visual Studio Code](https://code.visualstudio.com/) ist eine hervorragende Option, die auf Windows-, macOS- und Linux-Plattformen verfügbar ist.
 
@@ -40,62 +36,63 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Installieren Sie für dieses Tutorial das [.NET Core SDK](https://dotnet.microsoft.com/download).
-
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="reload-data-from-app-configuration"></a>Erneutes Laden von Daten aus App Configuration
+Durchlaufen Sie den Schnellstart zum [Erstellen einer .NET Core-App mit App Configuration](./quickstart-dotnet-core-app.md).
 
-Öffnen Sie *Program.cs*, und aktualisieren Sie die Datei, um einen Verweis auf den `System.Threading.Tasks`-Namespace hinzuzufügen, um die Aktualisierung der Konfiguration in der `AddAzureAppConfiguration`-Methode anzugeben und die manuelle Aktualisierung mit der `TryRefreshAsync`-Methode auszulösen.
+## <a name="activity-driven-configuration-refresh"></a>Aktivitätsgesteuerte Konfigurationsaktualisierung
+
+Öffnen Sie die Datei *Program.cs*, und aktualisieren Sie den Code wie folgt:
 
 ```csharp
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration.AzureAppConfiguration;
 using System;
 using System.Threading.Tasks;
 
 namespace TestConsole
 {
-class Program
-{
-    private static IConfiguration _configuration = null;
-    private static IConfigurationRefresher _refresher = null;
-
-    static void Main(string[] args)
+    class Program
     {
-        var builder = new ConfigurationBuilder();
-        builder.AddAzureAppConfiguration(options =>
+        private static IConfiguration _configuration = null;
+        private static IConfigurationRefresher _refresher = null;
+
+        static void Main(string[] args)
         {
-            options.Connect(Environment.GetEnvironmentVariable("ConnectionString"))
-                    .ConfigureRefresh(refresh =>
-                    {
-                        refresh.Register("TestApp:Settings:Message")
-                               .SetCacheExpiration(TimeSpan.FromSeconds(10));
-                    });
-                    
-                    _refresher = options.GetRefresher();
-        });
+            var builder = new ConfigurationBuilder();
+            builder.AddAzureAppConfiguration(options =>
+            {
+                options.Connect(Environment.GetEnvironmentVariable("ConnectionString"))
+                        .ConfigureRefresh(refresh =>
+                        {
+                            refresh.Register("TestApp:Settings:Message")
+                                   .SetCacheExpiration(TimeSpan.FromSeconds(10));
+                        });
 
-        _configuration = builder.Build();
-        PrintMessage().Wait();
+                _refresher = options.GetRefresher();
+            });
+
+            _configuration = builder.Build();
+            PrintMessage().Wait();
+        }
+
+        private static async Task PrintMessage()
+        {
+            Console.WriteLine(_configuration["TestApp:Settings:Message"] ?? "Hello world!");
+
+            // Wait for the user to press Enter
+            Console.ReadLine();
+
+            await _refresher.TryRefreshAsync();
+            Console.WriteLine(_configuration["TestApp:Settings:Message"] ?? "Hello world!");
+        }
     }
-
-    private static async Task PrintMessage()
-    {
-        Console.WriteLine(_configuration["TestApp:Settings:Message"] ?? "Hello world!");
-
-        // Wait for the user to press Enter
-        Console.ReadLine();
-
-        await _refresher.TryRefreshAsync();
-        Console.WriteLine(_configuration["TestApp:Settings:Message"] ?? "Hello world!");
-    }
-}
 }
 ```
 
-Die `ConfigureRefresh`-Methode wird genutzt, um die Einstellungen anzugeben, die zum Aktualisieren der Konfigurationsdaten mit dem App Configuration-Speicher verwendet werden, wenn ein Aktualisierungsvorgang ausgelöst wird. Eine Instanz von `IConfigurationRefresher` kann durch das Aufrufen der `GetRefresher`-Methode in den Optionen der `AddAzureAppConfiguration`-Methode abgerufen werden. Die `TryRefreshAsync`-Methode dieser Instanz kann verwendet werden, um einen Aktualisierungsvorgang an einer beliebigen Stelle Ihres Codes auszulösen.
-    
-> [!NOTE]
-> Die Standardablaufzeit für eine Konfigurationseinstellung beträgt 30 Sekunden, aber dieser Wert kann außer Kraft gesetzt werden. Rufen Sie hierzu die `SetCacheExpiration`-Methode im Initialisierer für die Optionen auf, die als Argument an die `ConfigureRefresh`-Methode übergeben wird.
+In der Methode `ConfigureRefresh` wird ein Schlüssel in Ihrem App Configuration-Speicher für die Änderungsüberwachung registriert. Die Methode `Register` enthält den optionalen booleschen Parameter `refreshAll`, mit dem angegeben werden kann, ob alle Konfigurationswerte bei einer Änderung des registrierten Schlüssels aktualisiert werden sollen. In diesem Beispiel wird nur der Schlüssel *TestApp:Settings:Message* aktualisiert. Durch die Methode `SetCacheExpiration` wird angegeben, wie viel Zeit mindestens verstreichen muss, bevor eine neue Anforderung an App Configuration gesendet wird, um nach Konfigurationsänderungen zu suchen. In diesem Beispiel wird die Standardablaufzeit von 30 Sekunden zu Demonstrationszwecken in 10 Sekunden geändert.
+
+Das Aufrufen der Methode `ConfigureRefresh` allein führt nicht dazu, dass die Konfiguration automatisch aktualisiert wird. Sie rufen die Methode `TryRefreshAsync` über die Schnittstelle `IConfigurationRefresher` auf, um eine Aktualisierung auszulösen. Dadurch sollen Phantomanforderungen vermieden werden, die an App Configuration gesendet werden, auch wenn sich Ihre Anwendung im Leerlauf befindet. Sie sollten den Aufruf `TryRefreshAsync` dort verwenden, wo Sie Ihre Anwendung als aktiv betrachten. Dies kann beispielsweise der Fall sein, wenn Sie eine eingehende Nachricht, eine Bestellung oder eine Iteration einer komplexen Aufgabe verarbeiten. Er kann auch Teil eines Timers sein, wenn Ihre Anwendung ständig aktiv ist. In diesem Beispiel rufen Sie `TryRefreshAsync` jedes Mal auf, wenn Sie die EINGABETASTE drücken. Beachten Sie, dass Ihre Anwendung auch dann weiterhin die zwischengespeicherte Konfiguration verwendet, wenn beim Aufruf `TryRefreshAsync` aus irgendeinem Grund ein Fehler auftritt. Ein weiterer Versuch wird unternommen, wenn die konfigurierte Cacheablaufzeit verstrichen ist und der Aufruf `TryRefreshAsync` von Ihrer Anwendungsaktivität erneut ausgelöst wird. Das Aufrufen von `TryRefreshAsync` ist vor Verstreichen der konfigurierten Cacheablaufzeit keine Option. Daher sind die Auswirkungen auf die Leistung minimal, auch wenn der Aufruf häufig erfolgt.
 
 ## <a name="build-and-run-the-app-locally"></a>Lokales Erstellen und Ausführen der App
 

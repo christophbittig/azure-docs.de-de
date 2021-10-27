@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: a188812751552532ae1536529b12e54d55a24a2b
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: f66591f1f6fb20951a956e166645d63129f209b7
+ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "126056781"
+ms.lasthandoff: 10/06/2021
+ms.locfileid: "129638151"
 ---
 ## <a name="supported-operating-systems-and-drivers"></a>Unterstützte Betriebssysteme und Treiber
 
 ### <a name="nvidia-tesla-cuda-drivers"></a>NVIDIA Tesla-Treiber (CUDA)
 
-NVIDIA Tesla-Treiber (CUDA) für VMs der Serien NC, NCv2, NCv3, NCasT4_v3, ND und NDv2 (optional für NV-Serie) werden nur unter den in der folgenden Tabelle aufgeführten Betriebssystemen unterstützt. Die Links zum Herunterladen der Treiber sind zum Zeitpunkt der Veröffentlichung aktuell. Die neuesten Treiber finden Sie auf der [NVIDIA](https://www.nvidia.com/)-Website.
+NVIDIA Tesla-Treiber (CUDA) für VMs der Serien NC, NCv2, NCv3, NCasT4_v3, ND und NDv2 (optional für NV-Serie) werden unter den in der folgenden Tabelle aufgeführten Betriebssystemen getestet. Der CUDA-Treiber ist generisch und nicht spezifisch für Azure. Die neuesten Treiber finden Sie auf der [NVIDIA](https://www.nvidia.com/)-Website.
 
 > [!TIP]
 > Alternativ zur manuellen CUDA-Treiberinstallation auf einem virtuellen Windows Server-Computer können Sie ein [Azure Data Science Virtual Machine](../articles/machine-learning/data-science-virtual-machine/overview.md)-Image bereitstellen. Bei den DSVM-Editionen für Windows Server 2016 sind NVIDIA CUDA-Treiber, die CUDA Deep Neural Network-Bibliothek und weitere Tools vorinstalliert.

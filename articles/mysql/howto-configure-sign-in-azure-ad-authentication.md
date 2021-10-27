@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 07/23/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 152dfc877ad96d2b002fed43eea92a0b607e8bd2
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: d05b48432fd976bf7e5b8add01532aae361968ec
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122639743"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130167181"
 ---
 # <a name="use-azure-active-directory-for-authentication-with-mysql"></a>Verwenden von Azure Active Directory für die Authentifizierung mit MySQL
 
@@ -176,9 +176,9 @@ Beispiel:
 ```sql
 CREATE AADUSER 'userWithLongName@yourtenant.onmicrosoft.com' as 'userDefinedShortName'; 
 ```
-
 > [!NOTE]
-> Die Authentifizierung eines Benutzers über Azure AD verleiht dem Benutzer keine Berechtigungen für den Zugriff auf Objekte innerhalb der Azure Database for MySQL-Datenbank. Sie müssen dem Benutzer die erforderlichen Berechtigungen manuell erteilen.
+> 1. MySQL ignoriert führende und nachgestellte Leerzeichen, daher sollte der Benutzername keine führenden oder nachgestellten Leerzeichen enthalten. 
+> 2. Die Authentifizierung eines Benutzers über Azure AD verleiht dem Benutzer keine Berechtigungen für den Zugriff auf Objekte innerhalb der Azure Database for MySQL-Datenbank. Sie müssen dem Benutzer die erforderlichen Berechtigungen manuell erteilen.
 
 ## <a name="creating-azure-ad-groups-in-azure-database-for-mysql"></a>Erstellen von Azure AD-Gruppen in Azure Database for MySQL
 

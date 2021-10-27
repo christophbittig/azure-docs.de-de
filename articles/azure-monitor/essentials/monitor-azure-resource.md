@@ -4,13 +4,13 @@ description: Erfahren Sie, wie Sie Überwachungsdaten von Ressourcen in Azure mi
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/08/2019
-ms.openlocfilehash: cb778d826ef094d71fd27f3c10bc1f2c292baa47
-ms.sourcegitcommit: 2aeb2c41fd22a02552ff871479124b567fa4463c
+ms.date: 10/14/2021
+ms.openlocfilehash: fa5a417ef79cf0e11fa50c280dfea768d5e61f40
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/22/2021
-ms.locfileid: "107862397"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130064265"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Überwachen von Azure-Ressourcen mit Azure Monitor
 Wenn Sie über unternehmenskritische Anwendungen und Geschäftsprozesse verfügen, die auf Azure-Ressourcen beruhen, sollten Sie Verfügbarkeit, Leistung und Betrieb dieser Ressourcen überwachen. In diesem Artikel wird das Überwachen von Daten beschrieben, die von Azure-Ressourcen generiert wurden. Außerdem wird erläutert, wie Sie die Funktionen von Azure Monitor nutzen können, um diese Daten zu analysieren und Warnungen dafür zu erstellen.
@@ -31,13 +31,13 @@ Das Analysieren der Überwachungsdaten, die standardmäßig erfasst werden, ist 
 - Sammeln von Aktivitätsprotokollen und deren Analyse im Azure-Portal
 - Erstellen einer Aktivitätsprotokollwarnung
 
-Es fallen keine Kosten für Azure Monitor für das Sammeln und Exportieren von Protokollen und Metriken an, möglicherweise fallen jedoch Kosten für das Ziel an:
+Es fallen keine Azure Monitor-Kosten für das Sammeln und Exportieren von Metriken an. Es können Gebühren für das Exportieren bestimmter Kategorien von Ressourcenprotokollen anfallen, wie unter [Vom Ressourcenprotokoll unterstützte Kategorien](/azure/azure-monitor/essentials/resource-logs-categories) aufgeführt. Es können auch zugehörige Kosten für das Ziel anfallen, das Sie für Metriken und Protokolle auswählen:
 
-- Kosten für die Datenerfassung und -aufbewahrung beim Sammeln von Protokollen und Metriken in einem Log Analytics-Arbeitsbereich. Weitere Informationen finden Sie unter [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/).
-- Kosten für die Datenspeicherung beim Erfassen von Protokollen und Metriken in einem Azure Storage-Konto. Weitere Informationen finden Sie unter [Preise für Blockblobs](https://azure.microsoft.com/pricing/details/storage/blobs/).
-- Kosten für das Event Hub-Streaming beim Weiterleiten von Protokollen und Metriken an Azure Event Hubs. Weitere Informationen finden Sie unter [Event Hubs – Preise](https://azure.microsoft.com/pricing/details/event-hubs/).
+- Kosten für die Datenerfassung und -aufbewahrung beim Sammeln von Metriken und Protokollen in einem Log Analytics-Arbeitsbereich. Weitere Informationen finden Sie unter [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/).
+- Kosten für die Datenspeicherung beim Erfassen von Metriken und Protokollen in einem Azure Storage-Konto. Weitere Informationen finden Sie unter [Preise für Blockblobs](https://azure.microsoft.com/pricing/details/storage/blobs/).
+- Kosten für das Event Hub-Streaming beim Weiterleiten von Metriken und Protokollen an Azure Event Hubs. Weitere Informationen finden Sie unter [Event Hubs – Preise](https://azure.microsoft.com/pricing/details/event-hubs/).
 
-Eventuelle Kosten für Azure Monitor für Folgendes. Weitere Informationen finden Sie unter [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/):
+Eventuell fallen Kosten für Azure Monitor für Folgendes an. Weitere Informationen finden Sie unter [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/):
 
 - Ausführen einer Protokollabfrage
 - Erstellen einer Warnungsregel zu einer Metrik- oder Protokollabfrage

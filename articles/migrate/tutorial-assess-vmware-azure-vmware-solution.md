@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
-ms.openlocfilehash: 31bf3909012231996bd340cfa4d388f0fe20a4f5
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: a2637fbfcaf1e30b1df9f0739630ea2883eba3fa
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104782129"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129994200"
 ---
 # <a name="tutorial-assess-vmware-servers-for-migration-to-avs"></a>Tutorial: Bewerten von VMware-Servern für die Migration zu AVS
 
@@ -69,7 +69,7 @@ Führen Sie eine Bewertung wie folgt aus:
 1. Unter **Ermittlungsquelle**:
 
     - Wählen Sie die Option **Von Azure Migrate-Appliance erkannte Server** aus, falls Sie Server mit der Appliance ermittelt haben.
-    - Wählen Sie die Option **Imported servers** (Importierte Server) aus, falls Sie Server unter Verwendung einer importierten CSV-Datei ermittelt haben. 
+    - Wählen Sie die Option **Importierte Server** aus, falls Sie Server unter Verwendung einer importierten CSV-Datei ermittelt haben. 
     
 1. Klicken Sie auf **Bearbeiten**, um die Eigenschaften für die Bewertung zu überprüfen.
 
@@ -127,11 +127,12 @@ Führen Sie eine Bewertung wie folgt aus:
 
 Mit einer AVS-Bewertung wird Folgendes beschrieben:
 
-- AVS-Bereitschaft: Ermittelt, ob die lokalen Server für die Migration zu Azure VMware Solution (AVS) geeignet sind.
-- Anzahl von AVS-Knoten: Geschätzte Anzahl von AVS-Knoten, die zur Ausführung der Server erforderlich sind.
-- Übergreifende Nutzung auf AVS-Knoten: Projizierte CPU-, Arbeitsspeicher- und Speicherauslastung über alle Knoten hinweg.
-    - Die Nutzung beinhaltet Voraus-Factoring in den folgenden Mehraufwandsbereichen der Clusterverwaltung wie vCenter Server, NSX-Manager (groß) und NSX Edge, wenn HCX bereitgestellt ist, außerdem den HCX-Manager und die IX-Appliance, das ~44vCPU (11 CPU), 75 GB RAM und 722 GB Speicher vor Komprimierung und Deduplizierung beansprucht. 
-- Geschätzte monatliche Kosten: Die geschätzten monatlichen Kosten für alle AVS-Knoten (Azure VMware Solution), auf denen die lokalen Server ausgeführt werden.
+- **AVS-Bereitschaft (Azure VMware Solution)** : Ermittelt, ob die lokalen Server für die Migration zu Azure VMware Solution (AVS) geeignet sind.
+- **Anzahl Azure VMware Solution-Knoten**: Geschätzte Anzahl Azure VMware Solution-Knoten, die zum Ausführen der Server erforderlich sind
+- **Übergreifende Nutzung auf AVS-Knoten**: Projizierte CPU-, Arbeitsspeicher- und Speicherauslastung über alle Knoten hinweg.
+    - Die Nutzung beinhaltet Voraus-Factoring in den folgenden Mehraufwandsbereichen der Clusterverwaltung wie vCenter Server, NSX-Manager (groß) und NSX Edge, wenn HCX bereitgestellt ist, außerdem den HCX-Manager und die IX-Appliance, das ~44vCPU (11 CPU), 75 GB RAM und 722 GB Speicher vor Komprimierung und Deduplizierung beansprucht.
+    - Der begrenzende Faktor bestimmt die Anzahl der Hosts/Knoten, die für die Ressourcen erforderlich sind.
+- **Geschätzte monatliche Kosten**: Die geschätzten monatlichen Kosten für alle AVS-Knoten (Azure VMware Solution), auf denen die lokalen virtuellen Computer ausgeführt werden.
 
 ## <a name="view-an-assessment"></a>Anzeigen einer Bewertung
 
@@ -143,7 +144,7 @@ So zeigen Sie eine Bewertung an:
 
     :::image type="content" source="./media/tutorial-assess-vmware-azure-vmware-solution/avs-assessment-summary.png" alt-text="Zusammenfassung der AVS-Bewertung":::
 
-1. Sehen Sie sich die Zusammenfassung der Bewertung an. Sie können auch die Bewertungseigenschaften bearbeiten oder die Bewertung neu berechnen.
+1. Sehen Sie sich die Zusammenfassung der Bewertung an. Sie können auf **Größenannahmen** klicken, um die Annahmen zu verstehen, die in Berechnungen zur Knotengröße und Ressourcenverwendung berücksichtigt wurden. Sie können auch die Bewertungseigenschaften bearbeiten oder die Bewertung neu berechnen.
  
 
 ### <a name="review-readiness"></a>Überprüfen der Bereitschaft
@@ -178,8 +179,6 @@ Die Zusammenfassung der Bewertung enthält die geschätzten Compute- und Speiche
 ### <a name="review-confidence-rating"></a>Prüfen der Zuverlässigkeitsstufe
 
 Von der Serverbewertung wird für leistungsbezogene Bewertungen eine Zuverlässigkeitsstufe zugewiesen. Die Bewertung kann einen Wert zwischen einem Stern (am niedrigsten) und fünf Sternen (am höchsten) aufweisen.
-
-![Zuverlässigkeitsstufe](./media/tutorial-assess-vmware-azure-vmware-solution/confidence-rating.png)
 
 Anhand der Zuverlässigkeitsstufe können Sie die Zuverlässigkeit der Größenempfehlungen in der Bewertung besser einschätzen. Die Stufe basiert auf der Verfügbarkeit von Datenpunkten, die für die Berechnung der Bewertung erforderlich sind.
 

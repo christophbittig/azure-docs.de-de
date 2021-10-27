@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 07/14/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: f988fafbdd381c88a3f8da60fb48fa3320a82876
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 9025b32aa2ea6fd8fefa91d89b608c0e5d26b45e
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128674450"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129992903"
 ---
 # <a name="what-is-azure-virtual-desktop"></a>Was ist Azure Virtual Desktop?
 
@@ -99,7 +99,7 @@ Ihr Netzwerk muss folgende Anforderungen erfüllen, um eine optimale Leistung zu
 
 * Die Roundtriplatenz zwischen dem Netzwerk des Clients und der Azure-Region, in der die Hostpools bereitgestellt wurden, muss unter 150 ms liegen. Zeigen Sie mithilfe des [Qualitätsschätzers](https://azure.microsoft.com/services/virtual-desktop/assessment) die Verbindungsintegrität und die empfohlene Azure-Region an.
 * Netzwerkdatenverkehr wird ggf. außerhalb der Grenzen des Landes bzw. der Region übertragen, wenn virtuelle Computer, die Desktops und Apps hosten, eine Verbindung mit dem Verwaltungsdienst herstellen.
-* Zur Optimierung der Netzwerkleistung empfiehlt es sich, die virtuellen Computer des Sitzungshosts in der Azure-Region zu platzieren, in der sich auch der Verwaltungsdienst befindet.
+* Zur Optimierung der Netzwerkleistung empfiehlt es sich, die virtuellen Computer des Sitzungshosts in der Azure-Region zu platzieren, die dem Benutzer am nächsten ist.
 
 Sie finden eine typische Architektureinrichtung von Azure Virtual Desktop für das Unternehmen in unserer [Architekturdokumentation](/azure/architecture/example-scenario/wvd/windows-virtual-desktop).
 
@@ -145,7 +145,7 @@ Die verfügbaren Automatisierungs- und Bereitstellungsoptionen hängen davon ab,
 |Windows 7 Enterprise|Ja|Ja|Nein|Nein|
 |Windows Server 2019|Ja|Ja|Nein|Nein|
 |Windows Server 2016|Ja|Ja|Ja|Ja|
-|Windows Server 2012 R2|Ja|Ja|Nein|Nein|
+|Windows Server 2012 R2|Ja|Ja|Nein|Nein|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

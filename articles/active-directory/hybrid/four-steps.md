@@ -13,12 +13,12 @@ ms.date: 06/20/2019
 ms.subservice: hybrid
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e24ea1fa02a70e63c8eaab21acff1d1c7b625e9a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 6828f1c02bbcccebcd6b96305b051ebfc996c1a7
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122354950"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130046219"
 ---
 # <a name="four-steps-to-a-strong-identity-foundation-with-azure-active-directory"></a>In vier Schritten zu einem sicheren Identitätsfundament mit Azure Active Directory
 
@@ -81,7 +81,7 @@ Der Azure AD-Anwendungsproxy bietet die folgenden Vorteile:
 
 In modernen Unternehmen sind die IT-Abteilungen häufig nicht über alle Cloudanwendungen unterrichtet, die die Benutzer für ihre Arbeit verwenden. Wenn IT-Administratoren gefragt werden, wie viele Cloud-Apps ihrer Meinung nach von ihren Mitarbeitern verwendet werden, sagen sie im Durchschnitt: 30 bis 40. Tatsächlich liegt der Durchschnitt bei über 1.000 separaten Apps, die von Mitarbeitern in Ihrer Organisation genutzt werden. 80 % der Mitarbeiter verwenden nicht sanktionierte Apps, die von niemandem überprüft wurden und die möglicherweise nicht Ihren Sicherheits- und Compliancerichtlinien entsprechen.
 
-[Microsoft Cloud App Security](/cloud-app-security/what-is-cloud-app-security) (MCAS) kann Ihnen helfen, nützliche Apps zu identifizieren, die bei den Benutzern beliebt sind. Diese können dann von der IT sanktioniert und dem Katalog der Unternehmensanwendungen hinzugefügt werden, damit die Benutzer von Funktionen wie SSO und bedingtem Zugriff profitieren.
+[Microsoft Cloud App Security (MCAS)](/cloud-app-security/what-is-cloud-app-security) kann Ihnen helfen, nützliche Apps zu identifizieren, die bei den Benutzern beliebt sind. Diese können dann von der IT sanktioniert und dem Katalog der Unternehmensanwendungen hinzugefügt werden, damit die Benutzer von Funktionen wie SSO und bedingtem Zugriff profitieren.
 
 <em>„Mit **Cloud App Security** können wir sicherstellen, dass unsere Mitarbeiter unsere Cloud- und SaaS-Anwendungen ordnungsgemäß nutzen. Die verfügbaren Möglichkeiten unterstützen unsere grundlegenden Sicherheitsrichtlinien zum Schutz von Accenture.“</em> --- [John Blasi, Managing Director, Information Security, Accenture](https://customers.microsoft.com/story/accenture-professional-services-cloud-app-security)
 

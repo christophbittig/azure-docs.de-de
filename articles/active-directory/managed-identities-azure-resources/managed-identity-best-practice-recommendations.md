@@ -4,7 +4,7 @@ description: Empfehlungen zur Verwendung von benutzer- bzw. systemseitig zugewie
 services: active-directory
 documentationcenter: ''
 author: barclayn
-manager: daveba
+manager: karenh444
 editor: ''
 ms.service: active-directory
 ms.subservice: msi
@@ -12,14 +12,14 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 05/21/2021
+ms.date: 10/15/2021
 ms.author: barclayn
-ms.openlocfilehash: dec6cb642c5a5899354912f133decde45d631406
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: e25ebb85071b6d0af2696083afda45a453c5841a
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111953330"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130131018"
 ---
 # <a name="managed-identity-best-practice-recommendations"></a>Empfehlungen zu bewährten Methoden für verwaltete Identitäten
 
@@ -82,6 +82,21 @@ Im folgenden Beispiel verfügt „Virtueller Computer 4“ über eine vom Benutz
 ## <a name="limits"></a>Grenzwerte 
 
 Informieren Sie sich über die Grenzwerte für [verwaltete Identitäten](../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-rbac-limits) und über [benutzerdefinierte Rollen und Rollenzuweisungen](../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-rbac-limits).
+
+## <a name="follow-the-principle-of-least-privilege-when-granting-access"></a>Befolgen des Prinzips der geringsten Rechte beim Gewähren von Zugriff
+
+Wenn Sie Identitäten, einschließlich einer verwalteten Identität, Berechtigungen für den Zugriff auf Dienste erteilen, erteilen Sie immer die geringsten Berechtigungen, die zum Ausführen der gewünschten Aktionen erforderlich sind. Wenn beispielsweise eine verwaltete Identität zum Lesen von Daten aus einem Speicherkonto verwendet wird, ist es nicht erforderlich, für diese Identität auch Berechtigungen zum Schreiben von Daten in das Speicherkonto zuzulassen. Durch das Erteilen zusätzlicher Berechtigungen wird die verwaltete Identität beispielsweise zu einem Mitwirkenden in einem Azure-Abonnement, wenn dies nicht erforderlich ist, was den Sicherheitsradius hinsichtlich der Identität erhöht. Der Sicherheitsradius muss immer minimiert werden, damit eine Kompromittierung dieser Identität nur zu geringen Schäden führt.
+
+### <a name="consider-the-effect-of-assigning-managed-identities-to-azure-resources"></a>Berücksichtigen der Auswirkungen der Zuweisung verwalteter Identitäten zu Azure-Ressourcen
+
+Beachten Sie, dass alle Berechtigungen, die der verwalteten Identität erteilt wurden, jetzt für die Azure-Ressource verfügbar sind, wenn einer Azure-Ressource, z. B. einer Azure-Logik-App, einer Azure-Funktion oder einem virtuellen Computer usw., eine verwaltete Identität zugewiesen wird. Dies ist besonders wichtig, denn wenn ein Benutzer Zugriff zum Installieren oder Ausführen von Code für diese Ressource hat, hat der Benutzer Zugriff auf alle Identitäten, die der Azure-Ressource zugewiesen/zugeordnet sind. Der Zweck der verwalteten Identität besteht darin, Code, der in einer Azure-Ressource ausgeführt wird, Zugriff auf andere Ressourcen zu geben, ohne dass Entwickler Anmeldeinformationen verarbeiten oder direkt im Code speichern müssen, um diesen Zugriff zu erhalten.
+
+Wenn beispielsweise einer verwalteten Identität (ClientId = 1234) Lese-/Schreibzugriff für ***StorageAccount7755** _ erteilt wurde und sie _*_LogicApp3388_*_ zugewiesen wurde, kann Alice, die über keine direkten Berechtigungen für die verwaltete Identität oder das Speicherkonto verfügt, jedoch die Berechtigung zur Ausführung von Code innerhalb von _*_LogicApp3388_*_ hat, ebenfalls Daten aus bzw. in _ *_StorageAccount7755_** lesen bzw. schreiben, indem sie den Code ausführt, der die verwaltete Identität verwendet.
+
+:::image type="content" source="media/managed-identity-best-practice-recommendations/security-considerations.png" alt-text="Sicherheitsszenario":::
+
+Wenn Sie einem Benutzer Administratorzugriff auf eine Ressource gewähren, die Code ausführen kann (z. B. eine Logik-App) und über eine verwaltete Identität verfügt, sollten Sie im Allgemeinen überlegen, ob die dem Benutzer zugewiesene Rolle Code für die Ressource installieren oder ausführen kann, und wenn ja, sollten Sie diese Rolle nur zuweisen, wenn der Benutzer sie wirklich benötigt.
+
 
 ## <a name="maintenance"></a>Wartung
 

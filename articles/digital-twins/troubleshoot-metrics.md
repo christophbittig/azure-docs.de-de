@@ -1,18 +1,18 @@
 ---
-title: Anzeigen von Metriken mit Azure Monitor
+title: 'Fehlersuche: Metriken'
 titleSuffix: Azure Digital Twins
-description: Erfahren Sie, wie Azure Digital Twins-Metriken in Azure Monitor angezeigt werden.
+description: Erfahren Sie, wie Sie die Metriken von Azure Digital Twins in Azure Monitor anzeigen können, um Fehler zu beheben und Ihre Instanz zu überwachen.
 author: baanders
 ms.author: baanders
-ms.date: 9/16/2021
+ms.date: 10/5/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 107c9e5dd3d548e3e07cd9b037162cca36aa1c8a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 47e90b6e2fd20eedc18ce598d6ea84621af7da02
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128637185"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130134125"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Problembehandlung von Azure Digital Twins: Metriken
 
@@ -36,12 +36,12 @@ Metriken sind standardmäßig aktiviert. Azure Digital Twins-Metriken können ü
 
     :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="Screenshot der Seite „Diagnoseeinstellungen“ und der Schaltfläche zum Hinzufügen im Azure-Portal.":::
 
-    Weitere Informationen zu diesem Vorgang finden Sie unter [Problembehandlung: Einrichten der Diagnose](troubleshoot-diagnostics.md).
+    Weitere Informationen zu diesem Vorgang finden Sie unter [Fehlerbehebung: Diagnoseprotokolle](troubleshoot-diagnostics.md).
 
 4. Sie können Warnungen für Ihre Metrikdaten einrichten, indem Sie im Menü **Warnungen** und dann **+ Neue Warnungsregel** auswählen.
     :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="Screenshot der Seite „Warnungen“ und der Schaltfläche zum Hinzufügen im Azure-Portal.":::
 
-    Weitere Informationen zu diesem Vorgang finden Sie unter [Problembehandlung: Einrichten von Warnungen](troubleshoot-alerts.md).
+    Weitere Informationen zu diesem Vorgang finden Sie unter [Fehlerbehebung: Warnungen](troubleshoot-alerts.md).
 
 ## <a name="azure-digital-twins-metrics-and-how-to-use-them"></a>Azure Digital Twins-Metriken und deren Verwendung
 
@@ -119,4 +119,4 @@ Mit Dimensionen lassen sich genauere Details zu den Metriken ermitteln. Einige R
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Verwalten von aufgezeichneten Metriken für Azure Digital Twins finden Sie unter [Problembehandlung: Einrichten der Diagnose](troubleshoot-diagnostics.md).
+Weitere Informationen zur Verwaltung aufgezeichneter Metriken für Azure Digital Twins finden Sie unter [Fehlerbehebung: Diagnoseprotokolle](troubleshoot-diagnostics.md).

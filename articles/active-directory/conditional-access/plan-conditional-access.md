@@ -11,12 +11,12 @@ author: BarbaraSelden
 manager: karenhoran
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8aa2519027f210e88af4e03ec9232fcdefb5d3e4
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 38f602d41d8891aadc45a9dd35d2ea62afda897d
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128597852"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129998236"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>Planen einer Bereitstellung für bedingten Zugriff
 
@@ -217,7 +217,7 @@ Zugriffstoken werden standardmäßig ausgestellt, wenn eine Bedingung der Richtl
 
 ### <a name="minimize-the-number-of-conditional-access-policies"></a>Minimieren der Anzahl von Richtlinien für bedingten Zugriff
 
-Das Erstellen einer Richtlinie für jede App ist nicht effizient und führt zu einer schwierigen Verwaltung. Der bedingte Zugriff wendet nur die ersten 195 Richtlinien pro Benutzer an. Es wird empfohlen, dass Sie Ihre Apps analysieren und in Anwendungen gruppieren, die dieselben Ressourcenanforderungen für dieselben Benutzer aufweisen. Wenn beispielsweise alle Microsoft 365-Apps oder alle HR-Apps dieselben Anforderungen für dieselben Benutzer aufweisen, erstellen Sie eine einzelne Richtlinie, und schließen Sie alle Apps in diese ein, auf die sie angewendet werden soll. 
+Das Erstellen einer Richtlinie für jede App ist nicht effizient und kompliziert die Verwaltung. Jeder Azure AD-Mandant kann maximal 195 bedingte Zugriffe enthalten. Wir empfehlen, Ihre Apps zu analysieren und in Richtlinien zu gruppieren, die dieselben Zugriffsanforderungen aufweisen. Wenn beispielsweise alle Microsoft 365-Apps oder alle HR-Apps dieselben Anforderungen für dieselben Benutzer aufweisen, erstellen Sie eine einzelne Richtlinie, und schließen Sie alle Apps in diese ein, anstatt eine Richtlinie für jede App hinzuzufügen.
 
 ### <a name="set-up-emergency-access-accounts"></a>Einrichten von Konten für den Notfallzugriff
 

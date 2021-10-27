@@ -5,12 +5,12 @@ ms.topic: include
 ms.date: 07/02/2021
 ms.author: pafarley
 ms.custom: devx-track-js
-ms.openlocfilehash: 5a599e80dea9d172ddb42cdfe76325ff5e807fbc
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 67ce4e9ca3dc3bc8efc18dc35d834716628d5257
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129378243"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130143872"
 ---
 In dieser Schnellstartanleitung werden gängige Entwurfsmuster für die Sprachsynthese per Speech SDK vermittelt. Hierzu werden zunächst eine grundlegende Konfiguration und eine einfache Synthese durchgeführt, gefolgt von komplexeren Beispielen für die Entwicklung benutzerdefinierter Anwendungen:
 
@@ -84,6 +84,25 @@ In diesem Beispiel erstellen Sie ein [`SpeechConfig`](/javascript/api/microsoft-
 ```javascript
 function synthesizeSpeech() {
     const speechConfig = sdk.SpeechConfig.fromSubscription("<paste-your-speech-key-here>", "<paste-your-speech-location/region-here>");
+}
+
+synthesizeSpeech();
+```
+
+## <a name="select-synthesis-language-and-voice"></a>Auswählen von Synthesesprache und Stimme
+
+Der Sprachsynthesedienst von Azure unterstützt mehr als 250 Stimmen und über 70 Sprachen und Varianten.
+Sie können die [vollständige Liste](../../../language-support.md#neural-voices) abrufen oder die [Demo für die Sprachsynthese](https://azure.microsoft.com/services/cognitive-services/text-to-speech/#features) ausprobieren.
+Geben Sie die Sprache oder Stimme von [`SpeechConfig`](/javascript/api/microsoft-cognitiveservices-speech-sdk/speechconfig) entsprechend Ihres Eingabetexts an, und verwenden Sie die gewünschte Stimme.
+
+```javascript
+function synthesizeSpeech() {
+    const speechConfig = sdk.SpeechConfig.fromSubscription("<paste-your-speech-key-here>", "<paste-your-speech-location/region-here>");
+    // Note: if only language is set, the default voice of that language is chosen.
+    speechConfig.speechSynthesisLanguage = "<your-synthesis-language>"; // e.g. "de-DE"
+    // The voice setting will overwrite language setting.
+    // The voice setting will not overwrite the voice element in input SSML.
+    speechConfig.speechSynthesisVoiceName = "<your-wanted-voice>";
 }
 
 synthesizeSpeech();
@@ -259,10 +278,10 @@ Beim erneuten Ausführen Ihres Programms wird eine Datei vom Typ `.wav` in den a
 
 ## <a name="use-ssml-to-customize-speech-characteristics"></a>Verwenden von SSML zum Anpassen von Sprachmerkmalen
 
-Mit der Speech Synthesis Markup Language (SSML, Markupsprache für Sprachsynthese) können Sie Tonhöhe, Aussprache, Sprechgeschwindigkeit, Lautstärke und weitere Aspekte der Ausgabe der Sprachsynthese optimieren, indem Sie Ihre Anforderungen per XML-Schema übermitteln. Dieser Abschnitt enthält ein Beispiel für das Ändern der Stimme. Eine ausführlichere Anleitung finden Sie jedoch im [Anleitungsartikel zu SSML](../../../speech-synthesis-markup.md). 
+Mit der Speech Synthesis Markup Language (SSML, Markupsprache für Sprachsynthese) können Sie Tonhöhe, Aussprache, Sprechgeschwindigkeit, Lautstärke und weitere Aspekte der Ausgabe der Sprachsynthese optimieren, indem Sie Ihre Anforderungen per XML-Schema übermitteln. Dieser Abschnitt enthält ein Beispiel für das Ändern der Stimme. Eine ausführlichere Anleitung finden Sie jedoch im [Anleitungsartikel zu SSML](../../../speech-synthesis-markup.md).
 
 Wenn Sie SSML für die Anpassung nutzen möchten, nehmen Sie eine einfache Änderung vor, um die Stimme zu wechseln.
-Erstellen Sie zuerst in Ihrem Stammverzeichnis des Projekts eine neue XML-Datei für die SSML-Konfiguration. In diesem Beispiel ist dies `ssml.xml`. Das Stammelement ist immer `<speak>`. Indem Sie den Text mit einem `<voice>`-Element umschließen, können Sie die Stimme mit dem Parameter `name` ändern. Sehen Sie sich die [gesamte Liste](../../../language-support.md#neural-voices) mit den unterstützten **neuronalen Stimmen** an. 
+Erstellen Sie zuerst in Ihrem Stammverzeichnis des Projekts eine neue XML-Datei für die SSML-Konfiguration. In diesem Beispiel ist dies `ssml.xml`. Das Stammelement ist immer `<speak>`. Indem Sie den Text mit einem `<voice>`-Element umschließen, können Sie die Stimme mit dem Parameter `name` ändern. Sehen Sie sich die [gesamte Liste](../../../language-support.md#neural-voices) mit den unterstützten **neuronalen Stimmen** an.
 
 ```xml
 <speak version="1.0" xmlns="https://www.w3.org/2001/10/synthesis" xml:lang="en-US">

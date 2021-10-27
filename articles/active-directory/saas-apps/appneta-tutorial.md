@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit AppNeta Performance Manager | Microsoft-Dokumentation'
+title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit AppNeta Performance Manager'
 description: Hier erfahren Sie, wie Sie einmaliges Anmelden zwischen Azure Active Directory und AppNeta Performance Manager konfigurieren.
 services: active-directory
 author: jeevansd
@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 12/28/2020
+ms.date: 10/12/2021
 ms.author: jeedes
-ms.openlocfilehash: ceb7c2fcec92e89c65e03fa11db142af514090af
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 43abd1fef96a6730405fae438e3441f4982ae79c
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128619854"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129995119"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-appneta-performance-manager"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit AppNeta Performance Manager
+# <a name="tutorial-azure-ad-sso-integration-with-appneta-performance-manager"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit AppNeta Performance Manager
 
 In diesem Tutorial erfahren Sie, wie Sie AppNeta Performance Manager in Azure Active Directory (Azure AD) integrieren. Die Integration von AppNeta Performance Manager in Azure AD ermöglicht Folgendes:
 
@@ -37,7 +37,7 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-- AppNeta Performance Manager unterstützt **SP**-initiiertes SSO.
+- AppNeta Performance Manager unterstützt **SP**-initiiertes einmaliges Anmelden.
 - AppNeta Performance Manager unterstützt die **Just-In-Time**-Benutzerbereitstellung.
 
 > [!NOTE]
@@ -90,7 +90,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
    ![Screenshot: Standardattribute für ein SAML-Token.](./media/appneta-tutorial/edit-attribute.png)
 
-1. Darüber hinaus wird von der AppNeta Performance Manager-Anwendung erwartet, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden (siehe unten). Diese Attribute werden ebenfalls vorab mit Daten aufgefüllt, Sie können sie jedoch nach Bedarf überprüfen.
+1. Darüber hinaus wird von der AppNeta Performance Manager-Anwendung erwartet, dass in der SAML-Antwort noch einige weitere Attribute zurückgegeben werden (siehe unten). Diese Attribute werden ebenfalls vorab aufgefüllt, Sie können sie jedoch nach Bedarf überprüfen.
 
    | Name      | Quellattribut       |
    | --------- | ---------------------- |
@@ -104,17 +104,25 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
    |           |                        |
 
 1. Um Ihre SAML-Gruppenassertionen ordnungsgemäß zu übergeben, müssen Sie App-Rollen konfigurieren und den Wert entsprechend den Rollenzuordnungen festlegen, die in AppNeta Performance Manager festgelegt sind. Wählen Sie unter **Azure Active Directory** > **App-Registrierungen** >  **Alle Anwendungen** die Option **Appneta Performance Manager** aus.
-1. Klicken Sie im linken Bereich auf **App-Rollen**.
-1. Klicken Sie auf **App-Rolle erstellen**.
-1. Führen Sie im Bereich **App-Rolle erstellen** die folgenden Schritte aus:
-   1. Geben Sie unter **Anzeigename** einen Namen für die Rolle ein.
-   1. Wählen Sie unter **Zulässige Membertypen** die Option **Benutzer/Gruppen** aus.
-   1. Geben Sie unter **Wert** den Wert der Sicherheitsgruppe ein, die in Ihren AppNeta Performance Manager-Rollenzuordnungen festgelegt ist.
-   1. Geben Sie unter **Beschreibung** eine Beschreibung für die Rolle ein.
-   1. Klicken Sie auf **Übernehmen**.
 
-1. Nachdem Sie die Rollen erstellt haben, müssen Sie die Rollen Ihren Benutzern und Gruppen zuordnen. Navigieren Sie zu **Azure Active Directory** > **Unternehmensanwendungen** > **Appneta Performance Manager** > **Benutzer und Gruppen**.
-1. Wählen Sie einen Benutzer oder eine Gruppe aus, und weisen Sie dann die entsprechende App-Rolle für den Benutzer oder die Gruppe zu.
+   ![Screenshot: App-Registrierungen mit Appneta Performance Manager am unteren Rand ](./media/appneta-tutorial/app-registrations.png)
+
+1. Klicken Sie im linken Bereich auf **App-Rollen**. Der folgende Bildschirm wird angezeigt:
+
+   ![Screenshot: App-Rollen mit Appneta Performance Manager am unteren Rand ](./media/appneta-tutorial/app-roles.png)
+
+1. Klicken Sie auf **App-Rolle erstellen**.
+1. Führen Sie auf dem Bildschirm **App-Rolle erstellen** die folgenden Schritte aus:
+   1. Geben Sie im Feld **Anzeigename** einen Namen für die Rolle ein.
+   1. Wählen Sie im Feld **Zulässige Membertypen** die Option **Benutzer/Gruppen** aus.
+   1. Geben Sie im Feld **Wert** den Wert der Sicherheitsgruppe ein, die in Ihren AppNeta Performance Manager-Rollenzuordnungen festgelegt ist.
+   1. Geben Sie im Feld **Beschreibung** eine Beschreibung für die Rolle ein.
+   1. Klicken Sie auf **Anwenden**.
+
+   ![Screenshot: Dialogfeld „App-Rolle erstellen“, in dem die Felder wie beschrieben ausgefüllt sind ](./media/appneta-tutorial/create-app-role.png)
+
+1. Nach dem Erstellen der Rollen müssen Sie sie Ihren Benutzern/Gruppen zuordnen. Navigieren Sie zu **Azure Active Directory** > **Unternehmensanwendungen** > **Appneta Performance Manager** > **Benutzer und Gruppen**.
+1. Wählen Sie einen Benutzer/eine Gruppe aus, und weisen Sie dann die gewünschte App-Rolle zu (die Sie im vorherigen Schritt erstellt haben).
 1. Nachdem Sie die App-Rollen zugeordnet haben, navigieren Sie zu **Azure Active Directory** > **Unternehmensanwendungen** > **Appneta Performance Manager** > **Einmaliges Anmelden**.
 1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zu **Verbundmetadaten-XML**, und wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen und auf Ihrem Computer zu speichern.
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/03/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, has-adal-ref
-ms.openlocfilehash: 2e214abaa6f193c3464025014757d49349aa388c
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 1c2d35709ab512eb27579db6991567cd27b23376
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129231974"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130044552"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>Authentifizierungsflows und Anwendungsszenarien
 
@@ -160,7 +160,7 @@ Weitere Informationen finden Sie unter [Szenario: Mobile App, die Web-APIs aufru
 
 ### <a name="protected-web-api"></a>Geschützte Web-API
 
-Mit dem Microsoft Identity Plattform-Endpunkt können Sie Webdienste wie etwa die RESTful-Web-API Ihrer App schützen. Eine geschützte Web-API wird über ein Zugriffstoken aufgerufen. Das Token schützt die Daten der API und authentifiziert eingehende Anforderungen. Der Aufrufer einer Web-API fügt an den Autorisierungsheader einer HTTP-Anforderung ein Zugriffstoken an.
+Mit dem Microsoft Identity Plattform-Endpunkt können Sie Webdienste wie etwa die RESTful-API Ihrer App schützen. Eine geschützte Web-API wird über ein Zugriffstoken aufgerufen. Das Token schützt die Daten der API und authentifiziert eingehende Anforderungen. Der Aufrufer einer Web-API fügt an den Autorisierungsheader einer HTTP-Anforderung ein Zugriffstoken an.
 
 Validieren Sie das Zugriffstoken, wenn Sie Ihre ASP.NET- oder ASP.NET Core-Web-API schützen möchten. Für diese Validierung wird die JWT-Middleware für ASP.NET verwendet. Die Validierung wird nicht von MSAL.NET, sondern von der Bibliothek [IdentityModel-Erweiterungen für .NET](https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/wiki) durchgeführt.
 

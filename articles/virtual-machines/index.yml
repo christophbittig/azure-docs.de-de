@@ -10,12 +10,12 @@ metadata:
   author: cynthn
   ms.author: cynthn
   ms.date: 11/05/2020
-  ms.openlocfilehash: b432bbee09865ae89aabc281f514ec6330fbd42d
-  ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+  ms.openlocfilehash: fab3cb5e7cc0476128e55e2bc9a4c9abe5acde11
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/23/2021
-  ms.locfileid: "122697041"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130257972"
 landingContent:
 - title: Neueste Features
   linkLists:
@@ -55,22 +55,22 @@ landingContent:
   linkLists:
   - linkListType: learn
     links:
-    - text: " Erstellen eines virtuellen Linux-Computers in Azure"
+    - text: Erstellen eines virtuellen Linux-Computers in Azure
       url: /learn/modules/create-linux-virtual-machine-in-azure/
-    - text: " Erstellen eines virtuellen Windows-Computers in Azure"
+    - text: Erstellen eines virtuellen Windows-Computers in Azure
       url: /learn/modules/create-windows-virtual-machine-in-azure/
 - title: Problembehandlung
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Behandeln von SSH-Problemen
-      url: /troubleshoot/azure/virtual-machines/troubleshoot-ssh-connection
-    - text: Behandeln von RDP-Problemen
-      url: /troubleshoot/azure/virtual-machines/rdp
-    - text: Virtueller Linux-Computer startet nicht
-      url: /troubleshoot/azure/virtual-machines/boot-error-troubleshoot-linux
-    - text: Virtueller Windows-Computer startet nicht
-      url: /troubleshoot/azure/virtual-machines/boot-error-troubleshoot
+    - text: Leitfäden zur Problembehandlung
+      url: /troubleshoot/azure/virtual-machines/welcome-virtual-machines
+    - text: Problembehandlung bei Bereitstellungsproblemen
+      url: /troubleshoot/azure/virtual-machines/welcome-deployment-troubleshooting
+    - text: Problembehandlung bei Zuordnungsfehlern
+      url: /troubleshoot/azure/virtual-machines/allocation-failure
+    - text: Problembehandlung bei unerwarteten Neustarts
+      url: /troubleshoot/azure/virtual-machines/understand-vm-reboot
     - text: Microsoft Q&A (Fragen und Antworten)
       url: /answers/topics/azure-virtual-machines.html
 - title: Ressourcen

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 07/12/2021
-ms.openlocfilehash: 1b2171c300fd52403da29d23f9f34d3f94961b3d
-ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
+ms.openlocfilehash: c8b18179af70788d7dea385224b02d7dddeb5ad6
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114204497"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130072991"
 ---
 # <a name="configure-managed-service-offer-listing-details"></a>Konfigurieren der Details der Angebotsliste für verwaltete Dienste
 
@@ -54,15 +54,15 @@ Wenn Sie Supportwebsites für weltweite Azure-Kunden und/oder Azure Government-K
 
 ### <a name="add-logos"></a>Hinzufügen von Logos
 
-Laden Sie unter **Logos** ein **großes** Logo im PNG-Format zwischen 216 × 216 und 350 × 350 Pixel hoch. Von Partner Center werden automatisch Logos vom Typ **Mittel** und **Klein** erstellt, das Sie später ersetzen können.
+Laden Sie unter **Logos** ein **großes** Logo im PNG-Format zwischen 216x216 und 350x350 Pixel hoch. Von Partner Center werden automatisch Logos vom Typ **Mittel** und **Klein** erstellt, das Sie später ersetzen können.
 
-- Das große Logo (zwischen 216 x 216 und 350 x 350 px) wird in Ihrem Angebotseintrag im Azure Marketplace angezeigt.
-- Das mittlere Logo (90 x 90 px) wird angezeigt, wenn eine neue Ressource erstellt wird.
-- In den Azure Marketplace-Suchergebnissen wird das kleine Logo (48 x 48 px) verwendet.
+- Das große Logo (zwischen 216x216 und 350x350 Pixel) wird in Ihrem Angebotseintrag im Azure Marketplace angezeigt.
+- Das mittlere Logo (90x90 Pixel) wird angezeigt, wenn eine neue Ressource erstellt wird.
+- In den Azure Marketplace-Suchergebnissen wird das kleine Logo (48x48 Pixel) verwendet.
 
 ### <a name="add-screenshots-optional"></a>Hinzufügen von Screenshots (optional)
 
-Fügen Sie bis zu fünf Bilder hinzu, die Ihr Angebot vorstellen. Alle Bilder müssen 1.280 × 720 Pixel groß sein und im PNG-Format vorliegen.
+Fügen Sie bis zu fünf Bilder hinzu, die Ihr Angebot vorstellen. Alle Bilder müssen 1280x720 Pixel groß sein und im PNG-Format vorliegen.
 
 1. Ziehen Sie unter **Screenshots** Ihre PNG-Datei per Drag & Drop in das Feld **Screenshot**.
 2. Wählen Sie **Bildbeschriftung hinzufügen** aus.
@@ -71,11 +71,11 @@ Fügen Sie bis zu fünf Bilder hinzu, die Ihr Angebot vorstellen. Alle Bilder m�
 
 ### <a name="add-videos-optional"></a>Hinzufügen von Videos (optional)
 
-Sie können Links zu YouTube- oder Vimeo-Videos hinzufügen, in denen Ihr Angebot vorgeführt wird. Diese Videos werden Kunden zusammen mit Ihrem Angebot angezeigt. Sie müssen ein Miniaturbild für das Video hinzufügen. Es muss 1280 × 720 Pixel groß sein und im PNG-Format vorliegen. Fügen Sie pro Angebot bis zu fünf Videos hinzu.
+Sie können Links zu YouTube- oder Vimeo-Videos hinzufügen, in denen Ihr Angebot vorgeführt wird. Diese Videos werden Kunden zusammen mit Ihrem Angebot angezeigt. Sie müssen ein Miniaturbild für das Video hinzufügen. Es muss 1280x720 Pixel groß sein und im PNG-Format vorliegen. Fügen Sie pro Angebot bis zu fünf Videos hinzu.
 
 1. Wählen Sie unter **Videos** den Link **Video hinzufügen** aus.
 2. Geben Sie in den angezeigten Feldern den Namen und einen Link für das Video ein.
-3. Ziehen Sie eine PNG-Datei (1280 × 720 Pixel) per Drag & Drop auf das graue Feld **Miniaturansicht**.
+3. Ziehen Sie eine PNG-Datei (1280x720 Pixel) per Drag & Drop auf das graue Feld **Miniaturansicht**.
 4. Wiederholen Sie die Schritte 1 bis 3, um ein weiteres Video hinzuzufügen.
 
 Wählen Sie **Entwurf speichern** aus, bevor Sie mit der nächsten Registerkarte fortfahren: **Vorschauzielgruppe**.

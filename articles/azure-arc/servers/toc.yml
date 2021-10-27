@@ -24,6 +24,8 @@
       href: ./resource-graph-samples.md
 - name: Konzepte
   items:
+    - name: "Bereitstellungsoptionen für den Log\_Analytics-Agent"
+      href: concept-log-analytics-extension-deployment.md
     - name: Sicherheit
       items:
         - name: Sicherheitskontrollen von Azure Policy

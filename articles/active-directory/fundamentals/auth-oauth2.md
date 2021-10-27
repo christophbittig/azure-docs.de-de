@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1604d79ce5eb9949028cd677b340bf3d4b09f6c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 6bb7b35dc4a0e41278fcadd8ed487a7da0f00fc4
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96172838"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130045954"
 ---
 # <a name="oauth-20-authentication-with-azure-active-directory"></a>OAuth 2.0-Authentifizierung mit Azure Active Directory
 
@@ -26,9 +26,9 @@ OAuth 2.0 ist ein Branchenprotokoll für die Autorisierung. Es ermöglicht eine
 
 OAuth 2.0 hängt direkt mit OpenID Connect (OIDC) zusammen. OIDC ist eine Autorisierungs- und Autorisierungsebene, die auf OAuth 2.0 basiert, und ist daher nicht mit OAuth 1.0 abwärtskompatibel. Azure Active Directory (Azure AD) unterstützt alle OAuth 2.0-Flows. 
 
-## <a name="use-when"></a>Zu verwenden in folgenden Fällen:
+## <a name="use-for"></a>Verwendung für:
 
-Für Rich Client-Szenarien und Szenarien mit modernen Apps sowie den RESTful-Web-API-Zugriff.
+Rich Client-Szenarien und Szenarien mit modernen Apps sowie den RESTful-Web-API-Zugriff.
 
 ![Diagramm der Architektur](./media/authentication-patterns/oauth.png)
 

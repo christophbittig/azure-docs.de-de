@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 09/23/2021
 ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: e7ee0deb84b6b7ef7c10c296eab236524a3ee487
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 14bc05787a589356eec6d4cbb9abd5eebba255a8
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129357341"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130045577"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service
 

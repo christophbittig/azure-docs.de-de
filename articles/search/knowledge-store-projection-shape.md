@@ -6,13 +6,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 08/10/2021
-ms.openlocfilehash: 7cc61d144576e8f386997e1d2acfa083c9e5f571
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.date: 10/15/2021
+ms.openlocfilehash: 26f70e4750d29231b3f139ecd617b43071e369bb
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123535795"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130066089"
 ---
 # <a name="shaping-data-for-projection-into-a-knowledge-store"></a>Strukturieren von Daten für die Projektion in einen Wissensspeicher
 
@@ -144,7 +144,7 @@ Mit dem im obigen Abschnitt `tableprojection` definierten `outputs`-Knoten könn
 ]
 ```
 
-## <a name="inline-shaping-projections"></a>Inlinestrukturierung von Projektionen
+## <a name="inline-shape-for-table-projections"></a>Inlineform für Tabellenprojektionen
 
 Die Inlinestrukturierung ist die Fähigkeit, neue Strukturen innerhalb der Projektionsdefinition selbst zu bilden. Die Inlinestrukturierung weist die folgenden Merkmale auf:
 
@@ -219,6 +219,67 @@ Um die gleichen Daten wie im vorherigen Beispiel zu projizieren, würde die Inli
 ```
   
 Bei beiden Ansätzen ist zu beobachten, wie Werte von „Keyphrases“ mithilfe von „sourceContext“ projiziert werden. Der „Keyphrases“-Knoten, der eine Sammlung von Zeichenfolgen enthält, ist selbst ein untergeordnetes Element des Seitentexts. Da Projektionen jedoch ein JSON-Objekt erfordern und es sich bei der Seite um einen Grundtyp (Zeichenfolge) handelt, wird „sourceContext“ verwendet, um den Schlüsselbegriff mit einem Objekt mit einer benannten Eigenschaft zu umschließen. Diese Technik ermöglicht, dass sogar Grundtypen unabhängig projiziert werden können.
+
+<a name="inline-shape"></a>
+
+## <a name="inline-shape-for-object-projections"></a>Inlineform für Objektprojektionen
+
+Sie können mithilfe der Shaper-Qualifikation eine neue Form generieren oder die Inline-Strukturierung der Objektprojektion verwenden. Während das Tabellenbeispiel den Ansatz der Erstellung einer Form und der anschließenden Aufteilung zeigt, veranschaulicht dieses Beispiel die Verwendung der Inline-Strukturierung. 
+
+Die Inline-Strukturierung ist die Möglichkeit, eine neue Form in der Definition der Eingaben für eine Projektion zu erstellen. Bei der Inlinestrukturierung wird ein anonymes Objekt erstellt, das mit dem Ergebnis einer Shaper-Ausführung identisch ist (in diesem Fall `projectionShape`). Die Inline-Strukturierung ist nützlich, wenn Sie eine Form definieren, die nicht wiederverwendet werden soll.
+
+Die Projektionseigenschaft ist ein Array. In diesem Beispiel wird dem Array eine neue Projektionsinstanz hinzugefügt, in der die knowledgeStore-Definition Inline-Projektionen enthält. Wenn Sie Inlineprojektionen verwenden, können Sie den Shaper-Skill weglassen.
+
+```json
+"knowledgeStore" : {
+    "storageConnectionString": "DefaultEndpointsProtocol=https;AccountName=<Acct Name>;AccountKey=<Acct Key>;",
+    "projections": [
+            {
+            "tables": [ ],
+            "objects": [
+                {
+                    "storageContainer": "sampleobject",
+                    "source": null,
+                    "generatedKeyName": "myobject",
+                    "sourceContext": "/document",
+                    "inputs": [
+                        {
+                            "name": "metadata_storage_name",
+                            "source": "/document/metadata_storage_name"
+                        },
+                        {
+                            "name": "metadata_storage_path",
+                            "source": "/document/metadata_storage_path"
+                        },
+                        {
+                            "name": "content",
+                            "source": "/document/content"
+                        },
+                        {
+                            "name": "keyPhrases",
+                            "source": "/document/merged_content/keyphrases/*"
+                        },
+                        {
+                            "name": "entities",
+                            "source": "/document/merged_content/entities/*/name"
+                        },
+                        {
+                            "name": "ocrText",
+                            "source": "/document/normalized_images/*/text"
+                        },
+                        {
+                            "name": "ocrLayoutText",
+                            "source": "/document/normalized_images/*/layoutText"
+                        }
+                    ]
+
+                }
+            ],
+            "files": []
+        }
+    ]
+}
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

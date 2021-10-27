@@ -1,25 +1,25 @@
 ---
-title: Verwenden von Diagnoseprotokollen
+title: 'Problembehandlung: Diagnoseprotokolle'
 titleSuffix: Azure Digital Twins
-description: Erfahren Sie, wie Sie die Protokollierung mit Diagnoseeinstellungen aktivieren und die Protokolle für eine sofortige Anzeige abfragen. Erfahren Sie außerdem mehr über die Protokollkategorien und ihre Schemas.
+description: In diesem Artikel erfahren Sie, wie Sie die Protokollierung mit Diagnoseeinstellungen aktivieren und die Protokolle für eine sofortige Anzeige abfragen. Erfahren Sie außerdem mehr über die Protokollkategorien und ihre Schemas.
 author: baanders
 ms.author: baanders
-ms.date: 9/15/2021
+ms.date: 9/24/2021
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: contperf-fy22q1
-ms.openlocfilehash: c868f0c8418f6b265e3de5b4d8ea0c6b7312a33e
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 89b7c741ce75a629de99e3337428027429bce5b7
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128593647"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130131769"
 ---
-# <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Problembehandlung von Azure Digital Twins: Diagnoseprotokollierung
-
-Azure Digital Twins kann **Protokolle** für Ihre Dienstinstanz zur Überwachung von Leistung, Zugriff und anderen Daten erfassen. Anhand dieser Protokolle können Sie eine Vorstellung davon erhalten, was in Ihrer Azure Digital Twins-Instanz geschieht, und die Ursachen von Problemen analysieren, ohne den Azure-Support kontaktieren zu müssen.
+# <a name="troubleshooting-azure-digital-twins-diagnostics-logs"></a>Problembehandlung von Azure Digital Twins: Diagnoseprotokolle
 
 In diesem Artikel erfahren Sie, wie Sie Diagnoseeinstellungen im [Azure-Portal](https://portal.azure.com) konfigurieren, einschließlich der zu erfassenden Protokolltypen und ihrem Speicherort (z. B. in Log Analytics oder einem Speicherkonto Ihrer Wahl). Sie können die Protokolle anschließend abfragen, um schnell die passenden Einblicke zu gewinnen.
+
+Azure Digital Twins kann **Protokolle** für Ihre Dienstinstanz zur Überwachung von Leistung, Zugriff und anderen Daten erfassen. Anhand dieser Protokolle können Sie eine Vorstellung davon erhalten, was in Ihrer Azure Digital Twins-Instanz geschieht, und die Ursachen von Problemen analysieren, ohne den Azure-Support kontaktieren zu müssen.
 
 Dieser Artikel enthält darüber hinaus Informationen zu allen **Protokollkategorien**, die von Azure Digital Twins erfasst werden können, und deren **Schemas**.
 
@@ -367,5 +367,5 @@ Hier sehen Sie einen JSON-Beispieltext für `ADTEventRoutesOperation` vom Typ `M
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen zur Konfiguration von Diagnosen finden Sie unter [Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen](../azure-monitor/essentials/platform-logs-overview.md).
-* Informationen zu den Azure Digital Twins-Metriken finden Sie unter [Problembehandlung: Anzeigen von Metriken mit Azure Monitor](troubleshoot-metrics.md).
-* Informationen zur Aktivierung von Warnungen für Ihre Metriken finden Sie unter [Problembehandlung: Einrichten von Warnungen](troubleshoot-alerts.md).
+* Informationen zu den Azure Digital Twins-Metriken finden Sie unter [Troubleshooting: Metrics](troubleshoot-metrics.md) (Problembehandlung: Metriken).
+* Informationen zur Aktivierung von Warnungen für Ihre Metriken finden Sie unter [Problembehandlung von Warnungen](troubleshoot-alerts.md).

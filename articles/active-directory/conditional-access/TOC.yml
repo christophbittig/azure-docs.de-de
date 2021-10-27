@@ -39,7 +39,7 @@
       href: service-dependencies.md
     - name: Standortbedingungen
       href: location-condition.md
-    - name: Filter für Geräte
+    - name: Filtern nach Geräten
       href: concept-condition-filters-for-devices.md
     - name: Was-wäre-wenn-Tool
       href: what-if-tool.md

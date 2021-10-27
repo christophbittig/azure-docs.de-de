@@ -534,6 +534,8 @@
               href: how-to-understand-automated-ml.md
             - name: Verwenden des ONNX-Modells in einer .NET-Anwendung
               href: how-to-use-automl-onnx-model-dotnet.md
+            - name: Rückschließen von Bildmodellen mit dem ONNX-Modell
+              href: how-to-inference-onnx-automl-image-models.md
             - name: Problembehandlung für automatisiertes ML
               href: how-to-troubleshoot-auto-ml.md
     - name: Bereitstellen von Modellen

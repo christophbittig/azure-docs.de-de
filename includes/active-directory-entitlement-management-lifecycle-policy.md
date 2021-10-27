@@ -1,5 +1,5 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: active-directory
 author: msaburnley
@@ -8,22 +8,24 @@ ms.topic: include
 ms.date: 10/15/2019
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: db13884e3deed8e990d21d82e215a1e837371275
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f078710392f895dc672c9562ac3a7b03f4623e1e
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98052999"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130019229"
 ---
 ## <a name="lifecycle"></a>Lebenszyklus
 
 Auf der Registerkarte **Lebenszyklus** geben Sie an, wann die Zuweisung eines Benutzers für das Zugriffspaket abläuft. Sie können auch angeben, ob Benutzer ihre Zuweisungen verlängern können.
 
-1. Legen Sie im Abschnitt **Ablauf** die Option **Zugriffspaket läuft ab** auf **An Datum**, **Anzahl Tage** oder **Nie** fest.
+1. Legen Sie im Abschnitt **Ablauf** die Option **Zugriffspaket läuft ab** auf **An Datum**, **Anzahl Tage**, **Anzahl der Stunden** oder **Nie** fest.
 
     Wählen Sie für **An Datum** ein Ablaufdatum in der Zukunft aus.
 
     Geben Sie für **Anzahl Tage** eine Zahl zwischen 0 und 3.660 Tagen an.
+
+    Geben Sie unter **Anzahl der Stunden** eine Stundenzahl an.
 
     Basierend auf Ihrer Auswahl läuft die Zuweisung eines Benutzers zum Zugriffspaket an einem bestimmten Datum, nach einer bestimmten Anzahl von Tagen nach der Genehmigung oder nie ab.
 

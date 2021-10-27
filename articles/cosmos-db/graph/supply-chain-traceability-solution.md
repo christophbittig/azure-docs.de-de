@@ -1,5 +1,5 @@
 ---
-title: Infosys-Lösung für die Rückverfolgbarkeit von Lieferketten mithilfe der Azure Cosmos DB-Graph-API
+title: Infosys-Lösung für die Rückverfolgbarkeit von Lieferketten mithilfe der Azure Cosmos DB-Gremllin-API
 description: Die von Infosys implementierte Graphlösung für die Rückverfolgbarkeit von Lieferketten verwendet die Azure Cosmos DB-Gremlin-API und weitere Azure-Dienste. Sie bietet eine Nach- und Rückverfolgungsfunktion für die globale Lieferkette von Endprodukten.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
@@ -7,14 +7,14 @@ ms.topic: how-to
 ms.date: 10/07/2021
 author: manishmsfte
 ms.author: mansha
-ms.openlocfilehash: 4ec236a57e9c8f24625d22f4af3f39299d118804
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 3dacf188e0a3fbf901a97ff2125788f080d6532e
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129716453"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130003892"
 ---
-# <a name="supply-chain-traceability-solution-using-azure-cosmos-db-graph-api"></a>Lösung für die Rückverfolgbarkeit von Lieferketten mithilfe der Azure Cosmos DB-Graph-API
+# <a name="supply-chain-traceability-solution-using-azure-cosmos-db-gremlin-api"></a>Lösung für die Rückverfolgbarkeit von Lieferketten mithilfe der Azure Cosmos DB-Gremllin-API
 
 [!INCLUDE[appliesto-gremlin-api](../includes/appliesto-gremlin-api.md)]
 
@@ -30,19 +30,20 @@ In diesem Artikel lernen Sie Folgendes:
 
 ## <a name="overview"></a>Übersicht
 
-In Lieferketten der Lebensmittelindustrie bedeutet die Rückverfolgbarkeit von Produkten die Fähigkeit, Produkte in der gesamten Lieferkette und während des gesamten Produktlebenszyklus nachverfolgen zu können. Die Lieferkette umfasst Beschaffung, Herstellung und Auslieferung. Die Rückverfolgbarkeit ist von entscheidender Bedeutung für die Lebensmittelsicherheit, die Marke und die Einhaltung gesetzlicher Vorschriften. In der Vergangenheit konnten einige Organisationen Produkte in ihrer Lieferkette nicht effektiv nach- und rückverfolgen, was zu kostspieligen Rückrufen, Strafzahlungen und sogar zur Gefährdung der Gesundheit von Verbrauchern führte.
+In Lieferketten der Lebensmittelindustrie bedeutet die Rückverfolgbarkeit von Produkten die Fähigkeit, Produkte in der gesamten Lieferkette und während des gesamten Produktlebenszyklus nach- und rückverfolgen zu können. Die Lieferkette umfasst Beschaffung, Herstellung und Auslieferung. Die Rückverfolgbarkeit ist von entscheidender Bedeutung für die Lebensmittelsicherheit, die Marke und die Einhaltung gesetzlicher Vorschriften. In der Vergangenheit konnten einige Organisationen Produkte in ihrer Lieferkette nicht effektiv nach- und rückverfolgen, was zu kostspieligen Rückrufen, Strafzahlungen und sogar zur Gefährdung der Gesundheit von Verbrauchern führte. Die Lösungen für die Rückverfolgbarkeit mussten die Anforderungen der Datenharmonisierung und der Datenerfassung mit unterschiedlicher Geschwindigkeit und Richtigkeit erfüllen und vor allem dem Inventurzyklus folgen – Zielsetzungen, die mit herkömmlichen Plattformen nicht zu erreichen waren.
 
-Die Rückverfolgungslösung von Infosys, die mit Azure-Funktionen wie Anwendungs-, Integrations- und Datenbankdiensten entwickelt wurde, bietet lebenswichtige Funktionen für Folgendes:
+Die Rückverfolgungslösung von Infosys, die mit Azure-Funktionen wie Anwendungs-, Integrations- und Datenbankdiensten entwickelt wurde, bietet wesentliche Funktionen für Folgendes:
 
 * Herstellen einer Verbindung mit Fabriken, Warenlagern und Verteilzentren.
 * Erfassen/Verarbeiten paralleler Lagerbewegungsereignisse.
 * Ein Wissensdiagramm, das Verbindungen zwischen Rohstoffen, Chargen, Paletten mit Endprodukten, der Überordnungs-/Unterordnungsbeziehung zwischen Paletten auf mehreren Ebenen und der Warenbewegung zeigt.
-* Portal mit Suchfunktion zum Rück- und Nachverfolgen von Paletten.
+* Benutzerportal mit einer Suchfunktion, die von der Platzhaltersuche bis zur Suche nach bestimmten Schlüsselwörtern reicht.
 * Identifizieren der Auswirkungen eines Qualitätsvorfalls, z. B. betroffene Rohstoffchargen, betroffene Paletten, Standort der Paletten.
+* Möglichkeit, den Verlauf von Ereignissen übergreifend für mehrere Märkte zu erfassen, einschließlich Informationen für den Produktrückruf.
 
 ## <a name="solution-architecture"></a>Lösungsarchitektur
 
-Die Rückverfolgbarkeit der Lieferkette weist in aller Regel Muster bei der Erfassung von Palettenbewegungen, der Weitergabe von Qualitätsvorfällen und der Rückverfolgbarkeit/Analyse von Lagerdaten auf. Zunächst müssen diese Systeme sehr große Datenmengen aus Verwaltungssystemen von Fabriken/Warenlagern erfassen, die sich über mehrere geografische Regionen erstrecken. Als Nächstes verarbeiten und analysieren diese Systeme Streamingdaten, um komplexe Beziehungen zwischen Rohstoffen, Produktionschargen und Paletten mit Endprodukten sowie komplexe Beziehungen zwischen übergeordneten und untergeordneten Paletten (Umpacken/Neupacken) abzuleiten. Dann müssen die Systeme komplexe Beziehungen zwischen Rohstoffen, Endprodukten und Paletten speichern, die für die Rückverfolgbarkeit erforderlich sind. Ein Benutzerportal mit Suchfunktion ermöglicht Benutzern die Rück- und Nachverfolgung von Produkten im Lieferkettennetzwerk.
+Die Rückverfolgbarkeit der Lieferkette weist in aller Regel Muster bei der Erfassung von Palettenbewegungen, der Weitergabe von Qualitätsvorfällen und der Rückverfolgbarkeit/Analyse von Lagerdaten auf. Zunächst müssen diese Systeme sehr große Datenmengen aus Verwaltungssystemen von Fabriken und Warenlagern erfassen, die sich über mehrere geografische Regionen erstrecken. Als Nächstes verarbeiten und analysieren diese Systeme Streamingdaten, um komplexe Beziehungen zwischen Rohstoffen, Produktionschargen und Paletten mit Endprodukten sowie komplexe Beziehungen zwischen übergeordneten und untergeordneten Paletten (Umpacken/Neupacken) abzuleiten. Anschließend muss das System Informationen zu den komplexen Beziehungen zwischen Rohstoffen, Endprodukten und Paletten speichern, die für die Rückverfolgbarkeit erforderlich sind. Ein Benutzerportal mit Suchfunktion ermöglicht Benutzern die Rück- und Nachverfolgung von Produkten im Lieferkettennetzwerk. Diese Dienste ermöglichen eine End-to-End-Lösung für die Rückverfolgbarkeit, die cloudnative, API-First- und datenbasierte Funktionen unterstützt.
 
 Microsoft Azure bietet umfangreiche Dienste, die bei Anwendungsfällen der Nachverfolgbarkeit helfen können, z. B. Azure Cosmos DB, Azure Event Hubs, Azure API Management, Azure App Service, Azure SignalR, Azure Synapse Analytics und Power BI.
 
@@ -55,7 +56,7 @@ Die verschiedenen in dieser Architektur verwendeten Azure-Dienste helfen bei fol
 * Mit Azure Cosmos DB können Sie die Leistung elastisch hoch- oder herunterskalieren. Mit der Gremlin-API können Sie komplexe Beziehungen zwischen Rohstoffen, Endprodukten und Warenlagern erstellen und abfragen.
 * Azure API Management stellt externen Logistikdienstleistern und Lagerverwaltungssystemen APIs für Lagerbewegungsereignisse bereit.  
 * Azure Event Hub bietet die Möglichkeit, eine große Anzahl gleichzeitiger Ereignisse aus Lagerverwaltungssystemen und von externen Logistikdienstleistern zur weiteren Verarbeitung zu erfassen.
-* Azure Functions-Apps verarbeiten Ereignisse und erfassen Daten mithilfe der Graph-API in Azure Cosmos DB.
+* Azure Functions-Apps verarbeiten Ereignisse und erfassen Daten mithilfe der Gremlin-API in Azure Cosmos DB.
 * Mit Azure Search können Benutzer komplexe Such- und Filtervorgänge für Paletteninformationen durchführen.
 * Azure Databricks liest den Änderungsfeed und erstellt Modelle in Synapse Analytics für die Self-Service-Berichterstellung für Benutzer in Power BI.
 * Azure-Web-App und der App Service Plan ermöglichen Ihnen die Bereitstellung des Benutzerportals.
@@ -90,5 +91,6 @@ Das obige Diagramm zeigt eine allgemeine, vereinfachte Ansicht eines komplexen L
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Infosys Traceability Knowledge Graph](https://azuremarketplace.microsoft.com/marketplace/apps/infosysltd.infosys-traceability-knowledge-graph?tab=Overview)
+* [Infosys Integrate+ for Azure](https://azuremarketplace.microsoft.com/marketplace/apps/infosysltd.infosys-integrate-for-azure)
 * Informationen zum Visualisieren von Graphdaten finden Sie unter [Visualisieren der in der Gremlin-API von Azure Cosmos DB gespeicherten Diagrammdaten mit Datenvisualisierungslösungen](graph-visualization-partners.md).
 * Informationen zum Modellieren Ihrer Graphdaten finden Sie unter [Datenmodellierungstools von Drittanbietern für Azure Cosmos DB-Graphdaten](graph-modeling-tools.md).

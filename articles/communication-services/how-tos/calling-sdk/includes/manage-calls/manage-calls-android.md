@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 09/08/2021
 ms.author: rifox
-ms.openlocfilehash: 319571066bd69d1bc80414de7bdb49da27102c18
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 7d2a6415a2cc03513606183c290443c453a82577
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "128700126"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130143644"
 ---
 [!INCLUDE [Install SDK](../install-sdk/install-sdk-android.md)]
 
@@ -255,3 +255,30 @@ Folgende Werte sind hierfür möglich:
     ```java
     List<RemoteVideoStream> videoStreams = remoteParticipant.getVideoStreams(); // [RemoteVideoStream, RemoteVideoStream, ...]
     ```
+## <a name="using-foreground-services"></a>Verwenden von Vordergrunddiensten
+
+Wenn Sie einen für Benutzer sichtbaren Task auch dann ausführen möchten, wenn Ihre Anwendung im Hintergrund ausgeführt wird, können Sie [Vordergrunddienste](https://developer.android.com/guide/components/foreground-services) verwenden.
+
+Mithilfe von Vordergrunddiensten können Sie z. B. eine für Benutzer sichtbare Benachrichtigung beibehalten, wenn Ihre Anwendung über einen aktiven Anruf verfügt. Auf diese Weise ist der Anruf auch dann aktiv, wenn der Benutzer auf den Startbildschirm wechselt oder die Anwendung vom [Bildschirm „Zuletzt verwendet“](https://developer.android.com/guide/components/activities/recents) entfernt.
+
+Wenn Sie während eines Anrufs keinen Vordergrunddienst verwenden, kann die Navigation zum Startbildschirm den Anruf aktiv halten. Wenn Sie die Anwendung jedoch aus dem Bildschirm „Zuletzt verwendet“ entfernen, kann der Anruf beendet werden, wenn das Android-Betriebssystem den Prozess Ihrer Anwendung beendet.
+
+Sie sollten den Vordergrunddienst starten, wenn Sie einen Anruf starten/ihm beitreten, z. B.:
+
+```java
+call = callAgent.startCall(context, participants, options);
+startService(yourForegroundServiceIntent);
+```
+
+Beenden Sie den Vordergrunddienst, wenn Sie den Anruf beenden oder der Status des Anrufs „Getrennt“ lautet, z. B.:
+
+```java
+call.hangUp(new HangUpOptions()).get();
+stopService(yourForegroundServiceIntent);
+```
+
+### <a name="notes-on-using-foreground-services"></a>Hinweise zum Verwenden von Vordergrunddiensten
+
+Beachten Sie, dass Szenarien wie das Beenden eines bereits ausgeführten Vordergrunddiensts, wenn die App aus der „Zuletzt verwendet“-Liste entfernt wird, die für den Benutzer sichtbare Benachrichtigung entfernen, und das Android-Betriebssystem kann Ihren Anwendungsprozess für einen zusätzlichen Zeitraum aktiv halten, was bedeutet, dass der Anruf während dieses Zeitraums weiterhin aktiv sein kann.
+
+Wenn Ihre Anwendung beispielsweise den Vordergrunddienst für die Dienstmethode `onTaskRemoved` beendet, kann Ihre Anwendung Audio- und Videodaten gemäß Ihrem [Aktivitätslebenszyklus](https://developer.android.com/guide/components/activities/activity-lifecycle) starten/beenden, z. B. Audio und Video beenden, wenn Ihre Aktivität mit Außerkraftsetzung durch die `onDestroy`-Methode zerstört wird.

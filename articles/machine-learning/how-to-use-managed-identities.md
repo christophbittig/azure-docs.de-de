@@ -1,5 +1,5 @@
 ---
-title: Verwenden verwalteter Identitäten für die Zugriffssteuerung (Vorschau)
+title: Verwenden verwalteter Identitäten für die Zugriffssteuerung
 titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Sie verwaltete Identitäten dazu verwenden können, um den Zugriff auf Azure-Ressourcen vom Azure Machine Learning-Arbeitsbereich aus zu steuern.
 services: machine-learning
@@ -9,15 +9,15 @@ ms.service: machine-learning
 ms.subservice: enterprise-readiness
 ms.reviewer: larryfr
 ms.topic: how-to
-ms.date: 10/22/2020
-ms.openlocfilehash: 37f0cff74b3918cc81b099149fff485dba405939
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.date: 10/13/2021
+ms.openlocfilehash: 38d9487c5f0cd31c732a855de1008bae74df7e3f
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129424064"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130163265"
 ---
-# <a name="use-managed-identities-with-azure-machine-learning-preview"></a>Verwenden von verwalteten Identitäten mit Azure Machine Learning (Vorschau)
+# <a name="use-managed-identities-with-azure-machine-learning"></a>Verwenden von verwalteten Identitäten mit Azure Machine Learning
 
 [Verwaltete Identitäten](../active-directory/managed-identities-azure-resources/overview.md) gestatten es Ihnen, Ihren Arbeitsbereich mit den *minimal erforderlichen Berechtigungen für den Zugriff auf Ressourcen* zu konfigurieren. 
 
@@ -30,9 +30,6 @@ In diesem Artikel erfahren Sie, wie Sie verwaltete Identitäten für Folgendes v
  * Konfigurieren und Verwenden von ACR für Ihren Azure Machine Learning-Arbeitsbereich, ohne dass Sie den Zugriff für Administratorbenutzer für ACR aktivieren müssen.
  * Zugreifen auf eine private ACR außerhalb Ihres Arbeitsbereichs, um Basisimages für Training oder Rückschlüsse zu pullen.
  * Erstellen eines Arbeitsbereichs mit einer vom Benutzer zugewiesenen verwalteten Identität für den Zugriff auf zugeordnete Ressourcen.
-
-> [!IMPORTANT]
-> Das Verwenden von verwalteten Identitäten zur Zugriffssteuerung auf Ressourcen mit Azure Machine Learning befindet sich derzeit in der Vorschau. Die Vorschaufunktionalität wird „wie besehen“ zur Verfügung gestellt, ohne Garantien hinsichtlich Support oder Vereinbarung zum Servicelevel (Service Level Agreement, SLA). Weitere Informationen finden Sie in den [zusätzlichen Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
  
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -255,7 +252,7 @@ ws = Workspace.create(name="workspace name",
     primary_user_assigned_identity="managed identity ARM ID")
 ```
 
-Sie können auch [eine ARM-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices/machine-learning-advanced) verwenden, um einen Arbeitsbereich mit einer benutzerseitig zugewiesenen verwalteten Identität zu erstellen.
+Sie können auch [eine ARM-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices/) verwenden, um einen Arbeitsbereich mit einer benutzerseitig zugewiesenen verwalteten Identität zu erstellen.
 
 > [!IMPORTANT]
 > Wenn Sie Ihre eigenen zugehörigen Ressourcen bereitstellen, anstatt sie vom Azure Machine Learning Service erstellen zu lassen, müssen Sie der verwalteten Identität entsprechende Rollen für diese Ressourcen gewähren. Verwenden Sie die [ARM-Vorlage für die Rollenzuweisung](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices/machine-learning-dependencies-role-assignment), um die Zuweisungen vorzunehmen.
@@ -268,3 +265,5 @@ Wenn Sie über einen vorhandenen Arbeitsbereich verfügen, können Sie ihn mithi
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Erfahren Sie mehr über [Unternehmenssicherheit in Azure Machine Learning](concept-enterprise-security.md).
+* Erfahren Sie mehr über [identitätsbasierten Datenzugriff](how-to-identity-based-data-access.md).
+* Erfahren Sie mehr über [verwaltete Identitäten im Computecluster](how-to-create-attach-compute-cluster.md).

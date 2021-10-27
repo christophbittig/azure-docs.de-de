@@ -8,20 +8,20 @@ ms.date: 03/02/2021
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: image-builder
-ms.openlocfilehash: 588e32e2a531f08319a3120a99ca70048c4c24b2
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: f26c60bb4c15ea04acc6b966c0e1af8eec0aeabb
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122770410"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130001350"
 ---
 # <a name="create-an-image-and-use-a-user-assigned-managed-identity-to-access-files-in-azure-storage"></a>Erstellen eines Images und Verwenden einer benutzerseitig zugewiesenen verwalteten Identität zum Zugreifen auf Dateien in Azure Storage 
 
 **Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Flexible Skalierungsgruppen 
 
-Azure Image Builder unterstützt standardmäßig die Verwendung von Skripts und das Kopieren von Dateien aus mehreren Quellen wie z. B. GitHub und Azure Storage. Azure Image Builder muss extern auf diese zugreifen können, um sie verwenden zu können. Sie können jedoch Azure Storage-Blobs mit SAS-Token schützen.
+Azure Image Builder unterstützt standardmäßig die Verwendung von Skripts und das Kopieren von Dateien aus mehreren Quellen wie z. B. GitHub und Azure Storage. Azure Image Builder muss extern auf diese zugreifen können, um sie verwenden zu können.
 
-In diesem Artikel erfahren Sie, wie Sie mit Azure VM Image Builder ein benutzerdefiniertes Image erstellen. Dabei verwendet der Dienst eine [benutzerseitig zugewiesene verwaltete Identität](../../active-directory/managed-identities-azure-resources/overview.md), um für die Imageanpassung auf Dateien in Azure Storage zuzugreifen, ohne die Dateien öffentlich verfügbar machen zu müssen oder SAS-Token einzurichten.
+In diesem Artikel erfahren Sie, wie Sie mit Azure VM Image Builder ein benutzerdefiniertes Image erstellen. Dabei verwendet der Dienst eine [benutzerseitig zugewiesene verwaltete Identität](../../active-directory/managed-identities-azure-resources/overview.md), um für die Imageanpassung auf Dateien in Azure Storage zuzugreifen, ohne die Dateien öffentlich verfügbar machen zu müssen.
 
 Im unten verwendeten Beispiel erstellen Sie zwei Ressourcengruppen. Eine wird für das benutzerdefinierte Image verwendet, und die andere hostet das Azure-Speicherkonto, das eine Skriptdatei enthält. Dadurch wird ein realitätsnahes Szenario simuliert, bei dem Sie Artefakte oder Imagedateien außerhalb von Azure Image Builder in unterschiedlichen Speicherkonten erstellt haben. Sie erstellen eine benutzerseitig zugewiesene Identität, der Sie dann Leseberechtigungen für die Skriptdatei gewähren, ohne die Datei öffentlich verfügbar zu machen. Anschließend verwenden Sie die Shellanpassung, um das Skript aus dem Speicherkonto herunterzuladen und auszuführen.
 

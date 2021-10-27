@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: 11d9b2c4825df76bad8e7c860c9edae3b60233ea
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: 5a3b9ab410ff8a757aa3ef23ee7d097ee1b3071b
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110574886"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130077815"
 ---
 ## <a name="add-to-your-functions-app"></a>Hinzufügen zu Ihrer Funktions-App
 
@@ -31,11 +31,23 @@ Das Arbeiten mit Triggern und Bindungen erfordert, dass Sie auf das entsprechend
 
 ### <a name="event-hubs-extension-5x-and-higher"></a>Event Hubs-Erweiterung 5.x und höher
 
-Eine neue Version der Event Hubs-Bindungserweiterung ist als [NuGet-Vorschaupaket](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs/5.0.0-beta.4) verfügbar. Diese Vorschau bietet die Möglichkeit, eine [Verbindung mit einer Identität anstelle eines Geheimnisses](../articles/azure-functions/functions-reference.md#configure-an-identity-based-connection) herzustellen. Für .NET-Anwendungen werden auch die Typen geändert, mit denen eine Bindung erfolgen kann. Dabei werden die Typen aus `Microsoft.Azure.EventHubs` durch neuere Typen aus [Azure.Messaging.EventHubs](/dotnet/api/azure.messaging.eventhubs) ersetzt.
+Eine neue Version der Event Hubs-Bindungserweiterung ist als Vorschau verfügbar. Sie bietet die Möglichkeit, eine [Verbindung mit einer Identität anstelle eines Geheimnisses](../articles/azure-functions/functions-reference.md#configure-an-identity-based-connection) herzustellen. Für .NET-Anwendungen werden auch die Typen geändert, mit denen eine Bindung erfolgen kann. Dabei werden die Typen aus `Microsoft.Azure.EventHubs` durch neuere Typen aus [Azure.Messaging.EventHubs](/dotnet/api/azure.messaging.eventhubs) ersetzt.
 
-> [!NOTE]
-> Das Vorschaupaket ist nicht in einem Erweiterungspaket enthalten und muss manuell installiert werden. Fügen Sie für .NET-Apps einen Verweis auf das Paket hinzu. Informationen zu allen anderen App-Typen finden Sie unter [Aktualisieren Ihrer Erweiterungen].
+Diese Erweiterungsversion ist als [NuGet-Vorschaupaket] verfügbar oder kann aus dem Vorschauerweiterungspaket v3 hinzugefügt werden, indem Sie Folgendes in Ihrer Datei `host.json` hinzufügen:
 
+```json
+{
+  "version": "2.0",
+  "extensionBundle": {
+    "id": "Microsoft.Azure.Functions.ExtensionBundle.Preview",
+    "version": "[3.*, 4.0.0)"
+  }
+}
+```
+
+Weitere Informationen finden Sie unter [Aktualisieren Ihrer Erweiterungen].
+
+[NuGet-Vorschaupaket]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs/5.0.0-beta.7
 [core tools]: ./functions-run-local.md
 [Erweiterungspaket]: ./functions-bindings-register.md#extension-bundles
 [NuGet-Paket]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs/

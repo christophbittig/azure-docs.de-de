@@ -3,22 +3,22 @@ title: Einrichten eines Anmeldeflows
 titleSuffix: Azure Active Directory B2C
 description: Hier erfahren Sie, wie Sie einen Anmeldeflow in Azure Active Directory B2C einrichten.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 08/24/2021
 ms.custom: project-no-code
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 78556d5f6d6a203a3d105f971cb7850109daa01a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 94845919e1b0bc171b7df831593b04daffb2213b
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128570272"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130064520"
 ---
 # <a name="set-up-a-sign-in-flow-in-azure-active-directory-b2c"></a>Einrichten eines Anmeldeflows in Azure Active Directory B2C
 
@@ -37,7 +37,8 @@ Die Anmelderichtlinie ermöglicht Benutzern Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Wenn dies noch nicht erfolgt ist, [registrieren Sie eine Webanwendung in Azure Active Directory B2C](tutorial-register-applications.md).
+- Wenn dies noch nicht erfolgt ist, [registrieren Sie eine Webanwendung in Azure Active Directory B2C](tutorial-register-applications.md).
+- Führen Sie die unter [Erstellen von Benutzerflows und benutzerdefinierten Richtlinien in Azure Active Directory B2C](tutorial-create-user-flows.md) beschriebenen Schritte aus.
 
 ::: zone pivot="b2c-user-flow"
 

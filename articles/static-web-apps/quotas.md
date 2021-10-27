@@ -5,14 +5,14 @@ services: static-web-apps
 author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: overview
-ms.date: 05/08/2020
+ms.date: 10/13/2021
 ms.author: cshoe
-ms.openlocfilehash: 5030b0fb4e714be221e28e590c463186ec81ad04
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: 4565012ec824961f971f1f1fb34ab330ae11372c
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515584"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129999300"
 ---
 # <a name="quotas-in-azure-static-web-apps"></a>Kontingente in Azure Static Web Apps
 
@@ -27,7 +27,8 @@ Für Azure Static Web Apps gelten folgende Kontingente.
 | Plangröße                   | Maximale App-Größe von 500 MB für eine einzelne Bereitstellung und 0,50 GB für alle Staging- und Produktionsumgebungen  | Maximale App-Größe von 500 MB für eine einzelne Bereitstellung und 2,00 GB kombiniert in allen Staging- und Produktionsumgebungen |
 | Präproduktionsumgebungen | 3                | 10 |
 | Benutzerdefinierte Domänen              | 2 pro App        | 5 pro App |
-| Autorisierung (mit benutzerdefinierten Rollen und Routingregeln) | Maximal 25 Endbenutzer, die möglicherweise zu benutzerdefinierten Rollen gehören | Maximal 25 Endbenutzer, die möglicherweise zu benutzerdefinierten Rollen gehören |
+| Autorisierung (integrierte Rollen) | Unbegrenzte Anzahl von Endbenutzern, die sich mit der integrierten Rolle `authenticated` authentifizieren können | Unbegrenzte Anzahl von Endbenutzern, die sich mit der integrierten Rolle `authenticated` authentifizieren können |
+| Autorisierung (benutzerdefinierte Rollen) | Maximal 25 Endbenutzer, die über [Einladungen](authentication-authorization.md?tabs=invitations#role-management) möglicherweise zu benutzerdefinierten Rollen gehören | Maximal 25 Endbenutzer, die über [Einladungen](authentication-authorization.md?tabs=invitations#role-management) möglicherweise zu benutzerdefinierten Rollen gehören, oder unbegrenzte Anzahl von Endbenutzern, denen über die [serverlose Funktion](authentication-authorization.md?tabs=function#role-management) benutzerdefinierte Rollen zugewiesen werden können |
 
 ## <a name="github-storage"></a>GitHub-Speicher
 

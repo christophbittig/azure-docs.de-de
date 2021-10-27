@@ -1,19 +1,20 @@
 ---
-title: Fehler bei der Azure Digital Twins-Explorer-Authentifizierung
-description: Ursachen und Lösungen für die Meldung „Fehler bei der Authentifizierung“ im Azure Digital Twins-Explorer.
+title: 'Problembehandlung beim Azure Digital Twins-Explorer: Authentifizierungsfehler'
+titleSuffix: Azure Digital Twins
+description: Erfahren Sie, wie Sie Authentifizierungsfehler im Azure Digital Twins-Explorer diagnostizieren und beheben.
 ms.service: digital-twins
 author: baanders
 ms.author: baanders
 ms.topic: troubleshooting
-ms.date: 4/8/2021
-ms.openlocfilehash: ef78f1dd6089201744de19900738ebcc6e5f70db
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.date: 10/7/2021
+ms.openlocfilehash: f03c85f912271dbd5d1cb7904f159d89f4a09ba6
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114468670"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130132624"
 ---
-# <a name="authentication-failed"></a>Fehler bei der Authentifizierung.
+# <a name="troubleshooting-azure-digital-twins-explorer-authentication-error"></a>Problembehandlung beim Azure Digital Twins-Explorer: Authentifizierungsfehler
 
 In diesem Artikel werden die Ursachen und Lösungsschritte für die Anzeige der Meldung „Fehler bei der Authentifizierung“ beim Ausführen des [Azure Digital Twins-Explorer](/samples/azure-samples/digital-twins-explorer/digital-twins-explorer/)-Beispiels auf Ihrem lokalen Computer beschrieben. 
 

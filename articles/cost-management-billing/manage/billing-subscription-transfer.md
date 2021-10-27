@@ -11,16 +11,16 @@ ms.topic: how-to
 ms.date: 02/05/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: c3142fd41830487453a3cc980a87cdca72cf7213
-ms.sourcegitcommit: 97c48e630ec22edc12a0f8e4e592d1676323d7b0
+ms.openlocfilehash: 1417d727565b349f9f18b0add73d443c22a4dbb3
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2021
-ms.locfileid: "101094128"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129992323"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Übertragen des Abrechnungsbesitzes eines Azure-Abonnements an ein anderes Konto
 
-In diesem Artikel werden die Schritte zum Übertragen des Abrechnungsbesitzes eines Azure-Abonnements an ein anderes Konto beschrieben. Bevor Sie den Abrechnungsbesitz eines Abonnements übertragen, lesen Sie [Informationen zum Übertragen des Abrechnungsbesitzes für ein Azure-Abonnement](../understand/subscription-transfer.md).
+In diesem Artikel werden die Schritte zum Übertragen des Abrechnungsbesitzes eines Azure-Abonnements an ein anderes Konto beschrieben. Bevor Sie den Abrechnungsbesitz eines Abonnements übertragen, lesen Sie [Informationen zum Übertragen des Abrechnungsbesitzes für ein Azure-Abonnement](subscription-transfer.md).
 
 Wenn Sie den Abrechnungsbesitz behalten, den Typ des Abonnements jedoch ändern möchten, finden Sie Informationen hierzu unter [Ändern Ihres Azure-Abonnements in ein anderes Angebot](switch-azure-offer.md). Informationen zur Steuerung, wer auf Ressourcen im Abonnement zugreifen kann, finden Sie unter [Integrierte Azure-Rollen](../../role-based-access-control/built-in-roles.md).
 
@@ -30,7 +30,7 @@ Nur der Abrechnungsadministrator eines Kontos kann den Besitz eines Abonnements 
 
 ## <a name="transfer-billing-ownership-of-an-azure-subscription"></a>Übertragen des Abrechnungsbesitzes eines Azure-Abonnements
 
-1. Melden Sie sich im [Azure-Portal](https://portal.azure.com) als Administrator für das Abrechnungskonto des Abonnements an, das Sie übertragen möchten. Wenn Sie sich nicht sicher sind, ob Sie über Administratorrechte verfügen, oder wenn Sie ermitteln möchten, wer Administrator ist, finden Sie entsprechende Informationen unter [Ermitteln des Abrechnungsadministrators](../understand/subscription-transfer.md#whoisaa).
+1. Melden Sie sich im [Azure-Portal](https://portal.azure.com) als Administrator für das Abrechnungskonto des Abonnements an, das Sie übertragen möchten. Wenn Sie sich nicht sicher sind, ob Sie über Administratorrechte verfügen, oder wenn Sie ermitteln möchten, wer Administrator ist, finden Sie entsprechende Informationen unter [Ermitteln des Abrechnungsadministrators](add-change-subscription-administrator.md#whoisaa).
 1. Suchen Sie nach **Kostenverwaltung + Abrechnung**.  
    ![Screenshot, der die Suche im Azure-Portal zeigt](./media/billing-subscription-transfer/billing-search-cost-management-billing.png)
 1. Wählen Sie links die Option **Abonnements**. Je nach Zugriff müssen Sie möglicherweise einen Abrechnungsbereich auswählen. Wählen Sie dann **Abonnements** oder **Azure-Abonnements** aus.
@@ -114,7 +114,7 @@ Die Self-Service-Abonnementübertragung ist für Ihr Abrechnungskonto nicht verf
 
 ###  <a name="not-all-subscription-types-can-transfer"></a>Nicht alle Abonnementtypen können übertragen werden
 
-Nicht alle Abonnementtypen unterstützen die Übertragung des Abrechnungsbesitzes. Unter [Unterstützte Abonnementtypen](../understand/subscription-transfer.md#supported-subscription-types) sind die Abonnementtypen aufgelistet, die eine Übertragung unterstützen.
+Nicht alle Abonnementtypen unterstützen die Übertragung des Abrechnungsbesitzes. Unter [Hub für Azure-Abonnementübertragung](subscription-transfer.md) sind die Abonnementtypen aufgelistet, die eine Übertragung unterstützen.
 
 ###  <a name="access-denied-error-shown-when-trying-to-transfer-subscription-billing-ownership"></a>Verweigern des Zugriffs beim Versuch, den Abrechnungsbesitz des Abonnements zu übertragen
 

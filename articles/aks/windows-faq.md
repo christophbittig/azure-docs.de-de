@@ -4,12 +4,12 @@ titleSuffix: Azure Kubernetes Service
 description: Hier finden Sie häufig gestellte Fragen zum Ausführen von Windows Server-Knotenpools und Anwendungsworkloads in Azure Kubernetes Service (AKS).
 ms.topic: article
 ms.date: 10/12/2020
-ms.openlocfilehash: dd83803069f83233915c0baae0656346008a3814
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 9839b9075c3747c6c803e95c5622416da85d34d4
+ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129354622"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130138473"
 ---
 # <a name="frequently-asked-questions-for-windows-server-node-pools-in-aks"></a>Häufig gestellte Fragen zu Windows Server-Knotenpools in AKS
 
@@ -23,15 +23,15 @@ AKS verwendet Windows Server 2019 als Host-Betriebssystemversion und unterstütz
 
 ## <a name="is-kubernetes-different-on-windows-and-linux"></a>Gibt es bei Kubernetes Unterschiede zwischen Windows und Linux?
 
-Die Unterstützung für Windows Server-Knotenpools umfasst einige Einschränkungen, die Teil des Upstreamprojekts „Windows Server in Kubernetes“ sind. Diese Einschränkungen sind nicht spezifisch für AKS. Weitere Informationen zu dieser Upstreamunterstützung für Windows Server in Kubernetes finden Sie im Abschnitt [Supported Functionality and Limitations][upstream-limitations] (Unterstützte Funktionen und Einschränkungen) des Dokuments [Intro to Windows support in Kubernetes][intro-windows] (Einführung in die Unterstützung von Windows in Kubernetes).
+Bei der Unterstützung für Windows Server-Knotenpools gelten einige Einschränkungen, die Teil des Upstreamprojekts „Windows Server in Kubernetes“ sind. Diese Einschränkungen sind nicht spezifisch für AKS. Weitere Informationen zu dieser Upstreamunterstützung für Windows Server in Kubernetes finden Sie im Abschnitt [Supported functionality and limitations][upstream-limitations] (Unterstützte Funktionen und Einschränkungen) des Dokuments [Windows containers in Kubernetes][intro-windows] (Windows-Container in Kubernetes).
 
-Kubernetes ist von jeher auf Linux ausgerichtet. Viele auf der Upstreamwebsite [Kubernetes.io][kubernetes] verwendete Beispiele sind zur Verwendung auf Linux-Knoten vorgesehen. Wenn Sie Bereitstellungen erstellen, bei denen Windows Server-Container verwendet werden, müssen Sie folgende Punkte auf Betriebssystemebene beachten:
+Kubernetes ist von jeher auf Linux ausgerichtet. Viele auf der Upstreamwebsite [Kubernetes.io][kubernetes] verwendete Beispiele sind zur Verwendung auf Linux-Knoten vorgesehen. Wenn Sie Bereitstellungen erstellen, die Windows Server-Container verwenden, müssen Sie folgende Aspekte auf Betriebssystemebene beachten:
 
-- **Identität**: Linux erkennt einen Benutzer anhand einer ganzzahligen Benutzer-ID (UID). Ein Benutzer hat auch einen alphanumerischen Benutzernamen für die Anmeldung, der von Linux in die UID des Benutzers übersetzt wird. Auf ähnliche Weise erkennt Linux eine Benutzergruppe anhand einer ganzzahligen Gruppen-ID (GID) und übersetzt einen Gruppennamen in die entsprechende GID.
-    - Unter Windows Server wird eine umfangreichere binäre Sicherheits-ID (SID) verwendet, die in der Windows Security Access Manager-Datenbank (SAM) gespeichert wird. Diese Datenbank wird weder zwischen dem Host und den Containern noch zwischen den einzelnen Containern freigegeben.
-- **Dateiberechtigungen:** Unter Windows-Server wird eine Zugriffssteuerungsliste basierend auf SIDs anstelle einer Bitmaske von Berechtigungen sowie UID und GID verwendet.
-- **Dateipfade:** Als Konvention wird unter Windows Server „\“ anstelle von „/“ verwendet.
-    - Geben Sie in Podspezifikationen, in denen Volumes eingebunden werden, den Pfad für Windows Server-Container korrekt ein. Geben Sie beispielsweise anstelle des Bereitstellungspunkts */mnt/volume* in einem Linux-Container einen Laufwerkbuchstaben und Speicherort ein, z. B. */K/Volume* zum Einbinden als Laufwerk *K:* .
+- **Identität**: Linux identifiziert einen Benutzer anhand einer ganzzahligen Benutzer-ID (UID). Ein Benutzer hat auch einen alphanumerischen Benutzernamen für die Anmeldung, der von Linux in die UID des Benutzers übersetzt wird. Auf ähnliche Weise identifiziert Linux eine Benutzergruppe anhand einer ganzzahligen Gruppen-ID (GID) und übersetzt einen Gruppennamen in die entsprechende GID.
+    Windows Server verwendet eine umfangreichere binäre Sicherheits-ID (SID), die in der Windows Security Access Manager-Datenbank (SAM) gespeichert wird. Diese Datenbank wird weder zwischen dem Host und den Containern noch zwischen den einzelnen Containern freigegeben.
+- **Dateiberechtigungen**: Windows-Server verwendet eine Zugriffssteuerungsliste basierend auf SIDs anstelle einer Bitmaske aus Berechtigungen und UID plus GID.
+- **Dateipfade**: Die Konvention unter Windows Server ist die Verwendung von „\“ anstelle von „/“. 
+    Geben Sie in Podspezifikationen, in denen Volumes eingebunden werden, den Pfad für Windows Server-Container korrekt ein. Geben Sie beispielsweise anstelle des Bereitstellungspunkts */mnt/volume* in einem Linux-Container einen Laufwerkbuchstaben und Speicherort ein, z. B. */K/Volume* zum Einbinden als Laufwerk *K:* .
 
 ## <a name="what-kind-of-disks-are-supported-for-windows"></a>Welche Typen von Datenträgern werden für Windows unterstützt?
 
@@ -39,7 +39,7 @@ Azure-Datenträger und Azure Files sind die unterstützten Volumetypen. Diese we
 
 ## <a name="can-i-run-windows-only-clusters-in-aks"></a>Kann ich nur Windows-basierte Cluster in AKS ausführen?
 
-Die Masterknoten (die Steuerungsebene) in einem AKS-Cluster werden von AKS als Dienst gehostet. Die Daten werden nicht für das Betriebssystem der Knoten verfügbar gemacht, das als Host für die Masterkomponenten dient. Alle AKS-Cluster werden mit einem standardmäßig verfügbaren ersten Knotenpool erstellt, der auf Linux basiert. Dieser Knotenpool enthält Systemdienste, die für die Funktionsweise des Clusters erforderlich sind. Es wird empfohlen, mindestens zwei Knoten im ersten Knotenpool auszuführen, um die Zuverlässigkeit des Clusters und die Fähigkeit zum Ausführen von Clustervorgängen sicherzustellen. Der erste Linux-basierte Knotenpool kann nur gelöscht werden, wenn der AKS-Cluster selbst gelöscht wird.
+Die Masterknoten (Steuerungsebene) in einem AKS-Cluster werden vom AKS-Dienst gehostet. Sie werden nicht für das Betriebssystem der Knoten verfügbar gemacht, die die Masterkomponenten hosten. Alle AKS-Cluster werden mit einem standardmäßig verfügbaren ersten Knotenpool erstellt, der auf Linux basiert. Dieser Knotenpool enthält Systemdienste, die für die Funktionsweise des Clusters erforderlich sind. Es wird empfohlen, mindestens zwei Knoten im ersten Knotenpool auszuführen, um die Zuverlässigkeit des Clusters und die Fähigkeit zum Ausführen von Clustervorgängen sicherzustellen. Der erste Linux-basierte Knotenpool kann nur gelöscht werden, wenn der AKS-Cluster selbst gelöscht wird.
 
 ## <a name="how-do-i-patch-my-windows-nodes"></a>Wie kann ich meine Windows-Knoten patchen?
 
@@ -51,7 +51,7 @@ Sie können entweder den [Knotenpool][nodepool-upgrade] oder das [Knotenimage][u
 
 ## <a name="what-network-plug-ins-are-supported"></a>Welche Netzwerk-Plug-Ins werden unterstützt?
 
-AKS-Cluster mit Windows-Knotenpools müssen das (erweiterte) Azure CNI-Netzwerkmodell verwenden. Kubenet Basic-Netzwerke werden nicht unterstützt. Weitere Informationen zu den Unterschieden der Netzwerkmodelle finden Sie unter [Netzwerkkonzepte für Anwendungen in AKS][azure-network-models]. Das Azure CNI-Netzwerkmodell erfordert zusätzliche Planung und Überlegungen für die Verwaltung von IP-Adressen. Weitere Informationen zum Planen und Implementieren von Azure CNI finden Sie unter [Konfigurieren von Azure CNI-Netzwerken in AKS][configure-azure-cni].
+AKS-Cluster mit Windows-Knotenpools müssen das (erweiterte) Netzwerkmodell des Azure Container Networking Interface (Azure CNI) verwenden. Kubenet Basic-Netzwerke werden nicht unterstützt. Weitere Informationen zu den Unterschieden der Netzwerkmodelle finden Sie unter [Netzwerkkonzepte für Anwendungen in AKS][azure-network-models]. Das Azure CNI-Netzwerkmodell erfordert zusätzliche Planung und Überlegungen in Bezug auf die Verwaltung von IP-Adressen. Weitere Informationen zum Planen und Implementieren von Azure CNI finden Sie unter [Konfigurieren von Azure CNI-Netzwerken in AKS][configure-azure-cni].
 
 Auf Windows-Knoten in AKS-Clustern ist zudem standardmäßig [Direct Server Return (DSR)][dsr] aktiviert, wenn Calico aktiviert ist.
 
@@ -59,15 +59,15 @@ Auf Windows-Knoten in AKS-Clustern ist zudem standardmäßig [Direct Server Retu
 
 Derzeit wird [die Beibehaltung der Client-Quell-IP][client-source-ip] bei Windows-Knoten nicht unterstützt.
 
-## <a name="can-i-change-the-max--of-pods-per-node"></a>Kann ich die maximale Anzahl von Pods pro Knoten ändern?
+## <a name="can-i-change-the-maximum-number-of-pods-per-node"></a>Kann ich die maximale Anzahl von Pods pro Knoten ändern?
 
-Ja. Informationen zu den Auswirkungen und verfügbaren Optionen finden Sie unter [Maximale Anzahl von Pods][maximum-number-of-pods].
+Ja. Die Auswirkungen einer solchen Änderung sowie die verfügbaren Optionen finden Sie unter [Maximale Pods pro Knoten][maximum-number-of-pods].
 
 ## <a name="why-am-i-seeing-an-error-when-i-try-to-create-a-new-windows-agent-pool"></a>Warum wird mir ein Fehler angezeigt, wenn ich versuche, einen neuen Windows-Agentpool zu erstellen?
 
 Wenn Sie Ihren Cluster vor Februar 2020 erstellt und noch kein Clusterupgrade durchgeführt haben, verwendet der Cluster immer noch ein altes Windows-Image. Möglicherweise wurde Ihnen dann bereits eine Fehlermeldung angezeigt, die in etwa wie folgt lautet:
 
-"The following list of images referenced from the deployment template is not found: Herausgeber: MicrosoftWindowsServer, Offer: WindowsServer, Sku: 2019-datacenter-core-smalldisk-2004, Version: latest. Weitere Informationen zu verfügbaren Images finden Sie unter [Suchen und Verwenden von VM-Images im Azure Marketplace mit Azure PowerShell](../virtual-machines/windows/cli-ps-findimage.md).
+"The following list of images referenced from the deployment template is not found: Herausgeber: MicrosoftWindowsServer, Offer: WindowsServer, Sku: 2019-datacenter-core-smalldisk-2004, Version: latest. Weitere Informationen zu verfügbaren Images finden Sie unter [Suchen und Verwenden von VM-Images im Azure Marketplace mit Azure PowerShell](../virtual-machines/windows/cli-ps-findimage.md).“
 
 So beheben Sie diesen Fehler
 
@@ -78,13 +78,13 @@ So beheben Sie diesen Fehler
 
 ## <a name="how-do-i-rotate-the-service-principal-for-my-windows-node-pool"></a>Wie rotiere ich den Dienstprinzipal für meinen Windows-Knotenpool?
 
-Windows-Knotenpools unterstützen die Rotation von Dienstprinzipalen nicht. Erstellen Sie einen neuen Windows-Knotenpool, und migrieren Sie Ihre Pods vom älteren Pool zum neuen, um den Dienstprinzipal zu aktualisieren. Löschen Sie nach Abschluss des Vorgangs den älteren Knotenpool.
+Windows-Knotenpools unterstützen die Rotation von Dienstprinzipalen nicht. Erstellen Sie einen neuen Windows-Knotenpool, und migrieren Sie Ihre Pods vom älteren Pool zum neuen, um den Dienstprinzipal zu aktualisieren. Nachdem die Pods zum neuen Pool migriert wurden, löschen Sie den älteren Knotenpool.
 
-Verwenden Sie stattdessen verwaltete Identitäten, bei denen es sich um Wrapper um Dienstprinzipale handelt. Weitere Informationen finden Sie unter [Verwenden verwalteter Identitäten in Azure Kubernetes Service][managed-identity].
+Verwenden Sie statt Dienstprinzipalen verwaltete Identitäten, bei denen es sich im Grunde um Wrapper um Dienstprinzipale handelt. Weitere Informationen finden Sie unter [Verwenden verwalteter Identitäten in Azure Kubernetes Service][managed-identity].
 
 ## <a name="how-do-i-change-the-administrator-password-for-windows-server-nodes-on-my-cluster"></a>Wie ändere ich das Administratorkennwort für Windows Server-Knoten in meinem Cluster?
 
-Wenn Sie Ihren AKS-Cluster erstellen, geben Sie die Parameter `--windows-admin-password` und `--windows-admin-username` an, um die Administratoranmeldeinformationen für alle Windows Server-Knoten im Cluster festzulegen. Wenn Sie keine Administratoranmeldeinformationen angegeben haben, z. B. beim Erstellen eines Clusters über das Azure-Portal oder beim Festlegen von `--vm-set-type VirtualMachineScaleSets` und `--network-plugin azure` beim Verwenden von Azure CLI, wird der Benutzername standardmäßig auf *azureuser* und ein zufälliges Kennwort festgelegt.
+Wenn Sie Ihren AKS-Cluster erstellen, geben Sie die Parameter `--windows-admin-password` und `--windows-admin-username` an, um die Administratoranmeldeinformationen für alle Windows Server-Knoten im Cluster festzulegen. Wenn Sie beim Erstellen eines Clusters über das Azure-Portal oder beim Festlegen von `--vm-set-type VirtualMachineScaleSets` und `--network-plugin azure` über die Azure CLI keine Administratoranmeldeinformationen angegeben haben, wird der Benutzername standardmäßig auf *azureuser* und ein zufälliges Kennwort festgelegt.
 
 Verwenden Sie den `az aks update`-Befehl, um das Administratorkennwort zu ändern:
 
@@ -96,17 +96,17 @@ az aks update \
 ```
 
 > [!IMPORTANT]
-> Beim Ausführen dieses Vorgangs werden alle Windows Server-Knotenpools aktualisiert. Linux-Knotenpools sind nicht betroffen.
+> Mit dem Vorgang `az aks update` werden Upgrades nur für Windows Server-Knotenpools ausgeführt. Linux-Knotenpools sind nicht betroffen.
 > 
-> Wenn Sie `--windows-admin-password` ändern, muss das neue Kennwort mindestens 14 Zeichen lang sein und die [Windows Server-Kennwortanforderungen erfüllen][windows-server-password].
+> Wenn Sie `--windows-admin-password` ändern, muss das neue Kennwort mindestens 14 Zeichen lang sein und die [Windows Server-Kennwortanforderungen][windows-server-password] erfüllen.
 
 ## <a name="how-many-node-pools-can-i-create"></a>Wie viele Knotenpools kann ich erstellen?
 
-Der AKS-Cluster kann maximal 100 Knotenpools umfassen. In diesen Knotenpools können insgesamt höchstens 1.000 Knoten enthalten sein. Weitere Informationen finden Sie unter [Einschränkungen von Knotenpools][nodepool-limitations].
+Der AKS-Cluster kann maximal 100 Knotenpools umfassen. In diesen Knotenpools können insgesamt höchstens 1.000 Knoten enthalten sein. Weitere Informationen finden Sie unter [Einschränkungen][nodepool-limitations].
 
 ## <a name="what-can-i-name-my-windows-node-pools"></a>Wie kann ich meine Windows-Knotenpools benennen?
 
-Der Name darf maximal sechs (6) Zeichen umfassen. Dies ist eine aktuelle AKS-Beschränkung.
+Verwenden Sie Namen, die maximal sechs Zeichen lang sind. Dies ist die aktuelle Beschränkung von AKS.
 
 ## <a name="are-all-features-supported-with-windows-nodes"></a>Werden alle Features für Windows-Knoten unterstützt?
 
@@ -114,15 +114,15 @@ Kubenet wird derzeit nicht für Windows-Knoten unterstützt.
 
 ## <a name="can-i-run-ingress-controllers-on-windows-nodes"></a>Kann ich Eingangscontroller auf Windows-Knoten ausführen?
 
-Ja. Ein Eingangscontroller, der Windows Server-Container unterstützt, kann auf Windows-Knoten in AKS ausgeführt werden.
+Ja, ein Eingangsdatencontroller, der Windows Server-Container unterstützt, kann auf Windows-Knoten in AKS ausgeführt werden.
 
 ## <a name="can-my-windows-server-containers-use-gmsa"></a>Können meine Windows Server-Container gMSA verwenden?
 
-Die Unterstützung für gruppenverwaltete Dienstkonten (Group Managed Service Accounts, gMSA) ist derzeit in AKS nicht verfügbar.
+Die Unterstützung von gruppenverwalteten Dienstkonten (Group-Managed Service Account, gMSA) ist in AKS derzeit nicht verfügbar.
 
 ## <a name="can-i-use-azure-monitor-for-containers-with-windows-nodes-and-containers"></a>Kann ich Azure Monitor für Container mit Windows-Knoten und -Containern verwenden?
 
-Ja, das ist möglich. Allerdings befindet sich die Azure Monitor-Funktion zum Erfassen von Protokollen (stdout, stderr) und Metriken aus Windows-Containern in der Public Preview. Sie können ebenso an den Livestream von stdout-Protokollen aus einem Windows-Container anfügen.
+Ja, das ist möglich. Allerdings befindet sich die Azure Monitor-Funktion zum Erfassen von Protokollen (stdout, stderr) und Metriken aus Windows-Containern in der öffentlichen Vorschau. Sie können ebenso an den Livestream von stdout-Protokollen aus einem Windows-Container anfügen.
 
 ## <a name="are-there-any-limitations-on-the-number-of-services-on-a-cluster-with-windows-nodes"></a>Gibt es Einschränkungen in Bezug auf die Anzahl von Diensten in einem Cluster mit Windows-Knoten?
 
@@ -132,7 +132,7 @@ Ein Cluster mit Windows-Knoten kann ungefähr 500 Dienste enthalten, bevor es z
 
 Ja. Der Azure-Hybridvorteil für Windows Server senkt die Betriebskosten, da Sie Ihre lokale Windows Server-Lizenz in AKS-Windows-Knoten nutzen können.
 
-Der Azure-Hybridvorteil kann für Ihren gesamten AKS-Cluster oder für einzelne Knoten verwendet werden. Für einzelne Knoten müssen Sie zur [Knotenressourcengruppe][resource-groups] navigieren und den Azure-Hybridvorteil direkt auf die Knoten anwenden. Weitere Informationen zum Anwenden des Azure-Hybridvorteils auf einzelne Knoten finden Sie unter [Azure-Hybridvorteil für Windows Server][hybrid-vms]. 
+Der Azure-Hybridvorteil kann für Ihren gesamten AKS-Cluster oder für einzelne Knoten verwendet werden. Für einzelne Knoten müssen Sie zur [Knotenressourcengruppe][resource-groups] wechseln und den Azure-Hybridvorteil direkt auf die Knoten anwenden. Weitere Informationen zum Anwenden des Azure-Hybridvorteils auf einzelne Knoten finden Sie unter [Azure-Hybridvorteil für Windows Server][hybrid-vms]. 
 
 Verwenden Sie das Argument `--enable-ahub`, um den Azure-Hybridvorteil für einen neuen AKS-Cluster zu verwenden.
 
@@ -147,7 +147,7 @@ az aks create \
     --enable-ahub
 ```
 
-Aktualisieren Sie den Cluster mithilfe des Arguments `--enable-ahub`, um den Azure-Hybridvorteil für einen vorhandenen AKS-Cluster zu verwenden.
+Um den Azure-Hybridvorteil für einen vorhandenen AKS-Cluster zu verwenden, aktualisieren Sie den Cluster mit dem Argument `--enable-ahub`.
 
 ```azurecli
 az aks update \
@@ -173,7 +173,7 @@ Ist der Azure-Hybridvorteil für den Cluster aktiviert, sieht die Ausgabe von `a
 
 ## <a name="can-i-use-the-kubernetes-web-dashboard-with-windows-containers"></a>Kann ich das Kubernetes-Webdashboard für Windows-Container verwenden?
 
-Ja, Sie können das [Kubernetes-Webdashboard][kubernetes-dashboard] verwenden, um auf Informationen zu Windows-Containern zuzugreifen. Derzeit ist es jedoch nicht möglich, direkt über das Kubernetes-Webdashboard den Befehl *kubectl exec* für einen ausgeführten Windows-Container auszuführen. Weitere Informationen zum Herstellen einer Verbindung mit Ihrem ausgeführten Windows-Container finden Sie unter [Herstellen einer RDP-Verbindung mit Windows Server-Knoten in Azure Kubernetes Service-Clustern (AKS) zur Wartung oder Problembehandlung][windows-rdp].
+Ja, Sie können das [Kubernetes-Webdashboard][kubernetes-dashboard] verwenden, um auf Informationen zu Windows-Containern zugreifen. Zurzeit können Sie jedoch *kubectl exec* nicht direkt aus dem Kubernetes-Webdashboard in einem ausgeführten Windows-Container ausführen. Weitere Informationen zum Herstellen einer Verbindung mit einem ausgeführten Windows-Container finden Sie unter [Herstellen einer RDP-Verbindung mit Windows Server-Knoten in Azure Kubernetes Service-Clustern (AKS) zur Wartung oder Problembehandlung][windows-rdp].
 
 ## <a name="how-do-i-change-the-time-zone-of-a-running-container"></a>Wie kann ich die Zeitzone eines ausgeführten Containers ändern?
 
@@ -192,19 +192,23 @@ Set-TimeZone -Id "Russian Standard Time"
 Mithilfe von [Get-TimeZone](/powershell/module/microsoft.powershell.management/get-timezone) können Sie die aktuelle Zeitzone des ausgeführten Containers oder eine verfügbare Liste von Zeitzonen anzeigen.
 
 ## <a name="can-i-maintain-session-affinity-from-client-connections-to-pods-with-windows-containers"></a>Kann ich die Sitzungsaffinität zwischen Clientverbindungen und Pods mit Windows Containern beibehalten?
-Dies wird zwar in der Betriebssystemversion WS2022 unterstützt, die aktuelle Methode zum Erreichen von Sitzungsaffinität durch Client-IP wird jedoch durch Einschränken des gewünschten Pods zum Ausführen einer einzelnen Instanz pro Knoten und Konfigurieren des Kubernetes-Diensts zum Leiten von Datenverkehr an den Pod auf dem lokalen Knoten erreicht. Hierzu kann die folgende Konfiguration verwendet werden:
-1. AKS-Cluster mit mindestens Version 1.20.
-1. Beschränken Sie Ihren Pod so, dass nur eine Instanz pro Windows Knoten zugelassen wird. Dies kann erreicht werden, indem Antiaffinität in Ihrer Bereitstellungskonfiguration verwendet wird.
-1. Legen Sie in ihrer Kubernetes-Dienstkonfiguration „externalTrafficPolicy=Local“ fest. Dadurch wird sichergestellt, dass der Kubernetes-Dienst nur Datenverkehr an Pods innerhalb des lokalen Knotens weiterleitet.
-1. Legen Sie in der Kubernetes-Dienstkonfiguration „sessionAffinity: ClientIP“ fest. Dadurch wird sichergestellt, dass die Azure Load Balancer mit Sitzungsaffinität konfiguriert wird.
+
+Das Beibehalten der Sitzungsaffinität zwischen Clientverbindungen und Pods mit Windows-Containern wird zwar in der Windows Server 2022-Betriebssystemversion unterstützt, aber Sie erzielen diese Affinität per Client-IP-Adresse derzeit nur, indem Sie den gewünschten Pod auf die Ausführung einer einzelnen Instanz pro Knoten beschränken und Ihren Kubernetes-Dienst so konfigurieren, dass Datenverkehr an den Pod auf dem lokalen Knoten gesendet wird. 
+
+Verwenden Sie die folgende Konfiguration: 
+
+1. Verwenden Sie einen AKS-Cluster mit mindestens Version 1.20.
+1. Beschränken Sie Ihren Pod so, dass nur eine Instanz pro Windows Knoten zugelassen wird. Dies können Sie durch Verwenden von Antiaffinität in Ihrer Bereitstellungskonfiguration erreichen.
+1. Legen Sie in Ihrer Kubernetes-Dienstkonfiguration **externalTrafficPolicy=Local** fest. Damit wird sichergestellt, dass der Kubernetes-Dienst Datenverkehr nur an Pods auf dem lokalen Knoten sendet.
+1. Legen Sie in Ihrer Kubernetes-Dienstkonfiguration **sessionAffinity: ClientIP** fest. Damit wird sichergestellt, dass der Azure Load Balancer mit Sitzungsaffinität konfiguriert wird.
 
 ## <a name="what-if-i-need-a-feature-thats-not-supported"></a>Wie sieht es aus, wenn ich ein Feature benötige, das nicht unterstützt wird?
 
-Wir arbeiten daran, alle von Ihnen benötigten Features für Windows in AKS zu integrieren. Wenn Sie jedoch auf Lücken stoßen, bietet das Open-Source-Upstreamprojekt [aks-engine][aks-engine] eine einfache und vollständig anpassbare Methode zum Ausführen von Kubernetes in Azure, einschließlich der Windows-Unterstützung. Sehen Sie sich unbedingt unsere [AKS-Roadmap][aks-roadmap] mit den kommenden Features an.
+Sollten Ihnen Features fehlen, bietet das Open-Source-Upstreamprojekt [aks-engine][aks-engine] eine einfache und vollständig anpassbare Möglichkeit zur Ausführung von Kubernetes in Azure, einschließlich Windows-Unterstützung. Weitere Informationen finden Sie in der [AKS-Roadmap][aks-roadmap].
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erstellen Sie zum Einstieg in Windows Server-Container in AKS [einen Knotenpool, auf dem Windows Server in AKS ausgeführt wird][windows-node-cli].
+Informationen zum Einstieg in Windows Server-Container in AKS finden Sie unter [Erstellen eines Windows Server-Containers in einem AKS-Cluster mithilfe der Azure CLI][windows-node-cli].
 
 <!-- LINKS - external -->
 [kubernetes]: https://kubernetes.io

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: conceptual
 ms.date: 09/13/2021
-ms.openlocfilehash: fa1ea33e2e7987daa79267fb197981931ce1c2fd
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 46b5503e6c2c99c2c99f5cd18dc695ecb16275d1
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128606264"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130166867"
 ---
 # <a name="single-tenant-versus-multi-tenant-and-integration-service-environment-for-azure-logic-apps"></a>Vergleich zwischen Umgebungen mit einem Mandanten und mehreren Mandanten bzw. Integrationsdienstumgebung für Azure Logic Apps
 
@@ -38,9 +38,9 @@ In der folgenden Tabelle werden die Unterschiede zwischen dem Ressourcentyp **Lo
 
 ## <a name="logic-app-standard-resource"></a>Ressourcentyp „Logik-App (Standard)“
 
-Der Ressourcentyp **Logik-App (Standard)** wird von der neu gestalteten Runtime für Azure Logic Apps-Instanzen mit einem Mandanten unterstützt. Die Runtime wendet das [Azure Functions-Erweiterbarkeitsmodell](../azure-functions/functions-bindings-register.md) an und wird als Erweiterung der Azure Functions-Runtime gehostet. Dieser Entwurf bietet Portabilität, Flexibilität und eine höhere Leistung für Ihre Logik-App-Workflows sowie weitere Funktionen und Vorteile der Azure Functions-Plattform und des Azure App Service-Ökosystems.
+Der Ressourcentyp **Logik-App (Standard)** wird von der neu gestalteten Runtime für Azure Logic Apps-Instanzen mit einem Mandanten unterstützt. Die Runtime wendet das [Azure Functions-Erweiterbarkeitsmodell](../azure-functions/functions-bindings-register.md) an und wird als Erweiterung der Azure Functions-Runtime gehostet. Dieser Entwurf bietet Portabilität, Flexibilität und eine höhere Leistung für Ihre Logik-App-Workflows sowie weitere Funktionen und Vorteile der Azure Functions-Plattform und des Azure App Service-Ökosystems. Beispielsweise können Sie Logik-Apps mit nur einem Mandanten und deren Workflows in [Azure App Service-Umgebung v3](../app-service/environment/overview.md) erstellen, bereitstellen und ausführen.
 
-So können Sie etwa Azure Logic Apps-Instanzen mit einem Mandanten und deren Workflows überall dort ausführen, wo Azure Functions-Apps und deren Funktionen ausgeführt werden können. Mit dem Ressourcentyp „Standard“ wird eine Ressourcenstruktur zum Hosten mehrerer Workflows eingeführt. Dies ist vergleichbar mit einer Azure Functions-App, die mehrere Funktionen hosten kann. Bei einer 1:n-Zuordnung nutzen Workflows in derselben Logik-App und demselben Mandanten Compute- und Verarbeitungsressourcen gemeinsam und bieten aufgrund ihrer Nähe eine bessere Leistung. Diese Struktur stellt einen Unterschied zum Ressourcentyp **Logik-App (Verbrauch)** dar, bei dem zwischen einer Logik-App-Ressource und einem Workflow eine 1:1-Zuordnung besteht.
+Mit dem Ressourcentyp „Standard“ wird eine Ressourcenstruktur zum Hosten mehrerer Workflows eingeführt. Dies ist vergleichbar mit einer Azure Functions-App, die mehrere Funktionen hosten kann. Bei einer 1:n-Zuordnung nutzen Workflows in derselben Logik-App und demselben Mandanten Compute- und Verarbeitungsressourcen gemeinsam und bieten aufgrund ihrer Nähe eine bessere Leistung. Diese Struktur stellt einen Unterschied zum Ressourcentyp **Logik-App (Verbrauch)** dar, bei dem zwischen einer Logik-App-Ressource und einem Workflow eine 1:1-Zuordnung besteht.
 
 Weitere Informationen zu Portabilität, Flexibilität und Leistungsverbesserungen finden Sie in den folgenden Abschnitten. Weitere Informationen zur Runtime für Azure Logic Apps-Instanzen mit einem Mandanten sowie Azure Functions-Erweiterungen finden Sie in den folgenden Artikeln:
 
@@ -53,9 +53,7 @@ Weitere Informationen zu Portabilität, Flexibilität und Leistungsverbesserunge
 
 ### <a name="portability-and-flexibility"></a>Portabilität und Flexibilität
 
-Wenn Sie Logik-Apps mit dem Ressourcentyp **Logik-App (Standard)** erstellen, können Sie Ihre Workflows überall dort ausführen, wo Sie Azure Functions-Apps und die zugehörigen Funktionen ausführen können, nicht nur in der Dienstumgebung des Einzelmandanten.
-
-Wenn Sie beispielsweise Visual Studio Code mit der Erweiterung **Azure Logic Apps (Standard)** verwenden, können Sie Ihre Workflows *lokal* in Ihrer Entwicklungsumgebung entwickeln, erstellen und ausführen, ohne eine Bereitstellung in Azure durchführen zu müssen. Falls in Ihrem Szenario Container erforderlich sind, [erstellen Sie Logik-Apps mit nur einem Mandanten mithilfe von Logic Apps mit Azure Arc-Unterstützung](azure-arc-enabled-logic-apps-create-deploy-workflows.md). Weitere Informationen finden Sie unter [Was ist Logic Apps mit Azure Arc-Unterstützung?](azure-arc-enabled-logic-apps-overview.md)
+Wenn Sie Logik-Apps mit dem Ressourcentyp **Logik-App (Standard)** erstellen, können Sie Ihre Workflows in anderen Umgebungen, wie z. B. [Azure App Service-Umgebung v3](../app-service/environment/overview.md) bereitstellen und ausführen. Wenn Sie Visual Studio Code mit der Erweiterung **Azure Logic Apps (Standard)** verwenden, können Sie Ihre Workflows *lokal* in Ihrer Entwicklungsumgebung entwickeln, erstellen und ausführen, ohne eine Bereitstellung in Azure durchführen zu müssen. Falls in Ihrem Szenario Container erforderlich sind, [erstellen Sie Logik-Apps mit nur einem Mandanten mithilfe von Logic Apps mit Azure Arc-Unterstützung](azure-arc-enabled-logic-apps-create-deploy-workflows.md). Weitere Informationen finden Sie unter [Was ist Logic Apps mit Azure Arc-Unterstützung?](azure-arc-enabled-logic-apps-overview.md)
 
 Verglichen mit dem mehrinstanzenfähigen Modell, bei dem Sie für eine vorhandene, in Azure ausgeführte Ressource entwickeln müssen, stellen diese Funktionen eine erhebliche Verbesserung und einen entscheidenden Vorteil dar. Zudem basiert das mehrinstanzenfähige Modell für die automatisierte Bereitstellung des Ressourcentyps **Logik-App (Verbrauch)** vollständig auf ARM-Vorlagen (Azure Resource Manager), mit denen die Ressourcenbereitstellung für Apps und die Infrastruktur zusammengeführt und verarbeitet wird.
 
@@ -74,6 +72,12 @@ Mit dem Ressourcentyp **Logik-App (Standard)** können Sie mehrere Workflows in 
 Der Ressourcentyp **Logik-App (Standard)** und die Azure Logic Apps-Runtime für Einzelmandanten bieten einen weiteren erheblichen Vorteil: Sie stellen gängige verwaltete Connectors als integrierte Vorgänge bereit. So stehen Ihnen etwa die folgenden integrierten Vorgänge zur Verfügung: Azure Service Bus, Azure Event Hubs, SQL usw. Die verwalteten Connectorversionen sind weiterhin verfügbar und funktionieren.
 
 Wenn Sie die neuen integrierten Vorgänge verwenden, erstellen Sie Verbindungen, die als *integrierte Verbindungen* oder *Dienstanbieterverbindungen* bezeichnet werden. Die entsprechenden verwalteten Verbindungen werden *API-Verbindungen* genannt. Diese werden separat als Azure-Ressourcen erstellt und ausgeführt, die Sie anschließend auch mithilfe von ARM-Vorlagen bereitstellen müssen. Integrierte Vorgänge und die zugehörigen Verbindungen werden lokal in demselben Prozess ausgeführt wie Ihre Workflows. Beide werden in der Azure Logic Apps-Runtime für den Einzelmandanten gehostet. Aufgrund der Nähe zu Ihren Workflows bieten integrierte Vorgänge und deren Verbindungen eine bessere Leistung. Diese Methode ist auch für Bereitstellungspipelines geeignet, da die Dienstanbieterverbindungen in dasselbe Buildartefakt gepackt werden.
+
+<a name="data-residency"></a>
+
+### <a name="data-residency"></a>Datenresidenz
+
+Logik-App-Ressourcen, die mit dem Ressourcentyp **Logik-App (Standard)** erstellt wurden, werden in einer Azure Logic Apps-Instanz mit nur einem Mandanten gehostet, die [Daten außerhalb der Region, in der Sie diese Logik-App-Ressourcen bereitstellen, nicht speichert, verarbeitet oder repliziert](https://azure.microsoft.com/global-infrastructure/data-residency), was bedeutet, dass Daten in Ihren Logik-App-Workflows in derselben Region bleiben, in der Sie deren übergeordneten Ressourcen erstellen und bereitstellen.
 
 ## <a name="create-build-and-deploy-options"></a>Erstellen und Bereitstellen von Optionen
 
@@ -121,7 +125,7 @@ Mit dem Ressourcentyp **Logik-App (Standard)** können Sie die folgenden Workflo
 
   Erstellen Sie einen zustandsbehafteten Workflow, wenn Sie Daten von vorherigen Ereignissen beibehalten, überprüfen oder referenzieren müssen. Diese Workflows behalten bei und übertragen sämtliche Ein- und Ausgaben für jede Aktion und deren Zustände im externen Speicher, sodass die Ausführungsdetails und der Ausführungsverlauf nach Abschluss der jeweiligen Ausführung überprüft werden können. Zustandsbehaftete Workflows bieten hohe Resilienz, falls es zu Ausfällen kommen sollte. Nachdem Dienste und Systeme wiederhergestellt wurden, können Sie unterbrochene Ausführungen aus dem gespeicherten Zustand rekonstruieren und die Workflows bis zum Abschluss erneut ausführen. Zustandsbehaftete Workflows können wesentlich länger ausgeführt werden als zustandslose Workflows.
 
-  Standardmäßig laufen zustandsbehaftete Workflows sowohl in multimandantenfähigen als auch in einzelmandantenfähigen Azure Logic Apps asynchron. Alle HTTP-basierten Aktionen folgen dem Standardmuster[ für asynchrone Operationen](/azure/architecture/patterns/async-request-reply). Laut diesem Muster gibt der Empfänger sofort eine [202 ACCEPTED](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3)-Antwort zurück, wenn eine HTTP-Aktion einen Endpunkt, einen Dienst, das System oder die API aufruft oder eine Anforderung an ebendiese sendet. Dieser Code bestätigt, dass der Empfänger die Anforderung akzeptiert, aber die Verarbeitung noch nicht abgeschlossen hat. Die Antwort kann einen `location`Header enthalten, der den URI und eine Refresh-ID angibt, die die aufrufende Person verwenden kann, um den Status der asynchronen Anfrage abzufragen oder zu überprüfen, bis der Empfänger die Verarbeitung beendet und eine [„200 OK"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1)-Erfolgsantwort oder eine andere Nicht-202-Antwort zurückgibt. Der Aufrufer muss jedoch nicht darauf warten, dass die Verarbeitung der Anforderung abgeschlossen wird, und kann mit der Ausführung der nächsten Aktion fortfahren. Weitere Informationen finden Sie unter [Gegenüberstellung von synchronem und asynchronem Messaging](/azure/architecture/microservices/design/interservice-communication#synchronous-versus-asynchronous-messaging).
+  Standardmäßig laufen zustandsbehaftete Workflows sowohl in multimandantenfähigen als auch in einzelmandantenfähigen Azure Logic Apps asynchron. Alle HTTP-basierten Aktionen folgen dem Standardmuster[ für asynchrone Operationen](/azure/architecture/patterns/async-request-reply). Laut diesem Muster gibt der Empfänger sofort eine [202 ACCEPTED](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3)-Antwort zurück, wenn eine HTTP-Aktion einen Endpunkt, einen Dienst, das System oder die API aufruft oder eine Anforderung an ebendiese sendet. Dieser Code bestätigt, dass der Empfänger die Anforderung akzeptiert, aber die Verarbeitung noch nicht abgeschlossen hat. Die Antwort kann einen `location` Header enthalten, der den URI und eine Refresh-ID angibt, mit der Aufrufer den Status der asynchronen Anforderung abfragen oder überprüfen kann, bis der Empfänger die Verarbeitung beendet und eine ["200 OK"](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1) Erfolgsmeldung oder eine andere Nicht-202-Antwort zurückgibt. Der Aufrufer muss jedoch nicht darauf warten, dass die Verarbeitung der Anforderung abgeschlossen wird, und kann mit der Ausführung der nächsten Aktion fortfahren. Weitere Informationen finden Sie unter [Gegenüberstellung von synchronem und asynchronem Messaging](/azure/architecture/microservices/design/interservice-communication#synchronous-versus-asynchronous-messaging).
 
 * *Zustandslos*
 

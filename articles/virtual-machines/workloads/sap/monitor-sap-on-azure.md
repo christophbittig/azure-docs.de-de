@@ -6,14 +6,14 @@ ms.service: virtual-machines-sap
 ms.subservice: baremetal-sap
 ms.topic: article
 ms.custom: subject-monitoring
-ms.date: 08/24/2021
+ms.date: 10/13/2021
 ms.author: v-hborys
-ms.openlocfilehash: 779a70c4a0386420389937864be01295f985f5b8
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 4f90fc00dc895617796cc478835690c931a55f51
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123104456"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130004861"
 ---
 # <a name="monitor-sap-on-azure-preview"></a>Überwachen von SAP in Azure (Vorschau)
 
@@ -23,9 +23,9 @@ In diesem Artikel wird beschrieben, wie SAP in Azure mithilfe von Azure Monitor 
 
 ## <a name="overview"></a>Übersicht
 
-Azure Monitor für SAP-Lösungen ist ein natives Azure-Überwachungsprodukt für Benutzer, die ihre SAP-Landschaften in Azure betreiben. Das Produkt funktioniert sowohl mit [SAP auf virtuellen Azure-Computern](./hana-get-started.md) als auch mit [SAP in Azure (große Instanzen)](./hana-overview-architecture.md).
+Azure Monitor für SAP-Lösungen ist ein natives Azure-Überwachungsprodukt für Benutzer, die ihre SAP-Landschaften in Azure betreiben. Es funktioniert sowohl mit [SAP auf virtuellen Azure-Computern](./hana-get-started.md) als auch mit [SAP in Azure (große Instanzen)](./hana-overview-architecture.md).
 
-Mit Azure Monitor für SAP-Lösungen können Sie Telemetriedaten aus der Azure-Infrastruktur sowie aus Datenbanken an einem zentralen Ort sammeln und Telemetriedaten zur schnelleren Problembehandlung visuell korrelieren.
+Mit Azure Monitor für SAP-Lösungen können Sie Telemetriedaten aus der Azure-Infrastruktur sowie aus Datenbanken an einem zentralen Ort sammeln und die Daten zur schnelleren Problembehandlung visuell korrelieren.
 
 Sie können verschiedene Komponenten einer SAP-Landschaft wie beispielsweise Azure-VMs, Hochverfügbarkeitscluster, SAP HANA-Datenbanken oder SAP NetWeaver überwachen, indem sie den entsprechenden **Anbieter** für die jeweilige Komponente hinzufügen. Weitere Informationen finden Sie unter [Bereitstellen von Azure Monitor für SAP-Lösungen über das Azure-Portal](azure-monitor-sap-quickstart.md).
 
@@ -38,9 +38,7 @@ Unterstützte Datenbanken:
 - SAP HANA-Datenbank
 - Microsoft SQL Server
 
-Azure Monitor für SAP-Lösungen verwendet die [Azure Monitor](../../../azure-monitor/overview.md)-Funktionen von [Log Analytics](../../../azure-monitor/logs/log-analytics-overview.md) und [Arbeitsmappen](../../../azure-monitor/visualize/workbooks-overview.md).
-
-Sie können damit folgende Aufgaben durchführen:
+Azure Monitor für SAP-Lösungen verwendet die [Azure Monitor](../../../azure-monitor/overview.md)-Funktionen von [Log Analytics](../../../azure-monitor/logs/log-analytics-overview.md) und [Arbeitsmappen](../../../azure-monitor/visualize/workbooks-overview.md). Sie können damit folgende Aufgaben durchführen:
 
 - Erstellen [benutzerdefinierter Visualisierungen](../../../azure-monitor/visualize/workbooks-overview.md#getting-started) durch Bearbeiten der Standardarbeitsmappen, die von Azure Monitor für SAP-Lösungen bereitgestellt werden 
 - Schreiben [benutzerdefinierter Abfragen](../../../azure-monitor/logs/log-analytics-tutorial.md)
@@ -111,7 +109,7 @@ Die Hauptkomponenten der Architektur sind:
 - **Azure-Portal**: Ihr Ausgangspunkt. Sie können innerhalb des Azure-Portals zum Marketplace navigieren und Azure Monitor für SAP-Lösungen entdecken.
 - **Ressource für Azure Monitor für SAP-Lösungen**: Ein Anlaufpunkt für Sie, an dem Sie die Überwachungstelemetrie anzeigen können.
 - **Verwaltete Ressourcengruppe**: Wird automatisch im Rahmen der Ressourcenbereitstellung der Azure Monitor für SAP-Lösungen bereitgestellt. Die innerhalb der verwalteten Ressourcengruppe bereitgestellten Ressourcen unterstützen Sie bei der Erfassung von Telemetriedaten. Die wichtigsten bereitgestellten Ressourcen und ihr Zweck:
-   - **Azure-VM**: Wird auch als *Collector-VM* bezeichnet, eine Standard_B2ms-VM. Der Hauptzweck dieser VM besteht darin, die *Überwachungsnutzdaten* zu hosten. „Überwachungsnutzdaten“ bezieht sich auf die Logik zur Erfassung der Telemetriedaten von den Quellsystemen und zur Übertragung der Daten an das Überwachungsframework. Im obigen Diagramm enthält die Überwachungsnutzlast die Logik für die Verbindung mit der SAP HANA-Datenbank über den SQL-Port.
+   - **Azure-VM**: Wird auch als *Collector-VM* bezeichnet, eine Standard_B2ms-VM. Der Hauptzweck dieser VM besteht darin, die *Überwachungsnutzdaten* zu hosten. „Überwachungsnutzdaten“ bezieht sich auf die Logik zur Erfassung der Telemetriedaten von den Quellsystemen und zur Übertragung der Daten an das Überwachungsframework. Im vorherigen Diagramm enthält die Überwachungsnutzlast die Logik für die Verbindung mit der SAP HANA-Datenbank über den SQL-Port.
    - **[Azure Key Vault](../../../key-vault/general/basic-concepts.md)** : Diese Ressource wird bereitgestellt, um die Anmeldeinformationen der SAP HANA-Datenbank sicher zu verwahren und Informationen zu [Anbietern](./azure-monitor-providers.md) zu speichern.
    - **Log Analytics-Arbeitsbereich**: Das Ziel, in dem die Telemetriedaten gespeichert werden
       - Die Visualisierung baut auf der Telemetrie in Log Analytics auf und verwendet [Azure-Arbeitsmappen](../../../azure-monitor/visualize/workbooks-overview.md). Sie können die Visualisierung anpassen. Außerdem können Sie Ihre Arbeitsmappen oder eine spezifische Visualisierung innerhalb von Arbeitsmappen für die automatische Aktualisierung an das Azure-Dashboard anheften. Die maximale Aktualisierungshäufigkeit beträgt alle 30 Minuten.

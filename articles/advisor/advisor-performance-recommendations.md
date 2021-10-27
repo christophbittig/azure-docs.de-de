@@ -3,12 +3,12 @@ title: Verbessern der Leistung von Azure-Anwendungen mit Advisor
 description: Anhand der Empfehlungen zur Leistung in Azure Advisor können Sie die Geschwindigkeit und Reaktionszeit Ihrer unternehmenskritischen Anwendungen verbessern.
 ms.topic: article
 ms.date: 07/29/2020
-ms.openlocfilehash: 7229f4a786fc0afc43793ffe730470427ca2b107
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 110501087cc42662412e6446b9859f4078252455
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129234924"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130000686"
 ---
 # <a name="improve-the-performance-of-azure-applications-by-using-azure-advisor"></a>Verbessern der Leistung von Azure-Anwendungen mit Azure Advisor
 
@@ -180,6 +180,11 @@ Weitere Informationen zum [Immersive Reader SDK](../applied-ai-services/immersiv
 Advisor erkennt, dass Sie über einen Hostpool verfügen, für den als Lastenausgleichsalgorithmus „Tiefensuche“ festgelegt ist und dessen maximales Sitzungslimit größer oder gleich 999999 ist. Beim tiefenorientierten Lastenausgleich wird die Option für die maximale Anzahl von Sitzungen verwendet, um die maximale Anzahl von Benutzern zu bestimmen, für die gleichzeitige Sitzungen auf einem einzelnen Sitzungshost vorhanden sein können. Ist die maximale Anzahl von Sitzungen zu hoch, werden alle Benutzersitzungen an denselben Sitzungshost weitergeleitet. Dies beeinträchtigt die Leistung und Zuverlässigkeit. Wenn Sie also einen Hostpool mit tiefenorientiertem Lastenausgleich konfigurieren, müssen Sie auch eine geeignete maximale Anzahl von Sitzungen festlegen. Orientieren Sie sich hierbei an der Konfiguration Ihrer Bereitstellung und an der Kapazität Ihrer VMs. 
 
 Weitere Informationen zum Lastenausgleich in Windows Virtual Desktop finden Sie unter [Konfigurieren der Lastenausgleichsmethode für Windows Virtual Desktop](../virtual-desktop/troubleshoot-set-up-overview.md).
+
+## <a name="upgrade-to-the-latest-version-of-the-azure-communication-services-sdks"></a>Upgrade auf die aktuelle Version der Azure Communication Services-SDKs
+
+Advisor hat Ressourcen unter diesem Abonnement mit veralteten Versionen bestimmter Azure Communication Services-SDKs identifiziert. Die Verwendung der neuesten Version des Azure Communication Services-SDK bietet Ihnen aktualisierte Sicherheit, Leistung und einen erweiterten Satz von Features, mit denen Sie Ihre Kommunikationsmöglichkeiten anpassen und verbessern können.
+Erfahren Sie mehr über [Azure Communication Services](../communication-services/overview.md) und die [Integration in Azure Advisor](../communication-services/concepts/advisor-overview.md).
 
 ## <a name="how-to-access-performance-recommendations-in-advisor"></a>Zugreifen auf Advisor-Empfehlungen zur Leistung
 

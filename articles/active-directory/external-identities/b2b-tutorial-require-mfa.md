@@ -12,12 +12,12 @@ manager: CelesteDG
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8df6d39401165c281af2c8b1a1896f60311c1b52
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: b9fa2dd3ab101a340b01f3adcbdb33f8ea36595e
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112579115"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130163626"
 ---
 # <a name="tutorial-enforce-multi-factor-authentication-for-b2b-guest-users"></a>Tutorial: Erzwingen der mehrstufigen Authentifizierung für B2B-Gastbenutzer
 
@@ -80,7 +80,7 @@ Für die Durchführung des Szenarios im Rahmen dieses Tutorials benötigen Sie F
 4. Wählen Sie auf der Seite **Bedingter Zugriff** in der Symbolleiste oben **Neue Richtlinie** aus.
 5. Geben Sie auf der Seite **Neu** im Textfeld **Name** **Mehrstufige Authentifizierung für Zugriff auf B2B-Portal erforderlich** ein.
 6. Wählen Sie im Abschnitt **Zuweisungen** **Benutzer und Gruppen** aus.
-7. Wählen Sie auf der Seite **Benutzer und Gruppen** **Benutzer und Gruppen auswählen** und dann **Sämtliche Gastbenutzer (Vorschau)** aus.
+7. Wählen Sie auf der Seite **Benutzer und Gruppen** die Option **Benutzer und Gruppen auswählen** und dann **Alle Gast- und externen Benutzer** aus.
 
     ![Screenshot: Auswahl aller Gastbenutzer](media/tutorial-mfa/tutorial-mfa-policy-6.png)
 9. Wählen Sie **Fertig** aus.

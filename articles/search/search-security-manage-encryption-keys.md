@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/02/2021
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: 5513e4f26f6b2fed17f406f43110eb358179ce79
-ms.sourcegitcommit: 285d5c48a03fcda7c27828236edb079f39aaaebf
+ms.openlocfilehash: 9dc1244c6747ea5616bee59ccf9b972a89d0c4a0
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113232824"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130042180"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>Konfigurieren von kundenseitig verwalteten Schlüsseln für die Datenverschlüsselung in Azure Cognitive Search
 

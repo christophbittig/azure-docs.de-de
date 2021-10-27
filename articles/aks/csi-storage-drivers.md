@@ -3,14 +3,14 @@ title: Aktivieren von CSI-Treibern (Container Storage Interface) in Azure Kubern
 description: Hier erfahren Sie, wie Sie die CSI-Treiber (Container Storage Interface) für Azure-Datenträger und Azure Files in einem AKS-Cluster (Azure Kubernetes Service) aktivieren.
 services: container-service
 ms.topic: article
-ms.date: 08/31/2021
+ms.date: 10/15/2021
 author: palma21
-ms.openlocfilehash: 0f941b612c76811ba750a06036faf48c7359bedd
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 26de8065b5f96b9fc914a824018c7c7a2028b7b9
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129429849"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130065443"
 ---
 # <a name="enable-container-storage-interface-csi-drivers-for-azure-disks-and-azure-files-on-azure-kubernetes-service-aks"></a>Aktivieren von CSI-Treibern (Container Storage Interface) für Azure-Datenträger und Azure Files in Azure Kubernetes Service (AKS)
 
@@ -33,7 +33,7 @@ Die Unterstützung des CSI-Speichertreibers in AKS ermöglicht die native Verwen
 - CSI-Treiber werden ab der Kubernetes-Nebenversion 1.17 unterstützt.
 - Die Standardspeicherklasse wird die Speicherklasse `managed-csi`.
 
-## <a name="create-a-new-cluster-that-can-use-csi-storage-drivers"></a>Erstellen eines neuen Clusters, der CSI-Speichertreiber verwenden kann
+## <a name="install-csi-storage-drivers-on-a-new-cluster-with-version--121"></a>Installieren von CSI-Speichertreibern in einem neuen Cluster mit einer früheren Version als 1.21
 
 Erstellen Sie mithilfe der folgenden CLI-Befehle einen neuen Cluster, der CSI-Speichertreiber für Azure-Datenträger und Azure Files verwenden kann. Verwenden Sie das Flag `--aks-custom-headers`, um das Feature `EnableAzureDiskFileCSIDriver` festzulegen.
 
@@ -51,7 +51,7 @@ Erstellen Sie den AKS-Cluster mit CSI-Speichertreiberunterstützung:
 az aks create -g MyResourceGroup -n MyManagedCluster --network-plugin azure  --aks-custom-headers EnableAzureDiskFileCSIDriver=true
 ```
 
-Wenn Sie Cluster mit strukturinternen Speichertreibern anstelle von CSI-Speichertreibern erstellen möchten, lassen Sie den benutzerdefinierten Parameter `--aks-custom-headers` weg.
+Wenn Sie Cluster mit strukturinternen Speichertreibern anstelle von CSI-Speichertreibern erstellen möchten, lassen Sie den benutzerdefinierten Parameter `--aks-custom-headers` weg. Ab der Kubernetes-Version 1.21 werden von Kubernetes standardmäßig nur noch CSI-Treiber verwendet.
 
 
 Führen Sie Folgendes aus, um zu überprüfen, wie viele auf Azure-Datenträgern basierende Volumes Sie anfügen können:
@@ -65,6 +65,10 @@ aks-nodepool1-25371499-vmss000002
 $ echo $(kubectl get CSINode <NODE NAME> -o jsonpath="{.spec.drivers[1].allocatable.count}")
 8
 ```
+
+## <a name="install-csi-storage-drivers-on-an-existing-cluster-with-version--121"></a>Installieren von CSI-Speichertreibern in einem vorhandenen Cluster mit einer früheren Version als 1.21
+ - [Einrichten des Azure-CSI-Treibers für Datenträger im AKS-Cluster](https://github.com/kubernetes-sigs/azuredisk-csi-driver/blob/master/docs/install-driver-on-aks.md)
+ - [Einrichten des Azure Files-CSI-Treibers im AKS-Cluster](https://github.com/kubernetes-sigs/azurefile-csi-driver/blob/master/docs/install-driver-on-aks.md)
 
 ## <a name="migrating-custom-in-tree-storage-classes-to-csi"></a>Migrieren von benutzerdefinierten, in der Struktur gespeicherten Speicherklassen zu CSI
 Wenn Sie benutzerdefinierte Speicherklassen basierend auf den In-Tree-Speichertreibern erstellt haben, müssen diese migriert werden, wenn Sie Ihr Cluster auf 1.21.x upgegradet haben.

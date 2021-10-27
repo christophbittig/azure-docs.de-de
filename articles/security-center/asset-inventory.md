@@ -8,27 +8,23 @@ ms.author: memildin
 ms.date: 10/07/2021
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 4175476bc655aa0be1a5377f3fada83cb30ac37e
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 29e5ec35d97210b1dfe7494ce96a5e3ecae75bdf
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129715907"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130002110"
 ---
-# <a name="explore-and-manage-your-resources-with-asset-inventory"></a>Untersuchen und Verwalten Ihrer Ressourcen mit dem Ressourcenbestand und Verwaltungstools
+# <a name="use-asset-inventory-to-manage-your-resources-security-posture"></a>Verwenden Sie die Bestandsaufnahme zur Verwaltung der Sicherheitslage Ihrer Ressourcen
 
-Auf der Seite „Ressourcenbestand“ von Azure Security Center können Sie auf einer Seite den gesamten Sicherheitsstatus der Ressourcen anzeigen, die Sie mit Azure Security Center verbunden haben. 
+Azure Security Center analysiert in regelmäßigen Abständen den Sicherheitsstatus der Azure-Ressourcen, um mögliche Sicherheitsrisiken zu erkennen. Anschließend erhalten Sie Empfehlungen dazu, wie Sie diese Sicherheitsrisiken beheben können. **Wenn eine Ressource ausstehende Empfehlungen hat, werden diese im Inventar angezeigt.**
 
-Azure Security Center analysiert in regelmäßigen Abständen den Sicherheitsstatus der Azure-Ressourcen, um mögliche Sicherheitsrisiken zu erkennen. Anschließend erhalten Sie Empfehlungen dazu, wie Sie diese Sicherheitsrisiken beheben können.
-
-Wenn eine Ressource ausstehende Empfehlungen hat, werden diese im Inventar angezeigt.
-
-Verwenden Sie diese Ansicht und ihre Filter zur Beantwortung folgender Fragen:
+Verwenden Sie die Inventaransicht und ihre Filter, um Fragen wie diese zu beantworten:
 
 - Für welche meiner Abonnements mit aktiviertem Azure Defender stehen Empfehlungen aus?
 - Auf welchen meiner Computer mit dem Tag „Produktion“ fehlt der Log Analytics-Agent?
 - Für wie viele meiner Computer, die mit einem bestimmten Tag gekennzeichnet sind, stehen Empfehlungen aus?
-- Wie viele Ressourcen in einer bestimmten Ressourcengruppe weisen Sicherheitsergebnisse von einem Dienst zur Sicherheitsrisikobewertung auf?
+- Welche Rechner in einer bestimmten Ressourcengruppe haben eine bekannte Sicherheitslücke (unter Verwendung einer CVE-Nummer)?
 
 Die Ressourcenverwaltungsfunktionen dieses Tools sind umfassend und wachsen weiter. 
 

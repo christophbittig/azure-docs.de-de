@@ -16,12 +16,12 @@ ms.date: 09/04/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7db9a12a65cf127cb4c65e24128181ab6c0cb485
-ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
+ms.openlocfilehash: c3aadcb1ccb4ff3a88c5fae7286f2655e41e3195
+ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113135030"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130138720"
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Azure Active Directory-Passthrough-Authentifizierung: aktuelle Einschränkungen
 
@@ -43,6 +43,7 @@ Folgende Szenarios werden _nicht_ unterstützt:
 - Erkennen von Benutzern mit [kompromittierten Anmeldeinformationen](../identity-protection/overview-identity-protection.md).
 - Für Azure AD Domain Services muss Kennworthashsynchronisierung auf dem Mandanten aktiviert sein. Aus diesem Grund funktionieren Mandanten, die Pass-Through-Authentifizierung verwenden, _nur_ in Szenarien nicht, die Azure AD Domain Services benötigen.
 - Pass-Through Authentifizierung ist nicht in [Azure AD Connect Health](./whatis-azure-ad-connect.md) integriert.
+- Die Anmeldung bei in Azure AD eingebundenen Geräten (AADJ) mit einem temporären oder abgelaufenen Kennwort wird für Benutzer der Passthrough-Authentifizierung nicht unterstützt. Der Fehler „Die Anmeldemethode, die Sie verwenden möchten, ist nicht zulässig“ wird angezeigt.  Diese Benutzer müssen sich bei einem Browser anmelden, um ihr temporäres Kennwort zu aktualisieren.
 
 > [!IMPORTANT]
 > Zur _ausschließlichen_ Umgehung nicht unterstützter Szenarien (Azure AD Connect Health-Integration ausgenommen) können Sie im Azure AD Connect-Assistenten auf der Seite [Optionale Features](how-to-connect-install-custom.md#optional-features) die Kennworthashsynchronisierung aktivieren.

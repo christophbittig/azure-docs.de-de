@@ -9,12 +9,12 @@ ms.custom: synapse
 ms.topic: conceptual
 ms.date: 09/09/2021
 ms.author: makromer
-ms.openlocfilehash: dc9aec86e01655087a64c3ac0a494d448889f857
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: f24bb345442b2320344cf1c9e89d383571447ded
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124733080"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130044760"
 ---
 # <a name="copy-and-transform-data-from-and-to-a-rest-endpoint-by-using-azure-data-factory"></a>Kopieren und Transformieren von Daten von und zu einem REST-Endpunkt mithilfe von Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -23,8 +23,8 @@ In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data F
 
 Dies sind die Unterschiede zwischen diesem REST-Connector, dem [HTTP-Connector](connector-http.md) und dem [Webtabellenconnector](connector-web-table.md):
 
-- **REST-Connector:** Dieser unterstützt insbesondere das Kopieren von Daten aus RESTful-APIs. 
-- **HTTP-Connector:** Dieser dient allgemein dazu, Daten von jedem HTTP-Endpunkt abzurufen, z. B. um Dateien herunterzuladen. Vor diesem REST-Connector mussten Sie möglicherweise mit dem HTTP-Connector Daten aus RESTful-APIs kopieren. Dieser wird unterstützt, verfügt jedoch über weniger Funktionen als der REST-Connector.
+- **REST-Connector**: Dieser unterstützt insbesondere das Kopieren von Daten aus RESTful-APIs.
+- **HTTP-Connector:** Dieser dient allgemein dazu, Daten von jedem HTTP-Endpunkt abzurufen, z. B. um Dateien herunterzuladen. Solange der REST-Connector noch nicht verfügbar ist, verwenden Sie möglicherweise den HTTP-Connector, um Daten aus RESTful-APIs zu kopieren. Dieser wird unterstützt, verfügt jedoch über weniger Funktionen als der REST-Connector.
 - **Webtabellenconnector:** Dieser extrahiert Tabelleninhalte aus einer HTML-Webseite.
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
@@ -79,7 +79,7 @@ In den folgenden Abschnitten finden Sie Details zu Eigenschaften, mit denen Sie 
 
 Folgende Eigenschaften werden für den mit REST verknüpften Dienst unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft muss auf **RestService** festgelegt werden. | Ja |
 | url | Die Basis-URL des REST-Diensts. | Ja |
@@ -92,7 +92,7 @@ Folgende Eigenschaften werden für den mit REST verknüpften Dienst unterstützt
 
 Legen Sie die **authenticationType**-Eigenschaft auf **Basic** fest. Geben Sie zusätzlich zu den im vorherigen Abschnitt beschriebenen generischen Eigenschaften die folgenden Eigenschaften an:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | userName | Der Benutzername, der für den Zugriff auf den REST-Endpunkt verwendet werden soll. | Ja |
 | password | Das Kennwort für den Benutzer (der Wert **userName**). Markieren Sie dieses Feld als Typ **SecureString**, um es sicher in Data Factory zu speichern. Sie können auch [auf ein Geheimnis verweisen, das in Azure Key Vault](store-credentials-in-key-vault.md) gespeichert ist. | Ja |
@@ -125,7 +125,7 @@ Legen Sie die **authenticationType**-Eigenschaft auf **Basic** fest. Geben Sie z
 
 Legen Sie die **authenticationType**-Eigenschaft auf **AadServicePrincipal** fest. Geben Sie zusätzlich zu den im vorherigen Abschnitt beschriebenen generischen Eigenschaften die folgenden Eigenschaften an:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | servicePrincipalId | Geben Sie die Client-ID der Azure Active Directory-Anwendung an. | Ja |
 | servicePrincipalKey | Geben Sie den Schlüssel der Azure Active Directory-Anwendung an. Markieren Sie dieses Feld als **SecureString**, um es sicher in Data Factory zu speichern, oder [verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis](store-credentials-in-key-vault.md). | Ja |
@@ -163,7 +163,7 @@ Legen Sie die **authenticationType**-Eigenschaft auf **AadServicePrincipal** fes
 
 Legen Sie die **authenticationType**-Eigenschaft auf **ManagedServiceIdentity** fest. Geben Sie zusätzlich zu den im vorherigen Abschnitt beschriebenen generischen Eigenschaften die folgenden Eigenschaften an:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | aadResourceId | Geben Sie die AAD-Ressource an, für die Sie eine Autorisierung anfordern, z. B. `https://management.core.windows.net`.| Ja |
 
@@ -190,7 +190,7 @@ Legen Sie die **authenticationType**-Eigenschaft auf **ManagedServiceIdentity** 
 ### <a name="use-user-assigned-managed-identity-authentication"></a>Verwenden der benutzerseitig zugewiesenen Authentifizierung mit einer verwalteten Identität
 Legen Sie die **authenticationType**-Eigenschaft auf **ManagedServiceIdentity** fest. Geben Sie zusätzlich zu den im vorherigen Abschnitt beschriebenen generischen Eigenschaften die folgenden Eigenschaften an:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | aadResourceId | Geben Sie die AAD-Ressource an, für die Sie eine Autorisierung anfordern, z. B. `https://management.core.windows.net`.| Ja |
 | Anmeldeinformationen | Geben Sie die benutzerseitig zugewiesene verwaltete Identität als Anmeldeinformationsobjekt an. | Ja |
@@ -257,7 +257,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Zum Kopieren von Daten aus REST werden die folgenden Eigenschaften unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft des Datasets muss auf **RestResource** festgelegt sein. | Ja |
 | relativeUrl | Eine relative URL zu der Ressource, die die Daten enthält. Wenn die Eigenschaft nicht angegeben ist, wird nur die URL verwendet, die in der Definition des verknüpften Diensts angegeben ist. Der HTTP-Connector kopiert Daten aus der kombinierten URL: `[URL specified in linked service]/[relative URL specified in dataset]`. | Nein |
@@ -293,7 +293,7 @@ Eine vollständige Liste mit den verfügbaren Abschnitten und Eigenschaften zum 
 
 Folgende Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft der Quelle der Kopieraktivität muss auf **RestSource** festgelegt werden. | Ja |
 | requestMethod | Die HTTP-Methode. Zulässige Werte sind **GET** (Standardwert) und **POST**. | Nein |
@@ -382,7 +382,7 @@ Folgende Eigenschaften werden im Abschnitt **source** der Kopieraktivität unter
 
 Folgende Eigenschaften werden im Abschnitt **sink** der Kopieraktivität unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | Typ | Die **type**-Eigenschaft der Senke der Kopieraktivität muss auf **RestSink** festgelegt werden. | Ja |
 | requestMethod | Die HTTP-Methode. Zulässige Werte sind **POST** (Standardwert), **PUT** und **PATCH**. | Nein |
@@ -444,7 +444,7 @@ REST wird in Datenflüssen sowohl für Integrationsdatasets als auch für Inline
 
 ### <a name="source-transformation"></a>Quellentransformation
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | requestMethod | Die HTTP-Methode. Zulässige Werte sind **GET** und **POST**. | Ja |
 | relativeUrl | Eine relative URL zu der Ressource, die die Daten enthält. Wenn die Eigenschaft nicht angegeben ist, wird nur die URL verwendet, die in der Definition des verknüpften Diensts angegeben ist. Der HTTP-Connector kopiert Daten aus der kombinierten URL: `[URL specified in linked service]/[relative URL specified in dataset]`. | Nein |
@@ -455,7 +455,7 @@ REST wird in Datenflüssen sowohl für Integrationsdatasets als auch für Inline
 
 ### <a name="sink-transformation"></a>Senkentransformation
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | additionalHeaders | Zusätzliche HTTP-Anforderungsheader | Nein |
 | httpRequestTimeout | Das Timeout (der Wert **TimeSpan**) für die HTTP-Anforderung, um eine Antwort zu empfangen. Bei diesem Wert handelt es sich um das Timeout für den Empfang einer Antwort, nicht um das Timeout für das Schreiben der Daten. Der Standardwert ist **00:01:40**.  | Nein |
@@ -604,7 +604,7 @@ Die Vorlage definiert zwei Parameter:
 
 5. Wählen Sie die Aktivität **Web** aus. Geben Sie in **Einstellungen** die entsprechenden Werte für **URL**, **Methode**, **Header** und **Body** an, um das OAuth-Bearertoken aus der Anmelde-API des Diensts abzurufen, aus dem Sie Daten kopieren möchten. Der Platzhalter in der Vorlage zeigt ein Beispiel für Azure Active Directory (AAD) OAuth. Beachten Sie, dass die AAD-Authentifizierung vom REST-Connector systemintern unterstützt wird. Dies hier ist nur ein Beispiel für den OAuth-Fluss. 
 
-    | Eigenschaft | Beschreibung |
+    | Eigenschaft | BESCHREIBUNG |
     |:--- |:--- |
     | URL |Geben Sie die URL an, aus der das OAuth-Bearertoken abgerufen werden soll. Im Beispiel hier ist dies https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token. |
     | Methode | Die HTTP-Methode. Zulässige Werte sind **Post** und **Get**. | 

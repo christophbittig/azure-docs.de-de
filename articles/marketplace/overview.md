@@ -1,6 +1,6 @@
 ---
 title: Was ist der kommerzielle Marketplace von Microsoft?
-description: Eine Übersicht über die Vorteile und Optionen für Microsoft-Partner, die Lösungen auf dem kommerziellen Marketplace von Microsoft auflisten.
+description: Hier finden Sie eine Übersicht über die Vorteile und Optionen für Microsoft-Partner, die Lösungen im kommerziellen Marketplace auflisten.
 author: mingshen-ms
 ms.author: mingshen
 ms.service: marketplace
@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: overview
 ms.custom: contperf-fy21q4
 ms.date: 10/15/2020
-ms.openlocfilehash: 443dcf5bf34622fd0767ac75ece83e3ea6dc3ad0
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 6a3d9dbb81bffc628e574d22aa56526a9abeeaa1
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112075563"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130070960"
 ---
 # <a name="what-is-the-microsoft-commercial-marketplace"></a>Was ist der kommerzielle Marketplace von Microsoft?
 
@@ -43,8 +43,8 @@ Weitere Informationen zu diesen Vorteilen finden Sie unter [Ihre Vorteile des ko
 
 Der kommerzielle Microsoft-Marketplace, wie in diesem Artikel beschrieben, verfügt über zwei Haupt-Onlineshops: 
 
-- [Microsoft AppSource](https://appsource.microsoft.com/) enthält Geschäftslösungen und Azure Marketplace.
-- [Azure Marketplace](https://azuremarketplace.microsoft.com/) wurde für IT-Lösungen entwickelt.
+- [Microsoft AppSource](https://appsource.microsoft.com/) für Geschäftslösungen
+- [Azure Marketplace](https://azuremarketplace.microsoft.com/) für IT-Lösungen
 
 > [!NOTE]
 > Weitere kommerzielle Marketplace-Software und -Dienste finden sich auch in Microsoft-Produkten wie Microsoft 365, Dynamics 365, Microsoft Power Platform und Azure. Unsere Onlineshops und produktinternen Umgebungen ziehen jeden Monat Millionen potenzieller Kunden an. Jeder Onlineshop bietet verschiedene Szenarien, um sicherzustellen, dass Ihre Lösung oder Ihr Dienst den richtigen Kunden zur Verfügung steht.
@@ -61,11 +61,11 @@ Nachfolgend sehen Sie ein Beispiel für eine Angebotsseite in AppSource:
 
 Kunden können auf Ihre AppSource-Angebote auch über Microsoft 365, Dynamics 365, Power Platform und Azure zugreifen. Im folgenden Beispiel ist dargestellt, wie Sie in Power BI über das Menü **Datei** auf AppSource-Add-Ins zugreifen.
 
-:::image type="content" source="media/overview/power-bi.png" alt-text="Zugriff auf Power BI-Visuals in AppSource über das Power BI-Menü „Datei“"::: 
+:::image type="content" source="media/overview/power-bi.png" alt-text="Screenshot: Zugriff auf Power BI-Visuals in AppSource über das Power BI-Menü „Datei“":::
 
 Mit dieser Option wird ein Fenster geöffnet, in dem der Kunde anhand des Namens oder der Kategorie nach Power BI-Add-Ins suchen kann. 
 
-:::image type="content" source="media/overview/power-bi-apps.png" alt-text="Liste mit AppSource-Add-Ins in Power BI"::: 
+:::image type="content" source="media/overview/power-bi-apps.png" alt-text="Screenshot: Liste mit AppSource-Add-Ins in Power BI":::
 
 ### <a name="azure-marketplace"></a>Azure Marketplace
 
@@ -73,17 +73,17 @@ Mit dieser Option wird ein Fenster geöffnet, in dem der Kunde anhand des Namens
 
 Nachfolgend sehen Sie ein Beispiel für eine Angebotsseite in Azure Marketplace:
 
-:::image type="content" source="media/overview/example-marketplace.png" alt-text="Veranschaulicht eine Angebotsseite in Azure Marketplace."::: 
+:::image type="content" source="media/overview/example-marketplace.png" alt-text="Veranschaulicht eine Angebotsseite in Azure Marketplace.":::
 
 #### <a name="azure-marketplace-in-the-azure-portal"></a>Azure Marketplace im Azure-Portal
 
 Azure-Kunden können Azure Marketplace-Lösungen über die Option **Ressource erstellen** im [Azure-Portal](https://portal.azure.com/) ermitteln und bereitstellen.
 
-:::image type="content" source="media/overview/create-resource.png" alt-text="Option „Ressource erstellen“ im Azure-Portal"::: 
+:::image type="content" source="media/overview/create-resource.png" alt-text="Screenshot: Option „Ressource erstellen“ im Azure-Portal":::
 
 Mit dieser Option wird Azure Marketplace im Azure-Portal geöffnet, wo Benutzer anhand des Namens oder der Kategorie nach Lösungen suchen können.
 
-:::image type="content" source="media/overview/search-portal.png" alt-text="Azure Marketplace-Suchoptionen im Azure-Portal"::: 
+:::image type="content" source="media/overview/search-portal.png" alt-text="Screenshot: Azure Marketplace-Suchoptionen im Azure-Portal":::
 
 ### <a name="which-store-should-i-choose"></a>Welchen Store sollte ich auswählen?
 Wenn Sie ein kommerzielles Marketplace-Angebot im Partner Center erstellen, kann es je nach Angebotsart, Kategorien und anderen von Ihnen ausgewählten Optionen in einem der Stores aufgeführt werden. In den seltenen Fällen, in denen das Angebot für die Benutzer beider Onlineshops relevant ist, kann es in beiden angezeigt werden. Weitere Informationen finden Sie unter [Auflistungs- und Preisoptionen nach Onlineshop](determine-your-listing-type.md#listing-and-pricing-options-by-online-store).

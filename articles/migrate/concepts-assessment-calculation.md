@@ -6,12 +6,12 @@ ms.author: rajosh
 ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 07/28/2021
-ms.openlocfilehash: 0a5591ddad8410c2cea7018fa2f4d4f13a3afa86
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: f3fc574e8e381f8e5c911a340ae958ee0939db8f
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124735942"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130073846"
 ---
 # <a name="assessment-overview-migrate-to-azure-vms"></a>Bewertungsübersicht (Migration zu Azure-VMs)
 
@@ -208,8 +208,13 @@ Nachdem ein Server als bereit für Azure markiert wurde, werden bei der Bewertun
 Bei Verwendung der leistungsbasierten Größenanpassung in einer Azure VM-Bewertung werden Größenempfehlungen wie folgt ermittelt:
 
 - Bei der Bewertung wird der Leistungsverlauf des Servers berücksichtigt, um die VM-Größe und den Datenträgertyp in Azure zu ermitteln.
-- Wenn Server mithilfe einer CSV-Datei importiert wurden, werden die von Ihnen angegebenen Werte verwendet. Diese Methode ist besonders nützlich, wenn Sie für den lokalen Server eine übermäßige Zuordnung vorgenommen haben, die Auslastung jedoch gering ist, und Sie die Größe der Azure-VM anpassen möchten, um Kosten zu sparen.
+
+> [!NOTE] 
+> Wenn Sie Server mithilfe einer CSV-Datei importieren, werden die von Ihnen angegebenen Leistungswerte (CPU-Auslastung, Arbeitsspeicherauslastung, Datenträger-IOPS und Durchsatz) verwendet, wenn Sie die leistungsbasierte Größenanpassung auswählen. Sie können keine Leistungsverlaufs- und Perzentilinformationen bereitstellen.
+
+- Diese Methode ist besonders nützlich, wenn Sie für den lokalen Server eine übermäßige Zuordnung vorgenommen haben, die Auslastung jedoch gering ist, und Sie die Größe der Azure-VM anpassen möchten, um Kosten zu sparen.
 - Wenn Sie die Leistungsdaten nicht verwenden möchten, setzen Sie die Größenkriterien auf die lokale Größe zurück (siehe vorheriger Abschnitt).
+
 
 #### <a name="calculate-storage-sizing"></a>Berechnen der Speichergröße
 
@@ -232,7 +237,7 @@ Für Ultra-Datenträger gibt es einen Bereich von IOPS und Durchsatz, der für e
     - Es wurde ein Datenträger (Datenträger 2) gefunden, der die Gesamtanforderungen an IOPS erfüllen kann.
         - Bereitzustellende IOPS = (Quelldatenträgerdurchsatz) *1024/256
     - Es wurde ein Datenträger (Datenträger 3) gefunden, der die Gesamtanforderungen an den Durchsatz erfüllen kann.
-1. Von den drei Datenträgern wird einer mit der maximalen Datenträgergröße gefunden und auf das nächste verfügbare [Angebot für Ultra-Datenträger](../virtual-machines/disks-types.md#disk-size) aufgerundet. Dies ist die bereitgestellte Ultra-Datenträgergröße.
+1. Von den drei Datenträgern wird einer mit der maximalen Datenträgergröße gefunden und auf das nächste verfügbare [Angebot für Ultra-Datenträger](../virtual-machines/disks-types.md#ultra-disks) aufgerundet. Dies ist die bereitgestellte Ultra-Datenträgergröße.
 1. Bereitgestellte IOPS werden mit der folgenden Logik berechnet:
     - Wenn der gefundene Quelldurchsatz im zulässigen Bereich für die Ultra-Datenträgergröße liegt, entspricht der bereitgestellte IOPS-Wert dem IOPS-Wert des Quelldatenträgers.
     - Der bereitgestellte IOPS-Wert wird andernfalls mithilfe der bereitzustellenden IOPS berechnet = (Quelldatenträgerdurchsatz) *1024/256

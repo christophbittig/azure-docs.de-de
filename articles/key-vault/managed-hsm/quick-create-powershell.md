@@ -10,12 +10,12 @@ ms.subservice: keys
 tags:
 - azure-resource-manager
 ms.custom: devx-track-azurepowershell - mode-api
-ms.openlocfilehash: 0658d715c7d7b2e7a34cd8fbd9ec3f76d9a67d10
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a9e4db26d2d40818c5b98c9aa5a8e46c272992b2
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128550440"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130131085"
 ---
 # <a name="quickstart-set-and-retrieve-a-managed-key-from-azure-key-vault-using-powershell"></a>Schnellstart: Festlegen eines Geheimnisses und Abrufen eines verwalteten Schlüssels aus Azure Key Vault mithilfe von PowerShell
 
@@ -33,10 +33,10 @@ Login-AzAccount
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Erstellen Sie mithilfe des Azure PowerShell-Cmdlets [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) eine Ressourcengruppe namens *myResourceGroup* am Standort *westus*. 
+Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Erstellen Sie mit dem Azure PowerShell-Cmdlet [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *centralus*. 
 
 ```azurepowershell-interactive
-New-AzResourceGroup -Name "myResourceGroup" -Location "WestUS"
+New-AzResourceGroup -Name "myResourceGroup" -Location "centralus"
 
 ## Get your principal ID
 
@@ -58,11 +58,11 @@ Erstellen Sie mithilfe des Azure PowerShell-Cmdlets [New-AzKeyVaultManagedHsm](
   > Jedes verwaltete HSM muss einen eindeutigen Namen haben. Ersetzen Sie in den folgenden Beispielen \<your-unique-managed-hsm-name\> durch den Namen Ihres verwalteten HSM.
 
 - Ressourcengruppennamen: **myResourceGroup**
-- Standort: **EastUS**
+- Standort: **USA, Mitte**
 - Ihre Prinzipal-ID: Übergeben Sie die Azure Active Directory-Prinzipal-ID, die Sie im letzten Abschnitt abgerufen haben, an den Parameter „Administrator“. 
 
 ```azurepowershell-interactive
-New-AzKeyVaultManagedHsm -Name "<your-unique-managed-hsm-name>" -ResourceGroupName "myResourceGroup" -Location "West US" -Administrator "<your-principal-ID>"
+New-AzKeyVaultManagedHsm -Name "<your-unique-managed-hsm-name>" -ResourceGroupName "myResourceGroup" -Location "centralus" -Administrator "<your-principal-ID>"
 ```
 
 Die Ausgabe dieses Cmdlets zeigt Eigenschaften der neu erstellten verwalteten HSM. Beachten Sie die beiden folgenden Eigenschaften:
