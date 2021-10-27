@@ -1,22 +1,22 @@
 ---
-title: Kopieren von Daten aus Amazon Simple Storage Service (S3)
+title: Kopieren und Transformieren von Daten in Amazon Simple Storage Service (S3)
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Erfahren Sie, wie Daten aus Amazon Simple Storage Service (S3) mithilfe von Azure Data Factory- oder Synapse Analytics-Pipelines in unterstützte Senkendatenspeicher kopiert werden.
+description: Hier erfahren Sie, wie Sie Daten aus Amazon Simple Storage Service (S3) kopieren und Daten über Azure Data Factory- oder Azure Synapse Analytics-Pipelines in Amazon Simple Storage Service (S3) transformieren.
 ms.author: jianleishen
 author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 09/09/2021
-ms.openlocfilehash: baaf601ce6ab21a524cbabc7188de24231002ffd
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 10/15/2021
+ms.openlocfilehash: ffc3a58ef83d667c812ae1c4b9cc3f899a1aa03d
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124762078"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130063999"
 ---
-# <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory-or-synapse-analytics"></a>Kopieren von Daten aus Amazon Simple Storage Service mithilfe von Azure Data Factory oder Synapse Analytics
+# <a name="copy-and-transform-data-in-amazon-simple-storage-service-using-azure-data-factory-or-azure-synapse-analytics"></a>Kopieren und Transformieren von Daten in Amazon Simple Storage Service mithilfe von Azure Data Factory oder Azure Synapse Analytics
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 >
 > * [Version 1](v1/data-factory-amazon-simple-storage-service-connector.md)
@@ -24,7 +24,7 @@ ms.locfileid: "124762078"
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-In diesem Artikel wird beschrieben, wie Daten aus Amazon Simple Storage Service (Amazon S3) kopiert werden. Weitere Informationen finden Sie in den Einführungsartikeln zu [Azure Data Factory](introduction.md) und [Synapse Analytics](../synapse-analytics/overview-what-is.md).
+In diesem Artikel wird beschrieben, wie Sie mithilfe der Kopieraktivität Daten aus Amazon Simple Storage Service (Amazon S3) kopieren und Datenfluss zum Transformieren von Daten in Amazon S3 verwenden. Weitere Informationen finden Sie in den Einführungsartikeln zu [Azure Data Factory](introduction.md) und [Synapse Analytics](../synapse-analytics/overview-what-is.md).
 
 >[!TIP]
 >Weitere Informationen über das Szenario für die Datenmigration von Amazon S3 zu Azure Storage finden Sie unter [Migrieren von Daten von Amazon S3 zu Azure Storage](data-migration-guidance-s3-azure-storage.md).
@@ -281,6 +281,81 @@ Angenommen, Sie haben die folgende Quellordnerstruktur und möchten die Dateien 
 ## <a name="preserve-metadata-during-copy"></a>Beibehalten von Metadaten beim Kopieren
 
 Beim Kopieren von Dateien von Amazon S3 nach Azure Data Lake Storage Gen2 oder Azure Blob Storage können Sie festlegen, dass die Dateimetadaten zusätzlich zu den Daten beibehalten werden sollen. Weitere Informationen finden Sie unter [Beibehalten von Metadaten](copy-activity-preserve-metadata.md#preserve-metadata).
+
+## <a name="mapping-data-flow-properties"></a>Eigenschaften von Mapping Data Flow
+
+Wenn Sie Daten in Zuordnungsdatenflüsse transformieren, können Sie Dateien aus Amazon S3 in den folgenden Formaten lesen:
+
+- [Avro](format-avro.md#mapping-data-flow-properties)
+- [Text mit Trennzeichen](format-delimited-text.md#mapping-data-flow-properties)
+- [Delta](format-delta.md#mapping-data-flow-properties)
+- [Excel](format-excel.md#mapping-data-flow-properties)
+- [JSON](format-json.md#mapping-data-flow-properties)
+- [Parquet](format-parquet.md#mapping-data-flow-properties)
+
+Formatspezifische Einstellungen finden Sie in der Dokumentation für das jeweilige Format. Weitere Informationen finden Sie im Artikel zur [Quelltransformation im Zuordnungsdatenfluss](data-flow-source.md).
+
+> [!NOTE]
+> Die Amazon S3-Quelltransformation wird jetzt nur im **Azure Synapse Analytics**-Arbeitsbereich unterstützt.
+
+### <a name="source-transformation"></a>Quellentransformation
+
+Bei der Quelltransformation können Sie in Amazon S3 Daten aus einem Container, Ordner oder einer einzelnen Datei lesen. Über die Registerkarte **Source options** (Quellenoptionen) können Sie verwalten, wie die Dateien gelesen werden. 
+
+:::image type="content" source="media/data-flow/sourceOptions1.png" alt-text="Screenshot der Quelloptionen":::
+
+**Platzhalterpfade:** Mithilfe eines Platzhaltermusters wird der Dienst angewiesen, die einzelnen übereinstimmenden Ordner und Dateien in einer einzigen Quelltransformation zu durchlaufen. Dies ist eine effektive Methode zur Verarbeitung von mehreren Dateien in einem einzigen Datenfluss. Über das Pluszeichen (+), das angezeigt wird, wenn Sie mit dem Cursor auf Ihr vorhandenes Platzhaltermuster zeigen, können Sie weitere Platzhaltermuster hinzufügen.
+
+Wählen Sie in Ihrem Quellcontainer eine Reihe von Dateien aus, die einem Muster entsprechen. Es kann nur ein Container im Dataset angegeben werden. Daher muss Ihr Platzhalterpfad auch den Ordnerpfad des Stammordners enthalten.
+
+Beispiele für Platzhalter:
+
+- `*`: stellt eine beliebige Zeichenfolge dar
+- `**`: stellt eine rekursive Verzeichnisschachtelung dar
+- `?`: ersetzt ein Zeichen
+- `[]`: stimmt mit mindestens einem Zeichen in den Klammern überein
+
+- `/data/sales/**/*.csv`: ruft alle CSV-Dateien unter „/data/sales“ ab
+- `/data/sales/20??/**/`: ruft alle Dateien aus dem 20. Jahrhundert ab
+- `/data/sales/*/*/*.csv`: ruft CSV-Dateien auf zwei Ebenen unter „/data/sales“ ab
+- `/data/sales/2004/*/12/[XY]1?.csv`: ruft alle CSV-Dateien von Dezember 2004 ab, die mit X oder Y und einer zweistelligen Zahl als Präfix beginnen
+
+**Partitionsstammpfad:** Wenn Ihre Dateiquelle partitionierte Ordner mit dem Format `key=value` (z. B. `year=2019`) enthält, können Sie die oberste Ebene dieser Ordnerstruktur einem Spaltennamen im Datenstrom Ihres Datenflusses zuweisen.
+
+Legen Sie zunächst einen Platzhalter fest, um darin alle Pfade, die die partitionierten Ordner sind, sowie die Blattdateien einzuschließen, die gelesen werden sollen.
+
+:::image type="content" source="media/data-flow/partfile2.png" alt-text="Screenshot der Einstellungen der Partitionsquelledatei":::
+
+Verwenden Sie die Einstellung **Partition root path** (Partitionsstammpfad), um zu definieren, was die oberste Ebene der Ordnerstruktur ist. Wenn Sie die Inhalte Ihrer Daten über die Datenvorschau anzeigen, sehen Sie, dass der Dienst die aufgelösten Partitionen hinzufügen wird, die auf Ihren einzelnen Ordnerebenen gefunden werden.
+
+:::image type="content" source="media/data-flow/partfile1.png" alt-text="Screenshot der Partitionierungsoptionen":::
+
+**Liste der Dateien**: Dies ist eine Dateigruppe. Erstellen Sie eine Textdatei mit einer Liste der relativen Pfade der zu verarbeitenden Dateien. Verweisen Sie auf diese Textdatei.
+
+**Spalte für die Speicherung im Dateinamen**: Speichern Sie den Namen der Quelldatei in einer Spalte in den Daten. Geben Sie hier einen neuen Spaltennamen ein, um die Zeichenfolge für den Dateinamen zu speichern.
+
+**Nach der Fertigstellung**: Wählen Sie aus, ob Sie nach dem Ausführen des Datenflusses nichts mit der Quelldatei anstellen, die Quelldatei löschen oder die Quelldateien verschieben möchten. Die Pfade für das Verschieben sind relative Pfade.
+
+Um Quelldateien an einen anderen Speicherort nach der Verarbeitung zu verschieben, wählen Sie zuerst für den Dateivorgang die Option „Verschieben“ aus. Legen Sie dann das Quellverzeichnis („from“/„aus“) fest. Wenn Sie keine Platzhalter für Ihren Pfad verwenden, entspricht die Einstellung „from“ dem Quellordner.
+
+Wenn Sie über einen Quellpfad mit Platzhalter verfügen, sieht Ihre Syntax ähnlich wie hier aus:
+
+`/data/sales/20??/**/*.csv`
+
+Geben Sie „from“ beispielsweise wie folgt an:
+
+`/data/sales`
+
+„To“ können Sie wie folgt angeben:
+
+`/backup/priorSales`
+
+In diesem Fall werden alle Dateien, die aus `/data/sales` erstellt wurden, in `/backup/priorSales` verschoben.
+
+> [!NOTE]
+> Die Dateivorgänge werden nur ausgeführt, wenn der Datenfluss anhand der Aktivität zum Ausführen des Datenflusses in einer Pipeline über eine Pipelineausführung ausgeführt wird (Debuggen der Pipeline oder Ausführung). Dateivorgänge werden *nicht* im Datenfluss-Debugmodus ausgeführt.
+
+**Nach der letzten Änderung filtern**: Sie können einen Datumsbereich angeben, um die zu verarbeitenden Dateien nach der letzten Änderung zu filtern. Alle Datums-/Uhrzeitangaben erfolgen in UTC. 
 
 ## <a name="lookup-activity-properties"></a>Eigenschaften der Lookup-Aktivität
 

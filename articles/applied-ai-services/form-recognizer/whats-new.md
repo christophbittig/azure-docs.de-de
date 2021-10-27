@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 10/07/2021
 ms.author: lajanuar
-ms.openlocfilehash: 401c9d08efd6be33d4444d34ba7a2a6c89723a6b
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: ddecc748443a6596c611fae857301e1f80f57a66
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129715091"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130039370"
 ---
 <!-- markdownlint-disable MD024 -->
 <!-- markdownlint-disable MD036 -->
@@ -33,7 +33,7 @@ Der Formularerkennungsdienst wird fortlaufend aktualisiert. Speichern Sie ein Le
 * [**Erweiterte Felder für ID-Dokumente**](concept-id-document.md) Das ID-Modell unterstützt Vermerke, Einschränkungen und die Extraktion der Fahrzeugklassifizierung aus US-Führerscheinen.
 * [**Unterschriftenfeld**](concept-custom.md) ist ein neuer Feldtyp in benutzerdefinierten Formularen zur Erkennung des Vorhandenseins einer Unterschrift in einem Formularfeld.
 
-* [**Sprachenerweiterung**](language-support.md) Unterstützung für 122 Sprachen (Druck) und 7 Sprachen (handschriftlich). Formularerkennung Layout und Benutzerdefiniertes Formular erweitern mit der neuesten Vorschau die [unterstützten Sprachen](language-support.md) auf 122. Dazu gehört die Textextraktion für gedruckten Text in 49 neuen Sprachen, darunter Russisch, Bulgarisch und andere kyrillische sowie weitere lateinische Sprachen. Darüber hinaus unterstützt die Extraktion von handgeschriebenem Text jetzt 7 Sprachen, darunter Englisch, sowie neue Vorschauen für Chinesisch (vereinfacht), Französisch, Deutsch, Italienisch, Portugiesisch und Spanisch.
+* [**Sprachenerweiterung**](language-support.md) Unterstützung für 122 Sprachen (gedruckt) und 7 Sprachen (handschriftlich). Formularerkennung Layout und Benutzerdefiniertes Formular erweitern mit der neuesten Vorschau die [unterstützten Sprachen](language-support.md) auf 122. Dazu gehört die Textextraktion für gedruckten Text in 49 neuen Sprachen, darunter Russisch, Bulgarisch und andere kyrillische sowie weitere lateinische Sprachen. Darüber hinaus unterstützt die Extraktion von handgeschriebenem Text jetzt 7 Sprachen, darunter Englisch, sowie neue Vorschauen für Chinesisch (vereinfacht), Französisch, Deutsch, Italienisch, Portugiesisch und Spanisch.
 
 * **Verbesserungen bei der Extraktion von Tabellen und Text** Layout unterstützt jetzt die Extraktion von einzeiligen Tabellen, auch Key-Value-Tabellen genannt. Zu den Verbesserungen bei der Textextraktion gehören eine bessere Verarbeitung von digitalen PDFs und Maschinenlesbare Zone Text (MRZ) in Identitätsdokumenten sowie eine allgemeine Leistungssteigerung.
 
@@ -423,7 +423,7 @@ pip-Paketversion 3.1.0b4
 
     Neben Tabellen können nun auch leere Werte beschriftet werden. Wenn Dokumente im Trainingssatz keine Werte für bestimmte Felder enthalten, können Sie sie beschriften, damit Werte ordnungsgemäß aus analysierten Dokumenten extrahiert werden können.
 
-* **Unterstützung für 66 neue Sprachen:** Die Layout-API der Formularerkennung und benutzerdefinierte Modelle unterstützen jetzt 73 Sprachen.
+* **Unterstützung für 66 neue Sprachen**: Die Layout-API und benutzerdefinierten Modelle für die Formularerkennung unterstützen jetzt 73 Sprachen.
 
   [Weitere Informationen zur Sprachunterstützung für die Formularerkennung](language-support.md)
 

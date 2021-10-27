@@ -1,14 +1,14 @@
 ---
-title: 'Azure Lab Services: Empfohlene Ansätze zum Erstellen benutzerdefinierter Images für Labs'
+title: Empfohlene Vorgehensweisen zum Erstellen benutzerdefinierter Images
 description: Beschreibt Ansätze zum Erstellen benutzerdefinierter Images für Labs.
 ms.date: 07/27/2021
-ms.topic: article
-ms.openlocfilehash: 621456c910b5137ed14a77d8d2cfeb9664910fa9
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.topic: how-to
+ms.openlocfilehash: 47a97633b74129e8d44cba9844a65c6e95bd2c61
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123450639"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130177173"
 ---
 # <a name="recommended-approaches-for-creating-custom-images"></a>Empfohlene Vorgehensweisen zum Erstellen benutzerdefinierter Images
 In diesem Artikel werden die folgenden empfohlenen Ansätze zum Erstellen eines benutzerdefinierten Images beschrieben:

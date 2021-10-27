@@ -10,12 +10,12 @@ ms.date: 05/08/2021
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: 244d7b7d2ff6fe88b883b2e8adbeeaa0e7fb167e
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 3b1754060a84914fca9b9c7d22ee85e32717d002
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128593228"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130178753"
 ---
 # <a name="create-develop-and-maintain-synapse-notebooks-in-azure-synapse-analytics"></a>Erstellen, Entwickeln und Verwalten von Synapse-Notebooks in Azure Synapse Analytics
 
@@ -42,7 +42,6 @@ Das Synapse-Team brachte die neue Notebookkomponente in Synapse Studio ein, um d
 |Drag & Drop zum Verschieben einer Zelle| Nicht unterstützt |&#9745;|
 |Gliederung (Inhaltsverzeichnis)| Nicht unterstützt |&#9745;|
 |Variablen-Explorer| Nicht unterstützt |&#9745;|
-|Textzelle mit Symbolleisten-Schaltflächen formatieren|&#9745;| Nicht unterstützt|
 |Kommentieren von Codezellen| Nicht unterstützt | &#9745;|
 
 > [!NOTE]
@@ -190,7 +189,9 @@ Sie können die Formatschaltflächen auf der Textzellen-Symbolleiste verwenden, 
 
 # <a name="preview-notebook"></a>[Notebook der Vorschau](#tab/preview)
 
-Die Symbolleiste mit den Formatschaltflächen ist für das Notebook der Vorschau noch nicht verfügbar. 
+Sie können die Formatschaltflächen auf der Textzellen-Symbolleiste verwenden, um allgemeine Markdown-Aktionen durchzuführen. Darunter fällt das Formatieren von Text als fett oder kursiv, Absätze/Kopfzeilen mittels einer Dropdownliste, das Einfügen von Code, von unsortierten Listen, von sortierten Listen, Hyperlinks und Bildern aus URLs.
+
+  ![Ein Screenshot, der die „Synapse-Textzellensymbolleiste“ zeigt](./media/apache-spark-development-using-notebooks/synapse-text-cell-toolbar-preview.png)
 
 ---
 

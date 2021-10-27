@@ -6,12 +6,12 @@ ms.topic: article
 author: keferna
 ms.author: keferna
 ms.date: 10/09/2020
-ms.openlocfilehash: 92819c28002c79ff905174e5b2f94779050237fd
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: a71a60bd4f12a46456c3a2d0725642118b2acc40
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129356720"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130065291"
 ---
 # <a name="find-tenant-id-object-id-and-partner-association-details"></a>Suchen der Mandanten-ID, der Objekt-ID und der Partnerzuordnungsdetails
 
@@ -27,7 +27,7 @@ Wenn Sie Screenshots dieser Elemente in Azure Cloud Shell für die Unterstützun
 1. Öffnen Sie das [Azure-Portal](https://ms.portal.azure.com/).
 2. Wählen Sie **Azure Active Directory** aus.
 
-    :::image type="content" source="media/tenant-and-object-id/icon-azure-ad.png" alt-text="Das Azure Active Directory-Symbol im Azure-Portal.":::
+    :::image type="content" source="media/tenant-and-object-id/icon-azure-ad.png" alt-text="Das Azure Active Directory-Symbol im Azure-Portal":::
 
 3. Wählen Sie **Übersicht**. Ihre Mandanten-ID sollte unter **Basisinformationen** angezeigt werden.
 
@@ -38,11 +38,11 @@ Wenn Sie Screenshots dieser Elemente in Azure Cloud Shell für die Unterstützun
 1. Wechseln Sie zum Azure-Portal, und wählen Sie **Azure Active Directory** aus, wie oben in Schritt 1 und 2 beschrieben.
 2. Wählen Sie **Abonnements**.
 
-    :::image type="content" source="media/tenant-and-object-id/icon-azure-subscriptions-1.png" alt-text="Das Symbol für Abonnements im Azure-Portal.":::
+    :::image type="content" source="media/tenant-and-object-id/icon-azure-subscriptions-1.png" alt-text="Das Symbol für Abonnements im Azure-Portal":::
 
 3. Zeigen Sie Abonnements und Rollen an.
 
-    :::image type="content" source="media/tenant-and-object-id/subscriptions-screen-1.png" alt-text="Der Bildschirm „Abonnements“ im Azure-Portal.":::
+    :::image type="content" source="media/tenant-and-object-id/subscriptions-screen-1.png" alt-text="Die Anzeige für Abonnements im Azure-Portal":::
 
 ## <a name="find-partner-id"></a>Suchen der Partner-ID
 

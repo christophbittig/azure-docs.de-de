@@ -10,12 +10,12 @@ ms.author: siarora
 ms.date: 06/14/2021
 ms.topic: how-to
 ms.custom: troubleshooting,contperf-fy20q4, contperf-fy21q2
-ms.openlocfilehash: eddf1f5a77ef67de3ab6e1861ae44a19b07d8027
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: bbfcf7fd3edb483415041a4706e7a5cd22e2d76a
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129425978"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129997117"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>Verwalten und Erhöhen der Kontingente für Ressourcen mit Azure Machine Learning
 
@@ -99,12 +99,13 @@ In der folgenden Tabelle sind weitere Grenzwerte der Plattform angegeben. Wenden
 | Parameterserver pro Knoten | 1 |
 
 <sup>1</sup> Die maximale Lebensdauer bezieht sich auf die Zeitspanne zwischen dem Start und Ende einer Ausführung. Abgeschlossene Ausführungen bleiben unbegrenzt erhalten. Daten für Ausführungen, die nicht innerhalb der maximalen Lebensdauer abgeschlossen wurden, sind nicht verfügbar.
+
 <sup>2</sup> Aufträge auf einem Knoten niedriger Priorität können vorzeitig entfernt werden, wenn eine Kapazitätseinschränkung besteht. Wir empfehlen Ihnen, in Ihrem Auftrag Prüfpunkte zu implementieren.
 
 ### <a name="azure-machine-learning-managed-online-endpoints-preview"></a>Verwaltete Azure Machine Learning-Onlineendpunkte (Vorschau)
 [!INCLUDE [preview disclaimer](../../includes/machine-learning-preview-generic-disclaimer.md)]
 
-Für verwaltete Azure Machine Learning-Onlineendpunkte gelten die folgenden Grenzwerte:
+Für Azure Machine Learning-Onlineendpunkte gelten die folgenden Grenzwerte:
 
 | **Ressource** | **Begrenzung** |
 | --- | --- |
@@ -114,13 +115,13 @@ Für verwaltete Azure Machine Learning-Onlineendpunkte gelten die folgenden Gren
 | Anzahl von Bereitstellungen pro Abonnement | 200 |
 | Anzahl von Bereitstellungen pro Endpunkt | 20 |
 | Anzahl von Instanzen pro Bereitstellung | 20 |
-| Maximale Nutzdatengröße auf Endpunktebene |1,5 MB |
+| Maximale Nutzdatengröße auf Endpunktebene | 1,5 MB |
 | Maximales Anforderungstimeout auf Endpunktebene  | 60 Sekunden |
-| Gesamtanzahl von QPS auf Endpunktebene für alle Bereitstellungen  | 100 |
+| Gesamtanzahl von QPS auf Endpunktebene für alle Bereitstellungen | 100 |
 
-<sup>1</sup> Einzelne Bindestriche (etwa `my-endpoint-name`) sind in Endpunkt- und Bereitstellungsnamen zulässig.
+<sup>1</sup> Einzelne Bindestriche wie z .B. `my-endpoint-name` sind in Endpunkt- und Bereitstellungsnamen zulässig.
 
-#### <a name="azure-machine-learning-pipelines"></a>Azure Machine Learning-Pipelines
+### <a name="azure-machine-learning-pipelines"></a>Azure Machine Learning-Pipelines
 Für [Azure Machine Learning-Pipelines](concept-ml-pipelines.md) gelten die unten angegebenen Grenzwerte.
 
 | **Ressource** | **Begrenzung** |

@@ -1,22 +1,22 @@
 ---
 title: Steuern des eingehenden Datenverkehrs v1
 description: Erfahren Sie, wie Sie eingehenden Datenverkehr in eine App Service-Umgebung steuern. Dieses Dokument wird nur für Kunden bereitgestellt, die die ASE-Legacyumgebung v1 verwenden.
-author: ccompy
+author: madsd
 ms.assetid: 4cc82439-8791-48a4-9485-de6d8e1d1a08
 ms.topic: article
 ms.date: 01/11/2017
-ms.author: stefsch
+ms.author: madsd
 ms.custom: seodec18
-ms.openlocfilehash: fe9326ea9ebd5afe981b7ba6c34b1a5d51e084b0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9fc4570d922da43635725f028a31b4458bf03113
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88962059"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130001711"
 ---
 # <a name="how-to-control-inbound-traffic-to-an-app-service-environment"></a>Steuern von eingehendem Datenverkehr in eine App Service-Umgebung
 ## <a name="overview"></a>Übersicht
-Eine App Service-Umgebung kann **entweder** in einem virtuellen Netzwerk von Azure Resource Manager **oder** einem [virtuellen Netzwerk][virtualnetwork] des klassischen Bereitstellungsmodells erstellt werden.  Ein neues virtuelles Netzwerk und ein neues Subnetz können bei der Erstellung einer App Service-Umgebung definiert werden. Stattdessen kann eine App Service-Umgebung in einem bereits vorhandenen virtuellen Netzwerk und einem bereits vorhandenen Subnetz erstellt werden.  Seit Juni 2016 können ASEs auch in virtuellen Netzwerken bereitgestellt werden, die entweder öffentliche Adressbereiche oder RFC1918-Adressräume (private Adressen) verwenden.  Weitere Informationen finden Sie unter [Erstellen einer App Service-Umgebung][HowToCreateAnAppServiceEnvironment].
+Eine App Service-Umgebung kann **entweder** in einem virtuellen Netzwerk von Azure Resource Manager **oder** einem [virtuellen Netzwerk][virtualnetwork] des klassischen Bereitstellungsmodells erstellt werden.  Ein neues virtuelles Netzwerk und ein neues Subnetz können bei der Erstellung einer App Service-Umgebung definiert werden. Stattdessen kann eine App Service-Umgebung in einem bereits vorhandenen virtuellen Netzwerk und einem bereits vorhandenen Subnetz erstellt werden.  Seit Juni 2016 können ASEs auch in virtuellen Netzwerken bereitgestellt werden, die entweder öffentliche Adressbereiche oder RFC1918-Adressräume (private Adressen) verwenden.  Weitere Informationen finden Sie unter [Erstellen einer ASEv1 aus einer Vorlage](app-service-app-service-environment-create-ilb-ase-resourcemanager.md).
 
 Erstellen Sie eine App Service-Umgebung immer in einem Subnetz. Ein Subnetz bietet eine Netzwerkgrenze, die zum Sperren von eingehendem Datenverkehr hinter Upstreamgeräten und -diensten verwendet werden kann. Dieses Setup ermöglicht nur bestimmten Upstream-IP-Adressen das Akzeptieren von HTTP- und HTTPS-Datenverkehr.
 
@@ -131,7 +131,6 @@ Weitere Informationen finden Sie unter [Sicheres Verbinden mit Back-End-Ressourc
 
 <!-- LINKS -->
 [virtualnetwork]: ../../virtual-network/virtual-networks-faq.md
-[HowToCreateAnAppServiceEnvironment]: app-service-web-how-to-create-an-app-service-environment.md
 [NetworkSecurityGroups]: ../../virtual-network/virtual-network-vnet-plan-design-arm.md
 [IntroToAppServiceEnvironment]:  app-service-app-service-environment-intro.md
 [SecurelyConnecttoBackend]:  app-service-app-service-environment-securely-connecting-to-backend-resources.md

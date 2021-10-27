@@ -3,20 +3,18 @@ title: Auswerten der Ergebnisse von AutoML-Experimenten
 titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Sie Diagramme und Metriken für jede Ausführung Ihrer Experimente des automatisierten maschinellen Lernens anzeigen und auswerten.
 services: machine-learning
-author: gregorybchris
-ms.author: chgrego
 ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: automl
 ms.date: 12/09/2020
 ms.topic: how-to
 ms.custom: contperf-fy21q2, automl
-ms.openlocfilehash: 91c620a68d375084f8a4be6c5a8bf30b92d016c1
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: 2b9384b53b1fa5ac8681f6acab4df6d923d95703
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129812195"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130162905"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>Auswerten der Ergebnisse von Experimenten des automatisierten maschinellen Lernens
 
@@ -72,18 +70,21 @@ Während jede Methode zur Mittelwerterstellung ihre Vorteile hat, ist eine gemei
 
 In der folgenden Tabelle sind die Modellleistungsmetriken zusammengefasst, die automatisiertes ML für jedes Klassifizierungsmodell berechnet, das für Ihr Experiment generiert wird. Weitere Details finden Sie in der scikit-learn-Dokumentation, die im Feld **Berechnung** der jeweiligen Metrik verlinkt ist. 
 
-|Metrik|BESCHREIBUNG|Berechnung|
+> [!NOTE]
+> Weitere Informationen zu Metriken für Bildklassifizierungsmodelle finden Sie im Abschnitt [Bildmetriken](#metrics-for-image-models-preview).
+
+|Metric|BESCHREIBUNG|Berechnung|
 |--|--|---|
 |AUC | AUC ist die Fläche unter der [ROC-Kurve (Receiver Operating Characteristic Curve)](#roc-curve).<br><br> **Ziel**: Je näher an 1, desto besser <br> **Bereich:** [0, 1]<br> <br>Zu den unterstützten Metriknamen gehören <li>`AUC_macro`, das arithmetische Mittel der AUC für jede Klasse.<li> `AUC_micro`, berechnet nach Art der Multitagklassifizierung. Für jede Stichprobe wird jede unterschiedliche Klasse als unabhängige `0/1`-Vorhersage behandelt. Die richtige Klasse wird zur `true`-Klasse und der Rest wird zur `false`-Klasse. Anschließend wird AUC für die neue binäre Klassifizierungsaufgabe berechnet, wobei alle Stichproben kombiniert werden. <li> `AUC_weighted`, das arithmetische Mittel des Ergebnisses für jede Klasse, gewichtet gemäß der Anzahl der TRUE-Instanzen in jeder Klasse. <li> `AUC_binary`, der Wert von AUC, indem eine bestimmte Klasse als `true`-Klasse behandelt wird und alle anderen Klassen als `false`-Klasse kombiniert werden.<br><br>|[Berechnung](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.roc_auc_score.html) | 
 |accuracy| Die Genauigkeit ist der Anteil der Vorhersagen, die genau mit den wahren Klassenbezeichnungen übereinstimmen. <br> <br>**Ziel**: Je näher an 1, desto besser <br> **Bereich:** [0, 1]|[Berechnung](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.accuracy_score.html)|
 |average_precision|Die durchschnittliche Genauigkeit fasst eine Precision-Recall-Kurve als gewichteten Mittelwert der bei jedem Schwellenwert erzielten Genauigkeiten zusammen, wobei die Zunahme beim Recall aus dem vorherigen Schwellenwert als Gewichtung verwendet wird. <br><br> **Ziel**: Je näher an 1, desto besser <br> **Bereich:** [0, 1]<br> <br>Zu den unterstützten Metriknamen gehören<li>`average_precision_score_macro`, das arithmetische Mittel des durchschnittlichen Genauigkeitswerts jeder Klasse.<li> `average_precision_score_micro`, berechnet nach Art der Multitagklassifizierung. Für jede Stichprobe wird jede unterschiedliche Klasse als unabhängige `0/1`-Vorhersage behandelt. Die richtige Klasse wird zur `true`-Klasse und der Rest wird zur `false`-Klasse. Anschließend wird die durchschnittliche Genauigkeit für die neue binäre Klassifizierungsaufgabe berechnet, wobei alle Stichproben kombiniert werden.<li>`average_precision_score_weighted`, das arithmetische Mittel der durchschnittlichen Genauigkeit für jede Klasse, gewichtet gemäß der Anzahl der TRUE-Instanzen in jeder Klasse. <li> `average_precision_score_binary`, der Wert der durchschnittlichen Genauigkeit, indem eine bestimmte Klasse als `true`-Klasse behandelt wird und alle anderen Klassen als `false`-Klasse kombiniert werden.|[Berechnung](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.average_precision_score.html)|
 balanced_accuracy|„Balanced accuracy“ ist das arithmetische Mittel des Recalls für jede Klasse.<br> <br>**Ziel**: Je näher an 1, desto besser <br> **Bereich:** [0, 1]|[Berechnung](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.recall_score.html)|
-f1_score|„F1 score“ ist das harmonische Mittel aus Genauigkeit und Recall. Es ist ein gutes, ausgewogenes Maß für sowohl False Positive- als auch False Negative-Ergebnisse. True Negative-Ergebnisse werden dabei jedoch nicht berücksichtigt. <br> <br>**Ziel**: Je näher an 1, desto besser <br> **Bereich:** [0, 1]<br> <br>Zu den unterstützten Metriknamen gehören<li>  `f1_score_macro`: Das arithmetische Mittel des F1-Ergebnisses für jede Klasse. <li> `f1_score_micro`: Wird global durch Zählen der insgesamt True Positive-, False Negative- und False Positive-Ergebnisse berechnet. <li> `f1_score_weighted`: Gewichteter Mittelwert nach Klassenhäufigkeit des F1-Ergebnisses für jede Klasse. <li> `f1_score_binary`, der Wert von f1, indem eine bestimmte Klasse als `true`-Klasse behandelt wird und alle anderen Klassen als `false`-Klasse kombiniert werden.|[Berechnung](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.f1_score.html)|
+f1_score|„F1 score“ ist das harmonische Mittel aus Genauigkeit und Recall. Es ist ein gutes, ausgewogenes Maß für sowohl False Positive- als auch False Negative-Ergebnisse. True Negative-Ergebnisse werden dabei jedoch nicht berücksichtigt. <br> <br>**Ziel**: Je näher an 1, desto besser <br> **Bereich:** [0, 1]<br> <br>Zu den unterstützten Metriknamen gehören<li>  `f1_score_macro`: Das arithmetische Mittel des F1-Ergebnisses für jede Klasse. <li> `f1_score_micro`: Wird global durch Zählen der insgesamt True Positive-, False Negative- und False Positive-Ergebnisse berechnet. <li> `f1_score_weighted`: Gewichteter Mittelwert nach Klassenhäufigkeit des F1-Ergebnisses für jede Klasse. <li> `f1_score_binary`, der Wert von f1, indem eine bestimmte Klasse als `true`-Klasse behandelt wird und alle anderen Klassen als `false`-Klasse kombiniert werden. <br><br>Hinweis: Der Wert von `f1_score_micro` ist immer gleich dem Wert von `accuracy`.|[Berechnung](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.f1_score.html)|
 log_loss|Dies ist die Verlustfunktion, die bei der (multinomialen) logistischen Regression und deren Erweiterungen wie z. B. neuronalen Netzen verwendet wird. Sie ist definiert als die negative Log-Wahrscheinlichkeit der True-Bezeichnungen bei den Vorhersagen eines probabilistischen Klassifizierers. <br><br> **Ziel**: Je näher an 0, desto besser <br> **Bereich:** [0, inf)|[Berechnung](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.log_loss.html)|
 norm_macro_recall| Der normalisierte Makro-Recall wird über das Recall-Makro gemittelt und normalisiert, damit die zufällige Leistung ein Ergebnis von 0 und die ideale Leistung einen Wert von 1 liefert. <br> <br>**Ziel**: Je näher an 1, desto besser <br> **Bereich:** [0, 1] |`(recall_score_macro - R)`&nbsp;/&nbsp;`(1 - R)` <br><br>wobei `R` der erwartete Wert von `recall_score_macro` für zufällige Vorhersagen ist.<br><br>`R = 0.5`&nbsp;für&nbsp; binäre&nbsp;Klassifizierung. <br>`R = (1 / C)` für C-Klassen-Klassifizierungsprobleme.|
 matthews_correlation | Der Matthews-Korrelationskoeffizient ist ein ausgewogenes Maß für die Genauigkeit, das auch dann verwendet werden kann, wenn eine Klasse viel mehr Stichproben als eine andere aufweist. Ein Koeffizient von 1 bedeutet perfekte Vorhersage, 0 zufällige Vorhersage und -1 inverse Vorhersage.<br><br> **Ziel**: Je näher an 1, desto besser <br> **Bereich:** [-1, 1]|[Berechnung](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.matthews_corrcoef.html)|
-precision (Genauigkeit)|Genauigkeit ist die Fähigkeit eines Modells, negative Stichproben nicht als positiv zu bezeichnen. <br><br> **Ziel**: Je näher an 1, desto besser <br> **Bereich:** [0, 1]<br> <br>Zu den unterstützten Metriknamen gehören <li> `precision_score_macro`, das arithmetische Mittel der Genauigkeit für jede Klasse. <li> `precision_score_micro`, wird global durch Zählen der insgesamt True Positive- und False Positive-Ergebnisse berechnet. <li> `precision_score_weighted`, das arithmetische Mittel der Genauigkeit für jede Klasse, gewichtet gemäß der Anzahl der TRUE-Instanzen in jeder Klasse. <li> `precision_score_binary`, der Wert der Genauigkeit, indem eine bestimmte Klasse als `true`-Klasse behandelt wird und alle anderen Klassen als `false`-Klasse kombiniert werden.|[Berechnung](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.precision_score.html)|
-recall (Abruf)| Recall (Abruf) ist die Fähigkeit eines Modells, alle positiven Stichproben zu erkennen. <br><br> **Ziel**: Je näher an 1, desto besser <br> **Bereich:** [0, 1]<br> <br>Zu den unterstützten Metriknamen gehören <li>`recall_score_macro`: Das arithmetische Mittel des Recalls für jede Klasse. <li> `recall_score_micro`: Wird global durch Zählen der insgesamt True Positive-, False Negative- und False Positive-Ergebnisse berechnet.<li> `recall_score_weighted`: Das arithmetische Mittel des Recalls für jede Klasse, gewichtet gemäß der Anzahl der TRUE-Instanzen in jeder Klasse. <li> `recall_score_binary`, der Wert des Abrufs, indem eine bestimmte Klasse als `true`-Klasse behandelt wird und alle anderen Klassen als `false`-Klasse kombiniert werden.|[Berechnung](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.recall_score.html)|
+precision (Genauigkeit)|Genauigkeit ist die Fähigkeit eines Modells, negative Stichproben nicht als positiv zu bezeichnen. <br><br> **Ziel**: Je näher an 1, desto besser <br> **Bereich:** [0, 1]<br> <br>Zu den unterstützten Metriknamen gehören <li> `precision_score_macro`, das arithmetische Mittel der Genauigkeit für jede Klasse. <li> `precision_score_micro`, wird global durch Zählen der insgesamt True Positive- und False Positive-Ergebnisse berechnet. <li> `precision_score_weighted`, das arithmetische Mittel der Genauigkeit für jede Klasse, gewichtet gemäß der Anzahl der TRUE-Instanzen in jeder Klasse. <li> `precision_score_binary`, der Wert der Genauigkeit, indem eine bestimmte Klasse als `true`-Klasse behandelt wird und alle anderen Klassen als `false`-Klasse kombiniert werden.<br><br>Hinweis: Der Wert von `precision_score_micro` ist immer gleich dem Wert von `accuracy`.|[Berechnung](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.precision_score.html)|
+recall (Abruf)| Recall (Abruf) ist die Fähigkeit eines Modells, alle positiven Stichproben zu erkennen. <br><br> **Ziel**: Je näher an 1, desto besser <br> **Bereich:** [0, 1]<br> <br>Zu den unterstützten Metriknamen gehören <li>`recall_score_macro`: Das arithmetische Mittel des Recalls für jede Klasse. <li> `recall_score_micro`: Wird global durch Zählen der insgesamt True Positive-, False Negative- und False Positive-Ergebnisse berechnet.<li> `recall_score_weighted`: Das arithmetische Mittel des Recalls für jede Klasse, gewichtet gemäß der Anzahl der TRUE-Instanzen in jeder Klasse. <li> `recall_score_binary`, der Wert des Abrufs, indem eine bestimmte Klasse als `true`-Klasse behandelt wird und alle anderen Klassen als `false`-Klasse kombiniert werden.<br><br>Hinweis: Der Wert von `recall_score_micro` ist immer gleich dem Wert von `accuracy`.|[Berechnung](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.recall_score.html)|
 weighted_accuracy|Die gewichtete Genauigkeit ist eine Genauigkeit, bei der jede Stichprobe mit der Gesamtzahl der Stichproben, die zur gleichen Klasse gehören, gewichtet wird. <br><br>**Ziel**: Je näher an 1, desto besser <br>**Bereich:** [0, 1]|[Berechnung](https://scikit-learn.org/0.22/modules/generated/sklearn.metrics.accuracy_score.html)|
 
 ### <a name="binary-vs-multiclass-classification-metrics"></a>Gegenüberstellung von Binär- und Multiklassenmetriken für die Klassifizierung
@@ -204,9 +205,12 @@ spearman_correlation| Die Spearman-Korrelation ist ein nicht parametrisches Maß
 
 ### <a name="metric-normalization"></a>Metrische Normalisierung
 
-Das automatisierte maschinelle Lernen normalisiert Regressions- und Vorhersagemetriken, was den Vergleich zwischen Modellen ermöglicht, die für Daten mit unterschiedlichen Bereichen trainiert wurden. Ein Modell, das für Daten mit einem größeren Bereich trainiert wurde, weist einen höheren Fehlerwert auf als dasselbe Modell, das für Daten mit einem kleineren Bereich trainiert wurde, es sei denn, dieser Fehler wird normalisiert.
+Automatisiertes ML normalisiert Regressions- und Vorhersagemetriken, was den Vergleich zwischen Modellen ermöglicht, die mit unterschiedlichen Daten trainiert wurden. Ein Modell, das mit Daten mit einem größeren Bereich trainiert wurde, weist in der Regel eine höhere Fehlerrate auf als das selbe Modell, das mit Daten mit einem kleineren Bereich trainiert wurde, es sei denn, dieser Fehler wird normalisiert.
 
-Es gibt zwar keine Standardmethode zur Normalisierung von Fehlermetriken, aber beim automatisierten maschinellen Lernen wird der Fehler üblicherweise durch den Bereich der Daten geteilt: `normalized_error = error / (y_max - y_min)`
+Es gibt zwar keine Standardmethode zum Normalisieren von Fehlermetriken, beim automatisierten ML wird der Fehler jedoch üblicherweise durch den Bereich der Daten geteilt: `normalized_error = error / (y_max - y_min)`. 
+
+> [!Note]
+> Der Bereich der Daten wird nicht mit dem Modell gespeichert. Wenn Sie mit dem selben Modell einen Rückschluss für einen Testsatz für zurückgehaltene Daten ziehen, können sich `y_min` und `y_max` entsprechend den Testdaten ändern und die normalisierten Metriken möglicherweise nicht direkt verwendet werden, um die Leistung der Modelle für Trainings- und Testsätze zu vergleichen. Sie können den Wert von `y_min` und `y_max` aus Ihrem Trainingssatz weitergeben, um den Vergleich fair zu gestalten.
 
 Wenn ein Prognosemodell anhand von Zeitreihendaten ausgewertet wird, unternimmt das automatisierte maschinelle Lernen zusätzliche Schritte, um sicherzustellen, dass die Normalisierung pro Zeitreihen-ID (Körnung) erfolgt, da jede Zeitreihe wahrscheinlich eine andere Verteilung der Zielwerte aufweist.
 ## <a name="residuals"></a>Restdaten
@@ -234,6 +238,60 @@ In diesem Beispiel ist zu beachten, dass das bessere Modell eine Linie für „V
 
 ### <a name="predicted-vs-true-chart-for-a-bad-model"></a>Diagramm zu „Vorhergesagt im Vergleich zu den wahren Werten“ für ein ungültiges Modell
 ![Diagramm zu „Vorhergesagt im Vergleich zu den wahren Werten“ für ein ungültiges Modell](./media/how-to-understand-automated-ml/chart-predicted-true-bad.png)
+
+## <a name="metrics-for-image-models-preview"></a>Metriken für Bildmodelle (Vorschau)
+
+Automatisiertes ML verwendet die Bilder aus dem Validierungsdataset, um die Leistung des Modells auszuwerten. Die Leistung des Modells wird auf **Epochenebene** gemessen, um zu verstehen, wie das Training verläuft. Eine Epoche vergeht, wenn ein gesamtes Dataset das neuronale Netz genau einmal vorwärts und rückwärts durchlaufen hat. 
+
+### <a name="image-classification-metrics"></a>Bildklassifizierungsmetriken
+
+Die primäre Metrik zur Auswertung ist **Genauigkeit** für binäre und mehrklassige Klassifizierungsmodelle und **IoU** ([Intersection over Union](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.jaccard_score.html#sklearn.metrics.jaccard_score)) für Multitagklassifizierungsmodelle.
+Die Klassifizierungsmetriken für Bildklassifizierungmodelle sind mit denen identisch, die im Abschnitt [Klassifizierungsmetriken](#classification-metrics) definiert sind. Die einer Epoche zugeordneten Verlustwerte werden ebenfalls protokolliert, was dabei helfen kann, den Trainingsfortschritt zu überwachen und zu ermitteln, ob das Modell über- oder unterangepasst ist.
+
+Jede Vorhersage eines Klassifizierungsmodells wird einer Zuverlässigkeitsbewertung zugeordnet, welche den Grad der Zuverlässigkeit angibt, mit der die Vorhersage getroffen wurde. Multitag-Bildklassifizierungsobjekte werden standardmäßig mit einem Bewertungsschwellenwert von 0,5 ausgewertet. Dies bedeutet, dass nur Vorhersagen mit mindestens diesem Grad an Zuverlässigkeit als eine für die zugeordnete Klasse positive Vorhersage betrachtet werden. Die Multiklassenklassifizierung verwendet keinen Bewertungsschwellenwert, stattdessen wird die Klasse mit der maximalen Zuverlässigkeitsbewertung als Vorhersage betrachtet. 
+
+#### <a name="epoch-level-metrics-for-image-classification"></a>Metriken auf Epochenebene für die Bildklassifizierung
+Anders als die Klassifizierungsmetriken für tabellarische Datasets protokollieren Bildungklassifizierungsmodelle alle Klassifizierungsmetriken wie unten dargestellt auf Epochenebene.
+
+![Diagramme auf Epochenebene für die Bildklassifizierung](./media/how-to-understand-automated-ml/image-classification-accuracy.png)
+
+#### <a name="summary-metrics-for-image-classification"></a>Zusammenfassungsmetriken für die Bildklassifizierung
+
+Abgesehen von den skalaren Metriken, die auf Epochenebene protokolliert werden, protokollieren Bildklassifizierungsmodelle auch Zusammenfassungsmetriken wie die [Konfusionsmatrix](#confusion-matrix) und [Klassifizierungsdiagramme](#roc-curve) wie ROC-Kurven, Kurven zu Genauigkeit und Abruf sowie Klassifizierungsberichte für das Modell aus der besten Epoche, in der die höchste Bewertung der primären Metrik (Genauigkeit) erhalten wird.
+
+Wie unten dargestellt bietet der Klassifizierungsbericht Werte auf Klassenebene für Metriken wie precision, recall, f1-score, support, auc und average_precision mit verschiedenen Methoden zur Mittelwerterstellung: macro, micro und weighted.
+Weitere Informationen finden Sie in den Metrikdefinitionen im Abschnitt [Klassifizierungsmetriken](#classification-metrics).
+
+![Klassifizierungsbericht für die Bildklassifizierung](./media/how-to-understand-automated-ml/image-classification-report.png)
+
+### <a name="object-detection-and-instance-segmentation-metrics"></a>Objekterkennung und Instanzsegmentierungsmetriken
+
+Jede Vorhersage aus einem Bildobjekterkennungs- oder Instanzsegmentierungsmodell wird einer Zuverlässigkeitsbewertung zugeordnet.
+Die Vorhersagen mit einer Zuverlässigkeitsbewertung, die höher ist als der Bewertungsschwellenwert, werden als Vorhersagen ausgegeben und in der Metrikberechnung verwendet, deren Standardwert modellspezifisch ist und auf die über die Seite zur [Hyperparameteroptimierung](how-to-auto-train-image-models.md#model-specific-hyperparameters) (Hyperparameter `box_score_threshold`) verwiesen werden kann.
+
+Die Metrikberechnung einer Bildobjekterkennung und eines Instanzsegmentierungsmodells basiert auf einer Überlappungsmessung, die von der Metrik **IoU** ([Intersection over Union](https://en.wikipedia.org/wiki/Jaccard_index)) definiert wird. Diese wird berechnet, indem der Bereich der Überlappung zwischen den Lerndaten und den Vorhersagen durch die Vereinigungsmenge der Lerndaten und den Vorhersagen geteilt wird. Die aus jeder Vorhersage berechnete IoU wird mit einem **Überlappungsschwellenwert** verglichen, der als IoU-Schwellenwert bezeichnet wird und bestimmt, wie viel eine Vorhersage mit benutzerannotierten Lerndaten überschneiden soll, um als positive Vorhersage betrachtet zu werden. Wenn der aus der Vorhersage berechnete IoU-Wert kleiner als der Überlappungsschwellenwert ist, wird die Vorhersage für die zugeordnete Klasse nicht als positiv betrachtet.
+
+Die primäre Metrik zum Auswerten von Bildobjekterkennungs- und Instanzsegmentierungsmodellen ist die **Mean Average Precision (mAP)** . Die mAP ist der durchschnittliche Wert der durchschnittlichen Genauigkeit (Average Precision, AP) für alle Klassen. Objekterkennungsmodelle für automatisiertes ML unterstützen die Berechnung von mAP mithilfe der folgenden gängigen Methoden.
+
+**Pascal VOC-Metriken**: 
+
+[Pascal VOC](http://host.robots.ox.ac.uk/pascal/VOC/voc2012/htmldoc/devkit_doc.html#SECTION00044000000000000000)-mAP ist die standardmäßige Art der mAP-Berechnung für Objekterkennungs- / Instanzsegmentierungsmodelle. Die mAP-Methode im Pascal-VOC-Stil berechnet den Bereich unter einer Version der Genauigkeits-Abruf-Kurve. Als erstes wird p(rᵢ), bei dem es sich um die Genauigkeit beim Abruf (i) handelt, für alle eindeutigen Abrufwerte berechnet. p(rᵢ) wird dann durch die maximale Genauigkeit ersetzt, die für jeden Abruf r' >= rᵢ abgerufen wird. Der Genauigkeitswert nimmt in dieser Version der Kurve monoton ab. Die Metrik Pascal VOC-maP wird standardmäßig mit einem IoU-Schwellenwert von 0,5 ausgewertet. Eine ausführliche Erläuterung dieses Konzepts finden Sie in diesem [Blog](https://jonathan-hui.medium.com/map-mean-average-precision-for-object-detection-45c121a31173).
+
+
+**COCO-Metriken**: 
+
+[COCO-Auswertungsmethoden](https://cocodataset.org/#detection-eval) verwenden eine interpolierte 101-Punkt-Methode für die Berechnung der durchschnittlichen Genauigkeit zusammen mit einer Mittelwerterstellung von mehr als zehn IoU-Schwellenwerten. AP@[.5:.95] entspricht der durchschnittlichen Genauigkeit für IoU von 0,5 bis 0,95 mit einer Schrittgröße von 0,05. Automatisiertes ML protokolliert alle zwölf Metriken, die von der COCO-Methode definiert werden, einschließlich der AP und AR in verschiedenen Skalierungen in den Anwendungsprotokollen, während auf der Benutzeroberfläche für Metriken nur die mAP mit einem IoU-Schwellenwert von 0,5 angezeigt wird. 
+
+> [!TIP]
+> Die Auswertung des Bildobjekterkennungsmodells kann COCO-Metriken verwenden, wenn der Hyperparameter `validation_metric_type` wie im Abschnitt zur [Hyperparameteroptimierung](how-to-auto-train-image-models.md#task-specific-hyperparameters) erläutert auf „COCO“ festgelegt ist.
+
+#### <a name="epoch-level-metrics-for-object-detection-and-instance-segmentation"></a>Metriken auf Epochenebene für Objekterkennung und Instanzsegmentierung
+Die mAP-, Genauigkeits- und Abrufwerte werden auf Epochenebene für Bildobjekterkennungs-/ Instanzsegmentierungsmodelle protokolliert. Die mAP-, Genauigkeits- und Abrufmetriken werden auch auf Klassenebene mit dem Namen „per_label_metrics“ protokolliert. Die „per_label_metrics“ sollten als Tabelle angezeigt werden. 
+
+> [!NOTE]
+> Metriken auf Epochenebene für Genauigkeit, Abruf und „per_label_metrics“ sind bei der Verwendung der „COCO“-Methode nicht verfügbar.
+
+![Diagramme auf Epochenebene für die Objekterkennung](./media/how-to-understand-automated-ml/image-object-detection-map.png)
 
 ## <a name="model-explanations-and-feature-importances"></a>Modellerläuterung und Featurerelevanz
 

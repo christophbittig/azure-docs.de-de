@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: 2702b657b1725351f28180f15213dbcf7678139a
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: 0df83e6e335599b4942d53962add9083a2ecce12
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108226424"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130138278"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>Azure Service Bus-Ausgabebindung für Azure Functions
 
@@ -324,10 +324,12 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 |**name** | – | Der Name der Variablen, die die Warteschlangen- oder Themanachricht im Funktionscode darstellt. Legen Sie diesen Wert auf „$return“ fest, um auf den Rückgabewert der Funktion zu verweisen. |
 |**queueName**|**QueueName**|Name der Warteschlange.  Legen Sie diesen nur fest, wenn Warteschlangennachrichten gesendet werden (nicht für ein Thema).
 |**topicName**|**TopicName**|Name des Themas. Legen Sie diesen nur fest, wenn Themanachrichten gesendet werden (nicht für eine Warteschlange).|
-|**connection**|**Connection**|Der Name einer App-Einstellung, die die Service Bus-Verbindungszeichenfolge für diese Bindung enthält. Falls der Name der App-Einstellung mit „AzureWebJobs“ beginnt, können Sie nur den Rest des Namens angeben. Wenn Sie `connection` also beispielsweise auf „MyServiceBus“ festlegen, sucht die Functions-Laufzeit nach einer App-Einstellung namens „AzureWebJobsMyServiceBus“. Ohne Angabe für `connection` verwendet die Functions-Laufzeit die standardmäßige Service Bus-Verbindungszeichenfolge aus der App-Einstellung „AzureWebJobsServiceBus“.<br><br>Um die Verbindungszeichenfolge zu erhalten, führen Sie die Schritte unter [Abrufen der Verwaltungsanmeldeinformationen](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string) aus. Die Verbindungszeichenfolge muss für einen Service Bus-Namespace gelten und darf nicht auf eine bestimmte Warteschlange oder ein Thema beschränkt sein.<br><br>Wenn Sie [Version 5.x oder höher der Erweiterung](./functions-bindings-service-bus.md#service-bus-extension-5x-and-higher) verwenden, können Sie anstelle einer Verbindungszeichenfolge einen Verweis auf einen Konfigurationsabschnitt angeben, der die Verbindung definiert. Siehe [Verbindungen](./functions-reference.md#connections).|
+|**connection**|**Connection**|Der Name einer App-Einstellung oder -Einstellungssammlung, die angibt, wie eine Verbindung mit Service Bus hergestellt wird Siehe [Verbindungen](#connections).|
 |**accessRights** (nur v1)|**zugreifen**|Zugriffsberechtigungen für die Verbindungszeichenfolge. Verfügbare Werte sind `manage` und `listen`. Die Standardeinstellung ist `manage`, d.h. heißt, dass die `connection` die Berechtigung **Manage** hat. Wenn Sie eine Verbindungszeichenfolge verwenden, die nicht über die Berechtigung **Manage** verfügt, legen Sie `accessRights` auf „listen“ fest. Andernfalls versucht die Functions-Runtime ggf. erfolglos Vorgänge auszuführen, die Verwaltungsrechte erfordern. In Version 2.x und höheren Versionen von Azure Functions ist diese Eigenschaft nicht verfügbar, da die aktuelle Version des Service Bus SDK Verwaltungsvorgänge nicht unterstützt.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
+
+[!INCLUDE [functions-service-bus-connections](../../includes/functions-service-bus-connections.md)]
 
 ## <a name="usage"></a>Verwendung
 
@@ -352,7 +354,7 @@ Beim Arbeiten mit C# Funktionen:
 
 ### <a name="additional-types"></a>Zusätzliche Typen 
 
-Apps, die mindestens Version 5.0.0 der Service Bus-Erweiterung nutzen, verwenden den `ServiceBusMessage` Typ in [Azure.Messaging.Service Bus](/dotnet/api/azure.messaging.servicebus.servicebusmessage) anstelle des Typs im Namespace [Microsoft.Azure.ServiceBus](/dotnet/api/microsoft.azure.servicebus.message). In dieser Version wird Unterstützung des Legacytyps `Message` zugunsten der folgenden Typen aufgegeben:
+Apps, die mindestens Version 5.0.0 der Service Bus-Erweiterung nutzen, verwenden den `ServiceBusMessage`-Typ in [Azure.Messaging.Service Bus](/dotnet/api/azure.messaging.servicebus.servicebusmessage) anstelle des Typs im Namespace [Microsoft.Azure.ServiceBus](/dotnet/api/microsoft.azure.servicebus.message). In dieser Version wird Unterstützung des Legacytyps `Message` zugunsten der folgenden Typen aufgegeben:
 
 - [ServiceBusMessage](/dotnet/api/azure.messaging.servicebus.servicebusmessage)
 

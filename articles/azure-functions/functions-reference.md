@@ -4,12 +4,12 @@ description: Lernen Sie die Konzepte und Techniken der Azure Functions kennen, d
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 9/02/2021
-ms.openlocfilehash: 49c6fc554eab18ec598db7ec21ef8c15b95d7be9
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b29ae41d85d243e64fea777dcb0cf9ee5ccff581
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128669643"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130137361"
 ---
 # <a name="azure-functions-developer-guide"></a>Azure Functions: Entwicklerhandbuch
 In Azure Functions nutzen bestimmte Funktionen einige wichtige technische Konzepte und Komponenten gemeinsam, unabhängig von der verwendeten Sprache oder Bindung. Bevor Sie sich mit den spezifischen Details einer bestimmten Sprache oder Bindung beschäftigen, sollten Sie diese Übersicht lesen, die für alle Funktionen gilt.
@@ -105,59 +105,64 @@ Wenn der Verbindungsname in einen einzelnen exakten Wert aufgelöst wird, identi
 
 Ein Verbindungsname kann jedoch auch auf eine Sammlung mehrerer Konfigurationselemente verweisen. Umgebungsvariablen können als Sammlung behandelt werden, indem ein gemeinsames Präfix verwendet wird, das auf doppelte Unterstriche (`__`) endet. Auf die Gruppe kann dann verwiesen werden, indem der Verbindungsname auf dieses Präfix festgelegt wird.
 
-Beispielsweise kann die `connection`-Eigenschaft für eine Azure-Blobtriggerdefinition `Storage1` lauten. Solange kein einzelner Zeichenfolgenwert mit `Storage1` als Name konfiguriert ist, wird `Storage1__serviceUri` für die `serviceUri`-Eigenschaft der Verbindung verwendet. Die Verbindungseigenschaften unterscheiden sich für jeden Dienst. Weitere Informationen finden Sie in der Dokumentation für die Erweiterung, die die Verbindung verwendet.
+Beispielsweise kann die `connection`-Eigenschaft für eine Azure-Blobtriggerdefinition „Storage1“ lauten. Solange kein einzelner Zeichenfolgenwert von einer Umgebungsvariablen namens „Storage1“ konfiguriert wurde, kann die `blobServiceUri`-Eigenschaft durch eine Umgebungsvariable namens `Storage1__blobServiceUri` über die Verbindung informiert werden. Die Verbindungseigenschaften unterscheiden sich für jeden Dienst. In der Dokumentation finden Sie Informationen zu der Komponente, die die Verbindung verwendet.
 
 ### <a name="configure-an-identity-based-connection"></a>Konfigurieren einer identitätsbasierten Verbindung
 
-Einige Verbindungen in Azure Functions werden so konfiguriert, dass anstelle eines Geheimnisses eine Identität verwendet wird. Die Unterstützung hängt von der Erweiterung ab, die die Verbindung verwendet. In einigen Fällen ist möglicherweise weiterhin eine Verbindungszeichenfolge in Functions erforderlich, obwohl der Dienst, mit dem Sie eine Verbindung herstellen, identitätsbasierte Verbindungen unterstützt.
+Einige Verbindungen in Azure Functions können so konfiguriert werden, dass anstelle eines Geheimnisses eine Identität verwendet wird. Die Unterstützung hängt von der Erweiterung ab, die die Verbindung verwendet. In einigen Fällen ist möglicherweise weiterhin eine Verbindungszeichenfolge in Functions erforderlich, obwohl der Dienst, mit dem Sie eine Verbindung herstellen, identitätsbasierte Verbindungen unterstützt.
 
-Identitätsbasierte Verbindungen werden von den folgenden Trigger- und Bindungserweiterungen unterstützt:
+Identitätsbasierte Verbindungen werden von den folgenden Komponenten unterstützt:
+
+| Verbindungsquelle                                       | Unterstützte Pläne | Weitere Informationen                                                                                                         |
+|---------------------------------------------------------|-----------------|--------------------------------------------------------------------------------------------------------------------|
+| Trigger und Bindungen bei Azure-Blob – Vorschau              | All             | [Erweiterungsversion 5.0.0-beta1 oder höher](./functions-bindings-storage-blob.md#storage-extension-5x-and-higher)     |
+| Trigger und Bindungen bei Azure Queue – Vorschau             | All             | [Erweiterungsversion 5.0.0-beta1 oder höher](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher)    |
+| Trigger und Bindungen bei Azure Event Hubs – Vorschau        | All             | [Erweiterungsversion 5.0.0-beta1 oder höher](./functions-bindings-event-hubs.md#event-hubs-extension-5x-and-higher)    |
+| Trigger und Bindungen bei Azure Service Bus – Vorschau       | All             | [Erweiterungsversion 5.0.0-beta2 oder höher](./functions-bindings-service-bus.md#service-bus-extension-5x-and-higher)  |
+| Trigger und Bindungen bei Azure Cosmos DB – Vorschau         | Elastic Premium | [Erweiterungsversion 4.0.0-preview1 oder höher](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher) |
+| Vom Host benötigter Speicher („AzureWebJobsStorage“) – Vorschau | All             | [Verbinden zum Hostspeicher mit einer Identität](#connecting-to-host-storage-with-an-identity-preview)                        |
 
 > [!NOTE]
 > Identitätsbasierte Verbindungen werden mit Durable Functions nicht unterstützt.
 
-| Name der Erweiterung | Erweiterungsversion                                                                                     | Unterstützte Pläne     |
-|----------------|-------------------------------------------------------------------------------------------------------|---------------------|
-| Azure Blob     | [Version 5.0.0-beta1 oder höher](./functions-bindings-storage-blob.md#storage-extension-5x-and-higher)  | All                 |
-| Azure Queue    | [Version 5.0.0-beta1 oder höher](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher) | All                 |
-| Azure Event Hubs    | [Version 5.0.0-beta1 oder höher](./functions-bindings-event-hubs.md#event-hubs-extension-5x-and-higher) | All            |
-| Azure-Servicebus    | [Version 5.0.0-beta2 oder höher](./functions-bindings-service-bus.md#service-bus-extension-5x-and-higher) | All         |
-| Azure Cosmos DB   | [Version 4.0.0-preview1 oder höher](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher) | Elastic Premium |
+[!INCLUDE [functions-identity-based-connections-configuration](../../includes/functions-identity-based-connections-configuration.md)]
 
+Wählen Sie unten eine Registerkarte aus, um mehr über Berechtigungen für die einzelnen Komponenten zu erfahren:
 
-Die von der Functions-Runtime (`AzureWebJobsStorage`) verwendeten Speicherverbindungen können auch mithilfe einer identitätsbasierten Verbindung konfiguriert werden. Weitere Informationen finden Sie weiter unten unter [Verbinden zum Hostspeicher mit einer Identität](#connecting-to-host-storage-with-an-identity).
+# <a name="azure-blobs-extension"></a>[Azure Blobs-Erweiterung](#tab/blob)
 
-Identitätsbasierte Verbindungen verwenden eine [verwaltete Identität](../app-service/overview-managed-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json), wenn sie im Azure Functions-Dienst gehostet werden. Standardmäßig wird eine vom System zugewiesene Identität verwendet, auch wenn mit den Eigenschaften `credential` und `clientID` eine vom Benutzer zugewiesene Identität angegeben werden kann. Bei Ausführung in anderen Kontexten (z. B. bei der lokalen Entwicklung) wird stattdessen Ihre Entwickleridentität verwendet, obwohl dies mithilfe alternativer Verbindungsparameter angepasst werden kann.
+[!INCLUDE [functions-blob-permissions](../../includes/functions-blob-permissions.md)]
 
-#### <a name="grant-permission-to-the-identity"></a>Erteilen der Berechtigung für die Identität
+# <a name="azure-queues-extension"></a>[Azure Queues-Erweiterung](#tab/queue)
 
-Unabhängig davon, welche Identität verwendet wird, muss diese über Berechtigungen zum Ausführen der vorgesehenen Aktionen verfügen. Dies erfolgt in der Regel durch Zuweisen einer Rolle in Azure RBAC oder durch Angeben der Identität in einer Zugriffsrichtlinie, abhängig vom Dienst, mit dem Sie eine Verbindung herstellen. Informationen dazu, welche Berechtigungen erforderlich sind und wie diese festgelegt werden können, finden Sie in der Dokumentation zur jeweiligen Erweiterung.
+[!INCLUDE [functions-queue-permissions](../../includes/functions-queue-permissions.md)]
 
-> [!IMPORTANT]
-> Vom Zieldienst werden möglicherweise einige nicht für alle Kontexte erforderliche Berechtigungen verfügbar gemacht. Befolgen Sie nach Möglichkeit das **Prinzip der geringsten Berechtigung**, und gewähren Sie der Identität nur die erforderlichen Berechtigungen. Wenn die App z. B. nur aus einem Blob lesen muss, verwenden Sie die Rolle [Speicherblob-Datenleser](../role-based-access-control/built-in-roles.md#storage-blob-data-reader), da die Rolle [Besitzer der Speicherblobdaten](../role-based-access-control/built-in-roles.md#storage-blob-data-owner) über zu umfangreiche Berechtigungen für einen Lesevorgang verfügt.
-Die folgenden Rollen umfassen die primären Berechtigungen, die für jede Erweiterung im Normalbetrieb benötigt werden:
+# <a name="event-hubs-extension"></a>[Event Hubs-Erweiterung](#tab/eventhubs)
 
-| Dienst     | Integrierte Beispielrollen |
-|-------------|------------------------|
-| Azure-Blobs  | [Speicherblob-Datenleser](../role-based-access-control/built-in-roles.md#storage-blob-data-reader), [Speicherblob-Datenbesitzer](../role-based-access-control/built-in-roles.md#storage-blob-data-owner)                 |
-| Azure-Warteschlangen | [Speicherwarteschlangen-Datenleser](../role-based-access-control/built-in-roles.md#storage-queue-data-reader), [Speicherwarteschlangen-Datennachrichtenprozessor](../role-based-access-control/built-in-roles.md#storage-queue-data-message-processor), [Speicherwarteschlangen-Datennachrichtensender](../role-based-access-control/built-in-roles.md#storage-queue-data-message-sender), [Speicherwarteschlangen-Datenmitwirkender](../role-based-access-control/built-in-roles.md#storage-queue-data-contributor)             |
-| Event Hubs   |    [Azure Event Hubs-Datenempfänger](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-receiver), [Azure Event Hubs-Datensender](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-sender), [Azure Event Hubs-Datenbesitzer](../role-based-access-control/built-in-roles.md#azure-event-hubs-data-owner)              |
-| Service Bus | [Azure Service Bus-Datenempfänger](../role-based-access-control/built-in-roles.md#azure-service-bus-data-receiver), [Azure Service Bus-Datensender](../role-based-access-control/built-in-roles.md#azure-service-bus-data-sender), [Azure Service Bus-Datenbesitzer](../role-based-access-control/built-in-roles.md#azure-service-bus-data-owner) |
-| Azure Cosmos DB | [Integrierter Cosmos DB-Datenleser](../cosmos-db/how-to-setup-rbac.md#built-in-role-definitions), [Integrierter Mitwirkender an Cosmos DB-Daten](../cosmos-db/how-to-setup-rbac.md#built-in-role-definitions) |
+[!INCLUDE [functions-event-hubs-permissions](../../includes/functions-event-hubs-permissions.md)]
 
-#### <a name="connection-properties"></a>Verbindungseigenschaften
+# <a name="service-bus-extension"></a>[Service Bus-Erweiterung](#tab/servicebus)
 
-Eine identitätsbasierte Verbindung für einen Azure-Dienst akzeptiert die folgenden Eigenschaften, wobei `<CONNECTION_NAME_PREFIX>` der Wert Ihrer `connection`-Eigenschaft in der Trigger- oder Bindungsdefinition ist:
+[!INCLUDE [functions-service-bus-permissions](../../includes/functions-service-bus-permissions.md)]
 
-| Eigenschaft    | Erforderlich für Erweiterungen | Umgebungsvariable | BESCHREIBUNG |
+# <a name="azure-cosmos-db-extension"></a>[Azure Cosmos DB-Erweiterung](#tab/cosmos)
+
+[!INCLUDE [functions-cosmos-permissions](../../includes/functions-cosmos-permissions.md)]
+
+# <a name="functions-host-storage"></a>[Functions-Hostspeicher](#tab/azurewebjobsstorage)
+
+[!INCLUDE [functions-azurewebjobsstorage-permissions](../../includes/functions-azurewebjobsstorage-permissions.md)]
+
+---
+
+#### <a name="common-properties-for-identity-based-connections"></a>Allgemeine Eigenschaften für identitätsbasierte Verbindungen
+
+Eine identitätsbasierte Verbindung für einen Azure-Dienst akzeptiert die folgenden allgemeinen Eigenschaften, wobei `<CONNECTION_NAME_PREFIX>` der Wert Ihrer `connection`-Eigenschaft in der Trigger- oder Bindungsdefinition ist:
+
+| Eigenschaft    |  Vorlage für Umgebungsvariablen | BESCHREIBUNG |
 |---|---|---|---|
-| Dienst-URI | Azure Blob<sup>1</sup>, Azure Warteschlange | `<CONNECTION_NAME_PREFIX>__serviceUri` | Der URI der Datenebene des Diensts, mit dem Sie eine Verbindung herstellen. |
-| Vollqualifizierter Namespace | Event Hubs, Service Bus | `<CONNECTION_NAME_PREFIX>__fullyQualifiedNamespace` | Der vollqualifizierte Event Hubs- und Service Bus-Namespace. |
-| Kontoendpunkt | Azure Cosmos DB | `<CONNECTION_NAME_PREFIX>__accountEndpoint` | Der URI des Azure Cosmos DB-Kontoendpunkts. |
-| Token-Anmeldeinformationen | (Optional) | `<CONNECTION_NAME_PREFIX>__credential` | Damit wird festgelegt, wie für die Verbindung ein Token abgerufen werden soll. Wird nur empfohlen, wenn eine vom Benutzer zugewiesene Identität angegeben wird. Dann muss sie auf „managedidentity“ festgelegt werden. Dies gilt nur, wenn sie im Azure Functions-Dienst gehostet wird. |
-| Client-ID | (Optional) | `<CONNECTION_NAME_PREFIX>__clientId` | Wenn `credential` auf „managedidentity“ festgelegt ist, wird mit dieser Eigenschaft die vom Benutzer zugewiesene Identität angegeben, die beim Abrufen eines Tokens verwendet werden soll. Die Eigenschaft akzeptiert eine Client-ID, die einer vom Benutzer zugewiesenen Identität entspricht, die der Anwendung zugeordnet ist. Wenn nichts angegeben wird, wird die vom System zugewiesene Identität verwendet. Diese Eigenschaft wird in [Szenarios für die lokale Entwicklung](#local-development-with-identity-based-connections) anders verwendet, wenn `credential` nicht festgelegt werden darf. |
-
-<sup>1</sup> Für Azure Blob sind sowohl Blob- als auch Warteschlangendienst-URIs erforderlich.
+| Token-Anmeldeinformationen |  `<CONNECTION_NAME_PREFIX>__credential` | Damit wird festgelegt, wie für die Verbindung ein Token abgerufen werden soll. Wird nur empfohlen, wenn eine vom Benutzer zugewiesene Identität angegeben wird. Dann muss sie auf „managedidentity“ festgelegt werden. Dies gilt nur, wenn sie im Azure Functions-Dienst gehostet wird. |
+| Client-ID | `<CONNECTION_NAME_PREFIX>__clientId` | Wenn `credential` auf „managedidentity“ festgelegt ist, wird mit dieser Eigenschaft die vom Benutzer zugewiesene Identität angegeben, die beim Abrufen eines Tokens verwendet werden soll. Die Eigenschaft akzeptiert eine Client-ID, die einer vom Benutzer zugewiesenen Identität entspricht, die der Anwendung zugeordnet ist. Wenn nichts angegeben wird, wird die vom System zugewiesene Identität verwendet. Diese Eigenschaft wird in [Szenarios für die lokale Entwicklung](#local-development-with-identity-based-connections) anders verwendet, wenn `credential` nicht festgelegt werden darf. |
 
 Für einen bestimmten Verbindungstyp können weitere Optionen unterstützt werden. Weitere Informationen finden Sie in der Dokumentation zu der Komponente, die die Verbindung herstellt.
 
@@ -172,26 +177,24 @@ Bei lokaler Ausführung weist die Konfiguration oben die Laufzeit an, Ihre lokal
 
 Wenn keine dieser Optionen erfolgreich ist, tritt ein Fehler auf.
 
-In einigen Fällen möchten Sie möglicherweise die Verwendung einer anderen Identität angeben. Sie können Konfigurationseigenschaften für die Verbindung hinzufügen, die auf die alternative Identität verweisen.
+Da dabei die Entwickleridentität verwendet wird, verfügen Sie möglicherweise bereits über einige Rollen für Entwicklungsressourcen. Diese bieten jedoch möglicherweise keinen Datenzugriff. Verwaltungsrollen wie [Besitzer](../role-based-access-control/built-in-roles.md#owner) sind nicht ausreichend. Überprüfen Sie, welche Berechtigungen für Verbindungen für jede Komponente erforderlich sind, und stellen Sie sicher, dass sie Ihnen selbst zugewiesen sind.
 
-> [!NOTE]
-> Die folgenden Konfigurationsoptionen werden nicht unterstützt, wenn das Hosting im Azure Functions-Dienst erfolgt.
+In einigen Fällen möchten Sie möglicherweise die Verwendung einer anderen Identität angeben. Sie können Konfigurationseigenschaften für die Verbindung hinzufügen, die auf die alternative Identität basierend auf einer Client-ID und einem geheimen Clientschlüssel für ein Azure Active Directory-Dienstprinzipal verweisen. **Diese Konfigurationsoption wird nicht unterstützt, wenn das Hosting im Azure Functions-Dienst erfolgt.** Um eine ID und ein Geheimnis auf Ihrem lokalen Computer zu verwenden, definieren Sie die Verbindung mit den folgenden zusätzlichen Eigenschaften:
 
-Um eine Verbindung mithilfe eines Azure Active Directory-Dienstprinzipals mit einer Client-ID und einem Geheimnis herzustellen, definieren Sie die Verbindung zusätzlich zu obigen [Verbindungseigenschaften](#connection-properties) mit den folgenden erforderlichen Eigenschaften:
-
-| Eigenschaft    | Umgebungsvariable | BESCHREIBUNG |
+| Eigenschaft    | Vorlage für Umgebungsvariablen | BESCHREIBUNG |
 |---|---|---|
 | Mandanten-ID | `<CONNECTION_NAME_PREFIX>__tenantId` | Die ID des Azure Active Directory-Mandanten (Verzeichnis). |
 | Client-ID | `<CONNECTION_NAME_PREFIX>__clientId` |  Die Client-ID (Anwendungs-ID) einer App-Registrierung im Mandanten. |
 | Geheimer Clientschlüssel | `<CONNECTION_NAME_PREFIX>__clientSecret` | Ein Clientgeheimnis, das für die App-Registrierung generiert wurde. |
 
-Beispiel für `local.settings.json`-Eigenschaften, die für identitätsbasierte Verbindungen mit Azure Blob Storage erforderlich sind: 
+Beispiel für `local.settings.json`-Eigenschaften, die für identitätsbasierte Verbindungen mit Azure Blob erforderlich sind: 
 
 ```json
 {
   "IsEncrypted": false,
   "Values": {
-    "<CONNECTION_NAME_PREFIX>__serviceUri": "<serviceUri>",
+    "<CONNECTION_NAME_PREFIX>__blobServiceUri": "<blobServiceUri>",
+    "<CONNECTION_NAME_PREFIX>__queueServiceUri": "<queueServiceUri>",
     "<CONNECTION_NAME_PREFIX>__tenantId": "<tenantId>",
     "<CONNECTION_NAME_PREFIX>__clientId": "<clientId>",
     "<CONNECTION_NAME_PREFIX>__clientSecret": "<clientSecret>"
@@ -199,32 +202,27 @@ Beispiel für `local.settings.json`-Eigenschaften, die für identitätsbasierte 
 }
 ```
 
-Beispiel für `local.settings.json`-Eigenschaften, die für identitätsbasierte Verbindungen mit Azure Cosmos DB erforderlich sind: 
+#### <a name="connecting-to-host-storage-with-an-identity-preview"></a>Verbinden mit dem Hostspeicher mit einer Identität (Vorschau)
 
-```json
-{
-  "IsEncrypted": false,
-  "Values": {
-    "<CONNECTION_NAME_PREFIX>__accountEndpoint": "<accountEndpoint>",
-    "<CONNECTION_NAME_PREFIX>__tenantId": "<tenantId>",
-    "<CONNECTION_NAME_PREFIX>__clientId": "<clientId>",
-    "<CONNECTION_NAME_PREFIX>__clientSecret": "<clientSecret>"
-  }
-}
-```
-
-#### <a name="connecting-to-host-storage-with-an-identity"></a>Verbinden zum Hostspeicher mit einer Identität
-
-Azure Functions verwendet standardmäßig die `AzureWebJobsStorage`-Verbindung für Kernfunktionalität wie die Koordination der Singletonausführung von Timertriggern und der standardmäßigen Speicherung von App-Schlüsseln. Dies kann auch so konfiguriert werden, dass eine Identität genutzt wird.
+Azure Functions verwendet standardmäßig die „AzureWebJobsStorage“-Verbindung für Kernfunktionalitäten wie die Koordination der Singletonausführung von Timertriggern und der standardmäßigen Speicherung von App-Schlüsseln. Sie kann auch so konfiguriert werden, dass eine Identität genutzt wird.
 
 > [!CAUTION]
-> Einige Apps werden `AzureWebJobsStorage` für Speicherverbindungen in ihren Triggern, Bindungen und/oder Funktionscode wiederverwenden. Stellen Sie sicher, dass bei Verwendung von `AzureWebJobsStorage` immer das identitätsbasierte Verbindungsformat verwendet werden kann, bevor Sie diese Verbindung durch eine Verbindungszeichenfolge ändern.
+> Andere Komponenten in Functions basieren für Standardverhalten auf „AzureWebJobsStorage“. Sie sollten sie nicht in eine identitätsbasierte Verbindung verschieben, wenn Sie ältere Versionen von Erweiterungen verwenden, die diese Art von Verbindung nicht unterstützen, einschließlich Triggern und Bindungen für Azure-Blobs und Event Hubs.
+> 
+> Außerdem verwenden einige Apps „AzureWebJobsStorage“ für andere Speicherverbindungen in ihren Triggern, Bindungen und/oder in ihrem Funktionscode wieder. Stellen Sie sicher, dass alle Benutzer*innen von „AzureWebJobsStorage“ das identitätsbasierte Verbindungsformat verwenden können, bevor Sie diese Verbindung einer Verbindungszeichenfolge ändern.
 
-Um die Verbindung auf diese Weise zu konfigurieren, stellen Sie sicher, dass die Identität der App über die Rolle [Besitzer von Speicherblobdaten](../role-based-access-control/built-in-roles.md#storage-blob-data-owner) verfügt, um die Kernfunktionalität des Hosts zu unterstützen. Möglicherweise benötigen Sie zusätzliche Berechtigungen, wenn Sie „AzureWebJobsStorage“ für andere Zwecke verwenden.
+Um eine identitätsbasierte Verbindung für „AzureWebJobsStorage“ zu verwenden, konfigurieren Sie die folgenden App-Einstellungen:
 
-Wenn Sie ein Speicherkonto verwenden, das global das standardmäßige DNS-Suffix und den standardmäßigen Dienstnamen für Azure verwendet, können Sie gemäß dem `https://<accountName>.blob/queue/file/table.core.windows.net`-Format den Namen Ihres Speicherkontos als `AzureWebJobsStorage__accountName` festlegen. 
+| Einstellung                       | BESCHREIBUNG                                | Beispielwert                                        |
+|-----------------------------------------------------|--------------------------------------------|------------------------------------------------|
+| `AzureWebJobsStorage__blobServiceUri`| Der Datenebenen-URI des Blobdiensts des Speicherkontos | <Speicherkontoname>.blob.core.windows.net |
+| `AzureWebJobsStorage__queueServiceUri` | Der Datenebenen-URI des Warteschlangendiensts des Speicherkontos | <Speicherkontoname>.queue.core.windows.net |
 
-Wenn Sie stattdessen ein Speicherkonto in einer Sovereign Cloud oder mit benutzerdefiniertem DNS verwenden, legen Sie für `AzureWebJobsStorage__serviceUri` die URI Ihres Blobdiensts fest. Wenn „AzureWebJobsStorage“ für einen anderen Dienst verwendet wird, können Sie stattdessen separat `AzureWebJobsStorage__blobServiceUri`, `AzureWebJobsStorage__queueServiceUri` und `AzureWebJobsStorage__tableServiceUri` angeben.
+[Allgemeine Eigenschaften für identitätsbasierte Verbindungen](#common-properties-for-identity-based-connections) können auch festgelegt werden.
+
+Wenn Sie ein Speicherkonto verwenden, das global das standardmäßige DNS-Suffix und den standardmäßigen Dienstnamen für Azure verwendet, können Sie gemäß dem `https://<accountName>.blob/queue/file/table.core.windows.net`-Format stattdessen `AzureWebJobsStorage__accountName` mit dem Namen Ihres Speicherkontos festlegen. Die Blob- und Warteschlangenendpunkte werden für dieses Konto abgeleitet. Dies funktioniert nicht, wenn sich das Speicherkonto in einer Sovereign Cloud befindet oder über ein benutzerdefiniertes DNS verfügt.
+
+[!INCLUDE [functions-azurewebjobsstorage-permissions](../../includes/functions-azurewebjobsstorage-permissions.md)]
 
 ## <a name="reporting-issues"></a>Melden von Problemen
 [!INCLUDE [Reporting Issues](../../includes/functions-reporting-issues.md)]

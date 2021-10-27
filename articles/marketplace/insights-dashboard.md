@@ -8,12 +8,12 @@ author: smannepalle
 ms.author: smannepalle
 ms.reviewer: sroy
 ms.date: 09/27/2021
-ms.openlocfilehash: a8ee69e0c9c196f42a733c4cb6c3079228238b21
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: 30b26ea098c66bc807250c0100db93d7564222b6
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129082921"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130069195"
 ---
 # <a name="marketplace-insights-dashboard-in-commercial-marketplace-analytics"></a>Dashboard „Marketplace-Erkenntnisse“ in Analysen für den kommerziellen Marketplace
 
@@ -23,7 +23,7 @@ Ausführliche Definitionen der Analyseterminologie finden Sie unter [Analysen f�
 
 ## <a name="marketplace-insights-dashboard"></a>Dashboard „Marketplace-Erkenntnisse“
 
-Das [Dashboard „Marketplace-Erkenntnisse“](https://go.microsoft.com/fwlink/?linkid=2165936) bietet eine Übersicht über die Geschäftsleistung der Angebote von Azure Marketplace und AppSource. Dieses Dashboard bietet eine umfassende Übersicht über Folgendes:
+Das [Dashboard „Marketplace Insights“](https://go.microsoft.com/fwlink/?linkid=2165936) bietet eine Übersicht über die Unternehmensleistung der Angebote von Azure Marketplace und AppSource. Dieses Dashboard bietet eine umfassende Übersicht über Folgendes:
 
 - Seitenbesuchstrend
 - Handlungsaufforderungstrend

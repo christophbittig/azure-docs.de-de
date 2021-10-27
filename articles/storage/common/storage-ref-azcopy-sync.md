@@ -8,12 +8,12 @@ ms.date: 09/01/2021
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 6acafe9f1fab42f5dde74eaaa4426f1953bf0f9b
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: b1a9f54febcd2ebf36287590cb0579f8d2dea804
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129275409"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130166348"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
@@ -149,7 +149,7 @@ Zeichenfolge **--cpk-by-name**: Vom Client bereitgestellter Schlüssel nach Name
 
 **--exclude-pattern string**   Schließt Dateien aus, deren Name der Musterliste entspricht. Beispiel: `*.jpg;*.pdf;exactName`
 
-Zeichenfolge **--exclude-regex**: Schließt den relativen Pfad der Dateien aus, die regulären Ausdrücken entsprechen. Trennen Sie reguläre Ausdrücke durch ein Semikolon(;).
+Zeichenfolge **--exclude-regex**: Schließt den relativen Pfad der Dateien aus, die regulären Ausdrücken entsprechen. Reguläre Ausdrücke werden durch Semikolon (;) getrennt.
 
 **--help**  Hilfe zu „sync“.
 
@@ -169,7 +169,7 @@ Zeichenfolge **--exclude-regex**: Schließt den relativen Pfad der Dateien aus, 
 
 **--recursive**  Standardmäßig `True`; überprüfen Sie Unterverzeichnisse rekursiv, wenn Sie zwischen Verzeichnissen synchronisieren. (Standardwert: `True`)
 
-**--s2s-preserve-access-tier**  Behält die Zugriffsebene beim Kopieren zwischen Diensten bei. Informationen zur Sicherstellung, dass für das Zielspeicherkonto das Festlegen der Zugriffsebene unterstützt wird, finden Sie unter [Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“ für Blobdaten](../blobs/access-tiers-overview.md). Verwenden Sie in den Fällen, in denen das Festlegen der Zugriffsebene nicht unterstützt wird, „s2sPreserveAccessTier=false“, um das Kopieren der Zugriffsebene zu umgehen. (Standardwert: `true`)
+**--s2s-preserve-access-tier**  Behält die Zugriffsebene beim Kopieren zwischen Diensten bei. Informationen zur Sicherstellung, dass für das Zielspeicherkonto das Festlegen der Zugriffsebene unterstützt wird, finden Sie unter [Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“ für Blobdaten](../blobs/access-tiers-overview.md). Verwenden Sie `--s2s-preserve-access-tier=false` in den Fällen, in denen das Festlegen der Zugriffsebene nicht unterstützt wird, um das Kopieren der Zugriffsebene zu umgehen. (Standardwert: `true`)
 
 **--s2s-preserve-blob-tags**: Behält Indextags während der Synchronisierung zwischen Diensten von einem Blobspeicher zu einem anderen bei.
 

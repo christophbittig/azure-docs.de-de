@@ -13,12 +13,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea87a6729e6f8339ad92bc9d57e7152199349ac5
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 3510851f311e57173d5fd023db948c7f71597f26
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111965925"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130047378"
 ---
 # <a name="how-azure-ad-delivers-cloud-governed-management-for-on-premises-workloads"></a>So stellt Azure AD die über die Cloud gesteuerte Verwaltung für lokale Workloads bereit
 
@@ -107,7 +107,7 @@ Organisationen benötigen einen Prozess zum Verwalten des Zugriffs, der skalierb
 
 In der Regel delegiert die IT-Abteilung Entscheidungen bezüglich der Zugriffsgenehmigung an Entscheidungsträger im Unternehmen. Darüber hinaus kann die IT die Benutzer selbst in den Prozess einbeziehen. Beispielsweise müssen Benutzer, die in Europa auf vertrauliche Kundendaten in der Marketinganwendung eines Unternehmens zugreifen, die Richtlinien des Unternehmens kennen. Außerdem kennen Gastbenutzer die Anforderungen für die Behandlung von Daten in einer Organisation, zu der sie eingeladen wurden, möglicherweise nicht.
 
-Organisationen können den Zugriffslebenszyklusprozess mit Technologien wie [dynamischen Gruppen](../enterprise-users/groups-dynamic-membership.md) in Verbindung mit der Benutzerbereitstellung in [SaaS-Anwendungen](../saas-apps/tutorial-list.md) oder [mithilfe des SCIM-Standards (System for Cross-Domain Identity Management) integrierten Apps](../app-provisioning/use-scim-to-provision-users-and-groups.md) automatisieren. Außerdem können Organisationen steuern, welche [Gastbenutzer Zugriff auf lokale Anwendungen haben](../external-identities/hybrid-cloud-to-on-premises.md). Diese Zugriffsrechte können dann regelmäßig mithilfe von wiederkehrenden [Azure AD-Zugriffsüberprüfungen](../governance/access-reviews-overview.md) überprüft werden.
+Organisationen können den Zugriffslebenszyklusprozess mit Technologien wie [dynamischen Gruppen](../enterprise-users/groups-dynamic-membership.md) in Verbindung mit der Benutzerbereitstellung in [SaaS-Anwendungen](../saas-apps/tutorial-list.md) oder [mithilfe des SCIM-Standards (System for Cross-Domain Identity Management) integrierten Anwendungen](../app-provisioning/use-scim-to-provision-users-and-groups.md) automatisieren. Außerdem können Organisationen steuern, welche [Gastbenutzer Zugriff auf lokale Anwendungen haben](../external-identities/hybrid-cloud-to-on-premises.md). Diese Zugriffsrechte können dann regelmäßig mithilfe von wiederkehrenden [Azure AD-Zugriffsüberprüfungen](../governance/access-reviews-overview.md) überprüft werden.
 
 ## <a name="future-directions"></a>Künftige Ausrichtung
 

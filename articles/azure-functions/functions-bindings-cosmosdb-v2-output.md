@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/01/2021
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: d43407221d62992a54f1e5efdeb23afd3dde92ef
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.openlocfilehash: e8c2ba6f93d788d377cdb21beb157ea55a066b98
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129661177"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129999794"
 ---
 # <a name="azure-cosmos-db-output-binding-for-azure-functions-2x-and-higher"></a>Azure Cosmos DB-Ausgabebindung für Azure Functions 2.x und höher
 
@@ -673,15 +673,17 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 |**direction**     | – | Muss auf `out` festgelegt sein.         |
 |**name**     | – | Der Name des Bindungsparameters, der das Dokument in der Funktion darstellt  |
 |**databaseName** | **DatabaseName**|Die Datenbank mit der Sammlung, in der das neue Dokument erstellt wird     |
-|**collectionName** <br> oder <br> **containerName** |**CollectionName** <br> oder <br> **ContainerName** | Der Name der Sammlung, in der das neue Dokument erstellt wird <br><br> In [Version 4.x der Erweiterung](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher) wird diese Eigenschaft als `ContainerName` bezeichnet. |
+|**collectionName** <br> oder <br> **containerName** |**CollectionName** <br> oder <br> **ContainerName** | Der Name der Sammlung, in der das neue Dokument erstellt wird <br><br> In [Version 4.x der Erweiterung] wird diese Eigenschaft als `ContainerName` bezeichnet. |
 |**createIfNotExists**  |**CreateIfNotExists**    | Ein boolescher Wert, der angibt, ob die Sammlung erstellt werden soll, wenn sie nicht vorhanden ist. Der Standardwert ist *FALSE*, da neue Sammlungen mit reserviertem Durchsatz erstellt werden. Dies wirkt sich auf die Kosten aus. Weitere Informationen hierzu finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/cosmos-db/).  |
 |**partitionKey**|**PartitionKey** |Wenn `CreateIfNotExists` den Wert TRUE hat, definiert dies den Partitionsschlüsselpfad für die erstellte Sammlung.|
-|**collectionThroughput** <br> oder <br> **containerThroughput**|**CollectionThroughput** <br> oder <br> **ContainerThroughput**| Wenn `CreateIfNotExists` den Wert TRUE hat, definiert dies den [Durchsatz](../cosmos-db/set-throughput.md) für die erstellte Sammlung. <br><br> In [Version 4.x der Erweiterung](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher) wird diese Eigenschaft als `ContainerThroughput` bezeichnet. |
-|**connectionStringSetting** <br> oder <br> **connection**   |**ConnectionStringSetting** <br> oder <br> **Connection**|Der Name der App-Einstellung mit Ihrer Azure Cosmos DB-Verbindungszeichenfolge.  <br><br> In [Version 4.x der Erweiterung](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher) wird diese Eigenschaft als `Connection` bezeichnet. Der Wert ist der Name einer App-Einstellung, die entweder die Verbindungszeichenfolge oder einen Konfigurationsabschnitt bzw. ein Präfix enthält, mit dem die Verbindung definiert wird. Siehe [Verbindungen](./functions-reference.md#connections). |
+|**collectionThroughput** <br> oder <br> **containerThroughput**|**CollectionThroughput** <br> oder <br> **ContainerThroughput**| Wenn `CreateIfNotExists` den Wert TRUE hat, definiert dies den [Durchsatz](../cosmos-db/set-throughput.md) für die erstellte Sammlung. <br><br> In [Version 4.x der Erweiterung] wird diese Eigenschaft als `ContainerThroughput` bezeichnet. |
+|**connectionStringSetting** <br> oder <br> **connection**   |**ConnectionStringSetting** <br> oder <br> **Connection**| Der Name einer App-Einstellung oder -Einstellungssammlung, die angibt, wie eine Verbindung mit dem Azure Cosmos DB-Konto hergestellt werden soll. Weitere Informationen finden Sie unter [Verbindungen](#connections). <br><br> In [Version 4.x der Erweiterung] wird diese Eigenschaft als `connection` bezeichnet. |
 |**preferredLocations**| **PreferredLocations**| (Optional) Definiert bevorzugte Standorte (Regionen) für georeplizierte Datenbankkonten im Azure Cosmos DB-Dienst. Werte sollten durch Trennzeichen getrennt sein. Beispiel: „USA, Osten,USA, Süden-Mitte,Europa, Norden“. |
-|**useMultipleWriteLocations**| **UseMultipleWriteLocations**| (Optional) Wenn diese Option auf `true` festgelegt und zusammen mit `PreferredLocations` verwendet wird, können [Schreibvorgänge in mehreren Regionen](../cosmos-db/how-to-manage-database-account.md#configure-multiple-write-regions) im Azure Cosmos DB-Dienst genutzt werden. <br><br> Diese Eigenschaft ist in [Version 4.x der Erweiterung](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher) nicht verfügbar. |
+|**useMultipleWriteLocations**| **UseMultipleWriteLocations**| (Optional) Wenn diese Option auf `true` festgelegt und zusammen mit `PreferredLocations` verwendet wird, können [Schreibvorgänge in mehreren Regionen](../cosmos-db/how-to-manage-database-account.md#configure-multiple-write-regions) im Azure Cosmos DB-Dienst genutzt werden. <br><br> Diese Eigenschaft ist in [Version 4.x der Erweiterung] nicht verfügbar. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
+
+[!INCLUDE [functions-cosmosdb-connections](../../includes/functions-cosmosdb-connections.md)]
 
 ## <a name="usage"></a>Verwendung
 
@@ -720,10 +722,12 @@ Standardmäßig wird beim Schreiben in den Ausgabeparameter in Ihrer Funktion ei
 |Eigenschaft  |Standard |BESCHREIBUNG |
 |----------|--------|------------|
 |GatewayMode|Gateway|Der von der Funktion zum Herstellen von Verbindungen mit dem Azure Cosmos DB-Dienst verwendete Verbindungsmodus. Die Optionen sind `Direct` und `Gateway`.|
-|Protocol|HTTPS|Das von der Funktion zum Herstellen von Verbindungen mit dem Azure Cosmos DB-Dienst verwendete Verbindungsprotokoll. Hier finden Sie [eine Erläuterung der beiden Modi](../cosmos-db/performance-tips.md#networking). <br><br> Diese Einstellung ist in [Version 4.x der Erweiterung](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher) nicht verfügbar. |
-|leasePrefix|–|Lease-Präfix, das durchgängig für alle Funktionen in einer App verwendet wird. <br><br> Diese Einstellung ist in [Version 4.x der Erweiterung](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher) nicht verfügbar.|
+|Protocol|HTTPS|Das von der Funktion zum Herstellen von Verbindungen mit dem Azure Cosmos DB-Dienst verwendete Verbindungsprotokoll. Hier finden Sie [eine Erläuterung der beiden Modi](../cosmos-db/performance-tips.md#networking). <br><br> Diese Einstellung ist in [Version 4.x der Erweiterung] nicht verfügbar. |
+|leasePrefix|–|Lease-Präfix, das durchgängig für alle Funktionen in einer App verwendet wird. <br><br> Diese Einstellung ist in [Version 4.x der Erweiterung] nicht verfügbar.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Ausführen einer Funktion, wenn ein Azure Cosmos DB-Dokument erstellt oder geändert wird (Trigger)](./functions-bindings-cosmosdb-v2-trigger.md)
 - [Lesen eines Azure Cosmos DB-Dokuments (Eingabebindung)](./functions-bindings-cosmosdb-v2-input.md)
+
+[Version 4.x der Erweiterung]: ./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher

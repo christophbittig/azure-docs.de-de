@@ -3,13 +3,13 @@ title: Optionen für Oracle auf BareMetal-Infrastrukturservern
 description: Erfahren Sie mehr über die Optionen und Überlegungen für Oracle auf BareMetal-Infrastrukturservern.
 ms.topic: reference
 ms.subservice: baremetal-oracle
-ms.date: 04/15/2021
-ms.openlocfilehash: eb77731ad018817cf6d868cefd6a4d84b8f6d330
-ms.sourcegitcommit: e1d5abd7b8ded7ff649a7e9a2c1a7b70fdc72440
+ms.date: 10/12/2021
+ms.openlocfilehash: 0c4442910ed40ece8147bca919039a7c4564a4f7
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110578652"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129999585"
 ---
 # <a name="options-for-oracle-baremetal-infrastructure-servers"></a>Optionen für Oracle auf BareMetal-Infrastrukturservern
 
@@ -34,13 +34,15 @@ Oracle ermöglicht Ihnen die Konfiguration mehrerer Ziele für die Generierung v
 
 :::image type="content" source="media/oracle-high-availability/default-data-guard-deployment.png" alt-text="Diagramm der Data Guard-Standardbereitstellung von Oracle":::
 
-Für eine Standardbereitstellung wird Data Guard im Modus „Maximale Leistung“ konfiguriert. Diese Konfiguration bietet über den asynchronen Datentransport für Wiederholungsvorgänge eine Datenreplikation, die nahezu in Echtzeit erfolgt. Die Standbydatenbank muss nicht innerhalb einer RAC-Bereitstellung ausgeführt werden, sie sollte jedoch den Leistungsanforderungen des primären Standorts entsprechen.
+Für eine Standardbereitstellung wird Data Guard im Modus „Maximale Leistung“ konfiguriert. Diese Konfiguration bietet über den asynchronen Datentransport für Wiederholungsvorgänge eine Datenreplikation, die nahezu in Echtzeit erfolgt. Die Standbydatenbank muss nicht innerhalb einer RAC-Bereitstellung ausgeführt werden. Es wird jedoch empfohlen, dass die Standbydatenbank die Leistungsanforderungen des primären Standorts erfüllt.
 
-Für Umgebungen, in denen strenge Anforderungen an die Uptime gelten oder die eine RPO von Null erfordern, empfehlen wir eine Bereitstellung wie die in der folgenden Abbildung. Die Konfiguration „Maximale Verfügbarkeit“ besteht aus einer lokalen Standbydatenbank, die Wiederholungsvorgänge im synchronen Modus anwendet, und einer sekundären Standbydatenbank, die in einer Remoteregion ausgeführt wird.
+Für Umgebungen, in denen strenge Anforderungen an die Uptime gelten oder die eine RPO von 0 (null) erfordern, empfehlen wir eine Bereitstellung wie die in der folgenden Abbildung. Die Konfiguration der maximalen Verfügbarkeit besteht aus den folgenden Elementen:
+- Eine lokale Standbydatenbank, die die Wiederholung im synchronen Modus anträgt
+- Eine zweite Standbydatenbank, die in einer Remoteregion ausgeführt wird
 
 :::image type="content" source="media/oracle-high-availability/max-availability-data-guard-deployment.png" alt-text="Diagramm der Data Guard-Bereitstellung „Maximale Verfügbarkeit“":::
 
-Sie können eine lokale Standbydatenbank erstellen, wenn die Anwendungsleistung durch die Ausführung der Datenbank und Anwendungsserver in separaten Regionen beeinträchtigt wird. In dieser Konfiguration wird eine lokale Standbydatenbank verwendet, wenn eine geplante oder ungeplante Wartung für den primären Cluster erforderlich ist. Da sich diese Datenbanken in derselben Region befinden, können Sie sie mit synchroner Replikation ausführen und dadurch sicherstellen, dass keine Daten verloren gehen.
+Sie können eine lokale Standbydatenbank erstellen, wenn die Anwendungsleistung durch die Ausführung der Datenbank und Anwendungsserver in separaten Regionen beeinträchtigt wird. Eine lokale Standbydatenbank wird verwendet, wenn eine geplante oder ungeplante Wartung für den primären Cluster erforderlich ist. Da sich diese Datenbanken in derselben Region befinden, können Sie sie mit synchroner Replikation ausführen und dadurch sicherstellen, dass keine Daten verloren gehen.
 
 ### <a name="data-guard-configuration-considerations"></a>Überlegungen zur Data Guard-Konfiguration
 

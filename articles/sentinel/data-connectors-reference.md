@@ -8,12 +8,12 @@ ms.service: azure-sentinel
 ms.topic: reference
 ms.date: 08/12/2021
 ms.author: bagol
-ms.openlocfilehash: 3886d26c571246f42c54bb9aab45bae32e05b750
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: a78ec3828e0bbcf6c864f346d632ee70ad4a7777
+ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129362456"
+ms.lasthandoff: 10/18/2021
+ms.locfileid: "130134163"
 ---
 # <a name="find-your-azure-sentinel-data-connector"></a>Ermitteln des richtigen Azure Sentinel-Datenconnectors
 
@@ -33,7 +33,7 @@ In diesem Artikel wird beschrieben, wie Sie Datenconnectors in Azure Sentinel be
     | --- | --- |
     | **Azure-Dienst-zu-Dienst-Integration** | [Verbinden mit Azure-, Windows-, Microsoft- und Amazon-Diensten](connect-azure-windows-microsoft-services.md) |
     | **Common Event Format (CEF) über Syslog** | [Abrufen von Protokollen im CEF-Format von Ihrem Gerät oder Ihrer Appliance in Azure Sentinel](connect-common-event-format.md) |
-    | **Azure Sentinel-Datensammler-API** | [Verbinden Ihrer Datenquelle mit der Datensammler-API von Azure Sentinel zur Datenerfassung](connect-rest-api-template.md) |
+    | **Azure Sentinel-Datensammler-API** | [Verbinden Ihrer Datenquelle mit der Datensammler-API von Azure Sentinel zur Erfassung von Daten](connect-rest-api-template.md) |
     | **Azure Functions und die REST-API** | [Verwenden von Azure Functions zum Verbinden von Azure Sentinel mit Ihrer Datenquelle](connect-azure-functions-template.md) |
     | **Syslog** | [Sammeln von Daten aus Linux-basierten Quellen mithilfe von Syslog](connect-syslog.md) |
     | **Benutzerdefinierte Protokolle** | [Sammeln von Daten in benutzerdefinierten Protokollformaten für Azure Sentinel mit dem Log Analytics-Agent](connect-custom-logs.md) |
@@ -978,7 +978,7 @@ Fügen Sie unter **Authorized redirect URIs** (Autorisierte Umleitungs-URIs) den
 | --- | --- |
 | **Datenerfassungsmethode** | **Azure-Dienst-zu-Dienst-Integration:<br>[Verbinden von Microsoft 365 Defender-Daten mit Azure Sentinel](connect-microsoft-365-defender.md)** (wichtigster Artikel zum Connector) |
 | **Lizenzvoraussetzungen/<br>Preisinformationen** | [Gültige Lizenz für Microsoft 365 Defender](/microsoft-365/security/mtp/prerequisites)
-| **Log Analytics-Tabellen** | SecurityAlert<br>SecurityIncident<br>DeviceEvents<br>DeviceFileEvents<br>DeviceImageLoadEvents<br>DeviceInfo<br>DeviceLogonEvents<br>DeviceNetworkEvents<br>DeviceNetworkInfo<br>DeviceProcessEvents<br>DeviceRegistryEvents<br>DeviceFileCertificateInfo |
+| **Log Analytics-Tabellen** | **Alerts:**<br>SecurityAlert<br>SecurityIncident<br>**Defender für Endpunktereignisse:**<br>DeviceEvents<br>DeviceFileEvents<br>DeviceImageLoadEvents<br>DeviceInfo<br>DeviceLogonEvents<br>DeviceNetworkEvents<br>DeviceNetworkInfo<br>DeviceProcessEvents<br>DeviceRegistryEvents<br>DeviceFileCertificateInfo<br>**Defender für Office 365-Ereignisse:**<br>EmailAttachmentInfo<br>EmailUrlInfo<br>EmailEvents<br>EmailPostDeliveryEvents |
 | **Unterstützt von** | Microsoft |
 | | |
 

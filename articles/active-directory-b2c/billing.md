@@ -2,21 +2,21 @@
 title: Abrechnungsmodell für Azure Active Directory B2C
 description: Lernen Sie das Azure AD B2C-Abrechnungsmodell kennen, das auf monatlich aktiven Benutzern (MAU) basiert, und erfahren Sie, wie Sie einen Azure AD B2C-Mandanten mit einem Azure-Abonnement verknüpfen und den entsprechenden Premium-Tarif auswählen.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
 ms.date: 09/15/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: be29232e78ff3cbfa2aec9f880e42774ad0b2376
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: aa03c0ec560102ce44aa0cbf2bede5dd59423296
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128570085"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130065063"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Abrechnungsmodell für Azure Active Directory B2C
 
@@ -65,6 +65,7 @@ Ein Abonnement, das mit einem Azure AD B2C-Mandanten verknüpft ist, kann für d
 * [Azure AD B2C-Mandant](tutorial-create-tenant.md), der mit einem Abonnement verknüpft werden soll
   * Sie müssen Mandantenadministrator sein.
   * Der Mandant darf nicht bereits mit einem Abonnement verknüpft sein.
+  * Der Mandant darf nicht in einer Azure Government-Umgebung erstellt werden.
 
 ### <a name="create-the-link"></a>Erstellen des Links
 

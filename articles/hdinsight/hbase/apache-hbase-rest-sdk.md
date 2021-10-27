@@ -5,20 +5,20 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-csharp
 ms.date: 12/02/2019
-ms.openlocfilehash: 70c1dcc133f01cf72392f444192d977440c55cf4
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 6b20305fe7e8b93adab2286e33c666458adf56f1
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104866623"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130042030"
 ---
 # <a name="use-the-net-sdk-for-apache-hbase"></a>Verwenden des .NET SDK für Apache HBase
 
-[Apache HBase](apache-hbase-overview.md) bietet zwei primäre Optionen für die Arbeit mit Ihren Daten: [Apache Hive-Abfragen und Aufrufe der RESTful-API von HBase](apache-hbase-tutorial-get-started-linux.md). Sie können direkt mit der REST-API arbeiten, indem Sie den Befehl `curl` oder ein ähnliches Hilfsprogramm verwenden.
+[Apache HBase](apache-hbase-overview.md) bietet zwei primäre Optionen für das Arbeiten mit Ihren Daten: [Apache Hive-Abfragen und Aufrufe der REST-API von HBase](apache-hbase-tutorial-get-started-linux.md). Sie können direkt mit der REST-API arbeiten, indem Sie den Befehl `curl` oder ein ähnliches Hilfsprogramm verwenden.
 
 Für C#- und .NET-Anwendungen bietet die [Microsoft HBase REST-Clientbibliothek für .NET](https://www.nuget.org/packages/Microsoft.HBase.Client/) eine Clientbibliothek zusätzlich zu der HBase REST-API.
 
-## <a name="install-the-sdk"></a>Installieren des SDK
+## <a name="install-the-sdk"></a>Installieren des SDKs
 
 Das HBase .NET SDK wird als NuGet-Paket bereitgestellt, das mit folgendem Befehl über die **NuGet-Paket-Manager-Konsole** in Visual Studio installiert werden kann:
 

@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.subservice: data-movement
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 09/09/2021
+ms.date: 10/13/2021
 ms.author: jianleishen
-ms.openlocfilehash: 938693353505a7fb3d37c85234da429ed2367ad4
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: c1ac63dde4dd489449db5db913aeb55f5d3de3ad
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124787886"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130064964"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory-or-synapse-analytics"></a>Kopieren von Daten aus einer OData-Quelle mithilfe von Azure Data Factory oder Synapse Analytics
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -77,7 +77,7 @@ In den folgenden Abschnitten finden Sie Details zu Eigenschaften, mit denen Sie 
 
 Folgende Eigenschaften werden für einen mit OData verknüpften Dienst unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft muss auf **OData** festgelegt werden. |Ja |
 | url | Die Stamm-URL des OData-Diensts. |Ja |
@@ -253,7 +253,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Legen Sie zum Kopieren von Daten aus OData die **type**-Eigenschaft des Datasets auf **ODataResource** fest. Folgende Eigenschaften werden unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft des Datasets muss auf **ODataResource** festgelegt werden. | Ja |
 | path | Der Pfad zur OData-Ressource. | Ja |
@@ -289,7 +289,7 @@ Eine vollständige Liste mit den verfügbaren Abschnitten und Eigenschaften zum 
 
 Beim Kopieren von Daten aus OData werden die folgenden Eigenschaften im Abschnitt **source** der Kopieraktivität unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft der Quelle der Kopieraktivität muss auf **ODataSource** festgelegt werden. | Ja |
 | Abfrage | OData-Abfrageoptionen zum Filtern von Daten. Beispiel: `"$select=Name,Description&$top=5"`.<br/><br/>**Hinweis**: Der OData-Connector kopiert Daten aus der kombinierten URL: `[URL specified in linked service]/[path specified in dataset]?[query specified in copy activity source]`. Weitere Informationen finden Sie unter [Komponenten der OData-URL](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nein |
@@ -356,7 +356,7 @@ Beim Kopieren von Daten aus OData werden die folgenden Zuordnungen zwischen ODat
 
 ## <a name="copy-data-from-project-online"></a>Kopieren von Daten aus Project Online
 
-Zum Kopieren von Daten aus Project Online können Sie den OData-Connector und ein Zugriffstoken verwenden, das von Tools wie Postman abgerufen wird.
+Project Online erfordert ein benutzerbasiertes OAuth-Protokoll, welches nicht von Azure Data Factory unterstützt wird. Zum Kopieren von Daten aus Project Online können Sie den OData-Connector und ein Zugriffstoken verwenden, das von Tools wie Postman abgerufen wird.
 
 > [!CAUTION]
 > Das Zugriffstoken läuft standardmäßig in 1 Stunde ab, Sie müssen ein neues Zugriffstoken erhalten, wenn es abläuft.
@@ -377,7 +377,7 @@ Zum Kopieren von Daten aus Project Online können Sie den OData-Connector und ei
    1. Sie werden aufgefordert, sich mit Ihrem Benutzernamen und Kennwort anzumelden.
    1. Nachdem Sie Ihr Zugriffstoken erhalten haben, kopieren Sie es, und speichern Sie es für den nächsten Schritt.
    
-    [:::image type="content" source="./media/connector-odata/odata-project-online-postman-access-token-expanded.png#lightbox" alt-text="Verwenden von Postman zum Abrufen des Zugriffstokens](./media/connector-odata/odata-project-online-postman-access-token-inline.png)":::
+    :::image type="content" source="./media/connector-odata/odata-project-online-postman-access-token-inline.png" alt-text="Screenshot: Verwenden von Postman zum Abrufen des Zugriffstokens" lightbox="./media/connector-odata/odata-project-online-postman-access-token-expanded.png":::        
 
 1. Erstellen Sie den verknüpften OData-Dienst:
     - **Dienst-URL**: Eingeben`https://<your tenant name>.sharepoint.com/sites/pwa/_api/Projectdata` . Ersetzen Sie `<your tenant name>` durch Ihren eigenen Tenant-Namen. 

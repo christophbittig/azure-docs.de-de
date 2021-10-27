@@ -3,14 +3,14 @@ title: Verwenden von Container Storage Interface-Treibern (CSI) für Azure-Daten
 description: Erfahren Sie, wie Sie die Container Storage Interface-Treiber (CSI) für Azure-Datenträger in einem AKS-Cluster (Azure Kubernetes Service) verwenden.
 services: container-service
 ms.topic: article
-ms.date: 08/27/2020
+ms.date: 10/15/2021
 author: palma21
-ms.openlocfilehash: 19606a1b529fcd7e6140d81361c5434324836198
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 687bc761d870b92f7cf753b55722fc749daaf37d
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122345886"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130063942"
 ---
 # <a name="use-the-azure-disk-container-storage-interface-csi-drivers-in-azure-kubernetes-service-aks"></a>Verwenden von Container Storage Interface-Treibern (CSI) von Azure-Datenträgern in Azure Kubernetes Service (AKS)
 Der Container Storage Interface-Treiber (CSI) von Azure-Datenträgern ist ein mit der [CSI-Spezifikation](https://github.com/container-storage-interface/spec/blob/master/spec.md) konformer Treiber, der von Azure Kubernetes Service (AKS) zum Verwalten des Lebenszyklus von Azure-Datenträgern verwendet wird.
@@ -21,6 +21,15 @@ Informationen zum Erstellen eines AKS-Clusters mit Unterstützung für CSI-Treib
 
 > [!NOTE]
 > *Strukturinterne Treiber* bezieht sich auf die aktuellen Speichertreiber, die Teil des Kubernetes-Kerncodes sind (im Gegensatz zu den neuen CSI-Treibern, bei denen es sich um Plug-Ins handelt).
+
+## <a name="azure-disk-csi-driver-new-features"></a>Neue Features des Azure Disk CSI-Treibers
+Neben den ursprünglichen Features des Strukturtreibers bietet der Azure Disk CSI-Treiber bereits die folgenden neuen Features:
+- Leistungsverbesserung beim parallelen Anfügen oder Trennen von Datenträgern
+  - Der Strukturtreiber fügt Datenträger seriell an oder trennt sie, während der CSI-Treiber Datenträger im Batch anfügt oder trennt würde. Es würde eine erhebliche Verbesserung darstellen, wenn mehrere Datenträger an einem Knoten angefügt wären.
+- ZRS-Datenträgerunterstützung
+  - Die Datenträgertypen `Premium_ZRS` und `StandardSSD_ZRS` werden unterstützt. Weitere Informationen finden Sie unter [Zonenredundanter Speicher für verwaltete Datenträger](../virtual-machines/disks-redundancy.md).
+- [Momentaufnahme](#volume-snapshots)
+- [Volumeklon](#clone-volumes)
 
 ## <a name="use-csi-persistent-volumes-with-azure-disks"></a>Verwenden persistenter CSI-Volumes mit Azure-Datenträgern
 

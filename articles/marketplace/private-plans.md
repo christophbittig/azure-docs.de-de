@@ -6,13 +6,13 @@ ms.service: marketplace
 ms.topic: article
 author: navits09
 ms.author: navits
-ms.date: 08/13/2021
-ms.openlocfilehash: cc7f4e983ab766577af41497c2e270694361605a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 10/14/2021
+ms.openlocfilehash: d04a031abced1bdc689feb078015737d20f40cfb
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124784753"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130047775"
 ---
 # <a name="private-plans-in-the-microsoft-commercial-marketplace"></a>Private Pläne im kommerziellen Microsoft-Marketplace
 
@@ -52,7 +52,7 @@ Bei *neuen Angeboten, die nur private Pläne umfassen*, können Herausgeber dies
 
 ## <a name="target-customers-with-private-plans"></a>Private Pläne für bestimmte Zielkunden
 
-Herausgeber können sowohl neue als auch vorhandene private Pläne mithilfe von Abonnementbezeichnern auf bestimmte Zielkunden ausrichten. Herausgeber mit Angeboten für Azure Virtual Machines, Azure-Anwendungen und verwaltete Dienste können die Verfügbarkeit eines privaten Plans auf eine individuelle Azure-Abonnement-ID beschränken oder eine CSV-Datei mit bis zu 10.000 Azure-Abonnement-IDs hochladen. Bei SaaS-Angeboten können Herausgeber eine Azure Active Directory Mandanten-ID zuordnen, um die Verfügbarkeit eines privaten Plans zu beschränken. Dabei können sie IDs manuell zuordnen oder eine CSV-Datei mit mehreren IDs hochladen.
+Herausgeber können sowohl neue als auch vorhandene private Pläne mithilfe von Abonnementbezeichnern auf bestimmte Zielkunden ausrichten. Bei Angeboten für Azure-Anwendung oder verwaltete Dienste können Herausgeber*innen die Verfügbarkeit von privaten Plänen auf individuelle Azure-Abonnement-IDs beschränken. Bei SaaS-Angeboten können Herausgeber*innen Azure Active Directory-Mandanten IDs zuweisen, um die Verfügbarkeit von privaten Plänen zu beschränken. Bei Virtual Machine-Angeboten können Herausgeber*innen die Benutzergruppe zuweisen, die Zugriff auf einen privaten Plan hat, indem sie Azure-Mandanten-IDs, Abonnement-IDs oder beides verwendet. Für jeden dieser Angebotstypen können bis zu zehn IDs manuell hinzugefügt oder eine CSV-Tabelle importiert werden, wenn mehr als zehn IDs erforderlich sind.
 
 Sobald ein Angebot zertifiziert und veröffentlicht wurde, können Kunden mithilfe des Features zum Synchronisieren privater Abonnements im Plan aktualisiert oder daraus entfernt werden. Auf diese Weise können Herausgeber schnell und einfach die Liste der Kunden aktualisieren, denen der private Plan angezeigt wird, ohne das Angebot erneut zertifizieren oder veröffentlichen zu müssen.
 
@@ -63,14 +63,14 @@ Nachdem sich der Kunde beim Azure-Portal angemeldet hat, kann er Ihre privaten P
 1. Melden Sie sich beim [Azure-Portal](https://ms.portal.azure.com/) an.
 1. Wählen Sie unter **Azure-Dienste** die Option **Ressource erstellen** aus.
 1. Wählen Sie auf der Seite **Neu** neben **Azure Marketplace** **Alle anzeigen** aus. Die Seite „Marketplace“ wird angezeigt.
-1. Wählen Sie im linken Navigationsbereich auf **Private Pläne**.
+1. Wählen Sie im linken Navigationsbereich **Private Produkte** aus.
 
 > [!NOTE]
 > Private Pläne sind nur im [Azure-Portal](https://azure.microsoft.com/features/azure-portal/) oder in [Microsoft AppSource](https://appsource.microsoft.com/) zu finden. Im [Azure Marketplace](https://azuremarketplace.microsoft.com) werden sie nicht angezeigt. Weitere Informationen zum Veröffentlichen in verschiedenen kommerziellen Marketplace-Onlinestores finden Sie unter [Einführung in Auflistungsoptionen](./determine-your-listing-type.md).
 
 Private Pläne werden auch in Suchergebnissen angezeigt und können wie alle anderen Angebote über die Befehlszeile oder mithilfe von Azure Resource Manager-Vorlagen bereitgestellt werden.
 
-[![[Private Angebote werden in den Suchergebnissen angezeigt.]](media/marketplace-publishers-guide/private-offer.png)](media/marketplace-publishers-guide/private-offer.png#lightbox)
+[![[Private Angebote werden in den Suchergebnissen angezeigt.]](media/marketplace-publishers-guide/private-product.png)](media/marketplace-publishers-guide/private-product.png#lightbox)
 
 >[!Note]
 >Private Pläne werden bei Abonnements, die über einen Handelspartner des Cloud Solution Provider-Programms (CSP) eingerichtet wurden, nicht unterstützt.

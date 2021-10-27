@@ -1,20 +1,20 @@
 ---
-title: Kopieren von Daten in oder aus Azure Data Explorer
+title: Kopieren und Transformieren von Daten in Azure Data Explorer
 titleSuffix: Azure Data Factory & Azure Synapse
-description: Erfahren Sie, wie Daten mithilfe einer Copy-Aktivität in einer Azure Data Factory- oder Synapse Analytics-Pipeline in oder aus Azure Data Explorer kopiert werden.
+description: Hier erfahren Sie, wie Sie Daten in Azure Data Explorer mithilfe von Data Factory oder Azure Synapse Analytics kopieren und transformieren.
 ms.author: orspodek
 author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
-ms.date: 09/09/2021
-ms.openlocfilehash: 511e1d58e3abf3c44025a02059c5d6aa947809c0
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 10/14/2021
+ms.openlocfilehash: a764b6e0046b399d1984f13404aae6ba1eb4d72f
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124771895"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130063885"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory-or-synapse-analytics"></a>Kopieren von Daten in oder aus Azure Data Explorer mithilfe von Azure Data Factory oder Synapse Analytics
 
@@ -104,7 +104,7 @@ Zur Verwendung der Dienstprinzipalauthentifizierung führen Sie die folgenden Sc
 
 Folgende Eigenschaften werden für den mit Azure Data Explorer verknüpften Dienst unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft muss auf **AzureDataExplorer** festgelegt werden. | Ja |
 | endpoint | Endpunkt-URL des Azure Data Explorer-Clusters im Format `https://<clusterName>.<regionName>.kusto.windows.net` | Ja |
@@ -153,7 +153,7 @@ Führen Sie die folgenden Schritte zum Gewähren von Berechtigungen aus, um die 
 
 Folgende Eigenschaften werden für den mit Azure Data Explorer verknüpften Dienst unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft muss auf **AzureDataExplorer** festgelegt werden. | Ja |
 | endpoint | Endpunkt-URL des Azure Data Explorer-Clusters im Format `https://<clusterName>.<regionName>.kusto.windows.net` | Ja |
@@ -189,7 +189,7 @@ Führen Sie die folgenden Schritte aus, um die Authentifizierung mit einer benut
 
 Folgende Eigenschaften werden für den mit Azure Data Explorer verknüpften Dienst unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft muss auf **AzureDataExplorer** festgelegt werden. | Ja |
 | endpoint | Endpunkt-URL des Azure Data Explorer-Clusters im Format `https://<clusterName>.<regionName>.kusto.windows.net` | Ja |
@@ -223,7 +223,7 @@ Legen Sie zum Kopieren von Daten in Azure Data Explorer die type-Eigenschaft des
 
 Folgende Eigenschaften werden unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft muss auf **AzureDataExplorerTable** festgelegt werden. | Ja |
 | table | Der Name der Tabelle, auf die der verknüpfte Dienst verweist. | Quelle: Ja, Senke: Nein |
@@ -255,7 +255,7 @@ Eine vollständige Liste der verfügbaren Abschnitte und Eigenschaften zum Defin
 
 Legen Sie zum Kopieren von Daten aus Azure Data Explorer die **type**-Eigenschaft in der Quelle der Kopieraktivität auf **AzureDataExplorerSource** fest. Folgende Eigenschaften werden im Abschnitt **source** der Kopieraktivität unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **AzureDataExplorerSource** | Ja |
 | Abfrage | Eine in einem [KQL-Format](/azure/kusto/query/) angegebene schreibgeschützte Anforderung. Verwenden Sie die benutzerdefinierte KQL-Abfrage als Verweis. | Ja |
@@ -302,7 +302,7 @@ Legen Sie zum Kopieren von Daten aus Azure Data Explorer die **type**-Eigenschaf
 
 Legen Sie zum Kopieren von Daten in Azure Data Explorer die type-Eigenschaft in der Senke der Kopieraktivität auf **AzureDataExplorerSink** fest. Folgende Eigenschaften werden im Abschnitt **sink** der Kopieraktivität unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die **type**-Eigenschaft der Senke der Kopieraktivität muss auf Folgendes festgelegt werden: **AzureDataExplorerSink**. | Ja |
 | ingestionMappingName | Der Name einer vorab erstellten [Zuordnung](/azure/kusto/management/mappings#csv-mapping) für eine Kusto-Tabelle. Zum Zuordnen der Spalten aus der Quelle zu Azure Data Explorer (gilt für [alle unterstützten Quellspeicher und -formate](copy-activity-overview.md#supported-data-stores-and-formats), einschließlich der Formate CSV, JSON und Avro) können Sie die Kopieraktivität [Spaltenzuordnung](copy-activity-schema-and-type-mapping.md) (implizit anhand des Namens oder explizit wie konfiguriert) und/oder Azure Data Explorer-Zuordnungen verwenden. | Nein |
@@ -339,6 +339,81 @@ Legen Sie zum Kopieren von Daten in Azure Data Explorer die type-Eigenschaft in 
         ]
     }
 ]
+```
+
+## <a name="mapping-data-flow-properties"></a>Eigenschaften von Mapping Data Flow
+
+Beim Transformieren von Daten im Zuordnungsdatenfluss können Sie in Tabellen Azure Data Explorer lesen und in diese schreiben. Weitere Informationen finden Sie unter [Quellentransformation](data-flow-source.md) und [Senkentransformation](data-flow-sink.md) in Zuordnungsdatenflüssen. Sie können ein Azure Data Explorer-Dataset oder ein [Inlinedataset](data-flow-source.md#inline-datasets) als Quelle und Senkentyp verwenden.
+
+### <a name="source-transformation"></a>Quellentransformation
+
+In der folgenden Tabelle werden die von der Azure Data Explorer-Quelle unterstützten Eigenschaften aufgeführt. Sie können diese Eigenschaften auf der Registerkarte **Quelloptionen** bearbeiten.
+
+| Name | BESCHREIBUNG | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| Tabelle | Wenn Sie „Tabelle“ als Eingabe auswählen, holt der Datenfluss alle Daten aus der Tabelle, die im Azure Data Explorer-Datenset oder in den Quelloptionen angegeben ist, wenn ein Inlinedataset verwendet wird. | Nein | String | *(nur für Inlinedataset)*<br>tableName |
+| Abfrage | Eine in einem [KQL-Format](/azure/data-explorer/kusto/query/) angegebene schreibgeschützte Anforderung. Verwenden Sie die benutzerdefinierte KQL-Abfrage als Verweis.  | Nein | String | Abfrage |
+| Timeout | Die Wartezeit vor dem Timeout der Abfrageanforderung. Die Standardeinstellung ist 172.000 Minuten (2 Tage).  | Nein | Integer | timeout |
+
+#### <a name="azure-data-explorer-source-script-examples"></a>Azure Data Explorer-Quellskriptbeispiele
+
+Wenn Sie ein Azure Data Explorer-Dataset als Quelltyp verwenden, sieht das zugehörige Datenflussskript wie folgt aus:
+
+```
+source(allowSchemaDrift: true,
+    validateSchema: false,
+    query: 'table | take 10',
+    format: 'query') ~> AzureDataExplorerSource
+
+```
+
+Wenn Sie ein Inlinedataset verwenden, sieht das zugehörige Datenflussskript wie folgt aus:
+
+```
+source(allowSchemaDrift: true,
+    validateSchema: false,
+    format: 'query',
+    query: 'table | take 10',
+    store: 'azuredataexplorer') ~> AzureDataExplorerSource
+
+```
+
+### <a name="sink-transformation"></a>Senkentransformation
+
+In der folgenden Tabelle werden die von der Azure Data Explorer-Senke unterstützten Eigenschaften aufgeführt. Sie können diese Eigenschaften auf der Registerkarte **Einstellungen** bearbeiten. Bei Verwendung eines Inlinedatasets werden zusätzliche Einstellungen angezeigt. Diese entsprechen den Eigenschaften, die im Abschnitt zu den [Dataseteigenschaften](#dataset-properties) beschrieben sind. 
+
+| Name | BESCHREIBUNG | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| Aktion table | Bestimmt, ob die Zieltabelle vor dem Schreiben neu erstellt werden soll oder alle Zeilen aus der Zieltabelle entfernt werden sollen.<br>- **Keine**: Es wird keine Aktion an der Tabelle vorgenommen.<br>- **Neu erstellen**: Die Tabelle wird gelöscht und neu erstellt. Erforderlich, wenn eine neue Tabelle dynamisch erstellt wird.<br>- **Abschneiden**: Alle Zeilen werden aus der Zieltabelle entfernt. | Nein | `true` oder `false` | Neu erstellen<br/>truncate |
+| Pre- und Post-SQL-Skripts | Geben Sie mehrere Skripte mit [Kusto-Steuerungsbefehlen](/azure/data-explorer/kusto/query/#control-commands) an, die ausgeführt werden, bevor Daten in Ihre Senkendatenbank geschrieben werden (Vorverarbeitung) und nachdem dies geschieht (Nachbearbeitung). | Nein | String | preSQLs; postSQLs |
+| Timeout | Die Wartezeit vor dem Timeout der Abfrageanforderung. Die Standardeinstellung ist 172.000 Minuten (2 Tage). | Nein | Integer | timeout |
+
+
+#### <a name="azure-data-explorer-sink-script-examples"></a>Azure Data Explorer-Senkenskriptbeispiele
+
+Wenn Sie ein Azure Data Explorer-Dataset als Senkentyp verwenden, sieht das zugehörige Datenflussskript wie folgt aus:
+
+```
+IncomingStream sink(allowSchemaDrift: true,
+    validateSchema: false,
+    format: 'table',
+    preSQLs:['pre SQL scripts'],
+    postSQLs:['post SQL script'],
+    skipDuplicateMapInputs: true,
+    skipDuplicateMapOutputs: true) ~> AzureDataExplorerSink
+
+```
+
+Wenn Sie ein Inlinedataset verwenden, sieht das zugehörige Datenflussskript wie folgt aus:
+
+```
+IncomingStream sink(allowSchemaDrift: true,
+    validateSchema: false,
+    format: 'table',
+    store: 'azuredataexplorer',
+    skipDuplicateMapInputs: true,
+    skipDuplicateMapOutputs: true) ~> AzureDataExplorerSink
+
 ```
 
 ## <a name="lookup-activity-properties"></a>Eigenschaften der Lookup-Aktivität

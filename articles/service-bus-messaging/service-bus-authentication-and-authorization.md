@@ -3,12 +3,12 @@ title: Azure Service Bus-Authentifizierung und -Autorisierung | Microsoft-Dokume
 description: Authentifizieren Sie Service Bus-Apps mit Shared Access Signature-Authentifizierung (SAS).
 ms.topic: article
 ms.date: 09/15/2021
-ms.openlocfilehash: 74ad1674bc09f1514264f4b7f1521526f8da2fd5
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1b1cc20df861f657ed9fff4704862e9ee36965a2
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128597149"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "130002072"
 ---
 # <a name="service-bus-authentication-and-authorization"></a>Service Bus-Authentifizierung und -Autorisierung
 Es gibt zwei Möglichkeiten, den Zugriff auf Azure Service Bus-Ressourcen zu authentifizieren und zu autorisieren: Azure Active Directory (Azure AD) und Shared Access Signatures (SAS). In diesem Artikel erhalten Sie Informationen zur Verwendung dieser beiden Arten von Sicherheitsmechanismen. 

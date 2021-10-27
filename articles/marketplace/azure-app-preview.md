@@ -1,6 +1,6 @@
 ---
 title: Hinzufügen einer Vorschauzielgruppe für ein Azure-Anwendungsangebot
-description: Fügen Sie für ein Azure-Anwendungsangebot in Partner Center (Azure Marketplace) eine Vorschauzielgruppe hinzu.
+description: Fügen Sie für ein Azure-Anwendungsangebot in Partner Center eine Vorschauzielgruppe hinzu.
 author: aarathin
 ms.author: aarathin
 ms.reviewer: dannyevers
@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 06/01/2021
-ms.openlocfilehash: 74f270922694dd0416638b8d429eca31cebf2609
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: cc0452ca7405803c47d40659e8e629892086e24a
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111542494"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130065386"
 ---
 # <a name="add-a-preview-audience-for-an-azure-application-offer"></a>Hinzufügen einer Vorschauzielgruppe für ein Azure-Anwendungsangebot
 
@@ -21,7 +21,7 @@ In diesem Artikel wird beschrieben, wie Sie eine Vorschauzielgruppe für ein Azu
 
 ## <a name="define-a-preview-audience"></a>Definieren einer Vorschauzielgruppe
 
-Auf der Seite **Vorschauzielgruppe** können Sie eine eingeschränkte Zielgruppe definieren, die Ihr Azure-Anwendungsangebot überprüfen kann, bevor Sie es live für die breitere Zielgruppe im Marketplace veröffentlichen. Sie legen Ihre Vorschauzielgruppe mithilfe von Azure-Abonnement-IDs fest, begleitet jeweils von einer optionalen Beschreibung. Keines dieser Felder ist für Kunden sichtbar. Sie finden Ihre Azure-Abonnement-ID auf der Seite **Abonnements** im Azure-Portal.
+Auf der Seite **Vorschauzielgruppe** können Sie eine eingeschränkte Zielgruppe definieren, die Ihr Azure-Anwendungsangebot überprüfen kann, bevor Sie es live für die breitere Zielgruppe im Marketplace veröffentlichen. Sie legen Ihre Vorschauzielgruppe mithilfe von Azure-Abonnement-IDs fest, begleitet jeweils von einer optionalen Beschreibung. Keines dieser Felder ist für Kunden sichtbar. Sie finden Ihre Azure-Abonnement-ID auf der Seite **Abonnement** im Azure-Portal.
 
 Fügen Sie mindestens eine und höchstens 10 Azure-Abonnement-IDs einzeln (bis zu 10) oder durch Hochladen einer CSV-Datei (bis zu 100) hinzu. So können Sie definieren, wer Ihr Angebot vorab testen kann, bevor es live veröffentlicht wird. Wenn Ihr Angebot bereits live geschaltet ist, können Sie dennoch eine Vorschauzielgruppe für das Testen von Änderungen oder Aktualisierungen Ihres Angebots definieren.
 

@@ -7,12 +7,12 @@ ms.reviewer: estfan, azla
 ms.topic: how-to
 ms.date: 10/11/2021
 tags: connectors
-ms.openlocfilehash: cc56c079173fad1509d9da9cf1d435675b1918f7
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: 7ceafa54a202433e84535b19e73e99d38726dd0c
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129808989"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130064034"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>Erstellen und Verwalten von Blobs in Azure Blob Storage mithilfe von Azure Logic Apps
 
@@ -193,7 +193,7 @@ Bevor Sie Ihren [Azure Blob Storage-Trigger](#add-blob-storage-trigger) oder Ihr
 
 | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG |
 |----------|----------|-------|-------------|
-| **Verbindungsname** | Yes | <*connection-name*> | Der Name, der für Ihre Verbindung verwendet werden soll. |
+| **Verbindungsname** | Ja | <*connection-name*> | Der Name, der für Ihre Verbindung verwendet werden soll. |
 | **Speicherkonto** | Ja | <*storage-account*> | Wählen Sie Ihr Speicherkonto in der Liste aus, oder geben Sie eine Zeichenfolge an. <p>**Hinweis**: Um die Verbindungszeichenfolge zu ermitteln, wechseln Sie zur Seite des Speicherkontos. Wählen Sie im Navigationsmenü unter **Sicherheit + Netzwerkbetrieb** die Option **Zugriffsschlüssel** > **Schlüssel anzeigen** aus. Kopieren Sie einen der verfügbaren Werte für Verbindungszeichenfolgen. |
 |||||
 
@@ -218,7 +218,7 @@ Bevor Sie Ihren [Azure Blob-Trigger](#add-blob-storage-trigger) oder Ihre [Azure
 
 | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG |
 |----------|----------|-------|-------------|
-| **Verbindungsname** | Yes | <*connection-name*> | Der Name, der für Ihre Verbindung verwendet werden soll. |
+| **Verbindungsname** | Ja | <*connection-name*> | Der Name, der für Ihre Verbindung verwendet werden soll. |
 | **Verbindungszeichenfolge für Azure Blob Storage** | Ja | <*storage-account*> | Wählen Sie Ihr Speicherkonto in der Liste aus, oder geben Sie eine Zeichenfolge an. <p>**Hinweis**: Um die Verbindungszeichenfolge zu ermitteln, wechseln Sie zur Seite des Speicherkontos. Wählen Sie im Navigationsmenü unter **Sicherheit + Netzwerkbetrieb** die Option **Zugriffsschlüssel** > **Schlüssel anzeigen** aus. Kopieren Sie einen der verfügbaren Werte für Verbindungszeichenfolgen. |
 |||||
 
@@ -337,7 +337,7 @@ Die folgenden Schritte sind für Verbrauchs-Logik-Apps in mehrinstanzenfähigen 
 
 1. Wählen Sie im Navigationsmenü Ihrer Logik-App-Ressource unter **Einstellungen** die Option **Identität** aus.
 
-1. Legen Sie im Bereich **Systemseitig zugewiesen** den **Status** auf **Ein** fest. Diese Einstellung ist möglicherweise bereits aktiviert. Wählen Sie unter **Berechtigungen** die Option **Azure-Rollenzuweisungen** aus.
+1. Legen Sie den **Status** im Bereich **Vom System zugewiesen** auf **Ein** fest, wenn dieser noch nicht aktiviert ist, und wählen Sie **Speichern** aus, um Ihre Änderungen zu bestätigen. Wählen Sie unter **Berechtigungen** die Option **Azure-Rollenzuweisungen** aus.
 
    :::image type="content" source="./media/connectors-create-api-azureblobstorage/role-assignment-add-1.png" alt-text="Screenshot: Azure-Portal und Ressourcenmenü der Logik-App mit dem Einstellungsbereich „Identität“ und der Schaltfläche „Berechtigungen für Azure-Rollenzuweisung“.":::
 
@@ -345,21 +345,19 @@ Die folgenden Schritte sind für Verbrauchs-Logik-Apps in mehrinstanzenfähigen 
 
    :::image type="content" source="./media/connectors-create-api-azureblobstorage/role-assignment-add-2.png" alt-text="Screenshot: Bereich „Rollenzuweisungen“ der Logik-App mit ausgewähltem Abonnement und Schaltfläche zum Hinzufügen einer neuen Rollenzuweisung.":::
 
-1. Richten Sie im Bereich **Rollenzuweisungen hinzufügen** die neue Rollenzuweisung mithilfe der folgenden Schritte ein:
+1. Legen Sie im Bereich **Rollenzuweisung hinzufügen** die neue Rollenzuweisung mit den folgenden Werten fest:
 
-   1. Wählen Sie für **Bereich** die Option **Speicher** aus.
+   | Eigenschaft | Wert | BESCHREIBUNG |
+   |----------|-------|-------------|
+   | **Umfang** | <*Ressourcenumfang*> | Den Ressourcensatz, auf den Sie die Rollenzuweisung anwenden möchten. Wählen Sie **Speicher** aus, um dieses Beispiel anzuzeigen. |
+   | **Abonnement** | <*Azure-Abonnement*> | Das Azure-Abonnement für Ihr Speicherkonto |
+   | **Ressource** | <*Speicherkontoname*> | Der Name des Speicherkontos, auf das Sie von Ihrem Logik-App-Workflow aus zugreifen möchten |
+   | **Rolle** | <*Zuzuweisende Rolle*> | Die Rolle, die für Ihr Szenario erforderlich ist, damit Ihr Workflow mit der Ressource funktioniert. In diesem Beispiel ist die Rolle **Mitwirkender an Storage-Blobdaten** erforderlich, welche den Lese-, Schreib- und Löschzugriff auf Blobcontainer und Datum ermöglicht. Details zu den Berechtigungen werden angezeigt, wenn Sie mit der Maus auf das Informationssymbol neben einer Rolle im Dropdownmenü zeigen. |
+   ||||
 
-   1. Wählen Sie als **Abonnement** das Abonnement für Ihr Speicherkonto aus.
+   :::image type="content" source="./media/connectors-create-api-azureblobstorage/role-assignment-configure.png" alt-text="Screenshot des Konfigurationsbereichs „Rollenzuweisung“ mit Einstellungen für Bereich, Abonnement, Ressource und Rolle.":::
 
-   1. Wählen Sie unter **Ressource** das Speicherkonto aus, auf das Sie in Ihrer Logik-App zugreifen möchten.
-
-   1. Wählen Sie für **Rolle** die entsprechenden Berechtigungen für Ihr Szenario aus.
-
-      In diesem Beispiel wird **Mitwirkender an Storage-Blobdaten** verwendet, die den Lese-, Schreib- und Löschzugriff auf Blobcontainer und -daten ermöglicht. Details zu den Berechtigungen werden angezeigt, wenn Sie mit der Maus auf das Informationssymbol neben einer Rolle im Dropdownmenü zeigen.
-
-      :::image type="content" source="./media/connectors-create-api-azureblobstorage/role-assignment-configure.png" alt-text="Screenshot des Konfigurationsbereichs „Rollenzuweisung“ mit Einstellungen für Bereich, Abonnement, Ressource und Rolle.":::
-
-   1. Wählen Sie **Speichern** aus, um das Erstellen der Rollenzuweisung abzuschließen.
+1. Wenn Sie fertig sind, wählen Sie **Speichern** aus, um das Erstellen der Rollenzuweisung fertigzustellen.
 
 <a name="enable-managed-identity-support"></a>
 

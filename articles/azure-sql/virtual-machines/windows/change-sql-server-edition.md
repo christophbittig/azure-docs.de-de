@@ -3,7 +3,7 @@ title: Direkte Änderung der SQL Server-Edition
 description: Hier erfahren Sie, wie Sie die Edition Ihres virtuellen SQL Server-Computers in Azure ändern, um durch das Herabstufen Kosten zu reduzieren oder durch Upgrades weitere Features zu aktivieren.
 services: virtual-machines-windows
 documentationcenter: na
-author: MashaMSFT
+author: bluefooted
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.subservice: management
@@ -11,15 +11,15 @@ ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/14/2020
-ms.author: mathoma
-ms.reviewer: jroth
+ms.author: pamela
+ms.reviewer: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: d4e965d14c6dab3fd2bd8333b9e04dfa52a3346b
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: e4f80718d33a298aed44595019dd456411c5381a
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112078903"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130164034"
 ---
 # <a name="in-place-change-of-sql-server-edition-on-azure-vm"></a>Direkte Änderung der SQL Server-Edition auf der Azure-VM
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -52,8 +52,9 @@ Für ein Upgrade der SQL Server-Edition beschaffen Sie sich die SQL Server-Setup
    ![Auswahl für das Upgrade der Edition von SQL Server](./media/change-sql-server-edition/edition-upgrade.png)
 
 1. Klicken Sie auf **Weiter**, bis Sie zur Seite **Die Edition kann jetzt aktualisiert werden** gelangen, und wählen Sie dann **Update** aus. Das Setupfenster reagiert möglicherweise einige Minuten nicht mehr, während die Änderung wirksam wird. Auf der Seite **Abgeschlossen** wird bestätigt, dass das Upgrade Ihrer Edition beendet wurde. 
+1. Nach dem Upgrade der SQL Server-Edition ändern Sie die Eigenschaft „Edition“ der SQL Server-VM im Azure-Portal. Dadurch werden die mit dieser VM verbundenen Metadaten und Abrechnungen aktualisiert.
 
-Nach dem Upgrade der SQL Server-Edition ändern Sie die Eigenschaft „Edition“ der SQL Server-VM im Azure-Portal. Dadurch werden die mit dieser VM verbundenen Metadaten und Abrechnungen aktualisiert.
+
 
 ## <a name="downgrade-an-edition"></a>Downgrade einer Edition
 
@@ -71,8 +72,9 @@ Führen Sie für ein Downgrade der SQL Server-Edition die folgenden Schritte aus
 1. Installieren Sie SQL Server mithilfe der Medien mit der gewünschten SQL Server-Edition.
 1. Installieren Sie die neuesten Service Packs und kumulativen Updates.  
 1. Ersetzen Sie die neuen Systemdatenbanken, die während der Installation erstellt wurden, durch die Systemdatenbanken, die Sie zuvor an einen anderen Speicherort verschoben hatten. 
+1. Nach dem Downgrade der SQL Server-Edition ändern Sie die Eigenschaft „Edition“ der SQL Server-VM im Azure-Portal. Dadurch werden die mit dieser VM verbundenen Metadaten und Abrechnungen aktualisiert. 
 
-Nach dem Downgrade der SQL Server-Edition ändern Sie die Eigenschaft „Edition“ der SQL Server-VM im Azure-Portal. Dadurch werden die mit dieser VM verbundenen Metadaten und Abrechnungen aktualisiert.
+
 
 ## <a name="change-edition-in-portal"></a>Ändern der Edition im Portal 
 
@@ -102,4 +104,4 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 * [Übersicht über SQL Server auf einem virtuellen Windows-Computer](sql-server-on-azure-vm-iaas-what-is-overview.md)
 * [Häufig gestellte Fragen zu SQL Server auf virtuellen Windows-Computern](frequently-asked-questions-faq.yml)
 * [Preisinformationen für SQL Server auf virtuellen Windows-Computern](pricing-guidance.md)
-* [SQL Server auf Windows-VMs – Versionshinweise](doc-changes-updates-release-notes.md)
+* [Neuerungen für SQL Server auf virtuellen Azure-Computern](doc-changes-updates-release-notes-whats-new.md)

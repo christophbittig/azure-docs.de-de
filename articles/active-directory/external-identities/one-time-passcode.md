@@ -5,30 +5,30 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 07/26/2021
+ms.date: 10/15/2021
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019, contperf-fy21q4-portal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7b12d0611f6488a9ab5475ec6488328a764434f
-ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
+ms.openlocfilehash: c3667740745b5e81a1a1df6439610d8def2216c1
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114721060"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130073276"
 ---
 # <a name="email-one-time-passcode-authentication"></a>Authentifizierung mit Einmalkennung per E-Mail
 
 Das Feature „Einmalkennung per E-Mail“ ist eine Möglichkeit zum Authentifizieren von Benutzern für die B2B-Zusammenarbeit, wenn sie nicht auf andere Weise – z. B. Azure AD, Microsoft-Konto (MSA) oder soziales Netzwerk als Identitätsanbieter – authentifiziert werden können. Wenn ein B2B-Gastbenutzer versucht, Ihre Einladung einzulösen oder sich bei Ihren freigegebenen Ressourcen anzumelden, kann er eine temporäre Kennung anfordern, die an seine E-Mail-Adresse gesendet wird. Dann gibt er diesen so genannten „Passcode“ ein, um den Anmeldevorgang fortzusetzen.
 
-Sie können dieses Feature im Azure-Portal jederzeit aktivieren, indem Sie den Identitätsanbieter für die Einmalkennung per E-Mail unter den Einstellungen für „External Identities“ Ihres Mandanten konfigurieren. Sie können das Feature wahlweise aktivieren, deaktivieren oder auf seine automatische Aktivierung im Oktober 2021 warten.
+Sie können dieses Feature im Azure-Portal jederzeit aktivieren, indem Sie den Identitätsanbieter für die Einmalkennung per E-Mail unter den Einstellungen für „External Identities“ Ihres Mandanten konfigurieren. Sie können dieses Feature aktivieren, deaktivieren oder auf die automatische Aktivierung ab 1. November 2021 warten.
 
 ![Einmalkennung per E-Mail, Übersichtsdiagramm](media/one-time-passcode/email-otp.png)
 
 > [!IMPORTANT]
-> - **Ab Oktober 2021** wird die Funktion „Einmalkennung per E-Mail“ für alle vorhandenen Mandanten und standardmäßig bei neuen Mandanten aktiviert. Wenn Sie nicht möchten, dass diese Funktion automatisch aktiviert wird, können Sie sie deaktivieren. Lesen Sie dazu [Deaktivieren der Einmalkennung per E-Mail](#disable-email-one-time-passcode) weiter unten.
+> - **Ab 1. November 2021** wird mit der Aktivierung des Features „Einmalkennung per E-Mail“ für alle bestehenden Mandanten begonnen. Bei neuen Mandanten wird es standardmäßig aktiviert. Wenn Sie nicht möchten, dass das Feature automatisch aktiviert wird, können Sie es [deaktivieren](one-time-passcode.md#disable-email-one-time-passcode).
 > - Die Einstellungen für die Einmalkennung per E-Mail wurden im Azure-Portal aus den **Einstellungen für externe Zusammenarbeit** in **Alle Identitätsanbieter** verschoben.
 
 > [!NOTE]
@@ -81,7 +81,7 @@ Gastbenutzer teri@gmail.com wird von Fabrikam eingeladen. Das Unternehmen hat ke
 
 5. Wählen Sie unter **Einmalkennung per E-Mail für Gastbenutzer** eine der folgenden Möglichkeiten aus:
 
-   - **Automatically enable email one-time passcode for guests starting October 2021** (Einmalkennung per E-Mail für Gastbenutzer ab Oktober 2021 automatisch aktivieren), wenn Sie das Feature nicht sofort aktivieren und auf das automatische Aktivierungsdatum im Oktober 2021 warten möchten.
+   - **Aktivieren Sie die Einmalkennung per E-Mail für Gastbenutzer*innen automatisch ab \<date\>** , wenn Sie das Feature nicht sofort aktivieren und auf das automatische Aktivierungsdatum am 1. November 2021 warten möchten.
    - **Enable email one-time passcode for guests effective now** (Einmalkennung per E-Mail für Gastbenutzer mit sofortiger Gültigkeit aktivieren), um das Feature jetzt zu aktivieren.
    - **Ja**, um das Feature jetzt zu aktivieren, wenn die Umschaltfläche „Ja/Nein“ angezeigt wird (diese Umschaltfläche wird angezeigt, wenn das Feature zuvor deaktiviert wurde).
 
@@ -91,7 +91,7 @@ Gastbenutzer teri@gmail.com wird von Fabrikam eingeladen. Das Unternehmen hat ke
 
 ## <a name="disable-email-one-time-passcode"></a>Deaktivieren der Einmalkennung per E-Mail
 
-Ab Oktober 2021 wird die Funktion „Einmalkennung per E-Mail“ für alle vorhandenen Mandanten und standardmäßig bei neuen Mandanten aktiviert. Ab diesem Zeitpunkt wird das Einlösen von Einladungen durch die Erstellung nicht verwalteter Azure AD-Konten und -Mandanten („viral“ oder „Just-In-Time“) für B2B-Zusammenarbeitsszenarien von Microsoft nicht mehr unterstützt. Wir aktivieren die Funktion „Einmalkennung per E-Mail“, da sie eine nahtlose alternative Authentifizierungsmethode für Ihre Gastbenutzer bietet. Sie können diese Funktion jedoch deaktivieren, wenn Sie sie nicht verwenden möchten.
+Ab 1. November 2021 wird mit der Aktivierung des Features „Einmalkennung per E-Mail“ für alle bestehenden Mandanten begonnen. Bei neuen Mandanten wird es standardmäßig aktiviert.  Ab diesem Zeitpunkt wird das Einlösen von Einladungen durch die Erstellung nicht verwalteter Azure AD-Konten und -Mandanten („viral“ oder „Just-In-Time“) für B2B-Zusammenarbeitsszenarien von Microsoft nicht mehr unterstützt. Wir aktivieren die Funktion „Einmalkennung per E-Mail“, da sie eine nahtlose alternative Authentifizierungsmethode für Ihre Gastbenutzer bietet. Sie können diese Funktion jedoch deaktivieren, wenn Sie sie nicht verwenden möchten.
 
 > [!NOTE]
 >
@@ -117,19 +117,19 @@ Ab Oktober 2021 wird die Funktion „Einmalkennung per E-Mail“ für alle vorh
 
 ## <a name="note-for-public-preview-customers"></a>Hinweis für Kunden der öffentlichen Vorschauversion
 
-Wenn Sie die öffentliche Vorschauversion der Funktion „Einmalkennung per E-Mail“ genutzt haben, gilt die automatische Funktionsaktivierung im Oktober 2021 nicht für Sie, sodass Ihre zugehörigen Geschäftsprozesse nicht beeinträchtigt werden. Außerdem wird im Azure-Portal in den Eigenschaften der Funktion **Einmalkennung per E-Mail für Gastbenutzer** nicht die Option **Einmalkennung per E-Mail für Gäste ab Oktober 2021 automatisch aktivieren** angezeigt. Stattdessen wird die folgende Umschaltfläche (**Ja**/**Nein**) angezeigt:
+Wenn Sie die öffentliche Vorschauversion der Funktion „Einmalkennung per E-Mail“ genutzt haben, gilt die automatische Funktionsaktivierung am 1. November 2021 für Sie nicht, sodass Ihre dazugehörigen Geschäftsprozesse nicht beeinträchtigt werden. Außerdem wird im Azure-Portal in den Eigenschaften **Einmalkennung per E-Mail für Gastbenutzer** die Option **Einmalkennung per E-Mail für Gastbenutzer ab Oktober 2021 automatisch aktivieren\<date\>** nicht angezeigt. Stattdessen wird die folgende Umschaltfläche (**Ja**/**Nein**) angezeigt:
 
 ![Nutzung der Einmalkennung per E-Mail](media/one-time-passcode/enable-email-otp-opted-in.png)
 
-Wenn Sie die Vorschauversion nicht mehr nutzen und das automatische Aktivieren der Funktion im Oktober 2021 zulassen möchten, können Sie die Standardeinstellungen wiederherstellen. Verwenden Sie dazu in der Microsoft Graph-API den [Ressourcentyp „emailAuthenticationMethodConfiguration“](/graph/api/resources/emailauthenticationmethodconfiguration). Nachdem Sie die Standardeinstellungen wiederhergestellt haben, stehen unter **Einmalkennung per E-Mail für Gastbenutzer** die folgenden Optionen zur Verfügung:
+Wenn Sie die Vorschauversion nicht mehr nutzen und das automatische Aktivieren am 1. November 2021 zulassen möchten, können Sie die Standardeinstellungen wiederherstellen. Verwenden Sie dazu in der Microsoft Graph-API den [Ressourcentyp „emailAuthenticationMethodConfiguration“](/graph/api/resources/emailauthenticationmethodconfiguration). Nachdem Sie die Standardeinstellungen wiederhergestellt haben, stehen unter **Einmalkennung per E-Mail für Gastbenutzer** die folgenden Optionen zur Verfügung:
 
 ![Aktivieren der Einmalkennung per E-Mail für Nutzer der Vorschauversion](media/one-time-passcode/email-otp-options.png)
 
-- **Einmalkennung per E-Mail für Gäste ab Oktober 2021 automatisch aktivieren** (Standardeinstellung): Wenn die Funktion „Einmalkennung per E-Mail“ für Ihren Mandanten noch nicht aktiviert ist, wird sie ab Oktober 2021 automatisch aktiviert. Wenn die Funktion zu diesem Zeitpunkt aktiviert werden soll, ist keine weitere Aktion erforderlich. Wenn Sie die Funktion bereits aktiviert oder deaktiviert haben, ist diese Option nicht verfügbar.
+- **Einmalkennung per E-Mail für Gastnutzer automatisch aktivieren ab \<date\>** . (Standardeinstellung): Wenn das Feature „Einmalkennung per E-Mail“ für Ihren Mandanten noch nicht aktiviert ist, wird es ab 1. November 2021 automatisch aktiviert. Wenn die Funktion zu diesem Zeitpunkt aktiviert werden soll, ist keine weitere Aktion erforderlich. Wenn Sie die Funktion bereits aktiviert oder deaktiviert haben, ist diese Option nicht verfügbar.
 
 - **Einmalkennung per E-Mail für Gastbenutzer sofort aktivieren**. Aktiviert die Funktion „Einmalkennung per E-Mail“ für Ihren Mandanten.
 
-- **Einmalkennung per E-Mail für Gastbenutzer deaktivieren**. Deaktiviert die Funktion „Einmalkennung per E-Mail“ für Ihren Mandanten und verhindert, dass die Funktion im Oktober 2021 aktiviert wird.
+- **Einmalkennung per E-Mail für Gastbenutzer deaktivieren**. Deaktiviert das Feature „Einmalkennung per E-Mail“ für Ihren Mandanten und verhindert, dass das Feature am 1. November 2021 aktiviert wird.
 
 ## <a name="note-for-azure-us-government-customers"></a>Hinweis für Azure US Government-Kunden
 
@@ -150,3 +150,55 @@ So aktivieren Sie das Feature „Einmalkennung per E-Mail“ in der Azure US G
 5. Wählen Sie **Speichern** aus.
 
 Weitere Informationen zu aktuellen Einschränkungen finden Sie unter [Microsoft Azure Cloud for US Government (Azure-Cloud für US-Behörden)](current-limitations.md#azure-us-government-clouds).
+
+## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
+
+**Warum wird in meinen Einstellungen zur Einmalkennung per E-Mail weiterhin die Option „Einmalkennung für E-Mail für Gastbenutzer ab Oktober 2021 automatisch aktivieren“ ausgewählt?**
+
+Aufgrund der Bereitstellungszeitpläne wird am 1. November 2021 damit begonnen, die Einmalkennung per E-Mail standardmäßig global zu aktivieren. Bis dahin kann in den Einstellungen zur Einmalkennung per E-Mail weiterhin die Option „Einmalkennung für E-Mail für Gastbenutzer ab Oktober 2021 automatisch aktivieren“ ausgewählt sein.
+
+**Wie erleben Gastbenutzer*innen den globalen Rollout?**
+
+Während des globalen Rollouts hängt das Benutzererlebnis der Gastbenutzer*innen von der Konfiguration Ihrer Einmalkennung per E-Mail und dem Szenario der Gastbenutzer*innen ab. 
+
+Bevor die Änderung Ihre Region erreicht, erleben Gastbenutzer*innen folgendes Verhalten.
+
+- Mit aktivierter Einmalkennung per E-Mail:
+
+  - Wenn Gastbenutzer*innen über ein vorhandenes, nicht verwaltetes Azure AD-Konto verfügen, melden sie sich weiterhin mit dem nicht verwalteten Azure AD-Konto an.
+  - Wenn Gastbenutzer*innen zuvor eine Einladung zu Ihrem Mandanten mit einem nicht verwalteten Azure AD-Konto eingelöst haben, Sie ihren Einlösungsstatus zurücksetzen und sie erneut einladen, melden sie sich weiterhin mit dem nicht verwalteten Azure AD-Konto an.
+  - Wenn Gastbenutzer*innen nicht über ein nicht verwaltetes Azure AD-Konto verfügen, lösen sie die Einladung mit der Authentifizierung für die Einmalkennung per E-Mail ein.
+
+- Mit deaktivierter Einmalkennung per E-Mail:
+
+  - Wenn Gastbenutzer*innen über ein vorhandenes, nicht verwaltetes Azure AD-Konto verfügen, melden sie sich weiterhin mit dem nicht verwalteten Azure AD-Konto an.
+  - Wenn Gastbenutzer*innen zuvor eine Einladung zu Ihrem Mandanten mit einem nicht verwalteten Azure AD-Konto eingelöst haben, Sie ihren Einlösungsstatus zurücksetzen und sie erneut einladen, melden sie sich weiterhin mit dem nicht verwalteten Azure AD-Konto an.
+  - Wenn Gastbenutzer*innen nicht über ein nicht verwaltetes Azure AD-Konto verfügen, lösen sie die Einladung mit einem Link für die Einmalkennung per E-Mail ein, doch möglicherweise kommt es zu einem Anmeldefehler, wenn sie zuvor nicht zu dem Azure-Portal hinzugefügt wurden.
+
+Nachdem die Änderung Ihre Region erreicht, erleben Gastbenutzer*innen folgendes Verhalten.
+
+- Mit aktivierter Einmalkennung per E-Mail:
+
+  - Wenn Gastbenutzer*innen über ein vorhandenes, nicht verwaltetes Azure AD-Konto verfügen, nutzen sie die Einmalkennung per E-Mail, um die Einladung einzulösen und sich in Zukunft anzumelden.
+  - Wenn Gastbenutzer*innen zuvor eine Einladung zu Ihrem Mandanten mithilfe eines nicht verwalteten Azure AD-Kontos eingelöst haben, Sie ihren Einlösungsstatus zurücksetzen und sie erneut einladen, verwenden sie die Einmalkennung per E-Mail, um die Einladung einzulösen und sich in Zukunft anzumelden.
+  - Wenn Gastbenutzer*innen nicht über ein nicht verwaltetes Azure AD-Konto verfügen, nutzen sie die Einmalkennung per E-Mail, um die Einladung einzulösen und sich in Zukunft anzumelden.
+
+- Mit deaktivierter Einmalkennung per E-Mail:
+
+  - Wenn Gastbenutzer*innen über ein vorhandenes, nicht verwaltetes Azure AD-Konto verfügen, verwenden sie ein Microsoft-Konto, um die Einladung einzulösen. Sie besitzen dann zwei Konten (das nicht verwaltete Azure AD-Konto und das Microsoft-Konto). Um dies zu verhindern, wird dringend empfohlen, die Einmalkennung per E-Mail zu aktivieren.
+  - Wenn Gastbenutzer*innen zuvor eine Einladung zu Ihrem Mandanten mithilfe eines nicht verwalteten Azure AD-Kontos eingelöst haben, Sie ihren Einlösungsstatus zurücksetzen und sie erneut einladen, verwenden sie ein Microsoft-Konto, um die Einladung einzulösen. Sie besitzen dann zwei Konten (das nicht verwaltete Azure AD-Konto und das Microsoft-Konto). Um dies zu verhindern, wird dringend empfohlen, die Einmalkennung per E-Mail zu aktivieren.
+  - Wenn Gastbenutzer*innen nicht über ein nicht verwaltetes Azure AD-Konto verfügen, nutzen sie ein Microsoft-Konto, um die Einladung einzulösen und sich in Zukunft anzumelden.
+
+Weitere Informationen zu den verschiedenen Möglichkeiten, die Einladung einzulösen, finden Sie unter [B2B-Zusammenarbeit: Einlösen von Einladungen](redemption-experience.md).
+
+**Bedeutet dies, die Self-Service-Registrierung ist nicht mehr möglich?**
+
+Es ist einfach, die [Self-Service-Registrierung im Kontext von External Identities](self-service-sign-up-overview.md) mit der Self-Service-Registrierung für E-Mail-verifizierte Benutzer zu verwechseln, aber es handelt sich um zwei verschiedene Features. Das Feature, das abgeschafft wird, ist die [Self-Service-Registrierung für E-Mail-verifizierte Benutzer](../enterprise-users/directory-self-service-signup.md), was dazu führt, dass Ihre Gastbenutzer*innen ein nicht verwaltetes Azure AD-Konto erstellen. Die Self-Service-Registrierung für External Identities ist jedoch weiterhin verfügbar, was dazu führt, dass sich Ihre Gastbenutzer*innen bei Ihrer Organisation mit einer [Vielzahl von Identitätsanbietern](identity-providers.md) registrieren.  
+
+**Was empfiehlt Microsoft für vorhandene Microsoft-Konten (MSA)?**
+
+Wenn die Möglichkeit zum Deaktivieren des Microsoft-Kontos in den Einstellungen für Identitätsanbieter (derzeit nicht verfügbar) unterstützt wird, wird dringend empfohlen, das Microsoft-Konto zu deaktivieren und die Einmalkennung per E-Mail zu aktivieren. Anschließend sollten Sie den Einlösungsstatus vorhandener Gastbenutzer*innen mit Microsoft-Konten zurücksetzen, sodass sie die Einladung mit der Authentifizierung der Einmalkennung per E-Mail erneut einlösen und die Einmalkennung per E-Mail in Zukunft zur Anmeldung nutzen können.
+
+**Betrifft diese Änderung die Integration von SharePoint und OneDrive in Azure AD B2B?**
+
+Nein, der globale Rollout, der standardmäßig die Einmalkennung per E-Mail aktiviert und am 1. November 2021 beginnt, betrifft die Integration von SharePoint und OneDrive in Azure AD B2B nicht. Informationen zum Aktivieren der Integration, sodass die Zusammenarbeit bei SharePoint und OneDrive B2B-Funktionen verwendet, oder zum Deaktivieren der Integration finden Sie unter [Integration mit SharePoint und OneDrive in Azure AD B2B](/sharepoint/sharepoint-azureb2b-integration).

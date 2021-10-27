@@ -10,13 +10,13 @@ ms.topic: reference
 author: dimitri-furman
 ms.author: dfurman
 ms.reviewer: mathoma
-ms.date: 04/09/2021
-ms.openlocfilehash: 473aa81bf28dd867bf30acef7a5b407b0e4b67a2
-ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
+ms.date: 10/12/2021
+ms.openlocfilehash: 4c131b756a03622a2569f997fe427ebfdb661454
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112964750"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129999718"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>Grenzwerte für Ressourcen für Pools für elastische Datenbanken, die das DTU-Kaufmodell verwenden
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -185,7 +185,9 @@ In der folgenden Tabelle werden Eigenschaften für Pooldatenbanken beschrieben, 
 > Darüber hinaus wird die Anzahl von Datenbanken, die dem Pool hinzugefügt werden können, implizit beschränkt, wenn Sie die Mindestanzahl von DTUs pro Datenbank auf einen Wert größer null festlegen. Wenn Sie also beispielsweise in einem Pool mit 400 DTUs die Mindestanzahl von DTUs auf „100“ festlegen, können dem Pool maximal vier Datenbanken hinzugefügt werden, da für jede Datenbank 100 DTUs reserviert werden.
 > 
 
-Die Eigenschaften pro Datenbank werden zwar in DTUs ausgedrückt, steuern aber auch den Verbrauch anderer Ressourcentypen wie Daten-E/A, Protokoll-E/A und Arbeitsthreads. Wenn Sie Mindest- und Höchstwerte für DTUs pro Datenbank anpassen, werden Reservierungen und Grenzwerte für alle Ressourcentypen proportional angepasst.
+Die Eigenschaften pro Datenbank werden zwar in DTUs ausgedrückt, steuern aber auch den Verbrauch anderer Ressourcentypen wie Daten-E/A, Protokoll-E/A, Pufferpoolspeicher und Arbeitsthreads. Wenn Sie Mindest- und Höchstwerte für DTUs pro Datenbank anpassen, werden Reservierungen und Grenzwerte für alle Ressourcentypen proportional angepasst.
+
+Die Minimal- und Maximalwerte der DTU pro Datenbank gelten für den Ressourcenverbrauch durch Benutzerworkloads, aber nicht für den Ressourcenverbrauch durch interne Prozesse. Bei einer Datenbank mit einer maximalen DTU pro Datenbank, die auf die Hälfte der Pool-eDTU festgelegt ist, kann die Benutzerworkload beispielsweise nicht mehr als die Hälfte des Pufferpoolspeichers beanspruchen. Diese Datenbank kann jedoch weiterhin Seiten im Pufferpool nutzen, die von internen Prozessen geladen wurden. Weitere Informationen finden Sie unter [Ressourcenverbrauch durch Benutzerworkloads und interne Prozesse](resource-limits-logical-server.md#resource-consumption-by-user-workloads-and-internal-processes).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/22/2021
 ms.author: davidmu
 ms.reviewer: ergreenl
-ms.openlocfilehash: 6ed7241e62b037a2d0ebd5303bd18e3c859d93f0
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f8b32e5adda8d09f928b6fc6b447a9363998017f
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128639658"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130074055"
 ---
 # <a name="add-password-based-single-sign-on-to-an-application-in-azure-active-directory"></a>Hinzufügen des kennwortbasierten einmaligen Anmeldens zu einer Anwendung in Azure Active Directory
 
@@ -61,7 +61,7 @@ Falls der Analyseversuch von Azure AD nicht erfolgreich ist, können Sie die Anm
 1. Wählen Sie **{Anwendungsname}-Einstellungen für einmaliges Anmelden über ein Kennwort konfigurieren** aus, um die Seite **Anmeldung konfigurieren** anzuzeigen.
 1. Wählen Sie **Anmeldefelder manuell erkennen** aus. Weitere Anweisungen zur manuellen Erkennung von Anmeldefeldern werden angezeigt.
 1. Wählen Sie **Anmeldefelder erfassen** aus. Auf einer neuen Registerkarte wird eine Seite mit dem Erfassungsstatus geöffnet, auf der die Meldung Die Metadatenerfassung wird aktuell ausgeführt. angezeigt wird.
-1. Wenn auf einer neuen Registerkarte das Feld **Erweiterung für „Meine Apps“ erforderlich** angezeigt wird, klicken Sie auf **Jetzt installieren**, um die Browsererweiterung Erweiterung zur sicheren Anmeldung bei „Meine Apps“ zu installieren. (Die Browsererweiterung erfordert Microsoft Edge, Chrome oder Firefox.) Installieren, starten und aktivieren Sie die Erweiterung, und aktualisieren Sie die Seite mit dem Erfassungsstatus. Die Browsererweiterung wird in einer anderen Registerkarte geöffnet, die die eingegebene URL anzeigt.
+1. Wenn auf einer neuen Registerkarte das Feld **Erweiterung für „Meine Apps“ erforderlich** angezeigt wird, klicken Sie auf **Jetzt installieren**, um die Browsererweiterung Erweiterung zur sicheren Anmeldung bei „Meine Apps“ zu installieren. (Die Browsererweiterung erfordert Microsoft Edge oder Chrome.) Installieren, starten und aktivieren Sie die Erweiterung, und aktualisieren Sie die Seite mit dem Erfassungsstatus. Die Browsererweiterung wird in einer anderen Registerkarte geöffnet, die die eingegebene URL anzeigt.
 1. Führen Sie auf der Registerkarte mit der eingegebenen URL den Anmeldevorgang durch. Füllen Sie die Felder für Benutzername und Kennwort aus, und versuchen Sie, sich anzumelden. (Sie müssen nicht das richtige Kennwort angeben.) Sie werden aufgefordert, die erfassten Anmeldefelder zu speichern.
 1. Klicken Sie auf **OK**. Die Browsererweiterung aktualisiert die Seite mit dem Erfassungsstatus mit der Meldung **Die Metadaten für die Anwendung wurden aktualisiert**. Die Registerkarte des Browsers wird geschlossen.
 1. Wählen Sie auf der Azure AD-Seite Anmeldung konfigurieren die Option **OK, ich konnte mich erfolgreich bei der App anmelden** aus.

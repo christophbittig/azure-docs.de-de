@@ -6,15 +6,15 @@ author: jianleishen
 ms.service: data-factory
 ms.subservice: data-movement
 ms.topic: troubleshooting
-ms.date: 10/01/2021
+ms.date: 10/13/2021
 ms.author: jianleishen
 ms.custom: has-adal-ref, synapse
-ms.openlocfilehash: f258ba3b8c62d0d290785bbf6a66cc7651286162
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: 84208764621bd03959db7d695bf0616dcccc4491
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129390528"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130064778"
 ---
 # <a name="troubleshoot-the-azure-synapse-analytics-azure-sql-database-and-sql-server-connectors-in-azure-data-factory-and-azure-synapse"></a>Problembehandlung für die Azure Synapse Analytics-, Azure SQL-Datenbank- und SQL Server-Connectors in Azure Data Factory und Azure Synapse Analytics
 
@@ -93,10 +93,12 @@ Dieser Artikel enthält Vorschläge zur Behandlung häufiger Probleme mit den Az
 
 - **Meldung**: `The specified Stored Procedure is not valid. It could be caused by that the stored procedure doesn't return any data. Invalid Stored Procedure script: '%scriptName;'.`
 
-- **Ursache:** Die angegebene gespeicherte Prozedur ist ungültig. Dies kann daran liegen, dass die gespeicherte Prozedur keine Daten zurückgibt.
+- **Ursachen und Empfehlungen:** Dieser Fehler kann verschiedene Ursachen haben. In der Liste unten finden Sie mögliche Ursachenanalysen und Empfehlungen.
 
-- **Empfehlung**:  Überprüfen Sie die gespeicherte Prozedur mithilfe von SQL-Tools. Stellen Sie sicher, dass die gespeicherte Prozedur Daten zurückgeben kann.
-
+  | Ursachenanalyse                                               | Empfehlung                                             |
+  | :----------------------------------------------------------- | :----------------------------------------------------------- |
+  | Die angegebene gespeicherte Prozedur ist ungültig. | Überprüfen Sie die gespeicherte Prozedur mithilfe von SQL-Tools. Stellen Sie sicher, dass die gespeicherte Prozedur Daten zurückgeben kann.  |
+  | Die Lookup-Aktivität erfordert, dass die gespeicherte Prozedur einen Wert zurückgibt, aber der Code der gespeicherten Prozedur gibt keinen Wert zurück. | Verwenden Sie die Aktivität „Gespeicherte Prozedur“, wenn erwartet wird, dass die gespeicherte Prozedur keine Daten zurückgibt. |
 
 ## <a name="error-code-sqlinvaliddbquerystring"></a>Fehlercode: SqlInvalidDbQueryString
 

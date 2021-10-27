@@ -1,15 +1,15 @@
 ---
 title: Aktivieren von VM-Erweiterungen mithilfe der Azure-Befehlszeilenschnittstelle
 description: In diesem Artikel erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle VM-Erweiterungen auf Servern mit Azure Arc-Unterstützung bereitstellen, die in Hybrid Cloud-Umgebungen ausgeführt werden.
-ms.date: 08/05/2021
+ms.date: 10/15/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2e9427d714681883fd5422ab0a7d17fd337c9568
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 41924f20679de16205af3c7cb962d6005e757e2d
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124807442"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130069632"
 ---
 # <a name="enable-azure-vm-extensions-using-the-azure-cli"></a>Aktivieren von Azure-VM-Erweiterungen mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -22,7 +22,9 @@ In diesem Artikel erfahren Sie, wie Sie die Azure-Befehlszeilenschnittstelle ver
 
 ## <a name="install-the-azure-cli-extension"></a>Installieren der Erweiterung für die Azure-Befehlszeilenschnittstelle
 
-Die ConnectedMachine-Befehle sind nicht Bestandteil der Azure-Befehlszeilenschnittstelle. Damit Sie die Azure-Befehlszeilenschnittstelle verwenden können, um VM-Erweiterungen auf Ihrem Hybridserver zu verwalten, der von Servern mit Azure Arc-Unterstützung verwaltet wird, müssen Sie zunächst die ConnectedMachine-Erweiterung laden. Rufen Sie sie mit dem folgenden Befehl ab:
+Die ConnectedMachine-Befehle sind nicht Bestandteil der Azure-Befehlszeilenschnittstelle. Damit Sie die Azure-Befehlszeilenschnittstelle verwenden können, um eine Verbindung mit Azure herzustellen und VM-Erweiterungen auf Ihrem Hybridserver zu verwalten, der von Servern mit Azure Arc-Unterstützung verwaltet wird, müssen Sie zunächst die ConnectedMachine-Erweiterung laden. Diese Verwaltungsvorgänge können von Ihrer Arbeitsstation aus ausgeführt werden. Sie müssen sie nicht auf dem Azure Arc-fähigen Server ausführen.
+
+Rufen Sie sie mit dem folgenden Befehl ab:
 
 ```azurecli
 az extension add --name connectedmachine
@@ -35,19 +37,25 @@ Verwenden Sie [az connectedmachine extension create](/cli/azure/connectedmachine
 Das folgende Beispiel aktiviert die Log Analytics-VM-Erweiterung auf einem Server mit Azure Arc-Unterstützung:
 
 ```azurecli
-az connectedmachine extension create --machine-name "myMachineName" --name "OmsAgentForLinux or MicrosoftMonitoringAgent" --location "eastus" --settings '{\"workspaceId\":\"myWorkspaceId\"}' --protected-settings '{\"workspaceKey\":\"myWorkspaceKey\"}' --resource-group "myResourceGroup" --type-handler-version "1.13" --type "OmsAgentForLinux or MicrosoftMonitoringAgent" --publisher "Microsoft.EnterpriseCloud.Monitoring" 
+az connectedmachine extension create --machine-name "myMachineName" --name "OmsAgentForLinux or MicrosoftMonitoringAgent" --location "regionName" --settings '{\"workspaceId\":\"myWorkspaceId\"}' --protected-settings '{\"workspaceKey\":\"myWorkspaceKey\"}' --resource-group "myResourceGroup" --type-handler-version "1.13" --type "OmsAgentForLinux or MicrosoftMonitoringAgent" --publisher "Microsoft.EnterpriseCloud.Monitoring" 
 ```
 
 Im folgenden Beispiel wird die Erweiterung für benutzerdefinierte Skripts auf einem Server mit Azure Arc-Unterstützung aktiviert:
 
 ```azurecli
-az connectedmachine extension create --machine-name "myMachineName" --name "CustomScriptExtension" --location "eastus" --type "CustomScriptExtension" --publisher "Microsoft.Compute" --settings "{\"commandToExecute\":\"powershell.exe -c \\\"Get-Process | Where-Object { $_.CPU -gt 10000 }\\\"\"}" --type-handler-version "1.10" --resource-group "myResourceGroup"
+az connectedmachine extension create --machine-name "myMachineName" --name "CustomScriptExtension" --location "regionName" --type "CustomScriptExtension" --publisher "Microsoft.Compute" --settings "{\"commandToExecute\":\"powershell.exe -c \\\"Get-Process | Where-Object { $_.CPU -gt 10000 }\\\"\"}" --type-handler-version "1.10" --resource-group "myResourceGroup"
 ```
 
 Das folgende Beispiel aktiviert die Key Vault-VM-Erweiterung auf einem Server mit Azure Arc-Unterstützung:
 
 ```azurecli
 az connectedmachine extension create --resource-group "resourceGroupName" --machine-name "myMachineName" --location "regionName" --publisher "Microsoft.Azure.KeyVault" --type "KeyVaultForLinux or KeyVaultForWindows" --name "KeyVaultForLinux or KeyVaultForWindows" --settings '{"secretsManagementSettings": { "pollingIntervalInS": "60", "observedCertificates": ["observedCert1"] }, "authenticationSettings": { "msiEndpoint": "http://localhost:40342/metadata/identity" }}'
+```
+
+Das folgende Beispiel aktiviert die Microsoft Antimalware-Erweiterung auf Windows Server mit Azure Arc-Unterstützung:
+
+```azurecli
+az connectedmachine extension create --resource-group "resourceGroupName" --machine-name "myMachineName" --location "regionName" --publisher "Microsoft.Azure.Security" --type "IaaSAntimalware" --name "IaaSAntimalware" --settings '{"AntimalwareEnabled": true}'
 ```
 
 ## <a name="list-extensions-installed"></a>Auflisten der Installierten Erweiterungen
@@ -70,7 +78,7 @@ Das folgende Beispiel zeigt die partielle JSON-Ausgabe des Befehls `az connected
     "autoUpgradingMinorVersion": "false",
     "forceUpdateTag": null,
     "id": "/subscriptions/subscriptionId/resourceGroups/resourceGroupName/providers/Microsoft.HybridCompute/machines/SVR01/extensions/DependencyAgentWindows",
-    "location": "eastus",
+    "location": "regionName",
     "name": "DependencyAgentWindows",
     "namePropertiesInstanceViewName": "DependencyAgentWindows",
 ```

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 08/17/2021
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 113dcc4de4ceb1b283f7bdeb1941ced76a9425d0
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 4656c98718d024a43096081df2ac662b38b2efb8
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129714564"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130162997"
 ---
 # <a name="understand-azure-files-billing"></a>Grundlegendes zur Abrechnung für Azure Files
 Für Azure Files gibt es zwei Abrechnungsmodelle: „Bereitgestellt“ und „Nutzungsbasierte Zahlung“. Das Modell „Bereitgestellt“ ist nur für Premium-Dateifreigaben verfügbar, d. h. für Dateifreigaben, die in einem Speicherkonto des Typs **FileStorage** bereitgestellt werden. Das Modell „Nutzungsbasierte Zahlung“ ist nur für Standarddateifreigaben verfügbar, d. h. für Dateifreigaben, die in einem Speicherkonto des Typs **Universell, Version 2** bereitgestellt werden. In diesem Artikel wird die Funktionsweise beider Modelle erklärt, um Ihnen zu helfen, Ihre monatliche Azure Files-Rechnung zu verstehen.
@@ -82,8 +82,8 @@ Wenn Sie eine Premium-Dateifreigabe bereitstellen, geben Sie an, wie viele GiBs 
 | Mindestgröße einer Dateifreigabe | 100 GB |
 | Bereitstellungseinheit | 1 GiB |
 | Baseline-IOPS-Formel | `MIN(400 + 1 * ProvisionedGiB, 100000)` |
-| Burstgrenzwert | `MIN(MAX(4000, 3 * BaselineIOPS), 100000)` |
-| Burstguthaben | `BurstLimit * 3600` |
+| Burstgrenzwert | `MIN(MAX(4000, 3 * ProvisionedGiB), 100000)` |
+| Burstguthaben | `(BurstLimit - BaselineIOPS) * 3600` |
 | Eingangsrate | `40 MiB/sec + 0.04 * ProvisionedGiB` |
 | Ausgangsrate | `60 MiB/sec + 0.06 * ProvisionedGiB` |
 
@@ -91,14 +91,14 @@ Die folgende Tabelle zeigt einige Beispiele dieser Formeln für die bereitgestel
 
 | Kapazität (GiB) | IOPS-Grundwert | Burst-IOPS | Burstguthaben | Eingehend (MiB/s) | Ausgehend (MiB/s) |
 |-|-|-|-|-|-|
-| 100 | 500 | Bis zu 4.000 | 14.400.000 | 44 | 66 |
-| 500 | 900 | Bis zu 4.000 | 14.400.000 | 60 | 90 |
-| 1\.024 | 1\.424 | Bis zu 4.272 | 15,379,200 | 81 | 122 |
-| 5\.120 | 5\.520 | Bis zu 16.560 | 59,616,000 | 245 | 368 |
-| 10.240 | 10.640 | Bis zu 31.920 | 114,912,000 | 450 | 675 |
-| 33.792 | 34.192 | Bis zu 100.000 | 360.000.000 | 1\.392 | 2\.088 |
-| 51.200 | 51.600 | Bis zu 100.000 | 360.000.000 | 2\.088 | 3\.132 |
-| 102.400 | 100.000 | Bis zu 100.000 | 360.000.000 | 4\.136 | 6\.204 |
+| 100 | 500 | Bis zu 4.000 | 12.600.000 | 44 | 66 |
+| 500 | 900 | Bis zu 4.000 | 11.160.000 | 60 | 90 |
+| 1\.024 | 1\.424 | Bis zu 4.000 | 10.713.600 | 81 | 122 |
+| 5\.120 | 5\.520 | Bis zu 15.360 | 35.424.000 | 245 | 368 |
+| 10.240 | 10.640 | Bis zu 30.720 | 72.288.000 | 450 | 675 |
+| 33.792 | 34.192 | Bis zu 100.000 | 236.908.800 | 1\.392 | 2\.088 |
+| 51.200 | 51.600 | Bis zu 100.000 | 174.240.000 | 2\.088 | 3\.132 |
+| 102.400 | 100.000 | Bis zu 100.000 | 0 | 4\.136 | 6\.204 |
 
 Die effektive Leistung der Dateifreigabe hängt u. a. von den Grenzwerten des Computernetzwerks, der verfügbaren Netzwerkbandbreite, den E/A-Größen und der Parallelität ab. Beispielsweise kann ein einzelner virtueller Windows-Computer ohne aktivierte Funktion SMB Multichannel namens *Standard F16s_v2*, der mit einer Premium-Dateifreigabe über SMB verbunden ist, laut internen Tests mit Lese-/Schreibvorgängen mit einer E/A-Größe von 8 KiB 20 K Lese-IOPS und 15 K Schreib-IOPS erzielen. Bei Lese-/Schreibvorgängen mit einer E/A-Größe von 512 MiB kann derselbe virtuelle Computer einen Durchsatz von 1,1 GiB/s ausgehend und 370 MiB/s eingehend erzielen. Der gleiche Client kann eine bis zu \~dreifache Leistung erzielen, wenn SMB Multichannel für die Premium-Freigaben aktiviert ist. Um eine maximale Leistung zu erreichen, [aktivieren Sie SMB Multichannel](files-smb-protocol.md#smb-multichannel), und verteilen Sie die Last auf mehrere VMs. Weitere Informationen zur [Leistung von SMB Multichannel](storage-troubleshooting-files-performance.md) und zu gängigen Leistungsproblemen sowie deren Lösungen finden Sie im [Leitfaden zur Problembehandlung](storage-files-smb-multichannel-performance.md).
 
@@ -141,10 +141,13 @@ Transaktionen sind Vorgänge oder Anforderungen an Azure Files, den Inhalt der D
 
 Es gibt fünf grundlegende Transaktionskategorien: „Schreiben“, „Auflisten“, „Lesen“, „Sonstige“ und „Löschen“. Alle Vorgänge, die über die REST-API oder SMB erfolgen, werden wie folgt einer dieser vier Kategorien zugeordnet:
 
-| Vorgangsart | Schreibtransaktionen | Listentransaktionen | Lesetransaktionen | Sonstige Transaktionen | Löschtransaktionen |
-|-|-|-|-|-|-|
-| Verwaltungsvorgänge | <ul><li>`CreateShare`</li><li>`SetFileServiceProperties`</li><li>`SetShareMetadata`</li><li>`SetShareProperties`</li><li>`SetShareACL`</li></ul> | <ul><li>`ListShares`</li></ul> | <ul><li>`GetFileServiceProperties`</li><li>`GetShareAcl`</li><li>`GetShareMetadata`</li><li>`GetShareProperties`</li><li>`GetShareStats`</li></ul> | | <ul><li>`DeleteShare`</li></ul> |
-| Datenvorgänge | <ul><li>`CopyFile`</li><li>`Create`</li><li>`CreateDirectory`</li><li>`CreateFile`</li><li>`PutRange`</li><li>`PutRangeFromURL`</li><li>`SetDirectoryMetadata`</li><li>`SetFileMetadata`</li><li>`SetFileProperties`</li><li>`SetInfo`</li><li>`Write`</li><li>`PutFilePermission`</li></ul> | <ul><li>`ListFileRanges`</li><li>`ListFiles`</li><li>`ListHandles`</li></ul>  | <ul><li>`FilePreflightRequest`</li><li>`GetDirectoryMetadata`</li><li>`GetDirectoryProperties`</li><li>`GetFile`</li><li>`GetFileCopyInformation`</li><li>`GetFileMetadata`</li><li>`GetFileProperties`</li><li>`QueryDirectory`</li><li>`QueryInfo`</li><li>`Read`</li><li>`GetFilePermission`</li></ul> | <ul><li>`AbortCopyFile`</li><li>`Cancel`</li><li>`ChangeNotify`</li><li>`Close`</li><li>`Echo`</li><li>`Ioctl`</li><li>`Lock`</li><li>`Logoff`</li><li>`Negotiate`</li><li>`OplockBreak`</li><li>`SessionSetup`</li><li>`TreeConnect`</li><li>`TreeDisconnect`</li><li>`CloseHandles`</li><li>`AcquireFileLease`</li><li>`BreakFileLease`</li><li>`ChangeFileLease`</li><li>`ReleaseFileLease`</li></ul> | <ul><li>`ClearRange`</li><li>`DeleteDirectory`</li></li>`DeleteFile`</li></ul> |
+| Transaktionsbucket | Verwaltungsvorgänge | Datenvorgänge |
+|-|-|-|
+| Schreibtransaktionen | <ul><li>`CreateShare`</li><li>`SetFileServiceProperties`</li><li>`SetShareMetadata`</li><li>`SetShareProperties`</li><li>`SetShareACL`</li></ul> | <ul><li>`CopyFile`</li><li>`Create`</li><li>`CreateDirectory`</li><li>`CreateFile`</li><li>`PutRange`</li><li>`PutRangeFromURL`</li><li>`SetDirectoryMetadata`</li><li>`SetFileMetadata`</li><li>`SetFileProperties`</li><li>`SetInfo`</li><li>`Write`</li><li>`PutFilePermission`</li></ul> |
+| Listentransaktionen | <ul><li>`ListShares`</li></ul> | <ul><li>`ListFileRanges`</li><li>`ListFiles`</li><li>`ListHandles`</li></ul> |
+| Lesetransaktionen | <ul><li>`GetFileServiceProperties`</li><li>`GetShareAcl`</li><li>`GetShareMetadata`</li><li>`GetShareProperties`</li><li>`GetShareStats`</li></ul> | <ul><li>`FilePreflightRequest`</li><li>`GetDirectoryMetadata`</li><li>`GetDirectoryProperties`</li><li>`GetFile`</li><li>`GetFileCopyInformation`</li><li>`GetFileMetadata`</li><li>`GetFileProperties`</li><li>`QueryDirectory`</li><li>`QueryInfo`</li><li>`Read`</li><li>`GetFilePermission`</li></ul> |
+| Sonstige Transaktionen | | <ul><li>`AbortCopyFile`</li><li>`Cancel`</li><li>`ChangeNotify`</li><li>`Close`</li><li>`Echo`</li><li>`Ioctl`</li><li>`Lock`</li><li>`Logoff`</li><li>`Negotiate`</li><li>`OplockBreak`</li><li>`SessionSetup`</li><li>`TreeConnect`</li><li>`TreeDisconnect`</li><li>`CloseHandles`</li><li>`AcquireFileLease`</li><li>`BreakFileLease`</li><li>`ChangeFileLease`</li><li>`ReleaseFileLease`</li></ul> |
+| Löschtransaktionen | <ul><li>`DeleteShare`</li></ul> | <ul><li>`ClearRange`</li><li>`DeleteDirectory`</li></li>`DeleteFile`</li></ul> |  
 
 > [!Note]  
 > NFS 4.1 ist nur für Premium-Dateifreigaben mit dem Abrechnungsmodell „Bereitgestellt“ verfügbar. Transaktionen haben keinen Einfluss auf die Abrechnung für Premium-Dateifreigaben.

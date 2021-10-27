@@ -6,12 +6,12 @@ ms.date: 06/24/2021
 ms.custom: devx-track-java
 author: mattmccleary
 ms.author: mmcc
-ms.openlocfilehash: 9ebfaea28e249af5f8ecd140e08178398f38fd6f
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: c732762b825a38560c1191371565331271bc18b5
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129858297"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130162726"
 ---
 # <a name="azure-monitor-opentelemetry-based-auto-instrumentation-for-java-applications"></a>Azure Monitor OpenTelemetry-basierte automatische Instrumentierung für Java-Anwendungen
 
@@ -89,6 +89,8 @@ Führen Sie Ihre Anwendung aus, und öffnen Sie die Registerkarte der Applicatio
 > [!IMPORTANT]
 > Wenn Sie über zwei oder mehr Dienste verfügen, die Telemetriedaten an dieselbe Application Insights-Ressource ausgeben, müssen Sie [Cloudrollennamen festlegen](java-standalone-config.md#cloud-role-name), um sie ordnungsgemäß in der Anwendungszuordnung darzustellen.
 
+> [!NOTE]
+> Im Rahmen der Verwendung der Application Insights-Instrumentierung sammeln und senden wir Diagnosedaten an Microsoft. Diese Daten helfen uns, Application Insights auszuführen und zu verbessern. Sie haben die Möglichkeit, die Sammlung nicht wesentlicher Daten zu deaktivieren. [Weitere Informationen](./statsbeat.md).
 
 ## <a name="configuration-options"></a>Konfigurationsoptionen
 
@@ -156,7 +158,7 @@ Automatisch gesammelte Abhängigkeiten (ohne Weitergabe der nachgelagerten verte
 * Micrometer (einschließlich Metriken des Spring Boot-Aktors)
 * JMX-Metriken
 
-### <a name="azure-sdks-preview"></a>Azure SDKs (Vorschau)
+### <a name="azure-sdks"></a>Azure SDKs
 
 Die von diesen Azure SDKs ausgegebenen Telemetriedaten werden standardmäßig automatisch erfasst:
 

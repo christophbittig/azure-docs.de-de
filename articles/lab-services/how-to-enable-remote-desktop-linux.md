@@ -1,14 +1,14 @@
 ---
 title: Aktivieren des grafischen Remotedesktops für Linux in Azure Lab Services | Microsoft-Dokumentation
 description: Es wird beschrieben, wie Sie Remotedesktop für virtuelle Linux-Computer in einem Lab in Azure Lab Services aktivieren.
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 604cde661fb566851d3eacdb42dd41f4effded7a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c870faf1f85c192f12739c17809cc9c9088ac1fd
+ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355434"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130180322"
 ---
 # <a name="enable-graphical-remote-desktop-for-linux-virtual-machines-in-azure-lab-services"></a>Aktivieren des grafischen Remotedesktops für Linux-VMs in Azure Lab Services
 In diesem Artikel wird gezeigt, wie Sie Folgendes durchführen:
@@ -19,21 +19,21 @@ In diesem Artikel wird gezeigt, wie Sie Folgendes durchführen:
 ## <a name="set-up-graphical-remote-desktop-solution"></a>Einrichten einer grafischen Remotedesktoplösung
 Wenn ein Lab aus einem **Linux**-Image erstellt wird, wird der **SSH**-Zugriff (Secure Shell) automatisch so konfiguriert, dass der Kursleiter über die Befehlszeile mit SSH eine Verbindung zur Vorlagen-VM herstellen kann.  Ebenso können Kursteilnehmer per SSH eine Verbindung mit ihren VMs herstellen, wenn die Vorlagen-VM veröffentlicht wurde.
 
-Zum Herstellen einer Verbindung mit einer Linux-VM mithilfe einer **GUI** (grafische Benutzeroberfläche) wird entweder **RDP** oder **X2Go** empfohlen.  Bei beiden dieser Optionen muss der Kursleiter zusätzliche Einrichtungsschritte für die Vorlagen-VM ausführen:
+Zum Herstellen einer Verbindung mit einer Linux-VM mithilfe einer **GUI** (grafische Benutzeroberfläche) wird entweder **RDP** oder **X2Go** empfohlen.  Im weiteren Verlauf dieses Artikels werden die Schritte zum Einrichten von RDP oder X2Go auf der Vorlagen-VM eines Labs erläutert.
+
+> [!NOTE]
+> Linux verwendet eine Open-Source-Version von RDP mit dem Namen [Xrdp](https://en.wikipedia.org/wiki/Xrdp).  Der Einfachheit halber verwenden wir den Begriff RDP in diesem Artikel.
 
 ### <a name="rdp-setup"></a>RDP-Setup
 Für die Verwendung von RDP muss der Kursleiter:
   - die Remotedesktopverbindung aktivieren (dies ist spezifisch zum Öffnen des Ports der VM für RDP erforderlich).
   - den RDP-Remotedesktopserver installieren.
-  - Installieren einer grafischen Linux-Desktopumgebung (z. B. XFCE, MATE und so weiter).
-
-> [!WARNING]
->  Es wird empfohlen, eine andere grafische Desktopumgebung als [GNOME](https://www.gnome.org/) zu verwenden.  Sie sollten die Installation von GNOME auf Lab-VMs vermeiden, da GNOME einen Konflikt mit dem Azure Linux-Agent aufweist, der erforderlich ist, damit die VMs in Azure Lab Services ordnungsgemäß funktionieren.  Wie bereits erwähnt, wird die Verwendung einer grafischen Desktopumgebung wie XFCE oder MATE empfohlen.
+  - Installieren einer grafischen Linux-Desktopumgebung
 
 ### <a name="x2go-setup"></a>X2Go-Setup
 Für die Verwendung von X2Go muss der Kursleiter:
 - den X2Go-Remotedesktopserver installieren.
-- Installieren einer grafischen Linux-Desktopumgebung (z. B. XFCE, MATE und so weiter).
+- Installieren einer grafischen Linux-Desktopumgebung
 
 X2Go nutzt denselben Port, der bereits für SSH aktiviert ist.  Daher ist keine weitere Konfiguration erforderlich, um einen Port der VM für X2Go zu öffnen.
 
@@ -59,7 +59,7 @@ Dieser Schritt ist nur zum Herstellen einer Verbindung mit dem RDP erforderlich.
 
 Nachdem das Lab erstellt wurde, muss der Kursleiter sicherstellen, dass eine grafische Desktopumgebung und ein Remotedesktopserver auf der Vorlagen-VM aktiviert sind.  Kursleiter müssen zunächst eine Verbindung mit der Vorlagen-VM per SSH herstellen, um die folgenden Pakete zu installieren:
 - Entweder den RDP- oder X2Go-Remotedesktopserver
-- Eine grafische Desktopumgebung (z. B. MATE, XFCE und so weiter)
+- Eine grafische Desktopumgebung wie zum Beispiel [GNOME](https://www.gnome.org/), [MATE](https://mate-desktop.org/), [XFCE](https://www.xfce.org/) und [Xubuntu](https://xubuntu.org/)
 
 Sobald dies eingerichtet ist, kann der Kursleiter über den **Microsoft-Remotedesktopclient (RDP)** oder den **X2Go-Client** eine Verbindung mit der Vorlagen-VM herstellen.
 
@@ -75,9 +75,18 @@ Führen Sie die folgenden Schritte aus, um die Vorlagen-VM einzurichten:
  
     ![SSH-Verbindungszeichenfolge](./media/how-to-enable-remote-desktop-linux/ssh-connection-string.png)
 
-4. Installieren Sie RDP oder X2Go sowie eine grafische Desktopumgebung Ihrer Wahl.  Anweisungen finden Sie in den folgenden Artikeln:
-    - [Installieren und Konfigurieren des RDPs](../virtual-machines/linux/use-remote-desktop.md)
-    - [Installieren und Konfigurieren von X2Go](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/X2GoRemoteDesktop)
+4. Installieren Sie schließlich RDP oder X2Go sowie eine grafische Desktopumgebung Ihrer Wahl.
+
+Für eine optimale Leistung empfehlen wir in der Regel die Verwendung des grafischen XFCE-Desktops und das Herstellen einer Verbindung mit dem Desktop mithilfe von X2Go.  Um XFCE mit X2Go unter Ubuntu einzurichten, befolgen Sie die folgenden Anweisungen:
+  - [Installieren und Konfigurieren von X2Go](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/LinuxGraphicalDesktopSetup/XFCE_Xubuntu/ReadMe.md)
+
+In Fällen, in denen Benutzer*innen stattdessen über RDP eine Verbindung mit dem grafischen Desktop herstellen müssen, befolgen Sie die folgenden Anweisungen für Ubuntu:
+  - [Installieren und Konfigurieren des RDPs](../virtual-machines/linux/use-remote-desktop.md)
+
+Für die grafischen Desktopumgebungen GNOME oder MATE kann es zu einem Netzwerkkonflikt mit dem Azure Linux-Agent kommen, der erforderlich ist, damit die virtuellen Computer in Azure Lab Services ordnungsgemäß funktionieren.  Wenn Sie beispielsweise ein Lab aus einem Ubuntu 18.04 LTS-Image erstellen, auf dem GNOME oder MATE installiert ist, schlägt die Laberstellung mit der folgenden Fehlermeldung fehl: **Communication could not be established with the VM agent.  Please verify that the VM agent is enabled and functioning** (Kommunikation konnte nicht mit dem VM-Agent hergestellt werden. Überprüfen Sie, ob der VM-Agent aktiviert ist und funktioniert).  Ebenso führt dieser Netzwerkkonflikt dazu, dass die Veröffentlichung beim Versuch, die virtuellen Computer der Kursteilnehmer*innen zu bereitstellen, nicht mehr ankommt.
+
+Es wird empfohlen, die folgenden Anweisungen zum Einrichten der grafischen GNOME- oder MATE-Desktops unter Ubuntu zu verwenden.  Diese Anweisungen enthalten einen Fix für den Netzwerkkonflikt, der bei Ubuntu 18.04 LTS besteht.  Sie unterstützen auch Ubuntu 20.04 LTS und 21.04 LTS:
+ - [Installieren und Konfigurieren von GNOME/RDP und MATE/X2go](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/LinuxGraphicalDesktopSetup/GNOME_MATE/ReadMe.md)
 
 ## <a name="connect-to-the-template-vm-via-the-gui"></a>Herstellen einer Verbindung mit der Vorlagen-VM über die GUI
 

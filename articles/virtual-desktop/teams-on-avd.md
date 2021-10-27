@@ -3,15 +3,15 @@ title: Microsoft Teams in Azure Virtual Desktop – Azure
 description: Verwendung von Microsoft Teams in Azure Virtual Desktop
 author: Heidilohr
 ms.topic: how-to
-ms.date: 08/02/2021
+ms.date: 10/15/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 63c75636fcab47a31735b772f85a8dccbb9c65f5
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7b2a0c17ef0e55dc4dbe583a2dc60845dde94224
+ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339146"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130072383"
 ---
 # <a name="use-microsoft-teams-on-azure-virtual-desktop"></a>Microsoft Teams in Azure Virtual Desktop verwenden
 
@@ -51,7 +51,7 @@ Um die Medienoptimierung für Teams zu aktivieren, legen Sie den folgenden Regis
 
 ### <a name="install-the-teams-websocket-service"></a>Installieren des Teams-WebSocket-Diensts
 
-Installieren Sie den neuesten [Remotedesktop-WebRTC-Redirectordienst](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWFYsj) auf Ihrem VM-Image. Wenn ein Installationsfehler auftritt, installieren Sie das [aktuelle Microsoft Visual C++ Redistributable](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads), und versuchen Sie es erneut.
+Installieren Sie den neuesten [Redirectordienst für Remotedesktop-WebRTC](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RWNg9F) auf Ihrem VM-Image. Wenn ein Installationsfehler auftritt, installieren Sie das [aktuelle Microsoft Visual C++ Redistributable](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads), und versuchen Sie es erneut.
 
 #### <a name="latest-websocket-service-versions"></a>Neueste Versionen des WebSocket-Diensts
 
@@ -59,9 +59,17 @@ In der folgenden Tabelle sind die neuesten Versionen des WebSocket-Diensts aufge
 
 |Version        |Veröffentlichungsdatum  |
 |---------------|--------------|
+|1.1.2110.16001 |15.10.2021    |
 |1.0.2106.14001 |29.7.2021    |
 |1.0.2006.11001 |28.07.2020    |
 |0.11.0         |29.05.2020    |
+
+#### <a name="updates-for-version-11211016001"></a>Updates für Version 1.1.2110.16001
+
+- Es wurde ein Problem behoben, das zu einem schwarzen Bildschirm während der Bildschirmfreigabe führte. Wenn dieses Problem bei Ihnen aufgetreten ist, vergewissern Sie sich, dass es durch dieses Update behoben wird, indem Sie die Größe des Fensters in Teams ändern. Wenn die Bildschirmfreigabe nach der Größenänderung wieder funktioniert, wird dieses Problem durch das Update behoben.
+- Sie können nun die Besprechungs-, Klingelton- und Benachrichtigungslautstärke über die Host-VM aus steuern. Sie können dieses Feature nur mit [Windows Desktop-Client](/windows-server/remote/remote-desktop-services/clients/windowsdesktop-whatsnew) Version 1.2.2459 oder höher verwenden.
+- Das Installationsprogramm stellt nun sicher, dass Teams geschlossen ist, bevor Updates installiert werden.
+- Es wurde ein Problem behoben, das Benutzer*innen daran hinderte, nach dem Verlassen des Anruffensters in den Vollbildmodus zurückzukehren.
 
 #### <a name="updates-for-version-10210614001"></a>Updates für Version 1.0.2106.14001
 

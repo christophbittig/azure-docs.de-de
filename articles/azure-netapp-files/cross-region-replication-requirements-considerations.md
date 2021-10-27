@@ -1,5 +1,5 @@
 ---
-title: 'Regionsübergreifende Volumereplikation mit Azure NetApp Files: Anforderungen und Überlegungen | Microsoft-Dokumentation'
+title: 'Regionsübergreifende Replikation mit Azure NetApp Files: Anforderungen und Überlegungen | Microsoft-Dokumentation'
 description: Beschreibt die Anforderungen und Überlegungen zur Verwendung der regionsübergreifenden Volumereplikationsfunktionalität von Azure NetApp Files.
 services: azure-netapp-files
 documentationcenter: ''
@@ -12,22 +12,21 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/07/2021
+ms.date: 10/14/2021
 ms.author: b-juche
-ms.openlocfilehash: 6e711f3101426f59aead80b84b88350af86bbd6b
-ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
+ms.openlocfilehash: b098243c3f4cf160aadfb2fa001c23c4cad691bd
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129669186"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130042387"
 ---
 # <a name="requirements-and-considerations-for-using-cross-region-replication"></a>Regionsübergreifende Replikation: Anforderungen und Überlegungen 
 
-Beachten Sie die folgenden Anforderungen und Überlegungen zur [Verwendung der regionsübergreifenden Volumereplikation](cross-region-replication-create-peering.md)sfunktion von Azure NetApp Files:  
+In diesem Artikel finden Sie Informationen zu Anforderungen und Überlegungen bei der Nutzung der Funktionalität [regionsübergreifender Volumereplikation](cross-region-replication-create-peering.md) von Azure NetApp Files.
 
 ## <a name="requirements-and-considerations"></a>Anforderungen und Überlegungen 
 
-* Das Feature für die regionsübergreifende Replikation befindet sich derzeit in der Preview-Phase. Sie müssen eine Wartelistenanforderung für den Zugriff auf das Feature über die [Seite für Wartelistenanforderungen für die regionsübergreifende Replikation von Azure NetApp Files-Volumes](https://aka.ms/anfcrrpreviewsignup) übermitteln. Warten Sie auf eine offizielle Bestätigungs-E-Mail des Azure NetApp Files-Teams, bevor Sie das Feature für die regionsübergreifende Replikation verwenden.
 * Die Azure NetApp Files-Replikation ist nur in bestimmten festen Regionspaaren verfügbar. Siehe [Unterstützte Regionspaare](cross-region-replication-introduction.md#supported-region-pairs). 
 * SMB-Volumes werden zusammen mit NFS-Volumes unterstützt. Die Replikation von SMB-Volumes erfordert eine Active Directory-Verbindung in den Quell- und Ziel-NetApp-Konten. Die AD-Zielverbindung muss Zugriff auf die DNS-Server oder ADDS-Domänencontroller haben, die aus dem delegierten Subnetz in der Zielregion erreichbar sind. Weitere Informationen finden Sie unter [Anforderungen für Active Directory-Verbindungen](create-active-directory-connections.md#requirements-for-active-directory-connections). 
 * Das Zielkonto muss sich in einer anderen Region als das Quellvolume befinden. Sie können auch ein vorhandenes NetApp-Konto in einer anderen Region auswählen.  

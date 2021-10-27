@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/06/2021
+ms.date: 10/14/2021
 ms.author: normesta
 ms.reviewer: sachins
-ms.openlocfilehash: da97095edce8c089acd53a8faf8ba353dd39515d
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 85f6ce139db0fb69428dc775ef75befccb081af3
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129614211"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130042729"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>Bewährte Methoden zur Verwendung von Azure Data Lake Storage Gen2
 
@@ -36,6 +36,12 @@ Konfigurieren Sie Ihr Konto für die Verwendung von Blob Storage-Funktionen nach
 #### <a name="understand-the-terms-used-in-documentation"></a>Grundlegendes zu den in der Dokumentation verwendeten Begriffen
 
 In den verschiedenen Inhaltsbereichen werden Sie einige kleinere begriffliche Unterschiede feststellen. In der [Dokumentation zu Blob Storage](storage-blobs-introduction.md), wird beispielsweise der Begriff *Blob* anstelle von *Datei* verwendet. Technisch gesehen werden die Dateien, die Sie in Ihrem Speicherkonto erfassen, im Konto zu Blobs. Daher ist der Begriff richtig. Dies kann jedoch zu Verwirrung führen, wenn Sie an den Begriff *Datei* gewöhnt sind. Außerdem wird der Begriff *Container* zur Bezeichnung eines *Dateisystems* verwendet. Diese beiden Begriffe sind als Synonyme zu verstehen.
+
+## <a name="consider-premium"></a>Premium-Konten
+
+Wenn für Ihre Workloads geringe einheitliche Wartezeiten und/oder eine große Anzahl von Eingabe-/Ausgabevorgängen pro Sekunde erforderlich sind, sollten Sie die Verwendung eines Premium-Kontos für Blockblobspeicher in Erwägung ziehen. Bei dieser Art von Konto werden Daten über Hochleistungshardware verfügbar gemacht. Daten werden auf SSD-Datenträgern (Solid State Drives) gespeichert, die für niedrige Latenz optimiert sind. Der Durchsatz ist bei SSDs im Vergleich zu herkömmlichen Festplatten höher. Zwar sind die Speicherkosten bei Premium-Leistung höher, dafür fallen aber geringere Transaktionskosten an. Wenn Ihre Workloads also eine große Anzahl von Transaktionen ausführen, kann ein Blockblobkonto mit Premium-Leistung sinnvoll und wirtschaftlich sein.
+
+Wenn Ihr Speicherkonto für Analysen verwendet werden soll, wird dringend empfohlen, Azure Data Lake Storage Gen2 zusammen mit einem Premium-Konto für Blockblobspeicher zu verwenden. Diese Kombination aus Premium-Konto für Blockblobspeicher und Data Lake Storage-fähigem Konto wird als [Premium-Ebene für Azure Data Lake Storage](premium-tier-for-data-lake-storage.md) bezeichnet.
 
 ## <a name="optimize-for-data-ingest"></a>Optimierung für die Datenerfassung
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/01/2021
 ms.author: danlep
-ms.openlocfilehash: f63a8e9f083256cb68a23d69e49d44d9bbfd57de
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 74ef0589a32520a411b0ba8aa0677496b44f9549
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129429469"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129999927"
 ---
 # <a name="api-management-cross-domain-policies"></a>API Management cross domain policies (Domänenübergreifende API Management-Richtlinien)
 Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](./api-management-policies.md).
@@ -91,7 +91,7 @@ Sie müssen die CORS-Richtlinie anwenden, um die interaktive Konsole im Entwickl
 ```
 
 ### <a name="example"></a>Beispiel
-In diesem Beispiel wird die Unterstützung von Preflightanforderungen veranschaulicht, z.B. solchen mit benutzerdefinierten Headern oder mit anderen Methoden als GET und POST. Um benutzerdefinierte Header und zusätzliche HTTP-Verben zu unterstützen, verwenden Sie die Abschnitte `allowed-methods` und `allowed-headers`, wie im folgenden Beispiel gezeigt.
+In diesem Beispiel wird die Unterstützung von [Preflightanforderungen](https://developer.mozilla.org/docs/Web/HTTP/CORS#preflighted_requests) veranschaulicht, z. B. solchen mit benutzerdefinierten Headern oder mit anderen Methoden als GET und POST. Um benutzerdefinierte Header und zusätzliche HTTP-Verben zu unterstützen, verwenden Sie die Abschnitte `allowed-methods` und `allowed-headers`, wie im folgenden Beispiel gezeigt.
 
 ```xml
 <cors allow-credentials="true">

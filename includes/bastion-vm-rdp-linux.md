@@ -4,12 +4,12 @@ ms.author: cherylmc
 ms.date: 08/30/2021
 ms.service: virtual-wan
 ms.topic: include
-ms.openlocfilehash: ebaa86a60ae11c50658bfcfe58bbd0184bf15576
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: c52c00dd8fa834775a01162e2506f1821b0dcdae
+ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128700390"
+ms.lasthandoff: 10/19/2021
+ms.locfileid: "130173298"
 ---
 1. Navigieren Sie im [Microsoft Azure-Portal](https://portal.azure.com) zu dem virtuellen Computer, mit der Sie eine Verbindung herstellen möchten. Wählen Sie auf der Seite **Übersicht** die Option **Verbinden** und dann von dem Dropdownmenü **Bastion** aus.
 
@@ -29,4 +29,4 @@ ms.locfileid: "128700390"
 
 1. Die RDP-Verbindung zu diesem virtuellen Computer über Bastion wird direkt im Azure-Portal (über HTML5) über Port 443 und den Bastion-Dienst geöffnet. 
 
-   Tastenkombinationen während der Verbindung mit einer VM weisen möglicherweise ein anderes Verhalten als Tastenkombinationen auf einem lokalen Computer auf. Von einem Windows-Clientcomputer, der mit einer Windows-VM verbunden ist, stellt STRG+ALT+ENDE beispielsweise die Tastenkombination für STRG+ALT+ENTF dar. Von einem Mac-Clientcomputer, der mit einer Windows-VM verbunden ist, lautet die Tastenkombination Fn+STRG+ALT+RÜCKTASTE.
+   Beachten Sie, dass das Verwenden von Tastenkombinationen während der Verbindung mit einer VM möglicherweise nicht das selbe Verhalten zeigt wie das Verwenden von Tastenkombinationen auf einem lokalen Computer. Von einem Windows-Clientcomputer, der mit einer Windows-VM verbunden ist, stellt STRG+ALT+ENDE beispielsweise die Tastenkombination für STRG+ALT+ENTF dar. Von einem Mac-Clientcomputer, der mit einer Windows-VM verbunden ist, lautet die Tastenkombination Fn+STRG+ALT+RÜCKTASTE.

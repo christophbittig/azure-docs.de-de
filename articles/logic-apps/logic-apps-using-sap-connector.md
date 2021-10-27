@@ -9,12 +9,12 @@ ms.reviewer: estfan, daviburg, azla
 ms.topic: how-to
 ms.date: 09/13/2021
 tags: connectors
-ms.openlocfilehash: d973276781a1664680a3dec08eb894fc362911a5
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 46e0373b7c95b559dd6037d20f00324cd89209d7
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129211174"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130045879"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Herstellen einer Verbindung zu SAP-Systemen: Azure Logic Apps
 
@@ -261,7 +261,7 @@ Wenn Sie den SAP-Connector bereits ohne die SNC- oder die SAPGENPSE-Bibliothek b
 
    1. Warten Sie auf die Portalbenachrichtigung, dass die Verbindung gelöscht wurde.
 
-1. Oder löschen Sie Verbindungen mit Ihrem SAP-Connector aus den API-Verbindungen Ihrer ISE.
+1. Alternativ können Sie die Verbindungen zu Ihrem SAP-Connector aus den API-Verbindungen Ihrer ISE löschen.
 
    1. Öffnen Sie Ihre ISE-Ressource im Azure-Portal.
 
@@ -1074,7 +1074,7 @@ Im folgenden Beispiel wird veranschaulicht, wie die einzelnen IDoc-Elemente eine
    >
    > Weitere Informationen von SAP finden Sie in den folgenden Hinweisen (Anmeldung erforderlich): [https://launchpad.support.sap.com/#/notes/2399329](https://launchpad.support.sap.com/#/notes/2399329) und [https://launchpad.support.sap.com/#/notes/353597](https://launchpad.support.sap.com/#/notes/353597).
 
-   Beispiel:
+   Zum Beispiel:
 
    ![Screenshot: Hinzufügen eines SAP-Triggers zu einem Logik-App-Workflow](./media/logic-apps-using-sap-connector/first-step-trigger.png)
 

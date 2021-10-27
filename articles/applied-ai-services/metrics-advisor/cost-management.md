@@ -9,12 +9,12 @@ ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 07/06/2021
 ms.author: mbullwin
-ms.openlocfilehash: e13aeefca9ab5b9430f1a6b591a8b8b7b415b46f
-ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
+ms.openlocfilehash: bc376e8bc69845af245c66c045ed345f758e410e
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114341852"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130063923"
 ---
 # <a name="azure-metrics-advisor-cost-management"></a>Kostenmanagement für Azure Metrics Advisor
 
@@ -37,7 +37,7 @@ Azure Metrics Advisor überwacht die Leistung der Wachstumsmotoren Ihrer Organis
 | Free-Tarif: erste 25 Zeitreihen | $- |
 | 26 Zeitreihen – 1.000 Zeitreihen | 0,75 US-Dollar |
 | 1\.000 Zeitreihen – 5.000 Zeitreihen | 0,50 US-Dollar |
-| 5\.000 Zeitreihen – 10.000 Zeitreihen | 0,25 US-Dollar|
+| 5000 Zeitreihen – 20.000 Zeitreihen | 0,25 US-Dollar|
 | 20.000 Zeitreihen – 50.000 Zeitreihen| 0,10 USD|
 | > 50.000 Zeitreihen | 0,05 US-Dollar |
 

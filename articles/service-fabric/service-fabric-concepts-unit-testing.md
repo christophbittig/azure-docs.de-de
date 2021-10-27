@@ -3,19 +3,19 @@ title: Ausführen von Unittests für zustandsbehaftete Dienste in Azure Service 
 description: Informationen zu den Konzepten und Verfahren von Unittests für zustandsbehaftete Service Fabric-Dienste.
 ms.topic: conceptual
 ms.date: 09/04/2018
-ms.openlocfilehash: 12e8a47d9685dee12594f4e2afaa848d9688d185
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: e8247d9c71f73f00bd9b8235778f7256af72ed27
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "75433905"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130042615"
 ---
 # <a name="unit-testing-stateful-services-in-service-fabric"></a>Ausführen von Unittests für zustandsbehaftete Dienste in Service Fabric
 
 In diesem Artikel werden die Konzepte und Verfahren von Unittests für zustandsbehaftete Service Fabric-Dienste behandelt. Für Unittests in Service Fabric sind besondere Aspekte zu berücksichtigen, da der Anwendungscode aktiv unter mehreren verschiedenen Kontexten ausgeführt wird. In diesem Artikel werden die Verfahren beschrieben, mit denen sichergestellt wird, dass Anwendungscode unter jedem der unterschiedlichen Kontexte abgedeckt wird, in denen er ausgeführt werden kann.
 
 ## <a name="unit-testing-and-mocking"></a>Unittests und Simulation
-Unittests im Rahmen dieses Artikels sind automatisierte Tests, die im Kontext eines Test Runners wie MSTest oder NUnit ausgeführt werden können. Mit den Komponententests in diesem Artikel werden keine Vorgänge für Remoteressourcen wie z.B. eine Datenbank oder RESTful-API ausgeführt. Diese Remoteressourcen müssen simuliert werden. Bei der Simulation im Rahmen dieses Artikels werden die Rückgabewerte für Remoteressourcen vorgetäuscht, protokolliert und gesteuert.
+Unittests im Rahmen dieses Artikels sind automatisierte Tests, die im Kontext eines Test Runners wie MSTest oder NUnit ausgeführt werden können. Mit den Komponententests in diesem Artikel werden keine Vorgänge für Remoteressourcen wie z. B. eine Datenbank oder einen RESTful-Dienst ausgeführt. Diese Remoteressourcen müssen simuliert werden. Bei der Simulation im Rahmen dieses Artikels werden die Rückgabewerte für Remoteressourcen vorgetäuscht, protokolliert und gesteuert.
 
 ### <a name="service-fabric-considerations"></a>Überlegungen zu Service Fabric
 Beim Ausführen von Unittests für einen zustandsbehafteten Service Fabric-Dienst sind mehrere Aspekte zu berücksichtigen. Erstens wird der Dienstcode auf mehreren Knoten, jedoch unter unterschiedlichen Rollen ausgeführt. Zur vollständigen Abdeckung sollten Komponententests den Code unter jeder Rolle überprüfen. Die unterschiedlichen Rollen sind „Primary“, „ActiveSecondary“, „IdleSecondary“ und „Unknown“. Die Rolle „None“ muss in der Regel nicht speziell abgedeckt werden, da diese Rolle in Service Fabric als leerer oder NULL-Dienst eingestuft wird. Zweitens ändert jeder Knoten irgendwann die Rolle. Zur vollständigen Abdeckung sollten Codeausführungspfade mit auftretenden Rollenänderungen getestet werden.

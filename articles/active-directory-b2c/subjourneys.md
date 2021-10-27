@@ -1,29 +1,27 @@
 ---
-title: Sub Journeys in Azure Active Directory B2C | Microsoft-Dokumentation
+title: Sub Journeys in Azure Active Directory B2C
 description: Hier erfahren Sie, wie Sie das Sub Journeys-Element einer benutzerdefinierten Richtlinie in Azure Active Directory B2C angeben.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 12/11/2020
-ms.author: mimart
+ms.date: 10/15/2021
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 8f037d4283b4b05081ef47e7223495f6e19d460e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5cb3ebfbc3125e26f1b922ee43360c7527c7fb35
+ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97386866"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130063961"
 ---
 # <a name="sub-journeys"></a>Sub Journeys
 
 Mit Sub Journeys kann der Flow von Orchestrierungsschritten innerhalb einer User Journey organisiert und vereinfacht werden. [User Journeys](userjourneys.md) geben explizite Pfade an, über die eine Richtlinie einer Anwendung der vertrauenden Seite die gewünschten Ansprüche für einen Benutzer abrufen kann. Der Benutzer wird über diese Pfade weitergeleitet, um die Ansprüche abzurufen, die an die vertrauenden Seite übermittelt werden sollen. Das heißt, User Journeys definieren die Geschäftslogik, die ein Endbenutzer durchläuft, während das Framework für die Identitätsfunktion von Azure AD B2C die Anforderung verarbeitet. Eine User Journey wird als Orchestrierungssequenz dargestellt, die für eine erfolgreiche Transaktion durchlaufen werden muss. Das [ClaimsExchange](userjourneys.md#claimsexchanges)-Element eines Orchestrierungsschritts ist an ein einzelnes [technisches Profil](technicalprofiles.md) gebunden, das ausgeführt wird.
 
 Bei einer Sub Journey handelt es sich um eine Gruppierung von Orchestrierungsschritten, die zu jedem beliebigen Zeitpunkt innerhalb einer User Journey aufgerufen werden können. Mit Sub Journeys können Sie wiederverwendbare Schrittsequenzen erstellen oder Verzweigungen implementieren, um die Geschäftslogik besser darzustellen.
-
-[!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
 
 ## <a name="user-journey-branching"></a>Verzweigung von User Journeys
 
