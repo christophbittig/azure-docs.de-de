@@ -3,12 +3,12 @@ title: Exportieren nach Power BI aus Azure Application Insights | Microsoft-Doku
 description: Analytics-Abfragen können in Power BI angezeigt werden.
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: e0644a083021956316595d299a69a69b321a87d9
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 0d1c5d58b668a23618b482bbc3ce82897ad760dd
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108164127"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130256967"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Datenimport nach Power BI aus Application Insights
 
@@ -17,7 +17,7 @@ ms.locfileid: "108164127"
 Es gibt drei Methoden zum Exportieren von Application Insights-Daten nach Power BI:
 
 * [**Exportieren von Analytics-Abfragen**](#export-analytics-queries). Dies ist die bevorzugte Methode. Schreiben Sie eine beliebige Abfrage, und exportieren Sie sie in Power BI. Sie können diese Abfrage zusammen mit anderen Daten in einem Dashboard anordnen.
-* [**Fortlaufender Export und Azure Stream Analytics**](./export-stream-analytics.md). Diese Methode ist hilfreich, wenn Sie Ihre Daten über längere Zeiträume speichern möchten. Wenn Sie keine erweiterte Datenaufbewahrungsanforderung erfüllen müssen, verwenden Sie die Methode zum Exportieren von Analytics-Abfragen. Für fortlaufenden Export und Stream Analytics fallen mehr Einrichtungsaufgaben und zusätzlicher Speichermehraufwand an.
+* [**Fortlaufender Export und Azure Stream Analytics**](../../stream-analytics/app-insights-export-stream-analytics.md). Diese Methode ist hilfreich, wenn Sie Ihre Daten über längere Zeiträume speichern möchten. Wenn Sie keine erweiterte Datenaufbewahrungsanforderung erfüllen müssen, verwenden Sie die Methode zum Exportieren von Analytics-Abfragen. Für fortlaufenden Export und Stream Analytics fallen mehr Einrichtungsaufgaben und zusätzlicher Speichermehraufwand an.
 * **Power BI-Adapter**. Die Gruppe von Diagrammen ist vordefiniert, aber Sie können auch eigene Abfragen aus anderen Quellen hinzufügen.
 
 > [!NOTE]

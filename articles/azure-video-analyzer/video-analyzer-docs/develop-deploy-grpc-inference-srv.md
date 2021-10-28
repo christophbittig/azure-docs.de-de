@@ -4,12 +4,12 @@ description: Dieser Artikel enthält Anleitungen zum Entwickeln und Bereitstelle
 ms.service: azure-video-analyzer
 ms.topic: how-to
 ms.date: 06/01/2021
-ms.openlocfilehash: 5d0e09bc4d1f542de0e59a7dc6da37248d2e0674
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: 0456ff121df2c6a7149261ec162907b61aceb107
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114601432"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130262221"
 ---
 # <a name="develop-and-deploy-grpc-inference-server"></a>Entwickeln und Bereitstellen eines gRPC-Rückschlussservers
 
@@ -27,7 +27,7 @@ In diesem Artikel erfahren Sie, wie Sie beliebige KI-Modelle in einen gRPC-Rück
 
 * Ein x86-64- oder ARM64-Gerät, auf dem eines der [unterstützten Linux-Betriebssysteme ausgeführt wird](../../iot-edge/support.md#operating-systems), oder ein Windows-Gerät
 * [Docker-Installation](https://docs.docker.com/desktop/#download-and-install) auf Ihrem Gerät
-* Installation der [IoT Edge-Runtime](../../iot-edge/how-to-install-iot-edge.md?tabs=linux)
+* Installation der [IoT Edge-Runtime](../../iot-edge/how-to-provision-single-device-linux-symmetric.md)
 
 ## <a name="grpc-implementation-steps"></a>Schritte zur gRPC-Implementierung
 

@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 10/07/2021
 ms.author: lajanuar
 recommendations: false
-ms.openlocfilehash: 55e3d529b0f0e713be1c19e9f2ae4736d9b6a9ca
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: ef5514b44ad2d35870674a85958c28f5f780c308
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130177515"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130233694"
 ---
 # <a name="how-to-use-custom-and-composed-models"></a>Vorgehensweise: Verwenden benutzerdefinierter und zusammengesetzter Modelle
 
@@ -25,7 +25,7 @@ Die Formularerkennung verwendet fortschrittliche ML-Technologie, um Informatione
 
 * **Zusammengesetzte Modelle**. Ein zusammengesetztes Modell wird erstellt, indem eine Sammlung benutzerdefinierter Modelle verwendet und zu einem einzigen Modell zusammengesetzt wird, das Ihre Formulartypen umfasst. Wenn ein Dokument an ein zusammengesetztes Modell übermittelt wird, führt der Dienst einen Klassifizierungsschritt aus, um zu entscheiden, welchem benutzerdefiniertem Modell das zur Analyse eingereichte Formular genau entspricht.
 
-In diesem Artikel untersuchen wir die Vorgehensweise beim Erstellen benutzerdefinierter und zusammengesetzter Formularerkennung-Modelle mit unserem [Tool zum Bezeichnen von Beispielen für die Formularerkennung](label-tool.md), [REST-APIs](quickstarts/client-library.md?branch=main&pivots=programming-language-rest-api#train-a-custom-model) oder [Clientbibliothek-SDKs](quickstarts/client-library.md?branch=main&pivots=programming-language-csharp#train-a-custom-model).
+In diesem Artikel untersuchen wir die Vorgehensweise beim Erstellen benutzerdefinierter und zusammengesetzter Formularerkennung-Modelle mit unserem [Tool zum Bezeichnen von Beispielen für die Formularerkennung](label-tool.md), [REST-APIs](./quickstarts/try-sdk-rest-api.md?branch=main&pivots=programming-language-rest-api#train-a-custom-model) oder [Clientbibliothek-SDKs](./quickstarts/try-sdk-rest-api.md?branch=main&pivots=programming-language-csharp#train-a-custom-model).
 
 ## <a name="try-it-sample-labeling-tool"></a>Jetzt testen: Tool für die Beschriftung von Beispielen
 
@@ -35,7 +35,7 @@ Sie können sehen, wie Daten aus benutzerdefinierten Formularen extrahiert werde
 
 * Eine [Instanz der Formularerkennung](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) im Azure-Portal. Sie können den kostenlosen Tarif (`F0`) verwenden, um den Dienst auszuprobieren. Klicken Sie nach der Bereitstellung Ihrer Ressource auf **Zu Ressource wechseln**, um Ihren API-Schlüssel und -Endpunkt abzurufen.
 
- :::image type="content" source="media/containers/keys-and-endpoint.png" alt-text="Screenshot: Schlüssel und Endpunktspeicherort im Azure-Portal.":::
+ :::image type="content" source="media/containers/keys-and-endpoint.png" alt-text="Screenshot: Schlüssel und Endpunktspeicherort im Azure-Portal":::
 
 > [!div class="nextstepaction"]
 > [Testen](https://fott-2-1.azurewebsites.net/projects/create)
@@ -71,7 +71,7 @@ Sie müssen die [Trainingsdaten in einen Azure Blob Storage-Container hochladen]
 
 ## <a name="train-your-custom-model"></a>Trainieren Ihres benutzerdefinierten Modells
 
-Das [Trainieren Ihres Modells](quickstarts/client-library.md#train-a-custom-model) ist mit oder ohne bezeichnete Datasets möglich. Das Erkennen und Identifizieren der Schlüsselinformationen ohne weitere Benutzereingabe basiert bei nicht bezeichneten Datasets ausschließlich auf der [Layout-API](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeLayoutAsync). Auch bezeichnete Datasets basieren auf der Layout-API, enthalten jedoch zusätzliche Benutzereingaben, z. B. Ihre spezifischen Bezeichnungen und Feldpositionen. Wenn Sie sowohl bezeichnete als auch nicht bezeichnete Daten verwenden möchten, beginnen Sie mit mindestens fünf ausgefüllten Formularen desselben Typs für die bezeichneten Trainingsdaten, und fügen Sie dann dem gewünschten Dataset nicht bezeichnete Daten hinzu.
+Das [Trainieren Ihres Modells](./quickstarts/try-sdk-rest-api.md#train-a-custom-model) ist mit oder ohne bezeichnete Datasets möglich. Das Erkennen und Identifizieren der Schlüsselinformationen ohne weitere Benutzereingabe basiert bei nicht bezeichneten Datasets ausschließlich auf der [Layout-API](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeLayoutAsync). Auch bezeichnete Datasets basieren auf der Layout-API, enthalten jedoch zusätzliche Benutzereingaben, z. B. Ihre spezifischen Bezeichnungen und Feldpositionen. Wenn Sie sowohl bezeichnete als auch nicht bezeichnete Daten verwenden möchten, beginnen Sie mit mindestens fünf ausgefüllten Formularen desselben Typs für die bezeichneten Trainingsdaten, und fügen Sie dann dem gewünschten Dataset nicht bezeichnete Daten hinzu.
 
 ### <a name="train-without-labels"></a>Trainieren ohne Beschriftungen
 
@@ -113,13 +113,13 @@ Wenn Sie Modelle mithilfe des [**Tools zum Bezeichnen von Beispielen für die Fo
 
 ### <a name="rest-api"></a>[**REST-API**](#tab/rest-api)
 
-Die [**REST-API**](quickstarts/client-library.md?pivots=programming-language-rest-api#train-a-custom-model) gibt eine `201 (Success)`-Antwort mit einem **Adressheader** zurück. Der Wert des letzten Parameters in diesem Header ist die Modell-ID für das neu trainierte Modell:
+Die [**REST-API**](./quickstarts/try-sdk-rest-api.md?pivots=programming-language-rest-api#train-a-custom-model) gibt eine `201 (Success)`-Antwort mit einem **Adressheader** zurück. Der Wert des letzten Parameters in diesem Header ist die Modell-ID für das neu trainierte Modell:
 
 :::image type="content" source="media/model-id.png" alt-text="Screenshot: Der zurückgegebene Adressheader mit der Modell-ID.":::
 
 ### <a name="client-library-sdks"></a>[**Clientbibliothek-SDKs**](#tab/sdks)
 
- Die [**Clientbibliothek-SDKs**](quickstarts/client-library.md?pivots=programming-language-csharp#train-a-custom-model) geben ein Modellobjekt zurück, bei dem die ID des Trainierten Modells abgefragt werden kann:
+ Die [**Clientbibliothek-SDKs**](./quickstarts/try-sdk-rest-api.md?pivots=programming-language-csharp#train-a-custom-model) geben ein Modellobjekt zurück, bei dem die ID des Trainierten Modells abgefragt werden kann:
 
 * C: \#  | [Klasse „CustomFormModel“](/dotnet/api/azure.ai.formrecognizer.training.customformmodel?view=azure-dotnet&preserve-view=true#properties "Azure SDK für .NET")
 
@@ -205,11 +205,11 @@ Verwenden Sie die Programmiersprache Ihrer Wahl, um ein Formular oder Dokument m
 
 ---
 
-Testen Sie Ihre neu trainierten Modelle, indem Sie [Formulare analysieren,](quickstarts/client-library.md#analyze-forms-with-a-custom-model) die nicht Teil des Trainingsdatasets waren. Je nach gemeldeter Genauigkeit können Sie weitere Trainingsiterationen durchführen, um das Modell zu verbessern. Sie können das Training fortführen, um die Ergebnisse zu [verbessern.](label-tool.md#improve-results)
+Testen Sie Ihre neu trainierten Modelle, indem Sie [Formulare analysieren,](./quickstarts/try-sdk-rest-api.md#analyze-forms-with-a-custom-model) die nicht Teil des Trainingsdatasets waren. Je nach gemeldeter Genauigkeit können Sie weitere Trainingsiterationen durchführen, um das Modell zu verbessern. Sie können das Training fortführen, um die Ergebnisse zu [verbessern.](label-tool.md#improve-results)
 
 ## <a name="manage-your-custom-models"></a>Verwalten von benutzerdefinierten Modellen
 
-Während des gesamten Lebenszyklus können Sie [Ihre benutzerdefinierten Modelle verwalten](quickstarts/client-library.md#manage-custom-models), indem Sie eine [Liste aller benutzerdefinierten Modelle](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/GetCustomModels) unter Ihrem Abonnement anzeigen, Informationen zu einem [bestimmten benutzerdefinierten Modell](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/GetCustomModel) abrufen und [benutzerdefinierte Modelle aus Ihrem Konto löschen](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/DeleteCustomModel).
+Während des gesamten Lebenszyklus können Sie [Ihre benutzerdefinierten Modelle verwalten](./quickstarts/try-sdk-rest-api.md#manage-custom-models), indem Sie eine [Liste aller benutzerdefinierten Modelle](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/GetCustomModels) unter Ihrem Abonnement anzeigen, Informationen zu einem [bestimmten benutzerdefinierten Modell](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/GetCustomModel) abrufen und [benutzerdefinierte Modelle aus Ihrem Konto löschen](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/DeleteCustomModel).
 
 Sehr gut! Sie haben erfahren, wie Sie benutzerdefinierte und zusammengesetzte Modelle erstellen und für Ihre Formularerkennungsprojekte und Anwendungen verwenden.
 
@@ -220,4 +220,3 @@ Weitere Informationen zur Formularerkennungs Clientbibliothek finden Sie in unse
 > [!div class="nextstepaction"]
 > [Referenz zur Formularerkennungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeWithCustomForm)
 >
-

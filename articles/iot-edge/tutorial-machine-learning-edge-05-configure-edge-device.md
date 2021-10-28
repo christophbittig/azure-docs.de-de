@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp
-ms.openlocfilehash: 445163b0d33f404845a66b7d885815d6336dac46
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 103a3004f6bf4ec6e536d87b7fe72484f2bff974
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121726362"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130259110"
 ---
 # <a name="tutorial-configure-an-azure-iot-edge-device"></a>Tutorial: Konfigurieren eines Azure IoT Edge-Geräts
 
@@ -136,13 +136,13 @@ Sie können den virtuellen Computer über das Azure-Portal oder Azure CLI bereit
 
 1. Füllen Sie im neu gestarteten Fenster die verfügbaren Formularfelder aus.
 
-   | Feld | BESCHREIBUNG |
+   | Feld | Beschreibung |
    | - | - |
    | **Abonnement** | Das aktive Azure-Abonnement, in dem der virtuelle Computer bereitgestellt werden soll. |
    | **Ressourcengruppe** | Eine vorhandene oder neu erstellte Ressourcengruppe, die den virtuellen Computer und die ihm zugeordneten Ressourcen enthalten soll. |
    | **Präfix der DNS-Bezeichnung** | Ein erforderlicher Wert Ihrer Wahl, der dem Hostnamen des virtuellen Computers vorangestellt werden soll. |
    | **Benutzername des Administrators** | Ein Benutzername, der Rootberechtigungen für die Bereitstellung erhält. |
-   | **Verbindungszeichenfolge für das Gerät** | Eine [Geräte-Verbindungszeichenfolge](./how-to-register-device.md) für ein Gerät, das in Ihrem vorgesehenen [IoT Hub](../iot-hub/about-iot-hub.md) erstellt wurde. |
+   | **Verbindungszeichenfolge für das Gerät** | Eine [Geräte-Verbindungszeichenfolge](./how-to-provision-single-device-linux-symmetric.md#view-registered-devices-and-retrieve-provisioning-information) für ein Gerät, das in Ihrem vorgesehenen [IoT Hub](../iot-hub/about-iot-hub.md) erstellt wurde. |
    | **VM-Größe** | Die [Größe](../cloud-services/cloud-services-sizes-specs.md) des bereitzustellenden virtuellen Computers
    | **Ubuntu-Betriebssystemversion** | Die Version des Ubuntu-Betriebssystems, die auf dem virtuellen Basiscomputer installiert werden soll. |
    | **Location** | Die [geografische Region](https://azure.microsoft.com/global-infrastructure/locations/), in der der virtuelle Computer bereitgestellt werden soll. Dieser Wert wird standardmäßig auf den Speicherort der ausgewählten Ressourcengruppe festgelegt. |

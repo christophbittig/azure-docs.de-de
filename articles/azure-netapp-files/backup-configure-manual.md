@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/27/2021
 ms.author: b-juche
-ms.openlocfilehash: 827268fee96227f056029c8b2a75629353861d7e
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: fda75ec22d4573a1730d29fc4f9a34c1f4de239a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129094985"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130224253"
 ---
 # <a name="configure-manual-backups-for-azure-netapp-files"></a>Konfigurieren manueller Sicherungen für Azure NetApp Files 
 
@@ -89,8 +89,8 @@ Wenn Sie dies noch nicht getan haben, aktivieren Sie die Sicherungsfunktionalit�
 * [Durchsuchen von Sicherungen](backup-search.md)
 * [Wiederherstellen einer Sicherung auf einem neuen Volume](backup-restore-new-volume.md)
 * [Deaktivieren der Sicherungsfunktionalität für ein Volume](backup-disable.md)
-* [Löschen von Sicherungen eines Volumes](backup-delete.md)
-* [Volumesicherungsmetriken](azure-netapp-files-metrics.md#volume-backup-metrics)
-* [Häufig gestellte Fragen zur Azure NetApp Files-Sicherung](azure-netapp-files-faqs.md#azure-netapp-files-backup-faqs)
+* [Sicherungen eines Volumes löschen](backup-delete.md)
+* [Metriken zur Volume-Sicherung](azure-netapp-files-metrics.md#volume-backup-metrics)
+* [Häufig gestellte Fragen zur Azure NetApp Files-Sicherung](faq-backup.md)
 
 

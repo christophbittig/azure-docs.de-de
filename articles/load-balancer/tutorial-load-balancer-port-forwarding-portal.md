@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 8/26/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 0d36be9f0ba0fc9e1b29e3fdaf0b3f9857db2204
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 73dba00fa24eb42c32b0991381ad90a93f038d95
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123112145"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223270"
 ---
 # <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-azure-portal"></a>Tutorial: Konfigurieren der Portweiterleitung in Azure Load Balancer mithilfe des Azure-Portals
 
@@ -105,7 +105,7 @@ Für die Ressourcen in diesem Tutorial werden ein virtuelles Netzwerk und ein Su
 
 ## <a name="create-nat-gateway"></a>Erstellen eines NAT Gateways
 
-In diesem Abschnitt erstellen Sie ein NAT-Gateway für ausgehenden Internetzugriff für Ressourcen im virtuellen Netzwerk. 
+In diesem Abschnitt erstellen Sie für Ressourcen im virtuellen Netzwerk ein NAT-Gateway für ausgehenden Internetzugriff. 
 
 1. Geben Sie am oberen Rand des Portals den Suchbegriff **NAT-Gateway** in das Suchfeld ein. Wählen Sie in den Suchergebnissen **NAT-Gateways** aus.
 
@@ -123,21 +123,21 @@ In diesem Abschnitt erstellen Sie ein NAT-Gateway für ausgehenden Internetzugri
     | Verfügbarkeitszone | Wählen Sie **Keine**. |
     | Leerlaufzeitüberschreitung (Minuten) | Geben Sie **15** ein. |
 
-4. Wählen Sie die Registerkarte **Ausgehende IP-Adresse** aus, oder klicken Sie unten auf der Seite auf die Schaltfläche **Weiter: Ausgehende IP-Adresse**.
+4. Wählen Sie die Registerkarte **Ausgehende IP-Adresse** oder unten auf der Seite die Schaltfläche **Weiter: Ausgehende IP-Adresse** aus.
 
 5. Wählen Sie unter **Ausgehende IP-Adresse** neben **Öffentliche IP-Adressen** die Option **Neue öffentliche IP-Adresse erstellen** aus.
 
-6. Geben Sie unter **Öffentliche IP-Adresse hinzufügen** in das Feld **Name** den Wert **myNATGatewayIP** ein.
+6. Geben Sie unter **Öffentliche IP-Adresse hinzufügen** in das Feld **Name** den Namen **myNATGatewayIP** ein.
 
 7. Klicken Sie auf **OK**.
 
-8. Wählen Sie die Registerkarte **Subnetz** aus, oder klicken Sie unten auf der Seite auf die Schaltfläche **Weiter: Subnetz**.
+8. Wählen Sie die Registerkarte **Subnetz** oder unten auf der Seite die Schaltfläche **Weiter: Subnetz** aus.
 
-9. Wählen Sie auf der Registerkarte **Subnetz** unter **Virtuelles Netzwerk** die Option **myVNet** aus.
+9. Wählen Sie unter **Virtuelles Netzwerk** auf der Registerkarte **Subnetz** die Option **myVNet** aus.
 
 10. Wählen Sie unter **Subnetzname** die Option **myBackendSubnet** aus.
 
-11. Klicken Sie unten auf der Seite auf die blaue Schaltfläche **Überprüfen + erstellen**, oder wählen Sie die Registerkarte **Überprüfen + erstellen** aus.
+11. Wählen Sie unten auf der Seite die blaue Schaltfläche **Überprüfen + erstellen** aus, oder wählen Sie die Registerkarte **Überprüfen + erstellen** aus.
 
 12. Klicken Sie auf **Erstellen**.
 
@@ -178,7 +178,7 @@ In diesem Abschnitt erstellen Sie einen Lastenausgleich. Hierbei werden auch die
 8. Wählen Sie für den **IP-Typ** die Option **IP-Adresse** aus.
 
     > [!NOTE]
-    > Weitere Informationen zu IP-Präfixen finden Sie unter [Präfix für öffentliche IP-Adressen](../virtual-network/public-ip-address-prefix.md).
+    > Weitere Informationen zu IP-Präfixen finden Sie unter [Präfix für öffentliche IP-Adressen](../virtual-network/ip-services/public-ip-address-prefix.md).
 
 9. Wählen Sie unter **Öffentliche IP-Adresse** die Option **Neu erstellen** aus.
 
@@ -216,7 +216,7 @@ In diesem Abschnitt erstellen Sie einen Lastenausgleich. Hierbei werden auch die
 
 21. Wählen Sie **Hinzufügen**.
 
-22. Klicken Sie unten auf der Seite auf die Schaltfläche **Weiter: Regeln für eingehenden Datenverkehr**.
+22. Wählen Sie unten auf der Seite die Schaltfläche **Weiter: Regeln für eingehenden Datenverkehr** aus.
 
 23. Wählen Sie auf der Registerkarte **Regeln für eingehenden Datenverkehr** unter **Lastenausgleichsregel** die Option **+ Lastenausgleichsregel hinzufügen** aus.
 
@@ -226,14 +226,14 @@ In diesem Abschnitt erstellen Sie einen Lastenausgleich. Hierbei werden auch die
     | ------- | ----- |
     | Name | Geben Sie **myHTTPRule** ein. |
     | IP-Version | Wählen Sie abhängig von Ihren Anforderungen **IPv4** oder **IPv6** aus. |
-    | Front-End-IP-Adresse | Wählen Sie **LoadBalancerFrontend** aus. |
+    | Front-End-IP-Adresse | Wählen Sie **LoadBalancerFrontEnd** aus. |
     | Protocol | Wählen Sie **TCP** aus. |
     | Port | Geben Sie **80** ein. |
     | Back-End-Port | Geben Sie **80** ein. |
     | Back-End-Pool | Wählen Sie **myBackendPool** aus. |
-    | Integritätstest | Wählen Sie **Neu erstellen**. </br> Geben Sie unter **Name** den Wert **myHealthProbe** ein. </br> Wählen Sie für **Protokoll** die Option **HTTP** aus. </br> Übernehmen Sie die übrigen Standardeinstellungen, und wählen Sie **OK** aus. |
+    | Integritätstest | Wählen Sie **Neu erstellen**. </br> Geben Sie unter **Name** den Namen **myHealthProbe** ein. </br> Wählen Sie für **Protokoll** die Option **HTTP** aus. </br> Übernehmen Sie die übrigen Standardeinstellungen, und wählen Sie **OK** aus. |
     | Sitzungspersistenz | Wählen Sie **Keine**. |
-    | Leerlaufzeitüberschreitung (Minuten) | Geben Sie **15** ein, oder wählen Sie diese Option aus. |
+    | Leerlaufzeitüberschreitung (Minuten) | Geben Sie **15** ein, oder wählen Sie diesen Wert aus. |
     | TCP-Zurücksetzung | Wählen Sie **Aktiviert**. |
     | Unverankerte IP | Wählen Sie **Deaktiviert** aus. |
     | Übersetzung der Quellnetzwerkadresse (SNAT) für ausgehenden Datenverkehr | Übernehmen Sie die Standardeinstellung **(Empfohlen) Verwenden Sie Ausgangsregeln, um Back-End-Poolmitgliedern Zugriff auf das Internet zu gewähren**. |

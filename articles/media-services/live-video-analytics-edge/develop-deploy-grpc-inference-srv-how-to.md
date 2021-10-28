@@ -3,12 +3,12 @@ title: Entwickeln und Bereitstellen eines gRPC-Rückschlussservers mit Live Vide
 description: Dieser Artikel enthält Anleitungen zum Entwickeln und Bereitstellen eines gRPC-Rückschlussservers mit Live Video Analytics.
 ms.topic: how-to
 ms.date: 12/02/2020
-ms.openlocfilehash: d7d636803ac49d78aae78dad256598d9de3e7448
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 1e685a4c363a58e19295da8f5d563114db84df9b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110371572"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130232345"
 ---
 # <a name="develop-and-deploy-a-grpc-inference-server-with-live-video-analytics"></a>Entwickeln und Bereitstellen eines gRPC-Rückschlussservers mit Live Video Analytics
 
@@ -30,7 +30,7 @@ In diesem Artikel erfahren Sie, wie Sie KI-Modelle Ihrer Wahl innerhalb eines gR
 
 * Ein x86-64- oder ARM64-Gerät, auf dem eines der [unterstützten Linux-Betriebssysteme ausgeführt wird](../../iot-edge/support.md#operating-systems), oder ein Windows-Gerät
 * [Docker-Installation](https://docs.docker.com/desktop/#download-and-install) auf Ihrem Gerät
-* Installation der [IoT Edge-Runtime](../../iot-edge/how-to-install-iot-edge.md?tabs=linux)
+* Installation der [IoT Edge-Runtime](../../iot-edge/how-to-provision-single-device-linux-symmetric.md)
 
 ## <a name="grpc-implementation-steps"></a>Schritte zur gRPC-Implementierung
 

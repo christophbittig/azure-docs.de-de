@@ -4,12 +4,12 @@ description: Die intelligente Erkennung analysiert Ihre App-Telemetriedaten und 
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: 0090171b83a25618b862e766ccd2ef39a4adb970
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 4bcbac5aa9d02aa7e996951b1d1bb334be5b2c9d
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111536726"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130227025"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Intelligente Erkennung – Leistungsabweichungen
 
@@ -74,7 +74,7 @@ Pro Tag und Application Insights-Ressource wird nur eine E-Mail zu Leistungsanom
 
   * Das ist leider noch nicht möglich. Jedoch ist Folgendes möglich:
     * [Einrichten von Warnungen](../alerts/alerts-log.md), die Sie informieren, wenn eine Metrik einen Schwellenwert überschreitet
-    * [Exportieren von Telemetriedaten](./export-telemetry.md) in eine [Datenbank](./code-sample-export-sql-stream-analytics.md) oder [in Power BI](./export-power-bi.md), mit denen Sie selbst eine Analyse durchführen können.
+    * [Exportieren von Telemetriedaten](./export-telemetry.md) in eine [Datenbank](../../stream-analytics/app-insights-export-sql-stream-analytics.md) oder [in Power BI](./export-power-bi.md), mit denen Sie selbst eine Analyse durchführen können.
 * *Wie oft wird die Analyse durchgeführt?*
 
   * Die Analyse der Telemetriedaten vom Vortag wird täglich ausgeführt (ganzer Tag in Zeitzone UTC).

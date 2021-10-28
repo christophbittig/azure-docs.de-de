@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: how-to
 ms.date: 08/31/2021
-ms.openlocfilehash: 658d8c8c43bd2795a6a25730ff85ffb6bbd3a63c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 500ec9c14dea994b528528389ed03d2b561c1a56
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128598173"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130241818"
 ---
 # <a name="secure-traffic-between-virtual-networks-and-single-tenant-workflows-in-azure-logic-apps-using-private-endpoints"></a>Schützen des Datenverkehrs zwischen virtuellen Netzwerken und Workflows mit nur einem Mandanten in Azure Logic Apps mithilfe privater Endpunkte
 
@@ -124,7 +124,7 @@ Weitere Informationen finden Sie unter [Erstellen von Logik-App-Workflows mit nu
 
 Um ausgehenden Datenverkehr aus Ihrer Logik-App zu schützen, können Sie Ihre Logik-App in ein virtuelles Netzwerk integrieren. Standardmäßig wird ausgehender Datenverkehr aus Ihrer Logik-App nur von Netzwerksicherheitsgruppen und benutzerdefinierten Routen (User-Defined Routes, UDRs) beeinflusst, wenn er an eine private Adresse wie `10.0.0.0/8`, `172.16.0.0/12` oder `192.168.0.0/16` geleitet wird.
 
-Wenn Sie Ihren eigenen Domänennamenserver (DNS) mit Ihrem virtuellen Netzwerk verwenden, legen Sie die App-Einstellung `WEBSITE_DNS_SERVER` Ihrer Logik-App-Ressource auf die IP-Adresse Ihres DNS fest. Wenn Sie über ein sekundäres DNS verfügen, fügen Sie eine weitere App-Einstellung mit dem Namen `WEBSITE_DNS_ALT_SERVER` hinzu, und legen Sie ihren Wert ebenfalls auf die IP-Adresse Ihres DNS fest. Aktualisieren Sie außerdem Ihre DNS-Einträge, um auf Ihre privaten Endpunkte unter Ihrer internen IP-Adresse zu verweisen. Bei privaten Endpunkten wird die DNS-Suche an die private Adresse und nicht an die öffentliche Adresse für die jeweilige Ressource gesendet. Weitere Informationen finden Sie unter [Private Endpunkte: Integrieren Ihrer App in ein Azure Virtual Network](../app-service/web-sites-integrate-with-vnet.md#private-endpoints).
+Wenn Sie Ihren eigenen Domänennamenserver (DNS) mit Ihrem virtuellen Netzwerk verwenden, legen Sie die App-Einstellung `WEBSITE_DNS_SERVER` Ihrer Logik-App-Ressource auf die IP-Adresse Ihres DNS fest. Wenn Sie über ein sekundäres DNS verfügen, fügen Sie eine weitere App-Einstellung mit dem Namen `WEBSITE_DNS_ALT_SERVER` hinzu, und legen Sie ihren Wert ebenfalls auf die IP-Adresse Ihres DNS fest. Aktualisieren Sie außerdem Ihre DNS-Einträge, um auf Ihre privaten Endpunkte unter Ihrer internen IP-Adresse zu verweisen. Bei privaten Endpunkten wird die DNS-Suche an die private Adresse und nicht an die öffentliche Adresse für die jeweilige Ressource gesendet. Weitere Informationen finden Sie unter [Private Endpunkte: Integrieren Ihrer App in ein Azure Virtual Network](../app-service/overview-vnet-integration.md#private-endpoints).
 
 > [!IMPORTANT]
 > Damit die Azure Logic Apps-Runtime funktioniert, benötigen Sie eine ununterbrochene Verbindung mit dem Back-End-Speicher. Damit von Azure gehostete verwaltete Connectors funktionieren, benötigen Sie eine ununterbrochene Verbindung mit dem verwalteten API-Dienst.
@@ -135,7 +135,7 @@ Das Einrichten der Integration virtueller Netzwerke wirkt sich nur auf ausgehend
 
 Weitere Informationen finden Sie in der folgenden Dokumentation:
 
-- [Integrieren Ihrer App in ein Azure Virtual Network](../app-service/web-sites-integrate-with-vnet.md)
+- [Integrieren Ihrer App in ein Azure Virtual Network](../app-service/overview-vnet-integration.md)
 
 - [Netzwerksicherheitsgruppen](../virtual-network/network-security-groups-overview.md)
 
@@ -170,7 +170,7 @@ Sie können den Speicherkontozugriff einschränken, sodass nur Ressourcen in ein
 
    1. Legen Sie für den Zugriff auf die Daten Ihres Logik-App-Workflows über das virtuelle Netzwerk in den Ressourceneinstellungen Ihrer Logik-App die Einstellung `WEBSITE_CONTENTOVERVNET` auf `1` fest.
 
-   Wenn Sie Ihren eigenen Domänennamenserver (DNS) mit Ihrem virtuellen Netzwerk verwenden, legen Sie die App-Einstellung `WEBSITE_DNS_SERVER` Ihrer Logik-App-Ressource auf die IP-Adresse Ihres DNS fest. Wenn Sie über ein sekundäres DNS verfügen, fügen Sie eine weitere App-Einstellung mit dem Namen `WEBSITE_DNS_ALT_SERVER` hinzu, und legen Sie ihren Wert ebenfalls auf die IP-Adresse Ihres DNS fest. Aktualisieren Sie außerdem Ihre DNS-Einträge, um auf Ihre privaten Endpunkte unter Ihrer internen IP-Adresse zu verweisen. Bei privaten Endpunkten wird die DNS-Suche an die private Adresse und nicht an die öffentliche Adresse für die jeweilige Ressource gesendet. Weitere Informationen finden Sie unter [Private Endpunkte: Integrieren Ihrer App in ein Azure Virtual Network](../app-service/web-sites-integrate-with-vnet.md#private-endpoints).
+   Wenn Sie Ihren eigenen Domänennamenserver (DNS) mit Ihrem virtuellen Netzwerk verwenden, legen Sie die App-Einstellung `WEBSITE_DNS_SERVER` Ihrer Logik-App-Ressource auf die IP-Adresse Ihres DNS fest. Wenn Sie über ein sekundäres DNS verfügen, fügen Sie eine weitere App-Einstellung mit dem Namen `WEBSITE_DNS_ALT_SERVER` hinzu, und legen Sie ihren Wert ebenfalls auf die IP-Adresse Ihres DNS fest. Aktualisieren Sie außerdem Ihre DNS-Einträge, um auf Ihre privaten Endpunkte unter Ihrer internen IP-Adresse zu verweisen. Bei privaten Endpunkten wird die DNS-Suche an die private Adresse und nicht an die öffentliche Adresse für die jeweilige Ressource gesendet. Weitere Informationen finden Sie unter [Private Endpunkte: Integrieren Ihrer App in ein Azure Virtual Network](../app-service/overview-vnet-integration.md#private-endpoints).
 
 1. Nachdem Sie diese App-Einstellungen angewandt haben, können Sie den öffentlichen Zugriff von Ihrem Speicherkonto entfernen.
 

@@ -6,14 +6,14 @@ ms.author: jingwang
 ms.service: data-factory
 ms.subservice: v1
 ms.topic: conceptual
-ms.date: 05/22/2018
+ms.date: 10/22/2021
 robots: noindex
-ms.openlocfilehash: 316b8cbcf056b5f26d0043d5a09d688215f1ae9f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: cc38fbcb09f5d088a42f7754eb32bebf176cdbf8
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128651197"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130259712"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>Verschieben von Daten aus einer HTTP-Quelle mithilfe von Azure Data Factory
 
@@ -46,7 +46,7 @@ Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithil
 
 In der folgenden Tabelle werden die JSON-Elemente beschrieben, die für den verknüpften HTTP-Dienst spezifisch sind:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | type | Die **type**-Eigenschaft muss auf **Http** festgelegt werden. | Ja |
 | url | Die Basis-URL zum Webserver. | Ja |
@@ -89,7 +89,7 @@ Legen Sie **authenticationType** auf **Basic**, **Digest** oder **Windows** fest
 
 Legen Sie zum Verwenden der Standardauthentifizierung **authenticationType** auf **ClientCertificate** fest. Legen Sie zusätzlich zu den in den vorangegangenen Abschnitten beschriebenen generischen Eigenschaften des HTTP-Connectors die folgenden Eigenschaften fest:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | embeddedCertData | Der Base64-codierte Inhalt der Binärdaten der PFX-Datei. | Geben Sie **embeddedCertData** oder **certThumbprint** an. |
 | certThumbprint | Der Fingerabdruck des Zertifikats, das im Zertifikatspeicher Ihres Gatewaycomputers installiert wurde. Betrifft nur das Kopieren von Daten aus einer lokalen HTTP-Quelle. | Geben Sie **embeddedCertData** oder **certThumbprint** an. |
@@ -152,7 +152,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Der Abschnitt **typeProperties** ist bei jeder Art von Dataset unterschiedlich. Der Abschnitt **typeProperties** bietet Informationen zum Speicherort der Daten im Datenspeicher. Der Abschnitt **typeProperties** für ein Dataset des Typs **Http** hat die folgenden Eigenschaften:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Der **type** des Datasets muss auf **Http** festgelegt werden. | Ja |
 | relativeUrl | Eine relative URL zu der Ressource, die die Daten enthält. Wenn der Pfad nicht angegeben ist, wird nur die URL verwendet, die in der Definition des verknüpften Diensts angegeben ist. <br><br> Zum Generieren von dynamischen URLs können Sie [Data Factory-Funktionen und -Systemvariablen](data-factory-functions-variables.md) verwenden. Beispiel: **relativeUrl**: **$$Text.Format('/my/report?month={0:yyyy}-{0:MM}&fmt=csv', SliceStart)** . | Nein |
@@ -215,7 +215,7 @@ Eigenschaften, die im Abschnitt **typeProperties** der Aktivität verfügbar sin
 
 Wenn bei der Kopieraktivität die Quelle den Typ **HttpSource** aufweist, werden derzeit die folgenden Eigenschaften unterstützt:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | -------- | ----------- | -------- |
 | httpRequestTimeout | Das Timeout (der Wert **TimeSpan**) für die HTTP-Anforderung, um eine Antwort zu empfangen. Dabei handelt es sich um das Timeout zum Empfangen einer Antwort, nicht das Timeout zum Lesen von Antwortdaten. | Nein<br />(Standardwert: **00:01:40**) |
 

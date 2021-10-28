@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 11/9/2020
-ms.openlocfilehash: 7a24045d38b594e09b931a885c60851109a108e3
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: fe949aef996169f6993623fa9c4716a602f32e93
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110372686"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130260339"
 ---
 # <a name="service-configuration"></a>Dienstkonfiguration
 
@@ -48,7 +48,7 @@ App Service-Anpassungen gelten nicht für „Benutzerdefinierte Fragen und Antwo
 
 Der QnA Maker-Dienst stellt die Konfiguration für die folgenden Benutzer bereit, die an einem einzelnen QnA Maker-Dienst und all seinen Wissensdatenbanken zusammenarbeiten können.
 
-Erfahren Sie, [wie Sie Projektmitarbeiter](./reference-role-based-access-control.md) zu Ihrem Dienst hinzufügen können.
+Erfahren Sie, [wie Sie Projektmitarbeiter](./index.yml) zu Ihrem Dienst hinzufügen können.
 
 ## <a name="change-azure-cognitive-search"></a>Ändern von Azure Cognitive Search
 

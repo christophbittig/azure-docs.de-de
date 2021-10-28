@@ -7,13 +7,13 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.subservice: v1
 ms.topic: conceptual
-ms.date: 01/22/2018
-ms.openlocfilehash: 2d1cd9053f5be915015653e1b522e82eff7b978c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/22/2021
+ms.openlocfilehash: 359b86861326cc2d0f375c95db54142c6da2fd12
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128571233"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130243864"
 ---
 # <a name="updating-ml-studio-classic-models-using-update-resource-activity"></a>Aktualisieren von Modellen für ML Studio (klassisch) mithilfe der Ressourcenaktualisierungsaktivität
 
@@ -48,7 +48,7 @@ In der folgenden Tabelle werden die in diesem Beispiel verwendeten Webdienste be
 
 Die folgende Abbildung zeigt die Beziehung zwischen Trainings- und Bewertungsendpunkten in ML Studio (klassisch).
 
-:::image type="content" source="./media/data-factory-azure-ml-batch-execution-activity/web-services.png" alt-text="Webdienste":::
+:::image type="content" source="./media/data-factory-azure-ml-batch-execution-activity/web-services.png" alt-text="WEB SERVICES":::
 
 Sie können mithilfe der **Batch Execution-Aktivität für ML Studio (klassisch)** den **Trainingswebdienst** aufrufen. Das Aufrufen eines Trainingswebdiensts entspricht dem Aufrufen eines Webdiensts für ML Studio (klassisch) (Bewertungswebdienst) für Bewertungsdaten. In den vorstehenden Abschnitten wurde detailliert beschrieben, wie ein Webdienst für ML Studio (klassisch) über eine Azure Data Factory-Pipeline aufgerufen wird. 
 

@@ -3,12 +3,12 @@ title: Verwenden privater Endpunkte zum Integrieren von Azure Functions in ein 
 description: In diesem Tutorial wird erläutert, wie Sie eine Funktion mit einem virtuellen Azure-Netzwerk verbinden und mithilfe privater Endpunkte sperren.
 ms.topic: article
 ms.date: 2/22/2021
-ms.openlocfilehash: 8007fde1d4aaf52a98bf924f607450462a993c1d
-ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
+ms.openlocfilehash: ee6fb79176b0188533725347c3b47369ce050706
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128708432"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130252975"
 ---
 # <a name="tutorial-integrate-azure-functions-with-an-azure-virtual-network-by-using-private-endpoints"></a>Tutorial: Integrieren von Azure Functions in ein virtuelles Azure-Netzwerk mithilfe privater Endpunkte
 
@@ -99,7 +99,7 @@ Ihre virtuellen Netzwerke benötigen ein Speicherkonto, das von dem Konto getren
 
 1. Verwenden Sie auf der Registerkarte **Grundlagen** die folgende Tabelle, um die Einstellungen für Service Bus zu konfigurieren. Für alle anderen Einstellungen können Sie die Standardwerte beibehalten.
 
-    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG      |
+    | Einstellung      | Vorgeschlagener Wert  | Beschreibung      |
     | ------------ | ---------------- | ---------------- |
     | **Abonnement** | Ihr Abonnement | Das Abonnement, in dem Ihre Ressourcen erstellt werden. |
     | **[Ressourcengruppe](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Die Ressourcengruppe aus, die Sie mit Ihrer Funktions-App erstellt haben. |
@@ -125,7 +125,7 @@ Erstellen Sie das virtuelle Netzwerk, in das die Funktions-App integriert wird:
 
 1. Verwenden Sie auf der Registerkarte **Grundlagen** die folgende Tabelle, um die Einstellungen für das virtuelle Netzwerk zu konfigurieren.
 
-    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG      |
+    | Einstellung      | Vorgeschlagener Wert  | Beschreibung      |
     | ------------ | ---------------- | ---------------- |
     | **Abonnement** | Ihr Abonnement | Das Abonnement, in dem Ihre Ressourcen erstellt werden. | 
     | **[Ressourcengruppe](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Die Ressourcengruppe aus, die Sie mit Ihrer Funktions-App erstellt haben. |
@@ -136,7 +136,7 @@ Erstellen Sie das virtuelle Netzwerk, in das die Funktions-App integriert wird:
 
     :::image type="content" source="./media/functions-create-vnet/1-create-vnet-ip-address.png" alt-text="Screenshot der Konfigurationsansicht für das Erstellen eines virtuellen Netzwerks.":::
 
-    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG      |
+    | Einstellung      | Vorgeschlagener Wert  | Beschreibung      |
     | ------------ | ---------------- | ---------------- |
     | **Subnetzname** | functions | Der Name des Subnetzes, mit dem Ihre Funktions-App eine Verbindung herstellt | 
     | **Subnetzadressbereich** | 10.0.1.0/24 | Subnetzadressbereich. Beachten Sie, dass der IPv4-Adressraum in der obigen Abbildung 10.0.0.0/16 lautet. Beim Adressraum 10.1.0.0/16 würde der empfohlene Subnetzadressbereich 10.1.1.0/24 lauten. |
@@ -157,7 +157,7 @@ Erstellen Sie mithilfe Ihres Speicherkontos die privaten Endpunkte für Azure Fi
 
 1. Verwenden Sie auf der Registerkarte **Grundlagen** die in der folgenden Tabelle aufgeführten Einstellungen für den privaten Endpunkt.
 
-    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG      |
+    | Einstellung      | Vorgeschlagener Wert  | Beschreibung      |
     | ------------ | ---------------- | ---------------- |
     | **Abonnement** | Ihr Abonnement | Das Abonnement, in dem Ihre Ressourcen erstellt werden. | 
     | **[Ressourcengruppe](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Wählen Sie die Ressourcengruppe aus, die Sie mit Ihrer Funktions-App erstellt haben. |
@@ -179,7 +179,7 @@ Erstellen Sie mithilfe Ihres Speicherkontos die privaten Endpunkte für Azure Fi
 
 1. Erstellen Sie einen weiteren privaten Endpunkt für Blobs. Verwenden Sie auf der Registerkarte **Ressourcen** die in der folgenden Tabelle aufgeführten Einstellungen. Verwenden Sie für alle anderen Einstellungen die gleichen Werte, die Sie zum Erstellen des privaten Endpunkts für Dateien verwendet haben.
 
-    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG      |
+    | Einstellung      | Vorgeschlagener Wert  | Beschreibung      |
     | ------------ | ---------------- | ---------------- |
     | **Abonnement** | Ihr Abonnement | Das Abonnement, in dem Ihre Ressourcen erstellt werden. | 
     | **Ressourcentyp**  | Microsoft.Storage/storageAccounts | Der Ressourcentyp für Speicherkonten. |
@@ -188,7 +188,7 @@ Erstellen Sie mithilfe Ihres Speicherkontos die privaten Endpunkte für Azure Fi
     | **Zielunterressource** | Blob | Der private Endpunkt, der für Blobs aus dem Speicherkonto verwendet wird. |
 1. Erstellen Sie einen weiteren privaten Endpunkt für Tabellen. Verwenden Sie auf der Registerkarte **Ressourcen** die in der folgenden Tabelle aufgeführten Einstellungen. Verwenden Sie für alle anderen Einstellungen die gleichen Werte, die Sie zum Erstellen des privaten Endpunkts für Dateien verwendet haben.
 
-    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG      |
+    | Einstellung      | Vorgeschlagener Wert  | Beschreibung      |
     | ------------ | ---------------- | ---------------- |
     | **Abonnement** | Ihr Abonnement | Das Abonnement, in dem Ihre Ressourcen erstellt werden. | 
     | **Ressourcentyp**  | Microsoft.Storage/storageAccounts | Der Ressourcentyp für Speicherkonten. |
@@ -235,7 +235,7 @@ Erstellen Sie den privaten Endpunkt, um die Service Bus-Instanz zu sperren:
 1. Wählen Sie **+ Vorhandenes virtuelles Netzwerk hinzufügen** aus, um das zuvor erstellte virtuelle Netzwerk hinzuzufügen.
 1. Verwenden Sie auf der Registerkarte **Netzwerke hinzufügen** die Netzwerkeinstellungen aus der folgenden Tabelle:
 
-    | Einstellung | Vorgeschlagener Wert | BESCHREIBUNG|
+    | Einstellung | Vorgeschlagener Wert | Beschreibung|
     |---------|-----------------|------------|
     | **Abonnement** | Ihr Abonnement | Das Abonnement, in dem Ihre Ressourcen erstellt werden. |
     | **Virtuelle Netzwerke** | myVirtualNet | Der Name des virtuellen Netzwerks, mit dem Ihre Funktions-App eine Verbindung herstellt |
@@ -323,8 +323,7 @@ Wenn Sie Ihre Funktions-App mit virtuellen Netzwerken verwenden möchten, müsse
     | **WEBSITE_CONTENTSHARE** | files | Der Name der Dateifreigabe, die Sie im Speicherkonto erstellt haben. Verwenden Sie diese Einstellung in Verbindung mit WEBSITE_CONTENTAZUREFILECONNECTIONSTRING. |
     | **SERVICEBUS_CONNECTION** | myServiceBusConnectionString | Erstellen Sie diese App-Einstellung für die Verbindungszeichenfolge Ihrer Service Bus-Instanz. Diese Verbindungszeichenfolge stammt aus dem Abschnitt [Abrufen einer Service Bus-Verbindungszeichenfolge](#get-a-service-bus-connection-string).|
     | **WEBSITE_CONTENTOVERVNET** | 1 | Erstellen Sie diese App-Einstellung. Der Wert 1 ermöglicht das Skalieren Ihrer Funktions-App, wenn Ihr Speicherkonto auf ein virtuelles Netzwerk beschränkt ist. |
-    | **WEBSITE_DNS_SERVER** | 168.63.129.16 | Erstellen Sie diese App-Einstellung. Sobald Ihre App in ein virtuelles Netzwerk integriert ist, verwendet sie den gleichen DNS-Server wie das virtuelle Netzwerk. Ihre Funktions-App benötigt diese Einstellung, damit sie zusammen mit privaten Zonen in Azure DNS funktionieren kann. Dies ist erforderlich, wenn Sie private Endpunkte verwenden. Mit dieser Einstellung und WEBSITE_VNET_ROUTE_ALL werden alle ausgehenden Aufrufe von Ihrer App an das virtuelle Netzwerk gesendet. |
-    | **WEBSITE_VNET_ROUTE_ALL** | 1 | Erstellen Sie diese App-Einstellung. Sobald Ihre App in ein virtuelles Netzwerk integriert ist, verwendet es den gleichen DNS-Server wie das virtuelle Netzwerk. Ihre Funktions-App benötigt diese Einstellung, damit sie zusammen mit privaten Zonen in Azure DNS funktionieren kann. Dies ist erforderlich, wenn Sie private Endpunkte verwenden. Mit dieser Einstellung und WEBSITE_DNS_SERVER werden alle ausgehenden Aufrufe von Ihrer App an das virtuelle Netzwerk gesendet. |
+    | **WEBSITE_VNET_ROUTE_ALL** | 1 | Erstellen Sie diese App-Einstellung. Sobald Ihre App in ein virtuelles Netzwerk integriert ist, verwendet es den gleichen DNS-Server wie das virtuelle Netzwerk. Ihre Funktions-App benötigt diese Einstellung, damit sie zusammen mit privaten Zonen in Azure DNS funktionieren kann. Dies ist erforderlich, wenn Sie private Endpunkte verwenden. |
 
 1. Wählen Sie in der Ansicht **Konfiguration** die Registerkarte **Einstellungen der Funktionsruntime** aus.
 

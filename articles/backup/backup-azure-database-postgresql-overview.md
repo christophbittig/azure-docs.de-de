@@ -4,12 +4,12 @@ description: Übersicht über Sicherung von Azure Database for PostgreSQL (Vorsc
 ms.topic: conceptual
 ms.date: 09/28/2021
 ms.custom: references_regions
-ms.openlocfilehash: 3740d4c7d149181638da93a3a5ad713c2c230f29
-ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
+ms.openlocfilehash: b868af4c96691c9496a0c5382d9416e784d3eb8c
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129154411"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130219392"
 ---
 # <a name="about-azure-database-for-postgresql-backup-preview"></a>Informationen zur Sicherung von Azure Database for PostgreSQL (Vorschau)
 
@@ -18,10 +18,10 @@ Azure Backup und Azure Database Services wurden zusammengeführt, um eine Sicher
 - Kundenseitig gesteuerte, geplante und bedarfsorientierte Sicherungen der einzelnen Datenbanken.
 - Wiederherstellungen auf Datenbankebene auf einem beliebigen PostgreSQL-Server oder in einem beliebigen Blobspeicher.
 - Zentrale Überwachung aller Vorgänge und Aufträge.
-- Sicherungen werden in separaten Sicherheits- und Fehlerdomänen gespeichert. Wenn der Quellserver oder das Abonnement auf irgendeine Weise kompromittiert wird, bleiben die Sicherungen im [Azure Backup-Tresor](/azure/backup/backup-vault-overview) (in von Azure Backup verwalteten Speicherkonten) sicher.
+- Sicherungen werden in separaten Sicherheits- und Fehlerdomänen gespeichert. Wenn der Quellserver oder das Abonnement auf irgendeine Weise kompromittiert wird, bleiben die Sicherungen im [Azure Backup-Tresor](./backup-vault-overview.md) (in von Azure Backup verwalteten Speicherkonten) sicher.
 - Die Verwendung von **pg_dump** ermöglicht eine größere Flexibilität bei Wiederherstellungen. Dadurch können Sie Wiederherstellungen über Datenbankversionen hinweg durchführen. 
 
-Sie können diese Lösung unabhängig oder zusätzlich zur [nativen Sicherungslösung verwenden, die von Azure PostgreSQL angeboten wird](/azure/postgresql/concepts-backup) und die eine Aufbewahrungsdauer von bis zu 35 Tagen ermöglicht. Die native Lösung eignet sich für operative Wiederherstellungen, wenn Sie z. B. die neuesten Sicherungen wiederherstellen möchten. Die Azure Backup-Lösung hilft Ihnen bei der Erfüllung Ihrer Konformitätsanforderungen sowie bei genaueren und flexibleren Sicherungen/Wiederherstellungen.
+Sie können diese Lösung unabhängig oder zusätzlich zur [nativen Sicherungslösung verwenden, die von Azure PostgreSQL angeboten wird](../postgresql/concepts-backup.md) und die eine Aufbewahrungsdauer von bis zu 35 Tagen ermöglicht. Die native Lösung eignet sich für operative Wiederherstellungen, wenn Sie z. B. die neuesten Sicherungen wiederherstellen möchten. Die Azure Backup-Lösung hilft Ihnen bei der Erfüllung Ihrer Konformitätsanforderungen sowie bei genaueren und flexibleren Sicherungen/Wiederherstellungen.
 
 ## <a name="support-matrix"></a>Unterstützungsmatrix
 
@@ -55,7 +55,7 @@ Azure Backup befolgt strenge, durch Azure festgelegte Sicherheitsrichtlinien. Es
 
 ### <a name="key-vault-based-authentication-model"></a>Schlüsseltresorbasiertes Authentifizierungsmodell
 
-Der Azure Backup-Dienst muss beim Erstellen der einzelnen Sicherungen eine Verbindung mit Azure PostgreSQL herstellen. Zum Herstellen dieser Verbindung wird zwar „Benutzername + Kennwort“ (oder Verbindungszeichenfolge) entsprechend der Datenbank verwendet, diese Anmeldeinformationen werden aber nicht mit Azure Backup gespeichert. Stattdessen müssen diese Anmeldeinformationen vom Datenbankadministrator im [Azure Key Vault als Geheimnis](/azure/key-vault/secrets/about-secrets) per Seeding sicher verwaltet werden. Der Workloadadministrator ist für das Verwalten und Rotieren von Anmeldeinformationen verantwortlich. Azure Backup ruft die neuesten Geheimnisdetails aus dem Schlüsseltresor auf, um die Sicherung zu erstellen.
+Der Azure Backup-Dienst muss beim Erstellen der einzelnen Sicherungen eine Verbindung mit Azure PostgreSQL herstellen. Zum Herstellen dieser Verbindung wird zwar „Benutzername + Kennwort“ (oder Verbindungszeichenfolge) entsprechend der Datenbank verwendet, diese Anmeldeinformationen werden aber nicht mit Azure Backup gespeichert. Stattdessen müssen diese Anmeldeinformationen vom Datenbankadministrator im [Azure Key Vault als Geheimnis](../key-vault/secrets/about-secrets.md) per Seeding sicher verwaltet werden. Der Workloadadministrator ist für das Verwalten und Rotieren von Anmeldeinformationen verantwortlich. Azure Backup ruft die neuesten Geheimnisdetails aus dem Schlüsseltresor auf, um die Sicherung zu erstellen.
  
 :::image type="content" source="./media/backup-azure-database-postgresql-overview/key-vault-based-authentication-model.png" alt-text="Diagramm des Workload- oder Datenbankflows.":::
 
@@ -115,7 +115,7 @@ Informationen zum Erteilen aller Zugriffsberechtigungen, die von Azure Backup be
    - Bei Verwenden der Autorisierung durch die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC) (d. h. das Berechtigungsmodell ist auf die rollenbasierte Zugriffssteuerung in Azure festgelegt):
 
      - Gewähren Sie unter „Zugriffskontrolle“ den Zugriff als _Key Vault-Geheimnisbenutzer_ der MSI des Azure Backup-Tresors auf den Schlüsseltresor. Inhaber dieser Rolle können Geheimnisse lesen.
-     - [Gewähren der Berechtigung zum Zugreifen auf einen Azure-Schlüsseltresor für Anwendungen mit Azure RBAC](/azure/key-vault/general/rbac-guide?tabs=azure-cli).
+     - [Gewähren der Berechtigung zum Zugreifen auf einen Azure-Schlüsseltresor für Anwendungen mit Azure RBAC](../key-vault/general/rbac-guide.md?tabs=azure-cli).
 
    :::image type="content" source="./media/backup-azure-database-postgresql-overview/key-vault-secrets-user-access-inline.png" alt-text="Screenshot: Option zum Bereitstellen des Benutzerzugriffs auf das Geheimnis." lightbox="./media/backup-azure-database-postgresql-overview/key-vault-secrets-user-access-expanded.png":::
 
@@ -124,7 +124,7 @@ Informationen zum Erteilen aller Zugriffsberechtigungen, die von Azure Backup be
    - Verwenden von Zugriffsrichtlinien (d. h. das Berechtigungsmodell ist auf die Zugriffsrichtlinie des Tresors festgelegt):
 
      - Legen Sie die Get- und List-Berechtigungen für Geheimnisse fest.
-     - Weitere Informationen zum [Zuweisen einer Azure Key Vault-Zugriffsrichtlinie](/azure/key-vault/general/assign-access-policy?tabs=azure-portal)
+     - Weitere Informationen zum [Zuweisen einer Azure Key Vault-Zugriffsrichtlinie](../key-vault/general/assign-access-policy.md?tabs=azure-portal)
 
      :::image type="content" source="./media/backup-azure-database-postgresql-overview/permission-model-is-set-to-vault-access-policy-inline.png" alt-text="Screenshot: Die Option zum Erteilen von Berechtigungen mithilfe des Berechtigungsmodells ist auf das Key Vault-Zugriffsrichtlinienmodell festgelegt." lightbox="./media/backup-azure-database-postgresql-overview/permission-model-is-set-to-vault-access-policy-expanded.png":::  
  

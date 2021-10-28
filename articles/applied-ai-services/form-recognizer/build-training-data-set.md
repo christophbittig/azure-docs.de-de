@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 07/27/2021
 ms.author: lajanuar
-ms.openlocfilehash: 47695a2445e0b61f972f6481471305ed5219b5d7
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 397f3c05d42837ffb5e9bb4fdb465a4aee352fbd
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122356674"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130233675"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>Erstellen eines Trainingsdatasets für ein benutzerdefiniertes Modell
 
@@ -72,7 +72,7 @@ Wenn Sie dem Anforderungstext den folgenden Inhalt hinzufügen, wird die API mit
 
 Nachdem Sie nun gelernt haben, wie Sie ein Trainingsdataset erstellen, folgen Sie den Anweisungen in einem Schnellstart, um ein benutzerdefiniertes Formularerkennungsmodell zu trainieren und es mit Ihren Formularen zu verwenden.
 
-* [Schnellstart: Trainieren eines Modells zur Formularerkennung und Extrahieren von Formulardaten unter Verwendung der Clientbibliothek oder REST-API](./quickstarts/client-library.md)
+* [Schnellstart: Trainieren eines Modells zur Formularerkennung und Extrahieren von Formulardaten unter Verwendung der Clientbibliothek oder REST-API](./quickstarts/try-sdk-rest-api.md)
 * [Trainieren eines Formularerkennungsmodells mit Beschriftungen mithilfe des Tools für die Beschriftung von Beispielen](label-tool.md)
 
 ## <a name="see-also"></a>Weitere Informationen

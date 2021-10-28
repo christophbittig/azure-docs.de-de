@@ -8,12 +8,12 @@ ms.service: azure
 ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
-ms.openlocfilehash: cfbca90fe4c0053816421ff392f0af93938ff5ee
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: e9496d3139861c41bbcc3467c8169e2350e5414b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123254180"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130249778"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Erste Schritte für Azure-IT-Operatoren
 
@@ -342,7 +342,7 @@ Sie können die Azure CLI auch nutzen, um eine Azure Resource Manager-Vorlage be
 
 ### <a name="access-and-security-for-virtual-machines"></a>Zugriff und Sicherheit für virtuelle Computer
 
-Für den Zugriff auf einen virtuellen Computer über das Internet muss für die zugeordnete Netzwerkschnittstelle bzw. das Lastenausgleichsmodul, falls zutreffend, eine öffentliche IP-Adresse konfiguriert sein. Die öffentliche IP-Adresse enthält einen DNS-Namen, der in den virtuellen Computer bzw. das Lastenausgleichsmodul aufgelöst wird. Weitere Informationen finden Sie unter [IP-Adressen in Azure](../../virtual-network/public-ip-addresses.md).
+Für den Zugriff auf einen virtuellen Computer über das Internet muss für die zugeordnete Netzwerkschnittstelle bzw. das Lastenausgleichsmodul, falls zutreffend, eine öffentliche IP-Adresse konfiguriert sein. Die öffentliche IP-Adresse enthält einen DNS-Namen, der in den virtuellen Computer bzw. das Lastenausgleichsmodul aufgelöst wird. Weitere Informationen finden Sie unter [IP-Adressen in Azure](../../virtual-network/ip-services/public-ip-addresses.md).
 
 Sie verwalten den Zugriff auf den virtuellen Computer über die öffentliche IP-Adresse, indem Sie eine NSG-Ressource (Netzwerksicherheitsgruppe) verwenden. Eine NSG verhält sich wie eine Firewall und kann Datenverkehr über die Netzwerkschnittstelle oder ein Subnetz für eine Gruppe von definierten Ports zulassen oder verweigern. Zum Erstellen einer Remotedesktopsitzung mit einer Azure-VM müssen Sie die NSG beispielsweise so konfigurieren, dass eingehender Datenverkehr über Port 3389 zugelassen ist. Weitere Informationen finden Sie unter [Öffnen von Ports für einen virtuellen Computer in Azure mithilfe des Azure-Portals](../../virtual-machines/windows/nsg-quickstart-portal.md).
 

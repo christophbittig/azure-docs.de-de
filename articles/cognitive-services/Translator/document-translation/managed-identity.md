@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.topic: how-to
 ms.date: 09/09/2021
 ms.author: lajanuar
-ms.openlocfilehash: 688fd2391d12f74b46a16954706b3c9e0ee1fb8a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: b6a25b832c3acc65d6a7b343901cf23cdd17f98a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124771828"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130255785"
 ---
 # <a name="create-and-use-managed-identity"></a>Erstellen und Verwenden einer verwalteten Identität
 
@@ -48,7 +48,7 @@ Zunächst benötigen Sie Folgendes:
   * Klicken Sie im Hauptfenster auf **Zugriff aus bestimmten Netzwerken zulassen**.
   :::image type="content" source="../media/managed-identities/firewalls-and-virtual-networks.png" alt-text="Screenshot: aktiviertes Optionsfeld „Ausgewählte Netzwerke“.":::
 
-  * Navigieren Sie auf der Seite „Ausgewählte Netzwerke“ zur Kategorie **Ausnahmen**, und stellen Sie sicher, dass das Kontrollkästchen [**Azure-Diensten in der Liste der vertrauenswürdigen Dienste den Zugriff auf dieses Speicherkonto erlauben**](/azure/storage/common/storage-network-security?tabs=azure-portal#manage-exceptions) aktiviert ist.
+  * Navigieren Sie auf der Seite „Ausgewählte Netzwerke“ zur Kategorie **Ausnahmen**, und stellen Sie sicher, dass das Kontrollkästchen [**Azure-Diensten in der Liste der vertrauenswürdigen Dienste den Zugriff auf dieses Speicherkonto erlauben**](../../../storage/common/storage-network-security.md?tabs=azure-portal#manage-exceptions) aktiviert ist.
 
     :::image type="content" source="../media/managed-identities/allow-trusted-services-checkbox-portal-view.png" alt-text="Screenshot: Kontrollkästchen für das Zulassen vertrauenswürdiger Dienste, Portalansicht":::
 

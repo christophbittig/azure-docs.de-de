@@ -6,12 +6,12 @@ ms.author: terrylan
 ms.service: security
 ms.topic: reference
 ms.date: 09/13/2021
-ms.openlocfilehash: 918743544aeaf60932f14d1d1eed609775b29efd
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 2c75831e31717b59b20b9a6e731189be0db9aa59
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129710562"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130225508"
 ---
 # <a name="cloud-feature-availability-for-us-government-customers"></a>Verfügbarkeit von Cloudfeatures für US-Regierungskunden
 
@@ -138,9 +138,9 @@ In den folgenden Tabellen wird die aktuelle Azure Sentinel-Featureverfügbarkeit
 |- [Überwachungsmetriken für SOC-Incidents](../../sentinel/manage-soc-with-incident-metrics.md) | Allgemein verfügbar | Allgemein verfügbar |
 |- [Watchlists](../../sentinel/watchlists.md) | Allgemein verfügbar | Allgemein verfügbar |
 | **Threat Intelligence-Unterstützung** | | |
-| - [Threat Intelligence – TAXII-Datenconnector](../../sentinel/understand-threat-intelligence.md)  | Allgemein verfügbar | Nicht verfügbar |
+| - [Threat Intelligence – TAXII-Datenconnector](../../sentinel/understand-threat-intelligence.md)  | Allgemein verfügbar | Allgemein verfügbar |
 | - [Threat Intelligence-Plattform-Datenconnector](../../sentinel/understand-threat-intelligence.md)  | Öffentliche Vorschau | Nicht verfügbar |
-| - [Blatt „Threat Intelligence-Forschung“](https://techcommunity.microsoft.com/t5/azure-sentinel/what-s-new-threat-intelligence-menu-item-in-public-preview/ba-p/1646597)  | Allgemein verfügbar | Nicht verfügbar |
+| - [Blatt „Threat Intelligence-Forschung“](https://techcommunity.microsoft.com/t5/azure-sentinel/what-s-new-threat-intelligence-menu-item-in-public-preview/ba-p/1646597)  | Allgemein verfügbar | Allgemein verfügbar |
 | - [URL-Detonation](https://techcommunity.microsoft.com/t5/azure-sentinel/using-the-new-built-in-url-detonation-in-azure-sentinel/ba-p/996229) | Öffentliche Vorschau | Nicht verfügbar |
 | - [Arbeitsmappe „Threat Intelligence“](/azure/architecture/example-scenario/data/sentinel-threat-intelligence)  | Allgemein verfügbar | Nicht verfügbar |
 |**Erkennungsunterstützung** | | |
@@ -228,7 +228,7 @@ In den folgenden Tabellen wird die aktuelle Azure Sentinel-Featureverfügbarkeit
 | - [Symantec VIP](../../sentinel/data-connectors-reference.md#symantec-vip-preview)                                     | Öffentliche Vorschau | Öffentliche Vorschau |
 | - [Syslog](../../sentinel/connect-syslog.md)                                           | Allgemein verfügbar             | Allgemein verfügbar             |
 | - [Threat Intelligence-Plattform](../../sentinel/connect-threat-intelligence-tip.md)en                   | Öffentliche Vorschau | Nicht verfügbar      |
-| - [Threat Intelligence TAXII](../../sentinel/connect-threat-intelligence-tip.md)                       | Öffentliche Vorschau | Nicht verfügbar      |
+| - [Threat Intelligence TAXII](../../sentinel/connect-threat-intelligence-tip.md)                       | Allgemein verfügbar | Allgemein verfügbar      |
 | - [Thycotic Secret Server](../../sentinel/data-connectors-reference.md#thycotic-secret-server-preview)                          | Öffentliche Vorschau | Öffentliche Vorschau |
 | - [Trend Micro Deep Security](../../sentinel/data-connectors-reference.md#trend-micro-deep-security)                       | Allgemein verfügbar             | Allgemein verfügbar             |
 | - [Trend Micro TippingPoint](../../sentinel/data-connectors-reference.md#trend-micro-tippingpoint-preview)                         | Öffentliche Vorschau | Öffentliche Vorschau |

@@ -11,12 +11,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: mathoma
 ms.date: 04/09/2021
-ms.openlocfilehash: 3ecdc0c3b39e62202c0fbdfcd0fd164519bb4e94
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3b52a5c86310ed6e87048274835c0dfbec1b9e9c
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355750"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130216179"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Skalieren von Einzeldatenbankressourcen in Azure SQL-Datenbank
 
@@ -29,11 +29,6 @@ Nach dem Auswählen der Anzahl von virtuellen Kernen und DTUs können Sie eine e
 * [PowerShell](/powershell/module/az.sql/set-azsqldatabase)
 * [Azure-Befehlszeilenschnittstelle](/cli/azure/sql/db#az_sql_db_update)
 * [REST-API](/rest/api/sql/databases/update)
-
-
-Das folgende Video zeigt die dynamische Änderung von Dienstebene und Computegröße zum Heraufsetzen verfügbarer DTUs für eine einzelne Datenbank.
-
-> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-dynamically-scale-up-or-scale-down/player]
 
 > [!IMPORTANT]
 > Unter bestimmten Umständen müssen Sie ggf. eine Datenbank verkleinern, um ungenutzten Speicherplatz freizugeben. Weitere Informationen finden Sie unter [Verwalten von Dateispeicherplatz in Azure SQL-Datenbank](file-space-manage.md).

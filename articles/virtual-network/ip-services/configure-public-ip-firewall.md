@@ -9,12 +9,12 @@ ms.subservice: ip-services
 ms.topic: how-to
 ms.date: 06/28/2021
 ms.custom: template-how-to
-ms.openlocfilehash: f520b992e018b41a8adf99b87202975a4a2edd38
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: a6f86fcf24316a24c36d0d42dfff4cef0c3ccaf3
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129368199"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130217428"
 ---
 # <a name="manage-a-public-ip-address-with-azure-firewall"></a>Verwalten einer öffentlichen IP-Adresse mit Azure Firewall
 
@@ -25,7 +25,7 @@ In diesem Artikel erfahren Sie, wie Sie eine Azure Firewall-Instanz mit einer vo
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein Azure-Konto mit einem aktiven Abonnement. [Erstellen Sie ein kostenloses Konto.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-- Drei öffentliche IP-Adressen der Standard-SKU in Ihrem Abonnement. Die IP-Adresse darf keiner Ressource zugeordnet sein. Weitere Informationen zum Erstellen einer öffentlichen IP-Adresse der Standard-SKU finden Sie unter [Erstellen einer öffentlichen IP-Adresse: Azure-Portal](../../virtual-network/create-public-ip-portal.md).
+- Drei öffentliche IP-Adressen der Standard-SKU in Ihrem Abonnement. Die IP-Adresse darf keiner Ressource zugeordnet sein. Weitere Informationen zum Erstellen einer öffentlichen IP-Adresse der Standard-SKU finden Sie unter [Erstellen einer öffentlichen IP-Adresse: Azure-Portal](./create-public-ip-portal.md).
     - Benennen Sie die neuen öffentlichen IP-Adressen für die Beispiele in diesem Artikel mit **myStandardPublicIP-1**, **myStandardPublicIP-2** und **myStandardPublicIP-3**.
 
 ## <a name="create-azure-firewall-existing-public-ip"></a>Erstellen einer Azure Firewall-Instanz mit einer vorhandenen öffentlichen IP-Adresse
@@ -121,5 +121,5 @@ In diesem Abschnitt fügen Sie der Azure Firewall-Instanz die Konfiguration eine
 
 In diesem Artikel haben Sie gelernt, wie Sie eine Azure Firewall-Instanz erstellen und eine vorhandene öffentliche IP-Adresse verwenden. Sie haben die öffentliche IP-Adresse der Standard-IP-Konfiguration geändert. Schließlich haben Sie der Firewall eine öffentliche IP-Konfiguration hinzugefügt.
 
-- Weitere Informationen zu öffentlichen IP-Adressen in Azure finden Sie unter [Öffentliche IP-Adressen](../../virtual-network/public-ip-addresses.md).
+- Weitere Informationen zu öffentlichen IP-Adressen in Azure finden Sie unter [Öffentliche IP-Adressen](./public-ip-addresses.md).
 - Weitere Informationen zu Azure Firewall finden Sie unter [Was ist Azure Firewall?](../../firewall/overview.md).

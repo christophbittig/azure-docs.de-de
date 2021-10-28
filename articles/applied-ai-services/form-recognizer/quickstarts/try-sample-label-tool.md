@@ -11,12 +11,12 @@ ms.date: 10/07/2021
 ms.author: lajanuar
 ms.custom: cog-serv-seo-may-2021
 keywords: Verarbeiten von Dokumenten
-ms.openlocfilehash: 9c009a8d6d41d183596e5a28b1bd18f2e265ba04
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: c3b1037d4263a6565f76ffcf648e77bb692f7f34
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129716745"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130265781"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -213,7 +213,7 @@ Führen Sie die obigen Schritte aus, um die fünf Formulare im Beispieldataset z
 
 Wählen Sie im linken Bereich das Symbol „Trainieren“ aus, um die Seite „Training“ zu öffnen. Wählen Sie dann die Schaltfläche **Trainieren** aus, um mit dem Training des Modells zu beginnen. Sobald der Trainingsprozess abgeschlossen ist, werden folgende Informationen angezeigt:
 
-* **Modell-ID**: Die ID des Modells, das erstellt und trainiert wurde. Jeder Trainingsaufruf erstellt ein neues Modell mit eigener ID. Kopieren Sie diese Zeichenfolge an einen sicheren Speicherort. Sie werden sie benötigen, wenn Sie Vorhersageaufrufe über die [REST-API](./client-library.md?pivots=programming-language-rest-api) oder [Clientbibliothek](./client-library.md) ausführen möchten.
+* **Modell-ID**: Die ID des Modells, das erstellt und trainiert wurde. Jeder Trainingsaufruf erstellt ein neues Modell mit eigener ID. Kopieren Sie diese Zeichenfolge an einen sicheren Speicherort. Sie werden sie benötigen, wenn Sie Vorhersageaufrufe über die [REST-API](./try-sdk-rest-api.md?pivots=programming-language-rest-api) oder [Clientbibliothek](./try-sdk-rest-api.md) ausführen möchten.
 * **Durchschnittliche Genauigkeit**: Die durchschnittliche Genauigkeit des Modells. Sie können die Modellgenauigkeit verbessern, indem Sie weitere Formulare beschriften und erneut ein Training ausführen, um ein neues Modell zu erstellen. Es wird empfohlen, zunächst fünf Formulare zu beschriften sowie die Ergebnisse zu analysieren und zu testen, um dann bei Bedarf weitere Formulare hinzuzufügen.
 * Die Liste der Beschriftungen und die geschätzte Genauigkeit für jede Beschriftung.
 
@@ -232,4 +232,4 @@ Wählen Sie links das Symbol für die Analyse (Glühbirne) aus, um Ihr Modell zu
 In dieser Schnellstartanleitung haben Sie erfahren, wie Sie das Beispieltool für die Formularerkennung verwenden, um ein benutzerdefiniertes Modell zu gestalten, vorzudefinieren und zu trainieren sowie ein benutzerdefiniertes Formular mit manuell beschrifteten Daten zu analysieren. Jetzt können Sie das Clientbibliotheks-SDK oder die REST-API ausprobieren, um die Formularerkennung zu verwenden.
 
 > [!div class="nextstepaction"]
-> [Schnellstart: Untersuchen des Clientbibliotheks-SDKs und der REST-API der Formularerkennung](client-library.md)
+> [Schnellstart: Untersuchen des Clientbibliotheks-SDKs und der REST-API der Formularerkennung](./try-sdk-rest-api.md)

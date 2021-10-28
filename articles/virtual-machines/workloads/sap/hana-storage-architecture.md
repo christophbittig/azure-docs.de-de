@@ -14,18 +14,18 @@ ms.workload: infrastructure
 ms.date: 07/22/2021
 ms.author: madhukan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 15ce4cabc1a9bc44fcd6cc00a365007900ff4ebe
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 5f0d27c03d32b748473e9b1d32afff051eed0cf7
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122968538"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130222948"
 ---
 # <a name="sap-hana-large-instances-storage-architecture"></a>SAP HANA-Speicherarchitektur (große Instanzen)
 
 In diesem Artikel wird die Speicherarchitektur für die Bereitstellung von SAP HANA in Azure (große Instanzen) (auch als BareMetal-Infrastruktur bezeichnet) behandelt. 
 
-Das Speicherlayout für SAP HANA in Azure (große Instanzen) wird von SAP HANA nach dem klassischen Bereitstellungsmodell anhand der von SAP empfohlenen Richtlinien konfiguriert. Weitere Informationen zu den Richtlinien finden Sie unter [SAP HANA-Speicheranforderungen](https://blogs.saphana.com/wp-content/uploads/2015/02/Storage-Whitepaper-2-54.pdf).
+Das Speicherlayout für SAP HANA in Azure (große Instanzen) wird von SAP HANA nach dem klassischen Bereitstellungsmodell anhand der von SAP empfohlenen Richtlinien konfiguriert. Weitere Informationen zu den Richtlinien finden Sie unter [SAP HANA-Speicheranforderungen](https://archive.sap.com/kmuuid2/70c8e423-c8aa-3210-3fae-e043f5c1ca92/SAP%20HANA%20TDI%20-%20Storage%20Requirements.pdf).
 
 Bei HANA (große Instanzen) der Typ-I-Klasse ist das Arbeitsspeichervolume viermal so groß wie das Speichervolume. HANA (große Instanzen) der Typ-II-Klasse verfügen hingegen über ein Volume, das zum Speichern von HANA-Transaktionsprotokollsicherungen vorgesehen ist. Weitere Informationen finden Sie unter [Installieren und Konfigurieren von SAP HANA in Azure (große Instanzen)](hana-installation.md).
 

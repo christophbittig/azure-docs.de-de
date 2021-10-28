@@ -9,18 +9,18 @@ ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 ms.subservice: pstn
-ms.openlocfilehash: 66e39f0ec9beea775c18f0c1619cc8517e9b80a8
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 9cda3c4f91c3e70d19c33d4fa06343d26f6ff6ee
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128609648"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130218994"
 ---
 # <a name="telephony-concepts"></a>Telefoniekonzepte
 
 [!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
-Mithilfe der Azure Communication Services Calling SDKs können Sie Ihren Anwendungen Telefonie- und Public Switched Telephone Network-Zugriff hinzufügen. Auf dieser Seite werden wichtige Telefoniekonzepte und -funktionen zusammengefasst. Weitere Informationen zu bestimmten SDK-Sprachen und -Funktionen finden Sie [hier](../../quickstarts/voice-video-calling/calling-client-samples.md).
+Mithilfe der Azure Communication Services Calling SDKs können Sie Ihren Anwendungen Telefonie- und Public Switched Telephone Network-Zugriff hinzufügen. Auf dieser Seite werden wichtige Telefoniekonzepte und -funktionen zusammengefasst. Weitere Informationen zu bestimmten SDK-Sprachen und -Funktionen finden Sie [hier](../../quickstarts/voice-video-calling/getting-started-with-calling.md).
 
 ## <a name="overview-of-telephony"></a>Übersicht über Telefonie
 Wenn Ihre Benutzer mit einer herkömmlichen Telefonnummer interagieren, werden Anrufe als Sprachanrufe über das Telefonfestnetz (Public Switched Telephone Network, PSTN) abgewickelt. Für aus- und eingehende PSTN-Anrufe müssen Ihrer Azure Communication Services-Ressource Telefoniefunktionen hinzugefügt werden. In diesem Fall wird für Signale und Medien eine Kombination aus IP- und PSTN-basierten Technologien verwendet, um die Verbindung zwischen den Benutzern herzustellen. Communication Services bietet zwei Möglichkeiten, um das Telefonfestnetz zu erreichen: Sprachanrufe (Festnetz) und direktes Azure-Routing.

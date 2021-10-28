@@ -10,12 +10,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - contperf-fy21q1
-ms.openlocfilehash: 85293f72525426cecebc75495f87044c7546d092
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 3bef3700cd6bdaf000f222736b63e8fda24e1602
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123471748"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130226203"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>Konfigurieren eines IoT Edge-Geräts für die Kommunikation über einen Proxyserver
 
@@ -67,7 +67,7 @@ Ob Ihr IoT Edge-Gerät unter Windows oder Linux ausgeführt wird, Sie müssen ü
 
 ### <a name="linux-devices"></a>Linux-Geräte
 
-Wenn Sie IoT Edge-Runtime auf einem Linux-Gerät installieren, konfigurieren Sie den Paket-Manager so, dass er über den Proxyserver auf das Installationspaket zugreift. Beispiel: [Richten Sie „apt-get“ zur Verwendung eines http-Proxys ein](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy). Nachdem Sie Ihren Paket-Manager konfiguriert haben, befolgen Sie die Anweisungen unter [Installieren oder Deinstallieren von Azure IoT Edge-Runtime](how-to-install-iot-edge.md) wie gewohnt.
+Wenn Sie IoT Edge-Runtime auf einem Linux-Gerät installieren, konfigurieren Sie den Paket-Manager so, dass er über den Proxyserver auf das Installationspaket zugreift. Beispiel: [Richten Sie „apt-get“ zur Verwendung eines http-Proxys ein](https://help.ubuntu.com/community/AptGet/Howto/#Setting_up_apt-get_to_use_a_http-proxy). Nachdem Sie Ihren Paket-Manager konfiguriert haben, befolgen Sie die Anweisungen unter [Installieren oder Deinstallieren von Azure IoT Edge-Runtime](how-to-provision-single-device-linux-symmetric.md) wie gewohnt.
 
 ### <a name="windows-devices-using-iot-edge-for-linux-on-windows"></a>Windows-Geräte mit IoT Edge für Linux unter Windows
 

@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-insights
 ms.topic: how-to
 ms.date: 09/27/2021
-ms.openlocfilehash: cf3540f439396f3e4308eae10077693de440827f
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 06a48cd4f1a0aa0d95f1c4b5fa0faf4d7ada2ab3
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129213964"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130238039"
 ---
 # <a name="sensitivity-label-insights-about-your-data-in-azure-purview"></a>Vertraulichkeitsbezeichnungs-Erkenntnisse zu Ihren Daten in Azure Purview
 
@@ -43,7 +43,7 @@ Stellen Sie vor dem Beginn mit Purview-Erkenntnissen sicher, dass Sie die folgen
 
 - [Erweitern der Microsoft 365-Vertraulichkeitsbezeichnungen auf Objekte (Assets) in Azure Purview](create-sensitivity-label.md) und Erstellen oder Auswählen der Bezeichnungen, die Sie auf Ihre Daten anwenden möchten
 
-- Einrichten und Abschließen einer Überprüfung der Testdaten in den einzelnen Datenquellen. Weitere Informationen finden Sie unter [Verwalten von Datenquellen in Azure Purview](manage-data-sources.md) und [Erstellen eines Überprüfungsregelsatzes](create-a-scan-rule-set.md).
+- Einrichten und Abschließen einer Überprüfung der Testdaten in den einzelnen Datenquellen. Weitere Informationen finden Sie unter [Verwalten von Datenquellen in Azure Purview](manage-data-sources.md) und [Erstellen eines Scan-Regelsatzes](create-a-scan-rule-set.md).
 
 - Anmeldung bei Purview mit einem Konto mit der Rolle [„Datenleser“ oder „Datenkurator“](catalog-permissions.md#roles)
 
@@ -130,4 +130,3 @@ Erfahren Sie mehr über diese Azure Purview-Erkenntnisberichte:
 - [Glossarerkenntnisse](glossary-insights.md)
 - [Überprüfungserkenntnisse](scan-insights.md)
 - [Klassifizierungs-Erkenntnisse](./classification-insights.md)
-- [Dateierweiterungs-Erkenntnisse](file-extension-insights.md)

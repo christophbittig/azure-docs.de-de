@@ -15,12 +15,12 @@ ms.date: 02/16/2017
 ms.author: rsetlem
 ms.custom: seo-lt-2019
 ms.reviewer: mathoma
-ms.openlocfilehash: 5a072b5009341809af2b209c808e6164ba0a9be3
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: d0489295cbc161f98ebe036ff79bdc2f2861877a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130166206"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130250367"
 ---
 # <a name="configure-a-load-balancer-for-a-sql-server-always-on-availability-group-in-azure-virtual-machines"></a>Konfigurieren eines Load Balancers für eine SQL Server-AlwaysOn-Verfügbarkeitsgruppe auf virtuellen Azure-Computern
 
@@ -215,7 +215,7 @@ Die sqlcmd-Verbindung wird automatisch mit der SQL Server-Instanz hergestellt, d
 
 ## <a name="create-an-ip-address-for-an-additional-availability-group"></a>Erstellen einer IP-Adresse für eine zusätzliche Verfügbarkeitsgruppe
 
-Jede Verfügbarkeitsgruppe verwendet einen separaten Listener. Jeder Listener ist mit einer eigenen IP-Adresse ausgestattet. Verwenden Sie das gleiche Lastenausgleichsmodul, um die IP-Adresse für zusätzliche Listener zu speichern. Fügen Sie dem Back-End-Pool des Lastenausgleichs nur die primäre IP-Adresse des virtuellen Computers hinzu, da die [IP-Adresse des sekundären virtuellen Computers keine Floating-IP-Adresse unterstützt](/azure/load-balancer/load-balancer-floating-ip).
+Jede Verfügbarkeitsgruppe verwendet einen separaten Listener. Jeder Listener ist mit einer eigenen IP-Adresse ausgestattet. Verwenden Sie das gleiche Lastenausgleichsmodul, um die IP-Adresse für zusätzliche Listener zu speichern. Fügen Sie dem Back-End-Pool des Lastenausgleichs nur die primäre IP-Adresse des virtuellen Computers hinzu, da die [IP-Adresse des sekundären virtuellen Computers keine Floating-IP-Adresse unterstützt](../../../load-balancer/load-balancer-floating-ip.md).
 
 Um mit dem Azure-Portal eine IP-Adresse einem Lastenausgleichsmodul hinzufügen, gehen Sie folgendermaßen vor:
 

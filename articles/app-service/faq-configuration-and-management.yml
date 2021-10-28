@@ -11,12 +11,12 @@ metadata:
   ms.date: 10/30/2018
   ms.author: genli
   ms.custom: devx-track-azurepowershell
-  ms.openlocfilehash: 825840dfe237d58f281db5e26b6090c153707195
-  ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+  ms.openlocfilehash: e6b214c5ead4be666b96992aec4c582a23e5c635
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/14/2021
-  ms.locfileid: "129992836"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130231678"
 title: Häufig gestellte Fragen zur Konfiguration und Verwaltung von Web-Apps in Azure
 summary: >
   In diesem Artikel erhalten Sie Antworten auf häufig gestellte Fragen zu Konfigurations- und Verwaltungsproblemen bei [Azure App Service-Web-Apps](https://azure.microsoft.com/services/app-service/web/).
@@ -244,7 +244,7 @@ sections:
       Derzeit sind keine Punkt-zu-Standort-VPN-Verbindungen mit einem virtuellen Netzwerk möglich, das mit ExpressRoute verbunden ist. Eine Punkt-zu-Standort-VPN- und eine ExpressRoute-Verbindung dürfen für ein virtuelles Netzwerk nicht gleichzeitig vorhanden sein. Weitere Informationen finden Sie unter [ExpressRoute- und Standort-zu-Standort-Verbindungen: Grenzwerte und Einschränkungen](../expressroute/expressroute-howto-coexist-classic.md#limits-and-limitations).
   - question: >
       Wie verbinde ich eine App Service-Web-App mit einem virtuellen Netzwerk, das ein statisches (richtlinienbasiertes) Routinggateway hat?
-    answer: "Derzeit wird das Verbinden einer App Service-Web-App mit einem virtuellen Netzwerk, das ein statisches (richtlinienbasiertes) Routinggateway hat, nicht unterstützt. Wenn Ihr virtuelles Zielnetzwerk bereits vorhanden ist, muss es über ein Punkt-zu-Standort-VPN mit einem dynamischen Routinggateway aktiviert werden, bevor es mit einer App verbunden werden kann. Wenn Ihr Gateway auf statisches Routing festgelegt ist, kann ein Punkt-zu-Standort-VPN nicht aktiviert werden. \n\nWeitere Informationen finden Sie unter [Integrieren einer App in ein virtuelles Azure-Netzwerk](web-sites-integrate-with-vnet.md).\n"
+    answer: "Derzeit wird das Verbinden einer App Service-Web-App mit einem virtuellen Netzwerk, das ein statisches (richtlinienbasiertes) Routinggateway hat, nicht unterstützt. Wenn Ihr virtuelles Zielnetzwerk bereits vorhanden ist, muss es über ein Punkt-zu-Standort-VPN mit einem dynamischen Routinggateway aktiviert werden, bevor es mit einer App verbunden werden kann. Wenn Ihr Gateway auf statisches Routing festgelegt ist, kann ein Punkt-zu-Standort-VPN nicht aktiviert werden. \n\nWeitere Informationen finden Sie unter [Integrieren einer App in ein virtuelles Azure-Netzwerk](./overview-vnet-integration.md).\n"
   - question: >
       Warum treten Zeitüberschreitungen beim Versuch auf, eine App Service-Umgebung erstellen?
     answer: >

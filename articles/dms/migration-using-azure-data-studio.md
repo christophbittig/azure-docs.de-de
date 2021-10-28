@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/01/2021
 ms.custom: references_regions
-ms.openlocfilehash: 7a6b1099ea81c7a4a50692496ee044fe4a72bd24
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 832ae975a19fa7765666acd791c7dfec05a55c3c
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124742954"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130235032"
 ---
 # <a name="migrate-databases-with-azure-sql-migration-extension-for-azure-data-studio-preview"></a>Migrieren von Datenbanken mit der Azure SQL-Migrationserweiterung für Azure Data Studio (Vorschau)
 
@@ -83,7 +83,7 @@ Folgende Voraussetzungen von Azure Database Migration Service gelten für alle u
     > Wenn Ihre Datenbanksicherungsdateien bereits in einem Azure-Speicherkonto bereitgestellt werden, ist während der Migration keine selbstgehostete Integration Runtime erforderlich.
 
 * Stellen Sie bei Verwendung der selbstgehosteten Integration Runtime sicher, dass der Computer, auf dem die Runtime installiert ist, eine Verbindung mit der SQL Server-Quellinstanz und der Netzwerkdateifreigabe herstellen kann, auf der sich Sicherungsdateien befinden. Der ausgehende Port 445 muss aktiviert sein, um Zugriff auf die Netzwerkdateifreigabe zu ermöglichen.
-* Wenn Sie Azure Database Migration Service zum ersten Mal verwenden, stellen Sie sicher, dass der Ressourcenanbieter Microsoft.DataMigration in Ihrem Abonnement registriert ist. Sie können die Schritte zum [Registrieren des Ressourcenanbieters](/azure/dms/quickstart-create-data-migration-service-portal#register-the-resource-provider) ausführen.
+* Wenn Sie Azure Database Migration Service zum ersten Mal verwenden, stellen Sie sicher, dass der Ressourcenanbieter Microsoft.DataMigration in Ihrem Abonnement registriert ist. Sie können die Schritte zum [Registrieren des Ressourcenanbieters](./quickstart-create-data-migration-service-portal.md#register-the-resource-provider) ausführen.
 
 ### <a name="recommendations-for-using-self-hosted-integration-runtime-for-database-migrations"></a>Empfehlungen für die Verwendung der selbstgehosteten Integration Runtime für Datenbankmigrationen
 - Verwenden Sie eine einzelne selbstgehostete Integration Runtime für mehrere SQL Server-Quelldatenbanken.

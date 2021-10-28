@@ -6,16 +6,16 @@ ms.subservice: process-automation
 ms.date: 09/23/2021
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 61ff25cd9878ee94ce0ba6db7b2c4e4ac8e649de
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 8dd1c0269b9211900a5532e7a0d9e7d119830f68
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129057755"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130265629"
 ---
 # <a name="deploy-an-azure-resource-manager-template-in-an-automation-powershell-runbook"></a>Bereitstellen einer Azure Resource Manager-Vorlage in einem Automation-PowerShell-Runbook
 
-Sie können ein [Automation-PowerShell-Runbook](./learn/automation-tutorial-runbook-textual-powershell.md), das eine Azure-Ressource bereitstellt, mithilfe einer [Azure Resource Manager-Vorlage](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md) schreiben. Vorlagen ermöglichen Ihnen das Automatisieren der Bereitstellung Ihrer Azure-Ressourcen mithilfe von Azure Automation. Sie können Ihre Resource Manager-Vorlagen an einem zentralen, sicheren Ort verwalten, z. B. in Azure Storage.
+Sie können ein [Automation-PowerShell-Runbook](./learn/powershell-runbook-managed-identity.md), das eine Azure-Ressource bereitstellt, mithilfe einer [Azure Resource Manager-Vorlage](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md) schreiben. Vorlagen ermöglichen Ihnen das Automatisieren der Bereitstellung Ihrer Azure-Ressourcen mithilfe von Azure Automation. Sie können Ihre Resource Manager-Vorlagen an einem zentralen, sicheren Ort verwalten, z. B. in Azure Storage.
 
 In diesem Artikel erstellen wir ein PowerShell-Runbook, für das eine in [Azure Storage](../storage/common/storage-introduction.md) gespeicherte Resource Manager-Vorlage verwendet wird, um ein neues Azure Storage-Konto bereitzustellen.
 

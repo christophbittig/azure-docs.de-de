@@ -7,12 +7,12 @@ ms.date: 10/08/2021
 ms.author: helohr
 ms.custom: devx-track-azurepowershell
 manager: femila
-ms.openlocfilehash: c81fb82695d534864fa96d8a5bfff9b3cebd4a4e
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 29a86a476737df6f5a2787748c5551953984f6b6
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129705308"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130261593"
 ---
 # <a name="tutorial-create-a-host-pool-to-validate-service-updates"></a>Tutorial: Erstellen eines Hostpools zum Überprüfen von Dienstupdates
 
@@ -23,7 +23,7 @@ Hostpools sind eine Sammlung identischer virtueller Computer innerhalb von Azure
 
 Um sicherzustellen, dass Ihre Apps mit den neuesten Updates funktionieren, sollte der Überprüfungshostpool Hostpools in Ihrer Nicht-Überprüfungsumgebung so ähnlich wie möglich sein. Benutzer sollten so häufig eine Verbindung mit dem Überprüfungshostpool herstellen wie mit dem Standardhostpool. Wenn Sie automatisierte Tests mit Ihrem Hostpool durchführen, sollten Sie auch beim Überprüfungshostpool automatisierte Tests durchführen.
 
-Sie können Probleme beim Überprüfungshostpool entweder mit der [Diagnosefunktion](diagnostics-role-service.md) oder den [Artikeln zur Problembehandlung bei Azure Virtual Desktop](troubleshoot-set-up-overview.md) debuggen.
+Sie können Probleme beim Überprüfungshostpool entweder mit der [Diagnosefunktion](./troubleshoot-set-up-overview.md) oder den [Artikeln zur Problembehandlung bei Azure Virtual Desktop](troubleshoot-set-up-overview.md) debuggen.
 
 >[!NOTE]
 > Wir empfehlen, dass Sie den Überprüfungshostpool eingerichtet lassen, um alle zukünftigen Updates zu testen.

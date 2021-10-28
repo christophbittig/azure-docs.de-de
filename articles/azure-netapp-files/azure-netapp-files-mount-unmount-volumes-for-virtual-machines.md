@@ -7,12 +7,12 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.topic: how-to
 ms.date: 05/17/2021
-ms.openlocfilehash: 2da352a10f5ff9bacdfb28de8752e5ffefa3fd82
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 78932885ee7c1ec3650de08efe340e998a54acf7
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110068192"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130240032"
 ---
 # <a name="mount-or-unmount-a-volume-for-windows-or-linux-virtual-machines"></a>Einbinden oder Aufheben der Einbindung eines Volumes auf virtuellen Windows- oder Linux-Computern 
 
@@ -60,7 +60,7 @@ Volumes für virtuelle Windows- oder Linux-Computer lassen sich nach Bedarf einb
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Konfigurieren der NFSv4.1-Fehlerdomäne für Azure NetApp Files](azure-netapp-files-configure-nfsv41-domain.md)
-* [Häufig gestellte Fragen zu NFS](./azure-netapp-files-faqs.md#nfs-faqs)
+* [Häufig gestellte Fragen zu NFS](faq-nfs.md)
 * [Network File System (Übersicht)](/windows-server/storage/nfs/nfs-overview)
 * [Einbinden eines NFS-Kerberos-Volumes](configure-kerberos-encryption.md#kerberos_mount)
 * [Konfigurieren von zwei VMs mit demselben Hostnamen für den Zugriff auf NFSv4.1-Volumes](configure-nfs-clients.md#configure-two-vms-with-the-same-hostname-to-access-nfsv41-volumes) 

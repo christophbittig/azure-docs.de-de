@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 08/08/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 1d84de13820b23b52c09d3333799f45fd342763f
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: c0a5f441b27d379ff94db41fabfdf398a19ca667
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123260344"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130254663"
 ---
 # <a name="tutorial-load-balance-multiple-ip-configurations-using-the-azure-portal"></a>Tutorial: Lastenausgleich von Konfigurationen mit mehreren IP-Adressen über das Azure-Portal 
 
@@ -95,7 +95,7 @@ In diesem Abschnitt erstellen Sie für Ressourcen im virtuellen Netzwerk ein NAT
 
 1. Geben Sie am oberen Rand des Portals den Suchbegriff **NAT-Gateway** in das Suchfeld ein. Wählen Sie in den Suchergebnissen **NAT-Gateways** aus.
 
-2. Wählen Sie unter **NAT-Gateways** die Option **+ Erstellen** aus.
+2. Wählen Sie unter **NAT-Gateways** die Option **+ Erstellen** aus.
 
 3. Geben Sie unter **Gateway für die Netzwerkadressübersetzung (NAT) erstellen** die folgenden Informationen ein, oder wählen Sie sie aus:
 
@@ -123,7 +123,7 @@ In diesem Abschnitt erstellen Sie für Ressourcen im virtuellen Netzwerk ein NAT
 
 10. Wählen Sie unter **Subnetzname** die Option **myBackendSubnet** aus.
 
-11. Wählen Sie unten auf der Seite die blaue Schaltfläche **Überprüfen und erstellen** aus, oder wählen Sie die Registerkarte **Überprüfen + erstellen** aus.
+11. Wählen Sie unten auf der Seite die blaue Schaltfläche **Überprüfen + erstellen** aus, oder wählen Sie die Registerkarte **Überprüfen + erstellen** aus.
 
 12. Klicken Sie auf **Erstellen**.
 
@@ -445,7 +445,7 @@ Während der Erstellung des Lastenausgleichs konfigurieren Sie Folgendes:
 8. Wählen Sie für den **IP-Typ** die Option **IP-Adresse** aus.
 
     > [!NOTE]
-    > Weitere Informationen zu IP-Präfixen finden Sie unter [Präfix für öffentliche IP-Adressen](../virtual-network/public-ip-address-prefix.md).
+    > Weitere Informationen zu IP-Präfixen finden Sie unter [Präfix für öffentliche IP-Adressen](../virtual-network/ip-services/public-ip-address-prefix.md).
 
 9. Wählen Sie unter **Öffentliche IP-Adresse** die Option **Neu erstellen** aus.
 
@@ -516,7 +516,7 @@ Während der Erstellung des Lastenausgleichs konfigurieren Sie Folgendes:
 
 21. Wählen Sie **Hinzufügen**.
 
-22. Klicken Sie unten auf der Seite auf die Schaltfläche **Weiter: Regeln für eingehenden Datenverkehr**.
+22. Wählen Sie unten auf der Seite die Schaltfläche **Weiter: Regeln für eingehenden Datenverkehr** aus.
 
 23. Wählen Sie unter **Lastenausgleichsregel** auf der Registerkarte **Regeln für eingehenden Datenverkehr** die Option **+ Lastenausgleichsregel hinzufügen** aus.
 

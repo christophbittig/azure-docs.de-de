@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/17/2021
 ms.author: ryanwi
 ms.reviewer: arcrowe
-ms.openlocfilehash: 35f7694dbdf3d7c4f3065f19dc89bac7d7b1915e
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: f0594994593dbb9505ca7fea24a11a5c5bc7a4eb
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129368073"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130262791"
 ---
 # <a name="throttling-and-service-limits-to-consider-for-testing"></a>Bei Tests zu berücksichtigende Drosselungsgrenzwerte und Diensteinschränkungen
 Als Entwickler möchten Sie Ihre Anwendung testen, bevor Sie sie für die Produktion freigeben. Beim Testen von Anwendungen, die durch die Microsoft Identity Platform geschützt sind, sollten Sie eine Azure AD-Umgebung (Azure Active Directory) und einen Azure AD-Mandanten zur Verwendung für Tests einrichten.  
@@ -29,7 +29,7 @@ Damit eine zuverlässige Nutzung von Diensten durch alle Kunden gewährleistet i
 Azure AD, Microsoft Graph und andere Azure-Dienste beschränken auch die Anzahl gleichzeitiger Aufrufe eines Diensts oder die Computelast pro Kunde, um eine übermäßige Nutzung von Ressourcen zu verhindern. Dies wird als Drosselung bezeichnet und stellt sicher, dass Azure-Dienste die Nutzung und eingehende Anforderungen ohne Dienstausfälle bewältigen können. Eine Drosselung kann auf Anwendungs-, Mandanten- oder der gesamten Dienstebene erfolgen. Eine Drosselung tritt häufig auf, wenn eine Anwendung über eine große Anzahl von Anforderungen innerhalb eines Mandanten oder mandantenübergreifend verfügt.  Zur Laufzeit kann Ihre Anwendung Azure AD-Verzeichnisobjekte über Microsoft Graph als Teil ihrer Geschäftslogik lesen oder aktualisieren. Dies umfasst beispielsweise das Lesen oder Festlegen von Benutzerattributen, Aktualisieren des Kalenders eines Benutzers oder Senden von E-Mails im Namen des Benutzers.  Während der Ausführung kann Ihre Anwendung auch Azure-Ressourcen bereitstellen, darauf zugreifen, sie aktualisieren und löschen. Während der Tests könnte Ihre Anwendung die Laufzeitdrosselungsgrenzen und die zuvor erwähnten Diensteinschränkungen beim Bereitstellen von Ressourcen oder Verzeichnisobjekten erreichen.
 
 ## <a name="azure-ad-service-limits-relevant-to-testing"></a>Für Tests relevante Azure AD-Diensteinschränkungen
-Allgemeine Informationen zu Azure AD-Nutzungsbeschränkungen und Diensteinschränkungen finden Sie [hier](/azure/active-directory/enterprise-users/directory-service-limits-restrictions).  Allgemeine Informationen zu Einschränkungen für Azure-Abonnements und -Dienste, Kontingenten und Beschränkungen finden Sie [hier](/azure/azure-resource-manager/management/azure-subscription-service-limits).
+Allgemeine Informationen zu Azure AD-Nutzungsbeschränkungen und Diensteinschränkungen finden Sie [hier](../enterprise-users/directory-service-limits-restrictions.md).  Allgemeine Informationen zu Einschränkungen für Azure-Abonnements und -Dienste, Kontingenten und Beschränkungen finden Sie [hier](../../azure-resource-manager/management/azure-subscription-service-limits.md).
 
 In der folgenden Tabelle sind Azure AD-Diensteinschränkungen aufgeführt, die beim Einrichten einer Testumgebung oder beim Ausführen von Tests zu berücksichtigen sind. 
 
@@ -69,4 +69,3 @@ Wenn Sie einen Drosselungsgrenzwert überschreiten, erhalten Sie den HTTP-Status
 
 ## <a name="next-steps"></a>Nächste Schritte
 Hier erfahren Sie, wie Sie eine [Testumgebung einrichten](test-setup-environment.md).
-

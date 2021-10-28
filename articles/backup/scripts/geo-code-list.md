@@ -3,12 +3,12 @@ title: Geocodezuordnung
 description: Hier erfahren Sie mehr über Geocodes, die den jeweiligen Regionen zugeordnet sind.
 ms.topic: sample
 ms.date: 09/17/2021
-ms.openlocfilehash: a214d45a974308422cb57840c3eb04d55c53c5b2
-ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
+ms.openlocfilehash: 1192336476d25f5c0cc180e67d22c2db18015b36
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128709107"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130264558"
 ---
 # <a name="geo-code-mapping"></a>Geocodezuordnung
 
@@ -152,4 +152,4 @@ Dieses XML-Beispiel bietet einen Einblick in die Geocodes, die den jeweiligen Re
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Hier](/azure/backup/private-endpoints) erfahren Sie, wie Sie mithilfe von Geocodes DNS-Zonen für private Azure Backup-Endpunkte erstellen und hinzufügen.
+[Hier](../private-endpoints.md) erfahren Sie, wie Sie mithilfe von Geocodes DNS-Zonen für private Azure Backup-Endpunkte erstellen und hinzufügen.

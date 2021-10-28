@@ -12,12 +12,12 @@ author: sasapopo
 ms.author: sasapopo
 ms.reviewer: mathoma
 ms.date: 10/08/2020
-ms.openlocfilehash: 4a3e96c33a0bef8e533b4f7f563c701a2c0a8044
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 454b5c20c7e1e28c87e2be38662c12055f14079e
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130042199"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130226809"
 ---
 # <a name="use-server-trust-groups-to-set-up-and-manage-trust-between-sql-managed-instances"></a>Sie verwenden Serververtrauensgruppen, um die Vertrauensstellung zwischen Instanzen von SQL Managed Instance einzurichten und zu verwalten.
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -66,7 +66,7 @@ Im folgenden Abschnitt wird das Löschen einer Serververtrauensgruppe beschriebe
    :::image type="content" source="./media/server-trust-group-overview/server-trust-group-manage-delete-confirm.png" alt-text="Bestätigen des Löschens der Serververtrauensgruppe":::
 
 > [!NOTE]
-> Durch das Löschen der Serververtrauensgruppe wird die Vertrauensstellung zwischen den beiden verwalteten Instanzen möglicherweise nicht sofort aufgehoben. Sie können das Aufheben von Vertrauensstellungen erzwingen, indem Sie ein [Failover](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover) der verwalteten Instanzen auslösen. Aktuelle Informationen hierzu finden Sie unter [Bekannte Probleme](../database/doc-changes-updates-release-notes.md?tabs=managed-instance#known-issues).
+> Durch das Löschen der Serververtrauensgruppe wird die Vertrauensstellung zwischen den beiden verwalteten Instanzen möglicherweise nicht sofort aufgehoben. Sie können das Aufheben von Vertrauensstellungen erzwingen, indem Sie ein [Failover](/powershell/module/az.sql/Invoke-AzSqlInstanceFailover) der verwalteten Instanzen auslösen. Aktuelle Informationen hierzu finden Sie unter [Bekannte Probleme](../database/doc-changes-updates-release-notes-whats-new.md?tabs=managed-instance).
 
 ## <a name="limitations"></a>Einschränkungen
 

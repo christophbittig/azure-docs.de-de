@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: ba229ed81cd5ece4a6013654a11c21740c00c844
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 9f7e3aaff497968419285464f361a1d3ad237d3c
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123254066"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130263209"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Übersicht über Freigabemomentaufnahmen für Azure Files
 Azure Files bietet die Möglichkeit, Freigabemomentaufnahmen von Dateifreigaben zu erstellen. Freigabemomentaufnahmen erfassen den Freigabestatus zum jeweiligen Zeitpunkt. In diesem Artikel erfahren Sie, welche Möglichkeiten Freigabemomentaufnahmen bieten und wie Sie in Ihrem speziellen Fall von ihnen profitieren können.
@@ -100,7 +100,7 @@ Freigabemomentaufnahmen bieten nur Schutz auf der Dateiebene. Freigabemomentaufn
 ## <a name="next-steps"></a>Nächste Schritte
 - Verwenden von Azure-Dateifreigabemomentaufnahmen:
     - [Informationen zum Sichern von Azure-Dateifreigaben](../../backup/azure-file-share-backup-overview.md)
-    - [PowerShell](storage-how-to-use-files-powershell.md)
-    - [BEFEHLSZEILENSCHNITTSTELLE (CLI)](storage-how-to-use-files-cli.md)
+    - [PowerShell](./storage-how-to-use-files-portal.md)
+    - [BEFEHLSZEILENSCHNITTSTELLE (CLI)](./storage-how-to-use-files-portal.md)
     - [Windows](storage-how-to-use-files-windows.md#accessing-share-snapshots-from-windows)
     - [Häufig gestellte Fragen zu Azure Files](storage-files-faq.md#share-snapshots)

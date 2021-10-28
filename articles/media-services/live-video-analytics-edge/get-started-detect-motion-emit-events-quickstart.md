@@ -3,12 +3,12 @@ title: Erste Schritte mit Azure Live Video Analytics in IoT Edge
 description: In dieser Schnellstartanleitung wird veranschaulicht, wie Sie in die Nutzung von Azure Live Video Analytics in IoT Edge einsteigen. Es wird beschrieben, wie Sie in einem Livevideostream Bewegung erkennen.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 06a84a53db4e981802ad3de930288b6aa467f563
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 1d473824e7fd9a840e2ec349efb9058142e8f356
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110371467"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130217882"
 ---
 # <a name="quickstart-get-started-with-live-video-analytics-on-iot-edge"></a>Schnellstart: Erste Schritte mit Live Video Analytics in IoT Edge
 
@@ -45,7 +45,7 @@ Für dieses Tutorial werden die folgenden Azure-Ressourcen benötigt:
 * IoT Hub
 * Speicherkonto
 * Azure Media Services-Konto
-* Ein virtueller Linux-Computer in Azure mit installierter [IoT Edge-Runtime](../../iot-edge/how-to-install-iot-edge.md)
+* Ein virtueller Linux-Computer in Azure mit installierter [IoT Edge-Runtime](../../iot-edge/how-to-provision-single-device-linux-symmetric.md)
 
 Für diese Schnellstartanleitung wird die Verwendung des [Setupskripts für Live Video Analytics-Ressourcen](https://github.com/Azure/live-video-analytics/tree/master/edge/setup) zum Bereitstellen der erforderlichen Ressourcen in Ihrem Azure-Abonnement empfohlen. Gehen Sie dazu folgendermaßen vor:
 

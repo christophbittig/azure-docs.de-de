@@ -3,12 +3,12 @@ title: Überwachen von Azure-Diensten und -Anwendungen mit Grafana
 description: Es wird beschrieben, wie Sie Azure Monitor- und Application Insights-Daten weiterleiten, um sie in Grafana anzuzeigen.
 ms.topic: conceptual
 ms.date: 10/10/2021
-ms.openlocfilehash: 691ba341369778692c92fec8ffc47cd60fac3348
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 612a65af3cfe83b96e2604d85348be03ff2b703a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130002755"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130252780"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>Überwachen Ihrer Azure-Dienste in Grafana
 Sie können Azure-Dienste und -Anwendungen mit [Grafana](https://grafana.com/) und dem darin enthaltenen [Azure Monitor-Datenquellen-Plug-In](https://grafana.com/docs/grafana/latest/datasources/azuremonitor/) überwachen. Das Plug-In ruft Daten aus drei Azure-Diensten ab:
@@ -72,7 +72,7 @@ Wenn Ihre Grafana-Instanz auf einer Azure-VM mit aktivierter verwalteter Identit
 ### <a name="use-managed-identity"></a>Verwenden der verwalteten Identität
 
 1. Aktivieren Sie die verwaltete Identität auf Ihrer VM, und ändern Sie die Unterstützungseinstellung für die verwaltete Identität des Grafana-Servers in TRUE.
-    * Der verwalteten Identität Ihrer Host-VM muss die Rolle [Überwachungsleser](/azure/azure-monitor/roles-permissions-security) für das Abonnement, die Ressourcengruppe oder die Ressourcen zugewiesen sein, die Sie in Grafana visualisieren.
+    * Der verwalteten Identität Ihrer Host-VM muss die Rolle [Überwachungsleser](../roles-permissions-security.md) für das Abonnement, die Ressourcengruppe oder die Ressourcen zugewiesen sein, die Sie in Grafana visualisieren.
     * Darüber hinaus müssen Sie die Einstellung „managed_identity_enabled = true“ in der Grafana-Serverkonfiguration aktualisieren. Weitere Informationen finden Sie unter [Grafana-Konfiguration](https://grafana.com/docs/grafana/latest/administration/configuration/). Sobald beide Schritte abgeschlossen sind, können Sie die Einstellungen speichern und den Zugriff testen.
 
 2. Wählen Sie **Speichern und testen** aus, und Grafana testet die Anmeldeinformationen. Es wird in etwa folgende Meldung angezeigt:  
@@ -82,8 +82,8 @@ Wenn Ihre Grafana-Instanz auf einer Azure-VM mit aktivierter verwalteter Identit
 ### <a name="or-use-app-registration"></a>Alternativ können Sie die App-Registrierung verwenden.
 
 1. Erstellen Sie einen Dienstprinzipal: Grafana verwendet zum Herstellen einer Verbindung mit Azure Monitor-APIs und zum Sammeln von Daten einen Azure Active Directory-Dienstprinzipal. Sie müssen einen Dienstprinzipal erstellen (oder einen vorhandenen Dienstprinzipal verwenden), um den Zugriff auf Ihre Azure-Ressourcen zu verwalten.
-    * Informationen zum Erstellen eines Dienstprinzipals finden Sie in [dieser Anleitung](/azure/active-directory/develop/howto-create-service-principal-portal). Kopieren und speichern Sie Ihre Mandanten-ID (Verzeichnis-ID), Client-ID (Anwendungs-ID) und den geheimen Clientschlüssel (Wert des Anwendungsschlüssels).
-    * Weitere Informationen finden Sie unter [Zuweisen einer Anwendung zu einer Rolle](/azure/active-directory/develop/howto-create-service-principal-portal#assign-a-role-to-the-application), um der Azure Active Directory-Anwendung für das Abonnement, die Ressourcengruppe oder die Ressource, die Sie überwachen möchten, die Rolle [Überwachungsleser](/azure/azure-monitor/roles-permissions-security) zuzuweisen.
+    * Informationen zum Erstellen eines Dienstprinzipals finden Sie in [dieser Anleitung](../../active-directory/develop/howto-create-service-principal-portal.md). Kopieren und speichern Sie Ihre Mandanten-ID (Verzeichnis-ID), Client-ID (Anwendungs-ID) und den geheimen Clientschlüssel (Wert des Anwendungsschlüssels).
+    * Weitere Informationen finden Sie unter [Zuweisen einer Anwendung zu einer Rolle](../../active-directory/develop/howto-create-service-principal-portal.md#assign-a-role-to-the-application), um der Azure Active Directory-Anwendung für das Abonnement, die Ressourcengruppe oder die Ressource, die Sie überwachen möchten, die Rolle [Überwachungsleser](../roles-permissions-security.md) zuzuweisen.
   
 2. Geben Sie die Verbindungsdetails an, die Sie verwenden möchten.
     * Bei der Konfiguration des Plug-Ins können Sie angeben, welche Azure-Cloud (öffentlich, Azure US Government, Azure Deutschland oder Azure China) das Plug-In überwachen soll.
@@ -133,7 +133,7 @@ Das Azure Monitor-Plug-In enthält mehrere sofort einsatzbereite Dashboards, die
 
      ![Grafana-Diagrammkonfiguration für Azure Log Analytics](./media/grafana-plugin/logs-config.png)
 
-    * Zusätzlich zu den oben gezeigten Metrik- und Protokollabfragen unterstützt das Azure Monitor-Plug-In [Azure Resource Graph](/azure/governance/resource-graph/concepts/explore-resources)-Abfragen.
+    * Zusätzlich zu den oben gezeigten Metrik- und Protokollabfragen unterstützt das Azure Monitor-Plug-In [Azure Resource Graph](../../governance/resource-graph/concepts/explore-resources.md)-Abfragen.
 
 ## <a name="advanced-grafana-features"></a>Erweiterte Features von Grafana
 

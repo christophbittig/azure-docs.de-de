@@ -3,14 +3,14 @@ title: 'Analysieren von Livevideos mit Ihrem eigenen Modell: HTTP'
 description: In dieser Schnellstartanleitung wird beschrieben, wie Sie Livevideos mit Ihrem eigenen Modell (HTTP) per Video Analyzer analysieren.
 ms.service: azure-video-analyzer
 ms.topic: quickstart
-ms.date: 06/01/2021
+ms.date: 09/10/2021
 zone_pivot_groups: video-analyzer-programming-languages
-ms.openlocfilehash: a587191a0e5fd80174b3d288d1a9a1d8fd1d2e82
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: f771bdb457fee24d11a56abc09e35a0ba8d21d06
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114605227"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130239196"
 ---
 # <a name="quickstart-analyze-live-video-with-your-own-model---http"></a>Schnellstart: Analysieren von Livevideos mit einem eigenen Modell - HTTP
 
@@ -284,4 +284,4 @@ Beachten Sie in den Meldungen die folgenden Details:
 Zusätzliches für fortgeschrittene Benutzer:
 
 - Verwenden Sie eine [IP-Kamera](https://en.wikipedia.org/wiki/IP_camera) mit RTSP-Unterstützung anstelle des RTSP-Simulators. IP-Kameras, die RTSP unterstützen, finden Sie auf der [Seite mit den ONVIF-konformen Produkten](https://www.onvif.org/conformant-products/). Suchen Sie nach Geräten, die mit den Profilen G, S oder T konform sind.
-- Verwenden Sie ein AMD64- oder x64-Linux-Gerät anstelle eines virtuellen Azure-Linux-Computers. Dieses Gerät muss sich im gleichen Netzwerk befinden wie die IP-Kamera. Sie können die Anleitungen unter [Installieren der Azure IoT Edge-Runtime unter Linux](../../iot-edge/how-to-install-iot-edge.md?view=iotedge-2018-06&preserve-view=true) befolgen. Registrieren Sie das Gerät anschließend beim Azure IoT Hub, indem Sie die Anweisungen in [Bereitstellen Ihres ersten IoT Edge-Moduls auf einem virtuellen Linux-Gerät](../../iot-edge/quickstart-linux.md?view=iotedge-2018-06&preserve-view=true) ausführen.
+- Verwenden Sie ein AMD64- oder x64-Linux-Gerät anstelle eines virtuellen Azure-Linux-Computers. Dieses Gerät muss sich im gleichen Netzwerk befinden wie die IP-Kamera. Sie können die Anleitungen unter [Installieren der Azure IoT Edge-Runtime unter Linux](../../iot-edge/how-to-provision-single-device-linux-symmetric.md?view=iotedge-2018-06&preserve-view=true) befolgen. Registrieren Sie das Gerät anschließend beim Azure IoT Hub, indem Sie die Anweisungen in [Bereitstellen Ihres ersten IoT Edge-Moduls auf einem virtuellen Linux-Gerät](../../iot-edge/quickstart-linux.md?view=iotedge-2018-06&preserve-view=true) ausführen.

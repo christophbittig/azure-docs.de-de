@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 9/18/2018
 ms.author: aanandr
 ms.custom: ''
-ms.openlocfilehash: b95b3cfdf8fea6e31015d945566803569b4ba064
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 64aa913f6c9c5041356f193dcf0c9945deb852fb
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98222920"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130257782"
 ---
 # <a name="deploy-the-azure-virtual-network-container-network-interface-plug-in"></a>Bereitstellen des Container Network Interface-Plug-Ins von Azure Virtual Network
 
@@ -95,9 +95,9 @@ Führen Sie die folgenden Schritte aus, um das Plug-In auf allen virtuellen Azur
 1. [Laden Sie das Plug-In herunter, und installieren Sie es](#download-and-install-the-plug-in).
 2. Ordnen Sie auf jedem virtuellen Computer, über den Pods IP-Adressen zugewiesen werden, vorab einen IP-Adressenpool des virtuellen Netzwerks zu. Alle virtuellen Azure-Computer umfassen eine private IP-Adresse des primären virtuellen Netzwerks für jede Netzwerkschnittstelle. Der Pool von IP-Adressen für Pods wird mithilfe einer der folgenden Optionen als sekundäre Adressen (*ipconfigs*) für die Netzwerkschnittstelle des virtuellen Computers hinzugefügt:
 
-   - **CLI:**[Zuweisen von mehreren IP-Adressen über die Azure-Befehlszeilenschnittstelle](virtual-network-multiple-ip-addresses-cli.md)
-   - **PowerShell:**[Zuweisen von mehreren IP-Adressen mithilfe von PowerShell](virtual-network-multiple-ip-addresses-powershell.md)
-   - **Portal:**[Zuweisen von mehreren IP-Adressen über das Azure-Portal](virtual-network-multiple-ip-addresses-portal.md)
+   - **CLI:**[Zuweisen von mehreren IP-Adressen über die Azure-Befehlszeilenschnittstelle](./ip-services/virtual-network-multiple-ip-addresses-cli.md)
+   - **PowerShell:**[Zuweisen von mehreren IP-Adressen mithilfe von PowerShell](./ip-services/virtual-network-multiple-ip-addresses-powershell.md)
+   - **Portal:**[Zuweisen von mehreren IP-Adressen über das Azure-Portal](./ip-services/virtual-network-multiple-ip-addresses-portal.md)
    - **Azure Resource Manager-Vorlage:**[Zuweisen von mehreren IP-Adressen mithilfe von Vorlagen](./template-samples.md)
 
    Stellen Sie sicher, dass Sie genügend IP-Adressen für alle Pods hinzufügen, die auf dem virtuellen Computer angezeigt werden sollen.

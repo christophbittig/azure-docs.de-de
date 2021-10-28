@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 08/16/2021
 ms.author: allensu
-ms.openlocfilehash: 1b13a4cde0d4c0278698100cde0d5cd9993465a3
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 024a523939e5f03cf01aec937a646f1159f6b79b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122350992"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130254644"
 ---
 # <a name="azure-load-balancer-portal-settings"></a>Azure Load Balancer – Portaleinstellungen
 
@@ -53,7 +53,7 @@ Wenn Sie **Öffentlich** als Typ auswählen, werden die folgenden Informationen 
 | ------- | ------- |
 | Name | Der Name des Front-Ends, das dem Lastenausgleich hinzugefügt wird. |
 | IP-Version | **IPv4** </br> **IPv6** </br> Lastenausgleich unterstützt Pv4 und IPv6 Frontends. </br> Weitere Informationen finden Sie unter [Load Balancer und IPv6](load-balancer-ipv6-overview.md). |
-| IP-Typ | **IP-Adresse** </br> **IP-Präfix** </br> Lastenausgleich unterstützt eine IP-Adresse oder einen IP-Präfix für die Front-End-IP-Adresse. Weitere Informationen finden Sie unter [Präfix für die öffentliche IP-Adresse in Azure](../virtual-network/public-ip-address-prefix.md). |
+| IP-Typ | **IP-Adresse** </br> **IP-Präfix** </br> Lastenausgleich unterstützt eine IP-Adresse oder einen IP-Präfix für die Front-End-IP-Adresse. Weitere Informationen finden Sie unter [Präfix für die öffentliche IP-Adresse in Azure](../virtual-network/ip-services/public-ip-address-prefix.md). |
 
 :::image type="content" source="./media/manage/add-frontend-public.png" alt-text="Ein Screenshot, der „Front-End-IP-Konfiguration hinzufügen“ zeigt" border="true":::.
 
@@ -67,7 +67,7 @@ Wenn Sie **IP-Adresse** als **IP-Typ** auswählen, werden Ihnen die folgenden In
 | Tarif | **Regional** </br> **Global** </br> Abhängig vom Typ des Lastenausgleichstarifs wird bestimmt, was ausgewählt wird. Regional wird für herkömmlichen und global für regionsübergreifenden Lastenausgleich ausgewählt. |
 | Zuordnung | **Statisch** wird automatisch als Standard ausgewählt. </br> Es gibt zwei Typen öffentlicher Basic-IP-Adressen: **Dynamisch** und **Statisch**. </br> Dynamische öffentliche IP-Adressen werden erst nach der Erstellung zugewiesen. </br> IP-Adressen können verloren gehen, wenn die Ressource gelöscht wird. </br> Statische IP-Adressen werden empfohlen. |
 | Verfügbarkeitszone | Wählen Sie **Zonenredundant** aus, um einen resilienten Lastenausgleich zu erstellen. </br> Wählen Sie zum Erstellen eines zonalen Lastenausgleichs eine bestimmte Zone aus **1**, **2** oder **3** aus. </br> Standard Load Balancer und öffentliche IP-Adressen unterstützen Zonen. </br> Weitere Informationen zu [Load Balancer und Verfügbarkeitszonen](load-balancer-standard-availability-zones.md) finden Sie hier. </br> Für „Basic“ wird keine Zonenauswahl angezeigt. Von Load Balancer Basic-Instanzen werden keine Zonen unterstützt. |
-| Routingpräferenz | Wählen Sie **Microsoft-Netzwerk** aus. </br> Microsoft-Netzwerk bedeutet, dass Datenverkehr über das globale Microsoft-Netzwerk weitergeleitet wird. </br> Internet bedeutet, dass Datenverkehr über das Internetdienstanbieter-Netzwerk weitergeleitet wird. </br> Hier erfahren Sie mehr zu [Routingeinstellungen](../virtual-network/routing-preference-overview.md).|
+| Routingpräferenz | Wählen Sie **Microsoft-Netzwerk** aus. </br> Microsoft-Netzwerk bedeutet, dass Datenverkehr über das globale Microsoft-Netzwerk weitergeleitet wird. </br> Internet bedeutet, dass Datenverkehr über das Internetdienstanbieter-Netzwerk weitergeleitet wird. </br> Hier erfahren Sie mehr zu [Routingeinstellungen](../virtual-network/ip-services/routing-preference-overview.md).|
 
 :::image type="content" source="./media/manage/create-public-ip.png" alt-text="Ein Screenshot, der „öffentlichen IP-Adresse erstellen“ zeigt" border="true":::.
 
@@ -143,7 +143,7 @@ Auf der Erstellungsseite **+ Lastenausgleichsregel hinzufügen** wird Folgendes 
 | Leerlaufzeitüberschreitung (Minuten) | Eine **TCP**- oder **HTTP**-Verbindung wird offen gelassen, unabhängig von Clients, die Erhaltungsmeldungen senden. |  
 | TCP-Zurücksetzung | Der Lastenausgleich kann **TCP-Zurücksetzungen** senden, damit das Anwendungsverhalten vorhersagbarer wird, wenn sich die Verbindung im Leerlauf befindet. </br> Hier erfahren Sie mehr zur [TCP-Zurücksetzung](load-balancer-tcp-reset.md).|
 | Unverankerte IP | Floating IP ist die in Azure verwendete Benennung für die Komponente **Direct Server Return (DSR)** . </br> DSR besteht aus zwei Teilen: <br> 1. Datenflusstopologie </br> 2. Ein IP-Adressen-Zuordnungsschema auf Plattformebene. </br></br> Azure Load Balancer wird immer in einer DSR-Datenflusstopologie betrieben, unabhängig davon, ob Floating IP aktiviert ist. </br> Dieser Vorgang bedeutet, dass der ausgehende Teil eines Datenflusses immer ordnungsgemäß so umgeschrieben wird, dass er direkt wieder an den Ursprung übermittelt wird. </br> Ohne Floating IP wird von Azure ein herkömmliches Zuordnungsschema für IP-Adressen für den Lastenausgleich (IP-Adresse für VM-Instanzen) verfügbar gemacht. </br> Durch die Aktivierung von Floating IP wird die Zuordnung der IP-Adressen in die Front-End-IP-Adresse des Lastenausgleichsmoduls geändert, um für zusätzliche Flexibilität zu sorgen. </br> Weitere Informationen finden Sie unter [Mehrere Front-Ends für Azure Load Balancer](load-balancer-multivip-overview.md).|
-| Übersetzung der Quellnetzwerkadresse (SNAT) für ausgehenden Datenverkehr | Folgende Optionen sind verfügbar: </br> **(Empfohlen) Verwenden Sie Ausgangsregeln, um Back-End-Poolmitgliedern den Zugriff auf das Internet zu gewähren**. </br> **Verwenden Sie eine Implizite Ausgangsregel. Diese Einstellung wird nicht empfohlen, weil sie zu einer SNAT-Portauslastung führen kann**. </br> Wählen Sie die Option **Empfohlen** aus, um SNAT Portauslastung zu verhindern. Ein **NAT-Gateway** oder **Ausgangsregeln** sind erforderlich, um SNAT für die Backend-Poolmitglieder bereitzustellen. Weitere Informationen zu **NAT Gateway** finden Sie unter [Was ist ein Virtual Network NAT?](../virtual-network/nat-gateway/nat-overview.md). </br> Weitere Informationen zu ausgehenden Verbindungen in Azure finden Sie unter [Verwenden von SNAT für ausgehende Verbindungen](load-balancer-outbound-connections.md). |
+| Übersetzung der Quellnetzwerkadresse (SNAT) für ausgehenden Datenverkehr | Folgende Optionen sind verfügbar: </br> **(Empfohlen) Verwenden Sie Ausgangsregeln, um Back-End-Poolmitgliedern den Zugriff auf das Internet zu gewähren**. </br> **Verwenden Sie eine Implizite Ausgangsregel. Diese Einstellung wird nicht empfohlen, weil sie zu einer SNAT-Portauslastung führen kann**. </br> Wählen Sie die Option **Empfohlen** aus, um eine SNAT Portauslastung zu verhindern. Ein **NAT-Gateway** oder **Ausgangsregeln** sind erforderlich, um SNAT für die Backend-Poolmitglieder bereitzustellen. Weitere Informationen zu **NAT Gateway** finden Sie unter [Was ist ein Virtual Network NAT?](../virtual-network/nat-gateway/nat-overview.md). </br> Weitere Informationen zu ausgehenden Verbindungen in Azure finden Sie unter [Verwenden von SNAT für ausgehende Verbindungen](load-balancer-outbound-connections.md). |
 
 :::image type="content" source="./media/manage/add-load-balancing-rule.png" alt-text="Ein Screenshot, der „ Lastenausgleichsregel hinzufügen“ zeigt" border="true":::.
 
@@ -222,7 +222,7 @@ Wenn Sie Ihrem Lastenausgleich eine Front-End-IP-Konfiguration hinzufügen möch
 | ---------- | ---------- |
 | Name | Der Name Ihrer Front-End-IP-Konfiguration. |
 | IP-Version | Die IP-Adressversion, die ihr Front-End haben soll. </br> Load Balancer unterstützt IPv4- und IPv6-Front-End-Konfigurationen. |
-| IP-Typ | Der IP-Typ bestimmt, ob mit Ihrem Front-End eine einzelne IP-Adresse oder ein IP-Adressbereich mit einem Präfix für IP-Adressen verknüpft ist. </br> Ein [Präfix für öffentliche IP-Adressen](../virtual-network/public-ip-address-prefix.md) ist hilfreich, wenn Sie wiederholt eine Verbindung mit demselben Endpunkt herstellen müssen. Mit dem Präfix wird sichergestellt, dass genügend Ports zur Unterstützung bei SNAT-Portproblemen angegeben werden. |
+| IP-Typ | Der IP-Typ bestimmt, ob mit Ihrem Front-End eine einzelne IP-Adresse oder ein IP-Adressbereich mit einem Präfix für IP-Adressen verknüpft ist. </br> Ein [Präfix für öffentliche IP-Adressen](../virtual-network/ip-services/public-ip-address-prefix.md) ist hilfreich, wenn Sie wiederholt eine Verbindung mit demselben Endpunkt herstellen müssen. Mit dem Präfix wird sichergestellt, dass genügend Ports zur Unterstützung bei SNAT-Portproblemen angegeben werden. |
 | Öffentliche IP-Adresse (oder Präfix, wenn Sie oben das Präfix gewählt haben) | Wählen oder erstellen Sie eine neue öffentliche IP-Adresse (oder ein Präfix) für das Lastenausgleichs-Front-End. |
 
 :::image type="content" source="./media/manage/frontend.png" alt-text="Erstellen einer Front-End-IP-Konfigurationsseite." border="true":::

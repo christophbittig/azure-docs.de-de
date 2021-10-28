@@ -11,12 +11,12 @@ ms.date: 05/11/2021
 ms.author: lajanuar
 ms.custom: cog-serv-seo-aug-2020
 keywords: Verarbeiten von Dokumenten
-ms.openlocfilehash: 43e7da4eea864bf0ac2767718ff8ed04ed58c54e
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 23f525449edfa8d37a7bd8e3ebeff1fb9cdff601
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129715177"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130224496"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -254,7 +254,7 @@ Nachdem Sie das Tabellentag definiert haben, versehen Sie die Zellenwerte mit Ta
 
 Wählen Sie im linken Bereich das Symbol „Trainieren“ aus, um die Seite „Training“ zu öffnen. Wählen Sie dann die Schaltfläche **Trainieren** aus, um mit dem Training des Modells zu beginnen. Sobald der Trainingsprozess abgeschlossen ist, werden folgende Informationen angezeigt:
 
-* **Modell-ID**: Die ID des Modells, das erstellt und trainiert wurde. Jeder Trainingsaufruf erstellt ein neues Modell mit eigener ID. Kopieren Sie diese Zeichenfolge an einen sicheren Speicherort. Sie werden sie benötigen, wenn Sie Vorhersageaufrufe über die [REST-API](quickstarts/client-library.md?pivots=programming-language-rest-api&tabs=preview%2Cv2-1) oder den [Leitfaden zur Clientbibliothek](quickstarts/client-library.md) ausführen möchten.
+* **Modell-ID**: Die ID des Modells, das erstellt und trainiert wurde. Jeder Trainingsaufruf erstellt ein neues Modell mit eigener ID. Kopieren Sie diese Zeichenfolge an einen sicheren Speicherort. Sie werden sie benötigen, wenn Sie Vorhersageaufrufe über die [REST-API](./quickstarts/try-sdk-rest-api.md?pivots=programming-language-rest-api&tabs=preview%2cv2-1) oder den [Leitfaden zur Clientbibliothek](./quickstarts/try-sdk-rest-api.md) ausführen möchten.
 * **Durchschnittliche Genauigkeit**: Die durchschnittliche Genauigkeit des Modells. Sie können die Modellgenauigkeit verbessern, indem Sie weitere Formulare beschriften und erneut ein Training ausführen, um ein neues Modell zu erstellen. Wir empfehlen, zunächst fünf Formulare zu beschriften und dann bei Bedarf weitere Formulare hinzuzufügen.
 * Die Liste der Beschriftungen und die geschätzte Genauigkeit für jede Beschriftung.
 
@@ -314,4 +314,4 @@ In dieser Schnellstartanleitung haben Sie erfahren, wie Sie das Formularerkennun
 > [Trainieren mit Beschriftungen mit Python](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/FormRecognizer/rest/python-labeled-data.md)
 
 * [Was ist die Formularerkennung?](overview.md)
-* [Formularerkennung: Schnellstart](quickstarts/client-library.md)
+* [Formularerkennung: Schnellstart](./quickstarts/try-sdk-rest-api.md)

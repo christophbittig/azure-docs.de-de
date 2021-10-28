@@ -6,14 +6,14 @@ author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: troubleshooting
-ms.date: 08/24/2021
+ms.date: 10/21/2021
 ms.author: alkohli
-ms.openlocfilehash: 471d5bff3fa3a4be092f1294f64b0bb8c3fdf9a8
-ms.sourcegitcommit: d858083348844b7cf854b1a0f01e3a2583809649
+ms.openlocfilehash: 019d4da7654c3cdf2eec7fc3b6f2434e1f42cd47
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "129211683"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130218164"
 ---
 # <a name="review-copy-errors-in-uploads-from-azure-data-box-and-azure-data-box-heavy-devices"></a>Überprüfen von Kopierfehlern bei Uploads von Azure Data Box- und Azure Data Box Heavy-Geräten
 
@@ -159,4 +159,4 @@ Andere REST-API-Fehler können während des Datenuploads auftreten. Weitere Info
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Überprüfen bekannter REST-API-Fehler](/rest/api/storageservices/common-rest-api-error-codes)
-- [Überprüfen eines Datenuploads in Azure](data-box-deploy-picked-up.md?tabs=in-us-canada-europe#verify-data-upload-to-azure-8)
+- [Überprüfen des Datenuploads in Azure](data-box-deploy-picked-up.md#verify-data-upload-to-azure)

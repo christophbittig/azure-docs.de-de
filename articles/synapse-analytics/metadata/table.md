@@ -10,12 +10,12 @@ author: ma77b
 ms.author: maburd
 ms.reviewer: wiassaf
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7dd442c981b4a3d9ac04716d123269457f24bf9e
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 7bb66b9fedb0f1e906a522f393ffde32ee9e2e3e
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130002774"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130263171"
 ---
 # <a name="azure-synapse-analytics-shared-metadata-tables"></a>Azure Synapse Analytics: Gemeinsam genutzte Metadatentabellen
 
@@ -69,7 +69,7 @@ Spark-Tabellen bieten andere Datentypen als die SQL-Engines von Synapse. In der 
 |---|---|---|
 | `LongType`, `long`, `bigint`                | `bigint`              | **Spark**: *LongType* stellt 8-Byte-Ganzzahlen mit Vorzeichen dar.<BR>**SQL:** Siehe [int, bigint, smallint und tinyint (Transact-SQL)](/sql/t-sql/data-types/int-bigint-smallint-and-tinyint-transact-sql)|
 | `BooleanType`, `boolean`                    | `bit` (Parquet), `varchar(6)` (CSV)  | **Spark:** Boolesch<BR>**SQL:** Siehe [/sql/t-sql/data-types/bit-transact-sql)|
-| `DecimalType`, `decimal`, `dec`, `numeric`  | `decimal`             | **Spark**: *DecimalType* stellt Dezimalzahlen mit Vorzeichen und variabler Genauigkeit dar. Wird intern durch „java.math.BigDecimal“ unterstützt. Ein BigDecimal-Wert besteht aus einem unskalierten Ganzzahlwert mit variabler Genauigkeit und einer 32-Bit-Ganzzahlskalierung. <br> **SQL**: Zahlen mit fester Genauigkeit und mit fester Anzahl von Dezimalstellen. Wenn maximale Genauigkeit verwendet wird, liegen gültige Werte zwischen - 10^38 +1 und 10^38 - 1. Die ISO-Synonyme für decimal lauten dec und dec(p, s) . Die Funktion von numeric ist mit der von decimal identisch. Siehe [decimal und numeric (Transact-SQL)](/sql/t-sql/data-types/decimal-and-numeric-transact-sql]) |
+| `DecimalType`, `decimal`, `dec`, `numeric`  | `decimal`             | **Spark**: *DecimalType* stellt Dezimalzahlen mit Vorzeichen und variabler Genauigkeit dar. Wird intern durch „java.math.BigDecimal“ unterstützt. Ein BigDecimal-Wert besteht aus einem unskalierten Ganzzahlwert mit variabler Genauigkeit und einer 32-Bit-Ganzzahlskalierung. <br> **SQL**: Zahlen mit fester Genauigkeit und mit fester Anzahl von Dezimalstellen. Wenn maximale Genauigkeit verwendet wird, liegen gültige Werte zwischen - 10^38 +1 und 10^38 - 1. Die ISO-Synonyme für decimal lauten dec und dec(p, s) . Die Funktion von numeric ist mit der von decimal identisch. Siehe [decimal und numeric (Transact-SQL)](/sql/t-sql/data-types/decimal-and-numeric-transact-sql) |
 | `IntegerType`, `Integer`, `int`             | `int`                 | **Spark** *IntegerType* stellt 4-Byte-Ganzzahlen mit Vorzeichen dar. <BR>**SQL:** Siehe [int, bigint, smallint und tinyint (Transact-SQL)](/sql/t-sql/data-types/int-bigint-smallint-and-tinyint-transact-sql)|
 | `ByteType`, `Byte`, `tinyint`               | `smallint`            | **Spark**: *ByteType* stellt 1-Byte-Ganzzahlen mit Vorzeichen [-128 bis 127] dar, und ShortType stellt 2-Byte-Ganzzahlen mit Vorzeichen [-32768 bis 32767] dar. <br> **SQL**: Tinyint stellt 1-Byte-Ganzzahlen mit Vorzeichen [0, 255] dar, und smallint stellt 2-Byte-Ganzzahlen mit Vorzeichen [-32768, 32767] dar. Siehe [int, bigint, smallint und tinyint (Transact-SQL)](/sql/t-sql/data-types/int-bigint-smallint-and-tinyint-transact-sql)|
 | `ShortType`, `Short`, `smallint`            | `smallint`            | Wie oben. |
@@ -197,5 +197,3 @@ id | name | birthdate
 
 - Weitere Informationen zu gemeinsam genutzten Metadaten von Azure Synapse Analytics finden Sie [hier](overview.md).
 - Weitere Informationen zu gemeinsam genutzten Azure Synapse Analytics-Datenbanken für Metadaten finden Sie [hier](database.md).
-
-

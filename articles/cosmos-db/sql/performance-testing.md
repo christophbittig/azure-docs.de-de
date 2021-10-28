@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 08/26/2021
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 257fba85685c8c47a323c5ba671aa2bbbf59d572
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: d655edd485de3b446ce4db758cf8722b551eee10
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123114809"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130219040"
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Leistungs- und Skalierungstests mit Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -27,7 +27,7 @@ Nach Lesen dieses Artikels können Sie die folgenden Fragen beantworten:
 * Wo finde ich eine .NET-Beispielclientanwendung für Leistungstests von Azure Cosmos DB? 
 * Wie erreiche ich über meine Clientanwendung hohe Durchsätze mit Azure Cosmos DB?
 
-Sie können das Projekt aus dem [Azure Cosmos DB-Beispiel zur Leistungsüberprüfung](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/documentdb-benchmark) herunterladen, um mit dem Programmieren zu beginnen. 
+Sie können das Projekt aus dem [Azure Cosmos DB-Beispiel zur Leistungsüberprüfung](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Tools/Benchmark) herunterladen, um mit dem Programmieren zu beginnen. 
 
 > [!NOTE]
 > Das Ziel dieser Anwendung ist die Veranschaulichung von Methoden, um mit einer geringen Anzahl von Clientcomputern eine optimale Leistung für Cosmos DB zu erzielen. Das Ziel des Beispiels ist nicht, die maximale Durchsatzkapazität von Azure-Cosmos DB zu erreichen (die ohne Grenzwerte skaliert werden kann).
@@ -37,7 +37,7 @@ Die clientseitigen Konfigurationsoptionen zur Verbesserung der Leistung von Azur
 ## <a name="run-the-performance-testing-application"></a>Ausführen der Anwendung zur Leistungsüberprüfung
 Den schnellsten Einstieg ermöglicht das Kompilieren und Ausführen des .NET-Beispiels, wie in den folgenden Schritten beschrieben. Sie können auch den Quellcode prüfen und Konfigurationen implementieren, die Ihren eigenen Clientanwendungen ähneln.
 
-**Schritt 1:** Laden Sie das Projekt aus dem [Azure Cosmos DB-Beispiel zur Leistungsüberprüfung](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/documentdb-benchmark) herunter, oder erstellen Sie einen Fork des GitHub-Repositorys.
+**Schritt 1:** Laden Sie das Projekt aus dem [Azure Cosmos DB-Beispiel zur Leistungsüberprüfung](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Tools/Benchmark) herunter, oder erstellen Sie einen Fork des GitHub-Repositorys.
 
 **Schritt 2:** Ändern Sie in der Datei „App.config“ die Einstellungen für „EndpointUrl“, „AuthorizationKey“, „CollectionThroughput“ und „DocumentTemplate“ (optional).
 
@@ -97,7 +97,7 @@ Sobald die App ausgeführt wird, können Sie verschiedene [Indizierungsrichtlini
 
 In diesem Artikel haben Sie erfahren, wie Sie mithilfe einer .NET-Konsolenanwendung die Leistung und Skalierung mit Azure Cosmos DB testen können. Weitere Informationen finden Sie in den folgenden Artikeln:
 
-* [Beispiel zu Leistungstests in Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/samples/documentdb-benchmark)
+* [Beispiel zu Leistungstests in Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Tools/Benchmark)
 * [Clientkonfigurationsoptionen zur Verbesserung der Leistung von Azure Cosmos DB](performance-tips.md)
 * [Serverseitige Partitionierung in Azure Cosmos DB](../partitioning-overview.md)
 * Versuchen Sie, die Kapazitätsplanung für eine Migration zu Azure Cosmos DB durchzuführen? Sie können Informationen zu Ihrem vorhandenen Datenbankcluster für die Kapazitätsplanung verwenden.

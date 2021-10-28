@@ -3,12 +3,12 @@ title: Neues in der Azure Monitor-Dokumentation
 description: Neues in der Azure Monitor-Dokumentation
 ms.topic: conceptual
 ms.date: 09/07/2021
-ms.openlocfilehash: 735c94026695e6eb89005c6e1bbc4bbdbe46f64b
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: 3c7a433ed3c13e7853cab9a72bdd6b7a447bb3a0
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130178688"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130219887"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Neues in der Azure Monitor-Dokumentation
 
@@ -19,7 +19,7 @@ In diesem Artikel werden wichtige Änderungen der Azure Monitor-Dokumentation au
 
 **Aktualisierte Artikel**
 
-- [Bedarfsorientiertes Bereitstellen von Azure Monitor mithilfe von Azure Policy](deploy-scale.md)
+- [Bedarfsorientiertes Bereitstellen von Azure Monitor mithilfe von Azure Policy](./best-practices.md)
 - [Azure Monitor – integrierte Partnerlösungen](partners.md)
 - [Beispiele für Resource Manager-Vorlagen für Azure Monitor](resource-manager-samples.md)
 - [Rollen, Berechtigungen und Sicherheit in Azure Monitor](roles-permissions-security.md)
@@ -173,7 +173,7 @@ In diesem Artikel werden wichtige Änderungen der Azure Monitor-Dokumentation au
 **Aktualisierte Artikel**
 
 - [Häufig gestellte Fragen zu Azure Monitor](faq.yml)
-- [Bedarfsorientiertes Bereitstellen von Azure Monitor mithilfe von Azure Policy](deploy-scale.md)
+- [Bedarfsorientiertes Bereitstellen von Azure Monitor mithilfe von Azure Policy](./best-practices.md)
 
 ### <a name="agents"></a>Agents
 
@@ -349,4 +349,3 @@ In diesem Artikel werden wichtige Änderungen der Azure Monitor-Dokumentation au
 
 - [Problembehandlung für das Feature „Gastintegrität“ von VM Insights (Vorschau)](vm/vminsights-health-troubleshoot.md)
 - [Erstellen interaktiver Berichte in VM Insights mit Arbeitsmappen](vm/vminsights-workbooks.md)
-

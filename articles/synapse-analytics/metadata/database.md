@@ -10,12 +10,12 @@ author: ma77b
 ms.author: maburd
 ms.reviewer: wiassaf
 ms.custom: devx-track-csharp
-ms.openlocfilehash: fae1b6a6d2c9e697a55bbacaa11aa2736970d5a5
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 6144afdca350e8e7ff609eec273f84a39b84d2a3
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130002888"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130228485"
 ---
 # <a name="azure-synapse-analytics-shared-database"></a>Gemeinsam genutzte Azure Synapse Analytics-Datenbank
 
@@ -42,7 +42,7 @@ Die Spark-Datenbanken und -Tabellen sowie deren synchronisierte Darstellungen in
 
 Der Sicherheitsprinzipal, von dem eine Datenbank erstellt wird, gilt als Besitzer der Datenbank und verfügt über alle Rechte für die Datenbank und die zugehörigen Objekte. Der Synapse-Administrator und der Synapse SQL-Administrator haben ebenfalls standardmäßig alle Berechtigungen für synchronisierte Objekte in einem serverlosen SQL-Pool. Das Erstellen von benutzerdefinierten Objekten (einschließlich Benutzern) in synchronisierten SQL-Datenbanken ist nicht zulässig. 
 
-Wenn Sie einem Sicherheitsprinzipal (etwa einem Benutzer, einer Azure AD-App oder einer Sicherheitsgruppe) Zugriff auf die zugrunde liegenden Daten gewähren möchten, die für externe Tabellen verwendet werden, müssen Sie Ihnen Berechtigungen vom Typ `read (R)` für Dateien (etwa die zugrunde liegenden Datendateien der Tabelle) und Berechtigungen vom Typ `execute (X)` für den Ordner, in dem die Dateien gespeichert sind, sowie für alle übergeordneten Ordner bis zum Stamm erteilen. Weitere Informationen zu diesen Berechtigungen finden Sie auf der Seite [Zugriffssteuerungslisten (ACLs)](/azure/storage/blobs/data-lake-storage-access-control). 
+Wenn Sie einem Sicherheitsprinzipal (etwa einem Benutzer, einer Azure AD-App oder einer Sicherheitsgruppe) Zugriff auf die zugrunde liegenden Daten gewähren möchten, die für externe Tabellen verwendet werden, müssen Sie Ihnen Berechtigungen vom Typ `read (R)` für Dateien (etwa die zugrunde liegenden Datendateien der Tabelle) und Berechtigungen vom Typ `execute (X)` für den Ordner, in dem die Dateien gespeichert sind, sowie für alle übergeordneten Ordner bis zum Stamm erteilen. Weitere Informationen zu diesen Berechtigungen finden Sie auf der Seite [Zugriffssteuerungslisten (ACLs)](../../storage/blobs/data-lake-storage-access-control.md). 
 
 Beispielsweise müssen Sicherheitsprinzipale in `https://<storage-name>.dfs.core.windows.net/<fs>/synapse/workspaces/<synapse_ws>/warehouse/mytestdb.db/myparquettable/` über Berechtigungen vom Typ `X` für alle Ordner (ab `<fs>` bis `myparquettable`) sowie über Berechtigungen vom Typ `R` für `myparquettable` und Dateien in diesem Ordner verfügen, um eine Tabelle in einer Datenbank lesen zu können (synchronisiert oder Original).
 

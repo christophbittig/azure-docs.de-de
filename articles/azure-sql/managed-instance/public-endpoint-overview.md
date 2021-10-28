@@ -10,12 +10,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, sstein
 ms.date: 05/08/2019
-ms.openlocfilehash: 7c949579d23e3acfbecde3111534209151ed61ac
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: 2718816adfeaa8fa98c93ea1ed394c6634b5cb7b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108314551"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130250443"
 ---
 # <a name="use-azure-sql-managed-instance-securely-with-public-endpoints"></a>Sicheres Verwenden von Azure SQL Managed Instance mit öffentlichen Endpunkten
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -50,7 +50,7 @@ Um sicherzustellen, dass Datenverkehr zur verwalteten Instanz aus vertrauenswür
 
 Wenn Clients eine Verbindung von einem lokalen Netzwerk herstellen müssen, stellen Sie sicher, dass die ursprüngliche Adresse in eine Gruppe bekannter IP-Adressen übersetzt wird. Wenn das nicht möglich ist (eine mobile Belegschaft ist z.B. ein typisches Szenario), sollten Sie [Point-to-Site-VPN-Verbindungen und einen privaten Endpunkt](point-to-site-p2s-configure.md) verwenden.
 
-Wenn Verbindungen von Azure aus gestartet werden, sollte der Datenverkehr von einer gut bekannten zugewiesenen [virtuellen IP-Adresse](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip) (z.B. einem virtuellen Computer) kommen. Um die Verwaltung virtueller IP-Adressen (VIP) zu vereinfachen, sollten Sie [öffentliche IP-Adresspräfixe](../../virtual-network/public-ip-address-prefix.md) verwenden.
+Wenn Verbindungen von Azure aus gestartet werden, sollte der Datenverkehr von einer gut bekannten zugewiesenen [virtuellen IP-Adresse](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip) (z.B. einem virtuellen Computer) kommen. Um die Verwaltung virtueller IP-Adressen (VIP) zu vereinfachen, sollten Sie [öffentliche IP-Adresspräfixe](../../virtual-network/ip-services/public-ip-address-prefix.md) verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

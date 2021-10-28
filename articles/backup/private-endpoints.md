@@ -4,12 +4,12 @@ description: Erfahren Sie mehr über den Prozess zum Erstellen privater Endpunkt
 ms.topic: conceptual
 ms.date: 09/24/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: cf26b87d0232b05cd7860981faa58a9b315f3979
-ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
+ms.openlocfilehash: 246b3fa30b52b654e9210ddbf86ca5ede519f50d
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128708261"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130264672"
 ---
 # <a name="create-and-use-private-endpoints-for-azure-backup"></a>Erstellen und Verwenden privater Endpunkte für Azure Backup
 
@@ -544,7 +544,7 @@ Führen Sie die folgenden Schritte aus, um einen Proxyserver für einen virtuell
    >- [US Gov](../azure-government/documentation-government-developer-guide.md)
    >- [Geocodeliste – Beispiel-XML](scripts/geo-code-list.md)
 
-Das folgende Diagramm zeigt ein Setup (bei Verwendung der privaten Azure-DNS-Zonen) mit einem Proxyserver, dessen virtuelles Netzwerk mit einer privaten DNS-Zone mit erforderlichen DNS-Einträgen verknüpft ist. Der Proxyserver kann auch über einen eigenen benutzerdefinierten DNS-Server verfügen, und die oben genannten Domänen können bedingt an 169.63.129.16 weitergeleitet werden. Wenn Sie eine benutzerdefinierte DNS-Server-/-Hostdatei für die DNS-Auflösung verwenden, lesen Sie die Abschnitte zum [Verwalten von DNS-Einträgen](/azure/backup/private-endpoints#manage-dns-records) und [Konfigurieren des Schutzes](/azure/backup/private-endpoints#configure-backup).
+Das folgende Diagramm zeigt ein Setup (bei Verwendung der privaten Azure-DNS-Zonen) mit einem Proxyserver, dessen virtuelles Netzwerk mit einer privaten DNS-Zone mit erforderlichen DNS-Einträgen verknüpft ist. Der Proxyserver kann auch über einen eigenen benutzerdefinierten DNS-Server verfügen, und die oben genannten Domänen können bedingt an 169.63.129.16 weitergeleitet werden. Wenn Sie eine benutzerdefinierte DNS-Server-/-Hostdatei für die DNS-Auflösung verwenden, lesen Sie die Abschnitte zum [Verwalten von DNS-Einträgen](#manage-dns-records) und [Konfigurieren des Schutzes](#configure-backup).
 
 :::image type="content" source="./media/private-endpoints/setup-with-proxy-server-inline.png" alt-text="Diagramm eines Setups mit einem Proxyserver." lightbox="./media/private-endpoints/setup-with-proxy-server-expanded.png":::
 

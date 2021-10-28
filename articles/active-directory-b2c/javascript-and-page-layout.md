@@ -3,22 +3,22 @@ title: JavaScript und Seitenlayoutversionen
 titleSuffix: Azure AD B2C
 description: Erfahren Sie, wie Sie in Azure Active Directory B2C JavaScript aktivieren und Seitenlayoutversionen verwenden.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 08/12/2021
 ms.custom: project-no-code, devx-track-js
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 9db30170103f76eb4bc611107faeeedd45da9acc
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 59061c1f7c66558cc6daf1e50b7c9c2ad1378da3
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122338989"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130217039"
 ---
 # <a name="enable-javascript-and-page-layout-versions-in-azure-active-directory-b2c"></a>Aktivieren von JavaScript und Seitenlayoutversionen in Azure Active Directory B2C
 

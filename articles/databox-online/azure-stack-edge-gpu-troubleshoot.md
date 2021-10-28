@@ -9,12 +9,12 @@ ms.topic: troubleshooting
 ms.date: 10/18/2021
 ms.author: alkohli
 ms.custom: contperf-fy21q4
-ms.openlocfilehash: e2c2bc7b34316b3d18b8f10a4f1be35e7ab52e0a
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: 4d66d325d3484f61ebee70d430e9a81b2da3a974
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130175843"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130235409"
 ---
 # <a name="run-diagnostics-collect-logs-to-troubleshoot-azure-stack-edge-device-issues"></a>Ausführen von Diagnosen und Sammeln von Protokollen zum Behandeln von Problemen bei Azure Stack Edge-Geräten
 
@@ -35,20 +35,20 @@ Zum Diagnostizieren und Behandeln von Gerätefehlern können Sie die Diagnosetes
 
     | Prüfungsname                        | BESCHREIBUNG        |
     |----------------------------------|---------------------------------------------------------------------------------------------------------|
-    | Azure-Portalkonnektivität        |  Der Test überprüft die Konnektivität zwischen Ihrem Azure Stack Edge-Gerät und dem Azure-Portal.      |
+    | Azure-Portalkonnektivität        | Der Test überprüft die Konnektivität zwischen Ihrem Azure Stack Edge-Gerät und dem Azure-Portal.      |
     | Azure-konsistente Integritätsdienste | Auf Ihrem Geräte werden verschiedene Dienste ausgeführt, darunter Azure Resource Manager, Computeressourcenanbieter, Netzwerkressourcenanbieter und der Blob Storage-Dienst. Diese Dienste stellen zusammen einen Azure-konsistenten Stapel bereit. Die Integritätsprüfung stellt sicher, dass diese Azure-konsistenten Dienste betriebsbereit sind. |
     | Zertifikate                     | Der Test überprüft das Ablaufdatum und die Auswirkungen von Geräte- und DNS-Domänenänderungen auf Zertifikate. Bei der Integritätsprüfung wurde sichergestellt, dass alle Zertifikate importiert und auf alle Geräteknoten angewendet wurden.                                                                                      |
     | Runtime für Azure-Edgecomputing       | Der Test überprüft, ob der Kubernetes Service von Azure Stack Edge wie erwartet funktioniert. Dies schließt die Überprüfung der Kubernetes-VM-Integrität sowie des Status des von Ihrem Gerät bereitgestellten Kubernetes Service ein.  |
-    | Datenträger                            |  Der Test überprüft, ob alle Gerätedatenträger verbunden sind und funktionieren. Dies schließt eine Überprüfung ein, ob auf den Datenträgern die richtige Firmware installiert ist und BitLocker ordnungsgemäß konfiguriert ist. |
-    | Stromversorgungseinheiten                             |  Der Test überprüft, ob alle Netzteile verbunden sind und funktionieren.  |
+    | Datenträger                            | Der Test überprüft, ob alle Gerätedatenträger verbunden sind und funktionieren. Dies schließt eine Überprüfung ein, ob auf den Datenträgern die richtige Firmware installiert ist und BitLocker ordnungsgemäß konfiguriert ist. |
+    | Stromversorgungseinheiten                             | Der Test überprüft, ob alle Netzteile verbunden sind und funktionieren.  |
     | Netzwerkschnittstellen               | Der Test überprüft, ob alle Netzwerkschnittstellen auf Ihrem Gerät verbunden sind, und ob die Netzwerktopologie für dieses System den Erwartungen entspricht.    |
-    | Zentralprozessoren (CPUs)                             |  Der Test überprüft, ob CPUs im System über die richtige Konfiguration verfügen sowie aktuell und funktionsfähig sind.    |
+    | Zentralprozessoren (CPUs)                             | Der Test überprüft, ob CPUs im System über die richtige Konfiguration verfügen sowie aktuell und funktionsfähig sind.    |
     | Computebeschleunigung             | Der Test überprüft, ob die Computebeschleunigung hinsichtlich Hardware und Software erwartungsgemäß funktioniert. Je nach Gerätemodell kann die Computebeschleunigung über eine GPU (Graphical Processing Unit) oder eine VPU (Vision Processing Unit) oder ein FPGA (Field Programmable Gate Array) erfolgen.   |
-    | Netzwerkeinstellungen                 |  Dieser Test überprüft die Netzwerkkonfiguration des Geräts.    |
-    | Internetkonnektivität            |  Dieser Test überprüft die Internetkonnektivität des Geräts.   |
-    | Systemsoftware                  |  Mit diesem Test wird überprüft, ob der Systemspeicher und der Softwarestapel wie erwartet funktionieren.   |
-    | Zeitsynchronisierung                        |  Dieser Test überprüft die Zeiteinstellungen des Geräts und stellt sicher, dass der auf dem Gerät konfigurierte Zeitserver gültig und zugänglich ist.     |
-    | Bereitschaft für Softwareupdates        |  Dieser Test überprüft, ob der konfigurierte Updateserver gültig und zugänglich ist.   |
+    | Netzwerkeinstellungen                 | Dieser Test überprüft die Netzwerkkonfiguration des Geräts.    |
+    | Internetkonnektivität            | Dieser Test überprüft die Internetkonnektivität des Geräts.   |
+    | Systemsoftware                  | Mit diesem Test wird überprüft, ob der Systemspeicher und der Softwarestapel wie erwartet funktionieren.   |
+    | Zeitsynchronisierung                        | Dieser Test überprüft die Zeiteinstellungen des Geräts und stellt sicher, dass der auf dem Gerät konfigurierte Zeitserver gültig und zugänglich ist.     |
+    | Bereitschaft für Softwareupdates        | Dieser Test überprüft, ob der konfigurierte Updateserver gültig und zugänglich ist.   |
  
 2. Nach Abschluss der Tests werden die Ergebnisse angezeigt. 
 

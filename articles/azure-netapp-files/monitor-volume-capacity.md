@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 04/30/2021
 ms.author: b-juche
-ms.openlocfilehash: 14bbd15fec0015073eefbe2421d03a73fac45d75
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 8f2dfe5d185b7de08dca189a83d856ac04d5404e
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111968385"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130224114"
 ---
 # <a name="monitor-the-capacity-of-a-volume"></a>Überwachen der Kapazität eines Volumes  
 
@@ -73,4 +73,4 @@ Die REST-API-Spezifikation und der Beispielcode für Azure NetApp Files sind im 
 * [Grundlegendes zum Volumekontingent](volume-quota-introduction.md)
 * [Cost model for Azure NetApp Files (Kostenmodell für Azure NetApp Files)](azure-netapp-files-cost-model.md)
 * [Ändern der Größe eines Kapazitätspools oder Volumes](azure-netapp-files-resize-capacity-pools-or-volumes.md)
-* [Häufig gestellte Fragen zur Kapazitätsverwaltung](azure-netapp-files-faqs.md#capacity-management-faqs)
+* [Häufig gestellte Fragen zur Kapazitätsverwaltung](faq-capacity-management.md)

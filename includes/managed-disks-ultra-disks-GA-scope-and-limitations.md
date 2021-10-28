@@ -1,5 +1,5 @@
 ---
-title: Datei einfügen
+title: include file
 description: Datei einfügen
 services: virtual-machines
 author: roygara
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/17/2021
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 0e0d3c131f5cd53684580d0035c8836a2537d780
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 8f485ef5d49ff2f0b9bfec4c6abc6db1b78c3826
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130070818"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130288352"
 ---
 Die einzigen Optionen für die Infrastrukturredundanz, die derzeit für Disk Ultra-Datenträger zur Verfügung stehen, sind Verfügbarkeitszonen. Virtuelle Computer, die andere Redundanzoptionen verwenden, können keinen Disk Ultra-Datenträger anfügen.
 
@@ -24,9 +24,9 @@ In der folgenden Tabelle sind die Regionen, in denen Disk Ultra-Datenträger ver
 
 | Redundanzoptionen | Regions |
 |--------------------|---------|
-| **Einzelne VMs** | Australien, Mitte<br/>Brasilien Süd<br/>Indien, Mitte<br/>Asien, Osten<br/>Deutschland, Westen-Mitte<br/>Korea, Mitte<br/>„USA, Norden-Mitte“, „USA, Süden-Mitte“, „USA, Westen“<br/>US Gov Arizona, US Gov Texas, US Gov Virginia<br/> |
-| **Zwei Verfügbarkeitszonen** | Australien (Osten)<br/>Kanada, Mitte<br/>„Europa, Norden“, „Europa, Westen“<br/>Japan, Osten<br/>Asien, Südosten<br/>UK, Süden<br/>„USA, Mitte“, „USA, Osten“, „USA, Osten 2“, „USA, Westen 2“|
-| **Drei Verfügbarkeitszonen** | Frankreich, Mitte |
+| **Einzelne VMs** | Australien, Mitte<br/>Brasilien Süd<br/>Indien, Mitte<br/>Asien, Osten<br/>Deutschland, Westen-Mitte<br/>Korea, Mitte<br/>„USA, Norden-Mitte“, „USA, Süden-Mitte“, „USA, Westen“<br/>US Gov Arizona, US Gov Texas, US Gov Virginia |
+| **Zwei Verfügbarkeitszonen** | Frankreich, Mitte |
+| **Drei Verfügbarkeitszonen** | Australien (Osten)<br/>Kanada, Mitte<br/>„Europa, Norden“, „Europa, Westen“<br/>Japan, Osten<br/>Asien, Südosten<br/>UK, Süden<br/>„USA, Mitte“, „USA, Osten“, „USA, Osten 2“, „USA, Westen 2“ |
 
 Nicht jede VM-Größe ist in allen unterstützten Regionen mit Ultra-Datenträgern verfügbar. In der folgenden Tabelle sind VM-Serien aufgeführt, die mit Ultra-Datenträgern kompatibel sind.
 

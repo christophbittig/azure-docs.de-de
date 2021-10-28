@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: 82f23c1fea29e2a88dd2a67ec9c89c7bf05bfff7
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 6dd46099a3f4450dd175d0e61c2a6817de0f76f3
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107783501"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130224816"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Erstellen, Ändern oder Löschen einer Netzwerksicherheitsgruppe
 
@@ -67,7 +67,7 @@ Die Anzahl der Netzwerksicherheitsgruppen, die Sie pro Azure-Standort und -Abonn
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure CLI | [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) |
+| Azure-Befehlszeilenschnittstelle | [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) |
 | PowerShell | [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) |
 
 ### <a name="view-all-network-security-groups"></a>Anzeigen aller Netzwerksicherheitsgruppen
@@ -78,7 +78,7 @@ Wechseln Sie zum [Azure-Portal](https://portal.azure.com), um Ihre Netzwerksiche
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure CLI | [az network nsg list](/cli/azure/network/nsg#az_network_nsg_list) |
+| Azure-Befehlszeilenschnittstelle | [az network nsg list](/cli/azure/network/nsg#az_network_nsg_list) |
 | PowerShell | [Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup) |
 
 ### <a name="view-details-of-a-network-security-group"></a>Anzeigen von Details einer Netzwerksicherheitsgruppe
@@ -103,7 +103,7 @@ Weitere Informationen zu allgemeinen aufgelisteten Azure-Einstellungen finden Si
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure CLI | [az network nsg show](/cli/azure/network/nsg#az_network_nsg_show) |
+| Azure-Befehlszeilenschnittstelle | [az network nsg show](/cli/azure/network/nsg#az_network_nsg_show) |
 | PowerShell | [Get-AzNetworkSecurityGroup](/powershell/module/az.network/get-aznetworksecuritygroup) |
 
 ### <a name="change-a-network-security-group"></a>Ändern einer Netzwerksicherheitsgruppe
@@ -118,7 +118,7 @@ Die gängigsten Änderungen sind das [Hinzufügen einer Sicherheitsregel](#creat
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure CLI | [az network nsg update](/cli/azure/network/nsg#az_network_nsg_update) |
+| Azure-Befehlszeilenschnittstelle | [az network nsg update](/cli/azure/network/nsg#az_network_nsg_update) |
 | PowerShell | [Set-AzNetworkSecurityGroup](/powershell/module/az.network/set-aznetworksecuritygroup) |
 
 ### <a name="associate-or-dissociate-a-network-security-group-to-or-from-a-subnet-or-network-interface"></a>Zuordnen einer Netzwerksicherheitsgruppe zu einer Netzwerkschnittstelle oder einem Subnetz bzw. deren Trennung davon
@@ -139,7 +139,7 @@ Wenn eine Netzwerksicherheitsgruppe Subnetzen bzw. Netzwerkschnittstellen zugeor
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure CLI | [az network nsg delete](/cli/azure/network/nsg#az_network_nsg_delete) |
+| Azure-Befehlszeilenschnittstelle | [az network nsg delete](/cli/azure/network/nsg#az_network_nsg_delete) |
 | PowerShell | [Remove-AzNetworkSecurityGroup](/powershell/module/az.network/remove-aznetworksecuritygroup) |
 
 ## <a name="work-with-security-rules"></a>Arbeiten mit Sicherheitsregeln
@@ -163,12 +163,12 @@ Die Anzahl der Regeln pro Netzwerksicherheitsgruppe, die Sie für Azure-Standort
     | Einstellung | Wert | Details |
     | ------- | ----- | ------- |
     | **Quelle** | Enthält einen der folgenden Werte:<ul><li>**Alle**</li><li>**IP-Adressen**</li><li>**Diensttag** (Eingangssicherheitsregel) oder **VirtualNetwork** (Ausgangssicherheitsregel)</li><li>**Anwendungs&nbsp;sicherheits&nbsp;gruppe**</li></ul> | <p>Bei Wahl von **IP-Adressen** müssen Sie auch **Quell-IP-Adressen/CIDR-Bereiche** angeben.</p><p>Wenn Sie **Diensttag** wählen, können Sie auch ein **Quelldiensttag** wählen.</p><p>Wenn Sie **Anwendungssicherheitsgruppe** wählen, müssen Sie auch eine vorhandene Anwendungssicherheitsgruppe wählen. Wenn Sie sowohl für **Quelle** als auch für **Ziel** die Option **Anwendungssicherheitsgruppe** wählen, müssen sich die Netzwerkschnittstellen beider Anwendungssicherheitsgruppen im selben virtuellen Netzwerk befinden.</p> |
-    | **IP-Quelladressen/CIDR-Bereiche** | Eine durch Trennzeichen getrennte Liste von IP-Adressen und CIDR-Bereichen (Classless Interdomain Routing) | <p>Diese Einstellung wird angezeigt, wenn Sie **Quelle** in **IP-Adressen** ändern. Sie müssen einen einzelnen Wert oder eine durch Trennzeichen getrennte Liste mit mehreren Werten angeben. Ein Beispiel mehrerer Werte ist `10.0.0.0/16, 192.188.1.1`. Es gibt Grenzen für die Anzahl der Werte, die Sie angeben können. Ausführliche Informationen finden Sie unter [Einschränkungen für Azure-Abonnements](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).</p><p>Wenn die von Ihnen angegebene IP-Adresse einer Azure-VM zugewiesen ist, geben Sie deren private IP-Adresse und nicht deren öffentliche IP-Adresse an. Azure verarbeitet Sicherheitsregeln, nachdem die öffentliche IP-Adresse von Azure in eine private IP-Adresse für Eingangssicherheitsregeln und bevor eine private IP-Adresse in eine öffentliche IP-Adresse für Ausgangsregeln übersetzt wurde. Weitere Informationen zu öffentlichen und privaten IP-Adressen in Azure finden Sie unter [IP-Adresstypen und Zuordnungsmethoden in Azure](./public-ip-addresses.md).</p> |
+    | **IP-Quelladressen/CIDR-Bereiche** | Eine durch Trennzeichen getrennte Liste von IP-Adressen und CIDR-Bereichen (Classless Interdomain Routing) | <p>Diese Einstellung wird angezeigt, wenn Sie **Quelle** in **IP-Adressen** ändern. Sie müssen einen einzelnen Wert oder eine durch Trennzeichen getrennte Liste mit mehreren Werten angeben. Ein Beispiel mehrerer Werte ist `10.0.0.0/16, 192.188.1.1`. Es gibt Grenzen für die Anzahl der Werte, die Sie angeben können. Ausführliche Informationen finden Sie unter [Einschränkungen für Azure-Abonnements](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).</p><p>Wenn die von Ihnen angegebene IP-Adresse einer Azure-VM zugewiesen ist, geben Sie deren private IP-Adresse und nicht deren öffentliche IP-Adresse an. Azure verarbeitet Sicherheitsregeln, nachdem die öffentliche IP-Adresse von Azure in eine private IP-Adresse für Eingangssicherheitsregeln und bevor eine private IP-Adresse in eine öffentliche IP-Adresse für Ausgangsregeln übersetzt wurde. Weitere Informationen zu öffentlichen und privaten IP-Adressen in Azure finden Sie unter [IP-Adresstypen und Zuordnungsmethoden in Azure](./ip-services/public-ip-addresses.md).</p> |
     | **Quelldiensttag** | Ein Diensttag in der Dropdownliste | Diese optionale Einstellung wird angezeigt, wenn Sie **Quelle** für eine Eingangssicherheitsregel auf **Diensttag** festlegen. Ein Diensttag ist ein vordefinierter Bezeichner für eine Kategorie von IP-Adressen. Weitere Informationen zu verfügbaren Diensttags und dazu, was die einzelnen Tag darstellen, finden Sie unter [Diensttags](./network-security-groups-overview.md#service-tags). |
     | **Quell-Anwendungssicherheitsgruppe** | Eine vorhandene Anwendungssicherheitsgruppe | Diese Einstellung wird angezeigt, wenn Sie **Quelle** auf **Anwendungssicherheitsgruppe** festlegen. Wählen Sie eine Anwendungssicherheitsgruppe aus, die in derselben Region wie die Netzwerkschnittstelle vorhanden ist. Informieren Sie sich über das [Erstellen einer Anwendungssicherheitsgruppe](#create-an-application-security-group). |
     | **Quellportbereiche** | Enthält einen der folgenden Werte:<ul><li>Ein einzelner Port, z. B. `80`</li><li>Ein Portbereich, z. B. `1024-65535`</li><li>Eine durch Trennzeichen getrennte Liste mit einzelnen Ports und/oder Portbereichen wie z. B. `80, 1024-65535`</li><li>Ein Sternchen (`*`), um Datenverkehr an jedem beliebigen Port zuzulassen</li></ul> | Diese Einstellung gibt die Ports an, an denen die Regel Datenverkehr zulässt oder verweigert. Es gibt Grenzen für die Anzahl der Ports, die Sie angeben können. Ausführliche Informationen finden Sie unter [Einschränkungen für Azure-Abonnements](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). |
     | **Ziel** | Enthält einen der folgenden Werte:<ul><li>**Alle**</li><li>**IP-Adressen**</li><li>**Diensttag** (Ausgangssicherheitsregel) oder **VirtualNetwork** (Eingangssicherheitsregel)</li><li>**Anwendungs&nbsp;sicherheits&nbsp;gruppe**</li></ul> | <p>Bei Wahl von **IP-Adressen** müssen Sie **Ziel-IP-Adressen/CIDR-Bereiche** angeben.</p><p>Bei Wahl von **VirtualNetwork** wird Datenverkehr zu allen IP-Adressen innerhalb des Adressraums des virtuellen Netzwerks zugelassen. **VirtualNetwork** ist ein Diensttag.</p><p>Wenn Sie **Anwendungssicherheitsgruppe** auswählen, müssen Sie eine vorhandene Anwendungssicherheitsgruppe auswählen. Informieren Sie sich über das [Erstellen einer Anwendungssicherheitsgruppe](#create-an-application-security-group).</p> |
-    | **Ziel-IP-Adressen/CIDR-Bereiche** | Eine durch Trennzeichen getrennte Liste von IP-Adressen und CIDR-Bereichen | <p>Diese Einstellung wird angezeigt, wenn Sie **Ziel** in **IP-Adressen** ändern. Ähnlich wie bei **Quelle** und **Quell-IP-Adressen/CIDR-Bereiche** können Sie eine einzelne oder mehrere Adressen bzw. Bereiche angeben. Die Anzahl, die Sie angeben können, ist begrenzt. Ausführliche Informationen finden Sie unter [Einschränkungen für Azure-Abonnements](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).</p><p>Wenn die von Ihnen angegebene IP-Adresse einer Azure-VM zugewiesen ist, geben Sie unbedingt deren private IP-Adresse und nicht deren öffentliche IP-Adresse an. Azure verarbeitet Sicherheitsregeln, nachdem die öffentliche IP-Adresse von Azure in eine private IP-Adresse für Eingangssicherheitsregeln und bevor eine private IP-Adresse in eine öffentliche IP-Adresse für Ausgangsregeln übersetzt wurde. Weitere Informationen zu öffentlichen und privaten IP-Adressen in Azure finden Sie unter [IP-Adresstypen und Zuordnungsmethoden in Azure](./public-ip-addresses.md).</p> |
+    | **Ziel-IP-Adressen/CIDR-Bereiche** | Eine durch Trennzeichen getrennte Liste von IP-Adressen und CIDR-Bereichen | <p>Diese Einstellung wird angezeigt, wenn Sie **Ziel** in **IP-Adressen** ändern. Ähnlich wie bei **Quelle** und **Quell-IP-Adressen/CIDR-Bereiche** können Sie eine einzelne oder mehrere Adressen bzw. Bereiche angeben. Die Anzahl, die Sie angeben können, ist begrenzt. Ausführliche Informationen finden Sie unter [Einschränkungen für Azure-Abonnements](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits).</p><p>Wenn die von Ihnen angegebene IP-Adresse einer Azure-VM zugewiesen ist, geben Sie unbedingt deren private IP-Adresse und nicht deren öffentliche IP-Adresse an. Azure verarbeitet Sicherheitsregeln, nachdem die öffentliche IP-Adresse von Azure in eine private IP-Adresse für Eingangssicherheitsregeln und bevor eine private IP-Adresse in eine öffentliche IP-Adresse für Ausgangsregeln übersetzt wurde. Weitere Informationen zu öffentlichen und privaten IP-Adressen in Azure finden Sie unter [IP-Adresstypen und Zuordnungsmethoden in Azure](./ip-services/public-ip-addresses.md).</p> |
     | **Zieldiensttag** | Ein Diensttag in der Dropdownliste | Diese optionale Einstellung wird angezeigt, wenn Sie **Ziel** für eine Ausgangssicherheitsregel in **Diensttag** ändern. Ein Diensttag ist ein vordefinierter Bezeichner für eine Kategorie von IP-Adressen. Weitere Informationen zu verfügbaren Diensttags und dazu, was die einzelnen Tag darstellen, finden Sie unter [Diensttags](./network-security-groups-overview.md#service-tags). |
     | **Ziel-Anwendungssicherheitsgruppe** | Eine vorhandene Anwendungssicherheitsgruppe | Diese Einstellung wird angezeigt, wenn Sie **Ziel** auf **Anwendungssicherheitsgruppe** festlegen. Wählen Sie eine Anwendungssicherheitsgruppe aus, die in derselben Region wie die Netzwerkschnittstelle vorhanden ist. Informieren Sie sich über das [Erstellen einer Anwendungssicherheitsgruppe](#create-an-application-security-group). |
     | **Zielportbereiche** | Enthält einen der folgenden Werte:<ul><li>Ein einzelner Port, z. B. `80`</li><li>Ein Portbereich, z. B. `1024-65535`</li><li>Eine durch Trennzeichen getrennte Liste mit einzelnen Ports und/oder Portbereichen wie z. B. `80, 1024-65535`</li><li>Ein Sternchen (`*`), um Datenverkehr an jedem beliebigen Port zuzulassen</li></ul> | Wie bei **Quellportbereichen** können Sie einzelne oder mehrere Ports und Bereiche angeben. Die Anzahl, die Sie angeben können, ist begrenzt. Ausführliche Informationen finden Sie unter [Einschränkungen für Azure-Abonnements](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits). |
@@ -182,7 +182,7 @@ Die Anzahl der Regeln pro Netzwerksicherheitsgruppe, die Sie für Azure-Standort
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure CLI | [az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) |
+| Azure-Befehlszeilenschnittstelle | [az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) |
 | PowerShell | [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) |
 
 ### <a name="view-all-security-rules"></a>Anzeigen aller Sicherheitsregeln
@@ -201,7 +201,7 @@ Die Liste enthält alle Regeln, die Sie erstellt haben, und die [Standardsicherh
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure CLI | [az network nsg rule list](/cli/azure/network/nsg/rule#az_network_nsg_rule_list) |
+| Azure-Befehlszeilenschnittstelle | [az network nsg rule list](/cli/azure/network/nsg/rule#az_network_nsg_rule_list) |
 | PowerShell | [Get-AzNetworkSecurityRuleConfig](/powershell/module/az.network/get-aznetworksecurityruleconfig) |
 
 ### <a name="view-details-of-a-security-rule"></a>Anzeigen von Details einer Sicherheitsregel
@@ -221,7 +221,7 @@ Die Liste enthält alle Regeln, die Sie erstellt haben, und die [Standardsicherh
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure CLI | [az network nsg rule show](/cli/azure/network/nsg/rule#az_network_nsg_rule_show) |
+| Azure-Befehlszeilenschnittstelle | [az network nsg rule show](/cli/azure/network/nsg/rule#az_network_nsg_rule_show) |
 | PowerShell | [Get-AzNetworkSecurityRuleConfig](/powershell/module/az.network/get-aznetworksecurityruleconfig) |
 
 ### <a name="change-a-security-rule"></a>Ändern einer Sicherheitsregel
@@ -237,7 +237,7 @@ Die Liste enthält alle Regeln, die Sie erstellt haben, und die [Standardsicherh
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure CLI | [az network nsg rule update](/cli/azure/network/nsg/rule#az_network_nsg_rule_update) |
+| Azure-Befehlszeilenschnittstelle | [az network nsg rule update](/cli/azure/network/nsg/rule#az_network_nsg_rule_update) |
 | PowerShell | [Set-AzNetworkSecurityRuleConfig](/powershell/module/az.network/set-aznetworksecurityruleconfig) |
 
 ### <a name="delete-a-security-rule"></a>Löschen einer Sicherheitsregel
@@ -253,7 +253,7 @@ Die Liste enthält alle Regeln, die Sie erstellt haben, und die [Standardsicherh
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure CLI | [az network nsg rule delete](/cli/azure/network/nsg/rule#az_network_nsg_rule_delete) |
+| Azure-Befehlszeilenschnittstelle | [az network nsg rule delete](/cli/azure/network/nsg/rule#az_network_nsg_rule_delete) |
 | PowerShell | [Remove-AzNetworkSecurityRuleConfig](/powershell/module/az.network/remove-aznetworksecurityruleconfig) |
 
 ## <a name="work-with-application-security-groups"></a>Arbeiten mit Anwendungssicherheitsgruppen
@@ -285,7 +285,7 @@ Eine Anwendungssicherheitsgruppe muss keine Netzwerkschnittstellen enthalten, ka
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure CLI | [az network asg create](/cli/azure/network/asg#az_network_asg_create) |
+| Azure-Befehlszeilenschnittstelle | [az network asg create](/cli/azure/network/asg#az_network_asg_create) |
 | PowerShell | [New-AzApplicationSecurityGroup](/powershell/module/az.network/new-azapplicationsecuritygroup) |
 
 ### <a name="view-all-application-security-groups"></a>Anzeigen aller Anwendungssicherheitsgruppen
@@ -296,7 +296,7 @@ Wechseln Sie zum [Azure-Portal](https://portal.azure.com), um Ihre Anwendungssic
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure CLI | [az network asg list](/cli/azure/network/asg#az_network_asg_list) |
+| Azure-Befehlszeilenschnittstelle | [az network asg list](/cli/azure/network/asg#az_network_asg_list) |
 | PowerShell | [Get-AzApplicationSecurityGroup](/powershell/module/az.network/get-azapplicationsecuritygroup) |
 
 ### <a name="view-details-of-a-specific-application-security-group"></a>Anzeigen von Details einer bestimmten Anwendungssicherheitsgruppe
@@ -309,7 +309,7 @@ Wechseln Sie zum [Azure-Portal](https://portal.azure.com), um Ihre Anwendungssic
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure CLI | [az network asg show](/cli/azure/network/asg#az_network_asg_show) |
+| Azure-Befehlszeilenschnittstelle | [az network asg show](/cli/azure/network/asg#az_network_asg_show) |
 | PowerShell | [Get-AzApplicationSecurityGroup](/powershell/module/az.network/get-azapplicationsecuritygroup) |
 
 ### <a name="change-an-application-security-group"></a>Ändern einer Anwendungssicherheitsgruppe
@@ -329,7 +329,7 @@ Wechseln Sie zum [Azure-Portal](https://portal.azure.com), um Ihre Anwendungssic
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure CLI | [az network asg update](/cli/azure/network/asg#az_network_asg_update) |
+| Azure-Befehlszeilenschnittstelle | [az network asg update](/cli/azure/network/asg#az_network_asg_update) |
 | PowerShell | Kein PowerShell-Cmdlet |
 
 ### <a name="delete-an-application-security-group"></a>Löschen einer Anwendungssicherheitsgruppe
@@ -346,7 +346,7 @@ Sie können eine Anwendungssicherheitsgruppe nicht löschen, wenn sie Netzwerksc
 
 | Tool | Get-Help |
 | ---- | ------- |
-| Azure CLI | [az network asg delete](/cli/azure/network/asg#az_network_asg_delete) |
+| Azure-Befehlszeilenschnittstelle | [az network asg delete](/cli/azure/network/asg#az_network_asg_delete) |
 | PowerShell | [Remove-AzApplicationSecurityGroup](/powershell/module/az.network/remove-azapplicationsecuritygroup) |
 
 ## <a name="permissions"></a>Berechtigungen

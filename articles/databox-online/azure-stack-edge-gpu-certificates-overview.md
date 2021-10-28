@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 09/01/2021
 ms.author: alkohli
-ms.openlocfilehash: e082ae9343ff935ceeda168573be9648c6cee631
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: c5ea156773335ed31fe6c6e728f496f91c6de634
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129358843"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130215631"
 ---
 # <a name="what-are-certificates-on-azure-stack-edge-pro-gpu"></a>Was sind Zertifikate auf einem Azure Stack Edge Pro GPU-Gerät?
 
@@ -158,7 +158,7 @@ Es gibt drei IoT Edge-Zertifikate, die Sie installieren müssen, um diese Vertra
 
 - Die IoT Edge-Zertifikate werden im Format `.pem` hochgeladen. 
 
-Weitere Informationen zu IoT Edge-Zertifikaten finden Sie unter [Details zu Azure IoT Edge-Zertifikaten](../iot-edge/iot-edge-certs.md#iot-edge-certificates) und [Erstellen von IoT Edge-Produktionszertifikaten](/azure/iot-edge/how-to-manage-device-certificates?view=iotedge-2020-11&preserve-view=true#create-production-certificates).
+Weitere Informationen zu IoT Edge-Zertifikaten finden Sie unter [Details zu Azure IoT Edge-Zertifikaten](../iot-edge/iot-edge-certs.md#iot-edge-certificates) und [Erstellen von IoT Edge-Produktionszertifikaten](../iot-edge/how-to-manage-device-certificates.md?preserve-view=true&view=iotedge-2020-11#create-production-certificates).
 
 ## <a name="kubernetes-certificates"></a>Kubernetes-Zertifikate
 

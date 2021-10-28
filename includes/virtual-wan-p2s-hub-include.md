@@ -4,12 +4,12 @@ author: cherylmc
 ms.date: 08/19/2021
 ms.service: virtual-wan
 ms.topic: include
-ms.openlocfilehash: 6e09f3d115ad11bc6876092b8c4e87cc56c3c22a
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.openlocfilehash: 762b5cc965b4f9ee0af929ff32574a98da43cc6a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122779898"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130288188"
 ---
 1. Wählen Sie auf der Seite für Ihr **virtuelles WAN** im linken Bereich **Hubs** aus. Wählen Sie auf der Seite **Hubs** die Option **+Neuer Hub** aus.
 
@@ -33,7 +33,7 @@ ms.locfileid: "122779898"
 
    * **Gatewayskalierungseinheiten**: Steht für die Aggregatkapazität des Benutzer-VPN-Gateways. Wenn Sie 40 oder mehr Gatewayskalierteinheiten auswählen, müssen Sie Ihren Clientadresspool entsprechend planen. Informationen dazu, wie sich diese Einstellung auf den Clientadresspool auswirkt, finden Sie unter [Informationen zu Clientadresspools](../articles/virtual-wan/about-client-address-pools.md). Informationen zu Gatewayskalierungseinheiten finden Sie in den [häufig gestellten Fragen](../articles/virtual-wan/virtual-wan-faq.md#for-user-vpn-point-to-site--how-many-clients-are-supported).
    * **Point-to-Site-Konfiguration**: Wählen Sie die Benutzer-VPN-Konfiguration aus, die Sie in einem der vorherigen Schritte erstellt haben.
-   * **Routingpräferenz**: Die Azure-Routingpräferenz ermöglicht es Ihnen zu wählen, wie Ihr Datenverkehr zwischen Azure und dem Internet geleitet wird. Sie können auswählen, ob der Datenverkehr entweder über das Microsoft-Netzwerk oder über das ISP-Netzwerk (öffentliches Internet) geleitet werden soll. Diese Optionen werden auch als Cold Potato-Routing bzw. Hot Potato-Routing bezeichnet. Die öffentliche IP-Adresse in Virtual WAN wird vom Dienst basierend auf der ausgewählten Routingoption zugewiesen. Weitere Informationen zur Routingpräferenz über das Microsoft-Netzwerk oder ISP finden Sie im Artikel [Routingpräferenz](../articles/virtual-network/routing-preference-overview.md).
+   * **Routingpräferenz**: Die Azure-Routingpräferenz ermöglicht es Ihnen zu wählen, wie Ihr Datenverkehr zwischen Azure und dem Internet geleitet wird. Sie können auswählen, ob der Datenverkehr entweder über das Microsoft-Netzwerk oder über das ISP-Netzwerk (öffentliches Internet) geleitet werden soll. Diese Optionen werden auch als Cold Potato-Routing bzw. Hot Potato-Routing bezeichnet. Die öffentliche IP-Adresse in Virtual WAN wird vom Dienst basierend auf der ausgewählten Routingoption zugewiesen. Weitere Informationen zur Routingpräferenz über das Microsoft-Netzwerk oder ISP finden Sie im Artikel [Routingpräferenz](../articles/virtual-network/ip-services/routing-preference-overview.md).
    * **Clientadresspool**: Der Adresspool, aus dem VPN-Clients automatisch IP-Adressen zugewiesen werden. Weitere Informationen finden Sie unter [Informationen zu Clientadresspools](../articles/virtual-wan/about-client-address-pools.md).
    * **Benutzerdefinierte DNS-Server**: Die IP-Adresse des/der DNS-Server(s), die von den Clients verwendet werden. Sie können bis zu 5 angeben.
 

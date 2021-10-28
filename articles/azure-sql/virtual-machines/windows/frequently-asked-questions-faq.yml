@@ -15,12 +15,12 @@ metadata:
   ms.workload: iaas-sql-server
   ms.date: 9/01/2021
   ms.author: pamela
-  ms.openlocfilehash: 0e3aeff84a7a7a8972872642b03df1b5b7c48aa2
-  ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+  ms.openlocfilehash: 47b02844b99d6f2f04f0b95446d358b90cfb478f
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/19/2021
-  ms.locfileid: "130166953"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130224103"
 title: Häufig gestellte Fragen für SQL Server auf Azure-VMs
 summary: >
   [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -183,7 +183,7 @@ sections:
       Verschiebt oder speichert die Azure SQL-VM Kundendaten außerhalb der Region?
     answer: Nein. Die Azure SQL-VM und SQL-IaaS-Agent-Erweiterung speichern keine Kundendaten.
   - question: "Welche Azure Load Balancer-SKU sollte für eine clusterübergreifende Migration einer Verfügbarkeitsgruppe verwendet werden? \n"
-    answer: Verwenden Sie zum Ausführen einer [clusterübergreifenden Migration einer Verfügbarkeitsgruppe](http://download.microsoft.com/download/d/2/0/d20e1c5f-72ea-4505-9f26-fef9550efd44/alwayson%20ag%20os%20upgrade.docx) für SQL Server auf virtuellen Azure-Computern die [Azure Load Balancer-SKU](/azure/load-balancer/skus) „Standard“.
+    answer: Verwenden Sie zum Ausführen einer [clusterübergreifenden Migration einer Verfügbarkeitsgruppe](http://download.microsoft.com/download/d/2/0/d20e1c5f-72ea-4505-9f26-fef9550efd44/alwayson%20ag%20os%20upgrade.docx) für SQL Server auf virtuellen Azure-Computern die [Azure Load Balancer-SKU](../../../load-balancer/skus.md) „Standard“.
   - question: "Kann ich die Azure Premium-Dateifreigabe verwenden, um meine Datenbankdateien in einer eigenständigen Instanz von SQL Server zu hosten?  \n"
     answer: Ja. Azure Premium-Dateifreigaben werden sowohl für Failoverclusterinstanzen als auch für eigenständige Instanzen von SQL Server per [SMB-Protokoll](/sql/database-engine/install-windows/install-sql-server-with-smb-fileshare-as-a-storage-option) unterstützt.
 - name: Erweiterung für SQL Server-IaaS-Agent
