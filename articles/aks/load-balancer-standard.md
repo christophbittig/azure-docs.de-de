@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/14/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 73c91e1c4d72fce5757b0b1a0caafc22e0fbcc60
-ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
+ms.openlocfilehash: 764f6585aab43ba1f6db29a234cc2bc554b78c58
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114230515"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130236673"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>Verwenden einer öffentlichen Instanz von Load Balancer Standard in Azure Kubernetes Service (AKS)
 
@@ -127,7 +127,7 @@ Anforderungen für die Verwendung Ihrer eigenen öffentlichen IP-Adresse oder Ih
 
 - Benutzerdefinierte öffentliche IP-Adressen müssen vom Benutzer erstellt werden und sich in seinem Besitz befinden. Verwaltete öffentliche IP-Adressen, die von AKS erstellt werden, können nicht für die Bereitstellung einer eigenen benutzerdefinierten IP-Adresse wiederverwendet werden, weil dies zu Verwaltungskonflikten führen kann.
 - Sie müssen sicherstellen, dass die AKS-Clusteridentität (Dienstprinzipal oder verwaltete Identität) über Berechtigungen für den Zugriff auf ausgehende IP-Adressen verfügt. Gemäß der [Liste der erforderlichen Berechtigungen für die öffentliche IP-Adresse](kubernetes-service-principal.md#networking).
-- Stellen Sie sicher, dass Sie die vorgegebenen [Voraussetzungen und Einschränkungen](../virtual-network/public-ip-address-prefix.md#limitations) erfüllen, die für die Konfiguration von ausgehenden IP-Adressen und der zugehörigen Präfixe gelten.
+- Stellen Sie sicher, dass Sie die vorgegebenen [Voraussetzungen und Einschränkungen](../virtual-network/ip-services/public-ip-address-prefix.md#limitations) erfüllen, die für die Konfiguration von ausgehenden IP-Adressen und der zugehörigen Präfixe gelten.
 
 #### <a name="update-the-cluster-with-your-own-outbound-public-ip"></a>Aktualisieren des Clusters mit Ihrer eigenen ausgehenden öffentlichen IP-Adresse
 
@@ -321,7 +321,7 @@ spec:
 
 Hier ist eine Liste mit Anmerkungen angegeben, die für Kubernetes-Dienste vom Typ `LoadBalancer` unterstützt werden. Diese Anmerkungen gelten nur für eingehende Datenflüsse (**INBOUND**):
 
-| Anmerkung | Wert | BESCHREIBUNG
+| Anmerkung | Wert | Beschreibung
 | ----------------------------------------------------------------- | ------------------------------------- | ------------------------------------------------------------ 
 | `service.beta.kubernetes.io/azure-load-balancer-internal`         | `true` oder `false`                     | Geben Sie an, ob es ein interner Lastenausgleich sein soll. Wenn Sie nichts angeben, wird standardmäßig „Öffentlich“ verwendet.
 | `service.beta.kubernetes.io/azure-load-balancer-internal-subnet`  | Name des Subnetzes                    | Geben Sie an, an welches Subnetz der interne Lastenausgleich gebunden werden soll. Wenn Sie nichts angeben, wird standardmäßig das in der Cloudkonfigurationsdatei konfigurierte Subnetz verwendet.

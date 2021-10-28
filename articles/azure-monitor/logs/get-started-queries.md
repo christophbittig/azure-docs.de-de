@@ -4,13 +4,13 @@ description: Dieser Artikel enthält ein Tutorial zu den ersten Schritten beim S
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
-ms.date: 10/24/2019
-ms.openlocfilehash: cc06241e948f2f82440d6e41f5a7a26639a54a9a
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.date: 10/20/2021
+ms.openlocfilehash: b7ac389da66d68cd0fdddf15b46ddcee6ff537f6
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122418730"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130248247"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Erste Schritte mit Protokollabfragen in Azure Monitor
 
@@ -109,7 +109,7 @@ SecurityEvent
 
 Beim Schreiben von Filterbedingungen können Sie folgende Ausdrücke verwenden:
 
-| Ausdruck | BESCHREIBUNG | Beispiel |
+| Ausdruck | Beschreibung | Beispiel |
 |:---|:---|:---|
 | == | Überprüfung auf Gleichheit<br>(mit Berücksichtigung der Groß-/Kleinschreibung) | `Level == 8` |
 | =~ | Überprüfung auf Gleichheit<br>(ohne Berücksichtigung der Groß-/Kleinschreibung) | `EventSourceName =~ "microsoft-windows-security-auditing"` |

@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: tutorial
 ms.date: 01/11/2021
 ms.author: duau
-ms.openlocfilehash: c4f76a02a88b91c082106566ca236abe25d4ed88
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: cc7eba43ad9706fd76526f99a9d041053b735179
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105567347"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130246792"
 ---
 # <a name="tutorial-create-and-modify-peering-for-an-expressroute-circuit-using-the-azure-portal"></a>Tutorial: Erstellen und Ändern des Peerings für eine ExpressRoute-Leitung mithilfe des Azure-Portals
 
@@ -122,11 +122,6 @@ Sie können die Zeile für das Peering auswählen, das Sie ändern möchten, und
 ## <a name="azure-private-peering"></a><a name="private"></a>Privates Azure-Peering:
 
 Dieser Abschnitt unterstützt Sie beim Erstellen, Abrufen, Aktualisieren und Löschen der privaten Azure-Peeringkonfiguration für eine ExpressRoute-Verbindung.
-
-> [!IMPORTANT]
-> Die IPv6-Unterstützung für privates Peering befindet sich zurzeit in **Public Preview**. Wenn Sie Ihr virtuelles Netzwerk mit einer ExpressRoute-Verbindung verbinden möchten, bei der IPv6-basiertes privates Peering konfiguriert ist, stellen Sie sicher, dass Ihr virtuelles Netzwerk ein Dual Stack ist und die [hier](../virtual-network/ipv6-overview.md)beschriebenen Richtlinien einhält.
-> 
-> 
 
 ### <a name="to-create-azure-private-peering"></a>So erstellen Sie ein privates Azure-Peering
 

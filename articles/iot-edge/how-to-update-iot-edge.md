@@ -8,12 +8,12 @@ ms.date: 06/15/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: b1fdd85c2f954751a0ce7e2ec03dc87d4c685809
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.openlocfilehash: cc123b47ed10252b050743955015b89d434a42b0
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129660873"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130218071"
 ---
 # <a name="update-iot-edge"></a>Aktualisieren von IoT Edge
 
@@ -135,9 +135,9 @@ Wenn Sie ein Update auf die neueste Version von IoT Edge durchführen möchten, 
 >[!IMPORTANT]
 >Wenn Sie ein Gerät von der Public Preview-Version von IoT Edge für Linux unter Windows auf die allgemein verfügbare Version aktualisieren, müssen Sie Azure IoT Edge deinstallieren und neu installieren.
 >
->Wenn Sie ermitteln möchten, ob Sie derzeit die Public Preview-Version verwenden, navigieren Sie auf Ihrem Windows Gerät zu **Einstellungen** > **Apps**. Suchen in der Liste der Apps und Features nach **Azure IoT Edge**. Ist bei Ihnen die Version 1.0.x aufgeführt, wird die Public Preview-Version verwendet. In diesem Fall müssen Sie die App deinstallieren und [IoT Edge für Linux unter Windows erneut installieren und bereitstellen](how-to-install-iot-edge-on-windows.md). Ist bei Ihnen die Version 1.1.x aufgeführt, wird die allgemein verfügbare Version verwendet, und Sie können Updates über Microsoft Update erhalten.
+>Wenn Sie ermitteln möchten, ob Sie derzeit die Public Preview-Version verwenden, navigieren Sie auf Ihrem Windows Gerät zu **Einstellungen** > **Apps**. Suchen in der Liste der Apps und Features nach **Azure IoT Edge**. Ist bei Ihnen die Version 1.0.x aufgeführt, wird die Public Preview-Version verwendet. In diesem Fall müssen Sie die App deinstallieren und [IoT Edge für Linux unter Windows erneut installieren und bereitstellen](how-to-provision-single-device-linux-on-windows-symmetric.md). Ist bei Ihnen die Version 1.1.x aufgeführt, wird die allgemein verfügbare Version verwendet, und Sie können Updates über Microsoft Update erhalten.
 
-Mit IoT Edge für Linux unter Windows wird IoT Edge auf einer Linux-VM ausgeführt, die auf einem Windows-Gerät gehostet wird. Auf diesem virtuellen Computer ist IoT Edge vorinstalliert, und die IoT Edge-Komponenten können nicht manuell aktualisiert oder geändert werden. Stattdessen wird der virtuelle Computer mit Microsoft Update verwaltet, um die Komponenten automatisch auf dem neuesten Stand zu halten. 
+Mit IoT Edge für Linux unter Windows wird IoT Edge auf einer Linux-VM ausgeführt, die auf einem Windows-Gerät gehostet wird. Auf diesem virtuellen Computer ist IoT Edge vorinstalliert, und die IoT Edge-Komponenten können nicht manuell aktualisiert oder geändert werden. Stattdessen wird der virtuelle Computer mit Microsoft Update verwaltet, um die Komponenten automatisch auf dem neuesten Stand zu halten.
 
 Die neueste Version von Azure IoT Edge für Linux unter Windows finden Sie unter [EFLOW-Releases](https://aka.ms/AzEFLOW-Releases).
 
@@ -169,7 +169,37 @@ Um IoT Edge für Linux für Windows-Updates zu erhalten, sollte der Windows-Host
 <!-- 1.1 -->
 :::moniker range="iotedge-2018-06"
 
-Mit IoT Edge für Windows kann IoT Edge direkt auf dem Windows-Gerät ausgeführt werden. Anweisungen zur Aktualisierung mithilfe von PowerShell-Skripts finden Sie unter [Installieren und Verwalten von Azure IoT Edge für Windows](how-to-install-iot-edge-windows-on-windows.md).
+Mit IoT Edge für Windows kann IoT Edge direkt auf dem Windows-Gerät ausgeführt werden.
+
+Verwenden Sie den Befehl `Update-IoTEdge` zum Aktualisieren des Sicherheitsdaemons. Das Skript lädt per Pull automatisch die neueste Version des Sicherheitsdaemons herunter.
+
+```powershell
+. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Update-IoTEdge
+```
+
+Wenn Sie den Update-IoTEdge-Befehl ausführen, wird der Sicherheitsdaemon zusammen mit den beiden Runtimecontainerimages von Ihrem Gerät entfernt und aktualisiert. Die Datei „config.yaml“ verbleibt auf dem Gerät, ebenso wie Daten der Moby-Containerengine. Durch die Beibehaltung der Konfigurationsinformationen müssen Sie während des Aktualisierungsvorgangs die Verbindungszeichenfolge oder die Device Provisioning Service-Informationen für Ihr Gerät nicht erneut angeben.
+
+Wenn Sie ein Update auf eine bestimmte Version des Sicherheitsdaemons durchführen möchten, suchen Sie die gewünschte Zielversion aus dem Releasekanal 1.1 in [IoT Edge-Releases](https://github.com/Azure/azure-iotedge/releases). Laden Sie in dieser Version die Datei **Microsoft-Azure-IoTEdge.cab** herunter. Verwenden Sie anschließend den Parameter `-OfflineInstallationPath`, um auf den lokalen Speicherort der heruntergeladenen Datei zu verweisen. Beispiel:
+
+```powershell
+. {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Update-IoTEdge -OfflineInstallationPath <absolute path to directory>
+```
+
+>[!NOTE]
+>Der Parameter `-OfflineInstallationPath` sucht im angegebenen Verzeichnis nach der Datei **Microsoft-Azure-IoTEdge.cab**. Benennen Sie die Datei um, um das Architektursuffix zu entfernen, sofern vorhanden.
+
+Wenn Sie ein Gerät offline aktualisieren möchten, finden Sie die gewünschte Version unter [Azure IoT Edge-Releases](https://github.com/Azure/azure-iotedge/releases). Laden Sie in dieser Version die Dateien *IoTEdgeSecurityDaemon.ps1* und *Microsoft-Azure-IoTEdge.cab* herunter. Es ist wichtig, das PowerShell-Skript für dasselbe Release zu verwenden, zu dem die CAB-Datei gehört, weil die Unterstützung für Features sich in jedem Release ändert.
+
+Wenn die von Ihnen heruntergeladene CAB-Datei ein Suffix der Architektur enthält, benennen Sie die Datei in **Microsoft-Azure-IoTEdge.cab** um.
+
+Für ein Update mit Offlinekomponenten führen Sie eine [DOT-Quellentnahme](/powershell/module/microsoft.powershell.core/about/about_scripts#script-scope-and-dot-sourcing) in der lokalen Kopie des PowerShell-Skripts durch. Verwenden Sie dann den `-OfflineInstallationPath`-Parameter als Teil des `Update-IoTEdge`-Befehls, und geben Sie den absoluten Pfad zum Dateiverzeichnis an. Beispiel:
+
+```powershell
+. <path>\IoTEdgeSecurityDaemon.ps1
+Update-IoTEdge -OfflineInstallationPath <path>
+```
+
+Weitere Informationen zu Updateoptionen erhalten Sie mit dem Befehl `Get-Help Update-IoTEdge -full` oder in [PowerShell-Skripts für IoT Edge mit Windows-Containern](reference-windows-scripts.md).
 
 :::moniker-end
 <!-- end 1.1 -->
@@ -245,7 +275,7 @@ Einige der wichtigsten Unterschiede zwischen Version 1.2 und früheren Versione
 * Das Paket **libiothsm-std** wird nicht mehr verwendet. Wenn Sie das als Teil der IoT Edge-Version bereitgestellte Standardpaket verwendet haben, können Ihre Konfigurationen auf die neue Version übertragen werden. Wenn Sie eine andere Implementierung von „libiothsm-std“ verwendet haben, müssen alle vom Benutzer bereitgestellten Zertifikate wie das Geräteidentitätszertifikat, die Gerätezertifizierungsstelle und das Vertrauensstellungspaket neu konfiguriert werden.
 * Ein neuer Identitätsdienst, **aziot-identity-service**, wurde als Teil der Version 1.2 eingeführt. Dieser Dienst übernimmt die Identitätsbereitstellung und -verwaltung für IoT Edge und andere Gerätekomponenten, die mit IoT Hub kommunizieren müssen, wie z. B. [Device Update for IoT Hub](../iot-hub-device-update/understand-device-update.md).
 * Die Standardkonfigurationsdatei hat einen neuen Namen und Speicherort. Früher lautete er `/etc/iotedge/config.yaml`. Jetzt werden Ihre Gerätekonfigurationsinformationen standardmäßig in `/etc/aziot/config.toml` gespeichert. Mithilfe des Befehls `iotedge config import` können Konfigurationsinformationen aus dem alten Speicherort und die Syntax in den neuen Speicherort migriert werden.
-  * Der Importbefehl kann keine Zugriffsregeln für das vertrauenswürdige Plattformmodul (Trusted Platform Module, TPM) eines Geräts erkennen oder ändern. Wenn Ihr Gerät den TPM-Nachweis verwendet, müssen Sie die Datei „/etc/udev/rules.d/tpmaccess.rules“ manuell aktualisieren, um Zugriff auf den Dienst „aziottpm“ zu gewähren. Weitere Informationen finden Sie unter [Gewähren von IoT Edge-Zugriff auf das TPM](how-to-provision-devices-at-scale-linux-tpm.md?view=iotedge-2020-11&preserve-view=true#give-iot-edge-access-to-the-tpm).
+  * Der Importbefehl kann keine Zugriffsregeln für das vertrauenswürdige Plattformmodul (Trusted Platform Module, TPM) eines Geräts erkennen oder ändern. Wenn Ihr Gerät den TPM-Nachweis verwendet, müssen Sie die Datei „/etc/udev/rules.d/tpmaccess.rules“ manuell aktualisieren, um Zugriff auf den Dienst „aziottpm“ zu gewähren. Weitere Informationen finden Sie unter [Gewähren von IoT Edge-Zugriff auf das TPM](how-to-auto-provision-simulated-device-linux.md?view=iotedge-2020-11&preserve-view=true#give-iot-edge-access-to-the-tpm).
 * Die Workload-API in Version 1.2 speichert verschlüsselte Geheimnisse in einem neuen Format. Wenn Sie ein Upgrade von einer älteren Version auf Version 1.2 durchführen, wird der vorhandene Hauptverschlüsselungsschlüssel importiert. Die Workload-API kann Geheimnisse lesen, die im vorherigen Format mit dem importierten Verschlüsselungsschlüssel gespeichert wurden. Die Workload-API kann jedoch keine verschlüsselten Geheimnisse im alten Format schreiben. Sobald ein Geheimnis von einem Modul erneut verschlüsselt wurde, wird es im neuen Format gespeichert. In Version 1.2 verschlüsselte Geheimnisse können vom selben Modul in Version 1.1 nicht gelesen werden. Wenn Sie verschlüsselte Daten in einem vom Host eingebundenen Ordner oder Volume dauerhaft speichern, erstellen Sie immer eine Sicherungskopie der Daten *bevor* Sie ein Upgrade durchführen, um wenn nötig wieder ein Downgrade durchführen zu können.
 
 Vergewissern Sie sich vor dem Automatisieren von Updateprozessen, dass dies auf Testcomputern funktioniert.
@@ -320,7 +350,7 @@ Release Candidate-Versionen sind als Vorschauversionen nicht in der neusten Vers
 
 Informieren Sie sich anhand der Abschnitte in diesem Artikel, wie Sie ein IoT Edge-Gerät auf eine bestimmte Version des Sicherheitsdaemons oder der Laufzeitmodule aktualisieren.
 
-Wenn Sie IoT Edge installieren, statt eine vorhandene Installation zu aktualisieren, führen Sie die Schritte in [Offlineinstallation oder Installation einer bestimmten Version](how-to-install-iot-edge.md#offline-or-specific-version-installation-optional) aus.
+Wenn Sie IoT Edge installieren, statt eine vorhandene Installation zu aktualisieren, führen Sie die Schritte in [Offlineinstallation oder Installation einer bestimmten Version](how-to-provision-single-device-linux-symmetric.md#offline-or-specific-version-installation-optional) aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

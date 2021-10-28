@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 09/22/2021
 ms.author: cherylmc
-ms.openlocfilehash: 5f58c9c5c58b2706d0861aeef4a2dac2af64274f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 23d249bafca7b9ca89ab743d7aa1beb7ac60e868
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128605162"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130233111"
 ---
 # <a name="create-an-azure-bastion-host-using-azure-powershell"></a>Erstellen eines Azure Bastion-Hosts über Azure PowerShell
 
@@ -59,9 +59,9 @@ In diesem Abschnitt erfahren Sie, wie Sie eine neue Azure Bastion-Ressource üb
    ```azurepowershell-interactive
    $bastion = New-AzBastion -ResourceGroupName "myBastionRG" -Name "myBastion" -PublicIpAddress $publicip -VirtualNetwork $vnet
    ```
-## <a name="disassociate-the-vm-public-ip-address"></a>Aufheben der Zuordnung der öffentlichen IP-Adresse des virtuellen Computers
+## <a name="disassociate-the-vm-public-ip-address"></a>Aufheben der Zuordnung der öffentlichen IP-Adresse einer VM
 
-Azure Bastion verwendet nicht die öffentliche IP-Adresse, um eine Verbindung mit dem virtuellen Clientcomputer herzustellen. Wenn Sie die öffentliche IP-Adresse für Ihren virtuellen Computer nicht benötigen, können Sie die Zuordnung der öffentlichen IP-Adresse aufheben, indem Sie die Schritte im Artikel [Trennen einer öffentlichen IP-Adresse von einem virtuellen Azure-Computer](../virtual-network/remove-public-ip-address-vm.md) ausführen.
+Azure Bastion verwendet nicht die öffentliche IP-Adresse, um eine Verbindung mit dem virtuellen Clientcomputer herzustellen. Wenn Sie die öffentliche IP-Adresse für Ihre VM nicht benötigen, können Sie die Zuordnung dieser Adresse aufheben, indem Sie die Schritte im Artikel [Trennen einer öffentlichen IP-Adresse von einem virtuellen Azure-Computer](../virtual-network/ip-services/remove-public-ip-address-vm.md) ausführen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

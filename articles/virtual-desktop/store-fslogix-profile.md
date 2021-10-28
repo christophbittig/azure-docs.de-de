@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 04/27/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: ba1ae8c108f02dbd104361e1efe39f5583011124
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 78dae3bbf31d4f22047288861afeebb11ee4648f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111755697"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130232094"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-azure-virtual-desktop"></a>Speicheroptionen für FSLogix-Profilcontainer in Azure Virtual Desktop
 
@@ -29,7 +29,7 @@ In den folgenden Tabellen werden die Speicherlösungen verglichen, die in Azure 
 |Plattformdienst|Ja, native Azure-Lösung|Ja, native Azure-Lösung|Nein, selbst verwaltet|
 |Regionale Verfügbarkeit|Alle Regionen|[Bestimmte Regionen](https://azure.microsoft.com/global-infrastructure/services/?products=netapp&regions=all)|Alle Regionen|
 |Redundanz|Lokal redundant/zonenredundant/georedundant/geozonenredundant|Lokal redundant|Lokal redundant/zonenredundant/georedundant|
-|Tarife und Leistung| Standard (Transaktionsoptimiert)<br>Premium<br>Bis zu 100.000 IOPS pro Freigabe mit 10 GBit/s pro Freigabe bei einer ungefähren Wartezeit von 3 ms|Standard<br>Premium<br>Ultra<br>Bis zu 4,5 GBit/s bei einer ungefähren Wartezeit von 1 ms IOPS- und Leistungsdetails finden Sie unter [Überlegungen zur Leistung von Azure NetApp Files](../azure-netapp-files/azure-netapp-files-performance-considerations.md) und in [Häufig gestellte Fragen (FAQ)](../azure-netapp-files/azure-netapp-files-faqs.md#how-do-i-convert-throughput-based-service-levels-of-azure-netapp-files-to-iops).|HDD Standard: bis zu 500 IOPS pro Datenträger<br>SSD Standard: bis zu 4.000 IOPS pro Datenträger<br>SSD Premium: bis zu 20.000 IOPS pro Datenträger<br>Für direkte Speicherplätze werden Premium-Datenträger empfohlen.|
+|Tarife und Leistung| Standard (Transaktionsoptimiert)<br>Premium<br>Bis zu 100.000 IOPS pro Freigabe mit 10 GBit/s pro Freigabe bei einer ungefähren Wartezeit von 3 ms|Standard<br>Premium<br>Ultra<br>Bis zu 4,5 GBit/s bei einer ungefähren Wartezeit von 1 ms IOPS- und Leistungsdetails finden Sie unter [Überlegungen zur Leistung von Azure NetApp Files](../azure-netapp-files/azure-netapp-files-performance-considerations.md) und in [Häufig gestellte Fragen (FAQ)](../azure-netapp-files/faq-performance.md#how-do-i-convert-throughput-based-service-levels-of-azure-netapp-files-to-iops).|HDD Standard: bis zu 500 IOPS pro Datenträger<br>SSD Standard: bis zu 4.000 IOPS pro Datenträger<br>SSD Premium: bis zu 20.000 IOPS pro Datenträger<br>Für direkte Speicherplätze werden Premium-Datenträger empfohlen.|
 |Capacity|100 TiB pro Freigabe, bis zu 5 PiB pro universellem Konto |100 TiB pro Volume, bis zu 12,5 PiB pro Abonnement|Maximal 32 TiB pro Datenträger|
 |Erforderliche Infrastruktur|Mindestgröße für Freigaben: 1 GiB|Mindestgröße für Kapazitätspools: 4 TiB. Mindestgröße für Volumes: 100 GiB|Zwei virtuelle Computer in Azure IaaS (+ Cloudzeuge) oder mindestens drei virtuelle Computer ohne und Kosten für Datenträger|
 |Protokolle|SMB 3.0/2.1, NFSv4.1 (Vorschau), REST|NFSv3, NFSv4.1 (Vorschauversion), SMB 3.x/2.x|NFSv3, NFSv4.1, SMB 3.1|
@@ -41,7 +41,7 @@ In den folgenden Tabellen werden die Speicherlösungen verglichen, die in Azure 
 |Zugriff|Cloud, lokal und hybrid (Azure-Dateisynchronisierung)|Cloud, lokal (über ExpressRoute)|Cloud, lokal|
 |Backup|Azure Backup-Momentaufnahmeintegration|Azure NetApp Files-Momentaufnahmen|Azure Backup-Momentaufnahmeintegration|
 |Sicherheit und Compliance|[Alle von Azure unterstützten Zertifikate](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|ISO abgeschlossen|[Alle von Azure unterstützten Zertifikate](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|
-|Azure Active Directory-Integration|[Natives Active Directory und Azure Active Directory Domain Services](../storage/files/storage-files-active-directory-overview.md)|[Azure Active Directory Domain Services und Active Directory (nativ)](../azure-netapp-files/azure-netapp-files-faqs.md#does-azure-netapp-files-support-azure-active-directory)|Nur Unterstützung von Active Directory (nativ) oder Azure Active Directory Domain Services|
+|Azure Active Directory-Integration|[Natives Active Directory und Azure Active Directory Domain Services](../storage/files/storage-files-active-directory-overview.md)|[Azure Active Directory Domain Services und Active Directory (nativ)](../azure-netapp-files/faq-smb.md#does-azure-netapp-files-support-azure-active-directory)|Nur Unterstützung von Active Directory (nativ) oder Azure Active Directory Domain Services|
 
 Nachdem Sie sich für eine Speichermethode entschieden haben, können Sie sich unter [Azure Virtual Desktop – Preise](https://azure.microsoft.com/pricing/details/virtual-desktop/) über unsere Tarife informieren.
 

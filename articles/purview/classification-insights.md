@@ -6,12 +6,12 @@ ms.author: bagol
 ms.service: purview
 ms.topic: how-to
 ms.date: 09/27/2021
-ms.openlocfilehash: 642611a680e0848208aa7e42493fee6fc16fb4d7
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: c5f0f409f009d66afd0cb6103e2018c527c0b0a2
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129208844"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130246059"
 ---
 # <a name="classification-insights-about-your-data-from-azure-purview"></a>Klassifizierungserkenntnisse zu Ihren Daten aus Azure Purview
 
@@ -35,7 +35,7 @@ Stellen Sie vor dem Beginn mit Purview-Erkenntnissen sicher, dass Sie die folgen
 
 - Einrichten Ihrer Azure-Ressourcen und Füllen der entsprechenden Konten mit Testdaten
 
-- Einrichten und Abschließen einer Überprüfung der Testdaten in den einzelnen Datenquellen. Weitere Informationen finden Sie unter [Verwalten von Datenquellen in Azure Purview](manage-data-sources.md) und [Erstellen eines Überprüfungsregelsatzes](create-a-scan-rule-set.md).
+- Einrichten und Abschließen einer Überprüfung der Testdaten in den einzelnen Datenquellen. Weitere Informationen finden Sie unter [Verwalten von Datenquellen in Azure Purview](manage-data-sources.md) und [Erstellen eines Scan-Regelsatzes](create-a-scan-rule-set.md).
 
 - Anmeldung bei Purview mit einem Konto mit der Rolle [„Datenleser“ oder „Datenkurator“](catalog-permissions.md#roles)
 
@@ -64,7 +64,7 @@ Für Purview werden die gleichen Arten von vertraulichen Informationen wie in Mi
 
    Die Hauptseite für **Klassifizierungserkenntnisse** zeigt die folgenden Bereiche an:
 
-   |Bereich  |BESCHREIBUNG  |
+   |Bereich  |Beschreibung  |
    |---------|---------|
    |**Übersicht über Quellen mit Klassifizierungen**     |Zeigt Kacheln mit folgenden Informationen an: <br>- Die Anzahl der in Ihren Daten gefundenen Abonnements <br>- Die Anzahl der in Ihren Daten gefundenen eindeutigen Klassifizierungen <br>- Die Anzahl der gefundenen klassifizierten Quellen <br>- Die Anzahl der gefundenen klassifizierten Dateien <br>- Die Anzahl der gefundenen klassifizierten Tabellen         |
    |**Hauptquellen mit klassifizierten Daten (letzte 30 Tage)**     |Zeigt den Trend über die letzten 30 Tage für die Anzahl der gefundenen Quellen mit klassifizierten Daten.            |
@@ -109,6 +109,3 @@ Erfahren Sie mehr über Azure Purview-Erkenntnisberichte
 
 > [!div class="nextstepaction"]
 > [Vertraulichkeitsbezeichnungs-Erkenntnisse](./sensitivity-insights.md)
-
-> [!div class="nextstepaction"]
-> [Dateierweiterungs-Erkenntnisse](file-extension-insights.md)

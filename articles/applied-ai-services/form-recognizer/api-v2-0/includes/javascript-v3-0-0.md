@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 05/25/2021
 ms.author: lajanuar
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 9b0af9be953f664b962cf780cee0143594811401
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 54bd889d4c6a82b911441b83fb76fe432bc8665c
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129725460"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130265932"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -84,7 +84,7 @@ Mit der Formularerkennung können Sie zwei verschiedene Clienttypen erstellen. D
 
 * Erkennen von Formularfeldern und -inhalten mithilfe von benutzerdefinierten Modellen, die zur Analyse Ihrer benutzerdefinierten Formulare trainiert wurden. Diese Werte werden in einer Sammlung von `RecognizedForm`-Objekten zurückgegeben.
 * Erkennen von Formularinhalten (einschließlich Tabellen, Zeilen und Wörtern), ohne dass ein Modell trainiert werden muss. Der Formularinhalt wird in einer Sammlung von `FormPage`-Objekten zurückgegeben.
-* Erkennen gängiger Felder in US-amerikanischen Belegen, Visitenkarten, Rechnungen und Ausweisdokumenten unter Verwendung eines vorab trainierten Modells für den Formularerkennungsdienst.
+* Erkennen gängiger Felder in US-amerikanischen Belegen, Visitenkarten, Rechnungen und Ausweisdokumenten unter Verwendung eines vorab trainierten Modells für den Formularerkennungsdienst
 
 ### <a name="formtrainingclient"></a>FormTrainingClient
 
@@ -151,7 +151,7 @@ cell [1,5] has text PT
 
 ## <a name="analyze-receipts"></a>Analysieren von Belegen
 
-In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe eines vorab trainierten Belegmodells gängige Felder in US-Belegen analysieren und extrahieren. Weitere Informationen zur Beleganalyse finden Sie im [Konzeptleitfaden zu Belegen](../../concept-receipts.md).
+In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe eines vorab trainierten Belegmodells gängige Felder in US-Belegen analysieren und extrahieren. Weitere Informationen zur Beleganalyse finden Sie im [Konzeptleitfaden zu Belegen](../../concept-receipt.md).
 
 Verwenden Sie die Methode `beginRecognizeReceiptsFromUrl`, um Belege aus einem URI zu analysieren. Der folgende Code verarbeitet einen Beleg am angegebenen URI und gibt die wichtigsten Felder und Werte an der Konsole aus.
 

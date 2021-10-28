@@ -8,12 +8,12 @@ ms.service: api-management
 ms.topic: article
 ms.date: 02/09/2021
 ms.author: danlep
-ms.openlocfilehash: 65f45758ab00d9e549ac0e52287a198bf5734acd
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 72bc12589cb63e2fcecc5568dbf628ccacb85394
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128671201"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130224629"
 ---
 # <a name="use-named-values-in-azure-api-management-policies"></a>Verwenden von benannten Werten in Azure API Management-Richtlinien
 
@@ -33,7 +33,7 @@ ms.locfileid: "128671201"
 
 Plain-Werte oder -Geheimnisse können [Richtlinienausdrücke](./api-management-policy-expressions.md) enthalten. Der Ausdruck `@(DateTime.Now.ToString())` gibt z. B. eine Zeichenfolge zurück, die das aktuelle Datum und die Uhrzeit enthält.
 
-Ausführliche Informationen zu den Attributen benannter Werte finden Sie in der [REST-API-Referenz](/rest/api/apimanagement/2020-06-01-preview/namedvalue/createorupdate) von API Management.
+Ausführliche Informationen zu den Attributen benannter Werte finden Sie in der [REST-API-Referenz](/rest/api/apimanagement/2021-04-01-preview/named-value/create-or-update) von API Management.
 
 ## <a name="key-vault-secrets"></a>Key Vault-Geheimnisse
 
@@ -206,4 +206,3 @@ Wenn Sie einen benannten Wert löschen möchten, wählen Sie den Namen und dann 
     -   [Richtlinienausdrücke](./api-management-policy-expressions.md)
 
 [api-management-send-results]: ./media/api-management-howto-properties/api-management-send-results.png
-

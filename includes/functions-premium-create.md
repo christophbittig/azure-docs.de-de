@@ -1,19 +1,15 @@
 ---
-title: include file
-description: include file
-services: functions
-author: jeffhollan
+author: ggailey777
 ms.service: azure-functions
 ms.topic: include
 ms.date: 04/24/2020
-ms.author: jehollan, glenga
-ms.custom: include file
-ms.openlocfilehash: cdeba09c91bee72508632b8468126150017df7cd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: glenga
+ms.openlocfilehash: 398790187fe29eb96a910765b052ad94a827051e
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98187416"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130265405"
 ---
 1. Wählen Sie im Menü des Azure-Portals oder auf der **Startseite** die Option **Ressource erstellen** aus.
 
@@ -21,7 +17,7 @@ ms.locfileid: "98187416"
 
 1. Verwenden Sie auf der Seite **Grundlagen** die Funktions-App-Einstellungen, die in der folgenden Tabelle angegeben sind:
 
-    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG |
+    | Einstellung      | Vorgeschlagener Wert  | Beschreibung |
     | ------------ | ---------------- | ----------- |
     | **Abonnement** | Ihr Abonnement | Das Abonnement, unter dem diese neue Funktions-App erstellt wird. |
     | **[Ressourcengruppe](../articles/azure-resource-manager/management/overview.md)** |  *myResourceGroup* | Der Name der neuen Ressourcengruppe, in der die Funktionen-App erstellt wird |

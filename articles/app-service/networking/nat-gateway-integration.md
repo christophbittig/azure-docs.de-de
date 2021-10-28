@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 08/04/2021
 ms.author: madsd
 ms.custom: seodec18
-ms.openlocfilehash: 851e1a04b7fa5ac14848c9d679118a8ebf4ada77
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e5a6f2fe52a9b74f74047a5a9512e40bb267161f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346842"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130245282"
 ---
 # <a name="virtual-network-nat-gateway-integration"></a>Virtual Network NAT Gateway-Integration
 
@@ -34,8 +34,8 @@ Weitere Informationen und Preise finden Sie in der [NAT-Gateway-Übersicht](../.
 
 Um die NAT-Gatewayintegration mit App Service konfigurieren zu können, müssen Sie die folgenden Schritte ausführen:
 
-* Konfigurieren Sie die regionale VNET-Integration mit Ihrer App wie unter [Integrieren Ihrer App in ein Azure Virtual Network](../web-sites-integrate-with-vnet.md) beschrieben.
-* Stellen Sie sicher, dass [Route All](../web-sites-integrate-with-vnet.md#routes) (Gesamten Datenverkehr weiterleiten) für Ihre VNET-Integration aktiviert ist, damit der Internet-Datenverkehr entsprechend der Routen in Ihrem VNet ebenfalls weitergeleitet wird.
+* Konfigurieren Sie die regionale VNET-Integration mit Ihrer App wie unter [Integrieren Ihrer App in ein Azure Virtual Network](../overview-vnet-integration.md) beschrieben.
+* Stellen Sie sicher, dass [Route All](../overview-vnet-integration.md#routes) (Gesamten Datenverkehr weiterleiten) für Ihre VNET-Integration aktiviert ist, damit der Internet-Datenverkehr entsprechend der Routen in Ihrem VNet ebenfalls weitergeleitet wird.
 * Stellen Sie ein NAT-Gateway mit einer öffentlichen IP-Adresse bereit und ordnen Sie es dem Subnetz der VNET-Integration zu.
 
 Einrichten des NAT-Gateways über das Portal:
@@ -84,4 +84,4 @@ Das NAT-Gateway unterstützt sowohl öffentliche IP-Adressen als auch Präfixe f
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zum NAT-Gateway finden Sie in der [NAT-Gatewaydokumentation](../../virtual-network/nat-gateway/nat-overview.md).
 
-Weitere Informationen zur VNET-Integration finden Sie in der [Dokumentation zur VNET-Integration.](../web-sites-integrate-with-vnet.md)
+Weitere Informationen zur VNET-Integration finden Sie in der [Dokumentation zur VNET-Integration.](../overview-vnet-integration.md)

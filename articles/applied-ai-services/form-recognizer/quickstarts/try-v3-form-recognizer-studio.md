@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 09/14/2021
 ms.author: sajagtap
-ms.openlocfilehash: 8c0fee509dabc0d7d0462dd28e14c453615af52e
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: bb1c2ee770380b5f8689b1dd8f25712293a0bcb2
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130000523"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130220212"
 ---
 # <a name="get-started-form-recognizer-studio--preview"></a>Erste Schritte: Formularerkennung Studio | Vorschau
 
@@ -36,14 +36,14 @@ Neben dem Azure-Konto und einer Formularerkennung- oder Cognitive Services-Resso
 
 **Standardleistung**[ **Azure Blob Storage Konto**](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM). Sie erstellen Container zum Speichern und Organisieren Ihrer Blobdaten unter Ihrem Speicherkonto. Wenn Sie nicht wissen, wie Sie ein Azure Speicherkonto mit einem Container erstellen können, befolgen Sie diese Schnellstarts:
 
-  * [**Erstellen Sie ein Speicherkonto**](/azure/storage/common/storage-account-create). Stellen Sie bei der Erstellung Ihres Speicherkontos sicher, dass Sie Leistung **Standard** im Feld **Instanzdetails -> Leistung** auswählen.
-  * [**Erstellen Sie einen Container**](/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container). Stellen Sie bei der Erstellung Ihres Containers das Feld **Öffentliche Zugriffsebene** auf **Container**(anonymer Lesezugriff für Container und Blobs) im dem Fenster **Neuer Container**.
+  * [**Erstellen Sie ein Speicherkonto**](../../../storage/common/storage-account-create.md). Stellen Sie bei der Erstellung Ihres Speicherkontos sicher, dass Sie Leistung **Standard** im Feld **Instanzdetails -> Leistung** auswählen.
+  * [**Erstellen Sie einen Container**](../../../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container). Stellen Sie bei der Erstellung Ihres Containers das Feld **Öffentliche Zugriffsebene** auf **Container**(anonymer Lesezugriff für Container und Blobs) im dem Fenster **Neuer Container**.
 
 ### <a name="configure-cors"></a>Konfigurieren von CORS
 
 Für Ihr Azure-Speicherkonto muss [CORS (Cross Origin Resource Sharing)](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) konfiguriert werden, damit über Formularerkennung Studio auf das Konto zugegriffen werden kann. Zum Konfigurieren von CORS im Azure-Portal benötigen Sie Zugriff auf das Blatt „CORS“ Ihres Speicherkontos.
 
-:::image type="content" source="../media/quickstarts/storage-cors-example.png" alt-text="Screenshot: CORS-Konfiguration für ein Speicherkonto":::
+:::image type="content" source="../media/quickstarts/cors-updated-image.png" alt-text="Screenshot: CORS-Konfiguration für ein Speicherkonto":::
 
 1. Wählen Sie das Blatt „CORS“ für das Speicherkonto aus.
 2. Erstellen Sie zunächst einen neuen CORS-Eintrag im Blob-Dienst.
@@ -74,7 +74,7 @@ CORS sollte jetzt für die Verwendung des Speicherkontos über Formularerkennung
     :::image border="true" type="content" source="../media/sas-tokens/upload-blob-window.png" alt-text="Screenshot: Fenster Blob hochladen im Azure-Portal.":::
 
 > [!NOTE]
-> Standardmäßig werden von Studio Formulardokumente verwendet, die sich im Stammverzeichnis Ihres Containers befinden. Sie können aber auch Daten verwenden, die in Ordnern angeordnet sind, wenn Sie dies in den Schritten zum Erstellen des Projekts für benutzerdefinierte Formulare angeben. *Siehe* [**Organisieren Sie Ihre Daten in Unterordnern**](/azure/applied-ai-services/form-recognizer/build-training-data-set#organize-your-data-in-subfolders-optional)
+> Standardmäßig werden von Studio Formulardokumente verwendet, die sich im Stammverzeichnis Ihres Containers befinden. Sie können aber auch Daten verwenden, die in Ordnern angeordnet sind, wenn Sie dies in den Schritten zum Erstellen des Projekts für benutzerdefinierte Formulare angeben. *Siehe* [**Organisieren Sie Ihre Daten in Unterordnern**](../build-training-data-set.md#organize-your-data-in-subfolders-optional)
 
 ## <a name="sign-into-the-form-recognizer-studio-preview"></a>Anmelden bei Formularerkennung Studio (Vorschau)
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/10/2021
 ms.author: duau
 ms.custom: references_regions
-ms.openlocfilehash: b6483ef0e034f695da1e03475ca2a4b716773684
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 1fcdeaaee2ebafbfd8e97577ed87a5ef0e545cd5
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349472"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130226393"
 ---
 # <a name="about-expressroute-fastpath"></a>Informationen zu ExpressRoute FastPath
 
@@ -33,11 +33,6 @@ Zum Konfigurieren von FastPath muss das Gateway für virtuelle Netzwerke eines d
 
 * Höchstleistung
 * ErGw3AZ
-
-> [!IMPORTANT]
-> Wenn Sie FastPath mit dem IPv6-basierten privaten Peering über ExpressRoute verwenden möchten, wählen Sie unbedingt ErGw3AZ für die **SKU** aus. Beachten Sie, dass dies nur für Verbindungen mit ExpressRoute Direct verfügbar ist.
-> 
->
 
 ## <a name="limitations"></a>Einschränkungen
 

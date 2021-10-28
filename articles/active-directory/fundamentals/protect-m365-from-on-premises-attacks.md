@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 456f635e3cd7be91064a15b87c0da627678fdc45
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 73bd6ed2c94ca696eefd4e7a3dfcf5b78cc6dd99
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113732978"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130251184"
 ---
 # <a name="protecting-microsoft-365-from-on-premises-attacks"></a>Schützen von Microsoft 365 vor lokalen Angriffen
 
@@ -172,7 +172,7 @@ Verwenden Sie Azure AD-Funktionen für die sichere Geräteverwaltung.
 
     -   Verwenden Sie [Microsoft Intune](https://www.microsoft.com/microsoft-365/enterprise-mobility-security/microsoft-intune) als Autorisierungsquelle für alle Workloads zur Geräteverwaltung.
 
--   [**Bereitstellen von Geräten mit privilegiertem Zugriff:** ](/security/compass/privileged-access-devices#device-roles-and-profiles) Nutzen Sie den privilegierten Zugriff, um Microsoft 365 und Azure AD als Teil eines vollständigen Ansatzes zum [Schützen des privilegierten Zugriffs](/security/compass/overview) zu verwalten.
+-   [**Bereitstellen von Geräten mit privilegiertem Zugriff:**](/security/compass/privileged-access-devices#device-roles-and-profiles) Nutzen Sie den privilegierten Zugriff, um Microsoft 365 und Azure AD als Teil eines vollständigen Ansatzes zum [Schützen des privilegierten Zugriffs](/security/compass/overview) zu verwalten.
 
 ## <a name="workloads-applications-and-resources"></a>Workloads, Anwendungen und Ressourcen 
 
@@ -283,7 +283,7 @@ Definieren Sie eine Strategie für die Protokollspeicherung und -aufbewahrung, u
 
    * Risikoereignisse 
 
-    Azure AD bietet [Azure Monitor-Integration](../reports-monitoring/concept-activity-logs-azure-monitor.md) für die Protokolle zu Anmeldeaktivitäten und Überwachungsprotokolle. Risikoereignisse können mithilfe der [Microsoft Graph-API](/graph/api/resources/identityriskevent) erfasst werden. Sie können [Azure AD-Protokolle zu Azure Monitor-Protokollen streamen](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md).
+    Azure AD bietet [Azure Monitor-Integration](../reports-monitoring/concept-activity-logs-azure-monitor.md) für die Protokolle zu Anmeldeaktivitäten und Überwachungsprotokolle. Risikoereignisse können mithilfe der [Microsoft Graph-API](/graph/api/resources/identityprotection-root) erfasst werden. Sie können [Azure AD-Protokolle zu Azure Monitor-Protokollen streamen](../reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md).
 
 * **Sicherheitsprotokolle des Betriebssystems bei Hybridinfrastrukturen:** Bei einer Hybrididentitätsinfrastruktur sollten angesichts der Auswirkungen auf die Oberfläche alle Betriebssystemprotokolle archiviert und sorgfältig als System der Ebene 0 überwacht werden. Schließen Sie folgende Elemente ein: 
 

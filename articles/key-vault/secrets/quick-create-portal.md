@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 0c1a3362c4f1dfd3396ccd4704933d06d2611414
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: f18174b1d3c38e571d2efaedfc41debec29f40ac
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107814115"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130263472"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe des Azure-Portals
 
@@ -56,11 +56,11 @@ Weitere Informationen zu Geheimnisattributen finden Sie unter [Informationen zu 
 
 Wenn Sie auf die aktuelle Version klicken, sehen Sie den Wert, den Sie im vorherigen Schritt angegeben haben.
 
-![Geheimniseigenschaften](../media/quick-create-portal/current-version-hidden.png)
+:::image type="content" source="../media/quick-create-portal/current-version-hidden.png" alt-text="Geheimniseigenschaften":::
 
 Wenn Sie im rechten Bereich auf die Schaltfläche „Geheimniswert anzeigen“ klicken, wird der ausgeblendete Wert angezeigt. 
 
-![Angezeigter geheimer Wert](../media/quick-create-portal/current-version-shown.png)
+:::image type="content" source="../media/quick-create-portal/current-version-shown.png" alt-text="Angezeigter geheimer Wert":::
 
 Sie können auch die [Azure CLI]() oder [Azure PowerShell]() verwenden, um das zuvor erstellte Geheimnis abzurufen.
 

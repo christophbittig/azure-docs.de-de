@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/04/2020
 ms.author: danlep
 ms.service: api-management
-ms.openlocfilehash: d7b6f8ed20f1af7b4a6f512b9aa4611936f784fd
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 18f117f64c6f97ee847f2e82d0e8fea509e17514
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128623910"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130253438"
 ---
 # <a name="troubleshooting-client-response-timeouts-and-errors-with-api-management"></a>Problembehandlung bei Timeouts und Fehlern bei Clientantworten in API Management
 
@@ -61,7 +61,7 @@ Weitere Informationen finden Sie unter [Azure Load Balancer als Proxy für ausge
 
 Wenn die Back-End-API in einem Azure-Dienst gehostet wird, der *Dienstendpunkte* wie App Service unterstützt, können Sie Probleme mit der SNAT-Portauslastung vermeiden, indem Sie die APIM-Instanz und den Back-End-Dienst im gleichen virtuellen Netzwerk platzieren und dieses über [Dienstendpunkte](../virtual-network/virtual-network-service-endpoints-overview.md) oder [private Endpunkte](../private-link/private-endpoint-overview.md) verfügbar machen. Wenn Sie ein gemeinsames VNET verwenden und Dienstendpunkte im Integrationssubnetz platzieren, umgeht der ausgehende Datenverkehr von der APIM-Instanz an diese Dienste das Internet, wodurch Einschränkungen von SNAT-Ports vermieden werden. Auch treten keine Probleme bei ausgehenden SNAT-Ports an dieses Ziel auf, wenn Sie ein VNET und private Endpunkte verwenden.
 
-Weitere Informationen finden Sie unter [Verwenden von Azure API Management mit virtuellen Netzwerken](api-management-using-with-vnet.md) und [Integrieren von App Service in ein virtuelles Azure-Netzwerk](../app-service/web-sites-integrate-with-vnet.md).
+Weitere Informationen finden Sie unter [Verwenden von Azure API Management mit virtuellen Netzwerken](api-management-using-with-vnet.md) und [Integrieren von App Service in ein virtuelles Azure-Netzwerk](../app-service/overview-vnet-integration.md).
 
 ### <a name="place-your-apim-in-a-virtual-network-and-route-outbound-calls-to-azure-firewall"></a>Platzieren des APIM-Diensts in einem virtuellen Netzwerk und Weiterleiten von ausgehenden Aufrufen an Azure Firewall
 

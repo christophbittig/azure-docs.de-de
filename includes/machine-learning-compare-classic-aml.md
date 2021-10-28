@@ -4,12 +4,12 @@ ms.service: machine-learning
 ms.topic: include
 ms.date: 03/08/2021
 ms.author: peterlu
-ms.openlocfilehash: d6d73754a22a3a0870a6ea141e4a21e7f2ccff09
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 83671800c0068ad606b6dbdad7448d55a1aea8cf
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122688769"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130287282"
 ---
 In der folgenden Tabelle sind die wichtigsten Unterschiede zwischen ML Studio (Classic) und Azure Machine Learning zusammengefasst:
 
@@ -25,6 +25,6 @@ In der folgenden Tabelle sind die wichtigsten Unterschiede zwischen ML Studio (C
 | Modellformat | Proprietäres Format, nur Studio (klassisch) | Mehrere unterstützte Formate, je nach Typ des Trainingsauftrags |
 | Automatisiertes Modelltraining und Optimieren von Hyperparametern |  Nicht unterstützt | [Unterstützt](../articles/machine-learning/concept-automated-ml.md). Code First-Optionen und codefreie Optionen | 
 | Datendrifterkennung | Nicht unterstützt | [Unterstützt](../articles/machine-learning/how-to-monitor-datasets.md) |
-| Datenbezeichnungsprojekte | Nicht unterstützt | [Unterstützt](../articles/machine-learning/how-to-create-labeling-projects.md) |
+| Datenbezeichnungsprojekte | Nicht unterstützt | [Unterstützt](../articles/machine-learning/how-to-create-image-labeling-projects.md) |
 | Rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) | Nur Rolle „Mitwirkender“ und „Besitzer“ | [Flexible Rollendefinition und RBAC-Steuerung](../articles/machine-learning/how-to-assign-roles.md) |
 | KI-Katalog | Unterstützt ([https://gallery.azure.ai/](https://gallery.azure.ai/)) | Nicht unterstützt <br><br> Lernen mit [Python SDK-Beispielnotebooks](https://github.com/Azure/MachineLearningNotebooks) |

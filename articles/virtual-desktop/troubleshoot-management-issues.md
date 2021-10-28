@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 06/19/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 529cf643cb68bc806aef991142e68f42fccc0d42
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.openlocfilehash: 7632bbdda8515476cc88fa0735fcd41b9eb5444a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112420694"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130245813"
 ---
 # <a name="management-issues"></a>Verwaltungsprobleme
 
@@ -41,4 +41,4 @@ Zur Behebung des Problems muss sich der Administrator vor der Anmeldung beim Azu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zu allgemeinen Fehlerszenarien, die von der Diagnosefunktion identifiziert werden können, finden Sie unter [Identifizieren und Diagnostizieren von Problemen](diagnostics-role-service.md#common-error-scenarios).
+Informationen zu allgemeinen Fehlerszenarien, die von der Diagnosefunktion identifiziert werden können, finden Sie unter [Identifizieren und Diagnostizieren von Problemen](./troubleshoot-set-up-overview.md).

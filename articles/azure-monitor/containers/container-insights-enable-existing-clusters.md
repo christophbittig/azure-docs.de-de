@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie die Überwachung eines Azur
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.custom: devx-track-terraform, devx-track-azurepowershell
-ms.openlocfilehash: 7ab840f2de90f316461c84e2698e9b760c082e03
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: ea45fafbd1db7a3b0d227f8693d3d8c85777f116
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108318637"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130240108"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>Aktivieren der Überwachung von bereits bereitgestellten Azure Kubernetes Service-Clustern (AKS)
 
@@ -17,7 +17,7 @@ In diesem Artikel wird beschrieben, wie Container Insights eingerichtet und verw
 
 Sie können die Überwachung eines bereits bereitgestellten AKS-Clusters mit einer der unterstützten Methoden aktivieren:
 
-* Azure CLI
+* Azure-Befehlszeilenschnittstelle
 * Terraform
 * [Von Azure Monitor aus](#enable-from-azure-monitor-in-the-portal) oder [direkt von dem AKS-Cluster aus](#enable-directly-from-aks-cluster-in-the-portal) im Azure-Portal
 * Mit der [bereitgestellten Azure Resource Manager-Vorlage](#enable-using-an-azure-resource-manager-template) mithilfe des Azure PowerShell-Cmdlets `New-AzResourceGroupDeployment` oder mit der Azure CLI.
@@ -160,7 +160,7 @@ Diese Methode umfasst zwei JSON-Vorlagen. Eine Vorlage gibt die Konfiguration zu
 >Die Vorlage muss in derselben Ressourcengruppe wie der Cluster bereitgestellt werden.
 >
 
-Der Log Analytics-Arbeitsbereich muss erstellt werden, bevor Sie die Überwachung mit Azure PowerShell oder CLI aktivieren. Arbeitsbereiche können über den [Azure Resource Manager](../logs/resource-manager-workspace.md), [PowerShell](../logs/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json) oder das [Azure-Portal](../logs/quick-create-workspace.md) eingerichtet werden.
+Der Log Analytics-Arbeitsbereich muss erstellt werden, bevor Sie die Überwachung mit Azure PowerShell oder CLI aktivieren. Arbeitsbereiche können über den [Azure Resource Manager](../logs/resource-manager-workspace.md), [PowerShell](../logs/powershell-workspace-configuration.md?toc=%2fpowershell%2fmodule%2ftoc.json) oder das [Azure-Portal](../logs/quick-create-workspace.md) eingerichtet werden.
 
 Wenn Sie mit der Bereitstellung von Ressourcen mithilfe einer Vorlage nicht vertraut sind, finden Sie weitere Informationen unter:
 

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: AlainDormehlMSFT
 ms.author: aldorme
 ms.reviewer: mathoma, wiassaf
-ms.date: 06/12/2020
-ms.openlocfilehash: f05770143719b616aa0e195d6b719ae28da9dcd9
-ms.sourcegitcommit: b11257b15f7f16ed01b9a78c471debb81c30f20c
+ms.date: 10/18/2021
+ms.openlocfilehash: 3277952383d7a328c08a15b5958289ce322e01dd
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/08/2021
-ms.locfileid: "111593034"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130239450"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance-preview"></a>Intelligent Insights mit KI für die Überwachung und Problembehandlung der Datenbankleistung (Vorschau)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -59,11 +59,6 @@ Festgestellte Leistungsbeeinträchtigungen der Datenbank werden im SQLInsights-P
 | Erkennungen | Während eines Ereignisses wurde eine Erkennung auf der Datenbank identifiziert. Es gibt 15 Erkennungsmuster. Nähere Informationen finden Sie unter [Troubleshoot database performance issues with Intelligent Insights (Behandeln von Problemen mit der Leistung mithilfe von Intelligent Insights)](intelligent-insights-troubleshoot-performance.md). |
 | Analyse der Grundursache | Die Analyse der Grundursache des Problems, die in einem von Menschen lesbaren Format identifiziert wurde. Einige Einblicke enthalten nach Möglichkeit Empfehlungen zur Leistungsverbesserung. |
 |||
-
-Einen praktischen Überblick über die Verwendung von Intelligent Insights mit der Azure SQL-Analyse sowie typische Anwendungsszenarien finden Sie in diesem Video:
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Get-Intelligent-Insights-for-Improving-Azure-SQL-Database-Performance/player]
->
 
 Intelligent Insights glänzt bei der Erkennung und Fehlerbehebung von Datenbankleistungsproblemen. Informationen, wie Intelligent Insights verwendet werden kann, um Probleme mit der Datenbankleistung zu behandeln, finden Sie unter [Behandeln von Leistungsproblemen mithilfe von Intelligent Insights](intelligent-insights-troubleshoot-performance.md).
 

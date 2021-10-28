@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/02/2021
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 452c0479834ab7929696af2c95454662adfecfab
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 5c8a6974778e76afc6f2ca7018e034ad5655690c
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123538325"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130262525"
 ---
 # <a name="security-recommendations-for-app-service"></a>Sicherheitsempfehlungen für App Service
 
@@ -49,7 +49,7 @@ Dieser Artikel enthält Sicherheitsempfehlungen für Azure App Service. Die Umse
 |-|-|
 | Nutzen Sie statische IP-Adressen zur Zugriffsbeschränkung. | In Azure App Service unter Windows können Sie eine Liste mit IP-Adressen definieren, über die der Zugriff auf Ihre App gestattet wird. Die Liste mit den zulässigen IP-Adressen kann einzelne IP-Adressen oder einen durch eine Subnetzmaske definierten IP-Adressbereich enthalten. Weitere Informationen finden Sie unter [Statische Azure App Service-IP-Einschränkungen](app-service-ip-restrictions.md).  |
 | Verwenden Sie den Tarif „App Service (isoliert)“. | Mit Ausnahme des Tarifs „App Service (isoliert)“ wird Ihre App bei allen Tarifen in der gemeinsam genutzten Netzwerkinfrastruktur in App Service ausgeführt. Im Tarif „App Service (isoliert)“ werden Ihre Apps in einer dedizierten [App Service-Umgebung](environment/intro.md) ausgeführt, wodurch eine vollständige Netzwerkisolation erreicht wird. Eine App Service-Umgebung wird in Ihrer eigenen Instanz von [Azure Virtual Network](../virtual-network/index.yml) betrieben.|
-| Verwenden Sie sichere Verbindungen beim Zugriff auf lokale Ressourcen. | Sie können [Hybrid Connections](app-service-hybrid-connections.md), [die Virtual Network-Integration](web-sites-integrate-with-vnet.md) oder die [App Service-Umgebung](environment/intro.md) nutzen, um eine Verbindung mit lokalen Ressourcen herzustellen. |
+| Verwenden Sie sichere Verbindungen beim Zugriff auf lokale Ressourcen. | Sie können [Hybrid Connections](app-service-hybrid-connections.md), [die Virtual Network-Integration](./overview-vnet-integration.md) oder die [App Service-Umgebung](environment/intro.md) nutzen, um eine Verbindung mit lokalen Ressourcen herzustellen. |
 | Schränken Sie den Zugriff auf eingehenden Netzwerkdatenverkehr ein. | Mit Netzwerksicherheitsgruppen können Sie den Netzwerkzugriff einschränken und die Anzahl der verfügbaren Endpunkte festlegen. Weitere Informationen finden Sie unter [Steuern von eingehendem Datenverkehr in eine App Service-Umgebung](environment/app-service-app-service-environment-control-inbound-traffic.md). |
 
 ## <a name="monitoring"></a>Überwachung

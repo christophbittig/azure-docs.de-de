@@ -7,12 +7,12 @@ ms.date: 09/30/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: fd970e80f2b091d17c40b15d6c55699721fb1025
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 3c4b8c2578d0443077b29eb350ca53c3176e6dbf
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129349660"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130234603"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Von Azure IoT Edge unterstützte Systeme
 
@@ -165,7 +165,7 @@ Die in der folgenden Tabelle aufgeführten Systeme gelten als kompatibel mit Azu
 | [Yocto](https://www.yoctoproject.org/) | ![Yocto + AMD64](./media/support/green-check.png) | ![Yocto + ARM32v7](./media/support/green-check.png) | ![Yocto + ARM64](./media/support/green-check.png) |
 | Raspberry Pi OS Buster |  | ![Raspberry Pi OS Buster + ARM32v7](./media/support/green-check.png) | ![Raspberry Pi OS Buster + ARM64](./media/support/green-check.png) |
 
-<sup>1</sup> Die Installationsschritte für Ubuntu Server 18.04 in [Installieren oder Deinstallieren von Azure IoT Edge für Linux](how-to-install-iot-edge.md) sollten ohne irgendwelche Änderungen unter Ubuntu 20.04 funktionieren.
+<sup>1</sup> Die Installationsschritte für Ubuntu Server 18.04 in [Installieren oder Deinstallieren von Azure IoT Edge für Linux](how-to-provision-single-device-linux-symmetric.md) sollten ohne irgendwelche Änderungen unter Ubuntu 20.04 funktionieren.
 
 ## <a name="releases"></a>Releases
 
@@ -173,7 +173,7 @@ IoT Edge-Releaseressourcen und -Hinweise sind auf der Seite [azure-iotedge relea
 
 In der folgenden Tabelle sind die in den einzelnen Releases enthaltenen Komponenten aufgeführt (ab 1.2.0): Die in dieser Tabelle angegebenen Komponenten können einzeln installiert oder aktualisiert werden und sind mit älteren Versionen kompatibel.
 
-| Release | aziot-edge | edgeHub<br>edgeAgent | aziot-identity-service |
+| Freigabe | aziot-edge | edgeHub<br>edgeAgent | aziot-identity-service |
 | ------- | ---------- | -------------------- | ---------------------- |
 | **1.2** | 1.2.0<br>1.2.1<br>1.2.2<br>1.2.3 | 1.2.0<br>1.2.1<br>1.2.2<br> 1.2.3  | 1.2.0<br>1.2.1<br>1.2.2<br><br> |
 

@@ -5,12 +5,12 @@ author: mumian
 ms.author: jgao
 ms.topic: conceptual
 ms.date: 09/13/2021
-ms.openlocfilehash: 2d928ec83559a1bd57adde3cbae98c589bb1cd15
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: fbaf2eb104f213c6b4b071ce027b7cb6022aad97
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128621997"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130244614"
 ---
 # <a name="set-name-and-type-for-child-resources-in-bicep"></a>Festlegen von Name und Typ für untergeordnete Ressourcen in Bicep
 
@@ -88,7 +88,7 @@ output childAddressPrefix string = VNet1::VNet1_Subnet1.properties.addressPrefix
 
 ## <a name="outside-parent-resource"></a>Außerhalb der übergeordneten Ressource
 
-Das folgende Beispiel zeigt die untergeordnete Ressource außerhalb der übergeordneten Ressource an. So können Sie vorgehen, wenn die übergeordnete Ressource nicht in derselben Vorlage bereitgestellt wird oder wenn Sie [eine Schleife](loop-resources.md) verwenden möchten, um mehrere untergeordnete Ressourcen zu erstellen. Geben Sie die übergeordnete Eigenschaft für das untergeordnete Element an, wobei der Wert auf den symbolischen Namen des übergeordneten Elements festgelegt ist. Mit dieser Syntax müssen Sie weiterhin den vollständigen Ressourcentyp deklarieren, aber der Name der untergeordneten Ressource ist nur der Name des untergeordneten Elements.
+Das folgende Beispiel zeigt die untergeordnete Ressource außerhalb der übergeordneten Ressource an. So können Sie vorgehen, wenn die übergeordnete Ressource nicht in derselben Vorlage bereitgestellt wird oder wenn Sie [eine Schleife](loops.md) verwenden möchten, um mehrere untergeordnete Ressourcen zu erstellen. Geben Sie die übergeordnete Eigenschaft für das untergeordnete Element an, wobei der Wert auf den symbolischen Namen des übergeordneten Elements festgelegt ist. Mit dieser Syntax müssen Sie weiterhin den vollständigen Ressourcentyp deklarieren, aber der Name der untergeordneten Ressource ist nur der Name des untergeordneten Elements.
 
 ```bicep
 resource <parent-resource-symbolic-name> '<resource-type>@<api-version>' = {

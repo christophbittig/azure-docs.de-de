@@ -11,19 +11,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/04/2020
 ms.author: allensu
-ms.openlocfilehash: a75ea7e9f3659b45e79748fdead7be9aa8ca4f94
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 32cac3156a020beebf046fff9c429a75a348ebcd
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128649471"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130215276"
 ---
 # <a name="azure-load-balancer-components"></a>Azure Load Balancer-Komponenten
 
 Azure Load Balancer umfasst ein paar Hauptkomponenten. Diese Komponenten können in Ihrem Abonnement auf folgende Weise konfiguriert werden:
 
 * Azure-Portal
-* Azure CLI
+* Azure-Befehlszeilenschnittstelle
 * Azure PowerShell
 * Resource Manager-Vorlagen
 
@@ -137,8 +137,8 @@ Vom Lastenausgleich im Tarif „Basic“ werden keine Ausgangsregeln unterstütz
 
 - Informationen zu den ersten Schritten mit einem Load Balancer finden Sie unter [Erstellen eines öffentlichen Load Balancers Standard](quickstart-load-balancer-standard-public-portal.md).
 - Weitere Informationen zu [Azure Load Balancer](load-balancer-overview.md).
-- Informieren Sie sich über [öffentliche IP-Adressen](../virtual-network/virtual-network-public-ip-address.md).
-- Informieren Sie sich über [private IP-Adressen](../virtual-network/private-ip-addresses.md).
+- Informieren Sie sich über [öffentliche IP-Adressen](../virtual-network/ip-services/virtual-network-public-ip-address.md).
+- Informieren Sie sich über [private IP-Adressen](../virtual-network/ip-services/private-ip-addresses.md).
 - Informationen zu [Load Balancer Standard und Verfügbarkeitszonen](load-balancer-standard-availability-zones.md).
 - Weitere Informationen zu [Diagnosen für Load Balancer Standard](load-balancer-standard-diagnostics.md).
 - Informationen zur [TCP-Zurücksetzung bei Leerlauf](load-balancer-tcp-reset.md).

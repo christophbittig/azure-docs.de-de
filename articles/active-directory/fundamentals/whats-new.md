@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 947b03886c471207b0dc1bbe5cd52035d3134bc3
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: c84c121788d3af6279ac2ef1ef4c149f803bf308
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130133669"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130245567"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Neuerungen in Azure Active Directory
 
@@ -78,7 +78,7 @@ Der moderne Edge-Browser ist jetzt in der Anforderung enthalten, dass beim Einl�
 **Typ:** Neues Feature  
 **Dienstkategorie:** Benutzerzugriffsverwaltung **Produktfunktion:** Berechtigungsverwaltung
  
-Es gibt jetzt eine zusätzliche Option für erweiterte Ablaufeinstellungen in der Berechtigungsverwaltung. Zusätzlich zu den vorhandenen Einstellungen kann jetzt ein Zugriffspaket konfiguriert werden, das nach einigen Stunden abläuft. [Weitere Informationen]../governance/entitlement-management-access-package-create.md#lifecycle).
+Es gibt jetzt eine zusätzliche Option für erweiterte Ablaufeinstellungen in der Berechtigungsverwaltung. Zusätzlich zu den vorhandenen Einstellungen kann jetzt ein Zugriffspaket konfiguriert werden, das nach einigen Stunden abläuft. [Weitere Informationen](../governance/entitlement-management-access-package-create.md#lifecycle).
 
 ---
 
@@ -136,7 +136,7 @@ In der Berechtigungsverwaltung kann jetzt ein Zugriffspaket konfiguriert werden,
 
 **Typ:** Neues Feature  
 **Dienstkategorie:** App-Bereitstellung  
-**Produktfunktion:** Integration von Drittanbieterprodukten
+**Produktfunktion**: Integration von Drittanbieteranwendungen
  
 Sie können ab sofort das Erstellen, Aktualisieren und Löschen von Benutzerkonten für diese neu integrierten Apps automatisieren:
 
@@ -160,7 +160,7 @@ Weitere Informationen dazu, wie Sie Ihre Organisation durch die automatisierte B
  
 Im September 2021 haben wir die folgenden 44 neuen Anwendungen mit Verbundunterstützung in unseren App-Katalog aufgenommen:
 
-[Studybugs](https://studybugs.com/signin), [Yello](https://yello.co/yello-for-microsoft-teams/), [LawVu](../saas-apps/lawvu-tutorial.md), [Formate eVo Mail](https://www.document-genetics.co.uk/formate-evo-erp-output-management), [Revenue Grid](https://app.revenuegrid.com/login), [Orbit for Office 365](https://signon.orbit.online/oauth/msal/signin), [Upmarket](https://app.upmarket.ai/), [Alinto Protect](https://protect.alinto.net/), [Cloud Concinnity](https://cloudconcinnity.com/), [Matlantis](https://matlantis.com/), [ModelGen for Visio (MG4V)](https://crecy.com.au/model-gen/), [NetRef: Classroom Management](https://oauth.net-ref.com/microsoft/sso), [VergeSense](../saas-apps/vergesense-tutorial.md), [iAuditor](../saas-apps/iauditor-tutorial.md), [Secutraq](https://secutraq.net/login), [Active & Thriving](../saas-apps/active-and-thriving-tutorial.md), [Inova](https://login.microsoftonline.com/organizations/oauth2/v2.0/authorize?client_id=1bacdba3-7a3b-410b-8753-5cc0b8125f81&response_type=code&redirect_uri=https:%2f%2fbroker.partneringplace.com%2fpartner-companion%2f&code_challenge_method=S256&code_challenge=YZabcdefghijklmanopqrstuvwxyz0123456789._-~&scope=1bacdba3-7a3b-410b-8753-5cc0b8125f81/.default), [TerraTrue](../saas-apps/terratrue-tutorial.md), [Facebook Work Accounts](../saas-apps/facebook-work-accounts-tutorial.md), [Beyond Identity Admin Console](../saas-apps/beyond-identity-admin-console-tutorial.md), [Visult](https://app.visult.io/), [ENGAGE TAG](https://app.engagetag.com/), [Appaegis Isolation Access Cloud](../saas-apps/appaegis-isolation-access-cloud-tutorial.md), [CrowdStrike Falcon Platform](../saas-apps/crowdstrike-falcon-platform-tutorial.md), [MY Emergency Control](https://my-emergency.co.uk/app/auth/login), [AlexisHR](../saas-apps/alexishr-tutorial.md), [Teachme Biz](../saas-apps/teachme-biz-tutorial.md), [Zero Networks](../saas-apps/zero-networks-tutorial.md), [Mavim iMprove](https://improve.mavimcloud.com/), [Azumuta](https://app.azumuta.com/login?microsoft=true), [Frankli](https://beta.frankli.io/login), [Amazon Managed Grafana](../saas-apps/amazon-managed-grafana-tutorial.md), [Productive](../saas-apps/productive-tutorial.md), [Create!Webフロー](../saas-apps/createweb-tutorial.md), [Evercate](https://evercate.com/us/sign-up/), [Ezra Coaching](../saas-apps/ezra-coaching-tutorial.md), [Baldwin Safety & Compliance](../saas-apps/baldwin-safety-&-compliance-tutorial.md), [Nulab Pass (Backlog,Cacoo,Typetalk)](../saas-apps/nulab-pass-tutorial.md), [Metatask](../saas-apps/metatask-tutorial.md), [Contrast Security](../saas-apps/contrast-security-tutorial.md), [Animaker](../saas-apps/animaker-tutorial.md), [Traction Guest](../saas-apps/traction-guest-tutorial.md), [True Office Learning – LIO](../saas-apps/true-office-learning-lio-tutorial.md), [Qiita Team](../saas-apps/qiita-team-tutorial.md)
+[Studybugs](https://studybugs.com/signin), [Yello](https://yello.co/yello-for-microsoft-teams/), [LawVu](../saas-apps/lawvu-tutorial.md), [Formate eVo Mail](https://www.document-genetics.co.uk/formate-evo-erp-output-management), [Revenue Grid](https://app.revenuegrid.com/login), [Orbit for Office 365](https://azuremarketplace.microsoft.com/marketplace/apps/aad.orbitforoffice365?tab=overview), [Upmarket](https://app.upmarket.ai/), [Alinto Protect](https://protect.alinto.net/), [Cloud Concinnity](https://cloudconcinnity.com/), [Matlantis](https://matlantis.com/), [ModelGen for Visio (MG4V)](https://crecy.com.au/model-gen/), [NetRef: Classroom Management](https://oauth.net-ref.com/microsoft/sso), [VergeSense](../saas-apps/vergesense-tutorial.md), [iAuditor](../saas-apps/iauditor-tutorial.md), [Secutraq](https://secutraq.net/login), [Active & Thriving](../saas-apps/active-and-thriving-tutorial.md), [Inova](https://login.microsoftonline.com/organizations/oauth2/v2.0/authorize?client_id=1bacdba3-7a3b-410b-8753-5cc0b8125f81&response_type=code&redirect_uri=https:%2f%2fbroker.partneringplace.com%2fpartner-companion%2f&code_challenge_method=S256&code_challenge=YZabcdefghijklmanopqrstuvwxyz0123456789._-~&scope=1bacdba3-7a3b-410b-8753-5cc0b8125f81/.default), [TerraTrue](../saas-apps/terratrue-tutorial.md), [Facebook Work Accounts](../saas-apps/facebook-work-accounts-tutorial.md), [Beyond Identity Admin Console](../saas-apps/beyond-identity-admin-console-tutorial.md), [Visult](https://app.visult.io/), [ENGAGE TAG](https://app.engagetag.com/), [Appaegis Isolation Access Cloud](../saas-apps/appaegis-isolation-access-cloud-tutorial.md), [CrowdStrike Falcon Platform](../saas-apps/crowdstrike-falcon-platform-tutorial.md), [MY Emergency Control](https://my-emergency.co.uk/app/auth/login), [AlexisHR](../saas-apps/alexishr-tutorial.md), [Teachme Biz](../saas-apps/teachme-biz-tutorial.md), [Zero Networks](../saas-apps/zero-networks-tutorial.md), [Mavim iMprove](https://improve.mavimcloud.com/), [Azumuta](https://app.azumuta.com/login?microsoft=true), [Frankli](https://beta.frankli.io/login), [Amazon Managed Grafana](../saas-apps/amazon-managed-grafana-tutorial.md), [Productive](../saas-apps/productive-tutorial.md), [Create!Webフロー](../saas-apps/createweb-tutorial.md), [Evercate](https://evercate.com/us/sign-up/), [Ezra Coaching](../saas-apps/ezra-coaching-tutorial.md), [Baldwin Safety & Compliance](../saas-apps/baldwin-safety-&-compliance-tutorial.md), [Nulab Pass (Backlog,Cacoo,Typetalk)](../saas-apps/nulab-pass-tutorial.md), [Metatask](../saas-apps/metatask-tutorial.md), [Contrast Security](../saas-apps/contrast-security-tutorial.md), [Animaker](../saas-apps/animaker-tutorial.md), [Traction Guest](../saas-apps/traction-guest-tutorial.md), [True Office Learning – LIO](../saas-apps/true-office-learning-lio-tutorial.md), [Qiita Team](../saas-apps/qiita-team-tutorial.md)
 
 Die Dokumentation zu allen Anwendungen finden Sie auch hier: https://aka.ms/AppsTutorial
 
@@ -277,7 +277,7 @@ Informationen zum Auflisten Ihrer Anwendung im Azure AD-App-Katalog finden Sie 
 
 **Typ:** Neues Feature  
 **Dienstkategorie:** App-Bereitstellung  
-**Produktfunktion:** Integration von Drittanbieterprodukten
+**Produktfunktion**: Integration von Drittanbieteranwendungen
  
 Sie können ab sofort das Erstellen, Aktualisieren und Löschen von Benutzerkonten für diese neu integrierten Apps automatisieren:
 
@@ -541,7 +541,7 @@ Derzeit können Sie mit dieser Benutzeraktion die MFA nur als Steuerelement akti
 
 **Typ:** Neues Feature  
 **Dienstkategorie:** App-Bereitstellung  
-**Produktfunktion:** Integration von Drittanbieterprodukten
+**Produktfunktion**: Integration von Drittanbieteranwendungen
  
 Sie können ab sofort das Erstellen, Aktualisieren und Löschen von Benutzerkonten für diese neu integrierten Apps automatisieren:
 
@@ -709,7 +709,7 @@ Microsoft Graph-APIs für Azure Active Directory-Zugriffsüberprüfungen sind j
 
 **Typ:** Neues Feature  
 **Dienstkategorie:** App-Bereitstellung  
-**Produktfunktion:** Integration von Drittanbieterprodukten
+**Produktfunktion**: Integration von Drittanbieteranwendungen
  
 Sie können ab sofort das Erstellen, Aktualisieren und Löschen von Benutzerkonten für diese neu integrierten Apps automatisieren:
 
@@ -953,7 +953,7 @@ Administratoren können jetzt weitere Einschränkungen für den Zugriff externer
 
 **Typ:** Neues Feature  
 **Dienstkategorie:** Unternehmens-Apps  
-**Produktfunktion:** Integration von Drittanbieterprodukten
+**Produktfunktion**: Integration von Drittanbieteranwendungen
  
 Sie können ab sofort das Erstellen, Aktualisieren und Löschen von Benutzerkonten für diese neu integrierten Apps automatisieren:
 
@@ -1123,7 +1123,7 @@ Informationen zum Auflisten Ihrer Anwendung im Azure AD-App-Katalog finden Sie 
 
 **Typ:** Neues Feature  
 **Dienstkategorie:** App-Bereitstellung  
-**Produktfunktion:** Integration von Drittanbieterprodukten
+**Produktfunktion**: Integration von Drittanbieteranwendungen
  
 Sie können ab sofort das Erstellen, Aktualisieren und Löschen von Benutzerkonten für diese neu integrierten Apps automatisieren:
 
@@ -1153,7 +1153,7 @@ Die [Seitenlayouts](../../active-directory-b2c/page-layout.md) für B2C-Szenarie
 ### <a name="updates-to-sign-in-diagnostic"></a>Updates für die Anmeldediagnose
 
 **Typ:** Geändertes Feature  
-**Dienstkategorie:** Berichterstellung  
+**Dienstkategorie**: Berichterstellung  
 **Produktfunktion:** Überwachung und Berichterstellung
  
 Der Abdeckungsbereich des Anmeldediagnosetools wurde um weitere Szenarien erweitert. 

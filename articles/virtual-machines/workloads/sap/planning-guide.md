@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 04/08/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 26b5e7f65ca688eb1f849fa582f2f02af6e470c0
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: 6a707f349d4153c7b7a5dca78e2a739625cc7db5
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130131370"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130232231"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines – Planung und Implementierung für SAP NetWeaver
 
@@ -593,7 +593,7 @@ Es ist möglich, virtuellen Computern in einem virtuellen Azure-Netzwerk feste o
 
 
 ##### <a name="secondary-ip-addresses-for-sap-hostname-virtualization"></a>Sekundäre IP-Adressen für die SAP-Hostnamenvirtualisierung
-Jeder Netzwerkschnittstellenkarte eines virtuellen Azure-Computers können mehrere IP-Adressen zugewiesen sein. Diese sekundären IP-Adressen können für virtuelle SAP-Hostnamen verwendet werden, die gegebenenfalls einem DNS-A/PTR-Eintrag zugeordnet sind. Die sekundären IP-Adressen müssen der IP-Konfiguration der Azure-vNICs gemäß [der Beschreibung in diesem Artikel](../../../virtual-network/virtual-network-multiple-ip-addresses-portal.md) zugewiesen und auch innerhalb des Betriebssystems konfiguriert werden, weil sekundäre IP-Adressen nicht über DHCP zugewiesen werden. Jede sekundäre IP-Adresse muss aus dem Subnetz stammen, an das die vNIC gebunden ist. Die Verwendung der Floating IP von Azure Load Balancer wird für sekundäre IP-Konfigurationen wie Pacemaker-Cluster [nicht unterstützt](../../../load-balancer/load-balancer-multivip-overview.md#limitations). In diesem Fall aktiviert die IP-Adresse von Load Balancer die virtuellen SAP-Hostnamen. Weitere allgemeine Informationen zur Verwendung virtueller Hostnamen finden Sie auch im SAP-Hinweis [962955](https://launchpad.support.sap.com/#/notes/962955).
+Jeder Netzwerkschnittstellenkarte eines virtuellen Azure-Computers können mehrere IP-Adressen zugewiesen sein. Diese sekundären IP-Adressen können für virtuelle SAP-Hostnamen verwendet werden, die gegebenenfalls einem DNS-A/PTR-Eintrag zugeordnet sind. Die sekundären IP-Adressen müssen der IP-Konfiguration der Azure-vNICs gemäß [der Beschreibung in diesem Artikel](../../../virtual-network/ip-services/virtual-network-multiple-ip-addresses-portal.md) zugewiesen und auch innerhalb des Betriebssystems konfiguriert werden, weil sekundäre IP-Adressen nicht über DHCP zugewiesen werden. Jede sekundäre IP-Adresse muss aus dem Subnetz stammen, an das die vNIC gebunden ist. Die Verwendung der Floating IP von Azure Load Balancer wird für sekundäre IP-Konfigurationen wie Pacemaker-Cluster [nicht unterstützt](../../../load-balancer/load-balancer-multivip-overview.md#limitations). In diesem Fall aktiviert die IP-Adresse von Load Balancer die virtuellen SAP-Hostnamen. Weitere allgemeine Informationen zur Verwendung virtueller Hostnamen finden Sie auch im SAP-Hinweis [962955](https://launchpad.support.sap.com/#/notes/962955).
 
 
 ##### <a name="multiple-nics-per-vm"></a>Mehrere NICs pro virtuellen Computer
@@ -745,7 +745,7 @@ Informationen zur Installation, Konfiguration und Verwendung der Befehle der Bef
 
 * [Installieren der klassischen Azure CLI][xplat-cli]
 * [Installieren der Azure CLI 2.0][azure-cli-install]
-* [Bereitstellen und Verwalten von virtuellen Computern mit Azure Resource Manager-Vorlagen und der Azure CLI](/articles/virtual-machines/linux/create-ssh-secured-vm-from-template)
+* [Bereitstellen und Verwalten von virtuellen Computern mit Azure Resource Manager-Vorlagen und der Azure CLI](../../linux/create-ssh-secured-vm-from-template.md)
 * [Verwenden von Azure-Ressourcen und Ressourcengruppen mit der Azure CLI][xplat-cli-azure-resource-manager]
 
 
@@ -780,7 +780,7 @@ Aufgrund der spezifischen Patch-Anforderungen Ihrer Betriebssystem- bzw. DBMS-Ve
 ---
 > ![Windows-Logo][Logo_Windows] Windows
 >
-> Weitere Informationen finden Sie unter [Hochladen einer generalisierten Windows-VHD und Verwendung dieser zum Erstellen neuer VMs in Azure](/azure/virtual-machines/windows/upload-generalized-managed). Die Windows-Einstellungen (wie die Windows-SID und der Hostname) müssen auf der lokalen VM über den Sysprep-Befehl abstrahiert/generalisiert werden.
+> Weitere Informationen finden Sie unter [Hochladen einer generalisierten Windows-VHD und Verwendung dieser zum Erstellen neuer VMs in Azure](../../windows/upload-generalized-managed.md). Die Windows-Einstellungen (wie die Windows-SID und der Hostname) müssen auf der lokalen VM über den Sysprep-Befehl abstrahiert/generalisiert werden.
 >
 >
 > ![Linux-Logo][Logo_Linux] Linux

@@ -4,13 +4,13 @@ description: Hier finden Sie Beispiele für Azure Resource Manager-Vorlagen zum 
 ms.topic: sample
 author: bwren
 ms.author: bwren
-ms.date: 05/18/2020
-ms.openlocfilehash: 82c99ea320ac06df8ce3a4309ccade90598f5033
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 10/20/2021
+ms.openlocfilehash: 39d8661f38854f8b3fccf60cad73067aabc4c0e2
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111953152"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130231625"
 ---
 # <a name="resource-manager-template-samples-for-log-queries-in-azure-monitor"></a>Beispiele für Resource Manager-Vorlagen für Protokollabfragen in Azure Monitor
 Dieser Artikel enthält Beispiele für [Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/syntax.md) zum Erstellen und Konfigurieren von Protokollabfragen in Azure Monitor. Jedes Beispiel umfasst eine Vorlagendatei und eine Parameterdatei mit Beispielwerten für die Vorlage.

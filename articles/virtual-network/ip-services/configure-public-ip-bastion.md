@@ -9,12 +9,12 @@ ms.subservice: ip-services
 ms.topic: how-to
 ms.date: 06/28/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 22fa5e1843cdff45a5bea9fb61393a0579278964
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: bd89926102c13937843b6bdbaba43e5915f3fddb
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129368218"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130233997"
 ---
 # <a name="manage-a-public-ip-address-with-azure-bastion"></a>Verwalten einer öffentlichen IP-Adresse mit Azure Bastion
 
@@ -29,7 +29,7 @@ In diesem Artikel erfahren Sie, wie Sie einen Azure Bastion-Host mit einer vorh
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein Azure-Konto mit einem aktiven Abonnement. [Erstellen Sie ein kostenloses Konto.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-- Eine öffentliche IP-Adresse der Standard-SKU in Ihrem Abonnement. Die IP-Adresse darf keinen Ressourcen zugeordnet sein. Weitere Informationen zum Erstellen einer öffentlichen IP-Adresse der Standard-SKU finden Sie unter [Erstellen einer öffentlichen IP-Adresse: Azure-Portal](../../virtual-network/create-public-ip-portal.md).
+- Eine öffentliche IP-Adresse der Standard-SKU in Ihrem Abonnement. Die IP-Adresse darf keinen Ressourcen zugeordnet sein. Weitere Informationen zum Erstellen einer öffentlichen IP-Adresse der Standard-SKU finden Sie unter [Erstellen einer öffentlichen IP-Adresse: Azure-Portal](./create-public-ip-portal.md).
     - Benennen Sie die neue öffentliche IP-Adresse für die Beispiele in diesem Artikel mit **myStandardPublicIP**.
 
 ## <a name="create-azure-bastion-using-existing-ip"></a>Erstellen von Azure Bastion mit einer vorhandenen IP-Adresse
@@ -85,4 +85,4 @@ Das Ändern der öffentlichen IP-Adresse nach der Erstellung wird von Azure Bast
 In diesem Artikel haben Sie gelernt, wie Sie eine Azure Bastion-Instanz erstellen und eine vorhandene öffentliche IP-Adresse verwenden. 
 
 - Weitere Informationen zu Azure Bastion finden Sie unter [Was ist Azure Bastion?](../../bastion/bastion-overview.md).
-- Weitere Informationen zu öffentlichen IP-Adressen in Azure finden Sie unter [Öffentliche IP-Adressen](../../virtual-network/public-ip-addresses.md).
+- Weitere Informationen zu öffentlichen IP-Adressen in Azure finden Sie unter [Öffentliche IP-Adressen](./public-ip-addresses.md).

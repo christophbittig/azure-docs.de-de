@@ -11,12 +11,12 @@ ms.author: seramasu
 ms.date: 08/05/2021
 ms.reviewer: laobri
 ms.custom: devplatv2
-ms.openlocfilehash: 97cfd7a5121094af9fc1663fcdddcd4c620b77cc
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f4f6cb9941bfa9bd1a2711a25222fcbfe036951e
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346866"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130232383"
 ---
 # <a name="deploy-models-with-rest-preview"></a>Bereitstellen von Modellen per REST (Vorschau)
 
@@ -82,7 +82,7 @@ Sie können das Tool [jq](https://stedolan.github.io/jq/) verwenden, um das JSON
 Speicherschlüssel abrufen:
 
 ```bash
-AZURE_STORAGE_KEY=$(az storage account keys list --account-name $AZURE_STORAGE_ACCOUNT | jq '.[0].value')
+export AZURE_STORAGE_KEY=$(az storage account keys list --account-name $AZURE_STORAGE_ACCOUNT | jq '.[0].value')
 ```
 
 ### <a name="upload--register-code"></a>Hochladen und Registrieren des Codes

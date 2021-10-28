@@ -7,15 +7,15 @@ ms.author: jlian
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 08/24/2021
+ms.date: 10/20/2021
 ms.custom:
 - 'Role: Cloud Development'
-ms.openlocfilehash: a8387a5732ab51add02495b03236b42f9cd4e671
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a95501462fe1db0a06e6596054d09645c86ee64f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128609439"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223524"
 ---
 # <a name="control-access-to-iot-hub-by-using-azure-active-directory"></a>Kontrolle des Zugriffs auf loT Hub mit Azure Active Directory
 
@@ -106,7 +106,7 @@ Standardmäßig unterstützt loT Hub den Service-API-Zugriff sowohl über Azure 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem IoT Hub.
 1. Wählen Sie im linken Bereich **freigegebene Zugriffsrichtlinien**.
 1. Wählen Sie unter **Verbindung unter Verwendung freigegebener Zugriffsrichtlinien herstellen** die Option **Verweigern** aus.
-    :::image type="content" source="media/iot-hub-dev-guide-azure-ad-rbac/disable-local-auth.png" alt-text="Screenshot, der zeigt, wie Sie die freigegebenen Zugriffsrichtlinien von Azure loT Hub deaktivieren.":::
+    :::image type="content" source="media/iot-hub-dev-guide-azure-ad-rbac/disable-local-auth.png" alt-text="Screenshot, der zeigt, wie Sie die freigegebenen Zugriffsrichtlinien von Azure loT Hub deaktivieren." border="true":::
 1. Überprüfen Sie die Warnung, und wählen Sie dann **Speichern**.
 
 Auf Ihre loT Hub-Service-APIs kann jetzt nur noch über Azure AD und RBAC zugegriffen werden.

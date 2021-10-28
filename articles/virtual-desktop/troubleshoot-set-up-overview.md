@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 10/14/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: f8abe1cc793b5e7e5528d377ee0a7226d5415909
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 435f26a7fba7939ffc7ac370c648f6aae0d7a67f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130045292"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130234035"
 ---
 # <a name="troubleshooting-overview-feedback-and-support-for-azure-virtual-desktop"></a>Problembehandlung von Übersicht, Feedback und Support für Azure Virtual Desktop
 
@@ -34,7 +34,7 @@ Wenn Sie einen Beitrag posten, in dem Sie um Hilfe bitten oder ein neues Feature
 
 Als Erstes sollten Sie die [Azure-Statusseite](https://status.azure.com/status) und [Azure Service Health](https://azure.microsoft.com/features/service-health/) prüfen, um sich zu vergewissern, dass Ihr Azure-Dienst ordnungsgemäß funktioniert.
 
-Orientieren Sie sich an der folgenden Tabelle, um Probleme zu identifizieren und zu beheben, die beim Einrichten einer Umgebung mit dem Remotedesktopclient auftreten können. Nachdem Sie Ihre Umgebung eingerichtet haben, können Sie den neuen [Diagnosedienst](diagnostics-role-service.md) verwenden, um Probleme in häufigen Szenarien zu identifizieren.
+Orientieren Sie sich an der folgenden Tabelle, um Probleme zu identifizieren und zu beheben, die beim Einrichten einer Umgebung mit dem Remotedesktopclient auftreten können. Nachdem Sie Ihre Umgebung eingerichtet haben, können Sie den neuen [Diagnosedienst]() verwenden, um Probleme in häufigen Szenarien zu identifizieren.
 
 | **Problem**                                                            | **Vorgeschlagene Lösung**  |
 |----------------------------------------------------------------------|-------------------------------------------------|

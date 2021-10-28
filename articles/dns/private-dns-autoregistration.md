@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 04/26/2021
 ms.author: rohink
-ms.openlocfilehash: 4357d3bc347d000ebcdd7c2a9a01069eb64a9343
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: befabd5e35957241fa640c28146e47f01153b72b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130003797"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130251678"
 ---
 # <a name="what-is-the-auto-registration-feature-in-azure-dns-private-zones"></a>Was ist die Funktion zur automatischen Registrierung in privaten Azure DNS-Zonen?
 
@@ -28,7 +28,7 @@ Zum Aktivieren der automatischen Registrierung wählen Sie beim Erstellen der VN
 
 * Die automatische Registrierung funktioniert nur für virtuelle Computer. Für alle anderen Ressourcen, z. B. interne Lastenausgleichsmodule, können Sie DNS-Einträge manuell in der privaten DNS-Zone erstellen, die mit dem virtuellen Netzwerk verknüpft ist.
 * DNS-Einträge werden nur für die primäre NIC des virtuellen Computers automatisch erstellt. Wenn Ihre virtuellen Computer über mehr als eine Netzwerkkarte verfügen, können Sie die DNS-Einträge für andere Netzwerkschnittstellen manuell erstellen.
-* DNS-Einträge werden nur dann automatisch erstellt, wenn die primäre NIC des virtuellen Computers DHCP verwendet. Wenn Sie statische IP-Adressen verwenden, z. B. eine Konfiguration mit [mehreren IP-Adressen in Azure](../virtual-network/virtual-network-multiple-ip-addresses-portal.md#os-config), werden bei der automatischen Registrierung keine Einträge für diesen virtuellen Computer erstellt.
+* DNS-Einträge werden nur dann automatisch erstellt, wenn die primäre NIC des virtuellen Computers DHCP verwendet. Wenn Sie statische IP-Adressen verwenden, z. B. eine Konfiguration mit [mehreren IP-Adressen in Azure](../virtual-network/ip-services/virtual-network-multiple-ip-addresses-portal.md#os-config), werden bei der automatischen Registrierung keine Einträge für diesen virtuellen Computer erstellt.
 * Die automatische Registrierung für IPv6 (AAAA-Einträge) wird nicht unterstützt.
 * Ein bestimmtes virtuelles Netzwerk kann nur mit genau einer privaten DNS-Zone verknüpft werden, wenn die automatische DNS-Registrierung für VMs aktiviert ist. Sie können jedoch mehrere virtuelle Netzwerke mit einer einzelnen DNS-Zone verknüpfen.
 

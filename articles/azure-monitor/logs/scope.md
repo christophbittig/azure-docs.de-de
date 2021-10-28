@@ -4,13 +4,13 @@ description: Dieser Artikel beschreibt den Bereich und den Zeitbereich für Prot
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 09/09/2020
-ms.openlocfilehash: 43e4e861905352c2818dfb08b8cb442bd70481c1
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.date: 10/20/2021
+ms.openlocfilehash: 3876961b3b6c6a88f905ab1975c5527ca09776d4
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102047178"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130240203"
 ---
 # <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>Protokollabfragebereich und Zeitbereich in Azure Monitor Log Analytics
 Wenn Sie eine [Protokollabfrage](../logs/log-query-overview.md) in [Log Analytics im Azure-Portal](../logs/log-analytics-tutorial.md) ausführen, sind die von der Abfrage ausgewerteten Daten von dem von Ihnen ausgewählten Bereich und Zeitbereich abhängig. In diesem Artikel wird der Bereich, der Zeitbereich und das Festlegen dieser Bereiche je nach Ihren Anforderungen beschrieben. Außerdem erfahren Sie mehr über das Verhalten von verschiedenen Bereichstypen.

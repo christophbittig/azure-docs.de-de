@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 12/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 58e68193ffabb6984365eade56c9c8efe8504acd
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 18d3b3c5717c5bec2044a05c7e5854222adb73b1
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122692138"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130257934"
 ---
 # <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Konvertieren einer Linux-VM von nicht verwalteten Datenträgern in verwaltete Datenträger
 
@@ -24,7 +24,7 @@ Wenn Sie über vorhandene virtuelle Linux-Computer (VMs) verfügen, die nicht ve
 In diesem Artikel wird beschrieben, wie Sie VMs über die Azure-Befehlszeilenschnittstelle konvertieren. Wenn Sie die Befehlszeilenschnittstelle installieren oder aktualisieren müssen, finden Sie unter [Installieren der Azure CLI](/cli/azure/install-azure-cli) Informationen dazu. 
 
 ## <a name="before-you-begin"></a>Voraussetzungen
-* Lesen Sie die [häufig gestellten Fragen zu Managed Disks](/azure/virtual-machines/faq-for-disks#migrate-to-managed-disks).
+* Lesen Sie die [häufig gestellten Fragen zu Managed Disks](../faq-for-disks.yml).
 
 [!INCLUDE [virtual-machines-common-convert-disks-considerations](../../../includes/virtual-machines-common-convert-disks-considerations.md)]
 

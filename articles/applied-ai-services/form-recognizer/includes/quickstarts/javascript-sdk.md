@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 05/12/2021
 ms.author: lajanuar
 ms.custom: devx-track-js
-ms.openlocfilehash: 880f27665b191df2459cbdc15b6a8afa47fd3f8c
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: b1b830ae8e6e7a203bc075ca94f8a87767ba3423
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129715417"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130287666"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -144,7 +144,7 @@ cell [1,5] has text PT
 
 ## <a name="analyze-receipts"></a>Analysieren von Belegen
 
-In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe eines vorab trainierten Belegmodells gängige Felder in US-Belegen analysieren und extrahieren. Weitere Informationen zur Beleganalyse finden Sie im [Konzeptleitfaden zu Belegen](../../concept-receipts.md).
+In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe eines vorab trainierten Belegmodells gängige Felder in US-Belegen analysieren und extrahieren. Weitere Informationen zur Beleganalyse finden Sie im [Konzeptleitfaden zu Belegen](../../concept-receipt.md).
 
 Verwenden Sie die Methode `beginRecognizeReceiptsFromUrl`, um Belege aus einem URI zu analysieren. Der folgende Code verarbeitet einen Beleg am angegebenen URI und gibt die wichtigsten Felder und Werte an der Konsole aus.
 
@@ -170,7 +170,7 @@ First receipt:
 
 ## <a name="analyze-business-cards"></a>Analysieren von Visitenkarten
 
-In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe eines vorab trainierten Modells gängige Felder englischsprachiger Visitenkarten analysieren und extrahieren. Weitere Informationen zur Analyse von Visitenkarten finden Sie im [Konzeptleitfaden zu Visitenkarten](../../concept-business-cards.md).
+In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe eines vorab trainierten Modells gängige Felder englischsprachiger Visitenkarten analysieren und extrahieren. Weitere Informationen zur Analyse von Visitenkarten finden Sie im [Konzeptleitfaden zu Visitenkarten](../../concept-business-card.md).
 
 Verwenden Sie die Methode `beginRecognizeBusinessCardsFromURL`, um Visitenkarten unter einer URL zu analysieren.
 
@@ -181,7 +181,7 @@ Verwenden Sie die Methode `beginRecognizeBusinessCardsFromURL`, um Visitenkarten
 
 ## <a name="analyze-invoices"></a>Analysieren von Rechnungen
 
-In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe eines vorab trainierten Modells gängige Rechnungsfelder analysieren und extrahieren. Weitere Informationen zur Rechnungsanalyse finden Sie im [Konzeptleitfaden zu Rechnungen](../../concept-invoices.md).
+In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe eines vorab trainierten Modells gängige Rechnungsfelder analysieren und extrahieren. Weitere Informationen zur Rechnungsanalyse finden Sie im [Konzeptleitfaden zu Rechnungen](../../concept-invoice.md).
 
 Verwenden Sie die Methode `beginRecognizeInvoicesFromUrl`, um Rechnungen unter einer URL zu analysieren.
 
@@ -192,7 +192,7 @@ Verwenden Sie die Methode `beginRecognizeInvoicesFromUrl`, um Rechnungen unter e
 
 ## <a name="analyze-id-documents"></a>Analysieren von Ausweisdokumenten
 
-In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe des vordefinierten Formularerkennungs-ID-Modells wichtige Informationen aus von staatlichen Behörden ausgestellten Ausweisdokumenten (internationale Reisepässe und US-Führerscheine) analysieren und extrahieren. Weitere Informationen zur Ausweisdokumentanalyse finden Sie unter [Vordefiniertes ID-Modell der Formularerkennung für Ausweise](../../concept-identification-cards.md).
+In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe des vordefinierten Formularerkennungs-ID-Modells wichtige Informationen aus von staatlichen Behörden ausgestellten Ausweisdokumenten (internationale Reisepässe und US-Führerscheine) analysieren und extrahieren. Weitere Informationen zur Ausweisdokumentanalyse finden Sie unter [Vordefiniertes ID-Modell der Formularerkennung für Ausweise](../../concept-id-document.md).
 
 Verwenden Sie die Methode `beginRecognizeIdDocumentsFromUrl`, um Ausweisdokumente unter einer URL zu analysieren.
 

@@ -2,14 +2,14 @@
 author: Juliako
 ms.service: azure-video-analyzer
 ms.topic: include
-ms.date: 04/07/2021
+ms.date: 09/10/2021
 ms.author: juliako
-ms.openlocfilehash: 60f8968a3377479457cbe0faceae28bc83835453
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 75e0e274bd8cdb9dc7029815910f867dffdaef3c
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113735058"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "130239195"
 ---
 * Ein Azure-Konto das ein aktives Abonnement beinhaltet. Sie können ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), falls Sie noch keins besitzen.
 
@@ -43,4 +43,4 @@ In diesem Schnellstart führen Sie folgende Schritte aus:
 * Interpretieren der Ergebnisse
 * Bereinigen der Ressourcen
 ## <a name="set-up-your-development-environment"></a>Einrichten der Entwicklungsumgebung
-[!INCLUDE [setup development environment](./../../../includes/set-up-dev-environment/csharp/csharp-set-up-dev-env.md)]
+[!INCLUDE [setup development environment](./../../../includes/set-up-dev-environment/python/python-set-up-dev-env.md)]

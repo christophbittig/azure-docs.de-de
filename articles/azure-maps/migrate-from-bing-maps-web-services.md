@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: d4dae509d65ef2d090439fe1f532f6878a2139b4
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 361eca16094f48c957437eeb5ebdbf9b701d1049
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123439468"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130265229"
 ---
 # <a name="tutorial-migrate-web-service-from-bing-maps"></a>Tutorial: Migrieren von Webdiensten aus Bing Karten
 
@@ -58,7 +58,7 @@ Azure Maps verfügt über mehrere zusätzliche REST-Webdienste, die möglicherwe
 -   [Kartenkacheln](/rest/api/maps/render/getmaptile): Greifen Sie auf Straßen- und Bildkacheln aus Azure Maps als Raster- und Vektorkacheln zu.
 -   [Batchrouting](/rest/api/maps/route/postroutedirectionsbatchpreview): Ermöglicht die Ausführung von bis zu 1.000 Routenanforderungen in einem einzelnen Batch über einen bestimmten Zeitraum. Die Routen werden zwecks schnellerer Verarbeitung parallel auf dem Server berechnet.
 -   [Verkehrsfluss](/rest/api/maps/traffic): Greifen Sie in Echtzeit auf Daten zum Verkehrsfluss in Form von Raster- und Vektorkacheln zu.
--   [Geolocation-API (Vorschau)](/rest/api/maps/geolocation/getiptolocationpreview): Rufen Sie den Standort zu einer IP-Adresse ab.
+-   [Geolocation-API (Vorschau)](/rest/api/maps/geolocation/get-ip-to-location): Rufen Sie den Standort zu einer IP-Adresse ab.
 -   [Wetterdienste](/rest/api/maps/weather): Erhalten Sie Zugriff auf Echtzeit- und prognostizierte Wetterdaten.
 
 Lesen Sie unbedingt auch die folgenden Anleitungen zu bewährten Methoden:
@@ -281,7 +281,7 @@ In der folgenden Tabelle werden die Parameter der Bing Karten-API den vergleichb
 | `points`                   | `supportingPoints`: Übergibt diese Punkte an den Text der Post-Anforderung.  |
 | `interpolate`              | –                                                                 |
 | `includeSpeedLimit`        | –                                                                 |
-| `includeTruckSpeedLimit`   | –                                                                 |
+| `includeTruckSpeedLimit`   | N/V                                                                 |
 | `speedUnit`                | –                                                                 |
 | `travelMode`               | `travelMode`                                                        |
 | `key`                      | `subscription-key`: Weitere Informationen finden Sie auch in der Dokumentation zur [Authentifizierung mit Azure Maps](./azure-maps-authentication.md). |

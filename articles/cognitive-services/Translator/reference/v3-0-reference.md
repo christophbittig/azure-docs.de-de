@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 09/09/2021
 ms.author: lajanuar
-ms.openlocfilehash: d430d7f2db90c4051201b7e9805cde1f4138e7f0
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 4b27e60776c459ed74bcf33c79a819f90722a0d0
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124793290"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130238999"
 ---
 # <a name="translator-v30"></a>Translator v3.0
 
@@ -163,9 +163,9 @@ Ein Authentifizierungstoken ist zehn Minuten lang gültig. Das Token sollte wied
 
 ### <a name="prerequisites"></a>**Voraussetzungen**
 
-* Grundlegendes in Kürze zur [**Authentifizierung mit Azure Active Directory**](/azure/cognitive-services/authentication?tabs=powershell#authenticate-with-azure-active-directory).
+* Grundlegendes in Kürze zur [**Authentifizierung mit Azure Active Directory**](../../authentication.md?tabs=powershell#authenticate-with-azure-active-directory).
 
-* Grundlegendes in Kürze zur [**Autorisierung des Zugriffs auf verwaltete Identitäten**](/azure/cognitive-services/authentication?tabs=powershell#authorize-access-to-managed-identities).
+* Grundlegendes in Kürze zur [**Autorisierung des Zugriffs auf verwaltete Identitäten**](../../authentication.md?tabs=powershell#authorize-access-to-managed-identities).
 
 ### <a name="headers"></a>**Headers**
 

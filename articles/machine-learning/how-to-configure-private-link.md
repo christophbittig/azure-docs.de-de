@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/07/2021
-ms.openlocfilehash: 9bb40b02df8de4bbd5fc7e59f55c7f31052b3480
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: cd08a4cb752ede0f958adde438cb516791f4ae76
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129429887"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130215134"
 ---
 # <a name="configure-a-private-endpoint-for-an-azure-machine-learning-workspace"></a>Konfigurieren eines privaten Endpunkts für einen Azure Machine Learning-Arbeitsbereich
 
@@ -191,11 +191,11 @@ Als Previewfunktion unterstützt Azure Machine Learning mehrere private Endpunkt
 * Ein Azure Kubernetes Service-Cluster (AKS) in einem separaten VNET.
 * Andere Azure-Dienste in einem separaten VNET. Beispielsweise können Azure Synapse und Azure Data Factory ein von Microsoft verwaltetes virtuelles Netzwerk verwenden. In beiden Fällen kann dem verwalteten VNET, das von diesen Diensten verwendet wird, ein privater Endpunkt für den Arbeitsbereich hinzugefügt werden. Weitere Informationen zur Verwendung eines verwalteten virtuellen Netzwerks mit diesen Diensten finden Sie in den folgenden Artikeln:
 
-    * [Verwaltete private Endpunkte in Synapse](/azure/synapse-analytics/security/synapse-workspace-managed-private-endpoints)
-    * [Verwaltetes virtuelles Netzwerk in Azure Data Factory](/azure/data-factory/managed-virtual-network-private-endpoint)
+    * [Verwaltete private Endpunkte in Synapse](../synapse-analytics/security/synapse-workspace-managed-private-endpoints.md)
+    * [Verwaltetes virtuelles Netzwerk in Azure Data Factory](../data-factory/managed-virtual-network-private-endpoint.md)
 
     > [!IMPORTANT]
-    > [Der Schutz vor Datenexfiltration von Synapse](/azure/synapse-analytics/security/workspace-data-exfiltration-protection) wird bei der Azure Machine Learning nicht unterstützt.
+    > [Der Schutz vor Datenexfiltration von Synapse](../synapse-analytics/security/workspace-data-exfiltration-protection.md) wird bei der Azure Machine Learning nicht unterstützt.
 
 > [!IMPORTANT]
 > Jedes VNet, das einen privaten Endpunkt für den Arbeitsbereich enthält, muss außerdem Zugriff auf das Azure-Storage-Konto, den Azure Key Vault und Azure Container Registry haben, die vom Arbeitsbereich verwendet werden. Beispielsweise können Sie einen privaten Endpunkt für die Dienste in jedem VNet erstellen.

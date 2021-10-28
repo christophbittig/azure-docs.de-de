@@ -3,12 +3,12 @@ title: Informationen zur Wiederherstellung virtueller Azure-Computer
 description: Erfahren Sie, wie virtuelle Azure-Computer mit dem Dienst „Azure Backup“ wiederhergestellt werden.
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: a01b3f06f34ac184913227d025f854589ce698aa
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: c81a2c227214643678f0a82bac29b7d573b9994e
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114295875"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130262145"
 ---
 # <a name="about-azure-vm-restore"></a>Informationen zur Wiederherstellung von Azure-VMs
 
@@ -50,6 +50,6 @@ In diesem Artikel wird beschrieben, wie virtuelle Azure-Computer (VMs) mit dem D
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Häufig gestellte Fragen zur VM-Wiederherstellung](/azure/backup/backup-azure-vm-backup-faq#restore)
+- [Häufig gestellte Fragen zur VM-Wiederherstellung](./backup-azure-vm-backup-faq.yml)
 - [Unterstützte Wiederherstellungsmethoden](./backup-support-matrix-iaas.md#supported-restore-methods)
 - [Problembehandlung bei der Wiederherstellung](./backup-azure-vms-troubleshoot.md#restore)

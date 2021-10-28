@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/02/2021
 ms.author: msangapu
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 77dc45d71a4a9706dd645289dd5839ee97c17314
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: e485efa572dd1b786b714b74b4d6df49d7a44853
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123472018"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130236448"
 ---
 # <a name="mount-azure-storage-as-a-local-share-in-a-container-app-in-app-service"></a>Einbinden von Azure Storage als lokale Freigabe in einer Container-App in App Service
 
@@ -20,7 +20,7 @@ ms.locfileid: "123472018"
 > [!NOTE]
 >Azure Storage im App Service Windows-Container befindet sich **in der Vorschau** und wird für **Produktionsszenarien** **nicht unterstützt**.
 
-In diesem Leitfaden erfahren Sie, wie Sie Azure Storage-Dateien als Netzwerkfreigabe in einem Windows-Container in App Service bereitstellen. Nur [Azure Files-Dateifreigaben](../storage/files/storage-how-to-use-files-cli.md) und [Premium-Dateifreigaben](../storage/files/storage-how-to-create-file-share.md) werden unterstützt. Zu den Vorteilen benutzerdefiniert bereitgestellten Speichers zählen:
+In diesem Leitfaden erfahren Sie, wie Sie Azure Storage-Dateien als Netzwerkfreigabe in einem Windows-Container in App Service bereitstellen. Nur [Azure Files-Dateifreigaben](../storage/files/storage-how-to-use-files-portal.md) und [Premium-Dateifreigaben](../storage/files/storage-how-to-create-file-share.md) werden unterstützt. Zu den Vorteilen benutzerdefiniert bereitgestellten Speichers zählen:
 
 ::: zone-end
 
@@ -39,7 +39,7 @@ In diesem Leitfaden wird gezeigt, wie sie Azure Storage als Netzwerkfreigabe in 
 
 Die folgenden Features werden für Windows-Container unterstützt:
 
-- Gesicherter Zugriff auf Speicherkonten mit [privaten Verbindungen](../storage/common/storage-private-endpoints.md) (bei Verwendung der [VNET-Integration](web-sites-integrate-with-vnet.md)). Die Unterstützung des [Dienstendpunkts](../storage/common/storage-network-security.md#grant-access-from-a-virtual-network) ist derzeit nicht verfügbar.
+- Gesicherter Zugriff auf Speicherkonten mit [privaten Verbindungen](../storage/common/storage-private-endpoints.md) (bei Verwendung der [VNET-Integration](./overview-vnet-integration.md)). Die Unterstützung des [Dienstendpunkts](../storage/common/storage-network-security.md#grant-access-from-a-virtual-network) ist derzeit nicht verfügbar.
 - Azure Files (Lesen/Schreiben).
 - Bis zu fünf Bereitstellungspunkte pro App.
 - Zuordnung von Laufwerkbuchstaben (`C:` bis `Z:`).
@@ -50,7 +50,7 @@ Die folgenden Features werden für Windows-Container unterstützt:
 
 Die folgenden Features werden für Linux-Container unterstützt:
 
-- Gesicherter Zugriff auf Speicherkonten mit [Service-Endpunkten](../storage/common/storage-network-security.md#grant-access-from-a-virtual-network) und [privaten Verbindungen](../storage/common/storage-private-endpoints.md) (bei Verwendung der [VNET-Integration](web-sites-integrate-with-vnet.md)).
+- Gesicherter Zugriff auf Speicherkonten mit [Service-Endpunkten](../storage/common/storage-network-security.md#grant-access-from-a-virtual-network) und [privaten Verbindungen](../storage/common/storage-private-endpoints.md) (bei Verwendung der [VNET-Integration](./overview-vnet-integration.md)).
 - Azure Files (Lesen/Schreiben).
 - Azure-Blobs (schreibgeschützt).
 - Bis zu fünf Bereitstellungspunkte pro App.
@@ -62,7 +62,7 @@ Die folgenden Features werden für Linux-Container unterstützt:
 ::: zone pivot="container-windows"
 
 - [Eine vorhandene Windows-Container-App in Azure App Service](quickstart-custom-container.md)
-- [Erstellen einer Azure Files-Dateifreigabe](../storage/files/storage-how-to-use-files-cli.md)
+- [Erstellen einer Azure Files-Dateifreigabe](../storage/files/storage-how-to-use-files-portal.md)
 - [Hochladen von Dateien in eine Azure Files-Dateifreigabe](../storage/files/storage-how-to-create-file-share.md)
 
 ::: zone-end
@@ -71,7 +71,7 @@ Die folgenden Features werden für Linux-Container unterstützt:
 
 - Eine vorhandene [App Service für Linux-App](index.yml).
 - Ein [Azure Storage-Konto](../storage/common/storage-account-create.md?tabs=azure-cli).
-- [Azure-Dateifreigabe und -Verzeichnis](../storage/files/storage-how-to-use-files-cli.md).
+- [Azure-Dateifreigabe und -Verzeichnis](../storage/files/storage-how-to-use-files-portal.md).
 
 ::: zone-end
 
@@ -85,7 +85,7 @@ Die folgenden Features werden für Linux-Container unterstützt:
 
 - Speicherbereitstellungen werden für (nicht containerisierte) native Windows-Apps nicht unterstützt.
 - Azure-Blobs werden nicht unterstützt.
-- Die [Speicherfirewall](../storage/common/storage-network-security.md) wird nur über [private Endpunkte](../storage/common/storage-private-endpoints.md) unterstützt (wenn die [VNET-Integration](web-sites-integrate-with-vnet.md) verwendet wird). Benutzerdefinierte DNS-Unterstützung ist derzeit nicht verfügbar, wenn das bereitgestellte Azure Storage-Konto einen privaten Endpunkt verwendet.
+- Die [Speicherfirewall](../storage/common/storage-network-security.md) wird nur über [private Endpunkte](../storage/common/storage-private-endpoints.md) unterstützt (wenn die [VNET-Integration](./overview-vnet-integration.md) verwendet wird). Benutzerdefinierte DNS-Unterstützung ist derzeit nicht verfügbar, wenn das bereitgestellte Azure Storage-Konto einen privaten Endpunkt verwendet.
 - FTP/FTPS-Zugriff auf bereitgestellten Speicher wird nicht unterstützt (verwenden Sie den [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/)).
 - Die Zuordnung von `[C-Z]:\`, `[C-Z]:\home`, `/` und `/home` zu benutzerdefiniert bereitgestelltem Speicher wird nicht unterstützt.
 - Speicherbereitstellungen können nicht zusammen mit der Kloneinstellungenoption bei der Erstellung von [Bereitstellungsslots](deploy-staging-slots.md) verwendet werden.
@@ -95,7 +95,7 @@ Die folgenden Features werden für Linux-Container unterstützt:
 
 ::: zone pivot="container-linux"
 
-- Die [Speicherfirewall](../storage/common/storage-network-security.md) wird nur über [Dienstendpunkte](../storage/common/storage-network-security.md#grant-access-from-a-virtual-network) und [private Endpunkte](../storage/common/storage-private-endpoints.md) unterstützt (wenn die [VNET-Integration](web-sites-integrate-with-vnet.md) verwendet wird). Benutzerdefinierte DNS-Unterstützung ist derzeit nicht verfügbar, wenn das bereitgestellte Azure Storage-Konto einen privaten Endpunkt verwendet.
+- Die [Speicherfirewall](../storage/common/storage-network-security.md) wird nur über [Dienstendpunkte](../storage/common/storage-network-security.md#grant-access-from-a-virtual-network) und [private Endpunkte](../storage/common/storage-private-endpoints.md) unterstützt (wenn die [VNET-Integration](./overview-vnet-integration.md) verwendet wird). Benutzerdefinierte DNS-Unterstützung ist derzeit nicht verfügbar, wenn das bereitgestellte Azure Storage-Konto einen privaten Endpunkt verwendet.
 - FTP/FTPS-Zugriff auf benutzerdefiniert bereitgestellten Speicher wird nicht unterstützt (verwenden Sie den [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/)).
 - Die Unterstützung von Azure CLI, Azure PowerShell und Azure SDK befindet sich in der Vorschau.
 - Die Zuordnung von `/` oder `/home` zu benutzerdefiniert bereitgestelltem Speicher wird nicht unterstützt.
@@ -118,7 +118,7 @@ Die folgenden Features werden für Linux-Container unterstützt:
 1. Konfigurieren Sie die Speicherbereitstellung gemäß der folgenden Tabelle. Wenn Sie fertig sind, klicken Sie auf **OK**.
 
     ::: zone pivot="container-windows"
-    | Einstellung | BESCHREIBUNG |
+    | Einstellung | Beschreibung |
     |-|-|
     | **Name** | Name der Bereitstellungskonfiguration. Leerzeichen sind nicht zulässig. |
     | **Konfigurationsoptionen** | Wählen Sie **Basic** aus, wenn das Speicherkonto keine [privaten Endpunkte](../storage/common/storage-private-endpoints.md) verwendet. Wählen Sie andernfalls **Erweitert** aus. |

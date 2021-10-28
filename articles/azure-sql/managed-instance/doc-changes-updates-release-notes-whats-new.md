@@ -11,12 +11,12 @@ ms.custom: references_regions
 ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/21/2021
-ms.openlocfilehash: 89adb496452a0aa0351c5ac1f544a415c7cf9efc
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: 59147dd6037e5eb2f4565ec135d04f3a1c242cc3
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130178631"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130247927"
 ---
 # <a name="whats-new-in-azure-sql-managed-instance"></a>Neuerungen in Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -67,7 +67,7 @@ Hier erfahren Sie mehr über wichtige Änderungen an der Dokumentation zu Azure 
 
 | Änderungen | Details |
 | --- | --- |
-|**Neuerungen unterteilt** | Der zuvor kombinierte Artikel **Neuerungen** wurde nach Produkt unterteilt: [Neuerungen in der SQL-Datenbank](../database/doc-changes-updates-release-notes-whats-new.md) und [Neuerungen in SQL Managed Instance](doc-changes-updates-release-notes-whats-new.md). Dadurch können Sie leichter erkennen, welche Features sich derzeit in der Vorschau befinden, allgemein verfügbar sind und welche wichtigen Änderungen an der Dokumentation vorgenommen wurden. Darüber hinaus wurden der Inhalt über [bekannte Probleme in SQL Managed Instance](doc-changes-updates-known-issues.md) auf eine eigene Seite verschoben.  | 
+|**Unterteilung der Informationen zu neuen Funktionen** | Der zuvor kombinierte Artikel zu den **Neuigkeiten** wurde nach Produkt unterteilt: [Neuigkeiten in Azure SQL-Datenbank](../database/doc-changes-updates-release-notes-whats-new.md) und [Neuigkeiten in SQL Managed Instance](doc-changes-updates-release-notes-whats-new.md). Dadurch können Sie leichter erkennen, welche Features sich derzeit in der Vorschau befinden bzw. allgemein verfügbar sind und welche wichtigen Änderungen an der Dokumentation vorgenommen wurden. Darüber hinaus wurden der Inhalt über [bekannte Probleme in SQL Managed Instance](doc-changes-updates-known-issues.md) auf eine eigene Seite verschoben.  | 
 
 
 ### <a name="june-2021"></a>Juni 2021
@@ -98,7 +98,7 @@ Hier erfahren Sie mehr über wichtige Änderungen an der Dokumentation zu Azure 
 | **Protokollwiedergabedienst** | Es ist jetzt möglich, Datenbanken mithilfe des Log Replay-Diensts von SQL Server zu Azure SQL Managed Instance zu migrieren. Weitere Informationen finden Sie unter [Migrieren mit dem Log Replay-Dienst](log-replay-service-migrate.md). Diese Funktion steht derzeit als Vorschau zur Verfügung. | 
 | **Langfristiges Aufbewahren von Sicherungen** | Unterstützung der langfristigen Sicherungsaufbewahrung von bis zu 10 Jahren für Azure SQL Managed Instance. Weitere Informationen finden Sie unter [Langfristiges Aufbewahren von Sicherungen](long-term-backup-retention-configure.md).|
 | **Machine Learning Services (GA)** | Die Machine Learning Services für Azure SQL Managed Instance sind jetzt allgemein verfügbar (GA). Weitere Informationen finden Sie unter [Machine Learning Services für SQL Managed Instance](machine-learning-services-overview.md).| 
-| **Wartungsfenster** | Mithilfe des Features „Wartungsfenster“ können Sie einen Wartungszeitplan für Azure SQL Managed Instance konfigurieren. Dieses Feature befindet sich derzeit in der Vorschau. Weitere Informationen finden Sie unter [Wartungsfenster](/database/maintenance-window.md).|
+| **Wartungsfenster** | Mithilfe des Features „Wartungsfenster“ können Sie einen Wartungszeitplan für Azure SQL Managed Instance konfigurieren. Dieses Feature befindet sich derzeit in der Vorschau. Weitere Informationen finden Sie unter [Wartungsfenster](../database/maintenance-window.md).|
 | **Service Broker-Nachrichtenaustausch** | Mit der Service Broker-Komponente von Azure SQL Managed Instance können Sie Ihre Apps aus unabhängigen, eigenständigen Diensten zusammenstellen, indem Sie native Unterstützung für einen zuverlässigen und sicheren Nachrichtenaustausch zwischen den Datenbanken bereitstellen, die an den Dienst angefügt sind. Derzeit in der Vorschauphase. Weitere Informationen finden Sie unter [Service Broker](/sql/database-engine/configure-windows/sql-server-service-broker).
 | **Erkenntnisse zu SQL** | Bei SQL Insights handelt es sich um eine umfassende Lösung zur Überwachung jeglichem Produkt der Azure SQ- Familie. SQL Insights verwendet dynamische Managementansichten, um die Daten offenzulegen, die Sie zur Überwachung des Zustands, zur Diagnose von Problemen und zur Leistungsoptimierung benötigen. Weitere Informationen finden Sie unter [SQL Insights](../../azure-monitor/insights/sql-insights-overview.md). | 
 ||| 

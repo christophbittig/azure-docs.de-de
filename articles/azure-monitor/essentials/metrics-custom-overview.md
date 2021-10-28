@@ -6,12 +6,12 @@ ms.author: robb
 services: azure-monitor
 ms.topic: conceptual
 ms.date: 06/01/2021
-ms.openlocfilehash: 770a308fe293140b4d9c56b51c931e426aa1ac81
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: cacb1d9af577a90d8e9030cf00e51dda58763041
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130063011"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130256627"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Benutzerdefinierte Metriken in Azure Monitor (Vorschau)
 
@@ -241,7 +241,7 @@ Wenn Sie eine Variable im Namen oder eine Dimension mit hoher Kardinalität habe
 
 Wenn der Metrikname oder Dimensionswert aus Versehen mit einem Bezeichner oder einer Dimension mit hoher Kardinalität aufgefüllt wird, können Sie dies problemlos beheben, indem Sie den Variablenteil entfernen.
 
-Wenn jedoch eine hohe Kardinalität für Ihr Szenario wichtig ist, sind die aggregierten Metriken wahrscheinlich nicht die richtige Wahl. Wechseln Sie zur Verwendung benutzerdefinierter Protokolle (d. h. trackMetric-API-Aufrufe mit [trackEvent](/azure/azure-monitor/app/api-custom-events-metrics#trackevent)). Beachten Sie jedoch, dass Protokolle keine Werte aggregieren, weshalb jeder einzelne Eintrag gespeichert wird. Wenn Sie also in einem kleinen Zeitraum über eine große Menge von Protokollen verfügen (z. B. 1 Million pro Sekunde), kann dies zu Drosselung und Erfassungsverzögerungen führen. 
+Wenn jedoch eine hohe Kardinalität für Ihr Szenario wichtig ist, sind die aggregierten Metriken wahrscheinlich nicht die richtige Wahl. Wechseln Sie zur Verwendung benutzerdefinierter Protokolle (d. h. trackMetric-API-Aufrufe mit [trackEvent](../app/api-custom-events-metrics.md#trackevent)). Beachten Sie jedoch, dass Protokolle keine Werte aggregieren, weshalb jeder einzelne Eintrag gespeichert wird. Wenn Sie also in einem kleinen Zeitraum über eine große Menge von Protokollen verfügen (z. B. 1 Million pro Sekunde), kann dies zu Drosselung und Erfassungsverzögerungen führen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Verwenden Sie benutzerdefinierte Metriken aus verschiedenen Diensten: 

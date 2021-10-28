@@ -6,16 +6,16 @@ ms.topic: tutorial
 ms.date: 09/13/2021
 ms.author: jukullam
 ms.custom: github-actions-azure
-ms.openlocfilehash: 01d4293b33eb0756dec8bc9ae870a972959ced89
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a63a51299cf6ffac98dd7514e79c762b2acb67bd
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128701969"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130236559"
 ---
 # <a name="tutorial-use-github-actions-to-deploy-to-app-service-and-connect-to-a-database"></a>Tutorial: Verwenden von GitHub Actions für die Bereitstellung in App Service und die Verbindungsherstellung mit einer Datenbank
 
-Hier wird beschrieben, wie Sie einen GitHub Actions-Workflow für die Bereitstellung einer ASP.NET Core-Anwendung mit einem [Azure SQL-Datenbank](../azure-sql/database/sql-database-paas-overview.md)-Back-End einrichten. Nach Abschluss verfügen Sie über eine ASP.NET-App, die in Azure ausgeführt wird und mit SQL-Datenbank verbunden ist. Sie verwenden zunächst eine [ARM-Vorlage](/azure/azure-resource-manager/templates/overview), um Ressourcen zu erstellen.
+Hier wird beschrieben, wie Sie einen GitHub Actions-Workflow für die Bereitstellung einer ASP.NET Core-Anwendung mit einem [Azure SQL-Datenbank](../azure-sql/database/sql-database-paas-overview.md)-Back-End einrichten. Nach Abschluss verfügen Sie über eine ASP.NET-App, die in Azure ausgeführt wird und mit SQL-Datenbank verbunden ist. Sie verwenden zunächst eine [ARM-Vorlage](../azure-resource-manager/templates/overview.md), um Ressourcen zu erstellen.
 
 In diesem Tutorial werden keine Container verwendet. Falls Sie die Bereitstellung in einer containerisierten ASP.NET Core-Anwendung durchführen möchten, helfen Ihnen die Informationen zum Thema [Verwenden von GitHub Actions für die Bereitstellung in App Service für Container und die Verbindungsherstellung mit einer Datenbank](app-service-sql-github-actions.md) weiter.
 
@@ -89,7 +89,7 @@ Um [Anmeldeinformationen auf Benutzerebene](#generate-deployment-credentials) zu
  
 ## <a name="create-azure-resources"></a>Erstellen von Azure-Ressourcen
 
-Der Workflow zum Erstellen von Azure-Ressourcen führt eine [ARM-Vorlage](/azure/azure-resource-manager/templates/overview) aus, um Ressourcen in Azure bereitzustellen. Der Workflow:
+Der Workflow zum Erstellen von Azure-Ressourcen führt eine [ARM-Vorlage](../azure-resource-manager/templates/overview.md) aus, um Ressourcen in Azure bereitzustellen. Der Workflow:
 
 - Checkt den Quellcode mithilfe der [Check-Out-Aktion](https://github.com/marketplace/actions/checkout) aus.
 - Meldet sich mit der [Azure-Anmeldeaktion](https://github.com/marketplace/actions/azure-login) bei Azure an und sammelt Umgebungs- und Azure-Ressourceninformationen.

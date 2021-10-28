@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie über Azure Private Link eine Verbindung
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: d21f543d7736ee69a9c15a7b2a4bf0ccd0e877e2
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 5ed9587c0c8bdb378206db70ca459cc8cd004b45
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130165194"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130215557"
 ---
 # <a name="enable-private-link-on-an-hdinsight-cluster"></a>Aktivieren von Private Link in einem HDInsight-Cluster
 
@@ -105,7 +105,7 @@ Der folgende JSON-Codeausschnitt enthält die beiden Netzwerkeigenschaften, die 
 
 ```json
 networkProperties: {
-    "resourceProviderConnection": "Inbound" | "Outbound",
+    "resourceProviderConnection": "Outbound",
     "privateLink": "Enabled"
 }
 ```
@@ -114,7 +114,7 @@ Eine vollständige Vorlage mit vielen dieser HDInsight-Sicherheitsfunktionen fü
 
 Informationen zum Erstellen eines Clusters mithilfe von PowerShell finden Sie im [Beispiel](/powershell/module/az.hdinsight/new-azhdinsightcluster#example-4--create-an-azure-hdinsight-cluster-with-relay-outbound-and-private-link-feature).
 
-Informationen zum Erstellen eines Clusters mithilfe der Azure CLI finden Sie im [Beispiel](/cli/azure/hdinsight#az_hdinsight_create-examples).
+Informationen zum Erstellen eines Clusters mithilfe von Azure CLI finden Sie im [Beispiel](/cli/azure/hdinsight#az_hdinsight_create-examples).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

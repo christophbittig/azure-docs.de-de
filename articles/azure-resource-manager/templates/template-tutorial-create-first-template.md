@@ -2,16 +2,16 @@
 title: 'Tutorial: Erstellen und Bereitstellen einer Vorlage'
 description: Erstellen Sie Ihre erste Azure Resource Manager-Vorlage (ARM-Vorlage). In diesem Tutorial lernen Sie die Syntax der Vorlagendatei kennen und erfahren, wie Sie ein Speicherkonto bereitstellen.
 author: mumian
-ms.date: 10/01/2021
+ms.date: 10/20/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7263a72f19d9dfea8044e55451a52ebdec29ec7d
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: ef50a1136080358fc6de27da1ab42467c337f252
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129390233"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130239731"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>Tutorial: Erstellen und Bereitstellen Ihrer ersten ARM-Vorlage
 
@@ -157,7 +157,7 @@ New-AzResourceGroupDeployment `
 Für die Ausführung dieses Bereitstellungsbefehls müssen Sie über die [aktuelle Version](/cli/azure/install-azure-cli) der Azure CLI verfügen.
 
 ```azurecli
-$templateFile="{provide-the-path-to-the-template-file}"
+templateFile="{provide-the-path-to-the-template-file}"
 az deployment group create \
   --name blanktemplate \
   --resource-group myResourceGroup \

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: f79e436f1fcce346304b2e88f213ff298b27aa04
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: f4b706c296c6f6d4f5921675dd87ec8f4052b9a5
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112300829"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130256665"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Verwenden der Service Map-Lösung in Azure
 
@@ -25,7 +25,7 @@ In diesem Artikel werden die Details von Onboarding und Verwendung der Dienstzuo
 * Der [Dependency-Agent](vminsights-enable-overview.md#agents) ist auf dem Windows-Computer oder Linux-Server installiert.
 
 >[!NOTE]
->Wenn Sie die Dienstzuordnung bereits bereitgestellt haben, können Sie Ihre Zuordnungen auch in VM Insights anzeigen. Diese Lösung enthält zusätzliche Features zum Überwachen der Integrität und Leistung von VMs. Weitere Informationen finden Sie unter [Übersicht über VM Insights](../vm/vminsights-overview.md). Informationen zu den Unterschieden zwischen der Lösung „Dienstzuordnung“ und dem Zuordnungsfeature von VM Insights finden Sie in den folgenden [FAQ](/azure/azure-monitor/faq#vm-insights).
+>Wenn Sie die Dienstzuordnung bereits bereitgestellt haben, können Sie Ihre Zuordnungen auch in VM Insights anzeigen. Diese Lösung enthält zusätzliche Features zum Überwachen der Integrität und Leistung von VMs. Weitere Informationen finden Sie unter [Übersicht über VM Insights](../vm/vminsights-overview.md). Informationen zu den Unterschieden zwischen der Lösung „Dienstzuordnung“ und dem Zuordnungsfeature von VM Insights finden Sie in den folgenden [FAQ](../faq.yml).
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 

@@ -3,12 +3,12 @@ title: Szenarien für die Verwendung eines virtuellen Netzwerks
 description: Szenarien, Ressourcen und Einschränkungen für die Bereitstellung von Containergruppen in einem virtuellen Azure-Netzwerk.
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: 4d56ba43480182077acc114200ebc69569835bca
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7f0e2719d6949037e2268f66bf1dce8904530992
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346892"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130247492"
 ---
 # <a name="virtual-network-scenarios-and-resources"></a>Szenarien und Ressourcen für virtuelle Azure-Netzwerke
 
@@ -47,7 +47,7 @@ Containergruppen, die in einem virtuellen Azure-Netzwerk bereitgestellt werden, 
 * Aufgrund der zusätzlichen beteiligten Netzwerkressourcen erfolgen Bereitstellungen in einem virtuellen Netzwerk in der Regel langsamer als die Bereitstellung einer Standardcontainerinstanz.
 * Ausgehende Verbindungen mit Port 25 werden derzeit nicht unterstützt.
 * Wenn Sie eine Verbindung zwischen Ihrer Containergruppe und einem Azure Storage-Konto herstellen, müssen Sie dieser Ressource einen [Dienstendpunkt](../virtual-network/virtual-network-service-endpoints-overview.md) hinzufügen.
-* [IPv6-Adressen](../virtual-network/ipv6-overview.md) werden derzeit nicht unterstützt. 
+* [IPv6-Adressen](../virtual-network/ip-services/ipv6-overview.md) werden derzeit nicht unterstützt. 
 
 ## <a name="required-network-resources"></a>Erforderliche Netzwerkressourcen
 

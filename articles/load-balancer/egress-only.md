@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 08/21/2021
 ms.author: allensu
-ms.openlocfilehash: d2f54b8ea7161f297528ac6ea82fde548827033a
-ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
+ms.openlocfilehash: f3c93d590036c0e9f16caad6cbfc55f32053d4ba
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122681187"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130249550"
 ---
 # <a name="outbound-only-load-balancer-configuration"></a>Lastenausgleichskonfiguration (nur ausgehender Datenverkehr)
 
@@ -26,7 +26,7 @@ Diese Konfiguration ermöglicht ausgehende NAT (Network Address Translation, Net
 >
 > Informationen zum Bereitstellen einer Lastenausgleichskonfiguration nur für ausgehenden Daten mit Azure Virtual Network NAT und einem NAT-Gateway finden Sie unter [Tutorial: Integrieren eines NAT-Gateways in einen internen Lastenausgleich über das Azure-Portal](../virtual-network/nat-gateway/tutorial-nat-gateway-load-balancer-internal-portal.md).
 >
-> Weitere Informationen zu ausgehenden Verbindungen in Azure und dem standardmäßigen ausgehenden Zugriff finden Sie unter [Verwendung von SNAT (Source Network Address Translation) für ausgehende Verbindungen](load-balancer-outbound-connections.md) und [Standardzugriff in ausgehender Richtung](../virtual-network/default-outbound-access.md).
+> Weitere Informationen zu ausgehenden Verbindungen in Azure und dem standardmäßigen ausgehenden Zugriff finden Sie unter [Verwendung von SNAT (Source Network Address Translation) für ausgehende Verbindungen](load-balancer-outbound-connections.md) und [Standardzugriff in ausgehender Richtung](../virtual-network/ip-services/default-outbound-access.md).
 
 :::image type="content" source="./media/egress-only/load-balancer-egress-only.png" alt-text="Abbildung: Lastenausgleichskonfiguration nur für ausgehenden Datenverkehr" border="true":::
 
@@ -182,7 +182,7 @@ In diesem Abschnitt erstellen Sie den öffentlichen Lastenausgleich.
 8. Wählen Sie für den **IP-Typ** die Option **IP-Adresse** aus.
 
     > [!NOTE]
-    > Weitere Informationen zu IP-Präfixen finden Sie unter [Präfix für öffentliche IP-Adressen](../virtual-network/public-ip-address-prefix.md).
+    > Weitere Informationen zu IP-Präfixen finden Sie unter [Präfix für öffentliche IP-Adressen](../virtual-network/ip-services/public-ip-address-prefix.md).
 
 9. Wählen Sie unter **Öffentliche IP-Adresse** die Option **Neu erstellen** aus.
 
@@ -324,7 +324,7 @@ In diesem Abschnitt fügen Sie die zuvor erstellte VM dem Back-End-Pool des öff
     | ------- | ----- |
     | Name | Geben Sie **myOutboundRule** ein. |
     | Front-End-IP-Adresse | Wählen Sie **LoadBalancerFrontEnd** aus.|
-    | Protokoll | Übernehmen Sie die Standardeinstellung **Alle**. |
+    | Protocol | Übernehmen Sie die Standardeinstellung **Alle**. |
     | Leerlaufzeitüberschreitung (Minuten) | Bewegen Sie den Schieberegler auf **15 Minuten**.|
     | TCP-Zurücksetzung | Wählen Sie **Aktiviert**.|
     | Back-End-Pool | Wählen Sie **myPublicBackendPool** aus.|
@@ -369,4 +369,3 @@ In diesem Artikel haben Sie eine Konfiguration vom Typ „Nur ausgehend“ mit e
 Mit dieser Konfiguration können Sie einen Lastenausgleich für eingehenden internen Datenverkehr für Ihren Back-End-Pool durchführen, während gleichzeitig alle öffentlichen eingehenden Verbindungen verhindert werden.
 
 Weitere Informationen zu Azure Load Balancer und Azure Bastion finden Sie unter [Was versteht man unter Azure Load Balancer?](load-balancer-overview.md) und [Was ist Azure Bastion?](../bastion/bastion-overview.md).
-

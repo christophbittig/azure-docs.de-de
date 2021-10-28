@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 03/29/2021
 ms.author: duau
-ms.openlocfilehash: 08878f4fe13c270b6da3bfb74bed88c2476ad5de
-ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
+ms.openlocfilehash: a9402ac0a69cff3cd2b420754aceeb452811e1a1
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2021
-ms.locfileid: "129399620"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130246773"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – FAQ
 
@@ -88,7 +88,7 @@ ExpressRoute unterstützt [drei Routingdomänen](expressroute-circuit-peerings.m
 
 ### <a name="microsoft-peering"></a>Microsoft-Peering
 
-Wenn Ihre ExpressRoute-Verbindung für öffentliches Azure Microsoft-Peering aktiviert ist, können Sie über die Verbindung auf die [in Azure verwendeten öffentlichen IP-Adressbereiche](../virtual-network/public-ip-addresses.md#public-ip-addresses) zugreifen. Azure Microsoft-Peering ermöglicht den Zugriff auf Dienste, die derzeit in Azure gehostet werden (abhängig von der SKU Ihrer Verbindung mit geografischen Einschränkungen). Um die Verfügbarkeit für einen bestimmten Dienst zu überprüfen, können Sie die Dokumentation für diesen Dienst lesen, um festzustellen, ob ein reservierter Bereich für ihn veröffentlicht wurde. Überprüfen Sie anschließend die IP-Adressbereiche des Zieldiensts, und vergleichen Sie sie mit den Bereichen, die in der XML-Datei [Azure IP Ranges and Service Tags – Public Cloud](https://www.microsoft.com/download/details.aspx?id=56519) (Azure-IP-Bereiche und -Diensttags – öffentliche Cloud) aufgeführt sind. Alternativ können Sie ein Supportticket für den betreffenden Dienst erstellen.
+Wenn Ihre ExpressRoute-Verbindung für öffentliches Azure Microsoft-Peering aktiviert ist, können Sie über die Verbindung auf die [in Azure verwendeten öffentlichen IP-Adressbereiche](../virtual-network/ip-services/public-ip-addresses.md#public-ip-addresses) zugreifen. Azure Microsoft-Peering ermöglicht den Zugriff auf Dienste, die derzeit in Azure gehostet werden (abhängig von der SKU Ihrer Verbindung mit geografischen Einschränkungen). Um die Verfügbarkeit für einen bestimmten Dienst zu überprüfen, können Sie die Dokumentation für diesen Dienst lesen, um festzustellen, ob ein reservierter Bereich für ihn veröffentlicht wurde. Überprüfen Sie anschließend die IP-Adressbereiche des Zieldiensts, und vergleichen Sie sie mit den Bereichen, die in der XML-Datei [Azure IP Ranges and Service Tags – Public Cloud](https://www.microsoft.com/download/details.aspx?id=56519) (Azure-IP-Bereiche und -Diensttags – öffentliche Cloud) aufgeführt sind. Alternativ können Sie ein Supportticket für den betreffenden Dienst erstellen.
 
 **Unterstützt:**
 

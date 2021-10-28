@@ -8,12 +8,12 @@ ms.subservice: ip-services
 ms.topic: how-to
 ms.date: 05/20/2021
 ms.custom: template-how-to
-ms.openlocfilehash: ca3d72ad346bf86ecf6d12a8292938aac2ac7117
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: bd34b38710bdf4cc3fe4d21c5dee8e1bb7773124
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129368174"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130254062"
 ---
 # <a name="upgrade-a-public-ip-address-using-azure-powershell"></a>Durchführen eines Upgrades für eine öffentliche IP-Adresse mit Azure PowerShell
 
@@ -24,7 +24,7 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe von Azure PowerShell ein Upgrad
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein Azure-Konto mit einem aktiven Abonnement. [Erstellen Sie ein kostenloses Konto.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-* Eine **statische** öffentliche IP-Adresse der Basic-SKU in Ihrem Abonnement. Weitere Informationen finden Sie unter [Erstellen einer öffentlichen IP-Adresse im Azure-Portal](../../virtual-network/create-public-ip-portal.md#create-a-basic-sku-public-ip-address).
+* Eine **statische** öffentliche IP-Adresse der Basic-SKU in Ihrem Abonnement. Weitere Informationen finden Sie unter [Erstellen einer öffentlichen IP-Adresse im Azure-Portal](./create-public-ip-portal.md#create-a-basic-sku-public-ip-address).
 * Azure PowerShell (lokal installiert) oder Azure Cloud Shell
 
 Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für diesen Artikel mindestens Version 5.4.1 des Azure PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable Az` aus, um die installierte Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-Az-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzAccount` ausführen, um eine Verbindung mit Azure herzustellen.
@@ -76,5 +76,4 @@ In diesem Artikel haben Sie ein Upgrade einer öffentlichen IP-Adresse der Basic
 Weitere Informationen zu öffentlichen IP-Adressen in Azure finden Sie unter:
 
 - [Öffentliche IP-Adressen in Azure](public-ip-addresses.md)
-- [Erstellen einer öffentlichen IP-Adresse: Azure-Portal](../../virtual-network/create-public-ip-portal.md)
-
+- [Erstellen einer öffentlichen IP-Adresse: Azure-Portal](./create-public-ip-portal.md)
