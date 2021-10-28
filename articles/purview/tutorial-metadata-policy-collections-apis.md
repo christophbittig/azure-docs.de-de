@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: tutorial
 ms.date: 09/24/2021
-ms.openlocfilehash: cfb62050da2b1c72ec8e620f9a4222552f50daa2
-ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
+ms.openlocfilehash: 79848d8f54ea1d019f2a9e6cf93a61cc8b7c49f9
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129728682"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130245927"
 ---
 # <a name="tutorial-use-rest-apis-to-manage-role-based-access-control-on-azure-purview-collections"></a>Tutorial: Verwenden von REST-APIs zum Verwalten der rollenbasierten Zugriffssteuerung für Azure Purview-Sammlungen 
 
@@ -23,11 +23,11 @@ Dieses Tutorial führt Sie durch die schrittweise Verwendung der Azure Purview M
 Weitere Informationen zu den integrierten Rollen in Azure Purview finden Sie im [Leitfaden für Azure Purview-Berechtigungen](catalog-permissions.md#roles), Der Leitfaden ordnet die Rollen der Ebene der Zugriffsberechtigungen zu, die Benutzern gewährt werden.
 
 ## <a name="metadata-policy-api-reference-summary"></a>API-Referenz für Metadatenrichtlinien: Zusammenfassung
-Die folgende Tabelle enthält eine Übersicht über die [API-Referenz für Azure Purview-Metadatenrichtlinien](/rest/api/purview/metadatapolicydataplane/Metadata-Policy.yml). 
+Die folgende Tabelle enthält eine Übersicht über die [API-Referenz für Azure Purview-Metadatenrichtlinien](/rest/api/purview/metadatapolicydataplane/Metadata-Policy). 
 
 Ersetzen Sie {pv-acc-name} durch den Namen Ihres Azure Purview-Kontos, bevor Sie diese APIs ausführen. Wenn Ihr Purview-Kontoname beispielsweise *FabrikamPurviewAccount* ist, heißen Ihre API-Endpunkte *FabrikamPurviewAccount.purview.azure.com*.
 
-| API-Funktion | REST-Methode | API-Endpunkt | BESCHREIBUNG | 
+| API-Funktion | REST-Methode | API-Endpunkt | Beschreibung | 
 | :- | :- | :- | :- | 
 | Alle Metadatenrollen lesen| GET| https://{pv-acc-name}.purview.azure.com /policystore/metadataroles?&api-version=2021-07-01| Liest alle Metadatenrollen aus Ihrem Azure Purview-Konto.| 
 | Metadatenrichtlinie anhand Sammlungsname lesen| GET| https://{pv-acc-name}.purview.azure.com /policystore/collections/{collectionName}/metadataPolicy?&api-version=2021-07-01| Liest die Metadatenrichtlinie unter Verwendung eines angegebenen Sammlungsnamens (der zufällige Name mit sechs Zeichen, der von Azure Purview beim Erstellen der Richtlinie generiert wird).| 
