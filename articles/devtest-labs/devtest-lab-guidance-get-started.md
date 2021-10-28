@@ -4,12 +4,12 @@ description: Dieser Artikel enthält die Hauptszenarien zur Verwendung von Azure
 ms.topic: conceptual
 ms.date: 06/20/2020
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: fc4c7ca1cdbc8e503ad6c0d94fcec2d9697baae4
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 9daf32e5094616a98b6fcd6b1f337eadf2d7ee82
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128657479"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130235013"
 ---
 # <a name="popular-scenarios-for-using-azure-devtest-labs"></a>Gängige Szenarien für die Verwendung von Azure DevTest Labs
 Basierend auf den jeweiligen Anforderungen eines Unternehmens kann DevTest Labs so konfiguriert werden, dass die unterschiedlichen Bedürfnisse erfüllt werden.  In diesem Artikel werden die gängigen Szenarien beschrieben. In jedem Szenario geht es um die Vorteile, die sich durch die Verwendung von DevTest Labs und der entsprechenden Ressourcen zur Implementierung der Szenarien ergeben.  
@@ -27,7 +27,7 @@ Entwickler haben oft andere Anforderungen an Entwicklungscomputer für unterschi
 - Entwickler können ihre Entwicklungscomputer bei Bedarf schnell bereitstellen oder [einen vorhandenen vorkonfigurierten Computer anfordern](devtest-lab-add-claimable-vm.md).
 - Entwickler können Ressourcen per Self-Service-Verfahren bereitstellen, ohne Berechtigungen auf Abonnementebene zu benötigen.
 - Die IT-Abteilung oder Administratoren können die [Netzwerktopologie vorab definieren](devtest-lab-configure-vnet.md), und Entwickler können sie direkt auf einfache und intuitive Weise ohne spezielle Zugriffsberechtigungen nutzen.
-- Entwickler können ihre Entwicklungscomputer einfach je nach Bedarf [anpassen](devtest-lab-add-vm.md#add-an-existing-artifact-to-a-vm).
+- Entwickler können ihre Entwicklungscomputer einfach je nach Bedarf [anpassen](devtest-lab-add-vm.md#add-artifacts-after-installation).
 - Administratoren können die Kosten steuern, indem sie Folgendes sicherstellen:
     - Entwickler können [nicht mehr virtuelle Computer erhalten](devtest-lab-set-lab-policy.md#set-virtual-machines-per-user), als sie für die Entwicklung benötigen.
     - [Virtuelle Computer werden heruntergefahren](devtest-lab-set-lab-policy.md#set-auto-shutdown), wenn sie nicht in Gebrauch sind.
@@ -60,7 +60,7 @@ Ein Lab in Azure DevTest Labs fungiert als idealer Container für zeitlich begre
 - Mit [Richtlinien](devtest-lab-set-lab-policy.md) wird sichergestellt, dass Benutzer nur die Anzahl von Ressourcen erhalten, die sie auch wirklich benötigen, z. B. virtuelle Computer.
 - Für Benutzer ist nur eine Aktion erforderlich, um vorkonfigurierte und erstellte Computer [anzufordern](devtest-lab-add-claimable-vm.md).
 - Labs werden für Benutzer freigegeben, indem auf die [URL für das Lab](/azure/devtest-labs/devtest-lab-faq#how-do-i-share-a-direct-link-to-my-lab) zugegriffen wird.
-- Mit [Ablaufdaten](devtest-lab-add-vm.md#steps-to-add-a-vm-to-a-lab-in-azure-devtest-labs) auf virtuellen Computern wird sichergestellt, dass Computer gelöscht werden, wenn sie nicht mehr benötigt werden.
+- Mit [Ablaufdaten](devtest-lab-add-vm.md#create-and-add-virtual-machines) auf virtuellen Computern wird sichergestellt, dass Computer gelöscht werden, wenn sie nicht mehr benötigt werden.
 - Das [Löschen eines Labs](devtest-lab-delete-lab-vm.md#delete-a-lab) und aller [zugehörigen Ressourcen](/azure/devtest-labs/devtest-lab-faq#how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) nach Abschluss der Schulung ist einfach.
 
 Weitere Informationen finden Sie unter [Verwenden von Azure DevTest Labs zu Schulungszwecken](devtest-lab-training-lab.md).  

@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie den Zugriff auf alle ausgehenden öffentliche
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 09/20/2021
-ms.openlocfilehash: 6cc4a73c08d945f5a5ce26cef9c3774ffb5772d0
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 457e72f50b24b5850311b2869ab6daa956512ae6
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130069138"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130215445"
 ---
 # <a name="restrict-public-connectivity-in-azure-hdinsight"></a>Einschränken der öffentlichen Konnektivität in Azure HDInsight
 
@@ -148,7 +148,7 @@ Der folgende JSON-Codeausschnitt enthält die beiden Netzwerkeigenschaften, die 
 
 ```json
 networkProperties: {
-    "resourceProviderConnection": "Inbound" | "Outbound"
+    "resourceProviderConnection": "Outbound"
 }
 ```
 

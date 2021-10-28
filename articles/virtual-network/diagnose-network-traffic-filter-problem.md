@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: kumud
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d3180ba6e8c19714759563eb79a8488929efe940
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: ca7503127342a5eceac43a8f5a2bfce578eb21e6
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110675853"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130257801"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>Diagnostizieren von Problemen mit dem Filter für Netzwerkdatenverkehr eines virtuellen Computers
 
@@ -171,12 +171,12 @@ Unabhängig davon, ob Sie das im [Szenario](#scenario) dieses Artikels dargestel
 
 | Eigenschaft                | Wert                                                                              |
 |---------                |---------                                                                           |
-| `Source`                  | Beliebig                                                                                |
+| `Source`                  | Any                                                                                |
 | Source port ranges      | Any                                                                                |
 | Destination             | Die IP-Adresse der VM, ein Bereich von IP-Adressen oder alle Adressen im Subnetz. |
 | Zielportbereiche | 80                                                                                 |
-| Protokoll                | TCP                                                                                |
-| Aktion                  | Allow                                                                              |
+| Protocol                | TCP                                                                                |
+| Action                  | Zulassen                                                                              |
 | Priorität                | 100                                                                                |
 | Name                    | Allow-HTTP-All                                                                     |
 
@@ -193,7 +193,7 @@ Beachten Sie bei der Problembehandlung von Verbindungsproblemen die folgenden Pu
 * Die Standardsicherheitsregeln blockieren den eingehenden Zugriff über das Internet und lassen nur eingehenden Datenverkehr über das virtuelle Netzwerk zu. Um eingehenden Datenverkehr aus dem Internet zuzulassen, fügen Sie Sicherheitsregeln mit einer höheren Priorität als der der Standardregeln hinzu. Erfahren Sie mehr über [Standardsicherheitsregeln](./network-security-groups-overview.md#default-security-rules), oder das [Erstellen einer Sicherheitsregel](manage-network-security-group.md#create-a-security-rule).
 * Beim Peering virtueller Netzwerke wird das Diensttag **VIRTUAL_NETWORK** standardmäßig automatisch erweitert, sodass Präfixe für die per Peering verknüpften virtuellen Netzwerke einbezogen werden. Um Probleme im Hinblick auf Peerings virtueller Netzwerke zu beheben, können Sie diese Präfixe in der Liste **ExpandedAddressPrefix** anzeigen. Weitere Informationen hierzu finden Sie unter [Peering virtueller Netzwerke](virtual-network-peering-overview.md) und [Diensttags](./network-security-groups-overview.md#service-tags).
 * Effektive Sicherheitsregeln werden nur dann für eine Netzwerkschnittstelle angezeigt, wenn der Netzwerkschnittstelle und/oder dem Subnetz der VM eine NSG zugeordnet ist und die VM den Ausführungsstatus aufweist.
-* Wenn der Netzwerkschnittstelle oder dem Subnetz keine NSGs zugeordnet sind und der VM eine [öffentliche IP-Adresse](virtual-network-public-ip-address.md) zugewiesen ist, sind alle Ports für den eingehenden und ausgehenden Zugriff auf beliebige Ziele geöffnet. Wenn die VM eine öffentliche IP-Adresse aufweist, sollten Sie eine NSG auf das Subnetz der Netzwerkschnittstelle anwenden.
+* Wenn der Netzwerkschnittstelle oder dem Subnetz keine NSGs zugeordnet sind und der VM eine [öffentliche IP-Adresse](./ip-services/virtual-network-public-ip-address.md) zugewiesen ist, sind alle Ports für den eingehenden und ausgehenden Zugriff auf beliebige Ziele geöffnet. Wenn die VM eine öffentliche IP-Adresse aufweist, sollten Sie eine NSG auf das Subnetz der Netzwerkschnittstelle anwenden.
 
 ## <a name="additional-diagnosis"></a>Zusätzliche Diagnose
 

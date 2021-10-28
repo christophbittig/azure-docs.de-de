@@ -15,12 +15,12 @@ ms.date: 02/06/2019
 ms.author: rsetlem
 ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.reviewer: mathoma
-ms.openlocfilehash: c7b2bff6f4c927090dfdff92f324b4957b645644
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: bcf48bf068d48420c162effa563c4225baf7b990
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130167727"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130219638"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Konfigurieren von Always On-Verfügbarkeitsgruppenlistenern – Resource Manager
 
@@ -138,7 +138,7 @@ foreach($VMName in $VMNames)
 
 ## <a name="example-script-add-an-ip-address-to-an-existing-load-balancer-with-powershell"></a><a name="Add-IP"></a> Beispielskript: Hinzufügen einer IP-Adresse zu einem vorhandenen Lastenausgleich mit PowerShell
 
-Wenn Sie mehrere Verfügbarkeitsgruppen verwenden möchten, fügen Sie dem Load Balancer eine zusätzliche IP-Adresse hinzu. Für jede IP-Adresse sind eine eigene Lastenausgleichsregel, ein Testport und ein Front-End-Port erforderlich. Fügen Sie dem Back-End-Pool des Lastenausgleichs nur die primäre IP-Adresse des virtuellen Computers hinzu, da die [IP-Adresse des sekundären virtuellen Computers keine Floating-IP-Adresse unterstützt](/azure/load-balancer/load-balancer-floating-ip).
+Wenn Sie mehrere Verfügbarkeitsgruppen verwenden möchten, fügen Sie dem Load Balancer eine zusätzliche IP-Adresse hinzu. Für jede IP-Adresse sind eine eigene Lastenausgleichsregel, ein Testport und ein Front-End-Port erforderlich. Fügen Sie dem Back-End-Pool des Lastenausgleichs nur die primäre IP-Adresse des virtuellen Computers hinzu, da die [IP-Adresse des sekundären virtuellen Computers keine Floating-IP-Adresse unterstützt](../../../load-balancer/load-balancer-floating-ip.md).
 
 Der Front-End-Port ist der Port, der von Anwendungen zum Herstellen einer Verbindung mit der SQL Server-Instanz genutzt wird. IP-Adressen für unterschiedliche Verfügbarkeitsgruppen können denselben Front-End-Port verwenden.
 

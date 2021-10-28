@@ -3,22 +3,22 @@ title: Einrichten der Registrierung und Anmeldung mit einer Apple-ID
 titleSuffix: Azure AD B2C
 description: Stellen Sie für Kunden die Registrierung und Anmeldung mit einer Apple-ID bei Ihren Anwendungen mithilfe von Azure Active Directory B2C bereit.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 09/16/2021
 ms.custom: project-no-code
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 13120c083eda20b76581448c842db94d657cf42b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 8e47335810ec8f9845ab159af832d7ea3d362323
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128571896"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "130228017"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-apple-id--using-azure-active-directory-b2c-preview"></a>Einrichten der Registrierung und Anmeldung mit einer Apple-ID mithilfe von Azure Active Directory B2C (Vorschau)
 

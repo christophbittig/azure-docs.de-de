@@ -3,12 +3,12 @@ title: Verwenden von Azure DevTest Labs zu Schulungszwecken
 description: Dieser Artikel enthält ausführliche Schritte, die Sie befolgen können, um ein Lab für das Training in Azure DevTest Labs einzurichten.
 ms.topic: conceptual
 ms.date: 06/26/2020
-ms.openlocfilehash: d72d87cf2108a5e6d372edbf698e6adc7b100618
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b7de17f89e5e7a23290e00402e13c7035df03578
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128629254"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130228994"
 ---
 # <a name="use-azure-devtest-labs-for-training"></a>Verwenden von Azure DevTest Labs zu Schulungszwecken
 Azure DevTest Labs kann außer zum Entwickeln und Testen auch zum Implementieren zahlreicher gängiger Szenarien verwendet werden. Eines dieser Szenarien ist das Einrichten eines Labs zu Schulungszwecken. Mit Azure DevTest Labs können Sie ein Lab erstellen, in dem Sie benutzerdefinierte Vorlagen bereitstellen, mit denen jeder Lab-Benutzer identische und isolierte Umgebungen zu Schulungszwecken erstellen kann. Sie können durch das Anwenden von Richtlinien sicherstellen, dass Schulungsumgebungen für jeden Lab-Benutzer nur bei Bedarf verfügbar sind und genügend Ressourcen – z.B. virtuelle Computer – enthalten, die zur Schulung erforderlich sind. Schließlich können Sie das Lab problemlos für Benutzer freigeben, die dann mit einem Klick darauf zugreifen können.
@@ -68,10 +68,10 @@ In diesem Artikel erfahren Sie mehr zu verschiedenen Azure DevTest Labs-Features
    | Aufgabe | Lerninhalt |
    | --- | --- |
    | [Definieren von Labrichtlinien](devtest-lab-set-lab-policy.md) |Kontrollieren Sie Kosten durch Festlegen von Richtlinien im Lab. |
-   | [Löschen aller virtuellen Computer mithilfe eines PowerShell-Skripts](/azure/devtest-labs/devtest-lab-faq#how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) |Löschen Sie alle Labs in einem Vorgang, wenn die Schulung abgeschlossen ist. |
+   | [Löschen aller virtuellen Computer mithilfe eines PowerShell-Skripts](./devtest-lab-faq.yml) |Löschen Sie alle Labs in einem Vorgang, wenn die Schulung abgeschlossen ist. |
 5. **Freigeben des Labs für alle Benutzer**
    
-    Labs sind direkt über einen Link zugänglich, den Sie für Ihre Benutzer freigeben. Die Benutzer benötigen nicht einmal ein Azure-Konto, sofern sie über ein [Microsoft-Konto](/azure/devtest-labs/devtest-lab-faq#what-is-a-microsoft-account)verfügen. Lab-Benutzer können die von anderen Benutzern erstellten virtuellen Computer nicht sehen  
+    Labs sind direkt über einen Link zugänglich, den Sie für Ihre Benutzer freigeben. Die Benutzer benötigen nicht einmal ein Azure-Konto, sofern sie über ein [Microsoft-Konto](./devtest-lab-faq.yml)verfügen. Lab-Benutzer können die von anderen Benutzern erstellten virtuellen Computer nicht sehen  
    
     Klicken Sie auf die Links in der folgenden Tabelle, um weitere Informationen zu erhalten:
    
@@ -79,7 +79,7 @@ In diesem Artikel erfahren Sie mehr zu verschiedenen Azure DevTest Labs-Features
    | --- | --- |
    | [Hinzufügen eines Benutzers zu einem Lab in Azure DevTest Labs](devtest-lab-add-devtest-user.md) |Fügen Sie Ihrem Schulungs-Lab mithilfe des Azure-Portals Benutzer hinzu. |
    | [Hinzufügen von Benutzern zum Lab mithilfe eines PowerShell-Skripts](devtest-lab-add-devtest-user.md#add-an-external-user-to-a-lab-using-powershell) |Automatisieren Sie mithilfe von PowerShell das Hinzufügen von Benutzern zu Ihrem Schulungs-Lab. |
-   | [Abrufen eines Links zum Lab](/azure/devtest-labs/devtest-lab-faq#how-do-i-share-a-direct-link-to-my-lab) |Erfahren Sie, wie ein Lab direkt über einen Hyperlink aufgerufen werden kann. |
+   | [Abrufen eines Links zum Lab](./devtest-lab-faq.yml) |Erfahren Sie, wie ein Lab direkt über einen Hyperlink aufgerufen werden kann. |
 6. **Mehrfaches Verwenden des Labs** 
    
     Sie können die Lab-Erstellung, einschließlich der benutzerdefinierten Einstellungen, automatisieren, indem Sie eine Resource Manager-Vorlage erstellen und diese mehrfach zum Erstellen identischer Labs verwenden. 
@@ -88,6 +88,6 @@ In diesem Artikel erfahren Sie mehr zu verschiedenen Azure DevTest Labs-Features
    
    | Aufgabe | Lerninhalt |
    | --- | --- |
-   | [Erstellen eines Labs mithilfe einer Resource Manager-Vorlage](/azure/devtest-labs/devtest-lab-faq#how-do-i-create-a-lab-from-a-resource-manager-template) |Erstellen Sie Labs in Azure DevTest Labs mithilfe von Resource Manager-Vorlagen. |
+   | [Erstellen eines Labs mithilfe einer Resource Manager-Vorlage](./devtest-lab-faq.yml) |Erstellen Sie Labs in Azure DevTest Labs mithilfe von Resource Manager-Vorlagen. |
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]

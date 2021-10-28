@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/08/2020
 ms.author: duau
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e65c021cf858a634fc7ee9466cd502257c613d52
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 79d49a7a9acd30a9af03921c774e6b2430dc848b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110702480"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130228937"
 ---
 # <a name="tutorial-create-and-modify-peering-for-an-expressroute-circuit-using-powershell"></a>Tutorial: Erstellen und Ändern des Peerings für eine ExpressRoute-Verbindung mithilfe von PowerShell
 
@@ -163,11 +163,6 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ## <a name="azure-private-peering"></a><a name="private"></a>Privates Azure-Peering:
 
 Dieser Abschnitt unterstützt Sie beim Erstellen, Abrufen, Aktualisieren und Löschen der privaten Azure-Peeringkonfiguration für eine ExpressRoute-Verbindung.
-
-> [!IMPORTANT]
-> Die IPv6-Unterstützung für privates Peering befindet sich zurzeit in **Public Preview**. 
-> 
-> 
 
 ### <a name="to-create-azure-private-peering"></a>So erstellen Sie ein privates Azure-Peering
 

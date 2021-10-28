@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/27/2021
 ms.author: b-juche
-ms.openlocfilehash: 1a0b2e59f2d11caf1db9985cfba937e2df0f44c7
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 5e6302893884674708f584b0261204b2cc891c6c
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129095007"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130256379"
 ---
 # <a name="restore-a-backup-to-a-new-volume"></a>Wiederherstellen einer Sicherung auf einem neuen Volume
 
@@ -65,9 +65,6 @@ Beim Wiederherstellen einer Sicherung wird ein neues Volume mit demselben Protok
 * [Verwalten von Sicherungsrichtlinien](backup-manage-policies.md)
 * [Durchsuchen von Sicherungen](backup-search.md)
 * [Deaktivieren der Sicherungsfunktionalität für ein Volume](backup-disable.md)
-* [Löschen von Sicherungen eines Volumes](backup-delete.md)
-* [Volumesicherungsmetriken](azure-netapp-files-metrics.md#volume-backup-metrics)
-* [Häufig gestellte Fragen zur Azure NetApp Files-Sicherung](azure-netapp-files-faqs.md#azure-netapp-files-backup-faqs)
-
-
-
+* [Sicherungen eines Volumes löschen](backup-delete.md)
+* [Metriken zur Volume-Sicherung](azure-netapp-files-metrics.md#volume-backup-metrics)
+* [Häufig gestellte Fragen zur Azure NetApp Files-Sicherung](faq-backup.md)

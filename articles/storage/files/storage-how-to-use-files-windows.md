@@ -8,12 +8,12 @@ ms.date: 09/10/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8f125a5e1c7a0f26e92ec1e6e2d7afddb4f53a4b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 0cf24c5196d1cdd9fc7418e93cdfaf47cfdebf30
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128588635"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130241263"
 ---
 # <a name="mount-smb-azure-file-share-on-windows"></a>Einbinden einer Azure-SMB-Dateifreigabe unter Windows
 [Azure Files](storage-files-introduction.md) ist das benutzerfreundliche Clouddateisystem von Microsoft. Azure-Dateifreigaben können in Windows und Windows Server nahtlos verwendet werden. In diesem Artikel werden die Überlegungen zur Verwendung einer Azure-Dateifreigabe mit Windows und Windows Server behandelt.
@@ -113,7 +113,7 @@ Sie haben nun ihre Azure-Dateifreigabe eingebunden.
 1. Wenn Sie die Einbindung der Azure-Dateifreigabe wieder aufheben möchten, klicken Sie im Explorer unter **Netzwerkadressen** mit der rechten Maustaste auf den Eintrag für die Freigabe, und wählen Sie **Trennen**.
 
 ### <a name="accessing-share-snapshots-from-windows"></a>Zugreifen auf Freigabemomentaufnahmen von Windows
-Wenn Sie manuell oder automatisch über ein Skript oder einen Dienst wie Azure Backup eine Freigabemomentaufnahme erstellt haben, können Sie vorherige Versionen einer Freigabe, eines Verzeichnisses oder einer bestimmten Datei aus einer Dateifreigabe unter Windows anzeigen. Sie können eine Momentaufnahme mit [Azure PowerShell](storage-how-to-use-files-powershell.md), mit der [Azure CLI](storage-how-to-use-files-cli.md) oder über das [Azure-Portal](storage-how-to-use-files-portal.md) erstellen.
+Wenn Sie manuell oder automatisch über ein Skript oder einen Dienst wie Azure Backup eine Freigabemomentaufnahme erstellt haben, können Sie vorherige Versionen einer Freigabe, eines Verzeichnisses oder einer bestimmten Datei aus einer Dateifreigabe unter Windows anzeigen. Sie können eine Momentaufnahme mit [Azure PowerShell](./storage-how-to-use-files-portal.md), mit der [Azure CLI](./storage-how-to-use-files-portal.md) oder über das [Azure-Portal](storage-how-to-use-files-portal.md) erstellen.
 
 #### <a name="list-previous-versions"></a>Liste der vorherigen Versionen
 Navigieren Sie zu dem Element oder übergeordneten Element, das wiederhergestellt werden soll. Doppelklicken Sie darauf, um zum gewünschten Verzeichnis zu navigieren. Klicken Sie mit der rechten Maustaste darauf, und wählen Sie im Menü **Eigenschaften** aus.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/25/2021
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 0adc8638eeffedf1f8b2b31357b43fc38e67773f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 186def3e179bc5cefdb9eb93d95e852bbe35bc1b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128546331"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130262924"
 ---
 # <a name="azure-security-baseline-for-azure-virtual-desktop"></a>Azure-Sicherheitsbaseline für Azure Virtual Desktop
 
@@ -136,7 +136,7 @@ Azure AD unterstützt externe Identitäten, die Benutzern ohne Microsoft-Konto e
 
 - [Was ist die Identitätssicherheitsbewertung in Azure AD?](../active-directory/fundamentals/identity-secure-score.md)
 
-- [Bestimmte Rollen, die für den Einsatz von Azure Virtual Desktop erforderlich sind](/azure/virtual-desktop/faq#what-are-the-minimum-admin-permissions-i-need-to-manage-objects)
+- [Bestimmte Rollen, die für den Einsatz von Azure Virtual Desktop erforderlich sind](./faq.yml)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -216,7 +216,7 @@ Diese Datenquellen können in Azure Monitor, Azure Sentinel oder SIEM-Systeme (S
 
 - [Integrieren von Azure-Aktivitätsprotokollen in Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
-**Azure Security Center-Überwachung:** Zurzeit nicht verfügbar
+**Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
@@ -254,7 +254,7 @@ Alle Zugriffssteuerungstypen sollten an der Segmentierungsstrategie des Unterneh
 
 - [Azure-Abonnementadministratoren](../cost-management-billing/manage/add-change-subscription-administrator.md)
 
-- [Mindestens erforderliche Administratorberechtigungen für die Verwaltung von Azure Virtual Desktop](/azure/virtual-desktop#what-are-the-minimum-admin-permissions-i-need-to-manage-objects)
+- [Mindestens erforderliche Administratorberechtigungen für die Verwaltung von Azure Virtual Desktop](./index.yml)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -500,7 +500,7 @@ Leiten Sie alle Protokolle von Azure Virtual Desktop an Ihre SIEM-Lösung (Secur
 
 - [Sicherheitswarnungen von Azure Security Center (Referenzhandbuch)](../security-center/alerts-reference.md)
 
-- [Erstellen benutzerdefinierter Analyseregeln zum Erkennen von Bedrohungen](../sentinel/tutorial-detect-threats-custom.md) 
+- [Erstellen benutzerdefinierter Analyseregeln zum Erkennen von Bedrohungen](../sentinel/detect-threats-custom.md) 
 
 - [Cyber Threat Intelligence mit Azure Sentinel](/azure/architecture/example-scenario/data/sentinel-threat-intelligence)
 
@@ -574,7 +574,7 @@ Darüber hinaus können Sie Daten in Azure Sentinel oder ein SIEM-System (Securi
 
 - [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-**Azure Security Center-Überwachung:** Zurzeit nicht verfügbar
+**Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
 
@@ -644,7 +644,7 @@ Azure Sentinel bietet umfangreiche Datenanalysen über praktisch jede Protokollq
 
 - [Microsoft Azure-Supportdiagnoseinformationen und Speicherabbilderfassung](https://azure.microsoft.com/support/legal/support-diagnostic-information-collection/) 
 
-- Lesen Sie [Untersuchen von Incidents mit Azure Sentinel](../sentinel/tutorial-investigate-cases.md).
+- Lesen Sie [Untersuchen von Incidents mit Azure Sentinel](../sentinel/investigate-cases.md).
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 

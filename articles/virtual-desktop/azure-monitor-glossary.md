@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/29/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: dba8ecd9bbeca9c0b48f312d9c6c4ab27b52c9e7
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.openlocfilehash: 46e70166fffba7c938ea6784db6eda18e69a043f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111745311"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130214755"
 ---
 # <a name="azure-monitor-for-azure-virtual-desktop-glossary"></a>Azure Monitor für Azure Virtual Desktop: Glossar
 
@@ -57,7 +57,7 @@ Wenn ein Fehler oder eine Warnung in Azure Monitor für Azure Virtual Desktop au
 
      - Fehler, die mit „service“ oder „ServiceError = TRUE“ markiert sind, sind im Dienst Azure Virtual Desktop aufgetreten.
      - Fehler, die mit „deployment“ oder „ServiceError = FALSE“ markiert sind, sind außerhalb des Diensts Azure Virtual Desktop aufgetreten.
-     - Weitere Informationen zum Tag ServiceError finden Sie unter [Gängige Fehlerszenarien](diagnostics-role-service.md#common-error-scenarios).
+     - Weitere Informationen zum Tag ServiceError finden Sie unter [Gängige Fehlerszenarien](./troubleshoot-set-up-overview.md).
 
 - Quelle: Diese Kategorie liefert eine spezifischere Beschreibung, wo der Fehler aufgetreten ist.
 
@@ -71,7 +71,7 @@ Wenn ein Fehler oder eine Warnung in Azure Monitor für Azure Virtual Desktop au
 
      - Client: Software, die auf dem Computer des Endbenutzers ausgeführt wird und die Schnittstelle zum Dienst Azure Virtual Desktop bereitstellt. Sie zeigt die Liste der veröffentlichten Ressourcen an und hostet die Remotedesktopverbindung, nachdem Sie eine Wahl getroffen haben.
 
-Alle Diagnoseprobleme oder -fehler enthalten eine Meldung, in der erläutert wird, was falsch gelaufen ist. Weitere Informationen zur Problembehandlung finden Sie unter [Identifizieren und Diagnostizieren von Problemen mit Azure Virtual Desktop](diagnostics-role-service.md).
+Alle Diagnoseprobleme oder -fehler enthalten eine Meldung, in der erläutert wird, was falsch gelaufen ist. Weitere Informationen zur Problembehandlung finden Sie unter [Identifizieren und Diagnostizieren von Problemen mit Azure Virtual Desktop](./troubleshoot-set-up-overview.md).
 
 ## <a name="input-delay"></a>Eingabeverzögerung
 

@@ -11,12 +11,12 @@ ms.author: jhirono
 author: jhirono
 ms.date: 09/24/2021
 ms.custom: contperf-fy20q4, tracking-python, contperf-fy21q1, references_regions
-ms.openlocfilehash: 7f0d206b9327cad0c58cc92dbec16227c1c22644
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: d41c6537d597e34c826a4f0e7e6fecc75684d9a4
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130000125"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130241864"
 ---
 # <a name="secure-an-azure-machine-learning-training-environment-with-virtual-networks"></a>Schützen einer Azure Machine Learning-Trainingsumgebung mit virtuellen Netzwerken
 
@@ -261,6 +261,10 @@ Für eine Compute-Instanz mit **keiner öffentlichen IP** müssen Sie außerdem 
 
 Um eine Compute-Instanz ohne öffentliche IP-Adresse (eine Vorschaufunktion) in Studio zu erstellen, aktivieren Sie das Kontrollkästchen **keine öffentliche IP** im Abschnitt „Virtuelles Netzwerk“.
 Sie können auch keine öffentliche IP-Compute-Instanz über eine ARM-Vorlage erstellen. Setzen Sie in der ARM-Vorlage den Parameter „enableNodePublicIP“ auf „false“.
+
+Nächste Schritte:
+* [Verwenden von benutzerdefiniertem DNS](how-to-custom-dns.md)
+* [Verwenden einer Firewall](how-to-access-azureml-behind-firewall.md)
 
 [!INCLUDE [no-public-ip-info](../../includes/machine-learning-no-public-ip-availibility.md)]
 

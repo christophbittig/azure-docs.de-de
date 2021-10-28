@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 8/26/2021
 ms.custom: mvc, devx-track-azurecli
 ms.author: pgibson
-ms.openlocfilehash: 397a1ff24152bf0496842971e545b3eb65e779a3
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: b73c46896c142b76e644eed9815ae4d5e76b6f85
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129534009"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130227263"
 ---
 # <a name="open-service-mesh-osm-aks-add-on-troubleshooting-guides"></a>Open Service Mesh (OSM) Add-on AKS Anleitungen zur Fehlerbehebung
 
@@ -456,4 +456,4 @@ Informationen dazu, wie OSM Zertifikate für Envoy-Proxys ausstellt und verwalte
 
 ### <a name="upgrading-envoy"></a>Upgrade von Envoy
 
-Wenn ein neuer Pod in einem Namespace erstellt wird, der vom Add-On überwacht wird, fügt OSM einen [Envoy-Proxy-Sidecar](https://docs.openservicemesh.io/docs/guides/app_onboarding/sidecar_injection/) in diesen Pod ein. Informationen zum Aktualisieren der Envoy-Version finden Sie im [Upgradeleitfaden](https://docs.openservicemesh.io/docs/getting_started/upgrade/#envoy) auf der OpenServiceMesh-Dokumentationswebsite.
+Wenn ein neuer Pod in einem Namespace erstellt wird, der vom Add-On überwacht wird, fügt OSM einen [Envoy-Proxy-Sidecar](https://docs.openservicemesh.io/docs/guides/app_onboarding/sidecar_injection/) in diesen Pod ein. Informationen zum Aktualisieren der Envoy-Version finden Sie im [Upgradeleitfaden](https://release-v0-11.docs.openservicemesh.io/docs/getting_started/upgrade/#envoy) auf der OpenServiceMesh-Dokumentationswebsite.

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2021
-ms.openlocfilehash: fa5a417ef79cf0e11fa50c280dfea768d5e61f40
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: 32c1b2d6cd2d5574e03cdb6ad65900d8df598b2b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130064265"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130252761"
 ---
 # <a name="monitoring-azure-resources-with-azure-monitor"></a>Überwachen von Azure-Ressourcen mit Azure Monitor
 Wenn Sie über unternehmenskritische Anwendungen und Geschäftsprozesse verfügen, die auf Azure-Ressourcen beruhen, sollten Sie Verfügbarkeit, Leistung und Betrieb dieser Ressourcen überwachen. In diesem Artikel wird das Überwachen von Daten beschrieben, die von Azure-Ressourcen generiert wurden. Außerdem wird erläutert, wie Sie die Funktionen von Azure Monitor nutzen können, um diese Daten zu analysieren und Warnungen dafür zu erstellen.
@@ -31,7 +31,7 @@ Das Analysieren der Überwachungsdaten, die standardmäßig erfasst werden, ist 
 - Sammeln von Aktivitätsprotokollen und deren Analyse im Azure-Portal
 - Erstellen einer Aktivitätsprotokollwarnung
 
-Es fallen keine Azure Monitor-Kosten für das Sammeln und Exportieren von Metriken an. Es können Gebühren für das Exportieren bestimmter Kategorien von Ressourcenprotokollen anfallen, wie unter [Vom Ressourcenprotokoll unterstützte Kategorien](/azure/azure-monitor/essentials/resource-logs-categories) aufgeführt. Es können auch zugehörige Kosten für das Ziel anfallen, das Sie für Metriken und Protokolle auswählen:
+Es fallen keine Azure Monitor-Kosten für das Sammeln und Exportieren von Metriken an. Es können Gebühren für das Exportieren bestimmter Kategorien von Ressourcenprotokollen anfallen, wie unter [Vom Ressourcenprotokoll unterstützte Kategorien](./resource-logs-categories.md) aufgeführt. Es können auch zugehörige Kosten für das Ziel anfallen, das Sie für Metriken und Protokolle auswählen:
 
 - Kosten für die Datenerfassung und -aufbewahrung beim Sammeln von Metriken und Protokollen in einem Log Analytics-Arbeitsbereich. Weitere Informationen finden Sie unter [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/).
 - Kosten für die Datenspeicherung beim Erfassen von Metriken und Protokollen in einem Azure Storage-Konto. Weitere Informationen finden Sie unter [Preise für Blockblobs](https://azure.microsoft.com/pricing/details/storage/blobs/).

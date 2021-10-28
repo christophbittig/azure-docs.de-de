@@ -4,12 +4,12 @@ description: Hier erfahren Sie mehr über die Wiederherstellungsoptionen, die Ih
 ms.reviewer: mepand
 ms.topic: conceptual
 ms.date: 05/07/2021
-ms.openlocfilehash: 6c77ee568b4f6c7643672d38ba543f5eab7db369
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: d2d6868c787080ddd78b574d1b20434fa27d8574
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114295721"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130250329"
 ---
 # <a name="about-restore-using-the-microsoft-azure-recovery-services-mars-agent"></a>Informationen zur Wiederherstellung mithilfe des MARS-Agenten (Microsoft Azure Recovery Services) 
 
@@ -19,7 +19,7 @@ In diesem Artikel erfahren Sie mehr über die Wiederherstellungsoptionen, die Ih
 
 - Stellen Sie sicher, dass die neueste Version des [MARS-Agenten](https://aka.ms/azurebackup_agent) installiert ist.
 - Stellen Sie sicher, dass die [Bandbreiteneinschränkung](backup-windows-with-mars-agent.md#enable-network-throttling) deaktiviert ist.
-- Stellen Sie sicher, dass Hochgeschwindigkeitsspeicher mit ausreichend Speicherplatz für den [Agent-Cacheordner](/azure/backup/backup-azure-file-folder-backup-faq#manage-the-backup-cache-folder) verfügbar ist.
+- Stellen Sie sicher, dass Hochgeschwindigkeitsspeicher mit ausreichend Speicherplatz für den [Agent-Cacheordner](./backup-azure-file-folder-backup-faq.yml) verfügbar ist.
 - Überwachen Sie die Arbeitsspeicherressourcen und CPU-Ressourcen, und stellen Sie sicher, dass ausreichend Ressourcen für das Dekomprimieren und Entschlüsseln von Daten verfügbar sind.
 - Wenn Sie das Feature **Sofortige Wiederherstellung** zum Einbinden eines Wiederherstellungspunkts als Datenträger verwenden, verwenden Sie **Robocopy** mit der Multithread-Kopieroption (/MT-Option), um Dateien effizient aus dem eingebundenen Wiederherstellungspunkt zu kopieren.
 
