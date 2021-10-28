@@ -5,15 +5,15 @@ author: linda33wj
 ms.service: data-factory
 ms.subservice: v1
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 10/22/2021
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4538939b4b991e181d3b08c7834b201269a7f651
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f5ed929ecd81661dd2d50881dff8ed7ccaf6eef2
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128661201"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130263798"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Verschieben von Daten aus DB2 mithilfe der Kopieraktivität von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -74,7 +74,7 @@ Die folgenden Abschnitte enthalten Details zu JSON-Eigenschaften, die zum Defini
 ## <a name="db2-linked-service-properties"></a>Eigenschaften des mit DB2 verknüpften Diensts
 Die folgende Tabelle enthält die JSON-Eigenschaften, die spezifisch für einen mit DB2 verknüpften Dienst sind.
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | **type** |Diese Eigenschaft muss auf **OnPremisesDb2** festgelegt werden. |Ja |
 | **server** |Der Name des DB2-Servers |Ja |
@@ -90,7 +90,7 @@ Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definier
 
 Der Abschnitt **typeProperties** unterscheidet sich bei jedem Typ von Dataset und bietet Informationen zum Speicherort der Daten im Datenspeicher. Der Abschnitt **typeProperties** für ein DataSet vom Typ **RelationalTable** (das das DB2-DataSet einschließt) hat die folgende Eigenschaft:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | **tableName** |Der Name der Tabelle in der DB2-Datenbankinstanz, auf die der verknüpfte Dienst verweist. Diese Eigenschaft erfordert die Beachtung der Groß-/Kleinschreibung. |Nein (wenn die **query**-Eigenschaft einer Kopieraktivität vom Typ **RelationalSource** angegeben wurde) |
 

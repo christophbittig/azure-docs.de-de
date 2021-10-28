@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: redhat
 ms.assetid: 9b37b2c4-5927-4271-85c7-19adf33d838b
 ms.date: 06/08/2021
-ms.openlocfilehash: 188e40f9bc3d2d23035549578cdc6440af60a3e5
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: ab19ecb14f3aa7701205e038fe59b92e297decbd
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129359246"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130262962"
 ---
 # <a name="how-to-migrate-java-applications-to-jboss-eap-on-azure-vms-and-virtual-machine-scale-sets"></a>Migrieren von Java-Anwendungen zu JBoss EAP in Azure-VMs und -VM-Skalierungsgruppen
 
@@ -237,7 +237,7 @@ Sie können [das JBoss-Servermigrationstool auch im nicht-interaktiven Modus aus
 
 Sie können die Anwendung mit den folgenden Methoden verfügbar machen, die für Ihre Umgebung geeignet sind.
 
-* [Erstellen Sie eine öffentliche IP-Adresse](../../../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address) für den Zugriff auf Server und Anwendung.
+* [Erstellen Sie eine öffentliche IP-Adresse](../../../virtual-network/ip-services/virtual-network-public-ip-address.md#create-a-public-ip-address) für den Zugriff auf Server und Anwendung.
 * [Erstellen Sie eine Jump-VM im gleichen virtuellen Netzwerk (VNet)](../../windows/quick-create-portal.md#create-virtual-machine) in einem anderen (bzw. neuen) Subnetz im gleichen VNet, und greifen Sie über eine Jump-VM auf den Server zu. Mithilfe dieser Jump-VM kann die Anwendung verfügbar gemacht werden.
 * [Erstellen Sie eine Jump-VM mit VNet-Peering](../../windows/quick-create-portal.md#create-virtual-machine) in einem anderen virtuellen Netzwerk. Greifen Sie auf den Server zu, und machen Sie die Anwendung mittels [Peering virtueller Netzwerke](../../../virtual-network/tutorial-connect-virtual-networks-portal.md#peer-virtual-networks) verfügbar.
 * Machen Sie die Anwendung mithilfe einer [Application Gateway](../../../application-gateway/quick-create-portal.md#create-an-application-gateway)-Instanz verfügbar.

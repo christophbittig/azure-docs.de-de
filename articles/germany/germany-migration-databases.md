@@ -7,12 +7,12 @@ author: gitralf
 ms.author: ralfwi
 ms.service: germany
 ms.custom: bfmigrate, devx-track-azurepowershell
-ms.openlocfilehash: 6fe6d653712e034c13f3b755e906de491b4dd49a
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 0843adb3060ca4ce8769b79eef3f05e043d4dc5d
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110696907"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130259597"
 ---
 # <a name="migrate-database-resources-to-global-azure"></a>Migrieren von Datenbankressourcen zu Azure weltweit
 
@@ -143,7 +143,7 @@ Beim Migrieren einer Datenbank mit Georeplikation oder BACPAC-Datei werden die S
 
 1. Die Zieldatenbank, in die Sie die LTR-Sicherungen kopieren, muss in Azure weltweit vorhanden sein, bevor Sie mit dem Kopieren der Sicherungen beginnen. Es wird empfohlen, zuerst die Quelldatenbank mithilfe der [aktiven Georeplikation](#migrate-sql-database-using-active-geo-replication) zu migrieren und dann die LTR-Sicherungskopie zu initiieren. Dadurch wird sichergestellt, dass die Datenbanksicherungen in die richtige Zieldatenbank kopiert werden. Dieser Schritt ist nicht erforderlich, wenn Sie LTR-Sicherungen einer gelöschten Datenbank kopieren. Beim Kopieren von LTR-Sicherungen einer gelöschten Datenbank wird eine Platzhalterdatenbank-ID in der Zielregion erstellt. 
 2. Installieren Sie dieses [PowerShell Az-Modul](https://www.powershellgallery.com/packages/Az.Sql/3.0.0-preview)
-3. Stellen Sie vor dem Beginn sicher, dass die erforderlichen [Azure RBAC-Rollen](../azure-sql/database/long-term-backup-retention-configure.md#azure-roles-to-manage-long-term-retention) im Bereich **Abonnement** oder **Ressourcengruppe** erteilt werden. Hinweis: Für den Zugriff auf LTR-Sicherungen, die zu einem gelöschten Server gehören, muss die Berechtigung jedoch im Bereich Abonnement dieses Servers erteilt werden. . 
+3. Stellen Sie vor dem Beginn sicher, dass die erforderlichen [Azure RBAC-Rollen](../azure-sql/database/long-term-backup-retention-configure.md#prerequisites) im Bereich **Abonnement** oder **Ressourcengruppe** erteilt werden. Hinweis: Für den Zugriff auf LTR-Sicherungen, die zu einem gelöschten Server gehören, muss die Berechtigung jedoch im Bereich Abonnement dieses Servers erteilt werden. . 
 
 
 ### <a name="limitations"></a>Einschränkungen  

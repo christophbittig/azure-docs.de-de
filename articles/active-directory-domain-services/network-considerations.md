@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/12/2021
 ms.author: justinha
-ms.openlocfilehash: 533d663b478ddd362ef18f81528afbe1b9393095
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: 841d3b0db01938f42f56931bb370e25afe1651a6
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122356183"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130216956"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-active-directory-domain-services"></a>Überlegungen zum Entwurf virtueller Netzwerke und Konfigurationsoptionen für Azure Active Directory Domain Services
 
@@ -94,7 +94,7 @@ Eine verwaltete Domäne erstellt während der Bereitstellung einige Netzwerkress
 | Azure-Ressource                          | BESCHREIBUNG |
 |:----------------------------------------|:---|
 | Netzwerkschnittstellenkarte                  | Azure AD DS hostet die verwaltete Domäne auf zwei Domänencontrollern (DCs), die auf Windows Server als virtuelle Azure-Computer ausgeführt werden. Jeder virtuelle Computer verfügt über eine virtuelle Netzwerkschnittstelle, die sich mit Ihrem virtuellen Subnetz verbindet. |
-| Dynamische öffentliche Standard-IP-Adresse      | Azure AD DS kommuniziert mit dem Synchronisierungs- und Verwaltungsdienst über eine öffentliche IP-Adresse der Standard-SKU. Weitere Informationen zu öffentlichen IP-Adressen finden Sie unter [IP-Adresstypen und Zuordnungsmethoden in Azure](../virtual-network/public-ip-addresses.md). |
+| Dynamische öffentliche Standard-IP-Adresse      | Azure AD DS kommuniziert mit dem Synchronisierungs- und Verwaltungsdienst über eine öffentliche IP-Adresse der Standard-SKU. Weitere Informationen zu öffentlichen IP-Adressen finden Sie unter [IP-Adresstypen und Zuordnungsmethoden in Azure](../virtual-network/ip-services/public-ip-addresses.md). |
 | Azure Load Balancer Standard            | Azure AD DS verwendet einen Lastenausgleich mit Standard-SKU für die Netzwerkadressenübersetzung (NAT) und den Lastenausgleiche (bei Verwendung mit sicherem LDAP). Weitere Informationen zu Azure Load Balancer finden Sie unter [Was versteht man unter Azure Load Balancer?](../load-balancer/load-balancer-overview.md). |
 | Regeln für die Netzwerkadressübersetzung (NAT) | Azure AD DS erstellt und verwendet zwei NAT-Regeln für eingehenden Datenverkehr für den Lastenausgleich für das sichere PowerShell-Remoting. Wenn ein Lastenausgleich mit Standard-SKU verwendet wird, wird ebenfalls eine NAT-Regel für ausgehenden Datenverkehr genutzt. Für den Lastenausgleich der Basic-SKU ist keine NAT-Regel für ausgehenden Datenverkehr erforderlich. |
 | Lastenausgleichsregeln                     | Wenn eine verwaltete Domäne für sicheres LDAP am TCP-Port 636 konfiguriert ist, werden drei Regeln erstellt und für einen Lastenausgleich verwendet, um den Datenverkehr zu verteilen. |

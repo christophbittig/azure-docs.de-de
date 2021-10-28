@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/11/2021
 ms.author: shpathak
-ms.openlocfilehash: 02b5c4bd42abc9c36ef971b053979d590d1e602d
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: dd7bb63204ccaa38379b49cfe3946372319dfc44
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129808825"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130252899"
 ---
 # <a name="connection-resilience"></a>Verbindungsresilienz
 
@@ -64,7 +64,7 @@ Vermeiden Sie es, viele Verbindungen gleichzeitig zu erstellen, wenn sie nach ei
 Wenn Sie viele Clientinstanzen erneut verbinden, sollten Sie erwägen, die neuen Verbindungen zu staffeln, um eine starke Spitze bei der Anzahl verbundener Clients zu vermeiden.
 
 > [!NOTE]
-> Wenn Sie die Clientbibliothek `StackExchange.Redis` verwenden, legen Sie `abortConnect` in Ihrer Verbindungszeichenfolge auf `false` fest.  Wir empfehlen, `ConnectionMultiplexer` die Neuverbindung zu überlassen. Weitere Informationen finden Sie unter [Bewährte Methoden für StackExchange.Redis](/azure/azure-cache-for-redis/cache-management-faq#stackexchangeredis-best-practices).
+> Wenn Sie die Clientbibliothek `StackExchange.Redis` verwenden, legen Sie `abortConnect` in Ihrer Verbindungszeichenfolge auf `false` fest.  Wir empfehlen, `ConnectionMultiplexer` die Neuverbindung zu überlassen. Weitere Informationen finden Sie unter [Bewährte Methoden für StackExchange.Redis](./cache-management-faq.yml#stackexchangeredis-best-practices).
 
 ## <a name="avoid-leftover-connections"></a>Vermeiden Sie übrig bleibende Verbindungen
 

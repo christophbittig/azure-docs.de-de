@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 04/23/2021
 ms.author: duau
-ms.openlocfilehash: 672fac2b33ef1d8fd9be1948d0c7da332f8ce43b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 719ad0681e9d66828fc0e030394a2c910017a3ad
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355224"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130259559"
 ---
 # <a name="about-expressroute-virtual-network-gateways"></a>Informationen zu ExpressRoute-Gateways für virtuelle Netzwerke
 
@@ -109,11 +109,6 @@ Zonenredundante Gateways verwenden bestimmte neue Gateway-SKUs für ExpressRoute
 * ErGw3AZ
 
 Die neuen Gateway-SKUs unterstützen zudem andere Bereitstellungsoptionen, die Ihre Anforderungen am besten zu erfüllen. Wenn Sie ein virtuelles Netzwerkgateway mit den neuen Gateway-SKUs erstellen, haben Sie auch die Möglichkeit, das Gateway in einer bestimmten Zone bereitzustellen. Dies wird als zonenbasiertes Gateway bezeichnet. Wenn Sie ein zonenbasiertes Gateway bereitstellen, werden alle Instanzen des Gateways in derselben Verfügbarkeitszone bereitgestellt.
-
-> [!IMPORTANT]
-> Wenn Sie IPv6-basiertes privates Peering über ExpressRoute verwenden möchten, stellen Sie sicher, dass Sie eine AZ-SKU für das Gateway auswählen, das Sie in einem Gatewaysubnetz für den dualen Stapel bereitstellen.
-> 
->
 
 ## <a name="fastpath"></a><a name="fastpath"></a>FastPath
 

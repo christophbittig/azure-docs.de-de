@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 3/2/2020
 ms.author: rohink
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4fe0354f3d8e4d2b3ac2938f1cd03baa2ca2ce4d
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 13185cdb0c75b2d88bf8b0fa5a4158789ac85e79
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122343651"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130228205"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Namensauflösung für Ressourcen in virtuellen Azure-Netzwerken
 
@@ -192,7 +192,7 @@ Wenn eine Abfrageweiterleitung an Azure nicht Ihren Anforderungen entspricht, so
 
 ### <a name="web-apps"></a>Web-Apps
 Angenommen, Sie müssen Namensauflösung aus Ihrer Web-App, die mithilfe von App Service erstellt wurde und mit einem virtuellen Netzwerk verbunden ist, für virtuelle Computer im gleichen virtuellen Netzwerk ausführen. Zusätzlich zur Einrichtung eines benutzerdefinierten DNS-Servers mit DNS-Weiterleitung, die Abfragen an Azure weiterleitet (virtuelle IP-Adresse 168.63.129.16), führen Sie die folgenden Schritte aus:
-1. Aktivieren Sie die Integration virtueller Netzwerke für Ihre Web-App (falls noch nicht geschehen), wie unter [Integrieren Ihrer App in ein virtuelles Netzwerk](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json) beschrieben wird.
+1. Aktivieren Sie die Integration virtueller Netzwerke für Ihre Web-App (falls noch nicht geschehen), wie unter [Integrieren Ihrer App in ein virtuelles Netzwerk](../app-service/overview-vnet-integration.md?toc=%2fazure%2fvirtual-network%2ftoc.json) beschrieben wird.
 2. Wählen Sie im Azure-Portal für den App Service-Plan, in dem die Web-App gehostet wird, unter **Netzwerk** > **Integration des virtuellen Netzwerks** die Option **Netzwerk synchronisieren** aus.
 
     ![Screenshot der Namensauflösung für ein virtuelles Netzwerk](./media/virtual-networks-name-resolution-for-vms-and-role-instances/webapps-dns.png)
@@ -202,7 +202,7 @@ Wenn Sie eine Namensauflösung von Ihrer mit App Service erstellten und mit eine
 * Richten Sie einen DNS-Server im virtuellen Zielnetzwerk auf einem virtuellen Computer ein, der auch Abfragen an den rekursiven Resolver in Azure (virtuelle IP-Adresse 168.63.129.16) weiterleiten kann. Ein Beispiel für eine DNS-Weiterleitung steht im [Azure-Katalog mit Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/dns-forwarder/) und auf [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/demos/dns-forwarder) zur Verfügung.
 * Richten Sie eine DNS-Weiterleitung im virtuellen Quellnetzwerk auf einem virtuellen Computer ein. Konfigurieren Sie diese DNS-Weiterleitung für das Weiterleiten von Abfragen an den DNS-Server in Ihrem virtuellen Zielnetzwerk.
 * Konfigurieren Sie den DNS-Quellserver in den Einstellungen für Ihr virtuelles Quellnetzwerk.
-* Aktivieren Sie die Integration virtueller Netzwerke für Ihre Web-App, um eine Verknüpfung mit dem virtuellen Quellnetzwerk herzustellen. Befolgen Sie dazu die Anweisungen unter [Integrieren Ihrer App in ein virtuelles Netzwerk](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+* Aktivieren Sie die Integration virtueller Netzwerke für Ihre Web-App, um eine Verknüpfung mit dem virtuellen Quellnetzwerk herzustellen. Befolgen Sie dazu die Anweisungen unter [Integrieren Ihrer App in ein virtuelles Netzwerk](../app-service/overview-vnet-integration.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 * Wählen Sie im Azure-Portal für den App Service-Plan, in dem die Web-App gehostet wird, unter **Netzwerk** > **Integration des virtuellen Netzwerks** die Option **Netzwerk synchronisieren** aus.
 
 ## <a name="specify-dns-servers"></a>Angeben von DNS-Servern

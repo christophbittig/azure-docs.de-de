@@ -7,12 +7,12 @@ ms.service: iot-develop
 ms.devlang: c
 ms.topic: quickstart
 ms.date: 06/04/2021
-ms.openlocfilehash: 9a509d878729648ee2768d536d9cca586604662e
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: bc87e79df3a581e667926ab61cb3c3b40c908f7b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112122015"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130259504"
 ---
 # <a name="quickstart-connect-a-renesas-starter-kit-for-rx65n-2mb-to-iot-central"></a>Schnellstart: Verbinden eines Renesas Starter Kit+ für RX65N-2MB mit IoT Central
 
@@ -31,7 +31,7 @@ Sie führen die folgenden Aufgaben aus:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* PC mit Microsoft Windows 10
+* PC mit Windows 10
 * [Git](https://git-scm.com/downloads) zum Klonen des Repositorys
 * Hardware
 

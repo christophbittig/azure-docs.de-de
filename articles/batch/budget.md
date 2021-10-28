@@ -3,12 +3,12 @@ title: Abrufen der Kostenanalyse und Festlegen von Budgets für Azure Batch
 description: Erfahren Sie, wie Sie eine Kostenanalyse erhalten, ein Budget festlegen und die Kosten für die zugrunde liegenden Computeressourcen und Softwarelizenzen reduzieren, die für die Ausführung Ihrer Batch-Workloads verwendet werden.
 ms.topic: how-to
 ms.date: 10/04/2021
-ms.openlocfilehash: b88b69c4debf34cb97368d7cfb6ac5e611c77334
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 3590aad01216e5ca7401ce1edd55efb88bf26848
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130071813"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130219203"
 ---
 # <a name="get-cost-analysis-and-set-budgets-for-azure-batch"></a>Abrufen der Kostenanalyse und Festlegen von Budgets für Azure Batch
 
@@ -48,7 +48,7 @@ Je nach den Diensten, die Sie mit Ihrer Batch-Lösung nutzen, fallen unter Umst�
 
 ## <a name="view-cost-analysis-and-create-budgets"></a>Anzeigen der Kostenanalyse und Erstellen von Budgets
 
-[Azure Cost Management](/azure/cost-management-billing/cost-management-billing-overview) ermöglicht Ihnen das Planen, Analysieren und Verringern Ihrer Ausgaben, sodass Sie von Ihren Cloudinvestitionen maximal profitieren. Die Nutzungskosten sind für alle Azure-Dienste verfügbar, einschließlich Azure Batch. Sie können Batch-Kosten anzeigen und filtern, zukünftige Kosten prognostizieren und Ausgabenlimits sowie Warnungen für den Fall festlegen, dass die jeweiligen Grenzwerte erreicht werden.
+[Azure Cost Management](../cost-management-billing/cost-management-billing-overview.md) ermöglicht Ihnen das Planen, Analysieren und Verringern Ihrer Ausgaben, sodass Sie von Ihren Cloudinvestitionen maximal profitieren. Die Nutzungskosten sind für alle Azure-Dienste verfügbar, einschließlich Azure Batch. Sie können Batch-Kosten anzeigen und filtern, zukünftige Kosten prognostizieren und Ausgabenlimits sowie Warnungen für den Fall festlegen, dass die jeweiligen Grenzwerte erreicht werden.
 
 Im Azure-Portal können Sie Budgets und Ausgabenwarnungen für Ihre Batch-Pools oder Ihr Batch-Konto erstellen. Budgets und Warnungen sind hilfreich, um Beteiligte über Risiken der Ausgabenüberschreitung zu benachrichtigen. Es ist aber durchaus möglich, eine Verzögerung bei der Ausgabe von Warnungen einzurichten und ein Budget geringfügig zu überschreiten.
 
@@ -151,5 +151,5 @@ Bei der [Autoskalierung](batch-automatic-scaling.md) wird die Anzahl von VMs in 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über [Azure Cost Management + Billing](/azure/cost-management-billing/cost-management-billing-overview).
+- Erfahren Sie mehr über [Azure Cost Management + Billing](../cost-management-billing/cost-management-billing-overview.md).
 - Informieren Sie sich über die [Verwendung von VMs mit niedriger Priorität mit Batch](batch-low-pri-vms.md).

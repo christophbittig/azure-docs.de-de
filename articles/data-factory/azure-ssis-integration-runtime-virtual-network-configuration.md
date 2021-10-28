@@ -8,12 +8,12 @@ ms.date: 07/16/2021
 author: swinarko
 ms.author: sawinark
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c6e66487211ed3928f393bb028ae9f4c06e3b0eb
-ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
+ms.openlocfilehash: b4274144e8437bd47adad0854fec5c3ed9550ffb
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2021
-ms.locfileid: "129403153"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130229406"
 ---
 # <a name="virtual-network-configuration-for-an-azure-ssis-integration-runtime"></a>Konfiguration des virtuellen Netzwerks für eine Azure-SSIS Integration Runtime
 
@@ -69,7 +69,7 @@ Wenn Sie Ihre eigenen statischen öffentlichen IP-Adressen für die Azure-SSIS I
 
 - Es müssen genau zwei nicht verwendete Adressen bereitgestellt werden, die noch nicht mit anderen Azure-Ressourcen verknüpft sind. Die zusätzliche Adresse wird bei der regelmäßigen Aktualisierung Ihrer Azure-SSIS IR verwendet. Beachten Sie, dass eine einzige öffentliche IP-Adresse nicht von Ihren aktiven Azure-SSIS-IRs gemeinsam genutzt werden kann.
 
-- Beide Adressen müssen statische Standardadressen sein. Weitere Details finden Sie unter [SKUs der öffentlichen IP-Adresse](../virtual-network/public-ip-addresses.md#sku).
+- Beide Adressen müssen statische Standardadressen sein. Weitere Details finden Sie unter [SKUs der öffentlichen IP-Adresse](../virtual-network/ip-services/public-ip-addresses.md#sku).
 
 - Beide Adressen müssen einen DNS-Namen aufweisen. Wenn Sie bei der Erstellung keinen DNS-Namen angegeben haben, können Sie dies im Azure-Portal erledigen.
 
@@ -265,7 +265,7 @@ Stellen Sie sicher, dass das Ressourcenkontingent Ihres Abonnements für die vor
 ## <a name="next-steps"></a>Nächste Schritte
 - [Verknüpfen Sie eine Azure-SSIS Integration Runtime mit einem virtuellen Netzwerk – Übersicht](join-azure-ssis-integration-runtime-virtual-network.md)
 - [Verknüpfen einer Azure-SSIS Integration Runtime mit einem virtuellen Netzwerk über die Azure Data Factory Studio-Benutzeroberfläche](join-azure-ssis-integration-runtime-virtual-network-ui.md)
-- [Verknüpfen einer Azure-SSIS Integration Runtime mit einem virtuellen Netzwerk mithilfe von Azure PowerShell](join-azure-ssis-integration-runtime-virtual-network-powershell.md)
+- [Verknüpfen Sie eine Azure-SSIS Integration Runtime mit einem virtuellen Netzwerk mithilfe von Azure PowerShell](join-azure-ssis-integration-runtime-virtual-network-powershell.md)
 
 Weitere Informationen zur Azure-SSIS IR finden Sie in den folgenden Artikeln: 
 - [Azure-SSIS IR](concepts-integration-runtime.md#azure-ssis-integration-runtime). Dieser Artikel enthält allgemeine konzeptionelle Informationen zu IRs, einschließlich der Azure-SSIS IR. 
@@ -273,4 +273,3 @@ Weitere Informationen zur Azure-SSIS IR finden Sie in den folgenden Artikeln:
 - [Erstellen einer Azure-SSIS IR](create-azure-ssis-integration-runtime.md). Dieser Artikel baut auf dem Tutorial auf. Sie erfahren, wie Sie Azure SQL-Datenbank mit VNET-Dienstendpunkten oder mit einer SQL Managed Instance in einem virtuellen Netzwerk verwenden, um den SSIS-Katalog zu hosten. Außerdem wird veranschaulicht, wie Sie die Azure-SSIS IR mit einem virtuellen Netzwerk verknüpfen. 
 - [Überwachen einer Azure-SSIS-Integrationslaufzeit](monitor-integration-runtime.md#azure-ssis-integration-runtime): In diesem Artikel erfahren Sie, wie Sie Informationen zur Azure-SSIS IR abrufen. Darüber hinaus enthält er Statusbeschreibungen für die zurückgegebenen Informationen. 
 - [Verwalten einer Azure-SSIS-Integrationslaufzeit](manage-azure-ssis-integration-runtime.md): In diesem Artikel wird beschrieben, wie Sie die Azure-SSIS IR beenden, starten oder löschen. Außerdem wird gezeigt, wie Sie Ihre Azure SSIS-IR aufskalieren, indem Sie weitere Knoten hinzufügen.
-

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 12/08/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 93c0c77ad36be82802fd53e4130e48ac431b0280
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: 592d97c832f950bbf5a90e4c5b97c25598e71d58
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107819284"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130228606"
 ---
 # <a name="quickstart-create-a-key-vault-using-the-azure-portal"></a>Schnellstart: Erstellen eines Schlüsseltresors über das Azure-Portal
 
@@ -52,7 +52,7 @@ Beachten Sie die beiden folgenden Eigenschaften:
 
 An diesem Punkt ist nur Ihr Azure-Konto zum Ausführen von Vorgängen für den neuen Tresor autorisiert.
 
-![Ausgabe nach Erstellung der Key Vault-Instanz](../media/quick-create-portal/vault-properties.png)
+:::image type="content" source="../media/quick-create-portal/vault-properties.png" alt-text="Ausgabe nach Erstellung der Key Vault-Instanz":::
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

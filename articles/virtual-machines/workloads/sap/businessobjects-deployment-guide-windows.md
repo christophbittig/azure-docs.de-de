@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/08/2021
 ms.author: depadia
-ms.openlocfilehash: bd65c77d8be0cef06a81f0f7699b04134e0e1706
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d230c000eedf4cb6a4d01b7dc20f48e5712862c4
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355868"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130225084"
 ---
 # <a name="sap-businessobjects-bi-platform-deployment-guide-for-windows-on-azure"></a>Bereitstellungsleitfaden für die SAP BusinessObjects BI-Plattform für Windows in Azure
 
@@ -499,7 +499,7 @@ Load Balancer wird verwendet, um Datenverkehr auf die Webanwendungsserver einer 
 Filestore ist ein Datenträgerverzeichnis, in dem die eigentlichen Dateien, z. B. Berichte und BI-Dokumente, gespeichert werden. Es ist wichtig, dass alle im Filestore enthaltenen Dateien mit der Region für die Notfallwiederherstellung (Disaster Recovery, DR) synchron sind. Basierend auf dem Typ des Dateifreigabediensts, den Sie für die Ausführung der SAP BOBI-Plattform unter Windows verwenden, muss die passende DR-Strategie verwendet werden, damit der Inhalt synchron ist. Beispiel:
 
 - **Azure Files Premium** unterstützt nur LRS und ZRS. Für die Azure Files Premium-Strategie zur Notfallwiederherstellung können Sie [AzCopy](../../../storage/common/storage-use-azcopy-v10.md) oder [Azure PowerShell](/powershell/module/az.storage/?preserve-view=true&view=azps-5.8.0) verwenden, um die Dateien in ein anderes Speicherkonto in einer anderen Region zu kopieren. Weitere Informationen finden Sie unter [Notfallwiederherstellung und Speicherkontofailover](../../../storage/common/storage-disaster-recovery-guidance.md).
-- **Azure NetApp Files** stellt NFS- und SMB-Volumes bereit, sodass jedes dateibasierte Kopiertool zur Replikation von Daten zwischen Azure-Regionen verwendet werden kann. Weitere Informationen zum Kopieren eines Azure NetApp Files-Volumes in eine andere Region finden Sie unter [Häufig gestellte Fragen zu Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-faqs.md#how-do-i-create-a-copy-of-an-azure-netapp-files-volume-in-another-azure-region).
+- **Azure NetApp Files** stellt NFS- und SMB-Volumes bereit, sodass jedes dateibasierte Kopiertool zur Replikation von Daten zwischen Azure-Regionen verwendet werden kann. Weitere Informationen zum Kopieren eines Azure NetApp Files-Volumes in eine andere Region finden Sie unter [Häufig gestellte Fragen zu Azure NetApp Files](../../../azure-netapp-files/faq-data-migration-protection.md#how-do-i-create-a-copy-of-an-azure-netapp-files-volume-in-another-azure-region).
 
   Sie können die regionsübergreifende Replikation von Azure NetApp Files verwenden, die sich derzeit in der [Vorschauversion](https://azure.microsoft.com/blog/azure-netapp-files-cross-region-replication-and-new-enhancements-in-preview/) befindet. Hierfür wird die NetApp SnapMirror-Technologie genutzt. Bei dieser Technologie werden nur geänderte Blöcke in einem komprimierten, effizienten Format über das Netzwerk gesendet. Diese proprietäre Technologie minimiert die Menge an Daten, die regionsübergreifend repliziert werden muss, wodurch Datenübertragungskosten eingespart werden. Darüber hinaus wird auch die Replikationsdauer reduziert, damit Sie einen niedrigeren RPO-Wert erzielen können. Weitere Informationen finden Sie unter [Regionsübergreifende Replikation: Anforderungen und Überlegungen](../../../azure-netapp-files/cross-region-replication-requirements-considerations.md).
 
