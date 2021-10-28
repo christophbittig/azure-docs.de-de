@@ -91,7 +91,7 @@ Microsoft Identity Platform unterstützt die Authentifizierung für folgende A
 
 Anwendungen verwenden die verschiedenen Authentifizierungsflows, um Benutzer anzumelden und Token für den Aufruf geschützter APIs zu beziehen.
 
-### <a name="single-page-application"></a>Einseitige Anwendung
+### <a name="single-page-application"></a>Single-Page-Anwendungen (SPAs)
 
 Viele moderne Web-Apps werden als clientseitige Single-Page-Anwendungen (SPAs) erstellt. Diese Anwendungen verwenden JavaScript oder ein Framework wie Angular, Vue und React. Diese Anwendungen werden in einem Webbrowser ausgeführt.
 
