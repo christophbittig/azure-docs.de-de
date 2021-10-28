@@ -4,12 +4,12 @@ description: Informationen zum Beheben von häufigen Problemen beim Bereitstelle
 ms.topic: article
 ms.date: 06/25/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: f00b20751b60549b9b10409539354605ea4bd355
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: ef2ee343fe1c817453dd68dc79de882f3d637e12
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114292252"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130251963"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Beheben von häufigen Problemen in Azure Container Instances
 
@@ -45,7 +45,7 @@ Wenn Sie ein Image angeben, das von Azure Container Instances nicht unterstützt
 }
 ```
 
-Dieser Fehler tritt am häufigsten bei der Bereitstellung von Windows-Images auf, die auf dem SAC-Release (Semi-Annual Channel, halbjährlicher Kanal) 1709 oder 1803 basieren. Informationen zu unterstützten Windows-Images in Azure Container Instances finden Sie in den [häufig gestellten Fragen](/azure/container-instances/container-instances-faq#what-windows-base-os-images-are-supported).
+Dieser Fehler tritt am häufigsten bei der Bereitstellung von Windows-Images auf, die auf dem SAC-Release (Semi-Annual Channel, halbjährlicher Kanal) 1709 oder 1803 basieren. Informationen zu unterstützten Windows-Images in Azure Container Instances finden Sie in den [häufig gestellten Fragen](./container-instances-faq.yml).
 
 ### <a name="unable-to-pull-image"></a>Pullvorgang für Image nicht möglich
 
@@ -187,7 +187,7 @@ Eine weitere Möglichkeit, die Auswirkungen des Pullvorgangs für das Image auf 
 
 #### <a name="cached-images"></a>Zwischengespeicherte Images
 
-Azure Container Instances verwendet einen Mechanismus für die Zwischenspeicherung, um die Dauer des Containerstartvorgangs für Images basierend auf allgemeinen [Windows-Basisimages](/azure/container-instances/container-instances-faq#what-windows-base-os-images-are-supported) (u. a. `nanoserver:1809`, `servercore:ltsc2019` und `servercore:1809`) zu verkürzen. Häufig verwendete Linux-Images wie `ubuntu:1604` und `alpine:3.6` werden auch zwischengespeichert. Vermeiden Sie sowohl bei Windows- als auch Linux-Images die Verwendung des `latest`-Tags. Lesen Sie zur Anleitung [Bewährte Methoden für Imagetags](../container-registry/container-registry-image-tag-version.md) der Containerregistrierung. Verwenden Sie die API [List Cached Images][list-cached-images] (Zwischengespeicherte Images auflisten), um eine aktuelle Liste der zwischengespeicherten Images und Tags zu erhalten.
+Azure Container Instances verwendet einen Mechanismus für die Zwischenspeicherung, um die Dauer des Containerstartvorgangs für Images basierend auf allgemeinen [Windows-Basisimages](./container-instances-faq.yml) (u. a. `nanoserver:1809`, `servercore:ltsc2019` und `servercore:1809`) zu verkürzen. Häufig verwendete Linux-Images wie `ubuntu:1604` und `alpine:3.6` werden auch zwischengespeichert. Vermeiden Sie sowohl bei Windows- als auch Linux-Images die Verwendung des `latest`-Tags. Lesen Sie zur Anleitung [Bewährte Methoden für Imagetags](../container-registry/container-registry-image-tag-version.md) der Containerregistrierung. Verwenden Sie die API [List Cached Images][list-cached-images] (Zwischengespeicherte Images auflisten), um eine aktuelle Liste der zwischengespeicherten Images und Tags zu erhalten.
 
 > [!NOTE]
 > Die Verwendung von auf Windows Server 2019 basierenden Images in Azure Container Instances befindet sich im Vorschaustadium.

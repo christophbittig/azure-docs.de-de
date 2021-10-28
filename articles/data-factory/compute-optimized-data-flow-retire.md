@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.topic: tutorial
 ms.date: 06/29/2021
-ms.openlocfilehash: 2ef5e68f9629feab42a4417b4e08697038947495
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 781841ff8a65d36a9ed712efa5d0bdf8480995bf
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128661828"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130229368"
 ---
 # <a name="retirement-of-data-flow-compute-optimized-option"></a>Datenflussoption „Für Compute optimiert“ wird eingestellt
 
@@ -38,5 +38,5 @@ Bis einschließlich 31. August 2024 funktionieren Ihre für Compute optimierte
 | Für Compute optimierte Datenflüsse (veraltet) | Für Produktionsworkloads nicht empfohlen |
 
 * [Aktuelle Informationen zu den Preisen für universelle und arbeitsspeicheroptimierte Datenflüsse finden Sie auf der Preisseite für Azure Data Factory.](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/)
-* [Detaillierte Informationen finden Sie in den häufig gestellten Fragen zu Datenflüssen.](/azure/data-factory/frequently-asked-questions#mapping-data-flows)  
+* [Detaillierte Informationen finden Sie in den häufig gestellten Fragen zu Datenflüssen.](./frequently-asked-questions.yml#mapping-data-flows)  
 * [Auf der Microsoft Q&A-Seite können Sie Fragen posten und Antworten finden.](https://aka.ms/datafactoryqa)

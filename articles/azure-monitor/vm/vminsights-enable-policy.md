@@ -5,20 +5,20 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 63e68a247dd9d38cffe1555806ab23391c38f1fa
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: 6b3cdddcc07df6961cc6493404583e6cb7da96e4
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130177441"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130224458"
 ---
 # <a name="enable-vm-insights-by-using-azure-policy"></a>Aktivieren von VM Insights mithilfe von Azure Policy
 In diesem Artikel wird erläutert, wie Sie VM Insights mithilfe von Azure Policy für Azure-VMs oder Hybrid-VMs aktivieren, die mit Azure Arc (Preview) verbunden sind. Azure Policy ermöglicht Ihnen das Zuweisen von Richtliniendefinitionen, mit denen die erforderlichen Agents für VM Insights in Ihrer Azure-Umgebung installiert werden. Außerdem wird bei der Erstellung der einzelnen VMs automatisch die Überwachung dieser VMs aktiviert. VM Insights bietet ein Feature, mit dem Sie nicht konforme VMs in Ihrer Umgebung ermitteln und warten können. Verwenden Sie diese Funktion, anstatt direkt mit Azure Policy zu arbeiten.
 
-Wenn Sie nicht mit Azure Policy vertraut sind, finden Sie unter [Bedarfsorientiertes Bereitstellen von Azure Monitor mithilfe von Azure Policy](../deploy-scale.md) eine kurze Einführung.
+Wenn Sie nicht mit Azure Policy vertraut sind, finden Sie unter [Bedarfsorientiertes Bereitstellen von Azure Monitor mithilfe von Azure Policy](../best-practices.md) eine kurze Einführung.
 
 > [!NOTE]
-> Informationen zur Verwendung von Azure Policy mit Azure-VM-Skalierungsgruppen sowie zur direkten Verwendung von Azure Policy zum Aktivieren von Azure-VMs finden Sie unter [Bedarfsorientiertes Bereitstellen von Azure Monitor mithilfe von Azure Policy](../deploy-scale.md#vm-insights).
+> Informationen zur Verwendung von Azure Policy mit Azure-VM-Skalierungsgruppen sowie zur direkten Verwendung von Azure Policy zum Aktivieren von Azure-VMs finden Sie unter [Bedarfsorientiertes Bereitstellen von Azure Monitor mithilfe von Azure Policy](../best-practices.md).
 
 ## <a name="vm-insights-initiatives"></a>VM Insights-Initiativen
 VM Insights stellt integrierte Richtliniendefinitionen für die Installation des Log Analytics-Agents und des Dependency-Agents auf Azure-VMs bereit. Die folgenden integrierten Initiativen installieren beide Agents, um eine umfassende Überwachung zu ermöglichen. Weisen Sie diese Initiativen einer Verwaltungsgruppe, einem Abonnement oder einer Ressourcengruppe zu, um die Agents automatisch auf Azure-VMs mit Windows oder Linux im jeweiligen Bereich zu installieren.
@@ -61,7 +61,7 @@ Nach der Erstellung einer Zuweisung können Sie die Abdeckung für die Initiativ
 
 Die folgende Tabelle enthält eine Beschreibung der Informationen in dieser Ansicht.
 
-| Funktion | BESCHREIBUNG | 
+| Funktion | Beschreibung | 
 |----------|-------------| 
 | **Umfang** | Verwaltungsgruppen und Abonnements, auf die Sie Zugriff haben oder für die Sie den Zugriff geerbt haben, mit der Möglichkeit, die Hierarchie der Verwaltungsgruppen aufzuschlüsseln.|
 | **Rolle** | Ihre Rolle innerhalb des Bereichs (Leser, Besitzer oder Mitwirkender). Dieses Feld ist leer, wenn Sie auf das Abonnement, jedoch nicht auf die zugehörige Verwaltungsgruppe zugreifen können. Über diese Rolle wird festgelegt, welche Daten Sie sehen und welche Aktionen Sie durchführen können. Die Rolle gibt also Auskunft darüber, welche Richtlinien oder Initiativen (Besitzer) zugewiesen oder bearbeitet werden können bzw. für welche Richtlinien oder Initiativen der Konformitätsstatus angezeigt werden kann. |

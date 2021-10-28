@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8f056354fdda60adfe82598800d8a030c9a3668
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: 4f0c6c8d37e8472f737b81a692552c5fd143598c
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130133707"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130257554"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Archiv für Neuerungen in Azure Active Directory
 
@@ -61,7 +61,7 @@ Weitere Informationen finden Sie im Artikel [Aktivieren der Unterstützung für 
 ### <a name="public-preview----azure-ad-entitlement-management-now-supports-multi-geo-sharepoint-online"></a>Öffentliche Vorschau: Azure AD-Berechtigungsverwaltung unterstützt jetzt SharePoint Online Multi-Geo
 
 **Typ:** Neues Feature  
-**Dienstkategorie:** Sonstige  
+**Dienstkategorie:** Andere  
 **Produktfunktion:** Berechtigungsverwaltung
  
 Für Organisationen, die SharePoint Online mit mehreren geografischen Standorten verwenden, können Sie jetzt Websites in bestimmten Umgebungen mit mehreren geografischen Standorten zu Ihren Zugriffspaketen mit Berechtigungsverwaltung hinzufügen. [Weitere Informationen](../governance/entitlement-management-catalog-create.md#add-a-multi-geo-sharepoint-site)
@@ -71,7 +71,7 @@ Für Organisationen, die SharePoint Online mit mehreren geografischen Standorten
 ### <a name="public-preview----restore-deleted-apps-from-app-registrations"></a>Öffentliche Vorschau: Wiederherstellen gelöschter Apps aus App-Registrierungen
 
 **Typ:** Neues Feature  
-**Dienstkategorie:** Sonstige  
+**Dienstkategorie:** Andere  
 **Produktfunktion:** Entwickleroberfläche
  
 Kunden können jetzt gelöschte App-Registrierungen im Azure-Portal anzeigen, wiederherstellen und endgültig entfernen. Dies gilt nur für Anwendungen, die einem Verzeichnis zugeordnet sind, nicht für Anwendungen eines persönlichen Microsoft-Kontos. [Weitere Informationen](../develop/howto-restore-app.md)
@@ -182,7 +182,7 @@ Informationen zum Auflisten Ihrer Anwendung im Azure AD-App-Katalog finden Sie 
 
 **Typ:** Neues Feature  
 **Dienstkategorie:** App-Bereitstellung  
-**Produktfunktion:** Integration von Drittanbieterprodukten
+**Produktfunktion**: Integration von Drittanbieteranwendungen
 
 Sie können ab sofort das Erstellen, Aktualisieren und Löschen von Benutzerkonten für diese neu integrierten Apps automatisieren:
 
@@ -370,7 +370,7 @@ Informationen zum Auflisten Ihrer Anwendung im Azure AD-App-Katalog finden Sie 
 
 **Typ:** Neues Feature  
 **Dienstkategorie:** App-Bereitstellung  
-**Produktfunktion:** Integration von Drittanbieterprodukten
+**Produktfunktion**: Integration von Drittanbieteranwendungen
  
 
 Sie können ab sofort das Erstellen, Aktualisieren und Löschen von Benutzerkonten für diese neu integrierten Apps automatisieren:
@@ -421,7 +421,7 @@ In der Berechtigungsverwaltung steht jetzt bei der Auswahl von genehmigenden Per
 ### <a name="authentication-methods-activity-dashboard"></a>Dashboard: Aktivität für Authentifizierungsmethoden
 
 **Typ:** Geändertes Feature  
-**Dienstkategorie:** Berichterstellung  
+**Dienstkategorie**: Berichterstellung  
 **Produktfunktion:** Überwachung und Berichterstellung
  
 
@@ -560,7 +560,7 @@ Mit der Einmalkennung per E-Mail können Unternehmen auf der ganzen Welt mit and
 
 **Typ:** Neues Feature  
 **Dienstkategorie:** App-Bereitstellung  
-**Produktfunktion:** Integration von Drittanbieterprodukten
+**Produktfunktion**: Integration von Drittanbieteranwendungen
  
 Sie können ab sofort das Erstellen, Aktualisieren und Löschen von Benutzerkonten für diese neu integrierten Apps automatisieren:
 - [Fortes Change Cloud](../saas-apps/fortes-change-cloud-provisioning-tutorial.md)
@@ -678,7 +678,7 @@ Der Funktionsumfang der Berechtigungsverwaltung ist jetzt für alle Mandanten in
 
 **Typ:** Neues Feature  
 **Dienstkategorie:** App-Bereitstellung  
-**Produktfunktion:** Integration von Drittanbieterprodukten
+**Produktfunktion**: Integration von Drittanbieteranwendungen
 
 Sie können ab sofort das Erstellen, Aktualisieren und Löschen von Benutzerkonten für diese neu integrierten Apps automatisieren:
 
@@ -818,7 +818,7 @@ Mit der Telefonregistrierung und -anmeldung können Entwickler und Unternehmen i
 
 **Typ:** Neues Feature  
 **Dienstkategorie:** App-Bereitstellung  
-**Produktfunktion:** Integration von Drittanbieterprodukten
+**Produktfunktion**: Integration von Drittanbieteranwendungen
  
 Sie können ab sofort das Erstellen, Aktualisieren und Löschen von Benutzerkonten für diese neu integrierten Apps automatisieren:
 
@@ -849,7 +849,7 @@ Mandantenadministratoren können jetzt den gestaffelten Rollout zum Bereitstelle
 ### <a name="limited-preview---sign-in-diagnostic"></a>Eingeschränkte Vorschau: Anmeldediagnose
 
 **Typ:** Neues Feature  
-**Dienstkategorie:** Berichterstellung  
+**Dienstkategorie**: Berichterstellung  
 **Produktfunktion:** Überwachung und Berichterstellung
  
 Mit dem ersten Vorschaurelease der Anmeldediagnose können Administratoren jetzt Benutzeranmeldungen überprüfen. Administratoren erhalten kontextbezogene, spezifische und relevante Details sowie Leitfäden dazu, was bei einer Anmeldung geschehen ist und wie eventuelle Probleme behoben werden können. Die Diagnose ist sowohl auf Azure AD-Ebene als auch auf den Blättern für Diagnose und Lösung beim bedingten Zugriff verfügbar. Die in diesem Release behandelten Diagnoseszenarios betreffen den bedingten Zugriff, Azure AD MFA und die erfolgreiche Anmeldung.
@@ -1043,7 +1043,7 @@ In Azure AD-Zugriffsüberprüfungen können Administratoren, die Überprüfunge
 
 **Typ:** Neues Feature  
 **Dienstkategorie:** App-Bereitstellung  
-**Produktfunktion:** Integration von Drittanbieterprodukten
+**Produktfunktion**: Integration von Drittanbieteranwendungen
  
 Sie können ab sofort das Erstellen, Aktualisieren und Löschen von Benutzerkonten für diese neu integrierten Apps automatisieren:
 
@@ -1145,7 +1145,7 @@ Informationen zum Auflisten Ihrer Anwendung im Azure AD-App-Katalog finden Sie 
 ### <a name="provisioning-logs-can-now-be-streamed-to-log-analytics"></a>Bereitstellungsprotokolle können jetzt an Log Analytics übertragen werden
 
 **Typ:** Neues Feature  
-**Dienstkategorie:** Berichterstellung  
+**Dienstkategorie**: Berichterstellung  
 **Produktfunktion:** Überwachung und Berichterstellung
  
 
@@ -1162,7 +1162,7 @@ Informationen zur Verwendung der Funktion finden Sie unter [Grundlegendes zur In
 ### <a name="provisioning-logs-can-now-be-viewed-by-application-owners"></a>Bereitstellungsprotokolle können nun von Anwendungsbesitzern angezeigt werden
 
 **Typ:** Geändertes Feature  
-**Dienstkategorie:** Berichterstellung  
+**Dienstkategorie**: Berichterstellung  
 **Produktfunktion:** Überwachung und Berichterstellung
  
 Sie können Anwendungsbesitzern nun ermöglichen, die Aktivitäten des Bereitstellungsdiensts zu überwachen und Probleme zu beheben, ohne ihnen eine privilegierte Rolle zuzuweisen oder einen IT-Engpass zu verursachen. [Weitere Informationen](../reports-monitoring/concept-provisioning-logs.md)
@@ -1210,7 +1210,7 @@ Für maximale Benutzerfreundlichkeit empfiehlt es sich, die Lebensdauer von Sitz
 
 **Typ:** Neues Feature  
 **Dienstkategorie:** App-Bereitstellung  
-**Produktfunktion:** Integration von Drittanbieterprodukten
+**Produktfunktion**: Integration von Drittanbieteranwendungen
  
 Sie können ab sofort das Erstellen, Aktualisieren und Löschen von Benutzerkonten für diese neu integrierten Apps automatisieren:
 
@@ -1789,7 +1789,7 @@ Zusätzlich wurde die Verwaltung von Authentifizierungssitzungen bisher nur für
 
 **Typ:** Neues Feature  
 **Dienstkategorie:** Unternehmens-Apps  
-**Produktfunktion:** Integration von Drittanbieterprodukten
+**Produktfunktion**: Integration von Drittanbieteranwendungen
  
 Im Juni 2020 haben wir die folgenden 29 neuen Anwendungen mit Verbundunterstützung in unseren App-Katalog aufgenommen:
 
@@ -1830,7 +1830,7 @@ Der Azure AD-Bereitstellungsdienst wird zurzeit zyklisch betrieben. Der Dienst w
 ### <a name="new-permission-for-using-azure-ad-entitlement-management-in-graph"></a>Neue Berechtigung zum Verwenden der Azure AD-Berechtigungsverwaltung in Graph
 
 **Typ:** Neues Feature  
-**Dienstkategorie:** Sonstige  
+**Dienstkategorie:** Andere  
 **Produktfunktion:** Berechtigungsverwaltung
  
 Die neue delegierte Berechtigung „EntitlementManagement.Read.All“ ist jetzt für die Verwendung mit der Berechtigungsverwaltungs-API in Microsoft Graph Beta verfügbar. Weitere Informationen zu den verfügbaren APIs finden Sie unter [Arbeiten mit der Azure AD-Berechtigungsverwaltungs-API](/graph/api/resources/entitlementmanagement-root?view=graph-rest-beta&preserve-view=true).
@@ -2013,7 +2013,7 @@ IT-Administratoren können jetzt die neue Rolle „Hybridadministrator“ als am
 
 **Typ:** Neues Feature  
 **Dienstkategorie:** Unternehmens-Apps  
-**Produktfunktion:** Integration von Drittanbieterprodukten
+**Produktfunktion**: Integration von Drittanbieteranwendungen
  
 Im Mai 2020 haben wir die folgenden 36 neuen Anwendungen mit Verbundunterstützung in unseren App-Katalog aufgenommen:
 
@@ -2090,7 +2090,7 @@ Unterstützung für das Erstellen und Konfigurieren einer Anwendung aus dem Azur
 
 **Typ:** Neues Feature  
 **Dienstkategorie:** App-Bereitstellung  
-**Produktfunktion:** Integration von Drittanbieterprodukten
+**Produktfunktion**: Integration von Drittanbieteranwendungen
  
 Sie können ab sofort das Erstellen, Aktualisieren und Löschen von Benutzerkonten für diese neu integrierten Apps automatisieren:
 
@@ -2137,7 +2137,7 @@ Wir haben die Workday Writeback-Bereitstellungs-App erweitert, um jetzt das Rüc
 ### <a name="publisher-verification-preview"></a>Herausgeberüberprüfung (Vorschauversion)
 
 **Typ:** Neues Feature  
-**Dienstkategorie:** Sonstige  
+**Dienstkategorie:** Andere  
 **Produktfunktion:** Entwickleroberfläche
  
 Die Herausgeberüberprüfung (Vorschauversion) unterstützt Administratoren und Endbenutzer dabei, die Authentizität von Anwendungsentwicklern zu verstehen, die in die Microsoft Identity Platform integriert sind. Weitere Informationen finden Sie unter [Herausgeberüberprüfung (Vorschau)](../develop/publisher-verification-overview.md).
@@ -2272,7 +2272,7 @@ Auf dem neuen Blatt [Richtliniendetails](../conditional-access/troubleshoot-cond
 
 **Dienstkategorie:** Unternehmens-Apps
 
-**Produktfunktion:** Integration von Drittanbieterprodukten
+**Produktfunktion**: Integration von Drittanbieteranwendungen
 
 Im April 2020 haben wir diese 31 neuen Apps mit Verbundunterstützung in den App-Katalog aufgenommen: 
 
@@ -2592,7 +2592,7 @@ Bisher waren Änderungen an der [HomeRealmDiscovery-Richtlinie](../manage-apps/c
 
 **Typ:** Neues Feature  
 **Dienstkategorie:** Unternehmens-Apps  
-**Produktfunktion:** Integration von Drittanbieterprodukten
+**Produktfunktion**: Integration von Drittanbieteranwendungen
  
 Im März 2020 haben wir die folgenden 51 neuen Apps mit Verbundunterstützung in den App-Katalog aufgenommen: 
 
@@ -2615,7 +2615,7 @@ Die Funktionen der Azure AD B2B-Zusammenarbeit sind jetzt für die Zusammenarbei
 ### <a name="azure-monitor-integration-for-azure-logs-is-now-available-in-azure-government"></a>Azure Monitor-Integration für Azure-Protokolle jetzt in Azure Government verfügbar
 
 **Typ:** Neues Feature  
-**Dienstkategorie:** Berichterstellung  
+**Dienstkategorie**: Berichterstellung  
 **Produktfunktion:** Überwachung und Berichterstellung
  
 Die Integration von Azure AD-Protokollen in Azure Monitor ist jetzt in Azure Government verfügbar. Sie können Azure AD-Protokolle (Überwachungs- und Anmeldeprotokolle) an ein Speicherkonto, einen Event Hub und Log Analytics weiterleiten. Sehen Sie sich die [ausführliche Dokumentation](../reports-monitoring/concept-activity-logs-azure-monitor.md) sowie die [Bereitstellungspläne für die Berichterstellung und Überwachung](../reports-monitoring/plan-monitoring-and-reporting.md) für Azure AD-Szenarien an.
@@ -2669,7 +2669,7 @@ Diese Änderung ist am 13. März 2020, 10 Uhr PST (18 Uhr UTC), in Kraft getrete
 ### <a name="azure-ad-sign-in-logs-are-now-available-for-all-free-tenants-through-the-azure-portal"></a>Azure AD-Anmeldeprotokolle jetzt für alle kostenlosen Mandanten über das Azure-Portal verfügbar
 
 **Typ:** Geändertes Feature  
-**Dienstkategorie:** Berichterstellung  
+**Dienstkategorie**: Berichterstellung  
 **Produktfunktion:** Überwachung und Berichterstellung
  
 Ab sofort können Kunden mit kostenlosen Mandanten bis zu sieben Tage lang auf die [Azure AD-Anmeldeprotokolle im Azure-Portal](../reports-monitoring/concept-sign-ins.md) zugreifen. Bisher waren Anmeldeprotokolle nur für Kunden mit Azure Active Directory Premium-Lizenzen verfügbar. Durch diese Änderung können alle Mandanten über das Portal auf diese Protokolle zugreifen.
@@ -2742,7 +2742,7 @@ Dem Kundenfeedback zufolge wünschten sich Kunden von Azure AD Domain Services m
 
 **Typ:** Neues Feature  
 **Dienstkategorie:** Unternehmens-Apps  
-**Produktfunktion:** Integration von Drittanbieterprodukten
+**Produktfunktion**: Integration von Drittanbieteranwendungen
  
 Im Februar 2020 haben wir die folgenden 31 neuen Apps mit Verbundunterstützung in unseren App-Katalog aufgenommen: 
 
@@ -2757,7 +2757,7 @@ Weitere Informationen zu den Apps finden Sie unter [SaaS-Anwendungsintegration m
 
 **Typ:** Neues Feature  
 **Dienstkategorie:** Unternehmens-Apps  
-**Produktfunktion:** Integration von Drittanbieterprodukten
+**Produktfunktion**: Integration von Drittanbieteranwendungen
  
 Sie können ab sofort das Erstellen, Aktualisieren und Löschen von Benutzerkonten für diese neu integrierten Apps automatisieren:
 
@@ -2839,7 +2839,7 @@ Mit der Telefonregistrierung und -anmeldung können Entwickler und Unternehmen i
 
 **Typ:** Neues Feature  
 **Dienstkategorie:** Unternehmens-Apps  
-**Produktfunktion:** Integration von Drittanbieterprodukten
+**Produktfunktion**: Integration von Drittanbieteranwendungen
  
 Sie können ab sofort das Erstellen, Aktualisieren und Löschen von Benutzerkonten für diese neu integrierten Apps automatisieren:
 
@@ -2854,7 +2854,7 @@ Weitere Informationen dazu, wie Sie Ihre Organisation durch die automatisierte B
 
 **Typ:** Neues Feature  
 **Dienstkategorie:** Unternehmens-Apps  
-**Produktfunktion:** Integration von Drittanbieterprodukten
+**Produktfunktion**: Integration von Drittanbieteranwendungen
  
 Im Januar 2020 haben wir die folgenden 33 neuen Apps mit Verbundunterstützung in den App-Katalog aufgenommen: 
 
@@ -2983,7 +2983,7 @@ Weitere Informationen finden Sie unter [Konfigurieren des Workflows für die Adm
 ### <a name="new-azure-ad-app-registrations-token-configuration-experience-for-managing-optional-claims-public-preview"></a>Neue Option „Azure AD App Registrations Token configuration“ (Konfiguration von Azure AD-App-Registrierungstoken) zur Verwaltung optionaler Ansprüche (Public Preview)
 
 **Typ:** Neues Feature  
-**Dienstkategorie:** Sonstige  
+**Dienstkategorie:** Andere  
 **Produktfunktion:** Entwickleroberfläche
 
 Das neue Blatt **Azure AD App Registrations Token configuration** (Konfiguration von Azure AD-App-Registrierungstoken) im Azure-Portal zeigt App-Entwicklern eine dynamische Liste optionaler Ansprüche für ihre Apps an. Mit den neuen Optionen können Sie die Migration von Azure AD-Apps optimieren und Fehlkonfigurationen bei optionalen Ansprüchen auf ein Minimum reduzieren.
@@ -2995,7 +2995,7 @@ Weitere Informationen finden Sie unter [Bereitstellen optionaler Ansprüche für
 ### <a name="new-two-stage-approval-workflow-in-azure-ad-entitlement-management-public-preview"></a>Neuer zweistufiger Genehmigungsworkflow in der Azure AD-Berechtigungsverwaltung (Public Preview)
 
 **Typ:** Neues Feature  
-**Dienstkategorie:** Sonstige  
+**Dienstkategorie:** Andere  
 **Produktfunktion:** Berechtigungsverwaltung
 
 Wir haben einen neuen zweistufigen Genehmigungsworkflow eingeführt, der es Ihnen ermöglicht, dass zwei genehmigende Personen die Anforderung eines Benutzers für den Zugriffs auf ein Paket genehmigen müssen. So können Sie z. B. festlegen, dass der Vorgesetzte des anfordernden Benutzers zunächst die Genehmigung erteilen muss. Anschließend muss der Ressourcenbesitzer die Genehmigung erteilen. Wenn eine der genehmigenden Personen keine Genehmigung verteilt, wird der Zugriff verweigert.
@@ -3047,7 +3047,7 @@ Weitere Informationen zum bedingten Zugriff und zum einmaligen Anmelden mit Micr
 ### <a name="azure-ad-entitlement-management-general-availability"></a>Azure AD-Berechtigungsverwaltung (allgemeine Verfügbarkeit)
 
 **Typ:** Neues Feature  
-**Dienstkategorie:** Sonstige  
+**Dienstkategorie:** Andere  
 **Produktfunktion:** Berechtigungsverwaltung
 
 Die Azure AD-Berechtigungsverwaltung ist ein neues Identity-Governance-Feature, mit dem Organisationen Identitäts- und Zugriffslebenszyklen bedarfsgesteuert verwalten können. Mit diesem neuen Feature können Workflows für Zugriffsanforderungen, Zugriffszuweisungen, Überprüfungen und das Ablaufen von Gruppen, Apps und SharePoint Online-Websites automatisiert werden.
@@ -3062,7 +3062,7 @@ Weitere Informationen finden Sie unter [Was ist die Azure AD-Berechtigungsverwal
 
 **Typ:** Neues Feature  
 **Dienstkategorie:** Unternehmens-Apps  
-**Produktfunktion:** Integration von Drittanbieterprodukten  
+**Produktfunktion**: Integration von Drittanbieteranwendungen  
 
 Sie können ab sofort das Erstellen, Aktualisieren und Löschen von Benutzerkonten für diese neu integrierten Apps automatisieren:
 
@@ -3396,7 +3396,7 @@ Dem AzureADPreview-Modul wurden neue Cmdlets hinzugefügt, mit denen Sie benutze
 
 **Typ:** Geändertes Feature-**Dienstkategorie:** Andere **Produktfunktion:** Verzeichnis
 
-Für Kunden mit automatischen Upgrade haben wir eine aktualisierte Version von Azure AD Connect veröffentlicht. Diese neue Version enthält verschiedene neue Features, Verbesserungen und Fehlerbehebungen. Weitere Informationen zu dieser neuen Version finden Sie unter [Azure AD Connect: Verlauf der Versionsveröffentlichungen](../hybrid/reference-connect-version-history.md#14250).
+Für Kunden mit automatischen Upgrade haben wir eine aktualisierte Version von Azure AD Connect veröffentlicht. Diese neue Version enthält verschiedene neue Features, Verbesserungen und Fehlerbehebungen. 
 
 ---
 

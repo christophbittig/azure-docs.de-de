@@ -9,12 +9,12 @@ author: amjads1
 ms.collection: windows
 ms.date: 07/20/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6de81e9df2b66a27a15ff9578646aa8c6fb09c45
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 8e5118b25238a9483eba3e74a65fe97186d32168
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110663223"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130236844"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Übersicht über den Agent für virtuelle Azure-Computer
 Der Agent für virtuelle Microsoft Azure-Computer (VM-Agent) ist ein sicherer, einfacher Prozess zur Verwaltung der VM-Interaktion mit dem Azure Fabric Controller. Der VM-Agent spielt eine primäre Rolle bei der Aktivierung und Ausführung von Azure-VM-Erweiterungen. VM-Erweiterungen ermöglichen es, VMs nach der Bereitstellung zu konfigurieren (beispielsweise, um Software zu installieren und zu konfigurieren). Außerdem ermöglichen VM-Erweiterungen den Einsatz von Wiederherstellungsfeatures wie das Zurücksetzen des Administratorkennworts einer VM. Ohne den Azure-VM-Agent können keine VM-Erweiterungen ausgeführt werden.
@@ -70,7 +70,7 @@ $vm | Update-AzVM
 
 - Stellen Sie sicher, dass Ihr virtueller Computer Zugriff auf die IP-Adresse 168.63.129.16 hat. Unter [Was ist die IP-Adresse 168.63.129.16?](../../virtual-network/what-is-ip-address-168-63-129-16.md) finden Sie weitere Informationen dazu.
 
-- Stellen Sie sicher, dass DHCP auf der Gast-VM aktiviert ist. Dies ist erforderlich, damit die Host- oder Fabricadresse des Dynamic Host Configuration-Protokolls (DHCP) für den IaaS-VM-Agent und die Erweiterungen funktioniert. Wenn Sie eine statische private IP-Adresse benötigen, sollten Sie diese im Azure-Portal oder mithilfe von PowerShell konfigurieren und sicherstellen, dass die DHCP-Option auf dem virtuellen Computer aktiviert ist. [Hier erfahren Sie mehr](../../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface) über das Einrichten einer statischen IP-Adresse mit PowerShell.
+- Stellen Sie sicher, dass DHCP auf der Gast-VM aktiviert ist. Dies ist erforderlich, damit die Host- oder Fabricadresse des Dynamic Host Configuration-Protokolls (DHCP) für den IaaS-VM-Agent und die Erweiterungen funktioniert. Wenn Sie eine statische private IP-Adresse benötigen, sollten Sie diese im Azure-Portal oder mithilfe von PowerShell konfigurieren und sicherstellen, dass die DHCP-Option auf dem virtuellen Computer aktiviert ist. [Hier erfahren Sie mehr](../../virtual-network/ip-services/virtual-networks-static-private-ip-arm-ps.md) über das Einrichten einer statischen IP-Adresse mit PowerShell.
 
 
 ## <a name="detect-the-vm-agent"></a>Erkennen des VM-Agents

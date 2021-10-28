@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 10/14/2021
 ms.author: b-juche
-ms.openlocfilehash: 78f8b282e701e181dd3a2c137ba254227651b048
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 0d733117cd9e1d4ac45dede368153bb77098fad5
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130036853"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130252457"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>Neues in Azure NetApp Files
 
@@ -88,7 +88,7 @@ Azure NetApp Files wird regelmäßig aktualisiert. Dieser Artikel bietet eine Ü
 
     **NetApp-Add-Ons** ist die erste Kategorie von Add-Ons, die unter **Speicherdienst-Add-Ons** angezeigt wird. Sie bietet Zugriff auf **NetApp Cloud Compliance**. Wenn Sie auf die Kachel **NetApp Cloud Compliance** klicken, wird ein neuer Browser geöffnet, und Sie werden zur Add-On-Installationsseite weitergeleitet. 
 
-* Der [Manuelle QoS-Kapazitätspool](manual-qos-capacity-pool-introduction.md) ist jetzt allgemein verfügbar (GA)   
+* Der [Manuelle QoS-Kapazitätspool](azure-netapp-files-understand-storage-hierarchy.md#manual-qos-type) ist jetzt allgemein verfügbar (GA)   
 
     Die Funktion „Manueller QoS-Kapazitätspool“ ist jetzt allgemein verfügbar. Sie müssen die Funktionen nicht mehr registrieren, bevor Sie sie verwenden. 
 
@@ -189,7 +189,7 @@ Azure NetApp Files wird regelmäßig aktualisiert. Dieser Artikel bietet eine Ü
 
   Azure NetApp Files unterstützt jetzt regionsübergreifende Replikation. Mit dieser neuen Notfallwiederherstellungsfunktion können Sie Ihre Azure NetApp Files-Volumes schnell und kostengünstig von einer Azure-Region in eine andere replizieren und so Ihre Daten vor unvorhersehbaren regionalen Ausfällen schützen. Die regionsübergreifende Replikation in Azure NetApp Files nutzt die SnapMirror®-Technologie, bei der nur geänderte Blöcke in einem komprimierten, effizienten Format über das Netzwerk gesendet werden. Diese proprietäre Technologie minimiert die Menge an Daten, die regionsübergreifend repliziert werden muss, wodurch Datenübertragungskosten eingespart werden. Auch die Replikationszeit verkürzt sich dadurch, sodass Sie eine kürzere Recovery Point Objective (RPO) erreichen können.
 
-* [Manueller QoS-Kapazitätspool](manual-qos-capacity-pool-introduction.md) (Vorschau)  
+* [Manueller QoS-Kapazitätspool](azure-netapp-files-understand-storage-hierarchy.md#manual-qos-type) (Vorschau)  
 
     Bei einem manuellen QoS-Kapazitätspool können Sie die Kapazität und den Durchsatz für ein Volume unabhängig voneinander zuweisen. Der Gesamtdurchsatz aller Volumes, die mit einem Kapazitätspool mit dem QoS-Typ „Manuell“ erstellt werden, ist durch den Gesamtdurchsatz des Pools begrenzt. Dieser wird anhand der Kombination von Poolgröße und Serviceleveldurchsatz ermittelt. Alternativ kann der [QoS-Typ](azure-netapp-files-understand-storage-hierarchy.md#qos_types) eines Kapazitätspools „auto“ (automatisch) sein, wobei es sich um die Standardeinstellung handelt. In einem automatischen QoS-Kapazitätspool wird der Durchsatz den Volumes im Pool automatisch zugewiesen. Dies erfolgt proportional zum Größenkontingent, das den Volumes zugewiesen ist.
 

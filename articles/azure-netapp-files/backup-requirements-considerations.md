@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/07/2021
 ms.author: b-juche
-ms.openlocfilehash: f396904b3832403337a6fa4553e2ae4a4b8c86b4
-ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
+ms.openlocfilehash: 5e622f86b7b0b9d757dc32089db86c7bfca7fe63
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129667951"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130239750"
 ---
 # <a name="requirements-and-considerations-for-azure-netapp-files-backup"></a>Azure NetApp Files-Sicherung: Anforderungen und Überlegungen 
 
@@ -60,5 +60,5 @@ Vor der Verwendung der Azure NetApp Files-Sicherung müssen Sie einige Anforderu
 * [Deaktivieren der Sicherungsfunktionalität für ein Volume](backup-disable.md)
 * [Sicherungen eines Volumes löschen](backup-delete.md)
 * [Metriken zur Volume-Sicherung](azure-netapp-files-metrics.md#volume-backup-metrics)
-* [Häufig gestellte Fragen zur Azure NetApp Files-Sicherung](azure-netapp-files-faqs.md#azure-netapp-files-backup-faqs)
+* [Häufig gestellte Fragen zur Azure NetApp Files-Sicherung](faq-backup.md)
 * [Funktionsweise von Azure NetApp Files-Momentaufnahmen](snapshots-introduction.md)

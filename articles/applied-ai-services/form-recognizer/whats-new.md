@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 10/07/2021
 ms.author: lajanuar
-ms.openlocfilehash: ddecc748443a6596c611fae857301e1f80f57a66
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 8d118d72b267cc42780f198a1fb0dc63f0f0d965
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130039370"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130233599"
 ---
 <!-- markdownlint-disable MD024 -->
 <!-- markdownlint-disable MD036 -->
@@ -55,7 +55,7 @@ Starten Sie mit der neuen [REST API](https://westus2.dev.cognitive.microsoft.com
 
 ## <a name="september-2021"></a>September 2021
 
-* [Erweiterte Funktionen des Azure-Metrik-Explorers](/azure/azure-monitor/essentials/metrics-charts) sind in Ihrer Ressourcenübersicht der Formularerkennung im Azure-Portal verfügbar.
+* [Erweiterte Funktionen des Azure-Metrik-Explorers](../../azure-monitor/essentials/metrics-charts.md) sind in Ihrer Ressourcenübersicht der Formularerkennung im Azure-Portal verfügbar.
 
     ### <a name="monitoring-menu"></a>Menü „Überwachung“
 
@@ -122,15 +122,15 @@ Der Patch behebt Rechnungen, bei denen keine Felder für Unterzeilen erkannt wer
 * Die Formularerkennung 2.1 ist allgemein verfügbar. Dieses GA-Release (General Availability) gewährleistet die Stabilität von Änderungen, die in Vorschaupaketen vor Version 2.1 eingeführt wurden. Bei dieser Version können Sie Informationen und Daten aus folgenden Ressourcen erkennen und extrahieren:
 
 * [Dokumente](concept-layout.md)
-* [Receipts](concept-receipts.md)
-* [Visitenkarten](concept-business-cards.md)
-* [Invoices](concept-invoices.md)
-* [Identitätsdokumente](concept-identification-cards.md)
+* [Receipts](./concept-receipt.md)
+* [Visitenkarten](./concept-business-card.md)
+* [Invoices](./concept-invoice.md)
+* [Identitätsdokumente](./concept-id-document.md)
 * [Benutzerdefinierte Formulare](concept-custom.md)
 
 #### <a name="get-started"></a>Erste Schritte
 
-Wechseln Sie zum [Beispieltool für die Formularerkennung](https://fott-2-1.azurewebsites.net/), und bearbeiten Sie den [Schnellstart](quickstarts/get-started-with-form-recognizer.md).
+Wechseln Sie zum [Beispieltool für die Formularerkennung](https://fott-2-1.azurewebsites.net/), und bearbeiten Sie den [Schnellstart](./quickstarts/try-sample-label-tool.md).
 
 ### <a name="layout-adds-table-headers"></a>Layout unterstützt jetzt Tabellenkopfzeilen
 
@@ -263,7 +263,7 @@ NuGet package version 3.1.0-beta.4
 
    **StartRecognizeIdDocumentsAsync**
 
-   Eine Liste der Feldwerte finden _Sie_ in der Dokumentation zur Formularerkennung unter [Extrahierte Felder](concept-identification-cards.md#fields-extracted).
+   Eine Liste der Feldwerte finden _Sie_ in der Dokumentation zur Formularerkennung unter [Extrahierte Felder](./concept-id-document.md).
 
 * Die Gruppe der Dokumentsprachen, die für die Methode **[StartRecognizeContent](/dotnet/api/azure.ai.formrecognizer.formrecognizerclient.startrecognizecontent?view=azure-dotnet-preview&preserve-view=true)** angegeben werden können, wurde erweitert.
 
@@ -298,7 +298,7 @@ Maven artifact package dependency version 3.1.0-beta.3
 
   **[beginRecognizeIdDocuments]**
 
-   Eine Liste der Feldwerte finden _Sie_ in der Dokumentation zur Formularerkennung unter [Extrahierte Felder](concept-identification-cards.md#fields-extracted).
+   Eine Liste der Feldwerte finden _Sie_ in der Dokumentation zur Formularerkennung unter [Extrahierte Felder](./concept-id-document.md).
 
 * **Unterstützung von Bitmapbilddateien (.bmp) für benutzerdefinierte Formulare und Trainingsmethoden in der Enumeration `FormContentType`:**
 
@@ -336,7 +336,7 @@ npm package version 3.1.0-beta.3
 
     **[beginRecognizeIdDocuments](/javascript/api/@azure/ai-form-recognizer/formrecognizerclient?view=azure-node-preview&preserve-view=true&branch=main#beginRecognizeIdDocuments_FormRecognizerRequestBody__BeginRecognizeIdDocumentsOptions_)**
 
-    Eine Liste der Feldwerte finden _Sie_ in der Dokumentation zur Formularerkennung unter [Extrahierte Felder](concept-identification-cards.md#fields-extracted).
+    Eine Liste der Feldwerte finden _Sie_ in der Dokumentation zur Formularerkennung unter [Extrahierte Felder](./concept-id-document.md).
 
 * **Neue Feldwerte für die FieldValue-Schnittstelle:**
 
@@ -361,7 +361,7 @@ pip-Paketversion 3.1.0b4
 
   **[begin_recognize_id_documents](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.formrecognizerclient?view=azure-python&preserve-view=true)**
 
-  Eine Liste der Feldwerte finden _Sie_ in der Dokumentation zur Formularerkennung unter [Extrahierte Felder](concept-identification-cards.md#fields-extracted).
+  Eine Liste der Feldwerte finden _Sie_ in der Dokumentation zur Formularerkennung unter [Extrahierte Felder](./concept-id-document.md).
 
 * **Neue Feldwerte für die Enumeration [FieldValueType](/python/api/azure-ai-formrecognizer/azure.ai.formrecognizer.fieldvaluetype?view=azure-python-preview&preserve-view=true):**
 
@@ -409,13 +409,13 @@ pip-Paketversion 3.1.0b4
 
 * **Neues vordefiniertes ID-Modell:** Mit dem neuen vordefinierten ID-Modell können Kunden Ausweispapiere erfassen und strukturierte Daten zurückgeben, um die Verarbeitung zu automatisieren. Dabei werden unsere leistungsstarken Funktionen der optischen Zeichenerkennung (Optical Character Recognition, OCR) mit ID-Erkennungsmodellen kombiniert, mit denen wesentliche Informationen aus Reisepässen und US-Führerscheinen extrahiert werden, z. B. Name, Geburtsdatum, Ausstellungsdatum, Ablaufdatum usw.
 
-  [Weitere Informationen zum vordefinierten ID-Modell](concept-identification-cards.md)
+  [Weitere Informationen zum vordefinierten ID-Modell](./concept-id-document.md)
 
    :::image type="content" source="./media/id-canada-passport-example.png" alt-text="Beispiel eines Reisepasses" lightbox="./media/id-canada-passport-example.png":::
 
 * **Extraktion von Einzelposten für das Rechnungsmodell** - Das vorgefertigte Rechnungsmodell unterstützt jetzt die Extraktion von Einzelposten; es extrahiert jetzt vollständige Artikel und ihre Bestandteile - Beschreibung, Betrag, Menge, Produkt-ID, Datum und mehr. Mit einem einfachen API-/SDK-Aufruf können Sie nützliche Daten aus Rechnungen extrahieren, z. B. Text, Tabellen, Schlüssel-Wert-Paare und Einzelposten.
 
-   [Erfahren Sie mehr über das Rechnungsmodell](concept-invoices.md)
+   [Erfahren Sie mehr über das Rechnungsmodell](./concept-invoice.md)
 
 * **Überwachtes Beschriften und Trainieren von Tabellen, Beschriftung leerer Werte:** Zusätzlich zu den [hochmodernen Deep Learning-Funktionen der Formularerkennung zur automatischen Tabellenextraktion](https://techcommunity.microsoft.com/t5/azure-ai/enhanced-table-extraction-from-documents-with-form-recognizer/ba-p/2058011) können Kunden nun auch Tabellen beschriften und trainieren. Dieses neue Release bietet die Möglichkeit, Einzelposten und Tabellen (dynamisch und fest) zu beschriften und zu trainieren sowie ein benutzerdefiniertes Modell zum Extrahieren von Schlüssel-Wert-Paaren und Einzelposten zu trainieren. Nach dem Trainieren eines Modells werden mit dem Modell Einzelposten als Teil der JSON-Ausgabe im Abschnitt „documentResults“ extrahiert.
 
@@ -439,7 +439,7 @@ pip-Paketversion 3.1.0b4
 
 * **Neues vordefiniertes Rechnungsmodell:** Mit dem neuen vordefinierten Rechnungsmodell können Kunden Rechnungen in verschiedenen Formaten erstellen und strukturierte Daten zurückgeben, um die Rechnungsverarbeitung zu automatisieren. Es kombiniert unsere leistungsstarken Funktionen zur optischen Zeichenerkennung (Optical Character Recognition, OCR) mit Deep Learning-Modellen zum Rechnungsverständnis, um wichtige Informationen aus Rechnungen in englischer Sprache zu extrahieren. Es extrahiert wichtige Angaben, Tabellen und Informationen wie Kunde, Anbieter, Rechnungs-ID, Fälligkeitsdatum für die Rechnung, Summe, fälliger Betrag, Steuerbetrag, Lieferadresse und Rechnungsadresse.
 
-  > [Weitere Informationen zum vordefinierten Rechnungsmodell](concept-invoices.md)
+  > [Weitere Informationen zum vordefinierten Rechnungsmodell](./concept-invoice.md)
 
   :::image type="content" source="./media/invoice-example.jpg" alt-text="Beispiel für Rechnung" lightbox="./media/invoice-example.jpg":::
 
@@ -449,7 +449,7 @@ pip-Paketversion 3.1.0b4
 
   > [Weitere Informationen zur Layoutextraktion](concept-layout.md)
 
-* **Update der Clientbibliothek:** Die aktuelle Version der [Clientbibliotheken](quickstarts/client-library.md) für .NET, Python, Java und JavaScript unterstützt die Formularerkennung 2.1-API.
+* **Update der Clientbibliothek:** Die aktuelle Version der [Clientbibliotheken](./quickstarts/try-sdk-rest-api.md) für .NET, Python, Java und JavaScript unterstützt die Formularerkennung 2.1-API.
 * **Neue unterstützte Sprache: Japanisch** – Die folgenden neuen Sprachen werden jetzt unterstützt: für `AnalyzeLayout` und `AnalyzeCustomForm`: Japanisch (`ja`). [Sprachunterstützung](language-support.md)
 * **Textzeilenstilanzeige (handschriftlich/anders) (nur lateinische Sprachen)**  – Die Formularerkennung gibt jetzt ein `appearance`-Objekt aus, das – zusammen mit einer Zuverlässigkeitsbewertung – klassifiziert, ob jede Textzeile von Hand geschrieben wurde oder nicht. Dieses Feature wird nur für lateinische Sprachen unterstützt.
 * **Qualitätsverbesserungen** – Extraktionsverbesserungen, einschließlich Verbesserungen der einstelligen Extraktion.
@@ -473,13 +473,13 @@ pip-Paketversion 3.1.0b4
 * **Kontrollkästchen-/Auswahlmarkierungserkennung**: Die Formularerkennung unterstützt das Erkennen und Extrahieren von Auswahlmarkierungen, z. B. von Kontrollkästchen und Optionsfeldern. Auswahlmarkierungen werden in `Layout` extrahiert, und Sie können jetzt auch `Train Custom Model` - _mit Bezeichnungen trainieren_, um Schlüssel-Wert-Paare für Auswahlmarkierungen zu extrahieren.
 * **Model Compose** – Ermöglicht das Zusammensetzen und Aufrufen mehrerer Modelle mit einer einzigen Modell-ID. Wenn Sie ein Dokument zur Analyse mit einer zusammengesetzten Modell-ID übermitteln, wird zunächst ein Klassifizierungsschritt durchgeführt, um es an das richtige benutzerdefinierte Modell weiterzuleiten. Model Compose steht für das `Train Custom Model` - _Trainieren mit Bezeichnungen_ zur Verfügung.
 * **Modellname** – Fügen Sie Ihren benutzerdefinierten Modellen einen Anzeigenamen zur einfacheren Verwaltung und Nachverfolgung hinzu.
-* **[Neues vordefiniertes Modell für Visitenkarten](concept-business-cards.md)** zum Extrahieren allgemeiner Felder auf Visitenkarten in englischer Sprache.
-* **[Neue Gebietsschemas für vordefinierte Belege](concept-receipts.md)** : Neben en-US ist jetzt zusätzliche Unterstützung für en-AU, en-CA, en-GB und en-IN verfügbar.
+* **[Neues vordefiniertes Modell für Visitenkarten](./concept-business-card.md)** zum Extrahieren allgemeiner Felder auf Visitenkarten in englischer Sprache.
+* **[Neue Gebietsschemas für vordefinierte Belege](./concept-receipt.md)** : Neben en-US ist jetzt zusätzliche Unterstützung für en-AU, en-CA, en-GB und en-IN verfügbar.
 * **Qualitätsverbesserungen** für `Layout`, `Train Custom Model` - _Trainieren ohne Bezeichnungen_ und _Trainieren mit Bezeichnungen_.
 
 **v2.0** enthält das folgende Update:
 
-* Die [Clientbibliotheken](quickstarts/client-library.md) für .NET, Python, Java und JavaScript sind nun allgemein verfügbar.
+* Die [Clientbibliotheken](./quickstarts/try-sdk-rest-api.md) für .NET, Python, Java und JavaScript sind nun allgemein verfügbar.
 
 **Neue Beispiele** sind auf GitHub verfügbar.
 
@@ -616,7 +616,7 @@ Die JSON-Antworten für alle API-Aufrufe haben neue Formate. Es wurden einige Sc
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Durchlaufen Sie einen [Schnellstart](quickstarts/client-library.md) zu den ersten Schritten zum Schreiben einer Formularverarbeitungs-App mit der Formularerkennung in der Entwicklungssprache Ihrer Wahl.
+Durchlaufen Sie einen [Schnellstart](./quickstarts/try-sdk-rest-api.md) zu den ersten Schritten zum Schreiben einer Formularverarbeitungs-App mit der Formularerkennung in der Entwicklungssprache Ihrer Wahl.
 
 ## <a name="see-also"></a>Weitere Informationen
 

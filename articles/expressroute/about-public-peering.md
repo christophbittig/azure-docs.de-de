@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: duau
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: af70296b886f7e1fb736c1df1b041e2f43451327
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 5c2da05dd68951cada82fc888d54a0f423ce18c7
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110701964"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130242277"
 ---
 # <a name="create-and-manage-expressroute-public-peering"></a>Erstellen und Verwalten von öffentlichem ExpressRoute-Peering
 
@@ -31,7 +31,7 @@ In diesem Artikel erfahren Sie, wie Sie die Routingkonfiguration für das öffen
 
 ## <a name="connectivity"></a>Verbindung
 
-Die Verbindung wird immer von Ihrem WAN aus mit den Microsoft Azure-Diensten initiiert. Microsoft Azure-Dienste können über diese Routingdomäne keine Verbindungen in Ihr Netzwerk initiieren. Wenn Ihre ExpressRoute-Verbindung für öffentliches Azure-Peering aktiviert ist, können Sie über die Verbindung auf die [in Azure verwendeten öffentlichen IP-Adressbereiche](../virtual-network/public-ip-addresses.md#public-ip-addresses) zugreifen.
+Die Verbindung wird immer von Ihrem WAN aus mit den Microsoft Azure-Diensten initiiert. Microsoft Azure-Dienste können über diese Routingdomäne keine Verbindungen in Ihr Netzwerk initiieren. Wenn Ihre ExpressRoute-Verbindung für öffentliches Azure-Peering aktiviert ist, können Sie über die Verbindung auf die [in Azure verwendeten öffentlichen IP-Adressbereiche](../virtual-network/ip-services/public-ip-addresses.md#public-ip-addresses) zugreifen.
 
 Sobald öffentliches Peering aktiviert ist, können Sie eine Verbindung mit den meisten Azure-Diensten herstellen. Es ist Ihnen nicht gestattet, selektiv Dienste auszuwählen, zu denen wir Routen ankündigen.
 

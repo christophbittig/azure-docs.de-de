@@ -5,12 +5,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 11/17/2019
-ms.openlocfilehash: 02a568d48ca99a58778adfd4068c359b4748ab43
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: 639386e1a64ff40375fac5baafc10b6a3a1cb84d
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130178449"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130227053"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor – Übersicht
 
@@ -121,7 +121,7 @@ Mit [Azure Dashboards](../azure-portal/azure-portal-dashboards.md) können Sie v
 ![Beispiel für Arbeitsmappen](media/overview/workbooks.png)
 
 ### <a name="power-bi"></a>Power BI
-[Power BI](https://powerbi.microsoft.com) ist ein Business Analytics-Dienst, der interaktive Visualisierungen für eine Vielzahl von Datenquellen bereitstellt. Es handelt sich dabei um eine effektive Methode, um Daten anderen Personen innerhalb und außerhalb Ihrer Organisation zur Verfügung stellen. Sie können Power BI für den [automatischen Import von Protokolldaten aus Azure Monitor](./visualize/powerbi.md) konfigurieren, um diese zusätzlichen Visualisierungen zu nutzen.
+[Power BI](https://powerbi.microsoft.com) ist ein Business Analytics-Dienst, der interaktive Visualisierungen für eine Vielzahl von Datenquellen bereitstellt. Es handelt sich dabei um eine effektive Methode, um Daten anderen Personen innerhalb und außerhalb Ihrer Organisation zur Verfügung stellen. Sie können Power BI für den [automatischen Import von Protokolldaten aus Azure Monitor](./logs/log-powerbi.md) konfigurieren, um diese zusätzlichen Visualisierungen zu nutzen.
 
 
 ![Power BI](media/overview/power-bi.png)

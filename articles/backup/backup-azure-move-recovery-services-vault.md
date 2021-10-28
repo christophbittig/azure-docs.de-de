@@ -4,12 +4,12 @@ description: Hier finden Sie Anweisungen zum Verschieben eines Recovery Services
 ms.topic: conceptual
 ms.date: 09/24/2021
 ms.custom: references_regions
-ms.openlocfilehash: d206e0bf136a49b12f60079708aea6dbe39f42ff
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: edd15e6b32911c76a54bbe852af4236ba12250f5
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129060530"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130264767"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Verschieben eines Recovery Services-Tresors zwischen Azure-Abonnements und Ressourcengruppen
 
@@ -23,7 +23,7 @@ Alle öffentlichen und souveränen Regionen werden unterstützt, mit Ausnahme vo
 
 - Während des Verschiebens des Tresors zwischen den Ressourcengruppen sind sowohl die Quell- als auch die Zielgruppen gesperrt und verhindern das Schreiben und Löschen. Weitere Informationen finden Sie in [diesem Artikel](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 - Nur das Administratorabonnement verfügt über die Berechtigungen, einen Tresor zu verschieben.
-- Beim Verschieben von Tresoren zwischen Abonnements muss sich das Zielabonnement in einem aktivierten Status im selben Mandanten wie das Quellabonnement befinden. Informationen zum Verschieben eines Tresors in ein anderes Azure AD-Verzeichnis finden Sie unter [Übertragen von Abonnements in ein anderes Verzeichnis](../role-based-access-control/transfer-subscription.md) und in den [häufig gestellten Fragen zum Recovery Services-Tresor](/azure/backup/backup-azure-backup-faq#recovery-services-vault).
+- Beim Verschieben von Tresoren zwischen Abonnements muss sich das Zielabonnement in einem aktivierten Status im selben Mandanten wie das Quellabonnement befinden. Informationen zum Verschieben eines Tresors in ein anderes Azure AD-Verzeichnis finden Sie unter [Übertragen von Abonnements in ein anderes Verzeichnis](../role-based-access-control/transfer-subscription.md) und in den [häufig gestellten Fragen zum Recovery Services-Tresor](./backup-azure-backup-faq.yml).
 - Sie benötigen die Berechtigung zum Ausführen der Schreibvorgänge in der Zielressourcengruppe.
 - Das Verschieben des Tresors ändert nur die Ressourcengruppe. Der Recovery Services-Tresor befindet sich an demselben Speicherort und kann nicht geändert werden.
 - Sie können nur einen Recovery Services-Tresor pro Region verschieben.
@@ -111,33 +111,33 @@ Azure Resource Mover unterstützt die Verschiebung von mehreren Ressourcen über
 Die ausführlichen Schritte dazu finden Sie in den folgenden Abschnitten.
 
 >[!Note]
->Azure Backup unterstützt derzeit nicht das Verschieben von Sicherungsdaten aus einem Recovery Services-Tresor in einen anderen. Um Ihre Ressource in der neuen Region zu schützen, muss die Ressource registriert und in einem neuen/vorhandenen Tresor in der neuen Region gespeichert werden. Wenn Sie Ihre Ressourcen aus einer Region in eine andere verschieben, können Sicherungsdaten in Ihren vorhandenen Recovery Services-Tresoren in der älteren Region entsprechend Ihren Anforderungen aufbewahrt oder gelöscht werden. Wenn Sie Daten in den alten Tresoren beibehalten möchten, entstehen entsprechend Sicherungsgebühren.
+>Azure Backup unterstützt derzeit nicht das Verschieben von Sicherungsdaten aus einem Recovery Services-Tresor in einen anderen. Um Ihre Ressource in der neuen Region zu schützen, muss die Ressource registriert und in einem neuen/vorhandenen Tresor in der neuen Region gespeichert werden. Wenn Sie Ihre Ressourcen von einer Region in eine andere verschieben, können die Sicherungsdaten in den vorhandenen Recovery Services-Datenspeichern in der älteren Region je nach Bedarf beibehalten oder gelöscht werden. Wenn Sie Daten in den alten Tresoren beibehalten möchten, entstehen entsprechend Sicherungsgebühren.
 
 ### <a name="back-up-azure-virtual-machine-after-moving-across-regions"></a>Sichern eines virtuellen Azure-Computers nach regionsübergreifendem Verschieben
 
-Wenn ein virtueller Azure-Computer (VM), der durch einen Recovery Services-Tresor geschützt wurde, von einer Region in eine andere verschoben wird, kann er nicht mehr in den älteren Tresor gesichert werden. Für die Sicherungen im alten Tresor treten die Fehler **BCMV2VMNotFound** oder [**ResourceNotFound**](./backup-azure-vms-troubleshoot.md#320001-resourcenotfound---could-not-perform-the-operation-as-vm-no-longer-exists--400094-bcmv2vmnotfound---the-virtual-machine-doesnt-exist--an-azure-virtual-machine-wasnt-found) auf. Informationen dazu, wie Sie Ihre VMs in der neuen Region schützen, finden Sie in den folgenden Abschnitten.
+Wenn ein virtueller Azure-Computer (VM), der durch einen Recovery Services-Tresor geschützt wurde, von einer Region in eine andere verschoben wird, kann er nicht mehr in den älteren Tresor gesichert werden. Für die Sicherungen im alten Tresor treten die Fehler **BCMV2VMNotFound** oder [**ResourceNotFound**](./backup-azure-vms-troubleshoot.md#320001-resourcenotfound---could-not-perform-the-operation-as-vm-no-longer-exists--400094-bcmv2vmnotfound---the-virtual-machine-doesnt-exist--an-azure-virtual-machine-wasnt-found) auf. Informationen über den Schutz Ihrer VMs in der neuen Region finden Sie in den folgenden Abschnitten.
 
-#### <a name="prepare-to-move-azure-vms"></a>Vorbereitung der Verschiebung von Azure-VMs
+#### <a name="prepare-to-move-azure-vms"></a>Vorbereiten der Verschiebung von Azure-VMs
 
-Vergewissern Sie sich vor dem Verschieben einer VM, dass die folgenden Voraussetzungen erfüllt sind:
+Bevor Sie eine VM verschieben, stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind:
 
-1. Sehen Sie sich die [Voraussetzungen für die Verschiebung von VMs](/azure/resource-mover/tutorial-move-region-virtual-machines#prerequisites) an, und stellen Sie sicher, dass die VM für eine Verschiebung geeignet ist.
-1. [Wählen Sie die VM auf der Registerkarte **Sicherungselemente**](./backup-azure-delete-vault.md#delete-protected-items-in-the-cloud) im Dashboard des vorhandenen Tresors aus. Klicken Sie dann auf **Schutz beenden** und anschließend je nach Anforderungen auf „Daten beibehalten“ oder „Daten löschen“. Wenn die Sicherungsdaten für einen virtuellen Computer mit „Daten beibehalten“ beendet werden, bleiben die Wiederherstellungspunkte für immer erhalten und unterliegen keiner Richtlinie. Dadurch wird sichergestellt, dass Ihre Sicherungsdaten immer für die Wiederherstellung verfügbar sind.
+1. Lesen Sie die [Voraussetzungen für die VM-Verschiebung](../resource-mover/tutorial-move-region-virtual-machines.md#prerequisites) und stellen Sie sicher, dass die VM für die Verschiebung geeignet ist.
+1. Wählen Sie die VM auf der [Registerkarte **„Sicherungselemente“** des Dashboards](./backup-azure-delete-vault.md#delete-protected-items-in-the-cloud) des vorhandenen Tresors aus und wählen Sie **„Stoppschutz“** , gefolgt von „Daten aufbewahren/löschen“ gemäß Ihren Anforderungen. Wenn die Sicherungsdaten für einen virtuellen Computer mit „Daten beibehalten“ beendet werden, bleiben die Wiederherstellungspunkte für immer erhalten und unterliegen keiner Richtlinie. Dadurch wird sichergestellt, dass Ihre Sicherungsdaten immer für die Wiederherstellung verfügbar sind.
    >[!Note]
    >Für die Beibehaltung von Daten im älteren Tresor werden Sicherungsgebühren berechnet. Wenn Sie Daten nicht mehr aufbewahren möchten, um die Abrechnung zu vermeiden, müssen Sie die beibehaltenen Sicherungsdaten mithilfe der Option [Daten löschen](./backup-azure-manage-vms.md#delete-backup-data) löschen.
-1. Stellen Sie sicher, dass die VMs aktiviert sind. Alle VM-Datenträger, die in der Zielregion verfügbar sein müssen, müssen angefügt und auf den VMs initialisiert sein.
-1. Vergewissern Sie sich, dass die VMs über die neuesten vertrauenswürdigen Stammzertifikate sowie eine aktualisierte Zertifikatssperrliste (Certificate Revocation List, CRL) verfügen. Dazu gehen Sie wie folgt vor:
+1. Stellen Sie sicher, dass die VMs aktiviert sind. Alle Datenträger der VMs, die in der Zielregion verfügbar sein müssen, werden angeschlossen und in den VMs initialisiert.
+1. Stellen Sie sicher, dass die VMs über die neuesten vertrauenswürdigen Stammzertifikate und eine aktualisierte Zertifikatswiderrufsliste (CRL) verfügen. Dazu gehen Sie wie folgt vor:
    - Installieren Sie auf Windows-VMs die aktuellen Windows-Updates.
-   - Befolgen Sie bei Linux-VMs die Anweisungen des Distributors, um sicherzustellen, dass die Computer über die aktuellen Zertifikate und die aktuelle CRL verfügen.
+   - Beachten Sie bei Linux-VMs die Anleitung des Distributors, um sicherzustellen, dass die Rechner über die neuesten Zertifikate und CRLs verfügen.
 1. Erlauben Sie die ausgehende Verbindung von virtuellen Computern:
-   - Wenn Sie einen URL-basierten Firewallproxy zum Steuern der ausgehenden Konnektivität verwenden, lassen Sie den Zugriff auf [diese URLs](/azure/resource-mover/support-matrix-move-region-azure-vm#url-access) zu.
-   - Wenn Sie Regeln für Netzwerksicherheitsgruppen (NSG) zum Steuern der ausgehenden Konnektivität verwenden, erstellen Sie [diese Diensttagregeln](/azure/resource-mover/support-matrix-move-region-azure-vm#nsg-rules).
+   - Wenn Sie einen URL-basierten Firewall-Proxy zur Kontrolle der ausgehenden Konnektivität verwenden, erlauben Sie den Zugriff auf [diese URLs](../resource-mover/support-matrix-move-region-azure-vm.md#url-access).
+   - Wenn Sie Regeln der Netzwerksicherheitsgruppe (NSG) verwenden, um die ausgehende Konnektivität zu kontrollieren, erstellen Sie [diese Service-Tag-Regeln](../resource-mover/support-matrix-move-region-azure-vm.md#nsg-rules).
 
 #### <a name="move-azure-vms"></a>Verschieben von virtuellen Azure-Computern
 
 Verschieben Sie Ihren virtuellen Computer mithilfe von [Azure Resource Mover](../resource-mover/tutorial-move-region-virtual-machines.md) in eine neue Region.
 
-#### <a name="protect-azure-vms-using-azure-backup"></a>Schützen von Azure-VMs mit Azure Backup
+#### <a name="protect-azure-vms-using-azure-backup"></a>Schützen Sie Azure-VMs mit Azure Backup
 
 Beginnen Sie mit dem Schützen Ihres virtuellen Computers in einem neuen oder vorhandenen Recovery Services-Tresor in der neuen Region. Wenn Sie ihre älteren Sicherungen wiederherstellen müssen, können Sie dies weiterhin über Ihren alten Recovery Services-Tresor durchführen, sofern Sie sich für die Beibehaltung der Sicherungsdaten entschieden haben. 
 
@@ -145,23 +145,23 @@ Mit den oben genannten Schritten soll sichergestellt werden, dass Ihre Ressource
 
 ### <a name="back-up-azure-file-share-after-moving-across-regions"></a>Sichern der Azure-Dateifreigabe nach regionsübergreifendem Verschieben
 
-Azure Backup bietet heute [eine Lösung zur Verwaltung von Momentaufnahmen](./backup-afs.md) für Azure Files. Dies bedeutet, dass Sie die Dateifreigabedaten nicht in die Recovery Services-Tresore verschieben. Da die Momentaufnahmen nicht mit Ihrem Speicherkonto verschoben werden, verfügen Sie nur über alle Sicherungen (Momentaufnahmen) tatsächlich nur in der vorhandenen Region, und sie werden durch den vorhandenen Tresor geschützt. Wenn Sie jedoch Ihre Storage-Konten zusammen mit den Dateifreigaben in eine andere Region verschieben oder neue Dateifreigaben in der neuen Region erstellen, lesen Sie die folgenden Abschnitte, um sicherzustellen, dass die Konten und Freigaben durch Azure Backup geschützt werden.
+Azure Backup bietet heute [eine Lösung zur Verwaltung von Momentaufnahmen](./backup-afs.md) für Azure Files. Dies bedeutet, dass Sie die Dateifreigabedaten nicht in die Recovery Services-Tresore verschieben. Da die Momentaufnahmen nicht mit Ihrem Speicherkonto verschoben werden, verfügen Sie nur über alle Sicherungen (Momentaufnahmen) tatsächlich nur in der vorhandenen Region, und sie werden durch den vorhandenen Tresor geschützt. Wenn Sie jedoch Ihre Speicherkonten zusammen mit den Dateifreigaben über Regionen hinweg verschieben oder neue Dateifreigaben in der neuen Region erstellen, beachten Sie die folgenden Abschnitte, um sicherzustellen, dass sie durch Azure Backup geschützt sind.
 
-#### <a name="prepare-to-move-azure-file-share"></a>Vorbereiten der Verschiebung einer Azure-Dateifreigabe
+#### <a name="prepare-to-move-azure-file-share"></a>Vorbereiten des Umzugs von Azure-Dateifreigabe
 
-Stellen Sie vor dem Verschieben des Storage-Kontos sicher, dass die folgenden Voraussetzungen erfüllt sind:
+Bevor Sie das Speicherkonto verschieben, stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind:
 
-1.  Sehen Sie sich die [Voraussetzungen für das Verschieben von Storage-Konten](/azure/storage/common/storage-account-move?tabs=azure-portal#prerequisites) an. 
-1. Exportieren und Ändern Sie eine Resource Move-Vorlage. Weitere Informationen finden Sie [im Abschnitt zur Vorbereitung eines Storage-Kontos für das Verschieben in eine andere Region](/azure/storage/common/storage-account-move?tabs=azure-portal#prepare).
+1.  Siehe die [Voraussetzungen zum Verschieben des Speicherkontos](../storage/common/storage-account-move.md?tabs=azure-portal#prerequisites). 
+1. Exportieren und ändern Sie eine Vorlage für die Ressourcenverschiebung. Weitere Informationen finden Sie unter [Speicherkonto für Regionsumzug](../storage/common/storage-account-move.md?tabs=azure-portal#prepare) vorbereiten.
 
 #### <a name="move-azure-file-share"></a>Verschieben einer Azure-Dateifreigabe
 
-Sehen Sie sich den Artikel [Verschieben eines Azure Storage-Kontos in eine andere Region](../storage/common/storage-account-move.md) an, um zu erfahren, wie Sie Ihre Storage-Konten zusammen mit den darin enthaltenen Azure-Dateifreigaben von einer Region in eine andere verschieben.
+Um Ihre Speicherkonten zusammen mit den darin enthaltenen Azure-Dateifreigaben von einer Region in eine andere zu verschieben, siehe [„Verschieben eines Azure-Speicherkontos in eine andere Region“](../storage/common/storage-account-move.md).
 
 >[!Note]
 >Wenn die Azure-Dateifreigabe regionsübergreifend kopiert wird, werden die zugehörigen Momentaufnahmen nicht mit ihr verschoben. Um die Momentaufnahmedaten in die neue Region zu verschieben, müssen Sie die einzelnen Dateien und Verzeichnisse der Momentaufnahmen mit [AzCopy](../storage/common/storage-use-azcopy-files.md#copy-all-file-shares-directories-and-files-to-another-storage-account) in das Speicherkonto in der neuen Region verschieben.
 
-#### <a name="protect-azure-file-share-using-azure-backup"></a>Schützen einer Azure-Dateifreigabe mit Azure Backup
+#### <a name="protect-azure-file-share-using-azure-backup"></a>Schützen einer Azure-Dateifreigabe mit „Azure Backup“
 
 Beginnen Sie mit dem Schützen der Azure-Dateifreigabe, die in das neue Speicherkonto in einem neuen oder vorhandenen Recovery Services-Tresor in der neuen Region kopiert wurde.  
 
@@ -169,31 +169,31 @@ Nachdem die Azure-Dateifreigabe in die neue Region kopiert wurde, können Sie de
    
 Dadurch wird sichergestellt, dass Ihre Momentaufnahmen immer für die Wiederherstellung aus dem älteren Tresor verfügbar sind. 
  
-### <a name="back-up-sql-serversap-hana-in-azure-vm-after-moving-across-regions"></a>Sichern von SQL Server/SAP HANA auf einer Azure-VM nach dem Verschieben in eine andere Region
+### <a name="back-up-sql-serversap-hana-in-azure-vm-after-moving-across-regions"></a>Sichern von SQL Server/SAP HANA in einer Azure-VM nach einer regionsübergreifenden Verschiebung
 
-Wenn Sie einen virtuellen Computer mit SQL- oder SAP HANA-Servern in eine andere Region verschieben, können die SQL- und SAP HANA-Datenbanken auf diesen VMs nicht mehr im Tresor der früheren Region gesichert werden. In den folgenden Abschnitten erfahren Sie, wie Sie die auf einer Azure-VM in der neuen Region ausgeführten SQL Server-Instanzen und SAP HANA-Server schützen.
+Wenn Sie einen virtuellen Computer mit SQL- oder SAP HANA-Servern in eine andere Region verschieben, können die SQL- und SAP HANA-Datenbanken auf diesen VMs nicht mehr im Tresor der früheren Region gesichert werden. Um die SQL- und SAP HANA-Server zu schützen, die in Azure VM in der neuen Region laufen, lesen Sie die folgenden Abschnitte.
 
-#### <a name="prepare-to-move-sql-serversap-hana-in-azure-vm"></a>Vorbereiten der Verschiebung von SQL Server oder SAP HANA auf einer Azure-VM
+#### <a name="prepare-to-move-sql-serversap-hana-in-azure-vm"></a>Vorbereiten der Verlagerung von SQL Server/SAP HANA in Azure VM
 
-Stellen Sie vor dem Verschieben von auf einer VM ausgeführten SQL Server- oder SAP HANA-Instanzen in eine neue Region sicher, dass die folgenden Voraussetzungen erfüllt sind:
+Bevor Sie SQL Server/SAP HANA, das in einer VM ausgeführt wird, in eine neue Region verschieben, müssen die folgenden Voraussetzungen erfüllt sein:
 
-1. Sehen Sie sich die [Voraussetzungen für die Verschiebung von VMs](/azure/resource-mover/tutorial-move-region-virtual-machines#prerequisites) an, und stellen Sie sicher, dass die VM für eine Verschiebung geeignet ist. 
-1. Wählen Sie die VM auf der Registerkarte [Sicherungselemente](./backup-azure-delete-vault.md#delete-protected-items-in-the-cloud) im Dashboard des vorhandenen Tresors aus, und wählen Sie dann _die Datenbanken_ aus, für die die Sicherung beendet werden muss. Wählen Sie **Schutz beenden** und dann entsprechend Ihren Anforderungen „Daten aufbewahren/löschen“ aus. Wenn die Sicherungsdaten mit „Daten beibehalten“ beendet werden, bleiben die Wiederherstellungspunkte für immer erhalten und unterliegen keiner Richtlinie. Dadurch wird sichergestellt, dass Ihre Sicherungsdaten immer für die Wiederherstellung verfügbar sind.
+1. Lesen Sie die [Voraussetzungen für die VM-Verschiebung](../resource-mover/tutorial-move-region-virtual-machines.md#prerequisites) und stellen Sie sicher, dass die VM für die Verschiebung geeignet ist. 
+1. Wählen Sie die VM auf der [Registerkarte Backup Items](./backup-azure-delete-vault.md#delete-protected-items-in-the-cloud) des Dashboards des vorhandenen Tresors aus und wählen Sie _die Datenbanken_, für die das Backup gestoppt werden muss. Wählen Sie **Schutz beenden** und dann entsprechend Ihren Anforderungen „Daten aufbewahren/löschen“ aus. Wenn die Sicherungsdaten mit „Daten beibehalten“ beendet werden, bleiben die Wiederherstellungspunkte für immer erhalten und unterliegen keiner Richtlinie. Dadurch wird sichergestellt, dass Ihre Sicherungsdaten immer für die Wiederherstellung verfügbar sind.
    >[!Note]
    >Für die Beibehaltung von Daten im älteren Tresor werden Sicherungsgebühren berechnet. Wenn Sie Daten nicht mehr aufbewahren möchten, um die Abrechnung zu vermeiden, müssen Sie die beibehaltenen Sicherungsdaten mithilfe der Option [Daten löschen](./backup-azure-manage-vms.md#delete-backup-data) löschen.
-1. Stellen Sie sicher, dass die zu verschiebenden VMs aktiviert sind. Alle VM-Datenträger, die in der Zielregion verfügbar sein müssen, werden angefügt und auf den VMs initialisiert.
-1. Vergewissern Sie sich, dass die VMs über die neuesten vertrauenswürdigen Stammzertifikate sowie eine aktualisierte Zertifikatssperrliste (Certificate Revocation List, CRL) verfügen. Dazu gehen Sie wie folgt vor:
+1. Stellen Sie sicher, dass die zu verschiebenden VMs eingeschaltet sind. Alle Festplatten der VMs, die in der Zielregion verfügbar sein müssen, werden angeschlossen und in den VMs initialisiert.
+1. Stellen Sie sicher, dass die VMs über die neuesten vertrauenswürdigen Stammzertifikate und eine aktualisierte Zertifikatswiderrufsliste (CRL) verfügen. Dazu gehen Sie wie folgt vor:
    - Installieren Sie auf Windows-VMs die aktuellen Windows-Updates.
-   - Befolgen Sie bei Linux-VMs die Anweisungen des Distributors, und stellen Sie sicher, dass die Computer über die aktuellen Zertifikate und die aktuelle CRL verfügen.
+   - Beachten Sie bei Linux-VMs die Anleitung des Distributors und stellen Sie sicher, dass die Rechner über die neuesten Zertifikate und CRLs verfügen.
 1. Erlauben Sie die ausgehende Verbindung von virtuellen Computern:
-   - Wenn Sie einen URL-basierten Firewallproxy zum Steuern der ausgehenden Konnektivität verwenden, lassen Sie den Zugriff auf [diese URLs](/azure/resource-mover/support-matrix-move-region-azure-vm#url-access) zu.
-   - Wenn Sie Regeln für Netzwerksicherheitsgruppen (NSG) zum Steuern der ausgehenden Konnektivität verwenden, erstellen Sie [diese Diensttagregeln](/azure/resource-mover/support-matrix-move-region-azure-vm#nsg-rules).
+   - Wenn Sie einen URL-basierten Firewall-Proxy zur Kontrolle der ausgehenden Konnektivität verwenden, erlauben Sie den Zugriff auf [diese URLs](../resource-mover/support-matrix-move-region-azure-vm.md#url-access).
+   - Wenn Sie Regeln der Netzwerksicherheitsgruppe (NSG) verwenden, um die ausgehende Konnektivität zu kontrollieren, erstellen Sie [diese Service-Tag-Regeln](../resource-mover/support-matrix-move-region-azure-vm.md#nsg-rules).
 
-#### <a name="move-sql-serversap-hana-in-azure-vm"></a>Verschieben von SQL Server oder SAP HANA auf einer Azure-VM
+#### <a name="move-sql-serversap-hana-in-azure-vm"></a>SQL Server/SAP HANA in Azure VM verschieben
 
 Verschieben Sie Ihren virtuellen Computer mithilfe von [Azure Resource Mover](../resource-mover/tutorial-move-region-virtual-machines.md) in eine neue Region.
 
-#### <a name="protect-sql-serversap-hana-in-azure-vm-using-azure-backup"></a>Schützen von SQL Server oder SAP HANA auf einer Azure-VM mit Azure Backup
+#### <a name="protect-sql-serversap-hana-in-azure-vm-using-azure-backup"></a>Schützen Sie SQL Server/SAP HANA in Azure VM mit Azure Backup
 
 Beginnen Sie mit dem Schützen des virtuellen Computers in einem neuen/vorhandenen Recovery Services-Tresor in der neuen Region. Wenn Sie ihre älteren Sicherungen wiederherstellen müssen, ist dies über Ihren alten Recovery Services-Tresor weiterhin möglich.
  

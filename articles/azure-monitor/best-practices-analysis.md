@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/18/2021
-ms.openlocfilehash: 3f4b671237c842c156e06281926be02ee3cdeb4a
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: c9f46404e1984c7f9eb4e8cea231229f31ffa8ad
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130181644"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130231663"
 ---
 # <a name="azure-monitor-best-practices---analyze-and-visualize-data"></a>Best Practices für Azure Monitor: Analysieren und Visualisieren von Daten
 Dieser Artikel ist Teil des Szenarios [Empfehlungen zum Konfigurieren von Azure Monitor](best-practices.md). Er beschreibt in Azure Monitor integrierte Features zum Analysieren gesammelter Daten sowie Optionen zum Erstellen benutzerdefinierter Visualisierungen, um die Anforderungen verschiedener Benutzer in Ihrer Organisation zu erfüllen. Visualisierungen wie Diagramme und Grafiken können Ihnen die Analyse Ihrer Überwachungsdaten erleichtern, sodass Sie Detailinformationen zu Problemen anzeigen und Muster identifizieren können.
@@ -64,7 +64,7 @@ Ausführliche Informationen zum Erstellen eines Dashboards, das Daten aus Azure 
 
 
 ## <a name="power-bi"></a>Power BI
-[Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/) ist hilfreich bei der Erstellung von Dashboards und Berichte für das Business sowie von Berichten zur Analyse langfristiger KPI-Trends. Sie können [die Ergebnisse einer Protokollabfrage in ein Power BI-Dataset importieren](visualize/powerbi.md) und dann von dessen Features profitieren, z. B. dem Kombinieren von Daten aus verschiedenen Quellen oder dem Freigeben von Berichten im Web und auf mobilen Geräten.
+[Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-get-started/) ist hilfreich bei der Erstellung von Dashboards und Berichte für das Business sowie von Berichten zur Analyse langfristiger KPI-Trends. Sie können [die Ergebnisse einer Protokollabfrage in ein Power BI-Dataset importieren](./logs/log-powerbi.md) und dann von dessen Features profitieren, z. B. dem Kombinieren von Daten aus verschiedenen Quellen oder dem Freigeben von Berichten im Web und auf mobilen Geräten.
 
 ![Screenshot: Power BI-Beispielbericht für IT-Vorgänge.](media/visualizations/power-bi.png)
 
@@ -105,4 +105,4 @@ Anschließend können Sie anhand von Metrik- und Protokolldaten in Azure Monitor
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Unter [Warnungen und automatisierte Aktionen](best-practices-alerts.md) erfahren Sie, wie Sie Warnungen und automatisierte Aktionen von Azure Monitor definieren. 
+- Unter [Warnungen und automatisierte Aktionen](best-practices-alerts.md) erfahren Sie, wie Sie Warnungen und automatisierte Aktionen von Azure Monitor definieren.

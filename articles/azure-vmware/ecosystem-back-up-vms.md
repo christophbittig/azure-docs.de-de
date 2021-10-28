@@ -3,12 +3,12 @@ title: Sicherungslösungen für virtuelle Azure VMware Solution-Computer
 description: Hier finden Sie Informationen zu führenden Sicherungs- und Wiederherstellungslösungen für Ihre virtuellen Azure VMware Solution-Computer.
 ms.topic: how-to
 ms.date: 04/21/2021
-ms.openlocfilehash: 76231aaed4b363daf20abe54a78f84a9e0740da4
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: 4febf70d473f74b28356310a7c6704c41e3cb1b9
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113431625"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130252286"
 ---
 # <a name="backup-solutions-for-azure-vmware-solution-virtual-machines-vms"></a>Sicherungslösungen für virtuelle Azure VMware Solution-Computer (virtual machines, VMs)
 
@@ -19,7 +19,7 @@ Unsere Sicherungspartner verfügen über führende Sicherungs- und Wiederherstel
 Der sicherungsbezogene Netzwerkdatenverkehr zwischen Azure VMware Solution-VMs und dem Sicherungsrepository in Azure wird über eine Verbindung mit hoher Bandbreite und geringer Wartezeit abgewickelt. Der Replikationsdatenverkehr zwischen Regionen verläuft über das interne Azure-Backplanenetzwerk und verringert so Bandbreitenkosten für Benutzer.
 
 >[!NOTE]
->Häufig gestellte Fragen finden Sie in unseren [häufig gestellten Fragen zu Sicherungslösungen von Drittanbietern](/azure/azure-vmware/faq#third-party-backup-and-recovery).
+>Häufig gestellte Fragen finden Sie in unseren [häufig gestellten Fragen zu Sicherungslösungen von Drittanbietern](./faq.yml).
 
 
 

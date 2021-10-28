@@ -3,12 +3,12 @@ title: Sichern einer SAP HANA-Datenbank mit Azure Backup in Azure
 description: In diesem Artikel erfahren Sie, wie Sie eine SAP HANA-Datenbanken mit dem Azure Backup-Dienst auf virtuellen Azure-Computern sichern können.
 ms.topic: conceptual
 ms.date: 09/27/2021
-ms.openlocfilehash: 9b78a6ed1e36b925bc5d0205effc00eb1b868f5f
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: 472a83ddac9b88179f583868ba4e19136b147154
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129084168"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130236040"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Computern
 
@@ -44,8 +44,8 @@ In der folgenden Tabelle sind die verschiedenen Alternativen zum Herstellen der 
 | FQDN-Tags von Azure Firewall          | Einfachere Verwaltung, da die erforderlichen FQDNs automatisch verwaltet werden | Nur mit Azure Firewall möglich                         |
 | Zugriff auf Dienst-FQDNs/-IPs | Keine zusätzlichen Kosten   <br><br>  Verwendung mit allen Netzwerksicherheits-Appliances und Firewalls möglich | Möglicherweise ist ein umfassender Satz von IP-Adressen oder FQDNs erforderlich.   |
 | Verwenden eines HTTP-Proxys                 | Zentraler Internetzugriffspunkt für VMs                       | Zusätzliche Kosten für das Ausführen einer VM mit der Proxysoftware         |
-| [Virtual Network-Dienstendpunkt](/azure/virtual-network/virtual-network-service-endpoints-overview)    |     Kann für den Azure Storage (= Recovery Services-Tresor) verwendet werden.     <br><br>     Bietet einen großen Vorteil für die Optimierung der Leistung des Datenverkehrs auf Datenebene.          |         Kann nicht für Azure AD, Azure Backup verwendet werden.    |
-| Virtuelles Netzwerkgerät      |      Kann für Azure Storage, Azure AD, Azure Backup verwendet werden. <br><br> **Datenebene**   <ul><li>      Azure Storage: `*.blob.core.windows.net`, `*.queue.core.windows.net`  </li></ul>   <br><br>     **Verwaltungsebene**  <ul><li>  Azure AD: Lassen Sie den Zugriff auf FQDNs zu, die in den Abschnitten 56 und 59 von [Microsoft 365 Common und Office Online](/microsoft-365/enterprise/urls-and-ip-address-ranges?view=o365-worldwide&preserve-view=true#microsoft-365-common-and-office-online) beschrieben sind. </li><li>   Azure Backup-Dienst: `.backup.windowsazure.com` </li></ul> <br>Erfahren Sie mehr über [Azure Firewall-Diensttags](/azure/firewall/fqdn-tags#:~:text=An%20FQDN%20tag%20represents%20a%20group%20of%20fully,the%20required%20outbound%20network%20traffic%20through%20your%20firewall.).       |  Erhöht den Mehraufwand für den Datenverkehr auf Datenebene und verringert den Durchsatz bzw. die Leistung.  |
+| [Virtual Network-Dienstendpunkt](../virtual-network/virtual-network-service-endpoints-overview.md)    |     Kann für den Azure Storage (= Recovery Services-Tresor) verwendet werden.     <br><br>     Bietet einen großen Vorteil für die Optimierung der Leistung des Datenverkehrs auf Datenebene.          |         Kann nicht für Azure AD, Azure Backup verwendet werden.    |
+| Virtuelles Netzwerkgerät      |      Kann für Azure Storage, Azure AD, Azure Backup verwendet werden. <br><br> **Datenebene**   <ul><li>      Azure Storage: `*.blob.core.windows.net`, `*.queue.core.windows.net`  </li></ul>   <br><br>     **Verwaltungsebene**  <ul><li>  Azure AD: Lassen Sie den Zugriff auf FQDNs zu, die in den Abschnitten 56 und 59 von [Microsoft 365 Common und Office Online](/microsoft-365/enterprise/urls-and-ip-address-ranges?view=o365-worldwide&preserve-view=true#microsoft-365-common-and-office-online) beschrieben sind. </li><li>   Azure Backup-Dienst: `.backup.windowsazure.com` </li></ul> <br>Erfahren Sie mehr über [Azure Firewall-Diensttags](../firewall/fqdn-tags.md).       |  Erhöht den Mehraufwand für den Datenverkehr auf Datenebene und verringert den Durchsatz bzw. die Leistung.  |
 
 Weitere Informationen zur Verwendung dieser Optionen finden Sie unten:
 
@@ -96,9 +96,9 @@ Wenn Sie eine SAP HANA-Datenbank auf einem virtuellen Azure-Computer sichern, v
 
 ## <a name="enable-cross-region-restore"></a>Aktivieren der regionsübergreifenden Wiederherstellung
 
-Im Recovery Services-Tresor können Sie die regionsübergreifende Wiederherstellung aktivieren. Sie müssen die regionsübergreifende Wiederherstellung aktivieren, bevor Sie Sicherungen in Ihren HANA-Datenbanken konfigurieren und schützen. Erfahren Sie, [wie Sie die regionsübergreifende Wiederherstellung aktivieren](/azure/backup/backup-create-rs-vault#set-cross-region-restore).
+Im Recovery Services-Tresor können Sie die regionsübergreifende Wiederherstellung aktivieren. Sie müssen die regionsübergreifende Wiederherstellung aktivieren, bevor Sie Sicherungen in Ihren HANA-Datenbanken konfigurieren und schützen. Erfahren Sie, [wie Sie die regionsübergreifende Wiederherstellung aktivieren](./backup-create-rs-vault.md#set-cross-region-restore).
 
-[Erfahren Sie mehr über regionsübergreifende Wiederherstellung.](/azure/backup/backup-azure-recovery-services-vault-overview)
+[Erfahren Sie mehr über regionsübergreifende Wiederherstellung.](./backup-azure-recovery-services-vault-overview.md)
 
 ## <a name="discover-the-databases"></a>Ermitteln der Datenbanken
 

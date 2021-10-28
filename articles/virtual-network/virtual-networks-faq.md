@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 3ac75e3cf3ae08d9b7d49077cf54d05fdbabdbad
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 2a916c83cc3249b304648d090f739e66bb6b7dd3
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130039047"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130245586"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – häufig gestellte Fragen
 
@@ -51,7 +51,7 @@ Sie können die folgenden Tools zum Erstellen oder Konfigurieren eines VNet verw
 
 * Azure-Portal
 * PowerShell
-* Azure CLI
+* Azure-Befehlszeilenschnittstelle
 * Eine Netzwerkkonfigurationsdatei (NETCFG-Datei, nur für klassische VNets). Weitere Informationen finden Sie im Artikel [Konfigurieren eines Virtual Network mit einer Netzwerkkonfigurationsdatei](/previous-versions/azure/virtual-network/virtual-networks-using-network-configuration-file).
 
 ### <a name="what-address-ranges-can-i-use-in-my-vnets"></a>Welche Adressbereiche kann ich in meinen VNets verwenden?
@@ -113,10 +113,10 @@ Ja. Sie können ein Subnetz hinzufügen, entfernen, erweitern oder verkleinern, 
 Ja. Sie können die in einem VNet verwendeten CIDR-Blöcke hinzufügen, entfernen und ändern.
 
 ### <a name="if-i-am-running-my-services-in-a-vnet-can-i-connect-to-the-internet"></a>Kann eine Verbindung mit dem Internet hergestellt werden, wenn Dienste in einem VNET ausgeführt werden?
-Ja. Alle Dienste, die in einem VNET bereitgestellt werden, können eine ausgehende Verbindung mit dem Internet herstellen. Weitere Informationen zu ausgehenden Internetverbindungen in Azure finden Sie unter [Ausgehende Verbindungen in Azure](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Wenn Sie mit einer Ressource eine Verbindung in eingehender Richtung herstellen möchten, die über Resource Manager bereitgestellt wurde, muss der Ressource eine öffentliche IP-Adresse zugewiesen sein. Weitere Informationen zu öffentlichen IP-Adressen finden Sie unter [Erstellen, Ändern oder Löschen einer öffentlichen IP-Adresse](virtual-network-public-ip-address.md). Jeder in Azure bereitgestellte Azure-Clouddienst verfügt über eine öffentlich adressierbare, zugewiesene VIP-Adresse. Sie müssen Eingabeendpunkte für PaaS-Rollen und Endpunkte für virtuelle Computer definieren, damit diese Dienste Verbindungen über das Internet annehmen können.
+Ja. Alle Dienste, die in einem VNET bereitgestellt werden, können eine ausgehende Verbindung mit dem Internet herstellen. Weitere Informationen zu ausgehenden Internetverbindungen in Azure finden Sie unter [Ausgehende Verbindungen in Azure](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Wenn Sie mit einer Ressource eine Verbindung in eingehender Richtung herstellen möchten, die über Resource Manager bereitgestellt wurde, muss der Ressource eine öffentliche IP-Adresse zugewiesen sein. Weitere Informationen zu öffentlichen IP-Adressen finden Sie unter [Erstellen, Ändern oder Löschen einer öffentlichen IP-Adresse](./ip-services/virtual-network-public-ip-address.md). Jeder in Azure bereitgestellte Azure-Clouddienst verfügt über eine öffentlich adressierbare, zugewiesene VIP-Adresse. Sie müssen Eingabeendpunkte für PaaS-Rollen und Endpunkte für virtuelle Computer definieren, damit diese Dienste Verbindungen über das Internet annehmen können.
 
 ### <a name="do-vnets-support-ipv6"></a>Unterstützen VNets IPv6?
-Ja, VNets können „Nur-IPv4“ oder „Dual-Stack“ sein (IPv4 und IPv6).  Ausführliche Informationen finden Sie unter [Übersicht über IPv6 für Azure Virtual Networks](./ipv6-overview.md).
+Ja, VNets können „Nur-IPv4“ oder „Dual-Stack“ sein (IPv4 und IPv6).  Ausführliche Informationen finden Sie unter [Übersicht über IPv6 für Azure Virtual Networks](./ip-services/ipv6-overview.md).
 
 ### <a name="can-a-vnet-span-regions"></a>Kann sich ein VNet über mehrere Regionen erstrecken?
 Nein. Ein VNet ist auf eine Region beschränkt. Ein virtuelles Netzwerk erstreckt sich jedoch über Verfügbarkeitszonen. Weitere Informationen zu Verfügbarkeitszonen finden Sie unter [Overview of Availability Zones in Azure (Preview) (Übersicht über Verfügbarkeitszonen in Azure (Vorschauversion))](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Sie können mithilfe von Peering in virtuellen Netzwerken Verbindungen zwischen virtuellen Netzwerken in verschiedenen Regionen herstellen. Weitere Informationen finden Sie unter [Peering in virtuellen Netzwerken](virtual-network-peering-overview.md).
@@ -171,7 +171,7 @@ Nein. Eine private IP-Adresse kann nicht reserviert werden. Wenn eine private IP
 Das ist unterschiedlich. Wenn der virtuelle Computer über Resource Manager bereitgestellt wurde, ändern sie sich nicht, unabhängig davon, ob die IP-Adresse mit der statischen oder der dynamischen Zuordnungsmethode zugewiesen wurde. Wenn der virtuelle Computer über das klassische Bereitstellungsmodell bereitgestellt wurde, können sich dynamische IP-Adressen ändern, wenn ein virtueller Computer gestartet wird, nachdem er im beendeten Zustand (Zuordnung aufgehoben) war. Die Adresse eines virtuellen Computers, der über eins der beiden Bereitstellungsmodelle bereitgestellt wurde, wird freigegeben, wenn der virtuelle Computer gelöscht wird.
 
 ### <a name="can-i-manually-assign-ip-addresses-to-nics-within-the-vm-operating-system"></a>Kann ich IP-Adressen den NICs im VM-Betriebssystem manuell zuordnen?
-Ja, aber dies wird nur empfohlen, wenn es unbedingt notwendig ist, etwa beim Zuweisen mehrerer IP-Adressen zu einem virtuellen Computer. Ausführliche Informationen finden Sie unter [Zuweisen von mehreren IP-Adressen zu virtuellen Computern mithilfe des Azure-Portals](virtual-network-multiple-ip-addresses-portal.md#os-config). Falls sich die IP-Adresse ändert, die einer an einen virtuellen Computer angefügten Azure-NIC zugewiesen ist, und die IP-Adresse im VM-Betriebssystem sich davon unterscheidet, geht die Konnektivität zum virtuellen Computer verloren.
+Ja, aber dies wird nur empfohlen, wenn es unbedingt notwendig ist, etwa beim Zuweisen mehrerer IP-Adressen zu einem virtuellen Computer. Ausführliche Informationen finden Sie unter [Zuweisen von mehreren IP-Adressen zu virtuellen Computern mithilfe des Azure-Portals](./ip-services/virtual-network-multiple-ip-addresses-portal.md#os-config). Falls sich die IP-Adresse ändert, die einer an einen virtuellen Computer angefügten Azure-NIC zugewiesen ist, und die IP-Adresse im VM-Betriebssystem sich davon unterscheidet, geht die Konnektivität zum virtuellen Computer verloren.
 
 ### <a name="if-i-stop-a-cloud-service-deployment-slot-or-shutdown-a-vm-from-within-the-operating-system-what-happens-to-my-ip-addresses"></a>Was passiert mit meinen IP-Adressen, wenn ich einen Clouddienst-Bereitstellungsslot beende oder einen virtuellen Computer über das Betriebssystem herunterfahre?
 Nichts. Die IP-Adressen (öffentliche VIP, öffentlich und privat) bleiben dem Clouddienst-Bereitstellungsslot bzw. der VM zugewiesen.
@@ -195,7 +195,7 @@ Ja. Sie können Web-Apps in einem VNet bereitstellen. Dazu verwenden Sie eine AS
 
 * [App Service-Netzwerkfunktionen](../app-service/networking-features.md)
 * [Erstellen von Web-Apps in einer App Service-Umgebung](../app-service/environment/using.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-* [Integrieren Ihrer App in ein Azure Virtual Network](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+* [Integrieren Ihrer App in ein Azure Virtual Network](../app-service/overview-vnet-integration.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 * [Azure App Service – Zugriffseinschränkungen](../app-service/app-service-ip-restrictions.md)
 
 ### <a name="can-i-deploy-cloud-services-with-web-and-worker-roles-paas-in-a-vnet"></a>Können Cloud Services mit Web- und Workerrollen (PaaS) in einem VNet bereitgestellt werden?
@@ -426,8 +426,4 @@ Für die Gesamtzahl von VNET-Dienstendpunkten in einem virtuellen Netzwerk gilt 
 |Azure Data Lake Store V1|  100|
  
 >[!NOTE]
-> Die Grenzwerte unterlegen Änderungen im alleinigen Ermessen des Azure-Diensts. Details zu den einzelnen Diensten finden Sie in der jeweiligen Dokumentation. 
-
-
-
-
+> Die Grenzwerte unterlegen Änderungen im alleinigen Ermessen des Azure-Diensts. Details zu den einzelnen Diensten finden Sie in der jeweiligen Dokumentation.

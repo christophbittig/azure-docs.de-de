@@ -7,12 +7,12 @@ ms.subservice: disks
 ms.topic: how-to
 ms.date: 07/12/2018
 ms.author: rogarana
-ms.openlocfilehash: 57f0d5ed33bf662867ce7a4323f5f69d889e6653
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 10b4da09ae851a95fdbb267174540972357e028a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122688909"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130217607"
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Konvertieren einer Windows-VM von nicht verwalteten Datenträgern in verwaltete Datenträger
 
@@ -26,7 +26,7 @@ Wenn Sie über vorhandene virtuelle Windows-Computer (VMs) verfügen, die nicht 
 
 * Lesen Sie den Abschnitt [Planen der Migration zu Managed Disks](on-prem-to-azure.md#plan-for-the-migration-to-managed-disks).
 
-* Lesen Sie die [häufig gestellten Fragen zu Managed Disks](/azure/virtual-machines/faq-for-disks#migrate-to-managed-disks).
+* Lesen Sie die [häufig gestellten Fragen zu Managed Disks](../faq-for-disks.yml).
 
 [!INCLUDE [virtual-machines-common-convert-disks-considerations](../../../includes/virtual-machines-common-convert-disks-considerations.md)]
 

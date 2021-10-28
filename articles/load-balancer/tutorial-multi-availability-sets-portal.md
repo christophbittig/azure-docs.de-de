@@ -8,12 +8,12 @@ ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 08/12/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 920cfa4053fac692145f46cc5cff7d53381d900b
-ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
+ms.openlocfilehash: a59f97e41705e222bbbca6656cd67d2e692ec5fa
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122201797"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130232402"
 ---
 # <a name="tutorial-create-a-load-balancer-with-more-than-one-availability-set-in-the-backend-pool-using-the-azure-portal"></a>Tutorial: Erstellen eines Lastenausgleichs mit mehreren Verfügbarkeitsgruppen im Back-End-Pool mithilfe des Azure-Portals
 
@@ -159,7 +159,7 @@ In diesem Abschnitt wird ein Lastenausgleich für die virtuellen Computer erstel
 8. Wählen Sie für den **IP-Typ** die Option **IP-Adresse** aus.
 
     > [!NOTE]
-    > Weitere Informationen zu IP-Präfixen finden Sie unter [Präfix für öffentliche IP-Adressen](../virtual-network/public-ip-address-prefix.md).
+    > Weitere Informationen zu IP-Präfixen finden Sie unter [Präfix für öffentliche IP-Adressen](../virtual-network/ip-services/public-ip-address-prefix.md).
 
 9. Wählen Sie unter **Öffentliche IP-Adresse** die Option **Neu erstellen** aus.
 
@@ -184,13 +184,13 @@ In diesem Abschnitt wird ein Lastenausgleich für die virtuellen Computer erstel
 
 18. Wählen Sie unter **Virtuelle Netzwerke** die Option **myVNet** aus.
 
-19. Wählen Sie unter **Backend Pool Configuration** (Konfiguration des Back-End-Pools) die Option **NIC** oder **IP-Adresse** aus.
+19. Wählen Sie unter **Back-End-Pool-Konfiguration** die Option **Netzwerkschnittstelle** oder **IP-Adresse** aus.
 
 20. Wählen Sie unter **IP-Version** die Option **IPv4** oder **IPv6** aus.
 
 21. Wählen Sie **Hinzufügen**.
 
-22. Klicken Sie unten auf der Seite auf die Schaltfläche **Weiter: Regeln für eingehenden Datenverkehr**.
+22. Wählen Sie unten auf der Seite die Schaltfläche **Weiter: Regeln für eingehenden Datenverkehr** aus.
 
 23. Wählen Sie unter **Lastenausgleichsregel** auf der Registerkarte **Regeln für eingehenden Datenverkehr** die Option **+ Lastenausgleichsregel hinzufügen** aus.
 
@@ -200,12 +200,12 @@ In diesem Abschnitt wird ein Lastenausgleich für die virtuellen Computer erstel
     | ------- | ----- |
     | Name | Geben Sie **myHTTPRule** ein. |
     | IP-Version | Wählen Sie abhängig von Ihren Anforderungen **IPv4** oder **IPv6** aus. |
-    | Front-End-IP-Adresse | Wählen Sie **LoadBalancerFrontend** aus. |
+    | Front-End-IP-Adresse | Wählen Sie **LoadBalancerFrontEnd** aus. |
     | Protocol | Wählen Sie **TCP** aus. |
     | Port | Geben Sie **80** ein. |
     | Back-End-Port | Geben Sie **80** ein. |
     | Back-End-Pool | Wählen Sie **myBackendPool** aus. |
-    | Integritätstest | Wählen Sie **Neu erstellen**. </br> Geben Sie **myHealthProbe** in **Name** ein. </br> Wählen Sie für **Protokoll** die Option **HTTP** aus. </br> Übernehmen Sie die übrigen Standardeinstellungen, und wählen Sie **OK** aus. |
+    | Integritätstest | Wählen Sie **Neu erstellen**. </br> Geben Sie unter **Name** den Namen **myHealthProbe** ein. </br> Wählen Sie für **Protokoll** die Option **HTTP** aus. </br> Übernehmen Sie die übrigen Standardeinstellungen, und wählen Sie **OK** aus. |
     | Sitzungspersistenz | Wählen Sie **Keine**. |
     | Leerlaufzeitüberschreitung (Minuten) | Geben Sie **15** ein, oder wählen Sie diesen Wert aus. |
     | TCP-Zurücksetzung | Wählen Sie **Aktiviert**. |
@@ -440,4 +440,3 @@ In diesem Tutorial führen Sie Folgendes durch:
 Fahren Sie mit dem nächsten Artikel fort, um sich über das Erstellen einer regionsübergreifenden Azure Load Balancer-Instanz zu informieren:
 > [!div class="nextstepaction"]
 > [Erstellen eines regionsübergreifenden Lastenausgleichs](tutorial-cross-region-portal.md)
-

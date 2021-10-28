@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/12/2021
 ms.author: kgremban
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 5db37717356cd06b257867615623e24a1c36a335
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e9b47d3cfdb648a63156164f2341b05b4eeec4a1
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339723"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130234772"
 ---
 # <a name="azure-iot-edge-for-linux-on-windows-virtual-switch-creation"></a>Erstellung eines virtueller Switches für Azure IoT Edge für Linux unter Windows
 Azure IoT Edge für Linux unter Windows verwendet einen virtuellen Switch auf dem Hostcomputer, um mit dem virtuellen Computer zu kommunizieren. Windows Desktopversionen umfassen einen Standardswitch, der verwendet werden kann, Windows Server allerdings nicht. Bevor Sie IoT Edge für Linux unter Windows auf einem Windows Server-Gerät bereitstellen können, müssen Sie einen virtuellen Switch erstellen. Sie können bei Bedarf diesen Leitfaden verwenden, um einen benutzerdefinierten virtuellen Switch zu erstellen. 
@@ -26,7 +26,7 @@ In diesem Artikel erfahren Sie, wie Sie einen virtuellen Switch auf einem Window
 
 ## <a name="prerequisites"></a>Voraussetzungen
 - Ein Windows-Gerät. Informationen zu unterstützten Windows-Versionen finden Sie unter [Betriebssysteme](support.md#operating-systems).
-- Auf dem Windows-Gerät installierte Hyper-V-Rolle. Weitere Informationen zum Aktivieren von Hyper-V finden Sie unter [Installieren und Bereitstellen von Azure IoT Edge für Linux auf einem Windows Gerät](./how-to-install-iot-edge-on-windows.md?tabs=powershell#prerequisites).
+- Auf dem Windows-Gerät installierte Hyper-V-Rolle. Weitere Informationen zum Aktivieren von Hyper-V finden Sie unter [Installieren und Bereitstellen von Azure IoT Edge für Linux auf einem Windows Gerät](./how-to-provision-single-device-linux-on-windows-symmetric.md?tabs=powershell#prerequisites).
 
 ## <a name="create-virtual-switch"></a>Erstellen des virtuellen Switches 
 Die folgenden Schritte in diesem Abschnitt sind eine allgemeine Anleitung für die Erstellung eines virtuellen Switches. Stellen Sie sicher, dass die Konfiguration des virtuellen Switches mit Ihrer Netzwerkumgebung übereinstimmt.
@@ -99,4 +99,4 @@ Die folgenden Schritte in diesem Abschnitt sind eine allgemeine Anleitung für d
    ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Führen Sie die Schritte unter [Installieren und Bereitstellen von Azure IoT Edge für Linux auf einem Windows-Gerät](how-to-install-iot-edge-on-windows.md) aus, um ein Gerät mit IoT Edge für Linux unter Windows einzurichten.
+Führen Sie die Schritte unter [Installieren und Bereitstellen von Azure IoT Edge für Linux auf einem Windows-Gerät](how-to-provision-single-device-linux-on-windows-symmetric.md) aus, um ein Gerät mit IoT Edge für Linux unter Windows einzurichten.

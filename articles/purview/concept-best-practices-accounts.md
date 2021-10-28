@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: conceptual
 ms.date: 10/12/2021
-ms.openlocfilehash: a31e16ffd74808fb6b6232f0cbda3d447cfce513
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: c061fcd27cbafae20732f7ab1436b3a55a5a8dc0
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130007312"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130214812"
 ---
 # <a name="azure-purview-accounts-architectures-and-best-practices"></a>Azure Purview-Kontoarchitektur und bewährte Methoden  
 
@@ -64,7 +64,7 @@ Wenn Ihre Organisation über Daten in mehreren Regionen verfügt und Ihre Metada
 
 Purview kann derzeit nicht mit mehreren Mandanten verwendet werden. Wenn Azure-Datenquellen auf mehrere Azure-Abonnements in verschiedenen Azure Active Directory-Mandanten verteilt sind, empfiehlt es sich, für jeden Mandanten separate Azure Purview-Konten bereitzustellen. 
 
-Eine Ausnahme gilt für VM-basierte Datenquellen und Power BI-Mandanten. Weitere Informationen zum Scannen und Registrieren von mandantenübergreifendem Power BI in einem einzelnen Purview-Konto finden Sie unter [Registrieren und Überprüfen in einem mandantenübergreifenden Power BI-Szenario](/register-scan-power-bi-tenant#register-and-scan-a-cross-tenant-power-bi). 
+Eine Ausnahme gilt für VM-basierte Datenquellen und Power BI-Mandanten. Weitere Informationen zum Scannen und Registrieren von mandantenübergreifendem Power BI in einem einzelnen Purview-Konto finden Sie unter [Registrieren und Überprüfen in einem mandantenübergreifenden Power BI-Szenario](/azure/purview/register-scan-power-bi-tenant#register-and-scan-a-cross-tenant-power-bi). 
 
 :::image type="content" source="media/concept-best-practices/accounts-multiple-tenants.png" alt-text="Screenshot: mehrere Azure Purview-Konten zur Verwendung mit mehreren Mandanten"lightbox="media/concept-best-practices/accounts-multiple-tenants.png"::: 
 
@@ -74,7 +74,7 @@ Beachten Sie beim Definieren des Budgetmodells und der Azure Purview-Architektur
 
 Manche Organisationen verfügen über viele Geschäftseinheiten (Business Units, BUs), die separat arbeiten, und in einigen Fällen teilen sie sich nicht einmal die Abrechnung untereinander. In diesen Fällen erstellt die Organisation für jede BU eine Purview-Instanz. Dieses Modell ist nicht ideal, kann jedoch notwendig sein, insbesondere, da BUs häufig nicht bereit sind, die Azure-Abrechnung untereinander zu teilen. 
 
-Weitere Informationen zum Cloud Computing-Kostenmodell in Rückbuchungs- und Showbackmodellen finden Sie unter [Was ist Cloudbuchhaltung?](/cloud-adoption-framework/strategy/cloud-accounting).  
+Weitere Informationen zum Cloud Computing-Kostenmodell in Rückbuchungs- und Showbackmodellen finden Sie unter [Was ist Cloudbuchhaltung?](/azure/cloud-adoption-framework/strategy/cloud-accounting).  
 
 ## <a name="additional-considerations-and-recommendations"></a>Zusätzliche Überlegungen und Empfehlungen 
 

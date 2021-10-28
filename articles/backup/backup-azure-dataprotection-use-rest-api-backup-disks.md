@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Sicherungsvorgänge von Azu
 ms.topic: conceptual
 ms.date: 10/06/2021
 ms.assetid: 6050a941-89d7-4b27-9976-69898cc34cde
-ms.openlocfilehash: 6aeba0682839384b930dca0c2df34f109260335c
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: e01a0e528c3274ac6ddefe000311e2db7523bb5e
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129621025"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130264710"
 ---
 # <a name="back-up-azure-disks-using-azure-data-protection-via-rest-api"></a>Sichern von Azure-Datenträgern mit Azure Data Protection über die REST-API
 
@@ -51,7 +51,7 @@ Der Sicherungstresor erfordert Berechtigungen für den Datenträger, um Sicherun
 
 ### <a name="assign-permissions"></a>Zuweisen von Berechtigungen
 
-Sie müssen dem Tresor (dargestellt durch die Tresor-MSI) und dem relevanten Datenträger und/oder der Datenträgerressourcengruppe über die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) einige Berechtigungen zuweisen. Dazu können Sie das Azure-Portal oder die Befehlszeilenschnittstelle verwenden. Informationen zum Zuweisen verwandter Berechtigungen finden Sie unter [Voraussetzungen zum Konfigurieren der Sicherung verwalteter Datenträger](/azure/backup/backup-managed-disks-ps#assign-permissions).
+Sie müssen dem Tresor (dargestellt durch die Tresor-MSI) und dem relevanten Datenträger und/oder der Datenträgerressourcengruppe über die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) einige Berechtigungen zuweisen. Dazu können Sie das Azure-Portal oder die Befehlszeilenschnittstelle verwenden. Informationen zum Zuweisen verwandter Berechtigungen finden Sie unter [Voraussetzungen zum Konfigurieren der Sicherung verwalteter Datenträger](./backup-managed-disks-ps.md#assign-permissions).
 
 ### <a name="prepare-the-request-to-configure-backup"></a>Vorbereiten der Anforderung zum Konfigurieren der Sicherung
 
@@ -141,7 +141,7 @@ Die Anforderung zum Überprüfen auf Sicherung ist ein [asynchroner Vorgang](../
 
 Er gibt zwei Antworten zurück: „202 (Akzeptiert)“, wenn ein anderer Vorgang erstellt wird, und dann „200 (OK)“, wenn dieser Vorgang abgeschlossen ist.
 
-|Name  |type  |BESCHREIBUNG  |
+|Name  |Typ  |BESCHREIBUNG  |
 |---------|---------|---------|
 |202 – Akzeptiert     |         |  Der Vorgang wird asynchron abgeschlossen.      |
 |200 – OK     |   [OperationJobExtendedInfo](/rest/api/dataprotection/backup-instances/validate-for-backup#operationjobextendedinfo)      |     Akzeptiert    |
@@ -314,7 +314,7 @@ In unserem Beispiel ergibt die API Folgendes:
 
 Zum Erstellen einer Sicherungsinstanz werden die folgenden Komponenten des Anforderungstexts verwendet:
 
-|Name  |type  |BESCHREIBUNG  |
+|Name  |Typ  |BESCHREIBUNG  |
 |---------|---------|---------|
 |properties     |  [BackupInstance](/rest/api/dataprotection/backup-instances/create-or-update#backupinstance)       |     BackupInstanceResource-Eigenschaften    |
 
@@ -359,7 +359,7 @@ Die _Anforderung zum Erstellen einer Sicherungsinstanz_ ist ein [asynchroner Vor
 
 Es werden zwei Antworten zurückgegeben: „201 (Erstellt)“, wenn die Sicherungsinstanz erstellt wurde und der Schutz konfiguriert wird, und anschließend „200 (OK)“, wenn diese Konfiguration abgeschlossen ist.
 
-|Name  |type  |BESCHREIBUNG  |
+|Name  |Typ  |BESCHREIBUNG  |
 |---------|---------|---------|
 |201 – Erstellt   |   [Sicherungsinstanz](/rest/api/dataprotection/backup-instances/create-or-update#backupinstanceresource)      |  Die Sicherungsinstanz wurde erstellt, und der Schutz wird konfiguriert.      |
 |200 – OK     |    [Sicherungsinstanz](/rest/api/dataprotection/backup-instances/create-or-update#backupinstanceresource)     |     Der Schutz ist konfiguriert.    |
@@ -464,7 +464,7 @@ Der *DELETE*-Vorgang für den Schutz ist ein [asynchroner Vorgang](../azure-reso
 
 Er gibt zwei Antworten zurück: „202 (Akzeptiert)“, wenn ein anderer Vorgang erstellt wird, und dann „200 (OK)“, wenn dieser Vorgang abgeschlossen ist.
 
-|Name  |type  |BESCHREIBUNG  |
+|Name  |Typ  |BESCHREIBUNG  |
 |---------|---------|---------|
 |200 – OK     |         |  Status der Löschanforderung       |
 |202 – Akzeptiert     |         |     Zulässig    |

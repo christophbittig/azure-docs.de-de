@@ -17,12 +17,12 @@ ms.topic: how-to
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 31dd21a7c525bd1e5dc659b611f72c2c33c6f043
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 963c2d997bd75dadbeb6a37ea80d4237ea46cc35
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122345948"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130240659"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Installieren der Azure AD Connect Health-Agents
 
@@ -174,7 +174,7 @@ Standardmäßig ist die Überwachungsebene „Basic“ aktiviert. Weitere Inform
 3. Wählen Sie auf der rechten Seite die Option **Aktuelle Protokolle filtern** aus.
 4. Wählen Sie für **Ereignisquellen** den Eintrag **AD FS-Überwachung** aus.
 
-    Weitere Informationen zu Überwachungsprotokollen finden Sie unter [Fragen zum Betrieb](/azure/active-directory/hybrid/reference-connect-health-faq#operations-questions).
+    Weitere Informationen zu Überwachungsprotokollen finden Sie unter [Fragen zum Betrieb](./reference-connect-health-faq.yml).
 
     ![Screenshot des Fensters „Aktuelles Protokoll filtern“. Im Feld „Ereignisquellen“ ist die Option „AD FS-Überwachung“ ausgewählt.](./media/how-to-connect-health-agent-install/adfsaudit.png)
 

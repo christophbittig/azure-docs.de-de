@@ -9,12 +9,12 @@ ms.subservice: ip-services
 ms.topic: how-to
 ms.date: 06/28/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 68c400b2ec8ef85db494b85a04f8e70c32e0b6cb
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 1d3f8f07412e55da49c8502fde57b9e45dc4a786
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129368246"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130217409"
 ---
 # <a name="manage-a-public-ip-address-with-a-load-balancer"></a>Verwalten einer öffentlichen IP-Adresse mit einem Lastenausgleich
 
@@ -38,9 +38,9 @@ Schließlich werden in diesem Artikel die eindeutigen Aspekte der Verwendung öf
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein Azure-Konto mit einem aktiven Abonnement. [Erstellen Sie ein kostenloses Konto.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-- Zwei öffentliche IP-Adressen der Standard-SKU in Ihrem Abonnement. Die IP-Adressen dürfen keinen Ressourcen zugeordnet sein. Weitere Informationen zum Erstellen einer öffentlichen IP-Adresse der Standard-SKU finden Sie unter [Erstellen einer öffentlichen IP-Adresse: Azure-Portal](../../virtual-network/create-public-ip-portal.md).
+- Zwei öffentliche IP-Adressen der Standard-SKU in Ihrem Abonnement. Die IP-Adressen dürfen keinen Ressourcen zugeordnet sein. Weitere Informationen zum Erstellen einer öffentlichen IP-Adresse der Standard-SKU finden Sie unter [Erstellen einer öffentlichen IP-Adresse: Azure-Portal](./create-public-ip-portal.md).
     - Benennen Sie die neuen öffentlichen IP-Adressen für die Beispiele in diesem Artikel mit **myStandardPublicIP-1** und **myStandardPublicIP-2**.
-- Ein öffentliches IP-Präfix in Ihrem Abonnement. Weitere Informationen zum Erstellen eines Präfix für eine öffentliche IP-Adresse finden Sie unter [Erstellen eines Präfix für eine öffentliche IP-Adresse mithilfe des Azure-Portals](../../virtual-network/create-public-ip-prefix-portal.md).
+- Ein öffentliches IP-Präfix in Ihrem Abonnement. Weitere Informationen zum Erstellen eines Präfix für eine öffentliche IP-Adresse finden Sie unter [Erstellen eines Präfix für eine öffentliche IP-Adresse mithilfe des Azure-Portals](./create-public-ip-prefix-portal.md).
     - Für die Zwecke des Beispiels in diesem Artikel nennen Sie das neue öffentliche IP-Präfix **myPublicIPPrefixOutbound**.
 
 ## <a name="create-load-balancer-existing-public-ip"></a>Erstellen einer vorhandenen öffentlichen IP-Adresse für den Lastenausgleich
@@ -155,7 +155,7 @@ In diesem Abschnitt ändern Sie die Front-End-Konfiguration, die für ausgehende
 
 ## <a name="caveats"></a>Vorbehalte
 
-* Öffentliche Lastenausgleichsmodule im Standard-Tarif können statische IPv6-Adressen der Standard-SKU als öffentliche Front-End-IP-Adressen oder Präfixe von öffentlichen IP-Adressen verwenden.  Jede Bereitstellung muss einen dualen Stapel mit IPv4- und IPv6-Front-Ends aufweisen. Die NAT64-Übersetzung ist nicht verfügbar. Weitere Informationen finden Sie unter [Bereitstellen einer IPv6-Anwendung mit dualem Stapel in Azure – PowerShell](../../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md). (Hinweis: Öffentliche Lastenausgleichsmodule im Basic-Tarif können dynamische IPv6-Adressen der Basic-SKU als öffentliche Front-End-IP-Adressen verwenden.)
+* Öffentliche Lastenausgleichsmodule im Standard-Tarif können statische IPv6-Adressen der Standard-SKU als öffentliche Front-End-IP-Adressen oder Präfixe von öffentlichen IP-Adressen verwenden.  Jede Bereitstellung muss einen dualen Stapel mit IPv4- und IPv6-Front-Ends aufweisen. Die NAT64-Übersetzung ist nicht verfügbar. Weitere Informationen finden Sie unter [Bereitstellen einer IPv6-Anwendung mit dualem Stapel in Azure – PowerShell](../../load-balancer/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md). (Hinweis: Öffentliche Lastenausgleichsmodule im Basic-Tarif können dynamische IPv6-Adressen der Basic-SKU als öffentliche Front-End-IP-Adressen verwenden.)
 
 * Wenn einem öffentlichen Lastenausgleich mehrere Front-Ends zugewiesen werden, gibt es keine Methode zum Zuweisen von Datenflüssen von bestimmten Back-End-Instanzen zu ausgehendem Datenverkehr für eine bestimmte IP-Adresse.  Weitere Informationen finden Sie unter [Mehrere Front-Ends für Azure Load Balancer](../../load-balancer/load-balancer-multivip-overview.md).
 ## <a name="next-steps"></a>Nächste Schritte
@@ -167,4 +167,4 @@ Sie haben die IP-Adresse in einer Front-End-Konfiguration des Lastenausgleichs e
 Schließlich haben Sie eine Front-End-Konfiguration für ausgehenden Datenverkehr geändert, um ein Präfix für öffentliche IP-Adressen zu verwenden.
 
 - Weitere Informationen zu Azure Load Balancer finden Sie unter [Was versteht man unter Azure Load Balancer?](../../load-balancer/load-balancer-overview.md).
-- Weitere Informationen zu öffentlichen IP-Adressen in Azure finden Sie unter [Öffentliche IP-Adressen](../../virtual-network/public-ip-addresses.md).
+- Weitere Informationen zu öffentlichen IP-Adressen in Azure finden Sie unter [Öffentliche IP-Adressen](./public-ip-addresses.md).

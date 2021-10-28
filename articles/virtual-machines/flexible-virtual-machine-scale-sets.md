@@ -9,12 +9,12 @@ ms.subservice: flexible-scale-sets
 ms.date: 10/13/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli, vmss-flex
-ms.openlocfilehash: 6b1f1468b85695facac7143389f863599d9f9d3e
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: b5c52d2ab3b788a1f06edbc59d8dab05cc8285dd
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130161949"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130257991"
 ---
 # <a name="flexible-orchestration-for-virtual-machine-scale-sets-in-azure"></a>Flexible Orchestrierung für VM-Skalierungsgruppen in Azure
 
@@ -140,7 +140,6 @@ In den folgenden Tabellen sind die Features des Orchestrierungsmodus „Flexibel
 | Instanzschutz | Nein, verwenden Sie [Azure-Ressourcensperre](../azure-resource-manager/management/lock-resources.md). |
 | Richtlinie für Abskalieren | Nein |
 | VMSS-Instanzansicht abrufen | Nein |
-| Wartung durchführen | Wartung auf jeder Instanz mithilfe der VM-API auslösen |
 | VM-Batchvorgänge (Alle starten, Alle beenden, Teilmenge löschen usw.) | Nein (kann Vorgänge auf jeder Instanz mithilfe der VM-API auslösen) |
 
 ### <a name="high-availability"></a>Hochverfügbarkeit 
@@ -154,7 +153,7 @@ In den folgenden Tabellen sind die Features des Orchestrierungsmodus „Flexibel
 | Fehlerdomäne – Feste Verteilung | 2 bis 3 Fehlerdomänen (je nach regionaler maximaler Anzahl der Fehlerdomänen), 1 für zonale Bereitstellungen |
 | Zuweisung eines virtuellen Computers zu einer bestimmten Fehlerdomäne | Ja |
 | Updatedomänen | Veraltet (Plattformwartung wird nacheinander für jede Fehlerdomäne einzeln durchgeführt) |
-| Wartung durchführen | Wartung auf jeder Instanz mithilfe der VM-API auslösen | Ja | – |
+| Wartung durchführen | Wartung auf jeder Instanz mithilfe der VM-API auslösen |
 
 ### <a name="networking"></a>Netzwerk 
 

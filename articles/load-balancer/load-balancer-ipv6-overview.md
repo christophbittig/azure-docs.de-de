@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/24/2018
 ms.author: allensu
-ms.openlocfilehash: 4061a3dbf4dc92d6d412528115d46edc36d20d5e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 27b1601f9cdd1ccac001e71f2e0364ee168a201f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94700687"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130232513"
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Übersicht über IPv6 für Azure Load Balancer
 
 
 >[!NOTE] 
->Dieser Inhalt wurde durch [Übersicht über IPv6 für Azure VNETs](../virtual-network/ipv6-overview.md) abgelöst. Azure empfiehlt, in neuen IPv6-Bereitstellungen die neuen IPv6-Features für virtuelle Azure-Netzwerke zu verwenden.
+>Dieser Inhalt wurde durch [Übersicht über IPv6 für Azure VNETs](../virtual-network/ip-services/ipv6-overview.md) abgelöst. Azure empfiehlt, in neuen IPv6-Bereitstellungen die neuen IPv6-Features für virtuelle Azure-Netzwerke zu verwenden.
 
 >[!NOTE]
 >Azure Load Balancer unterstützt zwei unterschiedliche Typen: Basic und Standard. In diesem Artikel wird der Load Balancer vom Typ „Basic“ beschrieben. Weitere Informationen zum Load Balancer vom Typ „Standard“ finden Sie unter [Übersicht: Azure Load Balancer Standard (Preview)](./load-balancer-overview.md).

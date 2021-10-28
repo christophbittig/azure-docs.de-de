@@ -6,12 +6,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: f2ae3cd54f47e804b9bdd78433f96f96034d16ee
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: e5625907b0401919940a514586a86b34867b8e57
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130047207"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130252210"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Akzeptieren von Fragevorschlägen des aktiven Lernens in der Wissensdatenbank
 
@@ -22,7 +22,7 @@ Aktives Lernen ändert die Wissensdatenbank oder den Suchdienst, nachdem Sie den
 
 ## <a name="turn-on-active-learning"></a>Aktivieren des Features für aktives Lernen
 
-Damit vorgeschlagene Fragen angezeigt werden, müssen Sie für Ihre QnA Maker-Ressource [aktives Lernen aktivieren](../concepts/active-learning-suggestions.md).
+Damit vorgeschlagene Fragen angezeigt werden, müssen Sie für Ihre QnA Maker-Ressource [aktives Lernen aktivieren](../index.yml).
 
 ## <a name="view-suggested-questions"></a>Anzeigen vorgeschlagener Fragen
 
@@ -156,7 +156,7 @@ Content-Type: application/json
 {"feedbackRecords": [{"userId": "1","userQuestion": "<question-text>","qnaId": 1}]}
 ```
 
-|HTTP-Anforderungseigenschaft|Name|type|Zweck|
+|HTTP-Anforderungseigenschaft|Name|Typ|Zweck|
 |--|--|--|--|
 |URL-Routenparameter|Wissensdatenbank-ID|Zeichenfolge|GUID der Knowledge Base|
 |Benutzerdefinierte Unterdomäne|Name der QnAMaker-Ressource|Zeichenfolge|Der Ressourcenname wird als benutzerdefinierte Unterdomäne für Ihre QnA Maker verwendet. Dieser Wert ist auf der Seite „Einstellungen“ verfügbar, nachdem Sie die Wissensdatenbank veröffentlicht haben. Sie wird als `host` aufgeführt.|

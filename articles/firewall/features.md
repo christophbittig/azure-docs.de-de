@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 07/30/2021
 ms.author: victorh
-ms.openlocfilehash: 5acb23767f8c766de80961fb8e76297f4b31a5c3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 348a52aaee7569a4f98a4d67b83d1d957fd89f62
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339596"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130242215"
 ---
 # <a name="azure-firewall-features"></a>Azure Firewall-Features
 
@@ -102,7 +102,7 @@ Sie können Ihrer Firewall [mehrere öffentliche IP-Adressen](deploy-multi-publi
 Dies ermöglicht die folgenden Szenarien:
 
 - **DNAT:** Sie können mehrere Standardportinstanzen auf Ihre Back-End-Server übersetzen. Wenn Sie beispielsweise über zwei öffentliche IP-Adressen verfügen, können Sie den TCP-Port 3389 (RDP) für beide IP-Adressen übersetzen.
-- **SNAT:** Für ausgehende SNAT-Verbindungen stehen mehr Ports zur Verfügung, sodass die Gefahr einer Überlastung des SNAT-Ports verringert wird. Aktuell wählt Azure Firewall die öffentliche IP-Quelladresse für eine Verbindung nach dem Zufallsprinzip aus. Wenn Sie in Ihrem Netzwerk über eine nachgeschaltete Filterung verfügen, müssen Sie alle öffentlichen IP-Adressen zulassen, die mit Ihrer Firewall verbunden sind. Verwenden Sie ggf. ein [Präfix für öffentliche IP-Adressen](../virtual-network/public-ip-address-prefix.md), um diese Konfiguration zu vereinfachen.
+- **SNAT:** Für ausgehende SNAT-Verbindungen stehen mehr Ports zur Verfügung, sodass die Gefahr einer Überlastung des SNAT-Ports verringert wird. Aktuell wählt Azure Firewall die öffentliche IP-Quelladresse für eine Verbindung nach dem Zufallsprinzip aus. Wenn Sie in Ihrem Netzwerk über eine nachgeschaltete Filterung verfügen, müssen Sie alle öffentlichen IP-Adressen zulassen, die mit Ihrer Firewall verbunden sind. Verwenden Sie ggf. ein [Präfix für öffentliche IP-Adressen](../virtual-network/ip-services/public-ip-address-prefix.md), um diese Konfiguration zu vereinfachen.
 
 ## <a name="azure-monitor-logging"></a>Azure Monitor-Protokollierung
 

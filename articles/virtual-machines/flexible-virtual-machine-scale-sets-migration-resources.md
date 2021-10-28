@@ -9,12 +9,12 @@ ms.subservice: flexible-scale-sets
 ms.date: 10/14/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli, vmss-flex
-ms.openlocfilehash: c92a573bfa2f17fcf053f9f1d7599e1e802c8c12
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: b6cdeff69c1d9a919651d68b937af1c7b328edbe
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130167783"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130257953"
 ---
 # <a name="migrate-deployments-and-resources-to-virtual-machine-scale-sets-in-flexible-orchestration"></a>Migrieren von Bereitstellungen und Ressourcen zu VM-Skalierungsgruppen im Orchestrierungsmodus „Flexibel“ 
 
@@ -102,7 +102,7 @@ Dies sind häufige Szenarios, die explizite ausgehende Konnektivität erfordern:
 - Die Aktivierung einer Windows-VM erfordert, dass Sie ausgehende Konnektivität zwischen der VM-Instanz mit dem Schlüsselverwaltungsdienst (Key Management Service, KMS) definiert haben. Weitere Informationen finden Sie unter [Behandlung von Problemen bei der VM-Aktivierung](/troubleshoot/azure/virtual-machines/troubleshoot-activation-problems).  
 - Zugriff auf Speicherkonten oder Key Vault. Die Verbindung mit Azure-Diensten kann auch über [Private Link](../private-link/private-link-overview.md) hergestellt werden. 
 
-Weitere Details zum Definieren von sicheren ausgehenden Verbindungen finden Sie unter [Ausgehender Standardzugriff in Azure](https://aka.ms/defaultoutboundaccess).
+Weitere Details zum Definieren von sicheren ausgehenden Verbindungen finden Sie unter [Ausgehender Standardzugriff in Azure](../virtual-network/ip-services/default-outbound-access.md).
 
 > [!IMPORTANT]
 > Vergewissern Sie sich, dass Sie über explizite ausgehende Netzwerkkonnektivität verfügen. Erfahren Sie mehr darüber in [Virtuelle Netzwerke und virtuelle Computer in Azure](../virtual-network/network-overview.md), und stellen Sie sicher, dass Sie die [bewährten Methoden](../virtual-network/concepts-and-best-practices.md) für Netzwerke von Azure beachten. 

@@ -8,12 +8,12 @@ ms.topic: reference
 ms.service: iot-edge
 services: iot-edge
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 93a217a88b75ec6c472972d3f12cb33e33561f2c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: cfa116f91978ea5f9bc076c7d666a0428f3b6c72
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128579783"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130259184"
 ---
 # <a name="powershell-functions-for-iot-edge-for-linux-on-windows"></a>PowerShell-Funktionen für IoT Edge für Linux unter Windows
 
@@ -120,7 +120,7 @@ Der Befehl **Get-EflowVm** gibt die aktuelle Konfiguration des virtuellen Comput
 * EdgeRuntimeStatus
 * SystemStatistics
 
-Wenn Sie eine bestimmte Eigenschaft in einer lesbaren Liste anzeigen möchten, führen Sie den Befehl `Get-EflowVM` mit der erweiterten Eigenschaft aus. Beispiel:
+Wenn Sie eine bestimmte Eigenschaft in einer lesbaren Liste anzeigen möchten, führen Sie den Befehl `Get-EflowVM` mit der erweiterten Eigenschaft aus. Zum Beispiel:
 
 ```powershell
 Get-EflowVM | Select -ExpandProperty VmConfiguration | Format-List
@@ -257,4 +257,4 @@ Weitere Informationen erhalten Sie mit dem Befehl `Get-Help Verify-EflowVm -full
 
 Im folgenden Artikel erfahren Sie, wie Sie diese Befehle zum Installieren und Bereitstellen von IoT Edge für Linux unter Windows verwenden können:
 
-* [Installieren von Azure IoT Edge für Linux unter Windows](./how-to-install-iot-edge-on-windows.md)
+* [Installieren von Azure IoT Edge für Linux unter Windows](./how-to-provision-single-device-linux-on-windows-symmetric.md)

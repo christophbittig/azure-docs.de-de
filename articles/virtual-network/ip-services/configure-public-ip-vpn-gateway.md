@@ -9,12 +9,12 @@ ms.subservice: ip-services
 ms.topic: how-to
 ms.date: 06/28/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 729e02427b823550a8621380261b7f7db4ff2fe5
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: fa553360085a2793dba43e91cb08fde74eebf52e
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129368183"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130233921"
 ---
 # <a name="manage-a-public-ip-address-with-a-vpn-gateway"></a>Verwalten einer öffentlichen IP-Adresse mit einem VPN-Gateway
 
@@ -29,7 +29,7 @@ In diesem Artikel erfahren Sie, wie Sie ein VPN-Gateway mit einer vorhandenen ö
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein Azure-Konto mit einem aktiven Abonnement. [Erstellen Sie ein kostenloses Konto.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-- Eine öffentliche IP-Adresse der Standard-SKU in Ihrem Abonnement. Die IP-Adresse darf keinen Ressourcen zugeordnet sein. Weitere Informationen zum Erstellen einer öffentlichen IP-Adresse der Standard-SKU finden Sie unter [Erstellen einer öffentlichen IP-Adresse: Azure-Portal](../../virtual-network/create-public-ip-portal.md).
+- Eine öffentliche IP-Adresse der Standard-SKU in Ihrem Abonnement. Die IP-Adresse darf keinen Ressourcen zugeordnet sein. Weitere Informationen zum Erstellen einer öffentlichen IP-Adresse der Standard-SKU finden Sie unter [Erstellen einer öffentlichen IP-Adresse: Azure-Portal](./create-public-ip-portal.md).
     - Benennen Sie die neuen öffentlichen IP-Adressen für die Beispiele in diesem Artikel mit **myStandardPublicIP**.
 
 ## <a name="create-vpn-gateway-existing-public-ip"></a>Erstellen eines VPN-Gateways mit einer vorhandenen öffentlichen IP-Adresse
@@ -124,5 +124,5 @@ Das VPN-Gateway unterstützt das Ändern der öffentlichen IP-Adresse nach der E
 
 In diesem Artikel haben Sie gelernt, wie Sie eine VPN Gateway-Instanz erstellen und eine vorhandene öffentliche IP-Adresse verwenden. 
 
-- Weitere Informationen zu öffentlichen IP-Adressen in Azure finden Sie unter [Öffentliche IP-Adressen](../../virtual-network/public-ip-addresses.md).
+- Weitere Informationen zu öffentlichen IP-Adressen in Azure finden Sie unter [Öffentliche IP-Adressen](./public-ip-addresses.md).
 - Weitere Informationen zu VPN-Gateways finden Sie unter [Was ist VPN Gateway?](../../vpn-gateway/vpn-gateway-about-vpngateways.md).

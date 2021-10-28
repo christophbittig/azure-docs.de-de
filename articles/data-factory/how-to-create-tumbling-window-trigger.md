@@ -10,12 +10,12 @@ ms.subservice: orchestration
 ms.custom: synapse
 ms.topic: conceptual
 ms.date: 09/09/2021
-ms.openlocfilehash: 44f41d0adebe21eaec28aced556f67e8c1aeda1d
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 6df2a24ca029f14a4743b28641b8ac4c2b88e851
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130047226"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223781"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-on-a-tumbling-window"></a>Erstellen eines Triggers zum Ausführen einer Pipeline für ein rollierendes Fenster
 
@@ -213,7 +213,7 @@ In diesem Abschnitt erfahren Sie, wie Sie mit Azure PowerShell einen Trigger ers
 
 - **Azure PowerShell**. Befolgen Sie die Anweisungen unter [Installieren von Azure PowerShell unter Windows mit PowerShellGet](/powershell/azure/install-az-ps). 
 
-- **Azure Data Factory** Führen Sie die Anleitungen in [Erstellen einer Azure Data Factory mithilfe von PowerShell](/azure/data-factory/quickstart-create-data-factory-powershell) aus, um eine Data Factory und eine Pipeline zu erstellen.
+- **Azure Data Factory** Führen Sie die Anleitungen in [Erstellen einer Azure Data Factory mithilfe von PowerShell](./quickstart-create-data-factory-powershell.md) aus, um eine Data Factory und eine Pipeline zu erstellen.
 
 ### <a name="sample-code"></a>Beispielcode
 
@@ -292,7 +292,7 @@ In diesem Abschnitt erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnit
 
 [!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-- Führen Sie die Anleitungen in [Erstellen einer Azure Data Factory mithilfe der Azure-Befehlszeilenschnittstelle](/azure/data-factory/quickstart-create-data-factory-azure-cli) aus, um eine Data Factory und eine Pipeline zu erstellen.
+- Führen Sie die Anleitungen in [Erstellen einer Azure Data Factory mithilfe der Azure-Befehlszeilenschnittstelle](./quickstart-create-data-factory-azure-cli.md) aus, um eine Data Factory und eine Pipeline zu erstellen.
 
 ### <a name="sample-code"></a>Beispielcode
 

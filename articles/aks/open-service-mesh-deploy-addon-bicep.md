@@ -6,20 +6,20 @@ ms.topic: article
 ms.date: 9/20/2021
 ms.custom: mvc, devx-track-azurecli
 ms.author: pgibson
-ms.openlocfilehash: 2096176c64781e99161188ce66b7dd87d226278e
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f479a05fb305887d5e901ca236cb0183d4a2d87b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128598437"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130227300"
 ---
 # <a name="deploy-open-service-mesh-osm-azure-kubernetes-service-aks-add-on-using-bicep"></a>Bereitstellung des Add-On Open Service Mesh (OSM) für Azure Kubernetes Service (AKS) mithilfe von Bicep
 
-In diesem Artikel wird die Bereitstellung des OSM-Add-On für AKS unter Verwendung einer [Bicep](/azure/azure-resource-manager/bicep/)-Vorlage beschrieben.
+In diesem Artikel wird die Bereitstellung des OSM-Add-On für AKS unter Verwendung einer [Bicep](../azure-resource-manager/bicep/index.yml)-Vorlage beschrieben.
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-[Bicep](/azure/azure-resource-manager/bicep/overview) ist eine domänenspezifische Sprache (DSL), die eine deklarative Syntax zur Bereitstellung von Azure-Ressourcen verwendet. Bicep kann anstelle der Erstellung von Azure [ARM](/azure/azure-resource-manager/templates/overview)-Vorlagen für die Bereitstellung Ihrer Infrastruktur-als-Code Azure-Ressourcen verwendet werden.
+[Bicep](../azure-resource-manager/bicep/overview.md) ist eine domänenspezifische Sprache (DSL), die eine deklarative Syntax zur Bereitstellung von Azure-Ressourcen verwendet. Bicep kann anstelle der Erstellung von Azure [ARM](../azure-resource-manager/templates/overview.md)-Vorlagen für die Bereitstellung Ihrer Infrastruktur-als-Code Azure-Ressourcen verwendet werden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -28,7 +28,7 @@ In diesem Artikel wird die Bereitstellung des OSM-Add-On für AKS unter Verwendu
 - OSM-Version v0.9.1 oder höher
 - Ein öffentlicher SSH-Schlüssel, der für die Bereitstellung von AKS verwendet wird
 - [Visual Studio Code](https://code.visualstudio.com/) unter Verwendung eines Bash-Terminals
-- Visual Studio Code [Bicep-Erweiterung](/azure/azure-resource-manager/bicep/install)
+- Visual Studio Code [Bicep-Erweiterung](../azure-resource-manager/bicep/install.md)
 
 ## <a name="install-the-aks-preview-extension"></a>Installieren der Erweiterung aks-preview
 
@@ -66,7 +66,7 @@ az provider register --namespace Microsoft.ContainerService
 
 ## <a name="install-the-osm-aks-add-on-for-a-new-aks-cluster-using-bicep"></a>Installieren Sie das OSM AKS Add-On für einen neuen AKS-Cluster mit Bicep
 
-Für ein neues AKS-Cluster-Bereitstellungsszenario beginnen Sie mit einer brandneuen Bereitstellung eines AKS-Clusters mit aktiviertem OSM-Add-On beim Erstellen des Clusters. Die folgenden Anweisungen verwenden eine generische Bicep-Vorlage, die einen AKS-Cluster mit ephemeren Festplatten bereitstellt, das [`kubenet`](/azure/aks/configure-kubenet) CNI verwendet und das AKS OSM-Add-On aktiviert. Für fortgeschrittenere Bereitstellungsszenarien besuchen Sie die [Bicep](/azure/azure-resource-manager/bicep/overview) -Dokumentation.
+Für ein neues AKS-Cluster-Bereitstellungsszenario beginnen Sie mit einer brandneuen Bereitstellung eines AKS-Clusters mit aktiviertem OSM-Add-On beim Erstellen des Clusters. Die folgenden Anweisungen verwenden eine generische Bicep-Vorlage, die einen AKS-Cluster mit ephemeren Festplatten bereitstellt, das [`kubenet`](./configure-kubenet.md) CNI verwendet und das AKS OSM-Add-On aktiviert. Für fortgeschrittenere Bereitstellungsszenarien besuchen Sie die [Bicep](../azure-resource-manager/bicep/overview.md) -Dokumentation.
 
 ### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 

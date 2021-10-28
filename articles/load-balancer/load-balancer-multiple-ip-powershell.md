@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 6f7073ee2c0901d1aefc1124c61ee9e2602b8070
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 154c22734bb39f5cb27232b2aaa0e4c5677a9892
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123253132"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130246641"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-using-powershell"></a>Lastenausgleich bei Konfigurationen mit mehreren IP-Adressen mit PowerShell
 
@@ -60,7 +60,7 @@ Führen Sie die folgenden Schritte aus, um das in diesem Artikel beschriebene Sz
 
     Führen Sie anschließend die Schritte 6.3 bis 6.8 unter [Erstellen einer Windows-VM mit dem Resource Manager und PowerShell](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm?toc=%2fazure%2fload-balancer%2ftoc.json) aus.
 
-5. Fügen Sie jedem virtuellen Computer eine zweite IP-Konfiguration hinzu. Folgen Sie den Anweisungen im Artikel [Zuweisen von mehreren IP-Adressen zu virtuellen Computern](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md#add). Verwenden Sie die folgenden Konfigurationseinstellungen:
+5. Fügen Sie jedem virtuellen Computer eine zweite IP-Konfiguration hinzu. Folgen Sie den Anweisungen im Artikel [Zuweisen von mehreren IP-Adressen zu virtuellen Computern](../virtual-network/ip-services/virtual-network-multiple-ip-addresses-powershell.md#add). Verwenden Sie die folgenden Konfigurationseinstellungen:
 
     ```powershell
     $NicName = "VM1-NIC2"

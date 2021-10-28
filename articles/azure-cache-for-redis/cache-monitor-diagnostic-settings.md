@@ -8,12 +8,12 @@ ms.service: cache
 ms.topic: how-to
 ms.date: 09/30/2021
 ms.custom: template-how-to
-ms.openlocfilehash: e62215649a79f16fcb9cbfc20cfe16bc98f2251f
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: 2662ba2f2e87f79b034ae8138bba31fc9358d8d6
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129812422"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130236169"
 ---
 # <a name="monitor-azure-cache-for-redis-data-using-diagnostic-settings"></a>Überwachen von Azure Cache for Redis-Daten mithilfe von Diagnoseeinstellungen
 
@@ -28,7 +28,7 @@ Sie können die Diagnoseeinstellungen für Azure Cache for Redis-Instanzen aktiv
 - **Event Hub**: Diagnoseeinstellungen können nicht auf Event Hub-Ressourcen zugreifen, wenn virtuelle Netzwerke aktiviert sind. Aktivieren Sie die Einstellung **Vertrauenswürdigen Microsoft-Diensten die Umgehung dieser Firewall erlauben?** in Event Hub, um Zugriff auf Ihre Event Hub-Ressourcen zu gewähren. Der Event Hub muss sich in derselben Region wie der Cache befinden.
 - **Speicherkonto**: Muss sich in derselben Region wie der Cache befinden.
 
-Weitere Informationen zu Diagnoseanforderungen finden Sie unter [Diagnoseeinstellungen](/azure/azure-monitor/essentials/diagnostic-settings?tabs=CMD).
+Weitere Informationen zu Diagnoseanforderungen finden Sie unter [Diagnoseeinstellungen](../azure-monitor/essentials/diagnostic-settings.md?tabs=CMD).
 
 Wenn Sie Diagnoseprotokolle an eines der beiden Ziele senden, werden Ihnen die normalen Datentarife für die Nutzung von Speicherkonten und Event Hub berechnet. Sie werden unter Azure Monitor und nicht unter Azure Cache for Redis abgerechnet.
 Weitere Preisinformationen finden Sie unter [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/).
@@ -53,7 +53,7 @@ Weitere Preisinformationen finden Sie unter [Azure Monitor – Preise](https://a
 
 ## <a name="create-diagnostic-setting-via-rest-api"></a> Erstellen der Diagnoseeinstellung über die REST-API
 
-Verwenden Sie die Azure Monitor-REST-API, um eine Diagnoseeinstellung über die interaktive Konsole zu erstellen. Weitere Informationen finden Sie unter [Account Filters – Create Or Update](/rest/api/monitor/diagnostic-settings/create-or-update.md) (Erstellen oder Aktualisieren von Kontofiltern).
+Verwenden Sie die Azure Monitor-REST-API, um eine Diagnoseeinstellung über die interaktive Konsole zu erstellen. Weitere Informationen finden Sie unter [Account Filters – Create Or Update](/rest/api/monitor/diagnostic-settings/create-or-update) (Erstellen oder Aktualisieren von Kontofiltern).
 
 ### <a name="request"></a>Anforderung
 

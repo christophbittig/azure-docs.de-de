@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/03/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: c38c1ec60b3a7fbeb65f85e4560c4495ab93a031
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 6ca686a9fcf2b2ba290e14687f090f833714502c
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124754822"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130225175"
 ---
 # <a name="restrict-importexport-access-for-managed-disks-using-azure-private-link"></a>Einschränken des Import-/Exportzugriffs für verwaltete Datenträger mithilfe von Azure Private Link
 
@@ -119,5 +119,5 @@ Sie haben nun eine private Verbindung konfiguriert, die Sie zum Importieren und 
 
 - Hochladen einer VHD in Azure oder Kopieren eines verwalteten Datenträgers in eine andere Region: [Azure CLI](linux/disks-upload-vhd-to-managed-disk-cli.md) oder [Azure PowerShell-Modul](windows/disks-upload-vhd-to-managed-disk-powershell.md)
 - Herunterladen einer VHD: [Windows](windows/download-vhd.md) oder [Linux](linux/download-vhd.md)
-- [Häufig gestellte Fragen zu privaten Verbindungen und verwalteten Datenträgern](/azure/virtual-machines/faq-for-disks#private-links-for-securely-exporting-and-importing-managed-disks)
+- [Häufig gestellte Fragen zu privaten Verbindungen und verwalteten Datenträgern](./faq-for-disks.yml)
 - [Exportieren/Kopieren verwalteter Momentaufnahmen als VHD in ein Speicherkonto in einer anderen Region mit PowerShell](/previous-versions/azure/virtual-machines/scripts/virtual-machines-powershell-sample-copy-snapshot-to-storage-account)

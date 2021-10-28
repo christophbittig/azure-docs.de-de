@@ -5,12 +5,12 @@ ms.topic: article
 author: shashankbarsin
 ms.author: shasb
 description: Erfassen von Metriken und Protokollen von Azure Arc-fähigen Kubernetes-Clustern mithilfe von Azure Monitor
-ms.openlocfilehash: 1ece606aa3967d9fddaa5f964c43e24350610817
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: fe5a2cb8f57203310d37fa82829b3f1f2c3384e4
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129709728"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130250690"
 ---
 # <a name="azure-monitor-container-insights-for-azure-arc-enabled-kubernetes-clusters"></a>Azure Monitor Container Insights für Azure Arc-fähige Kubernetes-Cluster
 
@@ -30,7 +30,7 @@ ms.locfileid: "129709728"
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Vergewissern Sie sich, dass die in der [Dokumentation zu generischen Clustererweiterungen](../../azure-arc/kubernetes/extensions.md#prerequisites) aufgeführten Voraussetzungen erfüllt sind.
-- Log Analytics-Arbeitsbereich: Von Azure Monitor Container Insights wird ein Log Analytics-Arbeitsbereich in den auf der Seite [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor) aufgeführten Regionen unterstützt. Sie können Ihren eigenen Arbeitsbereich über [Azure Resource Manager](../logs/resource-manager-workspace.md), mithilfe von [PowerShell](../logs/powershell-sample-create-workspace.md) oder über das [Azure-Portal](../logs/quick-create-workspace.md) erstellen.
+- Log Analytics-Arbeitsbereich: Von Azure Monitor Container Insights wird ein Log Analytics-Arbeitsbereich in den auf der Seite [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor) aufgeführten Regionen unterstützt. Sie können Ihren eigenen Arbeitsbereich über [Azure Resource Manager](../logs/resource-manager-workspace.md), mithilfe von [PowerShell](../logs/powershell-workspace-configuration.md) oder über das [Azure-Portal](../logs/quick-create-workspace.md) erstellen.
 - Sie müssen für das Azure-Abonnement, das die Azure Arc-fähige Kubernetes-Ressource enthält, über die Rollenzuweisung [Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor) verfügen. Befindet sich der Log Analytics-Arbeitsbereich in einem anderen Abonnement, wird für den Log Analytics-Arbeitsbereich die Rolle [Log Analytics-Mitwirkender](../logs/manage-access.md#manage-access-using-azure-permissions) benötigt.
 - Zum Anzeigen der Überwachungsdaten müssen Sie im Log Analytics-Arbeitsbereich über die Rollenzuweisung [Log Analytics-Leser](../logs/manage-access.md#manage-access-using-azure-permissions) verfügen.
 - Für ausgehenden Zugriff müssen neben den unter [Erfüllen von Netzwerkanforderungen](../../azure-arc/kubernetes/quickstart-connect-cluster.md#meet-network-requirements) angegebenen Endpunkten die folgenden Endpunkte aktiviert werden:

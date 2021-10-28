@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/08/2020
 ms.author: kumud
-ms.openlocfilehash: 9ed060c1f3fc47aa7050c0f9b25c757953fa22fe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: fff105eadfffb8b38ebe5e95b3cfb0c79df0929b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98220336"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130248942"
 ---
 # <a name="plan-virtual-networks"></a>Planen virtueller Netzwerke
 
@@ -49,7 +49,7 @@ Ein virtuelles Netzwerk ist ein virtueller und isolierter Bereich des öffentlic
 
 - Liegen Sicherheitsanforderungen der Organisation zur Isolierung von Datenverkehr in separaten virtuellen Netzwerken vor? Sie können auswählen, ob virtuelle Netzwerke verbunden oder nicht verbunden werden. Wenn Sie virtuelle Netzwerke verbinden, können Sie ein virtuelles Netzwerkgerät (z.B. eine Firewall) implementieren, um den ein- und ausgehenden Datenverkehr zwischen den virtuellen Netzwerken zu steuern. Weitere Informationen finden Sie unter [Sicherheit](#security) und [Konnektivität](#connectivity).
 - Liegen Sicherheitsanforderungen der Organisation zur Isolierung von virtuellen Netzwerken in separaten [Abonnements](#subscriptions) oder [Regionen](#regions) vor?
-- Eine [Netzwerkschnittstelle](virtual-network-network-interface.md) ermöglicht die Kommunikation zwischen einem virtuellen Computer und anderen Ressourcen. Jeder Netzwerkschnittstelle sind private IP-Adressen zugewiesen. Wie viele Netzwerkschnittstellen und [private IP-Adressen](./private-ip-addresses.md) benötigen Sie in einem virtuellen Netzwerk? Die Anzahl der Netzwerkschnittstellen und privaten IP-Adressen, die in einem virtuellen Netzwerk festgelegt werden können, ist [begrenzt](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits).
+- Eine [Netzwerkschnittstelle](virtual-network-network-interface.md) ermöglicht die Kommunikation zwischen einem virtuellen Computer und anderen Ressourcen. Jeder Netzwerkschnittstelle sind private IP-Adressen zugewiesen. Wie viele Netzwerkschnittstellen und [private IP-Adressen](./ip-services/private-ip-addresses.md) benötigen Sie in einem virtuellen Netzwerk? Die Anzahl der Netzwerkschnittstellen und privaten IP-Adressen, die in einem virtuellen Netzwerk festgelegt werden können, ist [begrenzt](../azure-resource-manager/management/azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits).
 - Möchten Sie das virtuelle Netzwerk mit einem anderen virtuellen Netzwerk oder einem lokalen Netzwerk verbinden? Sie können einige virtuelle Netzwerke untereinander oder mit lokalen Netzwerken verbinden, jedoch nicht alle. Weitere Informationen finden Sie unter [Konnektivität](#connectivity). Jedes virtuelle Netzwerk, das Sie mit einem anderen virtuellen Netzwerk oder einem lokalen Netzwerk verbinden, muss einen eindeutigen Adressraum aufweisen. Jedes virtuelle Netzwerk verfügt über einen oder mehrere dem Adressraum zugewiesene öffentliche oder private Adressbereiche. Ein Adressbereich wird im CIDR-Format (Classless Interdomain Routing, klassenloses domänenübergreifendes Routing) angegeben, z.B. 10.0.0.0/16. Weitere Informationen zu Adressbereichen für virtuelle Netzwerke finden Sie [hier](manage-virtual-network.md#add-or-remove-an-address-range).
 - Liegen Verwaltungsanforderungen der Organisation in Bezug auf Ressourcen in unterschiedlichen virtuellen Netzwerken vor? Wenn ja, können Sie Ressourcen in separaten virtuellen Netzwerken trennen, um die [Zuweisung von Berechtigungen](#permissions) zu Personen in Ihrer Organisation zu vereinfachen oder um unterschiedlichen virtuellen Netzwerken unterschiedliche Richtlinien zuzuweisen.
 - Wenn Sie Azure-Dienstressourcen in einem virtuellen Netzwerk bereitstellen, wird jeweils ein zugehöriges virtuelles Netzwerk erstellt. In den jeweiligen Informationen zu jedem [Azure-Dienst, der in einem virtuellen Netzwerk bereitgestellt werden kann](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network), können Sie einsehen, ob für einen Azure-Dienst ein eigenes zugehöriges virtuelles Netzwerk erstellt wird.

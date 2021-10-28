@@ -7,12 +7,12 @@ ms.service: iot-develop
 ms.devlang: c
 ms.topic: quickstart
 ms.date: 06/04/2021
-ms.openlocfilehash: 38227e47154e280fc34624b4f92a4f75261b7004
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: 73463d2474bae2ca0c6788a0332d3f797f2fb002
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112121956"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130226279"
 ---
 # <a name="quickstart-connect-a-renesas-rx65n-cloud-kit-to-iot-central"></a>Schnellstart: Verbinden Sie ein Renesas RX65N Cloud Kit mit Azure IoT Central
 
@@ -31,7 +31,7 @@ Sie führen die folgenden Aufgaben aus:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* PC mit Microsoft Windows 10
+* PC mit Windows 10
 * [Git](https://git-scm.com/downloads) zum Klonen des Repositorys
 * Hardware
 

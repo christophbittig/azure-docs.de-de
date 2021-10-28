@@ -4,12 +4,12 @@ description: Übertragen von Sammlungen von Images oder anderen Artefakten aus e
 ms.topic: article
 ms.date: 10/07/2020
 ms.custom: ''
-ms.openlocfilehash: a82bee4c0750004db11753c56f06b2ef19badf1c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fcec85f44b7538bfd741a6e6c890a4e92b5a9fb0
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122353666"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130229463"
 ---
 # <a name="transfer-artifacts-to-another-registry"></a>Übertragen von Artefakten in eine andere Registrierung
 
@@ -210,7 +210,7 @@ Parameter  |Wert  |
 |---------|---------|
 |registryName     | Der Name der Zielcontainerregistrierung.      |
 |importPipelineName     |  Der Name, den Sie für die Importpipeline auswählen.       |
-|sourceUri     |  Der URI des Speichercontainers in der Zielumgebung (die Quelle der Importpipeline).<br/>Beispiel: `https://targetstorage.blob.core.windows.net/transfer/`|
+|sourceUri     |  Der URI des Speichercontainers in der Zielumgebung (die Quelle der Importpipeline).<br/>Beispiel: `https://targetstorage.blob.core.windows.net/transfer`|
 |keyVaultName     |  Der Name des Zielschlüsseltresors. |
 |sasTokenSecretName     |  Der Name des SAS-Tokengeheimnisses im Zielschlüsseltresor.<br/>Beispiel: acr importsas |
 

@@ -9,12 +9,12 @@ ms.subservice: ip-services
 ms.topic: conceptual
 ms.date: 04/29/2021
 ms.author: allensu
-ms.openlocfilehash: 205cb1ea608d2e6ee82206e6cf5f85f4d1f3dfcb
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 5f24b2478acc0b305595b70b579d744320f0da3a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129368267"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130261194"
 ---
 # <a name="public-ip-addresses"></a>Öffentliche IP-Adressen
 
@@ -163,4 +163,4 @@ Weitere Informationen zu IPv6 in Azure finden Sie [hier](ipv6-overview.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie etwas über [private IP-Adressen in Azure](private-ip-addresses.md).
-* [Bereitstellen einer VM mit einer statischen öffentlichen IP-Adresse mithilfe des Azure-Portals](../../virtual-network/virtual-network-deploy-static-pip-arm-portal.md)
+* [Bereitstellen einer VM mit einer statischen öffentlichen IP-Adresse mithilfe des Azure-Portals](./virtual-network-deploy-static-pip-arm-portal.md)

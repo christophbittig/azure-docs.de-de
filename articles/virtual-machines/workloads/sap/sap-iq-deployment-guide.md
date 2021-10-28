@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/11/2021
 ms.author: depadia
-ms.openlocfilehash: 7ece73f467e2dc148e79512c7dd1a6fcc19cf270
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: b4bdebe8ce06ba402df9d798e346a43dfefd89a9
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130072630"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130261403"
 ---
 # <a name="sap-bw-nls-implementation-guide-with-sap-iq-on-azure"></a>Leitfaden zur SAP BW-NLS-Implementierung mit SAP IQ in Azure
 
@@ -204,7 +204,7 @@ Wenn Sie SAP IQ als hoch verfügbares System installiert haben, auf dem sich SA
   
 Falls Sie an einem Notfallwiederherstellungsstandort eine eigenständige SAP IQ-Instanz benötigen, können Sie die primäre SAP IQ-VM mithilfe von [Azure Site Recovery](../../../site-recovery/site-recovery-overview.md) in der sekundären Region replizieren. Dabei werden die Server und alle lokal angefügten verwalteten Datenträger in der sekundären Region repliziert, aber es wird kein freigegebener Azure-Datenträger bzw. kein freigegebenes Netzlaufwerk wie Azure NetApp Files repliziert. 
   
-Um Daten von einem freigegebenen Azure-Datenträger oder Netzlaufwerk zu kopieren, können Sie ein beliebiges dateibasiertes Kopiertool zum Replizieren von Daten zwischen Azure-Regionen verwenden. Weitere Informationen zum Kopieren eines Azure NetApp Files-Volumes in eine andere Region finden Sie unter [Häufig gestellte Fragen zu Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-faqs.md#how-do-i-create-a-copy-of-an-azure-netapp-files-volume-in-another-azure-region).
+Um Daten von einem freigegebenen Azure-Datenträger oder Netzlaufwerk zu kopieren, können Sie ein beliebiges dateibasiertes Kopiertool zum Replizieren von Daten zwischen Azure-Regionen verwenden. Weitere Informationen zum Kopieren eines Azure NetApp Files-Volumes in eine andere Region finden Sie unter [Häufig gestellte Fragen zu Azure NetApp Files](../../../azure-netapp-files/faq-data-migration-protection.md#how-do-i-create-a-copy-of-an-azure-netapp-files-volume-in-another-azure-region).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/10/2021
 ms.author: b-juche
-ms.openlocfilehash: 6c29c1804e5587a2a1a3bae3e2f566a5938350cf
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: dd909362950d961b4dcf944ab608c5103840e9a7
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112004779"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130239994"
 ---
 # <a name="smb-performance-best-practices-for-azure-netapp-files"></a>Best Practices für leistungsfähiges SMB in Azure NetApp Files
 
@@ -165,5 +165,5 @@ Wie die Ausgabe von `Get-SmbClientNetworkInterace` unten zeigt, verfügt der vir
 
 ## <a name="next-steps"></a>Nächste Schritte  
 
-- [Häufig gestellte Fragen zu Azure NetApp Files](azure-netapp-files-faqs.md)
+- [Häufig gestellte Fragen zu SMB](faq-smb.md)
 - Weitere Informationen zur Verwendung von SMB-Dateifreigaben mit Azure NetApp Files finden Sie unter [Azure NetApp Files: Managed Enterprise File Shares for SMB Workloads](https://cloud.netapp.com/hubfs/Resources/ANF%20SMB%20Quickstart%20doc%20-%2027-Aug-2019.pdf?__hstc=177456119.bb186880ac5cfbb6108d962fcef99615.1550595766408.1573471687088.1573477411104.328&__hssc=177456119.1.1573486285424&__hsfp=1115680788&hsCtaTracking=cd03aeb4-7f3a-4458-8680-1ddeae3f045e%7C5d5c041f-29b4-44c3-9096-b46a0a15b9b1) (Azure NetApp Files: verwaltete Unternehmensdateifreigaben für SMB-Workloads).

@@ -9,12 +9,12 @@ ms.author: dashe
 ms.reviewer: sawinark
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
-ms.openlocfilehash: 9cced212913ad8f31f71445a6bf3e70fc3bb3f8e
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: b7d6605f1a387a917c9d106078ead404842ea02c
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124743128"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130251925"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>Problembehandlung bei der SSIS Integration Runtime-Verwaltung in Azure Data Factory
 
@@ -172,7 +172,7 @@ Dieser Fehler kann beim Starten der Azure-SSIS IR aus verschiedenen Gründen auf
 | The provided static public IP address is already used, please provide two unused ones for your Azure-SSIS Integration Runtime. (Die angegebene statische öffentliche IP-Adresse wird bereits verwendet. Geben Sie zwei nicht verwendete für Ihre Azure-SSIS Integration Runtime an.) | Sie sollten zwei nicht verwendete statische öffentliche IP-Adressen auswählen oder aktuelle Verweise auf die angegebene öffentliche IP-Adresse entfernen und dann die Azure-SSIS IR neu starten. |
 | The provided static public IP address has no DNS name, please provide two of them with DNS name for your Azure-SSIS Integration Runtime. (Die angegebene statische öffentliche IP-Adresse hat keinen DNS-Namen. Geben Sie zwei davon mit DNS-Name für Ihre Azure-SSIS Integration Runtime an.) | Sie können den DNS-Namen der öffentlichen IP-Adresse im Azure-Portal einrichten, wie in der folgenden Abbildung gezeigt wird. Führen Sie dazu die folgenden Schritte aus: (1) Öffnen Sie das Azure-Portal, und navigieren Sie zur Ressourcenseite dieser öffentlichen IP-Adresse. (2) Wählen Sie den Abschnitt **Konfiguration** aus, und richten Sie den DNS-Namen ein. Klicken Sie dann auf die Schaltfläche **Speichern**; (3) Starten Sie Ihre Azure-SSIS IR neu. |
 | Die angegebenen VNET-Adressen und statischen öffentlichen IP-Adressen für Ihre Azure-SSIS Integration Runtime müssen sich an demselben Standort befinden. | Entsprechend den Anforderungen des Azure-Netzwerks sollten sich die statische öffentliche IP-Adresse und das virtuelle Netzwerk an demselben Standort und in demselben Abonnement befinden. Geben Sie zwei gültige statische öffentliche IP-Adressen an, und starten Sie die Azure-SSIS IR neu. |
-| Die angegebene statische öffentliche IP-Adresse ist ein grundlegender Wert. Geben Sie zwei Standardwerte für Ihre Azure-SSIS Integration Runtime an. | Hilfe finden Sie unter [SKUs der öffentlichen IP-Adresse](../virtual-network/public-ip-addresses.md#sku). |
+| Die angegebene statische öffentliche IP-Adresse ist ein grundlegender Wert. Geben Sie zwei Standardwerte für Ihre Azure-SSIS Integration Runtime an. | Hilfe finden Sie unter [SKUs der öffentlichen IP-Adresse](../virtual-network/ip-services/public-ip-addresses.md#sku). |
 
 :::image type="content" source="media/ssis-integration-runtime-management-troubleshoot/setup-publicipdns-name.png" alt-text="Azure-SSIS-Integrationslaufzeit":::
 

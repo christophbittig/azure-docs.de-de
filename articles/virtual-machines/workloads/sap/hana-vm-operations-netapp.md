@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/08/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4683b38ba6a59b0a50f7e0ea4165657407b59b69
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: bb96e0da4e9e724220492821f1418f3d587b63e8
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124823175"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130222910"
 ---
 # <a name="nfs-v41-volumes-on-azure-netapp-files-for-sap-hana"></a>NFS v4.1-Volumes unter Azure NetApp Files für SAP HANA
 
@@ -40,7 +40,7 @@ Wenn Sie Azure NetApp Files für die Hochverfügbarkeitsarchitektur von SAP NetW
 - Um eine niedrige Latenz zu erzielen, ist es wichtig, dass die virtuellen Computer in unmittelbarer Nähe des Azure NetApp-Speichers bereitgestellt werden.  
 - Das ausgewählte virtuelle Netzwerk muss über ein an Azure NetApp Files delegiertes Subnetz verfügen.
 - Stellen Sie sicher, dass die Latenz zwischen dem Datenbankserver und dem ANF-Volume gemessen wird und unter 1 Millisekunde liegt.
-- Der Durchsatz eines Azure NetApp-Volumes ist eine Funktion des Volumekontingents und der Dienstebene, wie in [Dienstebenen für Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-service-levels.md) beschrieben. Stellen Sie bei der Größenanpassung der HANA Azure NetApp-Volumes sicher, dass der sich ergebende Durchsatz die HANA-Systemanforderungen erfüllt. Alternativ können Sie einen [manuellen QoS-Kapazitätspool](../../../azure-netapp-files/manual-qos-capacity-pool-introduction.md) verwenden, in dem Volumenkapazität und -durchsatz unabhängig konfiguriert und skaliert werden können (SAP HANA-spezifische Beispiele finden Sie in [diesem Dokument](../../../azure-netapp-files/manual-qos-capacity-pool-introduction.md)).
+- Der Durchsatz eines Azure NetApp-Volumes ist eine Funktion des Volumekontingents und der Dienstebene, wie in [Dienstebenen für Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-service-levels.md) beschrieben. Stellen Sie bei der Größenanpassung der HANA Azure NetApp-Volumes sicher, dass der sich ergebende Durchsatz die HANA-Systemanforderungen erfüllt. Alternativ können Sie einen [manuellen QoS-Kapazitätspool](../../../azure-netapp-files/azure-netapp-files-understand-storage-hierarchy.md#manual-qos-type) verwenden, in dem Volumenkapazität und -durchsatz unabhängig konfiguriert und skaliert werden können (SAP HANA-spezifische Beispiele finden Sie in [diesem Dokument](../../../azure-netapp-files/azure-netapp-files-understand-storage-hierarchy.md#manual-qos-type)).
 - Versuchen Sie, Volumes zu „konsolidieren“, um mit einem größeren Volume höhere Leistung zu erzielen, verwenden Sie z. B. ein Volume für „/sapmnt“, „/usr/sap/trans“..., wenn möglich.  
 - Azure NetApp Files bietet [Exportrichtlinien](../../../azure-netapp-files/azure-netapp-files-configure-export-policy.md): Sie können die zulässigen Clients und den Zugriffstyp (Lesen und Schreiben, schreibgeschützt usw.) steuern. 
 - Azure NetApp Files wertet derzeit noch keine Zonen aus. Das Azure NetApp Files-Feature wird bisher nicht in allen Verfügbarkeitszonen in einer Azure-Region bereitgestellt. Achten Sie auf mögliche Latenzauswirkungen in einigen Azure-Regionen.   
@@ -92,7 +92,7 @@ Beim Entwerfen der Infrastruktur für SAP in Azure müssen Sie einige Mindestanf
 | Datenvolume – Schreiben | 250 MB/s | 4 TB | 2 TB |
 | Datenvolume – Lesen | 400 MB/s | 6,3 TB | 3,2 TB |
 
-Da alle drei KPIs erforderlich sind, muss das **/hana/data**-Volume auf die größere Kapazität skaliert werden, um die minimalen Leseanforderungen zu erfüllen. Bei Verwendung manueller QoS-Kapazitätspools können Größe und Durchsatz der Volumes unabhängig voneinander definiert werden. Da sowohl die Kapazität als auch der Durchsatz aus demselben Kapazitätspool entnommen werden, müssen die Dienstebene und die Größe des Pools ausreichend groß sein, um die Gesamtleistung zu erbringen (ein Beispiel finden Sie [hier](../../../azure-netapp-files/manual-qos-capacity-pool-introduction.md)).
+Da alle drei KPIs erforderlich sind, muss das **/hana/data**-Volume auf die größere Kapazität skaliert werden, um die minimalen Leseanforderungen zu erfüllen. Bei Verwendung manueller QoS-Kapazitätspools können Größe und Durchsatz der Volumes unabhängig voneinander definiert werden. Da sowohl die Kapazität als auch der Durchsatz aus demselben Kapazitätspool entnommen werden, müssen die Dienstebene und die Größe des Pools ausreichend groß sein, um die Gesamtleistung zu erbringen (ein Beispiel finden Sie [hier](../../../azure-netapp-files/azure-netapp-files-understand-storage-hierarchy.md#manual-qos-type)).
 
 Bei HANA-Systemen, für die keine hohe Bandbreite erforderlich ist, kann der Durchsatz des ANF-Volumes entweder durch eine kleinere Volumegröße oder bei manuellem QoS durch direktes Anpassen des Durchsatzes verringert werden. Für den Fall, dass ein HANA-System mehr Durchsatz erfordert, kann das Volume angepasst werden, indem die Größe der Kapazität online geändert wird. Für Sicherungsvolumes sind keine KPIs definiert. Der Durchsatz des Sicherungsvolumes ist jedoch für eine gut funktionierende Umgebung entscheidend. Die Leistung von Protokoll- und Datenvolume muss auf die Kundenerwartungen zugeschnitten werden.
 

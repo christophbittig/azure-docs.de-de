@@ -10,12 +10,12 @@ ms.subservice: B2C
 ms.workload: identity
 ms.topic: how-to
 ms.date: 10/15/2021
-ms.openlocfilehash: 23db323f2fe34646f02fd82963f89bee085e3216
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 1db63555d2bf0ad8cfedcdfe90ba2ebae14292ee
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130071490"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130253916"
 ---
 # <a name="tutorial-extend-azure-active-directory-b2c-to-protect-on-premises-applications-using-f5-big-ip"></a>Tutorial: Erweitern von Azure Active Directory B2C zum Schutz von lokalen Anwendungen mithilfe von F5 BIG-IP
 
@@ -72,7 +72,7 @@ Die folgende Abbildung veranschaulicht den vom Dienstanbieter initiierten Ablauf
 
 ![Screenshot: Der vom Dienstanbieter initiierte Ablauf für dieses Szenario](./media/partner-f5/flow-diagram.png)
 
-|Schritt| BESCHREIBUNG|
+|Schritt| Beschreibung|
 |:----|:-------|
 | 1. | Der Benutzer stellt eine Verbindung mit dem Anwendungsendpunkt mit BIG-IP als Dienstanbieter her. |
 | 2. | Der BIG-IP APM, der den OIDC-Client darstellt, leitet den Benutzer an den Azure AD B2C-Mandantenendpunkt (den OIDC-Autorisierungsserver) um. |
@@ -146,7 +146,7 @@ Dieses Tutorial basiert auf Guided Configuration v.7/8, kann aber möglicherweis
 ### <a name="ssl-profiles"></a>SSL-Profile
 
 Wenn Sie BIG-IP mit einem SSL-Clientprofil konfigurieren, können Sie den clientseitigen Datenverkehr über TLS schützen. Hierzu müssen Sie ein Zertifikat importieren, das mit dem Domänennamen übereinstimmt, der von der öffentlichen URL für Ihre Anwendung verwendet wird. Es wird empfohlen, nach Möglichkeit eine öffentliche Zertifizierungsstelle zu verwenden, aber die integrierten selbstsignierten BIG-IP-Zertifikate können beim Testen ebenfalls verwendet werden.
-[Hinzufügen und Verwalten von Zertifikaten](https://techdocs.f5.com/kb/products/big-ip_ltm/manuals/product/bigip-ssl-administration-13-0-0.html) in der BIG-IP VE.
+[Hinzufügen und Verwalten von Zertifikaten](https://techdocs.f5.com/kb/en-us/products/big-ip_ltm/manuals/product/bigip-ssl-administration-13-0-0.html) in der BIG-IP VE.
 
 ## <a name="guided-configuration"></a>Guided Configuration
 
@@ -427,4 +427,4 @@ Die Protokolle Ihrer Anwendung helfen dann zu verstehen, ob sie diese Attribute 
   
   5. Wählen Sie schließlich oben links neben dem F5-Logo die gelbe Option **Apply Access Policy** (Zugriffsrichtlinie anwenden) aus. Wenden Sie diese Einstellungen an, und wählen Sie erneut **Apply** (Anwenden) aus, um die Zugriffsprofilliste zu aktualisieren.
 
-Weitere Tipps zur Problembehandlung von [OAuth-Client- und -Ressourcenservern](https://techdocs.f5.com/bigip-16-1-0/big-ip-access-policy-manager-oauth-configuration/apm-oauth-client-and-resource-server.html#GUID-774384BC-CF63-469D-A589-1595D0DDFBA2) finden Sie in den Anleitungen von F5.
+Weitere Tipps zur Problembehandlung von [OAuth-Client- und -Ressourcenservern](https://techdocs.f5.com/en-us/bigip-14-1-0/big-ip-access-policy-manager-oauth-configuration-14-1-0/apm-oauth-client-and-resource-server.html#GUID-774384BC-CF63-469D-A589-1595D0DDFBA2) finden Sie in den Anleitungen von F5.

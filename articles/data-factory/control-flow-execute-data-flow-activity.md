@@ -9,12 +9,12 @@ ms.custom: synapse
 ms.topic: conceptual
 ms.author: makromer
 ms.date: 09/09/2021
-ms.openlocfilehash: 14fa6484a3cba97602d33cf2b302d62bf6ef2871
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: c42ba6008f80f3fe625d9716c6a6d62f3fb60d2a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124743877"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130260282"
 ---
 # <a name="data-flow-activity-in-azure-data-factory-and-azure-synapse-analytics"></a>Datenflussaktivität in Azure Data Factory und Azure Synapse Analytics
 
@@ -107,11 +107,11 @@ Mit der Gruppierungsfunktion in Datenflüssen können Sie sowohl die Ausführung
 
 Beim Standardverhalten von Datenflusssenken wird jede Senke sequenziell nacheinander ausgeführt, und der Datenfluss schlägt fehl, wenn ein Fehler in der Senke auftritt. Außerdem werden alle Senken standardmäßig der gleichen Gruppe zugeordnet, es sei denn, Sie bearbeiten die Datenflusseigenschaften und legen unterschiedliche Prioritäten für die Senken fest.
 
+:::image type="content" source="media/data-flow/sink-properties.png" alt-text="Senkeneigenschaften":::
+
 ### <a name="first-row-only"></a>Nur erste Zeile
 
 Diese Option ist nur für Datenflüsse verfügbar, für die Cachesenken für "Ausgabe an Aktivität" aktiviert sind. Die Ausgabe des Datenflusses, der direkt in Ihre Pipeline eingefügt wird, ist auf 2 MB beschränkt. Wenn Sie "Nur erste Zeile" festlegen, können Sie die Datenausgabe des Datenflusses einschränken, wenn Sie die Ausgabe der Datenflussaktivität direkt in Ihre Pipeline einfügen.
-
-:::image type="content" source="media/data-flow/sink-properties.png" alt-text="Senkeneigenschaften":::
 
 ## <a name="parameterizing-data-flows"></a>Parametrisieren von Datenflüssen
 

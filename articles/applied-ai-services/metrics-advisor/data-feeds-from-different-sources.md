@@ -10,12 +10,12 @@ ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 05/26/2021
 ms.author: mbullwin
-ms.openlocfilehash: 2bb387863baffdd014eedb20d94ea1273860b8c4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9d5d111e86623b3de63bc9aa5d77f5a14c37fabd
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339257"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130216768"
 ---
 # <a name="how-to-connect-different-data-sources"></a>Vorgehensweise: Verbinden verschiedener Datenquellen
 
@@ -185,7 +185,7 @@ In den folgenden Abschnitten werden die Parameter angegeben, die für alle Authe
         Data Source=<URI Server>;Initial Catalog=<Database>
         ```
 
-    * **Verwaltete Identität**: Eine verwaltete Identität für Azure-Ressourcen kann den Zugriff auf Blob- und Warteschlangendaten autorisieren. Die verwaltete Identität verwendet Azure AD-Anmeldeinformationen aus Anwendungen, die auf virtuellen Azure-Computern ausgeführt werden, sowie aus Funktions-Apps, VM-Skalierungsgruppen und anderen Diensten. Durch Verwendung einer verwalteten Identität für Azure-Ressourcen zusammen mit der Azure AD-Authentifizierung können Sie vermeiden, dass Anmeldeinformationen mit den in der Cloud ausgeführten Anwendungen gespeichert werden. Hier erfahren Sie, wie Sie eine [Autorisierung mit einer verwalteten Identität durchführen](../../storage/common/storage-auth-aad-msi.md#enable-managed-identities-on-a-vm). 
+    * **Verwaltete Identität**: Eine verwaltete Identität für Azure-Ressourcen kann den Zugriff auf Blob- und Warteschlangendaten autorisieren. Die verwaltete Identität verwendet Azure AD-Anmeldeinformationen aus Anwendungen, die auf virtuellen Azure-Computern ausgeführt werden, sowie aus Funktions-Apps, VM-Skalierungsgruppen und anderen Diensten. Durch Verwendung einer verwalteten Identität für Azure-Ressourcen zusammen mit der Azure AD-Authentifizierung können Sie vermeiden, dass Anmeldeinformationen mit den in der Cloud ausgeführten Anwendungen gespeichert werden. Hier erfahren Sie, wie Sie eine [Autorisierung mit einer verwalteten Identität durchführen](../../storage/blobs/authorize-managed-identity.md#enable-managed-identities-on-a-vm). 
     
         Sie können eine verwaltete Identität im Azure-Portal für Azure Data Explorer (Kusto) erstellen. Klicken Sie auf **Berechtigungen** > **Hinzufügen**. Der empfohlene Rollentyp lautet: **Administrator/Anzeigender Benutzer**.
         
@@ -413,7 +413,7 @@ Azure Monitor-Protokolle weisen die folgenden Authentifizierungstypen auf: Basic
         ```
     
         > [!NOTE]
-        > `MI Name` bezeichnet den Namen der verwalteten Identität in Metrics Advisor (für den Dienstprinzipal muss dieser durch den Dienstprinzipalnamen ersetzt werden). Weitere Informationen finden Sie unter [Autorisieren mit einer verwalteten Identität](../../storage/common/storage-auth-aad-msi.md#enable-managed-identities-on-a-vm). 
+        > `MI Name` bezeichnet den Namen der verwalteten Identität in Metrics Advisor (für den Dienstprinzipal muss dieser durch den Dienstprinzipalnamen ersetzt werden). Weitere Informationen finden Sie unter [Autorisieren mit einer verwalteten Identität](../../storage/blobs/authorize-managed-identity.md#enable-managed-identities-on-a-vm). 
             
         Hier ist ein Beispiel für eine Verbindungszeichenfolge: 
        

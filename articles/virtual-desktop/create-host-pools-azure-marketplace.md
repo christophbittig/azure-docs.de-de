@@ -7,12 +7,12 @@ ms.custom: references_regions
 ms.date: 08/06/2021
 ms.author: helohr
 manager: femila
-ms.openlocfilehash: 8e33c165cd249b578bd4cba9ef4f25446287d7ec
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: cf379d2eb5c20c8f8922631d5a467e961ea8f800
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124766443"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130228466"
 ---
 # <a name="tutorial-create-a-host-pool"></a>Tutorial: Erstellen eines Hostpools
 
@@ -155,7 +155,7 @@ So richten Sie Ihre VM im Rahmen des Einrichtungsprozesses für den Hostpool im 
 
 3. Wählen Sie den **VM-Standort** aus, in dem Sie die virtuellen Computer erstellen möchten. Sie können die für den Hostpool ausgewählte Region oder eine andere Region verwenden. Beachten Sie, dass die VM-Preise je nach Region variieren und sich die VM-Standorte nach Möglichkeit in der Nähe Ihrer Benutzer befinden sollten, um die Leistung zu maximieren. Weitere Informationen finden Sie unter [Datenstandorte für Azure Virtual Desktop](data-locations.md).
    
-4. Wählen Sie als Nächstes die Verfügbarkeitsoption aus, die Ihren Anforderungen am ehesten entspricht. Weitere Informationen dazu, welche Option für Sie geeignet ist, finden Sie unter [Verfügbarkeitsoptionen für virtuelle Computer in Azure](../virtual-machines/availability.md) und in den [häufig gestellten Fragen](/azure/virtual-desktop/faq#which-availability-option-is-best-for-me).
+4. Wählen Sie als Nächstes die Verfügbarkeitsoption aus, die Ihren Anforderungen am ehesten entspricht. Weitere Informationen dazu, welche Option für Sie geeignet ist, finden Sie unter [Verfügbarkeitsoptionen für virtuelle Computer in Azure](../virtual-machines/availability.md) und in den [häufig gestellten Fragen](./faq.yml#which-availability-option-is-best-for-me-).
    
    > [!div class="mx-imgBorder"]
    > ![Screenshot: Dropdownmenü für Verfügbarkeitszonen. Die Option „Verfügbarkeitszone“ ist hervorgehoben.](media/availability-zone.png)
@@ -182,7 +182,7 @@ So richten Sie Ihre VM im Rahmen des Einrichtungsprozesses für den Hostpool im 
 
     - Bei Auswahl von **Speicherblob** können Sie Ihren eigenen Imagebuild über Hyper-V oder auf einer Azure-VM nutzen. Sie müssen lediglich im Speicherblob den Speicherort des Images als URI eingeben.
    
-   Der Speicherort des Images ist unabhängig von der Verfügbarkeitsoption. Die Zonenresilienz des Images bestimmt jedoch, ob das Image mit einer Verfügbarkeitszone verwendet werden kann. Wenn Sie beim Erstellen des Images eine Verfügbarkeitszone auswählen, stellen Sie sicher, dass Sie ein Image aus dem Katalog mit aktivierter Zonenresilienz verwenden. Weitere Informationen dazu, welche Zonenresilienzoption Sie verwenden sollten, finden Sie in den [häufig gestellten Fragen](/azure/virtual-desktop/faq#which-availability-option-is-best-for-me).
+   Der Speicherort des Images ist unabhängig von der Verfügbarkeitsoption. Die Zonenresilienz des Images bestimmt jedoch, ob das Image mit einer Verfügbarkeitszone verwendet werden kann. Wenn Sie beim Erstellen des Images eine Verfügbarkeitszone auswählen, stellen Sie sicher, dass Sie ein Image aus dem Katalog mit aktivierter Zonenresilienz verwenden. Weitere Informationen dazu, welche Zonenresilienzoption Sie verwenden sollten, finden Sie in den [häufig gestellten Fragen](./faq.yml#which-availability-option-is-best-for-me-).
 
 6. Wählen Sie anschließend die **VM-Größe** aus. Sie können entweder die Standardgröße übernehmen oder **Größe ändern** auswählen, um die Größe zu ändern. Wenn Sie auf **Größe ändern** klicken, wählen Sie im angezeigten Fenster die passende VM-Größe für Ihre Workload aus. Weitere Informationen und Empfehlungen zu VM-Größen finden Sie unter [Richtlinien für VM-Größen](/windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context).
 

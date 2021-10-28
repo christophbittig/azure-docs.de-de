@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2021
 ms.author: allensu
-ms.openlocfilehash: 79abb40532ad4b7940ecf94552b5ee5c0727f2b6
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b9291a7d69bd2aeb5a9343d88d05d42d94d080e0
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128636627"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130249042"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>Entwerfen von virtuellen Netzwerken mit NAT-Gatewayressourcen
 
@@ -339,10 +339,6 @@ Ein SNAT-Port ist für eine IP-Zieladresse und den entsprechenden Zielport nach 
 - Die Familie der IPv4-Adressen wird unterstützt.  NAT interagiert nicht mit der Familie der IPv6-Adressen.  Die NAT kann nicht in einem Subnetz mit IPv6-Präfix bereitgestellt werden.
 - NAT kann übergreifend für mehrere virtuelle Netzwerke genutzt werden.
 - Die IP-Fragmentierung wird nicht unterstützt.
-
-## <a name="suggestions"></a>Vorschläge
-
-Wir möchten wissen, wie wir den Dienst verbessern können. Fehlt eine Funktion? Unter [UserVoice für NAT](https://aka.ms/natuservoice) können Sie uns Ihre Wünsche zukommen lassen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

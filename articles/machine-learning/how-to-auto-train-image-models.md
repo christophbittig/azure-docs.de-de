@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.custom: automl
 ms.date: 10/06/2021
-ms.openlocfilehash: 944bab251d8e98da94a8d2e9d13418478e2dd46c
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 312eea28371de6726bca5d1a89e305024e552dad
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130007270"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130254363"
 ---
 # <a name="set-up-automl-to-train-computer-vision-models-with-python-preview"></a>Einrichten von AutoML für das Trainieren von Modellen für maschinelles Sehen mit Python (Vorschauversion)
 
@@ -63,7 +63,7 @@ automl_image_config = AutoMLImageConfig(task=ImageTask.IMAGE_OBJECT_DETECTION)
 
 ## <a name="training-and-validation-data"></a>Trainings- und Überprüfungsdaten
 
-Um Modelle für maschinelles Sehen zu erstellen, müssen Sie beschriftete Bilddaten als Eingabe für das Modelltraining in Form eines [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset) von Azure Machine Learning bereitstellen. Sie können entweder ein `TabularDataset` verwenden, das Sie aus einem [Datenbeschriftungsprojekt exportiert](how-to-create-labeling-projects.md#export-the-labels) haben, oder ein neues `TabularDataset` mit Ihren beschrifteten Trainingsdaten erstellen. 
+Um Modelle für maschinelles Sehen zu erstellen, müssen Sie beschriftete Bilddaten als Eingabe für das Modelltraining in Form eines [TabularDataset](/python/api/azureml-core/azureml.data.tabulardataset) von Azure Machine Learning bereitstellen. Sie können entweder ein `TabularDataset` verwenden, das Sie aus einem [Datenbeschriftungsprojekt exportiert](./how-to-create-image-labeling-projects.md#export-the-labels) haben, oder ein neues `TabularDataset` mit Ihren beschrifteten Trainingsdaten erstellen. 
 
 Wenn Ihre Trainingsdaten in einem anderen Format vorliegen (z. B. Pascal VOC oder COCO), können Sie die in den Beispielnotebooks enthaltenen Hilfsskripts anwenden, um die Daten in JSONL zu konvertieren. Erfahren Sie mehr darüber, wie Sie [Daten für Aufgaben des maschinellen Sehens mit automatisiertem maschinellen Lernen vorbereiten](how-to-prepare-datasets-for-automl-images.md). 
 
@@ -513,4 +513,4 @@ Wenn Sie Kacheln verwenden und das Kachelverhalten steuern möchten, sind die fo
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Tutorial: Trainieren eines Objekterkennungsmodells (Vorschauversion) mit AutoML und Python](tutorial-auto-train-image-models.md).
-* [Behandeln Sie Probleme bei automatisierten ML-Experimenten.](how-to-troubleshoot-auto-ml.md) 
+* [Behandeln Sie Probleme bei automatisierten ML-Experimenten.](how-to-troubleshoot-auto-ml.md)

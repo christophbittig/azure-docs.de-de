@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - device-developer
 - iot-edge
-ms.openlocfilehash: 15d6da6b5fe458e34847469faf230222f20efb38
-ms.sourcegitcommit: 7b6ceae1f3eab4cf5429e5d32df597640c55ba13
+ms.openlocfilehash: a8d57f2d9f17b0a20f029ed4849e244af308bb0f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123273137"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130246735"
 ---
 # <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>Verbinden eines Azure IoT Edge-Geräts mit einer Azure IoT Central-Anwendung
 
@@ -315,8 +315,8 @@ Informationen darüber, wo Sie die IoT Edge-Runtime ausführen können, finden S
 
 Sie können die IoT Edge-Runtime auch in den folgenden Umgebungen installieren:
 
-* [Installieren oder Deinstallieren von Azure IoT Edge für Linux](../../iot-edge/how-to-install-iot-edge.md)
-* [Installieren und Bereitstellen von Azure IoT Edge für Linux auf einem Windows-Gerät (Vorschau)](../../iot-edge/how-to-install-iot-edge-on-windows.md)
+* [Installieren oder Deinstallieren von Azure IoT Edge für Linux](../../iot-edge/how-to-provision-single-device-linux-symmetric.md)
+* [Installieren und Bereitstellen von Azure IoT Edge für Linux auf einem Windows-Gerät (Vorschau)](../../iot-edge/how-to-provision-single-device-linux-on-windows-symmetric.md)
 * [Ausführen von Azure IoT Edge auf virtuellen Ubuntu-Computern in Azure](../../iot-edge/how-to-install-iot-edge-ubuntuvm.md)
 
 ## <a name="iot-edge-gateway-devices"></a>IoT Edge-Gatewaygeräte

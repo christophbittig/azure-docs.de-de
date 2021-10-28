@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 07/30/2021
 ms.author: lajanuar
 ms.custom: " devx-track-csharp"
-ms.openlocfilehash: 9b8f854a2bf5753f9e2ac047cff9f4c7fcef68da
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: b4bdf611870ed28bc1bc0c34f52c4eaaa7655173
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129715463"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130287896"
 ---
 <!-- markdownlint-disable MD024 -->
 
@@ -192,7 +192,7 @@ Table 0 has 2 rows and 6 columns.
 
 ## <a name="analyze-receipts"></a>Analysieren von Belegen
 
-In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe eines vorab trainierten Belegmodells gängige Felder in US-Belegen analysieren und extrahieren. Weitere Informationen zur Beleganalyse finden Sie im [Konzeptleitfaden zu Belegen](../../concept-receipts.md).
+In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe eines vorab trainierten Belegmodells gängige Felder in US-Belegen analysieren und extrahieren. Weitere Informationen zur Beleganalyse finden Sie im [Konzeptleitfaden zu Belegen](../../concept-receipt.md).
 
 Verwenden Sie die Methode `StartRecognizeReceiptsFromUri`, um Belege unter einer URL zu analysieren.
 
@@ -251,7 +251,7 @@ Total: '1203.39', with confidence '0.774'
 
 ## <a name="analyze-business-cards"></a>Analysieren von Visitenkarten
 
-In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe eines vorab trainierten Modells gängige Felder englischsprachiger Visitenkarten analysieren und extrahieren. Weitere Informationen zur Analyse von Visitenkarten finden Sie im [Konzeptleitfaden zu Visitenkarten](../../concept-business-cards.md).
+In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe eines vorab trainierten Modells gängige Felder englischsprachiger Visitenkarten analysieren und extrahieren. Weitere Informationen zur Analyse von Visitenkarten finden Sie im [Konzeptleitfaden zu Visitenkarten](../../concept-business-card.md).
 
 Verwenden Sie die Methode `StartRecognizeBusinessCardsFromUriAsync`, um Visitenkarten unter einer URL zu analysieren.
 
@@ -266,7 +266,7 @@ Der folgende Code verarbeitet die Visitenkarte unter dem angegebenen URI und gib
 
 ## <a name="analyze-invoices"></a>Analysieren von Rechnungen
 
-In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe eines vorab trainierten Modells gängige Rechnungsfelder analysieren und extrahieren. Weitere Informationen zur Rechnungsanalyse finden Sie im [Konzeptleitfaden zu Rechnungen](../../concept-invoices.md).
+In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe eines vorab trainierten Modells gängige Rechnungsfelder analysieren und extrahieren. Weitere Informationen zur Rechnungsanalyse finden Sie im [Konzeptleitfaden zu Rechnungen](../../concept-invoice.md).
 
 Verwenden Sie die Methode `StartRecognizeInvoicesFromUriAsync`, um Rechnungen unter einer URL zu analysieren.
 
@@ -281,7 +281,7 @@ Der folgende Code verarbeitet die Rechnung unter dem angegebenen URI und gibt di
 
 ## <a name="analyze-id-documents"></a>Analysieren von Ausweisdokumenten
 
-In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe des vordefinierten Formularerkennungs-ID-Modells wichtige Informationen aus von staatlichen Behörden ausgestellten Ausweisdokumenten (internationale Reisepässe und US-Führerscheine) analysieren und extrahieren. Weitere Informationen zur Ausweisdokumentanalyse finden Sie unter [Vordefiniertes ID-Modell der Formularerkennung für Ausweise](../../concept-identification-cards.md).
+In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe des vordefinierten Formularerkennungs-ID-Modells wichtige Informationen aus von staatlichen Behörden ausgestellten Ausweisdokumenten (internationale Reisepässe und US-Führerscheine) analysieren und extrahieren. Weitere Informationen zur Ausweisdokumentanalyse finden Sie unter [Vordefiniertes ID-Modell der Formularerkennung für Ausweise](../../concept-id-document.md).
 
 Verwenden Sie die Methode `StartRecognizeIdentityDocumentsFromUriAsync`, um Ausweisdokumente unter einem URI zu analysieren.
 

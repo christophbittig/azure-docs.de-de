@@ -13,12 +13,12 @@ ms.subservice: compliance
 ms.date: 08/18/2021
 ms.author: sama
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05633ab0a46f3aa88ab3e520b493d40527717872
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: fcf38a949d15faa896f4ac673fc53814078a087e
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129809328"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130231761"
 ---
 # <a name="tutorial-manage-the-lifecycle-of-your-group-based-licenses-in-azure-ad"></a>Tutorial: Verwalten des Lebenszyklus Ihrer gruppenbasierten Lizenzen in Azure AD
  
@@ -55,7 +55,7 @@ Weitere Informationen finden Sie unter [Lizenzanforderungen](entitlement-managem
 
 1. Wählen Sie **Weiter: Ressourcenrollen** aus, um zur Registerkarte **Ressourcenrollen** zu wechseln.
 
-2. Wählen Sie auf dieser Registerkarte die Ressourcen und die Ressourcenrolle aus, die in das Zugriffspaket aufgenommen werden sollen. In diesem Szenario klicken Sie auf **Gruppen und Teams** und suchen nach Ihrer Gruppe, der [Office-Lizenzen](/azure/active-directory/enterprise-users/licensing-groups-assign) zugewiesen wurden.
+2. Wählen Sie auf dieser Registerkarte die Ressourcen und die Ressourcenrolle aus, die in das Zugriffspaket aufgenommen werden sollen. In diesem Szenario klicken Sie auf **Gruppen und Teams** und suchen nach Ihrer Gruppe, der [Office-Lizenzen](../enterprise-users/licensing-groups-assign.md) zugewiesen wurden.
 
 3. Wählen Sie in der Liste **Rolle** die Option **Mitglied** aus.
 
@@ -141,4 +141,4 @@ In diesem Schritt können Sie das Zugriffspaket für Office-Lizenzen löschen.
 
 Informieren Sie sich über das Erstellen von Zugriffspaketen, um den Zugriff auf andere Arten von Ressourcen wie Anwendungen und Websites zu verwalten: 
 
-[Verwalten des Zugriffs auf Ressourcen in der Azure AD-Berechtigungsverwaltung](/azure/active-directory/governance/entitlement-management-access-package-first)
+[Verwalten des Zugriffs auf Ressourcen in der Azure AD-Berechtigungsverwaltung](./entitlement-management-access-package-first.md)

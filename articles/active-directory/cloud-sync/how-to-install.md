@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/10/2021
+ms.date: 10/19/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11428df3662bb03d7d74decbd7230be0fdffa44f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 4a34bda9f5f25d31dec881bd6ea1e00442fbfafc
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124742647"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130217163"
 ---
 # <a name="install-the-azure-ad-connect-provisioning-agent"></a>Installieren des Azure AD Connect-Bereitstellungs-Agents
 In diesem Artikel erhalten Sie Informationen zum Installationsvorgang für den Azure AD Connect-Bereitstellungs-Agent (Azure Active Directory) und dessen Erstkonfiguration im Azure-Portal.
@@ -32,7 +32,7 @@ Weitere Informationen und ein Beispiel finden Sie im folgenden Video.
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWK5mR]
 
 ## <a name="group-managed-service-accounts"></a>Gruppenverwaltete Dienstkonten
-Ein gruppenverwaltetes Dienstkonto (group Managed Service Account, gMSA) ist ein verwaltetes Domänenkonto, das eine automatische Kennwortverwaltung, eine vereinfachte Verwaltung von Dienstprinzipalnamen (Service Principal Name, SPN) und die Möglichkeit bietet, die Verwaltung an andere Administratoren zu delegieren. Außerdem wird diese Funktionalität auf mehrere Server erweitert. Die Azure AD Connect-Cloudsynchronisierung unterstützt und empfiehlt die Verwendung eines gruppenverwalteten Dienstkontos für die Ausführung des Agents. Weitere Informationen über gruppenverwaltete Dienstkonten finden Sie unter [Übersicht zu gruppenverwalteten Dienstkonten](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview).
+Ein gruppenverwaltetes Dienstkonto (group Managed Service Account, gMSA) ist ein verwaltetes Domänenkonto, das eine automatische Kennwortverwaltung, eine vereinfachte Verwaltung von Dienstprinzipalnamen (Service Principal Name, SPN) und die Möglichkeit bietet, die Verwaltung an andere Administratoren zu delegieren. Außerdem wird diese Funktionalität auf mehrere Server erweitert. Die Azure AD Connect-Cloudsynchronisierung unterstützt und empfiehlt die Verwendung eines gruppenverwalteten Dienstkontos für die Ausführung des Agents. Weitere Informationen über gruppenverwaltete Dienstkonten finden Sie unter [Übersicht zu gruppenverwalteten Dienstkonten](how-to-prerequisites.md#group-managed-service-accounts).
 
 
 ### <a name="upgrade-an-existing-agent-to-use-the-gmsa"></a>Aktualisieren eines vorhandenen Agents für die gMSA-Verwendung

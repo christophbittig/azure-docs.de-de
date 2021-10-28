@@ -11,12 +11,12 @@ ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 adobe-target: true
-ms.openlocfilehash: c7cf2aaeaaf9907ff87ab4805aebe04c3098b8f8
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: d994716f24c0a5dff4fd42f8152a08cabc4fe12c
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128657137"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130253419"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>Konfigurieren einer Java-App für Azure App Service
 
@@ -66,7 +66,7 @@ az webapp list-runtimes --linux | grep "JAVA\|TOMCAT\|JBOSSEAP"
 Mit dem[Maven Plugin für Azure Web Apps](https://github.com/microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin)können Sie Ihr Maven-Java-Projekt auf einfache Weise für Azure-Web-Apps mit einem Befehl im Projektstamm vorbereiten:
 
 ```shell
-mvn com.microsoft.azure:azure-webapp-maven-plugin:2.1.0:config
+mvn com.microsoft.azure:azure-webapp-maven-plugin:2.2.0:config
 ```
 
 Dieser Befehl fügt ein `azure-webapp-maven-plugin`-Plug-In und eine zugehörige Konfiguration hinzu, indem Sie aufgefordert werden, eine vorhandene Azure-Web-App auszuwählen oder eine neue zu erstellen. Dann können Sie Ihre Java-App mit dem folgenden Befehl in Azure bereitstellen:
@@ -74,12 +74,12 @@ Dieser Befehl fügt ein `azure-webapp-maven-plugin`-Plug-In und eine zugehörige
 mvn package azure-webapp:deploy
 ```
 
-Nachfolgend eine Beispielkonfiguration in`pom/xml`:
+Nachfolgend eine Beispielkonfiguration in`pom.xml`:
 ```xml
 <plugin> 
   <groupId>com.microsoft.azure</groupId>  
   <artifactId>azure-webapp-maven-plugin</artifactId>  
-  <version>2.1.0</version>  
+  <version>2.2.0</version>  
   <configuration>
     <subscriptionId>111111-11111-11111-1111111</subscriptionId>
     <resourceGroup>spring-boot-xxxxxxxxxx-rg</resourceGroup>
@@ -110,7 +110,7 @@ Nachfolgend eine Beispielkonfiguration in`pom/xml`:
 1. Richten Sie das [Gradle-Plug-In für Azure-Web-Apps](https://github.com/microsoft/azure-gradle-plugins/tree/master/azure-webapp-gradle-plugin)ein, indem Sie das Plug-In ihrem `build.gradle` hinzufügen:
     ```groovy
     plugins {
-      id "com.microsoft.azure.azurewebapp" version "1.1.0"
+      id "com.microsoft.azure.azurewebapp" version "1.2.0"
     }
     ```
 
@@ -154,7 +154,7 @@ Azure bietet nahtlose Java-App Service-Entwicklungserfahrung in beliebten Java-I
 Um JAR-Dateien in Java SE bereitzustellen, verwenden Sie den `/api/publish/`-Endpunkt der Kudu-Website. Weitere Informationen zu dieser API finden Sie in [dieser Dokumentation](./deploy-zip.md#deploy-warjarear-packages). 
 
 > [!NOTE]
->  Ihre JAR-Anwendung muss mit `app.jar` benannt werden, damit App Service die Anwendung identifizieren und ausführen kann. Das oben erwähnte Maven-Plug-In benennt Ihre Anwendung während der Bereitstellung automatisch für Sie um. Wenn Sie Ihre JAR-Datei nicht in *app.jar* umbenennen möchten, können Sie ein Shellskript mit dem Befehl zum Ausführen Ihrer JAR-App hochladen. Fügen Sie den absoluten Pfad zu diesem Skript im Abschnitt „Konfiguration“ des Portals in das Textfeld [Startdatei](/azure/app-service/faq-app-service-linux#built-in-images) ein. Das Startskript wird nicht aus dem Verzeichnis ausgeführt, in dem es abgelegt wurde. Verwenden Sie daher immer absolute Pfade, um auf Dateien in Ihrem Startskript zu verweisen (z. B.: `java -jar /home/myapp/myapp.jar`).
+>  Ihre JAR-Anwendung muss mit `app.jar` benannt werden, damit App Service die Anwendung identifizieren und ausführen kann. Das oben erwähnte Maven-Plug-In benennt Ihre Anwendung während der Bereitstellung automatisch für Sie um. Wenn Sie Ihre JAR-Datei nicht in *app.jar* umbenennen möchten, können Sie ein Shellskript mit dem Befehl zum Ausführen Ihrer JAR-App hochladen. Fügen Sie den absoluten Pfad zu diesem Skript im Abschnitt „Konfiguration“ des Portals in das Textfeld [Startdatei](./faq-app-service-linux.yml) ein. Das Startskript wird nicht aus dem Verzeichnis ausgeführt, in dem es abgelegt wurde. Verwenden Sie daher immer absolute Pfade, um auf Dateien in Ihrem Startskript zu verweisen (z. B.: `java -jar /home/myapp/myapp.jar`).
 
 #### <a name="tomcat"></a>Tomcat
 
@@ -943,7 +943,7 @@ Legen Sie als Nächstes fest, ob die Datenquelle nur für eine einzelne Anwendun
 
 #### <a name="shared-server-level-resources"></a>Gemeinsam verwendete Ressourcen auf Serverebene
 
-Wenn Sie eine gemeinsam genutzte Datenquelle auf Serverebene hinzufügen, müssen Sie die Datei „server.xml“ von Tomcat bearbeiten. Laden Sie zunächst ein [Startskript](/azure/app-service/faq-app-service-linux#built-in-images) hoch, und legen Sie unter **Konfiguration** > **Startbefehl** den Pfad des Skripts fest. Das Startskript kann per [FTP](deploy-ftp.md) hochgeladen werden.
+Wenn Sie eine gemeinsam genutzte Datenquelle auf Serverebene hinzufügen, müssen Sie die Datei „server.xml“ von Tomcat bearbeiten. Laden Sie zunächst ein [Startskript](./faq-app-service-linux.yml) hoch, und legen Sie unter **Konfiguration** > **Startbefehl** den Pfad des Skripts fest. Das Startskript kann per [FTP](deploy-ftp.md) hochgeladen werden.
 
 Ihr Startskript führt eine [XSL-Transformation](https://www.w3schools.com/xml/xsl_intro.asp) für die Datei „server.xml“ durch und gibt die resultierende XML-Datei unter `/usr/local/tomcat/conf/server.xml` aus. Das Startskript muss „libxslt“ per APK installieren. Die XSL-Datei und das Startskript können per FTP hochgeladen werden. Im Anschluss finden Sie ein Beispiel für ein Startskript:
 

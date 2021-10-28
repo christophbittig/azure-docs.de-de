@@ -8,12 +8,12 @@ manager: karenh444
 ms.author: barclayn
 ms.topic: tutorial
 ms.date: 10/08/2021
-ms.openlocfilehash: 2e0d1028efab3b157c21c90944a8bcd41be04c55
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: c2f3757c62399049c1ecdc51c5ee2b873dd6c154
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130070734"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130236806"
 ---
 # <a name="issue-azure-ad-verifiable-credentials-from-an-application-preview"></a>Ausstellen von Azure AD-Nachweisen über eine Anwendung (Vorschau)
 
@@ -38,7 +38,7 @@ Im folgenden Diagramm sind die Architektur für Azure AD-Nachweise und die Komp
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Bevor Sie beginnen, sollten Sie [einen Mandanten für den Azure AD-Nachweis einrichten](/azure/active-directory/verifiable-credentials/verifiable-credentials-configure-tenant).
+- Bevor Sie beginnen, sollten Sie [einen Mandanten für den Azure AD-Nachweis einrichten](./verifiable-credentials-configure-tenant.md).
 - Installieren Sie [Git](https://git-scm.com/downloads), um das Repository zu klonen, das als Host für die Beispiel-App fungiert.
 - [Visual Studio Code](https://code.visualstudio.com/Download) oder ein ähnlicher Code-Editor
 - [.NET 5.0](https://dotnet.microsoft.com/download/dotnet/5.0)
@@ -49,11 +49,11 @@ Im folgenden Diagramm sind die Architektur für Azure AD-Nachweise und die Komp
 
 ## <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
-Azure Blob Storage ist die Objektspeicherlösung von Microsoft für die Cloud. Der Azure AD-Nachweisdienst nutzt [Azure Blob Storage](/azure/storage/blobs/storage-blobs-introduction), um die Nachweiskonfigurationsdateien beim Ausstellen von Nachweisen zu speichern.
+Azure Blob Storage ist die Objektspeicherlösung von Microsoft für die Cloud. Der Azure AD-Nachweisdienst nutzt [Azure Blob Storage](../../storage/blobs/storage-blobs-introduction.md), um die Nachweiskonfigurationsdateien beim Ausstellen von Nachweisen zu speichern.
 
 Erstellen und konfigurieren Sie Ihre Azure Blob Storage-Instanz mithilfe der folgenden Schritte:
 
-1. Falls Sie kein Azure Blob Storage-Konto besitzen, [erstellen Sie ein Speicherkonto](/azure/storage/common/storage-account-create).
+1. Falls Sie kein Azure Blob Storage-Konto besitzen, [erstellen Sie ein Speicherkonto](../../storage/common/storage-account-create.md).
 1. Erstellen Sie nach der Erstellung des Speicherkontos einen Container. Scrollen Sie im linken Menü für das Speicherkonto zum Abschnitt **Datenspeicher**, und wählen Sie **Container** aus.
 1. Wählen Sie die Schaltfläche **+ Container**.
 1. Geben Sie unter **Name** einen Namen für den neuen Container ein. Der Containername muss klein geschrieben werden, mit einem Buchstaben oder einer Zahl beginnen und darf nur Buchstaben, Zahlen und Bindestriche (-) enthalten. Beispiel: *vc-container*
@@ -87,7 +87,7 @@ Gewähren Sie nach dem Erstellen des Containers dem angemeldeten Benutzer die ri
         ![Screenshot: Einrichten der neuen Rollenzuweisung](media/verifiable-credentials-configure-issuer/add-role-assignment-container.png)
 
 >[!IMPORTANT]
->Standardmäßig wird die Rolle " Besitzer " dem Container Ersteller zugewiesen. Die Rolle „Besitzer“ ist allein nicht ausreichend. Ihr Konto benötigt die Rolle „Leser von Speicherblobdaten“. Weitere Informationen finden Sie unter [Zuweisen einer Azure-Rolle für den Zugriff auf Blob- und Warteschlangendaten über das Azure-Portal](/azure/storage/blobs/assign-azure-role-data-access).
+>Standardmäßig wird die Rolle " Besitzer " dem Container Ersteller zugewiesen. Die Rolle „Besitzer“ ist allein nicht ausreichend. Ihr Konto benötigt die Rolle „Leser von Speicherblobdaten“. Weitere Informationen finden Sie unter [Zuweisen einer Azure-Rolle für den Zugriff auf Blob- und Warteschlangendaten über das Azure-Portal](../../storage/blobs/assign-azure-role-data-access.md).
 
 ### <a name="upload-the-configuration-files"></a>Hochladen der Konfigurationsdateien
 

@@ -9,12 +9,12 @@ ms.custom:
 - references_regions
 - fasttrack-edit
 - devx-track-azurecli
-ms.openlocfilehash: 2bbef3190a38d1c0f9b058f2c57050ecd85756e3
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: c549f29e729eec4403f2943f51e8acb4a9f21b37
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129984761"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130248391"
 ---
 # <a name="azure-functions-premium-plan"></a>Premium-Tarif für Azure Functions
 
@@ -98,7 +98,7 @@ Zusätzlich zur [Maximalen Anzahl von Instanzen des Tarifs](#plan-and-sku-settin
 
 ## <a name="private-network-connectivity"></a>Private Netzwerkkonnektivität
 
-Funktions-App, die in einem Premium-Plan bereitgestellt wurden, können von der [VNET-Integration für Web-Apps](../app-service/web-sites-integrate-with-vnet.md) profitieren. Ist diese Integration konfiguriert, kann Ihre App mit Ressourcen in Ihrem VNET oder geschützt über Dienstendpunkte kommunizieren. IP-Einschränkungen sind ebenfalls für die App verfügbar, um eingehenden Datenverkehr zu beschränken.
+Funktions-App, die in einem Premium-Plan bereitgestellt wurden, können von der [VNET-Integration für Web-Apps](../app-service/overview-vnet-integration.md) profitieren. Ist diese Integration konfiguriert, kann Ihre App mit Ressourcen in Ihrem VNET oder geschützt über Dienstendpunkte kommunizieren. IP-Einschränkungen sind ebenfalls für die App verfügbar, um eingehenden Datenverkehr zu beschränken.
 
 Wenn Sie Ihrer Funktions-App in einem Premium-Plan ein Subnetz zuweisen, benötigen Sie ein Subnetz mit genügend IP-Adressen für jede mögliche-Instanz. Wir benötigen einen IP-Block mit mindestens 100 verfügbaren Adressen.
 

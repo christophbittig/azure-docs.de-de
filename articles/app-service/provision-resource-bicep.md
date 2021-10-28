@@ -5,24 +5,24 @@ author: seligj95
 ms.author: msangapu
 ms.topic: article
 ms.date: 8/26/2021
-ms.openlocfilehash: ff9136889a475e8e98406476ea503982025d298d
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 764a44a79ce6f892f0715dde6d657755a3048acf
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129059226"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130257193"
 ---
 # <a name="create-app-service-app-using-bicep"></a>Erstellen einer App Service-App mit Azure Bicep
 
-Beginnen Sie mit der Verwendung von [Azure App Service](overview.md), indem Sie eine App mithilfe einer [Bicep](/azure/azure-resource-manager/bicep/)-Datei und der [Azure CLI](/cli/azure/get-started-with-azure-cli) in Cloud Shell in der Cloud Shell bereitstellen. Da Sie einen kostenlosen App Service-Tarif verwenden, fallen bei dieser Schnellstartanleitung keine Kosten an.
+Beginnen Sie mit der Verwendung von [Azure App Service](overview.md), indem Sie eine App mithilfe einer [Bicep](../azure-resource-manager/bicep/index.yml)-Datei und der [Azure CLI](/cli/azure/get-started-with-azure-cli) in Cloud Shell in der Cloud Shell bereitstellen. Da Sie einen kostenlosen App Service-Tarif verwenden, fallen bei dieser Schnellstartanleitung keine Kosten an.
 
-Bicep ist eine domänenspezifische Sprache (DSL), die deklarative Syntax zum Bereitstellen von Azure-Ressourcen verwendet. Sie bietet eine präzise Syntax, zuverlässige Typsicherheit und Unterstützung für die Wiederverwendung von Code. Sie können Bicep anstelle von JSON verwenden, um Azure Resource Manager-Vorlagen ([ARM-Vorlagen](/azure/azure-resource-manager/templates/overview)) zu erstellen. Die JSON-Syntax zum Erstellen einer ARM-Vorlage kann ausführlich sein und komplizierte Ausdrücke erfordern. Die Bicep-Syntax reduziert diese Komplexität und erleichtert die Entwicklung. Bicep ist eine transparente Abstraktion von ARM-Vorlagen-JSON-Code und büßt keine der JSON-Vorlagenfunktionen ein. Während der Bereitstellung transpiliert die Bicep CLI eine Bicep-Datei in ARM-Vorlagen-JSON-Code.
+Bicep ist eine domänenspezifische Sprache (DSL), die deklarative Syntax zum Bereitstellen von Azure-Ressourcen verwendet. Sie bietet eine präzise Syntax, zuverlässige Typsicherheit und Unterstützung für die Wiederverwendung von Code. Sie können Bicep anstelle von JSON verwenden, um Azure Resource Manager-Vorlagen ([ARM-Vorlagen](../azure-resource-manager/templates/overview.md)) zu erstellen. Die JSON-Syntax zum Erstellen einer ARM-Vorlage kann ausführlich sein und komplizierte Ausdrücke erfordern. Die Bicep-Syntax reduziert diese Komplexität und erleichtert die Entwicklung. Bicep ist eine transparente Abstraktion von ARM-Vorlagen-JSON-Code und büßt keine der JSON-Vorlagenfunktionen ein. Während der Bereitstellung transpiliert die Bicep CLI eine Bicep-Datei in ARM-Vorlagen-JSON-Code.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-Zum effektiven Erstellen von Ressourcen mit Bicep müssen Sie eine Bicep-[Entwicklungsumgebung](/azure/azure-resource-manager/bicep/install) einrichten. Die Bicep-Erweiterung für [Visual Studio Code](https://code.visualstudio.com/) bietet Sprachunterstützung und automatische Vervollständigung für Ressourcen. Die Erweiterung unterstützt Sie beim Erstellen und Überprüfen von Bicep-Dateien und wird für die Entwickler empfohlen, die nach Abschluss dieser Schnellstartanleitung Ressourcen mithilfe von Bicep erstellen möchten.
+Zum effektiven Erstellen von Ressourcen mit Bicep müssen Sie eine Bicep-[Entwicklungsumgebung](../azure-resource-manager/bicep/install.md) einrichten. Die Bicep-Erweiterung für [Visual Studio Code](https://code.visualstudio.com/) bietet Sprachunterstützung und automatische Vervollständigung für Ressourcen. Die Erweiterung unterstützt Sie beim Erstellen und Überprüfen von Bicep-Dateien und wird für die Entwickler empfohlen, die nach Abschluss dieser Schnellstartanleitung Ressourcen mithilfe von Bicep erstellen möchten.
 
 ## <a name="review-the-template"></a>Überprüfen der Vorlage
 
@@ -78,9 +78,9 @@ Diese Vorlage enthält mehrere vordefinierte Parameter. In der folgenden Tabelle
 
 | Parameter | type    | Standardwert                | Beschreibung |
 |------------|---------|------------------------------|-------------|
-| webAppName | string  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | App-Name |
-| location   | string  | "[[resourceGroup().location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | App-Region |
-| sku        | string  | "F1"                         | Instanzgröße  |
+| webAppName | Zeichenfolge  | "webApp- **[`<uniqueString>`](../azure-resource-manager/templates/template-functions-string.md#uniquestring)** " | App-Name |
+| location   | Zeichenfolge  | "[[resourceGroup().location](../azure-resource-manager/templates/template-functions-resource.md#resourcegroup)]" | App-Region |
+| sku        | Zeichenfolge  | "F1"                         | Instanzgröße  |
 | linuxFxVersion   | string  | "NODE&#124;14-LTS"       | Sprachstapel &#124; Version |
 | repositoryUrl    | string  | "https://github.com/Azure-Samples/nodejs-docs-hello-world"    | Externes Git-Repository (optional) |
 | Verzweigung    | string  | „master“    | Standardbranch für Codebeispiel |
@@ -91,7 +91,7 @@ Diese Vorlage enthält mehrere vordefinierte Parameter. In der folgenden Tabelle
 
 Kopieren Sie die Vorlage, fügen Sie sie in Ihre/n bevorzugte/n Editor/IDE ein, und speichern Sie die Datei in Ihrem lokalen Arbeitsverzeichnis.
 
-Hier wird die Azure CLI zum Bereitstellen der Vorlage verwendet. Sie können auch das Azure-Portal, Azure PowerShell oder die REST-API verwenden. Informationen zu anderen Bereitstellungsmethoden finden Sie unter [Bicep-Bereitstellungsbefehle](/azure/azure-resource-manager/bicep/deploy-cli).
+Hier wird die Azure CLI zum Bereitstellen der Vorlage verwendet. Sie können auch das Azure-Portal, Azure PowerShell oder die REST-API verwenden. Informationen zu anderen Bereitstellungsmethoden finden Sie unter [Bicep-Bereitstellungsbefehle](../azure-resource-manager/bicep/deploy-cli.md).
 
 Der folgende Code erstellt eine Ressourcengruppe, einen App Service-Plan und eine Web-App. Eine Standardressourcengruppe, ein App Service-Plan und ein Standort wurden für Sie festgelegt. Ersetzen Sie `<app-name>` durch einen global eindeutigen App-Namen (gültige Zeichen sind `a-z`, `0-9` und `-`).
 
@@ -126,6 +126,6 @@ Rufen Sie `http://<app_name>.azurewebsites.net/` auf, und überprüfen Sie, ob d
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Bicep-Dokumentation](/azure/azure-resource-manager/bicep/)
+> [Bicep-Dokumentation](../azure-resource-manager/bicep/index.yml)
 > [!div class="nextstepaction"]
-> [Bicep-Beispiele für Azure App Service](/azure/app-service/samples-bicep)
+> [Bicep-Beispiele für Azure App Service](./samples-bicep.md)

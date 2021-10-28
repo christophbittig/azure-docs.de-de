@@ -12,15 +12,15 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/14/2021
+ms.date: 10/20/2021
 ms.author: b-juche
 ms.custom: references_regions
-ms.openlocfilehash: c8cef623e26882443379fff73edcc1999463ec3e
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 013b456bb3a101e29de5aaae954914615123224f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130045766"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130233242"
 ---
 # <a name="cross-region-replication-of-azure-netapp-files-volumes"></a>Regionsübergreifende Replikation von Azure NetApp Files-Volumes
 
@@ -35,6 +35,7 @@ Die Azure NetApp Files-Volumereplikation wird zwischen verschiedenen [Azure-Regi
 | Gebiet | Regionspaar A | Regionspaar B  |
 |:--- |:--- |:--- |
 | Australien | Australien (Osten) | Australien, Südosten |
+| Asien-Pazifik | Asien, Osten | Asien, Südosten |
 | Canada | Kanada, Mitte | Kanada, Osten |
 | Europa | Nordeuropa | Europa, Westen |
 | Deutschland | Deutschland, Westen-Mitte | Deutschland, Norden |
@@ -44,8 +45,10 @@ Die Azure NetApp Files-Volumereplikation wird zwischen verschiedenen [Azure-Regi
 | Nordamerika | USA (Ost) 2 | USA (Mitte) |
 | Nordamerika | USA Nord Mitte | USA Süd Mitte|
 | Norwegen | Norwegen, Osten | Norwegen, Westen |
+| Schweiz | Schweiz, Norden | Schweiz, Westen |
 | UK | UK, Süden | UK, Westen |
 | Vereinigte Arabische Emirate | Vereinigte Arabische Emirate, Norden | VAE, Mitte |
+| US Government | US Gov Arizona | US Gov Texas |
 | US Government | US Government, Virginia | US Gov Texas |
 
 ### <a name="azure-regional-non-standard-pairs"></a>Nicht dem Standard entsprechende Azure-Regionspaare
@@ -62,6 +65,7 @@ Die Azure NetApp Files-Volumereplikation wird zwischen verschiedenen [Azure-Regi
 | Nordamerika | USA Süd Mitte | USA (Ost) 2 |
 | Nordamerika | USA Süd Mitte | USA (Mitte) |
 | Nordamerika | USA, Westen 2 | East US |
+| US Government | US Gov Arizona | US Government, Virginia |
 
 ## <a name="service-level-objectives"></a>Servicelevel-Zielpunkte (SLO)
 

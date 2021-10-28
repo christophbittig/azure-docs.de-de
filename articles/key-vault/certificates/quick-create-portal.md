@@ -10,45 +10,26 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/24/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b7a3126aef94ccdef7f6c9120ddeb6f20d872ab5
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.openlocfilehash: c7559ed3f1a232cf39d2484b007a13b40b635ced
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107815772"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130258747"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-the-azure-portal"></a>Schnellstart: Festlegen und Abrufen eines Zertifikats aus Azure Key Vault über das Azure-Portal
 
 Azure Key Vault ist ein Clouddienst, der als sicherer Geheimnisspeicher fungiert. Dadurch können Schlüssel, Kennwörter, Zertifikate und andere Geheimnisse sicher gespeichert werden. Azure Key Vault-Instanzen können über das Azure-Portal erstellt und verwaltet werden. In dieser Schnellstartanleitung erstellen Sie einen Schlüsseltresor und verwenden diesen dann, um ein Zertifikat zu speichern. Weitere Informationen zu Key Vault finden Sie in der [Übersicht](../general/overview.md).
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+## <a name="prerequisites"></a>Voraussetzungen
+
+Sie benötigen ein Azure-Abonnement, um auf Azure Key Vault zuzugreifen. Wenn Sie noch kein Abonnement haben, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+
+Der gesamte Zugriff auf Geheimnisse erfolgt über Azure Key Vault. Für diese Schnellstartanleitung können Sie einen Schlüsseltresor im [Azure-Portal](../general/quick-create-portal.md), mit der [Azure-Befehlszeilenschnittstelle](../general/quick-create-cli.md) oder mit [Azure PowerShell](../general/quick-create-powershell.md) erstellen.
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
 Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
-
-## <a name="create-a-vault"></a>Erstellen eines Tresors
-
-1. Wählen Sie im Menü des Azure-Portals oder auf der **Startseite** die Option **Ressource erstellen** aus.
-2. Geben Sie **Key Vault** in das Suchfeld ein.
-3. Wählen Sie in der Ergebnisliste **Key Vault** aus.
-4. Klicken Sie im Abschnitt „Key Vault“ auf **Erstellen**.
-5. Geben Sie im Abschnitt **Schlüsseltresor erstellen** folgende Informationen ein:
-    - **Name**: Es ist ein eindeutiger Name erforderlich. Für diese Schnellstartanleitung verwenden wir **Example-Vault**. 
-    - **Abonnement**: Wählen Sie ein Abonnement aus.
-    - Klicken Sie unter **Ressourcengruppe** auf **Neu erstellen**, und geben Sie einen Ressourcengruppennamen ein.
-    - Wählen Sie im Pulldownmenü **Speicherort** einen Speicherort aus.
-    - Behalten Sie bei den anderen Optionen die Standardeinstellungen bei.
-6. Klicken Sie nach der Angabe der obigen Informationen auf **Erstellen**.
-
-Beachten Sie die beiden folgenden Eigenschaften:
-
-* **Tresorname**: In diesem Beispiel ist das **Example-Vault**. Dieser Name wird noch für andere Schritte benötigt.
-* **Tresor-URI**: In diesem Beispiel `https://example-vault.vault.azure.net/`. Anwendungen, die Ihren Tresor über die zugehörige REST-API nutzen, müssen diesen URI verwenden.
-
-An diesem Punkt ist nur Ihr Azure-Konto zum Ausführen von Vorgängen für den neuen Tresor autorisiert.
-
-![Ausgabe nach Erstellung der Key Vault-Instanz](../media/certificates/quick-create-portal/vault-properties.png)
 
 ## <a name="add-a-certificate-to-key-vault"></a>Hinzufügen eines Zertifikats zu Key Vault
 
@@ -68,6 +49,7 @@ Nachdem Sie die Meldung erhalten haben, dass das Zertifikat erfolgreich erstellt
 ![Zertifikateigenschaften](../media/certificates/quick-create-portal/current-version-hidden.png)
 
 ## <a name="export-certificate-from-key-vault"></a>Exportieren eines Zertifikats aus Key Vault
+
 Sie können das Zertifikat herunterladen, indem Sie auf eine der Schaltflächen „Im CER-Format herunterladen“ oder „Im PFX-/PEM-Format herunterladen“ klicken. 
 
 ![Zertifikatdownload](../media/certificates/quick-create-portal/current-version-shown.png)

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 12/01/2020
 ms.author: kumud
-ms.openlocfilehash: 8630451fe4ff8b3468b5c31168a417a72e8769f3
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.openlocfilehash: d420c535ba7d230c357337c1500d0e2b187ec25a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114386280"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130262810"
 ---
 # <a name="integrate-azure-services-with-virtual-networks-for-network-isolation"></a>Integrieren von Azure-Diensten mit virtuellen Netzwerken zur Netzwerkisolation
 
@@ -131,6 +131,6 @@ Azure-Dienstressourcen, die auf virtuelle Netzwerke beschränkt und so geschütz
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie, wie Sie Ihre [App in ein Azure-Netzwerk integrieren können](../app-service/web-sites-integrate-with-vnet.md).
+- Erfahren Sie, wie Sie Ihre [App in ein Azure-Netzwerk integrieren können](../app-service/overview-vnet-integration.md).
 - Erfahren Sie, wie Sie den [Zugriff auf Ressourcen mithilfe von Diensttags einschränken](tutorial-restrict-network-access-to-resources.md) können.
 - Erfahren Sie, wie Sie eine [private Verbindung mit einem Azure Cosmos-Konto mithilfe von Azure Private Link herstellen](../private-link/tutorial-private-endpoint-cosmosdb-portal.md).

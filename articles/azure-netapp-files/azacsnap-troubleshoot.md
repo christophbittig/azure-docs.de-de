@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 05/17/2021
 ms.author: phjensen
-ms.openlocfilehash: 0fb0b0fc0734cc05952457e0e6fc6dc5ff5151b2
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f44ad9257f6fbc6b8ca232964f9bee29cea57384
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128614332"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130256487"
 ---
 # <a name="troubleshoot-azure-application-consistent-snapshot-tool"></a>Problembehandlung für das Tool für anwendungskonsistente Momentaufnahmen in Azure
 
@@ -68,7 +68,7 @@ Sie können testen, ob der Dienstprinzipal ordnungsgemäß konfiguriert ist, ind
 
 **Lösung:**
 
-1. Öffnen Sie eine [Cloud Shell](/azure/cloud-shell/overview)-Sitzung in Ihrem Azure-Portal. 
+1. Öffnen Sie eine [Cloud Shell](../cloud-shell/overview.md)-Sitzung in Ihrem Azure-Portal. 
 1. Erstellen Sie ein Testverzeichnis (z. B. `mkdir azacsnap`)
 1. Wechseln Sie mit „cd“ zum Verzeichnis „azacsnap“ und laden Sie die neueste Version des azacsnap-Tools herunter.
     

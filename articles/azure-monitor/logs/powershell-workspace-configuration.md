@@ -4,14 +4,14 @@ description: In Log Analytics-Arbeitsbereichen in Azure Monitor werden Daten von
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/26/2020
+ms.date: 10/20/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a1b0c77646b8b57a2b1175367d6a9e91388f4874
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: fb4f053c0bab838467ebce742cafdc909d4ce5c9
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122351315"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130219868"
 ---
 # <a name="create-and-configure-a-log-analytics-workspace-in-azure-monitor-using-powershell"></a>Erstellen und Konfigurieren eines Log Analytics-Arbeitsbereichs in Azure Monitor mithilfe von PowerShell
 Dieser Artikel enthält zwei Codebeispiele, die zeigen, wie ein Log Analytics-Arbeitsbereich in Azure Monitor erstellt und konfiguriert wird.  

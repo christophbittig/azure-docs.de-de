@@ -11,12 +11,12 @@ ms.date: 10/14/2021
 ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: 6da41c32b3b67cbd4e418f844ee73ff4ee85341e
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 51ed0b6bd0f5bd5eabf76c6789ab36a922653fd1
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130037393"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130222834"
 ---
 # <a name="azure-ad-b2c-custom-policy-overview"></a>Übersicht über Benutzerdefinierte Azure AD B2C-Richtlinien
 
@@ -160,7 +160,7 @@ Erste Schritte mit benutzerdefinierten Richtlinien in Azure AD B2C:
 
 1. [Erstellen eines Azure AD B2C-Mandanten](tutorial-create-tenant.md)
 1. [Registrieren Sie im Azure-Portal eine Webanwendung](tutorial-register-applications.md), damit Sie Ihre Richtlinie testen können.
-1. Fügen Sie die erforderlichen [Richtlinienschlüssel](tutorial-create-user-flows.md?pivots=b2c-custom-policy#add-signing-and-encryption-keys) hinzu, und [registrieren Sie die Identity Experience Framework-Anwendungen](tutorial-create-user-flows.md?pivots=b2c-custom-policy#register-identity-experience-framework-applications).
+1. Fügen Sie die erforderlichen [Richtlinienschlüssel](tutorial-create-user-flows.md?pivots=b2c-custom-policy#add-signing-and-encryption-keys-for-identity-experience-framework-applications) hinzu, und [registrieren Sie die Identity Experience Framework-Anwendungen](tutorial-create-user-flows.md?pivots=b2c-custom-policy#register-identity-experience-framework-applications).
 1. [Laden Sie das Starter Pack für Azure AD B2C-Richtlinien herunter](tutorial-create-user-flows.md?pivots=b2c-custom-policy#get-the-starter-pack) und in Ihren Mandanten hoch. 
 1. Nachdem Sie das Starter Pack hochgeladen haben, [testen Sie Ihre Registrierungs- oder Anmelderichtlinie](tutorial-create-user-flows.md?pivots=b2c-custom-policy#test-the-custom-policy).
 1. Es wird empfohlen, [Visual Studio Code](https://code.visualstudio.com/) (VS Code) herunterzuladen und zu installieren. Visual Studio Code ist ein einfacher, aber dennoch leistungsfähiger Quellcode-Editor, der auf Ihrem Desktop ausgeführt wird und für Windows, macOS und Linux verfügbar ist. Mit VS Code können Sie schnell durch Ihre benutzerdefinierten Azure AD B2C-Richtliniendateien (XML-Dateien) navigieren und diese bearbeiten, indem Sie die [Azure AD B2C-Erweiterung für VS Code](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c) installieren.

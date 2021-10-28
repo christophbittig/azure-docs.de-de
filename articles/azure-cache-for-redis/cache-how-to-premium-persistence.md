@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/13/2021
-ms.openlocfilehash: b3e6e4336a86b71fe3bfb096cbfc8e1ddc65a186
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: 6a8bb7c24b7d2713286141cbd160f2ff400f0a1b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130063125"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130252918"
 ---
 # <a name="configure-data-persistence-for-a-premium-azure-cache-for-redis-instance"></a>Konfigurieren von Datenpersistenz für Premium-Instanzen von Azure Cache for Redis
 
@@ -60,10 +60,10 @@ Durch die Persistenz werden Redis-Daten in ein Azure Storage-Konto geschrieben,
 
 8. Zum Aktivieren der RDB-Persistenz wählen Sie **RDB** aus, und konfigurieren Sie die Einstellungen.
   
-   | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG |
+   | Einstellung      | Vorgeschlagener Wert  | Beschreibung |
    | ------------ |  ------- | -------------------------------------------------- |
    | **Sicherungshäufigkeit** | Dropdown, und wählen Sie ein Sicherungsintervall aus. Zur Auswahl stehen **15 Minuten**, **30 Minuten**, **60 Minuten**, **6 Stunden**, **12 Stunden** und **24 Stunden**. | Dieses Intervall wird ab dem Moment rückwärts gezählt, an dem der vorherige Sicherungsvorgang erfolgreich abgeschlossen wird. Wenn das Intervall abgelaufen ist, wird eine neue Sicherung gestartet. |
-   | **Speicherkonto** | Öffnen Sie die Dropdownliste, und wählen Sie Ihr Speicherkonto aus. | Wählen Sie ein Speicherkonto aus, das sich in derselben Region und demselben Abonnement wie der Cache befindet. Ein **Storage Premium**-Konto wird empfohlen, da es einen höheren Durchsatz hat. Außerdem kann die Verwendung des Features „Soft Delete“ (vorläufiges Löschen) im Speicherkonto zu höheren Speicherkosten führen. Weitere Informationen finden Sie unter [Preise und Abrechnung](/azure/storage/blobs/soft-delete-blob-overview). |
+   | **Speicherkonto** | Öffnen Sie die Dropdownliste, und wählen Sie Ihr Speicherkonto aus. | Wählen Sie ein Speicherkonto aus, das sich in derselben Region und demselben Abonnement wie der Cache befindet. Ein **Storage Premium**-Konto wird empfohlen, da es einen höheren Durchsatz hat. Außerdem kann die Verwendung des Features „vorläufiges Löschen“ im Speicherkonto zu höheren Speicherkosten führen. Weitere Informationen finden Sie unter [Preise und Abrechnung](../storage/blobs/soft-delete-blob-overview.md). |
    | **Storage Key (Speicherschlüssel)** | Öffnen Sie die Dropdownliste, und wählen Sie **Primärer Schlüssel** oder **Sekundärer Schlüssel** aus. | Wenn der Speicherschlüssel für Ihr Persistenzkonto neu generiert wird, müssen Sie den Schlüssel über die Dropdownliste **Speicherschlüssel** neu konfigurieren. |
 
     Die erste Sicherung wird gestartet, sobald das Intervall für die Sicherungshäufigkeit abgelaufen ist.
@@ -73,9 +73,9 @@ Durch die Persistenz werden Redis-Daten in ein Azure Storage-Konto geschrieben,
   
 9. Zum Aktivieren der AOF-Persistenz wählen Sie **AOF** aus, und konfigurieren Sie die Einstellungen.
 
-   | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG |
+   | Einstellung      | Vorgeschlagener Wert  | Beschreibung |
    | ------------ |  ------- | -------------------------------------------------- |
-   | **Erstes Speicherkonto** | Öffnen Sie die Dropdownliste, und wählen Sie Ihr Speicherkonto aus. | Wählen Sie ein Speicherkonto aus, das sich in derselben Region und demselben Abonnement wie der Cache befindet. Ein **Storage Premium**-Konto wird empfohlen, da es einen höheren Durchsatz hat. Außerdem kann die Verwendung des Features „vorläufiges Löschen“ im Speicherkonto zu höheren Speicherkosten führen. Weitere Informationen finden Sie unter [Preise und Abrechnung](/azure/storage/blobs/soft-delete-blob-overview). |
+   | **Erstes Speicherkonto** | Öffnen Sie die Dropdownliste, und wählen Sie Ihr Speicherkonto aus. | Wählen Sie ein Speicherkonto aus, das sich in derselben Region und demselben Abonnement wie der Cache befindet. Ein **Storage Premium**-Konto wird empfohlen, da es einen höheren Durchsatz hat. Außerdem kann die Verwendung des Features „vorläufiges Löschen“ im Speicherkonto zu höheren Speicherkosten führen. Weitere Informationen finden Sie unter [Preise und Abrechnung](../storage/blobs/soft-delete-blob-overview.md). |
    | **Erster Speicherschlüssel** | Öffnen Sie die Dropdownliste, und wählen Sie **Primärer Schlüssel** oder **Sekundärer Schlüssel** aus. | Wenn der Speicherschlüssel für Ihr Persistenzkonto neu generiert wird, müssen Sie den Schlüssel über die Dropdownliste **Speicherschlüssel** neu konfigurieren. |
    | **Zweites Speicherkonto** | (Optional) Öffnen Sie die Dropdownliste, und wählen Sie Ihr sekundäres Speicherkonto aus. | Sie können optional ein weiteres Speicherkonto konfigurieren. Wenn ein zweites Storage-Konto konfiguriert wurde, werden Schreibvorgänge im Replikatcache in dieses zweite Speicherkonto geschrieben. |
    | **Zweiter Speicherschlüssel** | (Optional) Öffnen Sie die Dropdownliste, und wählen Sie **Primärer Schlüssel** oder **Sekundärer Schlüssel** aus. | Wenn der Speicherschlüssel für Ihr Persistenzkonto neu generiert wird, müssen Sie den Schlüssel über die Dropdownliste **Speicherschlüssel** neu konfigurieren. |
@@ -86,7 +86,7 @@ Durch die Persistenz werden Redis-Daten in ein Azure Storage-Konto geschrieben,
 
 11. Geben Sie optional auf der Registerkarte **Tags** den Namen und den Wert ein, wenn Sie die Ressource kategorisieren möchten.
 
-12. Klicken Sie auf **Überprüfen + erstellen**. Sie werden zur Registerkarte „Überprüfen und erstellen“ weitergeleitet, auf der Azure Ihre Konfiguration überprüft.
+12. Klicken Sie auf **Überprüfen und erstellen**. Sie werden zur Registerkarte „Überprüfen und erstellen“ weitergeleitet, auf der Azure Ihre Konfiguration überprüft.
 
 13. Wenn die grüne Meldung „Validierung erfolgreich“ angezeigt wird, wählen Sie **Erstellen** aus.
 
@@ -154,7 +154,7 @@ Ja, der genutzte Speicherplatz wird Ihnen gemäß dem Preismodell des verwendete
 
 ### <a name="how-frequently-does-rdb-and-aof-persistence-write-to-my-blobs-and-should-i-enable-soft-delete"></a>Wie häufig schreiben RDB- und AOF-Persistenz in meine Blobs, und sollte ich vorläufiges Löschen aktivieren?
 
-Vorläufiges Löschen wird nicht empfohlen. RDB- und AOF-Persistenz können so häufig wie jede Stunde, alle paar Minuten oder jede Sekunde in Ihre Blobs schreiben. Außerdem bedeutet das Aktivieren des vorläufigen Löschens für ein Speicherkonto, dass Azure Cache for Redis die Speicherkosten nicht minimieren kann, indem die alten Sicherungsdaten gelöscht werden. Vorläufiges Löschen kann mit den typischen Datengrößen eines Caches und sekündlichen Schreibvorgängen schnell teuer werden. Weitere Informationen zu den Kosten des vorläufigen Löschens finden Sie unter [Preise und Abrechnung](/azure/storage/blobs/soft-delete-blob-overview).
+Vorläufiges Löschen wird nicht empfohlen. RDB- und AOF-Persistenz können so häufig wie jede Stunde, alle paar Minuten oder jede Sekunde in Ihre Blobs schreiben. Außerdem bedeutet das Aktivieren des vorläufigen Löschens für ein Speicherkonto, dass Azure Cache for Redis die Speicherkosten nicht minimieren kann, indem die alten Sicherungsdaten gelöscht werden. Vorläufiges Löschen kann mit den typischen Datengrößen eines Caches und sekündlichen Schreibvorgängen schnell teuer werden. Weitere Informationen zu den Kosten des vorläufigen Löschens finden Sie unter [Preise und Abrechnung](../storage/blobs/soft-delete-blob-overview.md).
 
 ### <a name="can-i-change-the-rdb-backup-frequency-after-i-create-the-cache"></a>Kann ich die Sicherungshäufigkeit für RDB-Persistenz ändern, nachdem ich den Cache erstellt habe?
 

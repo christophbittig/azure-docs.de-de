@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/03/2020
 ms.author: kumud
-ms.openlocfilehash: 57d719f5ea56123c4b237e48f07f1e82fd885b3b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 9445ff2960a9f774d8b55fa1bf983a238b0b0295
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128624802"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130262829"
 ---
 # <a name="what-is-azure-virtual-network"></a>Was ist Azure Virtual Network?
 
@@ -27,7 +27,7 @@ Mit virtuellen Azure-Netzwerken können Azure-Ressourcen sicher untereinander so
 
 ### <a name="communicate-with-the-internet"></a>Kommunikation mit dem Internet
 
-Alle Ressourcen in einem VNET können standardmäßig in ausgehender Richtung mit dem Internet kommunizieren. Zur Kommunikation in eingehender Richtung muss der entsprechenden Ressource eine öffentliche IP-Adresse oder eine öffentliche Load Balancer-Instanz zugewiesen werden. Die öffentliche IP-Adresse bzw. die öffentliche Load Balancer-Instanz kann auch zum Verwalten der ausgehenden Verbindungen verwendet werden.  Weitere Informationen zu ausgehenden Verbindungen in Azure finden Sie unter [Ausgehende Verbindungen in Azure](../load-balancer/load-balancer-outbound-connections.md), [Erstellen, Ändern oder Löschen einer öffentlichen IP-Adresse](virtual-network-public-ip-address.md) und [Was versteht man unter Azure Load Balancer?](../load-balancer/load-balancer-overview.md).
+Alle Ressourcen in einem VNET können standardmäßig in ausgehender Richtung mit dem Internet kommunizieren. Zur Kommunikation in eingehender Richtung muss der entsprechenden Ressource eine öffentliche IP-Adresse oder eine öffentliche Load Balancer-Instanz zugewiesen werden. Die öffentliche IP-Adresse bzw. die öffentliche Load Balancer-Instanz kann auch zum Verwalten der ausgehenden Verbindungen verwendet werden.  Weitere Informationen zu ausgehenden Verbindungen in Azure finden Sie unter [Ausgehende Verbindungen in Azure](../load-balancer/load-balancer-outbound-connections.md), [Erstellen, Ändern oder Löschen einer öffentlichen IP-Adresse](./ip-services/virtual-network-public-ip-address.md) und [Was versteht man unter Azure Load Balancer?](../load-balancer/load-balancer-overview.md).
 
 >[!NOTE]
 >Wenn Sie nur eine interne Instanz von [Load Balancer Standard](../load-balancer/load-balancer-overview.md) verwenden, ist ausgehende Konnektivität erst verfügbar, wenn Sie definieren, wie [ausgehende Verbindungen](../load-balancer/load-balancer-outbound-connections.md) mit einer öffentlichen IP auf Instanzebene oder einer öffentlichen Load Balancer-Instanz verwendet werden sollen.

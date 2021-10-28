@@ -6,17 +6,17 @@ services: azure-monitor
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: bwren
-ms.openlocfilehash: 2435e4ed16889d9d4701b6047c0a1f602ee7ae91
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ac4ada3fe234428216d50edd85caa16fed10a5d2
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102558694"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130231568"
 ---
 # <a name="azure-resource-logs"></a>Azure-Ressourcenprotokolle
 Azure-Ressourcenprotokolle sind [Plattformprotokolle](../essentials/platform-logs-overview.md), die Einblicke in Vorgänge bereitstellen, die in einer Azure-Ressource ausgeführt wurden. Der Inhalt dieser Protokolle variiert je nach Azure-Dienst und -Ressourcentyp. Ressourcenprotokolle werden standardmäßig nicht erfasst. Sie müssen eine Diagnoseeinstellung für jede Azure-Ressource erstellen, um deren Ressourcenprotokolle an einen Log Analytics-Arbeitsbereich zu senden, damit sie mit [Azure Monitor-Protokollen](../logs/data-platform-logs.md), Azure Event Hubs zur Weiterleitung außerhalb von Azure oder Azure Storage zur Archivierung verwendet werden können.
 
-Ausführliche Informationen zum Erstellen einer Diagnoseeinstellung finden Sie unter [Erstellen von Diagnoseeinstellungen zum Senden von Plattformprotokollen und Metriken an verschiedene Ziele](../essentials/diagnostic-settings.md). Informationen zur Verwendung von Azure Policy zum automatischen Erstellen einer Diagnoseeinstellung für jede erstellte Azure-Ressource finden Sie unter [Bedarfsorientiertes Bereitstellen von Azure Monitor mithilfe von Azure Policy](../deploy-scale.md).
+Ausführliche Informationen zum Erstellen einer Diagnoseeinstellung finden Sie unter [Erstellen von Diagnoseeinstellungen zum Senden von Plattformprotokollen und Metriken an verschiedene Ziele](../essentials/diagnostic-settings.md). Informationen zur Verwendung von Azure Policy zum automatischen Erstellen einer Diagnoseeinstellung für jede erstellte Azure-Ressource finden Sie unter [Bedarfsorientiertes Bereitstellen von Azure Monitor mithilfe von Azure Policy](../best-practices.md).
 
 ## <a name="send-to-log-analytics-workspace"></a>Senden an den Log Analytics-Arbeitsbereich
  Senden Sie Ressourcenprotokolle an einen Log Analytics-Arbeitsbereich, um die Features von [Azure Monitor-Protokolle](../logs/data-platform-logs.md) zu aktivieren. Hierzu zählen Folgende:

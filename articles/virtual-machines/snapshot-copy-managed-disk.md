@@ -8,12 +8,12 @@ ms.subservice: disks
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 09/16/2021
-ms.openlocfilehash: b2dadea22326f8b4bf2af6a55d90e392feea8c7a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 0a63e0f346fedac9b7178f25a19177a9908bc6a4
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128624764"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223005"
 ---
 # <a name="create-a-snapshot-of-a-virtual-hard-disk"></a>Erstellen einer Momentaufnahme einer virtuellen Festplatte
 
@@ -32,8 +32,8 @@ Um eine Momentaufnahme über das Azure-Portal zu erstellen, führen Sie folgende
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **Ressource erstellen**.
 1. Suchen Sie nach **Momentaufnahme**, und wählen Sie diese Option aus.
 1. Wählen Sie im Fenster **Momentaufnahme** die Option **Erstellen** aus. Das Fenster **Momentaufnahme erstellen** wird angezeigt.
-1. Für eine **Ressourcengruppe** wählen Sie eine bestehende [Ressourcengruppe](/azure/azure-resource-manager/management/overview#resource-groups) oder geben Sie den Namen einer neuen ein.
-1. Geben Sie einen **Namen** ein, und wählen Sie dann **Region** und **Art der Momentaufnahme** für die neue Momentaufnahme aus. Wenn Sie die Momentaufnahme in einem Speicher speichern möchten, der für Zonen unempfindlich ist, müssen Sie eine Region auswählen, die [Verfügbarkeitszonen](/azure/availability-zones/az-overview) unterstützt. Eine Liste mit unterstützenden Regionen finden Sie ihn [Azure Regionen mit Verfügbarkeitszonen](/azure/availability-zones/az-region#azure-regions-with-availability-zones).
+1. Für eine **Ressourcengruppe** wählen Sie eine bestehende [Ressourcengruppe](../azure-resource-manager/management/overview.md#resource-groups) oder geben Sie den Namen einer neuen ein.
+1. Geben Sie einen **Namen** ein, und wählen Sie dann **Region** und **Art der Momentaufnahme** für die neue Momentaufnahme aus. Wenn Sie die Momentaufnahme in einem Speicher speichern möchten, der für Zonen unempfindlich ist, müssen Sie eine Region auswählen, die [Verfügbarkeitszonen](../availability-zones/az-overview.md) unterstützt. Eine Liste mit unterstützenden Regionen finden Sie ihn [Azure Regionen mit Verfügbarkeitszonen](../availability-zones/az-region.md#azure-regions-with-availability-zones).
 1. Wählen Sie unter  **Quellabonnement** das Abonnement aus, das den verwalteten Datenträger enthält, den Sie sichern wollen.
 1. Wählen Sie für **Quelldatenträger** den verwalteten Datenträger aus, für den eine Momentaufnahme erstellt werden soll.
 1. Bei **Speicherart** wählen Sie **HDD Standard** aus, es sei denn, Sie benötigen zonenredundanten Speicher oder Hochleistungsspeicher für Ihre Momentaufnahme.
@@ -74,7 +74,7 @@ Zunächst verwenden Sie das Cmdlet [New-AzSnapshotConfig](/powershell/module/az.
        -CreateOption copy
    ```
 
-   Wenn Sie Ihre Momentaufnahme in einem Speicher speichern möchten, der für Zonen unempfindlich ist, müssen Sie die Momentaufnahme in einer Region erstellen, die [Verfügbarkeitszonen](/azure/availability-zones/az-overview) unterstützt und den Parameter`-SkuName Standard_ZRS` enthält. Eine Liste von Regionen, die Verfügbarkeitszonen unterstützen, finden Sie unter [Azure-Regionen mit Verfügbarkeitszonen](/azure/availability-zones/az-region#azure-regions-with-availability-zones).
+   Wenn Sie Ihre Momentaufnahme in einem Speicher speichern möchten, der für Zonen unempfindlich ist, müssen Sie die Momentaufnahme in einer Region erstellen, die [Verfügbarkeitszonen](/azure/availability-zones/az-overview) unterstützt und den Parameter`-SkuName Standard_ZRS` enthält. Eine Liste von Regionen, die Verfügbarkeitszonen unterstützen, finden Sie unter [Azure-Regionen mit Verfügbarkeitszonen](../availability-zones/az-region.md#azure-regions-with-availability-zones).
 
 1. Erstellen Sie die Momentaufnahme.
 
@@ -117,7 +117,7 @@ Führen Sie diese Schritte aus, um eine Momentaufnahme mit dem `az snapshot crea
         --name osDisk-backup
     ```
 
-    Wenn Sie die Momentaufnahme in einem Speicher speichern möchten, der für Zonen unempfindlich ist, müssen Sie sie in einer Region erstellen, die [Verfügbarkeitszonen](/azure/availability-zones/az-overview) unterstützt, und den optionalen Parameter `--sku Standard_ZRS` einbeziehen. Eine Liste der [Verfügbarkeitszonen](/azure/availability-zones/az-region#azure-regions-with-availability-zones) finden Sie hier.
+    Wenn Sie die Momentaufnahme in einem Speicher speichern möchten, der für Zonen unempfindlich ist, müssen Sie sie in einer Region erstellen, die [Verfügbarkeitszonen](../availability-zones/az-overview.md) unterstützt, und den optionalen Parameter `--sku Standard_ZRS` einbeziehen. Eine Liste der [Verfügbarkeitszonen](../availability-zones/az-region.md#azure-regions-with-availability-zones) finden Sie hier.
     
 1. Verwenden Sie [az snapshot list](/cli/azure/snapshot#az_snapshot_list), um zu überprüfen, ob Ihre Momentaufnahme vorhanden ist.
     

@@ -1,20 +1,20 @@
 ---
 title: Installation von Defender für IoT
 description: Hier erfahren Sie, wie Sie einen Sensor und die lokale Verwaltungskonsole für Azure Defender für IoT installieren.
-ms.date: 10/09/2021
+ms.date: 10/21/2021
 ms.topic: how-to
-ms.openlocfilehash: f23c5fe84959045ba0446ad03c9a990a7bbb2014
-ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
+ms.openlocfilehash: 0548b1caa269431bb27a54e2dcbd297b2d4734a0
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129754537"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130247586"
 ---
 # <a name="defender-for-iot-installation"></a>Installation von Defender für IoT
 
 Dieser Artikel beschreibt, wie Sie die folgenden Azure Defender für IoT-Komponenten installieren:
 
-- **Sensor**: Defender für IoT-Sensoren erfassen den ICS-Netzwerkdatenverkehr mithilfe von passiver Überwachung (ohne Agents). Da sie passiv und nicht intrusiv arbeiten, haben die Sensoren keinerlei Auswirkungen auf OT- und IoT-Netzwerke und -Geräte. Der Sensor wird mit einem SPAN-Port oder Netzwerk-TAP verbunden und beginnt sofort mit der Überwachung Ihres Netzwerks. Erkennungen werden in der Sensorkonsole angezeigt. Dort können Sie sie in einer Netzwerkübersicht, einem Geräteinventar sowie einer umfangreichen Palette von Berichten anzeigen, untersuchen und analysieren. Zu den Beispielen zählen Risikobewertungsberichte, Data Mining-Abfragen und Angriffsvektoren. Weitere Informationen zu Sensorfunktionen finden Sie im [Defender für IoT Sensor-Benutzerhandbuch (direkter Download)](./getting-started.md).
+- **Sensor**: Defender für IoT-Sensoren erfassen den ICS-Netzwerkdatenverkehr mithilfe von passiver Überwachung (ohne Agents). Da sie passiv und nicht intrusiv arbeiten, haben die Sensoren keinerlei Auswirkungen auf OT- und IoT-Netzwerke und -Geräte. Der Sensor wird mit einem SPAN-Port oder Netzwerk-TAP verbunden und beginnt sofort mit der Überwachung Ihres Netzwerks. Erkennungen werden in der Sensorkonsole angezeigt. Dort können Sie sie in einer Netzwerkübersicht, einem Geräteinventar sowie einer umfangreichen Palette von Berichten anzeigen, untersuchen und analysieren. Zu den Beispielen zählen Risikobewertungsberichte, Data Mining-Abfragen und Angriffsvektoren.
 
 - **Lokale Verwaltungskonsole**: Über die lokale Verwaltungskonsole können Sie Geräteverwaltung, Risikomanagement und Verwaltung von Sicherheitsrisiken durchführen. Außerdem können Sie damit die Bedrohungsüberwachung und Reaktion auf Vorfälle im gesamten Unternehmen durchführen. So erhalten Sie eine einheitliche Übersicht über alle Netzwerkgeräte, Ihnen werden wichtige IoT- und OT-Risikoindikatoren sowie Warnungen angezeigt, die in Einrichtungen erkannt wurden, in denen Sensoren bereitgestellt werden. Über die lokale Verwaltungskonsole können Sie Sensoren in Air-Gap-Netzwerken anzeigen und verwalten.
 
@@ -62,7 +62,7 @@ Die folgenden virtuellen Geräte stehen zur Verfügung:
 
 ### <a name="hardware-specifications-for-the-on-premises-management-console"></a>Hardwarespezifikationen für die lokale Verwaltungskonsole
 
- | Element | BESCHREIBUNG |
+ | Element | Beschreibung |
  |----|--|
  **Beschreibung** | In einer Architektur mit mehreren Ebenen bietet die lokale Verwaltungskonsole Transparenz und Kontrolle über geografisch verteilte Standorte. Sie ist in SOC-Sicherheitsstapel integriert, darunter SIEMs, Ticketsysteme, Firewalls der nächsten Generation, Plattformen für sicheren Remotezugriff und Defender für IoT ICS Malware-Sandbox. |
  **Bereitstellungstyp** | Enterprise |
@@ -1361,7 +1361,7 @@ Wenden Sie sich bei allen anderen Problemen an den [Microsoft-Support](https://s
 
 ## <a name="configure-a-span-port"></a>Konfigurieren eines SPAN-Ports
 
-Ein virtueller Switch verfügt nicht über Spiegelungsfunktionen. Sie können jedoch den Promiscuous Mode in einer virtuellen Switch-Umgebung verwenden. Der Promiscuous-Modus ist ein Betriebsmodus sowie eine Sicherheits-, Überwachungs- und Verwaltungstechnik, die auf der Ebene des virtuellen Switches oder der Portgruppe definiert wird. In der Standardeinstellung ist der Promiscuous-Modus deaktiviert. Wenn der Promiscuous-Modus aktiviert ist, verwenden die Netzwerkschnittstellen der virtuellen Maschine, die sich in derselben Portgruppe befinden, den Promiscuous-Modus, um den gesamten Netzwerkverkehr anzuzeigen, der über diesen virtuellen Switch läuft. Sie können eine Umgehung entweder mit ESXi oder Hyper-V implementieren.
+Ein virtueller Switch verfügt nicht über Spiegelungsfunktionen. Sie können jedoch den promisken Modus in einer Umgebung mit virtuellen Switches verwenden. Der promiske Modus ist ein Betriebsmodus sowie eine Sicherheits-, Überwachungs- und Verwaltungstechnik, die auf der Ebene des virtuellen Switches oder der Portgruppe definiert ist. Der promiske Modus ist standardmäßig deaktiviert. Bei Aktivierung des promisken Modus verwenden die Netzwerkschnittstellen des virtuellen Computers, die sich in derselben Portgruppe befinden, den promisken Modus, um den gesamten Netzwerkdatenverkehr anzuzeigen, der diesen virtuellen Switch durchläuft. Sie können eine Problemumgehung entweder mit ESXi oder Hyper-V implementieren.
 
 :::image type="content" source="media/tutorial-install-components/purdue-model.png" alt-text="Screenshot der Stelle in Ihrer Architektur, an der der Sensor platziert werden soll.":::
 

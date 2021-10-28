@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.service: azure-communication-services
 ms.subservice: calling
 zone_pivot_groups: acs-csharp-java
-ms.openlocfilehash: 78ffdce7cbc4b8973407330a58e2ac3643bfac8b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: e4d47fccb19504eb8e628963516f64c37362356c
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128676977"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130264463"
 ---
 # <a name="quickstart-use-the-call-automation-apis"></a>Ein Schnellstart für das Verwenden der Anrufautomatisierung-APIs
 
@@ -42,5 +42,5 @@ Wenn Sie ein Communication Services-Abonnement bereinigen und entfernen möchten
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
 - Sehen Sie sich unser [Hero-Beispiel für Anrufe](../../samples/calling-hero-sample.md) an.
-- Informieren Sie sich über die [Funktionen des Calling SDK](./calling-client-samples.md).
+- Informieren Sie sich über die [Funktionen des Calling SDK](./getting-started-with-calling.md).
 - Informieren Sie sich über die [Funktionsweise von Anrufen](../../concepts/voice-video-calling/about-call-types.md).

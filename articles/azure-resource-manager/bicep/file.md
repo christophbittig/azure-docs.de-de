@@ -3,12 +3,12 @@ title: BICEP-Dateistruktur und-Syntax
 description: Beschreibt die Struktur und die Eigenschaften einer BICEP-Datei mithilfe von deklarativer Syntax.
 ms.topic: conceptual
 ms.date: 10/07/2021
-ms.openlocfilehash: 8cdeb75aa676b9121d69ba8bf612067157328ee0
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: 7fa9126326bc1bc3922379c52a937013a33abd13
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130067153"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130216312"
 ---
 # <a name="understand-the-structure-and-syntax-of-bicep-files"></a>Verstehen der Struktur und Syntax von ARM-Vorlagen
 
@@ -295,7 +295,7 @@ resource storageAccountResources 'Microsoft.Storage/storageAccounts@2019-06-01' 
 
 Der `batchSize`-Decorator befindet sich im [sys-Namespace](bicep-functions.md#namespaces-for-functions). Wenn Sie diesen Decorator von einem anderen Element gleichen Namens unterscheiden müssen, stellen Sie dem Decorator **sys** voran: `@sys.batchSize(2)`
 
-Weitere Informationen finden Sie unter [Bereitstellung in Batches](loop-resources.md#deploy-in-batches).
+Weitere Informationen finden Sie unter [Bereitstellung in Batches](loops.md#deploy-in-batches).
 
 ## <a name="outputs"></a>Ausgaben
 

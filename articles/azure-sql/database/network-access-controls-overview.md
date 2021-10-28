@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 1640cfae4925c1ef3699ea72778e392e4249db9b
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: 970e20135fab85cbcc6c67a7add1ca7527cefba6
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110666599"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130260434"
 ---
 # <a name="azure-sql-database-and-azure-synapse-analytics-network-access-controls"></a>Netzwerk-Zugriffssteuerung für Azure SQL-Datenbank und Azure Synapse Analytics
 
@@ -131,7 +131,7 @@ Beachten Sie die folgenden Azure-Netzwerkbegriffe beim Erkunden von Firewallrege
 
 Die Firewall von Azure SQL-Datenbank ermöglicht Ihnen das Angeben von IP-Adressbereichen, aus denen SQL-Datenbank Nachrichten akzeptiert. Dieser Ansatz eignet sich gut für statische IP-Adressen, die sich außerhalb des privaten Azure-Netzwerks befinden. Doch viele virtuelle Computer (VMs) innerhalb des privaten Azure-Netzwerks sind mit *dynamischen* IP-Adressen konfiguriert. Dynamische IP-Adressen können sich ändern, wenn der virtuelle Computer neu gestartet wird, und damit die IP-basierte Firewallregel ungültig machen. Es wäre töricht, eine dynamische IP-Adresse in einer Firewallregel in einer Produktionsumgebung anzugeben.
 
-Sie können diese Einschränkung umgehen, indem Sie eine *statische* IP-Adresse für Ihre VM abrufen. Einzelheiten finden Sie unter [Erstellen eines virtuellen Computers mit einer statischen öffentlichen IP-Adresse mithilfe des Azure-Portals](../../virtual-network/virtual-network-deploy-static-pip-arm-portal.md). Der Ansatz mit statischen IP-Adressen kann jedoch schwierig zu handhaben und aufwendig sein, wenn er in großem Maßstab befolgt wird.
+Sie können diese Einschränkung umgehen, indem Sie eine *statische* IP-Adresse für Ihre VM abrufen. Einzelheiten finden Sie unter [Erstellen eines virtuellen Computers mit einer statischen öffentlichen IP-Adresse mithilfe des Azure-Portals](../../virtual-network/ip-services/virtual-network-deploy-static-pip-arm-portal.md). Der Ansatz mit statischen IP-Adressen kann jedoch schwierig zu handhaben und aufwendig sein, wenn er in großem Maßstab befolgt wird.
 
 Regeln für virtuelle Netzwerke stellen eine einfachere Alternative zum Einrichten und Verwalten des Zugriffs von einem bestimmten Subnetz mit Ihren virtuellen Computern dar.
 

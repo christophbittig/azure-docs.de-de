@@ -3,12 +3,12 @@ title: Bereitstellen von Azure Live Video Analytics auf einem IoT Edge-Gerät
 description: In diesem Artikel werden Schritte aufgelistet, die Sie bei der Bereitstellung von Azure Live Video Analytics auf Ihrem IoT Edge-Gerät unterstützen. Dies können Sie beispielsweise tun, wenn Sie Zugriff auf einen lokalen Linux-Computer besitzen und/oder zuvor ein Azure Media Services-Konto erstellt haben.
 ms.topic: how-to
 ms.date: 09/09/2020
-ms.openlocfilehash: 75b91855ff8e46a45fac96e90be08a272ef52dfb
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: cf4dbd55314bae73d9082c8b45bfe728cb4c235a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110367456"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130225735"
 ---
 # <a name="deploy-azure-live-video-analytics-on-an-iot-edge-device"></a>Bereitstellen von Azure Live Video Analytics auf einem IoT Edge-Gerät
 
@@ -25,8 +25,8 @@ In diesem Artikel werden Schritte aufgelistet, die Sie bei der Bereitstellung vo
 * Ein x86-64- oder ARM64-Gerät, auf dem eines der [unterstützten Linux-Betriebssysteme ausgeführt wird](../../iot-edge/support.md#operating-systems)
 * Ein Azure-Abonnement, für das Sie über [Besitzerrechte](../../role-based-access-control/built-in-roles.md#owner) verfügen
 * [Ein erstellter und eingerichteter IoT Hub](../../iot-hub/iot-hub-create-through-portal.md)
-* [Registrierung bei einem IoT Edge-Gerät](../../iot-edge/how-to-register-device.md)
-* [Installieren der Azure IoT Edge-Runtime auf Debian-basierten Linux-Systemen](../../iot-edge/how-to-install-iot-edge.md)
+* [Registrierung bei einem IoT Edge-Gerät](../../iot-edge/how-to-provision-single-device-linux-symmetric.md#register-your-device)
+* [Installieren der Azure IoT Edge-Runtime auf Debian-basierten Linux-Systemen](../../iot-edge/how-to-provision-single-device-linux-symmetric.md)
 * [Erstellen eines Azure Media Services-Kontos](../latest/account-create-how-to.md)
 
     * Verwenden Sie eine dieser Regionen: USA, Osten 2; USA, Osten; USA, Mitte; USA, Norden-Mitte; Japan, Osten; USA, Westen; USA, Westen 2; USA, Westen-Mitte, Kanada, Osten, Vereinigtes Königreich, Süden, Frankreich, Mitte, Frankreich, Süden, Schweiz, Norden, Schweiz, Westen und Japan, Westen.

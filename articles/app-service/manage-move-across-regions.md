@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie App Service-Ressourcen von einer Region in ei
 ms.topic: how-to
 ms.date: 02/27/2020
 ms.custom: subject-moving-resources
-ms.openlocfilehash: ea789504476473bec2615180e76e671b06b85758
-ms.sourcegitcommit: 5be51a11c63f21e8d9a4d70663303104253ef19a
+ms.openlocfilehash: 67a3b0c8f5fd6a78ef65bdffe5f201ae42f90efe
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112895173"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130216673"
 ---
 # <a name="move-an-app-service-resource-to-another-region"></a>Verschieben einer App Service-Ressource in eine andere Region
 
@@ -34,7 +34,7 @@ Ermitteln Sie alle App Service-Ressourcen, die Sie aktuell verwenden. Beispiel:
 - [Bereitstellungsslots](deploy-staging-slots.md)
 - [In Azure erworbene benutzerdefinierte Domänen](manage-custom-dns-buy-domain.md)
 - [TLS-/SSL-Zertifikate](configure-ssl-certificate.md)
-- [Integration des virtuellen Azure-Netzwerks](web-sites-integrate-with-vnet.md)
+- [Integration des virtuellen Azure-Netzwerks](./overview-vnet-integration.md)
 - [Hybridverbindungen](app-service-hybrid-connections.md)
 - [Verwaltete Identitäten](overview-managed-identity.md)
 - [Sicherungseinstellungen](manage-backup.md)

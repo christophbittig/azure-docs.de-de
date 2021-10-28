@@ -3,12 +3,12 @@ title: Konfigurieren von Azure Red Hat OpenShift, Version 3.x mit Container Ins
 description: In diesem Artikel wird beschrieben, wie Sie die Überwachung eines in Azure Red Hat OpenShift, Version 3 und höher gehosteten Kubernetes-Clusters mit Azure Monitor konfigurieren können.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: a2910655601548f39983547e12460d949901954d
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 4b0278a143366579915f3a4edf3d754025ca6f90
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107784675"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130262468"
 ---
 # <a name="configure-azure-red-hat-openshift-v3-with-container-insights"></a>Konfigurieren von Azure Red Hat OpenShift, Version 3 mit Container Insights
 
@@ -43,7 +43,7 @@ Container Insights unterstützt wie im Artikel [Übersicht](container-insights-o
 
 - Einen [Log Analytics-Arbeitsbereich](../logs/design-logs-deployment.md).
 
-    Container Insights unterstützt einen Log Analytics-Arbeitsbereich in den unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor) aufgeführten Regionen in Azure. Ihren eigenen Arbeitsbereich können Sie über [Azure Resource Manager](../logs/resource-manager-workspace.md), über [PowerShell](../logs/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json) oder im [Azure-Portal](../logs/quick-create-workspace.md) erstellen.
+    Container Insights unterstützt einen Log Analytics-Arbeitsbereich in den unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=monitor) aufgeführten Regionen in Azure. Ihren eigenen Arbeitsbereich können Sie über [Azure Resource Manager](../logs/resource-manager-workspace.md), über [PowerShell](../logs/powershell-workspace-configuration.md?toc=%2fpowershell%2fmodule%2ftoc.json) oder im [Azure-Portal](../logs/quick-create-workspace.md) erstellen.
 
 - Sie müssen in Ihrem Azure-Abonnement mindestens über die Azure-Rolle *Mitwirkender* und im Log Analytics-Arbeitsbereich über die mit Container Insights konfigurierte Rolle [*Log Analytics-Mitwirkender*](../logs/manage-access.md#manage-access-using-azure-permissions) verfügen, um auf die Funktionen in Container Insights zugreifen zu können.
 

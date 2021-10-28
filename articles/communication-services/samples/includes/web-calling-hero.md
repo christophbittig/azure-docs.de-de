@@ -1,5 +1,5 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: azure-communication-services
 author: probableprime
@@ -10,12 +10,12 @@ ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: rifox
-ms.openlocfilehash: bf6fba4f8267c1fb52f6b6d5dbc09e033c81a99d
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 767fe99e7648b5f35995530f0404e0ceab8208f2
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "123078520"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130287890"
 ---
 Das **Hero-Beispiel für Gruppenanrufe** von Azure Communication Services veranschaulicht, wie das Communication Services Calling Web-SDK für Anrufe verwendet werden kann, um eine Benutzeroberfläche für Gruppenanrufe zu erstellen.
 
@@ -97,7 +97,7 @@ Wenn Sie ein Communication Services-Abonnement bereinigen und entfernen möchten
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- Machen Sie sich mit der Verwendung des [Calling SDK](../../quickstarts/voice-video-calling/calling-client-samples.md) vertraut
+- Machen Sie sich mit der Verwendung des [Calling SDK](../../quickstarts/voice-video-calling/getting-started-with-calling.md) vertraut
 - Informieren Sie sich über die [Funktionsweise von Anrufen](../../concepts/voice-video-calling/about-call-types.md).
 
 ### <a name="additional-reading"></a>Zusätzliche Lektüre

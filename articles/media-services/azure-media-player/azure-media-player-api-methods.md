@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 04/05/2021
-ms.openlocfilehash: 3b199223c7e77f31cd4bf6e99d6a170f6868848a
-ms.sourcegitcommit: 56b0c7923d67f96da21653b4bb37d943c36a81d6
+ms.openlocfilehash: 443c2abbd005c3e2517caa98c707132ad0849d3a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/06/2021
-ms.locfileid: "106448694"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130234320"
 ---
 # <a name="api"></a>API #
 
@@ -30,7 +30,7 @@ Zum Verwenden der API-Funktionen benötigen Sie Zugriff auf das Playerobjekt. Da
 
 Die Zeitspanne, die Azure Media Player zum Einrichten von Video und API benötigt, hängt von der verwendeten Wiedergabetechnologie ab. HTML5 lässt sich oftmals viel schneller laden als Flash oder Silverlight. Aus diesem Grund sollte die Funktion ‚ready‘ des Players genutzt werden, um jeglichen Code auszulösen, für den die API des Players erforderlich ist.
 
-```javacript
+```javascript
     amp("vid_1").ready(function(){
       var myPlayer = this;
 
@@ -41,7 +41,7 @@ Die Zeitspanne, die Azure Media Player zum Einrichten von Video und API benötig
 
 oder
 
-```javacript
+```javascript
     var myPlayer = amp("vid_1", myOptions, function(){
         //this is the ready function and will only execute after the player is loaded
     });
@@ -51,7 +51,7 @@ oder
 
 Jetzt, mit dem Zugriff auf einen Player in Bereitschaft, können Sie das Video steuern, Werte abrufen oder auf Video-Ereignisse reagieren. Die Funktionsnamen der Azure Media Player-API orientieren sich an der [HTML5-Media-API](http://www.whatwg.org/specs/web-apps/current-work/multipage/the-video-element.html). Der Hauptunterschied besteht in der Verwendung von Getter/Setter-Funktionen für Videoeigenschaften.
 
-```javacript
+```javascript
     // setting a property on a bare HTML5 video element
     myVideoElement.currentTime = 120;
 
@@ -62,7 +62,7 @@ Jetzt, mit dem Zugriff auf einen Player in Bereitschaft, können Sie das Video s
 ## <a name="registering-for-events"></a>Registrieren von Ereignissen ##
 Ereignisse sollten direkt nach der erstmaligen Initialisierung des Players registriert werden, um sicherzustellen, dass der Anwendung alle Ereignisse ordnungsgemäß gemeldet werden. Dies sollte außerhalb des Ready-Ereignisses erfolgen.
 
-```javacript
+```javascript
     var myPlayer = amp("vid_1", myOptions, function(){
         //this is the ready function and will only execute after the player is loaded
     });

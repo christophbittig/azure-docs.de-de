@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/22/2021
 ms.author: oldoll
-ms.openlocfilehash: 1d6710500cbe18fe74d06aa324023486a7ec5c4e
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: 8e723e39364207e1075d66eeafcdf12b74e16624
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130067427"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130261384"
 ---
 # <a name="standard-version-of-azure-vm-extension-for-sap-solutions"></a>Standardversion der Azure-VM-Erweiterung für SAP-Lösungen
 [new-extension]:vm-extension-for-sap-new.md (Neue Version der Azure-VM-Erweiterung für SAP-Lösungen)
@@ -464,7 +464,7 @@ Wenn Ihr verallgemeinertes, mit Sysprep bearbeitetes Betriebssystemimage jedoch 
 
 Der virtuelle Microsoft Azure-Computer, der die Azure-Erweiterung für SAP ausführt, benötigt Zugang zum Internet. Falls die Azure-VM Teil eines virtuellen Azure-Netzwerks oder einer lokalen Domäne ist, stellen Sie sicher, dass die entsprechenden Proxyeinstellungen festgelegt sind. Diese Einstellung müssen auch für den Internetzugang des lokalen Systemkontos gültig sein. Befolgen Sie das Kapitel [Konfigurieren des Proxy][configure-proxy] in diesem Handbuch.
 
-Wenn Sie außerdem eine statische IP-Adresse für Ihren virtuellen Azure-Computer festlegen müssen, legen Sie sie nicht manuell innerhalb der Azure-VM fest, sondern mit [Azure PowerShell](../../../virtual-network/virtual-networks-static-private-ip-arm-ps.md), [Azure CLI](../../../virtual-network/virtual-networks-static-private-ip-arm-cli.md) oder [Azure-Portal](../../../virtual-network/virtual-networks-static-private-ip-arm-pportal.md). Die statische IP-Adresse wird über den Azure-DHCP-Dienst weitergegeben.
+Wenn Sie außerdem eine statische IP-Adresse für Ihren virtuellen Azure-Computer festlegen müssen, legen Sie sie nicht manuell innerhalb der Azure-VM fest, sondern mit [Azure PowerShell](../../../virtual-network/ip-services/virtual-networks-static-private-ip-arm-ps.md), [Azure CLI](../../../virtual-network/ip-services/virtual-networks-static-private-ip-arm-cli.md) oder [Azure-Portal](../../../virtual-network/ip-services/virtual-networks-static-private-ip-arm-pportal.md). Die statische IP-Adresse wird über den Azure-DHCP-Dienst weitergegeben.
 
 Manuelles Festlegen einer statischen IP-Adresse auf dem virtuellen Azure-Computer wird nicht unterstützt und kann zu Problemen mit der Azure-Erweiterung für SAP führen.
 

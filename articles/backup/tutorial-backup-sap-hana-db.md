@@ -3,12 +3,12 @@ title: 'Tutorial: Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Compute
 description: In diesem Tutorial wird beschrieben, wie Sie SAP HANA-Datenbanken, die auf einem virtuellen Azure-Computer ausgeführt werden, in einem Azure Backup Recovery Services-Tresor sichern.
 ms.topic: tutorial
 ms.date: 09/27/2021
-ms.openlocfilehash: 5469c10bb62164e7feea33a1b56cef3457d46efb
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 65691a2bb48c3dece51effef4fbc7b65d19d8449
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129349688"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130247795"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Tutorial: Sichern von SAP HANA-Datenbanken auf einem virtuellen Azure-Computer
 
@@ -54,8 +54,8 @@ In der folgenden Tabelle sind die verschiedenen Alternativen zum Herstellen der 
 | FQDN-Tags von Azure Firewall          | Einfachere Verwaltung, da die erforderlichen FQDNs automatisch verwaltet werden | Nur mit Azure Firewall möglich                         |
 | Zugriff auf Dienst-FQDNs/-IPs | Keine zusätzlichen Kosten   <br><br>  Verwendung mit allen Netzwerksicherheits-Appliances und Firewalls möglich | Möglicherweise ist ein umfassender Satz von IP-Adressen oder FQDNs erforderlich.   |
 | Verwenden eines HTTP-Proxys                 | Zentraler Internetzugriffspunkt für VMs                       | Zusätzliche Kosten für das Ausführen einer VM mit der Proxysoftware         |
-| [Virtual Network-Dienstendpunkt](/azure/virtual-network/virtual-network-service-endpoints-overview)    |     Kann für den Azure Storage (= Recovery Services-Tresor) verwendet werden.     <br><br>     Bietet einen großen Vorteil für die Optimierung der Leistung des Datenverkehrs auf Datenebene.          |         Kann nicht für Azure AD, Azure Backup verwendet werden.    |
-| Virtuelles Netzwerkgerät      |      Kann für Azure Storage, Azure AD, Azure Backup verwendet werden. <br><br> **Datenebene**   <ul><li>      Azure Storage: `*.blob.core.windows.net`, `*.queue.core.windows.net`  </li></ul>   <br><br>     **Verwaltungsebene**  <ul><li>  Azure AD: Lassen Sie den Zugriff auf FQDNs zu, die in den Abschnitten 56 und 59 von [Microsoft 365 Common und Office Online](/microsoft-365/enterprise/urls-and-ip-address-ranges?view=o365-worldwide&preserve-view=true#microsoft-365-common-and-office-online) beschrieben sind. </li><li>   Azure Backup-Dienst: `.backup.windowsazure.com` </li></ul> <br>Erfahren Sie mehr über [Azure Firewall-Diensttags](/azure/firewall/fqdn-tags#:~:text=An%20FQDN%20tag%20represents%20a%20group%20of%20fully,the%20required%20outbound%20network%20traffic%20through%20your%20firewall.).       |  Erhöht den Mehraufwand für den Datenverkehr auf Datenebene und verringert den Durchsatz bzw. die Leistung.  |
+| [Virtual Network-Dienstendpunkt](../virtual-network/virtual-network-service-endpoints-overview.md)    |     Kann für den Azure Storage (= Recovery Services-Tresor) verwendet werden.     <br><br>     Bietet einen großen Vorteil für die Optimierung der Leistung des Datenverkehrs auf Datenebene.          |         Kann nicht für Azure AD, Azure Backup verwendet werden.    |
+| Virtuelles Netzwerkgerät      |      Kann für Azure Storage, Azure AD, Azure Backup verwendet werden. <br><br> **Datenebene**   <ul><li>      Azure Storage: `*.blob.core.windows.net`, `*.queue.core.windows.net`  </li></ul>   <br><br>     **Verwaltungsebene**  <ul><li>  Azure AD: Lassen Sie den Zugriff auf FQDNs zu, die in den Abschnitten 56 und 59 von [Microsoft 365 Common und Office Online](/microsoft-365/enterprise/urls-and-ip-address-ranges?view=o365-worldwide&preserve-view=true#microsoft-365-common-and-office-online) beschrieben sind. </li><li>   Azure Backup-Dienst: `.backup.windowsazure.com` </li></ul> <br>Erfahren Sie mehr über [Azure Firewall-Diensttags](../firewall/fqdn-tags.md).       |  Erhöht den Mehraufwand für den Datenverkehr auf Datenebene und verringert den Durchsatz bzw. die Leistung.  |
 
 Weitere Informationen zur Verwendung dieser Optionen finden Sie unten:
 
@@ -179,13 +179,13 @@ Nachfolgend finden Sie eine Zusammenfassung der Schritte, die zum Abschließen d
 
 | Wer     |    From    |    Auszuführendes Programm    |    Kommentare    |
 | --- | --- | --- | --- |
-| `<sid>`adm (Betriebssystem) |    HANA-Betriebssystem   | Lesen Sie das Tutorial, und laden Sie das Vorregistrierungsskript herunter.  |    Tutorial: [Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Computern](/azure/backup/tutorial-backup-sap-hana-db)   <br><br>    Laden Sie das [Vorregistrierungsskript](https://go.microsoft.com/fwlink/?linkid=2173610) herunter. |
+| `<sid>`adm (Betriebssystem) |    HANA-Betriebssystem   | Lesen Sie das Tutorial, und laden Sie das Vorregistrierungsskript herunter.  |    Tutorial: [Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Computern]()   <br><br>    Laden Sie das [Vorregistrierungsskript](https://go.microsoft.com/fwlink/?linkid=2173610) herunter. |
 | `<sid>`adm (Betriebssystem)    |    HANA-Betriebssystem    |   Starten Sie HANA (HDB-Start).    |   Stellen Sie vor der Einrichtung sicher, dass HANA betriebsbereit ist und ausgeführt wird.   |
 | `<sid>`adm (Betriebssystem)   |   HANA-Betriebssystem  |    Führen Sie den folgenden Befehl aus: <br>  `hdbuserstore Set`   |  `hdbuserstore Set SYSTEM <hostname>:3<Instance#>13 SYSTEM <password>`  <br><br>   **Hinweis** <br>  Stellen Sie sicher, dass Sie nicht die IP-Adresse bzw. den FQDN, sondern den Hostnamen verwenden.   |
 | `<sid>`adm (Betriebssystem)   |  HANA-Betriebssystem    |   Führen Sie den folgenden Befehl aus:<br> `hdbuserstore List`   |  Überprüfen Sie, ob das Ergebnis wie folgt den Standardspeicher enthält: <br><br> `KEY SYSTEM`  <br> `ENV : <hostname>:3<Instance#>13`    <br>  `USER : SYSTEM`   |
 | Root (Betriebssystem)   |   HANA-Betriebssystem    |    Führen Sie das [HANA-Vorregistrierungsskript für Azure Backup](https://go.microsoft.com/fwlink/?linkid=2173610) aus.     | `./msawb-plugin-config-com-sap-hana.sh -a --sid <SID> -n <Instance#> --system-key SYSTEM`    |
 | `<sid>`adm (Betriebssystem)   |   HANA-Betriebssystem   |    Führen Sie den folgenden Befehl aus: <br> `hdbuserstore List`   |   Überprüfen Sie, ob das Ergebnis wie folgt neue Zeilen enthält: <br><br>  `KEY AZUREWLBACKUPHANAUSER` <br>  `ENV : localhost: 3<Instance#>13`   <br> `USER: AZUREWLBACKUPHANAUSER`    |
-| Azure-Mitwirkender     |    Azure-Portal    |   Konfigurieren Sie die NSG, NVA, Azure Firewall usw., um ausgehenden Datenverkehr zum Azure Backup-Dienst, Azure AD und Azure Storage zuzulassen.     |    [Einrichten der Netzwerkkonnektivität](/azure/backup/tutorial-backup-sap-hana-db#set-up-network-connectivity)    |
+| Azure-Mitwirkender     |    Azure-Portal    |   Konfigurieren Sie die NSG, NVA, Azure Firewall usw., um ausgehenden Datenverkehr zum Azure Backup-Dienst, Azure AD und Azure Storage zuzulassen.     |    [Einrichten der Netzwerkkonnektivität](#set-up-network-connectivity)    |
 | Azure-Mitwirkender |   Azure-Portal    |   Erstellen oder öffnen Sie einen Recovery Services-Tresor, und wählen Sie dann die HANA-Sicherung aus.   |   Suchen Sie nach allen virtuellen HANA-Zielcomputern, die gesichert werden sollen.   |
 | Azure-Mitwirkender    |   Azure-Portal    |   Ermitteln Sie HANA-Datenbanken, und konfigurieren Sie die Sicherungsrichtlinie.   |  Beispiel: <br><br>  Wöchentliche Sicherung: Jeden Sonntag um 2:00 Uhr, wöchentliche, monatliche und jährliche Aufbewahrung (12 Wochen, 12 Monate bzw. 3 Jahre)   <br>   Differenziell oder inkrementell: Jeden Tag, Sonntag ausgenommen    <br>   Protokoll: alle 15 Minuten mit Aufbewahrungsdauer von 35 Tagen    |
 | Azure-Mitwirkender  |   Azure-Portal    |    Recovery Services-Tresor: Sicherungselemente: SAP HANA     |   Überprüfen Sie die Sicherungsaufträge (Azure-Workload).    |
@@ -231,9 +231,9 @@ Der Recovery Services-Tresor wird jetzt erstellt.
 
 ## <a name="enable-cross-region-restore"></a>Aktivieren der regionsübergreifenden Wiederherstellung
 
-Im Recovery Services-Tresor können Sie die regionsübergreifende Wiederherstellung aktivieren. Sie müssen die regionsübergreifende Wiederherstellung aktivieren, bevor Sie Sicherungen in Ihren HANA-Datenbanken konfigurieren und schützen. Erfahren Sie, [wie Sie die regionsübergreifende Wiederherstellung aktivieren](/azure/backup/backup-create-rs-vault#set-cross-region-restore).
+Im Recovery Services-Tresor können Sie die regionsübergreifende Wiederherstellung aktivieren. Sie müssen die regionsübergreifende Wiederherstellung aktivieren, bevor Sie Sicherungen in Ihren HANA-Datenbanken konfigurieren und schützen. Erfahren Sie, [wie Sie die regionsübergreifende Wiederherstellung aktivieren](./backup-create-rs-vault.md#set-cross-region-restore).
 
-[Erfahren Sie mehr über regionsübergreifende Wiederherstellung.](/azure/backup/backup-azure-recovery-services-vault-overview)
+[Erfahren Sie mehr über regionsübergreifende Wiederherstellung.](./backup-azure-recovery-services-vault-overview.md)
 
 ## <a name="discover-the-databases"></a>Ermitteln der Datenbanken
 

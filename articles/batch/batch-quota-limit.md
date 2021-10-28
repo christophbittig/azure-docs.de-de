@@ -4,12 +4,12 @@ description: Erfahren Sie mehr über Azure Batch-Standardkontingente, Limits und
 ms.topic: conceptual
 ms.date: 07/20/2021
 ms.custom: seodec18
-ms.openlocfilehash: ad5701c65f9f2068a1a68084b755f8d0a013b8c8
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 799258258e1215977aea5b176d133bd121624bd6
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114465572"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130239113"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch-Dienst – Kontingente und Limits
 
@@ -138,7 +138,7 @@ Weitere Informationen und Beispiele finden [Sie unter Anfordern einer Kontingent
 Die folgenden Ressourcen sind für alle 100 Poolknoten in einem virtuellen Netzwerk erforderlich:
 
 - Eine [Netzwerksicherheitsgruppe](../virtual-network/network-security-groups-overview.md#network-security-groups)
-- Eine [öffentliche IP-Adresse](../virtual-network/public-ip-addresses.md)
+- Eine [öffentliche IP-Adresse](../virtual-network/ip-services/public-ip-addresses.md)
 - Ein [Load Balancer](../load-balancer/load-balancer-overview.md)
 
 Diese Ressourcen werden durch die [Ressourcenkontingente](../azure-resource-manager/management/azure-subscription-service-limits.md) des Abonnements beschränkt. Wenn Sie umfangreiche Pool-Bereitstellungen in einem virtuellen Netzwerk planen, müssen Sie möglicherweise eine Erhöhung der Quoten für eine oder mehrere dieser Ressourcen anfordern.

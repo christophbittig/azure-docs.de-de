@@ -8,12 +8,12 @@ manager: karenh444
 ms.author: barclayn
 ms.topic: tutorial
 ms.date: 10/08/2021
-ms.openlocfilehash: d480696acf10586f41aa9c5c70a8dcf6e2c7651f
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 7f5ad896307466363845c66c89136879e4f92a96
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130070012"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130227471"
 ---
 # <a name="configure-your-tenant-for-azure-ad-verifiable-credentials-preview"></a>Konfigurieren Ihres Mandanten für Azure AD-Nachweise (Vorschau)
 
@@ -67,7 +67,7 @@ So erstellen Sie den Dienstprinzipal
 
 ## <a name="step-2-create-a-key-vault"></a>Schritt 2: Erstellen eines Schlüsseltresors
 
-[Azure Key Vault](/azure/key-vault/general/basic-concepts) ist ein Clouddienst, der das sichere Speichern von Geheimnissen und Schlüsseln und den sicheren Zugriff darauf ermöglicht. Ihr Nachweisdienst speichert öffentliche und private Schlüssel in Azure Key Vault. Diese Schlüssel werden zum Signieren und Überprüfen von Nachweisen verwendet.
+[Azure Key Vault](../../key-vault/general/basic-concepts.md) ist ein Clouddienst, der das sichere Speichern von Geheimnissen und Schlüsseln und den sicheren Zugriff darauf ermöglicht. Ihr Nachweisdienst speichert öffentliche und private Schlüssel in Azure Key Vault. Diese Schlüssel werden zum Signieren und Überprüfen von Nachweisen verwendet.
 
 Wenn Sie nicht über eine Instanz von Azure Key Vault verfügen, führen Sie die folgenden Schritte aus, um mithilfe des Azure-Portal einen Schlüsseltresor zu erstellen.
 
@@ -78,7 +78,7 @@ Wenn Sie nicht über eine Instanz von Azure Key Vault verfügen, führen Sie die
 
 Nach dem Onboarding des Azure-Nachweisdiensts generiert der Dienst mehrere Schlüssel, mit denen Nachrichtensicherheit gewährleistet wird. Diese Schlüssel werden im Schlüsseltresor gespeichert. Unabhängig davon, ob Sie einen Nachweis ausstellen oder überprüfen: Es wird weiterhin ein Schlüsselsatz zum Signieren, Aktualisieren und Wiederherstellen von Nachweisen verwendet.
 
-Eine Key Vault-[Zugriffsrichtlinie](/azure/key-vault/general/assign-access-policy) legt fest, ob ein bestimmter Sicherheitsprinzipal Vorgänge für Key Vault-Geheimnisse und -Schlüssel ausführen kann. Legen Sie Zugriffsrichtlinien in Ihrer Azure Key Vault-Instanz sowohl für das Administratorkonto des Azure AD-Nachweisdiensts als auch für den von Ihnen erstellten Prinzipal der Anforderungsdienst-API fest.
+Eine Key Vault-[Zugriffsrichtlinie](../../key-vault/general/assign-access-policy.md) legt fest, ob ein bestimmter Sicherheitsprinzipal Vorgänge für Key Vault-Geheimnisse und -Schlüssel ausführen kann. Legen Sie Zugriffsrichtlinien in Ihrer Azure Key Vault-Instanz sowohl für das Administratorkonto des Azure AD-Nachweisdiensts als auch für den von Ihnen erstellten Prinzipal der Anforderungsdienst-API fest.
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zu der für dieses Tutorial verwendeten **Key Vault**-Instanz.
 
@@ -104,7 +104,7 @@ Eine Key Vault-[Zugriffsrichtlinie](/azure/key-vault/general/assign-access-poli
 
     1. Wählen Sie unter **Prinzipal auswählen** die Option **Verifiable Credential Request Service** (Nachweisanforderungsdienst) aus.
 
-    1. Wählen Sie **Hinzufügen**.  
+    1. Wählen Sie **Hinzufügen** aus.  
         
        Der folgende Screenshot zeigt, wie Sie eine Zugriffsrichtlinie für den Nachweisanforderungsdienst hinzufügen. 
     

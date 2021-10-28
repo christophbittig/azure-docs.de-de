@@ -3,12 +3,12 @@ title: Azure Arc-fähigen Server zu Azure migrieren
 description: Erfahren Sie, wie Sie Ihre Azure Arc-fähigen Server, die lokal oder in einer anderen Cloudumgebung ausgeführt werden, zu Azure migrieren können.
 ms.date: 07/16/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0ed30fac28c3491a9772466aa193f721f4fa440f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: a524e9930b96d0f18038a2afd43039081010a504
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124816002"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130236261"
 ---
 # <a name="migrate-your-on-premises-or-other-cloud-azure-arc-enabled-server-to-azure"></a>Migrieren Ihres lokalen oder anderen Azure Arc-fähigen Cloudservers zu Azure
 
@@ -72,7 +72,7 @@ Nach der Migration und dem Abschluss aller Konfigurationsschritte nach der Migra
 
 Informationen zum Fortsetzen der Verwendung von Überwachungseinstellungen auf einem Computer mit Gastkonfigurationsrichtliniendefinitionen finden Sie unter [Aktivieren der Gastkonfiguration](../../governance/policy/concepts/guest-configuration.md#enable-guest-configuration).
 
-Wenn die VM-Erweiterung der Protokollanalyse oder die VM-Erweiterung des Abhängigkeits-Agent mithilfe von Azure Policy der [VM-Erkenntnis-Initiative](../../azure-monitor/vm/vminsights-enable-policy.md) bereitgestellt wurde, entfernen Sie die [Ausnahme](../../governance/policy/tutorials/create-and-manage.md#remove-a-non-compliant-or-denied-resource-from-the-scope-with-an-exclusion), den Sie zuvor erstellt haben. Informationen, wie Sie Azure Policy zum Aktivieren virtueller Azure-Computer verwenden können, finden Sie in [Bereitstellen von Azure Monitor im großen Stil mithilfe von Azure Policy](../../azure-monitor/deploy-scale.md#vm-insights). 
+Wenn die VM-Erweiterung der Protokollanalyse oder die VM-Erweiterung des Abhängigkeits-Agent mithilfe von Azure Policy der [VM-Erkenntnis-Initiative](../../azure-monitor/vm/vminsights-enable-policy.md) bereitgestellt wurde, entfernen Sie die [Ausnahme](../../governance/policy/tutorials/create-and-manage.md#remove-a-non-compliant-or-denied-resource-from-the-scope-with-an-exclusion), den Sie zuvor erstellt haben. Informationen, wie Sie Azure Policy zum Aktivieren virtueller Azure-Computer verwenden können, finden Sie in [Bereitstellen von Azure Monitor im großen Stil mithilfe von Azure Policy](../../azure-monitor/best-practices.md). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

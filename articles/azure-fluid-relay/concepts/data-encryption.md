@@ -6,19 +6,19 @@ ms.author: hickeys
 ms.date: 10/08/2021
 ms.service: app-service
 ms.topic: reference
-ms.openlocfilehash: 3af5ba0580b0cb662c9ab87c73afac965a8c066f
-ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
+ms.openlocfilehash: 8a818ea51e1d4a3f2df03ae1c4bafcf16da35b13
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129730596"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130261004"
 ---
 # <a name="data-encryption-in-azure-fluid-relay"></a>Datenverschlüsselung in Azure Fluid Relay
 
 > [!NOTE]
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
 
-Microsoft Azure Fluid Relay Server nutzt die Möglichkeit zur Verschlüsselung von ruhenden Daten von [Azure Kubernetes](/azure/aks/enable-host-encryption), [Microsoft Azure Cosmos DB]/azure/cosmos-db/database-encryption-at-rest) und [Azure Blob Storage](/azure/storage/common/storage-service-encryption). Die Dienst-zu-Dienst-Kommunikation zwischen AFRS und diesen Ressourcen ist TLS-verschlüsselt und wird von der Azure Virtual Network Boundary umschlossen, wodurch sie durch Netzwerksicherheitsregeln vor externen Störungen geschützt ist.
+Microsoft Azure Fluid Relay Server nutzt die Möglichkeit zur Verschlüsselung von ruhenden Daten von [Azure Kubernetes](../../aks/enable-host-encryption.md), [Microsoft Azure Cosmos DB]/azure/cosmos-db/database-encryption-at-rest) und [Azure Blob Storage](../../storage/common/storage-service-encryption.md). Die Dienst-zu-Dienst-Kommunikation zwischen AFRS und diesen Ressourcen ist TLS-verschlüsselt und wird von der Azure Virtual Network Boundary umschlossen, wodurch sie durch Netzwerksicherheitsregeln vor externen Störungen geschützt ist.
 
 Das folgende Diagramm zeigt auf hoher Ebene, wie Azure Fluid Relay Server implementiert ist und wie es die Datenspeicherung handhabt.
 

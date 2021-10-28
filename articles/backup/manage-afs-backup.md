@@ -3,12 +3,12 @@ title: Verwalten der Sicherungen von Azure-Dateifreigaben
 description: In diesem Artikel werden allgemeine Aufgaben zur Verwaltung und Überwachung der Azure-Dateifreigaben beschrieben, die durch Azure Backup gesichert werden.
 ms.topic: conceptual
 ms.date: 10/08/2021
-ms.openlocfilehash: e955ed1cf01c055ea72218076799d7da31d096b7
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 421162387b28777acf1c4f86288796d8066468a6
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129714280"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130216046"
 ---
 # <a name="manage-azure-file-share-backups"></a>Verwalten der Sicherungen von Azure-Dateifreigaben
 
@@ -30,7 +30,7 @@ So öffnen Sie die Seite **Sicherungsaufträge**
 
 ## <a name="monitor-using-azure-backup-reports"></a>Überwachen mit Azure Backup-Berichten
 
-Azure Backup bietet eine Berichtslösung, die [Azure Monitor Protokolle](../azure-monitor/logs/log-analytics-tutorial.md) und [Azure Arbeitsmappen](../azure-monitor/visualize/workbooks-overview.md) verwendet. Mit diesen Ressourcen erhalten Sie umfassende Einblicke in Ihre Backups. Anhand dieser Berichte können Sie Einblicke in Azure Files-Sicherungselemente, Aufträge auf Elementebene und Details aktiver Richtlinien erhalten. Mit dem in Sicherungsberichten verfügbaren Feature „Bericht per E-Mail senden“ können Sie automatisierte Aufgaben zum Empfangen regelmäßiger Berichte per E-Mail erstellen. Weitere Informationen zum Konfigurieren und Anzeigen von Azure Backup-Berichten finden Sie [hier](/azure/backup/configure-reports#get-started).
+Azure Backup bietet eine Berichtslösung, die [Azure Monitor Protokolle](../azure-monitor/logs/log-analytics-tutorial.md) und [Azure Arbeitsmappen](../azure-monitor/visualize/workbooks-overview.md) verwendet. Mit diesen Ressourcen erhalten Sie umfassende Einblicke in Ihre Backups. Anhand dieser Berichte können Sie Einblicke in Azure Files-Sicherungselemente, Aufträge auf Elementebene und Details aktiver Richtlinien erhalten. Mit dem in Sicherungsberichten verfügbaren Feature „Bericht per E-Mail senden“ können Sie automatisierte Aufgaben zum Empfangen regelmäßiger Berichte per E-Mail erstellen. Weitere Informationen zum Konfigurieren und Anzeigen von Azure Backup-Berichten finden Sie [hier](./configure-reports.md#get-started).
 
 ## <a name="create-a-new-policy"></a>Erstellen einer neuen Richtlinie
 

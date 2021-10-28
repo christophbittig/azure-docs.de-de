@@ -9,12 +9,12 @@ ms.reviewer: kgremban
 ms.service: iot-edge
 services: iot-edge
 zone_pivot_groups: how-to-troubleshoot-monitoring-and-faq-zpg
-ms.openlocfilehash: 9d3e89ee74dd1f0274ad742cae4a9706f54b7780
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: 8c4e74bbd72abdbfaf365afe720149f0eb7fe8ae
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122350048"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130215389"
 ---
 # <a name="faq-and-troubleshooting"></a>FAQ und Fehlerbehebung
 
@@ -38,7 +38,7 @@ Weitere Informationen finden Sie unter [Proxy-Aspekte](how-to-collect-and-transp
 
 ### <a name="update-moby-engine"></a>Aktualisieren der Moby-Engine
 
-Sorgen Sie auf Linux-Hosts dafür, dass Sie eine aktuelle Version der Container-Engine verwenden. Wir empfehlen eine Aktualisierung auf die neueste Version anhand der [Installationsanleitungen](how-to-install-iot-edge.md#install-a-container-engine).
+Sorgen Sie auf Linux-Hosts dafür, dass Sie eine aktuelle Version der Container-Engine verwenden. Wir empfehlen eine Aktualisierung auf die neueste Version anhand der [Installationsanleitungen](how-to-provision-single-device-linux-symmetric.md#install-iot-edge).
 
 ## <a name="how-do-i-collect-logs-along-with-metrics"></a>Wie sammle ich von Protokolle zusammen mit Metriken?
 

@@ -3,12 +3,12 @@ title: Sichern von Azure Database for PostgreSQL
 description: Weitere Informationen zur Azure Database for PostgreSQL-Sicherung mit Langzeitaufbewahrung (Vorschau)
 ms.topic: conceptual
 ms.date: 09/22/2021
-ms.openlocfilehash: 25304aee2a759b55b8b3139aa2ae57511c967595
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: a012ef97db27b97039fa7aac7b108ca86afb9314
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129389872"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130219619"
 ---
 # <a name="azure-database-for-postgresql-backup-with-long-term-retention-preview"></a>Azure Database for PostgreSQL-Sicherung mit Langzeitaufbewahrung (Vorschau)
 
@@ -24,7 +24,7 @@ Sie können die Sicherung für mehrere Datenbanken auf mehreren Azure PostgreSQL
 
    :::image type="content" source="./media/backup-azure-database-postgresql/adding-backup-details-inline.png" alt-text="Screenshot: Option zum Hinzufügen von Sicherungsinformationen" lightbox="./media/backup-azure-database-postgresql/adding-backup-details-expanded.png":::
 
-   Alternativ können Sie über das [Backup Center](/azure/backup/backup-center-overview) zu dieser Seite navigieren. 
+   Alternativ können Sie über das [Backup Center](./backup-center-overview.md) zu dieser Seite navigieren. 
 
 1. Wählen bzw. [erstellen Sie eine Sicherungsrichtlinie](#create-backup-policy), die den Sicherungszeitplan und die Aufbewahrungsdauer definiert.
 

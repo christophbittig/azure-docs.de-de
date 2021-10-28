@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b419b816de822c72e3c33acddd9d9b6c50745b7f
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: b725577cadcde38117a2b21be31d37c2a8b02240
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130047849"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223061"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Virtuelle Linux-Computer in Azure
 
@@ -48,12 +48,12 @@ Es gibt mehrere [geografische Regionen](https://azure.microsoft.com/regions/) we
 
 Die folgende Tabelle enthält einige Methoden, mit denen Sie eine Liste verfügbarer Standorte abrufen können:
 
-| Methode | BESCHREIBUNG |
+| Methode | Beschreibung |
 | --- | --- |
 | Azure-Portal |Wählen Sie beim Erstellen eines virtuellen Computers einen Standort aus der Liste aus. |
 | Azure PowerShell |Verwenden Sie den Befehl [Get-AzLocation](/powershell/module/az.resources/get-azlocation). |
 | REST-API |Verwenden Sie den Vorgang [List locations](/rest/api/resources/subscriptions) (Standorte auflisten). |
-| Azure CLI |Verwenden Sie den Vorgang [az account list-locations](/cli/azure/account). |
+| Azure-Befehlszeilenschnittstelle |Verwenden Sie den Vorgang [az account list-locations](/cli/azure/account). |
 
 ## <a name="availability"></a>Verfügbarkeit
 Für Azure wurde eine branchenweit führende Vereinbarung zum Servicelevel von 99,9 Prozent für Einzelinstanz-VMs angekündigt. Sie gilt unter der Voraussetzung, dass Sie den virtuellen Computer mit Storage Premium für alle Datenträger bereitstellen.  Damit Ihre Bereitstellung die Qualifikation für unsere VM-Standardvereinbarung zum Servicelevel von 99,95 Prozent erreicht, müssen Sie weiterhin mindestens zwei virtuelle Computer bereitstellen, die Ihre Workload innerhalb einer Verfügbarkeitsgruppe ausführen. Durch eine Verfügbarkeitsgruppe wird sichergestellt, dass Ihre virtuellen Computer auf mehrere Fehlerdomänen in den Azure-Rechenzentren verteilt und auf Hosts mit unterschiedlichen Wartungsfenstern bereitgestellt werden. Die vollständige [Azure-SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) erläutert die garantierte Verfügbarkeit von Azure insgesamt.
@@ -111,7 +111,7 @@ Azure unterstützt [cloud-init](https://cloud-init.io/) für die meisten Linux-D
 
 ## <a name="networking"></a>Netzwerk
 * [Virtuelle Netzwerke im Überblick](../../virtual-network/virtual-networks-overview.md)
-* [IP-Adressen in Azure](../../virtual-network/public-ip-addresses.md)
+* [IP-Adressen in Azure](../../virtual-network/ip-services/public-ip-addresses.md)
 * [Öffnen von Ports für eine Linux-VM in Azure](nsg-quickstart.md)
 * [Erstellen eines vollständig qualifizierten Domänennamens im Azure-Portal](../create-fqdn.md)
 

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/13/2021
 ms.author: b-juche
 ms.custom: references_regions
-ms.openlocfilehash: 81d14b6c03e8ef27697e8f069a5d9ebd5ff38d7f
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 3836dc37a6be1b21a46424cbcf14a8960908969d
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129993129"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130256322"
 ---
 # <a name="understand-azure-netapp-files-backup"></a>Grundlegendes zur Azure NetApp Files-Sicherung
 
@@ -71,5 +71,5 @@ Wenn Sie eine Sicherung von beispielsweise 600 GiB auf einem neuen Volume wiede
 * [Deaktivieren der Sicherungsfunktionalität für ein Volume](backup-disable.md)
 * [Sicherungen eines Volumes löschen](backup-delete.md)
 * [Metriken zur Volume-Sicherung](azure-netapp-files-metrics.md#volume-backup-metrics)
-* [Häufig gestellte Fragen zur Azure NetApp Files-Sicherung](azure-netapp-files-faqs.md#azure-netapp-files-backup-faqs)
+* [Häufig gestellte Fragen zur Azure NetApp Files-Sicherung](faq-backup.md)
 * [Funktionsweise von Azure NetApp Files-Momentaufnahmen](snapshots-introduction.md)

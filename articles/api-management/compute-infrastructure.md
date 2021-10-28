@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/23/2021
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 15bc0aa0c4a657bbb6f363a9c2786c1d4f9116ee
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 23d54c2725e48b1d587fb641c593be0c8d63958f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123544407"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130248638"
 ---
 # <a name="compute-platform-for-azure-api-management"></a>Datenverarbeitungsplattform für Azure API Management
 
@@ -57,7 +57,7 @@ Erstellen oder aktualisieren Sie die virtuelle Netzwerkverbindung oder die Verf�
 
 > [!IMPORTANT]
 > Wenn Sie die Version der Compute-Plattform einer Instanz aktualisieren, die mit einem Azure [virtuellen Netzwerk](virtual-network-concepts.md) verbunden ist:
-> * Sie müssen eine Standard SKU [öffentliche IPv4-Adresse](../virtual-network/public-ip-addresses.md#standard) Ressource bereitstellen
+> * Sie müssen eine Standard SKU [öffentliche IPv4-Adresse](../virtual-network/ip-services/public-ip-addresses.md#standard) Ressource bereitstellen
 > * Die VIP-Adresse(n) Ihrer API Management-Instanz werden sich ändern.
 
 ## <a name="next-steps"></a>Nächste Schritte

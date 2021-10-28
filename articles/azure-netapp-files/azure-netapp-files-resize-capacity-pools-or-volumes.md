@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 04/30/2021
 ms.author: b-juche
-ms.openlocfilehash: fcba2424c457d97a45096af9a35b5f2afa4086ba
-ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
+ms.openlocfilehash: 419ae4e99ce5b8327ced306dea398ef82d5588db
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129407245"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130265110"
 ---
 # <a name="resize-a-capacity-pool-or-a-volume"></a>Ändern der Größe eines Kapazitätspools oder Volumes
 Sie können die Größe eines Kapazitätspools oder Volumes nach Bedarf ändern, beispielsweise, wenn ein Volume oder ein Kapazitätspool fast vollständig ausgelastet ist. 
@@ -89,4 +89,4 @@ In der folgenden Tabelle wird das Verhalten der Größenänderung des Zielvolume
 - [Dynamisches Ändern der Dienstebene eines Volumes](dynamic-change-volume-service-level.md) 
 - [Grundlegendes zum Volumekontingent](volume-quota-introduction.md)
 - [Überwachen der Kapazität eines Volumes](monitor-volume-capacity.md)
-- [Häufig gestellte Fragen zur Kapazitätsverwaltung](azure-netapp-files-faqs.md#capacity-management-faqs)
+- [Häufig gestellte Fragen zur Kapazitätsverwaltung](faq-capacity-management.md)

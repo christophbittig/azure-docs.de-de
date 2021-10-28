@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 04/22/2021
 ms.topic: how-to
 ms.custom: fasttrack-edit, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: 9d4ad2b71d9ef5e3632344cb715926d2e5ebd343
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: a8dd26019d94cbaeca620d4dbb6e1bdf9dabdb2d
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130072656"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130246452"
 ---
 # <a name="manage-azure-machine-learning-workspaces-in-the-portal-or-with-the-python-sdk"></a>Verwalten von Azure Machine Learning-Arbeitsbereichen im Portal oder mit dem Python SDK
 
@@ -171,7 +171,7 @@ Das Azure Machine Learning Python SDK bietet die Klasse [PrivateEndpointConfig](
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Bei der standardmäßigen Netzwerkkonfiguration wird ein __öffentlicher Endpunkt__ verwendet, der über das öffentliche Internet zugänglich ist. Um den Zugriff auf Ihren Arbeitsbereich auf ein von Ihnen erstelltes virtuelles Azure-Netzwerk zu beschränken, können Sie __Privater Endpunkt__ (Vorschauversion) als __Konnektivitätsmethode__ auswählen und dann über __+ Hinzufügen__ den Endpunkt konfigurieren.   
+1. Bei der standardmäßigen Netzwerkkonfiguration wird ein __öffentlicher Endpunkt__ verwendet, der über das öffentliche Internet zugänglich ist. Um den Zugriff auf Ihren Arbeitsbereich auf ein von Ihnen erstelltes Azure Virtual Network zu beschränken, können Sie __Privater Endpunkt__ als __Konnektivitätsmethode__ auswählen und dann auf __+ Hinzufügen__ klicken, um den Endpunkt zu konfigurieren. 
 
    :::image type="content" source="media/how-to-manage-workspace/select-private-endpoint.png" alt-text="Auswahl des privaten Endpunkts":::  
 
@@ -182,10 +182,6 @@ Das Azure Machine Learning Python SDK bietet die Klasse [PrivateEndpointConfig](
 1. Wenn Sie die Netzwerkkonfiguration abgeschlossen haben, können Sie auf __Überprüfen und erstellen__ klicken oder mit der optionalen Konfiguration unter __Erweitert__ fortfahren.
 
 ---
-
-> [!IMPORTANT]  
-> Das Verwenden eines privaten Endpunkts mit Azure Machine Learning-Arbeitsbereichen befindet sich derzeit in der Public Preview. Diese Vorschau wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.     
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ### <a name="vulnerability-scanning"></a>Überprüfung auf Sicherheitsrisiken
 

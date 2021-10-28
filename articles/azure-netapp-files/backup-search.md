@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/27/2021
 ms.author: b-juche
-ms.openlocfilehash: 71fcf944f0664c1d3e4d07e96348d109042047a8
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 0ed10fbe492a49f61a989e9159bed1cf4b60e513
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129095003"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130256303"
 ---
 # <a name="search-backups-of-azure-netapp-files-volumes"></a>Suchen von Sicherungen von Azure NetApp Files-Volumes
 
@@ -73,6 +73,6 @@ Sie können Sicherungen anzeigen und durchsuchen, die in allen NetApp-Konten in 
 * [Verwalten von Sicherungsrichtlinien](backup-manage-policies.md)
 * [Wiederherstellen einer Sicherung auf einem neuen Volume](backup-restore-new-volume.md)
 * [Deaktivieren der Sicherungsfunktionalität für ein Volume](backup-disable.md)
-* [Löschen von Sicherungen eines Volumes](backup-delete.md)
-* [Volumesicherungsmetriken](azure-netapp-files-metrics.md#volume-backup-metrics)
-* [Häufig gestellte Fragen zur Azure NetApp Files-Sicherung](azure-netapp-files-faqs.md#azure-netapp-files-backup-faqs)
+* [Sicherungen eines Volumes löschen](backup-delete.md)
+* [Metriken zur Volume-Sicherung](azure-netapp-files-metrics.md#volume-backup-metrics)
+* [Häufig gestellte Fragen zur Azure NetApp Files-Sicherung](faq-backup.md)

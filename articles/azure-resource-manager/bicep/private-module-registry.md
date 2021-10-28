@@ -2,13 +2,13 @@
 title: Erstellen einer privaten Registrierung für das Bicep-Modul
 description: Erfahren Sie, wie Sie eine Azure-Containerregistrierung für private Bicep-Module einrichten.
 ms.topic: conceptual
-ms.date: 10/14/2021
-ms.openlocfilehash: ccdb8685fe230f19e31ce2802f7c9fc54a33a8a0
-ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
+ms.date: 10/22/2021
+ms.openlocfilehash: 1f14b29fb9d6740d661f74328c82758a74427355
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130138712"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130224066"
 ---
 # <a name="create-private-registry-for-bicep-modules-preview"></a>Erstellen einer privaten Registrierung für Bicep-Module (Vorschau)
 
@@ -73,5 +73,5 @@ Sie können nun aus einer Bicep-Datei auf die Datei in der Registrierung verweis
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen zu Modulen finden Sie unter [Bicep-Module](modules.md).
-* Informationen zum Konfigurieren von Aliasen für eine Modulregistrierung finden Sie unter [Hinzufügen benutzerdefinierter Einstellungen in der Bicep-Konfigurationsdatei](private-module-registry.md).
+* Informationen zum Konfigurieren von Aliasen für eine Modulregistrierung finden Sie unter [Hinzufügen benutzerdefinierter Einstellungen in der Bicep-Konfigurationsdatei](bicep-config.md).
 * Weitere Informationen zum Veröffentlichen und Wiederherstellen von Modulen finden Sie unter [Bicep CLI-Befehle](bicep-cli.md).

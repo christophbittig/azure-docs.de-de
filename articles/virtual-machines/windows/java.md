@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 10/09/2021
 ms.custom: devx-track-java
 ms.author: cynthn
-ms.openlocfilehash: fa4d2f5dc33553cb92a5733e5946c055d6a12941
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: daf1c7738539f225f116edbb839d86965f4e38cd
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129810884"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130234016"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Erstellen und Verwalten von virtuellen Windows-Computern in Azure mithilfe von Java
 
@@ -141,7 +141,7 @@ AvailabilitySet availabilitySet = azure.availabilitySets()
 ```
 ### <a name="create-the-public-ip-address"></a>Erstellen der öffentlichen IP-Adresse
 
-Eine öffentliche [IP-Adresse](../../virtual-network/public-ip-addresses.md) ist für die Kommunikation mit dem virtuellen Computer erforderlich.
+Eine öffentliche [IP-Adresse](../../virtual-network/ip-services/public-ip-addresses.md) ist für die Kommunikation mit dem virtuellen Computer erforderlich.
 
 Um die öffentliche IP-Adresse für den virtuellen Computer zu erstellen, fügen Sie dem try-Block in der main-Methode folgenden Code hinzu:
 

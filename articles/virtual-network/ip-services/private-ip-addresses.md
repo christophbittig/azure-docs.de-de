@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: 748d3db418ee41164f7151dc6a62d7cc73a99604
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 57862739ec73dffb6ba6fde657a212d878f6da6d
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129368254"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130251146"
 ---
 # <a name="private-ip-addresses"></a>Private IP-Adressen
 Private IP-Adressen ermöglichen eine Kommunikation zwischen Ressourcen in Azure. 
@@ -105,4 +105,4 @@ Die Grenzwerte für die IP-Adressierung finden Sie in den vollständigen Informa
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informieren Sie sich über [öffentliche IP-Adressen in Azure](public-ip-addresses.md).
-* [Bereitstellen eines virtuellen Computers mit einer statischen privaten IP-Adresse mithilfe des Azure-Portals](../../virtual-network/virtual-networks-static-private-ip-arm-pportal.md)
+* [Bereitstellen eines virtuellen Computers mit einer statischen privaten IP-Adresse mithilfe des Azure-Portals](./virtual-networks-static-private-ip-arm-pportal.md)

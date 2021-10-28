@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/07/2020
 ms.author: allensu
-ms.openlocfilehash: 06b8e193f48a4e1d3956c8c40ee03dfd11a4a088
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: d53ae804fa628c5fcf89fa61d5e9d153abd225cb
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129276017"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130225754"
 ---
 # <a name="load-balancer-and-availability-zones"></a>Load Balancer und Verfügbarkeitszonen
 
@@ -59,7 +59,7 @@ Für ein internes Load Balancer-Front-End fügen Sie der internen Load Balancer-
 
 ## <a name="non-zonal"></a>Nicht zonal
 
-Load Balancer können auch in einer nicht zonalen Konfiguration mithilfe eines Front-Ends ohne Zone (öffentliche IP-Adresse oder öffentliches IP-Adressenpräfix) erstellt werden.  Diese Option bietet keine Garantie für Redundanz. Beachten Sie, dass alle öffentlichen IP-Adressen, die [aufgerüstet](../virtual-network/public-ip-upgrade-portal.md) werden, vom Typ "no-zone" sind.
+Load Balancer können auch in einer nicht zonalen Konfiguration mithilfe eines Front-Ends ohne Zone (öffentliche IP-Adresse oder öffentliches IP-Adressenpräfix) erstellt werden.  Diese Option bietet keine Garantie für Redundanz. Beachten Sie, dass alle öffentlichen IP-Adressen, die [aufgerüstet](../virtual-network/ip-services/public-ip-upgrade-portal.md) werden, vom Typ "no-zone" sind.
 
 ## <a name="design-considerations"></a><a name="design"></a> Überlegungen zum Entwurf
 

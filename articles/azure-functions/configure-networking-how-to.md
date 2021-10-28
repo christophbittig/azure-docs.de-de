@@ -4,12 +4,12 @@ description: Dieser Artikel zeigt Ihnen, wie Sie bestimmte virtuelle Netzwerkauf
 ms.topic: conceptual
 ms.date: 3/13/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 0a431abe5d32bdc59bb163f32e4c5f636c870335
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: 6465a1c5e9b39bcef29fb28ebf2e19c7203da648
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130063038"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130257041"
 ---
 # <a name="how-to-configure-azure-functions-with-a-virtual-network"></a>Konfigurieren von Azure Functions mit einem virtuellen Netzwerk
 
@@ -49,7 +49,6 @@ Einrichten einer Funktion mit einem auf ein privates Netzwerk beschränkten Spei
     | `WEBSITE_CONTENTSHARE` | Dateifreigabe | Der Name der Dateifreigabe, die im gesicherten Speicherkonto erstellt wurde und in der sich die Projektbereitstellungsdateien befinden. |
     | `WEBSITE_CONTENTOVERVNET` | 1 | Neue Einstellung |
     | `WEBSITE_VNET_ROUTE_ALL` | 1 | Erzwingt den gesamten ausgehenden Datenverkehr über das virtuelle Netzwerk. Erforderlich, wenn das Speicherkonto private Endpunktverbindungen verwendet. |
-    | `WEBSITE_DNS_SERVER` | `168.63.129.16` | Der von der App verwendete DNS-Server. Erforderlich, wenn das Speicherkonto private Endpunktverbindungen verwendet. |
 
 1. Wählen Sie **Speichern**, um die Anwendungseinstellungen zu speichern. Das Ändern von App-Einstellungen führt zu einem Neustart der App.  
 

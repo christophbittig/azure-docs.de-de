@@ -6,12 +6,12 @@ metadata:
   ms.service: azure-functions
   ms.date: 4/11/2019
   ms.reviewer: glenga
-  ms.openlocfilehash: 2fd3a00ef0ee01c5d7f535fcdb5021f831ff20d3
-  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+  ms.openlocfilehash: c75cd261eae3e5756162570c899b239ff954e679
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/17/2021
-  ms.locfileid: "122253825"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130260711"
 title: Häufig gestellte Fragen zu Netzwerken in Azure Functions
 summary: >
   In diesem Artikel sind häufig gestellte Fragen zu Netzwerken in Azure Functions aufgeführt. Eine ausführlichere Übersicht finden Sie unter [Netzwerkoptionen von Azure Functions](functions-networking-options.md).
@@ -58,4 +58,4 @@ sections:
 
 
       Informationen zu Szenarien, in denen Sie nur unidirektionalen Zugriff auf Ressourcen des virtuellen Netzwerks oder eine weniger umfassende Netzwerkisolation benötigen, finden Sie in der [Übersicht über die Netzwerkoptionen von Functions](functions-networking-options.md).
-additionalContent: "\n## <a name=\"next-steps\"></a>Nächste Schritte\n\nWeitere Informationen zum Netzwerk und zu Funkionen: \n        \n* [Tutorial zum Einstieg in die Integration des virtuellen Netzwerks](./functions-create-vnet.md)\n* [Weitere Informationen zu den Netzwerkoptionen in Azure Functions](./functions-networking-options.md)\n* [Weitere Informationen zur Integration des virtuellen Netzwerks mit App Service und Functions](../app-service/web-sites-integrate-with-vnet.md)\n* [Weitere Informationen zu virtuellen Netzwerken in Azure](../virtual-network/virtual-networks-overview.md)\n* [Aktivieren weiterer Netzwerkfunktionen und Steuerung mit App Service-Umgebungen](../app-service/environment/intro.md)"
+additionalContent: "\n## <a name=\"next-steps\"></a>Nächste Schritte\n\nWeitere Informationen zum Netzwerk und zu Funkionen: \n        \n* [Tutorial zum Einstieg in die Integration des virtuellen Netzwerks](./functions-create-vnet.md)\n* [Weitere Informationen zu den Netzwerkoptionen in Azure Functions](./functions-networking-options.md)\n* [Weitere Informationen zur Integration des virtuellen Netzwerks mit App Service und Functions](../app-service/overview-vnet-integration.md)\n* [Weitere Informationen zu virtuellen Netzwerken in Azure](../virtual-network/virtual-networks-overview.md)\n* [Aktivieren weiterer Netzwerkfunktionen und Steuerung mit App Service-Umgebungen](../app-service/environment/intro.md)"

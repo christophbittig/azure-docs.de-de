@@ -7,12 +7,12 @@ ms.author: dahellem
 ms.date: 8/27/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: be6d4dd328d3b8cd0f02bede7bcba7b6a4e32ae9
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 41ae76350ef5483323edd0a5b244c3b64e08c674
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129534533"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130263918"
 ---
 # <a name="ingesting-opc-ua-data-with-azure-digital-twins"></a>Erfassen von OPC UA-Daten mit Azure Digital Twins
 
@@ -61,7 +61,7 @@ In diesem Abschnitt wird das jeweilige Setup kurz erläutert.
 
 Ausführlichere Informationen zum Installieren der einzelnen Komponenten finden Sie in den folgenden Ressourcen:
 * [Schritt-für-Schritt-Anleitung zum Installieren von OPC Publisher auf Azure IoT Edge](https://www.linkedin.com/pulse/step-by-step-guide-installing-opc-publisher-azure-iot-kevin-hilscher) 
-* [Installieren von IoT Edge unter Linux](../iot-edge/how-to-install-iot-edge.md) 
+* [Installieren von IoT Edge unter Linux](../iot-edge/how-to-provision-single-device-linux-symmetric.md) 
 * [OPC Publisher auf GitHub](https://github.com/Azure/iot-edge-opc-publisher)
 * [Konfigurieren von OPC Publisher](/previous-versions/azure/iot-accelerators/howto-opc-publisher-configure)
 
@@ -163,7 +163,7 @@ Erstellen Sie mithilfe des [Azure-Portals](https://portal.azure.com) eine Ubuntu
 
 #### <a name="install-iot-edge-container"></a>Installieren des IoT Edge-Containers
 
-Befolgen Sie die Anweisungen zum [Installieren von IoT Edge unter Linux](../iot-edge/how-to-install-iot-edge.md).
+Befolgen Sie die Anweisungen zum [Installieren von IoT Edge unter Linux](../iot-edge/how-to-provision-single-device-linux-symmetric.md).
 
 Führen Sie nach Abschluss der Installation den folgenden Befehl aus, um den Status Ihrer Installation zu überprüfen:
 
@@ -334,7 +334,7 @@ Erstellen Sie zunächst ihre Datei *opcua-mapping.json*. Beginnen Sie mit einer 
 
 Das Schema für die Einträge lautet folgendermaßen:
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | NodeId | Wert aus dem OPC-UA-Knoten. Beispiel: ns=3;i={Wert} | ✔ |
 | TwinId | TwinId ($dtId) des Zwillings, für den Sie den Telemetriewert speichern möchten. | ✔ |
@@ -377,7 +377,7 @@ Wählen Sie im linken Navigationsmenü der Funktion die Option „Konfiguration�
 
 Es gibt drei Anwendungseinstellungen, die Sie erstellen müssen:
 
-| Einstellung | BESCHREIBUNG | Erforderlich |
+| Einstellung | Beschreibung | Erforderlich |
 | --- | --- | --- |
 | ADT_SERVICE_URL | URL für Ihre Azure Digital Twins-Instanz. Beispiel: `https://example.api.eus.digitaltwins.azure.net` | ✔ |
 | JSON_MAPPINGFILE_URL | URL der Shared Access Signature für die Datei „opcua-mapping.json“. | ✔ |
@@ -436,7 +436,7 @@ In diesem Artikel haben Sie einen vollständigen Datenfluss eingerichtet, um sim
 Verwenden Sie nun die folgenden Ressourcen, um mehr über die unterstützenden Tools und Prozesse zu erfahren, die in diesem Artikel verwendet wurden:
 
 * [Schritt-für-Schritt-Anleitung zum Installieren von OPC Publisher auf Azure IoT Edge](https://www.linkedin.com/pulse/step-by-step-guide-installing-opc-publisher-azure-iot-kevin-hilscher) 
-* [Installieren von IoT Edge unter Linux](../iot-edge/how-to-install-iot-edge.md) 
+* [Installieren von IoT Edge unter Linux](../iot-edge/how-to-provision-single-device-linux-symmetric.md) 
 * [OPC Publisher](https://github.com/Azure/iot-edge-opc-publisher)
 * [Konfigurieren von OPC Publisher](/previous-versions/azure/iot-accelerators/howto-opc-publisher-configure)
 * [UANodeSetWebViewer](https://github.com/barnstee/UANodesetWebViewer) 

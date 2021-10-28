@@ -3,12 +3,12 @@ title: Unterstützte Kategorien für Azure Monitor-Ressourcenprotokolle
 description: Hier finden Sie Erläuterungen zu den unterstützten Diensten und Ereignisschemas für Azure Monitor-Ressourcenprotokolle.
 ms.topic: reference
 ms.date: 10/05/2021
-ms.openlocfilehash: bf7d5371a170f28e79828619aef9fc16e15a303a
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 11233e33d7dc5dffbdfc65acec9eac9223a96f2b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130006373"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130231530"
 ---
 # <a name="supported-categories-for-azure-monitor-resource-logs"></a>Unterstützte Kategorien für Azure Monitor-Ressourcenprotokolle
 
@@ -19,7 +19,7 @@ ms.locfileid: "130006373"
 
 Ressourcenprotokolle wurden zuvor als Diagnoseprotokolle bezeichnet. Der Name wurde im Oktober 2019 geändert, da die Typen der von Azure Monitor gesammelten Protokolle nicht mehr nur die Azure-Ressource umfassen.
 
-Ein Schema wird anhand einer Kombination aus dem Ressourcentyp (in der `resourceId`-Eigenschaft verfügbar) und der Kategorie eindeutig identifiziert. Es gibt ein allgemeines Schema für alle Ressourcenprotokolle mit dienstspezifischen Feldern, die dann für verschiedene Protokollkategorien hinzugefügt werden. Weitere Informationen finden Sie unter [Allgemeines und dienstspezifisches Schema für Azure-Ressourcenprotokolle](/azure/azure-monitor/essentials/resource-logs-schema).
+Ein Schema wird anhand einer Kombination aus dem Ressourcentyp (in der `resourceId`-Eigenschaft verfügbar) und der Kategorie eindeutig identifiziert. Es gibt ein allgemeines Schema für alle Ressourcenprotokolle mit dienstspezifischen Feldern, die dann für verschiedene Protokollkategorien hinzugefügt werden. Weitere Informationen finden Sie unter [Allgemeines und dienstspezifisches Schema für Azure-Ressourcenprotokolle](./resource-logs-schema.md).
 
 ## <a name="costs"></a>Kosten
 

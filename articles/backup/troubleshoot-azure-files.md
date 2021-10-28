@@ -3,12 +3,12 @@ title: Problembehandlung der Sicherung von Azure-Dateifreigaben
 description: Dieser Artikel enthält Informationen zum Behandeln von Problemen in Verbindung mit dem Schutz Ihrer Azure-Dateifreigaben.
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 942574fafe6a68b601f3ed4c428dc74fb02719a5
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 07b3f8c6fddef10132ac15f1dc3fe076d6d29218
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129532511"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130247757"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Behandeln von Problemen beim Sichern von Azure-Dateifreigaben
 
@@ -27,7 +27,7 @@ Dieser Artikel enthält Informationen zur Problembehandlung, mit denen Sie event
 - Vergewissern Sie sich, dass sich die Dateifreigabe nicht in einem nicht unterstützten Speicherkonto befindet. Sie können die [Unterstützungsmatrix für Sicherungen von Azure-Dateifreigaben](azure-file-share-support-matrix.md) verwenden, um unterstützte Speicherkonten zu finden.
 - Stellen Sie sicher, dass das Speicherkonto und der Recovery Services-Tresor in derselben Region vorhanden sind.
 - Sorgen Sie dafür, dass die Kombination aus Speicherkontoname und Ressourcengruppenname eine Gesamtlänge von 84 Zeichen bei neuen Speicherkonten und 77 Zeichen bei klassischen Speicherkonten nicht überschreitet.
-- Überprüfen Sie die Firewalleinstellungen des Speicherkontos, um sicherzustellen, dass die Ausnahme _Azure-Diensten in der Liste der vertrauenswürdigen Dienste den Zugriff auf dieses Speicherkonto erlauben_ gewährt wird. Unter [diesem](/azure/storage/common/storage-network-security?tabs=azure-portal#manage-exceptions) Link finden Sie die Schritte zur Gewährung einer Ausnahme.
+- Überprüfen Sie die Firewalleinstellungen des Speicherkontos, um sicherzustellen, dass die Ausnahme _Azure-Diensten in der Liste der vertrauenswürdigen Dienste den Zugriff auf dieses Speicherkonto erlauben_ gewährt wird. Unter [diesem](../storage/common/storage-network-security.md?tabs=azure-portal#manage-exceptions) Link finden Sie die Schritte zur Gewährung einer Ausnahme.
 
 
 ### <a name="error-in-portal-states-discovery-of-storage-accounts-failed"></a>Im Portal tritt ein Fehler mit dem Hinweis auf, dass die Speicherkonten nicht erfolgreich erkannt wurden.

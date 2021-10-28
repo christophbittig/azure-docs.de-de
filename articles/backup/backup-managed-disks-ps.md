@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Azure Managed Disks über das Azure-Portal si
 ms.topic: conceptual
 ms.date: 09/17/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: beb6a266a9436b7c26f5786c5f5a57f10fb9319a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 4aab90bdd5a8ee4ecafd0dbfec81052da6b39f69
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128672654"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130264596"
 ---
 # <a name="back-up-azure-managed-disks-using-azure-powershell"></a>Sichern von Azure-Managed Disks über Azure PowerShell
 
@@ -159,7 +159,7 @@ Der Benutzer muss über RBAC für den Tresor (dargestellt durch die Tresor-MSI) 
 
 Der Sicherungstresor verwendet die verwaltete Identität für den Zugriff auf andere Azure-Ressourcen. Um das Backup von verwalteten Datenträgern zu konfigurieren, erfordert die verwaltete Identität vom Backup Tresor eine Reihe von Berechtigungen für die Quellfestplatten und Ressourcengruppen, auf denen Momentaufnahmen erstellt und verwaltet werden.
 
-Eine vom System zugewiesene verwaltete Identität ist auf eine pro Ressource beschränkt und ist an den Lebenszyklus dieser Ressource gebunden. Sie können der verwalteten Identität mithilfe der rollenbasierten Zugriffssteuerung von Azure (Azure RBAC) Berechtigungen erteilen. Eine verwaltete Identität ist ein spezieller Dienstprinzipal, der nur zusammen mit Azure-Ressourcen verwendet werden kann. Informieren Sie sich ausführlicher über [verwaltete Identitäten](/azure/active-directory/managed-identities-azure-resources/overview).
+Eine vom System zugewiesene verwaltete Identität ist auf eine pro Ressource beschränkt und ist an den Lebenszyklus dieser Ressource gebunden. Sie können der verwalteten Identität mithilfe der rollenbasierten Zugriffssteuerung von Azure (Azure RBAC) Berechtigungen erteilen. Eine verwaltete Identität ist ein spezieller Dienstprinzipal, der nur zusammen mit Azure-Ressourcen verwendet werden kann. Informieren Sie sich ausführlicher über [verwaltete Identitäten](../active-directory/managed-identities-azure-resources/overview.md).
 
 Um das Backup von verwalteten Datenträgern zu konfigurieren, müssen die folgenden Voraussetzungen erfüllt sein:
 

@@ -11,12 +11,12 @@ ms.date: 09/25/2021
 ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: ffedd73860a9ef171d592689ef7a0d8a0cde82d0
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: ce5da1ae3ae87d3dbfc91b72fbda412ad179cfa9
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130044173"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130233959"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Tutorial: Erstellen eines Azure Active Directory B2C-Mandanten
 
@@ -50,11 +50,11 @@ Im nächsten Tutorial erfahren Sie, wie Sie eine Anwendung registrieren.
 1. Wählen Sie das Verzeichnis aus, das Ihr Abonnement enthält:
     1. Wählen Sie im Azure-Portal auf der Symbolleiste das Filtersymbol **Verzeichnisse und Abonnements** aus. 
     
-    ![Filtersymbol „Verzeichnisse und Abonnements“](media/tutorial-create-tenant/directories-subscription-filter-icon.png)
+        ![Filtersymbol „Verzeichnisse und Abonnements“](media/tutorial-create-tenant/directories-subscription-filter-icon.png)
 
     1. Navigieren Sie zu dem Verzeichnis, das Ihr Abonnement enthält, und wählen Sie daneben die Schaltfläche **Umschalten** aus. Beim Wechseln des Verzeichnisses wird das Portal neu geladen.
 
-    ![„Verzeichnisse und Abonnements“ mit der Schaltfläche „Umschalten“](media/tutorial-create-tenant/switch-directory.png)
+        ![„Verzeichnisse und Abonnements“ mit der Schaltfläche „Umschalten“](media/tutorial-create-tenant/switch-directory.png)
 
 1. Fügen Sie **Microsoft.AzureActiveDirectory** als Ressourcenanbieter für das verwendete Azure-Abonnement hinzu ([weitere Informationen](../azure-resource-manager/management/resource-providers-and-types.md?WT.mc_id=Portal-Microsoft_Azure_Support#register-resource-provider-1)):
 

@@ -5,12 +5,12 @@ author: emaher
 ms.topic: how-to
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: 6436a157c91c7594cd328be53dfaf6e0856412dd
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: efd33b95bd1a32c73712c7f094107717b4e5b973
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130180664"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130225773"
 ---
 # <a name="how-to-create-a-lab-with-a-shared-resource-in-azure-lab-services"></a>Erstellen eines Labs mit einer freigegebenen Ressource in Azure Lab Services
 
@@ -38,7 +38,7 @@ Eine der gängigeren gemeinsam genutzten Ressourcen ist ein Lizenzserver. Im Ans
 Der Lizenzserver muss mit dem virtuellen Netzwerk verbunden sein, das mittels Peering mit dem Lab verbunden ist. Daher muss sich der Lizenzserver in der gleichen Region befinden wie das Labkonto.
 
 #### <a name="static-private-ip-and-mac-address"></a>Statische private IP-Adresse und MAC-Adresse
-Virtuelle Computer verfügen standardmäßig über eine dynamische private IP-Adresse. [Legen Sie die private IP-Adresse auf statisch fest, bevor Sie Software einrichten.](../virtual-network/virtual-networks-static-private-ip-arm-pportal.md) Dadurch werden die private IP-Adresse und die MAC-Adresse statisch.  
+Virtuelle Computer verfügen standardmäßig über eine dynamische private IP-Adresse. [Legen Sie die private IP-Adresse auf statisch fest, bevor Sie Software einrichten.](../virtual-network/ip-services/virtual-networks-static-private-ip-arm-pportal.md) Dadurch werden die private IP-Adresse und die MAC-Adresse statisch.  
 
 #### <a name="control-access"></a>Steuern des Zugriffs
 Die Steuerung des Zugriffs auf den Lizenzserver ist entscheidend.  Nach der Einrichtung des virtuellen Computers ist weiterhin Zugriff erforderlich, um Wartungs-, Problembehandlungs- und Aktualisierungsaufgaben durchzuführen.  Im Anschluss finden Sie einige Möglichkeiten hierfür:

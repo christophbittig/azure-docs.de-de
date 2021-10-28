@@ -3,12 +3,12 @@ title: Erstellen eines benutzerdefinierten Azure DevTest Labs-Images aus einer V
 description: Erfahren Sie, wie Sie mit dem Azure-Portal aus einer VHD-Datei ein benutzerdefiniertes Image in Azure DevTest Labs erstellen.
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 821a429b19218d8bb813be7519dd124cd025b3bf
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: bf363d59aaeafa9e6b9b11394c846325835c1696
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128587895"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130226528"
 ---
 # <a name="create-a-custom-image-from-a-vhd-file"></a>Erstellen eines benutzerdefinierten Images aus einer VHD-Datei
 
@@ -69,7 +69,7 @@ Nach wenigen Minuten wird das benutzerdefinierte Image erstellt und im Speicherk
 
 ## <a name="related-blog-posts"></a>Verwandte Blogbeiträge
 
-- [Custom images or formulas? (Benutzerdefinierte Images oder Formeln?)](/azure/devtest-labs/devtest-lab-faq#blog-post)
+- [Custom images or formulas? (Benutzerdefinierte Images oder Formeln?)](./devtest-lab-faq.yml#blog-post)
 - [Copying Custom Images between Azure DevTest Labs (Kopieren benutzerdefinierter Images zwischen Azure DevTest Labs)](https://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
 ## <a name="next-steps"></a>Nächste Schritte
