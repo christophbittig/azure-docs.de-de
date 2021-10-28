@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/03/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 56ba97d5a13744ee034024f510eac70d4f343877
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: f66c1528058fd2d03098c00a54928fb0fbbd4057
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129052802"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130225152"
 ---
 # <a name="share-an-azure-managed-disk"></a>Freigeben eines verwalteten Azure-Datenträgers
 
@@ -161,7 +161,7 @@ Die Preise für freigegebene Ultra-Datenträger basieren auf der bereitgestellte
 
 **F: Welche Regionen unterstützen gemeinsam genutzte Festplatten?**
 
-**A:** Regionale Informationen finden Sie in unserem [Konzeptionsartikel](/azure/virtual-machines/disks-shared).
+**A:** Regionale Informationen finden Sie in unserem [Konzeptionsartikel]().
 
 **F: Können gemeinsam genutzte Festplatten als Betriebssystemfestplatte verwendet werden?**
 
@@ -169,7 +169,7 @@ Die Preise für freigegebene Ultra-Datenträger basieren auf der bereitgestellte
 
 **F: Welche Festplattengrößen unterstützen gemeinsam genutzte Festplatten?**
 
-**A:** Für unterstützte Größen siehe unseren [Konzeptartikel](/azure/virtual-machines/disks-shared).
+**A:** Für unterstützte Größen siehe unseren [Konzeptartikel]().
 
 **F: Wenn ich eine vorhandene Festplatte habe, kann ich darauf gemeinsame Laufwerke aktivieren?**
 

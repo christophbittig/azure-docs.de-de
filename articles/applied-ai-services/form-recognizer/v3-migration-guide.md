@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 10/07/2021
 ms.author: vikurpad
 recommendations: false
-ms.openlocfilehash: 8d20fd0211fb2601ffd0f88e37e78d682d550711
-ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
+ms.openlocfilehash: 11010ebe6a4afa8698491dacfb495625a8445779
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129728910"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130240412"
 ---
 # <a name="form-recognizer-v30-migration--preview"></a>Migration der Formularerkennung v3.0 | Vorschau
 
@@ -26,10 +26,10 @@ ms.locfileid: "129728910"
 Formularerkennung v3.0 (Vorschau) bietet eine Reihe neuer Features und Möglichkeiten:
 
 * Die [Formularerkennungs-REST-API](quickstarts/try-v3-rest-api.md) wurde überarbeitet, um die Benutzerfreundlichkeit zu verbessern.
-* [**Allgemeines Dokumentenmodell (v3.0)** ](concept-general-document.md) ist eine neue API, die Text, Tabellen, Strukturen, Schlüssel-Wert-Paare und benannte Entitäten aus Formularen und Dokumenten extrahiert.
-* Das Modell [**Receipt (v3.0)** ](concept-receipt.md) unterstützt die Verarbeitung von einseitigen Hotelbelegen.
-* Das Modell [**ID-Dokument (v3.0)** ](concept-id-document.md) unterstützt Vermerke, Einschränkungen und Fahrzeugklassifizierungen aus US-Führerscheinen.
-* [**Die benutzerdefinierte Modell-API (v3.0)** ](concept-custom.md) unterstützt die Erkennung von Signaturen für benutzerdefinierte Formulare.
+* [**Allgemeines Dokumentenmodell (v3.0)**](concept-general-document.md) ist eine neue API, die Text, Tabellen, Strukturen, Schlüssel-Wert-Paare und benannte Entitäten aus Formularen und Dokumenten extrahiert.
+* Das Modell [**Receipt (v3.0)**](concept-receipt.md) unterstützt die Verarbeitung von einseitigen Hotelbelegen.
+* Das Modell [**ID-Dokument (v3.0)**](concept-id-document.md) unterstützt Vermerke, Einschränkungen und Fahrzeugklassifizierungen aus US-Führerscheinen.
+* [**Die benutzerdefinierte Modell-API (v3.0)**](concept-custom.md) unterstützt die Erkennung von Signaturen für benutzerdefinierte Formulare.
 
 In diesem Artikel erfahren Sie mehr über die Unterschiede zwischen Formularerkennung v2.1 und v3.0 und wie Sie zur neueren Version der API wechseln.
 
@@ -360,4 +360,4 @@ In diesem Migrationshandbuch haben Sie erfahren, wie Sie ein Upgrade für Ihre v
 
 * [Überprüfen der neuen REST-API](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/AnalyzeDocument)
 * [Was ist die Formularerkennung?](overview.md)
-* [Formularerkennung: Schnellstart](quickstarts/client-library.md)
+* [Formularerkennung: Schnellstart](./quickstarts/try-sdk-rest-api.md)

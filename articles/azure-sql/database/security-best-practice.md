@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 09/21/2020
 ms.reviewer: ''
-ms.openlocfilehash: da47d07b804dfee46299ef75e81261171880ea76
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 725b483d4da7ce55b3ae9e866aa60a09226be7e9
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129232069"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130233283"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>Playbook für den Umgang mit allgemeinen Sicherheitsanforderungen für Azure SQL-Datenbank und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -576,7 +576,7 @@ In SQL Managed Instance:
 
 - Für eine einfache Web-App muss für das Herstellen einer Verbindung über einen öffentlichen Endpunkt **Allow Azure Services** (Azure-Dienste zulassen) auf ON (Ein) festgelegt werden.
 
-- [Integrieren Sie Ihre App in ein virtuelles Azure-Netzwerk](../../app-service/web-sites-integrate-with-vnet.md), einem Verbindung über einen privaten Datenpfad mit einer verwalteten Instanz bereitzustellen. Optional können Sie eine Web-App auch mit [App Service-Umgebungen (ASE)](../../app-service/environment/intro.md) bereitstellen.
+- [Integrieren Sie Ihre App in ein virtuelles Azure-Netzwerk](../../app-service/overview-vnet-integration.md), einem Verbindung über einen privaten Datenpfad mit einer verwalteten Instanz bereitzustellen. Optional können Sie eine Web-App auch mit [App Service-Umgebungen (ASE)](../../app-service/environment/intro.md) bereitstellen.
 
 - Bei einer Web-App mit ASE oder einer in das virtuelle Netzwerk integrierten Web-App, die eine Verbindung mit einer Datenbank in Azure SQL-Datenbank herstellt, können Sie [Dienstendpunkte und Firewallregeln virtueller Netzwerke](vnet-service-endpoint-rule-overview.md) verwenden, um den Zugriff auf ein bestimmtes virtuelles Netzwerke und Subnetz zu beschränken. Legen Sie dann **Azure-Dienste zulassen** auf „AUS“ fest. Sie können ASE auch über einen privaten Datenpfad mit einer verwalteten Instanz in Azure SQL Managed Instance verbinden.  
 

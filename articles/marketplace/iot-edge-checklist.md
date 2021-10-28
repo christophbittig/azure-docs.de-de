@@ -7,12 +7,12 @@ ms.topic: how-to
 author: aarathin
 ms.author: aarathin
 ms.date: 05/21/2021
-ms.openlocfilehash: ec24d4df5a792166812693ad90f21396771ecdd6
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 1f9ad2fd05e11d981dd374919e2cc43d1b8d1f97
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111537888"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130232307"
 ---
 # <a name="pre-certification-checklist-for-iot-edge-modules"></a>Prüfliste vor der Zertifizierung für IoT Edge-Module
 
@@ -55,7 +55,7 @@ Das Zertifizierungsteam verwendet die folgende Hardware zum Überprüfen von Ima
 #### <a name="steps"></a>Schritte
 
 1. Stellen Sie sicher, dass über Putty auf erstelle Geräte/VM zugegriffen werden kann.
-1. Laden Sie die [IoT Edge-Runtime](../iot-edge/how-to-install-iot-edge.md) auf das Gerät herunter.
+1. Laden Sie die [IoT Edge-Runtime](../iot-edge/how-to-provision-single-device-linux-symmetric.md) auf das Gerät herunter.
 1. Aktualisieren Sie die in Schritt 5 kopierte Verbindungszeichenfolge in der Datei „config.yaml“.
 1. Starten Sie das Edge-Modul mit `sudo systemctl restart iotedge` neu.
 1. Überprüfen Sie, ob das Modul auf dem Gerät mit `sudo iotedge list` bereitgestellt wird. Es sollte sich im Ausführungsstatus befinden.

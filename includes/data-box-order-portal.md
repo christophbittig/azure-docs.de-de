@@ -3,15 +3,15 @@ author: v-dalc
 ms.service: databox
 ms.subservice: databox
 ms.topic: include
-ms.date: 09/08/2021
+ms.date: 10/21/2021
 ms.author: alkohli
 ms.custom: contperf-fy22q1
-ms.openlocfilehash: 6f784c075d24fe26b7ec1ea9d5921dfb460e5298
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: d5b7294a54db4e89e80ad577a87fda74c66b3695
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124743340"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130288136"
 ---
 Führen Sie im Azure-Portal die folgenden Schritte aus, um ein Gerät zu bestellen:
 
@@ -76,7 +76,7 @@ Führen Sie im Azure-Portal die folgenden Schritte aus, um ein Gerät zu bestell
 
     ![Screenshot: Registerkarte „Datenziel“ für eine Data Box-Bestellung mit dem Ziel „Verwaltete Datenträger“. Die Registerkarte „Datenziel“, die Option „Verwaltete Datenträger“ und die Schaltfläche „Weiter: Sicherheit“ sind hervorgehoben.](media/data-box-order-portal/data-box-import-07.png)
 
-    Das für verwaltete Datenträger angegebene Speicherkonto wird als Stagingspeicherkonto verwendet. Der Data Box-Dienst lädt die VHDs als Seitenblobs in das Stagingspeicherkonto hoch, konvertiert es in verwaltete Datenträger und verschiebt es in die Ressourcengruppen. Weitere Informationen finden Sie unter [Überprüfen des Datenuploads in Azure](../articles/databox/data-box-deploy-picked-up.md#verify-data-upload-to-azure-8).
+    Das für verwaltete Datenträger angegebene Speicherkonto wird als Stagingspeicherkonto verwendet. Der Data Box-Dienst lädt die VHDs als Seitenblobs in das Stagingspeicherkonto hoch, konvertiert es in verwaltete Datenträger und verschiebt es in die Ressourcengruppen. Weitere Informationen finden Sie unter [Überprüfen des Datenuploads in Azure](../articles/databox/data-box-deploy-picked-up.md#verify-data-upload-to-azure).
 
    > [!NOTE]
    > Wird ein Seitenblob nicht in einen verwalteten Datenträger konvertiert, bleibt es im Speicherkonto, und Ihnen wird der Speicher in Rechnung gestellt.

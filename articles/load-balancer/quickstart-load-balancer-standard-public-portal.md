@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/09/2021
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: a25c35971d341c9ea6bce716931a76d682027e79
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 59bd93cf5c17675e99a14484d8a13821e287047a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121732838"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130234565"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Schnellstart: Erstellen eines öffentlichen Lastenausgleichs für den Lastenausgleich virtueller Computer über das Azure-Portal
 
@@ -40,7 +40,7 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und ein Subnetz.
 
 1. Geben Sie im Suchfeld oben im Portal den Suchbegriff **Virtuelles Netzwerk** ein. Wählen Sie in den Suchergebnissen **Virtuelle Netzwerke** aus.
 
-2. Wählen Sie unter **Virtuelle Netzwerke** die Option **+ Erstellen** aus.
+2. Wählen Sie unter **Virtuelle Netzwerke** die Option **+ Erstellen** aus.
 
 3. Geben Sie unter **Virtuelles Netzwerk erstellen** auf der Registerkarte **Grundlegende Einstellungen** die folgenden Informationen ein, oder wählen Sie sie aus:
 
@@ -159,17 +159,17 @@ Während der Erstellung des Lastenausgleichs konfigurieren Sie Folgendes:
 
 5. Wählen Sie unter **Front-End-IP-Konfiguration** die Option **+ Front-End-IP-Adresse hinzufügen** aus.
 
-6. Geben Sie unter **Name** den Namen **LoadBalancerFrontEnd** ein.
+6. Geben Sie unter **Name** den Wert **LoadBalancerFrontend** ein.
 
-7. Wählen Sie unter **IP-Version** die Option **IPv4** oder **IPv6** aus.
+7. Wählen Sie als **IP-Version** die Option **IPv4** oder **IPv6** aus.
 
     > [!NOTE]
     > IPv6 wird derzeit nicht mit Routingpräferenz oder regionsübergreifendem Lastenausgleich (globale Ebene) unterstützt.
 
-8. Wählen Sie unter **IP-Typ** die Option **IP-Adresse** aus.
+8. Wählen Sie für den **IP-Typ** die Option **IP-Adresse** aus.
 
     > [!NOTE]
-    > Weitere Informationen zu IP-Präfixen finden Sie unter [Präfix für öffentliche IP-Adressen](../virtual-network/public-ip-address-prefix.md).
+    > Weitere Informationen zu IP-Präfixen finden Sie unter [Präfix für öffentliche IP-Adressen](../virtual-network/ip-services/public-ip-address-prefix.md).
 
 9. Wählen Sie unter **Öffentliche IP-Adresse** die Option **Neu erstellen** aus.
 
@@ -194,7 +194,7 @@ Während der Erstellung des Lastenausgleichs konfigurieren Sie Folgendes:
 
 18. Wählen Sie unter **Virtuelle Netzwerke** die Option **myVNet** aus.
 
-19. Wählen Sie unter **Backend Pool Configuration** (Konfiguration des Back-End-Pools) die Option **NIC** oder **IP-Adresse** aus.
+19. Wählen Sie unter **Back-End-Pool-Konfiguration** die Option **Netzwerkschnittstelle** oder **IP-Adresse** aus.
 
 20. Wählen Sie unter **IP-Version** die Option **IPv4** oder **IPv6** aus.
 
@@ -217,14 +217,14 @@ Während der Erstellung des Lastenausgleichs konfigurieren Sie Folgendes:
     | Back-End-Pool | Wählen Sie **myBackendPool** aus. |
     | Integritätstest | Wählen Sie **Neu erstellen**. </br> Geben Sie unter **Name** den Namen **myHealthProbe** ein. </br> Wählen Sie für **Protokoll** die Option **HTTP** aus. </br> Übernehmen Sie die übrigen Standardeinstellungen, und wählen Sie **OK** aus. |
     | Sitzungspersistenz | Wählen Sie **Keine**. |
-    | Leerlaufzeitüberschreitung (Minuten) | Geben Sie **15** ein, oder wählen Sie diese Option aus. |
+    | Leerlaufzeitüberschreitung (Minuten) | Geben Sie **15** ein, oder wählen Sie diesen Wert aus. |
     | TCP-Zurücksetzung | Wählen Sie **Aktiviert**. |
     | Unverankerte IP | Wählen Sie **Deaktiviert** aus. |
     | Übersetzung der Quellnetzwerkadresse (SNAT) für ausgehenden Datenverkehr | Übernehmen Sie die Standardeinstellung **(Empfohlen) Verwenden Sie Ausgangsregeln, um Back-End-Poolmitgliedern Zugriff auf das Internet zu gewähren**. |
 
 25. Wählen Sie **Hinzufügen** aus.
 
-26. Wählen Sie unten auf der Seite die blaue Schaltfläche **Überprüfen + erstellen** aus.
+26. Klicken Sie unten auf der Seite auf die blaue Schaltfläche **Überprüfen + erstellen**.
 
 27. Klicken Sie auf **Erstellen**.
 
@@ -308,7 +308,7 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und ein Subnetz.
 
 1. Geben Sie im Suchfeld oben im Portal den Suchbegriff **Virtuelles Netzwerk** ein. Wählen Sie in den Suchergebnissen **Virtuelle Netzwerke** aus.
 
-2. Wählen Sie unter **Virtuelle Netzwerke** die Option **+ Erstellen** aus.
+2. Wählen Sie unter **Virtuelle Netzwerke** die Option **+ Erstellen** aus.
 
 3. Geben Sie unter **Virtuelles Netzwerk erstellen** auf der Registerkarte **Grundlegende Einstellungen** die folgenden Informationen ein, oder wählen Sie sie aus:
 
@@ -458,7 +458,7 @@ Während der Erstellung des Lastenausgleichs konfigurieren Sie Folgendes:
 
 5. Wählen Sie unter **Front-End-IP-Konfiguration** die Option **+ Front-End-IP-Adresse hinzufügen** aus.
 
-6. Geben Sie unter **Name** den Namen **LoadBalancerFrontEnd** ein.
+6. Geben Sie unter **Name** den Wert **LoadBalancerFrontend** ein.
 
 7. Wählen Sie unter **IP-Version** die Option **IPv4** oder **IPv6** aus.
 
@@ -509,12 +509,12 @@ Während der Erstellung des Lastenausgleichs konfigurieren Sie Folgendes:
     | Back-End-Pool | Wählen Sie **myBackendPool** aus. |
     | Integritätstest | Wählen Sie **Neu erstellen**. </br> Geben Sie unter **Name** den Namen **myHealthProbe** ein. </br> Wählen Sie für **Protokoll** die Option **HTTP** aus. </br> Übernehmen Sie die übrigen Standardeinstellungen, und wählen Sie **OK** aus. |
     | Sitzungspersistenz | Wählen Sie **Keine**. |
-    | Leerlaufzeitüberschreitung (Minuten) | Geben Sie **15** ein, oder wählen Sie diese Option aus. |
+    | Leerlaufzeitüberschreitung (Minuten) | Geben Sie **15** ein, oder wählen Sie diesen Wert aus. |
     | Unverankerte IP | Wählen Sie **Deaktiviert** aus. |
 
 26. Wählen Sie **Hinzufügen**.
 
-27. Wählen Sie unten auf der Seite die blaue Schaltfläche **Überprüfen + erstellen** aus.
+27. Klicken Sie unten auf der Seite auf die blaue Schaltfläche **Überprüfen + erstellen**.
 
 28. Klicken Sie auf **Erstellen**.
 

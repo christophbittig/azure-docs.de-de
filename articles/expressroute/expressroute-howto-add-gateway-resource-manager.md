@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/05/2020
 ms.author: duau
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: e8bc2d0ed29cbac171e1d03bc9a6806b1ef64f1f
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: b69ed57ec67b7f08ef7beec8df73f1da20c06a0b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112465310"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130254879"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-powershell"></a>Tutorial: Konfigurieren eines Gateways für ein virtuelles Netzwerk für ExpressRoute mit PowerShell
 > [!div class="op_single_selector"]
@@ -52,11 +52,6 @@ Bei den Schritten für diese Aufgabe wird ein VNet basierend auf den Werten verw
 | Name der Gateway-IP-Konfiguration | *gwipconf* |
 | type | *ExpressRoute* |
 | Name der öffentlichen Gateway-IP  | *gwpip* |
-
-> [!IMPORTANT]
-> Die IPv6-Unterstützung für privates Peering befindet sich zurzeit in der **Public Preview**. Wenn Sie Ihr virtuelles Netzwerk mit einer ExpressRoute-Verbindung verbinden möchten, für die IPv6-basiertes privates Peering konfiguriert ist, stellen Sie sicher, dass Ihr virtuelles Netzwerk ein Dual Stack ist und die [hier](../virtual-network/ipv6-overview.md) beschriebenen Richtlinien einhält.
-> 
-> 
 
 ## <a name="add-a-gateway"></a>Hinzufügen eines Gateways
 

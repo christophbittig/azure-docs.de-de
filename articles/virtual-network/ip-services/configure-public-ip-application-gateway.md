@@ -9,12 +9,12 @@ ms.subservice: ip-services
 ms.topic: how-to
 ms.date: 06/28/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 8139d6c6309bf971ed9a955f5ef02f0c674b152b
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: c700ca1bdd1e596d3c393f1a857adba81116b576
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129368165"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130248980"
 ---
 # <a name="manage-a-public-ip-address-with-an-azure-application-gateway"></a>Verwalten einer öffentlichen IP-Adresse mit Azure Application Gateway
 
@@ -27,7 +27,7 @@ In diesem Artikel erfahren Sie, wie Sie eine Application Gateway-Instanz mit ein
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein Azure-Konto mit einem aktiven Abonnement. [Erstellen Sie ein kostenloses Konto.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-- Zwei öffentliche IP-Adressen der Standard-SKU in Ihrem Abonnement. Die IP-Adressen dürfen keinen Ressourcen zugeordnet sein. Weitere Informationen zum Erstellen einer öffentlichen IP-Adresse der Standard-SKU finden Sie unter [Erstellen einer öffentlichen IP-Adresse: Azure-Portal](../../virtual-network/create-public-ip-portal.md).
+- Zwei öffentliche IP-Adressen der Standard-SKU in Ihrem Abonnement. Die IP-Adressen dürfen keinen Ressourcen zugeordnet sein. Weitere Informationen zum Erstellen einer öffentlichen IP-Adresse der Standard-SKU finden Sie unter [Erstellen einer öffentlichen IP-Adresse: Azure-Portal](./create-public-ip-portal.md).
     - Benennen Sie die neuen öffentlichen IP-Adressen für die Beispiele in diesem Artikel mit **myStandardPublicIP-1** und **myStandardPublicIP-2**.
 
 ## <a name="create-application-gateway-existing-public-ip"></a>Erstellen einer Application Gateway-Instanz mit einer vorhandenen öffentlichen IP-Adresse
@@ -118,4 +118,4 @@ Application Gateway unterstützt das Ändern der öffentlichen IP-Adresse nach d
 In diesem Artikel haben Sie gelernt, wie Sie eine Application Gateway-Instanz erstellen und eine vorhandene öffentliche IP-Adresse verwenden. 
 
 - Weitere Informationen zu Azure Virtual Network NAT finden Sie unter [Was ist Azure Virtual Network NAT?](../nat-gateway/nat-overview.md).
-- Weitere Informationen zu öffentlichen IP-Adressen in Azure finden Sie unter [Öffentliche IP-Adressen](../../virtual-network/public-ip-addresses.md).
+- Weitere Informationen zu öffentlichen IP-Adressen in Azure finden Sie unter [Öffentliche IP-Adressen](./public-ip-addresses.md).

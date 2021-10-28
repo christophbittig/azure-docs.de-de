@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 6befd620da91b569d5bd72a4d0165e81c93583ac
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 3f426af6719b821373a565c58e27919e7f6082f7
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129235647"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130247908"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Was ist SQL Server auf Azure Virtual Machines (Windows)?
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -133,7 +133,7 @@ Einzelheiten dazu finden Sie unter:
 - [Erstellen einer SQL Server-VM](sql-vm-create-portal-quickstart.md)
 
 ## <a name="sql-server-vm-image-refresh-policy"></a><a id="lifecycle"></a> Aktualisierungsrichtlinie für SQL Server-VM-Images
-Azure verwaltet für jedes unterstützte Betriebssystem, jede Version und jede Kombination von Editionen nur ein VM-Image. Dies bedeutet, dass Images im Laufe der Zeit aktualisiert und ältere Images entfernt werden. Weitere Informationen finden Sie im Abschnitt **Images** der [häufig gestellten Fragen zu SQL Server-VMs](/azure/azure-sql/virtual-machines/windows/frequently-asked-questions-faq#images).
+Azure verwaltet für jedes unterstützte Betriebssystem, jede Version und jede Kombination von Editionen nur ein VM-Image. Dies bedeutet, dass Images im Laufe der Zeit aktualisiert und ältere Images entfernt werden. Weitere Informationen finden Sie im Abschnitt **Images** der [häufig gestellten Fragen zu SQL Server-VMs](./frequently-asked-questions-faq.yml).
 
 ## <a name="customer-experience-improvement-program-ceip"></a>Programm zur Verbesserung der Benutzerfreundlichkeit (Customer Experience Improvement Program, CEIP)
 Das Programm zur Verbesserung der Benutzerfreundlichkeit (Customer Experience Improvement Program, CEIP) ist standardmäßig aktiviert. Es sendet in regelmäßigen Abständen Berichte an Microsoft, damit die Nutzung von SQL Server verbessert werden kann. Für CEIP ist nur dann eine Verwaltungsaufgabe erforderlich, wenn Sie das Programm nach der Bereitstellung deaktivieren möchten. Sie können CEIP anpassen oder deaktivieren, indem Sie eine Verbindung mit der VM per Remotedesktop herstellen. Führen Sie anschließend das SQL Server-Hilfsprogramm **Fehler- und Verwendungsberichterstellung** aus. Befolgen Sie die Anleitung, um die Berichterstellung zu deaktivieren. Weitere Informationen zur Datensammlung finden Sie unter [Datenschutzbestimmungen für SQL Server](/sql/sql-server/sql-server-privacy).
@@ -147,7 +147,7 @@ Das Programm zur Verbesserung der Benutzerfreundlichkeit (Customer Experience Im
 
 ### <a name="networking"></a>Netzwerk
 * [Virtuelle Netzwerke im Überblick](../../../virtual-network/virtual-networks-overview.md)
-* [IP-Adressen in Azure](../../../virtual-network/public-ip-addresses.md)
+* [IP-Adressen in Azure](../../../virtual-network/ip-services/public-ip-addresses.md)
 * [Erstellen eines vollständig qualifizierten Domänennamens im Azure-Portal](../../../virtual-machines/create-fqdn.md)
 
 ### <a name="sql"></a>SQL

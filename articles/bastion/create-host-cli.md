@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 09/22/2021
 ms.author: cherylmc
-ms.openlocfilehash: d2477c46b79692033baabb5327cda47f6652589d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 3646fad2900d7efe8e3f0a0c5cca3e746e71a1b3
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128671125"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130219222"
 ---
 # <a name="create-an-azure-bastion-host-using-azure-cli"></a>Erstellen eines Azure Bastion-Hosts über die Azure CLI
 
@@ -62,7 +62,7 @@ In diesem Abschnitt erfahren Sie, wie Sie eine neue Azure Bastion-Ressource üb
    ```
 ## <a name="disassociate-the-vm-public-ip-address"></a>Aufheben der Zuordnung der öffentlichen IP-Adresse einer VM
 
-Azure Bastion verwendet nicht die öffentliche IP-Adresse, um eine Verbindung mit dem virtuellen Clientcomputer herzustellen. Wenn Sie die öffentliche IP-Adresse für Ihre VM nicht benötigen, können Sie die Zuordnung dieser Adresse aufheben, indem Sie die Schritte im Artikel [Trennen einer öffentlichen IP-Adresse von einem virtuellen Azure-Computer](../virtual-network/remove-public-ip-address-vm.md) ausführen.
+Azure Bastion verwendet nicht die öffentliche IP-Adresse, um eine Verbindung mit dem virtuellen Clientcomputer herzustellen. Wenn Sie die öffentliche IP-Adresse für Ihre VM nicht benötigen, können Sie die Zuordnung dieser Adresse aufheben, indem Sie die Schritte im Artikel [Trennen einer öffentlichen IP-Adresse von einem virtuellen Azure-Computer](../virtual-network/ip-services/remove-public-ip-address-vm.md) ausführen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

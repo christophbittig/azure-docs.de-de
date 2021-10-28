@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.date: 09/23/2021
 ms.author: lajanuar
 recommendations: false
-ms.openlocfilehash: bed6b3e8d40beab403b8295b9c17fc8b6f6eefbe
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.openlocfilehash: 70ab13f1ca1eee2d5c01d3aa1af6255bc06aeb3d
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129659258"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130233656"
 ---
 # <a name="generate-sas-tokens-for-storage-containers"></a>Generieren von SAS-Tokens für Speichercontainer
 
@@ -47,8 +47,8 @@ Zunächst benötigen Sie Folgendes:
 * Eine [Formularerkennung](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) oder [Cognitive Services Multi-Service](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne) Ressource.
 * Ein [Azure Blob Storage-Konto](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM) mit **Standardleistung**. Sie erstellen Container zum Speichern und Organisieren Ihrer Blobdaten unter Ihrem Speicherkonto. Wenn Sie nicht wissen, wie Sie ein Azure Speicherkonto mit einem Container erstellen können, befolgen Sie diese Schnellstarts:
 
-  * [Informationen zu Azure-Speicherkonten](/azure/storage/common/storage-account-create) Wenn Sie Ihr Speicherkonto erstellen, wählen Sie **Standardleistung** im Feld **Instanzendetails** > **Leistung** aus.
-  * [Erstellen Sie einen Container](/azure/storage/blobs/storage-quickstart-blobs-portal#create-a-container). Legen Sie bei der Erstellung Ihres Containers das Feld **Öffentliche Zugriffsebene** im Fenster **Neuer Container** auf **Container** fest (anonymer Lesezugriff für Container und Blobs).
+  * [Informationen zu Azure-Speicherkonten](../../storage/common/storage-account-create.md) Wenn Sie Ihr Speicherkonto erstellen, wählen Sie **Standardleistung** im Feld **Instanzendetails** > **Leistung** aus.
+  * [Erstellen Sie einen Container](../../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container). Legen Sie bei der Erstellung Ihres Containers das Feld **Öffentliche Zugriffsebene** im Fenster **Neuer Container** auf **Container** fest (anonymer Lesezugriff für Container und Blobs).
 
 ## <a name="upload-your-documents"></a>Hochladen Ihrer Dokumente
 
@@ -67,7 +67,7 @@ Zunächst benötigen Sie Folgendes:
     :::image type="content" source="media/sas-tokens/upload-blob-window.png" alt-text="Screenshot: Fenster „Blob hochladen“ im Azure-Portal":::
 
 > [!NOTE]
-> Standardmäßig verwendet die REST-API Formulardokumente, die sich im Stammverzeichnis Ihres Containers befinden. Sie können auch in Unterordnern organisierte Daten verwenden, wenn dies im API-Aufruf angegeben ist. Weitere Informationen finden Sie unter [Organisieren Ihrer Daten in Unterordnern](/azure/applied-ai-services/form-recognizer/build-training-data-set#organize-your-data-in-subfolders-optional).
+> Standardmäßig verwendet die REST-API Formulardokumente, die sich im Stammverzeichnis Ihres Containers befinden. Sie können auch in Unterordnern organisierte Daten verwenden, wenn dies im API-Aufruf angegeben ist. Weitere Informationen finden Sie unter [Organisieren Ihrer Daten in Unterordnern](./build-training-data-set.md#organize-your-data-in-subfolders-optional).
 
 ## <a name="create-a-shared-access-signature-with-the-azure-portal"></a>Erstellen einer Shared Access Signature über das Azure-Portal
 
@@ -94,8 +94,8 @@ Zunächst benötigen Sie Folgendes:
     >
     >     :::image type="content" source="media/sas-tokens/need-permissions.png" alt-text="Screenshot: Warnung zu fehlenden Berechtigungen":::
     >
-     > * [Azure rollenbasierte Zugriffskontrolle](/azure/role-based-access-control/overview)  (Azure RBAC) ist das Autorisierungssystem, mit dem der Zugriff auf Azure-Ressourcen verwaltet wird. Azure RBAC hilft Ihnen, den Zugriff und die Berechtigungen für Ihre Azure-Ressourcen zu verwalten.
-    > * [Zuweisen einer Azure-Rolle für den Zugriff auf Blobdaten](/azure/role-based-access-control/role-assignments-portal?tabs=current) zeigt Ihnen, wie Sie eine Rolle zuweisen, die Lese-, Schreib- und Löschberechtigungen für Ihren Azure-Speichercontainer ermöglicht. Beispiel: [Mitwirkender an Speicherblobdaten](/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor).
+     > * [Azure rollenbasierte Zugriffskontrolle](../../role-based-access-control/overview.md)  (Azure RBAC) ist das Autorisierungssystem, mit dem der Zugriff auf Azure-Ressourcen verwaltet wird. Azure RBAC hilft Ihnen, den Zugriff und die Berechtigungen für Ihre Azure-Ressourcen zu verwalten.
+    > * [Zuweisen einer Azure-Rolle für den Zugriff auf Blobdaten](../../role-based-access-control/role-assignments-portal.md?tabs=current) zeigt Ihnen, wie Sie eine Rolle zuweisen, die Lese-, Schreib- und Löschberechtigungen für Ihren Azure-Speichercontainer ermöglicht. Beispiel: [Mitwirkender an Speicherblobdaten](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor).
 
 1. Geben Sie die Zeiten für den **Start** und **Ablauf** des signierten Schlüssels an. Der Wert für die Ablaufzeit beträgt maximal sieben Tage ab dem Beginn der Shared Access Signature.
 
@@ -122,7 +122,7 @@ Zunächst benötigen Sie Folgendes:
 
 1. Unterstützte Berechtigungen für eine Benutzerdelegierungs-SAS auf einem Container sind Hinzufügen (a), Erstellen (c), Löschen (d), Liste (I), Lesen (r) und Schreiben (w). Stellen Sie sicher, dass **r**, **w**, **d** und **l** als Teil der Berechtigungsparameter enthalten sind.
 
-1. Wenn Sie mit der Azure CLI eine Benutzerdelegierungs-SAS erstellen, ist die Benutzerdelegierungs-SAS maximal sieben Tage ab dem Startdatum gültig. Geben Sie einen Ablaufzeitpunkt für die Shared Access Signature an, der innerhalb von sieben Tagen nach dem Startzeitpunkt liegt. Weitere Informationen finden Sie unter [Erstellen einer SAS für die Benutzerdelegierung für einen Container oder ein Blob mit der Azure CLI](/azure/storage/blobs/storage-blob-user-delegation-sas-create-cli#use-azure-ad-credentials-to-secure-a-sas).
+1. Wenn Sie mit der Azure CLI eine Benutzerdelegierungs-SAS erstellen, ist die Benutzerdelegierungs-SAS maximal sieben Tage ab dem Startdatum gültig. Geben Sie einen Ablaufzeitpunkt für die Shared Access Signature an, der innerhalb von sieben Tagen nach dem Startzeitpunkt liegt. Weitere Informationen finden Sie unter [Erstellen einer SAS für die Benutzerdelegierung für einen Container oder ein Blob mit der Azure CLI](../../storage/blobs/storage-blob-user-delegation-sas-create-cli.md#use-azure-ad-credentials-to-secure-a-sas).
 
 ### <a name="example"></a>Beispiel
 

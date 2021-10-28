@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 08/13/2021
 ms.reviewer: sisirap
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: a73d03d97e2b5d5d743b1db3980c8e587a0f454b
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: be58de78ba82c3c5e99475b00649e2a7ebfdf5e4
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123225474"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130216937"
 ---
 # <a name="deploy-files-to-app-service"></a>Bereitstellen von Dateien in App Service
 
@@ -93,7 +93,7 @@ Laden Sie das unter [Erstellen eines ZIP-Pakets für das Projekt](#create-a-proj
 
 Wenn die Bereitstellung gerade ausgeführt wird, zeigt ein Symbol in der oberen rechten Ecke den Status in Prozent an. Auf der Seite werden darüber hinaus unterhalb des Explorer-Bereichs ausführliche Meldungen für den Vorgang angezeigt. Ist der Vorgang abgeschlossen, muss die letzte Bereitstellungsmeldung `Deployment successful` lauten.
 
-Der oben erwähnte Endpunkt funktioniert zurzeit nicht für App Services unter Linux. Verwenden Sie stattdessen FTP oder die [ZIP Deploy-API](/azure/app-service/faq-app-service-linux#continuous-integration-and-deployment).
+Der oben erwähnte Endpunkt funktioniert zurzeit nicht für App Services unter Linux. Verwenden Sie stattdessen FTP oder die [ZIP Deploy-API](./faq-app-service-linux.yml).
 
 -----
 

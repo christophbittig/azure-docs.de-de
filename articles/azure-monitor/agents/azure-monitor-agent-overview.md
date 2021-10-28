@@ -6,18 +6,18 @@ author: bwren
 ms.author: bwren
 ms.date: 09/21/2021
 ms.custom: references_regions
-ms.openlocfilehash: 8eb9a6ad285bea2a5ac6e69ebb5ebef48b135899
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 50ab3c65abd6fe57941f18f58ff277de6822389c
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129713140"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130216483"
 ---
 # <a name="azure-monitor-agent-overview"></a>Übersicht über den Azure Monitor-Agent
 Der Azure Monitor-Agent (AMA) sammelt Überwachungsdaten aus dem Gastbetriebssystem virtueller Azure-Computer und übermittelt sie an Azure Monitor. Dieser Artikel bietet eine Übersicht über den Azure Monitor-Agent und enthält Informationen zu dessen Installation und zur Konfiguration der Datensammlung.
 
 ## <a name="relationship-to-other-agents"></a>Beziehung zu anderen Agents
-Der Azure Monitor-Agent ersetzt die folgenden Agents einer Vorgängerversion, die derzeit von Azure Monitor verwendet werden, um Gastdaten von virtuellen Computern zu sammeln ([bekannte Lücken anzeigen](/azure/azure-monitor/faq#is-the-new-azure-monitor-agent-at-parity-with-existing-agents)):
+Der Azure Monitor-Agent ersetzt die folgenden Agents einer Vorgängerversion, die derzeit von Azure Monitor verwendet werden, um Gastdaten von virtuellen Computern zu sammeln ([bekannte Lücken anzeigen](../faq.yml)):
 
 - [Log Analytics-Agent:](./log-analytics-agent.md) Sendet Daten an einen Log Analytics-Arbeitsbereich und unterstützt VM Insights und Überwachungslösungen.
 - [Diagnoseerweiterung:](./diagnostics-extension-overview.md) Sendet Daten an Azure Monitor-Metriken (nur Windows), Azure Event Hubs und Azure Storage.
@@ -54,7 +54,7 @@ Der Azure Monitor-Agent ersetzt die [Agents einer Vorgängerversion für Azure M
 - **Umgebungsanforderungen:** Der Azure Monitor-Agent unterstützt heute [diese Betriebssysteme](./agents-overview.md#supported-operating-systems). Unterstützung für zukünftige Betriebssystemversionen, Umgebungsunterstützung und Netzwerkanforderungen werden wahrscheinlich in diesem neuen Agent bereitgestellt. 
  
   Prüfen Sie, ob Ihre Umgebung vom Azure Monitor-Agent unterstützt wird. Falls dies nicht der Fall ist, müssen Sie weiterhin den aktuellen Agent verwenden. Wenn der Azure Monitor-Agent Ihre aktuelle Umgebung unterstützt, sollten Sie einen Wechsel in Erwägung ziehen.
-- **Aktuelle und neue Featureanforderungen:** Der Azure Monitor-Agent führt mehrere neue Funktionen wie die Filterung, Eingrenzung und das Multi-Homing ein. Die Parität mit den aktuellen Agents für andere Funktionen wie die benutzerdefinierte Protokollsammlung und Integration mit allen Lösungen ist noch nicht gegeben. ([Siehe Lösungen in der Vorschauversion](/azure/azure-monitor/faq#which-log-analytics-solutions-are-supported-on-the-new-azure-monitor-agent)) 
+- **Aktuelle und neue Featureanforderungen:** Der Azure Monitor-Agent führt mehrere neue Funktionen wie die Filterung, Eingrenzung und das Multi-Homing ein. Die Parität mit den aktuellen Agents für andere Funktionen wie die benutzerdefinierte Protokollsammlung und Integration mit allen Lösungen ist noch nicht gegeben. ([Siehe Lösungen in der Vorschauversion](../faq.yml)) 
  
   Die meisten neuen Funktionen in Azure Monitor werden nur mit dem Azure Monitor-Agent zur Verfügung gestellt. Im Laufe der Zeit werden weitere Funktionen nur im neuen Agent verfügbar. Prüfen Sie, ob der Azure Monitor-Agent über die von Ihnen benötigten Features verfügt und ob Sie auf einige Features vorübergehend verzichten können, um andere wichtige Features im neuen Agent zu erhalten. 
   

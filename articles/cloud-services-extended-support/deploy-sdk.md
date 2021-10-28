@@ -8,12 +8,12 @@ ms.author: gachandw
 ms.reviewer: mimckitt
 ms.date: 10/13/2020
 ms.custom: ''
-ms.openlocfilehash: 873d9f8695927ab28014ec9510d78bd59a8fad8f
-ms.sourcegitcommit: 851b75d0936bc7c2f8ada72834cb2d15779aeb69
+ms.openlocfilehash: 774b118c1aa74c7de561e7b54843183ac4fc0afb
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123310281"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130229865"
 ---
 # <a name="deploy-cloud-services-extended-support-by-using-the-azure-sdk"></a>Bereitstellen von Cloud Services (erweiterter Support) mithilfe des Azure SDK
 
@@ -154,7 +154,7 @@ Informieren Sie sich über die [Bereitstellungsvoraussetzungen](deploy-prerequis
     m_NrpClient.VirtualNetworks.CreateOrUpdate(resourceGroupName, “ContosoVNet”, vnet);
     ```
 
-7. Erstellen Sie eine öffentliche IP-Adresse, und legen Sie die DNS-Bezeichnungseigenschaft der öffentlichen IP-Adresse fest. Von Cloud Services (erweiterter Support) werden nur öffentliche IP-Adressen mit der SKU [Basic](../virtual-network/public-ip-addresses.md#basic) unterstützt. Öffentliche IP-Adressen der Standard-SKU funktionieren nicht mit Cloud Services.
+7. Erstellen Sie eine öffentliche IP-Adresse, und legen Sie die DNS-Bezeichnungseigenschaft der öffentlichen IP-Adresse fest. Von Cloud Services (erweiterter Support) werden nur öffentliche IP-Adressen mit der SKU [Basic](../virtual-network/ip-services/public-ip-addresses.md#basic) unterstützt. Öffentliche IP-Adressen der Standard-SKU funktionieren nicht mit Cloud Services.
 Wenn Sie eine statische IP-Adresse verwenden, muss darauf in der Dienstkonfigurationsdatei (.cscfg) als reservierte IP verwiesen werden.
 
     ```csharp

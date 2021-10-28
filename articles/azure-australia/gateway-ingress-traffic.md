@@ -6,12 +6,12 @@ ms.service: azure-australia
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: yvettep
-ms.openlocfilehash: 3e2fcfb91a0cb514a26608a29cb8cb09722b7f32
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: bc1bef31da6082e33e14ba3e9bd5b3c8b480c130
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "122338817"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130253103"
 ---
 # <a name="controlling-ingress-traffic-in-azure-australia"></a>Steuern von eingehendem Datenverkehr für Azure Australien
 
@@ -205,7 +205,7 @@ Netzwerkschnittstellen sind die Eingangspunkte für den gesamten Datenverkehr, d
 |Resource | Link|
 |---|---|
 |Erstellen, Ändern oder Löschen von Netzwerkschnittstellen | [https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface](../virtual-network/virtual-network-network-interface.md)|
-|IP-Adressierung für Netzwerkschnittstellen | [https://docs.microsoft.com/azure/virtual-network/private-ip-addresses](../virtual-network/private-ip-addresses.md)|
+|IP-Adressierung für Netzwerkschnittstellen | [https://docs.microsoft.com/azure/virtual-network/private-ip-addresses](../virtual-network/ip-services/private-ip-addresses.md)|
 |
 
 ### <a name="subnet"></a>Subnet
@@ -244,8 +244,8 @@ Das VNET-Peering wird verwendet, um einen direkten Kommunikationspfad zwischen z
 
 |Resource | Link|
 |---|---|
-|Öffentliche IP-Adressen: Übersicht | [https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses](../virtual-network/public-ip-addresses.md#public-ip-addresses)|
-|Erstellen, Ändern oder Löschen einer öffentlichen IP-Adresse | [https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address](../virtual-network/virtual-network-public-ip-address.md)|
+|Öffentliche IP-Adressen: Übersicht | [https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses](../virtual-network/ip-services/public-ip-addresses.md#public-ip-addresses)|
+|Erstellen, Ändern oder Löschen einer öffentlichen IP-Adresse | [https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address](../virtual-network/ip-services/virtual-network-public-ip-address.md)|
 |
 
 ### <a name="expressroute-gateway"></a>ExpressRoute-Gateway
@@ -280,7 +280,7 @@ Für die Integration von PaaS in eine System- oder Anwendungsarchitektur werden 
 |Resource | Link|
 |---|---|
 |Integration virtueller Netzwerke für Azure-Dienste | [https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services](../virtual-network/virtual-network-for-azure-services.md)|
-|Integrieren Ihrer App in ein virtuelles Azure-Netzwerk: Schrittanleitung | [https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet](../app-service/web-sites-integrate-with-vnet.md)|
+|Integrieren Ihrer App in ein virtuelles Azure-Netzwerk: Schrittanleitung | [https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet](../app-service/overview-vnet-integration.md)|
 |
 
 ## <a name="paas-ingress"></a>PaaS-Eingang

@@ -8,12 +8,12 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 05/25/2021
 ms.author: lajanuar
-ms.openlocfilehash: 48d8747883bfb3d47368d96cc2d4e52d07c599d9
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 927711935c6aaea56ca2e2a26d38c5d619b7320c
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129715410"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130287481"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -38,7 +38,7 @@ ms.locfileid: "129715410"
 * Eine URL für ein **Bild eines Verkaufsbelegs**. Für diesen Schnellstart können Sie ein [Beispielbild](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/contoso-allinone.jpg) verwenden.
 * Eine URL für ein **Bild einer Visitenkarte**. Für diesen Schnellstart können Sie ein [Beispielbild](https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/business_cards/business-card-english.jpg) verwenden.
 * Eine URL für ein **Bild einer Rechnung**. Für diese Schnellstartanleitung können Sie ein [Beispieldokument](https://raw.githubusercontent.com/Azure/azure-sdk-for-python/master/sdk/formrecognizer/azure-ai-formrecognizer/samples/sample_forms/forms/Invoice_1.pdf) verwenden.
-* Eine URL für ein **Bild eines Ausweisdokuments**. Sie können ein [Beispielbild](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/id-license.jpg) verwenden.
+* Eine URL für ein **Bild eines Ausweisdokuments**. Sie können ein [Beispielbild](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/DriverLicense.png) verwenden.
 
 ## <a name="analyze-layout"></a>Analysieren des Layouts
 
@@ -218,7 +218,7 @@ Die Ausgabe wurde zur Vereinfachung gekürzt. Auf [GitHub](https://github.com/Az
 
 ## <a name="analyze-receipts"></a>Analysieren von Belegen
 
-In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe eines vorab trainierten Belegmodells gängige Felder in US-Belegen analysieren und extrahieren. Weitere Informationen zur Beleganalyse finden Sie im [Konzeptleitfaden zu Belegen](../../concept-receipts.md). Rufen Sie die **[Analyze Receipt](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeReceiptAsync)** -API mit dem unten angegebenen cURL-Befehl auf, um mit der Analyse eines Verkaufsbelegs zu beginnen. Nehmen Sie die folgenden Änderungen vor, bevor Sie den Befehl ausführen:
+In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe eines vorab trainierten Belegmodells gängige Felder in US-Belegen analysieren und extrahieren. Weitere Informationen zur Beleganalyse finden Sie im [Konzeptleitfaden zu Belegen](../../concept-receipt.md). Rufen Sie die **[Analyze Receipt](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeReceiptAsync)** -API mit dem unten angegebenen cURL-Befehl auf, um mit der Analyse eines Verkaufsbelegs zu beginnen. Nehmen Sie die folgenden Änderungen vor, bevor Sie den Befehl ausführen:
 
 1. Ersetzen Sie `{endpoint}` durch den Endpunkt, den Sie mit Ihrem Abonnement für die Formularerkennung erhalten haben.
 1. Ersetzen Sie `{your receipt URL}` mit der URL-Adresse eines Verkaufsbelegbilds.
@@ -597,7 +597,7 @@ Die Ausgabe wurde zur besseren Lesbarkeit gekürzt. Auf [GitHub](https://github.
 
 ## <a name="analyze-business-cards"></a>Analysieren von Visitenkarten
 
-In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe eines vorab trainierten Modells gängige Felder englischsprachiger Visitenkarten analysieren und extrahieren. Weitere Informationen zur Analyse von Visitenkarten finden Sie im [Konzeptleitfaden zu Visitenkarten](../../concept-business-cards.md). Rufen Sie die API **[Analyze Business Card](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeBusinessCardAsync)** mit dem unten angegebenen cURL-Befehl auf, um mit der Analyse einer Visitenkarte zu beginnen. Nehmen Sie die folgenden Änderungen vor, bevor Sie den Befehl ausführen:
+In diesem Abschnitt wird veranschaulicht, wie Sie mithilfe eines vorab trainierten Modells gängige Felder englischsprachiger Visitenkarten analysieren und extrahieren. Weitere Informationen zur Analyse von Visitenkarten finden Sie im [Konzeptleitfaden zu Visitenkarten](../../concept-business-card.md). Rufen Sie die API **[Analyze Business Card](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeBusinessCardAsync)** mit dem unten angegebenen cURL-Befehl auf, um mit der Analyse einer Visitenkarte zu beginnen. Nehmen Sie die folgenden Änderungen vor, bevor Sie den Befehl ausführen:
 
 1. Ersetzen Sie `{endpoint}` durch den Endpunkt, den Sie mit Ihrem Abonnement für die Formularerkennung erhalten haben.
 1. Ersetzen Sie `{your business card URL}` mit der URL-Adresse eines Verkaufsbelegbilds.
@@ -760,7 +760,7 @@ Das Skript gibt Antworten in der Konsole aus, bis der **Analyze Business Card**-
 
 ## <a name="analyze-invoices"></a>Analysieren von Rechnungen
 
-Sie können Formularerkennung verwenden, um Feldtext und semantische Werte aus einem bestimmten Rechnungsdokument zu extrahieren.  Verwenden Sie den folgenden cURL-Befehl, um mit dem Analysieren einer Rechnung zu beginnen. Weitere Informationen zur Rechnungsanalyse finden Sie im [Konzeptleitfaden zu Rechnungen](../../concept-invoices.md). Rufen Sie die **[Analyze Invoice](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5ed8c9843c2794cbb1a96291)** -API mit dem unten angegebenen cURL-Befehl auf, um mit der Analyse einer Rechnung zu beginnen. Nehmen Sie die folgenden Änderungen vor, bevor Sie den Befehl ausführen:
+Sie können Formularerkennung verwenden, um Feldtext und semantische Werte aus einem bestimmten Rechnungsdokument zu extrahieren.  Verwenden Sie den folgenden cURL-Befehl, um mit dem Analysieren einer Rechnung zu beginnen. Weitere Informationen zur Rechnungsanalyse finden Sie im [Konzeptleitfaden zu Rechnungen](../../concept-invoice.md). Rufen Sie die **[Analyze Invoice](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5ed8c9843c2794cbb1a96291)** -API mit dem unten angegebenen cURL-Befehl auf, um mit der Analyse einer Rechnung zu beginnen. Nehmen Sie die folgenden Änderungen vor, bevor Sie den Befehl ausführen:
 
 1. Ersetzen Sie `{endpoint}` durch den Endpunkt, den Sie mit Ihrem Abonnement für die Formularerkennung erhalten haben.
 1. Ersetzen Sie `{your invoice URL}` durch die URL-Adresse eines Rechnungsdokuments.
@@ -970,7 +970,7 @@ Dieser JSON-Inhalt wurde gekürzt, um die Lesbarkeit zu verbessern. Auf [GitHub]
 
 ## <a name="analyze-identity-id-documents"></a>Analysieren von Ausweisdokumenten
 
-Verwenden Sie den folgenden cURL-Befehl, um mit dem Analysieren eines Ausweisdokuments zu beginnen. Weitere Informationen zur Ausweisdokumentanalyse finden Sie im [Konzeptleitfaden für Ausweisdokumente](../../concept-identification-cards.md). Rufen Sie mit dem folgenden cURL-Befehl die API **[Analyze ID Document](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5f74a7738978e467c5fb8707)** auf, um mit dem Analysieren eines Ausweisdokuments zu beginnen. Nehmen Sie die folgenden Änderungen vor, bevor Sie den Befehl ausführen:
+Verwenden Sie den folgenden cURL-Befehl, um mit dem Analysieren eines Ausweisdokuments zu beginnen. Weitere Informationen zur Ausweisdokumentanalyse finden Sie im [Konzeptleitfaden für Ausweisdokumente](../../concept-id-document.md). Rufen Sie mit dem folgenden cURL-Befehl die API **[Analyze ID Document](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/5f74a7738978e467c5fb8707)** auf, um mit dem Analysieren eines Ausweisdokuments zu beginnen. Nehmen Sie die folgenden Änderungen vor, bevor Sie den Befehl ausführen:
 
 1. Ersetzen Sie `{endpoint}` durch den Endpunkt, den Sie mit Ihrem Abonnement für die Formularerkennung erhalten haben.
 1. Ersetzen Sie `{your ID document URL}` mit der URL-Adresse eines Verkaufsbelegbilds.
@@ -1017,7 +1017,7 @@ Sie erhalten die Antwort `200 (Success)` mit der folgenden JSON-Ausgabe: Das ers
 
 Nachfolgend sehen Sie ein Beispiel für ein Ausweisdokument und die entsprechende JSON-Ausgabe:
 
-* :::image type="content" source="https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/id-license.jpg" alt-text="Beispiel eines Führerscheins":::
+* :::image type="content" source="https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/DriverLicense.png" alt-text="Beispiel eines Führerscheins":::
 
 #### <a name="response-body"></a>Antworttext
 
@@ -1576,4 +1576,3 @@ In dieser Schnellstartanleitung haben Sie die REST-API für die Formularerkennun
 
 > [!div class="nextstepaction"]
 > [Referenzdokumentation zur Rest-API](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1/operations/AnalyzeWithCustomForm)
-

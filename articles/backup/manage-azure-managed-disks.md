@@ -3,12 +3,12 @@ title: Verwalten von Azure Managed Disks
 description: In diesem Artikel erhalten Sie Informieren über die Verwaltung von Azure Managed Disks über das Azure-Portal.
 ms.topic: conceptual
 ms.date: 09/23/2021
-ms.openlocfilehash: 4b40a71a71ce543c66bf347ec745fea6ae384779
-ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
+ms.openlocfilehash: 38f131d9656f604ee4d53b5d1de0f16ffa56b9ba
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128708911"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130215989"
 ---
 # <a name="manage-azure-managed-disks"></a>Verwalten von Azure Managed Disks
 
@@ -96,7 +96,7 @@ Führen Sie die folgenden Schritte durch:
 Wenn Sie alle geplanten Sicherungsaufträge beenden und alle vorhandenen Sicherungen löschen möchten, verwenden Sie **Sicherungsinstanz löschen**.
 
 >[!Note]
->Das Löschen einer Sicherungsinstanz schlägt fehl, wenn die Momentaufnahme-Ressourcengruppe manuell gelöscht wird oder die Berechtigung für die verwaltete Identität des Sicherungstresors aufgehoben wird. Erstellen Sie in solchen Fehlerfällen vorübergehend die Momentaufnahme-Ressourcengruppe (mit dem gleichen Namen), und stellen Sie der verwalteten Identität des Sicherungstresors die erforderlichen Rollenberechtigungen bereit, wie [hier](/azure/backup/backup-managed-disks-ps#assign-permissions) dokumentiert. Sie finden den Namen der Momentaufnahme-Ressourcengruppe auf der Registerkarte **Essentials** des Bildschirms **Sicherungsinstanz**. 
+>Das Löschen einer Sicherungsinstanz schlägt fehl, wenn die Momentaufnahme-Ressourcengruppe manuell gelöscht wird oder die Berechtigung für die verwaltete Identität des Sicherungstresors aufgehoben wird. Erstellen Sie in solchen Fehlerfällen vorübergehend die Momentaufnahme-Ressourcengruppe (mit dem gleichen Namen), und stellen Sie der verwalteten Identität des Sicherungstresors die erforderlichen Rollenberechtigungen bereit, wie [hier](./backup-managed-disks-ps.md#assign-permissions) dokumentiert. Sie finden den Namen der Momentaufnahme-Ressourcengruppe auf der Registerkarte **Essentials** des Bildschirms **Sicherungsinstanz**. 
 
 Gehen Sie zum Löschen einer Datenträgersicherungsinstanz wie folgt vor:
 

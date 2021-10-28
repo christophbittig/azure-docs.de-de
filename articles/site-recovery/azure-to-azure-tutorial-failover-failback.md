@@ -4,12 +4,12 @@ description: Dieses Tutorial enthält Informationen dazu, wie Sie mit dem Azure 
 ms.topic: tutorial
 ms.date: 11/05/2020
 ms.custom: mvc
-ms.openlocfilehash: 99263c83d25542073d63c1cba394a147bd5b2170
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 692b6645b2446fa55233506a0479b95b0743b029
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93392777"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223156"
 ---
 # <a name="tutorial-fail-over-azure-vms-to-a-secondary-region"></a>Tutorial: Ausführen eines Failovers in eine sekundäre Region für Azure-VMs
 
@@ -84,9 +84,6 @@ Bevor Sie mit diesem Tutorial beginnen, sollten Sie die folgenden Schritte ausge
 8. Überwachen Sie den Status des Commitvorgangs in den Benachrichtigungen.
 
     ![Benachrichtigung über Status des Commitvorgangs](./media/azure-to-azure-tutorial-failover-failback/notification-commit-start.png) ![Erfolgsmeldung für Commit](./media/azure-to-azure-tutorial-failover-failback/notification-commit-finish.png)    
-
-9. Site Recovery führt nach dem Failover keine Bereinigung der Quell-VM durch. Sie müssen diesen Schritt manuell ausführen.
-
 
 ## <a name="reprotect-the-vm"></a>Erneutes Schützen der VM
 

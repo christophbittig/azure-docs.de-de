@@ -12,12 +12,12 @@ ms.date: 7/30/2021
 ms.author: davidmu
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 029328313ac58a5177f5a5e3c75b86fdc3587b43
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 8b5cdbbe4955063d6a241949be14cd7dcd0af0a5
+ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129613736"
+ms.lasthandoff: 10/14/2021
+ms.locfileid: "129997514"
 ---
 # <a name="restrict-access-to-a-tenant-in-azure-active-directory"></a>Einschränken des Zugriffs auf einen Mandanten in Azure Active Directory
 
@@ -225,5 +225,5 @@ Die `restrict-msa`-Richtlinie blockiert die Verwendung von Consumeranwendungen, 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Lesen Sie [Updated Office 365 modern authentication](https://www.microsoft.com/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/) (Aktualisierte moderne Authentifizierung für Office 365).
+- Lesen Sie [Updated Office 365 modern authentication](https://www.microsoft.com/microsoft-365/blog/2015/11/19/updated-office-365-modern-authentication-public-preview/) (Aktualisierte moderne Authentifizierung für Office 365).
 - Informieren Sie sich über die [URLs und IP-Adressbereiche von Office 365](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2).

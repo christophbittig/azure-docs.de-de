@@ -17,12 +17,12 @@ ms.date: 01/21/2021
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8e5a095c87e46839c7c120bdd6d8db1595164e57
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 19ce15222d71986667d359fc68ff1f61b1c931b1
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107532527"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130253616"
 ---
 # <a name="get-started-with-the-azure-active-directory-reporting-api"></a>Erste Schritte mit der Berichterstellungs-API von Azure Active Directory
 
@@ -49,7 +49,7 @@ Ausführliche Anweisungen finden Sie in den [Voraussetzungen für den Zugriff au
 
 Der Microsoft Graph-API-Endpunkt für Überwachungsprotokolle ist `https://graph.microsoft.com/v1.0/auditLogs/directoryAudits`, und für Anmeldungen lautet er `https://graph.microsoft.com/v1.0/auditLogs/signIns`. Weitere Informationen finden Sie in der [Referenz zur Überwachungs-API](/graph/api/resources/directoryaudit) und in der [Referenz zur Anmelde-API](/graph/api/resources/signIn).
 
-Sie können die [API für Identity Protection-Risikoerkennungen](/graph/api/resources/identityriskevent?view=graph-rest-beta&preserve-view=true) verwenden, um programmgesteuerten Zugriff auf Sicherheitserkennungen über Microsoft Graph zu erhalten. Weitere Informationen finden Sie unter [Erste Schritte mit Azure Active Directory Identity Protection und Microsoft Graph](../identity-protection/howto-identity-protection-graph-api.md). 
+Sie können die [API für Identity Protection-Risikoerkennungen](/graph/api/resources/identityprotection-root) verwenden, um programmgesteuerten Zugriff auf Sicherheitserkennungen über Microsoft Graph zu erhalten. Weitere Informationen finden Sie unter [Erste Schritte mit Azure Active Directory Identity Protection und Microsoft Graph](../identity-protection/howto-identity-protection-graph-api.md). 
   
 Sie können auch die [Bereitstellungsprotokolle-API](/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta&preserve-view=true) verwenden, um programmgesteuerten Zugriff auf Bereitstellungsereignisse in Ihrem Mandanten zu erhalten. 
 

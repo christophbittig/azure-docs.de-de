@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: overview
 ms.date: 10/07/2021
 ms.author: lajanuar
-ms.openlocfilehash: 5c9df61e7f4430a623f354294863b2a1bc06b7c8
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: b9cd899516188dbac4671addd11d9c6cd05fc843
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130164262"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130216654"
 ---
 # <a name="language-support-for-form-recognizer"></a>Sprachunterstützung für die Formularerkennung
 
@@ -32,7 +32,7 @@ In den folgenden Listen werden die derzeit allgemein verfügbaren Sprachen in Ve
 >
 > Die auf Deep Learning basierenden universellen Modelle der Formularerkennung extrahieren den gesamten mehrsprachigen Text in Ihren Dokumenten (einschließlich Textzeilen mit gemischten Sprachen) und erfordern keine Angabe eines Sprachcodes. Geben Sie den Sprachcode nicht als Parameter an, es sei denn, Sie sind sich hinsichtlich der Sprache sicher und möchten erzwingen, dass der Dienst nur das relevante Modell anwendet. Andernfalls gibt der Dienst möglicherweise unvollständigen und fehlerhaften Text zurück.
 
-Wenn Sie die Vorschausprachen in Layoutmodellen und benutzerdefinierten Modellen verwenden möchten, finden Sie im [Migrationshandbuch für die v3.0-REST-API](/v3-migration-guide.md#changes-to-the-rest-api-endpoints) Informationen zu den Unterschieden zur allgemein verfügbaren v2.1-API. Sehen Sie sich außerdem die Artikel [Schnellstart: Python-Clientbibliothek-SDKs für Formularerkennung v3.0 | Vorschau](quickstarts/try-v3-python-sdk.md) und [Erste Schritte: REST-API für Formularerkennung | Vorschau](quickstarts/try-v3-rest-api.md) an.
+Wenn Sie die Vorschausprachen in Layoutmodellen und benutzerdefinierten Modellen verwenden möchten, finden Sie im [Migrationshandbuch für die v3.0-REST-API](/rest/api/media/#changes-to-the-rest-api-endpoints) Informationen zu den Unterschieden zur allgemein verfügbaren v2.1-API. Sehen Sie sich außerdem die Artikel [Schnellstart: Python-Clientbibliothek-SDKs für Formularerkennung v3.0 | Vorschau](quickstarts/try-v3-python-sdk.md) und [Erste Schritte: REST-API für Formularerkennung | Vorschau](quickstarts/try-v3-rest-api.md) an.
 
 ### <a name="handwritten-languages"></a>Handschriftliche Sprachen
 In der folgenden Tabelle sind die handschriftlichen Sprachen aufgeführt, die von den Formularerkennungsfunktionen für Layoutmodelle und benutzerdefinierte Modelle unterstützt werden.
@@ -118,7 +118,7 @@ In der folgenden Tabelle sind die Drucksprachen aufgeführt, die von den Formula
 |Korjakisch |`kpy`| preview |
 |Kosraeanisch |`kos`| preview |
 |Kumykisch (Kyrillisch) |`kum`| preview |
-|Kurdisch (lateinisch)| `kur` | |
+|Kurdisch (lateinisch)| `ku` | |
 |Kirgisisch (Kyrillisch) |`ky`| preview |
 |Lakota |`lkt`| preview |
 |Lateinisch|`la`| preview |
@@ -152,13 +152,13 @@ In der folgenden Tabelle sind die Drucksprachen aufgeführt, die von den Formula
 |Serbisch (Lateinisch) | `sr-latn` | preview |
 |Skolt-Samisch|`sms`| preview |
 |Slowakisch | `sk` | preview |
-|Slowenisch  | `slv` | |
+|Slowenisch  | `sl` | |
 |Südsamisch|`sma`| preview |
 |Spanisch | `es` | |
 |Suaheli (Lateinisch)  | `sw` | |
 |Schwedisch | `sv` | |
 |Tadschikisch (Kyrillisch)|`tg`| preview |
-|Tatarisch (Lateinisch)  | `tat` | |
+|Tatarisch (Lateinisch)  | `tt` | |
 |Tetum    | `tet` |  |
 |Tongaisch|`to`|(Vorschauversion) |
 |Türkisch | `tr` | |

@@ -4,12 +4,12 @@ description: Übersicht über Sicherungstresore
 ms.topic: conceptual
 ms.date: 09/08/2021
 ms.custom: references_regions
-ms.openlocfilehash: 8d617dd2d2b1fa61a797d14c709ce285dc28b9bf
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: afe103e7fb6c2cb59634029c5ae9a75acadf0afc
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124799487"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130235884"
 ---
 # <a name="backup-vaults-overview"></a>Übersicht über Sicherungstresore
 
@@ -188,7 +188,7 @@ Warten Sie, bis die Verschiebung abgeschlossen ist, und führen Sie erst danach 
 
 1. Wählen Sie in der Dropdownliste **Abonnement** ein vorhandenes Abonnement aus.
 
-   Beim Verschieben von Tresoren zwischen Abonnements muss sich das Zielabonnement im selben Mandanten wie das Quellabonnement befinden. Informationen zum Verschieben eines Tresors in einen anderen Mandanten finden Sie unter [Übertragen eines Abonnements in ein anderes Verzeichnis](/azure/role-based-access-control/transfer-subscription).
+   Beim Verschieben von Tresoren zwischen Abonnements muss sich das Zielabonnement im selben Mandanten wie das Quellabonnement befinden. Informationen zum Verschieben eines Tresors in einen anderen Mandanten finden Sie unter [Übertragen eines Abonnements in ein anderes Verzeichnis](../role-based-access-control/transfer-subscription.md).
 
 1. Wählen Sie in der Dropdownliste **Ressourcengruppe** eine vorhandene Ressourcengruppe aus, oder wählen Sie **Neu erstellen** aus, um eine neue Ressourcengruppe zu erstellen.
 

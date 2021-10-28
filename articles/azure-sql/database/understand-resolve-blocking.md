@@ -14,12 +14,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.date: 3/02/2021
-ms.openlocfilehash: cedd161a392af9df52ed94aa4ed60379cf28776a
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: faf2d60162a7cd39b901414aedb8cda1406173f2
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111413522"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130226929"
 ---
 # <a name="understand-and-resolve-azure-sql-database-blocking-problems"></a>Verstehen und Beheben von Problemen durch Blockierungen in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -425,7 +425,6 @@ Die Spalten Waittype, Open_Tran und Status beziehen sich auf Informationen, die 
 ## <a name="learn-more"></a>Erfahren Sie mehr
 
 * [Azure SQL-Datenbank: Verbessern der Leistungsoptimierung mithilfe der automatischen Optimierung](https://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Improving-Performance-Tuning-with-Automatic-Tuning)
-* [Verbessern der Leistung von Azure SQL-Datenbank mithilfe der automatischen Optimierung](https://channel9.msdn.com/Shows/Azure-Friday/Improve-Azure-SQL-Database-Performance-with-Automatic-Tuning)
 * [Bereitstellen einer konsistenten Leistung mit Azure SQL](/learn/modules/azure-sql-performance/)
 * [Beheben von Konnektivitätsproblemen und anderen Fehlern mit Azure SQL-Datenbank und Azure SQL Managed Instance](troubleshoot-common-errors-issues.md)
 * [Behandeln vorübergehender Fehler](/aspnet/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling)

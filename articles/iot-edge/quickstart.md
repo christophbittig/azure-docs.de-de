@@ -11,12 +11,12 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 3f0e2baa7ac30e0e75167dc603de73fdd1df8d73
-ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+ms.openlocfilehash: b495476a93d3cef76c866b3927aa4bfacdb98477
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123215366"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130238743"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-windows-device"></a>Schnellstart: Deploy your first IoT Edge module to a Windows device (Bereitstellen Ihres ersten IoT Edge-Moduls auf einem Windows-Gerät)
 
@@ -61,7 +61,7 @@ Stellen Sie sicher, dass Ihr IoT Edge-Gerät die folgenden Anforderungen erfüll
   * Mindestens erforderlicher freier Speicherplatz: 10 GB
 
 >[!NOTE]
->In dieser Schnellstartanleitung wird PowerShell verwendet, um eine Bereitstellung von IoT Edge für Linux unter Windows zu erstellen. Sie können dafür auch Windows Admin Center verwenden. Führen Sie die Schritte in der Schrittanleitung zum [Installieren und Bereitstellen von Azure IoT Edge für Linux auf einem Windows-Gerät](how-to-install-iot-edge-on-windows.md?tabs=windowsadmincenter) aus, falls Sie Ihre Bereitstellung mit Windows Admin Center erstellen möchten.
+>In dieser Schnellstartanleitung wird PowerShell verwendet, um eine Bereitstellung von IoT Edge für Linux unter Windows zu erstellen. Sie können dafür auch Windows Admin Center verwenden. Führen Sie die Schritte in der Schrittanleitung zum [Installieren und Bereitstellen von Azure IoT Edge für Linux auf einem Windows-Gerät](how-to-provision-single-device-linux-on-windows-symmetric.md?tabs=windowsadmincenter) aus, falls Sie Ihre Bereitstellung mit Windows Admin Center erstellen möchten.
 
 ## <a name="create-an-iot-hub"></a>Erstellen eines IoT-Hubs
 
@@ -151,7 +151,7 @@ Führen Sie die folgenden PowerShell-Befehle auf dem Zielgerät aus, auf dem Sie
 
 1. Durch die Eingabe von „O“ oder „R“ können Sie **Optionale Diagnosedaten** bei Bedarf ein- oder ausschalten. Eine erfolgreiche Bereitstellung ist unten dargestellt.
 
-   ![Bei einer erfolgreichen Bereitstellung wird am Ende der Meldungen „Deployment successful“ (Bereitstellung erfolgreich) angezeigt.](./media/how-to-install-iot-edge-on-windows/successful-powershell-deployment-2.png)
+   ![Bei einer erfolgreichen Bereitstellung wird am Ende der Meldungen „Deployment successful“ (Bereitstellung erfolgreich) angezeigt.](./media/quickstart/successful-powershell-deployment.png)
 
 1. Stellen Sie Ihr Gerät mithilfe der Geräteverbindungszeichenfolge bereit, die Sie im vorherigen Abschnitt abgerufen haben. Ersetzen Sie den Platzhaltertext durch Ihren eigenen Wert.
 

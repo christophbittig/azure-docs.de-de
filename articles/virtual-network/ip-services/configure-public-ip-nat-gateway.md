@@ -9,12 +9,12 @@ ms.subservice: ip-services
 ms.topic: how-to
 ms.date: 06/28/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 2fd41f3459469474c100657747c4873ee99dc057
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: b87947aa265e5a92abf033fffd28ab3424785bb5
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129368245"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130217390"
 ---
 # <a name="manage-a-public-ip-address-with-a-nat-gateway"></a>Verwalten einer öffentlichen IP-Adresse mit einem NAT-Gateway
 
@@ -31,9 +31,9 @@ Zuletzt ändern Sie die IP-Konfiguration von einer öffentlichen IP-Adresse in e
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein Azure-Konto mit einem aktiven Abonnement. [Erstellen Sie ein kostenloses Konto.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-- Zwei öffentliche IP-Adressen der Standard-SKU in Ihrem Abonnement. Die IP-Adressen dürfen keinen Ressourcen zugeordnet sein. Weitere Informationen zum Erstellen einer öffentlichen IP-Adresse der Standard-SKU finden Sie unter [Erstellen einer öffentlichen IP-Adresse: Azure-Portal](../../virtual-network/create-public-ip-portal.md).
+- Zwei öffentliche IP-Adressen der Standard-SKU in Ihrem Abonnement. Die IP-Adressen dürfen keinen Ressourcen zugeordnet sein. Weitere Informationen zum Erstellen einer öffentlichen IP-Adresse der Standard-SKU finden Sie unter [Erstellen einer öffentlichen IP-Adresse: Azure-Portal](./create-public-ip-portal.md).
     - Benennen Sie die neuen öffentlichen IP-Adressen für die Beispiele in diesem Artikel mit **myStandardPublicIP-1** und **myStandardPublicIP-2**.
-- Ein öffentliches IP-Präfix in Ihrem Abonnement. Weitere Informationen zum Erstellen eines Präfixes für öffentliche IP-Adressen finden Sie unter [Erstellen eines öffentlichen IP-Präfixes über das Azure-Portal](../../virtual-network/create-public-ip-prefix-portal.md).
+- Ein öffentliches IP-Präfix in Ihrem Abonnement. Weitere Informationen zum Erstellen eines Präfixes für öffentliche IP-Adressen finden Sie unter [Erstellen eines öffentlichen IP-Präfixes über das Azure-Portal](./create-public-ip-prefix-portal.md).
     - Für das Beispiel in diesem Artikel nennen Sie das neue Präfix für öffentliche IP-Adressen **myPublicIPPrefixNAT**.
 
 ## <a name="create-nat-gateway-existing-public-ip"></a>Erstellen eines NAT-Gateways mit einer bestehenden öffentlichen IP-Adresse
@@ -149,4 +149,4 @@ In diesem Abschnitt ändern Sie die Konfiguration der ausgehenden IP-Adresse so,
 In diesem Artikel haben Sie erfahren, wie Sie ein NAT-Ladegateway erstellen und eine bestehende öffentliche IP-Adresse verwenden. Sie haben die IP-Adresse in der Konfiguration der ausgehenden IP-Adresse eines NAT-Gateways ersetzt. Zuletzt haben Sie die Konfiguration einer ausgehenden IP-Adresse so geändert, dass ein Präfix für öffentliche IP-Adressen verwendet wird.
 
 - Weitere Informationen zu Azure Virtual Network NAT finden Sie unter [Was ist Azure Virtual Network NAT](../nat-gateway/nat-overview.md).
-- Weitere Informationen zu öffentlichen IP-Adressen in Azure finden Sie unter [Öffentliche IP-Adressen](../../virtual-network/public-ip-addresses.md).
+- Weitere Informationen zu öffentlichen IP-Adressen in Azure finden Sie unter [Öffentliche IP-Adressen](./public-ip-addresses.md).

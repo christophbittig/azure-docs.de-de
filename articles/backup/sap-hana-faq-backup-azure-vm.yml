@@ -5,12 +5,12 @@ metadata:
   ms.topic: article
   ms.service: backup
   ms.date: 09/27/2021
-  ms.openlocfilehash: 2b1a7e39c1cf4a7e6c5b1da6f748c7e143608104
-  ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+  ms.openlocfilehash: fd2fee68735686a15720c87bc4fb1f3ce9f410b5
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/27/2021
-  ms.locfileid: "129080689"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130244242"
 title: 'Häufig gestellte Fragen: Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Computern'
 summary: In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen zum Sichern von SAP HANA-Datenbanken mit dem Azure Backup-Dienst.
 sections:
@@ -35,7 +35,7 @@ sections:
       Erfolgreiche Sicherungsaufträge generieren heute keine Warnungen. Warnungen werden nur für Sicherungsaufträge generiert, bei denen ein Fehler aufgetreten ist. [Erfahren Sie](backup-azure-monitoring-built-in-monitor.md), wie Sie das Azure-Portal verwenden, um Azure Backup-Warnungen anzuzeigen.
   - question: >
       Wie überprüfe ich, ob meine Sicherung (geplant oder bei Bedarf) erfolgreich ausgeführt wurde?
-    answer: "Sie können den Status Ihrer Sicherungen (geplant oder bei Bedarf) an den folgenden Stellen überprüfen:\n\n1. **Sicherungsaufträge:** Azure Backup zeigt alle manuell ausgelösten Aufträge im Azure-Portal im Abschnitt „Sicherungsaufträge“ an.  <br><br>   Zu den Aufträgen, die im Azure-Portal angezeigt werden, gehören Datenbankermittlungs- und -registrierungsvorgänge sowie Sicherungs- und Wiederherstellungsvorgänge. Geplante Aufträge (einschließlich Protokollsicherungen) werden in diesem Abschnitt nicht angezeigt. Manuell ausgelöste Sicherungen über die nativen SAP HANA-Clients (Studio/Cockpit/DBA Cockpit) werden hier ebenfalls nicht angezeigt.\n\n   :::image type=\"content\" source=\"./media/sap-hana-faq-backup-azure-vm/manually-triggered-jobs.png\" alt-text=\"Screenshot: Manuell ausgelöste Aufträge im Abschnitt „Sicherungsaufträge“ im Azure-Portal\":::\n\n   :::image type=\"content\" source=\"./media/sap-hana-faq-backup-azure-vm/jobs-and-operations-list.png\" alt-text=\"Screenshot: Aufträge einschließlich Datenbankermittlungs- und -registrierungsvorgängen sowie Sicherungs- und Wiederherstellungsvorgängen\":::\n \n1. **Sicherungswarnungen:** Warnungen unterstützen Sie beim Überwachen von Sicherungen von SAP HANA-Datenbanken. Sie helfen Ihnen dabei, sich auf die erforderlichen Ereignisse zu konzentrieren, sodass Sie nicht mehr ständig die vielen Ereignisse überprüfen müssen, die beim Erstellen einer Sicherung generiert werden. Weitere Informationen finden Sie unter [Anzeigen von Sicherungswarnungen](/azure/backup/sap-hana-db-manage#view-backup-alerts).\n\n1. **Sicherungsberichte:** Berichte sind eine weitere Möglichkeit, den Status Ihrer Sicherungsaufträge einzusehen. Diese Berichte sehen wie folgt aus:\n\n   :::image type=\"content\" source=\"./media/sap-hana-faq-backup-azure-vm/backup-reports.png\" alt-text=\"Screenshot: Eine Art von Bericht im Azure-Portal\":::\n\n   :::image type=\"content\" source=\"./media/sap-hana-faq-backup-azure-vm/backup-reports-mabs.png\" alt-text=\"Screenshot: Die andere Art von Bericht im Azure-Portal\":::\n\n   Weitere Informationen finden Sie unter [Konfigurieren von Azure Backup-Berichten](/azure/backup/configure-reports).\n\n1. **Native SAP HANA-Clients:** Wenn Sie SAP HANA nutzen, können Sie auch HANA Studio verwenden, einen der gängigsten HANA-Clients. Navigieren Sie in diesem Client zu **Backup Console** -> **Backup Catalog** (Sicherungskonsole -> Sicherungskatalog), um den **Sicherungsstatus** anzuzeigen.\n\n   :::image type=\"content\" source=\"./media/sap-hana-faq-backup-azure-vm/sap-hana-native-client-reports.png\" alt-text=\"Screenshot: Berichte in nativen SAP HANA-Clients\":::\n"
+    answer: "Sie können den Status Ihrer Sicherungen (geplant oder bei Bedarf) an den folgenden Stellen überprüfen:\n\n1. **Sicherungsaufträge:** Azure Backup zeigt alle manuell ausgelösten Aufträge im Azure-Portal im Abschnitt „Sicherungsaufträge“ an.  <br><br>   Zu den Aufträgen, die im Azure-Portal angezeigt werden, gehören Datenbankermittlungs- und -registrierungsvorgänge sowie Sicherungs- und Wiederherstellungsvorgänge. Geplante Aufträge (einschließlich Protokollsicherungen) werden in diesem Abschnitt nicht angezeigt. Manuell ausgelöste Sicherungen über die nativen SAP HANA-Clients (Studio/Cockpit/DBA Cockpit) werden hier ebenfalls nicht angezeigt.\n\n   :::image type=\"content\" source=\"./media/sap-hana-faq-backup-azure-vm/manually-triggered-jobs.png\" alt-text=\"Screenshot: Manuell ausgelöste Aufträge im Abschnitt „Sicherungsaufträge“ im Azure-Portal\":::\n\n   :::image type=\"content\" source=\"./media/sap-hana-faq-backup-azure-vm/jobs-and-operations-list.png\" alt-text=\"Screenshot: Aufträge einschließlich Datenbankermittlungs- und -registrierungsvorgängen sowie Sicherungs- und Wiederherstellungsvorgängen\":::\n \n1. **Sicherungswarnungen:** Warnungen unterstützen Sie beim Überwachen von Sicherungen von SAP HANA-Datenbanken. Sie helfen Ihnen dabei, sich auf die erforderlichen Ereignisse zu konzentrieren, sodass Sie nicht mehr ständig die vielen Ereignisse überprüfen müssen, die beim Erstellen einer Sicherung generiert werden. Weitere Informationen finden Sie unter [Anzeigen von Sicherungswarnungen](./sap-hana-db-manage.md#view-backup-alerts).\n\n1. **Sicherungsberichte:** Berichte sind eine weitere Möglichkeit, den Status Ihrer Sicherungsaufträge einzusehen. Diese Berichte sehen wie folgt aus:\n\n   :::image type=\"content\" source=\"./media/sap-hana-faq-backup-azure-vm/backup-reports.png\" alt-text=\"Screenshot: Eine Art von Bericht im Azure-Portal\":::\n\n   :::image type=\"content\" source=\"./media/sap-hana-faq-backup-azure-vm/backup-reports-mabs.png\" alt-text=\"Screenshot: Die andere Art von Bericht im Azure-Portal\":::\n\n   Weitere Informationen finden Sie unter [Konfigurieren von Azure Backup-Berichten](./configure-reports.md).\n\n1. **Native SAP HANA-Clients:** Wenn Sie SAP HANA nutzen, können Sie auch HANA Studio verwenden, einen der gängigsten HANA-Clients. Navigieren Sie in diesem Client zu **Backup Console** -> **Backup Catalog** (Sicherungskonsole -> Sicherungskatalog), um den **Sicherungsstatus** anzuzeigen.\n\n   :::image type=\"content\" source=\"./media/sap-hana-faq-backup-azure-vm/sap-hana-native-client-reports.png\" alt-text=\"Screenshot: Berichte in nativen SAP HANA-Clients\":::\n"
   - question: >
       Werden geplante Sicherungsaufträge im Menü „Sicherungsaufträge“ angezeigt?
     answer: >
@@ -172,16 +172,16 @@ sections:
   - question: >
       Welche Durchsatzleistung bietet Azure Backup bei Sicherungen und Wiederherstellungen, und wie richte ich mein HANA-System so ein, dass es diesen maximalen Durchsatz nutzt?
     answer: >
-      Sehen Sie sich die Informationen im [verlinkten Abschnitt zur Durchsatzleistung bei Sicherungen und Wiederherstellungen](/azure/backup/tutorial-backup-sap-hana-db#understanding-backup-and-restore-throughput-performance) an, die Azure Backup für HANA-Workloads bietet. <br><br> Verwenden Sie die folgenden Ressourcen, um Ihr HANA-System so einzurichten, dass es die verbesserte Leistung nutzt:
+      Sehen Sie sich die Informationen im [verlinkten Abschnitt zur Durchsatzleistung bei Sicherungen und Wiederherstellungen](./tutorial-backup-sap-hana-db.md#understanding-backup-and-restore-throughput-performance) an, die Azure Backup für HANA-Workloads bietet. <br><br> Verwenden Sie die folgenden Ressourcen, um Ihr HANA-System so einzurichten, dass es die verbesserte Leistung nutzt:
 
-       - [Auswählen eines Datenträgertyps für virtuelle Azure IaaS-Computer: verwaltete Datenträger](/azure/virtual-machines/disks-types#premium-ssd)
-       - [Leistungsstufen für Azure Managed Disks](/azure/virtual-machines/disks-change-performance)
-       - [M-Serie](/azure/virtual-machines/m-series)
-       - [SAP HANA: Speicherkonfigurationen für virtuelle Azure-Computer](/azure/virtual-machines/workloads/sap/hana-vm-operations-storage#solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines)
+       - [Auswählen eines Datenträgertyps für virtuelle Azure IaaS-Computer: verwaltete Datenträger](../virtual-machines/disks-types.md)
+       - [Leistungsstufen für Azure Managed Disks](../virtual-machines/disks-change-performance.md)
+       - [M-Serie](../virtual-machines/m-series.md)
+       - [SAP HANA: Speicherkonfigurationen für virtuelle Azure-Computer](../virtual-machines/workloads/sap/hana-vm-operations-storage.md#solutions-with-premium-storage-and-azure-write-accelerator-for-azure-m-series-virtual-machines)
 
       >[!Note]
 
-      >Sie können die Durchsatzleistung für Sicherungen auch beschränken. [Weitere Informationen](/azure/backup/tutorial-backup-sap-hana-db#limiting-backup-throughput-performance)
+      >Sie können die Durchsatzleistung für Sicherungen auch beschränken. [Weitere Informationen](./tutorial-backup-sap-hana-db.md#limiting-backup-throughput-performance)
 - name: Restore
   questions:
   - question: >
@@ -200,7 +200,7 @@ sections:
       Kann ich eine Sicherung einer laufenden Datenbank auf SLES verwenden, um sie in einem RHEL HANA-System wiederherzustellen (oder umgekehrt)?
     answer: >
       Ja. Sie können Streamingsicherungen, die auf einer auf SLES laufenden HANA-Datenbank ausgelöst wurden, verwenden, um sie auf einem RHEL HANA-System wiederherzustellen (und umgekehrt). Das heißt, dass die betriebssystemübergreifende Wiederherstellung mithilfe von Streamingsicherungen möglich ist. Sie müssen aber sicherstellen, dass sowohl das HANA-System, auf dem Sie die Wiederherstellung durchführen möchten, als auch das HANA-System, das für die Wiederherstellung verwendet wird, gemäß SAP für die Wiederherstellung kompatibel sind. Lesen Sie SAP HANA-Hinweis [1642148](https://launchpad.support.sap.com/#/notes/1642148), um zu erfahren, welche Wiederherstellungstypen kompatibel sind.
-- name: Policy
+- name: Richtlinie
   questions:
   - question: >
       Verschiedene verfügbare Optionen bei der Erstellung einer neuen Richtlinie für SAP HANA-Sicherungen

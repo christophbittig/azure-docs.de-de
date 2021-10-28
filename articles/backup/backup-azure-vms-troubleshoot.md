@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Fehler beheben können, die
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 06/02/2021
-ms.openlocfilehash: d3afc24f11400a5d2e7e099690ba9312e9b25ae7
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 33525dbe53a385418cce78b135d6c11b5dc78dce
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128599865"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130244557"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Problembehandlung bei Sicherungsfehlern auf virtuellen Azure-Computern
 
@@ -423,4 +423,4 @@ Für die VM-Sicherung mithilfe von IaaS muss auf dem Gastsystem DHCP aktiviert s
 Weitere Informationen zum Einrichten einer statischen IP-Adresse mithilfe von PowerShell finden Sie unter:
 
 * [Hinzufügen einer statischen internen IP-Adresse zu einem vorhandenen virtuellen Computer](/powershell/module/az.network/set-aznetworkinterfaceipconfig#description)
-* [Ändern der Zuordnungsmethode für eine private IP-Adresse, die einer Netzwerkschnittstelle zugewiesen ist](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)
+* [Ändern der Zuordnungsmethode für eine private IP-Adresse, die einer Netzwerkschnittstelle zugewiesen ist](../virtual-network/ip-services/virtual-networks-static-private-ip-arm-ps.md)

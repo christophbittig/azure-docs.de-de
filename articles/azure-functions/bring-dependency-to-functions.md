@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Dateien oder Drittanbieterbibliotheken mitbri
 ms.date: 4/6/2020
 ms.topic: article
 zone_pivot_groups: bring-third-party-dependency-programming-functions
-ms.openlocfilehash: 3cd1139e8c733650acc879bf1d0d5d9efb2f6fb4
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: be01f07a9906da58d080060185104aef29f78b77
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109716344"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130265303"
 ---
 # <a name="bring-dependencies-or-third-party-library-to-azure-functions"></a>Bereitstellen von Abhängigkeiten und Bibliotheken von Drittanbietern in Azure Functions
 
@@ -205,7 +205,7 @@ Weitere Befehle zum Ändern/Löschen der Dateifreigabekonfiguration finden Sie [
 
 ### <a name="uploading-the-dependencies-to-azure-files"></a>Hochladen der Abhängigkeiten in Azure Files
 
-Eine Möglichkeit zum Hochladen Ihrer Abhängigkeit in Azure Files ist über das Azure-Portal. Anweisungen zum Hochladen von Abhängigkeiten über das Portal finden Sie in diesem [Leitfaden](../storage/files/storage-how-to-use-files-portal.md#upload-a-file). Weitere Optionen zum Hochladen Ihrer Abhängigkeiten in Azure Files sind [Azure CLI](../storage/files/storage-how-to-use-files-cli.md#upload-a-file) und [PowerShell](../storage/files/storage-how-to-use-files-powershell.md#upload-a-file).
+Eine Möglichkeit zum Hochladen Ihrer Abhängigkeit in Azure Files ist über das Azure-Portal. Anweisungen zum Hochladen von Abhängigkeiten über das Portal finden Sie in diesem [Leitfaden](../storage/files/storage-how-to-use-files-portal.md#upload-a-file). Weitere Optionen zum Hochladen Ihrer Abhängigkeiten in Azure Files sind [Azure CLI](../storage/files/storage-how-to-use-files-portal.md#upload-a-file) und [PowerShell](../storage/files/storage-how-to-use-files-portal.md#upload-a-file).
 
 
 ### <a name="accessing-the-dependencies-in-your-code"></a>Zugreifen auf die Abhängigkeiten in Ihrem Code

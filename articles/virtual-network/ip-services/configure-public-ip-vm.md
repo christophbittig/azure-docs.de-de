@@ -9,12 +9,12 @@ ms.subservice: ip-services
 ms.topic: how-to
 ms.date: 06/28/2021
 ms.custom: template-how-to
-ms.openlocfilehash: a21b734ee1825a86c9276a2e603d04d723bd8d46
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: d7c1f9faeb196f73fd6b336421591cfd895407fe
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129368226"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130248999"
 ---
 # <a name="manage-a-public-ip-address-with-an-azure-virtual-machine"></a>Verwalten einer öffentlichen IP-Adresse mit einer Azure-VM
 
@@ -29,9 +29,9 @@ In diesem Artikel wird erläutert, wie Sie eine Azure-VM mit einer vorhandenen �
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein Azure-Konto mit einem aktiven Abonnement. [Erstellen Sie ein kostenloses Konto.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-- Zwei öffentliche IP-Adressen der Standard-SKU in Ihrem Abonnement. Die IP-Adresse kann keinen Ressourcen zugeordnet werden. Weitere Informationen zum Erstellen einer öffentlichen IP-Adresse der Standard-SKU finden Sie unter [Erstellen einer öffentlichen IP-Adresse im Azure-Portal](../../virtual-network/create-public-ip-portal.md).
+- Zwei öffentliche IP-Adressen der Standard-SKU in Ihrem Abonnement. Die IP-Adresse kann keinen Ressourcen zugeordnet werden. Weitere Informationen zum Erstellen einer öffentlichen IP-Adresse der Standard-SKU finden Sie unter [Erstellen einer öffentlichen IP-Adresse im Azure-Portal](./create-public-ip-portal.md).
     - Benennen Sie die neuen öffentlichen IP-Adressen für die Beispiele in diesem Artikel mit **myStandardPublicIP-1** und **myStandardPublicIP-2**.
-- Eine öffentliche IP-Adresse der Standard-SKU mit der Routingpräferenz **Internet** in Ihrem Abonnement. Weitere Informationen zum Erstellen einer öffentlichen IP-Adresse mit der Routingpräferenz **Internet** finden Sie unter [Konfigurieren der Routingpräferenz für eine öffentliche IP-Adresse mithilfe des Azure-Portals](../../virtual-network/routing-preference-portal.md).
+- Eine öffentliche IP-Adresse der Standard-SKU mit der Routingpräferenz **Internet** in Ihrem Abonnement. Weitere Informationen zum Erstellen einer öffentlichen IP-Adresse mit der Routingpräferenz **Internet** finden Sie unter [Konfigurieren der Routingpräferenz für eine öffentliche IP-Adresse mithilfe des Azure-Portals](./routing-preference-portal.md).
     - Benennen Sie die neue öffentliche IP-Adresse für das Beispiel in diesem Artikel mit **myStandardPublicIP-3**.
 ## <a name="create-virtual-machine-existing-public-ip"></a>Erstellen einer VM mit einer vorhandenen öffentlichen IP-Adresse
 
@@ -120,9 +120,9 @@ In diesem Abschnitt ändern Sie die öffentliche IP-Adresse, die der standardmä
 
 In diesem Abschnitt fügen Sie der VM eine öffentliche IP-Konfiguration hinzu. 
 
-Weitere Informationen zum Hinzufügen mehrerer IP-Adressen finden Sie unter [Zuweisen von mehreren IP-Adressen zu virtuellen Computern mithilfe des Azure-Portals](../../virtual-network/virtual-network-multiple-ip-addresses-portal.md). 
+Weitere Informationen zum Hinzufügen mehrerer IP-Adressen finden Sie unter [Zuweisen von mehreren IP-Adressen zu virtuellen Computern mithilfe des Azure-Portals](./virtual-network-multiple-ip-addresses-portal.md). 
 
-Weitere Informationen zur Verwendung beider Routingpräferenztypen finden Sie unter [Konfigurieren der beiden Routingpräferenzoptionen für einen virtuellen Computer](../../virtual-network/routing-preference-mixed-network-adapter-portal.md).
+Weitere Informationen zur Verwendung beider Routingpräferenztypen finden Sie unter [Konfigurieren der beiden Routingpräferenzoptionen für einen virtuellen Computer](./routing-preference-mixed-network-adapter-portal.md).
 
 1. Geben Sie im Suchfeld oben im Portal den Suchbegriff **Virtueller Computer** ein.
 
@@ -178,4 +178,4 @@ In diesem Abschnitt entfernen Sie die öffentliche IP-Adresse aus der Netzwerksc
 
 In diesem Artikel haben Sie gelernt, wie Sie eine VM erstellen und eine vorhandene öffentliche IP-Adresse verwenden. Sie haben die öffentliche IP-Adresse der Standard-IP-Konfiguration geändert. Schließlich haben Sie der Firewall eine öffentliche IP-Konfiguration mit der Routingpräferenz „Internet“ hinzugefügt.
 
-- Weitere Informationen zu öffentlichen IP-Adressen in Azure finden Sie unter [Öffentliche IP-Adressen](../../virtual-network/public-ip-addresses.md).
+- Weitere Informationen zu öffentlichen IP-Adressen in Azure finden Sie unter [Öffentliche IP-Adressen](./public-ip-addresses.md).

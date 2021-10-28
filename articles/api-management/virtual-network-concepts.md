@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/19/2021
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 9d021eb435eb74612f7716fb6d790e6878b9d9d5
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 364487d697aee69215e9ca9f080e4aa6a1a83468
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123544424"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130253362"
 ---
 # <a name="use-a-virtual-network-with-azure-api-management"></a>Verwenden Sie ein virtuelles Netzwerk mit Azure API Management
 
@@ -55,7 +55,7 @@ Im Folgenden werden die Anforderungen an virtuelle Netzwerkressourcen für die A
 ### <a name="stv2"></a>[stv2](#tab/stv2)
 
 * Ein virtuelles Azure Resource Manager-Netzwerk ist erforderlich.
-* Sie müssen eine Standard SKU [öffentliche IPv4-Adresse](../virtual-network/public-ip-addresses.md#standard) zusätzlich zur Angabe eines virtuellen Netzwerks und Subnetzes bereitstellen.
+* Sie müssen eine Standard SKU [öffentliche IPv4-Adresse](../virtual-network/ip-services/public-ip-addresses.md#standard) zusätzlich zur Angabe eines virtuellen Netzwerks und Subnetzes bereitstellen.
 * Das Teilnetz, das zur Verbindung mit der API Management-Instanz verwendet wird, kann andere Azure-Ressourcentypen enthalten.
 * Der API Management-Dienst, das virtuelle Netzwerk und Subnetz sowie die öffentliche IP-Adressressressressressource müssen sich in derselben Region und im selben Abonnement befinden.
 * Bei der Bereitstellung von API Management für mehrere Regionen konfigurieren Sie die virtuellen Netzwerkressourcen für jeden Standort separat.

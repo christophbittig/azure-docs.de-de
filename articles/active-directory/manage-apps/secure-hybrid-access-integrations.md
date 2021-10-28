@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/20/2021
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f700b4850f68f9938bc574b26172f49c1d7c0a73
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 4c8bffabb1cb2e12fb8144e66e038f500a8e5229
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129613812"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130253859"
 ---
 # <a name="secure-hybrid-access-with-azure-active-directory-partner-integrations"></a>Sicherer Hybridzugriff über Azure Active Directory Partnerintegrationen
 
@@ -34,34 +34,34 @@ Die Lösung, die Sie erstellen, kann die folgenden Teile umfassen:
 1. **App-Ermittlung**. Oft sind sich die Kunden nicht aller Anwendungen bewusst, die sie verwenden. Ein erster Schritt könnte also sein, dass Sie Fähigkeiten zur Anwendungsermittlung in Ihre Lösung integrieren und ermittelte Anwendungen in der Benutzeroberfläche anzeigen können. Auf diese Weise kann der Kunde priorisieren, wie er seine Anwendungen in Azure AD integrieren möchte.
 2. **App-Migration**. Als Nächstes können Sie einen produktinternen Workflow erstellen, bei dem der Kunde Anwendungen direkt in Azure AD integrieren kann, ohne zum Azure AD-Portal wechseln zu müssen. Wenn Sie keine Ermittlungsfähigkeiten in seine Lösung implementieren, können Sie Ihre Lösung damit beginnen, dass Sie die dem Kunden bekannten Anwendungen in Azure AD integrieren.
 3. **Unterstützung für Legacyauthentifizierung**. Sie können Apps mithilfe von Legacyauthentifizierungsmethoden mit Azure AD verbinden, damit sie die Vorteile von einmaligem Anmelden und anderer Funktionen nutzen können.
-4. **Bedingter Zugriff**. Als eine zusätzliche Funktion können Sie es Kunden ermöglichen, sofort [Azure AD](/azure/active-directory/conditional-access/overview/)-Richtlinien für bedingten Zugriff auf die Anwendungen innerhalb Ihrer Lösung anzuwenden, ohne zum Azure AD-Portal wechseln zu müssen.
+4. **Bedingter Zugriff**. Als eine zusätzliche Funktion können Sie es Kunden ermöglichen, sofort [Azure AD](../conditional-access/overview.md)-Richtlinien für bedingten Zugriff auf die Anwendungen innerhalb Ihrer Lösung anzuwenden, ohne zum Azure AD-Portal wechseln zu müssen.
 
 Im restlichen Teil dieses Leitfadens werden die technischen Aspekte und unsere Empfehlungen für die Implementierung einer Lösung erläutert.
 
 ## <a name="publishing-your-application-to-azure-marketplace"></a>Veröffentlichen Ihrer Anwendung in Azure Marketplace
 
-Sie können Ihre Anwendung vorab in Azure AD integrieren, um SSO und automatische Bereitstellung zu unterstützen, indem Sie den Prozess zur [Veröffentlichung im Azure Marketplace](/azure/active-directory/develop/v2-howto-app-gallery-listing/) ausführen lassen. Azure Marketplace ist eine vertrauenswürdige Quelle für Anwendungen für IT-Administratoren. Die dort aufgeführten Anwendungen wurden auf ihre Kompatibilität mit Azure AD überprüft. Sie unterstützen SSO: Sie automatisieren die Benutzerbereitstellung und können problemlos in Kunden-Mandanten mit automatischer App-Registrierung integriert werden.
+Sie können Ihre Anwendung vorab in Azure AD integrieren, um SSO und automatische Bereitstellung zu unterstützen, indem Sie den Prozess zur [Veröffentlichung im Azure Marketplace](../develop/v2-howto-app-gallery-listing.md) ausführen lassen. Azure Marketplace ist eine vertrauenswürdige Quelle für Anwendungen für IT-Administratoren. Die dort aufgeführten Anwendungen wurden auf ihre Kompatibilität mit Azure AD überprüft. Sie unterstützen SSO: Sie automatisieren die Benutzerbereitstellung und können problemlos in Kunden-Mandanten mit automatischer App-Registrierung integriert werden.
 
-Außerdem empfehlen wir, dass Sie ein [verifizierter Herausgeber](/azure/active-directory/develop/publisher-verification-overview/) werden, damit die Kunden wissen, dass Sie der vertrauenswürdige Herausgeber der App sind.
+Außerdem empfehlen wir, dass Sie ein [verifizierter Herausgeber](../develop/publisher-verification-overview.md) werden, damit die Kunden wissen, dass Sie der vertrauenswürdige Herausgeber der App sind.
 
 ## <a name="enabling-single-sign-on-for-it-admins"></a>Aktivieren von Einmaliges Anmelden für IT-Administratoren
 
 [Wählen Sie entweder OIDC oder SAML](/azure/active-directory/manage-apps/sso-options#choosing-a-single-sign-on-method/), um SSO für IT-Administratoren für Ihre Lösung zu aktivieren. Die beste Option ist die Verwendung von OIDC. 
 
-Microsoft Graph verwendet [OIDC/OAuth](/azure/active-directory/develop/v2-protocols-oidc/). Wenn Ihre Lösung OIDC mit Azure AD für die SSO von IT-Administratoren verwendet, haben Ihre Kunden eine nahtlose End-to-End-Erfahrung. Sie verwenden OIDC, um sich bei Ihrer Lösung anzumelden, und dasselbe JSON Web Token (JWT), das Azure AD ausgestellt hat, kann dann zur Interaktion mit Microsoft Graph verwendet werden.
+Microsoft Graph verwendet [OIDC/OAuth](../develop/v2-protocols-oidc.md). Wenn Ihre Lösung OIDC mit Azure AD für die SSO von IT-Administratoren verwendet, haben Ihre Kunden eine nahtlose End-to-End-Erfahrung. Sie verwenden OIDC, um sich bei Ihrer Lösung anzumelden, und dasselbe JSON Web Token (JWT), das Azure AD ausgestellt hat, kann dann zur Interaktion mit Microsoft Graph verwendet werden.
 
 Wenn Ihre Lösung stattdessen [SAML](/azure/active-directory/manage-apps/configure-saml-single-sign-on/) für IT-Administrator-SSO verwendet: Das SAML-Token ermöglicht Ihrer Lösung nicht die Interaktion mit Microsoft Graph. Sie können immer noch SAML für IT-Administrator-SSO verwenden, aber Ihre Lösung muss die OIDC-Integration mit Azure AD unterstützen, damit sie ein JWT von Azure AD erhalten kann, um ordnungsgemäß mit Microsoft Graph zu interagieren. Sie können einen der folgenden Ansätze verwenden:
 
-- **Empfohlener SAML-Ansatz**: Erstellen Sie eine neue Registrierung im Azure Marketplace, der [eine OIDC Anwendung](/azure/active-directory/saas-apps/openidoauth-tutorial/) ist. Dies bietet die beste nahtlose Erfahrung für Ihre Kunden. Sie werden sowohl die SAML als auch die OIDC-Anwendungen zu ihrem Mandanten hinzufügen. Wenn sich Ihre Anwendung derzeit nicht im Azure AD-Katalog befindet, können Sie mit einer [mehrinstanzenfähigen Anwendung](/azure/active-directory/develop/howto-convert-app-to-be-multi-tenant/) beginnen, die nicht aus dem Katalog stammt.
+- **Empfohlener SAML-Ansatz**: Erstellen Sie eine neue Registrierung im Azure Marketplace, der [eine OIDC Anwendung](../saas-apps/openidoauth-tutorial.md) ist. Dies bietet die beste nahtlose Erfahrung für Ihre Kunden. Sie werden sowohl die SAML als auch die OIDC-Anwendungen zu ihrem Mandanten hinzufügen. Wenn sich Ihre Anwendung derzeit nicht im Azure AD-Katalog befindet, können Sie mit einer [mehrinstanzenfähigen Anwendung](../develop/howto-convert-app-to-be-multi-tenant.md) beginnen, die nicht aus dem Katalog stammt.
 
-- **Alternativer SAML-Ansatz**: Ihr Kunde kann manuell [eine OIDC-Anwendungsregistrierung erstellen](/azure/active-directory/saas-apps/openidoauth-tutorial/) in ihrem Azure AD Mandanten und sicherstellen, dass die richtigen URIs, Endpunkte und Berechtigungen festgelegt werden, die weiter unten in diesem Dokument angegeben werden.
+- **Alternativer SAML-Ansatz**: Ihr Kunde kann manuell [eine OIDC-Anwendungsregistrierung erstellen](../saas-apps/openidoauth-tutorial.md) in ihrem Azure AD Mandanten und sicherstellen, dass die richtigen URIs, Endpunkte und Berechtigungen festgelegt werden, die weiter unten in diesem Dokument angegeben werden.
 
-Sie werden den [Gewährungstyp client_credentials](/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow#get-a-token/) verwenden wollen. Dies setzt voraus, dass Ihre Lösung jedem Kunden erlaubt, eine Client-ID und ein Geheimnis in Ihre Benutzeroberfläche einzugeben, und dass Sie diese Informationen speichern. Rufen Sie ein JWT von Azure AD ab, und verwenden Sie es dann für die Interaktion mit Microsoft Graph.
+Sie werden den [Gewährungstyp client_credentials](../develop/v2-oauth2-client-creds-grant-flow.md#get-a-token) verwenden wollen. Dies setzt voraus, dass Ihre Lösung jedem Kunden erlaubt, eine Client-ID und ein Geheimnis in Ihre Benutzeroberfläche einzugeben, und dass Sie diese Informationen speichern. Rufen Sie ein JWT von Azure AD ab, und verwenden Sie es dann für die Interaktion mit Microsoft Graph.
 
 Wenn Sie sich für diesen Weg entscheiden, sollten Sie Ihren Kunden eine fertige Dokumentation zur Verfügung stellen, wie sie diese Anwendungsregistrierung in ihrem Azure AD-Mandanten erstellen können. Diese Informationen umfassen die Endpunkte, URIs und erforderlichen Berechtigungen.
 
 > [!NOTE]
-> Bevor eine Anwendung für IT-Administrator oder Benutzer-SSO verwendet werden kann, muss der IT-Administrator des Kunden [der Anwendung in seinem Mandanten zustimmen](/azure/active-directory/manage-apps/grant-admin-consent/).
+> Bevor eine Anwendung für IT-Administrator oder Benutzer-SSO verwendet werden kann, muss der IT-Administrator des Kunden [der Anwendung in seinem Mandanten zustimmen](./grant-admin-consent.md).
 
 ## <a name="authentication-flows"></a>Authentifizierungsflows
 
@@ -242,8 +242,8 @@ https://graph.microsoft.com/v1.0/applications/54c4806b-b260-4a12-873c-9671169837
 
 Nachdem Sie die SaaS-Anwendungen in Azure AD registriert haben, müssen die Anwendungen noch umgestellt werden, damit sie Azure AD als Identitätsanbieter nutzen können. Hierfür gibt es zwei Möglichkeiten:
 
-- Wenn die Anwendungen 1-Klick-SSO unterstützen, kann Azure AD die Anwendungen für den Kunden freischalten. Der Kunde muss lediglich zum Azure AD-Portal gehen und die 1-Klick-SSO mit den administrativen Anmeldeinformationen für die unterstützten SaaS-Anwendungen durchführen. Weitere Informationen finden Sie unter [1-Klick-App-Konfiguration für Einmaliges Anmelden](/azure/active-directory/manage-apps/one-click-sso-tutorial/).
-- Wenn die Anwendungen kein 1-Klick-SSO unterstützen, muss der Kunde die Anwendungen manuell umstellen, um Azure AD zu nutzen. Weitere Informationen finden Sie unter [Tutorials zur Integration von SaaS-Anwendungen mit Azure Active Directory](/azure/active-directory/saas-apps/tutorial-list/).
+- Wenn die Anwendungen 1-Klick-SSO unterstützen, kann Azure AD die Anwendungen für den Kunden freischalten. Der Kunde muss lediglich zum Azure AD-Portal gehen und die 1-Klick-SSO mit den administrativen Anmeldeinformationen für die unterstützten SaaS-Anwendungen durchführen. Weitere Informationen finden Sie unter [1-Klick-App-Konfiguration für Einmaliges Anmelden](./one-click-sso-tutorial.md).
+- Wenn die Anwendungen kein 1-Klick-SSO unterstützen, muss der Kunde die Anwendungen manuell umstellen, um Azure AD zu nutzen. Weitere Informationen finden Sie unter [Tutorials zur Integration von SaaS-Anwendungen mit Azure Active Directory](../saas-apps/tutorial-list.md).
 
 ### <a name="connect-apps-by-using-legacy-authentication-methods-to-azure-ad"></a>Verbinden Sie Anwendungen mithilfe von Legacy-Authentifizierungsmethoden mit Azure AD
 
@@ -436,7 +436,7 @@ https://graph.microsoft.com/v1.0/identity/conditionalAccess/policies/
 }
 ```
 
-Falls Sie eine neue Azure AD-Richtlinie für bedingten Zugriff erstellen möchten, finden Sie hier einige zusätzliche Vorlagen, die Ihnen den Einstieg in die Verwendung der [API für bedingten Zugriff](/azure/active-directory/conditional-access/howto-conditional-access-apis/) erleichtern können:
+Falls Sie eine neue Azure AD-Richtlinie für bedingten Zugriff erstellen möchten, finden Sie hier einige zusätzliche Vorlagen, die Ihnen den Einstieg in die Verwendung der [API für bedingten Zugriff](../conditional-access/howto-conditional-access-apis.md) erleichtern können:
 
 ```https
 #Policy Template for Requiring Compliant Device
@@ -565,28 +565,28 @@ Microsoft unterhält Partnerschaften mit diesen Anwendungslieferungs-Controller 
 
 | **ADC-Anbieter** | **Link** |
 | --- | --- |
-| Akamai Enterprise Application Access | [https://docs.microsoft.com/azure/active-directory/saas-apps/akamai-tutorial](/azure/active-directory/saas-apps/akamai-tutorial) |
-| Citrix ADC | [https://docs.microsoft.com/azure/active-directory/saas-apps/citrix-netscaler-tutorial](/azure/active-directory/saas-apps/citrix-netscaler-tutorial) |
-| F5 Big-IP Zugriffsrichtlinienverwalter | [https://docs.microsoft.com/azure/active-directory/manage-apps/f5-aad-integration](/azure/active-directory/manage-apps/f5-aad-integration) |
-| Kemp LoadMaster | [https://docs.microsoft.com/azure/active-directory/saas-apps/kemp-tutorial](/azure/active-directory/saas-apps/kemp-tutorial) |
-| Pulse Secure Virtual Traffic Manager | [https://docs.microsoft.com/azure/active-directory/saas-apps/pulse-secure-virtual-traffic-manager-tutorial](/azure/active-directory/saas-apps/pulse-secure-virtual-traffic-manager-tutorial) |
+| Akamai Enterprise Application Access | [https://docs.microsoft.com/azure/active-directory/saas-apps/akamai-tutorial](../saas-apps/akamai-tutorial.md) |
+| Citrix ADC | [https://docs.microsoft.com/azure/active-directory/saas-apps/citrix-netscaler-tutorial](../saas-apps/citrix-netscaler-tutorial.md) |
+| F5 Big-IP Zugriffsrichtlinienverwalter | [https://docs.microsoft.com/azure/active-directory/manage-apps/f5-aad-integration](./f5-aad-integration.md) |
+| Kemp LoadMaster | [https://docs.microsoft.com/azure/active-directory/saas-apps/kemp-tutorial](../saas-apps/kemp-tutorial.md) |
+| Pulse Secure Virtual Traffic Manager | [https://docs.microsoft.com/azure/active-directory/saas-apps/pulse-secure-virtual-traffic-manager-tutorial](../saas-apps/pulse-secure-virtual-traffic-manager-tutorial.md) |
 
 Die folgenden VPN-Lösungsanbieter stellen eine Verbindung mit Azure AD her, um moderne Authentifizierungs- und Autorisierungsmethoden wie einmaliges Anmelden und mehrstufige Authentifizierung zu ermöglichen.
 
 | **VPN-Anbieter** | **Link** |
 | --- | --- |
-| Cisco AnyConnect | [https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-anyconnect](/azure/active-directory/saas-apps/cisco-anyconnect) |
-| Fortinet Fortigate | [https://docs.microsoft.com/azure/active-directory/saas-apps/fortigate-ssl-vpn-tutorial](/azure/active-directory/saas-apps/fortigate-ssl-vpn-tutorial) |
-| F5 Big-IP Zugriffsrichtlinienverwalter | [https://docs.microsoft.com/azure/active-directory/manage-apps/f5-aad-password-less-vpn](/azure/active-directory/manage-apps/f5-aad-password-less-vpn) |
-| Palo Alto Networks GlobalProtect | [https://docs.microsoft.com/azure/active-directory/saas-apps/paloaltoadmin-tutorial](/azure/active-directory/saas-apps/paloaltoadmin-tutorial) |
-| Pulse Connect Secure | [https://docs.microsoft.com/azure/active-directory/saas-apps/pulse-secure-pcs-tutorial](/azure/active-directory/saas-apps/pulse-secure-pcs-tutorial) |
+| Cisco AnyConnect | [https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-anyconnect](../saas-apps/cisco-anyconnect.md) |
+| Fortinet Fortigate | [https://docs.microsoft.com/azure/active-directory/saas-apps/fortigate-ssl-vpn-tutorial](../saas-apps/fortigate-ssl-vpn-tutorial.md) |
+| F5 Big-IP Zugriffsrichtlinienverwalter | [https://docs.microsoft.com/azure/active-directory/manage-apps/f5-aad-password-less-vpn](./f5-aad-password-less-vpn.md) |
+| Palo Alto Networks GlobalProtect | [https://docs.microsoft.com/azure/active-directory/saas-apps/paloaltoadmin-tutorial](../saas-apps/paloaltoadmin-tutorial.md) |
+| Pulse Connect Secure | [https://docs.microsoft.com/azure/active-directory/saas-apps/pulse-secure-pcs-tutorial](../saas-apps/pulse-secure-pcs-tutorial.md) |
 
 Die folgenden Anbieter von Software-Defined Perimeter-Lösungen (SDP) stellen eine Verbindung mit Azure AD her, um moderne Authentifizierungs- und Autorisierungsmethoden wie SSO und mehrstufige Authentifizierung zu ermöglichen.
 
 | **SDP-Anbieter** | **Link** |
 | --- | --- |
-| Datawiza Access Broker | [https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/datawiza-with-azure-ad](/azure/active-directory/manage-apps/datawiza-with-azure-ad) |
-| Perimeter 81 | [https://docs.microsoft.com/azure/active-directory/saas-apps/perimeter-81-tutorial](/azure/active-directory/saas-apps/perimeter-81-tutorial) |
-| Silverfort Authentication Platform | [https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/silverfort-azure-ad-integration](/azure/active-directory/manage-apps/silverfort-azure-ad-integration) |
-| Strata Maverics Identitätsorchestrator | [https://docs.microsoft.com/azure/active-directory/saas-apps/maverics-identity-orchestrator-saml-connector-tutorial](/azure/active-directory/saas-apps/maverics-identity-orchestrator-saml-connector-tutorial) |
-| Zscaler Private Access | [https://docs.microsoft.com/azure/active-directory/saas-apps/zscalerprivateaccess-tutorial](/azure/active-directory/saas-apps/zscalerprivateaccess-tutorial) |
+| Datawiza Access Broker | [https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/datawiza-with-azure-ad](./datawiza-with-azure-ad.md) |
+| Perimeter 81 | [https://docs.microsoft.com/azure/active-directory/saas-apps/perimeter-81-tutorial](../saas-apps/perimeter-81-tutorial.md) |
+| Silverfort Authentication Platform | [https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/silverfort-azure-ad-integration](./silverfort-azure-ad-integration.md) |
+| Strata Maverics Identitätsorchestrator | [https://docs.microsoft.com/azure/active-directory/saas-apps/maverics-identity-orchestrator-saml-connector-tutorial](../saas-apps/maverics-identity-orchestrator-saml-connector-tutorial.md) |
+| Zscaler Private Access | [https://docs.microsoft.com/azure/active-directory/saas-apps/zscalerprivateaccess-tutorial](../saas-apps/zscalerprivateaccess-tutorial.md) |

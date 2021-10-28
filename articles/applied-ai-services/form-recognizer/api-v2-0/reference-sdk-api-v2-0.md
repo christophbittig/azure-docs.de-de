@@ -12,18 +12,18 @@ ms.author: lajanuar
 zone_pivot_groups: programming-languages-set-formre
 ms.custom: devx-track-js, devx-track-csharp
 keywords: Formularverarbeitung, automatisierte Datenverarbeitung
-ms.openlocfilehash: 32dcfb1ba1e413e666e6a3d27ef9f03dbce81978
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: cba7378dcc504e675e449dda4243149419e2726a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128641752"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130265867"
 ---
 # <a name="reference-azure-form-recognizer-client-library-v300-and-rest-api-v20"></a>Referenz: Azure-Formularerkennung – Clientbibliothek v3.0.0 und REST-API v2.0
 
 >[!IMPORTANT]
 >
-> * Dieser Leitfaden basiert auf dem SDK v3.0.0 und der REST-API v2.0 für die Azure-Formularerkennung. Dokumentation und Codebeispiele für die neueste Version finden Sie in unserem Artikel zum **[Schnellstart](../quickstarts/client-library.md)** .
+> * Dieser Leitfaden basiert auf dem SDK v3.0.0 und der REST-API v2.0 für die Azure-Formularerkennung. Dokumentation und Codebeispiele für die neueste Version finden Sie in unserem Artikel zum **[Schnellstart](../quickstarts/try-sdk-rest-api.md)** .
 >
 >* Im Code dieses Artikels werden der Einfachheit halber synchrone Methoden und ein ungeschützter Anmeldeinformationsspeicher verwendet. Verwenden Sie in der Produktionsumgebung sichere Methoden, um Ihre Anmeldeinformationen zu speichern und darauf zuzugreifen. Weitere Informationen finden Sie im Cognitive Services-Artikel zur [Sicherheit](../../../cognitive-services/cognitive-services-security.md).
 

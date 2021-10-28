@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/26/2021
-ms.openlocfilehash: f4bddc1666d1165d6a1e4c749fdbc96ede37747a
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 380eed0d2d1c42613fbc8087bd30775555593a91
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102036770"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130236204"
 ---
 # <a name="collect-windows-and-linux-performance-data-sources-with-log-analytics-agent"></a>Datenquellen für das Sammeln von Windows- und Linux-Leistungsdaten mit dem Log Analytics-Agent
 Leistungsindikatoren in Windows und Linux bieten Einblick in die Leistung von Hardwarekomponenten, Betriebssystemen und Anwendungen.  Azure Monitor kann in sehr kurzen Intervallen Leistungsindikatoren von Log Analytics-Agents abrufen, um Analysen in Quasi-Echtzeit zu ermöglichen. Darüber hinaus kann Azure Monitor Leistungsdaten zusammenstellen, um längerfristige Analysen und Berichte zu ermöglichen.
@@ -224,4 +224,4 @@ Die folgende Tabelle zeigt verschiedene Beispiele für Protokollabfragen, mit de
 ## <a name="next-steps"></a>Nächste Schritte
 * [Sammeln von Leistungsindikatoren aus Linux-Anwendungen wie](data-sources-linux-applications.md) MySQL und Apache HTTP Server.
 * Erfahren Sie mehr über [Protokollabfragen](../logs/log-query-overview.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten.  
-* Exportieren Sie gesammelte Daten nach [Power BI](../visualize/powerbi.md) , um weitere Möglichkeiten der Visualisierung und Analyse zu nutzen.
+* Exportieren Sie gesammelte Daten nach [Power BI](../logs/log-powerbi.md) , um weitere Möglichkeiten der Visualisierung und Analyse zu nutzen.

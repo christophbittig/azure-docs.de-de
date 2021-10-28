@@ -4,31 +4,32 @@ metadata:
   description: Häufig gestellte Fragen und Best Practices für Azure Virtual Desktop
   author: Heidilohr
   ms.topic: conceptual
+  ms.service: virtual-desktop
   ms.date: 03/09/2021
   ms.author: helohr
   ms.custom: devx-track-azurepowershell
   manager: femila
-  ms.openlocfilehash: d4270dcd5670b07c6bd5ff3c50621f11e5a64353
-  ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+  ms.openlocfilehash: c1a60fe5b6b8d171521ce7fcee25502612a56fc8
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 07/28/2021
-  ms.locfileid: "114727397"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130254043"
 title: FAQ zu Azure Virtual Desktop
 summary: In diesem Artikel werden häufig gestellte Fragen zu Azure Virtual Desktop beantwortet und Best Practices erläutert.
 sections:
 - name: Wird ignoriert.
   questions:
   - question: >
-      What are the minimum admin permissions I need to manage objects?
+      Welche Administratorberechtigungen benötige ich mindestens, um Objekte zu verwalten?
     answer: >
-      If you want to create host pools and other objects, you must be assigned the Contributor role on the subscription or resource group you're working with.
+      Wenn Sie Hostpools und andere Objekte erstellen möchten, muss Ihnen die Rolle „Mitwirkender“ in dem Abonnement oder der Ressourcengruppe zugewiesen sein, mit dem bzw. der Sie arbeiten.
 
 
-      You must be assigned the User Access Admin role on an app group to publish app groups to users or user groups.
+      Ihnen muss die Rolle „Benutzerzugriffsadministrator“ in einer App-Gruppe zugewiesen sein, damit Sie App-Gruppen für Benutzer oder Benutzergruppen veröffentlichen können.
 
 
-      To restrict an admin to only manage user sessions, such as sending messages to users, signing out users, and so on, you can create custom roles. For example:
+      Um die Berechtigung eines Administrators auf die Verwaltung von Benutzersitzungen zu beschränken – z. B. zum Senden von Nachrichten an Benutzer, zum Abmelden von Benutzern usw. –, können Sie benutzerdefinierte Rollen erstellen. Beispiel:
 
 
       ```powershell
@@ -59,26 +60,26 @@ sections:
 
       ```
   - question: >
-      Does Azure Virtual Desktop support split Azure Active Directory models?
+      Unterstützt Azure Virtual Desktop das Aufteilen von Azure Active Directory-Modellen?
     answer: >
-      When a user is assigned to an app group, the service does a simple Azure role assignment. As a result, the user’s Azure Active Directory (AD) and the app group’s Azure AD must be in the same location. All service objects, such as host pools, app groups, and workspaces, also must be in the same Azure AD as the user.
+      Wenn ein Benutzer einer App-Gruppe zugewiesen ist, führt der Dienst eine einfache Azure-Rollenzuweisung durch. Folglich müssen sich die Azure AD-Instanz des Benutzers und die Azure AD-Instanz der App-Gruppe am selben Standort befinden. Alle Dienstobjekte, wie z. B. Hostpools, App-Gruppen und Arbeitsbereiche, müssen sich ebenfalls in derselben Azure AD-Instanz befinden wie der Benutzer.
 
 
-      You can create virtual machines (VMs) in a different Azure AD as long as you sync the Active Directory with the user's Azure AD in the same virtual network (VNET).
+      Virtuelle Computer können in einer anderen Azure AD-Instanz erstellt werden, sofern Sie diese Instanz mit der Instanz des Benutzers im selben virtuellen Netzwerk synchronisieren.
   - question: >
-      What are location restrictions?
+      Was sind Standorteinschränkungen?
     answer: >
-      All service resources have a location associated with them. A host pool’s location determines which geography the service metadata for the host pool is stored in. An app group can't exist without a host pool. If you add apps to a RemoteApp app group, you'll also need a session host to determine the start menu apps. For any app group action, you'll also need a related data access on the host pool. To make sure data isn't being transferred between multiple locations, the app group's location should be the same as the host pool's.
+      Allen Dienstressourcen ist ein Standort zugeordnet. Der Standort eines Hostpools bestimmt, in welcher Geografie die Dienstmetadaten für den Hostpool gespeichert werden. Eine App-Gruppe kann nicht ohne Hostpool existieren. Wenn Sie Apps zu einer RemoteApp-App-Gruppe hinzufügen, benötigen Sie auch einen Sitzungshost, um die Startmenü-Apps zu bestimmen. Sie benötigen zudem für alle App-Gruppenaktionen entsprechenden Datenzugriff auf den Hostpool. Um sicherzustellen, dass Daten nicht zwischen mehreren Standorten übertragen werden, muss sich die App-Gruppe am selben Standort befinden wie der Hostpool.
 
 
-      Workspaces also must be in the same location as their app groups. Whenever the workspace updates, the related app group updates along with it. Like with app groups, the service requires that all workspaces are associated with app groups created in the same location.
+      Arbeitsbereiche müssen sich ebenfalls am selben Standort befinden wie die zugehörigen App-Gruppen. Wenn ein Arbeitsbereich aktualisiert wird, wird auch die zugehörige App-Gruppe aktualisiert. Ebenso wie bei App-Gruppen erfordert der Dienst, dass alle Arbeitsbereiche App-Gruppen zugeordnet werden, die am selben Standort erstellt wurden.
   - question: >
-      How do you expand an object's properties in PowerShell?
+      Wie erweitere ich die Eigenschaften eines Objekts in PowerShell?
     answer: >
-      When you run a PowerShell cmdlet, you only see the resource name and location.
+      Wenn Sie ein PowerShell-Cmdlet ausführen, sehen Sie nur den Ressourcennamen und den Standort.
 
 
-      For example:
+      Beispiel:
 
 
       ```powershell
@@ -95,10 +96,10 @@ sections:
       ```
 
 
-      To see all of a resource's properties, add either `format-list` or `fl` to the end of the cmdlet.
+      Um alle Eigenschaften einer Ressource anzuzeigen, fügen Sie am Ende des Cmdlets entweder `format-list` oder `fl` hinzu.
 
 
-      For example:
+      Beispiel:
 
 
       ```powershell
@@ -108,10 +109,10 @@ sections:
       ```
 
 
-      To see specific properties, add the specific property names after `format-list` or `fl`.
+      Um bestimmte Eigenschaften anzuzeigen, fügen Sie die entsprechenden Eigenschaftennamen nach `format-list` oder `fl` hinzu.
 
 
-      For example:
+      Beispiel:
 
 
       ```powershell
@@ -123,74 +124,74 @@ sections:
 
       ```
   - question: >
-      Does Azure Virtual Desktop support guest users?
+      Unterstützt Azure Virtual Desktop Gastbenutzer?
     answer: >
-      Azure Virtual Desktop doesn't support Azure AD guest user accounts. For example, let's say a group of guest users have Microsoft 365 E3 Per-user, Windows E3 Per-user, or WIN VDA licenses in their own company, but are guest users in a different company's Azure AD. The other company would manage the guest users' user objects in both Azure AD and Active Directory like local accounts.
+      Azure Virtual Desktop unterstützt keine Azure AD-Gastbenutzerkonten. Ein Beispiel: Einige Gastbenutzer verfügen über Pro-Benutzer-Lizenzen für Microsoft 365 E3, Pro-Benutzer-Lizenzen für Windows E3 oder WIN VDA-Lizenzen in ihrem eigenen Unternehmen, sind aber Gastbenutzer in der Azure AD-Instanz eines anderen Unternehmens. In diesem Fall verwaltet das andere Unternehmen die Benutzerobjekte der Gastbenutzer sowohl in Azure AD als auch in Active Directory wie lokale Konten.
 
 
-      You can't use your own licenses for the benefit of a third party. Also, Azure Virtual Desktop doesn't currently support Microsoft Account (MSA).
+      Sie können nicht Ihre eigenen Lizenzen zugunsten einer dritten Partei verwenden. Azure Virtual Desktop bietet derzeit keine Unterstützung für MSA (Microsoft-Konto).
   - question: >
-      Why don't I see the client IP address in the WVDConnections table?
-    answer: We don't currently have a reliable way to collect the web client's IP addresses, so we don't include that value in the table.
+      Warum wird mir die Client-IP-Adresse in der WVDConnections-Tabelle nicht angezeigt?
+    answer: Wir verfügen derzeit über keine zuverlässige Möglichkeit, die IP-Adressen von Webclients zu erfassen, daher ist dieser Wert in der Tabelle nicht enthalten.
   - question: >
-      How does Azure Virtual Desktop handle backups?
-    answer: There are multiple options in Azure for handling backup. You can use Azure backup, Site Recovery, and snapshots.
+      Wie verarbeitet Azure Virtual Desktop Sicherungen?
+    answer: In Azure gibt es mehrere Optionen, Sicherungen auszuführen. Sie können Azure Backup, Site Recovery und Momentaufnahmen verwenden.
   - question: >
-      Does Azure Virtual Desktop support third-party collaboration apps?
-    answer: Azure Virtual Desktop is currently optimized for Teams. Microsoft currently doesn't support third-party collaboration apps like Zoom. Third-party organizations are responsible for giving compatibility guidelines to their customers. Azure Virtual Desktop also doesn't support Skype for Business.
+      Unterstützt Azure Virtual Desktop Drittanbieter-Apps für die Zusammenarbeit?
+    answer: Azure Virtual Desktop ist derzeit für Teams optimiert. Microsoft unterstützt derzeit keine Drittanbieter-Apps für die Zusammenarbeit wie z. B. Zoom. Drittanbieterorganisationen sind dafür verantwortlich, ihren Kunden Richtlinien zu Kompatibilität bereitzustellen. Auch Skype for Business wird von Azure Virtual Desktop nicht unterstützt.
   - question: >
-      Can I change from pooled to personal host pools?
-    answer: Once you create a host pool, you can't change its type. However, you can move any VMs you register to a host pool to a different type of host pool.
+      Kann ich den Typ des Hostpools von „In Pool“ zu „Persönlich“ ändern?
+    answer: Nachdem Sie einen Pool erstellt haben, können Sie seinen Typ nicht mehr ändern. Sie können jedoch VMs, die Sie bei einem Hostpool registrieren, zu einem anderen Hostpooltyp verschieben.
   - question: >
-      What's the largest profile size FSLogix can handle?
+      Welches ist die größte Profilgröße, die FSLogix verarbeiten kann?
     answer: >
-      Limitations or quotas in FSLogix depend on the storage fabric used to store user profile VHD(X) files.
+      Beschränkungen oder Kontingente in FSLogix hängen von dem Speicherfabric ab, das zum Speichern der VHD- oder VHDX-Dateien mit Benutzerprofilen verwendet wird.
 
 
-      The following table gives an example of how many IOPS an FSLogix profile needs to support each user. Requirements can vary widely depending on the user, applications, and activity on each profile.
+      In der folgenden Tabelle finden Sie Beispiele dafür, wie viele IOPS ein FSLogix-Profil zur Unterstützung jedes einzelnen Benutzers benötigt. Die Anforderungen können je nach Benutzer, Anwendungen und Aktivität in jedem Profil stark variieren.
 
 
-      | Resource | Requirement |
+      | Resource | Anforderung |
 
       |---|---|
 
-      | Steady state IOPS | 10 |
+      | IOPS im stabilen Zustand | 10 |
 
-      | Sign in/sign out IOPS | 50 |
+      | IOPS für Anmelde-/Abmeldevorgänge | 50 |
 
 
-      The example in this table is of a single user, but can be used to estimate requirements for the total number of users in your environment. For example, you'd need around 1,000 IOPS for 100 users, and around 5,000 IOPS during sign-in and sign-out.
+      Das Beispiel in dieser Tabelle gilt für einen einzelnen Benutzer, kann jedoch zur Einschätzung der Anforderungen für die Gesamtzahl von Benutzern in Ihrer Umgebung herangezogen werden. Für 100 Benutzer würden Sie beispielsweise etwa 1.000 IOPS im stabilen Zustand und 5.000 IOPS bei Anmelde- und Abmeldevorgänge benötigen.
   - question: >
-      Is there a scale limit for host pools created in the Azure portal?
+      Gibt es ein Skalierungslimit für im Azure-Portal erstellte Hostpools?
     answer: >
-      These factors can affect scale limit for host pools:
+      Die folgenden Faktoren können sich auf das Skalierungslimit für Hostpools auswirken:
 
 
-      - The Azure template is limited to 800 objects. To learn more, see [Azure subscription and service limits, quotas, and constraints](../azure-resource-manager/management/azure-subscription-service-limits.md#template-limits). Each VM also creates about six objects, so that means you can create around 132 VMs each time you run the template.
+      - Die Azure-Vorlage ist auf 800 Objekte begrenzt. Weitere Informationen finden Sie unter [Grenzwerte für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../azure-resource-manager/management/azure-subscription-service-limits.md#template-limits). Jede VM erstellt zusätzlich etwa sechs Objekte, daher können Sie bei jeder Ausführung der Vorlage etwa 132 VMs erstellen.
 
 
-      - There are restrictions on how many cores you can create per region and per subscription. For example, if you have an Enterprise Agreement subscription, you can create 350 cores. You'll need to divide 350 by either the default number of cores per VM or your own core limit to determine how many VMs you can create each time you run the template. Learn more at [Virtual Machines limits - Azure Resource Manager](../azure-resource-manager/management/azure-subscription-service-limits.md#virtual-machines-limits---azure-resource-manager).
+      - Auch die Anzahl von Kernen, die Sie pro Region und Abonnement erstellen können, ist begrenzt. In einem Enterprise Agreement-Abonnement können Sie z. B. 350 Kerne erstellen. Diese Zahl von 350 Kernen müssen Sie durch die Standardanzahl von Kernen pro VM oder Ihren eigenen Grenzwert für Kerne dividieren, um zu ermitteln, wie viele VMs Sie bei jeder Ausführung der Vorlage erstellen können. Mehr dazu erfahren Sie unter [Grenzwerte für virtuelle Computer – Azure Resource Manager](../azure-resource-manager/management/azure-subscription-service-limits.md#virtual-machines-limits---azure-resource-manager).
 
 
-      - The VM prefix name and the number of VMs is fewer than 15 characters. To learn more, see [Naming rules and restrictions for Azure resources](../azure-resource-manager/management/resource-name-rules.md#microsoftcompute).
+      - Der VM-Präfixname umfasst zusammen mit der VM-Nummer weniger als 15 Zeichen. Weitere Informationen finden Sie unter [Benennungsregeln und -einschränkungen für Azure-Ressourcen](../azure-resource-manager/management/resource-name-rules.md#microsoftcompute).
   - question: >
-      Can I manage Azure Virtual Desktop environments with Azure Lighthouse?
+      Kann ich Azure Virtual Desktop-Umgebungen mit Azure Lighthouse verwalten?
     answer: >
-      Azure Lighthouse doesn't fully support managing Azure Virtual Desktop environments. Since Lighthouse doesn't currently support cross-Azure AD tenant user management, Lighthouse customers still need to sign in to the Azure AD that customers use to manage users.
+      Azure Lighthouse bietet keine vollständige Unterstützung für die Verwaltung von Azure Virtual Desktop-Umgebungen. Da Lighthouse derzeit keine Benutzerverwaltung über mehrere Azure AD-Mandanten hinweg unterstützt, müssen sich Lighthouse-Kunden weiterhin bei der Azure AD-Instanz anmelden, die sie zum Verwalten von Benutzern verwenden.
 
 
-      You also can't use CSP sandbox subscriptions with the Azure Virtual Desktop service. To learn more, see [Integration sandbox account](/partner-center/develop/set-up-api-access-in-partner-center#integration-sandbox-account).
+      Es ist auch nicht möglich, CSP-Sandboxabonnements mit dem Azure Virtual Desktop-Dienst zu verwenden. Weitere Informationen finden Sie unter [Integration Sandbox-Konto](/partner-center/develop/set-up-api-access-in-partner-center#integration-sandbox-account).
 
 
-      Finally, if you enabled the resource provider from the CSP owner account, the CSP customer accounts won't be able to modify the resource provider.
+      Wenn Sie den Ressourcenanbieter mit dem CSP-Besitzerkonto aktiviert haben, kann dieser durch die CSP-Kundenkonten nicht geändert werden.
   - question: >
-      How often should I turn my VMs on to prevent registration issues?
+      Wie oft sollte ich meine VMs aktivieren, um Registrierungsprobleme zu vermeiden?
     answer: >
-      After you register a VM to a host pool within the Azure Virtual Desktop service, the agent regularly refreshes the VM's token whenever the VM is active. The certificate for the registration token is valid for 90 days. Because of this 90-day limit, we recommend VMs to be online for 20 minutes every 90 days so that the machine can refresh its tokens and update the agent and side-by-side stack components. Turning your VM on within this time limit will prevent its registration token from expiring or becoming invalid. If you've started your VM after 90 days and are experiencing registration issues, follow the instructions in the [Azure Virtual Desktop agent troubleshooting guide](troubleshoot-agent.md#your-issue-isnt-listed-here-or-wasnt-resolved) to remove the VM from the host pool, reinstall the agent, and reregister it to the pool.
+      Nachdem Sie einen virtuellen Computer in einem Azure Virtual Desktop-Hostpool registriert haben, aktualisiert der Agent das Token der VM regelmäßig dann, wenn der virtuelle Computer aktiv ist. Das Zertifikat für das Registrierungstoken ist 90 Tage lang gültig. Aufgrund dieses Grenzwerts von 90 Tagen wird empfohlen, dass virtuelle Computer alle 90 Tage für 20 Minuten online geschaltet werden, damit der Computer seine Token aktualisieren und den Agent sowie parallele Stapelkomponenten aktualisieren kann. Wenn Sie Ihre VM innerhalb dieses Zeitraums aktivieren, wird verhindert, dass das Registrierungstoken abläuft oder ungültig wird. Wenn Sie Ihre VM nach mehr als 90 Tagen gestartet haben und Registrierungsprobleme auftreten, befolgen Sie die Anweisungen im [Leitfaden zur Problembehandlung für den Azure Virtual Desktop-Agent](troubleshoot-agent.md#your-issue-isnt-listed-here-or-wasnt-resolved), um die VM aus dem Hostpool zu entfernen, den Agent neu zu installieren und ihn erneut beim Pool zu registrieren.
   - question: >
-      Can I set availability options when creating host pools?
+      Kann ich beim Erstellen von Hostpools Verfügbarkeitsoptionen festlegen?
     answer: >
-      Yes. Azure Virtual Desktop host pools have an option for selecting either availability set or availability zones when you create a VM. These availability options are the same as the ones Azure Compute uses. If you select a zone for the VM you create in a host pool, the setting automatically applies to all VMs you create in that zone. If you'd prefer to spread your host pool VMs across multiple zones, you'll need to follow the directions in [Add virtual machines with the Azure portal](expand-existing-host-pool.md#add-virtual-machines-with-the-azure-portal) to manually select a new zone for each new VM you create.
+      Ja. Beim Erstellen einer VM können Sie bei Azure Virtual Desktop-Hostpools entweder eine Verfügbarkeitsgruppe oder Verfügbarkeitszonen auswählen. Diese Verfügbarkeitsoptionen sind identisch mit den von Azure Compute verwendeten. Wenn Sie eine Zone für die in einem Hostpool erstellte VM auswählen, gilt die Einstellung automatisch für alle VMs, die Sie in dieser Zone erstellen. Wenn Sie Ihre Hostpool-VMs lieber auf mehrere Zonen verteilen möchten, müssen Sie die Anweisungen unter [Hinzufügen von virtuellen Computern mit dem Azure-Portal](expand-existing-host-pool.md#add-virtual-machines-with-the-azure-portal) befolgen, um manuell eine neue Zone für jede neu erstellte VM auszuwählen.
   - question: >
-      Which availability option is best for me?
-    answer: "The availability option you should use for your VMs depends on your image's location and its managed disk fields. The following table explains the relationship each setting has with these variables to help you figure out which option is best for your deployment. \n\n| Availability option | Image location | Use managed disk option button (radio button) |\n|---|---|---|\n| None | Gallery | Disabled with \"Yes\" as default |\n| None | Blob storage | Enabled with \"No\" as default |\n| Availability zone | Gallery (blob storage option disabled) | Disabled with \"Yes\" as default |\n| Availability set with managed SKU (managed disk) | Gallery | Disabled with \"Yes\" as default |\n| Availability set with managed SKU (managed disk) | Blob storage | Enabled with \"No\" as default |\n| Availability set with managed SKU (managed disk) | Blob storage (Gallery option disabled) | Disabled with \"No\" as default |\n| Availability set (newly created by user) | Gallery | Disabled with \"Yes\" as default |\n| Availability set (newly created by user) | Blob storage | Enabled with \"No\" as default |"
+      Welche Verfügbarkeitsoption eignet sich am besten für mich?
+    answer: "Welche Verfügbarkeitsoption Sie für Ihre VMs verwenden sollten, hängt vom Speicherort Ihres Images und seinen verwalteten Datenträgerfeldern ab. In der folgenden Tabelle wird der Zusammenhang zwischen den einzelnen Einstellungen und diesen Variablen erläutert, damit Sie ermitteln können, welche Option für Ihre Bereitstellung am besten geeignet ist. \n\n| Verfügbarkeitsoption | Imagespeicherort | Optionsfeld „Verwalteten Datenträger verwenden“ |\n|---|---|---|\n| Keine | Galerie | Deaktiviert mit „Ja“ als Standardeinstellung |\n| Keine | Blobspeicher | Aktiviert mit „Nein“ als Standardeinstellung |\n| Verfügbarkeitszone | Katalog (Blobspeicheroption deaktiviert) | Deaktiviert mit „Ja“ als Standardeinstellung |\n| Verfügbarkeitsgruppe mit verwalteter SKU (verwalteter Datenträger) | Galerie | Deaktiviert mit „Ja“ als Standardeinstellung |\n| Verfügbarkeitsgruppe mit verwalteter SKU (verwalteter Datenträger) | Blobspeicher | Aktiviert mit „Nein“ als Standardeinstellung |\n| Verfügbarkeitsgruppe mit verwalteter SKU (verwalteter Datenträger) | Blobspeicher (Katalogoption deaktiviert) | Deaktiviert mit „Nein“ als Standardeinstellung |\n| Verfügbarkeitsgruppe (von Benutzer neu erstellt) | Galerie | Deaktiviert mit „Ja“ als Standardeinstellung |\n| Verfügbarkeitsgruppe (von Benutzer neu erstellt) | Blobspeicher | Aktiviert mit „Nein“ als Standardeinstellung |"

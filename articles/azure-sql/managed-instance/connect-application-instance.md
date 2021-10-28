@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: mathoma, bonova, vanto
 ms.date: 08/20/2021
-ms.openlocfilehash: 3acd77d986d22af08ac7042da751a6aa8c7fc24b
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.openlocfilehash: a1cb62bce41ce0003628ce4223fe06e6587317f5
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122607579"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130250498"
 ---
 # <a name="connect-your-application-to-azure-sql-managed-instance"></a>Herstellen einer Verbindung zwischen einer Anwendung und SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -84,9 +84,9 @@ Nachdem Sie die grundlegende Infrastruktur eingerichtet haben, müssen Sie einig
 
 ## <a name="connect-azure-app-service"></a>Herstellen einer Verbindung mit Azure App Service 
 
-Sie können auch eine Verbindung mit einer von Azure App Service gehosteten Anwendung herstellen. Um von Azure App Service aus über ein virtuellen Netzwerk darauf zugreifen zu können, müssen Sie zunächst eine Verbindung zwischen der Anwendung und dem virtuellen Netzwerk von SQL Managed Instance herstellen. Weitere Informationen finden Sie unter [Integrieren Ihrer App in ein virtuelles Azure-Netzwerk](../../app-service/web-sites-integrate-with-vnet.md). Informationen zum Datenzugriff auf Ihre verwaltete Instanz von außerhalb eines virtuellen Netzwerks finden Sie unter [Konfigurieren eines öffentlichen Endpunkts in Azure SQL Managed Instance](./public-endpoint-configure.md). 
+Sie können auch eine Verbindung mit einer von Azure App Service gehosteten Anwendung herstellen. Um von Azure App Service aus über ein virtuellen Netzwerk darauf zugreifen zu können, müssen Sie zunächst eine Verbindung zwischen der Anwendung und dem virtuellen Netzwerk von SQL Managed Instance herstellen. Weitere Informationen finden Sie unter [Integrieren Ihrer App in ein virtuelles Azure-Netzwerk](../../app-service/overview-vnet-integration.md). Informationen zum Datenzugriff auf Ihre verwaltete Instanz von außerhalb eines virtuellen Netzwerks finden Sie unter [Konfigurieren eines öffentlichen Endpunkts in Azure SQL Managed Instance](./public-endpoint-configure.md). 
 
-Informationen zur Problembehandlung des Azure App Service-Zugriffs über ein virtuelles Netzwerk finden Sie unter [Problembehandlung für virtuelle Netzwerke und Anwendungen](../../app-service/web-sites-integrate-with-vnet.md#troubleshooting). Wenn keine Verbindung hergestellt werden kann, versuchen Sie, [die Netzwerkkonfiguration zu synchronisieren](azure-app-sync-network-configuration.md).
+Informationen zur Problembehandlung des Azure App Service-Zugriffs über ein virtuelles Netzwerk finden Sie unter [Problembehandlung für virtuelle Netzwerke und Anwendungen](../../app-service/overview-vnet-integration.md#troubleshooting). Wenn keine Verbindung hergestellt werden kann, versuchen Sie, [die Netzwerkkonfiguration zu synchronisieren](azure-app-sync-network-configuration.md).
 
 Ein spezieller Fall beim Herstellen einer Verbindung zwischen Azure App Service mit SQL Managed Instance besteht, wenn Sie Azure App Service in ein Netzwerk integriert haben, das mittels Peering mit dem virtuellen Netzwerk von SQL Managed Instance verbunden ist. In diesem Fall muss die folgende Konfiguration eingerichtet werden:
 
@@ -143,7 +143,7 @@ Prüfen Sie zur Behandlung von Konnektivitätsproblemen Folgendes:
 
 - Stellen Sie beim VNET-Peering sicher, dass Sie die Anweisungen für die Einstellung [„Gatewaytransit zulassen“ und „Remotegateways verwenden“](#connect-from-on-premises) befolgt haben.
 
-- Wenn Sie das VNET-Peering zum Verbinden einer in Azure App Service gehosteten Anwendung verwenden und das virtuelle Netzwerk von SQL Managed Instance über einen öffentlichen IP-Adressbereich verfügt, stellen Sie sicher, dass die Einstellungen Ihrer gehosteten Anwendung das Weiterleiten des ausgehenden Datenverkehrs an öffentliche IP-Netzwerke zulassen. Befolgen Sie die Anweisungen unter [Regionale Integration des virtuellen Netzwerks](../../app-service/web-sites-integrate-with-vnet.md#regional-vnet-integration).
+- Wenn Sie das VNET-Peering zum Verbinden einer in Azure App Service gehosteten Anwendung verwenden und das virtuelle Netzwerk von SQL Managed Instance über einen öffentlichen IP-Adressbereich verfügt, stellen Sie sicher, dass die Einstellungen Ihrer gehosteten Anwendung das Weiterleiten des ausgehenden Datenverkehrs an öffentliche IP-Netzwerke zulassen. Befolgen Sie die Anweisungen unter [Regionale Integration des virtuellen Netzwerks](../../app-service/overview-vnet-integration.md#regional-vnet-integration).
 
 ## <a name="required-versions-of-drivers-and-tools"></a>Erforderliche Versionen von Treibern und Tools
 

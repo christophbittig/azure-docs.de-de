@@ -3,12 +3,12 @@ title: 'Bereitstellen für IoT Edge für Linux unter Windows: Azure'
 description: Dieser Artikel enthält eine Anleitung für die Bereitstellung für IoT Edge für Linux auf einem Windows-Gerät.
 ms.topic: how-to
 ms.date: 08/25/2021
-ms.openlocfilehash: 18a08d903fc256790799d8c66d400226f8ac48ef
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: 01631b219149282d645de9d5b1126bc8b79cbcfc
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122968670"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130236017"
 ---
 # <a name="deploy-to-an-iot-edge-for-linux-on-windows-eflow-device"></a>Bereitstellen für IoT Edge für Linux auf einem Windows-Gerät (EFLOW)
 
@@ -19,7 +19,7 @@ In diesem Artikel wird beschrieben, wie Sie Azure Video Analyzer auf einem Edgeg
 * Ein Azure-Konto mit einem aktiven Abonnement. Sie können ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), falls Sie noch keins besitzen.
 
 * Installation von [Visual Studio Code](https://code.visualstudio.com/) auf Ihrem Entwicklungscomputer. Stellen Sie sicher, dass Sie über die [Azure IoT Tools-Erweiterung](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) verfügen.
-* Weitere Informationen finden Sie unter [Was ist Azure IoT Edge für Linux unter Windows (Vorschau)?](../../iot-edge/iot-edge-for-linux-on-windows.md).
+* Weitere Informationen finden Sie unter [Was ist Azure IoT Edge für Linux unter Windows (Vorschau)?](../../iot-edge/how-to-provision-single-device-linux-on-windows-symmetric.md).
 
 ## <a name="deployment-steps"></a>Bereitstellungsschritte
 

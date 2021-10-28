@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/20/2021
 ms.author: allensu
-ms.openlocfilehash: 116a36875c63e515725c90edc3d6fe2a86c9374c
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 92f472afdb642633a093ebdf765b0d8ba968bd8a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129368268"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130228335"
 ---
 # <a name="create-change-or-delete-an-azure-public-ip-address"></a>Erstellen, Ändern oder Löschen einer öffentlichen Azure-IP-Adresse
 
@@ -31,10 +31,10 @@ Sie erhalten Informationen über öffentliche IP-Adressen und darüber, wie Sie 
 
 Anleitungen zum Erstellen öffentlicher IP-Adressen über das Portal, PowerShell, die CLI oder Resource Manager-Vorlagen finden Sie auf den folgenden Seiten:
 
- * [Erstellen öffentlicher IP-Adressen: Portal](../../virtual-network/create-public-ip-portal.md?tabs=option-create-public-ip-standard-zones)
- * [Erstellen öffentlicher IP-Adressen: PowerShell](../../virtual-network/create-public-ip-powershell.md?tabs=option-create-public-ip-standard-zones)
- * [Erstellen öffentlicher IP-Adressen: Azure CLI](../../virtual-network/create-public-ip-cli.md?tabs=option-create-public-ip-standard-zones)
- * [Erstellen öffentlicher IP-Adressen: Vorlage](../../virtual-network/create-public-ip-template.md)
+ * [Erstellen öffentlicher IP-Adressen: Portal](./create-public-ip-portal.md?tabs=option-create-public-ip-standard-zones)
+ * [Erstellen öffentlicher IP-Adressen: PowerShell](./create-public-ip-powershell.md?tabs=option-create-public-ip-standard-zones)
+ * [Erstellen öffentlicher IP-Adressen: Azure CLI](./create-public-ip-cli.md?tabs=option-create-public-ip-standard-zones)
+ * [Erstellen öffentlicher IP-Adressen: Vorlage](./create-public-ip-template.md)
 
 >[!NOTE]
 >Obwohl das Portal die Option bietet, zwei öffentliche IP-Adressen zu erstellen (eine IPv4- und eine IPv6-Adresse), erstellen die folgenden PowerShell- und CLI-Befehle eine Ressource mit einer Adresse für jeweils nur eine der IP-Versionen. Wenn Sie zwei öffentliche IP-Adressressourcen (eine für jede IP-Version) benötigen, müssen Sie den folgenden Befehl zweimal ausführen und bei jeder Ausführung unterschiedliche Namen und IP-Versionen für die öffentlichen IP-Adressressourcen angeben.
@@ -61,7 +61,7 @@ Weitere Details zu den spezifischen Attributen einer öffentlichen IP-Adresse w�
 ## <a name="view-modify-settings-for-or-delete-a-public-ip-address"></a>Anzeigen, Ändern von Einstellungen oder Löschen einer öffentlichen IP-Adresse
 
    - **Anzeigen/Auflisten**: Überprüfen Sie die Einstellungen für eine öffentliche IP-Adresse, einschließlich der SKU, der Adresse und einer beliebigen Zuordnung. Zuordnungen können Lastenausgleichs-Front-Ends, VMs und andere Azure-Ressourcen sein.
-   - [Ändern](#create-a-public-ip-address): Ändern Sie die Einstellungen anhand der Informationen unter **Erstellen einer öffentlichen IP-Adresse**. Einstellungen wie Leerlauftimeout, DNS-Namensbezeichnung oder Zuweisungsmethode. Den gesamten Vorgang zum Upgrade einer öffentlichen IP-Adresse von der SKU „Basic“ auf die SKU „Standard“ finden Sie unter [Upgrade von öffentlichen Azure-IP-Adressen](../../virtual-network/public-ip-upgrade-portal.md).
+   - [Ändern](#create-a-public-ip-address): Ändern Sie die Einstellungen anhand der Informationen unter **Erstellen einer öffentlichen IP-Adresse**. Einstellungen wie Leerlauftimeout, DNS-Namensbezeichnung oder Zuweisungsmethode. Den gesamten Vorgang zum Upgrade einer öffentlichen IP-Adresse von der SKU „Basic“ auf die SKU „Standard“ finden Sie unter [Upgrade von öffentlichen Azure-IP-Adressen](./public-ip-upgrade-portal.md).
    
    >[!WARNING]
    >Entfernen Sie die Adresse von den jeweiligen IP-Konfigurationen (siehe Abschnitt **Löschen**), um die Zuweisung für eine öffentliche IP-Adresse von „Statisch“ in „Dynamisch“ zu ändern. Wenn Sie die Zuweisungsmethode von „Statisch“ in „Dynamisch“ ändern, geht die IP-Adresse verloren, die der öffentlichen IP-Adressressource zugewiesen war. Während die öffentlichen DNS-Server von Azure eine Zuordnung zwischen statischen oder dynamischen Adressen und jeder DNS-Namensbezeichnung (sofern eine solche definiert ist) verwalten, kann sich eine dynamische IP-Adresse ändern, wenn der virtuelle Computer gestartet wird, nachdem er sich im Status „Beendet (Zuordnung aufgehoben)“ befunden hat. Möchten Sie verhindern, dass sich die Adresse ändert, weisen Sie eine statische IP-Adresse zu.
@@ -76,7 +76,7 @@ Weitere Details zu den spezifischen Attributen einer öffentlichen IP-Adresse w�
 
 |Resource|Azure-Portal|Azure PowerShell|Azure CLI|
 |---|---|---|---|
-|[Virtueller Computer](../../virtual-network/remove-public-ip-address-vm.md)|Wählen Sie **Trennen** aus, um die IP-Adresse von der NIC-Konfiguration zu trennen, und wählen Sie dann **Löschen** aus.|[Set-AzPublicIpAddress](/powershell/module/az.network/set-azpublicipaddress), um die IP-Adresse von der NIC-Konfiguration zu trennen, [Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) zum Löschen.|[az network public-ip update mit dem Parameter „--remove“](/cli/azure/network/public-ip#az_network_public_ip_update), um die IP-Adresse aus der Konfiguration der Netzwerkschnittstelle zu entfernen. Verwenden Sie [az network public-ip delete](/cli/azure/network/public-ip#az_network_public_ip_delete), um die öffentliche IP-Adresse zu löschen. |
+|[Virtueller Computer](./remove-public-ip-address-vm.md)|Wählen Sie **Trennen** aus, um die IP-Adresse von der NIC-Konfiguration zu trennen, und wählen Sie dann **Löschen** aus.|[Set-AzPublicIpAddress](/powershell/module/az.network/set-azpublicipaddress), um die IP-Adresse von der NIC-Konfiguration zu trennen, [Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress) zum Löschen.|[az network public-ip update mit dem Parameter „--remove“](/cli/azure/network/public-ip#az_network_public_ip_update), um die IP-Adresse aus der Konfiguration der Netzwerkschnittstelle zu entfernen. Verwenden Sie [az network public-ip delete](/cli/azure/network/public-ip#az_network_public_ip_delete), um die öffentliche IP-Adresse zu löschen. |
 |Lastenausgleichs-Front-End | Navigieren Sie zu einer nicht verwendeten öffentlichen IP-Adresse, und wählen Sie **Zuordnen** aus. Wählen Sie den Lastenausgleich mit der relevanten Front-End-IP-Konfiguration aus, um die IP-Adresse zu ersetzen. Die alte IP-Adresse kann mit derselben Methode wie eine VM gelöscht werden.  | Verwenden Sie [Set-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/set-azloadbalancerfrontendipconfig), um einem öffentlichen Lastenausgleich eine neue Front-End-IP-Konfiguration zuzuordnen. Verwenden Sie [Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress), um eine öffentliche IP-Adresse zu löschen. Sie können auch [Remove-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/remove-azloadbalancerfrontendipconfig) verwenden, um eine Front-End-IP-Konfiguration zu entfernen, falls mehrere vorliegen. | Verwenden Sie [az network lb frontend-ip update](/cli/azure/network/lb/frontend-ip#az_network_lb_frontend_ip_update), um einem öffentlichen Lastenausgleich eine neue Front-End-IP-Konfiguration zuzuordnen. Verwenden Sie [Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress), um eine öffentliche IP-Adresse zu löschen. Sie können auch [az network lb frontend-ip delete](/cli/azure/network/lb/frontend-ip#az_network_lb_frontend_ip_delete) verwenden, um eine Front-End-IP-Konfiguration zu entfernen, falls mehrere vorliegen. |
 |Firewall|–| [Deallocate()](../../firewall/firewall-faq.yml#how-can-i-stop-and-start-azure-firewall), um die Zuordnung der Firewall aufzuheben und alle IP-Konfigurationen zu entfernen. | Verwenden Sie [az network firewall ip-config delete](/cli/azure/network/firewall/ip-config#az_network_firewall_ip_config_delete), um die IP-Adresse zu entfernen. Verwenden Sie PowerShell, um zuerst die Zuordnung aufzuheben. |
 
@@ -92,7 +92,7 @@ Weitere Informationen finden Sie unter [Netzwerk für Azure-VM-Skalierungsgruppe
 
 Erfahren Sie, wie Sie eine öffentliche IP-Adresse den folgenden Ressourcen zuweisen:
 
-- [Windows](../../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)- oder [Linux](../../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-VMs bei Erstellung. Hinzufügen einer IP-Adresse zu einer [vorhandenen VM](../../virtual-network/virtual-network-network-interface-addresses.md#add-ip-addresses).
+- [Windows](../../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)- oder [Linux](../../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-VMs bei Erstellung. Hinzufügen einer IP-Adresse zu einer [vorhandenen VM](./virtual-network-network-interface-addresses.md#add-ip-addresses).
 - [Öffentlicher Load Balancer](../../load-balancer/quickstart-load-balancer-standard-public-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Application Gateway](../../application-gateway/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 - [Site-to-Site-Verbindung über VPN Gateway](../../vpn-gateway/tutorial-site-to-site-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)

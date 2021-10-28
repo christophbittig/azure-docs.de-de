@@ -4,12 +4,12 @@ description: Verfügbarkeit von Compute- und Arbeitsspeicherressourcen für den 
 ms.topic: article
 ms.date: 04/27/2020
 ms.custom: references_regions
-ms.openlocfilehash: d48f9a13b24caab86b6d2cdfba039583f1b75c70
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 556d018a020aca7e6df11ff635719145af5bb8de
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129998540"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130252039"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Ressourcenverfügbarkeit für Azure Container Instances in Azure-Regionen
 
@@ -77,7 +77,7 @@ Für eine Containergruppe, die mit [GPU-Ressourcen](container-instances-gpu.md) 
 
 ## <a name="windows-container-groups"></a>Windows-Containergruppen
 
-Die folgenden Regionen und maximalen Ressourcen stehen Containergruppen mit [unterstützten und Vorschau-](/azure/container-instances/container-instances-faq#what-windows-base-os-images-are-supported)Windows Server-Containern zur Verfügung.
+Die folgenden Regionen und maximalen Ressourcen stehen Containergruppen mit [unterstützten und Vorschau-](./container-instances-faq.yml)Windows Server-Containern zur Verfügung.
 
 > [!IMPORTANT]
 > Zurzeit werden Bereitstellungen mit Windows-Containergruppen in einer Azure Virtual Network-Bereitstellung nicht unterstützt.

@@ -4,12 +4,12 @@ description: In diesem ausführlichen Tutorial erfahren Sie Schritt für Schritt
 ms.topic: tutorial
 ms.author: kyburns
 ms.date: 2/26/2021
-ms.openlocfilehash: 9b91ccd725fbd6ae1e3a974ecb70b4c01201adb4
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: 0223ebe7401745fc9dfff9b3935b5f2252cfa39d
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113432264"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130265406"
 ---
 # <a name="tutorial-control-azure-functions-outbound-ip-with-an-azure-virtual-network-nat-gateway"></a>Tutorial: Steuern der ausgehenden IP-Adresse von Azure Functions mithilfe eines Azure Virtual Network NAT-Gateways
 
@@ -30,7 +30,7 @@ Das folgende Diagramm zeigt die Architektur der Lösung, die Sie erstellen:
 
 ![Benutzeroberfläche für die NAT-Gatewayintegration](./media/functions-how-to-use-nat-gateway/topology.png)
 
-Funktionen, die im Premium-Plan ausgeführt werden, bieten dieselben Hostingfunktionen wie Web-Apps in Azure App Service, wozu auch ein Feature zur VNET-Integration gehört. Weitere Informationen zur VNET-Integration, einschließlich Problembehandlung und erweiterter Konfiguration, finden Sie unter [Integrieren Ihrer App in ein Azure Virtual Network](../app-service/web-sites-integrate-with-vnet.md).
+Funktionen, die im Premium-Plan ausgeführt werden, bieten dieselben Hostingfunktionen wie Web-Apps in Azure App Service, wozu auch ein Feature zur VNET-Integration gehört. Weitere Informationen zur VNET-Integration, einschließlich Problembehandlung und erweiterter Konfiguration, finden Sie unter [Integrieren Ihrer App in ein Azure Virtual Network](../app-service/overview-vnet-integration.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

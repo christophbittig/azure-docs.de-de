@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 04/01/2021
-ms.openlocfilehash: ac6a6964c738cfb970b7bd65a6d7e3b12f796b2a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 5239812bdd916b19571059aa2641eb738ef5ba09
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "128653721"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130249455"
 ---
 # <a name="point-in-time-restore-of-a-azure-database-for-mysql---flexible-server-with-azure-cli"></a>Zeitpunktwiederherstellung von Azure Database for MySQL – Flexible Server mit Azure CLI
 
@@ -34,7 +34,7 @@ In diesem Artikel wird Schritt für Schritt beschrieben, wie Sie Zeitpunktwieder
     az login
     ````
 
-- Wenn Sie über mehrere Abonnements verfügen, wählen Sie das entsprechende Abonnement aus, in dem Sie den Server mithilfe des Befehls ```az account set``` erstellen möchten.
+- Wenn Sie über mehrere Abonnements verfügen, wählen Sie das entsprechende Abonnement aus, in dem Sie den Server mit dem ```az account set```-Befehl erstellen.
 `
     ```azurecli
     az account set --subscription <subscription id>
@@ -65,10 +65,10 @@ az mysql flexible-server restore --restore-time
 **Beispiel**: Stellen Sie einen Server aus dieser ```2021-03-03T13:10:00Z```-Sicherungsmomentaufnahme wieder her.
 
 ```azurecli
-az mysql server restore \
+az mysql flexible-server restore \
 --name mydemoserver-restored \
 --resource-group myresourcegroup \
---restore-point-in-time "2021-03-03T13:10:00Z" \
+--restore-time "2021-03-03T13:10:00Z" \
 --source-server mydemoserver
 ```
 Die Dauer der Wiederherstellung hängt von der Größe der auf dem Server gespeicherten Daten ab.

@@ -4,12 +4,12 @@ description: Hier wird beschrieben, wie ein- und ausgehende IP-Adressen in Azure
 ms.topic: article
 ms.date: 08/25/2020
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: f8354d52c43d786e3506cf6fcee0907f9f365ab6
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: b637157def16a3d540e918890cbc24730797cde6
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124836326"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130224515"
 ---
 # <a name="inbound-and-outbound-ip-addresses-in-azure-app-service"></a>Ein- und ausgehende IP-Adressen in Azure App Service
 
@@ -82,7 +82,7 @@ az webapp show --resource-group <group_name> --name <app_name> --query possibleO
 ```
 
 ## <a name="get-a-static-outbound-ip"></a>Abrufen einer statischen ausgehenden IP-Adresse
-Sie können die IP-Adresse des von Ihrer App ausgehenden Datenverkehrs steuern, indem Sie regionale VNet-Integration zusammen mit einem NAT-Gateway eines virtuellen Netzwerks verwenden, um Datenverkehr über eine statische öffentliche IP-Adresse zu leiten. [Regionale VNet-Integration](./web-sites-integrate-with-vnet.md) ist in den App Service-Plänen **Standard**, **Premium**, **PremiumV2** und **PremiumV3** verfügbar. Weitere Informationen zu diesem Setup finden Sie unter [NAT Gateway-Integration](./networking/nat-gateway-integration.md).
+Sie können die IP-Adresse des von Ihrer App ausgehenden Datenverkehrs steuern, indem Sie regionale VNet-Integration zusammen mit einem NAT-Gateway eines virtuellen Netzwerks verwenden, um Datenverkehr über eine statische öffentliche IP-Adresse zu leiten. [Regionale VNet-Integration](./overview-vnet-integration.md) ist in den App Service-Plänen **Standard**, **Premium**, **PremiumV2** und **PremiumV3** verfügbar. Weitere Informationen zu diesem Setup finden Sie unter [NAT Gateway-Integration](./networking/nat-gateway-integration.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

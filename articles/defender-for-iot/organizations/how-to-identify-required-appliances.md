@@ -3,12 +3,12 @@ title: Ermitteln der erforderlichen Appliances
 description: Erfahren Sie mehr über Hardware und virtuelle Appliances für zertifizierte Defender für IoT-Sensoren und die lokale Verwaltungskonsole.
 ms.date: 06/21/2021
 ms.topic: how-to
-ms.openlocfilehash: c124ccd69257b9a0b7a57c53b6fa6b0817d95fb6
-ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
+ms.openlocfilehash: 22a79bc1f78536df1dd1c248b75eb3b4db8b443d
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129754347"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130238546"
 ---
 # <a name="identify-required-appliances"></a>Ermitteln der erforderlichen Appliances
 
@@ -40,7 +40,7 @@ Dieser Abschnitt enthält eine Übersicht über die verfügbaren Modelle physisc
 | Modell | HPE ProLiant DL360 | HPE ProLiant DL20 | HPE ProLiant DL20 | HPE EL300 |
 | Überwachungsports | Bis zu 15 RJ45 oder 8 OPT | Bis zu 8 RJ45 oder 6 OPT | Bis zu 4 RJ45 | Bis zu 5 RJ45 |
 | Maximale Bandbreite [1](#anchortext) | 3 GBit/s | 1 GB/s | 200 MBit/s | 100 MBit/s |
-| Maximale Anzahl geschützter Geräte | 10.000 | 10.000 | 1\.000 | 800 |
+| Maximale Anzahl geschützter Geräte | 12,000 | 10.000 | 1\.000 | 800 |
 
 Unter [Appliance-Spezifikationen](#appliance-specifications) finden Sie Herstellerdetails.
 
@@ -59,7 +59,7 @@ In diesem Abschnitt werden die virtuellen Sensoren beschrieben, die zur Verfügu
 | Bereitstellungstyp | Unternehmen | Enterprise | SMB |
 |--|--|--|--|
 | Maximale Bandbreite | 2,5 GB/s | 800 MB/s | 160 MB/s |
-| Maximale Anzahl geschützter Geräte | 10.000 | 10.000 | 800 |
+| Maximale Anzahl geschützter Geräte | 12,000 | 10.000 | 800 |
 
 ## <a name="on-premises-management-console-appliance"></a>Lokale Verwaltungskonsolen-Appliance
 
@@ -97,7 +97,7 @@ In diesem Abschnitt sind die Hardwarespezifikationen für die folgenden Applianc
 | Chipsatz | Intel C621 |
 | Arbeitsspeicher | 32 GB = 2 x 16 GB 2666MT/s DDR4 ECC UDIMM |
 | Storage | 6 x 1,2 TB SAS 12G Enterprise 10K SFF (2,5") Hot-Plug Hard Drive – RAID 5 |
-| Netzwerkcontroller | Auf dem Board: 2 x 1 Gb Broadcom BCM5720<br>On-Board LOM: iDRAC Port-Karte 1 GB Broadcom BCM5720<br><br>Extern: 1 x Intel Ethernet i350 QP 1 GB-Serveradapter, niedriges Profil |
+| Netzwerkcontroller | Auf dem Board: 2 x 1 GB <br>On-Board: iLO Port-Karte 1 GB <br>Extern: 1 x HPE Ethernet 1 GB 4-Port 366FLR Adapter |
 | Verwaltung | HPE iLO Advanced |
 | Gerätezugriff | Zwei USB 3.0 (hinten)<br>Einen USB 2.0 (vorne)<br>Einen internen USB 3.0 |
 | Leistung | 2 x HPE 500 W Flex Slot Platinum Hot Plug Low Halogen-Stromversorgungskit |

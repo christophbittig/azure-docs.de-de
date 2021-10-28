@@ -8,12 +8,12 @@ ms.subservice: ip-services
 ms.topic: how-to
 ms.date: 05/20/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 6e6f348cd8836363e8f3b0023669897fc2123650
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: ad9310dfe05f9639f1448d60d545d2f29c89ca98
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129368265"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130233978"
 ---
 # <a name="upgrade-a-public-ip-address-using-the-azure-cli"></a>Durchführen eines Upgrades für eine öffentliche IP-Adresse mithilfe der Azure CLI
 
@@ -24,7 +24,7 @@ In diesem Artikel wird erläutert, wie Sie über die Azure CLI ein Upgrade für 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein Azure-Konto mit einem aktiven Abonnement. [Erstellen Sie ein kostenloses Konto.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-* Eine **statische** öffentliche IP-Adresse der Basic-SKU in Ihrem Abonnement. Weitere Informationen finden Sie unter [Erstellen einer öffentlichen IP-Adresse im Azure-Portal](../../virtual-network/create-public-ip-portal.md#create-a-basic-sku-public-ip-address).
+* Eine **statische** öffentliche IP-Adresse der Basic-SKU in Ihrem Abonnement. Weitere Informationen finden Sie unter [Erstellen einer öffentlichen IP-Adresse im Azure-Portal](./create-public-ip-portal.md#create-a-basic-sku-public-ip-address).
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
@@ -68,5 +68,4 @@ In diesem Artikel haben Sie ein Upgrade einer öffentlichen IP-Adresse der Basic
 Weitere Informationen zu öffentlichen IP-Adressen in Azure finden Sie unter:
 
 - [Öffentliche IP-Adressen in Azure](public-ip-addresses.md)
-- [Erstellen einer öffentlichen IP-Adresse: Azure-Portal](../../virtual-network/create-public-ip-portal.md)
-
+- [Erstellen einer öffentlichen IP-Adresse: Azure-Portal](./create-public-ip-portal.md)

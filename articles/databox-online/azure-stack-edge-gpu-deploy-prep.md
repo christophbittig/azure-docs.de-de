@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: tutorial
 ms.date: 08/06/2021
 ms.author: alkohli
-ms.openlocfilehash: b223d428daf1a7080478f4f80b6a997fb97cd7a0
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: d87c0221bc5d6bfc8aa4eb308417234bca9f7b14
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122322603"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130249949"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-stack-edge-pro-with-gpu"></a>Tutorial: Vorbereiten der Bereitstellung von Azure Stack Edge Pro-Geräten mit GPU 
 
@@ -71,7 +71,7 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
 - Sie verfügen für die Azure Stack Edge Pro-, IoT Hub- und Azure Storage-Ressourcen über Zugriff als Besitzer oder Mitwirkender auf Ressourcengruppenebene.
 
     - Für die Erstellung von Azure Stack Edge-Ressourcen müssen Sie mindestens über Berechtigungen als Mitwirkender auf der Ressourcengruppenebene verfügen. 
-    - Außerdem müssen Sie dafür sorgen, dass die Ressourcenanbieter `Microsoft.DataBoxEdge` und `MicrosoftKeyVault` registriert werden. Der `Microsoft.Devices`-Anbieter muss registriert werden, um IoT Hub-Ressourcen zu erstellen. 
+    - Außerdem müssen Sie dafür sorgen, dass die Ressourcenanbieter `Microsoft.DataBoxEdge` und `Microsoft.KeyVault` registriert werden. Der `Microsoft.Devices`-Anbieter muss registriert werden, um IoT Hub-Ressourcen zu erstellen. 
         - Zum Registrieren eines Ressourcenanbieters wechseln Sie im Azure-Portal zu **Home > Abonnements > Ihr-Abonnement > Ressourcenanbieter**. 
         - Suchen Sie nach dem jeweiligen Ressourcenanbieter, z. B. `Microsoft.DataBoxEdge`, und registrieren Sie ihn. 
     - Für die Erstellung von Speicherkontoressourcen sind ebenfalls mindestens Berechtigungen als Mitwirkender auf der Ressourcengruppenebene erforderlich. Azure Storage ist standardmäßig als Ressourcenanbieter registriert.

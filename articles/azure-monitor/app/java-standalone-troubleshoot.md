@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Probleme mit dem Java-Agent für Azure Monito
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.custom: devx-track-java
-ms.openlocfilehash: d88662e174caffb56358b9c9c584b6b849ca45c4
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 24dfaa2df8e68cd2ae2d2d0165c370ea094767f2
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129616928"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130224334"
 ---
 # <a name="troubleshooting-guide-azure-monitor-application-insights-for-java"></a>Handbuch zur Problembehandlung: Azure Monitor Application Insights für Java
 
@@ -17,7 +17,7 @@ In diesem Artikel werden einige der häufigsten Probleme behandelt, die beim Ins
 
 ## <a name="check-the-self-diagnostic-log-file"></a>Überprüfen der Protokolldatei zur Selbstdiagnose
 
-Standardmäßig erzeugt Application Insights Java 3.x eine Protokolldatei mit dem Namen `applicationinsights.log` in demselben Verzeichnis, in dem sich auch die Datei `applicationinsights-agent-3.2.0.jar` befindet.
+Standardmäßig erzeugt Application Insights Java 3.x eine Protokolldatei mit dem Namen `applicationinsights.log` in demselben Verzeichnis, in dem sich auch die Datei `applicationinsights-agent-3.2.1.jar` befindet.
 
 Diese Protokolldatei sollten Sie als Erstes auf Hinweise auf aufgetretene Probleme untersuchen.
 

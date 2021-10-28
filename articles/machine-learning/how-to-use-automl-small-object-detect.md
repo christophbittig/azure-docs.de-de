@@ -7,12 +7,12 @@ ms.service: machine-learning
 ms.subservice: automl
 ms.topic: how-to
 ms.date: 10/13/2021
-ms.openlocfilehash: 2fb5dfc77a15e1f9fcd5b90a058e2cc03f81b910
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 7800399be259dddf2782c47696ce014442d8bf55
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130007326"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130234451"
 ---
 # <a name="train-a-small-object-detection-model-with-automl-preview"></a>Trainieren eines Erkennungsmodells für kleine Objekte mit automatisiertem ML (Vorschau)
 
@@ -34,8 +34,6 @@ Bei der Kachelung wird jedes Bild in ein Raster von Kacheln unterteilt. Angrenze
 * Ein Azure Machine Learning-Arbeitsbereich. Informationen zum Erstellen des Arbeitsbereichs finden Sie unter [Erstellen eines Azure Machine Learning-Arbeitsbereichs](how-to-manage-workspace.md).
 
 * Dieser Artikel setzt voraus, dass Sie mit der Konfiguration eines [automatisierten Experiments zum maschinellen Lernen für Aufgaben des maschinellen Sehens](how-to-auto-train-image-models.md) vertraut sind. 
-
-[!INCLUDE [automl-sdk-version](../../includes/machine-learning-automl-sdk-version.md)]
 
 ## <a name="supported-models"></a>Unterstützte Modelle
 
@@ -96,7 +94,7 @@ Dadurch kann die Leistung für einige Datasets verbessert werden, und es entsteh
 
 Im Folgenden sind die Parameter aufgeführt, die Sie zur Steuerung des Kachelungsfeatures verwenden können.
 
-| Parametername    | BESCHREIBUNG   | Standard |
+| Parametername    | Beschreibung   | Standard |
 | --------------- |-------------| -------|
 | `tile_grid_size` |  Die Rastergröße, die für die Kachelung der einzelnen Bilder verwendet werden soll. Kann beim Training, bei der Validierung und beim Rückschließen verwendet werden.<br><br>Ein Tupel mit zwei ganzen Zahlen, die als Zeichenfolge übergeben werden, z. B. `'(3, 2)'`.<br><br> *Hinweis: Die Einstellung dieses Parameters erhöht die Berechnungszeit proportional, da alle Kacheln und Bilder vom Modell verarbeitet werden.*| Kein Standardwert |
 | `tile_overlap_ratio` | Steuert das Überlappungsverhältnis zwischen angrenzenden Kacheln in den einzelnen Dimensionen. Wenn die Objekte, die auf die Kachelgrenze fallen, zu groß sind, um vollständig in eine der Kacheln zu passen, erhöhen Sie den Wert dieses Parameters, sodass die Objekte in mindestens eine der Kacheln vollständig passen.<br> <br>  Muss ein Gleitkommawert in [0, 1] sein.| 0,25 |

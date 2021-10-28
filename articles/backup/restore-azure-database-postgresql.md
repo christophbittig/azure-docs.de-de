@@ -4,12 +4,12 @@ description: Weitere Informationen zum Wiederherstellen von Azure Database for P
 ms.topic: how-to
 ms.date: 10/01/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a5de8e74fb05eea45e5cb730515b3280c4952951
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: df48d37f61b910dd9e8396fb8460d98479186f9c
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129359501"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130224028"
 ---
 # <a name="restore-azure-database-for-postgresql-backups-preview"></a>Wiederherstellen von Azure Database for PostgreSQL-Sicherungen (Vorschau)
 
@@ -24,7 +24,7 @@ Sie können eine Datenbank auf jedem beliebigen Azure PostgreSQL-Server innerhal
 
    :::image type="content" source="./media/restore-azure-database-postgresql/select-database-for-restore-inline.png" alt-text="Screenshot: Prozess zum Auswählen und Wiederherstellen einer Datenbank." lightbox="./media/restore-azure-database-postgresql/select-database-for-restore-expanded.png":::
 
-   Alternativ können Sie über das [Backup Center](/azure/backup/backup-center-overview) zu dieser Seite navigieren.   
+   Alternativ können Sie über das [Backup Center](./backup-center-overview.md) zu dieser Seite navigieren.    
   
 1. Wählen Sie auf der Seite **Wiederherstellungspunkt auswählen** aus der Liste aller vollständigen Sicherungen, die für die ausgewählte Sicherungsinstanz verfügbar sind, einen Wiederherstellungspunkt aus. Standardmäßig ist der letzte Wiederherstellungspunkt ausgewählt.
 

@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 09/23/2021
 ms.custom: devx-track-csharp, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 14bc05787a589356eec6d4cbb9abd5eebba255a8
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 2a77b03f4ea72e0cb22c790bbebab5127e4b0375
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130045577"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130220431"
 ---
 # <a name="tutorial-authenticate-and-authorize-users-end-to-end-in-azure-app-service"></a>Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service
 
@@ -133,8 +133,8 @@ az webapp create --resource-group myAuthResourceGroup --plan myAuthAppServicePla
 1. Da Sie den Branch `main` bereitstellen, müssen Sie den Standardbereitstellungsbranch für Ihre beiden App Service-Apps auf `main` festlegen (siehe [Ändern des Bereitstellungsbranchs](deploy-local-git.md#change-deployment-branch)). Legen Sie die App-Einstellung `DEPLOYMENT_BRANCH` in Cloud Shell mit dem Befehl [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) fest. 
 
     ```azurecli-interactive
-    az webapp config appsettings set --name <front-end-app-name> --resource-group myAuthResourceGroup --settings DEPLOYMENT_BRANCH='main'
-    az webapp config appsettings set --name <back-end-app-name> --resource-group myAuthResourceGroup --settings DEPLOYMENT_BRANCH='main'
+    az webapp config appsettings set --name <front-end-app-name> --resource-group myAuthResourceGroup --settings DEPLOYMENT_BRANCH=main
+    az webapp config appsettings set --name <back-end-app-name> --resource-group myAuthResourceGroup --settings DEPLOYMENT_BRANCH=main
     ```
 
 1. Führen Sie im _lokalen Terminalfenster_ die folgenden Git-Befehle aus, um die Bereitstellung für die Back-End-App durchzuführen. Ersetzen Sie _\<deploymentLocalGitUrl-of-back-end-app>_ durch die URL des Git-Remotespeicherorts, die Sie unter [Erstellen von Azure-Ressourcen](#create-azure-resources) gespeichert haben. Wenn Sie von der Git-Anmeldeinformationsverwaltung zur Eingabe von Anmeldeinformationen aufgefordert werden, müssen Sie [Ihre Anmeldeinformationen für die Bereitstellung](deploy-configure-credentials.md) eingeben (nicht die Anmeldeinformationen, die Sie für die Anmeldung beim Azure-Portal verwenden).

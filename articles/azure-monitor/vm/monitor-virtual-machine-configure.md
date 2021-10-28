@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2021
-ms.openlocfilehash: ceb57d364cca4b05d170ad6e42e8894f9a1ce86e
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 4e6ef102a4cf0a4528125e336e21ecf709bb37bc
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129710244"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130240013"
 ---
 # <a name="monitor-virtual-machines-with-azure-monitor-configure-monitoring"></a>Überwachen von VMs mit Azure Monitor: Konfigurieren der Überwachung
 Dieser Artikel ist Teil des Szenarios [Überwachen von VMs und zugehöriger Workloads in Azure Monitor](monitor-virtual-machine.md). Es wird beschrieben, wie Sie die Überwachung Ihrer Azure- und Hybrid-VMs in Azure Monitor konfigurieren.
@@ -112,7 +112,7 @@ Achten Sie darauf, keine Daten an Protokolle zu senden. Dies würde zu doppelten
 
 Sie können einen Azure Monitor-Agent für einzelne Computer installieren, indem Sie die gleichen Methoden für Azure-VMs und Azure Arc-fähige Server verwenden. Zu diesen Methoden gehören das Onboarding einzelner Computer mit den Azure-Portal oder mithilfe von Resource Manager-Vorlagen oder das bedarfsorientierte Aktivieren von Computern mithilfe von Azure Policy. Installieren Sie den Agent für Hybridcomputer, die Azure Arc-fähige Server nicht verwenden können, manuell.
 
-Informationen zum Erstellen einer Datensammlungsregel und zum Bereitstellen des Azure Monitor-Agents für einen oder mehrere Agents mithilfe des Azure-Portals finden Sie unter [Erstellen einer Regel und einer Zuordnung im Azure-Portal](../agents/data-collection-rule-azure-monitor-agent.md). Weitere Installationsmethoden werden unter [Installieren des Azure Monitor-Agents](../agents/azure-monitor-agent-install.md) beschrieben. Informationen zum Erstellen einer Richtlinie, die den Agent und die Datensammlungsregel automatisch auf allen neuen Computern bereitstellt, während sie erstellt werden, finden Sie unter [Bedarfsorientiertes Bereitstellen von Azure Monitor mithilfe von Azure Policy](../deploy-scale.md#azure-monitor-agent).
+Informationen zum Erstellen einer Datensammlungsregel und zum Bereitstellen des Azure Monitor-Agents für einen oder mehrere Agents mithilfe des Azure-Portals finden Sie unter [Erstellen einer Regel und einer Zuordnung im Azure-Portal](../agents/data-collection-rule-azure-monitor-agent.md). Weitere Installationsmethoden werden unter [Installieren des Azure Monitor-Agents](../agents/azure-monitor-agent-install.md) beschrieben. Informationen zum Erstellen einer Richtlinie, die den Agent und die Datensammlungsregel automatisch auf allen neuen Computern bereitstellt, während sie erstellt werden, finden Sie unter [Bedarfsorientiertes Bereitstellen von Azure Monitor mithilfe von Azure Policy](../best-practices.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

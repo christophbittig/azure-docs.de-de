@@ -6,12 +6,12 @@ ms.date: 07/23/2021
 ms.topic: article
 author: mayurigupta13
 ms.author: mayg
-ms.openlocfilehash: 16e13238ffd471678eab9bdd0245aa708b7c4419
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: d09bed41ff7553e79a4d05e616e07fabf85d71a9
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129389359"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130227129"
 ---
 # <a name="azure-arc-enabled-open-service-mesh-preview"></a>Open Service Mesh mit Azure Arc-Unterstützung (Vorschauversion)
 
@@ -369,7 +369,7 @@ Weitere Informationen zur den Integrationsdiensten finden Sie [hier](https://doc
 
 ### <a name="configure-osm-with-service-mesh-interface-smi-policies"></a>Konfigurieren Sie das OSM mit den SMI-Richtlinien (Service Mesh Interface)
 
-Sie können mit einer [Demoanwendung](https://docs.openservicemesh.io/docs/getting_started/quickstart/manual_demo/#deploy-applications) beginnen oder Ihre Testumgebung verwenden, um die SMI-Richtlinien auszuprobieren.
+Sie können mit einer [Demoanwendung](https://release-v0-11.docs.openservicemesh.io/docs/getting_started/quickstart/manual_demo/#deploy-applications) beginnen oder Ihre Testumgebung verwenden, um die SMI-Richtlinien auszuprobieren.
 
 > [!NOTE] 
 > Stellen Sie sicher, dass die Version der Bookstore-Anwendung, die Sie ausführen, mit der Version der OSM-Erweiterung übereinstimmt, die auf Ihrem Cluster installiert ist. Wenn Sie beispielsweise die Version 0.8.4 der OSM-Erweiterung verwenden, benötigen Sie die Bookstore-Demo aus der Release V 0.8-Verzweigung des OSM-Upstream-Repository.

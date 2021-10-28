@@ -9,22 +9,21 @@ ms.subservice: spark
 ms.date: 09/22/2021
 ms.author: midesa
 ms.custom: has-adal-ref
-ms.openlocfilehash: 32ef54e9db80879f822ea08cba6b0374697c806b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 59510405dab8b73f648fc7c459280bda46d167d4
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128583528"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130225346"
 ---
 # <a name="azure-synapse-runtime-for-apache-spark-31"></a>Azure Synapse Runtime for Apache Spark 3.1 
 
 Azure Synapse Analytics unterstützt mehrere Laufzeiten für Apache Spark. In diesem Dokument werden die Runtimekomponenten und -versionen für die Azure Synapse-Runtime für Apache Spark 3.1 behandelt. 
 
-## <a name="known-issues-in-preview"></a>Bekannte Probleme in der Vorschauversion
+## <a name="known-issues"></a>Bekannte Probleme
 * Unterstützung für Synapse Pipeline/Dataflows ist in Kürze verfügbar.
 * Die folgende Connector-Unterstützung ist in Kürze verfügbar:
   * Azure Data Explorer-Connector
-  * CosmosDB
   * SQL Server
 * Hyperspace, Spark Cruise und Dynamic Allocation Executors sind in Kürze verfügbar.
 

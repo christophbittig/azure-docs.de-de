@@ -8,12 +8,12 @@ ms.subservice: ip-services
 ms.topic: how-to
 ms.date: 05/20/2021
 ms.custom: template-how-to
-ms.openlocfilehash: f436cd2d113909a65b62891f9fbfb5965d06a981
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: a40806f6328c513fe6a835ca3a81b46ad962b86d
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129368260"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130224947"
 ---
 # <a name="upgrade-a-public-ip-address-using-the-azure-portal"></a>Durchführen eines Upgrades für eine öffentliche IP-Adresse mithilfe des Azure-Portals
 
@@ -24,7 +24,7 @@ In diesem Artikel wird erläutert, wie Sie im Azure-Portal ein Upgrade für eine
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein Azure-Konto mit einem aktiven Abonnement. [Erstellen Sie ein kostenloses Konto.](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
-* Eine statische öffentliche IP-Adresse der Basic-SKU in Ihrem Abonnement. Weitere Informationen finden Sie unter [Erstellen einer öffentlichen IP-Adresse im Azure-Portal](../../virtual-network/create-public-ip-portal.md#create-a-basic-sku-public-ip-address).
+* Eine statische öffentliche IP-Adresse der Basic-SKU in Ihrem Abonnement. Weitere Informationen finden Sie unter [Erstellen einer öffentlichen IP-Adresse im Azure-Portal](./create-public-ip-portal.md#create-a-basic-sku-public-ip-address).
 
 ## <a name="upgrade-public-ip-address"></a>Durchführen eines Upgrades für eine öffentliche IP-Adresse
 
@@ -73,5 +73,4 @@ In diesem Artikel führen Sie ein Upgrade für eine öffentliche IP-Adresse von 
 Weitere Informationen zu öffentlichen IP-Adressen in Azure finden Sie unter:
 
 - [Öffentliche IP-Adressen in Azure](public-ip-addresses.md)
-- [Erstellen einer öffentlichen IP-Adresse: Azure-Portal](../../virtual-network/create-public-ip-portal.md)
-
+- [Erstellen einer öffentlichen IP-Adresse: Azure-Portal](./create-public-ip-portal.md)

@@ -3,12 +3,12 @@ title: Verwalten von Formeln in Azure DevTest Labs zum Erstellen von VMs
 description: Dieser Artikel veranschaulicht, wie Sie eine Formel anhand einer Basis (benutzerdefiniertes Image, Marketplace-Image oder eine andere Formel) oder aus einem vorhandenen virtuellen Computer erstellen.
 ms.topic: how-to
 ms.date: 06/26/2020
-ms.openlocfilehash: 632e05a566e1891afff3440563a2fabde0b669d3
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6aea6af48344e6dfbdb811281e4ca0e8203968d3
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128678533"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130226537"
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>Verwalten von Azure DevTest Labs-Formeln
 
@@ -122,7 +122,7 @@ Um eine Formel zu löschen, gehen Sie folgendermaßen vor:
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="related-blog-posts"></a>Verwandte Blogbeiträge
-* [Custom images or formulas? (Benutzerdefinierte Images oder Formeln?)](/azure/devtest-labs/devtest-lab-faq#what-is-the-difference-between-a-custom-image-and-a-formula)
+* [Custom images or formulas? (Benutzerdefinierte Images oder Formeln?)](./devtest-lab-faq.yml)
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem Sie eine Formel erstellt haben, die zum Erstellen virtueller Computer verwendet werden soll, besteht der nächste Schritt darin, [Ihrem Lab einen virtuellen Computer hinzuzufügen](devtest-lab-add-vm.md).

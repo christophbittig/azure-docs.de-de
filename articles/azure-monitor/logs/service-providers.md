@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
-ms.openlocfilehash: d2e0dcb7d973a4e4b2b6f4438aab5f08187ae44b
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 076574173f0bfd4daff4845ab354e730ec0844d9
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111953105"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130233261"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>Azure Monitor-Protokolle für Dienstanbieter
 
@@ -76,7 +76,7 @@ Es bestehen zwei Optionen zum Implementieren von Protokollen an einem zentralen 
 
 1. Zentraler Arbeitsbereich: Der Dienstanbieter kann einen Arbeitsbereich in seinem Mandanten erstellen und ein Skript verwenden, das die [Abfrage-API](https://dev.loganalytics.io/) in Kombination mit der [Datensammlungs-API](../logs/data-collector-api.md) nutzt, um die Daten aus den verschiedenen Arbeitsbereichen an diesen zentralen Speicherort zu bringen. Eine weitere Option, die kein Skript einsetzt, ist die Verwendung von [Azure Logic Apps](../../logic-apps/logic-apps-overview.md).
 
-2. Power BI als zentraler Speicherort: Power BI kann als zentraler Speicherort dienen, wenn die verschiedenen Arbeitsbereiche mithilfe der Integration zwischen dem Log Analytics-Arbeitsbereich und [Power BI](../visualize/powerbi.md) Daten nach Power BI exportieren.
+2. Power BI als zentraler Speicherort: Power BI kann als zentraler Speicherort dienen, wenn die verschiedenen Arbeitsbereiche mithilfe der Integration zwischen dem Log Analytics-Arbeitsbereich und [Power BI](./log-powerbi.md) Daten nach Power BI exportieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -86,6 +86,6 @@ Es bestehen zwei Optionen zum Implementieren von Protokollen an einem zentralen 
 
 * Verwenden Sie [Warnungen](../alerts/alerts-overview.md) für die Integration in vorhandene Systeme.
 
-* Generieren Sie Zusammenfassungsberichte mit [Power BI](../visualize/powerbi.md).
+* Generieren Sie Zusammenfassungsberichte mit [Power BI](./log-powerbi.md).
 
 * Führen Sie das Onboarding von Kunden für die [delegierte Azure-Ressourcenverwaltung](../../lighthouse/concepts/architecture.md) durch.

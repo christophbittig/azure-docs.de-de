@@ -9,12 +9,12 @@ ms.date: 02/26/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: bed5c6b1b1cf21de0105e0eeb2096d359177c115
-ms.sourcegitcommit: 0ce834cd348bb8b28a5f7f612c2807084cde8e8f
+ms.openlocfilehash: 952e0b325fe37345db42d1dcd8d6c521f8235366
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109814998"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130225396"
 ---
 # <a name="manage-scala-and-java-packages-for-apache-spark-in-azure-synapse-analytics"></a>Verwalten von Scala- und Java-Paketen für Apache Spark in Azure Synapse Analytics
 
@@ -82,7 +82,7 @@ So aktualisieren Sie Bibliotheken oder fügen sie einem Spark-Pool hinzu
 >
 > Wenn diese Einstellung deaktiviert ist, müssen Sie warten, bis die aktuelle Spark-Sitzung beendet wird, oder sie manuell beenden. Nachdem die Sitzung beendet wurde, müssen Sie den Pool neu starten.
 
-#### <a name="track-installation-progress-preview"></a>Nachverfolgen des Installationsstatus (Vorschau)
+#### <a name="track-installation-progress"></a>Nachverfolgen des Installationsstatus 
 Bei jeder Aktualisierung eines Pools mit einem neuen Satz von Bibliotheken wird ein vom System reservierter Spark-Auftrag initiiert. Mit diesem Spark-Auftrag können Sie den Status der Bibliotheksinstallation überwachen. Wenn bei der Installation aufgrund von Bibliothekskonflikten oder anderen Problemen ein Fehler auftritt, wird der Spark-Pool auf den vorherigen oder den Standardzustand zurückgesetzt. 
 
 Darüber hinaus können Benutzer auch die Installationsprotokolle überprüfen, um Abhängigkeitskonflikte zu identifizieren oder zu ermitteln, welche Bibliotheken während des Poolupdates installiert wurden.

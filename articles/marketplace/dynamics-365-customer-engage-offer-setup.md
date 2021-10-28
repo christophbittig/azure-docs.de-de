@@ -7,14 +7,14 @@ ms.topic: how-to
 author: vamahtan
 ms.author: vamahtan
 ms.date: 09/27/2021
-ms.openlocfilehash: 72505a4e3c9003032c29b55e8cfa2152617bc928
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: 764875272975e6a7698b6dafc452e597c8195000
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129080098"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130225697"
 ---
-# <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>Erstellen eines Angebots für Dynamics 365 for Customer Engagement und PowerApps
+# <a name="create-a-dynamics-365-for-customer-engagement--power-apps-offer"></a>Erstellen eines Angebots für Dynamics 365 for Customer Engagement und Power Apps
 
 In diesem Artikel erfahren Sie, wie Sie ein Angebot für Dynamics 365 for Customer Engagement und Power Apps erstellen. Alle Angebote für Dynamics 365 for Operations müssen unseren Zertifizierungsprozess durchlaufen. Die Testversion ermöglicht es Benutzern, Ihre Lösung in einer Dynamics 365-Liveumgebung bereitzustellen.
 
@@ -31,7 +31,7 @@ Erstellen Sie, bevor Sie beginnen, ein Konto für den kommerziellen Marketplace 
 #### <a name="workspaces-view"></a>[Ansicht „Arbeitsbereiche“](#tab/workspaces-view)
 
 1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
-1. Wählen Sie auf der Startseite die Kachel **Marketplace-Angebote** aus.
+1. Wählen Sie auf der Startseite die Kachel **Marktplatzangebote**.
 
     [ ![Screenshot der Kachel „Marketplace-Angebote“ auf der Startseite von Partner Center](./media/workspaces/partner-center-home.png) ](./media/workspaces/partner-center-home.png#lightbox)
 

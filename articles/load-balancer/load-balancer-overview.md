@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 1/25/2021
 ms.author: allensu
-ms.openlocfilehash: 3d3c1d9937382080ea5a735e3f67e9767919366f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 800d52ca0cbc574add0640c8acf41713ed401071
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124740777"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130215238"
 ---
 # <a name="what-is-azure-load-balancer"></a>Was versteht man unter Azure Load Balancer?
 
@@ -63,7 +63,7 @@ Im Anschluss finden Sie einige Schlüsselszenarios für Azure Load Balancer Stan
 
 - Verwenden der **[Portweiterleitung](./tutorial-load-balancer-port-forwarding-portal.md)** zum Zugreifen auf virtuelle Computer in einem virtuellen Netzwerk basierend auf der öffentlichen IP-Adresse und dem Port
 
-- Aktivieren der Unterstützung für den **[Lastenausgleich](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)** für **[IPv6](../virtual-network/ipv6-overview.md)**
+- Aktivieren der Unterstützung für den **[Lastenausgleich](./virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md)** für **[IPv6](../virtual-network/ip-services/ipv6-overview.md)**
 
 - Load Balancer Standard stellt mehrdimensionale Metriken über [Azure Monitor](../azure-monitor/overview.md) bereit.  Diese Metriken können für eine bestimmte Dimension gefiltert, gruppiert und unterteilt werden.  Sie liefern aktuelle und vergangenheitsbezogene Einblicke in die Leistung und Integrität Ihres Diensts. [Erkenntnisse für Azure Load Balancer](./load-balancer-insights.md) bieten ein vorkonfiguriertes Dashboard mit praktischen Visualisierungen für diese Metriken.  Resource Health (Ressourcenintegrität) wird ebenfalls unterstützt. Ausführlichere Informationen finden Sie unter **[Load Balancer Standard-Diagnose mit Metriken, Warnungen und Ressourcenintegrität](load-balancer-standard-diagnostics.md)** .
 

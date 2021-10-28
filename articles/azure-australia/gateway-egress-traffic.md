@@ -6,12 +6,12 @@ ms.service: azure-australia
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: yvettep
-ms.openlocfilehash: 58fccb77131aac8311029cb06372201f2dd4b3bb
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: ded9ebca49183a8fd772fae440370cfd20677eee
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129359558"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130265507"
 ---
 # <a name="controlling-egress-traffic-in-azure-australia"></a>Steuern von ausgehendem Datenverkehr für Azure Australien
 
@@ -177,7 +177,7 @@ Netzwerkschnittstellen sind die Quelle des gesamten ausgehenden Datenverkehrs ei
 |Resource|Link|
 |---|---|
 |*Erstellen, Ändern oder Löschen von Netzwerkschnittstellen* | [https://docs.microsoft.com/azure/virtual-network/virtual-network-network-interface](../virtual-network/virtual-network-network-interface.md) |
-|*IP-Adressierung für Netzwerkschnittstellen*               | [https://docs.microsoft.com/azure/virtual-network/private-ip-addresses](../virtual-network/private-ip-addresses.md)
+|*IP-Adressierung für Netzwerkschnittstellen*               | [https://docs.microsoft.com/azure/virtual-network/private-ip-addresses](../virtual-network/ip-services/private-ip-addresses.md)
 |
 
 ### <a name="vnet-integrated-paas"></a>PaaS mit VNET-Integration
@@ -191,7 +191,7 @@ Beim Bereitstellen von PaaS in einem virtuellen Netzwerk, für das Routing- und 
 | Resource  | Link  |
 | --- | --- |
 | *Integration virtueller Netzwerke für Azure-Dienste* | [https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services](../virtual-network/virtual-network-for-azure-services.md) |
-| *Integrieren Ihrer App in ein virtuelles Azure-Netzwerk: Schrittanleitung* | [https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet](../app-service/web-sites-integrate-with-vnet.md)
+| *Integrieren Ihrer App in ein virtuelles Azure-Netzwerk: Schrittanleitung* | [https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet](../app-service/overview-vnet-integration.md)
 |
 
 ### <a name="public-ip"></a>Öffentliche IP-Adresse
@@ -200,8 +200,8 @@ Beim Bereitstellen von PaaS in einem virtuellen Netzwerk, für das Routing- und 
 
 |Resource|Link|
 |---|---|
-|*Öffentliche IP-Adressen: Übersicht*  | [https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses](../virtual-network/public-ip-addresses.md#public-ip-addresses) |
-|*Erstellen, Ändern oder Löschen einer öffentlichen IP-Adresse* | [https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address](../virtual-network/virtual-network-public-ip-address.md)
+|*Öffentliche IP-Adressen: Übersicht*  | [https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses](../virtual-network/ip-services/public-ip-addresses.md#public-ip-addresses) |
+|*Erstellen, Ändern oder Löschen einer öffentlichen IP-Adresse* | [https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address](../virtual-network/ip-services/virtual-network-public-ip-address.md)
 |
 
 ## <a name="effective-routes"></a>Effektive Routen

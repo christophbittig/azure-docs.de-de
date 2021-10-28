@@ -7,12 +7,12 @@ ms.date: 09/07/2021
 ms.topic: how-to
 ms.service: storage
 ms.subservice: disks
-ms.openlocfilehash: 84b2ea53ebb0b6102edf5bc501e0e1b9b6f21726
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 3206eb5b7092a43561cd114082ac567a63bff61b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124781725"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130237926"
 ---
 # <a name="use-azure-storage-explorer-to-manage-azure-managed-disks"></a>Verwenden von Azure Storage-Explorer zum Verwalten von verwalteten Azure-Datenträgern
 
@@ -146,5 +146,5 @@ Mit Storage-Explorer können Sie einen verwalteten Datenträger innerhalb einer 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Erstellen eines virtuellen Computers anhand einer VHD mithilfe des Azure-Portals](/azure/virtual-machines/windows/create-vm-specialized-portal)
-- [Anfügen eines verwalteten Datenträgers an einen virtuellen Windows-Computer im Azure-Portal](/azure/virtual-machines/windows/attach-managed-disk-portal)
+- [Erstellen eines virtuellen Computers anhand einer VHD mithilfe des Azure-Portals](./windows/create-vm-specialized-portal.md)
+- [Anfügen eines verwalteten Datenträgers an einen virtuellen Windows-Computer im Azure-Portal](./windows/attach-managed-disk-portal.md)

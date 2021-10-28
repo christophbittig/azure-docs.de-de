@@ -11,12 +11,12 @@ ms.topic: guide
 author: MashaMSFT
 ms.author: mathoma
 ms.date: 04/16/2019
-ms.openlocfilehash: dafe702121934a1267f01a861932dc49361e5258
-ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
+ms.openlocfilehash: 2b64353da7de0b7f7d29502695c9d7ea22d6a19f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114688557"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130244678"
 ---
 # <a name="azure-sql-managed-instance-content-reference"></a>Azure SQL Managed Instance: Inhaltsreferenz
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -38,7 +38,7 @@ Dieser Artikel enthält eine Inhaltsreferenz für verschiedene Anleitungen, Skri
 - [Erstellen eines neuen VNETs und Subnetzes](virtual-network-subnet-create-arm-template.md): Konfigurieren Sie das virtuelle Netzwerk und das Subnetz gemäß den [Netzwerkanforderungen](connectivity-architecture-overview.md#network-requirements). 
 - [Konfigurieren eines vorhandenen VNets und Subnetzes](vnet-existing-add-subnet.md): Überprüfen Sie die Netzwerkanforderungen, und konfigurieren Sie das vorhandene virtuelle Netzwerk und Subnetz für die Bereitstellung von SQL Managed Instance. 
 - [Konfigurieren von benutzerdefiniertem DNS](custom-dns-configure.md): Konfigurieren Sie benutzerdefiniertes DNS, um externen Ressourcen von SQL Managed Instance aus den Zugriff auf benutzerdefinierte Domänen über einen Verbindungsserver von DB-E-Mal-Profilen zu ermöglichen. 
-- [Synchronisieren der Netzwerkkonfiguration](azure-app-sync-network-configuration.md): Aktualisieren Sie den Netzwerkkonfigurationsplan, wenn Sie nach der [Integration ihrer App in ein virtuelles Azure-Netzwerk](../../app-service/web-sites-integrate-with-vnet.md) keine Verbindung herstellen können.
+- [Synchronisieren der Netzwerkkonfiguration](azure-app-sync-network-configuration.md): Aktualisieren Sie den Netzwerkkonfigurationsplan, wenn Sie nach der [Integration ihrer App in ein virtuelles Azure-Netzwerk](../../app-service/overview-vnet-integration.md) keine Verbindung herstellen können.
 - [Ermitteln der IP-Adresse des Verwaltungsendpunkts](management-endpoint-find-ip-address.md): Bestimmen Sie den öffentlichen Endpunkt, den SQL Managed Instance für Verwaltungszwecke verwendet. 
 - [Überprüfen des integrierten Firewallschutzes](management-endpoint-verify-built-in-firewall.md): Vergewissern Sie sich, dass SQL Managed Instance Datenverkehr nur über die erforderlichen Ports und andere integrierte Firewallregeln zulässt. 
 - [Herstellen einer Verbindung mit Anwendungen](connect-application-instance.md): Lernen Sie verschiedene Möglichkeiten zum Verbinden von Anwendungen mit SQL Managed Instance kennen.

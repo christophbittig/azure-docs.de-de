@@ -10,12 +10,12 @@ ms.date: 06/30/2021
 ms.topic: include
 ms.custom: include file
 ms.author: dademath
-ms.openlocfilehash: 287c7c2cdc709f4026ddd4dfa744119568b7950c
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 2cf3875eef9dcad7ba85bcf12c52f03aa7103aca
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "114201146"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130287366"
 ---
 Das **Hero-Beispiel für Gruppenanrufe für iOS** von Azure Communication Services veranschaulicht, wie das Calling iOS SDK von Communication Services verwendet werden kann, um eine Benutzeroberfläche für Gruppenanrufe mit Sprach- und Videofunktion zu erstellen. In dieser Beispiel-Schnellstartanleitung wird beschrieben, wie Sie das Beispiel einrichten und ausführen. Es ist auch eine Übersicht über das Beispiel vorhanden, um Informationen zum Kontext bereitzustellen.
 
@@ -101,7 +101,7 @@ Wenn Sie ein Communication Services-Abonnement bereinigen und entfernen möchten
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- Machen Sie sich mit der Verwendung des [Calling SDK](../../quickstarts/voice-video-calling/calling-client-samples.md) vertraut
+- Machen Sie sich mit der Verwendung des [Calling SDK](../../quickstarts/voice-video-calling/getting-started-with-calling.md) vertraut
 - Informieren Sie sich über die [Funktionsweise von Anrufen](../../concepts/voice-video-calling/about-call-types.md).
 
 ### <a name="additional-reading"></a>Zusätzliche Lektüre

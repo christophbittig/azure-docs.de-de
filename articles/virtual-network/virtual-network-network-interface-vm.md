@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
-ms.openlocfilehash: 847f8dbd2d8f4064f12333348a4f03e5c5fcc611
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: fcdc5c86c1b5cf39fb4140afc1db661db8ead11d
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107774249"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130224827"
 ---
 # <a name="add-network-interfaces-to-or-remove-network-interfaces-from-virtual-machines"></a>Hinzufügen von Netzwerkschnittstellen zu virtuellen Computern oder Entfernen von Netzwerkschnittstellen aus diesen
 
 Hier erfahren Sie, wie Sie beim Erstellen eines virtuellen Azure-Computers (Virtual Machine, VM) eine vorhandene Netzwerkschnittstelle hinzufügen. Außerdem erfahren Sie, wie Sie einem vorhandenen virtuellen Computer im Zustand „Beendet (Zuordnung aufgehoben)“ Netzwerkschnittstellen hinzufügen oder von diesem entfernen. Eine Netzwerkschnittstelle ermöglicht einem virtuellen Azure-Computer die Kommunikation mit dem Internet sowie mit Azure und lokalen Ressourcen. Ein virtueller Computer kann über eine oder mehrere Netzwerkschnittstellen verfügen. 
 
-Weitere Informationen zum Hinzufügen, Ändern oder Entfernen von IP-Adressen für eine Netzwerkschnittstelle finden Sie unter [Verwalten von IP-Adressen für Netzwerkschnittstellen](virtual-network-network-interface-addresses.md). Informationen zum Erstellen, Ändern oder Löschen von Netzwerkschnittstellen finden Sie unter [Verwalten von Netzwerkschnittstellen](virtual-network-network-interface.md).
+Weitere Informationen zum Hinzufügen, Ändern oder Entfernen von IP-Adressen für eine Netzwerkschnittstelle finden Sie unter [Verwalten von IP-Adressen für Netzwerkschnittstellen](./ip-services/virtual-network-network-interface-addresses.md). Informationen zum Erstellen, Ändern oder Löschen von Netzwerkschnittstellen finden Sie unter [Verwalten von Netzwerkschnittstellen](virtual-network-network-interface.md).
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -96,7 +96,7 @@ Sie können die derzeit zu einem virtuellen Computer hinzugefügten Netzwerkschn
 
 3. Wählen Sie auf der VM-Menüleiste die Option **Netzwerk** aus.
 
-Weitere Informationen zu Netzwerkschnittstellen-Einstellungen finden Sie im Artikel [Verwalten von Netzwerkschnittstellen](virtual-network-network-interface.md). Weitere Informationen zum Hinzufügen, Ändern oder Entfernen der einer Netzwerkschnittstelle zugewiesenen IP-Adressen finden Sie unter [Verwalten von IP-Adressen für Netzwerkschnittstellen](virtual-network-network-interface-addresses.md).
+Weitere Informationen zu Netzwerkschnittstellen-Einstellungen finden Sie im Artikel [Verwalten von Netzwerkschnittstellen](virtual-network-network-interface.md). Weitere Informationen zum Hinzufügen, Ändern oder Entfernen der einer Netzwerkschnittstelle zugewiesenen IP-Adressen finden Sie unter [Verwalten von IP-Adressen für Netzwerkschnittstellen](./ip-services/virtual-network-network-interface-addresses.md).
 
 ### <a name="commands"></a>Befehle
 
@@ -147,7 +147,7 @@ Weitere Informationen zu Netzwerkschnittstellen-Einstellungen finden Sie im Arti
 
 - Sie können Netzwerkschnittstellen auf demselben virtuellen Computer mit unterschiedlichen Subnetzen in einem virtuellen Netzwerk verbinden. Die Netzwerkschnittstellen müssen jedoch alle mit demselben virtuellen Netzwerk verbunden sein.
 
-- Sie können eine beliebige IP-Adresse für eine beliebige IP-Konfiguration einer beliebigen primären oder sekundären Netzwerkschnittstelle einem Back-End-Pool von Azure Load Balancer hinzufügen. Bisher konnte nur die primäre IP-Adresse für die primäre Netzwerkschnittstelle einem Back-End-Pool hinzugefügt werden. Weitere Informationen zu IP-Adressen und -Konfigurationen finden Sie im Artikel [Hinzufügen, Ändern oder Entfernen von IP-Adressen](virtual-network-network-interface-addresses.md).
+- Sie können eine beliebige IP-Adresse für eine beliebige IP-Konfiguration einer beliebigen primären oder sekundären Netzwerkschnittstelle einem Back-End-Pool von Azure Load Balancer hinzufügen. Bisher konnte nur die primäre IP-Adresse für die primäre Netzwerkschnittstelle einem Back-End-Pool hinzugefügt werden. Weitere Informationen zu IP-Adressen und -Konfigurationen finden Sie im Artikel [Hinzufügen, Ändern oder Entfernen von IP-Adressen](./ip-services/virtual-network-network-interface-addresses.md).
 
 - Beim Löschen eines virtuellen Computers werden die an ihn angefügten Netzwerkschnittstellen nicht gelöscht. Wenn Sie einen virtuellen Computer löschen, werden die Netzwerkschnittstellen von dem virtuellen Computer getrennt. Sie können diese Netzwerkschnittstellen zu anderen VMs hinzufügen oder löschen.
 
@@ -162,5 +162,5 @@ Informationen zum Erstellen eines virtuellen Computers mit mehreren Netzwerkschn
 |Aufgabe|Tool|
 |---|---|
 |Erstellen eines virtuellen Computers mit mehreren Netzwerkschnittstellenkarten (NICs)|[CLI](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
-|Erstellen eines virtuellen Computers mit einer NIC und mehreren IPv4-Adressen|[CLI](virtual-network-multiple-ip-addresses-cli.md), [PowerShell](virtual-network-multiple-ip-addresses-powershell.md)|
+|Erstellen eines virtuellen Computers mit einer NIC und mehreren IPv4-Adressen|[CLI](./ip-services/virtual-network-multiple-ip-addresses-cli.md), [PowerShell](./ip-services/virtual-network-multiple-ip-addresses-powershell.md)|
 |Erstellen eines virtuellen Computers mit einer NIC und einer IPv6-Adresse (mit Azure Load Balancer)|[CLI](../load-balancer/load-balancer-ipv6-internet-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [PowerShell](../load-balancer/load-balancer-ipv6-internet-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [Azure Resource Manager-Vorlage](../load-balancer/load-balancer-ipv6-internet-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|

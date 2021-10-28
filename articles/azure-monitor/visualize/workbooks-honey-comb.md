@@ -6,12 +6,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/18/2020
-ms.openlocfilehash: 51941e9b8ef7165e3d5756d8c4fa9ed3520bc460
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: ba24669f04966d9ee3cfa5af4cd677e83ad3ea7a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130132358"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130256608"
 ---
 # <a name="honey-comb-visualizations"></a>Wabenförmige Visualisierungen
 
@@ -93,4 +93,4 @@ Ersteller von Honigwaben können die Inhalte für die verschiedenen Teile eines 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informieren Sie sich, wie Sie einen [Renderer für zusammengesetzte Balken](workbooks-composite-bar.md) erstellen.
-- Informieren Sie sich über das [Importieren von Azure Monitor-Protokolldaten in Power BI](./powerbi.md).
+- Informieren Sie sich über das [Importieren von Azure Monitor-Protokolldaten in Power BI](../logs/log-powerbi.md).

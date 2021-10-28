@@ -9,12 +9,12 @@ ms.subservice: nat
 ms.topic: tutorial
 ms.date: 03/19/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 5ef476f5de715d1f80823bf6d61316c1af406737
-ms.sourcegitcommit: 47491ce44b91e546b608de58e6fa5bbd67315119
+ms.openlocfilehash: ffc5b04928842b940a369ef00807bf0a2e1b0230
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122202058"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130249018"
 ---
 # <a name="tutorial-integrate-a-nat-gateway-with-a-public-load-balancer-using-the-azure-portal"></a>Tutorial: Integrieren eines NAT-Gateways in einen öffentlichen Lastenausgleich über das Azure-Portal
 
@@ -132,7 +132,7 @@ Während der Erstellung des Lastenausgleichs konfigurieren Sie Folgendes:
 8. Wählen Sie für den **IP-Typ** die Option **IP-Adresse** aus.
 
     > [!NOTE]
-    > Weitere Informationen zu IP-Präfixen finden Sie unter [Präfix für öffentliche IP-Adressen](../../virtual-network/public-ip-address-prefix.md).
+    > Weitere Informationen zu IP-Präfixen finden Sie unter [Präfix für öffentliche IP-Adressen](../ip-services/public-ip-address-prefix.md).
 
 9. Wählen Sie unter **Öffentliche IP-Adresse** die Option **Neu erstellen** aus.
 
@@ -157,7 +157,7 @@ Während der Erstellung des Lastenausgleichs konfigurieren Sie Folgendes:
 
 18. Wählen Sie unter **Virtuelle Netzwerke** die Option **myVNet** aus.
 
-19. Wählen Sie unter **Backend Pool Configuration** (Konfiguration des Back-End-Pools) die Option **NIC** oder **IP-Adresse** aus.
+19. Wählen Sie unter **Back-End-Pool-Konfiguration** die Option **Netzwerkschnittstelle** oder **IP-Adresse** aus.
 
 20. Wählen Sie unter **IP-Version** die Option **IPv4** oder **IPv6** aus.
 
@@ -173,7 +173,7 @@ Während der Erstellung des Lastenausgleichs konfigurieren Sie Folgendes:
     | ------- | ----- |
     | Name | Geben Sie **myHTTPRule** ein. |
     | IP-Version | Wählen Sie abhängig von Ihren Anforderungen **IPv4** oder **IPv6** aus. |
-    | Front-End-IP-Adresse | Wählen Sie **LoadBalancerFrontend** aus. |
+    | Front-End-IP-Adresse | Wählen Sie **LoadBalancerFrontEnd** aus. |
     | Protocol | Wählen Sie **TCP** aus. |
     | Port | Geben Sie **80** ein. |
     | Back-End-Port | Geben Sie **80** ein. |
@@ -187,7 +187,7 @@ Während der Erstellung des Lastenausgleichs konfigurieren Sie Folgendes:
 
 25. Wählen Sie **Hinzufügen** aus.
 
-26. Wählen Sie unten auf der Seite die blaue Schaltfläche **Überprüfen + erstellen** aus.
+26. Klicken Sie unten auf der Seite auf die blaue Schaltfläche **Überprüfen + erstellen**.
 
 27. Klicken Sie auf **Erstellen**.
 

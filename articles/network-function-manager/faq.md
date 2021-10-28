@@ -2,18 +2,18 @@
 title: Häufig gestellte Fragen zum Netzwerkfunktionsmanager
 titleSuffix: Azure Network Function Manager
 description: Hier finden Sie häufig gestellte Fragen zum Netzwerkfunktionsmanager.
-author: cherylmc
+author: prmitt
 ms.service: network-function-manager
 ms.topic: article
 ms.date: 06/30/2021
-ms.author: cherylmc
+ms.author: prmitt
 ms.custom: references_regions
-ms.openlocfilehash: 902b53e48b7d16f06511a0d21495cf6e191f92e2
-ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+ms.openlocfilehash: 64994838cd173ff1d48dcfce9bd75d2a69aadf91
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122356511"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130232212"
 ---
 # <a name="azure-network-function-manager-faq-preview"></a>Häufig gestellte Fragen zum Netzwerkfunktionsmanager (Vorschau)
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 10/04/2021
 ms.author: b-juche
-ms.openlocfilehash: 546f3ad04a371277903f9b11f6d62bba50794051
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 738e3d6cb3b27180cd8337e09a72fbe3a0639edf
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129536250"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130240051"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Erstellen eines SMB-Volumes für Azure NetApp Files
 
@@ -171,6 +171,6 @@ Sie können Berechtigungen für eine Datei oder einen Ordner festlegen, indem Si
 * [Konfigurieren von ADDS LDAP über TLS für Azure NetApp Files](configure-ldap-over-tls.md) 
 * [Aktivieren der fortlaufenden Verfügbarkeit auf den vorhandenen SMB-Volumes](enable-continuous-availability-existing-SMB.md)
 * [SMB-Verschlüsselung](azure-netapp-files-smb-performance.md#smb-encryption)
-* [Problembehandlung für SMB-Volumes und Volumes mit dualem Protokoll](troubleshoot-dual-protocol-volumes.md)
+* [Behandeln von Volumefehlern für Azure NetApp Files](troubleshoot-volumes.md)
 * [Erfahren Sie mehr über die Integration virtueller Netzwerke für Azure-Dienste](../virtual-network/virtual-network-for-azure-services.md)
 * [Installieren einer neuen Active Directory-Gesamtstruktur mit der Azure CLI](/windows-server/identity/ad-ds/deploy/virtual-dc/adds-on-azure-vm)

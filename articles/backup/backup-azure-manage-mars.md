@@ -4,12 +4,12 @@ description: Erfahren Sie etwas über das Verwalten und Überwachen von MARS-Age
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/05/2021
-ms.openlocfilehash: 525bdff82c224b02b941354983276747b483ae56
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: db7bd057cc2f781b1a55b62f28170fe462b11f39
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129535211"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130233561"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Verwalten von MARS-Agent-Sicherungen (Microsoft Azure Recovery Services) mit dem Azure Backup-Dienst
 
@@ -170,7 +170,7 @@ Eine Passphrase wird zum Verschlüsseln und Entschlüsseln von Daten während de
 
 ## <a name="validate-passphrase"></a>Überprüfen der Passphrase
 
-Ab MARS-Agent-Version 2.0.9190.0 müssen Sie Ihre Passphrase überprüfen, um sicherzustellen, dass sie den [aktualisierten Anforderungen](/azure/backup/backup-azure-file-folder-backup-faq#what-characters-are-allowed-for-the-passphrase-) entspricht.
+Ab MARS-Agent-Version 2.0.9190.0 müssen Sie Ihre Passphrase überprüfen, um sicherzustellen, dass sie den [aktualisierten Anforderungen](./backup-azure-file-folder-backup-faq.yml#what-characters-are-allowed-for-the-passphrase-) entspricht.
 
 Führen Sie die folgenden Schritte aus, um Ihre Passphrase zu überprüfen:
 

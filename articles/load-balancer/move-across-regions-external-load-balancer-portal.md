@@ -6,12 +6,12 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: da37816b68e9984fdf801e3e84d50a57bf290e96
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: b9eabb4f49a533c97177dc0598e425ab63b20ec5
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129273550"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130258713"
 ---
 # <a name="move-an-external-load-balancer-to-another-region-by-using-the-azure-portal"></a>Verschieben eines externen Lastenausgleichs in eine andere Region über das Azure-Portal
 
@@ -110,7 +110,7 @@ Die folgenden Schritte zeigen, wie Sie den externen Lastenausgleich für die Ver
             },
         ```
 
-        Informationen zu den Unterschieden zwischen den SKUs „basic“ und „standard“ für öffentliche IP-Adressen finden Sie unter [Erstellen, Ändern oder Löschen einer öffentlichen IP-Adresse](../virtual-network/virtual-network-public-ip-address.md).
+        Informationen zu den Unterschieden zwischen den SKUs „basic“ und „standard“ für öffentliche IP-Adressen finden Sie unter [Erstellen, Ändern oder Löschen einer öffentlichen IP-Adresse](../virtual-network/ip-services/virtual-network-public-ip-address.md).
 
     * **Zuweisungsmethode für öffentliche IP** und **Leerlauftimeout**: Sie können die Zuweisungsmethode für die öffentliche IP-Adresse ändern, indem Sie die Eigenschaft **publicIPAllocationMethod** von **Dynamic** in **Static** oder von **Static** in **Dynamic** ändern. Sie können das Leerlauftimeout ändern, indem Sie die Eigenschaft **idleTimeoutInMinutes** in den gewünschten Wert ändern. Der Standardwert ist **4**.
 
@@ -136,7 +136,7 @@ Die folgenden Schritte zeigen, wie Sie den externen Lastenausgleich für die Ver
 
         ```
 
-        Informationen zu den Zuweisungsmethoden und den Werten für das Leerlauftimeout finden Sie unter [Erstellen, Ändern oder Löschen einer öffentlichen IP-Adresse](../virtual-network/virtual-network-public-ip-address.md).
+        Informationen zu den Zuweisungsmethoden und den Werten für das Leerlauftimeout finden Sie unter [Erstellen, Ändern oder Löschen einer öffentlichen IP-Adresse](../virtual-network/ip-services/virtual-network-public-ip-address.md).
 
  
 13. Wählen Sie im Online-Editor die Option **Speichern** aus.

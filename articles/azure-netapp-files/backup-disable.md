@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/27/2021
 ms.author: b-juche
-ms.openlocfilehash: 1254a9884063fce100152f370a434c55ec2ae207
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 1555a1c42f6365202787750f149b345ccd0cd55c
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129095016"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130224141"
 ---
 # <a name="disable-backup-functionality-for-a-volume"></a>Deaktivieren der Sicherungsfunktionalität für ein Volume 
 
@@ -50,6 +50,6 @@ Wenn ein Volume gelöscht wird, die Sicherungsrichtlinie vor dem Löschen des Vo
 * [Durchsuchen von Sicherungen](backup-search.md)
 * [Wiederherstellen einer Sicherung auf einem neuen Volume](backup-restore-new-volume.md)
 * [Löschen von Sicherungen eines Volumes](backup-delete.md)
-* [Volumesicherungsmetriken](azure-netapp-files-metrics.md#volume-backup-metrics)
-* [Häufig gestellte Fragen zur Azure NetApp Files-Sicherung](azure-netapp-files-faqs.md#azure-netapp-files-backup-faqs)
+* [Metriken zur Volume-Sicherung](azure-netapp-files-metrics.md#volume-backup-metrics)
+* [Häufig gestellte Fragen zur Azure NetApp Files-Sicherung](faq-backup.md)
 

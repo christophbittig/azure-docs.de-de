@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 09/22/2021
-ms.openlocfilehash: 24cb978a20bc3a6e2385ed37994389abb6d32a32
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6ad1e2819a2bd71d00943e4df11b50eb2f0ceb18
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128700231"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130256143"
 ---
 # <a name="using-azure-policy-to-enforce-azure-active-directory-only-authentication-with-azure-sql"></a>Verwendung von Azure-Richtlinien zur Erzwingung der ausschließlichen Azure Active Directory-Authentifizierung mit Azure SQL
 
@@ -33,7 +33,7 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 ## <a name="prerequisite"></a>Voraussetzung
 
-- Sie haben die Berechtigung, Azure-Richtlinien zu verwalten. Weitere Informationen finden Sie unter [Azure RBAC-Berechtigungen in Azure Policy](/azure/governance/policy/overview#azure-rbac-permissions-in-azure-policy).
+- Sie haben die Berechtigung, Azure-Richtlinien zu verwalten. Weitere Informationen finden Sie unter [Azure RBAC-Berechtigungen in Azure Policy](../../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy).
 
 ## <a name="create-an-azure-policy"></a>Azure-Richtlinie erstellen
 

@@ -10,12 +10,12 @@ ms.author: justinha
 author: calui
 manager: daveba
 ms.reviewer: calui
-ms.openlocfilehash: 0e925e520b5136750dc7ef9151d7e5741176525c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 7cee43e911c2713b13f7e8e729a00b4c2379ce22
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128595615"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130251089"
 ---
 # <a name="sign-in-to-azure-ad-with-email-as-an-alternate-login-id-preview"></a>Anmeldung bei Azure AD mit einer E-Mail-Adresse als alternative Anmelde-ID (Vorschau)
 
@@ -64,7 +64,6 @@ In der aktuellen Vorschauversion gelten die folgenden Einschränkungen für die 
     * [In Azure AD eingebundene Hybridgeräte](../devices/concept-azure-ad-join-hybrid.md)
     * [In Azure AD eingebundene Geräte](../devices/concept-azure-ad-join.md)
     * [Bei Azure AD registrierte Geräte](../devices/concept-azure-ad-register.md)
-    * [Nahtloses einmaliges Anmelden](../hybrid/how-to-connect-sso.md)
     * [Anmeldungen mit Kennwortanmeldeinformationen des Ressourcenbesitzers (Resource Owner Password Credentials, ROPC)](../develop/v2-oauth-ropc.md)
     * Anwendungen mit Legacyauthentifizierung wie POP3 und SMTP
     * Skype for Business

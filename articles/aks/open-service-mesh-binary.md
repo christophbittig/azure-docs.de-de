@@ -7,12 +7,12 @@ ms.date: 8/26/2021
 ms.custom: mvc, devx-track-azurecli
 ms.author: pgibson
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 83eec8682291a74bc9b23bf4ff1326cee7134e7f
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: fb3619ed95f0636ae83829e1ee1c818545dc86c9
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129534943"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130227338"
 ---
 # <a name="download-the-open-service-mesh-osm-client-library"></a>Herunterladen der OSM-Clientbibliothek (Open Service Mesh, OSM)
 In diesem Artikel wird erläutert, wie Sie die OSM-Clientbibliothek herunterladen, die zum Betreiben und Konfigurieren des OSM-Add-Ons für AKS verwendet werden soll.
@@ -41,4 +41,4 @@ In diesem Artikel wird erläutert, wie Sie die OSM-Clientbibliothek herunterlade
 > Versuchen Sie nicht, OSM mithilfe der Binärdatei zu installieren `osm install` . Dies führt zu einer Installation von OSM, die nicht als Add-on für AKS integriert ist.
 
 > [!NOTE]
-> Es wird empfohlen, die OSM-CLI so zu konfigurieren, dass die [Benutzeroberfläche des AKS-Add-Ons für OSM](/open-service-mesh-customize-addon-experience.md) nach der Installation der Binärdatei angepasst wird, bevor Sie die OSM-CLI verwenden. 
+> Es wird empfohlen, die OSM-CLI so zu konfigurieren, dass die [Benutzeroberfläche des AKS-Add-Ons für OSM](./open-service-mesh-customize-add-on-experience.md) nach der Installation der Binärdatei angepasst wird, bevor Sie die OSM-CLI verwenden.

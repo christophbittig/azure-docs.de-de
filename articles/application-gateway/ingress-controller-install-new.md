@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 95a8f3090fd1599cbf30f783df1c501fa797cdff
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 9148bbf83a8fadc6c71fd995fd4a444e7c6d7db4
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112287945"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130253132"
 ---
 # <a name="how-to-install-an-application-gateway-ingress-controller-agic-using-a-new-application-gateway"></a>Installieren eines Application Gateway-Eingangscontrollers (Application Gateway Ingress Controller, AGIC) mithilfe eines neuen Application Gateways
 
@@ -74,7 +74,7 @@ In diesem Schritt werden Ihrem Abonnement die folgenden Komponenten hinzugefügt
 - [Azure Kubernetes Service](../aks/intro-kubernetes.md)
 - [Application Gateway](./overview.md) v2
 - [Virtuelles Netzwerk](../virtual-network/virtual-networks-overview.md) mit 2 [Subnetzen](../virtual-network/virtual-networks-overview.md)
-- [Öffentliche IP-Adresse](../virtual-network/virtual-network-public-ip-address.md)
+- [Öffentliche IP-Adresse](../virtual-network/ip-services/virtual-network-public-ip-address.md)
 - [Verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md), die von der [AAD-Podidentität verwendet wird](https://github.com/Azure/aad-pod-identity/blob/master/README.md)
 
 1. Laden Sie die Azure Resource Manager-Vorlage herunter, und ändern Sie die Vorlage nach Bedarf.
@@ -250,7 +250,7 @@ So installieren Sie die AAD-Podidentität in Ihrem Cluster:
     ```
 
    Werte:
-     - `verbosityLevel`: Legt die Ausführlichkeitsebene der AGIC-Protokollinfrastruktur fest. Unter [Protokolliergrade](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/463a87213bbc3106af6fce0f4023477216d2ad78/docs/troubleshooting.yml#logging-levels) finden Sie mögliche Werte.
+     - `verbosityLevel`: Legt die Ausführlichkeitsebene der AGIC-Protokollinfrastruktur fest. Unter [Protokolliergrade](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/463a87213bbc3106af6fce0f4023477216d2ad78/docs/troubleshooting.md#logging-levels) finden Sie mögliche Werte.
      - `appgw.subscriptionId`: Die ID des Azure-Abonnements, in dem sich die Application Gateway-Instanz befindet. Beispiel: `a123b234-a3b4-557d-b2df-a0bc12de1234`
      - `appgw.resourceGroup`: Der Name der Azure-Ressourcengruppe, in der die Application Gateway-Instanz erstellt wurde. Beispiel: `app-gw-resource-group`
      - `appgw.name`: Name der Application Gateway-Instanz. Beispiel: `applicationgatewayd0f0`

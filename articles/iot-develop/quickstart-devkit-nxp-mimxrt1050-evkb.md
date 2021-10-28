@@ -7,12 +7,12 @@ ms.service: iot-develop
 ms.devlang: c
 ms.topic: quickstart
 ms.date: 06/04/2021
-ms.openlocfilehash: 7dcba5490d3f341e68b07aa798e9ca0ffa1666e7
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: ca9b995ee02f9775d6e3fc86d8bd3b53dd6d30d1
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112122096"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130259485"
 ---
 # <a name="quickstart-connect-an-nxp-mimxrt1050-evkb-evaluation-kit-to-iot-central"></a>Schnellstart: Verbinden eines NXP MIMXRT1050-EVKB Evaluation-Kits mit IoT Central
 
@@ -31,7 +31,7 @@ Sie führen die folgenden Aufgaben aus:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* PC mit Microsoft Windows 10
+* PC mit Windows 10
 * [Git](https://git-scm.com/downloads) zum Klonen des Repositorys
 * Hardware
 
@@ -226,7 +226,7 @@ Wählen Sie auf der Geräteseite die Registerkarte **Info** aus.
 
 ## <a name="troubleshoot-and-debug"></a>Problembehandlung und Debuggen
 
-Wenn beim Erstellen des Gerätecodes, beim Einspielen per Flashvorgang auf dem Gerät oder beim Herstellen einer Verbindung Probleme auftreten, helfen Ihnen die Informationen zur [Problembehandlung](troubleshoot-embedded-device-quickstarts.md) weiter.
+Wenn beim Erstellen des Gerätecodes, beim Einspielen per Flashvorgang auf dem Gerät oder beim Herstellen einer Verbindung Probleme auftreten, lesen Sie [Problembehandlung](troubleshoot-embedded-device-quickstarts.md).
 
 Informationen zum Debuggen der Anwendung finden Sie unter [Debuggen mit Visual Studio Code](https://github.com/azure-rtos/getting-started/blob/master/docs/debugging.md).
 

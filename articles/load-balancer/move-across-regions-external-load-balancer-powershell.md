@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/17/2019
 ms.author: allensu
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: dcc1b584956bb4cee2865cd264b91b389ace19e4
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.openlocfilehash: 848d3264dbc31d01a767871d1e4783c8d383841d
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110689332"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130258694"
 ---
 # <a name="move-azure-external-load-balancer-to-another-region-using-azure-powershell"></a>Verschieben des externen Azure Load Balancers in eine andere Region mit Azure PowerShell
 
@@ -132,7 +132,7 @@ Die folgenden Schritte zeigen, wie Sie den externen Load Balancer für die Versc
                     },
          ```
 
-         Weitere Informationen zu den Unterschieden zwischen den SKUs „basic“ und „standard“ für öffentliche IP-Adressen finden Sie unter [Erstellen, Ändern oder Löschen einer öffentlichen IP-Adresse](../virtual-network/virtual-network-public-ip-address.md).
+         Weitere Informationen zu den Unterschieden zwischen den SKUs „basic“ und „standard“ für öffentliche IP-Adressen finden Sie unter [Erstellen, Ändern oder Löschen einer öffentlichen IP-Adresse](../virtual-network/ip-services/virtual-network-public-ip-address.md).
 
     * **Zuweisungsmethode für öffentliche IP** und **Leerlauftimeout**: Sie können beide Optionen in der Vorlage ändern, indem Sie die Eigenschaft **publicIPAllocationMethod** aus **Dynamic** in **Static** oder aus **Static** in **Dynamic** ändern. Das Leerlauftimeout kann geändert werden, indem Sie die Eigenschaft **idleTimeoutInMinutes** auf den gewünschten Wert festlegen.  Der Standardwert ist **4**:
 
@@ -159,7 +159,7 @@ Die folgenden Schritte zeigen, wie Sie den externen Load Balancer für die Versc
                 }            
          ```
 
-        Weitere Informationen zu den Zuweisungsmethoden und den Werten für das Leerlauftimeout finden Sie unter [Erstellen, Ändern oder Löschen einer öffentlichen IP-Adresse](../virtual-network/virtual-network-public-ip-address.md).
+        Weitere Informationen zu den Zuweisungsmethoden und den Werten für das Leerlauftimeout finden Sie unter [Erstellen, Ändern oder Löschen einer öffentlichen IP-Adresse](../virtual-network/ip-services/virtual-network-public-ip-address.md).
 
 
 9. Speichern Sie die Datei **\<resource-group-name>.json**.

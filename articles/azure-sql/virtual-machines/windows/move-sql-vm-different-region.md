@@ -15,12 +15,12 @@ ms.date: 07/30/2019
 ms.author: pamela
 ms.reviewer: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: d35912c6edafed201a037c8c865746fb299cb1d7
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 00b2b42090e88d375f12daccdae37ad0b2ba28b9
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130163794"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130219373"
 ---
 # <a name="move-a-sql-server-vm-to-another-region-within-azure-with-azure-site-recovery"></a>Verschieben einer SQL Server-VM in eine andere Azure-Region mit Azure Site Recovery
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -66,7 +66,7 @@ Bereiten Sie sowohl die Quell-SQL Server-VM als auch die Zielregion für die Ver
 - Informationen zum Erstellen der für Sie relevanten und am häufigsten verwendeten Netzwerkressourcen auf Grundlage der Konfiguration des virtuellen Quellcomputers finden Sie in der folgenden Dokumentation: 
     - [Netzwerksicherheitsgruppen](../../../virtual-network/tutorial-filter-network-traffic.md) 
     - [Load Balancer](../../../load-balancer/quickstart-load-balancer-standard-internal-portal.md)
-    - [Öffentliche IP-Adresse](../../../virtual-network/virtual-network-public-ip-address.md)
+    - [Öffentliche IP-Adresse](../../../virtual-network/ip-services/virtual-network-public-ip-address.md)
     - Informationen zu weiteren Netzwerkkomponenten finden Sie in der [Netzwerkdokumentation](../../../virtual-network/virtual-networks-overview.md).
 - Erstellen Sie manuell ein nicht für die Produktion vorgesehenes Netzwerk in der Zielregion, wenn Sie die Konfiguration vor dem endgültigen Verschieben in die Zielregion testen möchten. Dieser Schritt wird empfohlen, weil dadurch das Produktionsnetzwerk möglichst wenig beeinträchtigt wird. 
 

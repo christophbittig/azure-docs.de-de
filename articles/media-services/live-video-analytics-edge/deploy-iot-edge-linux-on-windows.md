@@ -3,12 +3,12 @@ title: Bereitstellen in einem IoT Edge für Linux unter Windows mit Live Video A
 description: Dieser Artikel enthält eine Anleitung für die Bereitstellung für IoT Edge für Linux auf einem Windows-Gerät mit Live Video Analytics.
 ms.topic: how-to
 ms.date: 02/18/2021
-ms.openlocfilehash: c504ecf2bb7405ee49d6e9ee94f069336924f5c0
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 315501540e38340285e113dace2b68a46c3f6493
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110378093"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130225716"
 ---
 # <a name="deploy-to-an-iot-edge-for-linux-on-windows-eflow-device-with-live-video-analytics"></a>Bereitstellen in einem EFLOW-Gerät (IoT Edge für Linux unter Windows) mit Live Video Analytics
 
@@ -31,7 +31,7 @@ Hier ist der Inhalt und Ablauf des Dokuments dargestellt. Sie können fünf einf
 
 :::image type="content" source="./media/deploy-iot-edge-linux-on-windows/eflow.png" alt-text="Diagramm: IoT Edge für Linux unter Windows (EFLOW)":::
 
-1. [Installieren Sie EFLOW](../../iot-edge/how-to-install-iot-edge-on-windows.md) auf Ihrem Windows-Gerät. 
+1. [Installieren Sie EFLOW](../../iot-edge/how-to-provision-single-device-linux-on-windows-symmetric.md) auf Ihrem Windows-Gerät. 
 
     1. Falls Sie Ihren Windows-PC verwenden, wird auf der Startseite von [Windows Admin Center](/windows-server/manage/windows-admin-center/overview) unter der Liste mit den Verbindungen eine Verbindung mit dem lokalen Host angezeigt. Diese stellt den PC dar, auf dem Sie Windows Admin Center ausführen. 
     1. Alle weiteren von Ihnen verwalteten Server, PCs oder Cluster werden hier ebenfalls aufgeführt.

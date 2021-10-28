@@ -4,12 +4,12 @@ ms.service: machine-learning
 ms.topic: include
 ms.date: 08/26/2021
 ms.author: larryfr
-ms.openlocfilehash: 6ccdeea7b283ab4e4674e2a7959ead4553c43f2f
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: 5d9575afdad08bed279f2f9ea3f9a455d54338a5
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130078017"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130241863"
 ---
 Wenn Sie eine Azure Machine Learning-__Compute-Instanz__ (mit öffentlicher IP-Adresse) oder einen -__Computecluster__ verwenden, gestatten Sie den eingehenden Datenverkehr von Azure Batch Management- und Azure Machine Learning-Diensten. Compute-Instanzen ohne öffentliche IP-Adresse (Vorschau) erfordern diese eingehende Kommunikation nicht. Eine Netzwerksicherheitsgruppe, die diesen Datenverkehr zulässt, wird dynamisch für Sie erstellt. Sie müssen jedoch möglicherweise auch benutzerdefinierte Routen (UDR) erstellen, wenn Sie über eine Firewall verfügen. Wenn Sie eine benutzerdefinierte Route für diesen Datenverkehr erstellen, können Sie entweder **IP-Adressen** oder **Diensttags** verwenden, um den Datenverkehr weiterzuleiten.
 
@@ -49,4 +49,4 @@ az network route-table route create -g MyResourceGroup --route-table-name MyRout
 
 ---
 
-Informationen zum Konfigurieren von benutzerdefinierten Routen finden Sie unter [Weiterleiten von Netzwerkdatenverkehr mit einer Routingtabelle](/azure/virtual-network/tutorial-create-route-table-portal).
+Informationen zum Konfigurieren von benutzerdefinierten Routen finden Sie unter [Weiterleiten von Netzwerkdatenverkehr mit einer Routingtabelle](../articles/virtual-network/tutorial-create-route-table-portal.md).

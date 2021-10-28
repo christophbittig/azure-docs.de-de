@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: cfdb79885563cbc0791ae3f3b2effd54ea3123a7
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: 6840ceb7a6b89820e14465812490cfb30b305d3a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122867489"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130224759"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>Beheben von Problemen mit dem Peering virtueller Netzwerke
 
@@ -218,7 +218,7 @@ So beheben Sie dieses Problem
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
-* [Integrieren Ihrer App in ein Azure Virtual Network](../app-service/web-sites-integrate-with-vnet.md)
+* [Integrieren Ihrer App in ein Azure Virtual Network](../app-service/overview-vnet-integration.md)
 * [Informationen zu Point-to-Site-VPN-Routing](../vpn-gateway/vpn-gateway-about-point-to-site-routing.md)
 
 ## <a name="troubleshoot-a-virtual-network-peering-configuration-error-message"></a>Beheben eines Konfigurationsfehlers eines Peerings virtueller Netzwerke 

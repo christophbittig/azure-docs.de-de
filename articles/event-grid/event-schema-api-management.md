@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: dlepow
 ms.author: danlep
 ms.date: 07/12/2021
-ms.openlocfilehash: e2f56f8886a387158c148edaf9ae557deac3783f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 87684e6a4bc2c349a2b65faefe825c455be413d5
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128659151"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130215519"
 ---
 # <a name="azure-api-management-as-an-event-grid-source-preview"></a>Azure API Management als Event Grid-Quelle (Vorschau)
 
@@ -123,7 +123,7 @@ Das folgende Beispiel zeigt das Schema eines API-Aktualisierungsereignisses: Das
   "topic": "/subscriptions/{subscription-id}/resourceGroups/{your-rg}/providers/Microsoft.ApiManagement/service/{your-APIM-instance}",
   "subject": "/apis/myapi;Rev=1",
   "data": {
-    "resourceUri": "/subscriptions/subscription-id}/resourceGroups/{your-rg}/providers/Microsoft.ApiManagement/service/{your-APIM-instance}/apis/myapi;Rev=1"
+    "resourceUri": "/subscriptions/{subscription-id}/resourceGroups/{your-rg}/providers/Microsoft.ApiManagement/service/{your-APIM-instance}/apis/myapi;Rev=1"
   },
   "eventType": "Microsoft.ApiManagement.APIUpdated",
   "dataVersion": "1",
@@ -157,7 +157,7 @@ Das folgende Beispiel zeigt das Schema eines API-Aktualisierungsereignisses: Das
 
 Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
-| Eigenschaft | type | Beschreibung |
+| Eigenschaft | Typ | Beschreibung |
 | -------- | ---- | ----------- |
 | `topic` | Zeichenfolge | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
 | `subject` | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
@@ -172,7 +172,7 @@ Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
 Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
-| Eigenschaft | type | BESCHREIBUNG |
+| Eigenschaft | Typ | Beschreibung |
 | -------- | ---- | ----------- |
 | `source` | Zeichenfolge | Vollständiger Ressourcenpfaf zur Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
 | `subject` | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
@@ -186,7 +186,7 @@ Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
 
 Das Datenobjekt weist die folgenden Eigenschaften auf:
 
-| Eigenschaft | type | Beschreibung |
+| Eigenschaft | Typ | Beschreibung |
 | -------- | ---- | ----------- |
 | `resourceUri` | Zeichenfolge | Die vollständig qualifizierte ID der Ressource, für die die Änderung des Konformitätsstatus gilt, einschließlich des Ressourcennamens und des Ressourcentyps. Verwendet das Format, `/subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroup>/Microsoft.ApiManagement/service/<ServiceName>/<ResourceType>/<ResourceName>` |
 
