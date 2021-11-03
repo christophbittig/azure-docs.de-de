@@ -12,14 +12,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: 38b595e4f9b2582f3baefecabf6285ee36436ad6
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 02ba134062b51ba074ad5d19506eef13e5e3b89c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123260060"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131004262"
 ---
 # <a name="connect-azure-stack-hub-virtual-machines-to-azure-sentinel"></a>Verbinden von virtuellen Azure Stack Hub-Computern mit Azure Sentinel
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 Mit Azure Sentinel können Sie Ihre virtuellen Computer, die in Azure und Azure Stack Hub ausgeführt werden, zentral an einem Ort überwachen. Zum Durchführen des Onboardings Ihrer Azure Stack-Computer in Azure Sentinel müssen Sie zunächst auf den vorhandenen virtuellen Azure Stack Hub-Computern die VM-Erweiterung hinzufügen. 
 

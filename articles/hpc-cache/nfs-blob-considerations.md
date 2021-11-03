@@ -1,17 +1,17 @@
 ---
 title: Verwenden von NFS-Blobspeicher mit Azure HPC Cache
 description: Hier werden Prozeduren und Einschränkungen bei der Verwendung des ADLS-NFS-Blobspeichers mit Azure HPC Cache beschrieben.
-author: ekpgh
+author: femila
 ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/12/2021
-ms.author: v-erkel
-ms.openlocfilehash: e9d31ae4ccaa7bffaf1ce38a9f044993277f5f2f
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.author: femila
+ms.openlocfilehash: 297030bc35e9fcf726201695b273eac79a044028
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130041669"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131051038"
 ---
 # <a name="use-nfs-mounted-blob-storage-with-azure-hpc-cache"></a>Verwenden von in NFS eingebundenem Blobspeicher mit Azure HPC Cache
 

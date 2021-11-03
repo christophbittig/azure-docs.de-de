@@ -3,14 +3,17 @@ title: Dienstübersicht für Organisationen
 description: Informieren Sie sich über Features und Dienste von Defender für IoT, und erfahren Sie, auf welche Weise Defender für IoT für umfassende IoT-Sicherheit sorgt.
 ms.topic: overview
 ms.date: 05/27/2021
-ms.openlocfilehash: a87e6f6fcb8211e385bfe35030df2357d7585554
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: de58ffcc0f9097bd1e0b3fa4c1fac714b33d59e6
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113011104"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131011207"
 ---
 # <a name="welcome-to-azure-defender-for-iot-for-organizations"></a>Willkommen bei Azure Defender für IoT für Organisationen
+
+[!INCLUDE [Banner for top of topics](../includes/banner.md)]
 
 OT-Netzwerke (Operational Technology) finden Verwendung für viele besonders kritische Aspekte unserer Gesellschaft. Eine ganze Reihe dieser Technologien wurde jedoch nicht unter Sicherheitsgesichtspunkten entwickelt und kann nicht mit herkömmlichen IT-Sicherheitskontrollen geschützt werden. Mittlerweile sorgt das Internet der Dinge (IoT) mit Milliarden verbundener Geräte für eine neue Innovationswelle, wodurch sich Angriffsflächen und Risiko erhöhen.  
 

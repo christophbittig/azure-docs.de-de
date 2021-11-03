@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 07/07/2021
 ms.reviewer: arvinh
-ms.openlocfilehash: 6c790baf2dfc7c08306bdf96598e33e8bdc6b9c6
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 76789c36e935e03a2677054e9a318291ebd149f9
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129991221"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131028023"
 ---
 # <a name="known-issues-for-application-provisioning-in-azure-active-directory"></a>Bekannte Probleme bei der Anwendungsbereitstellung in Azure Active Directory
 In diesem Artikel werden bekannte Probleme erläutert, die Sie bei der App-Bereitstellung beachten sollten. Geben Sie Ihr Feedback zum Anwendungsbereitstellungsdienst über UserVoice ab. Weitere Informationen finden Sie auf der [UserVoice-Seite zur Azure AD-Anwendungsbereitstellung (Azure Active Directory)](https://aka.ms/appprovisioningfeaturerequest). Wir beobachten UserVoice genau, damit wir den Dienst verbessern können.
@@ -105,7 +105,7 @@ Die folgenden Anwendungen und Verzeichnisse werden noch nicht unterstützt.
 
 #### <a name="active-directory-domain-services-user-or-group-writeback-from-azure-ad-by-using-the-on-premises-provisioning-preview"></a>Active Directory Domain Services (Benutzer- oder Gruppenrückschreiben von Azure AD mithilfe der lokalen Bereitstellung in der Vorschau)
    - Wenn ein Benutzer von Azure AD Connect verwaltet wird, ist die zugehörige Autoritätsquelle das lokale Azure AD. Deshalb können Benutzerattribute in Azure AD nicht geändert werden. Diese Vorschau kann die von Azure AD Connect verwaltete Autoritätsquelle für Benutzer nicht ändern.
-   - Der Versuch, Azure AD Connect und die lokale Bereitstellung zu nutzen, um Gruppen oder Benutzer in Active Directory Domain Services bereitzustellen, kann zur Entstehung einer Schleife führen, bei der Azure AD Connect Änderungen überschreibt, die vom Cloud-Bereitstellungsdienst vorgenommen wurden. Microsoft arbeitet an der Entwicklung einer dedizierten Funktion für das Gruppen- oder Benutzerrückschreiben. Stimmen Sie [auf dieser Website](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/16887037-enable-user-writeback-to-on-premise-ad-from-azure) über das UserVoice-Feedback ab, um den Status der Vorschau zu verfolgen. Alternativ können Sie [Microsoft Identity Manager](/microsoft-identity-manager/microsoft-identity-manager-2016) für das Benutzer- oder Gruppenrückschreiben von Azure AD zu Active Directory verwenden.
+   - Der Versuch, Azure AD Connect und die lokale Bereitstellung zu nutzen, um Gruppen oder Benutzer in Active Directory Domain Services bereitzustellen, kann zur Entstehung einer Schleife führen, bei der Azure AD Connect Änderungen überschreibt, die vom Cloud-Bereitstellungsdienst vorgenommen wurden. Microsoft arbeitet an der Entwicklung einer dedizierten Funktion für das Gruppen- oder Benutzerrückschreiben. Stimmen Sie [auf dieser Website](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789/) über das UserVoice-Feedback ab, um den Status der Vorschau zu verfolgen. Alternativ können Sie [Microsoft Identity Manager](/microsoft-identity-manager/microsoft-identity-manager-2016) für das Benutzer- oder Gruppenrückschreiben von Azure AD zu Active Directory verwenden.
 
 #### <a name="connectors-other-than-sql"></a>Andere Connectors als SQL
 

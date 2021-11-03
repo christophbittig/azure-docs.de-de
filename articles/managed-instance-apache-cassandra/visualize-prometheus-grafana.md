@@ -4,21 +4,17 @@ description: Hier erfahren Sie, wie Sie Grafana auf einem virtuellen Computer in
 author: TheovanKraay
 ms.service: managed-instance-apache-cassandra
 ms.topic: how-to
-ms.date: 03/02/2021
+ms.date: 11/02/2021
 ms.author: thvankra
-ms.openlocfilehash: ed0ff343595429a4cb81fef280203f1180eeb098
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 4464db95637511339e0000235b85da86306b4cef
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101743413"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131051019"
 ---
 # <a name="configure-grafana-to-visualize-metrics-emitted-from-the-managed-instance-cluster"></a>Konfigurieren von Grafana für die Visualisierung von Metriken, die vom Managed Instance-Cluster ausgegeben werden
-
-> [!IMPORTANT]
-> Azure Managed Instance for Apache Cassandra befindet sich derzeit in der Public Preview-Phase.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Wenn Sie einen Cluster vom Typ „Azure Managed Instance for Apache Cassandra“ bereitstellen, wird ein Server bereitgestellt, der als Host für [Prometheus](https://prometheus.io/) fungiert und von verschiedenen Clienttools genutzt werden kann. Prometheus ist eine Open-Source-Überwachungslösung. Die verwaltete Instanz gibt Metriken aus und speichert zehn Minuten oder 10 GB an Daten (je nachdem, welcher Schwellenwert zuerst erreicht wird). In diesem Artikel erfahren Sie, wie Sie Grafana für die Visualisierung von Metriken konfigurieren, die vom Managed Instance-Cluster ausgegeben werden. Zum Visualisieren von Metriken ist Folgendes erforderlich:
 
@@ -117,4 +113,4 @@ Wenn Sie einen Cluster vom Typ „Azure Managed Instance for Apache Cassandra“
 In diesem Artikel haben Sie gelernt, wie Sie Dashboards konfigurieren, um Metriken in Prometheus mithilfe von Grafana zu visualisieren. Weitere Informationen zu Azure Managed Instance for Apache Cassandra finden Sie in den folgenden Artikeln:
 
 * [Was ist Azure Managed Instance for Apache Cassandra? (Vorschau)](introduction.md)
-* [Schnellstart: Bereitstellen eines verwalteten Apache Spark-Clusters mit Azure Databricks (Vorschau)](deploy-cluster-databricks.md)
+* [Bereitstellen eines verwalteten Apache Spark-Clusters mit Azure Databricks](deploy-cluster-databricks.md)

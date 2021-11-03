@@ -3,71 +3,84 @@
 - name: Übersicht
   expanded: true
   items:
-    - name: Willkommen bei Azure Confidential Computing
+    - name: Was ist Confidential Computing?
       href: overview.md
+    - name: Confidential Computing unter Azure
+      href: overview-azure-products.md
     - name: Anwendungsfälle und -szenarien
       href: use-cases-scenarios.md
 - name: Schnellstarts
   expanded: true
   items:
-    - name: Virtuelle Computer
+    - name: Vertrauliche VMs mit Enclaves
       items:
-        - name: Erstellen im Azure-Portal
-          href: quick-create-portal.md
-        - name: Erstellen mit dem Marketplace
-          href: quick-create-marketplace.md
-    - name: Azure Kubernetes Services (AKS)
+        - name: Bereitstellen von Intel SGX
+          items:
+            - name: Erstellen einer Intel SGX-VM mit dem Azure-Portal
+              href: quick-create-portal.md
+            - name: Erstellen einer Intel SGX-VM mit Marketplace
+              href: quick-create-marketplace.md
+    - name: Vertrauliche Container mit Enclaves
       items:
-        - name: Übersicht über vertrauliche AKS-Knoten
-          href: confidential-nodes-aks-overview.md
-        - name: Vertrauliche Knoten mit Azure CLI
-          href: confidential-nodes-aks-get-started.md
-        - name: Häufig gestellte Fragen zu vertraulichen Knoten in AKS
-          href: confidential-nodes-aks-faq.yml
+        - name: Erstellen von Intel SGX AKS mit CLI
+          href: confidential-enclave-nodes-aks-get-started.md
 - name: Konzepte
   expanded: true
   items:
-    - name: Virtuelle Computer (VMs)
+    - name: Erstellen von Confidential Computing-Lösungen
+      href: confidential-computing-solutions.md
+    - name: Bereitstellen von Lösungen für Confidential Computing
+      href: confidential-computing-deployment-models.md
+    - name: Vertrauliche VMsr
       items:
-        - name: Enclave-fähige virtuelle Computer
-          href: confidential-computing-enclaves.md
-        - name: Lösungen auf virtuellen Computern
-          href: virtual-machine-solutions.md
-        - name: Häufig gestellte Fragen zu virtuellen Computern für Confidential Computing
-          href: faq.yml
-    - name: Containercompute
-      expanded: true
+        - name: Erstellen mit Enclaves
+          items:
+            - name: Übersicht über Enclaves
+              href: confidential-computing-enclaves.md
+            - name: Entwickeln von Enclave-Anwendungen
+              items:
+                - name: Übersicht über die Enclave-Entwicklung
+                  href: application-development.md
+                - name: Open-Source-Projekte für die Entwicklung
+                  href: enclave-development-oss.md
+                - name: Nachweis von Anwendungsenclaves
+                  href: attestation.md
+            - name: "Bereitstellen von Intel\_SGX-VMs"
+              href: virtual-machine-solutions-sgx.md
+            - name: 'VM mit Anwendungsenclaves: Häufig gestellte Fragen'
+              href: faq-application-enclaves.yml
+    - name: Vertrauliche Container
       items:
-        - name: Vertrauliche Container
+        - name: Übersicht über Containerlösungen
+          href: confidential-containers.md
+        - name: Auswählen des richtigen Containerangebots
+          href: choose-confidential-containers-offerings.md
+        - name: Bereitstellen von Containern
           items:
-            - name: Erste Schritte
-              href: confidential-containers.md
-        - name: Enclave-fähige Container
-          items:
-            - name: Erste Schritte
+            - name: Enclave-fähige Container
               href: enclave-aware-containers.md
-    - name: Nachweis
-      href: attestation.md
-    - name: Anwendungsentwicklung
-      href: application-development.md
+            - name: Vertrauliche Enclave-Knoten in AKS
+              href: confidential-nodes-aks-overview.md
+            - name: AKS-Add-on
+              href: confidential-nodes-aks-addon.md
+            - name: 'Vertrauliche Enclave-Knoten: Häufig gestellte Fragen'
+              href: confidential-nodes-aks-faq.yml
 - name: Vorgehensweise
   items:
-    - name: Fortanix Confidential Computing Manager
-      href: how-to-fortanix-confidential-computing-manager.md
-    - name: Knoten-Agent für Fortanix Confidential Computing Manager
-      href: how-to-fortanix-confidential-computing-manager-node-agent.md
-- name: References
-  items:
-    - name: SGX-Angebotshilfsfeature
-      href: confidential-nodes-out-of-proc-attestation.md
+    - name: Partnerlösungen
+      items:
+        - name: Fortanix
+          items:
+            - name: Fortanix Confidential Computing Manager
+              href: how-to-fortanix-confidential-computing-manager.md
+            - name: Knoten-Agent für Fortanix Confidential Computing Manager
+              href: how-to-fortanix-confidential-computing-manager-node-agent.md
 - name: Ressourcen
   items:
     - name: 'Confidential Computing: Feedback'
       href: 'https://feedback.azure.com/forums/919792-azure-confidential-compute'
     - name: StackOverflow
       href: 'https://stackoverflow.com/questions/tagged/azure-confidential-computing'
-    - name: Open Enclave SDK
-      href: 'https://aka.ms/oesdkGitHubRepo'
     - name: Confidential Computing-Konsortium
       href: 'https://confidentialcomputing.io/'
     - name: Virtuelle Computer in Azure

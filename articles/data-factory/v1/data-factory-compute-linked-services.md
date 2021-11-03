@@ -7,13 +7,13 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.subservice: v1
 ms.topic: conceptual
-ms.date: 01/10/2018
-ms.openlocfilehash: f4e92fb71afbbe0fc03e7172e19ec5b093a6f3c7
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/22/2021
+ms.openlocfilehash: e95aae97c197777a9eae1feb9a4622619f992678
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128604263"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130218672"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory-version-1"></a>Von Azure Data Factory Version 1 unterstützte Compute-Umgebungen
 > [!NOTE]
@@ -192,7 +192,7 @@ Für eine präzisere Konfiguration des bedarfsgesteuerten HDInsight-Clusters kö
 ### <a name="node-sizes"></a>Knotengrößen
 Verwenden Sie die folgenden Eigenschaften, um die Größe der Haupt-, Daten- und Zookeeper-Knoten anzugeben: 
 
-| Eigenschaft          | Beschreibung                              | Erforderlich |
+| Eigenschaft          | BESCHREIBUNG                              | Erforderlich |
 | :---------------- | :--------------------------------------- | :------- |
 | headNodeSize      | Gibt die Größe des Hauptknotens an. Standardwert: **Standard_D3**. Weitere Informationen finden Sie unter [Angeben von Knotengrößen](#specify-node-sizes). | Nein       |
 | dataNodeSize      | Legt die Größe des Datenknotens fest. Standardwert: **Standard_D3**. | Nein       |
@@ -252,7 +252,7 @@ Sie können einen verknüpften HDInsight-Dienst erstellen, um Ihren eigenen HDIn
 ```
 
 ### <a name="properties"></a>Eigenschaften
-| Eigenschaft          | Beschreibung                              | Erforderlich |
+| Eigenschaft          | BESCHREIBUNG                              | Erforderlich |
 | ----------------- | ---------------------------------------- | -------- |
 | type              | Legen Sie die Typeigenschaft auf **HDInsight** fest. | Ja      |
 | clusterUri        | Der URI des HDInsight-Clusters.        | Ja      |
@@ -327,7 +327,7 @@ Sie können einen mit ML Studio (Classic) verknüpften Dienst erstellen, um eine
 ```
 
 ### <a name="properties"></a>Eigenschaften
-| Eigenschaft   | Beschreibung                              | Erforderlich |
+| Eigenschaft   | BESCHREIBUNG                              | Erforderlich |
 | ---------- | ---------------------------------------- | -------- |
 | type       | Legen Sie die Typeigenschaft auf **AzureML** fest. | Ja      |
 | mlEndpoint | Die Batchbewertungs-URL.                   | Ja      |
@@ -338,7 +338,7 @@ Sie können einen verknüpften Data Lake Analytics-Dienst erstellen, um einen Da
 
 In der folgenden Tabelle werden die allgemeinen Eigenschaften beschrieben, die in der JSON-Definition verwendet werden:
 
-| Eigenschaft                 | Beschreibung                              | Erforderlich                                 |
+| Eigenschaft                 | BESCHREIBUNG                              | Erforderlich                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
 | type                 | Legen Sie die Typeigenschaft auf **AzureDataLakeAnalytics** fest. | Ja                                      |
 | .<Name der Region          | Der Name des Data Lake Analytics-Kontos.  | Ja                                      |
@@ -357,7 +357,7 @@ Wenn Sie die Dienstprinzipalauthentifizierung verwenden möchten, registrieren S
 
 Verwenden Sie die Dienstprinzipalauthentifizierung, indem Sie die folgenden Eigenschaften angeben:
 
-| Eigenschaft                | Beschreibung                              | Erforderlich |
+| Eigenschaft                | BESCHREIBUNG                              | Erforderlich |
 | :---------------------- | :--------------------------------------- | :------- |
 | servicePrincipalId  | Die Client-ID der Anwendung.     | Ja      |
 | servicePrincipalKey | Der Schlüssel der Anwendung.           | Ja      |

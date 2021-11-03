@@ -9,12 +9,13 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 03/24/2021
 ms.author: JenCook
-ms.openlocfilehash: 72c3f523ebc3cfef43709153c09c416d32e0b1b8
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 2f74c34f9c0b2e854a23753b755a9d83f93d6bf0
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114469598"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131024471"
 ---
 # <a name="run-an-application-by-using-fortanix-confidential-computing-manager"></a>Ausführen einer Anwendung mit dem Fortanix Confidential Computing Manager
 
@@ -125,7 +126,7 @@ Beim Erstellen eines Fortanix Node Agents werden in Ihrer Azure-Ressourcengruppe
 1. Auf dieser Seite geben Sie die Informationen zur Bereitstellung eines virtuellen Computers ein. Dieser virtuelle Computer ist ein Intel SGX-fähiger virtueller Computer der DCsv2-Serie von Azure mit installierter Fortanix Node Agent-Software. Der Knoten-Agent ermöglicht Ihrem konvertierten Image die Ausführung auf Intel SGX-Knoten in Azure mit erhöhter Sicherheit. Wählen Sie das  Abonnement und die  Ressourcengruppe aus, in der Sie den virtuellen Computer und die zugehörigen Ressourcen bereitstellen möchten.
 
    > [!NOTE]
-   > Es gelten Einschränkungen, wenn Sie virtuelle Computer der DCsv2-Serie in Azure bereitstellen. Möglicherweise müssen Sie Kontingente für zusätzliche Kerne anfordern. Weitere Informationen finden Sie unter [Confidential Computing-Lösungen auf Azure VMs](./virtual-machine-solutions.md).
+   > Es gelten Einschränkungen, wenn Sie virtuelle Computer der DCsv2-Serie in Azure bereitstellen. Möglicherweise müssen Sie Kontingente für zusätzliche Kerne anfordern. Weitere Informationen finden Sie unter [Confidential Computing-Lösungen auf Azure VMs](./virtual-machine-solutions-sgx.md).
 
 1. Wählen Sie eine verfügbare Region aus.
 1. Geben Sie in das Feld **Knotenname** einen Namen für Ihren virtuellen Computer ein.
@@ -175,7 +176,7 @@ Navigieren Sie zu der Seite [Konten](https://ccm.fortanix.com/accounts) in dem F
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie mit Fortanix-Tools Ihr Anwendungsimage so konvertiert, dass es auf einer virtuellen Confidential Computing-Maschine läuft. Weitere Informationen zu virtuellen Confidential Computing-Maschinen in Azure finden Sie unter [Lösungen für virtuelle Computer](virtual-machine-solutions.md).
+In diesem Tutorial haben Sie mit Fortanix-Tools Ihr Anwendungsimage so konvertiert, dass es auf einer virtuellen Confidential Computing-Maschine läuft. Weitere Informationen zu virtuellen Confidential Computing-Maschinen in Azure finden Sie unter [Lösungen für virtuelle Computer](virtual-machine-solutions-sgx.md).
 
 Weitere Informationen zu den Confidential Computing-Angeboten von Azure finden Sie unter [Azure Confidential Computing-Übersicht](overview.md).
 

@@ -7,16 +7,13 @@ ms.author: spelluru
 ms.date: 11/18/2020
 ms.topic: quickstart
 ms.devlang: python
-ms.custom:
-- seo-python-october2019
-- devx-track-python
-- mode-api
-ms.openlocfilehash: e982b3f36dbfe2144170d53d07473201abb014ef
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: seo-python-october2019, devx-track-python, mode-api
+ms.openlocfilehash: 333fb5149293a0ae1e6135511f29eafa6e1bd18b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107534977"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131004034"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-python"></a>Senden und Empfangen von Nachrichten für Azure Service Bus-Warteschlangen (Python)
 In diesem Artikel erfahren Sie, wie Sie mithilfe von Python Nachrichten an Azure Service Bus-Warteschlangen senden und Nachrichten aus ihnen empfangen. 

@@ -7,12 +7,13 @@ ms.service: bastion
 ms.topic: how-to
 ms.date: 09/22/2021
 ms.author: cherylmc
-ms.openlocfilehash: 23d249bafca7b9ca89ab743d7aa1beb7ac60e868
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: faa6fe1b7fdccf81f83b591c1f0258d27dc9fdd0
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130233111"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131071520"
 ---
 # <a name="create-an-azure-bastion-host-using-azure-powershell"></a>Erstellen eines Azure Bastion-Hosts über Azure PowerShell
 
@@ -22,7 +23,7 @@ Optional können Sie einen Azure Bastion-Host mithilfe folgender Methoden erste
 * [Azure portal](./tutorial-create-host-portal.md)
 * [Azure-Befehlszeilenschnittstelle](create-host-cli.md)
 
-[!INCLUDE [Note about SKU limitations for preview.](../../includes/bastion-preview-sku-note.md)]
+[!INCLUDE [About SKUs](../../includes/bastion-sku-note.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

@@ -4,21 +4,23 @@ description: Sie können Azure Video Analyzer für fortlaufende oder ereignisbas
 ms.service: azure-video-analyzer
 ms.topic: how-to
 ms.date: 08/06/2021
-ms.openlocfilehash: 38fcd60352fe151637e0e7f8fa4dfe9159b12915
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: fb6014649e6fe71a2d2de5e4d7adb72ba9b66a37
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128620709"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131012155"
 ---
 # <a name="embed-player-widget-in-power-bi"></a>Einbetten des Player-Widgets in Power BI
+
 
 Mit Azure Video Analyzer können Sie Videos und die zugehörigen Metadaten für den Rückschluss in Ihrer Video Analyzer Cloudressource [aufzeichnen](detect-motion-record-video-clips-cloud.md). Video Analyzer verfügt über ein [Player-Widget](player-widget.md), ein einfach einzubettendes Widget, mit dem Client-Apps Videos und Metadaten für den Rückschluss wiedergeben können.
 
 Dashboards stellen eine aufschlussreiche Möglichkeit dar, Ihr Geschäft zu überwachen und Ihre wichtigsten Metriken in einer Übersicht anzuzeigen. Ein Power BI-Dashboard ist ein leistungsfähiges Tool zur Kombination von Videos mit mehreren Datenquellen, einschließlich Telemetriedaten von IoT Hub. In diesem Tutorial erfahren Sie, wie Sie mithilfe des [Microsoft Power BI](https://powerbi.microsoft.com/)-Webdiensts ein oder mehrere Player-Widgets zu einem Dashboard hinzufügen können.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/power-bi/embed-block-diagram.png" alt-text="Blockdiagramm, um einen Widget für einen Azure Video Analyzer Player in Microsoft Power BI einzubetten.":::
+> :::image type="content" source="./media/power-bi/embed-block-diagram.svg" alt-text="Blockdiagramm, um einen Widget für einen Azure Video Analyzer Player in Microsoft Power BI einzubetten.":::
 
 ## <a name="suggested-pre-reading"></a>Empfohlene Lektüre zur Vorbereitung
 

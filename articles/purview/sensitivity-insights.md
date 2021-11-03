@@ -7,12 +7,13 @@ ms.service: purview
 ms.subservice: purview-insights
 ms.topic: how-to
 ms.date: 09/27/2021
-ms.openlocfilehash: 06a48cd4f1a0aa0d95f1c4b5fa0faf4d7ada2ab3
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 1fd89f44552e8a986e4ccffb55836c0d4db3d8d2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130238039"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131015027"
 ---
 # <a name="sensitivity-label-insights-about-your-data-in-azure-purview"></a>Vertraulichkeitsbezeichnungs-Erkenntnisse zu Ihren Daten in Azure Purview
 
@@ -21,7 +22,7 @@ In diesem Leitfaden ist beschrieben, wie Sie auf Sicherheitserkenntnisse zugreif
 > [!IMPORTANT]
 > Erkenntnisse für Azure Purview-Vertraulichkeitsbezeichnungen befinden sich derzeit in der VORSCHAU. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen für Azure-Features, die sich in der Beta- oder Vorschauphase befinden oder anderweitig noch nicht allgemein verfügbar sind.
 
-Unterstützte Datenquellen sind unter anderem: Azure Blob Storage, Azure Data Lake Storage (ADLS) GEN 1, Azure Data Lake Storage (ADLS) GEN 2, SQL Server, Azure SQL-Datenbank, Azure SQL Managed Instance, Amazon S3 Buckets
+Folgende Datenquellen werden unterstützt: Azure Blob Storage, Azure Data Lake Storage (ADLS) GEN 1, Azure Data Lake Storage (ADLS) GEN 2, SQL Server, Azure SQL Database, Azure SQL Managed Instance, Amazon S3 buckets, Amazon RDS databases (öffentliche Vorschau)
 
 In dieser Schrittanleitung lernen Sie Folgendes:
 
@@ -106,7 +107,7 @@ Beispiel:
 
 Führen Sie einen der folgenden Schritte aus, um weitere Informationen zu erhalten:
 
-|Option  |Beschreibung  |
+|Option  |BESCHREIBUNG  |
 |---------|---------|
 |**Filtern der Daten**     |  Verwenden Sie die Filter oberhalb des Rasters, um die angezeigten Daten zu filtern, einschließlich des Bezeichnungsnamens, des Abonnementnamens oder des Quellentyps. <br><br>Wenn Sie sich bezüglich des genauen Bezeichnungsnamens nicht sicher sind, können Sie einen Teil oder den ganzen Namen in das Feld **Nach Schlüsselwort filtern** eingeben.       |
 |**Sortieren des Rasters** |Wählen Sie einen Spaltenheader aus, um das Raster nach dieser Spalte zu sortieren. | 

@@ -10,12 +10,12 @@ ms.subservice: metrics-advisor
 ms.topic: conceptual
 ms.date: 05/26/2021
 ms.author: mbullwin
-ms.openlocfilehash: 9d5d111e86623b3de63bc9aa5d77f5a14c37fabd
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 005886c0399a89fe2e58aa669a8f7c0d33821cd3
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130216768"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131026636"
 ---
 # <a name="how-to-connect-different-data-sources"></a>Vorgehensweise: Verbinden verschiedener Datenquellen
 
@@ -199,13 +199,13 @@ In den folgenden Abschnitten werden die Parameter angegeben, die für alle Authe
      
 * **Abfrage**: Unter [Kusto-Abfragesprache](/azure/data-explorer/kusto/query) finden Sie Informationen zum Abrufen und Formulieren von Daten in mehrdimensionalen Zeitreihendaten. Verwenden Sie die Variablen `@IntervalStart` und `@IntervalEnd` in der Abfrage. Sie müssen wie folgt formatiert werden: `yyyy-MM-ddTHH:mm:ssZ`.
 
-    Beispielabfrage:
+  Beispielabfrage:
     
-    ``` Kusto
-   [TableName] | where [TimestampColumn] >= datetime(@IntervalStart) and [TimestampColumn] < datetime(@IntervalEnd);    
-   ```
+  ```kusto
+  [TableName] | where [TimestampColumn] >= datetime(@IntervalStart) and [TimestampColumn] < datetime(@IntervalEnd);    
+  ```
 
-    Weitere Informationen finden Sie im [Tutorial zum Schreiben einer gültigen Abfrage](tutorials/write-a-valid-query.md).
+  Weitere Informationen finden Sie im [Tutorial zum Schreiben einer gültigen Abfrage](tutorials/write-a-valid-query.md).
 
 ## <a name="span-idadlazure-data-lake-storage-gen2span"></a><span id="adl">Azure Data Lake Storage Gen2</span>
 

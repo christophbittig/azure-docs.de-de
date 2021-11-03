@@ -7,12 +7,12 @@ ms.service: route-server
 ms.topic: quickstart
 ms.date: 09/08/2021
 ms.author: duau
-ms.openlocfilehash: a6714867b5b863f608e3282c5e6f3bb0d2425969
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 7dfded652c14ec6805b7fa48004cf5dfe8d72b5f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129091481"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131061103"
 ---
 # <a name="quickstart-create-and-configure-route-server-using-the-azure-portal"></a>Schnellstart: Erstellen und Konfigurieren einer Route Server-Instanz mithilfe des Azure-Portals
 
@@ -65,7 +65,7 @@ Navigieren Sie in einem Browser zum [Azure-Portal](https://portal.azure.com) , u
 
 Der Abschnitt unterstützt Sie beim Konfigurieren des BGP-Peerings mit Ihrem NVA.
 
-1. Navigieren Sie im Azure-Portal zu [Route Server](https://aka.ms/routeserver), und wählen Sie die Route Server-Instanz aus, die Sie konfigurieren möchten.
+1. Navigieren Sie im Azure-Portal zu [Route Server](./overview.md), und wählen Sie die Route Server-Instanz aus, die Sie konfigurieren möchten.
 
     :::image type="content" source="./media/quickstart-configure-route-server-portal/select-route-server.png" alt-text="Screenshot: Route Server-Liste"::: 
 
@@ -95,7 +95,7 @@ Sie benötigen die Peer-IP-Adressen und die ASN von Azure Route Server, um die 
 
 Wenn Sie über ein ExpressRoute-Gateway und/oder ein VPN-Gateway verfügen und diese Routen mit Route Server austauschen sollen, können Sie den Routenaustausch aktivieren.
 
-1. Navigieren Sie im Azure-Portal zu [Route Server](https://aka.ms/routeserver), und wählen Sie die Route Server-Instanz aus, die Sie konfigurieren möchten.
+1. Navigieren Sie im Azure-Portal zu [Route Server](./overview.md), und wählen Sie die Route Server-Instanz aus, die Sie konfigurieren möchten.
 
 1. Wählen Sie im linken Navigationsbereich unter *Einstellungen* die Option **Konfiguration** aus.
 

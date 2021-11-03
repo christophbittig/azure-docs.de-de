@@ -11,14 +11,13 @@ ms.service: traffic-manager
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.custom:
-- mode-portal
-ms.openlocfilehash: 13b5925310c615461424f78d90ba9849c9bf58c5
-ms.sourcegitcommit: 6f1aa680588f5db41ed7fc78c934452d468ddb84
+ms.custom: mode-portal
+ms.openlocfilehash: be0061fb42a391506adf7c944e60836e14d6cb8b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2021
-ms.locfileid: "107727976"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131003464"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-using-the-azure-portal"></a>Schnellstart: Erstellen eines Traffic Manager-Profils im Azure-Portal
 

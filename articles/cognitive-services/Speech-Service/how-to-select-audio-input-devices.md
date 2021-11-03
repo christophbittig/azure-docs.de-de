@@ -10,13 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: chlandsi
-ms.custom: devx-track-js
-ms.openlocfilehash: 48316d571eac835dd5d4ec7d225048f4fdcdf237
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: devx-track-js, ignite-fall-2021
+ms.openlocfilehash: 433d391d3707248d71d8340185da86814cab7e4f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95026606"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131024541"
 ---
 # <a name="how-to-select-an-audio-input-device-with-the-speech-sdk"></a>Auswählen eines Audioeingabegeräts mit dem Speech SDK
 
@@ -383,7 +383,7 @@ ermöglicht die Verwendung eines Bluetooth-Headsets für eine sprachfähige App.
 
 ## <a name="audio-device-ids-in-javascript"></a>Audiogeräte-IDs in JavaScript
 
-In JavaScript kann die Methode [MediaDevices.enumerateDevices()](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/enumerateDevices) verwendet werden, um die Mediengeräte aufzuzählen und eine Geräte-ID für die Übergabe an `fromMicrophone(...)` zu finden.
+In JavaScript kann die Methode [MediaDevices.enumerateDevices()](https://developer.mozilla.org/docs/Web/API/MediaDevices/enumerateDevices) verwendet werden, um die Mediengeräte aufzuzählen und eine Geräte-ID für die Übergabe an `fromMicrophone(...)` zu finden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

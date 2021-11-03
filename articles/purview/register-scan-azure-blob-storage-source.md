@@ -1,168 +1,292 @@
 ---
-title: Registrieren und Überprüfen von Azure Blob Storage
-description: Erfahren Sie, wie Sie Azure Blob Storage in Ihrem Azure Purview-Datenkatalog überprüfen.
-author: shsandeep123
-ms.author: sandeepshah
+title: Azure Blob Storage registrieren und scannen
+description: In diesem Artikel wird der Prozess zum Registrieren einer Azure Blob Storage Datenquelle in Azure Purview beschrieben, einschließlich Anweisungen zum Authentifizieren und Interagieren mit einer solchen Azure Blob Storage Gen2-Quelle
+author: athenads
+ms.author: athenadsouza
 ms.service: purview
-ms.subservice: purview-data-map
 ms.topic: how-to
-ms.date: 05/08/2021
-ms.openlocfilehash: 40105f18cce8fe515350903837f49d273bd39d03
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.date: 11/02/2021
+ms.custom: template-how-to, ignite-fall-2021
+ms.openlocfilehash: 9f6f13805a1b93f415bd7398299ed5e4b2f27947
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129209982"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131062503"
 ---
-# <a name="register-and-scan-azure-blob-storage"></a>Azure Blob Storage registrieren und scannen
+# <a name="connect-to-azure-blob-storage-in-azure-purview"></a>Verbinden Sie sich mit Azure Blob Storage in Azure Purview
 
-In diesem Artikel wird beschrieben, wie Sie ein Azure Blob Storage-Konto in Purview registrieren und eine Überprüfung einrichten.
+In diesem Artikel wird der Prozess zum Registrieren eines Azure Blob Storage-Kontos in Azure Purview beschrieben, einschließlich Anweisungen zum Authentifizieren und Interagieren mit einer solchen Azure Blob Storage-Quelle
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
-Für Azure Blob Storage werden vollständige und inkrementelle Überprüfungen zum Erfassen der Metadaten und des Schemas unterstützt. Darüber hinaus werden die Daten dabei basierend auf System- und benutzerdefinierten Klassifizierungsregeln automatisch klassifiziert.
+|**Metadatenextrahierung**|  **Vollständige Überprüfung**  |**Inkrementelle Überprüfung**|**Bereichsbezogene Überprüfung**|**Klassifizierung**|**Zugriffsrichtlinie**|**Herkunft**|
+|---|---|---|---|---|---|---|
+| [Ja](#register) | [Ja](#scan)|[Ja](#scan) | [Ja](#scan)|[Ja](#scan)| Ja | Nein|
 
 Für Dateitypen wie CSV, TSV, PSV und SSV wird das Schema extrahiert, wenn die folgenden Logiken vorhanden sind:
 
-1. Werte in der ersten Zeile sind nicht leer.
-2. Werte in der ersten Zeile sind eindeutig.
-3. Werte in der ersten Zeile sind weder ein Datum noch eine Zahl.
+* Werte in der ersten Zeile sind nicht leer.
+* Werte in der ersten Zeile sind eindeutig.
+* Werte in der ersten Zeile sind weder ein Datum noch eine Zahl
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Erstellen Sie vor dem Registrieren der Datenquellen zunächst ein Azure Purview-Konto. Weitere Informationen zum Erstellen eines Purview-Kontos finden Sie unter [Schnellstart: Erstellen eines Azure Purview-Kontos im Azure-Portal](create-catalog-portal.md).
-- Sie müssen ein Azure Purview-Datenquellenadministrator sein.
+* Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="setting-up-authentication-for-a-scan"></a>Einrichten der Authentifizierung für eine Überprüfung
+* Eine aktive [Purview-Ressource](create-catalog-portal.md)
 
-Es gibt drei Möglichkeiten, die Authentifizierung für Azure Blob Storage einzurichten:
+* Sie müssen ein Datenquellenadministrator und Datenleser sein, um eine Quelle zu registrieren und in Purview Studio zu verwalten. Weitere Informationen finden Sie auf der [Seite Azure Purview-Berechtigungen](catalog-permissions.md).
 
-- Verwaltete Identität
-- Kontoschlüssel
-- Dienstprinzipal
+## <a name="register"></a>Register
 
-### <a name="managed-identity-recommended"></a>Verwaltete Identität (empfohlen)
+In diesem Abschnitt können Sie das Azure Blob Storage-Konto registrieren und einen geeigneten Authentifizierungsmechanismus einrichten, um eine erfolgreiche Überprüfung der Datenquelle sicherzustellen.
 
-Wenn Sie **Verwaltete Identität** auswählen, müssen Sie Ihrem Purview-Konto zum Einrichten der Verbindung zunächst die Berechtigung zum Überprüfen der Datenquelle erteilen:
+### <a name="steps-to-register"></a>Schritte zur Registrierung
 
-1. Navigieren Sie zu Ihrem Speicherkonto.
-1. Wählen Sie im linken Navigationsmenü **Zugriffssteuerung (IAM)** aus. 
-1. Klicken Sie auf **+ Hinzufügen**.
-1. Legen Sie die **Rolle** auf **Leser von Speicherblobdaten** fest, und geben Sie unter **Auswählen** den Namen Ihres Azure Purview-Kontos ein. Wählen Sie dann **Speichern** aus, um diese Rollenzuweisung für Ihr Purview-Konto festzulegen.
+Es ist wichtig, die Datenquelle in Azure Purview zu registrieren, bevor Sie eine Überprüfung für die Datenquelle einrichten.
+
+1. Gehen Sie zum [Azure-Portal](https://portal.azure.com), navigieren Sie zur Seite **Purview-Konten** und klicken Sie auf Ihr _Purview-Konto_
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-purview-acct.png" alt-text="Screenshot: Purview-Konto zum Registrieren der Datenquelle":::
+
+1. **Öffnen Sie Purview Studio** und navigieren Sie zu **Data Map --> Quellen**
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-open-purview-studio.png" alt-text="Screenshot: Link zum Öffnen von Purview Studio":::
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-sources.png" alt-text="Screenshot: Navigieren zum Quellen-Link in der Data Map":::
+
+1. Erstellen Sie die [Sammlungshierarchie](./quickstart-create-collection.md) mithilfe des Menüs **Sammlungen**, und weisen Sie den einzelnen untergeordneten Sammlungen nach Bedarf Berechtigungen zu
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-collections.png" alt-text="Screenshot: Sammlungsmenü zum Erstellen einer Sammlungshierarchie":::
+
+1. Navigieren Sie im Menü **Quellen** zur entsprechenden Sammlung, und klicken Sie auf das Symbol **Registrieren**, um eine neue Azure Blob Datenquelle zu registrieren
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-register-source.png" alt-text="Screenshot: Sammlung zum Registrieren der Datenquelle":::
+
+1. Wählen Sie die **Azure Blob Storage** Datenquelle und dann **Weiter** aus
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-select-data-source.png" alt-text="Screenshot, der die Auswahl der Datenquelle ermöglicht":::
+
+1. Geben Sie einen geeigneten **Namen** für die Datenquelle an, wählen Sie das entsprechende **Azure-Abonnement**, den vorhandenen **Azure Blob Storage Kontonamen** und die **Sammlung** aus, und klicken Sie auf **Übernehmen**
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-data-source-details.png" alt-text="Screenshot mit den Details, die eingegeben werden müssen, um die Datenquelle zu registrieren":::
+
+1. Das Azure Blog Storage-Konto wird unter der ausgewählten Sammlung angezeigt
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-data-source-collection.png" alt-text="Screenshot der Datenquelle, die der Sammlung zugeordnet ist, um die Überprüfung zu initiieren":::
+
+## <a name="scan"></a>Überprüfen
+
+### <a name="authentication-for-a-scan"></a>Authentifizierung für eine Überprüfung
+
+Um Zugriff zum Überprüfen der Datenquelle zu haben, muss eine Authentifizierungsmethode im Azure Blob Storage-Konto konfiguriert werden.
+
+Die folgenden Optionen werden unterstützt:
 
 > [!Note]
-> Weitere Informationen finden Sie in den Schritten unter [Autorisieren des Zugriffs auf Blobs und Warteschlangen mit Azure Active Directory](../storage/blobs/authorize-access-azure-active-directory.md).
+> Wenn Sie für das Speicherkonto eine Firewall aktiviert haben, müssen Sie beim Einrichten einer Überprüfung als Authentifizierungsmethode Verwaltete Identität verwenden.
 
-### <a name="account-key"></a>Kontoschlüssel
+- **Verwaltete Identität (empfohlen)** : Sobald das Azure Purview-Konto erstellt wurde, wird automatisch eine **verwaltete Systemidentität** in Azure AD Mandanten erstellt. Je nach Ressourcentyp sind bestimmte RBAC-Rollenzuweisungen erforderlich, damit die Azure Purview-MSI die Überprüfungen durchführen kann.
 
-Wenn **Kontoschlüssel** als Authentifizierungsmethode ausgewählt wird, müssen Sie Ihren Zugriffsschlüssel abrufen und im Schlüsseltresor speichern:
+- **Kontoschlüssel**: Geheimnisse können in einer Azure Key Vault erstellt werden, um Anmeldeinformationen zu speichern, um den Zugriff für Azure Purview zum sicheren Überprüfen von Datenquellen mithilfe der Geheimnisse zu ermöglichen. Ein Geheimnis kann ein Speicherkontoschlüssel, ein SQL Anmeldekennwort oder ein Kennwort sein.
 
-1. Navigieren Sie zu Ihrem Speicherkonto.
-1. Wählen Sie **Einstellungen > Zugriffsschlüssel** aus.
-1. Kopieren Sie Ihren *Schlüssel*, und speichern Sie ihn für die nächsten Schritte.
-1. Navigieren zum Schlüsseltresor
-1. Wählen Sie **Einstellungen > Geheimnisse** aus.
-1. Wählen Sie **+ Generieren/Importieren** aus, und geben Sie den **Namen** und **Wert** als *Schlüssel* für Ihr Speicherkonto ein.
-1. Wählen Sie **Erstellen** aus, um den Vorgang abzuschließen.
-1. Falls für Ihren Schlüsseltresor noch keine Verbindung mit Purview hergestellt wurde, müssen Sie eine [neue Schlüsseltresorverbindung erstellen](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account).
-1. [Erstellen Sie abschließend neue Anmeldeinformationen](manage-credentials.md#create-a-new-credential), indem Sie den Schlüssel zum Einrichten Ihrer Überprüfung verwenden.
+   > [!Note]
+   > Wenn Sie diese Option verwenden, müssen Sie eine _Azure Key Vault_ Ressource in Ihrem Abonnement bereitstellen und die MSI eines _Azure Purview Accounts_ mit erforderlicher Zugriffsberechtigung auf Geheimnisse im _Azure Key Vault_ zuweisen.
 
-### <a name="service-principal"></a>Dienstprinzipal
+- **Dienstprinzipal**: Bei dieser Methode können Sie einen neuen Dienstprinzipal erstellen oder einen vorhandenen Dienstprinzipal in Ihrem Azure Active Directory verwenden.
 
-Zur Nutzung eines Dienstprinzipals können Sie einen vorhandenen Dienstprinzipal verwenden oder einen neuen erstellen. 
+#### <a name="using-managed-identity-for-scanning"></a>Verwenden der verwalteten Identität für die Überprüfung
 
-> [!Note]
-> Führen Sie die folgenden Schritte aus, falls Sie einen neuen Dienstprinzipal erstellen müssen:
-> 1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com).
-> 1. Wählen Sie im Menü auf der linken Seite die Option **Azure Active Directory** aus.
-> 1. Wählen Sie **App-Registrierungen** aus.
-> 1. Wählen Sie **+ Registrierung einer neuen Anwendung** aus.
-> 1. Geben Sie einen Namen für die **Anwendung** ein (Dienstprinzipalname).
-> 1. Wählen Sie **Nur Konten in diesem Organisationsverzeichnis** aus.
-> 1. Wählen Sie als Umleitungs-URI die Option **Web** aus, und geben Sie die gewünschte URL ein. Hierbei muss es sich nicht um eine reale oder geschäftliche URL handeln.
-> 1. Klicken Sie anschließend auf **Registrieren**.
-
-Es ist erforderlich, die Anwendungs-ID und das Geheimnis des Dienstprinzipals abzurufen:
-
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Dienstprinzipal.
-1. Kopieren Sie die Werte von **Anwendungs-ID (Client)** unter **Übersicht** und **Geheimer Clientschlüssel** unter **Zertifikate und Geheimnisse**.
-1. Navigieren zum Schlüsseltresor
-1. Wählen Sie **Einstellungen > Geheimnisse** aus.
-1. Wählen Sie **+ Generieren/Importieren** aus, und geben Sie unter **Name** einen gewünschten Namen und den **Wert** als **Geheimen Clientschlüssel** Ihres Dienstprinzipals ein.
-1. Wählen Sie **Erstellen** aus, um den Vorgang abzuschließen.
-1. Falls für Ihren Schlüsseltresor noch keine Verbindung mit Purview hergestellt wurde, müssen Sie eine [neue Schlüsseltresorverbindung erstellen](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account).
-1. [Erstellen Sie abschließend neue Anmeldeinformationen](manage-credentials.md#create-a-new-credential), indem Sie den Dienstprinzipal zum Einrichten Ihrer Überprüfung verwenden.
-
-#### <a name="granting-the-service-principal-access-to-your-blob-storage"></a>Gewähren des Zugriffs auf Ihren Blobspeicher für den Dienstprinzipal
-
-1. Navigieren Sie zu Ihrem Speicherkonto.
-1. Wählen Sie im linken Navigationsmenü **Zugriffssteuerung (IAM)** aus. 
-1. Klicken Sie auf **+ Hinzufügen**.
-1. Legen Sie die **Rolle** auf **Leser von Speicherblobdaten** fest, und geben Sie unter **Auswählen** den Dienstprinzipalnamen oder die Objekt-ID ein. Wählen Sie dann **Speichern** aus, um diese Rollenzuweisung für Ihren Dienstprinzipal festzulegen.
-
-## <a name="firewall-settings"></a>Firewalleinstellungen
+Es ist wichtig, Ihrem Purview-Konto die Berechtigung zum Überprüfen der Azure Blob-Datenquelle zu erteilen. Sie können die Katalog-MSI auf der Ebene des Abonnements, der Ressourcengruppe oder der Ressource hinzufügen, je nachdem, wofür die Berechtigungen zum Überprüfen erteilt werden sollen.
 
 > [!NOTE]
 > Wenn Sie für das Speicherkonto eine Firewall aktiviert haben, müssen Sie beim Einrichten einer Überprüfung als Authentifizierungsmethode **Verwaltete Identität** verwenden.
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Speicherkonto.
-1. Navigieren Sie zu **Einstellungen > Netzwerk**.
+> [!Note]
+> Sie müssen Besitzer des Abonnements sein, um einer Azure-Ressource eine verwaltete Identität hinzufügen zu können.
+
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com) das Abonnement, die Ressourcengruppe oder die Ressource (z. B. ein Azure Blob Storage-Konto), das den Katalog überprüfen soll.
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-storage-acct.png" alt-text="Screenshot: Speicherkonto":::
+
+1. Wählen Sie **Zugriffssteuerung (IAM)** und anschließend **+ Hinzufügen** --> **Rollenzuweisung hinzufügen** aus
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-access-control.png" alt-text="Screenshot der Seite „Zugriffssteuerung“ für das Speicherkonto":::
+
+1. Legen Sie die **Rolle** auf **Leser von Speicherblobdaten** fest, und geben Sie unter **Auswählen** den _Namen Ihres Azure Purview-Kontos_ ein. Wählen Sie dann **Speichern** aus, um diese Rollenzuweisung für Ihr Purview-Konto festzulegen.
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-assign-permissions.png" alt-text="Screenshot: Details zum Zuweisen von Berechtigungen für das Purview-Konto":::
+
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem Azure Blob Storage-Konto
+1. Navigieren Sie zu **Sicherheit und Netzwerk > Netzwerk**
+
 1. Wählen Sie unter **Zugriff erlauben von** die Option **Ausgewählte Netzwerke** aus.
-1. Aktivieren Sie im Abschnitt **Firewall** das Kontrollkästchen **Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben**, und wählen Sie dann **Speichern** aus.
 
-:::image type="content" source="./media/register-scan-azure-blob-storage-source/firewall-setting.png" alt-text="Screenshot der Firewalleinstellung":::
+1. Aktivieren Sie im Abschnitt **Ausnahmen** das Kontrollkästchen **Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben**, und wählen Sie dann **Speichern** aus.
 
-## <a name="register-an-azure-blob-storage-account"></a>Registrieren eines Azure Blob Storage-Kontos
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-permission.png" alt-text="Screenshot, der die Ausnahmen zeigt, mit denen vertrauenswürdigen Microsoft-Diensten Zugriff auf das Speicherkonto ermöglicht wird":::
 
-Gehen Sie wie folgt vor, um in Ihrem Datenkatalog ein neues Blob Storage-Konto zu registrieren:
+> [!Note]
+> Weitere Informationen finden Sie in den Schritten unter [Autorisieren des Zugriffs auf Blobs und Warteschlangen mit Azure Active Directory](../storage/blobs/authorize-access-azure-active-directory.md).
 
-1. Navigieren Sie in Ihrem Purview-Konto im Portal zu [Purview Studio](https://web.purview.azure.com/resource/).
-1. Wählen Sie auf der Startseite von Purview Studio die Option **Quellen registrieren** aus.
-1. Wählen Sie **Registrieren** aus.
-1. Wählen Sie unter **Register sources** (Quellen registrieren) die Option **Azure Blob Storage** aus.
-1. Wählen Sie **Weiter**.
+#### <a name="using-account-key-for-scanning"></a>Verwenden des Kontoschlüssels für die Überprüfung
 
-Gehen Sie auf dem Bildschirm **Register sources (Azure Blob Storage)** (Quellen registrieren (Azure Blob Storage)) wie folgt vor:
+Wenn **Kontoschlüssel** als Authentifizierungsmethode ausgewählt wird, müssen Sie Ihren Zugriffsschlüssel abrufen und im Schlüsseltresor speichern:
 
-1. Geben Sie unter **Name** einen Namen ein, unter dem die Datenquelle im Katalog aufgeführt werden soll. 
-1. Wählen Sie Ihr Abonnement aus, um die Speicherkonten zu filtern.
-1. Wählen Sie ein Speicherkonto aus.
-1. Wählen Sie eine Sammlung aus, oder erstellen Sie eine neue Sammlung (optional).
-1. Wählen Sie **Registrieren** aus, um die Datenquelle zu registrieren.
+1. Navigieren Sie zu Ihrem Azure Blob Storage-Konto
+1. Klicken Sie auf **Sicherheit + Netzwerkbetrieb > Zugriffsschlüssel**.
 
-:::image type="content" source="media/register-scan-azure-blob-storage-source/register-sources.png" alt-text="Optionen für die Quellenregistrierung" border="true":::
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-access-keys.png" alt-text="Screenshot: Zugriffsschlüssel im Speicherkonto":::
 
-## <a name="creating-and-running-a-scan"></a>Erstellen und Ausführen einer Überprüfung
+1. Kopieren Sie Ihren *Schlüssel*, und speichern Sie ihn separat für die nächsten Schritte
 
-Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-key.png" alt-text="Screenshot, der die zu kopierenden Zugriffsschlüssel zeigt":::
 
-1. Wählen Sie im linken Bereich in [Purview Studio](https://web.purview.azure.com/resource/) die Registerkarte **Data Map** aus.
+1. Navigieren zum Schlüsseltresor
 
-1. Wählen Sie die von Ihnen registrierte Azure Blob-Datenquelle aus.
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-key-vault.png" alt-text="Screenshot: Schlüsseltresor":::
 
-1. Wählen Sie **Neue Überprüfung** aus.
+1. Navigieren Sie zu Ihrer Key Vault-Instanz, und wählen Sie **Einstellungen > Geheimnisse** und dann **+ Generieren/Importieren** aus
 
-1. Wählen Sie die Anmeldeinformationen für die Verbindungsherstellung mit Ihrer Datenquelle aus. 
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-generate-secret.png" alt-text="Screenshot: Option &quot;Schlüsseltresor&quot; zum Generieren eines Geheimnisses":::
 
-   :::image type="content" source="media/register-scan-azure-blob-storage-source/set-up-scan-blob.png" alt-text="Einrichten der Überprüfung":::
+1. Geben Sie den **Namen** und den **Wert** als *Schlüssel* für Ihr Speicherkonto ein
 
-1. Sie können den Bereich für Ihre Überprüfung auf bestimmte Ordner oder Unterordner festlegen, indem Sie die entsprechenden Elemente in der Liste auswählen.
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-secret-values.png" alt-text="Screenshot: Option &quot;Schlüsseltresor&quot; zum Eingeben der Geheimniswerte":::
 
-   :::image type="content" source="media/register-scan-azure-blob-storage-source/blob-scope-your-scan.png" alt-text="Festlegen des Bereichs für Ihre Überprüfung":::
+1. Wählen Sie **Erstellen** aus, um den Vorgang abzuschließen.
+
+1. Falls für Ihren Schlüsseltresor noch keine Verbindung mit Purview hergestellt wurde, müssen Sie eine [neue Schlüsseltresorverbindung erstellen](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account).
+1. [Erstellen Sie abschließend neue Anmeldeinformationen](manage-credentials.md#create-a-new-credential), indem Sie den Schlüssel zum Einrichten Ihrer Überprüfung verwenden.
+
+#### <a name="using-service-principal-for-scanning"></a>Verwenden des Dienstprinzipals für die Überprüfung
+
+##### <a name="creating-a-new-service-principal"></a>Erstellen eines neuen Dienstprinzipals
+
+Wenn Sie [einen neuen Dienstprinzipal erstellen](./create-service-principal-azure.md) müssen, müssen Sie eine Anwendung in Ihrem Azure AD Mandanten registrieren und den Zugriff auf den Dienstprinzipal in Ihren Datenquellen bereitstellen. Ihr Azure AD allgemeiner Administrator oder andere Rollen, z. B. Anwendungsadministrator, können diesen Vorgang ausführen.
+
+##### <a name="getting-the-service-principals-application-id"></a>Abrufen der Anwendungs-ID des Dienstprinzipals
+
+1. Kopieren Sie die **Anwendungs-ID (Client)** , die in der **Übersicht** über das bereits erstellten [_Dienstprinzipal_](./create-service-principal-azure.md) vorhanden ist
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-sp-appln-id.png" alt-text="Screenshot: Anwendungs-ID (Client) für das Dienstprinzipal":::
+
+##### <a name="granting-the-service-principal-access-to-your-azure-blob-account"></a>Gewähren des Zugriffs auf Ihr Azure Blob-Konto für das Dienstprinzipal
+
+Es ist wichtig, ihrem Dienstprinzipal die Berechtigung zum Überprüfen der Azure Blob-Datenquelle zu erteilen. Sie können die Katalog-MSI auf der Ebene des Abonnements, der Ressourcengruppe oder der Ressource hinzufügen, je nachdem, wofür die Berechtigungen zum Überprüfen erteilt werden sollen.
+
+> [!Note]
+> Sie müssen ein Besitzer des Abonnements sein, um einer Azure-Ressource ein Dienstprinzipal hinzufügen zu können.
+
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com) das Abonnement, die Ressourcengruppe oder die Ressource (z. B. ein Azure Blob Storage-Konto), das den Katalog überprüfen soll.
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-storage-acct.png" alt-text="Screenshot: Speicherkonto":::
+
+1. Wählen Sie **Zugriffssteuerung (IAM)** und anschließend **+ Hinzufügen** --> **Rollenzuweisung hinzufügen** aus
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-access-control.png" alt-text="Screenshot der Seite „Zugriffssteuerung“ für das Speicherkonto":::
+
+1. Legen Sie die **Rolle** auf **Leser von Speicherblobdaten** fest, und geben Sie unter **Auswählen** das _Dienstprinzipal_ ein. Wählen Sie dann **Speichern** aus, um diese Rollenzuweisung für Ihr Purview-Konto festzulegen.
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-sp-permission.png" alt-text="Screenshot: Details zum Bereitstellen von Speicherkontoberechtigungen für das Dienstprinzipal":::
+
+### <a name="creating-the-scan"></a>Erstellen der Überprüfung
+
+1. Öffnen Sie Ihr **Purview-Konto,** und klicken Sie auf **Purview Studio öffnen**
+1. Navigieren Sie zu **Datenzuordnungs** --> **quelle**, um die Sammlungshierarchie anzuzeigen
+1. Klicken Sie unter der zuvor registrierten **Azure Blob-Datenquelle** auf das Symbol **Neue Überprüfung**
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-new-scan.png" alt-text="Screenshot: Bildschirm zum Erstellen einer neuen Überprüfung":::
+
+#### <a name="if-using-managed-identity"></a>Bei Zugriff mithilfe einer verwalteten Identität
+
+Geben Sie einen **Namen** für die Überprüfung an, wählen Sie unter **Anmeldeinformationen** die **Purview MSI** aus, wählen Sie die entsprechende Sammlung für die Überprüfung aus, und klicken Sie auf **Verbindung testen**. Klicken Sie bei einer erfolgreichen Verbindung auf **Weiter**
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-managed-identity.png" alt-text="Screenshot: Option Verwaltete Identität zum Ausführen der Überprüfung":::
+
+#### <a name="if-using-account-key"></a>Bei Verwendung des Kontoschlüssels
+
+Geben Sie einen **Namen** für die Überprüfung an, wählen Sie die entsprechende Sammlung für die Überprüfung aus, und wählen Sie **Authentifizierungsmethode** als _Kontoschlüssel_ und dann **Erstellen** aus
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-acct-key.png" alt-text="Screenshot: Option „Kontoschlüssel“ für die Überprüfung":::
+
+#### <a name="if-using-service-principal"></a>Bei Verwendung eines Dienstprinzipals
+
+1. Geben Sie einen **Namen** für die Überprüfung an, wählen Sie die entsprechende Sammlung für die Überprüfung aus, und klicken Sie auf **+ Neu** unter den **Anmeldeinformationen**
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-sp-option.png" alt-text="Screenshot, der die Option für das Dienstprinzipal zum Aktivieren der Überprüfung zeigt":::
+
+1. Wählen Sie die entsprechende **Schlüsseltresor-Verbindung** und den **geheimen Namen** aus, die beim Erstellen des _Dienstprinzipals_ verwendet wurden. Die **Dienstprinzipal-ID** ist die **Anwendungs-ID (Client)** , die zuvor kopiert wurde
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-service-principal-option.png" alt-text="Screenshot: Option Dienstprinzipal":::
+
+1. Klicken Sie auf **Verbindung testen**. Klicken Sie bei einer erfolgreichen Verbindung auf **Weiter**
+
+### <a name="scoping-and-running-the-scan"></a>Definieren und Ausführen der Überprüfung
+
+1. Sie können den Bereich für Ihre Überprüfung auf bestimmte Ordner und Unterordner festlegen, indem Sie die entsprechenden Elemente in der Liste auswählen.
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-scope-scan.png" alt-text="Festlegen des Bereichs für Ihre Überprüfung":::
 
 1. Wählen Sie dann einen Überprüfungsregelsatz aus. Sie können zwischen der Standardeinstellung des Systems, den vorhandenen benutzerdefinierten Regelsätzen und der Inlineerstellung eines neuen Regelsatzes wählen.
 
-   :::image type="content" source="media/register-scan-azure-blob-storage-source/blob-scan-rule-set.png" alt-text="Überprüfungsregelsatz":::
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-scan-rule-set.png" alt-text="Überprüfungsregelsatz":::
+
+1. Wenn Sie einen neuen _Überprüfungsregelsatz_ erstellen,wählen Sie die **Dateitypen** aus, die in die Überprüfungsregel aufgenommen werden sollen.
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-file-types.png" alt-text="Überprüfen von Regelsatz-Dateitypen":::
+
+1. Sie können die **Klassifizierungsregeln** auswählen, die in die Überprüfungsregel aufgenommen werden sollen
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-classification rules.png" alt-text="Überprüfen von Klassifizierungsregeln":::
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-select-scan-rule-set.png" alt-text="Überprüfen der Regelauswahl":::
 
 1. Wählen Sie den Auslöser für die Überprüfung. Sie können einen Zeitplan einrichten oder die Überprüfung einmalig ausführen.
 
-   :::image type="content" source="media/register-scan-azure-blob-storage-source/trigger-scan.png" alt-text="trigger":::
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-scan-trigger.png" alt-text="Auslöser für die Überprüfung":::
 
 1. Sehen Sie sich Ihre Überprüfung noch einmal an, und wählen Sie dann **Speichern und ausführen** aus.
 
-[!INCLUDE [view and manage scans](includes/view-and-manage-scans.md)]
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-review-scan.png" alt-text="Überprüfungs-Scan":::
+
+### <a name="viewing-scan"></a>Anzeigen der Überprüfung
+
+1. Navigieren Sie zur _Datenquelle_ in der _Sammlung_ und klicken Sie auf **Details anzeigen**, um den Status der Überprüfung zu prüfen
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-view-scan.png" alt-text="Überprüfung anzeigen":::
+
+1. Die Scandetails geben den Fortschritt der Überprüfung im **Status der letzten Ausführung** an sowie die Anzahl der _gescannten_ und _klassifizierten_ Objekte
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-scan-details.png" alt-text="Überprüfungsdetails anzeigen":::
+
+1. Der **Status Letzte Ausführung** wird in **In Bearbeitung** und anschließend in **Abgeschlossen** aktualisiert, sobald die gesamte Überprüfung erfolgreich ausgeführt wurde
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-scan-in-progress.png" alt-text="Anzeigen der Überprüfung in Bearbeitung":::
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-scan-completed.png" alt-text="Die abgeschlossene Überprüfung anzeigen":::
+
+### <a name="managing-scan"></a>Verwalten der Überprüfung
+
+Überprüfungen können verwaltet oder nach Abschluss erneut ausgeführt werden
+
+1. Klicken Sie auf den **Überprüfungsnamen**, um die Überprüfung zu verwalten
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-manage-scan.png" alt-text="Verwalten der Überprüfung":::
+
+1. Sie können _die Überprüfung erneut ausführen_, _die Überprüfung bearbeiten_ oder _die Überprüfung löschen_  
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-manage-scan-options.png" alt-text="Verwalten von Überprüfungsoptionen":::
+
+1. Sie können eine _inkrementelle Überprüfung_ oder eine _vollständige Überprüfung_ erneut ausführen 
+
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-full-inc-scan.png" alt-text="Vollständige oder inkrementelle Überprüfung":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Browsen im Azure Purview-Datenkatalog](how-to-browse-catalog.md)
-- [Suchen im Azure Purview-Datenkatalog](how-to-search-catalog.md)
+Nachdem Sie Ihre Quelle registriert haben, halten Sie sich an die folgenden Anleitungen, um mehr über Purview und Ihre Daten zu erfahren.
+
+- [Dateneinblicke in Azure Purview](concept-insights.md)
+- [Datenherkunft in Azure Purview](catalog-lineage-user-guide.md)
+- [Data Catalog suchen](how-to-search-catalog.md)

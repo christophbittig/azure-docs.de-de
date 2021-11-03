@@ -4,12 +4,13 @@ description: Dieser Artikel beschreibt die Kontingente und Einschränkungen von 
 ms.service: azure-video-analyzer
 ms.topic: conceptual
 ms.date: 06/01/2021
-ms.openlocfilehash: a94ebd36728519b7ae73d9cc48c82097dcfdbb21
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 45c867d3420c51e931b1cc9a0a8e1b54836f7494
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114602083"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131012015"
 ---
 # <a name="video-analyzer-quotas-and-limitations"></a>Video Analyzer-Kontingente und -Einschränkungen
 
@@ -62,10 +63,79 @@ Es können nur IP-Kameras verwendet werden, die das RTSP-Protokoll unterstützen
 
 Sie sollten diese Kameras so konfigurieren, dass H.264-Videos und AAC-Audios verwendet werden. Andere Codecs werden zurzeit nicht unterstützt.
 
-Azure Video Analyzer unterstützt das RTSP nur mit [ineinander verzahnten RTP-Streams]( https://datatracker.ietf.org/doc/html/rfc2326#section-10.12). In diesem Modus wird RTP-Datenverkehr über die RTSP-TCP-Verbindung getunnelt. RTP-Datenverkehr über UDP wird nicht unterstützt.
+Azure Video Analyzer unterstützt das RTSP nur mit [ineinander verzahnten RTP-Streams](https://datatracker.ietf.org/doc/html/rfc2326#section-10.12). In diesem Modus wird RTP-Datenverkehr über die RTSP-TCP-Verbindung getunnelt. RTP-Datenverkehr über UDP wird nicht unterstützt. 
 
 ### <a name="support-for-video-ai"></a>Unterstützung für Video-KI
 Die Erweiterungsprozessoren HTTP oder gRPC unterstützen nur das Senden von Bild-/Videobilddaten mit einem externen KI-Modul. Aufgrund dessen wird das Rückschließen auf Audiodaten nicht unterstützt. Daher verwenden Prozessorknoten in Pipeline-Topologien, zu denen ein RTSP-Quellknoten als `inputs` gehört, ebenfalls eine `outputSelectors`-Eigenschaft, um sicherzustellen, dass nur Video in den Prozessor geleitet wird. Sehen Sie sich diese [Topologie](https://github.com/Azure/video-analyzer/blob/main/pipelines/live/topologies/evr-grpcExtension-video-sink/topology.json) als Beispiel an.
+
+## <a name="quotas-and-limitations---live-and-batch-pipeline"></a>Kontingente und Einschränkungen – Live- und Batch-Pipeline
+
+In diesem Abschnitt werden die Kontingente und Einschränkungen der Azure Video Analyzer-Cloud Pipelines aufgeführt. 
+
+### <a name="maximum-number-of-pipeline-topologies"></a>Maximale Anzahl von Pipeline-Topologien 
+
+Pro Video Analyzer-Konto werden höchstens 5 Pipeline-Topologien unterstützt. 
+
+### <a name="limits-on-concurrent-activation-of-live-pipelines"></a>Grenzwerte für die gleichzeitige Aktivierung von Live-Pipelines 
+
+Maximal 10 Live-Pipelines können über ein Zeitfenster von 5 Minuten aktiviert werden, und höchstens 10 solcher Pipelines können sich zu einem bestimmten Zeitpunkt in einem `Activating` Zustand befinden.
+
+Diese Grenzwerte gelten nicht für Pipelineaufträge.  
+
+### <a name="maximum-live-pipelines-per-topology"></a>Maximale Anzahl von Live-Pipelines pro Topologie  
+
+Es werden höchstens 50 Live-Pipelines pro Topologie unterstützt.  
+
+### <a name="concurrent-low-latency-streaming-sessions"></a>Gleichzeitige Streamingsitzungen mit geringer Latenz  
+
+Für jede aktive Live-Pipeline kann höchstens eine Clientanwendung den [Stream mit geringer Latenz](playback-recordings-how-to.md#low-latency-streaming) anzeigen. Wenn ein anderer Client versucht, eine Verbindung herzustellen, wird die Anforderung abgelehnt.  
+
+### <a name="limitations-on-designing-pipeline-topologies"></a>Einschränkungen beim Entwerfen von Pipeline-Topologien 
+
+Nachfolgend sind die verschiedenen Knoten aufgeführt, die in einer Pipeline-Topologie verbunden werden können, sowie deren Einschränkungen: 
+
+* RTSP-Quelle
+   * Es ist nur eine RTSP-Quelle pro Pipeline-Topologie zulässig.
+* Videoquelle
+   * Es ist nur eine Videoquelle pro Pipeline-Topologie zulässig.
+   * Kann nur in Pipeline-Topologien der [Batchart](pipeline.md#batch-pipeline) verwendet werden. Sie kann nur eine Videoressource vom Typ `archive` akzeptieren. 
+* Encoderprozessor 
+   * Pro Pipeline-Topologie ist nur ein Encoderprozessor zulässig.
+   * Kann nur in Pipelinetopologien der [Batchart](pipeline.md#batch-pipeline) verwendet werden und muss sich in solchen Topologien unmittelbar vor dem Knoten der Videovideosenke befinden.
+   * Es unterstützt nur das Codieren von Videos mit dem H.264-Codec und Audio mit dem AAC-Codec.
+   * Ermöglicht dem Benutzer das Angeben von Codierungseigenschaften beim Konvertieren des aufgezeichneten Videos in das gewünschte Format für die Downstreamverarbeitung. Zwei Typen: (a) Systemvoreinstellung (b) Benutzerdefinierte Voreinstellung. Die zulässigen Konfigurationen für jede Voreinstellung sind in der folgenden Tabelle aufgeführt: 
+     
+     | Konfiguration       | Systemvoreinstellung        | Benutzerdefinierte Voreinstellung |
+     | -----------         | -----------          |----------- |
+     | Bitrate-KBit/s des Videoencoders      | identisch mit der Quelle      | 200 bis 16.000 KBit/s |
+     | Bildfrequenz       | identisch mit der Quelle      | 0 bis 300 |
+     | Höhe    | identisch mit der Quelle        | 1 bis 4320 |
+     | Breite    | identisch mit der Quelle       | 1 bis 8192 |
+     | Mode   | Pad        | Pad, PreserveAspectRatio, Stretch |     
+     | Audioencoderbitraten-KBit/s  | identisch mit der Quelle        | Zulässige Werte: 96, 112, 128, 160, 192, 224, 256 |
+     
+* Videosenke 
+   *  Es ist nur eine Videosenke pro Pipeline-Topologie zulässig.
+   *  Muss direkt hinter der RTSP-Quelle oder Encoderprozessorknoten angeordnet sein. 
+   *  Bei Verwendung in einer Pipelinetopologie der Batchart wird eine MP4-Datei als Ausgabe erzeugt.
+
+### <a name="support-for-batch-video-export"></a>Unterstützung für den Batchvideoexport 
+
+* Segmentauswahl 
+   * Die Zeitsequenz, d. h. der Start- und Endzeitstempel des zu exportierenden Teils des archivierten Videos, sollte in UTC-Zeit angegeben werden. 
+   * Die maximale Zeitspanne der Zeitsequenz (Endzeitstempel – Startzeitstempel) muss kleiner oder gleich 24 Stunden sein. 
+
+### <a name="supported-cameras"></a>Unterstützte Kameras
+
+Es können nur IP-Kameras verwendet werden, die das RTSP-Protokoll unterstützen. IP-Kameras, die RTSP unterstützen, finden Sie auf der [Seite mit den ONVIF-konformen Produkten](https://www.onvif.org/conformant-products). Suchen Sie nach Geräten, die mit den Profilen G, S oder T konform sind. 
+
+Sie sollten diese Kameras so konfigurieren, dass H.264-Videos und AAC-Audios verwendet werden. Andere Codecs werden zurzeit nicht unterstützt. Die Bitrate der Videocodierung muss zwischen 500 und 3.000 KBit/s betragen. Wenn die tatsächliche Erfassungsbitrate diesen Schwellenwert überschreitet, wird die Erfassung getrennt und mit exponentiellen Backoffs erneut verbunden.
+
+Azure Video Analyzer unterstützt das RTSP nur mit [ineinander verzahnten RTP-Streams](https://datatracker.ietf.org/doc/html/rfc2326#section-10.12). In diesem Modus wird RTP-Datenverkehr über die RTSP-TCP-Verbindung getunnelt. RTP-Datenverkehr über UDP wird nicht unterstützt. 
+
+### <a name="support-for-video-ai"></a>Unterstützung für Video-KI 
+
+Die Analyse von Livevideos oder aufgezeichneten Videos wird derzeit nicht unterstützt.
 
 ## <a name="quotas-and-limitations---service"></a>Kontingente und Einschränkungen – Service
 

@@ -5,11 +5,14 @@
   items:
     - name: Informationen zum Netzwerkfunktionsmanager
       href: overview.md
-- name: Tutorials
+- name: Schnellstarts
   expanded: true
   items:
     - name: Erstellen einer Geräteressource
       href: create-device.md
+- name: Lernprogramme
+  expanded: true
+  items:
     - name: Bereitstellen von Netzwerkfunktionen
       href: deploy-functions.md
 - name: Konzepte
@@ -19,6 +22,13 @@
       href: partners.md
     - name: Häufig gestellte Fragen
       href: faq.md
+    - name: Voraussetzungen und Anforderungen
+      href: requirements.md
+- name: Exemplarische Vorgehensweisen
+  expanded: true
+  items:
+    - name: Konfigurieren von Berechtigungen und Registrieren von Ressourcen
+      href: resources-permissions.md
 - name: Verweis
   items:
     - name: REST

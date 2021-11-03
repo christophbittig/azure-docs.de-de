@@ -4,22 +4,21 @@ description: Erfahren Sie mehr über Partner, die ihre Netzwerkfunktionen über 
 author: prmitt
 ms.service: network-function-manager
 ms.topic: article
-ms.date: 06/30/2021
+ms.date: 11/02/2021
 ms.author: prmitt
-ms.openlocfilehash: 5186d16d36503ad5f057424b6251ee8be109b958
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: f2fdd216b15bba15f65b4fe8547e2bfc2b729348
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130258485"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131024048"
 ---
-# <a name="network-function-manager-partners-preview"></a>Netzwerkfunktionsmanager-Partner (Vorschau)
+# <a name="network-function-manager-partners"></a>Netzwerkfunktionsmanager-Partner
 
-Wir verfügen über ein wachsendes Ökosystem von Partnern, die ihre Netzwerkfunktionen über diesen Dienst als verwaltete Anwendungen anbieten. 
+Wir verfügen über ein wachsendes Ökosystem von Partnern, die ihre Netzwerkfunktionen über diesen Dienst als verwaltete Anwendungen anbieten.
 
 ## <a name="devices-and-configuration-links"></a><a name="devices"></a>Geräte und Konfigurationslinks
-
-Derzeit sind die unten angegebenen SKUs als Vorschau verfügbar.
 
 |Funktion |Category|Link|
 | ---  | --- | --- |

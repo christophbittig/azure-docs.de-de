@@ -9,12 +9,12 @@ author: nabhishek
 ms.author: abnarain
 ms.custom: synapse
 ms.date: 09/09/2021
-ms.openlocfilehash: c353b0c92a767adb2196a6268658abeecaed774d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: c38b4ec230ef6140500905e3dd1eea6f8c089047
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124806107"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131005694"
 ---
 # <a name="transform-data-using-hadoop-pig-activity-in-azure-data-factory-or-synapse-analytics"></a>Transformieren von Daten mit der Hadoop Pig-Aktivität in Azure Data Factory oder Synapse Analytics
 
@@ -57,7 +57,7 @@ Lesen Sie vor diesem Artikel die Einführung zu [Azure Data Factory](introductio
 ```
 ## <a name="syntax-details"></a>Syntaxdetails
 
-| Eigenschaft            | Beschreibung                              | Erforderlich |
+| Eigenschaft            | BESCHREIBUNG                              | Erforderlich |
 | ------------------- | ---------------------------------------- | -------- |
 | name                | Der Name der Aktivität                     | Ja      |
 | description         | Ein Text, der beschreibt, wofür die Aktivität verwendet wird. | Nein       |
@@ -78,5 +78,4 @@ In den folgenden Artikeln erfahren Sie, wie Daten auf andere Weisen transformier
 * [Hadoop-Streamingaktivität](transform-data-using-hadoop-streaming.md)
 * [Spark-Aktivität](transform-data-using-spark.md)
 * [Benutzerdefinierte .NET-Aktivität](transform-data-using-dotnet-custom-activity.md)
-* [Batch Execution-Aktivität für ML Studio (klassisch)](transform-data-using-machine-learning.md)
 * [Aktivität „Gespeicherte Prozedur“](transform-data-using-stored-procedure.md)

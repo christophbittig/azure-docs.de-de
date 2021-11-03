@@ -3,16 +3,14 @@ title: Archivierte Versionshinweise für Azure HDInsight
 description: Die archivierten Versionshinweise für Azure HDInsight. Rufen Sie Tipps zur Entwicklung und Details für Hadoop, Spark, R Server, Hive und mehr ab.
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom:
-- hdinsightactive
-- references_regions
+ms.custom: hdinsightactive, references_regions
 ms.date: 07/27/2021
-ms.openlocfilehash: e7e3442f397b4d3cfbb79f2f852269affdf3badc
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 732d7ee085fdb7ff91ffe4e90ce8d996b9299b6c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340041"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131073033"
 ---
 # <a name="archived-release-notes"></a>Archivierte Versionshinweise
 

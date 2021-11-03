@@ -6,13 +6,13 @@ ms.author: amiyouss
 ms.service: azure-percept
 ms.topic: how-to
 ms.date: 02/15/2021
-ms.custom: template-how-to
-ms.openlocfilehash: ed9a6bcc77e94b569e10a439b044ce78a90faff2
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.custom: template-how-to, ignite-fall-2021
+ms.openlocfilehash: 82be52611d12b69e146fdaa477614a3dbc25242d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123226819"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131006561"
 ---
 # <a name="configure-your-azure-percept-voice-assistant-application"></a>Konfigurieren Ihrer Sprach-Assistent-Anwendung für Azure Percept
 
@@ -104,4 +104,3 @@ Wechseln Sie zu [Speech Studio](https://speech.microsoft.com/), um Ihre **appID*
 ## <a name="next-steps"></a>Nächste Schritte
 
 Kehren Sie nach dem Aktualisieren Ihrer Sprach-Assistenten-Konfiguration zur Demo in Azure Percept Studio zurück, um mit der Anwendung zu interagieren.
-

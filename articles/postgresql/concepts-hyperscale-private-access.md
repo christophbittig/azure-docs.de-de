@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 10/15/2021
-ms.openlocfilehash: 53e2cc3c62cc04ef05ccfe22b4876616916b0284
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 8ddefc9ee135b897dc866826208f50f7f9ad21ed
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130075048"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131084386"
 ---
 # <a name="private-access-preview-in-azure-database-for-postgresql---hyperscale-citus"></a>Privater Zugriff (Vorschau) in Azure Database for PostgreSQL – Hyperscale (Citus)
 
@@ -43,7 +43,7 @@ Wenn Sie den privaten Zugriff für Hyperscale (Citus) aktivieren, wird ein priva
 
 ## <a name="private-link"></a>Private Link
 
-Sie können [private Endpunkte](/azure/private-link/private-endpoint-overview) für Ihre Hyperscale (Citus)-Servergruppen verwenden, um Hosts in einem virtuellen Netzwerk (VNET) den sicheren Zugriff auf Daten über [Private Link](/azure/private-link/private-link-overview) zu erlauben.
+Sie können [private Endpunkte](../private-link/private-endpoint-overview.md) für Ihre Hyperscale (Citus)-Servergruppen verwenden, um Hosts in einem virtuellen Netzwerk (VNET) den sicheren Zugriff auf Daten über [Private Link](../private-link/private-link-overview.md) zu erlauben.
 
 Der private Endpunkt der Servergruppe verwendet eine IP-Adresse aus dem Adressraum des virtuellen Netzwerks. Der Datenverkehr zwischen Hosts im virtuellen Netzwerk und Hyperscale (Citus)-Knoten wird über eine private Verbindung im Microsoft-Backbonenetzwerk übertragen, und ist damit nicht dem öffentlichen Internet ausgesetzt.
 
@@ -53,24 +53,24 @@ Sie können den privaten Zugriff bei der Erstellung der Hyperscale (Citus)-Serve
 
 ### <a name="using-a-private-dns-zone"></a>Verwenden einer privaten DNS-Zone
 
-Für jeden privaten Endpunkt wird automatisch eine neue private DNS-Zone bereitgestellt, es sei denn, Sie wählen eine der privaten DNS-Zonen aus, die zuvor von Hyperscale (Citus) erstellt wurden. Weitere Informationen finden Sie in der [Übersicht über private DNS-Zonen](/azure/dns/private-dns-overview).
+Für jeden privaten Endpunkt wird automatisch eine neue private DNS-Zone bereitgestellt, es sei denn, Sie wählen eine der privaten DNS-Zonen aus, die zuvor von Hyperscale (Citus) erstellt wurden. Weitere Informationen finden Sie in der [Übersicht über private DNS-Zonen](../dns/private-dns-overview.md).
 
 Hyperscale (Citus) erstellt DNS-Einträge wie `c.privatelink.mygroup01.postgres.database.azure.com` in der ausgewählten privaten DNS-Zone für jeden Knoten mit einem privaten Endpunkt. Wenn Sie von einem virtuellen Azure VM aus über einen privaten Endpunkt eine Verbindung mit einem Hyperscale (Citus)-Knoten herstellen, löst Azure DNS den FQDN des Knotens in eine private IP-Adresse auf.
 
-Die Einstellungen für private DNS-Zonen und das Peering virtueller Netzwerke sind voneinander unabhängig. Wenn Sie von einem Client, der in einem anderen VNet (derselben Region oder einer anderen Region) bereitgestellt wurde, eine Verbindung zu einem Knoten in der Servergruppe herstellen möchten, müssen Sie die private DNS-Zone mit dem VNet verknüpfen. Weitere Informationen finden Sie unter [Verknüpfen des virtuellen Netzwerks](/azure/dns/private-dns-getstarted-portal#link-the-virtual-network).
+Die Einstellungen für private DNS-Zonen und das Peering virtueller Netzwerke sind voneinander unabhängig. Wenn Sie von einem Client, der in einem anderen VNet (derselben Region oder einer anderen Region) bereitgestellt wurde, eine Verbindung zu einem Knoten in der Servergruppe herstellen möchten, müssen Sie die private DNS-Zone mit dem VNet verknüpfen. Weitere Informationen finden Sie unter [Verknüpfen des virtuellen Netzwerks](../dns/private-dns-getstarted-portal.md#link-the-virtual-network).
 
 > [!NOTE]
 >
 > Der Dienst erstellt auch immer öffentliche CNAME-Einträge wie `c.mygroup01.postgres.database.azure.com` für jeden Knoten. Ausgewählte Computer im öffentlichen Internet können jedoch nur dann eine Verbindung mit dem öffentlichen Hostnamen herstellen, wenn der Datenbankadministrator den [öffentlichen Zugriff](concepts-hyperscale-firewall-rules.md) auf die Servergruppe ermöglicht.
 
-Wenn Sie einen benutzerdefinierten DNS-Server verwenden, müssen Sie eine DNS-Weiterleitung verwenden, um den FQDN der Hyperscale (Citus)-Knoten aufzulösen. Die IP-Adresse der Weiterleitung sollte 168.63.129.16 sein. Der benutzerdefinierte DNS-Server sollte sich innerhalb des VNet befinden oder über die DNS-Servereinstellung des VNet erreichbar sein. Weitere Informationen finden Sie unter [Namensauflösung mithilfe eines eigenen DNS-Servers](/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server).
+Wenn Sie einen benutzerdefinierten DNS-Server verwenden, müssen Sie eine DNS-Weiterleitung verwenden, um den FQDN der Hyperscale (Citus)-Knoten aufzulösen. Die IP-Adresse der Weiterleitung sollte 168.63.129.16 sein. Der benutzerdefinierte DNS-Server sollte sich innerhalb des VNet befinden oder über die DNS-Servereinstellung des VNet erreichbar sein. Weitere Informationen finden Sie unter [Namensauflösung mithilfe eines eigenen DNS-Servers](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server).
 
 ### <a name="recommendations"></a>Empfehlungen
 
 Beim Aktivieren des privaten Zugriffs für Ihre Hyperscale (Citus)-Servergruppe sollten Sie Folgendes berücksichtigen:
 
 * **Subnetzgröße**: Berücksichtigen Sie bei der Auswahl der Subnetzgröße für die Hyperscale (Citus)-Servergruppe die aktuellen Anforderungen, z. B. IP-Adressen für Koordinator oder alle Knoten in dieser Servergruppe, sowie zukünftige Anforderungen wie die Vergrößerung dieser Servergruppe. Stellen Sie sicher, dass Sie über genügend private IP-Adressen für die aktuellen und zukünftigen Anforderungen verfügen. Beachten Sie, dass in Azure in jedem Subnetz fünf IP-Adressen reserviert sind.
-  Ausführlichere Informationen finden Sie [in diesen FAQ](/azure/virtual-network/virtual-networks-faq#configuration).
+  Ausführlichere Informationen finden Sie [in diesen FAQ](../virtual-network/virtual-networks-faq.md#configuration).
 * **Private DNS-Zone**: DNS-Einträge mit privaten IP-Adressen werden vom Hyperscale (Citus) verwaltet. Stellen Sie sicher, dass Sie keine private DNS-Zone löschen, die für Hyperscale (Citus)-Servergruppen verwendet wird.
 
 ## <a name="limits-and-limitations"></a>Grenzwerte und Einschränkungen
@@ -81,6 +81,6 @@ Weitere Informationen finden Sie unter Hyperscale (Citus) – [Grenzwerte und Ei
 
 * Erfahren Sie, wie Sie [privaten Zugriff aktivieren und verwalten](howto-hyperscale-private-access.md) (Vorschau)
 * Folgen Sie einem [Tutorial](tutorial-hyperscale-private-access.md), um den privaten Zugriff (Vorschau) in Aktion zu sehen.
-* Erfahren Sie mehr über [private Endpunkte](/azure/private-link/private-endpoint-overview)
-* Erfahren Sie mehr über [virtuelle Netzwerke](/azure/virtual-network/concepts-and-best-practices)
-* Erfahren Sie mehr über [private DNS-Zonen](/azure/dns/private-dns-overview)
+* Erfahren Sie mehr über [private Endpunkte](../private-link/private-endpoint-overview.md)
+* Informieren Sie sich ausführlicher über [virtuelle Netzwerke](../virtual-network/concepts-and-best-practices.md).
+* Erfahren Sie mehr über [private DNS-Zonen](../dns/private-dns-overview.md).

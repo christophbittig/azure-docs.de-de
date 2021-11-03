@@ -1,17 +1,17 @@
 ---
 title: Öffnen eines Supporttickets für Microsoft Azure FXT Edge Filer
 description: Öffnen Sie ein Supportticket beim Microsoft-Kundendienst und -Support, um Hilfe für Ihr Azure FXT Edge Filer-System zu erhalten.
-author: ekpgh
+author: femila
 ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.author: v-erkel
-ms.openlocfilehash: 71c0c1cf014333799821f87a6532ded8d50b8340
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.author: femila
+ms.openlocfilehash: e15269b0b592b2538c0f930e7cc40ea76dd74833
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111415103"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131011161"
 ---
 # <a name="open-a-support-ticket-for-the-azure-fxt-edge-filer"></a>Öffnen eines Supporttickets für den Azure FXT Edge Filer
 

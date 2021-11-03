@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 07/17/2021
 ms.custom: seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 598f1df9808bfe4e367719615ebae332c617a984
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 9fef5f438cc28c5e0fe3ae86d1d85b67af45a8ba
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124767829"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131005801"
 ---
 # <a name="quickstart-build-a-java-app-to-manage-azure-cosmos-db-cassandra-api-data-v3-driver"></a>Schnellstart: Erstellen einer Java-App zum Verwalten von Azure Cosmos DB-Cassandra-API-Daten (v3-Treiber)
 [!INCLUDE[appliesto-cassandra-api](../includes/appliesto-cassandra-api.md)]
@@ -75,27 +75,27 @@ Dieser Schritt ist optional. Wenn Sie erfahren möchten, wie der Code die Datenb
 
 * Cassandra-Host, -Port, -Benutzername, -Kennwort und TLS-/SSL-Optionen wurden festgelegt. Die Informationen zur Verbindungszeichenfolge stammen von der Seite „Verbindungszeichenfolge“ im Azure-Portal.
 
-   ```java
-   cluster = Cluster.builder().addContactPoint(cassandraHost).withPort(cassandraPort).withCredentials(cassandraUsername, cassandraPassword).withSSL(sslOptions).build();
-   ```
+  ```java
+  cluster = Cluster.builder().addContactPoint(cassandraHost).withPort(cassandraPort).withCredentials(cassandraUsername, cassandraPassword).withSSL(sslOptions).build();
+  ```
 
 * `cluster` stellt eine Verbindung mit der Cassandra-API von Azure Cosmos DB her und gibt eine Sitzung für den Zugriff zurück.
 
-    ```java
-    return cluster.connect();
-    ```
+  ```java
+  return cluster.connect();
+  ```
 
 Die folgenden Codeausschnitte stammen aus der Datei *src/main/java/com/azure/cosmosdb/cassandra/repository/UserRepository.java*.
 
 * Erstellen Sie einen neuen Keyspace.
 
-    ```java
-    public void createKeyspace() {
-        final String query = "CREATE KEYSPACE IF NOT EXISTS uprofile WITH replication = {'class': 'SimpleStrategy', 'replication_factor': '3' } ";
-        session.execute(query);
-        LOGGER.info("Created keyspace 'uprofile'");
-    }
-    ```
+  ```java
+  public void createKeyspace() {
+      final String query = "CREATE KEYSPACE IF NOT EXISTS uprofile WITH replication = {'class': 'SimpleStrategy', 'replication_factor': '3' } ";
+      session.execute(query);
+      LOGGER.info("Created keyspace 'uprofile'");
+  }
+  ```
 
 * Erstellen Sie eine neue Tabelle.
 
@@ -109,41 +109,41 @@ Die folgenden Codeausschnitte stammen aus der Datei *src/main/java/com/azure/cos
 
 * Fügen Sie Benutzerentitäten mithilfe eines vorbereiteten Anweisungsobjekts ein.
 
-    ```java
-    public PreparedStatement prepareInsertStatement() {
-        final String insertStatement = "INSERT INTO  uprofile.user (user_id, user_name , user_bcity) VALUES (?,?,?)";
-        return session.prepare(insertStatement);
-    }
+  ```java
+  public PreparedStatement prepareInsertStatement() {
+      final String insertStatement = "INSERT INTO  uprofile.user (user_id, user_name, user_bcity) VALUES (?,?,?)";
+      return session.prepare(insertStatement);
+  }
 
-    public void insertUser(PreparedStatement statement, int id, String name, String city) {
-        BoundStatement boundStatement = new BoundStatement(statement);
-        session.execute(boundStatement.bind(id, name, city));
-    }
-    ```
+  public void insertUser(PreparedStatement statement, int id, String name, String city) {
+      BoundStatement boundStatement = new BoundStatement(statement);
+      session.execute(boundStatement.bind(id, name, city));
+  }
+  ```
 
 * Führen Sie eine Abfrage zum Abrufen der gesamten Benutzerinformationen aus.
 
-    ```java
-   public void selectAllUsers() {
-        final String query = "SELECT * FROM uprofile.user";
-        List<Row> rows = session.execute(query).all();
+  ```java
+  public void selectAllUsers() {
+      final String query = "SELECT * FROM uprofile.user";
+      List<Row> rows = session.execute(query).all();
 
-        for (Row row : rows) {
-            LOGGER.info("Obtained row: {} | {} | {} ", row.getInt("user_id"), row.getString("user_name"), row.getString("user_bcity"));
-        }
-    }
-    ```
+      for (Row row : rows) {
+          LOGGER.info("Obtained row: {} | {} | {} ", row.getInt("user_id"), row.getString("user_name"), row.getString("user_bcity"));
+      }
+  }
+  ```
 
 * Führen Sie eine Abfrage zum Abrufen der Informationen eines einzelnen Benutzers aus.
 
-    ```java
-    public void selectUser(int id) {
-        final String query = "SELECT * FROM uprofile.user where user_id = 3";
-        Row row = session.execute(query).one();
+  ```java
+  public void selectUser(int id) {
+      final String query = "SELECT * FROM uprofile.user where user_id = 3";
+      Row row = session.execute(query).one();
 
-        LOGGER.info("Obtained row: {} | {} | {} ", row.getInt("user_id"), row.getString("user_name"), row.getString("user_bcity"));
-    }
-    ```
+      LOGGER.info("Obtained row: {} | {} | {} ", row.getInt("user_id"), row.getString("user_name"), row.getString("user_bcity"));
+  }
+  ```
 
 ## <a name="update-your-connection-string"></a>Aktualisieren der Verbindungszeichenfolge
 

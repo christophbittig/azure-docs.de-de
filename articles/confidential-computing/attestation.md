@@ -1,40 +1,47 @@
 ---
-title: Nachweisen von Enklaven in Azure
-description: Hier erfahren Sie, wie Sie mithilfe eines Nachweises überprüfen können, ob Ihre vertrauenswürdige Confidential Computing-Umgebung sicher ist.
+title: Bescheinigung für SGX-Enclaves
+description: Überprüfen Sie die Sicherheit Ihrer SGX-Enclave für vertrauliche Datenverarbeitung mit einer Bescheinigung.
 services: virtual-machines
 author: JBCook
 ms.service: virtual-machines
 ms.subservice: confidential-computing
 ms.workload: infrastructure
 ms.topic: conceptual
-ms.date: 9/22/2020
+ms.date: 11/01/2020
 ms.author: JenCook
-ms.openlocfilehash: a7b0ca65329016b0a73f612115d8caba43dfbe2a
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 9672a40ac7008b60195b07b6a077ed5bac0eb1b4
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102551350"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131011444"
 ---
-# <a name="attesting-sgx-enclaves"></a>Nachweisen von SGX-Enklaven
+# <a name="attestation-for-sgx-enclaves"></a>Bescheinigung für SGX-Enclaves
 
-Confidential Computing in Azure bietet Intel SGX-basierte virtuelle Computer, die einen Teil Ihres Codes oder Ihrer Daten isolieren können. Beim Arbeiten mit diesen [Enklaven](confidential-computing-enclaves.md) möchten Sie überprüfen und verifizieren können, ob Ihre vertrauenswürdige Umgebung sicher ist. Diese Verifizierung wird als Nachweisvorgang bezeichnet. 
+Vertrauliches Computing auf Azure bietet Intel SGX-basierte virtuelle Maschinen, die einen Teil Ihres Codes oder Ihrer Daten isolieren können. Wenn Sie mit diesen [Enklaven](confidential-computing-enclaves.md) arbeiten, können Sie verifizieren und validieren, dass Ihre vertrauenswürdige Umgebung sicher ist. Diese Verifizierung wird als Nachweisvorgang bezeichnet. 
 
 ## <a name="overview"></a>Übersicht 
 
-Mit der Erbringung des Nachweises kann das Vertrauen der vertrauenden Seite gestärkt werden, dass die eigene Software (1) in einer Enklave ausgeführt wird und (2) dass die Enklave aktuell und geschützt ist. Bei einer Enklave wird die zugrunde liegende Hardware aufgefordert, Anmeldeinformationen als Nachweis zu generieren, dass die Enklave auf der Plattform vorhanden ist. Der Bericht kann dann an eine zweite Enklave weitergegeben werden, die bestätigt, dass der Bericht auf derselben Plattform generiert wurde.
+Durch die Attestierung kann eine vertrauende Partei darauf vertrauen, dass ihre Software korrekt ist:
 
-![Nachweisen von Code in der Enklave](media/attestation/attestation.png)
+1. Ausführen in einer Enclave
+1. Aktuell
+1. Sicher
 
+So kann eine Enklave beispielsweise die zugrunde liegende Hardware auffordern, einen Berechtigungsnachweis zu erstellen. Diese Bescheinigung enthält den Nachweis, dass die Enklave auf der Plattform existiert. Eine zweite Enklave kann den Bericht empfangen und überprüfen, ob er von derselben Plattform stammt.
 
+![Schema des Bescheinigungsverfahrens, das den sicheren Austausch des Kunden mit der Enklave zeigt, die Daten und den Anwendungscode enthält.](media/attestation/attestation.png)
 
-Der Nachweisvorgang muss über einen sicheren Nachweisdienst implementiert werden, der mit der Systemsoftware und der Hardware kompatibel ist. Zwei Beispiele für Dienste, die Sie nutzen können:
+Implementieren Sie die Bescheinigung mit einem sicheren Bescheinigungsdienst, der mit der Systemsoftware und dem Silizium kompatibel ist. Beispiel:
 
-- [Microsoft Azure Attestation (Vorschau)](../attestation/overview.md) oder
+- [Microsoft Azure Attestation](../attestation/overview.md) 
 - [Nachweis- und Bereitstellungsdienste von Intel](https://software.intel.com/sgx/attestation-services)
 
 
-Beide sind mit der Intel SGX-Infrastruktur von Azure Confidential Computing kompatibel. 
+Beide Dienste sind kompatibel mit vertraulichen Azure-Computing-VMs der Intel SGX DCsv2-Reihe. VMs der DCsv3-Serie und DCdsv3-Serie sind nicht mit dem Intel-Attestierungsdienst kompatibel. 
 
-## <a name="next-steps"></a>Nächste Schritte
-Probieren Sie die [Microsoft Azure Attestation-Beispiele für enklavefähige Apps](/samples/azure-samples/microsoft-azure-attestation/sample-code-for-intel-sgx-attestation-using-microsoft-azure-attestation/)aus.
+## <a name="next-step"></a>Nächster Schritt
+
+> [!div class="nextstepaction"]
+> [Microsoft Azure Attestation Beispiele für Enclave aware apps](/samples/azure-samples/microsoft-azure-attestation/sample-code-for-intel-sgx-attestation-using-microsoft-azure-attestation/)

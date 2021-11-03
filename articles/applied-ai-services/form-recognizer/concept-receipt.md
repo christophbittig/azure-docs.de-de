@@ -7,15 +7,16 @@ manager: nitinme
 ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 10/05/2021
+ms.date: 11/02/2021
 ms.author: lajanuar
 recommendations: false
-ms.openlocfilehash: 48ebbb4975e57db34fe080db2a61328cef65ca80
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 111dcc2ab07c83e164e054395b0804f46c07d748
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129716448"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131027064"
 ---
 <!-- markdownlint-disable MD033 -->
 
@@ -23,52 +24,74 @@ ms.locfileid: "129716448"
 
 Das Belegmodell kombiniert leistungsstarke OCR-Funktionen (Optical Character Recognition, optische Zeichenerkennung) mit Deep Learning-Modellen, um wichtige Informationen aus Kaufbelegen zu analysieren und zu extrahieren. Belege können verschiedene Formate und unterschiedliche Qualität aufweisen, einschließlich gedruckter und handschriftlicher Belege. Die API extrahiert Schlüsselinformationen wie Händlername, Händlertelefonnummer, Transaktionsdatum, Steuer und Transaktionssumme und gibt eine strukturierte JSON-Datendarstellung zurück.
 
-##### <a name="sample-receipt-processed-with-form-recognizer-sample-labeling-tool"></a>Beispielbeleg verarbeitet mit dem [Beispielbeschriftungstool der Formularerkennung](https://fott-2-1.azurewebsites.net/):
+***Beispielbeleg verarbeitet mit dem [Beispiel-Beschriftungstool der Azure-Formularerkennung](https://fott-2-1.azurewebsites.net/)***:
 
-:::image type="content" source="./media/overview-receipt.jpg" alt-text="Beispielbeleg" lightbox="./media/overview-receipt.jpg":::
+:::image type="content" source="media/studio/overview-receipt.png" alt-text="Beispielbeleg" lightbox="media/overview-receipt.jpg":::
 
-## <a name="try-form-recognizer-studio-preview"></a>Ausprobieren von Formularerkennung Studio (Vorschau)
+## <a name="development-options"></a>Entwicklungsoptionen
 
-* Formularerkennung Studio ist mit der Vorschau-API (v3.0) verfügbar.
+Die folgenden Ressourcen werden von der Azure-Formularerkennung v2.1 unterstützt:
 
-* Extrahieren Sie beispielsweise die Uhrzeit und das Datum von Transaktionen, Händlerinformationen oder Gesamtbeträge mit der Belegfunktion in Formularerkennung Studio:
+| Funktion | Ressourcen |
+|----------|-------------------------|
+|**Belegmodell**| <ul><li>[**Formularerkennungstool für die Bezeichnung**](https://fott-2-1.azurewebsites.net/prebuilts-analyze)</li><li>[**REST-API**](quickstarts/try-sdk-rest-api.md?pivots=programming-language-rest-api#analyze-receipts)</li><li>[**Clientbibliothek/SDK**](quickstarts/try-sdk-rest-api.md)</li><li>[**Docker-Container für Formularerkennung**](containers/form-recognizer-container-install-run.md?tabs=receipt#run-the-container-with-the-docker-compose-up-command)</li></ul>|
 
-> [!div class="nextstepaction"]
-> [Ausprobieren von Formularerkennung Studio](https://formrecognizer.appliedai.azure.com/studio/prebuilt?formType=receipt)
+Die folgenden Ressourcen werden von der Azure-Formularerkennung v3.0 unterstützt:
 
-## <a name="try-it-sample-labeling-tool"></a>Jetzt testen: Tool für die Beschriftung von Beispielen
+| Funktion | Ressourcen | Modell-ID |
+|----------|-------------|-----------|
+|**Belegmodell**| <ul><li>[**Formularerkennung Studio**](https://formrecognizer.appliedai.azure.com)</li><li>[**REST-API**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/AnalyzeDocument)</li><li>[**C# SDK**](quickstarts/try-v3-csharp-sdk.md)</li><li>[**Python SDK**](quickstarts/try-v3-python-sdk.md)</li></ul>|**prebuilt-receipt**|
 
-Sie können sehen, wie Belegdaten extrahiert werden, indem Sie unser Tool für die Beschriftung von Beispielen ausprobieren. Sie benötigen Folgendes:
+### <a name="try-form-recognizer"></a>Formularerkennung ausprobieren
 
-* Azure-Abonnement – Sie können ein [kostenloses Abonnement erstellen](https://azure.microsoft.com/free/cognitive-services/)
+Hier erfahren Sie, wie die Daten, einschließlich Transaktionszeit und -datum sowie Händlerinformationen und Beträge, mithilfe von Azure-Formularerkennung Studio oder unserem Beispiel-Beschriftungstool aus den Belegen extrahiert werden. Sie benötigen Folgendes:
 
-* Eine [Formularerkennungsinstanz](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) im Azure-Portal Sie können den kostenlosen Tarif (`F0`) verwenden, um den Dienst auszuprobieren. Klicken Sie nach der Bereitstellung Ihrer Ressource auf **Zu Ressource wechseln**, um Ihren API-Schlüssel und Endpunkt abzurufen.
+* Azure-Abonnement – Sie können ein [kostenloses Abonnement erstellen](https://azure.microsoft.com/free/cognitive-services/).
+
+* Eine [Instanz der Formularerkennung](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) im Azure-Portal. Sie können den kostenlosen Tarif (`F0`) verwenden, um den Dienst auszuprobieren. Wählen Sie nach der Bereitstellung Ihrer Ressource **Zu Ressource wechseln** aus, um Ihren API-Schlüssel und -Endpunkt abzurufen.
 
  :::image type="content" source="media/containers/keys-and-endpoint.png" alt-text="Screenshot: Schlüssel und Endpunktspeicherort im Azure-Portal":::
 
-* Ein Belegdokument. Sie können unser [Beispielbelegdokument](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/contoso-receipt.png) verwenden.
+#### <a name="form-recognizer-studio-preview"></a>Formularerkennung Studio (Vorschau)
 
-> [!div class="nextstepaction"]
-  > [Testen](https://fott-2-1.azurewebsites.net/prebuilts-analyze)
+> [!NOTE]
+> Formularerkennung Studio ist mit der Vorschau-API (v3.0) verfügbar.
 
-Auf der Benutzeroberfläche der Formularerkennung:
+1. Wählen Sie auf der Startseite von Azure-Formularerkennung Studio die Option **Belege** aus.
 
-  1. Wählen Sie **Verwenden eines vordefinierten Modells zum Abrufen von Daten** aus.
-  1. Wählen Sie aus dem Dropdownmenü **Formulartyp** die Option **Beleg** aus:
+1. Sie können entweder den Beispielbeleg analysieren oder die Schaltfläche **+ Hinzufügen** auswählen, um Ihr eigenes Beispiel hochzuladen.
 
-  :::image type="content" source="media/try-receipt.png" alt-text="Screenshot: Dropdownmenü des Tools für die Beschriftung von Beispielen für das Auswahlmenü für vordefinierte Modelle":::
+1. Wählen Sie die Schaltfläche **Analysieren** aus:
+
+    :::image type="content" source="media/studio/receipt-analyze.png" alt-text="Screenshot des Menüs „Beleg analysieren“":::
+
+    > [!div class="nextstepaction"]
+    > [Ausprobieren von Formularerkennung Studio](https://formrecognizer.appliedai.azure.com/studio/prebuilt?formType=receipt)
+
+#### <a name="sample-labeling-tool"></a>Beispiel-Beschriftungstool
+
+Sie benötigen ein Belegdokument. Sie können unser [Beispielbelegdokument](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/contoso-receipt.png) verwenden.
+
+1. Wählen Sie auf der Startseite des Beispiel-Beschriftungstools die Option **Vordefiniertes Modell zum Abrufen von Daten verwenden** aus.
+
+1. Wählen Sie aus dem Dropdownmenü **Formulartyp** die Option **Beleg** aus:
+
+      :::image type="content" source="media/try-receipt.png" alt-text="Screenshot: Dropdownmenü des Beispiel-Beschriftungstools für die Auswahl vordefinierter Modelle":::
+
+      > [!div class="nextstepaction"]
+      > [Ausprobieren des Beispiel-Beschriftungstools](https://fott-2-1.azurewebsites.net/prebuilts-analyze)
 
 ## <a name="input-requirements"></a>Eingabeanforderungen
 
-* Die besten Ergebnisse erzielen Sie, wenn Sie pro Dokument ein deutliches Foto oder einen hochwertigen Scan einreichen.
+* Die besten Ergebnisse erzielen Sie, wenn Sie pro Dokument ein deutliches Foto oder einen hochwertigen Scan bereitstellen.
 * Unterstützte Dateiformate: JPEG, PNG, BMP, TIFF und PDF (in Text eingebettet oder gescannt). In Text eingebettete PDF-Dateien sind am besten geeignet, um die Möglichkeit von Fehlern beim Extrahieren und Auffinden von Zeichen auszuschließen.
-* Bei PDF und TIFF können bis zu 2000 Seiten verarbeitet werden (bei einem kostenlosen Abonnement werden nur die ersten beiden Seiten verarbeitet).
-* Die Dateigröße muss weniger als 50 MB betragen.
+* In den Formaten PDF und TIFF können bis zu 2.000 Seiten verarbeitet werden (bei einem kostenlosen Abonnement werden nur die ersten beiden Seiten verarbeitet).
+* Die Dateigröße muss unter 50 MB liegen.
 * Bei Bildern müssen die Abmessungen zwischen 50 × 50 Pixel und 10.000 × 10.000 Pixel liegen.
-* Die PDF-Abmessungen sind bis zu 17 x 17 Zoll, was dem Papierformat Legal oder A3 entspricht, oder kleiner.
+* Die PDF-Abmessungen sind bis zu 17 × 17 Zoll, sodass die Papierformate Legal oder A3 hineinpassen, oder kleiner.
 * Der Gesamtumfang der Trainingsdaten beträgt 500 Seiten oder weniger.
-* Wenn Ihre PDFs passwortgeschützt sind, müssen Sie die Sperre vor der Einreichung aufheben.
-* Für unüberwachtes Lernen (ohne bezeichnete Daten):
+* Wenn Ihre PDFs kennwortgeschützt sind, müssen Sie die Sperre vor dem Senden entfernen.
+* Für unbeaufsichtigtes Lernen (ohne beschriftete Daten) gilt Folgendes:
   * Die Daten müssen Schlüssel und Werte enthalten.
   * Die Schlüssel müssen über oder links von den Werten stehen; sie dürfen nicht unter oder rechts von ihnen stehen.
 
@@ -81,66 +104,66 @@ Auf der Benutzeroberfläche der Formularerkennung:
 |--------|:----------------------|:---------|
 |Rechnung| <ul><li>Englisch (USA) – en-US</li><li> Englisch (Australien) – en-AU</li><li>Englisch (Kanada) – en-CA</li><li>Englisch (Vereinigtes Königreich) – en-GB</li><li>Englisch (Indien) – en-IN</li></ul>  | Automatisch erkannt |
 
-## <a name="key-value-pair-extraction"></a>Schlüssel-Wert-Paarextraktion
+## <a name="field-extraction"></a>Feldextraktion
 
 |Name| type | BESCHREIBUNG | Standardisierte Ausgabe |
 |:-----|:----|:----|:----|
-| ReceiptType | Zeichenfolge | Der Typ des Belegs |  Aufgeschlüsselt |
-| MerchantName | Zeichenfolge | Der Name des Händlers, der den Beleg ausstellt |  |
+| ReceiptType | String | Der Typ des Belegs |  Aufgeschlüsselt |
+| MerchantName | String | Der Name des Händlers, der den Beleg ausstellt |  |
 | MerchantPhoneNumber | phoneNumber | Die aufgeführte Telefonnummer des Händlers | +1 xxx xxx xxxx |
-| MerchantAddress | Zeichenfolge | Die aufgeführte Adresse des Händlers |   |
-| TransactionDate | date | Das Datum der Ausstellung des Belegs | yyyy-mm-dd |
-| TransactionTime | time | Die Uhrzeit der Ausstellung des Belegs | hh-mm-ss (24 Stunden)  |
-| Gesamt | Zahl (USD)| Die Gesamttransaktion des Belegs | Gleitkommazahl mit zwei Dezimalstellen|
-| Subtotal (Zwischensumme) | Zahl (USD) | Die Zwischensumme des Belegs, oft vor Steuern | Gleitkommazahl mit zwei Dezimalstellen|
-| Tax (Steuern) | Zahl (USD) | Die Steuern auf dem Beleg (oft Mehrwertsteuer oder Äquivalent) | Gleitkommazahl mit zwei Dezimalstellen |
-| Tipp | Zahl (USD) | Vom Käufer gegebenes Trinkgeld | Gleitkommazahl mit zwei Dezimalstellen|
+| MerchantAddress | String | Die aufgeführte Adresse des Händlers |   |
+| TransactionDate | Datum | Das Datum der Ausstellung des Belegs | yyyy-mm-dd |
+| TransactionTime | Time | Die Uhrzeit der Ausstellung des Belegs | hh-mm-ss (24 Stunden)  |
+| Gesamt | Betrag (USD)| Die Gesamttransaktion des Belegs | Gleitkommazahl mit zwei Dezimalstellen|
+| Subtotal (Zwischensumme) | Betrag (USD) | Die Zwischensumme des Belegs, oft vor Steuern | Gleitkommazahl mit zwei Dezimalstellen|
+| Tax (Steuern) | Betrag (USD) | Die Steuern auf dem Beleg (oft Mehrwertsteuer oder Äquivalent) | Gleitkommazahl mit zwei Dezimalstellen |
+| Tipp | Betrag (USD) | Vom Käufer gegebenes Trinkgeld | Gleitkommazahl mit zwei Dezimalstellen|
 | Elemente | Array von Objekten | Die extrahierten Positionen mit extrahierten Werten für Name, Menge, Stückpreis und Gesamtpreis | |
-| Name | Zeichenfolge | Name des Elements | |
-| Menge | number | Menge der einzelnen Positionen | integer |
-| Preis | number | Einzelpreis der einzelnen Positionen| Gleitkommazahl mit zwei Dezimalstellen |
-| Gesamtpreis | number | Gesamtpreis der Position | Gleitkommazahl mit zwei Dezimalstellen |
+| Name | String | Name des Elements | |
+| Menge | Number | Menge der einzelnen Positionen | Integer |
+| Preis | Number | Einzelpreis der einzelnen Positionen| Gleitkommazahl mit zwei Dezimalstellen |
+| Gesamtpreis | Number | Gesamtpreis der Position | Gleitkommazahl mit zwei Dezimalstellen |
 
 ## <a name="form-recognizer-preview-v30"></a>Formularerkennung Vorschau v3.0
 
- Die Vorschauversion der Formularerkennung bietet eine Reihe neuer Features und Funktionen:
+ Die Vorschauversion der Formularerkennung bietet eine Reihe neuer Features und Möglichkeiten. Das Modell **Beleg** unterstützt die Verarbeitung von einseitigen Hotelbelegen.
 
-* Das Modell **Beleg** unterstützt die Verarbeitung von einseitigen Hotelbelegen.
+### <a name="hotel-receipt-field-extraction"></a>Feldextraktion bei Hotelbelegen
 
-    ### <a name="hotel-receipt-key-value-pair-extraction"></a>Extraktion von Schlüssel-Wert-Paaren des Hotelbelegs
+|Name| type | BESCHREIBUNG | Standardisierte Ausgabe |
+|:-----|:----|:----|:----|
+| ArrivalDate | Datum | Ankunftsdatum | yyyy-mm-dd |
+| Währung | Währung | Währungseinheit der Belegbeträge. Beispiel: USD, EUR oder MIXED, wenn mehrere Werte gefunden werden ||
+| DepartureDate | Datum | Abreisedatum | yyyy-mm-dd |
+| Items | Array | | |
+| Items.*.Category | String | Art der Position, z. B. Raum, Steuer usw. |  |
+| Items.*.Date | Datum | Datum der Position | yyyy-mm-dd |
+| Items.*.Description | String | Beschreibung der Position | |
+| Items.*.TotalPrice |  Number | Gesamtpreis der Position | Integer |
+| Gebietsschema | String | Gebietsschema des Belegs, z. B. en-US. | ISO-Code im Format „Sprache-Land“   |
+| MerchantAddress | String | Die aufgeführte Adresse des Händlers | |
+| MerchantAliases | Array| | |
+| MerchantAliases.* | String | Alternativer Name des Händlers |  |
+| MerchantName | String | Der Name des Händlers, der den Beleg ausstellt | |
+| MerchantPhoneNumber | phoneNumber | Die aufgeführte Telefonnummer des Händlers | +1 xxx xxx xxxx|
+| ReceiptType | String | Art des Belegs, z. B. Hotel, aufgeschlüsselt | |
+| Gesamt | Number | Die Gesamttransaktion des Belegs | Gleitkommazahl mit zwei Dezimalstellen |
 
-    |Name| type | BESCHREIBUNG | Standardisierte Ausgabe |
-    |:-----|:----|:----|:----|
-    | ArrivalDate | date | Ankunftsdatum | yyyy-mm-dd |
-    | Währung | currency | Währungseinheit der Belegbeträge. Beispiel: USD, EUR oder MIXED, wenn mehrere Werte gefunden werden ||
-    | DepartureDate | date | Abreisedatum | yyyy-mm-dd |
-    | Items | array | | |
-    | Items.*.Category | Zeichenfolge | Kategorie der Position, z. B. Zimmer, Steuern usw. |  |
-    | Items.*.Date | date | Datum der Position | yyyy-mm-dd |
-    | Items.*.Description | Zeichenfolge | Beschreibung der Position | |
-    | Items.*.TotalPrice |  number | Gesamtpreis der Position | integer |
-    | Gebietsschema | Zeichenfolge | Gebietsschema des Belegs, z. B. en-US. | ISO-Code im Format „Sprache-Land“   |
-    | MerchantAddress | Zeichenfolge | Die aufgeführte Adresse des Händlers | |
-    | MerchantAliases | array| | |
-    | MerchantAliases.* | Zeichenfolge | Alternativer Name des Händlers |  |
-    | MerchantName | Zeichenfolge | Der Name des Händlers, der den Beleg ausstellt | |
-    | MerchantPhoneNumber | phoneNumber | Die aufgeführte Telefonnummer des Händlers | +1 xxx xxx xxxx|
-    | ReceiptType | Zeichenfolge | Art des Belegs, z. B. Hotel, aufgeschlüsselt | |
-    | Gesamt | number | Die Gesamttransaktion des Belegs | Gleitkommazahl mit zwei Dezimalstellen |
+### <a name="hotel-receipt-supported-languages-and-locales"></a>Unterstützte Sprachen und Gebietsschemas für Hotelbelege
 
-    ### <a name="hotel-receipt-supported-languages-and-locales"></a>Unterstützte Sprachen und Gebietsschemas für Hotelbelege
+| Modell | Sprache – Gebietsschemacode | Standard |
+|--------|:----------------------|:---------|
+|Beleg (Hotel) | <ul><li>Englisch (USA) – en-US</li></ul>| Englisch (USA) – en-US|
 
-    | Modell | Sprache – Gebietsschemacode | Standard |
-    |--------|:----------------------|:---------|
-    |Beleg (Hotel) | <ul><li>Englisch (USA) – en-US</li></ul>| Englisch (USA) – en-US|
+### <a name="migration-guide-and-rest-api-v30"></a>Migrationsleitfaden und REST-API v3.0
 
-* Erfahren Sie, wie Sie die Vorschauversion in Ihren Anwendungen und Workflows verwenden können, indem Sie unseren [**Formularerkennung v3.0 Migrationsleitfaden**](v3-migration-guide.md) befolgen.
+* Erfahren Sie, wie Sie die Vorschauversion in Ihren Anwendungen und Workflows verwenden können, indem Sie unseren [**Formularerkennung v3.0-Migrationsleitfaden**](v3-migration-guide.md) befolgen.
 
-* Erkunden Sie unsere [**REST-API (Vorschau)** ](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/AnalyzeDocument), um mehr über die Vorschauversion und neue Funktionen zu erfahren.
+* Erkunden Sie die [**REST-API (Vorschau)**](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/AnalyzeDocument), um mehr über die Vorschauversion und neue Funktionen zu erfahren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Durcharbeiten eines Schnellstarts zur Formularerkennung:
+* Sehen Sie sich eine Schnellstartanleitung zur Formularerkennung an:
 
   > [!div class="nextstepaction"]
   > [Formularerkennung: Schnellstart](quickstarts/try-sdk-rest-api.md)

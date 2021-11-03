@@ -9,12 +9,12 @@ ms.author: arthiaga
 ms.reviewer: maghan
 ms.custom: ''
 ms.date: 06/21/2021
-ms.openlocfilehash: 86dca0c57b473ca759c7dd2a685707c09dd11f05
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: e1ef403583082f1fff631392d7a4467fe253a516
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340138"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131024181"
 ---
 # <a name="migrate-mysql-on-premises-to-azure-database-for-mysql-planning"></a>Migrieren einer lokalen MySQL-Instanz zu Azure Database for MySQL: Planen
 
@@ -66,7 +66,7 @@ Durch den Speicherort des Migrationstools werden die Netzwerkkonnektivitätsanfo
 
 Andere Netzwerküberlegungen beinhalten:
 
-- DMS in einem VNET wird eine [dynamische öffentliche IP-Adresse](/azure/dms/faq#setup) zugewiesen. Sie können den Dienst zum Zeitpunkt der Erstellung in einem virtuellen Netzwerk platzieren, das über eine [ExpressRoute](../../../expressroute/expressroute-introduction.md)-Verbindung oder über ein [Site-to-Site-VPN](../../../vpn-gateway/tutorial-site-to-site-portal.md) verbunden ist.
+- DMS in einem VNET wird eine [dynamische öffentliche IP-Adresse](../../../dms/faq.yml) zugewiesen. Sie können den Dienst zum Zeitpunkt der Erstellung in einem virtuellen Netzwerk platzieren, das über eine [ExpressRoute](../../../expressroute/expressroute-introduction.md)-Verbindung oder über ein [Site-to-Site-VPN](../../../vpn-gateway/tutorial-site-to-site-portal.md) verbunden ist.
 
 - Wenn Sie einen virtuellen Azure-Computer für das Ausführen der Migrationstools verwenden, weisen Sie ihm eine öffentliche IP-Adresse zu und lassen Sie anschließend nur eine Verbindung mit der lokalen MySQL-Instanz zu.
 

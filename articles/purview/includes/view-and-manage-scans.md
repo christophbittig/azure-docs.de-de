@@ -5,14 +5,15 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: include
 ms.date: 6/04/2021
-ms.openlocfilehash: e8f049349491b4716a485996ba2c5dd4a4d86c47
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 0ea867a13772b4a0d10d21d3ca732320b404d9c5
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129208642"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131010883"
 ---
-## <a name="viewing-your-scans-and-scan-runs"></a>Anzeigen Ihrer Überprüfungen und Überprüfungsausführungen
+### <a name="view-your-scans-and-scan-runs"></a>Betrachten Sie Ihre Überprüfungen und Überprüfungsausführungen
 
 Gehen Sie zum Anzeigen vorhandener Überprüfungen wie folgt vor:
 
@@ -24,7 +25,7 @@ Gehen Sie zum Anzeigen vorhandener Überprüfungen wie folgt vor:
 
 1. Auf dieser Seite werden alle vorherigen Überprüfungsausführungen sowie der Status und die Metriken der einzelnen Überprüfungsausführungen angezeigt. Außerdem sehen Sie hier, ob es sich um eine geplante oder um eine manuelle Überprüfung gehandelt hat, auf wie viele Ressourcen Klassifizierungen angewendet wurden, wie viele Ressourcen insgesamt ermittelt wurden, wann die Überprüfung gestartet und beendet wurde und wie lange die Überprüfung insgesamt gedauert hat.
 
-## <a name="manage-your-scans---edit-delete-or-cancel"></a>Verwalten Ihrer Überprüfungen: Bearbeiten, Löschen oder Abbrechen
+### <a name="manage-your-scans---edit-delete-or-cancel"></a>Verwalten Ihrer Überprüfungen: Bearbeiten, Löschen oder Abbrechen
 
 Gehen Sie zum Verwalten oder Löschen einer Überprüfung wie folgt vor:
 
@@ -37,3 +38,7 @@ Gehen Sie zum Verwalten oder Löschen einer Überprüfung wie folgt vor:
 1. Wenn Sie eine laufende Überprüfung abbrechen möchten, klicken Sie auf **Überprüfungsausführung abbrechen**.
 
 1. Wenn Sie Ihre Überprüfung löschen möchten, klicken Sie auf **Überprüfung löschen**.
+
+> [!NOTE]
+> * Beim Löschen Ihrer Überprüfung werden nicht die Katalogressourcen aus den vorherigen Überprüfungen gelöscht.
+> * Die Ressource wird nicht mehr mit Schemaänderungen aktualisiert, wenn die Quelltabelle geändert wurde und Sie die Quelltabelle nach dem Bearbeiten der Beschreibung auf der Registerkarte „Schema“ von Purview erneut überprüfen.

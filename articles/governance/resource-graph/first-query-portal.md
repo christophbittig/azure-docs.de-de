@@ -3,14 +3,13 @@ title: 'Schnellstart: Ihre erste Portalabfrage'
 description: In dieser Schnellstartanleitung führen Sie die Schritte zum Ausführen Ihrer ersten Abfrage aus dem Azure-Portal mithilfe des Azure Resource Graph-Explorers aus.
 ms.date: 08/17/2021
 ms.topic: quickstart
-ms.custom:
-- mode-portal
-ms.openlocfilehash: 51d92d32ef3e879e1844581a399588293fd63b76
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.custom: mode-portal
+ms.openlocfilehash: 1d5f482f2ef081ab741d45c543ad391d4a9147f5
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122324288"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131051114"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Schnellstart: Ausführen Ihrer ersten Resource Graph-Abfrage mithilfe des Azure Resource Graph-Explorers
 

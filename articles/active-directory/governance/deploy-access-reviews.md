@@ -16,12 +16,12 @@ ms.date: 04/16/2021
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 141322495fe31283b90f34bbf77a7d1ebb86d00d
-ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
+ms.openlocfilehash: f754d527a1b469ae420ca1af53e2c3b73692a5ef
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129730468"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131051836"
 ---
 # <a name="planning-azure-active-directory-access-reviews-deployment"></a>Planen der Bereitstellung von Azure Active Directory-Zugriffsüberprüfungen
 
@@ -191,7 +191,7 @@ Die zum Erstellen, Verwalten oder Lesen einer Zugriffsüberprüfung erforderlich
 
 | Ressourcentyp| Zugriffsüberprüfungen erstellen und verwalten (Ersteller)| Ergebnisse der Zugriffsüberprüfung lesen |
 | - | - | -|
-| Gruppe oder Anwendung| Globaler Administrator <p>Benutzeradministrator<p>Identity Governance-Administrator<p>Administrator für privilegierte Rollen (nur Überprüfungen von Azure AD-Gruppen, denen Rollen zugewiesen werden können)<p>Gruppenbesitzer ([bei Aktivierung durch einen Administrator]( create-access-review.md#allow--group-owners-to-create-and-manage-access-reviews-preview))| Globaler Administrator<p>Globaler Leser<p>Benutzeradministrator<p>Identity Governance-Administrator<p>Administrator für privilegierte Rollen<p>Sicherheitsleseberechtigter<p>Gruppenbesitzer ([bei Aktivierung durch einen Administrator]( create-access-review.md#allow--group-owners-to-create-and-manage-access-reviews-preview)) |
+| Gruppe oder Anwendung| Globaler Administrator <p>Benutzeradministrator<p>Identity Governance-Administrator<p>Administrator für privilegierte Rollen (nur Überprüfungen von Azure AD-Gruppen, denen Rollen zugewiesen werden können)<p>Gruppenbesitzer ([bei Aktivierung durch einen Administrator]( create-access-review.md#allow-group-owners-to-create-and-manage-access-reviews-of-their-groups-preview))| Globaler Administrator<p>Globaler Leser<p>Benutzeradministrator<p>Identity Governance-Administrator<p>Administrator für privilegierte Rollen<p>Sicherheitsleseberechtigter<p>Gruppenbesitzer ([bei Aktivierung durch einen Administrator]( create-access-review.md#allow-group-owners-to-create-and-manage-access-reviews-of-their-groups-preview)) |
 |Azure AD-Rollen| Globaler Administrator <p>Administrator für privilegierte Rollen|  Globaler Administrator<p>Globaler Leser<p>Benutzeradministrator<p>Administrator für privilegierte Rollen<p> <p>Sicherheitsleseberechtigter |
 | Azure-Ressourcenrollen| Globaler Administrator<p>Ressourcenbesitzer| Globaler Administrator<p>Globaler Leser<p>Benutzeradministrator<p>Administrator für privilegierte Rollen<p> <p>Sicherheitsleseberechtigter  |
 | Zugriffspaket| Globaler Administrator<p>Benutzeradministrator<p>Identity Governance-Administrator| Globaler Administrator<p>Globaler Leser<p>Benutzeradministrator<p>Identity Governance-Administrator<p> <p>Sicherheitsleseberechtigter  |

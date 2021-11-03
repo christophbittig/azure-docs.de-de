@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e610c6dd2763a029ddc0f18fe5526d77e5ff685a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 353c80be29a5bf62ed98d82374fda61a4e7b7021
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346379"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131051570"
 ---
 # <a name="simulating-risk-detections-in-identity-protection"></a>Simulieren von Risikoerkennungen in Identity Protection
 
@@ -93,7 +93,7 @@ Dieser Abschnitt erläutert die Schritte zum Testen der Benutzer- und Anmelderis
 Um eine Benutzerrisiko-Sicherheitsrichtlinie zu testen, führen Sie die folgenden Schritte aus:
 
 1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com).
-1. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Übersicht**.
+1. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Identity Protection** > **Übersicht**.
 1. Wählen Sie **Benutzerrisikorichtlinie konfigurieren** aus.
    1. Unter **Zuweisungen**
       1. **Benutzer**: Wählen Sie **Alle Benutzer** oder **Einzelne Benutzer und Gruppen auswählen** aus, wenn Sie den Rollout einschränken.
@@ -113,7 +113,7 @@ Um eine Benutzerrisiko-Sicherheitsrichtlinie zu testen, führen Sie die folgende
 Führen Sie die folgenden Schritte aus, um eine Anmelderisiko-Sicherheitsrichtlinie zu testen:
 
 1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com).
-1. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Übersicht**.
+1. Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Identity Protection** > **Übersicht**.
 1. Wählen Sie **Anmelderisikorichtlinie konfigurieren** aus.
    1. Unter **Zuweisungen**
       1. **Benutzer**: Wählen Sie **Alle Benutzer** oder **Einzelne Benutzer und Gruppen auswählen** aus, wenn Sie den Rollout einschränken.

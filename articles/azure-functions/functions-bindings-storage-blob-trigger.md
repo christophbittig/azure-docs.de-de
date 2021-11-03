@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
-ms.openlocfilehash: d405d08f7050da3b3767c23b37f8c71c2f499282
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 58167006a1925ee1110f9d7468a66d580545f336
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129998654"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131039295"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Azure Blob Storage-Trigger für Azure Functions
 
@@ -266,7 +266,7 @@ Verwenden Sie in [C#-Klassenbibliotheken](functions-dotnet-class-library.md) die
 
   Durch Festlegen der Eigenschaft `Connection` können Sie das zu verwendende Speicherkonto angeben, wie im folgenden Beispiel zu sehen:
 
-   ```csharp
+  ```csharp
   [FunctionName("ResizeImage")]
   public static void Run(
       [BlobTrigger("sample-images/{name}", Connection = "StorageConnectionAppSetting")] Stream image,
@@ -274,7 +274,7 @@ Verwenden Sie in [C#-Klassenbibliotheken](functions-dotnet-class-library.md) die
   {
       ....
   }
-   ```
+  ```
 
   Ein vollständiges Beispiel finden Sie unter [Triggerbeispiel](#example).
 
@@ -334,7 +334,7 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 |**direction** | – | Muss auf `in` festgelegt sein. Diese Eigenschaft wird automatisch festgelegt, wenn Sie den Trigger im Azure Portal erstellen. Ausnahmen sind im Abschnitt [Verwendung](#usage) angegeben. |
 |**name** | – | Der Name der Variablen, die das Blob im Funktionscode darstellt. |
 |**path** | **BlobPath** |Der zu überwachende [Container](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources).  Kann ein [Blobnamensmuster](#blob-name-patterns) sein. |
-|**connection** | **Connection** | Der Name einer App-Einstellung oder -Einstellungssammlung, die angibt, wie eine Verbindung mit Azure-Blobs hergestellt wird. Siehe [Verbindungen](#connections).|
+|**connection** | **Connection** | Der Name einer App-Einstellung oder -Einstellungssammlung, die angibt, wie eine Verbindung mit Azure Blobs hergestellt wird. Siehe [Verbindungen](#connections).|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 

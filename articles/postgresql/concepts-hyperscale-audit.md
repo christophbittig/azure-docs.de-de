@@ -7,19 +7,19 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 08/03/2021
-ms.openlocfilehash: 330f102dffb392540879d8d583e02a68fbe436c7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 349af1634f71f74dee85f99f69341b96cdb11b9e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122347033"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131084405"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---hyperscale-citus"></a>Überwachungsprotokollierung in Azure Database for PostgreSQL – Hyperscale (Citus)
 
 > [!IMPORTANT]
 > Die pgAudit-Erweiterung in Hyperscale (Citus) befindet sich derzeit in der Vorschauphase. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
 >
-> Eine vollständige Liste der anderen neuen Features finden Sie unter [Previewfunktionen für PostgreSQL – Hyperscale (Citus)](hyperscale-preview-features.md).
+> Eine vollständige Liste der anderen neuen Features finden Sie unter [Previewfunktionen für PostgreSQL – Hyperscale (Citus)](./hyperscale-product-updates.md).
 
 Die Überwachungsprotokollierung von Datenbankaktivitäten in Azure Database for PostgreSQL – Hyperscale (Citus) ist über die PostgreSQL-Überwachungserweiterung [pgAudit](https://www.pgaudit.org/) verfügbar. pgAudit bietet eine ausführliche Sitzungs- bzw. Objektüberwachungsprotokollierung.
 

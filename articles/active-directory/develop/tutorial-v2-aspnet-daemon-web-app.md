@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, has-adal-ref
-ms.openlocfilehash: bb5b6068b935be2f437b10e4fcbccf7c6a86219d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 0deaa92659cbd022444c0e4d43389f39ebbaa51c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128637986"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131050354"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>Tutorial: Erstellen eines mehrinstanzenfähigen Daemons, der Microsoft Identity Platform verwendet
 
@@ -245,7 +245,7 @@ Sollten Sie einen Fehler im Beispiel finden, erstellen Sie ein Problem unter [Gi
 
 Sollten Sie einen Fehler in MSAL.NET finden, erstellen Sie ein Problem unter [GitHub-Probleme für MSAL.NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues).
 
-Wenn Sie eine Empfehlung abgeben möchten, besuchen Sie die [Benutzerfeedback-Seite](https://feedback.azure.com/forums/169401-azure-active-directory).
+Wenn Sie eine Empfehlung abgeben möchten, besuchen Sie die [Benutzerfeedback-Seite](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

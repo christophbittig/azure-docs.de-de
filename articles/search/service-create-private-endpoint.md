@@ -2,18 +2,18 @@
 title: Erstellen eines privaten Endpunkts für sichere Verbindungen
 titleSuffix: Azure Cognitive Search
 description: Einrichten eines privaten Endpunkts in einem virtuellen Netzwerk für sichere Verbindungen mit einem Azure Cognitive Search-Dienst.
+author: nitinme
+ms.author: nitinme
 manager: nitinme
-author: markheff
-ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/16/2021
-ms.openlocfilehash: 8cad0611efe46a934560a89b9fda4d7fa57e4deb
-ms.sourcegitcommit: 3bb9f8cee51e3b9c711679b460ab7b7363a62e6b
+ms.openlocfilehash: 71a618daeeb2400e32a53b555e9499a5edd69b5f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/14/2021
-ms.locfileid: "112082269"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131061084"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>Erstellen eines privaten Endpunkts für sichere Verbindungen mit Azure Cognitive Search
 
@@ -28,7 +28,7 @@ Sie können einen privaten Endpunkt über das Azure-Portal erstellen, wie in die
 
 ## <a name="why-use-a-private-endpoint-for-secure-access"></a>Gründe für den sicheren Zugriff über einen privaten Endpunkt
 
-[Private Endpunkte](../private-link/private-endpoint-overview.md) für Azure Cognitive Search ermöglichen, dass ein Client in einem virtuellen Netzwerk über eine [private Verbindung](../private-link/private-link-overview.md) sicher auf Daten in einem Suchindex zugreifen kann. Der private Endpunkt verwendet eine IP-Adresse aus dem [Adressraum des virtuellen Netzwerks](../virtual-network/private-ip-addresses.md) für Ihren Suchdienst. Der Netzwerkdatenverkehr zwischen dem Client und dem Suchdienst wird über das virtuelle Netzwerk und eine private Verbindung im Microsoft-Backbonenetzwerk geleitet, sodass keine Offenlegung im öffentlichen Internet erfolgt. Eine Liste mit anderen PaaS-Diensten, bei denen Private Link unterstützt wird, finden Sie im Abschnitt [Verfügbarkeit](../private-link/private-link-overview.md#availability) in der Produktdokumentation.
+[Private Endpunkte](../private-link/private-endpoint-overview.md) für Azure Cognitive Search ermöglichen, dass ein Client in einem virtuellen Netzwerk über eine [private Verbindung](../private-link/private-link-overview.md) sicher auf Daten in einem Suchindex zugreifen kann. Der private Endpunkt verwendet eine IP-Adresse aus dem [Adressraum des virtuellen Netzwerks](../virtual-network/ip-services/private-ip-addresses.md) für Ihren Suchdienst. Der Netzwerkdatenverkehr zwischen dem Client und dem Suchdienst wird über das virtuelle Netzwerk und eine private Verbindung im Microsoft-Backbonenetzwerk geleitet, sodass keine Offenlegung im öffentlichen Internet erfolgt. Eine Liste mit anderen PaaS-Diensten, bei denen Private Link unterstützt wird, finden Sie im Abschnitt [Verfügbarkeit](../private-link/private-link-overview.md#availability) in der Produktdokumentation.
 
 Private Endpunkte für Ihren Suchdienst ermöglichen Folgendes:
 

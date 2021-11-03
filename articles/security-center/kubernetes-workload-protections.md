@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 06/15/2021
 ms.author: memildin
-ms.openlocfilehash: 3dbf8b3e15380b1e267be4f1b4af382aa9097a48
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a1581742e599c24f69e6aa56bf7caf694726ae66
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355706"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130225641"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>Schützen Ihrer Kubernetes-Workloads
 
@@ -91,7 +91,6 @@ Installieren Sie zum Konfigurieren der Empfehlungen das **Azure Policy-Add-On f�
     | Container mit Rechteausweitung müssen vermieden werden                       | Zugriff und Berechtigungen verwalten            | Nein                     |
     | Für Kubernetes-Cluster muss die automatische Bereitstellung von API-Anmeldeinformationen deaktiviert werden             | Zugriff und Berechtigungen verwalten            | Nein                     |
     | Unveränderliches (schreibgeschütztes) Stammdateisystem für Container erzwingen     | Zugriff und Berechtigungen verwalten            | Nein                     |
-    | Container mit Rechteausweitung müssen vermieden werden                       | Zugriff und Berechtigungen verwalten            | Nein                     |
     | Das Ausführen von Containern als Root-Benutzer muss vermieden werden                           | Zugriff und Berechtigungen verwalten            | Nein                     |
     | Container mit Freigabe sensibler Hostnamespaces vermeiden              | Zugriff und Berechtigungen verwalten            | Nein                     |
     | Für Container müssen CPU- und Arbeitsspeicherlimits erzwungen werden                          | Anwendungen vor DDoS-Angriffen schützen | Nein                     |

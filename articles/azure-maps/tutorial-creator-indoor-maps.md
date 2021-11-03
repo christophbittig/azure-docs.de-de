@@ -7,12 +7,12 @@ ms.date: 5/19/2021
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
-ms.openlocfilehash: 7f3fbec3fd393bb354f7ea5df1614cf1c53bfbe2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: db5bebce41e8fd13cf0796e02fc0bfe91d63a6c9
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121733432"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131060013"
 ---
 # <a name="tutorial-use-creator-to-create-indoor-maps"></a>Tutorial: Verwenden von Creator zum Erstellen von Gebäudeplänen
 
@@ -128,7 +128,7 @@ So rufen Sie Inhaltsmetadaten ab:
 5. Geben Sie die URL des Ressourcenspeicherorts (`resource Location URL`) ein, die Sie im Schritt [Überprüfen des Uploadstatus des Zeichnungspakets](#check-the-drawing-package-upload-status) kopiert haben. Die Anforderung sollte wie die folgende URL aussehen. Ersetzen Sie `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel:
 
     ```http
-   https://us.atlas.microsoft.com/mapData/metadata/{udid}?api-version=2.0&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://us.atlas.microsoft.com/mapData/metadata/{udid}?api-version=2.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
 6. Wählen Sie **Send** (Senden) aus.
@@ -413,7 +413,7 @@ So fragen Sie die Einheitensammlung in Ihrem Dataset ab:
 
 7. Nachdem die Antwort zurückgegeben wurde, kopieren Sie das Feature `id` für eines der Features vom Typ `unit`. Im folgenden Beispiel lautet die ID (`id`) des Features „UNIT26“. Im nächsten Abschnitt dieses Tutorials wird „UNIT26“ als Feature `id` verwendet.
 
-     ```json
+    ```json
     {
         "type": "FeatureCollection",
         "features": [

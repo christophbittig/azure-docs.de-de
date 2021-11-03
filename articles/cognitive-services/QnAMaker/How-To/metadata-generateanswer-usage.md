@@ -8,17 +8,19 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 0daa44f0d901dc14541785f764d5ccf8f96fc737
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.custom: devx-track-js, devx-track-csharp, ignite-fall-2021
+ms.openlocfilehash: ba2b39a854dd7d70690aea943f7365bc50bc8804
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110376672"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131038782"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api"></a>Abrufen einer Antwort mit der GenerateAnswer-API
 
 Um die vorhergesagte Antwort auf die Frage eines Benutzers zu erhalten, verwenden Sie die GenerateAnswer-API. Wenn Sie eine Wissensdatenbank veröffentlichen, werden Informationen zur Verwendung dieser API auf der Seite **Veröffentlichen** angezeigt. Sie können die API auch so konfigurieren, dass sie Antworten anhand von Metadatentags filtert, und Sie können die Wissensdatenbank vom Endpunkt aus mit dem Testabfrage-Zeichenfolgenparameter testen.
+
+[!INCLUDE [Custom question answering](../includes/new-version.md)]
 
 <a name="generateanswer-api"></a>
 
@@ -38,15 +40,7 @@ So rufen Sie Endpunktdetails ab
     ![Screenshot von „Meine Wissensdatenbanken“](../media/qnamaker-how-to-metadata-usage/my-knowledge-bases.png)
 1. Rufen Sie Ihre GenerateAnswer-Endpunktdetails ab.
 
-    # <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
-
     ![Screenshot der Endpunktdetails](../media/qnamaker-how-to-metadata-usage/view-code.png)
-
-    # <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
-
-    ![Screenshot der verwalteten Endpunktdetails](../media/qnamaker-how-to-metadata-usage/view-code-managed.png)
-
-    ---
 
 Sie können Ihre Endpunktdetails auch auf der Registerkarte **Einstellungen** Ihrer Knowledge Base abrufen.
 
@@ -176,47 +170,7 @@ Der vorherige JSON-Code forderte nur Antworten an, die 30 % oder mehr über dem 
 
 ## <a name="get-precise-answers-with-generateanswer-api"></a>Abrufen präziser Antworten mit der GenerateAnswer-API
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
-
 Ein Feature für präzise Antworten ist nur in der verwalteten QnA Maker-Version enthalten.
-
-# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
-
-Der Benutzer kann [präzise Antworten](../reference-precise-answering.md) aktivieren, wenn er die Textanalyse-Ressource mit dem Feature „Benutzerdefinierte Fragen und Antworten“ verwendet. Dafür muss der Parameter „answerSpanRequest“ aktualisiert werden.
-
-```json
-{
-    "question": "How long it takes to charge surface pro 4?",
-    "top": 3,
-    "answerSpanRequest": {
-        "enable": true,
-        "topAnswersWithSpan": 1
-    }
-}
-```
-
-Analog dazu können Benutzer präzise Antworten deaktivieren, indem sie den Parameter „answerSpanRequest“ nicht festlegen.
-
-```json
-{
-    "question": "How long it takes to charge surface pro 4?",
-    "top": 3
-}
-```
-### <a name="bot-settings"></a>Boteinstellungen
-
-Wenn Sie für Ihren Botdienst Einstellungen für präzise Antworten konfigurieren möchten, navigieren Sie zur App Service-Ressource für Ihren Bot. Konfigurieren Sie anschließend die Konfigurationen, indem Sie die folgende Einstellung hinzufügen:
-
-- EnablePreciseAnswer
-- DisplayPreciseAnswerOnly
-
-|Anzeigekonfiguration|EnablePreciseAnswer|DisplayPreciseAnswerOnly|
-|:--|--|--|
-|Nur präzise Antworten|true|true|
-|Nur lange Antworten|false|false|
-|Sowohl lange als auch präzise Antworten|true|false|
-
----
 
 ## <a name="common-http-errors"></a>Häufige HTTP-Fehler
 

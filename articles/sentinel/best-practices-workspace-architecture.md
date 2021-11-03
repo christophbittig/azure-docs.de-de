@@ -8,14 +8,17 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 07/28/2021
-ms.openlocfilehash: 591d248bed623a31d9c120ae669615efa5c5544d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 81407a3f705668abe03f7cfbdc03fa205d19e108
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124763251"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131060807"
 ---
 # <a name="azure-sentinel-workspace-architecture-best-practices"></a>Bewährte Methoden für die Azure Sentinel-Arbeitsbereichsarchitektur
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 Wenn Sie die Bereitstellung Ihres Azure Sentinel-Arbeitsbereichs planen, müssen Sie auch Ihre Log Analytics-Arbeitsbereichsarchitektur entwerfen. Entscheidungen über die Arbeitsbereichsarchitektur werden in der Regel von den geschäftlichen und technischen Anforderungen gesteuert. In diesem Artikel werden wichtige Faktoren für die Entscheidung behandelt, anhand derer Sie die richtige Arbeitsbereichsarchitektur für Ihre Organisationen ermitteln können. Dies umfasst u. a.:
 

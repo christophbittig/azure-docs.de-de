@@ -5,20 +5,16 @@ author: TheovanKraay
 ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: tutorial
-ms.date: 08/17/2021
-ms.openlocfilehash: 962c3f9e380bda96211ce2056ca886a555d44078
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 11/02/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 7c061f808dfbe6b93d9fd6a9266c152fa5aecf57
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124736206"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131005250"
 ---
 # <a name="migrate-to-azure-managed-instance-for-apache-cassandra-using-apache-spark"></a>Migrieren zu Azure Managed Instance for Apache Cassandra mit Apache Spark
-
-> [!IMPORTANT]
-> Azure Managed Instance for Apache Cassandra befindet sich derzeit in der Public Preview-Phase.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Es wird empfohlen, nach Möglichkeit die native Apache Cassandra-Replikation zu verwenden, um Daten aus Ihrem vorhandenen Cluster zu Azure Managed Instance for Apache Cassandra zu migrieren, indem Sie einen [Hybridcluster](configure-hybrid-cluster.md) konfigurieren. Bei diesem Ansatz wird das Gossip-Protokoll von Apache Cassandra verwendet, um Daten aus Ihrem Quellrechenzentrum in Ihr neues Rechenzentrum der verwalteten Instanz zu replizieren. Es kann jedoch einige Szenarien geben, in denen Ihre Quelldatenbankversion nicht kompatibel ist oder ein Hybridclustersetup andernfalls nicht möglich ist. 
 

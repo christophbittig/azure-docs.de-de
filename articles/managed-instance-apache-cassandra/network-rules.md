@@ -4,21 +4,17 @@ description: Lernen Sie die erforderlichen ausgehenden Netzwerkregeln und vollqu
 author: christopheranderson
 ms.service: managed-instance-apache-cassandra
 ms.topic: how-to
-ms.date: 05/21/2021
+ms.date: 11/02/2021
 ms.author: chrande
-ms.openlocfilehash: fc96e4a09a24348ab8344733c8059925af209b39
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 6d52f1c72765b3e7d3b7dd171c53c84e85138a20
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124767145"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131005231"
 ---
 # <a name="required-outbound-network-rules"></a>Erforderliche Netzwerkregeln für ausgehenden Datenverkehr
-
-> [!IMPORTANT]
-> Azure Managed Instance for Apache Cassandra befindet sich derzeit in der Public Preview-Phase.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Der Azure Managed Instance for Apache Casandra-Dienst erfordert bestimmte Netzwerkregeln, um den Dienst ordnungsgemäß verwalten zu können. Indem Sie sicherstellen, dass die richtigen Regeln verfügbar gemacht werden, können Sie Ihren Dienst schützen und Betriebsprobleme verhindern.
 
@@ -33,13 +29,21 @@ Wenn Sie Azure Firewall zum Einschränken des ausgehenden Zugriffs verwenden, em
 | EventHub | HTTPS | 443 | Erforderlich zum Weiterleiten von Protokollen an Azure. |
 | AzureMonitor | HTTPS | 443 | Erforderlich zum Weiterleiten von Metriken an Azure. |
 | AzureActiveDirectory| HTTPS | 443 | Erforderlich für die Azure Active Directory-Authentifizierung.|
+| AzureResourceManager| HTTPS | 443 | Erforderlich, um Informationen zu Cassandra-Knoten zu sammeln und zu verwalten (z. B. Neustart).|
+| AzureFrontDoor.Firstparty| HTTPS | 443 | Erforderlich für Protokollierungsvorgänge.|
 | GuestAndHybridManagement | HTTPS | 443 |  Erforderlich, um Informationen zu Cassandra-Knoten zu sammeln und zu verwalten (z. B. Neustart). |
 | ApiManagement  | HTTPS | 443 | Erforderlich, um Informationen zu Cassandra-Knoten zu sammeln und zu verwalten (z. B. Neustart). |
-| Storage.\<Region\>  | HTTPS | 443 | Erforderlich für die sichere Kommunikation zwischen den Knoten und Azure Storage für die Kommunikation und Konfiguration der Steuerungsebene. **Sie benötigen einen Eintrag für jede Region, in der Sie ein Rechenzentrum bereitgestellt haben.** |
+
+> [!NOTE]
+> Zusätzlich zu den oben genannten müssen Sie auch die folgenden Adresspräfixe hinzufügen, da für den betreffenden Dienst kein Dienst-Tag vorhanden ist: 104.40.0.0/13 13.104.0.0/14 40.64.0.0/10
+
+## <a name="user-defined-routes"></a>Benutzerdefinierte Routen
+
+Wenn Sie eine Firewall eines Drittanbieters verwenden, um den ausgehenden Zugriff zu beschränken, empfehlen wir dringend, [benutzerdefinierte Routen (UDRs)](../virtual-network/virtual-networks-udr-overview.md#user-defined) für Microsoft-Adresspräfixe zu konfigurieren, anstatt zu versuchen, die Konnektivität durch Ihre eigene Firewall zu ermöglichen. Siehe Beispiel [bash-Skript](https://github.com/Azure-Samples/cassandra-managed-instance-tools/blob/main/configureUDR.sh) zum Hinzufügen der erforderlichen Adresspräfixe in benutzerdefinierte Routen.
 
 ## <a name="azure-global-required-network-rules"></a>Für Azure Global benötigte Netzwerkregeln
 
-Wenn Sie Azure Firewall nicht verwenden, werden folgende Netzwerkregeln und IP-Adressabhängigkeiten benötigt:
+Folgende Netzwerkregeln und IP-Adressabhängigkeiten werden benötigt:
 
 | Zielendpunkt                                                             | Protokoll | Port    | Zweck  |
 |----------------------------------------------------------------------------------|----------|---------|------|

@@ -5,14 +5,14 @@ author: CaitlinV39
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: reference
-ms.date: 08/03/2021
+ms.date: 10/25/2021
 ms.author: cavoeg
-ms.openlocfilehash: 33a83bd007558de8b9b2300ab6eec7e8fa1a4584
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: c95123adc8962df5fdd20b766ffe72f5aec72ca0
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122821359"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131040451"
 ---
 # <a name="overview-of-fhir-search"></a>Übersicht über die FHIR-Suche
 
@@ -135,14 +135,17 @@ Um die zurückgegebenen Ressourcen zu verwalten, gibt es Suchergebnisparameter, 
 | -------------------------  | -------------------- | ------------------------- | ------------|
 | _elements                     | Ja                  | Ja                       |
 | _count                        | Ja                  | Ja                       | _count ist auf 1.000 Ressourcen beschränkt. Wenn er höher als 1000 festgelegt ist, werden nur 1.000 zurückgegeben, und im Paket wird eine Warnung zurückgegeben.                               |
-| _include                      | Ja                  | Ja                       | Enthaltene Elemente sind auf 100 beschränkt. _include unter PaaS und OSS auf Cosmos DB enthalten keine :iterate-Unterstützung [(#2137).](https://github.com/microsoft/fhir-server/issues/2137)                               |
+| _include                      | Ja                  | Ja                       | Enthaltene Elemente sind auf 100 beschränkt. _include unter PaaS und OSS in Cosmos DB enthalten keine :iterate-Unterstützung [(#2137).](https://github.com/microsoft/fhir-server/issues/2137)                               |
 | _revinclude                   | Ja                  | Ja                       |Enthaltene Elemente sind auf 100 beschränkt. _revinclude unter PaaS und OSS in Cosmos DB enthalten keine :iterate-Unterstützung [(#2137).](https://github.com/microsoft/fhir-server/issues/2137) Es gibt auch einen falschen Statuscode für eine ungültige Anforderung [#1319.](https://github.com/microsoft/fhir-server/issues/1319)                            |
 | _summary                      | Ja             | Ja                   |
 | _total                        | Partial              | Partial                   | _total=none und _total=accurate                               |
-| _sort                         | Partial              | Partial                   | sort=_lastUpdated wird unterstützt. Sortiert den Datensatz standardmäßig in aufsteigender Reihenfolge. Sie können das Präfix "-" verwenden, um in absteigender Reihenfolge zu sortieren. Für Azure API for FHIR- und OSS Cosmos-Datenbankdatenbanken, die nach dem 20. April 2021 erstellt wurden, wird die Sortierung auch nach Vor- und Nachname sowie nach dem datumsgemäßen Zeitpunkt unterstützt.             |
+| _sort                         | Partial              | Partial                   | sort=_lastUpdated wird für Azure API for FHIR und den FHIR-Dienst unterstützt. Für den FHIR-Dienst und die OSS SQL DB FHIR-Server wird die Sortierung nach Zeichenfolgen und dateTime-Feldern unterstützt. Für Azure API for FHIR- und OSS Cosmos DB-Datenbanken, die nach dem 20. April 2021 erstellt wurden, wird die Sortierung nach Vor- und Nachname sowie nach dem datumsgemäßen Zeitpunkt unterstützt.             |
 | _contained                    | Nein                   | Nein                        |
 | _containedType                | Nein                   | Nein                        |
 | _score                        | Nein                   | Nein                        |
+
+> [!NOTE]
+> Sortiert `_sort` den Datensatz standardmäßig in aufsteigender Reihenfolge. Sie können das Präfix `'-'` verwenden, um in absteigender Reihenfolge zu sortieren. Darüber hinaus ermöglichen der FHIR-Dienst und Azure API for FHIR, dass Sie nur nach einem einzelnen Feld gleichzeitig sortieren können.
 
 Standardmäßig ist der FHIR-Dienst in den Azure Healthcare-APIs auf die lenient-Behandlung festgelegt. Dies bedeutet, dass der Server alle unbekannten oder nicht unterstützten Parameter ignoriert. Wenn Sie eine strikte Behandlung verwenden möchten, können Sie den **Prefer-Header verwenden** und `handling=strict` festlegen.
 

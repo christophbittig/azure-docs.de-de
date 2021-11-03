@@ -5,12 +5,12 @@ author: yossiy
 ms.topic: how-to
 ms.date: 08/17/2021
 ms.author: yossiy
-ms.openlocfilehash: cecfa72493545f40c2e7326fece88cb85f99974b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 13633eefff454cc6f2352264d76ea91367442166
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128565411"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131062224"
 ---
 # <a name="move-a-log-analytics-workspace-to-another-region-by-using-the-azure-portal"></a>Verschieben eines Log Analytics-Arbeitsbereichs in eine andere Region über das Azure-Portal
 
@@ -212,7 +212,7 @@ In den folgenden Verfahren wird gezeigt, wie Sie den Arbeitsbereich auf das Vers
         },
         {
           "type": "microsoft.insights/scheduledqueryrules",
-          "apiVersion": "2021-02-01-preview",
+          "apiVersion": "2021-08-01",
           "name": "[parameters('alertName')]",
           "location": "france central",
           "properties": {
@@ -320,7 +320,7 @@ Wenn Sie den Quellarbeitsbereich verwerfen möchten, löschen Sie die exportiert
    - Wenn Sie eine neue Ressourcengruppe für diese Bereitstellung erstellt haben, wählen Sie auf der Symbolleiste **Ressourcengruppe löschen** aus, um die Ressourcengruppe zu löschen.
    - Wenn die Vorlage für eine bestehende Ressourcengruppe bereitgestellt wurde, wählen Sie die Ressourcen aus, die mit der Vorlage bereitgestellt wurden, und wählen Sie dann auf der Symbolleiste **Löschen** aus, um die ausgewählten Ressourcen zu löschen.
 
-## <a name="clean-up"></a>Bereinigung
+## <a name="clean-up"></a>Bereinigen
 
 Während neue Daten in Ihren neuen Arbeitsbereich erfasst werden, stehen ältere Daten im ursprünglichen Arbeitsbereich weiterhin für Abfragen zur Verfügung und unterliegen der im Arbeitsbereich definierten Aufbewahrungsrichtlinie. Es wird empfohlen, den ursprünglichen Arbeitsbereich so lange beizubehalten, wie Sie ältere Daten zur [arbeitsbereichübergreifenden Abfrage](./cross-workspace-query.md#performing-a-query-across-multiple-resources) benötigen. 
 

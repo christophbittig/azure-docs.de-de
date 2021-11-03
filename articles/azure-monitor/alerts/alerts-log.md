@@ -6,12 +6,12 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 9fa0e633c92300e0932200725aa1fa82de46f359
-ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
+ms.openlocfilehash: e8c89f4542b29a69346f43f95a7d2f5de78148f9
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114221473"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131012490"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor
 
@@ -71,7 +71,7 @@ Zum Schreiben von Abfragen für Warnungen müssen folgende erste Schritte ausgef
     > Da [bin()](/azure/kusto/query/binfunction) zu uneinheitlichen Zeitintervallen führen kann, wird die Funktion [bin()](/azure/kusto/query/binfunction) zur Laufzeit automatisch durch den Warnungsdienst in die Funktion [bin_at()](/azure/kusto/query/binatfunction) mit der richtigen Zeit konvertiert, um Ergebnisse mit Fixpunkt sicherzustellen.
 
     > [!NOTE]
-    > Die Aufteilung nach Warnungsdimensionen ist nur für die aktuelle scheduledQueryRules-API verfügbar. Bei Verwendung der älteren [Log Analytics-Warnungs-API](./api-alerts.md) müssen Sie auf die neue API umstellen. Weitere Informationen zur Umstellung finden Sie [hier](./alerts-log-api-switch.md). Ressourcenbezogene Warnungen im großen Stil werden erst ab der API-Version `2020-05-01-preview` unterstützt.
+    > Die Aufteilung nach Warnungsdimensionen ist nur für die aktuelle scheduledQueryRules-API verfügbar. Bei Verwendung der älteren [Log Analytics-Warnungs-API](./api-alerts.md) müssen Sie auf die neue API umstellen. Weitere Informationen zur Umstellung finden Sie [hier](./alerts-log-api-switch.md). Ressourcenbezogene Warnungen im großen Stil werden erst ab der API-Version `2020-08-01` unterstützt.
 
     ![Option „Aggregieren auf“](media/alerts-log/aggregate-on.png)
 
@@ -143,9 +143,6 @@ Zum Schreiben von Abfragen für Warnungen müssen folgende erste Schritte ausgef
 
 ### <a name="log-alert-for-all-other-resource-types"></a>Protokollwarnung für alle anderen Ressourcentypen
 
-> [!NOTE]
-> Für die API-Version `2020-05-01-preview` und ressourcenbezogene Protokollwarnungen fallen aktuell keine zusätzlichen Gebühren an.  Die Preise für Previewfunktionen werden später bekannt gegeben, und vor Abrechnungsbeginn erhalten Sie eine entsprechende Benachrichtigung. Falls Sie sich dafür entscheiden, die neue API-Version und ressourcenbezogene Protokollwarnungen über den Benachrichtigungszeitraum hinaus zu verwenden, wird Ihnen der entsprechende Tarif in Rechnung gestellt.
-
 1. Beginnen Sie auf der Registerkarte **Bedingung**:
 
     1. Vergewissern Sie sich, dass die Angaben für [**Measure**](./alerts-unified-log.md#measure), [**Aggregationstyp**](./alerts-unified-log.md#aggregation-type) und [**Aggregationsgranularität**](./alerts-unified-log.md#aggregation-granularity) korrekt sind. 
@@ -210,7 +207,7 @@ Zum Schreiben von Abfragen für Warnungen müssen folgende erste Schritte ausgef
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!NOTE]
-> PowerShell wird derzeit in der API-Version `2020-05-01-preview` nicht unterstützt.
+> PowerShell wird derzeit in der API-Version `2020-08-01` nicht unterstützt.
 
 Die folgenden PowerShell-Cmdlets können zum Verwalten von Regeln mit der [API für Regeln für geplante Abfragen](/rest/api/monitor/scheduledqueryrules/) verwendet werden:
 
@@ -280,7 +277,7 @@ New-AzResourceGroupDeployment -Name AlertDeployment -ResourceGroupName ResourceG
 ## <a name="managing-log-alerts-using-cli"></a>Verwalten von Protokollwarnungen über die Befehlszeilenschnittstelle
 
 > [!NOTE]
-> Die Azure-Befehlszeilenschnittstelle wird erst ab Version `2020-05-01-preview` der scheduledQueryRules-API unterstützt. Für ältere API-Versionen kann die Azure Resource Manager-Befehlszeilenschnittstelle mit Vorlagen verwendet werden, wie weiter unten beschrieben. Bei Verwendung der älteren [Log Analytics-Warnungs-API](./api-alerts.md) müssen Sie auf die neue API umstellen, um die Befehlszeilenschnittstelle verwenden zu können. Weitere Informationen zur Umstellung finden Sie [hier](./alerts-log-api-switch.md).
+> Die Azure-Befehlszeilenschnittstelle wird erst ab Version `2020-08-01` der scheduledQueryRules-API unterstützt. Für ältere API-Versionen kann die Azure Resource Manager-Befehlszeilenschnittstelle mit Vorlagen verwendet werden, wie weiter unten beschrieben. Bei Verwendung der älteren [Log Analytics-Warnungs-API](./api-alerts.md) müssen Sie auf die neue API umstellen, um die Befehlszeilenschnittstelle verwenden zu können. Weitere Informationen zur Umstellung finden Sie [hier](./alerts-log-api-switch.md).
 
 In den vorangegangenen Abschnitten haben Sie erfahren, wie Sie über das Azure-Portal Protokollwarnungsregeln erstellen, anzeigen und verwalten. In diesem Abschnitt wird beschrieben, wie Sie dasselbe mit der plattformübergreifenden [Azure-Befehlszeilenschnittstelle](/cli/azure/get-started-with-azure-cli) (Azure CLI) erreichen können. Die schnellste Möglichkeit, mit der Verwendung der Azure CLI zu beginnen, ist über [Azure Cloud Shell](../../cloud-shell/overview.md). In diesem Artikel wird Cloud Shell verwendet.
 

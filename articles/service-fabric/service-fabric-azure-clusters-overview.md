@@ -5,12 +5,12 @@ services: service-fabric
 documentationcenter: .net
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: 4aed4ab38db9f8d8b95647b6662245c93778afed
-ms.sourcegitcommit: db925ea0af071d2c81b7f0ae89464214f8167505
+ms.openlocfilehash: c527c80b540f38102792f1e2da27c25e55c7fb77
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/15/2021
-ms.locfileid: "107520155"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131003977"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Übersicht über Service Fabric-Cluster in Azure
 Ein Service Fabric-Cluster enthält eine per Netzwerk verbundene Gruppe von virtuellen oder physischen Computern, auf denen Ihre Microservices bereitgestellt und verwaltet werden. Ein Computer oder ein virtueller Computer, der Teil eines Clusters ist, wird als Clusterknoten bezeichnet. Cluster können auf Tausende von Knoten skaliert werden. Wenn Sie dem Cluster neue Knoten hinzufügen, verteilt Service Fabric Partitionsreplikate und Instanzen des Diensts auf die erhöhte Anzahl von Knoten neu, um sie auszugleichen. Die Gesamtleistung der Anwendung verbessert sich und Konflikte beim Speicherzugriff werden reduziert. Wenn die Knoten im Cluster nicht effizient genutzt werden, können Sie die Anzahl der Knoten im Cluster verringern. Service Fabric gleicht die Partitionsreplikate und Instanzen erneut über die verringerte Anzahl von Knoten aus, um die Hardware der einzelnen Knoten besser zu nutzen.
@@ -46,9 +46,9 @@ Sie können Skalierungsgruppen verwenden, um eine Sammlung virtueller Computer a
 Weitere Informationen finden Sie unter [Azure Service Fabric-Knotentypen und VM-Skalierungsgruppen](service-fabric-cluster-nodetypes.md).
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
-VM-Instanzen werden hinter einem [Azure-Lastenausgleich](../load-balancer/load-balancer-overview.md) verknüpft, der einer [öffentlichen IP-Adresse](../virtual-network/public-ip-addresses.md) und DNS-Bezeichnung zugeordnet ist.  Wenn Sie einen Cluster mit *&lt;clustername&gt;* bereitstellen, ist der DNS-Name *&lt;clustername&gt;.&lt;speicherort&gt;.cloudapp.azure.com* die DNS-Bezeichnung, die dem Lastenausgleich vor der Skalierungsgruppe zugeordnet ist.
+VM-Instanzen werden hinter einem [Azure-Lastenausgleich](../load-balancer/load-balancer-overview.md) verknüpft, der einer [öffentlichen IP-Adresse](../virtual-network/ip-services/public-ip-addresses.md) und DNS-Bezeichnung zugeordnet ist.  Wenn Sie einen Cluster mit *&lt;clustername&gt;* bereitstellen, ist der DNS-Name *&lt;clustername&gt;.&lt;speicherort&gt;.cloudapp.azure.com* die DNS-Bezeichnung, die dem Lastenausgleich vor der Skalierungsgruppe zugeordnet ist.
 
-Virtuelle Computer in einem Cluster haben nur [private IP-Adressen](../virtual-network/private-ip-addresses.md).  Verwaltungsdatenverkehr und Dienstdatenverkehr werden durch den öffentlichen Lastenausgleich weitergeleitet.  Die Weiterleitung von Netzwerkdatenverkehr an diese Computer erfolgt über NAT-Regeln (Clients stellen eine Verbindung mit bestimmten Knoten/Instanzen her) oder Lastenausgleichsregeln (Datenverkehr wird per Roundrobin an virtuelle Computern geleitet).  Einem Lastenausgleich ist eine öffentliche IP-Adresse mit einem DNS-Namen im Format *&lt;clustername&gt;.&lt;speicherort&gt;.cloudapp.azure.com* zugeordnet.  Eine öffentliche IP-Adresse ist eine andere Azure-Ressource in der Ressourcengruppe.  Wenn Sie in einem Cluster mehrere Knotentypen definieren, wird ein Lastenausgleich für jeden Knoten/jede Skalierungsgruppe erstellt. Sie können auch einen einzelnen Lastenausgleich für mehrere Knotentypen einrichten.  Der primäre Knotentyp hat die DNS-Bezeichnung *&lt;clustername&gt;.&lt;speicherort&gt;.cloudapp.azure.com*, andere Knotentypen haben die DNS-Bezeichnung *&lt;clustername&gt;-&lt;knotentyp&gt;.&lt;speicherort&gt;.cloudapp.azure.com*.
+Virtuelle Computer in einem Cluster haben nur [private IP-Adressen](../virtual-network/ip-services/private-ip-addresses.md).  Verwaltungsdatenverkehr und Dienstdatenverkehr werden durch den öffentlichen Lastenausgleich weitergeleitet.  Die Weiterleitung von Netzwerkdatenverkehr an diese Computer erfolgt über NAT-Regeln (Clients stellen eine Verbindung mit bestimmten Knoten/Instanzen her) oder Lastenausgleichsregeln (Datenverkehr wird per Roundrobin an virtuelle Computern geleitet).  Einem Lastenausgleich ist eine öffentliche IP-Adresse mit einem DNS-Namen im Format *&lt;clustername&gt;.&lt;speicherort&gt;.cloudapp.azure.com* zugeordnet.  Eine öffentliche IP-Adresse ist eine andere Azure-Ressource in der Ressourcengruppe.  Wenn Sie in einem Cluster mehrere Knotentypen definieren, wird ein Lastenausgleich für jeden Knoten/jede Skalierungsgruppe erstellt. Sie können auch einen einzelnen Lastenausgleich für mehrere Knotentypen einrichten.  Der primäre Knotentyp hat die DNS-Bezeichnung *&lt;clustername&gt;.&lt;speicherort&gt;.cloudapp.azure.com*, andere Knotentypen haben die DNS-Bezeichnung *&lt;clustername&gt;-&lt;knotentyp&gt;.&lt;speicherort&gt;.cloudapp.azure.com*.
 
 ### <a name="storage-accounts"></a>Speicherkonten
 Jeder Clusterknotentyp wird von einem [Azure Storage-Konto](../storage/common/storage-introduction.md) und verwalteten Datenträgern unterstützt.

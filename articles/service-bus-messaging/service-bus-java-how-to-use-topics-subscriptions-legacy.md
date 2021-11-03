@@ -4,18 +4,13 @@ description: In diesem Artikel schreiben Sie Java-Code, um Nachrichten an ein Az
 ms.date: 07/27/2021
 ms.topic: how-to
 ms.devlang: Java
-ms.custom:
-- seo-java-july2019
-- seo-java-august2019
-- seo-java-september2019
-- devx-track-java
-- mode-api
-ms.openlocfilehash: f6f0520797a5c221f1c3e1ea60c22d1576bad07e
-ms.sourcegitcommit: 9f1a35d4b90d159235015200607917913afe2d1b
+ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java, mode-api
+ms.openlocfilehash: b0f62a9e2953fd7d088a2bed1d3cfa52f6a3b26a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/21/2021
-ms.locfileid: "121736243"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131083591"
 ---
 # <a name="use-service-bus-topics-and-subscriptions-with-java-old-package"></a>Verwenden von Service Bus-Themen und -Abonnements mit Java (altes Paket)
 In diesem Artikel schreiben Sie Java-Code, um Nachrichten an ein Azure Service Bus-Thema zu senden, und empfangen dann Nachrichten von Abonnements dieses Themas. 

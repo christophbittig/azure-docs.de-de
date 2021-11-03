@@ -4,12 +4,12 @@ description: Details der Windows-Baseline in Azure, die durch die Azure Policy-G
 ms.date: 08/24/2021
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: c69a15fc97a605e1166a1721cb9e2fef9ce21ab7
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.openlocfilehash: b523a239c591d94f733a4d6339964dfb24eec8b1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122779169"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131016243"
 ---
 # <a name="windows-security-baseline"></a>Windows-Sicherheitsbaseline
 
@@ -201,7 +201,7 @@ Weitere Informationen finden Sie unter [Informationen zu Guest Configuration von
 |Name<br /><sub>(ID)</sub> |Details |Erwarteter Wert<br /><sub>(Typ)</sub> |severity |
 |---|---|---|---|
 |PNP-Aktivität überwachen<br /><sub>(AZ-WIN-00182)</sub> |**Beschreibung**: Mit dieser Richtlinieneinstellung können Sie überwachen, ob Plug & Play ein externes Gerät erkennt. Der empfohlene Status für diese Einstellung ist `Success`. **Hinweis:** Für den Zugriff auf diesen Wert und seine Festlegung in der Gruppenrichtlinie ist Windows 10, Server 2016 oder ein höheres Betriebssystem erforderlich.<br />**Schlüsselpfad**: {0CCE9248-69AE-11D9-BED3-505054503030}<br />**Betriebssystem**: WS2016<br />**Servertyp**: Domänencontroller, Domänenmitglied, Arbeitsgruppenmitglied |\>\= Erfolg<br /><sub>(Überwachung)</sub> |Kritisch |
-|Prozesserstellung überwachen<br /><sub>(CCE-36059-4)</sub> |**Beschreibung**: In dieser Unterkategorie werden die Erstellung eines Prozesses und der Name des Programms oder des Benutzers gemeldet, von dem er erstellt wurde. Zu den Ereignissen für diese Unterkategorie gehören: – 4688: Ein neuer Prozess wurde erstellt. – 4696: Ein primäres Token wurde dem Prozess zugewiesen. Die neuesten Informationen zu dieser Einstellung finden Sie im Microsoft Knowledgebase-Artikel 947226: [Description of security events in Windows Vista and in Windows Server 2008](https://support.microsoft.com/en-us/kb/947226) (Beschreibung der Sicherheitsereignisse in Windows Vista und Windows Server 2008). Der empfohlene Status für diese Einstellung ist `Success`.<br />**Schlüsselpfad**: {0CCE922B-69AE-11D9-BED3-505054503030}<br />**Betriebssystem**: WS2008, WS2008R2, WS2012, WS2012R2, WS2016<br />**Servertyp**: Domänencontroller, Domänenmitglied, Arbeitsgruppenmitglied |\>\= Erfolg<br /><sub>(Überwachung)</sub> |Kritisch |
+|Prozesserstellung überwachen<br /><sub>(CCE-36059-4)</sub> |**Beschreibung**: In dieser Unterkategorie werden die Erstellung eines Prozesses und der Name des Programms oder des Benutzers gemeldet, von dem er erstellt wurde. Zu den Ereignissen für diese Unterkategorie gehören: – 4688: Ein neuer Prozess wurde erstellt. – 4696: Ein primäres Token wurde dem Prozess zugewiesen. Der empfohlene Status für diese Einstellung ist `Success`.<br />**Schlüsselpfad**: {0CCE922B-69AE-11D9-BED3-505054503030}<br />**Betriebssystem**: WS2008, WS2008R2, WS2012, WS2012R2, WS2016<br />**Servertyp**: Domänencontroller, Domänenmitglied, Arbeitsgruppenmitglied |\>\= Erfolg<br /><sub>(Überwachung)</sub> |Kritisch |
 
 ## <a name="system-audit-policies---logon-logoff"></a>Systemüberwachungsrichtlinien – Anmelden/Abmelden
 

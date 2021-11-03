@@ -7,12 +7,12 @@ ms.service: notification-hubs
 ms.topic: how-to
 ms.date: 09/07/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 0de15ab1f16ab5bc234ad6430eae5f65e608753e
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ae1f52ea007746ab162f13edf77f34fe8c8157c1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128598507"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131004983"
 ---
 # <a name="move-resources-between-azure-regions"></a>Verschieben von Ressourcen zwischen Azure-Regionen
 
@@ -54,7 +54,7 @@ Nach Abschluss des Registrierungsexports aus Ihrem alten Namespace in den neuen 
 
 Die folgenden Artikel sind Beispiele für andere Dienste, für die ein Artikel zum Verschieben von einer Region in die andere vorhanden ist.
 
-- [Verschieben von NSGs in eine andere Region](/azure/virtual-network/move-across-regions-nsg-portal)
-- [Verschieben von öffentlichen IP-Adressen in eine andere Region](/azure/virtual-network/move-across-regions-publicip-portal)
-- [Verschieben eines Speicherkontos in eine andere Region](/azure/storage/common/storage-account-move?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=azure-portal)
-- [Regionsübergreifendes Verschieben von Ressourcen (aus Ressourcengruppe)](/azure/resource-mover/move-region-within-resource-group#:~:text=1%20In%20the%20Azure%20portal%2C%20open%20the%20relevant,you%20want%20to%20move.%20...%20More%20items...%20)
+- [Verschieben von NSGs in eine andere Region](../virtual-network/move-across-regions-nsg-portal.md)
+- [Verschieben von öffentlichen IP-Adressen in eine andere Region](../virtual-network/move-across-regions-publicip-portal.md)
+- [Verschieben eines Speicherkontos in eine andere Region](../storage/common/storage-account-move.md?tabs=azure-portal&toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+- [Regionsübergreifendes Verschieben von Ressourcen (aus Ressourcengruppe)](../resource-mover/move-region-within-resource-group.md)

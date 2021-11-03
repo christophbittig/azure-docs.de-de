@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 09/29/2020
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: e2455a6e87e05ee8a926309ff0ca62ad2b8677da
-ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
+ms.openlocfilehash: f0508cfa1f5a789207b2771be4bdd9d448af3363
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113136785"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131074610"
 ---
 # <a name="manage-reference-data-for-an-azure-time-series-insights-gen-1-environment-using-c-sharp"></a>Verwalten von Verweisdaten für eine Azure Time Series Insights Gen1-Umgebung mithilfe von C#
 
@@ -81,7 +81,7 @@ Oder:
 
 1. Deklarieren Sie eine Datei `csharp-tsi-msal-ga-sample.csproj`:
 
-    ```XML
+    ```xml
     <Project Sdk="Microsoft.NET.Sdk">
       <PropertyGroup>
         <OutputType>Exe</OutputType>
@@ -229,7 +229,6 @@ namespace CsharpTsiMsalGaSample
                             }
                         ]
                     }";
-
 
                 var createResponse = await AsyncHttpPostRequestHelper(httpClient, createInput);
 

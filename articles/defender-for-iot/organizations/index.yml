@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Dokumentation zu Azure Defender für IoT für Organisationen
-summary: Azure Defender für IoT bietet umfassende Bedrohungserkennung für IoT-/OT-Umgebungen mit mehreren Bereitstellungsoptionen, u. a. für vollständig lokale Bereitstellung, Bereitstellung mit Cloudverbindung oder Hybridbereitstellung.
+summary: 'Azure Defender für IoT bietet umfassende Bedrohungserkennung für IoT-/OT-Umgebungen mit mehreren Bereitstellungsoptionen, u. a. für vollständig lokale Bereitstellung, Bereitstellung mit Cloudverbindung oder Hybridbereitstellung. HINWEIS: Azure Defender für IoT wird in Microsoft Defender für IoT umbenannt. Die Dokumentation wird in Kürze aktualisiert.'
 metadata:
   title: Dokumentation zu Azure Defender für IoT für Organisationen
   description: Azure Defender für IoT bietet umfassende Bedrohungserkennung für IoT-/OT-Umgebungen mit mehreren Bereitstellungsoptionen, u. a. für vollständig lokale Bereitstellung, Bereitstellung mit Cloudverbindung oder Hybridbereitstellung.
@@ -12,12 +12,12 @@ metadata:
   ms.author: v-ekrieg
   manager: raynew
   ms.date: 06/17/2021
-  ms.openlocfilehash: f1294221f5a144489f9a23e16b18f70a4d0ca3f1
-  ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+  ms.openlocfilehash: d1cffb5041cf1ecc32c180df5a81425506574e75
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 06/29/2021
-  ms.locfileid: "113013943"
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131011312"
 landingContent:
 - title: Informationen zu Azure Defender für IoT für Organisationen
   linkLists:

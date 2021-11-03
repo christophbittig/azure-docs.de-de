@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/01/2021
+ms.date: 10/11/2021
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: Lokal, Docker, Container
-ms.openlocfilehash: da62c081a79211eb6eb56229eab856c89841746c
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: a930b5234f13d7e53bc50b6dc3f7b3d959df2e0e
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129533694"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "131024586"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Installieren und Ausführen von Docker-Containern für die APIs des Speech-Diensts 
 
@@ -666,7 +666,7 @@ Wenn Sie beabsichtigen, mehrere Container mit offengelegten Ports auszuführen, 
 
 Sie können diesen Container und einen anderen Azure Cognitive Services-Container zusammen auf dem Host ausführen. Sie können auch mehrere Container desselben Cognitive Services-Containers ausführen.
 
-[!INCLUDE [Validate container is running - Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
+[!INCLUDE [Validate container is running - Container API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
 ## <a name="stop-the-container"></a>Beenden des Containers
 
@@ -677,6 +677,9 @@ Sie können diesen Container und einen anderen Azure Cognitive Services-Containe
 Beim Starten oder Ausführen des Containers können Probleme auftreten. Verwenden Sie eine [Bereitstellung](speech-container-configuration.md#mount-settings) für die Ausgabe, und aktivieren Sie die Protokollierung. Auf diese Weise kann der Container Protokolldateien generieren, die bei der Behebung von Problemen helfen.
 
 [!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
+
+[!INCLUDE [Diagnostic container](../containers/includes/diagnostics-container.md)]
+
 
 ## <a name="billing"></a>Abrechnung
 

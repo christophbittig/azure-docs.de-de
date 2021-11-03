@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 10/27/2020
-ms.openlocfilehash: 60f4d1d8e86eed6a3dab390ebf8e46296f4644d2
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: ec57245e1f3c0381bb362183122904b86af70473
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130040187"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131015217"
 ---
 # <a name="configure-consulting-service-offer-properties"></a>Konfigurieren der Eigenschaften eines Angebots für einen Beratungsdienst
 
@@ -23,7 +23,7 @@ Auf der Registerkarte **Eigenschaften** Ihres Angebots in Partner Center definie
 
 ## <a name="select-the-primary-product"></a>Auswählen des primären Produkts
 
-Wählen Sie in der Dropdownliste **Primäres Produkt** das Microsoft-Produkt aus, auf dem der Fokus Ihres Beratungsdienstangebots liegen soll. Das ausgewählte Produkt bestimmt, ob Ihr Angebot in Microsoft AppSource oder im Azure Marketplace veröffentlicht werden soll. Durch eine genaue Darstellung Ihres Angebots können Kunden es leichter finden. Beachten Sie, dass Sie die [Qualifizierungsanforderungen](https://aka.ms/AAacrbv) für die ausgewählten Produkte erfüllen müssen. 
+Wählen Sie in der Dropdownliste **Primäres Produkt** das Microsoft-Produkt aus, auf dem der Fokus Ihres Beratungsdienstangebots liegen soll. Das ausgewählte Produkt bestimmt, ob Ihr Angebot in Microsoft AppSource oder im Azure Marketplace veröffentlicht werden soll. Durch eine genaue Darstellung Ihres Angebots können Kunden es leichter finden. Beachten Sie, dass Sie die [Qualifizierungsanforderungen](./plan-consulting-service-offer.md#eligibility-requirements) für die ausgewählten Produkte erfüllen müssen. 
 
 - Wenn Sie Azure auswählen, wird das Angebot im Azure Marketplace aufgeführt. Wählen Sie bis zu drei **Lösungsbereiche** aus, die Ihr Angebot am besten darstellen.
 - Wenn Sie Microsoft 365 auswählen, wählen Sie außerdem bis zu drei **Lösungsbereiche** aus, die Ihr Angebot am besten darstellen. Das Angebot wird in Microsoft AppSource aufgeführt.

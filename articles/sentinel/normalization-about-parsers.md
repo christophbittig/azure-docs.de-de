@@ -6,7 +6,6 @@ cloud: na
 documentationcenter: na
 author: oshezaf
 manager: rkarlin
-ms.assetid: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.workload: na
@@ -15,14 +14,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/11/2021
 ms.author: ofshezaf
-ms.openlocfilehash: b3dc1575258c495a2be63eced6aa141c60bb6631
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 12f26ca7567387cd6a9edfcde0ef1229e9635f69
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128659436"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131064462"
 ---
 # <a name="azure-sentinel-information-model-asim-parsers-public-preview"></a>Azure Sentinel Informationsmodell (ASIM) Parsers (Öffentliche Vorschau)
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 In Azure Sentinel erfolgen das Parsing und die [Normalisierung](normalization.md) zur Abfragezeit. Parser werden als [benutzerdefinierte KQL-Funktionen](/azure/data-explorer/kusto/query/functions/user-defined-functions) erstellt, die Daten in vorhandenen Tabellen (wie etwa **CommonSecurityLog**, benutzerdefinierte Protokolltabellen, Syslog) in das normalisierte Schema transformieren. Sobald der Parser als Arbeitsbereich-Funktion gespeichert ist, kann er wie jede Azure Sentinel-Tabelle verwendet werden.
 

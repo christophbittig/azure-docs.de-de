@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/05/2021
 ms.author: jeedes
-ms.openlocfilehash: 9e82c980bb92832c3abd092ed799cf55b6f47438
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 9a4fa43318a7e56e93cfe3a439eadcec2e476002
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124835699"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131049347"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-egnyte"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Egnyte
 
@@ -137,21 +137,21 @@ In diesem Abschnitt ermöglichen Sie B.Simon die Verwendung von Azure-SSO, indem
 
     ![Single Sign On Authentication (SSO-Authentifizierung)](./media/egnyte-tutorial/authentication.png "SSO-Authentifizierung")   
     
-    a. Klicken Sie unter **Single sign-on authentication** auf **SAML 2.0**.
-   
-    b. Wählen Sie als **Identity Provider** den Wert **AzureAD** aus.
-   
-    c. Fügen Sie die **Anmelde-URL**, die Sie aus dem Azure-Portal kopiert haben, in das Textfeld **Anmelde-URL des Identitätsanbieters** ein.
-   
-    d. Fügen Sie den **Azure AD-Bezeichner**, den Sie aus dem Azure-Portal kopiert haben, in das Textfeld **Identity provider entity ID** (Entitäts-ID des Identitätsanbieters) ein.
-      
-    e. Öffnen Sie das Base64-codierte Zertifikat im Editor, das Sie aus dem Azure-Portal heruntergeladen haben, kopieren Sie den Inhalt des Zertifikats in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld **Identitätsanbieterzertifikat** ein.
-   
-    f. Wählen Sie als **Default user mapping** den Typ **Email address** aus.
-   
-    g. Wählen Sie als **Use domain-specific issuer value** den Eintrag **disabled** aus.
-   
-    h. Klicken Sie auf **Speichern**.
+    1. Klicken Sie unter **Single sign-on authentication** auf **SAML 2.0**.
+
+    1. Wählen Sie als **Identity Provider** den Wert **AzureAD** aus.
+
+    1. Fügen Sie die **Anmelde-URL**, die Sie aus dem Azure-Portal kopiert haben, in das Textfeld **Anmelde-URL des Identitätsanbieters** ein.
+
+    1. Fügen Sie den **Azure AD-Bezeichner**, den Sie aus dem Azure-Portal kopiert haben, in das Textfeld **Identity provider entity ID** (Entitäts-ID des Identitätsanbieters) ein.
+
+    1. Öffnen Sie das Base64-codierte Zertifikat im Editor, das Sie aus dem Azure-Portal heruntergeladen haben, kopieren Sie den Inhalt des Zertifikats in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld **Identitätsanbieterzertifikat** ein.
+
+    1. Wählen Sie als **Default user mapping** den Typ **Email address** aus.
+
+    1. Wählen Sie als **Use domain-specific issuer value** den Eintrag **disabled** aus.
+
+    1. Klicken Sie auf **Speichern**.
 
 ### <a name="create-egnyte-test-user"></a>Erstellen eines Egnyte-Testbenutzers
 

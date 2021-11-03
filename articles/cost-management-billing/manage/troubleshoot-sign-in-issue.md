@@ -2,20 +2,20 @@
 title: Beheben von Problemen bei der Anmeldung für ein Azure-Abonnement
 description: Hilft bei der Behebung von Problemen, die das Anmelden beim Azure-Portal verhindern.
 services: cost-management-billing
-author: v-miegge
+author: jasonwhowell
 manager: dcscontentpm
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: troubleshooting
 ms.date: 07/16/2021
-ms.author: v-miegge
-ms.openlocfilehash: 57e9f35acc482c1d2d6d08dd1adce9780d706778
-ms.sourcegitcommit: e2fa73b682a30048907e2acb5c890495ad397bd3
+ms.author: jasonh
+ms.openlocfilehash: 2ddd5f3fdb974eadba617afcd6f27d047534031b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114393002"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131040887"
 ---
 # <a name="troubleshoot-azure-subscription-sign-in-issues"></a>Beheben von Problemen bei der Anmeldung für ein Azure-Abonnement
 

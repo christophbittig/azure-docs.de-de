@@ -6,12 +6,13 @@ ms.author: bagol
 ms.service: purview
 ms.topic: how-to
 ms.date: 09/27/2021
-ms.openlocfilehash: c5f0f409f009d66afd0cb6103e2018c527c0b0a2
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 80929cb469d4d60c649786c955e8f92906794185
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130246059"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131011085"
 ---
 # <a name="classification-insights-about-your-data-from-azure-purview"></a>Klassifizierungserkenntnisse zu Ihren Daten aus Azure Purview
 
@@ -20,7 +21,7 @@ In dieser Schrittanleitung wird beschrieben, wie Sie auf Purview-Klassifizierung
 > [!IMPORTANT]
 > Azure Purview-Erkenntnisse befinden sich derzeit in der VORSCHAU. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen für Azure-Features, die sich in der Beta- oder Vorschauphase befinden oder anderweitig noch nicht allgemein verfügbar sind.
 
-Unterstützte Datenquellen: Azure Blob Storage, Azure Data Lake Storage (ADLS) GEN 1, Azure Data Lake Storage (ADLS) GEN 2, Azure Cosmos DB (SQL API), Azure Synapse Analytics (ehemals SQL DW), Azure SQL-Datenbank, Azure SQL Managed Instance, SQL Server, Amazon S3 Buckets
+Zu den unterstützten Datenquellen gehören: Azure Blob Storage, Azure Data Lake Storage (ADLS) GEN 1, Azure Data Lake Storage (ADLS) GEN 2, Azure Cosmos DB (SQL API), Azure Synapse Analytics (früher SQL DW), Azure SQL Database, Azure SQL Managed Instance, SQL Server, Amazon S3 Buckets und Amazon RDS-Datenbanken (öffentliche Vorschau).
 
 In dieser Schrittanleitung lernen Sie Folgendes:
 
@@ -64,7 +65,7 @@ Für Purview werden die gleichen Arten von vertraulichen Informationen wie in Mi
 
    Die Hauptseite für **Klassifizierungserkenntnisse** zeigt die folgenden Bereiche an:
 
-   |Bereich  |Beschreibung  |
+   |Bereich  |BESCHREIBUNG  |
    |---------|---------|
    |**Übersicht über Quellen mit Klassifizierungen**     |Zeigt Kacheln mit folgenden Informationen an: <br>- Die Anzahl der in Ihren Daten gefundenen Abonnements <br>- Die Anzahl der in Ihren Daten gefundenen eindeutigen Klassifizierungen <br>- Die Anzahl der gefundenen klassifizierten Quellen <br>- Die Anzahl der gefundenen klassifizierten Dateien <br>- Die Anzahl der gefundenen klassifizierten Tabellen         |
    |**Hauptquellen mit klassifizierten Daten (letzte 30 Tage)**     |Zeigt den Trend über die letzten 30 Tage für die Anzahl der gefundenen Quellen mit klassifizierten Daten.            |
@@ -89,7 +90,7 @@ Beispiel:
 
 Führen Sie einen der folgenden Schritte aus, um weitere Informationen zu erhalten:
 
-|Option  |Beschreibung  |
+|Option  |BESCHREIBUNG  |
 |---------|---------|
 |**Filtern der Daten**     |  Verwenden Sie die Filter oberhalb des Rasters, um die angezeigten Daten zu filtern, einschließlich des Klassifizierungsnamens, des Abonnementnamens oder des Quellentyps. <br><br>Wenn Sie sich bezüglich des genauen Klassifizierungsnamens nicht sicher sind, können Sie einen Teil oder den ganzen Namen in das Feld **Nach Schlüsselwort filtern** eingeben.       |
 |**Sortieren des Rasters** |Wählen Sie einen Spaltenheader aus, um das Raster nach dieser Spalte zu sortieren. | 

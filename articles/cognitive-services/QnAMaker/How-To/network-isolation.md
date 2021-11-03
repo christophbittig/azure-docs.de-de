@@ -4,21 +4,20 @@ description: Benutzer können den öffentlichen Zugriff auf QnA Maker-Ressource
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 07/13/2021
-ms.openlocfilehash: eb00a9fa81b6fadd999c6c824ff7be06f76c8f4a
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.date: 11/02/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 87726db1f0747c3f9383168321bc3054c685c8a9
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123221757"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131038719"
 ---
 # <a name="recommended-settings-for-network-isolation"></a>Empfohlene Einstellungen für die Netzwerkisolation
 
 Gehen Sie wie hier beschrieben vor, um den öffentlichen Zugriff auf QnA Maker-Ressourcen einzuschränken. Schützen Sie eine Cognitive Services-Ressource durch [Konfigurieren des virtuellen Netzwerks](../../cognitive-services-virtual-networks.md?tabs=portal) vor öffentlichem Zugriff.
 
 ## <a name="restrict-access-to-app-service-qna-runtime"></a>Einschränken des Zugriffs auf App Service (QnA-Runtime)
-
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
 
 Mit dem Diensttag `CognitiveServicesMangement` können Sie den Zugriff auf eingehenden Datenverkehr mithilfe entsprechender Regeln auf die App Service- oder ASE-Netzwerksicherheitsgruppe (App Service Environment) beschränken.Weitere Informationen zu Diensttags finden Sie im Artikel  [Diensttags in virtuellen Netzwerken](../../../virtual-network/service-tags-overview.md). 
 
@@ -68,22 +67,13 @@ Die App Service-Umgebung (App Service Environment, ASE) kann zum Hosten der QnA 
 
 ### <a name="related-questions"></a>Verwandte Fragen
 
-#### <a name="can-qna-maker-be-deployed-to-an-internal-ase"></a>Kann QnA Maker in einer internen ASE bereitgestellt werden? 
+#### <a name="can-qna-maker-be-deployed-to-an-internal-ase"></a>Kann QnA Maker in einer internen ASE bereitgestellt werden?
 
 Der Hauptgrund für die Verwendung einer externen ASE ist, dass das QnA Maker-Dienst-Back-End (Erstellungs-APIs) die App Service-Instanz über das Internet erreichen kann. Sie können sie jedoch trotzdem schützen, indem Sie eine Einschränkung für den Zugriff auf eingehenden Datenverkehr hinzufügen, damit nur Verbindungen von Adressen zulässig sind, die dem Diensttag `CognitiveServicesManagement` zugeordnet sind.
 
 Wenn Sie dennoch eine interne ASE verwenden möchten, müssen Sie diese spezifische QnA Maker-App in der ASE in einer öffentlichen Domäne über das TLS/SSL-Zertifikat des App-Gateway-DNS verfügbar machen. Weitere Informationen finden Sie in diesem [Artikel zur Unternehmensbereitstellung von App Services](/azure/architecture/reference-architectures/enterprise-integration/ase-standard-deployment).
 
-    
-# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
-
-App Service wird nicht mit benutzerdefinierten Fragen und Antworten bereitgestellt.
-
----
-
 ## <a name="restrict-access-to-cognitive-search-resource"></a>Einschränken des Zugriffs auf Cognitive Search-Ressourcen
-
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
 
 Die Cognitive Search-Instanz kann über einen privaten Endpunkt isoliert werden, nachdem die QnA Maker-Ressourcen erstellt wurden. Führen Sie die folgenden Schritte aus, um den Zugriff zu sperren:
 
@@ -117,9 +107,6 @@ Die Cognitive Search-Instanz kann über einen privaten Endpunkt isoliert werden,
      > [!div class="mx-imgBorder"]
      > [ ![Screenshot der Benutzeroberfläche für die VNET-Integration]( ../media/network-isolation/integration.png) ](  ../media/network-isolation/integration.png#lightbox)
 
-
-# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
-
 [Erstellen Sie private Endpunkte](../reference-private-endpoint.md) für die Azure Search-Ressource.
 
 Gehen Sie wie hier beschrieben vor, um den öffentlichen Zugriff auf QnA Maker-Ressourcen einzuschränken. Schützen Sie eine Cognitive Services-Ressource durch [Konfigurieren des virtuellen Netzwerks](../../cognitive-services-virtual-networks.md?tabs=portal) vor öffentlichem Zugriff.
@@ -131,6 +118,3 @@ Nachdem Sie den Zugriff auf Cognitive Service-Ressourcen basierend auf VNET eing
 
      > [!div class="mx-imgBorder"]
      > [ ![Screenshot der Benutzeroberfläche zur Konfiguration von Firewall und virtuellen Netzwerken]( ../media/network-isolation/firewall.png) ](  ../media/network-isolation/firewall.png#lightbox)
-
----
-

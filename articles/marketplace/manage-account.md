@@ -7,12 +7,12 @@ ms.topic: article
 author: varsha-sarah
 ms.author: vavargh
 ms.date: 09/27/2021
-ms.openlocfilehash: 115556f2118d34fa4fd2baf3ac84d97a1b9f5962
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 40ea8110ddf9a8f81395dea86beb656dba736cf7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130071661"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131024332"
 ---
 # <a name="manage-a-commercial-marketplace-account-in-partner-center"></a>Verwalten eines kommerziellen Marktplatzkontos im Partner Center
 
@@ -234,7 +234,7 @@ Die Abrechnungsadresse ist von Ihrer juristischen Entität bereits ausgefüllt. 
 
 ## <a name="multi-user-account-management"></a>Kontoverwaltung für mehrere Benutzer
 
-Partner Center nutzt [Azure Active Directory](/azure/active-directory/fundamentals/active-directory-whatis) (Azure AD) für den Zugriff auf Mehrbenutzerkonten und deren Verwaltung. Das Azure AD Ihrer Organisation wird im Rahmen des Registrierungsprozesses automatisch mit Ihrem Partner Center-Konto verknüpft.
+Partner Center nutzt [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) (Azure AD) für den Zugriff auf Mehrbenutzerkonten und deren Verwaltung. Das Azure AD Ihrer Organisation wird im Rahmen des Registrierungsprozesses automatisch mit Ihrem Partner Center-Konto verknüpft.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

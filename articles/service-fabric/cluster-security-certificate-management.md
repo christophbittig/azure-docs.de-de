@@ -4,12 +4,12 @@ description: Erfahren Sie mehr zum Verwalten von Zertifikaten in einem Service F
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.custom: sfrev, devx-track-azurepowershell
-ms.openlocfilehash: 580831c402c8d07eead9f3b90215faa106640bfc
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 768fe83a0ce4bc0507f21b72e1c917e60c7ec971
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128601974"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131075123"
 ---
 # <a name="certificate-management-in-service-fabric-clusters"></a>Zertifikatverwaltung in Service Fabric-Clustern
 
@@ -90,10 +90,10 @@ An dieser Stelle befindet sich ein Zertifikat im Tresor, das zur Nutzung bereit 
 ### <a name="certificate-provisioning"></a>Zertifikatbereitstellung
 Wir haben einen „Bereitstellungs-Agent“ erwähnt, bei dem es sich um die Entität handelt, die das Zertifikat einschließlich seines privaten Schlüssels aus dem Tresor abruft und auf jedem der Hosts des Clusters installiert. (Denken Sie daran, dass Service Fabric keine Zertifikate bereitstellt.) In unserem Kontext wird der Cluster in einer Sammlung von Azure-VMs und/oder VM-Skalierungsgruppen gehostet. In Azure kann die Bereitstellung eines Zertifikats aus einem Tresor für eine VM/VMSS (VM-Skalierungsgruppe) mit den folgenden Mechanismen erreicht werden, wobei wie weiter oben angenommen wird, dass dem Bereitstellungs-Agent zuvor vom Tresorbesitzer Abrufberechtigungen für den Tresor erteilt wurden: 
   - Ad-hoc: Ein Bediener ruft das Zertifikat aus dem Tresor (im Format PFX/PKCS #12 oder PEM) ab und installiert es auf jedem Knoten.
-  - Als Geheimnis einer VM-Skalierungsgruppe während der Bereitstellung: Der Compute-Dienst ruft unter Verwendung seiner Erstanbieteridentität im Namen des Bedieners das Zertifikat aus einem für die Vorlagenbereitstellung aktivierten Tresor ab und installiert es auf jedem Knoten der VM-Skalierungsgruppe ([auf diese Weise](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-faq#certificates)). Beachten Sie, dass dies nur die Bereitstellung von Geheimnissen mit Versionsangabe erlaubt.
+  - Als Geheimnis einer VM-Skalierungsgruppe während der Bereitstellung: Der Compute-Dienst ruft unter Verwendung seiner Erstanbieteridentität im Namen des Bedieners das Zertifikat aus einem für die Vorlagenbereitstellung aktivierten Tresor ab und installiert es auf jedem Knoten der VM-Skalierungsgruppe ([auf diese Weise](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.yml)). Beachten Sie, dass dies nur die Bereitstellung von Geheimnissen mit Versionsangabe erlaubt.
   - Mithilfe der [Key Vault-VM-Erweiterung](../virtual-machines/extensions/key-vault-windows.md). Dies ermöglicht die Bereitstellung von Zertifikaten unter Verwendung versionsloser Deklarationen bei regelmäßiger Aktualisierung der überwachten Zertifikate. In diesem Fall wird erwartet, dass die VM/VMSS über eine [verwaltete Identität](../virtual-machines/security-policy.md#managed-identities-for-azure-resources) verfügt, d. h. eine Identität, der Zugriff auf die Tresore mit den überwachten Zertifikaten gewährt wurde.
 
-Der Ad-hoc-Mechanismus wird aus mehreren Gründen, die von der Sicherheit bis zur Verfügbarkeit reichen, nicht empfohlen und soll hier nicht weiter erörtert werden. Weitere Einzelheiten finden Sie unter [Zertifikate in VM-Skalierungsgruppen](/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-faq#certificates).
+Der Ad-hoc-Mechanismus wird aus mehreren Gründen, die von der Sicherheit bis zur Verfügbarkeit reichen, nicht empfohlen und soll hier nicht weiter erörtert werden. Weitere Einzelheiten finden Sie unter [Zertifikate in VM-Skalierungsgruppen](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.yml).
 
 Die VMSS-/Compute-basierte Bereitstellung bietet Vorteile in Bezug auf Sicherheit und Verfügbarkeit, bringt aber auch Einschränkungen mit sich. Sie erfordert von vornherein die Deklaration von Zertifikaten als Geheimnisse mit Versionsangabe, wodurch sie nur für Cluster geeignet ist, die mit per Fingerabdruck deklarierten Zertifikaten abgesichert sind. Im Gegensatz dazu wird bei der auf der Key Vault-VM-Erweiterung basierenden Bereitstellung immer die neueste Version jedes überwachten Zertifikats installiert. Dadurch eignet sie sich nur für Cluster, die mit Zertifikaten abgesichert sind, die mit dem allgemeinen Namen des Antragstellers deklariert wurden. Zur Hervorhebung: Verwenden Sie keinen Bereitstellungsmechanismus mit automatischer Aktualisierung (wie z. B. die Key Vault-VM-Erweiterung) für Zertifikate, die nach Instanz (d. h. per Fingerabdruck) deklariert wurden. Das Risiko des Verlusts der Verfügbarkeit ist beträchtlich.
 

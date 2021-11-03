@@ -1,199 +1,258 @@
 ---
 title: Registrieren und Überprüfen von Azure Data Lake Storage (ADLS) Gen1
-description: In diesem Tutorial wird beschrieben, wie Sie Daten aus Azure Data Lake Storage Gen1 in Azure Purview überprüfen.
-author: shsandeep123
-ms.author: sandeepshah
+description: In diesem Artikel wird der Prozess zum Registrieren einer Azure Data Lake Storage Gen1-Datenquelle in Azure Purview beschrieben, einschließlich Anweisungen zum Authentifizieren und Interagieren mit einer solchen Azure Data Lake Storage Gen1-Quelle
+author: athenads
+ms.author: athenadsouza
 ms.service: purview
-ms.subservice: purview-data-map
 ms.topic: how-to
-ms.date: 09/27/2021
-ms.openlocfilehash: 093375e30fa9f9a3d6a558c5e230a8bc81a701ad
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.date: 11/02/2021
+ms.custom: template-how-to, ignite-fall-2021
+ms.openlocfilehash: 2887511d9d92fcf9112473207ba3445282b8b87f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129215774"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131015611"
 ---
-# <a name="register-and-scan-azure-data-lake-storage-gen1"></a>Registrieren und Überprüfen von Azure Data Lake Storage Gen1
+# <a name="connect-to-azure-data-lake-gen1-in-azure-purview"></a>Verbinden zu Azure Data Lake Gen1 in Azure Purview
 
-In diesem Artikel erfahren Sie, wie Sie Azure Data Lake Storage Gen1 als Datenquelle in Azure Purview registrieren und eine Überprüfung dafür einrichten.
+In diesem Artikel wird der Prozess zum Registrieren einer Azure Data Lake Storage Gen1-Datenquelle in Azure Purview beschrieben, einschließlich Anweisungen zum Authentifizieren und Interagieren mit einer solchen Azure Data Lake Storage Gen1-Quelle.
 
 > [!Note]
 > Azure Data Lake Storage Gen2 ist jetzt allgemein verfügbar. Es wird empfohlen, ab sofort diese SKU zu verwenden. Weitere Informationen hierzu finden Sie auf der [Produktseite](https://azure.microsoft.com/services/storage/data-lake-storage/).
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
-Die Datenquelle vom Typ „Azure Data Lake Storage Gen1“ unterstützt die folgenden Funktionen:
-
-- **Vollständige und inkrementelle Überprüfungen** zum Erfassen von Metadaten und Klassifizierungen in Azure Data Lake Storage Gen1
-
-- **Herkunft** zwischen Datenobjekten für Copy-/Dataflow-Aktivitäten von ADF
-
-Für Dateitypen wie CSV, TSV, PSV und SSV wird das Schema extrahiert, wenn die folgenden Logiken vorhanden sind:
-
-1. Werte in der ersten Zeile sind nicht leer.
-2. Werte in der ersten Zeile sind eindeutig.
-3. Werte in der ersten Zeile sind weder ein Datum noch eine Zahl.
+|**Metadatenextrahierung**|  **Vollständige Überprüfung**  |**Inkrementelle Überprüfung**|**Bereichsbezogene Überprüfung**|**Klassifizierung**|**Zugriffsrichtlinie**|**Herkunft**|
+|---|---|---|---|---|---|---|
+| [Ja](#register) | [Ja](#scan)|[Ja](#scan) | [Ja](#scan)|[Ja](#scan)| Nein |[Data Factory-Datenherkunft](how-to-link-azure-data-factory.md) |
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Erstellen Sie vor dem Registrieren der Datenquellen zunächst ein Azure Purview-Konto. Weitere Informationen zum Erstellen eines Purview-Kontos finden Sie unter [Schnellstart: Erstellen eines Azure Purview-Kontos im Azure-Portal](create-catalog-portal.md).
-- Sie müssen ein Azure Purview-Datenquellenadministrator sein.
+* Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="setting-up-authentication-for-a-scan"></a>Einrichten der Authentifizierung für eine Überprüfung
+* Eine aktive [Purview-Ressource](create-catalog-portal.md)
 
-Die folgenden Authentifizierungsmethoden werden für Azure Data Lake Storage Gen1 unterstützt:
+* Sie müssen ein Datenquellenadministrator und Datenleser sein, um eine Quelle zu registrieren und in Purview Studio zu verwalten. Weitere Informationen finden Sie auf der [Seite Azure Purview-Berechtigungen](catalog-permissions.md).
 
-- Verwaltete Identität
-- Dienstprinzipal
+## <a name="register"></a>Register
 
-### <a name="managed-identity-recommended"></a>Verwaltete Identität (empfohlen)
+In diesem Abschnitt können Sie eine Datenquelle ADLS Gen1 registrieren und einen geeigneten Authentifizierungsmechanismus einrichten, um eine erfolgreiche Überprüfung der Datenquelle sicherzustellen.
 
-Für mehr Benutzerfreundlichkeit und Sicherheit sollten Sie die MSI von Purview für die Authentifizierung bei Ihrem Datenspeicher verwenden.
+### <a name="steps-to-register"></a>Schritte zur Registrierung
 
-Wenn Sie eine Überprüfung mithilfe der MSI des Datenkatalogs einrichten, müssen Sie Ihrem Purview-Konto zunächst die Berechtigung zum Überprüfen der Datenquelle erteilen. Dieser Schritt muss *vor* dem Einrichten der Überprüfung durchgeführt werden, andernfalls tritt bei der Überprüfung ein Fehler auf.
+Es ist wichtig, die Datenquelle in Azure Purview zu registrieren, bevor Sie eine Überprüfung für die Datenquelle einrichten.
 
-#### <a name="adding-the-purview-msi-to-an-azure-data-lake-storage-gen1-account"></a>Hinzufügen der Purview-MSI zu einem Azure Data Lake Storage Gen1-Konto
+1. Gehen Sie zum [Azure-Portal](https://portal.azure.com), navigieren Sie zur Seite **Purview-Konten,** und klicken Sie auf Ihr _Purview-Konto_
 
-Sie können die Katalog-MSI auf der Ebene des Abonnements, der Ressourcengruppe oder der Ressource hinzufügen, je nachdem, wofür die Berechtigungen zum Überprüfen erteilt werden sollen.
+    :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-purview-acct.png" alt-text="Screenshot: Purview-Konto zum Registrieren der Datenquelle":::
+
+1. **Öffnen Sie Purview Studio** und navigieren Sie zu **Data Map --> Quellen**
+
+    :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-open-purview-studio.png" alt-text="Screenshot: Link zum Öffnen von Purview Studio":::
+
+    :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-sources.png" alt-text="Screenshot: Navigieren zum Quellen-Link in der Data Map":::
+
+1. Erstellen Sie die [Sammlungshierarchie](./quickstart-create-collection.md) mithilfe des Menüs **Sammlungen**, und weisen Sie den einzelnen untergeordneten Sammlungen nach Bedarf Berechtigungen zu
+
+    :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-collection.png" alt-text="Screenshot: Sammlungsmenü zum Erstellen einer Sammlungshierarchie":::
+
+1. Navigieren Sie im Menü **Quellen** zur entsprechenden Sammlung, und klicken Sie auf das Symbol **Registrieren**, um eine neue ADLS Gen1 zu registrieren
+
+    :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-register.png" alt-text="Screenshot: Sammlung zum Registrieren der Datenquelle":::
+
+1. Wählen Sie die **Datenquelle Azure Data Lake Storage Gen1** aus, und klicken Sie auf **Weiter**
+
+    :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-select-source.png" alt-text="Screenshot, der die Auswahl der Datenquelle ermöglicht":::
+
+1. Geben Sie einen geeigneten **Namen** für die Datenquelle an, wählen Sie das entsprechende **Azure-Abonnement**, den vorhandenen **Data Lake-Store Kontonamen** und die **Sammlung** aus, und klicken Sie auf **Übernehmen**
+
+    :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-source-details.png" alt-text="Screenshot mit den Details, die eingegeben werden müssen, um die Datenquelle zu registrieren":::
+
+1. Das ADLS Gen1-Speicherkonto wird unter der ausgewählten Sammlung angezeigt
+
+    :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-source-hierarchy.png" alt-text="Screenshot der Datenquelle, die der Sammlung zugeordnet ist, um die Überprüfung zu initiieren":::
+
+## <a name="scan"></a>Überprüfen
+
+### <a name="prerequisites-for-scan"></a>Voraussetzungen für eine Überprüfung
+
+Um Zugriff zum Überprüfen der Datenquelle zu haben, muss eine Authentifizierungsmethode im ADLS Gen1 Storage konfiguriert werden.
+Die folgenden Optionen werden unterstützt:
+
+> [!Note]
+> Wenn Sie für das Speicherkonto eine Firewall aktiviert haben, müssen Sie beim Einrichten einer Überprüfung als Authentifizierungsmethode Verwaltete Identität verwenden.
+
+* **Verwaltete Identität (empfohlen)** : Sobald das Azure Purview-Konto erstellt wurde, wird automatisch eine **verwaltete Systemidentität** in Azure AD Mandanten erstellt. Je nach Ressourcentyp sind bestimmte RBAC-Rollenzuweisungen erforderlich, damit die Azure Purview-MSI die Überprüfungen durchführen kann.
+
+* **Dienstprinzipal**: Bei dieser Methode können Sie einen neuen Dienstprinzipal erstellen oder einen vorhandenen Dienstprinzipal in Ihrem Azure Active Directory verwenden.
+
+### <a name="authentication-for-a-scan"></a>Authentifizierung für eine Überprüfung
+
+#### <a name="using-managed-identity-for-scanning"></a>Verwenden der verwalteten Identität für die Überprüfung
+
+Es ist wichtig, Ihrem Purview-Konto die Berechtigung zum Überprüfen der ADLS Gen1 Datenquelle zu erteilen. Sie können die Katalog-MSI auf der Ebene des Abonnements, der Ressourcengruppe oder der Ressource hinzufügen, je nachdem, wofür die Berechtigungen zum Überprüfen erteilt werden sollen.
 
 > [!Note]
 > Sie müssen Besitzer des Abonnements sein, um einer Azure-Ressource eine verwaltete Identität hinzufügen zu können.
 
 1. Suchen Sie im [Azure-Portal](https://portal.azure.com) das Abonnement, die Ressourcengruppe oder die Ressource (z. B. ein Azure Data Lake Storage Gen1-Speicherkonto), das den Katalog überprüfen soll.
+1. Klicken Sie auf **Übersicht**, und wählen Sie dann **Daten-Explorer** aus.
 
-2. Wählen Sie **Übersicht** und dann **Daten-Explorer** aus.
+    :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-data-explorer.png" alt-text="Screenshot: Speicherkonto":::
 
-   :::image type="content" source="./media/register-scan-adls-gen1/access-control.png" alt-text="Zugriffssteuerung auswählen":::
+1. Klicken Sie im oberen Navigationsbereich auf **Zugriff**
 
-3. Wählen Sie auf der oberen Navigationsleiste **Zugriff** aus.
+    :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-storage-access.png" alt-text="Screenshot: Daten-Explorer für das Speicherkonto":::
 
-   :::image type="content" source="./media/register-scan-adls-gen1/access.png" alt-text="Wählen Sie Zugriff aus.":::
+1. Klicken Sie auf **Auswahl** und fügen Sie _Purview Katalog_ hinzu in der **Auswahl für Benutzer oder Gruppe**.
+1. Wählen Sie die Berechtigungen **Lesen** und **Ausführen** aus. Achten Sie darauf, dass Sie in den Hinzufügeoptionen **Diesen Ordner und alle untergeordneten Ordner** sowie **Einen Zugriffsberechtigungseintrag und einen Standardberechtigungseintrag** auswählen, wie im folgenden Screenshot zu sehen. Klicken Sie im Menü „Einstellungen“ auf **OK**
 
-4. Wählen Sie **Hinzufügen**. Fügen Sie den **Purview-Katalog** unter „Benutzer oder Gruppen auswählen“ aus. Wählen Sie die Berechtigungen **Lesen** und **Ausführen** aus. Achten Sie darauf, dass Sie in den Hinzufügeoptionen **Diesen Ordner und alle untergeordneten Ordner** sowie **Ein Zugriffsberechtigungseintrag und ein Standardberechtigungseintrag** auswählen, wie im folgenden Screenshot zu sehen. Wählen Sie **OK**
-   :::image type="content" source="./media/register-scan-adls-gen1/gen1-managed-service-identity-authentication.png" alt-text="MSI-Authentifizierungsdetails"::: aus.
-   
+    :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-assign-permissions.png" alt-text="Screenshot: Details zum Zuweisen von Berechtigungen für das Purview-Konto":::
+
 > [!Tip]
-> Ein **Zugriffsberechtigungseintrag** ist ein Berechtigungseintrag für *aktuelle* Dateien und Ordner.
-> Ein **Standardberechtigungseintrag** ist ein Berechtigungseintrag, der von neuen Dateien und Ordnern *geerbt* wird.
-> 
-> Wenn Sie Berechtigungen nur für aktuell vorhandene Dateien erteilen möchten, **wählen Sie einen Zugriffsberechtigungseintrag aus**.
-> 
-> Wenn Sie die Berechtigung zum Überprüfen von zukünftig hinzugefügten Dateien und Ordnern erteilen möchten, **schließen Sie einen Standardberechtigungseintrag ein**.
-> 
-> Weitere Informationen finden Sie in der [Dokumentation zu Berechtigungen](../data-lake-store/data-lake-store-access-control.md#default-permissions-on-new-files-and-folders).
+> Ein **Zugriffsberechtigungseintrag** ist ein Berechtigungseintrag für _aktuelle_ Dateien und Ordner. Ein **Standardberechtigungseintrag** ist ein Berechtigungseintrag, der von neuen Dateien und Ordnern _geerbt_ wird.
+Wenn Sie Berechtigungen nur für aktuell vorhandene Dateien erteilen möchten, **wählen Sie einen Zugriffsberechtigungseintrag aus**.
+Wenn Sie die Berechtigung zum Überprüfen von zukünftig hinzugefügten Dateien und Ordnern erteilen möchten, **schließen Sie einen Standardberechtigungseintrag ein**.
 
-5. Falls für Ihren Schlüsseltresor noch keine Verbindung mit Purview hergestellt wurde, müssen Sie eine [neue Schlüsseltresorverbindung erstellen](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account).
+#### <a name="using-service-principal-for-scanning"></a>Verwenden des Dienstprinzipals für die Überprüfung
 
-6. [Erstellen Sie abschließend neue Anmeldeinformationen](manage-credentials.md#create-a-new-credential), indem Sie den Dienstprinzipal zum Einrichten Ihrer Überprüfung verwenden.
+##### <a name="creating-a-new-service-principal"></a>Erstellen eines neuen Dienstprinzipals
+
+Wenn Sie [einen neuen Dienstprinzipal erstellen](./create-service-principal-azure.md) müssen, müssen Sie eine Anwendung in Ihrem Azure AD Mandanten registrieren und den Zugriff auf den Dienstprinzipal in Ihren Datenquellen bereitstellen. Ihr Azure AD allgemeiner Administrator oder andere Rollen, z. B. Anwendungsadministrator, können diesen Vorgang ausführen.
+
+##### <a name="getting-the-service-principals-application-id"></a>Abrufen der Anwendungs-ID des Dienstprinzipals
+
+1. Kopieren Sie die **Anwendungs-ID (Client)** , die in der **Übersicht** über das bereits erstellten [_Dienstprinzipal_](./create-service-principal-azure.md) vorhanden ist
+
+    :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-sp-appl-id.png" alt-text="Screenshot: Anwendungs-ID (Client) für das Dienstprinzipal":::
+
+##### <a name="granting-the-service-principal-access-to-your-adls-gen1-account"></a>Gewähren des Zugriffs auf Ihr ADLS Gen1-Konto für den Dienstprinzipal
+
+Es ist wichtig, ihrem Dienstprinzipal die Berechtigung zum Überprüfen der ADLS Gen2 zu erteilen. Sie können die Katalog-MSI auf der Ebene des Abonnements, der Ressourcengruppe oder der Ressource hinzufügen, je nachdem, wofür die Berechtigungen zum Überprüfen erteilt werden sollen.
 
 > [!Note]
-> Nachdem Sie die Katalog-MSI in der Datenquelle hinzugefügt haben, warten Sie bis zu 15 Minuten, bis die Berechtigungen angewandt wurden, bevor Sie eine Überprüfung einrichten.
+> Sie müssen ein Besitzer des Abonnements sein, um einer Azure-Ressource ein Dienstprinzipal hinzufügen zu können.
 
-Nach etwa 15 Minuten sollte der Katalog über die erforderlichen Berechtigungen zum Überprüfen der Ressourcen verfügen.
+1. Geben Sie dem Dienstprinzipal Zugriff auf das Speicherkonto, indem Sie das Speicherkonto öffnen und auf **Übersicht** --> **Daten-Explorer** klicken
 
-### <a name="service-principal"></a>Dienstprinzipal
+    :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-data-explorer.png" alt-text="Screenshot: Speicherkonto":::
 
-Wenn Sie einen Dienstprinzipal verwenden möchten, müssen Sie zunächst anhand der folgenden Schritte einen erstellen:
+1. Klicken Sie im oberen Navigationsbereich auf **Zugriff**
 
-1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com).
+    :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-storage-access.png" alt-text="Screenshot: Daten-Explorer für das Speicherkonto":::
 
-2. Wählen Sie im Menü auf der linken Seite die Option **Azure Active Directory** aus.
+1. Klicken Sie in der **Auswahl Benutzer oder Gruppe** auf _Auswahl_ und fügen sie den **Dienstprinzipal** hinzu.
+1. Wählen Sie die Berechtigungen **Lesen** und **Ausführen** aus. Achten Sie darauf, dass Sie in den Hinzufügeoptionen **Diesen Ordner und alle untergeordneten Ordner** sowie **Einen Zugriffsberechtigungseintrag und einen Standardberechtigungseintrag** auswählen, wie im folgenden Screenshot zu sehen. Klicken Sie im Menü „Einstellungen“ auf **OK**
 
-3. Wählen Sie **App-Registrierungen** aus.
+    :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-sp-permissions.png" alt-text="Screenshot: Details zum Zuweisen von Berechtigungen für den Dienstprinzipal":::
 
-4. Wählen Sie **+ Registrierung einer neuen Anwendung** aus.
+### <a name="creating-the-scan"></a>Erstellen der Überprüfung
 
-5. Geben Sie einen Namen für die **Anwendung** ein (Dienstprinzipalname).
+1. Öffnen Sie Ihr **Purview-Konto,** und klicken Sie auf **Purview Studio öffnen**
 
-6. Wählen Sie **Nur Konten in diesem Organisationsverzeichnis** aus.
+    :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-purview-acct.png" alt-text="Screenshot: Öffnen von Purview Studio":::
 
-7. Wählen Sie als **Umleitungs-URI** die Option **Web** aus, und geben Sie die gewünschte URL ein. Hierbei muss es sich nicht um eine reale oder funktionsfähige URL handeln.
+1. Navigieren Sie zu **Datenzuordnungs** --> **quelle**, um die Sammlungshierarchie anzuzeigen
 
-8. Klicken Sie anschließend auf **Registrieren**.
+    :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-open-purview-studio.png" alt-text="Screenshot: Sammlungshierarchie":::
 
-9. Kopieren Sie die Werte für den Anzeigenamen und die Anwendungs-ID.
+1. Klicken Sie unter der zuvor registrierten **ADLS Gen1 Datenquelle** auf das Symbol **Neue Überprüfung**
 
-#### <a name="adding-the-purview-service-principal-to-an-azure-data-lake-storage-gen1-account"></a>Hinzufügen des Purview-Dienstprinzipals zu einem Azure Data Lake Storage Gen1-Konto
+    :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-new-scan.png" alt-text="Screenshot: Datenquelle mit dem neuen Scansymbol":::
 
-1. Suchen Sie im [Azure-Portal](https://portal.azure.com) das Abonnement, die Ressourcengruppe oder die Ressource (z. B. ein Azure Data Lake Storage Gen1-Speicherkonto), das den Katalog überprüfen soll.
+#### <a name="if-using-managed-identity"></a>Bei Zugriff mithilfe einer verwalteten Identität
 
-2. Wählen Sie **Übersicht** und dann **Daten-Explorer** aus.
+Geben Sie einen **Namen** für die Überprüfung an, wählen Sie unter **Anmeldeinformationen** die **MSI-Datei Purview** aus, wählen Sie die entsprechende Sammlung für die Überprüfung aus, und klicken Sie auf **Verbindung testen**. Klicken Sie bei einer erfolgreichen Verbindung auf **Weiter**.
 
-   :::image type="content" source="./media/register-scan-adls-gen1/access-control.png" alt-text="Zugriffssteuerung auswählen":::
+:::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-managed-identity.png" alt-text="Screenshot: Option Verwaltete Identität zum Ausführen der Überprüfung":::
 
-3. Wählen Sie auf der oberen Navigationsleiste **Zugriff** aus.
+#### <a name="if-using-service-principal"></a>Bei Verwendung eines Dienstprinzipals
 
-   :::image type="content" source="./media/register-scan-adls-gen1/access.png" alt-text="Wählen Sie Zugriff aus.":::
+1. Geben Sie einen **Namen** für die Überprüfung an, wählen Sie die entsprechende Sammlung für die Überprüfung aus, und klicken Sie auf **+ Neu** unter den **Anmeldeinformationen**
 
-4. Wählen Sie **Hinzufügen**. Fügen Sie unter „Benutzer oder Gruppe auswählen“ die **Dienstprinzipalanwendung** hinzu. Wählen Sie die Berechtigungen **Lesen** und **Ausführen** aus. Achten Sie darauf, dass Sie in den Hinzufügeoptionen **Diesen Ordner und alle untergeordneten Ordner** sowie **Ein Zugriffsberechtigungseintrag und ein Standardberechtigungseintrag** auswählen, wie im folgenden Screenshot zu sehen. Wählen Sie **OK**
-   :::image type="content" source="./media/register-scan-adls-gen1/gen1-service-principal-permissions.png" alt-text="Details zur Dienstprinzipalauthentifizierung"::: aus.
+    :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-sp.png" alt-text="Screenshot: Option Dienstprinzipal":::
 
-> [!Tip]
-> Ein **Zugriffsberechtigungseintrag** ist ein Berechtigungseintrag für *aktuelle* Dateien und Ordner.
-> Ein **Standardberechtigungseintrag** ist ein Berechtigungseintrag, der von neuen Dateien und Ordnern *geerbt* wird.
->
-> Wenn Sie Berechtigungen nur für aktuell vorhandene Dateien erteilen möchten, **wählen Sie einen Zugriffsberechtigungseintrag aus**.
->
-> Wenn Sie die Berechtigung zum Überprüfen von zukünftig hinzugefügten Dateien und Ordnern erteilen möchten, **schließen Sie einen Standardberechtigungseintrag ein**.
->
-> Weitere Informationen finden Sie in der [Dokumentation zu Berechtigungen](../data-lake-store/data-lake-store-access-control.md#default-permissions-on-new-files-and-folders).
+1. Wählen Sie die entsprechende **Schlüsseltresor-Verbindung** und den **geheimen Namen** aus, die beim Erstellen des _Dienstprinzipals_ verwendet wurden. Die **Dienstprinzipal-ID** ist die **Anwendungs-ID (Client)** , die wie oben angegeben kopiert wurde
 
-5. Falls für Ihren Schlüsseltresor noch keine Verbindung mit Purview hergestellt wurde, müssen Sie eine [neue Schlüsseltresorverbindung erstellen](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account).
+    :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-sp-key-vault.png" alt-text="Screenshot: Option Schlüsseltresor des Dienstprinzipals":::
 
-6. [Erstellen Sie abschließend neue Anmeldeinformationen](manage-credentials.md#create-a-new-credential), indem Sie den Dienstprinzipal zum Einrichten Ihrer Überprüfung verwenden.
+1. Klicken Sie auf **Verbindung testen**. Klicken Sie bei einer erfolgreichen Verbindung auf **Weiter**
 
-## <a name="register-azure-data-lake-storage-gen1-data-source"></a>Registrieren von Azure Data Lake Storage Gen1 als Datenquelle
+    :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-sp-test-connection.png" alt-text="Screenshot, der die Testverbindung für den Dienstprinzipal zeigt":::
 
-Gehen Sie wie folgt vor, um in Ihrem Datenkatalog ein neues ADLS Gen1-Konto zu registrieren:
-
-1. Navigieren Sie zu Ihrem Purview-Datenkatalog.
-2. Wählen Sie im linken Navigationsbereich **Data Map** aus.
-3. Wählen Sie **Registrieren** aus.
-4. Wählen Sie unter **Register sources** (Quellen registrieren) die Option **Azure Data Lake Storage Gen1** aus. 
-5. Wählen Sie **Weiter** aus.
-
-Führen Sie auf dem Bildschirm „Register sources (Azure Data Lake Storage Gen1)“ (Quellen registrieren (Azure Data Lake Storage Gen1)) die folgenden Schritte aus:
-
-1. Geben Sie unter **Name** einen Namen ein, unter dem die Datenquelle im Katalog aufgeführt werden soll.
-2. Wählen Sie Ihr Abonnement aus, um die Speicherkonten zu filtern.
-3. Wählen Sie ein Speicherkonto aus.
-4. Wählen Sie eine Sammlung aus, oder erstellen Sie eine neue Sammlung (optional).
-5. Wählen Sie **Registrieren** aus, um die Datenquelle zu registrieren.
-
-:::image type="content" source="media/register-scan-adls-gen1/register-sources.png" alt-text="Optionen für die Quellenregistrierung" border="true":::
-
-## <a name="creating-and-running-a-scan"></a>Erstellen und Ausführen einer Überprüfung
-
-Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
-
-1. Wählen Sie im linken Bereich in [Purview Studio](https://web.purview.azure.com/resource/) die Registerkarte **Data Map** aus.
-
-1. Wählen Sie die Azure Data Lake Storage Gen1-Quelle aus, die Sie registriert haben.
-
-1. Wählen Sie **Neue Überprüfung** aus.
-
-1. Wählen Sie die Anmeldeinformationen für die Verbindungsherstellung mit Ihrer Datenquelle aus.
-
-   :::image type="content" source="media/register-scan-adls-gen1/set-up-scan-adls-gen1.png" alt-text="Einrichten der Überprüfung":::
+### <a name="scoping-and-running-the-scan"></a>Definieren und Ausführen der Überprüfung
 
 1. Sie können den Bereich für Ihre Überprüfung auf bestimmte Ordner und Unterordner festlegen, indem Sie die entsprechenden Elemente in der Liste auswählen.
 
-   :::image type="content" source="media/register-scan-adls-gen1/gen1-scope-your-scan.png" alt-text="Festlegen des Bereichs für Ihre Überprüfung":::
+    :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-scope-scan.png" alt-text="Festlegen des Bereichs für Ihre Überprüfung":::
 
 1. Wählen Sie dann einen Überprüfungsregelsatz aus. Sie können zwischen der Standardeinstellung des Systems, den vorhandenen benutzerdefinierten Regelsätzen und der Inlineerstellung eines neuen Regelsatzes wählen.
 
-   :::image type="content" source="media/register-scan-adls-gen1/select-scan-rule-set.png" alt-text="Überprüfungsregelsatz":::
+    :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-scan-rule-set.png" alt-text="Überprüfungsregelsatz":::
+
+1. Wenn Sie einen neuen _Überprüfungsregelsatz_ erstellen,wählen Sie die **Dateitypen** aus, die in die Überprüfungsregel aufgenommen werden sollen. 
+
+    :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-file-types.png" alt-text="Überprüfen von Regelsatz-Dateitypen":::
+
+1. Sie können die **Klassifizierungsregeln** auswählen, die in die Überprüfungsregel aufgenommen werden sollen
+
+    :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-classification-rules.png" alt-text="Überprüfen von Klassifizierungsregeln":::
+
+    :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-select-scan-rule-set.png" alt-text="Überprüfen der Regelauswahl":::
 
 1. Wählen Sie den Auslöser für die Überprüfung. Sie können einen Zeitplan einrichten oder die Überprüfung einmalig ausführen.
 
-   :::image type="content" source="media/register-scan-adls-gen1/trigger-scan.png" alt-text="trigger":::
+    :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-scan-trigger.png" alt-text="Auslöser für die Überprüfung":::
+
+    :::image type="content" source="media/register-scan-adls-gen1/register-register-adls-gen1-scan-trigger-selection.png" alt-text="Auswahl des Überprüfungsauslösers":::
 
 1. Sehen Sie sich Ihre Überprüfung noch einmal an, und wählen Sie dann **Speichern und ausführen** aus.
 
-[!INCLUDE [view and manage scans](includes/view-and-manage-scans.md)]
+    :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-review-scan.png" alt-text="Überprüfungs-Scan":::
+
+### <a name="viewing-scan"></a>Anzeigen der Überprüfung
+
+1. Navigieren Sie zur _Datenquelle_ in der _Sammlung_ und klicken Sie auf **Details anzeigen**, um den Status der Überprüfung zu checken
+
+    :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-view-scan.png" alt-text="Überprüfung anzeigen":::
+
+1. Die Scandetails geben den Fortschritt der Überprüfung im **Status der letzten Ausführung** an sowie die Anzahl der _gescannten_ und _klassifizierten_ Objekte
+
+    :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-scan-details.png" alt-text="Überprüfungsdetails anzeigen":::
+
+1. Der **Status Letzte Ausführung** wird in **In Bearbeitung** und anschließend in **Abgeschlossen** aktualisiert, sobald die gesamte Überprüfung erfolgreich ausgeführt wurde
+
+    :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-scan-in-progress.png" alt-text="Anzeigen der Überprüfung in Bearbeitung":::
+
+    :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-scan-completed.png" alt-text="Die abgeschlossene Überprüfung anzeigen":::
+
+### <a name="managing-scan"></a>Verwalten der Überprüfung
+
+Überprüfungen können verwaltet oder nach Abschluss erneut ausgeführt werden.
+
+1. Klicken Sie auf den **Überprüfungsnamen**, um die Überprüfung zu verwalten
+
+    :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-manage-scan.png" alt-text="Verwalten der Überprüfung":::
+
+1. Sie können _die Überprüfung erneut ausführen_, _die Überprüfung bearbeiten_ oder _die Überprüfung löschen_  
+
+    :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-manage-scan-options.png" alt-text="Verwalten von Überprüfungsoptionen":::
+
+    > [!NOTE]
+    > * Beim Löschen Ihrer Überprüfung werden nicht die Katalogressourcen aus den vorherigen Überprüfungen gelöscht.
+    > * Die Ressource wird nicht mehr mit Schemaänderungen aktualisiert, wenn die Quelltabelle geändert wurde und Sie die Quelltabelle nach dem Bearbeiten der Beschreibung auf der Registerkarte „Schema“ von Purview erneut überprüfen.
+
+1. Sie können eine _inkrementelle Überprüfung_ oder eine _vollständige Überprüfung_ erneut ausführen.
+
+    :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-full-inc-scan.png" alt-text="Verwalten der vollständigen oder inkrementellen Überprüfung":::
+
+    :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-manage-scan-results.png" alt-text="Ergebnisse der Überprüfung verwalten":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Browsen im Azure Purview-Datenkatalog](how-to-browse-catalog.md)
-- [Suchen im Azure Purview-Datenkatalog](how-to-search-catalog.md)
+Nachdem Sie Ihre Quelle registriert haben, halten Sie sich an die folgenden Anleitungen, um mehr über Purview und Ihre Daten zu erfahren.
+
+- [Dateneinblicke in Azure Purview](concept-insights.md)
+- [Datenherkunft in Azure Purview](catalog-lineage-user-guide.md)
+- [Data Catalog suchen](how-to-search-catalog.md)
