@@ -10,18 +10,19 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.author: wellsi
-ms.openlocfilehash: cf0580c96f5bf78f0444b2bb39088f2a417fd658
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 6fe1739006f3f5b9943076c917cc2e3ef5dc2efa
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "95025060"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131024560"
 ---
 # <a name="how-to-configure-a-microphone-array"></a>Konfigurieren eines Mikrofonarrays
 
-In diesem Artikel erfahren Sie, wie Sie ein [Mikrofonarray](./speech-devices-sdk-microphone.md) konfigurieren. Er umfasst die Einstellung des Arbeitswinkels und die Auswahl, welches Mikrofon für das Speech Devices SDK verwendet wird.
+In diesem Artikel erfahren Sie, wie Sie ein [Mikrofonarray](./speech-sdk-microphone.md) konfigurieren. Er umfasst die Einstellung des Arbeitswinkels und die Auswahl, welches Mikrofon für das Speech Devices SDK verwendet wird.
 
-Das Speech Devices SDK funktioniert am besten mit einem Mikrofonarray, das nach [unseren Richtlinien](./speech-devices-sdk-microphone.md) entwickelt wurde. Die Konfiguration des Mikrofonarrays kann über das Betriebssystem oder durch eine der folgenden Methoden bereitgestellt werden.
+Das Speech Devices SDK funktioniert am besten mit einem Mikrofonarray, das nach [unseren Richtlinien](./speech-sdk-microphone.md) entwickelt wurde. Die Konfiguration des Mikrofonarrays kann über das Betriebssystem oder durch eine der folgenden Methoden bereitgestellt werden.
 
 Das Speech Devices SDK unterstützte Mikrofonarrays anfänglich durch Auswählen aus einem festen Satz von Konfigurationen.
 

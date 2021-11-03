@@ -7,12 +7,13 @@ ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: conceptual
 ms.date: 08/18/2021
-ms.openlocfilehash: 42162519e9e8f3835498d8955adbd7c254775dd9
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: af12878750c6976a3ce3b459d9cf1ff6b262c112
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129211713"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131024029"
 ---
 # <a name="scans-and-ingestion-in-azure-purview"></a>Überprüfungen und Erfassung in Azure Purview
 
@@ -38,7 +39,7 @@ Nach Möglichkeit ist eine verwaltete Identität die bevorzugte Authentifizierun
 
 Beim Überprüfen einer Quelle haben Sie die Wahl, die gesamte Datenquelle zu überprüfen oder nur bestimmte Entitäten (Ordner/Tabellen) auszuwählen, die überprüft werden sollen. Die verfügbaren Optionen hängen von der zu überprüfenden Quelle ab und können sowohl für einmalige als auch für geplante Überprüfungen festgelegt werden.
 
-Wenn Sie zum Beispiel [eine Überprüfung für eine Azure SQL-Datenbank-Instanz erstellen und durchführen](register-scan-azure-sql-database.md#creating-and-running-a-scan), können Sie auswählen, welche Tabellen überprüft werden sollen, oder die gesamte Datenbank auswählen.
+Wenn Sie zum Beispiel [eine Überprüfung für eine Azure SQL-Datenbank-Instanz erstellen und durchführen](register-scan-azure-sql-database.md#creating-the-scan), können Sie auswählen, welche Tabellen überprüft werden sollen, oder die gesamte Datenbank auswählen.
 
 ### <a name="scan-rule-set"></a>Überprüfungsregelsatz
 
@@ -74,5 +75,5 @@ Die während des Überprüfungsprozesses erfassten technischen Metadaten oder Kl
 Weitere Informationen oder spezielle Anweisungen zum Überprüfen von Quellen finden Sie unter den nachstehenden Links.
 
 * Informationen zu Ressourcensätzen finden Sie in unserem [Artikel zu Ressourcensätzen](concept-resource-sets.md).
-* [Registrieren und Überprüfen einer Azure SQL-Datenbank-Instanz](register-scan-azure-sql-database.md#creating-and-running-a-scan)
+* [Registrieren und Überprüfen einer Azure SQL-Datenbank-Instanz](register-scan-azure-sql-database.md#creating-the-scan)
 * [Datenherkunft in Azure Purview](catalog-lineage-user-guide.md)

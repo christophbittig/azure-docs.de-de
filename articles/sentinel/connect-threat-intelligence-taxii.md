@@ -13,14 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2021
 ms.author: yelevin
-ms.openlocfilehash: 1335d10b1fd46b24326636e7caece4583c84f523
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: a3e0381654e8a4d80c9eccffd6e02207b997fad8
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123253517"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131004357"
 ---
 # <a name="connect-azure-sentinel-to-stixtaxii-threat-intelligence-feeds"></a>Verbinden von Azure Sentinel mit STIX/TAXII-Threat Intelligence-Feeds
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 [!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 

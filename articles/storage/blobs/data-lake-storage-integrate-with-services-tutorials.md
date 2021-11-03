@@ -7,12 +7,12 @@ ms.author: normesta
 ms.date: 10/06/2021
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 1c1849117b2e27198d7fb0c76590cb1cf14f0891
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: e25a4210e41505d6b8af2c5c530bdb806609f3db
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129619348"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131013534"
 ---
 # <a name="tutorials-that-use-azure-services-with-azure-data-lake-storage-gen2"></a>Tutorials zur Verwendung von Azure-Diensten mit Azure Data Lake Storage Gen2
 
@@ -37,7 +37,7 @@ Dieser Artikel enthält Links zu Tutorials, die Ihnen zeigen, wie Sie verschiede
 | Azure Cognitive Search | [Indizieren von Dokumenten in Azure Data Lake Storage Gen2](../../search/search-howto-index-azure-data-lake-storage.md) |
 
 > [!NOTE]
-> Diese Tabelle enthält nicht die komplette Liste der Azure-Dienste, die Data Lake Storage Gen2 unterstützen. Eine Liste der unterstützten Azure-Dienste mit deren Unterstützungsgrad finden Sie unter [Azure-Dienste, die Azure Data Lake Storage Gen2 unterstützen](data-lake-storage-supported-azure-services.md). Informationen dazu, wie Dienste in Kategorien wie „Erfassung“, „Download“, „Verarbeitung“ und „Visualisierung“ organisiert sind, finden Sie unter [Erfassung, Verarbeitung und Analyse](data-lake-storage-data-scenarios.md#ingest-process-and-analyze).
+> Diese Tabelle enthält nicht die komplette Liste der Azure-Dienste, die Data Lake Storage Gen2 unterstützen. Eine Liste der unterstützten Azure-Dienste mit deren Unterstützungsgrad finden Sie unter [Azure-Dienste, die Azure Data Lake Storage Gen2 unterstützen](data-lake-storage-supported-azure-services.md). Informationen dazu, wie Dienste in Kategorien wie „Erfassung“, „Download“, „Verarbeitung“ und „Visualisierung“ organisiert sind, finden Sie unter [Erfassung, Verarbeitung und Analyse](./data-lake-storage-best-practices.md#ingest-process-and-analyze).
 
 ## <a name="see-also"></a>Siehe auch
 

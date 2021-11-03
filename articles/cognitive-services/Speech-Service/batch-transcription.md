@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/17/2021
 ms.author: wolfma
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d8b201b3717d3ba82882131d49add020a8e6b2a9
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: f5f8533c5962b21ad1c23e3b618b66fae73bb8ab
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340466"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131056721"
 ---
 # <a name="how-to-use-batch-transcription"></a>Verwenden von Batch-Transkription
 
@@ -299,7 +299,7 @@ Die Ausgabe der Transkription mit aktivierter Diarisierung enthält einen `Speak
 
 Um die Diarisierung anzufordern, fügen Sie `true` die `diarizationEnabled`-Eigenschaft wie in der folgenden HTTP-Anforderung hinzu.
 
- ```json
+```json
 {
   "contentUrls": [
     "<URL to an audio file to transcribe>",

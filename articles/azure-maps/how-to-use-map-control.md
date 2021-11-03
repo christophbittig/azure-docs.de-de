@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 ms.custom: devx-track-js
-ms.openlocfilehash: b46a0145f1b73520c2416bbc0c20fb3b805c17fb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d88cdf68ddf1abfc8beb3d3357943d5c08c94af9
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355790"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131006751"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Verwenden des Azure Maps-Kartensteuerelements
 
@@ -88,7 +88,7 @@ Sie können eine Karte in eine Webseite einbetten, indem Sie die clientseitige J
 
     Wenn Sie einen Abonnementschlüssel für die Authentifizierung nutzen, kopieren Sie das folgende Skriptelement und fügen Sie es innerhalb des `<head>`-Elements und unterhalb des ersten `<script>`-Elements ein. Ersetzen Sie `<Your Azure Maps Key>` durch Ihren primären Abonnementschlüssel für Azure Maps.
 
-     ```HTML
+    ```html
     <script type="text/javascript">
         function InitMap()
         {

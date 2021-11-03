@@ -10,12 +10,12 @@ author: AlainDormehlMSFT
 ms.author: aldorme
 ms.reviewer: mathoma, wiassaf
 ms.date: 10/13/2021
-ms.openlocfilehash: 333b6faabd6603f09c4522f09a18b52c5503f357
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 443e7e20db1c2be013622b6ba34a1ac22cc9a9a4
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130004633"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130244808"
 ---
 # <a name="configure-streaming-export-of-azure-sql-database-and-sql-managed-instance-diagnostic-telemetry"></a>Konfigurieren des Streamingexports von Diagnosetelemetrie aus Azure SQL Database und SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -47,7 +47,7 @@ Zusätzlich zum Streamen des Exports des Intelligent Insights-Protokolls können
 | [Deadlocks](#deadlocks-dataset): Enthält Informationen zu Deadlockereignissen für eine Datenbank. | Ja | Nein |
 | [AutomaticTuning](#automatic-tuning-dataset): Enthält Informationen zu automatischen Optimierungsempfehlungen für eine Datenbank. | Ja | Nein |
 | [SQLInsights](#intelligent-insights-dataset): Enthält Intelligent Insights-Informationen zur Leistung für eine Datenbank. Weitere Informationen finden Sie unter [Intelligent Insights](intelligent-insights-overview.md). | Ja | Ja |
-| Workloadverwaltung: (*Nur für Azure Synapse verfügbar*) Weitere Informationen finden Sie unter [Azure Synapse Analytics – Überwachung des Arbeitsauslastungsverwaltungsportals](/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor).| Nein | Nein | 
+| Workloadverwaltung: (*Nur für Azure Synapse verfügbar*) Weitere Informationen finden Sie unter [Azure Synapse Analytics – Überwachung des Arbeitsauslastungsverwaltungsportals](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor.md).| Nein | Nein | 
 
 > [!NOTE]
 > Diagnoseeinstellungen können für die **Systemdatenbanken** wie `master`, `msdb`, `model` „resource“ und `tempdb` nicht konfiguriert werden.
@@ -80,7 +80,7 @@ Sie können die Protokollierung von Metriken und Diagnosetelemetriedaten mit ein
 
 - Azure-Portal
 - PowerShell
-- Azure CLI
+- Azure-Befehlszeilenschnittstelle
 - Azure Monitor-REST-API
 - Azure Resource Manager-Vorlage
 

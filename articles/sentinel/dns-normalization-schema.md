@@ -6,7 +6,6 @@ cloud: na
 documentationcenter: na
 author: batamig
 manager: rkarlin
-ms.assetid: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.workload: na
@@ -15,14 +14,17 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 06/15/2021
 ms.author: bagol
-ms.openlocfilehash: 4bdb65fddfe7f72407c432fd03cce0558637ab39
-ms.sourcegitcommit: 079426f4980fadae9f320977533b5be5c23ee426
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: f2aae24d6a3e4fff70443107d769f0e23c82bfbc
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129419010"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131046981"
 ---
 # <a name="azure-sentinel-dns-normalization-schema-reference-public-preview"></a>Referenz zum DNS-Normalisierungsschema von Azure Sentinel (Public Preview)
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 Das DNS-Informationsmodell dient zur Beschreibung von Ereignissen, die von einem DNS-Server oder einem DNS-Sicherheitssystem gemeldet werden. Es wird von Azure Sentinel verwendet, um quellenagnostische Analysen zu ermöglichen.
 
@@ -93,7 +95,7 @@ Die Parser `im` und `vim*` unterstützen [Filterparameter](normalization-about-p
 
 Die folgenden Filterparameter sind verfügbar:
 
-| Name     | Typ      | Beschreibung |
+| Name     | type      | Beschreibung |
 |----------|-----------|-------------|
 | **StartTime** | datetime | Filtert nur DNS-Abfragen, die zu oder nach dieser Zeit ausgeführt wurden. |
 | **EndTime** | datetime | Filtert nur DNS-Abfragen, deren Ausführung zu oder vor diesem Zeitpunkt beendet wurde. |
@@ -320,11 +322,11 @@ Sie können auch eine zusätzliche KQL-Funktion namens `_imDNS<vendor>Flags_` be
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie unter
+Weitere Informationen finden Sie unter:
 
 - [Normalisierung in Azure Sentinel](normalization.md)
 - [Azure Sentinel: Referenz zum Schema zur Normalisierung der Authentifizierung (Public Preview)](authentication-normalization-schema.md)
-- [Azure Sentinel: Schemareferenz zur Datennormalisierung](normalization-schema.md)
+- [Azure Sentinel: Schemareferenz zur Datennormalisierung](./network-normalization-schema.md)
 - [Azure Sentinel: Referenz zum Schema zur Normalisierung von Dateiereignissen (Public Preview)](file-event-normalization-schema.md)
 - [Azure Sentinel: Referenz zum Schema zur Normalisierung von Prozessereignissen](process-events-normalization-schema.md)
 - [Azure Sentinel: Referenz zum Registrierungsereignis-Normalisierungsschema (Öffentliche Vorschau)](registry-event-normalization-schema.md)

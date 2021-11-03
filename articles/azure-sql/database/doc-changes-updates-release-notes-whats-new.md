@@ -7,16 +7,16 @@ author: MashaMSFT
 ms.author: mathoma
 ms.service: sql-database
 ms.subservice: service-overview
-ms.custom: sqldbrb=2, references_regions
+ms.custom: sqldbrb=2, references_regions, ignite-fall-2021
 ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/21/2021
-ms.openlocfilehash: 11e76fc7a6b84076f3161ec622e7fe8b63404169
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: 077d022c5d996f5c495c38e4789a37bf234d093b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130176109"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131006219"
 ---
 # <a name="whats-new-in-azure-sql-database"></a>Neuigkeiten in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -33,17 +33,16 @@ In der folgenden Tabelle sind die Features von Azure SQL-Datenbank aufgeführt, 
 
 | Funktion | Details |
 | ---| --- |
-| [Reine Azure AD-Authentifizierung](authentication-azure-ad-only-authentication.md) | Sie können Azure SQL-Datenbank so konfigurieren, dass die Authentifizierung nur über Azure Active Directory möglich ist. | 
 | [Erfassung geänderter Daten](/sql/relational-databases/track-changes/about-change-data-capture-sql-server) | Mit Change Data Capture (CDC) können Sie alle Änderungen nachverfolgen, die an einer Datenbank vorgenommen werden. Obwohl dieses Feature bereits seit einiger Zeit für SQL Server verfügbar ist, befindet sich die Verwendung mit Azure SQL-Datenbank derzeit in der Vorschauphase. |
 | [Elastische Aufträge](elastic-jobs-overview.md) | Mit dem Feature für elastische Aufträge wird der SQL Server-Agent ersetzt, wenn Azure SQL-Datenbank als PaaS-Angebot genutzt wird.  |
 | [Elastische Abfragen](elastic-query-overview.md) | Das Feature für elastische Abfragen ermöglicht datenbankübergreifende Abfragen in Azure SQL-Datenbank. |
-| [Elastische Transaktionen](elastic-transactions-overview.md) | Elastische Transaktionen können auf Clouddatenbanken in Azure SQL-Datenbank und Azure SQL Managed Instance verteilt werden. |
+| [Elastische Transaktionen](elastic-transactions-overview.md) | Elastische Transaktionen ermöglichen die Ausführung von Transaktionen, die auf Cloud-Datenbanken in der Azure SQL-Datenbank verteilt sind. |
 | [Ledger](ledger-overview.md) | Mit dem Feature „Ledger“ von Azure SQL-Datenbank können Sie Dritten gegenüber (z. B. Prüfern oder anderen Geschäftspartnern) kryptografisch nachweisen, dass Ihre Daten nicht manipuliert wurden. | 
 | [Wartungsfenster](maintenance-window.md)| Mithilfe des Features „Wartungsfenster“ können Sie einen Wartungszeitplan für Azure SQL-Datenbank konfigurieren. |
 | [Abfrage-Editor im Azure-Portal](connect-query-portal.md) | Mit dem Abfrage-Editor im Portal können Sie Abfragen für Azure SQL-Datenbank direkt über das [Azure-Portal](https://portal.azure.com) ausführen.|
 | [Abfragespeicherhinweise](/sql/relational-databases/performance/query-store-hints?view=azuresqldb-current&preserve-view=true) | Verwenden Sie Abfragehinweise, um die Abfrageausführung über die OPTION-Klausel zu optimieren. |
 | [Azure SQL-Analyse](../../azure-monitor/insights/azure-sql.md)|Azure SQL-Analyse ist eine erweiterte Cloudüberwachungslösung zum bedarfsorientierten und abonnementübergreifenden Überwachen der Leistung Ihrer gesamten Azure SQL-Datenbankinstanzen in einer zentralen Ansicht. Azure SQL-Analyse erfasst und visualisiert wichtige Leistungsmetriken und umfasst integrierte Logik für die Problembehandlung in Bezug auf die Leistung.|
-| [Erkenntnisse zu SQL](../../azure-monitor/insights/sql-insights-overview.md) |  Bei SQL Insights handelt es sich um eine umfassende Lösung zur Überwachung jeglichem Produkt der Azure SQ- Familie. SQL Insights verwendet dynamische Managementansichten, um die Daten offenzulegen, die Sie zur Überwachung des Zustands, zur Diagnose von Problemen und zur Leistungsoptimierung benötigen.| 
+| [Erkenntnisse zu SQL](../../azure-monitor/insights/sql-insights-overview.md) |  Bei SQL Insights handelt es sich um eine umfassende Lösung zur Überwachung jeglichem Produkt der Azure SQ- Familie. SQL Insights verwendet dynamische Managementansichten, um die Daten offenzulegen, die Sie zur Überwachung des Zustands, zur Diagnose von Problemen und zur Leistungsoptimierung benötigen.|
 | [Zonenredundante Konfiguration für die Ebene „Universell“](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) | Das Feature für eine zonenredundante Konfiguration nutzt [Azure-Verfügbarkeitszonen](../../availability-zones/az-overview.md#availability-zones), um Datenbanken über mehrere physische Standorte innerhalb einer Azure-Region hinweg zu replizieren. Durch die Auswahl der [Zonenredundanz](high-availability-sla.md#general-purpose-service-tier-zone-redundant-availability-preview) können Sie dafür sorgen, dass Ihre Datenbanken vom Typ „Universell“ und Pools für elastische Datenbanken bei einer viel größeren Anzahl von Fehlern (u. a. schwerwiegende Ausfälle des Rechenzentrums) resilient sind, ohne dass dazu die Anwendungslogik geändert werden muss. Das Feature ist derzeit nur für die Ebene „Universell“ verfügbar. | 
 |||
 
@@ -53,20 +52,29 @@ In der folgenden Tabelle sind die Features von Azure SQL-Datenbank aufgeführt, 
 
 | Feature | GA-Monat | Details |
 | ---| --- |--- |
+| [Azure Active Directory – nur Authentifizierung](authentication-azure-ad-only-authentication.md) | November 2021 | Sie können Azure SQL-Datenbank so konfigurieren, dass die Authentifizierung nur über Azure Active Directory möglich ist. | 
 | [AAD-Dienstprinzipal](authentication-aad-service-principal.md) |  September 2021 | Azure Active Directory (Azure AD) unterstützt die Benutzererstellung in Azure SQL-Datenbank im Auftrag von Azure AD-Anwendungen (Dienstprinzipale).| 
 | [Überwachen von Verwaltungsvorgängen](../database/auditing-overview.md#auditing-of-microsoft-support-operations) |  März 2021 | Mit den Azure SQL-Überwachungsfunktionen können Sie Vorgänge überwachen, die von Microsoft-Supporttechnikern durchgeführt werden, wenn diese während einer Supportanfrage auf Ihre SQL-Ressourcen zugreifen müssen. Dies sorgt für mehr Transparenz unter Ihren Mitarbeitern. | 
 |||| 
 
+
 ## <a name="documentation-changes"></a>Änderungen an der Dokumentation
 
 Hier erfahren Sie mehr über wichtige Änderungen an der Dokumentation zu Azure SQL-Datenbank.
+
+### <a name="november-2021"></a>November 2021
+
+| Änderungen | Details |
+| --- | --- |
+| **Reine Azure AD-Authentifizierung** | Das Beschränken der Authentifizierung für Ihre Azure SQL-Datenbank auf Azure Active Directory-Benutzer ist jetzt allgemein verfügbar. Weitere Informationen finden Sie unter [Authentifizierung nur über Azure AD](../database/authentication-azure-ad-only-authentication.md). | 
+| | | 
 
 
 ### <a name="october-2021"></a>Oktober 2021
 
 | Änderungen | Details |
 | --- | --- |
-|**Unterteilung der Informationen zu neuen Funktionen** | Der zuvor kombinierte Artikel zu den **Neuigkeiten** wurde nach Produkt unterteilt: [Neuigkeiten in Azure SQL-Datenbank](doc-changes-updates-release-notes-whats-new.md) und [Neuigkeiten in SQL Managed Instance](../managed-instance/doc-changes-updates-release-notes-whats-new.md). Dadurch können Sie leichter erkennen, welche Features sich derzeit in der Vorschau befinden bzw. allgemein verfügbar sind und welche wichtigen Änderungen an der Dokumentation vorgenommen wurden. Darüber hinaus wurden die Informationen zu [bekannten Problemen in SQL Managed Instance](../managed-instance/doc-changes-updates-known-issues.md) auf eine eigene Seite verschoben.  | 
+|**Unterteilung der Informationen zu neuen Funktionen** | Der zuvor kombinierte Artikel zu den **Neuigkeiten** wurde nach Produkt unterteilt: [Neuigkeiten in Azure SQL-Datenbank](doc-changes-updates-release-notes-whats-new.md) und [Neuigkeiten in SQL Managed Instance](../managed-instance/doc-changes-updates-release-notes-whats-new.md). Dadurch können Sie leichter erkennen, welche Features sich derzeit in der Vorschau befinden bzw. allgemein verfügbar sind und welche wichtigen Änderungen an der Dokumentation vorgenommen wurden. Darüber hinaus wurden der Inhalt über [bekannte Probleme in SQL Managed Instance](../managed-instance/doc-changes-updates-known-issues.md) auf eine eigene Seite verschoben.  | 
 
 ### <a name="september-2021"></a>September 2021
 

@@ -4,15 +4,15 @@ description: Hier erfahren Sie, wie Sie ein SaaS-Angebot in Microsoft AppSource 
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
-ms.date: 10/08/2021
+ms.date: 10/25/2021
 author: saasguide
 ms.author: souchak
-ms.openlocfilehash: c420a2fd947e32acb0cce9a6ce4a73ddd1d2a3bd
-ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
+ms.openlocfilehash: 2defbfba47f40780be507636e300a4d0859f4864
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129729138"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131048317"
 ---
 # <a name="saas-fulfillment-apis-version-2-in-the-commercial-marketplace"></a>SaaS-Fulfillment-APIs (Version 2) im kommerziellen Marketplace
 
@@ -39,14 +39,16 @@ Ablauf für die Kontoerstellung:
 
 Ein Beispiel eines solchen Aufrufs ist `https://contoso.com/signup?token=<blob>`, wobei die URL der Angebotsseite für dieses SaaS-Angebot im Partner Center als `https://contoso.com/signup` konfiguriert ist. Dieses Token stellt dem Herausgeber eine ID bereit, die den SaaS-Kauf und den Kunden eindeutig identifiziert.
 
->[!NOTE]
->Der Herausgeber wird erst dann über den SaaS-Kauf benachrichtigt, nachdem der Kunde den Konfigurationsprozess auf Microsoft-Seite eingeleitet hat.
+[!INCLUDE [pound-sign-note](../includes/pound-sign-note.md)]
 
 Die URL der Angebotsseite muss rund um die Uhr aktiv sein und jederzeit neue Aufrufe von Microsoft empfangen können. Wenn die Angebotsseite nicht mehr verfügbar ist, können sich Kunden nicht mehr für den SaaS-Dienst registrieren und mit dessen Nutzung beginnen.
 
 Als Nächstes muss der Herausgeber das *-Token* an Microsoft zurückgeben, indem er die [SaaS-Auflösungs-API](#resolve-a-purchased-subscription) aufruft und das Token als Wert des Headerparameters `x-ms-marketplace-token header` eingibt. Durch den Aufruf der Auflösungs-API wird das Token durch die Details des SaaS-Kaufs ersetzt, z. B. eindeutige ID des Kaufs, ID des erworbenen Angebots und ID des erworbenen Plans.
 
 Auf der Angebotsseite sollte der Kunde über einmaliges Anmelden (Single Sign-On, SSO) bei Azure Active Directory (Azure AD) beim neuen oder vorhandenen SaaS-Konto angemeldet sein.
+
+>[!NOTE]
+>Der Herausgeber wird erst dann über den SaaS-Kauf benachrichtigt, nachdem der Kunde den Konfigurationsprozess auf Microsoft-Seite eingeleitet hat.
 
 Der Herausgeber muss SSO implementieren, um die von Microsoft für diesen Flow benötigte Benutzeroberfläche bereitzustellen. Stellen Sie sicher, dass Sie beim Konfigurieren von SSO eine mehrinstanzenfähige Azure AD-Anwendung verwenden und sowohl Geschäfts-, Schul- oder Unikonten als auch persönliche Microsoft-Konten zulassen. Diese Anforderung gilt nur für die Angebotsseite und Benutzer, die zum SaaS-Dienst umgeleitet werden, wenn sie bereits mit Microsoft-Anmeldeinformationen angemeldet sind. SSO ist nicht für alle Anmeldungen beim SaaS-Dienst erforderlich.
 

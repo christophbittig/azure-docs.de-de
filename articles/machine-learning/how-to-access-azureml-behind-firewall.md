@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
-ms.date: 09/14/2021
-ms.custom: devx-track-python
-ms.openlocfilehash: 50c8a38a5acbfea119770a5ea81a21d51fd4ea83
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.date: 10/21/2021
+ms.custom: devx-track-python, ignite-fall-2021
+ms.openlocfilehash: 075c6404acbb4e2d74967873e3a8359076c1a228
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129424538"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131056526"
 ---
 # <a name="configure-inbound-and-outbound-network-traffic"></a>Konfigurieren von ein- und ausgehendem Netzwerkdatenverkehr
 
@@ -221,6 +221,45 @@ Wenn Sie Azure Kubernetes Service mit Azure Machine Learning verwenden, muss der
 * Allgemeine Anforderungen für eingehenden/ausgehenden Datenverkehr für AKS, wie im Artikel [Einschränken des ausgehenden Datenverkehrs in Azure Kubernetes Service](../aks/limit-egress-traffic.md) beschrieben.
 * __Ausgehend__ an mcr.microsoft.com.
 * Wenn Sie ein Modell in einem AKS-Cluster bereitstellen, beziehen Sie sich auf den Leitfaden im Artikel [Bereitstellen von ML-Modellen in Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md#connectivity).
+
+### <a name="azure-arc-enabled-kubernetes"></a>Kubernetes mit Azure Arc-Unterstützung <a id="arc-kubernetes"></a>
+
+Kubernetes-Cluster mit Azure Arc-Unterstützung sind von Azure Arc-Verbindungen abhängig. Vergewissern Sie sich, dass Sie die [Azure Arc-Netzwerkanforderungen](/azure/azure-arc/kubernetes/quickstart-connect-cluster?tabs=azure-cli#meet-network-requirements) erfüllen.
+
+Mithilfe der in diesem Abschnitt beschriebenen Hosts werden die Azure Machine Learning-Erweiterung in Kubernetes-Clustern bereitgestellt sowie Trainings- und Rückschlussworkloads an die Cluster übermittelt.
+
+**Bereitstellen der Azure Machine Learning-Erweiterung**
+
+Aktivieren Sie bei der Bereitstellung der Azure Machine Learning-Erweiterung im Cluster den Zugriff auf ausgehenden Datenverkehr zu den folgenden Endpunkten.
+
+| Zielendpunkt| Port | Zweck |
+|--|--|--|
+|  *.data.mcr.microsoft.com| https:443 | Erforderlich für den auf Azure Content Delivery Network (CDN) basierenden MCR-Speicher. |
+| quay.io, *.quay.io | https:443 | Quay.io-Registrierung, erforderlich zum Pullen von Containerimages für Komponenten der AML-Erweiterung. |
+| gcr.io| https:443 | Google Cloud-Repository, erforderlich zum Pullen von Containerimages für Komponenten der AML-Erweiterung. |
+| storage.googleapis.com | https:443 | Google Cloud Storage, zum Hosten von GCR-Images. |
+| registry-1.docker.io, production.cloudflare.docker.com  | https:443 | Docker Hub-Registrierung, erforderlich zum Pullen von Containerimages für Komponenten der AML-Erweiterung. |
+| auth.docker.io| https:443 | Authentifizierung für das Docker-Repository, erforderlich für den Zugriff auf die Docker Hub-Registrierung. |
+| *.kusto.windows.net, *.table.core.windows.net, *.queue.core.windows.net | https:443 | Erforderlich zum Hochladen und Analysieren von Systemprotokollen in Kusto. |
+
+**Nur Trainingsworkloads**
+
+Aktivieren Sie den Zugriff auf ausgehenden Datenverkehr zu den folgenden Endpunkten, um Trainingsworkloads an den Cluster zu übermitteln.
+
+| Zielendpunkt| Port | Zweck |
+|--|--|--|
+| pypi.org | https:443 | Python-Paketindex zum Installieren von PIP-Paketen, die zum Initialisieren der Auftragsumgebung verwendet werden. |
+| archive.ubuntu.com, security.ubuntu.com, ppa.launchpad.net | http:80 | Über diese Adresse können die Init-Container die erforderlichen Sicherheitspatches und Updates herunterladen. |
+
+**Trainings- und Rückschlussworkloads**
+
+Aktivieren Sie zusätzlich zu den Endpunkten für Trainingsworkloads den Zugriff auf ausgehenden Datenverkehr zu den folgenden Endpunkten, um Trainings- und Rückschlussworkloads zu übermitteln.
+
+| Zielendpunkt| Port | Zweck |
+|--|--|--|
+| *.azurecr.io | https:443 | Azure Container Registry, erforderlich zum Pullen von Containerimages zum Hosten von Trainings- oder Rückschlussaufträgen.|
+| *.blob.core.windows.net | https:443 | Azure Blob Storage, erforderlich zum Abrufen von Machine Learning-Projektskripts, Containerimages und Auftragsprotokollen/-metriken. |
+| *.workspace.\<region\>.api.azureml.ms , \<region\>.experiments.azureml.net, \<region\>.api.azureml.ms | https:443 | Azure Machine Learning Service-API, erforderlich für die Kommunikation mit AML. |
 
 ### <a name="visual-studio-code-hosts"></a>Visual Studio Code-Hosts
 

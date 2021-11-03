@@ -9,12 +9,13 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: sashan, moslake
 ms.date: 05/18/2021
-ms.openlocfilehash: 2fa7a60b4f0cbc7e72304c1b01444bf9a9f6a842
-ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: d5a67a12d6dbdb72625ab0459767eb8be92a8241
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129667628"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131035978"
 ---
 # <a name="azure-sql-managed-instance---compute-hardware-in-the-vcore-service-tier"></a>Azure SQL Managed Instance – Computehardware auf der Dienstebene des virtuellen Kerns
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -23,7 +24,7 @@ In diesem Artikel wird das Kaufmodell für virtuelle Kerne für [Azure Managed I
 
 Das Kaufmodell für virtuelle Kerne (vCore) von Azure SQL Managed Instance hat folgende Eigenschaften:
 
-- Kontrolle über die Hardwaregeneration, um besser auf Compute- und Arbeitsspeicheranforderungen der Workload reagieren zu können
+- Kontrolle über die Hardwaregeneration, um besser auf die Compute- und Arbeitsspeicheranforderungen der Workload reagieren zu können
 - Preisrabatte für [Azure-Hybridvorteil](../azure-hybrid-benefit.md) und [reservierte Instanzen (RI)](../database/reserved-capacity-overview.md)
 - Mehr Transparenz bei den Hardwaredetails für das Computing zur besseren Planung von Migrationsvorgängen von lokalen Bereitstellungen
 - [Die Preise für reservierte Instanzen](../database/reserved-capacity-overview.md) sind nur für das V-Kern-Kaufmodell verfügbar. 
@@ -35,7 +36,7 @@ Als Optionen für die Dienstebene stehen im V-Kern-Kaufmodell „Universell“ u
 |**Anwendungsfall**|**Allgemeiner Zweck**|**Unternehmenskritisch**|
 |---|---|---|
 |Am besten geeignet für:|Die meisten geschäftlichen Workloads. Bietet budgetorientierte, ausgewogene und skalierbare Compute- und Speicheroptionen. |Bietet Geschäftsanwendungen die höchste Resilienz gegenüber Fehlern durch die Verwendung mehrerer isolierter Replikate sowie die höchste E/A-Leistung.|
-|Storage|Verwendet Remotespeicher. 32 GB – 8 TB </br> 16 TB (Vorschau) je nach Anzahl der Kerne, nur Gen5 |Verwendet lokalen SSD-Speicher. 32 GB – 4 TB |
+|Storage|Verwendet Remotespeicher. 32 GB bis 16 TB, je nach Anzahl der Kerne |Verwendet lokalen SSD-Speicher. <BR>- **Standard-Serie (Gen5):** 32 GB bis 4 TB <BR>- **Premium-Serie:** 32 GB bis 5,5 TB <BR>- **Arbeitsspeicheroptimierte Premium-Serie:** 32 GB bis 16 TB |
 |IOPS und Durchsatz (ungefähr)|Weitere Informationen finden Sie in der [Übersicht über die Ressourcenlimits von Azure SQL Managed Instance](../managed-instance/resource-limits.md#service-tier-characteristics).|Weitere Informationen finden Sie in der [Übersicht über die Ressourcenlimits von Azure SQL Managed Instance](../managed-instance/resource-limits.md#service-tier-characteristics).|
 |Verfügbarkeit|Einzelnes Replikat, keine Replikate mit Leseskalierung|4 Replikate insgesamt, 1 [Replikat mit Leseskalierung](../database/read-scale-out.md),<br/> 2 Hochverfügbarkeitsreplikate|
 |Backups|[Georedundanter Speicher mit Lesezugriff (RA-GRS)](../../storage/common/geo-redundant-design.md), 1–35 Tage (standardmäßig 7 Tage)|[RA-GRS](../../storage/common/geo-redundant-design.md), 1–35 Tage (standardmäßig 7 Tage)|
@@ -55,20 +56,15 @@ SQL Managed Instance Compute bietet eine bestimmte Menge an Computeressourcen, d
 
 ## <a name="hardware-generations"></a>Hardwaregenerationen
 
-Zu den Optionen für die Hardwaregeneration im V-Kern-Modell gehört die Gen5-Serie. Die Hardwaregeneration definiert im Allgemeinen die Compute- und Arbeitsspeicherlimits sowie weitere Eigenschaften, die sich auf die Leistung der Workload auswirken.
+Die Optionen für die Hardwaregeneration im V-Kern-Modell umfassen die Standard-Serie (Gen5), die Premium-Serie und die arbeitsspeicheroptimierte Premium-Serie. Die Hardwaregeneration definiert im Allgemeinen die Compute- und Arbeitsspeicherlimits sowie weitere Eigenschaften, die sich auf die Leistung der Workload auswirken.
 
-### <a name="compute-and-memory-specifications"></a>Spezifikationen zu Compute- und Arbeitsspeicherressourcen
+Weitere Informationen zu den Besonderheiten und Einschränkungen von Hardwaregenerationen finden Sie unter [Merkmale der Hardwaregeneration](resource-limits.md#hardware-generation-characteristics).
 
-|Hardwaregeneration  |Compute  |Arbeitsspeicher  |
-|:---------|:---------|:---------|
-|Gen4     |- Intel&reg; E5-2673 v3-Prozessoren (Haswell) mit 2,4 GHz<br>- Bereitstellung von bis zu 24 virtuellen Kernen (1 virtueller Kern = 1 physischer Kern)  |- 7 GB pro virtuellem Kern<br>- Bereitstellung von bis zu 168 GB|
-|Gen5     |– Intel&reg; E5-2673 v4-Prozessoren (Broadwell) mit 2,3 GHz, Intel&reg; SP-8160-Prozessoren (Skylake)\* und Intel&reg; 8272CL-Prozessoren (Cascade Lake) mit 2,5 GHz\*<br>- Bereitstellung von bis zu 80 virtuellen Kernen (1 virtueller Kern = 1 Hyperthread)|5,1 GB pro virtuellem Kern<br>- Bereitstellung von bis zu 408 GB|
-
-\* In der dynamischen Verwaltungssicht [sys. dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) wird die Hardwaregenerierung für Instanzen mit Intel&reg; SP-8160-Prozessoren (Skylake) als „Gen6“ und die für Instanzen mit Intel&reg; 8272CL-Prozessoren (Cascade Lake) als „Gen7“ angezeigt. Ressourcenlimits für alle Gen5-Instanzen sind unabhängig vom Prozessortyp (Broadwell, Skylake oder Cascade Lake) identisch.
+ In der dynamischen Verwaltungssicht [sys. dm_user_db_resource_governance](/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) wird die Hardwaregenerierung für Instanzen mit Intel&reg; SP-8160-Prozessoren (Skylake) als „Gen6“ und die für Instanzen mit Intel&reg; 8272CL-Prozessoren (Cascade Lake) als „Gen7“ angezeigt. Die CPUs vom Typ Intel&reg; 8370C (Ice Lake), die von den Hardwaregenerationen der Premium-Serie und der arbeitsspeicheroptimierten Premium-Serie verwendet werden, werden als „Gen8“ angezeigt. Ressourcenlimits sind für alle Instanzen der Standard-Serie (Gen5) identisch – unabhängig vom Prozessortyp (Broadwell, Skylake oder Cascade Lake).
 
 ### <a name="selecting-a-hardware-generation"></a>Auswählen einer Hardwaregeneration
 
-Sie können im Azure-Portal die Hardwaregeneration zum Zeitpunkt der Erstellung auswählen, und Sie können die Hardwaregeneration einer SQL Managed Instance ändern.
+Im Azure-Portal können Sie die Hardwaregeneration bei der Erstellung auswählen oder die Hardwaregeneration einer vorhandenen Instanz von SQL Managed Instance ändern.
 
 **So wählen Sie eine Hardwaregeneration beim Erstellen einer Instanz von SQL Managed Instance aus**
 
@@ -112,11 +108,15 @@ Weitere Informationen finden Sie unter dem Befehl [az sql mi update](/cli/azure/
 
 ### <a name="hardware-availability"></a>Hardwareverfügbarkeit
 
-#### <a name="gen4gen5"></a><a id="gen4gen5-1"></a> Gen4/Gen5
+#### <a name="gen4"></a><a id="gen4gen5-1"></a> Gen4
 
-Die Gen4-Hardware [wird eingestellt](https://azure.microsoft.com/updates/gen-4-hardware-on-azure-sql-database-approaching-end-of-life-in-2020/) und steht für neue Bereitstellungen nicht mehr zur Verfügung. Alle neuen Instanzen müssen auf Gen5-Hardware bereitgestellt werden.
+Die Gen4-Hardware [wird eingestellt](https://azure.microsoft.com/updates/gen-4-hardware-on-azure-sql-database-approaching-end-of-life-in-2020/) und steht für neue Bereitstellungen nicht mehr zur Verfügung. Alle neuen Instanzen müssen auf späteren Hardwaregenerationen bereitgestellt werden.
 
-Gen5 ist in allen öffentlichen Regionen weltweit verfügbar.
+#### <a name="standard-series-gen5-and-premium-series"></a>Standard-Serie (Gen5) und Premium-Serie
+
+Hardware der Standard-Serie (Gen5) ist weltweit in allen öffentlichen Regionen verfügbar.
+  
+Hardware der Premium-Serie und der arbeitsspeicheroptimierten Premium-Serie befindet sich in der Vorschauphase, und ihre regionale Verfügbarkeit ist begrenzt. Ausführlichere Informationen finden Sie in der Übersicht über Ressourcenlimits für Azure SQL Managed Instance unter [Merkmale der Hardwaregeneration](../managed-instance/resource-limits.md#hardware-generation-characteristics).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

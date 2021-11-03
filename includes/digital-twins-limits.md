@@ -3,14 +3,14 @@ author: baanders
 description: Include-Datei für Grenzwerte von Azure Digital Twins
 ms.service: digital-twins
 ms.topic: include
-ms.date: 4/8/2021
+ms.date: 10/20/2021
 ms.author: baanders
-ms.openlocfilehash: fae919afc12afd5a6169dd119b57ae72ae7c14f0
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 9c64606f4816491da803d2c5116ff4ad248ec29a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114472872"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130288341"
 ---
 ### <a name="functional-limits"></a>Funktionale Grenzwerte
 
@@ -22,11 +22,13 @@ In der folgenden Tabelle werden die funktionalen Einschränkungen von Azure Digi
 | Bereich | Funktion | Standardlimit | Anpassbar? |
 | --- | --- | --- | --- |
 | Azure-Ressource | Anzahl von Azure Digital Twins-Instanzen in einer Region pro Abonnement | 10 | Ja |
-| Digital Twins | Anzahl von Zwillingen in einer Azure Digital Twins-Instanz | 200.000 | Ja |
+| Digital Twins | Anzahl von Zwillingen in einer Azure Digital Twins-Instanz | 500.000 | Ja |
 | Digital Twins | Anzahl eingehender Beziehungen zu einem einzelnen Zwilling | 5\.000 | Nein |
 | Digital Twins | Anzahl ausgehender Beziehungen von einem einzelnen Zwilling | 5\.000 | Nein |
 | Digital Twins | Maximale Größe (des JSON-Texts in einer PUT- oder PATCH-Anforderung) eines einzelnen Zwillings | 32 KB | Nein |
 | Digital Twins | Maximale Größe der Anforderungspayload | 32 KB | Nein | 
+| Digital Twins | Maximale Größe eines Zeichenfolgen-Eigenschaftswerts (UTF-8) | 4 KB | Nein|
+| Digital Twins | Maximale Größe eines Eigenschaftsnamens | 1 KB | Nein| 
 | Routing | Anzahl von Endpunkten für eine einzelne Azure Digital Twins-Instanz | 6 | Nein |
 | Routing | Anzahl von Routen für eine einzelne Azure Digital Twins-Instanz | 6 | Ja |
 | Modelle | Anzahl von Modellen innerhalb einer einzelnen Azure Digital Twins-Instanz | 10.000 | Ja |

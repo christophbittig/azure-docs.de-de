@@ -10,16 +10,13 @@ ms.date: 05/28/2019
 ms.topic: quickstart
 ms.service: synapse-analytics
 ms.subservice: sql-dw
-ms.custom:
-- seo-lt-2019
-- azure-synapse
-- mode-portal
-ms.openlocfilehash: 99530b1949f03867a5b755208191341556ba8083
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.custom: seo-lt-2019, azure-synapse, mode-portal
+ms.openlocfilehash: 2f3fc05bc0bf3700c23be80e21cd47bdaf06333f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107535845"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131003692"
 ---
 # <a name="quickstart-create-and-query-a-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-using-the-azure-portal"></a>Schnellstart: Erstellen und Abfragen eines dedizierten SQL-Pools (vormals SQL DW) in Azure Synapse Analytics über das Azure-Portal
 
@@ -54,7 +51,7 @@ Gehen Sie wie folgt vor, um einen dedizierten SQL-Pool (vormals SQL DW) mit den
 
 3. Geben Sie unter **Basiseinstellungen** Ihr Abonnement, Ihre Ressourcengruppe, den Namen des dedizierten SQL-Pools (vormals SQL DW) und den Servernamen an:
 
-   | Einstellung | Vorgeschlagener Wert | Beschreibung |
+   | Einstellung | Vorgeschlagener Wert | BESCHREIBUNG |
    | :------ | :-------------- | :---------- |
    | **Abonnement** | Ihr Abonnement | Ausführliche Informationen zu Ihren Abonnements finden Sie unter [Abonnements](https://account.windowsazure.com/Subscriptions). |
    | **Ressourcengruppe** | myResourceGroup | Gültige Ressourcengruppennamen finden Sie unter [Naming rules and restrictions](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) (Benennungsregeln und Einschränkungen). |

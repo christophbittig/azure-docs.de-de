@@ -6,12 +6,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 10/12/2021
 ms.author: normesta
-ms.openlocfilehash: 5dfdddb3458d552c0c3336c9d7609cfe2fdc6de3
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 70f191a33eeb4d09ea8e4f14b17cd6ceadcec76e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130003494"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131003578"
 ---
 # <a name="upgrading-azure-blob-storage-with-azure-data-lake-storage-gen2-capabilities"></a>Aufrüstung von Azure Blob Storage mit Azure Data Lake Storage Gen2-Funktionen
 
@@ -106,7 +106,7 @@ Nach dem Upgrade wird sich die Art und Weise der Interaktion mit einigen Funktio
 
 Während die meisten Blob-Storage-Funktionen weiterhin funktionieren, nachdem Sie diese Funktionen aktiviert haben, werden einige von ihnen weiterhin in der Vorschauversion oder noch nicht unterstützt. 
 
-Siehe [in Azure Data Lake Storage Gen2 verfügbare Blob Storage Funktionen](data-lake-storage-supported-blob-storage-features.md), um die aktuelle Unterstützung für Blob Storage Funktionen mit Data Lake Storage Gen2 zu verstehen. 
+Siehe [in Azure Data Lake Storage Gen2 verfügbare Blob Storage Funktionen](./storage-feature-support-in-storage-accounts.md), um die aktuelle Unterstützung für Blob Storage Funktionen mit Data Lake Storage Gen2 zu verstehen. 
 
 ### <a name="diagnostic-logs"></a>Diagnoseprotokolle
 

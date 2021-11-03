@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 02/08/2021
 ms.author: raynew
-ms.openlocfilehash: 7044414d47f685062331bc4aceb1b538d6f9a062
-ms.sourcegitcommit: 30e3eaaa8852a2fe9c454c0dd1967d824e5d6f81
+ms.openlocfilehash: 54c2594e823e2e78f7a3fd62afba1d0d023ff347
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112461590"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131048119"
 ---
 # <a name="modify-destination-settings"></a>Ändern der Zieleinstellungen
 
@@ -42,7 +42,7 @@ In der folgenden Tabelle sind die Konfigurationseinstellungen zusammengefasst, d
 **Datenträgerverschlüsselungssatz** | Der zugehörige Datenträgerverschlüsselungssatz, wenn die VM einen vom Kunden verwalteten Schlüssel für die serverseitige Verschlüsselung verwendet.
 **Ressourcengruppe** | Die Ressourcengruppe, in der die Ziel-VM platziert wird.
 **Netzwerkressourcen** | Optionen für Netzwerkschnittstellen, virtuelle Netzwerke (VNets) und Netzwerksicherheitsgruppen/Netzwerkschnittstellen:<br/><br/> - Erstellen einer neuen Ressource mit demselben Namen in der Zielregion<br/><br/> - Erstellen einer neuen Ressource mit einem anderen Namen in der Zielregion<br/><br/> - Verwenden einer vorhandene Netzwerkressource in der Zielregion<br/><br/> Wenn Sie eine neue Zielressource erstellen, werden dieser bis auf die von Ihnen geänderten Einstellungen dieselben Einstellungen wie der Quellressource zugewiesen.
-**Name, SKU und Zone der öffentlichen IP-Adresse** | Gibt den Namen, die [SKU](../virtual-network/public-ip-addresses.md#sku) und [Zone](../virtual-network/public-ip-addresses.md#standard) für die standardmäßige öffentliche IP-Adresse an.<br/><br/> Wenn die Zone redundant sein soll, geben Sie **Zonenredundant** ein.
+**Name, SKU und Zone der öffentlichen IP-Adresse** | Gibt den Namen, die [SKU](../virtual-network/ip-services/public-ip-addresses.md#sku) und [Zone](../virtual-network/ip-services/public-ip-addresses.md#standard) für die standardmäßige öffentliche IP-Adresse an.<br/><br/> Wenn die Zone redundant sein soll, geben Sie **Zonenredundant** ein.
 **Name, SKU und Zone des Lastenausgleichs** | Gibt den Namen, die SKU (Basic oder Standard) und Zone des Lastenausgleichs an.<br/><br/> Wir empfehlen die Verwendung der Standard-SKU.<br/><br/> Wenn die Zone redundant sein soll, geben Sie sie als **Zonenredundant** an.
 **Ressourcenabhängigkeiten** | Optionen für die einzelnen Abhängigkeiten:<br/><br/>- Die Ressource verwendet quellenabhängige Ressourcen, die in die Zielregion verschoben werden.<br/><br/> - Die Ressource verwendet andere abhängige Ressourcen, die sich in der Zielregion befinden. In diesem Fall können Sie aus beliebigen ähnlichen Ressourcen in der Zielregion auswählen.
 

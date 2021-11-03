@@ -14,21 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/17/2021
 ms.author: yelevin
-ms.openlocfilehash: 0a2fd5f134cd97348fb23a88e6b40dcfbf46a275
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: d1290d5d89c4e48c8e2e875bae5e64959f6f2c36
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122338833"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131037224"
 ---
 # <a name="create-custom-analytics-rules-to-detect-threats"></a>Erstellen benutzerdefinierter Analyseregeln zum Erkennen von Bedrohungen
 
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
+
 Nachdem Sie [Ihre Datenquellen mit Azure Sentinel verbunden haben](quickstart-onboard.md), können Sie benutzerdefinierte Analyseregeln erstellen, mit denen Sie Bedrohungen und anomales Verhalten in Ihrer Umgebung erkennen können.
 
-Mit diesen Analyseregeln werden bestimmte Ereignisse oder Ereignisgruppen in Ihrer Umgebung gesucht, beim Erreichen bestimmter Ereignisschwellenwerte oder -bedingungen Warnungen ausgegeben, Vorfälle generiert, die Ihr SOC selektieren und untersuchen kann, und mit automatisierten Nachverfolgungs- und Korrekturprozessen auf Bedrohungen reagiert.
+Mit diesen Analyseregeln werden bestimmte Ereignisse oder Ereignisgruppen in Ihrer Umgebung gesucht, beim Erreichen bestimmter Ereignisschwellenwerte oder -bedingungen Warnungen ausgegeben, und Incidents generiert, die Ihr SOC selektieren und untersuchen kann. Außerdem wird mit automatisierten Nachverfolgungs- und Korrekturprozessen auf Bedrohungen reagiert.
 
 > [!TIP]
-> Um benutzerdefinierte Regeln zu erstellen, verwenden Sie vorhandene Regeln als Vorlagen oder Referenzen. Die Verwendung vorhandener Regeln als Grundlage trägt dazu dabei, den Großteil der Logik zu erstellen, bevor Sie die erforderlichen Änderungen vornehmen.
+> Um benutzerdefinierte Regeln zu erstellen, verwenden Sie vorhandene Regeln als Vorlagen oder Referenzen. Die Verwendung vorhandener Regeln als Grundlage hilft dabei, den Großteil der Logik zu erstellen, bevor Sie die erforderlichen Änderungen vornehmen.
 > 
 
 > [!div class="checklist"]
@@ -77,7 +80,7 @@ Auf der Registerkarte **Regellogik festlegen** können Sie im Feld **Regelabfrag
     ```
 
     > [!NOTE]
-    > **Bewährte Methoden für Regelabfragen**: 
+    > **Bewährte Methoden für Abfragen**: 
     > - Die Abfrage sollte zwischen 1 und 10.000 Zeichen lang sein und darf weder `search *` noch `union *` enthalten. Sie können [benutzerdefinierte Funktionen](/azure/data-explorer/kusto/query/functions/user-defined-functions) verwenden, um die Einschränkung der Abfragelänge außer Kraft zu setzen.
     >
     > - Das Erstellen von Azure Data Explorer-Abfragen mit ADX-Funktionen innerhalb des Log Analytics-Abfragefensters **wird nicht unterstützt**.
@@ -217,7 +220,7 @@ Wenn aus einer Gruppe von bis zu 150 ähnlichen oder wiederkehrenden Warnungen (
 
 1. Auf der Registerkarte **Automatisierte Reaktionen** können Sie die Automatisierung auf Grundlage der von dieser Analyseregel generierten Warnungen oder auf Grundlage des durch die Warnungen erzeugten Incidents festlegen.
     - Wählen Sie in der Dropdownliste unter **Automatisierung von Warnungen** die Playbooks aus, die Sie automatisch ausführen möchten, wenn eine Warnung generiert wird.
-    - Für die incidentbasierte Automatisierung wählen oder erstellen Sie eine Automatisierungsregel unter **Incidentautomatisierung (Vorschau)** . Sie können Playbooks (die auf dem **Incidenttrigger** basieren) über diese Automatisierungsregeln aufrufen sowie Selektierung, Zuweisung und Abschluss automatisieren.
+    - Für die incidentbasierte Automatisierung wählen oder erstellen Sie unter **Incidentautomatisierung (Vorschau)** eine Automatisierungsregel. Sie können Playbooks (die auf dem **Incidenttrigger** basieren) über diese Automatisierungsregeln aufrufen sowie Selektierung, Zuweisung und Abschluss automatisieren.
     - Weitere Informationen und Anweisungen zum Erstellen von Playbooks und Automatisierungsregeln finden Sie unter [Automatisieren von Reaktionen auf Bedrohungen](tutorial-respond-threats-playbook.md#automate-threat-responses).
     - Weitere Informationen darüber, wann Sie den **Warnungstrigger** oder **Incidenttrigger** verwenden sollten, finden Sie unter [Verwenden von Triggern und Aktionen in Azure Sentinel-Playbooks](playbook-triggers-actions.md#azure-sentinel-triggers-summary).
 
@@ -292,7 +295,7 @@ SOC-Manager sollten sicherstellen, dass die Regelliste regelmäßig auf automati
 
 Wenn Sie Analyseregeln zum Erkennen von Bedrohungen durch Azure Sentinel verwenden, stellen Sie sicher, dass Sie alle Regeln aktivieren, die Ihren verbundenen Datenquellen zugeordnet sind, um eine vollständige Sicherheitsabdeckung für Ihre Umgebung zu gewährleisten. Die effizienteste Möglichkeit zum Aktivieren von Analyseregeln besteht direkt auf der Seite des Datenconnectors, auf der alle zugehörigen Regeln aufgelistet sind. Weitere Informationen finden Sie unter [Herstellen einer Verbindung zu Datenquellen](connect-data-sources.md).
 
-Sie können Regeln auch per [API](/rest/api/securityinsights/) und [PowerShell](https://www.powershellgallery.com/packages/Az.SecurityInsights/0.1.0) an Azure Sentinel übermitteln, obwohl dies zusätzlichen Aufwand erfordert. Wenn Sie eine API oder PowerShell verwenden, müssen Sie die Regeln zunächst in JSON exportieren, bevor Sie die Regeln aktivieren. Eine API oder PowerShell kann hilfreich sein, wenn Sie Regeln in mehreren Instanzen von Azure Sentinel mit identischen Einstellungen in jeder Instanz aktivieren.
+Sie können auch Regeln per [API](/rest/api/securityinsights/) und [PowerShell](https://www.powershellgallery.com/packages/Az.SecurityInsights/0.1.0) an Azure Sentinel übermitteln, obwohl dies zusätzlichen Aufwand mit sich bringt. Wenn Sie die API oder PowerShell verwenden, müssen Sie die Regeln zunächst in JSON exportieren, bevor Sie die Regeln aktivieren. Die API oder PowerShell kann hilfreich sein, wenn Sie Regeln in mehreren Instanzen von Azure Sentinel mit identischen Einstellungen in jeder Instanz aktivieren.
 
 Weitere Informationen finden Sie unter:
 

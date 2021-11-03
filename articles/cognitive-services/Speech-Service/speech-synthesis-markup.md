@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: pafarley
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: a43758b1c20b3983b4b2c0920481549ddccb0328
-ms.sourcegitcommit: 3ef5a4eed1c98ce76739cfcd114d492ff284305b
+ms.openlocfilehash: d6a4278c1d44a0b2bf6b67b1b375169fefd2913b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128708850"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131048480"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Verbessern der Synthese mit Markupsprache für Sprachsynthese (Speech Synthesis Markup Language, SSML)
 
@@ -88,7 +88,7 @@ Das `voice`-Element ist erforderlich. Hiermit wird die Stimme angeben, für die 
 > [!NOTE]
 > In diesem Beispiel wird die Stimme `en-US-ChristopherNeural` verwendet. Eine vollständige Liste der unterstützten Stimmen finden Sie unter [Sprachunterstützung](language-support.md#text-to-speech).
 
-```XML
+```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
     <voice name="en-US-ChristopherNeural">
         This is the text that is spoken.
@@ -256,7 +256,7 @@ Ermitteln Sie anhand dieser Tabelle, welche Sprechweisen für die einzelnen neur
 
 Verwenden Sie diese Tabelle, um die unterstützten Rollen und deren Definitionen zu überprüfen.
 
-|Rolle                     | BESCHREIBUNG                |
+|Role                     | BESCHREIBUNG                |
 |-------------------------|----------------------------|
 |`role="Girl"`            | Die Stimme imitiert ein Mädchen. |
 |`role="Boy"`             | Die Stimme imitiert einen Jungen. |
@@ -452,14 +452,14 @@ Das `s`-Element kann Text und die folgenden Elemente enthalten: `audio`, `break`
 
 **Syntax**
 
-```XML
+```xml
 <p></p>
 <s></s>
 ```
 
 **Beispiel**
 
-```XML
+```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
     <voice name="en-US-ChristopherNeural">
         <p>
@@ -485,7 +485,7 @@ Phonetische Alphabete bestehen aus Phonen (Lauten), die sich aus Buchstaben, Zah
 
 **Syntax**
 
-```XML
+```xml
 <phoneme alphabet="string" ph="string"></phoneme>
 ```
 
@@ -535,7 +535,7 @@ Manchmal kann ein Wort vom Sprachsynthesedienst nicht korrekt ausgesprochen werd
 
 **Syntax**
 
-```XML
+```xml
 <lexicon uri="string"/>
 ```
 
@@ -591,7 +591,8 @@ Wichtig: Die Aussprache eines Ausdrucks kann mit dem benutzerdefinierten Lexikon
     <phoneme>ˈskɒtlənd.ˈmiːdiəm.weɪv</phoneme>
   </lexeme>
 ```
-> [!Note]
+
+> [!NOTE]
 > Im internationalen phonetischen Alphabet (IPA) wird die Silbengrenze mit „.“ dargestellt.
 
 Sie können auch direkt ihren erwarteten `alias` für das Akronym oder einen abgekürzten Begriff angeben. Beispiel:
@@ -671,7 +672,7 @@ Weil Attributwerte für den Satzrhythmus über einen breiten Bereich variieren k
 
 **Syntax**
 
-```XML
+```xml
 <prosody pitch="value" contour="value" range="value" rate="value" duration="value" volume="value"></prosody>
 ```
 
@@ -754,7 +755,7 @@ Die Sprechgeschwindigkeit kann auf neuronale Stimmen und Standardstimmen auf Wor
 
 **Syntax**
 
-```XML
+```xml
 <say-as interpret-as="string" format="digit string" detail="string"> <say-as>
 ```
 
@@ -791,7 +792,7 @@ Das `say-as`-Element kann nur Text enthalten.
 
 Die Sprachsynthese-Engine spricht den Beispielsatz wie folgt aus: „Ihre erste Anfrage war für ein Zimmer am neunzehnten Oktober zweitausendzehn mit frühzeitiger Ankunft um zwölf Uhr fünfunddreißig nachmittags“.
 
-```XML
+```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
     <voice name="en-US-ChristopherNeural">
         <p>
@@ -853,7 +854,7 @@ Pro SSML-Dokument ist nur eine Hintergrundaudiodatei zulässig. Sie können jedo
 
 **Syntax**
 
-```XML
+```xml
 <mstts:backgroundaudio src="string" volume="string" fadein="string" fadeout="string"/>
 ```
 
