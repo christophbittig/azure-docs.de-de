@@ -1,26 +1,26 @@
 ---
-title: Bereitstellen eines ML-Modells mit einem verwalteten Onlineendpunkt (Vorschau)
+title: Bereitstellen eines ML-Modells mithilfe eines Onlineendpunkts (Vorschau)
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, wie Sie Ihr Machine Learning-Modell als Webdienst bereitstellen, der automatisch von Azure verwaltet wird.
+description: Hier erfahren Sie, wie Sie Ihr Machine Learning-Modell als Webdienst in Azure bereitstellen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: mlops
 ms.author: seramasu
 ms.reviewer: laobri
 author: rsethur
-ms.date: 08/05/2021
+ms.date: 10/21/2021
 ms.topic: how-to
-ms.custom: how-to, devplatv2
-ms.openlocfilehash: 882f0d8d140d7394e82aa23bf9a5b72b477940e5
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.custom: how-to, devplatv2, ignite-fall-2021
+ms.openlocfilehash: c086523feb73ee6571776b825420c4375ae48da9
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129423612"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131088139"
 ---
-# <a name="deploy-and-score-a-machine-learning-model-by-using-a-managed-online-endpoint-preview"></a>Bereitstellen und Bewerten eines Machine Learning-Modells mit einem verwalteten Onlineendpunkt (Vorschau)
+# <a name="deploy-and-score-a-machine-learning-model-by-using-an-online-endpoint-preview"></a>Bereitstellen und Bewerten eines Machine Learning-Modells mit einem Onlineendpunkt (Vorschau)
 
-Erfahren Sie, wie Sie einen verwalteten Onlineendpunkt (Vorschau) zum Bereitstellen Ihres Modells verwenden, damit Sie die zugrunde liegende Infrastruktur nicht erstellen und verwalten müssen. Sie beginnen mit der Bereitstellung eines Modells auf Ihrem lokalen Computer, um eventuelle Fehler zu beheben, und anschließend werden Sie es in Azure bereitstellen und testen. 
+Erfahren Sie, wie Sie einen Onlineendpunkt (Vorschau) zum Bereitstellen Ihres Modells verwenden, damit Sie die zugrunde liegende Infrastruktur nicht erstellen und verwalten müssen. Sie beginnen mit der Bereitstellung eines Modells auf Ihrem lokalen Computer, um eventuelle Fehler zu beheben, und anschließend werden Sie es in Azure bereitstellen und testen.
 
 Außerdem erfahren Sie, wie Sie die Protokolle anzeigen und die Vereinbarung zum Servicelevel (SLA) überwachen. Sie beginnen mit einem Modell und erhalten am Ende einen skalierbaren HTTPS/REST-Endpunkt, den Sie für die Online- und Echtzeitbewertung verwenden können. 
 
@@ -116,11 +116,11 @@ In der nächsten Tabelle werden die Attribute von `deployments` beschrieben:
 Weitere Informationen zum YAML-Schema finden Sie in der [YAML-Referenz für Onlineendpunkte](reference-yaml-endpoint-managed-online.md).
 
 > [!NOTE]
-> So verwenden Sie Azure Kubernetes Service (AKS) anstelle von verwalteten Endpunkten als Computeziel:
-> 1. Erstellen Sie Ihren AKS-Cluster, und fügen Sie ihn mithilfe von [Azure ML Studio](how-to-create-attach-compute-studio.md#whats-a-compute-target) als Computeziel an Ihren Azure Machine Learning-Arbeitsbereich an.
-> 1. Verwenden Sie den [YAML-Endpunktcode](https://github.com/Azure/azureml-examples/blob/main/cli/endpoints/online/aks/simple-flow/1-create-aks-endpoint-with-blue.yml), um AKS anstelle des verwalteten YAML-Endpunktcodes als Ziel zu verwenden. Sie müssen den YAML-Code bearbeiten, um den Wert von `target` in den Namen Ihres registrierten Computeziels zu ändern.
+> So verwenden Sie Kubernetes anstelle von verwalteten Endpunkten als Computeziel
+> 1. Erstellen Sie Ihren Kubernetes-Cluster, und fügen Sie ihn mithilfe von [Azure Machine Learning Studio](how-to-attach-arc-kubernetes.md?&tabs=studio#attach-arc-cluster) als Computeziel an Ihren Azure Machine Learning-Arbeitsbereich an.
+> 1. Verwenden Sie den [YAML-Endpunktcode](https://github.com/Azure/azureml-examples/blob/main/cli/endpoints/online/aks/simple-flow/1-create-aks-endpoint-with-blue.yml), um Kubernetes anstelle des verwalteten YAML-Endpunktcodes als Ziel zu verwenden. Sie müssen den YAML-Code bearbeiten, um den Wert von `target` in den Namen Ihres registrierten Computeziels zu ändern.
 >
-> Alle Befehle, die in diesem Artikel verwendet werden (mit Ausnahme der optionalen SLA-Überwachung und der Azure Log Analytics-Integration), können entweder mit verwalteten Endpunkten oder mit AKS-Endpunkten verwendet werden.
+> Alle Befehle, die in diesem Artikel verwendet werden (mit Ausnahme der optionalen SLA-Überwachung und der Azure Log Analytics-Integration), können entweder mit verwalteten Endpunkten oder mit Kubernetes-Endpunkten verwendet werden.
 
 ### <a name="register-your-model-and-environment-separately"></a>Separates Registrieren von Modell und Umgebung
 
@@ -141,7 +141,7 @@ Derzeit können Sie nur ein Modell pro Bereitstellung in YAML angeben. Wenn Sie 
 ## <a name="understand-the-scoring-script"></a>Grundlegendes zum Bewertungsskript
 
 > [!TIP]
-> Das Format des Bewertungsskripts für verwaltete Onlineendpunkte entspricht dem Format, das in der vorherigen Version der CLI und im Python SDK verwendet wurde.
+> Das Format des Bewertungsskripts für Onlineendpunkte entspricht dem Format, das in der vorherigen Version der CLI und im Python SDK verwendet wurde.
 
 Wie bereits erwähnt, muss das `code_configuration.scoring_script` eine `init()`-Funktion und eine `run()`-Funktion aufweisen. In diesem Beispiel wird die [score.py-Datei](https://github.com/Azure/azureml-examples/blob/main/cli/endpoints/online/model-1/onlinescoring/score.py) verwendet. Die `init()`-Funktion wird aufgerufen, wenn der Container initialisiert oder gestartet wird. Die Initialisierung erfolgt in der Regel kurz nach dem Erstellen oder Aktualisieren der Bereitstellung. Schreiben Sie hier eine Logik für globale Initialisierungsvorgänge wie das Zwischenspeichern des Modells im Arbeitsspeicher (wie wir es in diesem Beispiel durchführen). Die Funktion `run()` wird für jeden Aufruf des Endpunkts aufgerufen und sollte die tatsächliche Bewertung und Vorhersage ausführen. Im Beispiel extrahieren wir die Daten aus der JSON-Eingabe, rufen die `predict()`-Methode des scikit-learn-Modells auf und geben dann das Ergebnis zurück.
 
@@ -212,7 +212,7 @@ Diese Bereitstellung kann bis zu 15 Minuten dauern, je nachdem, ob die zugrunde
 > [!TIP]
 > * Wenn Sie ihre CLI-Konsole nicht blockieren möchten, können Sie dem Befehl das Flag `--no-wait` hinzufügen. Dadurch wird jedoch die interaktive Anzeige des Bereitstellungsstatus nicht mehr angezeigt.
 >
-> * Verwenden Sie [Problembehandlung für die Bereitstellung verwalteter Onlineendpunkte (Vorschau)](how-to-troubleshoot-managed-online-endpoints.md), um Fehler zu debuggen.
+> * Verwenden Sie [Problembehandlung für die Bereitstellung verwalteter Onlineendpunkte (Vorschau)](./how-to-troubleshoot-online-endpoints.md), um Fehler zu debuggen.
 
 ### <a name="check-the-status-of-the-deployment"></a>Überprüfen Sie den Status der Bereitstellung.
 
@@ -335,4 +335,4 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 - [Verwenden von Batchendpunkten (Vorschau) für die Batchbewertung](how-to-use-batch-endpoint.md)
 - [Anzeigen der Kosten für einen verwalteten Azure Machine Learning-Onlineendpunkt (Vorschau)](how-to-view-online-endpoints-costs.md)
 - [Tutorial: Zugreifen auf Azure-Ressourcen mit einem verwalteten Onlineendpunkt und einer systemseitig verwalteten Identität (Vorschau)](tutorial-deploy-managed-endpoints-using-system-managed-identity.md)
-- [Problembehandlung für die Bereitstellung verwalteter Onlineendpunkte](how-to-troubleshoot-managed-online-endpoints.md)
+- [Problembehandlung für die Bereitstellung verwalteter Onlineendpunkte](./how-to-troubleshoot-online-endpoints.md)

@@ -6,12 +6,13 @@ ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: how-to
 ms.date: 09/13/2021
-ms.openlocfilehash: 960ade1209b6473884e75c660d658abaf6e73af7
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 08690347f9a0dae5237ad74bfda9ad3eb6c8ef84
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128609952"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131072850"
 ---
 # <a name="create-an-integration-workflow-with-single-tenant-azure-logic-apps-standard-in-visual-studio-code"></a>Erstellen von Integrationsworkflows mit der Azure Logic Apps-Einzelmandanteninstanz (Standard) in Visual Studio Code
 
@@ -80,7 +81,7 @@ Weitere Informationen finden Sie in der [Azurite-Dokumentation](https://github.c
 
   * [C# für Visual Studio Code-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp), mit der die F5-Funktionalität in die Lage versetzt wird, Ihre Logik-App auszuführen.
 
-  * [Azure Functions Core Tools 3.0.3477 oder höher](https://github.com/Azure/azure-functions-core-tools/releases/tag/3.0.3477) über die MSI-Version (Microsoft Installer), die `func-cli-3.0.3477-x*.msi` lautet.
+  * [Azure Functions Core Tools – aktuellste Version](https://github.com/Azure/azure-functions-core-tools/releases) über die MSI-Version (Microsoft Installer), die `func-cli-X.X.XXXX-x*.msi` lautet.
 
     Diese Tools enthalten eine Version derselben Runtime, auf der die Azure Functions-Runtime basiert, die die Erweiterung „Azure Logic Apps (Standard)“ in Visual Studio Code verwendet.
 
@@ -542,7 +543,7 @@ Um Ihre Logik-App zu testen, führen Sie die folgenden Schritte aus, um eine Deb
 
       ![Screenshot, der Postman mit geöffnetem Anforderungsbereich zeigt.](./media/create-single-tenant-workflows-visual-studio-code/postman-request-pane.png)
 
-   1. Kehren Sie zu Visual Studio Code zurück. Kopieren Sie von der Übersichtsseite des Workflows den Eigenschaftswert von **Rückruf-URL**.
+   1. Kehren Sie zu Visual Studio Code zurück. Kopieren Sie von der Übersichtsseite des Workflows den Eigenschaftswert **Rückruf-URL**.
 
    1. Kehren Sie zu Postman zurück. Fügen Sie im Anforderungsbereich neben der Liste der Methoden, in der derzeit **GET** als Standardanforderungsmethode angezeigt wird, die zuvor kopierte Rückruf-URL in das Feld „Adresse“ ein, und wählen Sie **Senden** aus.
 
@@ -726,6 +727,8 @@ Führen Sie die folgenden Schritte aus, um die vollqualifizierten Domänennamen 
 In Visual Studio Code können Sie Ihr Projekt direkt in Azure veröffentlichen, wo Ihre Logik-App mit dem Ressourcentyp **Logik-App (Standard)** bereitgestellt wird. Sie können Ihre Logik-App als neue Ressource veröffentlichen. Hierbei werden automatisch alle erforderlichen Ressourcen erstellt, z. B. ein [Azure-Speicherkonto (ähnlich wie bei Funktions-App-Anforderungen)](../azure-functions/storage-considerations.md). Alternativ können Sie Ihre Logik-App in einer zuvor bereitgestellten **Logik-App**-Ressource (Standard) veröffentlichen, die diese Logik-App überschreibt.
 
 Für die Bereitstellung für den Ressourcentyp **Logik-App (Standard)** sind ein Hostingplan und ein Tarif erforderlich, den Sie während der Bereitstellung auswählen. Weitere Informationen finden Sie unter [Hostingpläne und Tarife](logic-apps-pricing.md#standard-pricing).
+
+<a name="publish-new-logic-app"></a>
 
 ### <a name="publish-to-a-new-logic-app-standard-resource"></a>Veröffentlichen als neue Ressource „Logik-App (Standard)“
 
@@ -920,7 +923,7 @@ In Visual Studio Code können Sie alle bereitgestellten Logik-Apps in Ihrem Azur
 
    ![Screenshot, der Visual Studio Code dem geöffneten Bereich der Erweiterung „Azure Logic Apps (Standard)“ und dem bereitgestellten Workflow zeigt.](./media/create-single-tenant-workflows-visual-studio-code/find-deployed-workflow-visual-studio-code.png)
 
-1. Um alle Workflows in der Logik-App anzuzeigen, erweitern Sie Ihre Logik-App und dann den Knoten mit der Bezeichnung **Workflows**.
+1. Um alle Workflows in der Logik-App anzuzeigen, erweitern Sie Ihre Logik-App und dann den Knoten **Workflows**.
 
 1. Um einen bestimmten Workflow anzuzeigen, öffnen Sie das Kontextmenü des Workflows, und wählen Sie **Im Designer öffnen** aus. Dadurch wird der Workflow im schreibgeschützten Modus geöffnet.
 

@@ -4,15 +4,16 @@ description: Erfahren Sie, wie Sie die maximale Leistung aus einem Azure-Datentr
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/19/2021
+ms.date: 11/02/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 74d50826811198811e6cea671641cae378d1235c
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: db70740b484290b56d140d6b71d570d61afd138d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122419586"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131082719"
 ---
 # <a name="azure-disk-pools-preview-planning-guide"></a>Planungshandbuch für Azure-Datenträgerpools (Vorschau)
 
@@ -28,7 +29,7 @@ Wenn Sie eine niedrige Wartezeit anstreben, sollten Sie Ihrem Datenträgerpool U
 
 ## <a name="optimize-for-high-throughput"></a>Optimieren für hohen Durchsatz
 
-Wenn Sie den Durchsatz priorisieren, bewerten Sie zunächst die Anzahl der Datenträgerpools, die zum Erreichen Ihrer Durchsatzziele erforderlich sind. Sobald Sie über die erforderlichen Ziele verfügen, können Sie sie auf die einzelnen Datenträger und ihre Typen aufteilen. Derzeit können zwei Datenträgertypen in einem Datenträgerpool verwendet werden: SSD Premium-Datenträger und Ultra Disks. SSD Premium-Datenträger können hohe Werte für IOPS und MBit/s bieten, die mit ihrer Speicherkapazität skaliert werden können, während Ultra Disks ihre Leistung unabhängig von ihrer Speicherkapazität skalieren können. Wählen Sie den Typ aus, der am besten zu Ihrem Kosten- und Leistungsverhältnis passt. Vergewissern Sie sich außerdem, dass die Netzwerkverbindung zwischen Ihren Clients und dem Datenträgerpool keinen Engpass darstellt, insbesondere was den Durchsatz betrifft.
+Wenn Sie Durchsatz priorisieren, sollten Sie zunächst die Leistungsziele der verschiedenen Datenträgerpool-SKUs sowie die Anzahl der Datenträgerpools auswerten, die erforderlich sind, um Ihre Durchsatzziele zu erreichen. Wenn Ihre Leistungsanforderungen die Möglichkeiten eines Premium-Datenträgerpools übersteigen, können Sie Ihre Bereitstellung auf mehrere Datenträgerpools aufteilen. Dann können Sie entscheiden, wie Sie die Leistung eines Datenträgerpools zwischen den einzelnen Datenträgern und deren Typen am besten ausschöpfen. In einem Datenträgerpool können Sie entweder Premium- und Standard-SSD-Datenträger kombinieren oder nur Ultra-Datenträger verwenden. Ultra-Datenträger können nicht zusammen mit Premium- oder Standard-SSD-Datenträgern verwendet werden. Wählen Sie den Datenträgertyp aus, der Ihre Anforderungen am besten erfüllt. Vergewissern Sie sich außerdem, dass die Netzwerkverbindung zwischen Ihren Clients und dem Datenträgerpool keinen Engpass darstellt, insbesondere was den Durchsatz betrifft.
 
 
 ## <a name="use-cases"></a>Anwendungsfälle
@@ -36,36 +37,40 @@ Wenn Sie den Durchsatz priorisieren, bewerten Sie zunächst die Anzahl der Daten
 In der folgenden Tabelle sind einige typische Anwendungsfälle für Datenträgerpools mit Azure VMware Solution und eine empfohlene Konfiguration aufgeführt.
 
 
-|Anwendungsfälle für Azure VMware Solution  |Vorgeschlagener Datenträgertyp  |Vorgeschlagene Netzwerkkonfiguration  |
-|---------|---------|---------|
-|Blockspeicher für aktive Arbeitssätze, wie eine Erweiterung der Azure VMware Solution vSAN.     |Ultra Disks         |Verwenden Sie das ExpressRoute-Gateway für virtuelle Netzwerke: Ultra Performance (Höchstleistung) oder ErGw3AZ (10 GBit/s), um das virtuelle Netzwerk des Datenträgerpools mit der Azure VMware Solution-Cloud zu verbinden und FastPath zu aktivieren, um die Netzwerklatenz zu minimieren.         |
-|Tiering: Daten, auf die nur selten zugegriffen wird, von der Azure VMware Solution vSAN in den Datenträgerpool verschieben.     |SSD Premium         |Verwenden Sie das ExpressRoute-Gateway für virtuelle Netzwerke: Standard (1 GBit/s) oder High Performance (Hochleistung, 2 GBit/s), um das virtuelle Netzwerk des Datenträgerpools mit der Azure VMware Solution-Cloud zu verbinden.         |
-|Datenspeicher für den Standort für die Notfallwiederherstellung in Azure VMware Solution: Replizieren Sie Daten aus der lokalen oder primären VMware-Umgebung in den Datenträgerpool als sekundären Standort.     |SSD Premium         |Verwenden Sie das ExpressRoute-Gateway für virtuelle Netzwerke: Standard (1 GBit/s) oder High Performance (Hochleistung, 2 GBit/s), um das virtuelle Netzwerk des Datenträgerpools mit der Azure VMware Solution-Cloud zu verbinden.         |
+|Anwendungsfälle für Azure VMware Solution  |Vorgeschlagener Datenträgertyp  |Vorgeschlagene Datenträgerpool-SKU  |Vorgeschlagene Netzwerkkonfiguration  |
+|---------|---------|---------|---------|
+|Blockspeicher für aktive Arbeitssätze, wie eine Erweiterung der Azure VMware Solution vSAN.     |Ultra Disks         |Premium         |Verwenden Sie das ExpressRoute-Gateway für virtuelle Netzwerke: Ultra Performance (Höchstleistung) oder ErGw3AZ (10 GBit/s), um das virtuelle Netzwerk des Datenträgerpools mit der Azure VMware Solution-Cloud zu verbinden und FastPath zu aktivieren, um die Netzwerklatenz zu minimieren.         |
+|Tiering: Daten, auf die nur selten zugegriffen wird, von der Azure VMware Solution vSAN in den Datenträgerpool verschieben.     |SSD Premium, SDD Standard         |Standard         |Verwenden Sie das ExpressRoute-Gateway für virtuelle Netzwerke: Standard (1 GBit/s) oder High Performance (Hochleistung, 2 GBit/s), um das virtuelle Netzwerk des Datenträgerpools mit der Azure VMware Solution-Cloud zu verbinden.         |
+|Datenspeicher für den Standort für die Notfallwiederherstellung in Azure VMware Solution: Replizieren Sie Daten aus der lokalen oder primären VMware-Umgebung in den Datenträgerpool als sekundären Standort.     |SSD Premium, SDD Standard         |Standard, Basic         |Verwenden Sie das ExpressRoute-Gateway für virtuelle Netzwerke: Standard (1 GBit/s) oder High Performance (Hochleistung, 2 GBit/s), um das virtuelle Netzwerk des Datenträgerpools mit der Azure VMware Solution-Cloud zu verbinden.         |
+
 
 Informationen zum Planen Ihrer Netzwerkeinrichtung sowie weitere Überlegungen zu Azure VMware Solution finden Sie in der [Checkliste für die Netzwerkplanung für Azure VMware Solution](../azure-vmware/tutorial-network-checklist.md).
 
 ## <a name="disk-pool-scalability-and-performance-targets"></a>Skalierbarkeits- und Leistungsziele für den Datenträgerpool
 
-|Resource  |Begrenzung  |
-|---------|---------|
-|Maximale Anzahl von Datenträgern pro Datenträgerpool|8|
-|Maximale IOPS pro Datenträgerpool|25.600|
-|Maximale MBit/s pro Datenträgerpool|384|
+|Resource  |Basis-Datenträgerpool  |Standard-Datenträgerpool  |Premium-Datenträgerpool  |
+|---------|---------|---------|---------|
+|Maximale Anzahl von Datenträgern pro Datenträgerpool     |16         |32         |32         |
+|Maximale IOPS pro Datenträgerpool     |12.800         |25.600         |51.200         |
+|Maximale MBit/s pro Datenträgerpool     |192         |384         |768         |
 
 Das folgende Beispiel sollte Ihnen einen Überblick darüber geben, wie die verschiedenen Leistungsfaktoren zusammenarbeiten:
 
-Wenn Sie z. B. zwei SSD Premium-Datenträger mit 1 TiB (P30, mit einer Zielvorgabe von 5000 IOPS und 200 MBit/s) zu einem Datenträgerpool hinzufügen, können Sie 2 x 5000 = 10.000 IOPS erreichen. Der Durchsatz würde jedoch vom Datenträgerpool auf 384 MBit/s begrenzt werden. Um diesen Grenzwert von 384 MBit/s zu überschreiten, können Sie weitere Datenträgerpools bereitstellen, um für zusätzlichen Durchsatz eine Aufskalierung zu erreichen. Ihr Netzwerkdurchsatz schränkt die Effektivität der Aufskalierung ein.
+Wenn Sie z. B. zwei SSD Premium-Datenträger mit 1 TiB (P30, mit einer Zielvorgabe von 5.000 IOPS und 200 MBit/s) zu einem Standard-Datenträgerpool hinzufügen, können Sie 2 x 5000 = 10.000 IOPS erreichen. Der Durchsatz würde jedoch vom Datenträgerpool auf 384 MBit/s begrenzt werden. Um diesen Grenzwert von 384 MBit/s zu überschreiten, können Sie weitere Datenträgerpools bereitstellen, um für zusätzlichen Durchsatz eine Aufskalierung zu erreichen. Ihr Netzwerkdurchsatz schränkt die Effektivität der Aufskalierung ein.
 
 ## <a name="availability"></a>Verfügbarkeit
 
-Datenträgerpools befinden sich derzeit in der Vorschauphase und dürfen nicht für Produktionsworkloads verwendet werden.
+Datenträgerpools befinden sich derzeit in der Vorschauphase und dürfen nicht für Produktionsworkloads verwendet werden. Standardmäßig unterstützt ein Datenträgerpool nur Premium- und Standard-SSD-Datenträger. Sie können die Unterstützung für Ultra-Datenträger für einen Datenträgerpool aktivieren, aber ein Datenträgerpool mit Ultra-Datenträgern ist nicht mit Premium- oder Standard-SSD-Datenträgern kompatibel.
+
+Datenträgerpools mit Unterstützung für Premium- und Standard-SSD-Datenträgern basieren auf einer hoch verfügbaren Architektur mit mehreren Datenträgern, die den iSCSI-Endpunkt hosten. Datenträgerpools mit Unterstützung für Ultra-Datenträger werden in einer Einzelinstanzbereitstellung gehostet.
 
 Wenn Ihr Datenträgerpool aus irgendeinem Grund für Ihre Azure VMware Solution-Cloud nicht mehr zugänglich ist, treten folgende Probleme auf:
 
 - Auf alle Datenspeicher, die dem Datenträgerpool zugeordnet sind, kann nicht mehr zugegriffen werden.
-- Alle virtuellen VMware-Computer, die in dieser Azure VMware Solution-Cloud gehostet werden, die die betroffenen Datenspeicher verwendet, weisen einen fehlerhaften Zustand auf.
-- Die Integrität von Clustern in dieser Azure VMware Solution-Cloud wird nicht beeinträchtigt, mit Ausnahme eines Vorgangs: Sie werden nicht in der Lage sein, einen Host in den Wartungsmodus zu versetzen. Azure VMware Solution behandelt diesen Fehler und versucht eine Wiederherstellung, indem die betroffenen Datenspeicher getrennt werden.
+- Alle VMware-VMs, die in der Azure VMware Solution-Cloud gehostet werden und die betroffenen Datenspeicher verwenden, weisen einen fehlerhaften Zustand auf.
+- Die Integrität von Clustern in der Azure VMware Solution-Cloud wird nicht beeinträchtigt, mit Ausnahme eines Vorgangs: Sie können einen Host nicht in den Wartungsmodus versetzen. Azure VMware Solution behandelt diesen Fehler und versucht eine Wiederherstellung, indem die betroffenen Datenspeicher getrennt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Bereitstellen eines Datenträgerpools](disks-pools-deploy.md)
+- [Bereitstellen eines Datenträgerpools](disks-pools-deploy.md)
+- Informationen zur Integration von Datenträgerpools mittels Azure VMware Solutions finden Sie unter [Anfügen von Datenträgerpools an Azure VMware Solution-Hosts (Vorschau)](../azure-vmware/attach-disk-pools-to-azure-vmware-solution-hosts.md).

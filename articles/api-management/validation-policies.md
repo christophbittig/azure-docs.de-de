@@ -6,20 +6,21 @@ documentationcenter: ''
 author: dlepow
 ms.service: api-management
 ms.topic: article
-ms.date: 08/20/2021
+ms.date: 10/21/2021
 ms.author: danlep
-ms.openlocfilehash: 57bb68352f04b356ec7a60f9e354993404c46abd
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: ee6eb475dc94407a774f4b22bd3afd676cbe83da
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128658947"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131065587"
 ---
 # <a name="api-management-policies-to-validate-requests-and-responses"></a>API Management-Richtlinien zum Überprüfen von Anforderungen und Antworten
 
 Dieser Artikel ist eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](./api-management-policies.md).
 
-Verwenden Sie Validierungsrichtlinien zum Überprüfen von API-Anforderungen und -Antworten anhand eines OpenAPI-Schemas und zum Schützen vor Sicherheitsrisiken wie der Einschleusung von Headern oder Payloads. Validierungsrichtlinien sind keine Ersatz für eine Web Application Firewall, bieten aber Flexibilität zur Reaktion auf eine weitere Art von Bedrohungen, die durch auf statischen, vordefinierten Regeln basierende Sicherheitsprodukte nicht abgedeckt werden.
+Verwenden Sie Validierungsrichtlinien zum Überprüfen von API-Anforderungen und -Antworten anhand eines OpenAPI-Schemas und zum Schützen vor Sicherheitsrisiken wie der Einschleusung von Headern oder Payloads. Validierungsrichtlinien sind keine Ersatz für eine Web Application Firewall, bieten aber Flexibilität zur Reaktion auf eine andere Art von Bedrohungen, die durch auf statischen, vordefinierten Regeln basierende Sicherheitsprodukte nicht abgedeckt werden.
 
 ## <a name="validation-policies"></a>Überprüfungsrichtlinien
 
@@ -37,11 +38,11 @@ Jede Validierungsrichtlinie enthält ein Attribut, das eine Aktion angibt, die v
 
 Verfügbare Aktionen:
 
-| Aktion         | Beschreibung          |                                                                                                                         
+| Aktion         | BESCHREIBUNG          |                                                                                                                         
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| ignore | Die Überprüfung wird übersprungen. |
-| prevent | Die Verarbeitung von Anforderung oder Antwort wird blockiert, ein ausführlicher [Validierungsfehler](#validation-errors) wird protokolliert, und ein Fehler wird zurückgegeben. Die Verarbeitung wird unterbrochen, wenn die ersten Fehler erkannt werden. 
-| Erkennen | [Validierungsfehler](#validation-errors) werden protokolliert, ohne dass die Verarbeitung von Anforderung oder Antwort unterbrochen wird. |
+| `ignore` | Die Überprüfung wird übersprungen. |
+| `prevent` | Die Verarbeitung von Anforderung oder Antwort wird blockiert, ein ausführlicher [Validierungsfehler](#validation-errors) wird protokolliert, und ein Fehler wird zurückgegeben. Die Verarbeitung wird unterbrochen, wenn die ersten Fehler erkannt werden. 
+| `detect` | [Validierungsfehler](#validation-errors) werden protokolliert, ohne dass die Verarbeitung von Anforderung oder Antwort unterbrochen wird. |
 
 ## <a name="logs"></a>Protokolle
 
@@ -85,22 +86,22 @@ Im folgenden Beispiel wird die JSON-Payload in Anforderungen und Antworten im Er
 
 ### <a name="elements"></a>Elemente
 
-| Name         | Beschreibung                                                                                                                                   | Erforderlich |
+| Name         | BESCHREIBUNG                                                                                                                                   | Erforderlich |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| validate-content | Stammelement                                                                                                                               | Ja      |
-| Inhalt | Fügen Sie mindestens eins dieser Elemente hinzu, um den Inhaltstyp in der Anforderung oder Antwort zu überprüfen, und führen Sie die angegebene Aktion aus.  | Nein |
+| `validate-content` | Stammelement                                                                                                                               | Ja      |
+| `content` | Fügen Sie mindestens eins dieser Elemente hinzu, um den Inhaltstyp in der Anforderung oder Antwort zu überprüfen, und führen Sie die angegebene Aktion aus.  | Nein |
 
 ### <a name="attributes"></a>Attributes
 
-| Name                       | Beschreibung                                                                                                                                                            | Erforderlich | Standard |
+| Name                       | BESCHREIBUNG                                                                                                                                                            | Erforderlich | Standard |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| unspecified-content-type-action | [Aktion](#actions), die für Anforderungen oder Antworten mit einem Inhaltstyp ausgeführt wird, der im API-Schema nicht angegeben ist. |  Ja     | –   |
-| max-size | Maximale Länge des Texts der Anforderung oder Antwort in Bytes, überprüft anhand des `Content-Length`Headers. Wenn der Anforderungs- oder Antworttext komprimiert ist, stellt dieser Wert die entkomprimierte Länge dar. Maximal zulässiger Wert: 102.400 Byte (100 KB). (Wenden Sie sich an den [Support](https://azure.microsoft.com/support/options/), wenn Sie diesen Grenzwert erhöhen möchten.) | Ja       | –   |
-| size-exceeded-action | [Aktion](#actions), die für Anforderungen oder Antworten ausgeführt wird, deren Text die in `max-size` angegebene Größe überschreitet. |  Ja     | –   |
-| errors-variable-name | Name der Variable in `context.Variables`, in der Validierungsfehler protokolliert werden.  |   Nein    | –   |
-| Typ | Inhaltstyp, für den die Textüberprüfung ausgeführt wird, überprüft anhand des `Content-Type`-Headers. Bei diesem Wert wird die Groß-/Kleinschreibung nicht beachtet. Wenn der Wert leer ist, gilt dies für jeden im API-Schema angegebenen Inhaltstyp. |   Nein    |  –  |
-| validate-as | Validierungs-Engine zur Überprüfung des Texts einer Anforderung oder Antwort mit dem passenden Inhaltstyp. Zurzeit ist „json“ der einzige unterstützte Wert.   |  Ja     |  –  |
-| action | [Aktion](#actions), die für Anforderungen oder Antworten ausgeführt wird, deren Text nicht dem angegebenen Inhaltstyp entspricht.  |  Ja      | –   |
+| `unspecified-content-type-action` | [Aktion](#actions), die für Anforderungen oder Antworten mit einem Inhaltstyp ausgeführt wird, der im API-Schema nicht angegeben ist. |  Ja     | –   |
+| `max-size` | Maximale Länge des Texts der Anforderung oder Antwort in Bytes, überprüft anhand des `Content-Length`Headers. Wenn der Anforderungs- oder Antworttext komprimiert ist, stellt dieser Wert die entkomprimierte Länge dar. Maximal zulässiger Wert: 102.400 Byte (100 KB). (Wenden Sie sich an den [Support](https://azure.microsoft.com/support/options/), wenn Sie diesen Grenzwert erhöhen möchten.) | Ja       | –   |
+| `size-exceeded-action` | [Aktion](#actions), die für Anforderungen oder Antworten ausgeführt wird, deren Text die in `max-size` angegebene Größe überschreitet. |  Ja     | –   |
+| `errors-variable-name` | Name der Variable in `context.Variables`, in der Validierungsfehler protokolliert werden.  |   Nein    | –   |
+| `type` | Inhaltstyp, für den die Textüberprüfung ausgeführt wird, überprüft anhand des `Content-Type`-Headers. Bei diesem Wert wird die Groß-/Kleinschreibung nicht beachtet. Wenn der Wert leer ist, gilt dies für jeden im API-Schema angegebenen Inhaltstyp. |   Nein    |  –  |
+| `validate-as` | Validierungs-Engine zur Überprüfung des Texts einer Anforderung oder Antwort mit dem passenden Inhaltstyp. Zurzeit ist „json“ der einzige unterstützte Wert.   |  Ja     |  –  |
+| `action` | [Aktion](#actions), die für Anforderungen oder Antworten ausgeführt wird, deren Text nicht dem angegebenen Inhaltstyp entspricht.  |  Ja      | –   |
 
 ### <a name="usage"></a>Verwendung
 
@@ -151,23 +152,23 @@ In diesem Beispiel werden alle Abfrage- und Pfadparameter im Präventionsmodus �
 
 ### <a name="elements"></a>Elemente
 
-| Name         | Beschreibung                                                                                                                                   | Erforderlich |
+| Name         | BESCHREIBUNG                                                                                                                                   | Erforderlich |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| validate-parameters | Stammelement Gibt die Standardvalidierungsaktionen für alle Parameter in Anforderungen an.                                                                                                                              | Ja      |
-| headers | Fügen Sie dieses Element hinzu, um die Standardvalidierungsaktionen für Headerparameter in Anforderungen außer Kraft zu setzen.   | Nein |
-| Abfrage | Fügen Sie dieses Element hinzu, um die Standardvalidierungsaktionen für Abfrageparameter in Anforderungen außer Kraft zu setzen.  | Nein |
-| path | Fügen Sie dieses Element hinzu, um die Standardvalidierungsaktionen für URL-Pfadparameter in Anforderungen außer Kraft zu setzen.  | Nein |
-| parameter | Fügen Sie mindestens ein Element für benannte Parameter hinzu, um eine Konfiguration der Validierungsaktionen auf höherer Ebene außer Kraft zu setzen. | Nein |
+| `validate-parameters` | Stammelement Gibt die Standardvalidierungsaktionen für alle Parameter in Anforderungen an.                                                                                                                              | Ja      |
+| `headers` | Fügen Sie dieses Element hinzu, um die Standardvalidierungsaktionen für Headerparameter in Anforderungen außer Kraft zu setzen.   | Nein |
+| `query` | Fügen Sie dieses Element hinzu, um die Standardvalidierungsaktionen für Abfrageparameter in Anforderungen außer Kraft zu setzen.  | Nein |
+| `path` | Fügen Sie dieses Element hinzu, um die Standardvalidierungsaktionen für URL-Pfadparameter in Anforderungen außer Kraft zu setzen.  | Nein |
+| `parameter` | Fügen Sie mindestens ein Element für benannte Parameter hinzu, um eine Konfiguration der Validierungsaktionen auf höherer Ebene außer Kraft zu setzen. | Nein |
 
 ### <a name="attributes"></a>Attributes
 
-| Name                       | Beschreibung                                                                                                                                                            | Erforderlich | Standard |
+| Name                       | BESCHREIBUNG                                                                                                                                                            | Erforderlich | Standard |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| specified-parameter-action | [Aktion](#actions), die für im API-Schema angegebene Anforderungsparameter ausgeführt werden soll. <br/><br/> Wenn dieser Wert in einem `headers`-, `query`- oder `path`-Element bereitgestellt wird, setzt er den Wert von `specified-parameter-action` im `validate-parameters`-Element außer Kraft.  |  Ja     | –   |
-| unspecified-parameter-action | [Aktion](#actions), die für im API-Schema nicht angegebene Anforderungsparameter ausgeführt werden soll. <br/><br/>Wenn dieser Wert in einem `headers`- oder `query`-Element bereitgestellt wird, setzt er den Wert von `unspecified-parameter-action` im `validate-parameters`-Element außer Kraft. |  Ja     | –   |
-| errors-variable-name | Name der Variable in `context.Variables`, in der Validierungsfehler protokolliert werden.  |   Nein    | –   |
-| name | Name des Parameters, für den die Validierungsaktion außer Kraft gesetzt werden soll. Bei diesem Wert wird die Groß-/Kleinschreibung nicht beachtet.  | Ja | – |
-| action | [Aktion](#actions), die für den Parameter mit dem passenden Namen ausgeführt werden soll. Wenn der Parameter im API-Schema angegeben ist, setzt dieser Wert die Konfiguration von `specified-parameter-action` auf höherer Ebene außer Kraft. Wenn der Parameter im API-Schema nicht angegeben ist, setzt dieser Wert die Konfiguration von `unspecified-parameter-action` auf höherer Ebene außer Kraft.| Ja | – | 
+| `specified-parameter-action` | [Aktion](#actions), die für im API-Schema angegebene Anforderungsparameter ausgeführt werden soll. <br/><br/> Wenn dieser Wert in einem `headers`-, `query`- oder `path`-Element bereitgestellt wird, setzt er den Wert von `specified-parameter-action` im `validate-parameters`-Element außer Kraft.  |  Ja     | –   |
+| `unspecified-parameter-action` | [Aktion](#actions), die für im API-Schema nicht angegebene Anforderungsparameter ausgeführt werden soll. <br/><br/>Wenn dieser Wert in einem `headers`- oder `query`-Element bereitgestellt wird, setzt er den Wert von `unspecified-parameter-action` im `validate-parameters`-Element außer Kraft. |  Ja     | –   |
+| `errors-variable-name` | Name der Variable in `context.Variables`, in der Validierungsfehler protokolliert werden.  |   Nein    | –   |
+| `name` | Name des Parameters, für den die Validierungsaktion außer Kraft gesetzt werden soll. Bei diesem Wert wird die Groß-/Kleinschreibung nicht beachtet.  | Ja | – |
+| `action` | [Aktion](#actions), die für den Parameter mit dem passenden Namen ausgeführt werden soll. Wenn der Parameter im API-Schema angegeben ist, setzt dieser Wert die Konfiguration von `specified-parameter-action` auf höherer Ebene außer Kraft. Wenn der Parameter im API-Schema nicht angegeben ist, setzt dieser Wert die Konfiguration von `unspecified-parameter-action` auf höherer Ebene außer Kraft.| Ja | – | 
 
 ### <a name="usage"></a>Verwendung
 
@@ -201,18 +202,18 @@ Die `validate-headers`-Richtlinie überprüft die Anforderungsheader anhand des 
 
 | Name         | BESCHREIBUNG                                                                                                                                   | Erforderlich |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| validate-headers | Stammelement Gibt Standardvalidierungsaktionen für alle Header in Antworten an.                                                                                                                              | Ja      |
-| header | Fügen Sie mindestens ein Element für benannte Header hinzu, um die Standardvalidierungsaktionen für Header in Antworten außer Kraft zu setzen. | Nein |
+| `validate-headers` | Stammelement Gibt Standardvalidierungsaktionen für alle Header in Antworten an.                                                                                                                              | Ja      |
+| `header` | Fügen Sie mindestens ein Element für benannte Header hinzu, um die Standardvalidierungsaktionen für Header in Antworten außer Kraft zu setzen. | Nein |
 
 ### <a name="attributes"></a>Attributes
 
 | Name                       | BESCHREIBUNG                                                                                                                                                            | Erforderlich | Standard |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| specified-header-action | [Aktion](#actions), die für im API-Schema angegebene Antwortheader ausgeführt werden soll.  |  Ja     | –   |
-| unspecified-header-action | [Aktion](#actions), die für im API-Schema nicht angegebene Antwortheader ausgeführt werden soll.  |  Ja     | –   |
-| errors-variable-name | Name der Variable in `context.Variables`, in der Validierungsfehler protokolliert werden.  |   Nein    | –   |
-| name | Name des Headers, für den die Validierungsaktion außer Kraft gesetzt werden soll. Bei diesem Wert wird die Groß-/Kleinschreibung nicht beachtet. | Ja | – |
-| action | [Aktion](#actions), die für Header mit dem passenden Namen ausgeführt werden soll. Wenn der Header im API-Schema angegeben ist, setzt dieser Wert den Wert von `specified-header-action` im `validate-headers`-Element außer Kraft. Andernfalls setzt er den Wert von `unspecified-header-action` im validate-headers-Element außer Kraft. | Ja | – | 
+| `specified-header-action` | [Aktion](#actions), die für im API-Schema angegebene Antwortheader ausgeführt werden soll.  |  Ja     | –   |
+| `unspecified-header-action` | [Aktion](#actions), die für im API-Schema nicht angegebene Antwortheader ausgeführt werden soll.  |  Ja     | –   |
+| `errors-variable-name` | Name der Variable in `context.Variables`, in der Validierungsfehler protokolliert werden.  |   Nein    | –   |
+| `name` | Name des Headers, für den die Validierungsaktion außer Kraft gesetzt werden soll. Bei diesem Wert wird die Groß-/Kleinschreibung nicht beachtet. | Ja | – |
+| `action` | [Aktion](#actions), die für Header mit dem passenden Namen ausgeführt werden soll. Wenn der Header im API-Schema angegeben ist, setzt dieser Wert den Wert von `specified-header-action` im `validate-headers`-Element außer Kraft. Andernfalls setzt er den Wert von `unspecified-header-action` im validate-headers-Element außer Kraft. | Ja | – | 
 
 ### <a name="usage"></a>Verwendung
 
@@ -244,17 +245,17 @@ Die `validate-status-code`-Richtlinie überprüft die HTTP-Statuscodes in Antwor
 
 | Name         | BESCHREIBUNG                                                                                                                                   | Erforderlich |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| validate-status-code | Stammelement                                                                                                | Ja      |
-| status-code | Fügen Sie mindestens ein Element für HTTP-Statuscodes hinzu, um die Standardvalidierungsaktion für Statuscodes in Antworten außer Kraft zu setzen. | Nein |
+| `validate-status-code` | Stammelement                                                                                                | Ja      |
+| `status-code` | Fügen Sie mindestens ein Element für HTTP-Statuscodes hinzu, um die Standardvalidierungsaktion für Statuscodes in Antworten außer Kraft zu setzen. | Nein |
 
 ### <a name="attributes"></a>Attributes
 
 | Name                       | BESCHREIBUNG                                                                                                                                                            | Erforderlich | Standard |
 | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------- |
-| unspecified-status-code-action | [Aktion](#actions), die für HTTP-Statuscodes in Antworten ausgeführt werden soll, die im API-Schema nicht angegeben sind.  |  Ja     | –   |
-| errors-variable-name | Name der Variable in `context.Variables`, in der Validierungsfehler protokolliert werden.  |   Nein    | –   |
-| code | Der HTTP-Statuscode, für den die Validierungsaktion außer Kraft gesetzt werden soll. | Ja | – |
-| action | [Aktion](#actions), die für den entsprechenden Statuscode ausgeführt werden soll, der im API-Schema nicht angegeben ist. Wenn der Statuscode im API-Schema angegeben ist, findet keine Außerkraftsetzung statt. | Ja | – | 
+| `unspecified-status-code-action` | [Aktion](#actions), die für HTTP-Statuscodes in Antworten ausgeführt werden soll, die im API-Schema nicht angegeben sind.  |  Ja     | –   |
+| `errors-variable-name` | Name der Variable in `context.Variables`, in der Validierungsfehler protokolliert werden.  |   Nein    | –   |
+| `code` | Der HTTP-Statuscode, für den die Validierungsaktion außer Kraft gesetzt werden soll. | Ja | – |
+| `action` | [Aktion](#actions), die für den entsprechenden Statuscode ausgeführt werden soll, der im API-Schema nicht angegeben ist. Wenn der Statuscode im API-Schema angegeben ist, findet keine Außerkraftsetzung statt. | Ja | – | 
 
 ### <a name="usage"></a>Verwendung
 

@@ -6,12 +6,13 @@ ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: conceptual
 ms.date: 09/13/2021
-ms.openlocfilehash: 46b5503e6c2c99c2c99f5cd18dc695ecb16275d1
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 8e7c77093ba3ddd2496d2e8ac8a78481d71fd1f6
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130166867"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131088158"
 ---
 # <a name="single-tenant-versus-multi-tenant-and-integration-service-environment-for-azure-logic-apps"></a>Vergleich zwischen Umgebungen mit einem Mandanten und mehreren Mandanten bzw. Integrationsdienstumgebung für Azure Logic Apps
 
@@ -252,7 +253,7 @@ Für Ressourcen vom Typ **Logik-App (Standard)** wurden die folgenden Funktionen
 
     * Die integrierte Aktion [Azure Logic Apps: Logik-App-Workflow auswählen](logic-apps-http-endpoint.md) heißt nun **Workflowvorgänge: Workflow in dieser Workflow-App aufrufen**.
 
-    * Einige [Auslöser und Aktionen für Integrationskonten](../connectors/managed.md#integration-account-connectors) sind nicht verfügbar, z. B. die Flat File-Aktionen, AS2 (V2)-Aktionen und RosettaNet-Aktionen.
+    * Einige [Auslöser und Aktionen für Integrationskonten](../connectors/managed.md#integration-account-connectors) sind nicht verfügbar, z. B. die AS2 (V2)-Aktionen und RosettaNet-Aktionen.
 
     * [Benutzerdefinierte verwaltete Connectors](../connectors/apis-list.md#custom-apis-and-connectors) werden derzeit nicht unterstützt. Mit Visual Studio Code können Sie jedoch *benutzerdefinierte integrierte Vorgänge* erstellen. Weitere Informationen finden Sie unter [Erstellen von Workflows für Instanzen mit einem Mandanten in Visual Studio Code](create-single-tenant-workflows-visual-studio-code.md#enable-built-in-connector-authoring).
 
