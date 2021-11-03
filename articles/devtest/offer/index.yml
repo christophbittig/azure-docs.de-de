@@ -1,0 +1,61 @@
+### YamlMime:Hub
+title: Dokumentation zu Azure Dev/Test-Angeboten
+summary: 'Hier erfahren Sie, wie Sie Visual Studio-Abonnementvorteile nutzen, um ohne zusätzliche Kosten in Azure zu entwickeln. Tutorials, Anleitungen und mehr.'
+metadata:
+  title: Dokumentation zu Azure Dev/Test-Angeboten
+  description: 'Hier erfahren Sie, wie Sie Visual Studio-Abonnementvorteile nutzen, um ohne zusätzliche Kosten in Azure zu entwickeln. Tutorials, Anleitungen und mehr.'
+  ms.topic: hub-page
+  ms.collection: collection
+  ms.prod: visual-studio-windows
+  ms.author: jmartens
+  author: j-martens
+  ms.date: 10/06/2021
+  ms.custom: devtestoffer
+  adobe-target: true
+highlightedContent:
+  items:
+    - title: Was ist das Azure Dev/Test-Angebot?
+      itemType: overview
+      url: overview-what-is-devtest-offer-visual-studio.md
+    - title: Beginnen mit der Verwendung von Azure-Gutschriften
+      itemType: quickstart
+      url: quickstart-individual-credit.md
+    - title: Erstellen von Unternehmens- und Organisationsabonnements
+      itemType: quickstart
+      url: concepts-gitops-azure-devtest.md
+conceptualContent:
+  items:
+    - title: Azure Dev/Test-Angebot für Einzelpersonen
+      links:
+        - url: ../../devtest/offer/quickstart-individual-credit.md
+          itemType: how-to-guide
+          text: Erste Schritte mit Azure-Gutschriften
+        - url: ../../devtest/offer/how-to-add-users-directory.md
+          itemType: how-to-guide
+          text: Hinzufügen von Benutzern zu Ihrem Verzeichnis
+        - url: ../../devtest/offer/how-to-remove-credit-limits.md
+          itemType: how-to-guide
+          text: Entfernen von Guthabenlimits
+        - url: ../../devtest/offer/how-to-sign-into-azure-with-github.md
+          itemType: how-to-guide
+          text: Anmelden bei Azure mit GitHub-Anmeldeinformationen
+        - url: ../../devtest/offer/how-to-change-directory-tenants-visual-studio-azure.md
+          itemType: how-to-guide
+          text: Ändern von Verzeichnismandanten mit Ihrem VSS-Azure-Abonnement
+    - title: Azure Dev/Test-Angebot für Unternehmen
+      links:
+        - url: ../../devtest/offer/quickstart-create-enterprise-devtest-subscriptions.md
+          itemType: how-to-guide
+          text: Erstellen von Unternehmens- und Organisationsabonnements
+        - url: ../../devtest/offer/concepts-gitops-azure-devtest.md
+          itemType: how-to-guide
+          text: Verwenden von GitOps mit Azure Dev/Test
+        - url: ../../devtest/offer/how-to-manage-monitor-devtest.md
+          itemType: how-to-guide
+          text: Verwalten Ihrer Azure Dev/Test-Abonnements
+        - url: ../../devtest/offer/how-to-manage-reliability-performance.md
+          itemType: how-to-guide
+          text: Implementieren von Zuverlässigkeit in Ihre Anwendungen
+        - url: ../../devtest/offer/concepts-security-governance-devtest.md
+          itemType: how-to-guide
+          text: Verwalten von Sicherheit und Governance

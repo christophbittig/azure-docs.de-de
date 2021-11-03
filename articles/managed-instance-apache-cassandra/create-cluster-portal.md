@@ -5,23 +5,18 @@ author: TheovanKraay
 ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
-ms.date: 09/08/2021
-ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 276ac87c4d1f0c31d75c4dd653aaa5c67f96d6c0
-ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
+ms.date: 11/02/2021
+ms.custom: references_regions, devx-track-azurecli, ignite-fall-2021
+ms.openlocfilehash: 32e21c102bec3c66c066cad9083ab6a561105289
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129754518"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131084992"
 ---
-# <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-from-the-azure-portal-preview"></a>Schnellstart: Erstellen einer Azure Managed Instance-Instanz für Apache Cassandra-Cluster im Azure-Portal (Vorschau)
+# <a name="quickstart-create-an-azure-managed-instance-for-apache-cassandra-cluster-from-the-azure-portal"></a>Schnellstart: Erstellen eines Azure Managed Instance for Apache Cassandra-Clusters im Azure-Portal
 
 Azure Managed Instance for Apache Cassandra bietet automatisierte Bereitstellungs- und Skalierungsvorgänge für verwaltete Open-Source-Rechenzentren in Apache Cassandra und ermöglicht so schnellere Hybridszenarios und einen geringeren kontinuierlichen Wartungsaufwand.
-
-> [!IMPORTANT]
-> Azure Managed Instance for Apache Cassandra befindet sich derzeit in der Public Preview-Phase.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe des Azure-Portals eine Azure Managed Instance-Instanz für einen Apache Cassandra-Cluster erstellen.
 
@@ -53,7 +48,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
    * **Cassandra-Administratorkennwort bestätigen**: Geben Sie Ihr Kennwort erneut ein.
 
    > [!NOTE]
-   > Während der öffentlichen Vorschau können Sie den Managed Instance-Cluster in den Regionen *„USA, Osten“, „USA, Westen“, „USA, Osten 2“, „USA, Westen 2“, „USA, Mitte“, „USA, Süden-Mitte“, „Europa, Norden“, „Europa, Westen“, „Asien, Südosten“, „Indien, Mitte“ und „Australien, Osten“* erstellen.
+   > Derzeit können Sie den Managed Instance-Cluster in den Regionen *„USA, Osten“, „USA, Westen“, „USA, Osten 2“, „USA, Westen 2“, „USA, Mitte“, „USA, Süden-Mitte“, „Europa, Norden“, „Europa, Westen“, „Asien, Südosten“, „Indien, Mitte“ und „Australien, Osten“* erstellen.
 
    :::image type="content" source="./media/create-cluster-portal/create-cluster-page.png" alt-text="Ausfüllen des Formulars zum Erstellen des Clusters." lightbox="./media/create-cluster-portal/create-cluster-page.png" border="true":::
 

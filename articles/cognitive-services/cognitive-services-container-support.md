@@ -5,18 +5,18 @@ description: Hier erfahren Sie, wie Cognitive Services mithilfe von Docker-Conta
 services: cognitive-services
 author: aahill
 manager: nitinme
-ms.custom: seodec18, cog-serv-seo-aug-2020
+ms.custom: cog-serv-seo-aug-2020, ignite-fall-2021
 ms.service: cognitive-services
 ms.topic: article
 ms.date: 09/24/2021
 ms.author: aahi
 keywords: lokal, Docker, Container, Kubernetes
-ms.openlocfilehash: 84e3a1690f68e9327eef3297f522535eb866aa7f
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 0057888a85acc2356660fecbf8a77071401e8e3c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130215951"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131033473"
 ---
 # <a name="azure-cognitive-services-containers"></a>Azure Cognitive Services-Container
 
@@ -50,10 +50,10 @@ Azure Cognitive Services-Container bieten den folgenden Satz von Docker-Containe
 | Dienst |  Container | BESCHREIBUNG | Verfügbarkeit |
 |--|--|--|--|
 | [LUIS][lu-containers] |  **LUIS** ([Image](https://go.microsoft.com/fwlink/?linkid=2043204&clcid=0x409)) | Lädt Ihr trainiertes oder veröffentlichtes Language Understanding-Modell (auch als LUIS-App bezeichnet) in einen Docker-Container und ermöglicht den Zugriff auf die Abfragevorhersagen von den API-Endpunkten des Containers. Sie können Abfrageprotokolle vom Container erfassen und wieder in das [LUIS-Portal](https://www.luis.ai) hochladen, um die Vorhersagegenauigkeit der App zu verbessern. | Allgemein verfügbar |
-| [Textanalyse][ta-containers-keyphrase] | **Schlüsselbegriffserkennung** ([Bild](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)) | Extrahiert die Schlüsselbegriffe, um die wichtigsten Punkte zu ermitteln. Wenn der eingegebene Text beispielsweise „Das Essen war köstlich, und es gab hervorragendes Personal“ lautet, gibt die API die Kernpunkte „Essen“ und „hervorragendes Personal“ zurück. | Vorschau |
-| [Textanalyse][ta-containers-language] |  **Textsprachenerkennung** ([Image](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)) | Erkennt die Sprache von Eingabetexten für bis zu 120 Sprachen und meldet einen einzigen Sprachcode für jedes Dokument, das auf Anforderung gesendet wird. Der Sprachcode ist mit einem Wert kombiniert, der die Stärke der Bewertung angibt. | Allgemein verfügbar |
-| [Textanalyse][ta-containers-sentiment] | **Standpunktanalyse v3** ([Image](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)) | Analysiert unformatierten Text auf Hinweise auf positive oder negative Stimmungen. Von dieser Version der Standpunktanalyse werden für jedes Dokument und jeden darin enthaltenen Satz Stimmungsbezeichnungen (beispielsweise *Positiv* oder *Negativ*) zurückgegeben. |  Allgemein verfügbar |
-| [Textanalyse][ta-containers-health] |  **Text Analytics for Health** | Extraktion und Bezeichnung medizinischer Informationen aus unstrukturiertem klinischem Text. | Vorschau |
+| [Sprachdienst][ta-containers-keyphrase] | **Schlüsselbegriffserkennung** ([Bild](https://go.microsoft.com/fwlink/?linkid=2018757&clcid=0x409)) | Extrahiert die Schlüsselbegriffe, um die wichtigsten Punkte zu ermitteln. Wenn der eingegebene Text beispielsweise „Das Essen war köstlich, und es gab hervorragendes Personal“ lautet, gibt die API die Kernpunkte „Essen“ und „hervorragendes Personal“ zurück. | Vorschau |
+| [Sprachdienst][ta-containers-language] |  **Textsprachenerkennung** ([Image](https://go.microsoft.com/fwlink/?linkid=2018759&clcid=0x409)) | Erkennt die Sprache von Eingabetexten für bis zu 120 Sprachen und meldet einen einzigen Sprachcode für jedes Dokument, das auf Anforderung gesendet wird. Der Sprachcode ist mit einem Wert kombiniert, der die Stärke der Bewertung angibt. | Allgemein verfügbar |
+| [Sprachdienst][ta-containers-sentiment] | **Standpunktanalyse** ([Bild](https://go.microsoft.com/fwlink/?linkid=2018654&clcid=0x409)) | Analysiert unformatierten Text auf Hinweise auf positive oder negative Stimmungen. Von dieser Version der Standpunktanalyse werden für jedes Dokument und jeden darin enthaltenen Satz Stimmungsbezeichnungen (beispielsweise *Positiv* oder *Negativ*) zurückgegeben. |  Allgemein verfügbar |
+| [Sprachdienst][ta-containers-health] |  **Text Analytics for Health** | Extraktion und Bezeichnung medizinischer Informationen aus unstrukturiertem klinischem Text. | Vorschau |
 | [Translator][tr-containers] | **Translator** | Übersetzt Text in verschiedene Sprachen und Dialekte. | Beschränkte Vorschauversion. [Zugriff anfordern](https://aka.ms/csgate-translator). | 
 
 ### <a name="speech-containers"></a>Speech-Container
@@ -123,7 +123,7 @@ Installieren und erkunden Sie die Funktionalität der Container in Azure Cogniti
 * [Container für die Gesichtserkennung][fa-containers]
 * [Container für Language Understanding (LUIS)][lu-containers]
 * [Container für die Speech Services-API][sp-containers]
-* [Container für die Textanalyse][ta-containers]
+* [Container für Sprachdienst][ta-containers]
 * [Übersetzer-Container][tr-containers]
 
 <!--* [Personalizer containers](https://go.microsoft.com/fwlink/?linkid=2083928&clcid=0x409)
@@ -141,10 +141,10 @@ Installieren und erkunden Sie die Funktionalität der Container in Azure Cogniti
 [sp-containers-tts]: speech-service/speech-container-howto.md?tabs=tts
 [sp-containers-ctts]: speech-service/speech-container-howto.md?tabs=ctts
 [sp-containers-ntts]: speech-service/speech-container-howto.md?tabs=ntts
-[ta-containers]: text-analytics/how-tos/text-analytics-how-to-install-containers.md
-[ta-containers-keyphrase]: text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=keyphrase
-[ta-containers-language]: text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=language
-[ta-containers-sentiment]: text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=sentiment
-[ta-containers-health]: text-analytics/how-tos/text-analytics-how-to-install-containers.md?tabs=health
+[ta-containers]: language-service/overview.md#deploy-on-premises-using-docker-containers
+[ta-containers-keyphrase]: language-service/key-phrase-extraction/how-to/use-containers.md
+[ta-containers-language]: language-service/language-detection/how-to/use-containers.md
+[ta-containers-sentiment]: language-service/sentiment-opinion-mining/how-to/use-containers.md
+[ta-containers-health]: language-service/text-analytics-for-health/how-to/use-containers.md
 [tr-containers]: translator/containers/translator-how-to-install-container.md
 [request-access]: https://aka.ms/csgate

@@ -10,12 +10,13 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 10/18/2018
 ms.author: rambala
-ms.openlocfilehash: 4dfd869b92e042e71eed1ee692d90fc44a8ac6c1
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 7a777208563e13945bd0bdd0aac43560143d0a49
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98234238"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131005060"
 ---
 # <a name="interoperability-in-azure--control-plane-analysis"></a>Interoperabilität in Azure: Analyse der Steuerungsebene
 
@@ -94,11 +95,11 @@ Unter [ExpressRoute – FAQ][ExR-FAQ] finden Sie Informationen zu folgenden The
 
 
 <!--Image References-->
-[1]: ./media/backend-interoperability/HubView.png "Hub-Spoke-VNET-Perspektive der Topologie"
-[2]: ./media/backend-interoperability/Loc1ExRView.png "Perspektive von Standort 1 und des Remote-VNET der Topologie über ExpressRoute 1"
-[3]: ./media/backend-interoperability/Loc1VPNView.png "Perspektive von Standort 1 und des VNET der Zweigniederlassung der Topologie über ein Site-to-Site-VPN"
-[4]: ./media/backend-interoperability/Loc2View.png "Perspektive des Standorts 2 der Topologie"
-[5]: ./media/backend-interoperability/ExR1-RouteTable.png "Routingtabelle von ExpressRoute 1"
+[1]: ./media/backend-interoperability/hubview.png "Hub-Spoke-VNET-Perspektive der Topologie"
+[2]: ./media/backend-interoperability/loc1exrview.png "Perspektive von Standort 1 und des Remote-VNET der Topologie über ExpressRoute 1"
+[3]: ./media/backend-interoperability/loc1vpnview.png "Perspektive von Standort 1 und des VNET der Zweigniederlassung der Topologie über ein Site-to-Site-VPN"
+[4]: ./media/backend-interoperability/loc2view.png "Perspektive des Standorts 2 der Topologie"
+[5]: ./media/backend-interoperability/exr1-routetable.png "Routingtabelle von ExpressRoute 1"
 
 <!--Link References-->
 [Setup]: ./connectivty-interoperability-preface.md
@@ -107,7 +108,7 @@ Unter [ExpressRoute – FAQ][ExR-FAQ] finden Sie Informationen zu folgenden The
 [VPN]: ../vpn-gateway/vpn-gateway-about-vpngateways.md
 [VNet]: ../virtual-network/tutorial-connect-virtual-networks-portal.md
 [Configuration]: ./connectivty-interoperability-configuration.md
-[Control-Analysis]:https://docs.microsoft.com/azure/networking/connectivty-interoperability-control-plane
+[Control-Analysis]: /azure/networking/connectivty-interoperability-control-plane
 [Data-Analysis]: ./connectivty-interoperability-data-plane.md
 [ExR-FAQ]: ../expressroute/expressroute-faqs.md
 [S2S-Over-ExR]: ../expressroute/site-to-site-vpn-over-microsoft-peering.md

@@ -3,19 +3,19 @@ title: Bewertungsregeln für die Migration von Azure SQL Server zu SQL-Datenbank
 description: Bewertungsregeln zum Identifizieren von Problemen mit der SQL Server-Quellinstanz, die behoben werden müssen, bevor die Migration zu Azure SQL-Datenbank erfolgt.
 ms.service: sql-database
 ms.subservice: migration-guide
-ms.custom: ''
+ms.custom: ignite-fall-2021
 ms.devlang: ''
 ms.topic: how-to
 author: rajeshsetlem
 ms.author: rsetlem
 ms.reviewer: mathoma, cawrites
 ms.date: 12/15/2020
-ms.openlocfilehash: 17b3cd2c0257989a220be6b35e93d88db7225188
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: 88c90896cd8c480f828116c479a4dc5d0a3ee99f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129457466"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131069499"
 ---
 # <a name="assessment-rules-for-sql-server-to-azure-sql-database-migration"></a>Bewertungsregeln für die Migration von Azure SQL Server zu SQL-Datenbank
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -217,7 +217,7 @@ Eine verteilte Transaktion, die mit „Transact SQL BEGIN DISTRIBUTED TRANSACTIO
 **Empfehlung**   
 Navigieren Sie in Azure Migrate zum Abschnitt „Betroffene Objekte“, um alle Objekte anzuzeigen, für die BEGIN DISTRIBUTED TRANSACTION verwendet wird. Erwägen Sie, die Teilnehmerdatenbanken zu Azure SQL Managed Instance zu migrieren, damit verteilte Transaktionen instanzübergreifend unterstützt werden (derzeit in der Vorschauphase). Alternativ können Sie zu SQL Server auf einem virtuellen Azure-Computer migrieren.
 
-Weitere Informationen: [Transaktionen über mehrere Server für Azure SQL Managed Instance](../../database/elastic-transactions-overview.md#transactions-across-multiple-servers-for-azure-sql-managed-instance)
+Weitere Informationen: [Transaktionen über mehrere Server für Azure SQL Managed Instance](../../database/elastic-transactions-overview.md#transactions-for-sql-managed-instance)
 
 
 ## <a name="openrowset-bulk"></a>OPENROWSET (Massenvorgang)<a id="OpenRowsetWithNonBlobDataSourceBulk"></a>

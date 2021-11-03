@@ -4,21 +4,20 @@ description: Das Testen Ihrer QnA Maker-Wissensdatenbank ist ein wichtiger Teil 
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 11/09/2020
-ms.openlocfilehash: 7c27ce8087020a43076ee3c4c8a99454a554554c
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 11/02/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: afdb286cf03fdc0f49a9428e0e2a0588df46cc14
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110377481"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131017020"
 ---
 # <a name="test-your-knowledge-base-in-qna-maker"></a>Testen Ihrer Wissensdatenbank in QnA Maker
 
 Das Testen Ihrer QnA Maker-Wissensdatenbank ist ein wichtiger Teil eines iterativen Prozesses zur Verbesserung der Genauigkeit zurückgegebener Antworten. Sie können die Wissensdatenbank über eine verbesserte Chatschnittstelle testen, die Ihnen auch Änderungen ermöglicht.
 
 ## <a name="interactively-test-in-qna-maker-portal"></a>Interaktives Testen im QnA Maker-Portal
-
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
 
 1. Greifen Sie auf Ihre Wissensdatenbank zu, indem Sie den Namen auf der Seite **Meine Wissensdatenbanken** auswählen.
 1. Um auf den Einblendbereich Test zuzugreifen, wählen Sie im oberen Bereich Ihrer Anwendung **Test** aus.
@@ -65,58 +64,6 @@ Wählen Sie **Speichern und trainieren** aus, um diese Antwort dauerhaft zu spei
 
 > [!NOTE]
 > Alle Änderungen an der Wissensdatenbank werden nur gespeichert, wenn Sie auf die Schaltfläche **Speichern und trainieren** klicken.
-
-# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
-
-1. Greifen Sie auf Ihre Wissensdatenbank zu, indem Sie den Namen auf der Seite **Meine Wissensdatenbanken** auswählen.
-1. Um auf den Einblendbereich Test zuzugreifen, wählen Sie im oberen Bereich Ihrer Anwendung **Test** aus. 
-1. Am oberen Rand wird ein Kontrollkästchen **Kurze Antwort anzeigen** angezeigt, das standardmäßig aktiviert ist. Diese Option wird verwendet, um die MRC-basierte Erkennung von Antwortspannen in Ihrem Testbereich zu aktivieren. 
-1. Geben Sie eine Abfrage in das Textfeld ein, und drücken Sie die EINGABETASTE. 
-1. Wenn für jede Abfrage in der Antwortpassage eine genaue Antwort/kurze Antwort vorhanden ist, erhalten Sie zusammen mit der am besten passenden Antwortpassage auch eine kurze Antwort für Ihre Abfrage.
-    ![Verwalteter aktivierter Testbereich](../media/qnamaker-how-to-test-knowledge-bases/test-pane-with-managed-detail.png)
-1. Wenn Sie das Kontrollkästchen **Kurze Antwort anzeigen** deaktivieren, wird nur die am besten passende Antwortpassage aus der Wissensdatenbank als Antwort zurückgegeben.
-
-### <a name="clear-test-panel"></a>Leeren des Testbereichs
-
-Um alle eingegebenen Testabfragen und ihre Ergebnisse aus der Testkonsole zu löschen, wählen Sie in der linken oberen Ecke des Bereichs „Test“ die Option **Neu beginnen** aus.
-
-### <a name="close-test-panel"></a>Schließen des Testbereichs
-
-Um den Bereich „Test“ zu schließen, wählen Sie erneut die Schaltfläche **Test** aus. Während der Bereich „Test“ geöffnet ist, können Sie den Inhalt der Wissensdatenbank nicht bearbeiten.
-
-### <a name="inspect-score"></a>Überprüfen der Bewertung
-
-Sie überprüfen die Details des Testergebnisses im Bereich „Überprüfen“.
-
-1.  Wählen Sie bei geöffnetem Bereich „Test“ die Option **Überprüfen** aus, um weitere Details zu dieser Antwort zu erhalten.
-
-    ![Überprüfen von Antworten (Vorschau)](../media/qnamaker-how-to-test-knowledge-bases/inspect-with-managed.png)
-
-2.  Der Bereich „Überprüfung“ wird angezeigt. Dieser Bereich enthält die Absicht mit der höchsten Bewertung sowie alle identifizierten Entitäten. Das Ergebnis der ausgewählten Äußerung wird im Bereich angezeigt.
-3. In dem Bereich wird der Konfidenzscore der Antwortpassage zusammen mit einem Score der erkannten Antwortspanne angezeigt.
-4. Im Panel wird auch die Quelle der Wissensdatenbank für den Antwortabschnitt angezeigt.
-
-### <a name="correct-the-top-scoring-answer"></a>Korrigieren der Antwort mit der höchsten Bewertung
-
-Wenn die Antwort mit der höchsten Bewertung falsch ist, wählen Sie die richtige Antwort aus der Liste aus, und wählen Sie dann **Speichern und trainieren** aus.
-
-![Korrigieren der Antwort mit dem höchsten Score (Vorschau)](../media/qnamaker-how-to-test-knowledge-bases/choose-answer-managed.png)
-
-### <a name="add-alternate-questions"></a>Hinzufügen alternativer Fragen
-
-Sie können alternative Formen einer Frage für eine bestimmte Antwort hinzufügen. Geben Sie die alternativen Antworten in das Textfeld ein, und drücken Sie die EINGABETASTE, um sie hinzuzufügen. Wählen Sie **Speichern und trainieren** aus, um die Aktualisierungen zu speichern.
-
-![Hinzufügen alternativer Fragen (Vorschau)](../media/qnamaker-how-to-test-knowledge-bases/add-alternate-question-with-managed.png)
-
-### <a name="add-a-new-answer"></a>Hinzufügen einer neuen Antwort
-
-Sie können eine neue Antwort hinzufügen, wenn eine der als passend zurückgegebenen Antworten falsch ist oder die Antwort nicht in der Wissensdatenbank enthalten ist (keine passende Übereinstimmung in der Wissensdatenbank gefunden wurde).
-
-Verwenden Sie das Textfeld unten in der Antwortliste, um eine neue Antwort einzugeben, und drücken Sie die Eingabetaste, um sie hinzuzufügen.
-
-Wählen Sie **Speichern und trainieren** aus, um diese Antwort dauerhaft zu speichern. Es ist nun ein neues Frage-Antwort-Paar zu Ihrer Wissensdatenbank hinzugefügt.
-
----
 
 ### <a name="test-the-published-knowledge-base"></a>Testen der veröffentlichten Wissensdatenbank
 

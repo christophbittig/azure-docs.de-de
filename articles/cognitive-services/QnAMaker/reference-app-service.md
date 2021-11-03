@@ -4,21 +4,20 @@ description: Erfahren Sie, wie und wo Ressourcen konfiguriert werden.
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: reference
-ms.date: 11/9/2020
-ms.openlocfilehash: fe949aef996169f6993623fa9c4716a602f32e93
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.date: 11/02/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: f504e1de8c751cb7d97679c8d56c591b0508c808
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130260339"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131071114"
 ---
 # <a name="service-configuration"></a>Dienstkonfiguration
 
 Jede Version von QnA Maker verwendet einen anderen Satz von Azure-Ressourcen (Diensten). In diesem Artikel werden die unterstützten Anpassungen für diese Dienste beschrieben. 
 
 ## <a name="app-service"></a>App Service
-
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
 
 QnA Maker verwendet den App Service, um die von der [generateAnswer-API](/rest/api/cognitiveservices/qnamaker4.0/runtime/generateanswer) verwendete Abfragelaufzeit bereitzustellen.
 
@@ -38,12 +37,6 @@ Sie können eine einzelne Einstellung entweder über die Liste der Anwendungsein
 
 Sie müssen den Dienst über die Seite **Übersicht** des Azure-Portals **neu starten**, sobald Sie mit den Änderungen fertig sind.
 
-# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
-
-App Service-Anpassungen gelten nicht für „Benutzerdefinierte Fragen und Antworten“ (Vorschau).
-
----
-
 ## <a name="qna-maker-service"></a>QnA Maker Service
 
 Der QnA Maker-Dienst stellt die Konfiguration für die folgenden Benutzer bereit, die an einem einzelnen QnA Maker-Dienst und all seinen Wissensdatenbanken zusammenarbeiten können.
@@ -60,27 +53,11 @@ Erfahren Sie, [wie Sie den Text Ihrer Standardantworten ändern](How-To/change-d
 
 ## <a name="telemetry"></a>Telemetrie
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
-
 Anwendung Insights wird zur Überwachung der Telemetrie mit QnA Maker GA verwendet. Es gibt keine speziellen Konfigurationseinstellungen für QnA Maker.
-
-# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
-
-Erfahren Sie, [wie Sie Ihrem Dienst „Benutzerdefinierte Fragen und Antworten“ (Vorschau) Telemetriedaten hinzufügen](How-To/get-analytics-knowledge-base.md). 
-
----
 
 ## <a name="app-service-plan"></a>App Service-Plan
 
-# <a name="qnamaker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
-
 App Service-Plan verfügt über keine speziellen Konfigurationseinstellungen für QnA Maker.
-
-# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
-
-App Service-Plan wird nicht mit „Benutzerdefinierte Fragen und Antworten“ (Vorschau) verwendet.
-
----
 
 ## <a name="next-steps"></a>Nächste Schritte
 

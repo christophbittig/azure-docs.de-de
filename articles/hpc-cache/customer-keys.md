@@ -1,17 +1,17 @@
 ---
 title: Verwenden von kundenseitig verwalteten Schlüsseln zum Verschlüsseln von Daten in Azure HPC Cache
 description: Vorgehensweise zum Verwenden von Azure Key Vault mit Azure HPC Cache, um den Zugriff auf Verschlüsselungsschlüssel zu kontrollieren, anstatt die von Microsoft verwalteten Standardverschlüsselungsschlüssel zu verwenden.
-author: ekpgh
+author: femila
 ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/15/2021
-ms.author: v-erkel
-ms.openlocfilehash: dbb2834d6d51f2555da05863c606b4678b9a17b7
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.author: femila
+ms.openlocfilehash: 87f80d77f1b2768291532c216ff99b892ba8f12a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122772285"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131019949"
 ---
 # <a name="use-customer-managed-encryption-keys-for-azure-hpc-cache"></a>Verwenden von kundenseitig verwalteten Verschlüsselungsschlüsseln für Azure HPC Cache
 

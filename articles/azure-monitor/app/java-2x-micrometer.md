@@ -6,12 +6,12 @@ ms.custom: devx-track-java
 ms.date: 11/01/2018
 author: mattmccleary
 ms.author: mmcc
-ms.openlocfilehash: 20d43fca48bfcdf264ae7c008c5fa406b7d5d719
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: 10ef93c1e977c86059365a1d08e312f1d72e312d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130133935"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131078900"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk-not-recommended"></a>Verwenden von Micrometer mit dem Azure Application Insights Java SDK (nicht empfohlen)
 
@@ -33,7 +33,7 @@ Schritte
 
 1. Aktualisieren Sie die „pom.xml“-Datei Ihrer Spring Boot-Anwendung und fügen Sie die folgenden Abhängigkeiten hinzu:
 
-    ```XML
+    ```xml
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>applicationinsights-spring-boot-starter</artifactId>
@@ -71,7 +71,7 @@ Schritte:
 
 1. Aktualisieren Sie die „pom.xml“-Datei Ihrer Spring Boot-Anwendung und fügen Sie die folgende Abhängigkeit hinzu:
 
-    ```XML
+    ```xml
     <dependency> 
           <groupId>com.microsoft.azure</groupId>
           <artifactId>azure-spring-boot-metrics-starter</artifactId>
@@ -130,7 +130,7 @@ Schritte:
 
 1. Fügen Sie die folgenden Abhängigkeiten zur pom.xml- oder build.gradle-Datei hinzu:
 
-    ```XML
+    ```xml
         <dependency>
             <groupId>io.micrometer</groupId>
             <artifactId>micrometer-registry-azure-monitor</artifactId>
@@ -146,7 +146,7 @@ Schritte:
 
 2. Fügen Sie die Datei `ApplicationInsights.xml` in den Ressourcenordner ein:
 
-    ```XML
+    ```xml
     <?xml version="1.0" encoding="utf-8"?>
     <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
 

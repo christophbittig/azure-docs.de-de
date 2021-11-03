@@ -8,14 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 10/11/2021
 ms.author: aahi
-ms.openlocfilehash: 6918218d8434c06f59b0738e60cad53b94b0a0b5
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 7415070639f4f6dbcee62c33871f4fbdbc64edac
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "98939850"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131011724"
 ---
 # <a name="deploy-the-text-analytics-language-detection-container-to-azure-kubernetes-service"></a>Bereitstellen des Spracherkennungscontainers der Textanalyse in Azure Kubernetes Service
 
@@ -38,7 +39,7 @@ Für dieses Verfahren müssen mehrere Tools lokal installiert und ausgeführt we
 
 Im Rahmen dieses Verfahrens wird das Cognitive Services-Containerbeispiel für die Sprachenerkennung geladen und ausgeführt. Das Beispiel enthält zwei Container: einen für die Clientanwendung und einen für den Cognitive Services-Container. Wir übertragen beide Images per Push in die Azure Container Registry. Nachdem sie sich in Ihrer eigenen Registrierung befinden, erstellen Sie eine Azure Kubernetes Service-Instanz, um auf diese Images zuzugreifen und die Container auszuführen. Wenn die Container ausgeführt werden, verwenden Sie die Befehlszeilenschnittstelle **kubectl**, um die Leistung der Container zu überwachen. Greifen Sie über eine HTTP-Anforderung auf die Clientanwendung zu, und sehen Sie sich die Ergebnisse an.
 
-![Konzeptidee zum Ausführen von Beispielcontainern](../text-analytics/media/how-tos/container-instance-sample/containers.png)
+![Diagramm, das die konzeptionelle Idee der Ausführung eines Containers auf Kubernetes zeigt](media/container-instance-sample.png)
 
 ## <a name="the-sample-containers"></a>Die Beispielcontainer
 
@@ -383,7 +384,7 @@ Falls `EXTERNAL-IP` für den Dienst als ausstehend angezeigt wird, führen Sie d
 
 Navigieren Sie in einem Browser zu der externen IP-Adresse des Containers `language` aus dem vorherigen Abschnitt: `http://<external-ip>:5000/swagger/index.html`. Sie können das Feature `Try it` der API verwenden, um den Endpunkt für die Sprachenerkennung zu testen.
 
-![Anzeigen der Swagger-Dokumentation des Containers](../text-analytics/media/how-tos/container-instance-sample/language-detection-container-swagger-documentation.png)
+![Screenshot der Swagger-Dokumentation des Containers](./media/language-detection-container-swagger-documentation.png)
 
 ## <a name="test-the-client-application-container"></a>Testen des Clientanwendungscontainers
 

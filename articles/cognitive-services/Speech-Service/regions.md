@@ -8,25 +8,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/01/2021
+ms.date: 10/13/2021
 ms.author: panosper
-ms.custom: seodec18,references_regions
-ms.openlocfilehash: 002f8ce7311d59a101f676908453fb1493b6dd39
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.custom: references_regions, ignite-fall-2021
+ms.openlocfilehash: 5ae6618731a6b8d0561a58a1997dbee9584e3551
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114710418"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131031117"
 ---
 # <a name="speech-service-supported-regions"></a>Vom Speech-Dienst unterstützte Regionen
 
 Mithilfe des Speech-Diensts kann Ihre Anwendung Sprache in Text konvertieren, Sprachübersetzungen ausführen und Text in Sprache konvertieren. Der Dienst ist in mehreren Regionen mit eindeutigen Endpunkten für das Speech SDK und REST-APIs verfügbar.
 
-Das Sprachportal zum Durchführen benutzerdefinierter Konfigurationen für Ihre Sprachfunktionen für alle Regionen finden Sie hier: https://speech.microsoft.com
+Das Speech-Portal, in dem Sie individuelle Konfigurationen für alle Regionen vornehmen können, finden Sie unter [speech.microsoft.com](https://speech.microsoft.com).
 
 Beim Erwägen einer Region sollten Sie die folgenden Punkte bedenken:
 
-* Wenn Ihre Anwendung ein [Speech SDK](speech-sdk.md) verwendet, geben Sie beim Erstellen einer Sprachkonfiguration den Regionsbezeichner (z. B. `westus`) an.
+* Wenn Ihre Anwendung ein [Speech SDK](speech-sdk.md) verwendet, geben Sie beim Erstellen einer Sprachkonfiguration den Regionsbezeichner (z. B. `westus`) an. Achten Sie darauf, dass die Region mit der Region Ihres Abonnements übereinstimmt.
 * Wenn Ihre Anwendung eine der [REST-APIs](./overview.md#reference-docs) des Sprachdiensts verwendet, ist die Region Teil des Endpunkt-URIs, den Sie bei der Anforderung verwenden.
 * Schlüssel, die für eine Region erstellt wurden, sind nur in dieser Region gültig. Der Versuch, sie mit anderen Regionen zu verwenden, führt zu Authentifizierungsfehlern.
 
@@ -35,17 +35,13 @@ Beim Erwägen einer Region sollten Sie die folgenden Punkte bedenken:
 
 ## <a name="speech-sdk"></a>Sprach-SDK
 
-Im [Speech SDK](speech-sdk.md) werden Regionen als Zeichenfolge angegeben (z.B. als Parameter für `SpeechConfig.FromSubscription` im Speech SDK für C#).
+Im [Speech SDK](speech-sdk.md) wird die Region als Parameter angegeben (zum Beispiel als Parameter für `SpeechConfig.FromSubscription` im Speech SDK für C#).
 
 ### <a name="speech-to-text-text-to-speech-and-translation"></a>Spracherkennung, Sprachsynthese und Übersetzung
-
-Das Speech-Anpassungsportal ist hier verfügbar: https://speech.microsoft.com
 
 Der Speech-Dienst ist in den folgenden Regionen für **Spracherkennung**, **Sprachsynthese** und **Übersetzung** verfügbar:
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
-
-Wenn Sie das [Speech SDK](speech-sdk.md) verwenden, werden die Regionen durch den **Regionsbezeichner** angegeben (z. B. als Parameter von `SpeechConfig.FromSubscription`). Achten Sie darauf, dass die Region mit der Region Ihres Abonnements übereinstimmt.
 
 Wenn Sie ein benutzerdefiniertes Modell mit Audiodaten trainieren möchten, verwenden Sie eine der [Regionen mit dedizierter Hardware](custom-speech-overview.md#set-up-your-azure-account), um das Training zu beschleunigen. Sie können die [REST-API](https://centralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CopyModelToSubscription) verwenden, um das vollständig trainierte Modell später in eine andere Region zu kopieren.
 
@@ -90,11 +86,27 @@ Das [Speech SDK](speech-sdk.md) unterstützt Funktionen des **Sprach-Assistenten
 
 ### <a name="speaker-recognition"></a>Sprechererkennung
 
-Sprechererkennung ist derzeit nur in der Region `westus` verfügbar.
+Folgende Regionen sind für **Sprechererkennung** verfügbar:
+
+| Gebiet | Region           | Regionsbezeichner |
+| ------------- | ---------------- | -------------------- |
+| Amerika     | USA, Mitte   | `centralus` |
+| Amerika     | East US   | `eastus`  |
+| Amerika     | USA (Ost) 2  | `eastus2`  |
+| Amerika     | USA, Westen-Mitte  | `westcentralus`  |
+| Amerika     | USA, Westen  | `westus`  |
+| Amerika     | USA, Westen 2  | `westus2`  |
+| Asien-Pazifik  | Asien, Osten   | `eastasia` |
+| Asien-Pazifik  | Asien, Südosten   | `southeastasia` |
+| Asien-Pazifik  | Indien, Mitte   | `centralindia` |
+| Australien     | Australien (Osten)   | `australiaeast` |
+| Europa     | Nordeuropa   | `northeurope` |
+| Europa     | Europa, Westen   | `westeurope` |
+| Europa     | UK, Süden   | `uksouth` |
 
 ## <a name="rest-apis"></a>REST-APIs
 
-Der Speech-Dienst macht auch REST-Endpunkte für Spracherkennungs- und Sprachsyntheseanforderungen verfügbar.
+Der Dienst Speech stellt auch REST-Endpunkte für Anfragen zu Sprache-zu-Text, Text-zu-Sprache und Sprechererkennung bereit.
 
 ### <a name="speech-to-text"></a>Spracherkennung
 
@@ -118,3 +130,7 @@ Ersetzen Sie `<REGION_IDENTIFIER>` durch den Bezeichner aus der folgenden Tabell
 Die Referenzdokumentation zur Sprachsynthese finden Sie unter [Text-to-Speech-REST-API](rest-text-to-speech.md).
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
+
+### <a name="speaker-recognition"></a>Sprechererkennung
+
+Eine Referenzdokumentation zur Sprechererkennung finden Sie unter [Speaker Recognition REST API](/rest/api/speakerrecognition/). Die verfügbaren Regionen sind die gleichen wie im Sprechererkennungs-SDK.

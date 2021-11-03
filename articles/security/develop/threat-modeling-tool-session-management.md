@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: has-adal-ref, devx-track-js, devx-track-csharp
-ms.openlocfilehash: a1f4d4a3bb78da82753d651e1a73cf244096d5df
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0e89d80d26cd9a967bd4651828104c4b00a0d367
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94518100"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131047628"
 ---
 # <a name="security-frame-session-management"></a>Sicherheitsrahmen: Sitzungsverwaltung
 | Produkt/Dienst | Artikel |
@@ -205,7 +205,7 @@ Diese Einstellung wird auch erzwungen, wenn für den Zugriff auf die Anwendung H
 
 ### <a name="example"></a>Beispiel
 Für alle HTTP-basierten Anwendungen, die Cookies verwenden, sollte in der Cookiedefinition „HttpOnly“ angegeben werden, indem die folgende Konfiguration in „web.config“ implementiert wird:
-```XML
+```xml
 <system.web>
 .
 .
@@ -226,7 +226,7 @@ Für alle HTTP-basierten Anwendungen, die Cookies verwenden, sollte in der Cooki
 
 ### <a name="example"></a>Beispiel 
 Im folgenden Codebeispiel wird das Attribut „requireSSL“ in der Datei „Web.config“ festgelegt.
-```XML
+```xml
 <authentication mode="Forms">
   <forms loginUrl="member_login.aspx" cookieless="UseCookies" requireSSL="true"/>
 </authentication>
@@ -243,7 +243,7 @@ Im folgenden Codebeispiel wird das Attribut „requireSSL“ in der Datei „Web
 
 ### <a name="example"></a>Beispiel
 Hier ist die richtige Konfiguration dargestellt:
-```XML
+```xml
 <federatedAuthentication>
 <cookieHandler mode="Custom"
                        hideFromScript="true"
@@ -382,7 +382,7 @@ void Page_Init (object sender, EventArgs e) {
 | **Schritte** | Das Sitzungstimeout entspricht dem Ereignis, das eintritt, wenn Benutzer während eines (vom Webserver vorgegebenen) Intervallzeitraums keine Aktion auf einer Website durchführen. Mit dem Ereignis wird auf Serverseite der Status der Benutzersitzung in „ungültig“ (z.B. nicht mehr verwendet) geändert, und der Webserver wird angewiesen, die Sitzung zu zerstören (Löschen aller enthaltenen Daten). Im folgenden Codebeispiel wird das Attribut für das Sitzungstimeout in der Datei „Web.config“ auf 15 Minuten festgelegt.|
 
 ### <a name="example"></a>Beispiel
-```XML 
+```xml
 <configuration>
   <system.web>
     <sessionState mode="InProc" cookieless="true" timeout="15" />
@@ -402,7 +402,7 @@ void Page_Init (object sender, EventArgs e) {
 | **Schritte** | Festlegen des Cookietimeouts für das Forms-Authentifizierungsticket auf 15 Minuten|
 
 ### <a name="example"></a>Beispiel
-```XML
+```xml
 <forms  name=".ASPXAUTH" loginUrl="login.aspx"  defaultUrl="default.aspx" protection="All" timeout="15" path="/" requireSSL="true" slidingExpiration="true"/>
 </forms>
 ```
@@ -417,7 +417,7 @@ void Page_Init (object sender, EventArgs e) {
 | **Schritte** | Wenn die Webanwendung die vertrauende Seite und AD FS der Sicherheitstokendienst ist, kann die Lebensdauer der Authentifizierungscookies (FedAuth-Token) mit der folgenden Konfiguration in „web.config“ festgelegt werden:|
 
 ### <a name="example"></a>Beispiel
-```XML
+```xml
   <system.identityModel.services>
     <federationConfiguration>
       <!-- Set requireSsl=true; domain=application domain name used by FedAuth cookies (Ex: .gdinfra.com); -->

@@ -136,6 +136,14 @@
           href: deploy-disaster-recovery-using-vmware-hcx.md
         - name: Bereitstellen von VMware SRM für die Notfallwiederherstellung
           href: disaster-recovery-using-vmware-site-recovery-manager.md
+    - name: Bereitstellen virtueller Desktops
+      items:
+        - name: Bereitstellen von Horizon in Azure VMware Solution
+          href: azure-vmware-solution-horizon.md
+        - name: Bereitstellen von Citrix auf Azure VMware Solution
+          href: azure-vmware-solution-citrix.md
+        - name: Bereitstellen der Zerto-Notfallwiederherstellung
+          href: deploy-zerto-disaster-recovery.md
     - name: Verschieben von Ressourcen
       items:
         - name: "Verschieben von Azure\_VMware\_Solution-Abonnements"
@@ -148,7 +156,7 @@
       href: rotate-cloudadmin-credentials.md
     - name: Einsparen von Kosten mit einer reservierten Instanz
       href: reserved-instance.md
-    - name: VMware-Ökosystem
+    - name: Partnerlösungsökosystem
       items:
         - name: Sicherungslösungen für virtuelle Computer
           href: ecosystem-back-up-vms.md

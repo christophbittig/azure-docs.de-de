@@ -7,12 +7,13 @@ ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 05/08/2021
-ms.openlocfilehash: f3367883b35e35a4dd726b92af48a92f863cfa5d
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: fdce380d09cc2992f4e77f9385b1d176a6ae68eb
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129207847"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131076659"
 ---
 # <a name="credentials-for-source-authentication-in-azure-purview"></a>Anmeldeinformationen für die Quellenauthentifizierung in Azure Purview
 
@@ -41,12 +42,12 @@ Entscheiden Sie zunächst unter Berücksichtigung Ihrer Datenquellentypen und Ne
 
 Wenn Sie die verwaltete Purview-Identität zum Einrichten von Überprüfungen verwenden, müssen Sie nicht explizit Anmeldeinformationen erstellen und Ihren Schlüsseltresor für die Speicherung nicht mit Purview verknüpfen. Eine ausführliche Anleitung zum Hinzufügen der verwalteten Purview-Identität, um den Zugriff auf die Überprüfung Ihrer Datenquellen zu ermöglichen, finden Sie unten in den Abschnitten zur Authentifizierung von Datenquellen:
 
-- [Azure Blob Storage](register-scan-azure-blob-storage-source.md#setting-up-authentication-for-a-scan)
-- [Azure Data Lake Storage Gen1](register-scan-adls-gen1.md#setting-up-authentication-for-a-scan)
-- [Azure Data Lake Storage Gen2](register-scan-adls-gen2.md#setting-up-authentication-for-a-scan)
+- [Azure Blob Storage](register-scan-azure-blob-storage-source.md#authentication-for-a-scan)
+- [Azure Data Lake Storage Gen1](register-scan-adls-gen1.md#authentication-for-a-scan)
+- [Azure Data Lake Storage Gen2](register-scan-adls-gen2.md#authentication-for-a-scan)
 - [Azure SQL-Datenbank](register-scan-azure-sql-database.md)
-- [Verwaltete Azure SQL-Datenbank-Instanz](register-scan-azure-sql-database-managed-instance.md#setting-up-authentication-for-a-scan)
-- [Azure Synapse Analytics](register-scan-azure-synapse-analytics.md#setting-up-authentication-for-a-scan)
+- [Verwaltete Azure SQL-Datenbank-Instanz](register-scan-azure-sql-database-managed-instance.md#authentication-for-registration)
+- [Azure Synapse Analytics](register-scan-azure-synapse-analytics.md#authentication-for-registration)
 
 ## <a name="create-azure-key-vaults-connections-in-your-azure-purview-account"></a>Erstellen von Azure Key Vault-Verbindungen in Ihrem Azure Purview-Konto
 

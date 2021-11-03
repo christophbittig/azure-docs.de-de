@@ -1,89 +1,100 @@
 ---
-title: Registrieren einer Hive-Metastore-Datenbank und Einrichten von Überprüfungen in Azure Purview
-description: In diesem Artikel erfahren Sie, wie Sie eine Hive-Metastore-Datenbank in Azure Purview registrieren und eine Überprüfung einrichten.
+title: Verbinden und Verwalten von Hive-Metastore-Datenbanken
+description: In diesem Leitfaden wird beschrieben, wie Sie eine Verbindung mit Hive-Metastore-Datenbanken in Azure Purview herstellen und die Funktionen von Purview verwenden, um Ihre Hive Metastore-Datenbankquelle zu überprüfen und zu verwalten.
 author: chandrakavya
 ms.author: kchandra
 ms.service: purview
 ms.subservice: purview-data-map
-ms.topic: overview
-ms.date: 09/27/2021
-ms.openlocfilehash: 7552b562e930e39ba4a0f848ba095762d3838c22
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.topic: how-to
+ms.date: 11/02/2021
+ms.custom: template-how-to, ignite-fall-2021
+ms.openlocfilehash: 9fc76402393e32f018454569a087ec69074d444a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129214103"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131076185"
 ---
-# <a name="register-and-scan-hive-metastore-database"></a>Registrieren und Überprüfen einer Hive-Metastore-Datenbank
+# <a name="connect-to-and-manage-hive-metastore-databases-in-azure-purview"></a>Verbinden und Verwalten von Hive-Metastore-Datenbanken in Azure Purview
 
-In diesem Artikel erfahren Sie, wie Sie eine Hive-Metastore-Datenbank in Purview registrieren und eine Überprüfung einrichten.
+In diesem Artikel wird beschrieben, wie Sie Hive Metastore-Datenbanken registrieren und wie Sie Hive Metastore-Datenbanken in Azure Purview authentifizieren und mit ihnen interagieren. Weitere Informationen zu Azure Purview finden Sie im [Einführungsartikel](overview.md).
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
-Die Hive-Metastore-Quelle unterstützt die vollständige Überprüfung, um Metadaten aus einer **Hive-Metastore-Datenbank** zu extrahieren, und ruft die Herkunft für die entsprechenden Datenressourcen ab. Die unterstützten Plattformen sind Apache Hadoop, Cloudera, Hortonworks und Databricks.
+|**Metadatenextrahierung**|  **Vollständige Überprüfung**  |**Inkrementelle Überprüfung**|**Bereichsbezogene Überprüfung**|**Klassifizierung**|**Zugriffsrichtlinie**|**Herkunft**|
+|---|---|---|---|---|---|---|
+| [Ja](#register)| [Ja](#scan)| Nein | Nein | Nein | Nein| Ja |
+
+> [!Important]
+> Die unterstützten Plattformen sind Apache Hadoop, Cloudera, Hortonworks und Databricks.
+> Hierfür werden die Hive-Versionen 2.x bis 3.x unterstützt. Unterstützte Databricks-Versionen sind 8.0 und höher.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-1.  Richten Sie die neueste [selbstgehostete Integration Runtime](https://www.microsoft.com/download/details.aspx?id=39717) ein.
-    Weitere Informationen finden Sie unter [Erstellen und Konfigurieren einer selbstgehosteten Integration Runtime](../data-factory/create-self-hosted-integration-runtime.md).
+* Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-2.  Stellen Sie sicher, dass [JDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) auf dem virtuellen Computer installiert ist, auf dem auch die selbstgehostete Integration Runtime installiert ist.
+* Eine aktive [Purview-Ressource](create-catalog-portal.md)
 
-3.  Stellen Sie sicher, dass \"Visual C++ Redistributable 2012 Update 4\" auf dem Computer mit der selbstgehosteten Integration Runtime installiert ist. Sollte diese Komponente noch nicht installiert sein, können Sie sie [hier](https://www.microsoft.com/download/details.aspx?id=30679) herunterladen.
+* Sie müssen ein Datenquellenadministrator und Datenleser sein, um eine Quelle zu registrieren und in Purview Studio zu verwalten. Weitere Informationen finden Sie auf unserer Seite [Azure Purview-Berechtigungen](catalog-permissions.md).
 
-4.  Sie müssen den JDBC-Treiber der Hive-Metastore-Datenbank manuell auf Ihren virtuellen Computer herunterladen, auf dem die selbstgehostete Integration Runtime ausgeführt wird. Wenn beispielsweise eine Datenbank vom Typ „mssql“ verwendet wird, sollten Sie sicherstellen, dass Sie den [JDBC-Treiber für SQL Server von Microsoft](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server) herunterladen.
+* Richten Sie die neueste [selbstgehostete Integration Runtime](https://www.microsoft.com/download/details.aspx?id=39717) ein. Weitere Informationen finden Sie im [Leitfaden zum Erstellen und Konfigurieren einer selbstgehosteten Integrationslaufzeit](../data-factory/create-self-hosted-integration-runtime.md).
+
+* Stellen Sie sicher, dass [JDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) auf dem virtuellen Computer installiert ist, auf dem auch die selbstgehostete Integration Runtime installiert ist.
+
+* Stellen Sie sicher, dass Visual C++ Redistributable für Visual Studio 2012 Update 4 auf dem Computer mit der selbstgehosteten Integration Runtime installiert ist. Wenn Sie dieses Update nicht installiert haben, [können Sie es hier herunterladen](https://www.microsoft.com/download/details.aspx?id=30679).
+
+* Laden Sie den JDBC-Treiber der Hive Metastore Datenbank herunter, und installieren Sie diesen auf dem Computer, auf dem Ihre selbstgehostete Integrationslaufzeit ausgeführt wird. Wenn beispielsweise eine Datenbank vom Typ „mssql“ verwendet wird, sollten Sie sicherstellen, dass Sie den [JDBC-Treiber für SQL Server von Microsoft](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server) herunterladen.
 
     > [!Note]
     > Der Treiber muss für alle Konten des virtuellen Computers zugänglich sein. Installieren Sie ihn nicht in einem Benutzerkonto.
 
-5.  Hierfür werden die Hive-Versionen 2.x bis 3.x unterstützt. Unterstützte Databricks-Versionen sind 8.0 und höher. 
+## <a name="register"></a>Register
 
-## <a name="setting-up-authentication-for-a-scan"></a>Einrichten der Authentifizierung für eine Überprüfung
+In diesem Abschnitt wird beschrieben, wie Hive Metastore Datenbanken in Azure Purview mit [Purview Studio](https://web.purview.azure.com/)registriert werden.
 
 Die einzige unterstützte Authentifizierung für eine Hive-Metastore-Datenbank ist die **Standardauthentifizierung**.
 
-## <a name="register-a-hive-metastore-database"></a>Registrieren einer Hive-Metastore-Datenbank
+### <a name="steps-to-register"></a>Schritte zur Registrierung
 
-Gehen Sie wie folgt vor, um in Ihrem Datenkatalog eine neue Hive-Metastore-Datenbank zu registrieren:
+1. Navigieren Sie zu Ihrem Purview-Konto.
 
-1.  Navigieren Sie zu Ihrem Purview-Konto.
+1. Wählen Sie im linken Navigationsbereich **Data Map** aus.
 
-2.  Wählen Sie im linken Navigationsbereich **Data Map** aus.
+1. Wählen Sie **Registrieren** aus.
 
-3.  Wählen Sie **Registrieren** aus.
-
-4.  Wählen Sie unter „Quellen registrieren“ die Option „**Hive-Metastore** aus. Wählen Sie **Weiter** aus.
+1. Wählen Sie unter „Quellen registrieren“ die Option „**Hive-Metastore** aus. Wählen Sie **Weiter** aus.
 
     :::image type="content" source="media/register-scan-hive-metastore-source/register-sources.png" alt-text="Registrieren der Hive-Quelle" border="true":::
 
 Gehen Sie unter „Quellen registrieren“ (Hive-Metastore) wie folgt vor:
 
-1.  Geben Sie einen **Namen** ein, unter dem die Datenquelle im Katalog aufgeführt werden soll.
+1. Geben Sie einen **Namen** ein, unter dem die Datenquelle im Katalog aufgeführt werden soll.
 
-2.  Geben Sie die **Hive-Cluster-URL** ein. Sie können die Cluster-URL entweder über die Ambari-URL oder über die URL des Databricks-Arbeitsbereichs abrufen. Beispiele hierfür sind „hive.azurehdinsight.net“ und „adb-19255636414785.5.azuredatabricks.net“.
+1. Geben Sie die **Hive-Cluster-URL** ein. Sie können die Cluster-URL entweder über die Ambari-URL oder über die URL des Databricks-Arbeitsbereichs abrufen. Beispiele hierfür sind „hive.azurehdinsight.net“ und „adb-19255636414785.5.azuredatabricks.net“.
 
-3.  Geben Sie die **Hive-Metastore-Server-URL** ein. Beispiele hierfür sind „sqlserver://hive.database.windows.net“ und „jdbc:spark://adb-19255636414785.5.azuredatabricks.net:443“.
+1. Geben Sie die **Hive-Metastore-Server-URL** ein. Beispiele hierfür sind „sqlserver://hive.database.windows.net“ und „jdbc:spark://adb-19255636414785.5.azuredatabricks.net:443“.
 
-4.  Optional: Wählen Sie eine Sammlung aus, oder erstellen Sie eine neue Sammlung.
+1. Wählen Sie eine Sammlung aus, oder erstellen Sie eine neue Sammlung (optional).
 
-5.  Wählen Sie „Fertig stellen“ aus, um die Datenquelle zu registrieren.
+1. Wählen Sie „Fertig stellen“ aus, um die Datenquelle zu registrieren.
 
-       :::image type="content" source="media/register-scan-hive-metastore-source/configure-sources.png" alt-text="Konfigurieren der Hive-Quelle" border="true":::
+    :::image type="content" source="media/register-scan-hive-metastore-source/configure-sources.png" alt-text="Konfigurieren der Hive-Quelle" border="true":::
 
+## <a name="scan"></a>Überprüfen
 
-## <a name="creating-and-running-a-scan"></a>Erstellen und Ausführen einer Überprüfung
+Führen Sie die folgenden Schritte aus, um Hive Metastore Datenbanken zu überprüfen, um Ressourcen automatisch zu identifizieren und Ihre Daten zu klassifizieren. Weitere Informationen zum Scannen im Allgemeinen finden Sie in unserer [Einführung in Scans und Aufnahme](concept-scans-and-ingestion.md).
 
-Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
+### <a name="create-and-run-scan"></a>Scan erstellen und ausführen
 
-1.  Wählen Sie im Verwaltungscenter „Integration Runtimes“ aus. Vergewissern Sie sich, dass eine selbstgehosteten Integration Runtime eingerichtet ist. Falls sie nicht eingerichtet ist, richten Sie mit den [hier](./manage-integration-runtimes.md) beschriebenen Schritten eine selbstgehostete Integration Runtime ein.
+1. Wählen Sie im Verwaltungscenter „Integration Runtimes“ aus. Vergewissern Sie sich, dass eine selbstgehosteten Integration Runtime eingerichtet ist. Wenn sie nicht eingerichtet ist, führen Sie die [hier](./manage-integration-runtimes.md] erwähnten Schritte aus, um eine selbstgehostete Integrationslaufzeit  einzurichten.
 
-2.  Navigieren Sie zu **Quellen**.
+1. Navigieren Sie zu **Quellen**.
 
-3.  Wählen Sie die registrierte **Hive-Metastore-Datenbank** aus.
+1. Wählen Sie die registrierte **Hive-Metastore-Datenbank** aus.
 
-4.  Wählen Sie **+ Neue Überprüfung** aus.
+1. Wählen Sie **+ Neue Überprüfung** aus.
 
-5.  Geben Sie folgende Details an:
+1. Geben Sie folgende Details an:
 
     1. **Name**: Der Name der Überprüfung.
 
@@ -91,11 +102,11 @@ Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
 
     1. **Anmeldeinformationen**: Wählen Sie die Anmeldeinformationen zur Herstellung der Verbindung mit Ihrer Datenquelle aus. Stellen Sie sicher, dass Sie:
 
-       - beim Erstellen von Anmeldeinformationen die Standardauthentifizierung auswählen.
-       - Angeben des Metastore-Benutzernamens im entsprechenden Eingabefeld
-       - Speichern des Metastore-Kennworts im geheimen Schlüssel
+       * beim Erstellen von Anmeldeinformationen die Standardauthentifizierung auswählen.
+       * Angeben des Metastore-Benutzernamens im entsprechenden Eingabefeld
+       * Speichern des Metastore-Kennworts im geheimen Schlüssel
 
-       Weitere Informationen zu Anmeldeinformationen finden Sie [hier](manage-credentials.md). 
+       Weitere Informationen zu Anmeldeinformationen finden Sie [hier](manage-credentials.md).
 
        **Databricks-Nutzung**: Navigieren Sie zu Ihrem Databricks-Cluster und dann zu „Apps“ > „Launch Web Terminal“ (Webterminal starten). Führen Sie das Cmdlet **cat /databricks/hive/conf/hive-site.xml** aus.
 
@@ -111,83 +122,67 @@ Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
        > Der Treiber muss für alle Konten des virtuellen Computers zugänglich sein. Installieren Sie ihn nicht in einem Benutzerkonto.
 
     1. **Metastore-JDBC-Treiberklasse**: Geben Sie den Namen der Verbindungstreiberklasse an. Beispiel: example,\com.microsoft.sqlserver.jdbc.SQLServerDriver.
-    
+
        **Databricks-Nutzung**: Navigieren Sie zu Ihrem Databricks-Cluster und dann zu „Apps“ > „Launch Web Terminal“ (Webterminal starten). Führen Sie das Cmdlet **cat /databricks/hive/conf/hive-site.xml** aus.
-    
+
        Auf die Treiberklasse kann wie unten dargestellt über die entsprechende Eigenschaft zugegriffen werden.
-    :::image type="content" source="media/register-scan-hive-metastore-source/databricks-driver-class-name.png" alt-text="databricks-driver-class-details" border="true":::
+
+        :::image type="content" source="media/register-scan-hive-metastore-source/databricks-driver-class-name.png" alt-text="databricks-driver-class-details" border="true":::
 
     1. **Metastore-JDBC-URL**: Geben Sie den Wert der Verbindungs-URL an, und definieren Sie die Verbindung mit der URL des Metastore-Datenbankservers. Beispiel: `jdbc:sqlserver://hive.database.windows.net;database=hive;encrypt=true;trustServerCertificate=true;create=false;loginTimeout=300`.
 
        **Databricks-Nutzung**: Navigieren Sie zu Ihrem Databricks-Cluster und dann zu „Apps“ > „Launch Web Terminal“ (Webterminal starten). Führen Sie das Cmdlet **cat /databricks/hive/conf/hive-site.xml** aus.
-    
+
        Auf die JDBC-URL kann wie unten gezeigt über die Verbindungs-URL-Eigenschaft zugegriffen werden.
-       
+
        :::image type="content" source="media/register-scan-hive-metastore-source/databricks-jdbc-connection.png" alt-text="databricks-jdbc-url-details" border="true":::
-    
+
        > [!NOTE]
        > Wenn Sie die URL aus *hive-site.xml* kopieren, sollten Sie `amp;` aus der Zeichenfolge entfernen, da bei der Überprüfung sonst ein Fehler angezeigt wird.
 
        Fügen Sie an diese URL den Pfad zu dem Speicherort an, an dem sich das SSL-Zertifikat auf Ihrer VM befindet. Sie können das SSL-Zertifikat [hier](../mysql/howto-configure-ssl.md) herunterladen.
 
        Die Metastore-JDBC-URL lautet wie folgt:
-    
+
        `jdbc:mariadb://consolidated-westus2-prod-metastore-addl-1.mysql.database.azure.com:3306/organization1829255636414785?trustServerCertificate=true&amp;useSSL=true&sslCA=D:\Drivers\SSLCert\BaltimoreCyberTrustRoot.crt.pem`
 
     1. **Name der Metastore-Datenbank**: Geben Sie den Namen der Hive-Metastore-Datenbank an.
-    
+
        Wenn Sie eine Überprüfung von Databricks durchführen, helfen Ihnen die entsprechenden Informationen im Abschnitt unten weiter.
 
        **Databricks-Nutzung**: Navigieren Sie zu Ihrem Databricks-Cluster und dann zu „Apps“ > „Launch Web Terminal“ (Webterminal starten). Führen Sie das Cmdlet **cat /databricks/hive/conf/hive-site.xml** aus.
 
        Auf den Datenbanknamen kann wie unten gezeigt über die JDBC-URL-Eigenschaft zugegriffen werden. Beispiel: organization1829255636414785
-       
+
        :::image type="content" source="media/register-scan-hive-metastore-source/databricks-data-base-name.png" alt-text="databricks-database-name-details" border="true":::
 
-    1. **Schema**: Geben Sie eine Liste mit den zu importierenden Hive-Schemas an. Beispiel: Schema1; Schema2. 
-    
-        Ist diese Liste leer, werden alle Benutzerschemas importiert. Alle Systemschemas (beispielsweise „SysAdmin“) und Objekte werden standardmäßig ignoriert. 
+    1. **Schema**: Geben Sie eine Liste mit den zu importierenden Hive-Schemas an. Beispiel: Schema1; Schema2.
 
-        Wenn die Liste leer ist, werden alle verfügbaren Schemas importiert. Zu den zulässigen Schemanamensmustern mit SQL-LIKE-Ausdruckssyntax zählt auch die Verwendung von „%“ wie im folgenden Beispiel: A%; %B; %C%; D
+        Ist diese Liste leer, werden alle Benutzerschemas importiert. Alle Systemschemas (beispielsweise „SysAdmin“) und Objekte werden standardmäßig ignoriert.
 
-        - beginnt mit „A“ oder    
-        - endet mit „B“ oder    
-        - enthält „C“ oder    
-        - gleich „D“
+        Wenn die Liste leer ist, werden alle verfügbaren Schemas importiert. Zu den zulässigen Schemanamensmustern mit SQL-LIKE-Ausdruckssyntax zählt auch die Verwendung von „%“. Beispiel: A%; %B; %C%; D
+
+        * Beginnt mit „A“ oder
+        * endet mit „B“ oder
+        * enthält „C“ oder
+        * gleich „D“
 
         Die Verwendung von „NOT“ oder Sonderzeichen ist nicht zulässig.
 
-     1. **Maximal verfügbarer Arbeitsspeicher**: Maximaler Arbeitsspeicher (in GB), der auf dem virtuellen Computer des Kunden für Überprüfungsprozesse verfügbar ist. Dies hängt von der Größe der Hive-Metastore-Datenbank ab, die überprüft werden soll.
+    1. **Maximal verfügbarer Arbeitsspeicher**: Maximaler Arbeitsspeicher (in GB), der auf dem virtuellen Computer des Kunden für Überprüfungsprozesse verfügbar ist. Dies hängt von der Größe der Hive-Metastore-Datenbank ab, die überprüft werden soll.
 
         :::image type="content" source="media/register-scan-hive-metastore-source/scan.png" alt-text="Überprüfen einer Hive-Quelle" border="true":::
 
-6.  Wählen Sie **Weiter**.
+1. Wählen Sie **Weiter**.
 
-7.  Wählen Sie den **Auslöser für die Überprüfung**. Sie können einen Zeitplan einrichten oder die Überprüfung einmalig ausführen.
+1. Wählen Sie den **Auslöser für die Überprüfung**. Sie können einen Zeitplan einrichten oder die Überprüfung einmalig ausführen.
 
-8.  Sehen Sie sich Ihre Überprüfung noch einmal an, und wählen Sie dann **Speichern und ausführen** aus.
-
-## <a name="viewing-your-scans-and-scan-runs"></a>Anzeigen Ihrer Überprüfungen und Überprüfungsausführungen
-
-1. Navigieren Sie zum Verwaltungscenter. Wählen Sie im Abschnitt **Sources and scanning** (Quellen und Überprüfung) die Option **Datenquellen** aus.
-
-2. Wählen Sie die gewünschte Datenquelle aus. Daraufhin wird eine Liste mit vorhandenen Überprüfungen für diese Datenquelle angezeigt.
-
-3. Wählen Sie die Überprüfung aus, für deren Ergebnisse Sie sich interessieren.
-
-4. Auf dieser Seite werden alle vorherigen Überprüfungsausführungen sowie die Metriken und der Status der jeweiligen Überprüfungsausführung angezeigt. Außerdem sehen Sie hier, ob es sich um eine geplante oder um eine manuelle Überprüfung gehandelt hat, auf wie viele Ressourcen Klassifizierungen angewendet wurden, wie viele Ressourcen insgesamt ermittelt wurden, wann die Überprüfung gestartet und beendet wurde und wie lange die Überprüfung insgesamt gedauert hat.
-
-## <a name="manage-your-scans"></a>Verwalten Ihrer Überprüfungen
-
-Gehen Sie zum Verwalten oder Löschen einer Überprüfung wie folgt vor:
-
-1. Navigieren Sie zum Verwaltungscenter. Wählen Sie im Abschnitt **Sources and scanning** (Quellen und Überprüfung) die Option **Datenquellen** und anschließend die gewünschte Datenquelle aus.
-
-2. Wählen Sie die Überprüfung aus, die Sie verwalten möchten. Wenn Sie die Überprüfung bearbeiten möchten, wählen Sie **Bearbeiten** aus.
-
-3. Wenn Sie Ihre Überprüfung löschen möchten, wählen Sie **Löschen** aus.
+1. Sehen Sie sich Ihre Überprüfung noch einmal an, und wählen Sie **Speichern und ausführen** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Browsen im Azure Purview-Datenkatalog](how-to-browse-catalog.md)
-- [Suchen im Azure Purview-Datenkatalog](how-to-search-catalog.md)
+Nachdem Sie Ihre Quelle registriert haben, halten Sie sich an die folgenden Anleitungen, um mehr über Purview und Ihre Daten zu erfahren.
+
+- [Dateneinblicke in Azure Purview](concept-insights.md)
+- [Datenherkunft in Azure Purview](catalog-lineage-user-guide.md)
+- [Data Catalog suchen](how-to-search-catalog.md)

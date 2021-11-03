@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: seramasu
 author: rsethur
 ms.reviewer: laobri
-ms.custom: devplatv2
-ms.date: 06/17/2021
-ms.openlocfilehash: 4a4cc34b3f3bb77e0c2405d3b0a29b40fa1cd616
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.custom: devplatv2, ignite-fall-2021
+ms.date: 10/21/2021
+ms.openlocfilehash: 02c927b55812e4b309e53679cf3548d889bdc12f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129426999"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131079413"
 ---
 # <a name="what-are-azure-machine-learning-endpoints-preview"></a>Was sind Azure Machine Learning-Endpunkte (Vorschau)? 
 
@@ -29,7 +29,7 @@ In diesem Artikel lernen Sie Folgendes:
 > * Endpunkte
 > * Bereitstellungen
 > * Verwaltete Onlineendpunkte
-> * AKS-Onlineendpunkte (Azure Kubernetes Service)
+> * Kubernetes-Onlineendpunkte
 > * Batchrückschluss-Endpunkte
 
 ## <a name="what-are-endpoints-and-deployments-preview"></a>Was sind Endpunkte und Bereitstellungen (Vorschau)?
@@ -95,7 +95,7 @@ Informieren Sie sich, wie Sie einen [sicheren Rollout für Onlineendpunkte](how-
 
 Alle Onlineendpunkte sind mit Application Insights integriert, um SLAs zu überwachen und Probleme zu diagnostizieren. 
 
-[Verwaltete Onlineendpunkte](#managed-online-endpoints-vs-aks-online-endpoints-preview) verfügen aber auch über eine standardmäßige Integration mit Azure-Protokollen und -Metriken.
+[Verwaltete Onlineendpunkte](#managed-online-endpoints-vs-kubernetes-online-endpoints-preview) verfügen aber auch über eine standardmäßige Integration mit Azure-Protokollen und -Metriken.
 
 ### <a name="security"></a>Sicherheit
 
@@ -104,25 +104,25 @@ Alle Onlineendpunkte sind mit Application Insights integriert, um SLAs zu überw
 - Standardmäßiges SSL für Aufruf von Endpunkten
 
 
-## <a name="managed-online-endpoints-vs-aks-online-endpoints-preview"></a>Verwaltete Onlineendpunkte und AKS-Onlineendpunkte (Vorschau)
+## <a name="managed-online-endpoints-vs-kubernetes-online-endpoints-preview"></a>Verwaltete Onlineendpunkte und Kubernetes-Onlineendpunkte (Vorschau)
 
-Es gibt zwei Arten von Onlineendpunkten: **Verwaltete Onlineendpunkte** (Vorschau) und **AKS-Onlineendpunkte** (Vorschau). In der folgenden Tabelle sind einige der wichtigsten Unterschiede aufgeführt.
+Es gibt zwei Arten von Onlineendpunkten: **Verwaltete Onlineendpunkte** (Vorschau) und **Kubernetes-Onlineendpunkte** (Vorschau). In der folgenden Tabelle sind einige der wichtigsten Unterschiede aufgeführt.
 
-|  | Verwaltete Onlineendpunkte | AKS-Onlineendpunkte |
+|  | Verwaltete Onlineendpunkte | Kubernetes-Onlineendpunkte |
 |-|-|-|
-| **Empfohlene Benutzer** | Benutzer, die eine Bereitstellung eines verwalteten Modells und eine verbesserte MLOps-Benutzeroberfläche benötigen | Benutzer, die Azure Kubernetes Service (AKS) bevorzugen und Infrastrukturanforderungen selbst verwalten können |
+| **Empfohlene Benutzer** | Benutzer, die eine Bereitstellung eines verwalteten Modells und eine verbesserte MLOps-Benutzeroberfläche benötigen | Benutzer, die Kubernetes bevorzugen und Infrastrukturanforderungen selbst verwalten können |
 | **Infrastrukturverwaltung** | Verwaltete Bereitstellung von Computeressourcen, Skalierung, Updates für Hostbetriebssystem-Images und Sicherheitshärtung | Benutzerverantwortung |
-| **Computetyp** | Verwaltet (AmlCompute) | AKS |
+| **Computetyp** | Verwaltet (AmlCompute) | Kubernetes-Cluster (Kubernetes) |
 | **Standardmäßige Überwachung** | [Azure-Überwachung](how-to-monitor-online-endpoints.md) <br> (Umfasst wichtige Metriken, z. B. Latenz und Durchsatz.) | Nicht unterstützt |
-| **Standardmäßige Protokollierung** | [Azure-Protokolle und Log Analytics auf Endpunktebene](how-to-deploy-managed-online-endpoints.md#optional-integrate-with-log-analytics) | Manuelle Einrichtung auf Clusterebene |
+| **Standardmäßige Protokollierung** | [Azure-Protokolle und Log Analytics auf Endpunktebene](how-to-deploy-managed-online-endpoints.md#optional-integrate-with-log-analytics) | Unterstützt |
 | **Application Insights** | Unterstützt | Unterstützt |
-| **Verwaltete Identität** | [Unterstützt](tutorial-deploy-managed-endpoints-using-system-managed-identity.md) | Nicht unterstützt |
-| **Virtuelles Netzwerk (VNET)** | Nicht unterstützt (öffentliche Vorschauversion) | Manuelle Konfiguration auf Clusterebene |
+| **Verwaltete Identität** | [Unterstützt](tutorial-deploy-managed-endpoints-using-system-managed-identity.md) | Unterstützt |
+| **Virtuelles Netzwerk (VNET)** | Nicht unterstützt (öffentliche Vorschauversion) | Unterstützt |
 | **Anzeigen von Kosten** | [Endpunkt- und Bereitstellungsebene](how-to-view-online-endpoints-costs.md) | Clusterebene |
 
 ### <a name="managed-online-endpoints"></a>Verwaltete Onlineendpunkte
 
-Verwaltete Onlineendpunkte können zur Optimierung Ihres Bereitstellungsprozesses beitragen. Verwaltete Onlineendpunkte haben gegenüber AKS-Onlineendpunkten die folgenden Vorteile:
+Verwaltete Onlineendpunkte können zur Optimierung Ihres Bereitstellungsprozesses beitragen. Verwaltete Onlineendpunkte haben gegenüber Kubernetes-Onlineendpunkten die folgenden Vorteile:
 
 - Verwaltete Infrastruktur
     - Automatische Bereitstellung der Computeressourcen und Hosting des Modells (Sie müssen nur VM-Typ und Skalierungseinstellungen angeben) 

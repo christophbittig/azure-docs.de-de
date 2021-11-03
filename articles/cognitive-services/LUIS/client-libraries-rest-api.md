@@ -2,23 +2,26 @@
 title: 'Schnellstart: LUIS-SDK-Clientbibliotheken (Language Understanding) und REST-API'
 description: Hier erfahren Sie, wie Sie eine LUIS-App mithilfe der LUIS-SDK-Clientbibliotheken und der REST-API erstellen und abfragen.
 ms.topic: quickstart
-ms.date: 03/29/2021
+ms.date: 10/20/2021
 ms.service: cognitive-services
 ms.author: aahi
 manager: nitinme
 ms.subservice: language-understanding
 author: aahill
 keywords: Azure, künstliche Intelligenz, KI, Verarbeitung natürlicher Sprache, NLP, LUIS, Azure LUIS, Verstehen natürlicher Sprache, KI Chatbot, Chatbot Maker, natürliche Sprache verstehen
-ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
+ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020, ignite-fall-2021
 zone_pivot_groups: programming-languages-set-luis
-ms.openlocfilehash: ca45266ce4b8ca784c3d54aafb80a66efaf2a1da
-ms.sourcegitcommit: 02bc06155692213ef031f049f5dcf4c418e9f509
+ms.openlocfilehash: c98bbd885bb2646ff32c856aecc219cae326d01c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/03/2021
-ms.locfileid: "106278914"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131043868"
 ---
 # <a name="quickstart-language-understanding-luis-client-libraries-and-rest-api"></a>Schnellstart: LUIS-Clientbibliotheken (Language Understanding) und REST-API
+
+> [!NOTE]
+> Eine neuere Version der Language Understanding-Funktionen ist jetzt als Teil von Azure Cognitive Services für Sprache verfügbar. Weitere Informationen finden Sie in der [Dokumentation zu Azure Cognitive Services for Language](../language-service/index.yml). Informationen zu Language Understanding-Funktionen innerhalb des Sprachdiensts finden Sie unter [Conversational Language Understanding](../language-service/conversational-language-understanding/overview.md), [Benutzerdefinierte Erkennung benannter Entitäten](../language-service/custom-named-entity-recognition/overview.md) und [Benutzerdefinierte Klassifizierung](../language-service/custom-classification/overview.md).
 
 In dieser Schnellstartanleitung erfahren Sie, wie Sie mit den LUIS-SDK-Clientbibliotheken eine Azure LUIS-KI-App (Künstliche Intelligenz) mithilfe von C#, Python oder JavaScript erstellen und abfragen. Sie können auch cURL verwenden, um Anforderungen über die REST-API zu senden.
 

@@ -1,41 +1,52 @@
 ---
-title: Registrieren und Überprüfen von Azure Data Explorer
-description: In diesem Leitfaden wird beschrieben, wie Sie eine Überprüfung für Azure Data Explorer in Azure Purview durchführen.
+title: Verbinden und Verwalten von Azure Data Explorer
+description: In diesem Leitfaden wird beschrieben, wie Sie eine Verbindung mit Azure Data Explorer in Azure Purview herstellen und die Funktionen von Purview verwenden, um Ihre Azure Data Explorer zu überprüfen und zu verwalten.
 author: nayenama
 ms.author: nayenama
 ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: how-to
-ms.date: 09/27/2021
-ms.openlocfilehash: 28ed2e82108cce48ac7ce6988bd9e9833253855a
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.date: 11/02/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: df323dd973f65f6e4d332ec7a8a0d408c26ecc4e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129209932"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131076318"
 ---
-# <a name="register-and-scan-azure-data-explorer"></a>Registrieren und Überprüfen von Azure Data Explorer
+# <a name="connect-to-and-manage-azure-data-explorer-in-azure-purview"></a>Verbinden und Verwalten von Azure Data Explorer in Azure Purview
 
-In diesem Artikel wird beschrieben, wie Sie ein Azure Data Explorer-Konto in Azure Purview registrieren und eine Überprüfung einrichten.
+
+In diesem Artikel wird beschrieben, wie Sie Azure Data Explorer registrieren und wie Sie Azure Data Explorer in Azure Purview authentifizieren und mit diesen interagieren. Weitere Informationen zu Azure Purview finden Sie im [Einführungsartikel](overview.md).
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
-Für Azure Data Explorer werden vollständige und inkrementelle Überprüfungen zum Erfassen der Metadaten und Schemas unterstützt. Darüber hinaus werden die Daten bei Überprüfungen basierend auf den System- und benutzerdefinierten Klassifizierungsregeln automatisch klassifiziert.
+|**Metadatenextrahierung**|  **Vollständige Überprüfung**  |**Inkrementelle Überprüfung**|**Bereichsbezogene Überprüfung**|**Klassifizierung**|**Zugriffsrichtlinie**|**Herkunft**|
+|---|---|---|---|---|---|---|
+| [Ja](#register) | [Ja](#scan) | [Ja](#scan) | [Ja](#scan)| [Ja](#scan)| Nein | Nein |
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Erstellen Sie vor dem Registrieren der Datenquellen zunächst ein Azure Purview-Konto. Weitere Informationen zum Erstellen eines Purview-Kontos finden Sie unter [Schnellstart: Erstellen eines Azure Purview-Kontos im Azure-Portal](create-catalog-portal.md).
-- Sie müssen ein Azure Purview-Datenquellenadministrator sein.
+* Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="setting-up-authentication-for-a-scan"></a>Einrichten der Authentifizierung für eine Überprüfung
+* Eine aktive [Purview-Ressource](create-catalog-portal.md)
+
+* Sie müssen ein Datenquellenadministrator und Datenleser sein, um eine Quelle zu registrieren und in Purview Studio zu verwalten. Weitere Informationen finden Sie auf der [Seite Azure Purview-Berechtigungen](catalog-permissions.md).
+
+## <a name="register"></a>Register
+
+In diesem Abschnitt wird beschrieben, wie Sie Azure Data Explorer in Azure Purview mithilfe von [Purview Studio](https://web.purview.azure.com/) registrieren.
+
+### <a name="authentication-for-registration"></a>Authentifizierung für die Registrierung
 
 Es gibt nur eine Möglichkeit, die Authentifizierung für Azure Data Explorer einzurichten:
 
 - Dienstprinzipal
 
-### <a name="service-principal"></a>Dienstprinzipal
+#### <a name="service-principal-to-register"></a>Zu registrierendes Dienstprinzipal
 
-Sie können für Überprüfungen eine vorhandene Dienstprinzipalauthentifizierung verwenden oder eine neue erstellen. 
+Sie können für Überprüfungen eine vorhandene Dienstprinzipalauthentifizierung verwenden oder eine neue erstellen.
 
 > [!Note]
 > Führen Sie die folgenden Schritte aus, falls Sie einen neuen Dienstprinzipal erstellen müssen:
@@ -57,7 +68,7 @@ Es ist erforderlich, die Anwendungs-ID und das Geheimnis des Dienstprinzipals ab
 1. Wählen Sie **+ Generieren/Importieren** aus, und geben Sie unter **Name** einen gewünschten Namen und den **Wert** als **Geheimen Clientschlüssel** Ihres Dienstprinzipals ein.
 1. Wählen Sie **Erstellen** aus, um den Vorgang abzuschließen.
 1. Falls für Ihren Schlüsseltresor noch keine Verbindung mit Purview hergestellt wurde, müssen Sie eine [neue Schlüsseltresorverbindung erstellen](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account).
-1. [Erstellen Sie abschließend neue Anmeldeinformationen](manage-credentials.md#create-a-new-credential), indem Sie den Dienstprinzipal zum Einrichten Ihrer Überprüfung verwenden.
+1. [Erstellen Sie abschließend neue Anmeldeinformationen](manage-credentials.md#create-a-new-credential), indem Sie das Dienstprinzipal zum Einrichten Ihrer Überprüfung verwenden
 
 #### <a name="granting-the-service-principal-access-to-your-azure-data-explorer-instance"></a>Gewähren des Zugriffs auf Ihre Azure Data Explorer-Instanz für den Dienstprinzipal
 
@@ -65,7 +76,7 @@ Es ist erforderlich, die Anwendungs-ID und das Geheimnis des Dienstprinzipals ab
 
 1. Fügen Sie den Dienstprinzipal der Rolle **AllDatabasesViewer** auf der Registerkarte **Berechtigungen** hinzu.
 
-## <a name="register-an-azure-data-explorer-account"></a>Registrieren eines Azure Data Explorer-Kontos
+### <a name="steps-to-register"></a>Schritte zur Registrierung
 
 Gehen Sie wie folgt vor, um für Ihren Datenkatalog ein neues Azure Data Explorer-Konto (Kusto) zu registrieren:
 
@@ -87,7 +98,11 @@ Führen Sie auf dem Bildschirm **Register sources (Azure Data Explorer (Kusto))*
 
 :::image type="content" source="media/register-scan-azure-data-explorer/register-sources.png" alt-text="Optionen für die Quellenregistrierung" border="true":::
 
-## <a name="creating-and-running-a-scan"></a>Erstellen und Ausführen einer Überprüfung
+## <a name="scan"></a>Überprüfen
+
+Führen Sie die folgenden Schritte aus, um Azure Data Explorer zu überprüfen und automatisch Assets zu identifizieren und Ihre Daten zu klassifizieren. Weitere Informationen zum Überprüfen im Allgemeinen finden Sie in unserer [Einführung in Scans und Datenerfassung](concept-scans-and-ingestion.md)
+
+### <a name="create-and-run-scan"></a>Scan erstellen und ausführen
 
 Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
 
@@ -119,5 +134,8 @@ Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Browsen im Azure Purview-Datenkatalog](how-to-browse-catalog.md)
-- [Suchen im Azure Purview-Datenkatalog](how-to-search-catalog.md)
+Nachdem Sie Ihre Quelle registriert haben, halten Sie sich an die folgenden Anleitungen, um mehr über Purview und Ihre Daten zu erfahren.
+
+- [Dateneinblicke in Azure Purview](concept-insights.md)
+- [Datenherkunft in Azure Purview](catalog-lineage-user-guide.md)
+- [Data Catalog suchen](how-to-search-catalog.md)

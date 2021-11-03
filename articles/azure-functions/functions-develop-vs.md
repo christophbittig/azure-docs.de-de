@@ -4,12 +4,12 @@ description: In diesem Artikel erhalten Sie Informationen über das Entwickeln u
 ms.custom: vs-azure, devx-track-csharp
 ms.topic: conceptual
 ms.date: 12/10/2020
-ms.openlocfilehash: 2cd702286b2f35fcbc725af5ee231e1ab4b78284
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: a8be86708f2f3a8394b1e6e17d70a9d9038dc6e2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349987"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131039276"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Entwickeln von Azure Functions mithilfe von Visual Studio  
 
@@ -184,6 +184,7 @@ Wie bei Triggern auch, werden Eingabe- und Ausgabebindungen Ihrer Funktion als B
         }
     }
     ```
+
    Die Verbindung mit dem Warteschlangenspeicher stammt aus der Einstellung `AzureWebJobsStorage`. Weitere Informationen finden Sie im Referenzartikel für die spezifische Bindung. 
 
 [!INCLUDE [Supported triggers and bindings](../../includes/functions-bindings.md)]

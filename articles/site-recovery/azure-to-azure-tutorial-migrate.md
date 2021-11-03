@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: sharrai
 ms.custom: MVC
-ms.openlocfilehash: 076adbfd4cecf7dae9ffc490e911fcb7ffce48e6
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 53554e49c9e237f44d73238ca0e78385f66ca875
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93394831"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131019379"
 ---
 # <a name="move-vms-to-another-azure-region"></a>Verschieben von VMs in eine andere Azure-Region
 
@@ -84,7 +84,7 @@ In diesem Tutorial lernen Sie Folgendes:
     Informationen zum Erstellen der für Sie relevanten und am häufigsten verwendeten Netzwerkressourcen auf Grundlage der Konfiguration des virtuellen Quellcomputers finden Sie in der folgenden Dokumentation:
     - [Netzwerksicherheitsgruppen](../virtual-network/manage-network-security-group.md)
     - [Load Balancer](../load-balancer/index.yml)
-    -  [Öffentliche IP-Adresse](../virtual-network/virtual-network-public-ip-address.md)
+    -  [Öffentliche IP-Adresse](../virtual-network/ip-services/virtual-network-public-ip-address.md)
     - Informationen zu anderen Netzwerkkomponenten finden Sie in der [Netzwerkdokumentation](../index.yml?pivot=products&panel=network).
 
 

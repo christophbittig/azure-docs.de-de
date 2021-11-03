@@ -7,18 +7,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.custom: seodec18
-ms.openlocfilehash: 1892d304e4e90d3957a722473c6b2ec40018d3ce
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 08/25/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 9e03531f7db88d082b6ffa36d39173d2f5481d00
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110379300"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131069309"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>Hinzufügen von Geplauder zu einer Wissensdatenbank
 
 Das Hinzufügen von Geplauder zu Ihrem Bot macht ihn unterhaltsamer und interessanter. Das Geplauderfeature von QnA Maker ermöglicht Ihnen, auf einfache Weise ein vordefiniertes Dataset mit wichtigen Geplauderelementen in Ihrer Wissensdatenbank (KB) hinzufügen. Dies kann ein Ausgangspunkt für die Persönlichkeit Ihres Bots sein und Ihnen die Zeit und die Kosten ersparen, diese Elemente von Grund auf neu zu schreiben.
+
+[!INCLUDE [Custom question answering](../includes/new-version.md)]
 
 Dieses Dataset enthält rund 100 Smalltalk-Szenarios mit den Stimmen mehrerer Personen wie „Professionell“, „Freundlich“ oder „Witzig“. Wählen Sie die Persona aus, die dem Sprachstil Ihres Bots am nächsten kommt. Bei einer Benutzerabfrage versucht QnA Maker, sie mit der nächsten bekannten Geplauder-QnA abzugleichen.
 
@@ -60,15 +62,7 @@ Während der Erstellung der Wissensdatenbank besteht nach dem Hinzufügen Ihrer 
 ## <a name="add-chit-chat-to-an-existing-kb"></a>Hinzufügen von Geplauder zu einer vorhandenen Wissensdatenbank
 Wählen Sie Ihre Wissensdatenbank aus, und navigieren Sie zur Seite **Einstellungen**. Dort finden Sie einen Link zu allen Geplauderdatasets im entsprechenden **TSV**-Format. Laden Sie die gewünschte Persönlichkeit herunter, und laden Sie sie dann als Dateiquelle hoch. Achten Sie darauf, dass Sie das Format oder die Metadaten nicht bearbeiten, wenn Sie die Datei herunterladen und hochladen.
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
-
 ![Hinzufügen von Geplauder zu einer vorhandenen Wissensdatenbank](../media/qnamaker-how-to-chit-chat/add-chit-chat-dataset.png)
-
-# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
-
-![Hinzufügen von Smalltalk zu einer vorhandenen Wissensdatenbank (Vorschauversion)](../media/qnamaker-how-to-chit-chat/add-chit-chat-dataset-v2.png)
-
----
 
 ## <a name="edit-your-chit-chat-questions-and-answers"></a>Bearbeiten von Geplauderfragen und -antworten
 Beim Bearbeiten Ihrer Wissensdatenbank wird eine neue Quelle für Geplauder basierend auf der Persönlichkeit angezeigt, die Sie ausgewählt haben. Sie können jetzt geänderte Fragen hinzufügen oder die Antworten wie bei jeder anderen Quelle bearbeiten.

@@ -6,13 +6,13 @@ manager: gwallace
 ms.date: 03/21/2019
 ms.topic: quickstart
 ms.service: container-instances
-ms.custom: devx-track-azurepowershell - mvc - mode-api
-ms.openlocfilehash: 875913550ff41cf5988b7910e165376bfa446bfb
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.custom: devx-track-azurepowershell, mvc, mode-api
+ms.openlocfilehash: c882944691818bf15a5d15b325d39d6f2b4ed5d3
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110689416"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131045309"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-azure-powershell"></a>Schnellstart: Bereitstellen einer Containerinstanz in Azure mithilfe von Azure PowerShell
 
@@ -36,7 +36,7 @@ Azure Container Instances muss wie alle Azure-Ressourcen in einer Ressourcengrup
 
 Erstellen Sie zunächst mit dem folgenden [New-AzResourceGroup][New-AzResourceGroup]-Befehl eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *eastus*:
 
- ```azurepowershell-interactive
+```azurepowershell-interactive
 New-AzResourceGroup -Name myResourceGroup -Location EastUS
 ```
 
@@ -48,13 +48,13 @@ Sie können Ihre Container über das Internet verfügbar machen, indem Sie minde
 
 Führen Sie einen Befehl wie den folgenden aus, um eine Containerinstanz zu starten. Der Wert `-DnsNameLabel` muss in der Azure-Region, in der Sie die Instanz erstellen, eindeutig sein. Falls die Fehlermeldung „DNS-Namensbezeichnung ist nicht verfügbar.“ angezeigt wird, sollten Sie eine andere DNS-Namensbezeichnung verwenden.
 
- ```azurepowershell-interactive
+```azurepowershell-interactive
 New-AzContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer -Image mcr.microsoft.com/windows/servercore/iis:nanoserver -OsType Windows -DnsNameLabel aci-demo-win
 ```
 
 Innerhalb weniger Sekunden sollten Sie eine Antwort von Azure erhalten. Als `ProvisioningState` des Containers wird anfänglich **Erstellung** angezeigt, aber dies sollte sich nach ein oder zwei Minuten in **Erfolgreich** ändern. Überprüfen Sie den Bereitstellungsstatus mit dem Cmdlet [Get-AzContainerGroup][Get-AzContainerGroup]:
 
- ```azurepowershell-interactive
+```azurepowershell-interactive
 Get-AzContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer
 ```
 
@@ -92,7 +92,7 @@ Wenn `ProvisioningState` für den Container **Erfolgreich** lautet, können Sie 
 
 Wenn Sie den Container nicht mehr benötigen, entfernen Sie ihn mithilfe des Cmdlets [Remove-AzContainerGroup][Remove-AzContainerGroup]:
 
- ```azurepowershell-interactive
+```azurepowershell-interactive
 Remove-AzContainerGroup -ResourceGroupName myResourceGroup -Name mycontainer
 ```
 

@@ -16,10 +16,10 @@ items:
     items:
       - name: Formularerkennung v2.1
         items:
-          - name: Formularerkennungstool für die Bezeichnung
+          - name: Tool für die Beschriftung von Beispielen
             href: quickstarts/try-sample-label-tool.md
           - name: Clientbibliotheken und REST-API
-            href: quickstarts/try-sdk-rest-api.md
+            href: quickstarts/get-started-sdk-rest-api.md
       - name: Formularerkennung v3.0 | Vorschau
         items:
           - name: Formularerkennung Studio (Vorschau)
@@ -28,8 +28,58 @@ items:
             href: quickstarts/try-v3-rest-api.md
           - name: C# SDK (Vorschau)
             href: quickstarts/try-v3-csharp-sdk.md
+          - name: Java SDK (Vorschauversion)
+            href: quickstarts/try-v3-java-sdk.md
+          - name: JavaScript-SDK (Vorschauversion)
+            href: quickstarts/try-v3-javascript-sdk.md
           - name: Python SDK (Vorschau)
             href: quickstarts/try-v3-python-sdk.md
+  - name: Anleitungen
+    items:
+      - name: Migrieren zu Formularerkennung v3.0 (Vorschau)
+        href: v3-migration-guide.md
+      - name: Verwenden der SDKs und der REST-API
+        href: how-to-guides/try-sdk-rest-api.md
+      - name: Generieren von SAS-Token für Azure-Blobcontainer
+        href: generate-sas-tokens.md
+      - name: Benutzerdefinierte Modelle
+        items:
+          - name: Erstellen und Trainieren benutzerdefinierter Modelle
+            items:
+              - name: Zusammenstellen eines Trainingsdatasets
+                href: build-training-data-set.md
+              - name: Bereitstellen des Tools zum Beschriften von Beispielen
+                href: deploy-label-tool.md
+              - name: Trainieren eines benutzerdefinierten Modells mit dem Tool für die Beschriftung von Beispielen
+                href: label-tool.md
+              - name: Verwenden von Tabellentags zum Trainieren des benutzerdefinierten Modells
+                href: supervised-table-tags.md
+          - name: Zusammensetzen benutzerdefinierter Modelle
+            href: compose-custom-models.md
+      - name: Sichern und Wiederherstellen von Modellen
+        href: disaster-recovery.md
+      - name: Verwenden von Containern
+        items:
+          - name: Installieren und Ausführen von Containern
+            displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull'
+            href: containers/form-recognizer-container-install-run.md
+          - name: Konfigurieren von Containern
+            href: containers/form-recognizer-container-configuration.md
+            displayName: 'docker, container, run, billing, apikey, logging'
+          - name: Containerimagetags
+            href: containers/form-recognizer-container-image-tags.md
+          - name: Verwenden von Containerinstanzen
+            href: ../../cognitive-services/containers/azure-container-instance-recipe.md
+      - name: Unternehmensfähigkeit
+        items:
+          - name: Einrichten von virtuellen Netzwerken
+            href: ../../cognitive-services/cognitive-services-virtual-networks.md?context=/azure/applied-ai-services/form-recognizer/context/context
+          - name: Erstellen und Verwenden einer verwalteten Identität
+            href: managed-identity-byos.md
+          - name: Verwenden kundenseitig verwalteter Schlüssel
+            href: encrypt-data-at-rest.md
+          - name: "Verwenden der Azure\_AD-Authentifizierung"
+            href: ../../cognitive-services/authentication.md?context=/azure/applied-ai-services/form-recognizer/context/context
   - name: Beispiele
     items:
       - name: C#/.NET
@@ -52,48 +102,6 @@ items:
         href: /legal/cognitive-services/form-recognizer/fr-guidance-integration-responsible-use?context=/azure/applied-ai-services/form-recognizer/context/context
       - name: 'Daten, Datenschutz und Sicherheit'
         href: /legal/cognitive-services/form-recognizer/fr-data-privacy-security?context=/azure/applied-ai-services/form-recognizer/context/context
-  - name: Anleitungen
-    items:
-      - name: Migrieren zu Formularerkennung v3.0 (Vorschau)
-        href: v3-migration-guide.md
-      - name: Generieren von SAS-Token für Azure-Blobcontainer
-        href: generate-sas-tokens.md
-      - name: Erstellen und Trainieren eines benutzerdefinierten Modells
-        items:
-          - name: Zusammenstellen eines Trainingsdatasets
-            href: build-training-data-set.md
-          - name: Bereitstellen des Samplebezeichnungstools
-            href: deploy-label-tool.md
-          - name: Trainieren eines benutzerdefinierten Modells mit dem Tool für die Beschriftung von Beispielen
-            href: label-tool.md
-          - name: Verwenden von Tabellentags zum Trainieren des benutzerdefinierten Modells
-            href: supervised-table-tags.md
-      - name: Zusammensetzen benutzerdefinierter Modelle
-        href: compose-custom-models.md
-      - name: Verwenden von Containern
-        items:
-          - name: Installieren und Ausführen von Containern
-            displayName: 'docker, container, package, packaged app, swagger, open api, openapi, train, publish, az, acr, cli, tps, core, curl, try it now, import, pull'
-            href: containers/form-recognizer-container-install-run.md
-          - name: Konfigurieren von Containern
-            href: containers/form-recognizer-container-configuration.md
-            displayName: 'docker, container, run, billing, apikey, logging'
-          - name: Containerimagetags
-            href: containers/form-recognizer-container-image-tags.md
-          - name: Verwenden von Containerinstanzen
-            href: ../../cognitive-services/containers/azure-container-instance-recipe.md
-      - name: Sichern und Wiederherstellen von Modellen
-        href: disaster-recovery.md
-      - name: Unternehmensfähigkeit
-        items:
-          - name: Einrichten von virtuellen Netzwerken
-            href: ../../cognitive-services/cognitive-services-virtual-networks.md?context=/azure/applied-ai-services/form-recognizer/context/context
-          - name: Erstellen und Verwenden einer verwalteten Identität
-            href: managed-identity-byos.md
-          - name: Verwenden kundenseitig verwalteter Schlüssel
-            href: encrypt-data-at-rest.md
-          - name: "Verwenden der Azure\_AD-Authentifizierung"
-            href: ../../cognitive-services/authentication.md?context=/azure/applied-ai-services/form-recognizer/context/context
   - name: Konzepte
     items:
       - name: Übersicht über das Modell
@@ -116,19 +124,19 @@ items:
         href: concept-custom.md
   - name: Tutorials
     items:
-      - name: Verwenden der Azure-Formularerkennung und von AI Builder
+      - name: Azure-Formularerkennung- und AI Builder-Workflows
         expanded: true
         items:
-          - name: Benutzerdefinierter Workflow für die Formularverarbeitung
+          - name: Benutzerdefiniert
             href: /ai-builder/create-form-processing-model?toc=/azure/applied-ai-services/form-recognizer/toc.json&bc=/azure/applied-ai-services/form-recognizer/breadcrumb/toc.json
-          - name: Workflow für die Verarbeitung von Visitenkarten
-            href: /ai-builder/flow-business-card-reader?toc=/azure/applied-ai-services/form-recognizer/toc.json&bc=/azure/applied-ai-services/form-recognizer/breadcrumb/toc.json
-          - name: Workflow für die Verarbeitung von Ausweisdokumenten
-            href: /ai-builder/id-reader?toc=/azure/applied-ai-services/form-recognizer/toc.json&bc=/azure/cognitive-services/applied-ai-services/breadcrumb/toc.json
-          - name: Workflow für die Rechnungsverarbeitung
+          - name: Rechnung
             href: /ai-builder/flow-invoice-processing?toc=/azure/applied-ai-services/form-recognizer/toc.json&bc=/azure/applied-ai-services/form-recognizer/breadcrumb/toc.json
-          - name: Workflow für die Belegverarbeitung
+          - name: Rechnung
             href: /ai-builder/flow-receipt-processing?toc=/azure/applied-ai-services/form-recognizer/toc.json&bc=/azure/applied-ai-services/form-recognizer/breadcrumb/toc.json
+          - name: ID-Dokument
+            href: /ai-builder/id-reader?toc=/azure/applied-ai-services/form-recognizer/toc.json&bc=/azure/cognitive-services/applied-ai-services/breadcrumb/toc.json
+          - name: Visitenkarte
+            href: /ai-builder/flow-business-card-reader?toc=/azure/applied-ai-services/form-recognizer/toc.json&bc=/azure/applied-ai-services/form-recognizer/breadcrumb/toc.json
       - name: Verwenden der Azure-Formularerkennung mit Cognitive Search
         href: ../../search/cognitive-search-custom-skill-form.md
       - name: Verwenden der Azure-Formularerkennung mit Azure Functions

@@ -6,7 +6,6 @@ cloud: na
 documentationcenter: na
 author: batamig
 manager: rkarlin
-ms.assetid: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.workload: na
@@ -15,14 +14,17 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 06/22/2021
 ms.author: bagol
-ms.openlocfilehash: d5928cf93aed6e1a887be07f2befd27df9a8e276
-ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: ba1dd4cd4b3552466db55723432f5e9c79593070
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129407834"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131055180"
 ---
 # <a name="azure-sentinel-file-event-normalization-schema-reference-public-preview"></a>Azure Sentinel: Referenz zum Dateiereignis-Normalisierungsschema (Public Preview)
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 Das Dateiereignis-Normalisierungsschema wird dazu verwendet, Dateiaktivitäten wie das Erstellen, Ändern oder Löschen von Dateien oder Dokumenten zu beschreiben. Solche Ereignisse werden von Betriebssystemen, Dateispeichersystemen wie Azure Files und Dokumentenverwaltungssystemen wie Microsoft SharePoint gemeldet.
 
@@ -199,11 +201,11 @@ Der Pfad muss so normalisiert werden, dass er einem der folgenden Formate entspr
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie unter
+Weitere Informationen finden Sie unter:
 
 - [Normalisierung in Azure Sentinel](normalization.md)
 - [Azure Sentinel: Referenz zum Authentifizierungsnormalisierungsschema (Öffentliche Vorschau)](authentication-normalization-schema.md)
 - [Azure Sentinel: Referenz zum DNS-Normalisierungsschema](dns-normalization-schema.md)
-- [Azure Sentinel: Referenz zum Netzwerknormalisierungsschema](normalization-schema.md)
+- [Azure Sentinel: Referenz zum Netzwerknormalisierungsschema](./network-normalization-schema.md)
 - [Azure Sentinel: Referenz zum Prozessereignis-Normalisierungsschema (Public Preview)](process-events-normalization-schema.md)
 - [Azure Sentinel: Referenz zum Registrierungsereignis-Normalisierungsschema (Public Preview)](registry-event-normalization-schema.md)

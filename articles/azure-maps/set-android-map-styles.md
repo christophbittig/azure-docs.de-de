@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: c6d9eaedbd4a257a60fa0ba3dc7f41857173207e
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 1d16131c51527ead525bf17143892d15229658d2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123431566"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131072425"
 ---
 # <a name="set-map-style-android-sdk"></a>Festlegen eines Kartenstils (Android SDK)
 
@@ -24,7 +24,7 @@ In diesem Artikel werden Ihnen zwei Möglichkeiten gezeigt, Kartenstile mit dem 
 
 Stellen Sie sicher, dass Sie die Schritte im Dokument [Schnellstart: Erstellen einer Android-App](quick-android-map.md) ausführen.
 
->[!important]
+>[!IMPORTANT]
 >Das Verfahren in diesem Abschnitt erfordert ein Azure Maps-Konto im Tarif „Gen 1“ oder „Gen 2“. Weitere Informationen zu Tarifen finden Sie unter [Auswählen des richtigen Tarifs in Azure Maps](choose-pricing-tier.md).
 
 
@@ -32,7 +32,7 @@ Stellen Sie sicher, dass Sie die Schritte im Dokument [Schnellstart: Erstellen e
 
 Sie können einen Kartenstil In der Layoutdatei für Ihre Activity-Klasse festlegen, wenn Sie das Kartensteuerelement hinzufügen. Im folgenden Code werden der Mittelpunkt, der Zoomfaktor und der Kartenstil festgelegt.
 
-```XML
+```xml
 <com.azure.android.maps.control.MapControl
     android:id="@+id/mapcontrol"
     android:layout_width="match_parent"

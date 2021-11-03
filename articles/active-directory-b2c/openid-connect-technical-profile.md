@@ -3,20 +3,20 @@ title: Definieren eines technischen OpenID Connect-Profils in einer benutzerdef
 titleSuffix: Azure AD B2C
 description: Hier erfahren Sie, wie Sie ein technisches OpenID Connect-Profil in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C definieren.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 03/04/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: fea42cb89dce717431c188deeb2ce83f9413f560
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.openlocfilehash: 18fda03aac48a0eb637fc506916d46ee2812dcab
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107283880"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131028118"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen OpenID Connect-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -124,7 +124,7 @@ Die folgenden Einstellungen können verwendet werden, um die Fehlermeldung zu ko
 
 Das **CryptographicKeys**-Element enthält das folgende Attribut:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | client_secret | Ja | Der geheime Clientschlüssel der Anwendung des Identitätsanbieters. Der kryptografische Schlüssel ist nur erforderlich, wenn die **response_type**-Metadaten auf `code` festgelegt sind und **token_endpoint_auth_method** auf `client_secret_post` oder `client_secret_basic` festgelegt ist. Azure AD B2C führt in diesem Fall einen weiteren Aufruf zum Austauschen des Autorisierungscode gegen ein Zugriffstoken durch. Wenn die Metadaten auf `id_token` festgelegt wurden, können Sie den kryptografischen Schlüssel weglassen.  |
 | assertion_signing_key | Ja | Der private RSA-Schlüssel zum Signieren der Clientassertion. Der kryptografische Schlüssel ist nur erforderlich, wenn die **token_endpoint_auth_method**-Metadaten auf `private_key_jwt` festgelegt sind. |

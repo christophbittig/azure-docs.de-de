@@ -7,16 +7,16 @@ author: MashaMSFT
 ms.author: mathoma
 ms.service: sql-managed-instance
 ms.subservice: service-overview
-ms.custom: references_regions
+ms.custom: references_regions, ignite-fall-2021
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/21/2021
-ms.openlocfilehash: 59147dd6037e5eb2f4565ec135d04f3a1c242cc3
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.date: 11/02/2021
+ms.openlocfilehash: 9af25cea1d0765aa088699421bb672ac05c3eed7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130247927"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131031364"
 ---
 # <a name="whats-new-in-azure-sql-managed-instance"></a>Neuerungen in Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -31,16 +31,17 @@ Informationen zur Azure SQL-Datenbank finden Sie unter [Neuerungen](../database/
 
 In der folgenden Tabelle sind die Features von Azure SQL Managed Instance aufgeführt, die sich derzeit in der Vorschau befinden:
 
-
 | Funktion | Details |
 | ---| --- |
-| [Unterstützung von 16 TB für SQL Managed Instance (universell)](resource-limits.md)| Unterstützung der Zuteilung von bis zu 16 TB Speicherplatz für SQL Managed Instance (universell) |
-| [Authentifizierung für Azure SQL ausschließlich über Azure Active Directory](../database/authentication-azure-ad-only-authentication.md) |  Es ist jetzt möglich, die Authentifizierung für Azure SQL Managed Instance auf Azure Active Directory-Benutzer*innen zu beschränken. |
-| [Elastische Transaktionen](../database/elastic-transactions-overview.md) | Mit elastischen Transaktionen können Sie verteilte Transaktionen über Clouddatenbanken in Azure SQL-Datenbank und Azure SQL Managed Instance ausführen. |
+| [Unterstützung von 16 TB in Unternehmenskritisch](resource-limits.md#service-tier-characteristics) | Unterstützung für die Belegung von bis zu 16 TB Speicherplatz auf SQL Managed Instance in der Dienstebene „Unternehmenskritisch“ mithilfe der neuen arbeitsspeicheroptimierten Hardwaregeneration der Premium-Serie. | 
+|[Endpunktrichtlinien](../../azure-sql/managed-instance/service-endpoint-policies-configure.md) | Konfigurieren Sie, auf welche Azure Storage-Konten über ein SQL Managed Instance-Subnetz zugegriffen werden kann. Bietet zusätzlichen Schutz vor unbeabsichtigter oder böswilliger Datenexfiltration.
 | [Instanzenpools](instance-pools-overview.md) | Eine praktische und kostengünstige Möglichkeit, um kleinere SQL Server-Instanzen zur Cloud zu migrieren |
-| [Migration mit dem Protokollwiedergabedienst](log-replay-service-migrate.md) | Migrieren von Datenbanken aus SQL Server zu SQL Managed Instance mit dem Protokollwiedergabedienst. |
-| [Wartungsfenster](../database/maintenance-window.md)| Mithilfe des Features „Wartungsfenster“ können Sie einen Wartungszeitplan für Azure SQL Managed Instance konfigurieren. |
+| [Linkfunktion](link-feature.md)| Onlinereplikat von SQL Server Datenbanken, die an einem beliebigen Ort in Azure SQL Managed Instance gehostet sind. |
 | [Langfristiges Aufbewahren von Sicherungen](long-term-backup-retention-configure.md) | Unterstützung der langfristigen Sicherungsaufbewahrung von bis zu 10 Jahren für Azure SQL Managed Instance. |
+| [Wartungsfenster](../database/maintenance-window.md)| Mithilfe des Features „Wartungsfenster“ können Sie einen Wartungszeitplan für Azure SQL Managed Instance konfigurieren. |
+| [Arbeitsspeicheroptimierte Hardwaregeneration der Premium-Serie](resource-limits.md#service-tier-characteristics) | Stellen Sie Ihrer SQL Managed Instance die neue arbeitsspeicheroptimierte Hardwaregeneration der Premium-Serie zur Nutzung der neuesten Intel Ice Lake-CPUs zur Verfügung. Die arbeitsspeicheroptimierte Hardwaregeneration bietet ein höheres Verhältnis von Arbeitsspeicher zu virtuellem Kern. | 
+| [Migration mit dem Protokollwiedergabedienst](log-replay-service-migrate.md) | Migrieren von Datenbanken aus SQL Server zu SQL Managed Instance mit dem Protokollwiedergabedienst. |
+| [Hardwaregeneration der Premium-Serie](resource-limits.md#service-tier-characteristics) | Stellen Sie Ihrer SQL Managed Instance die neue Hardwaregeneration der Premium-Serie zur Nutzung der neuesten Intel Ice Lake-CPUs zur Verfügung.  | 
 | [Instanzübergreifender Nachrichtenaustausch mit dem Service Broker](/sql/database-engine/configure-windows/sql-server-service-broker) | Unterstützung für instanzübergreifenden Nachrichtenaustausch mit dem Service Broker für Azure SQL Managed Instance. |
 | [Erkenntnisse zu SQL](../../azure-monitor/insights/sql-insights-overview.md) | Bei SQL Insights handelt es sich um eine umfassende Lösung zur Überwachung jeglichem Produkt der Azure SQ- Familie. SQL Insights verwendet dynamische Managementansichten, um die Daten offenzulegen, die Sie zur Überwachung des Zustands, zur Diagnose von Problemen und zur Leistungsoptimierung benötigen. |
 | [Transaktionsreplikation](replication-transactional-overview.md) | Replizieren Sie die Änderungen aus Ihren Tabellen in andere Datenbanken in SQL Managed Instance, SQL-Datenbank oder SQL Server. Sie können auch Ihre Tabellen aktualisieren, wenn einige Zeilen in anderen Instanzen von SQL Managed Instance oder SQL Server geändert werden. Weitere Informationen finden Sie unter [Konfigurieren der Replikation in Azure SQL Managed Instance](replication-between-two-instances-configure-tutorial.md). |
@@ -54,29 +55,51 @@ In der folgenden Tabelle sind die Features von Azure SQL Managed Instance aufgef
 
 | Feature | GA-Monat | Details |
 | ---| --- |--- |
-| [Machine Learning Service](machine-learning-services-overview.md) | März 2021 | Machine Learning Services ist ein Feature von Azure SQL Managed Instance, das in die Datenbank integriertes maschinelles Lernen bereitstellt und sowohl Python- als auch R-Skripts unterstützt. Das Feature umfasst Python- und R-Pakete von Microsoft für leistungsstarke Predictive Analytics und maschinelles Lernen. |
-| [Präzise Berechtigungen für die dynamische Datenmaskierung](../database/dynamic-data-masking-overview.md)| März 2021 | Die dynamische Datenmaskierung hilft beim Verhindern des unbefugten Zugriffs auf sensible Daten, indem Kunden festlegen dürfen, welcher Anteil der sensiblen Daten mit minimalen Auswirkungen auf die Anwendungsschicht offengelegt wird. Es handelt sich um eine richtlinienbasierte Sicherheitsfunktion, die die sensiblen Daten im Resultset einer Abfrage in festgelegten Datenbankfeldern ausblendet, während die Daten in der Datenbank nicht geändert werden. Es ist jetzt möglich, präzise Berechtigungen für Daten zuzuweisen, die dynamisch maskiert wurden. Weitere Informationen finden Sie unter [Dynamische Datenmaskierung](../database/dynamic-data-masking-overview.md#permissions). |
-| [Überwachen von Verwaltungsvorgängen](../database/auditing-overview.md#auditing-of-microsoft-support-operations) |  März 2021 | Mit den Azure SQL-Überwachungsfunktionen können Sie Vorgänge überwachen, die von Microsoft-Supporttechnikern durchgeführt werden, wenn diese während einer Supportanfrage auf Ihre SQL-Ressourcen zugreifen müssen. Dies sorgt für mehr Transparenz unter Ihren Mitarbeitern. | 
+|[16 TB Unterstützung in Universell](resource-limits.md)| November 2021 |  Unterstützung der Zuteilung von bis zu 16 TB Speicherplatz für SQL Managed Instance in der Dienstebene „Universell“. |
+[Azure Active Directory – nur Authentifizierung](../database/authentication-azure-ad-only-authentication.md) | November 2021 |  Es ist jetzt möglich, die Authentifizierung für Azure SQL Managed Instance nur auf Azure Active Directory-Benutzer*innen zu beschränken. |
+| [Verteilte Transaktionen](../database/elastic-transactions-overview.md) | November 2021 | Mithilfe verteilter Datenbanktransaktionen für Azure SQL Managed Instance können Sie verteilte Transaktionen ausführen, die sich über mehrere Datenbanken und Instanzen erstrecken. | 
+|[Verbindungsserver – verwaltete Identität Azure AD-Authentifizierung](/sql/relational-databases/system-stored-procedures/sp-addlinkedserver-transact-sql#h-create-sql-managed-instance-linked-server-with-managed-identity-azure-ad-authentication) |November 2021 | Erstellen Sie einen Verbindungsserver mit Authentifizierung der verwalteten Identität für Ihre Azure SQL Managed Instance.|
+|[Verbindungsserver – Passthrough-Azure AD-Authentifizierung](/sql/relational-databases/system-stored-procedures/sp-addlinkedserver-transact-sql#i-create-sql-managed-instance-linked-server-with-pass-through-azure-ad-authentication) |November 2021 | Erstellen Sie einen Verbindungsserver mit Passthrough-Azure AD-Authentifizierung für Ihre Azure SQL Managed Instance. |
+| [Verschieben einer Instanz in ein anderes Subnetz](vnet-subnet-move-instance.md)| November 2021 | Verschieben Sie SQL Managed Instance über das Azure-Portal, per Azure PowerShell oder mithilfe der Azure CLI in ein anderes Subnetz.  |
+|[Überwachen von Verwaltungsvorgängen](../database/auditing-overview.md#auditing-of-microsoft-support-operations) |  März 2021 | Mit den Azure SQL-Überwachungsfunktionen können Sie Vorgänge überwachen, die von Microsoft-Supporttechnikern durchgeführt werden, wenn diese während einer Supportanfrage auf Ihre SQL-Ressourcen zugreifen müssen. Dies sorgt für mehr Transparenz unter Ihren Mitarbeitern. |
+|[Präzise Berechtigungen für die dynamische Datenmaskierung](../database/dynamic-data-masking-overview.md)| März 2021 | Die dynamische Datenmaskierung hilft beim Verhindern des unbefugten Zugriffs auf sensible Daten, indem Kunden festlegen dürfen, welcher Anteil der sensiblen Daten mit minimalen Auswirkungen auf die Anwendungsschicht offengelegt wird. Es handelt sich um eine richtlinienbasierte Sicherheitsfunktion, die die sensiblen Daten im Resultset einer Abfrage in festgelegten Datenbankfeldern ausblendet, während die Daten in der Datenbank nicht geändert werden. Es ist jetzt möglich, präzise Berechtigungen für Daten zuzuweisen, die dynamisch maskiert wurden. Weitere Informationen finden Sie unter [Dynamische Datenmaskierung](../database/dynamic-data-masking-overview.md#permissions). |
+|[Machine Learning Service](machine-learning-services-overview.md) | März 2021 | Machine Learning Services ist ein Feature von Azure SQL Managed Instance, das in die Datenbank integriertes maschinelles Lernen bereitstellt und sowohl Python- als auch R-Skripts unterstützt. Das Feature umfasst Python- und R-Pakete von Microsoft für leistungsstarke Predictive Analytics und maschinelles Lernen. |
 ||| 
 
 ## <a name="documentation-changes"></a>Änderungen an der Dokumentation
 
 Hier erfahren Sie mehr über wichtige Änderungen an der Dokumentation zu Azure SQL Managed Instance.
 
+### <a name="november-2021"></a>November 2021
+
+| Änderungen | Details |
+| --- | --- |
+| **16 TB-Unterstützung für die Vorschauversion von „Unternehmenskritisch“** | Die Dienstebene „Unternehmenskritisch“ von SQL Managed Instance bietet jetzt eine erhöhte maximale Instanzspeicherkapazität von bis zu 16 TB mit den neuen Hardwaregenerationen der Premium- und arbeitsspeicheroptimierten Premium-Serie, die sich derzeit in der Vorschau befinden. Weitere Informationen finden Sie unter [Ressourcenlimits](resource-limits.md#service-tier-characteristics). |
+|**16 TB Unterstützung für Universell – allgemeine Verfügbarkeit** | Die Bereitstellung einer 16-TB-Instanz auf Dienstebene „Universell“ ist jetzt allgemein verfügbar.  Weitere Informationen finden Sie unter [Ressourcenlimits](resource-limits.md). |
+| **Reine Azure AD-Authentifizierung – allgemeine Verfügbarkeit** |  Das Beschränken der Authentifizierung für Ihre Azure SQL Managed Instance auf Azure Active Directory-Benutzer*innen ist jetzt allgemein verfügbar. Weitere Informationen finden Sie unter [Reine Azure AD-Authentifizierung](../database/authentication-azure-ad-only-authentication.md). |
+| **Verteilte Transaktionen – allgemeine Verfügbarkeit** | Die Möglichkeit, verteilte Transaktionen über verwaltete Instanzen hinweg auszuführen, ist jetzt allgemein verfügbar. Weitere Informationen finden Sie unter [Verteilte Transaktionen](../database/elastic-transactions-overview.md). |
+|**Endpunktrichtlinien (Vorschauversion)** | Es ist jetzt möglich, eine Endpunktrichtlinie zu konfigurieren, um den Zugriff von einem SQL Managed Instance-Subnetz auf ein Azure Storage Konto einzuschränken. Dies bietet zusätzlichen Schutz vor unbeabsichtigter oder böswilliger Datenexfiltration. Weitere Informationen finden Sie unter [Endpunktrichtlinien](../../azure-sql/managed-instance/service-endpoint-policies-configure.md). |
+|**Linkfunktionsvorschau** | Verwenden Sie die Linkfunktion für SQL Managed Instance, um Daten aus Ihrem SQL Server zu replizieren, die an einem beliebigen Ort in Azure SQL Managed Instance gehostet werden. Nutzen Sie dabei die Vorteile von Azure, ohne Ihre Daten in Azure zu verschieben, um Ihre Workloads abzuladen, für die Notfallwiederherstellung zu nutzen oder zur Cloud zu migrieren. Weitere Informationen finden Sie unter [Linkfunktion für SQL Managed Instance](link-feature.md). Linkfunktion befindet sich derzeit in der eingeschränkten öffentlichen Vorschau. |
+| **Verschieben einer Instanz in ein anderes Subnetz (allgemeine Verfügbarkeit)** | Es ist jetzt möglich, Ihre Instanz von SQL Managed Instance in ein anderes Subnetz zu verschieben. Weitere Informationen finden Sie unter [Verschieben einer Instanz in ein anderes Subnetz](vnet-subnet-move-instance.md). |
+|**Vorschau der neuen Hardwaregeneration** | Es gibt jetzt zwei neue Hardwaregenerationen für SQL Managed Instance: eine Premium-Serie und eine arbeitsspeicheroptimierte Premium-Serie. Beide Angebote nutzen eine neue Generation von Hardware, die von den neuesten Intel Ice Lake-CPUs unterstützt wird, und bieten ein besseres Verhältnis von Arbeitsspeicher virtuellem Kern, um Ihre ressourcenintensiven Datenbankanwendungen zu unterstützen. Im Rahmen dieser Ankündigung wurde die Gen5-Hardwaregeneration in Standard-Serie umbenannt. Die beiden neuen Premium-Hardwaregenerationen befinden sich derzeit in der Vorschau. Weitere Informationen finden Sie unter [Ressourcenlimits](resource-limits.md#service-tier-characteristics). |
+| | | 
+
+
 ### <a name="october-2021"></a>Oktober 2021
 
 | Änderungen | Details |
 | --- | --- |
-|**Unterteilung der Informationen zu neuen Funktionen** | Der zuvor kombinierte Artikel zu den **Neuigkeiten** wurde nach Produkt unterteilt: [Neuigkeiten in Azure SQL-Datenbank](../database/doc-changes-updates-release-notes-whats-new.md) und [Neuigkeiten in SQL Managed Instance](doc-changes-updates-release-notes-whats-new.md). Dadurch können Sie leichter erkennen, welche Features sich derzeit in der Vorschau befinden bzw. allgemein verfügbar sind und welche wichtigen Änderungen an der Dokumentation vorgenommen wurden. Darüber hinaus wurden der Inhalt über [bekannte Probleme in SQL Managed Instance](doc-changes-updates-known-issues.md) auf eine eigene Seite verschoben.  | 
+|**Unterteilung der Informationen zu neuen Funktionen** | Der zuvor kombinierte Artikel zu den **Neuigkeiten** wurde nach Produkt unterteilt: [Neuigkeiten in Azure SQL-Datenbank](../database/doc-changes-updates-release-notes-whats-new.md) und [Neuigkeiten in SQL Managed Instance](doc-changes-updates-release-notes-whats-new.md). Dadurch können Sie leichter erkennen, welche Features sich derzeit in der Vorschau befinden bzw. allgemein verfügbar sind und welche wichtigen Änderungen an der Dokumentation vorgenommen wurden. Darüber hinaus wurden der Inhalt über [bekannte Probleme in SQL Managed Instance](doc-changes-updates-known-issues.md) auf eine eigene Seite verschoben. | 
+|  | | 
 
 
 ### <a name="june-2021"></a>Juni 2021
 
 | Änderungen | Details |
 | --- | --- |
-|**16 TB Unterstützung für Universell** | Unterstützung für die Zuteilung von bis zu 16 TB Speicherplatz für SQL Managed Instance Universell wurde hinzugefügt. Weitere Informationen finden Sie unter [Ressourcenlimits](resource-limits.md). Dieses Instanzangebot befindet sich zurzeit in der Vorschau. | 
+|**16 TB Unterstützung für Universell – Vorschau** | Unterstützung für die Zuteilung von bis zu 16 TB Speicherplatz für SQL Managed Instance in der Dienstebene „Universell“ wurde hinzugefügt. Weitere Informationen finden Sie unter [Ressourcenlimits](resource-limits.md). Dieses Instanzangebot befindet sich zurzeit in der Vorschau. | 
 | **Parallele Sicherung** | Es ist jetzt möglich, Sicherungen parallel für SQL Managed Instance auf der Ebene „universell“ zu erstellen, um schnellere Sicherungen zu ermöglichen. Weitere Informationen finden Sie im Blogeintrag [Parallele Sicherung für eine bessere Leistung](https://techcommunity.microsoft.com/t5/azure-sql/parallel-backup-for-better-performance-in-sql-managed-instance/ba-p/2421762). |
-| **Reine Azure AD-Authentifizierung** | Es ist jetzt möglich, die Authentifizierung für Azure SQL Managed Instance auf Azure Active Directory-Benutzer*innen zu beschränken. Diese Funktion steht derzeit als Vorschau zur Verfügung. Weitere Informationen finden Sie unter [Authentifizierung nur über Azure AD](../database/authentication-azure-ad-only-authentication.md). | 
+| **Reine Azure AD-Authentifizierung – Vorschau** | Es ist jetzt möglich, die Authentifizierung für Azure SQL Managed Instance nur auf Azure Active Directory-Benutzer*innen zu beschränken. Diese Funktion steht derzeit als Vorschau zur Verfügung. Weitere Informationen finden Sie unter [Authentifizierung nur über Azure AD](../database/authentication-azure-ad-only-authentication.md). | 
 | **Resource Health-Überwachung** | Verwenden Sie Resource Health, um den Integritätsstatus von Azure SQL Managed Instance zu überwachen. Weitere Informationen finden Sie unter [Resource Health](../database/resource-health-to-troubleshoot-connectivity.md). |
 | **Präzise Berechtigungen für die dynamische Datenmaskierung (GA)** | Differenzierte Berechtigungen für die dynamische Datenmaskierung für Azure SQL Managed Instance sind jetzt allgemein verfügbar (GA). Weitere Informationen finden Sie unter [Dynamische Datenmaskierung](../database/dynamic-data-masking-overview.md#permissions). | 
 |  | |
@@ -110,7 +133,7 @@ Die folgenden Änderungen wurden SQL Managed Instance und der Dokumentation 2020
 | Änderungen | Details |
 | --- | --- |
 | **Überwachung von Supportvorgängen** | Die Überwachungsfunktion für Microsoft-Supportvorgänge ermöglicht Ihnen, diese Supportvorgänge zu überwachen, wenn Sie während einer Supportanforderung auf Ihre Server und/oder Datenbanken zugreifen müssen, um Ihr Überwachungsprotokoll abzurufen (Vorschau). Weitere Informationen finden Sie unter[Überwachung von Supportvorgängen](../database/auditing-overview.md#auditing-of-microsoft-support-operations).|
-| **Elastische Transaktionen** | Elastische Transaktionen ermöglichen verteilte Datenbanktransaktionen, die sich über mehrere Datenbanken in der Azure SQL-Datenbank und Azure SQL Managed Instance erstrecken. Elastische Transaktionen wurden hinzugefügt, um die reibungslose Migration vorhandener Apps sowie die Entwicklung moderner Apps mit mehreren Mandanten zu ermöglichen, die auf einer vertikal oder horizontal partitionierten Datenbankarchitektur beruhen (Vorschau). Weitere Informationen finden Sie unter [Verteilte Transaktionen](../database/elastic-transactions-overview.md#transactions-across-multiple-servers-for-azure-sql-managed-instance). | 
+| **Elastische Transaktionen** | Elastische Transaktionen ermöglichen verteilte Datenbanktransaktionen, die sich über mehrere Datenbanken in der Azure SQL-Datenbank und Azure SQL Managed Instance erstrecken. Elastische Transaktionen wurden hinzugefügt, um die reibungslose Migration vorhandener Apps sowie die Entwicklung moderner Apps mit mehreren Mandanten zu ermöglichen, die auf einer vertikal oder horizontal partitionierten Datenbankarchitektur beruhen (Vorschau). Weitere Informationen finden Sie unter [Verteilte Transaktionen](../database/elastic-transactions-overview.md#transactions-for-sql-managed-instance). | 
 | **Konfigurierbare Redundanz für Sicherungsspeicher** | Es ist jetzt möglich, Optionen für lokal redundanten Speicher (LRS) und zonenredundanten Speicher (ZRS) für Sicherungsspeicherredundanz zu konfigurieren, um mehr Flexibilität und Auswahl zu erhalten. Weitere Informationen finden Sie unter [Konfigurieren der Sicherungsspeicherredundanz](../database/automated-backups-overview.md?tabs=managed-instance#configure-backup-storage-redundancy).|
 | **Leistungsverbesserungen bei TDE-verschlüsselten Sicherungen** | Es ist jetzt möglich, den Aufbewahrungszeitraum von Sicherungen der Zeitpunktwiederherstellung (Point-in-Time Restore, PITR) festzulegen. Außerdem ist die automatisierte Komprimierung von Sicherungen, die mit transparenter Datenverschlüsselung (Transparent Data Encryption, TDE) verschlüsselt sind, jetzt um 30 Prozent effizienter bei der Nutzung von Sicherungsspeicher, was kostensparend für Endbenutzer*innen ist. Weitere Informationen finden Sie unter [Ändern von PITR](../database/automated-backups-overview.md?tabs=managed-instance#change-the-short-term-retention-policy). |
 | **Verbesserungen bei der Azure AD-Authentifizierung** | Automatisieren Sie die Benutzererstellung mit Azure AD-Apps, und erstellen Sie einzelne Azure AD-Gastbenutzer*innen (Vorschau). Weitere Informationen finden Sie unter [Verzeichnisleseberechtigte in Azure AD](../database/authentication-aad-directory-readers-role.md).|

@@ -8,14 +8,17 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 07/21/2021
-ms.openlocfilehash: 8454a75936c84f012d05c8917cfffeec4a08dcdc
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: b53b634315487d7940cf4d202c29005498bcdfb9
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129278422"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131060780"
 ---
 # <a name="best-practices-for-azure-sentinel"></a>Bewährte Methoden für Azure Sentinel
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 Diese Sammlung bewährter Methoden enthält Anleitungen für die Bereitstellung, Verwaltung und Verwendung von Azure Sentinel, einschließlich Links zu anderen Artikeln, um weitere Informationen zu erhalten.
 
@@ -61,7 +64,7 @@ Planen Sie die folgenden Azure Sentinel-Aktivitäten regelmäßig, um kontinuier
 
 - **Selektieren und Untersuchen von Incidents**.  Überprüfen Sie die Seite **Incidents** von Azure Sentinel, um auf neue Incidents zu prüfen, die von den derzeit konfigurierten Analyseregeln generiert werden, und beginnen Sie mit der Untersuchung neuer Incidents. Weitere Informationen finden Sie im [Tutorial: Untersuchen von Incidents mit Azure Sentinel](investigate-cases.md).
 
-- **Untersuchen Sie Hunting-Abfragen und Textmarken**. Untersuchen Sie die Ergebnisse für alle integrierten Abfragen, und aktualisieren Sie vorhandene Hunting-Abfragen und Textmarken. Generieren Sie manuell neue Incidents, oder aktualisieren Sie ggf. alte Incidents.  Weitere Informationen finden Sie unter
+- **Untersuchen Sie Hunting-Abfragen und Textmarken**. Untersuchen Sie die Ergebnisse für alle integrierten Abfragen, und aktualisieren Sie vorhandene Hunting-Abfragen und Textmarken. Generieren Sie manuell neue Incidents, oder aktualisieren Sie ggf. alte Incidents.  Weitere Informationen finden Sie unter:
 
     - [Automatisches Erstellen von Incidents aus Microsoft-Sicherheitswarnungen](create-incidents-from-alerts.md)
     - [Suchen nach Bedrohungen mit Azure Sentinel](hunting.md)
@@ -142,7 +145,7 @@ Verwenden Sie den [Livestream](livestream.md) während einer Untersuchung oder n
 
 ### <a name="handle-incidents-with-entity-behavior"></a>Behandeln von Incidents mit Entitätsverhalten
 
-Entitätsverhalten in Azure Sentinel ermöglicht Benutzern das Überprüfen und Untersuchen von Aktionen und Warnungen für bestimmte Entitäten, z. B. das Untersuchen von Konten und Hostnamen. Weitere Informationen finden Sie unter
+Entitätsverhalten in Azure Sentinel ermöglicht Benutzern das Überprüfen und Untersuchen von Aktionen und Warnungen für bestimmte Entitäten, z. B. das Untersuchen von Konten und Hostnamen. Weitere Informationen finden Sie unter:
 
 - [Aktivieren von User and Entity Behavior Analytics (UEBA) in Azure Sentinel](enable-entity-behavior-analytics.md)
 - [Untersuchen von Incidents mit UEBA-Daten](investigate-with-ueba.md)

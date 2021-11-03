@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/18/2021
-ms.openlocfilehash: b6d007d3020d3fa2b001178bd23d721ea6a6aa6b
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 0039f84305233f9894c31ba6210a2d531c567498
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110067832"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131005953"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>Batchtests mit einem Satz von Beispieläußerungen
 
@@ -187,10 +187,10 @@ Vergessen Sie nicht, im Header Ihren LUIS-Schlüssel zu `Ocp-Apim-Subscription-K
 Starten Sie einen Batchtest, und verwenden Sie entweder eine App-Versions-ID oder einen Veröffentlichungsslot. Senden Sie eine **POST**-Anforderung an eins der folgenden Endpunktformate. Fügen Sie Ihre Batchdatei in den Text der Anforderung ein.
 
 Veröffentlichungsslot
-* `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0-preview/apps/<YOUR-APP-ID>/slots/<YOUR-SLOT-NAME>/evaluations`
+* `<YOUR-PREDICTION-ENDPOINT>/luis/v3.0-preview/apps/<YOUR-APP-ID>/slots/<YOUR-SLOT-NAME>/evaluations`
 
 App-Versions-ID
-* `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0-preview/apps/<YOUR-APP-ID>/versions/<YOUR-APP-VERSION-ID>/evaluations`
+* `<YOUR-PREDICTION-ENDPOINT>/luis/v3.0-preview/apps/<YOUR-APP-ID>/versions/<YOUR-APP-VERSION-ID>/evaluations`
 
 Diese Endpunkte geben eine Vorgangs-ID zurück, die Sie verwenden, um den Status zu überprüfen und Ergebnisse abzurufen. 
 
@@ -200,20 +200,20 @@ Diese Endpunkte geben eine Vorgangs-ID zurück, die Sie verwenden, um den Status
 Verwenden Sie die Vorgangs-ID des Batch Tests, den Sie gestartet haben, um seinen Status aus den folgenden Endpunktformaten abzurufen: 
 
 Veröffentlichungsslot
-* `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0-preview/apps/<YOUR-APP-ID>/slots/<YOUR-SLOT-ID>/evaluations/<YOUR-OPERATION-ID>/status`
+* `<YOUR-PREDICTION-ENDPOINT>/luis/v3.0-preview/apps/<YOUR-APP-ID>/slots/<YOUR-SLOT-ID>/evaluations/<YOUR-OPERATION-ID>/status`
 
 App-Versions-ID
-* `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0-preview/apps/<YOUR-APP-ID>/versions/<YOUR-APP-VERSION-ID>/evaluations/<YOUR-OPERATION-ID>/status`
+* `<YOUR-PREDICTION-ENDPOINT>/luis/v3.0-preview/apps/<YOUR-APP-ID>/versions/<YOUR-APP-VERSION-ID>/evaluations/<YOUR-OPERATION-ID>/status`
 
 ### <a name="get-the-results-from-a-batch-test"></a>Abrufen der Ergebnisse eines Batchtests
 
 Verwenden Sie die Vorgangs-ID des Batch Tests, den Sie gestartet haben, um seine Ergebnisse aus den folgenden Endpunktformaten abzurufen: 
 
 Veröffentlichungsslot
-* `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0-preview/apps/<YOUR-APP-ID>/slots/<YOUR-SLOT-ID>/evaluations/<YOUR-OPERATION-ID>/result`
+* `<YOUR-PREDICTION-ENDPOINT>/luis/v3.0-preview/apps/<YOUR-APP-ID>/slots/<YOUR-SLOT-ID>/evaluations/<YOUR-OPERATION-ID>/result`
 
 App-Versions-ID
-* `<YOUR-PREDICTION-ENDPOINT>/luis/prediction/v3.0-preview/apps/<YOUR-APP-ID>/versions/<YOUR-APP-VERSION-ID>/evaluations/<YOUR-OPERATION-ID>/result`
+* `<YOUR-PREDICTION-ENDPOINT>/luis/v3.0-preview/apps/<YOUR-APP-ID>/versions/<YOUR-APP-VERSION-ID>/evaluations/<YOUR-OPERATION-ID>/result`
 
 
 ### <a name="batch-file-of-utterances"></a>Batchdatei mit Äußerungen

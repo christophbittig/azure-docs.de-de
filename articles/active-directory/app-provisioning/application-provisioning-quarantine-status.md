@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 05/11/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: f18fa1af869f0335214cff5725bbc7e6dc1293ea
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 93b00212bda4f02b6a31c151856639b1f461cac1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129991658"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131050829"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>Anwendungsbereitstellung im Quarantänestatus
 
@@ -30,7 +30,7 @@ In der Quarantäne geschieht Folgendes:
 ## <a name="how-do-i-know-if-my-application-is-in-quarantine"></a>Wie kann ich prüfen, ob sich meine Anwendung in Quarantäne befindet?
 
 Es gibt drei Möglichkeiten, um zu überprüfen, ob sich eine Anwendung in Quarantäne befindet:
-  
+
 - Navigieren Sie im Azure-Portal zu **Azure Active Directory** > **Unternehmensanwendungen** > &lt;*Anwendungsname*&gt; > **Bereitstellung**, und suchen Sie in der Statusanzeige nach einer Quarantänenachricht.   
 
   ![Statusanzeige für die Bereitstellung mit dem Quarantänestatus](./media/application-provisioning-quarantine-status/progress-bar-quarantined.png)
@@ -88,7 +88,7 @@ Nachdem Sie das Problem behoben haben, können Sie den Bereitstellungsauftrag ne
 - Verwenden Sie das Azure-Portal, um den Bereitstellungsauftrag neu zu starten. Klicken Sie auf der **Bereitstellungsseite** der Anwendung auf **Bereitstellung erneut starten**. Durch diese Aktion wird der Bereitstellungsdienst vollständig neu gestartet. Dieser Vorgang kann einige Zeit in Anspruch nehmen. Ein vollständiger Startzyklus wird erneut ausgeführt. Dabei werden Hinterlegungen gelöscht, die App wird aus der Quarantäne entfernt, und alle Wasserzeichen werden gelöscht. Der Dienst wertet dann alle Benutzer im Quellsystem nochmal aus und ermittelt, ob sie für die Bereitstellung zulässig sind. Dies kann sich als nützlich erweisen, wenn sich Ihre Anwendung wie in diesem Artikel beschrieben gerade in Quarantäne befindet oder wenn Sie eine Änderung an den Attributzuordnungen vornehmen müssen. Beachten Sie, dass die Ausführung des Startzyklus aufgrund der Anzahl der auszuwertenden Objekte länger dauert als herkömmliche inkrementelle Zyklen. Weitere Informationen zur Leistung von Startzyklen und inkrementellen Zyklen finden Sie [hier](application-provisioning-when-will-provisioning-finish-specific-user.md).
 
 - Verwenden Sie Microsoft Graph, um [den Bereitstellungsauftrag neu zu starten](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta&preserve-view=true). Sie haben vollständige Kontrolle über die Elemente, die Sie neu starten. Sie können auswählen, ob Hinterlegungen (zum Neustarten des Hinterlegungszählers, der in Richtung Quarantänestatus läuft) gelöscht, die Quarantäne (zum Entfernen der Anwendung aus der Quarantäne) oder die Wasserzeichen gelöscht werden soll(en). Verwenden Sie die folgende Anforderung:
- 
+
 ```microsoft-graph
         POST /servicePrincipals/{id}/synchronization/jobs/{jobId}/restart
 ```

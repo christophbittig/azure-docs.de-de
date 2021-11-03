@@ -2,18 +2,18 @@
 title: Indizieren von Daten aus der Gremlin-API (Vorschau)
 titleSuffix: Azure Cognitive Search
 description: Richten Sie einen Azure Cosmos DB-Indexer ein, um die Indizierung von Gremlin-API-Inhalten für Volltextsuchen in Azure Cognitive Search zu automatisieren.
-author: MarkHeff
-ms.author: maheff
+author: nitinme
+ms.author: nitinme
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/11/2021
-ms.openlocfilehash: 69642aa1b9d977591bee6dbb8464cdf74ca7be1e
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: 82d7a385567459f9e3292af8f88594dec96b5a77
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114731008"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131010686"
 ---
 # <a name="index-data-using-azure-cosmos-db-gremlin-api"></a>Indizieren von Daten mithilfe der Gremlin-API von Azure Cosmos DB
 

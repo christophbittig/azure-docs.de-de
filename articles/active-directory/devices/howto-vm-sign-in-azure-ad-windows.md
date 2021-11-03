@@ -12,12 +12,12 @@ manager: karenhoran
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli, subject-rbac-steps
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0842de3ef0d3bc154193413987ae2a57d87ead38
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6ec984ebaa6b12019b1f1942d2849f7e9efaf288
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128631531"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131049784"
 ---
 # <a name="login-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Anmelden bei einem virtuellen Windows-Computer in Azure mit der Azure Active Directory-Authentifizierung
 
@@ -405,7 +405,7 @@ Wenn Sie Windows Hello for Business nicht bereitgestellt haben und dies derzeit 
 > [!NOTE]
 > Die Authentifizierung über die Windows Hello for Business-PIN mit RDP wird unter Windows 10 in mehreren Versionen unterstützt. Die Unterstützung für die biometrische Authentifizierung mit RDP wurde dagegen in Windows 10 Version 1809 hinzugefügt. Die Verwendung der Windows Hello for Business-Authentifizierung bei der RDP-Verbindung ist nur für Bereitstellungen verfügbar, die das Modell der Zertifikatvertrauensstellung verwenden und derzeit nicht für das Modell der schlüsselbasierten Vertrauensstellung verfügbar sind.
  
-Geben Sie Feedback zu dieser Funktion, oder melden Sie Probleme bei der Verwendung der Funktion im [Azure AD-Feedbackforum](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
+Geben Sie Feedback zu dieser Funktion, oder melden Sie Probleme bei der Verwendung der Funktion im [Azure AD-Feedbackforum](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

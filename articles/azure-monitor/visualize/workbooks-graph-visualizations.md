@@ -6,12 +6,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/04/2020
-ms.openlocfilehash: 45902cbac3948787832238bbeb89090265464ab8
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: ac1418ee2df60a79be104f1991908dcde0de6c07
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130129223"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131072254"
 ---
 # <a name="graph-visualizations"></a>Graphvisualisierungen
 
@@ -100,7 +100,7 @@ Ersteller von Graphs können die Inhalte für die verschiedenen Teile eines Knot
 3. Wählen Sie für den Abfragetyp **Protokoll** aus, und wählen Sie den Ressourcentyp (z. B. Application Insights) sowie die Zielressourcen aus.
 4. Geben Sie über den Abfrage-Editor die KQL für Ihre Analyse ein.
 
-     ```kusto
+    ```kusto
     let data = dependencies
     | summarize Calls = count() by App = appName, Request = operation_Name, Dependency = name
     | extend RequestId = strcat(App, '::', Request);

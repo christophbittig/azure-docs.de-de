@@ -50,7 +50,7 @@
             - name: Azure-Netzwerklatenz
               href: azure-network-latency.md
             - name: Internetroutingpräferenz in Azure
-              href: ../virtual-network/routing-preference-overview.md
+              href: ../virtual-network/ip-services/routing-preference-overview.md
         - name: Sicherheit
           items:
             - name: Sicherheitskontrollen von Azure Policy
@@ -130,7 +130,7 @@
           href: ../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json
 - name: Verweis
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/network
     - name: Azure PowerShell
       href: /powershell/module/az.network/

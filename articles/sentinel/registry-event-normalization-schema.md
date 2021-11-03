@@ -6,7 +6,6 @@ cloud: na
 documentationcenter: na
 author: batamig
 manager: rkarlin
-ms.assetid: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.workload: na
@@ -15,14 +14,17 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 07/01/2021
 ms.author: bagol
-ms.openlocfilehash: d10d1e9408db7ab29a7fe01e5bf906e9023124c7
-ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: dd1a6b99c65d92b1a6a96a25790a8b780d73565f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129407226"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131055189"
 ---
 # <a name="azure-sentinel-registry-event-normalization-schema-reference-public-preview"></a>Azure Sentinel: Referenz zum Registrierungsereignis-Normalisierungsschema (Öffentliche Vorschau)
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 Das Registrierungsereignisschema wird verwendet, um die Windows-Aktivität zum Erstellen, Ändern oder Löschen von Windows-Registrierungsentitäten zu beschreiben.
 
@@ -69,7 +71,7 @@ Das Registrierungsereignis-Informationsmodell ist am [OSSEM-Registrierungsentit�
 
 Die folgenden Felder werden von Log Analytics für jeden Datensatz generiert und können beim Erstellen eines benutzerdefinierten Connectors überschrieben werden.
 
-| Feld         | Typ     | Diskussion (Discussion)      |
+| Feld         | type     | Diskussion (Discussion)      |
 | ------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | <a name="timegenerated"></a>**TimeGenerated** | datetime | Der Zeitpunkt, zu dem das Ereignis vom meldenden Gerät generiert wurde.|
 | **_ResourceId**   | guid     | Die Azure-Ressourcen-ID des meldenden Geräts oder Diensts oder die Ressourcen-ID des Protokollforwarders für Ereignisse, die mit Syslog, CEF oder WEF weitergeleitet werden. |
@@ -85,7 +87,7 @@ Die folgenden Felder werden von Log Analytics für jeden Datensatz generiert und
 
 Ereignisfelder sind allen Schemas gemeinsam und beschreiben die Aktivität selbst und das meldende Gerät.
 
-| Feld               | Klasse       | Typ       |  BESCHREIBUNG        |
+| Feld               | Klasse       | type       |  BESCHREIBUNG        |
 |---------------------|-------------|------------|--------------------|
 | **EventMessage**        | Optional    | String     |     Eine allgemeine Nachricht oder Beschreibung, entweder im Datensatz enthalten oder aus ihm generiert.   |
 | **EventCount**          | Obligatorisch.   | Integer    |     Die Anzahl der Ereignisse, die im Datensatz beschrieben werden. <br><br>Dieser Wert wird verwendet, wenn die Quelle Aggregation unterstützt. Ein einzelner Datensatz kann mehrere Ereignisse darstellen. <br><br>Legen Sie den Wert für andere Quellen auf `1` fest.   |
@@ -115,7 +117,7 @@ Die in der folgenden Tabelle aufgeführten Felder sind spezifisch für Registrie
 
 Weitere Informationen finden Sie unter [Struktur der Registrierung](/windows/win32/sysinfo/structure-of-the-registry) in der Windows-Dokumentation.
 
-| Feld          | Klasse        | Typ       | BESCHREIBUNG   |
+| Feld          | Klasse        | type       | BESCHREIBUNG   |
 |---------------|--------------|------------|-----------------|
 |<a name="registrykey"></a>**RegistryKey**     |     Obligatorisch.    |   String      |Der Registrierungsschlüssel, der dem Vorgang zugeordnet und auf Standardnamenskonventionen für Stammschlüssel normalisiert ist. Weitere Informationen finden Sie unter [Stammschlüssel](#root-keys).<br><br>Registrierungsschlüssel ähneln Ordnern in Dateisystemen. <br><br>Beispiel: `HKEY_LOCAL_MACHINE\SOFTWARE\MTG`        |
 |**RegistryValue**     |    Empfohlen     |  String       |Der dem Vorgang zugeordnete Registrierungswert. Registrierungswerte ähneln Dateien in Dateisystemen. <br><br>Beispiel: `Path`        |
@@ -170,10 +172,10 @@ Verschiedene Quellen stellen Registrierungswerttypen mit unterschiedlichen Darst
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie unter
+Weitere Informationen finden Sie unter:
 
 - [Normalisierung in Azure Sentinel](normalization.md)
 - [Azure Sentinel: Referenz zum Authentifizierungsnormalisierungsschema (Öffentliche Vorschau)](authentication-normalization-schema.md)
 - [Azure Sentinel: Referenz zum DNS-Normalisierungsschema](dns-normalization-schema.md)
 - [Azure Sentinel: Referenz zum Dateiereignis-Normalisierungsschema (Öffentliche Vorschau)](file-event-normalization-schema.md)
-- [Azure Sentinel: Referenz zum Netzwerknormalisierungsschema](normalization-schema.md)
+- [Azure Sentinel: Referenz zum Netzwerknormalisierungsschema](./network-normalization-schema.md)

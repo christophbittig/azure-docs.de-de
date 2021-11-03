@@ -4,14 +4,14 @@ description: Erfahren Sie, wie Sie eine Aktionsgruppe mit einer Azure Resource M
 author: dkamstra
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 02/19/2021
+ms.date: 10/18/2021
 ms.author: dukek
-ms.openlocfilehash: fe28498f677c2025cea9da329a3b029cda04a199
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 1680ff8d209fc2680b19d3d3afe8c2b6aded9678
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111949379"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131044227"
 ---
 # <a name="create-an-action-group-with-a-resource-manager-template"></a>Erstellen einer Aktionsgruppe mithilfe einer Resource Manager-Vorlage
 In diesem Artikel erfahren Sie, wie Sie mit [Azure Resource Manager-Vorlagen](../../azure-resource-manager/templates/syntax.md) Aktionsgruppen konfigurieren können. Mithilfe von Vorlagen können Sie automatisch Aktionsgruppen festlegen, die in bestimmten Warnungstypen wiederverwendet werden können. Diese Aktionsgruppen stellen sicher, dass alle relevanten Parteien benachrichtigt werden, wenn eine Warnung ausgelöst wird.
@@ -49,7 +49,7 @@ Erste Vorlage. Hier erfahren Sie, wie Sie eine Resource Manager-Vorlage für ei
   "resources": [
     {
       "type": "Microsoft.Insights/actionGroups",
-      "apiVersion": "2019-03-01",
+      "apiVersion": "2021-09-01",
       "name": "[parameters('actionGroupName')]",
       "location": "Global",
       "properties": {
@@ -89,6 +89,15 @@ Erste Vorlage. Hier erfahren Sie, wie Sie eine Resource Manager-Vorlage für ei
           {
             "name": "contosoHook2",
             "serviceUri": "http://requestb.in/1bq62iu2",
+            "useCommonAlertSchema": true
+          }
+        ],
+        "eventHubReceivers": [
+          {
+            "name": "contosoeventhub1",
+            "subscriptionId": "replace with subscription id GUID",
+            "eventHubNameSpace": "contosoeventHubNameSpace",
+            "eventHubName": "contosoeventHub",
             "useCommonAlertSchema": true
           }
         ]
@@ -137,7 +146,7 @@ Erste Vorlage. Hier erfahren Sie, wie Sie eine Resource Manager-Vorlage für ei
   "resources": [
     {
       "type": "Microsoft.Insights/actionGroups",
-      "apiVersion": "2019-03-01",
+      "apiVersion": "2021-09-01",
       "name": "[parameters('actionGroupName')]",
       "location": "Global",
       "properties": {

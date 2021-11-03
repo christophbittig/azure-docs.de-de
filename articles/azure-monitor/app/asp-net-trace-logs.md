@@ -4,12 +4,12 @@ description: Suchen Sie nach mit Trace, NLog oder Log4Net generierten Protokolle
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/08/2019
-ms.openlocfilehash: 8b956c0e63f96dbfbcf3204c260952ccf2f2c22a
-ms.sourcegitcommit: f0168d80eb396ce27032aa02fe9da5a0c10b5af3
+ms.openlocfilehash: 2836dfabbc2370ed6200030564e2b559cb656f8b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112552872"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131079185"
 ---
 # <a name="explore-netnet-core-and-python-trace-logs-in-application-insights"></a>Untersuchen von .NET/.NET Core- und Python-Ablaufverfolgungsprotokollen in Application Insights
 
@@ -22,7 +22,7 @@ Senden Sie Protokolle für die Diagnoseablaufverfolgung für Ihre ASP.NET/ASP.NE
 ## <a name="install-logging-on-your-app"></a>Installieren der Protokollierung in Ihrer App
 Installieren Sie das von Ihnen gewählte Protokollierungsframework in Ihrem Projekt, was zu einem Eintrag in „app.config“ oder „web.config“ führen sollte.
 
-```XML
+```xml
  <configuration>
   <system.diagnostics>
     <trace>
@@ -116,7 +116,7 @@ Fügen Sie für jedes DiagnosticSource-Ereignis, das nachverfolgt werden soll, e
 ## <a name="use-etw-events"></a>Verwenden von ETW-Ereignissen
 Sie können ETW-Ereignisse (Ereignisablaufverfolgung für Windows) so konfigurieren, dass sie als Ablaufverfolgungen an Application Insights gesendet werden. Installieren Sie zunächst das `Microsoft.ApplicationInsights.EtwCollector`-NuGet-Paket. Bearbeiten Sie anschließend den Abschnitt „TelemetryModules“ der Datei [ApplicationInsights.config](./configuration-with-applicationinsights-config.md).
 
-> [!NOTE] 
+> [!NOTE]
 > ETW-Ereignisse können nur gesammelt werden, wenn der Prozess, der das SDK hostet, unter einer Identität ausgeführt wird, die Mitglied von „Leistungsprotokollbenutzer“ oder „Administratoren“ ist.
 
 ```xml
@@ -188,7 +188,7 @@ Sie haben beispielsweise folgende Möglichkeiten:
 * Speichern der Konfiguration einer Seite als Favorit.
 
 > [!NOTE]
->Wenn Ihre Anwendung eine große Menge von Daten sendet und Sie das Application Insights-SDK für ASP.NET Version 2.0.0-beta3 oder höher verwenden, wird möglicherweise die *adaptive Stichprobenerstellung* verwendet, bei der nur ein bestimmter Teil der Telemetriedaten übermittelt wird. [Erfahren Sie mehr über das Erstellen von Stichproben.](./sampling.md)
+> Wenn Ihre Anwendung eine große Menge von Daten sendet und Sie das Application Insights-SDK für ASP.NET Version 2.0.0-beta3 oder höher verwenden, wird möglicherweise die *adaptive Stichprobenerstellung* verwendet, bei der nur ein bestimmter Teil der Telemetriedaten übermittelt wird. [Erfahren Sie mehr über das Erstellen von Stichproben.](./sampling.md)
 >
 
 ## <a name="troubleshooting"></a>Problembehandlung
@@ -233,4 +233,3 @@ Wenn Ihre Anwendung eine große Menge von Daten sendet und Sie das Application I
 [portal]: https://portal.azure.com/
 [qna]: ../faq.yml
 [start]: ./app-insights-overview.md
-

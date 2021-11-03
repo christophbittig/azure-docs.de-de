@@ -10,12 +10,12 @@ ms.date: 05/18/2021
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: a843952e05d71a13a26d56e1588fd10bea0e50c8
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 4d9fa14246832f339b6a38b6a4128cf3f73c607b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129275865"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131054930"
 ---
 # <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
@@ -129,7 +129,7 @@ In der folgenden Tabelle werden die Felder der Registerkarte **Grundlagen** besc
 | Projektdetails | Ressourcengruppe | Erforderlich | Erstellen Sie eine neue Ressourcengruppe für dieses Speicherkonto oder wählen Sie eine vorhandene Ressourcengruppe aus. Weitere Informationen finden Sie unter [Ressourcengruppen](../../azure-resource-manager/management/overview.md#resource-groups). |
 | Instanzendetails | Speicherkontoname | Erforderlich | Wählen Sie einen eindeutigen Namen für Ihr Speicherkonto aus. Speicherkontonamen müssen zwischen 3 und 24 Zeichen lang sein und dürfen nur Zahlen und Kleinbuchstaben enthalten. |
 | Instanzendetails | Region | Erforderlich | Wählen Sie die passende Region für Ihr Speicherkonto aus. Weitere Informationen finden Sie unter [Regionen und Verfügbarkeitszonen in Azure](../../availability-zones/az-overview.md).<br /><br />Nicht alle Regionen werden für alle Arten von Speicherkonten oder Redundanzkonfigurationen unterstützt. Weitere Informationen finden Sie unter [Azure Storage-Redundanz](storage-redundancy.md).<br /><br />Die Wahl der Region kann sich auf die Abrechnung auswirken. Weitere Informationen finden Sie unter [Speicherkontoabrechnung](storage-account-overview.md#storage-account-billing). |
-| Instanzendetails | Leistung | Erforderlich | Wählen Sie **Standard** performance for general-purpose v2 storage accounts (default) (Standardleistung für Speicherkonten vom Standardversions-V2-Speicherkonto (Standard)) aus. Diese Art von Konto wird von Microsoft für die meisten Szenarien empfohlen. Weitere Informationen finden Sie unter [Speicherkontentypen](storage-account-overview.md#types-of-storage-accounts).<br /><br />Wählen Sie **Premium** für Szenarien mit geringer Latenz aus. Wählen Sie nach dem Auswählen von **Premium** den Typ des zu erstellenden Premium-Speicherkontos aus. Die folgenden Arten von Premium-Speicherkonten sind verfügbar: <ul><li>[Blockblobs](../blobs/storage-blob-performance-tiers.md)</li><li>[Dateifreigaben](../files/storage-files-planning.md#management-concepts)</li><li>[Seitenblobs](../blobs/storage-blob-pageblob-overview.md)</li></ul> |
+| Instanzendetails | Leistung | Erforderlich | Wählen Sie **Standard** performance for general-purpose v2 storage accounts (default) (Standardleistung für Speicherkonten vom Standardversions-V2-Speicherkonto (Standard)) aus. Diese Art von Konto wird von Microsoft für die meisten Szenarien empfohlen. Weitere Informationen finden Sie unter [Speicherkontentypen](storage-account-overview.md#types-of-storage-accounts).<br /><br />Wählen Sie **Premium** für Szenarien mit geringer Latenz aus. Wählen Sie nach dem Auswählen von **Premium** den Typ des zu erstellenden Premium-Speicherkontos aus. Die folgenden Arten von Premium-Speicherkonten sind verfügbar: <ul><li>[Blockblobs](./storage-account-overview.md)</li><li>[Dateifreigaben](../files/storage-files-planning.md#management-concepts)</li><li>[Seitenblobs](../blobs/storage-blob-pageblob-overview.md)</li></ul> |
 | Instanzendetails | Redundanz | Erforderlich | Wählen Sie die gewünschte Redundanzkonfiguration aus. Nicht alle Redundanzoptionen sind für alle Arten von Speicherkonten in allen Regionen verfügbar. Weitere Informationen zu Redundanzkonfigurationen finden Sie unter [Azure Storage-Redundanz](storage-redundancy.md).<br /><br />Wenn Sie eine georedundante Konfiguration (GRS oder GZRS) auswählen, werden Ihre Daten in ein Rechenzentrum in einer anderen Region repliziert. Wählen Sie für den Lesezugriff auf Daten in der sekundären Region die Option **Lesezugriff auf Daten verfügbar machen** aus, wenn die regionale Nichtverfügbarkeit nicht möglich ist. |
 
 Die folgende Abbildung zeigt eine Standardkonfiguration für ein neues Speicherkonto.
@@ -223,7 +223,7 @@ Die folgende Tabelle zeigt, welche Werte für die `SkuName`- und `Kind`-Paramete
 
 | Speicherkontotyp | Unterstützte Redundanzkonfigurationen | Unterstützte Werte für den Parameter „Variante“ | Unterstützte Werte für den Parameter „SkuName“ | Unterstützt hierarchischen Namespace |
 |--|--|--|--|--|
-| Standard, Universell V2 | LRS / GRS / RA-GRS / ZRS / GZRS / RA-GZRS | StorageV2 | Standard_LRS / Standard_GRS / Standard_RAGRS/ Standard_ZRS / Standard_GZRS / Standard_RAGZRS | Ja |
+| Standard „Allgemein v2“ | LRS / GRS / RA-GRS / ZRS / GZRS / RA-GZRS | StorageV2 | Standard_LRS / Standard_GRS / Standard_RAGRS/ Standard_ZRS / Standard_GZRS / Standard_RAGZRS | Ja |
 | Premium-Blockblobs | LRS / ZRS | BlockBlobStorage | Premium_LRS / Premium_ZRS | Ja |
 | Premium-Dateifreigaben | LRS / ZRS | FileStorage | Premium_LRS / Premium_ZRS | Nein |
 | Premium-Seitenblobs | LRS | StorageV2 | Premium_LRS | Nein |
@@ -265,7 +265,7 @@ Die folgende Tabelle zeigt, welche Werte für die `sku`- und `kind`-Parameter un
 
 | Speicherkontotyp | Unterstützte Redundanzkonfigurationen | Unterstützte Werte für den Parameter „Variante“ | Unterstützte Werte für den Parameter „sku“ | Unterstützt hierarchischen Namespace |
 |--|--|--|--|--|
-| Standard, Universell V2 | LRS / GRS / RA-GRS / ZRS / GZRS / RA-GZRS | StorageV2 | Standard_LRS / Standard_GRS / Standard_RAGRS/ Standard_ZRS / Standard_GZRS / Standard_RAGZRS | Ja |
+| Standard „Allgemein v2“ | LRS / GRS / RA-GRS / ZRS / GZRS / RA-GZRS | StorageV2 | Standard_LRS / Standard_GRS / Standard_RAGRS/ Standard_ZRS / Standard_GZRS / Standard_RAGZRS | Ja |
 | Premium-Blockblobs | LRS / ZRS | BlockBlobStorage | Premium_LRS / Premium_ZRS | Ja |
 | Premium-Dateifreigaben | LRS / ZRS | FileStorage | Premium_LRS / Premium_ZRS | Nein |
 | Premium-Seitenblobs | LRS | StorageV2 | Premium_LRS | Nein |

@@ -6,12 +6,13 @@ ms.suite: integration
 ms.reviewer: estfan, azla
 ms.topic: how-to
 ms.date: 10/05/2021
-ms.openlocfilehash: 5be8a3cfa8681bced90ba6fc74ebc69baa2f7962
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 507e7a97c0ec884580b0a29fd8a8691035221751
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130065671"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131085978"
 ---
 # <a name="create-an-integration-workflow-with-single-tenant-azure-logic-apps-standard-in-the-azure-portal"></a>Erstellen eines Integrationsworkflows mit der Azure Logic Apps-Einzelmandanteninstanz (Standard) im Azure-Portal
 
@@ -65,7 +66,7 @@ Im Weiteren führen Sie diese allgemeinen Aufgaben aus:
 
 1. Geben Sie in das Suchfeld des Azure-Portals `logic apps` ein, und wählen Sie **Logik-Apps** aus.
 
-   ![Screenshot, der das Suchfeld des Azure-Portals mit dem Suchtext „Logik-Apps“ und der ausgewählten Ressource „Logik-App (Standard)“ zeigt.](./media/create-single-tenant-workflows-azure-portal/find-logic-app-resource-template.png)
+   ![Screenshot, der das Suchfeld des Azure-Portals mit dem Suchtext „Logik-Apps“ und der Gruppe „Logik-Apps“ zeigt.](./media/create-single-tenant-workflows-azure-portal/find-logic-app-resource-template.png)
 
 1. Wählen Sie auf der Seite **Logic Apps** die Option **Hinzufügen** aus.
 
@@ -76,7 +77,7 @@ Im Weiteren führen Sie diese allgemeinen Aufgaben aus:
    | **Abonnement** | Ja | <*Name des Azure-Abonnements*> | Das für Ihre Logik-App zu verwendende Azure-Abonnement. |
    | **Ressourcengruppe** | Ja | <*Name der Azure-Ressourcengruppe*> | Die Azure-Ressourcengruppe, in der Sie Ihre Logik-App und zugehörige Ressourcen erstellen. Dieser Ressourcenname muss regionsübergreifend eindeutig sein und darf nur Buchstaben, Ziffern, Bindestriche ( **-** ), Unterstriche ( **_** ), Klammern ( **()** ) und Punkte ( **.** ) enthalten. <p><p>In diesem Beispiel wird eine Ressourcengruppe namens `Fabrikam-Workflows-RG` erstellt. |
    | **Typ** | Ja | **Standard** | Dieser Typ von Logik-App-Ressource wird in der Azure Logic Apps-Umgebung mit einem einzelnen Mandanten ausgeführt und verwendet das [Nutzungs-, Abrechnungs- und Preismodell „Standard“](logic-apps-pricing.md#standard-pricing). |
-   | **Name der Logik-App** | Ja | <*logic-app-name*> | Der für Ihre Logik-App zu verwendende Name. Dieser Ressourcenname muss regionsübergreifend eindeutig sein und darf nur Buchstaben, Ziffern, Bindestriche ( **-** ), Unterstriche ( **_** ), Klammern ( **()** ) und Punkte ( **.** ) enthalten. <p><p>In diesem Beispiel wird eine Logik-App namens `Fabrikam-Workflows` erstellt. <p><p>**Hinweis**: Der Name Ihrer Logik-App erhält automatisch das Suffix `.azurewebsites.net`, da die **Logik-App (Standard)** -Ressource von Azure Functions unterstützt wird, wo dieselbe App-Benennungskonvention verwendet wird. |
+   | **Name der Logik-App** | Ja | <*logic-app-name*> | Der für Ihre Logik-App zu verwendende Name. Dieser Ressourcenname muss regionsübergreifend eindeutig sein und darf nur Buchstaben, Ziffern, Bindestriche ( **-** ), Unterstriche ( **_** ), Klammern ( **()** ) und Punkte ( **.** ) enthalten. <p><p>In diesem Beispiel wird eine Logik-App namens `Fabrikam-Workflows` erstellt. <p><p>**Hinweis:** Der Name Ihrer Logik-App erhält automatisch das Suffix `.azurewebsites.net`, da die **Logik-App -Ressource (Standard)** von der Azure Logic Apps-Runtime mit einem Mandanten unterstützt wird, die das Azure Functions-Erweiterbarkeitsmodell verwendet und als Erweiterung auf der Azure Functions-Runtime gehostet wird. Azure Functions verwendet die gleiche Benennungskonvention für Apps. |
    | **Veröffentlichen** | Ja | <*deployment-environment*> | Das Bereitstellungsziel für Ihre Logik-App. Standardmäßig ist **Workflow** für die Bereitstellung in einzelinstanzenfähigen Azure Logic Apps ausgewählt. Azure erstellt eine leere Logik-App-Ressource, in der Sie Ihren ersten Workflow hinzufügen müssen. <p><p>**Hinweis**: Derzeit erfordert die Option **Docker-Container** einen [*benutzerdefinierten Standort*](../azure-arc/kubernetes/conceptual-custom-locations.md) in einem Kubernetes-Cluster mit Azure Arc-Unterstützung, den Sie mit [Azure Arc-fähigen Logik-Apps (Preview)](azure-arc-enabled-logic-apps-overview.md) verwenden können. Die Ressourcenstandorte für Ihre Logik-App, der benutzerdefinierte Standort und der Cluster müssen alle identisch sein. |
    | **Region** | Ja | <*Azure-Region*> | Der Standort, der für die Erstellung Ihrer Ressourcengruppe und Ressourcen verwendet werden soll. In diesem Beispiel wird die Beispiel-Logik-App in Azure bereitgestellt, und es wird **USA, Westen** verwendet. <p>– Wenn Sie **Docker-Container** ausgewählt haben, wählen Sie Ihren benutzerdefinierten Standort aus. <p>– Wählen Sie zum Bereitstellen in einer [ASEv3](../app-service/environment/overview.md)-Ressource, die zuerst vorhanden sein muss, diese Umgebungsressource aus der Liste **Region** aus. |
    |||||
@@ -89,6 +90,7 @@ Im Weiteren führen Sie diese allgemeinen Aufgaben aus:
 
    | Eigenschaft | Erforderlich | Wert | BESCHREIBUNG |
    |----------|----------|-------|-------------|
+   | **Speichertyp** | Ja | - **SQL und Azure Storage** <br>- **Azure Storage** | Dies ist der Speichertyp, den Sie für workflowbezogene Artefakte und Daten verwenden möchten. <p><p>– Um nur in Azure bereitzustellen, wählen Sie **Azure Storage.** <p><p>– Um SQL als primären Speicher und Azure Storage als sekundären Speicher zu verwenden, wählen Sie **SQL und Azure Storage** aus, und lesen Sie [Einrichten von SQL-Datenbankspeicher für Standard-Logik-Apps in einer Azure Logic Apps-Instanz mit nur einem Mandanten](set-up-sql-db-storage-single-tenant-standard-workflows.md). <p><p>**Hinweis:** Wenn Sie die Bereitstellung in einer Azure-Region durchführen, benötigen Sie weiterhin ein Azure Storage-Konto, das zum einmaligen Hosten der Konfiguration der Logik-App auf der Azure Logic Apps-Plattform verwendet wird. Der fortlaufende Workflowstatus, der Ausführungsverlauf und andere Runtime-Artefakte werden in Ihrer SQL-Datenbank gespeichert. <p><p>Für Bereitstellungen an einem benutzerdefinierten Speicherort, der in einem Azure Arc-Cluster gehostet wird, benötigen Sie nur SQL als Speicheranbieter. |
    | **Speicherkonto** | Ja | <*Azure-storage-account-name*> | Das [Azure Storage-Konto](../storage/common/storage-account-overview.md), das für Speichertransaktionen verwendet werden soll. <p><p>Dieser Ressourcenname muss regionsübergreifend eindeutig sein und 3-24 Zeichen enthalten (nur Ziffern und Kleinbuchstaben). Wählen Sie entweder ein vorhandenes Konto aus, oder erstellen Sie ein neues Konto. <p><p>In diesem Beispiel wird ein Speicherkonto namens `fabrikamstorageacct` erstellt. |
    | **Plantyp** | Ja | <*hosting-plan*> | Der Hostingplan, der für die Bereitstellung Ihrer Logik-App verwendet werden soll. <p><p>Weitere Informationen finden Sie unter [Hostingpläne und Tarife](logic-apps-pricing.md#standard-pricing). |
    | **Windows-Plan** | Ja | <*plan-name*> | Der zu verwendende Planname. Wählen Sie entweder einen vorhandenen Plannamen aus, oder geben Sie einen Namen für einen neuen Plan an. <p><p>In diesem Beispiel wird der Name `Fabrikam-Service-Plan`verwendet. |
@@ -421,7 +423,7 @@ Damit Sie einen zustandslosen Workflow debuggen können, können Sie den Ausfüh
 
    `Workflows.{yourWorkflowName}.OperationOptions`
 
-1. Geben Sie in dass Feld **Wert** den folgenden Wert ein: `WithStatelessRunHistory`
+1. Geben Sie in das Feld **Wert** den folgenden Wert ein: `WithStatelessRunHistory`
 
    Beispiel:
 
@@ -506,7 +508,7 @@ Sie können mehrere Logik-Apps gleichzeitig beenden oder starten, aber Sie könn
 
 1. Überprüfen Sie auf der Seite **Logic Apps** die Spalte **Status** der Logik-Apps.
 
-1. Wählen Sie in der Spalte mit den Kontrollkästchen die Logik-Apps aus, die Sie lstarten oder stoppen möchten.
+1. Wählen Sie in der Spalte mit den Kontrollkästchen die Logik-Apps aus, die Sie starten oder stoppen möchten.
 
    * Um die ausgewählten ausgeführten Logik-Apps zu beenden, wählen Sie auf der Symbolleiste des Übersichtsbereichs **Deaktivieren/Beenden** aus. Bestätigen Sie Ihre Auswahl.
    * Um die ausgewählten beendeten Logik-Apps zu starten, wählen Sie auf der Symbolleiste des Übersichtsbereichs die Option **Aktivieren/Starten** aus.

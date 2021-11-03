@@ -8,13 +8,13 @@ ms.service: machine-learning
 ms.subservice: mldata
 ms.topic: how-to
 ms.date: 09/24/2021
-ms.custom: data4ml
-ms.openlocfilehash: d07a48267effa51a721d1b64c79bc0a6ba7d439f
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.custom: data4ml, ignite-fall-2021
+ms.openlocfilehash: 3fae9f8f6e5c0e54d42751456b693a4bc094771c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129429640"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131079375"
 ---
 # <a name="labeling-images-and-text-documents"></a>Beschriften von Bildern und Textdokumenten
 
@@ -52,13 +52,19 @@ Bei Datenbeschriftungsaufgaben müssen jeweils geeignete Tags aus einer vom Proj
 
 Machine-Learning-Algorithmen können während der Beschriftung ausgelöst werden. Wenn diese Algorithmen in Ihrem Projekt aktiviert sind, wird ggf. Folgendes angezeigt:
 
-* Nach der Kennzeichnung einiger Bilddaten wird am oberen Bildschirmrand neben dem Projektnamen unter Umständen **Gruppierte Aufgaben** angezeigt.  Das bedeutet, dass Bilder gruppiert werden, um ähnliche Bilder auf der gleichen Seite darzustellen.  Wechseln Sie in diesem Fall zu einer der Ansichten mit mehreren Bildern, um von der Gruppierung zu profitieren.  
+* Bilder
 
-* Später wird neben dem Projektnamen unter Umständen **Vorab beschriftete Aufgaben** angezeigt.  Elemente werden dann mit einer von einem Machine-Learning-Klassifizierungsmodell vorgeschlagenen Beschriftung angezeigt. Machine Learning-Modelle sind niemals hundertprozentig genau. Es werden zwar nur Daten verwendet, bei denen das Modell eine hohe Zuverlässigkeit ermittelt hat, trotzdem kann es vorkommen, dass diese Bilder nicht korrekt vorab beschriftet wurden.  Wenn Beschriftungen angezeigt werden, korrigieren Sie falsche Beschriftungen, bevor Sie die Seite übermitteln.  
+    * Nach der Kennzeichnung einiger Daten wird am oberen Bildschirmrand neben dem Projektnamen unter Umständen **Gruppierte Aufgaben** angezeigt.  Das bedeutet, dass Bilder gruppiert werden, um ähnliche Bilder auf der gleichen Seite darzustellen.  Wechseln Sie in diesem Fall zu einer der Ansichten mit mehreren Bildern, um von der Gruppierung zu profitieren.  
+    
+    * Später wird neben dem Projektnamen unter Umständen **Vorab beschriftete Aufgaben** angezeigt.  Elemente werden dann mit einer von einem Machine-Learning-Klassifizierungsmodell vorgeschlagenen Beschriftung angezeigt. Machine Learning-Modelle sind niemals hundertprozentig genau. Es werden zwar nur Daten verwendet, bei denen das Modell eine hohe Zuverlässigkeit ermittelt hat, trotzdem kann es vorkommen, dass diese Bilder nicht korrekt vorab beschriftet wurden.  Wenn Beschriftungen angezeigt werden, korrigieren Sie falsche Beschriftungen, bevor Sie die Seite übermitteln.  
+    
+    * Bei Objektidentifizierungsmodellen sind Begrenzungsrahmen und Bezeichnungen möglicherweise bereits vorhanden.  Korrigieren Sie alle Fehler, bevor Sie die Seite senden.
+    
+    * Bei Segmentierungsmodellen sind Polygone und Bezeichnungen möglicherweise bereits vorhanden.  Korrigieren Sie alle Fehler, bevor Sie die Seite senden. 
 
-* Bei Objektidentifizierungsmodellen sind Begrenzungsrahmen und Bezeichnungen möglicherweise bereits vorhanden.  Korrigieren Sie alle Fehler, bevor Sie die Seite senden.
-
-* Bei Segmentierungsmodellen sind Polygone und Bezeichnungen möglicherweise bereits vorhanden.  Korrigieren Sie alle Fehler, bevor Sie die Seite senden. 
+* Text
+    
+    * Später wird neben dem Projektnamen unter Umständen **Vorab beschriftete Aufgaben** angezeigt.  Elemente werden dann mit einer von einem Machine-Learning-Klassifizierungsmodell vorgeschlagenen Beschriftung angezeigt. Machine Learning-Modelle sind niemals hundertprozentig genau. Es werden zwar nur Daten verwendet, bei denen das Modell eine hohe Zuverlässigkeit ermittelt hat, trotzdem kann es vorkommen, dass diese Bilder nicht korrekt vorab beschriftet wurden.  Wenn Beschriftungen angezeigt werden, korrigieren Sie falsche Beschriftungen, bevor Sie die Seite übermitteln.
 
 Insbesondere in der Anfangsphase eines Bezeichnungsprojekts ist die Genauigkeit des Machine Learning-Modells möglicherweise nur für die Kennzeichnung einer kleinen Teilmenge von Bildern ausreichend. Sobald diese Bilder gekennzeichnet wurden, kehrt das Bezeichnungsprojekt zur manuellen Kennzeichnung zurück, um mehr Daten für das nächste Modelltraining zu erfassen. Im Laufe der Zeit erhöht sich die Zuverlässigkeit des Modells für einen größeren Teil von Bildern, was im weiteren Projektverlauf zu mehr Vorabbeschriftungsaufgaben führt.
 
@@ -195,5 +201,3 @@ Wenn Sie mit dem Anwenden von Bezeichnungen fertig sind, wählen Sie in der rech
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Erfahren Sie, wie Sie [Bildklassifizierungsmodelle in Azure trainieren](./tutorial-train-models-with-aml.md).
-
-

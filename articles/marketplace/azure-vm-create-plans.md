@@ -7,12 +7,12 @@ ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/13/2021
-ms.openlocfilehash: fd4d93b09328ad0b8de982a065567ffbadd87be3
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 0a7ca14a797ef2680527cd6992ff9a7a1d6ea115
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130004386"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131084898"
 ---
 # <a name="create-plans-for-a-virtual-machine-offer"></a>Erstellen von Plänen für ein VM-Angebot
 
@@ -167,7 +167,7 @@ Einige häufige Gründe für die erneute Verwendung der technischen Konfiguratio
 2. Die gleiche technische Konfiguration aus einem öffentlichen Plan wird für einen privaten Plan mit einem anderen Preis wiederverwendet. 
 3. Das Verhalten Ihrer Lösung basiert auf dem Plan, den ein*e Benutzer*in auswählt. Beispielsweise ist die Software identisch, aber die Features variieren je nach Plan.
 
-Nutzen Sie [Azure Instance Metadata Service](/azure/virtual-machines/windows/instance-metadata-service) (IMDS), um zu ermitteln, in welchem Plan Ihre Lösung bereitgestellt wird, um die Lizenz zu überprüfen oder geeignete Features zu aktivieren.
+Nutzen Sie [Azure Instance Metadata Service](../virtual-machines/windows/instance-metadata-service.md) (IMDS), um zu ermitteln, in welchem Plan Ihre Lösung bereitgestellt wird, um die Lizenz zu überprüfen oder geeignete Features zu aktivieren.
 
 Wenn Sie später verschiedene Änderungen zwischen Ihren Plänen veröffentlichen möchten, können Sie sie trennen. Trennen Sie den Plan, indem Sie die technische Konfiguration wiederverwendbar machen, indem Sie diese Option mit Ihrem Plan deaktivieren. Nach der Trennung hat Ihr Plan die gleichen technischen Konfigurationseinstellungen an der Stelle ihrer letzten Einstellung, und Ihre Pläne können in der Konfiguration abweichen. Ein Plan, der in der Vergangenheit unabhängig veröffentlicht wurde, kann später keine technische Konfiguration wiederverwenden. 
 

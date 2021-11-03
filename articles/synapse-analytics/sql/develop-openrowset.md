@@ -6,15 +6,16 @@ author: filippopovic
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql
-ms.date: 05/07/2020
+ms.date: 11/02/2021
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 392d457ead16d0bcfc057282886669a01e24ff3e
-ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: c87f8d7b2beaa0ad77e5fa9740910bcdd1a019e5
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129730373"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131018866"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Verwenden von „OPENROWSET“ mit einem serverlosen SQL-Pool in Azure Synapse Analytics
 
@@ -82,7 +83,8 @@ OPENROWSET
 OPENROWSET  
 ( { BULK 'unstructured_data_path' , [DATA_SOURCE = <data source name>, ] 
     FORMAT = 'CSV'
-    [ <bulk_options> ] }  
+    [ <bulk_options> ]
+    [ , <reject_options> ] }  
 )  
 WITH ( {'column_name' 'column_type' [ 'column_ordinal' | 'json_path'] })  
 [AS] table_alias(column_alias,...n)
@@ -99,6 +101,13 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal' | 'json_path'] })
 [ , DATAFILETYPE = { 'char' | 'widechar' } ]
 [ , CODEPAGE = { 'ACP' | 'OEM' | 'RAW' | 'code_page' } ]
 [ , ROWSET_OPTIONS = '{"READ_OPTIONS":["ALLOW_INCONSISTENT_READS"]}' ]
+
+<reject_options> ::=  
+{  
+    | MAXERRORS = reject_value,  
+    | ERRORFILE_DATA_SOURCE = <data source name>,
+    | ERRORFILE_LOCATION = '/REJECT_Directory'
+}  
 ```
 
 ## <a name="arguments"></a>Argumente
@@ -256,6 +265,40 @@ Gibt die Codepage für die in der Datendatei enthaltenen Daten an. Der Standardw
 ROWSET_OPTIONS = '{"READ_OPTIONS":["ALLOW_INCONSISTENT_READS"]}'
 
 Mit dieser Option wird die Überprüfung von Dateiänderungen während der Abfrageausführung deaktiviert, und es werden die Dateien gelesen, die während der Abfrageausführung aktualisiert werden. Dies ist eine nützliche Option, wenn Sie Dateien vom Typ „Nur anfügen“ lesen müssen, in denen während der Abfrageausführung Daten hinzugefügt werden. In erweiterbaren Dateien wird der vorhandene Inhalt nicht aktualisiert, und es werden nur neue Zeilen hinzugefügt. Dadurch wird die Wahrscheinlichkeit falscher Ergebnisse im Vergleich zu den aktualisierbaren Dateien minimiert. Mit dieser Option können Sie ggf. die häufig erweiterten Dateien lesen, ohne die Fehler behandeln zu müssen. Weitere Informationen finden Sie im Abschnitt [Abfragen von erweiterbaren Dateien](query-single-csv-file.md#querying-appendable-files).
+
+Reject-Optionen 
+
+> [!NOTE]
+> Das Feature für abgelehnte Zeilen befindet sich in der Public Preview.
+> Beachten Sie, dass das Feature für abgelehnte Zeilen nur für Textdateien mit Trennzeichen und PARSER_VERSION 1.0 funktioniert.
+
+
+Sie können Reject-Parameter angeben, die bestimmen, wie der Dienst *modifizierte* Datensätze behandelt, die aus der externen Datenquelle abgerufen werden. Ein Datensatz gilt als „dirty“ (modifiziert), wenn die tatsächlichen Datentypen nicht den Spaltendefinitionen der externen Tabelle entsprechen.
+
+Wenn Sie die Reject-Optionen nicht angeben oder ändern, verwendet der Dienst Standardwerte. Der Dienst verwendet die Reject-Optionen, um die Anzahl der Zeilen zu bestimmen, die abgelehnt werden können, bevor bei der eigentlichen Abfrage ein Fehler auftritt. Die Abfrage gibt (Teil-) Ergebnisse zurück, bis der Reject-Schwellenwert überschritten wird. Daraufhin wird eine entsprechende Fehlermeldung ausgelöst.
+
+
+MAXERRORS = *reject_value* 
+
+Gibt die Anzahl von Zeilen an, die abgelehnt werden können, bevor für die Abfrage ein Fehler auftritt. MAXERRORS muss eine ganze Zahl zwischen 0 und 2.147.483.647 sein.
+
+ERRORFILE_DATA_SOURCE = *data source*
+
+Gibt die Datenquelle an, in die abgelehnte Zeilen und die entsprechende Fehlerdatei geschrieben werden sollen.
+
+ERRORFILE_LOCATION = *Directory Location*
+
+Gibt das Verzeichnis in DATA_SOURCE oder ERROR_FILE_DATASOURCE an, sofern angegeben, in das die abgelehnten Zeilen und die entsprechende Fehlerdatei geschrieben werden sollen. Ist das angegebene Verzeichnis nicht vorhanden, wird es vom Dienst für Sie erstellt. Es wird ein untergeordnetes Verzeichnis mit dem Namen „_rejectedrows“ erstellt. Mit dem „_ “-Zeichen wird sichergestellt, dass das Verzeichnis für andere Datenverarbeitungsvorgänge übergangen wird, es sei denn, es ist explizit im LOCATION-Parameter angegeben. In diesem Verzeichnis befindet sich ein Ordner, der ausgehend von der Zeit der Lastübermittlung im Format „JahrMonatTag_StundeMinuteSekunde_Anweisungs-ID“ erstellt wurde (z. B. 20180330-173205-559EE7D2-196D-400A-806D-3BF5D007F891). Sie können die Anweisungs-ID verwenden, um den Ordner mit der Abfrage zu korrelieren, von der er generiert wurde. In diesen Ordner werden zwei Dateien geschrieben: die Datei „error.json“ und die Datendatei. 
+
+Die Datei error.json enthält ein JSON-Array mit den aufgetretenen Fehlern im Zusammenhang mit abgelehnten Zeilen. Jedes Element, das einen Fehler darstellt, enthält die folgenden Attribute:
+
+| attribute | BESCHREIBUNG                                                  |
+| --------- | ------------------------------------------------------------ |
+| Fehler     | Der Grund, warum die Zeile abgelehnt wird.                                  |
+| Zeile       | Die Ordinalzahl der abgelehnten Zeile in der Datei.                         |
+| Column    | Die Ordinalzahl der abgelehnten Spalte.                              |
+| Wert     | Der Wert der abgelehnten Spalte. Wenn der Wert größer als 100 Zeichen ist, werden nur die ersten 100 Zeichen angezeigt. |
+| Datei      | Der Pfad zur Datei, zu der die Zeile gehört.                            |
 
 ## <a name="fast-delimited-text-parsing"></a>Schnelle Analyse von Text mit Trennzeichen
 
@@ -426,6 +469,24 @@ WITH (
     [population] bigint 'strict $.population' -- this one works as column name casing is valid
     --,[population2] bigint 'strict $.POPULATION' -- this one fails because of wrong casing and strict path mode
 )
+AS [r]
+```
+
+### <a name="specify-multiple-filesfolders-in-bulk-path"></a>Angeben mehrerer Dateien/Ordner im BULK-Pfad
+
+Das folgende Beispiel zeigt, wie Sie mehrere Datei-/Ordnerpfade im BULK-Parameter verwenden können:
+
+```sql
+SELECT 
+    TOP 10 *
+FROM  
+    OPENROWSET(
+        BULK (
+            'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer/release/us_population_county/year=2000/*.parquet',
+            'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer/release/us_population_county/year=2010/*.parquet',
+        ),
+        FORMAT='PARQUET'
+    )
 AS [r]
 ```
 

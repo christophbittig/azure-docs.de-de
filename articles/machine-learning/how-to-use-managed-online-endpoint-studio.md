@@ -11,12 +11,12 @@ ms.author: ssambare
 author: shivanissambare
 ms.reviewer: peterlu
 ms.date: 05/25/2021
-ms.openlocfilehash: 764532fd06a26810dcee7c9d348aaf04abc037a4
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: d195ce6019f200b3cd3b264aacf09a8cbdb30c5f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129428861"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131057588"
 ---
 # <a name="create-and-use-managed-online-endpoints-preview-in-the-studio"></a>Erstellen und Verwenden von verwalteten Onlineendpunkten (Vorschau) in Studio
 
@@ -169,6 +169,6 @@ In diesem Artikel wurde beschrieben, wie Sie verwaltete Azure Machine Learning-O
 - [Bereitstellen verwalteter Onlineendpunkte mit der Azure CLI](how-to-deploy-managed-online-endpoints.md)
 - [Bereitstellen von Modellen per REST (Vorschau)](how-to-deploy-with-rest.md)
 - [Überwachen verwalteter Onlineendpunkte](how-to-monitor-online-endpoints.md)
-- [Problembehandlung für die Bereitstellung und Bewertung verwalteter Onlineendpunkte (Vorschau)](how-to-troubleshoot-managed-online-endpoints.md)
+- [Problembehandlung für die Bereitstellung und Bewertung verwalteter Onlineendpunkte (Vorschau)](./how-to-troubleshoot-online-endpoints.md)
 - [Anzeigen der Kosten für einen verwalteten Azure Machine Learning-Onlineendpunkt (Vorschau)](how-to-view-online-endpoints-costs.md)
 - [Verwalten und Erhöhen der Kontingente für Ressourcen mit Azure Machine Learning](how-to-manage-quotas.md#azure-machine-learning-managed-online-endpoints-preview)

@@ -1,17 +1,17 @@
 ---
 title: Regionale Redundanz und Failoverwiederherstellung mit Azure HPC Cache
 description: Erfahren Sie etwas über Verfahren zur Bereitstellung von Failoverfunktionen für die Notfallwiederherstellung mit Azure HPC Cache.
-author: ekpgh
+author: femila
 ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 08/19/2021
-ms.author: v-erkel
-ms.openlocfilehash: a05a281bdf01a01be842e99cc1b08383d0b9c1bc
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.author: femila
+ms.openlocfilehash: b47e664bcbe5435a527940c0c1df8f92d95d5cb5
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515015"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131078538"
 ---
 # <a name="use-multiple-caches-for-regional-failover-recovery"></a>Verwenden mehrerer Caches für die regionale Failoverwiederherstellung
 

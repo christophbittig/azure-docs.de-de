@@ -1,17 +1,17 @@
 ---
 title: Azure CLI-Voraussetzungen für Azure HPC Cache
 description: Einrichtungsschritte, bevor Sie die Azure CLI zum Erstellen oder Ändern einer Azure HPC Cache-Instanz verwenden können
-author: ekpgh
+author: femila
 ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/08/2020
-ms.author: v-erkel
-ms.openlocfilehash: 8e153a513219d59ac3a5825da9c4f59179aae99f
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.author: femila
+ms.openlocfilehash: 90d139cf2e839544eb94545f010b2fa0d917e8cb
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112121269"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131016110"
 ---
 # <a name="set-up-azure-cli-for-azure-hpc-cache"></a>Einrichten der Azure-CLI für Azure HPC Cache
 

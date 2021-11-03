@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 08/25/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 68eaef6943bea96261e73abc141c87362071665d
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: fddb35cd2b610280440ac01fe5ffc9027a59a2b7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129991943"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131021883"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Bekannte Probleme und Lösungen bei der Einhaltung des SCIM 2.0-Protokolls des Azure AD-Benutzerbereitstellungsdiensts
 
@@ -55,14 +55,14 @@ Verwenden Sie die folgende URL, um das PATCH-Verhalten zu aktualisieren und SCIM
 - Anforderungen zum Hinzufügen eines Zeichenfolgenattributs mit einem einzelnen Wert
 - Anforderungen zum Ersetzen mehrerer Attribute
 - Anforderungen zum Entfernen eines Gruppenmitglieds        
-                                                                                     
+
 Dieses Verhalten ist derzeit nur verfügbar, wenn Sie das Flag verwenden, wird jedoch in den nächsten Monaten zum Standardverhalten. Beachten Sie, dass dieses Featureflag bei bedarfsgesteuerter Bereitstellung nicht funktioniert. 
   * **URL (SCIM-konform):** aadOptscim062020
   * **SCIM-RFC-Verweise:** 
     * https://tools.ietf.org/html/rfc7644#section-3.5.2    
 
 Im Folgenden finden Sie Beispielanforderungen, die darlegen sollen, was die Synchronisierungs-Engine derzeit sendet, im Vergleich zu den Anforderungen, die gesendet werden, nachdem das Featureflag aktiviert wurde. 
-                           
+
 **Anforderungen zum Deaktivieren von Benutzern:**
 
 **Ohne Featureflag**
@@ -237,18 +237,18 @@ Im Folgenden finden Sie Beispielanforderungen, die darlegen sollen, was die Sync
 
 
   * **Downgrade-URL:** Sobald das neue SCIM-konforme Verhalten bei nicht im Katalog enthaltenen Anwendungen zum Standardverhalten wird, können Sie mit der folgenden URL ein Rollback auf das alte, nicht SCIM-konforme Verhalten durchführen: AzureAdScimPatch2017
-  
+
 
 
 ## <a name="upgrading-from-the-older-customappsso-job-to-the-scim-job"></a>Upgraden vom älteren customappsso-Auftrag zum SCIM-Auftrag
 Durch die folgenden Schritte wird Ihr vorhandener customappsso-Auftrag gelöscht und ein neuer SCIM-Auftrag erstellt: 
- 
+
 1. Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 2. Navigieren Sie im Azure-Portal im Abschnitt **Azure Active Directory > Unternehmensanwendungen** zu Ihrer SCIM-Anwendung, und wählen Sie sie aus.
 3. Kopieren Sie im Abschnitt **Eigenschaften** Ihrer SCIM-App die **Objekt-ID**.
 4. Wechseln Sie in einem neuen Webbrowserfenster zu https://developer.microsoft.com/graph/graph-explorer, und melden Sie sich als Administrator für den Azure AD-Mandanten an, unter dem Ihre App hinzugefügt wurde.
 5. Führen Sie im Graph-Tester den unten stehenden Befehl aus, um die ID Ihres Bereitstellungsauftrags zu suchen. Ersetzen Sie „[object-id]“ durch die Dienstprinzipal-ID (Objekt-ID), die Sie im dritten Schritt kopiert haben.
- 
+
    `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs` 
 
    ![Aufträge abrufen](media/application-provisioning-config-problem-scim-compatibility/get-jobs.PNG "Aufträge abrufen") 
@@ -256,21 +256,21 @@ Durch die folgenden Schritte wird Ihr vorhandener customappsso-Auftrag gelöscht
 
 6. Kopieren Sie in den Ergebnissen die vollständige „ID“-Zeichenfolge, die mit „customappsso“ oder mit „scim“ beginnt.
 7. Führen Sie den folgenden Befehl aus, um die Konfiguration für die Attributzuordnung abzurufen, damit Sie eine Sicherung erstellen können. Verwenden Sie dieselbe [object-id] wie zuvor, und ersetzen Sie die [job-id] durch die ID des Bereitstellungsauftrags, die Sie im letzten Schritt kopiert haben.
- 
+
    `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[job-id]/schema`
- 
+
    ![Schema abrufen](media/application-provisioning-config-problem-scim-compatibility/get-schema.PNG "Schema abrufen") 
 
 8. Kopieren Sie die JSON-Ausgabe aus dem letzten Schritt, und speichern Sie sie in einer Textdatei. Der JSON-Code enthält alle benutzerdefinierten Attributzuordnungen, die Sie in Ihrer alten App hinzugefügt haben, und sollte einige Tausend Zeilen mit JSON-Code umfassen.
 9. Führen Sie den folgenden Befehl aus, um den Bereitstellungsauftrag zu löschen:
- 
+
    `DELETE https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[job-id]`
 
 10. Führen Sie den folgenden Befehl aus, um einen neuen Bereitstellungsauftrag zu erstellen, der über die neuesten Fehlerbehebungen für den Dienst verfügt.
 
  `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs`
  `{   "templateId": "scim"   }`
-   
+
 11. Kopieren Sie in den Ergebnissen des letzten Schritts die vollständige „ID“-Zeichenfolge, die mit „scim“ beginnt. Sie können optional auch Ihre alten Attributzuordnungen erneut anwenden. Führen Sie dazu den Befehl unten aus, und ersetzen Sie „[new-job-id]“ durch die neue Auftrags-ID, die Sie kopiert haben. Geben Sie außerdem die JSON-Ausgabe aus Schritt 7 als Anforderungstext ein.
 
  `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[new-job-id]/schema`
@@ -291,7 +291,7 @@ Durch die folgenden Schritte wird Ihr vorhandener customappsso-Auftrag gelöscht
 
    `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs`
    `{   templateId: "customappsso"   }`
- 
+
 6. Wechseln Sie wieder zurück zum ersten Webbrowserfenster, und wählen Sie die Registerkarte **Bereitstellung** für Ihre Anwendung aus.
 7. Schließen Sie die Konfiguration der Benutzerbereitstellung wie gewohnt ab.
 

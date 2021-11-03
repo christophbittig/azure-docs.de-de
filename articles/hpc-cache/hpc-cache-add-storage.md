@@ -1,18 +1,18 @@
 ---
 title: Hinzufügen von Speicher zu einem Azure HPC Cache
 description: Definieren von Speicherzielen, damit Ihr Azure HPC Cache Ihr lokales NFS-System oder Azure-Blobcontainer für die langfristige Speicherung von Dateien verwenden kann
-author: ekpgh
+author: femila
 ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/22/2021
 ms.custom: subject-rbac-steps
-ms.author: v-erkel
-ms.openlocfilehash: 016a62bc7713b389e8baf7d0a5b5aeefceb81f2b
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.author: femila
+ms.openlocfilehash: 29ecaecc579d1947d3e86ef6d9e080030a419331
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129271959"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131070601"
 ---
 # <a name="add-storage-targets"></a>Hinzufügen von Speicherzielen
 

@@ -3,20 +3,18 @@ title: Systemanforderungen für das Azure Kinect Sensor SDK
 description: Informieren Sie sich über die Systemanforderungen für das Azure Kinect Sensor SDK unter Windows und Linux.
 author: qm13
 ms.author: quentinm
-ms.custom:
-- CI 115266
-- CSSTroubleshooting
+ms.custom: CI 115266, CSSTroubleshooting
 manager: dcscontentpm
 ms.prod: kinect-dk
 ms.date: 03/05/2021
 ms.topic: article
 keywords: Azure, Kinect, Systemanforderungen, CPU, GPU, USP, Setup, Einrichten, mindestens, Anforderungen
-ms.openlocfilehash: 558c1b9ca264874fa808aeba5f1e8a809a8f722d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: ba6782ad0a0278f1f66266c8abbe91d33cb5bf68
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104656973"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131085846"
 ---
 # <a name="azure-kinect-sensor-sdk-system-requirements"></a>Systemanforderungen für das Azure Kinect Sensor SDK
 

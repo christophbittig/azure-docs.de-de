@@ -5,14 +5,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: tutorial
-ms.date: 09/07/2021
+ms.date: 10/12/2021
 ms.author: cherylmc
-ms.openlocfilehash: 0bac9ef5d9a636fb4772352c93de537d21483139
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 3765b1abb6996e364ed3f7004e56f323fe256450
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130179298"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131017039"
 ---
 # <a name="tutorial-configure-bastion-and-connect-to-a-windows-vm"></a>Tutorial: Konfigurieren von Bastion und Herstellen einer Verbindung mit einer Windows-VM
 
@@ -96,7 +97,7 @@ In diesem Abschnitt erfahren Sie, wie Sie das Bastionhostobjekt in Ihrem VNET er
 
 * **Region**: Die öffentliche Azure-Region, in der die Ressource erstellt wird. Wählen Sie die Region aus, in der sich Ihr virtuelles Netzwerk befindet.
 
-* **Tarif**: Der Tarif wird auch als **SKU** bezeichnet. Für dieses Tutorial wählen wir die **Standard**-SKU in der Dropdownliste aus. Wenn Sie die Standard-SKU auswählen, können Sie die Anzahl der Instanzen für die Skalierung des Hosts konfigurieren. Von der Basic-SKU wird die Hostskalierung nicht unterstützt. Weitere Informationen finden Sie unter [Konfigurationseinstellungen – SKU](configuration-settings.md#skus). Die Standard-SKU befindet sich in der Vorschauversion.
+* **Tarif**: Der Tarif wird auch als **SKU** bezeichnet. Für dieses Tutorial wählen wir die **Standard**-SKU in der Dropdownliste aus. Wenn Sie die Standard-SKU auswählen, können Sie die Anzahl der Instanzen für die Skalierung des Hosts konfigurieren. Von der Basic-SKU wird die Hostskalierung nicht unterstützt. Weitere Informationen finden Sie unter [Konfigurationseinstellungen – SKU](configuration-settings.md#skus).
 
 * **Anzahl der Instanzen**: Dies ist die Einstellung für die **Hostskalierung**, die in Inkrementen von Skalierungseinheiten konfiguriert wird. Verwenden Sie den Schieberegler, um die Anzahl der Instanzen zu konfigurieren. Wenn Sie die Basic-Tarif-SKU angegeben haben, können Sie diese Einstellung nicht konfigurieren. Weitere Informationen finden Sie unter [Konfigurationseinstellungen – Hostskalierung](configuration-settings.md#instance). In diesem Tutorial können Sie die gewünschte Anzahl der Instanzen auswählen. Berücksichtigen Sie dabei jedoch die [Preis](https://azure.microsoft.com/pricing/details/azure-bastion)-Überlegungen für Skalierungseinheiten.
 

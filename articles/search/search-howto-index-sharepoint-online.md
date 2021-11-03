@@ -2,17 +2,17 @@
 title: Indizieren von Daten über SharePoint Online (Vorschau)
 titleSuffix: Azure Cognitive Search
 description: Richten Sie einen SharePoint Online-Indexer ein, um die Indizierung der Inhalte von Dokumentbibliotheken in Azure Cognitive Search zu automatisieren.
-author: MarkHeff
-ms.author: maheff
+author: nitinme
+ms.author: nitinme
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/01/2021
-ms.openlocfilehash: e73e8226bd90b1600b0f3538e34c9f4f937ce189
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: 1494d0e5b6a3879d926b7d7a96979ca148806ec1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129807372"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131076014"
 ---
 # <a name="index-data-from-sharepoint-online"></a>Indizieren von Daten über SharePoint Online
 

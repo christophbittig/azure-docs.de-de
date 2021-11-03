@@ -2,17 +2,18 @@
 title: Anfügen von Datenträgerpools an Azure VMware Solution-Hosts (Vorschau)
 description: Hier erfahren Sie, wie Sie einen Datenträgerpool anfügen, der über ein iSCSI-Ziel als VMware-Datenspeicher einer privaten Azure VMware Solution-Cloud verfügbar gemacht wird. Sobald der Datenspeicher konfiguriert ist, können Sie darin Volumes erstellen und an Ihre VMware-Instanzen anfügen.
 ms.topic: how-to
-ms.date: 08/20/2021
-ms.openlocfilehash: 72af6f2e2186b2c4f79d6e49e8f8a272cc6a6326
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.date: 11/02/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: f2719b135860f448732f5f36285ef2c33ff0115e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130073200"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131071629"
 ---
 # <a name="attach-disk-pools-to-azure-vmware-solution-hosts-preview"></a>Anfügen von Datenträgerpools an Azure VMware Solution-Hosts (Vorschau)
 
-[Azure-Datenträgerpools](../virtual-machines/disks-pools.md) bieten persistenten Blockspeicher für Anwendungen und Workloads, die von Azure Disks unterstützt werden. Sie können Datenträger als persistenten Speicher für Azure VMware Solution einsetzen, um sowohl die Kosten als auch die Leistung zu optimieren. Wenn Sie speicherintensive Workloads hosten, können Sie anstelle einer Clusterskalierung z. B. eine Hochskalierung mithilfe von Datenträgerpools vornehmen. Datenträger können zudem für die Replikation von Daten aus lokalen oder primären VMware-Umgebungen in Datenspeicher für den sekundären Standort verwendet werden. Wenn Speicher unabhängig von den Azure VMware Solution-Hosts skaliert werden soll, werden [Ultra-Datenträger](../virtual-machines/disks-types.md#ultra-disks) und [SSD Premium-Datenträger](../virtual-machines/disks-types.md#premium-ssds) als Datenspeicher unterstützt.  
+[Azure-Datenträgerpools](../virtual-machines/disks-pools.md) bieten persistenten Blockspeicher für Anwendungen und Workloads, die von Azure Disks unterstützt werden. Sie können Datenträger als persistenten Speicher für Azure VMware Solution einsetzen, um sowohl die Kosten als auch die Leistung zu optimieren. Wenn Sie speicherintensive Workloads hosten, können Sie anstelle einer Clusterskalierung z. B. eine Hochskalierung mithilfe von Datenträgerpools vornehmen. Datenträger können zudem für die Replikation von Daten aus lokalen oder primären VMware-Umgebungen in Datenspeicher für den sekundären Standort verwendet werden. Wenn Speicher unabhängig von den Azure VMware Solution-Hosts skaliert werden soll, werden [Ultra-Datenträger](../virtual-machines/disks-types.md#ultra-disks) und [SSD Premium](../virtual-machines/disks-types.md#premium-ssds)- und [SSD Standard](../virtual-machines/disks-types.md#standard-ssds)-Datenträger als Datenspeicher unterstützt.  
 
 >[!IMPORTANT]
 >Azure-Datenträgerpools in Azure VMware Solution (Vorschau) sind derzeit als öffentliche Vorschauversion verfügbar.
@@ -38,108 +39,158 @@ Sie können den Datenträgerpool ausschließlich mit einer privaten Azure VMware
 
 - Eine [private Azure VMware Solution-Cloud](deploy-azure-vmware-solution.md), die mit einem [konfigurierten virtuellen Netzwerk](deploy-azure-vmware-solution.md#connect-to-azure-virtual-network-with-expressroute) bereitgestellt wurde. Weitere Informationen finden Sie in der [Checkliste für die Netzwerkplanung](tutorial-network-checklist.md) und unter [Konfigurieren des Netzwerks für Ihre private VMware-Cloud in Azure](tutorial-configure-networking.md). 
 
-   - Wenn Sie Ultra-Datenträger auswählen, verwenden Sie „Ultra Performance“ (Höchstleistung) für die private Azure VMware Solution-Cloud, und [aktivieren Sie ExpressRoute FastPath](../expressroute/expressroute-howto-linkvnet-arm.md#configure-expressroute-fastpath).
+   - Wenn Sie Ultra-Datenträger auswählen, verwenden Sie ein ExpressRoute-VNet-Gateway mit Höchstleistung für die Netzwerkverbindung des Datenträgerpools mit Ihrer privaten Azure VMware Solution-Cloud und [aktivieren dann ExpressRoute FastPath](../expressroute/expressroute-howto-linkvnet-arm.md#configure-expressroute-fastpath).
 
-   - Bei Auswahl von SSD Premium-Datenträgern verwenden Sie „Standard“ (1 GBit/s) für die private Azure VMware Solution-Cloud.  Zum Hosten von iSCSI muss „Standard\_DS##\_v3“ verwendet werden.  Bei Kontingentproblemen fordern Sie eine Erhöhung der [vCPU-Kontingentgrenzen](../azure-portal/supportability/per-vm-quota-requests.md) für jede Azure-VM-Serie für die Dsv3-Serie an.
+   - Wenn Sie Premium- oder Standard-SSD-Datenträger auswählen, verwenden Sie ein ExpressRoute-VNet-Gateway des Typs „Standard“ (1 GBit/s) oder „Hochleistung“ (2 GBit/s) für die Netzwerkverbindung des Datenträgerpools mit Ihrer privaten Azure VMware Solution-Cloud.  
+
+- Zum Hosten von iSCSI muss „Standard\_DS##\_v3“ verwendet werden.  Bei Kontingentproblemen fordern Sie eine Erhöhung der [vCPU-Kontingentgrenzen](../azure-portal/supportability/per-vm-quota-requests.md) für jede Azure-VM-Serie für die Dsv3-Serie an.
 
 - Ein Datenträgerpool als zugrunde liegender Speicher, der als iSCSI-Ziel bereitgestellt und verfügbar gemacht wird. Dabei wird jeder Datenträger als einzelne LUN angezeigt. Einzelheiten finden Sie unter [Deploy an Azure disk pool](../virtual-machines/disks-pools-deploy.md) (Bereitstellen eines Azure-Datenträgerpools).
 
    >[!IMPORTANT]
    > Der Datenträgerpool muss im gleichen Abonnement bereitgestellt werden wie der VMware-Cluster, und er muss an dasselbe VNet angefügt werden wie der VMware-Cluster.
 
-## <a name="attach-a-disk-pool-to-your-private-cloud"></a>Anfügen eines Datenträgerpools an Ihre private Cloud
+## <a name="add-a-disk-pool-to-your-private-cloud"></a>Hinzufügen eines Datenträgerpools zu Ihrer privaten Cloud
 Sie fügen einen Datenträgerpool an, der über ein iSCSI-Ziel als VMware-Datenspeicher einer privaten Azure VMware Solution-Cloud verfügbar gemacht wird.
 
 >[!IMPORTANT]
 >In der **Vorschauphase** sollten Sie einen Datenträgerpool lediglich an einen Test- oder Nichtproduktionscluster anfügen.
 
-1. Überprüfen Sie, ob das Abonnement bei `Microsoft.AVS` registriert ist.
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-   ```azurecli
-   az provider show -n "Microsoft.AVS" --query registrationState
-   ```
+Überprüfen Sie, ob das Abonnement bei `Microsoft.AVS` registriert ist.
 
-   Falls es nicht bereits registriert ist, registrieren Sie das Abonnement.
+```azurecli
+az provider show -n "Microsoft.AVS" --query registrationState
+```
 
-   ```azurecli
-   az provider register -n "Microsoft.AVS"
-   ```
+Falls es nicht bereits registriert ist, registrieren Sie das Abonnement.
 
-2. Überprüfen Sie, ob das Abonnement bei `CloudSanExperience` AFEC in Microsoft.AVS registriert ist.
+```azurecli
+az provider register -n "Microsoft.AVS"
+```
 
-   ```azurecli
-   az feature show --name "CloudSanExperience" --namespace "Microsoft.AVS"
-   ```
+Überprüfen Sie, ob das Abonnement bei `CloudSanExperience` AFEC in Microsoft.AVS registriert ist.
 
-   - Falls es nicht bereits registriert ist, registrieren Sie das Abonnement.
+```azurecli
+az feature show --name "CloudSanExperience" --namespace "Microsoft.AVS"
+```
 
-      ```azurecli
-      az feature register --name "CloudSanExperience" --namespace "Microsoft.AVS"
-      ```
+Falls es nicht bereits registriert ist, registrieren Sie das Abonnement.
 
-      Die Registrierung kann ca. 15 Minuten dauern. Sie können den aktuellen Status überprüfen.
-      
-      ```azurecli
-      az feature show --name "CloudSanExperience" --namespace "Microsoft.AVS" --query properties.state
-      ```
+```azurecli
+az feature register --name "CloudSanExperience" --namespace "Microsoft.AVS"
+```
 
-      >[!TIP]
-      >Wenn die Registrierung länger als 15 Minuten in einem Zwischenzustand verbleibt, müssen Sie die Registrierung aufheben und das Flag erneut registrieren.
-      >
-      >```azurecli
-      >az feature unregister --name "CloudSanExperience" --namespace "Microsoft.AVS"
-      >az feature register --name "CloudSanExperience" --namespace "Microsoft.AVS"
-      >```
+Die Registrierung kann ca. 15 Minuten dauern. Sie können den Status mit dem folgenden Befehl überprüfen:
 
-3. Überprüfen Sie, ob die `vmware `-Erweiterung installiert ist. 
+```azurecli
+az feature show --name "CloudSanExperience" --namespace "Microsoft.AVS" --query properties.state
+```
 
-   ```azurecli
-   az extension show --name vmware
-   ```
+>[!TIP]
+>Wenn die Registrierung länger als 15 Minuten in einem Zwischenzustand verbleibt, müssen Sie die Registrierung aufheben und das Flag erneut registrieren.
+>
+>```azurecli
+>az feature unregister --name "CloudSanExperience" --namespace "Microsoft.AVS"
+>az feature register --name "CloudSanExperience" --namespace "Microsoft.AVS"
+>```
 
-   - Wenn die Erweiterung bereits installiert ist, überprüfen Sie, ob die Version **3.0.0** lautet. Wenn eine ältere Version installiert ist, aktualisieren Sie die Erweiterung.
+Überprüfen Sie, ob die `vmware `-Erweiterung installiert ist. 
 
-      ```azurecli
-      az extension update --name vmware
-      ```
+```azurecli
+az extension show --name vmware
+```
 
-   - Falls die Erweiterung noch nicht installiert ist, installieren Sie sie.
+Wenn die Erweiterung bereits installiert ist, überprüfen Sie, ob die Version **3.0.0** lautet. Wenn eine ältere Version installiert ist, aktualisieren Sie die Erweiterung.
 
-      ```azurecli
-      az extension add --name vmware
-      ```
+```azurecli
+az extension update --name vmware
+```
 
-4. Erstellen Sie einen iSCSI-Datenspeicher und fügen Sie ihn unter Verwendung des von `Microsoft.StoragePool` bereitgestellten iSCSI-Ziels im privaten Azure VMware Solution-Cloudcluster an. Der Datenträgerpool wird über ein delegiertes Subnetz an ein VNet angefügt, was mit dem Ressourcenanbieter „Microsoft.StoragePool/diskPools“ erfolgt.  Wenn das Subnetz nicht delegiert ist, tritt bei der Bereitstellung ein Fehler auf.
+Falls die Erweiterung noch nicht installiert ist, installieren Sie sie.
 
-   ```bash
-   az vmware datastore disk-pool-volume create --name iSCSIDatastore1 --resource-group MyResourceGroup --cluster Cluster-1 --private-cloud MyPrivateCloud --target-id /subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/ResourceGroup1/providers/Microsoft.StoragePool/diskPools/mpio-diskpool/iscsiTargets/mpio-iscsi-target --lun-name lun0
-   ```
+```azurecli
+az extension add --name vmware
+```
 
-   >[!TIP]
-   >Sie können die Hilfe zu den Datenspeichern anzeigen.
-   >
-   >   ```azurecli
-   >   az vmware datastore -h
-   >   ```
-   
+### <a name="attach-the-iscsi-lun"></a>Anfügen der iSCSI-LUN
 
-5. Zeigen Sie die Details eines iSCSI-Datenspeichers in einem privaten Cloudcluster an.
-   
-   ```azurecli
-   az vmware datastore show --name MyCloudSANDatastore1 --resource-group MyResourceGroup --cluster -Cluster-1 --private-cloud MyPrivateCloud
-   ```
+Erstellen Sie einen iSCSI-Datenspeicher und fügen Sie ihn unter Verwendung des von `Microsoft.StoragePool` bereitgestellten iSCSI-Ziels im privaten Azure VMware Solution-Cloudcluster an. Der Datenträgerpool wird über ein delegiertes Subnetz an ein VNet angefügt, was mit dem Ressourcenanbieter Microsoft.StoragePool/diskPools erfolgt.  Wenn das Subnetz nicht delegiert ist, tritt bei der Bereitstellung ein Fehler auf.
 
-6. Listen Sie alle Datenspeicher in einem privaten Cloudcluster auf.
+```bash
+#Initialize input parameters
+resourceGroupName='<yourRGName>'
+name='<desiredDataStoreName>'
+cluster='<desiredCluster>'
+privateCloud='<privateCloud>'
+lunName='<desiredLunName>'
 
-   ```azurecli
-   az vmware datastore list --resource-group MyResourceGroup --cluster Cluster-1 --private-cloud MyPrivateCloud
-   ```
+az vmware datastore disk-pool-volume create --name $name --resource-group $resourceGroupName --cluster $cluster --private-cloud $privateCloud --target-id /subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/ResourceGroup1/providers/Microsoft.StoragePool/diskPools/mpio-diskpool/iscsiTargets/mpio-iscsi-target --lun-name $lunName
+```
 
-## <a name="delete-an-iscsi-datastore-from-your-private-cloud"></a>Löschen eines iSCSI-Datenspeichers aus Ihrer privaten Cloud
+>[!TIP]
+>Sie können die Hilfe zu den Datenspeichern anzeigen.
+>
+>   ```azurecli
+>   az vmware datastore -h
+>   ```
 
-Wenn Sie den Datenspeicher einer privaten Cloud löschen, werden die Ressourcen des Datenträgerpools nicht gelöscht. Für diesen Vorgang ist kein Wartungsfenster erforderlich.
 
-1. Schalten Sie die VMs aus, und entfernen Sie alle Objekte, die den iSCSI-Datenspeichern zugeordnet sind. Dazu zählen:
+Um zu bestätigen, dass das Anfügen erfolgreich war, können Sie die folgenden Befehle verwenden:
+
+Zeigen Sie die Details eines iSCSI-Datenspeichers in einem privaten Cloudcluster an.
+
+```azurecli
+az vmware datastore show --name MyCloudSANDatastore1 --resource-group MyResourceGroup --cluster -Cluster-1 --private-cloud MyPrivateCloud
+```
+
+Listen Sie alle Datenspeicher in einem privaten Cloudcluster auf.
+
+```azurecli
+az vmware datastore list --resource-group MyResourceGroup --cluster Cluster-1 --private-cloud MyPrivateCloud
+```
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+
+### <a name="preview-registration"></a>Vorschauregistrierung
+
+Registrieren Sie zunächst Ihr Abonnement bei Microsoft.AVS und CloudSanExperience.
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+1. Suchen Sie nach **Abonnements**, und wählen Sie diese Option aus.
+1. Wählen Sie das gewünschte Abonnement und dann unter **Einstellungen** die Option **Ressourcenanbieter** aus.
+1. Suchen Sie nach **Microsoft.AVS**. Wählen Sie diese Option und dann **Registrieren** aus.
+1. Wählen Sie unter **Einstellungen** die Option **Previewfunktionen** aus.
+1. Suchen Sie nach **CloudSanExperience**, und registrieren Sie diese Option.
+
+### <a name="connect-your-disk-pool"></a>Verbinden Ihres Datenträgerpools
+
+Nachdem Ihr Abonnement ordnungsgemäß registriert wurde, können Sie Ihren Datenträgerpool mit Ihrem privaten Azure VMware Solution-Cloudcluster verbinden.
+
+> [!IMPORTANT]
+> Der Datenträgerpool wird über ein delegiertes Subnetz an ein VNet angefügt, was mit dem Ressourcenanbieter Microsoft.StoragePool erfolgt. Wenn das Subnetz nicht delegiert ist, tritt bei der Bereitstellung ein Fehler auf. Weitere Informationen finden Sie unter [Delegieren der Subnetzberechtigung](../virtual-machines/disks-pools-deploy.md#delegate-subnet-permission).
+
+1. Navigieren Sie zu Ihrer Azure VMware Solution-Instanz.
+1. Wählen Sie **Speicher (Vorschau)** unter **Verwalten** aus.
+1. Wählen Sie **Datenträgerpool verbinden** aus.
+1. Wählen Sie das gewünschte Abonnement aus.
+1. Wählen Sie Ihren Datenträgerpool und den Clientcluster aus, mit dem Sie eine Verbindung herstellen möchten.
+1. Aktivieren Sie Ihre LUNs (falls vorhanden). Geben Sie einen Datenspeichernamen an (standardmäßig wird die LUN verwendet), und wählen Sie **Verbinden** aus.
+
+:::image type="content" source="media/attach-disk-pools-to-azure-vmware-solution-hosts/connect-a-disk-pool-temp.png" alt-text="Screenshot: Herstellen der Verbindung mit einem Datenträgerpool." lightbox="media/attach-disk-pools-to-azure-vmware-solution-hosts/connect-a-disk-pool-temp.png":::
+
+Nachdem die Verbindung erfolgreich hergestellt wurde, werden die vCenter hinzugefügten Datenspeicher gezeigt.
+
+:::image type="content" source="media/attach-disk-pools-to-azure-vmware-solution-hosts/vsphere-datastores.png" alt-text="Screenshot der vSphere-Benutzeroberfläche: Datenträgerpools wurden als Datenspeicher angefügt." lightbox="media/attach-disk-pools-to-azure-vmware-solution-hosts/vsphere-datastores.png":::
+
+---
+
+## <a name="disconnect-a-disk-pool-from-your-private-cloud"></a>Trennen eines Datenträgerpools von Ihrer privaten Cloud
+
+Wenn Sie die Verbindung mit einem Datenträgerpool trennen, werden die Ressourcen des Datenträgerpools nicht gelöscht. Für diesen Vorgang ist kein Wartungsfenster erforderlich. Seien Sie jedoch vorsichtig, wenn Sie dies tun.
+
+Schalten Sie zunächst die VMs aus, und entfernen Sie alle Objekte, die den Datenspeichern des Datenträgerpools zugeordnet sind. Dazu zählen u. a.:
 
    - VMs (aus dem Bestand entfernen)
 
@@ -147,11 +198,13 @@ Wenn Sie den Datenspeicher einer privaten Cloud löschen, werden die Ressourcen 
 
    - Momentaufnahmen
 
-2. Löschen Sie den Datenspeicher der privaten Cloud.
+Löschen Sie dann den Datenspeicher der privaten Cloud.
 
-   ```azurecli
-   az vmware datastore delete --name MyCloudSANDatastore1 --resource-group MyResourceGroup --cluster Cluster-1 --private-cloud MyPrivateCloud
-   ```
+1. Navigieren Sie im Azure-Portal zu Ihrer Azure VMware Solution-Instanz.
+1. Wählen Sie **Speicher** unter **Verwalten** aus.
+1. Wählen Sie den Datenträgerpool, dessen Verbindung Sie trennen möchten, und danach **Trennen** aus.
+
+:::image type="content" source="media/attach-disk-pools-to-azure-vmware-solution-hosts/disconnect-a-disk-pool.png" alt-text="Screenshot der Seite mit dem Azure VMware Solution-Speicher und der Liste der angefügten Datenträgerpools mit Hervorhebung von „Trennen“." lightbox="media/attach-disk-pools-to-azure-vmware-solution-hosts/disconnect-a-disk-pool.png":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

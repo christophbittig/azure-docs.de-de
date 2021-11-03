@@ -4,12 +4,12 @@ description: Überwachen Sie systemeigene und benutzerdefinierte .NET-Leistungsi
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 423e17ef2b44286c28b464836075284929d8644c
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 2b0ddb84430ccccf5da7f44909f1f2ce0459aaa9
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102031360"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131044302"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Systemleistungsindikatoren in Application Insights
 
@@ -55,7 +55,7 @@ Wenn der gewünschte Leistungsindikator nicht in der Liste der Metriken enthalte
    * Wenn Sie Application Insights während der Entwicklung zu Ihrer Anwendung hinzugefügt haben, bearbeiten Sie die Datei „ApplicationInsights.config“ in Ihrem Projekt und stellen Sie sie anschließend erneut auf Ihren Servern bereit.
 3. Bearbeiten Sie Leistungserfassungsanweisung:
 
-    ```XML
+    ```xml
 
         <Add Type="Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.PerformanceCollectorModule, Microsoft.AI.PerfCounterCollector">
           <Counters>
@@ -78,7 +78,6 @@ Wenn Sie eine Instanz angeben, wird sie als CounterInstanceName-Dimension der ge
 
 ### <a name="collecting-performance-counters-in-code-for-aspnet-web-applications-or-netnet-core-console-applications"></a>Erfassen von Leistungsindikatoren im Code für ASP.NET-Webanwendungen oder .NET/.NET Core-Konsolenanwendungen
 Um Systemleistungsindikatoren zu erfassen und an Application Insights zu senden, können Sie den folgenden Codeausschnitt anpassen:
-
 
 ```csharp
     var perfCollectorModule = new PerformanceCollectorModule();
@@ -120,17 +119,17 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
 ## <a name="performance-counters-in-analytics"></a>Leistungsindikatoren in Analytics
 In [Analytics](../logs/log-query-overview.md) können Sie nach Leistungsindikatorberichten suchen und diese anzeigen.
 
-Das Schema **performanceCounters** zeigt die `category`, den `counter`-Namen und `instance`-Namen der einzelnen Leistungsindikatoren.  In den Telemetriedaten jeder Anwendung werden nur die Indikatoren für diese Anwendung angezeigt. Beispielsweise, um verfügbare Leistungsindikatoren anzuzeigen: 
+Das Schema **performanceCounters** zeigt die `category`, den `counter`-Namen und `instance`-Namen der einzelnen Leistungsindikatoren.  In den Telemetriedaten jeder Anwendung werden nur die Indikatoren für diese Anwendung angezeigt. Beispielsweise, um verfügbare Leistungsindikatoren anzuzeigen:
 
 ![Leistungsindikatoren in der Application Insights-Analyse](./media/performance-counters/analytics-performance-counters.png)
 
 ('Instance' bezieht sich hier auf die Instanz des Leistungsindikators, nicht auf die Instanz der Rolle oder des Server-Computers. Leistungsindikatoren wie etwa die Prozessorzeit werden vom Namen der Leistungsindikatorinstanz in der Regel nach dem Namen des Prozesses oder der Anwendung segmentiert.)
 
-So erhalten Sie ein Diagramm des verfügbaren Arbeitsspeichers im aktuellen Zeitraum: 
+So erhalten Sie ein Diagramm des verfügbaren Arbeitsspeichers im aktuellen Zeitraum:
 
 ![Zeitdiagramm der Speicherauslastung in der Application Insights-Analyse](./media/performance-counters/analytics-available-memory.png)
 
-Wie andere Telemetriedaten umfasst auch **performanceCounters** eine Spalte `cloud_RoleInstance`, die die Identität der Hostserverinstanz angibt, auf dem Ihre Anwendung ausgeführt wird. Geben Sie beispielsweise Folgendes ein, um die Leistung Ihrer App auf verschiedenen Computern vergleichen: 
+Wie andere Telemetriedaten umfasst auch **performanceCounters** eine Spalte `cloud_RoleInstance`, die die Identität der Hostserverinstanz angibt, auf dem Ihre Anwendung ausgeführt wird. Geben Sie beispielsweise Folgendes ein, um die Leistung Ihrer App auf verschiedenen Computern vergleichen:
 
 ![Nach Rolleninstanz in der Application Insights-Analyse segmentierte Leistung](./media/performance-counters/analytics-metrics-role-instance.png)
 
@@ -140,7 +139,7 @@ Wie andere Telemetriedaten umfasst auch **performanceCounters** eine Spalte `clo
 
 * *Ausnahmerate* ist ein Systemleistungsindikator. Die CLR zählt alle behandelten und nicht behandelten Ausnahmen, die ausgelöst werden, und dividiert das Ergebnis innerhalb eines Samplingintervalls durch die Länge dieses Intervalls. Das Application Insights SDK sammelt dieses Ergebnis und sendet es an das Portal.
 
-* *Ausnahmen* ist die Anzahl der TrackException-Meldungen, die das Portal innerhalb des Samplingintervalls des Diagramms empfangen hat. Sie enthält nur die behandelten Ausnahmen, wo Sie TrackException-Aufrufe in Ihren Code geschrieben haben, und enthält nicht alle [nicht behandelten Ausnahmen](./asp-net-exceptions.md). 
+* *Ausnahmen* ist die Anzahl der TrackException-Meldungen, die das Portal innerhalb des Samplingintervalls des Diagramms empfangen hat. Sie enthält nur die behandelten Ausnahmen, wo Sie TrackException-Aufrufe in Ihren Code geschrieben haben, und enthält nicht alle [nicht behandelten Ausnahmen](./asp-net-exceptions.md).
 
 ## <a name="performance-counters-for-applications-running-in-azure-web-apps"></a>Leistungsindikatoren für Anwendungen, die in Azure-Web-Apps ausgeführt werden
 
@@ -162,4 +161,3 @@ Wie bei anderen Metriken können Sie [eine Warnung festlegen](../alerts/alerts-l
 
 * [Abhängigkeitsüberwachung](./asp-net-dependencies.md)
 * [Ausnahmeverfolgung](./asp-net-exceptions.md)
-

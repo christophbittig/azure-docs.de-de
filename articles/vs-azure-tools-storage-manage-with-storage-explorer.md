@@ -8,12 +8,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/08/2019
 ms.author: cawa
-ms.openlocfilehash: 969e2d2424b9f9af1dcd921a1cebfa9407e313eb
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: f08d1c38965121564c21dee7053ae0c152b82814
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114438380"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131021978"
 ---
 # <a name="get-started-with-storage-explorer"></a>Erste Schritte mit dem Storage-Explorer
 
@@ -124,7 +124,7 @@ Mit Storage-Explorer können Sie eine Verbindung mit einzelnen Ressourcen, z. B
 | Dateifreigaben      | Nein       | Nein                   | Ja (URL)                      | Nein                 |
 | Warteschlangen           | Ja      | Nein                   | Ja (URL)                      | Nein                 |
 | Tabellen           | Nein       | Nein                   | Ja (URL)                      | Nein                 |
- 
+
 Storage Explorer kann auch eine Verbindung mit einem [lokalen Speicheremulator](#local-storage-emulator) über die konfigurierten Ports des Emulators herstellen.
 
 Um eine Verbindung mit einer einzelnen Ressource herzustellen, wählen Sie die Schaltfläche **Verbinden** auf der linken Symbolleiste auf. Befolgen Sie dann die Anweisungen für den Ressourcentyp, mit dem Sie eine Verbindung herstellen möchten.
@@ -146,7 +146,7 @@ Storage-Explorer kann Ihr Azure-Konto verwenden, um eine Verbindung mit den folg
 * Azure Data Lake Storage Gen2-Container
 * Azure Data Lake Storage Gen2-Verzeichnisse
 * Warteschlangen
- 
+
 Azure AD ist die bevorzugte Option, wenn Sie Zugriff auf Ihre Ressource auf der Datenebene, aber nicht auf der Verwaltungsebene haben.
 
 1. Melden Sie sich mit den [oben beschriebenen Schritten](#sign-in-to-azure) bei mindestens einem Azure-Konto an.

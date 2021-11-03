@@ -7,14 +7,17 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.topic: how-to
 ms.date: 09/12/2021
-ms.openlocfilehash: b3a33bc1f72af20a28bffbd96df73b95d31e3cca
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 354db7af1198335247d97c31b44b3c40b59ed75d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128598469"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131060704"
 ---
 # <a name="advanced-configurations-for-jupyter-notebooks-and-msticpy-in-azure-sentinel"></a>Erweiterte Konfigurationen für Jupyter Notebooks und MSTICPy in Azure Sentinel
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 In diesem Artikel werden erweiterte Konfigurationen für die Arbeit mit Jupyter Notebooks und MSTICPy in Azure Sentinel beschrieben.
 
@@ -180,7 +183,7 @@ Verwenden Sie mehrere Konfigurationsdateien mit mehreren Umgebungsvariablen, wen
 
     Wenn Sie jedoch auch Geheimnisse in der Datei gespeichert haben, wird empfohlen, die Konfigurationsdatei auf dem lokalen Computelaufwerk zu speichern. Auf den internen Computespeicher kann nur die Person zugreifen, die die Compute-Instanz erstellt hat, während der freigegebene Speicher für alle Benutzer zugänglich ist, die Zugriff auf Ihren Azure ML-Arbeitsbereich haben.
 
-    Weitere Informationen hierzu finden Sie unter [Was ist eine Azure Machine Learning-Compute-Instanz?](/azure/machine-learning/concept-compute-instance)
+    Weitere Informationen hierzu finden Sie unter [Was ist eine Azure Machine Learning-Compute-Instanz?](../machine-learning/concept-compute-instance.md)
 
 1. Kopieren Sie bei Bedarf die Datei **msticpyconfig.yaml** an den ausgewählten Speicherort.
 
@@ -235,7 +238,6 @@ In diesem Verfahren wird beschrieben, wie Sie die **BASHRC**-Datei aktualisieren
 
     - Wenn Sie die Datei **msticpyconfig.yaml** verschoben haben, führen Sie `export MSTICPYCONFIG=~/msticpyconfig.yaml` aus.
     - Wenn Sie die Datei **msticpyconfig.yaml** nicht verschoben haben, führen Sie `export MSTICPYCONFIG=~/cloudfiles/code/Users/<YOURNAME>/msticpyconfig.yaml` aus.
-
 
 # <a name="azure-ml-options"></a>[Azure ML-Optionen](#tab/azure-ml)
 
@@ -311,4 +313,3 @@ Weitere Informationen finden Sie unter
 |**MSTICPy**     |      - [MSTICPy-Paketkonfiguration](https://msticpy.readthedocs.io/en/latest/getting_started/msticpyconfig.html)<br> - [MSTICPy-Einstellungs-Editor](https://msticpy.readthedocs.io/en/latest/getting_started/SettingsEditor.html)<br>    - [Konfigurieren Ihrer Notebook-Umgebung](https://github.com/Azure/Azure-Sentinel-Notebooks/blob/master/ConfiguringNotebookEnvironment.ipynb).<br>    - [MPSettingsEditor Notebook](https://github.com/microsoft/msticpy/blob/master/docs/notebooks/MPSettingsEditor.ipynb). <br><br>**Hinweis**: Das Azure Sentinel-Notebooks-GitHub-Repository enthält auch eine *Msticpyconfig.yaml*-Vorlagendatei mit auskommentierten Abschnitten, die Ihnen helfen könnten, die Einstellungen zu verstehen.      |
 |**Azure Sentinel und Jupyter Notebooks**     |      - [Jupyter Notebooks: Eine Einführung](https://realpython.com/jupyter-notebook-introduction/)<br>    - [MSTICPy-Dokumentation](https://msticpy.readthedocs.io/)<br>    - [Dokumentation zu Azure Sentinel-Notebooks](notebooks.md)<br>    - [Das Infosec-Jupyterbook](https://infosecjupyterbook.com/introduction.html)<br>    - [Exemplarische Vorgehensweise zum Linux-Host-Explorer-Notebook](https://techcommunity.microsoft.com/t5/azure-sentinel/explorer-notebook-series-the-linux-host-explorer/ba-p/1138273)<br>    - [Gründe für die Verwendung von Jupyter für die Sicherheitsuntersuchungen](https://techcommunity.microsoft.com/t5/azure-sentinel/why-use-jupyter-for-security-investigations/ba-p/475729)<br>    - [Sicherheitsuntersuchung mit Azure Sentinel und Notebook](https://techcommunity.microsoft.com/t5/azure-sentinel/security-investigation-with-azure-sentinel-and-jupyter-notebooks/ba-p/432921)<br>    - [Pandas-Dokumentation](https://pandas.pydata.org/pandas-docs/stable/user_guide/index.html)<br>    - [Bokeh-Dokumentation](https://docs.bokeh.org/en/latest/)       |
 |     |         |
-

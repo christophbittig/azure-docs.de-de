@@ -3,20 +3,20 @@ title: Aktivieren von Einmalkennwortüberprüfung
 titleSuffix: Azure AD B2C
 description: Erfahren Sie, wie Sie ein Einmalkennwort (One-Time Password, OTP) mithilfe von benutzerdefinierten Azure AD B2C-Richtlinien einrichten.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 10/19/2020
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 12b9639342e2e35b9229aa15bb9cfb4695427606
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 4815eec021e4ebecda065667dca4568ded703ac5
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97881190"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "131044872"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Definieren eines technischen Einmalkennwortprofils in einer benutzerdefinierten Azure AD B2C-Richtlinie
 

@@ -1,25 +1,25 @@
 ---
 title: Portliste für Azure FXT Edge Filer
 description: Liste der von FXT-Clusterumgebungen verwendeten TCP/UDP-Ports
-author: ekpgh
-ms.author: v-erkel
+author: femila
+ms.author: femila
 ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 05/26/2021
-ms.openlocfilehash: 28de9732f6a22f730059c08b5be939c23e52ebaa
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 3f95f58d123463cf527d1176c5e6c0d49ea8f48e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111414953"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131005307"
 ---
 # <a name="required-network-ports"></a>Erforderliche Netzwerkports
 
-Diese Liste enthält TCP/UDP-Ports, die für FXT-Clusterumgebungen erforderlich sind. Konfigurieren Sie Firewalls, mit denen Sie sicherstellen, dass auf diese Ports zugegriffen werden kann.
+Diese Liste zeigt TCP/UDP-Ports, die für FXT-Clusterumgebungen erforderlich sind. Konfigurieren Sie Firewalls, die Sie verwenden, um sicherzustellen, dass auf diese Ports zugegriffen werden kann.
 
-Die genauen Anforderungen Ihres Systemen variieren abhängig davon, welche Art Back-End-Speicher Sie verwenden.
+Die genauen Anforderungen Ihres Systemen variieren und hängen davon ab, welche Art Back-End-Speicher Sie verwenden.
 
-Weitere Informationen erhalten Sie vom Kundenservice und -support von Microsoft.
+Wenn Sie weitere Informationen erhalten möchten, wenden Sie sich an den Kundenservice und -support von Microsoft.
 
 ## <a name="api-ports"></a>API-Ports
 
@@ -48,9 +48,9 @@ Ausgehende NFS-Ports:
 | TCP/UDP | 111         | RPCBIND  |
 | TCP/UDP | 2049        | NFS      |
 
-Der Datenverkehr über ausgehende NFS-Ports variiert abhängig von der Art des Speichers, der als Kernspeichereinheit verwendet wird. (Einige Systeme verwenden Port 2049 nicht, er wird aber häufig genug verwendet, um hier aufgeführt zu werden. Alle Cluster müssen auf Port 111 zugreifen können.) Sehen Sie sich die Dokumentation für Speichersysteme an, oder verwenden Sie die weiter unten unter [Zusätzliche Portanforderungen](#additional-port-requirements) beschriebene Abfragemethodik.
+Der Datenverkehr über ausgehende NFS-Ports variiert und hängt von der Art des Speichers ab, der als Kernspeichereinheit verwendet wird. (Einige Systeme verwenden Port 2049 nicht, er wird aber häufig genug verwendet, um hier aufgeführt werden zu können. Alle Cluster müssen auf Port 111 zugreifen können.) Sehen Sie sich die Dokumentation für Speichersysteme an, oder verwenden Sie die unten in [Zusätzliche Portanforderungen](#additional-port-requirements) beschriebene Abfragemethodik.
 
-Für bestimmten ausgehenden NFS-Datenverkehr von FXT-Knoten werden kurzlebige Ports verwendet. Ausgehender FXT-Datenverkehr über bekannte Ports sollte nicht auf Transportebene eingeschränkt werden.
+Für bestimmten ausgehenden NFS-Datenverkehr von FXT-Knoten werden kurzlebige Ports verwendet. Ausgehender FXT-Datenverkehr über bekannte Ports sollte auf Transportebene nicht eingeschränkt werden.
 
 ## <a name="smb-ports"></a>SMB-Ports
 
@@ -78,7 +78,7 @@ Für bestimmten ausgehenden NFS-Datenverkehr von FXT-Knoten werden kurzlebige Po
 
 ## <a name="additional-port-requirements"></a>Zusätzliche Portanforderungen
 
-Ihre Kernspeichereinheiten benötigen möglicherweise Zugriff auf weitere Ports. Diese Anforderung variiert abhängig von der Art des verwendeten Speichers.
+Ihre Kernspeichereinheiten benötigen möglicherweise Zugriff auf weitere Ports. Diese Anforderung variiert und hängt davon ab, welche Art Speicher verwendet wird.
 
 Sie können den Befehl `rpcinfo` verwenden, um zu ermitteln, welche Ports von einem bestimmten Server verwendet werden. Führen Sie diesen Befehl in einem Clientsystem aus, das über keine Firewall verfügt:
 

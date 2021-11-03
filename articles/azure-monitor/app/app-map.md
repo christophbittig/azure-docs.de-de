@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.custom: devx-track-csharp
 ms.reviewer: sdash
-ms.openlocfilehash: db8c84334bfce52d34b9fadf73bb2b070fa93a70
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 01fc0be9a2ce8db89bbbcc032bbf90652d5627b8
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100007107"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131079394"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Anwendungsübersicht: Selektieren verteilter Anwendungen
 
@@ -18,7 +18,7 @@ Mit der Anwendungsübersicht können Sie Leistungsengpässe oder Fehlerhotspots 
 
 ## <a name="what-is-a-component"></a>Was ist eine Komponente?
 
-Komponenten sind unabhängig bereitstellbare Teile Ihrer verteilten Anwendung/Microserviceanwendung. Entwickler und Betriebsteams verfügen über Sichtbarkeit oder Zugriff für die von diesen Anwendungskomponenten generierte Telemetrie auf Codeebene. 
+Komponenten sind unabhängig bereitstellbare Teile Ihrer verteilten Anwendung/Microserviceanwendung. Entwickler und Betriebsteams verfügen über Sichtbarkeit oder Zugriff für die von diesen Anwendungskomponenten generierte Telemetrie auf Codeebene.
 
 * Komponenten unterscheiden sich von „beobachteten“ externen Abhängigkeiten, wie SQL, EventHub usw., auf die Ihr Team/Ihre Organisation möglicherweise keinen Zugriff hat (Code oder Telemetrie).
 * Komponenten können in einer beliebigen Anzahl von Server-/Rollen-/Containerinstanzen ausgeführt werden.
@@ -26,9 +26,9 @@ Komponenten sind unabhängig bereitstellbare Teile Ihrer verteilten Anwendung/Mi
 
 ## <a name="composite-application-map"></a>Verbundanwendungsübersicht
 
-Sie können die vollständige Anwendungstopologie über mehrere Ebenen verwandter Anwendungskomponenten hinweg anzeigen. Bei Komponenten kann es sich um verschiedene Application Insights-Ressourcen oder verschiedene Rollen in einer einzelnen Ressource handeln. Die App-Übersicht ermittelt Komponenten, indem sie HTTP-Abhängigkeitsaufrufe zwischen Servern verfolgt, auf denen das Application Insights SDK installiert ist. 
+Sie können die vollständige Anwendungstopologie über mehrere Ebenen verwandter Anwendungskomponenten hinweg anzeigen. Bei Komponenten kann es sich um verschiedene Application Insights-Ressourcen oder verschiedene Rollen in einer einzelnen Ressource handeln. Die App-Übersicht ermittelt Komponenten, indem sie HTTP-Abhängigkeitsaufrufe zwischen Servern verfolgt, auf denen das Application Insights SDK installiert ist.
 
-Diese Funktionalität beginnt mit einer progressiven Ermittlung der Komponenten. Wenn Sie die Anwendungsübersicht zum ersten Mal laden, wird eine Reihe von Abfragen ausgelöst, um die Komponenten zu ermitteln, die mit dieser Komponente in Zusammenhang stehen. Mit einer Schaltfläche in der oberen linken Ecke wird die Anzahl der Komponenten in Ihrer Anwendung aktualisiert, wenn diese ermittelt werden. 
+Diese Funktionalität beginnt mit einer progressiven Ermittlung der Komponenten. Wenn Sie die Anwendungsübersicht zum ersten Mal laden, wird eine Reihe von Abfragen ausgelöst, um die Komponenten zu ermitteln, die mit dieser Komponente in Zusammenhang stehen. Mit einer Schaltfläche in der oberen linken Ecke wird die Anzahl der Komponenten in Ihrer Anwendung aktualisiert, wenn diese ermittelt werden.
 
 Durch Klicken auf „Übersichtskomponenten aktualisieren“ wird die Übersicht mit allen bis zu diesem Zeitpunkt ermittelten Komponenten aktualisiert. Der Ladevorgang kann je nach Komplexität der Anwendung etwas dauern.
 
@@ -142,7 +142,7 @@ Alternativ können Sie für ASP.NET-Web-Apps den Initialisierer im Code instanzi
 ```
 
 > [!NOTE]
-> Das Hinzufügen eines Initialisierers mit `ApplicationInsights.config` oder `TelemetryConfiguration.Active` ist für ASP.NET Core-Anwendungen nicht zulässig. 
+> Das Hinzufügen eines Initialisierers mit `ApplicationInsights.config` oder `TelemetryConfiguration.Active` ist für ASP.NET Core-Anwendungen nicht zulässig.
 
 **ASP.NET Core-Apps: Laden Sie den Initialisierer in die aktive TelemetryConfiguration.**
 
@@ -177,7 +177,7 @@ Sie können den Namen der Cloudrolle auch mithilfe der Umgebungsvariablen ```APP
 
 Ab dem Java SDK 2.5.0 für Application Insights können Sie den Namen der Cloudrolle angeben, indem Sie der Datei `<RoleName>` den Eintrag `ApplicationInsights.xml` hinzufügen. Beispiel:
 
-```XML
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
    <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
@@ -231,7 +231,7 @@ Für Python können [OpenCensus Python-Telemetrieprozessoren](api-filtering-samp
 ```python
 def callback_function(envelope):
    envelope.tags['ai.cloud.role'] = 'new_role_name'
-   
+
 # AzureLogHandler
 handler.add_telemetry_processor(callback_function)
 
@@ -246,7 +246,7 @@ Im Hinblick auf **Cloudrollenname** kann es hilfreich sein, sich eine Anwendungs
 
 ![Screenshot: Anwendungsübersicht](media/app-map/cloud-rolename.png)
 
-In der Anwendungsübersicht oben sind alle Namen in grünen Kreisen „Cloudrollenname“-Werte für verschiedene Aspekte dieser spezifischen verteilten Anwendung. Somit umfasst diese Anwendung folgende Rollen: `Authentication`, `acmefrontend`, `Inventory Management` und `Payment Processing Worker Role`. 
+In der Anwendungsübersicht oben sind alle Namen in grünen Kreisen „Cloudrollenname“-Werte für verschiedene Aspekte dieser spezifischen verteilten Anwendung. Somit umfasst diese Anwendung folgende Rollen: `Authentication`, `acmefrontend`, `Inventory Management` und `Payment Processing Worker Role`.
 
 Bei dieser Anwendung stellt jeder dieser Cloudrollennamen auch eine unterschiedliche eindeutige Application Insights-Ressource mit eigenen Instrumentierungsschlüsseln dar. Da der Besitzer dieser Anwendung Zugriff auf jede dieser vier verschiedenen Application Insights-Ressourcen hat, können in der Anwendungsübersicht die zugrunde liegenden Beziehungen zusammengefügt werden.
 
@@ -256,7 +256,7 @@ Bei dieser Anwendung stellt jeder dieser Cloudrollennamen auch eine unterschiedl
    [Description("Name of the role the application is a part of. Maps directly to the role name in azure.")]
     [MaxStringLength("256")]
     705: string      CloudRole = "ai.cloud.role";
-    
+
     [Description("Name of the instance where the application is running. Computer name for on-premises, instance name for Azure.")]
     [MaxStringLength("256")]
     715: string      CloudRoleInstance = "ai.cloud.roleInstance";

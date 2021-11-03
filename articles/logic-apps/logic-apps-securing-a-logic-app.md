@@ -6,12 +6,13 @@ ms.suite: integration
 ms.reviewer: rarayudu, azla
 ms.topic: how-to
 ms.date: 09/13/2021
-ms.openlocfilehash: 0fedae22564d9bb393952e65a737d73e1fd254f9
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: d3814c0888499a1b31d707560f6acd26c572b95e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129350488"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131040659"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Schützen des Zugriffs und der Daten in Azure Logic Apps
 
@@ -485,7 +486,7 @@ Sie können nur bestimmten Benutzern oder Gruppen erlauben, bestimmte Aufgaben a
 
 * [Logik-App-Operator:](../role-based-access-control/built-in-roles.md#logic-app-operator) Ermöglicht Ihnen das Lesen, Aktivieren und Deaktivieren von Logik-Apps, die Sie aber nicht bearbeiten oder aktualisieren können.
 
-* [Mitwirkender](../role-based-access-control/built-in-roles.md#contributor): Hiermit wird Vollzugriff zum Verwalten aller Ressourcen gewährt, allerdings nicht zum Zuweisen von Rollen in Azure RBAC, zum Verwalten von Zuweisungen in Azure Blueprints oder zum Teilen von Imagekatalogen.
+* [Mitwirkender](../role-based-access-control/built-in-roles.md#contributor): Gewährt vollen Zugriff auf die Verwaltung aller Ressourcen, erlaubt aber nicht die Zuweisung von Rollen in Azure RBAC, die Verwaltung von Zuweisungen in Azure Blueprints oder die Freigabe von Bildergalerien.
 
   Angenommen, Sie müssen mit einer Logik-App arbeiten, die Sie nicht erstellt und keine Verbindungen authentifiziert haben, die vom Workflow dieser Logik-App verwendet werden. Für Ihr Azure-Abonnement ist die Berechtigung „Mitwirkender“ für die Ressourcengruppe erforderlich, die diese Logik-App-Ressource enthält. Wenn Sie eine Logik-App-Ressource erstellen, haben Sie automatisch Zugriff als Mitwirkender.
 
@@ -976,7 +977,7 @@ In dieser Tabelle werden die Authentifizierungstypen aufgeführt, die für die T
 | [Clientzertifikat](#client-certificate-authentication) | Azure API Management, Azure App Services, HTTP, HTTP + Swagger, HTTP Webhook |
 | [Active Directory OAuth](#azure-active-directory-oauth-authentication) | Azure API Management, Azure App Services, Azure Functions, HTTP, HTTP + Swagger, HTTP Webhook |
 | [Raw](#raw-authentication) | Azure API Management, Azure App Services, Azure Functions, HTTP, HTTP + Swagger, HTTP Webhook |
-| [Verwaltete Identität](#managed-identity-authentication) | **Integrierte Trigger und Aktionen** <p><p>Azure API Management, Azure App Services, Azure Functions, HTTP, HTTP-Webhook <p><p>**Verwaltete Connectors** <p><p>Azure AD Identity Protection, Azure Automation, Azure Container Instance, Azure Data Explorer, Azure Data Factory, Azure Data Lake, Azure Event Grid, Azure IoT Central V3, Azure Key Vault, Azure Resource Manager, Azure Sentinel, HTTP mit Azure AD <p><p>**Hinweis**: Die Unterstützung für verwaltete Connectors befindet sich derzeit in der Vorschauphase. |
+| [Verwaltete Identität](#managed-identity-authentication) | **Logik-App (Verbrauch)** : <p><p>- **Integriert**: Azure API Management, Azure App Services, Azure Functions, HTTP, HTTP-Webhook <p><p>- **Verwalteter Connector** (Vorschau): <p><p>--- **Einzelauthentifizierung**: Azure ID Identity Protection, Azure Automation, Azure-Containerinstanz, Azure Data Explorer, Azure Data Factory, Azure Data Lake, Azure Event Grid, Azure IoT Central V3, Azure Key Vault, Azure Resource Manager, Azure Sentinel, HTTP mit Azure <p><p>--- **Mehrfachauthentifizierung**: Azure Blob Storage, SQL Server <p><p>___________________________________________________________________________________________<p><p>**Logik-App (Standard)** : <p><p>- **Integriert**: HTTP, HTTP-Webhook <p><p>- **Verwalteter Connector** (Vorschau): <p>--- **Einzelauthentifizierung**: Azure ID Identity Protection, Azure Automation, Azure-Containerinstanz, Azure Data Explorer, Azure Data Factory, Azure Data Lake, Azure Event Grid, Azure IoT Central V3, Azure Key Vault, Azure Resource Manager, Azure Sentinel, HTTP mit Azure <p><p>--- **Mehrfachauthentifizierung**: Azure Blob Storage, SQL Server |
 |||
 
 <a name="basic-authentication"></a>

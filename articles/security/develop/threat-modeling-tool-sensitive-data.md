@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 0bcbe35fc6d9f104325bec8a3404ad57a6376cf2
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a0e795d6e6c2fa189682931f60b792e4588d1278
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94518123"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131047684"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>Sicherheitsrahmen: Sensible Daten | Gegenmaßnahmen 
 | Produkt/Dienst | Artikel |
@@ -83,7 +83,7 @@ ms.locfileid: "94518123"
 | **Schritte** | Browser können Informationen für die Zwischenspeicherung und die Verfolgung des Verlaufs speichern. Diese zwischengespeicherten Dateien werden in einem Ordner abgelegt, z.B. dem Ordner „Temporäre Internetdateien“ von Internet Explorer. Wenn auf diese Seite erneut zugegriffen wird, zeigt der Browser sie aus dem Cache an. Falls dem Benutzer sensible Informationen angezeigt werden (z. B. Adresse, Kreditkartendaten, Sozialversicherungsnummer oder Benutzername), können diese Informationen im Cache des Browsers gespeichert werden. Sie können dann abgerufen werden, indem der Cache des Browsers durchsucht wird oder indem im Browser einfach auf die Schaltfläche „Zurück“ geklickt wird. Legen Sie den Wert des Antwortheaders „cache-control“ für alle Seiten auf „no-store“ fest. |
 
 ### <a name="example"></a>Beispiel
-```XML
+```xml
 <configuration>
   <system.webServer>
    <httpProtocol>
