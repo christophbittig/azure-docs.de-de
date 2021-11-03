@@ -11,12 +11,12 @@ ms.author: seramasu
 ms.date: 08/05/2021
 ms.reviewer: laobri
 ms.custom: devplatv2
-ms.openlocfilehash: f4f6cb9941bfa9bd1a2711a25222fcbfe036951e
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 9cb3718a0e4ac8ef322fafd16236dfab0fa6f6fc
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130232383"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131087588"
 ---
 # <a name="deploy-models-with-rest-preview"></a>Bereitstellen von Modellen per REST (Vorschau)
 
@@ -157,7 +157,7 @@ Wenn Sie die Bereitstellung nicht verwenden, sollten Sie sie mit dem folgenden B
 
 * Erfahren Sie, wie Sie Ihr Modell [mithilfe der Azure-Befehlszeilenschnittstelle](how-to-deploy-managed-online-endpoints.md) bereitstellen.
 * Erfahren Sie, wie Sie Ihr Modell [über das Studio](how-to-use-managed-online-endpoint-studio.md) bereitstellen.
-* Erfahren Sie mehr über die [Problembehandlung für die Bereitstellung und Bewertung verwalteter Onlineendpunkte (Vorschau)](how-to-troubleshoot-managed-online-endpoints.md).
+* Erfahren Sie mehr über die [Problembehandlung für die Bereitstellung und Bewertung verwalteter Onlineendpunkte (Vorschau)](./how-to-troubleshoot-online-endpoints.md).
 * Erfahren Sie mehr über das [Zugreifen auf Azure-Ressourcen mit einem verwalteten Onlineendpunkt und einer systemseitig verwalteten Identität (Vorschau)](tutorial-deploy-managed-endpoints-using-system-managed-identity.md).
 * Erfahren Sie, wie Sie [Onlineendpunkte überwachen](how-to-monitor-online-endpoints.md).
 * Erfahren Sie mehr über den [sicheren Rollout für Onlineendpunkte (Vorschau)](how-to-safely-rollout-managed-endpoints.md).

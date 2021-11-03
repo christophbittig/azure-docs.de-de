@@ -9,12 +9,12 @@ ms.subservice: v1
 ms.topic: conceptual
 ms.date: 10/22/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 631330195ec9f38f3a059b0515d4f6255cd23677
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: a9dd37d74a12f262584f1cf41955b1444134a7ec
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130262183"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131065302"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Verarbeiten umfangreicher Datasets mit Azure Data Factory und Azure Batch
 > [!NOTE]
@@ -414,20 +414,19 @@ Dieser Abschnitt enthält weitere Details und Hinweise zum Code in der „Execut
     {
     // Get the list of input blobs from the input storage client object.
     BlobResultSegment blobList = inputClient.ListBlobsSegmented(folderPath,
-
-                         true,
-                                   BlobListingDetails.Metadata,
-                                   null,
-                                   continuationToken,
-                                   null,
-                                   null);
+                                    true,
+                                    BlobListingDetails.Metadata,
+                                    null,
+                                    continuationToken,
+                                    null,
+                                    null);
     // Return a string derived from parsing each blob.
 
      output = Calculate(blobList, logger, folderPath, ref continuationToken, "Microsoft");
 
     } while (continuationToken != null);
-
     ```
+
    Weitere Informationen finden Sie in der Dokumentation für die [ListBlobsSegmented](/java/api/com.microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmented)-Methode.
 
 1. Der Code für die Verwendung durch den Satz von Blobs geht logischerweise in die do-while-Schleife ein. In der **Execute**-Methode übergibt die do-while-Schleife die Liste der Blobs an eine Methode namens **Calculate**. Die Methode gibt eine Zeichenfolgenvariable mit dem Namen **output** zurück, die das Ergebnis des Durchlaufens aller Blobs im Segment ist.
@@ -448,7 +447,8 @@ Dieser Abschnitt enthält weitere Details und Hinweise zum Code in der „Execut
     ```csharp
     folderPath = GetFolderPath(outputDataset);
     ```
-   Die „GetFolderPath“-Methode wandelt das „DataSet“-Objekt in ein „AzureBlobDataSet“-Objekt um, das über die Eigenschaft „FolderPath“ verfügt.
+
+    Die „GetFolderPath“-Methode wandelt das „DataSet“-Objekt in ein „AzureBlobDataSet“-Objekt um, das über die Eigenschaft „FolderPath“ verfügt.
 
     ```csharp
     AzureBlobDataset blobDataset = dataArtifact.Properties.TypeProperties as AzureBlobDataset;
@@ -735,8 +735,6 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer einzigen Aktivität, nä
 
 > [!IMPORTANT]
 > Wenn Sie **file.txt** noch nicht in die Eingabeordner im Blobcontainer hochgeladen haben, erledigen Sie dies vor Erstellen der Pipeline. Die **IsPaused**-Eigenschaft ist im JSON-Code der Pipeline auf „False“ festgelegt, sodass die Pipeline sofort ausgeführt wird, da das **Startdatum** in der Vergangenheit liegt.
->
->
 
 1. Klicken Sie im Data Factory-Editor auf der Befehlsleiste auf die Schaltfläche **Neue Pipeline**. Wenn Sie den Befehl nicht sehen, klicken Sie auf das Symbol mit den Auslassungszeichen, um ihn anzuzeigen.
 
@@ -785,6 +783,7 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer einzigen Aktivität, nä
       }
     }
     ```
+
    Beachten Sie folgende Punkte:
 
    * Die Pipeline enthält nur eine Aktivität, die den Typ **DotNetActivity** hat.
@@ -830,9 +829,10 @@ In diesem Schritt testen Sie die Pipeline durch Ablegen von Dateien in die Einga
 
    Fünf Ausgabedateien (eine für jeden Eingabeslice) werden angezeigt. Jede Ausgabedatei weist ähnlichen Inhalt wie die folgende Ausgabe auf:
 
-    ```
+    ```output
     2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2015-11-16-00/file.txt.
     ```
+
    Das folgende Diagramm veranschaulicht, wie die Data Factory-Slices den Tasks in Batch zugeordnet werden. In diesem Beispiel wird ein Slice nur einmal ausgeführt.
 
    :::image type="content" source="./media/data-factory-data-processing-using-batch/image16.png" alt-text="Diagramm der Slicezuordnung":::
