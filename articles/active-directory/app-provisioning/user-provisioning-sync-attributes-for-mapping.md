@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 08/24/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 12e4423b0b48b2c5abb6f289c7fcf783c40a4d59
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 207936bd4b8fe29cfa15cd284b8ebba1e6a12164
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129990575"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131057531"
 ---
 # <a name="syncing-extension-attributes-for-azure-active-directory-application-provisioning"></a>Synchronisieren von Erweiterungsattributen für die Azure Active Directory-Anwendungsbereitstellung
 
@@ -123,7 +123,7 @@ Get-AzureADUser -ObjectId 0ccf8df6-62f1-4175-9e55-73da9e742690 | Select -ExpandP
    ![Seite „Directory extensions selection“ (Verzeichniserweiterungsauswahl) des Azure Active Directory Connect-Assistenten](./media/user-provisioning-sync-attributes-for-mapping/attribute-mapping-extensions.png)
 
 > [!NOTE]
-> Die Möglichkeit des Bereitstellens von Verweisattributen aus lokalen AD-Instanzen (z. B. **managedBy** oder **DN/DistinguishedName**) wird derzeit nicht unterstützt. Sie können dieses Feature über [User Voice](https://feedback.azure.com/forums/169401-azure-active-directory) anfordern. 
+> Die Möglichkeit des Bereitstellens von Verweisattributen aus lokalen AD-Instanzen (z. B. **managedBy** oder **DN/DistinguishedName**) wird derzeit nicht unterstützt. Sie können dieses Feature über [User Voice](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789) anfordern. 
 
 
 ## <a name="next-steps"></a>Nächste Schritte

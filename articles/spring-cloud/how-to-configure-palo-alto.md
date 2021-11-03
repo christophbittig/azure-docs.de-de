@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.service: spring-cloud
 ms.date: 09/17/2021
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: a65a6ea1fb2070b6a1879521b257c2738930bf3a
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: f3b0aec801598faea2fd741177d34ecdc127a9a8
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129368220"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131083382"
 ---
 # <a name="how-to-configure-palo-alto-for-azure-spring-cloud"></a>Konfigurieren von Palo Alto für Azure Spring Cloud
 
@@ -20,9 +20,9 @@ ms.locfileid: "129368220"
 
 In diesem Artikel wird beschrieben, wie Sie Azure Spring Cloud mit einer Palo Alto-Firewall verwenden.
 
-Die [Azure Spring Cloud-Referenzarchitektur](/azure/spring-cloud/reference-architecture) enthält z. B. eine Azure Firewall-Instanz zum Schutz Ihrer Anwendungen. Wenn Ihre aktuellen Bereitstellungen jedoch eine Palo Alto-Firewall enthalten, können Sie die Azure Firewall aus der Azure Spring Cloud-Bereitstellung entfernen und stattdessen Palo Alto wie in diesem Artikel beschrieben verwenden.
+Die [Azure Spring Cloud-Referenzarchitektur](./reference-architecture.md) enthält z. B. eine Azure Firewall-Instanz zum Schutz Ihrer Anwendungen. Wenn Ihre aktuellen Bereitstellungen jedoch eine Palo Alto-Firewall enthalten, können Sie die Azure Firewall aus der Azure Spring Cloud-Bereitstellung entfernen und stattdessen Palo Alto wie in diesem Artikel beschrieben verwenden.
 
-Konfigurationsinformationen wie Regeln und Adressplatzhalter sollten Sie in CSV-Dateien in einem Git-Repository aufbewahren. In diesem Artikel erfahren Sie, wie Sie diese Dateien automatisiert auf Palo Alto anwenden. Informationen zur Konfiguration, die auf Palo Alto angewandt werden soll, finden Sie unter [Kundenzuständigkeiten für die Ausführung von Azure Spring Cloud im VNet](/azure/spring-cloud/vnet-customer-responsibilities). 
+Konfigurationsinformationen wie Regeln und Adressplatzhalter sollten Sie in CSV-Dateien in einem Git-Repository aufbewahren. In diesem Artikel erfahren Sie, wie Sie diese Dateien automatisiert auf Palo Alto anwenden. Informationen zur Konfiguration, die auf Palo Alto angewandt werden soll, finden Sie unter [Kundenzuständigkeiten für die Ausführung von Azure Spring Cloud im VNet](./vnet-customer-responsibilities.md). 
 
 > [!Note]
 > Zur Beschreibung der Verwendung von REST-APIs werden in diesem Artikel Namen und Werte in der Syntax für PowerShell-Variablen angegeben. Für die Werte sind Sie selbst verantwortlich. Achten Sie darauf, bei allen Schritten dieselben Werte zu verwenden.
@@ -53,7 +53,7 @@ Im weiteren Verlauf dieses Artikels wird davon ausgegangen, dass Sie über die f
 
 Erstellen Sie als Nächstes drei CSV-Dateien.
 
-Nennen Sie die erste Datei *AzureSpringCloudServices.csv*. Diese Datei soll die Eingangsports für Azure Spring Cloud enthalten. Die Werte im folgenden Beispiel dienen nur zu Demonstrationszwecken. Alle erforderlichen Werte finden Sie im Abschnitt [Azure Spring Cloud-Netzwerkanforderungen](/azure/spring-cloud/vnet-customer-responsibilities#azure-spring-cloud-network-requirements) unter [Kundenzuständigkeiten für die Ausführung von Azure Spring Cloud im VNet](/azure/spring-cloud/vnet-customer-responsibilities).
+Nennen Sie die erste Datei *AzureSpringCloudServices.csv*. Diese Datei soll die Eingangsports für Azure Spring Cloud enthalten. Die Werte im folgenden Beispiel dienen nur zu Demonstrationszwecken. Alle erforderlichen Werte finden Sie im Abschnitt [Azure Spring Cloud-Netzwerkanforderungen](./vnet-customer-responsibilities.md#azure-spring-cloud-network-requirements) unter [Kundenzuständigkeiten für die Ausführung von Azure Spring Cloud im VNet](./vnet-customer-responsibilities.md).
 
 ```CSV
 name,protocol,port,tag
@@ -64,7 +64,7 @@ ASC_445,tcp,445,AzureSpringCloud
 ASC_123,udp,123,AzureSpringCloud
 ```
 
-Nennen Sie die zweite Datei *AzureSpringCloudUrlCategories.csv*. Diese Datei ist für die Ausgangsadressen (mit Platzhaltern) vorgesehen, die für Azure Spring Cloud verfügbar sein sollen. Die Werte im folgenden Beispiel dienen nur zu Demonstrationszwecken. Die aktuellen Werte finden Sie unter [FQDN-Anforderungen/Anwendungsregeln für Azure Spring Cloud](/azure/spring-cloud/vnet-customer-responsibilities#azure-spring-cloud-fqdn-requirementsapplication-rules).
+Nennen Sie die zweite Datei *AzureSpringCloudUrlCategories.csv*. Diese Datei ist für die Ausgangsadressen (mit Platzhaltern) vorgesehen, die für Azure Spring Cloud verfügbar sein sollen. Die Werte im folgenden Beispiel dienen nur zu Demonstrationszwecken. Die aktuellen Werte finden Sie unter [FQDN-Anforderungen/Anwendungsregeln für Azure Spring Cloud](./vnet-customer-responsibilities.md#azure-spring-cloud-fqdn-requirementsapplication-rules).
 
 ```CSV
 name,description
@@ -82,7 +82,7 @@ crl.microsoft.com,
 crl3.digicert.com
 ```
 
-Nennen Sie die dritte Datei *AzureMonitorAddresses.csv*. Diese Datei soll alle Adressen und IP-Adressbereiche enthalten, die für Metriken und die Überwachung über Azure Monitor zur Verfügung gestellt werden sollen, sofern Sie Azure Monitor verwenden. Die Werte im folgenden Beispiel dienen nur zu Demonstrationszwecken. Aktuelle Werte finden Sie unter [Von Azure Monitor verwendete IP-Adressen](/azure/azure-monitor/app/ip-addresses).
+Nennen Sie die dritte Datei *AzureMonitorAddresses.csv*. Diese Datei soll alle Adressen und IP-Adressbereiche enthalten, die für Metriken und die Überwachung über Azure Monitor zur Verfügung gestellt werden sollen, sofern Sie Azure Monitor verwenden. Die Werte im folgenden Beispiel dienen nur zu Demonstrationszwecken. Aktuelle Werte finden Sie unter [Von Azure Monitor verwendete IP-Adressen](../azure-monitor/app/ip-addresses.md).
 
 ```CSV
 name,type,address,tag
@@ -429,6 +429,6 @@ Damit ist die Konfiguration abgeschlossen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Streamen von Azure Spring Cloud-App-Protokollen in Echtzeit](/azure/spring-cloud/how-to-log-streaming)
-* [Application Insights: Java-Prozess-Agent in Azure Spring Cloud](/azure/spring-cloud/how-to-application-insights)
-* [Automatisieren von Anwendungsbereitstellungen für Azure Spring Cloud](/azure/spring-cloud/how-to-cicd)
+* [Streamen von Azure Spring Cloud-App-Protokollen in Echtzeit](./how-to-log-streaming.md)
+* [Application Insights: Java-Prozess-Agent in Azure Spring Cloud](./how-to-application-insights.md)
+* [Automatisieren von Anwendungsbereitstellungen für Azure Spring Cloud](./how-to-cicd.md)

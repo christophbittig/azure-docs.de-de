@@ -5,17 +5,19 @@ author: batamig
 ms.author: bagold
 ms.service: azure-sentinel
 ms.topic: reference
-ms.custom: mvc
+ms.custom: mvc, ignite-fall-2021
 ms.date: 08/04/2021
 ms.subservice: azure-sentinel
-ms.openlocfilehash: e263c742ae31a665eb428ad2cbeca72f73562b8a
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f531b18dfe94027948f1411372ff72e68b01c933
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339272"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131054968"
 ---
 # <a name="azure-sentinel-built-in-watchlist-template-schemas-public-preview"></a>Azure Sentinel integrierte Watchlistvorlagenschemas (öffentliche Vorschau)
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 In diesem Artikel erfahren Sie mehr über die Schemas, die in jeder integrierten Watchlistvorlage in Azure Sentinel verwendet werden. Weitere Informationen finden Sie unter [Erstellen einer neuen Watchlist mithilfe einer Vorlage (öffentliche Vorschau)](watchlists.md#create-a-new-watchlist-using-a-template-public-preview).
 

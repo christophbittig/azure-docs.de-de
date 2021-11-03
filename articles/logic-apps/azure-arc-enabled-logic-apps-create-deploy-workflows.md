@@ -3,15 +3,16 @@ title: Erstellen und Bereitstellen von Workflows mit Logic Apps mit Azure Arc-Un
 description: Erstellen Sie Logik-App-Workflows auf Basis eines einzelnen Mandanten, die überall ausgeführt werden können, wo Kubernetes ausgeführt werden kann, und stellen Sie sie dann bereit.
 services: logic-apps
 ms.suite: integration
-ms.reviewer: estfan, ladolan, reylons, archidda, sopai, azla
+ms.reviewer: estfan, reylons, archidda, sopai, azla
 ms.topic: how-to
-ms.date: 06/03/2021
-ms.openlocfilehash: 17c9eb020d62207910008fb032872bd609df553f
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.date: 11/02/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: ca9458581468ea359ae1ca2f7e034c7459f87fea
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129712304"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131082434"
 ---
 # <a name="create-and-deploy-single-tenant-based-logic-app-workflows-with-azure-arc-enabled-logic-apps-preview"></a>Erstellen und Bereitstellen von Logik-App-Workflows auf Basis eines einzelnen Mandanten mit Logic Apps mit Azure Arc-Unterstützung (Vorschau)
 
@@ -183,7 +184,7 @@ az logicapp create --name MyLogicAppName
    --storage-account MyStorageAccount --custom-location MyCustomLocation
 ```
 
-Um eine Logik-App mit Azure Arc-Unterstützung über ein privates Azure Container Registry-Image zu erstellen, führen Sie den Befehl `az logicapp create` mit den folgenden erforderlichen Parametern aus:
+Um eine Logik-App mit Azure Arc-Unterstützung über ein privates ACR-Image (Azure Container Registry) zu erstellen, führen Sie den Befehl `az logicapp create` mit den folgenden erforderlichen Parametern aus:
 
 ```azurecli
 az logicapp create --name MyLogicAppName 
@@ -390,7 +391,7 @@ Fügen Sie in Ihrer ARM-Vorlage (Azure Resource Manager) die folgende Ressourcen
 }
 ```
 
-Weitere Informationen finden Sie in der Dokumentation zu [Microsoft.Web/connections/accesspolicies (ARM-Vorlage)](/azure/templates/microsoft.web/connections?tabs=json). 
+Weitere Informationen finden Sie in der Dokumentation zu [Microsoft.Web/connections/accesspolicies (ARM-Vorlage)](/azure/templates/microsoft.web/connections?tabs=json).
 
 #### <a name="azure-portal"></a>Azure-Portal
 
@@ -488,8 +489,25 @@ Das folgende Beispiel beschreibt eine beispielhafte Logic Apps-Ressourcendefinit
 Wenn Sie es vorziehen, Containertools und Bereitstellungsprozesse zu verwenden, können Sie Ihre Logik-Apps containerisieren und in Logic Apps mit Azure Arc-Unterstützung bereitstellen. Führen Sie für dieses Szenario die folgenden allgemeinen Aufgaben durch, wenn Sie Ihre Infrastruktur einrichten:
 
 - Richten Sie eine Docker-Registrierung zum Hosten Ihrer Containerimages ein.
+
+- Fügen Sie zum Containerisieren Ihrer Logik-App dem Stammordner Ihres Logik-App-Projekts die folgende Dockerfile-Datei hinzu, und führen Sie die Schritte zum Erstellen und Veröffentlichen eines Images in Ihrer Docker-Registrierung aus. Beispiel: [Tutorial: Erstellen und Bereitstellen von Containerimages in der Cloud mit Azure Container Registry Tasks](../container-registry/container-registry-tutorial-quick-task.md).
+
+  > [!NOTE]
+  > Wenn Sie [SQL als Speicheranbieter verwenden](set-up-sql-db-storage-single-tenant-standard-workflows.md), vergewissern Sie sich, dass Sie ein Azure Functions-Image, Version 3.3.1 oder höher, verwenden.
+
+  ```text
+  FROM mcr.microsoft.com/azure-functions/node:3.3.1
+  ENV AzureWebJobsScriptRoot=/home/site/wwwroot \
+  AzureFunctionsJobHost__Logging__Console__IsEnabled=true \
+  FUNCTIONS_V2_COMPATIBILITY_MODE=true
+  COPY . /home/site/wwwroot
+  RUN cd /home/site/wwwroot
+  ```
+
 - Benachrichtigen Sie den Ressourcenanbieter, dass Sie eine Logik-App in Kubernetes erstellen.
+
 - Zeigen Sie in Ihrer Bereitstellungsvorlage auf die Docker-Registrierung und das Containerimage, in denen Sie die Bereitstellung planen. Azure Logic Apps mit einzelnem Mandanten verwendet diese Informationen, um das Containerimage von Ihrer Docker-Registrierung abzurufen.
+
 - Schließen Sie einen App Service-Plan in Ihre Bereitstellung ein. Weitere Informationen hierzu finden Sie unter [Einschließen eines App Service-Plans in die Bereitstellung](#include-app-service-plan).
 
 Fügen Sie in Ihre [ARM-Vorlage (Azure Resource Manager)](../azure-resource-manager/templates/overview.md) die folgenden Werte ein:

@@ -6,12 +6,12 @@ ms.author: jixin
 ms.service: azure-web-pubsub
 ms.topic: tutorial
 ms.date: 08/24/2021
-ms.openlocfilehash: 98bb95800596ac54bae01efb501c6016767ca650
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: f0811776692bcb12e25fa9757c13d7a0fb75c7fa
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124785095"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131080933"
 ---
 # <a name="tutorial-create-a-serverless-notification-app-with-azure-functions-and-azure-web-pubsub-service"></a>Tutorial: Erstellen einer serverlosen Benachrichtigungs-App mit Azure Functions und dem Azure Web PubSub-Dienst
 
@@ -69,64 +69,69 @@ In diesem Tutorial lernen Sie Folgendes:
 
 1. Installieren Sie das `Microsoft.Azure.WebJobs.Extensions.WebPubSub`-Funktionserweiterungspaket explizit.
 
-   a. Entfernen Sie den Abschnitt `extensionBundle` in `host.json`, um die Installation eines bestimmten Erweiterungspakets im nächsten Schritt zu ermöglichen. Sie können den JSON-Code für den Host auch so einfach wie unten gestalten.
-    ```json
-    {
+   1. Entfernen Sie den Abschnitt `extensionBundle` in `host.json`, um die Installation eines bestimmten Erweiterungspakets im nächsten Schritt zu ermöglichen. Sie können den JSON-Code für den Host auch so einfach wie unten gestalten.
+
+      ```json
+      {
         "version": "2.0"
-    }
-    ```
-   b. Führen Sie den Befehl zum Installieren eines bestimmten Funktionserweiterungspakets aus.
-    ```bash
-    func extensions install --package Microsoft.Azure.WebJobs.Extensions.WebPubSub --version 1.0.0-beta.3
-    ```
+      }
+      ```
+
+   1. Führen Sie den Befehl zum Installieren eines bestimmten Funktionserweiterungspakets aus.
+
+      ```bash
+      func extensions install --package Microsoft.Azure.WebJobs.Extensions.WebPubSub --version 1.0.0-beta.3
+      ```
 
 1. Erstellen Sie eine `index`-Funktion zum Lesen und Hosten einer statischen Webseite für Clients.
-    ```bash
-    func new -n index -t HttpTrigger
-    ```
+
+   ```bash
+   func new -n index -t HttpTrigger
+   ```
+
    # <a name="javascript"></a>[JavaScript](#tab/javascript)
    - Aktualisieren Sie `index/function.json` und kopieren Sie den folgenden JSON-Code.
-        ```json
-        {
-            "bindings": [
-                {
-                    "authLevel": "anonymous",
-                    "type": "httpTrigger",
-                    "direction": "in",
-                    "name": "req",
-                    "methods": [
-                      "get",
-                      "post"
-                    ]
-                },
-                {
-                    "type": "http",
-                    "direction": "out",
-                    "name": "res"
-                }
-            ]
-        }
-        ```
+     ```json
+     {
+         "bindings": [
+             {
+                 "authLevel": "anonymous",
+                 "type": "httpTrigger",
+                 "direction": "in",
+                 "name": "req",
+                 "methods": [
+                   "get",
+                   "post"
+                 ]
+             },
+             {
+                 "type": "http",
+                 "direction": "out",
+                 "name": "res"
+             }
+         ]
+     }
+     ```
    - Aktualisieren Sie `index/index.js` und kopieren Sie den folgenden Code.
-        ```js
-        var fs = require('fs');
-        module.exports = function (context, req) {
-            fs.readFile('index.html', 'utf8', function (err, data) {
-                if (err) {
-                    console.log(err);
-                    context.done(err);
-                }
-                context.res = {
-                    status: 200,
-                    headers: {
-                        'Content-Type': 'text/html'
-                    },
-                    body: data
-                };
-                context.done();
-            });
-        }
-        ```
+     ```js
+     var fs = require('fs');
+     module.exports = function (context, req) {
+         fs.readFile('index.html', 'utf8', function (err, data) {
+             if (err) {
+                 console.log(err);
+                 context.done(err);
+             }
+             context.res = {
+                 status: 200,
+                 headers: {
+                     'Content-Type': 'text/html'
+                 },
+                 body: data
+             };
+             context.done();
+         });
+     }
+     ```
 
    # <a name="c"></a>[C#](#tab/csharp)
    - Aktualisieren Sie `index.cs` und ersetzen Sie die `Run`-Funktion durch den folgenden Code.

@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: tutorials
 ms.topic: tutorial
 ms.date: 07/05/2021
-ms.openlocfilehash: a961b008406c487b1543ee827fe1c33d3e435645
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e9149f25c6cc9c0aa45c62ef7b3100b8143e6c83
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124767449"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131031022"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-a-database-in-azure-sql-database-using-the-azure-portal"></a>Inkrementelles Laden von Daten aus mehreren Tabellen in SQL Server in eine Datenbank in Azure SQL-Datenbank über das Azure-Portal
 
@@ -474,7 +474,7 @@ Die Pipeline verwendet die Liste mit den Tabellennamen als Parameter. Die ForEac
     1. Wählen Sie die Option **Import parameter** (Importparameter). 
     1. Geben Sie die folgenden Werte für die Parameter an: 
 
-        | Name | Type | Wert | 
+        | Name | type | Wert | 
         | ---- | ---- | ----- |
         | LastModifiedtime | Datetime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
         | TableName | String | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |

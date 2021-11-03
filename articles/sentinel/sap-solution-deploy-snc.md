@@ -5,17 +5,19 @@ author: batamig
 ms.author: bagol
 ms.service: azure-sentinel
 ms.topic: how-to
-ms.custom: mvc
+ms.custom: mvc, ignite-fall-2021
 ms.date: 08/01/2021
 ms.subservice: azure-sentinel
-ms.openlocfilehash: cdc576951702c8d381ebd3ae0661b0d40be98a09
-ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
+ms.openlocfilehash: fcc46884c470b2baa282bf00b8b9e735d8a0db41
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122681665"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131019683"
 ---
 # <a name="deploy-the-azure-sentinel-sap-data-connector-with-snc"></a>Lokales Bereitstellen des Azure Sentinel-Datenconnectors für SAP mit SNC
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 In diesem Artikel wird beschrieben, wie Sie den Azure Sentinel SAP-Datenconnector bereitstellen, wenn Sie über eine sichere Verbindung mit SAP über Secure Network Communications (SNC) für die auf der NetWeaver-/ABAP-Schnittstelle basierenden Protokolle verfügen.
 
@@ -55,6 +57,7 @@ spname=<sp-name>
 
 kvname=<keyvaultname>
 # Optional when Azure MI not enabled - Create sp user for AZ cli connection, save details for env.list file
+
 az ad sp create-for-rbac –name $spname
 
 SpID=$(az ad sp list –display-name $spname –query “[].appId” --output tsv
@@ -295,4 +298,3 @@ Weitere Informationen finden Sie unter
 - [Detaillierte SAP-Anforderungen für die Azure Sentinel-Lösung für SAP](sap-solution-detailed-requirements.md)
 - [Referenz zu Protokollen der Azure Sentinel-Lösung für SAP](sap-solution-log-reference.md)
 - [Azure Sentinel-Lösung für SAP: Referenz zu sicherheitsbezogenen Inhalten](sap-solution-security-content.md)
-

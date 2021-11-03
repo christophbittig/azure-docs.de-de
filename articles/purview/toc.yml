@@ -76,6 +76,10 @@ items:
         href: concept-insights.md
       - name: Aktualisierte Azure Purview-Konten
         href: concept-account-upgrade.md
+      - name: Zugriffsrichtlinien
+        href: concept-data-policies.md
+      - name: Self-Service-Zugriff
+        href: concept-self-service.md
   - name: Anleitungen
     items:
       - name: Erstellen und Verwalten von Sammlungen
@@ -89,6 +93,8 @@ items:
           - name: Verwalten von Anmeldeinformationen
             href: manage-credentials.md
             displayName: Create and manage credentials
+          - name: Erstellen eines Dienstprinzipals
+            href: create-service-principal-azure.md
       - name: Quellen
         items:
           - name: Mehrere Azure-Quellen
@@ -149,6 +155,8 @@ items:
             href: register-scan-saps4hana-source.md
           - name: Teradata
             href: register-scan-teradata-source.md
+          - name: Amazon RDS
+            href: register-scan-amazon-rds.md
           - name: Amazon S3
             href: register-scan-amazon-s3.md
       - name: Überprüfen
@@ -259,6 +267,10 @@ items:
         href: disaster-recovery.md
       - name: Überwachung mit Azure Monitor
         href: how-to-monitor-with-azure-monitor.md
+      - name: Zugriffsrichtlinien für Datenbesitzer
+        items:
+          - name: Datenzugriffsrichtlinie für Azure Storage
+            href: how-to-access-policies-storage.md
   - name: Verweis
     items:
       - name: Azure Purview-Produktglossar

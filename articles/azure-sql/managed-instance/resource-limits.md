@@ -5,19 +5,19 @@ description: Dieser Artikel bietet eine Übersicht über die Ressourceneinschrä
 services: sql-database
 ms.service: sql-managed-instance
 ms.subservice: service-overview
-ms.custom: ''
+ms.custom: references_regions, ignite-fall-2021
 ms.devlang: ''
 ms.topic: reference
 author: vladai78
 ms.author: vladiv
-ms.reviewer: mathoma, vladiv, sachinp
-ms.date: 09/28/2021
-ms.openlocfilehash: c399b5eb082c8521ba14996bef035f9ea94371c3
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.reviewer: mathoma, vladiv, sachinp, wiassaf
+ms.date: 10/18/2021
+ms.openlocfilehash: 77548bc86c98815174b2319a58554d4beee894c3
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130041707"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131072179"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Übersicht über Ressourcenlimits für Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -29,34 +29,54 @@ Dieser Artikel bietet eine Übersicht über die technischen Eigenschaften und Re
 
 ## <a name="hardware-generation-characteristics"></a>Merkmale der Hardwaregeneration
 
-SQL Managed Instance umfasst Merkmale und Ressourcenlimits, die von der zugrunde liegende Infrastruktur und Architektur abhängen. SQL Managed Instance kann auf zwei Hardwaregenerationen bereitgestellt werden: Gen4 und Gen5. Hardwaregenerationen weisen unterschiedliche Merkmale auf, wie in der folgenden Tabelle beschrieben:
+SQL Managed Instance umfasst Merkmale und Ressourcenlimits, die von der zugrunde liegende Infrastruktur und Architektur abhängen. SQL Managed Instance kann auf mehreren Hardwaregenerationen bereitgestellt werden. 
 
-|   | **Gen4** | **Gen5** |
-| --- | --- | --- |
-| **Hardware** | Intel® E5-2673 v3-Prozessoren (Haswell) mit 2,4 GHz, angefügte SSD, virtueller Kern = 1 PP (physischer Kern) | Intel® E5-2673 v4-Prozessoren (Broadwell) mit 2,3 GHz, Intel® SP-8160- und Intel® 8272CL-Prozessoren (Skylake bzw. Cascade Lake) mit 2,5 GHz, schnelle NVMe-SSD, virtueller Kern = 1 LP (Hyperthread) |
-| **Anzahl von virtuellen Kernen** | 8, 16, 24 virtuelle Kerne | 4, 8, 16, 24, 32, 40, 64, 80 virtuelle Kerne |
-| **Max. Arbeitsspeicher (Verhältnis Arbeitsspeicher/Kerne)** | 7 GB pro V-Kern<br/>Fügen Sie weitere virtuelle Kerne hinzu, um mehr Arbeitsspeicher zu erhalten. | 5,1 GB pro virtuellem Kern<br/>Fügen Sie weitere virtuelle Kerne hinzu, um mehr Arbeitsspeicher zu erhalten. |
-| **Max. In-Memory-OLTP-Speicher** | Grenzwert für Instanzen: 1–1,5 GB pro virtuellem Kern| Grenzwert für Instanzen: 0,8–1,65 GB pro virtuellem Kern |
-| **Max. reservierter Instanzspeicher** |  Allgemein: 8 TB <br/>Unternehmenskritisch: 1 TB | Universell: 8 TB, 16 TB (Vorschau), je nach Anzahl von Kernen<br/> Unternehmenskritisch: 1 TB, 2 TB oder 4 TB, je nach Anzahl der Kerne |
+> [!NOTE]
+> Die Gen5-Hardwaregeneration wurde in die **Standard-Serie (Gen5)** umbenannt, und wir führen zwei neue Hardwaregenerationen in einer eingeschränkten Vorschauversion ein: Die **Premium-Serie** und die **arbeitsspeicheroptimierte Premium-Serie**.
 
-> [!IMPORTANT]
-> - Die Gen4-Hardware wird eingestellt und steht für die neuen Bereitstellungen nicht mehr zur Verfügung. Alle neuen Instanzen von SQL Managed Instance müssen auf Gen5-Hardware bereitgestellt werden.
-> - Ziehen Sie in Betracht, [Ihre Instanzen von SQL Managed Instance auf Gen 5-Hardware umzustellen](../database/service-tiers-vcore.md), um von einer größeren Bandbreite an virtuellen Kernen, einer höheren vCore- und Speicherskalierbarkeit, einem beschleunigten Netzwerkbetrieb, einer optimalen E/A-Leistung und minimalen Latenzzeiten zu profitieren.
+Informationen zu früheren Hardwaregenerationen finden Sie weiter unten in diesem Artikel unter [Details zur Hardwaregeneration der vorherigen Generation](#previous-generation-hardware). 
+
+Hardwaregenerationen weisen unterschiedliche Merkmale auf, wie in der folgenden Tabelle beschrieben:
+
+|    | **Standard-Serie (Gen5)** | **Premium-Serie (Vorschauversion)** | **Arbeitsspeicheroptimierte Premium-Serie (Vorschauversion)** | 
+|:-- |:-- |:-- |:-- |
+| **CPU** |  Intel&reg; E5-2673 v4-Prozessoren (Broadwell) mit 2,3 GHz, Intel&reg; SP-8160-Prozessoren (Skylake) und Intel&reg; 8272CL-Prozessoren (Cascade Lake) mit 2,5 GHz | Intel&reg; 8370C-Prozessoren (Ice Lake) mit 2,8 GHz | Intel&reg; 8370C-Prozessoren (Ice Lake) mit 2,8 GHz |
+| **Anzahl von virtuellen Kernen** <BR>virtueller Kern = 1 LP (Hyperthread) | 4 bis 80 virtuelle Kerne | 4 bis 80 virtuelle Kerne | 4 bis 64 virtuelle Kerne |
+| **Max. Arbeitsspeicherbelegung (Verhältnis Arbeitsspeicher/virtueller Kern)** | 5,1 GB pro virtuellem Kern<br/>Fügen Sie weitere virtuelle Kerne hinzu, um mehr Arbeitsspeicher zu erhalten. | 7 GB pro V-Kern | 13,6 GB pro virtuellem Kern |
+| **Max. In-Memory-OLTP-Speicher** |  Grenzwert für Instanzen: 0,8–1,65 GB pro virtuellem Kern | Instanzlimit: 1,1–2,3 GB pro virtuellem Kern | Instanzlimit: 2,2–4,5 GB pro virtuellem Kern |
+| **Maximal reservierter Instanzspeicher**\* | **Universell:** bis zu 16 TB<br/> **Unternehmenskritisch:** bis zu 4 TB | **Universell:** bis zu 16 TB<br/> **Unternehmenskritisch:** bis zu 5,5 TB | **Universell:** bis zu 16 TB <br/> **Unternehmenskritisch:** bis zu 16 TB |
+
+\*Abhängig von [der Anzahl der virtuellen Kerne](#service-tier-characteristics).
+
+### <a name="regional-support-for-premium-series-hardware-generations-preview"></a>Regionaler Support für Hardwaregenerationen der Premium-Serie (Vorschauversion)
+
+Support für die Hardwaregenerationen der Premium-Serie (öffentliche Vorschauversion) ist derzeit nur in folgenden ausgewählten Regionen verfügbar:
+
+
+| Region | **Premium-Serie** | **Arbeitsspeicheroptimierte Premium-Serie** | 
+|:--- |:--- |:--- |
+| USA (Mitte) | Ja | Ja | 
+| USA (Ost) 2 | Ja | Ja | 
+| Nordeuropa | Ja | Ja | 
+| Europa, Westen | Ja | Ja | 
+| USA (Westen) | Ja | Ja | 
+| USA, Westen 2 | Ja | Ja | 
+
 
 ### <a name="in-memory-oltp-available-space"></a>Verfügbarer Speicherplatz für In-Memory-OLTP 
 
-Die Menge des für In-Memory-OLTP verfügbaren Speicherplatzes auf der Dienstebene [Unternehmenskritisch](../database/service-tier-business-critical.md) hängt von der Anzahl der virtuellen Kerne und der Hardwaraegeneration ab. In der folgenden Tabelle sind die Grenzwerte für den Arbeitsspeicher aufgelistet, der für In-Memory-OLTP-Objekte verwendet werden kann.
+Die Menge des für In-Memory-OLTP verfügbaren Speicherplatzes auf der Dienstebene [Unternehmenskritisch](../database/service-tier-business-critical.md) hängt von der Anzahl der virtuellen Kerne und der Hardwaregeneration ab. In der folgenden Tabelle sind die Grenzwerte für den Arbeitsspeicher aufgelistet, der für In-Memory-OLTP-Objekte verwendet werden kann.
 
-| Arbeitsspeicher für In-Memory-OLTP  | **Gen5** | **Gen4** |
-| --- | --- | --- |
-| 4 virtuelle Kerne  | 3,14 GB | |   
-| 8 virtuelle Kerne  | 6,28 GB | 8 GB |
-| 16 virtuelle Kerne | 15,77 GB | 20 GB |
-| 24 virtuelle Kerne | 25,25 GB | 36 GB |
-| 32 virtuelle Kerne | 37,94 GB | |
-| 40 virtuelle Kerne | 52,23 GB | |
-| 64 virtuelle Kerne | 99,9 GB    | |
-| 80 virtuelle Kerne | 131,68 GB| |
+| **V-Kerne** | **Standard-Serie (Gen5)** | **Premium-Serie** | **Arbeitsspeicheroptimierte Premium-Serie** | 
+|:--- |:--- |:--- |:--- |
+| 4 virtuelle Kerne    | 3,14 GB | 4,39 GB | 8,79 GB | 
+| 8 virtuelle Kerne    | 6,28 GB | 8,79 GB | 22,06 GB |  
+| 16 virtuelle Kerne | 15,77 GB | 22,06 GB | 57,58 GB |
+| 24 virtuelle Kerne | 25,25 GB | 35,34 GB | 93,09 GB |
+| 32 virtuelle Kerne | 37,94 GB | 53,09 GB | 128,61 GB |
+| 40 virtuelle Kerne | 52,23 GB | 73,09 GB | 164,13 GB |
+| 64 virtuelle Kerne | 99,9 GB | 139,82 GB | 288,61 GB |
+| 80 virtuelle Kerne | 131,68 GB| 184,30 GB | - |
 
 ## <a name="service-tier-characteristics"></a>Merkmale des Diensttarifs
 
@@ -67,24 +87,24 @@ SQL Managed Instance umfasst zwei Dienstebenen: [Universell](../database/service
 
 | **Feature** | **Allgemeiner Zweck** | **Unternehmenskritisch** |
 | --- | --- | --- |
-| Anzahl der virtuellen Kerne\* | Gen4: 8, 16, 24<br/>Gen5: 4, 8, 16, 24, 32, 40, 64, 80 | Gen4: 8, 16, 24 <br/> Gen5: 4, 8, 16, 24, 32, 40, 64, 80 <br/>\*Die gleiche Anzahl von virtuellen Kernen ist für Abfragen mit Schreibschutz dediziert. |
-| Max. Arbeitsspeicherbelegung | Gen4: 56GB – 168GB (7GB/V-Kern)<br/>Gen5: 20,4 GB – 408 GB (5,1 GB/V-Kern)<br/>Fügen Sie weitere virtuelle Kerne hinzu, um mehr Arbeitsspeicher zu erhalten. | Gen4: 56GB – 168GB (7GB/V-Kern)<br/>Gen5: 20,4 GB – 408 GB (5,1 GB/V-Kern) für Lese-/Schreibabfragen<br/>+ zusätzliche 20,4 GB – 408 GB (5,1 GB/V-Kern) für Abfragen mit Schreibschutz.<br/>Fügen Sie weitere virtuelle Kerne hinzu, um mehr Arbeitsspeicher zu erhalten. |
-| Max. Instanzspeichergröße (reserviert) | – 2 TB für 4 virtuelle Kerne (nur Gen5)<br/>– 8 TB für andere Größen <br/>– 16 TB (Vorschau) für 16 virtuelle Kerne (nur Gen5) | Gen4: 1 TB <br/> Gen5: <br/>– 1 TB für 4, 8, 16 virtuelle Kerne<br/>- 2 TB für 24 virtuelle Kerne<br/>- 4 TB für 32, 40, 64, 80 virtuelle Kerne |
-| Max. Datenbankgröße | Bis zur derzeit verfügbaren Instanzgröße (max. 2 TB–8 TB, 16 TB [Vorschau], je nach Anzahl von virtuellen Kernen) | Bis zur derzeit verfügbaren Instanzgröße (max. 1 TB – 4 TB, abhängig von der Anzahl der virtuellen Kerne). |
+| Anzahl der virtuellen Kerne\* | 4, 8, 16, 24, 32, 40, 64, 80 |  **Standard-Serie (Gen5)** : 4, 8, 16, 24, 32, 40, 64, 80 <BR> **Premium-Serie**: 4, 8, 16, 24, 32, 40, 64, 80 <BR> **Arbeitsspeicheroptimierte Premium-Serie**: 4, 8, 16, 24, 32, 40, 64<br/>\*Die gleiche Anzahl von virtuellen Kernen ist für Abfragen mit Schreibschutz dediziert. |
+| Max. Arbeitsspeicherbelegung | **Standard-Serie (Gen5)** : 20,4 GB bis 408 GB (5,1 GB/virtueller Kern)<BR> **Premium-Serie**: 28 GB bis 560 GB (7 GB/virtueller Kern)<BR> **Arbeitsspeicheroptimierte Premium-Serie**: 54,4 GB bis 870,4 GB (13,6 GB/virtueller Kern) | **Standard-Serie (Gen5)** : 20,4 GB bis 408 GB (5,1 GB/virtueller Kern) auf jedem Replikat<BR> **Premium-Serie**: 28 GB bis 560 GB (7 GB/virtueller Kern) auf jedem Replikat<BR> **Arbeitsspeicheroptimierte Premium-Serie**: 54,4 GB bis 870,4 GB (13,6 GB/virtueller Kern) auf jedem Replikat |
+| Max. Instanzspeichergröße (reserviert) | – 2 TB für 4 virtuelle Kerne<br/>– 8 TB für 8 virtuelle Kerne<br/>– 16 TB für andere Größen <BR> | **Standard-Serie (Gen5)** : <br/>– 1 TB für 4, 8, 16 virtuelle Kerne<br/>- 2 TB für 24 virtuelle Kerne<br/>- 4 TB für 32, 40, 64, 80 virtuelle Kerne <BR> **Premium-Serie**: <BR>– 1 TB für 4, 8 virtuelle Kerne<br/>– 2 TB für 16, 24 virtuelle Kerne<br/>– 4 TB für 32 virtuelle Kerne<br/>– 5,5 TB für 40, 64, 80 virtuelle Kerne<br/> **Arbeitsspeicheroptimierte Premium-Serie**: <BR>– 1 TB für 4, 8 virtuelle Kerne<br/>– 2 TB für 16, 24 virtuelle Kerne<br/>– 4 TB für 32 virtuelle Kerne<br/>– 5,5 TB für 40 virtuelle Kerne<br/>– 16 TB für 64 virtuelle Kerne<br/> |
+| Max. Datenbankgröße | Bis zur derzeit verfügbaren Instanzgröße (abhängig von der Anzahl der virtuellen Kerne). | Bis zur derzeit verfügbaren Instanzgröße (abhängig von der Anzahl der virtuellen Kerne). |
 | Max. TempDB-Größe | Begrenzt auf 24 GB/V-Kern (96 – 1.920 GB) und die derzeit verfügbare Instanzspeichergröße.<br/>Fügen Sie weitere virtuelle Kerne hinzu, um mehr TempDB-Speicherplatz zu erhalten.<br/> Die Größe der Protokolldatei ist auf 120 GB begrenzt.| Bis zur aktuell verfügbaren Instanzspeichergröße. |
 | Max. Anzahl von Datenbanken pro Instanz | 100 Benutzerdatenbanken (es sei denn, der Grenzwert für die Instanzspeichergröße wurde erreicht). | 100 Benutzerdatenbanken (es sei denn, der Grenzwert für die Instanzspeichergröße wurde erreicht). |
 | Max. Anzahl von Datenbankdateien pro Instanz | Bis zu 280, außer wenn die Instanzspeichergröße oder der Grenzwert für [Azure Premium Disk-Speicherbelegungsplatz](doc-changes-updates-known-issues.md#exceeding-storage-space-with-small-database-files) erreicht wurde. | 32.767 Dateien pro Datenbank, außer wenn der Grenzwert für die Instanzspeichergröße erreicht wurde. |
-| Maximale Größe der Datendatei | Begrenzt auf die derzeit verfügbare Instanzspeichergröße (max. 2 TB – 8 TB) und den [Azure Premium Disk-Speicherbelegungsplatz](doc-changes-updates-known-issues.md#exceeding-storage-space-with-small-database-files). Verwenden Sie bei Datenbanken über 8 TB mindestens zwei Datendateien. | Begrenzt auf die derzeit verfügbare Instanzspeichergröße (bis zu 1 TB – 4 TB). |
+| Maximale Größe der Datendatei | Die maximale Größe jeder Datendatei beträgt 8 TB. Verwenden Sie bei Datenbanken über 8 TB mindestens zwei Datendateien. | Bis zur derzeit verfügbaren Instanzgröße (abhängig von der Anzahl der virtuellen Kerne). |
 | Maximale Protokolldateigröße | Begrenzt auf 2 TB und die derzeit verfügbare Instanzspeichergröße. | Begrenzt auf 2 TB und die derzeit verfügbare Instanzspeichergröße. |
 | Daten-/Protokoll-IOPS (ungefähr) | Bis zu 30-40.000 IOPS pro Instanz*, 500 – 7.500 pro Datei<br/>\*[Erhöhen Sie die Dateigröße, um den IOPS-Wert zu erhöhen](#file-io-characteristics-in-general-purpose-tier)| 16.000 – 320.000 (4.000 IOPS/virtueller Kern)<br/>Fügen Sie weitere virtuelle Kerne hinzu, um die E/A-Leistung zu verbessern. |
-| Grenzwert für den Protokollschreibdurchsatz (pro Instanz) | 3 MB/Sek. pro virtuellem Kern<br/>Max. 120 MB/Sek. pro Instanz<br/>22 – 65 MB/Sek. pro Datenbank<br/>\*[Erhöhen Sie die Dateigröße, um die E/A-Leistung zu verbessern.](#file-io-characteristics-in-general-purpose-tier) | 4 MB/Sek. pro virtuellem Kern<br/>Max. 96 MB/Sek. |
+| Grenzwert für den Protokollschreibdurchsatz (pro Instanz) | 3 MB/Sek. pro virtuellem Kern<br/>Max. 120 MB/Sek. pro Instanz<br/>22 bis 65 MB/Sek. pro Datenbank (abhängig von der Größe der Protokolldatei)<br/>\*[Erhöhen Sie die Dateigröße, um die E/A-Leistung zu verbessern.](#file-io-characteristics-in-general-purpose-tier) | 4 MB/Sek. pro virtuellem Kern<br/>Max. 96 MB/Sek. |
 | Datendurchsatz (ungefähr) | 100 bis 250 MB/Sek. pro Datei<br/>\*[Erhöhen Sie die Dateigröße, um die E/A-Leistung zu verbessern.](#file-io-characteristics-in-general-purpose-tier) | Nicht begrenzt. |
 | E/A-Speicherlatenz (ungefähr) | 5 – 10 ms | 1 – 2 ms |
 | In-Memory-OLTP | Nicht unterstützt | Verfügbar, [Größe hängt von der Anzahl der V-Kerne ab](#in-memory-oltp-available-space) |
 | Max. Sitzungen | 30.000 | 30.000 |
-| Max. gleichzeitige Worker (Anforderungen) | Gen4: 210 * Anzahl der virtuellen Kerne + 800<br>Gen5: 105 * Anzahl der virtuellen Kerne + 800 | Gen4: 210 * Anzahl der virtuellen Kerne + 800<br>Gen5: 105 * Anzahl der virtuellen Kerne + 800 |
+| Max. gleichzeitige Worker (Anforderungen) | 105 * Anzahl der virtuellen Kerne + 800 | 105 * Anzahl der virtuellen Kerne + 800 |
 | [Schreibgeschützte Replikate](../database/read-scale-out.md) | 0 | 1 (im Preis inbegriffen) |
-| Computeisolation | Gen5 wird nicht unterstützt, weil Instanzen vom Typ „Universell“ physische Hardware mit anderen Instanzen teilen können.<br/>Gen4 wird eingestellt und deshalb nicht mehr unterstützt.|Gen5:<br/>– unterstützt für 40, 64, 80 virtuelle Kerne<br/>– für andere Größen nicht unterstützt<br/><br/>Gen4 wird eingestellt und deshalb nicht mehr unterstützt.|
+| Computeisolation | Nicht unterstützt, da Instanzen vom Typ „Universell“ physische Hardware mit anderen Instanzen teilen können.| **Standard-Serie (Gen5)** :<br/> unterstützt für 40, 64, 80 virtuelle Kerne<BR> **Premium-Serie**: unterstützt für 64, 80 virtuelle Kerne <BR> **Arbeitsspeicheroptimierte Premium-Serie**: unterstützt für 64 virtuelle Kerne |
 
 
 Einige weitere Überlegungen: 
@@ -93,22 +113,22 @@ Einige weitere Überlegungen:
 - Sowohl die Daten- als auch die Protokolldateigröße in den Benutzer- und Systemdatenbanken sind in der Instanzspeichergröße enthalten, die mit dem Grenzwert für die maximale Speichergröße verglichen wird. Ermitteln Sie mithilfe der Systemansicht [sys.master_files](/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql) den von Datenbanken verwendeten Gesamtspeicherplatz. Fehlerprotokolle werden nicht beibehalten und sind nicht in der Größe enthalten. Sicherungen sind nicht in der Speichergröße enthalten.
 - Durchsatz und IOPS im Tarif „Universell“ hängen auch von der [Dateigröße](#file-io-characteristics-in-general-purpose-tier) ab, die nicht explizit durch SQL Managed Instance eingeschränkt wird.
   Sie können mithilfe von [Gruppen für ein automatisches Failover](../database/auto-failover-group-configure.md) ein weiteres lesbares Replikat in einer anderen Azure-Region erstellen.
-- Der maximale Instanz-IOPS hängt vom Dateilayout und der Workload-Verteilung ab. Wenn Sie z. B. 7 x 1 TB-Dateien mit jeweils maximal 5.000 IOPS und 7 kleine Dateien (kleiner als 128 GB) mit jeweils 500 IOPS erstellen, können Sie 38.500 IOPS pro Instanz (7x5.000+7x500) erhalten, wenn Ihre Workload alle Dateien verwenden kann. Beachten Sie, dass eine bestimmte IOPS-Menge auch für automatische Sicherungen verwendet wird.
+- Der maximale Instanz-IOPS hängt vom Dateilayout und der Workload-Verteilung ab. Wenn Sie z. B. 7 x 1 TB-Dateien mit jeweils maximal 5.000 IOPS und sieben kleine Dateien (kleiner als 128 GB) mit jeweils 500 IOPS erstellen, können Sie 38.500 IOPS pro Instanz (7 x 5.000 + 7 x 500) erhalten, wenn Ihre Workload alle Dateien verwenden kann. Beachten Sie, dass eine bestimmte IOPS-Menge auch für automatische Sicherungen verwendet wird.
 
 Weitere Informationen finden Sie im Artikel zu den [Ressourcenlimits in SQL Managed Instance-Pools](instance-pools-overview.md#resource-limitations).
 
 ### <a name="file-io-characteristics-in-general-purpose-tier"></a>Datei-E/A-Merkmale in der Ebene „Universell“
 
-In der Dienstebene „Universell“ erhält jede Datenbankdatei in Abhängigkeit von der Dateigröße dedizierte Mengen an IOPS und Durchsatz. Größere Dateien erhalten mehr IOPS und einen höheren Durchsatz. Die E/A-Merkmale der Datenbankdateien sind in der folgenden Tabelle aufgeführt:
+Auf der Dienstebene „Universell“ erhält jede Datenbankdatei in Abhängigkeit von der Dateigröße dedizierte Mengen an IOPS und Durchsatz. Größere Dateien erhalten mehr IOPS und einen höheren Durchsatz. Die E/A-Merkmale der Datenbankdateien sind in der folgenden Tabelle aufgeführt:
 
-| Dateigröße | >=0 und <=128 GiB | > 128 und <= 512 GiB | >0,5 and <=1 TiB    | >1 und <=2 TiB    | >2 und <=4 TiB | >4 und <=8 TiB |
-|---------------------|-------|-------|-------|-------|-------|-------|-------|
-| IOPS pro Datei       | 500   | 2300              | 5.000              | 7.500              | 7.500              | 12.500   |
-| Durchsatz pro Datei | 100 MiB/s | 150 MiB/s | 200 MiB/s | 250 MiB/s | 250 MiB/s | 480 MiB/s | 
+| **Dateigröße** | **>=0 und <=128 GiB** | **>128 und <=512 GiB** | **>0,5 und <=1 TiB**    | **>1 und <=2 TiB**    | **>2 und <=4 TiB** | **>4 und <=8 TiB** | **>8 und <=16 TiB** |
+|:--|:--|:--|:--|:--|:--|:--|:--|
+| IOPS pro Datei       | 500   | 2300              | 5.000  | 7.500              | 7.500              | 12.500   | |
+| Durchsatz pro Datei | 100 MiB/s | 150 MiB/s | 200 MiB/s | 250 MiB/s| 250 MiB/s | 480 MiB/s |  |
 
 Wenn Sie für bestimmte Datenbankdateien eine hohe E/A-Latenz bemerken oder feststellen, dass der Grenzwert für IOPS/Durchsatz erreicht wird, können Sie die Leistung möglicherweise durch [Vergrößern der Dateigröße](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Increase-data-file-size-to-improve-HammerDB-workload-performance/ba-p/823337) verbessern.
 
-Es gibt auch eine Beschränkung auf Instanzebene für den maximalen Protokollschreibdurchsatz (die Werte finden Sie weiter oben, z. B. 22 MB/s), sodass Sie den maximalen Dateidurchsatz für die Protokolldatei möglicherweise nicht erreichen, da der Grenzwert für den Durchsatz auf Instanzebene erreicht wurde.
+Es gibt auch auf Instanzebene eine Beschränkung für den maximalen Protokollschreibdurchsatz (die Werte finden Sie weiter oben, z. B. 22 MB/s), sodass Sie den maximalen Dateidurchsatz für die Protokolldatei möglicherweise nicht erreichen, da der Grenzwert für den Durchsatz auf Instanzebene erreicht wurde.
 
 ## <a name="supported-regions"></a>Unterstützte Regionen
 
@@ -133,7 +153,7 @@ SQL Managed Instance unterstützt aktuell nur die Bereitstellung für folgende A
 Unterstützte Abonnementtypen können eine begrenzte Anzahl von Ressourcen pro Region umfassen. Abhängig vom Abonnementtyp gelten für SQL Managed Instance zwei Standardgrenzwerte pro Azure-Region (die bei Bedarf durch das Erstellen einer speziellen [Supportanfrage im Azure-Portal](../database/quota-increase-request.md) erhöht werden können):
 
 - **Subnetzlimit**: Die maximale Anzahl von Subnetzen, wenn Instanzen von SQL Managed Instance in einer einzelnen Region bereitgestellt werden.
-- **Grenzwert für virtuelle Kerneinheiten**: Die maximale Anzahl von virtuellen Kerneinheiten, die in einer einzelnen Region über alle Instanzen hinweg bereitgestellt werden können. Ein virtueller Kern „Universell“ verwendet eine einzige virtuelle Kerneinheit, und ein virtueller Kern „Unternehmenskritisch“ verwendet 4 virtuelle Kerneinheiten. Die Gesamtanzahl der Instanzen ist nicht begrenzt, solange sie innerhalb des Limits der virtuellen Kerneinheiten liegt.
+- **Grenzwert für virtuelle Kerneinheiten**: Die maximale Anzahl von virtuellen Kerneinheiten, die in einer einzelnen Region über alle Instanzen hinweg bereitgestellt werden können. Ein virtueller Kern „Universell“ verwendet eine einzige virtuelle Kerneinheit, und ein virtueller Kern „Unternehmenskritisch“ verwendet vier virtuelle Kerneinheiten. Die Gesamtanzahl der Instanzen ist nicht begrenzt, solange sie innerhalb des Limits der virtuellen Kerneinheiten liegt.
 
 > [!Note]
 > Diese Limits sind Standardeinstellungen und keine technischen Einschränkungen. Die Limits können bei Bedarf erhöht werden, indem Sie eine spezielle [Supportanfrage im Azure-Portal](../database/quota-increase-request.md) erstellen, falls Sie mehr Instanzen in der aktuellen Region benötigen. Alternativ können Sie auch neue Instanzen von SQL Managed Instance in einer anderen Azure-Region erstellen, ohne Supportanfragen zu senden.
@@ -168,6 +188,57 @@ In der folgenden Tabelle werden die **standardmäßigen regionalen Grenzwerte** 
 ## <a name="request-a-quota-increase"></a>Anfordern einer Kontingenterhöhung
 
 Wenn Sie mehr Instanzen in Ihren aktuellen Regionen benötigen, senden Sie eine Supportanfrage zum Erweitern des Kontingents über das Azure-Portal. Weitere Informationen finden Sie unter [Anfordern von Kontingenterhöhungen für Azure SQL-Datenbank](../database/quota-increase-request.md).
+
+## <a name="previous-generation-hardware"></a>Hardware der vorherigen Generation
+
+Dieser Abschnitt enthält Details zu den Hardwaregenerationen der vorherigen Generation. Ziehen Sie in Betracht, [Ihre Instanz von SQL Managed Instance auf Hardware der Standard-Serie (Gen5) zu verschieben](../database/service-tiers-vcore.md), um von einer größeren Bandbreite an virtuellen Kernen, einer höheren virtuellen Kern- und Speicherskalierbarkeit, einem beschleunigten Netzwerkbetrieb, einer optimalen E/A-Leistung und minimalen Wartezeiten zu profitieren.
+
+- Die Gen4 wird eingestellt und steht für neue Bereitstellungen nicht mehr zur Verfügung. 
+
+### <a name="hardware-generation-characteristics"></a>Merkmale der Hardwaregeneration
+
+|   | **Gen4** | 
+| --- | --- | 
+| **Hardware** | Intel&reg; E5-2673 v3-Prozessoren (Haswell) mit 2,4 GHz, angefügte SSD, virtueller Kern = 1 PP (physischer Kern) |   
+| **Anzahl von virtuellen Kernen** | 8, 16, 24 virtuelle Kerne | 
+| **Max. Arbeitsspeicher (Verhältnis Arbeitsspeicher/Kerne)** | 7 GB pro V-Kern<br/>Fügen Sie weitere virtuelle Kerne hinzu, um mehr Arbeitsspeicher zu erhalten. |  
+| **Max. In-Memory-OLTP-Speicher** |  Grenzwert für Instanzen: 1–1,5 GB pro virtuellem Kern |
+| **Max. reservierter Instanzspeicher** |  Allgemein: 8 TB <br/>Unternehmenskritisch: 1 TB | 
+
+### <a name="in-memory-oltp-available-space"></a>Verfügbarer Speicherplatz für In-Memory-OLTP 
+
+Die Menge des für In-Memory-OLTP verfügbaren Speicherplatzes auf der Dienstebene [Unternehmenskritisch](../database/service-tier-business-critical.md) hängt von der Anzahl der virtuellen Kerne und der Hardwaraegeneration ab. In der folgenden Tabelle sind die Grenzwerte für den Arbeitsspeicher aufgelistet, der für In-Memory-OLTP-Objekte verwendet werden kann.
+
+| Arbeitsspeicher für In-Memory-OLTP    |  **Gen4** |
+| --- |  --- |
+| 8 virtuelle Kerne    | 8 GB |
+| 16 virtuelle Kerne |  20 GB |
+| 24 virtuelle Kerne |  36 GB |
+
+
+### <a name="service-tier-characteristics"></a>Merkmale des Diensttarifs
+
+| **Feature** | **Allgemeiner Zweck** | **Unternehmenskritisch** |
+| --- | --- | --- |
+| Anzahl der virtuellen Kerne\* | Gen4: 8, 16, 24 | Gen4: 8, 16, 24 <BR>\*Die gleiche Anzahl von virtuellen Kernen ist für Abfragen mit Schreibschutz dediziert. |
+| Max. Arbeitsspeicherbelegung | Gen4: 56GB – 168GB (7GB/V-Kern)<br/>Fügen Sie weitere virtuelle Kerne hinzu, um mehr Arbeitsspeicher zu erhalten. | Gen4: 56GB – 168GB (7GB/V-Kern)<br/>+ zusätzliche 20,4 GB – 408 GB (5,1 GB/V-Kern) für Abfragen mit Schreibschutz.<br/>Fügen Sie weitere virtuelle Kerne hinzu, um mehr Arbeitsspeicher zu erhalten. |
+| Max. Instanzspeichergröße (reserviert) | Gen4: 8 TB | Gen4: 1 TB  |
+| Max. Datenbankgröße | Gen4: bis zur derzeit verfügbaren Instanzgröße (max. 2 TB bis 8 TB, abhängig von der Anzahl der virtuellen Kerne). | Gen4: bis zur derzeit verfügbaren Instanzgröße (max. 1 TB bis 4 TB, abhängig von der Anzahl der virtuellen Kerne). |
+| Max. TempDB-Größe | Gen4: Begrenzt auf 24 GB/virtueller Kern (96 bis 1.920 GB) und die derzeit verfügbare Instanzspeichergröße.<br/>Fügen Sie weitere virtuelle Kerne hinzu, um mehr TempDB-Speicherplatz zu erhalten.<br/> Die Größe der Protokolldatei ist auf 120 GB begrenzt.| Gen4: bis zur aktuell verfügbaren Instanzspeichergröße. |
+| Max. Anzahl von Datenbanken pro Instanz | Gen4: 100 Benutzerdatenbanken (es sei denn, der Grenzwert für die Instanzspeichergröße wurde erreicht). | Gen4: 100 Benutzerdatenbanken (es sei denn, der Grenzwert für die Instanzspeichergröße wurde erreicht). |
+| Max. Anzahl von Datenbankdateien pro Instanz | Gen4: bis zu 280 (es sei denn, die Instanzspeichergröße oder der Grenzwert für [Azure Premium Disk-Speicherbelegungsplatz](../database/doc-changes-updates-release-notes.md#exceeding-storage-space-with-small-database-files) wurde erreicht). | Gen4: 32.767 Dateien pro Datenbank (es sein denn, der Grenzwert für die Instanzspeichergröße wurde erreicht). |
+| Maximale Größe der Datendatei | Gen4: Begrenzt auf die derzeit verfügbare Instanzspeichergröße (max. 2 TB bis 8 TB) und den [Azure Premium Disk-Speicherbelegungsplatz](../database/doc-changes-updates-release-notes.md#exceeding-storage-space-with-small-database-files). Verwenden Sie bei Datenbanken über 8 TB mindestens zwei Datendateien. | Gen4: Begrenzt auf die derzeit verfügbare Instanzspeichergröße (bis zu 1 TB bis 4 TB). |
+| Maximale Protokolldateigröße | Gen4: Begrenzt auf 2 TB und die derzeit verfügbare Instanzspeichergröße. | Gen4: Begrenzt auf 2 TB und die derzeit verfügbare Instanzspeichergröße. |
+| Daten-/Protokoll-IOPS (ungefähr) | Gen4: bis zu 30.000 bis 40.000 IOPS pro Instanz*, 500 bis 7.500 pro Datei<br/>\*[Erhöhen Sie die Dateigröße, um den IOPS-Wert zu erhöhen](#file-io-characteristics-in-general-purpose-tier)| Gen4: 16.000 bis 320.000 (4.000 IOPS/virtueller Kern)<br/>Fügen Sie weitere virtuelle Kerne hinzu, um die E/A-Leistung zu verbessern. | 
+| Grenzwert für den Protokollschreibdurchsatz (pro Instanz) | Gen4: 3 MB/Sek. pro virtuellem Kern<br/>Max. 120 MB/Sek. pro Instanz<br/>22 – 65 MB/Sek. pro Datenbank<br/>\*[Erhöhen Sie die Dateigröße, um die E/A-Leistung zu verbessern.](#file-io-characteristics-in-general-purpose-tier) | Gen4: 4 MB/Sek. pro virtuellem Kern<br/>Max. 96 MB/Sek. |
+| Datendurchsatz (ungefähr) | Gen4: 100 bis 250 MB/Sek. pro Datei<br/>\*[Erhöhen Sie die Dateigröße, um die E/A-Leistung zu verbessern.](#file-io-characteristics-in-general-purpose-tier) | Gen4: Nicht begrenzt. |
+| E/A-Speicherlatenz (ungefähr) | Gen4: 5 bis 10 ms | Gen4: 1 bis 2 ms |
+| In-Memory-OLTP | Gen4: Nicht unterstützt | Gen4: Verfügbar, [Größe hängt von der Anzahl der virtuellen Kerne ab](#in-memory-oltp-available-space) |
+| Max. Sitzungen | Gen4: 30.000 | Gen4: 30.000 |
+| Max. gleichzeitige Worker (Anforderungen) | Gen4: 210 * Anzahl der virtuellen Kerne + 800 | Gen4: 210 * Anzahl der virtuellen Kerne + 800 |
+| [Schreibgeschützte Replikate](../database/read-scale-out.md) | Gen4: 0 | Gen4: 1 (im Preis inbegriffen) |
+| Computeisolation | Gen4: nicht unterstützt | Gen4: nicht unterstützt |
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

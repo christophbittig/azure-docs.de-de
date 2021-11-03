@@ -4,25 +4,27 @@ description: In diesem Artikel wird erläutert, wie Sie in Azure Sentinel Bedroh
 services: sentinel
 cloud: na
 documentationcenter: na
-author: yelevin
+author: batamig
 manager: rkarlin
-ms.assetid: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 07/27/2021
-ms.author: yelevin
-ms.openlocfilehash: 05aa211d5a96b712862fbb8c81e10ba313ef3b74
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.date: 10/17/2021
+ms.author: bagol
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: cfa9d14d13270a038586d5c0949a510ccd5ad44b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129278788"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131019519"
 ---
 # <a name="work-with-threat-indicators-in-azure-sentinel"></a>Arbeiten mit Bedrohungsindikatoren in Azure Sentinel
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 Sie können Threat Intelligence (TI) mithilfe der folgenden Aktivitäten in Azure Sentinel integrieren:
 
@@ -38,11 +40,15 @@ Sie können Threat Intelligence (TI) mithilfe der folgenden Aktivitäten in Azur
 
 ### <a name="find-and-view-your-indicators-in-logs"></a>Suchen und Anzeigen Ihrer Indikatoren in Protokollen
 
-Sie können Ihre erfolgreich importierten Bedrohungsindikatoren unabhängig von der Feedquelle oder dem verwendeten Connector in der Tabelle **ThreatIntelligenceIndicator** (unter der Gruppe **Azure Sentinel**) in **Protokolle** einsehen, in der alle Ihre Azure Sentinel-Ereignisdaten gespeichert sind. Diese Tabelle bildet die Grundlage für Threat Intelligence-Abfragen, die von anderen Azure Sentinel-Features wie Analytics und Arbeitsmappen ausgeführt werden.
+In diesem Verfahren wird beschrieben, wie Sie Ihre importierten Bedrohungsindikatoren im Bereich Azure Sentinel-**Protokolle** zusammen mit anderen Azure Sentinel-Ereignisdaten anzeigen, unabhängig vom verwendeten Quellfeed oder Konnektor.
+
+Importierte Bedrohungsindikatoren sind in der Tabelle **Azure Sentinel > ThreatIntelligenceIndicator** aufgeführt. Dies ist die Grundlage für Threat Intelligence-Abfragen, die an anderer Stelle in Azure Sentinel ausgeführt werden, z. B. in Analysen oder Arbeitsmappen.
+
+**So zeigen Sie Ihre Threat Intelligence-Indikatoren in Protokollen an**:
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com/), und navigieren Sie zum Dienst **Azure Sentinel**.
 
-1. Wählen Sie den **Arbeitsbereich** aus, in den Sie Bedrohungsindikatoren mit einem der Threat Intelligence-Datenconnectors importiert haben.
+1. Wählen Sie den Arbeitsbereich aus, in den Sie Bedrohungsindikatoren mit einem der Threat Intelligence-Datenkonnektors importiert haben.
 
 1. Wählen Sie im Abschnitt **Allgemein** des Azure-Sentinel-Menüs **Protokolle** aus.
 
@@ -54,9 +60,31 @@ Die Ergebnisse sollten den Beispielbedrohungsindikatoren unten ähneln:
 
 :::image type="content" source="media/work-with-threat-indicators/threat-intel-sample-query.png" alt-text="Beispielabfragedaten":::
 
-### <a name="find-and-view-your-indicators-in-the-threat-intelligence-blade"></a>Suchen und Anzeigen Ihrer Indikatoren auf dem Blatt „Threat Intelligence“
+### <a name="find-and-view-your-indicators-in-the-threat-intelligence-page"></a>Suchen und Anzeigen Ihrer Indikatoren auf der Seite „Threat Intelligence“
 
-Sie können Ihre Indikatoren auch auf dem neuen Blatt **Threat Intelligence** einsehen und verwalten, auf das Sie über das Hauptmenü von Azure Sentinel Zugriff haben. Sie können Ihre importierten Bedrohungsindikatoren sortieren, filtern und durchsuchen, ohne eine Log Analytics-Abfrage schreiben zu müssen. Mit diesem Feature können Sie auch direkt auf der Azure Sentinel-Benutzeroberfläche Bedrohungsindikatoren erstellen und zwei der gängigsten Verwaltungsaufgaben für Threat Intelligence ausführen: Markieren von Indikatoren mit Tags und Erstellen neuer Indikatoren im Zusammenhang mit Sicherheitsuntersuchungen.
+Sie können Ihre Indikatoren auch auf der neuen Seite **Threat Intelligence** einsehen und verwalten, auf das Sie über das Hauptmenü von Azure Sentinel Zugriff haben. Verwenden Sie die Seite **Threat Intelligence**, um Ihre importierten Bedrohungsindikatoren sortieren, filtern und durchsuchen, ohne eine Log Analytics-Abfrage schreiben zu müssen.
+
+**So zeigen Sie Ihre Threat Intelligence-Indikatoren auf der Seite „Threat Intelligence“ an**:
+
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com/), und navigieren Sie zum Dienst **Azure Sentinel**.
+
+1. Wählen Sie den Arbeitsbereich aus, in den Sie Bedrohungsindikatoren mithilfe der Konnektors/Playbooks importiert oder Threat Intelligence-Daten erstellt haben.
+
+1. Wählen Sie links im Abschnitt **Bedrohungsmanagement** die Seite **Threat Intelligence** aus.
+
+1. Wählen Sie im Raster den Indikator aus, für den Sie weitere Details anzeigen möchten. Die Details des Indikators werden auf der rechten Seite angezeigt und enthalten Informationen wie Konfidenzgrade, Tags, Bedrohungstypen und mehr.
+
+    Microsoft erweitert jeden Indikator mit zusätzlichen GeoLocation- und WhoIs-Daten und bietet mehr Kontext für Untersuchungen, bei denen der ausgewählte Indikator gefunden wird.
+
+    Beispiel:
+
+    :::image type="content" source="media/whats-new/geolocation-whois-ti.png" alt-text="Screenshot der Seite &quot;Threat Intelligence&quot; mit einem Indikator mit GeoLocation- und WhoIs-Daten." lightbox="media/whats-new/geolocation-whois-ti.png":::
+
+Mit der Seite **Threat Intelligence** können Sie auch direkt auf der Azure Sentinel-Benutzeroberfläche Bedrohungsindikatoren erstellen und zwei der gängigsten Verwaltungsaufgaben für Threat Intelligence ausführen: Markieren von Indikatoren mit Tags und Erstellen neuer Indikatoren im Zusammenhang mit Sicherheitsuntersuchungen.
+
+> [!IMPORTANT]
+> Die GeoLocation- und WhoIs-Anreicherung befindet sich derzeit in der VORSCHAU. In den [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) finden Sie weitere rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden oder anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
+>
 
 #### <a name="create-a-new-indicator"></a>Erstellen eines neuen Indikators
 
@@ -102,7 +130,7 @@ Es folgt ein Beispiel der Aktivierung und Konfiguration einer Regel zum Generier
 
     :::image type="content" source="media/work-with-threat-indicators/threat-intel-required-data-sources.png" alt-text="Erforderliche Datenquellen":::
 
-1. Wählen Sie diese Regel aus, und wählen Sie dann die Schaltfläche **Regel erstellen** aus. Dadurch wird ein Assistent zum Konfigurieren der Regel geöffnet. Füllen Sie die Einstellungen hier aus, und wählen Sie die Schaltfläche **Weiter: Regellogik festlegen** aus.
+1. Wählen Sie die **TI-Zuordnungs-IP-Entität zur AzureActivity**-Regel und dann **Regel erstellen** aus, um einen Regel-Konfigurationsassistenten zu öffnen. Konfigurieren Sie die Einstellungen im Assistenten, und wählen Sie dann **Weiter: Regellogik festlegen >** .
 
     :::image type="content" source="media/work-with-threat-indicators/threat-intel-create-analytics-rule.png" alt-text="Erstellen der Analyseregel":::
 
@@ -122,7 +150,7 @@ Es folgt ein Beispiel der Aktivierung und Konfiguration einer Regel zum Generier
 
     - Generieren einer Sicherheitswarnung, wenn die Abfrageergebnisse größer als 0 (null) sind (also Übereinstimmungen gefunden wurden)
 
-    Sie können die Standardeinstellungen belassen oder ändern, um Ihre Anforderungen zu erfüllen. Sie können Einstellungen für die Incidentgenerierung auf der Registerkarte **Incidenteinstellungen** festlegen. Weitere Informationen finden Sie unter Erstellen [benutzerdefinierter Analyseregeln zum Erkennen von Bedrohungen](detect-threats-custom.md). Wenn Sie fertig sind, wählen Sie die Registerkarte **Automatisierte Antwort** aus.
+    Sie können die Standardeinstellungen belassen oder ändern, um Ihre Anforderungen zu erfüllen. Sie können Einstellungen für die Incidentgenerierung auf der Registerkarte **Incidenteinstellungen** festlegen. Weitere Informationen finden Sie unter [Erstellen benutzerdefinierter Analyseregeln zum Erkennen von Bedrohungen](detect-threats-custom.md). Wenn Sie fertig sind, wählen Sie die Registerkarte **Automatisierte Antwort** aus.
 
 1. Sie können alle Automatisierungen konfigurieren, die Sie auslösen möchten, wenn eine Sicherheitswarnung durch diese Analyseregel generiert wird. Die Automatisierung in Azure Sentinel erfolgt mittels Kombinationen von **Automatisierungsregeln** und **Playbooks**, die von Azure Logic Apps bereitgestellt werden. Weitere Informationen finden Sie unter [Tutorial: Verwenden von Playbooks mit Automatisierungsregeln in Azure Sentinel](./tutorial-respond-threats-playbook.md). Wählen Sie, sobald Sie fertig sind, die Schaltfläche **Weiter: Überprüfen >** aus, um fortzufahren.
 
@@ -178,7 +206,7 @@ Die Regel **Microsoft Threat Intelligence-Abgleichsanalyse** wird derzeit für d
 
 |Protokollquelle  |BESCHREIBUNG  |
 |---------|---------|
-|[CEF](connect-common-event-format.md)     |  Der Abgleich erfolgt für alle CEF-Protokolle, die in der Log Analytics-Tabelle **CommonSecurityLog** erfasst sind, mit Ausnahme derjenigen, bei denen `DeviceVendor` als `Cisco` aufgeführt ist. <br><br>Um von Microsoft generierte Threat Intelligence-Daten mit CEF-Protokollen abzugleichen, stellen Sie sicher, dass Sie die Domäne im Feld `RequestURL` des CEF-Protokolls zuordnen.      |
+|[CEF](connect-common-event-format.md)     |  Der Abgleich erfolgt für alle CEF-Protokolle, die in der Log Analytics-Tabelle **CommonSecurityLog** erfasst sind, mit Ausnahme derjenigen, bei denen `DeviceVendor` als aufgeführt ist`Cisco`. <br><br>Um von Microsoft generierte Threat Intelligence-Daten mit CEF-Protokollen abzugleichen, stellen Sie sicher, dass Sie die Domäne im Feld `RequestURL` des CEF-Protokolls zuordnen.      |
 |[DNS](./data-connectors-reference.md#domain-name-server)     | Der Abgleich erfolgt für alle DNS-Protokolle, bei denen es sich um DNS-Suchabfragen von Clients von DNS-Diensten (`SubType == "LookupQuery"`) handelt. DNS-Abfragen werden nur für IPv4- (`QueryType=”A”`) und IPv6-Abfragen (`QueryType=” AAAA”`) verarbeitet.<br><br>Um von Microsoft generierte Threat Intelligence-Daten mit DNS-Protokollen zu abgleichen, ist keine manuelle Zuordnung von Spalten erforderlich, da alle Spalten standardmäßig vom Windows-DNS-Server verwendet werden und die Domänen standardmäßig in der Spalte `Name` enthalten sind.   |
 |[Syslog](connect-syslog.md)     |  Der Abgleich erfolgt derzeit nur für Syslog-Ereignisse, bei denen `Facility` gleich `cron` ist. <br><br>Um von Microsoft generierte Threat Intelligence-Daten mit Syslog zu abgleichen, ist keine manuelle Spaltenzuordnung erforderlich. Die Details werden von Syslog standardmäßig im Feld angezeigt, und die Regel analysiert die Domäne `SyslogMessage` direkt anhand von SyslogMessage.     |
 |     |         |
