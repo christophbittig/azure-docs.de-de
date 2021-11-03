@@ -8,12 +8,12 @@ metadata:
   ms.topic: conceptual
   ms.date: 11/30/2020
   ms.custom: synapse-cosmos-db
-  ms.openlocfilehash: ce507f756b766869960a06bd00a8b6ea98711205
-  ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+  ms.openlocfilehash: a03572b75d12535dfd81e1539e2d4d27b1ffc2df
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 07/22/2021
-  ms.locfileid: "114442922"
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131011406"
 title: Häufig gestellte Fragen zu Azure Synapse Link für Azure Cosmos DB
 summary: >
   [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -26,10 +26,6 @@ sections:
   - question: >
       Wird Azure Synapse Link für alle Azure Cosmos DB-APIs unterstützt?
     answer: "Azure Synapse Link wird für die Azure Cosmos DB SQL-API (Core-API) und für die Azure Cosmos DB-API für MongoDB unterstützt. \n"
-  - question: >
-      Wird Azure Synapse Link für Azure Cosmos DB (serverlos) unterstützt?
-    answer: >
-      Derzeit ist es nicht möglich, die Synapse Link-Funktion für ein serverloses Konto zu aktivieren.
   - question: >
       Wird Azure Synapse Link für Azure Cosmos DB-Konten in mehreren Regionen unterstützt?
     answer: >

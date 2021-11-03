@@ -8,14 +8,17 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 07/21/2021
-ms.openlocfilehash: 7c29ae41acd800a3e8893ec50ef25cb77c89fe04
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 0ba9d4d1452b0a3248e7df817561ec080c95ca93
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124810173"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131047609"
 ---
 #  <a name="data-collection-best-practices"></a>Bewährte Methoden für die Datensammlung
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 In diesem Abschnitt werden bewährte Methoden zum Sammeln von Daten mithilfe von Azure Sentinel-Datenconnectors erläutert. Weitere Informationen finden Sie unter [Verbinden von Datenquellen](connect-data-sources.md), [Referenz zu Azure Sentinel-Datenconnectors](data-connectors-reference.md) sowie im [Azure Sentinel-Lösungskatalog](sentinel-solutions-catalog.md).
 

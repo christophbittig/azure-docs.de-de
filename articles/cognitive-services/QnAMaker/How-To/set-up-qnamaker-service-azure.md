@@ -4,17 +4,20 @@ description: Vor dem Erstellen von QnA Maker-Wissensdatenbanken müssen Sie zuer
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 11/09/2020
-ms.openlocfilehash: a5bcc536a51da13934fb98f383fb1812d92a0073
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.date: 09/14/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: ce152375289cd48681a87775ef534f5b9e6932de
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111964346"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131071361"
 ---
 # <a name="manage-qna-maker-resources"></a>QnA Maker-Ressourcen
 
 Vor dem Erstellen von QnA Maker-Wissensdatenbanken müssen Sie zuerst einen QnA Maker-Dienst in Azure einrichten. Jeder mit der Berechtigung zum Erstellen neuer Ressourcen in einem Abonnement kann einen QnA Maker-Dienst einrichten. Wenn Sie das Feature „Benutzerdefinierte Fragen und Antworten“ ausprobieren, müssen Sie die Textanalyse-Ressource erstellen und das Feature „Benutzerdefinierte Fragen und Antworten“ hinzufügen.
+
+[!INCLUDE [Custom question answering](../includes/new-version.md)]
 
 Ein fundiertes Verständnis der folgenden Konzepte ist hilfreich, bevor Sie Ihre Ressource erstellen:
 
@@ -22,8 +25,6 @@ Ein fundiertes Verständnis der folgenden Konzepte ist hilfreich, bevor Sie Ihre
 * [Erstellungs- und Veröffentlichungsschlüssel](../Concepts/azure-resources.md#keys-in-qna-maker)
 
 ## <a name="create-a-new-qna-maker-service"></a>Erstellen eines neuen QnA Maker-Diensts
-
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
 
 Mit diesem Verfahren werden die Azure-Ressourcen erstellt, die zum Verwalten des Inhalts der Wissensdatenbank benötigt werden. Nachdem Sie diese Schritte ausgeführt haben, finden Sie die _Abonnementschlüssel_ auf der Seite **Schlüssel** für die Ressource im Azure-Portal.
 
@@ -63,47 +64,7 @@ Mit diesem Verfahren werden die Azure-Ressourcen erstellt, die zum Verwalten des
 
     Die Ressource mit dem _Cognitive Services_-Typ enthält Ihre _Abonnementschlüssel_.
 
-# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
-
-Mit diesem Verfahren werden die Azure-Ressourcen erstellt, die zum Verwalten des Inhalts der Wissensdatenbank benötigt werden. Nachdem Sie diese Schritte ausgeführt haben, finden Sie die *Abonnementschlüssel* auf der Seite **Schlüssel** für die Ressource im Azure-Portal.
-
-1.  Melden Sie sich beim Azure-Portal an, und [erstellen Sie eine Textanalyse-Ressource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics).
-
-2.  Wählen Sie das Feature „Benutzerdefinierte Fragen und Antworten“ aus, und fügen Sie es der Textanalyse-Ressource hinzu. Klicken Sie auf **Mit Ressourcenerstellung fortfahren**.
-
-> [!div class="mx-imgBorder"]
-> ![Hinzufügen von QnA zu TA](../media/qnamaker-how-to-setup-service/select-qna-feature-create-flow.png)
-
-3.  Wählen Sie die entsprechenden Tarife und Regionen für die Textanalyse-Ressource aus. Wählen Sie für das Feature „Benutzerdefinierte Fragen und Antworten“ den Suchstandort und den Tarif aus.
-
-> [!div class="mx-imgBorder"]
-> ![Erstellen eines neuen TA-Diensts – Tarif und Regionen](../media/qnamaker-how-to-setup-service/custom-qna-create-button.png)
-
-   * Wählen Sie das **Abonnement** aus, unter dem die Textanalyse-Ressource bereitgestellt werden soll.
-   * Erstellen Sie eine neue **Ressourcengruppe** (empfohlen), oder verwenden Sie eine vorhandene Ressourcengruppe, in der diese Textanalyse-Ressource bereitgestellt werden soll. Durch das Aktivieren benutzerdefinierter Frage und Antworten mit einer Textanalyse-Ressource werden weniger Azure-Ressourcen erstellt. Wenn Sie eine Ressourcengruppe für diese Ressourcen erstellen, können Sie die Ressourcen anhand des Ressourcengruppennamens leicht finden, verwalten und löschen.
-   * Geben Sie im Feld **Name** einen eindeutigen Namen zur Identifizierung dieser Textanalyse-Ressource ein. 
-   * Wählen Sie den **Standort** aus, an dem die Textanalyse Ressource bereitgestellt werden soll. Die Verwaltungs-APIs und der Dienstendpunkt werden an diesem Standort gehostet. 
-   * Wählen Sie den **Tarif** für den Textanalyse-Dienst aus. Lesen Sie [weitere Informationen zu SKU-Preisen](https://aka.ms/qnamaker-pricing).
-   * Wählen Sie den **Suchspeicherort** aus, an dem die Azure Cognitive Search-Indizes bereitgestellt werden sollen. Einschränkungen zu den verpflichtenden Speicherorten für Kundendaten helfen bei der Bestimmung des Speicherorts, den Sie für Azure Cognitive Search wählen.
-   * Wählen Sie den **Tarif für Suche** des Azure Cognitive Search-Diensts aus. Wenn die Option „Free-Tarif“ nicht verfügbar (abgeblendet) ist, bedeutet dies, dass Ihnen schon über Ihr Abonnement ein kostenloser Dienst bereitgestellt wird. In diesem Fall müssen Sie mit dem Basic-Tarif beginnen. Siehe [Azure Cognitive Search – Preise](https://azure.microsoft.com/pricing/details/search/).
-
-4.  Nachdem Sie alle Felder überprüft haben, wählen Sie **Überprüfen und erstellen** aus. Der Vorgang kann einige Minuten dauern.
-
-> [!div class="mx-imgBorder"]
-> ![Überprüfen der TA-Ressource](../media/qnamaker-how-to-setup-service/custom-qna-review-resource.png)
-
-5.  Nachdem die Bereitstellung abgeschlossen ist, werden die folgenden neu erstellten Ressourcen in Ihrem Abonnement angezeigt:
-
-> [!div class="mx-imgBorder"]
-> ![In einem neuen QnA Maker verwaltet (Vorschau)-Dienst erstellte Ressource](../media/qnamaker-how-to-setup-service/resources-created-question-answering.png)
-
-   Die Ressource mit dem _Cognitive Services_-Typ enthält Ihre _Abonnementschlüssel_.
-
----
-
 ## <a name="upgrade-azure-resources"></a>Durchführen von Upgrades für Azure-Ressourcen
-
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
 
 ### <a name="upgrade-qna-maker-sku"></a>Upgraden der QnA Maker-SKU
 
@@ -162,30 +123,6 @@ Sie können derzeit kein direktes Upgrade der Azure Search-SKU ausführen. Aller
 Wenn Sie keine QnA Maker-Ressource verwenden, sollten Sie alle Ressourcen entfernen. Wenn Sie die nicht verwendeten Ressourcen nicht entfernen, wird Ihre Wissensdatenbank nicht mehr funktionieren, wenn Sie eine kostenlose Search-Ressource erstellt haben.
 
 Kostenlose Search-Ressourcen werden nach 90 Tagen gelöscht, wenn kein API-Aufruf empfangen wurde.
-    
-# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
-
-### <a name="upgrade-the-azure-cognitive-search-service"></a>Upgrade des Azure Cognitive Search-Diensts
-
-Wenn Sie voraussichtlich eine Vielzahl von Wissensdatenbanken benötigen, upgraden Sie den Tarif Ihres Azure Cognitive Search-Diensts.
-
-Sie können derzeit kein direktes Upgrade der Azure Search-SKU ausführen. Allerdings können Sie eine neue Azure Search-Ressource mit der gewünschten SKU erstellen, die Daten in der neuen Ressource wiederherstellen und die Ressource anschließend mit dem Stapel für benutzerdefinierte Fragen und Antworten verknüpfen. Gehen Sie dazu folgendermaßen vor:
-
-1. Erstellen Sie im Azure-Portal eine neue Azure Search-Ressource, und wählen Sie die gewünschte SKU aus.
-
-    ![QnA Maker-Azure Search-Ressource](../media/qnamaker-how-to-upgrade-qnamaker/qnamaker-azuresearch-new.png)
-
-1. Stellen Sie die Indizes aus Ihrer ursprünglichen Azure Search-Ressource in der neuen wieder her. Sehen Sie dazu den [Beispielcode für die Wiederherstellung aus einer Sicherung](https://github.com/pchoudhari/QnAMakerBackupRestore).
-
-1. Verknüpfen Sie die neue Azure Search-Ressource mit dem Feature „Benutzerdefinierte Fragen und Antworten“ auf der [Registerkarte mit Features der Textanalyse Ressource](./configure-qna-maker-resources.md?tabs=v2#configure-text-analytics-resource-with-custom-question-answering-feature-to-use-a-different-cognitive-search-resource).
-
-### <a name="inactivity-policy-for-free-search-resources"></a>Richtlinie zur Inaktivität für kostenlose Search-Ressourcen
-
-Wenn Sie keine QnA Maker- oder Textanalyse-Ressource verwenden, sollten Sie alle Ressourcen entfernen. Wenn Sie die nicht verwendeten Ressourcen nicht entfernen, wird Ihre Wissensdatenbank nicht mehr funktionieren, wenn Sie eine kostenlose Search-Ressource erstellt haben.
-
-Kostenlose Search-Ressourcen werden nach 90 Tagen gelöscht, wenn kein API-Aufruf empfangen wurde.
-
----
 
 ## <a name="delete-azure-resources"></a>Löschen von Azure-Ressourcen
 

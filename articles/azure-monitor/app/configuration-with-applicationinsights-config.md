@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/22/2019
 ms.custom: devx-track-csharp
 ms.reviewer: olegan
-ms.openlocfilehash: e1ea1a1e02b4b09e64054e9369caee4202a0b1b5
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 4e788d84e7f030b4b3067203434061ad017d1468
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129235685"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131045537"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Konfigurieren des Application Insights-SDK mit "ApplicationInsights.config" oder XML
 Das Application Insights .NET-SDK umfasst eine Reihe von NuGet-Paketen. Das [Kernpaket](https://www.nuget.org/packages/Microsoft.ApplicationInsights) stellt die API für das Senden von Telemetriedaten an Application Insights bereit. [Zusätzliche Pakete](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) bieten *Telemetriemodule* und *-initialisierer* für die automatische Nachverfolgung von Telemetriedaten von Ihrer Anwendung und deren Kontext. Durch Anpassen der Konfigurationsdatei können Sie Telemetriemodule und -initialisierer aktivieren oder deaktivieren sowie Parameter für einige von ihnen festlegen.
@@ -78,13 +78,13 @@ Meldet die [Antwortzeit und den Ergebniscode](../../azure-monitor/app/asp-net.md
 Mit `EventSourceTelemetryModule` können Sie EventSource-Ereignisse so konfigurieren, dass sie als Ablaufverfolgungen an Application Insights gesendet werden. Informationen zum Nachverfolgen von EventSource-Ereignissen finden Sie unter [Verwenden von EventSource-Ereignissen](./asp-net-trace-logs.md#use-eventsource-events).
 
 * `Microsoft.ApplicationInsights.EventSourceListener.EventSourceTelemetryModule`
-* [Microsoft.ApplicationInsights.EventSourceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener) 
+* [Microsoft.ApplicationInsights.EventSourceListener](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener)
 
 ### <a name="etw-event-tracking"></a>ETW-Ereignisnachverfolgung
 Mit `EtwCollectorTelemetryModule` können Sie Ereignisse von ETW-Anbietern so konfigurieren, dass Sie als Ablaufverfolgungen an Application Insights gesendet werden. Informationen zum Nachverfolgen von ETW-Ereignissen finden Sie unter [Verwenden von ETW-Ereignissen](../../azure-monitor/app/asp-net-trace-logs.md#use-etw-events).
 
 * `Microsoft.ApplicationInsights.EtwCollector.EtwCollectorTelemetryModule`
-* [Microsoft.ApplicationInsights.EtwCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector) 
+* [Microsoft.ApplicationInsights.EtwCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector)
 
 ### <a name="microsoftapplicationinsights"></a>Microsoft.ApplicationInsights
 Das Microsoft.ApplicationInsights-Paket enthält die [Kern-API](/dotnet/api/microsoft.applicationinsights) des SDK. Sie wird von den anderen Telemetriemodulen verwendet, und Sie können sie auch [verwenden, um Ihre eigene Telemetrie zu definieren](./api-custom-events-metrics.md).
@@ -96,7 +96,7 @@ Das Microsoft.ApplicationInsights-Paket enthält die [Kern-API](/dotnet/api/micr
 Der [Telemetriekanal](telemetry-channels.md) verwaltet die Pufferung und Übertragung von Telemetriedaten an den Application Insights-Dienst.
 
 * `Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.ServerTelemetryChannel` ist der Standardkanal für Webanwendungen. Er puffert Daten im Arbeitsspeicher und nutzt Wiederholungsmechanismen und lokalen Datenträgerspeicher für eine zuverlässigere Übermittlung von Telemetriedaten.
-* `Microsoft.ApplicationInsights.InMemoryChannel` ist ein einfacher Telemetriekanal, der dann verwendet wird, wenn kein anderer Kanal konfiguriert ist. 
+* `Microsoft.ApplicationInsights.InMemoryChannel` ist ein einfacher Telemetriekanal, der dann verwendet wird, wenn kein anderer Kanal konfiguriert ist.
 
 ## <a name="telemetry-initializers-aspnet"></a>Telemetrieinitialisierer (ASP.NET)
 Mit Telemetrieinitialisierern werden Kontexteigenschaften festgelegt, die mit jedem Element der Telemetrie gesendet werden.
@@ -155,7 +155,7 @@ Der Parameter enthält das Ziel, das der Algorithmus zu erreichen versucht. Die 
 #### <a name="fixed-rate-sampling-telemetry-processor-from-200-beta1"></a>Telemetrieprozessor für die Stichprobenerstellung mit festem Prozentsatz (von 2.0.0-beta1)
 Es gibt auch einen standardmäßigen [Telemetrieprozessor für die Stichprobenerstellung](./api-filtering-sampling.md) (von 2.0.1):
 
-```XML
+```xml
 
     <TelemetryProcessors>
      <Add Type="Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.SamplingTelemetryProcessor, Microsoft.AI.ServerTelemetryChannel">
@@ -184,7 +184,7 @@ using Microsoft.ApplicationInsights;
         TelemetryConfiguration configuration = TelemetryConfiguration.CreateDefault();
         configuration.InstrumentationKey = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx";
         var telemetryClient = new TelemetryClient(configuration);
-   
+
 ```
 
 Wenn Sie nur einen bestimmten Satz von Ereignissen an eine andere Ressource senden möchten, können Sie den Schlüssel für einen bestimmten TelemetryClient festlegen:
@@ -199,8 +199,6 @@ Wenn Sie nur einen bestimmten Satz von Ereignissen an eine andere Ressource send
 ```
 
 Um einen neuen Schlüssel abzurufen, [erstellen Sie eine neue Ressource im Application Insights-Portal][new].
-
-
 
 ## <a name="applicationid-provider"></a>ApplicationId-Anbieter
 
@@ -218,7 +216,6 @@ public interface IApplicationIdProvider
     bool TryGetApplicationId(string instrumentationKey, out string applicationId);
 }
 ```
-
 
 Das SDK [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) bietet zwei Implementierungen: `ApplicationInsightsApplicationIdProvider` und `DictionaryApplicationIdProvider`.
 
@@ -281,9 +278,6 @@ TelemetryConfiguration.Active.ApplicationIdProvider = new DictionaryApplicationI
     }
 };
 ```
-
-
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 [Weitere Informationen zur API][api]

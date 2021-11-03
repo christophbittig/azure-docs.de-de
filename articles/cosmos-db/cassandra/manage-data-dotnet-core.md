@@ -9,12 +9,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 10/01/2020
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: a0706962ea783e55eb92f8918b53ff5c355e1e6f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 60b60a0dcd8e7578f9adbde1e6a509516815e8c6
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121785366"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131045252"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-core-and-azure-cosmos-db"></a>Schnellstart: Erstellen einer Cassandra-App mit .NET Core und Azure Cosmos DB
 [!INCLUDE[appliesto-cassandra-api](../includes/appliesto-cassandra-api.md)]
@@ -105,30 +105,30 @@ Dieser Schritt ist optional. Wenn Sie erfahren möchten, wie der Code die Datenb
 
 * Erstellen Sie eine neue Tabelle.
 
-   ```csharp
+  ```csharp
   await session.ExecuteAsync(new SimpleStatement("CREATE TABLE IF NOT EXISTS uprofile.user (user_id int PRIMARY KEY, user_name text, user_bcity text)"));
-   ```
+  ```
 
 * Fügen Sie Benutzerentitäten ein. Verwenden Sie hierzu das IMapper-Objekt mit einer neuen Sitzung, die eine Verbindung mit dem Keyspace „uprofile“ herstellt.
 
-    ```csharp
-    await mapper.InsertAsync<User>(new User(1, "LyubovK", "Dubai"));
-    ```
+  ```csharp
+  await mapper.InsertAsync<User>(new User(1, "LyubovK", "Dubai"));
+  ```
 
 * Fragen Sie alle Benutzerinformationen ab.
 
-    ```csharp
-    foreach (User user in await mapper.FetchAsync<User>("Select * from user"))
-    {
-        Console.WriteLine(user);
-    }
-    ```
+  ```csharp
+  foreach (User user in await mapper.FetchAsync<User>("Select * from user"))
+  {
+      Console.WriteLine(user);
+  }
+  ```
 
 * Führen Sie eine Abfrage zum Abrufen der Informationen eines einzelnen Benutzers aus.
 
-    ```csharp
-    mapper.FirstOrDefault<User>("Select * from user where user_id = ?", 3);
-    ```
+  ```csharp
+  mapper.FirstOrDefault<User>("Select * from user where user_id = ?", 3);
+  ```
 
 ## <a name="update-your-connection-string"></a>Aktualisieren der Verbindungszeichenfolge
 

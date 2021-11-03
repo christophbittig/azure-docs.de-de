@@ -14,14 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/25/2021
 ms.author: yelevin
-ms.openlocfilehash: 985f1d4edacd81b7567124845836c3d93f976bb2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 60b048340e4df87d18b0cb3dba2bf7008719ab45
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340200"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131046848"
 ---
 # <a name="enable-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Aktivieren von User and Entity Behavior Analytics (UEBA) in Azure Sentinel 
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 > [!IMPORTANT]
 >

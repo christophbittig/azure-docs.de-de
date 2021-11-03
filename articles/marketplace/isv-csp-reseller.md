@@ -8,12 +8,12 @@ author: emerb19
 ms.author: emerb
 ms.date: 10/07/2021
 robots: noindex
-ms.openlocfilehash: 28f14cf4414266e6395ec60432c6d2e106a1a69a
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: bb663f42be1e7d1c798420ef483cf52c34c84aff
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129716080"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131048290"
 ---
 # <a name="isv-to-cloud-reseller-private-offers"></a>Private ISV-zu-Cloud-Reseller-Angebote
 
@@ -33,7 +33,7 @@ Als CSP-Partner können Sie alle Margen, die Ihnen zur Verfügung stehen, über 
 :::image type="content" source="media/isv-csp-cloud/csp-private-offer-experience.png" alt-text="Zeigt den Verlauf der Erfahrung mit privaten Angeboten von CSPs.":::
 
 > [!NOTE]
-> Wenn Sie Ihr Angebot nur auf Microsoft AppSource veröffentlichen (es ist also nicht über Azure Marketplace verfügbar) und es für den Verkauf durch Partner im Cloud Solution Provider (CSP)-Programm ausgewählt haben, kann es zu einer Verzögerung bei der Anzeige Ihres Angebots für CSP-Partner kommen, die es in ihrem Portal erwerben können. Bitte wenden Sie sich an [Support](/azure/marketplace/support), wenn Sie der Meinung sind, dass Ihr Angebot für Ihre CSP-Partner nicht verfügbar ist.
+> Wenn Sie Ihr Angebot nur auf Microsoft AppSource veröffentlichen (es ist also nicht über Azure Marketplace verfügbar) und es für den Verkauf durch Partner im Cloud Solution Provider (CSP)-Programm ausgewählt haben, kann es zu einer Verzögerung bei der Anzeige Ihres Angebots für CSP-Partner kommen, die es in ihrem Portal erwerben können. Bitte wenden Sie sich an [Support](./support.md), wenn Sie der Meinung sind, dass Ihr Angebot für Ihre CSP-Partner nicht verfügbar ist.
 
 ## <a name="prerequisites-to-create-a-private-offer-for-cloud-resellers"></a>Voraussetzungen für die Erstellung eines privaten Angebots für Cloud Reseller
 
@@ -188,4 +188,4 @@ Der Auszahlungsbetrag und die Vermittlungsgebühr, die Microsoft erhebt, basiere
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Häufig gestellte Fragen](/azure/marketplace/isv-csp-faq) zur Konfiguration von privaten ISV-zu-Cloud-Reseller-Angeboten
+- [Häufig gestellte Fragen](./isv-csp-faq.yml) zur Konfiguration von privaten ISV-zu-Cloud-Reseller-Angeboten

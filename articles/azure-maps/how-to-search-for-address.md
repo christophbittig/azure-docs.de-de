@@ -7,12 +7,12 @@ ms.date: 01/19/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
-ms.openlocfilehash: a219d04634d04e485f8dcfb7af33e19b87c53cd6
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: ec92bb8bbfdc0f1598148b674f8e5de17e69afe3
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130038808"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131031430"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>Suchen nach einem Ort mit dem Suchdienst von Azure Maps
 
@@ -77,7 +77,7 @@ In diesem Beispiel verwenden wir die Fuzzysuche, um eine weltweite Suche nach `p
 2. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode **GET** aus, und geben Sie die folgende URL ein. Ersetzen Sie bei dieser Anforderung sowie bei den anderen in diesem Artikel angegebenen Anforderungen jeweils `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel.
 
     ```http
-   https://atlas.microsoft.com/search/fuzzy/json?&api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&language=en-US&query=pizza
+    https://atlas.microsoft.com/search/fuzzy/json?&api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&language=en-US&query=pizza
     ```
 
     >[!NOTE]
@@ -161,7 +161,7 @@ In diesem Beispiel suchen wir basierend auf den Koordinaten einer Adresse nach e
 2. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode **GET** aus, und geben Sie die folgende URL ein. Ersetzen Sie bei dieser Anforderung sowie bei den anderen in diesem Artikel angegebenen Anforderungen jeweils `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel. Die Anforderung sollte wie die folgende URL aussehen:
   
     ```http
-   https://atlas.microsoft.com/search/address/reverse/crossstreet/json?&api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&language=en-US&query=47.591180,-122.332700
+    https://atlas.microsoft.com/search/address/reverse/crossstreet/json?&api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&language=en-US&query=47.591180,-122.332700
     ```
 
     :::image type="content" source="./media/how-to-search-for-address/search-address-cross.png" alt-text="Suche nach einer Querstraße":::

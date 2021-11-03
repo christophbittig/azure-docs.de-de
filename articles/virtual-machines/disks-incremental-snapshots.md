@@ -4,16 +4,16 @@ description: Erfahren Sie mehr über inkrementelle Momentaufnahmen für verwalte
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/10/2021
+ms.date: 11/02/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8f00a0f69bf00c42ef120250cbc4a770fb1b7a09
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.custom: devx-track-azurepowershell, ignite-fall-2021
+ms.openlocfilehash: ba03ec11522ea5a4e4a011d1e62fa09b25aec749
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122689416"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131022296"
 ---
 # <a name="create-an-incremental-snapshot-for-managed-disks"></a>Erstellen einer inkrementellen Momentaufnahme für verwaltete Datenträger
 
@@ -148,6 +148,48 @@ Sie können auch Azure Resource Manager-Vorlagen verwenden, um eine inkrementell
 }
 ```
 ---
+
+## <a name="cross-region-snapshot-copy-preview"></a>Regionsübergreifende Momentaufnahmekopie (Vorschau)
+
+Sie können die Option CopyStart (Vorschau) verwenden, um eine Kopie inkrementeller Momentaufnahmen aus einer Region in eine beliebige Region Ihrer Wahl zu initiieren. Azure übernimmt den Kopiervorgang der inkrementellen Momentaufnahmen und stellt sicher, dass nur Deltaänderungen seit der letzten Momentaufnahme in die Zielregion kopiert werden, wodurch der Datenbedarf reduziert wird. Kunden können den Fortschritt der Kopie überprüfen, damit sie wissen können, wann eine Zielmomentaufnahme bereit ist, Datenträger in der Zielregion wiederherzustellen. Sie können diesen Prozess verwenden, um Momentaufnahmen zur langfristigen Aufbewahrung in ein anderes Abonnement zu kopieren. Sie können dies auch verwenden, um Momentaufnahmen in derselben Region zu kopieren, um sicherzustellen, dass Momentaufnahmen im [zonenredundanten Speicher](disks-redundancy.md#zone-redundant-storage-for-managed-disks) vollständig gehärtet werden und dass Momentaufnahmen im Falle eines Zonenfehlers verfügbar sind.
+
+:::image type="content" source="media/disks-incremental-snapshots/cross-region-snapshot.png" alt-text="Diagramm der regionsübergreifenden Kopie inkrementeller Momentaufnahmen in Azure über die Option „Klonen“." lightbox="media/disks-incremental-snapshots/cross-region-snapshot.png":::
+
+### <a name="pre-requisites"></a>Voraussetzungen
+
+Sie müssen die Funktion in Ihrem Abonnement aktivieren, um die Vorschaufunktion zu verwenden. Um sich für die Funktion zu registrieren, verwenden Sie den folgenden Befehl:
+
+```azurecli
+az feature register --namespace Microsoft.Compute --name CreateOptionClone
+```
+
+Es kann einige Minuten dauern, bis die Registrierung abgeschlossen ist. Sie können den folgenden Befehl verwenden, um den Status zu überprüfen:
+
+```azurecli
+az feature show --namespace Microsoft.Compute --name CreateOptionClone
+```
+
+### <a name="restrictions"></a>Beschränkungen
+
+- Das regionsübergreifende Kopieren von Momentaufnahmen ist derzeit nur in „USA, Ost 2“ und „USA, mittlerer Westen“ verfügbar.
+- Sie müssen Version 2020-12-01 oder neuer der Azure Compute REST-API verwenden.
+
+### <a name="get-started"></a>Erste Schritte
+
+```azurecli
+subscriptionId=<yourSubscriptionID>
+resourceGroupName=<yourResourceGroupName>
+name=<targetSnapshotName>
+sourceSnapshotResourceId=<sourceSnapshotResourceId>
+targetRegion=<validRegion>
+
+az login
+az account set --subscription $subscriptionId
+az group deployment create -g $resourceGroupName \
+--template-uri https://raw.githubusercontent.com/Azure-Samples/managed-disks-powershell-getting-started/master/CrossRegionCopyOfSnapshots/CopyStartIncrementalSnapshots.json \
+--parameters "name=$name" "sourceSnapshotResourceId=$sourceSnapshotResourceId" "targetRegion=$targetRegion"
+az resource show -n $name -g $resourceGroupName --namespace Microsoft.Compute --resource-type snapshots --api-version 2020-12-01 --query [properties.completionPercent] -o tsv
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

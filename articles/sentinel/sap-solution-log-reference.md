@@ -5,17 +5,19 @@ author: batamig
 ms.author: bagold
 ms.service: azure-sentinel
 ms.topic: reference
-ms.custom: mvc
+ms.custom: mvc, ignite-fall-2021
 ms.date: 07/21/2021
 ms.subservice: azure-sentinel
-ms.openlocfilehash: a1511581e3cc80d5f2f71bb82dc1bcb0ba639acb
-ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
+ms.openlocfilehash: 15f057dbbc402ba42f5cdf15342827f14eb3895d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122681505"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131064238"
 ---
 # <a name="azure-sentinel-sap-solution-logs-reference-public-preview"></a>Referenz zu Protokollen der Azure Sentinel-Lösung für SAP (Public Preview)
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 In diesem Artikel werden die SAP-Protokolle beschrieben, die über den Azure Sentinel-Datenconnector für SAP verfügbar sind, einschließlich der Tabellennamen in Azure Sentinel, der Protokollzwecke und detaillierten Protokollschemas. Die Beschreibungen der Schemafelder basieren auf den Feldbeschreibungen in der entsprechenden [SAP-Dokumentation](https://help.sap.com/).
 
@@ -616,7 +618,7 @@ Dieser Artikel richtet sich an fortgeschrittene SAP-Benutzer.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie unter
+Weitere Informationen finden Sie unter:
 
 - [Bereitstellen der Azure Sentinel-Lösung für SAP](sap-deploy-solution.md)
 - [Detaillierte SAP-Anforderungen für die Azure Sentinel-Lösung für SAP](sap-solution-detailed-requirements.md)

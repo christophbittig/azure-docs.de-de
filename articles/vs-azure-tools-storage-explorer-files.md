@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/09/2017
 ms.author: cawa
-ms.openlocfilehash: b0387aaecd45a2f09acc8d9ad7af230a62da6ed1
-ms.sourcegitcommit: c1b0d0b61ef7635d008954a0d247a2c94c1a876f
+ms.openlocfilehash: 634310ea429f950daa6b25c4203dea199adf4103
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/08/2021
-ms.locfileid: "109628498"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131036635"
 ---
 # <a name="using-storage-explorer-with-azure-files"></a>Verwenden des Storage-Explorers mit Azure Files
 
@@ -72,7 +72,7 @@ Die folgenden Schritte veranschaulichen, wie Sie den Inhalt einer Dateifreigabe 
     ![Öffnen der Freigabe](media/vs-azure-tools-storage-explorer-files/image4.png)
 
 1. Im Hauptbereich wird der Inhalt der Dateifreigabe angezeigt.
-    
+
     ![Screenshot: Hauptbereich für eine Dateifreigabe im Storage-Explorer mit dem Inhalt der Freigabe](media/vs-azure-tools-storage-explorer-files/image5.png)
 
 ## <a name="delete-a-file-share"></a>Löschen einer Dateifreigabe
@@ -92,7 +92,7 @@ Die folgenden Schritte veranschaulichen, wie Sie eine Dateifreigabe im Storage-E
     ![Löschen](media/vs-azure-tools-storage-explorer-files/image6.png)
 
 1. Wählen Sie im Bestätigungsdialogfeld die Option **Ja** .
-    
+
     ![Bestätigungsdialogfeld](media/vs-azure-tools-storage-explorer-files/image7.png)
 
 ## <a name="copy-a-file-share"></a>Kopieren einer Dateifreigabe
@@ -138,7 +138,7 @@ Die folgenden Schritte veranschaulichen, wie Sie eine SAS für eine Dateifreigab
 1. Wählen Sie **Erstellen**, wenn Sie das Angeben der SAS-Optionen abgeschlossen haben.
 
 1. In einem zweiten Dialogfeld **Shared Access Signature** wird dann die Dateifreigabe zusammen mit der URL und den Abfragezeichenfolgen angezeigt, die Sie zum Zugreifen auf die Speicherressource verwenden können. Wählen Sie neben der URL, die Sie in die Zwischenablage kopieren möchten, die Option **Kopieren** .
-    
+
     ![Zweites Dialogfeld „SAS“](media/vs-azure-tools-storage-explorer-files/image12.png)
 
 1. Wählen Sie abschließend die Option **Schließen**.
@@ -158,11 +158,11 @@ Die folgenden Schritte veranschaulichen, wie Sie Zugriffsrichtlinien für eine D
     ![Kontextmenü „Manage Access Policies“ (Zugriffsrichtlinien verwalten)](media/vs-azure-tools-storage-explorer-files/image13.png)
 
 1. Im Dialogfeld **Zugriffsrichtlinien** werden alle Zugriffsrichtlinien aufgeführt, die für die ausgewählte Dateifreigabe bereits erstellt wurden.
-    
+
     ![Zugriffsrichtlinien](media/vs-azure-tools-storage-explorer-files/image14.png)
 
 1. Führen Sie diese Schritte je nach der Verwaltungsaufgabe der Zugriffsrichtlinie aus:
-    
+
     - **Hinzufügen einer neuen Zugriffsrichtlinie:** Wählen Sie die Option **Hinzufügen** aus. Nach der Erstellung wird die neu hinzugefügte Zugriffsrichtlinie (mit Standardeinstellungen) im Dialogfeld **Zugriffsrichtlinien** angezeigt.
 
     - **Bearbeiten einer Zugriffsrichtlinie:** Nehmen Sie die gewünschten Bearbeitungen vor, und wählen Sie anschließend die Option **Speichern**.
@@ -170,9 +170,9 @@ Die folgenden Schritte veranschaulichen, wie Sie Zugriffsrichtlinien für eine D
     - **Entfernen einer Zugriffsrichtlinie:** Wählen Sie neben der Zugriffsrichtlinie, die Sie entfernen möchten, die Option **Entfernen** aus.
 
 1. Erstellen Sie eine neue SAS-URL, indem Sie zuvor erstellte Zugriffsrichtlinie verwenden:
-    
+
     ![Abrufen der SAS](media/vs-azure-tools-storage-explorer-files/image15.png)
-    
+
     ![SAS-Name und -Eigenschaften](media/vs-azure-tools-storage-explorer-files/image16.png)
 
 ## <a name="managing-files-in-a-file-share"></a>Verwalten von Dateien auf einer Dateifreigabe
@@ -202,7 +202,7 @@ Die folgenden Schritte veranschaulichen, wie Sie die Dateien (und Ordner) auf ei
         a.  Wählen Sie auf der Symbolleiste des Hauptbereichs die Option **Hochladen** und dann im Dropdownmenü die Option **Dateien hochladen** aus.
 
         ![Hochladen von Dateien](media/vs-azure-tools-storage-explorer-files/image18.png)
-        
+
         b. Wählen Sie im Dialogfeld **Dateien hochladen** rechts neben dem Feld **Dateien** die Schaltfläche mit den Auslassungspunkten ( **…** ) aus, um die hochzuladenden Dateien auszuwählen.
 
         ![Hinzufügen von Dateien](media/vs-azure-tools-storage-explorer-files/image19.png)
@@ -210,7 +210,7 @@ Die folgenden Schritte veranschaulichen, wie Sie die Dateien (und Ordner) auf ei
         c. Wählen Sie die Option **Hochladen**.
 
     - **Hochladen eines Ordners auf eine Dateifreigabe**
-        
+
         a. Wählen Sie auf der Symbolleiste des Hauptbereichs die Option **Hochladen** und dann im Dropdownmenü die Option **Uploadordner** aus.
 
         ![Menü „Upload folder“ (Ordner hochladen)](media/vs-azure-tools-storage-explorer-files/image20.png)
@@ -222,21 +222,21 @@ Die folgenden Schritte veranschaulichen, wie Sie die Dateien (und Ordner) auf ei
         d. Wählen Sie die Option **Hochladen**.
 
     - **Herunterladen einer Datei auf den lokalen Computer**
-        
+
         a. Wählen Sie die Datei aus, die Sie herunterladen möchten.
-        
+
         b. Wählen Sie in der Symbolleiste des Hauptbereichs die Option **Herunterladen**.
-        
+
         c. Geben Sie im Dialogfeld **Specify where to save the downloaded file** (Downloadspeicherort für Datei angeben) den Speicherort, an den die Datei heruntergeladen werden soll, und ihren Namen an.
 
         d. Wählen Sie **Speichern** aus.
 
     - **Öffnen einer Datei auf dem lokalen Computer**
-        
+
         a.  Wählen Sie die Datei aus, die Sie öffnen möchten.
-        
+
         b.  Wählen Sie in der Symbolleiste des Hauptbereichs die Option **Öffnen**.
-        
+
         c.  Die Datei wird heruntergeladen und mit der Anwendung geöffnet, die dem zugrunde liegenden Dateityp der Datei zugeordnet ist.
 
     - **Kopieren einer Datei in die Zwischenablage**

@@ -7,14 +7,16 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.topic: how-to
 ms.date: 08/23/2021
-ms.openlocfilehash: e5dc225d96021761fcdf12d5adf0f1fa371ebdb2
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b6ba98d1e0640070ac8d36943e6f546e10018f4e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128598474"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131036958"
 ---
 # <a name="tutorial-get-started-with-jupyter-notebooks-and-msticpy-in-azure-sentinel"></a>Tutorial: Erste Schritte mit Jupyter-Notebooks und MSTICPy in Azure Sentinel
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 In diesem Tutorial wird beschrieben, wie Sie den **Leitfaden für die ersten Schritte für Azure Sentinel ML-Notebooks** ausführen, der die grundlegenden Konfigurationen für die Ausführung von Jupyter-Notebooks in Azure Sentinel und das Ausführen einfacher Datenabfragen einrichtet.
 
@@ -264,7 +266,7 @@ Diese Warnung wirkt sich nicht auf die Notebook-Funktionalität aus.
 
 ### <a name="authenticate-to-your-azure-sentinel-workspace-from-your-notebook"></a>Authentifizieren Sie sich bei Ihrem Azure Sentinel-Arbeitsbereich über Ihr Notebook
 
-Authentifizieren Sie sich mithilfe der [Geräteautorisierung](/azure/active-directory/develop/v2-oauth2-device-code) mit Ihren Azure-Anmeldeinformationen bei Ihrem Azure Sentinel Arbeitsbereich.
+Authentifizieren Sie sich mithilfe der [Geräteautorisierung](../active-directory/develop/v2-oauth2-device-code.md) mit Ihren Azure-Anmeldeinformationen bei Ihrem Azure Sentinel Arbeitsbereich.
 
 Die Geräteautorisierung fügt der Authentifizierung einen weiteren Faktor hinzu, indem ein einmaliger Gerätecode generiert wird, den Sie im Rahmen des Authentifizierungsprozesses bereitstellen.
 
@@ -421,7 +423,6 @@ Die meisten Abfragen erfordern Zeitparameter. Die Eingabe von Datums-/Uhrzeitzei
 Jeder Abfrageanbieter verfügt über standardmäßige Start- und Endzeitparameter für Abfragen. Diese Zeitparameter werden standardmäßig verwendet, wenn Zeitparameter aufgerufen werden. Sie können den Standardzeitbereich ändern, indem Sie das `query_time` Steuerelement öffnen. Die Änderungen bleiben wirksam, bis Sie sie erneut ändern.
 
 Wechseln Sie mit dem folgenden Code zur nächsten Zelle und führen Sie sie aus:
-
 
 ```python
 # Open the query time control for your query provider
@@ -665,7 +666,7 @@ Sie können diese Azure-Einstellungen auch verwenden, um Standardeinstellungen f
     - **env**, um Ihre Azure-Anmeldeinformationen in den Umgebungsvariablen zu speichern.
     - **msi**, um Managed Service Identity zu verwenden. Dabei handelt es sich um eine Identität, die dem Host oder virtuellen Computer zugewiesen ist, auf dem der Jupyter-Hub ausgeführt wird. MSI wird in Azure ML Compute-Instanzen derzeit nicht unterstützt.
     - **cli**, um die Anmeldeinformationen aus einer authentifizierten Azure CLI zu verwenden.
-    - **interactive,** um den interaktiven Geräteautorisierungsablauf mithilfe eines [einmaligen Gerätecodes ](#authenticate-to-your-azure-sentinel-workspace-from-your-notebook) zu verwenden.
+    - **interactive,** um den interaktiven Geräteautorisierungsablauf mithilfe eines [einmaligen Gerätecodes](#authenticate-to-your-azure-sentinel-workspace-from-your-notebook) zu verwenden.
 
     > [!TIP]
     > In den meisten Fällen wird empfohlen, mehrere Methoden auszuwählen, z. B. sowohl **cli** als auch **interactive**. Die Azure-Authentifizierung versucht jede der konfigurierten Methoden in der oben aufgeführten Reihenfolge anzuwenden, bis eine erfolgreich ist.
@@ -700,7 +701,6 @@ In der folgenden Tabelle sind weitere Verweise mit Informationen über MSTICPy, 
 
 |Subject  |Weitere Verweise  |
 |---------|---------|
-|**MSTICPy**     |      - [MSTICPy-Paketkonfiguration](https://msticpy.readthedocs.io/en/latest/getting_started/msticpyconfig.html)<br> - [MSTICPy-Einstellungseditor](https://msticpy.readthedocs.io/en/latest/getting_started/SettingsEditor.html)<br>    - [Konfigurieren Ihrer Notebook-Umgebung](https://github.com/Azure/Azure-Sentinel-Notebooks/blob/master/ConfiguringNotebookEnvironment.ipynb).<br>    - [MPSettingsEditor Notebook](https://github.com/microsoft/msticpy/blob/master/docs/notebooks/MPSettingsEditor.ipynb). <br><br>**Hinweis**: Das Azure Sentinel-Notebooks-GitHub-Repository enthält auch eine *Msticpyconfig.yaml*-Vorlagendatei mit auskommentierten Abschnitten, die Ihnen helfen könnten, die Einstellungen zu verstehen.      |
-|**Azure Sentinel und Jupyter-Notebooks**     |      - [Jupyter-Notebook: Eine Einführung](https://realpython.com/jupyter-notebook-introduction/)<br>    - [MSTICPy-Dokumentation](https://msticpy.readthedocs.io/)<br>    - [Dokumentation zu Azure Sentinel-Notebooks](notebooks.md)<br>    - [Das Infosec-Jupyterbook](https://infosecjupyterbook.com/introduction.html)<br>    - [Exemplarische Vorgehensweise zum Linux-Host-Explorer-Notebook](https://techcommunity.microsoft.com/t5/azure-sentinel/explorer-notebook-series-the-linux-host-explorer/ba-p/1138273)<br>    - [Gründe für die Verwendung von Jupyter für die Sicherheitsuntersuchungen](https://techcommunity.microsoft.com/t5/azure-sentinel/why-use-jupyter-for-security-investigations/ba-p/475729)<br>    - [Sicherheitsuntersuchung mit Azure Sentinel und Notebook](https://techcommunity.microsoft.com/t5/azure-sentinel/security-investigation-with-azure-sentinel-and-jupyter-notebooks/ba-p/432921)<br>    - [Pandas-Dokumentation](https://pandas.pydata.org/pandas-docs/stable/user_guide/index.html)<br>    - [Bokeh-Dokumentation](https://docs.bokeh.org/en/latest/)       |
+|**MSTICPy**     |      - [MSTICPy-Paketkonfiguration](https://msticpy.readthedocs.io/en/latest/getting_started/msticpyconfig.html)<br> - [MSTICPy-Einstellungs-Editor](https://msticpy.readthedocs.io/en/latest/getting_started/SettingsEditor.html)<br>    - [Konfigurieren Ihrer Notebook-Umgebung](https://github.com/Azure/Azure-Sentinel-Notebooks/blob/master/ConfiguringNotebookEnvironment.ipynb).<br>    - [MPSettingsEditor Notebook](https://github.com/microsoft/msticpy/blob/master/docs/notebooks/MPSettingsEditor.ipynb). <br><br>**Hinweis**: Das Azure Sentinel-Notebooks-GitHub-Repository enthält auch eine *Msticpyconfig.yaml*-Vorlagendatei mit auskommentierten Abschnitten, die Ihnen helfen könnten, die Einstellungen zu verstehen.      |
+|**Azure Sentinel und Jupyter Notebooks**     |      - [Jupyter Notebooks: Eine Einführung](https://realpython.com/jupyter-notebook-introduction/)<br>    - [MSTICPy-Dokumentation](https://msticpy.readthedocs.io/)<br>    - [Dokumentation zu Azure Sentinel-Notebooks](notebooks.md)<br>    - [Das Infosec-Jupyterbook](https://infosecjupyterbook.com/introduction.html)<br>    - [Exemplarische Vorgehensweise zum Linux-Host-Explorer-Notebook](https://techcommunity.microsoft.com/t5/azure-sentinel/explorer-notebook-series-the-linux-host-explorer/ba-p/1138273)<br>    - [Gründe für die Verwendung von Jupyter für die Sicherheitsuntersuchungen](https://techcommunity.microsoft.com/t5/azure-sentinel/why-use-jupyter-for-security-investigations/ba-p/475729)<br>    - [Sicherheitsuntersuchung mit Azure Sentinel und Notebook](https://techcommunity.microsoft.com/t5/azure-sentinel/security-investigation-with-azure-sentinel-and-jupyter-notebooks/ba-p/432921)<br>    - [Pandas-Dokumentation](https://pandas.pydata.org/pandas-docs/stable/user_guide/index.html)<br>    - [Bokeh-Dokumentation](https://docs.bokeh.org/en/latest/)       |
 |     |         |
-

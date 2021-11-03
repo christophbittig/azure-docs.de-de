@@ -8,12 +8,12 @@ ms.service: powerbi
 ms.subservice: powerbi-custom-visuals
 ms.topic: how-to
 ms.date: 09/27/2021
-ms.openlocfilehash: eca02cf776eb1f6fa690ecefd865dadbc3d9be78
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: 916013d7bde10e63985324d736a755183200bf3e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129080060"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131079356"
 ---
 # <a name="create-a-power-bi-visual-offer"></a>Erstellen eines Angebots für ein Power BI-Visual
 
@@ -33,7 +33,7 @@ Lesen Sie den Artikel [Planen eines Angebots für ein Power BI-Visual](marketpl
 
 1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
 
-1. Wählen Sie auf der Startseite die Kachel **Marketplace offers** (Marketplace-Angebote) aus.
+1. Wählen Sie auf der Startseite die Kachel **Marktplatzangebote**.
 
     [ ![Veranschaulichung der Kachel „Marketplace-Angebote“ auf der Startseite in Partner Center](./media/workspaces/partner-center-home.png) ](./media/workspaces/partner-center-home.png#lightbox)
 
@@ -73,7 +73,7 @@ Wählen Sie **Erstellen** aus, um das Angebot zu generieren. In Partner Center w
 
 Wählen Sie unter **Zusätzliche Einkäufe** aus, ob Ihr Angebot Käufe eines Diensts oder zusätzliche In-App-Käufe erfordert.
 
-Lesen Sie sich bei **Power BI-Zertifizierung** (optional) die Beschreibung genau durch, und aktivieren Sie das Kontrollkästchen, wenn Sie eine Power BI-Zertifizierung beantragen möchte. [Zertifizierte](https://aka.ms/PBIvisualcertification) Power BI-Visuals erfüllen festgelegte Codeanforderungen, die das Microsoft Power BI-Team getestet und genehmigt hat. Es wird empfohlen, dass Sie Ihr Power BI-Visual übermitteln und veröffentlichen, *bevor* Sie die Zertifizierung beantragen, da der Zertifizierungsprozess zusätzliche Zeit in Anspruch nimmt, die die Veröffentlichung Ihres Angebots verzögern kann.
+Lesen Sie sich bei **Power BI-Zertifizierung** (optional) die Beschreibung genau durch, und aktivieren Sie das Kontrollkästchen, wenn Sie eine Power BI-Zertifizierung beantragen möchte. [Zertifizierte](/power-bi/developer/visuals/power-bi-custom-visuals-certified) Power BI-Visuals erfüllen festgelegte Codeanforderungen, die das Microsoft Power BI-Team getestet und genehmigt hat. Es wird empfohlen, dass Sie Ihr Power BI-Visual übermitteln und veröffentlichen, *bevor* Sie die Zertifizierung beantragen, da der Zertifizierungsprozess zusätzliche Zeit in Anspruch nimmt, die die Veröffentlichung Ihres Angebots verzögern kann.
 
 ## <a name="customer-leads"></a>Kundenleads
 

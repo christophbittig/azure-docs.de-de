@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 91ed308ecbeeb839dfddb78c0151e2c8aafd0d3b
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: e90438e0987f26aa57264825cd2b2bae24f1c12e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123122765"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131253761"
 ---
 In diesem Schnellstartanleitung erfahren Sie, wie Sie einen 1:1-Videoanruf mithilfe des Calling SDK von Azure Communication Services für Windows aufbauen.
 
@@ -35,7 +35,7 @@ Wechseln Sie zu `Package.appxmanifest`, und klicken Sie auf `Capabilities`.
 Aktivieren Sie `Internet (Client & Server)`, um ein- und ausgehenden Zugriff auf das Internet zu erhalten. Aktivieren Sie `Microphone`, um auf den Audiofeed des Mikrofons zuzugreifen. Aktivieren Sie `WebCam`, um auf die Kamera des Geräts zuzugreifen. 
 
 Fügen Sie ihrem `Package.appxmanifest` den folgenden Code hinzu, indem Sie mit einem Rechtsklick auf Ihrer Maus „Code anzeigen“ auswählen. 
-```XML
+```xml
 <Extensions>
 <Extension Category="windows.activatableClass.inProcessServer">
 <InProcessServer>

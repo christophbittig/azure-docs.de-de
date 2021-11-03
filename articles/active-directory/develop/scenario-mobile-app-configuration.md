@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/16/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 54a750fc8418d48afcffdc8260322ca27382372b
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 00eeda0b831f58ed0a739521cff95133f2a24bd1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124786558"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131017975"
 ---
 # <a name="configure-a-mobile-app-that-calls-web-apis"></a>Konfigurieren einer mobilen App, die Web-APIs aufruft
 
@@ -245,10 +245,9 @@ Führen Sie die folgenden Schritte aus, um das URL-Schema Ihrer App zu registrie
 
    Hier identifiziert `BundleId` Ihr Gerät eindeutig. Wenn `BundleId` z. B. `yourcompany.xforms` ist, lautet Ihr URL-Schema `msauth.com.yourcompany.xforms`.
 
-  
       Dieses URL-Schema wird Teil des Umleitungs-URI, der Ihre App eindeutig identifiziert, wenn er die Antwort des Brokers empfängt.
 
-   ```XML
+   ```xml
     <key>CFBundleURLTypes</key>
        <array>
          <dict>
@@ -270,7 +269,7 @@ MSAL verwendet `–canOpenURL:`, um zu überprüfen, ob der Broker auf dem Gerä
 
 Fügen Sie dem Abschnitt `LSApplicationQueriesSchemes` der `Info.plist`-Datei `msauthv2` hinzu, wie im folgenden Codebeispiel zu sehen:
 
-```XML
+```xml
 <key>LSApplicationQueriesSchemes</key>
     <array>
       <string>msauthv2</string>
@@ -326,7 +325,7 @@ So registrieren Sie ein Schema für Ihre App:
 
     Dieses URL-Schema wird Teil des Umleitungs-URI, der Ihre App eindeutig identifiziert, wenn er die Antwort des Brokers empfängt. Achten Sie darauf, dass der Umleitungs-URI im Format `msauth.(BundleId)://auth` für Ihre Anwendung im [Azure-Portal](https://portal.azure.com) registriert ist.
 
-   ```XML
+   ```xml
    <key>CFBundleURLTypes</key>
    <array>
        <dict>
@@ -347,7 +346,7 @@ Fügen Sie `LSApplicationQueriesSchemes` hinzu, um Aufrufe an die Microsoft Auth
 
 Hier sehen Sie ein Beispiel für das Hinzufügen von `LSApplicationQueriesSchemes`:
 
-```XML
+```xml
 <key>LSApplicationQueriesSchemes</key>
 <array>
   <string>msauthv2</string>

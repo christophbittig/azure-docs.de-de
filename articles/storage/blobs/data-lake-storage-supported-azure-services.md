@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/06/2021
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 1fbd0c7a3c2a6edc2ffb0f6a5a4124979fc27225
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 284971b1b9a54d21f29cf3c3c81c194be1f5071c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129612406"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131022491"
 ---
 # <a name="azure-services-that-support-azure-data-lake-storage-gen2"></a>Azure-Dienste, die Azure Data Lake Storage Gen2 unterstützen
 
@@ -47,7 +47,7 @@ In dieser Tabelle sind die Azure-Dienste aufgeführt, die mit Azure Data Lake St
 |Azure SQL-Datenbank|Noch nicht unterstützt|Nicht verfügbar|Nicht zutreffend|[Was ist Azure SQL-Datenbank?](../../azure-sql/database/sql-database-paas-overview.md)|
 
 > [!TIP]
-> Informationen dazu, wie Dienste in Kategorien wie „Erfassung“, „Download“, „Verarbeitung“ und „Visualisierung“ organisiert sind, finden Sie unter [Erfassung, Verarbeitung und Analyse](data-lake-storage-data-scenarios.md#ingest-process-and-analyze).
+> Informationen dazu, wie Dienste in Kategorien wie „Erfassung“, „Download“, „Verarbeitung“ und „Visualisierung“ organisiert sind, finden Sie unter [Erfassung, Verarbeitung und Analyse](./data-lake-storage-best-practices.md#ingest-process-and-analyze).
 
 ## <a name="see-also"></a>Weitere Informationen
 

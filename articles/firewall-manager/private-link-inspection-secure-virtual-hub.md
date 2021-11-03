@@ -2,17 +2,17 @@
 title: Schützen von Datenverkehr, der für private Endpunkte von Azure Virtual WAN bestimmt ist
 description: Es wird beschrieben, wie Sie Netzwerk- und Anwendungsregeln zum Schützen von Datenverkehr verwenden, der für private Endpunkte von Azure Virtual WAN bestimmt ist.
 services: firewall-manager
-author: jocortems
+author: KumudD
 ms.service: firewall-manager
 ms.topic: how-to
 ms.date: 04/02/2021
-ms.author: jocorte
-ms.openlocfilehash: 7322bab635d398fc7a5335546ba6fef327ff24b2
-ms.sourcegitcommit: 20f8bf22d621a34df5374ddf0cd324d3a762d46d
+ms.author: kumud
+ms.openlocfilehash: 58dd59bc47c15dd5f6b04588b441297b9fbb7968
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107259352"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131068682"
 ---
 # <a name="secure-traffic-destined-to-private-endpoints-in-azure-virtual-wan"></a>Schützen von Datenverkehr, der für private Endpunkte von Azure Virtual WAN bestimmt ist
 

@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: tutorials
 ms.topic: tutorial
 ms.date: 07/05/2021
-ms.openlocfilehash: 738c60663f80fd036f50c7bd354ca0e3b1d9284e
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 3b15a1f75c985516337b89df96f519caf429b8b9
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124757818"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131016623"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Inkrementelles Laden von Daten aus Azure SQL-Datenbank in Azure Blob Storage über das Azure-Portal
 
@@ -78,24 +78,25 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
     );
 
     INSERT INTO data_source_table
-    (PersonID, Name, LastModifytime)
+        (PersonID, Name, LastModifytime)
     VALUES
-    (1, 'aaaa','9/1/2017 12:56:00 AM'),
-    (2, 'bbbb','9/2/2017 5:23:00 AM'),
-    (3, 'cccc','9/3/2017 2:36:00 AM'),
-    (4, 'dddd','9/4/2017 3:21:00 AM'),
-    (5, 'eeee','9/5/2017 8:06:00 AM');
+        (1, 'aaaa','9/1/2017 12:56:00 AM'),
+        (2, 'bbbb','9/2/2017 5:23:00 AM'),
+        (3, 'cccc','9/3/2017 2:36:00 AM'),
+        (4, 'dddd','9/4/2017 3:21:00 AM'),
+        (5, 'eeee','9/5/2017 8:06:00 AM');
     ```
+
     In diesem Tutorial verwenden Sie „LastModifytime“ als die Grenzwertspalte. Die Daten im Quelldatenspeicher sind in der folgenden Tabelle dargestellt:
 
     ```
     PersonID | Name | LastModifytime
     -------- | ---- | --------------
-    1 | aaaa | 2017-09-01 00:56:00.000
-    2 | bbbb | 2017-09-02 05:23:00.000
-    3 | cccc | 2017-09-03 02:36:00.000
-    4 | dddd | 2017-09-04 03:21:00.000
-    5 | eeee | 2017-09-05 08:06:00.000
+    1        | aaaa | 2017-09-01 00:56:00.000
+    2        | bbbb | 2017-09-02 05:23:00.000
+    3        | cccc | 2017-09-03 02:36:00.000
+    4        | dddd | 2017-09-04 03:21:00.000
+    5        | eeee | 2017-09-05 08:06:00.000
     ```
 
 ### <a name="create-another-table-in-your-sql-database-to-store-the-high-watermark-value"></a>Erstellen einer anderen Tabelle in SQL-Datenbank zum Speichern des hohen Grenzwerts
@@ -270,7 +271,7 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
     1. Wählen Sie unter **Name der gespeicherten Prozedur** die Option **usp_write_watermark**.
     2. Klicken Sie zum Angeben von Werten für die Parameter der gespeicherten Prozedur auf **Import parameter** (Importparameter), und geben Sie die folgenden Werte für die Parameter ein:
 
-        | Name | Type | Wert |
+        | Name | type | Wert |
         | ---- | ---- | ----- |
         | LastModifiedtime | Datetime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
         | TableName | String | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
@@ -314,9 +315,11 @@ In diesem Tutorial erstellen Sie eine Pipeline mit zwei Lookup-Aktivitäten, ein
 
     Hier sehen Sie die Ausgabe:
 
-    | TableName | Grenzwert |
+    ```output
+    | TableName | WatermarkValue |
     | --------- | -------------- |
-    | „Data_source_table“ | 2017-09-05    8:06:00.000 |
+    | data_source_table | 2017-09-05    8:06:00.000 |
+    ```
 
 ## <a name="add-more-data-to-source"></a>Hinzufügen von weiteren Daten zur Quelle
 
@@ -371,15 +374,17 @@ PersonID | Name | LastModifytime
     ```sql
     Select * from watermarktable
     ```
+
     Beispielausgabe:
 
-    | TableName | Grenzwert |
-    | --------- | --------------- |
-    | „Data_source_table“ | 2017-09-07 09:01:00.000 |
-
-
+    ```output
+    | TableName | WatermarkValue |
+    | --------- | -------------- |
+    | data_source_table | 2017-09-07 09:01:00.000 |
+    ```
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 In diesem Tutorial haben Sie die folgenden Schritte ausgeführt:
 
 > [!div class="checklist"]

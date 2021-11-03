@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie eine Containergruppe in einem neuen oder vorh
 ms.topic: article
 ms.date: 07/02/2020
 ms.custom: devx-track-js, devx-track-azurecli
-ms.openlocfilehash: f107b5b04726047bea4d7c05a6c031d921f26547
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: da24d64ba4615ff6d06ca2617e8e9c45a4dbff9f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112300163"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131080211"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Bereitstellen von Containerinstanzen in einem virtuellen Azure-Netzwerk
 
@@ -77,7 +77,7 @@ az container show --resource-group myResourceGroup \
   --query ipAddress.ip --output tsv
 ```
 
-Die Ausgabe zeigt die IP-Adresse der Containergruppe im privaten Subnetz an. Zum Beispiel:
+Die Ausgabe zeigt die IP-Adresse der Containergruppe im privaten Subnetz an. Beispiel:
 
 ```console
 10.0.0.4
@@ -141,7 +141,7 @@ Beispielausgabe:
 
 Sobald Sie über die ID des Netzwerkprofils verfügen, kopieren Sie den folgenden YAML-Code, und fügen Sie ihn in eine neue Datei namens *vnet-deploy-aci.yaml* ein. Ersetzen Sie unter `networkProfile` den `id`-Wert durch die ID, die Sie gerade abgerufen haben, und speichern Sie die Datei. Dieser YAML-Code erstellt eine Containergruppe mit dem Namen *appcontaineryaml* in Ihrem virtuellen Netzwerk.
 
-```YAML
+```yaml
 apiVersion: '2019-12-01'
 location: westus
 name: appcontaineryaml

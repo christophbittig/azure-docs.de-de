@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 04/28/2021
 ms.author: kenwith
 ms.reviewer: ashishj
-ms.openlocfilehash: dc8a48c52c6312c3fcdf9e450a8aa609dc7090d7
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 8d779fc111727b7e57163e57f6672f51ebbb8756
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129988580"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131059450"
 ---
 # <a name="understand-and-solve-azure-active-directory-application-proxy-cors-issues"></a>Verstehen und Beheben von CORS-Problemen für den Azure Active Directory-Anwendungsproxy
 
@@ -93,18 +93,20 @@ Fügen Sie für den Webdienst einen benutzerdefinierten, der Ursprungsanforderun
 
 Für diese Änderung sind keinerlei Codeänderungen erforderlich. Sie kann in den Fiddler-Ablaufverfolgungen überprüft werden:
 
-**Veröffentlichen der Headerergänzung**\
+```output
+**Post the Header Addition**\
 HTTP/1.1 200 OK\
 Cache-Control: no-cache\
 Pragma: no-cache\
 Content-Type: text/plain; charset=utf-8\
 Expires: -1\
 Vary: Accept-Encoding\
-Server:  Microsoft-IIS/8.5 Microsoft-HTTPAPI/2.0\
+Server: Microsoft-IIS/8.5 Microsoft-HTTPAPI/2.0\
 **Access-Control-Allow-Origin: https\://corswebclient-contoso.msappproxy.net**\
 X-AspNet-Version: 4.0.30319\
 X-Powered-By: ASP.NET\
 Content-Length: 17
+```
 
 ### <a name="option-4-modify-the-app"></a>Option 4: Ändern der App
 

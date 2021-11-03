@@ -11,19 +11,21 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
-ms.custom: mvc
+ms.custom: mvc, ignite-fall-2021
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/12/2021
 ms.author: bagol
-ms.openlocfilehash: da901a0beb5a90981293b4cae1f620a0668c7e0e
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: b21bb010755e8f618cba2ae40db14d12aa3b28df
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122350371"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131023023"
 ---
 # <a name="protecting-mssp-intellectual-property-in-azure-sentinel"></a>Schützen des geistigen Eigentums von MSSPs in Azure Sentinel
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 In diesem Artikel werden die Methoden beschrieben, mit denen MSSPs (Managed Security Service Providers) geistiges Eigentum schützen können, das sie in Azure Sentinel entwickelt haben. Beispiele hierfür wären etwa Azure Sentinel-Analyseregeln, Hunting-Abfragen, Playbooks und Arbeitsmappen.
 
@@ -127,7 +129,7 @@ Das Exportieren Ihrer Arbeitsmappe zu Power BI bewirkt Folgendes:
 - **Es erleichtert die Freigabe von Arbeitsmappenvisualisierungen.** Sie können dem Kunden einen Link zum Power BI-Dashboard senden, auf dem er die gemeldeten Daten ganz ohne Azure-Zugriffsberechtigungen anzeigen kann.
 - **Es ermöglicht die Verwendung von Zeitplänen.** Konfigurieren Sie Power BI so, dass in regelmäßigen Abständen E-Mails mit einer Momentaufnahme des Dashboards für die entsprechende Zeit gesendet werden.
 
-Weitere Informationen finden Sie unter [Importieren von Azure Monitor-Protokolldaten in Power BI](../azure-monitor/visualize/powerbi.md).
+Weitere Informationen finden Sie unter [Importieren von Azure Monitor-Protokolldaten in Power BI](../azure-monitor/logs/log-powerbi.md).
 
 ### <a name="playbooks"></a>Playbooks
 

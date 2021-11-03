@@ -4,12 +4,12 @@ description: Leistungsüberwachung für Anwendungen auf Azure-VMs und in Azure-V
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d3f1d1a8a2e3262ba91339c7335fadda92d90cac
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: 6b2eb0a9413766878e8abb9ee0ce24b490b10909
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129856104"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131067752"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>Bereitstellen des Azure Monitor Application Insights-Agents auf virtuellen Azure-Computern und in Azure-VM-Skalierungsgruppen
 
@@ -153,7 +153,7 @@ $privateCfgHashtable = @{};
 
 $vmss = Get-AzVmss -ResourceGroupName "<myResourceGroup>" -VMScaleSetName "<myVmssName>"
 
-Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name "ApplicationMonitoring" -Publisher "Microsoft.Azure.Diagnostics" -Type "ApplicationMonitoringWindows" -TypeHandlerVersion "2.8" -Setting $publicCfgHashtable -ProtectedSetting $privateCfgHashtable
+Add-AzVmssExtension -VirtualMachineScaleSet $vmss -Name "ApplicationMonitoringWindows" -Publisher "Microsoft.Azure.Diagnostics" -Type "ApplicationMonitoringWindows" -TypeHandlerVersion "2.8" -Setting $publicCfgHashtable -ProtectedSetting $privateCfgHashtable
 
 Update-AzVmss -ResourceGroupName $vmss.ResourceGroupName -Name $vmss.Name -VirtualMachineScaleSet $vmss
 

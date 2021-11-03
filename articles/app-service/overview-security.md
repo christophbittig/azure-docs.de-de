@@ -5,12 +5,12 @@ keywords: Azure App Service, Web-App, mobile App, API-App, Funktions-App, Sicher
 ms.topic: article
 ms.date: 08/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: d661781d7eea0b5627dcab13648422003c82e0a4
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: c4c69ba78460f8a629848717da6bb76a782d1aa2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130220461"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131045556"
 ---
 # <a name="security-in-azure-app-service"></a>Sicherheit in Azure App Service
 
@@ -55,7 +55,7 @@ Von der App Service-Authentifizierung und -Autorisierung werden mehrere Authenti
 
 Für die Authentifizierung bei einem Back-End-Dienst bietet App Service zwei unterschiedliche bedarfsspezifische Mechanismen:
 
-- **Dienstidentität:** Melden Sie sich unter Verwendung der Identität der App bei der Remoteressource an. Mit App Service können Sie ganz einfach eine [verwaltete Identität](overview-managed-identity.md) erstellen und für die Authentifizierung bei anderen Diensten (beispielsweise [Azure SQL-Datenbank](/azure/sql-database/) oder [Azure Key Vault](../key-vault/index.yml)) verwenden. Ein umfassendes Tutorial für diesen Ansatz finden Sie unter [Tutorial: Schützen der SQL-Datenbank-Verbindung mittels verwalteter Identität](app-service-web-tutorial-connect-msi.md).
+- **Dienstidentität:** Melden Sie sich unter Verwendung der Identität der App bei der Remoteressource an. Mit App Service können Sie ganz einfach eine [verwaltete Identität](overview-managed-identity.md) erstellen und für die Authentifizierung bei anderen Diensten (beispielsweise [Azure SQL-Datenbank](/azure/sql-database/) oder [Azure Key Vault](../key-vault/index.yml)) verwenden. Ein umfassendes Tutorial für diesen Ansatz finden Sie unter [Tutorial: Schützen der SQL-Datenbank-Verbindung mittels verwalteter Identität](tutorial-connect-msi-sql-database.md).
 - **Im Namen von (on behalf of, OBO):** Greifen Sie unter Verwendung von delegiertem Zugriff im Namen des Benutzers auf Remoteressourcen zu. Mit Azure Active Directory als Authentifizierungsanbieter kann Ihre App Service-App eine delegierte Anmeldung bei einem Remotedienst durchführen – etwa bei der [Microsoft Graph-API](../active-directory/develop/microsoft-graph-intro.md) oder bei einer Remote-API-App in App Service. Ein umfassendes Tutorial für diesen Ansatz finden Sie unter [Tutorial: Umfassendes Authentifizieren und Autorisieren von Benutzern in Azure App Service](tutorial-auth-aad.md).
 
 ## <a name="connectivity-to-remote-resources"></a>Konnektivität mit Remoteressourcen

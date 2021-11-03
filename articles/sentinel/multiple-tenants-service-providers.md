@@ -14,14 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/29/2020
 ms.author: yelevin
-ms.openlocfilehash: cf2a9380b404876ef9c963d54d9069ebd66fef56
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 3e5c431c8795f464e3ab83e0f6dff47028fdb5a4
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339004"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131019778"
 ---
 # <a name="manage-multiple-tenants-in-azure-sentinel-as-an-mssp"></a>Verwalten mehrerer Mandanten in Azure Sentinel als MSSP
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 Wenn Sie Dienstanbieter für verwaltete Sicherheit (MSSP) sind und [Azure Lighthouse](../lighthouse/overview.md) verwenden, um Ihren Kunden SOC-Dienste (Security Operations Center) anzubieten, können Sie die Azure Sentinel-Ressourcen Ihrer Kunden direkt von Ihrem eigenen Azure-Mandanten aus verwalten, ohne eine Verbindung mit dem Mandanten des Kunden herstellen zu müssen. 
 
@@ -55,4 +58,3 @@ Wenn Sie Dienstanbieter für verwaltete Sicherheit (MSSP) sind und [Azure Lighth
 In diesem Dokument haben Sie erfahren, wie Sie mehrere Azure Sentinel-Mandanten problemlos verwalten können. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
 - Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](get-visibility.md).
 - Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](detect-threats-built-in.md).
-

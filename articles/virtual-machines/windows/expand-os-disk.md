@@ -1,23 +1,23 @@
 ---
-title: Erweitern des Betriebssystemlaufwerks einer Windows-VM in Azure
+title: Erweitern virtueller Festplatten, die an eine Windows VM in Azure angefügt sind
 description: Erweitern Sie die Größe des Betriebssystemlaufwerks eines virtuellen Computers mit Azure PowerShell im Resource Manager-Bereitstellungsmodell.
 author: kirpasingh
 manager: roshar
 ms.service: virtual-machines
 ms.collection: windows
 ms.topic: article
-ms.date: 09/02/2020
+ms.date: 11/02/2021
 ms.author: kirpas
 ms.subservice: disks
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: fbc7a6df9dfdd50315176db343c6c94aaefbba12
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.custom: devx-track-azurepowershell, ignite-fall-2021
+ms.openlocfilehash: 4588627fdfe64c4ba005b6b3c7defadd5994e3d6
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122692479"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131046563"
 ---
-# <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>Erweitern des Betriebssystemlaufwerks eines virtuellen Computers
+# <a name="how-to-expand-virtual-hard-disks-attached-to-a-windows-virtual-machine"></a>Erweitern virtueller Festplatten, die an einen Windows virtuellen Computer angefügt sind
 
 **Gilt für:** :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen 
 
@@ -33,23 +33,51 @@ Beim Erstellen eines neuen virtuellen Computers in einer Ressourcengruppe durch 
 > 
 > Wenn Sie die Datenträger erweitern, müssen Sie [das Volume innerhalb des Betriebssystems erweitern](#expand-the-volume-within-the-os), um den größere Datenträger nutzen zu können.
 
+## <a name="resize-without-downtime-preview"></a>Ändern der Größe ohne Ausfallzeiten (Vorschau)
+
+Sie können nun die Größe Ihrer verwalteten Datenträger ändern, ohne Ihre VM zu deallokieren.
+
+Die Vorschau für diesen Bereich hat folgende Einschränkungen:
+
+- Derzeit nur in der Region USA, Westen-Mitte verfügbar.
+
+- Wird nur für Datenfestplatten unterstützt.
+- Festplatten, die kleiner als 4 TiB sind, können nicht ohne Ausfallzeit auf 4 TiB oder mehr erweitert werden.
+    - Sobald Sie die Größe einer Festplatte auf 4 TiB oder mehr erhöht haben, kann sie ohne Ausfallzeiten erweitert werden.
+- Sie müssen entweder die [aktuelle Azure CLI](/cli/azure/install-azure-cli), das [aktuelle Azure PowerShell-Modul](/powershell/azure/install-az-ps), das Azure-Portal, wenn der Zugriff über [https://aka.ms/iaasexp/DiskLiveResize](https://aka.ms/iaasexp/DiskLiveResize) erfolgt, oder eine Azure Resource Manager-Vorlage mit einer API-Version, die 2021-04-01 oder neuer ist, installieren und verwenden.
+
+Um sich für die Funktion zu registrieren, verwenden Sie den folgenden Befehl:
+
+```azurepowershell
+Register-AzProviderFeature -FeatureName "LiveResize" -ProviderNamespace "Microsoft.Compute"
+```
+
+Es kann ein paar Minuten dauern, bis die Registrierung abgeschlossen ist. Um zu bestätigen, dass Sie sich registriert haben, verwenden Sie den folgenden Befehl:
+
+```azurepowershell
+Register-AzProviderFeature -FeatureName "LiveResize" -ProviderNamespace "Microsoft.Compute"
+```
+
 ## <a name="resize-a-managed-disk-in-the-azure-portal"></a>Ändern der Größe eines verwalteten Datenträgers im Azure-Portal
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu dem virtuellen Computer, auf dem Sie den Datenträger erweitern möchten. Wählen Sie **Beenden** aus, um die Zuordnung der VM aufzuheben.
-2. Wenn die VM beendet ist, wählen Sie im linken Menü unter **Einstellungen** die Option **Datenträger** aus.
+> [!IMPORTANT]
+> Wenn Sie **LiveResize** aktiviert haben und Ihre Festplatte die Anforderungen in [Resize ohne Ausfallzeit (Vorschau)](#resize-without-downtime-preview) erfüllt, können Sie Schritt 1 überspringen. Um die Größe eines Datenträgers ohne Ausfallzeiten im Azure-Portal zu ändern, müssen Sie den folgenden Link verwenden: [https://aka.ms/iaasexp/DiskLiveResize](https://aka.ms/iaasexp/DiskLiveResize)
+
+1. Navigieren Sie im [Azure-Portal](https://aka.ms/iaasexp/DiskLiveResize) zu dem virtuellen Computer, auf dem Sie den Datenträger erweitern möchten. Wählen Sie **Beenden** aus, um die Zuordnung der VM aufzuheben.
+1. Wählen Sie im Menü links unter **Einstellungen** die Option **Datenträger aus**.
 
     :::image type="content" source="./media/expand-os-disk/select-disks.png" alt-text="Screenshot: Im Abschnitt „Einstellungen“ des Menüs ist die Option „Datenträger“ ausgewählt.":::
 
  
-3. Wählen Sie unter **Name des Datenträgers** den Datenträger aus, dessen Größe Sie ändern möchten.
+1. Wählen Sie unter **Name des Datenträgers** den Datenträger aus, dessen Größe Sie ändern möchten.
 
     :::image type="content" source="./media/expand-os-disk/disk-name.png" alt-text="Screenshot des Bereichs „Datenträger“, in dem der Name eines Datenträgers ausgewählt ist":::
 
-4. Klicken Sie im Menü auf der linken Seite unter **Einstellungen** auf **Größe und Leistung**.
+1. Klicken Sie im Menü auf der linken Seite unter **Einstellungen** auf **Größe und Leistung**.
 
     :::image type="content" source="./media/expand-os-disk/configuration.png" alt-text="Screenshot: Ausgewählte Option „Größe und Leistung“ im Abschnitt „Einstellungen“ des Menüs":::
 
-5. Wählen Sie unter **Größe und Leistung** die gewünschte Datenträgergröße aus.
+1. Wählen Sie unter **Größe und Leistung** die gewünschte Datenträgergröße aus.
    
    > [!WARNING]
    > Die neue Größe sollte die Größe des vorhandenen Datenträgers überschreiten. Der zulässige Höchstwert für Betriebssystemdatenträger liegt bei 4.095 GB. (Sie können auch ein größeres VHD-Blob verwenden, das Betriebssystem arbeitet jedoch nur mit den ersten 4.095 GB.)
@@ -57,7 +85,7 @@ Beim Erstellen eines neuen virtuellen Computers in einer Ressourcengruppe durch 
 
     :::image type="content" source="./media/expand-os-disk/size.png" alt-text="Screenshot: Bereich „Größe und Leistung“ mit ausgewählter Datenträgergröße":::
 
-6. Klicken Sie unten auf der Seite auf **Größe ändern**.
+1. Klicken Sie unten auf der Seite auf **Größe ändern**.
 
     :::image type="content" source="./media/expand-os-disk/save.png" alt-text="Screenshot: Bereich „Größe und Leistung“ mit ausgewählter Schaltfläche „Größe ändern“":::
 
@@ -73,26 +101,29 @@ Beim Erstellen eines neuen virtuellen Computers in einer Ressourcengruppe durch 
     Select-AzSubscription –SubscriptionName 'my-subscription-name'
     ```
 
-2. Legen Sie den Namen der Ressourcengruppe und den Namen der VM fest:
+1. Legen Sie den Namen der Ressourcengruppe und den Namen der VM fest:
    
     ```powershell
     $rgName = 'my-resource-group-name'
     $vmName = 'my-vm-name'
     ```
 
-3. Rufen Sie einen Verweis auf die VM ab:
+1. Rufen Sie einen Verweis auf die VM ab:
    
     ```powershell
     $vm = Get-AzVM -ResourceGroupName $rgName -Name $vmName
     ```
 
-4. Halten Sie die VM vor dem Ändern der Größe des Datenträgers an:
+    > [!IMPORTANT]
+    > Wenn Sie **LiveResize** aktiviert haben und Ihre Festplatte die Anforderungen in [Resize ohne Ausfallzeit (Vorschau)](#resize-without-downtime-preview) erfüllt, können Sie Schritt 4 und 6 überspringen.
+
+1. Halten Sie die VM vor dem Ändern der Größe des Datenträgers an:
    
     ```powershell
     Stop-AzVM -ResourceGroupName $rgName -Name $vmName
     ```
 
-5. Rufen Sie einen Verweis auf den verwalteten Betriebssystem-Datenträger ab. Legen Sie die Größe des verwalteten Betriebssystem-Datenträgers auf den gewünschten Wert fest, und aktualisieren Sie den Datenträger:
+1. Rufen Sie einen Verweis auf den verwalteten Betriebssystem-Datenträger ab. Legen Sie die Größe des verwalteten Betriebssystem-Datenträgers auf den gewünschten Wert fest, und aktualisieren Sie den Datenträger:
    
     ```powershell
     $disk= Get-AzDisk -ResourceGroupName $rgName -DiskName $vm.StorageProfile.OsDisk.Name
@@ -103,7 +134,7 @@ Beim Erstellen eines neuen virtuellen Computers in einer Ressourcengruppe durch 
     > Die neue Größe sollte die Größe des vorhandenen Datenträgers überschreiten. Der zulässige Höchstwert für Betriebssystemdatenträger liegt bei 4.095 GB. (Sie können auch ein größeres VHD-Blob verwenden, das Betriebssystem arbeitet jedoch nur mit den ersten 4.095 GB.)
     > 
          
-6. Das Aktualisieren der VM kann einige Sekunden dauern. Starten Sie die VM nach Abschluss der Befehlsausführung neu:
+1. Das Aktualisieren der VM kann einige Sekunden dauern. Starten Sie die VM nach Abschluss der Befehlsausführung neu:
    
     ```powershell
     Start-AzVM -ResourceGroupName $rgName -Name $vmName
@@ -122,26 +153,26 @@ Das ist alles! Stellen Sie jetzt eine RDP-Verbindung mit der VM her, öffnen Sie
     Select-AzSubscription –SubscriptionName 'my-subscription-name'
     ```
 
-2. Legen Sie den Namen der Ressourcengruppe und den Namen der VM fest:
+1. Legen Sie den Namen der Ressourcengruppe und den Namen der VM fest:
    
     ```powershell
     $rgName = 'my-resource-group-name'
     $vmName = 'my-vm-name'
     ```
 
-3. Rufen Sie einen Verweis auf die VM ab:
+1. Rufen Sie einen Verweis auf die VM ab:
    
     ```powershell
     $vm = Get-AzVM -ResourceGroupName $rgName -Name $vmName
     ```
 
-4. Halten Sie die VM vor dem Ändern der Größe des Datenträgers an:
+1. Halten Sie die VM vor dem Ändern der Größe des Datenträgers an:
    
     ```powershell
     Stop-AzVM -ResourceGroupName $rgName -Name $vmName
     ```
 
-5. Legen Sie die Größe des nicht verwalteten Betriebssystem-Datenträgers auf den gewünschten Wert fest, und aktualisieren Sie die VM:
+1. Legen Sie die Größe des nicht verwalteten Betriebssystem-Datenträgers auf den gewünschten Wert fest, und aktualisieren Sie die VM:
    
     ```powershell
     $vm.StorageProfile.OSDisk.DiskSizeGB = 1023
@@ -153,7 +184,7 @@ Das ist alles! Stellen Sie jetzt eine RDP-Verbindung mit der VM her, öffnen Sie
     > 
     > 
    
-6. Das Aktualisieren der VM kann einige Sekunden dauern. Starten Sie die VM nach Abschluss der Befehlsausführung neu:
+1. Das Aktualisieren der VM kann einige Sekunden dauern. Starten Sie die VM nach Abschluss der Befehlsausführung neu:
    
     ```powershell
     Start-AzVM -ResourceGroupName $rgName -Name $vmName
@@ -232,13 +263,13 @@ Wenn Sie den Datenträger für die VM erweitert haben, müssen Sie in das Betrie
 
 1. Öffnen Sie eine RDP-Verbindung mit Ihrer VM.
 
-2. Öffnen Sie eine Eingabeaufforderung, und geben Sie **diskpart** ein.
+1. Öffnen Sie eine Eingabeaufforderung, und geben Sie **diskpart** ein.
 
-3. Geben Sie `list volume` an der Eingabeaufforderung von **DISKPART** ein. Notieren Sie sich das Volume, das Sie erweitern möchten.
+1. Geben Sie `list volume` an der Eingabeaufforderung von **DISKPART** ein. Notieren Sie sich das Volume, das Sie erweitern möchten.
 
-4. Geben Sie `select volume <volumenumber>` an der Eingabeaufforderung von **DISKPART** ein. Hiermit wählen Sie das Volume *Volumenummer* aus, das Sie in zusammenhängenden, leeren Speicherplatz auf dem gleichen Datenträger erweitern möchten.
+1. Geben Sie `select volume <volumenumber>` an der Eingabeaufforderung von **DISKPART** ein. Hiermit wählen Sie das Volume *Volumenummer* aus, das Sie in zusammenhängenden, leeren Speicherplatz auf dem gleichen Datenträger erweitern möchten.
 
-5. Geben Sie `extend [size=<size>]` an der Eingabeaufforderung von **DISKPART** ein. Hierdurch wird das ausgewählte Volume um *Größe* in Megabyte (MB) erweitert.
+1. Geben Sie `extend [size=<size>]` an der Eingabeaufforderung von **DISKPART** ein. Hierdurch wird das ausgewählte Volume um *Größe* in Megabyte (MB) erweitert.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -7,79 +7,69 @@ manager: nitinme
 ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: quickstart
-ms.date: 10/07/2021
+ms.date: 11/02/2021
 ms.author: lajanuar
 recommendations: false
-ms.openlocfilehash: 50c1cfbcfc79212f03fd67f783afaff110ce1e09
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 27ac34a6c875b680bc72d460968be212afef131d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130216730"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131021057"
 ---
-# <a name="quickstart-form-recognizer-c-client-library-sdks-v30--preview"></a>Schnellstart: C#-Clientbibliothek-SDKs für Formularerkennung v3.0 | Vorschau
-
-Informieren Sie sich über die ersten Schritte mit der Azure-Formularerkennung mit der Programmiersprache C#. Azure-Formularerkennung ist ein Clouddienst unter [Azure Applied AI Services](../../../applied-ai-services/index.yml), mit dem Sie über die Technologie für maschinelles Lernen Software für die automatisierte Datenverarbeitung entwickeln können. Sie können die Formularerkennung per REST-API oder SDK verwenden. Sie sollten den kostenlosen Dienst nutzen, wenn Sie die Technologie erlernen. Bedenken Sie, dass die Anzahl der kostenlosen Seiten auf 500 pro Monat beschränkt ist.
+# <a name="quickstart-c-client-library-sdk-v30--preview"></a>Schnellstart: C#-Clientbibliothek-SDK v3.0 | Vorschau
 
 >[!NOTE]
-> Formularerkennung v3.0 befindet sich derzeit in der öffentlichen Vorschauphase. Dies bedeutet, dass einige Features unter Umständen nicht unterstützt werden oder nur eingeschränkt verwendbar sind. 
+> Formularerkennung v3.0 befindet sich derzeit in der öffentlichen Vorschauphase. Dies bedeutet, dass einige Features unter Umständen nicht unterstützt werden oder nur eingeschränkt verwendbar sind.
 
 [Referenzdokumentation](/dotnet/api/overview/azure/ai.formrecognizer-readme?view=azure-dotnet&preserve-view=true ) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/formrecognizer/Azure.AI.FormRecognizer/src) | [Paket (NuGet)](https://www.nuget.org/packages/Azure.AI.FormRecognizer) | [Beispiele](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/formrecognizer/Azure.AI.FormRecognizer/samples/README.md)
 
-Die Formularerkennung unter Azure Cognitive Services ist ein Clouddienst, bei dem maschinelles Lernen genutzt wird, um Formularfelder, Text und Tabellen aus Ihren Dokumenten zu extrahieren und zu analysieren. Sie können Formularerkennungsmodelle leicht aufrufen, indem Sie unsere Clientbibliothek-SDKs in Ihre Workflows und Anwendungen integrieren.
+Informieren Sie sich über die ersten Schritte mit der Azure-Formularerkennung mit der Programmiersprache C#. Die Azure-Formularerkennung ist ein cloudbasierter Dienst von Azure Applied AI Services, bei dem maschinelles Lernen genutzt wird, um Formularfelder, Text und Tabellen aus Ihren Dokumenten zu extrahieren und zu analysieren. Sie können Formularerkennungsmodelle leicht aufrufen, indem Sie unsere Clientbibliothek-SDKs in Ihre Workflows und Anwendungen integrieren. Sie sollten den kostenlosen Dienst nutzen, wenn Sie die Technologie erlernen. Bedenken Sie, dass die Anzahl der kostenlosen Seiten auf 500 pro Monat beschränkt ist.
 
-### <a name="form-recognizer-models"></a>Formularerkennungsmodelle
-
-Das C# SDK unterstützt die folgenden Modelle und Funktionen:
-
-* 🆕Allgemeines Dokument: Analysieren und Extrahieren von Text, Tabellen, Struktur, Schlüssel-Wert-Paaren und benannten Entitäten.|
-* Layout: Analysieren und Extrahieren von Tabellen, Zeilen, Wörtern und Auswahlmarkierungen, z. B. Optionsfelder und Kontrollkästchen in Formulardokumenten, ohne ein Modell trainieren zu müssen.
-* Benutzerdefiniert: Analysieren und Extrahieren von Formularfeldern und anderen Inhalten aus Ihren benutzerdefinierten Formularen mit Modellen, die Sie mit Ihren eigenen Formulartypen trainiert haben.
-* Rechnungen: Analysieren und Extrahieren häufig verwendeter Felder aus Rechnungen über ein vortrainiertes Rechnungsmodell.
-* Belege: Analysieren und Extrahieren häufig verwendeter Felder aus Belegen über ein vortrainiertes Belegmodell.
-* Ausweisdokumente: Analysieren und Extrahieren häufig verwendeter Felder aus Ausweisdokumenten, z. B. Pässen oder Führerscheinen, mit einem vortrainierten Modell für Ausweisdokumente.
-* Visitenkarten: Analysieren und Extrahieren häufig verwendeter Felder aus Visitenkarten mit einem vortrainierten Modell für Visitenkarten.
+Weitere Informationen zu Funktionen der Formularerkennung und zu Entwicklungsoptionen finden Sie auf unserer [Übersichtsseite](../overview.md#form-recognizer-features-and-development-options).
 
 In dieser Schnellstartanleitung verwenden Sie die folgenden Funktionen, um Daten und Werte aus Formularen und Dokumenten zu analysieren und zu extrahieren:
 
-* [**Allgemeines Dokument**](#try-it-general-document-model)
+* [🆕 **Allgemeines Dokument:**](#try-it-general-document-model) Analysieren und Extrahieren von Text, Tabellen, Strukturen, Schlüssel-Wert-Paaren und benannten Entitäten
 
-* [**Layout**](#try-it-layout-model)
+* [**Layout:**](#try-it-layout-model) Analysieren und Extrahieren von Tabellen, Zeilen, Wörtern und Auswahlmarkierungen, z. B. Optionsfeldern und Kontrollkästchen in Formulardokumenten, ohne ein Modell trainieren zu müssen
 
-* [**Vordefinierte Rechnung**](#try-it-prebuilt-invoice-model)
+* [**Vordefiniertes Modell (Rechnung):**](#try-it-prebuilt-model) Analysieren und Extrahieren häufig verwendeter Felder aus Rechnungen über ein vortrainiertes Rechnungsmodell
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/cognitive-services/)
 
-* Aktuelle Version der [Visual Studio-IDE](https://visualstudio.microsoft.com/vs/) oder [.NET Core](https://dotnet.microsoft.com/download).
+* Aktuelle Version der [Visual Studio-IDE](https://visualstudio.microsoft.com/vs/) <!-- or [.NET Core](https://dotnet.microsoft.com/download). -->
 
 * Eine Cognitive Services- oder Formularerkennungsressource. Wenn Sie über Ihr Azure-Abonnement verfügen, können Sie im Azure-Portal eine Formularerkennungsressource mit [einem Dienst](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) oder [mehreren Diensten](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne) erstellen, um Ihren Schlüssel und Endpunkt zu erhalten. Sie können den kostenlosen Tarif (`F0`) verwenden, um den Dienst zu testen, und später für die Produktion auf einen kostenpflichtigen Tarif upgraden.
 
-> [!TIP] 
+> [!TIP]
 > Erstellen Sie eine Cognitive Services-Ressource, wenn Sie planen, über einen einzelnen Endpunkt bzw. Schlüssel auf mehrere Cognitive Services-Instanzen zuzugreifen. Erstellen Sie eine Formularerkennungsressource, falls nur auf die Formularerkennung zugegriffen werden soll. Beachten Sie hierbei, dass Sie eine Ressource mit einem einzelnen Dienst benötigen, falls Sie die [Azure Active Directory-Authentifizierung](../../../active-directory/authentication/overview-authentication.md) nutzen möchten.
 
-* Klicken Sie nach der Bereitstellung Ihrer Ressource auf **Zu Ressource wechseln**. Sie benötigen den Schlüssel und Endpunkt der von Ihnen erstellten Ressource, um Ihre Anwendung mit der Formularerkennungs-API zu verbinden. Der Schlüssel und der Endpunkt werden weiter unten in der Schnellstartanleitung in den Code eingefügt:
+* Wählen Sie nach der Bereitstellung der Ressource **Zu Ressource wechseln** aus. Sie benötigen den Schlüssel und Endpunkt der von Ihnen erstellten Ressource, um Ihre Anwendung mit der Formularerkennungs-API zu verbinden. Der Schlüssel und der Endpunkt werden weiter unten im Schnellstart in den Code eingefügt:
 
-  :::image type="content" source="../media/containers/keys-and-endpoint.png" alt-text="Screenshot: Schlüssel und Endpunkt im Azure-Portal":::
+  :::image type="content" source="../media/containers/keys-and-endpoint.png" alt-text="Screenshot: Schlüssel und Endpunktspeicherort im Azure-Portal.":::
 
 ## <a name="set-up"></a>Einrichten
 
-### <a name="option-1-net-command-line-interface-cli"></a>[Option 1: .NET-Befehlszeilenschnittstelle (Command-Line Interface, CLI)](#tab/cli)
+<!--- 
+### [Option 1: .NET Command-line interface (CLI)](#tab/cli)
 
-Verwenden Sie in einem Konsolenfenster (z. B. cmd, PowerShell oder Bash) den Befehl `dotnet new` zum Erstellen einer neuen Konsolen-App mit dem Namen `formrecognizer-quickstart`. Dieser Befehl erstellt ein einfaches „Hallo Welt“-C#-Projekt mit einer einzigen Quelldatei: *Program.cs*.
+In a console window (such as cmd, PowerShell, or Bash), use the `dotnet new` command to create a new console app with the name `formrecognizer-quickstart`. This command creates a simple "Hello World" C# project with a single source file: *Program.cs*.
 
 ```console
 dotnet new console -n formrecognizer-quickstart
 ```
 
-Öffnen Sie eine Befehlszeile, und wechseln Sie zu dem Verzeichnis, das Ihre Projektdatei enthält. Erstellen Sie die Anwendung mit:
+Open a command line and switch to the directory that contains your project file. Build the application with:
 
 ```console
 dotnet build
 ```
 
-Die Buildausgabe sollte keine Warnungen oder Fehler enthalten.
+The build output should contain no warnings or errors.
 
 ```console
 ...
@@ -89,17 +79,18 @@ Build succeeded.
 ...
 ```
 
-### <a name="install-the-client-library-with-nuget"></a>Installieren der Clientbibliothek mit NuGet
+### Install the client library with NuGet
 
-Installieren Sie in dem Verzeichnis, das Ihr Projekt enthält, mit dem folgenden Befehl die Clientbibliothek der Formularerkennung für .NET:
+In the directory that contains your project, install the Form Recognizer client library for .NET with the following command:
 
 ```console
 dotnet add package Azure.AI.FormRecognizer
 ```
 
-Für diese Version der Clientbibliothek wird standardmäßig die Version „2021-09-30-preview“ des Diensts verwendet.
+This version of the client library defaults to the 2021-09-30-preview version of the service.
 
-### <a name="option-2-visual-studio"></a>[Option 2: Visual Studio](#tab/vs)
+### [Option 2: Visual Studio](#tab/vs)
+--->
 
 1. Starten Sie Visual Studio 2019.
 
@@ -129,12 +120,13 @@ Für diese Version der Clientbibliothek wird standardmäßig die Version „2021
 
      :::image type="content" source="../media/quickstarts/azure-nuget-package.png" alt-text="Screenshot: select-form-recognizer-package.png":::
 
- 1. Wählen Sie im Dropdownmenü die gewünschte Version und anschließend die Option **Installieren** aus.
+ 1. Aktivieren Sie das Kontrollkästchen **Vorabversion einbeziehen**.
 
-     Für diese Version der Clientbibliothek wird standardmäßig die Version „2021-09-30-preview“ des Diensts verwendet.
+ 1. Wählen Sie im Dropdownmenü die Version **4.0.0-beta.1** und anschließend die Option **Installieren** aus.
 
----
+     :::image type="content" source="../media/quickstarts/prerelease-nuget-package.png" alt-text="{alt-text}":::
 
+<!-- --- -->
 ## <a name="build-your-application"></a>Erstellen Ihrer Anwendung
 
 Für die Interaktion mit dem Dienst „Formularerkennung“ müssen Sie eine Instanz der `DocumentAnalysisClient`-Klasse erstellen. Erstellen Sie hierfür ein `AzureKeyCredential`-Element mit Ihrem „apiKey“ und eine `DocumentAnalysisClient`-Instanz mit dem `AzureKeyCredential`-Element und Ihrem `endpoint` für die Formularerkennung.
@@ -146,29 +138,44 @@ Für die Interaktion mit dem Dienst „Formularerkennung“ müssen Sie eine Ins
     ```csharp
     using System;
     using System.Threading.Tasks;
+    using Azure;
+    using Azure.AI.FormRecognizer;
     using Azure.AI.FormRecognizer.DocumentAnalysis;
     ```
 
-1. Legen Sie Ihre Umgebungsvariablen `endpoint` und `apiKey` fest, und erstellen Sie Ihre `AzureKeyCredential`- und `DocumentAnalysisClient`-Instanz:
+1. Legen Sie Ihre Umgebungsvariablen `endpoint` und `apiKey` fest, und erstellen Sie Ihre Instanzen von `AzureKeyCredential` und `DocumentAnalysisClient`:
 
     ```csharp
     string endpoint = "<your-endpoint>";
     string apiKey = "<your-apiKey>";
-    var credential = new AzureKeyCredential(apiKey);
-    var client = new DocumentAnalysisClient(new Uri(endpoint), credential);
+    AzureKeyCredential credential = new AzureKeyCredential(apiKey);
+    DocumentAnalysisClient client = new DocumentAnalysisClient(new Uri(endpoint), credential);
     ```
 
-1. Löschen Sie die Zeile `Console.Writeline("Hello World!");`, und fügen Sie den Code für **Try It** (Ausprobieren) der **Main**-Methode in der Datei **Program.cs** hinzu:
+1. Löschen Sie die Zeile `Console.Writeline("Hello World!");`, und fügen Sie die Codebeispiele für **Try It** (Ausprobieren) der **Main**-Methode in der Datei **Program.cs** hinzu:
 
     :::image type="content" source="../media/quickstarts/add-code-here.png" alt-text="Screenshot: Hinzufügen des Beispielcodes zur „Main“-Methode":::
+
+### <a name="select-a-code-sample-to-copy-and-paste-into-your-applications-main-method"></a>Wählen Sie ein Codebeispiel zum Kopieren und Einfügen in die Main-Methode Ihrer Anwendung aus:
+
+* [**Allgemeines Dokument**](#try-it-general-document-model)
+
+* [**Layout**](#try-it-layout-model)
+
+* [**Vordefinierte Rechnung**](#try-it-prebuilt-model)
+
+> [!IMPORTANT]
+>
+> Denken Sie daran, den Schlüssel aus Ihrem Code zu entfernen, wenn Sie fertig sind, und ihn niemals zu veröffentlichen. Verwenden Sie in der Produktionsumgebung sichere Methoden, um Ihre Anmeldeinformationen zu speichern und darauf zuzugreifen. Weitere Informationen finden Sie im Cognitive Services-Artikel zur [Sicherheit](../../../cognitive-services/cognitive-services-security.md).
 
 ## <a name="try-it-general-document-model"></a>**Try it** (Ausprobieren): Allgemeines Dokumentmodell
 
 > [!div class="checklist"]
 >
 > * Für dieses Beispiel benötigen Sie eine **Formulardokumentdatei unter einem URI**. Sie können für diese Schnellstartanleitung unser [Beispielformulardokument](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/sample-layout.pdf) verwenden.
-> * Fügen Sie den Datei-URI-Wert oben in der „Main“-Methode der Variablen `string fileUri` hinzu.
 > * Für die Analyse einer bestimmten Datei unter einem URI verwenden Sie die `StartAnalyzeDocumentFromUri`-Methode. Der zurückgegebene Wert ist ein `AnalyzeResult`-Objekt mit Daten zum übermittelten Dokument.
+> * Sie haben den Datei-URI-Wert oben in der Main-Methode der Variable `string fileUri` hinzugefügt.
+> * Der Einfachheit halber werden hier nicht alle Entitätsfelder angezeigt, die der Dienst zurückgibt. Eine Liste aller unterstützten Felder mit den entsprechenden Typen finden Sie auf der Konzeptseite [Allgemeines Dokument](../concept-general-document.md#named-entity-recognition-ner-categories).
 
 ### <a name="add-the-following-code-to-your-general-document-application-main-method"></a>Fügen Sie der **Main**-Methode Ihrer allgemeinen Dokumentanwendung den folgenden Code hinzu:
 
@@ -280,7 +287,7 @@ Dient zum Extrahieren von Text, Auswahlmarkierungen, Textformaten und Tabellenst
 > [!div class="checklist"]
 >
 > * Für dieses Beispiel benötigen Sie eine **Formulardokumentdatei unter einem URI**. Sie können für diese Schnellstartanleitung unser [Beispielformulardokument](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/sample-layout.pdf) verwenden.
-> * Fügen Sie den Datei-URI-Wert oben in der „Main“-Methode der Variablen `string fileUri` hinzu.
+> * Sie haben den Datei-URI-Wert oben in der Main-Methode der Variable `string fileUri` hinzugefügt.
 > * Verwenden Sie zum Extrahieren des Layouts aus einer bestimmten Datei unter einem URI die `StartAnalyzeDocumentFromUri`-Methode, und übergeben Sie `prebuilt-layout` als Modell-ID. Der zurückgegebene Wert ist ein `AnalyzeResult`-Objekt mit Daten aus dem übermittelten Dokument.
 
 ### <a name="add-the-following-code-to-your-layout-application-main-method"></a>Fügen Sie der **Main**-Methode Ihrer Layoutanwendung den folgenden Code hinzu:
@@ -358,24 +365,25 @@ for (int i = 0; i < result.Tables.Count; i++)
 
 ```
 
-## <a name="try-it-prebuilt-invoice-model"></a>**Try it** (Ausprobieren): Vordefiniertes Rechnungsmodell
+## <a name="try-it-prebuilt-model"></a>**Probieren Sie es aus:** Vordefiniertes Modell
 
-In diesem Beispiel wird veranschaulicht, wie Sie Daten aus bestimmten Arten von häufig verwendeten Dokumenten mit vortrainierten Modellen analysieren, indem eine Rechnung als Beispiel verwendet wird.
+In diesem Beispiel wird veranschaulicht, wie Sie Daten aus bestimmten Arten von häufig verwendeten Dokumenttypen mit vortrainierten Modellen analysieren, wobei eine Rechnung als Beispiel verwendet wird.
 
 > [!div class="checklist"]
 >
-> * Für dieses Beispiel benötigen Sie eine **Rechnungsdokumentdatei unter einem URI**. Für diese Schnellstartanleitung können Sie unser [Beispiel für ein Rechnungsdokument](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/sample-invoice.pdf) verwenden.
-> * Fügen Sie den Datei-URI-Wert oben in der „Main“-Methode der Variablen `string fileUri` hinzu.
+> * In diesem Beispiel analysieren Sie ein Rechnungsdokument mithilfe eines vordefinierten Modells. Für diese Schnellstartanleitung können Sie unser [Beispiel für ein Rechnungsdokument](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-REST-api-samples/master/curl/form-recognizer/sample-invoice.pdf) verwenden.
+> * Sie haben den Datei-URI-Wert oben in der Main-Methode der Variable `string fileUri` hinzugefügt.
 > * Verwenden Sie zum Analysieren einer bestimmten Datei unter einem URI die `StartAnalyzeDocumentFromUri`-Methode, und übergeben Sie `prebuilt-invoice` als Modell-ID. Der zurückgegebene Wert ist ein `AnalyzeResult`-Objekt mit Daten aus dem übermittelten Dokument.
+> * Der Einfachheit halber werden hier nicht alle Schlüssel-Wert-Paare angezeigt, die der Dienst zurückgibt. Eine Liste aller unterstützten Felder mit den entsprechenden Typen finden Sie auf der Konzeptseite [Rechnung](../concept-invoice.md#field-extraction).
 
 ### <a name="choose-the-invoice-prebuilt-model-id"></a>Auswählen der ID für das vordefinierte Rechnungsmodell
 
 Sie sind hierbei nicht auf Rechnungen beschränkt, sondern können zwischen mehreren vordefinierten Modellen wählen, von denen jedes über eine Gruppe unterstützter Felder verfügt. Welches Modell für den Analysevorgang verwendet wird, hängt vom Typ des zu analysierenden Dokuments ab. Hier sind die Modell-IDs für die vordefinierten Modelle angegeben, die vom Dienst „Formularerkennung“ derzeit unterstützt werden:
 
-* **prebuilt-invoice**: Dient zum Extrahieren von Text, Auswahlmarkierungen, Tabellen, Schlüssel-Wert-Paaren und wichtigen Informationen aus Rechnungen.
-* **prebuilt-businessCard**: Dient zum Extrahieren von Text und wichtigen Informationen aus Visitenkarten.
-* **prebuilt-idDocument**: Dient zum Extrahieren von Text und wichtigen Informationen aus Führerscheinen und Reisepässen.
-* **prebuilt-receipt**: Dient zum Extrahieren von Text und wichtigen Informationen aus Belegen.
+* [**prebuilt-invoice:**](../concept-invoice.md) Extrahieren von Text, Auswahlmarkierungen, Tabellen, Schlüssel-Wert-Paaren und wichtigen Informationen aus Rechnungen
+* [**prebuilt-receipt:**](../concept-receipt.md) Extrahieren von Text und wichtigen Informationen aus Belegen
+* [**prebuilt-idDocument:**](../concept-id-document.md) Extrahieren von Text und wichtigen Informationen aus Führerscheinen und Reisepässen
+* [**prebuilt-businessCard:**](../concept-business-card.md) Extrahieren von Text und wichtigen Informationen aus Visitenkarten
 
 ### <a name="add-the-following-code-to-your-prebuilt-invoice-application-main-method"></a>Fügen Sie der **Main**-Methode Ihrer vordefinierten Rechnungsanwendung den folgenden Code hinzu:
 
@@ -483,21 +491,21 @@ for (int i = 0; i < result.Documents.Count; i++)
 
 ## <a name="run-your-application"></a>Ausführen der Anwendung
 
-### <a name="net-command-line-interface-cli"></a>[.NET-Befehlszeilenschnittstelle (Command-Line Interface, CLI)](#tab/cli)
+<!-- ### [.NET Command-line interface (CLI)](#tab/cli)
 
-Öffnen Sie die Eingabeaufforderung, navigieren Sie zu dem Verzeichnis, in dem Ihr Projekt enthalten ist, und geben Sie Folgendes ein:
+Open your command prompt and go to the directory that contains your project and type the following:
 
 ```console
 dotnet run formrecognizer-quickstart.dll
 ```
 
-### <a name="visual-studio"></a>[Visual Studio](#tab/vs)
+### [Visual Studio](#tab/vs) -->
 
 Wählen Sie die grüne Schaltfläche **Starten** neben „formRecognizer_quickstart“ aus, um Ihr Programm zu kompilieren und auszuführen, oder drücken Sie **F5**.
 
   :::image type="content" source="../media/quickstarts/run-visual-studio.png" alt-text="Screenshot: Ausführen Ihres Visual Studio-Programms":::
 
----
+<!-- --- -->
 
 Herzlichen Glückwunsch! In dieser Schnellstartanleitung haben Sie das C# SDK für die Formularerkennung verwendet, um verschiedene Formulare und Dokumente auf unterschiedliche Arten zu analysieren. Lesen Sie als Nächstes die Referenzdokumentation, um die Formularerkennungs-API eingehender kennenzulernen.
 
@@ -505,3 +513,6 @@ Herzlichen Glückwunsch! In dieser Schnellstartanleitung haben Sie das C# SDK f
 
 > [!div class="nextstepaction"]
 > [Referenzdokumentation zur REST-API v3.0](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/AnalyzeDocument)
+
+> [!div class="nextstepaction"]
+> [C#/.NET-Referenzbibliothek für die Formularerkennung](/dotnet/api/overview/azure/ai.formrecognizer-readme?view=azure-dotnet&preserve-view=true)

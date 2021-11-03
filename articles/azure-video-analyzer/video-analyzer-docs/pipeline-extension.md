@@ -3,13 +3,14 @@ title: Pipelineerweiterung – Azure Video Analyzer
 description: Azure Video Analyzer ermöglicht es Ihnen, seine Pipeline-Verarbeitungsfunktionen über einen Pipeline-Erweiterungsknoten zu erweitern. In diesem Artikel wird der Pipelineerweiterungsknoten beschrieben.
 ms.service: azure-video-analyzer
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: 55cb6a265e74eb4209742f8fb0a8b6f34cb08254
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.date: 10/21/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 70c5ab2f2bc3a82889501496d23eb8a681c7ec68
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114604694"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131020583"
 ---
 # <a name="pipeline-extension"></a>Pipelineerweiterung
 
@@ -19,9 +20,11 @@ Video Analyzer unterstützt die folgenden Pipelineerweiterungsprozessoren:
 
 * [Verarbeitungsknoten für die HTTP-Erweiterung](pipeline.md#http-extension-processor) 
 * [gRPC-Erweiterungsprozessor](pipeline.md#grpc-extension-processor)
-* [Cognitive Services-Erweiterungsprozessor](pipeline.md#cognitive-services-extension-processor) 
-    
+* [Cognitive Services-Erweiterungsprozessor](pipeline.md#cognitive-services-extension-processor)
+
 Der Pipelineerweiterungsknoten erwartet, dass das Analyse-Erweiterungs-Plug-In die Ergebnisse im JSON-Format zurückgibt. Idealerweise sollten die Ergebnisse dem [Schemaobjektmodell für Rückschlussmetadaten](inference-metadata-schema.md) entsprechen.
+
+[!INCLUDE [available-features](./includes/available-features.md)]
 
 ## <a name="http-extension-processor"></a>Verarbeitungsknoten für die HTTP-Erweiterung
 
@@ -49,12 +52,12 @@ Der gRPC-Erweiterungsprozessor kann zum Senden von Eigenschaften sowie zum Austa
 
 ## <a name="cognitive-services-extension-processor"></a>Cognitive Services-Erweiterungsprozessor
 
-Der Cognitive Services-Erweiterungsprozessor ist ein benutzerdefinierter Erweiterungsprozessor, der es Video Analyzer ermöglicht, mit Funktionen der [räumlichen Analyse für maschinelles Sehen]../../cognitive-services/computer-vision/) unter Verwendung eines gRPC-basiertem hoch performanten [strukturierten Protokolls](grpc-extension-protocol.md) zusammenzuarbeiten. 
+Der Cognitive Services-Erweiterungsprozessor (von Microsoft entwickelte und unterstützte KI) ist ein benutzerdefinierter Erweiterungsprozessor, der es Video Analyzer ermöglicht, mit den [Computer Vision Spatial Analysis](../../cognitive-services/computer-vision/overview.md)-Funktionen unter Verwendung von gRPC-basiertem, hochleistungsfähigem [strukturiertem Protokoll](grpc-extension-protocol.md) gut zusammenzuarbeiten. 
 
 Verwenden Sie einen Cognitive Services-Erweiterungsprozessorknoten in folgenden Situationen:
 
 * Sie möchten eine bessere Interoperabilität mit vorhandenen [Vorgängen der räumlichen Analyse](../../cognitive-services/computer-vision/intro-to-spatial-analysis-public-preview.md) erreichen.
-* Sie möchten alle Vorteile des gRPC-Protokolls, der Genauigkeit und der Leistung der von Microsoft entwickelten und unterstützten KI nutzen.
+* Sie möchten alle Vorteile des gRPC-Protokolls, der Genauigkeit und Leistung von **von Microsoft entwickelter und unterstützter KI** nutzen.
 * Sie analysieren mehrere Kamerafeeds mit geringer Latenz und hohem Durchsatz.
 
 ## <a name="use-your-inferencing-model"></a>Verwenden Ihres Rückschlussmodells
@@ -70,8 +73,6 @@ Das folgende Diagramm zeigt den Datenfluss im Überblick:
 
 Sie können mithilfe eines unserer Schnellstarts einsteigen, der Video Analyzer mit dem vordefinierten Erweiterungsdienst mit [HTTP-Erweiterungsprozessor](pipeline.md#http-extension-processor) oder bei hohen Bildfrequenzen mit dem [gRPC-Erweiterungsprozessor](pipeline.md#grpc-extension-processor) veranschaulicht.
 
-
 ## <a name="next-steps"></a>Nächste Schritte 
 
-Konzept: [Ereignisbasierte Videoaufzeichnung](event-based-video-recording-concept.md)
-
+Konzept: [Videoaufzeichnung](video-recording.md)

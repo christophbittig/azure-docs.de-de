@@ -5,16 +5,19 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: 53c0afa1cdb8c9920875b7ba694339107714bd54
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 9f7d1c7238e742ab8d04cf349bd8560db861b801
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96462203"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131080705"
 ---
 # <a name="add-questions-and-answer-with-qna-maker-portal"></a>Hinzufügen von Fragen und Antworten im QnA Maker-Portal
 
 Fügen Sie nach der Erstellung einer Wissensdatenbank Frage-Antwort-Paare (Question and Answer, QnA) mit Metadaten zum Filtern der Antwort hinzu. Die Fragen in der folgenden Tabelle hängen alle mit Azure-Diensteinschränkungen zusammen, wobei sich aber jede auf einen anderen Azure-Suchdienst bezieht.
+
+[!INCLUDE [Custom question answering](../includes/new-version.md)]
 
 <a name="qna-table"></a>
 

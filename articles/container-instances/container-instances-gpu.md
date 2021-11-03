@@ -3,12 +3,12 @@ title: Bereitstellen GPU-fähiger Containerinstanzen
 description: Erfahren Sie, wie Sie Azure-Containerinstanzen zur Ausführung rechenintensiver Container-Apps unter Verwendung von GPU-Ressourcen bereitstellen.
 ms.topic: article
 ms.date: 07/22/2020
-ms.openlocfilehash: fd9441f0ba92f4753271df4daba88ed690c9ee30
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 8950858ff822a28272c17d18de8869d3e03d673d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123108377"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131057873"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>Bereitstellen von Containerinstanzen, die GPU-Ressourcen verwenden
 
@@ -77,7 +77,7 @@ Eine Möglichkeit zum Hinzufügen von GPU-Ressourcen besteht darin, eine Contain
  > [!NOTE]
   > Das folgende Beispiel verwendet ein öffentliches Containerimage. Um die Zuverlässigkeit zu verbessern, importieren und verwalten Sie das Image in einer privaten Azure-Containerregistrierung, und aktualisieren Sie Ihre YAML-Datei so, dass sie Ihr privat verwaltetes Basisimage verwendet. [Weitere Informationen zum Arbeiten mit öffentlichen Images](../container-registry/buffer-gate-public-content.md).
 
-```YAML
+```yaml
 additional_properties: {}
 apiVersion: '2019-12-01'
 name: gpucontainergroup

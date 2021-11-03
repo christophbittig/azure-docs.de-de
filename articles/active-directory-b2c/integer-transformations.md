@@ -3,20 +3,20 @@ title: Beispiele für die Transformation von Integeransprüchen für benutzerdef
 titleSuffix: Azure AD B2C
 description: Hier finden Sie Beispiele für die Transformation von Integeransprüchen für das Schema des Frameworks für die Identitätsfunktion (Identity Experience Framework, IEF) von Azure Active Directory B2C.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 08/10/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 7583698bd78ecb3a56d00b1af845f6d5f94c78c7
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: dc637e6369a1dbaaa9a25ad5d7b91b7b5d95ffd6
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122338991"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "131036394"
 ---
 # <a name="integer-claims-transformations"></a>Transformationen von Integer-Ansprüchen
 

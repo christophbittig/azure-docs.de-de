@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 10/22/2020
 ms.author: bwren
-ms.openlocfilehash: 73fce933d81daca78d538b9a169a53d2a99c9869
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 0814a25c96ae1d3d2d624746db0c753c782d8dad
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130226996"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131078216"
 ---
 # <a name="azure-monitor-logs-overview"></a>Übersicht über Azure Monitor-Protokolle
 Azure Monitor-Protokolle sind ein Feature von Azure Monitor, mit dem Protokoll- und Leistungsdaten von [überwachten Ressourcen](../monitor-reference.md) gesammelt und organisiert werden. Daten aus mehreren Quellen können in einen einzelnen Arbeitsbereich konsolidiert werden. Diese Quellen können folgende sein:
@@ -37,7 +37,7 @@ Die folgende Tabelle beschreibt einige der Möglichkeiten zur Nutzung von Azure 
 | **Analysieren** | Verwenden von [Log Analytics](./log-analytics-tutorial.md) im Azure-Portal zum Schreiben von [Protokollabfragen](./log-query-overview.md) und interaktives Analysieren von Protokolldaten mithilfe einer leistungsstarken Analyse-Engine. |
 | **Warnung** | Konfigurieren einer [Protokollwarnungsregel](../alerts/alerts-log.md), die eine Benachrichtigung sendet oder eine [automatisierte Aktion](../alerts/action-groups.md) ausführt, wenn die Ergebnisse der Abfrage mit einem bestimmten Ergebnis übereinstimmen. |
 | **Visualisieren** | Anheften der als Tabellen oder Diagramme gerenderten Abfrageergebnisse an ein [Azure-Dashboard](../../azure-portal/azure-portal-dashboards.md).<br>Erstellen einer [Arbeitsmappe](../visualize/workbooks-overview.md), um mehrere Sätze von Daten in einem interaktiven Bericht zu kombinieren. <br>Exportieren der Ergebnisse einer Abfrage nach [Power BI](./log-powerbi.md), um verschiedene Visualisierungen zu verwenden und sie mit Benutzern außerhalb von Azure zu teilen.<br>Exportieren der Ergebnisse einer Abfrage nach [Grafana](../visualize/grafana-plugin.md), um dessen Dashboards zu nutzen und die Daten mit anderen Quellen zu kombinieren.|
-| **Gewinnen von Erkenntnissen** | Unterstützen von [Erkenntnissen](../monitor-reference.md#insights-and-core-solutions), die eine angepasste Überwachungsoberfläche für bestimmte Anwendungen und Dienste bereitstellen.  |
+| **Gewinnen von Erkenntnissen** | Unterstützen von [Erkenntnissen](../monitor-reference.md#insights-and-curated-visualizations), die eine angepasste Überwachungsoberfläche für bestimmte Anwendungen und Dienste bereitstellen.  |
 | **Abrufen** | Zugreifen auf Ergebnisse von Protokollabfragen über eine Befehlszeile mit der [Azure CLI](/cli/azure/monitor/log-analytics).<br>Zugreifen auf Ergebnisse von Protokollabfragen über eine Befehlszeile mit [PowerShell-Cmdlets](/powershell/module/az.operationalinsights).<br>Zugreifen auf Ergebnisse von Protokollabfragen über eine benutzerdefinierte Anwendung mit der [REST-API](https://dev.loganalytics.io/). |
 | **Export** | Konfigurieren des [automatisierten Exports von Protokolldaten](./logs-data-export.md) in ein Azure-Speicherkonto oder in Azure Event Hubs.<br>Erstellen eines Workflows zum Abrufen von Protokolldaten und Kopieren der Daten an einen externen Speicherort mithilfe von [Azure Logic Apps](./logicapp-flow-connector.md). |
 

@@ -3,12 +3,13 @@ title: Azure Service Bus-Tarife Premium und Standard
 description: Dieser Artikel beschreibt die Tarife Standard und Premium von Azure Service Bus. Er vergleicht diese Tarife und erläutert technische Unterschiede.
 ms.topic: conceptual
 ms.date: 10/06/2021
-ms.openlocfilehash: e3899dec34a8c39de0bede60e7cc520989a3239f
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 67439ad4c3d51dc354007b11008179d210aeaca6
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129620225"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131046810"
 ---
 # <a name="service-bus-premium-and-standard-messaging-tiers"></a>Service Bus Premium- und Standard-Preisstufe für Messaging
 
@@ -24,7 +25,7 @@ In der folgenden Tabelle sind einige allgemeine Unterschiede hervorgehoben:
 | Vorhersagbare Leistung |Variable Latenzzeit |
 | Feste Preise |Variable Preisgestaltung (nutzungsbasierte Bezahlung) |
 | Möglichkeit zur Herauf- und Herunterskalierung der Workload |– |
-| Nachrichtengröße bis 1 MB. [Die Unterstützung für Nachrichtennutzlasten von bis zu 100 MB](#large-messages-support-preview) ist derzeit in der Vorschau verfügbar. |Nachrichtengröße bis 256 KB |
+| Nachrichtengröße bis 1 MB. |Nachrichtengröße bis 256 KB |
 
 **Service Bus Premium-Messaging** bietet Ressourcenisolierung auf CPU- und Arbeitsspeicherebene, sodass die Workloads der einzelnen Kunden isoliert ausgeführt werden. Dieser Ressourcencontainer wird als *Messaging-Einheit* bezeichnet. Jedem Premium-Namespace wird mindestens eine Messaging-Einheit zugeordnet. Sie können 1, 2, 4, 8 oder 16 Messagingeinheiten für jeden Service Bus Premium-Namespace erwerben. Eine einzelne Workload oder Entität kann mehrere Messagingeinheiten umfassen, und die Anzahl der Einheiten kann beliebig geändert werden. Das Ergebnis ist eine vorhersehbare und wiederholbare Leistung Ihrer Service Bus-basierten Lösung.
 
@@ -93,7 +94,7 @@ Die ersten Schritte mit Premium-Messaging sind einfach, und der Prozess ähnelt 
 
 Sie können auch [Premium-Namespaces mit Azure Resource Manager-Vorlagen erstellen](https://azure.microsoft.com/resources/templates/servicebus-pn-ar/).
 
-## <a name="large-messages-support-preview"></a>Unterstützung für große Nachrichten (Vorschau)
+## <a name="large-messages-support"></a>Unterstützung für umfangreiche Nachrichten
 Namespaces im Premium-Tarif in Azure Service Bus unterstützen die Möglichkeit, große Nachrichtennutzlasten von bis zu 100 MB zu senden. Dieses Feature ist hauptsächlich auf Legacyworkloads ausgelegt, die größere Nachrichtennutzlasten für andere Messagingbroker für Unternehmen verwendet haben und eine nahtlose Migration zu Azure Service Bus erfordern.
 
 Dies sind einige Überlegungen zum Senden großer Nachrichten in Azure Service Bus:
@@ -123,5 +124,3 @@ Weitere Informationen zum Service Bus-Messaging finden Sie unter folgenden Links
 - [Automatisches Aktualisieren von Messagingeinheiten](automate-update-messaging-units.md)
 - [Introducing Azure Service Bus Premium Messaging (Blogbeitrag)](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/) (Einführung in Azure Service Bus Premium-Messaging)
 - [Introducing Azure Service Bus Premium Messaging (Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging) (Einführung in Azure Service Bus Premium-Messaging)
-
-

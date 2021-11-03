@@ -2,21 +2,20 @@
 title: 'Abfragen der Wissensdatenbank: QnA Maker'
 description: Eine Wissensdatenbank muss veröffentlicht werden. Nach der Veröffentlichung wird die Wissensdatenbank mithilfe der generateAnswer-API am Vorhersageendpunkt der Runtime abgefragt.
 ms.topic: conceptual
-ms.date: 11/09/2020
-ms.openlocfilehash: 4d36e1feb0279eec638a3602c5188e8af1cb7c17
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 11/02/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: bc1ef09e05b118c2f0a8b5b69cec38f2c38f7fb8
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110369301"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131086790"
 ---
 # <a name="query-the-knowledge-base-for-answers"></a>Abfragen der Wissensdatenbank nach Antworten
 
 Eine Wissensdatenbank muss veröffentlicht werden. Nach der Veröffentlichung wird die Wissensdatenbank mithilfe der generateAnswer-API am Vorhersageendpunkt der Runtime abgefragt. Die Abfrage enthält den Fragetext und andere Einstellungen, mit denen QnA Maker die bestmögliche Entsprechung für eine Antwort auswählen kann.
 
 ## <a name="how-qna-maker-processes-a-user-query-to-select-the-best-answer"></a>Verarbeitung einer Benutzerabfrage mit QnA Maker, um die beste Antwort auszuwählen
-
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
 
 Die trainierte und [veröffentlichte](../quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) QnA Maker-Wissensdatenbank empfängt eine Benutzerabfrage von einem Bot oder einer anderen Clientanwendung über die [GenerateAnswer-API](../how-to/metadata-generateanswer-usage.md). Im folgenden Diagramm ist der Prozess nach dem Empfang der Benutzerabfrage dargestellt.
 
@@ -39,31 +38,8 @@ Der Prozess wird in der folgenden Tabelle erläutert:
 
 Zu den verwendeten Funktionen gehören u. a. Semantik auf Wortebene, Wichtigkeit auf Begriffsebene in einem Korpus und Deep Learning-Semantikmodelle, um die Ähnlichkeit und Relevanz zwischen zwei Textzeichenfolgen zu ermitteln.
 
-# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
-
-Die trainierte und [veröffentlichte](../quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) QnA Maker-Wissensdatenbank empfängt eine Benutzerabfrage von einem Bot oder einer anderen Clientanwendung über die [GenerateAnswer-API](../how-to/metadata-generateanswer-usage.md). Im folgenden Diagramm ist der Prozess nach dem Empfang der Benutzerabfrage dargestellt.
-
-![Einstufungsmodellprozess für eine Benutzerabfrage (Vorschau)](../media/qnamaker-concepts-knowledgebase/ranker-v2.png)
-
-### <a name="ranker-process"></a>Einstufungsprozess
-
-Der Prozess wird in der folgenden Tabelle erläutert:
-
-|Schritt|Zweck|
-|--|--|
-|1|Die Clientanwendung sendet die Benutzerabfrage an die [GenerateAnswer-API](../how-to/metadata-generateanswer-usage.md).|
-|2|QnA Maker führt die Vorverarbeitung der Benutzerabfrage mit Spracherkennung, Rechtschreibprüfung und Worttrennung durch.|
-|3|Diese Vorverarbeitung hat das Ziel, die Benutzerabfrage so anzupassen, dass die besten Suchergebnisse erzielt werden.|
-|4|Die geänderte Abfrage wird an den Azure Cognitive Search-Index gesendet, der die mit `top` festgelegte Anzahl von Ergebnissen empfängt. Falls diese Ergebnisse die richtige Antwort nicht enthalten, sollten Sie den Wert von `top` leicht erhöhen. Im Allgemeinen eignet sich der Wert „10“ für `top` bei 90 % aller Abfragen. Azure Search filtert [Stoppwörter](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/STOPWORDS.md) in diesem Schritt.|
-|5|QnA Maker verwendet ein modernes transformatorbasiertes Modell, um die Ähnlichkeit zwischen der Benutzerabfrage und den aus Azure Cognitive Search abgerufenen QnA-Kandidatenergebnissen zu ermitteln. Das transformatorbasierte Modell ist ein mehrsprachiges Deep Learning-Modell, das für alle Sprachen horizontal arbeitet, um die Konfidenzscores sowie die neue Rangfolge zu bestimmen.|
-|6|Die neuen Ergebnisse werden in der Rangfolge an die Clientanwendung zurückgegeben.|
-|||
-
-Der Bewerter bearbeitet alle alternativen Fragen und Antworten, um die am besten übereinstimmenden QnA-Paare für die Benutzerabfrage zu finden. Benutzer haben die Flexibilität, den Bewerter als reinen Fragenbewerter zu konfigurieren. 
-
----
-
 ## <a name="http-request-and-response-with-endpoint"></a>HTTP-Anforderung und -Antwort mit Endpunkt
+
 Beim Veröffentlichen Ihrer Wissensdatenbank erstellt der Dienst einen REST-basierten HTTP-Endpunkt, den Sie in Ihre Anwendung integrieren können, etwa in Form eines Chatbots.
 
 ### <a name="the-user-query-request-to-generate-an-answer"></a>Benutzerabfrageanforderung zum Generieren einer Antwort
@@ -84,6 +60,7 @@ Eine Benutzerabfrage ist die Frage, die der Benutzer an die Wissensdatenbank ric
     "userId": "sd53lsY="
 }
 ```
+
 Sie steuern die Antwort, indem Sie Eigenschaften wie [scoreThreshold](./confidence-score.md#choose-a-score-threshold), [top](../how-to/improve-knowledge-base.md#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers) und [strictFilters](../how-to/query-knowledge-base-with-metadata.md) festlegen.
 
 Verwenden Sie [Unterhaltungskontext](../how-to/query-knowledge-base-with-metadata.md) mit [Mehrfachdurchlauffunktion](../how-to/multiturn-conversation.md), um die Konversation aufrechtzuerhalten und die Fragen und Antworten so zu verfeinern, dass die richtige und abschließende Antwort gefunden wird.
@@ -119,7 +96,6 @@ Die HTTP-Antwort ist die Antwort, die aus der Wissensdatenbank basierend auf der
     ]
 }
 ```
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

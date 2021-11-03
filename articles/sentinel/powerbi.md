@@ -6,14 +6,17 @@ ms.author: bagol
 ms.service: azure-sentinel
 ms.topic: conceptual
 ms.date: 06/08/2021
-ms.openlocfilehash: 0e877439b18d4c7ff6c4b21baa18b3b0fd1586b3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 558d6d979321148923f8a10bc2f92bb13eedd746
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122345849"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131023042"
 ---
 # <a name="tutorial-create-a-power-bi-report-from-azure-sentinel-data"></a>Tutorial: Erstellen eines Power BI-Berichts aus Azure Sentinel-Daten
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 [Power BI](https://powerbi.microsoft.com/) ist eine Plattform für die Berichterstellung und Analyse, mit der aus Daten kohärente, immersive, interaktive Visualisierungen erstellt werden können. Mit Power BI können Sie problemlos Verbindungen mit Datenquellen herstellen, Beziehungen visualisieren und ermitteln und Erkenntnisse mit beliebigen anderen Personen teilen.
 
@@ -206,5 +209,5 @@ Aktualisieren Sie Ihren Power BI-Bericht basierend auf einem Zeitplan, damit im
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Importieren von Azure Monitor-Protokolldaten in Power BI](../azure-monitor/visualize/powerbi.md)
+- [Importieren von Azure Monitor-Protokolldaten in Power BI](../azure-monitor/logs/log-powerbi.md)
 - [Power Query M – Formelsprache](/powerquery-m/)

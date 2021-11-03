@@ -9,12 +9,12 @@ author: nabhishek
 ms.author: abnarain
 ms.custom: synapse
 ms.date: 09/09/2021
-ms.openlocfilehash: d2dacc3379d1587352c7593c3766294613229fad
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 30e40c20aa8e11add35b270baf867a5fd5e46058
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124798349"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131016566"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory-or-synapse-analytics"></a>Transformieren von Daten mit der SQL Server Stored Procedure-Aktivität in Azure Data Factory oder Synapse Analytics
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -66,7 +66,7 @@ So sieht das JSON-Format zum Definieren der Aktivität „Gespeicherte Prozedur�
 
 In der folgenden Tabelle werden diese JSON-Eigenschaften beschrieben:
 
-| Eigenschaft                  | Beschreibung                              | Erforderlich |
+| Eigenschaft                  | BESCHREIBUNG                              | Erforderlich |
 | ------------------------- | ---------------------------------------- | -------- |
 | name                      | Der Name der Aktivität                     | Ja      |
 | description               | Ein Text, der beschreibt, wofür die Aktivität verwendet wird. | Nein       |
@@ -93,5 +93,4 @@ In den folgenden Artikeln erfahren Sie, wie Daten auf andere Weisen transformier
 * [Hadoop-Streamingaktivität](transform-data-using-hadoop-streaming.md)
 * [Spark-Aktivität](transform-data-using-spark.md)
 * [Benutzerdefinierte .NET-Aktivität](transform-data-using-dotnet-custom-activity.md)
-* [Batchausführungsaktivität für ML Studio (Classic)](transform-data-using-machine-learning.md)
 * [Aktivität „Gespeicherte Prozedur“](transform-data-using-stored-procedure.md)

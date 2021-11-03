@@ -16,12 +16,12 @@ ms.date: 10/21/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 519ed24e313f718efd92ba63f3d03f6dc9e4a13d
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 0253debd0b667838dc0cb4cd7aec41a29cf9ce81
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113110581"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131059016"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>Benutzeranmeldung mit der Azure Active Directory-Passthrough-Authentifizierung
 
@@ -79,4 +79,4 @@ Sie können die Passthrough-Authentifizierung mit dem Feature zum [nahtlosen ein
 - [Problembehandlung](tshoot-connect-pass-through-authentication.md) – Beheben von häufig auftretenden Problemen mit diesem Feature
 - [Ausführliche Informationen zur Sicherheit](how-to-connect-pta-security-deep-dive.md): zusätzliche ausführliche technische Informationen zum Feature.
 - [Nahtlose SSO mit Azure AD](how-to-connect-sso.md): Informationen zu dieser Ergänzungsfunktion
-- [UserVoice:](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect)  Verfassen neuer Feature-Anforderungen
+- [UserVoice:](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789)  Verfassen neuer Feature-Anforderungen

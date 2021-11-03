@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.custom: devx-track-csharp
 ms.reviewer: lmolkova
-ms.openlocfilehash: ee78fb4f778ac1ab629a68173249bdcada7b00fa
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: ce5ef0c1e018ca740b50ee971881307b00835f8b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110082592"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131045518"
 ---
 # <a name="application-insights-for-net-console-applications"></a>Application Insights für .NET-Konsolenanwendungen
 
@@ -42,10 +42,9 @@ telemetryClient.TrackTrace("Hello World!");
 > [!NOTE]
 > Telemetriedaten werden nicht sofort gesendet. Telemetrieelemente werden durch das Application Insights SDK zusammengefasst und gesendet. In Konsolen-Apps, die direkt nach dem Aufrufen von `Track()`-Methoden beendet werden, werden Telemetriedaten unter Umständen nur gesendet, wenn `Flush()` und `Sleep`/`Delay` vor der App-Beendigung ausgeführt werden, wie in dem [vollständigen Beispiel](#full-example) weiter unten in diesem Artikel gezeigt. `Sleep` ist nicht erforderlich, wenn Sie `InMemoryChannel` verwenden. Es gibt ein aktives Problem bezüglich der Notwendigkeit von `Sleep`, das hier nachverfolgt wird: [ApplicationInsights-dotnet/issues/407](https://github.com/microsoft/ApplicationInsights-dotnet/issues/407)
 
-
 * Installieren Sie die neueste Version des Pakets [Microsoft.ApplicationInsights.DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector). Es verfolgt automatisch HTTP-, SQL- und einige andere externe Abhängigkeitsaufrufe.
 
-Sie können Application Insights im Code initialisieren und konfigurieren oder dazu die Datei `ApplicationInsights.config` verwenden. Stellen Sie sicher, dass die Initialisierung so früh wie möglich erfolgt. 
+Sie können Application Insights im Code initialisieren und konfigurieren oder dazu die Datei `ApplicationInsights.config` verwenden. Stellen Sie sicher, dass die Initialisierung so früh wie möglich erfolgt.
 
 > [!NOTE]
 > Anweisungen für **ApplicationInsights.config** gelten nur für Apps, die auf .NET Framework abzielen. Sie gelten nicht für .NET Core-Anwendungen.
@@ -70,7 +69,7 @@ Weitere Informationen finden Sie in der [Referenz zu Konfigurationsdateien](conf
 
 Ein vollständiges Beispiel der Konfigurationsdatei erhalten Sie, wenn Sie die neueste Version des Pakets [Microsoft.ApplicationInsights.WindowsServer](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer) installieren. Dies ist die **minimale** Konfiguration für die Abhängigkeitssammlung, die dem Codebeispiel entspricht.
 
-```XML
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings">
   <InstrumentationKey>Your Key</InstrumentationKey>
@@ -136,7 +135,6 @@ configuration.TelemetryInitializers.Add(new OperationCorrelationTelemetryInitial
 ```
 
 * Sie können auch das Leistungsindikator-Sammlermodul installieren und initialisieren. Eine Beschreibung finden Sie [hier](https://apmtips.com/posts/2017-02-13-enable-application-insights-live-metrics-from-code/).
-
 
 #### <a name="full-example"></a>Vollständiges Beispiel
 
@@ -213,4 +211,3 @@ namespace ConsoleApp
 ## <a name="next-steps"></a>Nächste Schritte
 * [Überwachen Sie Abhängigkeiten](./asp-net-dependencies.md), um zu überprüfen, ob REST-, SQL- oder andere externe Ressourcen die Leistung beeinträchtigen.
 * [Verwenden Sie die API](./api-custom-events-metrics.md) , um Ihre eigenen Ereignisse und Metriken für eine detailliertere Ansicht der Leistung und Nutzung Ihrer App zu senden.
-

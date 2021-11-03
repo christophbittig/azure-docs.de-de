@@ -6,24 +6,24 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: iomt
 ms.topic: how-to
-ms.date: 09/30/2021
+ms.date: 10/25/2021
 ms.author: jasteppe
-ms.openlocfilehash: 23908c8ab910324cda4cd2802158447a1c97db4e
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 08edb99de13e0102597c7a078adbcb4225e28d15
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129354590"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131085959"
 ---
 # <a name="export-iot-connector-metrics-through-diagnostic-settings"></a>Exportieren von IoT-Connectormetriken über Diagnoseeinstellungen
 
 > [!IMPORTANT]
-> Azure Healthcare-APIs befinden sich derzeit in der VORSCHAU. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen für Azure-Features, die sich in der Beta- oder Vorschauphase befinden oder anderweitig noch nicht allgemein verfügbar sind.
+> Azure Healthcare-APIs sind derzeit als VORSCHAUversion verfügbar. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen für Azure-Features, die sich in der Beta- oder Vorschauphase befinden oder anderweitig noch nicht allgemein verfügbar sind.
 
-In diesem Artikel erfahren Sie, wie Sie Metrikprotokolle des IoT-Connectors exportieren. Die Metrikprotokollierung wird über die Funktion [**Diagnoseeinstellungen**](../../azure-monitor/essentials/diagnostic-settings.md) im Azure-Portal ermöglicht. 
+In diesem Artikel erfahren Sie, wie Sie IoT-Connector-Metrikprotokolle exportieren. Die Metrikprotokollierung wird über die Funktion [**Diagnoseeinstellungen**](../../azure-monitor/essentials/diagnostic-settings.md) im Azure-Portal ermöglicht. 
 
 ## <a name="enable-metrics-logging-for-iot-connector"></a>Aktivieren der Metrikprotokollierung für den IoT-Connector
-1. Um die Metrikprotokollierung für den IoT-Connector zu aktivieren, wählen Sie im Azure-Portal Ihren dienst Fast Healthcare Interoperability Resources (FHIR&#174;) aus. 
+1. Um die Metrikprotokollierung für den IoT-Connector zu aktivieren, wählen Sie ihren Fast Healthcare Interoperability Resources-Dienst (FHIR&#174;) im Azure-Portal. 
 
 2. Navigieren zu den **Diagnoseeinstellungen** 
 
@@ -36,10 +36,10 @@ In diesem Artikel erfahren Sie, wie Sie Metrikprotokolle des IoT-Connectors expo
 5. Wählen Sie die Methode aus, die Sie für den Zugriff auf Ihre Diagnoseprotokolle verwenden möchten:
 
     1. **Archivieren Sie Protokolle zur (manuellen) Überprüfung in einem Speicherkonto**. Das Speicherkonto, das Sie verwenden möchten, muss bereits erstellt worden sein.
-    2. **Streamen Sie die Protokolle zu Event Hub**, damit sie von einem Dienst eines Drittanbieters oder einer benutzerdefinierten Analyselösung erfasst werden können. Sie müssen einen Event Hub-Namespace und eine Event Hub-Richtlinie erstellen, ehe Sie diesen Schritt konfigurieren können.
+    2. **Streamen sie zur Erfassung** durch einen Drittanbieterdienst oder eine benutzerdefinierte Analyselösung an Event Hub. Sie müssen einen Event Hub-Namespace und eine Event Hub-Richtlinie erstellen, bevor Sie diesen Schritt konfigurieren können.
     3. **Streamen Sie die Protokolle zum Log Analytics-Arbeitsbereich** in Azure Monitor. Sie müssen Ihren Log Analytics-Arbeitsbereich erstellen, bevor Sie diese Option auswählen können.
 
-6. Wählen Sie **Fehler, Datenverkehr und Latenz** für IoT-Connector aus.  Wählen Sie zusätzliche Metrikkategorien aus, die Sie für den FHIR-Dienst erfassen möchten.
+6. Wählen **Sie Fehler, Datenverkehr und Latenz für** IoT-Connector aus.  Wählen Sie alle zusätzlichen Metrikkategorien aus, die Sie für den FHIR-Dienst erfassen möchten.
 
 7. Wählen Sie **Speichern** aus.
 
@@ -55,9 +55,9 @@ Zugriff auf Metrikprotokolle zu haben, ist für die Überwachung und Problembeha
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich die häufig gestellten Fragen zum IoT-Connector an.
+Sehen Sie sich häufig gestellte Fragen zum IoT-Connector an.
 
 >[!div class="nextstepaction"]
->[Häufig gestellte Fragen zum IoT-Connector](../fhir/fhir-faq.md)
+>[Häufig gestellte Fragen zum IoT-Connector](iot-connector-faqs.md)
 
 (FHIR&#174;) ist eine registrierte Marke von HL7 und wird mit der Berechtigung von HL7 verwendet.

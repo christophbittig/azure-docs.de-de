@@ -10,12 +10,12 @@ author: rsethur
 ms.date: 08/05/2021
 ms.topic: tutorial
 ms.custom: tutorial, devplatv2
-ms.openlocfilehash: 7c55e5a5a73a3b9076c1077f36c1f951eeee11cc
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 18e8c09f1d1a734d2e68e656658c3017a115f9a9
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129429982"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131079337"
 ---
 # <a name="tutorial-access-resources-with-managed-online-endpoints-and-identity-preview"></a>Tutorial: Zugreifen auf Ressourcen mit verwalteten Onlineendpunkten und Identität (Vorschau)
 
@@ -120,7 +120,7 @@ Wenn Sie einen verwalteten Endpunkt erstellen, wird standardmäßig eine systems
 
 ::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-access-resource-sai.sh" id="check_endpoint_Status" :::
 
-Falls Probleme auftreten, helfen Ihnen die Informationen unter [Problembehandlung für die Bereitstellung und Bewertung verwalteter Onlineendpunkte (Vorschau)](how-to-troubleshoot-managed-online-endpoints.md) weiter.
+Falls Probleme auftreten, helfen Ihnen die Informationen unter [Problembehandlung für die Bereitstellung und Bewertung verwalteter Onlineendpunkte (Vorschau)](./how-to-troubleshoot-online-endpoints.md) weiter.
 
 ## <a name="give-storage-permission-to-system-assigned-managed-identity"></a>Erteilen von Speicherberechtigungen für die systemseitig zugewiesene verwaltete Identität
 

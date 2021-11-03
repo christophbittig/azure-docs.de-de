@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 94845919e1b0bc171b7df831593b04daffb2213b
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: 5177d06ce6507f23dfbc31b9825ce38d85422bb6
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130064520"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131008160"
 ---
 # <a name="set-up-a-sign-in-flow-in-azure-active-directory-b2c"></a>Einrichten eines Anmeldeflows in Azure Active Directory B2C
 
@@ -26,7 +26,7 @@ ms.locfileid: "130064520"
 
 ## <a name="sign-in-flow-overview"></a>Übersicht über den Anmeldeflow
 
-Die Anmelderichtlinie ermöglicht Benutzern Folgendes: 
+Die Anmelderichtlinie ermöglicht Benutzern Folgendes:
 
 * Benutzer können sich mit einem lokalen Azure AD B2C-Konto anmelden.
 * Registrieren oder Anmelden mit einem Social Media-Konto
@@ -78,7 +78,7 @@ Gehen Sie wie folgt vor, um eine Anmelderichtlinie hinzuzufügen:
 
 ## <a name="remove-the-sign-up-link"></a>Entfernen des Registrierungslinks
 
-Das technische Profil **SelfAsserted-LocalAccountSignin-Email** ist ein [sebstbestätigtes Profil](self-asserted-technical-profile.md), das beim Registrierungs- oder Anmeldeflow aufgerufen wird. Um den Registrierungslink zu entfernen, legen Sie die `setting.showSignupLink`-Metadaten auf `false` fest. Überschreiben Sie in der Erweiterungsdatei die technischen Profile in SelfAsserted-LocalAccountSignin-Email. 
+Das technische Profil **SelfAsserted-LocalAccountSignin-Email** ist ein [sebstbestätigtes Profil](self-asserted-technical-profile.md), das beim Registrierungs- oder Anmeldeflow aufgerufen wird. Um den Registrierungslink zu entfernen, legen Sie die `setting.showSignupLink`-Metadaten auf `false` fest. Überschreiben Sie in der Erweiterungsdatei die technischen Profile in SelfAsserted-LocalAccountSignin-Email.
 
 1. Öffnen Sie die Erweiterungsdatei Ihrer Richtlinie. Beispiel: _`SocialAndLocalAccounts/` **`TrustFrameworkExtensions.xml`**_.
 1. Suchen Sie das Element `ClaimsProviders`. Wenn das Element nicht vorhanden ist, fügen Sie es hinzu.
@@ -103,7 +103,7 @@ Das technische Profil **SelfAsserted-LocalAccountSignin-Email** ist ein [sebstbe
 
 1. Fügen Sie innerhalb des `<BuildingBlocks>`-Elements die folgende [ContentDefinition](contentdefinitions.md) hinzu, um auf den Daten-URI der Version 1.2.0 (oder höher) zu verweisen:
 
-    ```XML
+    ```xml
     <!-- 
     <BuildingBlocks> 
       <ContentDefinitions>-->

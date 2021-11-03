@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/26/2021
 ms.author: pafarley
-ms.openlocfilehash: abef7e44ad2e15bda230d28e8dae74a3fd949f88
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 993cc1105c476f3581fd996be5c1aa6aa7c0c590
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129706330"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131056699"
 ---
 # <a name="what-is-conversation-transcription-preview"></a>Was ist Unterhaltungstranskription (Vorschau)?
 
@@ -54,7 +55,7 @@ Dies ist eine allgemeine Übersicht darüber, wie die Unterhaltungstranskription
 
 ## <a name="expected-inputs"></a>Erwartete Eingaben
 
-- **Mehrkanalaudiostream**: Weitere Informationen zu Spezifikationen und Design finden Sie unter den [Mikrofonempfehlungen für das Speech-Geräte-SDK von Microsoft](./speech-devices-sdk-microphone.md). Weitere Informationen zum Development Kit und dessen Erwerb finden Sie unter [Abrufen des Speech-Geräte-SDK von Microsoft](./get-speech-devices-sdk.md).
+- **Mehrkanalaudiostream**: Weitere Informationen zu Spezifikationen und Design finden Sie unter den [Mikrofonempfehlungen für das Speech-Geräte-SDK von Microsoft](./speech-sdk-microphone.md). Weitere Informationen zum Development Kit und dessen Erwerb finden Sie unter [Abrufen des Speech-Geräte-SDK von Microsoft](./get-speech-devices-sdk.md).
 - **Benutzerstimmproben**: Für die Unterhaltungstranskription sind vor der Unterhaltung Benutzerprofile zur Sprecheridentifikation erforderlich. Sie müssen Audioaufzeichnungen von jedem Benutzer sammeln und die Aufzeichnungen dann an den [Dienst für die Signaturgenerierung](https://aka.ms/cts/signaturegenservice) senden, um die Audioaufnahmen zu überprüfen und Benutzerprofile zu generieren.
 
 > [!NOTE]

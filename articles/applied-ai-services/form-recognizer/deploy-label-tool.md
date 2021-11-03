@@ -1,7 +1,7 @@
 ---
-title: Bereitstellen des Formularerkennungstools für die Bezeichnung von Beispielen
+title: Bereitstellen des Beispiel-Beschriftungstools der Azure-Formularerkennung
 titleSuffix: Azure Applied AI Services
-description: Erfahren Sie mehr über die verschiedenen Möglichkeiten, wie Sie das Formularerkennungstool für die Bezeichnung von Beispielen für überwachte Lernen bereitstellen können.
+description: Erfahren Sie mehr über die verschiedenen Möglichkeiten, wie Sie das Beispiel-Beschriftungstool der Azure-Formularerkennung bereitstellen können, um das beaufsichtigte Lernen zu unterstützen.
 author: laujan
 manager: nitinme
 ms.service: applied-ai-services
@@ -9,30 +9,31 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 07/02/2021
 ms.author: lajanuar
-ms.openlocfilehash: e0555050b6457cc25a3d66d902d7de9232247ae3
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 5c5a260a1f5c1ab6cd6232dbd0ea9c1035a110cf
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122351515"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131027016"
 ---
-# <a name="deploy-the-sample-labeling-tool"></a>Bereitstellen des Samplebezeichnungstools
+# <a name="deploy-the-sample-labeling-tool"></a>Bereitstellen des Beispiel-Beschriftungstools
 
-Das Formularerkennungstool für die Beschriftung von Beispielen ist eine Anwendung mit einer einfachen Benutzeroberfläche, mit der Sie Formulare (Dokumente) zum überwachten Lernen manuell beschriften können. In diesem Artikel finden Sie Links und Anweisungen zu folgenden Aufgaben:
+Das Beispiel-Beschriftungstool der Azure-Formularerkennung ist eine Anwendung mit einer einfachen Benutzeroberfläche, mit der Sie Formulare (Dokumente) zum beaufsichtigten Lernen manuell beschriften können. In diesem Artikel finden Sie Links und Anweisungen zu folgenden Aufgaben:
 
-* [Lokales Ausführen des Tools für die Beschriftung von Beispielen](#run-the-sample-labeling-tool-locally)
-* [Bereitstellen des Tools für die Beschriftung von Beispielen in einer Azure-Containerinstanz](#deploy-with-azure-container-instances-aci)
+* [Lokales Ausführen des Beispiel-Beschriftungstools](#run-the-sample-labeling-tool-locally)
+* [Bereitstellen des Beispiel-Beschriftungstools in einer Azure-Containerinstanz](#deploy-with-azure-container-instances-aci)
 * [Verwenden des Open-Source-OCR Form Labeling Tool und Mitwirken am Tool](#open-source-on-github)
 
-## <a name="run-the-sample-labeling-tool-locally"></a>Lokales Ausführen des Tools für die Beschriftung von Beispielen
+## <a name="run-the-sample-labeling-tool-locally"></a>Lokales Ausführen des Beispiel-Beschriftungstools
 
-Die schnellste Möglichkeit, um mit dem Beschriften von Daten loszulegen, ist die lokale Ausführung des Tools für die Beschriftung von Beispielen. Im folgenden Schnellstart wird gezeigt, wie Sie die Formularerkennungs-REST-API und das Tool für die Beschriftung von Beispielen verwenden, um ein benutzerdefiniertes Modell mit manuell beschrifteten Daten zu trainieren.
+Die schnellste Möglichkeit, um Daten zu beschriften, ist die lokale Ausführung des Beispiel-Beschriftungstools. In der folgenden Schnellstartanleitung wird gezeigt, wie Sie die Formularerkennungs-REST-API und das Beispiel-Beschriftungstool verwenden, um ein benutzerdefiniertes Modell mit manuell beschrifteten Daten zu trainieren.
 
 * [Erste Schritte mit der Azure-Formularerkennung](label-tool.md)
 
 ## <a name="deploy-with-azure-container-instances-aci"></a>Bereitstellen mit Azure Container Instances (ACI)
 
-Zum Bereitstellen des Tools für die Beschriftung von Beispielen in einer Azure-Containerinstanz gibt es zwei Möglichkeiten. Beide Optionen werden verwendet, um das Tool für die Beschriftung von Beispielen mit ACI auszuführen:
+Zum Bereitstellen des Beispiel-Beschriftungstools in einer Azure-Containerinstanz gibt es zwei Möglichkeiten. Beide Optionen werden verwendet, um das Beispiel-Beschriftungstool mit ACI auszuführen:
 
 * [Verwenden des Azure-Portals](#azure-portal)
 * [Verwenden der Azure-Befehlszeilenschnittstelle](#azure-cli)
@@ -77,7 +78,7 @@ Führen Sie die folgenden Schritte aus, um eine neue Ressource im Azure-Portal z
 * Benutzername (optional): Erstellen Sie einen Benutzernamen.
 * Kennwort (optional): Erstellen Sie ein sicheres Kennwort, das Sie sich gut merken können.
 * Image und Tag: Legen Sie diese Einstellung auf `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-2.1` fest.
-* Continuous Deployment: Legen Sie diesen Wert auf **On** fest, wenn Sie automatische Aktualisierungen erhalten möchten, sobald das Entwicklungsteam Änderungen am Beschriftungstool für Stichproben vornimmt.
+* Continuous Deployment: Legen Sie diesen Wert auf **On** fest, wenn Sie automatische Aktualisierungen erhalten möchten, sobald das Entwicklungsteam Änderungen am Beispiel-Beschriftungstool vornimmt.
 * Startbefehl: Legen Sie diese Einstellung auf `./run.sh eula=accept` fest.
 
 > [!div class="mx-imgBorder"]
@@ -111,7 +112,7 @@ Es gibt einige Dinge, die Sie über diesen Befehl wissen sollten:
 * Sie müssen angeben, wo die Ressource erstellt werden soll. Ersetzen Sie `<region name>` durch die gewünschte Region für die Web-App.
 * Dieser Befehl akzeptiert automatisch die Lizenzbedingungen.
 
-Führen Sie in der Azure CLI den folgenden Befehl aus, um eine Web-App-Ressource für das Tool für die Beschriftung von Beispielen zu erstellen:
+Führen Sie in der Azure CLI den folgenden Befehl aus, um eine Web-App-Ressource für das Beispiel-Beschriftungstool zu erstellen:
 
 <!-- markdownlint-disable MD024 -->
 

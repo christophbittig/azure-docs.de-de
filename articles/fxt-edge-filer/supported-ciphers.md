@@ -1,21 +1,21 @@
 ---
 title: Unterstützte Verschlüsselungsverfahren für Azure FXT Edge Filer
-description: Hier finden Sie eine Liste der Verschlüsselungsstandards, die von FXT Edge Filer-Clustern verwendet werden.
-author: ekpgh
-ms.author: v-erkel
+description: Liste der Verschlüsselungsstandards, die von FXT Edge Filer-Clustern verwendet werden.
+author: femila
+ms.author: femila
 ms.service: fxt-edge-filer
 ms.topic: conceptual
 ms.date: 05/20/2021
-ms.openlocfilehash: 8d1a49bc8e5c9883a094b9a0e3d624cf127ac568
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: 0c05e821ab19c4a617a8a6e13bd7f1c37331a661
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111415102"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131032998"
 ---
 # <a name="supported-encryption-standards-for-azure-fxt-edge-filer"></a>Unterstützte Verschlüsselungsstandards für Azure FXT Edge Filer
 
-In diesem Dokument werden die Verschlüsselungsstandards beschrieben, die für Azure FXT Edge Filer erforderlich sind. Diese Standards sind ab Version 5.1.1.2 des Betriebssystems implementiert.
+In diesem Dokument werden die Verschlüsselungsstandards beschrieben, die für Azure FXT Edge Filer benötigt werden. Diese Standards sind ab Version 5.1.1.2 des Betriebssystems implementiert.
 
 Diese Standards gelten für [Avere vFXT for Azure](../avere-vfxt/index.yml) und Azure FXT Edge Filer.
 
@@ -28,11 +28,11 @@ Jedes Verwaltungs- oder Infrastruktursystem, das eine Verbindung mit dem Azure F
 * TLS 1.2 muss aktiviert sein.
 * SSL V2 und V3 müssen deaktiviert sein.
 
-TLS 1.0 und TLS 1.1 können verwendet werden, wenn dies aus Gründen der Abwärtskompatibilität mit privaten Objektspeichern unbedingt erforderlich ist. Es ist jedoch besser, Ihren privaten Speicher auf moderne Sicherheitsstandards upzugraden. Wenden Sie sich an den Microsoft-Kundendienst und -Support, um weitere Informationen zu erhalten.
+TLS 1.0 und TLS 1.1 können verwendet werden, wenn dies aus Gründen der Abwärtskompatibilität mit privaten Objektspeichern unbedingt erforderlich ist. Es ist jedoch besser, Ihren privaten Speicher auf moderne Sicherheitsstandards upzugraden. Wenden Sie sich wegen weiterer Informationen an den Microsoft-Kundendienst und -Support.
 
-## <a name="permitted-cipher-suites"></a>Zulässige Verschlüsselungssuites
+## <a name="permitted-cipher-suites"></a>Zulässige Verschlüsselungssammlungen
 
-Mit Azure FXT Edge Filer können die folgenden TLS-Verschlüsselungssuites ausgehandelt werden:
+Mit Azure FXT Edge Filer können die folgenden TLS-Verschlüsselungssammlungen ausgehandelt werden:
 
 * ECDHE-ECDSA-AES128-GCM-SHA256
 * ECDHE-ECDSA-AES256-GCM-SHA384
@@ -43,7 +43,7 @@ Mit Azure FXT Edge Filer können die folgenden TLS-Verschlüsselungssuites ausge
 * ECDHE-RSA-AES128-SHA256
 * ECDHE-RSA-AES256-SHA384
 
-Die HTTPS-Schnittstelle für die Clusterverwaltung (wird für die Web-GUI der Systemsteuerung und administrative RPC-Verbindungen verwendet) unterstützt nur die oben genannten Verschlüsselungssuites und TLS 1.2. Beim Herstellen einer Verbindung mit der Verwaltungsschnittstelle werden keine anderen Protokolle oder Verschlüsselungssuites unterstützt.
+Die HTTPS-Schnittstelle für die Clusterverwaltung (wird für die Web-GUI der Systemsteuerung und administrative RPC-Verbindungen verwendet) unterstützt nur die oben genannten Verschlüsselungssammlungen und TLS 1.2. Beim Herstellen einer Verbindung mit der Verwaltungsschnittstelle werden keine anderen Protokolle oder Verschlüsselungssammlungen unterstützt.
 
 ## <a name="ssh-server-access"></a>SSH-Serverzugriff
 
@@ -51,7 +51,7 @@ Diese Standards gelten für den SSH-Server, der in diese Produkte eingebettet is
 
 Der SSH-Server lässt keine Remoteanmeldung als Superuser „root“ zu. Wenn SSH-Remotezugriff unter der Anleitung des Microsoft-Kundendiensts und -Supports erforderlich ist, melden Sie sich als SSH-Administratorbenutzer an, der über eine eingeschränkte Shell verfügt.
 
-Die folgenden SSH-Verschlüsselungssuites sind auf dem SSH-Clusterserver verfügbar. Stellen Sie sicher, dass jeder Client, der SSH zum Herstellen einer Verbindung mit dem Cluster verwendet, über aktuelle Software verfügt, die diese Standards erfüllt.
+Die folgenden SSH-Verschlüsselungssammlungen sind auf dem SSH-Clusterserver verfügbar. Stellen Sie sicher, dass jeder Client, der SSH zum Herstellen einer Verbindung mit dem Cluster verwendet, über aktuelle Software verfügt, die diese Standards erfüllt.
 
 ### <a name="ssh-encryption-standards"></a>SSH-Verschlüsselungsstandards
 

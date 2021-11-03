@@ -7,16 +7,16 @@ ms.subservice: conditional-access
 ms.topic: overview
 ms.date: 09/15/2021
 ms.custom: project-no-code
-ms.author: mimart
-author: msmimart
-manager: celested
+ms.author: kengaderdus
+author: kengaderdus
+manager: CelesteDG
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 54229ff68cf9e4ac749fb1396282d9c881f52806
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: e4f1bf6bdb46bd87fb24fe5564a1d53204477a5d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128572669"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131008007"
 ---
 # <a name="add-conditional-access-to-user-flows-in-azure-active-directory-b2c"></a>Hinzufügen von bedingtem Zugriff zu Benutzerflows in Azure Active Directory B2C
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
@@ -26,7 +26,7 @@ Sie können Ihren Azure Active Directory B2C-Benutzerflows (Azure AD B2C) bedin
 In Azure AD B2C wird jedes Anmeldungsereignis ausgewertet und sichergestellt, dass alle Richtlinienanforderungen erfüllt sind, bevor dem Benutzer der Zugriff gewährt wird. Während dieser **Auswertungsphase** wertet der Dienst für bedingten Zugriff die Signale aus, die von den Identity Protection-Risikoerkennungen während Anmeldungsereignissen erfasst wurden. Das Ergebnis dieser Auswertung ist eine Sammlung von Ansprüchen, die angibt, ob die Anmeldung erteilt oder blockiert werden soll. Die Azure AD B2C-Richtlinie verwendet diese Ansprüche, um innerhalb des Benutzerflows zu agieren. Ein Beispiel hierfür ist das Blockieren des Zugriffs oder das Anfordern einer bestimmten Aktion vom Benutzer wie der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA). „Zugriff blockieren“ überschreibt alle anderen Einstellungen.
 ::: zone pivot="b2c-custom-policy"
 Das folgende Beispiel zeigt ein technisches Profil für den bedingten Zugriff, das zur Auswertung der Anmeldebedrohung verwendet wird.
-```XML
+```xml
 <TechnicalProfile Id="ConditionalAccessEvaluation">
   <DisplayName>Conditional Access Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.ConditionalAccessProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -45,7 +45,7 @@ Die Abwehrmaßnahmen können auch über andere Kanäle erfolgen. Ein Beispiel hi
 > Um das Risiko während der Journey erfolgreich einzudämmen, sollten Sie sicherstellen, dass nach dem Ausführen des technischen Profils *Evaluation* (Evaluierung) das technische Profil *Remediation* (Eindämmung) aufgerufen wird. Wenn *Evaluation* (Evaluierung) ohne *Remediation* (Eindämmung) aufgerufen wird, lautet der Risikozustand *Risiko*.
 Wenn von der Empfehlung des technischen Profils *Evaluation* (Evaluierung) die Antwort `Block` zurückgegeben wird, muss das technische Profil *Evaluation* (Evaluierung) nicht aufgerufen werden. Der Risikozustand lautet *Risiko*.
 Das folgende Beispiel zeigt ein technisches Profil für den bedingten Zugriff, das zum Korrigieren der identifizierten Bedrohung verwendet wird:
-```XML
+```xml
 <TechnicalProfile Id="ConditionalAccessRemediation">
   <DisplayName>Conditional Access Remediation</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.ConditionalAccessProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null"/>
@@ -351,7 +351,7 @@ Um bedingten Zugriff für einen Benutzerflow zu aktivieren, stellen Sie sicher, 
 1. Laden Sie die Richtliniendateien hoch.
 ### <a name="configure-claim-other-than-phone-number-to-be-used-for-mfa"></a>Konfigurieren eines anderen Anspruchs als die für MFA bestimmte Telefonnummer
 Oben in der Richtlinie für bedingten Zugriff wird mit der Methode `DoesClaimExist` für die Anspruchstransformation überprüft, ob ein Anspruch einen Wert enthält. Ein Beispiel hierfür ist die Überprüfung, ob der Anspruch `strongAuthenticationPhoneNumber` eine Telefonnummer enthält. Die Anspruchstransformation ist nicht auf den Anspruch `strongAuthenticationPhoneNumber` beschränkt. Sie können je nach Szenario auch einen beliebigen anderen Anspruch verwenden. Im folgenden XML-Codeausschnitt wird stattdessen der Anspruch `strongAuthenticationEmailAddress` überprüft. Der von Ihnen ausgewählte Anspruch muss über einen gültigen Wert verfügen. Andernfalls wird der Anspruch `IsMfaRegistered` auf `False` festgelegt. Bei Festlegung auf `False` wird bei der Auswertung der Richtlinie für bedingten Zugriff der Gewährungstyp `Block` zurückgegeben, um zu verhindern, dass der Benutzer den Benutzerflow durchführen kann.
-```XML
+```xml
  <ClaimsTransformation Id="IsMfaRegisteredCT" TransformationMethod="DoesClaimExist">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="strongAuthenticationEmailAddress" TransformationClaimType="inputClaim" />

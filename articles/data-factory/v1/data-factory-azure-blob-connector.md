@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/22/2021
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 67a66e618206b182983ada474b1f0d3788526e1e
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: cd797c58edb1d6918c8681f9cadffecdba8ef827
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130223862"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131011463"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Kopieren von Daten nach oder aus Azure Blob Storage mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -77,7 +77,7 @@ Data Factory unterstützt die folgenden CLS-konformen und auf .NET basierenden T
 
 Der Abschnitt **typeProperties** unterscheidet sich bei jeder Art von Dataset und enthält unter anderem Informationen zum Speicherort und Format der Daten im Datenspeicher. Der Abschnitt „typeProperties“ für ein Dataset des Typs **AzureBlob** hat die folgenden Eigenschaften:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | folderPath |Der Pfad zum Container und Ordner im Blobspeicher. Beispiel: myblobcontainer\myblobfolder\ |Ja |
 | fileName |Der Name des Blobs. fileName ist optional, wobei seine Groß- und Kleinschreibung beachtet werden muss.<br/><br/>Wenn Sie einen Dateinamen angeben, funktioniert die Aktivität (einschließlich Kopieren) für das jeweilige Blob.<br/><br/>Wenn „fileName“ nicht angegeben ist, werden alle Blobs in folderPath für das Eingabedataset kopiert.<br/><br/>Wenn **fileName** nicht für ein Ausgabedataset und **preserveHierarchy** nicht in der Aktivitätssenke angegeben ist, hat der Name der generierten Datei das folgende Format: `Data.<Guid>.txt` (Beispiel: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt). |Nein |
@@ -272,14 +272,16 @@ Es wird nun gezeigt, wie Daten schnell in einen/aus einem Azure Blob Storage kop
 4. In der Liste **AKTIVITÄTSFENSTER** sollten nun fünf Aktivitätsfenster zu sehen sein. Die Zeiten unter **Fensterstart** sollten alle Tage ab der Pipelinestart- bis zur Pipelinendzeit abdecken.
 5. Klicken Sie mehrmals auf die Schaltfläche **Aktualisieren** für die Liste **AKTIVITÄTSFENSTER**, bis der Status jedes Aktivitätsfensters auf „Bereit“ festgelegt ist.
 6. Vergewissern Sie sich jetzt, dass die Ausgabedateien im Container „adfblobconnector“ in dessen Ordner „output“ generiert wurden. Für den Ordner „output“ sollte die folgende Ordnerstruktur angezeigt werden:
-    ```
+
+    ```output
     2017/04/21
     2017/04/22
     2017/04/23
     2017/04/24
     2017/04/25
     ```
-   Ausführliche Informationen zum Überwachen und Verwalten von Data Factorys finden Sie unter [Überwachen und Verwalten von Azure Data Factory-Pipelines](data-factory-monitor-manage-app.md).
+
+    Ausführliche Informationen zum Überwachen und Verwalten von Data Factorys finden Sie unter [Überwachen und Verwalten von Azure Data Factory-Pipelines](data-factory-monitor-manage-app.md).
 
 ### <a name="data-factory-entities"></a>Data Factory-Entitäten
 Kehren Sie jetzt zur Registerkarte mit der Data Factory-Startseite zurück. Sie können sehen, dass Ihre Data Factory nun zwei verknüpfte Dienste, zwei Datasets und eine Pipeline enthält.

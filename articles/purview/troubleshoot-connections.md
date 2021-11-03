@@ -7,12 +7,13 @@ ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 09/27/2021
-ms.openlocfilehash: cfcac68bfc09a4c3b6d4794469734d0634b3ad0c
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 18f3a98874fcfb98978778cf40ebe2cd876826d0
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129213456"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131076147"
 ---
 # <a name="troubleshoot-your-connections-in-azure-purview"></a>Problembehandlung für Ihre Verbindungen in Azure Purview
 
@@ -24,16 +25,16 @@ Wenn Sie eine verwaltete Identität oder einen Dienstprinzipal als Authentifizie
 
 Für jeden Quellentyp gilt eine bestimmte Anleitung:
 
-- [Mehrere Azure-Quellen](register-scan-azure-multiple-sources.md#set-up-authentication-to-scan-resources-under-a-subscription-or-resource-group)
-- [Azure Blob Storage](register-scan-azure-blob-storage-source.md#setting-up-authentication-for-a-scan)
-- [Azure Cosmos DB](register-scan-azure-cosmos-database.md#setting-up-authentication-for-a-scan)
-- [Azure Data Explorer](register-scan-azure-data-explorer.md#setting-up-authentication-for-a-scan)
-- [Azure Data Lake Storage Gen1](register-scan-adls-gen1.md#setting-up-authentication-for-a-scan)
-- [Azure Data Lake Storage Gen2](register-scan-adls-gen2.md#setting-up-authentication-for-a-scan)
+- [Mehrere Azure-Quellen](register-scan-azure-multiple-sources.md#authentication-for-registration)
+- [Azure Blob Storage](register-scan-azure-blob-storage-source.md#authentication-for-a-scan)
+- [Azure Cosmos DB](register-scan-azure-cosmos-database.md#authentication-for-a-scan)
+- [Azure Data Explorer](register-scan-azure-data-explorer.md#authentication-for-registration)
+- [Azure Data Lake Storage Gen1](register-scan-adls-gen1.md#prerequisites-for-scan)
+- [Azure Data Lake Storage Gen2](register-scan-adls-gen2.md#prerequisites-for-scan)
 - [Azure SQL-Datenbank](register-scan-azure-sql-database.md)
-- [Verwaltete Azure SQL-Datenbank-Instanz](register-scan-azure-sql-database-managed-instance.md#setting-up-authentication-for-a-scan)
-- [Azure Synapse Analytics](register-scan-azure-synapse-analytics.md#setting-up-authentication-for-a-scan)
-- [SQL Server](register-scan-on-premises-sql-server.md#setting-up-authentication-for-a-scan)
+- [Verwaltete Azure SQL-Datenbank-Instanz](register-scan-azure-sql-database-managed-instance.md#authentication-for-registration)
+- [Azure Synapse Analytics](register-scan-azure-synapse-analytics.md#authentication-for-registration)
+- [SQL Server](register-scan-on-premises-sql-server.md#authentication-for-registration)
 - [Power BI](register-scan-power-bi-tenant.md)
 - [Amazon S3](register-scan-amazon-s3.md#create-a-purview-credential-for-your-aws-s3-scan)
 

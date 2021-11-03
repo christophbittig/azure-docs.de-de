@@ -253,10 +253,41 @@
           href: container-registry-tasks-pack-build.md
         - name: Anzeigen von Taskprotokollen
           href: container-registry-tasks-logs.md
+- name: Verbundene Registrierung
+  expanded: true
+  items:
+    - name: Übersicht
+      expanded: false
+      items:
+        - name: Informationen zu der verbundenen Registrierung
+          href: intro-connected-registry.md
+        - name: Nutzung mit IoT Edge
+          href: overview-connected-registry-and-iot-edge.md
+    - name: Schnellstarts
+      expanded: true
+      items:
+        - name: Erstellen einer verbundenen Registrierung – CLI
+          href: quickstart-connected-registry-cli.md
+        - name: Erstellen einer verbundenen Registrierung – Portal
+          href: quickstart-connected-registry-portal.md
+        - name: Bereitstellen der verbundenen Registrierung für IoT Edge
+          href: quickstart-deploy-connected-registry-iot-edge-cli.md
+    - name: Lernprogramme
+      items:
+        - name: Bereitstellen der verbundenen Registrierung für das geschachtelte IoT Edge
+          href: tutorial-deploy-connected-registry-nested-iot-edge-cli.md
+    - name: Konzepte
+      items:
+        - name: Zugriff auf die verbundene Registrierung
+          href: overview-connected-registry-access.md
+    - name: Exemplarische Vorgehensweisen
+      items:
+        - name: Pullen eines Bildes aus der verbundenen Registrierung
+          href: pull-images-from-connected-registry.md
 - name: Verweis
   expanded: false
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/acr
     - name: REST
       href: /rest/api/containerregistry

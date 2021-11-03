@@ -2,21 +2,21 @@
 title: Lokalisierung – Azure Active Directory B2C
 description: Erfahren Sie, wie Sie das Localization-Element einer benutzerdefinierten Richtlinie in Azure Active Directory B2C angeben.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 03/08/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: 3a5afcd8c0ef0c31353cd2369ead332675c9877f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9dfcb3f88638d0cf7fd1fba9a22ca7e0d8a18506
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102453120"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "131006910"
 ---
 # <a name="localization-element"></a>Localization-Element
 
@@ -40,7 +40,7 @@ Mithilfe des **Localization**-Elements können Sie mehrere Gebietsschemas oder S
 
 Das **Localization**-Element enthält die folgenden Attribute:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Aktiviert | Nein | Mögliche Werte: `true` oder `false`. |
 

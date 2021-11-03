@@ -6,12 +6,12 @@ ms.date: 11/22/2020
 ms.custom: devx-track-java
 author: mattmccleary
 ms.author: mmcc
-ms.openlocfilehash: 53dc6c6f757c65842512ab9c215161058d451962
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: a73bfa9ab247cafff4c99ed481134974fd1715ac
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130134030"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131079014"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Erste Schritte mit Application Insights in einem Java-Webprojekt
 
@@ -50,7 +50,7 @@ Wenn Ihr Projekt bereits für die Verwendung von Maven für den Buildprozess ein
 
 Aktualisieren Sie dann die Projektabhängigkeiten, damit die Binärdateien heruntergeladen werden.
 
-```XML
+```xml
     <dependencies>
       <dependency>
         <groupId>com.microsoft.azure</groupId>
@@ -92,7 +92,7 @@ Fügen Sie dem Ressourcenordner in Ihrem Projekt die Datei *ApplicationInsights.
 
 Ersetzen Sie den Instrumentationsschlüssel durch den, den Sie aus dem Azure-Portal abgerufen haben.
 
-```XML
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <ApplicationInsights xmlns="http://schemas.microsoft.com/ApplicationInsights/2013/Settings" schemaVersion="2014-05-30">
 
@@ -220,7 +220,7 @@ Unter **Untersuchen** > **Metriken** finden Sie eine Reihe von Leistungsindikato
 ### <a name="customize-performance-counter-collection"></a>Anpassen der Erfassung von Leistungsindikatoren
 Um die Erfassung der Standardgruppe von Leistungsindikatoren zu deaktivieren, fügen Sie unter dem Stammknoten der Datei *ApplicationInsights.xml* den folgenden Code hinzu:
 
-```XML
+```xml
     <PerformanceCounters>
        <UseBuiltIn>False</UseBuiltIn>
     </PerformanceCounters>
@@ -231,7 +231,7 @@ Sie können weitere Leistungsindikatoren angeben, die erfasst werden sollen.
 
 #### <a name="jmx-counters-exposed-by-the-java-virtual-machine"></a>JMX-Leistungsindikatoren (von der Java Virtual Machine bereitgestellt)
 
-```XML
+```xml
     <PerformanceCounters>
       <Jmx>
         <Add objectName="java.lang:type=ClassLoading" attribute="TotalLoadedClassCount" displayName="Loaded Class Count"/>
@@ -251,7 +251,7 @@ Sie können weitere Leistungsindikatoren angeben, die erfasst werden sollen.
 #### <a name="windows-performance-counters"></a>Windows-Leistungsindikatoren
 Jeder [Windows-Leistungsindikator](/windows/win32/perfctrs/performance-counters-portal) gehört zu einer Kategorie (genauso wie ein Feld zu einer Klasse gehört). Kategorien können entweder global sein oder nummerierte oder benannte Instanzen haben.
 
-```XML
+```xml
     <PerformanceCounters>
       <Windows>
         <Add displayName="Process User Time" categoryName="Process" counterName="%User Time" instanceName="__SELF__" />

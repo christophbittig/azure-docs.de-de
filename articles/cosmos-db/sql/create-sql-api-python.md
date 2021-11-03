@@ -13,12 +13,12 @@ ms.custom:
 - seo-javascript-september2019
 - seo-python-october2019
 - devx-track-python
-ms.openlocfilehash: d8f2176065b8a9726cc0496756a22ccefbf0f0c8
-ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
+ms.openlocfilehash: 6cdfcff203f9694ab9c9e0b7a693b51070f73aac
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129155456"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131070962"
 ---
 # <a name="quickstart-build-a-python-application-using-an-azure-cosmos-db-sql-api-account"></a>Schnellstart: Erstellen einer Python-Anwendung mithilfe eines SQL-API-Kontos für Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -78,8 +78,9 @@ Klonen Sie zunächst eine SQL-API-App aus GitHub, legen Sie die Verbindungszeich
 1. Öffnen Sie eine Eingabeaufforderung, erstellen Sie einen neuen Ordner namens „git-samples“, und schließen Sie die Eingabeaufforderung.
 
     ```cmd
-    md "git-samples"
+    md git-samples
     ```
+
    Bei einer Bash-Eingabeaufforderung sollten Sie stattdessen den folgenden Befehl verwenden:
 
    ```bash
@@ -223,7 +224,7 @@ Die folgenden Codeausschnitte stammen alle aus der Datei *cosmos_get_started.py*
 In dieser Schnellstartanleitung haben Sie gelernt, wie Sie ein Azure Cosmos DB-Konto erstellen, einen Container mit dem Daten-Explorer erstellen und eine Python-App in Visual Studio Code ausführen. Jetzt können Sie zusätzliche Daten in Ihr Azure Cosmos DB-Konto importieren. 
 
 Versuchen Sie, die Kapazitätsplanung für eine Migration zu Azure Cosmos DB durchzuführen? Sie können Informationen zu Ihrem vorhandenen Datenbankcluster für die Kapazitätsplanung verwenden.
-* Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](../convert-vcore-to-request-unit.md). 
+* Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](../convert-vcore-to-request-unit.md) 
 * Wenn Sie die typischen Anforderungsraten für Ihre aktuelle Datenbank-Workload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](estimate-ru-with-capacity-planner.md)
 
 > [!div class="nextstepaction"]

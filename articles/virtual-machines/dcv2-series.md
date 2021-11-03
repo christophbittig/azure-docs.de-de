@@ -7,12 +7,13 @@ ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: jushiman
-ms.openlocfilehash: 89714a766dfd4ddc2c952554ab12068121543044
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 54ae1665d34093fcb2ba44d0b5eb0f4f4a9bb0f7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130070772"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131008469"
 ---
 # <a name="dcsv2-series"></a>DCsv2-Serie
 
@@ -41,7 +42,7 @@ Beispiele für vertrauliche Anwendungsfälle sind Datenbanken, Blockchain, Analy
 
 ## <a name="technical-specifications"></a>Technische Spezifikationen
 
-| Size             | Physische Kerne | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBps (Cachegröße in GiB) | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBit/s) | EPC-Speicher (MiB) |
+| Size             | Physische Kerne | Memory GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBps (Cachegröße in GiB) | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBit/s) | EPC Memory MiB |
 |------------------|------|-------------|------------------------|----------------|-------------------------------------------------------------------------|----------------------------------------------|---------------------|
 | Standard_DC1s_v2 | 1    | 4           | 50                     | 1              | 2\.000/16                                                                                               | 2   | 28                                      |
 | Standard_DC2s_v2 | 2    | 8           | 100                    | 2              | 4\.000/32                                                                                               | 2  | 56                                          |

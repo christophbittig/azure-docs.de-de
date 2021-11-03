@@ -5,18 +5,21 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 07/16/2020
-ms.openlocfilehash: 8d9f54c1fcd142c77fb73c294b81bf0f11ee083f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 1b67744b66eaf5563505f72b6b151f40ed44f602
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "99557700"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131069233"
 ---
 # <a name="edit-qna-pairs-in-your-knowledge-base"></a>Bearbeiten von Frage-Antwort-Paaren in Ihrer Wissensdatenbank
 
 Mit QnA Maker können Sie die Inhalte Ihrer Wissensdatenbank auf einer benutzerfreundlichen Bearbeitungsoberfläche verwalten.
 
 Frage-Antwort-Paare werden aus einer Datenquelle (beispielsweise einer Datei oder URL) oder als redaktionelle Quelle hinzugefügt. Eine redaktionelle Quelle deutet darauf hin, dass das Frage-Antwort-Paar manuell im QnA-Portal hinzugefügt wurde. Alle Frage-Antwort-Paare können bearbeitet werden.
+
+[!INCLUDE [Custom question answering](../includes/new-version.md)]
 
 <a name="add-an-editorial-qna-set"></a>
 

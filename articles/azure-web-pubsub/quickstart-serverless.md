@@ -6,12 +6,12 @@ ms.author: yajin1
 ms.service: azure-web-pubsub
 ms.topic: tutorial
 ms.date: 03/11/2021
-ms.openlocfilehash: 787a0e4990988f35ca8e2c98eab1d9c77bea9c1b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 476b77cd2f319e5c082235ade3468ddb2fd34d44
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128576333"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131069442"
 ---
 # <a name="tutorial-create-a-serverless-real-time-chat-app-with-azure-functions-and-azure-web-pubsub-service"></a>Tutorial: Erstellen einer serverlosen Echtzeit-Chat-App mit Azure Functions und dem Azure Web PubSub-Dienst
 
@@ -73,21 +73,25 @@ In diesem Tutorial lernen Sie Folgendes:
 
 1. Installieren Sie das `Microsoft.Azure.WebJobs.Extensions.WebPubSub`-Funktionserweiterungspaket explizit.
 
-   a. Entfernen Sie den Abschnitt `extensionBundle` in `host.json`, um die Installation eines bestimmten Erweiterungspakets im nächsten Schritt zu ermöglichen. Sie können den JSON-Code für den Host auch so einfach wie unten gestalten.
-    ```json
-    {
+   1. Entfernen Sie den Abschnitt `extensionBundle` in `host.json`, um die Installation eines bestimmten Erweiterungspakets im nächsten Schritt zu ermöglichen. Sie können den JSON-Code für den Host auch so einfach wie unten gestalten.
+
+      ```json
+      {
         "version": "2.0"
-    }
-    ```
-   b. Führen Sie den Befehl zum Installieren eines bestimmten Funktionserweiterungspakets aus.
-    ```bash
-    func extensions install --package Microsoft.Azure.WebJobs.Extensions.WebPubSub --version 1.0.0-beta.3
-    ```
+      }
+      ```
+
+   1. Führen Sie den Befehl zum Installieren eines bestimmten Funktionserweiterungspakets aus.
+
+      ```bash
+      func extensions install --package Microsoft.Azure.WebJobs.Extensions.WebPubSub --version 1.0.0-beta.3
+      ```
 
 1. Erstellen Sie eine `index`-Funktion zum Lesen und Hosten einer statischen Webseite für Clients.
     ```bash
     func new -n index -t HttpTrigger
     ```
+
    # <a name="javascript"></a>[JavaScript](#tab/javascript)
    - Aktualisieren Sie `index/function.json` und kopieren Sie den folgenden JSON-Code.
         ```json

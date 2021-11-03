@@ -5,12 +5,13 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: how-to
 ms.date: 11/09/2020
-ms.openlocfilehash: ea0a02366f2c2d2c3fd656d9a6dbce111d632422
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: bdbc77bdb1b0b16085c6df8fb302c5483c36a01f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112121215"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131080686"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>Migrieren einer Knowledge Base durch Exportieren und Importieren
 
@@ -23,19 +24,9 @@ Es kann verschiedene Gründe geben, um eine Kopie Ihrer Wissensdatenbank zu erst
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
-
 > * Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/cognitive-services/) erstellen, bevor Sie beginnen.
 > * Eine über das Azure-Portal erstellte [QnA Maker-Ressource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker). Merken Sie sich die Azure Active Directory-ID, das Abonnement und den QnA-Ressourcennamen, die Sie beim Erstellen der Ressource ausgewählt haben.
 > * Richten Sie einen neuen [QnA Maker-Dienst](../How-To/set-up-qnamaker-service-azure.md) ein.
-
-# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
-
-> * Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/cognitive-services/) erstellen, bevor Sie beginnen.
-> * Die [Textanalyse-Ressource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) mit im Azure-Portal aktiviertem Feature „Benutzerdefinierte Fragen und Antworten“. Merken Sie sich Azure Active Directory-ID, Abonnement und Name der Textanalyse-Ressource, den Sie beim Erstellen der Ressource ausgewählt haben.
-> * Richten Sie [benutzerdefinierte Fragen und Antworten](../How-To/set-up-qnamaker-service-azure.md) ein.
-
----
 
 ## <a name="export-a-knowledge-base"></a>Exportieren einer Wissensdatenbank
 1. Melden Sie sich beim [QnA Maker-Portal](https://qnamaker.ai) an.

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: devx-track-js
-ms.openlocfilehash: 8cd1cd820583a177ec65c9b63066119399e4bba0
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 512eff61d6195ad0ff21a4d22bc4a9e633f7d109
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123435148"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131006713"
 ---
 # <a name="use-the-azure-maps-services-module"></a>Verwenden des Moduls „Dienste“ von Azure Maps
 
@@ -26,19 +26,19 @@ Das Web SDK für Azure Maps stellt das *Modul „Dienste“* bereit. Dieses Modu
 1. Laden Sie das Modul „Dienste“ von Azure Maps. Hierzu stehen zwei Möglichkeiten zur Verfügung:
     - Verwenden Sie die global gehostete Azure Content Delivery Network-Version des Azure Maps-Moduls „Dienste“. Fügen Sie der Datei einen Skriptverweis zum `<head>`-Element hinzu:
 
-        ```html
-        <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
-        ```
+    ```html
+    <script src="https://atlas.microsoft.com/sdk/javascript/service/2/atlas-service.min.js"></script>
+    ```
 
     - Laden Sie alternativ das Modul „Dienste“ für den Quellcode des Web SDK von Azure Maps lokal mithilfe des npm-Pakets [azure-maps-rest](https://www.npmjs.com/package/azure-maps-rest), und hosten Sie es anschließend zusammen mit Ihrer App. Dieses Paket enthält außerdem TypeScript-Definitionen. Verwenden Sie diesen Befehl:
-    
-        > **npm install azure-maps-rest**
-    
-        Fügen Sie dann der Datei einen Skriptverweis zum `<head>`-Element hinzu:
 
-         ```html
-        <script src="node_modules/azure-maps-rest/dist/atlas-service.min.js"></script>
-         ```
+      `npm install azure-maps-rest`
+
+      Fügen Sie dann der Datei einen Skriptverweis zum `<head>`-Element hinzu:
+
+      ```html
+      <script src="node_modules/azure-maps-rest/dist/atlas-service.min.js"></script>
+      ```
 
 1. Erstellen Sie eine Authentifizierungspipeline. Die Pipeline muss erstellt werden, bevor Sie einen URL-Clientendpunkt für den Dienst initialisieren können. Verwenden Sie Ihren eigenen Azure Maps-Kontoschlüssel oder Ihre Azure Active Directory-Anmeldeinformationen (Azure AD), um den Suchdienstclient von Azure Maps zu authentifizieren. In diesem Beispiel wird der URL-Client des Suchdiensts erstellt. 
 

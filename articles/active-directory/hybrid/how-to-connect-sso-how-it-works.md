@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a8fd99528e9f744a69533caa5a6009203a5f4de
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: eb536efebfa56e14ea2a14ecea088b26d9ec9461
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129232934"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131068089"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Nahtloses einmaliges Anmelden mit Azure Active Directory: Technischer Einblick
 
@@ -101,4 +101,4 @@ Das folgende Diagramm veranschaulicht die dafür notwendigen Schritte und Kompon
 - [**Schnellstart**](how-to-connect-sso-quick-start.md): Einrichten und Ausführen der nahtlosen SSO mit Azure AD
 - [**Häufig gestellte Fragen:**](how-to-connect-sso-faq.yml) Antworten auf häufig gestellte Fragen
 - [**Problembehandlung**](tshoot-connect-sso.md) – Beheben von häufig auftretenden Problemen mit diesem Feature
-- [**UserVoice:**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) Verfassen neuer Feature-Anforderungen
+- [**UserVoice:**](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789) Verfassen neuer Feature-Anforderungen

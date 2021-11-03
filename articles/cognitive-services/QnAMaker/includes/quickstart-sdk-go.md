@@ -8,12 +8,13 @@ ms.subservice: qna-maker
 ms.topic: include
 ms.date: 09/04/2020
 ms.author: v-jawe
-ms.openlocfilehash: 1ca800574f4a1c370d953c90ea5abad1a64f47b2
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: d5615896926d7b4ec86b9b6f7a6e703aafd6832f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351013"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131071251"
 ---
 Verwenden Sie die QnA Maker-Clientbibliothek für Go für Folgendes:
 
@@ -59,7 +60,7 @@ Erstellen Sie Variablen für den Azure-Endpunkt und -Schlüssel Ihrer Ressource.
 
 QnA Maker verwendet zwei unterschiedliche Objektmodelle:
 * **[QnAMakerClient](#qnamakerclient-object-model)** ist das Objekt zum Erstellen, Verwalten, Veröffentlichen und Herunterladen der Wissensdatenbank.
-* **[QnAMakerRuntime](#qnamakerruntimeclient-object-model)** ist das Objekt, das für Abfragen der Wissensdatenbank mit der GenerateAnswer-API und zum Senden neuer vorgeschlagener Fragen mithilfe der Train-API (im Rahmen des [aktiven Lernens](../concepts/active-learning-suggestions.md)) verwendet wird.
+* **[QnAMakerRuntime](#qnamakerruntimeclient-object-model)** ist das Objekt, das für Abfragen der Wissensdatenbank mit der GenerateAnswer-API und zum Senden neuer vorgeschlagener Fragen mithilfe der Train-API (im Rahmen des [aktiven Lernens](../how-to/use-active-learning.md)) verwendet wird.
 
 [!INCLUDE [Get KBinformation](./quickstart-sdk-cognitive-model.md)]
 
@@ -79,7 +80,7 @@ Eine Wissensdatenbank speichert Frage- und Antwortpaare für das [CreateKbDTO](h
 
 * Für **redaktionellen Inhalt** verwenden Sie das [QnADTO](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v4.0/qnamaker#QnADTO)-Objekt.
     * Verwenden Sie für Metadaten und Folgeaufforderungen den redaktionellen Kontext, da diese Daten auf der Ebene der einzelnen QnA-Paare hinzugefügt werden.
-* Für **Dateien** verwenden Sie das [FileDTO](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v4.0/qnamaker#FileDTO)-Objekt. Dieses Objekt enthält den Dateinamen sowie die öffentliche URL für den Zugriff auf die Datei.
+* Für **Dateien** verwenden Sie das [FileDTO](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v4.0/qnamaker#FileDTO)-Objekt. Das FileDTO-Objekt enthält den Dateinamen sowie die öffentliche URL für den Zugriff auf die Datei.
 * Verwenden Sie für **URLs** eine Liste von Zeichenfolgen zur Darstellung von öffentlich verfügbaren URLs.
 
 Rufen Sie die [create](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v4.0/qnamaker#KnowledgebaseClient.Create)-Methode auf, und übergeben Sie dann die Eigenschaft `operationId`des zurückgegebenen Vorgangs an die [getDetails](#get-status-of-an-operation)-Methode, um den Status abzurufen.

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: aahi
-ms.openlocfilehash: 338e4f0c1c47a7786e21ad98bb3e56a1505f9bb2
-ms.sourcegitcommit: ed7376d919a66edcba3566efdee4bc3351c57eda
+ms.openlocfilehash: c9dd8bdfb9af1d20433a083b48ee1b7e14658438
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/24/2021
-ms.locfileid: "105104276"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131253280"
 ---
 Führen Sie mithilfe dieses Schnellstarts Ihre erste Bildersuche mit der Bing-Bildersuche-Clientbibliothek aus, die ein Wrapper für die API ist und die gleichen Funktionen enthält. Diese einfache Python-Anwendung sendet eine Bildersuchabfrage, analysiert die JSON-Antwort und zeigt die URL des ersten zurückgegebenen Bilds an.
 
@@ -52,14 +52,16 @@ Der Quellcode für dieses Beispiel ist auf [GitHub](https://github.com/Azure-Sam
     ```python
     client = ImageSearchClient(endpoint=subscription_endpoint, credentials=CognitiveServicesCredentials(subscription_key))
     ```
+
 1. Senden Sie eine Suchabfrage an die Bing-Bildersuche-API:
+
     ```python
     image_results = client.images.search(query=search_term)
     ```
-   ## <a name="process-and-view-the-results"></a>Lassen Sie die Ergebnisse verarbeiten und anzeigen.
+
+## <a name="process-and-view-the-results"></a>Lassen Sie die Ergebnisse verarbeiten und anzeigen.
 
 Analysieren Sie die Bildergebnisse, die in der Antwort zurückgegeben werden.
-
 
 Wenn die Antwort Suchergebnisse enthält, speichern Sie das erste Ergebnis, und drucken Sie die Details aus, z.B. eine Miniaturansichts-URL, die ursprüngliche URL und die Gesamtzahl der zurückgegebenen Bilder.  
 

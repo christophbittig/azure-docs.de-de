@@ -9,12 +9,12 @@ author: nabhishek
 ms.author: abnarain
 ms.custom: synapse
 ms.date: 09/09/2021
-ms.openlocfilehash: b5b877d27e04aa81e710b518d3923d438fe0afd2
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: d802b911a462ef077fa69d62d524e763ab13efc2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124805972"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131016585"
 ---
 # <a name="transform-data-using-spark-activity-in-azure-data-factory-and-synapse-analytics"></a>Umwandlung von Daten mithilfe von Spark-Aktivitäten in Azure Data Factory und Synapse Analytics
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -58,7 +58,7 @@ Dies ist die JSON-Beispieldefinition einer Spark-Aktivität:
 
 Die folgende Tabelle beschreibt die JSON-Eigenschaften, die in der JSON-Definition verwendet werden:
 
-| Eigenschaft              | Beschreibung                              | Erforderlich |
+| Eigenschaft              | BESCHREIBUNG                              | Erforderlich |
 | --------------------- | ---------------------------------------- | -------- |
 | name                  | Der Name der Aktivität in der Pipeline.    | Ja      |
 | description           | Ein Text, der beschreibt, was mit der Aktivität ausgeführt wird.  | Nein       |
@@ -78,7 +78,7 @@ Spark-Aufträge lassen sich besser erweitern als Pig- oder Hive-Aufträge. Bei S
 
 Erstellen Sie folgende Ordnerstruktur in Azure Blob Storage, auf den der verknüpfte HDInsight-Dienst verweist. Laden Sie dann abhängige Dateien in die entsprechenden Unterordner in dem Stammordner hoch, der von **entryFilePath** repräsentiert wird. Python-Dateien werden beispielsweise in den Unterordner „pyFiles“ und jar-Dateien in den Unterordner „jars“ des Stammordners hochgeladen. Zur Laufzeit erwartet der Dienst die folgende Ordnerstruktur im Azure Blob-Speicher:     
 
-| Pfad                  | Beschreibung                              | Erforderlich | type   |
+| Pfad                  | BESCHREIBUNG                              | Erforderlich | type   |
 | --------------------- | ---------------------------------------- | -------- | ------ |
 | `.` (Stamm)            | Der Stammpfad des Spark-Auftrags im verknüpften Speicherdienst. | Ja      | Ordner |
 | &lt;benutzerdefiniert&gt; | Der Pfad, der auf die Eingabedatei des Spark-Auftrags zeigt. | Ja      | Datei   |
@@ -129,5 +129,4 @@ In den folgenden Artikeln erfahren Sie, wie Daten auf andere Weisen transformier
 * [Hadoop-Streamingaktivität](transform-data-using-hadoop-streaming.md)
 * [Spark-Aktivität](transform-data-using-spark.md)
 * [Benutzerdefinierte .NET-Aktivität](transform-data-using-dotnet-custom-activity.md)
-* [Batch Execution-Aktivität für ML Studio (klassisch)](transform-data-using-machine-learning.md)
 * [Aktivität „Gespeicherte Prozedur“](transform-data-using-stored-procedure.md)

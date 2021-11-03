@@ -5,14 +5,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 07/13/2021
+ms.date: 10/12/2021
 ms.author: cherylmc
-ms.openlocfilehash: 0f73cc08b2e6e44508a6535ba0d6c420e998a011
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: d1cf4c18c4722c327d9d74569e7709d11068dc7c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113732024"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131087063"
 ---
 # <a name="about-bastion-configuration-settings"></a>Informationen zu Azure Bastion-Konfigurationseinstellungen
 
@@ -22,8 +23,8 @@ In den Abschnitten in diesem Artikel werden die Ressourcen und Einstellungen fü
 
 Eine SKU wird auch als Tarif bezeichnet. Azure Bastion unterstützt zwei SKU-Typen: Basic und Standard. Die SKU wird während des Workflows im Azure-Portal konfiguriert, wenn Sie Bastion konfigurieren. Sie können eine [Basic-SKU zu einer Standard-SKU upgraden](#upgradesku).
 
-* Die **Basic-SKU** bietet Basisfunktionen, die es Azure Bastion ermöglichen, RDP-/SSH-Konnektivität mit virtuellen Computern (VMs) zu verwalten, ohne öffentliche IP-Adressen auf den VMs der Zielanwendung verfügbar zu machen. 
-* Die **Standard-SKU** befindet sich in der **Vorschauversion**. Die Standrad-SKU ermöglicht Premium-Features, durch die Azure Bastion die Remotekonnektivität in größerem Umfang verwalten kann. 
+* Die **Basic-SKU** bietet Basisfunktionen, die es Azure Bastion ermöglichen, RDP-/SSH-Konnektivität mit virtuellen Computern (VMs) zu verwalten, ohne öffentliche IP-Adressen auf den VMs der Zielanwendung verfügbar zu machen.
+* Die Standrad-SKU ermöglicht Premium-Features, durch die Azure Bastion die Remotekonnektivität in größerem Umfang verwalten kann.
 
 Die folgende Tabelle enthält die Features der entsprechenden SKUs. 
 
@@ -35,13 +36,13 @@ Während der Vorschauphase müssen Sie das Azure-Portal verwenden, wenn Sie die 
 
 | Methode | Wert | Links |
 | --- | --- | --- |
-| Azure-Portal | Tarif: Basic oder <br>Standard (Vorschau) | [Schnellstart: Konfigurieren von Bastion über VM-Einstellungen](quickstart-host-portal.md)<br>[Tutorial: Konfigurieren von Bastion](tutorial-create-host-portal.md) |
+| Azure-Portal | Tarif: Basic oder <br>Standard | [Schnellstart: Konfigurieren von Bastion über VM-Einstellungen](quickstart-host-portal.md)<br>[Tutorial: Konfigurieren von Bastion](tutorial-create-host-portal.md) |
 | Azure PowerShell | Nur Basic – keine Einstellungen |[Konfiguration von Bastion: PowerShell](bastion-create-host-powershell.md) |
 | Azure CLI |  Nur Basic – keine Einstellungen | [Konfigurieren von Bastion: CLI](create-host-cli.md) |
 
 ### <a name="upgrade-a-sku"></a><a name="upgradesku"></a>Aktualisieren einer SKU
 
-Azure Bastion unterstützt das Upgrade von einer Basic-SKU auf eine Standard-SKU. Die Standard-SKU befindet sich in der Vorschauversion. 
+Azure Bastion unterstützt das Upgrade von einer Basic-SKU auf eine Standard-SKU.
 
 > [!NOTE]
 > Eine Herabstufung von einer Standard-SKU auf eine Basic-SKU wird nicht unterstützt. Zum Herabstufen müssen Sie Azure Bastion löschen und neu erstellen.
@@ -53,9 +54,9 @@ Sie können diese Einstellung konfigurieren, indem Sie die folgende Methode anwe
 
 | Methode | Wert | Links |
 | --- | --- | --- |
-| Azure-Portal |Tarif  | [Upgraden einer SKU: Vorschau](upgrade-sku.md)|
+| Azure-Portal |Tarif  | [Aktualisieren einer SKU](upgrade-sku.md)|
 
-## <a name="instances-and-host-scaling-preview"></a><a name="instance"></a>Instanzen und Hostskalierung (Vorschau)
+## <a name="instances-and-host-scaling"></a><a name="instance"></a>Instanzen und Hostskalierung
 
 Eine Instanz ist eine optimierte Azure-VM, die erstellt wird, wenn Sie Azure Bastion konfigurieren. Sie wird vollständig von Azure verwaltet und führt alle Prozesse aus, die für Azure Bastion erforderlich sind. Eine Instanz wird auch als Skalierungseinheit bezeichnet. Sie stellen über eine Azure Bastion-Instanz eine Verbindung mit Client-VMs her. Wenn Sie Azure Bastion mithilfe der Basic-SKU konfigurieren, werden zwei Instanzen erstellt. Wenn Sie die Standard-SKU verwenden, können Sie die Anzahl der Instanzen angeben. Dies wird als **Hostskalierung** bezeichnet. 
 
@@ -69,7 +70,7 @@ Sie können diese Einstellung konfigurieren, indem Sie die folgende Methode anwe
 
 | Methode | Wert | Links |
 | --- | --- | --- |
-| Azure-Portal |Anzahl von Instanzen  | [Konfigurieren der Hostskalierung: Vorschau](configure-host-scaling.md)|
+| Azure-Portal |Anzahl von Instanzen  | [Konfigurieren der Hostskalierung](configure-host-scaling.md)|
 
 
 ## <a name="azure-bastion-subnet"></a><a name="subnet"></a>Azure Bastion-Subnetz

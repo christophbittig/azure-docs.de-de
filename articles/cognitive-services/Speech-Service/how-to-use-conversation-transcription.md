@@ -11,12 +11,13 @@ ms.topic: conceptual
 ms.date: 10/20/2020
 ms.author: pafarley
 zone_pivot_groups: acs-js-csharp
-ms.openlocfilehash: b3057bc9ee058ece0fd4a005c26ef8b95ec6a4b0
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: a30065bf58b2afa9d6e8411c3844071596ebc823
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123539059"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131086809"
 ---
 # <a name="get-started-with-real-time-conversation-transcription"></a>Erste Schritte mit der Unterhaltungstranskription in Echtzeit
 
@@ -25,7 +26,7 @@ Mit der **ConversationTranscriber**-API des Speech SDK können Sie Besprechungen
 ## <a name="limitations"></a>Einschränkungen
 
 * Nur in den folgenden Abonnementregionen verfügbar : `centralus`, `eastasia`, `eastus`, `westeurope`
-* Es ist ein kreisförmiges Mikrofonarray mit 7 Mikrofonen erforderlich. Das Mikrofonarray sollte [unsere Spezifikation](./speech-devices-sdk-microphone.md) erfüllen.
+* Es ist ein kreisförmiges Mikrofonarray mit 7 Mikrofonen erforderlich. Das Mikrofonarray sollte [unsere Spezifikation](./speech-sdk-microphone.md) erfüllen.
 * Das [Speech-Geräte-SDK](speech-devices-sdk.md) stellt geeignete Geräte und eine Beispiel-App zur Veranschaulichung der Unterhaltungstranskription bereit.
 
 ## <a name="prerequisites"></a>Voraussetzungen

@@ -1,18 +1,16 @@
 ---
 title: 'Tutorial: Implementieren von Continuous Integration und Continuous Delivery (CI/CD) mit GitOps unter Verwendung von Kubernetes-Clustern mit Azure Arc-Unterstützung'
 description: In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie eine CI/CD-Lösung mithilfe von GitOps und Kubernetes-Clustern mit Azure Arc-Unterstützung einrichten. Einen konzeptionellen Einblick in diesen Workflow finden Sie im Artikel „CI/CD-Workflow unter Verwendung von GitOps – Kubernetes mit Azure Arc-Unterstützung“.
-author: tcare
-ms.author: tcare
 ms.service: azure-arc
 ms.topic: tutorial
 ms.date: 03/03/2021
 ms.custom: template-tutorial, devx-track-azurecli
-ms.openlocfilehash: a325f248a4f634657d9b73e3d4b7929e0614a023
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: b73cc2a6b04d5e851611841f01890a60de71daab
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124820722"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131039732"
 ---
 # <a name="tutorial-implement-cicd-with-gitops-using-azure-arc-enabled-kubernetes-clusters"></a>Tutorial: Implementieren von Continuous Integration und Continuous Delivery (CI/CD) mit GitOps unter Verwendung von Kubernetes-Clustern mit Azure Arc-Unterstützung
 

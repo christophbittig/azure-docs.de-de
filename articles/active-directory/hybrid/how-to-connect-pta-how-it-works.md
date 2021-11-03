@@ -16,12 +16,12 @@ ms.date: 07/19/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c159842ca1693803286a164541fa631ee0537185
-ms.sourcegitcommit: 98308c4b775a049a4a035ccf60c8b163f86f04ca
+ms.openlocfilehash: 7d864e0334d4ecc4178ad45c7977ead421e2bcd5
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113105595"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131063326"
 ---
 # <a name="azure-active-directory-pass-through-authentication-technical-deep-dive"></a>Passthrough-Authentifizierung mit Azure Active Directory: Technische Einzelheiten
 Dieser Artikel enthält eine Übersicht über die Funktionsweise der Passthrough-Authentifizierung mit Azure Active Directory (Azure AD). Ausführliche technische und sicherheitsbezogene Informationen finden Sie im Artikel [Azure Active Directory-Passthrough-Authentifizierung – ausführliche Informationen zur Sicherheit](how-to-connect-pta-security-deep-dive.md).
@@ -59,5 +59,5 @@ Das folgende Diagramm veranschaulicht die dafür notwendigen Schritte und Kompon
 - [Problembehandlung:](tshoot-connect-pass-through-authentication.md) Informationen zum Beheben von allgemeinen Problemen, die bei der Passthrough-Authentifizierung auftreten können
 - [Ausführliche Informationen zur Sicherheit:](how-to-connect-pta-security-deep-dive.md) Technische Informationen zur Passthrough-Authentifizierung
 - [Nahtloses SSO mit Azure AD](how-to-connect-sso.md): Informationen zu dieser Ergänzungsfunktion
-- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): Fordern Sie neue Features über das Azure Active Directory-Forum an.
+- [UserVoice](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789): Fordern Sie neue Features über das Azure Active Directory-Forum an.
 

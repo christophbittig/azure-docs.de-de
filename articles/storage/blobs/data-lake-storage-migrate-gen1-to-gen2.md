@@ -8,12 +8,12 @@ ms.date: 07/13/2021
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 932e3e0cc51c5b74e10d86bffa5785e5f65564cf
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 16102dde6c354922f7347a33069c953724d1f3df
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129278650"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131022548"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>Migrieren von Azure Data Lake Storage von Gen1 zu Gen2
 
@@ -227,5 +227,5 @@ Sehen Sie sich den Beispielcode für das Muster mit bidirektionaler Synchronisie
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie mehr über die verschiedenen Aspekte der Einrichtung der Sicherheit für ein Speicherkonto. Weitere Informationen finden Sie im [Azure Storage-Sicherheitsleitfaden](./security-recommendations.md).
-- Optimieren Sie die Leistung für Ihren Data Lake Store. Weitere Informationen finden Sie unter [Optimieren von Azure Data Lake Storage Gen2 im Hinblick auf Leistung](data-lake-storage-performance-tuning-guidance.md).
+- Optimieren Sie die Leistung für Ihren Data Lake Store. Weitere Informationen finden Sie unter [Optimieren von Azure Data Lake Storage Gen2 im Hinblick auf Leistung](./data-lake-storage-best-practices.md).
 - Informieren Sie sich über die bewährten Methoden für die Verwaltung Ihres Data Lake Store. Weitere Informationen finden Sie unter [Bewährte Methoden zur Verwendung von Azure Data Lake Storage Gen2](data-lake-storage-best-practices.md).

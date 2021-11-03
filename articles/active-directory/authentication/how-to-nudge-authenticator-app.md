@@ -10,12 +10,12 @@ ms.author: justinha
 author: mjsantani
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c83c4c60028c77033227411d68aeb576a9b43a46
-ms.sourcegitcommit: e6de87b42dc320a3a2939bf1249020e5508cba94
+ms.openlocfilehash: cd27eb5e55b679d8cfd1589857cc88d7f27917d1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114707873"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131054360"
 ---
 # <a name="how-to-nudge-users-to-set-up-microsoft-authenticator-preview---microsoft-authenticator-app"></a>Auffordern von Benutzern zur Einrichtung von Microsoft Authenticator (Vorschauversion): Microsoft Authenticator-App
 
@@ -92,7 +92,7 @@ Die folgende Tabelle enthält Eigenschaften für **AuthenticationMethodsRegistra
 
 | Name | Mögliche Werte | BESCHREIBUNG |
 |------|-----------------|-------------|
-| state |   "enabled"<br>"disabled"<br>"default" | Ermöglicht das Aktivieren oder Deaktivieren des Features.<br>Der Standardwert wird verwendet, wenn die Konfiguration nicht explizit festgelegt wurde. In diesem Fall wird dann der Azure AD-Standardwert für diese Einstellung verwendet. Er ist aktuell „disabled“ (deaktiviert) zugeordnet.<br>Ändern Sie den Zustand nach Bedarf in „enabled“ (aktiviert) oder „disabled“ (deaktiviert).  |
+| state | "enabled"<br>"disabled"<br>"default" | Ermöglicht das Aktivieren oder Deaktivieren des Features.<br>Der Standardwert wird verwendet, wenn die Konfiguration nicht explizit festgelegt wurde. In diesem Fall wird dann der Azure AD-Standardwert für diese Einstellung verwendet. Er ist aktuell „disabled“ (deaktiviert) zugeordnet.<br>Ändern Sie den Zustand nach Bedarf in „enabled“ (aktiviert) oder „disabled“ (deaktiviert).  |
 | snoozeDurationInDays | Bereich: 0–14 | Definiert, nach wie vielen Tagen der Benutzer erneut erinnert wird.<br>Ist der Wert auf „0“ festgelegt, wird der Benutzer bei jedem MFA-Versuch erinnert.<br>Standardwert: 1 Tag |
 | includeTargets | – | Ermöglicht es, verschiedene Benutzer und Gruppen einzuschließend, auf die das Feature ausgerichtet sein soll. |
 | excludeTargets | – | Ermöglicht es, verschiedene Benutzer und Gruppen auszuschließend, die von dem Feature ausgenommen werden sollen. Wenn sich ein Benutzer in einer ausgeschlossenen Gruppe und einer eingeschlossenen Gruppe befindet, wird der Benutzer von dem Feature ausgenommen.|
@@ -156,7 +156,7 @@ Hier finden Sie einige JSON-Beispiele, die Sie für die ersten Schritte verwende
                     "targetType": "group",
                     "targetedAuthenticationMethod": "microsoftAuthenticator"
                 },
-        {
+                {
                     "id": "*********PLEASE ENTER GUID***********",
                     "targetType": "user",
                     "targetedAuthenticationMethod": "microsoftAuthenticator"
@@ -181,7 +181,7 @@ Hier finden Sie einige JSON-Beispiele, die Sie für die ersten Schritte verwende
                       "id": "*********PLEASE ENTER GUID***********",
                       "targetType": "group"
                   },
-        {
+                {
                       "id": "*********PLEASE ENTER GUID***********",
                       "targetType": "user"
                   }
@@ -192,7 +192,7 @@ Hier finden Sie einige JSON-Beispiele, die Sie für die ersten Schritte verwende
                       "targetType": "group",
                       "targetedAuthenticationMethod": "microsoftAuthenticator"
                   },
-        {
+                  {
                       "id": "*********PLEASE ENTER GUID***********",
                       "targetType": "user",
                       "targetedAuthenticationMethod": "microsoftAuthenticator"

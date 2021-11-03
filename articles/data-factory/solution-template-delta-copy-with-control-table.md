@@ -8,12 +8,12 @@ ms.subservice: tutorials
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/09/2020
-ms.openlocfilehash: 8cf8ecaaafa9697286dcaa0ae61d00853d53a311
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: b5bb939c787af16ca3affdf8ba131ea640f25ed4
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124743477"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131040963"
 ---
 # <a name="delta-copy-from-a-database-with-a-control-table"></a>Deltakopiervorgänge aus einer Datenbank mit einer Steuertabelle
 
@@ -50,44 +50,44 @@ Die Vorlage definiert die folgenden Parameter:
 
 1. Untersuchen Sie die Quelltabelle, die Sie laden möchten, und definieren Sie die Spalte für den hohen Grenzwert, auf deren Grundlage die neuen oder aktualisierten Zeilen identifiziert werden können. Der Typ dieser Spalte kann *datetime*, *int* oder ein ähnlicher Typ sein. Der Wert dieser Spalte wird erhöht, wenn neue Zeilen hinzugefügt werden. In der folgenden Beispielquelltabelle (data_source_table) können Sie die Spalte *LastModifytime* als Spalte für den hohen Grenzwert verwenden.
 
-    ```sql
-            PersonID    Name    LastModifytime
-            1   aaaa    2017-09-01 00:56:00.000
-            2   bbbb    2017-09-02 05:23:00.000
-            3   cccc    2017-09-03 02:36:00.000
-            4   dddd    2017-09-04 03:21:00.000
-            5   eeee    2017-09-05 08:06:00.000
-            6   fffffff 2017-09-06 02:23:00.000
-            7   gggg    2017-09-07 09:01:00.000
-            8   hhhh    2017-09-08 09:01:00.000
-            9   iiiiiiiii   2017-09-09 09:01:00.000
+    ```output
+    PersonID    Name            LastModifytime
+    1           aaaa            2017-09-01 00:56:00.000
+    2           bbbb            2017-09-02 05:23:00.000
+    3           cccc            2017-09-03 02:36:00.000
+    4           dddd            2017-09-04 03:21:00.000
+    5           eeee            2017-09-05 08:06:00.000
+    6           fffffff         2017-09-06 02:23:00.000
+    7           gggg            2017-09-07 09:01:00.000
+    8           hhhh            2017-09-08 09:01:00.000
+    9           iiiiiiiii       2017-09-09 09:01:00.000
     ```
-    
+
 2. Erstellen Sie in einer SQL Server- oder Azure SQL-Datenbank-Instanz eine Steuertabelle, um den hohen Grenzwert für das Laden von Deltadaten zu speichern. Im folgenden Beispiel ist der Name der Steuertabelle *watermarktable*. In der Spalte *WatermarkValue* vom Typ *datetime* dieser Tabelle wird der hohe Grenzwert gespeichert.
 
     ```sql
-            create table watermarktable
-            (
-            WatermarkValue datetime,
-            );
-            INSERT INTO watermarktable
-            VALUES ('1/1/2010 12:00:00 AM')
+    create table watermarktable
+    (
+    WatermarkValue datetime,
+    );
+    INSERT INTO watermarktable
+    VALUES ('1/1/2010 12:00:00 AM')
     ```
-    
+
 3. Erstellen Sie eine gespeicherte Prozedur in der gleichen SQL Server- oder Azure SQL-Datenbank-Instanz, mit der Sie auch die Steuertabelle erstellt haben. Die gespeicherte Prozedur dient dazu, den neuen hohen Grenzwert in der externen Steuertabelle zu speichern, damit er beim nächsten Laden von Deltadaten zur Verfügung steht.
 
     ```sql
-            CREATE PROCEDURE update_watermark @LastModifiedtime datetime
-            AS
+    CREATE PROCEDURE update_watermark @LastModifiedtime datetime
+    AS
 
-            BEGIN
+    BEGIN
 
-                UPDATE watermarktable
-                SET [WatermarkValue] = @LastModifiedtime 
+        UPDATE watermarktable
+        SET [WatermarkValue] = @LastModifiedtime 
 
-            END
+    END
     ```
-    
+
 4. Wechseln Sie zur Vorlage **Delta copy from Database** (Deltakopie aus einer Datenbank). Stellen Sie eine **neue Verbindung** mit der Quelldatenbank her, aus der Sie Daten kopieren möchten.
 
     :::image type="content" source="media/solution-template-delta-copy-with-control-table/DeltaCopyfromDB_with_ControlTable4.png" alt-text="Erstellen einer neuen Verbindung mit der Quelltabelle":::
@@ -125,11 +125,11 @@ Die Vorlage definiert die folgenden Parameter:
 13. Sie können neue Zeilen in Ihrer Quelltabelle erstellen. Hier sehen Sie ein SQL-Beispiel für die Erstellung neuer Zeilen:
 
     ```sql
-            INSERT INTO data_source_table
-            VALUES (10, 'newdata','9/10/2017 2:23:00 AM')
+    INSERT INTO data_source_table
+    VALUES (10, 'newdata','9/10/2017 2:23:00 AM')
 
-            INSERT INTO data_source_table
-            VALUES (11, 'newdata','9/11/2017 9:01:00 AM')
+    INSERT INTO data_source_table
+    VALUES (11, 'newdata','9/11/2017 9:01:00 AM')
     ```
 
 14. Klicken Sie auf **Debuggen**, geben Sie die **Parameter** ein, und klicken Sie dann auf **Fertig stellen**, um die Pipeline erneut auszuführen.

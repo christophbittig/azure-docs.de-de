@@ -1,17 +1,17 @@
 ---
 title: Microsoft Azure FXT Edge Filer – Übersicht
 description: Beschreibt Azure FXT Edge Filer-Hybridspeichercache, eine aktive Archiv- und Dateizugriffsbeschleuniger-Lösung für High Performance Computing.
-author: ekpgh
+author: femila
 ms.service: fxt-edge-filer
 ms.topic: overview
 ms.date: 07/01/2019
-ms.author: v-erkel
-ms.openlocfilehash: 7332a71ef3292cbc6575ba14ae642be171d5772d
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.author: femila
+ms.openlocfilehash: ad0a530f5453060ede34059e3265b9e784e9810f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111414941"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131085941"
 ---
 # <a name="what-is-azure-fxt-edge-filer-hybrid-storage-cache"></a>Was ist Azure FXT Edge Filer-Hybridspeichercache?
 
@@ -43,11 +43,11 @@ Der Azure FXT Edge Filer kann verwendet werden, um den schnellen Dateizugriff vo
 
 Erweitern Sie Ihr Rechenzentrum mit Azure FXT Edge Filer als Zugriffspunkt in den Cloudspeicher.
 
-## <a name="features"></a>Funktionen
+## <a name="features"></a>Features
 
 Es sind zwei Hardwaremodelle verfügbar.
 
-| Modellieren | DRAM | NVMe-SSD | Netzwerkports |
+| Modell | DRAM | NVMe-SSD | Netzwerkports |
 |-------|------|----------|---------------|
 | FXT 6600 | 1\.536 GB | 25,6 TB | 6 x 25Gb/10Gb + 2 x 1Gb |
 | FXT 6400 | 768 GB | 12,8 TB | 6 x 25Gb/10Gb + 2 x 1Gb |

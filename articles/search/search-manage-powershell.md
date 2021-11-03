@@ -10,12 +10,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 08/03/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 65df8c53522bb971bcd089967047f8a86de55f44
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b0dea6bebd20ca5071a4c1395d5835f31c80e90c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340206"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131048100"
 ---
 # <a name="manage-your-azure-cognitive-search-service-with-powershell"></a>Verwalten des Azure Cognitive Search-Diensts mit PowerShell
 > [!div class="op_single_selector"]
@@ -241,7 +241,7 @@ New-AzSearchService -ResourceGroupName <resource-group-name> `
 
 ## <a name="create-a-service-with-a-private-endpoint"></a>Erstellen eines Diensts mit einem privaten Endpunkt
 
-[Private Endpunkte](../private-link/private-endpoint-overview.md) für Azure Cognitive Search ermöglichen, dass ein Client in einem virtuellen Netzwerk über eine [private Verbindung](../private-link/private-link-overview.md) sicher auf Daten in einem Suchindex zugreifen kann. Der private Endpunkt verwendet eine IP-Adresse aus dem [Adressraum des virtuellen Netzwerks](../virtual-network/private-ip-addresses.md) für Ihren Suchdienst. Der Netzwerkdatenverkehr zwischen dem Client und dem Suchdienst wird über das virtuelle Netzwerk und eine private Verbindung im Microsoft-Backbonenetzwerk geleitet, sodass keine Offenlegung im öffentlichen Internet erfolgt. Weitere Details finden Sie unter [Erstellen eines privaten Endpunkts für eine sichere Verbindung mit Azure Cognitive Search](service-create-private-endpoint.md).
+[Private Endpunkte](../private-link/private-endpoint-overview.md) für Azure Cognitive Search ermöglichen, dass ein Client in einem virtuellen Netzwerk über eine [private Verbindung](../private-link/private-link-overview.md) sicher auf Daten in einem Suchindex zugreifen kann. Der private Endpunkt verwendet eine IP-Adresse aus dem [Adressraum des virtuellen Netzwerks](../virtual-network/ip-services/private-ip-addresses.md) für Ihren Suchdienst. Der Netzwerkdatenverkehr zwischen dem Client und dem Suchdienst wird über das virtuelle Netzwerk und eine private Verbindung im Microsoft-Backbonenetzwerk geleitet, sodass keine Offenlegung im öffentlichen Internet erfolgt. Weitere Details finden Sie unter [Erstellen eines privaten Endpunkts für eine sichere Verbindung mit Azure Cognitive Search](service-create-private-endpoint.md).
 
 Im folgenden Beispiel wird veranschaulicht, wie Sie einen Suchdienst mit einem privaten Endpunkt erstellen. 
 

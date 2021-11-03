@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 06/04/2021
 ms.author: sawinark
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e8176095bb50f4ead8337997669f4856de4b5873
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 6ce4cb52ed3748abf06daab1685fc121f225de67
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124811594"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131033302"
 ---
 # <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>Ausführen eines SSIS-Pakets mit der Aktivität einer gespeicherten Prozedur in Azure Data Factory
 
@@ -154,9 +154,9 @@ Installieren Sie die aktuellen Azure PowerShell-Module, indem Sie die Anweisunge
 ### <a name="create-a-data-factory"></a>Erstellen einer Data Factory
 Sie können wahlweise die gleiche Data Factory verwenden, die die Azure-SSIS IR aufweist, oder eine separate Data Factory erstellen. Das folgende Verfahren beschreibt die Schritte zum Erstellen einer Data Factory. In dieser Data Factory erstellen Sie eine Pipeline mit einer Aktivität einer gespeicherten Prozedur. Die Aktivität der gespeicherten Prozedur führt eine gespeicherte Prozedur in der SSISDB-Datenbank aus, um Ihr SSIS-Paket auszuführen. 
 
-1. Definieren Sie eine Variable für den Ressourcengruppennamen zur späteren Verwendung in PowerShell-Befehlen. Kopieren Sie den folgenden Befehlstext nach PowerShell, geben Sie einen Namen für die [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md) in doppelten Anführungszeichen an, und führen Sie dann den Befehl aus. Beispiel: `"adfrg"`. 
+1. Definieren Sie eine Variable für den Ressourcengruppennamen zur späteren Verwendung in PowerShell-Befehlen. Kopieren Sie den folgenden Befehlstext nach PowerShell, geben Sie einen Namen für die [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md) in doppelten Anführungszeichen an, und führen Sie dann den Befehl aus. Beispiel: `"adfrg"`.
    
-     ```powershell
+    ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup";
     ```
 
