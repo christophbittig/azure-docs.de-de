@@ -10,12 +10,13 @@ ms.topic: how-to
 ms.date: 10/07/2021
 ms.author: vikurpad
 recommendations: false
-ms.openlocfilehash: 11010ebe6a4afa8698491dacfb495625a8445779
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: fd0c9c1ebaf177f6f10698631b96e2c27825603f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130240412"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131020823"
 ---
 # <a name="form-recognizer-v30-migration--preview"></a>Migration der Formularerkennung v3.0 | Vorschau
 
@@ -104,6 +105,7 @@ Das neue Antwortformat ist kompakter, und die vollständige Ausgabe wird immer z
 ## <a name="changes-to-analyze-result"></a>Änderungen zum Analysieren des Ergebnisses
 
 Die Analyseantwort wurde auf die folgenden Ergebnisse der obersten Ebene umgestaltet, um mehrseitige Elemente zu unterstützen.
+
 * Seiten
 * Tabellen
 * keyValuePairs
@@ -249,6 +251,7 @@ Die Analyseantwort wurde auf die folgenden Ergebnisse der obersten Ebene umgesta
 ## <a name="build-or-train-model"></a>Erstellen oder Trainieren eines Modells
 
 Das Modellobjekt verfügt über zwei Updates in der neuen API.
+
 * ```modelId``` ist jetzt eine Eigenschaft, die für ein Modell für einen lesbaren Namen festgelegt werden kann.
 * ```modelName``` wurde in ```description``` umbenannt.
 
@@ -268,6 +271,7 @@ POST https://{your-form-recognizer-endpoint}/formrecognizer/documentModels:build
   }
 }
 ```
+
 ## <a name="changes-to-compose-model"></a>Änderungen beim Zusammenstellen des Modells
 
 Das Zusammensetzen von Modellen ist jetzt auf eine einzelne Schachtelungsebene beschränkt. Zusammengestellte Modelle sind jetzt mit benutzerdefinierten Modellen durch das Hinzufügen von ```modelId```- und ```description```-Eigenschaften konsistent.
@@ -298,7 +302,8 @@ Die einzigen Änderungen an der Kopiermodellfunktion sind:
 * Die HTTP-Aktion für ```authorizeCopy``` ist jetzt eine POST-Anforderung.
 * Die Autorisierungsnutzdaten enthalten alle Informationen, die zum Übermitteln der Kopieranforderung erforderlich sind.
 
-Autorisieren Sie die Kopie.
+***Autorisieren Sie die Kopie***
+
 ```json
 POST https://{targetHost}/formrecognizer/documentModels:authorizeCopy?api-version=2021-09-30-preview
 {
@@ -306,6 +311,7 @@ POST https://{targetHost}/formrecognizer/documentModels:authorizeCopy?api-versio
   "description": "{targetModelDescription}",
 }
 ```
+
 Verwenden Sie den Antworttext der Autorisierungsaktion, um die Anforderung für die Kopie zu erstellen.
 
 ```json
@@ -324,7 +330,7 @@ POST https://{sourceHost}/formrecognizer/documentModels/{sourceModelId}:copy-to?
 
 Listenmodelle wurden erweitert, um jetzt vordefinierte und benutzerdefinierte Modelle zurückzugeben. Alle vordefinierten Modellnamen beginnen mit ```prebuilt-```. Nur Modelle mit dem Status „Erfolgreich“ werden zurückgegeben. Informationen zum Auflisten von Modellen, die entweder fehlerhaft oder in Bearbeitung sind, finden Sie unter [Auflisten von Vorgängen](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/GetModels).
 
-Beispielanforderung für Listenmodelle
+***Beispielanforderung für Listenmodelle***
 
 ```json
 GET https://{your-form-recognizer-endpoint}/formrecognizer/documentModels?api-version=2021-09-30-preview
@@ -339,12 +345,15 @@ GET https://{your-form-recognizer-endpoint}/formrecognizer/documentModels/{model
 ```
 
 ## <a name="new-get-info-operation"></a>Neuer Vorgang zum Abrufen von Informationen
+
 Der ```info```-Vorgang für den Dienst gibt die Anzahl der benutzerdefinierten Modelle und den Grenzwert für benutzerdefinierte Modelle zurück.
 
 ```json
 GET https://{your-form-recognizer-endpoint}/formrecognizer/info? api-version=2021-09-30-preview
 ```
-Beispiel für eine Antwort
+
+***Beispiel für eine Antwort***
+
 ```json
 {
   "customDocumentModels": {

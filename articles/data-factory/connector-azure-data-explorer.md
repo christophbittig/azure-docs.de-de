@@ -9,12 +9,12 @@ ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
 ms.date: 10/14/2021
-ms.openlocfilehash: a764b6e0046b399d1984f13404aae6ba1eb4d72f
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: 8aafbbd0cc7063fdccf3ae44e9442fa86cfe5f94
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130063885"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131005763"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory-or-synapse-analytics"></a>Kopieren von Daten in oder aus Azure Data Explorer mithilfe von Azure Data Factory oder Synapse Analytics
 
@@ -185,7 +185,7 @@ Führen Sie die folgenden Schritte aus, um die Authentifizierung mit einer benut
     - Weisen Sie der Datenbank **als Quelle** mindestens die Rolle **Database viewer** (Anzeigender Datenbankbenutzer) zu.
     - Weisen Sie der Datenbank **als Senke** mindestens die Rolle **Database ingestor** (Datenbankerfasser) zu.
      
-2. Weisen Sie Ihrer Data Factory oder Ihrem Synapse-Arbeitsbereich eine oder mehrere benutzerseitig zugewiesene verwaltete Identitäten zu, und [erstellen Sie Anmeldeinformationen](data-factory-service-identity.md#credentials) für jede benutzerseitig zugewiesene verwaltete Identität.
+2. Weisen Sie Ihrer Data Factory oder Ihrem Synapse-Arbeitsbereich eine oder mehrere benutzerseitig zugewiesene verwaltete Identitäten zu, und [erstellen Sie Anmeldeinformationen](credentials.md) für jede benutzerseitig zugewiesene verwaltete Identität.
 
 Folgende Eigenschaften werden für den mit Azure Data Explorer verknüpften Dienst unterstützt:
 

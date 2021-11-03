@@ -9,15 +9,15 @@ ms.custom: seodec18, cog-serv-seo-aug-2020
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 07/22/2021
+ms.date: 10/14/2021
 ms.author: aahi
 keywords: Lokal, Docker, Container
-ms.openlocfilehash: f8e2197d5eb84c3ae25dc0b4ebe61ca085badca9
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.openlocfilehash: 7dc50f49bc352411c0f9e4cb48bad32eb2ae6aaa
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114603308"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "131073603"
 ---
 # <a name="install-and-run-docker-containers-for-luis"></a>Installieren und Ausführen von Docker-Containern für LUIS
 
@@ -369,7 +369,7 @@ Nachdem Sie das Protokoll hochgeladen haben, [überprüfen Sie die Endpunktäuß
 
 <!--  ## Validate container is running -->
 
-[!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
+[!INCLUDE [Container API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
 
 ## <a name="stop-the-container"></a>Beenden des Containers
 
@@ -380,6 +380,8 @@ Zum Herunterfahren des Containers drücken Sie in der Befehlszeilenumgebung, in 
 Wenn Sie den Container mit einer [Ausgabenbereitstellung](luis-container-configuration.md#mount-settings) ausführen und die Protokollierung aktiviert ist, generiert der Container Protokolldateien. Diese sind hilfreich, um Probleme beim Starten oder Ausführen des Containers zu beheben.
 
 [!INCLUDE [Cognitive Services FAQ note](../containers/includes/cognitive-services-faq-note.md)]
+
+[!INCLUDE [Diagnostic container](../containers/includes/diagnostics-container.md)]
 
 ## <a name="billing"></a>Abrechnung
 

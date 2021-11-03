@@ -14,14 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2021
 ms.author: bagol
-ms.openlocfilehash: 5a7df5ba2de5b3d12e39b403be6a9e336734d144
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 02ffb7089ac0888fe918ca8f11898f479f273234
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123261064"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131014066"
 ---
 # <a name="deploy-a-log-forwarder-to-ingest-syslog-and-cef-logs-to-azure-sentinel"></a>Bereitstellung eines Protokoll-Forwarders zum Erfassen von Syslog- und CEF-Protokollen in Azure Sentinel
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 Um Syslog- und CEF-Protokolle in Azure Sentinel zu erfassen, insbesondere von Geräten und Appliances, auf denen Sie den Log Analytics-Agenten nicht direkt installieren können, müssen Sie einen Linux Computer bestimmen und konfigurieren, der die Protokolle von Ihren Geräten sammelt und sie an Ihren Azure Sentinel-Arbeitsbereich weiterleitet. Bei diesem Computer kann es sich um einen physischen oder virtuellen Computer in Ihrer lokalen Umgebung, eine Azure-VM oder eine VM in einer anderen Cloud handeln. 
 

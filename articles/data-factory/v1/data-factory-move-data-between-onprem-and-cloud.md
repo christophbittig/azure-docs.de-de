@@ -8,12 +8,12 @@ ms.subservice: v1
 ms.topic: conceptual
 ms.date: 10/22/2021
 robots: noindex
-ms.openlocfilehash: 90fd10d9ccde297989f6c372562bc088240783a7
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: ac9b0d0105ed28847fbf0db4d7ba8cc420fa2328
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130264254"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131059640"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway
 > [!NOTE]
@@ -187,7 +187,7 @@ In diesem Schritt erstellen Sie die Eingabe- und Ausgabedatasets, die ein- und a
 ### <a name="prepare-on-premises-sql-server-for-the-tutorial"></a>Vorbereitung des lokalen SQL Servers für das Lernprogramm
 1. Verwenden Sie in der Datenbank, die Sie für den verknüpften SQL Server-Dienst (**SqlServerLinkedService**) angegeben haben, das folgende SQL-Skript zum Erstellen der Tabelle **emp** in der Datenbank.
 
-    ```SQL   
+    ```sql
     CREATE TABLE dbo.emp
     (
         ID int IDENTITY(1,1) NOT NULL,
@@ -197,9 +197,10 @@ In diesem Schritt erstellen Sie die Eingabe- und Ausgabedatasets, die ein- und a
     )
     GO
     ```
+
 2. Fügen Sie einige Beispiele in die Tabelle ein:
 
-    ```SQL
+    ```sql
     INSERT INTO emp VALUES ('John', 'Doe')
     INSERT INTO emp VALUES ('Jane', 'Doe')
     ```
@@ -207,10 +208,11 @@ In diesem Schritt erstellen Sie die Eingabe- und Ausgabedatasets, die ein- und a
 ### <a name="create-input-dataset"></a>Erstellen eines Eingabedatasets
 
 1. Klicken Sie im **Data Factory-Editor** in der Befehlszeile auf **... Mehr**, auf der Befehlszeile auf **Neues Dataset** und dann auf **SQL Server-Tabelle**.
+
 2. Ersetzen Sie das JSON-Skript im rechten Bereich durch folgenden Text:
 
-    ```JSON   
-    {        
+    ```json
+    {
         "name": "EmpOnPremSQLTable",
         "properties": {
             "type": "SqlServerTable",
@@ -231,8 +233,9 @@ In diesem Schritt erstellen Sie die Eingabe- und Ausgabedatasets, die ein- und a
                 }
             }
         }
-    }     
-    ```       
+    }
+    ```
+
    Beachten Sie folgende Punkte:
 
    * **type** ist auf **SqlServerTable** festgelegt.
@@ -241,14 +244,15 @@ In diesem Schritt erstellen Sie die Eingabe- und Ausgabedatasets, die ein- und a
    * Für ein Eingabedataset, das nicht durch eine andere Pipeline in Azure Data Factory generiert wird, müssen Sie **external** auf **true** festlegen. Dies bedeutet, dass die eingegebenen Daten außerhalb des Azure Data Factory-Diensts erstellt werden. Optional können Sie externe Datenrichtlinien mit dem **externalData**-Element im **policy**-Abschnitt angeben.    
 
    Details zu JSON-Eigenschaften finden Sie unter [Verschieben von Daten in und aus SQL Server](data-factory-sqlserver-connector.md).
-3. Klicken Sie in der Befehlsleiste auf **Bereitstellen** , um das Dataset bereitzustellen.  
+
+3. Klicken Sie in der Befehlsleiste auf **Bereitstellen** , um das Dataset bereitzustellen.
 
 ### <a name="create-output-dataset"></a>Erstellen des Ausgabedatasets
 
 1. Klicken Sie im **Data Factory-Editor** auf der Symbolleiste auf **Neues Dataset** und dann auf **Azure Blob Storage** .
 2. Ersetzen Sie das JSON-Skript im rechten Bereich durch folgenden Text:
 
-    ```JSON   
+    ```json
     {
         "name": "OutputBlobTable",
         "properties": {
@@ -266,8 +270,9 @@ In diesem Schritt erstellen Sie die Eingabe- und Ausgabedatasets, die ein- und a
                 "interval": 1
             }
         }
-     }
-    ```   
+    }
+    ```
+
    Beachten Sie folgende Punkte:
 
    * **type** ist auf **AzureBlob** festgelegt.
@@ -344,11 +349,10 @@ In diesem Schritt erstellen Sie eine **Pipeline** mit einer **Kopieraktivität**
          "isPaused": false
        }
      }
-    ```   
+    ```
+
    > [!IMPORTANT]
    > Ersetzen Sie den Wert der **start**-Eigenschaft durch den aktuellen Tag und den der **end**-Eigenschaft durch den nächsten Tag.
-   >
-   >
 
    Beachten Sie folgende Punkte:
 

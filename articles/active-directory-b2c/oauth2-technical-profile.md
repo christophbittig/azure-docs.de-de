@@ -3,20 +3,20 @@ title: Definieren eines technischen OAuth2-Profils in einer benutzerdefinierten 
 titleSuffix: Azure AD B2C
 description: Erfahren Sie, wie Sie ein technisches OAuth2-Profil in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C definieren.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 12/11/2020
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: e87772b6911e69b94f66cf09f0700f0025947fd0
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.openlocfilehash: 78cfaa9c3bb977c915f0b1a836c48606d1a40f40
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107283829"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "131028156"
 ---
 # <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen OAuth2-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 

@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: reference
 ms.date: 10/05/2021
 ms.author: robb
-ms.openlocfilehash: e0843f9e25b3059bbdd0102e4a830f151b0e87b0
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 06d7fb0569572bc688f81154a4e149032cf996ed
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129996910"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130252880"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Unterstützte Metriken von Azure Monitor
 
@@ -1584,7 +1584,7 @@ Mit dem aktuellen Update wird eine neue Spalte hinzugefügt, und die Metriken we
 |---|---|---|---|---|---|---|
 |AddRegion|Ja|Region hinzugefügt|Anzahl|Anzahl|Region hinzugefügt|Region|
 |AutoscaleMaxThroughput|Nein|Autoskalierung – Maximaler Durchsatz|Anzahl|Maximum|Maximaler Durchsatz für Autoskalierung|DatabaseName, CollectionName|
-|AvailableStorage|Nein|Verfügbarer Speicher (veraltet)|Byte|Gesamt|Die Metrik „Verfügbarer Speicher“ wird Ende September 2023 aus Azure Monitor entfernt. Die Speichergröße für Cosmos DB-Sammlungen ist jetzt unbegrenzt. Die einzige Einschränkung besteht darin, dass die Speichergröße für jeden logischen Partitionsschlüssel 20 GB beträgt. Sie können PartitionKeyStatistics im Diagnoseprotokoll aktivieren, um den Speicherverbrauch der wichtigsten Partitionsschlüssel zu ermitteln. Weitere Informationen zum Speicherkontingent für Cosmos DB finden Sie in diesem Dokument [https://docs.microsoft.com/azure/cosmos-db/concepts-limits](/azure/cosmos-db/concepts-limits). Nach diesem Datum werden verbleibende Warnungsregeln, die noch für die veraltete Metrik definiert sind, automatisch deaktiviert.|CollectionName, DatabaseName, Region|
+|AvailableStorage|Nein|Verfügbarer Speicher (veraltet)|Byte|Gesamt|Die Metrik „Verfügbarer Speicher“ wird Ende September 2023 aus Azure Monitor entfernt. Die Speichergröße für Cosmos DB-Sammlungen ist jetzt unbegrenzt. Die einzige Einschränkung besteht darin, dass die Speichergröße für jeden logischen Partitionsschlüssel 20 GB beträgt. Sie können PartitionKeyStatistics im Diagnoseprotokoll aktivieren, um den Speicherverbrauch der wichtigsten Partitionsschlüssel zu ermitteln. Weitere Informationen zum Speicherkontingent für Cosmos DB finden Sie in diesem Dokument [https://docs.microsoft.com/azure/cosmos-db/concepts-limits](../../cosmos-db/concepts-limits.md). Nach diesem Datum werden verbleibende Warnungsregeln, die noch für die veraltete Metrik definiert sind, automatisch deaktiviert.|CollectionName, DatabaseName, Region|
 |CassandraConnectionClosures|Nein|Abschluss von Cassandra-Verbindungen|Anzahl|Gesamt|Anzahl von Cassandra-Verbindungen, die geschlossen wurden, gemeldet mit einer Granularität von einer Minute|APIType, Region, ClosureReason|
 |CassandraConnectorAvgReplicationLatency|Nein|Cassandra-Connector – Durchschnittliche Replikationslatenz|Millisekunden|Average|Durchschnittliche Replikationslatenz im Cassandra-Connector|Keine Dimensionen|
 |CassandraConnectorReplicationHealthStatus|Nein|Cassandra-Connector – Integritätsstatus|Anzahl|Anzahl|Integritätsstatus des Cassandra-Connectors|NotStarted, ReplicationInProgress, Error|

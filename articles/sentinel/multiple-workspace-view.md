@@ -14,16 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/20/2020
 ms.author: yelevin
-ms.openlocfilehash: 59550287dfa749e22334f9f238efa5be70b70252
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: c2063356b62a3b91bf3bf04453ea05f28788cab5
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122345907"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131009375"
 ---
 # <a name="work-with-incidents-in-many-workspaces-at-once"></a>Arbeiten mit Vorfällen in vielen Arbeitsbereichen gleichzeitig 
 
- Um die Funktionen von Azure Sentinel in vollem Umfang nutzen zu können, empfiehlt Microsoft die Verwendung einer Umgebung mit einem einzelnen Arbeitsbereich. Es gibt jedoch einige Anwendungsfälle, bei denen in einigen Fällen – (z. B. bei einem [Managed Security Service Provider (MSSP)](./multiple-tenants-service-providers.md) und seinen Kunden – mehrere Arbeitsbereiche mit mehreren Mandanten benötigt werden. Die **Ansicht mit mehreren Arbeitsbereichen** ermöglicht es Ihnen, Sicherheitsvorfälle in mehreren Arbeitsbereichen gleichzeitig anzuzeigen und mit ihnen zu arbeiten, sogar mandantenübergreifend, sodass Sie die volle Transparenz und Kontrolle über die Sicherheitsreaktionsfähigkeit Ihres Unternehmens behalten.
+ [!INCLUDE [Banner for top of topics](./includes/banner.md)]
+
+Um die Funktionen von Azure Sentinel in vollem Umfang nutzen zu können, empfiehlt Microsoft die Verwendung einer Umgebung mit einem einzelnen Arbeitsbereich. Es gibt jedoch einige Anwendungsfälle, bei denen in einigen Fällen – (z. B. bei einem [Managed Security Service Provider (MSSP)](./multiple-tenants-service-providers.md) und seinen Kunden – mehrere Arbeitsbereiche mit mehreren Mandanten benötigt werden. Die **Ansicht mit mehreren Arbeitsbereichen** ermöglicht es Ihnen, Sicherheitsvorfälle in mehreren Arbeitsbereichen gleichzeitig anzuzeigen und mit ihnen zu arbeiten, sogar mandantenübergreifend, sodass Sie die volle Transparenz und Kontrolle über die Sicherheitsreaktionsfähigkeit Ihres Unternehmens behalten.
 
 [!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
@@ -58,4 +61,3 @@ In der **Ansicht mit mehreren Arbeitsbereichen** ist zurzeit nur der Bildschirm 
 In diesem Dokument haben Sie erfahren, wie Sie Vorfälle in mehreren Azure Sentinel-Arbeitsbereichen gleichzeitig anzeigen und mit diesen arbeiten. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
 - Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](get-visibility.md).
 - Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](detect-threats-built-in.md).
-

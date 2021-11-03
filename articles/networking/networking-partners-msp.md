@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: sukishen
-ms.openlocfilehash: 9530d9fc9bbe4a7204d25ea264a97162037ae3ae
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 0b34969a2132f851db1bce32af365d7975b25d57
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123476104"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131004971"
 ---
 # <a name="about-azure-networking-msp-partners"></a>Informationen zu Azure Networking-MSP-Partnern
 
@@ -62,7 +62,7 @@ Kunden können MSP-Dienstangebote im Azure Marketplace oder direkt beim MSP-erwe
 |[TCTS](https://www.tatacommunications-ts.com/index.php)|[Azure-Migration: dreiwöchige Bewertung](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/tcs.azure_migration_assessment)|||||
 |[Tata Communications](https://www.tatacommunications.com/about/our-alliances/microsoft-alliance/)||[Managed Azure ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tata_communications.managed_expressroute?tab=Overview)|[Verwaltete Virtual WAN-Instanz](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/tata_communications.managed_azure_vwan_for_sdwan?tab=Overview)|||
 |[Tech Mahindra](https://www.techmahindra.com/en-in/network-services/)|[Verwaltete End-to-End-Network Services von Tech Mahindra](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/techm.techm-network-transformstrategy?tab=Overview)|||[Privates Azure-LTE-MSP](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/techm.techm-networking-azureprivate5g?tab=Overview)|
-|[Vigilant IT](https://vigilant.it/manage-cloud-service/)|[Azure-Integritätsüberprüfung: Dreitägige Bewertung](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/vigilant-it.ahc01)||||
+|[Vigilant IT](https://vigilant.it/cloud-infrastructure/cloud-management/)|[Azure-Integritätsüberprüfung: Dreitägige Bewertung](https://azuremarketplace.microsoft.com/en-us/marketplace/consulting-services/greymatter.azurehealth)||||
 |[Vandis](https://www.vandis.com/microsoft-azure-practice/)|[Verwalteter NAC mit Aruba ClearPass-Richtlinien-Manager](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_aruba_clearpass?tab=Overview)|[Vandis Managed ExpressRoute](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_expressroute?tab=Overview)|[Vandis Managed VWAN Powered by Fortinet](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_fortinet?tab=Overview); [Vandis Managed VWAN Powered by Palo Alto Networks](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_managed_vwan_powered_by_palo_alto_networks?tab=Overview); [Managed VWAN Powered by Barracuda CloudGen WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/vandis.vandis_barracuda_vwan?tab=Overview)|
 |[Zertia](https://zertia.es/)||[ExpressRoute – InterCloud-Konnektivität](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/zertiatelecomunicacionessl1615311863650.zertia-inter-conect-of103?tab=Overview)|[Enterprise Connectivity Suite – Virtual WAN](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/zertiatelecomunicacionessl1615311863650.zertia-vw-suite-of101?tab=Overview); [Verwalten von Virtual WAN – SD-WAN Fortinet](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/zertiatelecomunicacionessl1615311863650.zertia-mvw-fortinet-of101?tab=Overview); [Verwalten von Virtual WAN – SD-WAN Cisco Meraki](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/zertiatelecomunicacionessl1615311863650.zertia-mvw-cisco-of101?tab=Overview); [Verwalten von Virtual WAN – SD-WAN Citrix](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/zertiatelecomunicacionessl1615311863650.zertia-mvw-citrix-of101?tab=Overview);|||
 

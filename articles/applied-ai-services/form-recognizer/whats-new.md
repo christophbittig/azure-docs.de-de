@@ -9,18 +9,19 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 10/07/2021
 ms.author: lajanuar
-ms.openlocfilehash: 8d118d72b267cc42780f198a1fb0dc63f0f0d965
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 685a5f6a7eec89f966e165179db7417f7d848d9b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130233599"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131026598"
 ---
 <!-- markdownlint-disable MD024 -->
 <!-- markdownlint-disable MD036 -->
 # <a name="whats-new-in-azure-form-recognizer"></a>Neuerungen in der Azure-Formularerkennung
 
-Der Formularerkennungsdienst wird fortlaufend aktualisiert. Speichern Sie ein Lesezeichen für diese Seite, um zu Versionshinweisen, Featureerweiterungen und Dokumentationsupdates auf dem neuesten Stand zu bleiben.
+Der Formularerkennungsdienst wird fortlaufend aktualisiert. Speichern Sie ein Lesezeichen für diese Seite, um bei Versionshinweisen, Verbesserungen von Features und Aktualisierungen der Dokumentation auf dem neuesten Stand zu bleiben.
 
 ## <a name="october-2021"></a>Oktober 2021
 
@@ -63,7 +64,7 @@ Starten Sie mit der neuen [REST API](https://westus2.dev.cognitive.microsoft.com
 
     ### <a name="charts"></a>Diagramme
 
-    :::image type="content" source="media/portal-metrics-charts.png" alt-text="Screenshot eines Beispieldiagramms für Metriken im Azure-Portal":::
+    :::image type="content" source="media/portal-metrics-charts.png" alt-text="Screenshot eines Beispieldiagramms für Metriken im Azure-Portal.":::
 
 *  **ID-Dokument**-Modellaktualisierung: gegebene Namen einschließlich eines Suffixes, mit oder ohne Punkt, erfolgreich verarbeiten:
 
@@ -455,11 +456,11 @@ pip-Paketversion 3.1.0b4
 * **Qualitätsverbesserungen** – Extraktionsverbesserungen, einschließlich Verbesserungen der einstelligen Extraktion.
 * **Neues Feature „try-it-out“ im Tool für die Beschriftung von Beispielen für die Formularerkennung** – Möglichkeit zum Ausprobieren von vordefinierten Modellen für Rechnungen, Belege und Visitenkarten sowie der Layout-API mithilfe dieses Tools. Sehen Sie sich an, wie Ihre Daten extrahiert werden, ohne Code schreiben zu müssen.
 
-  [**Probieren Sie das Formularerkennungstool für die Beschriftung von Beispielen aus.**](https://fott-2-1.azurewebsites.net)
+  [**Probieren Sie das Formularerkennungstool für die Bezeichnung von Beispielen aus**](https://fott-2-1.azurewebsites.net)
 
-  ![Screenshot: Verwenden des Tools für die Beschriftung von Beispielen](./media/ui-preview.jpg)
+  ![Screenshot: Tool für die Bezeichnung von Beispielen.](./media/ui-preview.jpg)
 
-* **Feedbackschleife:** Wenn Sie Dateien über das Tool für die Beschriftung von Beispielen analysieren, können Sie es jetzt auch dem Trainingssatz hinzufügen und die Bezeichnungen bei Bedarf anpassen und trainieren, um das Modell zu verbessern.
+* **Feedbackschleife** – Wenn Sie Dateien über das Tool für die Bezeichnung von Beispielen analysieren, können Sie es jetzt auch dem Trainingssatz hinzufügen und die Bezeichnungen bei Bedarf anpassen und trainieren, um das Modell zu verbessern.
 * **Automatisches Bezeichnen von Dokumenten:** Bezeichnet zusätzliche Dokumente automatisch basierend auf zuvor bezeichneten Dokumenten im Projekt
 
 ## <a name="august-2020"></a>August 2020
@@ -484,7 +485,7 @@ pip-Paketversion 3.1.0b4
 **Neue Beispiele** sind auf GitHub verfügbar.
 
 * Unter [Knowledge Extraction Recipes - Forms Playbook](https://github.com/microsoft/knowledge-extraction-recipes-forms) werden bewährte Methoden aus echten Kundenengagements mit der Formularerkennung gesammelt und nützliche Codebeispiele, Checklisten und Beispielpipelines für die Entwicklung dieser Projekte bereitgestellt.
-* Das [Samplebezeichnungstool](https://github.com/microsoft/OCR-Form-Tools) wurde aktualisiert, um die neue Funktionalität von v2.1 zu unterstützen. Informationen zu den ersten Schritten mit dem Tool finden Sie in diesem [Schnellstart](label-tool.md).
+* Das [Tool für die Bezeichnung von Beispielen](https://github.com/microsoft/OCR-Form-Tools) wurde aktualisiert, um die neue Funktionalität von v2.1 zu unterstützen. Informationen zu den ersten Schritten mit dem Tool finden Sie in diesem [Schnellstart](label-tool.md).
 * Im Formularerkennungsbeispiel [Intelligent Kiosk](https://github.com/microsoft/Cognitive-Samples-IntelligentKiosk/blob/master/Documentation/FormRecognizer.md) wird gezeigt, wie `Analyze Receipt` und `Train Custom Model` - _Trainieren ohne Bezeichnungen_ integriert werden.
 
 ## <a name="july-2020"></a>Juli 2020
@@ -538,7 +539,7 @@ pip-Paketversion 3.1.0b4
 
 ### <a name="new-features"></a>Neue Funktionen
 
-* **Werttypen für die Beschriftung** Sie können nun die Typen der Werte angeben, die Sie mit dem Tool „Formularerkennung“ zur Beschriftung von Beispielen beschriften können. Derzeit werden die folgenden Werttypen und Variationen unterstützt:
+* **Werttypen für die Bezeichnung** Sie können nun die Typen der Werte angeben, die Sie mit dem Tool Formularerkennung zur Bezeichnung von Beispielen beschriften können. Derzeit werden die folgenden Werttypen und Variationen unterstützt:
   * `string`
     * Standardwert, `no-whitespaces`, `alphanumeric`
   * `number`
@@ -548,14 +549,14 @@ pip-Paketversion 3.1.0b4
   * `time`
   * `integer`
 
-  Weitere Informationen zur Verwendung dieses Features finden Sie in der Anleitung zum [Tool zum Beschriften von Beispielen](label-tool.md#specify-tag-value-types).
+  Weitere Informationen zur Verwendung dieses Features finden Sie in der Anleitung zum [Tool zum Bezeichnen von Beispielen](label-tool.md#specify-tag-value-types).
 
-* **Visualisierung von Tabellen** Im Tool für die Beschriftung von Beispielen werden nun im Dokument erkannte Tabellen angezeigt. Mithilfe dieses Features können Sie die im Dokument erkannten und aus dem Dokument extrahierten Tabellen anzeigen, bevor Sie die Beschriftung und Analyse durchführen. Dieses Feature kann mithilfe der Ebenenoption aktiviert bzw. deaktiviert werden.
+* **Visualisierung von Tabellen** Im Tool für die Bezeichnung von Beispielen werden nun im Dokument erkannte Tabellen angezeigt. Mithilfe dieses Features können Sie die im Dokument erkannten und aus dem Dokument extrahierten Tabellen anzeigen, bevor Sie die Beschriftung und Analyse durchführen. Dieses Feature kann mithilfe der Ebenenoption aktiviert bzw. deaktiviert werden.
 
   Die folgende Abbildung ist ein Beispiel für die Erkennung und Extraktion von Tabellen:
 
   > [!div class="mx-imgBorder"]
-  > ![Tabellenvisualisierung mit dem Tool für die Beschriftung von Beispielen](./media/whats-new/table-viz.png)
+  > ![Tabellenvisualisierung mit dem Tool für die Bezeichnung von Beispielen](./media/whats-new/table-viz.png)
 
     Die extrahierten Tabellen stehen in der JSON-Ausgabe unter `"pageResults"` zur Verfügung.
 
@@ -568,9 +569,9 @@ Dieses Release bietet Verbesserungen bei der Extraktion sowie eine verbesserte G
 
 ### <a name="sample-labeling-tool-is-now-open-source"></a>Tool für die Beschriftung von Beispielen jetzt als Open-Source-Projekt verfügbar
 
-Das Tool „Formularerkennung“ für die Beschriftung von Beispielen ist jetzt als Open-Source-Projekt verfügbar. Sie können es in Ihre Lösungen integrieren und kundenspezifische Änderungen vornehmen, um es an Ihre individuellen Anforderungen anzupassen.
+Das Tool Formularerkennung für die Bezeichnung von Beispielen ist jetzt als Open-Source-Projekt verfügbar. Sie können es in Ihre Lösungen integrieren und kundenspezifische Änderungen vornehmen, um es an Ihre individuellen Anforderungen anzupassen.
 
-Weitere Informationen zum Tool „Formularerkennung“ für die Beschriftung von Beispielen finden Sie in der Dokumentation auf [GitHub](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md).
+Weitere Informationen zum Tool Formularerkennung für die Bezeichnung von Beispielen finden Sie in der Dokumentation auf [GitHub](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md).
 
 ### <a name="tls-12-enforcement"></a>Erzwingen von TLS 1.2
 

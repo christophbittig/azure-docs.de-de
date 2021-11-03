@@ -14,14 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/07/2021
 ms.author: yelevin
-ms.openlocfilehash: b6e38d6ce5944d09a089404ae1fe2ca81a951c18
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 7d921c1b1d44f8378a51fa6a419378cd199cd57d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124781297"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131037287"
 ---
 # <a name="use-azure-functions-to-connect-azure-sentinel-to-your-data-source"></a>Verwenden von Azure Functions zum Verbinden von Azure Sentinel mit Ihrer Datenquelle
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 Sie können [Azure Functions](../azure-functions/functions-overview.md) in Verbindung mit verschiedenen Programmiersprachen wie [PowerShell](../azure-functions/functions-reference-powershell.md) oder Python verwenden, um einen serverlosen Connector mit den REST-API-Endpunkten Ihrer kompatiblen Datenquellen zu erstellen. Mit Azure Functions-Apps können Sie dann Azure Sentinel mit der REST-API Ihrer Datenquelle verbinden, um Protokolle zu pullen.
 

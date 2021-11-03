@@ -5,16 +5,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/23/2019
-ms.openlocfilehash: de838e094c8a37d375aa6c7649ee5717705ad33c
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 0bd31aea95506f64f2e9b787882a81c7a0799ec2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104866351"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131016205"
 ---
 # <a name="debug-apache-spark-applications-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>Debuggen von Apache Spark-Anwendungen in einem HDInsight-Cluster mit dem Azure-Toolkit für IntelliJ per SSH
 
-Dieser Artikel enthält eine ausführliche Anleitung zur Verwendung der HDInsight-Tools im [Azure-Toolkit für IntelliJ](/azure/developer/java/toolkit-for-intellij) zum Remotedebuggen von Anwendungen in einem HDInsight-Cluster. Informationen zum Debuggen Ihres Projekts finden Sie auch im Video [Debug HDInsight Spark applications with Azure Toolkit for IntelliJ](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ) (Debuggen von HDInsight Spark-Anwendungen mit dem Azure-Toolkit für IntelliJ).
+Dieser Artikel enthält eine ausführliche Anleitung zur Verwendung der HDInsight-Tools im [Azure-Toolkit für IntelliJ](/azure/developer/java/toolkit-for-intellij) zum Remotedebuggen von Anwendungen in einem HDInsight-Cluster.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -51,7 +51,7 @@ Dieser Artikel enthält eine ausführliche Anleitung zur Verwendung der HDInsigh
 
 1. Geben Sie im nächsten Fenster **New Project** (Neues Projekt) die folgenden Informationen an:
 
-    |Eigenschaft |Beschreibung |
+    |Eigenschaft |BESCHREIBUNG |
     |---|---|
     |Projektname|Geben Sie einen Namen ein. In dieser exemplarischen Vorgehensweise wird `myApp` verwendet.|
     |Projektspeicherort|Geben Sie den gewünschten Speicherort für Ihr Projekt ein.|
@@ -151,11 +151,6 @@ Dieser Artikel enthält eine ausführliche Anleitung zur Verwendung der HDInsigh
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Übersicht: Apache Spark in Azure HDInsight](apache-spark-overview.md)
-
-### <a name="demo"></a>Demo
-
-* Erstellen von Scala-Projekten (Video): [Erstellen von Spark Scala-Anwendungen](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ)
-* Remotedebuggen (Video): [Remotedebuggen von Apache Spark-Anwendungen in einem HDInsight-Cluster mit dem Azure-Toolkit für IntelliJ](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)
 
 ### <a name="scenarios"></a>Szenarien
 

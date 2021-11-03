@@ -9,12 +9,12 @@ ms.subservice: v1
 ms.topic: conceptual
 robots: noindex
 ms.date: 10/22/2021
-ms.openlocfilehash: 2010081ca22751e5e3e1a7f36084dff53b1c0aef
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 3b28e8d4042377e7834fe619e15feabb916b2591
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130255179"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131059621"
 ---
 # <a name="azure-data-factory---net-api-change-log"></a>Azure Data Factory – .NET-API-Änderungsprotokoll
 > [!NOTE]
@@ -145,7 +145,9 @@ Die folgenden Klassen wurden umbenannt. Die neuen Namen entsprechen den ursprün
 | SqlServerDataset |[SqlServerTableDataset](/dotnet/api/microsoft.azure.management.datafactories.models.sqlservertabledataset) |
 
 ## <a name="version-400"></a>Version 4.0.0
+
 ### <a name="breaking-changes"></a>Aktuelle Änderungen
+
 * Die folgenden Klassen/Schnittstellen wurden umbenannt.
 
 | Alter Name | Neuer Name |
@@ -162,7 +164,7 @@ Die folgenden Klassen wurden umbenannt. Die neuen Namen entsprechen den ursprün
 
 * Die **List-** -Methoden geben jetzt ausgelagerte Ergebnisse zurück. Wenn die Antwort eine nicht leere **NextLink** -Eigenschaft  enthält, muss die Clientanwendung das Abrufen der nächsten Seite fortsetzen, bis alle Seiten zurückgegeben wurden.  Beispiel:
 
-    ```csharp
+  ```csharp
     PipelineListResponse response = client.Pipelines.List("ResourceGroupName", "DataFactoryName");
     var pipelines = new List<Pipeline>(response.Pipelines);
 
@@ -174,7 +176,8 @@ Die folgenden Klassen wurden umbenannt. Die neuen Namen entsprechen den ursprün
 
         nextLink = nextResponse.NextLink;
     }
-    ```
+  ```
+
 * **List--** -Pipeline-API gibt nur die Zusammenfassung einer Pipeline anstatt alle Details zurück. Beispielsweise enthalten Aktivitäten in einer Pipelinezusammenfassung nur Name und Typ.
 
 ### <a name="feature-additions"></a>Hinzugefügte Features

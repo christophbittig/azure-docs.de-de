@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/06/2021
 ms.author: jeedes
-ms.openlocfilehash: 888f5d195cde3b226e4a25c5e46ed916e654c0b0
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 4b333a8910277236c4d4f5f7f044f21f6ee03f74
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124809221"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131067050"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itslearning"></a>Tutorial: Azure Active Directory-Integration von itslearning
 
@@ -78,24 +78,21 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
-    
-    a. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** die folgende URL ein: `urn:mace:saml2v2.no:services:com.itslearning`.
+    1. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** die folgende URL ein: `urn:mace:saml2v2.no:services:com.itslearning`.
 
-    b. Geben Sie im Textfeld **Antwort-URL** eine der folgenden URLs ein:
-    
-    | Antwort-URL |
-    |-------------|
-    | `https://www.itsltest.com/elogin/AssertionConsumerService.aspx` |
-    | `https://www.itslearning.com/elogin/AssertionConsumerService.aspx` |
-    | 
-    
-    c. Geben Sie im Textfeld **Anmelde-URL** eine der folgenden URLs ein:
-    
-    | Anmelde-URL |
-    |-------------|
-    | `https://www.itslearning.com/index.aspx` |
-    | `https://us1.itslearning.com/index.aspx` |
-    |
+    1. Geben Sie im Textfeld **Antwort-URL** eine der folgenden URLs ein:
+
+       | Antwort-URL |
+       |-------------|
+       | `https://www.itsltest.com/elogin/AssertionConsumerService.aspx` |
+       | `https://www.itslearning.com/elogin/AssertionConsumerService.aspx` |
+
+    1. Geben Sie im Textfeld **Anmelde-URL** eine der folgenden URLs ein:
+
+       | Anmelde-URL |
+       |-------------|
+       | `https://www.itslearning.com/index.aspx` |
+       | `https://us1.itslearning.com/index.aspx` |
 
 5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um den Ihren Anforderungen entsprechenden **Verbundmetadaten-XML**-Code aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 

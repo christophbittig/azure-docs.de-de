@@ -3,20 +3,20 @@ title: Technische Profile für die Azure AD-Self-Service-Kennwortzurücksetzung
 titleSuffix: Azure AD B2C
 description: Referenz zu benutzerdefinierten Richtlinien für technische Profile für die Azure AD-Self-Service-Kennwortzurücksetzung in Azure AD B2C.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 06/23/2020
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 3e6fcf956639d827a8654c5ee80e7cab8cadf930
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8c1bac41a0c70a2d9dff2a8ce1ac5544ad687fe5
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "85383596"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131008368"
 ---
 # <a name="define-an-azure-ad-sspr-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Definieren eines technischen Profils für die Azure AD-Self-Service-Kennwortzurücksetzung in einer benutzerdefinierten Azure AD B2C-Richtlinie
 
@@ -27,7 +27,7 @@ Von Azure Active Directory B2C (Azure AD B2C) wird die Überprüfung einer E-
 Dieses technische Profil hat folgende Eigenschaften:
 
 - Es bietet keine Benutzeroberfläche für die Interaktion mit dem Benutzer. Stattdessen wird die Benutzeroberfläche von einem [ selbstbestätigten](self-asserted-technical-profile.md) technischen Profil oder einem [Anzeigesteuerelement](display-controls.md) als [ technisches Überprüfungsprofil](validation-technical-profile.md) aufgerufen.
-- Es verwendet den Azure AD-SSPR-Dienst, um einen Code zu generieren und an eine E-Mail-Adresse zu senden, und überprüft ihn anschließend.  
+- Es verwendet den Azure AD-SSPR-Dienst, um einen Code zu generieren und an eine E-Mail-Adresse zu senden, und überprüft ihn anschließend.
 - Es überprüft eine E-Mail-Adresse mithilfe eines Überprüfungscodes.
 
 [!INCLUDE [b2c-public-preview-feature](../../includes/active-directory-b2c-public-preview.md)]
@@ -42,7 +42,7 @@ Web.TPEngine.Providers.AadSsprProtocolProvider, Web.TPEngine, Version=1.0.0.0, C
 
 Das folgende Beispiel zeigt ein technisches Profil für die Azure AD-Self-Service-Kennwortzurücksetzung:
 
-```XML
+```xml
 <TechnicalProfile Id="AadSspr-SendCode">
   <DisplayName>Send Code</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AadSsprProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -60,7 +60,6 @@ Das Element **InputClaims** enthält eine Liste von Ansprüchen, die an die Azur
 | ClaimReferenceId | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | emailAddress | Ja | Der Bezeichner für den Benutzer, dem die E-Mail-Adresse gehört. Die Eigenschaft `PartnerClaimType` des Eingabeanspruchs muss auf `emailAddress` festgelegt werden. |
-
 
 Das Element **InputClaimsTransformations** enthält ggf. eine Sammlung von Elementen vom Typ **InputClaimsTransformation**, die vor dem Senden an den Azure AD-SSPR-Dienst zum Ändern der Eingabeansprüche oder zum Generieren neuer Eingabeansprüche verwendet werden.
 
@@ -85,12 +84,11 @@ Die folgenden Metadaten können verwendet werden, um die Fehlermeldungen zu konf
 | UserMessageIfInternalError | Nein | Fehlermeldung für den Benutzer, wenn der Server einen internen Fehler festgestellt hat. |
 | UserMessageIfThrottled| Nein | Fehlermeldung für den Benutzer, wenn eine Anforderung gedrosselt wurde.|
 
-
 ### <a name="example-send-an-email"></a>Beispiel: Senden einer E-Mail
 
 Das folgende Beispiel zeigt ein technisches Profil für die Azure AD-Self-Service-Kennwortzurücksetzung, das verwendet wird, um einen Code per E-Mail zu senden.
 
-```XML
+```xml
 <TechnicalProfile Id="AadSspr-SendCode">
   <DisplayName>Send Code</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AadSsprProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -146,7 +144,7 @@ Die folgenden Metadaten können verwendet werden, um die Fehlermeldungen zu konf
 
 Das folgende Beispiel zeigt ein technisches Profil für die Azure AD-Self-Service-Kennwortzurücksetzung, das zum Überprüfen des Codes verwendet wird:
 
-```XML
+```xml
 <TechnicalProfile Id="AadSspr-VerifyCode">
   <DisplayName>Verify Code</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AadSsprProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />

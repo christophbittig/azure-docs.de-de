@@ -8,12 +8,12 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 10/22/2021
 ms.author: jingwang
-ms.openlocfilehash: b4d3ef9979fc53ebd4e1dce6c56ee4974399cd90
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 7f6b574bd24d7bd284d985aeb9a129d2143819e1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130218559"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131016509"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Aufrufen eines SSIS-Pakets mithilfe einer Aktivität einer gespeicherten Prozedur in Azure Data Factory
 In diesem Artikel wird das Aufrufen eines SSIS-Pakets aus einer Azure Data Factory-Pipeline mithilfe einer Aktivität einer gespeicherten Prozedur beschrieben. 
@@ -40,18 +40,21 @@ Installieren Sie die aktuellen Azure PowerShell-Module, indem Sie die Anweisunge
 Das folgende Verfahren beschreibt die Schritte zum Erstellen einer Data Factory. In dieser Data Factory erstellen Sie eine Pipeline mit einer Aktivität einer gespeicherten Prozedur. Die Aktivität der gespeicherten Prozedur führt eine gespeicherte Prozedur in der SSISDB-Datenbank aus, um Ihr SSIS-Paket auszuführen.
 
 1. Definieren Sie eine Variable für den Ressourcengruppennamen zur späteren Verwendung in PowerShell-Befehlen. Kopieren Sie den folgenden Befehlstext nach PowerShell, geben Sie einen Namen für die [Azure-Ressourcengruppe](../../azure-resource-manager/management/overview.md) in doppelten Anführungszeichen an, und führen Sie dann den Befehl aus. Beispiel: `"adfrg"`. 
-   
-     ```powershell
+
+    ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup";
     ```
 
     Beachten Sie, dass die Ressourcengruppe ggf. nicht überschrieben werden soll, falls sie bereits vorhanden ist. Weisen Sie der Variablen `$ResourceGroupName` einen anderen Wert zu, und führen Sie den Befehl erneut aus.
+
 2. Führen Sie den folgenden Befehl aus, um die Azure-Ressourcengruppe zu erstellen: 
 
     ```powershell
     $ResGrp = New-AzResourceGroup $resourceGroupName -location 'eastus'
     ``` 
-    Beachten Sie, dass die Ressourcengruppe ggf. nicht überschrieben werden soll, falls sie bereits vorhanden ist. Weisen Sie der Variablen `$ResourceGroupName` einen anderen Wert zu, und führen Sie den Befehl erneut aus. 
+
+    Beachten Sie, dass die Ressourcengruppe ggf. nicht überschrieben werden soll, falls sie bereits vorhanden ist. Weisen Sie der Variablen `$ResourceGroupName` einen anderen Wert zu, und führen Sie den Befehl erneut aus.
+
 3. Definieren Sie eine Variable für den Namen der Data Factory. 
 
     > [!IMPORTANT]
@@ -63,7 +66,7 @@ Das folgende Verfahren beschreibt die Schritte zum Erstellen einer Data Factory.
 
 5. Führen Sie zum Erstellen der Data Factory das folgende Cmdlet **New-AzDataFactory** aus. Verwenden Sie dabei die Eigenschaften „Location“ und „ResourceGroupName“ aus der Variablen „$ResGrp“: 
     
-    ```powershell       
+    ```powershell
     $df = New-AzDataFactory -ResourceGroupName $ResourceGroupName -Name $dataFactoryName -Location "East US"
     ```
 

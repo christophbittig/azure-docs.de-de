@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 06/01/2021
 ms.author: kenwith
 ms.reviewer: arvinh, chmutali
-ms.openlocfilehash: 1a1b0dfbdad6aaea91ca8e3fe7d11d74b1aa2967
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 0f0e3532960196b3c52279343de3bb04d5cb8535
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129990347"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131068244"
 ---
 # <a name="how-azure-active-directory-provisioning-integrates-with-workday"></a>Integration der Azure Active Directory-Bereitstellung mit Workday
 
@@ -61,7 +61,7 @@ Diese Strategie zum Einschränken des Zugriffs mithilfe eingeschränkter ISSGs (
 
 Zum Testen der Konnektivität mit Workday sendet Azure AD die folgende Workday-Webdienstanforderung *Get_Workers*. 
 
-```XML
+```xml
 <!-- Test connection query tries to retrieve one record from the first page -->
 <!-- Replace version with Workday Web Services version present in your connection URL -->
 <!-- Replace timestamps below with the UTC time corresponding to the test connection event -->
@@ -96,7 +96,7 @@ Zum Testen der Konnektivität mit Workday sendet Azure AD die folgende Workday-
 
 Zum Abrufen der Mitarbeiterdaten sendet Azure AD die folgende Workday-Webdienstanforderung *Get_Workers*. Die Abfrage durchsucht das Workday-Transaktionsprotokoll nach allen effektiv veralteten Mitarbeitereinträgen zum Zeitpunkt der vollständigen Synchronisierung. 
 
-```XML
+```xml
 <!-- Workday full sync query -->
 <!-- Replace version with Workday Web Services version present in your connection URL -->
 <!-- Replace timestamps below with the UTC time corresponding to full sync run -->
@@ -156,7 +156,7 @@ Bestimmte Flagwerte, die im Knoten *Response_Group* angegeben sind, werden basie
 
 Die Antwort auf *Get_Workers* von Workday für die obige Abfrage enthält die Anzahl der Mitarbeiterdatensätze und die Seitenanzahl.
 
-```XML
+```xml
   <wd:Response_Results>
     <wd:Total_Results>509</wd:Total_Results>
     <wd:Total_Pages>17</wd:Total_Pages>
@@ -166,7 +166,7 @@ Die Antwort auf *Get_Workers* von Workday für die obige Abfrage enthält die An
 ```
 Zum Abrufen der nächsten Seite des Resultsets wird in der nächsten *Get_Workers*-Abfrage die Seitenzahl als Parameter im *Response_Filter* angegeben.
 
-```XML
+```xml
   <p1:Response_Filter>
     <p1:As_Of_Effective_Date>2021-01-19T02:29:16.0094202Z</p1:As_Of_Effective_Date>
     <p1:As_Of_Entry_DateTime>2021-01-19T02:29:16.0094202Z</p1:As_Of_Entry_DateTime>

@@ -10,16 +10,14 @@ ms.service: virtual-network
 ms.workload: infrastructure
 ms.tgt_pltfrm: virtual-network
 ms.devlang: na
-tags:
-- azure-resource-manager
-ms.custom:
-- mode-portal
-ms.openlocfilehash: 43c45b43084656a45d2509ee2c7a4376cdc7c052
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+tags: azure-resource-manager
+ms.custom: mode-portal
+ms.openlocfilehash: 1ba52ed17f5eddafe4489ddf9d4277ac301c3e15
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107531179"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131074249"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-portal"></a>Schnellstart: Erstellen eines virtuellen Netzwerks im Azure-Portal
 
@@ -47,7 +45,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
     | ------- | ----- |
     | **Projektdetails** |   |
     | Subscription | Wählen Sie Ihr Abonnement aus. |
-    | Resource group | Wählen Sie **Neu erstellen**.  </br> Geben Sie **myResourceGroup** ein. </br> Klicken Sie auf **OK**. |
+    | Ressourcengruppe | Wählen Sie **Neu erstellen**.  </br> Geben Sie **myResourceGroup** ein. </br> Klicken Sie auf **OK**. |
     | **Instanzendetails** |   |
     | Name | Geben Sie **myVNet** ein. |
     | Region | Wählen Sie **(USA) USA, Osten** aus. |
@@ -182,7 +180,7 @@ Erstellen Sie zwei virtuelle Computer im virtuellen Netzwerk:
 
 5. Geben Sie auf der Seite **Bastion** den Benutzernamen und das Kennwort ein, die Sie zuvor für den virtuellen Computer erstellt haben.
 
-6. Wählen Sie **Verbinden**.
+6. Wählen Sie **Verbinden** aus.
 
 ## <a name="communicate-between-vms"></a>Kommunikation zwischen VMs
 

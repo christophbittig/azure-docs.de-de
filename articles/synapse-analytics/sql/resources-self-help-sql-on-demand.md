@@ -9,12 +9,13 @@ ms.subservice: sql
 ms.date: 9/23/2021
 ms.author: stefanazaric
 ms.reviewer: jrasnick, wiassaf
-ms.openlocfilehash: e0380c4d1b4fe9c82d6e9b82922b1a509f7dcdf4
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: c5057290f21a87a2a8c599de7d3fdd2c8b76ebb6
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129545601"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131046544"
 ---
 # <a name="self-help-for-serverless-sql-pool"></a>Selbsthilfe für serverlose SQL-Pools
 
@@ -400,6 +401,10 @@ FROM
     AS [result]
 ```
 
+### <a name="incorrect-syntax-near-not"></a>Falsche Syntax in der Nähe von 'NOT'
+
+Dieser Fehler ist ein Hinweis darauf, dass einige externe Tabellen vorhanden sind, bei denen Spalten in der Spaltendefinition die Einschränkung `NOT NULL` enthalten. Aktualisieren Sie die Tabelle, um `NOT NULL` aus der Spaltendefinition zu entfernen.
+
 ## <a name="configuration"></a>Konfiguration
 
 ### <a name="query-fails-with-please-create-a-master-key-in-the-database-or-open-the-master-key-in-the-session-before-performing-this-operation"></a>Fehler für Abfrage: Erstellen Sie einen Hauptschlüssel in der Datenbank, oder öffnen Sie den Hauptschlüssel in der Sitzung, bevor Sie diesen Vorgang ausführen.
@@ -492,6 +497,10 @@ Azure Synapse SQL gibt `NULL` anstelle der Werte zurück, die im Transaktionsspe
 
 Der in der `WITH`-Klausel angegebene Wert stimmt nicht mit den zugrunde liegenden Cosmos DB-Typen im Analysespeicher überein und kann nicht implizit konvertiert werden. Verwenden Sie den Typ `VARCHAR` im Schema.
 
+### <a name="resolving-cosmosdb-path-has-failed"></a>Fehler beim Auflösen des Cosmos DB-Pfads
+
+Bei Erhalt dieses Fehlers: `Resolving CosmosDB path has failed with error 'This request is not authorized to perform this operation.'`. Überprüfen Sie, ob Sie in Cosmos DB private Endpunkte nutzen. Um für SQL serverlos den Zugriff auf einen Analysespeicher mit privatem Endpunkt zuzulassen, müssen Sie [private Endpunkte für den Azure Cosmos DB-Analysespeicher konfigurieren](../../cosmos-db/analytical-store-private-endpoints.md#using-synapse-serverless-sql-pools).
+
 ### <a name="cosmosdb-performance-issues"></a>CosmosDB-Leistungsprobleme
 
 Wenn unerwartete Leistungsprobleme auftreten, vergewissern Sie sich, dass die bewährten Methoden angewandt wurden, z. B.:
@@ -502,7 +511,7 @@ Wenn unerwartete Leistungsprobleme auftreten, vergewissern Sie sich, dass die be
 
 ## <a name="delta-lake"></a>Delta Lake
 
-Die Delta Lake-Unterstützung befindet sich für serverlose SQL-Pools derzeit in der öffentlichen Vorschauphase. Es gibt einige bekannte Probleme, die bei Ihnen während der Vorschauphase ggf. auftreten können.
+Es gibt einige Einschränkungen und bekannte Probleme, die bei der Delta Lake-Unterstützung in serverlosen SQL-Pools ggf. auftreten können.
 - Stellen Sie sicher, dass Sie auf den Delta Lake-Stammordner in der [OPENROWSET](./develop-openrowset.md)-Funktion oder an einem externen Tabellenspeicherort verweisen.
   - Der Stammordner muss über einen Unterordner mit dem Namen `_delta_log` verfügen. Für die Abfrage tritt ein Fehler auf, wenn der Ordner `_delta_log` nicht vorhanden ist. Falls dieser Ordner nicht angezeigt wird, verweisen Sie auf einfache Parquet-Dateien, die über Apache Spark-Pools [für Delta Lake konvertiert](../spark/apache-spark-delta-lake-overview.md?pivots=programming-language-python#convert-parquet-to-delta) werden müssen.
   - Geben Sie keine Platzhalter an, um das Partitionsschema zu beschreiben. Die Delta Lake-Partitionen werden von der Delta Lake-Abfrage automatisch identifiziert. 
@@ -732,7 +741,7 @@ Es gibt einige allgemeine Systemeinschränkungen, die sich auf Ihre Workload aus
 | Maximale Anzahl von Datenbankobjekten pro Datenbank | Die Summe aller Objekte in einer Datenbank darf 2.147.483.647 nicht überschreiten (siehe [Einschränkungen in SQL Server-Datenbank-Engine](/sql/sql-server/maximum-capacity-specifications-for-sql-server#objects)). |
 | Maximale Bezeichnerlänge (in Zeichen) | 128 (siehe [Einschränkungen in SQL Server-Datenbank-Engine](/sql/sql-server/maximum-capacity-specifications-for-sql-server#objects))|
 | Maximale Abfragedauer | 30 Min. |
-| Maximale Größe des Resultsets | 80 GB (wird von allen derzeit ausgeführten gleichzeitigen Abfragen gemeinsam genutzt) |
+| Maximale Größe des Resultsets | Bis zu 200 GB (gemeinsame Nutzung durch gleichzeitige Abfragen) |
 | Maximale Parallelität | Nicht begrenzt und abhängig von der Komplexität der Abfrage und der Menge der gescannten Daten. Ein serverloser SQL-Pool kann gleichzeitig 1.000 aktive Sitzungen verarbeiten, die einfache Abfragen ausführen. Die Anzahl sinkt jedoch, wenn die Abfragen komplexer sind oder eine größere Datenmenge gescannt wird. |
 
 ## <a name="next-steps"></a>Nächste Schritte

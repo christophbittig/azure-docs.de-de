@@ -402,6 +402,12 @@
       items:
         - name: Konfigurieren des verwalteten Clusters
           href: how-to-managed-cluster-configuration.md
+        - name: Verbindung mit Ihrem verwalteten Cluster
+          href: how-to-managed-cluster-connect.md
+        - name: Konfigurieren der automatischen Skalierung in einem verwalteten Cluster
+          href: how-to-managed-cluster-autoscale.md
+        - name: Konfigurieren von Knotentypen in einem verwalteten Cluster
+          href: how-to-managed-cluster-modify-node-type.md
         - name: Hinzufügen einer VM-Skalierungsgruppenerweiterung zu einem verwalteten Clusterknotentyp
           href: how-to-managed-cluster-vmss-extension.md
         - name: Konfigurieren der Netzwerkeinstellungen für verwaltete Cluster
@@ -498,6 +504,8 @@
                   href: service-fabric-cross-availability-zones.md
                 - name: Bereitstellen eines Azure Service Fabric-Clusters mit zustandslosen Knotentypen
                   href: service-fabric-stateless-node-types.md
+                - name: Bereitstellen eines Azure Service Fabric-Clusters mit verwalteten Datenträgern
+                  href: service-fabric-managed-disk.md
                 - name: Einrichten der Azure Active Directory-Authentifizierung
                   href: service-fabric-cluster-creation-setup-aad.md
                 - name: Erstellen einer benutzerdefinierten Clustervorlage

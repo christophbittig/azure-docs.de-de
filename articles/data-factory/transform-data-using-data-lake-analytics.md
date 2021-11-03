@@ -9,12 +9,12 @@ ms.subservice: tutorials
 ms.topic: conceptual
 ms.custom: synapse
 ms.date: 09/09/2021
-ms.openlocfilehash: fae713e7998a2a5e9686b38bba1ae40b40a2bf32
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 3cf224f3b24d318818e53a8c6342edc9f56063e9
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124806305"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131077817"
 ---
 # <a name="process-data-by-running-u-sql-scripts-on-azure-data-lake-analytics-with-azure-data-factory-and-synapse-analytics"></a>Verarbeiten von Daten durch Ausführen von U-SQL-Skripts für Azure Data Lake Analytics mit Azure Data Factory und Synapse Analytics
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -33,7 +33,7 @@ Sie erstellen einen mit **Azure Data Lake Analytics** verknüpften Dienst, um ei
 
 Die folgende Tabelle enthält Beschreibungen der allgemeinen Eigenschaften, die in der JSON-Definition verwendet werden. 
 
-| Eigenschaft                 | Beschreibung                              | Erforderlich                                 |
+| Eigenschaft                 | BESCHREIBUNG                              | Erforderlich                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
 | **type**                 | Legen Sie die type-Eigenschaft auf **AzureDataLakeAnalytics** fest. | Ja                                      |
 | **accountName**          | Name des Azure Data Lake Analytics-Kontos.  | Ja                                      |
@@ -52,7 +52,7 @@ Verwenden Sie den [Assistenten für das Hinzufügen von Benutzern](../data-lake-
 
 Verwenden Sie die Dienstprinzipalauthentifizierung, indem Sie die folgenden Eigenschaften angeben:
 
-| Eigenschaft                | Beschreibung                              | Erforderlich |
+| Eigenschaft                | BESCHREIBUNG                              | Erforderlich |
 | :---------------------- | :--------------------------------------- | :------- |
 | **servicePrincipalId**  | Geben Sie die Client-ID der Anwendung an.     | Ja      |
 | **servicePrincipalKey** | Geben Sie den Schlüssel der Anwendung an.           | Ja      |
@@ -116,7 +116,7 @@ Der folgende JSON-Ausschnitt definiert eine Pipeline mit einer U-SQL-Aktivität 
 
 Die folgende Tabelle beschreibt die Namen und Eigenschaften, die für diese Aktivität spezifisch sind. 
 
-| Eigenschaft            | Beschreibung                              | Erforderlich |
+| Eigenschaft            | BESCHREIBUNG                              | Erforderlich |
 | :------------------ | :--------------------------------------- | :------- |
 | name                | Name der Aktivität in der Pipeline     | Ja      |
 | description         | Ein Text, der beschreibt, was mit der Aktivität ausgeführt wird.  | Nein       |
@@ -195,5 +195,4 @@ In den folgenden Artikeln erfahren Sie, wie Daten auf andere Weisen transformier
 * [Hadoop-Streamingaktivität](transform-data-using-hadoop-streaming.md)
 * [Spark-Aktivität](transform-data-using-spark.md)
 * [Benutzerdefinierte .NET-Aktivität](transform-data-using-dotnet-custom-activity.md)
-* [Batch Execution-Aktivität für ML Studio (klassisch)](transform-data-using-machine-learning.md)
 * [Aktivität „Gespeicherte Prozedur“](transform-data-using-stored-procedure.md)

@@ -12,12 +12,12 @@ ms.date: 06/05/2020
 ms.author: celested
 ms.reviewer: asteen, jlu, hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e27ac47426e8c3d8ff7b4b02fcdbfcf06d3a3453
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: e89eb124b9cfb4100ddfca0d949331508fce398f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129231290"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131052387"
 ---
 # <a name="configure-the-stay-signed-in-prompt-for-azure-ad-accounts"></a>Konfigurieren von „Angemeldet bleiben?“ Eingabeaufforderung für Azure AD-Konten
 
@@ -28,7 +28,7 @@ Das folgende Diagramm zeigt den Benutzeranmeldeflow bei einem verwalteten Mandan
 :::image type="content" source="./media/keep-me-signed-in/kmsi-workflow.png" alt-text="Diagramm mit dem Benutzeranmeldeflow bei einem verwalteten Mandanten im Vergleich zu einem Verbundmandanten":::
 
 > [!NOTE]
-> Zum Konfigurieren der Option „Angemeldet bleiben“ müssen Sie die Azure Active Directory (Azure AD)-Editionen „Premium 1“, „Premium 2“ oder „Basic“ verwenden oder eine Microsoft 365-Lizenz haben. Weitere Informationen zu Lizenzierung und Editionen finden Sie unter [Registrieren für Azure AD Premium](active-directory-get-started-premium.md).<br><br>Die Azure AD-Editionen „Premium“ und „Basic“ sind für Kunden in China verfügbar, die mit der weltweiten Instanz von Azure AD arbeiten. Allerdings werden die Azure AD-Editionen „Premium“ und „Basic“ derzeit nicht durch den Azure-Dienst unterstützt, der in China von 21Vianet betrieben wird. Sollten Sie weitere Informationen benötigen, können Sie sich über das [Azure AD-Forum](https://feedback.azure.com/forums/169401-azure-active-directory/) mit uns in Verbindung setzen.
+> Zum Konfigurieren der Option „Angemeldet bleiben“ müssen Sie die Azure Active Directory (Azure AD)-Editionen „Premium 1“, „Premium 2“ oder „Basic“ verwenden oder eine Microsoft 365-Lizenz haben. Weitere Informationen zu Lizenzierung und Editionen finden Sie unter [Registrieren für Azure AD Premium](active-directory-get-started-premium.md).<br><br>Die Azure AD-Editionen „Premium“ und „Basic“ sind für Kunden in China verfügbar, die mit der weltweiten Instanz von Azure AD arbeiten. Allerdings werden die Azure AD-Editionen „Premium“ und „Basic“ derzeit nicht durch den Azure-Dienst unterstützt, der in China von 21Vianet betrieben wird. Sollten Sie weitere Informationen benötigen, können Sie sich über das [Azure AD-Forum](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789) mit uns in Verbindung setzen.
 
 ## <a name="configure-kmsi"></a>Konfigurieren von „Angemeldet bleiben?“
 

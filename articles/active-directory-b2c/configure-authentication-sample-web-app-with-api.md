@@ -2,21 +2,21 @@
 title: Konfigurieren der Authentifizierung in einer Beispielwebanwendung, die eine Web-API mithilfe von Azure Active Directory B2C aufruft
 description: In diesem Artikel wird die Verwendung von Azure Active Directory B2C für die Anmeldung und Registrierung von Benutzern in einer ASP.NET-Webanwendung besprochen, die eine Web-API aufruft.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 07/05/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: fec8af9d4153736738cf658e7e77bb1e9506fedd
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: f2f0f00bfc3b5f551d60817e3ea52924c78d98d8
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122770178"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "131007781"
 ---
 # <a name="configure-authentication-in-a-sample-web-app-that-calls-a-web-api-by-using-azure-ad-b2c"></a>Konfigurieren der Authentifizierung in einer Beispiel-Web-App, die eine Web-API mithilfe von Azure AD B2C aufruft
 

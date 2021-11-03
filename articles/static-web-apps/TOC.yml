@@ -16,7 +16,7 @@
           href: getting-started.md
         - name: Azure-Portal
           href: get-started-portal.md
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: get-started-cli.md
 - name: Konzepte
   items:
@@ -112,7 +112,7 @@
       href: assign-roles-microsoft-graph.md
 - name: Verweis
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/staticwebapp
 - name: Ressourcen
   items:
@@ -130,3 +130,5 @@
       href: 'https://azure.microsoft.com/pricing/details/app-service/static/'
     - name: Kontingente
       href: quotas.md
+    - name: Häufig gestellte Fragen
+      href: faq.yml

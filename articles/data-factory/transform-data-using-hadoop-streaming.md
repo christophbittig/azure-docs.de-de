@@ -9,12 +9,12 @@ ms.subservice: tutorials
 ms.topic: conceptual
 ms.custom: synapse
 ms.date: 09/09/2021
-ms.openlocfilehash: b1767a38cb7661ab074ad579d22f0512e5994eac
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 710a00da839db0005a1cb7ca316a100872a1b894
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124806006"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131080097"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory-or-synapse-analytics"></a>Umwandlung von Daten mithilfe von Hadoop-Streaming-Aktivitäten in Azure Data Factory oder Synapse Analytics
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -68,7 +68,7 @@ Um mehr zu erfahren, lesen Sie die Einführungsartikel zu [Azure Data Factory](i
 
 ## <a name="syntax-details"></a>Syntaxdetails
 
-| Eigenschaft          | Beschreibung                              | Erforderlich |
+| Eigenschaft          | BESCHREIBUNG                              | Erforderlich |
 | ----------------- | ---------------------------------------- | -------- |
 | name              | Der Name der Aktivität                     | Ja      |
 | description       | Ein Text, der beschreibt, wofür die Aktivität verwendet wird. | Nein       |
@@ -94,5 +94,4 @@ In den folgenden Artikeln erfahren Sie, wie Daten auf andere Weisen transformier
 * [MapReduce-Aktivität](transform-data-using-hadoop-map-reduce.md)
 * [Spark-Aktivität](transform-data-using-spark.md)
 * [Benutzerdefinierte .NET-Aktivität](transform-data-using-dotnet-custom-activity.md)
-* [Batch Execution-Aktivität für ML Studio (klassisch)](transform-data-using-machine-learning.md)
 * [Aktivität „Gespeicherte Prozedur“](transform-data-using-stored-procedure.md)

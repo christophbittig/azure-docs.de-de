@@ -7,12 +7,12 @@ ms.date: 01/29/2020
 ms.topic: conceptual
 ms.service: azure-maps
 ms.custom: devx-track-js
-ms.openlocfilehash: 260aac69c33efa7ef006f882af1cfd2c851eecc2
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: fd861e4ab92235ec4f2b3ec8051e854a08effd3c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123437722"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131072368"
 ---
 # <a name="use-the-drawing-tools-module"></a>Verwenden des Zeichentools-Moduls
 
@@ -31,14 +31,14 @@ Das Web SDK für Azure Maps stellt ein *Zeichentools-Modul* bereit. Dieses Modul
 
     - Alternativ können Sie das Zeichentools-Modul für den Quellcode des Azure Maps Web SDK lokal mithilfe des npm-Pakets [azure-maps-drawing-tools](https://www.npmjs.com/package/azure-maps-drawing-tools) laden und es anschließend zusammen mit Ihrer App hosten. Dieses Paket enthält außerdem TypeScript-Definitionen. Verwenden Sie diesen Befehl:
 
-        > **npm install azure-maps-drawing-tools**
+      `npm install azure-maps-drawing-tools`
 
-        Fügen Sie anschließend einen Verweis auf das JavaScript und das CSS-Stylesheet im `<head>`-Element der Datei hinzu:
+      Fügen Sie anschließend einen Verweis auf das JavaScript und das CSS-Stylesheet im `<head>`-Element der Datei hinzu:
 
-         ```html
-        <link rel="stylesheet" href="node_modules/azure-maps-drawing-tools/dist/atlas-drawing.min.css" type="text/css" />
-        <script src="node_modules/azure-maps-drawing-tools/dist/atlas-drawing.min.js"></script>
-         ```
+      ```html
+      <link rel="stylesheet" href="node_modules/azure-maps-drawing-tools/dist/atlas-drawing.min.css" type="text/css" />
+      <script src="node_modules/azure-maps-drawing-tools/dist/atlas-drawing.min.js"></script>
+      ```
 
 ## <a name="use-the-drawing-manager-directly"></a>Direktes Verwenden des Zeichnungs-Managers
 

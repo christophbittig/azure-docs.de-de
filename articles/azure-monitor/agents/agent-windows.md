@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/03/2020
-ms.openlocfilehash: e7a20b617808457ad9512f5dc835e4de33f880f3
-ms.sourcegitcommit: e832f58baf0b3a69c2e2781bd8e32d4f1ae932c6
+ms.openlocfilehash: 8df379fe175db6a70d44ab23acf808379d8720bb
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110585217"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131044283"
 ---
 # <a name="install-log-analytics-agent-on-windows-computers"></a>Installieren des Log Analytics-Agents auf Windows-Computern
 Dieser Artikel enthält ausführliche Informationen zum Installieren des Log Analytics-Agents auf Windows-Computern mithilfe der folgenden Methoden:
@@ -107,13 +107,13 @@ In der folgenden Tabelle sind die spezifischen Parameter aufgeführt, die im Set
 1. Um die Installationsdateien des Agent zu extrahieren, führen Sie `MMASetup-<platform>.exe /c` von einer Eingabeaufforderung mit erhöhten Rechten aus. Sie werden dann nach dem Pfad gefragt, in den die Dateien extrahiert werden sollen.  Alternativ können Sie den Pfad angeben, indem Sie die Argumente `MMASetup-<platform>.exe /c /t:<Full Path>` übergeben.  
 2. Für die Installation des Agents im Hintergrund und seine Konfiguration zum Übermitteln von Berichten an einen Arbeitsbereich in der Azure Commercial-Cloud extrahieren Sie die Setupdateien aus dem Ordner und geben Folgendes ein: 
    
-     ```dos
+    ```shell
     setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=0 OPINSIGHTS_WORKSPACE_ID="<your workspace ID>" OPINSIGHTS_WORKSPACE_KEY="<your workspace key>" AcceptEndUserLicenseAgreement=1
     ```
 
    Zum Konfigurieren des Agents zum Übermitteln von Berichten an die Azure US Government-Cloud geben Sie Folgendes ein: 
 
-     ```dos
+    ```shell
     setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=1 OPINSIGHTS_WORKSPACE_ID="<your workspace ID>" OPINSIGHTS_WORKSPACE_KEY="<your workspace key>" AcceptEndUserLicenseAgreement=1
     ```
     >[!NOTE]

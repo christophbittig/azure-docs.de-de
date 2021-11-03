@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: sideeksh
 ms.custom: MVC
-ms.openlocfilehash: 5ae930240872c00c8dbb45857e4e77d82766eadf
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f29e001de392bac4990641cefe685afb650f4207
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93398061"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131083414"
 ---
 # <a name="move-azure-vms-to-another-azure-region"></a>Verschieben von Azure-VMs in eine andere Azure-Region
 
@@ -68,7 +68,7 @@ Vielleicht möchten Sie Azure Infrastructure-as-a-Service-VMs (IaaS) von einer 
 
    - [Netzwerksicherheitsgruppen](../virtual-network/manage-network-security-group.md)
    - [Load Balancer](../load-balancer/index.yml)
-   - [Öffentliche IP-Adresse](../virtual-network/virtual-network-public-ip-address.md)
+   - [Öffentliche IP-Adresse](../virtual-network/ip-services/virtual-network-public-ip-address.md)
     
    Informationen zu anderen Netzwerkkomponenten finden Sie in der [Dokumentation zum Azure-Netzwerk](../index.yml?pivot=products&panel=network). 
 

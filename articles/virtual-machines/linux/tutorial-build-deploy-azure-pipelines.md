@@ -10,12 +10,12 @@ ms.workload: infrastructure
 ms.date: 1/3/2020
 ms.author: ushan
 ms.custom: devops, devx-track-js
-ms.openlocfilehash: 5a50a51d68154654d204149a5e76e5aa94e57683
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 1118fb9d41ace11adb55adedc4b3700c3c34e50a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122697740"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131003445"
 ---
 # <a name="deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>Bereitstellen der App auf virtuellen Linux-Computern in Azure mithilfe von Azure DevOps Services und Azure Pipelines
 
@@ -147,7 +147,7 @@ Sie benötigen eine CI-Buildpipeline, die Ihre Webanwendung veröffentlicht, sow
 
 Wählen Sie die Vorlage **starter** aus, und kopieren Sie den folgenden YAML-Codeausschnitt, der Ihr Java-Projekt kompiliert und Tests mit Apache Maven ausführt:
 
-```YAML
+```yaml
 jobs:
 - job: Build
   displayName: Build Maven Project
@@ -172,7 +172,7 @@ Weitere Anleitungen erhalten Sie in den Schritten im Artikel [Erstellen Ihrer Ja
 
 Wählen Sie die Vorlage **starter** aus, und kopieren Sie den folgenden YAML-Codeausschnitt, der ein allgemeines Node.js-Projekt mit npm kompiliert.
 
-```YAML
+```yaml
 - stage: Build
   displayName: Build stage
   jobs:  
@@ -213,7 +213,7 @@ Weitere Anleitungen erhalten Sie in den Schritten im Artikel [Erstellen Ihrer No
 
 1. Ändern Sie die YAML-Datei für die oben verwendete Pipeline, und fügen Sie einen [Bereitstellungsauftrag](/azure/devops/pipelines/process/deployment-jobs) ein, indem Sie mit der folgenden YAML-Syntax auf die Umgebung und die VM-Ressourcen verweisen, die Sie zuvor eingerichtet haben:
 
-   ```YAML
+   ```yaml
    jobs:  
    - deployment: VMDeploy
      displayName: web
@@ -230,7 +230,7 @@ Weitere Anleitungen erhalten Sie in den Schritten im Artikel [Erstellen Ihrer No
    `runOnce` ist die einfachste Bereitstellungsstrategie, bei der alle Lebenszyklushooks, also `preDeploy` `deploy`, `routeTraffic` und `postRouteTraffic`, einmal ausgeführt werden. Danach wird entweder `on:` `success` oder `on:` `failure` ausgeführt.
 
    Im Folgenden finden Sie den YAML-Beispielcodeausschnitt für `runOnce`:
-   ```YAML
+   ```yaml
    jobs:
    - deployment: VMDeploy
      displayName: web
@@ -248,7 +248,7 @@ Weitere Anleitungen erhalten Sie in den Schritten im Artikel [Erstellen Ihrer No
 
 4. Im Folgenden finden Sie ein Beispiel des YAML-Codeausschnitts, den Sie verwenden können, um eine Strategie für die parallele Bereitstellung von VM-Updates für bis zu fünf Ziele bei jeder Iteration zu definieren. `maxParallel` bestimmt die Anzahl von Zielen, auf denen eine parallele Bereitstellung erfolgen kann. Die Auswahl berücksichtigt die absolute Anzahl oder einen Prozentsatz der Ziele, die zu jedem Zeitpunkt verfügbar bleiben müssen, ausgenommen die Ziele, auf denen die Bereitstellung erfolgt. Hiermit werden auch die Erfolgs- und Fehlerbedingungen während der Bereitstellung bestimmt.
 
-   ```YAML
+   ```yaml
    jobs: 
    - deployment: VMDeploy
      displayName: web

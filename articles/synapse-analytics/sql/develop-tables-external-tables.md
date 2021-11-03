@@ -9,12 +9,13 @@ ms.subservice: sql
 ms.date: 07/23/2021
 ms.author: maburd
 ms.reviewer: wiassaf
-ms.openlocfilehash: a229bd769afa30b93cae9ca0f2073ad8a0621cdd
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 14341d2c623ab465e054c83b7b47a100a52f8ece
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130001388"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131054626"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Verwenden externer Tabellen mit Synapse SQL
 
@@ -290,7 +291,7 @@ Der Befehl „CREATE EXTERNAL TABLE“ erstellt eine externe Tabelle für Synaps
 
 ### <a name="syntax-for-create-external-table"></a>Syntax für „CREATE EXTERNAL TABLE“
 
-```sql
+```syntaxsql
 CREATE EXTERNAL TABLE { database_name.schema_name.table_name | schema_name.table_name | table_name }
     ( <column_definition> [ ,...n ] )  
     WITH (
@@ -298,12 +299,21 @@ CREATE EXTERNAL TABLE { database_name.schema_name.table_name | schema_name.table
         DATA_SOURCE = external_data_source_name,  
         FILE_FORMAT = external_file_format_name
         [, TABLE_OPTIONS = N'{"READ_OPTIONS":["ALLOW_INCONSISTENT_READS"]}' ]
-    )  
-[;]  
+        [, <reject_options> [ ,...n ] ] 
+    )
+[;] 
 
 <column_definition> ::=
 column_name <data_type>
     [ COLLATE collation_name ]
+
+<reject_options> ::=  
+{  
+    | REJECT_TYPE = value,  
+    | REJECT_VALUE = reject_value,  
+    | REJECT_SAMPLE_VALUE = reject_sample_value,
+    | REJECTED_ROW_LOCATION = '/REJECT_Directory'
+}   
 ```
 
 ### <a name="arguments-create-external-table"></a>Argumente für „CREATE EXTERNAL TABLE“
@@ -317,11 +327,10 @@ Ein- bis dreiteiliger Name der Tabelle, die erstellt werden soll. Bei einer exte
 CREATE EXTERNAL TABLE unterstützt das Konfigurieren von Spaltenname, Datentyp und Sortierung. Sie können DEFAULT CONSTRAINT nicht für externe Tabellen verwenden.
 
 >[!IMPORTANT]
->Die Spaltendefinitionen, einschließlich der Datentypen und der Anzahl der Spalten, müssen mit den Daten in den externen Dateien übereinstimmen. Wenn ein Konflikt besteht, werden die Zeilen der Datei beim Abfragen der tatsächlichen Daten zurückgewiesen.
+>Die Spaltendefinitionen, einschließlich der Datentypen und der Anzahl der Spalten, müssen mit den Daten in den externen Dateien übereinstimmen. Wenn ein Konflikt besteht, werden die Zeilen der Datei beim Abfragen der tatsächlichen Daten zurückgewiesen. Weitere Informationen zur Steuerung des Verhaltens bei abgelehnten Zeilen finden Sie unter den Reject-Optionen.
 
 Beim Lesen aus Parquet-Dateien können Sie die zu lesenden Spalten angeben und die übrigen Spalten überspringen.
 
-#### <a name="location"></a>LOCATION
 
 LOCATION = '*folder_or_filepath*'
 
@@ -329,15 +338,62 @@ Dient zum Angeben des Ordners oder des Dateipfads und Dateinamens für die tats�
 
 ![Rekursive Daten für externe Tabellen](./media/develop-tables-external-tables/folder-traversal.png)
 
-Im Gegensatz zu externen Hadoop-Tabellen geben native externe Tabellen keine Unterordner zurück, es sei denn, Sie geben „/**“ am Ende des Pfads an. In diesem Beispiel werden von einer Abfrage des serverlosen SQL-Pools Zeilen aus „mydata.txt“ zurückgegeben, wenn „LOCATION='/webdata/'“ angegeben wird. „mydata2.txt“ und „mydata3.txt“ werden nicht zurückgegeben, da sie sich in einem Unterordner befinden. Hadoop-Tabellen geben alle Dateien in einem beliebigen Unterordner zurück.
- 
+Im Gegensatz zu externen Hadoop-Tabellen geben native externe Tabellen keine Unterordner zurück, es sei denn, Sie geben „/**“ am Ende des Pfads an. In diesem Beispiel werden von einer Abfrage des serverlosen SQL-Pools Zeilen aus „mydata.txt“ zurückgegeben, wenn „LOCATION='/webdata/'“ angegeben wird. „mydata2.txt“ und „mydata3.txt“ werden nicht zurückgegeben, da sie sich in einem Unterordner befinden. Von Hadoop-Tabellen werden alle Dateien in einem beliebigen Unterordner zurückgegeben.
+
 Dateien, deren Name mit einem Unterstrich (_) oder Punkt (.) beginnt, werden sowohl bei externen Hadoop-Tabellen als auch bei nativen externen Tabellen übersprungen.
 
-#### <a name="data_source"></a>DATA_SOURCE
 
-DATA_SOURCE = *external_data_source_name*: Dient zum Angeben des Namens der externen Datenquelle, die den Speicherort der externen Daten enthält. Verwenden Sie zum Erstellen einer externen Datenquelle [CREATE EXTERNAL DATA SOURCE](#create-external-data-source).
+DATA_SOURCE = *external_data_source_name*
 
-FILE_FORMAT = *external_file_format_name*: Dient zum Angeben des Namens des Objekts für das externe Dateiformat, das den Dateityp und die Komprimierungsmethode für die externen Daten enthält. Verwenden Sie zum Erstellen eines externen Dateiformats [CREATE EXTERNAL FILE FORMAT](#create-external-file-format).
+Gibt den Namen der externen Datenquelle an, die den Speicherort der externen Daten enthält. Verwenden Sie zum Erstellen einer externen Datenquelle [CREATE EXTERNAL DATA SOURCE](#create-external-data-source).
+
+
+FILE_FORMAT = *external_file_format_name*
+
+Gibt den Namen des externen Dateiformatobjekts an, das den Dateityp und die Komprimierungsmethode der externen Daten speichert. Verwenden Sie zum Erstellen eines externen Dateiformats [CREATE EXTERNAL FILE FORMAT](#create-external-file-format).
+
+Reject-Optionen 
+
+> [!NOTE]
+> Das Feature für abgelehnte Zeilen befindet sich in der Public Preview.
+> Beachten Sie, dass das Feature für abgelehnte Zeilen nur für Textdateien mit Trennzeichen und PARSER_VERSION 1.0 funktioniert.
+
+Sie können Reject-Parameter angeben, die bestimmen, wie der Dienst *modifizierte* Datensätze behandelt, die aus der externen Datenquelle abgerufen werden. Ein Datensatz gilt als „dirty“ (modifiziert), wenn die tatsächlichen Datentypen nicht den Spaltendefinitionen der externen Tabelle entsprechen.
+
+Wenn Sie die Reject-Optionen nicht angeben oder ändern, verwendet der Dienst Standardwerte. Diese Informationen über die Reject-Parameter werden als zusätzliche Metadaten gespeichert, wenn Sie eine externe Tabelle mit der CREATE EXTERNAL TABLE-Anweisung erstellen. Wenn eine zukünftige SELECT- oder SELECT INTO SELECT-Anweisung Daten aus der externen Tabelle auswählt, wird der Dienst die Reject-Optionen verwenden, um die Anzahl der Zeilen zu bestimmen, die zurückgewiesen werden können, bevor die tatsächliche Abfrage fehlschlägt. Die Abfrage gibt (Teil-) Ergebnisse zurück, bis der Reject-Schwellenwert überschritten wird. Daraufhin wird eine entsprechende Fehlermeldung ausgelöst.
+
+
+REJECT_TYPE = **value** 
+
+Dies ist derzeit der einzige unterstützte Wert. Dies verdeutlicht, dass die Option REJECT_VALUE als Literalwert angegeben ist.
+
+value 
+
+REJECT_VALUE ist ein Literalwert. Die Abfrage schlägt fehl, wenn die Anzahl der abgelehnten Zeilen *reject_value* überschreitet.
+
+Die SELECT-Abfrage schlägt beispielsweise bei „REJECT_VALUE = 5“ und „REJECT_TYPE = value“ fehl, nachdem fünf Zeilen abgelehnt wurden.
+
+
+REJECT_VALUE = *reject_value* 
+
+Gibt die Anzahl von Zeilen an, die abgelehnt werden können, bevor für die Abfrage ein Fehler auftritt.
+
+Wenn REJECT_TYPE = Wert, muss *reject_value* eine ganze Zahl zwischen 0 und 2.147.483.647 sein.
+
+
+REJECTED_ROW_LOCATION = *Verzeichnis*
+
+Gibt das Verzeichnis in der externen Datenquelle an, in das die abgelehnten Zeilen und die entsprechende Fehlerdatei geschrieben werden sollen. Ist das angegebene Verzeichnis nicht vorhanden, wird es vom Dienst für Sie erstellt. Es wird ein untergeordnetes Verzeichnis mit dem Namen „_rejectedrows“ erstellt. Mit dem „_ “-Zeichen wird sichergestellt, dass das Verzeichnis für andere Datenverarbeitungsvorgänge übergangen wird, es sei denn, es ist explizit im LOCATION-Parameter angegeben. In diesem Verzeichnis befindet sich ein Ordner, der ausgehend von der Zeit der Lastübermittlung im Format „JahrMonatTag_StundeMinuteSekunde_Anweisungs-ID“ erstellt wurde (z. B. 20180330-173205-559EE7D2-196D-400A-806D-3BF5D007F891). Sie können die Anweisungs-ID verwenden, um den Ordner mit der Abfrage zu korrelieren, von der er generiert wurde. In diesen Ordner werden zwei Dateien geschrieben: die Datei „error.json“ und die Datendatei. 
+
+Die Datei error.json enthält ein JSON-Array mit den aufgetretenen Fehlern im Zusammenhang mit abgelehnten Zeilen. Jedes Element, das einen Fehler darstellt, enthält die folgenden Attribute:
+
+| attribute | BESCHREIBUNG                                                  |
+| --------- | ------------------------------------------------------------ |
+| Fehler     | Der Grund, warum die Zeile abgelehnt wird.                                  |
+| Zeile       | Die Ordinalzahl der abgelehnten Zeile in der Datei.                         |
+| Column    | Die Ordinalzahl der abgelehnten Spalte.                              |
+| Wert     | Der Wert der abgelehnten Spalte. Wenn der Wert größer als 100 Zeichen ist, werden nur die ersten 100 Zeichen angezeigt. |
+| Datei      | Der Pfad zur Datei, zu der die Zeile gehört.                            |
 
 #### <a name="table_options"></a>TABLE_OPTIONS
 

@@ -15,14 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/03/2021
 ms.author: bagol
-ms.openlocfilehash: 4378065a8d1a91f9051c04dbb71a90e2a4ab862c
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 27e4d3cd795d612ee9ef75160dc7a466a1dfdaab
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124777391"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131075423"
 ---
 # <a name="audit-azure-sentinel-queries-and-activities"></a>Überwachen von Azure Sentinel-Abfragen und -Aktivitäten
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 In diesem Artikel wird beschrieben, wie Sie Überwachungsdaten für ausgeführte Abfragen und Aktivitäten in Ihrem Azure Sentinel-Arbeitsbereich anzeigen können, z. B. für interne und externe Complianceanforderungen im SOC-Arbeitsbereich (Security Operations).
 

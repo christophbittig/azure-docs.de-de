@@ -6,12 +6,12 @@ ms.author: terrylan
 ms.service: security
 ms.topic: reference
 ms.date: 09/13/2021
-ms.openlocfilehash: 2c75831e31717b59b20b9a6e731189be0db9aa59
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 76d38f7f5aa2c62010e3c3c6680ff016d3dc518d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130225508"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131075560"
 ---
 # <a name="cloud-feature-availability-for-us-government-customers"></a>Verfügbarkeit von Cloudfeatures für US-Regierungskunden
 
@@ -142,7 +142,7 @@ In den folgenden Tabellen wird die aktuelle Azure Sentinel-Featureverfügbarkeit
 | - [Threat Intelligence-Plattform-Datenconnector](../../sentinel/understand-threat-intelligence.md)  | Öffentliche Vorschau | Nicht verfügbar |
 | - [Blatt „Threat Intelligence-Forschung“](https://techcommunity.microsoft.com/t5/azure-sentinel/what-s-new-threat-intelligence-menu-item-in-public-preview/ba-p/1646597)  | Allgemein verfügbar | Allgemein verfügbar |
 | - [URL-Detonation](https://techcommunity.microsoft.com/t5/azure-sentinel/using-the-new-built-in-url-detonation-in-azure-sentinel/ba-p/996229) | Öffentliche Vorschau | Nicht verfügbar |
-| - [Arbeitsmappe „Threat Intelligence“](/azure/architecture/example-scenario/data/sentinel-threat-intelligence)  | Allgemein verfügbar | Nicht verfügbar |
+| - [Arbeitsmappe „Threat Intelligence“](/azure/architecture/example-scenario/data/sentinel-threat-intelligence)  | Allgemein verfügbar | Allgemein verfügbar |
 |**Erkennungsunterstützung** | | |
 | - [Erkennung anomaler Zugriffe auf Windows-Dateifreigaben](../../sentinel/fusion.md)  | Öffentliche Vorschau | Nicht verfügbar |
 | - [Erkennung anomaler RDP-Anmeldungen](../../sentinel/connect-windows-security-events.md#configure-the-security-events--windows-security-events-connector-for-anomalous-rdp-login-detection)<br>Integrierte ML-Erkennung | Öffentliche Vorschau | Nicht verfügbar |
@@ -227,8 +227,6 @@ In den folgenden Tabellen wird die aktuelle Azure Sentinel-Featureverfügbarkeit
 | - [Symantec ProxySG](../../sentinel/data-connectors-reference.md#symantec-proxysg-preview)                                | Öffentliche Vorschau | Öffentliche Vorschau |
 | - [Symantec VIP](../../sentinel/data-connectors-reference.md#symantec-vip-preview)                                     | Öffentliche Vorschau | Öffentliche Vorschau |
 | - [Syslog](../../sentinel/connect-syslog.md)                                           | Allgemein verfügbar             | Allgemein verfügbar             |
-| - [Threat Intelligence-Plattform](../../sentinel/connect-threat-intelligence-tip.md)en                   | Öffentliche Vorschau | Nicht verfügbar      |
-| - [Threat Intelligence TAXII](../../sentinel/connect-threat-intelligence-tip.md)                       | Allgemein verfügbar | Allgemein verfügbar      |
 | - [Thycotic Secret Server](../../sentinel/data-connectors-reference.md#thycotic-secret-server-preview)                          | Öffentliche Vorschau | Öffentliche Vorschau |
 | - [Trend Micro Deep Security](../../sentinel/data-connectors-reference.md#trend-micro-deep-security)                       | Allgemein verfügbar             | Allgemein verfügbar             |
 | - [Trend Micro TippingPoint](../../sentinel/data-connectors-reference.md#trend-micro-tippingpoint-preview)                         | Öffentliche Vorschau | Öffentliche Vorschau |

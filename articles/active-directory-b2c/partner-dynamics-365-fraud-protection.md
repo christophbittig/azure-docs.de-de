@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 5/12/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 219cb793da7835922ad707d0ad1ee7e122990ba8
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: 83715b34578176ba08fb364cfae11df8b1cf1209
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111962179"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131044720"
 ---
 # <a name="tutorial-configure-microsoft-dynamics-365-fraud-protection-with-azure-active-directory-b2c"></a>Tutorial: Konfigurieren von Microsoft Dynamics 365 Fraud Protection mit Azure Active Directory B2C
 
@@ -76,12 +76,12 @@ Dies ist ein Beispiel:
 
 | Umgebung | Dienst | Domain |
 |:------------|:---------------|:---------------|
-| Entwicklung | Azure AD B2C | contoso-dev.b2clogin.com |
-| Entwicklung | Microsoft DFP-Fingerabdruck | fpt.dfp.microsoft-int.com |
-| UAT | Azure AD B2C | contoso-uat.b2clogin.com |
-| UAT | Microsoft DFP-Fingerabdruck | fpt.dfp.microsoft.com |
-| Bereitstellung | Azure AD B2C | login.contoso.com |
-| Bereitstellung | Microsoft DFP-Fingerabdruck | fpt.login.contoso.com |
+| Entwicklung | Azure AD B2C | `contoso-dev.b2clogin.com` |
+| Entwicklung | Microsoft DFP-Fingerabdruck | `fpt.dfp.microsoft-int.com` |
+| UAT | Azure AD B2C | `contoso-uat.b2clogin.com` |
+| UAT | Microsoft DFP-Fingerabdruck | `fpt.dfp.microsoft.com` |
+| Bereitstellung | Azure AD B2C | `login.contoso.com` |
+| Bereitstellung | Microsoft DFP-Fingerabdruck | `fpt.login.contoso.com` |
 
 ## <a name="deploy-the-ui-templates"></a>Bereitstellen der Benutzeroberflächenvorlagen
 

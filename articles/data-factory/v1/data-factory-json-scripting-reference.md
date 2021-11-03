@@ -7,14 +7,14 @@ ms.reviewer: jburchel
 ms.service: data-factory
 ms.subservice: v1
 ms.topic: conceptual
-ms.date: 01/10/2018
+ms.date: 10/22/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4e3b5b200ee39c4b777d85ba42e26dde91f0e046
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 11b9009dbf8f308a78ef0bc88588196052dd8e74
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128675286"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130218691"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory – JSON-Skiptreferenz
 > [!NOTE]
@@ -43,7 +43,7 @@ Die grobe Struktur einer Pipelinedefinition lautet wie folgt:
 
 In der folgenden Tabelle werden die Eigenschaften in der Pipeline-JSON-Definition beschrieben:
 
-| Eigenschaft | Beschreibung | Erforderlich
+| Eigenschaft | BESCHREIBUNG | Erforderlich
 -------- | ----------- | --------
 | name | Name der Pipeline. Geben Sie einen Namen an, der die Aktion darstellt, für deren Durchführung die Aktivität oder die Pipeline konfiguriert ist.<br/><ul><li>Maximale Anzahl von Zeichen: 260</li><li>Muss mit einem Buchstaben, einer Zahl oder einem Unterstrich (\_) beginnen.</li><li>Folgende Zeichen sind nicht zulässig: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\\“.</li></ul> |Ja |
 | description |Beschreibung des Verwendungszwecks der Aktivität oder der Pipeline | Nein |
@@ -81,7 +81,7 @@ Die allgemeine Struktur für eine Aktivität in einer Pipelinedefinition (activi
 
 In der folgenden Tabelle werden die Eigenschaften in der JSON-Definition für die Aktivität beschrieben:
 
-| Tag | Beschreibung | Erforderlich |
+| Tag | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | name |Der Name der Aktivität. Geben Sie einen Namen an, der die Aktion darstellt, für deren Durchführung die Aktivität konfiguriert ist.<br/><ul><li>Maximale Anzahl von Zeichen: 260</li><li>Muss mit einem Buchstaben, einer Zahl oder einem Unterstrich (\_) beginnen.</li><li>Folgende Zeichen sind nicht zulässig: „.“, „+“, „?“, „/“, „<“, „>“, „*“, „%“, „&“, „:“, „\\“.</li></ul> |Ja |
 | description |Ein Text, der beschreibt, wofür die Aktivität verwendet wird. |Nein |
@@ -241,7 +241,7 @@ Die grobe Struktur der Definition eines verknüpften Diensts lautet wie folgt:
 
 In der folgenden Tabelle werden die Eigenschaften in der JSON-Definition für die Aktivität beschrieben:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | -------- | ----------- | -------- |
 | name | Name des verknüpften Diensts. | Ja |
 | Eigenschaften – Typ | Typ des verknüpften Diensts. Beispiel: Azure Storage, Azure SQL-Datenbank. |
@@ -280,7 +280,7 @@ Ein Dataset in Azure Data Factory wird wie folgt definiert:
 
 In der folgenden Tabelle werden die Eigenschaften im obigen JSON-Code beschrieben:
 
-| Eigenschaft | Beschreibung | Erforderlich | Standard |
+| Eigenschaft | BESCHREIBUNG | Erforderlich | Standard |
 | --- | --- | --- | --- |
 | name | Name des Datasets. Unter [Azure Data Factory – Benennungsregeln](data-factory-naming-rules.md) finden Sie die Benennungsregeln. |Ja |Nicht verfügbar |
 | type | Typ des Datasets. Geben Sie einen der von Azure Data Factory unterstützten Typen an (z.B. AzureBlob, AzureSqlTable). Der Abschnitt [DATENSPEICHER](#data-stores) enthält alle Datenspeicher und Datasettypen, die von Data Factory unterstützt werden. |
@@ -292,7 +292,7 @@ In der folgenden Tabelle werden die Eigenschaften im obigen JSON-Code beschriebe
 
 Jede Spalte im Abschnitt **structure** enthält die folgenden Eigenschaften:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | name |Name der Spalte. |Ja |
 | type |Datentyp der Spalte.  |Nein |
@@ -312,7 +312,7 @@ structure:
 
 In der folgenden Tabelle werden die Eigenschaften beschrieben, die Sie im Abschnitt **availability** verwenden können:
 
-| Eigenschaft | Beschreibung | Erforderlich | Standard |
+| Eigenschaft | BESCHREIBUNG | Erforderlich | Standard |
 | --- | --- | --- | --- |
 | frequency |Gibt die Zeiteinheit für die Erstellung der Datasetslices an.<br/><br/><b>Unterstützte Häufigkeit</b>: „Minute“, „Hour“, „Day“, „Week“, „Month“ |Ja |Nicht verfügbar |
 | interval |Gibt einen Multiplikator für die Häufigkeit an<br/><br/>„Frequency x interval“ bestimmt, wie oft der Slice erzeugt wird.<br/><br/>Wenn Sie das Dataset auf Stundenbasis in Slices aufteilen möchten, legen Sie <b>Frequency</b> auf <b>Hour</b> und <b>interval</b> auf <b>1</b> fest.<br/><br/><b>Hinweis</b>: Wenn Sie „Frequency“ auf „Minute“ festlegen, sollten Sie „interval“ mindestens auf „15“ festlegen. |Ja |Nicht verfügbar |
@@ -409,7 +409,7 @@ Es gibt zwei Arten von verknüpften Diensten: verknüpfter Azure Storage-Dienst 
 #### <a name="azure-storage-linked-service"></a>Mit Azure-Speicher verknüpfter Dienst
 Erstellen Sie einen verknüpften Azure Storage-Dienst, um Ihr Azure Storage-Konto per **Kontoschlüssel** mit einer Data Factory zu verknüpfen. Legen Sie den **Typ** des verknüpften Diensts auf **AzureStorage** fest, um einen verknüpften Azure Storage-Dienst zu definieren. Anschließend können Sie im Abschnitt **typeProperties** die folgenden Eigenschaften angeben:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | connectionString |Geben Sie Informationen, die zur Verbindung mit dem Azure-Speicher erforderlich sind, für die connectionString-Eigenschaft ein. |Ja |
 
@@ -1394,7 +1394,7 @@ Es gibt zwei Arten von verknüpften Diensten: verknüpfter Azure Storage-Dienst 
 #### <a name="azure-storage-linked-service"></a>Mit Azure-Speicher verknüpfter Dienst
 Erstellen Sie einen verknüpften Azure Storage-Dienst, um Ihr Azure Storage-Konto per **Kontoschlüssel** mit einer Data Factory zu verknüpfen. Legen Sie den **Typ** des verknüpften Diensts auf **AzureStorage** fest, um einen verknüpften Azure Storage-Dienst zu definieren. Anschließend können Sie im Abschnitt **typeProperties** die folgenden Eigenschaften angeben:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type |Die type-Eigenschaft muss auf Folgendes festgelegt werden: **AzureStorage** |Ja |
 | connectionString |Geben Sie Informationen, die zur Verbindung mit dem Azure-Speicher erforderlich sind, für die connectionString-Eigenschaft ein. |Ja |
@@ -1440,7 +1440,7 @@ Weitere Informationen zu diesen verknüpften Diensten finden Sie im Artikel zum 
 ### <a name="dataset"></a>Dataset
 Legen Sie zum Definieren eines Azure Table-Datasets den **Typ** des Datasets auf **AzureTable** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | tableName |Name der Tabelle in der Azure-Tabellendatenbankinstanz, auf die der verknüpfte Dienst verweist. |Ja. Wenn ein Tabellenname ohne „AzureTableSourceQuery“ angegeben wird, werden alle Datensätze aus der Tabelle an das Ziel kopiert. Bei Angabe von „AzureTableSourceQuery“ werden nur Datensätze, die der Abfrage entsprechen, aus der Tabelle an das Ziel kopiert. |
 
@@ -1588,7 +1588,7 @@ Weitere Informationen zu diesen verknüpften Diensten finden Sie im Artikel zum 
 ### <a name="linked-service"></a>Verknüpfter Dienst
 Legen Sie zum Definieren eines verknüpften Amazon Redshift-Diensts den **Typ** des verknüpften Diensts auf **AmazonRedshift** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | server |IP-Adresse oder Hostname des Amazon Redshift-Servers. |Ja |
 | port |Die Nummer des TCP-Ports, den der Amazon Redshift-Server verwendet, um auf Clientverbindungen zu lauschen. |Nein, Standardwert: 5439 |
@@ -1700,7 +1700,7 @@ Weitere Informationen finden Sie im Artikel über den Amazon Redshift-Connector.
 ### <a name="linked-service"></a>Verknüpfter Dienst
 Legen Sie zum Definieren eines verknüpften IBM DB2-Diensts den **Typ** des verknüpften Diensts auf **OnPremisesDB2** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | server |Name des DB2-Servers. |Ja |
 | database |Name der DB2-Datenbank. |Ja |
@@ -1733,7 +1733,7 @@ Weitere Informationen finden Sie im Artikel über den IBM DB2-Connector.
 ### <a name="dataset"></a>Dataset
 Legen Sie zum Definieren eines DB2-Datasets den **Typ** des Datasets auf **RelationalTable** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | tableName |Name der Tabelle in der DB2-Datenbankinstanz, auf die der verknüpfte Dienst verweist. Beim Tabellennamen wird die Groß- und Kleinschreibung beachtet. |Nein (wenn **query** von **RelationalSource** angegeben ist)
 
@@ -1938,7 +1938,7 @@ Weitere Informationen finden Sie im Artikel zum [MySQL-Connector](data-factory-o
 ### <a name="linked-service"></a>Verknüpfter Dienst
 Legen Sie zum Definieren eines verknüpften Oracle-Diensts den **Typ** des verknüpften Diensts auf **OnPremisesOracle** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | driverType | Legen Sie fest, welcher Treiber für das Kopieren von Daten aus/in Oracle Database verwendet wird. Zulässige Werte sind **Microsoft** oder **ODP** (Standard). Details zu den Treibern finden Sie unter „Unterstützte Version und Installation“. | Nein |
 | connectionString | Geben Sie Informationen, die zur Verbindung mit der Oracle Databaseinstanz erforderlich sind, für die Eigenschaft "connectionString" an. | Ja |
@@ -1964,7 +1964,7 @@ Weitere Informationen finden Sie im Artikel zum [Oracle-Connector](data-factory-
 ### <a name="dataset"></a>Dataset
 Legen Sie zum Definieren eines Oracle-Datasets den **Typ** des Datasets auf **OracleTable** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | tableName |Name der Tabelle in der Oracle Database, auf die der verknüpfte Dienst verweist. |Nein (wenn **oracleReaderQuery** von **OracleSource** angegeben ist) |
 
@@ -2107,7 +2107,7 @@ Weitere Informationen finden Sie im Artikel zum [Oracle-Connector](data-factory-
 ### <a name="linked-service"></a>Verknüpfter Dienst
 Legen Sie zum Definieren eines verknüpften PostgreSQL-Diensts den **Typ** des verknüpften Diensts auf **OnPremisesPostgreSql** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | server |Name des PostgreSQL-Servers. |Ja |
 | database |Name der PostgreSQL-Datenbank. |Ja |
@@ -2141,7 +2141,7 @@ Weitere Informationen finden Sie im Artikel zum [PostgreSQL-Connector](data-fact
 ### <a name="dataset"></a>Dataset
 Legen Sie zum Definieren eines PostgreSQL-Datasets den **Typ** des Datasets auf **RelationalTable** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | tableName |Name der Tabelle in der PostgreSQL-Datenbankinstanz, auf die der verknüpfte Dienst verweist. Beim Tabellennamen wird die Groß- und Kleinschreibung beachtet. |Nein (wenn **query** von **RelationalSource** angegeben ist) |
 
@@ -2501,7 +2501,7 @@ Weitere Informationen finden Sie im Artikel zum [SQL Server-Connector](data-fact
 ### <a name="dataset"></a>Dataset
 Legen Sie zum Definieren eines SQL Server-Datasets den **Typ** des Datasets auf **SqlServerTable** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | tableName |Name der Tabelle oder Ansicht in der SQL Server-Datenbankinstanz, auf die der verknüpfte Dienst verweist. |Ja |
 
@@ -2665,7 +2665,7 @@ Weitere Informationen finden Sie im Artikel zum [SQL Server-Connector](data-fact
 ### <a name="linked-service"></a>Verknüpfter Dienst
 Legen Sie zum Definieren eines verknüpften Sybase-Diensts den **Typ** des verknüpften Diensts auf **OnPremisesSybase** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | server |Name des Sybase-Servers. |Ja |
 | database |Name der Sybase-Datenbank. |Ja |
@@ -2785,7 +2785,7 @@ Weitere Informationen finden Sie im Artikel zum [Sybase-Connector](data-factory-
 ### <a name="linked-service"></a>Verknüpfter Dienst
 Legen Sie zum Definieren eines verknüpften Teradata-Diensts den **Typ** des verknüpften Diensts auf **OnPremisesTeradata** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | server |Name des Teradata-Servers. |Ja |
 | authenticationType |Typ der Authentifizierung für die Verbindung mit der Teradata-Datenbank. Mögliche Werte: „Anonymous“, „Basic“ und „Windows“. |Ja |
@@ -2899,7 +2899,7 @@ Weitere Informationen finden Sie im Artikel zum [Teradata-Connector](data-factor
 ### <a name="linked-service"></a>Verknüpfter Dienst
 Legen Sie zum Definieren eines verknüpften Cassandra-Diensts den **Typ** des verknüpften Diensts auf **OnPremisesCassandra** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | host |Mindestens eine IP-Adresse oder ein Hostname von Cassandra-Servern.<br/><br/>Geben Sie eine durch Trennzeichen getrennte Liste mit IP-Adressen oder Hostnamen an, um gleichzeitig mit allen Servern Verbindungen herzustellen. |Ja |
 | port |Der TCP-Port, den der Cassandra-Server verwendet, um auf Clientverbindungen zu lauschen. |Nein, Standardwert: 9042 |
@@ -3064,7 +3064,7 @@ Weitere Informationen finden Sie im Artikel zum [MongoDB-Connector](data-factory
 ### <a name="dataset"></a>Dataset
 Legen Sie zum Definieren eines MongoDB-Datasets den **Typ** des Datasets auf **MongoDbCollection** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | collectionName |Der Name der Sammlung in der MongoDB-Datenbank |Ja |
 
@@ -3724,7 +3724,7 @@ Weitere Informationen finden Sie im Artikel zum [FTP-Connector](data-factory-ftp
 ### <a name="linked-service"></a>Verknüpfter Dienst
 Legen Sie zum Definieren eines verknüpften HDFS-Diensts den **Typ** des verknüpften Diensts auf **Hdfs** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | type |Die type-Eigenschaft muss auf Folgendes festgelegt werden: **Hdfs**. |Ja |
 | url |Die URL für das HDFS. |Ja |
@@ -3923,7 +3923,7 @@ Legen Sie zum Verwenden der Standardauthentifizierung `authenticationType` auf `
 
 Legen Sie zum Verwenden der Standardauthentifizierung `authenticationType` auf `SshPublicKey` fest, und geben Sie über die im letzten Abschnitt beschriebenen allgemeinen Eigenschaften des SFTP-Connectors hinaus die folgenden Eigenschaften an:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | username |Benutzer, der Zugriff auf den SFTP-Server hat. |Ja |
 | privateKeyPath | Geben Sie den absoluten Pfad der privaten Schlüsseldatei ein, auf die das Gateway zugreifen kann. | Geben Sie entweder `privateKeyPath` oder `privateKeyContent` an. <br><br> Betrifft nur das Kopieren von Daten von einem lokalen SFTP-Server. |
@@ -3974,7 +3974,7 @@ Weitere Informationen finden Sie im Artikel zum [SFTP-Connector](data-factory-sf
 ### <a name="dataset"></a>Dataset
 Legen Sie zum Definieren eines SFTP-Datasets den **Typ** des Datasets auf **FileShare** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | folderPath |Unterpfad zum Ordner. Verwenden Sie für Sonderzeichen in der Zeichenfolge das Escapezeichen „\“. Beispiele finden Sie unter „Beispieldefinitionen für verknüpfte Dienste und Datasets“.<br/><br/>Sie können diese Eigenschaft mit **partitionBy** kombinieren, um Ordnerpfade auf der Grundlage von Datum und Uhrzeit für Start und Ende des Slices zu erhalten. |Ja |
 | fileName |Geben Sie den Namen der Datei in **folderPath** an, wenn die Tabelle auf eine bestimmte Datei im Ordner verweisen soll. Wenn Sie keine Werte für diese Eigenschaft angeben, verweist die Tabelle auf alle Dateien im Ordner.<br/><br/>Wenn „fileName“ für ein Ausgabedataset nicht angegeben ist, hat der Name der generierten Datei folgendes Format: <br/><br/>`Data.<Guid>.txt` (Beispiel: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt). |Nein |
@@ -4078,7 +4078,7 @@ Legen Sie zum Definieren eines verknüpften HTTP-Diensts den **Typ** des verknü
 #### <a name="example-using-basic-digest-or-windows-authentication"></a>Beispiel: Verwenden der Authentifizierung des Typs „Basic“, „Digest“ oder „Windows“
 Legen Sie für `authenticationType` die Option `Basic`, `Digest` oder `Windows` fest, und geben Sie zusätzlich zu den oben vorgestellten allgemeinen HTTP-Connectoreigenschaften die folgenden Eigenschaften an:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | username | Benutzername zum Zugreifen auf den HTTP-Endpunkt | Ja |
 | password | Kennwort für den Benutzer (username) | Ja |
@@ -4102,7 +4102,7 @@ Legen Sie für `authenticationType` die Option `Basic`, `Digest` oder `Windows` 
 
 Legen Sie zum Verwenden der Standardauthentifizierung `authenticationType` auf `ClientCertificate` fest, und geben Sie zusätzlich zu den oben beschriebenen allgemeinen Eigenschaften des HTTP-Connectors die folgenden Eigenschaften an:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | embeddedCertData | Der Base64-codierte Inhalt der Binärdaten der Personal Information Exchange-Datei (PFX) | Geben Sie entweder `embeddedCertData` oder `certThumbprint` an. |
 | certThumbprint | Der Fingerabdruck des Zertifikats, das im Zertifikatspeicher des Gatewaycomputers installiert wurde. Betrifft nur das Kopieren von Daten von einer lokalen HTTP-Quelle. | Geben Sie entweder `embeddedCertData` oder `certThumbprint` an. |
@@ -4155,7 +4155,7 @@ Weitere Informationen finden Sie im Artikel zum [HTTP-Connector](data-factory-ht
 ### <a name="dataset"></a>Dataset
 Legen Sie zum Definieren eines HTTP-Datasets den **Typ** des Datasets auf **Http** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | relativeUrl | Eine relative URL zu der Ressource, die die Daten enthält. Wenn der Pfad nicht angegeben ist, wird nur die URL verwendet, die in der Definition des verknüpften Diensts angegeben ist. <br><br> Zum Erstellen von dynamischen URLs können Sie [Data Factory-Funktionen und -Systemvariablen](data-factory-functions-variables.md) verwenden. Beispiel: `"relativeUrl": "$$Text.Format('/my/report?month={0:yyyy}-{0:MM}&fmt=csv', SliceStart)"`. | Nein |
 | requestMethod | HTTP-Methode. Zulässige Werte: **GET** oder **POST** | Nein. Der Standardwert ist `GET`. |
@@ -4211,7 +4211,7 @@ Weitere Informationen finden Sie im Artikel zum [HTTP-Connector](data-factory-ht
 ### <a name="http-source-in-copy-activity"></a>HTTP-Quelle in der Kopieraktivität
 Legen Sie beim Kopieren von Daten aus einer HTTP-Quelle den **Quelltyp** der Kopieraktivität auf **HttpSource** fest, und geben Sie im Abschnitt **source** die folgenden Eigenschaften an:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | -------- | ----------- | -------- |
 | httpRequestTimeout | Das Timeout (TimeSpan) für die HTTP-Anforderung, um eine Antwort zu empfangen. Dabei handelt es sich um das Timeout zum Empfangen einer Antwort, nicht das Timeout zum Lesen von Antwortdaten. | Nein. Standardwert: 00:01:40 |
 
@@ -4435,7 +4435,7 @@ Weitere Informationen finden Sie im Artikel zum [OData-Connector](data-factory-o
 ### <a name="linked-service"></a>Verknüpfter Dienst
 Legen Sie zum Definieren eines verknüpften ODBC-Diensts den **Typ** des verknüpften Diensts auf **OnPremisesOdbc** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | connectionString |Der nicht für den Zugriff bestimmte Teil der Anmeldeinformationen in der Verbindungszeichenfolge sowie optional verschlüsselte Anmeldeinformationen. Siehe Beispiele in den folgenden Abschnitten. |Ja |
 | Anmeldeinformationen (credential) |Der zum Zugriff bestimmte Teil der Anmeldeinformationen in der Verbindungszeichenfolge. Er wird in einem treiberspezifischen Format in Eigenschaft und Wert angegeben. Beispiel: `“Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;”.` |Nein |
@@ -4500,7 +4500,7 @@ Weitere Informationen finden Sie im Artikel zum [ODBC-Connector](data-factory-od
 ### <a name="dataset"></a>Dataset
 Legen Sie zum Definieren eines ODBC-Datasets den **Typ** des Datasets auf **RelationalTable** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | tableName |Der Name der Tabelle im ODBC-Datenspeicher. |Ja |
 
@@ -4589,7 +4589,7 @@ Weitere Informationen finden Sie im Artikel zum [ODBC-Connector](data-factory-od
 ### <a name="linked-service"></a>Verknüpfter Dienst
 Legen Sie zum Definieren eines verknüpften Salesforce-Diensts den **Typ** des verknüpften Diensts auf **Salesforce** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | environmentUrl | Geben Sie die URL der Salesforce-Instanz an. <br><br> – Die Standard-URL lautet „https:\///login.salesforce.com“. <br> – Um Daten aus einer Sandbox zu kopieren, geben Sie „https://test.salesforce.com“ an. <br> - Geben Sie zum Kopieren von Daten aus der benutzerdefinierten Domäne z.B. „https://[Domäne].my.salesforce.com“ an. |Nein |
 | username |Geben Sie einen Benutzernamen für das Benutzerkonto an. |Ja |
@@ -4712,7 +4712,7 @@ Weitere Informationen finden Sie im Artikel zum [Salesforce-Connector](data-fact
 ### <a name="linked-service"></a>Verknüpfter Dienst
 Legen Sie zum Definieren eines verknüpften Webdiensts den **Typ** des verknüpften Diensts auf **Web** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | url |URL der Webquelle |Ja |
 | authenticationType |Anonym |Ja |
@@ -4739,7 +4739,7 @@ Weitere Informationen finden Sie im Artikel zum [Webtabellen-Connector](data-fac
 ### <a name="dataset"></a>Dataset
 Legen Sie zum Definieren eines Webdatasets den **Typ** des Datasets auf **WebTable** fest, und geben Sie im Abschnitt **typeProperties** die folgenden Eigenschaften an:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type |Die Art des Datasets. Muss auf **WebTable** festgelegt sein. |Ja |
 | path |Eine relative URL zu der Ressource, die die Tabelle enthält. |Nein. Wenn der Pfad nicht angegeben ist, wird nur die URL verwendet, die in der Definition des verknüpften Diensts angegeben ist. |
@@ -4832,7 +4832,7 @@ Der Azure Data Factory-Dienst kann zum Verarbeiten von Daten automatisch einen b
 ### <a name="linked-service"></a>Verknüpfter Dienst
 Die folgende Tabelle enthält Beschreibungen der Eigenschaften, die in der Azure-JSON-Definition eines bedarfsgesteuerten verknüpften HDInsight-Diensts verwendet werden.
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | type |Legen Sie die Typeigenschaft auf **HDInsightOnDemand** fest. |Ja |
 | clusterSize |Anzahl der Worker-/Datenknoten im Cluster. Der HDInsight-Cluster wird mit zwei Hauptknoten sowie der Anzahl der Workerknoten erstellt, die Sie für diese Eigenschaft angeben. Die Knoten haben die Größe Standard_D3, die vier Kerne aufweist. Ein Cluster mit vier Workerknoten nutzt also 24 Kerne (4 \* 4 = 16 für die Workerknoten + 2 \* 4 = 8 für die Hauptknoten). Ausführliche Informationen zum Standard_D3-Tarif finden Sie unter [Erstellen von Linux-basierten Hadoop-Clustern in HDInsight](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md). |Ja |
@@ -4870,7 +4870,7 @@ Sie können einen verknüpften Azure HDInsight-Dienst erstellen, um Ihren eigene
 ### <a name="linked-service"></a>Verknüpfter Dienst
 Die folgende Tabelle enthält Beschreibungen der Eigenschaften, die in der Azure-JSON-Definition eines verknüpften Azure HDInsight-Diensts verwendet werden.
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | type |Legen Sie die Typeigenschaft auf **HDInsight** fest. |Ja |
 | clusterUri |Der URI des HDInsight-Clusters. |Ja |
@@ -4935,7 +4935,7 @@ Sie können einen mit ML Studio (klassisch) verknüpften Dienst erstellen, um ei
 ### <a name="linked-service"></a>Verknüpfter Dienst
 Die folgende Tabelle enthält Beschreibungen der Eigenschaften, die in der Azure-JSON-Definition eines verknüpften Diensts für Studio (klassisch) verwendet werden.
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | type |Legen Sie die type-Eigenschaft auf **AzureML** fest. |Ja |
 | mlEndpoint |Die Batchbewertungs-URL. |Ja |
@@ -5292,7 +5292,7 @@ Weitere Informationen finden Sie im Artikel zur [Hadoop-Streamingaktivität](dat
 ## <a name="hdinsight-spark-activity"></a>HDInsight Spark-Aktivität
 Sie können in der JSON-Definition einer Spark-Aktivität die folgenden Eigenschaften angeben. Die type-Eigenschaft für die Aktivität muss wie folgt lauten: **HDInsightSpark**. Es ist erforderlich, zuerst einen verknüpften HDInsight-Dienst zu erstellen und dessen Namen als Wert für die **linkedServiceName**-Eigenschaft anzugeben. Die folgenden Eigenschaften werden im Abschnitt **typeProperties** unterstützt, wenn Sie den Typ der Aktivität auf HDInsightSpark festlegen:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | -------- | ----------- | -------- |
 | rootPath | Der Azure-Blobcontainer und -ordner mit der Spark-Datei. Beim Dateinamen muss die Groß-/Kleinschreibung beachtet werden. | Ja |
 | entryFilePath | Der relative Pfad zum Stammordner des Spark-Codes bzw. -Pakets. | Ja |
@@ -5347,7 +5347,7 @@ Weitere Informationen zur Aktivität finden Sie im Artikel zur [Spark-Aktivität
 ## <a name="ml-studio-classic-batch-execution-activity"></a>Batchausführungsaktivität für ML Studio (klassisch)
 In der JSON-Definition einer Batchausführungsaktivität für ML Studio (klassisch) können Sie die folgenden Eigenschaften angeben. Die type-Eigenschaft für die Aktivität muss wie folgt lauten: **AzureMLBatchExecution**. Es ist erforderlich, zuerst einen verknüpften Dienst für Studio (klassisch) zu erstellen und dessen Namen als Wert für die **linkedServiceName**-Eigenschaft anzugeben. Die folgenden Eigenschaften werden im Abschnitt **typeProperties** unterstützt, wenn Sie den Typ der Aktivität auf AzureMLBatchExecution festlegen:
 
-Eigenschaft | Beschreibung | Erforderlich
+Eigenschaft | BESCHREIBUNG | Erforderlich
 -------- | ----------- | --------
 webServiceInput | Das Dataset, das als Eingabe für den Webdienst für Studio (klassisch) übergeben wird. Dieses Dataset muss auch in die Eingaben für die Aktivität eingebunden werden. |Verwenden Sie entweder webServiceInput oder webServiceInputs. |
 webServiceInputs | Geben Sie Datasets an, die als Eingabe für den Webdienst für Studio (klassisch) übergeben werden. Wenn der Webdienst mehrere Eingaben akzeptiert, verwenden Sie anstelle der webServiceInput-Eigenschaft die webServiceInputs-Eigenschaft. Datasets, auf die **webServiceInputs** verweist, müssen auch in der Aktivität **inputs** enthalten sein. | Verwenden Sie entweder webServiceInput oder webServiceInputs. |
@@ -5543,7 +5543,7 @@ Sie können in der JSON-Definition einer Aktivität vom Typ „Gespeicherte Proz
 
 Die folgenden Eigenschaften werden im Abschnitt **typeProperties** unterstützt, wenn Sie den Typ der Aktivität auf SqlServerStoredProcedure festlegen:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | storedProcedureName |Geben Sie den Namen der gespeicherten Prozedur in der Azure SQL-Datenbank- oder Azure Synapse Analytics-Instanz an, die durch den verknüpften Dienst dargestellt wird, der von der Ausgabetabelle verwendet wird. |Ja |
 | storedProcedureParameters |Geben Sie Werte für Parameter der gespeicherten Prozedur an. Wenn Sie für einen Parameter Null übergeben müssen, verwenden Sie die folgende Syntax: "param1": null (nur Kleinbuchstaben). Das folgende Beispiel veranschaulicht die Verwendung dieser Eigenschaft. |Nein |
@@ -5583,7 +5583,7 @@ Weitere Informationen finden Sie unter [Aktivität „Gespeicherte Prozedur“](
 ## <a name="net-custom-activity"></a>Benutzerdefinierte .NET-Aktivität
 Sie können in der JSON-Definition einer benutzerdefinierten .NET-Aktivität die folgenden Eigenschaften angeben. Die type-Eigenschaft für die Aktivität muss wie folgt lauten: **DotNetActivity**. Es ist erforderlich, einen verknüpften Azure HDInsight-Dienst oder einen verknüpften Azure Batch-Dienst zu erstellen und den Namen des verknüpften Diensts als Wert für die **linkedServiceName**-Eigenschaft anzugeben. Die folgenden Eigenschaften werden im Abschnitt **typeProperties** unterstützt, wenn Sie den Typ der Aktivität auf DotNetActivity festlegen:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | AssemblyName | Der Name der Assembly. In diesem Beispiel ist dies: **MyDotnetActivity.dll**. | Ja |
 | EntryPoint |Der Name der Klasse, die die IDotNetActivity-Schnittstelle implementiert. In diesem Beispiel ist dies: **MyDotNetActivityNS.MyDotNetActivity**, wobei MyDotNetActivityNS der Namespace und MyDotNetActivity die Klasse ist.  | Ja |

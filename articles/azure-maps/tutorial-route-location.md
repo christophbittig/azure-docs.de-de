@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 222f54157732013309532a1ab38f3f2f8747908e
-ms.sourcegitcommit: f6b76df4c22f1c605682418f3f2385131512508d
+ms.openlocfilehash: cf5377c872c086675136f5b1a52ceb15c8b3b461
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108326523"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131039143"
 ---
 # <a name="tutorial-how-to-display-route-directions-using-azure-maps-route-service-and-map-control"></a>Tutorial: Vorgehensweise beim Anzeigen von Wegbeschreibungen mithilfe von Routendienst und Kartensteuerelement von Azure Maps
 
@@ -89,20 +89,20 @@ In den folgenden Schritten wird gezeigt, wie Sie das Kartensteuerelement erstell
 
 3. Fügen Sie der Funktion `GetMap` den folgenden JavaScript-Code hinzu. Ersetzen Sie die Zeichenfolge `<Your Azure Maps Key>` durch den Primärschlüssel, den Sie aus Ihrem Maps-Konto kopiert haben.
 
-    ```JavaScript
-   //Instantiate a map object
-   var map = new atlas.Map("myMap", {
+    ```javascript
+    //Instantiate a map object
+    var map = new atlas.Map("myMap", {
         //Add your Azure Maps subscription key to the map SDK. Get an Azure Maps key at https://azure.com/maps
         authOptions: {
            authType: 'subscriptionKey',
            subscriptionKey: '<Your Azure Maps Key>'
         }
-   });
-   ```
+    });
+    ```
 
 4. Speichern Sie die Datei, und öffnen Sie sie im Browser. Es wird ein Beispiel angezeigt.
 
-     :::image type="content" source="./media/tutorial-route-location/basic-map.png" alt-text="Einfaches Kartenrendern des Kartensteuerelements":::
+    :::image type="content" source="./media/tutorial-route-location/basic-map.png" alt-text="Einfaches Kartenrendern des Kartensteuerelements":::
 
 ## <a name="define-route-display-rendering"></a>Definieren des Renderns von Routenanzeigen
 

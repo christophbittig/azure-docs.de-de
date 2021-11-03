@@ -3,12 +3,12 @@ title: Application Insights-Protokollierung mit .NET
 description: Erfahren Sie, wie Sie Application Insights mit der ILogger-Schnittstelle in .NET verwenden.
 ms.topic: conceptual
 ms.date: 05/20/2021
-ms.openlocfilehash: 274fa5a9ab3fef94f892ed75fd69bc6cca6cccc9
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 63ffa404c5f36bbb9bddfd86fd275f4bb740a66a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128617790"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131079033"
 ---
 # <a name="application-insights-logging-with-net"></a>Application Insights-Protokollierung mit .NET
 
@@ -154,7 +154,7 @@ namespace WebApplication
                     // or when you need to capture logs during application startup, such as
                     // in Program.cs or Startup.cs itself.
                     builder.AddApplicationInsights(
-                        context.Configuration["APPINSIGHTS_CONNECTIONSTRING"]);
+                        context.Configuration["APPLICATIONINSIGHTS_CONNECTION_STRING"]);
 
                     // Capture all log-level entries from Program
                     builder.AddFilter<ApplicationInsightsLoggerProvider>(
@@ -168,7 +168,7 @@ namespace WebApplication
 }
 ```
 
-Im vorangehenden Code wird `ApplicationInsightsLoggerProvider` mit Ihrer `"APPINSIGHTS_CONNECTIONSTRING"`-Verbindungszeichenfolge konfiguriert. Filter werden angewendet, wodurch der Protokolliergrad auf <xref:Microsoft.Extensions.Logging.LogLevel.Trace?displayProperty=nameWithType> festgelegt wird.
+Im vorangehenden Code wird `ApplicationInsightsLoggerProvider` mit Ihrer `"APPLICATIONINSIGHTS_CONNECTION_STRING"`-Verbindungszeichenfolge konfiguriert. Filter werden angewendet, wodurch der Protokolliergrad auf <xref:Microsoft.Extensions.Logging.LogLevel.Trace?displayProperty=nameWithType> festgelegt wird.
 
 > [!IMPORTANT]
 > Wir empfehlen, [Verbindungszeichenfolgen](./sdk-connection-string.md?tabs=net) gegenüber Instrumentierungsschlüsseln zu bevorzugen. Neue Azure-Regionen *erfordern* die Verwendung von Verbindungszeichenfolgen anstelle von Instrumentierungsschlüsseln. 

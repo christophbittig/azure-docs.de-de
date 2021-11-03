@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/03/2020
 ms.author: pafarley
-ms.custom: devx-track-csharp
+ms.custom: devx-track-csharp, ignite-fall-2021
 zone_pivot_groups: keyword-quickstart
-ms.openlocfilehash: 8cf0da3ca3787580513d818a2c0ebca5a07829b6
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 6604bdfc155d3369c1e17a92d928cc46d7f36cf5
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123541097"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131056754"
 ---
 # <a name="get-started-with-custom-keyword"></a>Erste Schritte mit dem benutzerdefinierten Schlüsselwort
 
@@ -55,7 +55,7 @@ Bevor Sie ein benutzerdefiniertes Schlüsselwort verwenden können, müssen Sie 
 
 1. Im Portal werden nun Kandidaten für die Aussprache Ihres Schlüsselworts erstellt. Hören Sie sich die einzelnen Kandidaten an, indem Sie auf die Wiedergabeschaltflächen klicken. Deaktivieren Sie dann alle nicht ordnungsgemäßen Aussprachevarianten. Wenn nur noch geeignete Aussprachen aktiviert sind, klicken Sie auf **Trainieren**, um mit dem Generieren des Schlüsselwortmodells zu beginnen. 
 
-    ![Der Screenshot zeigt, wo Sie die richtigen Aussprachen auswählen.](media/custom-keyword/custom-kws-portal-choose-prons.png)
+    ![Screenshot, der zeigt, wo Sie die richtigen Aussprachen auswählen.](media/custom-keyword/custom-kws-portal-choose-prons.png)
 
 1. Die Generierung des Modells kann bis zu dreißig Minuten dauern. Wenn das Modell fertig ist, ändert sich die Liste mit den Schlüsselwörtern von **Wird verarbeitet...** in **Erfolgreich**. Nun können Sie die Datei herunterladen.
 

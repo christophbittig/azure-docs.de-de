@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: f4179a79df5bb952ca4a374602cb4dea8bf4dbbd
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: 0f5eb88a3694e492f01dcf8646753a522f7c478c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130178256"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131064637"
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>Sicherheitsrahmen: Konfigurationsverwaltung | Risikominderung 
 | Produkt/Dienst | Artikel |
@@ -150,7 +150,7 @@ Codeausschnitt aus „web.config“ für Websites, die nur von Seiten aus der gl
 
 ### <a name="example"></a>Beispiel
 Wenn der Zugriff auf „web.config“ möglich ist, kann CORS über den folgenden Code hinzugefügt werden: 
-```XML
+```xml
 <system.webServer>
     <httpProtocol>
       <customHeaders>
@@ -181,11 +181,11 @@ Stellen Sie unbedingt sicher, dass die Liste mit Ursprüngen im Attribut „Acce
 
 ### <a name="example"></a>Beispiel
 Dieses Feature kann jedoch auf Seitenebene deaktiviert werden: 
-```XML
+```xml
 <%@ Page validateRequest="false" %> 
 ```
 Oder auf Anwendungsebene: 
-```XML
+```xml
 <configuration>
    <system.web>
       <pages validateRequest="false" />
@@ -218,7 +218,7 @@ Beachten Sie, dass das Anforderungsüberprüfungsfeature nicht unterstützt wird
 
 ### <a name="example"></a>Beispiel
 Fügen Sie den Header der Datei „web.config“ hinzu, wenn die Anwendung von Internet Information Services (IIS; ab Version 7) gehostet wird. 
-```XML
+```xml
 <system.webServer>
 <httpProtocol>
 <customHeaders>

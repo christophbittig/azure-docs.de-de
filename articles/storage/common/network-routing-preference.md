@@ -11,16 +11,16 @@ ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
 ms.custom: references_regions
-ms.openlocfilehash: 0a80fe8bc2cf2cfa86b5b8b1a9c78684d718e68f
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 0ff5515dce384a43cf54c8fb4d7e4c8fe71e251e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130038363"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131054892"
 ---
 # <a name="network-routing-preference-for-azure-storage"></a>Netzwerkroutingpräferenz für Azure Storage
 
-Sie können die [Netzwerkroutingpräferenz](../../virtual-network/routing-preference-overview.md) für Ihr Azure-Speicherkonto konfigurieren, um festzulegen, wie Netzwerkdatenverkehr von Clients über das Internet zu Ihrem Konto geleitet wird. Standardmäßig wird der Datenverkehr aus dem Internet über das [globale Microsoft-Netzwerk](../../networking/microsoft-global-network.md) an den öffentlichen Endpunkt Ihres Speicherkontos geleitet. Azure Storage bietet zusätzliche Optionen für die Konfiguration, wie der Datenverkehr zu Ihrem Speicherkonto geleitet wird.
+Sie können die [Netzwerkroutingpräferenz](../../virtual-network/ip-services/routing-preference-overview.md) für Ihr Azure-Speicherkonto konfigurieren, um festzulegen, wie Netzwerkdatenverkehr von Clients über das Internet zu Ihrem Konto geleitet wird. Standardmäßig wird der Datenverkehr aus dem Internet über das [globale Microsoft-Netzwerk](../../networking/microsoft-global-network.md) an den öffentlichen Endpunkt Ihres Speicherkontos geleitet. Azure Storage bietet zusätzliche Optionen für die Konfiguration, wie der Datenverkehr zu Ihrem Speicherkonto geleitet wird.
 
 Das Konfigurieren von Routingpräferenzen bietet Ihnen die Flexibilität, Ihren Datenverkehr entweder für eine erstklassige Netzwerkleistung oder hinsichtlich der Kosten zu optimieren. Wenn Sie eine Routingpräferenz konfigurieren, geben Sie an, wie der Datenverkehr für Ihr Speicherkonto standardmäßig zum öffentlichen Endpunkt geleitet wird. Sie können auch routenspezifische Endpunkte für Ihr Speicherkonto veröffentlichen.
 
@@ -37,7 +37,7 @@ Das folgende Diagramm zeigt, wie der Datenverkehr zwischen dem Client und dem Sp
 
 ![Übersicht über die Routingoptionen für Azure Storage](media/network-routing-preference/routing-options-diagram.png)
 
-Weitere Informationen zu den Routingpräferenzen in Azure finden Sie unter [Was ist Routingpräferenz?](../../virtual-network/routing-preference-overview.md).
+Weitere Informationen zu den Routingpräferenzen in Azure finden Sie unter [Was ist Routingpräferenz?](../../virtual-network/ip-services/routing-preference-overview.md).
 
 ## <a name="routing-configuration"></a>Routingkonfiguration
 
@@ -108,11 +108,11 @@ Die folgenden bekannten Probleme betreffen die Routingpräferenz für Azure Stor
 
 ## <a name="pricing-and-billing"></a>Preise und Abrechnung
 
-Einzelheiten zu Preisen und zur Abrechnung finden Sie im Abschnitt **Preise** in [Was ist Routingpräferenz?](../../virtual-network/routing-preference-overview.md#pricing).
+Einzelheiten zu Preisen und zur Abrechnung finden Sie im Abschnitt **Preise** in [Was ist Routingpräferenz?](../../virtual-network/ip-services/routing-preference-overview.md#pricing).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Was ist Routingpräferenz?](../../virtual-network/routing-preference-overview.md)
+- [Was ist Routingpräferenz?](../../virtual-network/ip-services/routing-preference-overview.md)
 - [Konfigurieren der Netzwerkroutingpräferenz](configure-network-routing-preference.md)
 - [Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken](storage-network-security.md)
 - [Sicherheitsempfehlungen für Blob Storage](../blobs/security-recommendations.md)
