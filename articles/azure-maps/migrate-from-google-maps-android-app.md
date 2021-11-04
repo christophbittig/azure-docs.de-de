@@ -546,7 +546,7 @@ Dies ist ein Beispiel für Google Maps mit der Spracheinstellung „fr“.
 
 Azure Maps bietet drei verschiedene Möglichkeiten, um die Sprache und die regionale Ansicht der Karte festzulegen. Die erste Option besteht darin, die Informationen zur Sprache und zur regionalen Ansicht an die Klasse `AzureMaps` zu übergeben. Bei dieser Option werden die statischen Methoden `setLanguage` und `setView` global verwendet. Das bedeutet, dass die Standardsprache und die regionale Ansicht für alle in Ihrer App geladenen Azure Maps-Steuerelemente festgelegt werden. In diesem Beispiel wird mithilfe des Sprachcodes „fr-FR“ Französisch festgelegt.
 
-::: zone pivot=&quot;programming-language-java-android&quot;
+::: zone pivot="programming-language-java-android"
 
 ```java
 static {
