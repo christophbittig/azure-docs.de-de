@@ -6,7 +6,6 @@ cloud: na
 documentationcenter: na
 author: batamig
 manager: rkarlin
-ms.assetid: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.workload: na
@@ -15,14 +14,17 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 06/22/2021
 ms.author: bagol
-ms.openlocfilehash: dd9f0c69b610b54ae6f07661ba15d9f0cf22b3ea
-ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 6525b6821c7107aa100c6ce79d606c2832f04b97
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129407207"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131036920"
 ---
 # <a name="azure-sentinel-process-event-normalization-schema-reference-public-preview"></a>Azure Sentinel: Referenz zum Prozessereignis-Normalisierungsschema (Öffentliche Vorschau)
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 Das Prozessereignis-Normalisierungsschema wird verwendet, um die Betriebssystemaktivität zum Ausführen und Beenden eines Prozesses zu beschreiben. Solche Ereignisse werden von Betriebssystemen und Sicherheitssystemen wie EDR (End Point Detection and Response) gemeldet.
 
@@ -69,7 +71,7 @@ Der folgende Azure Sentinel-Inhalt funktioniert mit jeder Prozessaktivität, die
    - [Wahrscheinliche Verwendung des AdFind Recon-Tools (normalisierte Prozessereignisse)](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimProcess/imProcess_AdFind_Usage.yaml)
    - [Base64-codierte Windows-Prozessbefehlszeilen (normalisierte Prozessereignisse)](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimProcess/imProcess_base64_encoded_pefile.yaml)
    - [Schadsoftware im Papierkorb (normalisierte Prozessereignisse)](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimProcess/imProcess_malware_in_recyclebin.yaml)
-   - [SKRIPTIUM – verdächtige rundll32.exe-Ausführung von vbscript (normalisierte Prozessereignisse)](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimProcess/imProcess_NOBELIUM_SuspiciousRundll32Exec.yaml)
+   - [NOBELIUM – verdächtige rundll32.exe-Ausführung von vbscript (normalisierte Prozessereignisse)](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimProcess/imProcess_NOBELIUM_SuspiciousRundll32Exec.yaml)
    - [SUNBURST – verdächtige untergeordnete SolarWinds-Prozesse (normalisierte Prozessereignisse)](https://github.com/Azure/Azure-Sentinel/blob/master/Detections/ASimProcess/imProcess_SolarWinds_SUNBURST_Process-IOCs.yaml)
 
    Weitere Informationen finden Sie unter [Erstellen benutzerdefinierter Analyseregeln zum Erkennen von Bedrohungen](detect-threats-custom.md).
@@ -104,7 +106,7 @@ Das Prozessereignis-Informationsmodell ist auf das [OSSEM-Prozessentitätsschema
 
 Die folgenden Felder werden von Log Analytics für jeden Datensatz generiert und können beim Erstellen eines benutzerdefinierten Connectors überschrieben werden.
 
-| Feld         | Typ     | Diskussion (Discussion)      |
+| Feld         | type     | Diskussion (Discussion)      |
 | ------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | <a name="timegenerated"></a>**TimeGenerated** | datetime | Der Zeitpunkt, zu dem das Ereignis vom meldenden Gerät generiert wurde.|
 | **_ResourceId**   | guid     | Die Azure-Ressourcen-ID des meldenden Geräts oder Diensts oder die Ressourcen-ID des Protokollforwarders für Ereignisse, die mit Syslog, CEF oder WEF weitergeleitet werden. |
@@ -119,7 +121,7 @@ Die folgenden Felder werden von Log Analytics für jeden Datensatz generiert und
 
 Ereignisfelder sind allen Schemas gemeinsam und beschreiben die Aktivität selbst und das meldende Gerät.
 
-| Feld               | Klasse       | Typ       |  BESCHREIBUNG        |
+| Feld               | Klasse       | type       |  BESCHREIBUNG        |
 |---------------------|-------------|------------|--------------------|
 | **EventMessage**        | Optional    | String     |     Eine allgemeine Nachricht oder Beschreibung, entweder im Datensatz enthalten oder aus ihm generiert.   |
 | **EventCount**          | Obligatorisch.   | Integer    |     Die Anzahl der Ereignisse, die im Datensatz beschrieben werden. <br><br>Dieser Wert wird verwendet, wenn die Quelle Aggregation unterstützt. Ein einzelner Datensatz kann mehrere Ereignisse darstellen. <br><br>Legen Sie den Wert für andere Quellen auf `1` fest.   |
@@ -156,7 +158,7 @@ Das Prozessereignisschema verweist auf die folgenden Entitäten, die für die Ve
 - **TargetUser**. Der Benutzer, dessen Anmeldeinformationen zum Erstellen des neuen Prozesses verwendet werden.
 - **ParentProcess**. Der Prozess, der den Actor-Prozess initiiert hat.
 
-| Feld          | Klasse        | Typ       | BESCHREIBUNG   |
+| Feld          | Klasse        | type       | BESCHREIBUNG   |
 |---------------|--------------|------------|-----------------|
 | **Benutzer**           | Alias        |            | Alias für [TargetUsername](#targetusername). <br><br>Beispiel: `CONTOSO\dadmin`     |
 | **Process**        | Alias        |            | Alias für [TargetProcessName](#targetprocessname) <br><br>Beispiel: `C:\Windows\System32\rundll32.exe`|
@@ -175,7 +177,7 @@ Das Prozessereignisschema verweist auf die folgenden Entitäten, die für die Ve
 | **ActingProcessFileVersion**       | Optional     | String     |               Die Produktversion aus den Versionsinformationen der Imagedatei des agierenden Prozesses. <br><br>Beispiel: `7.9.5.0`   |
 | **ActingProcessFileInternalName**  | Optional     | String     |      Der produktinterne Dateiname aus den Versionsinformationen in der Imagedatei des agierenden Prozesses. |
 | **ActingProcessFileOriginalName** | Optional     | String     |Der ursprüngliche Produkdateiname aus den Versionsinformationen der Imagedatei des agierenden Prozesses.       <br><br> Beispiel: `Notepad++.exe` |
-| **ActingProcessIsHidden**          | Optional     | Boolesch    |      Ein Hinweis darauf, ob sich der agierende Prozess im ausgeblendeten Modus befindet.  |
+| **ActingProcessIsHidden**          | Optional     | Boolean    |      Ein Hinweis darauf, ob sich der agierende Prozess im ausgeblendeten Modus befindet.  |
 | **ActingProcessInjectedAddress**   | Optional     | String     |      Die Speicheradresse, an der der verantwortliche agierende Prozess gespeichert ist.           |
 | **ActingProcessId**| Obligatorisch.    | String        | Die Prozess-ID (PID) des handelnden Prozesses.<br><br>Beispiel: `48610176`           <br><br>**Hinweis**: Der Typ ist als *Zeichenfolge* definiert, um unterschiedliche Systeme zu unterstützen, aber unter Windows und Linux muss dieser Wert numerisch sein. <br><br>Wenn Sie einen Windows- oder Linux-Computer verwenden und einen anderen Typ verwendet haben, stellen Sie sicher, dass Sie die Werte konvertieren. Wenn Sie beispielsweise einen Hexadezimalwert verwendet haben, konvertieren Sie diesen in einen Dezimalwert.    |
 | **ActingProcessGuid**              | Optional     | Zeichenfolge     |  Ein generierter eindeutiger Bezeichner (GUID) des agierenden Prozesses. Ermöglicht die systemübergreifende Identifizierung des Prozesses.  <br><br> Beispiel: `EF3BD0BD-2B74-60C5-AF5C-010000001E00`            |
@@ -193,7 +195,7 @@ Das Prozessereignisschema verweist auf die folgenden Entitäten, die für die Ve
 | **ParentProcessFileDescription**   | Optional     | String     |  Die Beschreibung aus den Versionsinformationen in der Imagedatei des übergeordneten Prozesses.    <br><br>Beispiel: `Notepad++ : a free (GPL) source code editor`|
 | **ParentProcessFileProduct**       | Optional     | String     |Der Produktname aus den Versionsinformationen in der Imagedatei des übergeordneten Prozesses.    <br><br>  Beispiel: `Notepad++`  |
 | **ParentProcessFileVersion**       | Optional     | String     | Die Produktversion aus den Versionsinformationen in der Imagedatei des übergeordneten Prozesses.    <br><br> Beispiel: `7.9.5.0` |
-| **ParentProcessIsHidden**          | Optional     | Boolesch    |   Ein Hinweis darauf, ob sich der übergeordnete Prozess im ausgeblendeten Modus befindet.  |
+| **ParentProcessIsHidden**          | Optional     | Boolean    |   Ein Hinweis darauf, ob sich der übergeordnete Prozess im ausgeblendeten Modus befindet.  |
 | **ParentProcessInjectedAddress**   | Optional     | String     |    Die Speicheradresse, an der der verantwortliche übergeordnete Prozess gespeichert ist.           |
 | **ParentProcessId**| Obligatorisch.    | String    | Die Prozess-ID (PID) des übergeordneten Prozesses.   <br><br>     Beispiel: `48610176`    |
 | **ParentProcessGuid**              | Optional     | String     |  Ein generierter eindeutiger Bezeichner (GUID) des übergeordneten Prozesses.  Ermöglicht die systemübergreifende Identifizierung des Prozesses.    <br><br> Beispiel: `EF3BD0BD-2B74-60C5-AF5C-010000001E00` |
@@ -218,7 +220,7 @@ Das Prozessereignisschema verweist auf die folgenden Entitäten, die für die Ve
 | **TargetProcessFileVersion**       | Optional     | String     |Die Produktversion aus den Versionsinformationen in der Imagedatei des Zielprozesses.   <br><br>  Beispiel: `7.9.5.0` |
 | **TargetProcessFileInternalName**  |    Optional          | String  |   Der produktinterne Dateiname aus den Versionsinformationen in der Imagedatei des Zielprozesses. |
 | **TargetProcessFileOriginalName** |       Optional       | String   |   Der ursprüngliche Produkdateiname aus den Versionsinformationen der Imagedatei des Zielprozesses. |
-| **TargetProcessIsHidden**          | Optional     | Boolesch    |   Ein Hinweis darauf, ob sich der Zielprozess im ausgeblendeten Modus befindet.  |
+| **TargetProcessIsHidden**          | Optional     | Boolean    |   Ein Hinweis darauf, ob sich der Zielprozess im ausgeblendeten Modus befindet.  |
 | **TargetProcessInjectedAddress**   | Optional     | String     |    Die Speicheradresse, an der der verantwortliche Zielprozess gespeichert ist.           |
 | **TargetProcessMD5**               | Optional     | MD5        | Der MD5-Hash der Imagedatei des Zielprozesses.   <br><br> Beispiel: `75a599802f1fa166cdadb360960b1dd0`|
 | **TargetProcessSHA1**              | Optional     | SHA1       | Der SHA-1-Hash der Imagedatei des Zielprozesses.       <br><br>  Beispiel: `d55c5a4df19b46db8c54c801c4665d3338acdab0`   |
@@ -238,11 +240,11 @@ Das Prozessereignisschema verweist auf die folgenden Entitäten, die für die Ve
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie unter
+Weitere Informationen finden Sie unter:
 
 - [Normalisierung in Azure Sentinel](normalization.md)
 - [Azure Sentinel: Referenz zum Authentifizierungsnormalisierungsschema (Öffentliche Vorschau)](authentication-normalization-schema.md)
 - [Azure Sentinel: Referenz zum DNS-Normalisierungsschema](dns-normalization-schema.md)
 - [Azure Sentinel: Referenz zum Dateiereignis-Normalisierungsschema (Öffentliche Vorschau)](file-event-normalization-schema.md)
-- [Azure Sentinel: Referenz zum Netzwerknormalisierungsschema](normalization-schema.md)
+- [Azure Sentinel: Referenz zum Netzwerknormalisierungsschema](./network-normalization-schema.md)
 - [Azure Sentinel: Referenz zum Registrierungsereignis-Normalisierungsschema (Öffentliche Vorschau)](registry-event-normalization-schema.md)

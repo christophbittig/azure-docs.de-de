@@ -14,14 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
-ms.openlocfilehash: d99785da00f277480505b417947781821df1caa2
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 94dbcf84f705aef7e8d723c6516c8a2d36e010ee
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123261050"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131023407"
 ---
 # <a name="collect-data-in-custom-log-formats-to-azure-sentinel-with-the-log-analytics-agent"></a>Sammeln von Daten in benutzerdefinierten Protokollformaten für Azure Sentinel mit dem Log Analytics-Agent
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 [!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
@@ -62,7 +65,6 @@ Wählen Sie die entsprechende Registerkarte unten aus, je nachdem, ob Ihr Connec
     | **Für jeden weiteren Linux-Computer** | <ol><li>Erweitern Sie unter **Wählen Sie aus, wo der Linux-Agent installiert werden soll** die Option **Agent auf virtuellem Linux-Computer (kein Azure) installieren**.<br><br><li>Klicken Sie auf den Link **Agent für Linux-Computer (kein Azure) herunterladen und installieren >** .<br><br><li>Klicken Sie auf dem Blatt **Agent-Verwaltung** auf die Registerkarte **Linux-Server**, kopieren Sie dann den Befehl für **Agent für Linux herunterladen und Onboarding durchführen**, und führen Sie ihn auf Ihrem Linux-Computer aus.<br><br> Wenn Sie eine lokale Kopie der Linux-Agent-Installationsdatei beibehalten möchten, klicken Sie auf den Link **Linux-Agent herunterladen** über dem Befehl „Agent herunterladen und integrieren“ aus.|
     | **Für einen virtuellen Windows-Computer in Azure** | <ol><li>Erweitern Sie unter **Wählen Sie aus, wo der Windows-Agent installiert werden soll** die Option **Agent auf virtuellem Windows-Computer in Azure installieren**.<br><br><li>Wählen Sie den Link **Agent für virtuellen Windows-Computer in Azure herunterladen und installieren >** .<br><br><li>Wählen Sie auf dem Blatt **Virtuelle Computer** eine VM aus, auf der der Agent installiert werden soll, und wählen Sie dann **Verbinden** aus. Wiederholen Sie diesen Schritt für jeden virtuellen Computer, den Sie verbinden möchten. |
     | **Für alle anderen Windows-Computer** | <ol><li>Erweitern Sie unter **Wählen Sie aus, wo der Windows-Agent installiert werden soll** die Option **Agent auf Windows-Computer (kein Azure) installieren**.<br><br><li>Klicken Sie auf den Link **Agent für Windows-Computer (kein Azure) herunterladen und installieren**.<br><br><li>Wählen Sie auf dem Blatt **Agent-Verwaltung** auf der Registerkarte **Windows-Server** je nach Eignung den Link **Windows-Agent herunterladen** für 32-Bit- oder 64-Bit-Systeme aus. |
-
 
 # <a name="other-data-sources"></a>[Andere Datenquellen](#tab/CUS)
 
