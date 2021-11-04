@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 09/08/2021
 ms.author: rifox
-ms.openlocfilehash: c2d11835a455cb0a8a9456aad95d5be4da423259
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 9737c4e756e034c88800264e5cc56a4ca1f81741
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "128700129"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131254082"
 ---
 [!INCLUDE [Install SDK](../install-sdk/install-sdk-windows.md)]
 
@@ -65,7 +65,7 @@ Call call_;
 
 ## <a name="create-button-handlers"></a>Erstellen von Schaltflächenhandlern
 
-Zuvor wurden dem XAML-Code zwei Benutzeroberflächenschaltflächen hinzugefügt. Der folgende Code fügt die Handler hinzu, die ausgeführt werden sollen, wenn ein Benutzer auf die Schaltfläche klickt.
+Zuvor wurden dem XAML-Code zwei Benutzeroberflächenschaltflächen hinzugefügt. Der folgende Code fügt die Handler hinzu, die ausgeführt werden sollen, wenn ein Benutzer die Schaltfläche auswählt.
 Der folgende Code sollte nach den Datenelementen aus dem vorherigen Abschnitt hinzugefügt werden.
 
 ```csharp

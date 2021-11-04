@@ -8,13 +8,13 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 05/25/2021
 ms.author: lajanuar
-ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 54bd889d4c6a82b911441b83fb76fe432bc8665c
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.custom: devx-track-js, devx-track-csharp, ignite-fall-2021
+ms.openlocfilehash: 8885bafbe94665fd7dcbb265383c87b0f4e6cc08
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130265932"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131253643"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
@@ -27,7 +27,7 @@ ms.locfileid: "130265932"
 
 * Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/cognitive-services)
 * Die aktuelle Version von [Node.js](https://nodejs.org/)
-* Trainingsdaten in einem Azure Storage-Blob. Tipps und Optionen für das Zusammenstellen eines Trainingsdatasets finden Sie unter [Erstellen eines Trainingsdatasets für ein benutzerdefiniertes Modell](../../build-training-data-set.md). In dieser Schnellstartanleitung können Sie die Dateien im Ordner **Trainieren** des [Beispieldatasets](https://go.microsoft.com/fwlink/?linkid=2090451) verwenden (*sample_data.zip* herunterladen und extrahieren).
+* Trainingsdaten in einem Azure Storage-Blob. Weitere Informationen finden Sie unter [Erstellen eines Trainingsdatasets für ein benutzerdefiniertes Modell](../../build-training-data-set.md). In dieser Schnellstartanleitung können Sie die Dateien im Ordner **Trainieren** des [Beispieldatasets](https://go.microsoft.com/fwlink/?linkid=2090451) verwenden (*sample_data.zip* herunterladen und extrahieren).
 * Sobald Sie über Ihr Azure-Abonnement verfügen, sollten Sie über <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer"  title="Erstellen einer Formularerkennungsressource"  target="_blank"> im Azure-Portal eine Formularerkennungsressource </a> erstellen, um Ihren Schlüssel und Endpunkt abzurufen. Wählen Sie nach Abschluss der Bereitstellung **Zu Ressource wechseln** aus.
   * Sie benötigen den Schlüssel und Endpunkt der von Ihnen erstellten Ressource, um Ihre Anwendung mit der Formularerkennungs-API zu verbinden. Der Schlüssel und der Endpunkt werden weiter unten in der Schnellstartanleitung in den Code eingefügt.
   * Sie können den kostenlosen Tarif (`F0`) verwenden, um den Dienst zu testen, und später für die Produktion auf einen kostenpflichtigen Tarif upgraden.
@@ -90,8 +90,8 @@ Mit der Formularerkennung können Sie zwei verschiedene Clienttypen erstellen. D
 
 `FormTrainingClient` stellt Vorgänge für Folgendes bereit:
 
-* Trainieren benutzerdefinierter Modelle, um alle Felder und Werte in Ihren benutzerdefinierten Formularen zu analysieren. Ein `CustomFormModel`-Element wird zurückgegeben, das angibt, welche Formulartypen vom Modell analysiert und welche Felder für jeden Formtyp extrahiert werden. Ausführlichere Informationen finden Sie in der [Dokumentation des Diensts für Modelltraining ohne Bezeichnungen](#train-a-model-without-labels).
-* Trainieren benutzerdefinierter Modelle zum Analysieren bestimmter Felder und Werte, die Sie durch Bezeichnen Ihrer benutzerdefinierten Formulare angeben. Ein `CustomFormModel`-Element wird zurückgegeben, das die vom Modell extrahierten Felder sowie die geschätzte Genauigkeit für jedes Feld angibt. Eine ausführlichere Erläuterung zum Erstellen eines Trainingsdatasets finden Sie in der [Dokumentation des Diensts für Modelltraining mit Bezeichnungen](#train-a-model-with-labels).
+* Trainieren benutzerdefinierter Modelle, um alle Felder und Werte in Ihren benutzerdefinierten Formularen zu analysieren. Ein `CustomFormModel`-Element wird zurückgegeben, das angibt, welche Formulartypen vom Modell analysiert und welche Felder für jeden Formtyp extrahiert werden. _Weitere Informationen_ finden Sie in der [Dokumentation des Diensts für Modelltraining ohne Bezeichnungen](#train-a-model-without-labels).
+* Trainieren benutzerdefinierter Modelle zum Analysieren bestimmter Felder und Werte, die Sie durch Bezeichnen Ihrer benutzerdefinierten Formulare angeben. Ein `CustomFormModel`-Element wird zurückgegeben, das die vom Modell extrahierten Felder sowie die geschätzte Genauigkeit für jedes Feld angibt. Weitere Informationen finden Sie in der [Dokumentation des Diensts für Modelltraining mit Bezeichnungen](#train-a-model-with-labels).
 * Verwalten der in Ihrem Konto erstellten Modelle
 * Kopieren eines benutzerdefinierten Modells aus einer Formularerkennungsressource in eine andere
 
@@ -177,7 +177,7 @@ First receipt:
 
 ## <a name="train-a-custom-model"></a>Trainieren eines benutzerdefinierten Modells
 
-In diesem Abschnitt wird gezeigt, wie Sie ein Modell mit eigenen Daten trainieren. Ein trainiertes Modell kann strukturierte Daten ausgeben, die die Schlüssel-Wert-Beziehungen im ursprünglichen Formulardokument enthalten. Nachdem das Modell trainiert wurde, können Sie es testen, neu trainieren und schließlich verwenden, um Daten aus weiteren Formularen zuverlässig nach Ihren Bedürfnissen zu extrahieren.
+In diesem Abschnitt wird gezeigt, wie Sie ein Modell mit eigenen Daten trainieren. Ein trainiertes Modell kann strukturierte Daten ausgeben, die die Schlüssel-Wert-Beziehungen im ursprünglichen Formulardokument enthalten. Nachdem Sie das Modell trainiert haben, testen Sie es und trainieren es bei Bedarf erneut. Verwenden Sie es schließlich, um Daten zuverlässig aus mehr Formularen gemäß Ihren Anforderungen zu extrahieren.
 
 > [!NOTE]
 > Sie können Modelle auch mithilfe einer grafischen Benutzeroberfläche trainieren, z. B. dem [Formularerkennungstool für die Bezeichnung von Beispielen](../../label-tool.md).
@@ -192,7 +192,7 @@ Die folgende Funktion trainiert ein Modell mit einem angegebenen Dokumentensatz 
 
 ### <a name="output"></a>Output
 
-Hier sehen Sie die Ausgabe für ein Modell, das mit den Trainingsdaten aus dem [JavaScript SDK](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer) trainiert wurde. Diese Beispielausgabe wurde aus Gründen der besseren Lesbarkeit gekürzt.
+Hier ist die Ausgabe für ein Modell, das mit den Trainingsdaten trainiert wurde. Der Code ist über das [JavaScript SDK](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/formrecognizer/ai-form-recognizer) verfügbar. Diese Beispielausgabe wurde aus Gründen der besseren Lesbarkeit gekürzt.
 
 ```console
 training status: creating
@@ -328,7 +328,7 @@ Mit dem folgenden Codeblock wird die Anzahl der Modelle abgerufen, die sich derz
 
 ### <a name="get-list-of-models-in-account"></a>Abrufen der Liste mit den Modellen in einem Konto
 
-Mit dem folgenden Codeblock wird eine vollständige Liste der verfügbaren Modelle in Ihrem Konto bereitgestellt, einschließlich Informationen zum Erstellungszeitpunkt des Modells und zum aktuellen Status.
+Der folgende Codeblock enthält eine vollständige Liste der verfügbaren Modelle in Ihrem Konto. Er enthält Informationen darüber, wann das Modell erstellt wurde, und seinen aktuellen Status.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/FormRecognizer/FormRecognizerQuickstart.js?name=snippet_manage_list)]
 
@@ -426,7 +426,7 @@ Ausführlichere Anweisungen zum Aktivieren von Protokollen finden Sie in der [Do
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Schnellstart haben Sie die Formularerkennungs-Clientbibliothek für JavaScript verwendet, um auf unterschiedliche Weise Modelle zu trainieren und Formulare zu analysieren. Lesen Sie im Anschluss die Tipps zum Erstellen eines besseren Trainingsdatasets und zum Generieren genauerer Modelle.
+In diesem Schnellstart haben Sie die das JavaScript SDK der Formularerkennung verwendet, um auf unterschiedliche Weise Modelle zu trainieren und Formulare zu analysieren. Lesen Sie im Anschluss die Tipps zum Erstellen eines besseren Trainingsdatasets und zum Generieren genauerer Modelle.
 
 > [!div class="nextstepaction"]
 > [Erstellen eines Trainingsdatasets](../../build-training-data-set.md)
