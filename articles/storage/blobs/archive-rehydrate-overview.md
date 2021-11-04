@@ -20,7 +20,7 @@ ms.locfileid: "129271819"
 
 Während ein Blob sich auf der Archivzugriffsebene befindet, wird es als offline betrachtet und kann nicht gelesen oder geändert werden. Wenn Daten in einem archivierten Blob gelesen oder geändert werden sollen, muss das Blob zunächst auf einer Onlineebene (heiße oder kalte Ebene) aktiviert werden. Es gibt zwei Möglichkeiten, ein auf der Archivebene gespeichertes Blob zu aktivieren:
 
-- [Kopieren eines archivierten Blobs auf eine Onlineebene](#copy-an-archived-blob-to-an-online-tier): Sie können ein archiviertes Blob mithilfe des Vorgangs[Copy Blob](/rest/api/storageservices/copy-blob) oder [Copy Blob from URL](/rest/api/storageservices/copy-blob-from-url) in ein neues Blob auf der heißen oder kalten Ebene kopieren. Microsoft empfiehlt diese Option für die meisten Szenarios.
+- [Kopieren eines archivierten Blobs auf eine Onlineebene](#copy-an-archived-blob-to-an-online-tier): Sie können ein archiviertes Blob mithilfe des Vorgangs [Copy Blob](/rest/api/storageservices/copy-blob) oder [Copy Blob from URL](/rest/api/storageservices/copy-blob-from-url) in ein neues Blob auf der heißen oder kalten Ebene kopieren. Microsoft empfiehlt diese Option für die meisten Szenarios.
 
 - [Ändern der Zugriffsebene eines Blobs in eine Onlineebene](#change-a-blobs-access-tier-to-an-online-tier): Sie können ein archiviertes Blob auf der heißen oder kalten Ebene aktivieren, indem Sie die Ebene mithilfe des Vorgangs [Blobebene festlegen](/rest/api/storageservices/set-blob-tier) ändern.
 
