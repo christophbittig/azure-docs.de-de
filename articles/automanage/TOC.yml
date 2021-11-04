@@ -19,17 +19,17 @@
           href: automanage-hotpatch.md
     - name: "Automanage für Server mit Azure\_Arc-Unterstützung"
       href: automanage-arc.md
-    - name: Automanage-Konto
-      href: automanage-account.md
 - name: Anleitung
   expanded: true
   items:
-    - name: Erstellen benutzerdefinierter Einstellungen
-      href: virtual-machines-custom-preferences.md
+    - name: Erstellen eines benutzerdefinierten Profils
+      href: virtual-machines-custom-profile.md
     - name: Aktivieren auf virtuellen Computern per Azure Policy
       href: virtual-machines-policy-enable.md
     - name: Aktivieren auf virtuellen Computern über eine ARM-Vorlage
       href: arm-deploy.md
+    - name: Aktualisieren von Computern auf die neueste Automanage-Version
+      href: automanage-upgrade.md
     - name: Behandeln von Problemen mit Onboardingfehlern
       href: common-errors.md
     - name: Reparieren eines fehlerhaften Automanage-Kontos

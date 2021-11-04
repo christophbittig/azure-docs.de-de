@@ -112,6 +112,8 @@
           href: azure-to-azure-support-matrix.md
         - name: Verwenden von Site Recovery mit Azure Backup
           href: site-recovery-backup-interoperability.md
+        - name: Konfigurieren des Failovers für mehrere IP-Adressen
+          href: concepts-multiple-ip-address-failover.md
         - name: Beschleunigter Netzwerkbetrieb für die Notfallwiederherstellung für virtuelle Azure-Computer
           href: azure-vm-disaster-recovery-with-accelerated-networking.md
         - name: ExpressRoute mit Notfallwiederherstellung für virtuelle Azure-Computer

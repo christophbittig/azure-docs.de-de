@@ -58,18 +58,6 @@
       items:
         - name: Ordnungsgemäßes Herunterfahren des App-Servers
           href: server-graceful-shutdown.md
-    - name: Sicherheit
-      items:
-        - name: Authorization
-          items:
-            - name: Autorisieren des Zugriffs mit Azure Active Directory
-              href: authorize-access-azure-active-directory.md
-        - name: Authentifizierung
-          items:
-            - name: Authentifizieren über eine Anwendung
-              href: authenticate-application.md
-            - name: Authentifizieren mit einer verwalteten Identität
-              href: authenticate-managed-identity.md
     - name: Hochverfügbarkeit
       items:
         - name: Resilienz und Notfallwiederherstellung
@@ -80,6 +68,10 @@
       href: signalr-concept-performance.md
     - name: Authentifizierung
       href: signalr-concept-authenticate-oauth.md
+    - name: Autorisierung mit Azure AD
+      items:
+        - name: Übersicht über Azure AD für Azure SignalR Service
+          href: signalr-concept-authorize-azure-active-directory.md
     - name: Behandlung von Ereignissen
       href: signalr-concept-event-grid-integration.md
     - name: Sicherheit
@@ -106,8 +98,14 @@
           href: howto-private-endpoints.md
         - name: Verwalten der Netzwerkzugriffssteuerung
           href: howto-network-access-control.md
+        - name: Schützen von ausgehendem Datenverkehr über freigegebene private Endpunkte
+          href: howto-shared-private-endpoints.md
         - name: Verwenden der verwalteten Identität
           href: howto-use-managed-identity.md
+        - name: Autorisieren über Azure-Anwendung
+          href: signalr-howto-authorize-application.md
+        - name: Autorisieren über verwaltete Identität
+          href: signalr-howto-authorize-managed-identity.md
     - name: Integrieren
       items:
         - name: Azure Functions-Bindungen

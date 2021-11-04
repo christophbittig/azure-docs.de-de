@@ -18,7 +18,7 @@
       href: customize-application-attributes.md
     - name: App-spezifische Bereitstellungstutorials
       href: /azure/active-directory/saas-apps
-    - name: "Generischer SQL-Connector mit Azure\_AD-ECMA-Connectorhost"
+    - name: Bereitstellung für SQL-basierte Apps
       href: tutorial-ecma-sql-connector.md
 - name: Konzepte
   expanded: true
@@ -35,6 +35,10 @@
       href: on-premises-application-provisioning-architecture.md
     - name: Grundlegendes zum Ausdrucks-Generator
       href: expression-builder.md
+    - name: Grundlegendes zur SuccessFactors-Integration
+      href: sap-successfactors-integration-reference.md
+    - name: Grundlegendes zur Workday-Integration
+      href: workday-integration-reference.md
 - name: Anleitungen
   expanded: true
   items:
@@ -74,13 +78,13 @@
           href: application-provisioning-config-problem-no-users-provisioned.md
         - name: Fehlendes Quellattribut
           href: user-provisioning-sync-attributes-for-mapping.md
-        - name: Problembehandlung für den ECMA-Connectorhost
+        - name: Problembehandlung bei der lokalen Bereitstellung
           href: on-premises-ecma-troubleshoot.md
         - name: Bereitstellungsprotokolle
           href: ../reports-monitoring/concept-provisioning-logs.md?context=%2fazure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
     - name: Lokale App-Bereitstellung
       items:
-        - name: Konfiguration des generischen SQL-Connectors
+        - name: Bereitstellung für SQL-basierte Apps
           href: on-premises-sql-connector-configure.md
         - name: Konfiguration des generischen LDAP-Connectors
           href: on-premises-ldap-connector-configure.md
@@ -88,6 +92,18 @@
           href: on-premises-scim-provisioning.md
         - name: Migrieren des Connectors über die MIM-Synchronisierung
           href: on-premises-migrate-microsoft-identity-manager.md
+    - name: Problembehandlung bei der HR-Bereitstellung
+      items:
+        - name: Probleme beim Attributabruf
+          href: hr-attribute-retrieval-issues.md
+        - name: Probleme bei der Benutzererstellung
+          href: hr-user-creation-issues.md
+        - name: Probleme bei der Benutzeraktualisierung
+          href: hr-user-update-issues.md
+        - name: Probleme bei der Aktualisierung des Vorgesetzten
+          href: hr-manager-update-issues.md
+        - name: Probleme beim HR-Rückschreiben
+          href: hr-writeback-issues.md
 - name: Verweis
   items:
     - name: "Einhaltung des SCIM\_2.0-Protokolls"
@@ -98,12 +114,8 @@
       href: functions-for-customizing-application-data.md
     - name: HR-Cloudbereitstellung
       items:
-        - name: SuccessFactors-Integration
-          href: sap-successfactors-integration-reference.md
         - name: SuccessFactors-Attributreferenz
           href: sap-successfactors-attribute-reference.md
-        - name: Workday-Integration
-          href: workday-integration-reference.md
         - name: Workday-Attributreferenz
           href: workday-attribute-reference.md
         - name: Versionsverlauf des Bereitstellungs-Agents

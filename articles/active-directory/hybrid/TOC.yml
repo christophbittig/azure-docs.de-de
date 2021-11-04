@@ -30,6 +30,8 @@
       items:
         - name: Worum handelt es sich bei Azure AD Connect und Connect Health?
           href: whatis-azure-ad-connect.md
+        - name: Was ist Azure AD Connect V2.0?
+          href: whatis-azure-ad-connect-v2.md
         - name: Auswählen der richtigen Authentifizierung
           href: ./choose-ad-authn.md
         - name: Identitätssynchronisierung und Resilienz bei doppelten Attributen
@@ -152,10 +154,8 @@
           href: reference-connect-instances.md
         - name: Migration
           items:
-            - name: Migrieren vom Verbund zu PHS
-              href: plan-migrate-adfs-password-hash-sync.md
-            - name: Migrieren vom Verbund zu PTA
-              href: plan-migrate-adfs-pass-through-authentication.md
+            - name: Migrieren vom Verbund zur Cloudauthentifizierung
+              href: migrate-from-federation-to-cloud-authentication.md
             - name: Verschieben von Gruppen aus einer Gesamtstruktur in eine andere
               href: how-to-connect-migrate-groups.md
             - name: Migrieren zur Cloudauthentifizierung mithilfe eines gestaffelten Rollouts
@@ -260,6 +260,8 @@
           href: how-to-connect-health-adfs.md
         - name: Bericht über riskante IP-Adressen für Azure AD Connect Health mit AD FS
           href: how-to-connect-health-adfs-risky-ip.md
+        - name: 'Azure AD Connect Health: Arbeitsmappe mit Bericht über riskante IP-Adressen'
+          href: how-to-connect-health-adfs-risky-ip-workbook.md
         - name: "AD\_FS-Anmeldungen in Azure\_AD mit Connect Health"
           href: how-to-connect-health-ad-fs-sign-in.md
         - name: Verwenden von Azure AD Connect Health für die Synchronisierung
@@ -390,7 +392,5 @@
       href: reference-connect-adconnectivitytools.md
     - name: msExchUserHoldPolicies und cloudMSExchUserHoldPolicies
       href: reference-connect-msexchuserholdpolicies.md
-    - name: "Grundlegendes zum Verschwinden eines Azure AD Connect\_1.4.xx.x-Geräts"
-      href: reference-connect-device-disappearance.md
     - name: Archiv des Azure AD Connect-Versionsverlaufs
       href: reference-connect-version-history-archive.md

@@ -6,12 +6,12 @@ ms.subservice: language-service
 ms.topic: conceptual
 ms.date: 11/02/2021
 ms.custom: language-service-question-answering, ignite-fall-2021
-ms.openlocfilehash: d55c178456336c5a1c81845ae3eee611e8d9ee33
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 432e65d3d2f3dc3d4bc71157f165311e7fad87e9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095652"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131476659"
 ---
 # <a name="precise-answering"></a>Präzise Antworten
 
@@ -38,7 +38,3 @@ Der Dienst gibt auch die Zuverlässigkeitsbewertung der präzisen Antwort als **
 ## <a name="deploying-a-bot"></a>Bereitstellen eines Bots
 
 Wenn Sie einen Bot veröffentlichen, erhalten Sie in Ihrer Anwendung standardmäßig die Umgebung mit aktivierten präzisen Antworten, wobei eine Kurzantwort zusammen mit der Antwortpassage angezeigt wird. Informationen zur Verwendung der präzisen Antwort (AnswerSpan) in der Antwort finden Sie in der API-Referenz für die REST-API. Benutzer haben die Flexibilität, andere Umgebungen auszuwählen, indem sie die Vorlage über den Bot-App-Dienst aktualisieren.
-
-## <a name="language-support"></a>Sprachunterstützung
-
-Derzeit wird das Feature für präzise Antworten nur für Englisch unterstützt.

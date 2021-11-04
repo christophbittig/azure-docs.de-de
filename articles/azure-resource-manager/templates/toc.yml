@@ -53,6 +53,9 @@
         - name: Bereitstellen als verknüpfte Vorlage
           displayName: template specs
           href: template-specs-deploy-linked-template.md
+        - name: Erstellen eines Portalformulars
+          href: template-specs-create-portal-forms.md
+          displayName: 'UI,form,blade'
     - name: Erweiterte Vorlagen
       items:
         - name: Verwenden der Vorlagenreferenz
@@ -407,7 +410,7 @@
           href: key-vault-parameter.md
     - name: Exportieren von Vorlagen
       items:
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: export-template-cli.md
         - name: Portal
           href: export-template-portal.md

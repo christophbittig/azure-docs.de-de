@@ -44,6 +44,8 @@ items:
             href: concept-guidelines-pricing.md
           - name: Best Practices für die Bereitstellung
             href: deployment-best-practices.md
+          - name: Best Practices für die Herkunft
+            href: concept-best-practices-lineage-azure-data-factory.md
           - name: Kontoarchitektur
             href: concept-best-practices-accounts.md
           - name: Sammlungsarchitektur
@@ -76,10 +78,6 @@ items:
         href: concept-insights.md
       - name: Aktualisierte Azure Purview-Konten
         href: concept-account-upgrade.md
-      - name: Zugriffsrichtlinien
-        href: concept-data-policies.md
-      - name: Self-Service-Zugriff
-        href: concept-self-service.md
   - name: Anleitungen
     items:
       - name: Erstellen und Verwalten von Sammlungen

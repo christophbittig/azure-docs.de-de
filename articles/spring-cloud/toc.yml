@@ -98,8 +98,10 @@
       items:
         - name: 'Starten, Beenden und Löschen einer App'
           href: how-to-start-stop-delete.md
-        - name: Verwenden von beständigem Speicher
-          href: how-to-persistent-storage.md
+        - name: Verwenden von integriertem beständigem Speicher
+          href: how-to-built-in-persistent-storage.md
+        - name: Verwenden von benutzerdefiniertem beständigem Speicher
+          href: how-to-custom-persistent-storage.md
         - name: Ermitteln öffentlicher IP-Ausgangsadressen
           href: how-to-outbound-public-ip.md
     - name: Skalieren
@@ -176,8 +178,6 @@
           href: how-to-github-actions.md
         - name: Authentifizierung mit Key Vault in GitHub-Aktionen
           href: github-actions-key-vault.md
-        - name: "Bereitstellen einer Azure\_Spring\_Cloud-Instanz mit Terraform"
-          href: how-to-provision-azure-spring-cloud-instance-terraform.md
     - name: Problembehandlung
       items:
         - name: Selbstdiagnose und Problembehandlung

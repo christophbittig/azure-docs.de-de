@@ -51,7 +51,9 @@
       items:
         - name: Erstellen von WebSocket-Clients
           href: howto-websocket-connect.md
-    - name: Überwachen
+        - name: Konfigurieren eines Ereignishandlers
+          href: howto-develop-eventhandler.md
+    - name: Monitor
       items:
         - name: Überwachen der Konformität mithilfe von Azure Policy
           href: howto-monitor-azure-policy.md
@@ -69,12 +71,18 @@
           href: howto-secure-shared-private-endpoints.md
         - name: Verwenden einer verwalteten Identität
           href: howto-use-managed-identity.md
+        - name: "Konfigurieren der Azure\_AD-Autorisierung"
+          items:
+            - name: Autorisieren über Azure-Anwendungen
+              href: howto-authorize-from-application.md
+            - name: Autorisieren über verwaltete Identitäten
+              href: howto-authorize-from-managed-identity.md
     - name: Problembehandlung
       items:
         - name: Erfassen einer Netzwerkablaufverfolgung
           href: howto-troubleshoot-network-trace.md
-        - name: Capture-Diagnoseprotokolle
-          href: howto-troubleshoot-diagnostic-logs.md
+        - name: Erfassen von Ressourcenprotokollen
+          href: howto-troubleshoot-resource-logs.md
 - name: Konzepte
   expanded: true
   items:
@@ -90,6 +98,8 @@
       href: concept-performance.md
     - name: Abrechnungsmodell
       href: concept-billing-model.md
+    - name: "Azure\_AD-Autorisierung"
+      href: concept-azure-ad-authorization.md
 - name: Verweis
   items:
     - name: WebSocket-Unterprotokolle
