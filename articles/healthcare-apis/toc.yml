@@ -1,5 +1,5 @@
 items:
-  - name: dokumentation zu Azure API for FHIR
+  - name: Azure API for FHIR dokumentation
     href: ./azure-api-for-fhir/index.yml
   - name: Dokumentation zu Azure Healthcare-APIs (Vorschauversion)
     href: index.yml
@@ -14,14 +14,14 @@ items:
         href: ./fhir/index.yml
       - name: DICOM-Dienst
         href: ./dicom/index.yml
-      - name: IoT-Connector
+      - name: IoT-Konnektor
         href: ./iot/index.yml
       - name: Übertragen und Transformieren von Daten
         href: ./data-transformation/index.yml
   - name: Schnellstarts
     expanded: true
     items:
-      - name: Bereitstellen von ApIs für das Gesundheitswesen
+      - name: Bereitstellen von Gesundheits-APIs
         href: healthcare-apis-quickstart.md
   - name: Anleitungen
     expanded: true
@@ -45,7 +45,9 @@ items:
   - name: Ressourcen
     expanded: true
     items:
+      - name: Versionshinweise
+        href: release-notes.md
       - name: Häufig gestellte Fragen
         href: healthcare-apis-faqs.md
-      - name: GitHub Projekte
+      - name: GitHub-Projekte
         href: github-projects.md

@@ -3,22 +3,22 @@ title: Aufzeichnen von Videos für die Wiedergabe mit Azure Video Analyzer
 description: In diesem Artikel wird die Aufzeichnung von Videos für die Wiedergabe mit Azure Video Analyzer erläutert.
 ms.service: azure-video-analyzer
 ms.topic: conceptual
-ms.date: 06/01/2021
-ms.openlocfilehash: 4c5d0121df90791d8eb77782fb6d949548a0185e
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.date: 09/30/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 94ac0847b4cb4783ad16044514960b88c67d2a03
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114604354"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131073717"
 ---
 # <a name="record-video-for-playback"></a>Aufzeichnen von Video für die Wiedergabe
 
-Im Kontext eines Videoverwaltungssystems für Überwachungskameras bezieht sich Videoaufzeichnung auf den Vorgang des Erfassens von Videosignalen von den Kameras und ihre Aufzeichnung für die anschließende Wiedergabe über mobile und Browser-Apps. Die Videoaufzeichnung kann in die Kategorien fortlaufende Videoaufzeichnung und ereignisbasierte Videoaufzeichnung unterteilt werden.
+Im Kontext eines Videoverwaltungssystems für Überwachungskameras bezieht sich Videoaufzeichnung auf den Vorgang des Erfassens von Videosignalen von den Kameras und ihre Aufzeichnung für die anschließende Wiedergabe über mobile und Browser-Apps. Die Videoaufzeichnung kann in fortlaufende Videoaufzeichnung und ereignisbasierte Videoaufzeichnung kategorisiert werden.
 
 ## <a name="continuous-video-recording"></a>Fortlaufende Videoaufzeichnung
 
-Fortlaufende Videoaufzeichnung (Continuous Video Recording, CVR) bezeichnet die kontinuierliche Aufzeichnung der gesamten von einer Videoquelle erfassten Videodaten. CVR stellt sicher, dass die gewünschte Videolänge (nach Maßgabe der **[Aufzeichnungsrichtlinie](#recording-policy))** für die Analyse und/oder Überprüfung zu einem späteren Zeitpunkt verfügbar ist.
-
+Fortlaufende Videoaufzeichnung (Continuous Video Recording, CVR) bezeichnet die kontinuierliche Aufzeichnung der gesamten von einer Videoquelle erfassten Videodaten. CVR stellt sicher, dass die gewünschte Dauer des Videos (vorgeschrieben durch die **[Aufbewahrungsrichtlinie](#retention-policy))** zur Analyse und/oder Prüfung zu einem späteren Zeitpunkt verfügbar ist.
 
 ## <a name="event-based-video-recording"></a>Ereignisbasierte Videoaufzeichnung
 
@@ -28,9 +28,9 @@ Ereignisbasierte Videoaufzeichnung (EVR) bezeichnet den Vorgang des Aufzeichnen 
 
 Die Entscheidung, ob CVR oder EVR verwendet werden soll, hängt von den Geschäftszielen ab. Azure Video Analyzer (AVA) bietet Plattformfunktionen sowohl für CVR als auch für EVR. Mehr dazu erfahren Sie in den Szenarioartikeln zu **[CVR](continuous-video-recording.md)** und **[EVR](event-based-video-recording-concept.md)** .
 
-## <a name="recording-policy"></a>Aufzeichnungsrichtlinie
+## <a name="retention-policy"></a>Aufbewahrungsrichtlinie
 
-Die Aufzeichnungsrichtlinie bezieht sich auf die Richtlinien, die die Länge oder Dauer der beibehaltenen Videoaufzeichnung vorgeben. Mithilfe von Aufzeichnungsrichtlinien lassen sich Speicherkosten mit Geschäftsanforderungen in Übereinstimmung bringen. Bei CVR definiert die Aufzeichnungsrichtlinie, wie viele Tage Videoaufzeichnung gespeichert werden sollen (beispielsweise die letzten 7 Tage). Mehr dazu erfahren Sie im Szenarioartikel zu **[CVR](continuous-video-recording.md)** .
+Die Aufbewahrungsrichtlinie bezieht sich auf die Richtlinien, die die Länge oder Dauer der aufbewahrten Videoaufzeichnung bestimmen. Die Aufbewahrungsrichtlinien ermöglichen es Ihnen, die Speicherkosten mit den Geschäftsanforderungen abzugleichen. Für das CVR-Szenario definiert die Aufbewahrungsrichtlinie, wie viele Tage das Video gespeichert werden soll (z.B. die letzten 7 Tage). Weitere Informationen dazu finden Sie im Artikel **[Aufbewahrungsrichtlinien verwalten](manage-retention-policy.md)** .
 
 ## <a name="next-steps"></a>Nächste Schritte
 

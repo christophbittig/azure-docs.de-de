@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 03/10/2021
 ms.author: rifox
-ms.openlocfilehash: c2d280de30997996902def6f04eb1d35c956999a
-ms.sourcegitcommit: 47fac4a88c6e23fb2aee8ebb093f15d8b19819ad
+ms.openlocfilehash: f2006869868a94b36078734756fd5e6992cd08b2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/26/2021
-ms.locfileid: "122965993"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131253878"
 ---
 Steigen Sie in Azure Communication Services ein, indem Sie das Communication Services-SDK „Calling“ nutzen, um Ihrer App 1:1-Videoanrufe hinzuzufügen. Hier erfahren Sie, wie Sie einen Videoanruf mithilfe des Calling SDK von Azure Communication Services für iOS beginnen und beantworten.
 
@@ -20,7 +20,7 @@ Wenn Sie direkt zum Ende springen möchten, können Sie diese Schnellstartanleit
 ## <a name="prerequisites"></a>Voraussetzungen
 - Rufen Sie ein Azure-Konto mit einem aktiven Abonnement ab. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Einen Mac mit [Xcode](https://developer.apple.com/xcode/) zusammen mit einem gültigen in Ihrer Keychain installierten Entwicklerzertifikat.
-- Erstellen Sie eine aktive Communication Services-Ressource. [Erstellen Sie eine Communication Services-Ressource](../../../create-communication-resource.md?tabs=windows&pivots=platform-azp).
+- Erstellen Sie eine aktive Communication Services-Ressource. [Erstellen Sie eine Communication Services-Ressource](../../../create-communication-resource.md?tabs=windows&pivots=platform-azp).
 - Erstellen Sie ein Benutzerzugriffstoken, um den Anrufclient zu instanziieren. Lernen Sie mehr über das [Erstellen und Verwalten von Benutzerzugriffstoken](../../../access-tokens.md?pivots=programming-language-csharp).
 
 ## <a name="setting-up"></a>Einrichten
@@ -56,7 +56,7 @@ Um auf Mikrofon und Kamera des Geräts zuzugreifen, müssen Sie die Liste der In
 
 Klicken Sie mit der rechten Maustaste auf den Eintrag `Info.plist` der Projektstruktur, und wählen Sie anschließend „Öffnen als ...“ und anschließend „Quellcode“. Fügen Sie die folgenden Zeilen im Abschnitt `<dict>` der obersten Ebene hinzu, und speichern anschließend Sie die Datei.
 
-```XML
+```xml
 <key>NSMicrophoneUsageDescription</key>
 <string>Need microphone access for VOIP calling.</string>
 <key>NSCameraUsageDescription</key>

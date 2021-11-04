@@ -6,7 +6,6 @@ cloud: na
 documentationcenter: na
 author: batamig
 manager: rkarlin
-ms.assetid: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.workload: na
@@ -15,14 +14,17 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 06/22/2021
 ms.author: bagol
-ms.openlocfilehash: e0cab6a9d2d4c341cf326383e11b289bf606d37a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 9b692046f0e812b903570ecd6e788ba83db6b96b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124755180"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131075408"
 ---
 # <a name="azure-sentinel-authentication-normalization-schema-reference-public-preview"></a>Azure Sentinel: Referenz zum Authentifizierungsnormalisierungsschema (Öffentliche Vorschau)
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 Das Authentifizierungsinformationsmodell wird zum Beschreiben von Ereignissen im Zusammenhang mit der Authentifizierung und der An- und Abmeldung von Benutzern verwendet. Authentifizierungsereignisse werden von vielen meldenden Geräten meist im Rahmen des Ereignisdatenstroms zusammen mit anderen Ereignissen gesendet.
 
@@ -80,7 +82,7 @@ Die folgenden Felder werden von Log Analytics für jeden Datensatz generiert und
 |---------|---------|---------|
 |<a name ="timegenerated"></a>**TimeGenerated**     |  datetime       |Der Zeitpunkt, zu dem das Ereignis vom meldenden Gerät generiert wurde.         |
 |**_ResourceId**     | guid        |  Die Azure-Ressourcen-ID des meldenden Geräts oder Diensts oder die Ressourcen-ID des Protokollforwarders für Ereignisse, die mit Syslog, CEF oder WEF weitergeleitet werden.       |
-| **Type** | String | Die ursprüngliche Tabelle, aus der der Datensatz abgerufen wurde. Dieses Feld ist nützlich, wenn dasselbe Ereignis über mehrere Kanäle in unterschiedlichen Tabellen empfangen werden kann und die gleichen EventVendor- und EventProduct-Werte vorliegen.<br><br>Beispielsweise kann ein Sysmon-Ereignis entweder in der Event-Tabelle oder in der WindowsEvent-Tabelle gesammelt werden. |
+| **Type** | String | Die ursprüngliche Tabelle, aus der der Datensatz abgerufen wurde. Dieses Feld ist nützlich, wenn ein und dasselbe Ereignis über mehrere Kanäle in verschiedenen Tabellen empfangen werden kann und die gleichen EventVendor- und EventProduct-Werte hat.<br><br>Ein Sysmon-Ereignis kann z. B. entweder in der Tabelle Event oder in der Tabelle WindowsEvent gesammelt werden. |
 |     |         |         |
 
 > [!NOTE]
@@ -188,10 +190,10 @@ Ein **Akteur**, der eine *agierende Anwendung* (**ActingApp**) auf einem *Quellg
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie unter
+Weitere Informationen finden Sie unter:
 
 - [Normalisierung in Azure Sentinel](normalization.md)
 - [Azure Sentinel: Referenz zum DNS-Normalisierungsschema](dns-normalization-schema.md)
 - [Azure Sentinel: Referenz zum Dateiereignis-Normalisierungsschema (Öffentliche Vorschau)](file-event-normalization-schema.md)
-- [Azure Sentinel: Referenz zum Netzwerknormalisierungsschema](normalization-schema.md)
+- [Azure Sentinel: Referenz zum Netzwerknormalisierungsschema](./network-normalization-schema.md)
 - [Azure Sentinel: Referenz zum Prozessereignis-Normalisierungsschema (Öffentliche Vorschau)](process-events-normalization-schema.md)

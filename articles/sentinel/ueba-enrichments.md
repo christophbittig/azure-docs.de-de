@@ -8,14 +8,17 @@ ms.subservice: azure-sentinel
 ms.topic: reference
 ms.date: 05/10/2021
 ms.author: yelevin
-ms.openlocfilehash: 6420ef1345e20c2aec511a0a0284753a78895020
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 944c2b155a0cfa48d98876aa463c27cf5c47d40c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128627347"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131083705"
 ---
 # <a name="azure-sentinel-ueba-enrichments-reference"></a>Referenz zu Azure Sentinel-UEBA-Anreicherungen
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 Dieser Artikel befasst sich mit der Azure Sentinel-Tabelle **BehaviorAnalytics**, die sich unter **Protokolle** befindet und die auf den [Seiten mit den Entitätsdetails](identify-threats-with-entity-behavior-analytics.md#how-to-use-entity-pages) erwähnt wird. Außerdem werden Details zu den Feldern für Entitätsanreicherungen in dieser Tabelle beschrieben, deren Inhalte Sie verwenden können, um Ihre Untersuchungen zu Sicherheitsvorfällen zu fokussieren und zu verbessern.
 

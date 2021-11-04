@@ -1,0 +1,52 @@
+### YamlMime:Landing
+title: Dokumentation zum Dienstconnector
+summary: Der Dienstconnector ist ein von Azure verwalteter Dienst, der Entwicklern dabei hilft, Computedienste einfach mit unterstützenden Diensten zu verknüpfen.
+metadata:
+  title: Dokumentation zum Dienstconnector
+  description: Verbinden Sie mithilfe des Dienstconnectors ganz unkompliziert Ihren Azure-Computedienst mit unterstützenden Diensten.
+  ms.service: service-connector
+  ms.topic: landing-page
+  author: shizn
+  ms.author: xshi
+  ms.date: 10/29/2021
+  ms.openlocfilehash: 9388686488d452f08610485a1fedeecb9daf8e5d
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131088301"
+landingContent:
+- title: Informationen zum Dienstconnector
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist der Dienstconnector?
+      url: overview.md
+    - text: Wichtige Konzepte im Dienstconnector
+      url: concept-service-connector-internals.md
+- title: Erste Schritte
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Erstellen einer neuen Dienstverbindung in App Service
+      url: quickstart-portal-app-service-connection.md
+    - text: Erstellen einer neuen Dienstverbindung in Spring Cloud
+      url: quickstart-portal-spring-cloud-connection.md
+- title: Häufige Aufgaben
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Python-App (Django) mit PostgreSQL
+      url: tutorial-django-webapp-postgres-cli.md
+    - text: Spring Cloud-App mit MySQL
+      url: tutorial-java-spring-mysql.md
+    - text: ASP.NET-App mit Blob Storage
+      url: tutorial-csharp-webapp-storage-cli.md
+    - text: Spring Cloud-App mit Kafka in Confluent Cloud
+      url: tutorial-java-spring-confluent-kafka.md
+  - linkListType: how-to-guide
+    links:
+    - text: Handbuch zur Problembehandlung
+      url: how-to-troubleshoot-front-end-error.md
+    - text: Unterstützung für Regionen
+      url: concept-region-support.md

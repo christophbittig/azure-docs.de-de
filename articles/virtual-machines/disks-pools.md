@@ -4,16 +4,16 @@ description: Erfahren Sie mehr über Azure-Datenträgerpools (Vorschau).
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/23/2021
+ms.date: 11/02/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.custom: references_regions
-ms.openlocfilehash: ea06b3c4fdf9be626df99f4a06f4190ce86df4b3
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.custom: references_regions, ignite-fall-2021
+ms.openlocfilehash: d6e2eda8fd7bc2ba3b41b911b5964c2a65e33c14
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123433276"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131074541"
 ---
 # <a name="azure-disk-pools-preview"></a>Azure-Datenträgerpools (Vorschau)
 
@@ -31,7 +31,8 @@ Wenn Sie dem Datenträgerpool einen verwalteten Datenträger hinzufügen, wird d
 
 Für Datenträgerpools gelten in der Vorschauphase folgende Einschränkungen:
 
-- Einem Datenträgerpool können nur Premium-SSD- oder Disk Ultra-Datenträger hinzugefügt werden.
+- Einem Datenträgerpool können nur Premium- oder Standard-SSD-Datenträger oder Disk Ultra-Datenträger hinzugefügt werden.
+    - Ein Datenträgerpool kann nicht so konfiguriert werden, dass er sowohl Premium-/Standard-SSDs als auch Ultra-Datenträger enthält. Ein für Ultra-Datenträger konfigurierter Datenträgerpool kann nur Ultra-Datenträger enthalten. Ebenso kann ein Datenträgerpool, der für die Verwendung von Premium- und Standard-SSDs konfiguriert ist, nur Premium- und Standard-SSDs enthalten.
 - Datenträger, die [zonenredundanten Speicher (ZRS)](disks-redundancy.md#zone-redundant-storage-for-managed-disks) verwenden, werden derzeit nicht unterstützt. 
 
 ### <a name="regional-availability"></a>Regionale Verfügbarkeit

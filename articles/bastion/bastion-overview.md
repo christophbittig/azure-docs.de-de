@@ -5,15 +5,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: overview
-ms.date: 07/12/2021
+ms.date: 10/12/2021
 ms.author: cherylmc
-ms.custom: contperf-fy2q1-portal
-ms.openlocfilehash: fe1cc48b3106d4874e151ed8be114e6a98e51720
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.custom: contperf-fy2q1-portal, ignite-fall-2021
+ms.openlocfilehash: ea5fb6c17346059ab35467c654a17815e711d213
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123434183"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131087189"
 ---
 # <a name="what-is-azure-bastion"></a>Was ist Azure Bastion?
 
@@ -34,7 +34,7 @@ Bastion bietet sichere RDP- und SSH-Verbindungen mit allen virtuellen Computern 
 
 ## <a name="skus"></a><a name="sku"></a>SKUs
 
-Für Azure Bastion sind zwei SKUs verfügbar: Basic und Standard. Die Standard-SKU ist zurzeit als Vorschauversion verfügbar. Weitere Informationen, auch zum Upgraden einer SKU, finden Sie im Artikel [Konfigurationseinstellungen](configuration-settings.md#skus). 
+Für Azure Bastion sind zwei SKUs verfügbar: Basic und Standard. Weitere Informationen, auch zum Upgraden einer SKU, finden Sie im Artikel [Konfigurationseinstellungen](configuration-settings.md#skus).
 
 Die folgende Tabelle enthält die Features der entsprechenden SKUs.
 

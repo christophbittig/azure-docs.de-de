@@ -10,13 +10,13 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/15/2020
 ms.author: pafarley
-ms.custom: devx-track-dotnet
-ms.openlocfilehash: c24a539b88bb7daaf056d073f5272513b42c1afb
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.custom: devx-track-dotnet, ignite-fall-2021
+ms.openlocfilehash: f6238e015d3af17e63834d31f17066fa164ebe96
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123544164"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131253424"
 ---
 In diesem Leitfaden erfahren Sie, wie Sie das [Speech SDK](~/articles/cognitive-services/speech-service/speech-sdk.md) für .NET Framework (Windows) installieren. Führen Sie `Install-Package Microsoft.CognitiveServices.Speech` in der NuGet-Konsole aus, wenn Sie nur den Paketnamen benötigen und selbständig einsteigen möchten.
 
@@ -26,7 +26,7 @@ In diesem Leitfaden erfahren Sie, wie Sie das [Speech SDK](~/articles/cognitive
 
 Für diese Schnellstartanleitung ist Folgendes erforderlich:
 
-* Unter Windows benötigen Sie [Microsoft Visual C++ Redistributable für Visual Studio 2019](https://support.microsoft.com/en-us/topic/the-latest-supported-visual-c-downloads-2647da03-1eea-4433-9aff-95f26a218cc0) für Ihre Plattform. Bei der Erstinstallation ist möglicherweise ein Neustart erforderlich.
+* Unter Windows benötigen Sie [Microsoft Visual C++ Redistributable für Visual Studio 2019](https://support.microsoft.com/topic/the-latest-supported-visual-c-downloads-2647da03-1eea-4433-9aff-95f26a218cc0) für Ihre Plattform. Bei der Erstinstallation ist möglicherweise ein Neustart erforderlich.
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 
 ## <a name="create-a-visual-studio-project-and-install-the-speech-sdk"></a>Erstellen eines Visual Studio-Projekts und Installieren des Speech SDK

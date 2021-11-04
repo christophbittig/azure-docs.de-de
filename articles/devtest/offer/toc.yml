@@ -1,0 +1,44 @@
+- name: Dokumentation zu Azure Dev/Test-Angeboten
+  href: index.yml
+- name: Übersicht
+  expanded: true
+  items:
+    - name: Was ist das Dev/Test-Angebot?
+      href: overview-what-is-devtest-offer-visual-studio.md
+- name: Schnellstart
+  expanded: true
+  items:
+    - name: Erste Schritte mit einzelnen Azure Dev/Test-Gutschriften
+      href: quickstart-individual-credit.md
+    - name: Erstellen eines Enterprise Dev/Test-Abonnements
+      href: quickstart-create-enterprise-devtest-subscriptions.md
+- name: Konzepte
+  expanded: true
+  items:
+    - name: GitOps- und Azure Dev/Test-Angebot
+      href: concepts-gitops-azure-devtest.md
+    - name: Sicherheit und Governance
+      href: concepts-security-governance-devtest.md
+- name: Exemplarische Vorgehensweisen
+  expanded: true
+  items:
+    - name: Wechseln von Verzeichnismandanten
+      href: how-to-change-directory-tenants-visual-studio-azure.md
+    - name: "Entfernen von Guthabenlimits\_"
+      href: how-to-remove-credit-limits.md
+    - name: Hinzufügen von Benutzern zu Ihrem Verzeichnis
+      href: how-to-add-users-directory.md
+    - name: Anmelden bei Azure mit GitHub
+      href: how-to-sign-into-azure-with-github.md
+    - name: Verwalten und Überwachen von Dev/Test
+      href: how-to-manage-monitor-devtest.md
+    - name: Verwalten der Zuverlässigkeit und Leistung
+      href: how-to-manage-reliability-performance.md
+- name: Ressourcen
+  items:
+    - name: Azure-Roadmap
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Preise
+      href: 'https://azure.microsoft.com/en-us/pricing/dev-test/'
+    - name: Regionale Verfügbarkeit
+      href: 'https://azure.microsoft.com/regions/services/'
