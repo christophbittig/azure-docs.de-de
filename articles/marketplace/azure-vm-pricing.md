@@ -7,12 +7,12 @@ ms.topic: how-to
 author: iqshah
 ms.author: iqshah
 ms.date: 09/28/2021
-ms.openlocfilehash: 6c08319037a06ff7bb1051fd41b40dc20ec37fb6
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 38eecfefab8bbb8690b8125ad034ca3c3b076a1a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129219514"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131076526"
 ---
 # <a name="configure-prices-for-usage-based-monthly-billing"></a>Konfigurieren von Preisen für die nutzungsbasierte monatliche Abrechnung
 
@@ -29,7 +29,7 @@ Bei der Auswahl einer Preisoption sind einige Dinge zu berücksichtigen:
 
 - Bei den ersten vier Optionen führt Microsoft die Währungsumrechnung durch.
 - Microsoft empfiehlt die Verwendung eines Pauschalpreises für Softwarelösungen.
-- Die Preise sind festgelegt und können nach der Veröffentlichung nicht mehr angepasst werden. Wenn Sie die Preise für Ihre VM-Angebote jedoch reduzieren möchten, können Sie ein [Supportticket](/azure/marketplace/support) erstellen.
+- Die Preise sind festgelegt und können nach der Veröffentlichung nicht mehr angepasst werden. Wenn Sie die Preise für Ihre VM-Angebote jedoch reduzieren möchten, können Sie ein [Supportticket](./support.md) erstellen.
 
 ## <a name="new-offering-pricing"></a>Preise für neue Angebote
 
@@ -41,4 +41,4 @@ Wenn der Herausgeber die Größe „Kostenlos“, „Pauschalpreis“ oder „Pr
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Wenn Sie Fragen haben, erstellen Sie ein [Supportticket](/azure/marketplace/support).
+- Wenn Sie Fragen haben, erstellen Sie ein [Supportticket](./support.md).

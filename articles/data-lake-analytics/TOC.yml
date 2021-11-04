@@ -16,7 +16,7 @@
       href: data-lake-analytics-data-lake-tools-for-vscode.md
     - name: Azure PowerShell
       href: data-lake-analytics-get-started-powershell.md
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: data-lake-analytics-get-started-cli.md
 - name: Konzepte
   items:
@@ -193,7 +193,7 @@
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
     - name: Anforderungsänderungen
-      href: 'https://feedback.azure.com/forums/327234-data-lake'
+      href: 'https://feedback.azure.com/d365community/forum/7fd97106-7326-ec11-b6e6-000d3a4f032c'
     - name: "Frageseite von Microsoft\_Q&A (Fragen und Antworten)"
       href: /answers/topics/azure-data-lake-analytics.html
     - name: Preise

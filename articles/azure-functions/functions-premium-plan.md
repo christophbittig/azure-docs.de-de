@@ -5,16 +5,13 @@ author: cachai2
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: cachai
-ms.custom:
-- references_regions
-- fasttrack-edit
-- devx-track-azurecli
-ms.openlocfilehash: c549f29e729eec4403f2943f51e8acb4a9f21b37
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.custom: references_regions, fasttrack-edit, devx-track-azurecli
+ms.openlocfilehash: 583b1545adbc8542923104eb96dd33b744c43c06
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130248391"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131039181"
 ---
 # <a name="azure-functions-premium-plan"></a>Premium-Tarif für Azure Functions
 
@@ -202,10 +199,6 @@ Auf der [Azure-Website](https://azure.microsoft.com/global-infrastructure/servic
 |US Gov Arizona| 100 | 20 |
 |US Gov Texas| 100 | Nicht verfügbar. |
 |US Government, Virginia| 100 | 20 |
-|US Nat East| 100 | Nicht verfügbar. |
-|US Nat West| 100 | Nicht verfügbar. |
-|US Sec East| 100 | 20 |
-|US Sec West| 100 | 20 |
 |USA, Westen-Mitte| 100 | 20 |
 |Europa, Westen| 100 | 20 |
 |Indien, Westen| 100 | 20 |

@@ -10,12 +10,13 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 06/08/2021
 ms.author: pafarley
-ms.openlocfilehash: 6f4625f87bddfdffca19c3a6b8ebdf7ca4586c70
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 845c2e7080ccc56d49e0d930d041c55f88710aab
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129997647"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131033492"
 ---
 # <a name="spatial-analysis-operations"></a>Vorgänge der räumlichen Analyse
 
@@ -41,7 +42,7 @@ Vorgangsbezeichner| Beschreibung
 | cognitiveservices.vision.spatialanalysis-persondistance.debug | Führt eine Nachverfolgung durch, wenn Personen gegen eine Abstandsregel verstoßen. <br> Gibt regelmäßig ein _personDistanceEvent_-Ereignis mit dem Ort der einzelnen Verstöße gegen die Abstandsregel aus. |
 | cognitiveservices.vision.spatialanalysis.debug | Generischer Vorgang, der für alle oben erwähnten Szenarien verwendet werden kann. Diese Option ist insbesondere hilfreich, wenn Sie die gleiche Kamera für mehrere Szenarien verwenden oder Systemressourcen (beispielsweise die GPU) effizienter nutzen möchten. |
 
-Die räumliche Analyse kann auch mit [Live Video Analytics](../../media-services/live-video-analytics-edge/spatial-analysis-tutorial.md) als Video-KI-Modul ausgeführt werden. 
+Die räumliche Analyse kann auch mit [Live Video Analytics](../../azure-video-analyzer/video-analyzer-docs/overview.md) als Video-KI-Modul ausgeführt werden. 
 
 <!--more details on the setup can be found in the [LVA Setup page](LVA-Setup.md). Below is the list of the operations supported with Live Video Analytics. -->
 
@@ -95,32 +96,33 @@ Hier sehen Sie ein Beispiel für die DETECTOR_NODE_CONFIG-Parameter für alle Vo
 ### <a name="camera-calibration-node-parameter-settings"></a>Parametereinstellungen für Kamerakalibrierungsknoten
 Hier sehen Sie ein Beispiel für die `CAMERACALIBRATOR_NODE_CONFIG`-Parameter für alle Vorgänge der räumlichen Analyse.
 
-```
+```json
 {
-"gpu_index": 0,
-"do_calibration": true,
-"enable_breakpad": false,
-"enable_orientation": true
+  "gpu_index": 0,
+  "do_calibration": true,
+  "enable_breakpad": false,
+  "enable_orientation": true
 }
 ```
 
-| Name | type| BESCHREIBUNG|
+| Name | type | BESCHREIBUNG |
 |---------|---------|---------|
 | `do_calibration` | Zeichenfolge | Gibt an, dass die Kalibrierung aktiviert ist. `do_calibration` muss auf „true“ festgelegt sein, damit **cognitiveservices.vision.spatialanalysis-persondistance** richtig funktioniert. `do_calibration` ist standardmäßig auf `True` festgelegt. |
 | `enable_breakpad`| bool | Hiermit wird angegeben, ob Breakpad aktiviert werden soll, womit ein Speicherabbild für die Debugverwendung generiert wird. Die Standardeinstellung ist `false`. Wenn Sie diese Einstellung auf `true` festlegen, müssen Sie im `HostConfig`-Teil des `createOptions`-Containers auch `"CapAdd": ["SYS_PTRACE"]` hinzufügen. Das Speicherabbild wird standardmäßig in die AppCenter-App [RealTimePersonTracking](https://appcenter.ms/orgs/Microsoft-Organization/apps/RealTimePersonTracking/crashes/errors?version=&appBuild=&period=last90Days&status=&errorType=all&sortCol=lastError&sortDir=desc) hochgeladen. Wenn Sie möchten, dass die Speicherabbilder in Ihre eigene AppCenter-App hochgeladen werden, können Sie die Umgebungsvariable `RTPT_APPCENTER_APP_SECRET` mit dem App-Geheimnis Ihrer App außer Kraft setzen.
 | `enable_orientation` | bool | Gibt an, ob Sie die Ausrichtung für die erkannten Personen berechnen möchten. `enable_orientation` ist standardmäßig auf `True` festgelegt. |
 
 ### <a name="calibration-config"></a>Kalibrierungskonfiguration
+
 Hier sehen Sie ein Beispiel für die `CALIBRATION_CONFIG`-Parameter für alle Vorgänge der räumlichen Analyse.
 
-```
+```json
 {
-"enable_recalibration": true,
-"calibration_quality_check_frequency_seconds": 86400,
-"calibration_quality_check_sample_collect_frequency_seconds": 300,
-"calibration_quality_check_one_round_sample_collect_num": 10,
-"calibration_quality_check_queue_max_size": 1000,
-"calibration_event_frequency_seconds": -1
+  "enable_recalibration": true,
+  "calibration_quality_check_frequency_seconds": 86400,
+  "calibration_quality_check_sample_collect_frequency_seconds": 300,
+  "calibration_quality_check_one_round_sample_collect_num": 10,
+  "calibration_quality_check_queue_max_size": 1000,
+  "calibration_event_frequency_seconds": -1
 }
 ```
 
@@ -133,10 +135,11 @@ Hier sehen Sie ein Beispiel für die `CALIBRATION_CONFIG`-Parameter für alle Vo
 | `calibration_quality_check_queue_max_size` | INT | Dies ist die maximale Anzahl der zu speichernden Datenstichproben, wenn das Kameramodell kalibriert wird. Der Standardwert ist `1000`. Nur verwendet, wenn `enable_recalibration=True`.|
 | `calibration_event_frequency_seconds` | INT | Ausgabefrequenz (Sekunden) von Kamerakalibrierungsereignissen. Der Wert `-1` weist darauf hin, dass die Kamerakalibrierung nur gesendet werden soll, wenn sich die Informationen zur Kamerakalibrierung geändert haben. Der Standardwert ist `-1`.|
 
-
 ### <a name="camera-calibration-output"></a>Ausgabe der Kamerakalibrierung
+
 Dies ist ein Beispiel für die Ausgabe der Kamerakalibrierung, sofern diese aktiviert ist. Auslassungspunkte weisen darauf hin, dass die Liste weitere Objekte desselben Typs enthält.
-```
+
+```json
 {
   "type": "cameraCalibrationEvent",
   "sourceInfo": {
@@ -235,25 +238,30 @@ Sie können die Geschwindigkeitsberechnung über die Parametereinstellungen des 
 |---------|---------|---------|
 | `enable_speed` | bool | Gibt an, ob Sie die Geschwindigkeit für die erkannten Personen berechnen möchten. `enable_speed` ist standardmäßig auf `True` festgelegt. Es wird dringend empfohlen, sowohl Geschwindigkeit als auch Ausrichtung zu aktivieren, um die besten Schätzwerte zu erhalten. |
 
-
 ## <a name="spatial-analysis-operations-configuration-and-output"></a>Konfiguration und Ausgabe von Vorgängen der räumlichen Analyse
+
 ### <a name="zone-configuration-for-cognitiveservicesvisionspatialanalysis-personcount"></a>Zonenkonfiguration für cognitiveservices.vision.spatialanalysis-personcount
 
- Dies ist ein Beispiel für eine JSON-Eingabe für den SPACEANALYTICS_CONFIG-Parameter, mit dem eine Zone konfiguriert wird. Sie können mehrere Zonen für diesen Vorgang konfigurieren.
+Dies ist ein Beispiel für eine JSON-Eingabe für den SPACEANALYTICS_CONFIG-Parameter, mit dem eine Zone konfiguriert wird. Sie können mehrere Zonen für diesen Vorgang konfigurieren.
 
 ```json
 {
-"zones":[{
-       "name": "lobbycamera",
-       "polygon": [[0.3,0.3], [0.3,0.9], [0.6,0.9], [0.6,0.3], [0.3,0.3]],
-       "events":[{
-              "type": "count",
-              "config":{
-                     "trigger": "event",
+  "zones": [
+    {
+      "name": "lobbycamera",
+      "polygon": [[0.3,0.3], [0.3,0.9], [0.6,0.9], [0.6,0.3], [0.3,0.3]],
+      "events": [
+        {
+          "type": "count",
+          "config": {
+            "trigger": "event",
             "threshold": 16.00,
             "focus": "footprint"
-      }
-       }]
+          }
+        }
+      ]
+    }
+  ]
 }
 ```
 
@@ -318,7 +326,7 @@ Dies ist ein Beispiel für eine JSON-Eingabe für den SPACEANALYTICS_CONFIG-Para
 
 Dies ist ein Beispiel für eine JSON-Eingabe für den SPACEANALYTICS_CONFIG-Parameter, mit dem eine Zone konfiguriert wird. Sie können mehrere Zonen für diesen Vorgang konfigurieren.
 
- ```json
+```json
 {
 "zones":[
    {
@@ -401,7 +409,7 @@ Dies ist ein Beispiel für eine JSON-Eingabe für den SPACEANALYTICS_CONFIG-Para
 ### <a name="configuration-for-cognitiveservicesvisionspatialanalysis"></a>Konfiguration für „cognitiveservices.vision.spatialanalysis“
 Das folgende Beispiel zeigt eine JSON-Eingabe für den SPACEANALYTICS_CONFIG-Parameter, mit dem eine Linie und eine Zone für **cognitiveservices.vision.spatialanalysis** konfiguriert werden. Für diesen Vorgang können mehrere Linien/Zonen konfiguriert werden, und jede Linie/Zone kann unterschiedliche Ereignisse aufweisen.
 
- ```
+```json
 {
   "lines": [
     {
@@ -472,6 +480,7 @@ Das folgende Beispiel zeigt eine JSON-Eingabe für den SPACEANALYTICS_CONFIG-Par
   ]
 }
 ```
+
 ## <a name="camera-configuration"></a>Kamerakonfiguration
 
 Weitere Informationen zum Konfigurieren von Zonen und Linien finden Sie im [Leitfaden zur Kameraplatzierung](spatial-analysis-camera-placement.md).

@@ -5,17 +5,19 @@ services: sentinel
 author: batamig
 ms.author: bagol
 ms.service: azure-sentinel
-ms.custom: subject-cost-optimization
+ms.custom: subject-cost-optimization, ignite-fall-2021
 ms.topic: how-to
-ms.date: 09/02/2021
-ms.openlocfilehash: bd3ff870952701901f432660ec0069afa5151916
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.date: 10/17/2021
+ms.openlocfilehash: 8997a8a3d06fb14c4ad76fe01517a7f59c0944eb
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129275352"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131060856"
 ---
 # <a name="plan-and-manage-costs-for-azure-sentinel"></a>Planen und Verwalten von Kosten für Azure Sentinel
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 In diesem Artikel wird beschrieben, wie Sie die Kosten für Azure Sentinel planen und verwalten. Zunächst nutzen Sie den Azure-Preisrechner, um die Kosten für Azure Sentinel zu planen, bevor Sie dem Dienst Ressourcen hinzufügen. Überprüfen Sie dann beim Hinzufügen von Azure-Ressourcen die voraussichtlichen Kosten.
 
@@ -113,7 +115,7 @@ Sie können für einzelne Datentypen unterschiedliche Aufbewahrungseinstellungen
 
 ### <a name="other-cef-ingestion-costs"></a>Andere CEF-Erfassungskosten
 
-CEF ist ein unterstütztes Syslog-Ereignisformat in Azure Sentinel. Sie mithilfe von CEF nützliche Sicherheitsinformationen aus einer Vielzahl von Quellen in Ihrem Azure Sentinel-Arbeitsbereich erfassen. CEF-Protokolle werden in die Tabelle CommonSecurityLog in Azure Sentinel gesammelt, die alle standardmäßigen aktuellen CEF-Felder enthält.
+CEF ist ein unterstütztes Syslog-Ereignisformat in Azure Sentinel. Sie können CEF verwenden, um wertvolle Sicherheitsinformationen aus verschiedenen Quellen in Ihren Azure Sentinel Arbeitsbereich einzubringen. CEF-Protokolle werden in die Tabelle CommonSecurityLog in Azure Sentinel gesammelt, die alle standardmäßigen aktuellen CEF-Felder enthält.
 
 Viele Geräte und Datenquellen lassen Protokollierungsfelder zu, die über das CEF-Standardschema hinausgehen. Diese zusätzlichen Felder werden in der Tabelle AdditionalExtensions angezeigt. Diese Felder können höhere Erfassungsvolumen als die CEF-Standardfelder haben, da der Ereignisinhalt in diesen Feldern variabel sein kann.
 
@@ -123,8 +125,23 @@ Durch das Entfernen von Azure Sentinel werden weder der Log Analytics-Arbeitsber
 
 ### <a name="free-trial"></a>Kostenlose Testversion
 
-Sie können Azure Sentinel für einen neuen oder vorhandenen Log Analytics-Arbeitsbereich in den ersten 31 Tagen ohne zusätzliche Kosten aktivieren. Gebühren im Zusammenhang mit Log Analytics, Azure Automation und BYOML fallen im kostenlosen Testzeitraum dennoch an. Die Nutzung über die ersten 31 Tage hinaus wird gemäß den [Preisen für Azure Sentinel](https://azure.microsoft.com/pricing/details/azure-sentinel) in Rechnung gestellt. 
+Testen Sie Azure Sentinel die ersten 31 Tage kostenlos. Azure Sentinel kann für einen Azure Monitor Log Analytics-Arbeitsbereich ohne zusätzliche Kosten aktiviert werden. Dies gilt gemäß den unten angegebenen Grenzwerten:
 
+- **Neue Log Analytics-Arbeitsbereiche** können für die ersten 31 Tage bis zu 10 GB pro Tag ohne Kosten nutzen. Neue Arbeitsbereiche umfassen Arbeitsbereiche, die weniger als drei Tage alt sind.
+
+   Sowohl die Log Analytics-Datenerfassung als auch Azure Sentinel Gebühren entfallen während des 31-tägigen Testzeitraums. Diese kostenlose Testversion unterliegt einem Grenzwert von maximal 20 Arbeitsbereichen pro Azure-Mandant.
+
+- **Vorhandene Log Analytics-Arbeitsbereiche** können Azure Sentinel ohne zusätzliche Kosten aktivieren. Vorhandene Arbeitsbereiche umfassen alle Arbeitsbereiche, die vor mehr als drei Tagen erstellt wurden.
+
+   Nur die Azure Sentinel Gebühren entfallen während des 31-tägigen Testzeitraums.
+
+Nutzungen, die diese Grenzwerte überschreiten, werden gemäß den Preisen berechnet, die auf der [Seite Azure Sentinel Preise](https://azure.microsoft.com/pricing/details/azure-sentinel) aufgeführt sind. Gebühren im Zusammenhang mit Azure Monitor Log Analytics für die Datenerfassung und zusätzliche Funktionen für die [Automatisierung](automation-in-azure-sentinel.md) sowie ‘[Bringen Sie Ihr eigenes Maschinen-Lernen mit](bring-your-own-ml.md)‘ gelten auch während des kostenlosen Testversionszeitraums weiter.
+
+> [!TIP]
+> Während Ihrer kostenlosen Testversion finden Sie Ressourcen für Kostenverwaltung, Schulungen und vieles mehr in den **Leitfäden** zu News & > Registerkarte Kostenlose Testversion in Azure Sentinel.
+>
+> Auf dieser Registerkarte werden auch Details zu den Datumsangaben Ihrer kostenlosen Testversion und zu der Anzahl der Tage angezeigt, die Sie bis zum Ablauf der Testversion noch haben.
+>
 ### <a name="free-data-sources"></a>Kostenlose Datenquellen
 
 Die folgenden Datenquellen lassen sich kostenlos mit Azure Sentinel nutzen:
@@ -259,7 +276,7 @@ So aktivieren Sie die Arbeitsmappe „Bericht zur Arbeitsbereichsnutzung“
 
 ## <a name="export-cost-data"></a>Exportieren von Kostendaten
 
-Sie können [Ihre Kostendaten](../cost-management-billing/costs/tutorial-export-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) auch in ein Speicherkonto exportieren. Dies ist hilfreich, wenn Sie oder andere Personen zusätzliche Datenanalysen für Kosten ausführen müssen. Beispielsweise können Finanzteams die Daten mithilfe von Excel oder Power BI analysieren. Sie können Ihre Kosten täglich, wöchentlich oder monatlich exportieren und einen benutzerdefinierten Datumsbereich festlegen. Exportieren von Kostendaten ist die empfohlene Abrufmethode für Kostendatasets.
+Sie können [Ihre Kostendaten](../cost-management-billing/costs/tutorial-export-acm-data.md?WT.mc_id=costmanagementcontent_docsacmhorizontal_-inproduct-learn) auch in ein Speicherkonto exportieren. Dies ist hilfreich, wenn Sie oder andere Personen weitere Datenanalysen im Hinblick Kosten ausführen müssen. Beispielsweise kann ein Finanzteam die Daten mithilfe von Excel oder Power BI analysieren. Sie können Ihre Kosten täglich, wöchentlich oder monatlich exportieren und einen benutzerdefinierten Datumsbereich festlegen. Exportieren von Kostendaten ist die empfohlene Abrufmethode für Kostendatasets.
 
 ## <a name="create-budgets"></a>Erstellen von Budgets
 
@@ -321,7 +338,7 @@ Wenn Sie Bedrohungen in Azure Sentinel suchen oder untersuchen, müssen Sie mög
 
 ### <a name="optimize-log-analytics-costs-with-dedicated-clusters"></a>Optimieren der Log Analytics-Kosten mithilfe dedizierter Cluster
 
-Wenn Sie in Ihrem Azure Sentinel-Arbeitsbereich bzw. in Arbeitsbereichen in derselben Region mindestens 500 GB pro Tag erfassen, sollten Sie zur Kostensenkung einen Umstieg auf einen dedizierten Log Analytics-Cluster in Betracht ziehen. Eine Mindestabnahme für einen dedizierten Log Analytics-Cluster aggregiert das Datenvolumen mehrerer Arbeitsbereiche, die zusammen mindestens 500 GB pro Tag erfassen.
+Wenn Sie in Ihrem Azure Sentinel-Arbeitsbereich bzw. in Arbeitsbereichen in derselben Region mindestens 500 GB pro Tag beanspruchen, sollten Sie zur Kostensenkung einen Umstieg auf einen dedizierten Log Analytics-Cluster in Betracht ziehen. Eine Mindestabnahme für einen dedizierten Log Analytics-Cluster aggregiert das Datenvolumen mehrerer Arbeitsbereiche, die zusammen mindestens 500 GB pro Tag erfassen.
 
 Für dedizierte Log Analytics-Cluster gelten nicht die Azure Sentinel-Mindestabnahmen. Azure Sentinel-Kosten fallen im dedizierten Cluster weiter arbeitsbereichsbezogen an.
 
@@ -329,7 +346,7 @@ Sie können einem dedizierten Log Analytics-Cluster mehrere Azure Sentinel-Arbei
 
 - Arbeitsbereichsübergreifende Abfragen erfolgen schneller, wenn sich alle an der Abfrage beteiligten Arbeitsbereiche im dedizierten Cluster befinden. Es empfiehlt sich nach wie vor, so wenig Arbeitsbereiche wie möglich in Ihrer Umgebung zu betreiben, und für einen dedizierten Cluster gilt unverändert die [Obergrenze von 100 Arbeitsbereichen](../azure-monitor/logs/cross-workspace-query.md) für die Einbeziehung in eine einzelne arbeitsbereichsübergreifende Abfrage.
 
-- Alle Arbeitsbereiche im dedizierten Cluster können die für den Cluster festgelegten Log Analytics-Mindestabnahme gemeinsam nutzen. Dadurch, dass keine separaten Log Analytics-Mindestabnahmen für jeden Arbeitsbereich verpflichtend sind, lassen sich Kosten einsparen und mehr Effizienz erzielen. Durch Aktivieren eines dedizierten Clusters verpflichten Sie sich zu einer Mindestabnahme für Log Analytics von 500 GB pro Tag.
+- Alle Arbeitsbereiche im dedizierten Cluster können die für den Cluster festgelegten Log Analytics-Mindestabnahme gemeinsam nutzen. Dadurch, dass keine separaten Log Analytics-Mindestabnahmen für jeden Arbeitsbereich verpflichtend sind, lassen sich Kosten einsparen und mehr Effizienz erzielen. Durch Aktivieren eines dedizierten Clusters verpflichten Sie sich zu einer Mindestabnahme für Log Analytics von 500 TB pro Tag.
 
 Im Folgenden finden Sie einige weitere Überlegungen zum Umstieg auf einen dedizierten Cluster zur Kostenoptimierung:
 

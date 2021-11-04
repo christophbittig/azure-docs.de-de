@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 08/26/2021
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4c45c127710ff5a572a68531a1a5b3836d505e39
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 6c89ad519489892cf2965054d0c331a6f5d9f8e6
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124749520"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131067697"
 ---
 # <a name="sampling-in-application-insights"></a>Erstellen von Stichproben in Application Insights
 
@@ -238,7 +238,7 @@ Im Metrik-Explorer werden Kennzahlen wie beispielsweise die Anzahl von Anforderu
 
 2. **Aktivieren Sie das Modul für die Stichprobenerstellung mit festem Prozentsatz.** Fügen Sie in [`ApplicationInsights.config`](./configuration-with-applicationinsights-config.md) den folgenden Codeausschnitt hinzu:
    
-    ```XML
+    ```xml
     <TelemetryProcessors>
         <Add Type="Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.SamplingTelemetryProcessor, Microsoft.AI.ServerTelemetryChannel">
             <!-- Set a percentage close to 100/N where N is an integer. -->
@@ -323,7 +323,7 @@ Standardmäßig ist bei der automatischen Java-Instrumentierung und im Java SDK 
 
 2. **Aktivieren Sie das Modul für die Stichprobenerstellung mit festem Prozentsatz** durch Hinzufügen des folgenden Codeausschnitts zur Datei `ApplicationInsights.xml`:
 
-    ```XML
+    ```xml
     <TelemetryProcessors>
         <BuiltInProcessors>
             <Processor type="FixedRateSamplingTelemetryProcessor">
@@ -337,7 +337,7 @@ Standardmäßig ist bei der automatischen Java-Instrumentierung und im Java SDK 
 
 3. Sie können bestimmte Telemetrietypen in die Stichprobenerstellung einschließen oder davon ausschließen. Dazu verwenden Sie die folgenden Tags innerhalb von `FixedRateSamplingTelemetryProcessor` des `Processor`-Tags:
    
-    ```XML
+    ```xml
     <ExcludedTypes>
         <ExcludedType>Request</ExcludedType>
     </ExcludedTypes>

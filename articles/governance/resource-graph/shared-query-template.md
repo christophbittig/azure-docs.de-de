@@ -3,15 +3,13 @@ title: 'Schnellstart: Erstellen einer freigegebenen Abfrage mit Vorlagen'
 description: In dieser Schnellstartanleitung verwenden Sie eine Azure Resource Manager-Vorlage (ARM-Vorlage), um eine freigegebene Resource Graph-Abfrage zu erstellen, mit der virtuelle Computer nach Betriebssystem gezählt werden.
 ms.date: 08/17/2021
 ms.topic: quickstart
-ms.custom:
-- subject-armqs
-- mode-arm
-ms.openlocfilehash: 509de954d7d2b3c66148264e2e76524ac5f367ad
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.custom: subject-armqs, mode-arm
+ms.openlocfilehash: 19c0a4b0177d8c5f8f856ea1eb7640cf93fb68da
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122322424"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131016148"
 ---
 # <a name="quickstart-create-a-shared-query-by-using-an-arm-template"></a>Schnellstart: Erstellen einer freigegebenen Abfrage unter Verwendung einer Resource Manager-Vorlage
 

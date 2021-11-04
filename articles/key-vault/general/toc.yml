@@ -166,7 +166,7 @@
       href: versions.md
     - name: Azure PowerShell
       href: /powershell/module/az.keyvault/#key_vault
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/keyvault
     - name: .NET
       href: /dotnet/api/overview/azure/key-vault
@@ -203,4 +203,4 @@
     - name: Blog
       href: /archive/blogs/kv/
     - name: Produktfeedback
-      href: 'https://feedback.azure.com/forums/906355-azure-key-vault'
+      href: 'https://feedback.azure.com/d365community/forum/285c5ae0-f524-ec11-b6e6-000d3a4f0da0'

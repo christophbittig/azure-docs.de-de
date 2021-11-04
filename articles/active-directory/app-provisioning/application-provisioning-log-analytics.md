@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/11/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 918267b9dc2d7d8548d5406d590a03db13870749
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 5ac16491a03b783020e1d8898eb50f30eef98eea
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129991829"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131050905"
 ---
 # <a name="understand-how-provisioning-integrates-with-azure-monitor-logs"></a>Grundlegendes zur Integration der Bereitstellung in Azure Monitor-Protokolle
 
@@ -34,7 +34,7 @@ Nachdem Sie die Azure-Überwachung (Azure Monitor) konfiguriert haben, können 
 
 > [!NOTE]
 > Wenn Sie erst kürzlich einen Arbeitsbereich bereitgestellt haben, kann es einige Zeit dauern, bis Sie Protokolle an diesen senden können. Wenn eine Fehlermeldung angezeigt wird, dass das Abonnement nicht für die Verwendung von *microsoft.insights* registriert ist, versuchen Sie es nach einigen Minuten erneut.
- 
+
 ## <a name="understanding-the-data"></a>Grundlegendes zu den Daten
 Der zugrunde liegende Datenstrom, der über die Bereitstellung an Protokollanzeigen gesendet wird, ist nahezu identisch. Azure Monitor-Protokolle empfangen fast denselben Datenstrom wie die Benutzeroberfläche des Azure-Portals und die Azure API. Wie in der folgenden Tabelle aufgeführt, weisen die Protokollfelder nur einige wenige **Unterschiede** auf. Weitere Informationen zu diesen Feldern finden Sie unter [ProvisioningObjectSummary auflisten](/graph/api/provisioningobjectsummary-list?preserve-view=true&tabs=http&view=graph-rest-beta).
 

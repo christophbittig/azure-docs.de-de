@@ -5,21 +5,22 @@ ms.subservice: forms-recognizer
 ms.topic: include
 ms.date: 09/22/2021
 ms.author: lajanuar
-ms.openlocfilehash: e3296ee84928256e399891b9f8a29318c565e5de
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: c93a34308e235ba487cc1ffa3f668f2b179b8055
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129725568"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131027689"
 ---
 * Die besten Ergebnisse erzielen Sie, wenn Sie pro Dokument ein deutliches Foto oder einen hochwertigen Scan einreichen.
 * Unterstützte Dateiformate: JPEG, PNG, BMP, TIFF und PDF (in Text eingebettet oder gescannt). In Text eingebettete PDF-Dateien sind am besten geeignet, um die Möglichkeit von Fehlern beim Extrahieren und Auffinden von Zeichen auszuschließen.
-* Bei PDF- und TIFF-Dateien können bis zu 2.000 Seiten verarbeitet werden. (Bei einem Abonnement im Free-Tarif werden nur die ersten beiden Seiten verarbeitet.)
-* Die Datei muss kleiner sein als 50 MB.
+* In den Formaten PDF und TIFF können bis zu 2.000 Seiten verarbeitet werden (bei einem kostenlosen Abonnement werden nur die ersten beiden Seiten verarbeitet).
+* Die Dateigröße muss unter 50 MB liegen.
 * Bei Bildern müssen die Abmessungen zwischen 50 × 50 Pixel und 10.000 × 10.000 Pixel liegen.
-* Die Abmessungen bei PDFs betragen bis zu 17 x 17 Zoll. Dies entspricht den Papiergrößen Legal oder A3 und kleineren Formaten.
-* Die Gesamtgröße des Trainingsdatasets beträgt maximal 500 Seiten.
-* Wenn Ihre PDF-Dateien mit einem Kennwort geschützt sind, müssen Sie die Sperre entfernen, bevor Sie sie senden.
-* Für nicht überwachtes Lernen (ohne beschriftete Daten):
+* Die PDF-Abmessungen sind bis zu 17 × 17 Zoll, sodass die Papierformate Legal oder A3 hineinpassen, oder kleiner.
+* Der Gesamtumfang der Trainingsdaten beträgt 500 Seiten oder weniger.
+* Wenn Ihre PDFs kennwortgeschützt sind, müssen Sie die Sperre vor dem Senden entfernen.
+* Für unbeaufsichtigtes Lernen (ohne beschriftete Daten) gilt Folgendes:
   * Die Daten müssen Schlüssel und Werte enthalten.
-  * Schlüssel müssen über oder links neben den Werten angezeigt werden. Sie können nicht darunter oder rechts davon angezeigt werden.
+  * Die Schlüssel müssen über oder links von den Werten stehen; sie dürfen nicht unter oder rechts von ihnen stehen.

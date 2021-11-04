@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 8/27/2021
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9eabf879522d517f35da2a859c488ebdfbee64a
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: d527db391185c899bed3137c3783aa81f8a00c63
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130038458"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131067027"
 ---
 # <a name="tutorial-configure-datawiza-with-azure-active-directory-for-secure-hybrid-access"></a>Tutorial: Konfigurieren von Datawiza mit Azure Active Directory für sicheren Hybridzugriff
 
@@ -81,7 +81,7 @@ Wenn Sie stattdessen eine vorhandene Webanwendung in Ihrem Azure AD-Mandanten ve
 
 1. Sie können entweder Docker oder Kubernetes für die DAB-Ausführung verwenden. Das Docker-Image ist erforderlich, damit Benutzer eine headerbasierte Beispielanwendung erstellen können. In [diesem Artikel](https://docs.datawiza.com/step-by-step/step3.html) wird das Konfigurieren der DAB- und SSO-Integration beschrieben. [Hier](https://docs.datawiza.com/tutorial/web-app-AKS.html) erfahren Sie mehr über das Bereitstellen von DAB mit Kubernetes. Sie können die Docker-Beispielimagedatei `docker-compose.yml` herunterladen und verwenden. [Melden Sie sich bei der Containerregistrierung an](https://docs.datawiza.com/step-by-step/step3.html#important-step), um die Images für DAB und die headerbasierte Anwendung herunterzuladen.
 
-    ```YML
+    ```yaml
     services:
       datawiza-access-broker:
       image: registry.gitlab.com/datawiza/access-broker

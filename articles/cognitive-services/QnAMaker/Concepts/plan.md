@@ -4,13 +4,14 @@ description: Erfahren Sie, wie Sie Ihre QnA Maker-App planen. Erfahren Sie, wie 
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 11/09/2020
-ms.openlocfilehash: 1f3db34f477e228157cfa8378f171adf7a239811
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 11/02/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: b5810d7d69322793afea76bfbe29fb49b5dc13a3
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124828828"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131086771"
 ---
 # <a name="plan-your-qna-maker-app"></a>Planen Ihrer QnA Maker-App
 
@@ -20,8 +21,6 @@ Zum Planen Ihrer QnA Maker-App müssen Sie verstehen, wie QnA Maker funktioniert
 
 Jede [Azure-Ressource](azure-resources.md#resource-purposes), die mit QnA Maker erstellt wird, hat einen bestimmten Zweck. Jede Ressource hat ihren eigenen Zweck, ihre eigenen Grenzwerte und ihren eigenen [Tarif](azure-resources.md#pricing-tier-considerations). Es ist wichtig, die Funktion dieser Ressourcen zu verstehen, sodass Sie dieses Wissen in Ihren Planungsprozess integrieren können.
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
-
 | Resource | Zweck |
 |--|--|
 | [QnA Maker](azure-resources.md#qna-maker-resource)-Ressource | Erstellung und Abfragevorhersage |
@@ -29,30 +28,9 @@ Jede [Azure-Ressource](azure-resources.md#resource-purposes), die mit QnA Maker 
 | [App Service-Ressource und App Plan Service](azure-resources.md#app-service-and-app-service-plan)-Ressource | Abfragevorhersage-Endpunkt |
 | [Application Insights](azure-resources.md#application-insights)-Ressource | Abfragevorhersagetelemetrie |
 
-
-# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
-
-| Resource | Zweck |
-|--|--|
-| [Textanalyse](azure-resources.md#qna-maker-resource)-Ressource | Verfassen, Abfragevorhersage-Endpunkt und Telemetrie|
-| [Cognitive Search](azure-resources.md#cognitive-search-resource)-Ressource | Datenspeicherung und -suche |
-
----
 ### <a name="resource-planning"></a>Ressourcenplanung
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
-
 Der Free-Tarif, `F0`, der einzelnen Ressourcen funktioniert und kann sowohl die Benutzeroberfläche für die Erstellung als auch die Abfragevorhersage bereitstellen. Sie können diesen Tarif verwenden, um die Erstellung und Abfragevorhersage zu erlernen. Wenn Sie zu einem Produktions- oder Liveszenario wechseln, sollten Sie Ihre Ressourcenauswahl neu auswerten.
-
-# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
-
-Benutzerdefinierte Fragen und Antworten (Vorschau) ist ein kostenloses Feature, und der Durchsatz ist derzeit auf 10 Transaktionen pro Sekunde sowohl für Verwaltungs-APIs als auch für Vorhersage-APIs begrenzt. Um 10 Transaktionen pro Sekunde für Ihren Dienst zu erreichen, empfehlen wir die SKU S1 (eine Instanz) von Azure Cognitive Search.
-
-### <a name="text-analytics-resource"></a>Textanalyseressource
-
-Eine einzelne Textanalyse-Ressource mit aktiviertem Feature „Benutzerdefinierte Fragen und Antworten“ kann mehrere Wissensdatenbanken hosten. Die Anzahl der Wissensdatenbanken wird durch die Menge der Indizes bestimmt, die der Cognitive Search-Tarif unterstützt. Erfahren Sie mehr über die [Beziehung zwischen Indizes und Wissensdatenbanken](azure-resources.md#index-usage).
-
----
 
 ### <a name="knowledge-base-size-and-throughput"></a>Größe und Durchsatz der Wissensdatenbank
 
@@ -84,40 +62,17 @@ Eine Wissensdatenbank ist direkt an die QnA Maker-Ressource gebunden. Sie enthä
 
 ### <a name="language-considerations"></a>Sprachbezogene Überlegungen
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
-
 Die erste in Ihrer QnA Maker-Ressource erstellte Wissensdatenbank legt die Sprache für die Ressource fest. Sie können nur eine Sprache für eine QnA Maker-Ressource festlegen.
 
 Sie können Ihre QnA Maker-Ressourcen nach Sprache strukturieren oder [Translator](../../translator/translator-overview.md) verwenden, um eine Abfrage von einer anderen Sprache in die Sprache der Wissensdatenbank zu übersetzen, bevor Sie die Abfrage an den Abfragevorhersage-Endpunkt senden.
 
-# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
-
-Sie können jetzt über Wissensdatenbanken in verschiedenen Sprachen innerhalb derselben Textanalyse-Ressource verfügen, in der das Feature „Benutzerdefinierte Fragen und Antworten“ aktiviert ist. Wenn Sie die erste Wissensdatenbank erstellen, können Sie auswählen, ob Sie die Ressource für Wissensdatenbanken in einer einzelnen Sprache oder in mehreren Sprachen verwenden möchten.
-
-![QnA Maker verwaltet (Vorschau) mehrsprachige Wissensdatenbankauswahl](../media/qnamaker-create-publish-knowledge-base/connect-knowledgebase-custom-qna.png)
-
-> [!NOTE]
-> Wenn Sie mehrere Sprachen pro Wissensdatenbank aktivieren, können Sie in Ihrer Textanalyse-Ressource nicht so viele Wissensdatenbanken erstellen. [Weitere Informationen zu Einschränkungen der Spracheinstellungen](./azure-resources.md).
-
----
-
 ### <a name="ingest-data-sources"></a>Erfassen von Datenquellen
-
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
 
 Sie können eine der folgenden erfassten [Datenquellen](../Concepts/data-sources-and-content.md) verwenden, um eine Wissensdatenbank zu erstellen:
 
 * Öffentliche URL
 * Private SharePoint-URL
 * Datei
-
-# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
-
-Benutzerdefinierte Fragen und Antworten unterstützen auch unstrukturierte Inhalte. Sie können eine Datei mit unstrukturiertem Inhalt hochladen.
-
-Derzeit unterstützen wir keine URLs für unstrukturierten Inhalt.
-
----
 
 Beim Erfassungsprozess werden [unterstützte Inhaltstypen](../reference-document-format-guidelines.md) in Markdown konvertiert. Die weitere Bearbeitung der *Antwort* erfolgt mit Markdown. Nachdem Sie eine Wissensdatenbank erstellt haben, können Sie [QnA-Paare](question-answer-set.md) im QnA Maker-Portal mit [Rich Text Authoring](../how-to/edit-knowledge-base.md#rich-text-editing-for-answer) bearbeiten.
 
@@ -194,15 +149,7 @@ Es gibt eine [zweiphasige Antwortrangfolge](query-knowledge-base.md#how-qna-make
 
 ### <a name="service-updates"></a>Dienstupdates
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
-
 Wenden Sie die [aktuellsten Runtimeupdates](../how-to/configure-QnA-Maker-resources.md#get-the-latest-runtime-updates) an, um Dienstupdates automatisch zu verwalten.
-
-# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
-
-Bei benutzerdefinierten Fragen und Antworten (Vorschau) wird die Runtime vom QnA Maker-Dienst selbst verwaltet. Somit sind Dienstupdates nicht anwendbar.
-
----
 
 ### <a name="scaling-throughput-and-resiliency"></a>Skalierung, Durchsatz und Resilienz
 
@@ -210,16 +157,7 @@ Skalierung, Durchsatz und Resilienz werden durch die [Azure-Ressourcen](../how-t
 
 ### <a name="analytics-with-application-insights"></a>Analyse mit Application Insights
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
-
 Alle Abfragen Ihrer Wissensdatenbank werden in Application Insights gespeichert. Verwenden Sie unsere [wichtigsten Abfragen](../how-to/get-analytics-knowledge-base.md), um Ihre Metriken zu verstehen.
-
-# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
-
-Bei benutzerdefinierten Fragen und Antworten werden Telemetriedaten über den [Azure Monitor-Dienst](../../../azure-monitor/index.yml) angeboten. Verwenden Sie unsere [wichtigsten Abfragen](../how-to/get-analytics-knowledge-base.md), um Ihre Metriken zu verstehen.
-
-
----
 
 ## <a name="development-lifecycle"></a>Lebenszyklus der Entwicklung
 

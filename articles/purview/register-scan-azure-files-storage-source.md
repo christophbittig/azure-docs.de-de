@@ -1,22 +1,29 @@
 ---
-title: Registrieren und Überprüfen von Azure Files
-description: In diesem Leitfaden wird beschrieben, wie Sie eine Überprüfung für Azure Files in Azure Purview durchführen.
+title: Verbinden und Verwalten von Azure Files
+description: In diesem Handbuch wird beschrieben, wie Sie eine Verbindung mit Azure Files in Azure Purview herstellen und die Funktionen von Purview verwenden, um Ihre Azure Files-Quelle zu überprüfen und zu verwalten.
 author: viseshag
 ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: how-to
-ms.date: 06/22/2021
-ms.openlocfilehash: 2db2b5343b8a55e29881bf0908fded0a48b90b78
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.date: 11/02/2021
+ms.custom: template-how-to, ignite-fall-2021
+ms.openlocfilehash: e91e435ca2d8050a0c6d9728c4d010f9e9c844c4
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129209906"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131076261"
 ---
-# <a name="register-and-scan-azure-files"></a>Registrieren und Überprüfen von Azure Files
+# <a name="connect-to-and-manage-azure-files-in-azure-purview"></a>Verbinden und Verwalten von Azure Files in Azure Purview
+
+In diesem Artikel wird beschrieben, wie Sie Azure Files registrieren und wie Sie Azure Files in Azure Purview authentifizieren und damit interagieren. Weitere Informationen zu Azure Purview finden Sie im [Einführungsartikel](overview.md).
 
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
+
+|**Metadatenextrahierung**|  **Vollständige Überprüfung**  |**Inkrementelle Überprüfung**|**Bereichsbezogene Überprüfung**|**Klassifizierung**|**Zugriffsrichtlinie**|**Herkunft**|
+|---|---|---|---|---|---|---|
+| [Ja](#register) | [Ja](#scan) | [Ja](#scan) | [Ja](#scan) | [Ja](#scan) | Nein | Nein |
 
 Azure Files unterstützt vollständige und inkrementelle Überprüfungen, um die Metadaten und Klassifizierungen basierend auf standardmäßigen System- und benutzerdefinierten Klassifizierungsregeln zu erfassen.
 
@@ -24,20 +31,27 @@ Für Dateitypen wie CSV, TSV, PSV und SSV wird das Schema extrahiert, wenn die f
 
 1. Werte in der ersten Zeile sind nicht leer.
 2. Werte in der ersten Zeile sind eindeutig.
-3. Werte in der ersten Zeile sind weder ein Datum noch eine Zahl.
+3. Werte in der ersten Zeile sind weder ein Datum noch eine Zahl
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Erstellen Sie vor dem Registrieren der Datenquellen zunächst ein Azure Purview-Konto. Weitere Informationen zum Erstellen eines Purview-Kontos finden Sie unter [Schnellstart: Erstellen eines Azure Purview-Kontos im Azure-Portal](create-catalog-portal.md).
-- Sie müssen ein Datenquellenadministrator sein, um Überprüfungen einrichten und planen zu können. Ausführlichere Informationen hierzu finden Sie unter [Katalogberechtigungen](catalog-permissions.md).
+* Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="setting-up-authentication-for-a-scan"></a>Einrichten der Authentifizierung für eine Überprüfung
+* Eine aktive [Purview-Ressource](create-catalog-portal.md)
+
+* Sie müssen ein Datenquellenadministrator und Datenleser sein, um eine Quelle zu registrieren und in Purview Studio zu verwalten. Weitere Informationen finden Sie auf der [Seite Azure Purview-Berechtigungen](catalog-permissions.md).
+
+## <a name="register"></a>Register
+
+In diesem Abschnitt wird beschrieben, wie Sie Azure Files in Azure Purview mithilfe von [Purview Studio](https://web.purview.azure.com/) registrieren.
+
+### <a name="authentication-for-registration"></a>Authentifizierung für die Registrierung
 
 Derzeit gibt es nur eine Möglichkeit zum Einrichten der Authentifizierung für Azure-Dateifreigaben:
 
 - Kontoschlüssel
 
-### <a name="account-key"></a>Kontoschlüssel
+#### <a name="account-key-to-register"></a>Kontoschlüssel für die Registrierung
 
 Wenn **Kontoschlüssel** als Authentifizierungsmethode ausgewählt wird, müssen Sie Ihren Zugriffsschlüssel abrufen und im Schlüsseltresor speichern:
 
@@ -51,7 +65,7 @@ Wenn **Kontoschlüssel** als Authentifizierungsmethode ausgewählt wird, müssen
 1. Falls Ihr Schlüsseltresor noch nicht mit Purview verbunden ist, müssen Sie eine [neue Schlüsseltresorverbindung erstellen](manage-credentials.md#create-azure-key-vaults-connections-in-your-azure-purview-account).
 1. Zum Schluss [erstellen Sie neue Anmeldeinformationen](manage-credentials.md#create-a-new-credential), indem Sie den Schlüssel zum Einrichten Ihrer Überprüfung verwenden.
 
-## <a name="register-an-azure-files-storage-account"></a>Registrieren eines Azure Files-Speicherkontos
+### <a name="steps-to-register"></a>Schritte zur Registrierung
 
 Gehen Sie wie folgt vor, um ein neues Azure Files-Konto in Ihrem Datenkatalog zu registrieren:
 
@@ -73,7 +87,11 @@ Führen Sie auf dem Bildschirm **Register sources (Azure Files)** (Quellen regis
 
 :::image type="content" source="media/register-scan-azure-files/azure-file-register-source.png" alt-text="Optionen für die Quellenregistrierung" border="true":::
 
-## <a name="creating-and-running-a-scan"></a>Erstellen und Ausführen einer Überprüfung
+## <a name="scan"></a>Überprüfen
+
+Führen Sie die folgenden Schritte aus, um Azure Files zu überprüfen und automatisch Assets zu identifizieren und Ihre Daten zu klassifizieren. Weitere Informationen zum Überprüfen im Allgemeinen finden Sie in unserer [Einführung in Scans und Datenerfassung](concept-scans-and-ingestion.md)
+
+### <a name="create-and-run-scan"></a>Überprüfung erstellen und ausführen
 
 Gehen Sie wie folgt vor, um eine neue Überprüfung zu erstellen und auszuführen:
 
@@ -83,7 +101,7 @@ Gehen Sie wie folgt vor, um eine neue Überprüfung zu erstellen und auszuführe
 
 1. Wählen Sie **Neue Überprüfung** aus.
 
-1. Wählen Sie die Kontoschlüssel-Anmeldeinformationen aus, um eine Verbindung mit Ihrer Datenquelle herzustellen. 
+1. Wählen Sie die Kontoschlüssel-Anmeldeinformationen aus, um eine Verbindung mit Ihrer Datenquelle herzustellen.
 
    :::image type="content" source="media/register-scan-azure-files/set-up-scan-azure-file.png" alt-text="Einrichten der Überprüfung":::
 
@@ -101,10 +119,12 @@ Gehen Sie wie folgt vor, um eine neue Überprüfung zu erstellen und auszuführe
 
 1. Sehen Sie sich Ihre Überprüfung noch einmal an, und wählen Sie dann **Speichern und ausführen** aus.
 
-
 [!INCLUDE [create and manage scans](includes/view-and-manage-scans.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Browsen im Azure Purview-Datenkatalog](how-to-browse-catalog.md)
-- [Suchen im Azure Purview-Datenkatalog](how-to-search-catalog.md)
+Nachdem Sie Ihre Quelle registriert haben, halten Sie sich an die folgenden Anleitungen, um mehr über Purview und Ihre Daten zu erfahren.
+
+- [Dateneinblicke in Azure Purview](concept-insights.md)
+- [Datenherkunft in Azure Purview](catalog-lineage-user-guide.md)
+- [Data Catalog suchen](how-to-search-catalog.md)

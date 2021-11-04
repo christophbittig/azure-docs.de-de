@@ -9,13 +9,13 @@ ms.date: 08/04/2020
 ms.lastreviewed: 05/15/2020
 ms.topic: quickstart
 ms.service: notification-hubs
-ms.custom: devx-track-azurepowershell - subject-armqs - mode-arm
-ms.openlocfilehash: 8eb065d301bf1515aaf1f7158682c71db77f632b
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.custom: devx-track-azurepowershell, subject-armqs, mode-arm
+ms.openlocfilehash: 4d94d61d3ea8f46b50fc1be9719e888e661558fb
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111889200"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131070088"
 ---
 # <a name="quickstart-create-a-notification-hub-using-an-arm-template"></a>Schnellstart: Erstellen eines Benachrichtigungshubs mithilfe einer ARM-Vorlage
 
@@ -68,7 +68,7 @@ az notification-hub namespace show --resource-group ContosoNotificationsGroup --
 
 ---
 The output looks similar to: null
-:::image type="content" source="media/create-notification-hub-template/verify-deploy.png" alt-text="Verify deployment"::: null
+':::image type="content" source="media/create-notification-hub-template/verify-deploy.png" alt-text="Verify deployment"::': null
 ---
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen

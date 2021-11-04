@@ -11,19 +11,21 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
-ms.custom: mvc
+ms.custom: mvc, ignite-fall-2021
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2021
 ms.author: yelevin
-ms.openlocfilehash: ecb8559af1d2aaf70bee0031930a748ff534f1c0
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 8d93c98da0144d7081803abad174aa09a0087ccb
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128622529"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131014047"
 ---
 # <a name="hunt-for-threats-with-azure-sentinel"></a>Suchen nach Bedrohungen mit Azure Sentinel
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 > [!IMPORTANT]
 >
@@ -242,4 +244,3 @@ Weitere Informationen finden Sie unter:
 - [Behalten des Überblicks über Daten bei einer Bedrohungssuche](bookmarks.md)
 
 Erfahren Sie anhand eines Beispiels, wie benutzerdefinierte Analyseregeln bei der [Überwachung von Zoom](https://techcommunity.microsoft.com/t5/azure-sentinel/monitoring-zoom-with-azure-sentinel/ba-p/1341516) mit einem [benutzerdefinierten Connector](create-custom-connector.md) eingesetzt werden.
-

@@ -6,14 +6,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: how-to
-ms.date: 09/20/2021
+ms.date: 10/12/2021
 ms.author: cherylmc
-ms.openlocfilehash: 96edce1434665a5b49c35f8cc305ab4d2c417f8d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: d0c852cf6df97619f7a319da4e13a406c572d4e7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128598450"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131069290"
 ---
 # <a name="create-an-ssh-connection-to-a-linux-vm-using-azure-bastion"></a>Erstellen einer SSH-Verbindung mit einer Linux-VM mithilfe von Azure Bastion
 
@@ -48,7 +49,7 @@ Zum Herstellen einer Verbindung mit dem virtuellen Linux-Computer über SSH müs
 * Eingehender Port: Benutzerdefinierter Wert (Sie müssen diesen benutzerdefinierten Port dann angeben, wenn Sie über Azure Bastion eine Verbindung mit der VM herstellen)
 
    > [!NOTE]
-   > Wenn Sie einen benutzerdefinierten Portwert angeben möchten, muss Azure Bastion mithilfe der Standard-SKU konfiguriert werden. Mit der Basic-SKU können Sie keine benutzerdefinierten Ports angeben. Die Standard-SKU ist zurzeit als Vorschauversion verfügbar.
+   > Wenn Sie einen benutzerdefinierten Portwert angeben möchten, muss Azure Bastion mithilfe der Standard-SKU konfiguriert werden. Mit der Basic-SKU können Sie keine benutzerdefinierten Ports angeben.
    >
 
 ## <a name="connect-using-username-and-password"></a><a name="username"></a>Verbinden: Verwenden von Benutzernamen und Kennwort

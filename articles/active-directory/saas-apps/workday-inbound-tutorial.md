@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: identity
 ms.date: 01/19/2021
 ms.author: chmutali
-ms.openlocfilehash: eb6f3c6a1463e2a3b71057145a6df770ea880b9d
-ms.sourcegitcommit: 516eb79d62b8dbb2c324dff2048d01ea50715aa1
+ms.openlocfilehash: b32978b3674217ce2b4b91cd031989c6478dedd0
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108181164"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131040055"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung
 
@@ -137,8 +137,8 @@ In diesem Schritt erstellen Sie eine uneingeschränkte oder eingeschränkte Sich
    * Bitte wenden Sie sich an Ihren Workday-Integrationspartner, um den geeigneten Sicherheitsgruppentyp für die Integration auszuwählen.
    * Sobald Sie den Gruppentyp kennen, wählen Sie **Integrationssystem-Sicherheitsgruppe (Uneingeschränkt)** oder **Integrationssystem-Sicherheitsgruppe (Eingeschränkt)** aus der Dropdownliste **Typ der Mandantensicherheitsgruppe**.
 
-     > [!div class="mx-imgBorder&quot;]
-     >![Sicherheitsgruppe erstellen](./media/workday-inbound-tutorial/wd_isu_04.png &quot;Sicherheitsgruppe erstellen")
+     > [!div class="mx-imgBorder"]
+     >![Sicherheitsgruppe erstellen](./media/workday-inbound-tutorial/wd_isu_04.png "Sicherheitsgruppe erstellen")
 
 3. Nach dem Erstellen der Sicherheitsgruppe wird eine Seite angezeigt, auf der Sie der Sicherheitsgruppe Mitglieder zuweisen können. Fügen Sie den im vorherigen Schritt erstellten neuen Benutzer des Integrationssystems zu dieser Sicherheitsgruppe hinzu. Wenn Sie die Sicherheitsgruppe *eingeschränkt* verwenden, müssen Sie auch den entsprechenden Organisationsbereich auswählen.
 
@@ -501,7 +501,7 @@ Ja, diese Konfiguration wird unterstützt. Hier sind die allgemeinen Schritte zu
 
 #### <a name="how-do-i-suggest-improvements-or-request-new-features-related-to-workday-and-azure-ad-integration"></a>Wie kann ich Verbesserungen vorschlagen oder neue Funktionen im Zusammenhang mit der Workday- und Azure AD-Integration anfordern?
 
-Ihr Feedback ist uns sehr wichtig, da es uns hilft, die Weichen für die zukünftigen Releases und Verbesserungen zu stellen. Wir freuen uns über jedes Feedback und ermutigen Sie, Ihre Ideen oder Verbesserungsvorschläge im [Feedbackforum von Azure AD](https://feedback.azure.com/forums/169401-azure-active-directory) einzureichen. Für spezifisches Feedback im Zusammenhang mit der Workday-Integration wählen Sie die Kategorie *SaaS-Anwendungen* und suchen Sie anhand des Stichworts *Workday*, um vorhandenes Feedback zum Workday zu finden.
+Ihr Feedback ist uns sehr wichtig, da es uns hilft, die Weichen für die zukünftigen Releases und Verbesserungen zu stellen. Wir freuen uns über jedes Feedback und ermutigen Sie, Ihre Ideen oder Verbesserungsvorschläge im [Feedbackforum von Azure AD](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789) einzureichen. Für spezifisches Feedback im Zusammenhang mit der Workday-Integration wählen Sie die Kategorie *SaaS-Anwendungen* und suchen Sie anhand des Stichworts *Workday*, um vorhandenes Feedback zum Workday zu finden.
 
 > [!div class="mx-imgBorder"]
 > ![UserVoice-SaaS-Apps](media/workday-inbound-tutorial/uservoice_saas_apps.png)
@@ -683,17 +683,18 @@ So können Sie solche Anforderungen für die Konstruktion von *CN* oder *display
 
 * In Erweiterung des obigen Beispiels möchten Sie Städtenamen, die von Workday kommen, in Kurzwerte umwandeln und damit Anzeigenamen wie *Smith, John (CHI)* oder *Doe, Jane (NYC)* erstellen, dann kann dieses Ergebnis mit einem Switch-Ausdruck mit dem Workday-Attribut *Municipality* als determinante Variable erreicht werden.
 
-     ```
-    Switch
-    (
-      [Municipality],
-      Join(", ", [PreferredLastName], [PreferredFirstName]),  
-           "Chicago", Append(Join(", ",[PreferredLastName], [PreferredFirstName]), "(CHI)"),
-           "New York", Append(Join(", ",[PreferredLastName], [PreferredFirstName]), "(NYC)"),
-           "Phoenix", Append(Join(", ",[PreferredLastName], [PreferredFirstName]), "(PHX)")
-    )
-     ```
-    Weitere Informationen:
+  ```
+  Switch
+  (
+    [Municipality],
+    Join(", ", [PreferredLastName], [PreferredFirstName]),  
+         "Chicago", Append(Join(", ",[PreferredLastName], [PreferredFirstName]), "(CHI)"),
+         "New York", Append(Join(", ",[PreferredLastName], [PreferredFirstName]), "(NYC)"),
+         "Phoenix", Append(Join(", ",[PreferredLastName], [PreferredFirstName]), "(PHX)")
+  )
+  ```
+
+  Weitere Informationen:
   * [Wechseln der Funktionssyntax](../app-provisioning/functions-for-customizing-application-data.md#switch)
   * [Verknüpfen der Funktionssyntax](../app-provisioning/functions-for-customizing-application-data.md#join)
   * [Anfügen der Funktionssyntax](../app-provisioning/functions-for-customizing-application-data.md#append)

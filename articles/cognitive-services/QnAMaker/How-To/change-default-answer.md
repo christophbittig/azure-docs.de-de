@@ -5,36 +5,28 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: how-to
 ms.date: 11/09/2020
-ms.openlocfilehash: abc33a405975db9484d204c51df0a67697c2f8f8
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 7c73b08a634d1b68c3d9275dc39cc7cd95d51a6f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110370803"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131069271"
 ---
 # <a name="change-default-answer-for-a-qna-maker-resource"></a>Ändern der Standardantwort für eine QnA Maker-Ressource
 
 Die Standardantwort für eine Wissensdatenbank sollte zurückgegeben werden, wenn keine Antwort gefunden wird. Wenn Sie eine Clientanwendung verwenden, z. B. den [Azure Bot Service](/azure/bot-service/bot-builder-howto-qna), verfügt diese möglicherweise über eine separate Standardantwort, in der die Information enthalten ist, dass keine Antwort den Bewertungsschwellenwert erreicht hat.
 
+[!INCLUDE [Custom question answering](../includes/new-version.md)]
+
 ## <a name="types-of-default-answer"></a>Arten von Standardantworten
 
 In Ihrer Wissensdatenbank gibt es zwei Arten von Standardantworten. Es ist wichtig zu verstehen, wie und wann die einzelne Standardantwort von einer Vorhersageabfrage zurückgegeben wird:
-
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
 
 |Arten von Standardantworten|Beschreibung der Antwort|
 |--|--|
 |Antwort der Wissensdatenbank, wenn keine Antwort ermittelt wird|`No good match found in KB.`: Wenn die [GenerateAnswer-API](/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer) keine passende Antwort auf die Frage findet, wird die `DefaultAnswer`-Einstellung des App-Diensts zurückgegeben. Alle Wissensdatenbanken in derselben QnA Maker-Ressource verwenden denselben Standardantworttext.<br>Sie können die Einstellung im Azure-Portal, über den App-Dienst oder mit den REST-APIs zum [Abrufen](/rest/api/appservice/webapps/listapplicationsettings) oder [Aktualisieren](/rest/api/appservice/webapps/updateapplicationsettings) der Einstellung verwalten.|
 |Anweisungstext der Folgeäußerung|Wenn Sie eine Folgeäußerung in einem Konversationsfluss verwenden, benötigen Sie möglicherweise keine Antwort im QnA-Paar, da Sie möchten, dass der Benutzer aus den Folgeäußerungen auswählen kann. Legen Sie in diesem Fall bestimmten Text fest, indem Sie den Standardantworttext festlegen, der bei jeder Vorhersage für Folgeäußerungen zurückgegeben wird. Der Text soll als Anweisungstext zur Auswahl von Folgeäußerungen angezeigt werden. Ein Beispiel für diesen Standardantworttext ist `Please select from the following choices`. Diese Konfiguration wird in den nächsten Abschnitten dieses Dokuments erläutert. Kann auch als Teil der Wissensdatenbankdefinition von `defaultAnswerUsedForExtraction` unter Verwendung der [REST-API](/rest/api/cognitiveservices/qnamaker/knowledgebase/create) festgelegt werden.|
-
-# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
-
-|Arten von Standardantworten|Beschreibung der Antwort|
-|--|--|
-|Antwort der Wissensdatenbank, wenn keine Antwort ermittelt wird|`No good match found in KB.`: Wenn die [GenerateAnswer-API](/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer) keine passende Antwort auf die Frage findet, wird eine Standardtextantwort angezeigt. In „Benutzerdefinierte Fragen und Antworten“ (Vorschau) können Sie diesen Text in den **Einstellungen** Ihrer Wissensdatenbank festlegen. <br><br> ![QnA Maker verwaltet (Vorschau): Standardantwort festlegen](../media/qnamaker-how-change-default-answer/qnamaker-v2-change-default-answer.png)|
-|Anweisungstext der Folgeäußerung|Wenn Sie eine Folgeäußerung in einem Konversationsfluss verwenden, benötigen Sie möglicherweise keine Antwort im QnA-Paar, da Sie möchten, dass der Benutzer aus den Folgeäußerungen auswählen kann. Legen Sie in diesem Fall bestimmten Text fest, indem Sie den Standardantworttext festlegen, der bei jeder Vorhersage für Folgeäußerungen zurückgegeben wird. Der Text soll als Anweisungstext zur Auswahl von Folgeäußerungen angezeigt werden. Ein Beispiel für diesen Standardantworttext ist `Please select from the following choices`. Diese Konfiguration wird in den nächsten Abschnitten dieses Dokuments erläutert. Sie können dies auch als Teil einer Wissensdatenbankdefinition mit `defaultAnswerUsedForExtraction` unter Verwendung der [REST-API](/rest/api/cognitiveservices/qnamaker/knowledgebase/create) festlegen.|
-
----
 
 ### <a name="client-application-integration"></a>Clientanwendungsintegration
 

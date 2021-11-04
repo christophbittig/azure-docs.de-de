@@ -10,12 +10,12 @@ ms.author: siarora
 ms.date: 06/14/2021
 ms.topic: how-to
 ms.custom: troubleshooting,contperf-fy20q4, contperf-fy21q2
-ms.openlocfilehash: bbfcf7fd3edb483415041a4706e7a5cd22e2d76a
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 6da58d3f37af146c2cb1371cd8b18f134c24d0a2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129997117"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131067430"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>Verwalten und Erhöhen der Kontingente für Ressourcen mit Azure Machine Learning
 
@@ -202,4 +202,4 @@ Wählen Sie beim Anfordern einer Kontingenterhöhung den gewünschten Dienst aus
 
 + [Planen und Verwalten von Kosten für Azure Machine Learning](concept-plan-manage-cost.md)
 + [Diensteinschränkungen in Azure Machine Learning](resource-limits-quotas-capacity.md)
-+ [Problembehandlung für die Bereitstellung und Bewertung verwalteter Onlineendpunkte (Vorschau)](how-to-troubleshoot-managed-online-endpoints.md)
++ [Problembehandlung für die Bereitstellung und Bewertung verwalteter Onlineendpunkte (Vorschau)](./how-to-troubleshoot-online-endpoints.md)

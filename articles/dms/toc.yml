@@ -103,14 +103,14 @@
           href: how-to-migrate-ssis-packages-managed-instance.md
 - name: Verweis
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/dms
 - name: Ressourcen
   items:
     - name: Häufig gestellte Fragen
       href: faq.yml
     - name: Feedback
-      href: 'https://feedback.azure.com/forums/906100-azure-database-migration-service'
+      href: 'https://feedback.azure.com/d365community/forum/2dd7eb75-ef24-ec11-b6e6-000d3a4f0da0'
     - name: Preise
       href: 'https://aka.ms/dms-pricing'
     - name: Dienstupdates

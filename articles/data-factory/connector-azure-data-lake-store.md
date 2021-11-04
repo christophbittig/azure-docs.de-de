@@ -9,12 +9,12 @@ ms.subservice: data-movement
 ms.topic: conceptual
 ms.custom: synapse
 ms.date: 10/11/2021
-ms.openlocfilehash: 68f3bb388f003162786a6ce4f50e0f2dd00d48d0
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: e70970336a5e32d1edef9f336cf31e48f71aff9f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129856655"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131033245"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-using-azure-data-factory-or-azure-synapse-analytics"></a>Das Kopieren von Daten nach und aus Azure Data Lake Storage Gen1 mithilfe von Azure Data Factory- oder Azure Synapse Analytics
 
@@ -187,7 +187,7 @@ Führen Sie die folgenden Schritte aus, um die Authentifizierung mit einer benut
     - **Als Quelle**: Gewähren Sie unter **Data Explorer** > **Zugriff** mindestens die Berechtigung **Ausführen** für ALLE Upstreamordner (einschließlich des Stammordners) sowie die Berechtigung **Lesen** für die zu kopierenden Dateien. Sie können für rekursives Kopieren „Hinzufügen zu“ auf **Diesen Ordner und alle untergeordneten Ordner** und „Hinzufügen als“ auf **Ein Zugriffsberechtigungseintrag und ein Standardberechtigungseintrag** festlegen. Es gelten keine Anforderungen für die Zugriffssteuerung (Identity & Access Management, IAM) auf Kontoebene.
     - **Als Senke**: Gewähren Sie unter **Data Explorer** > **Zugriff** mindestens die Berechtigung **Ausführen** für ALLE Upstreamordner (einschließlich des Stammordners) sowie die Berechtigung **Schreiben** für den Senkenordner. Sie können für rekursives Kopieren „Hinzufügen zu“ auf **Diesen Ordner und alle untergeordneten Ordner** und „Hinzufügen als“ auf **Ein Zugriffsberechtigungseintrag und ein Standardberechtigungseintrag** festlegen.
     
-2. Weisen Sie Ihrer Data Factory eine oder mehrere benutzerseitig zugewiesene verwaltete Identitäten zu, und [erstellen Sie Anmeldeinformationen](data-factory-service-identity.md#credentials) für jede benutzerseitig zugewiesene verwaltete Identität. 
+2. Weisen Sie Ihrer Data Factory eine oder mehrere benutzerseitig zugewiesene verwaltete Identitäten zu, und [erstellen Sie Anmeldeinformationen](credentials.md) für jede benutzerseitig zugewiesene verwaltete Identität. 
 
 Die folgende Eigenschaft wird unterstützt:
 

@@ -2,19 +2,19 @@
 title: Indizieren von Daten aus Azure Blob Storage
 titleSuffix: Azure Cognitive Search
 description: Richten Sie einen Azure-Blobindexer ein, um die Indizierung von Blobinhalten für Volltextsuchvorgänge und Knowledge Mining in Azure Cognitive Search zu automatisieren.
+author: nitinme
+ms.author: nitinme
 manager: nitinme
-author: MarkHeff
-ms.author: maheff
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/14/2021
 ms.custom: contperf-fy21q3
-ms.openlocfilehash: 0014c28b57480e8da301c57823cdba79cea67e96
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 13753918ba850dcb9e62c0d54c1f23259eb92ba4
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129274896"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131010705"
 ---
 # <a name="index-data-from-azure-blob-storage"></a>Indizieren von Daten aus Azure Blob Storage
 

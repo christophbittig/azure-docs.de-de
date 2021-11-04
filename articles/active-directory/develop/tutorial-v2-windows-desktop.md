@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 182fa929b5edf1486d0e8d2372db71ea1ee9747f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 40bfd1fe5614f194aae4feb40e48739a77f5c5ec
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128637872"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131050297"
 ---
 # <a name="tutorial-call-the-microsoft-graph-api-from-a-windows-desktop-app"></a>Tutorial: Aufrufen der Microsoft Graph-API aus einer Windows Desktop-App
 
@@ -31,7 +31,7 @@ Dieses Tutorial umfasst folgende Punkte:
 > * Erstellen eines *Windows Presentation Foundation (WPF)* -Projekts in Visual Studio
 > * Installieren der Microsoft Authentication Library (MSAL) für .NET
 > * Registrieren der Anwendung im Azure-Portal
-> * Hinzufügen von Code zum Unterstützen der Benutzeranmeldung und -abmeldung
+> * Hinzufügen von Code zur Unterstützung der Benutzeranmeldung und -abmeldung
 > * Hinzufügen von Code zum Aufrufen der Microsoft Graph-API
 > * Testen der App
 
@@ -57,7 +57,7 @@ MSAL nimmt Ihrer Anwendung die Verwaltung der Zwischenspeicherung und Aktualisie
 
 In dieser Anleitung werden die folgenden NuGet-Pakete verwendet:
 
-|Bibliothek|Beschreibung|
+|Bibliothek|BESCHREIBUNG|
 |---|---|
 |[Microsoft.Identity.Client](https://www.nuget.org/packages/Microsoft.Identity.Client)|Microsoft Authentication Library (MSAL.NET)|
 
@@ -105,7 +105,7 @@ Gehen Sie zur schnellen Registrierung Ihrer Anwendung wie folgt vor:
 
 Wenn Sie Ihre Anwendung registrieren und die Anwendungsregistrierungsinformationen Ihrer Projektmappe hinzufügen möchten, führen Sie folgende Schritte aus:
 1. Melden Sie sich beim <a href="https://portal.azure.com/" target="_blank">Azure-Portal</a> an.
-1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, in dem Sie die Anwendung registrieren möchten.
+1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, für den Sie die Anwendung registrieren möchten.
 1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
 1. Wählen Sie unter **Verwalten** Folgendes aus: **App-Registrierungen** > **Neue Registrierung**.
 1. Geben Sie unter **Name** einen Namen für Ihre Anwendung ein (beispielsweise `Win-App-calling-MsGraph`). Benutzern Ihrer App wird wahrscheinlich dieser Namen angezeigt. Sie können ihn später ändern.
@@ -130,7 +130,7 @@ In diesem Schritt erstellen Sie eine Klasse zur Handhabung der Interaktion mit M
     ```csharp
     using Microsoft.Identity.Client;
     ```
-   <!-- Workaround for Docs conversion bug -->
+    <!-- Workaround for Docs conversion bug -->
 
 2. Aktualisieren Sie die App-Klasse wie folgt:
 

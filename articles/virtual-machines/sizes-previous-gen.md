@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 11/01/2020
 ms.author: mimckitt
-ms.openlocfilehash: 762ab1e62adc81ba4e4098167c65e19e405890d7
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ff590e8c3835c78e59921b6ba96c83786c0bf289
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128624783"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131074364"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>Vorherige Generationen von Größen virtueller Computer
 
@@ -54,6 +54,8 @@ Storage Premium  Unterstützt
 
 Storage Premium-Zwischenspeicherung:  Unterstützt
 
+[Kurzlebige Betriebssystemdatenträger](ephemeral-os-disks.md): Unterstützt
+
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB) | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s | Maximale Anzahl NICs/erwartete Netzwerkbandbreite (MBit/s) |
 |---|---|---|---|---|---|---|---|
 | Standard_F1s  | 1  | 2  | 4  | 4  | 4000/32 (12)    | 3200/48   | 2/750   |
@@ -74,6 +76,8 @@ MB/s = 10^6 Bytes pro Sekunde und GB = 1.024^3 Bytes.
 Die virtuellen Computer der NVv2-Serie verfügen über GPUs vom Typ [NVIDIA Tesla M60](https://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) sowie NVIDIA GRID-Technologie mit Intel Broadwell CPUs. Diese virtuellen Computer wurden für GPU-beschleunigte Grafikanwendungen und virtuelle Desktops entwickelt, um Kunden die Datenvisualisierung, Ergebnissimulation, CAD oder das Rendering und Streaming von Inhalten zu erleichtern. Außerdem können diese virtuellen Computer Workloads mit einfacher Genauigkeit wie Codierung und Rendering ausführen. Virtuelle Computer der NVv2-Serie unterstützen Storage Premium und verfügen im Vergleich zur NV-Vorgängerserie über doppelt so viel Systemspeicher (RAM).  
 
 Alle GPUs in NVv2-Instanzen beinhalten eine GRID-Lizenz. Diese Lizenz bietet Ihnen die erforderliche Flexibilität für die Verwendung einer NV-Instanz als virtuelle Arbeitsstation für einen einzelnen Benutzer. Außerdem besteht für ein Szenario mit einer virtuellen Anwendung die Möglichkeit, dass 25 Benutzer gleichzeitig eine Verbindung mit dem virtuellen Computer herstellen.
+
+[Kurzlebige Betriebssystemdatenträger](ephemeral-os-disks.md): Unterstützt
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | GPU | GPU-Arbeitsspeicher: GiB | Max. Anzahl Datenträger | Maximale Anzahl NICs | Virtuelle Arbeitsstationen | Virtuelle Anwendungen |
 |---|---|---|---|---|---|---|---|---|---|
@@ -220,6 +224,8 @@ Storage Premium Unterstützt
 
 Storage Premium-Zwischenspeicherung: Unterstützt
 
+[Kurzlebige Betriebssystemdatenträger](ephemeral-os-disks.md): Unterstützt
+
 Die DC-Serie verwendet die neueste Generation von 3,7 GHz Intel XEON-E-2176g-Prozessoren mit SGX-Technologie, und mit der Intel Turbo Boost-Technologie können bis zu 4,7 GHz erreicht werden. 
 
 | Size          | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBps (Cachegröße in GiB) | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBps | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBps) |
@@ -289,6 +295,8 @@ Storage Premium  Unterstützt
 
 Storage Premium-Zwischenspeicherung:  Nicht unterstützt
 
+[Kurzlebige Betriebssystemdatenträger](ephemeral-os-disks.md): Unterstützt
+
 | Size | vCPU | Arbeitsspeicher (GiB) | Temporärer Speicher (GiB) | Max. Anzahl Datenträger | Maximaler Durchsatz temporärer Speicher (IOPS/MB/s) | Maximaler Datenträgerdurchsatz ohne Cache: (IOPS/MB/s) | Maximale Anzahl NICs/erwartete Netzwerkbandbreite (MBit/s) |
 |---|---|---|---|---|---|---|---|
 | Standard_L4s   | 4  | 32  | 678  | 16 | 20000/200 | 5000/125  | 2/4000  |
@@ -309,6 +317,8 @@ ACU: 180–240 <sup>1</sup>
 Storage Premium  Unterstützt
 
 Storage Premium-Zwischenspeicherung:  Unterstützt
+
+[Kurzlebige Betriebssystemdatenträger](ephemeral-os-disks.md): Unterstützt
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBps (Cachegröße in GiB) | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s | Maximale Anzahl NICs/erwartete Netzwerkbandbreite (MBit/s) |
 |---|---|---|---|---|---|---|---|
@@ -409,7 +419,8 @@ Die NC24rs v2-Konfiguration bietet eine Netzwerkschnittstelle mit geringer Warte
 [Storage Premium-Zwischenspeicherung:](premium-storage-performance.md) Unterstützt<br>
 [Livemigration:](maintenance-and-updates.md) Nicht unterstützt<br>
 [Updates mit Speicherbeibehaltung:](maintenance-and-updates.md) Nicht unterstützt<br>
-[Unterstützung von VM-Generationen:](generation-2.md) Generation 1 und 2<br>
+[Unterstützung von VM-Generationen:](generation-2.md) Generation 1 und 2<br>
+[Kurzlebige Betriebssystemdatenträger](ephemeral-os-disks.md): Unterstützt<br>
 
 > Für diese VM-Serie ist das vCPU-Kontingent (Kernkontingent) in Ihrem Abonnement anfänglich in jeder Region auf 0 festgelegt. Sie können für diese Serie in einer [verfügbaren Region](https://azure.microsoft.com/regions/services/) eine [Anhebung des vCPU-Kontingents anfordern](../azure-portal/supportability/regional-quota-requests.md).
 >
@@ -436,6 +447,7 @@ Die virtuellen Computer der ND-Serie sind eine neue Ergänzung der GPU-Familie u
 [Livemigration:](maintenance-and-updates.md) Nicht unterstützt<br>
 [Updates mit Speicherbeibehaltung:](maintenance-and-updates.md) Nicht unterstützt<br>
 [Unterstützung von VM-Generationen:](generation-2.md) Generation 1 und 2<br>
+[Kurzlebige Betriebssystemdatenträger](ephemeral-os-disks.md): Unterstützt<br>
 
 > Für diese VM-Serie ist das regionsspezifische vCPU-Kontingent (Kernkontingent) in Ihrem Abonnement anfänglich auf 0 festgelegt. Sie können für diese Serie in einer [verfügbaren Region](https://azure.microsoft.com/regions/services/) eine [Anhebung des vCPU-Kontingents anfordern](../azure-portal/supportability/regional-quota-requests.md).
 >

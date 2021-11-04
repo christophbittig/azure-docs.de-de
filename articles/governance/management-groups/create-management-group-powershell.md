@@ -3,15 +3,13 @@ title: 'Schnellstart: Erstellen einer Verwaltungsgruppe mit Azure PowerShell'
 description: In dieser Schnellstartanleitung erstellen Sie mithilfe von Azure PowerShell eine Verwaltungsgruppe, um Ihre Ressourcen in einer Ressourcenhierarchie zu organisieren.
 ms.date: 08/17/2021
 ms.topic: quickstart
-ms.custom:
-- devx-track-azurepowershell
-- mode-api
-ms.openlocfilehash: d76bc9380056df72a2615a420211aa59bcdc0926
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.custom: devx-track-azurepowershell, mode-api
+ms.openlocfilehash: 0c84d1e2fc3438daad041a3627b546893a7073b2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122323764"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131081142"
 ---
 # <a name="quickstart-create-a-management-group-with-azure-powershell"></a>Schnellstart: Erstellen einer Verwaltungsgruppe mit Azure PowerShell
 

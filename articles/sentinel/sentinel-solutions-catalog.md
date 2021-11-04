@@ -1,86 +1,441 @@
 ---
-title: Azure Sentinel-Lösungskatalog | Microsoft-Dokumentation
-description: In diesem Artikel werden die derzeit verfügbaren Sentinel-Lösungspakete aufgeführt und ausführlich beschrieben.
+title: Azure Sentinel Content Hub Katalog | Microsoft-Dokumentation
+description: In diesem Artikel werden die derzeit verfügbaren Azure Sentinel Content Hub-Pakete aufgeführt und ausführlich beschrieben.
 services: sentinel
 cloud: na
 documentationcenter: na
-author: yelevin
+author: batamig
 manager: rkarlin
-ms.assetid: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 07/13/2021
-ms.author: yelevin
-ms.openlocfilehash: c983ff540637478d9283b76d060c7f04c319adef
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.topic: reference
+ms.date: 10/12/2021
+ms.author: bagol
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: b7f0cc91f8705ac865cac4820402051dce1e9eff
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114442481"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131064105"
 ---
-# <a name="azure-sentinel-solutions-catalog"></a>Azure Sentinel-Lösungskatalog
+# <a name="azure-sentinel-content-hub-catalog"></a>Azure Sentinel Content Hub-Katalog
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 > [!IMPORTANT]
 >
-> Die Azure Sentinel-Lösungen befindet sich derzeit genau wie alle einzelnen Lösungspakete in der **VORSCHAUPHASE**. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden bzw. anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
+> Die Azure Sentinel Content Hub-Erfahrung befindet sich derzeit genau wie alle einzelnen Lösungspakete in der **VORSCHAUPHASE**. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden bzw. anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
 
 [Azure Sentinel-Lösungen](sentinel-solutions.md) bieten eine konsolidierte Möglichkeit, Azure Sentinel-Inhalte (z. B. Datenconnectors, Arbeitsmappen, Analysen und Automatisierungen) in Ihrem Arbeitsbereich mit einem einzigen Bereitstellungsschritt abzurufen.
 
-##  <a name="currently-available-solutions"></a>Derzeit verfügbare Lösungen
+In diesem Artikel werden die vordefinierten (integrierten), bedarfsorientierten Azure Sentinel Datenconnectors und Lösungen aufgeführt, die für die Bereitstellung in Ihrem Arbeitsbereich verfügbar sind. Durch die Bereitstellung einer Lösung werden alle enthaltenen Sicherheitsinhalte, z. B. Datenconnectoren, Playbooks, Arbeitsmappen oder Regeln, im relevanten Bereich von Azure Sentinel erstellt. 
 
-Die folgenden Azure Sentinel-Lösungen sind aktuell verfügbar. Die Installation sämtlicher Lösungen ist kostenlos. Es fallen jedoch die üblichen Gebühren an, zum Beispiel für die Datenerfassung und die Logic Apps-Nutzung.
+Weitere Informationen finden Sie unter [Zentrales Entdecken und Bereitstellen von vorkonfigurierten Azure Sentinel-Inhalten und -Lösungen](sentinel-solutions-deploy.md).
+
+## <a name="domain-solutions"></a>Domänenlösungen
+
+|Name    |Includes  |Kategorien |Unterstützt von  |
+|---------|---------|---------|---------|
+|**Microsoft Insider-Risikomanagement** |[Datenconnector](data-connectors-reference.md#microsoft-365-insider-risk-management-irm-preview), Arbeitsmappe, Analyseregeln, Hunting-Abfragen |Sicherheit - Insider-Bedrohung | Microsoft|
+|**Microsoft MITRE ATT&CK-Lösung für die Cloud**| Arbeitsmappen, Analyseregeln, Hunting-Abfragen|Sicherheit - Bedrohungsschutz, Sicherheit - Andere |Microsoft |
+|**Zero Trust** (TIC3.0) |Arbeitsmappen |Identität, Sicherheit - Andere |Microsoft |
+| | | | |
 
 
-| Lösung | BESCHREIBUNG |
-| - | - |
-| **Azure Firewall-Lösung für Sentinel** | Azure Firewall ist ein verwalteter, cloudbasierter Netzwerksicherheitsdienst, der Ihre Azure Virtual Network-Ressourcen schützt. Es ist eine vollständig zustandsbehaftete Firewall als ein Dienst mit integrierter Hochverfügbarkeit und uneingeschränkter Cloudskalierbarkeit.  Diese Azure Firewall-Lösung in Sentinel ist eine integrierte, anpassbare Bedrohungserkennung, die zusätzlich zu Azure Sentinel verfügbar ist. Die Lösung enthält eine Arbeitsmappe, Erkennungen, Huntingabfragen und Playbooks. |
-| **Azure Sentinel für Dynamics 365** | Die Continuous Threat Monitoring-Lösung für Dynamics 365 ermöglicht Ihnen das Erfassen von Dynamics 365-Protokollen, Einblicke in Dynamics 365-Aktivitäten und die Analyse dieser Aktivitäten, um Bedrohungen und schädliche Vorgänge zu ermitteln. Die Lösung enthält einen Datenconnector, Arbeitsmappen, Analyseregeln und Huntingabfragen. |
-| **Azure Sentinel für SQL-PaaS**| Diese Lösung stellt eine auf Azure Sentinel aufbauende integrierte anpassbare Bedrohungserkennung für Azure SQL-PaaS-Dienste bereit, die auf dem SQL-Überwachungsprotokoll basiert und nahtlose Integration in Warnungen von Azure Defender für SQL bietet.|
-| **Azure Sentinel für Teams** | Teams spielt sowohl bei der Kommunikation als auch bei der Datenfreigabe in der Microsoft 365-Cloud eine zentrale Rolle. Da dem Teams-Dienst so viele Cloudtechnologien zugrunde liegen, profitiert er nicht nur beim Hunting in Protokollen von menschlichen und automatisierten Analysen, sondern auch bei der Echtzeitüberwachung von Besprechungen. Azure Sentinel bietet Administratoren diese Lösungen. Die Lösung enthält Analyseregeln, Huntingabfragen und Playbooks. |
-| **Box-Lösung** | [Box](https://www.box.com/overview) ist eine sichere, benutzerfreundliche Plattform für den gesamten Lebenszyklus von Inhalten: von Dateierstellung und Dateifreigabe über Co-Editing bis hin zu Signatur, Klassifizierung und Aufbewahrung. |
-|**Azure Sentinel-Lösungen von Check Point** |Mit dem Logik-App-Connector und Playbooks von Check Point können Kunden ganz einfach direkt in Azure Sentinel nach vorgefertigten Check Point-Connectors und -Playbooks suchen und diese bereitstellen. Benutzer können SOAR-Playbooks von Azure Sentinel konfigurieren, um Bedrohungen mithilfe von CloudGuard-Sicherheitsgateways und lokalen Check Point-Gateways automatisch zu beseitigen, und so die Sicherheitsfunktionen von Microsoft Azure und Check Point CloudGuard verbessern. <br><br>Der Logik-App-Connector und Playbooks von Check Point ermöglichen auch eine automatisierte Wartung. Kunden können SOAR-Playbooks konfigurieren, um Check Point CloudGuard-Sicherheitsgateways zum Aktualisieren von Sicherheitsrichtlinien, Blockieren von schädlichem Datenverkehr usw. automatisch auszulösen. Mithilfe der Check Point-Verwaltungs-API kann der Connector diese Sicherheitsaufgaben automatisieren. Dies führt nicht nur zu Zeiteinsparungen für IT-Mitarbeiter, Netzwerkadministratoren und das Sicherheitspersonal, sondern auch zu einer erheblichen Reduzierung des Zeitfensters, in dem Angreifer Sicherheitsprobleme ausnutzen können, da diese Probleme nicht manuell behoben werden müssen. Dies kann die Angriffsfläche der Organisation minimieren und gleichzeitig den Zeitaufwand für Netzwerk- und Sicherheitsadministratoren, Sicherheitsanalysten sowie DevOps-/DevSecOps-Teams verringern. Mit den vordefinierten Playbooks entfällt auch die Notwendigkeit, einzelne API-Aufrufe zu schreiben. Zudem können Check Point-Playbooks problemlos in alle nativen Azure-Dienste und Hunderte von vorhandenen Logik-App-Connectors integriert werden. |
-|**Cisco ACI-Lösung** | [Cisco Application Centric Infrastructure (Cisco ACI)](https://www.cisco.com/c/en/us/solutions/collateral/data-center-virtualization/application-centric-infrastructure/solution-overview-c22-741487.html) basiert auf der branchenführenden Cisco Nexus 9000-Plattform und ist Teil des Intent-based Networking-Frameworks, um Agilität und Resilienz im Rechenzentrum zu erzielen. Cisco ACI ermöglicht eine Automatisierung, die die Infrastrukturbereitstellung und Governance beschleunigt, die Verwaltung vereinfacht, sodass Workloads problemlos in einem Multi-Fabric- und Multi-Cloud-Framework verschoben werden können, und überall proaktiven Schutz vor Risiken bietet. Der Lebenszyklus der Anwendungsbereitstellung wird grundlegend vereinfacht, optimiert und beschleunigt.|
-| **Cisco ISE-Lösung** | Die [Identity Services Engine (ISE)](https://www.cisco.com/c/en/us/products/collateral/security/identity-services-engine/data_sheet_c78-656174.html) von Cisco ist die Allroundlösung für eine optimierte Verwaltung von Sicherheitsrichtlinien und die Senkung der Betriebskosten. Mit der ISE können Sie sehen, wie Benutzer und Geräte den Zugriff über kabelgebundene, drahtlose und VPN-Verbindungen mit dem Unternehmensnetzwerk steuern. |
-|**Cisco SEG-Lösung** | [Cisco Secure Email Gateway (SEG)](https://www.cisco.com/c/en/us/products/security/email-security/index.html) bietet branchenführenden Schutz vor Cyberbedrohungen für Ihre E-Mails. Der umfassende Schutz von Secure Email für lokale und cloudbasierte E-Mail-Dienste stoppt die häufigsten und schädlichsten Cyberbedrohungen.|
-| **Cisco Umbrella-Lösung** | [Cisco Umbrella](https://umbrella.cisco.com/) bietet flexible, cloudgestützte Sicherheitsmaßnahmen – wann und wie Sie sie benötigen. Mehrere Sicherheitsfunktionen werden in einer Lösung kombiniert, sodass Sie den Schutz auf Geräte, Remotebenutzer und verteilte Standorte ausdehnen können.  |
-|**Cisco Web Security Appliance (WSA)** |[Cisco Secure Web Appliance](https://www.cisco.com/c/en/us/products/security/web-security-appliance/index.html) ist eine Webproxylösung, die Organisationen und Benutzer mithilfe von TLS 1.3 und leistungsstarken Funktionen schützt, indem webbasierte Bedrohungen automatisch erkannt und blockiert werden. |
-| **Cloudflare-Lösung** | [Cloudflare](https://www.cloudflare.com/) schützt externe Ressourcen wie Websites, APIs und Anwendung und sorgt für deren Zuverlässigkeit. Auch interne Ressourcen wie durch Firewalls geschützte Anwendungen, Teams und Geräte werden geschützt. Zudem können Sie diese Plattform für die Entwicklung global skalierbarer Anwendungen nutzen. |
-| **Continuous Threat Monitoring für SAP** | Mit [Continuous Threat Monitoring für SAP](sap-deploy-solution.md) können Sie Ihre SAP-Systeme auf komplexe Bedrohungen innerhalb der Geschäftslogik- und Anwendungsschicht zu überwachen. Der SAP-Datenconnector streamt eine Vielzahl von 14 Anwendungsprotokollen aus der gesamten SAP-Systemlandschaft und sammelt Protokolle sowohl von Advanced Business Application Programming (ABAP) über NetWeaver RFC-Aufrufe als auch Dateispeicherdaten über die OSSAP-Kontrollschnittstelle. |
-| **Azure Sentinel-Lösung Contrast Protect** | Mit [Contrast Protect](https://www.contrastsecurity.com/runtime-application-self-protection-rasp) können Teams ihre Anwendungen überall schützen, wo sie ausgeführt werden, indem sie eine automatisierte und genaue Runtimeschutzfunktion einbetten, um Angriffe kontinuierlich zu überwachen und abzuwehren. Durch den Fokus auf umsetzbare und zeitnahe Threat Intelligence auf der Anwendungsschicht wird es Sicherheits- und Betriebsteams erleichtert, den Schweregrad von Bedrohungen und Angriffen zu bestimmen und zu verwalten. Contrast Protect lässt sich nahtlos in Azure Sentinel integrieren, damit Sie einen besseren Einblick in Sicherheitsrisiken auf der Anwendungsschicht erhalten. |
-| **Corelight für Azure Sentinel** | [Corelight](https://corelight.com/) für Azure Sentinel ermöglicht es Incident Respondern und Threat Huntern, die Azure Sentinel verwenden, schneller und effektiver zu arbeiten. Corelight ist eine Netzwerkerkennungs- und Reaktionslösung (Network Detection and Response, NDR), die auf den branchenführenden Open-Source-Technologien Zeek und Suricata basiert und Network Defendern einen umfassenden Einblick in ihre Umgebungen ermöglicht.<br><br>Mit dem Datenconnector können Ereignisse aus Zeek und Suricata über Corelight Sensors in Azure Sentinel erfasst werden. Corelight für Azure Sentinel enthält auch Arbeitsmappen, Dashboards, Suchabfragen und Analyseregeln, damit Organisationen mit der Kombination aus Corelight und Azure Sentinel im Fall eines Incidents effiziente Untersuchungen und Incident-Response-Maßnahmen durchführen können. |
-| **CrowdStrike Falcon Endpoint Protection-Lösung** | [CrowdStrike Endpoint Protection](https://www.crowdstrike.com/resources/data-sheets/falcon-endpoint-protection-pro/) ist der ideale Ersatz für Antivirensoftware, der die effektivsten Präventionstechnologien und die vollständige Angriffstransparenz mit integrierter Threat Intelligence und Threat Response kombiniert. |
-| **HYAS Insight-Lösungskatalog für Azure Sentinel** | [HYAS Insight](https://www.hyas.com/hyas-insight) ist eine Lösung zur Untersuchung und Zuordnung von Bedrohungen, die exklusive Datenquellen und ungewöhnliche Mechanismen verwendet, um die Sichtbarkeit und Produktivität für Analysten, Forschende und Ermittelnde zu verbessern und gleichzeitig die Genauigkeit der Ergebnisse zu erhöhen. HYAS Insight bringt Angriffsinstanzen und -kampagnen mit Milliarden von Anzeichen für Kompromittierung in Verbindung, um Erkenntnisse und Transparenz zu liefern. Dank einer benutzerfreundlichen Benutzeroberfläche, Transformationen, API-Zugriff und umfassenden Bedrohungsdaten schafft HYAS Insight eine leistungsstarke Lösung für Forschung und Zuordnung. HYAS Insight wird durch das HYAS Intelligence-Team ergänzt, das Organisationen beim Ermitteln und Verstehen der Bedrohungen hilft, denen sie täglich ausgesetzt sind. |
-|**Google Cloud Platform DNS-Lösung (Vorschauversion)** | [Google Cloud Platform Domain Name System (DNS)](https://cloud.google.com/dns) ist ein leistungsstarker, resilienter, globaler DNS-Dienst, der Ihre Domänennamen kostengünstig im globalen DNS veröffentlicht.|
-| **Google Cloud Platform Cloud Monitoring-Lösung** |[Google Cloud Platform Cloud Monitoring](https://cloud.google.com/monitoring) bietet vorgefertigte automatische Dashboards für die Sammlung von Metriken für Google Cloud-Dienste. Die Lösung unterstützt außerdem die Überwachung von Hybrid- und Multi-Cloud-Umgebungen und bietet Ihnen so Einblicke in die Leistung, Verfügbarkeit und Integrität Ihrer Anwendungen und Infrastruktur. |
-| **Google Cloud Platform IAM-Lösung** | Mit [Google Cloud Platform Identity and Access Management (IAM)](https://cloud.google.com/iam) können Administratoren mithilfe von Autorisierungen festlegen, wer Zugriff auf bestimmte Ressourcen hat. IAM bietet vollständige Kontrolle und Transparenz und ermöglicht so die zentrale Verwaltung von Google Cloud-Ressourcen.|
-| **Infoblox Cloud Data Connector-Lösung** | [BloxOne DDI](https://www.infoblox.com/products/bloxone-ddi/) ist branchenweit die erste DDI-Lösung (DNS/DHCP/IPAM), mit der Sie die DDI über die Cloud zentral verwalten und automatisieren können – und das für jeden Standort und mit unvergleichlicher Kosteneffizienz. Die als SaaS-Dienst verfügbare und auf cloudnativen Prinzipien basierende Lösung BloxOne DDI vereinfacht die Netzwerkverwaltung erheblich, da die Komplexität, Engpässe und Skalierbarkeitseinschränkungen herkömmlicher DDI-Implementierungen nicht bestehen.<br><br>BloxOne Threat Defense maximiert den Markenschutz, indem die Lösung mit Ihren vorhandenen Schutzmechanismen zusammenarbeitet, um Ihr Netzwerk zu schützen und die Sicherheit automatisch auf essenzielle digitale Komponenten wie SD-WAN, IoT und die Cloud zu erweitern. Sie unterstützt SOAR-Lösungen (Security Orchestration, Automation, Response), verkürzt die Zeit für die Untersuchung und Behebung von Cyberbedrohungen, optimiert die Leistung des gesamten Sicherheitsökosystems und reduziert die Gesamtkosten des Unternehmens für die Bedrohungsabwehr. |
-|**Juniper IDP** | [Juniper Intrusion Detection and Prevention](https://www.juniper.net/documentation/us/en/software/junos/idp-policy/topics/topic-map/security-idp-overview.html) überwacht die Ereignisse in Ihrem Netzwerk und analysiert sie auf Anzeichen möglicher Vorfälle, Verstöße oder unmittelbarer Bedrohungen für Ihre Sicherheitsrichtlinien. Diese Sicherheitsmaßnahmen sind als Intrusion-Detection-Systeme (IDS) und Eindringschutzsysteme (Intrusion Prevention Systems, IPS) verfügbar und werden in Ihr Netzwerk integriert, um potenzielle Vorfälle zu erkennen und zu beseitigen.|
-| **McAfee ePolicy Orchestrator-Lösung** | [McAfee ePO](https://www.mcafee.com/enterprise/en-in/products/epolicy-orchestrator.html) ist eine zentralisierte Lösung für die Richtlinienverwaltung und -erzwingung für Ihre Endpunkte und Unternehmenssicherheitsprodukte. McAfee ePO überwacht und verwaltet Ihr Netzwerk, erkennt Bedrohungen und schützt Endpunkte vor diesen. |
-|**McAfee Network Security Platform-Lösung** |[McAfee Network Security Platform](https://www.mcafee.com/enterprise/en-us/products/virtual-network-security-platform.html) erweitert den Netzwerkschutz über virtualisierte Umgebungen hinweg, um intelligenten Bedrohungsschutz für virtuelle Netzwerke bereitzustellen. |
-| **Oracle Database-Auditlösung** | [Oracle Database](https://www.oracle.com/database/technologies/security/db-auditing.html) bietet stabile Auditunterstützung für die Enterprise Edition und Standard Edition der Datenbank. Oracle Database Unified Auditing ermöglicht ein selektives und effektives Auditing einer Oracle-Datenbank mithilfe von Richtlinien und Bedingungen. |
-| **Prisma-Lösung von Palo Alto** | [Prisma Cloud](https://www.paloaltonetworks.com/prisma/cloud) ist eine branchenführende, umfangreiche und cloudnative Sicherheitsplattform, die vollständige Lebenszyklussicherheit und Full-Stack-Schutz für Multi- und Hybrid-Cloud-Umgebungen bietet. |
-| **PingFederate-Lösung** | [PingFederate®](https://www.pingidentity.com/en/resources/client-library/data-sheets/pingfederate-data-sheet.html) ist der führende Unternehmensverbundserver für Benutzerauthentifizierung und standardbasiertes einmaliges Anmelden (Single Sign-On, SSO) für Mitarbeiter-, Partner- und Kundenidentitäten. Mit PingFederate können Organisationen von teuren, unflexiblen IAM-Legacylösungen abkehren und stattdessen eine moderne Identitäts- und Zugriffsverwaltungslösung nutzen, die für komplexe Unternehmensanforderungen konzipiert ist. |
-| **Proofpoint POD-Lösung** | [Proofpoint on Demand Email Security](https://www.proofpoint.com/us/products/email-security-and-protection/email-protection) klassifiziert verschiedene Arten von E-Mails genau, während Bedrohungen erkannt und abgewehrt werden, die keine schädliche Payload beinhalten. Sie können verdächtige E-Mails automatisch markieren, damit Endbenutzer auf diese aufmerksam werden, und E-Mails in Sekundenschnelle nachverfolgen. |
-| **Proofpoint TAP-Lösung** | Mit [Proofpoint Targeted Attack Protection (TAP)](https://www.proofpoint.com/us/products/advanced-threat-protection/targeted-attack-protection) können Sie komplexe Bedrohungen im E-Mail-Verkehr erkennen, entschärfen und abwehren. Dazu zählen auch Angriffe, die über schädliche Anlagen und URLs erfolgen, um Schadsoftware zu installieren oder Benutzer dazu zu bewegen, Kennwörter oder vertrauliche Daten preiszugeben. TAP erkennt auch Bedrohungen und Risiken in Cloud-Apps und bringt E-Mail-Angriffe im Zusammenhang mit dem Diebstahl von Anmeldeinformationen oder anderen Angriffen miteinander in Verbindung. |
-| **Qualys VM-Lösung** | [Qualys Vulnerability Management (VM)](https://www.qualys.com/apps/vulnerability-management/) bietet globale Einblicke in die Schwachstellen Ihrer IT-Ressourcen sowie entsprechende Schutzmaßnahmen. Wenn Unternehmen Cloud Computing, Mobilitätstechnologien und andere disruptive Technologien für die digitale Transformation einführen, bietet Qualys VM ein Sicherheitsrisikomanagement der nächsten Generation für diese IT-Hybridumgebungen, deren Grenzen üblicherweise unscharf sind. Dies wird durch die agentbasierte Erkennung mit schlanken Qualys-Cloud-Agents erreicht, die die Netzwerkabdeckung auf Ressourcen ausdehnen, die nicht gescannt werden können. |
-| **Rapid7 InsightVM CloudAPI-Lösung** |Die [Rapid7 Insight-Plattform](https://www.rapid7.com/products/insightvm/) kombiniert die Rapid7-Bibliothek für Sicherheitsrisikoanalysen, Wissen über Exploits, Informationen zum globalen Angreiferverhalten, internetweite Überprüfungsdaten, Gefährdungsanalysen und Echtzeitberichte, um eine vollständig verfügbare, skalierbare und effiziente Methode bereitzustellen, mit der Sie Ihre Sicherheitsrisikodaten sammeln und in Antworten verwandeln können. InsightVM nutzt diese Plattform zur Liveanalyse von Sicherheitsrisiken und Endpunkten. |
-| **RiskIQ-Playbooks für Security Intelligence** | [RiskIQ](https://www.riskiq.com/) hat mehrere Azure Sentinel-Playbooks erstellt, die Funktionen vorab packen, um den Kontext für Incidents innerhalb der Azure Sentinel-Plattform hinzuzufügen oder anzureichern. Diese Playbooks können einzeln ausgeführt oder so konfiguriert werden, dass sie automatisch im Azure Sentinel-Portal ausgeführt werden. Wenn ein Incident einen bekannten Indikator enthält, z. B. eine Domäne oder IP-Adresse, reichert RiskIQ diesen Wert mit Informationen zu Verbindungspunkten mit dem Internet an und ermittelt, ob diese eine Bedrohung darstellen. Dem Incident werden Kommentare hinzugefügt, die auf ausführlichere Informationen auf der RiskIQ-Plattform verweisen. |
-| **Senserva-Angebot für Azure Sentinel** | [Senserva](https://www.senserva.com/product/) ist ein CSPM (Cloud Security Posture Management) für Azure Sentinel, das die Verwaltung von Azure Active Directory-Sicherheitsrisiken vereinfacht, bevor diese zum Problem werden. Dies wird durch kontinuierliche, prioritätsbasierte Risikobewertungen erzielt. Die Senserva-Informationen beinhalten eine detaillierte Sicherheitsrangfolge für alle von Senserva verwalteten Azure-Objekte, sodass Kunden eine optimale Ermittlung und Behebung durchführen können, indem sie zuerst die besonders kritischen Probleme beheben, die durch die Elemente mit den größten Auswirkungen entstehen.  Alle angereicherten Informationen von Senserva werden über den Log Analytics-Arbeitsbereich an Azure Sentinel zur Verarbeitung durch Abfragen, Arbeitsmappen und Playbooks gesendet.<br><br>Senserva bietet detaillierte Analysen für Sicherheitsbenutzerkonten, Azure Active Directory-Konfigurationen (einschließlich des bedingten Zugriffs), Anwendungen und Ereignisse innerhalb der Microsoft-Cloudumgebung. Die patentierte Technologie von Senserva erspart den für Microsoft 365 und Microsoft Azure zuständigen Administratoren und Sicherheitsteams unzählige Stunden Arbeit. Senserva wurde mit einer Kombination aus Branchenstandards (NIST 800-53, MITRE ATT&CK), Branchenempfehlungen, Anbieterempfehlungen und dem Expertenwissen von Senserva-Mitarbeitern erstellt, deren Patentierung noch aussteht. |
-| **Slack Audit-Lösung** | Mit dem [Slack Audit-Datenconnector](https://slack.com/) können Sie [Slack Audit Records-Ereignisse](https://api.slack.com/admins/audit-logs) über die REST-API in Azure Sentinel erfassen. Weitere Informationen hierzu finden Sie in der [Dokumentation zur API](https://api.slack.com/admins/audit-logs#the_audit_event). Die Einblicke in diese Ereignisse sind beispielsweise nützlich, um potenzielle Sicherheitsrisiken zu untersuchen, die Nutzung von Zusammenarbeitsfeatures Ihres Teams zu analysieren und Konfigurationsprobleme zu diagnostizieren. |
-|**Sophos Endpoint Protection-Lösung** | [Sophos](https://www.sophos.com/en-us/company.aspx) ist ein weltweit führender Anbieter von Cybersicherheitslösungen der nächsten Generation, die mehr als 500.000 Organisationen und Millionen von Endbenutzern in über 150 Ländern vor den komplexesten Cyberbedrohungen der heutigen Zeit schützen. Basierend auf Threat Intelligence, künstlicher Intelligenz (KI) und maschinellem Lernen von SophosLabs und SophosAI bietet Sophos ein umfangreiches Portfolio von zukunftsweisenden Produkten und Diensten, um Benutzer, Netzwerke und Endpunkte vor Ransomware, Schadsoftware, Exploits, Phishing und vielen anderen Cyberangriffen zu schützen.|
-| **Sophos XG Firewall-Lösung** | [Sophos XG Firewall](https://www.sophos.com/products/next-gen-firewall.aspx) bietet Unternehmen vollständigen Schutz durch Transparenz, synchronisierte Sicherheit und automatisierte Incident Response. Dies umfasst die Offenlegung verborgener Risiken, das Abwehren unbekannter Bedrohungen und das Isolieren infizierter Systeme. XG Firewall vereinfacht auch die Erweiterung Ihres sicheren Netzwerks auf Mitarbeiter an allen Standorten über den VPN-Client und die Hardware. |
-| **Symantec Endpoint Protection-Lösung** | [Symantec Endpoint Protection ist](https://www.broadcom.com/products/cyber-security/endpoint) eine Suite für Sicherheitssoftware, die aus Antischadsoftware, Angriffsschutz und Firewallfeatures für Server- und Desktopcomputer besteht. Es sind auch gängige Features von Software zur Verhinderung von Datenverlust verfügbar. Die Lösung verhindert, dass nicht autorisierte Programme ausgeführt werden und wendet Firewallrichtlinien an, die Netzwerkdatenverkehr zulassen oder blockieren. Sie ermittelt und blockiert schädlichen Datenverkehr, der in einem Unternehmensnetzwerk auftritt oder von einem Webbrowser stammt. |
-| **Symantec ProxySG-Lösung** | Symantec schützt die Kommunikationskanäle von Organisationen mit einer skalierbaren, hochleistungsfähigen Webproxyappliance vor komplexen Bedrohungen, die Webaktivitäten zum Ziel haben. [Symantec Secure Web Gateway-Lösungen](https://www.broadcom.com/products/cyber-security/network/gateway/proxy-sg-and-advanced-secure-gateway) nutzen eine einzigartige Proxyserverarchitektur, mit der Organisationen den Datenverkehr effektiv überwachen, steuern und schützen können, um eine sichere Web- und Cloudnutzung zu gewährleisten. |
-| **TitaniumCloud File Enrichment-Lösung** | [ReversingLabs TitaniumCloud](https://www.reversinglabs.com/products/file-reputation-service) ist eine Threat-Intelligence-Lösung, die aktuelle File-Reputation-Dienste, Bedrohungsklassifizierung und umfangreichen Kontext für mehr als 10 Milliarden Goodware- und Schadsoftwaredateien bereitstellt. Dateien werden mithilfe der Dateizerlegungstechnologie von ReversingLabs verarbeitet. Leistungsstarke REST-API-Abfragen und Feedfunktionen liefern Informationen zu Zieldateien und Schadsoftware, um Bedrohungen zu ermitteln, zu analysieren, intelligente Schutzfeatures zu entwickeln und Threat-Hunting-Dienste auszuführen. |
-|**Trend Micro Apex One-Lösung** |[Trend Micro Apex One](https://www.trendmicro.com/en_us/business/products/user-protection/sps/endpoint.html) bietet Schutz durch erweiterte automatisierte Bedrohungserkennung und -abwehr für eine ständig wachsende Vielfalt von Bedrohungen, einschließlich dateiloser Angriffe und Ransomware. Die generationsübergreifende Mischung moderner Techniken bietet einen hochgradig optimierten Endpunktschutz, der die Leistung und Effektivität maximiert. |
-| **Ubiquiti UniFi-Lösung** | [Ubiquiti Inc.](https://www.ui.com/) ist ein US-amerikanisches Technologieunternehmen, das drahtlose Datenkommunikations- und Kabelprodukte für Unternehmen und Privatbenutzer unter mehreren Marken herstellt und verkauft. |
-| **vArmour Application Controller- und Azure Sentinel-Lösung** | [vArmour Application Controller](https://www.varmour.com/) ist eine branchenführende Lösung für die Verwaltung von Anwendungsbeziehungen, die Ihrem Unternehmen Visualisierungen und Schutz auf völlig neue Weise bietet. Diese Lösung kann nahtlos mit Azure Sentinel integriert werden. So entsteht eine verbesserte Transparenz, und Sicherheitsvorgänge können automatisiert werden. Digital-First-Unternehmen basieren auf Millionen dynamischer Verbindungen zwischen Benutzern und Anwendungen in Hybridumgebungen. Die meisten dieser Verbindungen sind nicht sichtbar. Je komplexer die Umgebung wird, desto mehr Risiken ist die Organisation ausgesetzt. Application Controller ist eine einfach bereitzustellende Lösung, die umfassende Echtzeiteinblicke und Kontrolle über Ihre Anwendungsbeziehungen und -abhängigkeiten bietet, sodass Sie die betriebliche Entscheidungsfindung verbessern, Ihren Sicherheitsstatus stärken und Geschäftsrisiken für Ihre Multi-Cloud-Bereitstellungen reduzieren können, ohne kostspielige neue Agents oder Infrastrukturen hinzufügen zu müssen. Dadurch sind Ihre Anwendungen resilienter und sicherer. |
-| **VMware Carbon Black-Lösung** | [VMware Carbon Black](https://www.carbonblack.com/products/vmware-carbon-black-cloud-endpoint/) transformiert Ihren Sicherheitsstatus mit cloudnativem Endpunktschutz, der sich an Ihre Anforderungen anpasst. VMware Carbon Black ist eine Endpunktplattform, mit der Sie die geringfügigen Schwankungen erkennen, die böswillige Angriffe verbergen, und mit angepassten Präventionsmaßnahmen reagieren können. |
-| | |
+## <a name="arista-networks"></a>Arista Networks
+
+|Name    |Includes  |Kategorien |Unterstützt von  |
+|---------|---------|---------|---------|
+|**Arista Networks** (Awake Security) |Datenconnector, Arbeitsmappen, Analyseregeln | Sicherheit - Netzwerk |[Arista - Awake Security](https://awakesecurity.com/) |
+| | | | |
+
+
+## <a name="armorblox"></a>Armorblox
+
+|Name    |Includes  |Kategorien |Unterstützt von  |
+|---------|---------|---------|---------|
+|**Armorblox - Sentinel** |Datenconnector | Sicherheit - Bedrohungsschutz |[Armorblox](https://www.armorblox.com/contact/) |
+| | | | |
+
+
+
+
+## <a name="azure"></a>Azure
+
+|Name    |Includes  |Kategorien |Unterstützt von  |
+|---------|---------|---------|---------|
+|**Azure Firewall-Lösung für Sentinel**| [Datenconnector](data-connectors-reference.md#azure-firewall), Arbeitsmappe, Analyseregeln, Playbooks, Hunting-Abfragen, benutzerdefinierter Logik-App-Connector |Sicherheit - Netzwerksicherheit, Netzwerkbetrieb | Community|
+|**Azure Sentinel für SQL-PaaS**     |  [Datenconnector](data-connectors-reference.md#azure-sql-databases), Arbeitsmappe, Analyseregeln, Playbooks, Hunting-Abfragen     | Application        |      Community   |
+|**Azure Sentinel Training Lab** |Arbeitsmappe, Analyseregeln, Playbooks, Hunting-Abfragen | Training und Tutorials |Microsoft |
+|**Azure SQL** | [Datenconnector](data-connectors-reference.md#azure-sql-databases), Arbeitsmappe, Analysen, Playbooks, Hunting-Abfragen  | Application |Microsoft  |
+| | | | |
+
+
+## <a name="box"></a>Feld
+
+|Name   |Includes  |Kategorien |Unterstützt von  |
+|------------------|---------|---------|---------|
+|**Box-Lösung**| Datenconnector, Arbeitsmappe, Analyseregeln, Hunting-Abfragen, Parser |  Speicher, Anwendung  | Microsoft|
+| | | | |
+
+
+## <a name="check-point"></a>Check Point
+
+|Name   |Includes  |Kategorien |Unterstützt von  |
+|------------------|---------|---------|---------|
+|**Check Point Azure Sentinel-Lösungen**   |[Datenconnector](data-connectors-reference.md#check-point), Playbooks, benutzerdefinierter Logik App-Connector  | Sicherheit - Automatisierung (SOAR) | [Prüfpunkt](https://www.checkpoint.com/support-services/contact-support/)|
+| | | | |
+
+
+## <a name="cisco"></a>Cisco
+
+|Name    |Includes  |Kategorien |Unterstützt von  |
+|---------|---------|---------|---------|
+|**Cisco ACI** |Datenconnector, Parser |Sicherheit - Netzwerk |Microsoft |
+|**Cisco ASA** |[Datenconnector](data-connectors-reference.md#cisco-asa), Playbooks, benutzerdefinierter Logik App-Connector |Sicherheit - Automatisierung (SOAR) |Microsoft |
+|**Cisco Duo Security** |Datenconnector, Parser | Identität|Microsoft |
+|**Cisco ISE**  |Datenconnector, Arbeitsmappen, Analyseregeln, Playbooks, Hunting-Abfragen, Parser, benutzerdefinierter Logik-App-Connector |Netzwerkbetrieb, Sicherheit - Andere | Microsoft |
+|**Cisco Meraki** |[Data connector](data-connectors-reference.md#cisco-meraki-preview), playbooks, benutzerdefinierter Logik-App-Connector |Sicherheit - Netzwerk |Microsoft |
+|**Cisco Secure Email Gateway / ESA** |Datenconnector, Parser |Sicherheit - Bedrohungsschutz |Microsoft |
+|**Cisco StealthWatch** |Datenconnector, Parser |Sicherheit - Netzwerk | Microsoft|
+|**Cisco Umbrella** |[Datenconnector](data-connectors-reference.md#cisco-umbrella-preview), Arbeitsmappen, Analyseregeln, Playbooks, Hunting-Abfragen, Parser, benutzerdefinierter Logik-App-Connector |Sicherheit - Cloudsicherheit |Microsoft |
+|**Cisco Web Security Appliance (WSA)** | Datenconnector, Parser|Sicherheit - Netzwerk |Microsoft |
+| | | | |
+
+
+## <a name="cloudflare"></a>Cloudflare
+
+
+|Name    |Includes  |Kategorien |Unterstützt von  |
+|---------|---------|---------|---------|
+|**Cloudflare-Lösung**|Datenconnector, Arbeitsmappen, Analyseregeln, Hunting-Abfragen, Parser| Security - Netzwerk, Netzwerkbetrieb |Microsoft |
+| | | | |
+
+
+## <a name="contrast-security"></a>Contrast Security
+
+
+
+|Name    |Includes  |Kategorien |Unterstützt von  |
+|---------|---------|---------|---------|
+|**Azure Sentinel-Lösung Contrast Protect**|Datenconnector, Arbeitsmappen, Analyseregeln |Sicherheit - Bedrohungsschutz |Microsoft  |
+| | | | |
+
+## <a name="crowdstrike"></a>Crowdstrike
+
+
+|Name    |Includes  |Kategorien |Unterstützt von  |
+|---------|---------|---------|---------|
+|**CrowdStrike Falcon Endpoint Protection-Lösung**| Datenconnector, Arbeitsmappen, Analyseregeln, Playbooks, Parser| Sicherheit - Bedrohungsschutz| Microsoft|
+| | | | |
+
+## <a name="digital-guardian"></a>Digital Guardian
+
+
+|Name    |Includes  |Kategorien |Unterstützt von  |
+|---------|---------|---------|---------|
+|**Digital Guardian** |Datenconnector, Parser |Sicherheit - Informationsschutz |Microsoft |
+| | | |
+
+## <a name="falconforce"></a>FalconForce
+
+|Name    |Includes  |Kategorien |Unterstützt von  |
+|---------|---------|---------|---------|
+|**FalconFriday-Inhalt - FalconFriday** |Analyseregeln |Benutzerverhalten (UEBA), Sicherheit - Insiderbedrohung | [FalconForce](https://www.falconforce.nl/en/)|
+| | | |
+
+## <a name="fireeye-nx-network-security"></a>FireEye NX (Netzwerksicherheit)
+
+|Name    |Includes  |Kategorien |Unterstützt von  |
+|---------|---------|---------|---------|
+|**FireEye NX (Netzwerksicherheit)** |Datenconnector, Parser |Sicherheit - Netzwerk| Microsoft|
+| | | |
+
+## <a name="flare-systems-firework"></a>Flare Systems Firework
+
+|Name    |Includes  |Kategorien |Unterstützt von  |
+|---------|---------|---------|---------|
+|**Flare Systems Firework** |Datenconnector |Sicherheit - Bedrohungsschutz |Microsoft|
+| | | |
+
+## <a name="forescout"></a>Forescout
+
+|Name    |Includes  |Kategorien |Unterstützt von  |
+|---------|---------|---------|---------|
+|**Forescout** |Datenconnector, Parser |Sicherheit - Netzwerk | Microsoft|
+| | | |
+
+## <a name="fortinet-fortigate"></a>Fortinet Fortigate
+
+|Name    |Includes  |Kategorien |Unterstützt von  |
+|---------|---------|---------|---------|
+|**Fortinet Fortigate** |[Datenconnector](data-connectors-reference.md#fortinet), Playbooks, benutzerdefinierter Logik App-Connector|Sicherheit - Automatisierung (SOAR) | Microsoft|
+| | | |
+
+
+## <a name="google"></a>Google
+
+|Name    |Includes  |Kategorien |Unterstützt von  |
+|---------|---------|---------|---------|
+|**Google Cloud Platform DNS-Lösung** |Datenconnector, Parser |Cloudanbieter, Netzwerkbetrieb |Microsoft |
+|**Google Cloud Platform Cloud Monitoring-Lösung**|Datenconnector, Parser |Cloud-Anbieter | Microsoft|
+|**Google Cloud Platform Identitäts- und Zugriffsverwaltungslösung**|Datenconnector, Arbeitsmappe, Analyseregeln, Playbooks, Hunting-Abfragen, Parser, benutzerdefinierter Logik-App-Connector|Cloudanbieter, Identität |Microsoft |
+| | | | |
+
+
+## <a name="hyas"></a>HYAS
+
+|Name    |Includes  |Kategorien |Unterstützt von  |
+|---------|---------|---------|---------|
+|**HYAS Insight-Lösungskatalog für Azure Sentinel**| Playbooks| Sicherheit - Threat Intelligence, Sicherheit - Automatisierung (SOAR) |Microsoft |
+| | | | |
+
+## <a name="imperva"></a>Imperva
+
+|Name    |Includes  |Kategorien |Unterstützt von  |
+|---------|---------|---------|---------|
+|**Imperva Cloud WAF** (formal Imperva Incapsula)| [Datenconnector](data-connectors-reference.md#imperva-waf-gateway-preview), Parser| Sicherheit - Netzwerk | Microsoft|
+| | | | |
+
+## <a name="infoblox"></a>InfoBlox
+
+|Name    |Includes  |Kategorien |Unterstützt von  |
+|---------|---------|---------|---------|
+|**InfoBlox Bedrohungsschutz / InfoBlox Cloud Datenconnector**| [Datenconnector](data-connectors-reference.md#infoblox-network-identity-operating-system-nios-preview), Arbeitsmappe, Analyseregeln| Sicherheit - Bedrohungsschutz | Microsoft|
+| | | | |
+
+
+## <a name="ironnet"></a>IronNet
+
+|Name    |Includes  |Kategorien |Unterstützt von  |
+|---------|---------|---------|---------|
+|**IronNet CyberSecurity Iron Defense - Azure Sentinel** | |Sicherheit - Netzwerk |Microsoft |
+| | | |
+
+
+
+## <a name="juniper"></a>Juniper
+
+|Name    |Includes  |Kategorien |Unterstützt von  |
+|---------|---------|---------|---------|
+|**Juniper IDP** |Datenconnector, Parser|Sicherheit - Netzwerk |Microsoft |
+| | | | |
+
+
+## <a name="kaspersky"></a>Kaspersky
+
+|Name    |Includes  |Kategorien |Unterstützt von  |
+|---------|---------|---------|---------|
+|**Kaspersky AntiVirus** |Datenconnector, Parser   | Sicherheit - Bedrohungsschutz|Microsoft |
+| | | | |
+
+
+## <a name="lookout"></a>Lookout
+
+|Name    |Includes  |Kategorien |Unterstützt von  |
+|---------|---------|---------|---------|
+|**Lookout Mobile Bedrohungsschutz für Azure Sentinel**| [Datenconnector](data-connectors-reference.md#lookout-mobile-threat-defense-preview)|Sicherheit - Netzwerk |[Lookout](https://www.lookout.com/support) |
+| | | |
+
+## <a name="mcafee"></a>McAfee
+
+|Name    |Includes  |Kategorien |Unterstützt von  |
+|---------|---------|---------|---------|
+|**McAfee ePolicy Orchestrator-Lösung**| Datenconnector, Arbeitsmappe, Analyseregeln, Playbooks, Hunting-Abfragen, Parser, benutzerdefinierter Logik-App-Connector| Sicherheit - Bedrohungsschutz| Microsoft |
+|**McAfee Netzwerksicherheit-Plattformlösung** (Intrushield) + Anti Antivirus Information (T1 minus Logic Apps) |Datenconnector, Arbeitsmappen, Analyseregeln, Hunting-Abfragen, Parser |Sicherheit - Bedrohungsschutz | Microsoft|
+| | | | |
+
+## <a name="microsoft"></a>Microsoft
+
+|Name    |Includes  |Kategorien |Unterstützt von  |
+|---------|---------|---------|---------|
+|**Azure Sentinel 4 Microsoft Dynamics 365**     |   [Datenconnector](data-connectors-reference.md#dynamics-365), Arbeitsmappen, Analyseregeln und Hunting-Abfragen |      Application   |Microsoft         |
+|**Azure Sentinel für Teams**     | Datenconnector, Analyseregeln, Playbooks, Hunting-Abfragen      |   Application      |    Community     |
+| | | | |
+
+
+## <a name="oracle"></a>Oracle
+
+
+|Name    |Includes  |Kategorien |Unterstützt von  |
+|---------|---------|---------|---------|
+|**Oracle Cloud Infrastructure** |Datenconnector, Parser | Cloud-Anbieter | Microsoft|
+|**Oracle Database-Auditlösung** | Datenconnector, Arbeitsmappe, Analyseregeln, Hunting-Abfragen, Parser| Application|Microsoft |
+| | | | |
+
+## <a name="palo-alto"></a>Garmisch-Partenkirchen
+
+|Name    |Includes  |Kategorien |Unterstützt von  |
+|---------|---------|---------|---------|
+|**Palo Alto PAN-OS**|[Datenconnector](#palo-alto), Playbooks, benutzerdefinierter Logik App-Connector |Sicherheit - Automatisierung (SOAR), Sicherheit - Netzwerk |Microsoft |
+|**Prisma-Lösung von Palo Alto**|[Datenconnector](#palo-alto), Arbeitsmappen, Analyseregeln, Hunting-Abfragen, Parser |Sicherheit - Cloudsicherheit |Microsoft |
+| | | | |
+
+## <a name="ping-identity"></a>Ping Identity
+
+|Name    |Includes  |Kategorien |Unterstützt von  |
+|---------|---------|---------|---------|
+|**PingFederate-Lösung** |Datenconnector, Arbeitsmappen, Analyseregeln, Hunting-Abfragen, Parser| Identität|Microsoft |
+| | | | |
+
+## <a name="proofpoint"></a>Proofpoint
+
+|Name    |Includes  |Kategorien |Unterstützt von  |
+|---------|---------|---------|---------|
+|**Proofpoint POD-Lösung** |[Datenconnector](data-connectors-reference.md#proofpoint-on-demand-pod-email-security-preview), Arbeitsmappe, Analyseregeln, Hunting-Abfragen, Parser| Sicherheit - Bedrohungsschutz|Microsoft |
+|**Proofpoint TAP-Lösung** | Arbeitsmappen, Analyseregeln, Playbooks, benutzerdefinierte Logik App-Verbindung|Sicherheit - Automatisierung (SOAR), Sicherheit - Bedrohungsschutz |Microsoft |
+| | | |
+
+## <a name="qualys"></a>Qualys
+
+|Name    |Includes  |Kategorien |Unterstützt von  |
+|---------|---------|---------|---------|
+|**Qualys VM-Lösung** |Arbeitsmappen, Analyseregeln |Sicherheit - Sicherheitsrisiko-Management |Microsoft |
+| | | | |
+
+## <a name="rapid7"></a>Rapid7
+
+|Name    |Includes  |Kategorien |Unterstützt von  |
+|---------|---------|---------|---------|
+|**Rapid7 InsightVM CloudAPI-Lösung** |Datenconnector, Parser|Sicherheit - Sicherheitsrisiko-Management |Microsoft |
+| | | | |
+
+## <a name="reversinglabs"></a>ReversingLabs
+
+|Name    |Includes  |Kategorien |Unterstützt von  |
+|---------|---------|---------|---------|
+|**ReversingLabs TitaniumCloud File Enrichment-Lösung**|Playbooks |Sicherheit – Threat Intelligence |[ReversingLabs](https://support.reversinglabs.com/hc/en-us) |
+| | | | |
+
+## <a name="riskiq"></a>RiskIQ
+
+|Name    |Includes  |Kategorien |Unterstützt von  |
+|---------|---------|---------|---------|
+|**RiskIQ-Playbooks für Security Intelligence**|Playbooks |Sicherheit - Threat Intelligence, Sicherheit - Automatisierung (SOAR) |[RiskIQ](https://www.riskiq.com/integrations/microsoft/) |
+| | | | |
+
+## <a name="rsa"></a>RSA
+
+|Name    |Includes  |Kategorien |Unterstützt von  |
+|---------|---------|---------|---------|
+|**RSA SecurID** |Datenconnector, Parser |Sicherheit - Andere, Identität |Microsoft |
+| | | |
+
+
+
+## <a name="sap"></a>SAP
+
+|Name    |Includes  |Kategorien |Unterstützt von  |
+|---------|---------|---------|---------|
+|**Continuous Threat Monitoring für SAP**|[Datenconnector](sap-deploy-solution.md), [Arbeitsmappen, Analyseregeln, Watchlisten](sap-solution-security-content.md) | Application  |Community |
+| | | | |
+
+## <a name="semperis"></a>Semperis
+
+|Name    |Includes  |Kategorien |Unterstützt von  |
+|---------|---------|---------|---------|
+|**Semperis**|Datenconnector, Arbeitsmappen, Analyseregeln, Parser | Sicherheit - Bedrohungsschutz, Identität  |[Semperis](https://www.semperis.com/contact-us/) |
+| | | | |
+
+## <a name="senserva-pro"></a>Senserva Pro
+
+|Name    |Includes  |Kategorien |Unterstützt von  |
+|---------|---------|---------|---------|
+|**Senserva-Angebot für Azure Sentinel** |Datenconnector, Arbeitsmappen, Analyseregeln, Hunting-Abfragen |Kompatibilität |[Senserva](https://www.senserva.com/contact/) |
+| | | | |
+
+
+## <a name="sonrai-security"></a>Sonrai-Sicherheit
+
+|Name    |Includes  |Kategorien |Unterstützt von  |
+|---------|---------|---------|---------|
+|**Sonrai Security - Azure Sentinel** |Datenconnector, Arbeitsmappen, Analyseregeln   | Kompatibilität|Sonrai-Sicherheit |
+| | | | |
+
+## <a name="slack"></a>Puffer
+
+|Name    |Includes  |Kategorien |Unterstützt von  |
+|---------|---------|---------|---------|
+|**Slack Audit-Lösung**|Datenconnector, Arbeitsmappen, Analyseregeln, Hunting-Abfragen, Parser |Application| Microsoft|
+| | | | |
+
+
+## <a name="sophos"></a>Sophos
+
+|Name    |Includes  |Kategorien |Unterstützt von  |
+|---------|---------|---------|---------|
+|**Sophos Endpoint Protection-Lösung** |Datenconnector, Parser| Sicherheit - Bedrohungsschutz |Microsoft |
+|**Sophos XG Firewall-Lösung**| Arbeitsmappen, Analyseregeln, Parser |Sicherheit - Netzwerk |Microsoft |
+| | | | |
+
+
+## <a name="symantec"></a>Symantec
+
+|Name    |Includes  |Kategorien |Unterstützt von  |
+|---------|---------|---------|---------|
+|**Symantec-Endpunkt**|Datenconnector, Arbeitsmappe, Analyseregeln, Playbooks, Hunting-Abfragen, Parser| Sicherheit - Bedrohungsschutz|Microsoft |
+|**Symantec ProxySG-Lösung**|Arbeitsmappen, Analyseregeln |Sicherheit - Netzwerk |Symantec |
+| | | | |
+
+## <a name="tenable"></a>Tenable
+
+|Name    |Includes  |Kategorien |Unterstützt von  |
+|---------|---------|---------|---------|
+|**Tenable Nessus Scanner/IO VM-Berichte für die Cloud**  | Datenconnector, Parser| Sicherheit - Sicherheitsrisiko-Management| Microsoft |
+| | | | |
+
+
+## <a name="trend-micro"></a>Trend Micro
+
+|Name    |Includes  |Kategorien |Unterstützt von  |
+|---------|---------|---------|---------|
+|**Trend Micro Apex One-Lösung**  | Datenconnector, Hunting-Abfragen, Parser| Sicherheit - Bedrohungsschutz|Microsoft |
+| | | | |
+
+
+
+
+## <a name="ubiquiti"></a>Ubiquiti
+
+|Name    |Includes  |Kategorien |Unterstützt von  |
+|---------|---------|---------|---------|
+|**Ubiquiti UniFi-Lösung**|Datenconnector, Arbeitsmappen, Analyseregeln, Hunting-Abfragen, Parser |Sicherheit - Netzwerk |Microsoft |
+| | | | |
+
+
+## <a name="varmour"></a>vArmour
+
+|Name    |Includes  |Kategorien |Unterstützt von  |
+|---------|---------|---------|---------|
+|**vArmour Application Controller- und Azure Sentinel-Lösung**|Datenconnector, Arbeitsmappe, Analyseregeln |IT-Betrieb |[vArmour](https://www.varmour.com/contact-us/) |
+| | | | |
+
+## <a name="vectra"></a>Vectra
+
+|Name    |Includes  |Kategorien |Unterstützt von  |
+|---------|---------|---------|---------|
+|**Vectra Stream-Lösung** |Datenconnector, Hunting-Abfragen, Parser |Sicherheit - Netzwerk |Microsoft |
+| | | |
+
+
+## <a name="vmware"></a>VMware
+
+|Name    |Includes  |Kategorien |Unterstützt von  |
+|---------|---------|---------|---------|
+|**VMware Carbon Black-Lösung**|Arbeitsmappen, Analyseregeln| Sicherheit - Bedrohungsschutz| Microsoft|
+| | | | |
+
+## <a name="zeek-network"></a>Zeek Network
+
+|Name    |Includes  |Kategorien |Unterstützt von  |
+|---------|---------|---------|---------|
+|**Corelight für Azure Sentinel**|Datenconnector, Arbeitsmappen, Analyseregeln, Hunting-Abfragen, Parser | IT-Vorgänge, Sicherheit - Netzwerk | [Zeek Network](https://support.corelight.com/)|
+| | | | |
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

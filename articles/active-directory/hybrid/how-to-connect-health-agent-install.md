@@ -17,12 +17,12 @@ ms.topic: how-to
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 963c2d997bd75dadbeb6a37ea80d4237ea46cc35
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: bec934ec67d952d037a3f06758cb8c3f272b21a6
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130240659"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131059184"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Installieren der Azure AD Connect Health-Agents
 
@@ -47,7 +47,6 @@ In der folgenden Tabelle sind die Anforderungen für die Verwendung von Azure A
 
 > [!IMPORTANT]
 > Unter Windows Server Core wird die Installation des Azure AD Connect Health-Agents nicht unterstützt.
-
 
 > [!NOTE]
 > Wenn Sie über eine streng geschützte und eingeschränkte Umgebung verfügen, müssen Sie mehr als die in der Tabelle für die verstärkte Sicherheitskonfiguration für Internet Explorer aufgeführten URLs hinzufügen. Fügen Sie auch URLs hinzu, die in der Tabelle im nächsten Abschnitt aufgeführt sind.  
@@ -264,7 +263,6 @@ Wenn Sie die Konfiguration durchgeführt haben, sollten diese Dienste ausgeführ
     import-module "C:\Program Files\Azure Ad Connect Health Adds Agent\PowerShell\AdHealthAdds"
      
     Register-AzureADConnectHealthADDSAgent -Credential $myCreds
-    
     ```
 
 Wenn Sie damit fertig sind, können Sie den Zugriff für das lokale Konto entfernen, indem Sie mindestens eine der folgenden Aufgaben ausführen: 
@@ -278,10 +276,9 @@ Wenn Sie damit fertig sind, können Sie den Zugriff für das lokale Konto entfer
 Nachdem Sie den entsprechenden Agent (über die Datei *setup.exe*) installiert haben, können Sie den Agent abhängig von der Rolle mithilfe der folgenden PowerShell-Befehle registrieren. Öffnen Sie ein PowerShell-Fenster, und führen Sie den entsprechenden Befehl aus:
 
 ```powershell
-    Register-AzureADConnectHealthADFSAgent
-    Register-AzureADConnectHealthADDSAgent
-    Register-AzureADConnectHealthSyncAgent
-
+Register-AzureADConnectHealthADFSAgent
+Register-AzureADConnectHealthADDSAgent
+Register-AzureADConnectHealthSyncAgent
 ```
 
 > [!NOTE]
@@ -292,8 +289,6 @@ Nachdem Sie den entsprechenden Agent (über die Datei *setup.exe*) installiert h
 > Register-AzureADConnectHealthADDSAgent -UserPrincipalName upn-of-the-user
 > Register-AzureADConnectHealthSyncAgent -UserPrincipalName upn-of-the-user
 > ```
->
-
 
 Diese Befehle akzeptieren `Credential` als Parameter, um die Registrierung nicht interaktiv oder auf einem Computer abzuschließen, auf dem Server Core ausgeführt wird. Bedenken Sie Folgendes:
 * Sie können `Credential` in einer PowerShell-Variable erfassen, die als Parameter übergeben wird.

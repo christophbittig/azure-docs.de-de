@@ -4,37 +4,28 @@ description: Sie können eine QnA Maker-Wissensdatenbank (KB) aus Ihren eigenen 
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 11/09/2020
-ms.openlocfilehash: 049cbc6f28e4a405b20eaf37e85e31bd1eb4dfb9
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 11/02/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 2469e2ece44242e95b02ebdba36c8d28953c1fd2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110367322"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131043830"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Schnellstart: Erstellen, Trainieren und Veröffentlichen der QnA Maker-Wissensdatenbank
+
+[!INCLUDE [Custom question answering](../includes/new-version.md)]
 
 Sie können eine QnA Maker-Wissensdatenbank (KB) aus Ihren eigenen Inhalten erstellen, z.B. aus FAQs oder Produkthandbüchern. Dieser Artikel enthält ein Beispiel zum Erstellen einer QnA Maker-Wissensdatenbank auf Grundlage einer einfachen FAQ-Webseite zum Beantworten von Fragen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
-
 > [!div class="checklist"]
 > * Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/cognitive-services/) erstellen, bevor Sie beginnen.
 > * Eine über das Azure-Portal erstellte [QnA Maker-Ressource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker). Merken Sie sich die Azure Active Directory-ID, das Abonnement und den QnA Maker-Ressourcennamen, den Sie beim Erstellen der Ressource ausgewählt haben.
 
-# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
-
-> [!div class="checklist"]
-> * Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/cognitive-services/) erstellen, bevor Sie beginnen.
-> * Eine [Textanalyse-Ressource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) mit aktiviertem Feature „Benutzerdefinierte Fragen und Antworten“. Merken Sie sich die Azure Active Directory-ID, das Abonnement und den Namen der Textanalyse-Ressource, den Sie beim Erstellen der Ressource ausgewählt haben.
-
----
-
 ## <a name="create-your-first-qna-maker-knowledge-base"></a>Erstellen Ihrer ersten QnA Maker-Wissensdatenbank
-
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
 
 1. Melden Sie sich mit Ihren Azure-Anmeldeinformationen beim Portal [QnAMaker.ai](https://QnAMaker.ai) an.
 
@@ -67,52 +58,6 @@ Wenn Sie die Ressource im Azure-Portal erstellt haben, navigieren Sie zurück zu
 
     Nachdem die Wissensdatenbank von QnA Maker erfolgreich erstellt wurde, wird die Seite **Wissensdatenbank** geöffnet. Auf dieser Seite können Sie den Inhalt der Wissensdatenbank bearbeiten.
 
-# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
-
-1. Melden Sie sich mit Ihren Azure-Anmeldeinformationen beim Portal [QnAMaker.ai](https://QnAMaker.ai) an.
-
-2. Wählen Sie im QnA Maker-Portal die Option **Wissensdatenbank erstellen** aus.
-
-3. Überspringen Sie auf der Seite **Erstellen** den **Schritt 1**, wenn Sie „Benutzerdefinierte Fragen und Antworten“ bereits dem Textanalyse-Dienst hinzugefügt haben.
-
-    Wenn Sie den Dienst noch nicht erstellt haben, wählen Sie **Vorschau** und **QnA-Dienst erstellen** aus. 
-
-> [!div class="mx-imgBorder"]
-> ![Erstellen eines Diensts](../media/qnamaker-create-publish-knowledge-base/create-qna-service.png) 
-    
-Sie werden zum [Azure-Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) geleitet, um den Textanalyse-Dienst in Ihrem Abonnement einzurichten. Sie sollten dem Dienst bei der Erstellung das Feature „Benutzerdefinierte Fragen und Antworten“ hinzufügen. 
-    
-> [!div class="mx-imgBorder"]
-> ![Hinzufügen von QnA zu Textanalyse](../media/qnamaker-how-to-setup-service/select-qna-feature-create-flow.png)
- 
-   Merken Sie sich die Azure Active Directory-ID, das Abonnement und den Namen der Textanalyse-Ressource, den Sie beim Erstellen der Ressource ausgewählt haben. Wenn Sie die Ressource im Azure-Portal erstellt haben, navigieren Sie zurück zum QnA Maker-Portal, aktualisieren Sie die Browserseite, und fahren Sie mit **Schritt 2** fort.
-
-4. Wählen Sie in **Schritt 2** Ihre Active Directory-Instanz, das Abonnement, den Dienst (Ressource) und die Sprache für alle im Dienst erstellten Wissensdatenbanken aus.
-
-> [!div class="mx-imgBorder"]
-> ![Erstellen einer Wissensdatenbank](../media/qnamaker-create-publish-knowledge-base/connect-knowledgebase-custom-qna.png) 
-
-5. Wenn Sie in **Schritt 2** die erste Wissensdatenbank für Ihren Dienst erstellen, können Sie die Eigenschaft **Wissensdatenbanken in mehreren Sprachen zu diesem Dienst hinzufügen** aktivieren, um die Möglichkeit zu schaffen, Wissensdatenbanken in verschiedenen Sprachen zum selben Dienst hinzuzufügen. Diese Einstellung können Sie später nicht mehr ändern.
-
-6. Geben Sie in  **Schritt 3** Ihrer Wissensdatenbank den Namen  **My Sample QnA KB**. 
-
-7. Konfigurieren Sie in **Schritt 4** die Einstellungen anhand der folgenden Tabelle:
-
-    |Einstellung|Wert|
-    |--|--|
-    |**Enable multi-turn extraction from URLs, .pdf or .docx files** (Mehrfachdurchlauf-Extrahierung von URLs, PDF- oder DOCX-Dateien aktivieren)|Aktiviert|
-    |**Mehrfachdurchlauf-Standardtext**| Wählen Sie eine Option aus|
-    |**+ Datei hinzufügen**| Handbuch für Surface-Laptops herunterladen: https://download.microsoft.com/download/7/B/1/7B10C82E-F520-4080-8516-5CF0D803EEE0/surface-book-user-guide-EN.pdf 
-    |**Smalltalk**|Wählen Sie **Professional** aus.|
-
-8. Wählen Sie in **Schritt 5** die Option **Wissensdatenbank erstellen** aus.
-
-    Der Extraktionsvorgang nimmt einen Moment in Anspruch, um das Dokument zu lesen sowie Fragen und Antworten zu identifizieren.
-
-    Nachdem die Wissensdatenbank erfolgreich erstellt wurde, wird die Seite **Wissensdatenbank** geöffnet. Auf dieser Seite können Sie den Inhalt der Wissensdatenbank bearbeiten.
-
----
-
 ## <a name="add-a-new-question-and-answer-set"></a>Hinzufügen eines neuen Frage-Antwort-Satzes
 
 1. Wählen Sie im QnA Maker-Portal auf der Seite **Bearbeiten** in der Kontextsymbolleiste die Option **+ Frage- und Antwortpaar hinzufügen** aus.
@@ -136,8 +81,6 @@ Wählen Sie in der oberen rechten Ecke **Speichern und trainieren** aus, um Ihre
 
 ## <a name="test-the-knowledge-base"></a>Testen der Wissensdatenbank
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
-
 1. Wählen Sie rechts oben im QnA Maker-Portal die Option **Testen** aus, um zu testen, ob die von Ihnen vorgenommenen Änderungen übernommen wurden.
 2. Geben Sie eine Beispielbenutzerabfrage in das Textfeld ein.
 
@@ -148,22 +91,6 @@ Wählen Sie in der oberen rechten Ecke **Speichern und trainieren** aus, um Ihre
 3. Wählen Sie **Untersuchen** aus, um die Antwort ausführlicher zu untersuchen. Das Testfenster wird verwendet, um die Änderungen an der Wissensdatenbank zu testen, bevor die Wissensdatenbank veröffentlicht wird.
 
 4. Wählen Sie erneut **Testen** aus, um das Panel **Testen** zu schließen.
-
-# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
-
-1. Wählen Sie rechts oben im QnA Maker-Portal die Option **Testen** aus, um zu testen, ob die von Ihnen vorgenommenen Änderungen übernommen wurden.
-2. Geben Sie eine Beispielbenutzerabfrage in das Textfeld ein.
-
-    `whats the size of the touchscreen`
-
-3. Wenn Sie die MRC-Funktion für Ihre Wissensdatenbank aktivieren, indem Sie **Kurze Antwort anzeigen** auswählen, wird auch eine genaue Antwort angezeigt, falls verfügbar, zusammen mit der Antwortpassage im Testbereich. 
-
-    ![Verwalteter aktivierter Testbereich](../media/conversational-context/test-pane-with-managed.png)
-    
-
-4. Wählen Sie „Untersuchen“ aus, um die Antwort ausführlicher zu untersuchen. Das Testfenster wird verwendet, um die Änderungen an der Wissensdatenbank zu testen, bevor die Wissensdatenbank veröffentlicht wird. 
-5. Wählen Sie erneut **Testen** aus, um das Panel **Testen** zu schließen.
----
 
 ## <a name="publish-the-knowledge-base"></a>Veröffentlichen der Knowledge Base
 
@@ -196,7 +123,7 @@ Wenn Sie Änderungen an der Wissensdatenbank vornehmen und sie erneut veröffent
         * Ändern Sie das Bot-Handle, wenn es nicht eindeutig ist.
         * Wählen Sie die SDK-Sprache aus. Nachdem der Bot erstellt wurde, können Sie den Code in die lokale Entwicklungsumgebung herunterladen und den Entwicklungsprozess fortsetzen.
     * **Nicht empfohlene Vorgehensweise**
-        * Ändern Sie die folgenden Einstellungen im Azure-Portal beim Erstellen des Bots nicht. Sie wurden automatisch für Ihre vorhandene Wissensdatenbank aufgefüllt:
+        * Ändern Sie beim Erstellen des Bots die folgenden Einstellungen im Azure-Portal nicht. Sie wurden automatisch für Ihre vorhandene Wissensdatenbank aufgefüllt:
            * QnA-Authentifizierungsschlüssel
            * App Service-Plan und Standort
 

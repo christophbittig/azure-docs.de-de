@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/07/2021
+ms.date: 10/27/2021
 ms.author: b-juche
-ms.openlocfilehash: 3cbfd4349c96457e7278327d9edc3e31cd521211
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.openlocfilehash: 0fb94a505b30c538e50ec11eff746d41b64be6ab
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129659961"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131087531"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Lösungsarchitekturen mit Azure NetApp Files
 Dieser Artikel enthält Verweise auf bewährte Methoden, die Ihnen helfen können, die Lösungsarchitekturen für die Verwendung von Azure NetApp Files zu verstehen.  
@@ -163,6 +163,7 @@ Dieser Abschnitt enthält Referenzen zu Lösungen für High Performance Computin
 * [Azure NetApp Files: A shared file system to use with SAS Grid on MS Azure (RHEL8.3/nconnect UPDATE)](https://communities.sas.com/t5/Administration-and-Deployment/Azure-NetApp-Files-A-shared-file-system-to-use-with-SAS-Grid-on/m-p/722261#M21648) (Azure NetApp Files: Dateifreigabesystem für SAS Grid in Microsoft Azure (RHEL8.3/nconnect UPDATE))
 * [Best Practices für die Verwendung von Microsoft Azure mit SAS®](https://communities.sas.com/t5/Administration-and-Deployment/Best-Practices-for-Using-Microsoft-Azure-with-SAS/m-p/676833#M19680)
 * [Leitfaden zur Architektur von SAS in Azure – Azure Architecture Center | Azure NetApp Files](/azure/architecture/guide/sas/sas-overview#azure-netapp-files-nfs)
+
 
 ## <a name="azure-platform-services-solutions"></a>Lösungen für Azure-Plattformdienste
 

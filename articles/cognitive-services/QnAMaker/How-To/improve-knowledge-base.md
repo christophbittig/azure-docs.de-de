@@ -5,16 +5,17 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: e5625907b0401919940a514586a86b34867b8e57
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.custom: devx-track-js, devx-track-csharp, ignite-fall-2021
+ms.openlocfilehash: 775163041208de79a6c943630afe6b718f1849b0
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130252210"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131039162"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Akzeptieren von Fragevorschlägen des aktiven Lernens in der Wissensdatenbank
 
+[!INCLUDE [Custom question answering](../includes/new-version.md)]
 
 <a name="accept-an-active-learning-suggestion-in-the-knowledge-base"></a>
 
@@ -156,7 +157,7 @@ Content-Type: application/json
 {"feedbackRecords": [{"userId": "1","userQuestion": "<question-text>","qnaId": 1}]}
 ```
 
-|HTTP-Anforderungseigenschaft|Name|Typ|Zweck|
+|HTTP-Anforderungseigenschaft|Name|type|Zweck|
 |--|--|--|--|
 |URL-Routenparameter|Wissensdatenbank-ID|Zeichenfolge|GUID der Knowledge Base|
 |Benutzerdefinierte Unterdomäne|Name der QnAMaker-Ressource|Zeichenfolge|Der Ressourcenname wird als benutzerdefinierte Unterdomäne für Ihre QnA Maker verwendet. Dieser Wert ist auf der Seite „Einstellungen“ verfügbar, nachdem Sie die Wissensdatenbank veröffentlicht haben. Sie wird als `host` aufgeführt.|

@@ -7,12 +7,12 @@ ms.manager: abhemraj
 ms.topic: tutorial
 ms.date: 03/11/2021
 ms.custom: mvc
-ms.openlocfilehash: 89548cf1c98e360569255b9028b26230fedf5ed2
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: e67bdd11fc07c20d9f9dd660fa6aab936853015f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129092336"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131037908"
 ---
 # <a name="tutorial-discover-physical-servers-with-azure-migrate-discovery-and-assessment"></a>Tutorial: Ermitteln physischer Server mit der Ermittlung und Bewertung von Azure Migrate
 
@@ -199,7 +199,7 @@ Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist
 
 3. Ändern Sie das PowerShell-Verzeichnis in den Ordner, in den die Inhalte der gezippten Datei extrahiert wurden, die Sie heruntergeladen haben.
 
-4. Führen Sie das Skript mit dem Namen `AzureMigrateInstaller.ps1` aus, indem Sie den folgenden Befehl ausführen:
+4. Führen Sie das Skript `AzureMigrateInstaller.ps1` mit folgendem Befehl aus:
 
    `PS C:\Users\administrator\Desktop\AzureMigrateInstaller> .\AzureMigrateInstaller.ps1`
 
@@ -301,7 +301,7 @@ Nach Abschluss der Ermittlung können Sie überprüfen, ob die Server im Portal 
 Nachdem die Ermittlung initiiert wurde, können Sie alle hinzugefügten Server aus dem Appliancekonfigurations-Manager löschen, indem Sie in der Tabelle nach **Ermittlungsquelle hinzufügen** suchen und auf **Löschen** klicken.
 
 >[!NOTE]
-> Wenn Sie einen Server löschen möchten, auf dem die Ermittlung initiiert wurde, werden die laufende Ermittlung und Bewertung beendet, was sich möglicherweise auf die Vertrauenswürdigkeit der Bewertung auswirkt, die diesen Server enthält. [Weitere Informationen](https://go.microsoft.com/fwlink/?linkid=2171565)
+> Wenn Sie einen Server löschen möchten, auf dem die Ermittlung initiiert wurde, werden die laufende Ermittlung und Bewertung beendet, was sich möglicherweise auf die Vertrauenswürdigkeit der Bewertung auswirkt, die diesen Server enthält. [Weitere Informationen](/azure/migrate/common-questions-discovery-assessment#why-is-the-confidence-rating-of-my-assessment-low)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

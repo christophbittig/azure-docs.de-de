@@ -13,7 +13,7 @@
       items:
         - name: Azure-Portal
           href: stream-analytics-quick-create-portal.md
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: quick-create-azure-cli.md
         - name: ARM-Vorlage
           displayName: Resource Manager
@@ -705,7 +705,7 @@
     - name: Blog
       href: 'https://techcommunity.microsoft.com/t5/analytics-on-azure/bg-p/AnalyticsonAzure/label-name/Azure%20Stream%20Analytics'
     - name: Feedbackforum
-      href: 'https://feedback.azure.com/forums/270577-azure-stream-analytics'
+      href: 'https://feedback.azure.com/d365community/forum/d12ec4e3-b825-ec11-b6e6-000d3a4f0f1c'
     - name: "Frageseite von Microsoft\_Q&A (Fragen und Antworten)"
       href: /answers/topics/azure-stream-analytics.html
     - name: Preise

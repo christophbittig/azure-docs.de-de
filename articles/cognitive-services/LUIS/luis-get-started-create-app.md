@@ -4,15 +4,19 @@ description: In dieser Schnellstartanleitung lernen Sie, eine LUIS-App zu erstel
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 04/14/2021
-ms.openlocfilehash: 3de83151aa00d589c470eb7ac772f4c9b5f7eda2
-ms.sourcegitcommit: ad921e1cde8fb973f39c31d0b3f7f3c77495600f
+ms.date: 10/20/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 70972607788568fbc06f9efe06fe083fd8d8ac01
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107948346"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131073622"
 ---
 # <a name="quickstart-build-your-app-in-luis-portal"></a>Schnellstart: Erstellen Ihrer App im LUIS-Portal
+
+> [!NOTE]
+> Eine neuere Version der Language Understanding-Funktionen ist jetzt als Teil von Azure Cognitive Services for Language verfügbar. Weitere Informationen finden Sie in der [Dokumentation zu Azure Cognitive Services for Language](../language-service/index.yml). Informationen zu Language Understanding-Funktionen innerhalb des Sprachdiensts finden Sie unter [Conversational Language Understanding](../language-service/conversational-language-understanding/overview.md), [Benutzerdefinierte Erkennung benannter Entitäten](../language-service/custom-named-entity-recognition/overview.md) und [Benutzerdefinierte Klassifizierung](../language-service/custom-classification/overview.md).
 
 In dieser Schnellstartanleitung erstellen Sie mithilfe der vordefinierten Domäne „HomeAutomation“ zum Ein- und Ausschalten von Beleuchtungen und Haushaltsgeräten eine LUIS-App. Diese vordefinierte Domäne bietet Absichten, Entitäten und Beispieläußerungen, die Sie nutzen können. Versuchen Sie als Nächstes, Ihre App anzupassen, indem Sie weitere Absichten und Entitäten hinzufügen. Am Ende dieser Schnellstartanleitung verfügen Sie über einen LUIS-Endpunkt in der Cloud.
 

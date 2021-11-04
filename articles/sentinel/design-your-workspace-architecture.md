@@ -8,14 +8,17 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 07/18/2021
-ms.openlocfilehash: 930194c3a415a39edacd9ad8c680a872e1760e03
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 2744552b358fa90180ed085c50b23404473d1745
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122350284"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131037243"
 ---
 # <a name="design-your-azure-sentinel-workspace-architecture"></a>Entwerfen Ihrer Azure Sentinel-Arbeitsbereichsarchitektur
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 Dieser Artikel enthält eine Entscheidungsstruktur, mit deren Hilfe Sie wichtige Entscheidungen zum Entwurf Ihrer Azure Sentinel-Arbeitsbereichsarchitektur treffen können. Weitere Informationen finden Sie unter [Azure Sentinel sample workspace designs](sample-workspace-designs.md) (Beispielentwürfe von Azure Sentinel-Arbeitsbereichen) und [Azure Sentinel workspace architecture best practices](best-practices-workspace-architecture.md) (Bewährte Methoden für die Azure Sentinel-Arbeitsbereichsarchitektur).
 

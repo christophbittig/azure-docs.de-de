@@ -9,15 +9,17 @@ ms.subservice: qna-maker
 zone_pivot_groups: URL-test-interface
 ms.topic: how-to
 ms.date: 07/16/2020
-ms.openlocfilehash: 46657cfaf513cdd2dd0ecfd284602d2277781626
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 2f983ba51269315ba9406faa7e3feec1853e995d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104583070"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131043711"
 ---
-# <a name="get-an-answer-from-a-knowledge-base"></a>Abrufen einer Antwort aus einer Wissensdatenbank
+# <a name="get-an-answer-from-a-qna-maker-knowledge-base"></a>Abrufen einer Antwort aus einer QNA Maker-Wissensdatenbank
 
+[!INCLUDE [Custom question answering](../includes/new-version.md)]
 
 ::: zone pivot="url-test-tool-curl"
 
@@ -40,4 +42,3 @@ ms.locfileid: "104583070"
 Weitere Informationen zu Metadaten:
 * [Erstellung: Hinzufügen von Metadaten zu Frage-Antwort-Paaren](../How-To/edit-knowledge-base.md#add-metadata)
 * [Abfragevorhersage: Filtern von Antworten nach Metadaten](../How-To/query-knowledge-base-with-metadata.md)
-

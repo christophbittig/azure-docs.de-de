@@ -6,12 +6,12 @@ ms.date: 09/30/2021
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3310d3f33d7aa31a24a19bc7c43b59173ffd78d6
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: ae7f7fe3e626079c7e3bcb04dc76ffe5cacfe4a9
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129456042"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131069784"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>Tutorial: Importieren von SQL-BACPAC-Dateien mit ARM-Vorlagen
 
@@ -269,4 +269,4 @@ Wenn die von Ihnen bereitgestellten Azure-Ressourcen nicht mehr benötigt werden
 In diesem Tutorial haben Sie einen Server und eine Datenbank bereitgestellt und eine BACPAC-Datei importiert. Informationen zur Behandlung von Problemen bei der Bereitstellung von Vorlagen finden Sie unter:
 
 > [!div class="nextstepaction"]
-> [Problembehandlung bei Bereitstellungen von ARM-Vorlagen](./template-tutorial-troubleshoot.md)
+> [Problembehandlung bei Bereitstellungen von ARM-Vorlagen](../troubleshooting/quickstart-troubleshoot-arm-deployment.md)

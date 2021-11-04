@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 3c41a7b8efad5ab0235adb396d0170f5385e21c6
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 50958765e0ff582e630d5a78b3d17f871a0c41aa
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123437812"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131072482"
 ---
 # <a name="tutorial-migrate-an-android-app-from-google-maps"></a>Tutorial: Migrieren von Android-Apps aus Google Maps
 
@@ -261,14 +261,14 @@ Wenn Sie mithilfe des Azure Maps SDK für Android eine Karte anzeigen lassen mö
         implementation "com.azure.android:azure-maps-control:1.0.0"
         ```
 
-        > [!Note]
+        > [!NOTE]
         > Sie können die Versionsnummer auf „0+“ festlegen, damit Ihr Code immer auf die neueste Version verweist.
 
     4. Wechseln Sie auf der Symbolleiste zu **Datei**, und klicken Sie auf **Sync Project with Gradle Files** (Projekt mit Gradle-Dateien synchronisieren).
 
 3. Fügen Sie der Hauptaktivität („resources pwd“ \> „layout“ \> „activity\_main.xml“) ein Kartenfragment hinzu:
 
-    ```XML
+    ```xml
     <?xml version="1.0" encoding="utf-8"?>
     <FrameLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -546,7 +546,7 @@ Dies ist ein Beispiel für Google Maps mit der Spracheinstellung „fr“.
 
 Azure Maps bietet drei verschiedene Möglichkeiten, um die Sprache und die regionale Ansicht der Karte festzulegen. Die erste Option besteht darin, die Informationen zur Sprache und zur regionalen Ansicht an die Klasse `AzureMaps` zu übergeben. Bei dieser Option werden die statischen Methoden `setLanguage` und `setView` global verwendet. Das bedeutet, dass die Standardsprache und die regionale Ansicht für alle in Ihrer App geladenen Azure Maps-Steuerelemente festgelegt werden. In diesem Beispiel wird mithilfe des Sprachcodes „fr-FR“ Französisch festgelegt.
 
-::: zone pivot="programming-language-java-android"
+::: zone pivot=&quot;programming-language-java-android&quot;
 
 ```java
 static {

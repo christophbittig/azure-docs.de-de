@@ -2,20 +2,20 @@
 title: Beheben von Problemen beim Registrieren für ein neues Konto im Azure-Portal
 description: Lösen eines Problems beim Registrieren für ein neues Konto im Microsoft Azure-Portal.
 services: cost-management-billing
-author: v-miegge
+author: jasonwhowell
 manager: dcscontentpm
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: troubleshooting
 ms.date: 10/07/2021
-ms.author: v-miegge
-ms.openlocfilehash: 0000d49d9e434a4fd07f4c3a05be60f20ebca3be
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.author: jasonh
+ms.openlocfilehash: c429395fa881725344c5eaa891faa692461bbd49
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129711014"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131073261"
 ---
 # <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-azure-portal"></a>Beheben von Problemen beim Registrieren für ein neues Konto im Azure-Portal
 

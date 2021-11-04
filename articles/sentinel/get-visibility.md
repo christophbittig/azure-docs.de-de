@@ -7,17 +7,19 @@ manager: rkarlin
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
-ms.custom: mvc, fasttrack-edit
+ms.custom: mvc, fasttrack-edit, ignite-fall-2021
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: 4fb3b30a35d8f6d22668024a5fa08dbc7358c0ed
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fb01d57a7801b940ba9de2e8c939743070c57eaa
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121784724"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131004091"
 ---
 # <a name="visualize-collected-data"></a>Visualisieren gesammelter Daten
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 In diesem Artikel erfahren Sie, wie Sie die Vorgänge in Ihrer Umgebung mithilfe von Azure Sentinel schnell anzeigen und überwachen können. Nachdem Sie Ihre Datenquellen mit Azure Sentinel verbunden haben, stehen Ihnen sofort Datenvisualisierungen und -analysen zur Verfügung, die Informationen zu allen Vorgängen in Ihren verbundenen Datenquellen liefern. Azure Sentinel bietet Ihnen Arbeitsmappen mit den leistungsstarken Funktionen der bereits in Azure verfügbaren Tools sowie integrierte Tabellen und Diagramme mit Analysen für Ihre Protokolle und Abfragen. Sie können integrierte Arbeitsmappen verwenden, mühelos eine komplett neue Arbeitsmappe erstellen oder auf der Grundlage einer vorhandenen Arbeitsmappe eine eigene Arbeitsmappe erstellen. 
 

@@ -7,18 +7,18 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.subservice: mldata
 ms.topic: how-to
-ms.date: 09/24/2021
-ms.custom: data4ml
-ms.openlocfilehash: e4d227cf215ab5d37af8a25e6e44e811f739f25b
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.date: 10/21/2021
+ms.custom: data4ml, ignite-fall-2021
+ms.openlocfilehash: 1aa49d52c11f430affb6b9deea14a4160806f06c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129423707"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131068392"
 ---
 # <a name="create-a-text-labeling-project-and-export-labels-preview"></a>Ein Textbeschriftungsprojekt erstellen und Beschriftungen exportieren (Vorschau)
 
-Erfahren Sie, wie Sie Datenbeschriftungsprojekte erstellen und ausführen, um Textdaten in Azure Machine Learning zu beschriften.  Geben Sie entweder ein einzelnes Etikett oder mehrere Etiketten an, die auf jeden Textabschnitt angewendet werden sollen.
+Erfahren Sie, wie Sie Datenbeschriftungsprojekte erstellen und ausführen, um Textdaten in Azure Machine Learning zu beschriften.  Geben Sie entweder eine einzelne Bezeichnung oder mehrere Bezeichnungen an, die auf jedes Textelement angewendet werden sollen.
 
 Sie können auch das Datenbeschriftungswerkzeug verwenden, um [ ein Bildbeschriftungsprojekt](how-to-create-image-labeling-projects.md) zu erstellen.
 
@@ -83,9 +83,9 @@ Erstellen eines Datasets aus Dateien, die Sie bereits in einem Azure-Blobspeiche
 1. Wählen Sie **Dataset erstellen** > **Aus Datenspeicher**.
 1. Weisen Sie Ihrem Dataset einen **Namen** zu.
 1. Wählen Sie den **Datensatztyp**:
-    * Wählen Sie **Tabellen**, wenn Sie eine .csv-Datei verwenden, bei der jede Zeile eine Antwort enthält.
-    * Wählen Sie **Datei** aus, wenn Sie für jede Antwort separate TXT-Dateien verwenden.
-1. (Optional) Geben Sie eine Beschreibung für Ihren Datensatz an.
+    * Wählen Sie **Tabellarisch** aus, wenn Sie eine CSV-Datei verwenden, bei der jede Zeile eine Antwort enthält.
+    * Wählen **Datei** aus, wenn Sie für jede Antwort separate TXT-Dateien verwenden.
+1. (Optional) Geben Sie eine Beschreibung für Ihr Dataset an.
 1. Klicken Sie auf **Weiter**.
 1. Wählen Sie den Datenspeicher aus.
 1. Wenn Ihre Daten sich in einem Unterordner des Blobspeichers befinden, klicken Sie auf **Durchsuchen**, um den Ordnerpfad auszuwählen.
@@ -102,7 +102,7 @@ Direktes Hochladen Ihrer Daten:
 1. Weisen Sie Ihrem Dataset einen **Namen** zu.
 1. Wählen Sie den **Datasettyp** aus.
     * Wählen Sie **Tabellarisch** aus, wenn Sie eine CSV-Datei verwenden, in der jede Zeile eine Antwort darstellt.
-    * Wählen Sie **Datei** aus, wenn Sie für jede Antwort separate TXT-Dateien verwenden.
+    * Wählen **Datei** aus, wenn Sie für jede Antwort separate TXT-Dateien verwenden.
 1. (Optional) Geben Sie eine Beschreibung Ihres Datensatzes an.
 1. Wählen Sie **Weiter** aus.
 1. (Optional) Wählen oder erstellen Sie einen Datenspeicher. Sie können auch die Standardeinstellung beibehalten und in den Standard-Blobstore ("workspaceblobstore") Ihres Arbeitsbereichs für maschinelles Lernen hochladen.
@@ -130,6 +130,34 @@ Direktes Hochladen Ihrer Daten:
 >[!NOTE]
 > Beachten Sie, dass die Beschriftungsersteller die ersten 9 Beschriftungen mit den Zifferntasten 1–9 auswählen können.
 
+## <a name="use-ml-assisted-data-labeling"></a>Verwenden der ML-gestützten Datenbeschriftung
+
+Auf der Seite **Durch ML unterstützte Beschriftung** können Sie automatische Machine Learning-Modelle auslösen, um Beschriftungsaufgaben zu beschleunigen. Die ML-gestützte Bezeichnung ist sowohl für Dateneingaben von Dateien (.txt) als auch für tabellarische Textdateneingaben (.csv) verfügbar.
+
+So verwenden Sie die **ML-gestützte Beschriftung**:
+
+* Wählen Sie **Enable ML assisted labeling** (ML-gestützte Beschriftung aktivieren) aus.
+* Wählen Sie **Datasetsprache** für das Projekt aus. Alle Sprachen, die von der [TextDNNLanguages-Klasse](/python/api/azureml-automl-core/azureml.automl.core.constants.textdnnlanguages?view=azure-ml-py&preserve-view=true) unterstützt werden, sind in dieser Liste aufgeführt.
+* Geben Sie ein zu verwendendes Computeziel an. Wenn Sie in Ihrem Arbeitsbereich noch keins haben, wird ein Computecluster für Sie erstellt und Ihrem Arbeitsbereich hinzugefügt.   Der Cluster wird mit mindestens 0 (null) Knoten erstellt, was bedeutet, dass er nichts kostet, wenn er nicht verwendet wird.
+
+### <a name="how-does-ml-assisted-labeling-work"></a>Wie funktionieren ML-gestützte Bezeichnungen?
+
+Zu Beginn Ihres Beschriftungsprojekts werden die Elemente in eine zufällige Reihenfolge gebracht, um potenzielle Verzerrungen zu verringern. Im Dataset enthaltene Verzerrungen fließen jedoch in das trainierte Modell ein. Wenn es sich also beispielsweise bei 80 Prozent der Elemente um eine einzelne Klasse handelt, gehören ungefähr 80 Prozent der Daten, die zum Trainieren des Modells verwendet werden, zu dieser Klasse. 
+
+Zum Trainieren des DNN-Textmodells, das von der ML-Unterstützung verwendet wird, wird der Eingabe pro Trainingsbeispiel auf ungefähr die ersten 128 Wörter im Dokument beschränkt.  Bei tabellarischen Eingaben werden alle Textspalten zuerst verkettet, bevor dieser Grenzwert verwendet wird. Dies ist ein praktischer Grenzwert, der es ermöglicht, dass das Modelltraining rechtzeitig abgeschlossen wird. Der tatsächliche Text in einem Dokument (für Dateieingaben) oder einer Gruppe von Textspalten (für tabellarische Eingaben) kann 128 Wörter überschreiten.  Der Grenzwert bezieht sich nur auf das, was vom Modell während des Trainingsprozesses intern genutzt wird.
+
+Die genaue Anzahl der bezeichneten Elemente, die zum Starten der unterstützten Bezeichnung erforderlich sind, ist nicht festgelegt. Diese kann von einem Bezeichnungsprojekt zu einem anderen variieren, abhängig von vielen Faktoren, wie etwa die Anzahl der Bezeichnungsklassen sowie die Bezeichnungsverteilung.
+
+Da die abschließenden Beschriftungen weiterhin von den Eingaben des Beschriftungserstellers abhängig sind, wird diese Technologie manchmal auch als *Human-in-the-Loop*-Beschriftung bezeichnet.
+
+> [!NOTE]
+> Von der ML-gestützten Datenbeschriftung werden keine Standardspeicherkonten unterstützt, die hinter einem [virtuellen Netzwerk](how-to-network-security-overview.md) geschützt sind. Sie müssen ein nicht standardmäßiges Speicherkonto für die ML-unterstützte Datenbeschriftung verwenden. Das nicht standardmäßige Speicherkonto kann hinter dem virtuellen Netzwerk gesichert werden.
+
+### <a name="pre-labeling"></a>Vorbeschriftung
+
+Nachdem genügend Bezeichnungen für das Training übermittelt wurden, wird das trainierte Modell verwendet, um Tags vorherzusagen. Dem Beschriftungsersteller werden nun Seiten angezeigt, auf denen bereits vorhergesagte Beschriftungen für die einzelnen Elemente vorhanden sind. Diese Vorhersagen müssen dann überprüft und falsch beschriftete Elemente korrigiert werden, bevor die Seite übermittelt wird.  
+
+Nachdem ein Machine Learning-Modell mit Ihren manuell beschrifteten Daten trainiert wurde, wird es anhand eines Testsatzes manuell beschrifteter Elemente ausgewertet, um seine Genauigkeit mit verschiedensten Konfidenzschwellenwerten zu bestimmen. Diese Auswertung dient zur Ermittlung eines Zuverlässigkeitsschwellenwerts, über dem das Modell genau genug ist, um Vorabbeschriftungen anzuzeigen. Anschließend wird das Modell anhand von nicht beschrifteten Daten ausgewertet. Elemente, bei denen die Vorhersagezuverlässigkeit über dem Schwellenwert liegt, werden für die Vorabbeschriftung verwendet.
 
 ## <a name="initialize-the-text-labeling-project"></a>Initialisieren Sie das Textbeschriftungsprojekt
 
@@ -149,7 +177,7 @@ Auf der Registerkarte **Dashboard** wird der Fortschritt der Beschriftungsaufgab
 
 Die Fortschrittsübersicht zeigt, wie viele Aufgaben gekennzeichnet, übersprungen, überarbeitet oder noch nicht erledigt wurden.  Bewegen Sie den Mauszeiger über das Diagramm, um die Anzahl der Artikel in jedem Abschnitt zu sehen.
 
-Der mittlere Abschnitt zeigt die Warteschlange der Aufgaben, die noch zugewiesen werden müssen. 
+Der mittlere Abschnitt zeigt die Warteschlange der Aufgaben, die noch zugewiesen werden müssen. Wenn die ML-gestützte Bezeichnung aktiviert ist, wird auch die Anzahl der vorab bezeichneten Elemente angezeigt.
 
 
 Auf der rechten Seite befindet sich eine Verteilung der Beschriftungen für abgeschlossene Aufgaben.  Beachten Sie, dass ein Element in einigen Projekttypen mehrere Beschriftungen aufweisen kann. In diesem Fall kann die Gesamtanzahl der Beschriftungen größer als die Gesamtanzahl der Elemente sein.
@@ -197,4 +225,3 @@ Sie können im Abschnitt **Datasets** von Machine Learning auf das exportierte A
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Wie man Text markiert](how-to-label-data.md#label-text)
-

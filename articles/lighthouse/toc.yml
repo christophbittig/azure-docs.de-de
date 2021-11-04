@@ -105,7 +105,7 @@
           href: ./how-to/manage-sentinel-workspaces.md
 - name: Verweis
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/managedservices
     - name: Azure PowerShell
       href: /powershell/module/az.managedservices#managed_services
@@ -137,4 +137,4 @@
     - name: Regionale Verfügbarkeit
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=azure-lighthouse&regions=all'
     - name: Produktfeedback
-      href: 'https://feedback.azure.com/forums/922753'
+      href: 'https://feedback.azure.com/d365community/forum/cd8dfdcb-f824-ec11-b6e6-000d3a4f0da0'

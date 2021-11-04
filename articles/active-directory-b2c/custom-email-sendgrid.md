@@ -3,21 +3,21 @@ title: Benutzerdefinierte E-Mail-Überprüfung mit SendGrid
 titleSuffix: Azure AD B2C
 description: Erfahren Sie, wie Sie SendGrid integrieren, um die Überprüfungs-E-Mail anzupassen, die an Ihre Kunden gesendet wird, wenn sie sich für die Verwendung Ihrer Azure AD B2C-fähigen Anwendungen registrieren.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 09/15/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 67c5c15b81bf2007494cb78496a655e4e0d833fb
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 304b7056fda06e017be445b57a4b75aef6a17ffc
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128568485"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131007412"
 ---
 # <a name="custom-email-verification-with-sendgrid"></a>Benutzerdefinierte E-Mail-Überprüfung mit SendGrid
 
@@ -147,7 +147,6 @@ Wenn Sie ein SendGrid-Konto erstellt und den SendGrid-API-Schlüssel in einem Az
                        <td width="24" style="border-bottom:1px solid #e3e3e3;">&nbsp;</td>
                        <td id="PageFooterContainer" width="585" valign="top" colspan="6" style="border-bottom:1px solid #e3e3e3;padding:0px;">
 
-
                        </td>
 
                        <td width="29" style="border-bottom:1px solid #e3e3e3;">&nbsp;</td>
@@ -206,7 +205,7 @@ Die Struktur des JSON-Objekts wird durch die IDs in der Punktnotation der InputP
 Fügen Sie im `<ClaimsTransformations>`-Element in `<BuildingBlocks>` die folgenden Anspruchstransformation hinzu. Nehmen Sie die folgenden Aktualisierungen an der Anspruchstranformations-XML vor:
 
 * Aktualisieren Sie den InputParameter-Wert `template_id` mit der ID der SendGrid-Transaktionsvorlage, die Sie zuvor unter [Erstellen der SendGrid-Vorlage](#create-sendgrid-template) erstellt haben.
-* Aktualisieren Sie den Adresswert `from.email`. Verwenden Sie eine gültige E-Mail-Adresse, um zu verhindern, dass die Überprüfungs-E-Mail als Spam markiert wird. 
+* Aktualisieren Sie den Adresswert `from.email`. Verwenden Sie eine gültige E-Mail-Adresse, um zu verhindern, dass die Überprüfungs-E-Mail als Spam markiert wird.
    > [!NOTE]
    > Diese E-Mail-Adresse muss in SendGrid unter Absenderauthentifizierung entweder mit Domänenauthentifizierung oder Single Sender Authentication überprüft werden.
 * Aktualisieren Sie den Wert des Betreffzeilen-Eingabeparameters `personalizations.0.dynamic_template_data.subject` mit einer für Ihre Organisation geeigneten Betreffzeile.
@@ -502,7 +501,7 @@ Zum Lokalisieren der E-Mail müssen Sie lokalisierte Zeichenfolgen an SendGrid o
 
 1. Fügen Sie Verweise auf die „LocalizedResources“-Elemente hinzu, indem Sie das [ContentDefinitions](contentdefinitions.md)-Element aktualisieren.
 
-    ```XML
+    ```xml
     <!--
     <BuildingBlocks> -->
       <ContentDefinitions>
@@ -527,17 +526,17 @@ Zum Lokalisieren der E-Mail müssen Sie lokalisierte Zeichenfolgen an SendGrid o
 
 1. Fügen Sie schließlich den technischen Profilen `LocalAccountSignUpWithLogonEmail` und `LocalAccountDiscoveryUsingEmailAddress` die folgende Eingabeanspruchstransformation hinzu.
 
-    ```XML
+    ```xml
     <InputClaimsTransformations>
       <InputClaimsTransformation ReferenceId="GetLocalizedStringsForEmail" />
     </InputClaimsTransformations>
     ```
-    
+
 ## <a name="optional-localize-the-ui"></a>[Optional] Lokalisieren der Benutzeroberfläche
 
-Mithilfe des Localization-Elements können Sie mehrere Gebietsschemas oder Sprachen in der Richtlinie für die User Journeys unterstützen. Die Lokalisierungsunterstützung in Richtlinien ermöglicht es Ihnen, sprachspezifische Zeichenfolgen sowohl für [Anzeigesteuerelemente zur Überprüfung von Benutzeroberflächenelementen](localization-string-ids.md#verification-display-control-user-interface-elements) als auch für [Fehlermeldungen für Einmalkennwort](localization-string-ids.md#one-time-password-error-messages) bereitzustellen. Fügen Sie Ihren „LocalizedResources“ folgendes „LocalizedString“ hinzu. 
+Mithilfe des Localization-Elements können Sie mehrere Gebietsschemas oder Sprachen in der Richtlinie für die User Journeys unterstützen. Die Lokalisierungsunterstützung in Richtlinien ermöglicht es Ihnen, sprachspezifische Zeichenfolgen sowohl für [Anzeigesteuerelemente zur Überprüfung von Benutzeroberflächenelementen](localization-string-ids.md#verification-display-control-user-interface-elements) als auch für [Fehlermeldungen für Einmalkennwort](localization-string-ids.md#one-time-password-error-messages) bereitzustellen. Fügen Sie Ihren „LocalizedResources“ folgendes „LocalizedString“ hinzu.
 
-```XML
+```xml
 <LocalizedResources Id="api.custom-email.en">
   <LocalizedStrings>
     ...

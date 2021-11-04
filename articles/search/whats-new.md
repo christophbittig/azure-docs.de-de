@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 07/20/2021
 ms.custom: references_regions
-ms.openlocfilehash: 3cd4249762e0e5836dc6a077d7f9d091394f427c
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: d693aed76ab2469af7d8c41ca216ba7d54880391
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130237964"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131048005"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Neuerungen in der kognitiven Azure-Suche
 
@@ -24,7 +24,7 @@ Informieren Sie sich über die Neuerungen im Dienst. Legen Sie ein Lesezeichen f
 |Funktion&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  |  BESCHREIBUNG | Verfügbarkeit  |
 |------------------------------------|--------------|---------------|
 | [Search-REST-API 2021-04-30-Preview](/rest/api/searchservice/index-preview) | Fügt REST-API-Unterstützung für Indexerverbindungen hinzu, die mit [verwalteten Identitäten](search-howto-managed-identities-data-sources.md) und Azure Active Directory-Authentifizierung (Azure AD) hergestellt werden. | Public Preview |
-| [Rollenbasierte Autorisierung (Vorschau)](search-security-rbac.md) | Authentifizieren Sie sich mit Azure Active Directory und neuen integrierten Rollen für den Datenebenenzugriff auf Indizes und die Indizierung, wodurch die Abhängigkeit von API-Schlüsseln vermieden oder verringert wird. | Öffentliche Vorschau ([auf Anforderung](/azure/search/search-security-rbac?tabs=config-svc-portal%2Croles-portal%2Ctest-portal#step-1-preview-sign-up)). Nachdem Ihr Abonnement integriert wurde, verwenden Sie das Azure-Portal oder die Verwaltungs-REST-API-Version 2021-04-01-Preview, um einen Suchdienst für die Authentifizierung auf Datenebene zu konfigurieren.|
+| [Rollenbasierte Autorisierung (Vorschau)](search-security-rbac.md) | Authentifizieren Sie sich mit Azure Active Directory und neuen integrierten Rollen für den Datenebenenzugriff auf Indizes und die Indizierung, wodurch die Abhängigkeit von API-Schlüsseln vermieden oder verringert wird. | Öffentliche Vorschau ([auf Anforderung](./search-security-rbac.md?tabs=config-svc-portal%2croles-portal%2ctest-portal#step-1-preview-sign-up)). Nachdem Ihr Abonnement integriert wurde, verwenden Sie das Azure-Portal oder die Verwaltungs-REST-API-Version 2021-04-01-Preview, um einen Suchdienst für die Authentifizierung auf Datenebene zu konfigurieren.|
 | [Verwaltungs-REST-API 2021-04-01-Preview](/rest/api/searchmanagement/) | Ändert [Dienst erstellen oder aktualisieren,](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update) um neue [DataPlaneAuthOptions](/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update#dataplaneauthoptions) zu unterstützen. | Public Preview |
 
 ## <a name="may-2021"></a>Mai 2021

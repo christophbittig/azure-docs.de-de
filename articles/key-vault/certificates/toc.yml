@@ -1,97 +1,98 @@
-- name: Zertifikate
-  href: index.yml
-- name: Übersicht
-  items:
-    - name: Informationen zu Zertifikaten
-      href: about-certificates.md
-    - name: Über die Zertifikatverlängerung
-      href: overview-renew-certificate.md
-- name: Schnellstarts
-  expanded: true
-  items:
-    - name: Befehlszeilenschnittstelle (CLI)
-      href: quick-create-cli.md
-    - name: PowerShell
-      href: quick-create-powershell.md
-    - name: Portal
-      href: quick-create-portal.md
-    - name: .NET
-      href: quick-create-net.md
-    - name: Node.js
-      href: quick-create-node.md
-    - name: Python
-      href: quick-create-python.md
-    - name: Java
-      href: quick-create-java.md
-- name: Beispiele
-  items:
-    - name: Codebeispiele für Key Vault
-      href: /samples/browse/?expanded=azure&products=azure-key-vault
-- name: Tutorials
-  items:
-    - name: Importieren eines Zertifikats
-      href: tutorial-import-certificate.md
-    - name: Konfigurieren der Zertifikatrotation
-      href: tutorial-rotate-certificates.md
-- name: Konzepte
-  items:
-    - name: Erste Schritte mit Key Vault-Zertifikaten
-      href: certificate-scenarios.md
-    - name: Überwachen und Verwalten der Zertifikaterstellung
-      href: create-certificate-scenarios.md
-    - name: Methoden für die Zertifikaterstellung
-      href: create-certificate.md
-    - name: Erstellen einer Zertifikatsignieranforderung
-      href: create-certificate-signing-request.md
-    - name: Zertifikatzugriffssteuerung
-      href: certificate-access-control.md
-- name: Anleitungen
-  items:
-    - name: Integrieren von Key Vault in die DigiCert-Zertifizierungsstelle
-      href: how-to-integrate-certificate-authority.md
-    - name: 'Problembehandlung: Importieren von Zertifikaten'
-      href: import-cert-faqs.yml
-    - name: Exportieren eines Zertifikats aus Key Vault
-      href: how-to-export-certificate.md
-- name: Verweis
-  items:
-    - name: Azure PowerShell
-      href: /powershell/module/az.keyvault/#key_vault
-    - name: Azure CLI
-      href: /cli/azure/keyvault
-    - name: .NET
-      href: /dotnet/api/overview/azure/security.keyvault.certificates-readme
-    - name: Java
-      href: /java/api/overview/azure/keyvault
-    - name: Node.js
-      href: /javascript/api/overview/azure/key-vault-index
-    - name: Python
-      href: /python/api/overview/azure/keyvault-certificates-readme
-    - name: REST
-      href: /rest/api/keyvault
-    - name: Resource Manager-Vorlage
-      href: /azure/templates/microsoft.keyvault/allversions
-      displayName: ARM
-    - name: Azure Policy-Integrationen
-      displayName: 'samples, policies, definitions'
-      href: ../policy-reference.md?toc=/azure/key-vault/certificates/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
-- name: Ressourcen
-  items:
-    - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
-      href: /learn/browse/?products=azure-key-vault
-    - name: Preise
-      href: 'https://azure.microsoft.com/pricing/details/key-vault/'
-    - name: Regionale Verfügbarkeit
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=key-vault'
-    - name: Vereinbarung zum Servicelevel (SLA)
-      href: 'https://azure.microsoft.com/support/legal/sla/key-vault/'
-    - name: Diensteinschränkungen
-      href: ../general/service-limits.md
-    - name: Dienststatus
-      href: 'https://azure.microsoft.com/status/'
-    - name: Dienstupdates
-      href: 'https://azure.microsoft.com/updates/?product=key-vault'
-    - name: Blog
-      href: /archive/blogs/kv/
-    - name: Produktfeedback
-      href: 'https://feedback.azure.com/forums/906355-azure-key-vault'
+items:
+  - name: Zertifikate
+    href: index.yml
+  - name: Übersicht
+    items:
+      - name: Informationen zu Zertifikaten
+        href: about-certificates.md
+      - name: Über die Zertifikatverlängerung
+        href: overview-renew-certificate.md
+  - name: Schnellstarts
+    expanded: true
+    items:
+      - name: Befehlszeilenschnittstelle (CLI)
+        href: quick-create-cli.md
+      - name: PowerShell
+        href: quick-create-powershell.md
+      - name: Portal
+        href: quick-create-portal.md
+      - name: .NET
+        href: quick-create-net.md
+      - name: Node.js
+        href: quick-create-node.md
+      - name: Python
+        href: quick-create-python.md
+      - name: Java
+        href: quick-create-java.md
+  - name: Beispiele
+    items:
+      - name: Codebeispiele für Key Vault
+        href: /samples/browse/?expanded=azure&products=azure-key-vault
+  - name: Tutorials
+    items:
+      - name: Importieren eines Zertifikats
+        href: tutorial-import-certificate.md
+      - name: Konfigurieren der Zertifikatrotation
+        href: tutorial-rotate-certificates.md
+  - name: Konzepte
+    items:
+      - name: Erste Schritte mit Key Vault-Zertifikaten
+        href: certificate-scenarios.md
+      - name: Überwachen und Verwalten der Zertifikaterstellung
+        href: create-certificate-scenarios.md
+      - name: Methoden für die Zertifikaterstellung
+        href: create-certificate.md
+      - name: Erstellen einer Zertifikatsignieranforderung
+        href: create-certificate-signing-request.md
+      - name: Zertifikatzugriffssteuerung
+        href: certificate-access-control.md
+  - name: Anleitungen
+    items:
+      - name: Integrieren von Key Vault in die DigiCert-Zertifizierungsstelle
+        href: how-to-integrate-certificate-authority.md
+      - name: 'Problembehandlung: Importieren von Zertifikaten'
+        href: import-cert-faqs.yml
+      - name: Exportieren eines Zertifikats aus Key Vault
+        href: how-to-export-certificate.md
+  - name: Verweis
+    items:
+      - name: Azure PowerShell
+        href: /powershell/module/az.keyvault/#key_vault
+      - name: Azure-Befehlszeilenschnittstelle
+        href: /cli/azure/keyvault
+      - name: .NET
+        href: /dotnet/api/overview/azure/security.keyvault.certificates-readme
+      - name: Java
+        href: /java/api/overview/azure/keyvault
+      - name: Node.js
+        href: /javascript/api/overview/azure/key-vault-index
+      - name: Python
+        href: /python/api/overview/azure/keyvault-certificates-readme
+      - name: REST
+        href: /rest/api/keyvault
+      - name: Resource Manager-Vorlage
+        href: /azure/templates/microsoft.keyvault/allversions
+        displayName: ARM
+      - name: Azure Policy-Integrationen
+        displayName: 'samples, policies, definitions'
+        href: ../policy-reference.md?toc=/azure/key-vault/certificates/toc.json&bc=/azure/key-vault/breadcrumb/toc.json
+  - name: Ressourcen
+    items:
+      - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
+        href: /learn/browse/?products=azure-key-vault
+      - name: Preise
+        href: 'https://azure.microsoft.com/pricing/details/key-vault/'
+      - name: Regionale Verfügbarkeit
+        href: 'https://azure.microsoft.com/global-infrastructure/services/?products=key-vault'
+      - name: Vereinbarung zum Servicelevel (SLA)
+        href: 'https://azure.microsoft.com/support/legal/sla/key-vault/'
+      - name: Diensteinschränkungen
+        href: ../general/service-limits.md
+      - name: Dienststatus
+        href: 'https://azure.microsoft.com/status/'
+      - name: Dienstupdates
+        href: 'https://azure.microsoft.com/updates/?product=key-vault'
+      - name: Blog
+        href: /archive/blogs/kv/
+      - name: Produktfeedback
+        href: 'https://feedback.azure.com/d365community/forum/285c5ae0-f524-ec11-b6e6-000d3a4f0da0'
