@@ -56,6 +56,8 @@
       href: front-door-health-probes.md
     - name: Front Door-Routingabgleich für eine Anforderung
       href: front-door-route-matching.md
+    - name: End-to-End-TLS-Verschlüsselung
+      href: concept-end-to-end-tls.md
     - name: HTTP/2-Unterstützung
       href: front-door-http2.md
     - name: HTTP-Header-Protokollunterstützung
