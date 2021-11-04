@@ -4,13 +4,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/28/2020
 ms.author: v-jawe
-ms.custom: references_regions
-ms.openlocfilehash: 655c5d80f1fb4e047a3cd9cc751a853815a70a68
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.custom: references_regions, ignite-fall-2021
+ms.openlocfilehash: 68e088b088c461b29311a1289e1867c4df9e5b1a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114671201"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131069132"
 ---
 In diesem Schnellstart erlernen Sie grundlegende Entwurfsmuster für die Sprechererkennung mit dem Sprach-SDK, einschließlich:
 
@@ -18,7 +18,7 @@ In diesem Schnellstart erlernen Sie grundlegende Entwurfsmuster für die Spreche
 * Sprecheridentifikation zum Identifizieren eines Stimmbeispiels unter einer Gruppe von Stimmen
 * Löschen von Stimmenprofilen
 
-Einen Überblick über die Konzepte der Spracherkennung finden Sie im Artikel [Was ist der Azure-Sprechererkennungsdienst?](../../../speaker-recognition-overview.md).
+Einen Überblick über die Konzepte der Sprechererkennung finden Sie im Artikel [Was ist der Azure-Sprechererkennungsdienst?](../../../speaker-recognition-overview.md). Eine Liste der unterstützten Plattformen finden Sie im linken Navigationsbereich im Knoten „Referenz“.
 
 ## <a name="skip-to-samples-on-github"></a>Mit den Beispielen auf GitHub fortfahren
 
@@ -29,7 +29,7 @@ Greifen Sie auf GitHub auf die [C++-Schnellstartbeispiele](https://github.com/Az
 In diesem Artikel wird vorausgesetzt, dass Sie über ein Azure-Konto und über ein Abonnement für den Speech-Dienst verfügen. Falls nicht, können Sie [den Speech-Dienst kostenlos testen](../../../overview.md#try-the-speech-service-for-free).
 
 > [!IMPORTANT]
-> Sprechererkennung wird derzeit *nur* in Azure Speech-Ressourcen unterstützt, die in der Region `westus` erstellt wurden.
+> Microsoft schränkt den Zugang zur Sprechererkennung ein. Beantragen Sie die Nutzung über die [Azure Cognitive Services Sprechererkennung Limited Access Review](https://aka.ms/azure-speaker-recognition). Nach der Genehmigung können Sie auf die APIs für die Sprechererkennung zugreifen. 
 
 ## <a name="install-the-speech-sdk"></a>Installieren des Speech SDK
 
@@ -91,10 +91,7 @@ Im nächsten Schritt werden Sie von [SpeechRecognizer::RecognizeOnceAsync](/cpp/
 
 ## <a name="text-independent-verification"></a>Textunabhängige Überprüfung
 
-Dies unterscheidet die **textabhängige** Überprüfung von der **textunabhängigen** Überprüfung:
-
-* Hierbei ist es nicht erforderlich, dass eine bestimmte Passphrase gesprochen wird, sondern es können beliebige Wörter sein.
-* Es sind nicht drei Audiobeispiele erforderlich, aber es *müssen* insgesamt 20 Sekunden an Audiodaten vorhanden sein.
+Im Gegensatz zur **textabhängigen** Überprüfung sind für die **textunabhängige** Überprüfung keine drei Audiobeispiele erforderlich, es *müssen* jedoch insgesamt 20 Sekunden an Audiodaten vorhanden sein.
 
 ### <a name="textindependentverification-function"></a>Funktion „TextIndependentVerification“
 

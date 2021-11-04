@@ -1,331 +1,92 @@
 ---
-title: Unterstützung für Archivspeicherebene
-description: Informationen zur Unterstützung der Zugriffsebene „Archiv“ für Azure Backup
-ms.topic: conceptual
-ms.date: 09/29/2021
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: bc3ea68353f7e6cc3bb16a11e8a7868df2b02310
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+title: Übersicht über die Unterstützung des Archiv-Tarifs
+description: Informationen zur Unterstützung des Archiv-Tarifs für Azure Backup.
+ms.topic: overview
+ms.date: 10/23/2021
+ms.custom: references_regions
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: 3c28d99c066bf71ea3970ce8a01eb68989e11123
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129534914"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131080895"
 ---
-# <a name="archive-tier-support"></a>Unterstützung für Archivspeicherebene
+# <a name="about-archive-tier-support"></a>Informationen zur Unterstützung des Archiv-Tarifs
 
-Kunden setzen zum Speichern von Sicherungsdaten, darunter auch Sicherungsdaten für die langfristige Aufbewahrung, auf Azure Backup. Die Anforderungen an die Aufbewahrungsdauer sind dabei in den Konformitätsregeln des jeweiligen Unternehmens definiert. In den meisten Fällen erfolgt nur selten ein Zugriff auf die älteren Sicherungsdaten, die ausschließlich zu Konformitätszwecken gespeichert werden.
+Kunden setzen zum Speichern von Sicherungsdaten, darunter auch Sicherungsdaten für die langfristige Aufbewahrung, auf Azure Backup. Die entsprechenden Anforderungen an die Aufbewahrungsdauer werden in den Konformitätsregeln des jeweiligen Unternehmens definiert. In den meisten Fällen erfolgt nur selten ein Zugriff auf die älteren Sicherungsdaten, die ausschließlich zu Konformitätszwecken gespeichert werden.
 
-Azure Backup unterstützt neben Momentaufnahmen und der Standardzugriffsebene auch die Sicherung von Wiederherstellungspunkten für die langfristige Aufbewahrung auf der Zugriffsebene „Archiv“.
+Azure Backup unterstützt neben Momentaufnahmen und dem Standard-Tarif auch die Sicherung von Wiederherstellungspunkten für die langfristige Aufbewahrung im Archiv-Tarif.
 
-## <a name="scope"></a>`Scope`
+## <a name="supported-workloads"></a>Unterstützte Workloads
 
-Unterstützte Workloads:
+Der Archiv-Tarif unterstützt die folgenden Workloads:
 
-- Virtuelle Azure-Computer
-  - Nur monatliche und jährliche Wiederherstellungspunkte. Tägliche und wöchentliche Wiederherstellungspunkte werden nicht unterstützt.
-  - Alter: mindestens drei (3) Monate auf der Tresorstandardebene
-  - Restliche Aufbewahrungsdauer: mindestens sechs (6) Monate
-  - Keine aktiven täglichen und wöchentlichen Abhängigkeiten
-- SQL Server auf virtuellen Azure-Computern
-  - Nur vollständige Wiederherstellungspunkte. Protokolle und differenzielle Sicherungen werden nicht unterstützt.
-  - Alter: mindestens 45 Tage auf der Tresorstandardebene
-  - Restliche Aufbewahrungsdauer: mindestens sechs (6) Monate
-  - Keine Abhängigkeiten
-
-Unterstützte Clients:
-
-- Die Funktion wird mithilfe von PowerShell bereitgestellt.
+| Arbeitsauslastungen | Operations |
+| --- | --- |
+| Virtuelle Azure-Computer | <ul><li>Nur monatliche und jährliche Wiederherstellungspunkte. Tägliche und wöchentliche Wiederherstellungspunkte werden nicht unterstützt.  </li><li>Alter: mindestens drei (3) Monate auf der Tresorstandardebene </li><li>Restliche Aufbewahrungsdauer: mindestens sechs (6) Monate </li><li>Keine aktiven täglichen und wöchentlichen Abhängigkeiten. </li></ul> |
+| SQL Server in Azure Virtual Machines/SAP HANA in Azure Virtual Machines | <ul><li>Nur vollständige Wiederherstellungspunkte. Protokolle und differenzielle Sicherungen werden nicht unterstützt. </li><li>Alter: mindestens 45 Tage im Vault-Standard-Tarif </li><li>Restliche Aufbewahrungsdauer: mindestens sechs (6) Monate </li><li>Keine Abhängigkeiten </li></ul> |
 
 >[!Note]
->Die Unterstützung der Zugriffsebene „Archiv“ für SQL Server auf Azure-VMs ist ab sofort in vielen Regionen allgemein verfügbar. Eine ausführliche Liste der unterstützten Regionen finden Sie in der [Supportmatrix](#support-matrix).    <br><br>    Für die verbleibenden Regionen für SQL Server in Azure-VMs befindet sich die Unterstützung der Zugriffsebene „Archiv“ in der eingeschränkten öffentlichen Vorschau. Die Unterstützung der Zugriffsebene „Archiv“ für Azure Virtual Machines befindet sich ebenfalls in der eingeschränkten öffentlichen Vorschau. Verwenden Sie diesen [Link](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR463S33c54tEiJLEM6Enqb9UNU5CVTlLVFlGUkNXWVlMNlRPM1lJWUxLRy4u), um sich für die eingeschränkte öffentliche Vorschauversion zu registrieren.
+>- Die Unterstützung des Archiv-Tarifs für SQL Server in Azure Virtual Machines und SAP HANA in Azure Virtual Machines ist ab sofort in vielen Regionen allgemein verfügbar. Eine ausführliche Liste der unterstützten Regionen finden Sie in der [Supportmatrix](#support-matrix).
+>- Die Unterstützung der Zugriffsebene „Archiv“ für Azure Virtual Machines befindet sich ebenfalls in der eingeschränkten öffentlichen Vorschau. Füllen Sie [dieses Formular aus](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR463S33c54tEiJLEM6Enqb9UNU5CVTlLVFlGUkNXWVlMNlRPM1lJWUxLRy4u), um sich für die eingeschränkte öffentliche Vorschauversion zu registrieren.
 
-## <a name="get-started-with-powershell"></a>Erste Schritte mit PowerShell
+## <a name="supported-clients"></a>Unterstützte Clients
 
-1. Laden Sie die [neueste](https://github.com/PowerShell/PowerShell/releases) Version von PowerShell von GitHub herunter.
+Der Archiv-Tarif unterstützt die folgenden Clients:
 
-1. Führen Sie in PowerShell den folgenden Befehl aus:
-  
-    ```azurepowershell
-    install-module -name Az.RecoveryServices -Repository PSGallery -RequiredVersion 4.4.0 -AllowPrerelease -force
-    ```
+- [PowerShell](/azure/backup/use-archive-tier-support?pivots=client-powershelltier)
+- [BEFEHLSZEILENSCHNITTSTELLE (CLI)](/azure/backup/use-archive-tier-support?pivots=client-clitier)
+- [Azure-Portal](/azure/backup/use-archive-tier-support?pivots=client-portaltier)
 
-1. Stellen Sie mithilfe des Cmdlets [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) eine Verbindung mit Azure her.
-1. Melden Sie sich bei Ihrem Abonnement an:
+## <a name="how-azure-backup-moves-recovery-points-to-the-vault-archive-tier"></a>Wie verschiebt Azure Backup Wiederherstellungspunkte in den Vault-Archiv-Tarif?
 
-   `Set-AzContext -Subscription "SubscriptionName"`
+> [!VIDEO https://www.youtube.com/embed/nQnH5mpiz60?start=416]
 
-1. Tresor abrufen:
+## <a name="archive-recommendations-only-for-azure-virtual-machines"></a>Archivempfehlungen (nur für Azure Virtual Machines)
 
-    `$vault =  Get-AzRecoveryServicesVault -ResourceGroupName "rgName" -Name "vaultName"`
+Die Wiederherstellungspunkte für Azure Virtual Machines sind inkrementell. Wenn Sie Wiederherstellungspunkte in den Archiv-Tarif verschieben, werden sie in vollständige Wiederherstellungspunkte konvertiert (um sicherzustellen, dass alle Wiederherstellungspunkte im Archiv-Tarif voneinander unabhängig und isoliert sind). Daher kann der gesamte Sicherungsspeicher (Vault-Standard + Vault-Archiv) größer werden.
 
-1. Liste der Sicherungselemente abrufen:
+Die Zunahme der Speichergröße hängt vom Änderungsmuster der virtuellen Computer ab.
 
-    - Gehen Sie bei virtuellen Azure-Computern wie folgt vor:
+- Je höher die Änderungsrate der virtuellen Computer ist, desto kleiner ist der gesamte Sicherungsspeicher, wenn ein Wiederherstellungspunkt in den Archiv-Tarif verschoben wird.
+- Wenn die Änderungsrate der virtuellen Computer gering ist, kann die Verschiebung in den Archiv-Tarif zu einer Vergrößerung des Sicherungsspeichers führen. Dies kann den Preisunterschied zwischen dem Vault-Standard- und dem Vault-Archiv-Tarif aufrechnen. Dadurch können die Gesamtkosten steigen.
 
-        `$BackupItemList = Get-AzRecoveryServicesBackupItem -vaultId $vault.ID -BackupManagementType "AzureVM" -WorkloadType "AzureVM"`
+Um dies zu vermeiden, stellt Azure Backup einen Empfehlungssatz bereit. Der Empfehlungssatz gibt eine Liste von Wiederherstellungspunkten zurück, die Kosteneinsparungen sicherstellen, wenn sie zusammen in den Archiv-Tarif verschoben werden.
 
-    - Gehen Sie bei SQL Server auf virtuellen Azure-Computern wie folgt vor:
+>[!Note]
+>Die Kosteneinsparungen hängen von verschiedenen Faktoren ab und können sich für die einzelnen Instanzen unterschiedlich sein.
 
-        `$BackupItemList = Get-AzRecoveryServicesBackupItem -vaultId $vault.ID -BackupManagementType "AzureWorkload" -WorkloadType "MSSQL"`
+## <a name="modify-protection"></a>Ändern des Schutzes
 
-1. Rufen Sie das Sicherungselement ab.
-
-    - Gehen Sie bei virtuellen Azure-Computern wie folgt vor:
-
-        `$bckItm = $BackupItemList | Where-Object {$_.Name -match '<vmName>'}`
-
-    - Gehen Sie bei SQL Server auf virtuellen Azure-Computern wie folgt vor:
-
-        `$bckItm = $BackupItemList | Where-Object {$_.FriendlyName -eq '<dbName>' -and $_.ContainerName -match '<vmName>'}`
-
-1. Fügen Sie den Datumsbereich hinzu, für den Sie die Wiederherstellungspunkte anzeigen möchten. Wenn Sie beispielsweise die Wiederherstellungspunkte der letzten 124 Tage bis zu den letzten 95 Tagen anzeigen möchten, verwenden Sie den folgenden Befehl:
-
-   ```azurepowershell
-    $startDate = (Get-Date).AddDays(-124)
-    $endDate = (Get-Date).AddDays(-95) 
-
-    ```
-    >[!NOTE]
-    >Um Wiederherstellungspunkte für einen anderen Zeitraum anzuzeigen, ändern Sie Start- und Enddatum entsprechend.
-## <a name="use-powershell"></a>Verwenden von PowerShell
-
-### <a name="check-the-archivable-status-of-all-the-recovery-points"></a>Überprüfen des Archivierungsstatus aller Wiederherstellungspunkte
-
-Sie können nun den Archivierungsstatus aller Wiederherstellungspunkte eines Sicherungselements mit dem folgenden Cmdlet überprüfen:
-
-```azurepowershell
-$rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm -StartDate $startdate.ToUniversalTime() -EndDate $enddate.ToUniversalTime() 
-
-$rp | select RecoveryPointId, @{ Label="IsArchivable";Expression={$_.RecoveryPointMoveReadinessInfo["ArchivedRP"].IsReadyForMove}}, @{ Label="ArchivableInfo";Expression={$_.RecoveryPointMoveReadinessInfo["ArchivedRP"].AdditionalInfo}}
-```
-
-### <a name="check-archivable-recovery-points"></a>Überprüfen von archivierbaren Wiederherstellungspunkten
-
-```azurepowershell
-$rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm -StartDate $startdate.ToUniversalTime() -EndDate $enddate.ToUniversalTime() -IsReadyForMove $true -TargetTier VaultArchive
-```
-
-Damit werden alle Wiederherstellungspunkte aufgelistet, die einem bestimmten Sicherungselement zugeordnet sind, das in das Archiv verschoben werden kann (vom Startdatum zum Enddatum). Sie können auch Startdatum und Enddatum ändern.
-
-### <a name="check-why-a-recovery-point-cannot-be-moved-to-archive"></a>Überprüfen, warum ein Wiederherstellungspunkt nicht in das Archiv verschoben werden kann
-
-```azurepowershell
-$rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm -StartDate $startdate.ToUniversalTime() -EndDate $enddate.ToUniversalTime() -IsReadyForMove $false -TargetTier VaultArchive
-$rp[0].RecoveryPointMoveReadinessInfo["ArchivedRP"]
-```
-
-Dabei entspricht `$rp[0]` dem Wiederherstellungspunkt, der nicht archiviert werden kann und den Sie überprüfen möchten.
-
-Beispielausgabe:
-
-```output
-IsReadyForMove  AdditionalInfo
---------------  --------------
-False           Recovery-Point Type is not eligible for archive move as it is already moved to archive tier
-```
-
-### <a name="check-recommended-set-of-archivable-points-only-for-azure-vms"></a>Überprüfen des empfohlenen Satzes archivierbarer Punkte (nur für virtuelle Azure-Computer)
-
-Die einem virtuellen Computer zugeordneten Wiederherstellungspunkte sind naturgemäß inkrementell. Wenn ein bestimmter Wiederherstellungspunkt in das Archiv verschoben wird, wird er zuerst in eine vollständige Sicherung konvertiert und dann archiviert. Daher richten sich die mit dem Verschieben ins Archiv verbundenen Kosteneinsparungen nach der Änderungsrate der Datenquelle.
-
-Aus diesem Grund stellt Azure Backup einen empfohlenen Satz von Wiederherstellungspunkten bereit, die bei einer gemeinsamen Verschiebung zu Kosteneinsparungen führen können.
-
->[!NOTE]
->Die Kosteneinsparungen richten sich nach einer Vielzahl von Bedingungen und sind häufig nicht einmal bei zwei Instanzen identisch.
-
-```azurepowershell
-$RecommendedRecoveryPointList = Get-AzRecoveryServicesBackupRecommendedArchivableRPGroup -Item $bckItm -VaultId $vault.ID
-```
-
-### <a name="move-to-archive"></a>Verschieben in das Archiv
-
-```azurepowershell
-Move-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -RecoveryPoint $rp[0] -SourceTier VaultStandard -DestinationTier VaultArchive
-```
-
-Dabei ist `$rp[0]` der erste Wiederherstellungspunkt in der Liste. Wenn Sie andere Wiederherstellungspunkte verschieben möchten, verwenden Sie `$rp[1]`, `$rp[2]`, usw.
-
-Mit diesem Befehl wird ein archivierbarer Wiederherstellungspunkt in das Archiv verschoben. Zurückgegeben wird ein Auftrag, der zum Nachverfolgen des Verschiebevorgangs, sowohl im Portal als auch mit PowerShell, verwendet werden kann.
-
-### <a name="view-archived-recovery-points"></a>Anzeigen archivierter Wiederherstellungspunkte
-
-Mit diesem Befehl werden alle archivierten Wiederherstellungspunkte zurückgegeben.
-
-```azurepowershell
-$rp = Get-AzRecoveryServicesBackupRecoveryPoint -VaultId $vault.ID -Item $bckItm -Tier VaultArchive -StartDate $startdate.ToUniversalTime() -EndDate $enddate.ToUniversalTime()
-```
-
-### <a name="restore-with-powershell"></a>Wiederherstellen mit PowerShell
-
-Für Wiederherstellungspunkte im Archiv stellt Azure Backup eine integrierte Wiederherstellungsmethode bereit.
-
-Bei der integrierten Wiederherstellung handelt es sich um einen zweistufigen Vorgang. Zuerst werden die im Archiv gespeicherten Wiederherstellungspunkte aktiviert und temporär für einen Zeitraum von 10 bis 30 Tagen (auch als Aktivierungsdauer bezeichnet) auf der Tresorstandardebene gespeichert. Der Standardwert beträgt 15 Tage. Bei der Aktivierung gibt es zwei unterschiedliche Prioritäten: Standardpriorität und hohe Priorität. Weitere Informationen hierzu finden Sie unter [Aktivierungspriorität](../storage/blobs/archive-rehydrate-overview.md#rehydration-priority).
-
->[!NOTE]
->
->- Die einmal ausgewählte Aktivierungsdauer kann nicht geändert werden, und die aktivierten Wiederherstellungspunkte befinden sich während der Aktivierungsdauer auf der Standardzugriffsebene.
->- Der zusätzliche Aktivierungsschritt verursacht Kosten.
-
-Weitere Informationen zu den verschiedenen Wiederherstellungsmethoden für virtuelle Azure-Computer finden Sie unter [Wiederherstellen eines virtuellen Azure-Computers mit PowerShell](backup-azure-vms-automation.md#restore-an-azure-vm).
-
-```azurepowershell
-Restore-AzRecoveryServicesBackupItem -VaultLocation $vault.Location -RehydratePriority "Standard" -RehydrateDuration 15 -RecoveryPoint $rp -StorageAccountName "SampleSA" -StorageAccountResourceGroupName "SArgName" -TargetResourceGroupName $vault.ResourceGroupName -VaultId $vault.ID
-```
-
-Zum Wiederherstellen von SQL Server führen Sie [diese Schritte](backup-azure-sql-automation.md#restore-sql-dbs) aus. Der Befehl `Restore-AzRecoveryServicesBackupItem` erfordert zwei zusätzliche Parameter: **RehydrationDuration** und **RehydrationPriority**.
-
-### <a name="view-jobs-from-powershell"></a>Anzeigen von Aufträgen in PowerShell
-
-Verwenden Sie das folgende PowerShell-Cmdlet, um die Verschiebungs- und Wiederherstellungsaufträge anzuzeigen:
-
-```azurepowershell
-Get-AzRecoveryServicesBackupJob -VaultId $vault.ID
-```
-
-### <a name="move-recovery-points-to-archive-tier-at-scale"></a>Verschieben großer Mengen von Wiederherstellungspunkten in die Archivebene
-
-Sie können jetzt Beispielskripts verwenden, um Vorgänge in großem Maßstab auszuführen. [Erfahren Sie mehr](https://github.com/hiaga/Az.RecoveryServices/blob/master/README.md) über das Ausführen von Beispielskripts. Sie können die Skripts [hier](https://github.com/hiaga/Az.RecoveryServices) herunterladen.
-
-Sie können die folgenden Vorgänge mithilfe der von Azure Backup bereitgestellten Beispielskripts ausführen:
-
-- Verschieben aller in Frage kommenden Wiederherstellungspunkte für eine bestimmte Datenbank/alle Datenbanken eines SQL-Servers auf dem virtuellen Azure-Computer auf die Archivebene.
-- Verschieben aller empfohlenen Wiederherstellungspunkte für einen bestimmten virtuellen Azure-Computer auf die Archivebene.
- 
-Sie können auch ein Skript gemäß Ihren Anforderungen schreiben oder die obigen Beispielskripts ändern, um die erforderlichen Sicherungselemente abzurufen.
-
-## <a name="use-the-portal"></a>Verwenden des Portals
-
-### <a name="check-archived-recovery-point"></a>Überprüfen archivierter Wiederherstellungspunkte
-
-Sie können jetzt alle Wiederherstellungspunkte anzeigen, die in das Archiv verschoben wurden.
-
-![Alle Wiederherstellungspunkte.](./media/archive-tier-support/restore-points.png)
-
-### <a name="restore-in-the-portal"></a>Wiederherstellen im Portal
-
-Bei Wiederherstellungspunkten, die ins Archiv verschoben wurden, müssen Sie bei der Wiederherstellung die Parameter für die Aktivierungsdauer und die Aktivierungspriorität hinzufügen.
-
-![Wiederherstellen im Azure-Portal.](./media/archive-tier-support/restore-in-portal.png)
-
-### <a name="view-jobs-in-the-portal"></a>Anzeigen von Aufträgen im Portal
-
-![Anzeigen von Aufträgen im Portal.](./media/archive-tier-support/view-jobs-portal.png)
-
-### <a name="modify-protection"></a>Ändern des Schutzes
-
-Es gibt zwei Möglichkeiten, den Schutz für eine Datenquelle zu ändern:
+Azure Backup bietet zwei Möglichkeiten, den Schutz für eine Datenquelle zu ändern:
 
 - Bearbeiten einer vorhandenen Richtlinie
 - Schützen der Datenquelle durch eine neue Richtlinie
 
-In beiden Fällen wird die neue Richtlinie auf alle älteren Wiederherstellungspunkte, die sich auf der Standard- und der Archivebene befinden, angewendet. Möglicherweise werden durch Änderung der Richtlinie ältere Wiederherstellungspunkte gelöscht.
+In beiden Szenarien wird die neue Richtlinie auf alle älteren Wiederherstellungspunkte, die sich im Standard- und Archiv-Tarifbefinden, angewendet. Möglicherweise werden ältere Wiederherstellungspunkte gelöscht, wenn die Richtlinie geändert wird.
 
-Für Wiederherstellungspunkte, die ins Archiv verschoben werden, unterliegen für einen Zeitraum von 180 Tagen einer Gebühr für vorzeitiges Löschen. Die Gebühren werden anteilmäßig abgerechnet. Beim Löschen eines Wiederherstellungspunkts, der sich keine 180 Tage im Archiv befunden hat, werden Kosten für 180 Tage abzüglich der Anzahl der Tage auf der Standardebene in Rechnung gestellt.
+Für Wiederherstellungspunkte, die Sie ins Archiv verschieben, fällt für einen Zeitraum von 180 Tagen eine Gebühr für vorzeitiges Löschen an. Die Gebühren werden anteilmäßig abgerechnet. Beim Löschen eines Wiederherstellungspunkts, der sich keine 180 Tage im Archiv befunden hat, werden Kosten für 180 Tage abzüglich der Anzahl der Tage im Standard-Tarif in Rechnung gestellt.
 
-Für Wiederherstellungspunkte, die sich nicht mindestens sechs Monate im Archiv befunden haben, wird beim Löschen eine Gebühr für vorzeitiges Löschen fällig.
+Beim Löschen von Wiederherstellungspunkten, die sich nicht mindestens 180 Tage im Archiv befunden haben, wird eine Gebühr für vorzeitiges Löschen fällig.
 
 ## <a name="stop-protection-and-delete-data"></a>Beenden des Schutzes und Löschen der Daten
 
-Durch das Beenden des Schutzes und das Löschen der Daten werden alle Wiederherstellungspunkte gelöscht. Bei Wiederherstellungspunkten im Archiv, die sich keine 180 Tage auf der Archivebene befunden haben, verursacht ein Löschvorgang Kosten für vorzeitiges Löschen.
+Durch das Beenden des Schutzes und das Löschen der Daten werden alle Wiederherstellungspunkte gelöscht. Bei Wiederherstellungspunkten im Archiv, die sich keine 180 Tage im Archiv-Tarif befunden haben, verursacht ein Löschvorgang Kosten für vorzeitiges Löschen.
+
+## <a name="archive-tier-pricing"></a>Archiv-Tarif – Preise
+
+Die Preise für den Archiv-Tarif finden Sie auf unserer [Preisseite](azure-backup-pricing.md).
 
 ## <a name="support-matrix"></a>Unterstützungsmatrix
 
 | Arbeitsauslastungen | Vorschau | Allgemein verfügbar |
 | --- | --- | --- |
-| SQL Server auf Azure-VM | Keine | „Australien, Osten“, „Indien, Mitte“, „Europa, Norden“, „Asien, Südosten“, „Asien, Osten“, „Australien, Südosten“, „Kanada, Mitte“, „Brasilien, Süden“, „Kanada, Osten“, „Frankreich, Mitte“, „Frankreich, Süden“, „Japan, Osten“, „Japan, Westen“, „Korea, Mitte“, „Korea, Süden“, „Indien, Süden“, „Vereinigtes Königreich, Westen“, „Vereinigtes Königreich, Süden“, „USA, Mitte“, „USA, Osten 2“, „USA, Westen“, „USA, Westen 2“, „USA, Westen-Mitte“, „USA, Osten“, „USA, Süden-Mitte“, „USA, Norden-Mitte“, „Europa, Westen“, „US Gov TX“, „US GOV AZ“. |
+| SQL Server in Azure Virtual Machines/SAP HANA in Azure Virtual Machines | Keine | „Australien, Osten“, „Indien, Mitte“, „Europa, Norden“, „Asien, Südosten“, „Asien, Osten“, „Australien, Südosten“, „Kanada, Mitte“, „Brasilien, Süden“, „Kanada, Osten“, „Frankreich, Mitte“, „Frankreich, Süden“, „Japan, Osten“, „Japan, Westen“, „Korea, Mitte“, „Korea, Süden“, „Indien, Süden“, „Vereinigtes Königreich, Westen“, „Vereinigtes Königreich, Süden“, „USA, Mitte“, „USA, Osten 2“, „USA, Westen“, „USA, Westen 2“, „USA, Westen-Mitte“, „USA, Osten“, „USA, Süden-Mitte“, „USA, Norden-Mitte“, „Europa, Westen“, „US Gov TX“, „US GOV AZ“. |
 | Azure-VMs | „USA, Osten“, „USA, Osten 2“, „USA, Mitte“, „USA, Süden-Mitte“, „USA, Westen“, „USA, Westen 2“, „USA, Westen-Mitte“, „USA, Norden-Mitte“, „Brasilien, Süden“, „Kanada, Osten“, „Kanada, Mitte“, „Europa, Westen“, „Vereinigtes Königreich, Süden“, „Vereinigtes Königreich, Westen“, „Asien, Osten“, „Japan, Osten“, „Indien, Süden“, „Asien, Südosten“, „Australien, Osten“, „Indien, Mitte“, „Europa, Mitte“, „Australien, Südosten“, „Frankreich, Mitte“, „Frankreich, Süden“, „Japan, Westen“, „Südkorea, Mitte“, „Südkorea, Süden“. | Keine |
 
-## <a name="error-codes-and-troubleshooting-steps"></a>Fehlercodes und Schritte zur Problembehandlung
-
-Es gibt mehrere Fehlercodes, die auftreten, wenn ein Wiederherstellungspunkt nicht in das Archiv verschoben werden kann.
-
-### <a name="recoverypointtypenoteligibleforarchive"></a>RecoveryPointTypeNotEligibleForArchive
-
-**Fehlermeldung**: Der Typ des Wiederherstellungspunkts ist nicht für eine Verschiebung in das Archiv berechtigt.
-
-**Beschreibung**: Dieser Fehlercode wird angezeigt, wenn der ausgewählte Typ des Wiederherstellungspunkts nicht berechtigt ist, in das Archiv verschoben zu werden.
-
-**Empfohlene Aktion**: Überprüfen Sie [hier](#scope) die Berechtigung des Wiederherstellungspunkts.
-
-### <a name="recoverypointhaveactivedependencies"></a>RecoveryPointHaveActiveDependencies
-
-**Fehlermeldung**: Der Wiederherstellungspunkt enthält aktive Abhängigkeiten für die Wiederherstellung und ist nicht berechtigt, in das Archiv verschoben zu werden.
-
-**Beschreibung**: Der ausgewählte Wiederherstellungspunkt enthält aktive Abhängigkeiten und kann daher nicht in das Archiv verschoben werden.
-
-**Empfohlene Aktion**: Überprüfen Sie [hier](#scope) die Berechtigung des Wiederherstellungspunkts.
-
-### <a name="minlifespaninstandardrequiredforarchive"></a>MinLifeSpanInStandardRequiredForArchive
-
-**Fehlermeldung**: Der Wiederherstellungspunkt ist nicht berechtigt, in das Archiv verschoben zu werden, weil die bisherige Lebensdauer auf der Tresorstandardebene nicht der erforderlichen Mindestdauer entspricht.
-
-**Beschreibung**: Der Wiederherstellungspunkt muss bei virtuellen Azure-Computern mindestens drei Monate und bei SQL Server mindestens 45 Tage auf der Standardzugriffsebene gespeichert gewesen sein.
-
-**Empfohlene Aktion**: Überprüfen Sie [hier](#scope) die Berechtigung des Wiederherstellungspunkts.
-
-### <a name="minremaininglifespaninarchiverequired"></a>MinRemainingLifeSpanInArchiveRequired
-
-**Fehlermeldung**: Die restliche Lebensdauer des Wiederherstellungspunkts liegt unter dem erforderlichen Mindestwert.
-
-**Beschreibung**:Die erforderliche Mindestlebensdauer für einen Wiederherstellungspunkt, die zum Verschieben in das Archiv berechtigt, beträgt sechs Monate.
-
-**Empfohlene Aktion**: Überprüfen Sie [hier](#scope) die Berechtigung des Wiederherstellungspunkts.
-
-### <a name="usererrorrecoverypointalreadyinarchivetier"></a>UserErrorRecoveryPointAlreadyInArchiveTier
-
-**Fehlermeldung**: Der Wiederherstellungspunkt ist nicht berechtigt, in das Archiv verschoben zu werden, weil er bereits auf die Archivebene verschoben wurde.
-
-**Beschreibung**: Der ausgewählte Wiederherstellungspunkt befindet sich bereits im Archiv. Daher ist er nicht berechtigt, in das Archiv verschoben zu werden.
-
-### <a name="usererrordatasourcetypeisnotsupportedforrecommendationapi"></a>UserErrorDatasourceTypeIsNotSupportedForRecommendationApi
-
-**Fehlermeldung**: Der Datenquellentyp ist für die Empfehlungs-API nicht berechtigt.
-
-**Beschreibung**: Die Empfehlungs-API ist nur für virtuelle Azure-Computer geeignet. Dies trifft nicht auf den ausgewählten Datenquellentyp zu.
-
-### <a name="usererrorrecoverypointalreadyrehydrated"></a>UserErrorRecoveryPointAlreadyRehydrated
-
-**Fehlermeldung**: Der Wiederherstellungspunkt wurde bereits aktiviert. Die Aktivierung ist für diesen Wiederherstellungspunkt nicht zulässig.
-
-**Beschreibung**: Der ausgewählte Wiederherstellungspunkt wurde bereits aktiviert.
-
-### <a name="usererrorrecoverypointisnoteligibleforarchivemove"></a>UserErrorRecoveryPointIsNotEligibleForArchiveMove
-
-**Fehlermeldung**: Der Wiederherstellungspunkt ist nicht berechtigt, in das Archiv verschoben zu werden.
-
-**Beschreibung**:Der ausgewählte Wiederherstellungspunkt ist nicht berechtigt, in das Archiv verschoben zu werden.
-
-### <a name="usererrorrecoverypointnotrehydrated"></a>UserErrorRecoveryPointNotRehydrated
-
-**Fehler** **meldung**: Der Wiederherstellungspunkt im Archiv ist nicht aktiviert. Wiederholen Sie die Wiederherstellung, nachdem die Aktivierung des Wiederherstellungspunkts im Archiv abgeschlossen ist.
-
-**Beschreibung**: Der Wiederherstellungspunkt ist nicht aktiviert. Versuchen Sie, die Wiederherstellung nach dem Aktivieren des Wiederherstellungspunkts auszuführen.
-
-### <a name="usererrorrecoverypointrehydrationnotallowed"></a>UserErrorRecoveryPointRehydrationNotAllowed
-
-**Fehler** **meldung**: Die Aktivierung wird nur für Wiederherstellungspunkte im Archiv unterstützt.
-
-**Beschreibung**: Für den ausgewählten Wiederherstellungspunkt ist keine Aktivierung zulässig.
-
-### <a name="usererrorrecoverypointrehydrationalreadyinprogress"></a>UserErrorRecoveryPointRehydrationAlreadyInProgress
-
-**Fehlermeldung**: Die Aktivierung des Wiederherstellungspunkts im Archiv wird bereits durchgeführt.
-
-**Beschreibung**: Die Aktivierung des ausgewählten Wiederherstellungspunkts wird bereits durchgeführt.
-
-### <a name="rpmovenotsupportedduetoinsufficientretention"></a>RPMoveNotSupportedDueToInsufficientRetention
-
-**Fehlermeldung**: Der Wiederherstellungspunkt kann nicht auf die Archivebene verschoben werden, da die von der Richtlinie vorgegebene Aufbewahrungsdauer nicht ausreicht.
-
-**Empfohlene Aktion**: Aktualisieren Sie die Richtlinie für das geschützte Element mit der entsprechenden Aufbewahrungseinstellung, und wiederholen Sie dann den Vorgang.
-
-### <a name="rpmovereadinesstobedetermined"></a>RPMoveReadinessToBeDetermined
-
-**Fehlermeldung**: Es wird noch ermittelt, ob dieser Wiederherstellungspunkt verschoben werden kann.
-
-**Beschreibung**: Es muss noch ermittelt werden, ob der Wiederherstellungspunkt verschoben werden kann.
-
-**Empfohlene Aktion**: Warten Sie einen Moment, und wiederholen Sie dann den Vorgang.
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
@@ -335,10 +96,19 @@ Der Wiederherstellungspunkt bleibt dauerhaft im Archiv gespeichert. Weitere Info
 
 ### <a name="is-cross-region-restore-supported-from-archive-tier"></a>Wird die regionsübergreifende Wiederherstellung von der Zugriffsebene „Archiv“ unterstützt?
 
-Wenn Sie Ihre Daten in GRS-Tresoren von der Zugriffsebene „Standard“ in die Zugriffsebene „Archiv“ verschieben, werden die Daten in das GRS-Archiv verschoben. Dies gilt auch, wenn die regionsübergreifende Wiederherstellung aktiviert ist. Sobald Sicherungsdaten in die Zugriffsebene „Archiv“ verschoben wurden, können Sie die Daten nicht mehr in der gekoppelten Region wiederherstellen. Fällt eine Region aus, stehen die Sicherungsdaten in der sekundären Region jedoch für die Wiederherstellung zur Verfügung. 
+Wenn Sie Ihre Daten in GRS-Tresoren von der Zugriffsebene „Standard“ in die Zugriffsebene „Archiv“ verschieben, werden die Daten in das GRS-Archiv verschoben. Dies gilt auch, wenn die regionsübergreifende Wiederherstellung aktiviert ist. Sobald Sicherungsdaten in den Archiv-Tarif verschoben wurden, können Sie die Daten nicht mehr in der gekoppelten Region wiederherstellen. Fällt eine Region aus, stehen die Sicherungsdaten in der sekundären Region jedoch für die Wiederherstellung zur Verfügung. 
 
 Beim Wiederherstellen eines Wiederherstellungspunkts in der Zugriffsebene „Archiv“ in der primären Region wird der Wiederherstellungspunkt in die Zugriffsebene „Standard“ kopiert und sowohl in der primären als auch in der sekundären Region gemäß der Dauer der Aktivierung aufbewahrt. Sie können die regionsübergreifende Wiederherstellung aus diesen aktivierten Wiederherstellungspunkten ausführen.
 
+### <a name="i-can-see-eligible-recovery-points-for-my-virtual-machine-but-i-cant-seeing-any-recommendation-what-can-be-the-reason"></a>Ich kann geeignete Wiederherstellungspunkte für meinen virtuellen Computer sehen, aber keine Empfehlung. Was kann der Grund dafür sein?
+
+Die Wiederherstellungspunkte für Virtual Machines erfüllen die Berechtigungskriterien. Es gibt also archivierbare Wiederherstellungspunkte. Die Änderungsrate auf dem virtuellen Computer kann jedoch gering sein, sodass es keine Empfehlungen gibt. In diesem Szenario können Sie die archivierbaren Wiederherstellungspunkte in den Archiv-Tarif verschieben. Dadurch können aber die Gesamtkosten für den Sicherungsspeicher steigen.
+
+### <a name="i-have-stopped-protection-and-retained-data-for-my-workload-can-i-move-the-recovery-points-to-archive-tier"></a>Ich habe den Schutz beendet und Daten für meine Workload aufbewahrt. Kann ich die Wiederherstellungspunkte in den Archiv-Tarif verschieben?
+
+Nein. Sobald der Schutz für eine bestimmte Workload beendet wurde, können die entsprechenden Wiederherstellungspunkte nicht in den Archiv-Tarif verschoben werden. Um Wiederherstellungspunkte in den Archiv-Tarif zu verschieben, müssen Sie den Schutz für die Datenquelle fortsetzen.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
+- [Verwenden des Archiv-Tarifs](use-archive-tier-support.md)
 - [Preise für Azure Backup](azure-backup-pricing.md)

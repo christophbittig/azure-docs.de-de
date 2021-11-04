@@ -1,20 +1,22 @@
 ---
-title: Nachverfolgen der Sicherheitsbewertung in Azure Security Center
-description: Erfahren Sie mehr über die verschiedenen Methoden zum Zugreifen auf und Nachverfolgen von Sicherheitsbewertungen im Azure Security Center.
+title: Ihre Sicherheitsbewertung in Microsoft Defender für Cloud nachverfolgen
+description: Erfahren Sie mehr über die verschiedenen Methoden zum Zugreifen auf und Nachverfolgen von Sicherheitsbewertungen in Microsoft Defender für Cloud.
 author: memildin
 ms.author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 02/25/2021
-ms.openlocfilehash: 9373806b87144005407861b2043799f0c62ce982
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.date: 11/02/2021
+ms.openlocfilehash: 61cd7dd97f0b563d5bcb1030830edfa073ab0571
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112237910"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131452830"
 ---
 # <a name="access-and-track-your-secure-score"></a>Zugreifen auf Ihre Sicherheitsbewertung und Nachverfolgen dieser Bewertung
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 Ihre insgesamte Sicherheitsbewertung sowie Ihre Bewertung pro Abonnement können Sie im Azure-Portal finden oder entsprechend den Angaben in den folgenden Abschnitten programmgesteuert abrufen:
 
@@ -23,26 +25,26 @@ Ihre insgesamte Sicherheitsbewertung sowie Ihre Bewertung pro Abonnement können
 
 ## <a name="get-your-secure-score-from-the-portal"></a>Abrufen ihrer Sicherheitsbewertung aus dem Portal
 
-Von Security Center wird Ihre Bewertung im Portal auf der Übersichtsseite als erste Hauptkachel gut sichtbar angezeigt. Wenn Sie diese Kachel auswählen, gelangen Sie zur dedizierten Seite mit der Sicherheitsbewertung, auf der Sie die Bewertung nach Abonnement aufgeschlüsselt sehen. Wählen Sie ein einzelnes Abonnement aus, um die detaillierte Liste mit priorisierten Empfehlungen und die möglichen Auswirkungen anzuzeigen, die eine Umsetzung dieser Empfehlungen auf die Bewertung des Abonnements hat. 
+Defender für Cloud zeigt Ihre Bewertung an einer zentralen Stelle im Portal an: dies ist die erste Hauptkachel der Übersichtsseite von Defender für Cloud. Wenn Sie diese Kachel auswählen, gelangen Sie zur dedizierten Seite mit der Sicherheitsbewertung, auf der Sie die Bewertung nach Abonnement aufgeschlüsselt sehen. Wählen Sie ein einzelnes Abonnement aus, um die detaillierte Liste mit priorisierten Empfehlungen und die möglichen Auswirkungen anzuzeigen, die eine Umsetzung dieser Empfehlungen auf die Bewertung des Abonnements hat. 
 
-Zur Wiederholung: Ihre Sicherheitsbewertung wird auf Seiten des Security Center-Portals an den folgenden Stellen gezeigt.
+Zur Wiederholung: Ihre Sicherheitsbewertung wird auf Seiten des Defender für Cloud-Portals an den folgenden Stellen gezeigt.
 
-- Auf einer Kachel der **Übersicht** in Security Center (Hauptdashboard):
+- Auf einer Kachel in der **Übersicht** von Defender für Cloud (Hauptdashboard):
 
-    :::image type="content" source="./media/secure-score-security-controls/score-on-main-dashboard.png" alt-text="Die Sicherheitsbewertung auf dem Security Center-Dashboard":::
+    :::image type="content" source="./media/secure-score-security-controls/score-on-main-dashboard.png" alt-text="Die Sicherheitsbewertung auf dem Dashboard von Defender für Cloud":::
 
 - Auf der Seite mit der dedizierten **Sicherheitsbewertung** können Sie die Sicherheitsbewertung für Ihr Abonnement und Ihre Verwaltungsgruppen sehen:
 
-    :::image type="content" source="./media/secure-score-security-controls/score-on-dedicated-dashboard.png" alt-text="Sicherheitsbewertung für Abonnements auf der Security Center-Seite „Sicherheitsbewertung“":::
+    :::image type="content" source="./media/secure-score-security-controls/score-on-dedicated-dashboard.png" alt-text="Sicherheitsbewertung für Abonnements auf der Defender für Cloud-Seite „Sicherheitsbewertung“":::
 
-    :::image type="content" source="./media/secure-score-security-controls/secure-score-management-groups.png" alt-text="Sicherheitsbewertung für Verwaltungsgruppen auf der Security Center-Seite „Sicherheitsbewertung“":::
+    :::image type="content" source="./media/secure-score-security-controls/secure-score-management-groups.png" alt-text="Sicherheitsbewertung für Verwaltungsgruppen auf der Defender für Cloud-Seite „Sicherheitsbewertung“":::
 
     > [!NOTE]
     > Für alle Verwaltungsgruppen, für die Sie nicht über ausreichende Berechtigungen verfügen, wird als Bewertung „Eingeschränkt“ angezeigt. 
 
 - Oben auf der Seite **Empfehlungen**:
 
-    :::image type="content" source="./media/secure-score-security-controls/score-on-recommendations-page.png" alt-text="Die Sicherheitsbewertung auf der Security Center-Seite „Empfehlungen“":::
+    :::image type="content" source="./media/secure-score-security-controls/score-on-recommendations-page.png" alt-text="Die Sicherheitsbewertung auf der Empfehlungsseite von Defender für Cloud":::
 
 ## <a name="get-your-secure-score-from-the-rest-api"></a>Abrufen ihrer Sicherheitsbewertung über die REST-API
 
@@ -60,7 +62,7 @@ So greifen Sie mithilfe von Azure Resource Graph auf Sicherheitsbewertungen für
 
 1. Öffnen Sie im Azure-Portal **Azure Resource Graph-Explorer**.
 
-    :::image type="content" source="./media/security-center-identity-access/opening-resource-graph-explorer.png" alt-text="Die Empfehlungsseite des Azure Resource Graph-Explorer** wird gestartet." :::
+    :::image type="content" source="./media/multi-factor-authentication-enforcement/opening-resource-graph-explorer.png" alt-text="Die Empfehlungsseite des Azure Resource Graph-Explorer** wird gestartet." :::
 
 1. Geben Sie Ihre Kusto-Abfrage ein (in den nachstehenden Beispielen finden Sie Anleitungen).
 
@@ -89,16 +91,16 @@ So greifen Sie mithilfe von Azure Resource Graph auf Sicherheitsbewertungen für
 
 ### <a name="secure-score-over-time-report-in-workbooks-page"></a>Bericht „Sicherheitsbewertung im Zeitverlauf“ auf der Arbeitsmappenseite
 
-Die Security Center-Arbeitsmappenseite enthält einen vorgefertigten Bericht zur visuellen Nachverfolgung der Bewertungen Ihrer Abonnements, Sicherheitskontrollen und vielem mehr. Weitere Informationen finden Sie unter [Erstellen umfassender, interaktiver Berichte zu Security Center-Daten](custom-dashboards-azure-workbooks.md).
+Die Defender für Cloud-Arbeitsmappenseite enthält einen vorgefertigten Bericht zur visuellen Nachverfolgung der Bewertungen Ihrer Abonnements, Sicherheitskontrollen und vielem mehr. Weitere Informationen finden Sie unter [Erstellen umfassender interaktiver Berichte zu Defender für Cloud-Daten](custom-dashboards-azure-workbooks.md).
 
-:::image type="content" source="media/custom-dashboards-azure-workbooks/secure-score-over-time-snip.png" alt-text="Abschnitt des Berichts „Sicherheitsbewertung im Zeitverlauf“ aus dem Arbeitsmappenkatalog in Azure Security Center":::
+:::image type="content" source="media/custom-dashboards-azure-workbooks/secure-score-over-time-snip.png" alt-text="Ein Abschnitt des Berichts zur Sicherheitsbewertung im Zeitverlauf aus dem Arbeitsmappenkatalog von Microsoft Defender für Cloud":::
 
 ### <a name="power-bi-pro-dashboards"></a>Power BI Pro-Dashboards
 
 Wenn Sie ein Power BI-Benutzer sind und über ein Pro-Konto verfügen, können Sie das Power BI-Dashboard **Sicherheitsbewertung im zeitlichen Verlauf** verwenden, um Ihre Sicherheitsbewertung nachzuverfolgen und Änderungen zu untersuchen.
 
 > [!TIP]
-> Sie finden dieses Dashboard sowie andere Tools für die programmgesteuerte Arbeit mit Sicherheitsbewertungen im dedizierten Bereich der Azure Security Center-Community auf GitHub: https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score
+> Sie finden dieses Dashboard sowie andere Tools für die programmgesteuerte Arbeit mit Sicherheitsbewertungen im dedizierten Bereich der Microsoft Defender für Cloud-Community auf GitHub: https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score
 
 Das Dashboard enthält die folgenden zwei Berichte, anhand derer Sie Ihren Sicherheitsstatus analysieren können:
 
@@ -112,6 +114,6 @@ Das Dashboard enthält die folgenden zwei Berichte, anhand derer Sie Ihren Siche
 
 In diesem Artikel wurde beschrieben, wie Sie auf Ihre Sicherheitsbewertung zugreifen und diese nachverfolgen. Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- [Sicherheitsempfehlungen in Azure Security Center](security-center-recommendations.md)
-- [Umsetzen von Empfehlungen in Azure Security Center](security-center-remediate-recommendations.md)
+- [Sicherheitsempfehlungen in Azure Security Center](review-security-recommendations.md)
+- [Umsetzen von Empfehlungen in Azure Security Center](implement-security-recommendations.md)
 - [Anzeigen der GitHub-basierten Tools für die programmgesteuerte Arbeit mit Sicherheitsbewertungen](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score)

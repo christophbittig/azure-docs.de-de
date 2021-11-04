@@ -1,61 +1,64 @@
 ---
-title: Durchführen des Onboardings für eine Verwaltungsgruppe in Azure Security Center
-description: Es wird beschrieben, wie Sie eine bereitgestellte Azure Policy-Definition verwenden, um Azure Security Center für alle Abonnements einer Verwaltungsgruppe zu aktivieren.
+title: Integrieren einer Verwaltungsgruppe in Microsoft Defender für Cloud
+description: Es wird beschrieben, wie Sie eine bereitgestellte Azure Policy-Definition verwenden, um Microsoft Defender für Cloud für alle Abonnements einer Verwaltungsgruppe zu aktivieren.
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
 ms.date: 03/11/2021
 ms.author: memildin
-ms.openlocfilehash: ea5522cfd8f407ffd7259335706cc69555ce2329
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 5a39a46bbc78cb915e57f7e584c5c567ff8718ff
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112238245"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131064753"
 ---
-# <a name="enable-security-center-on-all-subscriptions-in-a-management-group"></a>Aktivieren von Security Center in allen Abonnements einer Verwaltungsgruppe
+# <a name="enable-defender-for-cloud-on-all-subscriptions-in-a-management-group"></a>Aktivieren von Defender für Cloud für alle Abonnements in einer Verwaltungsgruppe
 
-Sie können Azure Policy verwenden, um Azure Security Center in allen Azure-Abonnements innerhalb derselben Verwaltungsgruppe zu aktivieren. Dies ist einfacher als der individuelle Zugriff darauf über das Portal und funktioniert sogar, wenn die Abonnements unterschiedliche Besitzer haben. 
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
+
+Sie können Azure Policy verwenden, um Microsoft Defender für Cloud in allen Azure-Abonnements innerhalb derselben Verwaltungsgruppe zu aktivieren. Dies ist einfacher als der individuelle Zugriff darauf über das Portal und funktioniert sogar, wenn die Abonnements unterschiedliche Besitzer haben. 
 
 Führen Sie das Onboarding einer Verwaltungsgruppe und aller zugehörigen Abonnements wie folgt durch:
 
-1. Öffnen Sie Azure Policy als Benutzer mit Berechtigungen vom Typ **Sicherheitsadministrator**, und suchen Sie nach der Definition **Azure Security Center für Ihr Abonnement aktivieren**.
+1. Öffnen Sie Azure Policy als Benutzer mit Berechtigungen vom Typ **Sicherheitsadministrator**, und suchen Sie nach der Definition **Defender für Cloud für Ihr Abonnement aktivieren**.
 
-    :::image type="content" source="./media/security-center-get-started/enable-security-center-policy.png" alt-text="Azure Policy-Definition „Azure Security Center für Ihr Abonnement aktivieren“":::
+    :::image type="content" source="./media/get-started/enable-security-center-policy.png" alt-text="Azure Policy-Definition „Defender für Cloud für Ihr Abonnement aktivieren“.":::
 
 1. Wählen Sie die Option **Zuweisen** aus, und stellen Sie sicher, dass Sie den Bereich auf die Ebene der Verwaltungsgruppe festlegen.
 
-    :::image type="content" source="./media/security-center-get-started/assign-policy.png" alt-text="Zuweisen der Definition „Azure Security Center für Ihr Abonnement aktivieren“":::
+    :::image type="content" source="./media/get-started/assign-policy.png" alt-text="Zuweisen der Definition „Defender für Cloud für Ihr Abonnement aktivieren“.":::
 
     > [!TIP]
     > Mit Ausnahme des Bereichs sind keine weiteren Parameter erforderlich.
 
-1. Wählen Sie **Korrekturtask erstellen** aus, um sicherzustellen, dass alle vorhandenen Abonnements, für die Security Center nicht aktiviert ist, das Onboarding durchgeführt wird.
+1. Wählen Sie **Korrekturtask erstellen** aus, um sicherzustellen, dass alle vorhandenen Abonnements, für die Defender für Cloud nicht aktiviert ist, das Onboarding durchgeführt wird.
 
-    :::image type="content" source="./media/security-center-get-started/remediation-task.png" alt-text="Erstellen eines Korrekturtasks für die Azure Policy-Definition „Azure Security Center für Ihr Abonnement aktivieren“":::
+    :::image type="content" source="./media/get-started/remediation-task.png" alt-text="Erstellen eines Korrekturtasks für die Azure Policy-Definition „Defender für Cloud für Ihr Abonnement aktivieren“.":::
 
 1. Wenn die Definition zugewiesen wird, bewirkt sie Folgendes:
 
-    1. Erkennen aller Abonnements in der Verwaltungsgruppe, die noch nicht bei Security Center registriert sind
+    1. Erkennen aller Abonnements in der Verwaltungsgruppe, die noch nicht bei Defender für Cloud registriert sind.
     1. Kennzeichnen dieser Abonnements als „Nicht konform“
-    1. Kennzeichnen von allen registrierten Abonnements als „konform“ (unabhängig davon, ob Azure Defender dafür aktiviert ist)
+    1. Markieren Sie alle registrierten Abonnements als „konform“ (unabhängig davon, ob die erweiterten Sicherheitsfeatures von Defender für Cloud aktiviert oder deaktiviert sind).
 
-    Mit dem Korrekturtask wird Security Center dann kostenlos für die nicht konformen Abonnements aktiviert.
+    Mit dem Korrekturtask wird Defender für Cloud dann kostenlos für die nicht konformen Abonnements aktiviert.
 
 > [!IMPORTANT]
-> Mit der Richtliniendefinition wird Security Center nur in **vorhandenen** Abonnements aktiviert. Öffnen Sie zum Registrieren von neu erstellten Abonnements die Registerkarte „Konformität“, wählen Sie die relevanten nicht konformen Abonnements aus, und erstellen Sie einen Korrekturtask. Wiederholen Sie diesen Schritt, wenn Sie mindestens ein neues Abonnement mit Security Center überwachen möchten.
+> Mit der Richtliniendefinition wird Defender für Cloud nur in **vorhandenen** Abonnements aktiviert. Öffnen Sie zum Registrieren von neu erstellten Abonnements die Registerkarte „Konformität“, wählen Sie die relevanten nicht konformen Abonnements aus, und erstellen Sie einen Korrekturtask. Wiederholen Sie diesen Schritt, wenn Sie mindestens ein neues Abonnement mit Defender für Cloud überwachen möchten.
 
 ## <a name="optional-modifications"></a>Optionale Änderungen
 
 Es gibt verschiedene Möglichkeiten, wie Sie die Azure Policy-Definition ändern können: 
 
-- **Abweichendes Definieren von Konformität**: Mit der bereitgestellten Richtlinie werden alle Abonnements der Verwaltungsgruppe, die noch nicht bei Security Center registriert sind, als „nicht konform“ klassifiziert. Sie können auch angeben, dass dies für alle Abonnements ohne Azure Defender gelten soll.
+- **Abweichendes Definieren von Konformität**: Mit der bereitgestellten Richtlinie werden alle Abonnements der Verwaltungsgruppe, die noch nicht bei Defender für Cloud registriert sind, als „nicht konform“ klassifiziert. Sie können es für alle Abonnements festlegen, ohne dass die erweiterten Sicherheitsfeatures von Defender für Cloud aktiviert sind.
 
     Mit der bereitgestellten Definition werden *beide* unten angegebenen Preiseinstellungen als konform festgelegt. Dies bedeutet, dass ein Abonnement, das auf „Standard“ oder „Free“ festgelegt ist, konform ist.
 
     > [!TIP]
-    > Wenn ein Azure Defender-Plan aktiviert ist, wird er in einer Richtliniendefinition als auf „Standard“ festgelegt beschrieben. Wenn er deaktiviert ist, gilt „Free“. Weitere Informationen zu den Unterschieden zwischen diesen Plänen finden Sie unter [Security Center Free und Azure Defender-Aktivierung](security-center-pricing.md). 
+    > Wenn ein Microsoft Defender-Plan aktiviert ist, wird er in einer Richtliniendefinition als auf „Standard“ festgelegt beschrieben. Wenn er deaktiviert ist, gilt „Free“. Informationen zu den Unterschieden zwischen diesen Plänen finden Sie unter [Erweiterte Sicherheitsfeatures von Microsoft Defender für Cloud](enhanced-security-features-overview.md). 
 
     ```
     "existenceCondition": {
@@ -83,14 +86,14 @@ Es gibt verschiedene Möglichkeiten, wie Sie die Azure Policy-Definition ändern
     },
     ```
 
-- **Definieren von einigen Azure Defender-Plänen zum Anwenden beim Aktivieren von Security Center**: Mit der bereitgestellten Richtlinie wird Security Center ohne die optionalen Azure Defender-Pläne aktiviert. Sie können einen oder mehrere davon aktivieren.
+- **Definieren einiger Microsoft Defender-Pläne, die beim Aktivieren von Defender für Cloud angewendet werden sollen**: Die bereitgestellte Richtlinie aktiviert Defender für Cloud ohne optionale erweiterte Sicherheitsfeatures. Sie können einen oder mehrere Microsoft Defender-Pläne aktivieren.
 
     Im Abschnitt `deployment` der bereitgestellten Definition wird der Parameter `pricingTier` verwendet. Standardmäßig ist er auf `free` festgelegt, aber Sie können dies ändern. 
 
 
 ## <a name="next-steps"></a>Nächste Schritte:
 
-Nachdem Sie nun das Onboarding für eine komplette Verwaltungsgruppe durchgeführt haben, aktivieren Sie als Nächstes den erweiterten Schutz von Azure Defender. 
+Nach dem Onboarding einer kompletten Verwaltungsgruppe aktivieren Sie nun die erweiterten Sicherheitsfeatures. 
 
 > [!div class="nextstepaction"]
-> [Aktivieren von Azure Defender](enable-azure-defender.md)
+> [Aktivieren des erweiterten Schutzes](enable-enhanced-security.md)

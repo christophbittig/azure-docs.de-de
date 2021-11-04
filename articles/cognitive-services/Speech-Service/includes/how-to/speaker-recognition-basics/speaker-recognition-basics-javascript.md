@@ -4,13 +4,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/07/2020
 ms.author: v-jawe
-ms.custom: references_regions
-ms.openlocfilehash: a651fe0ddb25fb44de518c794264133f16879982
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.custom: references_regions, ignite-fall-2021
+ms.openlocfilehash: 6b167c24aeaa5acc97f1c071d7b0ae8f5c0cbc71
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129378414"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131069130"
 ---
 In diesem Schnellstart erlernen Sie grundlegende Entwurfsmuster für die Sprechererkennung mit dem Sprach-SDK, einschließlich:
 
@@ -18,11 +18,11 @@ In diesem Schnellstart erlernen Sie grundlegende Entwurfsmuster für die Spreche
 * Sprecheridentifikation zum Identifizieren eines Stimmbeispiels unter einer Gruppe von Stimmen
 * Löschen von Stimmenprofilen
 
-Einen Überblick über die Konzepte der Spracherkennung finden Sie im Artikel [Was ist der Azure-Sprechererkennungsdienst?](../../../speaker-recognition-overview.md).
+Einen Überblick über die Konzepte der Sprechererkennung finden Sie im Artikel [Was ist der Azure-Sprechererkennungsdienst?](../../../speaker-recognition-overview.md). Eine Liste der unterstützten Plattformen finden Sie im linken Navigationsbereich im Knoten „Referenz“.
 
 ## <a name="skip-to-samples-on-github"></a>Mit den Beispielen auf GitHub fortfahren
 
-Greifen Sie auf GitHub auf die [JavaScript-Schnellstartbeispiele](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/fa6428a0837779cbeae172688e0286625e340942/quickstart/javascript/node/speaker-recognition) zu, falls Sie direkt zum Beispielcode springen möchten.
+Greifen Sie auf GitHub auf die [JavaScript-Schnellstartbeispiele](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/speaker-recognition) zu, falls Sie direkt zum Beispielcode springen möchten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

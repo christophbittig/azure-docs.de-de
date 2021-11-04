@@ -7,12 +7,12 @@ ms.author: beloh
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/06/2021
-ms.openlocfilehash: da5769f2d9562676b9a3f1c0494395295737ae94
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 0b80869f3f2cf7754a7dbca8882fa22a38539f3a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129620182"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131048062"
 ---
 # <a name="troubleshooting-odata-collection-filters-in-azure-cognitive-search"></a>Problembehandlung von OData-Sammlungsfiltern in der kognitiven Azure-Suche
 
@@ -28,7 +28,7 @@ In der folgenden Tabelle werden Fehler aufgeführt, die auftreten können, wenn 
 | --- | --- | --- |
 | Die Funktion „ismatch“ enthält keine Parameter, die an die Bereichsvariable „s“ gebunden sind. In Lambdaausdrücken („any“ oder „all“) werden nur gebundene Feldverweise unterstützt. Ändern Sie den Filter so, dass sich die Funktion „ismatch“ außerhalb des Lambdaausdrucks befindet, und versuchen Sie es erneut. | Verwenden von `search.ismatch` oder `search.ismatchscoring` in einem Lambdaausdruck | [Regeln für das Filtern komplexer Sammlungen](#bkmk_complex) |
 | Ungültiger Lambdaausdruck. Es wurde ein Test auf Gleichheit oder Ungleichheit gefunden, bei dem das Gegenteil in einem Lambdaausdruck erwartet wurde, der ein Feld vom Typ „Collection(Edm.String)“ durchläuft. Verwenden Sie für „any“ Ausdrücke der Form „x eq y“ oder „search.in(...)“. Verwenden Sie für „all“ Ausdrücke der Form „x ne y“, „not (x eq y)“ oder „not search.in(...)“. | Filtern nach einem Feld vom Typ `Collection(Edm.String)` | [Regeln für das Filtern von Zeichenfolgensammlungen](#bkmk_strings) |
-| Ungültiger Lambdaausdruck. Es wurde eine nicht unterstützte Form eines komplexen booleschen Ausdrucks gefunden. Verwenden Sie für „any“ Ausdrücke, die „ORs von ANDs“ sind, auch bekannt als disjunktive Normalform. Zum Beispiel: „(a und b) oder (c und d)“, wobei a, b, c und d Vergleichs- oder Gleichheitsunterausdrücke sind. Verwenden Sie für „all“ Ausdrücke, die „ANDs von ORs“ sind, auch bekannt als konjunktive Normalform. Zum Beispiel: „(a oder b) und (c oder d)“, wobei a, b, c und d Vergleichs- oder Ungleichheitsunterausdrücke sind. Beispiele für Vergleichsausdrücke: „x gt 5“, „x le 2“. Beispiel für einen Gleichheitsausdruck: „x eq 5“. Beispiel für einen Ungleichheitsausdruck: „x ne 5“. | Filtern nach Feldern vom Typ `Collection(Edm.DateTimeOffset)`, `Collection(Edm.Double)`, `Collection(Edm.Int32)` oder `Collection(Edm.Int64)` | [Regeln für das Filtern vergleichbarer Sammlungen](#bkmk_comparables) |
+| Ungültiger Lambdaausdruck. Es wurde eine nicht unterstützte Form eines komplexen booleschen Ausdrucks gefunden. Verwenden Sie für „any“ Ausdrücke, die „ORs von ANDs“ sind, auch bekannt als disjunktive Normalform. Zum Beispiel: `(a and b) or (c and d)`, wobei a, b, c und d Vergleichs- oder Gleichheitsunterausdrücke sind. Verwenden Sie für „all“ Ausdrücke, die „ANDs von ORs“ sind, auch bekannt als konjunktive Normalform. Zum Beispiel: `(a or b) and (c or d)`, wobei a, b, c und d Vergleichs- oder Ungleichheitsunterausdrücke sind. Beispiele für Vergleichsausdrücke: „x gt 5“, „x le 2“. Beispiel für einen Gleichheitsausdruck: „x eq 5“. Beispiel für einen Ungleichheitsausdruck: „x ne 5“. | Filtern nach Feldern vom Typ `Collection(Edm.DateTimeOffset)`, `Collection(Edm.Double)`, `Collection(Edm.Int32)` oder `Collection(Edm.Int64)` | [Regeln für das Filtern vergleichbarer Sammlungen](#bkmk_comparables) |
 | Ungültiger Lambdaausdruck. Es wurde eine nicht unterstützte Verwendung von „geo.distance()“ oder „geo.intersects()“ in einem Lambdaausdruck gefunden, der ein Feld vom Typ „Collection(Edm.GeographyPoint)“ durchläuft. Stellen Sie für „any“ sicher, dass Sie „geo.distance()“ mit dem Operator „lt“ oder „le“ vergleichen und die Verwendung von „geo.intersects()“ nicht negiert wird. Stellen Sie für „all“ sicher, dass Sie „geo.distance()“ mit dem Operator „gt“ oder „ge“ vergleichen und die Verwendung von „geo.intersects()“ negiert wird. | Filtern nach einem Feld vom Typ `Collection(Edm.GeographyPoint)` | [Regeln für das Filtern von GeographyPoint-Sammlungen](#bkmk_geopoints) |
 | Ungültiger Lambdaausdruck. Komplexe boolesche Ausdrücke werden in Lambdaausdrücken, die Felder vom Typ „Collection(Edm.GeographyPoint)“ durchlaufen, nicht unterstützt. Verknüpfen Sie bei Verwendung von „any“ Unterausdrücke mit „or“. „Und“ wird nicht unterstützt. Verknüpfen Sie bei Verwendung von „all“ Unterausdrücke mit „and“. „Or“ wird nicht unterstützt. | Filtern nach Feldern vom Typ `Collection(Edm.String)` oder `Collection(Edm.GeographyPoint)` | [Regeln für das Filtern von Zeichenfolgensammlungen](#bkmk_strings) <br/><br/> [Regeln für das Filtern von GeographyPoint-Sammlungen](#bkmk_geopoints) |
 | Ungültiger Lambdaausdruck. Es wurde ein Vergleichsoperator gefunden („lt“, „le“, „gt“ oder „ge“). Es sind nur Gleichheitsoperatoren in Lambdaausdrücken zulässig, die Felder vom Typ „Collection(Edm.String)“ durchlaufen. Verwenden Sie für „any“ Ausdrücke der Form „x eq y“. Verwenden Sie für „all“ Ausdrücke der Form „x ne y“ oder „not (x eq y)“. | Filtern nach einem Feld vom Typ `Collection(Edm.String)` | [Regeln für das Filtern von Zeichenfolgensammlungen](#bkmk_strings) |
@@ -176,7 +176,7 @@ Es gibt jedoch Einschränkungen in Bezug darauf, wie solche Vergleichsausdrücke
   - Einfache Vergleichsausdrücke in Verbindung mit `ne`, `lt`, `le`, `gt` oder `ge` können mit `and`/`or` kombiniert werden. Beispiel:
     - `ratings/all(r: r gt 2 and r le 5)`
     - `ratings/all(r: r le 5 or r gt 7)`
-  - Mit `or` (Disjunktionen) kombinierte Vergleichsausdrücke können mit `and` weiter kombiniert werden. Diese Form wird in boolescher Logik als „[konjunktive Normalform](https://en.wikipedia.org/wiki/Conjunctive_normal_form)“ (KNF) bezeichnet. Beispiel:
+  - Mit `or` (Disjunktionen) kombinierte Vergleichsausdrücke können mit `and` weiter kombiniert werden. Diese Form wird in boolescher Logik als „[konjunktive Normalform](https://en.wikipedia.org/wiki/Conjunctive_normal_form)“ (KNF) bezeichnet. Zum Beispiel:
     - `ratings/all(r: (r le 2 or gt 5) and (r lt 7 or r ge 10))`
 
 <a name="bkmk_complex"></a>

@@ -4,13 +4,13 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/28/2020
 ms.author: v-jawe
-ms.custom: references_regions
-ms.openlocfilehash: 3a32946e10e8a81394b54fc44e4c92e8625e7ad6
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.custom: references_regions, ignite-fall-2021
+ms.openlocfilehash: 11e93561a0f78ad1fb62d1cab1f3e8d8f3f3b293
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95015477"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131069131"
 ---
 In diesem Schnellstart erlernen Sie grundlegende Entwurfsmuster für die Sprechererkennung mit dem Sprach-SDK, einschließlich:
 
@@ -18,7 +18,7 @@ In diesem Schnellstart erlernen Sie grundlegende Entwurfsmuster für die Spreche
 * Sprecheridentifikation zum Identifizieren eines Stimmbeispiels unter einer Gruppe von Stimmen
 * Löschen von Stimmenprofilen
 
-Einen Überblick über die Konzepte der Spracherkennung finden Sie im Artikel [Was ist der Azure-Sprechererkennungsdienst?](../../../speaker-recognition-overview.md).
+Einen Überblick über die Konzepte der Sprechererkennung finden Sie im Artikel [Was ist der Azure-Sprechererkennungsdienst?](../../../speaker-recognition-overview.md). Eine Liste der unterstützten Plattformen finden Sie im linken Navigationsbereich im Knoten „Referenz“.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
