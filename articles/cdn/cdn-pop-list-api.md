@@ -3,7 +3,7 @@ title: Abrufen der aktuellen POP-IP-Liste für Azure CDN | Microsoft-Dokumentati
 description: Erfahren Sie, wie Sie mithilfe der Rest-API POP-Server abrufen können. POP-Server nehmen Anforderungen an Ursprungsserver vor, die Azure Content Delivery Network-Endpunkten zugeordnet sind.
 services: cdn
 documentationcenter: ''
-author: asudbring
+author: duongau
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2021
-ms.author: allensu
+ms.author: duau
 ms.custom: ''
-ms.openlocfilehash: 65bb0649f5fed3615887d750b95d2b4ce91216fb
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 2a471b16460ca92c43dda1c916840a56cb2a3808
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128626055"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131470070"
 ---
 # <a name="retrieve-the-current-pop-ip-list-for-azure-cdn"></a>Abrufen der aktuellen POP-IP-Liste für Azure CDN
 

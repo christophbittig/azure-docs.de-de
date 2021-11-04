@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Rego und Open Policy Agent von Azure Policy 
 ms.date: 09/13/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 55a8f2f1cbb67c80c82e367a870cd61d76178518
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 75f93320e3cb051ec05008146fec08ada4b3a3cb
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128556325"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131460961"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>Grundlegendes zu Azure Policy für Kubernetes-Cluster
 
@@ -150,7 +150,7 @@ kubectl get pods -n kube-system
 kubectl get pods -n gatekeeper-system
 ```
 
-Vergewissern Sie sich abschließend, dass das neueste Add-On installiert ist. Führen Sie hierzu den folgenden Azure CLI-Befehl aus, und ersetzen Sie dabei `<rg>` durch den Namen Ihrer Ressourcengruppe und `<cluster-name>` durch den Namen Ihres AKS-Clusters: `az aks show --query addonProfiles.azurepolicy -g <rg> -n <cluster-name>`. Das Ergebnis sollte so ähnlich wie die folgende Ausgabe aussehen:
+Vergewissern Sie sich abschließend, dass das neueste Add-On installiert ist. Führen Sie hierzu den folgenden Azure CLI-Befehl aus, und ersetzen Sie dabei `<rg>` durch den Namen Ihrer Ressourcengruppe und `<cluster-name>` durch den Namen Ihres AKS-Clusters: `az aks show --query addonProfiles.azurePolicy -g <rg> -n <cluster-name>`. Das Ergebnis sollte so ähnlich wie die folgende Ausgabe aussehen:
 
 ```output
 {
@@ -168,7 +168,7 @@ Bevor Sie das Azure Policy-Add-On installieren oder eines der Dienstfeatures akt
 
 1. Zum Aktivieren des Ressourcenanbieters führen Sie die Schritte unter [Ressourcenanbieter und -typen](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) aus, oder führen Sie entweder den Azure CLI- oder Azure PowerShell-Befehl aus:
 
-   - Azure CLI
+   - Azure-Befehlszeilenschnittstelle
 
      ```azurecli-interactive
      # Log in first with az login if you're not using Cloud Shell
@@ -272,7 +272,7 @@ Bevor Sie das Azure Policy-Add-On installieren oder eines der Dienstfeatures akt
 
 1. Zum Aktivieren des Ressourcenanbieters führen Sie die Schritte unter [Ressourcenanbieter und -typen](../../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal) aus, oder führen Sie entweder den Azure CLI- oder Azure PowerShell-Befehl aus:
 
-   - Azure CLI
+   - Azure-Befehlszeilenschnittstelle
 
      ```azurecli-interactive
      # Log in first with az login if you're not using Cloud Shell

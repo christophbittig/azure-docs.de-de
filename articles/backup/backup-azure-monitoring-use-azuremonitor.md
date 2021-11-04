@@ -4,12 +4,12 @@ description: Überwachen von Azure Backup-Workloads und Erstellen von benutzerde
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.assetid: 01169af5-7eb0-4cb0-bbdb-c58ac71bf48b
-ms.openlocfilehash: 2e1466d3f7f8130cfe8b12ad23f2bf1f9dd61b54
-ms.sourcegitcommit: 89c889a9bdc2e72b6d26ef38ac28f7a6c5e40d27
+ms.openlocfilehash: f1c729a9a724bb397b01a74c2f5853c1b2a74e25
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111565516"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131455015"
 ---
 # <a name="monitor-at-scale-by-using-azure-monitor"></a>Überwachen im richtigen Maßstab mithilfe von Azure Monitor
 
@@ -18,7 +18,7 @@ Azure Backup stellt [integrierte Überwachungs-und Warnungsfunktionen](backup-az
 - Wenn Sie Daten aus mehreren Recovery Services-Tresoren über mehrere Abonnements hinweg überwachen
 - Wenn E-Mail *nicht* der bevorzugte Benachrichtigungskanal ist
 - Wenn Benutzer Warnungen für mehrere Szenarien erhalten möchten
-- Wenn Sie Informationen von einer lokalen Komponente wie System Center Data Protection Manager in Azure anzeigen möchten, die das Portal nicht in [**Sicherungsaufträgen**](backup-azure-monitoring-built-in-monitor.md#backup-jobs-in-recovery-services-vault) oder [**Sicherungswarnungen**](backup-azure-monitoring-built-in-monitor.md#backup-alerts-in-recovery-services-vault) anzeigt
+- Wenn Sie Informationen von einer lokalen Komponente wie System Center Data Protection Manager in Azure anzeigen möchten, die das Portal nicht in [**Sicherungsaufträgen**](backup-azure-monitoring-built-in-monitor.md#backup-jobs-in-backup-center) oder [**Sicherungswarnungen**](backup-azure-monitoring-built-in-monitor.md#backup-alerts-in-recovery-services-vault) anzeigt
 
 ## <a name="using-log-analytics-workspace"></a>Verwenden des Log Analytics-Arbeitsbereichs
 

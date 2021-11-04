@@ -3,19 +3,19 @@ title: 'Speech-Dienst: Vorbereiten von Daten für Custom Voice'
 titleSuffix: Azure Cognitive Services
 description: Erstellen Sie mit Speech-Dienst eine benutzerdefinierte Stimme für Ihre Marke. Sie stellen Studioaufnahmen und die zugehörigen Skripts bereit, und der Dienst generiert ein einzigartiges Stimmmodell, das auf die aufgezeichnete Stimme abgestimmt ist. Verwenden Sie diese Stimme dann, um Sprache in Ihren Produkten, Tools und Anwendungen zu synthetisieren.
 services: cognitive-services
-author: PatrickFarley
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.author: pafarley
-ms.openlocfilehash: 3736e0a1200367e3f0e39bffc213cf369d3983b5
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.author: eur
+ms.openlocfilehash: 39bd6cb6d7fd224a12d7fa38a5a299a0c6a414c2
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123536461"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131504472"
 ---
 # <a name="prepare-training-data"></a>Vorbereiten von Trainingsdaten
 

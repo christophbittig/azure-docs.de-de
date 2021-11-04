@@ -3,17 +3,17 @@ title: Einschränken von Azure-CDN-Inhalten nach Land/Region
 description: Hier erfahren Sie, wie Sie den Zugriff auf Ihre Azure CDN-Inhalte mithilfe der Geofilterung nach Ländern/Regionen einschränken.
 services: cdn
 documentationcenter: ''
-author: asudbring
+author: duongau
 ms.service: azure-cdn
 ms.topic: how-to
 ms.date: 07/07/2021
-ms.author: allensu
-ms.openlocfilehash: 58282d9880f1140def0e941bb8fb3d17356544d3
-ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
+ms.author: duau
+ms.openlocfilehash: d51c723821290c3ae1c97ba3289c97bd78649a5e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114221596"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131426542"
 ---
 # <a name="restrict-azure-cdn-content-by-countryregion"></a>Einschränken von Azure-CDN-Inhalten nach Land/Region
 

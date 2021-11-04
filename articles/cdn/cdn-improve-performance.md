@@ -3,7 +3,7 @@ title: Verbessern der Leistung durch Komprimieren von Dateien in Azure CDN | Mic
 description: Erfahren Sie, wie Sie die Geschwindigkeit von Dateiübertragungen erhöhen und die Leistung beim Laden von Seiten verbessern, indem Sie Ihre Dateien in Azure CDN komprimieren.
 services: cdn
 documentationcenter: ''
-author: asudbring
+author: duongau
 manager: danielgi
 editor: ''
 ms.assetid: af1cddff-78d8-476b-a9d0-8c2164e4de5d
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.date: 02/28/2018
-ms.author: allensu
-ms.openlocfilehash: 7ab5e46f81e4102428e50a63247e59279a83e899
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.author: duau
+ms.openlocfilehash: b179c9a34e9e7c696d18dcd13ef110c089703eb2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128661315"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131454901"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Verbessern der Leistung durch Komprimieren von Dateien in Azure CDN
 Die Dateikomprimierung reduziert die Größe einer Datei, bevor sie vom Server gesendet wird, und ist eine einfache und effektive Methode zum Verbessern der Geschwindigkeit von Dateiübertragungen sowie der Seitenladeleistung. Die Dateikomprimierung reduziert die Bandbreitenkosten und steigert die Benutzerfreundlichkeit.

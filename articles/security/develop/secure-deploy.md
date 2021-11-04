@@ -13,24 +13,23 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 4c71ddbf1d2b435697b2707acf0b1262f2c5dc31
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: f8094fc0eaf646a026371db3726706f92c763f6d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94517188"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131460544"
 ---
 # <a name="deploy-secure-applications-on-azure"></a>Bereitstellen von sicheren Anwendungen in Azure
 In diesem Artikel werden Sicherheitsaktivitäten und -kontrollen vorgestellt, die Sie berücksichtigen sollten, wenn Sie Anwendungen für die Cloud bereitstellen. Es werden Sicherheitsfragen und -konzepte behandelt, die Sie während der Freigabe- und der Reaktionsphase von Microsoft [Security Development Lifecycle (SDL)](/previous-versions/windows/desktop/cc307891(v=msdn.10)) berücksichtigen sollten. Das Ziel ist, Ihnen das Festlegen von Aktivitäten und Azure-Diensten zu ermöglichen, mit denen Sie eine sicherere Anwendung bereitstellen können.
 
 In diesem Artikel werden die folgenden SDL-Phasen behandelt:
 
-- Release
+- Freigabe
 - Antwort
 
-## <a name="release"></a>Release
-Der Schwerpunkt der Freigabephase liegt darin, ein Projekt für die öffentliche Freigabe vorzubereiten.
-Dazu gehört das Planen von Möglichkeiten, Wartungsaufgaben nach der Freigabe effektiv auszuführen und Sicherheitsrisiken zu beheben, die später auftreten können.
+## <a name="release"></a>Freigabe
+Der Schwerpunkt der Freigabephase liegt darin, ein Projekt für die öffentliche Freigabe vorzubereiten. Dazu gehört das Planen von Möglichkeiten, Wartungsaufgaben nach der Freigabe effektiv auszuführen und Sicherheitsrisiken zu beheben, die später auftreten können.
 
 ### <a name="check-your-applications-performance-before-you-launch"></a>Testen der Leistung Ihrer Anwendung vor deren Inbetriebnahme
 
@@ -55,6 +54,7 @@ Eine wohlüberlegte Überprüfung aller durchgeführten Sicherheitsaktivitäten 
 Das Zertifizieren von Software vor einer Freigabe ermöglicht es sicherzustellen, dass die Sicherheits- und Datenschutzanforderungen erfüllt werden. Das Archivieren aller relevanten Daten ist für das Ausführen von Wartungsaufgaben nach der Freigabe unerlässlich. Archivieren ermöglicht außerdem, die langfristigen Kosten zu senken, die mit kontinuierlicher Softwareentwicklung verbunden sind.
 
 ## <a name="response"></a>Antwort
+
 Für die Reaktionsphase nach der Freigabe geht es im Wesentlichen darum, dass das Entwicklungsteam in der Lage und verfügbar ist, angemessen auf alle Berichte über neu auftretende Softwarebedrohungen und Sicherheitsrisiken zu reagieren.
 
 ### <a name="execute-the-incident-response-plan"></a>Ausführen des Plans für Reaktion auf Vorfälle
@@ -64,6 +64,7 @@ Die Fähigkeit, den in der Freigabephase eingeführten Plan für Reaktion auf Vo
 ### <a name="monitor-application-performance"></a>Überwachen der Anwendungsleistung
 
 Die kontinuierliche Überwachung Ihrer Anwendung nach deren Bereitstellung hilft Ihnen wahrscheinlich, Leistungsprobleme und Sicherheitsrisiken zu erkennen.
+
 Azure-Dienste, die bei der Anwendungsüberwachung unterstützen, sind:
 
   - Azure Application Insights

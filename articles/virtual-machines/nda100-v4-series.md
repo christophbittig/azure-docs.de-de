@@ -5,14 +5,16 @@ ms.service: virtual-machines
 ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 05/26/2021
-ms.openlocfilehash: 5b60f65de72de0a039ec806a06f00145867c7648
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 0637b2b02032b87b9c51aa171868b50164ce5c69
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130073352"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131448840"
 ---
 # <a name="nd-a100-v4-series"></a>A100_v4-Serie
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 Die VM der ND A100 v4-Serie ist ein neues Flagship-Mitglied der Azure-GPU-Familie, die für hoch anspruchsvolles Deep Learning-Training und eng gekoppelte, vertikal und horizontal skalierende HPC-Workloads konzipiert ist. 
 
@@ -36,7 +38,7 @@ Diese Instanzen bieten hervorragende Leistung für zahlreiche KI-, ML- und Analy
 [Updates mit Speicherbeibehaltung:](maintenance-and-updates.md) Nicht unterstützt<br>
 [Unterstützung von VM-Generationen:](generation-2.md) Generation 2<br>
 [Beschleunigter Netzwerkbetrieb:](../virtual-network/create-vm-accelerated-networking-cli.md) Nicht unterstützt<br>
-[Kurzlebige Betriebssystemdatenträger](ephemeral-os-disks.md): Unterstützt ([in der Vorschauphase](ephemeral-os-disks.md#preview---ephemeral-os-disks-can-now-be-stored-on-temp-disks))<br>
+[Kurzlebige Betriebssystemdatenträger](ephemeral-os-disks.md): Unterstützt<br>
 InfiniBand: Unterstützt, GPUDirect-RDMA, 8 x 200 Gigabit HDR<br>
 Nvidia NVLink Interconnect: Unterstützt<br>
 <br>

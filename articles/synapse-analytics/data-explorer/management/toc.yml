@@ -395,6 +395,6 @@ items:
   - name: Fehler und Ausfälle
     items:
       - name: Erfassungsfehlercodes
-        href: /azure/data-explorer/kusto/../error-codes?context=/azure/synapse-analytics/context/context
+        href: /azure/data-explorer/error-codes?context=/azure/synapse-analytics/context/context
       - name: Erfassungsfehler
         href: /azure/data-explorer/kusto/management/ingestionfailures?context=/azure/synapse-analytics/context/context

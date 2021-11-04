@@ -1,20 +1,20 @@
 ---
 title: Softwarekosten für Azure-Reservierungen
 description: Erfahren Sie, welche Verbrauchseinheiten für Software nicht in den Kosten für reservierte Azure-VM-Instanzen enthalten sind.
-author: yashesvi
-ms.reviewer: yashar
+author: bandersmsft
+ms.reviewer: primittal
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 01/28/2021
+ms.date: 10/28/2021
 ms.author: banders
-ms.openlocfilehash: 464e129314a369c14dcc6bc6c16eadf5f8bcf01f
-ms.sourcegitcommit: d1e56036f3ecb79bfbdb2d6a84e6932ee6a0830e
+ms.openlocfilehash: 4980c779c5b3301a0e15b77b21230d14af04271b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2021
-ms.locfileid: "99052988"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131425745"
 ---
 # <a name="software-costs-not-included-with-azure-reserved-vm-instances"></a>Nicht in reservierten Azure-VM-Instanzen enthaltene Softwarekosten
 

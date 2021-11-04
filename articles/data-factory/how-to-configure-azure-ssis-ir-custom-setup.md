@@ -7,13 +7,13 @@ ms.topic: conceptual
 author: swinarko
 ms.author: sawinark
 ms.custom: seo-lt-2019
-ms.date: 04/30/2021
-ms.openlocfilehash: 626afa6926dea10a633a5c7d5438ec8b8c578b6a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 11/01/2021
+ms.openlocfilehash: 033d2d188f2e5ef9d2a72428e088ea302908e7c9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124798653"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131457922"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Anpassen des Setups für eine Azure-SSIS Integration Runtime
 
@@ -121,7 +121,7 @@ Um Ihre Azure-SSIS IR mit benutzerdefinierten Express-Setups auf der ADF-Benutz
 
 #### <a name="running-cmdkey-command"></a>Ausführen des Befehls „cmdkey“
 
-Wenn Sie den Typ **Befehl „cmdkey“ ausführen** für Ihr benutzerdefiniertes Express-Setup auswählen, können Sie den Windows-Befehl „cmdkey“ in Ihrer Azure-SSIS IR ausführen. Geben Sie hierzu in den Textfeldern **/Add**, **/User** und **/Pass** die Namen Ihres Zielcomputers oder Ihrer Domäne, des Benutzers oder Kontos sowie das Kennwort oder den Kontoschlüssel ein. Auf diese Weise können Sie Zugriffsanmeldeinformationen für SQL Server-Instanzen, Dateifreigaben oder Azure Files in Ihrer Azure-SSIS IR beibehalten. Für den Zugriff auf Azure Files können Sie beispielsweise `YourAzureStorageAccountName.file.core.windows.net`, `azure\YourAzureStorageAccountName` und `YourAzureStorageAccountKey` für **/Add**, **/User** und **/Pass** eingeben. Dies ist vergleichbar mit der Ausführung des Windows-Befehls [cmdkey](/windows-server/administration/windows-commands/cmdkey) auf Ihrem lokalen Computer. Derzeit wird nur ein benutzerdefiniertes Express-Setup für die Ausführung des Befehls „cmdkey“ unterstützt. Verwenden Sie zum Ausführen mehrerer Befehle vom Typ „cmdkey“ stattdessen ein benutzerdefiniertes Standardsetup.
+Wenn Sie den Typ **Befehl „cmdkey“ ausführen** für Ihr benutzerdefiniertes Express-Setup auswählen, können Sie den Windows-Befehl „cmdkey“ in Ihrer Azure-SSIS IR ausführen. Geben Sie hierzu in den Textfeldern **/Add**, **/User** und **/Pass** die Namen Ihres Zielcomputers oder Ihrer Domäne, des Benutzers oder Kontos sowie das Kennwort oder den Kontoschlüssel ein. Auf diese Weise können Sie Zugriffsanmeldeinformationen für SQL Server-Instanzen, Dateifreigaben oder Azure Files in Ihrer Azure-SSIS IR beibehalten. Für den Zugriff auf Azure Files können Sie beispielsweise `YourAzureStorageAccountName.file.core.windows.net`, `azure\YourAzureStorageAccountName` und `YourAzureStorageAccountKey` für **/Add**, **/User** und **/Pass** eingeben. Dies ist vergleichbar mit der Ausführung des Windows-Befehls [cmdkey](/windows-server/administration/windows-commands/cmdkey) auf Ihrem lokalen Computer. 
 
 #### <a name="adding-environment-variables"></a>Hinzufügen von Umgebungsvariablen
 

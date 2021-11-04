@@ -3,7 +3,7 @@ title: Debuggen von HTTP-Headern für Azure CDN von Microsoft | Microsoft-Dokume
 description: Debugcache-Anforderungsheaders stellen zusätzliche Informationen zur Cacherichtlinie bereit, die auf das angeforderte Objekt angewendet wird. Diese Header sind spezifisch für Azure CDN von Microsoft.
 services: cdn
 documentationcenter: ''
-author: asudbring
+author: duongau
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/31/2019
-ms.author: allensu
-ms.openlocfilehash: 56f9b5b33600947920ff928eac53c0149afef682
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.author: duau
+ms.openlocfilehash: 5253d700f271ed18f6e1eae5488184da8ed6db7f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122445079"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131450550"
 ---
 # <a name="debug-http-header-for-azure-cdn-from-microsoft"></a>Debuggen von HTTP-Headern für Azure CDN von Microsoft
 Der Debugantwortheader (`X-Cache`) stellt Details zu der Ebene des CDN-Stapels bereit, aus der der Inhalt bereitgestellt wurde. Dieser Header ist spezifisch für Azure CDN von Microsoft.

@@ -4,20 +4,20 @@ metadata:
   titleSuffix: Azure Cognitive Services
   description: Installieren Sie Speech-Container, und führen Sie sie aus. Die Spracherkennung wandelt Audiodatenströme in Echtzeit in Text um, der von Ihren Anwendungen, Tools oder Geräten genutzt oder angezeigt werden kann. Die Sprachsynthese konvertiert Eingabetext in menschenähnliche synthetische Sprache.
   services: cognitive-services
-  author: PatrickFarley
+  author: eric-urban
   manager: nitinme
   ms.service: cognitive-services
   ms.subservice: speech-service
   ms.topic: conceptual
   ms.date: 03/11/2021
-  ms.author: pafarley
+  ms.author: eur
   ms.custom: devx-track-csharp
-  ms.openlocfilehash: e2dbd29686dad5416a6bd148d2bcccc37fca5107
-  ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+  ms.openlocfilehash: 5b896e3f4bbd6cf00d4ee9b7eb2723cc75d07a5b
+  ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/07/2021
-  ms.locfileid: "123537828"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131508162"
 title: Häufig gestellte Fragen (FAQ) zu Containern für den Speech-Dienst
 summary: Ziehen Sie bei der Verwendung des Speech-Diensts mit Containern diese Sammlung häufig gestellter Fragen zu Rate, bevor Sie sich an den Support wenden. In diesem Artikel werden Fragen von unterschiedlicher Bedeutung erfasst, von allgemeinen bis hin zu technischen Fragen. Um eine Antwort zu erweitern, klicken Sie auf die Frage.
 sections:

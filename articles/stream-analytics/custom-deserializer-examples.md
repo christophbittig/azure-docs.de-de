@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 6/16/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d66879a4f3aac37bb08cfcf916c0cb44027c3729
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: eb275a2cced1a16bd1c5d05aed84d2cb7fd0da5b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112295451"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131463181"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers-preview"></a>Lesen von Eingaben in beliebigen Formaten mithilfe benutzerdefinierter .NET-Deserialisierer (Vorschau)
 
@@ -242,7 +242,7 @@ Diese Funktion steht in [6 Regionen](#region-support) zur Verfügung. Wenn Sie d
 
 ### <a name="can-i-access-metadatapropertyvalue-from-my-inputs-similar-to-getmetadatapropertyvalue-function"></a>Kann ich ähnlich wie bei der GetMetadataPropertyValue-Funktion in meinen Eingaben auf MetadataPropertyValue zugreifen?
 
-Dies wird nicht unterstützt. Wenn Sie diese Funktion benötigen, können Sie in [UserVoice](https://feedback.azure.com/forums/270577-stream-analytics/suggestions/38779801-accessing-input-metadata-properties-in-custom-dese) für diese Anforderung abstimmen.
+Dies wird nicht unterstützt. Wenn Sie diese Funktion benötigen, können Sie in [UserVoice](https://feedback.azure.com/d365community/idea/b4517302-b925-ec11-b6e6-000d3a4f0f1c) für diese Anforderung abstimmen.
 
 ### <a name="can-i-share-my-deserializer-implementation-with-the-community-so-that-others-can-benefit"></a>Kann ich meine Implementierung des Deserialisierers für die Community freigeben, sodass andere Benutzer sie verwenden können?
 

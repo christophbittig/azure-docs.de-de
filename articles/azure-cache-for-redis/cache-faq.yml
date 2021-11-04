@@ -7,12 +7,12 @@ metadata:
   ms.service: cache
   ms.topic: conceptual
   ms.date: 04/29/2019
-  ms.openlocfilehash: 1aaaf3adfa9a2c7ab1059454044d8386d48d00a4
-  ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+  ms.openlocfilehash: ed5cc61a437cbaeccdf379a467755afb64e5b2e5
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/05/2021
-  ms.locfileid: "129538473"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131440201"
 title: Häufig gestellte Fragen zu Azure Cache for Redis
 summary: >
   In diesem Artikel erhalten Sie Antworten auf häufig gestellte Fragen sowie Informationen zu Mustern und Best Practices für Azure Cache for Redis.
@@ -56,6 +56,6 @@ sections:
 
       * Sie können eine Frage auf der [Q&A-Seite von Microsoft zu Azure Cache](/answers/topics/azure-cache-redis.html) stellen und mit dem Azure Cache-Team und anderen Mitgliedern der Community diskutieren, um eine größere Benutzergruppe zu erreichen
 
-      * Featureanfragen und Anregungen können an [Azure Cache for Redis User Voice](https://feedback.azure.com/forums/169382-cache) gesendet werden.
+      * Featureanfragen und Anregungen können an [Azure Cache for Redis User Voice](https://feedback.azure.com/d365community/forum/a96a82f3-0c25-ec11-b6e6-000d3a4f07b8) gesendet werden.
 
       * Sie können uns Ihre Frage auch an [azurecache@microsoft.com](mailto:azurecache@microsoft.com) senden.

@@ -1,19 +1,19 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: include
-ms.date: 08/12/2021
+ms.date: 10/22/2021
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 43baf554bda4c2b3ae9bda9d79b46035e073cead
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 777af1f15441ab4849292e40b3a27863276f3fce
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128582331"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131473343"
 ---
 | Resource | Basic | Standard | Premium |
 |---|---|---|---|
@@ -30,7 +30,7 @@ ms.locfileid: "128582331"
 | Verfügbarkeitszonen | – | – | [Vorschau][zones] |
 | Inhaltsvertrauensstellung | – | – | [Unterstützt][content-trust] |
 | Private Link mit privaten Endpunkten | – | – | [Unterstützt][plink] |
-| &bull; Private Endpunkte | – | – | 10 |
+| &bull; Private Endpunkte | – | Nicht zutreffend | 200 |
 | Netzwerkregeln für öffentliche IP-Adressen | – | – | 100 |
 | Dienstendpunkt-VNET-Zugriff | – | – | [Vorschau][vnet] |
 | &bull; VNet-Regeln | – | – | 100 |

@@ -1,24 +1,25 @@
 ---
 title: 'Tutorial: Erstellen von Gebäudeplänen mithilfe von Microsoft Azure Maps Creator'
 description: Tutorial zum Erstellen von Gebäudeplänen mithilfe von Microsoft Azure Maps Creator.
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 5/19/2021
+author: stevemunk
+ms.author: v-munksteve
+ms.date: 10/28/2021
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
-ms.openlocfilehash: db5bebce41e8fd13cf0796e02fc0bfe91d63a6c9
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ef1643f349fea853b15e0d8bcd2f07a0fd412188
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131060013"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131447149"
 ---
 # <a name="tutorial-use-creator-to-create-indoor-maps"></a>Tutorial: Verwenden von Creator zum Erstellen von Gebäudeplänen
 
 Dieses Tutorial enthält eine Anleitung zum Erstellen von Gebäudeplänen. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
+>
 > * Hochladen des Zeichnungspakets für Ihren Gebäudeplan
 > * Konvertieren Ihres Zeichnungspakets in Kartendaten
 > * Erstellen eines Datasets auf der Grundlage Ihrer Kartendaten
@@ -58,12 +59,12 @@ So laden Sie das Zeichnungspaket hoch:
 5. Geben Sie die folgende URL für die [Datenupload-API](/rest/api/maps/data-v2/upload-preview) ein. Die Anforderung sollte wie die folgende URL aussehen. Ersetzen Sie `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel:
 
     ```http
-    https://us.atlas.microsoft.com/mapData?api-version=2.0&dataFormat=dwgzippackage&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://us.atlas.microsoft.com/mapData?api-version=2.0&dataFormat=dwgzippackage&subscription-key={Your-Azure-Maps-Primary-Subscription-key}
     ```
 
 6. Wählen Sie die Registerkarte **Headers** (Header) aus.
 
-7. Wählen Sie im Feld **KEY** (SCHLÜSSEL) die Option `Content-Type` aus. 
+7. Wählen Sie im Feld **KEY** (SCHLÜSSEL) die Option `Content-Type` aus.
 
 8. Wählen Sie im Feld **VALUE** (WERT) die Option `application/octet-stream` aus.
 
@@ -100,7 +101,7 @@ So überprüfen Sie den Status des Zeichnungspakets und rufen die eindeutige ID 
 5. Geben Sie die Status-URL (`status URL`) ein, die Sie im Schritt [Hochladen eines Zeichnungspakets](#upload-a-drawing-package) kopiert haben. Die Anforderung sollte wie die folgende URL aussehen. Ersetzen Sie `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel:
 
     ```http
-    https://us.atlas.microsoft.com/mapData/operations/<operationId>?api-version=2.0&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://us.atlas.microsoft.com/mapData/operations/{operationId}?api-version=2.0&subscription-key={Your-Azure-Maps-Primary-Subscription-key}
     ```
 
 6. Wählen Sie **Send** (Senden) aus.
@@ -128,7 +129,7 @@ So rufen Sie Inhaltsmetadaten ab:
 5. Geben Sie die URL des Ressourcenspeicherorts (`resource Location URL`) ein, die Sie im Schritt [Überprüfen des Uploadstatus des Zeichnungspakets](#check-the-drawing-package-upload-status) kopiert haben. Die Anforderung sollte wie die folgende URL aussehen. Ersetzen Sie `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel:
 
     ```http
-    https://us.atlas.microsoft.com/mapData/metadata/{udid}?api-version=2.0&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://us.atlas.microsoft.com/mapData/metadata/{udid}?api-version=2.0&subscription-key={Your-Azure-Maps-Primary-Subscription-key}
     ```
 
 6. Wählen Sie **Send** (Senden) aus.
@@ -163,12 +164,12 @@ So konvertieren Sie ein Zeichnungspaket:
 5. Geben Sie die folgende URL für den [Konvertierungsdienst](/rest/api/maps/v2/conversion/convert) ein. Ersetzen Sie `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel und `udid` durch den `udid`-Wert des hochgeladenen Pakets:
 
     ```http
-    https://us.atlas.microsoft.com/conversions?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=2.0&udid={udid}&inputType=DWG&outputOntology=facility-2.0
+    https://us.atlas.microsoft.com/conversions?subscription-key={Your-Azure-Maps-Primary-Subscription-key}&api-version=2.0&udid={udid}&inputType=DWG&outputOntology=facility-2.0
     ```
 
 6. Wählen Sie **Send** (Senden) aus.
 
-7. Wählen Sie im Antwortfenster die Registerkarte **Headers** aus. 
+7. Wählen Sie im Antwortfenster die Registerkarte **Headers** aus.
 
 8. Kopieren Sie den Wert des Schlüssels **Operation-Location** (Vorgangsspeicherort). Hierbei handelt es sich um die Status-URL (`status URL`). Die Status-URL (`status URL`) wird verwendet, um den Status der Konvertierung zu überprüfen.
 
@@ -191,12 +192,12 @@ So können Sie den Status des Konvertierungsprozesses überprüfen und die Konve
 5. Geben Sie die Status-URL (`status URL`) ein, die Sie im Schritt [Konvertieren eines Zeichnungspakets](#convert-a-drawing-package) kopiert haben. Die Anforderung sollte wie die folgende URL aussehen. Ersetzen Sie `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel:
 
     ```http
-    https://us.atlas.microsoft.com/conversions/operations/<operationId>?api-version=2.0&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://us.atlas.microsoft.com/conversions/operations/{operationId}?api-version=2.0&subscription-key={Your-Azure-Maps-Primary-Subscription-key}
     ```
 
 6. Wählen Sie **Send** (Senden) aus.
 
-7. Wählen Sie im Antwortfenster die Registerkarte **Headers** aus. 
+7. Wählen Sie im Antwortfenster die Registerkarte **Headers** aus.
 
 8. Kopieren Sie den Wert des Schlüssels **Resource Location** (Ressourcenspeicherort). Hierbei handelt es sich um die URL des Ressourcenspeicherorts (`resource location URL`). Die URL des Ressourcenspeicherorts (`resource location URL`) enthält den eindeutigen Bezeichner (`conversionId`), der von anderen APIs für den Zugriff auf die konvertierten Kartendaten verwendet werden kann.
 
@@ -208,7 +209,7 @@ Das folgende JSON-Fragment zeigt ein Beispiel für eine Konvertierungswarnung:
 
 ```json
 {
-    "operationId": "<operationId>",
+    "operationId": "{operationId}",
     "created": "2021-05-19T18:24:28.7922905+00:00",
     "status": "Succeeded",
      "warning": {
@@ -248,7 +249,7 @@ So erstellen Sie ein Dataset:
 5. Geben Sie die folgende URL für die [Dataset-API](/rest/api/maps/v2/dataset) ein. Die Anforderung sollte in etwa wie die folgende URL aussehen. Ersetzen Sie `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel und `{conversionId` durch die Konvertierungs-ID (`conversionId`), die Sie im Schritt [Überprüfen des Konvertierungsstatus des Zeichnungspakets](#check-the-drawing-package-conversion-status) erhalten haben:
 
     ```http
-    https://us.atlas.microsoft.com/datasets?api-version=2.0&conversionId={conversionId}&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://us.atlas.microsoft.com/datasets?api-version=2.0&conversionId={conversionId}&subscription-key={Your-Azure-Maps-Primary-Subscription-key}
     ```
 
 6. Wählen Sie **Send** (Senden) aus.
@@ -274,12 +275,12 @@ So können Sie den Status der Dataseterstellung überprüfen und die Dataset-ID 
 5. Geben Sie die Status-URL (`status URL`) ein, die Sie im Schritt [Erstellen eines Datasets](#create-a-dataset) kopiert haben. Die Anforderung sollte wie die folgende URL aussehen. Ersetzen Sie `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel:
 
     ```http
-    https://us.atlas.microsoft.com/datasets/operations/<operationId>?api-version=2.0&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://us.atlas.microsoft.com/datasets/operations/{operationId}?api-version=2.0&subscription-key={Your-Azure-Maps-Primary-Subscription-key}
     ```
 
 6. Wählen Sie **Send** (Senden) aus.
 
-7. Wählen Sie im Antwortfenster die Registerkarte **Headers** (Header) aus. Der Wert des Schlüssels **Resource-Location** (Ressourcenspeicherort) ist die URL des Ressourcenspeicherorts (`resource location URL`). Die URL des Ressourcenspeicherorts (`resource location URL`) enthält den eindeutigen Bezeichner (`datasetId`) des Datasets. 
+7. Wählen Sie im Antwortfenster die Registerkarte **Headers** (Header) aus. Der Wert des Schlüssels **Resource-Location** (Ressourcenspeicherort) ist die URL des Ressourcenspeicherorts (`resource location URL`). Die URL des Ressourcenspeicherorts (`resource location URL`) enthält den eindeutigen Bezeichner (`datasetId`) des Datasets.
 
 8. Kopieren Sie die Dataset-ID (`datasetId`). Sie wird in den nächsten Abschnitten dieses Tutorials benötigt.
 
@@ -302,12 +303,12 @@ So erstellen Sie ein Kachelset:
 5. Geben Sie die folgende URL für die [Kachelset-API](/rest/api/maps/v2/tileset) ein. Die Anforderung sollte in etwa wie die folgende URL aussehen. Ersetzen Sie `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel und `{datasetId` durch die Dataset-ID (`datasetId`), die Sie im Schritt [Überprüfen des Status der Dataseterstellung](#check-the-dataset-creation-status) erhalten haben:
 
     ```http
-    https://us.atlas.microsoft.com/tilesets?api-version=2.0&datasetID={datasetId}&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://us.atlas.microsoft.com/tilesets?api-version=2.0&datasetID={datasetId}&subscription-key={Your-Azure-Maps-Primary-Subscription-key}
     ```
 
 6. Wählen Sie **Send** (Senden) aus.
 
-7. Wählen Sie im Antwortfenster die Registerkarte **Headers** aus. 
+7. Wählen Sie im Antwortfenster die Registerkarte **Headers** aus.
 
 8. Kopieren Sie den Wert des Schlüssels **Operation-Location** (Vorgangsspeicherort). Hierbei handelt es sich um die Status-URL (`status URL`). Die Status-URL (`status URL`) wird verwendet, um den Status des Kachelsets zu überprüfen.
 
@@ -328,7 +329,7 @@ So können Sie den Status der Dataseterstellung überprüfen und die Kachelset-I
 5. Geben Sie die Status-URL (`status URL`) ein, die Sie im Schritt [Erstellen eines Kachelsets](#create-a-tileset) kopiert haben. Die Anforderung sollte wie die folgende URL aussehen. Ersetzen Sie `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel:
 
     ```http
-    https://us.atlas.microsoft.com/tilesets/operations/<operationId>?api-version=2.0&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://us.atlas.microsoft.com/tilesets/operations/{operationId}?api-version=2.0&subscription-key={Your-Azure-Maps-Primary-Subscription-key}
     ```
 
 6. Wählen Sie **Send** (Senden) aus.
@@ -356,7 +357,7 @@ So fragen Sie alle Sammlungen in Ihrem Dataset ab:
 5. Geben Sie die folgende URL für die [WFS-API](/rest/api/maps/v2/wfs) ein. Die Anforderung sollte in etwa wie die folgende URL aussehen. Ersetzen Sie `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel und `{datasetId` durch die Dataset-ID (`datasetId`), die Sie im Schritt [Überprüfen des Status der Dataseterstellung](#check-the-dataset-creation-status) erhalten haben:
 
     ```http
-    https://us.atlas.microsoft.com/wfs/datasets/{datasetId}/collections?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=2.0
+    https://us.atlas.microsoft.com/wfs/datasets/{datasetId}/collections?subscription-key={Your-Azure-Maps-Primary-Subscription-key}&api-version=2.0
     ```
 
 6. Wählen Sie **Send** (Senden) aus.
@@ -406,7 +407,7 @@ So fragen Sie die Einheitensammlung in Ihrem Dataset ab:
 5. Geben Sie die folgende URL ein. Ersetzen Sie dabei `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel und `{datasetId` durch die Dataset-ID (`datasetId`), die Sie im Schritt [Überprüfen des Status der Dataseterstellung](#check-the-dataset-creation-status) erhalten haben:
 
     ```http
-    https://us.atlas.microsoft.com/wfs/datasets/{datasetId}/collections/unit/items?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=2.0
+    https://us.atlas.microsoft.com/wfs/datasets/{datasetId}/collections/unit/items?subscription-key={Your-Azure-Maps-Primary-Subscription-key}&api-version=2.0
     ```
 
 6. Wählen Sie **Send** (Senden) aus.
@@ -460,7 +461,7 @@ So erstellen Sie ein Zustandsset:
 5. Geben Sie die folgende URL für die [Zustandsset-API](/rest/api/maps/v2/feature-state/create-stateset) ein. Die Anforderung sollte in etwa wie die folgende URL aussehen. Ersetzen Sie `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel und `{datasetId` durch die Dataset-ID (`datasetId`), die Sie im Schritt [Überprüfen des Status der Dataseterstellung](#check-the-dataset-creation-status) erhalten haben:
 
     ```http
-    https://us.atlas.microsoft.com/featurestatesets?api-version=2.0&datasetId={datasetId}&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://us.atlas.microsoft.com/featurestatesets?api-version=2.0&datasetId={datasetId}&subscription-key={Your-Azure-Maps-Primary-Subscription-key}
     ```
 
 6. Wählen Sie die Registerkarte **Headers** (Header) aus.
@@ -515,12 +516,12 @@ So aktualisieren Sie den Zustand `occupied` (Belegt) der Einheit mit der Feature
 5. Geben Sie die folgende URL für die [API für Featurezustandssets](/rest/api/maps/v2/feature-state/create-stateset) ein. Die Anforderung sollte in etwa wie die folgende URL aussehen. Ersetzen Sie `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel und `{statesetId` durch die Zustandsset-ID (`statesetId`), die Sie im Schritt [Erstellen eines Featurezustandssets](#create-a-feature-stateset) erhalten haben:
 
     ```http
-    https://us.atlas.microsoft.com/featurestatesets/{statesetId}/featureStates/UNIT26?api-version=2.0&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://us.atlas.microsoft.com/featurestatesets/{statesetId}/featureStates/UNIT26?api-version=2.0&subscription-key={Your-Azure-Maps-Primary-Subscription-key}
     ```
 
 6. Wählen Sie die Registerkarte **Headers** (Header) aus.
 
-7. Wählen Sie im Feld **KEY** (SCHLÜSSEL) die Option `Content-Type` aus. 
+7. Wählen Sie im Feld **KEY** (SCHLÜSSEL) die Option `Content-Type` aus.
 
 8. Wählen Sie im Feld **VALUE** (WERT) die Option `application/json` aus.
 

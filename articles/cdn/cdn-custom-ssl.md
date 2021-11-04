@@ -2,18 +2,18 @@
 title: 'Tutorial: Konfigurieren von HTTPS in einer benutzerdefinierten Azure CDN-Domäne'
 description: In diesem Tutorial wird beschrieben, wie Sie HTTPS in Ihrer benutzerdefinierten Azure CDN-Endpunktdomäne aktivieren und deaktivieren.
 services: cdn
-author: asudbring
+author: duongau
 ms.service: azure-cdn
 ms.topic: tutorial
 ms.date: 03/26/2021
-ms.author: allensu
+ms.author: duau
 ms.custom: mvc
-ms.openlocfilehash: d9520f3a6c6ffadf7186b0b3c5c83fe872711316
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: d6a56aecaf8110118081e8c79e86bae5c277d992
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112007785"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131458682"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Tutorial: Konfigurieren von HTTPS in einer benutzerdefinierten Azure CDN-Domäne
 
@@ -211,7 +211,7 @@ Ihr CNAME-Eintrag muss das folgende Format aufweisen:
 * *Name* ist Ihr benutzerdefinierter Domänenname.
 * *Wert* ist der Hostname Ihres CDN-Endpunkts.
 
-| Name            | Typ  | Wert                 |
+| Name            | type  | Wert                 |
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azureedge.net |
 

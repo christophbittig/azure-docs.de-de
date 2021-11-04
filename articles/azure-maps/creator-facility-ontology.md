@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 zone_pivot_groups: facility-ontology-schema
-ms.openlocfilehash: c08faefc795fd65c71163bd9f8c24a1f8cd939f8
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3ef3d9dd9d992e17c66516de8d13978e6c7c4821
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339059"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131450797"
 ---
 # <a name="facility-ontology"></a>Einrichtungsontologie
 
@@ -78,7 +78,7 @@ Die Featureklasse `unit` definiert einen physischen Bereich ohne Überlappung, d
 |`name` |    Zeichenfolge |    false |    Name des Features in der Landessprache. Maximal zulässige Länge: 1.000. |
 |`nameSubtitle` |    Zeichenfolge |    false |   Untertitel, der unter dem Namen (`name`) des Features angezeigt wird. Kann beispielsweise verwendet werden, um den Namen in einer anderen Sprache anzuzeigen.  Maximal zulässige Länge: 1.000.|
 |`nameAlt` |    Zeichenfolge |    false |   Alternativer Name für das Feature. Maximal zulässige Länge: 1.000. |
-|`anchorPoint` |   [Point](/rest/api/maps/wfs/get-feature-preview#featuregeojson) | false | [GeoJSON-Punktgeometrie](/rest/api/maps/wfs/get-feature-preview#featuregeojson), durch die das Feature als Punkt dargestellt wird. Kann verwendet werden, um die Bezeichnung des Features zu positionieren.|
+|`anchorPoint` |   [Point](/rest/api/maps/wfs/get-feature#featuregeojson) | false | [GeoJSON-Punktgeometrie](/rest/api/maps/wfs/get-feature#featuregeojson), durch die das Feature als Punkt dargestellt wird. Kann verwendet werden, um die Bezeichnung des Features zu positionieren.|
 
 :::zone-end
 
@@ -98,7 +98,7 @@ Die Featureklasse `unit` definiert einen physischen Bereich ohne Überlappung, d
 |`name` |    Zeichenfolge |    false |    Name des Features in der Landessprache.  Maximal zulässige Länge: 1.000.|
 |`nameSubtitle` |    Zeichenfolge |    false |   Untertitel, der unter dem Namen (`name`) des Features angezeigt wird. Kann beispielsweise verwendet werden, um den Namen in einer anderen Sprache anzuzeigen.  Maximal zulässige Länge: 1.000.|
 |`nameAlt` |    Zeichenfolge |    false |   Alternativer Name für das Feature.  Maximal zulässige Länge: 1.000.|
-|`anchorPoint` |   [Point](/rest/api/maps/wfs/get-feature-preview#featuregeojson) | false | [GeoJSON-Punktgeometrie](/rest/api/maps/wfs/get-feature-preview#featuregeojson), durch die das Feature als Punkt dargestellt wird. Kann verwendet werden, um die Bezeichnung des Features zu positionieren.|
+|`anchorPoint` |   [Point](/rest/api/maps/wfs/get-feature#featuregeojson) | false | [GeoJSON-Punktgeometrie](/rest/api/maps/wfs/get-feature#featuregeojson), durch die das Feature als Punkt dargestellt wird. Kann verwendet werden, um die Bezeichnung des Features zu positionieren.|
 
 :::zone-end
 
@@ -119,7 +119,7 @@ Die Featureklasse `structure` definiert einen physischen Bereich ohne Überlappu
 |`name` |    Zeichenfolge |    false |    Name des Features in der Landessprache. Maximal zulässige Länge: 1.000. |
 |`nameSubtitle` |    Zeichenfolge |    false |   Untertitel, der unter dem Namen (`name`) des Features angezeigt wird. Kann beispielsweise verwendet werden, um den Namen in einer anderen Sprache anzuzeigen. Maximal zulässige Länge: 1.000. |
 |`nameAlt` |    Zeichenfolge |    false |   Alternativer Name für das Feature.  Maximal zulässige Länge: 1.000.|
-|`anchorPoint` |   [Point](/rest/api/maps/wfs/get-feature-preview#featuregeojson) | false | [GeoJSON-Punktgeometrie](/rest/api/maps/wfs/get-feature-preview#featuregeojson), durch die das Feature als Punkt dargestellt wird. Kann verwendet werden, um die Bezeichnung des Features zu positionieren.|
+|`anchorPoint` |   [Point](/rest/api/maps/wfs/get-feature#featuregeojson) | false | [GeoJSON-Punktgeometrie](/rest/api/maps/wfs/get-feature#featuregeojson), durch die das Feature als Punkt dargestellt wird. Kann verwendet werden, um die Bezeichnung des Features zu positionieren.|
 
 :::zone-end
 
@@ -139,7 +139,7 @@ Die Featureklasse `zone` definiert einen virtuellen Bereich – beispielsweise 
 |`name` |    Zeichenfolge |    false |    Name des Features in der Landessprache.  Maximal zulässige Länge: 1.000.|
 |`nameSubtitle` |    Zeichenfolge |    false |   Untertitel, der unter dem Namen (`name`) des Features angezeigt wird. Kann beispielsweise verwendet werden, um den Namen in einer anderen Sprache anzuzeigen.  Maximal zulässige Länge: 1.000.|
 |`nameAlt` |    Zeichenfolge |    false |   Alternativer Name für das Feature. Maximal zulässige Länge: 1.000. |
-|`anchorPoint` |  [Point](/rest/api/maps/wfs/get-feature-preview#featuregeojson) | false | [GeoJSON-Punktgeometrie](/rest/api/maps/wfs/get-feature-preview#featuregeojson), durch die das Feature als Punkt dargestellt wird. Kann verwendet werden, um die Bezeichnung des Features zu positionieren.|
+|`anchorPoint` |  [Point](/rest/api/maps/wfs/get-feature#featuregeojson) | false | [GeoJSON-Punktgeometrie](/rest/api/maps/wfs/get-feature#featuregeojson), durch die das Feature als Punkt dargestellt wird. Kann verwendet werden, um die Bezeichnung des Features zu positionieren.|
 
 ## <a name="level"></a>Level
 
@@ -159,7 +159,7 @@ Das Klassenfeature `level` definiert einen Bereich eines Gebäudes in einer best
 |`name` |    Zeichenfolge |    false |    Name des Features in der Landessprache.  Maximal zulässige Länge: 1.000.|
 |`nameSubtitle` |    Zeichenfolge |    false |   Untertitel, der unter dem Namen (`name`) des Features angezeigt wird. Kann beispielsweise verwendet werden, um den Namen in einer anderen Sprache anzuzeigen.  Maximal zulässige Länge: 1.000.|
 |`nameAlt` |    Zeichenfolge |    false |   Alternativer Name für das Feature.  Maximal zulässige Länge: 1.000.|
-|`anchorPoint` |   [Point](/rest/api/maps/wfs/get-feature-preview#featuregeojson) | false | [GeoJSON-Punktgeometrie](/rest/api/maps/wfs/get-feature-preview#featuregeojson), durch die das Feature als Punkt dargestellt wird. Kann verwendet werden, um die Bezeichnung des Features zu positionieren.|
+|`anchorPoint` |   [Point](/rest/api/maps/wfs/get-feature#featuregeojson) | false | [GeoJSON-Punktgeometrie](/rest/api/maps/wfs/get-feature#featuregeojson), durch die das Feature als Punkt dargestellt wird. Kann verwendet werden, um die Bezeichnung des Features zu positionieren.|
 
 ## <a name="facility"></a>Funktion
 
@@ -177,7 +177,7 @@ Die Featureklasse `facility` definiert den Bereich des Standorts, die Gebäudegr
 |`name` |    Zeichenfolge |    false |    Name des Features in der Landessprache. Maximal zulässige Länge: 1.000. |
 |`nameSubtitle` |    Zeichenfolge |    false |   Untertitel, der unter dem Namen (`name`) des Features angezeigt wird. Kann beispielsweise verwendet werden, um den Namen in einer anderen Sprache anzuzeigen. Maximal zulässige Länge: 1.000. |
 |`nameAlt` |    Zeichenfolge |    false |   Alternativer Name für das Feature.  Maximal zulässige Länge: 1.000.|
-|`anchorPoint` |  [Point](/rest/api/maps/wfs/get-feature-preview#featuregeojson) | false | [GeoJSON-Punktgeometrie](/rest/api/maps/wfs/get-feature-preview#featuregeojson), durch die das Feature als Punkt dargestellt wird. Kann verwendet werden, um die Bezeichnung des Features zu positionieren.|
+|`anchorPoint` |  [Point](/rest/api/maps/wfs/get-feature#featuregeojson) | false | [GeoJSON-Punktgeometrie](/rest/api/maps/wfs/get-feature#featuregeojson), durch die das Feature als Punkt dargestellt wird. Kann verwendet werden, um die Bezeichnung des Features zu positionieren.|
 |`anchorHeightAboveSeaLevel` |  double | false | Höhe des Ankerpunkts über dem Meeresspiegel (in Metern). Der Meeresspiegel wird durch EGM2008 definiert.|
 |`defaultLevelVerticalExtent` |  double| false | Standardwert für die vertikale Größe von Ebenen (in Metern).|
 
@@ -202,7 +202,7 @@ Das Klassenfeature `verticalPenetration` definiert einen Bereich, der bei Verwen
 |`name` |    Zeichenfolge |    false |    Name des Features in der Landessprache.  Maximal zulässige Länge: 1.000.|
 |`nameSubtitle` |    Zeichenfolge |    false |   Untertitel, der unter dem Namen (`name`) des Features angezeigt wird. Kann beispielsweise verwendet werden, um den Namen in einer anderen Sprache anzuzeigen.  Maximal zulässige Länge: 1.000.|
 |`nameAlt` |    Zeichenfolge |    false |   Alternativer Name für das Feature. Maximal zulässige Länge: 1.000. |
-|`anchorPoint` |  [Point](/rest/api/maps/wfs/get-feature-preview#featuregeojson) | false | [GeoJSON-Punktgeometrie](/rest/api/maps/wfs/get-feature-preview#featuregeojson), durch die das Feature als Punkt dargestellt wird. Kann verwendet werden, um die Bezeichnung des Features zu positionieren.|
+|`anchorPoint` |  [Point](/rest/api/maps/wfs/get-feature#featuregeojson) | false | [GeoJSON-Punktgeometrie](/rest/api/maps/wfs/get-feature#featuregeojson), durch die das Feature als Punkt dargestellt wird. Kann verwendet werden, um die Bezeichnung des Features zu positionieren.|
 
 :::zone-end
 
@@ -219,7 +219,7 @@ Das Klassenfeature `verticalPenetration` definiert einen Bereich, der bei Verwen
 |`name` |    Zeichenfolge |    false |    Name des Features in der Landessprache.  Maximal zulässige Länge: 1.000.|
 |`nameSubtitle` |    Zeichenfolge |    false |   Untertitel, der unter dem Namen (`name`) des Features angezeigt wird. Kann beispielsweise verwendet werden, um den Namen in einer anderen Sprache anzuzeigen.  Maximal zulässige Länge: 1.000.|
 |`nameAlt` |    Zeichenfolge |    false |   Alternativer Name für das Feature. Maximal zulässige Länge: 1.000. |
-|`anchorPoint` |  [Point](/rest/api/maps/wfs/get-feature-preview#featuregeojson) | false | [GeoJSON-Punktgeometrie](/rest/api/maps/wfs/get-feature-preview#featuregeojson), durch die das Feature als Punkt dargestellt wird. Kann verwendet werden, um die Bezeichnung des Features zu positionieren.|
+|`anchorPoint` |  [Point](/rest/api/maps/wfs/get-feature#featuregeojson) | false | [GeoJSON-Punktgeometrie](/rest/api/maps/wfs/get-feature#featuregeojson), durch die das Feature als Punkt dargestellt wird. Kann verwendet werden, um die Bezeichnung des Features zu positionieren.|
 
 :::zone-end
 
@@ -242,7 +242,7 @@ Das Klassenfeature `opening` definiert eine passierbare Grenze zwischen zwei Ein
 | `accessRightToLeft`| enum [ "prohibited", "digitalKey", "physicalKey", "keyPad", "guard", "ticket", "fingerprint", "retina", "voice", "face", "palm", "iris", "signature", "handGeometry", "time", "ticketChecker", "other"] | false | Zugangsmethode, wenn die Öffnung von rechts nach links passiert wird. Links und rechts werden durch die Vertices in der Featuregeometrie bestimmt. Ausgangspunkt ist hierbei der erste Vertex mit Blick in Richtung des zweiten Vertex. Wird diese Eigenschaft weggelassen, bedeutet das, dass keine Zugangsbeschränkungen gelten.|
 | `accessLeftToRight`| enum [ "prohibited", "digitalKey", "physicalKey", "keyPad", "guard", "ticket", "fingerprint", "retina", "voice", "face", "palm", "iris", "signature", "handGeometry", "time", "ticketChecker", "other"] | false | Zugangsmethode, wenn die Öffnung von links nach rechts passiert wird. Links und rechts werden durch die Vertices in der Featuregeometrie bestimmt. Ausgangspunkt ist hierbei der erste Vertex mit Blick in Richtung des zweiten Vertex. Wird diese Eigenschaft weggelassen, bedeutet das, dass keine Zugangsbeschränkungen gelten.|
 | `isEmergency` | boolean | false | Ist diese Option auf `true` festgelegt, kann die Öffnung nur im Notfall verwendet werden. Standardwert: `false` |
-|`anchorPoint` | [Point](/rest/api/maps/wfs/get-feature-preview#featuregeojson) | false | [GeoJSON-Punktgeometrie](/rest/api/maps/wfs/get-feature-preview#featuregeojson), durch die das Feature als Punkt dargestellt wird. Kann verwendet werden, um die Bezeichnung des Features zu positionieren.|
+|`anchorPoint` | [Point](/rest/api/maps/wfs/get-feature#featuregeojson) | false | [GeoJSON-Punktgeometrie](/rest/api/maps/wfs/get-feature#featuregeojson), durch die das Feature als Punkt dargestellt wird. Kann verwendet werden, um die Bezeichnung des Features zu positionieren.|
 
 :::zone-end
 
@@ -254,7 +254,7 @@ Das Klassenfeature `opening` definiert eine passierbare Grenze zwischen zwei Ein
 |`externalId`        | Zeichenfolge     |true      | Eine ID, die vom Client verwendet wird, um das Feature einem anderen Feature in einem anderen Dataset (beispielsweise in einer internen Datenbank) zuzuordnen. Maximal zulässige Länge: 1.000.|
 |`categoryId`        |[category.Id](#category)     |true      | Die ID eines Kategoriefeatures.|
 | `levelId`          | [level.Id](#level)        | true     | Die ID eines Ebenenfeatures. |
-|`anchorPoint` | [Point](/rest/api/maps/wfs/get-feature-preview#featuregeojson) | false | [GeoJSON-Punktgeometrie](/rest/api/maps/wfs/get-feature-preview#featuregeojson), durch die das Feature als Punkt dargestellt wird. Kann verwendet werden, um die Bezeichnung des Features zu positionieren.|
+|`anchorPoint` | [Point](/rest/api/maps/wfs/get-feature#featuregeojson) | false | [GeoJSON-Punktgeometrie](/rest/api/maps/wfs/get-feature#featuregeojson), durch die das Feature als Punkt dargestellt wird. Kann verwendet werden, um die Bezeichnung des Features zu positionieren.|
 
 :::zone-end
 
@@ -313,8 +313,8 @@ Das Objektklassenfeature `directoryInfo` definiert den Namen, die Adresse, die T
 |`name` |    Zeichenfolge |    false |    Name des Features in der Landessprache. Maximal zulässige Länge: 1.000. |
 |`nameSubtitle` |    Zeichenfolge |    false |   Untertitel, der unter dem Namen (`name`) des Features angezeigt wird. Kann beispielsweise verwendet werden, um den Namen in einer anderen Sprache anzuzeigen. Maximal zulässige Länge: 1.000. |
 |`nameAlt` |    Zeichenfolge |    false |   Alternativer Name für das Feature. Maximal zulässige Länge: 1.000. |
-|`anchorPoint` |  [Point](/rest/api/maps/wfs/get-feature-preview#featuregeojson) | false | [GeoJSON-Punktgeometrie](/rest/api/maps/wfs/get-feature-preview#featuregeojson), durch die das Feature als Punkt dargestellt wird. Kann verwendet werden, um die Bezeichnung des Features zu positionieren.|
-|`obstructionArea` |   [Polygon](/rest/api/maps/wfs/get-feature-preview#featuregeojson)| false | Eine vereinfachte Geometrie des Features, das bei der Routenplanung umgangen werden muss. (Kann im Falle einer komplizierten Liniengeometrie verwendet werden.) Hierfür muss `isObstruction` auf „true“ festgelegt sein.|
+|`anchorPoint` |  [Point](/rest/api/maps/wfs/get-feature#featuregeojson) | false | [GeoJSON-Punktgeometrie](/rest/api/maps/wfs/get-feature#featuregeojson), durch die das Feature als Punkt dargestellt wird. Kann verwendet werden, um die Bezeichnung des Features zu positionieren.|
+|`obstructionArea` |   [Polygon](/rest/api/maps/wfs/get-feature#featuregeojson)| false | Eine vereinfachte Geometrie des Features, das bei der Routenplanung umgangen werden muss. (Kann im Falle einer komplizierten Liniengeometrie verwendet werden.) Hierfür muss `isObstruction` auf „true“ festgelegt sein.|
 
 ## <a name="areaelement"></a>areaElement
 
@@ -333,7 +333,7 @@ Das Objektklassenfeature `directoryInfo` definiert den Namen, die Adresse, die T
 |`name` |    Zeichenfolge |    false |    Name des Features in der Landessprache. Maximal zulässige Länge: 1.000. |
 |`nameSubtitle` |    Zeichenfolge |    false |   Untertitel, der unter dem Namen (`name`) des Features angezeigt wird. Kann beispielsweise verwendet werden, um den Namen in einer anderen Sprache anzuzeigen.  Maximal zulässige Länge: 1.000.|
 |`nameAlt` |    Zeichenfolge |    false |   Alternativer Name für das Feature.  Maximal zulässige Länge: 1.000.|
-|`anchorPoint` |  [Point](/rest/api/maps/wfs/get-feature-preview#featuregeojson) | false | [GeoJSON-Punktgeometrie](/rest/api/maps/wfs/get-feature-preview#featuregeojson), durch die das Feature als Punkt dargestellt wird. Kann verwendet werden, um die Bezeichnung des Features zu positionieren.|
+|`anchorPoint` |  [Point](/rest/api/maps/wfs/get-feature#featuregeojson) | false | [GeoJSON-Punktgeometrie](/rest/api/maps/wfs/get-feature#featuregeojson), durch die das Feature als Punkt dargestellt wird. Kann verwendet werden, um die Bezeichnung des Features zu positionieren.|
 
 ## <a name="category"></a>category
 

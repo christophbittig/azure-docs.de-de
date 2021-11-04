@@ -11,12 +11,12 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: mathoma, vanto
 ms.date: 04/28/2020
-ms.openlocfilehash: 2f5791b96b0b921175c0b6c2c7db7c8cdabf825c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: cee0c010101c132cb8c4f105ccfd46a5cb8afcf6
+ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121735594"
+ms.lasthandoff: 09/13/2021
+ms.locfileid: "131465305"
 ---
 # <a name="use-powershell-to-configure-sql-database-auditing-and-advanced-threat-protection"></a>Konfigurieren von SQL-Datenbank-Überwachung und Advanced Threat Protection mithilfe von PowerShell
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
@@ -51,8 +51,8 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Erstellt einen Server. |
 | [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | Erstellt eine Datenbank oder einen Pool für elastische Datenbanken. |
 | [New-AzStorageAccount](/powershell/module/az.storage/new-azstorageaccount) | Erstellt ein Speicherkonto. |
-| [Set-AzSqlDatabaseAuditing](/powershell/module/az.sql/set-azsqldatabaseauditing) | Legt die Überwachungsrichtlinie für eine Datenbank fest. |
-| [Set-AzSqlDatabaseThreatDetectionPolicy](/powershell/module/az.sql/set-azsqldatabasethreatdetectionpolicy) | Legt eine Advanced Threat Protection-Richtlinie für eine Datenbank fest. |
+| [Set-AzSqlDatabaseAuditing](/powershell/module/az.sql/set-azsqldatabaseaudit) | Legt die Überwachungsrichtlinie für eine Datenbank fest. |
+| Set-AzSqlDatabaseThreatDetectionPolicy | Legt eine Advanced Threat Protection-Richtlinie für eine Datenbank fest. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Löscht eine Ressourcengruppe einschließlich aller geschachtelten Ressourcen. |
 |||
 

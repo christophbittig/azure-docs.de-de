@@ -1,18 +1,19 @@
 ---
 title: Überprüfen der Abrechnungsdaten von Azure-Abonnements mit der REST-API
 description: Erfahren Sie, wie Sie mit Azure-REST-APIs Abonnementabrechnungsdetails überprüfen. Mithilfe von Filtern können Sie die Ergebnisse anpassen.
-author: lleonard-msft
+author: bandersmsft
+ms.reviewer: adwise
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: article
 ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: 42f9482316e2cc229f7e0fed18f647c14b3dcd45
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 2a21f304daf3dc10660c0566770c9ce48f22b9e8
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128634955"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131464716"
 ---
 # <a name="review-subscription-billing-using-rest-apis"></a>Überprüfen der Abonnementabrechnung mit REST-APIs
 

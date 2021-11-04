@@ -6,19 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 46a451fd41f460165435305f2abf5d56fca4837d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2f73d6c8969cd6915c1a571eb6196bcf8f901bd6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355360"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131468136"
 ---
 # <a name="connect-to-azure-database-for-mysql---flexible-server-with-encrypted-connections"></a>Herstellen einer Verbindung mit Azure Database for MySQL – Flexible Server mit verschlüsselten Verbindungen
 
-[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
-> [!IMPORTANT]
-> Azure Database for MySQL Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
+[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 Azure Database for MySQL Flexible Server unterstützt das Herstellen einer Verbindung zwischen Ihren Clientanwendungen und dem MySQL-Server über Secure Sockets Layer (SSL) mit TLS-Verschlüsselung (Transport Layer Security). TLS ist ein Standardprotokoll der Branche, das verschlüsselte Netzwerkverbindungen zwischen dem Datenbankserver und Clientanwendungen gewährleistet, sodass Sie Konformitätsanforderungen einhalten können.
 
@@ -58,7 +55,7 @@ Wenn Ihre Clientanwendung keine verschlüsselten Verbindungen unterstützt, müs
 Das folgende Beispiel zeigt, wie Sie einen Server mithilfe der mysql-Befehlszeilenschnittstelle verbinden können. Verwenden Sie die Einstellung `--ssl-mode=DISABLED` der Verbindungszeichenfolge, um die TLS/SSL-Verbindung über den mysql-Client zu deaktivieren. Ersetzen Sie die Werte durch den tatsächlichen Servernamen und das Kennwort.
 
 ```bash
- mysql.exe -h mydemoserver.mysql.database.azure.com -u myadmin -p --ssl-mode=DISABLED 
+ mysql.exe -h mydemoserver.mysql.database.azure.com -u myadmin -p --ssl-mode=DISABLED
 ```
 
 Wichtig: Wenn „require_secure_transport“ auf „OFF“ festgelegt wird, bedeutet dies nicht, dass verschlüsselte Verbindungen serverseitig nicht unterstützt werden. Wenn Sie „require_secure_transport“ bei einem flexiblen Server auf „OFF“ festlegen, der Client aber eine Verbindung mit verschlüsselter Verbindung herstellt, wird dies weiterhin akzeptiert. Die folgende Verbindung mithilfe des mysql-Clients bei einem flexiblen Server, der mit „require_secure_transport=OFF“ konfiguriert wurde, funktioniert ebenfalls, wie unten gezeigt wird.

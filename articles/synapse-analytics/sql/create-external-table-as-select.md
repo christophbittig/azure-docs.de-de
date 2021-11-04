@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 83c3fd114ab7ed3bf04d47ef3be2fc563b6b43d5
-ms.sourcegitcommit: e832f58baf0b3a69c2e2781bd8e32d4f1ae932c6
+ms.openlocfilehash: ba93588dc686a57c05371b86d8f9e058f2bd2cf2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110586182"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131460031"
 ---
 # <a name="store-query-results-to-storage-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Speichern von Abfrageergebnissen im Speicher mithilfe eines serverlosen SQL-Pools in Azure Synapse Analytics
 
@@ -100,12 +100,12 @@ ORDER BY
 ## <a name="remarks"></a>Bemerkungen
 
 Nachdem Sie Ihre Ergebnisse gespeichert haben, können die Daten in der externen Tabelle nicht mehr geändert werden. Eine Wiederholung ist für dieses Skript nicht möglich, da von CETAS die zugrunde liegenden Daten, die bei der vorherigen Ausführung erstellt wurden, nicht überschrieben werden. Stimmen Sie für die folgenden Feedbackvorschläge, falls Sie einige davon für Ihre Szenarien benötigen, oder machen Sie auf der Azure-Feedbackseite neue Vorschläge:
-- [Ermöglichen des Einfügens von neuen Daten in eine externe Tabelle](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/32981347-polybase-allow-insert-new-data-to-existing-exteran)
-- [Ermöglichen des Löschens von Daten aus einer externen Tabelle](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/15158034-polybase-delete-from-external-tables)
-- [Angeben von Partitionen in CETAS](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/19520860-polybase-partitioned-by-functionality-when-creati)
-- [Angeben von Dateigrößen und Zählern](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/42263617-cetas-specify-number-of-parquet-files-file-size)
+- [Ermöglichen des Einfügens von neuen Daten in eine externe Tabelle](https://feedback.azure.com/d365community/forum/9b9ba8e4-0825-ec11-b6e6-000d3a4f07b8)
+- [Ermöglichen des Löschens von Daten aus einer externen Tabelle](https://feedback.azure.com/d365community/idea/fb5a00c9-0a25-ec11-b6e6-000d3a4f07b8)
+- [Angeben von Partitionen in CETAS](https://feedback.azure.com/d365community/idea/e28278db-0a25-ec11-b6e6-000d3a4f07b8)
+- [Angeben von Dateigrößen und Zählern](https://feedback.azure.com/d365community/idea/262048b9-0925-ec11-b6e6-000d3a4f07b8)
 
-Es werden ausschließlich die Ausgabetypen „Parquet“ und „CSV“ unterstützt. Sie können auf der [Azure-Feedbackwebsite](https://feedback.azure.com/forums/307516-azure-synapse-analytics/) für die anderen Typen abstimmen.
+Es werden ausschließlich die Ausgabetypen „Parquet“ und „CSV“ unterstützt. Sie können auf der [Azure-Feedbackwebsite](https://feedback.azure.com/d365community/forum/9b9ba8e4-0825-ec11-b6e6-000d3a4f07b8) für die anderen Typen abstimmen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -6,21 +6,19 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 11/10/2020
-ms.openlocfilehash: 2d02a4e0e63bd0861c0a414f3d56e9c62e19dc8a
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 107d210cb046f87e9afcb112b1dd482f7dc0221a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122639693"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131429620"
 ---
 # <a name="configure-server-parameters-in-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>Konfigurieren von Serverparametern auf flexiblen Azure Database for MySQL-Servern über das Azure-Portal
 
-[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
+[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-> [!IMPORTANT]
-> Azure Database for MySQL – Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
 
-Sie können die Konfiguration flexibler Azure Database for MySQL-Server über Serverparameter verwalten. Die Serverparameter werden beim Erstellen des Servers mit einem Standardwert und einem empfohlenen Wert konfiguriert.  
+Sie können die Konfiguration flexibler Azure Database for MySQL-Server über Serverparameter verwalten. Die Serverparameter werden beim Erstellen des Servers mit einem Standardwert und einem empfohlenen Wert konfiguriert.
 
 In diesem Artikel wird beschrieben, wie diese Serverparameter mithilfe des Azure-Portals angezeigt und konfiguriert werden. Auf dem Blatt „Serverparameter“ im Azure-Portal werden sowohl änderbare als auch nicht änderbare Serverparameter angezeigt. Die nicht änderbaren Serverparameter sind ausgegraut.
 
@@ -43,7 +41,7 @@ In diesem Artikel wird beschrieben, wie diese Serverparameter mithilfe des Azure
 
 ## <a name="setting-non-modifiable-server-parameters"></a>Festlegen nicht änderbarer Serverparameter
 
-Wenn der Serverparameter, den Sie aktualisieren möchten, nicht geändert werden kann, können Sie den Parameter optional mithilfe von `init_connect` auf Verbindungsebene festlegen. Damit werden die Serverparameter für jeden Client, der mit dem Server verbinden wird, festgelegt. 
+Wenn der Serverparameter, den Sie aktualisieren möchten, nicht geändert werden kann, können Sie den Parameter optional mithilfe von `init_connect` auf Verbindungsebene festlegen. Damit werden die Serverparameter für jeden Client, der mit dem Server verbinden wird, festgelegt.
 
 1. Klicken Sie im Abschnitt **EINSTELLUNGEN** auf **Serverparameter**, um die Seite „Serverparameter“ für den Server mit Azure Database for MySQL zu öffnen.
 2. Suchen Sie nach `init_connect`.

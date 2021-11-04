@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: f4b706c296c6f6d4f5921675dd87ec8f4052b9a5
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: f759308a32d3f1455c7147be512e7280810e1abe
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130256665"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131427036"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Verwenden der Service Map-Lösung in Azure
 
@@ -601,4 +601,4 @@ Wenn Ihr Computer in der Dienstzuordnung angezeigt wird, aber keine Prozess- ode
 
 ## <a name="suggestions"></a>Vorschläge
 
-Haben Sie Feedback für uns zu Service Map oder dieser Dokumentation?  Besuchen Sie unsere [User Voice-Webseite](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map), auf der Sie Funktionen vorschlagen oder vorhandene Vorschläge unterstützen können.
+Haben Sie Feedback für uns zu Service Map oder dieser Dokumentation?  Besuchen Sie unsere [User Voice-Webseite](https://feedback.azure.com/d365community/forum/aa68334e-1925-ec11-b6e6-000d3a4f09d0?c=ad4304e4-1925-ec11-b6e6-000d3a4f09d0), auf der Sie Funktionen vorschlagen oder vorhandene Vorschläge unterstützen können.

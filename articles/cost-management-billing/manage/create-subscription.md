@@ -1,18 +1,19 @@
 ---
 title: Erstellen eines zusätzlichen Azure-Abonnements
 description: Erfahren Sie, wie Sie ein neues Azure-Abonnement im Azure-Portal erstellen. Lesen Sie die Informationen zu Formularen für Abrechnungskonten, und zeigen Sie zusätzliche verfügbare Ressourcen an.
-author: amberbhargava
+author: bandersmsft
+ms.reviewer: amberb
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 05/13/2021
+ms.date: 10/28/2021
 ms.author: banders
-ms.openlocfilehash: d82599831d0495df5dba4758976e70b3119a8018
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 932f8bd68ee36d34bb35d2e50acc8ac5954275b7
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110451854"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131425802"
 ---
 # <a name="create-an-additional-azure-subscription"></a>Erstellen eines zusätzlichen Azure-Abonnements
 

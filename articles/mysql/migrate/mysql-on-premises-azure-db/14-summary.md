@@ -9,12 +9,12 @@ ms.author: arthiaga
 ms.reviewer: maghan
 ms.custom: ''
 ms.date: 06/21/2021
-ms.openlocfilehash: b06b7700bb1781f400bae11633bb0d9bff00202a
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: ee67dc1701d8230250132b9a3be0bd5972294292
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113084485"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131422727"
 ---
 # <a name="migrate-mysql-on-premises-to-azure-database-for-mysql-summary"></a>Migrieren einer lokalen MySQL-Instanz zu Azure Database for MySQL: Zusammenfassung
 
@@ -47,7 +47,7 @@ Weitere Kontaktmöglichkeiten:
 
   - Wenn Sie den Azure-Support kontaktieren oder ein Problem mit Ihrem Konto beheben lassen möchten, [erstellen Sie im Azure-Portal ein Ticket](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 
-  - Wenn Sie Feedback abgeben oder Vorschläge für neue Features einreichen möchten, erstellen Sie einen Eintrag über [UserVoice](https://feedback.azure.com/forums/597982-azure-database-for-mysql).
+  - Wenn Sie Feedback abgeben oder Vorschläge für neue Features einreichen möchten, erstellen Sie einen Eintrag über [UserVoice](https://feedback.azure.com/d365community/forum/47b1e71d-ee24-ec11-b6e6-000d3a4f0da0).
 fwill
 ## <a name="find-a-partner-to-help-migrate"></a>Finden Sie einen Partner zur Unterstützung bei der Migration
 

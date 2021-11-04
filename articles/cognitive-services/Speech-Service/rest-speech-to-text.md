@@ -3,20 +3,20 @@ title: 'Spracherkennungs-API-Referenz (REST): Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie die Spracherkennungs-REST-API verwenden. In diesem Artikel erfahren Sie mehr über Autorisierungs- und Abfrageoptionen sowie darüber, wie Sie eine Anforderung strukturieren und eine Antwort erhalten.
 services: cognitive-services
-author: PatrickFarley
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/01/2021
-ms.author: pafarley
+ms.author: eur
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 31759756a886093c53d1537db609bfc58fb4af8b
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: af20b5893c9cd22edc81234a28c9db780c7eae3b
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128610463"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131509551"
 ---
 # <a name="speech-to-text-rest-api"></a>Spracherkennungs-REST-API
 

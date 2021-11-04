@@ -3,7 +3,7 @@ title: Medienstreamingoptimierung über Azure CDN
 description: Erfahren Sie mehr über die Optionen zur Optimierung von Streamingmedien in Azure Content Delivery Network, z. B. die teilweise Freigabe des Caches und die Wartezeit zum Auffüllen des Caches.
 services: cdn
 documentationcenter: ''
-author: asudbring
+author: duongau
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.date: 05/01/2018
-ms.author: allensu
-ms.openlocfilehash: c3ab722f182e32cf2f3aca6bb2f3d5a9598264af
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: duau
+ms.openlocfilehash: 3fc078a2a609da9bc3e23e42a7a2eb06debd5c45
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88192599"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131458511"
 ---
 # <a name="media-streaming-optimization-with-azure-cdn"></a>Medienstreamingoptimierung über Azure CDN 
  

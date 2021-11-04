@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 11102d95bc2aba65e6bc3cba71805a67f195947b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c58e6ffd9b3b74ee465c5e2e5c05f688252d1173
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "92681314"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131467546"
 ---
 # <a name="how-to-use-microsoftazuresearch-in-a-c-net-application"></a>Verwenden von Microsoft.Azure.Search in einer in C# geschriebenen .NET-Anwendung
 
@@ -43,7 +43,7 @@ Die unterschiedlichen Clientbibliothek definieren Klassen wie `Index`, `Field` u
 * [Microsoft.Azure.Search](/dotnet/api/microsoft.azure.search)
 * [Microsoft.Azure.Search.Models](/dotnet/api/microsoft.azure.search.models)
 
-Wenn Sie Feedback für ein zukünftiges Update des SDK geben möchten, besuchen Sie unsere [Feedbackseite](https://feedback.azure.com/forums/263029-azure-search/), oder erstellen Sie ein Issue auf [GitHub](https://github.com/azure/azure-sdk-for-net/issues), und geben Sie „Azure Cognitive Search“ im Titel an.
+Wenn Sie Feedback für ein zukünftiges Update des SDK geben möchten, besuchen Sie unsere [Feedbackseite](https://feedback.azure.com/d365community/forum/9325d19e-0225-ec11-b6e6-000d3a4f07b8), oder erstellen Sie ein Issue auf [GitHub](https://github.com/azure/azure-sdk-for-net/issues), und geben Sie „Azure Cognitive Search“ im Titel an.
 
 Das .NET SDK verwendet die Version [`2019-05-06` der REST-API für Azure Cognitive Search](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/search/data-plane/Microsoft.Azure.Search.Data/stable/2019-05-06) als Ziel. Diese Version enthält Unterstützung für [komplexe Typen](search-howto-complex-data-types.md), [KI-Anreicherung](cognitive-search-concept-intro.md), [AutoVervollständigen](/rest/api/searchservice/autocomplete) und den [JsonLines-Analysemodus](search-howto-index-json-blobs.md) beim Indizieren von Azure-Blobs. 
 
