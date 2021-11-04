@@ -8,12 +8,13 @@ ms.author: memildin
 ms.date: 10/18/2021
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: ff1fd969f202b71e3e6706d9721b7e91cb723e9b
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: cca9811423449692f0e71cdb62ade1447cba86f2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131453229"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131010462"
 ---
 # <a name="use-asset-inventory-to-manage-your-resources-security-posture"></a>Verwenden Sie die Bestandsaufnahme zur Verwaltung der Sicherheitslage Ihrer Ressourcen
 

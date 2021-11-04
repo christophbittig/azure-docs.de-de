@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/25/2020
-ms.openlocfilehash: a9a3c76cb931a5683cf6fd52a806979c430f3f72
-ms.sourcegitcommit: 54d8b979b7de84aa979327bdf251daf9a3b72964
+ms.openlocfilehash: bdeb9336aa94198d0448d697ca01304825877bd4
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/24/2021
-ms.locfileid: "112580924"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131561364"
 ---
 # <a name="example-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>Beispiel: Erstellen und Bereitstellen eines benutzerdefinierten Skills mit Azure Machine Learning 
 
@@ -77,8 +77,6 @@ Das Erstellen und Bereitstellen des Rückschlussclusters kann bis zu 30 Minuten
 ## <a name="update-the-skillset"></a>Aktualisieren des Skillsets
 
 Abschnitt 4 im Notebook enthält vier Zellen zum Aktualisieren des Skillsets und Indexers. Alternativ können Sie über das Portal den neuen Skill auswählen, auf das Skillset anwenden, und dann den Indexer ausführen, um den Suchdienst zu aktualisieren.
-
-> [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Active-Learning-with-Azure-Cognitive-Search/player#time=19m35s:paused/03/player]
 
 Wechseln Sie im Portal zu „Skillset“, und wählen Sie den Link „Skillsetdefinition (JSON)“ aus. Im Portal wird der JSON-Code Ihres Skillsets angezeigt, der in den ersten Zellen des Notebooks erstellt wurde. Rechts neben der Anzeige gibt es ein Dropdownmenü, in dem Sie die Vorlage für Skillsetdefinition auswählen können. Wählen Sie die Vorlage „Azure Machine Learning (AML)“ aus. Geben Sie den Namen des Azure ML-Arbeitsbereichs und den Endpunkt für das Modell an, das für den Rückschlusscluster bereitgestellt wird. Die Vorlage wird mit dem Endpunkt-URI und dem Schlüssel aktualisiert.
 

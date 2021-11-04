@@ -4,20 +4,20 @@ ms.service: machine-learning
 ms.topic: include
 ms.date: 01/28/2020
 ms.author: larryfr
-ms.openlocfilehash: a03f71adc99063fee4374b1436b08adf5bab783d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 72ccb933db6b4524ecdd45a9f74f4a1f399171da
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102510986"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131521322"
 ---
 Die Einträge im `inferenceconfig.json`-Dokument werden den Parametern für die [InferenceConfig](/python/api/azureml-core/azureml.core.model.inferenceconfig)-Klasse zugeordnet. In der folgenden Tabelle wird die Zuordnung zwischen den Entitäten im JSON-Dokument und den Parametern für die Methode beschrieben:
 
 | JSON-Entität | Methodenparameter | Beschreibung |
 | ----- | ----- | ----- |
 | `entryScript` | `entry_script` | Pfad zu einer lokalen Datei, die den Code zum Ausführen für das Image enthält. |
-| `sourceDirectory` | `source_directory` | Dies ist optional. Pfad zu Ordnern, die alle Dateien zum Erstellen des Bilds enthalten, wodurch der Zugriff auf Dateien in diesem Ordner oder Unterordner vereinfacht wird. Sie können einen vollständigen Ordner von Ihrem lokalen Computer als Abhängigkeiten für den Webdienst hochladen. Hinweis: Ihre „entry_script“-, „conda_file“- und „extra_docker_file_steps“-Pfad sind relative Pfade zum „source_directory“-Pfad. |
-| `environment` | `environment` | Dies ist optional.  Die [Umgebung](/python/api/azureml-core/azureml.core.environment.environment) für Azure Machine Learning.|
+| `sourceDirectory` | `source_directory` | Optional. Pfad zu Ordnern, die alle Dateien zum Erstellen des Bilds enthalten, wodurch der Zugriff auf Dateien in diesem Ordner oder Unterordner vereinfacht wird. Sie können einen vollständigen Ordner von Ihrem lokalen Computer als Abhängigkeiten für den Webdienst hochladen. Hinweis: Ihre „entry_script“-, „conda_file“- und „extra_docker_file_steps“-Pfad sind relative Pfade zum „source_directory“-Pfad. |
+| `environment` | `environment` | Optional.  Die [Umgebung](/python/api/azureml-core/azureml.core.environment.environment) für Azure Machine Learning.|
 
 Sie können die vollständigen Spezifikationen einer Azure Machine Learning-[Umgebung](/python/api/azureml-core/azureml.core.environment.environment) in die Rückschlusskonfigurationsdatei aufnehmen. Wenn diese Umgebung in Ihrem Arbeitsbereich nicht vorhanden ist, erstellt Azure Machine Learning sie. Andernfalls aktualisiert Azure Machine Learning die Umgebung bei Bedarf. Nachfolgend finden Sie ein JSON-Beispiel:
 
@@ -28,7 +28,7 @@ Sie können die vollständigen Spezifikationen einer Azure Machine Learning-[Umg
         "docker": {
             "arguments": [],
             "baseDockerfile": null,
-            "baseImage": "mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04",
+            "baseImage": "mcr.microsoft.com/azureml/intelmpi2018.3-ubuntu18.04",
             "enabled": false,
             "sharedVolumes": true,
             "shmSize": null

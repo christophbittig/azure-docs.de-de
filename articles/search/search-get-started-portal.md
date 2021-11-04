@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 08/24/2021
-ms.openlocfilehash: 4af576587d5d0e87053fb31cdd2c1d073d1ea97e
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 244b7070d73eb96f584a1a50b49e24b44ba41a7e
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129714766"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131561402"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Schnellstart: Erstellen eines Index für Azure Cognitive Search im Azure-Portal
 
@@ -134,10 +134,6 @@ Nehmen Sie sich kurz Zeit, um die Optionen für die Indexdefinition anzuzeigen u
 Sie sollten nun über einen Suchindex verfügen, der über die integrierte [**Suchexplorer**](search-explorer.md)-Abfrageseite abgefragt werden kann. Sie enthält ein Suchfeld, über das Sie beliebige Abfragezeichenfolgen testen können.
 
 Der **Suchexplorer** ist nur auf die Verarbeitung von [REST-API-Anforderungen](/rest/api/searchservice/search-documents) ausgelegt. Er akzeptiert aber auch [einfache Abfragesyntax](/rest/api/searchservice/simple-query-syntax-in-azure-search) und Syntax für den [vollständigen Lucene-Abfrageparser](/rest/api/searchservice/lucene-query-syntax-in-azure-search) sowie alle Suchparameter, die für Vorgänge mit der [REST-API zum Durchsuchen von Dokumenten](/rest/api/searchservice/search-documents#bkmk_examples) verfügbar sind.
-
-> [!TIP]
-> Die folgenden Schritte werden im [Übersichtsvideo für Azure Cognitive Search](https://channel9.msdn.com/Events/Connect/2016/138) ab 6:08 veranschaulicht.
->
 
 1. Klicken Sie auf der Befehlsleiste auf **Suchexplorer** .
 

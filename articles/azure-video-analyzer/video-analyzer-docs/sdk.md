@@ -4,13 +4,13 @@ description: Hier erfahren Sie mehr über die Azure Video Analyzer SDKs.
 author: bennage
 ms.author: christb
 ms.topic: reference
-ms.date: 06/01/2021
-ms.openlocfilehash: ec4837091e84ec6cfcb16ba1ace8e4ece7056d8a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 11/04/2021
+ms.openlocfilehash: bc85e9b796f948d9fdee5a96555590084dff215c
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124762016"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131562046"
 ---
 # <a name="azure-video-analyzer-sdks"></a>Azure Video Analyzer SDKs
 

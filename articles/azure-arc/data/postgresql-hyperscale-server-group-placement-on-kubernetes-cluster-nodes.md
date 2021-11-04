@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 07/30/2021
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: b99df2f95838fe1913876a3e6a138935806df836
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 05dd347914d7be942c00232de78cf89484f07555
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122345880"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131555322"
 ---
 # <a name="azure-arc-enabled-postgresql-hyperscale-server-group-placement"></a>Platzieren einer Azure Arc-fähigen PostgreSQL Hyperscale-Servergruppe
 
@@ -139,7 +139,7 @@ Nun wollen wir die Servergruppe mit einem dritten Workerknoten aufskalieren und 
 Zum Aufskalieren führen Sie den folgenden Befehl aus:
 
 ```azurecli
-az postgres arc-server edit --name postgres01 --workers 3 --k8s-namespace <namespace> --use-k8s
+az postgres arc-server edit --name postgres01 --workers 3 --k8s-namespace arc3 --use-k8s
 ```
 
 Hierdurch wird folgende Ausgabe generiert:
@@ -152,15 +152,20 @@ postgres01 is Ready
 Listen Sie die im Azure Arc-Datencontroller bereitgestellten Servergruppen auf, und überprüfen Sie, ob die Servergruppe nun mit drei Workern ausgeführt wird. Führen Sie den folgenden Befehl aus:
 
 ```azurecli
-az postgres arc-server list --k8s-namespace <namespace> --use-k8s
+az postgres arc-server list --k8s-namespace arc3 --use-k8s
 ```
 
 Wie Sie sehen, ist eine Aufskalierung von zwei auf drei Worker erfolgt:
 
 ```output
-Name        State    Workers
-----------  -------  ---------
-postgres01  Ready    3
+[
+  {
+    "name": "postgres01",
+    "replicas": 1,
+    "state": "Ready",
+    "workers": 3
+  }
+]
 ```
 
 Wie zuvor können wir erkennen, dass die Servergruppe nun insgesamt vier Pods verwendet:
@@ -198,10 +203,10 @@ Die Platzierung der PostgreSQL-Instanzen auf den physischen Knoten des Clusters 
 
 |Servergruppenrolle|Servergruppenpod|Physischer Kubernetes-Knoten, auf dem der Pod gehostet wird
 |-----|-----|-----
-|Koordinator|postgres01-0|aks-agentpool-42715708-vmss000000
-|Worker|postgres01-1|aks-agentpool-42715708-vmss000002
-|Worker|postgres01-2|aks-agentpool-42715708-vmss000003
-|Worker|postgres01-3|aks-agentpool-42715708-vmss000000
+|Koordinator|postgres01c-0|aks-agentpool-42715708-vmss000000
+|Worker|postgres01w-1|aks-agentpool-42715708-vmss000002
+|Worker|postgres01w-2|aks-agentpool-42715708-vmss000003
+|Worker|postgres01w-3|aks-agentpool-42715708-vmss000000
 
 Beachten Sie, dass der Pod des neuen Workers (postgres01w-2) auf demselben Knoten wie der Koordinator platziert wurde. 
 
@@ -287,7 +292,7 @@ Wir sehen, dass der neue physische Knoten des Kubernetes-Clusters nur den Metrik
 Auf dem fünften physischen Knoten wird noch keine Workload gehostet. Beim Aufskalieren des Azure Arc-fähigen PostgreSQL-Hyperscale optimiert Kubernetes die Platzierung des neuen PostgreSQL-Pods, sodass er nicht auf physischen Knoten angeordnet werden sollte, auf denen bereits andere Workloads gehostet werden. Führen Sie den folgenden Befehl aus, um den Azure Arc-fähigen PostgreSQL Hyperscale von drei auf vier Worker zu skalieren. Nach Abschluss dieses Vorgangs besteht die Servergruppe aus fünf PostgreSQL-Instanzen, über die sie verteilt ist: einen Koordinator und vier Worker.
 
 ```azurecli
-az postgres arc-server edit --name postgres01 --workers 4 --k8s-namespace <namespace> --use-k8s
+az postgres arc-server edit --name postgres01 --workers 4 --k8s-namespace arc3 --use-k8s
 ```
 
 Hierdurch wird folgende Ausgabe generiert:
@@ -300,15 +305,20 @@ postgres01 is Ready
 Listen Sie die im Datencontroller bereitgestellten Servergruppen auf, und überprüfen Sie, ob die Servergruppe nun mit vier Workern ausgeführt wird:
 
 ```azurecli
-az postgres arc-server list --k8s-namespace <namespace> --use-k8s
+az postgres arc-server list --k8s-namespace arc3 --use-k8s
 ```
 
 Wie Sie sehen, ist eine Aufskalierung von drei auf vier Worker erfolgt. 
 
 ```console
-Name        State    Workers
-----------  -------  ---------
-postgres01  Ready    4
+[
+  {
+    "name": "postgres01",
+    "replicas": 1,
+    "state": "Ready",
+    "workers": 4
+  }
+]
 ```
 
 Wie zuvor können wir erkennen, dass die Servergruppe nun vier Pods verwendet:

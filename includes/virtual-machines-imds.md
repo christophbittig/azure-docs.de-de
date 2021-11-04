@@ -8,12 +8,12 @@ ms.date: 01/04/2021
 ms.author: chhenk
 ms.reviewer: azmetadatadev
 ms.custom: references_regions
-ms.openlocfilehash: 60b4e1ac82574cab16feee9c436d9521eaf58ad4
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: f61c01c05412ea79aa955c599bd4dacd1eea7297
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130173356"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131571220"
 ---
 Der Azure Instance Metadata Service (IMDS) stellt Informationen zu Instanzen virtueller Computer bereit, die derzeit ausgeführt werden. Sie können ihn zur Verwaltung und Konfiguration Ihrer virtuellen Computer verwenden.
 Hierzu gehören die SKU, der Speicher, Netzwerkkonfigurationen und bevorstehende Wartungsereignisse. Eine umfassende Liste der verfügbaren Daten finden Sie in der [Übersicht über die Endpunktkategorien](#endpoint-categories).
@@ -1398,7 +1398,7 @@ Wenn Sie nach mehreren Versuchen keine Antwort auf die Metadaten erhalten, könn
 
 ## <a name="product-feedback"></a>Produktfeedback
 
-Sie können [hier](https://feedback.azure.com/forums/216843-virtual-machines?category_id=394627) in unserem Kanal für Benutzerfeedback unter „Virtuelle Computer“ > „Instance Metadata Service“ Feedback zu Produkten geben und Ideen unterbreiten.
+Sie können [hier](https://feedback.azure.com/d365community/forum/ec2f1827-be25-ec11-b6e6-000d3a4f0f1c?c=a60ebac8-c125-ec11-b6e6-000d3a4f0f1c) in unserem Kanal für Benutzerfeedback unter „Virtuelle Computer“ > „Instance Metadata Service“ Feedback zu Produkten geben und Ideen unterbreiten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

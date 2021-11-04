@@ -2,14 +2,14 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 07/01/2021
+ms.date: 09/24/2021
 ms.author: alkohli
-ms.openlocfilehash: c772d2722c90cefb99c9f2fdd111e2d654d11659
-ms.sourcegitcommit: 6bd31ec35ac44d79debfe98a3ef32fb3522e3934
+ms.openlocfilehash: c6b9a5e808266133f1fa6698fb3016bf9a2b1861
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113280198"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131253485"
 ---
 Die VM-Größe bestimmt den Umfang der Computeressourcen (CPU, GPU und Arbeitsspeicher), die für die VM zur Verfügung gestellt werden. Sie müssen VMs mit einer für die Workload geeigneten Größe erstellen. Auch wenn alle VMs auf derselben Hardware ausgeführt werden, gibt es bei den VM-Größen unterschiedliche Grenzwerte für den Datenträgerzugriff. Dies kann Ihnen helfen, den gesamten Datenträgerzugriff auf allen Ihren VMs zu verwalten. Wenn eine Workload zunimmt, können Sie auch die Größe einer vorhandenen VM ändern.
 
@@ -46,6 +46,7 @@ Die folgenden VMs werden für die Erstellung auf Ihrem Azure Stack Edge-Gerät u
 
 Weitere Informationen finden Sie unter [Dv2- und DSv2-Serie](../articles/virtual-machines/dv2-dsv2-series.md#dv2-series).
 
+
 ### <a name="ncast4_v3-series-preview"></a>NCasT4_v3-Serie (Vorschau)
 
 Diese Größen werden GPU-VMs auf Ihrem Gerät unterstützt und sind für computeintensive GPU-beschleunigte Anwendungen optimiert. Diese Serie ist speziell auf Rückschlussworkloads mit der Tesla T4-GPU von Nvidia ausgelegt.
@@ -75,3 +76,24 @@ Diese Serien sind für Computeworkloads optimiert und laufen auf Intel Xeon-Proz
 | **Standard_F16s**  | 16      | 32           | 64                  | 2000                           | 64000                               | 2300                             | 64              | 8         |
 
 Weitere Informationen finden Sie unter [Fsv2-Serie](../articles/virtual-machines/fsv2-series.md).
+
+### <a name="high-performance-network-vms"></a>Hochleistungsnetzwerk-VMs
+
+Die virtuellen Computer für Hochleistungsnetzwerke (High Performance Network, HPN) sind auf Workloads abgestimmt, die eine schnelle und unterbrechungsfreie Leistung mithilfe von Hochgeschwindigkeits-Netzwerkschnittstellen erfordern. Aufgrund der Art der logischen Kernkopplung weisen die unterstützten VM-Größen die vCPU-Anzahl in Vielfachen von 2 auf.  
+
+#### <a name="hpn-dsv2-series"></a>HPN DSv2-Serie
+
+| Size              | vCPU  | Arbeitsspeicher (GiB)  | Temporärer Speicher (GiB)  | Max. Durchsatz des Betriebssystem-Datenträgers (IOPS)  | Maximaler Durchsatz (temporärer Speicher): (IOPS)  | Max. Datenträgerdurchsatz: (IOPS)  | Max. Anzahl Datenträger  | Maximale Anzahl NICs  |
+|-------------------|-------|---------------|---------------------|--------------------------------|-------------------------------------|----------------------------------|-----------------|-----------|
+| **Standard_DS2_v2_HPN**   | 2     | 7             | 14                  | 2000                           | 8.000                                | 2300                             | 8               | 4         |
+| **Standard_DS3_v2_HPN**   | 4     | 14            | 28                  | 2000                           | 16000                               | 2300                             | 16              | 4         |
+| **Standard_DS4_v2_HPN**   | 8     | 28            | 56                  | 2000                           | 32000                               | 2300                             | 32              | 8         |
+
+#### <a name="hpn-f-series"></a>HPN F-Series
+
+| Size           | vCPUs  | Memory: GiB  | Temporärer Speicher (GiB)  | Max. Durchsatz des Betriebssystem-Datenträgers (IOPS)  | Maximaler Durchsatz (temporärer Speicher): (IOPS)  | Max. Datenträgerdurchsatz: (IOPS)  | Max. Anzahl Datenträger  | Maximale Anzahl NICs  |
+|----------------|---------|--------------|---------------------|--------------------------------|-------------------------------------|----------------------------------|-----------------|-----------|
+| **Standard_F2s_HPN**   | 2       | 4            | 8                   | 2000                           | 8.000                                | 2300                             | 8               | 4         |
+| **Standard_F4s_HPN**   | 4       | 8            | 16                  | 2000                           | 16000                               | 2300                             | 16              | 4         |
+| **Standard_F8s_HPN**   | 8       | 16           | 32                  | 2000                           | 32000                               | 2300                             | 32              | 8         |
+| **Standard_F16s_HPN**  | 16      | 32           | 64                  | 2000                           | 64000                               | 2300                             | 64              | 8         |

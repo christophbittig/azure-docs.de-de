@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Sie mithilfe von Azure Policy integrierte Richtlinien für Azure Machine Learning erstellen können, um sicherzustellen, dass Ihre Arbeitsbereiche Ihren Anforderungen entsprechen.
 author: aashishb
 ms.author: aashishb
-ms.date: 05/10/2021
+ms.date: 10/21/2021
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: enterprise-readiness
 ms.topic: how-to
 ms.reviewer: larryfr
-ms.openlocfilehash: e9a532ca4a4bf87bfb4569c03d367cb4d3d2ea2d
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 7c9b8d5ef1126d204d4f418bc70100760468bc33
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129428234"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131562369"
 ---
 # <a name="audit-and-manage-azure-machine-learning"></a>Azure Machine Learning prüfen und verwalten
 

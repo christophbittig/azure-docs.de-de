@@ -8,17 +8,16 @@ ms.topic: include
 ms.date: 12/12/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 38a2f3cd5f1b391b651c89801e4ab3abe92ed448
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: 3cb87b130b0dd7888664f0bcc1522c99c1c56a4b
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112256039"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131571238"
 ---
 ## <a name="what-is-a-replication-task"></a>Was ist eine Replikationsaufgabe?
 
-Eine Replikationsaufgabe empfängt Ereignisse von einer Quelle und leitet Sie an ein Ziel weiter.
-Die meisten Replikationsaufgaben leiten Ereignisse unverändert weiter und führen höchstens eine Zuordnung zwischen Metadatenstrukturen aus, wenn sich die Quell- und Zielprotokolle unterscheiden. 
+Eine Replikationsaufgabe empfängt Ereignisse von einer Quelle und leitet Sie an ein Ziel weiter. Die meisten Replikationsaufgaben leiten Ereignisse unverändert weiter und führen höchstens eine Zuordnung zwischen Metadatenstrukturen aus, wenn sich die Quell- und Zielprotokolle unterscheiden. 
 
 Replikationsaufgaben sind in der Regel zustandslos, was bedeutet, dass sie keinen Status oder andere Nebeneffekte über sequenzielle oder parallele Ausführungen einer Aufgabe hinweg weitergeben. Dies trifft auch auf Batchverarbeitung und Verkettung zu, die beide auf Grundlage des vorhandenen Zustands eines Datenstroms implementiert werden können. 
 
