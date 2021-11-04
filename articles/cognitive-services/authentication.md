@@ -3,18 +3,18 @@ title: Authentifizierung
 titleSuffix: Azure Cognitive Services
 description: 'Es gibt drei Möglichkeiten zum Authentifizieren einer Anforderung an eine Azure Cognitive Services-Ressource: einen Abonnementschlüssel, ein Bearertoken und ein Abonnement für mehrere Dienste. In diesem Artikel erfahren Sie mehr über die einzelnen Methoden und das Ausführen einer Anforderung.'
 services: cognitive-services
-author: erhopf
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/22/2021
-ms.author: erhopf
-ms.openlocfilehash: e81b2121e8b4f71040014d3e211177dc8656b556
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.author: pafarley
+ms.openlocfilehash: cce37298303e97c986475368a713352069baffa6
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114447616"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131011862"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Authentifizieren von Anforderungen an Azure Cognitive Services
 

@@ -5,17 +5,19 @@ author: batamig
 ms.author: bagol
 ms.service: azure-sentinel
 ms.topic: how-to
-ms.custom: mvc
+ms.custom: mvc, ignite-fall-2021
 ms.date: 05/19/2021
 ms.subservice: azure-sentinel
-ms.openlocfilehash: 0dbdc6be4eb5dd61545bbf761d1805824690ebc7
-ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
+ms.openlocfilehash: 870106b7f3494ac818af90b6b919603e39a0a598
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122681368"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131075161"
 ---
 # <a name="expert-configuration-options-on-premises-deployment-and-sapcontrol-log-sources"></a>Konfigurationsoptionen für Experten, lokale Bereitstellung und SAPControl-Protokollquellen
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 In diesem Artikel wird beschrieben, wie Sie den Azure Sentinel-Datenconnector für SAP in einem Experten- oder benutzerdefinierten Prozess bereitstellen, z. B. mithilfe eines lokalen Computers und einer Azure Key Vault-Instanz zum Speichern Ihrer Anmeldeinformationen.
 

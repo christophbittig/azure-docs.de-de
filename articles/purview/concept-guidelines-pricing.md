@@ -6,12 +6,13 @@ ms.author: athenadsouza
 ms.service: purview
 ms.topic: conceptual
 ms.date: 10/03/2021
-ms.openlocfilehash: 393414ad1d2c50f2a3bb76ce045614e19b50f928
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: ee7364637e79b2603c6eca31d986dbcc3e153db3
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129534064"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131084310"
 ---
 # <a name="azure-purview-pricing"></a>Azure Purview Preisgestaltung   
 
@@ -123,7 +124,7 @@ Indirekte Kosten, die sich auf die Preisgestaltung von Azure Purview auswirken, 
 - [Laufzeitkosten der selbst gehosteten Integration](./manage-integration-runtimes.md) 
     - Die selbst gehostete Integrationslaufzeit erfordert eine Infrastruktur, die zusätzliche Kosten verursacht
     - Es ist erforderlich, die selbst gehostete Integrationslaufzeit (SHIR) innerhalb desselben virtuellen Netzwerks zu implementieren und zu registrieren, in dem auch die privater Endpunkte für die Azure Purview-Ingestion implementiert sind.
-    - [Zusätzlicher Speicherbedarf für das Scannen](./register-scan-sapecc-source.md#creating-and-running-a-scan)
+    - [Zusätzlicher Speicherbedarf für das Scannen](./register-scan-sapecc-source.md#create-and-run-scan)
         - Bestimmte Datenquellen wie SAP erfordern zusätzlichen Speicher auf der SHIR-Maschine zum Scannen
 
 

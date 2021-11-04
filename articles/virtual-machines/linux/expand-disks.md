@@ -5,15 +5,16 @@ author: roygara
 ms.service: virtual-machines
 ms.collection: linux
 ms.topic: how-to
-ms.date: 10/15/2018
+ms.date: 11/02/2021
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: c8c8881de696143be60c9ff61c1649eb31fe59b3
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 8f54e1f74c5f4f6a8502285f5e4c36c09892ec71
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122695610"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131082605"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Erweitern von virtuellen Festplatten auf virtuellen Linux-Computern mit der Azure-CLI
 
@@ -25,11 +26,41 @@ Dieser Artikel erläutert, wie verwaltete Datenträger für einen virtuellen Lin
 > Achten Sie immer darauf, dass Ihr Dateisystem in einem fehlerfreien Zustand ist und dass Ihre Datenträgerpartitionstabelle die neue Größe unterstützt. Vergewissern Sie sich außerdem, dass Ihre Daten gesichert sind, bevor Sie Vorgänge zur Größenänderung von Datenträgern ausführen. Weitere Informationen finden Sie im [Schnellstart zu Azure Backup](../../backup/quick-backup-vm-portal.md). 
 
 ## <a name="expand-an-azure-managed-disk"></a>Erweitern eines verwalteten Azure-Datenträgers
+
+### <a name="resize-without-downtime-preview"></a>Größenänderung ohne Ausfallzeit (Vorschau)
+
+Sie können nun die Größe Ihrer verwalteten Datenträger ändern, ohne Ihre VM zu deallokieren.
+
+Die Vorschau für diesen Bereich hat folgende Einschränkungen:
+
+- Derzeit nur im der erhältlich USA, Westen.
+- Wird nur für Datenfestplatten unterstützt.
+- Festplatten, die kleiner als 4 TiB sind, können nicht ohne Ausfallzeit auf 4 TiB oder mehr erweitert werden.
+    - Sobald Sie die Größe einer Festplatte auf 4 TiB oder mehr erhöht haben, kann sie ohne Ausfallzeiten erweitert werden.
+- Sie müssen entweder die [aktuelle Azure CLI](/cli/azure/install-azure-cli), das [aktuelle Azure PowerShell-Modul](/powershell/azure/install-az-ps), das Azure-Portal, wenn der Zugriff über [https://aka.ms/iaasexp/DiskLiveResize](https://aka.ms/iaasexp/DiskLiveResize) erfolgt, oder eine Azure Resource Manager-Vorlage mit einer API-Version, die 2021-04-01 oder neuer ist, installieren und verwenden.
+
+Um sich für die Funktion zu registrieren, verwenden Sie den folgenden Befehl:
+
+```azurecli
+az feature register --namespace Microsoft.Compute --name LiveResize
+```
+
+Es kann ein paar Minuten dauern, bis die Registrierung abgeschlossen ist. Um zu bestätigen, dass Sie sich registriert haben, verwenden Sie den folgenden Befehl:
+
+```azurecli
+az feature show --namespace Microsoft.Compute --name LiveResize
+```
+
+### <a name="get-started"></a>Erste Schritte
+
 Überprüfen Sie, ob Sie die neueste Version der [Azure CLI](/cli/azure/install-az-cli2) installiert haben und mit [az login](/cli/azure/reference-index#az_login) bei einem Azure-Konto angemeldet sind.
 
 Für diesen Artikel ist ein vorhandener virtueller Computer in Azure mit mindestens einem angefügten und vorbereiteten Datenträger erforderlich. Wenn Sie noch nicht über einen virtuellen Computer verfügen, den Sie verwenden können, finden Sie entsprechende Informationen unter [Erstellen und Vorbereiten eines virtuellen Computers mit Datenträgern](tutorial-manage-disks.md#create-and-attach-disks).
 
 Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen wie *myResourceGroup* und *myVM* durch Ihre eigenen Werte.
+
+> [!IMPORTANT]
+> Wenn Sie **LiveResize** aktiviert haben und Ihre Festplatte die Anforderungen in [Resize ohne Ausfallzeit (Vorschau)](#resize-without-downtime-preview) erfüllt, können Sie Schritt 1 und 3 überspringen. 
 
 1. Vorgänge auf virtuellen Festplatten können nicht durchgeführt werden, wenn die VM ausgeführt wird. Heben Sie die Zuordnung der VM mit [az vm deallocate](/cli/azure/vm#az_vm_deallocate) auf. Im folgenden Beispiel wird die Zuordnung für die VM *myVM* in der Ressourcengruppe *myResourceGroup* aufgehoben:
 

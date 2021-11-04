@@ -14,14 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/22/2021
 ms.author: bagol
-ms.openlocfilehash: de7126b7a095868680ff08fab6691782379bb742
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 6614cc08a53314a701a0db5e6396024bbfb58a28
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111952332"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131009413"
 ---
 # <a name="connect-windows-virtual-desktop-data-to-azure-sentinel"></a>Verbinden von Windows Virtual Desktop-Daten mit Azure Sentinel
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 In diesem Artikel wird beschrieben, wie Sie Ihre Windows Virtual Desktop-Umgebungen (WVD) mithilfe von Azure Sentinel überwachen können.
 

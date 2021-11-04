@@ -1,52 +1,46 @@
 ---
-title: Virtuelle Computer für Confidential Computing in Azure
+title: Erstellen mit SGX-Enclaves - Virtuelle Maschinen in Azure
 description: Hier erfahren Sie mehr über Intel SGX-Hardware zur Ermöglichung Ihrer Confidential Computing-Workloads.
-services: virtual-machines
 author: JenCook
 ms.service: virtual-machines
-ms.subservice: confidential-computing
+ms.subservice: workloads
 ms.workload: infrastructure
 ms.topic: conceptual
-ms.date: 9/3/2020
+ms.date: 11/01/2021
 ms.author: JenCook
-ms.openlocfilehash: 554260b2a2760380d3bb2d91ee25b4a03bf2f1ae
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 0870c0cc762078ec38e978c8dab4815ff37741a4
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102551367"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131067601"
 ---
-# <a name="azure-confidential-computing-virtual-machines-vms-overview"></a>Virtuelle Azure Confidential Computing-Computer (Virtual Machines, VMs) – Übersicht
+# <a name="build-with-sgx-enclaves"></a>Erstellen mit SGX-Enclaves 
 
+Azure Confidential Computing bietet [DCsv2-series](../virtual-machines/dcv2-series.md) und [DCsv3/DCdsv3-series](../virtual-machines/dcv3-series.md)* virtuelle Maschinen (VMs). Diese VMs verfügen über [Intel® Software Guard Extensions (SGX)](https://intel.com/sgx). 
 
-Azure ist der erste Cloudanbieter, der Confidential Computing in einer virtualisierten Umgebung anbietet. Wir haben virtuelle Computer entwickelt, die als Abstraktionsschicht zwischen der Hardware und Ihrer Anwendung fungieren. Sie können Workloads bedarfsgesteuert und mit Redundanz- und Verfügbarkeitsoptionen ausführen.  
+Mit der Intel SGX-Technologie können Kunden Enklaven erstellen, die Daten schützen und verschlüsselt halten, während die CPU die Daten verarbeitet. Das Betriebssystem (OS) und der Hypervisor können nicht auf die Daten zugreifen. Administratoren des Rechenzentrums mit physischem Zugang haben ebenfalls keinen Zugriff auf die Daten.
 
-## <a name="intel-sgx-enabled-virtual-machines"></a>Intel SGX-fähige virtuelle Computer
+## <a name="enclaves-concept"></a>Enclaves-Konzept
 
-Bei virtuellen Azure Confidential Computing-Computern ist ein Teil der CPU-Hardware für einen Teil des Codes und der Daten in Ihrer Anwendung reserviert. Dieser eingeschränkte Teil ist die Enklave. 
+Enklaven sind gesicherte Teile des Prozessors und des Speichers der Hardware. Innerhalb der Enklave können Sie weder Daten noch Code einsehen, auch nicht mit einem Debugger. Wenn nicht vertrauenswürdiger Code versucht, Inhalte im Enklave-Speicher zu ändern, deaktiviert SGX die Umgebung und verweigert die Operationen. Diese einzigartigen Funktionen helfen Ihnen, Ihre Geheimnisse vor dem Zugriff durch Unbefugte zu schützen.  
 
-![VM-Modell](media/overview/hardware-backed-enclave.png)
+![Diagramm des VM-Modells, das die in den Enklaven gesicherten Daten zeigt.](media/overview/hardware-backed-enclave.png)
 
-Azure Confidential Computing-Infrastruktur umfasst derzeit eine spezielle SKU mit virtuellen Computern (VMs). Diese VMs werden auf Intel-Prozessoren mit Software Guard Extension (Intel SGX) ausgeführt. [Intel SGX](https://intel.com/sgx) ist die Komponente, die den höheren Schutzgrad beim Confidential Computing ermöglicht. 
+Betrachten Sie eine Enklave als ein gesichertes Schließfach. Sie legen verschlüsselte Codes und Daten in das Schließfach. Von außen kann man nichts sehen. Sie geben der Enklave einen Schlüssel zur Entschlüsselung der Daten. Die Enklave verarbeitet die Daten und verschlüsselt sie erneut, bevor sie wieder nach außen sendet.
 
-Azure bietet die [DCsv2-Serie](../virtual-machines/dcv2-series.md), die auf Intel SGX-Technologie basiert, für die Erstellung von hardwarebasierten Enklaven an. Sie können sichere Enklavenanwendungen entwickeln, die auf VMs der DCsv2-Serie ausgeführt werden, um Ihre Anwendungsdaten und den verwendeten Code zu schützen. 
+Jede Enklave verfügt über einen verschlüsselten Seiten-Cache (EPC) mit einer bestimmten Größe. Der EPC bestimmt die Speichermenge, die eine Enklave aufnehmen kann. [DCsv2-series](../virtual-machines/dcv2-series.md) VMs fassen bis zu 168 MiB. [DCsv3/DCdsv3-series](../virtual-machines/dcv3-series.md)* VMs fassen bis zu 256 GB für speicherintensivere Workloads.
 
-[Lesen Sie mehr](virtual-machine-solutions.md) zur Bereitstellung von virtuellen Azure Confidential Computing-Computern mit hardwarebasierten vertrauenswürdigen Enklaven.
+> [!NOTE]
+> *DCsv3 und DCdsv3 befinden sich ab dem 1. November 2021 in der **öffentlichen Vorschau**.
 
-## <a name="enclaves"></a>Enclaves
+Weitere Informationen finden Sie unter [Bereitstellung von Intel SGX-VMs mit hardwarebasierten vertrauenswürdigen Enklaven](virtual-machine-solutions-sgx.md).
 
-Enklaven sind geschützte Bereiche des Prozessors und Arbeitsspeichers von Hardware. Es gibt keine Möglichkeit, Daten oder Code innerhalb der Enklave anzuzeigen – auch nicht mit einem Debugger. Wenn mit nicht vertrauenswürdigem Code versucht wird, den Inhalt im Arbeitsspeicher der Enklave zu ändern, wird die Umgebung deaktiviert und die Durchführung der Vorgänge verweigert.
+## <a name="developing-for-enclaves"></a>Entwickeln für Enclaves
 
-Sie können sich eine Enklave im Wesentlichen wie eine geschützte Box vorstellen. Sie fügen verschlüsselten Code und verschlüsselte Daten in die Blackbox ein. Von außen ist der Blick in das innere der Blackbox nicht möglich. Sie ordnen der Enklave einen Schlüssel zum Entschlüsseln der Daten zu, und die Daten werden dann verarbeitet und wieder verschlüsselt, bevor das Versenden aus der Enklave erfolgt.
-
-Bei jeder Enklave gibt es eine festgelegte Größe von verschlüsseltem Seitencache (Encrypted Page Cache, EPC) zur Bestimmung der Menge an Arbeitsspeicher, die jede Enklave enthalten kann. Größere virtuelle DCsv2-Computer haben mehr EPC-Arbeitsspeicher. Lesen Sie die Seite [DCsv2-Spezifikationen](../virtual-machines/dcv2-series.md), um die maximale EPC-Größe pro VM-Größe zu erfahren.
-
-
-
-### <a name="developing-applications-to-run-inside-enclaves"></a>Entwickeln von Anwendungen zur Ausführung innerhalb von Enklaven
-Beim Entwickeln von Anwendungen können Sie [Softwaretools](application-development.md) verwenden, um Teile Ihres Codes und Ihrer Daten in der Enklave abzuschirmen. Mit diesen Tools können Sie sicherstellen, dass Ihr Code und Ihre Daten von Personen außerhalb der vertrauenswürdigen Umgebung nicht angezeigt oder geändert werden können. 
+Für die Entwicklung von Anwendungen, die in Enklavenlaufen, stehen verschiedene [Softwaretools zur Verfügung](application-development.md). Mit diesen Tools können Sie Teile Ihres Codes und Ihrer Daten innerhalb der Enklave schützen. Stellen Sie sicher, dass niemand außerhalb Ihrer vertrauenswürdigen Umgebung Ihre Daten mit diesen Tools einsehen oder ändern kann.
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Lesen Sie bewährte Methoden](virtual-machine-solutions.md) für die Bereitstellung von Lösungen auf virtuellen Azure Confidential Computing-Computern.
-- [Bereitstellen eines virtuellen Computers der DCsv2-Serie](quick-create-portal.md)
+- [Einsatz einer virtuellen Maschine der DCsv2- oder DCsv3/DCdsv3-Serie](quick-create-portal.md)
 - [Entwickeln einer enklavefähigen Anwendung](application-development.md) mit dem OE SDK

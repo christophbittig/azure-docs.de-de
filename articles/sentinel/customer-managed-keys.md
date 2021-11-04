@@ -14,14 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/01/2021
 ms.author: yelevin
-ms.openlocfilehash: d9f6ce8b85aae451fbab318b85f50fb0da7919a6
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 17ff2b2910b81c29f88f70e9a3de31433f965668
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123541295"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131064561"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>Einrichten kundenseitig verwalteter Schlüssel in Azure Sentinel
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 Dieser Artikel enthält Hintergrundinformationen und Schritte zum Konfigurieren eines [kundenseitig verwalteten Schlüssels](../azure-monitor/logs/customer-managed-keys.md) (Customer-Managed Key, CMK) für Azure Sentinel. Mit dem CMK können Sie allen in Azure Sentinel gespeicherten Daten, die bereits von Microsoft in allen relevanten Speicherressourcen verschlüsselt wurden, eine zusätzliche Schutzebene mit einem Verschlüsselungsschlüssel gewähren, der von Ihnen erstellt wurde, sich in Ihrem Besitz befindet und in Ihrer [Azure Key Vault-Instanz](../key-vault/general/overview.md) gespeichert ist.
 

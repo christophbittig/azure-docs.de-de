@@ -14,14 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/04/2021
 ms.author: yelevin
-ms.openlocfilehash: 0b54396efb80aabc5c4a0959d7d4bc2657cf0506
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: ef77535810671c0f442aa90eade688778c381750
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339958"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131064485"
 ---
 # <a name="use-azure-monitor-workbooks-to-visualize-and-monitor-your-data"></a>Visualisieren und Überwachen Ihrer Daten mithilfe von Azure Monitor-Arbeitsmappen
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 Nachdem Sie Ihre [Datenquellen mit Azure Sentinel verbunden](quickstart-onboard.md) haben, können Sie die Daten mithilfe der Azure Sentinel-Einführung von Azure Monitor-Arbeitsmappen visualisieren und überwachen, die für Vielseitigkeit bei der Erstellung benutzerdefinierter Dashboards sorgt. Zwar werden Arbeitsmappen in Azure Sentinel anders angezeigt, dennoch kann es für Sie hilfreich sein, zu erfahren, wie Sie [interaktive Berichte mit Azure Monitor-Arbeitsmappen erstellen](../azure-monitor/visualize/workbooks-overview.md) können. Azure Sentinel ermöglicht das Erstellen von benutzerdefinierten Arbeitsmappen für Ihre Daten und enthält auch integrierte Arbeitsmappenvorlagen, mit denen Sie schnell Erkenntnisse zu den Daten erhalten, sobald Sie eine Verbindung mit einer Datenquelle herstellen.
 

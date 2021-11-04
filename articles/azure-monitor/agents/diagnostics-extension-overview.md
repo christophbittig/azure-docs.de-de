@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: 90addb74811819dec563ba072e9a6aea2cf72ca4
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: d83b8080d275417f6ad58456ffa732f5118f0995
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102036536"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131012357"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Übersicht zur Azure-Diagnoseerweiterung
 Die Azure-Diagnoseerweiterung ist ein [Agent in Azure Monitor](../agents/agents-overview.md), der Überwachungsdaten vom Gastbetriebssystem von Azure-Computeressourcen inklusive VMs sammelt. Dieser Artikel bietet eine Übersicht zur Azure-Diagnoseerweiterung einschließlich spezifischer Funktionen, die unterstützt werden, sowie Optionen für die Installation und Konfiguration. 
@@ -33,7 +33,7 @@ Beachten Sie die folgenden Hauptunterschiede:
 
 - Die Azure-Diagnoseerweiterung kann nur mit virtuellen Azure-Computern verwendet werden. Der Log Analytics-Agent kann mit virtuellen Computern in Azure, anderen Clouds und lokal verwendet werden.
 - Die Azure-Diagnoseerweiterung sendet Daten an Azure Storage, [Azure Monitor-Metriken](../essentials/data-platform-metrics.md) (nur Windows) und Event Hubs. Der Log Analytics-Agent erfasst Daten für [Azure Monitor-Protokolle](../logs/data-platform-logs.md).
-- Der Log Analytics-Agent ist für [Lösungen](../monitor-reference.md#insights-and-core-solutions), [VM Insights](../vm/vminsights-overview.md) und andere Dienste wie [Azure Security Center](../../security-center/index.yml) erforderlich.
+- Der Log Analytics-Agent ist für [Lösungen](../monitor-reference.md#insights-and-curated-visualizations), [VM Insights](../vm/vminsights-overview.md) und andere Dienste wie [Azure Security Center](../../security-center/index.yml) erforderlich.
 
 ## <a name="costs"></a>Kosten
 Es fallen keine Kosten für die Azure-Diagnoseerweiterung an, aber möglicherweise Gebühren für die erfassten Daten. Unter [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/) finden Sie Informationen für das Ziel, auf dem Sie Daten sammeln.

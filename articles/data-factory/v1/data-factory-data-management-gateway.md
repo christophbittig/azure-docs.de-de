@@ -9,12 +9,12 @@ ms.date: 10/22/2021
 ms.author: abnarain
 ms.custom: devx-track-azurepowershell
 robots: noindex
-ms.openlocfilehash: cb827e3603bb00e1c1aa435847dc58fe03d0a389
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: ae9dd04f2bacdbe6a45b11e3d9c535b01953c90b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130255484"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131065340"
 ---
 # <a name="data-management-gateway"></a>Gateway zur Datenverwaltung
 > [!NOTE]
@@ -277,6 +277,7 @@ Der Status des Aktualisierungsvorgangs (manuell oder automatisch) wird auf der T
 Sie können das Feature für die automatische Aktualisierung wie folgt deaktivieren und aktivieren:
 
 [Für Gateways mit einem Knoten]
+
 1. Starten Sie Windows PowerShell auf dem Gatewaycomputer.
 2. Wechseln Sie zum Ordner *C:\\\\Programme\\Microsoft Integration Runtime\\5.0\\PowerShellScript\\* .
 3. Führen Sie den folgenden Befehl aus, um das Feature für die automatische Aktualisierung zu deaktivieren.
@@ -284,20 +285,26 @@ Sie können das Feature für die automatische Aktualisierung wie folgt deaktivie
     ```powershell
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -off
     ```
+
 4. So aktivieren Sie das Feature wieder
 
     ```powershell
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -on
     ```
-   [Für hochverfügbare und skalierbare Gateways mit mehreren Knoten](data-factory-data-management-gateway-high-availability-scalability.md)
+[Für hochverfügbare und skalierbare Gateways mit mehreren Knoten](data-factory-data-management-gateway-high-availability-scalability.md)
+
 1. Starten Sie Windows PowerShell auf dem Gatewaycomputer.
+
 2. Wechseln Sie zum Ordner *C:\\\\Programme\\Microsoft Integration Runtime\\5.0\\PowerShellScript\\* .
+
 3. Führen Sie den folgenden Befehl aus, um das Feature für die automatische Aktualisierung zu deaktivieren.
 
     Für ein Gateway mit Hochverfügbarkeit ist ein zusätzlicher AuthKey-Parameter erforderlich.
+
     ```powershell
     .\IntegrationRuntimeAutoUpdateToggle.ps1 -off -AuthKey <your auth key>
     ```
+
 4. So aktivieren Sie das Feature wieder
 
     ```powershell
@@ -305,6 +312,7 @@ Sie können das Feature für die automatische Aktualisierung wie folgt deaktivie
     ```
 
 ## <a name="configuration-manager"></a>Konfigurations-Manager
+
 Nach der Installation des Gateways können Sie den Datenverwaltungsgateway-Konfigurations-Manager auf eine der folgenden Arten starten:
 
 1. Geben Sie im Fenster **Suchen** den Begriff **Datenverwaltungsgateway** ein, um auf dieses Hilfsprogramm zuzugreifen.
@@ -452,7 +460,7 @@ Zum Verschlüsseln der Anmeldeinformationen im Data Factory-Editor gehen Sie wie
    4. Klicken Sie auf **OK** , um Anmeldeinformationen zu verschlüsseln, und schließen Sie das Dialogfeld.
 8. Sie sollten nun in **connectionString** eine **encryptedCredential**-Eigenschaft sehen.
 
-    ```JSON
+    ```json
     {
         "name": "SqlServerLinkedService",
         "properties": {
@@ -465,7 +473,8 @@ Zum Verschlüsseln der Anmeldeinformationen im Data Factory-Editor gehen Sie wie
         }
     }
     ```
-   Wenn Sie auf das Portal auf einem Computer zugreifen, der sich vom Computer mit dem Gateway unterscheidet, müssen Sie sicherstellen, dass die Anwendung "Anmeldeinformations-Manager" eine Verbindung mit dem Gatewaycomputer herstellen kann. Falls die Anwendung den Computer mit dem Gateway nicht erreichen kann, können Sie keine Anmeldeinformationen für die Datenquelle festlegen und die Verbindung mit der Datenquelle nicht testen.
+
+    Wenn Sie auf das Portal auf einem Computer zugreifen, der sich vom Computer mit dem Gateway unterscheidet, müssen Sie sicherstellen, dass die Anwendung "Anmeldeinformations-Manager" eine Verbindung mit dem Gatewaycomputer herstellen kann. Falls die Anwendung den Computer mit dem Gateway nicht erreichen kann, können Sie keine Anmeldeinformationen für die Datenquelle festlegen und die Verbindung mit der Datenquelle nicht testen.
 
 Wenn Sie die Anwendung **Anmeldeinformationen festlegen** verwenden, verschlüsselt das Portal die Anmeldeinformationen mit dem Zertifikat, das Sie auf der Registerkarte **Zertifikat** des **Datenverwaltungsgateway-Konfigurations-Managers** auf dem Gatewaycomputer angegeben haben.
 
@@ -524,10 +533,11 @@ Dieser Abschnitt beschreibt das Erstellen und Registrieren eines Gateways mit Az
     ```
 2. Mit dem **Get-AzDataFactoryGateway**-Cmdlet können Sie die Liste mit Gateways in Ihrer Data Factory abrufen. Wenn der **Status** **online** angezeigt wird, bedeutet dies, dass Ihr Gateway einsatzbereit ist.
 
-    ```powershell        
+    ```powershell
     Get-AzDataFactoryGateway -DataFactoryName <dataFactoryName> -ResourceGroupName ADF
     ```
-   Sie können ein Gateway mit dem **Remove-AzDataFactoryGateway**-Cmdlet entfernen und die Beschreibung für das Gateway mithilfe der **Set-AzDataFactoryGateway**-Cmdlets aktualisieren. Syntax und andere Details zu diesen Cmdlets finden Sie in der Data Factory-Cmdlet-Referenz.  
+
+    Sie können ein Gateway mit dem **Remove-AzDataFactoryGateway**-Cmdlet entfernen und die Beschreibung für das Gateway mithilfe der **Set-AzDataFactoryGateway**-Cmdlets aktualisieren. Syntax und andere Details zu diesen Cmdlets finden Sie in der Data Factory-Cmdlet-Referenz.  
 
 ### <a name="list-gateways-using-powershell"></a>Auflisten von Gateways mit PowerShell
 

@@ -1,12 +1,11 @@
 ---
 title: Häufig verwendete Azure Sentinel-Arbeitsmappen | Microsoft-Dokumentation
-description: Hier erfahren Sie mehr über die am häufigsten verwendeten Arbeitsmappen für die Verwendung von beliebten integrierten Azure Sentinel-Ressourcen.
+description: Erfahren Sie mehr über die am häufigsten verwendeten Arbeitsmappen zur Verwendung beliebter, sofort einsatzbereiter Azure Sentinel-Ressourcen.
 services: sentinel
 cloud: na
 documentationcenter: na
 author: batamig
 manager: rkarlin
-ms.assetid: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.workload: na
@@ -15,14 +14,17 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 03/07/2021
 ms.author: bagol
-ms.openlocfilehash: 76800b0f7a90dacd1447b87fdc1f1d23300873ec
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: a8e96969dc4edd5a79e1ca85ac32529c10b8a343
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124784392"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131019550"
 ---
 # <a name="commonly-used-azure-sentinel-workbooks"></a>Häufig verwendete Azure Sentinel-Arbeitsmappen
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 In der folgenden Tabelle sind die am häufigsten verwendeten integrierten Azure Sentinel-Arbeitsmappen aufgeführt.
 
@@ -31,7 +33,7 @@ Greifen Sie in Azure Sentinel auf der linken Seite unter **Bedrohungsmanagement*
 > [!TIP]
 > Es wird empfohlen, alle Arbeitsmappen bereitzustellen, die den zu erfassenden Daten zugeordnet sind. Arbeitsmappen ermöglichen eine umfassendere Überwachung und Untersuchung basierend auf Ihren gesammelten Daten.
 >
-> Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit Datenquellen](connect-data-sources.md) und [Entdecken und Bereitstellen von Azure Sentinel-Lösungen](sentinel-solutions-deploy.md).
+> Weitere Informationen finden Sie unter [Verbinden von Datenquellen](connect-data-sources.md) und [Zentrales Erkennen und Bereitstellen von Azure Sentinel Out-of-the-Box-Inhalten und -Lösungen](sentinel-solutions-deploy.md).
 >
 
 |Arbeitsmappenname  |Beschreibung  |

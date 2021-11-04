@@ -5,12 +5,12 @@ ms.topic: reference
 author: bwren
 ms.author: bwren
 ms.date: 01/29/2020
-ms.openlocfilehash: 57ba1c760fe8919fff95493c5c81da4368894f73
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c730f1d5d440d809932499f04338e68a2375b6d1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101719813"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131044246"
 ---
 # <a name="windows-azure-diagnostics-extension-wad-configuration-schema-versions-and-history"></a>Konfigurationsschema der Azure-Diagnoseerweiterung für Windows – Versionen und Versionsverlauf
 Dieser Artikel bietet Informationen zum Versionsverlauf der Schemaversionen der [Azure-Diagnoseerweiterung für Windows](diagnostics-extension-overview.md), die im Rahmen des Microsoft Azure SDK geliefert wird.  
@@ -61,7 +61,7 @@ Definieren von Azure Monitor als neue Senke in Ihrer Konfiguration der Diagnosee
 }
 ```
 
-```XML
+```xml
 <SinksConfig>  
   <Sink name="AzureMonitorSink">
       <AzureMonitor/>
@@ -87,7 +87,7 @@ Als nächstes können Sie Ihre Leistungsindikatoren so konfigurieren, dass sie a
     ]
 },
 ```
-```XML
+```xml
 <PerformanceCounters scheduledTransferPeriod="PT1M", sinks="AzureMonitorSink">  
   <PerformanceCounterConfiguration counterSpecifier="\Processor(_Total)\% Processor Time" sampleRate="PT1M" unit="percent" />  
 </PerformanceCounters>

@@ -10,25 +10,27 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: conceptual
-ms.custom: mvc
+ms.custom: mvc, ignite-fall-2021
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/15/2021
 ms.author: yelevin
-ms.openlocfilehash: 4efc7411fe3755e7cbe14769ff061d2a2b6efa98
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 46a5bcf0db580d652f045efa0c4a381bdbd7143a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123252396"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131075465"
 ---
 # <a name="azure-sentinel-data-connectors"></a>Datenconnectors für Azure Sentinel
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 [!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
 Nachdem Sie Azure Sentinel in Ihren Arbeitsbereich integriert haben, verbinden Sie Datenquellen, um mit der Erfassung Ihrer Daten in Azure Sentinel zu beginnen. Azure Sentinel verfügt über viele Connectors für Microsoft-Produkte, die sofort verfügbar sind und Echtzeitintegration bieten. Beispielsweise umfassen Dienst-zu-Dienst-Connectors Microsoft 365 Defender-Connectors und Microsoft 365-Quellen wie Office 365, Azure Active Directory (Azure AD), Microsoft Defender for Identity und Microsoft Cloud App Security.
 
-Sie können auch integrierte Connectors für Produkte des Sicherheitsökosystems von anderen Anbietern als Microsoft aktivieren. Beispielsweise können Sie [Syslog](#syslog), [Common Event Format (CEF)](#common-event-format-cef) oder [REST-APIs](#rest-api-integration) verwenden, um Ihre Datenquellen mit Azure Sentinel zu verbinden.
+Sie können auch Out-of-the-Box-Connectors für das breitere Sicherheitsökosystem für Nicht-Microsoft-Produkte aktivieren. Beispielsweise können Sie [Syslog](#syslog), [Common Event Format (CEF)](#common-event-format-cef) oder [REST-APIs](#rest-api-integration) verwenden, um Ihre Datenquellen mit Azure Sentinel zu verbinden.
 
 Die Seite **Datenconnectors** ist über das Azure Sentinel-Navigationsmenü zugänglich und zeigt die vollständige Liste der von Azure Sentinel bereitgestellten Connectors und deren Status in Ihrem Arbeitsbereich an. Wählen Sie den gewünschten Connector für die Verbindungsherstellung und anschließend **Connectorseite öffnen** aus.
 
@@ -117,7 +119,7 @@ Weitere Informationen finden Sie unter [Sammeln von Daten in benutzerdefinierten
 
 ## <a name="service-to-service-integration"></a>Dienst-zu-Dienst-Integration
 
-Azure Sentinel verwendet Azure als Grundlage, um integrierte Dienst-zu-Dienst-Unterstützung für Microsoft-Dienste und Amazon Web Services bereitzustellen.
+Azure Sentinel verwendet die Azure Foundation, um sofort einsatzbereiten Service-to-Service-Support für Microsoft-Dienste und Amazon Web Services bereitzustellen.
 
 Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit Azure-, Windows-, Microsoft- und Amazon-Diensten](connect-azure-windows-microsoft-services.md) sowie in der [Referenz zu Datenconnectors](data-connectors-reference.md).
 
@@ -125,7 +127,7 @@ Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit Azure-, 
 
 [Azure Sentinel-Lösungen](sentinel-solutions.md) stellen Pakete mit Sicherheitsinhalten bereit, darunter beispielsweise Datenconnectors, Arbeitsmappen, Analyseregeln oder Playbooks. Wenn Sie eine Lösung mit einem Datenconnector bereitstellen, erhalten Sie den Datenconnector zusammen mit den zugehörigen Inhalten in derselben Bereitstellung. 
 
-Weitere Informationen finden Sie unter [Entdecken und Bereitstellen von Azure Sentinel-Lösungen](sentinel-solutions-deploy.md) sowie im [Azure Sentinel-Lösungskatalog](sentinel-solutions-catalog.md).
+Weitere Informationen finden Sie unter [Out-of-the-Box-Inhalte und Lösungen von Azure Sentinel zentral erkennen und bereitstellen](sentinel-solutions-deploy.md) und den [Lösungskatalog von Azure Sentinel](sentinel-solutions-catalog.md).
 ## <a name="data-connector-support"></a>Datenconnectorsupport
 
 Sowohl Microsoft als auch andere Organisationen erstellen Azure Sentinel-Datenconnectors. Jeder Datenconnector verfügt über einen der folgenden Unterstützungstypen:

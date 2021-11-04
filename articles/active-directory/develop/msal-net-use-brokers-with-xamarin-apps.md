@@ -12,12 +12,12 @@ ms.date: 09/08/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev, has-adal-ref
-ms.openlocfilehash: c5f64fa958d8f4e4750518ed0ff4eaa691f9cbd8
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 823c01dc3c6f6856bfc8cac2249da6bc1ddc411f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124786900"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131054322"
 ---
 # <a name="use-microsoft-authenticator-or-intune-company-portal-on-xamarin-applications"></a>Verwenden von Microsoft Authenticator oder des Intune-Unternehmensportals für Xamarin-Anwendungen
 
@@ -133,7 +133,7 @@ Im URL-Schema bezeichnet `BundleId` eindeutig die App `$"msauth.(BundleId)"`. We
 > [!NOTE]
 > Dieses URL-Schema wird Teil des Umleitungs-URI, der Ihre App eindeutig identifiziert, wenn sie die Antwort vom Broker empfängt.
 
-```XML
+```xml
  <key>CFBundleURLTypes</key>
     <array>
       <dict>
@@ -155,7 +155,7 @@ MSAL verwendet `–canOpenURL:`, um zu überprüfen, ob der Broker auf dem Gerä
 
 Fügen Sie dem Abschnitt `LSApplicationQueriesSchemes` der *Info.plist*-Datei `msauthv2` hinzu, wie im folgenden Beispiel zu sehen:
 
-```XML
+```xml
 <key>LSApplicationQueriesSchemes</key>
     <array>
       <string>msauthv2</string>

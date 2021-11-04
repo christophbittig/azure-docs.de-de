@@ -2,17 +2,17 @@
 title: Einrichten einer Verbindung mit einer Datenquelle mithilfe einer verwalteten Identität
 titleSuffix: Azure Cognitive Search
 description: Erfahren Sie, wie Sie eine Indexerverbindung mit einer Datenquelle mithilfe einer verwalteten Identität einrichten
-author: markheff
-ms.author: maheff
+author: nitinme
+ms.author: nitinme
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/02/2021
-ms.openlocfilehash: bd4d10c32f1c850adf6dc886672b16937b553222
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: ff0ea838df98ba175fd0f3eb843bb148d98b70a1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122350379"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131010572"
 ---
 # <a name="set-up-an-indexer-connection-to-a-data-source-using-a-managed-identity"></a>Einrichten einer Indexerverbindung mit einer Datenquelle mithilfe einer verwalteten Identität
 

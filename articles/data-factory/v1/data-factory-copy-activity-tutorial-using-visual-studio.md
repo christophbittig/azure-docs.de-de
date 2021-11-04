@@ -6,15 +6,15 @@ ms.service: data-factory
 ms.subservice: v1
 ms.custom: vs-azure, devx-track-azurepowershell
 ms.topic: tutorial
-ms.date: 01/22/2018
+ms.date: 10/22/2021
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 5bd8bef3b45ef634577de90656c9452c44399386
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ea8720baf7de28dbe9f36f51b7687528e6c2a460
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128629519"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131067620"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-visual-studio"></a>Tutorial: Erstellen einer Pipeline mit Kopieraktivität mithilfe von Visual Studio
 > [!div class="op_single_selector"]
@@ -107,7 +107,7 @@ Verknüpfte Dienste verknüpfen Datenspeicher oder Serverdienste mit einer Azure
 
 3. Ersetzen Sie `<accountname>` und `<accountkey>`* durch den Namen Ihres Azure-Speicherkontos bzw. durch den dazugehörigen Schlüssel. 
 
-    :::image type="content" source="./media/data-factory-copy-activity-tutorial-using-visual-studio/azure-storage-linked-service.png" alt-text="Mit Azure-Speicher verknüpfter Dienst":::
+    :::image type="content" source="./media/data-factory-copy-activity-tutorial-using-visual-studio/azure-storage-linked-service.png" alt-text="Mit Azure Storage verknüpfter Dienst":::
 
 4. Speichern Sie die Datei **AzureStorageLinkedService1.json** .
 
@@ -245,52 +245,53 @@ Derzeit steuert das Ausgabedataset den Zeitplan. In diesem Tutorial wird ein Aus
 3. Ersetzen Sie den JSON-Code durch den folgenden JSON-Code, und speichern Sie die Datei **CopyActivity1.json** .
 
    ```json
-  {
-   "name": "ADFTutorialPipeline",
-   "properties": {
-     "description": "Copy data from a blob to Azure SQL table",
-     "activities": [
-       {
-         "name": "CopyFromBlobToSQL",
-         "type": "Copy",
-         "inputs": [
-           {
-             "name": "InputDataset"
-           }
-         ],
-         "outputs": [
-           {
-             "name": "OutputDataset"
-           }
-         ],
-         "typeProperties": {
-           "source": {
-             "type": "BlobSource"
+   {
+     "name": "ADFTutorialPipeline",
+     "properties": {
+       "description": "Copy data from a blob to Azure SQL table",
+       "activities": [
+         {
+           "name": "CopyFromBlobToSQL",
+           "type": "Copy",
+           "inputs": [
+             {
+               "name": "InputDataset"
+             }
+           ],
+           "outputs": [
+             {
+               "name": "OutputDataset"
+             }
+           ],
+           "typeProperties": {
+             "source": {
+               "type": "BlobSource"
+             },
+             "sink": {
+               "type": "SqlSink",
+               "writeBatchSize": 10000,
+               "writeBatchTimeout": "60:00:00"
+             }
            },
-           "sink": {
-             "type": "SqlSink",
-             "writeBatchSize": 10000,
-             "writeBatchTimeout": "60:00:00"
+           "Policy": {
+             "concurrency": 1,
+             "executionPriorityOrder": "NewestFirst",
+             "style": "StartOfInterval",
+             "retry": 0,
+             "timeout": "01:00:00"
            }
-         },
-         "Policy": {
-           "concurrency": 1,
-           "executionPriorityOrder": "NewestFirst",
-           "style": "StartOfInterval",
-           "retry": 0,
-           "timeout": "01:00:00"
          }
-       }
-     ],
-     "start": "2017-05-11T00:00:00Z",
-     "end": "2017-05-12T00:00:00Z",
-     "isPaused": false
+       ],
+       "start": "2017-05-11T00:00:00Z",
+       "end": "2017-05-12T00:00:00Z",
+       "isPaused": false
+     }
    }
-  }
-    ```   
+   ```
+
    - Der Abschnitt „Activities“ enthält nur eine Aktivität, deren **Typ** auf **Copy** festgelegt ist. Weitere Informationen zur Kopieraktivität finden Sie unter [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md). In Data Factory-Lösungen können Sie auch [Datentransformationsaktivitäten](data-factory-data-transformation-activities.md) verwenden.
-   - Die Eingabe für die Aktivität ist auf **InputDataset** und die Ausgabe für die Aktivität ist auf **OutputDataset** festgelegt. 
-   - Im Abschnitt **typeProperties** ist **BlobSource** als Quelltyp und **SqlSink** als Senkentyp angegeben. Eine vollständige Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Um Informationen zum Verwenden eines bestimmten unterstützten Datenspeichers als Quelle/Senke zu erhalten, klicken Sie auf den Link in der Tabelle.  
+   - Die Eingabe für die Aktivität ist auf **InputDataset** und die Ausgabe für die Aktivität ist auf **OutputDataset** festgelegt.
+   - Im Abschnitt **typeProperties** ist **BlobSource** als Quelltyp und **SqlSink** als Senkentyp angegeben. Eine vollständige Liste der Datenspeicher, die als Quellen und Senken für die Kopieraktivität unterstützt werden, finden Sie unter [Unterstützte Datenspeicher](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Um Informationen zum Verwenden eines bestimmten unterstützten Datenspeichers als Quelle/Senke zu erhalten, klicken Sie auf den Link in der Tabelle.
      
      Ersetzen Sie den Wert der **start**-Eigenschaft durch den aktuellen Tag und den der **end**-Eigenschaft durch den nächsten Tag. Sie können auch nur den Datumsteil angeben und den Uhrzeitteil überspringen. „2016-02-03“ entspricht beispielsweise „2016-02-03T00:00:00Z“.
      

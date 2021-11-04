@@ -5,17 +5,19 @@ author: batamig
 ms.author: bagold
 ms.service: azure-sentinel
 ms.topic: reference
-ms.custom: mvc
+ms.custom: mvc, ignite-fall-2021
 ms.date: 07/28/2021
 ms.subservice: azure-sentinel
-ms.openlocfilehash: 234de4f2f93a9c35126c0f7be7d8feeb3a244044
-ms.sourcegitcommit: deb5717df5a3c952115e452f206052737366df46
+ms.openlocfilehash: dabfc84a21e7ded8ce3d3e338ffbb03395ef88db
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122681495"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131009052"
 ---
 # <a name="azure-sentinel-sap-solution-security-content-reference-public-preview"></a>Azure Sentinel-Lösung für SAP: Referenz zu sicherheitsbezogenen Inhalten (Public Preview)
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 In diesem Artikel werden die sicherheitsbezogenen Inhalte für die [Azure Sentinel-Lösung für SAP](sap-deploy-solution.md#deploy-sap-security-content) detailliert beschrieben.
 
@@ -158,7 +160,7 @@ Diese Watchlists stellen die Konfiguration für die Azure Sentinel-Lösung „Ko
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie unter
+Weitere Informationen finden Sie unter:
 
 - [Bereitstellen der Azure Sentinel-Lösung für SAP](sap-deploy-solution.md)
 - [Referenz zu Protokollen der Azure Sentinel-Lösung für SAP](sap-solution-log-reference.md)

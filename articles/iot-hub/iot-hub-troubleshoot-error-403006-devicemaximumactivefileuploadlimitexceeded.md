@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
-ms.openlocfilehash: 93fd6528799b6a96aba226ac0841ec4d96eff717
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: 5b90593c44fbab0342def8b85a1a71e8ef15d6ad
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109713160"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131011066"
 ---
 # <a name="403006-devicemaximumactivefileuploadlimitexceeded"></a>403006 DeviceMaximumActiveFileUploadLimitExceeded
 
@@ -31,7 +31,7 @@ Sie können den Grenzwert leicht überschreiten, wenn Ihr Gerät IoT Hub nicht b
 
 ## <a name="solution"></a>Lösung
 
-Stellen Sie sicher, dass das Gerät sofort [über den Abschluss des IoT Hub-Dateiuploads benachrichtigen](./iot-hub-devguide-file-upload.md#notify-iot-hub-of-a-completed-file-upload-rest) kann. Versuchen Sie dann, [die SAS-Token-TTL für die Dateiuploadkonfiguration zu verkürzen](iot-hub-configure-file-upload.md).
+Stellen Sie sicher, dass das Gerät sofort [über den Abschluss des IoT Hub-Dateiuploads benachrichtigen](./iot-hub-devguide-file-upload.md#device-notify-iot-hub-of-a-completed-file-upload) kann. Versuchen Sie dann, [die SAS-Token-TTL für die Dateiuploadkonfiguration zu verkürzen](iot-hub-configure-file-upload.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -8,16 +8,18 @@ ms.assetid: 320ccdad-8767-41f3-b083-0bc48f1eeb37
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
-ms.custom: mvc
+ms.custom: mvc, ignite-fall-2021
 ms.date: 10/24/2019
-ms.openlocfilehash: 0fecd1fca22b003892817f8fd33db88b1eea6127
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 661a02a15b7acb53ab496c1f5fcf9a9ab8c04205
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346158"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131060761"
 ---
 # <a name="keep-track-of-data-during-hunting-with-azure-sentinel"></a>Behalten des Überblicks über Daten beim Hunting mit Azure Sentinel
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 Eine Bedrohungssuche erfordert in der Regel die Überprüfung sehr großer Mengen von Protokolldaten, um nach Beweisen für bösartiges Verhalten zu suchen. Während dieses Prozesses finden Ermittler Ereignisse, die sie sich merken, erneut besuchen und analysieren möchten, um mögliche Hypothesen zu validieren und die ganze Geschichte einer Gefährdung zu verstehen.
 

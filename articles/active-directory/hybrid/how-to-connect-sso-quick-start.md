@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a1c9bcec2a9aec2673e29a3f578146cad7de5d6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 4f691f2c6cff0abec7454282a239e8ede47277c6
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355090"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131068111"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quickstart"></a>Nahtloses einmaliges Anmelden mit Azure Active Directory: Schnellstart
 
@@ -240,4 +240,4 @@ Anweisungen zum Durchführen des Rollovers für Schlüssel finden Sie unter [Nah
 - [Technische Einzelheiten](how-to-connect-sso-how-it-works.md): Informationen zur Funktionsweise des nahtlosen einmaligen Anmeldens
 - [Häufig gestellte Fragen](how-to-connect-sso-faq.yml): Antworten auf häufig gestellte Fragen zum nahtlosen einmaligen Anmelden
 - [Problembehandlung](tshoot-connect-sso.md): Informationen zum Beheben von allgemeinen Problemen, die mit der Funktion für nahtloses einmaliges Anmelden auftreten können
-- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): Fordern Sie neue Features über das Azure Active Directory-Forum an.
+- [UserVoice](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789): Fordern Sie neue Features über das Azure Active Directory-Forum an.

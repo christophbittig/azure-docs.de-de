@@ -13,12 +13,12 @@ ms.custom: project-no-code
 ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 11cc9a7e58001b515e3332717bc4ccdc4f9832f6
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: dc7e2a22e07f131019e701b54ca24b978454b9ae
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130227782"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131007151"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-twitter-account-using-azure-active-directory-b2c"></a>Einrichten der Registrierung und Anmeldung mit einem Twitter-Konto mithilfe von Azure Active Directory B2C
 
@@ -35,7 +35,7 @@ ms.locfileid: "130227782"
 
 ## <a name="create-an-application"></a>Erstellen einer Anwendung
 
-Um die Benutzeranmeldung mit einem Twitter-Konto in Azure AD B2C zu aktivieren, müssen Sie eine Twitter-Anwendung erstellen. Wenn Sie noch über kein Twitter-Konto verfügen, können Sie eines unter [https://twitter.com/signup](https://twitter.com/signup) registrieren. Außerdem müssen Sie [ein Entwicklerkonto beantragen](https://developer.twitter.com/en/apply/user.html). Weitere Informationen finden Sie unter [Zugriff beantragen](https://developer.twitter.com/en/apply-for-access).
+Um die Benutzeranmeldung mit einem Twitter-Konto in Azure AD B2C zu aktivieren, müssen Sie eine Twitter-Anwendung erstellen. Wenn Sie noch über kein Twitter-Konto verfügen, können Sie eines unter [`https://twitter.com/signup`](https://twitter.com/signup) registrieren. Außerdem müssen Sie [ein Entwicklerkonto beantragen](https://developer.twitter.com/en/apply/user.html). Weitere Informationen finden Sie unter [Zugriff beantragen](https://developer.twitter.com/en/apply-for-access).
 
 1. Melden Sie sich im [Twitter-Entwicklerportal](https://developer.twitter.com/portal/projects-and-apps) mit den Anmeldeinformationen für Ihr Twitter-Konto an.
 1. Wählen Sie unter **Eigenständige Apps** die Option **+App erstellen** aus.

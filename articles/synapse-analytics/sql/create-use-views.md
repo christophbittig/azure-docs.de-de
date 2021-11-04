@@ -9,12 +9,13 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 94fee0aa5582f76e6d97568a5535d3626d94515b
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 2f6bfda53dc1e15488960dd72e8e71c88a82ab64
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123535219"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131013135"
 ---
 # <a name="create-and-use-views-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Erstellen und Verwenden von Ansichten mit einem serverlosen SQL-Pool in Azure Synapse Analytics
 
@@ -81,7 +82,7 @@ from openrowset(
            ) as rows
 ```
 
-Delta Lake befindet sich in der öffentlichen Vorschau. Es sind einige Probleme und Einschränkungen bekannt. Überprüfen Sie die bekannten Probleme auf der [Selbsthilfeseite bei Problemen mit serverlosen Synapse-SQL-Pools](resources-self-help-sql-on-demand.md#delta-lake)
+Überprüfen Sie die bekannten Probleme auf der [Selbsthilfeseite bei Problemen mit serverlosen Synapse-SQL-Pools](resources-self-help-sql-on-demand.md#delta-lake)
 
 ## <a name="partitioned-views"></a>Partitionierte Sichten
 
@@ -122,7 +123,7 @@ Der Ordnername in der `OPENROWSET`-Funktion (`yellow` in diesem Beispiel), der m
 > [!div class="mx-imgBorder"]
 >![Delta Lake-Ordner „Yellow Taxi“](./media/shared/yellow-taxi-delta-lake.png)
 
-Delta Lake befindet sich in der öffentlichen Vorschau. Es sind einige Probleme und Einschränkungen bekannt. Überprüfen Sie die bekannten Probleme auf der [Selbsthilfeseite bei Problemen mit serverlosen Synapse-SQL-Pools](resources-self-help-sql-on-demand.md#delta-lake)
+Überprüfen Sie die bekannten Probleme auf der [Selbsthilfeseite bei Problemen mit serverlosen Synapse-SQL-Pools](resources-self-help-sql-on-demand.md#delta-lake)
 
 ## <a name="json-views"></a>JSON-Ansichten
 

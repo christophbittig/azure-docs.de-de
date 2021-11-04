@@ -3,20 +3,20 @@ title: Technische Profile für den bedingten Zugriff in benutzerdefinierten Rich
 titleSuffix: Azure AD B2C
 description: Referenz zu benutzerdefinierten Richtlinien für technische Profile für den bedingten Zugriff in Azure AD B2C.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 06/18/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 902d9251c7393d3f6e693ba37c587398136493e6
-ms.sourcegitcommit: 4f185f97599da236cbed0b5daef27ec95a2bb85f
+ms.openlocfilehash: d44ae627279131004bdac2f755eb26b59e375381
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112368946"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131007950"
 ---
 # <a name="define-a-conditional-access-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen Profils für den bedingten Zugriff in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -34,7 +34,7 @@ Web.TPEngine.Providers.ConditionalAccessProtocolProvider, Web.TPEngine, Version=
 
 Das folgende Beispiel zeigt ein technisches Profil für den bedingten Zugriff:
 
-```XML
+```xml
 <TechnicalProfile Id="ConditionalAccessEvaluation">
   <DisplayName>Conditional Access Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.ConditionalAccessProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -64,7 +64,6 @@ Das Element **InputClaims** enthält eine Liste von Ansprüchen, die an den bedi
 | IsFederated | Ja |boolean | Gibt an, ob ein Benutzer mit einem Verbundkonto angemeldet ist oder nicht. Der Wert muss `false` sein. |
 | IsMfaRegistered | Ja |boolean | Gibt an, ob der Benutzer bereits eine Telefonnummer für die mehrstufige Authentifizierung registriert hat. |
 
-
 Das Element **InputClaimsTransformations** enthält ggf. eine Sammlung von Elementen vom Typ **InputClaimsTransformation**, die vor dem Senden an den Dienst für den bedingten Zugriff zum Ändern der Eingabeansprüche oder zum Generieren neuer Eingabeansprüche verwendet werden.
 
 ### <a name="output-claims"></a>Ausgabeansprüche
@@ -82,7 +81,7 @@ Das **OutputClaimsTransformations**-Element darf eine Sammlung von **OutputClaim
 
 Das folgende Beispiel zeigt ein technisches Profil für den bedingten Zugriff, das zur Auswertung der Anmeldebedrohung verwendet wird.
 
-```XML
+```xml
 <TechnicalProfile Id="ConditionalAccessEvaluation">
   <DisplayName>Conditional Access Provider</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.ConditionalAccessProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -122,7 +121,6 @@ Das Element **InputClaims** enthält eine Liste von Ansprüchen, die an den bedi
 | ClaimReferenceId | Erforderlich | Datentyp | BESCHREIBUNG |
 | --------- | -------- | ----------- |----------- |
 | ChallengesSatisfied | Ja | stringCollection| Die im Modus „Evaluation“ im Rahmen des Anforderungsanspruchs zurückgegebene Liste der erfüllten Anforderungen zum Korrigieren der identifizierten Bedrohung.|
-
 
 Das Element **InputClaimsTransformations** enthält ggf. eine Sammlung von Elementen vom Typ **InputClaimsTransformation**, die vor dem Aufrufen des Diensts für den bedingten Zugriff zum Ändern der Eingabeansprüche oder zum Generieren neuer Eingabeansprüche verwendet werden.
 

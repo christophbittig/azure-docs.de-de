@@ -3,12 +3,12 @@ title: Beschränken des Zugriffs mithilfe eines Dienstendpunkts
 description: Hier erfahren Sie, wie Sie den Zugriff auf eine Azure-Containerregistrierung mithilfe eines Dienstendpunkts in einem virtuellen Azure-Netzwerk beschränken. Der Zugriff auf Dienstendpunkte ist ein Feature der Dienstebene „Premium“.
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: 0fa721a4a4cf59c93123c98c500b693f05667054
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6c76e7e98f049a46c161c5f4ff00b5282ba52c1a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128641615"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131043469"
 ---
 # <a name="restrict-access-to-a-container-registry-using-a-service-endpoint-in-an-azure-virtual-network"></a>Beschränken des Zugriffs auf eine Containerregistrierung mithilfe eines Dienstendpunkts in einem virtuellen Azure-Netzwerk
 
@@ -112,7 +112,7 @@ az acr update --name myContainerRegistry --default-action Deny
 
 Fügen Sie mit dem Befehl [az acr network-rule add][az-acr-network-rule-add] Ihrer Registrierung eine Netzwerkregel hinzu, die den Zugriff vom Subnetz des virtuellen Computers erlaubt. Ersetzen Sie im folgenden Befehl die Werte durch den Namen der Containerregistrierung und die Ressourcen-ID des Subnetzes: 
 
- ```azurecli
+```azurecli
 az acr network-rule add \
   --name mycontainerregistry \
   --subnet <subnet-resource-id>

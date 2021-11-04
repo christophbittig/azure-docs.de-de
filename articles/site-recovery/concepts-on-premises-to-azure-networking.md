@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/13/2019
 ms.author: harshacs
-ms.openlocfilehash: 4b88ed44632aa255837d8fb499782e11c716d443
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 2dfb7a185a4fac41059f5f987c4fa602abf4a894
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105048186"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131003673"
 ---
 # <a name="connect-to-azure-vms-after-failover-from-on-premises"></a>Herstellen einer Verbindung mit Azure-VMs nach einem Failover aus der lokalen Umgebung 
 
@@ -60,7 +60,7 @@ Führen Sie auf lokalen Linux-Computern die folgenden Schritte aus:
 
 Führen Sie nach dem Failover auf den Azure-VMs, die erstellt werden, die folgenden Schritte aus.
 
-1. Um aus dem Internet auf die VM zugreifen zu können, müssen Sie ihr eine öffentliche IP-Adresse zuweisen. Sie können nicht die gleiche öffentliche IP-Adresse für den virtuellen Azure-Computer verwenden, die Sie für Ihren lokalen Computer verwendet haben. [Weitere Informationen](../virtual-network/virtual-network-public-ip-address.md)
+1. Um aus dem Internet auf die VM zugreifen zu können, müssen Sie ihr eine öffentliche IP-Adresse zuweisen. Sie können nicht die gleiche öffentliche IP-Adresse für den virtuellen Azure-Computer verwenden, die Sie für Ihren lokalen Computer verwendet haben. [Weitere Informationen](../virtual-network/ip-services/virtual-network-public-ip-address.md)
 2. Überprüfen Sie, ob die Regeln der Netzwerksicherheitsgruppen (NSG) auf dem virtuellen Computer eingehende Verbindungen am RDP- oder SSH-Port zulassen.
 3. Überprüfen Sie die [Startdiagnose](/troubleshoot/azure/virtual-machines/boot-diagnostics#enable-boot-diagnostics-on-existing-virtual-machine), um die VM anzuzeigen.
 

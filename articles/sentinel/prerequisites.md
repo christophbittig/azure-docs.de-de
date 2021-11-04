@@ -8,14 +8,17 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 07/21/2021
-ms.openlocfilehash: b288a826a0911e73f516fa13a00d3e26b25d2ace
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: dee5f9257e586a13e733f700daf9068a34573446
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122342679"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131075353"
 ---
 # <a name="pre-deployment-activities-and-prerequisites-for-deploying-azure-sentinel"></a>Aktivitäten vor der Bereitstellung und Voraussetzungen für die Bereitstellung von Azure Sentinel
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 In diesem Artikel werden die Aktivitäten vor der Bereitstellung und die Voraussetzungen für die Bereitstellung von Azure Sentinel vorgestellt.
 
@@ -30,7 +33,7 @@ Vor der Bereitstellung von Azure Sentinel empfehlen wir die Ausführung der folg
 1. Entwerfen Sie Ihren Azure Sentinel-Arbeitsbereich. Berücksichtigen Sie dabei z. B. folgende Parameter:
 
     - Soll ein einzelner oder mehrere Mandanten verwendet werden
-    - Sämtliche Konformitätsanforderungen für die Datensammlung und -speicherung
+    - sämtliche Konformitätsanforderungen für die Datensammlung und -speicherung
     - Wie soll der Zugriff auf Azure Sentinel-Daten gesteuert werden
 
     Weitere Informationen finden Sie unter [Arbeitsbereichsarchitektur: Bewährte Methoden](best-practices-workspace-architecture.md) und [Beispielentwürfe für Arbeitsbereiche](sample-workspace-designs.md).

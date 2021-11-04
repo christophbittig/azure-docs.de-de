@@ -12,12 +12,12 @@ ms.author: drskwier
 ms.reviewer: mathoma, v-masebo
 ms.date: 05/19/2021
 ms.custom: seo-javascript-september2019, seo-javascript-october2019, sqldbrb=2, devx-track-js
-ms.openlocfilehash: 65b4d70d9b88ec3c4275c5154bf5977bdf5dd59b
-ms.sourcegitcommit: f0168d80eb396ce27032aa02fe9da5a0c10b5af3
+ms.openlocfilehash: d9d6ea8cd3ef13fe38ca67caffb01beb64fbb982
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112554674"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131012281"
 ---
 # <a name="quickstart-use-nodejs-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Schnellstart: Abfragen einer Datenbank in Azure SQL-Datenbank oder Azure SQL Managed Instance mithilfe von Node.js
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -186,7 +186,7 @@ Ermitteln Sie die Verbindungsinformationen, die Sie zum Herstellen einer Verbind
     ```
 
 > [!NOTE]
-> Weitere Informationen zur Verwendung der verwalteten Identität für die Authentifizierung finden Sie im Tutorial zum [Zugreifen auf Daten über die verwaltete Identität](../../app-service/app-service-web-tutorial-connect-msi.md).
+> Weitere Informationen zur Verwendung der verwalteten Identität für die Authentifizierung finden Sie im Tutorial zum [Zugreifen auf Daten über die verwaltete Identität](../../app-service/tutorial-connect-msi-sql-database.md).
 
 > [!NOTE]
 > Im Codebeispiel wird die Beispieldatenbank **AdventureWorksLT** in Azure SQL-Datenbank verwendet.

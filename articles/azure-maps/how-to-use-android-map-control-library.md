@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: eriklind
 zone_pivot_groups: azure-maps-android
-ms.openlocfilehash: 137b0d56a566d2e62f5559a30b391e6418139e59
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 47af15633803fe0dab299c1f2c4a80c10d32efb0
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130005070"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131036198"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Erste Schritte mit dem Android SDK für Azure Maps
 
@@ -74,7 +74,7 @@ Das Azure Maps Android SDK bietet drei verschiedene Möglichkeiten, die Sprache 
 
 1. Sie können die Informationen zu Sprache und regionaler Ansicht auch an den XML-Code des Kartensteuerelements übergeben.
 
-    ```XML
+    ```xml
     <com.azure.android.maps.control.MapControl
         android:id="@+id/myMap"
         android:layout_width="match_parent"

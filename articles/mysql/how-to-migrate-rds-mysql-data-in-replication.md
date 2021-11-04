@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 09/24/2021
-ms.openlocfilehash: 9d425ce352472755729b34b750a19ce0c3e48c0c
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 01d3832d8c643a6870239534377cd282feef01f1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129362195"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131082472"
 ---
 # <a name="migrate-amazon-rds-for-mysql-to-azure-database-for-mysql-using-data-in-replication"></a>Migrieren von Amazon RDS for MySQL zu Azure Database for MySQL mit Datenreplikation
 
@@ -82,7 +82,7 @@ Zum Vorbereiten der Datenreplikation gehen Sie folgendermaßen vor:
 
 - Überprüfen Sie, ob der Azure Database for MySQL-Zielserver über Port 3306 mit dem Amazon RDS for MySQL-Quellserver verbunden werden kann.
 - Stellen Sie sicher, dass der Amazon RDS for MySQL-Quellserver sowohl eingehenden als auch ausgehenden Datenverkehr auf Port 3306 zulässt.
-- Stellen Sie sicher, dass Sie [Site-to-Site Konnektivität](../vpn-gateway/tutorial-site-to-site-portal.md) zu Ihrem Quellserver bereitstellen, indem Sie entweder [Azure ExpressRoute](../expressroute/expressroute-introduction.md) oder [Azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) verwenden. Weitere Informationen zum Erstellen eines virtuellen Netzwerks finden Sie in der [Dokumentation zu Azure Virtual Network](/azure/virtual-network/). Sehen Sie sich auch die Schnellstartartikel mit Schritt-für-Schritt-Anleitungen an.
+- Stellen Sie sicher, dass Sie [Site-to-Site Konnektivität](../vpn-gateway/tutorial-site-to-site-portal.md) zu Ihrem Quellserver bereitstellen, indem Sie entweder [Azure ExpressRoute](../expressroute/expressroute-introduction.md) oder [Azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) verwenden. Weitere Informationen zum Erstellen eines virtuellen Netzwerks finden Sie in der [Dokumentation zu Azure Virtual Network](../virtual-network/index.yml). Sehen Sie sich auch die Schnellstartartikel mit Schritt-für-Schritt-Anleitungen an.
 - Konfigurieren Sie die Netzwerksicherheitsgruppen Ihres Quelldatenbankservers so, dass die IP-Adresse des Azure Database for MySQL-Zielservers zulässig ist.
 
 > [!IMPORTANT]

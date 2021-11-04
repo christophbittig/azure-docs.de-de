@@ -3,20 +3,20 @@ title: Beispiele für die Transformation von Social Media-Kontoansprüchen für 
 titleSuffix: Azure AD B2C
 description: Hier finden Sie Beispiele für die Transformation von Social Media-Kontoansprüchen für das Schema des Frameworks für die Identitätsfunktion (Identity Experience Framework, IEF) von Azure Active Directory B2C.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: c60cecb9d6bfeeefc0569a1a57185d13f0c6442f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 03aecaabbe5a5b3948837db69bc7fc0dfe816b3e
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94953116"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "131032352"
 ---
 # <a name="social-accounts-claims-transformations"></a>Anspruchstransformationen für Social Media-Konten
 

@@ -6,7 +6,6 @@ cloud: na
 documentationcenter: na
 author: yelevin
 manager: rkarlin
-ms.assetid: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.workload: na
@@ -15,14 +14,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/11/2021
 ms.author: yelevin
-ms.openlocfilehash: d6afd8e1d4c70d818257007993aedfe3a48ce4f4
-ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: e7fa9ec18c39ff3c58c45dde445f4b10fbd198fd
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129752111"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131009451"
 ---
 # <a name="automate-threat-response-with-playbooks-in-azure-sentinel"></a>Automatisieren der Bedrohungsabwehr mit Playbooks in Azure Sentinel
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 In diesem Artikel wird erklärt, was Azure Sentinel Playbooks sind und wie Sie sie für die Implementierung Ihrer SOAR-Vorgänge (Security Orchestration, Automation and Response) verwenden, um bessere Ergebnisse zu erzielen und gleichzeitig Zeit und Ressourcen zu sparen.
 
@@ -50,7 +52,7 @@ Playbookvorlagen sind selbst keine aktiven Playbooks, bis Sie daraus ein Playboo
 
 Sie können Playbookvorlagen aus den folgenden Quellen beziehen:
 
-- Auf der Registerkarte **Playbookvorlagen** (unter **Automatisierung)** werden die führenden Szenarien der Azure Sentinel-Community angezeigt. Es können mehrere aktive Playbooks aus derselben Vorlage erstellt werden.
+- Auf der Registerkarte **Playbookvorlagen** (unter **Automatisierung**) werden die führenden Szenarien der Azure Sentinel-Community angezeigt. Es können mehrere aktive Playbooks aus derselben Vorlage erstellt werden.
 
     Wenn eine neue Version der Vorlage veröffentlicht wird, werden die aus dieser Vorlage erstellten aktiven Playbooks (auf der Registerkarte **Playbooks**) mit einer Benachrichtigung gekennzeichnet, dass ein Update verfügbar ist.
 
@@ -158,7 +160,7 @@ Erstellen Sie eine Automatisierungsregel für die Erstellung aller Incidents, un
 
 **Verwenden Sie die SOC-Chat-Plattform, um die Warteschlange der Incidents besser zu überwachen.**
 
-Beispiel:
+Zum Beispiel:
 
 Ein Azure Sentinel Incident wurde aus einem Alert durch eine Analyseregel erstellt, die Benutzernamen und IP-Adressen-Entitäten generiert.
 

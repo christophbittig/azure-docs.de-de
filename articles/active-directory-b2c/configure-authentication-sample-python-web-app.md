@@ -2,21 +2,21 @@
 title: Konfigurieren der Authentifizierung in einer Python-Beispiel-Webanwendung mithilfe von Azure Active Directory B2C
 description: Dieser Artikel beschreibt, wie man Azure Active Directory B2C verwendet, um Benutzer in einer Python-Webanwendung anzumelden und zu registrieren.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 06/11/2021
-ms.author: mimart
+ms.date: 09/15/2021
+ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: 89fb5fdd217ddc38a4b3f80504b3c48a882c4251
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 1466e62e50cac9d24616c9662f73ad23f3f6eea7
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123471928"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "131007915"
 ---
 # <a name="configure-authentication-in-a-sample-python-web-app-by-using-azure-ad-b2c"></a>Konfigurieren Sie die Authentifizierung in einer Python-Webanwendung mit Azure AD B2C
 
@@ -29,7 +29,7 @@ OpenID Connect (OIDC) ist ein Authentifizierungsprotokoll, das auf OAuth 2.0 ba
 Der Anmeldeflow umfasst die folgenden Schritte:
 
 1. Benutzer navigieren zur Web-App und wählen **Anmelden** aus. 
-1. Die App löst eine Authentifizierungsanforderung aus und leitet Benutzer zu Azure AD B2C um.
+1. Die App löst eine Authentifizierungsanforderung aus und leitet Benutzer an Azure AD B2C um.
 1. Benutzer [registrieren oder melden sich an](add-sign-up-and-sign-in-policy.md), [setzen das Passwort zurück](add-password-reset-policy.md), oder melden sich mit einem [Social Account](add-identity-provider.md) an.
 1. Nachdem die Benutzer sich erfolgreicher angemeldet haben, gibt Azure AD B2C ein ID-Token an die App zurück.
 1. Die App tauscht den Autorisierungscode gegen ein ID-Token aus, validiert das ID-Token, liest die Forderungen und gibt dann eine sichere Seite an die Benutzer zurück.
@@ -61,8 +61,9 @@ Bei der App-Registrierung geben Sie den *Umleitungs-URI* an. Der Umleitungs-URI 
 Gehen Sie zum Erstellen der Web-App-Registrierung folgendermaßen vor:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
-1. Suchen Sie nach **Azure AD B2C**, und wählen Sie diese Option aus.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
+1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse und Abonnements** das Azure AD B2C-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
+1. Suchen Sie im Azure-Portal nach **Azure AD B2C**, und wählen Sie diese Option dann aus.
 1. Wählen Sie **App-Registrierungen** aus, und wählen Sie dann **Registrierung einer neuen Anwendung** aus.
 1. Geben Sie unter **Name** einen Namen für die Anwendung ein, (z. B. *webapp1*).
 1. Wählen Sie unter **Unterstützte Kontotypen** die Option **Konten in einem beliebigen Identitätsanbieter oder Organisationsverzeichnis (zum Authentifizieren von Benutzern mit Benutzerflows)** aus. 
@@ -79,7 +80,7 @@ Gehen Sie zum Erstellen der Web-App-Registrierung folgendermaßen vor:
 
 [!INCLUDE [active-directory-b2c-app-integration-client-secret](../../includes/active-directory-b2c-app-integration-client-secret.md)]
 
-## <a name="step-3-get-the-web-app-sample"></a>Schritt 3: Herunterladen des Web-App-Beispiels
+## <a name="step-3-get-the-web-app-sample"></a>Schritt 3: Herunterladen des Web-App-Beispiels
 
 [Laden Sie die ZIP-Datei herunter](https://github.com/Azure-Samples/ms-identity-python-webapp/archive/master.zip), oder klonen Sie die Beispielwebanwendung von GitHub. 
 

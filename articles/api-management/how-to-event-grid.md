@@ -5,16 +5,16 @@ author: dlepow
 ms.topic: how-to
 ms.service: api-management
 ms.author: danlep
-ms.date: 07/12/2021
-ms.custom: ''
-ms.openlocfilehash: 9e81fbe26c8b98a0694789567cef9126d5ca02fc
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 11/2/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: b98e958869b30a90d7006020768cdc7d8c1d62c7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355842"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131063060"
 ---
-# <a name="send-events-from-api-management-to-event-grid-preview"></a>Senden von Ereignissen von API Management an Event Grid (Vorschau)
+# <a name="send-events-from-api-management-to-event-grid"></a>Senden von Ereignissen von API Management an Event Grid
 
 API Management integriert sich in [Azure Event Grid](../event-grid/overview.md), sodass Sie Ereignisbenachrichtigungen an andere Dienste senden und nachfolgende Prozesse auslösen können. Event Grid ist ein vollständig verwalteter Ereignisroutingdienst, der ein Veröffentlichen-Abonnieren-Modell verwendet. Event Grid verfügt über integrierte Unterstützung für Azure-Dienste wie [Azure Functions](../azure-functions/functions-overview.md) und [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und kann mithilfe von Webhooks Ereigniswarnungen an Nicht-Azure-Dienste übermitteln.
 
@@ -63,7 +63,7 @@ Die Beispiel-App sollte nun gerendert werden, und es sollten keine Ereignismeldu
 In Event Grid abonnieren Sie ein *Thema*, um festzulegen, welche Ereignisse Sie nachverfolgen möchten und wohin diese gesendet werden sollen. Hier erstellen Sie ein Abonnement von Ereignissen in Ihrer API Management-Instanz.
 
 1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer API Management-Instanz.
-1. Wählen Sie **Ereignisse (Vorschau) > + Ereignisabonnement** aus. 
+1. Wählen Sie **Ereignisse > + Ereignisabonnement** aus. 
 1. Auf der Registerkarte **Basic**:
     * Geben Sie einen aussagekräftigen **Namen** für das Ereignisabonnement ein.
     * Wählen Sie unter **Ereignistypen** einen oder mehrere API Management-Ereignistypen aus, die an Event Grid gesendet werden sollen. Wählen Sie für das Beispiel in diesem Artikel mindestens **Microsoft.APIManagement.ProductCreated** aus. 

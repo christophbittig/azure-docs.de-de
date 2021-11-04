@@ -9,15 +9,17 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 10/14/2020
-ms.custom: references_regions
-ms.openlocfilehash: 49aef35c5f69bd5ad09c4b1154fbee75ba2aa204
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.custom: references_regions, ignite-fall-2021
+ms.openlocfilehash: 492f94282f1e3d3055d6f7726da68c8d9503856c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123251841"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131009109"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>Schnellstart: Ausführen des Onboardings für Azure Sentinel
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 In diesem Schnellstart erfahren Sie, wie Sie mit Azure Sentinel loslegen können. Wenn Sie Azure Sentinel integrieren wollen, müssen Sie Azure Sentinel zuerst aktivieren und dann eine Verbindung mit Ihren Datenquellen herstellen.
 
@@ -127,4 +129,3 @@ Weitere Informationen finden Sie unter
     - [Erste Schritte mit Azure Sentinel](get-visibility.md)
     - [Erstellen benutzerdefinierter Analyseregeln zum Erkennen von Bedrohungen](detect-threats-custom.md)
     - [Verbinden der externen Lösung mithilfe von Common Event Format](connect-common-event-format.md)
-

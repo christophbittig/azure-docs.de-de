@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/19/2016
-ms.openlocfilehash: b9e9d6b1b5939804b24fd523bf8b7444ed41178f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8589caaa888e9a9b1156563bd38090c922ebfcc4
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101708593"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131020861"
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>Senden von Cloud Services-, Virtual Machines- oder Service Fabric-Diagnosedaten an Application Insights
 Cloud Services, Virtual Machines, VM-Skalierungsgruppen und Service Fabric verwenden die Azure-Diagnoseerweiterung zum Sammeln von Daten.  Die Azure-Diagnose sendet die Daten an Azure Storage-Tabellen.  Sie können jedoch auch alle oder einen Teil der Daten mithilfe der Azure-Diagnoseerweiterung 1.5 oder höher an andere Speicherorte weiterleiten.
@@ -22,7 +22,7 @@ Mit der Azure-Diagnoseerweiterung 1.5 wurden Senken eingeführt, die zusätzlich
 
 Beispielkonfiguration einer Senke für Application Insights:
 
-```XML
+```xml
 <SinksConfig>
     <Sink name="ApplicationInsights">
       <ApplicationInsights>{Insert InstrumentationKey}</ApplicationInsights>
@@ -85,7 +85,7 @@ Hier sehen Sie ein vollständiges Beispiel für eine öffentliche Konfigurations
 1. Sendet alle Fehler an Application Insights (angegeben im Knoten **DiagnosticMonitorConfiguration**)
 2. Sendet zudem ausführliche Protokolle für die Anwendungsprotokolle (angegeben im Knoten **Logs**).
 
-```XML
+```xml
 <WadCfg>
   <DiagnosticMonitorConfiguration overallQuotaInMB="4096"
        sinks="ApplicationInsights.MyTopDiagData"> <!-- All info below sent to this channel -->
@@ -197,7 +197,7 @@ In der vorherigen Konfiguration haben die folgenden Zeilen die folgende Bedeutun
 
 ### <a name="send-verbose-application-logs-to-application-insights"></a>Senden von ausführlichen Anwendungsprotokollen an Application Insights
 
-```XML
+```xml
 <Logs scheduledTransferPeriod="PT1M" scheduledTransferLogLevelFilter="Verbose" sinks="ApplicationInsights.MyLogData"/>
 ```
 ```JSON

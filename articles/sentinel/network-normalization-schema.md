@@ -6,7 +6,6 @@ cloud: na
 documentationcenter: na
 author: oshezaf
 manager: rkarlin
-ms.assetid: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.workload: na
@@ -15,14 +14,17 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 08/17/2021
 ms.author: ofshezaf
-ms.openlocfilehash: 388f7b0d3ed26c10ad91e17ccbbeabf705b3894c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: bca951ee50a503aa91a0dec680a787a5c2f95ad8
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128560695"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131083863"
 ---
 # <a name="azure-sentinel-network-session-normalization-schema-reference-public-preview"></a>Referenz zum Azure Sentinel-Normalisierungsschema für Netzwerksitzungen (Public Preview)
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 Das Normalisierungsschema für Netzwerksitzungen wird verwendet, um eine IP-Netzwerkaktivität zu beschreiben. Dies umfasst Netzwerkverbindungen und Netzwerksitzungen. Entsprechende Ereignisse werden beispielsweise von Betriebssystemen, Routern, Firewalls, Intrusion-Prevention-Systemen und Websicherheitsgateways gemeldet.
 
@@ -348,7 +350,7 @@ Wenn das Ereignis von einem der Endpunkte der Netzwerksitzung gemeldet wird, kan
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie unter
+Weitere Informationen finden Sie unter:
 
 - [Normalisierung in Azure Sentinel](normalization.md)
 - [Azure Sentinel: Referenz zum Authentifizierungsnormalisierungsschema (Öffentliche Vorschau)](authentication-normalization-schema.md)
@@ -356,4 +358,3 @@ Weitere Informationen finden Sie unter
 - [Azure Sentinel: Referenz zum DNS-Normalisierungsschema](dns-normalization-schema.md)
 - [Azure Sentinel: Referenz zum Prozessereignis-Normalisierungsschema](process-events-normalization-schema.md)
 - [Azure Sentinel: Referenz zum Registrierungsereignis-Normalisierungsschema (Öffentliche Vorschau)](registry-event-normalization-schema.md)
-

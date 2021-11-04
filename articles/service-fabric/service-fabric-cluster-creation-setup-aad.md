@@ -3,12 +3,13 @@ title: Einrichten von Azure Active Directory für die Clientauthentifizierung
 description: Hier erfahren Sie, wie Azure Active Directory (Azure AD) für die Authentifizierung von Clients für Service Fabric-Cluster eingerichtet wird.
 ms.topic: conceptual
 ms.date: 6/28/2019
-ms.openlocfilehash: a1f89e144f9cef12c5bff87befb00a88bad8d7d9
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: e960b753e7d1c76992e59cb03133f27f7e305ea1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102215968"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131004072"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>Einrichten von Azure Active Directory für die Clientauthentifizierung
 
@@ -136,9 +137,9 @@ Ja. Denken Sie jedoch daran, die URL von Service Fabric Explorer Ihrer Cluster(w
 ## <a name="next-steps"></a>Nächste Schritte
 Nach dem Einrichten von Azure Active Directory-Anwendungen und dem Festlegen von Rollen für Benutzer [konfigurieren Sie einen Cluster und stellen ihn bereit](service-fabric-cluster-creation-via-arm.md).
 
-
 <!-- Links -->
-[azure-CLI]:https://docs.microsoft.com/cli/azure/get-started-with-azure-cli
+
+[azure-cli]: /cli/azure/get-started-with-azure-cli
 [azure-portal]: https://portal.azure.com/
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
 [active-directory-howto-tenant]:../active-directory/develop/quickstart-create-new-tenant.md

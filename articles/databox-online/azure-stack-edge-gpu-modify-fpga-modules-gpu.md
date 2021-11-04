@@ -8,12 +8,13 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 02/22/2021
 ms.author: alkohli
-ms.openlocfilehash: 1276a242efb1917a0c4a24aa73c3e0d11f81e158
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: ab3cb4360b9bd0c65ac8567109890fc364411367
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105559161"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131073052"
 ---
 # <a name="run-existing-iot-edge-modules-from-azure-stack-edge-pro-fpga-devices-on-azure-stack-edge-pro-gpu-device"></a>Ausführen vorhandener IoT Edge-Module auf Azure Stack Edge Pro-FPGA-Geräten auf einem Azure Stack Edge Pro-GPU-Gerät
 
@@ -207,7 +208,7 @@ Wenn Sie die Arbeitsspeicherauslastung und CPU-Auslastung festlegen möchten, k�
 ```
 Die Spezifikationen für Arbeitsspeicher und CPU sind nicht erforderlich, jedoch empfehlenswert. Wenn `requests` nicht angegeben wird, werden die als Grenzwerte festgelegten Werte als Mindestanforderung verwendet. 
 
-Für die Verwendung von freigegebenem Arbeitsspeicher für Module ist ebenfalls eine andere Herangehensweise erforderlich. Sie können beispielsweise den Host-IPC-Modus für den Zugriff auf gemeinsam genutzten Arbeitsspeicher zwischen Live Video Analytics-Lösungen und Rückschlusslösungen verwenden. Informationen dazu finden Sie unter [Bereitstellen des Live Video Analytics-Edge-Moduls mit dem Azure-Portal](../media-services/live-video-analytics-edge/deploy-azure-stack-edge-how-to.md#deploy-live-video-analytics-edge-module-using-azure-portal).
+Für die Verwendung von freigegebenem Arbeitsspeicher für Module ist ebenfalls eine andere Herangehensweise erforderlich. Sie können beispielsweise den Host-IPC-Modus für den Zugriff auf gemeinsam genutzten Arbeitsspeicher zwischen Live Video Analytics-Lösungen und Rückschlusslösungen verwenden. Informationen dazu finden Sie unter [Bereitstellen des Live Video Analytics-Edge-Moduls mit dem Azure-Portal](../azure-video-analyzer/video-analyzer-docs/overview.md).
 
 
 ## <a name="web-proxy"></a>Webproxy 

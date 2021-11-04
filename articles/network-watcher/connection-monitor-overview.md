@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: vinigam
 ms.custom: mvc
-ms.openlocfilehash: 6f891ea0e05148d893a226ec1d6243b5d5224954
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 6b62da14473797653da17b28b5366e26e7c18357
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130258523"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131082529"
 ---
 # <a name="monitor-network-connectivity-by-using-connection-monitor"></a>Überwachen der Netzwerkkonnektivität mit dem Verbindungsmonitor
 
@@ -76,7 +76,7 @@ Durch Regeln für eine Netzwerksicherheitsgruppe (NSG) oder Firewall kann die Ko
 
 ### <a name="agents-for-on-premises-machines"></a>Agents für lokale Computer
 
-Damit der Verbindungsmonitor die lokalen Computer als Quellen für die Überwachung erkennt, installieren Sie den Log Analytics-Agent auf den Computern. Aktivieren Sie dann die [Netzwerkleistungsmonitor-Lösung](/azure/network-watcher/connection-monitor-overview#enable-the-npm-solution-for-on-premises-machines). Diese Agents sind mit den Log Analytics-Arbeitsbereichen verknüpft. Daher müssen Sie die Arbeitsbereichs-ID und den Primärschlüssel einrichten, bevor die Agents mit der Überwachung beginnen können.
+Damit der Verbindungsmonitor die lokalen Computer als Quellen für die Überwachung erkennt, installieren Sie den Log Analytics-Agent auf den Computern. Aktivieren Sie dann die [Netzwerkleistungsmonitor-Lösung](../network-watcher/connection-monitor-overview.md#enable-the-npm-solution-for-on-premises-machines). Diese Agents sind mit den Log Analytics-Arbeitsbereichen verknüpft. Daher müssen Sie die Arbeitsbereichs-ID und den Primärschlüssel einrichten, bevor die Agents mit der Überwachung beginnen können.
 
 Informationen zum Installieren des Log Analytics-Agents für Windows finden Sie unter [Installieren des Log Analytics-Agents unter Windows](../azure-monitor/agents/agent-windows.md).
 
