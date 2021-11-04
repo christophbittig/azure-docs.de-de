@@ -6,23 +6,23 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: how-to
-ms.date: 07/13/2021
+ms.date: 08/30/2021
 ms.author: cherylmc
-ms.openlocfilehash: 8a2c35f2ef4dafe9024deab1c26116c0ca20e01e
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: f88ab798618608b8dbb0e27fb772a82a5199a889
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113733302"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131080857"
 ---
-# <a name="upgrade-a-sku-preview"></a>Durchführen eines Upgrades für eine SKU (Vorschau)
+# <a name="upgrade-a-sku"></a>Aktualisieren einer SKU
 
 In diesem Artikel erfahren Sie, wie Sie den Tarif einer SKU von „Basic“ in „Standard“ ändern können. Nach dem Upgrade können Sie den Tarif „Basic“ für die SKU nur noch wiederherstellen, indem Sie Bastion löschen und neu konfigurieren. Während der Vorschauphase kann diese Einstellung nur im Azure-Portal konfiguriert werden. Weitere Informationen zur Hostskalierung finden Sie unter [Konfigurationseinstellungen: SKUs](configuration-settings.md#skus). 
 
 ## <a name="configuration-steps"></a>Konfigurationsschritte
 
-[!INCLUDE [Azure Bastion preview portal](../../includes/bastion-preview-portal-note.md)]
-
+1. Melden Sie sich beim [Azure-Portal](https://ms.portal.azure.com) an.
 1. Navigieren Sie im Azure-Portal zu Ihrem Bastionhost.
 1. Wählen Sie auf der Seite **Konfiguration** in der Dropdownliste **Tarif** die Option **Standard** aus.
 

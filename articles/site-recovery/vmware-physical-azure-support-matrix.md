@@ -3,12 +3,12 @@ title: Unterstützungsmatrix für VMware- oder physische Notfallwiederherstellun
 description: Fasst die Unterstützung der Notfallwiederherstellung von VMware-VMs und physische Server in Azure mit Azure Site Recovery zusammen.
 ms.topic: conceptual
 ms.date: 08/02/2021
-ms.openlocfilehash: 2557292af835f13792673c2cfbb1eb82542b7725
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 084e0b9b0b42bbe2ba3632d54811e738197899f3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129994478"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131441474"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Unterstützungsmatrix für die Notfallwiederherstellung von virtuellen VMware-Computern und physischen Servern in Azure
 
@@ -251,7 +251,7 @@ Gast-/Server-NFS | Nein
 Gast-/Server-iSCSI | Für Migration: Ja<br/>Für Notfallwiederherstellung: Nein, iSCSI führt ein Failback als angefügter Datenträger auf den virtuellen Computer aus
 Gast/Server-SMB 3.0 | Nein
 Gast-/Server-RDM | Ja<br/><br/> Nicht verfügbar für physische Server
-Gast-/Serverdatenträger > 1 TB | Ja, der Datenträger muss größer als 1024 MB sein.<br/><br/>Bis zu 8.192 GB bei der Replikation auf verwaltete Datenträger (ab Version 9.26)<br></br> Bis zu 4.095 GB bei der Replikation in Speicherkonten
+Gast-/Serverdatenträger > 1 TB | Ja, der Datenträger muss größer als 1024 MB sein.<br/><br/>Bis zu 32.767 GB bei der Replikation auf verwaltete Datenträger (ab Version 9.41)<br></br> Bis zu 4.095 GB bei der Replikation in Speicherkonten
 Gast-/Serverdatenträger mit einer logischen Sektorgröße von 4K und einer physischen Sektorgröße von 4k | Nein
 Gast-/Serverdatenträger mit einer logischen Sektorgröße von 4K und einer physischen Sektorgröße von 512 Bytes | Nein
 Gast-/Servervolume mit Stripesetdatenträgern > 4 TB | Ja

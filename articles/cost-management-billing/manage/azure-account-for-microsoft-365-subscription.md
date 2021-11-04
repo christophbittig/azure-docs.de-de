@@ -1,7 +1,7 @@
 ---
 title: Registrieren für Microsoft 365 mit einem Azure-Konto
 description: Hier erfahren Sie, wie Sie mit einem Azure-Konto ein Microsoft 365-Abonnement erstellen. Sie können auch vorhandene Azure- und Microsoft 365 Konten einander zuordnen.
-author: JiangChen79
+author: bandersmsft
 ms.reviewer: adwise
 tags: billing,top-support-issue
 ms.service: cost-management-billing
@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: 383f9a2f2b4cd3b1e3ed1a4330f0b91f16dca74c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 4320e3c40cd7d7f9c9cbfa70959de775965e17a0
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128648732"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131473260"
 ---
 # <a name="sign-up-for-a-microsoft-365-subscription-with-your-azure-account"></a>Registrieren für ein Microsoft 365-Abonnement mit Ihrem Azure-Konto
 

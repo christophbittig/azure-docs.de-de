@@ -9,12 +9,12 @@ ms.author: jhirono
 author: jhirono
 ms.date: 07/07/2021
 ms.topic: how-to
-ms.openlocfilehash: 8194b5c170186c5498e181e00f27c91156ae4ada
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: dcc46e36f85642380cb1c3d2a773698e9807e0f9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129428177"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131438320"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>Verwenden von TLS zum Absichern eines Webdiensts mit Azure Machine Learning
 
@@ -112,9 +112,6 @@ Sie können TLS mit einem Microsoft-Zertifikat oder einem von der Zertifizierung
     ```
     > [!IMPORTANT]
     > Wenn Sie ein Zertifikat von Microsoft verwenden, müssen Sie nicht Ihr eigenes Zertifikat oder Ihren eigenen Domänennamen erwerben.
-
-    > [!WARNING]
-    > Wenn Ihr AKS-Cluster mit einem internen Lastenausgleich konfiguriert ist, wird die Verwendung eines von Microsoft bereitgestellten Zertifikats __nicht unterstützt__. Sie müssen dann für die Aktivierung von TLS ein benutzerdefiniertes Zertifikat verwenden.
 
 * Wenn Sie **ein benutzerdefiniertes Zertifikat verwenden, das Sie erworben haben**, verwenden Sie die Parameter *ssl_cert_pem_file*, *ssl_key_pem_file* und *ssl_cname*. Im folgenden Beispiel wird veranschaulicht, wie PEM-Dateien zum Erstellen einer Konfiguration verwendet werden, die ein von Ihnen erworbenes TLS/SSL-Zertifikat verwendet:
  

@@ -13,15 +13,15 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 12/29/2020
+ms.date: 11/02/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 120936f3d2b76fd1e66fc12bfad9bf2f0959de5a
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: e84bd6b69c19a40fe660f17d8b41c38e66bd28d8
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130070164"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131448992"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>SAP-Workloadkonfigurationen mit Azure-Verfügbarkeitszonen
 Zusätzlich zur Bereitstellung der verschiedenen SAP-Architekturebenen in Azure-Verfügbarkeitsgruppen können für SAP-Workloadbereitstellungen auch die vor Kurzem eingeführten [Azure-Verfügbarkeitszonen](../../../availability-zones/az-overview.md) verwendet werden. Eine Azure-Verfügbarkeitszone ist wie folgt definiert: „Physische Orte innerhalb einer Region. Jede Zone besteht aus mindestens einem Rechenzentrum, dessen Stromversorgung, Kühlung und Netzwerkbetrieb unabhängig funktionieren.“ Azure-Verfügbarkeitszonen sind nicht in allen Regionen verfügbar. Azure-Regionen, die Verfügbarkeitszonen bereitstellen, finden Sie unter [Karte mit Azure-Regionen](https://azure.microsoft.com/global-infrastructure/geographies/). Auf dieser Karte sehen Sie, in welchen Regionen bereits Verfügbarkeitszonen bereitgestellt werden und für welche Regionen die Bereitstellung angekündigt ist. 
@@ -112,6 +112,7 @@ Azure-Regionen, in denen eine solche Aktiv/Aktiv-Bereitstellung ohne große Lauf
 - USA, Osten (zwei der drei Zonen)
 - USA, Süden-Mitte (zwei der drei Zonen)
 - Vereinigtes Königreich, Süden (zwei der drei Zonen)
+- Asien, Südosten
 
 Azure-Regionen, in denen diese zonenübergreifende SAP-Bereitstellungsarchitektur nicht empfohlen wird:
 
@@ -153,7 +154,6 @@ Falls Sie kein akzeptables Delta zwischen der Netzwerklatenz in einer Zone und d
 
 Azure-Regionen, in denen möglicherweise diese Art der Bereitstellungsarchitektur über verschiedene Zonen hinweg vorzuziehen ist:
 
-- Asien, Südosten
 - Australien (Osten)
 - Brasilien Süd
 - Deutschland, Westen-Mitte

@@ -1,20 +1,20 @@
 ---
 title: APIs für die Automatisierung von Azure-Reservierungen | Microsoft-Dokumentation
 description: Erfahren Sie mehr über die Azure-APIs, mit denen Sie programmgesteuert Reservierungsinformationen abrufen können.
-author: yashesvi
-ms.reviewer: yashesvi
+author: bandersmsft
+ms.reviewer: primittal
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: 74539bc58e3b0b7261792f492a6ea2cc151b8964
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a82c0ffa8f4396af409624083a945e8b53847a96
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128666607"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131430513"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>APIs für die Automatisierung von Azure-Reservierungen
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: vinynigam
 ms.author: vinigam
 ms.date: 02/20/2018
-ms.openlocfilehash: bd0fb0720218b938b8c10454afeafba85887fa2c
-ms.sourcegitcommit: 28cd7097390c43a73b8e45a8b4f0f540f9123a6a
+ms.openlocfilehash: 5cb27140e38fa264973bb29d8137b270297a3b0e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122779124"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131462081"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Netzwerkleistungsmonitor-Lösung in Azure
 
@@ -295,7 +295,7 @@ Informationen zu Preisen sind [online](network-performance-monitor-pricing-faq.y
 
 ## <a name="provide-feedback"></a>Feedback geben 
 
-* **UserVoice:** Sie können Ihre Ideen zu Features des Netzwerkleistungsmonitors veröffentlichen, an denen wir arbeiten sollen. Besuchen Sie die [UserVoice-Seite](https://feedback.azure.com/forums/267889-log-analytics/category/188146-network-monitoring). 
+* **UserVoice:** Sie können Ihre Ideen zu Features des Netzwerkleistungsmonitors veröffentlichen, an denen wir arbeiten sollen. Besuchen Sie die [UserVoice-Seite](https://feedback.azure.com/d365community/forum/aa68334e-1925-ec11-b6e6-000d3a4f09d0?c=611733d4-1b25-ec11-b6e6-000d3a4f09d0). 
 
 * **Treten Sie unserer Gruppe bei:** Wir freuen uns über neue Kunden, die unserer Gruppe beitreten möchten. Als Teil der Gruppe erhalten Sie vorab Zugriff auf neue Funktionen und können uns dabei helfen, den Netzwerkleistungsmonitor zu verbessern. Wenn Sie beitreten möchten, füllen Sie diesen [kurzen Fragebogen](https://aka.ms/npmcohort) aus. 
 

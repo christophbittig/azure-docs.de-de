@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 07/30/2021
-ms.openlocfilehash: dda5f9c654d7b6630a733006e69df7f2b98b8eeb
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: fb84bc87483b7a0451d6fd63d922ad9c6c2dfb3c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128594819"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131467566"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---flexible-server"></a>PostgreSQL-Erweiterungen in Azure Database for PostgreSQL Flexible Server
 
@@ -225,4 +225,4 @@ Zwischen den von pg_stat_statements bereitgestellten Abfrageausführungsinformat
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie eine Erweiterung fehlt, die Sie verwenden möchten, lassen Sie es uns wissen. Stimmen Sie in unserem [Feedbackforum](https://feedback.azure.com/forums/597976-azure-database-for-postgresql) für vorhandene Anfragen ab, oder geben Sie uns weiteres Feedback.
+Wenn Sie eine Erweiterung fehlt, die Sie verwenden möchten, lassen Sie es uns wissen. Stimmen Sie in unserem [Feedbackforum](https://feedback.azure.com/d365community/forum/c5e32b97-ee24-ec11-b6e6-000d3a4f0da0) für vorhandene Anfragen ab, oder geben Sie uns weiteres Feedback.

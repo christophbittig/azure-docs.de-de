@@ -1,20 +1,20 @@
 ---
 title: Hinzufügen oder Ändern von Azure-Abonnementadministratoren
 description: Beschreibt das Hinzufügen oder Ändern eines Azure-Abonnementadministrators mithilfe der rollenbasierten Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC).
-author: genlin
-ms.reviewer: dcscontentpm
+author: bandersmsft
+ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 06/27/2021
+ms.date: 10/28/2021
 ms.author: banders
-ms.openlocfilehash: 913ab605d17e47d5fa8f1ec751a618fe5dbfe123
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: ae4a48e62f3e61e6c3d56cfa9083a2a95b4b1a69
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130000970"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131473298"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Hinzufügen oder Ändern von Azure-Abonnementadministratoren
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/12/2019
-ms.openlocfilehash: 3a7d0d49313cb524a5bf39add5c9a55862dcad47
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: eacbf24fdd4d92ac4da1419c02be7ae006b640d4
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102046889"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131432242"
 ---
 # <a name="integrate-system-center-operations-manager-with-vm-insights-map-feature"></a>Integrieren des Zuordnungsfeatures von VM Insights in System Center Operations Manager
 
@@ -143,5 +143,5 @@ Die offizielle Azure-Dokumentation zum Erstellen eines Dienstprinzipals finden S
 
 ### <a name="suggestions"></a>Vorschläge
 
-Möchten Sie uns Feedback zur Integration des Zuordnungsfeatures von VM Insights oder zu dieser Dokumentation geben? Besuchen Sie unsere [UserVoice-Webseite](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map), auf der Sie Features vorschlagen oder vorhandene Vorschläge unterstützen können.
+Möchten Sie uns Feedback zur Integration des Zuordnungsfeatures von VM Insights oder zu dieser Dokumentation geben? Besuchen Sie unsere [UserVoice-Webseite](https://feedback.azure.com/d365community/forum/aa68334e-1925-ec11-b6e6-000d3a4f09d0?c=ad4304e4-1925-ec11-b6e6-000d3a4f09d0), auf der Sie Features vorschlagen oder vorhandene Vorschläge unterstützen können.
 

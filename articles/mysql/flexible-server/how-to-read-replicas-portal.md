@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 06/17/2021
-ms.openlocfilehash: 711b35ec11d42ae16a4b4db08d17e85b5217d41f
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: 26e93c85a6968a994a7f4e3a14df1e0910442def
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129387511"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131429495"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-flexible-server-using-the-azure-portal"></a>Erstellen und Verwalten von Lesereplikaten auf flexiblen Azure Database for MySQL-Servern mithilfe des Azure-Portals
 
@@ -24,10 +24,9 @@ In diesem Artikel erfahren Sie, wie Sie Lesereplikate auf flexiblen Azure Databa
 
 > [!Note]
 >
-> * Auf Servern mit Hochverfügbarkeit werden keine Replikate unterstützt. 
-> 
-> * Das Feature für Lesereplikate ist nur für flexible Azure Database for MySQL-Server in den Tarifen „Universell“ oder „Arbeitsspeicheroptimiert“ verfügbar. Stellen Sie sicher, dass für den Quellserver einer der folgenden Tarife festgelegt ist.
-> * Wenn GTID auf einem primären Server aktiviert ist (`gtid_mode` = ON), wird für neu erstellte Replikate GTID ebenfalls aktiviert, und es wird die GTID-Replikation verwendet. Weitere Informationen finden Sie unter [Globaler Transaktionsbezeichner (GTID)](concepts-read-replicas.md#global-transaction-identifier-gtid)
+> * Auf Servern mit Hochverfügbarkeit werden keine Replikate unterstützt.
+>
+> * Wenn GTID auf einem primären Server aktiviert ist (`gtid_mode` = ON), wird für neu erstellte Replikate GTID ebenfalls aktiviert und die GTID-Replikation verwendet. Weitere Informationen finden Sie unter [Globaler Transaktionsbezeichner (GTID)](concepts-read-replicas.md#global-transaction-identifier-gtid)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -70,7 +69,7 @@ Nach der Erstellung des Replikatservers kann dieser auf dem Blatt **Replikation*
 
 Führen Sie die folgenden Schritte aus, um die Replikation zwischen einem Quellserver und einem Replikatserver im Azure-Portal zu beenden:
 
-1. Wählen Sie im Azure-Portal Ihren flexiblen Azure Database for MySQL-Quellserver aus. 
+1. Wählen Sie im Azure-Portal Ihren flexiblen Azure Database for MySQL-Quellserver aus.
 
 2. Wählen Sie im Menü unter **EINSTELLUNGEN** die Option **Replikation** aus.
 
@@ -102,7 +101,7 @@ Führen Sie die folgenden Schritte aus, um einen Lesereplikatserver im Azure-Por
 
    :::image type="content" source="./media/how-to-read-replica-portal/delete-replica.png" alt-text="Azure Database for MySQL: Replikat löschen":::
 
-5. Geben Sie den Namen des Replikats ein, und klicken Sie auf **Löschen**, um das Löschen des Replikats zu bestätigen.  
+5. Geben Sie den Namen des Replikats ein, und klicken Sie auf **Löschen**, um das Löschen des Replikats zu bestätigen.
 
    :::image type="content" source="./media/how-to-read-replica-portal/delete-replica-confirm.png" alt-text="Azure Database for MySQL: Bestätigen der Replikatlöschung":::
 
@@ -119,7 +118,7 @@ Führen Sie die folgenden Schritte aus, um einen Quellserver im Azure-Portal zu 
 
    [:::image type="content" source="./media/how-to-read-replica-portal/delete-master-overview.png" alt-text="Azure Database for MySQL – Quelle löschen":::](./media/how-to-read-replica-portal/delete-master-overview.png#lightbox)
 
-3. Geben Sie den Namen des Quellservers ein, und klicken Sie auf **Löschen**, um das Löschen des Quellservers zu bestätigen.  
+3. Geben Sie den Namen des Quellservers ein, und klicken Sie auf **Löschen**, um das Löschen des Quellservers zu bestätigen.
 
    :::image type="content" source="./media/how-to-read-replica-portal/delete-master-confirm.png" alt-text="Azure Database for MySQL – Löschen der Quelle bestätigen":::
 

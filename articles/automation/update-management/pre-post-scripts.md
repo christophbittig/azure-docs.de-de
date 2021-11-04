@@ -6,12 +6,12 @@ ms.subservice: update-management
 ms.date: 09/16/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f94a21268625adf3df4dda2f022868f7cc40f72f
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 19101cea8f435f09cb37aa2340f0bc02788442f3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129060318"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131459062"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>Verwalten von Pre- und Post-Skripts
 
@@ -45,7 +45,7 @@ Neben den Standardrunbookparametern steht auch der `SoftwareUpdateConfigurationR
 
 ### <a name="softwareupdateconfigurationruncontext-properties"></a>SoftwareUpdateConfigurationRunContext-Eigenschaften
 
-|Eigenschaft  |Type |BESCHREIBUNG  |
+|Eigenschaft  |type |BESCHREIBUNG  |
 |---------|---------|---------|
 |SoftwareUpdateConfigurationName     |String | Der Name der Softwareupdatekonfiguration.        |
 |SoftwareUpdateConfigurationRunId     |GUID | Die eindeutige ID für die Ausführung        |
@@ -181,7 +181,7 @@ Pre- und Post-Skripts werden nicht direkt auf den Computern in Ihrer Bereitstell
 
 Pre- und Post-Aufgaben werden nicht nativ auf den virtuellen Azure-Computern in Ihrer Bereitstellung, sondern als Runbooks ausgeführt. Für die Interaktion mit den Azure-VMs benötigen Sie die folgenden Elemente:
 
-* Eine [verwaltete Identität](../automation-security-overview.md#managed-identities-preview) oder ein ausführendes Konto
+* Eine [verwaltete Identität](../automation-security-overview.md#managed-identities) oder ein ausführendes Konto
 * Ein Runbook, das Sie ausführen möchten
 
 Verwenden Sie das Cmdlet [Invoke-AzVMRunCommand](/powershell/module/az.compute/invoke-azvmruncommand) für die Interaktion mit Ihren Azure-VMs. Ein Beispiel dafür finden Sie im Runbookbeispiel [Updateverwaltung: Ausführen eines Skripts mit dem Befehl „Run“](https://github.com/azureautomation/update-management-run-script-with-run-command).
@@ -190,7 +190,7 @@ Verwenden Sie das Cmdlet [Invoke-AzVMRunCommand](/powershell/module/az.compute/i
 
 Pre- und Post-Aufgaben werden im Azure-Kontext ausgeführt und haben keinen Zugriff auf Azure-fremde Computer. Für die Interaktion mit den Azure-fremden Computern benötigen Sie Folgendes:
 
-* Eine [verwaltete Identität](../automation-security-overview.md#managed-identities-preview) oder ein ausführendes Konto
+* Eine [verwaltete Identität](../automation-security-overview.md#managed-identities) oder ein ausführendes Konto
 * Einen auf dem Computer installierten Hybrid Runbook Worker
 * Ein Runbook, das Sie lokal ausführen möchten
 * Ein übergeordnetes Runbook

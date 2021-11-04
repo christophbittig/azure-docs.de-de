@@ -1,35 +1,35 @@
 ---
 title: Gerätezuordnungsvorlage in IoT Connector – Azure Healthcare-APIs
-description: In diesem Artikel wird beschrieben, wie Sie die Gerätezuordnungsvorlage im IoT Connector.
+description: In diesem Artikel wird beschrieben, wie Sie die Gerätezuordnungsvorlage im IoT Connector verwenden.
 author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 10/26/2021
 ms.author: jasteppe
-ms.openlocfilehash: ef22404d96599768ad55c3c3687e3df9fb4bbf35
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 3550bab190c2b5bbec5a03faa8131094003ee85b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131040469"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131446009"
 ---
 # <a name="how-to-use-device-mapping"></a>Verwenden der Gerätezuordnung
 
 > [!IMPORTANT]
-> Azure Healthcare-APIs sind derzeit als VORSCHAUversion verfügbar. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen für Azure-Features, die sich in der Beta- oder Vorschauphase befinden oder anderweitig noch nicht allgemein verfügbar sind.
+> Azure Healthcare-APIs befinden sich derzeit in der VORSCHAU. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen für Azure-Features, die sich in der Beta- oder Vorschauphase befinden oder anderweitig noch nicht allgemein verfügbar sind.
 
 Der IoT-Connector erfordert zwei Arten von JSON-basierten Zuordnungen. Der erste heißt **Gerätezuordnung** und ist dafür zuständig, die an den Azure Event Hubs-Endpunkt `devicedata` gesendeten Gerätenutzlasten zuzuordnen. Mit dieser Art von Vorlage werden Typen, Gerätebezeichner, gemessene Zeitdaten sowie Messwerte extrahiert. 
 
 Der zweite Typ, **Fast Healthcare Interoperability Resources (FHIR&#174;),** steuert die Zuordnung für die FHIR-Ressource. Mit dieser Vorlagenart können Sie die Länge des Beobachtungszeitraums, den zum Speichern der Werte verwendeten FHIR-Datentyp sowie die Terminologiecodes konfigurieren. 
 
-Die beiden Zuordnungstypen werden basierend auf ihrem Typ zu einem JSON-Dokument zusammengesetzt. Diese JSON-Dokumente werden ihrem IoT-Connector dann über die Azure-Portal. Das Dokument Gerätezuordnung wird über die Seite **Gerätezuordnung** und das FHIR-Zielzuordnungsdokument über die **Seite Ziel** hinzugefügt.
+Die beiden Zuordnungstypen bestehen basierend auf ihrem Typ in einem JSON-Dokument. Diese JSON-Dokumente werden dann ihrem IoT-Connector über die Azure-Portal hinzugefügt. Das Dokument Gerätezuordnung wird über die Seite **Gerätezuordnung** und das FHIR-Zielzuordnungsdokument über die Seite **Ziel** hinzugefügt.
 
 > [!NOTE]
 > Zuordnungen werden in einem zugrunde liegenden Blobspeicher gespeichert und pro Computeausführung aus dem Blob geladen. Nach dem Update sollten sie sofort wirksam werden. 
 
 > [!TIP]
-> Sehen Sie sich das [IoMT Connector Data Mapper-Tool zum](https://github.com/microsoft/iomt-fhir/tree/master/tools/data-mapper) Bearbeiten, Testen und Behandeln von Problemen bei Der IoT-Connector geräte- und FHIR-Zielzuordnungen an. Exportieren Sie Zuordnungen zum Hochladen in den IoT-Connector im Azure-Portal oder verwenden Sie sie mit der [Open-Source-Version des](https://github.com/microsoft/iomt-fhir) IoT-Connectors.
+> Sehen Sie sich das [Tool IoMT Connector Data Mapper](https://github.com/microsoft/iomt-fhir/tree/master/tools/data-mapper) zum Bearbeiten, Testen und Beheben von Problemen mit Geräte- und FHIR-Zielzuordnungen für IoT-Connectors an. Exportieren Sie Zuordnungen zum Hochladen in den IoT-Connector im Azure-Portal oder verwenden Sie sie mit der [Open-Source-Version](https://github.com/microsoft/iomt-fhir) des IoT-Connectors.
 
 ## <a name="device-mapping"></a>Gerätezuordnung
 
@@ -37,9 +37,9 @@ Die Gerätezuordnung ist die Zuordnungsfunktion zum Extrahieren von Geräteinhal
 
 | Eigenschaft             | Beschreibung                                                                                                                                                                                                                                                   |
 |----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Type**             | Der Name/Typ, der die Messung klassifiziert. Dieser Wert wird verwendet, um eine Bindung an die erforderliche FHIR-Zielzuordnung zu erstellen.  Mehrere Zuordnungen können an denselben Typ ausgegeben werden, sodass Sie verschiedene Darstellungen auf mehreren Geräten einer einzelnen gemeinsamen Ausgabe zuordnen können. |
+| **Type**             | Der Name/Typ, der die Messung klassifiziert. Dieser Wert wird zum Binden an die erforderliche FHIR-Zielzuordnung verwendet.  Mehrere Zuordnungen können an denselben Typ ausgegeben werden, sodass Sie verschiedene Darstellungen auf mehreren Geräten einer einzelnen gemeinsamen Ausgabe zuordnen können. |
 | **OccurenceTimeUtc** | Der Zeitpunkt, zu dem die Messung vorgenommen wurde                                                                                                                                                                                                                            |
-| **DeviceId**         | Der Bezeichner für das Gerät. Dieser Wert sollte mit einem Bezeichner für die Geräteressource übereinstimmen, die im Ziel-FHIR-Dienst vorhanden ist.                                                                                                                       |
+| **DeviceId**         | Der Bezeichner für das Gerät. Dieser Wert sollte mit einem Bezeichner für die Geräteressource übereinstimmen, die im FHIR-Zieldienst vorhanden ist.                                                                                                                       |
 | **Eigenschaften**       | Extrahieren Sie mindestens eine Eigenschaft, damit der Wert in der erstellten Observation-Ressource gespeichert werden kann.  Eigenschaften sind eine Sammlung von Schlüssel-Wert-Paaren, die bei der Normalisierung extrahiert wurden.                                                                                  |
 
 Nachstehend finden Sie ein Beispieldiagramm für den Ablauf einer Normalisierung.
@@ -67,7 +67,7 @@ Die Inhaltsnutzlast selbst ist eine Azure Event Hubs-Nachricht, die aus drei Tei
 ```
 ### <a name="mapping-with-json-path"></a>Zuordnen mit einem JSON-Pfad
 
-Die drei derzeit unterstützten Geräteinhaltszuordnungstypen basieren auf JSON Path, um beide mit den erforderlichen Zuordnungs- und extrahierten Werten zu übereinstimmen. Weitere Informationen zum JSON-Pfad finden Sie [hier](https://goessner.net/articles/JsonPath/). Alle drei Vorlagentypen verwenden die [JSON.NET-Implementierung](https://www.newtonsoft.com/json/help/html/QueryJsonSelectTokenJsonPath.htm) zum Auflösen von JSON-Pfadausdrücken.
+Die drei derzeit unterstützten Typen der Geräteinhaltszuordnung basieren auf json path, um sowohl die erforderlichen Zuordnungs- als auch die extrahierten Werte zu entsprechen. Weitere Informationen zum JSON-Pfad finden Sie [hier](https://goessner.net/articles/JsonPath/). Alle drei Vorlagentypen verwenden die [JSON.NET-Implementierung](https://www.newtonsoft.com/json/help/html/QueryJsonSelectTokenJsonPath.htm) zum Auflösen von JSON-Pfadausdrücken.
 
 #### <a name="jsonpathcontenttemplate"></a>JsonPathContentTemplate
 
@@ -267,10 +267,10 @@ Mit JsonPathContentTemplate können Werte mithilfe des JSON-Pfads abgeglichen un
 
 IotJsonPathContentTemplate ähnelt JsonPathContentTemplate, mit dem Unterschied, dass DeviceIdExpression und TimestampExpression nicht erforderlich sind.
 
-Bei Verwendung dieser Vorlage wird davon ausgegangen, dass die zurzeit ausgewerteten Nachrichten mithilfe der [Azure IoT Hub-Geräte-SDKs](../../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks) oder des Features [Daten exportieren (Legacy)](../../iot-central/core/howto-export-data-legacy.md) von [Azure IoT Central](../../iot-central/core/overview-iot-central.md) gesendet wurden. Bei Verwendung dieser SDKs sind die Geräteidentität (vorausgesetzt, die Geräte-ID von Azure Iot Hub/Central wird als Bezeichner für eine Geräteressource im Ziel-FHIR-Dienst registriert) und der Zeitstempel der Nachricht bekannt. Wenn Sie Azure IoT Hub-Geräte-SDKs verwenden, jedoch benutzerdefinierte Eigenschaften für die im Nachrichtentext angegebene Geräteidentität oder den Messungszeitstempel konfigurieren, können Sie dennoch JsonPathContentTemplate nutzen.
+Bei Verwendung dieser Vorlage wird davon ausgegangen, dass die zurzeit ausgewerteten Nachrichten mithilfe der [Azure IoT Hub-Geräte-SDKs](../../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks) oder des Features [Daten exportieren (Legacy)](../../iot-central/core/howto-export-data-legacy.md) von [Azure IoT Central](../../iot-central/core/overview-iot-central.md) gesendet wurden. Bei Verwendung dieser SDKs sind die Geräteidentität (vorausgesetzt, der Gerätebezeichner von Azure IoT Hub/Central ist als Bezeichner für eine Geräteressource im FHIR-Zieldienst registriert) und der Zeitstempel der Nachricht bekannt. Wenn Sie Azure IoT Hub-Geräte-SDKs verwenden, jedoch benutzerdefinierte Eigenschaften für die im Nachrichtentext angegebene Geräteidentität oder den Messungszeitstempel konfigurieren, können Sie dennoch JsonPathContentTemplate nutzen.
 
 > [!NOTE]
-> Bei Verwendung von `IotJsonPathContentTemplate` sollte `TypeMatchExpression` als JToken in die gesamte Nachricht auflösen. Weitere Informationen finden Sie in den folgenden Beispielen.
+> Bei Verwendung von `IotJsonPathContentTemplate` sollte in die gesamte Nachricht als `TypeMatchExpression` JToken aufgelöst werden. Weitere Informationen finden Sie in den folgenden Beispielen.
 
 ##### <a name="examples"></a>Beispiele
 
@@ -454,6 +454,6 @@ Für die IotCentralJsonPathContentTemplate sind auch DeviceIdExpression und Time
 ## <a name="next-steps"></a>Nächste Schritte
 
 >[!div class="nextstepaction"]
->[Verwenden von FHIR-Zielzuordnungen](how-to-use-fhir-mapping-iot.md)
+>[Verwenden der FHIR-Zielzuordnung](how-to-use-fhir-mapping-iot.md)
 
 (FHIR&#174;) ist eine registrierte Marke von [HL7](https://hl7.org/fhir/) und wird mit der Berechtigung von HL7 verwendet.

@@ -3,7 +3,7 @@ title: HTTP-Header „X-EC-Debug“ für Azure CDN-Regel-Engine | Microsoft Docs
 description: Der Debugcache-Anforderungsheader „X-EC-Debug“ stellt zusätzliche Informationen zur Cacherichtlinie bereit, die auf das angeforderte Objekt angewendet wird. Diese Header sind spezifisch für Verizon.
 services: cdn
 documentationcenter: ''
-author: asudbring
+author: duongau
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2018
-ms.author: allensu
-ms.openlocfilehash: 7b0171b2bf74f60e2cc1ea7600f313934737103e
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.author: duau
+ms.openlocfilehash: 2a066fa60956992dcc05e1f6b54d1513949a2a43
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128639639"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131454920"
 ---
 # <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>HTTP-Header „X-EC-Debug“ für Azure CDN-Regel-Engine
 Der Debugcache-Anforderungsheader (`X-EC-Debug`) stellt zusätzliche Informationen zur Cacherichtlinie bereit, die auf das angeforderte Objekt angewendet wird. Diese Header sind spezifisch für **Azure CDN Premium-Produkte von Verizon**.
@@ -103,7 +103,7 @@ Der Antwortheader `X-EC-Debug`, der meldet, ob eine Anforderung hätte zwischeng
 
 Der oben in der Antwortheadersyntax verwendete Begriff ist folgendermaßen definiert:
 
-Wert  | Beschreibung
+Wert  | BESCHREIBUNG
 -------| --------
 YES    | Gibt an, dass der angeforderte Inhalt für das Zwischenspeichern geeignet war.
 Nein     | Gibt an, dass der angeforderte Inhalt für das Zwischenspeichern nicht geeignet war. Dieses Status ergibt sich möglicherweise aufgrund einer der folgenden Ursachen: <br /> – Kundenspezifische Konfiguration: Eine für Ihr Konto spezifische Konfiguration kann verhindern, dass die POP-Server ein Objekt zwischenspeichern. Beispielsweise kann die Regel-Engine verhindern, dass ein Objekt zwischengespeichert wird, indem sie das Feature „Cache umgehen“ für die betreffenden Anforderungen aktiviert.<br /> – Cacheantwortheader: Die angeforderten Header „Cache-Control“ und „Expires“ des Objekts können verhindern, dass POP-Server es zwischenspeichern.

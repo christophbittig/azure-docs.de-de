@@ -3,19 +3,19 @@ title: Erstellen einer benutzerdefinierten Stimme – Spracherkennungsdienst
 titleSuffix: Azure Cognitive Services
 description: Wenn Sie zum Hochladen Ihrer Daten bereit sind, navigieren Sie zum Custom Voice-Portal. Erstellen Sie ein Custom Voice-Projekt, oder wählen Sie ein bereits vorhandenes Projekt aus. Das Projekt muss die gleiche Sprache/das gleiche Gebietsschema und die gleichen Geschlechtseigenschaften besitzen wie die Daten, die Sie für Ihr Stimmtraining verwenden möchten.
 services: cognitive-services
-author: PatrickFarley
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.author: pafarley
-ms.openlocfilehash: 1f444ca13224c27918812c12f0a9e86a50e0b994
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.author: eur
+ms.openlocfilehash: 16f9d66b669e792d0bccc2676bdc1db327de3229
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128644674"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131507206"
 ---
 # <a name="create-and-use-your-voice-model"></a>Erstellen und Verwenden Ihres Sprachmodells
 
