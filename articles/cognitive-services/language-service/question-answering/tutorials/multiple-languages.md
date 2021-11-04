@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 11/02/2021
 ms.custom: language-service-question-answering, ignite-fall-2021
-ms.openlocfilehash: eca68b90756f0da4d34a5ceff6d3194b57297dc4
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 42179895f60e56f33b41097375c583c3b272c038
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131029558"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131469614"
 ---
 # <a name="create-projects-in-multiple-languages"></a>Erstellen von Projekten in mehreren Sprachen
 
@@ -21,7 +21,6 @@ In diesem Tutorial lernen Sie Folgendes:
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Erstellen eines Projekts, das mehrere Sprachen unterstützt
 > * Erstellen eines Projekts, das Englisch unterstützt
 > * Erstellen eines Projekts, das Deutsch unterstützt
 
@@ -34,7 +33,7 @@ Um ein Projekt in mehr als einer Sprache erstellen zu können, muss bei der Erst
 > [!div class="mx-imgBorder"]
 > [ ![Screenshot der Benutzeroberfläche zum Erstellen eines Projekts mit ausgewählter Option „Ich möchte die Sprache auswählen, wenn ich ein neues Projekt in dieser Ressource erstelle“.]( ../media/multiple-languages/multiple-languages.png) ](../media/multiple-languages/multiple-languages.png#lightbox)
 
-1. Öffnen Sie in [Language Studio](https://aka.ms/languageStudio) die Seite „Fragen und Antworten“. Wählen Sie **Neues Projekt erstellen** > **Ich möchte die Sprache auswählen, wenn ich ein neues Projekt in dieser Ressource erstelle** > **Weiter** aus.
+1. Wählen Sie auf der Startseite von [Language Studio](https://aka.ms/languageStudio) die Option „Benutzerdefinierte Fragen und Antworten öffnen“ aus. Wählen Sie **Neues Projekt erstellen** > **Ich möchte die Sprache auswählen, wenn ich ein neues Projekt in dieser Ressource erstelle** > **Weiter** aus.
 
 2. Füllen Sie die Seite mit den grundlegenden Informationen aus, und wählen Sie **Weiter** > **Projekt erstellen** aus.
 

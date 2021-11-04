@@ -1,0 +1,46 @@
+### YamlMime:Landing
+title: Dokumentation für Azure Chaos Studio
+summary: Azure Chaos Studio ist ein Azure-Dienst, mit dem Sie die Resilienz von Anwendungen und Diensten für reale Vorfälle messen, verstehen und sicherstellen können, wenn z. B. eine Region ausfällt oder ein Anwendungsfehler eine CPU-Auslastung von 100 % auf einem virtuellen Computer verursacht. Mit Chaos Studio können Sie Chaos Engineering-Experimente ausführen, die Fehler in Ihren Dienst einschleusen, und dann überwachen, wie der Dienst auf Störungen reagiert. Chaos-Experimente helfen Ihnen, Architekturentscheidungen zu überprüfen und die Dienstzulässigkeit zu verbessern. Chaos-Experimente können ad-hoc ausgeführt werden, um manuelle BCDR-Drills und Game Days auszuführen, oder als Teil Ihrer CI/CD-Pipeline ausgeführt werden, um den Codefluss programmgesteuert zu steuern.
+metadata:
+  title: Dokumentation für Azure Chaos Studio – Tutorials, API-Referenz
+  description: Erfahren Sie mehr über Azure Chaos Studio, eine Lösung zum Sicherstellen der Resilienz Ihrer Dienste mit Chaos Engineering und Fehlereinschleusung in Azure.
+  ms.service: chaos-studio
+  ms.topic: landing-page
+  author: johnkemnetz
+  ms.author: johnkem
+  ms.date: 08/24/2021
+  ms.openlocfilehash: 8ae0b6d778d71b05b45cdc23d27be26bd6b0cfa9
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131088295"
+landingContent:
+- title: Informationen zu Azure Chaos Studio
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Azure Chaos Studio?
+      url: chaos-studio-overview.md
+    - text: Was ist Chaos Engineering?
+      url: chaos-studio-chaos-engineering-overview.md
+- title: Erste Schritte
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Erstellen Sie ein Chaos-Experiment, das einen service-direkten Fehler verwendet, um eine Azure Cosmos DB-Instanz ausfallen zu lassen
+      url: chaos-studio-tutorial-service-direct.md
+    - text: Erstellen Sie ein Experiment, das einen agentenbasierten Fehler mit Azure Chaos Studio verwendet
+      url: chaos-studio-tutorial-agent-based.md
+    - text: Erstellen Sie ein Experiment, das einen AKS Chaos Mesh-Fehler mit Azure Chaos Studio verwendet
+      url: chaos-studio-tutorial-aks.md
+- title: Verweis
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Fehlerbibliothek
+      url: chaos-studio-fault-library.md
+    - text: Fehleranbieter
+      url: chaos-studio-fault-providers.md
+    - text: REST-API-Dokumentation
+      url: https://docs.microsoft.com/rest/api/chaosstudio

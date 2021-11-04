@@ -44,6 +44,8 @@
       href: chaos-studio-fault-library.md
     - name: Fehleranbieter
       href: chaos-studio-fault-providers.md
+    - name: Einschränkungen und bekannte Probleme der Vorschauversion
+      href: chaos-studio-limitations.md
     - name: Diensteinschränkungen
       href: chaos-studio-service-limits.md
     - name: REST-API-Dokumentation

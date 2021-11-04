@@ -7,12 +7,12 @@ ms.service: serviceconnector
 ms.topic: quickstart
 ms.date: 10/29/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 9f702b28aebc15c9fb05986552e3b58d4a911c80
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 595296bff928ff75f52a05a1fc5e54fb94a2ad67
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131100349"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131475367"
 ---
 # <a name="quickstart-create-a-service-connection-in-app-service-with-the-azure-cli"></a>Schnellstart: Erstellen einer Dienstverbindung in App Service mit der Azure-Befehlszeilenschnittstelle
 
@@ -26,12 +26,12 @@ Die [Azure-Befehlszeilenschnittstelle (Azure CLI)](/cli/azure) setzt sich aus B
 
 - In diesem Schnellstart wird davon ausgegangen, dass Sie bereits über mindestens einen in Azure ausgeführten App Service verfügen. [Erstellen Sie einen App Service](../app-service/quickstart-dotnetcore.md), wenn Sie über keinen App Service verfügen.
 
-
 ## <a name="view-supported-target-service-types"></a>Anzeigen der unterstützten Zieldiensttypen
 
 Sie verwenden den Azure CLI-Befehl [az webapp connection](), um Dienstverbindungen mit App Service zu erstellen und zu verwalten. 
 
 ```azurecli-interactive
+az provider register -n Microsoft.ServiceLinker
 az webapp connection list-support-types
 ```
 

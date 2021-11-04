@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/12/2021
 ms.author: cherylmc
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 3765b1abb6996e364ed3f7004e56f323fe256450
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 7d2e071fd7dc368df867b17a53f9e994ee5c16a6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131017039"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131430969"
 ---
 # <a name="tutorial-configure-bastion-and-connect-to-a-windows-vm"></a>Tutorial: Konfigurieren von Bastion und Herstellen einer Verbindung mit einer Windows-VM
 
@@ -65,7 +65,7 @@ Sie können beim Erstellen dieser Konfiguration die folgenden Beispielwerte verw
 | --- | --- |
 | Name | VNet1-bastion |
 | + Subnetzname | AzureBastionSubnet |
-| AzureBastionSubnet-Adressen | Ein Subnetz innerhalb Ihres VNet-Adressraums mit einer Subnetzmaske von „/27“ oder mehr.<br> Beispiel: 10.1.1.0/26.  |
+| AzureBastionSubnet-Adressen | Ein Subnetz innerhalb Ihres VNET-Adressraums mit einer Subnetzmaske von „/26“ oder höher.<br> Beispiel: 10.1.1.0/26.  |
 | Tarif/SKU | Standard |
 | Instanzanzahl (Hostskalierung)| 3 oder größer |
 | Öffentliche IP-Adresse |  Neu erstellen |
@@ -119,7 +119,7 @@ Wahrscheinlich haben Sie noch kein AzureBastionSubnet konfiguriert. So konfiguri
 1. Erstellen Sie ein Subnetz unter Verwendung der folgenden Richtlinien:
 
    * Das Subnetz muss **AzureBastionSubnet** heißen.
-   * Das Subnetz muss mindestens die Größe „/27“ haben. Für die Standard-SKU empfehlen wir „/26“ oder höher, um zukünftige zusätzliche Hostskalierungsinstanzen zu unterstützen.
+   * Das Subnetz muss mindestens die Größe „/26“ haben. Für die Standard-SKU empfehlen wir „/26“ oder höher, um zukünftige zusätzliche Hostskalierungsinstanzen zu unterstützen.
 
    :::image type="content" source="./media/tutorial-create-host-portal/bastion-subnet.png" alt-text="Screenshot des Subnetzes „AzureBastionSubnet“.":::
 

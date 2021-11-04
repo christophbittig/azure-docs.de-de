@@ -3,22 +3,22 @@ title: Konfigurieren von Azure Active Directory B2C als SAML-Identitätsanbieter
 title-suffix: Azure Active Directory B2C
 description: Erfahren Sie, wie Sie Azure Active Directory B2C für die Bereitstellung von SAML-Protokollassertionen für Ihre Anwendungen (Dienstanbieter) konfigurieren.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/20/2021
-ms.author: mimart
+ms.date: 10/05/2021
+ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: fasttrack-edit
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 673835a3e3112bf433faeba815e65c6203dd9ce8
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: d0bc55f909fe019dedb92d20cce0584ea5d33768
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128603807"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131012812"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Registrieren einer SAML-Anwendung in Azure AD B2C
 
@@ -179,7 +179,7 @@ Da Ihre Richtlinie nun SAML-Antworten erstellen kann, müssen Sie die Richtlinie
 
 1. Öffnen Sie die Datei *SignUpOrSigninSAML.xml* in Ihrem bevorzugten Editor.
 
-1. Ändern Sie die Werte von `PolicyId` und `PublicPolicyUri` in der Richtlinie in `_B2C_1A_signup_signin_saml_` und `http://<tenant-name>.onmicrosoft.com/B2C_1A_signup_signin_saml`.
+1. Ändern Sie die Werte von `PolicyId` und `PublicPolicyUri` in der Richtlinie in `B2C_1A_signup_signin_saml` und `http://<tenant-name>.onmicrosoft.com/B2C_1A_signup_signin_saml`.
 
     ```xml
     <TrustFrameworkPolicy
@@ -317,7 +317,10 @@ Für SAML-Apps müssen Sie im Manifest der Anwendungsregistrierung mehrere Eigen
 
 Wenn Ihre SAML-Anwendung eine Anforderung an Azure AD B2C stellt, enthält die SAML-AuthN-Anforderung ein `Issuer`-Attribut. Der Wert dieses Attributs ist in der Regel mit dem Metadatenwert `entityID` der Anwendung identisch. Azure AD B2C verwendet diesen Wert, um die Anwendungsregistrierung im Verzeichnis zu suchen und die Konfiguration zu lesen. Damit diese Suche erfolgreich ist, muss der `identifierUri` in der Anwendungsregistrierung mit einem Wert aufgefüllt werden, der mit dem `Issuer`-Attribut übereinstimmt.
 
-Suchen Sie im Registrierungsmanifest den `identifierURIs`-Parameter, und fügen Sie den entsprechenden Wert hinzu. Dieser Wert entspricht dem Wert, der in den SAML-AuthN-Anforderungen für `EntityId` bei der Anwendung konfiguriert ist, und dem `entityID`-Wert in den Metadaten der Anwendung.
+Suchen Sie im Registrierungsmanifest den `identifierURIs`-Parameter, und fügen Sie den entsprechenden Wert hinzu. Dieser Wert entspricht dem Wert, der in den SAML-AuthN-Anforderungen für `EntityId` bei der Anwendung konfiguriert ist, und dem `entityID`-Wert in den Metadaten der Anwendung. Außerdem müssen Sie den Parameter `accessTokenAcceptedVersion` suchen und den Wert auf `2` festlegen.
+
+> [!IMPORTANT]
+> Wenn Sie `accessTokenAcceptedVersion` nicht auf `2` aktualisieren, erhalten Sie eine Fehlermeldung mit dem Hinweis, dass eine überprüfte Domäne erforderlich ist.
 
 Im folgenden Beispiel sehen Sie den Wert von `entityID` in den SAML-Metadaten:
 
@@ -349,7 +352,7 @@ Wenn Sie die SAML-Testanwendung als Beispiel verwenden, würden Sie im Anwendung
 
 Sie können die Antwort-URL konfigurieren, an die Azure AD B2C SAML-Antworten sendet. Antwort-URLs können im Anwendungsmanifest konfiguriert werden. Diese Konfiguration ist sinnvoll, wenn Ihre Anwendung keinen öffentlich zugänglichen Metadatenendpunkt verfügbar macht.
 
-Die Antwort-URL für eine SAML-Anwendung ist der Endpunkt, an dem die Anwendung den Empfang von SAML-Antworten erwartet. Die Anwendung stellt diese URL in der Regel im Metadatendokument unter dem `AssertionConsumerServiceUrl`-Attribut bereit, wie in diesem Beispiel dargestellt:
+Die Antwort-URL für eine SAML-Anwendung ist der Endpunkt, an dem die Anwendung den Empfang von SAML-Antworten erwartet. Die Anwendung stellt diese URL in der Regel im Metadatendokument als `Location`-Attribut des `AssertionConsumerService`-Elements bereit, wie in diesem Beispiel dargestellt:
 
 ```xml
 <SPSSODescriptor AuthnRequestsSigned="false" WantAssertionsSigned="false" protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
@@ -358,7 +361,7 @@ Die Antwort-URL für eine SAML-Anwendung ist der Endpunkt, an dem die Anwendung 
 </SPSSODescriptor>
 ```
 
-Wenn Sie die im `AssertionConsumerServiceUrl`-Attribut angegebenen Metadaten überschreiben möchten oder die URL nicht im Metadatendokument vorhanden ist, können Sie die URL im Manifest unter der `replyUrlsWithType`-Eigenschaft konfigurieren. Der Wert von `BindingType` wird auf `HTTP POST` festgelegt.
+Wenn das Metadatenelement `AssertionConsumerService` der Anwendung fehlt oder Sie es überschreiben möchten, konfigurieren Sie die Manifesteigenschaft `replyUrlsWithType` der Anwendungsregistrierung. Azure AD B2C verwendet `replyUrlsWithType`, um Benutzer umzuleiten, nachdem sie mit dem `HTTP-POST`-Bindungstyp angemeldet wurden.
 
 Wenn Sie die SAML-Testanwendung als Beispiel verwenden, würden Sie die `url`-Eigenschaft von `replyUrlsWithType` auf den im folgenden JSON-Codeausschnitt angegebenen Wert festlegen:
 
@@ -373,20 +376,18 @@ Wenn Sie die SAML-Testanwendung als Beispiel verwenden, würden Sie die `url`-Ei
 
 #### <a name="override-or-set-the-logout-url-optional"></a>Überschreiben oder Festlegen der Abmelde-URL (optional)
 
-Sie können die Abmelde-URL konfigurieren, an die Azure AD B2C den Benutzer nach einer Abmeldeanforderung weiterleitet. Antwort-URLs können im Anwendungsmanifest konfiguriert werden.
-
-Wenn Sie die im `SingleLogoutService`-Attribut angegebenen Metadaten überschreiben möchten oder die URL nicht im Metadatendokument vorhanden ist, können Sie diese im Manifest unter der `Logout`-Eigenschaft konfigurieren. Der Wert von `BindingType` wird auf `Http-Redirect` festgelegt.
-
-Die Anwendung stellt diese URL in der Regel im Metadatendokument unter dem `AssertionConsumerServiceUrl`-Attribut bereit, wie im folgenden Beispiel dargestellt:
+Die Abmelde-URL legt fest, wohin der Benutzer nach einer Abmeldeanforderung umgeleitet werden soll. Die Anwendung stellt diese URL in der Regel im Metadatendokument als `Location`-Attribut des `SingleLogoutService`-Elements bereit, wie im folgenden Beispiel dargestellt:
 
 ```xml
-<IDPSSODescriptor WantAuthnRequestsSigned="false" WantAssertionsSigned="false" protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
+<SPSSODescriptor AuthnRequestsSigned="false" WantAssertionsSigned="false" protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol">
     <SingleLogoutService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://samltestapp2.azurewebsites.net/logout" ResponseLocation="https://samltestapp2.azurewebsites.net/logout" />
 
-</IDPSSODescriptor>
+</SPSSODescriptor>
 ```
 
-Wenn Sie die SAML-Testanwendung als Beispiel verwenden, bleibt `logoutUrl` auf `https://samltestapp2.azurewebsites.net/logout` festgelegt:
+Wenn das Metadatenelement `SingleLogoutService` der Anwendung fehlt, konfigurieren Sie die Manifesteigenschaft `logoutUrl` der Anwendungsregistrierung. Azure AD B2C verwendet `logoutURL`, um Benutzer umzuleiten, nachdem sie mit dem `HTTP-Redirect`-Bindungstyp abgemeldet wurden.
+
+In der SAML-Testanwendung als Beispiel würde die `logoutUrl`-Eigenschaft auf `https://samltestapp2.azurewebsites.net/logout` festgelegt:
 
 ```json
 "logoutUrl": "https://samltestapp2.azurewebsites.net/logout",

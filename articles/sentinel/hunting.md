@@ -1,27 +1,19 @@
 ---
 title: Bedrohungssuchfunktionen in Azure Sentinel | Microsoft-Dokumentation
 description: Verwenden Sie die integrierten Suchabfragen von Azure Sentinel, um die richtigen Fragen zu stellen, mit denen Sie Probleme in Ihren Daten finden können.
-services: sentinel
-documentationcenter: na
 author: yelevin
-manager: rkarlin
-editor: ''
-ms.assetid: 6aa9dd27-6506-49c5-8e97-cc1aebecee87
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
-ms.devlang: na
 ms.topic: conceptual
 ms.custom: mvc, ignite-fall-2021
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 08/08/2021
+ms.date: 11/02/2021
 ms.author: yelevin
-ms.openlocfilehash: 8d93c98da0144d7081803abad174aa09a0087ccb
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 88c0b2919b680feb7776e9de63566ad70d885dee
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131014047"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131475305"
 ---
 # <a name="hunt-for-threats-with-azure-sentinel"></a>Suchen nach Bedrohungen mit Azure Sentinel
 
@@ -29,7 +21,7 @@ ms.locfileid: "131014047"
 
 > [!IMPORTANT]
 >
-> Die ressourcenübergreifenden Abfragefunktionen sowie Upgrades für das **Hunting-Dashboard** (markierte Elemente im Anschluss) befinden sich derzeit in der **VORSCHAUPHASE**. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden bzw. anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
+> Die Funktionen für ressourcenübergreifende Abfragen und die Upgrades für **benutzerdefinierte Abfragen und Lesezeichen** (markierte Elemente im Anschluss) befinden sich derzeit in der **VORSCHAUPHASE**. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden bzw. anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
 >
 
 [!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
@@ -40,7 +32,7 @@ Zum Beispiel liefert eine integrierte Abfrage Daten über die ungewöhnlichsten 
 
 ## <a name="use-built-in-queries"></a>Verwenden integrierter Abfragen
 
-Das [Hunting-Dashboard](#use-the-hunting-dashboard-public-preview) bietet vorgefertigte Abfragebeispiele, um Ihnen den Einstieg zu erleichtern und Sie an die Tabellen und die Abfragesprache heranzuführen. Abfragen werden für in Protokolltabellen gespeicherte Daten ausgeführt – beispielsweise für die Prozesserstellung, für DNS-Ereignisse oder für andere Ereignistypen.
+Das [Hunting-Dashboard](#use-the-hunting-dashboard) bietet vorgefertigte Abfragebeispiele, um Ihnen den Einstieg zu erleichtern und Sie an die Tabellen und die Abfragesprache heranzuführen. Abfragen werden für in Protokolltabellen gespeicherte Daten ausgeführt – beispielsweise für die Prozesserstellung, für DNS-Ereignisse oder für andere Ereignistypen.
 
 Integrierte Hunting-Abfragen werden von Microsoft-Sicherheitsexperten kontinuierlich weiterentwickelt. Sie fügen neue Abfragen hinzu und optimieren bereits vorhandene Abfragen, um Ihnen einen Einstiegspunkt für die Suche nach neuen Erkennungen zu bieten und Sie bei der Entscheidung zu unterstützen, wo mit der Suche nach den Anfängen neuer Angriffe begonnen werden sollte.
 
@@ -67,40 +59,89 @@ Verwenden Sie Abfragen vor, während und nach einer Kompromittierung, um die fol
 > - Weitere Abfragen und Datenquellen finden Sie in Communityressourcen wie dem [GitHub-Repository für Azure Sentinel](https://github.com/Azure/Azure-Sentinel/tree/master/Hunting%20Queries).
 >
 
-## <a name="use-the-hunting-dashboard-public-preview"></a>Verwenden des Hunting-Dashboards (Public Preview)
+## <a name="use-the-hunting-dashboard"></a>Verwenden des Hunting-Dashboards
 
 Mit dem Hunting-Dashboard können Sie alle Ihre Abfragen oder eine ausgewählte Teilmenge mit einer einzigen Auswahl ausführen. Wählen Sie im Azure Sentinel-Portal die Option **Hunting** aus.
 
-Die daraufhin angezeigte Tabelle enthält alle Abfragen, die von den Sicherheitsanalysten von Microsoft geschrieben wurden, sowie alle weiteren Abfragen, die Sie selbst erstellt oder geändert haben. Jede Abfrage enthält eine Beschreibung dazu, nach welcher Bedrohung mit ihr gesucht wird und für welche Art von Daten sie ausgeführt wird. Diese Vorlagen sind nach ihren verschiedene Taktiken gruppiert: Die Symbole auf der rechten Seite kategorisieren den Typ der Bedrohung, etwa Erstzugriff, Persistenz und Exfiltration.
+Die daraufhin angezeigte Tabelle enthält alle Abfragen, die von den Sicherheitsanalysten von Microsoft geschrieben wurden, sowie alle weiteren Abfragen, die Sie selbst erstellt oder geändert haben. Jede Abfrage enthält eine Beschreibung dazu, nach welcher Bedrohung mit ihr gesucht wird und für welche Art von Daten sie ausgeführt wird. Diese Abfragen sind nach ihren MITRE ATT&CK-**Taktiken** gruppiert. Mit den Symbolen auf der rechten Seite wird die Art der Bedrohung kategorisiert, z. B. Erstzugriff, Persistenz und Exfiltration. Die MITRE ATT&CK-**Techniken** sind in der Spalte **Techniken** angegeben. Hier wird das spezifische Verhalten beschrieben, das mit der Hunting-Abfrage identifiziert wurde.
 
 :::image type="content" source="media/hunting/hunting-start.png" alt-text="Azure Sentinel beginnt mit der Bedrohungssuche" lightbox="media/hunting/hunting-start.png":::
 
-Verwenden Sie das Hunting-Dashboard, um zu ermitteln, wo mit der Suche begonnen werden soll. Betrachten Sie dazu die Ergebnisanzahl, Spitzen oder die Veränderung der Ergebnisanzahl über einen Zeitraum von 24 Stunden. Sortieren und filtern Sie nach Favoriten, Datenquelle, MITRE ATT&CK-Taktik und -Verfahren, Ergebnissen oder Ergebnisdelta. Zeigen Sie Abfragen an, für die noch eine Verbindung mit Datenquellen hergestellt werden muss**, und erhalten Sie Empfehlungen zum Aktivieren dieser Abfragen.
+Verwenden Sie das Hunting-Dashboard, um zu ermitteln, wo mit der Suche begonnen werden soll. Betrachten Sie dazu die Ergebnisanzahl, Spitzen oder die Veränderung der Ergebnisanzahl über einen Zeitraum von 24 Stunden. Sortieren und filtern Sie nach Favoriten, Datenquelle, MITRE ATT&CK-Taktik/-Technik, Ergebnisdelta oder Ergebnisdelta-Prozentsatz. Zeigen Sie Abfragen an, für die noch eine Verbindung mit Datenquellen hergestellt werden muss**, und erhalten Sie Empfehlungen zum Aktivieren dieser Abfragen.
 
 In der folgenden Tabelle werden detaillierte Aktionen beschrieben, die über das Hunting-Dashboard verfügbar sind:
 
-|Aktion  |BESCHREIBUNG  |
-|---------|---------|
-|**Ermitteln, inwiefern Abfragen für Ihre Umgebung geeignet sind**     |   Wählen Sie die Schaltfläche **Run all queries (Preview)** (Alle Abfragen ausführen (Vorschau)) aus, oder wählen Sie mithilfe der Kontrollkästchen links neben den einzelnen Zeilen einen Teil der Abfragen und anschließend die Schaltfläche **Run selected queries (Preview)** (Ausgewählte Abfragen ausführen (Vorschau)) aus. <br><br>Die Abfrageausführung kann wenige Sekunden, aber auch mehrere Minuten dauern. Dies hängt von der Anzahl ausgewählter Abfragen, vom Zeitbereich und von der abgefragten Datenmenge ab.      |
-|**Anzeigen der Abfragen, von denen Ergebnisse zurückgegeben wurden**    |      Nach Abschluss Ihrer Abfragen können Sie mithilfe des Filters **Ergebnisse** die Abfragen anzeigen, von denen Ergebnisse zurückgegeben wurden: <br>- Sortieren Sie sie, um zu sehen, welche Abfragen die meisten oder wenigsten Ergebnisse hatten. <br>- Wählen im Filter **Ergebnisse** die Option *Nicht zutreffend* aus, um die Abfragen anzuzeigen, die in Ihrer Umgebung nicht aktiv sind. <br>- Bewegen Sie den Mauszeiger auf das Infosymbol (**i**) neben *Nicht zutreffend*, um zu sehen, welche Datenquellen erforderlich sind, um diese Abfrage zu aktivieren.  |
-|**Identifizieren von Spitzen in Ihren Daten**     |   Sie können Datenspitzen identifizieren, indem Sie nach **Ergebnis Delta** sortieren oder filtern. <br><br>Dadurch werden die Ergebnisse der letzten 24 Stunden mit den Ergebnissen der vorherigen 24 bis 48 Stunden verglichen und alle signifikanten Volumenunterschiede hervorgehoben.     |
-|**Anzeigen von Abfragen, die der MITRE Att&CK-Taktik zugeordnet sind**     | Die **MITRE ATT&CK-Taktikleiste** im oberen Bereich der Tabelle gibt an, wie viele Abfragen der jeweiligen MITRE ATT&CK-Taktik zugeordnet sind. Die Taktikleiste wird basierend auf dem aktuellen Satz angewendeter Filter dynamisch aktualisiert. <br><br>Dadurch sehen Sie, welche MITRE ATT&CK-Taktiken erscheinen, wenn Sie nach einer bestimmten Ergebnisanzahl, einem hohen Ergebnisdelta, nach Ergebnissen vom Typ *Nicht zutreffend* oder nach etwas anderem filtern.        |
-|**Anzeigen von Abfragen, die MITRE Att&CK-Techniken zugeordnet sind**     | Abfragen können auch MITRE ATT&CK-Techniken zugeordnet werden. Sie können mithilfe des Filters **Technik** nach MITRE ATT&CK-Techniken filtern oder sortieren. Wenn Sie eine Abfrage öffnen, können Sie die Technik auswählen, um die MITRE ATT&CK-Beschreibung der Technik anzuzeigen.        |
-|**Speichern einer Abfrage in Ihren Favoriten**     |   In Ihren Favoriten gespeicherte Abfragen werden jedes Mal automatisch ausgeführt, wenn auf die **Bedrohungssuche-Seite** zugegriffen wird. Sie können eine eigene Bedrohungssuchabfrage erstellen oder eine vorhandene Vorlage für Bedrohungssuchabfragen klonen oder anpassen.      |
-|**Ausführen von Abfragen**     |   Wählen Sie auf der Seite mit den Details der Hunting-Abfrage die Option **Abfrage ausführen** aus, um die Abfrage direkt über die Seite „Hunting“ auszuführen. Die Anzahl der Übereinstimmungen wird in der Tabelle in der Spalte **Ergebnisse** angezeigt. Überprüfen Sie die Liste der Bedrohungssuchabfragen und deren Übereinstimmungen.     |
-|**Überprüfen einer zugrunde liegenden Abfrage**     | Im Bereich mit den Abfragedetails können Sie eine schnelle Überprüfung der zugrunde liegenden Abfrage durchführen. Sie können die Ergebnisse anzeigen, indem Sie auf den Link **Abfrageergebnisse anzeigen** (unterhalb des Abfragefensters) oder auf die Schaltfläche **Ergebnisse anzeigen** (unten im Bereich) klicken. Die Abfrage wird auf dem Blatt **Protokolle** (Log Analytics) geöffnet, und unterhalb der Abfrage können Sie die Übereinstimmungen für die Abfrage überprüfen.         |
+| Aktion | BESCHREIBUNG  |
+| --------- | --------- |
+| **Ermitteln, inwiefern Abfragen für Ihre Umgebung geeignet sind**      | Wählen Sie die Schaltfläche **Run all queries (Preview)** (Alle Abfragen ausführen (Vorschau)) aus, oder wählen Sie mithilfe der Kontrollkästchen links neben den einzelnen Zeilen einen Teil der Abfragen und anschließend die Schaltfläche **Run selected queries (Preview)** (Ausgewählte Abfragen ausführen (Vorschau)) aus. <br><br>Die Abfrageausführung kann wenige Sekunden, aber auch mehrere Minuten dauern. Dies hängt von der Anzahl ausgewählter Abfragen, vom Zeitbereich und von der abgefragten Datenmenge ab.      |
+| **Anzeigen der Abfragen, von denen Ergebnisse zurückgegeben wurden**         | Nach Abschluss Ihrer Abfragen können Sie mithilfe des Filters **Ergebnisse** die Abfragen anzeigen, von denen Ergebnisse zurückgegeben wurden: <br>- Sortieren Sie sie, um zu sehen, welche Abfragen die meisten oder wenigsten Ergebnisse hatten. <br>- Wählen im Filter **Ergebnisse** die Option *Nicht zutreffend* aus, um die Abfragen anzuzeigen, die in Ihrer Umgebung nicht aktiv sind. <br>- Bewegen Sie den Mauszeiger auf das Infosymbol (**i**) neben *Nicht zutreffend*, um zu sehen, welche Datenquellen erforderlich sind, um diese Abfrage zu aktivieren.  |
+| **Identifizieren von Spitzen in Ihren Daten**                   | Identifizieren Sie Datenspitzen, indem Sie nach **Ergebnisdelta** oder **Deltaprozentsatz der Ergebnisse** filtern. <br><br>Hierbei werden die Ergebnisse der letzten 24 Stunden mit den Ergebnissen der vorherigen 24 bis 48 Stunden verglichen und alle signifikanten bzw. relativen Volumenunterschiede hervorgehoben.   |
+| **Anzeigen von Abfragen, die der MITRE ATT&CK-Taktik zugeordnet sind** | Die **MITRE ATT&CK-Taktikleiste** im oberen Bereich der Tabelle gibt an, wie viele Abfragen der jeweiligen MITRE ATT&CK-Taktik zugeordnet sind. Die Taktikleiste wird basierend auf dem aktuellen Satz angewendeter Filter dynamisch aktualisiert. <br><br>Dadurch sehen Sie, welche MITRE ATT&CK-Taktiken erscheinen, wenn Sie nach einer bestimmten Ergebnisanzahl, einem hohen Ergebnisdelta, nach Ergebnissen vom Typ *Nicht zutreffend* oder nach etwas anderem filtern.        |
+| **Anzeigen von Abfragen, die MITRE Att&CK-Techniken zugeordnet sind** | Abfragen können auch MITRE ATT&CK-Techniken zugeordnet werden. Sie können mithilfe des Filters **Technik** nach MITRE ATT&CK-Techniken filtern oder sortieren. Wenn Sie eine Abfrage öffnen, können Sie die Technik auswählen, um die MITRE ATT&CK-Beschreibung der Technik anzuzeigen.        |
+| **Speichern einer Abfrage in Ihren Favoriten**                 |   In Ihren Favoriten gespeicherte Abfragen werden jedes Mal automatisch ausgeführt, wenn auf die **Bedrohungssuche-Seite** zugegriffen wird. Sie können eine eigene Bedrohungssuchabfrage erstellen oder eine vorhandene Vorlage für Bedrohungssuchabfragen klonen oder anpassen.      |
+| **Ausführen von Abfragen**                                    |   Wählen Sie auf der Seite mit den Details der Hunting-Abfrage die Option **Abfrage ausführen** aus, um die Abfrage direkt über die Seite „Hunting“ auszuführen. Die Anzahl der Übereinstimmungen wird in der Tabelle in der Spalte **Ergebnisse** angezeigt. Überprüfen Sie die Liste der Bedrohungssuchabfragen und deren Übereinstimmungen.     |
+| **Überprüfen einer zugrunde liegenden Abfrage**                     | Im Bereich mit den Abfragedetails können Sie eine schnelle Überprüfung der zugrunde liegenden Abfrage durchführen. Sie können die Ergebnisse anzeigen, indem Sie auf den Link **Abfrageergebnisse anzeigen** (unterhalb des Abfragefensters) oder auf die Schaltfläche **Ergebnisse anzeigen** (unten im Bereich) klicken. Die Abfrage wird auf dem Blatt **Protokolle** (Log Analytics) geöffnet, und unterhalb der Abfrage können Sie die Übereinstimmungen für die Abfrage überprüfen.         |
 |     |         |
 
 
-## <a name="create-your-own-bookmarks"></a>Erstellen eigener Lesezeichen
+## <a name="create-a-custom-hunting-query"></a>Erstellen einer benutzerdefinierten Hunting-Abfrage
 
-Während des Hunting- und Untersuchungsprozesses stoßen Sie möglicherweise auf ungewöhnlich oder verdächtig aussehende Abfrageergebnisse. Versehen Sie diese Elemente mit einem Lesezeichen, um später auf sie zurückzukommen – etwa beim Erstellen oder Anreichern eines Incidents für die Untersuchung.
+Erstellen oder ändern Sie eine Abfrage, und speichern Sie sie als Ihre eigene Abfrage, oder teilen Sie sie mit Benutzern im gleichen Mandanten.
 
-- Aktivieren Sie in Ihren Ergebnissen die Kontrollkästchen aller Zeilen, die Sie speichern möchten, und wählen Sie **Lesezeichen hinzufügen** aus. Dadurch wird für jede markierte Zeile ein Datensatz (Lesezeichen) erstellt, der die Zeilenergebnisse, die Abfrage, die die Ergebnisse erstellt hat, sowie Entitätszuordnungen zum Extrahieren von Benutzern, Hosts und IP-Adressen enthält. Sie können jedem Lesezeichen Ihre eigenen Tags und Notizen hinzufügen.
+:::image type="content" source="./media/hunting/save-query.png" alt-text="Speichern der Abfrage" lightbox="./media/hunting/save-query.png":::
+
+**So erstellen Sie eine neue Abfrage:**
+
+1. Klicken Sie auf **Neue Abfrage**.
+
+1. Füllen Sie alle leeren Felder aus, und wählen Sie **Erstellen** aus.
+
+    1. **(Vorschau)** Erstellen Sie Entitätszuordnungen, indem Sie Entitätstypen, Bezeichner und Spalten auswählen.
+    
+        :::image type="content" source="media/hunting/map-entity-types-hunting.png" alt-text="Screenshot: Zuordnen von Entitätstypen in Hunting-Abfragen":::
+
+    1. **(Vorschau)** Ordnen Sie Ihren Hunting-Abfragen MITRE ATT&CK-Techniken zu, indem Sie die Taktik, die Technik und die untergeordnete Technik (falls zutreffend) auswählen.
+
+        :::image type="content" source="./media/hunting/mitre-attack-mapping-hunting.png" alt-text="Neue Abfrage" lightbox="./media/hunting/new-query.png":::
+
+**So klonen und ändern Sie eine vorhandene Abfrage:**
+
+1. Wählen Sie in der Tabelle die Bedrohungssuchabfrage aus, die Sie ändern möchten.
+
+1. Wählen Sie in der Zeile der Abfrage, die Sie ändern möchten, die Auslassungspunkte (...) aus, und wählen Sie **Abfrage klonen**.
+
+    :::image type="content" source="./media/hunting/clone-query.png" alt-text="Abfrage klonen" lightbox="./media/hunting/clone-query.png":::
+
+1. Ändern Sie die Abfrage, und wählen Sie **Erstellen** aus.
+
+## <a name="sample-query"></a>Beispielabfrage
+
+Eine typische Abfrage beginnt mit einem Tabellennamen, gefolgt von mehreren Operatoren, die durch ein Pipezeichen (\|) getrennt sind.
+
+Beginnen Sie im obigen Beispiel mit dem Tabellennamen „SecurityEvent“, und fügen Sie nach Bedarf über Pipes verkettete Elemente hinzu.
+
+1. Definieren Sie einen Zeitfilter, um nur Datensätze aus den letzten sieben Tagen zu überprüfen.
+
+1. Fügen Sie der Abfrage einen Filter hinzu, um nur Ereignisse mit der ID 4688 anzuzeigen.
+
+1. Fügen Sie der Abfrage einen Filter für die Befehlszeile (CommandLine) hinzu, sodass nur Instanzen von „cscript.exe“ enthalten sind.
+
+1. Bilden Sie nur die Spalten ab, die Sie untersuchen möchten, begrenzen Sie die Ergebnisse auf 1.000, und wählen Sie anschließend **Abfrage ausführen** aus.
+
+1. Wählen Sie das grüne Dreieck aus, um die Abfrage auszuführen. Sie können die Abfrage testen, und sie ausführen, um nach anormalem Verhalten zu suchen.
+
+## <a name="create-bookmarks"></a>Erstellen von Lesezeichen
+
+Während des Hunting- und Untersuchungsprozesses stoßen Sie möglicherweise auf ungewöhnlich oder verdächtig aussehende Abfrageergebnisse. Versehen Sie diese Elemente mit einem Lesezeichen, damit Sie später erneut darauf zugreifen können, z. B. beim Erstellen oder Anreichern eines Incidents für die Untersuchung.
+
+- Aktivieren Sie in Ihren Ergebnissen die Kontrollkästchen aller Zeilen, die Sie speichern möchten, und wählen Sie **Lesezeichen hinzufügen** aus. Für jede markierte Zeile wird ein Eintrag (Lesezeichen) erstellt, der die Zeilenergebnisse und die Abfrage enthält, mit der die Ergebnisse erstellt wurden. Sie können jedem Lesezeichen Ihre eigenen Tags und Notizen hinzufügen.
+
+    - **(Vorschau)** Wie auch bei benutzerdefinierten Abfragen können Sie Ihre Lesezeichen mit Entitätszuordnungen anreichern, um mehrere Entitätstypen und Bezeichner zu extrahieren, sowie mit MITRE ATT&CK-Zuordnungen, um bestimmte Taktiken und Techniken zuzuweisen.
+    - **(Vorschau)** Für Lesezeichen werden standardmäßig die gleichen Zuordnungen von Entitäten und MITRE ATT-&CK-Techniken wie für die Hunting-Abfrage verwendet, mit der die mit Lesezeichen versehenen Ergebnisse erzielt wurden. 
 
 - Klicken Sie auf der Hauptseite **Hunting** auf die Registerkarte **Lesezeichen**, um alle mit Lesezeichen versehenen Ergebnisse anzuzeigen. Fügen Sie Lesezeichen Tags hinzu, um sie für die Filterung zu klassifizieren. Wenn Sie beispielsweise eine Angriffskampagne untersuchen, können Sie ein Tag für die Kampagne erstellen, das Tag allen relevanten Lesezeichen hinzufügen und dann alle Lesezeichen auf Basis der Kampagne filtern.
 
-- Untersuchen Sie ein einzelnes, mit Lesezeichen versehenes Ergebnis, indem Sie das Lesezeichen auswählen und anschließend im Detailbereich auf **Untersuchen** klicken, um die Untersuchungsumgebung zu öffnen.
+- Untersuchen Sie ein einzelnes, mit Lesezeichen versehenes Ergebnis, indem Sie das Lesezeichen auswählen und anschließend im Detailbereich auf **Untersuchen** klicken, um die Untersuchungsumgebung zu öffnen. Sie können auch direkt eine aufgeführte Entität auswählen, um dafür die zugehörige Seite mit den Details anzuzeigen.
 
     Sie können auch einen Incident auf der Grundlage eines oder mehrerer Lesezeichen erstellen oder einem bereits vorhandenen Incident ein oder mehrere Lesezeichen hinzufügen. Aktivieren Sie das Kontrollkästchen links neben den Lesezeichen, die Sie verwenden möchten, und wählen Sie anschließend **Incidentaktionen** > **Neuen Incident erstellen** oder **Zu vorhandenem Incident hinzufügen** aus. Selektieren und untersuchen Sie den Incident wie gewohnt.
 
@@ -189,50 +230,6 @@ Die folgenden Operatoren sind bei Hunting-Abfragen für Azure Sentinel besonders
 - **find**: Sucht nach Zeilen, die einem Prädikat in einer Gruppe von Tabellen entsprechen.
 
 - **adx() (Vorschauversion)** : Diese Funktion führt ressourcenübergreifende Abfragen für Azure Data Explorer-Datenquellen über die Hunting-Umgebung von Azure Sentinel und über Log Analytics aus. Weitere Informationen finden Sie unter [Ressourcenübergreifende Abfrage: Azure Data Explorer mithilfe von Azure Monitor](../azure-monitor/logs/azure-monitor-data-explorer-proxy.md).
-
-## <a name="save-a-query"></a>Speichern einer Abfrage
-
-Erstellen oder ändern Sie eine Abfrage, und speichern Sie sie als Ihre eigene Abfrage, oder teilen Sie sie mit Benutzern im gleichen Mandanten.
-
-:::image type="content" source="./media/hunting/save-query.png" alt-text="Speichern der Abfrage" lightbox="./media/hunting/save-query.png":::
-
-**So erstellen Sie eine neue Abfrage:**
-
-1. Klicken Sie auf **Neue Abfrage**.
-
-1. Füllen Sie alle leeren Felder aus, und wählen Sie **Erstellen** aus.
-
-    :::image type="content" source="./media/hunting/new-query.png" alt-text="Neue Abfrage" lightbox="./media/hunting/new-query.png":::
-
-**So klonen und ändern Sie eine vorhandene Abfrage:**
-
-1. Wählen Sie in der Tabelle die Bedrohungssuchabfrage aus, die Sie ändern möchten.
-
-1. Wählen Sie in der Zeile der Abfrage, die Sie ändern möchten, die Auslassungspunkte (...) aus, und wählen Sie **Abfrage klonen**.
-
-    :::image type="content" source="./media/hunting/clone-query.png" alt-text="Abfrage klonen" lightbox="./media/hunting/clone-query.png":::
-
-1. Ändern Sie die Abfrage, und wählen Sie **Erstellen** aus.
-
-    :::image type="content" source="./media/hunting/custom-query.png" alt-text="Benutzerdefinierte Abfrage" lightbox="./media/hunting/custom-query.png":::
-
-
-
-## <a name="sample-query"></a>Beispielabfrage
-
-Eine typische Abfrage beginnt mit einem Tabellennamen, gefolgt von einer Reihe von Operatoren, die durch \| getrennt sind.
-
-Beginnen Sie im obigen Beispiel mit dem Tabellennamen „SecurityEvent“, und fügen Sie nach Bedarf über Pipes verkettete Elemente hinzu.
-
-1. Definieren Sie einen Zeitfilter, um nur Datensätze aus den letzten sieben Tagen zu überprüfen.
-
-1. Fügen Sie der Abfrage einen Filter hinzu, um nur Ereignisse mit der ID 4688 anzuzeigen.
-
-1. Fügen Sie der Abfrage einen Filter für die Befehlszeile (CommandLine) hinzu, sodass nur Instanzen von „cscript.exe“ enthalten sind.
-
-1. Bilden Sie nur die Spalten ab, die Sie untersuchen möchten, begrenzen Sie die Ergebnisse auf 1.000, und wählen Sie anschließend **Abfrage ausführen** aus.
-
-1. Wählen Sie das grüne Dreieck aus, um die Abfrage auszuführen. Sie können die Abfrage testen, und sie ausführen, um nach anormalem Verhalten zu suchen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

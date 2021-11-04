@@ -7,12 +7,12 @@ ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
 ms.date: 11/02/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 46c629ead4f86d71974ba26426177ca2d9093609
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 1b5ed1cd49ac4117dac6ff0a6e3bdb916299ec44
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131032428"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131457409"
 ---
 # <a name="frequently-asked-questions-about-azure-managed-instance-for-apache-cassandra"></a>Häufig gestellte Fragen zu Azure Managed Instance for Apache Cassandra
 
@@ -72,7 +72,7 @@ Ja. Sie können einen Hybridcluster mit eingefügten Azure Virtual Network-Reche
 
 ### <a name="where-can-i-give-feedback-on-azure-managed-instance-for-apache-cassandra-features"></a>Wo kann ich Feedback zu den Features von Azure Managed Instance for Apache Cassandra geben?
 
-Teilen Sie uns Ihr Feedback auf der Seite für [UserVoice-Feedback](https://feedback.azure.com/forums/263030-azure-cosmos-db?category_id=398548) mit, indem Sie die Kategorie „Managed Apache Cassandra“ verwenden.
+Teilen Sie uns Ihr Feedback auf der Seite für [UserVoice-Feedback](https://feedback.azure.com/d365community/forum/3002b3be-0d25-ec11-b6e6-000d3a4f0858?c=e6e5c7c4-0d25-ec11-b6e6-000d3a4f0858#) mit, indem Sie die Kategorie „Managed Apache Cassandra“ verwenden.
 
 Um ein Problem mit Ihrem Konto zu beheben, richten Sie im Azure-Portal eine [Anfrage an den Support](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
