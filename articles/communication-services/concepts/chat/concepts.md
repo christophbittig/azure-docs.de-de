@@ -10,12 +10,12 @@ ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 ms.subservice: chat
-ms.openlocfilehash: 54a04db65c94adb1200000d027cdd9177c228297
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 49fb9db94ceeaef94dc6c255002f392232ca820c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128672132"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131434159"
 ---
 # <a name="chat-concepts"></a>Chatkonzepte 
 
@@ -35,8 +35,6 @@ Chatkonversationen finden innerhalb von **Chatthreads** statt. Chatthreads haben
 
 ### <a name="user-access"></a>Benutzerzugriff
 In der Regel haben der Threadersteller und die Teilnehmer den gleichen Zugriff auf den Thread und können alle zugehörigen, im SDK verfügbaren Vorgänge ausführen (einschließlich Löschen). Teilnehmer haben keinen Schreibzugriff auf Nachrichten, die von anderen Teilnehmern gesendet wurden. Somit können Nachrichten nur vom jeweiligen Absender aktualisiert oder gelöscht werden. Wenn ein anderer Teilnehmer versucht, einen solchen Vorgang auszuführen, tritt ein Fehler auf. 
-
-Wenn Sie den Zugriff auf Chatfeatures für eine Gruppe von Benutzern einschränken möchten, können Sie den Zugriff als Teil Ihres vertrauenswürdigen Diensts konfigurieren. Ihr vertrauenswürdiger Dienst ist der Dienst, der die Authentifizierung und Autorisierung von Chatteilnehmern orchestriert. Dies wird weiter unten noch ausführlicher erläutert.  
 
 ### <a name="chat-data"></a>Chatdaten 
 Der Chatverlauf wird von Communication Services gespeichert, bis er explizit gelöscht wird. Chatthreadteilnehmer können `ListMessages` verwenden, um den Nachrichtenverlauf für einen bestimmten Thread anzuzeigen. Benutzer, die aus einem Chatthread entfernt wurden, können zwar weiterhin den bisherigen Nachrichtenverlauf anzeigen, aber keine neuen Nachrichten für diesen Chatthread mehr senden oder empfangen. Ein vollständig im Leerlauf befindlicher Thread ohne Teilnehmer wird nach 30 Tagen automatisch gelöscht. Weitere Informationen zu von Communication Services gespeicherten Daten finden Sie in der [Dokumentation zum Datenschutz](../privacy.md).  

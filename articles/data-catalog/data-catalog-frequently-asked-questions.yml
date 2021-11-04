@@ -7,12 +7,12 @@ metadata:
   ms.service: data-catalog
   ms.topic: conceptual
   ms.date: 08/01/2019
-  ms.openlocfilehash: fc39c9a8cdc447a9a38b75aa30de3990aaa8516d
-  ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+  ms.openlocfilehash: dd498c1a0f9f3ef62435986415bfde35eb7112c3
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/04/2021
-  ms.locfileid: "123479062"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131461036"
 title: Häufig gestellte Fragen zu Azure Data Catalog
 summary: >
   [!INCLUDE [Azure Purview redirect](../../includes/data-catalog-use-purview.md)]
@@ -77,7 +77,7 @@ sections:
   - question: >
       Wie fordere ich die Unterstützung für eine andere Datenquelle an?
     answer: >
-      Zum Übermitteln von Anfragen zu Features und anderem Feedback können Sie die [Azure-Foren für Feedback zu Data Catalog](https://feedback.azure.com/forums/906052-data-catalog/category/320788-data-sources) verwenden.
+      Zum Übermitteln von Anfragen zu Features und anderem Feedback können Sie die [Azure-Foren für Feedback zu Data Catalog](https://feedback.azure.com/d365community/forum/3bedd14b-6b26-ec11-b6e6-000d3a4f032c?c=47edd14b-6b26-ec11-b6e6-000d3a4f032c#) verwenden.
   - question: >
       Warum erhalte ich den Fehler „Katalog bereits vorhanden“, wenn ich versuche, einen neuen Katalog zu erstellen?
     answer: "Wenn Sie Office 365 E5 mit Power BI Pro Lizenz erwerben, erstellt Microsoft automatisch einen Standardkatalog in der Region des Abonnements. Dieser Katalog verwendet die kostenlose SKU. Die Office 365-/Power BI-Benutzerlizenz wird auf der Verwaltungsseite verwaltet. \n\nDieser Datenkatalogtyp verfügt jedoch nicht über eine **Administratoroption** und ist im **Azure-Portal** nicht sichtbar. Dieser Datenkatalogtyp kann nicht gelöscht werden. Ebenso ist es nicht zulässig, den Datenkatalog umzubenennen, und Sie können ihn nicht in eine andere Region verschieben. \n\nBenutzerkonten, denen automatisch eine Power BI Pro-Lizenz zugewiesen wird, haben per Lizenzvereinbarung Zugriff auf den Datenkatalog, wenn Sie sich für die Office 365 E5 mit Power BI Pro-Lizenz registriert haben. Dieser Benutzertyp hat uneingeschränkten Zugriff auf Datenkatalogobjekte ohne Administratorrechte. Dieser Benutzertyp gehört *nicht* zu der **Katalogbenutzer**-Rolle in Azure Data Catalog.\n"
@@ -117,7 +117,7 @@ sections:
   - question: >
       Funktioniert der Katalog mit einer anderen Datenquelle, die mich interessiert?
     answer: >
-      Wir arbeiten aktiv daran, Data Catalog weitere Datenquellen hinzuzufügen. Wenn Sie für eine bestimmte Datenquelle Unterstützung wünschen, können Sie diese in den [Azure-Foren für Feedback zu Data Catalog](https://feedback.azure.com/forums/906052-data-catalog) vorschlagen (oder eine ggf. bereits vorhandene Anfrage unterstützen).
+      Wir arbeiten aktiv daran, Data Catalog weitere Datenquellen hinzuzufügen. Wenn Sie für eine bestimmte Datenquelle Unterstützung wünschen, können Sie diese in den [Azure-Foren für Feedback zu Data Catalog](https://feedback.azure.com/d365community/forum/3bedd14b-6b26-ec11-b6e6-000d3a4f032c) vorschlagen (oder eine ggf. bereits vorhandene Anfrage unterstützen).
   - question: >
       Welche Berechtigungen benötige ich, um Datenobjekte bei Data Catalog registrieren zu können?
     answer: >
@@ -131,7 +131,7 @@ sections:
       Data Catalog ist ein Clouddienst, der sowohl Clouddatenquellen als auch lokale Datenquellen verarbeiten kann. Es handelt sich also um eine Hybridlösung zur Ermittlung von Datenquellen. Es ist derzeit keine Version des Data Catalog-Diensts geplant, die lokal ausgeführt wird.
   - question: >
       Können aus den von mir registrierten Datenquellen auch mehr oder umfangreichere Metadaten extrahiert werden?
-    answer: "Wir arbeiten derzeit daran, die Funktionen von Data Catalog zu erweitern. Wenn zusätzliche Metadaten während der Registrierung aus der Datenquelle extrahiert werden sollen, können Sie dies in den [Azure-Foren für Feedback zu Data Catalog](https://feedback.azure.com/forums/906052-data-catalog) vorschlagen (oder einen bereits vorhandenen Vorschlag unterstützen). \n\nFalls Sie Spalten-/Schemametadaten, Vorschauversionen oder Datenprofile einbinden möchten, können Sie für Datenquellen, bei denen diese Metadaten nicht vom Datenquellen-Registrierungstool extrahiert werden, die Data Catalog-API zum Hinzufügen dieser Metadaten verwenden. Weitere Informationen finden Sie unter [Azure Data Catalog](/rest/api/datacatalog/).\n"
+    answer: "Wir arbeiten derzeit daran, die Funktionen von Data Catalog zu erweitern. Wenn zusätzliche Metadaten während der Registrierung aus der Datenquelle extrahiert werden sollen, können Sie dies in den [Azure-Foren für Feedback zu Data Catalog](https://feedback.azure.com/d365community/forum/3bedd14b-6b26-ec11-b6e6-000d3a4f032c) vorschlagen (oder einen bereits vorhandenen Vorschlag unterstützen). \n\nFalls Sie Spalten-/Schemametadaten, Vorschauversionen oder Datenprofile einbinden möchten, können Sie für Datenquellen, bei denen diese Metadaten nicht vom Datenquellen-Registrierungstool extrahiert werden, die Data Catalog-API zum Hinzufügen dieser Metadaten verwenden. Weitere Informationen finden Sie unter [Azure Data Catalog](/rest/api/datacatalog/).\n"
   - question: >
       Wie kann ich die Sichtbarkeit der registrierten Datenobjekte so einschränken, dass nur bestimmte Personen sie ermitteln können?
     answer: >

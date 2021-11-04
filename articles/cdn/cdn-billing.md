@@ -3,7 +3,7 @@ title: Grundlegendes zur Abrechnung für Azure CDN | Microsoft-Dokumentation
 description: Erfahren Sie mehr über die Abrechnungsstruktur für Inhalte, die von Azure Content Delivery Network gehostet werden, einschließlich Abrechnungsregionen, Übermittlungsgebühren und Kostenverwaltung.
 services: cdn
 documentationcenter: ''
-author: asudbring
+author: duongau
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/13/2019
-ms.author: allensu
-ms.openlocfilehash: aa2f00a732a3978524fc017481285859c9535387
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: duau
+ms.openlocfilehash: c592be1445b874eb4535ac0f0082bf735832ebb2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96018680"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131426618"
 ---
 # <a name="understanding-azure-cdn-billing"></a>Grundlegendes zur Abrechnung für Azure CDN
 

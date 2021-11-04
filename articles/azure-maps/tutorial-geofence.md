@@ -1,23 +1,23 @@
 ---
 title: 'Tutorial: Erstellen eines Geofence und Nachverfolgen von Geräten auf einer Microsoft Azure-Karte'
 description: Tutorial zum Einrichten eines Geofence. Es wird beschrieben, wie Sie mit dem räumlichen Dienst von Azure Maps Geräte relativ zum Geofence nachverfolgen.
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 7/06/2021
+author: stevemunk
+ms.author: v-munksteve
+ms.date: 10/28/2021
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 ms.custom: mvc
-ms.openlocfilehash: f9b2c74f25d5f27385b604d53530edbdb57a91fd
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b3f98990a34ada3d832498a892d289323f485a28
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121750205"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131455338"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Tutorial: Einrichten eines Geofence mit Azure Maps
 
-In diesem Tutorial werden Schritt für Schritt die Grundlagen der Erstellung und Verwendung von Azure Maps-Geofencediensten beschrieben. 
+In diesem Tutorial werden Schritt für Schritt die Grundlagen der Erstellung und Verwendung von Azure Maps-Geofencediensten beschrieben.
 
 Nehmen Sie das folgende Szenario als Beispiel:
 
@@ -26,6 +26,7 @@ Nehmen Sie das folgende Szenario als Beispiel:
 Azure Maps verfügt über eine Reihe von Diensten, die die Nachverfolgung des Ein- und Ausgangs von Geräten unterstützen. In diesem Lernprogramm lernen Sie Folgendes:
 
 > [!div class="checklist"]
+>
 > * Sie laden [GeoJSON-Geofencingdaten](geofence-geojson.md) hoch, mit denen die zu überwachenden Baustellenbereiche definiert werden. Sie verwenden die [Datenupload-API](/rest/api/maps/data-v2/upload-preview), um Geofences als Polygonkoordinaten in Ihr Azure Maps-Konto hochzuladen.
 > * Sie richten zwei [Logik-Apps](../event-grid/handler-webhooks.md#logic-apps) ein, die ausgelöst werden können, um E-Mail-Benachrichtigungen an den Baustellenleiter zu senden, wenn Geräte in den Geofencebereich gebracht werden oder diesen verlassen.
 > * Sie verwenden [Azure Event Grid](../event-grid/overview.md), um Eingangs- und Ausgangsereignisse für Ihren Azure Maps-Geofence zu abonnieren. Sie richten zwei Webhook-Ereignisabonnements ein, von denen die in Ihren beiden Logik-Apps definierten HTTP-Endpunkte aufgerufen werden. Von den Logik-Apps werden dann die entsprechenden E-Mail-Benachrichtigungen für Geräte gesendet, die in den Geofencebereich gebracht werden oder diesen verlassen.
@@ -58,7 +59,7 @@ So laden Sie die GeoJSON-Geofencingdaten hoch
 5. Geben Sie die folgende URL ein. Die Anforderung sollte wie die folgende URL aussehen (ersetzen `{Azure-Maps-Primary-Subscription-key}` Sie durch Ihren primären Abonnementschlüssel):
 
     ```HTTP
-    https://us.atlas.microsoft.com/mapData?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=2.0&dataFormat=geojson
+    https://us.atlas.microsoft.com/mapData?subscription-key={Your-Azure-Maps-Primary-Subscription-key}&api-version=2.0&dataFormat=geojson
     ```
 
     Der Parameter `geojson` im URL-Pfad steht für das Format der Daten, die hochgeladen werden.
@@ -162,7 +163,7 @@ So laden Sie die GeoJSON-Geofencingdaten hoch
 11. Kopieren Sie den Wert des Schlüssels **Operation-Location** (Vorgangsspeicherort). Hierbei handelt es sich um die Status-URL (`status URL`). Sie verwenden die `status URL`, um den Status des GeoJSON-Datenuploads zu überprüfen.
 
     ```http
-    https://us.atlas.microsoft.com/mapData/operations/<operationId>?api-version=2.0
+    https://us.atlas.microsoft.com/mapData/operations/{operationId}?api-version=2.0
     ```
 
 ### <a name="check-the-geojson-data-upload-status"></a>Überprüfen des Uploadstatus der GeoJSON-Daten
@@ -180,7 +181,7 @@ So überprüfen Sie den Status der GeoJSON-Daten und rufen die eindeutige ID (`u
 5. Geben Sie die `status URL` ein, die Sie in [Hochladen der GeoJSON-Geofencingdaten](#upload-geofencing-geojson-data) kopiert haben. Die Anforderung sollte wie die folgende URL aussehen (ersetzen `{Azure-Maps-Primary-Subscription-key}` Sie durch Ihren primären Abonnementschlüssel):
 
    ```HTTP
-   https://us.atlas.microsoft.com/mapData/<operationId>?api-version=2.0&subscription-key={Subscription-key}
+   https://us.atlas.microsoft.com/mapData/{operationId}?api-version=2.0&subscription-key={Your-Azure-Maps-Primary-Subscription-key}
    ```
 
 6. Wählen Sie **Send** (Senden) aus.
@@ -208,7 +209,7 @@ So rufen Sie Inhaltsmetadaten ab
 5. Geben Sie die `resource Location URL` ein, die Sie in [Überprüfen des Uploadstatus der GeoJSON-Daten](#check-the-geojson-data-upload-status) kopiert haben. Die Anforderung sollte wie die folgende URL aussehen (ersetzen `{Azure-Maps-Primary-Subscription-key}` Sie durch Ihren primären Abonnementschlüssel):
 
     ```http
-    https://us.atlas.microsoft.com/mapData/metadata/{udid}?api-version=2.0&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://us.atlas.microsoft.com/mapData/metadata/{udid}?api-version=2.0&subscription-key={Your-Azure-Maps-Primary-Subscription-key}
     ```
 
 6. Wählen Sie im Antwortfenster die Registerkarte **Body** (Text) aus. Die Metadaten sollten wie das folgende JSON-Fragment aussehen:
@@ -226,7 +227,7 @@ So rufen Sie Inhaltsmetadaten ab
 
 ## <a name="create-workflows-in-azure-logic-apps"></a>Erstellen von Workflows in Azure Logic Apps
 
-Als Nächstes erstellen Sie zwei [Logik-App](../event-grid/handler-webhooks.md#logic-apps)-Endpunkte, die eine E-Mail-Benachrichtigung auslösen. 
+Als Nächstes erstellen Sie zwei [Logik-App](../event-grid/handler-webhooks.md#logic-apps)-Endpunkte, die eine E-Mail-Benachrichtigung auslösen.
 
 So erstellen Sie die Logik-Apps
 
@@ -338,7 +339,7 @@ In den folgenden Abschnitten werden jeweils API-Anforderungen mit den fünf vers
 5. Geben Sie die folgende URL ein. Die Anforderung sollte der folgenden URL ähneln. (Ersetzen Sie `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel und `{udid}` durch die `udid`, die Sie im Abschnitt [Hochladen von GeoJSON-Geofencingdaten](#upload-geofencing-geojson-data) gespeichert haben.)
 
    ```HTTP
-   https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.638237&lon=-122.1324831&searchBuffer=5&isAsync=True&mode=EnterAndExit
+   https://atlas.microsoft.com/spatial/geofence/json?subscription-key={Your-Azure-Maps-Primary-Subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.638237&lon=-122.1324831&searchBuffer=5&isAsync=True&mode=EnterAndExit
    ```
 
 6. Wählen Sie **Send** (Senden) aus.
@@ -386,7 +387,7 @@ In der obigen GeoJSON-Antwort bedeutet die negative Entfernung zum Geofence für
 5. Geben Sie die folgende URL ein. Die Anforderung sollte der folgenden URL ähneln. (Ersetzen Sie `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel und `{udid}` durch die `udid`, die Sie im Abschnitt [Hochladen von GeoJSON-Geofencingdaten](#upload-geofencing-geojson-data) gespeichert haben.)
 
    ```HTTP
-   https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63800&lon=-122.132531&searchBuffer=5&isAsync=True&mode=EnterAndExit
+   https://atlas.microsoft.com/spatial/geofence/json?subscription-key={Your-Azure-Maps-Primary-Subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63800&lon=-122.132531&searchBuffer=5&isAsync=True&mode=EnterAndExit
    ```
 
 6. Wählen Sie **Send** (Senden) aus.
@@ -434,7 +435,7 @@ In der obigen GeoJSON-Antwort befindet sich das Gerät weiterhin innerhalb des G
 5. Geben Sie die folgende URL ein. Die Anforderung sollte der folgenden URL ähneln. (Ersetzen Sie `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel und `{udid}` durch die `udid`, die Sie im Abschnitt [Hochladen von GeoJSON-Geofencingdaten](#upload-geofencing-geojson-data) gespeichert haben.)
 
     ```HTTP
-      https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.63810783315048&lon=-122.13336020708084&searchBuffer=5&isAsync=True&mode=EnterAndExit
+      https://atlas.microsoft.com/spatial/geofence/json?subscription-key={Your-Azure-Maps-Primary-Subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.63810783315048&lon=-122.13336020708084&searchBuffer=5&isAsync=True&mode=EnterAndExit
       ```
 
 6. Wählen Sie **Send** (Senden) aus.
@@ -485,7 +486,7 @@ In der obigen GeoJSON-Antwort befindet sich das Gerät weiterhin innerhalb des G
 5. Geben Sie die folgende URL ein. Die Anforderung sollte der folgenden URL ähneln. (Ersetzen Sie `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel und `{udid}` durch die `udid`, die Sie im Abschnitt [Hochladen von GeoJSON-Geofencingdaten](#upload-geofencing-geojson-data) gespeichert haben.)
 
     ```HTTP
-    https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.637988&userTime=2023-01-16&lon=-122.1338344&searchBuffer=5&isAsync=True&mode=EnterAndExit
+    https://atlas.microsoft.com/spatial/geofence/json?subscription-key={Your-Azure-Maps-Primary-Subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.637988&userTime=2023-01-16&lon=-122.1338344&searchBuffer=5&isAsync=True&mode=EnterAndExit
     ```
 
 6. Wählen Sie **Send** (Senden) aus.
@@ -527,7 +528,7 @@ In der obigen GeoJSON-Antwort befindet sich das Gerät weiterhin innerhalb des G
 5. Geben Sie die folgende URL ein. Die Anforderung sollte der folgenden URL ähneln. (Ersetzen Sie `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel und `{udid}` durch die `udid`, die Sie im Abschnitt [Hochladen von GeoJSON-Geofencingdaten](#upload-geofencing-geojson-data) gespeichert haben.)
 
     ```HTTP
-    https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.63799&lon=-122.134505&searchBuffer=5&isAsync=True&mode=EnterAndExit
+    https://atlas.microsoft.com/spatial/geofence/json?subscription-key={Your-Azure-Maps-Primary-Subscription-key}&api-version=1.0&deviceId=device_01&udid={udid}&lat=47.63799&lon=-122.134505&searchBuffer=5&isAsync=True&mode=EnterAndExit
     ```
 
 6. Wählen Sie **Send** (Senden) aus.

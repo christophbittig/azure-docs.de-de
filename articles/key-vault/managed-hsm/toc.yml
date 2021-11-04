@@ -1,88 +1,89 @@
-- name: Dokumentation zu verwaltetem HSM
-  href: index.yml
-- name: Übersicht
-  items:
-    - name: Informationen zu verwaltetem HSM
-      href: overview.md
-- name: Schnellstarts
-  expanded: true
-  items:
-    - name: Befehlszeilenschnittstelle (CLI)
-      href: quick-create-cli.md
-    - name: PowerShell
-      href: quick-create-powershell.md
-    - name: Azure Resource Manager-Vorlage
-      href: quick-create-template.md
-- name: Tutorials
-  items:
-    - name: Verwalten mit der Azure CLI
-      href: key-management.md
-    - name: Rollenverwaltung für verwaltetes HSM
-      href: role-management.md
-    - name: Schützen des Zugriffs auf Ihr verwaltetes HSM
-      href: secure-your-managed-hsm.md
-    - name: Verwenden privater Endpunkte
-      href: private-link.md
-    - name: Einrichten der Protokollierung für verwaltetes HSM
-      href: logging.md
-    - name: Notfallwiederherstellung
-      href: disaster-recovery-guide.md
-    - name: Importieren von durch HSM geschützten Schlüsseln in verwaltetes HSM
-      href: hsm-protected-keys-byok.md
-    - name: Sichern und Wiederherstellen
-      href: backup-restore.md
-    - name: Wiederherstellungsverwaltung mit Schutz durch vorläufiges Löschen und Bereinigungsschutz
-      href: recovery.md
-- name: Konzepte
-  items:
-    - name: Sicherheitsdomäne
-      href: security-domain.md
-    - name: Bewährte Methoden
-      href: best-practices.md
-    - name: Zugriffssteuerung
-      href: access-control.md
-    - name: Lokale integrierte RBAC-Rollen
-      href: built-in-roles.md
-    - name: Vorläufiges Löschen von verwaltetem HSM
-      href: soft-delete-overview.md
-- name: Verweis
-  items:
-    - name: Azure PowerShell
-      href: /powershell/azure#key_vault
-    - name: Azure CLI
-      href: /cli/azure/keyvault
-    - name: .NET
-      href: /dotnet/api/overview/azure/key-vault
-    - name: Java
-      href: /java/api/overview/azure/keyvault
-    - name: Node.js
-      href: /javascript/api/overview/azure/key-vault-index
-    - name: Python
-      href: /python/api/overview/azure/key-vault-index
-    - name: REST
-      href: /rest/api/keyvault
-    - name: Resource Manager-Vorlage
-      href: /azure/templates/microsoft.keyvault/allversions
-      displayName: ARM
-- name: Ressourcen
-  items:
-    - name: Lösungen von Drittanbietern
-      href: third-party-solutions.md
-    - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
-      href: /learn/browse/?products=azure-key-vault
-    - name: Preise
-      href: 'https://azure.microsoft.com/pricing/details/key-vault/'
-    - name: Regionale Verfügbarkeit
-      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=key-vault&regions=all'
-    - name: Vereinbarung zum Servicelevel (SLA)
-      href: 'https://azure.microsoft.com/support/legal/sla/key-vault-managed-hsm/v1_0/'
-    - name: Diensteinschränkungen
-      href: ../general/service-limits.md
-    - name: Dienststatus
-      href: 'https://azure.microsoft.com/status/'
-    - name: Dienstupdates
-      href: 'https://azure.microsoft.com/updates/?product=key-vault'
-    - name: Blog
-      href: /archive/blogs/kv/
-    - name: Produktfeedback
-      href: 'https://feedback.azure.com/forums/906355-azure-key-vault'
+items:
+  - name: Dokumentation zu verwaltetem HSM
+    href: index.yml
+  - name: Übersicht
+    items:
+      - name: Informationen zu verwaltetem HSM
+        href: overview.md
+  - name: Schnellstarts
+    expanded: true
+    items:
+      - name: Befehlszeilenschnittstelle (CLI)
+        href: quick-create-cli.md
+      - name: PowerShell
+        href: quick-create-powershell.md
+      - name: Azure Resource Manager-Vorlage
+        href: quick-create-template.md
+  - name: Tutorials
+    items:
+      - name: Verwalten mit der Azure CLI
+        href: key-management.md
+      - name: Rollenverwaltung für verwaltetes HSM
+        href: role-management.md
+      - name: Schützen des Zugriffs auf Ihr verwaltetes HSM
+        href: secure-your-managed-hsm.md
+      - name: Verwenden privater Endpunkte
+        href: private-link.md
+      - name: Einrichten der Protokollierung für verwaltetes HSM
+        href: logging.md
+      - name: Notfallwiederherstellung
+        href: disaster-recovery-guide.md
+      - name: Importieren von durch HSM geschützten Schlüsseln in verwaltetes HSM
+        href: hsm-protected-keys-byok.md
+      - name: Sichern und Wiederherstellen
+        href: backup-restore.md
+      - name: Wiederherstellungsverwaltung mit Schutz durch vorläufiges Löschen und Bereinigungsschutz
+        href: recovery.md
+  - name: Konzepte
+    items:
+      - name: Sicherheitsdomäne
+        href: security-domain.md
+      - name: Bewährte Methoden
+        href: best-practices.md
+      - name: Zugriffssteuerung
+        href: access-control.md
+      - name: Lokale integrierte RBAC-Rollen
+        href: built-in-roles.md
+      - name: Vorläufiges Löschen von verwaltetem HSM
+        href: soft-delete-overview.md
+  - name: Verweis
+    items:
+      - name: Azure PowerShell
+        href: /powershell/azure#key_vault
+      - name: Azure-Befehlszeilenschnittstelle
+        href: /cli/azure/keyvault
+      - name: .NET
+        href: /dotnet/api/overview/azure/key-vault
+      - name: Java
+        href: /java/api/overview/azure/keyvault
+      - name: Node.js
+        href: /javascript/api/overview/azure/key-vault-index
+      - name: Python
+        href: /python/api/overview/azure/key-vault-index
+      - name: REST
+        href: /rest/api/keyvault
+      - name: Resource Manager-Vorlage
+        href: /azure/templates/microsoft.keyvault/allversions
+        displayName: ARM
+  - name: Ressourcen
+    items:
+      - name: Lösungen von Drittanbietern
+        href: third-party-solutions.md
+      - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
+        href: /learn/browse/?products=azure-key-vault
+      - name: Preise
+        href: 'https://azure.microsoft.com/pricing/details/key-vault/'
+      - name: Regionale Verfügbarkeit
+        href: 'https://azure.microsoft.com/global-infrastructure/services/?products=key-vault&regions=all'
+      - name: Vereinbarung zum Servicelevel (SLA)
+        href: 'https://azure.microsoft.com/support/legal/sla/key-vault-managed-hsm/v1_0/'
+      - name: Diensteinschränkungen
+        href: ../general/service-limits.md
+      - name: Dienststatus
+        href: 'https://azure.microsoft.com/status/'
+      - name: Dienstupdates
+        href: 'https://azure.microsoft.com/updates/?product=key-vault'
+      - name: Blog
+        href: /archive/blogs/kv/
+      - name: Produktfeedback
+        href: 'https://feedback.azure.com/d365community/forum/285c5ae0-f524-ec11-b6e6-000d3a4f0da0'

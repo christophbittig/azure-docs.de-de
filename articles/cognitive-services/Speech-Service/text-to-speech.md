@@ -3,21 +3,21 @@ title: 'Übersicht über die Sprachsynthese: Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: Das Feature Text-zu-Sprache in Speech-Dienst ermöglicht es Ihren Anwendungen, Tools oder Geräten, Text in natürliche, menschenähnliche synthetisierte Sprache umzuwandeln. Dieser Artikel bietet einen Überblick über die Vorteile und Funktionen des Sprachsynthesediensts.
 services: cognitive-services
-author: PatrickFarley
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.author: pafarley
+ms.author: eur
 ms.custom: cog-serv-seo-aug-2020
 keywords: Sprachsynthese
-ms.openlocfilehash: 7be06937cf9f3117d426fd9c19cbb6059826e6ec
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: a086ebf1d7e9da9f8394a6cdde411e5ee55a5f28
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124736891"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131511062"
 ---
 # <a name="what-is-neural-text-to-speech"></a>Was ist die neuronale Sprachsynthese?
 

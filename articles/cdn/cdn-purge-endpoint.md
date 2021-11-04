@@ -3,7 +3,7 @@ title: Löschen eines Azure CDN-Endpunkts | Microsoft Docs
 description: Erfahren Sie, wie Sie alle zwischengespeicherten Inhalte in einem Azure Content Delivery Network-Endpunkt bereinigen. Edgeknoten speichern Ressourcen zwischen, bis ihre Gültigkeitsdauer abläuft.
 services: cdn
 documentationcenter: ''
-author: asudbring
+author: duongau
 manager: danielgi
 editor: sohamnchatterjee
 ms.assetid: 0b50230b-fe82-4740-90aa-95d4dde8bd4f
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.date: 06/30/2021
-ms.author: allensu
-ms.openlocfilehash: b8acb823ddb3f955c696dc98cf41f8cd4cfe571f
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.author: duau
+ms.openlocfilehash: cdf32273e5c234c59e2c00376e1b8605e43ef1a3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129359143"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131450569"
 ---
 # <a name="purge-an-azure-cdn-endpoint"></a>Löschen eines Azure CDN-Endpunkts
 ## <a name="overview"></a>Übersicht

@@ -1,20 +1,20 @@
 ---
 title: Hinzufügen einer Kachelebene zum Azure Maps-Visual in Power BI | Microsoft Azure Maps
 description: In diesem Artikel erfahren Sie, wie Sie die Kachelebene im Microsoft Azure Maps-Visual für Power BI verwenden.
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 06/26/2020
+author: stevemunk
+ms.author: v-munksteve
+ms.date: 10/28/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: cpendle
+manager: eriklind
 ms.custom: ''
-ms.openlocfilehash: 0edb31901950da22c321af2d6c41966465f916f9
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 7811174ce91de74f5fbc3f433c44e2aed223d01c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123430412"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131477001"
 ---
 # <a name="add-a-tile-layer"></a>Hinzufügen einer Kachelebene
 
@@ -45,21 +45,21 @@ Der Begrenzungsrahmen und der Zoombereich, innerhalb derer ein Kacheldienst verf
 
 Es gibt drei verschiedene Namenskonventionen für Kacheldienste, die vom Azure Maps-Visual unterstützt werden:
 
--   **X, Y, Zoomnotation:** X ist die Spalten- und Y die Zeilenposition der Kachel im Kachelraster, und die Zoomnotation ist ein Wert, der auf dem Zoomfaktor basiert.
--   **Quadkey-Notation:** Bei dieser Notation werden X-, Y- und Zoominformationen in einem einzelnen Zeichenfolgenwert kombiniert. Dieser Zeichenfolgenwert wird zu einem eindeutigen Bezeichner für eine einzelne Kachel.
--   **Begrenzungsrahmen:** Geben Sie ein Bild im Koordinatenformat des Begrenzungsrahmens an: `{west},{south},{east},{north}`. Dieses Format wird häufig von [Web Mapping Services (WMS)](https://www.opengeospatial.org/standards/wms) verwendet.
+* **X, Y, Zoomnotation:** X ist die Spalten- und Y die Zeilenposition der Kachel im Kachelraster, und die Zoomnotation ist ein Wert, der auf dem Zoomfaktor basiert.
+* **Quadkey-Notation:** Bei dieser Notation werden X-, Y- und Zoominformationen in einem einzelnen Zeichenfolgenwert kombiniert. Dieser Zeichenfolgenwert wird zu einem eindeutigen Bezeichner für eine einzelne Kachel.
+* **Begrenzungsrahmen:** Geben Sie ein Bild im Koordinatenformat des Begrenzungsrahmens an: `{west},{south},{east},{north}`. Dieses Format wird häufig von [Web Mapping Services (WMS)](https://www.opengeospatial.org/standards/wms) verwendet.
 
 Die Kachel-URL ist eine HTTPS-URL zu einer Kachel-URL-Vorlage, in der die folgenden Parameter verwendet werden:
 
--   `{x}`: X-Position der Kachel. Benötigt auch `{y}` und `{z}`.
--   `{y}`: Y-Position der Kachel. Benötigt auch `{x}` und `{z}`.
--   `{z}`: Zoomfaktor der Kachel. Benötigt auch `{x}` und `{y}`.
--   `{quadkey}`: `quadkey`-Bezeichner der Kachel basierend auf der Namenskonvention des Bing Maps-Kachelsystems
--   `{bbox-epsg-3857}`: Eine Begrenzungsrahmen-Zeichenfolge mit dem Format `{west},{south},{east},{north}` im Raumbezugssystem EPSG 3857.
+* `{x}`: X-Position der Kachel. Benötigt auch `{y}` und `{z}`.
+* `{y}`: Y-Position der Kachel. Benötigt auch `{x}` und `{z}`.
+* `{z}`: Zoomfaktor der Kachel. Benötigt auch `{x}` und `{y}`.
+* `{quadkey}`: `quadkey`-Bezeichner der Kachel basierend auf der Namenskonvention des Bing Maps-Kachelsystems
+* `{bbox-epsg-3857}`: Eine Begrenzungsrahmen-Zeichenfolge mit dem Format `{west},{south},{east},{north}` im Raumbezugssystem EPSG 3857.
 
 Das folgende Beispiel zeigt eine formatierte Kachel-URL für den [Wetterradar-Kacheldienst](/rest/api/maps/render-v2/get-map-tile) in Azure Maps. Beachten Sie, dass `[subscription-key]` ein Platzhalter für Ihren Azure Maps-Abonnementschlüssel ist.
 
-> `https://atlas.microsoft.com/map/tile?zoom={z}&x={x}&y={y}&tilesetId=microsoft.weather.radar.main&api-version=2.0&subscription-key=[subscription-key]`
+> `https://atlas.microsoft.com/map/tile?zoom={z}&x={x}&y={y}&tilesetId=microsoft.weather.radar.main&api-version=2.0&subscription-key={Your-Azure-Maps-Primary-Subscription-key}`
 
 Weitere Informationen zum Azure Maps-Kachelsystem finden Sie unter [Zoomstufen und Grobraster](zoom-levels-and-tile-grid.md).
 

@@ -4,12 +4,12 @@ ms.service: azure-web-pubsub
 ms.topic: include
 ms.date: 08/06/2021
 ms.author: lianwei
-ms.openlocfilehash: 785114c797fba5c84e97f5a0d0cc1a34dc14d540
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 3671a5d221afa89c776dca1bc3a17b965b621c5b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121783501"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131423988"
 ---
 Verwenden Sie den Azure CLI-Befehl [az webpubsub create](/cli/azure/webpubsub#az_webpubsub_create), um eine Web PubSub-Instanz in der Ressourcengruppe aus dem vorherigen Schritt zu erstellen. Geben Sie dabei die folgenden Informationen an:
 
@@ -25,9 +25,6 @@ Verwenden Sie den Azure CLI-Befehl [az webpubsub create](/cli/azure/webpubsub#a
 ```azurecli-interactive
 az webpubsub create --name "<your-unique-resource-name>" --resource-group "myResourceGroup" --location "EastUS" --sku Free_F1
 ```
-
-> [!Note]
-> Der Web PubSub-Dienst befindet sich noch in der Vorschauphase, daher wird in der CLI-Konsole möglicherweise die folgende Warnung angezeigt: „The command requires the extension webpubsub. Do you want to install it now? The command will continue to run after the extension is installed. (Y/n)“ (Für den Befehl ist die Erweiterung „webpubsub“ erforderlich. Möchten Sie sie jetzt installieren? Der Befehl wird nach der Installation der Erweiterung weiter ausgeführt. (J/N)). Drücken Sie J, um die Erweiterung zu installieren.
 
 In der Ausgabe dieses Befehls werden die Eigenschaften der neu erstellten Ressource angezeigt. Beachten Sie die beiden folgenden Eigenschaften:
 
