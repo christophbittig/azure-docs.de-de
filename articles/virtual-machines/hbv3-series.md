@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/12/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: 93b9273069fb564ae7049983d34ee71dba8ef57a
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 208c1c16c07bdd32730d17e990e037f0fe7da015
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130072362"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131060457"
 ---
 # <a name="hbv3-series"></a>HBv3-Serie
 
@@ -30,7 +30,7 @@ Alle VMs der HBv3-Serie bieten 200 GBit/s HDR InfiniBand aus dem NVIDIA-Netzwer
 [Updates mit Speicherbeibehaltung:](maintenance-and-updates.md) Nicht unterstützt<br>
 [Unterstützung von VM-Generationen:](generation-2.md) Generation 1 und 2<br>
 [Beschleunigter Netzwerkbetrieb:](../virtual-network/create-vm-accelerated-networking-cli.md) demnächst<br>
-[Kurzlebige Betriebssystemdatenträger](ephemeral-os-disks.md): Unterstützt ([in der Vorschauphase](ephemeral-os-disks.md#preview---ephemeral-os-disks-can-now-be-stored-on-temp-disks))<br>
+[Kurzlebige Betriebssystemdatenträger](ephemeral-os-disks.md): Unterstützt<br>
 <br>
 
 |Size |vCPU |Prozessor |Arbeitsspeicher (GiB) |Speicherbandbreite GB/s |Basis-CPU-Frequenz (GHz) |Frequenz für alle Kerne (GHz, Spitze) |Frequenz für Einzelkern (GHz, Spitze) |RDMA-Leistung (Gbit/s) |MPI-Unterstützung |Temporärer Speicher (GiB) |Max. Anzahl Datenträger |Max. virtuelle Ethernet-Netzwerkkarten (vNICs) |

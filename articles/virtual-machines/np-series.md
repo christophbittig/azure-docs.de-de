@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 02/09/2021
 ms.author: vikancha
-ms.openlocfilehash: 12bbaeddadb925cc6057c902a528121c16e05cd7
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: f40ac573e8abb20e7d4eb4b11a0d9e09f251d9c8
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129546790"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131022016"
 ---
 # <a name="np-series"></a>NP-Serie 
 
@@ -26,7 +26,7 @@ Die virtuellen Computer der NP-Serie basieren auf [Xilinx U250](https://www.xili
 [Updates mit Speicherbeibehaltung:](maintenance-and-updates.md) Nicht unterstützt<br>
 Unterstützung von VM-Generationen: Generation 1<br>
 [Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Unterstützt<br>
-[Kurzlebige Betriebssystemdatenträger](ephemeral-os-disks.md): Unterstützt ([in der Vorschauphase](ephemeral-os-disks.md#preview---ephemeral-os-disks-can-now-be-stored-on-temp-disks))<br>
+[Kurzlebige Betriebssystemdatenträger](ephemeral-os-disks.md): Unterstützt<br>
 <br>
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | FPGA | FPGA-Speicher: GiB | Max. Anzahl Datenträger | Maximale Anzahl NICs/erwartete Netzwerkbandbreite (MBit/s) | 

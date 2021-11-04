@@ -2,13 +2,14 @@
 title: Dynamisches Hinzufügen von Partitionen zu einem Event Hub in Azure Event Hubs
 description: In diesem Artikel erfahren Sie, wie Sie einem Event Hub in Azure Event Hubs dynamisch Partitionen hinzufügen.
 ms.topic: how-to
-ms.date: 05/04/2021
-ms.openlocfilehash: 00163a74564e4cac5ac0b62cf6de98b7ae3ef23e
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.date: 10/20/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: fdd87e281bb4df98d118f7964eaa98925cef0947
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110376099"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131070677"
 ---
 # <a name="dynamically-add-partitions-to-an-event-hub-apache-kafka-topic-in-azure-event-hubs"></a>Dynamisches Hinzufügen von Partitionen zu einem Event Hub (Apache Kafka-Thema) in Azure Event Hubs
 Event Hubs bietet Nachrichtenstreaming über ein partitioniertes Consumermuster, in dem jeder Consumer nur eine bestimmte Teilmenge oder Partition des Nachrichtenstreams liest. Dieses Muster ermöglicht eine horizontale Skalierung für die Ereignisverarbeitung und bietet andere datenstrombezogene Features, die in Warteschlangen und Themen nicht verfügbar sind. Eine Partition ist eine geordnete Sequenz von Ereignissen, die in einem Event Hub besteht. Neu eingehende Ereignisse werden am Ende dieser Sequenz hinzugefügt. Weitere Informationen zu Partitionen im Allgemeinen finden Sie unter [Partitionen](event-hubs-scalability.md#partitions).

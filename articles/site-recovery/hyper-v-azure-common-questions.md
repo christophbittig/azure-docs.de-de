@@ -3,12 +3,12 @@ title: Allgemeine Fragen zur Hyper-V-Notfallwiederherstellung mit Azure Site Rec
 description: In diesem Artikel werden häufig gestellte Fragen zum Einrichten der Notfallwiederherstellung für lokale virtuelle Hyper-V-Computer in Azure mithilfe des Azure Site Recovery-Diensts zusammengefasst.
 ms.date: 11/12/2019
 ms.topic: conceptual
-ms.openlocfilehash: 649bd69f14cdf8d81fe05d3a5f5cac3389419fc3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 46061013844ecc6e41a0329641fd5d81b68656c4
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98879443"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131475082"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Allgemeine Fragen: Hyper-V-Notfallwiederherstellung in Azure
 
@@ -170,10 +170,10 @@ Hyper-V-VMs können alle 30 Sekunden (außer bei Storage Premium) oder alle 5 
 Ja, Azure Site Recovery und das Hyper-V-Replikat können zusammen für einen Computer konfiguriert werden. Der Computer muss jedoch als physischer Computer geschützt werden und wird mithilfe eines Konfigurations-/Prozessservers in Azure repliziert. Weitere Informationen zum Schützen physischer Computer finden Sie [hier](./physical-azure-architecture.md).
 
 ### <a name="can-i-extend-replication"></a>Kann ich die Replikation erweitern?
-Eine erweiterte oder verkettete Replikation wird nicht unterstützt. Fordern Sie dieses Feature im [Feedbackforum](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959).
+Eine erweiterte oder verkettete Replikation wird nicht unterstützt. Fordern Sie dieses Feature im [Feedbackforum](https://feedback.azure.com/d365community/forum/3ccca344-2d25-ec11-b6e6-000d3a4f0f84).
 
 ### <a name="can-i-do-an-offline-initial-replication"></a>Kann ich eine erste Offlinereplikation durchführen?
-Dies wird nicht unterstützt. Fordern Sie dieses Feature im [Feedbackforum](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from).
+Dies wird nicht unterstützt. Fordern Sie dieses Feature im [Feedbackforum](https://feedback.azure.com/d365community/idea/7c09c396-2e25-ec11-b6e6-000d3a4f0f84).
 
 ### <a name="can-i-exclude-disks"></a>Kann ich Datenträger ausschließen?
 Ja, sie können Datenträger von der Replikation ausschließen. 

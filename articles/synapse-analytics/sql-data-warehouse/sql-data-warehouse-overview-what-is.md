@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 01/22/2021
 ms.author: jrasnick
 ms.reviewer: igorstan
-ms.openlocfilehash: 4323f41cbc7440c79b2842bb3f128705a22d1dd4
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 6d4c11db5fd2367fa29475e46b4afa23dc540035
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123435364"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131433059"
 ---
 # <a name="what-is-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Was ist ein dedizierter SQL-Pool (vormals SQL DW) in Azure Synapse Analytics?
 
@@ -57,7 +57,7 @@ Die Analyseergebnisse können an Berichtsdatenbanken oder Anwendungen auf der ga
 Oder sehen Sie sich einige der folgenden weiteren Azure Synapse-Ressourcen an:
 
 - Suche in [Blogs](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
-- Übermitteln von [Funktionsanfragen](https://feedback.azure.com/forums/307516-sql-data-warehouse)
+- Übermitteln von [Funktionsanfragen](https://feedback.azure.com/d365community/forum/9b9ba8e4-0825-ec11-b6e6-000d3a4f07b8)
 - [Erstellen eines Supporttickets](sql-data-warehouse-get-started-create-support-ticket.md)
 - Suche auf der [Frageseite von Microsoft Q&A (Fragen und Antworten)](/answers/topics/azure-synapse-analytics.html)
 - Suche im [Stack Overflow-Forum](https://stackoverflow.com/questions/tagged/azure-sqldw)

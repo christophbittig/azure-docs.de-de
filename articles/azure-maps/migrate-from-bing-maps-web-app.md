@@ -1,26 +1,27 @@
 ---
 title: 'Tutorial: Migrieren einer Web-App aus Bing Karten | Microsoft Azure Maps'
 description: In diesem Tutorial erfahren Sie, wie Sie eine Web-App aus Bing Karten zu Microsoft Azure Maps migrieren.
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 9/10/2020
+author: stevemunk
+ms.author: v-munksteve
+ms.date: 10/28/2021
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: adec0b04e82d0a00b2f95b6b4f7980f628b93a7a
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 519eb22a7b8108d87970367db489d891fc47e593
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123439630"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131435337"
 ---
 # <a name="tutorial-migrate-a-web-app-from-bing-maps"></a>Tutorial: Migrieren einer Web-App aus Bing Karten
 
 Web-Apps, die Bing Karten verwenden, nutzen oftmals das Bing Karten V8 JavaScript SDK. Das Azure Maps Web SDK ist das passende Azure-basierte SDK, zu dem migriert werden kann. Mit dem Azure Maps Web SDK können Sie interaktive Karten mit eigenen Inhalten und Bildern anpassen, die in Ihren webbasierten oder mobilen Anwendungen angezeigt werden sollen. Dieses Steuerelement nutzt WebGL, was das Rendern umfangreicher Datasets mit hoher Leistung ermöglicht. Verwenden Sie für die Entwicklung mit dem SDK JavaScript oder TypeScript. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
+>
 > * Laden einer Karte
 > * Lokalisieren einer Karte
 > * Hinzufügen von Ortsmarken, Polylinien und Polygonen
@@ -260,7 +261,7 @@ Wenn sich Ihre Zielgruppe über mehrere Länder erstreckt oder verschiedene Spra
 Zum Lokalisieren von Bing Karten werden Sprache und Region mithilfe der Parameter `setLang` und `UR` angegeben, die dem `<script>`-Tagverweis auf die API hinzugefügt werden. Bestimmte Funktionen von Bing Karten sind nur in bestimmten Märkten verfügbar; der Markt des Benutzers wird mithilfe des `setMkt`-Parameters angegeben.
 
 ```html
-<script type="text/javascript" src="https://www.bing.com/api/maps/mapcontrol?callback=initMap&setLang=[language_code]&setMkt=[market]&UR=[region_code]" async defer></script>
+<script type="text/javascript" src="https://www.bing.com/api/maps/mapcontrol?callback=initMap&setLang={language-code}&setMkt={market}&UR={region-code}" async defer></script>
 ```
 
 Hier sehen Sie ein Beispiel für eine Bing-Karte mit der Spracheinstellung „fr-FR“.
@@ -337,8 +338,8 @@ map.setStyle({
 
 **Weitere Ressourcen**
 
--   [Auswählen eines Kartenstils](./choose-map-style.md)
--   [Unterstützte Kartenstile](./supported-map-styles.md)
+* [Auswählen eines Kartenstils](./choose-map-style.md)
+* [Unterstützte Kartenstile](./supported-map-styles.md)
 
 ### <a name="adding-a-pushpin"></a>Hinzufügen einer Ortsmarke
 
@@ -460,16 +461,16 @@ Beim Verwenden einer Symbolebene müssen die Daten einer Datenquelle hinzugefüg
 
 **Weitere Ressourcen**
 
--   [Erstellen einer Datenquelle](./create-data-source-web-sdk.md)
--   [Hinzufügen einer Symbolebene](./map-add-pin.md)
--   [Hinzufügen einer Blasenebene](./map-add-bubble-layer.md)
--   [Clusterpunktdaten](./clustering-point-data-web-sdk.md)
--   [Hinzufügen von HTML-Markern](./map-add-custom-html.md)
--   [Verwenden von datengesteuerten Formatvorlagenausdrücken](./data-driven-style-expressions-web-sdk.md)
--   [Symboloptionen der Symbolebene](/javascript/api/azure-maps-control/atlas.iconoptions)
--   [Textoption der Symbolebene](/javascript/api/azure-maps-control/atlas.textoptions)
--   [HTML-Markerklasse](/javascript/api/azure-maps-control/atlas.htmlmarker)
--   [HTML-Markeroptionen](/javascript/api/azure-maps-control/atlas.htmlmarkeroptions)
+* [Erstellen einer Datenquelle](./create-data-source-web-sdk.md)
+* [Hinzufügen einer Symbolebene](./map-add-pin.md)
+* [Hinzufügen einer Blasenebene](./map-add-bubble-layer.md)
+* [Clusterpunktdaten](./clustering-point-data-web-sdk.md)
+* [Hinzufügen von HTML-Markern](./map-add-custom-html.md)
+* [Verwenden von datengesteuerten Formatvorlagenausdrücken](./data-driven-style-expressions-web-sdk.md)
+* [Symboloptionen der Symbolebene](/javascript/api/azure-maps-control/atlas.iconoptions)
+* [Textoption der Symbolebene](/javascript/api/azure-maps-control/atlas.textoptions)
+* [HTML-Markerklasse](/javascript/api/azure-maps-control/atlas.htmlmarker)
+* [HTML-Markeroptionen](/javascript/api/azure-maps-control/atlas.htmlmarkeroptions)
 
 ### <a name="adding-a-custom-pushpin"></a>Hinzufügen einer benutzerdefinierten Ortsmarke
 
@@ -584,14 +585,14 @@ Symbolebenen in Azure Maps unterstützen ebenfalls benutzerdefinierte Bilder, da
 
 **Weitere Ressourcen**
 
--   [Erstellen einer Datenquelle](./create-data-source-web-sdk.md)
--   [Hinzufügen einer Symbolebene](./map-add-pin.md)
--   [Hinzufügen von HTML-Markern](./map-add-custom-html.md)
--   [Verwenden von datengesteuerten Formatvorlagenausdrücken](./data-driven-style-expressions-web-sdk.md)
--   [Symboloptionen der Symbolebene](/javascript/api/azure-maps-control/atlas.iconoptions)
--   [Textoption der Symbolebene](/javascript/api/azure-maps-control/atlas.textoptions)
--   [HTML-Markerklasse](/javascript/api/azure-maps-control/atlas.htmlmarker)
--   [HTML-Markeroptionen](/javascript/api/azure-maps-control/atlas.htmlmarkeroptions)
+* [Erstellen einer Datenquelle](./create-data-source-web-sdk.md)
+* [Hinzufügen einer Symbolebene](./map-add-pin.md)
+* [Hinzufügen von HTML-Markern](./map-add-custom-html.md)
+* [Verwenden von datengesteuerten Formatvorlagenausdrücken](./data-driven-style-expressions-web-sdk.md)
+* [Symboloptionen der Symbolebene](/javascript/api/azure-maps-control/atlas.iconoptions)
+* [Textoption der Symbolebene](/javascript/api/azure-maps-control/atlas.textoptions)
+* [HTML-Markerklasse](/javascript/api/azure-maps-control/atlas.htmlmarker)
+* [HTML-Markeroptionen](/javascript/api/azure-maps-control/atlas.htmlmarkeroptions)
 
 ### <a name="adding-a-polyline"></a>Hinzufügen einer Polylinie
 
@@ -655,9 +656,9 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
 
 **Weitere Ressourcen**
 
--   [Hinzufügen von Linien zur Karte](./map-add-line-layer.md)
--   [Linienebenenoptionen](/javascript/api/azure-maps-control/atlas.linelayeroptions)
--   [Verwenden von datengesteuerten Formatvorlagenausdrücken](./data-driven-style-expressions-web-sdk.md)
+* [Hinzufügen von Linien zur Karte](./map-add-line-layer.md)
+* [Linienebenenoptionen](/javascript/api/azure-maps-control/atlas.linelayeroptions)
+* [Verwenden von datengesteuerten Formatvorlagenausdrücken](./data-driven-style-expressions-web-sdk.md)
 
 ### <a name="adding-a-polygon"></a>Hinzufügen eines Polygons
 
@@ -727,11 +728,11 @@ map.layers.add(new atlas.layer.LineLayer(datasource, null, {
 
 **Weitere Ressourcen**
 
--   [Hinzufügen eines Polygons zur Karte](./map-add-shape.md#use-a-polygon-layer)
--   [Hinzufügen eines Kreises zur Karte](./map-add-shape.md#add-a-circle-to-the-map)
--   [Polygonebenenoptionen](/javascript/api/azure-maps-control/atlas.polygonlayeroptions)
--   [Linienebenenoptionen](/javascript/api/azure-maps-control/atlas.linelayeroptions)
--   [Verwenden von datengesteuerten Formatvorlagenausdrücken](./data-driven-style-expressions-web-sdk.md)
+* [Hinzufügen eines Polygons zur Karte](./map-add-shape.md#use-a-polygon-layer)
+* [Hinzufügen eines Kreises zur Karte](./map-add-shape.md#add-a-circle-to-the-map)
+* [Polygonebenenoptionen](/javascript/api/azure-maps-control/atlas.polygonlayeroptions)
+* [Linienebenenoptionen](/javascript/api/azure-maps-control/atlas.linelayeroptions)
+* [Verwenden von datengesteuerten Formatvorlagenausdrücken](./data-driven-style-expressions-web-sdk.md)
 
 ### <a name="display-an-infobox"></a>Anzeigen eines Infofensters
 
@@ -799,12 +800,12 @@ map.events.add('click', marker, function () {
 
 **Weitere Ressourcen**
 
--   [Hinzufügen eines Popups](./map-add-popup.md)
--   [Popup mit Medieninhalt](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Popup%20with%20Media%20Content)
--   [Popups für Formen](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Popups%20on%20Shapes)
--   [Wiederverwenden eines Popups für mehrere Ortsmarken](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Reusing%20Popup%20with%20Multiple%20Pins)
--   [Popup-Klasse](/javascript/api/azure-maps-control/atlas.popup)
--   [Popupoptionen](/javascript/api/azure-maps-control/atlas.popupoptions)
+* [Hinzufügen eines Popups](./map-add-popup.md)
+* [Popup mit Medieninhalt](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Popup%20with%20Media%20Content)
+* [Popups für Formen](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Popups%20on%20Shapes)
+* [Wiederverwenden eines Popups für mehrere Ortsmarken](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Reusing%20Popup%20with%20Multiple%20Pins)
+* [Popup-Klasse](/javascript/api/azure-maps-control/atlas.popup)
+* [Popupoptionen](/javascript/api/azure-maps-control/atlas.popupoptions)
 
 ### <a name="pushpin-clustering"></a>Ortsmarken-Gruppierung
 
@@ -1026,10 +1027,10 @@ GeoJSON-Daten können mithilfe der `importDataFromUrl`-Funktion der `DataSource`
 
 **Weitere Ressourcen**
 
--   [Hinzufügen einer Symbolebene](./map-add-pin.md)
--   [Hinzufügen einer Blasenebene](./map-add-bubble-layer.md)
--   [Clusterpunktdaten](./clustering-point-data-web-sdk.md)
--   [Verwenden von datengesteuerten Formatvorlagenausdrücken](./data-driven-style-expressions-web-sdk.md)
+* [Hinzufügen einer Symbolebene](./map-add-pin.md)
+* [Hinzufügen einer Blasenebene](./map-add-bubble-layer.md)
+* [Clusterpunktdaten](./clustering-point-data-web-sdk.md)
+* [Verwenden von datengesteuerten Formatvorlagenausdrücken](./data-driven-style-expressions-web-sdk.md)
 
 ### <a name="add-a-heat-map"></a>Hinzufügen eines Wärmebilds
 
@@ -1154,10 +1155,10 @@ Laden Sie in Azure Maps die GeoJSON-Daten in eine Datenquelle, und verbinden Sie
 
 **Weitere Ressourcen**
 
--   [Hinzufügen einer Wärmebildebene](./map-add-heat-map-layer.md)
--   [Wärmebildebenen-Klasse](/javascript/api/azure-maps-control/atlas.layer.heatmaplayer)
--   [Optionen für Wärmebildebenen](/javascript/api/azure-maps-control/atlas.heatmaplayeroptions)
--   [Verwenden von datengesteuerten Formatvorlagenausdrücken](./data-driven-style-expressions-web-sdk.md)
+* [Hinzufügen einer Wärmebildebene](./map-add-heat-map-layer.md)
+* [Wärmebildebenen-Klasse](/javascript/api/azure-maps-control/atlas.layer.heatmaplayer)
+* [Optionen für Wärmebildebenen](/javascript/api/azure-maps-control/atlas.heatmaplayeroptions)
+* [Verwenden von datengesteuerten Formatvorlagenausdrücken](./data-driven-style-expressions-web-sdk.md)
 
 ### <a name="overlay-a-tile-layer"></a>Überlagern einer Kachelebene
 
@@ -1205,9 +1206,9 @@ map.layers.add(new atlas.layer.TileLayer({
 
 **Weitere Ressourcen**
 
--   [Hinzufügen von Kachelebenen](./map-add-tile-layer.md)
--   [Kachelebenenklasse](/javascript/api/azure-maps-control/atlas.layer.tilelayer)
--   [Kachelebenenoptionen](/javascript/api/azure-maps-control/atlas.tilelayeroptions)
+* [Hinzufügen von Kachelebenen](./map-add-tile-layer.md)
+* [Kachelebenenklasse](/javascript/api/azure-maps-control/atlas.layer.tilelayer)
+* [Kachelebenenoptionen](/javascript/api/azure-maps-control/atlas.tilelayeroptions)
 
 ### <a name="show-traffic-data"></a>Anzeigen von Datenverkehrsdaten
 
@@ -1245,9 +1246,9 @@ Wenn Sie in Azure Maps auf eins der Verkehrssymbole klicken, werden zusätzliche
 
 **Weitere Ressourcen**
 
--   [Anzeigen von Datenverkehr auf einer Karte](./map-show-traffic.md)
--   [Optionen für Verkehrsdatenüberlagerungen](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Traffic%20Overlay%20Options)
--   [Traffic control (Verkehrsinfo-Steuerelement)](https://azuremapscodesamples.azurewebsites.net/?sample=Traffic%20controls)
+* [Anzeigen von Datenverkehr auf einer Karte](./map-show-traffic.md)
+* [Optionen für Verkehrsdatenüberlagerungen](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Traffic%20Overlay%20Options)
+* [Traffic control (Verkehrsinfo-Steuerelement)](https://azuremapscodesamples.azurewebsites.net/?sample=Traffic%20controls)
 
 ### <a name="add-a-ground-overlay"></a>Hinzufügen einer Bodenüberlagerung
 
@@ -1361,8 +1362,8 @@ In Azure Maps können georeferzierte Bilder mithilfe der `atlas.layer.ImageLayer
 
 **Weitere Ressourcen**
 
--   [Überlagern eines Bilds](./map-add-image-layer.md)
--   [Bildebenenklasse](/javascript/api/azure-maps-control/atlas.layer.imagelayer)
+* [Überlagern eines Bilds](./map-add-image-layer.md)
+* [Bildebenenklasse](/javascript/api/azure-maps-control/atlas.layer.imagelayer)
 
 ### <a name="add-kml-data-to-the-map"></a>Hinzufügen von KML-Daten zur Karte
 
@@ -1517,9 +1518,9 @@ In Azure Maps ist GeoJSON das Hauptdatenformat, das im Web-SDK genutzt wird. Zus
 
 **Weitere Ressourcen**
 
--   [Funktion „atlas.io.read“](/javascript/api/azure-maps-spatial-io/atlas.io#read-string---arraybuffer---blob--spatialdatareadoptions-)
--   [SimpleDataLayer](/javascript/api/azure-maps-spatial-io/atlas.layer.simpledatalayer)
--   [SimpleDataLayerOptions](/javascript/api/azure-maps-spatial-io/atlas.simpledatalayeroptions)
+* [Funktion „atlas.io.read“](/javascript/api/azure-maps-spatial-io/atlas.io#read-string---arraybuffer---blob--spatialdatareadoptions-)
+* [SimpleDataLayer](/javascript/api/azure-maps-spatial-io/atlas.layer.simpledatalayer)
+* [SimpleDataLayerOptions](/javascript/api/azure-maps-spatial-io/atlas.simpledatalayeroptions)
 
 ### <a name="add-drawing-tools"></a>Hinzufügen von Zeichentools
 
@@ -1632,8 +1633,8 @@ In Azure Maps müssen die Zeichentools durch Laden der JavaScript- und CSS-Datei
 
 **Weitere Ressourcen**
 
--   [Dokumentation](./set-drawing-options.md)
--   [Codebeispiele](https://azuremapscodesamples.azurewebsites.net/#Drawing-Tools-Module)
+* [Dokumentation](./set-drawing-options.md)
+* [Codebeispiele](https://azuremapscodesamples.azurewebsites.net/#Drawing-Tools-Module)
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

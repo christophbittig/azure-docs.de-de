@@ -3,7 +3,7 @@ title: Benutzerdefinierte Berichte aus Verizon | Microsoft-Dokumentation
 description: 'Mithilfe der folgenden Berichte können Sie Verwendungsmuster für Ihr CDN anzeigen: Bandbreite, Übertragene Daten, Treffer, Cachestatus, Cachetrefferquote, Übertragene IPV4/IPV6-Daten.'
 services: cdn
 documentationcenter: ''
-author: asudbring
+author: duongau
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.date: 10/11/2017
-ms.author: allensu
-ms.openlocfilehash: cff355aeb74efc9dec2780840ae57fea4c5764cc
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: duau
+ms.openlocfilehash: f461e310b44063035e2e21e4dbeb8dd340ea053b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84888707"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131434786"
 ---
 # <a name="custom-reports-from-verizon"></a>Benutzerdefinierte Berichte aus Verizon
 

@@ -6,14 +6,14 @@ author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 10/28/2021
+ms.date: 10/8/2021
 ms.author: pafarley
-ms.openlocfilehash: 4673d15b9e64e8e4bb54a71f9d2383da78080380
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: fa9a1391b6f222156c94a829586309220838ea89
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131434444"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131058348"
 ---
 # <a name="azure-cognitive-services-support-and-help-options"></a>Support- und Hilfeoptionen für Azure Cognitive Services
 
@@ -22,7 +22,7 @@ Machen Sie sich gerade erst mit den Funktionen von Azure Cognitive Services vert
 ## <a name="create-an-azure-support-request"></a>Erstellen einer Azure-Supportanfrage
 
 <div class='icon is-large'>
-    <img alt='Azure support' src='/media/logos/logo_azure.svg'>
+    <img alt='Azure support' src='https://docs.microsoft.com/media/logos/logo_azure.svg'>
 </div>
 
 Erkunden Sie die verschiedenen [Azure-Supportoptionen, und wählen Sie den Plan aus](https://azure.microsoft.com/support/plans), der am besten zu Ihren Anforderungen passt – unabhängig davon, ob Sie als Entwickler gerade erst damit beginnen, sich mit der Cloud zu beschäftigen, oder ob Sie in einer großen Organisation für die Bereitstellung geschäftskritischer, strategischer Anwendungen zuständig sind. Azure-Kunden können Supportanfragen im Azure-Portal erstellen und verwalten.
@@ -52,7 +52,7 @@ Wenn Sie über die Suche keine Lösung für Ihr Problem finden können, übermit
 * [Plastischer Reader](/answers/topics/azure-immersive-reader.html)
 * [Language Understanding (LUIS)](/answers/topics/azure-language-understanding.html)
 * [QnA Maker](/answers/topics/azure-qna-maker.html)
-* [Sprachdienst](/answers/topics/azure-text-analytics.html)
+* [Textanalyse](/answers/topics/azure-text-analytics.html)
 * [Translator](/answers/topics/azure-translator.html)
 
 **Speech**
@@ -70,7 +70,7 @@ Wenn Sie über die Suche keine Lösung für Ihr Problem finden können, übermit
 ## <a name="post-a-question-to-stack-overflow"></a>Richten einer Frage an Stack Overflow
 
 <div class='icon is-large'>
-    <img alt='Stack Overflow' src='/media/logos/logo_stackoverflow.svg'>
+    <img alt='Stack Overflow' src='https://docs.microsoft.com/media/logos/logo_stackoverflow.svg'>
 </div>
 
 Stellen Sie Entwicklerfragen auf Stack Overflow, um Antworten aus dem umfangreichsten Ökosystem für Community-Entwickler zu erhalten.
@@ -92,7 +92,7 @@ Verwenden Sie beim Übermitteln einer neuen Frage an Stack Overflow bei der Erst
 * [Plastischer Reader](https://stackoverflow.com/search?q=azure+immersive+reader)
 * [Language Understanding (LUIS)](https://stackoverflow.com/search?q=azure+luis+language+understanding)
 * [QnA Maker](https://stackoverflow.com/search?q=azure+qna+maker)
-* [Sprachdienst](https://stackoverflow.com/search?q=azure+text+analytics)
+* [Textanalyse](https://stackoverflow.com/search?q=azure+text+analytics)
 * [Translator](https://stackoverflow.com/search?q=azure+translator+text)
 
 **Speech**
@@ -126,7 +126,7 @@ Um neue Features anzufordern, veröffentlichen Sie sie auf https://feedback.azur
 * [Plastischer Reader](https://feedback.azure.com/d365community/forum/09041fae-0b25-ec11-b6e6-000d3a4f0858?c=449a6fba-0b25-ec11-b6e6-000d3a4f0858)
 * [Language Understanding (LUIS)](https://feedback.azure.com/d365community/forum/09041fae-0b25-ec11-b6e6-000d3a4f0858?c=449a6fba-0b25-ec11-b6e6-000d3a4f0858)
 * [QnA Maker](https://feedback.azure.com/d365community/forum/09041fae-0b25-ec11-b6e6-000d3a4f0858?c=449a6fba-0b25-ec11-b6e6-000d3a4f0858)
-* [Sprachdienst](https://feedback.azure.com/d365community/forum/09041fae-0b25-ec11-b6e6-000d3a4f0858?c=449a6fba-0b25-ec11-b6e6-000d3a4f0858)
+* [Textanalyse](https://feedback.azure.com/d365community/forum/09041fae-0b25-ec11-b6e6-000d3a4f0858?c=449a6fba-0b25-ec11-b6e6-000d3a4f0858)
 * [Translator](https://feedback.azure.com/d365community/forum/09041fae-0b25-ec11-b6e6-000d3a4f0858?c=449a6fba-0b25-ec11-b6e6-000d3a4f0858)
 
 **Speech**

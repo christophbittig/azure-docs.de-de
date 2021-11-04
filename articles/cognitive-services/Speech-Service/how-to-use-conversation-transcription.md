@@ -3,21 +3,21 @@ title: 'Schnellstart: Unterhaltungstranskription in Echtzeit: Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie die Unterhaltungstranskription in Echtzeit mit dem Speech SDK verwenden. Die Unterhaltungstranskription ermöglicht Ihnen das Transkribieren von Besprechungen und anderen Unterhaltungen mit der Möglichkeit, mehrere Teilnehmer hinzuzufügen, zu entfernen und zu bestimmen, indem Sie Audiodatenströme an den Speech-Dienste streamen.
 services: cognitive-services
-author: PatrickFarley
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/20/2020
-ms.author: pafarley
+ms.author: eur
 zone_pivot_groups: acs-js-csharp
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: a30065bf58b2afa9d6e8411c3844071596ebc823
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 00cfb66da3b3e233e703e74b039be9d6a7d02c4b
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131086809"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131508924"
 ---
 # <a name="get-started-with-real-time-conversation-transcription"></a>Erste Schritte mit der Unterhaltungstranskription in Echtzeit
 

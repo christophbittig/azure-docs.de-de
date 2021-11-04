@@ -3,7 +3,7 @@ title: Azure CDN-POP-Standorte nach Abkürzung | Microsoft-Dokumentation
 description: In diesem Artikel werden die Azure CDN-POP-Standorte nach POP-Abkürzung sortiert für Azure CDN aus Verizon aufgelistet.
 services: cdn
 documentationcenter: ''
-author: asudbring
+author: duongau
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2021
-ms.author: allensu
+ms.author: duau
 ms.custom: references_regions
-ms.openlocfilehash: 088d9b5b5067876d7ff284e6f27f696692847432
-ms.sourcegitcommit: 9ad20581c9fe2c35339acc34d74d0d9cb38eb9aa
+ms.openlocfilehash: f45214242968055ab045f2030919cb5d8fcc369b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/27/2021
-ms.locfileid: "110538185"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131450515"
 ---
 # <a name="azure-cdn-pop-locations-by-abbreviation"></a>Azure CDN-POP-Standorte nach Abkürzung
 > [!div class="op_single_selector"]
 > * [POP-Standorte nach Region](cdn-pop-locations.md)
-> * [Microsoft POP-Standorte nach Abkürzung](microsoft-pop-abbreviations.md)
+> * [POP-Standorte von Microsoft nach Abkürzung](microsoft-pop-abbreviations.md)
 > * [Verizon POP-Standorte nach Abkürzung](cdn-pop-abbreviations.md)
 > 
 

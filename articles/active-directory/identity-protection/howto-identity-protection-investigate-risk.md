@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0151f4de30c3bf96fa8c0dca77c90282115c70d7
-ms.sourcegitcommit: 7854045df93e28949e79765a638ec86f83d28ebc
+ms.openlocfilehash: b15ccb564fe2c3551103e71b8c1ca2a901ec03e0
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122864371"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131440755"
 ---
 # <a name="how-to-investigate-risk"></a>Anleitung: Untersuchen eines Risikos
 
@@ -93,7 +93,6 @@ Administratoren können dann zum Risiko- oder Anmeldebericht des Benutzers zurü
 
 > [!NOTE] 
 > Unser System erkennt möglicherweise, dass das Risikoereignis, das zur Risikobewertung „Risikobenutzer“ beigetragen hat, falsch positiv war oder das Benutzerrisiko durch die Richtliniendurchsetzung behoben wurde, wie z. B. das Abschließen einer MFA-Eingabeaufforderung oder die Änderung in ein sicheres Kennwort. Aus diesem Grund wird der Risikostatus von unserem System verworfen, und es wird ein Risikodetail angezeigt, dass die KI die Anmeldung als sicher bestätigt, sodass dies nicht mehr zum Risiko des Benutzers beiträgt. 
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

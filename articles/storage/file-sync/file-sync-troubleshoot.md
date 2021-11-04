@@ -4,16 +4,16 @@ description: Beheben von häufigen Problemen in einer Bereitstellung in der Azur
 author: jeffpatt24
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 8/24/2021
+ms.date: 11/2/2021
 ms.author: jeffpatt
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0ba4fe4968a54be0ee9f19e2df6db242c149a7ee
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: 3069ffa1fc7e32d2ac683ecbc90f14f39625ddf4
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129080562"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131424815"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problembehandlung für Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -506,6 +506,9 @@ Dieser Fehler tritt auf, weil der Azure-Dateisynchronisierungs-Agent nicht berec
     ```
 2. [Überprüfen Sie, ob das Speicherkonto vorhanden ist.](#troubleshoot-storage-account)
 3. [Überprüfen Sie, ob die Einstellungen für die Firewall und das virtuelle Netzwerk im Speicherkonto ordnungsgemäß konfiguriert sind (sofern aktiviert).](file-sync-deployment-guide.md?tabs=azure-portal#configure-firewall-and-virtual-network-settings)
+
+> [!Note]  
+> Nachdem die Netzwerkkonnektivität mit dem Azure File Sync-Dienst wiederhergestellt wurde, wird die Synchronisierung möglicherweise nicht sofort fortgesetzt. Standardmäßig initiiert Azure File Sync alle 30 Minuten eine Synchronisierungssitzung, wenn am Standort des Serverendpunkts keine Änderungen erkannt werden. Um eine Synchronisierungssitzung zu erzwingen, starten Sie entweder den Dienst Storage Sync Agent (FileSyncSvc) neu, oder nehmen Sie eine Änderung an einer Datei oder an einem Verzeichnis am Standort des Serverendpunkts vor.
 
 <a id="-2134364022"></a><a id="storage-unknown-error"></a>**Unbekannter Fehler beim Zugriff auf das Speicherkonto.**  
 

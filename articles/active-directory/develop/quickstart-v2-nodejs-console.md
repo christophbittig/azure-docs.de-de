@@ -3,19 +3,19 @@ title: 'Schnellstart: Aufrufen von Microsoft Graph über eine Node.js-Konsolen-A
 titleSuffix: Microsoft identity platform
 description: In dieser Schnellstartanleitung laden Sie ein Codebeispiel herunter und führen es aus, das zeigt, wie eine Node.js-Konsolenanwendung unter Verwendung der App-eigenen Identität ein Zugriffstoken abrufen und eine API aufrufen kann, die durch einen Microsoft Identity Platform-Endpunkt geschützt ist.
 services: active-directory
-author: KarenH444
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.date: 02/17/2021
-ms.author: karenhoran
-ms.openlocfilehash: 84dcc9861bd7b7288e0feefbc32ce1bf820eef7f
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.author: marsma
+ms.openlocfilehash: 9a75435ca75e5d6638315f3c96716c091048694f
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130163821"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131502066"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-nodejs-console-app-using-apps-identity"></a>Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API über eine Node.js-Konsolen-App unter Verwendung der App-Identität
 

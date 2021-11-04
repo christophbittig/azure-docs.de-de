@@ -1,18 +1,18 @@
 ---
 title: Erstellen einer Azure HPC Cache-Instanz
 description: Hier erfahren Sie, wie Sie eine Azure HPC Cache-Instanz erstellen.
-author: ekpgh
+author: femila
 ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 07/15/2021
-ms.author: v-erkel
+ms.author: femila
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b7789af76572eeaa3dfdfe4c6ff379889341033e
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6f457dcf69b0f38173a3816ea1ac16c2cc7c5935
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128557458"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131015331"
 ---
 # <a name="create-an-azure-hpc-cache"></a>Erstellen einer Azure HPC Cache-Instanz
 
@@ -181,7 +181,7 @@ Geben Sie die folgenden Werte an:
   | 3\.072 GB    | ja         | Nein          | nein          |
   | 6144 GB    | ja         | Ja         | nein          |
   | 12288 GB   | ja         | Ja         | ja         |
-  | 24576 GB   | nein          | ja         | ja         |
+  | 24576 GB   | nein          | Ja         | ja         |
   | 49152 GB   | nein          | Nein          | ja         |
 
   Wenn Sie mehr als 10 Speicherziele mit Ihrem Cache verwenden möchten, wählen Sie den höchsten verfügbaren Wert für die Cachegröße für Ihre SKU aus. Diese Konfigurationen unterstützen bis zu 20 Speicherziele.
@@ -283,8 +283,8 @@ Geben Sie die folgenden Werte an:
   | Cachegröße | Standard_2G | Standard_4G | Standard_8G |
   |------------|-------------|-------------|-------------|
   | 3\.072 GB    | ja         | Nein          | nein          |
-  | 6144 GB    | ja         | ja         | nein          |
-  | 12.288 GB   | ja         | ja         | ja         |
+  | 6144 GB    | ja         | Ja         | nein          |
+  | 12.288 GB   | ja         | Ja         | ja         |
   | 24.576 GB   | nein          | Ja         | ja         |
   | 49.152 GB   | nein          | Nein          | ja         |
 

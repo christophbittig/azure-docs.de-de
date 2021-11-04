@@ -2,17 +2,17 @@
 title: Verwenden einer Regel-Engine zum Erzwingen von HTTPS in Azure CDN Standard | Microsoft-Dokumentation
 description: Verwenden Sie die Regel-Engine für Microsoft Azure CDN Standard (Content Delivery Network), um die Art und Weise anzupassen, wie Azure CDN HTTP-Anforderungen verarbeitet. Dazu gehören das Blockieren der Übermittlung bestimmter Inhaltstypen, das Definieren einer Cacherichtlinie und das Ändern von HTTP-Headern. In diesem Artikel erfahren Sie, wie Sie eine Regel erstellen, um Benutzer an HTTPS umzuleiten.
 services: cdn
-author: asudbring
+author: duongau
 ms.service: azure-cdn
 ms.topic: how-to
 ms.date: 11/01/2019
-ms.author: allensu
-ms.openlocfilehash: b94798580b2d4ba746c152486c0de753cf64d2c9
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.author: duau
+ms.openlocfilehash: 7e3215c82acf476d84c58a6c6fb2bc4eeac13d99
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102564899"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131426428"
 ---
 # <a name="set-up-the-standard-rules-engine-for-azure-cdn"></a>Einrichten der Standardregel-Engine für Azure CDN
 

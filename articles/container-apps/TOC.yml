@@ -45,11 +45,13 @@
       href: background-processing.md
 - name: Verweis
   items:
+    - name: Azure-Befehlszeilenschnittstelle
+      href: /cli/azure/containerapps
     - name: ARM-API-Spezifikation
       href: azure-resource-manager-api-spec.md
 - name: Ressourcen
   items:
     - name: Preise
-      href: 'https://azure.microsoft.com/pricing/details/container-apps/'
+      href: 'https://azure.microsoft.com/pricing/details/app-service/static/'
     - name: Kontingente
       href: quotas.md

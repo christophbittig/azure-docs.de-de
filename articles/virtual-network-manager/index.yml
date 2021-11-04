@@ -1,0 +1,69 @@
+### YamlMime:Landing
+title: Dokumentation zu Azure Virtual Network Manager
+summary: Hier erfahren Sie, wie Sie Azure Virtual Network Manager verwenden können, um das dynamische Routing zwischen Ihren virtuellen Netzwerkgeräten und Ihrem virtuellen Netzwerk zu vereinfachen.
+metadata:
+  title: Dokumentation zu Azure Virtual Network Manager
+  description: Informationen zu Azure Virtual Network Manager
+  services: virtual-network-manager
+  ms.service: virtual-network-manager
+  ms.topic: landing-page
+  author: duongau
+  ms.author: duau
+  ms.date: 11/02/2021
+  ms.openlocfilehash: 7b61df1521d2e80ff4c4e4847f54eff84669e4e6
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131088404"
+landingContent:
+- title: Informationen zu Azure Virtual Network Manager
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist Azure Virtual Network Manager?
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Häufig gestellte Fragen
+      url: faq.md
+- title: Erste Schritte
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: '`Scope`'
+      url: concept-network-manager-scope.md
+    - text: Netzwerkgruppen
+      url: concept-network-groups.md
+    - text: Bereitstellung
+      url: concept-deployments.md
+  - linkListType: quickstart
+    links:
+    - text: 'Erstellen und Konfigurieren einer Virtual Network Manager-Instanz: Portal'
+      url: create-virtual-network-manager-portal.md
+    - text: 'Erstellen und Konfigurieren einer Virtual Network Manager-Instanz: PowerShell'
+      url: create-virtual-network-manager-powershell.md
+  - linkListType: tutorial
+    links:
+    - text: Erstellen eines geschützten Hub-and-Spoke-Netzwerks
+      url: tutorial-create-secured-hub-and-spoke.md
+- title: Verbindung
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Konfiguration der Konnektivität
+      url: concept-connectivity-configuration.md
+  - linkListType: how-to-guide
+    links:
+    - text: Erstellen einer Hub-and-Spoke-Topologie
+      url: how-to-create-hub-and-spoke.md
+- title: Sicherheit
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Konfiguration des Sicherheitsadministrators
+      url: concept-security-admins.md
+  - linkListType: how-to-guide
+    links:
+    - text: Blockieren von Netzwerkdatenverkehr mit Sicherheitsadministratorregeln
+      url: how-to-block-network-traffic-portal.md

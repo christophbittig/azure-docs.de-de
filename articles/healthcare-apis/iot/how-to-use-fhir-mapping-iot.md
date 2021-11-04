@@ -5,23 +5,26 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: conceptual
-ms.date: 10/12/2021
+ms.date: 10/26/2021
 ms.author: jasteppe
-ms.openlocfilehash: b04d746553a36eb05a7e9cc6a346ed27d6c46308
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: dec9cd45fd4f581a4a041dba090c53fd4ecd8233
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129992959"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131068530"
 ---
-# <a name="how-to-use-the-fhir-destination-mapping"></a>Verwenden der FHIR-Zielzuordnung
+# <a name="how-to-use-the-fhir-destination-mappings"></a>Verwenden der FHIR-Zielzuordnungen
 
 > [!IMPORTANT]
 > Azure Healthcare-APIs befinden sich derzeit in der VORSCHAU. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen für Azure-Features, die sich in der Beta- oder Vorschauphase befinden oder anderweitig noch nicht allgemein verfügbar sind.
 
 In diesem Artikel wird beschrieben, wie Sie den IoT-Connector mithilfe der Zielzuordnung Fast Healthcare Interoperability Resources (FHIR&#174;) konfigurieren.
 
-## <a name="fhir-destination-mapping"></a>FHIR-Zielzuordnung
+> [!TIP]
+> Sehen Sie sich das [Tool IoMT Connector Data Mapper](https://github.com/microsoft/iomt-fhir/tree/master/tools/data-mapper) zum Bearbeiten, Testen und Beheben von Problemen mit Geräte- und FHIR-Zielzuordnungen für IoT-Connectors an. Exportieren Sie Zuordnungen zum Hochladen in den IoT-Connector im Azure-Portal oder verwenden Sie sie mit der [Open-Source-Version](https://github.com/microsoft/iomt-fhir) des IoT-Connectors.
+
+## <a name="fhir-destination-mappings"></a>FHIR-Zielzuordnungen
 
 Nachdem der Geräteinhalt in ein normalisiertes Modell extrahiert wurde, werden die Daten dem Gerätebezeichner, dem Messtyp und dem Zeitraum entsprechend gesammelt und gruppiert. Die Ausgabe dieser Gruppierung wird zwecks Konvertierung in eine FHIR-Ressource (derzeit [Observation](https://www.hl7.org/fhir/observation.html)) gesendet. Die FHIR-Zielzuordnungsvorlage steuert, wie die Daten einer FHIR-Beobachtung zugeordnet werden. Sollte eine Observation-Ressource für einen bestimmten Zeitpunkt oder über einen Zeitraum von einer Stunde erstellt werden? Welche Codes sollen der Ressource hinzugefügt werden? Soll der Wert als [SampledData](https://www.hl7.org/fhir/datatypes.html#SampledData) oder [Quantity](https://www.hl7.org/fhir/datatypes.html#Quantity) dargestellt werden? Diese Datentypen sind alle Optionen, die von den Konfigurationssteuerelementen für die FHIR-Zielzuordnung verwendet werden.
 
@@ -264,6 +267,6 @@ Stellt den FHIR-Datentyp [CodeableConcept](http://hl7.org/fhir/datatypes.html#Co
 ## <a name="next-steps"></a>Nächste Schritte
 
 >[!div class="nextstepaction"]
->[Verwenden der Gerätezuordnung](how-to-use-device-mapping-iot.md)
+>[Verwenden von Gerätezuordnungen](how-to-use-device-mapping-iot.md)
 
 (FHIR&#174;) ist eine registrierte Marke von [HL7](https://hl7.org/fhir/) und wird mit der Berechtigung von HL7 verwendet.

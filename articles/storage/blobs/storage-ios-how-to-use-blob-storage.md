@@ -7,12 +7,12 @@ ms.date: 11/20/2018
 ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
-ms.openlocfilehash: 999b9d5b700dc807255b695b3254cf11e7d37f80
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 03375a954155aff94d581f04ccde109b6559acb2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128603959"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131444855"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>Verwenden des Blobspeichers mit iOS
 
@@ -395,4 +395,4 @@ Da Sie jetzt die Verwendung von Blobspeicher in iOS kennen, folgen Sie diesen Li
 - [Azure Storage-Teamblog](/archive/blogs/windowsazurestorage/)
 
 Wenn Sie Fragen zu dieser Bibliothek haben, können Sie diese auf unserer [Frageseite von Microsoft Q&A (Fragen und Antworten)](/answers/topics/azure-blob-storage.html) oder auf [Stack Overflow](https://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files) stellen.
-Richten Sie Vorschläge für Azure Storage-Features an [Feedback zu Azure Storage](https://feedback.azure.com/forums/217298-storage/).
+Richten Sie Vorschläge für Azure Storage-Features an [Feedback zu Azure Storage](https://feedback.azure.com/d365community/forum/a8bb4a47-3525-ec11-b6e6-000d3a4f0f84).

@@ -5,17 +5,20 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: fc5de9ff694c1c5a3841c206334fb87d240a568c
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 973a1d100fb8182565628aab8cef66364e57a378
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110378769"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131038801"
 ---
 # <a name="manage-qna-maker-app"></a>Verwalten der QnA Maker-App
 
 QnA Maker ermöglicht Ihnen die Zusammenarbeit mit verschiedenen Autoren und Inhalts-Editoren, indem es die Möglichkeit bietet, den Zugriff von Mitarbeitern je nach ihrer Rolle einzuschränken.
 Erfahren Sie mehr über [QnA Maker-Konzepte zur Authentifizierung von Projektmitarbeitern](../Concepts/role-based-access-control.md).
+
+[!INCLUDE [Custom question answering](../includes/new-version.md)]
 
 ## <a name="add-azure-role-based-access-control-azure-rbac"></a>Hinzufügen der rollenbasierten Zugriffssteuerung in Azure (Azure RBAC)
 
@@ -23,29 +26,13 @@ Mit QnA Maker können mehrere Personen an allen Wissensdatenbanken in derselben 
 
 ## <a name="access-at-the-cognitive-resource-level"></a>Zugriff auf der Ebene der Cognitive Search-Ressource
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
-
 In einem QnA Maker-Dienst kann keine bestimmte Wissensdatenbank freigegeben werden. Sollten Sie eine differenzierte Zugriffssteuerung benötigen, verteilen Sie Ihre Wissensdatenbanken ggf. auf verschiedene QnA Maker-Ressourcen, und fügen Sie ihnen jeweils Rollen hinzu.
-
-# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
-
-In einem Textanalyse-Dienst kann keine bestimmte Wissensdatenbank freigegeben werden. Wenn Sie eine differenzierte Zugriffssteuerung benötigen, verteilen Sie Ihre Wissensdatenbanken ggf. auf verschiedene Textanalyse-Ressourcen, und fügen Sie ihnen jeweils Rollen hinzu.
-
----
 
 ## <a name="add-a-role-to-a-resource"></a>Hinzufügen einer Rolle zu einer Ressource
 
 ### <a name="add-a-user-account-to-the-cognitive-resource"></a>Hinzufügen eines Benutzerkontos zur Cognitive Search-Ressource
 
-# <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
-
 Sie sollten der QnA Maker-Ressource RBAC-Steuerelemente zuordnen.
-
-# <a name="custom-question-answering-preview-release"></a>[Benutzerdefinierte Fragen und Antworten (Vorschau-Release)](#tab/v2)
-
-Sie sollten der Textanalyse-Ressource RBAC-Steuerelemente mit „Benutzerdefinierte Fragen und Antworten“ als Feature hinzufügen.
-
----
 
 In den folgenden Schritten wird zwar die Rolle „Projektmitarbeiter“ verwendet, mit den gezeigten Schritten können jedoch auch andere Rollen hinzugefügt werden.
 

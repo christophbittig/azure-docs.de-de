@@ -3,22 +3,22 @@ title: Schnellstart für die Sprachsynthese – Speech-Dienst
 titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie Sie das Speech SDK verwenden, um Text in Sprache zu konvertieren. In dieser Schnellstartanleitung werden die Objektkonstruktion und Entwurfsmuster, die unterstützten Formate für die Audioausgabe, die Speech-CLI und die benutzerdefinierten Konfigurationsoptionen für die Sprachsynthese beschrieben.
 services: cognitive-services
-author: PatrickFarley
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 05/17/2021
-ms.author: pafarley
+ms.author: eur
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-set-twenty-four
 keywords: Sprachsynthese
-ms.openlocfilehash: 20b0bc23fb68eec97b4470004a91b903d449b8c1
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 36fcad1845a654aff1e195e23bddb8090add6719
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123539327"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131510801"
 ---
 # <a name="get-started-with-text-to-speech"></a>Erste Schritte bei der Sprachsynthese
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/09/2021
 ms.author: jeedes
-ms.openlocfilehash: 3784c7b022a807c86805187fbdffb61167970443
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 34d5d0f7daabce877b025c81e9268119e1d3e1e2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128679053"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131459195"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-topdesk---secure"></a>Tutorial: Azure AD-SSO-Integration in TOPdesk - Secure
 
@@ -87,7 +87,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei TOPdesk 
     c. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<companyname>.topdesk.net`
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte mit dem tatsächlichen Bezeichner, der Antwort-URL und Anmelde-URL aktualisieren. Wenden Sie sich an das [Supportteam für den TOPdesk - Secure-Client](https://www.topdesk.com/us/support/), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte mit dem tatsächlichen Bezeichner, der Antwort-URL und Anmelde-URL aktualisieren. Wenden Sie sich an das [Supportteam für den TOPdesk - Secure-Client](https://www.topdesk.com/en/services/support/), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um den Ihren Anforderungen entsprechenden **Verbundmetadaten-XML**-Code aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
@@ -173,7 +173,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     b. Zum Hochladen der Zertifikatsdatei klicken Sie unter **Zertifikat (RSA)** auf **Durchsuchen**.
 
-    c. Für **Privater Schlüssel (RSA, PKCS8, DER)** können Sie Ihren eigenen privaten Schlüssel hochladen oder sich an das [Supportteam für den TOPdesk - Secure-Client](https://www.topdesk.com/us/support) wenden, um den privaten Schlüssel zu erhalten.
+    c. Für **Privater Schlüssel (RSA, PKCS8, DER)** können Sie Ihren eigenen privaten Schlüssel hochladen oder sich an das [Supportteam für den TOPdesk - Secure-Client](https://www.topdesk.com/en/services/support/) wenden, um den privaten Schlüssel zu erhalten.
 
     d. Wenn Sie die Logodatei hochladen möchten, die Sie vom TOPdesk-Supportteam erhalten haben, klicken Sie unter **Logo-Symbol** auf **Durchsuchen**.
 

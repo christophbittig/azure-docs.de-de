@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 06/09/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 79ab5722967c984907b61b1fc3e5a17bac6115fb
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 0017344d745b29162aa36a492c31c1c48e6dd4d6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130073884"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131466521"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA: Speicherkonfigurationen für virtuelle Azure-Computer
 
@@ -263,7 +263,7 @@ Ein weiterer Vorteil von Disk Ultra kann auch die bessere Leselatenz im Vergleic
 > Ultra-Datenträger sind noch nicht in allen Azure-Regionen vorhanden und unterstützen noch nicht alle unten aufgeführten VM-Typen. Ausführliche Informationen dazu, wo Ultra-Datenträger verfügbar sind und welche VM-Familien unterstützt werden, finden Sie im Artikel [Welche Datenträgertypen stehen in Azure zur Verfügung?](../../disks-types.md#ultra-disks).
 
 ### <a name="production-recommended-storage-solution-with-pure-ultra-disk-configuration"></a>Für die Produktion empfohlene Speicherlösung mit reiner Ultra-Datenträgerkonfiguration
-Bei dieser Konfiguration bleiben die Volumes **/hana/data** und **/hana/log** getrennt. Die vorgeschlagenen Werte werden von den KPIs abgeleitet, die von SAP zur Zertifizierung von VM-Typen für SAP HANA und Speicherkonfigurationen verwendet werden (gemäß Empfehlung im [SAP TDI Storage-Whitepaper](https://blogs.saphana.com/wp-content/uploads/2015/02/Storage-Whitepaper-2-54.pdf)).
+Bei dieser Konfiguration bleiben die Volumes **/hana/data** und **/hana/log** getrennt. Die vorgeschlagenen Werte werden von den KPIs abgeleitet, die von SAP zur Zertifizierung von VM-Typen für SAP HANA und Speicherkonfigurationen verwendet werden (gemäß Empfehlung im [SAP TDI Storage-Whitepaper](https://archive.sap.com/kmuuid2/70c8e423-c8aa-3210-3fae-e043f5c1ca92/SAP%20HANA%20TDI%20-%20Storage%20Requirements.pdf)).
 
 Bei den Empfehlungen werden die Mindestanforderungen für SAP häufig überschritten, wie bereits in diesem Artikel erwähnt. Bei den aufgeführten Empfehlungen handelt es sich um einen Kompromiss zwischen den Größenempfehlungen von SAP und dem maximalen Speicherdurchsatz, der von den unterschiedlichen VM-Typen bereitgestellt wird.
 

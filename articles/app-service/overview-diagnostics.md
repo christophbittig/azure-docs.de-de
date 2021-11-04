@@ -5,12 +5,12 @@ keywords: App Service, Azure App Service, Diagnose, Unterstützung, Web-App, Pro
 ms.topic: article
 ms.date: 10/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: cf044baf233c159ff271221522f0f9faf15cc1ed
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: e912e1794f789ff2b670f512c3d575e95715d0ae
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114451586"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131465837"
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Übersicht über die Azure App Service-Diagnose
 
@@ -111,4 +111,4 @@ In einem großen Team mit Continuous Integration und einer App mit vielen Abhän
 
 Die Änderungsanalyse für Anwendungsänderungen kann über Kachelverknüpfungen, **Anwendungsänderungen** und **Anwendungsabstürze** in **Verfügbarkeit und Leistung** aufgerufen werden, sodass Sie sie mit anderen Metriken gleichzeitig verwenden können. Bevor Sie dieses Feature verwenden können, müssen Sie es zuerst aktivieren. Weitere Informationen finden Sie unter [Announcing the new change analysis experience in App Service Diagnostics](https://azure.github.io/AppService/2019/05/07/Announcing-the-new-change-analysis-experience-in-App-Service-Diagnostics-Analysis.html) (Bekanntgabe der neuen Funktion zur Änderungsanalyse in der App Service-Diagnose).
 
-Posten Sie Ihre Fragen oder Ihr Feedback auf [UserVoice](https://feedback.azure.com/forums/169385-web-apps), indem Sie dem Titel „[Diag]“ hinzufügen.
+Posten Sie Ihre Fragen oder Ihr Feedback auf [UserVoice](https://feedback.azure.com/d365community/forum/b09330d1-c625-ec11-b6e6-000d3a4f0f1c), indem Sie dem Titel „[Diag]“ hinzufügen.

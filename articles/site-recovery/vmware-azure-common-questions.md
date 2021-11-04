@@ -3,12 +3,12 @@ title: Allgemeine Fragen zu VMware-Notfallwiederherstellung mit Azure Site Recov
 description: Hier erhalten Sie Antworten auf allgemeine Fragen zur Notfallwiederherstellung von lokalen virtuellen VMware-Computern in Azure mithilfe von Azure Site Recovery.
 ms.date: 11/14/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8480598cc872a051b6b81f928e92740e39353598
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 02e903c876a2e4cdec29006090ed8ddfbe9e4b45
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128621219"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131452602"
 ---
 # <a name="common-questions-about-vmware-to-azure-replication"></a>Allgemeine Fragen zur VMware-zu-Azure-Replikation
 
@@ -165,7 +165,7 @@ Beim Replizieren von VMware-VMs zu Azure ist die Replikation fortlaufend.
 
 ### <a name="can-i-extend-replication"></a>Kann ich die Replikation erweitern?
 
-Eine erweiterte oder verkettete Replikation wird nicht unterstützt. Fordern Sie dieses Feature im [Feedbackforum](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959).
+Eine erweiterte oder verkettete Replikation wird nicht unterstützt. Fordern Sie dieses Feature im [Feedbackforum](https://feedback.azure.com/d365community/forum/3ccca344-2d25-ec11-b6e6-000d3a4f0f84).
 
 ### <a name="how-can-i-track-progress-of-initial-replicationsynchronization"></a>Wie kann ich den Fortschritt der Erstreplikation/-synchronisierung verfolgen?
 
@@ -173,7 +173,7 @@ Diese Funktion ist seit kurzem in den Site Recovery-Diensten enthalten. Aktualis
 
 ### <a name="can-i-do-an-offline-initial-replication"></a>Kann ich eine erste Offlinereplikation durchführen?
 
-Offlinereplikation wird nicht unterstützt. Fordern Sie dieses Feature im [Feedbackforum](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from).
+Offlinereplikation wird nicht unterstützt. Fordern Sie dieses Feature im [Feedbackforum](https://feedback.azure.com/d365community/idea/7c09c396-2e25-ec11-b6e6-000d3a4f0f84).
 
 ### <a name="what-is-asrseeddisk"></a>Was ist asrseeddisk?
 

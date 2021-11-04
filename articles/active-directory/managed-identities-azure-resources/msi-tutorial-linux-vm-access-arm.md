@@ -16,12 +16,12 @@ ms.date: 12/01/2020
 ms.author: barclayn
 ROBOTS: NOINDEX,NOFOLLOW
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9c7555235283e892741234b74ddb80ce3a13051
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 8dd005cf460bcd2407a8dcd681701c8cacd408db
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107784711"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131058082"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-linux-vm-to-access-azure-resource-manager"></a>Tutorial: Zugreifen auf Azure Resource Manager mithilfe einer benutzerseitig zugewiesenen verwalteten Identität auf einem virtuellen Linux-Computer
 
@@ -163,7 +163,7 @@ Zum Ausführen dieser Schritte benötigen Sie einen SSH-Client. Wenn Sie Windows
     "properties":{"provisioningState":"Succeeded"}
     } 
     ```
-    
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Tutorial haben Sie erfahren, wie Sie eine benutzerseitig zugewiesene verwaltete Identität erstellen und an einen virtuellen Linux-Computer anfügen, um auf die Azure Resource Manager-API zuzugreifen.  Weitere Informationen zu Azure Resource Manager finden Sie hier:

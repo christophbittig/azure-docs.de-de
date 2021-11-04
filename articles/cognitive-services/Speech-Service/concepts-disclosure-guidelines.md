@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: shlo
-ms.openlocfilehash: 472d55f79033d60c4f40e60b55e0f7fc2ea4517e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 17dc58adf6ea6b1ab285a2ec4d93d7067448d0b9
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "101716651"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131510757"
 ---
 # <a name="disclosure-design-guidelines"></a>Entwurfsrichtlinien für die Offenlegung
 Erfahren Sie, wie Sie Vertrauen zu Ihren Kunden aufbauen und erhalten können, indem Sie sich in Bezug auf die synthetische Natur Ihres Spracherlebnisses transparent verhalten.

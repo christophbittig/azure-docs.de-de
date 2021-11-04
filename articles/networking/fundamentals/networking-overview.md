@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 04/07/2021
 ms.author: kumud
-ms.openlocfilehash: 072c26444c3a3fe84cfc9a0690571a524f7db6dc
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: 30346fa6c837484613acc4cb48a82e8854d13a3f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113436044"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131076640"
 ---
 # <a name="azure-networking-services-overview"></a>Übersicht über Azure-Netzwerkdienste
 
@@ -35,7 +35,7 @@ In diesem Abschnitt werden Dienste beschrieben, die Konnektivität zwischen Azur
 Azure Virtual Network (VNET) ist der grundlegende Baustein für Ihr privates Netzwerk in Azure. VNETs können für folgende Zwecke verwendet werden:
 - **Kommunikation zwischen Azure-Ressourcen** Sie können virtuelle Computer und verschiedene andere Arten von Azure-Ressourcen in einem virtuellen Netzwerk bereitstellen, wie beispielsweise Azure App Service-Umgebungen, den Azure Kubernetes Service (AKS) und Azure Virtual Machine Scale Sets. Eine vollständige Liste mit Azure-Ressourcen, die Sie in einem virtuellen Netzwerk bereitstellen können, finden Sie unter [Integration virtueller Netzwerke für Azure-Dienste](../../virtual-network/virtual-network-for-azure-services.md).
 - **Gegenseitige Kommunikation:** Sie können virtuelle Netzwerke mittels VNet-Peering miteinander verbinden und so die Kommunikation zwischen Ressourcen in beiden virtuellen Netzwerken ermöglichen. Die verbundenen virtuellen Netzwerke können sich in der gleichen Azure-Region oder in verschiedenen Azure-Regionen befinden. Weitere Informationen finden Sie unter [Peering in virtuellen Netzwerken](../../virtual-network/virtual-network-peering-overview.md).
-- **Kommunikation mit dem Internet:** Alle Ressourcen in einem VNET können standardmäßig in ausgehender Richtung mit dem Internet kommunizieren. Zur Kommunikation in eingehender Richtung muss der entsprechenden Ressource eine öffentliche IP-Adresse oder eine öffentliche Load Balancer-Instanz zugewiesen werden. Die [öffentlichen IP-Adressen](../../virtual-network/virtual-network-public-ip-address.md) und die öffentliche [Load Balancer-Instanz](../../load-balancer/load-balancer-overview.md) können auch zum Verwalten der ausgehenden Verbindungen verwendet werden.
+- **Kommunikation mit dem Internet:** Alle Ressourcen in einem VNET können standardmäßig in ausgehender Richtung mit dem Internet kommunizieren. Zur Kommunikation in eingehender Richtung muss der entsprechenden Ressource eine öffentliche IP-Adresse oder eine öffentliche Load Balancer-Instanz zugewiesen werden. Die [öffentlichen IP-Adressen](../../virtual-network/ip-services/virtual-network-public-ip-address.md) und die öffentliche [Load Balancer-Instanz](../../load-balancer/load-balancer-overview.md) können auch zum Verwalten der ausgehenden Verbindungen verwendet werden.
 - **Kommunikation mit lokalen Netzwerken:** Sie können Ihre lokalen Computer und Netzwerke mithilfe von [VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md) oder [ExpressRoute](../../expressroute/expressroute-introduction.md) mit einem virtuellen Netzwerk vernetzen.
 
 Weitere Informationen finden Sie unter [Was ist Azure Virtual Network?](../../virtual-network/virtual-networks-overview.md).

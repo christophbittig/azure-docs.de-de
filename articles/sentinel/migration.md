@@ -8,14 +8,17 @@ ms.service: azure-sentinel
 ms.topic: conceptual
 ms.date: 07/04/2021
 ms.author: bagol
-ms.openlocfilehash: dc2c1b6ed2d40e7d1af82b3c62f378bfd046a94c
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 38dd71ac717dc5f3aea7d41bb08cb3c2bed671da
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123254119"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131037053"
 ---
 # <a name="migrate-to-azure-sentinel-from-an-existing-siem"></a>Migrieren von einer vorhandenen SIEM-Lösung zu Azure Sentinel
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 Ihr SOC-Team (Security Operations Center) verwendet zentrale SIEM- (Security Information and Event Management) und SOAR-Lösungen (Security Orchestration, Automation and Response), um Ihre zunehmend dezentralisierte digitale Infrastruktur zu schützen.
 
@@ -250,7 +253,7 @@ Von Azure Sentinel werden aus maschinellem Lernen gewonnene Analysen dazu verwen
 - [**Erstellen benutzerdefinierter Analyseregeln zum Erkennen von Bedrohungen**](detect-threats-custom.md). Verwenden Sie [Warnungsgruppen](detect-threats-custom.md#alert-grouping), um Warnungsmüdigkeit zu reduzieren, indem Sie Warnungen gruppieren, die innerhalb eines bestimmten Zeitraums auftreten.
 - [**Ordnen Sie Datenfelder Entitäten in Azure Sentinel zu**](map-data-fields-to-entities.md), damit SOC-Techniker Entitäten als Teil des Beweismaterials definieren können, das während einer Untersuchung nachverfolgt werden soll. Die Entitätszuordnung ermöglicht es SOC-Analysten zudem, ein intuitives [Untersuchungsdiagramm](investigate-cases.md#use-the-investigation-graph-to-deep-dive) zu nutzen, mit dem sie Zeit und Aufwand reduzieren können.
 - [**Untersuchen Sie Incidents mit UEBA-Daten**](investigate-with-ueba.md) als Beispiel für die Verwendung von Beweisen, um Ereignisse, Warnungen und alle Lesezeichen, die einem bestimmten Incident zugeordnet sind, im Bereich der Incidentvorschau anzuzeigen.
-- [**Kusto Query Language (KQL)** ](/azure/data-explorer/kusto/query/), mit der Sie schreibgeschützte Anforderungen an die [Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md)-Datenbank senden können, um Daten zu verarbeiten und Ergebnisse zurückzugeben. KQL wird auch für andere Microsoft-Dienste verwendet, z. B. [Microsoft Defender für Endpunkt](https://www.microsoft.com/microsoft-365/security/endpoint-defender) und [Application Insights](../azure-monitor/app/app-insights-overview.md).
+- [**Kusto Query Language (KQL)**](/azure/data-explorer/kusto/query/), mit der Sie schreibgeschützte Anforderungen an die [Log Analytics](../azure-monitor/logs/log-analytics-tutorial.md)-Datenbank senden können, um Daten zu verarbeiten und Ergebnisse zurückzugeben. KQL wird auch für andere Microsoft-Dienste verwendet, z. B. [Microsoft Defender für Endpunkt](https://www.microsoft.com/microsoft-365/security/endpoint-defender) und [Application Insights](../azure-monitor/app/app-insights-overview.md).
 
 ## <a name="use-automation-to-streamline-processes"></a>Verwenden von Automatisierung zum Optimieren von Prozessen
 

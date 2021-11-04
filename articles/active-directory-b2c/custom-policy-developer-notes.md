@@ -8,16 +8,16 @@ manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/22/2021
+ms.date: 11/02/2021
 ms.custom: project-no-code
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 7b3b8386adbfd6fc39bd115837dd0580a27006db
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 6221566c83f50891792bd037a82b90d29fd76c68
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130037422"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131424456"
 ---
 # <a name="developer-notes-for-azure-active-directory-b2c"></a>Entwicklerhinweise für Azure Active Directory B2C
 
@@ -103,13 +103,13 @@ In der folgenden Tabelle sind die Security Assertion Markup Language (SAML)-Anwe
 |---------|:---------:|:---------:|---------|
 |[AD FS](identity-provider-adfs.md) | Nicht verfügbar | Allgemein verfügbar | |
 |[Amazon](identity-provider-amazon.md) | Allgemein verfügbar | Allgemein verfügbar | |
-|[Apple](identity-provider-apple-id.md) | Vorschau | Vorschau | |
+|[Apple](identity-provider-apple-id.md) | Allgemein verfügbar | Allgemein verfügbar | |
 |[Azure AD (ein Mandant)](identity-provider-azure-ad-single-tenant.md) | Allgemein verfügbar | Allgemein verfügbar | |
 |[Azure AD (mehrere Mandanten)](identity-provider-azure-ad-multi-tenant.md) | Nicht verfügbar  | Allgemein verfügbar | |
 |[Azure AD B2C](identity-provider-azure-ad-b2c.md) | Allgemein verfügbar | Allgemein verfügbar | |
 |[eBay](identity-provider-ebay.md) | Nicht verfügbar | Vorschau | |
 |[Facebook](identity-provider-facebook.md) | Allgemein verfügbar | Allgemein verfügbar | |
-|[GitHub](identity-provider-github.md) | Allgemein verfügbar | Allgemein verfügbar | |
+|[GitHub](identity-provider-github.md) | Vorschau | Allgemein verfügbar | |
 |[Google](identity-provider-google.md) | Allgemein verfügbar | Allgemein verfügbar | |
 |[ID.me](identity-provider-id-me.md) | Allgemein verfügbar | Allgemein verfügbar | |
 |[LinkedIn](identity-provider-linkedin.md) | Allgemein verfügbar | Allgemein verfügbar | |

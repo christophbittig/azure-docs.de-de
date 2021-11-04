@@ -8,12 +8,12 @@ ms.author: parkerra
 ms.date: 11/20/2020
 ms.topic: troubleshooting
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 9c5b35e84d0e16b70b4abba8f784ba9c779c0169
-ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
+ms.openlocfilehash: 077ab48fd75b48afc5f08f95ccaf48eb7ccc1988
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112380120"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131474930"
 ---
 # <a name="azure-spatial-anchors-support-options"></a>Supportoptionen für Azure Spatial Anchors
 
@@ -46,7 +46,7 @@ Am unteren Rand jedes Artikels haben Sie die Gelegenheit, ein GitHub-Problem zu 
 
 ## <a name="provide-product-feedback"></a>Abgeben von Produktfeedback
 
-Als Feedback können Sie eine Idee oder Anregung für den Azure Spatial Anchors-Dienst einreichen, oder Sie können über Ideen, die andere übermittelt haben, abstimmen. Besuchen Sie dazu das [Feedbackforum für Azure Spatial Anchors](https://feedback.azure.com/forums/919252-azure-spatial-anchors).
+Als Feedback können Sie eine Idee oder Anregung für den Azure Spatial Anchors-Dienst einreichen, oder Sie können über Ideen, die andere übermittelt haben, abstimmen. Besuchen Sie dazu das [Feedbackforum für Azure Spatial Anchors](https://feedback.azure.com/d365community/forum/f47d9b25-0725-ec11-b6e6-000d3a4f07b8).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

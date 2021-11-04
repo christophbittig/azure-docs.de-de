@@ -3,12 +3,12 @@ title: Azure Backup-Glossar
 description: In diesem Artikel werden Begriffe vorgestellt, die bei Nutzung von Azure Backup hilfreich sind.
 ms.topic: conceptual
 ms.date: 12/21/2020
-ms.openlocfilehash: fb46415c8bdb463556d57004e37d741c1b9a9b57
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 774fc63002677aa9fbb986d40a5d8fe2b3e99f7d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "102502024"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131465191"
 ---
 # <a name="azure-backup-glossary"></a>Azure Backup-Glossar
 
@@ -186,7 +186,7 @@ Die Wiederherstellung einzelner Dateien oder Ordner innerhalb des Computers ab d
 
 ## <a name="job"></a>Auftrag
 
-Eine sicherungsbezogene Aufgabe, die von einem Benutzer oder dem Azure Backup-Dienst erstellt wird. Aufträge können entweder geplant oder bedarfsgesteuert (ad hoc) sein. Es gibt verschiedene Arten von Aufträgen: Sicherung, Wiederherstellung, Schutzkonfiguration usw. [Erfahren Sie mehr zu Aufträgen](backup-azure-monitoring-built-in-monitor.md#backup-jobs-in-recovery-services-vault).
+Eine sicherungsbezogene Aufgabe, die von einem Benutzer oder dem Azure Backup-Dienst erstellt wird. Aufträge können entweder geplant oder bedarfsgesteuert (ad hoc) sein. Es gibt verschiedene Arten von Aufträgen: Sicherung, Wiederherstellung, Schutzkonfiguration usw. [Erfahren Sie mehr zu Aufträgen](backup-azure-monitoring-built-in-monitor.md#backup-jobs-in-backup-center).
 
 ## <a name="mabs--azure-backup-server"></a>MABS/Azure Backup Server
 

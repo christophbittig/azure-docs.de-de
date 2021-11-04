@@ -1,16 +1,16 @@
 ---
-author: PatrickFarley
+author: eric-urban
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 07/02/2021
 ms.custom: devx-track-java
-ms.author: pafarley
-ms.openlocfilehash: 12f2b1edc4bc7d9f5106af9483da217fcd9eb402
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.author: eur
+ms.openlocfilehash: 29518e68e3de51ae37812ba590b36ab37dc9b54c
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130143721"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131510929"
 ---
 In dieser Schnellstartanleitung werden gängige Entwurfsmuster für die Sprachsynthese per Speech SDK vermittelt. Hierzu werden zunächst eine grundlegende Konfiguration und eine einfache Synthese durchgeführt, gefolgt von komplexeren Beispielen für die Entwicklung benutzerdefinierter Anwendungen:
 

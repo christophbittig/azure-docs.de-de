@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 05/11/2021
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: ac78950f4268155c4c7c0f37e20229044d62ab81
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: f97ff11a1a7e3829ef16aa4e903f88e2ad66949a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129990708"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131432755"
 ---
 # <a name="using-scim-and-microsoft-graph-together-to-provision-users-and-enrich-your-application-with-the-data-it-needs"></a>Durch die gemeinsame Nutzung von SCIM und Microsoft Graph können Sie Benutzer bereitstellen und Ihre Anwendung mit den benötigten Daten anreichern
 
@@ -113,7 +113,7 @@ Meine Anwendung erstellt Informationen zu einem Benutzer, die Kunden in Azure AD
 **Empfehlung:** Microsoft Graph macht die Endpunkte „/Users“ und „/Groups“ verfügbar, die Sie in Today integrieren können, um Benutzer in Azure AD bereitzustellen. Beachten Sie, dass Azure Active Directory das Zurückschreiben dieser Benutzer in Active Directory nicht unterstützt. 
 
 > [!NOTE]
-> Microsoft verfügt über einen Bereitstellungsdienst, der Daten per Pullvorgang aus HR-Anwendungen wie Workday und SuccessFactors abruft. Diese Integrationen werden von Microsoft erstellt und verwaltet. Wenn eine neue HR-Anwendung in unseren Dienst aufgenommen werden soll, können Sie dies auf [UserVoice](https://feedback.azure.com/forums/374982-azure-active-directory-application-requests) anfordern. 
+> Microsoft verfügt über einen Bereitstellungsdienst, der Daten per Pullvorgang aus HR-Anwendungen wie Workday und SuccessFactors abruft. Diese Integrationen werden von Microsoft erstellt und verwaltet. Wenn eine neue HR-Anwendung in unseren Dienst aufgenommen werden soll, können Sie dies auf [UserVoice](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789) anfordern. 
 
 ## <a name="related-articles"></a>Verwandte Artikel
 

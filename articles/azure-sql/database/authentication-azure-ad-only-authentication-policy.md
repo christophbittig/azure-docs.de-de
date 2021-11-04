@@ -8,20 +8,17 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 10/19/2021
-ms.openlocfilehash: 7f95dc74c4346e1053e963ba6d4ad458881df727
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.date: 11/02/2021
+ms.openlocfilehash: 7315b27fccf261dcf25ffe347a22fbb41e0d52cb
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130255855"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131458796"
 ---
 # <a name="azure-policy-for-azure-active-directory-only-authentication-with-azure-sql"></a>Azure Policy für reine Azure Active Directory-Authentifizierung mit Azure SQL
 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
-
-> [!NOTE]
-> Die in diesem Artikel behandelte **reine Azure AD-Authentifizierung** und das dazugehörige Azure Policy-Feature befinden sich in der **Public Preview-Phase**. 
 
 Azure Policy kann die Erstellung einer Azure SQL-Datenbank oder Azure SQL Managed Instance erzwingen, bei der die [reine Azure AD-Authentifizierung](authentication-azure-ad-only-authentication.md) während der Bereitstellung aktiviert ist. Wenn diese Richtlinie eingerichtet ist, schlagen alle Versuche, einen [logischen Server in Azure](logical-servers.md) oder eine verwaltete Instanz zu erstellen, fehl, wenn bei der Erstellung nicht die reine Azure AD-Authentifizierung aktiviert wird.
 

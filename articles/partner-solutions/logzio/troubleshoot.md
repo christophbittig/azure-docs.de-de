@@ -4,14 +4,14 @@ description: Erfahren Sie mehr über die Problembehandlung bei der Azure-Integra
 author: tfitzmac
 ms.topic: conceptual
 ms.service: partner-services
-ms.date: 08/17/2021
+ms.date: 10/25/2021
 ms.author: tomfitz
-ms.openlocfilehash: 5b1d1eb1a59e40286103d63508c98bcc3ba37b8c
-ms.sourcegitcommit: 1deb51bc3de58afdd9871bc7d2558ee5916a3e89
+ms.openlocfilehash: 4322cdfead345aec836760199ce7d6f1f9654c59
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122428461"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131057512"
 ---
 # <a name="troubleshoot-logzio-integration-with-azure"></a>Problembehandlung bei der Logz.io-Integration in Azure
 

@@ -3,20 +3,20 @@ title: Markupsprache für Sprachsynthese (Speech Synthesis Markup Language, SSML
 titleSuffix: Azure Cognitive Services
 description: Verwenden der Markupsprache für Sprachsynthese zum Steuern der Aussprache und des Satzrhythmus in Text-zu-Sprache
 services: cognitive-services
-author: PatrickFarley
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
-ms.author: pafarley
+ms.author: eur
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: d6a4278c1d44a0b2bf6b67b1b375169fefd2913b
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: dbb9f42f7f0b58b14ae9a5c8824475c0fc15fd05
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131048480"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131505079"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Verbessern der Synthese mit Markupsprache für Sprachsynthese (Speech Synthesis Markup Language, SSML)
 
@@ -256,7 +256,7 @@ Ermitteln Sie anhand dieser Tabelle, welche Sprechweisen für die einzelnen neur
 
 Verwenden Sie diese Tabelle, um die unterstützten Rollen und deren Definitionen zu überprüfen.
 
-|Role                     | BESCHREIBUNG                |
+|Rolle                     | BESCHREIBUNG                |
 |-------------------------|----------------------------|
 |`role="Girl"`            | Die Stimme imitiert ein Mädchen. |
 |`role="Boy"`             | Die Stimme imitiert einen Jungen. |

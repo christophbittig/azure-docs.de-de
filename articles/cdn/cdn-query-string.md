@@ -3,7 +3,7 @@ title: Steuern des Azure CDN-Zwischenspeicherverhaltens mit Abfragezeichenfolgen
 description: Das Zwischenspeichern von Azure CDN-Abfragezeichenfolgen steuert, wie Dateien zwischengespeichert werden, wenn eine Webanforderung eine Abfragezeichenfolge enthält. In diesem Artikel wird das Zwischenspeichern von Abfragezeichenfolgen in Azure CDN-Standardprodukten beschrieben.
 services: cdn
 documentationcenter: ''
-author: asudbring
+author: duongau
 manager: danielgi
 editor: ''
 ms.assetid: 17410e4f-130e-489c-834e-7ca6d6f9778d
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.date: 06/11/2018
-ms.author: allensu
-ms.openlocfilehash: 1521d08ef9d431bbe8b3fd3a578297d440ed56b3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: duau
+ms.openlocfilehash: 6e95ae75ab125f824c5125a4441d50257bea6551
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96018578"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131454825"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-query-strings---standard-tier"></a>Steuern des Azure CDN-Zwischenspeicherverhaltens mit Abfragezeichenfolgen – Standard-Tarif
 > [!div class="op_single_selector"]

@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 12d68a9539420c77cc23722e1b7b7175d08459e9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 966a56f20b64dd52dea08c668e9960d5cf47b3d9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "104674630"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131473203"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Von Azure Data Catalog unterstützte Datenquellen
 
@@ -442,7 +442,7 @@ Sie können Metadaten auf verschiedene Weisen veröffentlichen: Sie können eine
     </tr>
 </table>
 
-Wenn Sie für eine bestimmte Datenquelle Unterstützung wünschen, können Sie diese in den [Azure-Foren für Feedback zu Data Catalog](https://feedback.azure.com/forums/906052-data-catalog) vorschlagen (oder eine ggf. bereits vorhandene Anfrage unterstützen).
+Wenn Sie für eine bestimmte Datenquelle Unterstützung wünschen, können Sie diese in den [Azure-Foren für Feedback zu Data Catalog](https://feedback.azure.com/d365community/forum/3bedd14b-6b26-ec11-b6e6-000d3a4f032c) vorschlagen (oder eine ggf. bereits vorhandene Anfrage unterstützen).
 
 
 ## <a name="data-source-reference-specification"></a>Datenquellenreferenz

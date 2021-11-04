@@ -3,20 +3,20 @@ title: 'Tutorial: Sprachaktivierung für Ihren Bot mithilfe des Speech SDK – S
 titleSuffix: Azure Cognitive Services
 description: In diesem Tutorial erstellen Sie einen Echobot mithilfe von Microsoft Bot Framework, stellen ihn in Azure bereit und registrieren ihn beim Bot Framework-Direct Line Speech-Kanal. Anschließend konfigurieren Sie eine Beispiel-Client-App für Windows, über die Sie mit dem Bot sprechen und die Antwort hören können.
 services: cognitive-services
-author: PatrickFarley
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.author: pafarley
+ms.author: eur
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2e133f84888a7a987ca7888f68e5bb195a905f88
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 41ed42da324b11ddf04ffffe86e1ccb4a71fd6dd
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130003968"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131502766"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Tutorial: Sprachaktivierung für Ihren Bot mithilfe des Speech SDK
 

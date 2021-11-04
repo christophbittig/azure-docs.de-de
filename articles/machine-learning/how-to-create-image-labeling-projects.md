@@ -7,14 +7,14 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.subservice: mldata
 ms.topic: how-to
-ms.date: 09/24/2021
-ms.custom: data4ml
-ms.openlocfilehash: b8681974510b6d3fbee74248aab95b33de443109
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.date: 10/21/2021
+ms.custom: data4ml, ignite-fall-2021
+ms.openlocfilehash: b1fc133b02c667ae46d543da3fe020d116d6eb54
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130003816"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131068891"
 ---
 # <a name="create-an-image-labeling-project-and-export-labels"></a>Erstellen eines Datenbeschriftungsprojekts und Exportieren von Beschriftungen
 
@@ -127,9 +127,12 @@ Für Begrenzungsrahmen stellen sich folgende wichtige Fragen:
 
 Auf der Seite **Durch ML unterstützte Beschriftung** können Sie automatische Machine Learning-Modelle auslösen, um Beschriftungsaufgaben zu beschleunigen. Medizinische Bilder (DCM) sind nicht in der unterstützten Beschriftung enthalten.
 
-Zu Beginn Ihres Beschriftungsprojekts werden die Elemente in eine zufällige Reihenfolge gebracht, um potenzielle Verzerrungen zu verringern. Im Dataset enthaltene Verzerrungen fließen jedoch in das trainierte Modell ein. Wenn es sich also beispielsweise bei 80 Prozent der Elemente um eine einzelne Klasse handelt, gehören ungefähr 80 Prozent der Daten, die zum Trainieren des Modells verwendet werden, zu dieser Klasse. Dieses Training beinhaltet kein aktives Lernen.
+Zu Beginn Ihres Beschriftungsprojekts werden die Elemente in eine zufällige Reihenfolge gebracht, um potenzielle Verzerrungen zu verringern. Im Dataset enthaltene Verzerrungen fließen jedoch in das trainierte Modell ein. Wenn es sich also beispielsweise bei 80 Prozent der Elemente um eine einzelne Klasse handelt, gehören ungefähr 80 Prozent der Daten, die zum Trainieren des Modells verwendet werden, zu dieser Klasse.
 
-Wählen Sie *ML-gestützte Beschriftung aktivieren* aus, und geben Sie eine GPU an, um die Beschriftungsunterstützung zu aktivieren. Diese umfasst zwei Phasen:
+Wählen Sie *ML-gestützte Beschriftung aktivieren* aus, und geben Sie eine GPU an, um die Beschriftungsunterstützung zu aktivieren. Wenn Sie in Ihrem Arbeitsbereich noch keins haben, wird ein GPU-Cluster für Sie erstellt und Ihrem Arbeitsbereich hinzugefügt.   Der Cluster wird mit mindestens 0 (null) Knoten erstellt, was bedeutet, dass er nichts kostet, wenn er nicht verwendet wird.
+
+
+Die ML-unterstützte Beschriftung umfasst zwei Phasen:
 
 * Clustering
 * Vorabbeschriftung

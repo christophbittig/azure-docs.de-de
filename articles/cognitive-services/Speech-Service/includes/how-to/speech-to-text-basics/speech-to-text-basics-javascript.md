@@ -1,16 +1,16 @@
 ---
-author: PatrickFarley
+author: eric-urban
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/04/2021
-ms.author: pafarley
+ms.author: eur
 ms.custom: devx-track-js
-ms.openlocfilehash: 529b43fdf23eebb46bf7cc194bab1508afa0f7ca
-ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
+ms.openlocfilehash: 12400b3ff17106a3296664d16148b1daea8963ae
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129679883"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131501944"
 ---
 Die Funktion zum Erkennen und Transkribieren von menschlicher Sprache (Spracherkennung) ist eines der zentralen Features des Speech-Diensts. In diesem Schnellstart erfahren Sie, wie Sie das Speech SDK in Ihren Apps und Produkten verwenden, um hochwertige Spracherkennungen durchzuführen.
 

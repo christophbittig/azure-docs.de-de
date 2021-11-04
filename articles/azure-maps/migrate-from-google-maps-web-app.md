@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
-ms.openlocfilehash: f3eba06b40ef9f96dc5b94b6d21b43e6fecccce1
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 92d879f0ed4d7252624f0d825fc50892d3d5851e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129358071"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131474153"
 ---
 # <a name="tutorial-migrate-a-web-app-from-google-maps"></a>Tutorial: Migrieren einer Web-App aus Google Maps
 
@@ -158,7 +158,7 @@ Zeigen Sie eine über einem bestimmten Ort zentrierte und gezoomte Karte in Goog
     </script>
 
     <!-- Google Maps Script Reference -->
-    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key=[Your Google Maps Key]" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key={Your-Google-Maps-Key}" async defer></script>
 </head>
 <body>
     <div id='myMap' style='position:relative;width:600px;height:400px;'></div>
@@ -245,7 +245,7 @@ Wenn sich Ihre Zielgruppe über mehrere Länder/Regionen erstreckt oder verschie
 Lokalisieren von Google Maps durch Hinzufügen von Sprach- und Regionsparametern:
 
 ```html
-<script type="text/javascript" src=" https://maps.googleapis.com/maps/api/js?callback=initMap&key=[api_key]& language=[language_code]&region=[region_code]" async defer></script>
+<script type="text/javascript" src=" https://maps.googleapis.com/maps/api/js?callback=initMap&key={api-Key}& language={language-code}&region={region-code}" async defer></script>
 ```
 
 Dies ist ein Beispiel für Google Maps mit der Spracheinstellung „fr-FR“.
@@ -854,7 +854,7 @@ Geben Sie eine einzelne Rückruffunktion in der Methode `map.data.setStyle` an. 
     </script>
 
     <!-- Google Maps Script Reference -->
-    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key=[Your Google Maps Key]" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key={Your-Google-Maps-Key}" async defer></script>
 </head>
 <body>
     <div id='myMap' style='position:relative;width:600px;height:400px;'></div>
@@ -1008,7 +1008,7 @@ Verwenden Sie die MarkerCluster-Bibliothek, um Markercluster zu erstellen. Clust
     <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
 
     <!-- Google Maps Script Reference -->
-    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key=[Your Google Maps Key]" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key={Your-Google-Maps-Key}" async defer></script>
 </head>
 <body>
     <div id='myMap' style='position:relative;width:600px;height:400px;'></div>
@@ -1214,7 +1214,7 @@ Laden Sie zum Erstellen eines Wärmebilds die Visualisierungsbibliothek, indem S
     </script>
 
     <!-- Google Maps Script Reference -->
-    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key=[Your Google Maps Key]&libraries=visualization" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key={Your-Google-Maps-Key}&libraries=visualization" async defer></script>
 </head>
 <body>
     <div id='myMap' style='position:relative;width:600px;height:400px;'></div>
@@ -1424,7 +1424,7 @@ Geben Sie die URL für das zu überlagernde Bild und einen Begrenzungsrahmen an,
     </script>
 
     <!-- Google Maps Script Reference -->
-    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key=[Your Google Maps Key]" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key={Your-Google-Maps-Key}" async defer></script>
 </head>
 <body>
     <div id="myMap" style="position:relative;width:600px;height:400px;"></div>
@@ -1534,7 +1534,7 @@ Sowohl für Karten von Azure als auch von Google können KML-, KMZ- und GeoRSS-D
     </script>
 
     <!-- Google Maps Script Reference -->
-    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key=[Your Google Maps Key]" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key={Your-Google-Maps-Key}" async defer></script>
 </head>
 <body>
     <div id="myMap" style="position:relative;width:600px;height:400px;"></div>

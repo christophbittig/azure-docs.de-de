@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-custom-classification, ignite-fall-2021
-ms.openlocfilehash: c31a348376f41bf61a4632d991fc02f08b360be7
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 729cf1ed5d17345c530bd78f9c5c75c15990ab12
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131450246"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131100411"
 ---
 # <a name="what-is-custom-text-classification-preview"></a>Worum handelt es sich bei der benutzerdefinierten Textklassifizierung (Vorschau)?
 
@@ -27,13 +27,7 @@ Die benutzerdefinierte Textklassifizierung wird als Teil der benutzerdefinierten
 Benutzerdefinierte Textklassifizierung unterstützt zwei Arten von Projekten: 
 
 * **Klassifizierung mit einzelner Bezeichnung:** Sie können für jede Datei Ihres Datasets eine einzelne Klasse zuweisen. Beispielsweise kann ein Drehbuch nur als „Action“ oder als „Thriller“ klassifiziert werden. 
-* **Klassifizierung mit mehreren Bezeichnungen:** Sie können für jede Datei Ihres Datasets mehrere Klassen zuweisen. Beispielsweise kann ein Drehbuch als „Action“ oder als „Action und Thriller“ klassifiziert werden.
-
-Diese Dokumentation enthält die folgenden Arten von Artikeln:
-
-* [Schnellstarts](quickstart.md) sind Anleitungen zu den ersten Schritten, die Sie durch das Senden von Anforderungen an den Dienst führen.
-* Die Artikel zu [Konzepten](concepts/evaluation.md) enthalten Erläuterungen der Dienstfunktionen und -features.
-* [Anleitungen](how-to/tag-data.md) enthalten Anweisungen zur spezifischeren oder individuelleren Verwendung des Diensts.
+* **Klassifizierung mit mehreren Bezeichnungen:** Sie können für jede Datei Ihres Datasets mehrere Klassen zuweisen. Beispielsweise kann ein Drehbuch als „Action“ oder als „Action und Thriller“ klassifiziert werden. 
 
 ## <a name="example-usage-scenarios"></a>Beispiele für Nutzungsszenarien
 

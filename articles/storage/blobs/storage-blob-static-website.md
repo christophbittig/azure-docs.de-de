@@ -9,12 +9,12 @@ ms.reviewer: dineshm
 ms.date: 09/04/2020
 ms.subservice: blobs
 ms.custom: devx-track-js
-ms.openlocfilehash: ab3fe82252ee416aa47ff32a244fb9bf6de23f2b
-ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
+ms.openlocfilehash: ffab1f466de9352d1ea6784cbacb7cb9672ecaa7
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129668426"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131467377"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Hosten von statischen Websites in Azure Storage
 
@@ -145,7 +145,7 @@ Sie können ein [benutzerdefiniertes SSL-Zertifikat](./static-website-content-de
 
 ##### <a name="how-do-i-add-custom-headers-and-rules-with-a-static-website"></a>Wie füge ich benutzerdefinierte Header und Regeln für die statische Website hinzu?
 
-Sie können den Hostheader für eine statische Website konfigurieren, indem Sie [Azure CDN – Verizon Premium](../../cdn/cdn-verizon-premium-rules-engine.md) verwenden. Wir freuen uns auf Ihr Feedback, das Sie uns [hier](https://feedback.azure.com/forums/217298-storage/suggestions/34959124-allow-adding-headers-to-static-website-hosting-in) senden können.
+Sie können den Hostheader für eine statische Website konfigurieren, indem Sie [Azure CDN – Verizon Premium](../../cdn/cdn-verizon-premium-rules-engine.md) verwenden. Wir freuen uns auf Ihr Feedback, das Sie uns [hier](https://feedback.azure.com/d365community/idea/694b08ef-3525-ec11-b6e6-000d3a4f0f84) senden können.
 
 ##### <a name="why-am-i-getting-an-http-404-error-from-a-static-website"></a>Warum erhalte ich einen HTTP 404-Fehler von einer statischen Website?
 

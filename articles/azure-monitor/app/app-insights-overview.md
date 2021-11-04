@@ -4,12 +4,12 @@ description: Anwendungsleistungsverwaltung und Nachverfolgen der Nutzung Ihrer a
 ms.topic: overview
 ms.date: 06/03/2019
 ms.custom: mvc
-ms.openlocfilehash: 361c48af9ada73bd717aa375302ddc97a62f424f
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: cdd0a32da1ad49cfa8c75de7e5c1ac32e1ead89d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130133764"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131462157"
 ---
 # <a name="what-is-application-insights"></a>Was ist Application Insights?
 Application Insights, ein Feature von [Azure Monitor](../overview.md), ist ein erweiterbarer Dienst zur Verwaltung der Anwendungsleistung (Application Performance Management, APM) für Entwickler und DevOps-Profis. Überwachen Sie damit Ihre aktiven Anwendungen. Der Dienst erkennt automatisch Leistungsanomalien und verfügt über leistungsstarke Analysetools, mit denen Sie Probleme diagnostizieren und nachvollziehen können, wie Ihre App von den Benutzern verwendet wird.  Der Dienst unterstützt Sie bei der kontinuierlichen Verbesserung der Leistung und Benutzerfreundlichkeit Ihrer App. Er lässt sich für Apps auf einer Vielzahl von Plattformen einsetzen. Dazu zählen unter anderem .NET, Node.js, Java und Python (lokal gehostet, als Hybridmodell oder in einer öffentlichen Cloud). Der Dienst lässt sich in Ihren DevOps-Prozess integrieren und verfügt über Verbindungspunkte mit einer Vielzahl von Entwicklungstools. Sie können Telemetriedaten von mobilen Apps durch die Integration in Visual Studio App Center überwachen und analysieren.
@@ -132,7 +132,7 @@ Beginnen mit der Entwicklungszeitmethode mit:
   * [Frageseite von Microsoft Q&A (Fragen und Antworten)](/answers/topics/azure-monitor.html)
   * [StackOverflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 * Ihre Vorschläge:
-  * [UserVoice](https://feedback.azure.com/forums/357324-application-insights/filters/top)
+  * [UserVoice](https://feedback.azure.com/d365community/forum/8849e04d-1325-ec11-b6e6-000d3a4f09d0)
 * Blog:
   * [Application Insights-Blog](https://azure.microsoft.com/blog/tag/application-insights)
 

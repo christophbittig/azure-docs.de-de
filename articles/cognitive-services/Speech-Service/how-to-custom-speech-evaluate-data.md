@@ -3,20 +3,20 @@ title: Bewerten und Verbessern der Custom Speech-Genauigkeit – Speech-Dienst
 titleSuffix: Azure Cognitive Services
 description: In diesem Dokument erfahren Sie, wie Sie die Qualität unseres Spracherkennungsmodells oder Ihres benutzerdefinierten Modells quantitativ messen und verbessern können. Zum Testen der Genauigkeit sind Audio- und menschenmarkierte Transkriptionsdaten erforderlich, und 30 Minuten bis 5 Stunden an repräsentativem Audio müssen bereitgestellt werden.
 services: cognitive-services
-author: PatrickFarley
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
-ms.author: pafarley
+ms.author: eur
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 9dd957ccc877e09020a9f50b927ff5c2aafec7cd
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 2a0ad4a926365ffe8bed5ebda5b9848ce72c7845
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131080591"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131501113"
 ---
 # <a name="evaluate-and-improve-custom-speech-accuracy"></a>Bewerten und Verbessern der Custom Speech-Genauigkeit
 

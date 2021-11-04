@@ -1,19 +1,20 @@
 ---
 title: Anzeigen Ihrer Abrechnungskonten im Azure-Portal
 description: Hier erfahren Sie, wie Sie Ihre Abrechnungskonten im Azure-Portal anzeigen. Lesen Sie Bereichsinformationen zu Enterprise Agreements, Microsoft-Kundenvereinbarungen und Microsoft-Partnervereinbarungen.
-author: amberbhargava
+author: bandersmsft
+ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
 ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: e82875dbf65689565855e298eb44fb41511673da
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: bcfda7f0083a1f8838004dff262f53a80f437512
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128644009"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131443108"
 ---
 # <a name="billing-accounts-and-scopes-in-the-azure-portal"></a>Abrechnungskonten und -bereiche im Azure-Portal
 

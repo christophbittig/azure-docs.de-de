@@ -6,12 +6,12 @@ ms.author: sunila
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/25/2021
-ms.openlocfilehash: 765c3653dae4f514263cd8db636d9cec42d56d15
-ms.sourcegitcommit: 5f482220a6d994c33c7920f4e4d67d2a450f7f08
+ms.openlocfilehash: 1dfdab5c90c8a3acd574ec042f2cc8ad033cc592
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/08/2021
-ms.locfileid: "107107617"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131433496"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql---single-server"></a>PostgreSQL-Erweiterungen in Azure Database for PostgreSQL – Einzelserver
 PostgreSQL bietet die Möglichkeit, die Funktionalität Ihrer Datenbank mithilfe von Erweiterungen zu erweitern. Bei Erweiterungen werden mehrere zusammengehörige SQL-Objekte zu einem Paket gebündelt und mit nur einem Befehl in die Datenbank geladen oder daraus entfernt. Nach dem Laden in die Datenbank funktionieren Erweiterungen genauso wie integrierte Features.
@@ -282,4 +282,4 @@ SELECT timescaledb_post_restore();
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Wenn Sie eine Erweiterung fehlt, die Sie verwenden möchten, lassen Sie es uns wissen. Stimmen Sie in unserem [Feedbackforum](https://feedback.azure.com/forums/597976-azure-database-for-postgresql) für vorhandene Anfragen ab, oder geben Sie uns weiteres Feedback.
+Wenn Sie eine Erweiterung fehlt, die Sie verwenden möchten, lassen Sie es uns wissen. Stimmen Sie in unserem [Feedbackforum](https://feedback.azure.com/d365community/forum/c5e32b97-ee24-ec11-b6e6-000d3a4f0da0) für vorhandene Anfragen ab, oder geben Sie uns weiteres Feedback.

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: yunjchoi
 ms.custom: na
-ms.openlocfilehash: fb329273d442c023233fee2e7e01aabe5f5bff8c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 81d8da21d5da91c79fa40077832dd6543fd69499
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "83122363"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131432223"
 ---
 # <a name="azure-functions-diagnostics-overview"></a>Übersicht über die Azure Functions-Diagnose
 
@@ -51,7 +51,7 @@ Für skriptbasierte Funktionen können Sie **Function Execution and Errors** (Fu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Unter [UserVoice](https://feedback.azure.com/forums/355860-azure-functions) können Sie Fragen stellen oder Feedback zur Azure Functions-Diagnose bereitstellen. Nehmen Sie `[Diag]` in den Titel Ihres Feedbacks auf.
+Unter [UserVoice](https://feedback.azure.com/d365community/forum/9df02822-f224-ec11-b6e6-000d3a4f0da0) können Sie Fragen stellen oder Feedback zur Azure Functions-Diagnose bereitstellen. Nehmen Sie `[Diag]` in den Titel Ihres Feedbacks auf.
 
 > [!div class="nextstepaction"]
 > [Überwachen Ihrer Funktions-Apps](functions-monitoring.md)

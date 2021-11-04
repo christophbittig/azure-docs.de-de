@@ -5,20 +5,16 @@ services: automation
 ms.subservice: process-automation
 ms.date: 05/18/2021
 ms.topic: conceptual
-ms.openlocfilehash: 0db68a72b3b44f9febb7cdef546545b5b549ddae
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: 70b58b689798b6651a88674668497a27a2780429
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110069380"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131450930"
 ---
 # <a name="enable-startstop-vms-during-off-hours"></a>Aktivieren von „VMs außerhalb der Geschäftszeiten starten/beenden“
 
 Führen Sie die Schritte in der vorliegenden Reihenfolge in diesem Thema aus, um die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden“ für VMs mithilfe eines neuen oder vorhandenen Automation-Kontos sowie eines verknüpften Log Analytics-Arbeitsbereichs zu aktivieren. Nachdem Sie den Einrichtungsprozess abgeschlossen haben, konfigurieren Sie die Variablen zum Anpassen der Funktion.
-
->[!NOTE]
->Wenn Sie diese Funktion mit klassischen VMs verwenden möchten, benötigen Sie ein klassisches ausführendes Konto. Dieses wird nicht standardmäßig erstellt. Siehe [Erstellen eines klassischen ausführenden Kontos](automation-create-standalone-account.md#create-a-classic-run-as-account).
->
 
 ## <a name="enable-and-configure"></a>Aktivieren und konfigurieren 
 

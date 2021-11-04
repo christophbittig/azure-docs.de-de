@@ -3,21 +3,21 @@ title: 'Schnellstart: Erstellen von Schlüsselwörtern – Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: Ihr Gerät lauscht immer auf ein Schlüsselwort (oder einen Ausdruck). Wenn der Benutzer das Schlüsselwort nennt, sendet das Gerät sämtliche nachfolgende Audioaufnahmen an die Cloud, bis der Benutzer aufhört zu sprechen. Durch das Anpassen Ihres Schlüsselworts können Sie Ihr Gerät auf effektive Weise differenzieren und Ihr Branding stärken.
 services: cognitive-services
-author: PatrickFarley
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/03/2020
-ms.author: pafarley
+ms.author: eur
 ms.custom: devx-track-csharp, ignite-fall-2021
 zone_pivot_groups: keyword-quickstart
-ms.openlocfilehash: 6604bdfc155d3369c1e17a92d928cc46d7f36cf5
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 99c6b58950fa7b40328ff85a07db90104ba17531
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131056754"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131508611"
 ---
 # <a name="get-started-with-custom-keyword"></a>Erste Schritte mit dem benutzerdefinierten Schlüsselwort
 

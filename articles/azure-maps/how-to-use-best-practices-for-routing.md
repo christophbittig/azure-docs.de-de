@@ -1,18 +1,18 @@
 ---
 title: Bewährte Methoden für den Azure Maps-Routendienst in Microsoft Azure Maps
 description: Erfahren Sie, wie Sie mit dem Routendienst von Microsoft Azure Maps Fahrzeuge effizient leiten.
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 09/02/2020
+author: stevemunk
+ms.author: v-munksteve
+ms.date: 10/28/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-ms.openlocfilehash: 31a5a7f37ef61103a0e70b3daca076e62a16eaaf
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 327747b731bfb26192f22631e23b4f3f7dc49cf3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339849"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131447168"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Bewährte Methoden für den Azure Maps-Routendienst
 
@@ -86,7 +86,7 @@ In den folgenden Abschnitten wird gezeigt, wie Sie mithilfe der erörterten Para
 Im ersten Beispiel unten wird die Abfahrtzeit auf eine Zeit in der Zukunft festgelegt, gemessen am Entstehungszeitpunkt dieses Artikels.
 
 ```http
-https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&api-version=1.0&query=51.368752,-0.118332:51.385426,-0.128929&travelMode=car&traffic=true&departAt=2025-03-29T08:00:20&computeTravelTimeFor=all
+https://atlas.microsoft.com/route/directions/json?subscription-key={Your-Azure-Maps-Primary-Subscription-key}&api-version=1.0&query=51.368752,-0.118332:51.385426,-0.128929&travelMode=car&traffic=true&departAt=2025-03-29T08:00:20&computeTravelTimeFor=all
 ```
 
 Die Antwort enthält ein Zusammenfassungselement, wie unten dargestellt. Da die Abfahrtszeit auf einen zukünftigen Zeitpunkt festgelegt ist, ist der Wert von **trafficDelayInSeconds** gleich 0 (null). Der Wert von **travelTimeInSeconds** wird anhand zeitabhängiger historischer Verkehrsdaten berechnet. In diesem Fall ist daher der Wert von **travelTimeInSeconds** gleich dem Wert von **historicTrafficTravelTimeInSeconds**.
@@ -109,7 +109,7 @@ Die Antwort enthält ein Zusammenfassungselement, wie unten dargestellt. Da die 
 Im zweiten Beispiel unten haben wir eine Echtzeit-Wegführungsanforderung mit der Abfahrtszeit „Jetzt“. Dies wird in der URL nicht explizit angegeben, da es den Standardwert darstellt.
 
 ```http
-https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&api-version=1.0&query=47.6422356,-122.1389797:47.6641142,-122.3011268&travelMode=car&traffic=true&computeTravelTimeFor=all
+https://atlas.microsoft.com/route/directions/json?subscription-key={Your-Azure-Maps-Primary-Subscription-key}&api-version=1.0&query=47.6422356,-122.1389797:47.6641142,-122.3011268&travelMode=car&traffic=true&computeTravelTimeFor=all
 ```
 
 Die Antwort enthält eine Zusammenfassung, wie unten dargestellt. Aufgrund von Staus ist der Wert von **trafficDelaysInSeconds** größer als null. Er ist außerdem größer als **historicTrafficTravelTimeInSeconds**.
@@ -160,7 +160,7 @@ Azure Maps Routing-APIs unterstützen die Wegführung von Nutzfahrzeugen, einsch
 Mit der folgenden Beispielanforderung wird eine Route für einen Gewerbe-LKW abgefragt. Der LKW transportiert gefährliches Abfallgut der Klasse 1.
 
 ```http
-https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&api-version=1.0&vehicleWidth=2&vehicleHeight=2&vehicleCommercial=true&vehicleLoadType=USHazmatClass1&travelMode=truck&instructionsType=text&query=51.368752,-0.118332:41.385426,-0.128929
+https://atlas.microsoft.com/route/directions/json?subscription-key={Your-Azure-Maps-Primary-Subscription-key}&api-version=1.0&vehicleWidth=2&vehicleHeight=2&vehicleCommercial=true&vehicleLoadType=USHazmatClass1&travelMode=truck&instructionsType=text&query=51.368752,-0.118332:41.385426,-0.128929
 ```
 
 Die Routen-API gibt Wegbeschreibungen zurück, die die Abmessungen des LKWs und das Gefahrgut berücksichtigen. Sie können die Wegbeschreibungen lesen, indem Sie das `guidance`-Element erweitern.
@@ -172,7 +172,7 @@ Die Routen-API gibt Wegbeschreibungen zurück, die die Abmessungen des LKWs und 
 Das Ändern der US-Gefahrgutklasse in der Abfrage oben führt zu einer anderen Wegstrecke, um der Änderung Rechnung zu tragen.
 
 ```http
-https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&api-version=1.0&vehicleWidth=2&vehicleHeight=2&vehicleCommercial=true&vehicleLoadType=USHazmatClass9&travelMode=truck&instructionsType=text&query=51.368752,-0.118332:41.385426,-0.128929
+https://atlas.microsoft.com/route/directions/json?subscription-key={Your-Azure-Maps-Primary-Subscription-key}&api-version=1.0&vehicleWidth=2&vehicleHeight=2&vehicleCommercial=true&vehicleLoadType=USHazmatClass9&travelMode=truck&instructionsType=text&query=51.368752,-0.118332:41.385426,-0.128929
 ```
 
 Die Antwort unten bezieht sich auf einen LKW, der Gefahrgut der Klasse 9 transportiert, das weniger gefährlich ist als Gefahrgut der Klasse 1. Wenn Sie das `guidance` Element erweitern, um die Anweisungen zu lesen, werden Sie bemerken, dass die Anweisungen nicht gleich sind. Es gibt mehr Streckenanweisungen für den LKW, der das Gefahrgut der Klasse 1 befördert.
@@ -192,7 +192,7 @@ Bei den Azure Maps-Wegbeschreibungs-APIs können Entwickler Details zu jedem Abs
 Die folgende Abfrage legt den `sectionType` auf `traffic` fest. Sie fordert die Abschnitte an, die Verkehrsinformationen von Seattle nach San Diego enthalten.
 
 ```http
-https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&api-version=1.0&sectionType=traffic&query=47.6062,-122.3321:32.7157,-117.1611
+https://atlas.microsoft.com/route/directions/json?subscription-key={Your-Azure-Maps-Primary-Subscription-key}&api-version=1.0&sectionType=traffic&query=47.6062,-122.3321:32.7157,-117.1611
 ```
 
 Die Antwort enthält die Abschnitte, die entlang der angegebenen Koordinaten hinsichtlich der Verkehrsverhältnisse geeignet sind.
@@ -220,7 +220,7 @@ Wenn Sie die Reihenfolge zum Aufsuchen der angegebenen Wegpunkte optimieren möc
 Die folgende Abfrage fordert den Pfad für sechs Wegpunkte an, mit auf `false` festgelegtem `computeBestOrder`-Parameter. Dies ist auch der Standardwert für den `computeBestOrder`-Parameter.
 
 ```http
-https://atlas.microsoft.com/route/directions/json?api-version=1.0&subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&computeBestOrder=false&query=47.606544,-122.336502:47.759892,-122.204821:47.670682,-122.120415:47.480133,-122.213369:47.615556,-122.193689:47.676508,-122.206054:47.495472,-122.360861
+https://atlas.microsoft.com/route/directions/json?api-version=1.0&subscription-key={Your-Azure-Maps-Primary-Subscription-key}&computeBestOrder=false&query=47.606544,-122.336502:47.759892,-122.204821:47.670682,-122.120415:47.480133,-122.213369:47.615556,-122.193689:47.676508,-122.206054:47.495472,-122.360861
 ```
 
 Die Antwort beschreibt die Länge des Wegs mit 140.851 Metern und gibt an, dass das Zurücklegen dieser Strecke 9.991 Sekunden erfordern würde.
@@ -231,8 +231,6 @@ Die folgende Abbildung zeigt die Route, die sich aus dieser Abfrage ergibt. Dies
 
 ![Nicht optimierte Abbildung](media/how-to-use-best-practices-for-routing/non-optimized-image-img.png)
 
-
-
 Die Reihenfolge der Wegpunkte ist: 0, 1, 2, 3, 4, 5 und 6.
 
 ### <a name="sample-query"></a>Beispielabfrage
@@ -240,7 +238,7 @@ Die Reihenfolge der Wegpunkte ist: 0, 1, 2, 3, 4, 5 und 6.
 Die folgende Abfrage fordert den Pfad für die gleichen sechs Wegpunkte wie im Beispiel oben an. Dieses Mal wird der `computeBestOrder`-Parameter auf `true` festgelegt (Handlungsreisenden-Optimierung).
 
 ```http
-https://atlas.microsoft.com/route/directions/json?api-version=1.0&subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&computeBestOrder=true&query=47.606544,-122.336502:47.759892,-122.204821:47.670682,-122.120415:47.480133,-122.213369:47.615556,-122.193689:47.676508,-122.206054:47.495472,-122.360861
+https://atlas.microsoft.com/route/directions/json?api-version=1.0&subscription-key={Your-Azure-Maps-Primary-Subscription-key}&computeBestOrder=true&query=47.606544,-122.336502:47.759892,-122.204821:47.670682,-122.120415:47.480133,-122.213369:47.615556,-122.193689:47.676508,-122.206054:47.495472,-122.360861
 ```
 
 Die Antwort beschreibt die Länge des Wegs mit 91.814 Metern und gibt an, dass das Zurücklegen dieser Strecke 7.797 Sekunden erfordern würde. Sowohl Reiseentfernung als auch Reisezeit sind hier geringer, da die API die optimierte Route zurückgegeben hat.

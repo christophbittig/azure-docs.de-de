@@ -2,7 +2,7 @@
 title: Analysieren von Azure CDN-Verwendungsmustern
 description: In diesem Artikel werden die verschiedenen Arten von Analyseberichten beschrieben, die für Azure CDN-Produkte zur Verfügung stehen.
 services: cdn
-author: asudbring
+author: duongau
 manager: KumudD
 ms.service: azure-cdn
 ms.workload: tbd
@@ -10,13 +10,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/30/2020
-ms.author: allensu
-ms.openlocfilehash: 2c593cda7761ce1defa6bdb31e0dbb528b9e5eca
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: duau
+ms.openlocfilehash: 09ad5d0ed882b5c6f8eece565d3977acb39b3a19
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96483987"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131426561"
 ---
 # <a name="analyze-azure-cdn-usage-patterns"></a>Analysieren von Azure CDN-Verwendungsmustern
 

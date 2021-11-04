@@ -3,19 +3,19 @@ title: 'Schnellstart für die Speech-Befehlszeilenschnittstelle: Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: Hier finden Sie Informationen zu den ersten Schritten mit der Azure Speech-Befehlszeilenschnittstelle. Sie können mit Speech-Diensten wie Spracherkennung, Sprachsynthese und Sprachübersetzung interagieren, ohne Code zu schreiben.
 services: cognitive-services
-author: PatrickFarley
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/28/2021
-ms.author: pafarley
-ms.openlocfilehash: 55d84da6f7ebdbf45bbf6c90b5cb881319a62aa9
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.author: eur
+ms.openlocfilehash: cd953953e927472a822b0f1031081a212d6339f6
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123540809"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131510157"
 ---
 # <a name="get-started-with-the-azure-speech-cli"></a>Erste Schritte mit der Azure Speech-Befehlszeilenschnittstelle
 

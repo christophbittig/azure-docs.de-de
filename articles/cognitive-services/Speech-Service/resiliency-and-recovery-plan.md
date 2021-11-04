@@ -3,7 +3,7 @@ title: Sichern und Wiederherstellen von kundenspezifischen Sprachressourcen
 titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie sich auf Dienstausfälle von Custom Speech und Custom Voice vorbereiten.
 services: cognitive-services
-author: masaki-itagaki
+author: masakiitagaki
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/28/2021
 ms.author: mitagaki
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: aff4093863b1813e22fc6050ff4050cf4133bdd6
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 860e70f567742a418e8de75c68793b29fb691df2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131508361"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131058367"
 ---
 # <a name="back-up-and-recover-speech-customer-resources"></a>Sichern und Wiederherstellen von kundenspezifischen Sprachressourcen
 

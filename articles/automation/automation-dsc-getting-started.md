@@ -5,16 +5,19 @@ services: automation
 ms.subservice: dsc
 ms.date: 04/15/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8ff365200828b786b4cf770508e5a811983abd58
-ms.sourcegitcommit: eda26a142f1d3b5a9253176e16b5cbaefe3e31b3
+ms.openlocfilehash: 4d7a0a92d538db30ac0de9d0c5c97cb546517088
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2021
-ms.locfileid: "109732738"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131026504"
 ---
 # <a name="get-started-with-azure-automation-state-configuration"></a>Erste Schritte mit Azure Automation State Configuration
 
 Dieser Artikel bietet eine Schritt-für-Schritt-Anleitung zum Ausführen der gängigsten Aufgaben mit Azure Automation State Configuration, z. B. Erstellen, Importieren und Kompilieren von Konfigurationen, Aktivieren zu verwaltender Computer und Anzeigen von Berichten. Eine Übersicht über State Configuration finden Sie unter [Übersicht über Azure Automation State Configuration](automation-dsc-overview.md). Die DSC-Dokumentation (Desired State Configuration, Konfiguration des gewünschten Zustands) finden Sie unter [Windows PowerShell DSC – Übersicht](/powershell/scripting/dsc/overview/overview).
+
+> [!NOTE]
+> Bevor Sie Automation State Configuration aktivieren, sollten Sie wissen, dass jetzt eine neuere Version von DSC in der Vorschau verfügbar ist, die durch das Feature [Gastkonfiguration](../governance/policy/concepts/guest-configuration.md) von Azure Policy verwaltet wird. Der Gastkonfigurationsdienst kombiniert Features der DSC-Erweiterung und von Azure Automation State Configuration mit den am häufigsten angeforderten Features aus Kundenfeedback. Die Gastkonfiguration umfasst auch die Unterstützung von Hybridcomputern über [Arc-fähige Server](../azure-arc/servers/overview.md).
 
 Wenn Sie eine bereits eingerichtete Beispielumgebung verwenden möchten, ohne die in diesem Artikel beschriebenen Schritte auszuführen, können Sie die [Vorlage für verwaltete Azure Automation-Knoten](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.automation/automation-configuration) verwenden. Mit dieser Vorlage wird eine vollständige Umgebung für State Configuration eingerichtet, einschließlich eines virtuellen Azure-Computers, der von State Configuration (DSC) verwaltet wird.
 

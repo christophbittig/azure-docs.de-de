@@ -1,18 +1,18 @@
 ---
 title: Anfordern von Höhendaten mithilfe des Azure Maps-Höhenangabendiensts
 description: Hier erfahren Sie, wie Sie mit dem Azure Maps-Höhenangabendienst Höhendaten anfordern.
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 05/18/2021
+author: stevemunk
+ms.author: v-munksteve
+ms.date: 10/28/2021
 ms.topic: how-to
 ms.service: azure-maps
 ms.custom: mvc
-ms.openlocfilehash: 6562af274455297e12084353926478f1954c2407
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: a9920d3b512bda0b2710ad9c0c6daf5c5801602a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131031402"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131432166"
 ---
 # <a name="request-elevation-data-using-the-azure-maps-elevation-service"></a>Anfordern von Höhendaten mithilfe des Azure Maps-Höhenangabendiensts
 
@@ -45,7 +45,7 @@ So fordern Sie mithilfe der Postman-App Höhendaten im Rasterkachelformat an:
 4. Wählen Sie auf der Registerkarte **Builder** (Generator) die HTTP-Methode **GET** aus, und geben Sie die folgende URL ein, um die Rasterkachel anzufordern.
 
     ```http
-    https://atlas.microsoft.com/map/tile?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=2.0&tilesetId=microsoft.dem&zoom=13&x=6074&y=3432
+    https://atlas.microsoft.com/map/tile?subscription-key={Your-Azure-Maps-Primary-Subscription-key}&api-version=2.0&tilesetId=microsoft.dem&zoom=13&x=6074&y=3432
     ```
 
     >[!Important]
@@ -86,7 +86,7 @@ So erstellen Sie die Anforderung:
 4. Wählen Sie auf der Registerkarte **Builder** (Generator) die HTTP-Methode **GET** aus, und geben Sie dann die folgende URL ein (dabei `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel ersetzen):
 
     ```http
-    https://atlas.microsoft.com/elevation/point/json?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0&points=-73.998672,40.714728|150.644,-34.397
+    https://atlas.microsoft.com/elevation/point/json?subscription-key={Your-Azure-Maps-Primary-Subscription-key}&api-version=1.0&points=-73.998672,40.714728|150.644,-34.397
     ```
 
 5. Wählen Sie die Schaltfläche **Send (Senden)** aus.  Die folgende JSON-Antwort wird zurückgegeben:
@@ -115,7 +115,7 @@ So erstellen Sie die Anforderung:
 6. Nun wird die [API zum Veröffentlichen von Daten für Punkte](/rest/api/maps/elevation/postdataforpoints) aufgerufen, um die Höhendaten für die beiden gleichen Punkte abzurufen. Wählen Sie auf der Registerkarte **Builder** (Generator) die HTTP-Methode **POST** aus, und geben Sie dann die folgende URL ein (dabei `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel ersetzen):
 
     ```http
-    https://atlas.microsoft.com/elevation/point/json?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0
+    https://atlas.microsoft.com/elevation/point/json?subscription-key={Your-Azure-Maps-Primary-Subscription-key}&api-version=1.0
     ```
 
 7. Legen Sie im Feld **Header** der **POST**-Anforderung `Content-Type` auf `application/json` fest. 
@@ -161,7 +161,7 @@ So erstellen Sie die Anforderung:
 4. Wählen Sie auf der Registerkarte **Builder** (Generator) die HTTP-Methode **GET** aus, und geben Sie dann die folgende URL ein (dabei `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel ersetzen):
 
    ```http
-    https://atlas.microsoft.com/elevation/line/json?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&lines=-73.998672,40.714728|150.644,-34.397&samples=5
+    https://atlas.microsoft.com/elevation/line/json?api-version=1.0&subscription-key={Your-Azure-Maps-Primary-Subscription-key}&lines=-73.998672,40.714728|150.644,-34.397&samples=5
     ```
 
 5. Wählen Sie die Schaltfläche **Send (Senden)** aus.  Die folgende JSON-Antwort wird zurückgegeben:
@@ -251,7 +251,7 @@ So erstellen Sie die Anforderung:
 9. Nun wird die [API zum Veröffentlichen von Daten für Polylinie](/rest/api/maps/elevation/postdataforpolyline) aufgerufen, um die Höhendaten für die drei gleichen Punkte abzurufen.  Wählen Sie auf der Registerkarte **Builder** (Generator) die HTTP-Methode **POST** aus, und geben Sie dann die folgende URL ein (dabei `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel ersetzen):
 
     ```http
-    https://atlas.microsoft.com/elevation/line/json?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&samples=5
+    https://atlas.microsoft.com/elevation/line/json?api-version=1.0&subscription-key={Your-Azure-Maps-Primary-Subscription-key}&samples=5
     ```
 
 10. Legen Sie im Feld **Header** der **POST**-Anforderung `Content-Type` auf `application/json` fest. 
@@ -296,7 +296,7 @@ So erstellen Sie die Anforderung:
 4. Wählen Sie auf der Registerkarte **Builder** (Generator) die HTTP-Methode **GET** aus, und geben Sie dann die folgende URL ein (dabei `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel ersetzen):
 
     ```http
-    https://atlas.microsoft.com/elevation/lattice/json?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0&bounds=-121.66853362143818, 46.84646479863713,-121.65853362143818, 46.85646479863713&rows=2&columns=3
+    https://atlas.microsoft.com/elevation/lattice/json?subscription-key={Your-Azure-Maps-Primary-Subscription-key}&api-version=1.0&bounds=-121.66853362143818, 46.84646479863713,-121.65853362143818, 46.85646479863713&rows=2&columns=3
     ```
 
 5. Wählen Sie **Send** (Senden) aus.  Die Antwort gibt 18 Stichproben für Höhenangaben zurück, jeweils eine für jeden Scheitelpunkt des Rasters.

@@ -3,17 +3,17 @@ title: Optimieren von Azure CDN für den Typ der Inhaltsbereitstellung
 description: Hier erfahren Sie, wie Azure Content Delivery Network basierend auf dem Inhaltstyp die Übermittlung optimieren kann. Bewährte Methoden für die Optimierung verbessern die Leistung und die Entlastung des Ursprungsservers.
 services: cdn
 documentationcenter: ''
-author: asudbring
+author: duongau
 ms.service: azure-cdn
 ms.topic: how-to
 ms.date: 03/25/2019
-ms.author: allensu
-ms.openlocfilehash: 3d207ee09a76509a65a2645515b182f8d92753b0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: duau
+ms.openlocfilehash: 155f1f2744abf7e74ea15fc4a3909d44d3f7e0ef
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100387919"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131434881"
 ---
 # <a name="optimize-azure-cdn-for-the-type-of-content-delivery"></a>Optimieren von Azure CDN für den Typ der Inhaltsbereitstellung
 

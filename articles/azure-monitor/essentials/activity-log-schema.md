@@ -6,12 +6,12 @@ services: azure-monitor
 ms.topic: reference
 ms.date: 09/30/2020
 ms.author: bwren
-ms.openlocfilehash: 721563fa140dfddbfb5984db8465187fb90018e5
-ms.sourcegitcommit: f3ec73fb5f8de72fe483995bd4bbad9b74a9cc9f
+ms.openlocfilehash: 1052ccb854248cb107e6e0b1bf99e2df9156d181
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/04/2021
-ms.locfileid: "102049167"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131473792"
 ---
 # <a name="azure-activity-log-event-schema"></a>Ereignisschema des Azure-Aktivitätsprotokolls
 Das [Azure-Aktivitätsprotokoll](./platform-logs-overview.md) gewährt Einblick in alle Ereignisse auf Abonnementebene, die in Azure aufgetreten sind. Dieser Artikel beschreibt die Kategorien des Aktivitätsprotokolls und das jeweils zugehörige Schema. 

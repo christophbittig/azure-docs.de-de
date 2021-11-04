@@ -8,12 +8,12 @@ ms.service: powerbi
 ms.subservice: powerbi-custom-visuals
 ms.topic: how-to
 ms.date: 09/21/2021
-ms.openlocfilehash: c18e932aecbce25e4766b4b5a134f350af2d6193
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 71668909cb888da26155a5ae50135e30fa276ab1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128700289"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131079298"
 ---
 # <a name="configure-power-bi-visual-offer-listing-details"></a>Konfigurieren Sie die visuellen Angebotsdetails in Power BI
 
@@ -27,7 +27,7 @@ Geben Sie die Einzelheiten des Angebots in einer oder mehreren unterstützten Sp
 
 ## <a name="marketplace-details"></a>Marketplace-Details
 
-- Der **[Name](https://aka.ms/PBIvisualreservename)** , den Sie hier eingeben, wird den Kunden als Titel des Angebots angezeigt. Dieses Feld ist mit dem Namen vorbelegt, den Sie bei der Erstellung des Angebots eingegeben haben, aber Sie können ihn ändern. Wenn Sie weitere Namen reservieren möchten (z. B. in einer anderen Sprache), wählen Sie [Weitere Namen reservieren](power-bi-visual-manage-names.md).
+- Der **[Name](/office/dev/store/reserve-solution-name)** , den Sie hier eingeben, wird den Kunden als Titel des Angebots angezeigt. Dieses Feld ist mit dem Namen vorbelegt, den Sie bei der Erstellung des Angebots eingegeben haben, aber Sie können ihn ändern. Wenn Sie weitere Namen reservieren möchten (z. B. in einer anderen Sprache), wählen Sie [Weitere Namen reservieren](power-bi-visual-manage-names.md).
 - Geben Sie eine **Zusammenfassung** Ihres Angebots für die Zusammenfassung der Suchergebnisse ein. Diese Beschreibung kann in Marketplace-Suchergebnissen verwendet werden.
 - Geben Sie eine ausführliche **Beschreibung** Ihres Angebots mit bis zu 3.000 Zeichen ein. Sie wird Kunden in der Übersicht der Marketplace-Auflistung angezeigt.
 - Fügen Sie bis zu drei **Suchschlüsselwörter** hinzu, um Personen bei der Suche nach Ihrem Angebot zu unterstützen.
@@ -51,7 +51,7 @@ Legen Sie mindestens einen und bis zu fünf Screenshots vor. Das Format sollte P
 
 Um das Interesse der Nutzer an Ihrem benutzerdefinierten Bildmaterial zu steigern, stellen Sie einen **YouTube**- oder **Vimeo**-Link zu einem Video über Ihr Bildmaterial bereit. Das Format der URL muss „https://“ oder „http://“ enthalten.
 
-Tipps, wie Sie Ihr Angebot so effektiv wie möglich gestalten können, finden Sie unter [Tipps zur Erstellung effektiver Angebote](https://aka.ms/PBIvisualeffectivelisting).
+Tipps, wie Sie Ihr Angebot so effektiv wie möglich gestalten können, finden Sie unter [Tipps zur Erstellung effektiver Angebote]().
 
 Weitere Ressourcen für Marketplace-Listen finden Sie unter [Bewährte Methoden für Angebotslistung](gtm-offer-listing-best-practices.md).
 

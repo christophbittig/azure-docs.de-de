@@ -11,21 +11,18 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/18/2021
-ms.author: gunnarc
-ms.openlocfilehash: 194e425ca62cbe36fa163efaf88a75fb7e1f09f9
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.date: 11/01/2021
+ms.author: ibthampy
+ms.openlocfilehash: 77f6eaf0cbd9478df6659310c61fa4616c17c749
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130175881"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131458492"
 ---
 # <a name="azure-guest-os"></a>Azure-Gastbetriebssystem
 Die folgenden Tabellen zeigen die Microsoft Security Response Center-Updates (MSRC), die auf das Azure-Gastbetriebssystem angewendet wurden. Durchsuchen Sie diesen Artikel, um zu ermitteln, ob ein bestimmtes Update für das Gastbetriebssystem gilt, das Sie verwenden. Updates werden für die [Familie][family-explain], in der sie eingeführt wurden, immer in die jeweils neueste Version übertragen.
 
->[!NOTE] 
-
->Das Gastbetriebssystem für Oktober wird derzeit auf Clouddienst-VMs eingeführt, die für automatische Updates konfiguriert sind. Wenn die Bereitstellung abgeschlossen ist, wird diese Version für manuelle Updates über das Azure-Portal und Konfigurationsdateien verfügbar gemacht. Die folgenden Patches sind im Gastbetriebssystem für Oktober enthalten. Änderungen der Liste vorbehalten. 
 
 ## <a name="october-2021-guest-os"></a>Gastbetriebssystem für Oktober 2021
 | Produktkategorie | Übergeordneter KB-Artikel | Beschreibung des Sicherheitsrisikos | Gastbetriebssystem | Datum der ersten Einführung |

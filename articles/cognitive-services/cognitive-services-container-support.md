@@ -8,15 +8,15 @@ manager: nitinme
 ms.custom: cog-serv-seo-aug-2020, ignite-fall-2021
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 09/24/2021
+ms.date: 10/28/2021
 ms.author: aahi
 keywords: lokal, Docker, Container, Kubernetes
-ms.openlocfilehash: 0057888a85acc2356660fecbf8a77071401e8e3c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0b81d190aa7b565f40dd73fa5054253a46ae7041
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131033473"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131439251"
 ---
 # <a name="azure-cognitive-services-containers"></a>Azure Cognitive Services-Container
 
@@ -90,7 +90,7 @@ Darüber hinaus werden einige Container im Angebot [einer Ressource für mehrere
 * Maschinelles Sehen
 * Gesicht
 * LUIS
-* Textanalyse
+* Sprachdienst
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

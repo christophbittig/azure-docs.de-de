@@ -3,7 +3,7 @@ title: Erstellen eines Azure CDN-Endpunkts | Microsoft-Dokumentation
 description: In diesem Artikel wird gezeigt, wie Sie einen neuen Azure Content Delivery Network (CDN)-Endpunkt erstellen, einschließlich erweiterter Einstellungen.
 services: cdn
 documentationcenter: ''
-author: asudbring
+author: duongau
 manager: danielgi
 editor: ''
 ms.service: azure-cdn
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.date: 09/09/2021
-ms.author: allensu
+ms.author: duau
 ms.custom: mvc
-ms.openlocfilehash: 18f4276c3013f50ceacf74f4c8cec068f0de88cb
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e7ca38a7d4a7965b99b7392a3543dc4d28455e6d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124775529"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131454977"
 ---
 # <a name="create-an-azure-cdn-endpoint"></a>Erstellen eines Azure CDN-Endpunkts
 In diesem Artikel werden alle Einstellungen zum Erstellen eines [Azure Content Delivery Network (CDN)](cdn-overview.md)-Endpunkts in einem vorhandenen CDN-Profil beschrieben. Nach der Erstellung eines Profils und eines Endpunkts können Sie mit der Bereitstellung von Inhalten für Ihre Kunden beginnen. Eine Schnellstartanleitung zum Erstellen eines Profils und-Endpunkts finden Sie unter [Schnellstart: Erstellen eines Azure CDN-Profils und -Endpunkts](cdn-create-new-endpoint.md).

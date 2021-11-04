@@ -3,12 +3,12 @@ title: Aktivieren einer verwalteten Identität in einer Containergruppe
 description: Erfahren Sie, wie Sie in Azure Container Instances eine verwaltete Identität zur Authentifizierung bei anderen Azure-Diensten aktivieren können.
 ms.topic: article
 ms.date: 07/02/2020
-ms.openlocfilehash: 44f4e15e6e11fac884c2d117aae351615420ba43
-ms.sourcegitcommit: 192444210a0bd040008ef01babd140b23a95541b
+ms.openlocfilehash: 03b129b3aa986bb9858280e08c2532ef73806e91
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114219278"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131057854"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Verwenden von verwalteten Identitäten mit Azure Container Instances
 
@@ -358,7 +358,7 @@ Eine vom Benutzer zugewiesene Identität ist eine Ressourcen-ID im folgenden For
 
 Sie können eine oder mehrere vom Benutzer zugewiesene Identitäten aktivieren.
 
-```YAML
+```yaml
 identity:
   type: UserAssigned
   userAssignedIdentities:
@@ -367,7 +367,7 @@ identity:
 
 ### <a name="system-assigned-identity"></a>Vom System zugewiesene Identität
 
-```YAML
+```yaml
 identity:
   type: SystemAssigned
 ```
@@ -376,7 +376,7 @@ identity:
 
 Sie können in einer Containergruppe sowohl eine vom System zugewiesene Identität als auch eine oder mehrere vom Benutzer zugewiesene Identitäten aktivieren.
 
-```YAML
+```yml
 identity:
   type: SystemAssigned, UserAssigned
   userAssignedIdentities:

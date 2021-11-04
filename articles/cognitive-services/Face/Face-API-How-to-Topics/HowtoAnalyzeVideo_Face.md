@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6f9fd7f2827e298f3273ad11ab104b75a7e81582
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 4624e60ba6ffbcfc11ad641c098bb40b1ae6afab
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121744830"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131071399"
 ---
 # <a name="example-how-to-analyze-videos-in-real-time"></a>Beispiel: Analysieren von Videos in Echtzeit
 
@@ -173,7 +173,7 @@ Wenn Sie zum Integrieren bereit sind, können Sie **in Ihren eigenen Projekten a
 
 In diesem Leitfaden wurde beschrieben, wie Sie nahezu in Echtzeit eine Analyse für Live-Videodatenströme durchführen, indem Sie die APIs für Gesichtserkennung, Maschinelles Sehen und Emotionen verwenden, und wie Sie erste Schritte mit unserem Beispielcode ausführen.
 
-Wir freuen uns über Feedback und Vorschläge im [GitHub-Repository](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) und über allgemeineres Feedback zu den APIs über unsere [UserVoice](https://feedback.azure.com/forums/932041-azure-cognitive-services?category_id=395743)-Website.
+Wir freuen uns über Feedback und Vorschläge im [GitHub-Repository](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) und über allgemeineres Feedback zu den APIs über unsere [UserVoice](https://feedback.azure.com/d365community/forum/09041fae-0b25-ec11-b6e6-000d3a4f0858)-Website.
 
 ## <a name="related-topics"></a>Verwandte Themen
 - [Aufrufen der Erkennungs-API](HowtoDetectFacesinImage.md)

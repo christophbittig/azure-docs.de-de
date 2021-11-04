@@ -1,20 +1,20 @@
 ---
 title: Erstellen eines Azure CDN-Profils (Content Delivery Network) und eines entsprechenden Endpunkts mithilfe der Azure CLI
 description: Azure CLI-Beispielskripts zum Erstellen eines Azure CDN-Profils, eines CDN-Endpunkts, einer CDN-Ursprungsgruppe, eines CDN-Ursprungs und einer benutzerdefinierten Domäne.
-author: asudbring
-ms.author: allensu
+author: duongau
+ms.author: duau
 manager: danielgi
 ms.date: 03/09/2021
 ms.topic: sample
 ms.service: azure-cdn
 ms.devlang: azurecli
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ce01c1f851a5dbaedc85d848b12bf0b0831a16ef
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 46966ed6e4e0db1be50919d368bf1ff2fd0fa85a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104723493"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131476850"
 ---
 # <a name="create-an-azure-cdn-profile-and-endpoint-using-the-azure-cli"></a>Erstellen eines Azure CDN-Profils und eines entsprechenden Endpunkts mithilfe der Azure CLI
 

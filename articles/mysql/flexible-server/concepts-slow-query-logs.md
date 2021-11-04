@@ -6,26 +6,23 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: bf3aa8b675e242952f32678059b8b2c89d5b95e0
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 15757c3a7e394dcc52c83e8eeef54d8b44b97a34
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129612425"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131468193"
 ---
-# <a name="slow-query-logs-in-azure-database-for-mysql-flexible-server-preview"></a>Protokolle für langsame Abfragen für Azure Database for MySQL Flexible Server (Vorschau)
+# <a name="slow-query-logs-in-azure-database-for-mysql-flexible-server"></a>Protokolle für langsame Abfragen für Azure Database for MySQL Flexible Server
 
-[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
-> [!IMPORTANT]
-> Azure Database for MySQL Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
+[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 In Azure Database for MySQL Flexible Server ist das Protokoll für langsame Abfragen für Benutzer zur Konfiguration und zum Zugriff verfügbar. Protokolle für langsame Abfragen sind standardmäßig deaktiviert und können aktiviert werden, um bei der Identifizierung von Leistungsengpässen während der Problembehandlung zu helfen.
 
 Weitere Informationen zum MySQL-Protokoll für langsame Abfragen finden Sie im [Abschnitt zu Protokollen für langsame Abfragen](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html) in der MySQL-Engine-Dokumentation.
 
-## <a name="configure-slow-query-logging"></a>Konfigurieren der Protokollierung für langsame Abfragen 
-Das Protokoll für langsame Abfragen ist standardmäßig deaktiviert. Legen Sie den Serverparameter `slow_query_log` auf *ON* (EIN) fest, um Protokolle zu aktivieren. Diese Konfiguration kann über das Azure-Portal oder die Azure CLI erfolgen <!-- add link to server parameter-->. 
+## <a name="configure-slow-query-logging"></a>Konfigurieren der Protokollierung für langsame Abfragen
+Das Protokoll für langsame Abfragen ist standardmäßig deaktiviert. Legen Sie den Serverparameter `slow_query_log` auf *ON* (EIN) fest, um Protokolle zu aktivieren. Diese Konfiguration kann über das Azure-Portal oder die Azure CLI erfolgen <!-- add link to server parameter-->.
 
 Sie können die folgenden anderen Parameter verwenden, um das Verhalten der Protokolle für langsame Abfragen zu konfigurieren:
 
@@ -86,7 +83,7 @@ Sobald die Protokolle für langsamen Abfragen an Azure Monitor-Protokolle über 
     AzureDiagnostics
     | where LogicalServerName_s == '<your server name>'
     | where Category == 'MySqlSlowLogs'
-    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s 
+    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s
     | where query_time_d > 10
     ```
 
@@ -96,7 +93,7 @@ Sobald die Protokolle für langsamen Abfragen an Azure Monitor-Protokolle über 
     AzureDiagnostics
     | where LogicalServerName_s == '<your server name>'
     | where Category == 'MySqlSlowLogs'
-    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s 
+    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s
     | order by query_time_d desc
     | take 5
     ```
@@ -107,7 +104,7 @@ Sobald die Protokolle für langsamen Abfragen an Azure Monitor-Protokolle über 
     AzureDiagnostics
     | where LogicalServerName_s == '<your server name>'
     | where Category == 'MySqlSlowLogs'
-    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s 
+    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s
     | summarize count(), min(query_time_d), max(query_time_d), avg(query_time_d), stdev(query_time_d), percentile(query_time_d, 95) by LogicalServerName_s
     ```
 
@@ -117,7 +114,7 @@ Sobald die Protokolle für langsamen Abfragen an Azure Monitor-Protokolle über 
     AzureDiagnostics
     | where LogicalServerName_s == '<your server name>'
     | where Category == 'MySqlSlowLogs'
-    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s 
+    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s
     | summarize count() by LogicalServerName_s, bin(TimeGenerated, 5m)
     | render timechart
     ```
@@ -127,10 +124,10 @@ Sobald die Protokolle für langsamen Abfragen an Azure Monitor-Protokolle über 
     ```Kusto
     AzureDiagnostics
     | where Category == 'MySqlSlowLogs'
-    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s 
+    | project TimeGenerated, LogicalServerName_s, event_class_s, start_time_t , query_time_d, sql_text_s
     | where query_time_d > 10
-    ```    
-    
+    ```
+
 ## <a name="next-steps"></a>Nächste Schritte
 - Informieren Sie sich über [Überwachungsprotokolle](concepts-audit-logs.md).
 - [Query Performance Insight](tutorial-query-performance-insights.md)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/09/2021
 ms.author: bagol
-ms.openlocfilehash: 7d69235d1d7131df8b5abcb1c9073defab8f2354
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: df33492b544a9d8875d6996b89acf225f3ace4f4
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131023346"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131449277"
 ---
 # <a name="resources-for-creating-azure-sentinel-custom-connectors"></a>Ressourcen zum Erstellen benutzerdefinierter Azure Sentinel-Connectors
 
@@ -177,7 +177,7 @@ Zwar erfordert das direkte Aufrufen eines RESTful-Endpunkts mehr Programmieraufw
 Weitere Informationen finden Sie unter [Log Analytics-Datensammler-API](../azure-monitor/logs/data-collector-api.md), insbesondere in den folgenden Beispielen:
 
 - [C#](../azure-monitor/logs/data-collector-api.md#c-sample)
-- [Python 2](../azure-monitor/logs/data-collector-api.md#python-2-sample)
+- [Python](../azure-monitor/logs/data-collector-api.md#python-sample)
 
 ## <a name="connect-with-azure-functions"></a>Verbinden mit Azure Functions
 
@@ -210,7 +210,7 @@ Weitere Informationen zur Analyse der Abfragezeit finden Sie unter [Parsers](nor
 
 > [!NOTE]
 > Eine Aktualisierung Ihres Parsers gilt auch für Daten, die Sie bereits in Azure Sentinel erfasst haben.
-> 
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Verwenden Sie die in Azure Sentinel erfassten Daten, um Ihre Umgebung mit einem der folgenden Prozesse zu sichern:

@@ -2,20 +2,20 @@
 title: 'Problembehandlung: Rechnungen werden nicht im Azure-Portal angezeigt'
 description: Beheben eines Problems beim Anzeigen Ihrer Rechnung im Azure-Portal
 services: cost-management-billing
-author: amberbhargava
-ms.reviewer: banders
+author: bandersmsft
+ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
 ms.date: 06/25/2021
 ms.author: banders
-ms.openlocfilehash: aac769894a85db94c68bc4c73971809775ea4da4
-ms.sourcegitcommit: cd8e78a9e64736e1a03fb1861d19b51c540444ad
+ms.openlocfilehash: 6f90d077b9cb7e1836170084c683e47cdafc480e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112971325"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131464678"
 ---
 # <a name="troubleshoot-issues-while-trying-to-view-invoice-in-the-azure-portal"></a>Beheben von Problemen beim Anzeigen von Rechnungen im Azure-Portal
 

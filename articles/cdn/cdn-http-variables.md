@@ -3,7 +3,7 @@ title: HTTP-Variablen für Azure CDN-Regel-Engine | Microsoft-Dokumentation
 description: Erfahren Sie mehr über HTTP-Variablen, mit denen Sie HTTP-Anforderungs- und Antwortmetadaten für einige Funktionen der Regel-Engine abrufen können. Verwenden Sie Metadaten, um eine Anforderung/Antwort zu ändern.
 services: cdn
 documentationcenter: ''
-author: asudbring
+author: duongau
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
-ms.author: allensu
-ms.openlocfilehash: a2d9fc98ba6f514afbd88e543a859a69e0fc6c6b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: duau
+ms.openlocfilehash: 566c5a20ecf96797ae6c8106e9d70e77cc87acd3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "88192676"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131423449"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>HTTP-Variablen für Azure CDN-Regel-Engine
 HTTP-Variablen stellen die Methoden für den Abruf von HTTP-Anforderungs- und -Antwortmetadaten bereit. Diese Metadaten können dann zur dynamischen Änderung einer Anforderung oder Antwort verwendet werden. Die Verwendung von HTTP-Variablen ist auf die folgenden Regel-Engine-Features beschränkt :

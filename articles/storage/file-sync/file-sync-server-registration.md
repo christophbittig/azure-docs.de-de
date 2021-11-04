@@ -8,12 +8,12 @@ ms.date: 04/13/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2e0e42cb89e4fa15046f3b2de2f43637ca975bfe
-ms.sourcegitcommit: df574710c692ba21b0467e3efeff9415d336a7e1
+ms.openlocfilehash: d3b85de94c0e323cf33bd3cc2cd7fdf11bf654b2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/28/2021
-ms.locfileid: "110679148"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131022472"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>Verwalten registrierter Server mit der Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Dies erfolgt durch Umwandeln der Windows-Server in einen Schnellcache der Azure-Dateifreigabe. Sie können alle unter Windows Server verfügbaren Protokolle für den lokalen Zugriff auf Ihre Daten (einschließlich SMB, NFS und FTPS) sowie beliebig viele Caches weltweit verwenden.
@@ -35,7 +35,7 @@ Bevor Sie einen Server bei einem Speichersynchronisationsdienst registrieren kö
 
 * Stellen Sie sicher, dass das Azure PowerShell-Modul auf dem Server installiert ist. Wenn der Server Mitglied eines Failoverclusters ist, ist das Az-Modul für jeden Knoten im Cluster erforderlich. Weitere Informationen zur Installation des Az-Moduls finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/install-Az-ps).
 
-    > [!Note]  
+    > [!NOTE]
     > Es wird empfohlen, die neueste Version des Az-PowerShell-Moduls zu verwenden, um einen Server zu registrieren bzw. die Registrierung aufzuheben. Wenn das Az-Paket zuvor auf diesem Server installiert wurde (und die PowerShell-Version auf diesem Server 5.* oder höher ist), können Sie das Paket mit dem Cmdlet `Update-Module` aktualisieren. 
 * Wenn Sie einen Netzwerkproxyserver in Ihrer Umgebung nutzen, konfigurieren Sie auf dem Server Proxyeinstellungen, die für den Synchronisierungs-Agent verwendet werden.
     1. Bestimmen Sie die Proxy-IP-Adresse und die zugehörige Portnummer.
@@ -49,7 +49,7 @@ Bevor Sie einen Server bei einem Speichersynchronisationsdienst registrieren kö
         * Zurücksetzen des Proxys: netsh winhttp reset proxy
         * Erfolgt diese Einrichtung, nachdem der Agent installiert wurde, starten Sie den Synchronisierungs-Agent neu: netstop filesyncsvc
     
-```XML
+```xml
     Figure 1:
     <system.net>
         <defaultProxy enabled="true" useDefaultCredentials="true">
@@ -73,7 +73,7 @@ Damit ein Server als *Serverendpunkt* in einer *Synchronisierungsgruppe* von der
 
 4. Wenn der Server noch nicht registriert wurde, wird die Benutzeroberfläche für die Serverregistrierung nach Abschluss der Installation geöffnet.
 
-> [!Important]  
+> [!IMPORTANT]  
 > Wenn der Server Mitglied eines Failoverclusters ist, muss der Azure-Dateisynchronisierungs-Agent auf jedem Knoten im Cluster installiert werden.
 
 #### <a name="register-the-server-using-the-server-registration-ui"></a>Registrieren des Servers mit der Benutzeroberfläche für die Serverregistrierung
@@ -90,7 +90,7 @@ Damit ein Server als *Serverendpunkt* in einer *Synchronisierungsgruppe* von der
 
     ![Anmeldedialogfeld](media/storage-sync-files-server-registration/server-registration-ui-3.png)
 
-> [!Important]  
+> [!IMPORTANT]  
 > Wenn der Server Mitglied eines Failoverclusters ist, muss die Serverregistrierung für jeden einzelnen Server ausgeführt werden. Wenn Sie die registrierten Server im Azure-Portal anzeigen, werden alle Knoten von der Azure-Dateisynchronisierung automatisch als Mitglied des gleichen Failoverclusters erkannt und entsprechend gruppiert.
 
 #### <a name="register-the-server-with-powershell"></a>Registrieren des Servers mit PowerShell
@@ -103,7 +103,7 @@ Register-AzStorageSyncServer -ResourceGroupName "<your-resource-group-name>" -St
 ### <a name="unregister-the-server-with-storage-sync-service"></a>Aufheben der Registrierung des Servers beim Speichersynchronisierungsdienst
 Zum Aufheben der Registrierung eines Servers bei einem Speichersynchronisierungsdienst sind mehrere Schritte erforderlich. Im Folgenden wird das ordnungsgemäße Aufheben der Serverregistrierung behandelt.
 
-> [!Warning]  
+> [!WARNING]  
 > Versuchen Sie nicht, Probleme mit der Synchronisierung, dem Cloudtiering oder anderen Aspekten der Azure-Dateisynchronisierung zu behandeln, indem Sie die Registrierung eines Servers aufheben und diesen wieder registrieren oder die Serverendpunkte entfernen und neu erstellen, es sei denn, Sie werden ausdrücklich von einem Microsoft-Techniker dazu aufgefordert. Das Aufheben der Registrierung eines Servers und das Entfernen von Serverendpunkten ist ein destruktiver Vorgang. Mehrstufige Dateien auf den Volumes mit Serverendpunkten werden nicht erneut mit ihren Speicherorten in der Azure-Dateifreigabe verbunden, nachdem die registrierten Server und Serverendpunkte neu erstellt wurden. Dies führt zu Synchronisierungsfehlern. Beachten Sie, dass mehrstufige Dateien, die sich außerhalb eines Endpunktnamespace befinden, dauerhaft verloren gehen. Auf Serverendpunkten sind möglicherweise auch dann mehrstufige Dateien vorhanden, wenn das Cloudtiering nie aktiviert wurde.
 
 #### <a name="optional-recall-all-tiered-data"></a>(Optional) Abrufen aller ausgelagerten Daten
@@ -114,7 +114,7 @@ Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.Se
 Invoke-StorageSyncFileRecall -Path <a-volume-with-server-endpoints-on-it>
 ```
 
-> [!Warning]  
+> [!WARNING]  
 > Wenn das lokale Volume, auf dem der Serverendpunkt gehostet wird, nicht genügend freien Speicherplatz aufweist, um alle ausgelagerten Daten abzurufen, führt das Cmdlet `Invoke-StorageSyncFileRecall` zu einem Fehler.  
 
 #### <a name="remove-the-server-from-all-sync-groups"></a>Entfernen des Servers aus allen Synchronisierungsgruppen
@@ -152,13 +152,13 @@ Nachdem alle Daten abgerufen wurden und der Server aus allen Synchronisierungsgr
 ## <a name="ensuring-azure-file-sync-is-a-good-neighbor-in-your-datacenter"></a>Sicherstellen, dass die Azure-Dateisynchronisierung in Ihrem Rechenzentrum ein guter Nachbar ist 
 Da die Azure-Dateisynchronisierung selten der einzige Dienst ist, der in Ihrem Rechenzentrum ausgeführt wird, empfiehlt es sich, die Netzwerk- und Speichernutzung der Azure-Dateisynchronisierung zu beschränken.
 
-> [!Important]  
+> [!IMPORTANT]  
 > Das Festlegen von zu niedrigen Grenzwerten wirkt sich auf die Leistung der Azure-Dateisynchronisierung und auf Rückrufe aus.
 
 ### <a name="set-azure-file-sync-network-limits"></a>Festlegen von Netzwerklimits für die Azure-Dateisynchronisierung
 Sie können die Netzwerknutzung der Azure-Dateisynchronisierung mithilfe der `StorageSyncNetworkLimit`-Cmdlets drosseln.
 
-> [!Note]  
+> [!NOTE]  
 > Netzwerkgrenzwerte gelten nicht, wenn auf eine mehrstufige Datei zugegriffen wird.
 
 Sie können beispielsweise ein neues Drossellimit erstellen, um sicherzustellen, dass die Azure-Dateisynchronisierung an Werktagen zwischen 9:00 und 17:00 Uhr nicht mehr als 10 MBit/s verbraucht: 

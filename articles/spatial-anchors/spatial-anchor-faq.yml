@@ -9,12 +9,12 @@ metadata:
   ms.date: 11/20/2020
   ms.topic: overview
   ms.service: azure-spatial-anchors
-  ms.openlocfilehash: 718ff0b147b55801d9b54b66e7218452db0de0b6
-  ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
+  ms.openlocfilehash: 952f468b0bbe0387cc7fbdf3cf65d42c966eb749
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 06/19/2021
-  ms.locfileid: "112384336"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131474911"
 title: Häufig gestellte Fragen zu Azure Spatial Anchors
 summary: >
   Azure Spatial Anchors ist ein verwalteter Clouddienst und eine Entwicklerplattform für Mixed Reality-Umgebungen mit mehreren Benutzern und räumlichem Bezug für HoloLens-, iOS- und Android-Geräte.
@@ -31,7 +31,7 @@ sections:
   - question: >
       Muss eine Verbindung mit der Cloud bestehen, um Azure Spatial Anchors verwenden zu können?
     answer: >
-      Für Azure Spatial Anchors ist derzeit eine Netzwerkverbindung mit dem Internet erforderlich. Wir freuen uns über Ihre Kommentare auf unserer [Website für Feedback](https://feedback.azure.com/forums/919252-azure-spatial-anchors).
+      Für Azure Spatial Anchors ist derzeit eine Netzwerkverbindung mit dem Internet erforderlich. Wir freuen uns über Ihre Kommentare auf unserer [Website für Feedback](https://feedback.azure.com/d365community/forum/f47d9b25-0725-ec11-b6e6-000d3a4f07b8).
   - question: >
       Welche Konnektivitätsanforderungen gelten für Azure Spatial Anchors?
     answer: >
@@ -109,7 +109,7 @@ sections:
   - question: >
       Kann ich meine Apps mit Azure Spatial Anchors in App Stores veröffentlichen? Kann ich Azure Spatial Anchors für unternehmenskritische Produktionsszenarien nutzen?
     answer: >
-      Ja, Azure Spatial Anchors ist allgemein verfügbar und verfügt über eine Standard-SLA für Azure-Dienste. Gerne können Sie Apps für Ihre Produktionsbereitstellungen entwickeln und uns Ihr [Feedback](https://feedback.azure.com/forums/919252-azure-spatial-anchors) zum Produkt mitteilen.
+      Ja, Azure Spatial Anchors ist allgemein verfügbar und verfügt über eine Standard-SLA für Azure-Dienste. Gerne können Sie Apps für Ihre Produktionsbereitstellungen entwickeln und uns Ihr [Feedback](https://feedback.azure.com/d365community/forum/f47d9b25-0725-ec11-b6e6-000d3a4f07b8) zum Produkt mitteilen.
   - question: >
       Gelten bestimmte Drosselungslimits?
     answer: >

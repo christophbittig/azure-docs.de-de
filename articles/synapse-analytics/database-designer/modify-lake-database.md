@@ -4,16 +4,16 @@ description: Erfahren Sie, wie Sie mit dem Database Designer eine Lake-Datenbank
 author: aamerril
 ms.author: aamerril
 ms.service: synapse-analytics
-ms.subservice: ''
+ms.subservice: database-editor
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: 69bb07492c5c69f569b04246441da0d5b47e67ab
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: fbd84d3999b5aec4ea04139b1d2933a366edb5e7
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095246"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131433078"
 ---
 # <a name="how-to-modify-a-lake-database"></a>Wie ändere ich eine Lake-Datenbank ab?
 

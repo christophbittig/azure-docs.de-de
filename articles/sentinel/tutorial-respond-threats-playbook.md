@@ -11,19 +11,21 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
 ms.topic: tutorial
-ms.custom: mvc
+ms.custom: mvc, ignite-fall-2021
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/17/2021
 ms.author: yelevin
-ms.openlocfilehash: 152b034fe5fd5571ec58c001a8befc98c84f4107
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 903a0ae946a60ff4b1dd2fec7789fa38986d3bcb
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737543"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131083781"
 ---
 # <a name="tutorial-use-playbooks-with-automation-rules-in-azure-sentinel"></a>Tutorial: Verwenden von Playbooks mit Automatisierungsregeln in Azure Sentinel
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 In diesem Tutorial erfahren Sie, wie Sie Playbooks mit Automatisierungsregeln verwenden, um Ihre Reaktion auf Vorfälle zu automatisieren und von Azure Sentinel erkannte Sicherheitsbedrohungen zu behandeln. Das Tutorial umfasst Folgendes:
 

@@ -1,17 +1,17 @@
 ---
 title: Einbinden von Clients in den Microsoft Azure FXT Edge Filer-Cluster
 description: Hier erfahren Sie, wie NFS-Clientcomputer den Azure FXT Edge Filer-Hybridspeichercache einbinden können.
-author: ekpgh
+author: femila
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 06/20/2019
-ms.author: v-erkel
-ms.openlocfilehash: 77663500c6a3e4c432506a5859892506f8995de1
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.author: femila
+ms.openlocfilehash: 831d023251d4de4d56d35eeb8f81f8d321d143dc
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128552602"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131070639"
 ---
 # <a name="tutorial-mount-the-cluster"></a>Tutorial: Einbinden des Clusters
 

@@ -3,19 +3,19 @@ title: 'Tutorial: Anmelden von Benutzern bei einer Node.js- und Express-Web-App 
 titleSuffix: Microsoft identity platform
 description: In diesem Tutorial fügen Sie Unterstützung für die Anmeldung von Benutzern in einer Web-App hinzu.
 services: active-directory
-author: KarenH444
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 02/17/2021
-ms.author: karenhoran
-ms.openlocfilehash: 4767d7aa31d705e25f8d87ca24f928c64fe022f1
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.author: marsma
+ms.openlocfilehash: 1a61eb908221d4fe2eea9d74d4fbc02c7660ba85
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130161601"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131507926"
 ---
 # <a name="tutorial-sign-in-users-in-a-nodejs--express-web-app"></a>Tutorial: Anmelden von Benutzern bei einer Node.js- und Express-Web-App
 

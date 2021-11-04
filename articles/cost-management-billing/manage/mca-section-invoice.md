@@ -1,19 +1,20 @@
 ---
 title: Organisieren Ihrer Rechnung basierend auf Ihren Anforderungen – Azure
 description: Hier erfahren Sie, wie Sie die Kosten in Ihrer Rechnung organisieren können. Sie können Ihr Abrechnungskonto anpassen, indem Sie Abrechnungsprofile und Rechnungsabschnitte erstellen.
-author: amberbhargava
+author: bandersmsft
+ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
 ms.date: 09/15/2021
 ms.author: banders
-ms.openlocfilehash: 87a55b588282a0a971f31ea496865a5db4dcb8c5
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 3243f877eb8f573cb06a6f600842763e6c67518b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128649642"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131454198"
 ---
 # <a name="organize-costs-by-customizing-your-billing-account"></a>Organisieren von Kosten durch Anpassen Ihres Abrechnungskontos
 

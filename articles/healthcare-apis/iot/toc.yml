@@ -24,9 +24,9 @@ items:
     items:
       - name: Empfangen von Gerätedaten über Azure IoT Hub
         href: device-data-through-iot-hub.md
-      - name: Verwenden von Gerätezuordnungen
+      - name: Verwenden der Gerätezuordnung
         href: how-to-use-device-mapping-iot.md
-      - name: Verwenden von FHIR-Zielzuordnungen
+      - name: Verwenden der FHIR-Zielzuordnung
         href: how-to-use-fhir-mapping-iot.md
       - name: Exportieren von IoT-Connectormetriken über Diagnoseeinstellungen
         href: iot-metrics-diagnostics-export.md

@@ -6,14 +6,13 @@ ms.author: cauribeg
 ms.date: 1/5/2021
 ms.topic: quickstart
 ms.service: cache
-ms.custom:
-- mode-portal
-ms.openlocfilehash: 72596521850ba3b3b10ef572aa768672869ec7ec
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.custom: mode-portal
+ms.openlocfilehash: c3660724208118cd0fcb50589b84664a759de74c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128620918"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131039789"
 ---
 # <a name="quickstart-route-azure-cache-for-redis-events-to-web-endpoint-with-the-azure-portal"></a>Schnellstart: Weiterleiten von Azure Cache for Redis-Ereignissen an einen Webendpunkt mit dem Azure-Portal
 
@@ -44,7 +43,7 @@ Vor dem Abonnieren der Ereignisse für die Cache-Instanz erstellen wir zunächst
     4. Aktivieren Sie das Kontrollkästchen **Ich stimme den oben genannten Geschäftsbedingungen zu**.
     5. Wählen Sie die Option **Kaufen**.
 
-    | Einstellung      | Vorgeschlagener Wert  | Beschreibung |
+    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG |
     | ------------ |  ------- | -------------------------------------------------- |
     | **Abonnement** | Öffnen Sie die Dropdownliste, und wählen Sie Ihr Abonnement aus. | Das Abonnement, unter dem diese Web-App erstellt werden soll. |
     | **Ressourcengruppe** | Öffnen Sie die Dropdownliste, und wählen Sie eine Ressourcengruppe aus, oder wählen Sie **Neu erstellen** aus, und geben Sie einen Namen für eine neue Ressourcengruppe ein. | Wenn Sie alle Ihre App-Ressourcen in einer Ressourcengruppe zusammenfassen, können Sie sie einfacher gemeinsam verwalten oder löschen. |
@@ -77,7 +76,7 @@ In diesem Schritt abonnieren Sie ein Thema, um Event Grid mitzuteilen, welche Er
 
 1. Geben Sie auf der Seite **Ereignisabonnement erstellen** Folgendes ein:
 
-    | Einstellung      | Vorgeschlagener Wert  | Beschreibung |
+    | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG |
     | ------------ |  ------- | -------------------------------------------------- |
     | **Name** | Geben Sie einen Namen für das Ereignisabonnement an. | Der Wert muss eine Länge von 3 bis 64 Zeichen haben. Er darf nur Buchstaben, Zahlen und Bindestriche enthalten. |
     | **Ereignistypen** | Wählen Sie in der Dropdownliste aus, welche Ereignistypen per Pushvorgang auf Ihr Ziel übertragen werden sollen. Für diese Schnellstartanleitung skalieren wir unsere Cache-Instanz. | „Patchen“, „Skalierung“, „Import“ und „Export“ sind die verfügbaren Optionen. |

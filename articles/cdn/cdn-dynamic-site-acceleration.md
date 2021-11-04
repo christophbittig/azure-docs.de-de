@@ -3,7 +3,7 @@ title: Beschleunigung dynamischer Websites durch das Azure CDN
 description: Azure CDN unterstützt die Optimierung zur Beschleunigung dynamischer Websites (Dynamic Site Acceleration, DSA) für Dateien mit dynamischen Inhalten.
 services: cdn
 documentationcenter: ''
-author: asudbring
+author: duongau
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.date: 03/25/2019
-ms.author: allensu
-ms.openlocfilehash: 5387fdc224cd77ee5273767df5033a51dc27608c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: duau
+ms.openlocfilehash: f793d236db1c840e3866c7b8e9856720077e429a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96008360"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131426599"
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>Beschleunigung dynamischer Websites durch das Azure CDN
 
