@@ -17,12 +17,12 @@ ms.author: billmath
 author: billmath
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9200c43b76e3ee95618fe1667e4fe0b6a62b160
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: fb602f5ab56ee173683f8f17b741705b26c48e70
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129231651"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131046278"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>Verwalten der AD FS-Vertrauensstellung mit Azure AD und Azure AD Connect
 
@@ -30,10 +30,10 @@ ms.locfileid: "129231651"
 
 Wenn Sie Ihre lokale Umgebung mit Azure AD verbinden, wird eine Vertrauensstellung zwischen dem lokalen Identitätsanbieter und Azure AD erstellt.  Azure AD Connect kann den Verbund zwischen einem lokalen Active Directory-Verbunddienst (AD FS) und Azure AD verwalten. Dieser Artikel enthält eine Übersicht über Folgendes:
 
-* Die verschiedenen Einstellungen, die für die Vertrauensstellung von Azure AD Connect konfiguriert werden
-* Die Ausstellungstransformationsregeln (Anspruchsregeln), die von Azure AD Connect festgelegt werden
-* Das Sichern und Wiederherstellen Ihrer Anspruchsregeln zwischen Upgrades und Konfigurationsupdates 
-* Bewährte Methode zum Sichern und Überwachen der AD FS-Vertrauensstellung mit Azure AD
+* Die verschiedenen Einstellungen, die für die Vertrauensstellung von Azure AD Connect konfiguriert werden,
+* Die Ausstellungstransformationsregeln (Anspruchsregeln), die von Azure AD Connect festgelegt werden.
+* Das Sichern und Wiederherstellen Ihrer Anspruchsregeln zwischen Upgrades und Konfigurationsupdates.
+* Bewährte Methode zum Sichern und Überwachen der AD FS-Vertrauensstellung mit Azure AD.
 
 ## <a name="settings-controlled-by-azure-ad-connect"></a>Von Azure AD Connect gesteuerte Einstellungen
 

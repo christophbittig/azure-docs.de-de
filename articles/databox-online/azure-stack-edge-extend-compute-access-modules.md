@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 05/17/2019
 ms.author: alkohli
-ms.openlocfilehash: 2b4b509e359976fcf8ff0c47270c814a203fcbdd
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 335b1429cceb60f99fada1b7eaf207fb4a64ce2d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123108332"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131088215"
 ---
 # <a name="enable-compute-network-on-your-azure-stack-edge-pro"></a>Aktivieren des Computingnetzwerks auf Ihrem Azure Stack Edge Pro-Gerät
 
@@ -62,7 +62,7 @@ Führen Sie die folgenden Schritte aus, um ein Webserver-App-Modul zu Ihrem Azur
 3. Gehen Sie auf dem Blatt **Benutzerdefinierte IoT Edge-Module** wie folgt vor:
 
     1. Legen Sie einen **Namen** für Ihr Webserver-App-Modul fest, das Sie bereitstellen möchten.
-    2. Stellen Sie einen **Image-URI** für Ihr Modulimage bereit. Ein Modul, das dem angegebenen Namen und den Tags entspricht, wird abgerufen. In diesem Fall ruft `mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine` ein nginx-Image (als 1.15.5-alpine markiert) aus der öffentlichen `mcr.microsoft.com` Registrierung ab.
+    2. Stellen Sie einen **Image-URI** für Ihr Modulimage bereit. Ein Modul, das dem angegebenen Namen und den Tags entspricht, wird abgerufen. In diesem Fall wird `mcr.microsoft.com/oss/nginx/nginx:1.15.5-alpine` ein nginx-Image (als `1.15.5-alpine` markiert) aus der öffentlichen Registrierung `mcr.microsoft.com` pullen.
     3. Fügen Sie den folgenden Beispielcode in die **Optionen für Containererstellung** ein:  
 
         ```

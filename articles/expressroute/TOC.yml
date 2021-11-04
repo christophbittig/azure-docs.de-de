@@ -24,7 +24,7 @@
           href: expressroute-howto-routing-portal-resource-manager.md
         - name: Azure PowerShell
           href: expressroute-howto-routing-arm.md
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: howto-routing-cli.md
     - name: Konfigurieren eines Gateways für ein virtuelles Netzwerk für ExpressRoute
       items:
@@ -46,7 +46,7 @@
           href: how-to-routefilter-portal.md
         - name: Azure PowerShell
           href: how-to-routefilter-powershell.md
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: how-to-routefilter-cli.md
 - name: Konzepte
   items:
@@ -124,7 +124,7 @@
               href: how-to-expressroute-direct-portal.md
             - name: Azure PowerShell
               href: expressroute-howto-erdirect.md
-            - name: Azure CLI
+            - name: Azure-Befehlszeilenschnittstelle
               href: expressroute-howto-expressroute-direct-cli.md
         - name: "Konfigurieren von MACsec für ExpressRoute\_Direct-Ports"
           href: expressroute-howto-macsec.md
@@ -166,6 +166,8 @@
               href: expressroute-howto-reset-peering-portal.md
             - name: Azure PowerShell
               href: expressroute-howto-reset-peering.md
+        - name: Konfigurieren des BGP-Communitywerts für das VNet
+          href: how-to-configure-custom-bgp-communities.md
         - name: Umstellen von öffentlichem Peering auf Microsoft-Peering
           href: how-to-move-peering.md
     - name: Verschlüsseln von Datenverkehr über Leitungen
@@ -218,7 +220,7 @@
       href: monitor-expressroute-reference.md
     - name: Azure PowerShell
       href: /powershell/module/az.network#expressroute
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/azure-cli-reference-for-network
     - name: REST
       href: /rest/api/expressroute/

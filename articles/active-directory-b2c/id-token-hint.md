@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/16/2021
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 557977f3de6e59ff592af65b6ff0357cdc4bfa5d
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 8868c506ab80a2ece97882e080caa5abb5642c24
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130036917"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131007256"
 ---
 # <a name="define-an-id-token-hint-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen ID-Tokenhinweisprofils in einer benutzerdefinierten Azure Active Directory B2C-Richtlinie
 
@@ -24,7 +24,7 @@ Azure AD B2C ermöglicht es Anwendungen der vertrauenden Seite, ein eingehendes 
 
 ## <a name="use-cases"></a>Anwendungsfälle
 
-Mit dieser Lösung können Sie Daten an Azure AD B2C senden, die in einem einzelnen JWT-Token gekapselt sind. Die [Lösung zum Anmelden mit einer E-Mail-Einladung](https://github.com/azure-ad-b2c/samples/blob/master/policies/invite/README.md), bei der Ihr Systemadministrator eine signierte Einladung an Benutzer senden kann, basiert auf „id_token_hint“. Nur Benutzer mit Zugriff auf die Einladungs-E-Mail können das Konto im Verzeichnis erstellen.
+Mit dieser Lösung können Sie Daten an Azure AD B2C senden, die in einem einzelnen JWT-Token gekapselt sind. Die [`Signup with email invitation`-Lösung](https://github.com/azure-ad-b2c/samples/blob/master/policies/invite/README.md), bei der Ihr Systemadministrator eine signierte Einladung an Benutzer senden kann, basiert auf „id_token_hint“. Nur Benutzer mit Zugriff auf die Einladungs-E-Mail können das Konto im Verzeichnis erstellen.
 
 ## <a name="token-signing-approach"></a>Tokensignaturansatz
 
@@ -41,7 +41,7 @@ Bei „id_token_hint“ verfasst der Tokenaussteller (eine App der vertrauenden 
 | Ablaufzeit | `exp` | `1600087315` | Die Zeit, zu der das Token ungültig wird (dargestellt als Epochenzeit). Azure AD B2C überprüft diesen Wert und lehnt das Token ab, wenn es abgelaufen ist.|
 | Nicht vor | `nbf` | `1599482515` | Die Zeit, zu der das Token gültig wird (dargestellt als Epochenzeit). Diese Zeit entspricht in der Regel dem Ausstellungszeitpunkt des Tokens. Azure AD B2C überprüft diesen Wert und lehnt das Token ab, wenn seine Lebensdauer ungültig ist. |
 
- Das folgende Token ist ein Beispiel für ein gültiges ID-Token:
+Das folgende Token ist ein Beispiel für ein gültiges ID-Token:
 
 ```json
 {
@@ -104,7 +104,6 @@ Bei Verwendung eines symmetrischen Schlüssels enthält das Element **Cryptograp
 | attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | client_secret | Ja | Dies ist der Kryptografieschlüssel, der zum Überprüfen der JWT-Tokensignatur verwendet wird.|
-
 
 ## <a name="how-to-guide"></a>Schrittanleitung
 
@@ -188,7 +187,7 @@ Der Tokenaussteller muss folgende Endpunkte bereitstellen:
 * `/.well-known/openid-configuration`: Dies ist ein bekannter Konfigurationsendpunkt mit relevanten Informationen über das Token (z. B. Name des Tokenausstellers und Link zum JWK-Endpunkt). 
 * `/.well-known/keys`: Dies ist der JWK-Endpunkt (JSON Web Key) mit dem öffentlichen Schlüssel, der zum Signieren des Schlüssels (mit dem privaten Schlüsselteil des Zertifikats) verwendet wird.
 
-Sehen Sie sich das .NET-MVC-Controllerbeispiel [TokenMetadataController.cs](https://github.com/azure-ad-b2c/id-token-builder/blob/master/source-code/B2CIdTokenBuilder/Controllers/TokenMetadataController.cs) an.
+Weitere Informationen finden Sie im .NET MVC-Controllerbeispiel [`TokenMetadataController.cs`](https://github.com/azure-ad-b2c/id-token-builder/blob/master/source-code/B2CIdTokenBuilder/Controllers/TokenMetadataController.cs).
 
 #### <a name="step-1-prepare-a-self-signed-certificate"></a>Schritt 1: Vorbereiten eines selbstsignierten Zertifikats
 
@@ -196,7 +195,7 @@ Wenn Sie noch nicht über ein Zertifikat verfügen, können Sie für diese Schri
 
 Führen Sie diesen PowerShell-Befehl aus, um ein selbstsigniertes Zertifikat zu generieren. Ändern Sie das Argument `-Subject` entsprechend Ihrer Anwendung und des Azure AD B2C-Mandantennamens. Sie können auch das `-NotAfter`-Datum anpassen, um einen anderen Ablaufzeitpunkt für das Zertifikat anzugeben.
 
-```PowerShell
+```powershell
 New-SelfSignedCertificate `
     -KeyExportPolicy Exportable `
     -Subject "CN=yourappname.yourtenant.onmicrosoft.com" `
@@ -210,7 +209,7 @@ New-SelfSignedCertificate `
 
 #### <a name="step-2-add-the-id-token-hint-technical-profile"></a>Schritt 2: Hinzufügen des technischen ID-Tokenhinweisprofils 
 
-Das folgende technische Profil überprüft das Token und extrahiert die Ansprüche. Ändern Sie den Metadaten-URI in den bekannten Konfigurationsendpunkt des Tokenausstellers.  
+Das folgende technische Profil überprüft das Token und extrahiert die Ansprüche. Ändern Sie den Metadaten-URI in den bekannten Konfigurationsendpunkt des Tokenausstellers.
 
 ```xml
 <ClaimsProvider>
@@ -253,24 +252,25 @@ Sowohl beim symmetrischen als auch beim asymmetrischen Ansatz wird das technisch
     <OrchestrationStep Order="1" Type="GetClaims" CpimIssuerTechnicalProfileReferenceId="IdTokenHint_ExtractClaims" />
     ``` 
 1. Wiederholen Sie in der Richtlinie für die vertrauende Seite dieselben Eingabeansprüche, die Sie im technischen Profil „IdTokenHint_ExtractClaims “ konfiguriert haben. Beispiel:
+
     ```xml
-   <RelyingParty>
-     <DefaultUserJourney ReferenceId="SignUp" />
-     <TechnicalProfile Id="PolicyProfile">
-       <DisplayName>PolicyProfile</DisplayName>
-       <Protocol Name="OpenIdConnect" />
-       <InputClaims>
-         <InputClaim ClaimTypeReferenceId="email" PartnerClaimType="userId" />
+    <RelyingParty>
+      <DefaultUserJourney ReferenceId="SignUp" />
+      <TechnicalProfile Id="PolicyProfile">
+        <DisplayName>PolicyProfile</DisplayName>
+        <Protocol Name="OpenIdConnect" />
+        <InputClaims>
+          <InputClaim ClaimTypeReferenceId="email" PartnerClaimType="userId" />
         </InputClaims>
-       <OutputClaims>
-        <OutputClaim ClaimTypeReferenceId="displayName" />
-        <OutputClaim ClaimTypeReferenceId="givenName" />
-        <OutputClaim ClaimTypeReferenceId="surname" />
-        <OutputClaim ClaimTypeReferenceId="email" />
-        <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
-        <OutputClaim ClaimTypeReferenceId="identityProvider" />
-       </OutputClaims>
-       <SubjectNamingInfo ClaimType="sub" />
+        <OutputClaims>
+          <OutputClaim ClaimTypeReferenceId="displayName" />
+          <OutputClaim ClaimTypeReferenceId="givenName" />
+          <OutputClaim ClaimTypeReferenceId="surname" />
+          <OutputClaim ClaimTypeReferenceId="email" />
+          <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+          <OutputClaim ClaimTypeReferenceId="identityProvider" />
+        </OutputClaims>
+        <SubjectNamingInfo ClaimType="sub" />
       </TechnicalProfile>
     </RelyingParty>
     ```

@@ -5,22 +5,18 @@ author: TheovanKraay
 ms.author: thvankra
 ms.service: managed-instance-apache-cassandra
 ms.topic: quickstart
-ms.date: 03/02/2021
-ms.openlocfilehash: 6953ffb5542e2a0d8acb9e404b2df0f923a08145
-ms.sourcegitcommit: 8bca2d622fdce67b07746a2fb5a40c0c644100c6
+ms.date: 11/02/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 46c629ead4f86d71974ba26426177ca2d9093609
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111744015"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131032428"
 ---
-# <a name="frequently-asked-questions-about-azure-managed-instance-for-apache-cassandra-preview"></a>Häufig gestellte Fragen zu Azure Managed Instance for Apache Cassandra (Vorschauversion)
+# <a name="frequently-asked-questions-about-azure-managed-instance-for-apache-cassandra"></a>Häufig gestellte Fragen zu Azure Managed Instance for Apache Cassandra
 
 Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure Managed Instance for Apache Cassandra. Es wird beschrieben, wann Sie verwaltete Instanzen nutzen sollten und welche Vorteile, Durchsatzlimits, unterstützten Regionen und anderen Konfigurationsdetails dabei zu beachten sind.
-
-> [!IMPORTANT]
-> Azure Managed Instance for Apache Cassandra befindet sich derzeit in der öffentlichen Vorschauphase.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="general-faq"></a>Allgemeine häufig gestellte Fragen
 
@@ -40,7 +36,7 @@ Nein. Es besteht keine architekturbezogene Abhängigkeit zwischen Azure Managed 
 
 #### <a name="can-i-deploy-azure-managed-instance-for-apache-cassandra-in-any-region"></a>Kann ich Azure Managed Instance for Apache Cassandra in jeder beliebigen Region bereitstellen?
 
-Während der Vorschauphase ist die verwaltete Instanz nur in einer begrenzten Zahl von Regionen verfügbar.
+Derzeit ist die verwaltete Instanz nur in einer begrenzten Zahl von Regionen verfügbar.
 
 ### <a name="what-are-the-storage-and-throughput-limits-of-azure-managed-instance-for-apache-cassandra"></a>Welche Speicher- und Durchsatzlimits gelten für Azure Managed Instance for Apache Cassandra?
 

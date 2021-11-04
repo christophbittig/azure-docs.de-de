@@ -13,16 +13,16 @@ ms.date: 08/10/2021
 ms.author: brandwe
 ms.reviewer: brandwe
 ms.custom: aaddev, has-adal-ref
-ms.openlocfilehash: e03b288934ce01a25a8ee7b4ad3569af6507b8a6
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 7fbe4e45e48d3416f530b6845faf702959f92463
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124734776"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131067335"
 ---
 # <a name="microsoft-enterprise-sso-plug-in-for-apple-devices-preview"></a>Microsoft Enterprise SSO-Plug-In für Apple-Geräte (Vorschau)
 
->[!IMPORTANT]
+> [!IMPORTANT]
 > Dieses Feature [!INCLUDE [PREVIEW BOILERPLATE](../../../includes/active-directory-develop-preview.md)]
 
 Das *Microsoft Enterprise SSO-Plug-In für Apple-Geräte* ermöglicht einmaliges Anmelden (Single Sign-On, SSO) für Azure Active Directory-Konten (Azure AD) auf macOS-, iOS- und iPadOS-Geräten und für alle Anwendungen, die das Feature [Enterprise Single Sign-On](https://developer.apple.com/documentation/authenticationservices) von Apple unterstützen. Das Plug-In ermöglicht einmaliges Anmelden (SSO) auch für ältere Anwendungen, auf die Ihr Unternehmen möglicherweise angewiesen ist, die aber noch nicht die neuesten Identitätsbibliotheken oder -protokolle unterstützen. Microsoft hat bei der Entwicklung dieses Plug-Ins eng mit Apple zusammengearbeitet, um die Nutzbarkeit Ihrer Anwendung zu erhöhen, während gleichzeitig bestmöglicher Schutz gewährt wird.
@@ -52,12 +52,12 @@ Für das Microsoft Enterprise SSO-Plug-In für Apple-Geräte gelten folgende Anf
 - Das Gerät muss *in MDM registriert* sein, z. B. über Microsoft Intune.
 - Die Konfiguration muss *per Push auf das Gerät übertragen* werden, um das Enterprise SSO-Plug-In zu aktivieren. Diese Sicherheitseinschränkung wird von Apple verlangt.
 
-### <a name="ios-requirements"></a>iOS-Anforderungen:
+### <a name="ios-requirements"></a>iOS-Anforderungen
 - iOS 13.0 oder höher muss auf dem Gerät installiert sein.
 - Eine Microsoft-Anwendung, über die das Microsoft Enterprise SSO-Plug-In für Apple-Geräte bereitgestellt wird, muss auf dem Gerät installiert sein. Während der öffentlichen Vorschauphase ist dies die [Microsoft Authenticator-App](https://support.microsoft.com/account-billing/how-to-use-the-microsoft-authenticator-app-9783c865-0308-42fb-a519-8cf666fe0acc).
 
 
-### <a name="macos-requirements"></a>macOS-Anforderungen:
+### <a name="macos-requirements"></a>macOS-Anforderungen
 - macOS 10.15 oder höher muss auf dem Gerät installiert sein. 
 - Eine Microsoft-Anwendung, über die das Microsoft Enterprise SSO-Plug-In für Apple-Geräte bereitgestellt wird, muss auf dem Gerät installiert sein. Während der öffentlichen Vorschauphase ist dies die [Intune-Unternehmensportal-App](/mem/intune/user-help/enroll-your-device-in-intune-macos-cp).
 
@@ -171,7 +171,7 @@ Probieren Sie diese Konfiguration nur für Anwendungen aus, bei denen es zu uner
 
 #### <a name="summary-of-keys"></a>Übersicht über die Schlüssel
 
-| Schlüssel | Type | Wert |
+| Schlüssel | type | Wert |
 |--|--|--|
 | `Enable_SSO_On_All_ManagedApps` | Integer | `1`, um SSO für alle verwalteten Apps zu aktivieren, `0`, um SSO für alle verwalteten Apps zu deaktivieren. |
 | `AppAllowList` | String<br/>*(Liste mit Kommata als Trennzeichen)* | Bundle-IDs von Anwendungen, die am SSO teilnehmen dürfen. |
@@ -193,7 +193,7 @@ Probieren Sie diese Konfiguration nur für Anwendungen aus, bei denen es zu uner
     | Key | Wert |
     | -------- | ----------------- |
     | `Enable_SSO_On_All_ManagedApps` | `1` |
-    | `AppBlockList` | Die Bundle-IDs (als durch Kommata getrennte Liste) der Safari-Apps, die Sie am SSO hindern möchten.<br/><li>Für iOS: `com.apple.mobilesafari`, `com.apple.SafariViewService`<br/><li>Für macOS: `com.apple.Safari` |
+    | `AppBlockList` | Die Bundle-IDs (als durch Kommata getrennte Liste) der Safari-Apps, die Sie am SSO hindern möchten.<ul><li>Für iOS: `com.apple.mobilesafari`, `com.apple.SafariViewService`</li><li>Für macOS: `com.apple.Safari`</li></ul> |
 
 - *Szenario*: Ich möchte SSO für alle verwalteten Apps und einige nicht verwaltete Apps aktivieren, aber für einige andere Apps deaktivieren.
 
@@ -251,15 +251,23 @@ Es wird empfohlen, dieses Flag deaktiviert zu lassen, da es die Anzahl der Anmel
 
 #### <a name="disable-oauth-2-application-prompts"></a>Deaktivieren von Eingabeaufforderungen durch OAuth2-Anwendungen
 
-Das Microsoft Enterprise SSO-Plug-In ermöglicht einmaliges Anmelden, indem es an Netzwerkanforderungen, die von zulässigen Anwendungen stammen, freigegebene Anmeldeinformationen anfügt. Einige OAuth2-Anwendungen können auf Protokollebene jedoch fälschlicherweise Endbenutzeraufforderungen erzwingen. Wenn dieses Problem auftritt, werden Sie auch feststellen, dass freigegebene Anmeldeinformationen für diese Apps ignoriert werden. Ihr Benutzer wird zur Anmeldung aufgefordert, obwohl das Microsoft Enterprise SSO-Plug-In für andere Anwendungen funktioniert.  
+Wenn eine Anwendung Ihre Benutzer zur Anmeldung aufgefordert, obwohl das Microsoft Enterprise SSO-Plug-In für andere Anwendungen auf dem Gerät funktioniert, kann die App SSO möglicherweise auf Protokollebene umgehen.  Freigegebene Anmeldeinformationen werden ebenfalls von solchen Anwendungen ignoriert, da das Plug-In SSO ermöglicht, indem die Anmeldeinformationen an Netzwerkanforderungen von zulässigen Anwendungen angefügt werden.
 
-Durch Aktivieren des Flags `disable_explicit_app_prompt` wird die Fähigkeit sowohl nativer Anwendungen als auch von Webanwendungen eingeschränkt, eine Aufforderung des Endbenutzers auf Protokollebene zu erzwingen und SSO zu umgehen. Aktivieren Sie das Flag mit diesen Parametern:
+Diese Parameter geben an, ob die SSO-Erweiterung native Anwendungen und Webanwendungen daran hindern soll, SSO auf Protokollebene zu umgehen und die Anzeige einer Anmeldeaufforderung für den Benutzer zu erzwingen.
+
+Für eine konsistente SSO-Funktionalität aller Apps auf dem Gerät wird empfohlen, eine dieser Einstellungen zu aktivieren, die standardmäßig deaktiviert sind.
+  
+Deaktivieren der App-Eingabeaufforderung und Anzeigen der Kontoauswahl:
 
 - **Schlüssel**: `disable_explicit_app_prompt`
 - **Typ:** `Integer`
 - **Value**: 1 oder 0
+  
+Deaktivieren der App-Eingabeaufforderung und automatisches Auswählen eines Konto in der Liste der übereinstimmenden SSO-Konten:
+- **Schlüssel**: `disable_explicit_app_prompt_and_autologin`
+- **Typ:** `Integer`
+- **Value**: 1 oder 0
 
-Wir empfehlen, dieses Flag zu aktivieren, um in allen Apps eine einheitliche Benutzererfahrung zu erzielen. Standardmäßig ist es deaktiviert. 
 
 #### <a name="use-intune-for-simplified-configuration"></a>Verwenden von Intune zum Vereinfachen der Konfiguration
 

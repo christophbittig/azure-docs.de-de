@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2021
 ms.author: Zhchia
-ms.openlocfilehash: 0a4961a23c8ea9a894028af0fc596d399c0f3e8f
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.openlocfilehash: 0ed2d0378562e8706c860040f6a033fdd189a849
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129661817"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131032111"
 ---
 # <a name="tutorial-configure-netpresenter-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Netpresenter für die automatische Benutzerbereitstellung
 
@@ -107,7 +107,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Netpresenter synchronisiert werden. Die als **Übereinstimmend** ausgewählten Attribute werden verwendet, um die Benutzerkonten in Netpresenter für Updatevorgänge abzugleichen. Wenn Sie sich dafür entscheiden, das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) zu ändern, müssen Sie sicherstellen, dass die Netpresenter-API das Filtern von Benutzern anhand dieses Attributs unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-    |Attribut|type|Unterstützung für das Filtern
+    |attribute|type|Unterstützung für das Filtern
     |---|---|---|
     |userName|String|&check;
     |externalId|String|&check;
