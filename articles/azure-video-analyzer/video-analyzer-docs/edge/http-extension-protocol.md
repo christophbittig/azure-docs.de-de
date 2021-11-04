@@ -2,14 +2,14 @@
 title: HTTP-Erweiterungsprotokoll – Azure
 description: Azure Video Analyzer ermöglicht es Ihnen, seine Verarbeitungsfunktionen mittels eines Pipeline-Erweiterungsknotens zu erweitern. Der HTTP-Erweiterungsprozessor ermöglicht Erweiterungsszenarien mit dem HTTP-Protokoll, bei denen es nicht in erster Linie auf Leistung und/oder optimale Ressourcenverwendung ankommt.
 ms.topic: reference
-ms.date: 06/01/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 50da053a6454a2c6973f52ed55891ce2f40d6e06
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 217848284743b0bcf9e5f805d04b0deb43a587f4
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131094903"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131563186"
 ---
 # <a name="use-the-http-extension-protocol"></a>Verwenden Sie das HTTP-Erweiterungsprotokoll 
 

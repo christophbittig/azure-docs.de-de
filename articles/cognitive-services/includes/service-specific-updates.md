@@ -4,15 +4,15 @@ author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 07/09/2020
+ms.date: 10/28/2021
 ms.author: pafarley
 ms.custom: include
-ms.openlocfilehash: d3ef24f7e28b69c82eae8fe857d611f46c01d998
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 324f1a9e0506f8119ea81f8a4887d5a0d3908721
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131253691"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131521463"
 ---
 ## <a name="service-specific-updates"></a>Dienstspezifische Updates 
 
@@ -21,4 +21,4 @@ ms.locfileid: "131253691"
 * [Language Understanding (LUIS)](../LUIS/whats-new.md)
 * [Personalisierung](../personalizer/whats-new.md)
 * [QnA Maker](../qnamaker/whats-new.md)
-* [Textanalyse](../text-analytics/whats-new.md)
+* [Sprachdienst](../language-service/whats-new.md)

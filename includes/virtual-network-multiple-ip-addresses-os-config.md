@@ -1,5 +1,5 @@
 ---
-title: include file
+title: Datei einfügen
 description: include file
 services: virtual-network
 author: asudbring
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/10/2019
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: 769c3c5e720486c2c6d590f6feea55de5e0f4b88
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: f76408314f65409d21d163f34efc7da3d6e86f68
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130288242"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131570927"
 ---
 ## <a name="add-ip-addresses-to-a-vm-operating-system"></a><a name="os-config"></a>Hinzufügen von IP-Adressen zu einem VM-Betriebssystem
 
@@ -34,10 +34,10 @@ Stellen Sie eine Verbindung mit einem virtuellen Computer her, den Sie mit mehre
     * **Subnetzmaske**: Wird basierend auf Ihrem Subnetz festgelegt. Wenn das Subnetz beispielsweise ein /24-Subnetz ist, lautet die Subnetzmaske „255.255.255.0“.
     * **Standardgateway**: Die erste IP-Adresse im Subnetz. Wenn das Subnetz „10.0.0.1/24“ ist, lautet die Gateway-IP-Adresse „10.0.0.0/24“.
     * Wählen Sie **Folgende DNS-Serveradressen verwenden** aus, und geben Sie die folgenden Werte ein:
-        * **Bevorzugter DNS-Server**: Geben Sie „168.63.129.16“ ein, falls Sie nicht Ihren eigenen DNS-Server verwenden.  Wenn Sie Ihren eigenen DNS-Server verwenden, geben Sie die IP-Adresse für Ihren Server ein.  (Bei einem alternativen DNS-Server können Sie eine beliebige öffentliche DNS-Serveradresse auswählen.)
+      * **Bevorzugter DNS-Server**: Geben Sie „168.63.129.16“ ein, falls Sie nicht Ihren eigenen DNS-Server verwenden.  Wenn Sie Ihren eigenen DNS-Server verwenden, geben Sie die IP-Adresse für Ihren Server ein.  (Bei einem alternativen DNS-Server können Sie eine beliebige öffentliche DNS-Serveradresse auswählen.)
     * Wählen Sie die Schaltfläche **Erweitert** aus, und fügen Sie zusätzliche IP-Adressen hinzu. Fügen Sie jede der sekundären privaten IP-Adressen, die Sie in einem vorherigen Schritt der Azure-Netzwerkschnittstelle hinzugefügt haben, der Windows-Netzwerkschnittstelle hinzu, die der primären IP-Adresse der Azure-Netzwerkschnittstelle zugewiesen ist.
 
-        Die öffentliche IP-Adresse sollte niemals manuell einem virtuellen Azure-Computer innerhalb des Betriebssystems des virtuellen Computers zugewiesen werden. Wenn Sie die IP-Adresse im Betriebssystem manuell festlegen, stellen Sie sicher, dass es sich um dieselbe Adresse wie die private IP-Adresse handelt, die der Azure-[Netzwerkschnittstelle](../articles/virtual-network/ip-services/virtual-network-network-interface-addresses.md#change-ip-address-settings) zugewiesen ist. Andernfalls kann die Verbindung mit dem virtuellen Computer verloren gehen. Erfahren Sie mehr über Einstellungen für [private IP-Adressen](../articles/virtual-network/ip-services/virtual-network-network-interface-addresses.md#private). Eine öffentliche Azure-IP-Adresse sollte niemals im Betriebssystem zugewiesen werden.
+      Die öffentliche IP-Adresse sollte niemals manuell einem virtuellen Azure-Computer innerhalb des Betriebssystems des virtuellen Computers zugewiesen werden. Wenn Sie die IP-Adresse im Betriebssystem manuell festlegen, stellen Sie sicher, dass es sich um dieselbe Adresse wie die private IP-Adresse handelt, die der Azure-[Netzwerkschnittstelle](../articles/virtual-network/ip-services/virtual-network-network-interface-addresses.md#change-ip-address-settings) zugewiesen ist. Andernfalls kann die Verbindung mit dem virtuellen Computer verloren gehen. Erfahren Sie mehr über Einstellungen für [private IP-Adressen](../articles/virtual-network/ip-services/virtual-network-network-interface-addresses.md#private). Eine öffentliche Azure-IP-Adresse sollte niemals im Betriebssystem zugewiesen werden.
 
     * Klicken Sie auf **OK**, um die TCP/IP-Einstellungen zu schließen, und dann erneut auf **OK**, um die Adaptereinstellungen zu schließen. Die RDP-Verbindung wird wiederhergestellt.
 
@@ -142,9 +142,9 @@ ip route add default via 10.0.0.1 dev eth2 table custom
 ```
 
 - Achten Sie darauf, folgende Ersetzungen vorzunehmen:
-    - **10.0.0.5** durch die private IP-Adresse, der eine öffentliche IP-Adresse zugeordnet ist
-    - **10.0.0.1** durch Ihr Standardgateway
-    - **eth2** durch den Namen Ihrer sekundären NIC 
+  - **10.0.0.5** durch die private IP-Adresse, der eine öffentliche IP-Adresse zugeordnet ist
+  - **10.0.0.1** durch Ihr Standardgateway
+  - **eth2** durch den Namen Ihrer sekundären NIC 
 
 </details>
 
@@ -246,9 +246,9 @@ ip route add default via 10.0.0.1 dev eth2 table custom
 ```
 
 - Achten Sie darauf, folgende Ersetzungen vorzunehmen:
-    - **10.0.0.5** durch die private IP-Adresse, der eine öffentliche IP-Adresse zugeordnet ist
-    - **10.0.0.1** durch Ihr Standardgateway
-    - **eth2** durch den Namen Ihrer sekundären NIC 
+  - **10.0.0.5** durch die private IP-Adresse, der eine öffentliche IP-Adresse zugeordnet ist
+  - **10.0.0.1** durch Ihr Standardgateway
+  - **eth2** durch den Namen Ihrer sekundären NIC 
 
 </details>
 
@@ -335,9 +335,9 @@ ip route add default via 10.0.0.1 dev eth2 table custom
 ```
 
 - Achten Sie darauf, folgende Ersetzungen vorzunehmen:
-    - **10.0.0.5** durch die private IP-Adresse, der eine öffentliche IP-Adresse zugeordnet ist
-    - **10.0.0.1** durch Ihr Standardgateway
-    - **eth2** durch den Namen Ihrer sekundären NIC 
+  - **10.0.0.5** durch die private IP-Adresse, der eine öffentliche IP-Adresse zugeordnet ist
+  - **10.0.0.1** durch Ihr Standardgateway
+  - **eth2** durch den Namen Ihrer sekundären NIC 
 
 
 </details>
@@ -357,18 +357,18 @@ ip route add default via 10.0.0.1 dev eth2 table custom
 1. Aktualisieren Sie die Konfigurationsdatei der Netzwerkschnittstelle (es wird von „eth0“ ausgegangen).
 
    * Öffnen Sie die Netzwerkschnittstellendatei mithilfe des folgenden Befehls:
-     
+
      ```bash
      vi /etc/network/interfaces
      ```
-    
+
    * Am Ende der Datei sollten die folgenden Zeilen angezeigt werden:
-    
+
       ```bash
       auth eth0
       iface eth0 inet dhcp
       ```
-    
+
    * Behalten Sie den vorhandenen Eintrag für DHCP unverändert bei. Die Konfiguration der primären IP-Adresse bleibt unverändert.
    * Fügen Sie nach den vorhandenen Zeilen in dieser Datei die folgenden Zeilen ein:
 
@@ -390,7 +390,7 @@ ip route add default via 10.0.0.1 dev eth2 table custom
    systemctl restart networking
    ```
    Für frühere Versionen von Debian können Sie die folgenden Befehle verwenden:
-    
+
    ```bash
    service networking restart
    ```

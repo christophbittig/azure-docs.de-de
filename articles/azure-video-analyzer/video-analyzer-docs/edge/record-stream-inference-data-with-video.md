@@ -3,14 +3,14 @@ title: Aufzeichnen und Streamen von Rückschlussmetadaten mit Video – Azure Vi
 description: In diesem Tutorial erfahren Sie, wie Sie Azure Video Analyzer verwenden, um Video- und Rückschlussmetadaten in der Cloud aufzuzeichnen und die Aufzeichnung mit den visuellen Rückschlussmetadaten wiederzugeben.
 ms.service: azure-video-analyzer
 ms.topic: how-to
-ms.date: 06/01/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 9e91b9ed8e73f2834165b012654e567a6f219a81
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 77b920f52f699cb4492764aaf5ecb8b5f8ee2a7e
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096149"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131559407"
 ---
 # <a name="tutorial-record-and-stream-inference-metadata-with-video"></a>Tutorial: Aufzeichnen und Streamen von Rückschlussmetadaten mit Video
 

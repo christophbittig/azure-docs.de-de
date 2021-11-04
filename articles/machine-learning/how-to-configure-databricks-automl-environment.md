@@ -6,17 +6,17 @@ services: machine-learning
 author: rastala
 ms.author: roastala
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: automl
 ms.reviewer: larryfr
-ms.date: 09/14/2021
+ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: devx-track-python
-ms.openlocfilehash: 0ec2e8a6e575206dc57ddc1892e83b99295aed17
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: fcbe52a8c390d41abbaa0a97b88bb360df595d60
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128548144"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131553992"
 ---
 # <a name="set-up-a-development-environment-with-azure-databricks-and-automl-in-azure-machine-learning"></a>Einrichten einer Entwicklungsumgebung mit Azure Databricks und automatisiertem maschinellem Lernen in Azure Machine Learning 
 

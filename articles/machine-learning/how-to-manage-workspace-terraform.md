@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: core
 ms.author: deeikele
 author: denniseik
-ms.date: 10/08/2021
+ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: ''
-ms.openlocfilehash: b567accf1a83506731fa58b793fca428c9c702e2
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 21e3f646f384695fa6a305eb45f7e3bb019a18e1
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131085011"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131560813"
 ---
 # <a name="manage-azure-machine-learning-workspaces-using-terraform-preview"></a>Verwalten von Azure Machine Learning-Arbeitsbereichen mithilfe von Terraform (Vorschau)
 

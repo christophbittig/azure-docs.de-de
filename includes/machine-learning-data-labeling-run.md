@@ -2,14 +2,14 @@
 author: sgilley
 ms.service: machine-learning
 ms.topic: include
-ms.date: 09/23/2021
+ms.date: 10/21/2021
 ms.author: sdgilley
-ms.openlocfilehash: 5488a20313914d7c61f71ac8590d8ff1952f48d1
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: ed33930b41229723dfea4e14a27dd12db03d68f2
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129368028"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131571053"
 ---
 Sobald das Projekt initialisiert wurde, startet Azure die Ausführung. Wählen Sie das Projekt auf der Hauptseite **Datenbeschriftung** aus, um Details des Projekts zu sehen.
 

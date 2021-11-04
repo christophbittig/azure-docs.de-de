@@ -10,13 +10,13 @@ ms.custom: troubleshooting, devplatv2
 ms.reviewer: laobri
 ms.author: tracych
 author: tracych
-ms.date: 05/05/2021
-ms.openlocfilehash: ba0dfb7c86250a55de5967bbffafd40823709dce
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.date: 10/21/2021
+ms.openlocfilehash: 97b235e45e1f988fde94272252e738d38b0a53e6
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129425788"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131564668"
 ---
 # <a name="troubleshooting-batch-endpoints-preview"></a>Problembehandlung für Batchendpunkte (Vorschau)
 
@@ -29,22 +29,8 @@ Die folgende Tabelle enthält Informationen zu häufigen Problemen und den zugeh
 | Problem | Mögliche Lösung |
 |--|--|
 | Codekonfiguration oder Umgebung fehlt. | Stellen Sie sicher, dass Sie das Bewertungsskript und eine Umgebungsdefinition bereitstellen, wenn Sie ein anderes Modell als das MLflow-Modell verwenden. Die Bereitstellung ohne Code wird nur für das MLflow-Modell unterstützt. Weitere Informationen finden Sie im Artikel zum [Nachverfolgen von ML-Modellen mit MLflow und Azure Machine Learning](how-to-use-mlflow.md).|
-| Fehlendes Update für das Modell, den Code, die Umgebung und die Computeressourcen eines vorhandenen Batchendpunkts. | Erstellen Sie einen neuen Batchendpunkt mit einem neuen Namen. Die Aktualisierung dieser Ressourcen für einen vorhandenen Batchendpunkt wird noch nicht unterstützt. |
-| Die Ressource wurde nicht gefunden. | Stellen Sie sicher, dass Sie `--type batch` in Ihrem CLI-Befehl verwenden. Wenn dieses Argument nicht angegeben ist, wird der Standardtyp `online` verwendet.|
 | Nicht unterstützte Eingabedaten. | Für Batchendpunkte werden drei Arten von Eingabedaten akzeptiert: 1) registrierte Daten, 2) Daten in der Cloud und 3) lokale Daten. Stellen Sie sicher, dass Sie die richtige Art von Daten verwenden. Weitere Informationen finden Sie unter [Verwenden von Batchendpunkten (Vorschau) für die Batchbewertung](how-to-use-batch-endpoint.md).|
-| Der Name des bereitgestellten Endpunkts ist bereits vorhanden oder wurde gelöscht. | Erstellen Sie einen neuen Batchendpunkt mit einem neuen Namen. Mit dem Befehl `endpoint delete` wird der Endpunkt für das Löschen gekennzeichnet. Dieser Name kann nicht noch einmal verwendet werden, um einen neuen Endpunkt in derselben Region zu erstellen. |
 | Die Ausgabe ist bereits vorhanden. | Stellen Sie beim Konfigurieren Ihres eigenen Ausgabespeicherorts sicher, dass Sie für jeden Endpunktaufruf eine neue Ausgabe bereitstellen. |
-
-##  <a name="scoring-script-requirements"></a>Anforderungen an das Bewertungsskript
-
-Wenn Sie kein MLflow-Modell verwenden, müssen Sie ein Bewertungsskript bereitstellen. Das Bewertungsskript muss zwei Funktionen enthalten:
-
-- `init()`: Verwenden Sie diese Funktion für alle aufwendigen oder allgemeinen Vorbereitungsmaßnahmen für den späteren Rückschluss. Ein Beispiel wäre etwa das Laden des Modells in ein globales Objekt. Diese Funktion wird einmal am Anfang des Prozesses aufgerufen.
--  `run(mini_batch)`: Diese Funktion wird für jede `mini_batch`-Instanz ausgeführt.
-    -  `mini_batch`: Der Wert `mini_batch` umfasst eine Liste mit Dateipfaden.
-    -  `response`: Von der `run()`-Methode sollte ein Pandas-Datenrahmen oder ein Array zurückgegeben werden. Diese zurückgegebenen Elemente werden an die allgemeine Ausgabedatei angefügt. Die zurückgegebenen Ausgabeelemente stehen jeweils für eine erfolgreiche Ausführung eines Eingabeelements aus dem Eingabeminibatch. Stellen Sie sicher, dass das Ausführungsergebnis genügend Daten für eine Zuordnung zwischen einer einzelnen Eingabe und der Ausgabe des Ausführungsergebnisses enthält. Die Ausführungsausgabe wird in die Ausgabedatei geschrieben. Da hierbei aber nicht unbedingt die Reihenfolge eingehalten wird, müssen Sie einen Schlüssel in der Ausgabe verwenden, um sie der richtigen Eingabe zuzuordnen.
-
-:::code language="python" source="~/azureml-examples-cli-preview/cli/endpoints/batch/mnist/code/digit_identification.py" :::
 
 ## <a name="understanding-logs-of-a-batch-scoring-job"></a>Grundlegendes zu Protokollen eines Batchbewertungsauftrags
 

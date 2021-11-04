@@ -1,27 +1,33 @@
 ---
-title: Ressourcenbestand in Azure Security Center
-description: Erfahren Sie mehr über die Ressourcenverwaltungsumgebung von Azure Security Center, die Ihnen vollständigen Einblick in alle von Azure Security Center überwachten Ressourcen bietet.
+title: Ressourcenbestand von Microsoft Defender für Cloud
+description: Erfahren Sie mehr über die Ressourcenverwaltungsfunktionen von Microsoft Defender für Cloud, die vollständige Einblicke in alle von Defender für Cloud überwachten Ressourcen bieten.
 author: memildin
 manager: rkarlin
 services: security-center
 ms.author: memildin
-ms.date: 10/07/2021
+ms.date: 10/18/2021
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 29e5ec35d97210b1dfe7494ce96a5e3ecae75bdf
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: ff1fd969f202b71e3e6706d9721b7e91cb723e9b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130002110"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131453229"
 ---
 # <a name="use-asset-inventory-to-manage-your-resources-security-posture"></a>Verwenden Sie die Bestandsaufnahme zur Verwaltung der Sicherheitslage Ihrer Ressourcen
 
-Azure Security Center analysiert in regelmäßigen Abständen den Sicherheitsstatus der Azure-Ressourcen, um mögliche Sicherheitsrisiken zu erkennen. Anschließend erhalten Sie Empfehlungen dazu, wie Sie diese Sicherheitsrisiken beheben können. **Wenn eine Ressource ausstehende Empfehlungen hat, werden diese im Inventar angezeigt.**
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-Verwenden Sie die Inventaransicht und ihre Filter, um Fragen wie diese zu beantworten:
+Der Ressourcenbestand von Microsoft Defender für Cloud bietet eine einzelne, zentrale Ansicht des Sicherheitsstatus der Ressourcen, die Sie mit Microsoft Defender für Cloud verknüpft haben. 
 
-- Für welche meiner Abonnements mit aktiviertem Azure Defender stehen Empfehlungen aus?
+Defender für Cloud analysiert regelmäßig den Sicherheitsstatus von Ressourcen, die mit Ihren Abonnements verbunden sind, um potenzielle Sicherheitsrisiken zu identifizieren. Anschließend erhalten Sie Empfehlungen dazu, wie Sie diese Sicherheitsrisiken beheben können.
+
+Wenn eine Ressource ausstehende Empfehlungen hat, werden diese im Inventar angezeigt.
+
+Verwenden Sie diese Ansicht und ihre Filter zur Beantwortung folgender Fragen:
+
+- Für welche meiner Abonnements mit aktivierten erweiterten Sicherheitsfeatures gibt es ausstehende Empfehlungen?
 - Auf welchen meiner Computer mit dem Tag „Produktion“ fehlt der Log Analytics-Agent?
 - Für wie viele meiner Computer, die mit einem bestimmten Tag gekennzeichnet sind, stehen Empfehlungen aus?
 - Welche Rechner in einer bestimmten Ressourcengruppe haben eine bekannte Sicherheitslücke (unter Verwendung einer CVE-Nummer)?
@@ -29,7 +35,7 @@ Verwenden Sie die Inventaransicht und ihre Filter, um Fragen wie diese zu beantw
 Die Ressourcenverwaltungsfunktionen dieses Tools sind umfassend und wachsen weiter. 
 
 > [!TIP]
-> Die Sicherheitsempfehlungen auf der Ressourcenbestandsseite sind identisch mit denen auf der Seite **Empfehlungen**, aber hier werden sie nach betroffener Ressource gefiltert. Weitere Informationen zur Anwendung von Empfehlungen finden Sie unter [Sicherheitsempfehlungen in Azure Security Center](security-center-recommendations.md).
+> Die Sicherheitsempfehlungen auf der Ressourcenbestandsseite sind identisch mit denen auf der Seite **Empfehlungen**, aber hier werden sie nach betroffener Ressource gefiltert. Informationen zur Anwendung von Empfehlungen finden Sie unter [Implementieren von Sicherheitsempfehlungen in Microsoft Defender für Cloud](review-security-recommendations.md).
 
 
 ## <a name="availability"></a>Verfügbarkeit
@@ -45,16 +51,16 @@ Die Ressourcenverwaltungsfunktionen dieses Tools sind umfassend und wachsen weit
 ## <a name="what-are-the-key-features-of-asset-inventory"></a>Welche sind die wichtigsten Features des Ressourcenbestands?
 Auf der Bestandsseite werden die folgenden Tools angezeigt:
 
-:::image type="content" source="media/asset-inventory/highlights-of-inventory.png" alt-text="Hauptfeatures auf der Ressourcenbestandsseite in Azure Security Center" lightbox="media/asset-inventory/highlights-of-inventory.png":::
+:::image type="content" source="media/asset-inventory/highlights-of-inventory.png" alt-text="Hauptfeatures der Ressourcenbestandsseite in Microsoft Defender für Cloud." lightbox="media/asset-inventory/highlights-of-inventory.png":::
 
 
 ### <a name="1---summaries"></a>1: Zusammenfassungen
 Bevor Sie Filter definieren, wird oben in der Bestandsansicht ein auffälliger Streifen mit Werten angezeigt:
 
-- **Ressourcen gesamt**: Die Gesamtanzahl der mit Azure Security Center verbundenen Ressourcen.
-- **Fehlerhafte Ressourcen:** Ressourcen mit aktiven Sicherheitsempfehlungen. [Weitere Informationen zu Sicherheitsempfehlungen](security-center-recommendations.md).
+- **Ressourcen gesamt**: Die Gesamtanzahl von Ressourcen, die mit Defender für Cloud verknüpft sind.
+- **Fehlerhafte Ressourcen:** Ressourcen mit aktiven Sicherheitsempfehlungen. [Weitere Informationen zu Sicherheitsempfehlungen](review-security-recommendations.md).
 - **Nicht überwachte Ressourcen**: Ressourcen mit Agent-Überwachungsproblemen – Der Log Analytics-Agent wurde bereitgestellt, aber der Agent sendet keine Daten oder hat andere Integritätsprobleme.
-- **Nicht registrierte Abonnements:** Alle Abonnements im ausgewählten Bereich, die noch nicht mit Azure Security Center verbunden wurden
+- **Nicht registrierte Abonnements**: Alle Abonnements im ausgewählten Bereich, die noch nicht mit Microsoft Defender für Cloud verknüpft wurden.
 
 ### <a name="2---filters"></a>2: Filter
 Die zahlreichen Filter am oberen Rand der Seite bieten eine Möglichkeit, die Liste der Ressourcen schnell entsprechend der Frage zu verfeinern, die Sie zu beantworten versuchen. Wenn Sie beispielsweise die Frage *Auf welchen meiner Computer mit dem Tag „Produktion“ fehlt der Log Analytics-Agent?* beantworten möchten, könnten Sie den Filter **Agent-Überwachung** mit dem Filter **Tags** kombinieren.
@@ -71,22 +77,22 @@ Sobald Sie Filter angewendet haben, werden die Zusammenfassungswerte aktualisier
 **Ressourcenverwaltungsoptionen** Mit dem Ressourcenbestand können Sie komplexe Suchabfragen durchführen. Wenn Sie die Ressourcen gefunden haben, die Ihren Abfragen entsprechen, bietet der Ressourcenbestand Verknüpfungen für Vorgänge wie z. B.:
 
 - Zuweisen von Tags zu den gefilterten Ressourcen: Aktivieren Sie die Kontrollkästchen neben den Ressourcen, die Sie mit einem Tag versehen möchten.
-- Onboarding neuer Server in Security Center: Verwenden Sie die Symbolleistenschaltfläche **Nicht-Azure-Server hinzufügen**.
+- Durchführen des Onboardings für neue Server in Defender für Cloud: Verwenden Sie die Symbolleistenschaltfläche **Neue Azure-Server hinzufügen**.
 - Automatisieren von Workloads mit Azure Logic Apps: Verwenden Sie die Schaltfläche **Logik-App auslösen**, um eine Logik-App für eine oder mehrere Ressourcen auszuführen. Ihre Logik-Apps müssen zuvor vorbereitet werden und den entsprechenden Triggertyp (HTTP-Anforderung) akzeptieren. [Erfahren Sie mehr über Logik-Apps](../logic-apps/logic-apps-overview.md).
 
 
 ## <a name="how-does-asset-inventory-work"></a>Wie funktioniert der Ressourcenbestand?
 
-Der Ressourcenbestand verwendet [Azure Resource Graph (ARG)](../governance/resource-graph/index.yml), einen Azure-Dienst, der die Möglichkeit bietet, die Daten zum Sicherheitsstatus von Security Center über mehrere Abonnements hinweg abzufragen.
+Der Ressourcenbestand verwendet [Azure Resource Graph (ARG)](../governance/resource-graph/index.yml), einen Azure-Dienst, der die Möglichkeit bietet, die Daten zum Sicherheitsstatus von Defender für Cloud über mehrere Abonnements hinweg abzufragen.
 
 ARG ist so konzipiert, dass es eine effiziente Ressourcenerkundung mit der Fähigkeit zur bedarfsorientierten Abfrage ermöglicht.
 
-Mit Hilfe der [Kusto Query Language (KQL)](/azure/data-explorer/kusto/query/) kann der Ressourcenbestand Ihnen durch Querverweise zwischen ASC-Daten und anderen Ressourceneigenschaften schnell tiefe Einblicke verschaffen.
+Mithilfe der [Kusto-Abfragesprache](/azure/data-explorer/kusto/query/) (Kusto Query Language, KQL) kann der Ressourcenbestand durch Querverweise zwischen Defender für Cloud-Daten und anderen Ressourceneigenschaften schnell detaillierte Einblicke verschaffen.
 
 
 ## <a name="how-to-use-asset-inventory"></a>Verwenden des Ressourcenbestands
 
-1. Wählen Sie auf der Security Center-Randleiste **Ressourcenbestands** aus.
+1. Wählen Sie auf der Seitenleiste von Defender für Cloud **Bestand** aus.
 
 1. Verwenden Sie das Feld **Nach Name filtern**, um eine bestimmte Ressource anzuzeigen, oder verwenden Sie die Filter gemäß der nachstehenden Beschreibung.
 
@@ -99,7 +105,7 @@ Mit Hilfe der [Kusto Query Language (KQL)](/azure/data-explorer/kusto/query/) ka
     >
     > Wenn Sie z. B. nur ein Abonnement ausgewählt haben und das Abonnement keine Ressourcen mit ausstehenden Sicherheitsempfehlungen aufweist, die zu beheben sind (0 fehlerhafte Ressourcen), enthält der Filter **Empfehlungen** keine Optionen. 
 
-    :::image type="content" source="./media/asset-inventory/filtering-to-prod-unmonitored.gif" alt-text="Verwenden der Filteroptionen im Ressourcenbestand in Azure Security Center zum Filtern von Ressourcen nach Produktionsressourcen, die nicht überwacht werden":::
+    :::image type="content" source="./media/asset-inventory/filtering-to-prod-unmonitored.gif" alt-text="Verwenden der Filteroptionen im Ressourcenbestand von Microsoft Defender für Cloud zum Filtern von Ressourcen nach Produktionsressourcen, die nicht überwacht werden":::
 
 1. Um den Filter **Sicherheitsergebnisse enthalten** zu verwenden, geben Sie freien Text aus der ID, der Sicherheitsprüfung oder dem CVE-Namen eines Sicherheitsergebnisses ein, um nach den betroffenen Ressourcen zu filtern:
 
@@ -108,16 +114,16 @@ Mit Hilfe der [Kusto Query Language (KQL)](/azure/data-explorer/kusto/query/) ka
     > [!TIP]
     > Die Filter **Sicherheitsergebnisse enthalten** und **Tags** akzeptieren nur einen einzigen Wert. Um nach mehreren Werten zu filtern, verwenden Sie **Filter hinzufügen**.
 
-1. Wählen Sie mindestens eine Option („Aus“, „Ein“ oder „Partiell“) aus, um den Filter **Azure Defender** zu verwenden:
+1. Wählen Sie mindestens eine Option („Aus“, „Ein“ oder „Partiell“) aus, um den Filter **Defender für Cloud** zu verwenden:
 
-    - **Aus:** Ressourcen, die nicht durch einen Azure Defender-Plan geschützt sind. Sie können mit der rechten Maustaste auf eine dieser Ressourcen klicken und ein Upgrade ausführen:
+    - **Aus**: Ressourcen, die nicht durch einen Microsoft Defender-Plan geschützt sind. Sie können mit der rechten Maustaste auf eine dieser Ressourcen klicken und ein Upgrade ausführen:
 
-        :::image type="content" source="./media/asset-inventory/upgrade-resource-inventory.png" alt-text="Upgraden einer Ressource zu Azure Defender über das Kontextmenü" lightbox="./media/asset-inventory/upgrade-resource-inventory.png":::
+        :::image type="content" source="./media/asset-inventory/upgrade-resource-inventory.png" alt-text="Upgrade einer Ressource auf Microsoft Defender über das Kontextmenü." lightbox="./media/asset-inventory/upgrade-resource-inventory.png":::
 
-    - **Ein:** Ressourcen, die durch einen Azure Defender-Plan geschützt sind
-    - **Partiell:** Dies gilt für **Abonnements**, bei denen einige, aber nicht alle Azure Defender-Pläne deaktiviert sind. Für das folgende Abonnement sind z. B. fünf Azure Defender-Pläne deaktiviert. 
+    - **Ein**: Ressourcen, die durch einen Microsoft Defender-Plan geschützt sind.
+    - **Partiell**: Dies gilt für **Abonnements**, für die einige, aber nicht alle Microsoft Defender-Pläne deaktiviert sind. Für das folgende Abonnement sind z. B. sieben Microsoft Defender-Pläne deaktiviert.
 
-        :::image type="content" source="./media/asset-inventory/pricing-tier-partial.png" alt-text="Abonnement mit teilweiser Aktivierung in Azure Defender":::
+        :::image type="content" source="./media/asset-inventory/pricing-tier-partial.png" alt-text="Abonnement, das teilweise durch Microsoft Defender-Pläne geschützt ist.":::
 
 1. Um die Ergebnisse der Abfrage weiter zu untersuchen, wählen Sie die Ressourcen aus, die für Sie von Interesse sind.
 
@@ -125,16 +131,16 @@ Mit Hilfe der [Kusto Query Language (KQL)](/azure/data-explorer/kusto/query/) ka
 
     ![Bestandsabfrage in ARG](./media/asset-inventory/inventory-query-in-resource-graph-explorer.png)
 
-1. Wenn Sie einige Filter definiert und die Seite offen gelassen haben, aktualisiert Security Center die Ergebnisse nicht automatisch. Änderungen an den Ressourcen wirken sich nicht auf die angezeigten Ergebnisse aus, es sei denn, Sie laden die Seite manuell neu oder wählen **Aktualisieren** aus.
+1. Wenn Sie einige Filter definiert und die Seite offen gelassen haben, aktualisiert Defender für Cloud die Ergebnisse nicht automatisch. Änderungen an den Ressourcen wirken sich nicht auf die angezeigten Ergebnisse aus, es sei denn, Sie laden die Seite manuell neu oder wählen **Aktualisieren** aus.
 
 ## <a name="access-a-software-inventory"></a>Zugreifen auf einen Softwarebestand
 
-Wenn Sie die Integration mit Microsoft Defender für Endpunkt und Azure Defender für Server aktiviert haben, haben Sie Zugriff auf den Softwarebestand.
+Wenn Sie die Integration mit Microsoft Defender für Endpunkt und Microsoft Defender für Server aktiviert haben, haben Sie Zugriff auf den Softwarebestand.
 
-:::image type="content" source="media/asset-inventory/software-inventory-filters.gif" alt-text="Wenn Sie die Lösung für Bedrohungen und Sicherheitsrisiken aktiviert haben, bietet der Ressourcenbestand im Security Center einen Filter zum Auswählen von Ressourcen nach installierter Software.":::
+:::image type="content" source="media/asset-inventory/software-inventory-filters.gif" alt-text="Wenn Sie die Lösung für Bedrohungen und Schwachstellen aktiviert haben, bietet das Bestandsverzeichnis von Defender für Cloud einen Filter zur Auswahl von Ressourcen anhand ihrer installierten Software.":::
 
 > [!NOTE]
-> Die Option „Leer“ zeigt Computer ohne Microsoft Defender für Endpunkt (oder ohne Azure Defender für Server) an.
+> Die Option „Leer“ zeigt Computer ohne Microsoft Defender für Endpunkt (oder ohne Microsoft Defender für Server) an.
 
 Zusätzlich zu den Filtern auf der Ressourcenbestandsseite können Sie die Softwarebestandsdaten im Azure Resource Graph-Explorer untersuchen.
 
@@ -142,7 +148,7 @@ Beispiele für die Verwendung von Azure Resource Graph-Explorer für den Zugriff
 
 1. Öffnen Sie den **Azure Resource Graph-Explorer**.
 
-    :::image type="content" source="./media/security-center-identity-access/opening-resource-graph-explorer.png" alt-text="Die Empfehlungsseite des Azure Resource Graph-Explorer** wird gestartet." :::
+    :::image type="content" source="./media/multi-factor-authentication-enforcement/opening-resource-graph-explorer.png" alt-text="Die Empfehlungsseite des Azure Resource Graph-Explorer** wird gestartet." :::
 
 1. Wählen Sie den folgenden Abonnementbereich aus: „securityresources/softwareinventories“.
 
@@ -199,23 +205,23 @@ Beispiele für die Verwendung von Azure Resource Graph-Explorer für den Zugriff
 
 ### <a name="why-arent-all-of-my-subscriptions-machines-storage-accounts-etc-shown"></a>Warum werden nicht alle meine Abonnements, Computer, Speicherkonten usw. angezeigt?
 
-In der Bestandsansicht werden Ihre mit Security Center verbundenen Ressourcen aus der Perspektive von Cloud Security Posture Management (CSPM) aufgelistet. Die Filter geben nicht jede Ressource in Ihrer Umgebung zurück, sondern nur diejenigen mit ausstehenden (oder „aktiven“) Empfehlungen. 
+In der Bestandsansicht werden Ihre mit Defender für Cloud verknüpften Ressourcen aus der Perspektive von Cloud Security Posture Management (CSPM) aufgelistet. Die Filter geben nicht jede Ressource in Ihrer Umgebung zurück, sondern nur diejenigen mit ausstehenden (oder „aktiven“) Empfehlungen. 
 
-Der folgende Screenshot zeigt z. B. einen Benutzer mit Zugriff auf 38 Abonnements, von denen jedoch nur 10 Empfehlungen aufweisen. Wenn Sie also nach **Ressourcentyp = Abonnements** filtern, werden nur die 10 Abonnements mit aktiven Empfehlungen im Bestand angezeigt:
+Der folgende Screenshot zeigt z. B. einen Benutzer mit Zugriff auf acht Abonnements, von denen jedoch nur sieben Empfehlungen aufweisen. Wenn Sie also nach **Ressourcentyp = Abonnements** filtern, werden nur die sieben Abonnements mit aktiven Empfehlungen im Bestand angezeigt:
 
-:::image type="content" source="./media/asset-inventory/filtered-subscriptions-some.png" alt-text="Es werden nicht alle Abonnements zurückgegeben, wenn keine aktiven Empfehlungen vorliegen.":::
+:::image type="content" source="./media/asset-inventory/filtered-subscriptions-some.png" alt-text="Es werden nicht alle Abonnements zurückgegeben, wenn keine aktiven Empfehlungen vorliegen." lightbox="./media/asset-inventory/filtered-subscriptions-some.png":::
 
-### <a name="why-do-some-of-my-resources-show-blank-values-in-the-azure-defender-or-agent-monitoring-columns"></a>Warum werden für einige meiner Ressourcen in den Spalten für Azure Defender- oder Agent-Überwachung leere Werte angezeigt?
+### <a name="why-do-some-of-my-resources-show-blank-values-in-the-defender-for-cloud-or-monitoring-agent-columns"></a>Warum zeigen einige meiner Ressourcen leere Werte in den Spalten für Defender für Cloud oder den Überwachungs-Agent an?
 
-Nicht alle von Security Center überwachten Ressourcen verfügen über Agents. Dies trifft beispielsweise auf Azure Storage-Konten oder PaaS-Ressourcen wie Datenträger, Logic Apps, Data Lake-Analysen und Event Hub zu.
+Nicht alle von Defender für Cloud überwachten Ressourcen verfügen über Agents. Beispielsweise müssen Azure Storage-Konten oder PaaS-Ressourcen wie Datenträger, Logic Apps, Data Lake Analysis und Event Hub nicht von Defender für Cloud überwacht werden.
 
 Wenn Preise oder Agent-Überwachung für eine Ressource nicht relevant sind, wird in diesen Ressourcenbestandspalten nichts angezeigt.
 
-:::image type="content" source="./media/asset-inventory/agent-pricing-blanks.png" alt-text="Für einige Ressourcen werden leere Informationen in den Spalten für Agent-Überwachung oder Azure Defender angezeigt.":::
+:::image type="content" source="./media/asset-inventory/agent-pricing-blanks.png" alt-text="Einige Ressourcen zeigen in der Spalte für den Überwachungs-Agent oder für Defender für Cloud leere Informationen an." lightbox="./media/asset-inventory/agent-pricing-blanks.png":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel wurde die Seite „Ressourcenbestand“ von Azure Security Center beschrieben.
+In diesem Artikel wurde die Ressourcenbestandsseite von Microsoft Defender für Cloud beschrieben.
 
 Weitere Informationen zu verwandten Tools finden Sie auf den folgenden Seiten:
 

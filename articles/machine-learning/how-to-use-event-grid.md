@@ -10,13 +10,13 @@ ms.custom: devx-track-azurecli
 ms.author: cgronlun
 author: cjgronlund
 ms.reviewer: larryfr
-ms.date: 05/11/2020
-ms.openlocfilehash: 2ffeb5c5b369ed99042635342a59d6e19721ee15
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.date: 10/21/2021
+ms.openlocfilehash: 8091e0d020c02fe0fe2d15a70c212a6771a6d679
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129424178"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131560604"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Auslösen von Anwendungen, Prozessen oder CI/CD-Workflows basierend auf Azure Machine Learning-Ereignissen (Vorschau)
 

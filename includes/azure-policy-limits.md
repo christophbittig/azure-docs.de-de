@@ -6,15 +6,14 @@ ms.service: azure-policy
 ms.topic: include
 ms.date: 09/30/2020
 ms.author: dacoulte
-ms.openlocfilehash: e9ba8efefd2238b1aadc2fbeaf17a286e0714bcd
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 1c63d79c82f667fbd7cfc9a62a741eab275757dd
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123485076"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131571271"
 ---
-Für jeden Objekttyp für Azure Policy gilt eine maximale Anzahl. Bei Definitionen gilt ein _Scope_-Eintrag (Bereich) entweder für die [Verwaltungsgruppe](../articles/governance/management-groups/overview.md) oder das Abonnement.
-Bei Zuweisungen und Ausnahmen gilt ein _Scope_-Eintrag für die [Verwaltungsgruppe](../articles/governance/management-groups/overview.md), das Abonnement, die Ressourcengruppe oder eine einzelne Ressource.
+Für jeden Objekttyp für Azure Policy gilt eine maximale Anzahl. Bei Definitionen gilt ein _Scope_-Eintrag (Bereich) entweder für die [Verwaltungsgruppe](../articles/governance/management-groups/overview.md) oder das Abonnement. Bei Zuweisungen und Ausnahmen gilt ein _Scope_-Eintrag für die [Verwaltungsgruppe](../articles/governance/management-groups/overview.md), das Abonnement, die Ressourcengruppe oder eine einzelne Ressource.
 
 | Hierbei gilt: | Was | Maximale Anzahl |
 |---|---|---|

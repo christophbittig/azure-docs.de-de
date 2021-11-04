@@ -3,14 +3,14 @@ title: Einbetten eines Player-Widgets in Power BI – Azure Video Analyzer
 description: Sie können Azure Video Analyzer für fortlaufende oder ereignisbasierte Videoaufzeichnungen verwenden. In diesem Artikel wird beschrieben, wie Sie Videos in Microsoft Power BI einbetten, um eine anpassbare Benutzeroberfläche für Ihre Benutzer bereitzustellen.
 ms.service: azure-video-analyzer
 ms.topic: how-to
-ms.date: 08/06/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: fb6014649e6fe71a2d2de5e4d7adb72ba9b66a37
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: bb367735097200da273ab908d4a3205d62798d5b
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131012155"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131560205"
 ---
 # <a name="embed-player-widget-in-power-bi"></a>Einbetten des Player-Widgets in Power BI
 
