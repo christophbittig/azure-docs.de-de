@@ -5,13 +5,13 @@ author: vicancy
 ms.author: lianwei
 ms.service: azure-web-pubsub
 ms.topic: tutorial
-ms.date: 08/16/2021
-ms.openlocfilehash: b0027bfd1f214ecba347652ce37009103b76ff00
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.date: 11/01/2021
+ms.openlocfilehash: 00ff941ccf008b84ac72191035cc9322d4d08c8c
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123255429"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131579063"
 ---
 # <a name="tutorial-publish-and-subscribe-messages-using-websocket-api-and-azure-web-pubsub-service-sdk"></a>Tutorial: Veröffentlichen und Abonnieren von Nachrichten mithilfe der WebSocket-API und des Azure Web PubSub-Dienst-SDK
 
@@ -41,11 +41,11 @@ In diesem Tutorial lernen Sie Folgendes:
 
 [!INCLUDE [Create a Web PubSub instance](includes/cli-awps-creation.md)]
 
-### <a name="get-the-connectionstring-for-future-use"></a>Abrufen der Verbindungszeichenfolge (ConnectionString) zur späteren Verwendung
+### <a name="get-the-connectionstring-for-future-use"></a>Abrufen der Verbindungszeichenfolge zur späteren Verwendung
 
 [!INCLUDE [Get the connection string](includes/cli-awps-connstr.md)]
 
-Kopieren Sie den abgerufenen **ConnectionString**-Wert. Diese Verbindungszeichenfolge wird später im Tutorial als Wert für `<connection_string>` verwendet.
+Kopieren Sie den abgerufenen **ConnectionString**-Wert. Diese Zeichenfolge wird später im Tutorial als Wert für `<connection_string>` verwendet.
 
 ## <a name="set-up-the-project"></a>Einrichten des Projekts
 ### <a name="prerequisites"></a>Voraussetzungen
@@ -82,7 +82,7 @@ Clients verbinden sich mit dem Azure Web PubSub-Dienst über das WebSocket-Stand
     cd subscriber
     dotnet new console
     dotnet add package Websocket.Client --version 4.3.30
-    dotnet add package Azure.Messaging.WebPubSub --prerelease
+    dotnet add package Azure.Messaging.WebPubSub --version 1.0.0-beta.3
     ```
 
 2. Aktualisieren Sie die Datei `Program.cs`, um eine Verbindung mit dem Dienst herzustellen:
@@ -146,7 +146,7 @@ Clients verbinden sich mit dem Azure Web PubSub-Dienst über das WebSocket-Stand
     cd subscriber
     npm init -y
     npm install --save ws
-    npm install --save @azure/web-pubsub
+    npm install --save @azure/web-pubsub@1.0.0-alpha.20211102.4
 
     ```
 2. Verwenden Sie dann die WebSocket-API, um eine Verbindung mit dem Dienst herzustellen. Erstellen Sie eine Datei `subscribe.js` mit dem folgenden Code:
@@ -156,13 +156,9 @@ Clients verbinden sich mit dem Azure Web PubSub-Dienst über das WebSocket-Stand
     const { WebPubSubServiceClient } = require('@azure/web-pubsub');
 
     async function main() {
-      if (process.argv.length !== 4) {
-        console.log('Usage: node subscribe <connection-string> <hub-name>');
-        return 1;
-      }
-
-      let serviceClient = new WebPubSubServiceClient(process.argv[2], process.argv[3]);
-      let token = await serviceClient.getAuthenticationToken();
+      const hub = "pubsub";
+      let serviceClient = new WebPubSubServiceClient(process.env.WebPubSubConnectionString, hub);
+      let token = await serviceClient.getClientAccessToken();
       let ws = new WebSocket(token.url);
       ws.on('open', () => console.log('connected'));
       ws.on('message', data => console.log('Message received: %s', data));
@@ -173,14 +169,15 @@ Clients verbinden sich mit dem Azure Web PubSub-Dienst über das WebSocket-Stand
     
     Der obige Code erstellt eine WebSocket-Verbindung, um eine Verbindung mit einem Hub in Azure Web PubSub herzustellen. Ein Hub ist eine logische Einheit in Azure Web PubSub, in dem Sie Nachrichten für eine Gruppe von Clients veröffentlichen können. Unter [Wichtige Konzepte](./key-concepts.md) finden Sie ausführliche Erläuterungen der in Azure Web PubSub verwendeten Begriffe.
     
-    Der Azure Web PubSub-Dienst verwendet die [JSON-Webtoken](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims)-Authentifizierung (JWT). Deshalb nutzt das Codebeispiel `WebPubSubServiceClient.getAuthenticationToken()` im Web PubSub SDK, um eine URL für den Dienst zu generieren, der die vollständige URL mit einem gültigen Zugriffstoken enthält.
+    Der Azure Web PubSub-Dienst verwendet die [JSON-Webtoken](../active-directory/develop/security-tokens.md#json-web-tokens-and-claims)-Authentifizierung (JWT). Deshalb nutzt das Codebeispiel `WebPubSubServiceClient.getClientAccessToken()` im Web PubSub SDK, um eine URL für den Dienst zu generieren, der die vollständige URL mit einem gültigen Zugriffstoken enthält.
     
     Nachdem die Verbindung hergestellt wurde, erhalten Sie Nachrichten über die WebSocket-Verbindung. Daher verwenden wir `WebSocket.on('message', ...)`, um auf eingehende Nachrichten zu lauschen.
     
 3. Führen Sie den folgenden Befehl aus, und ersetzen Sie `<connection_string>` durch den Wert von **ConnectionString**, den Sie im [vorherigen Schritt](#get-the-connectionstring-for-future-use) abgerufen haben:
 
     ```bash
-    node subscribe "<connection_string>" "myHub1"
+    export WebPubSubConnectionString="<connection-string>"
+    node subscribe
     ```
 
 # <a name="python"></a>[Python](#tab/python)
@@ -198,7 +195,7 @@ Clients verbinden sich mit dem Azure Web PubSub-Dienst über das WebSocket-Stand
 
     # Or call .\env\Scripts\activate when you are using CMD under Windows
 
-    pip install azure-messaging-webpubsubservice
+    pip install azure-messaging-webpubsubservice==1.0.0b1
     pip install websockets
 
     ```
@@ -373,7 +370,7 @@ Verwenden Sie nun das Azure Web PubSub SDK, um eine Nachricht auf dem verbundene
     mkdir publisher
     cd publisher
     dotnet new console
-    dotnet add package Azure.Messaging.WebPubSub --prerelease
+    dotnet add package Azure.Messaging.WebPubSub --version 1.0.0-beta.3
     ```
 
 2. Aktualisieren Sie dann die Datei `Program.cs`, um die Klasse `WebPubSubServiceClient` zu verwenden und Nachrichten an die Clients zu senden.
@@ -423,29 +420,25 @@ Verwenden Sie nun das Azure Web PubSub SDK, um eine Nachricht auf dem verbundene
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-1. Erstellen Sie zunächst einen neuen Ordner `publisher` für dieses Projekt, und installieren Sie die erforderlichen Abhängigkeiten:
+1. Erstellen Sie zunächst einen neuen Ordner (`publisher`) für dieses Projekt, und installieren Sie die erforderlichen Abhängigkeiten:
 
     ```bash
     mkdir publisher
     cd publisher
     npm init -y
-    npm install --save @azure/web-pubsub
+    npm install --save @azure/web-pubsub@1.0.0-alpha.20211102.4
 
     ```
-2. Verwenden Sie nun das Azure Web PubSub SDK, um eine Nachricht im Dienst zu veröffentlichen. Erstellen Sie eine Datei `publish.js` mit dem folgenden Code:
+2. Verwenden Sie nun das Azure Web PubSub SDK, um eine Nachricht im Dienst zu veröffentlichen. Erstellen Sie eine Datei vom Typ `publish.js` mit dem folgenden Code:
 
     ```javascript
     const { WebPubSubServiceClient } = require('@azure/web-pubsub');
 
-    if (process.argv.length !== 5) {
-    console.log('Usage: node publish <connection-string> <hub-name> <message>');
-    return 1;
-    }
-
-    let serviceClient = new WebPubSubServiceClient(process.argv[2], process.argv[3]);
+    const hub = "pubsub";
+    let serviceClient = new WebPubSubServiceClient(process.env.WebPubSubConnectionString, hub);
 
     // by default it uses `application/json`, specify contentType as `text/plain` if you want plain-text
-    serviceClient.sendToAll(process.argv[4], { contentType: "text/plain" });
+    serviceClient.sendToAll(process.argv[2], { contentType: "text/plain" });
     ```
 
     Der Aufruf `sendToAll()` sendet einfach eine Nachricht an alle verbundenen Clients in einem Hub.
@@ -453,7 +446,8 @@ Verwenden Sie nun das Azure Web PubSub SDK, um eine Nachricht auf dem verbundene
 3. Führen Sie den folgenden Befehl aus, und ersetzen Sie `<connection_string>` durch den Wert von **ConnectionString**, den Sie im [vorherigen Schritt](#get-the-connectionstring-for-future-use) abgerufen haben:
 
     ```bash
-    node publish "<connection_string>" "myHub1" "Hello World"
+    export WebPubSubConnectionString="<connection-string>"
+    node publish "Hello World"
     ```
 
 4. Sie sehen, dass der vorherige Abonnent die folgende Nachricht erhalten hat:
@@ -464,7 +458,7 @@ Verwenden Sie nun das Azure Web PubSub SDK, um eine Nachricht auf dem verbundene
 
 # <a name="python"></a>[Python](#tab/python)
 
-1. Erstellen Sie zunächst einen neuen Ordner `publisher` für dieses Projekt, und installieren Sie die erforderlichen Abhängigkeiten:
+1. Erstellen Sie zunächst einen neuen Ordner (`publisher`) für dieses Projekt, und installieren Sie die erforderlichen Abhängigkeiten:
     * Bei Verwendung von Bash
         ```bash
         mkdir publisher
@@ -477,7 +471,7 @@ Verwenden Sie nun das Azure Web PubSub SDK, um eine Nachricht auf dem verbundene
 
         # Or call .\env\Scripts\activate when you are using CMD under windows
 
-        pip install azure-messaging-webpubsubservice
+        pip install azure-messaging-webpubsubservice==1.0.0b1
 
         ```
 2. Verwenden Sie nun das Azure Web PubSub SDK, um eine Nachricht im Dienst zu veröffentlichen. Erstellen Sie eine Datei `publish.py` mit dem folgenden Code:

@@ -6,16 +6,19 @@ author: msjasteppe
 ms.custom: references_regions
 ms.service: healthcare-apis
 ms.topic: reference
-ms.date: 10/22/2021
+ms.date: 11/03/2021
 ms.author: jasteppe
-ms.openlocfilehash: d1a02502a13d2702b8965cebefe6935b4e457891
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 00f3153981a07e436b714dadfd2785aac61dd8ab
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130268420"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131578892"
 ---
 # <a name="frequently-asked-questions-about-iot-connector"></a>Häufig gestellte Fragen zum IoT-Connector
+
+> [!IMPORTANT]
+> Azure Healthcare-APIs befinden sich derzeit in der VORSCHAU. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen für Azure-Features, die sich in der Beta- oder Vorschauphase befinden oder anderweitig noch nicht allgemein verfügbar sind.
 
 Hier sind einige der häufig gestellten Fragen zum IoT-Connector.
 
@@ -25,7 +28,7 @@ Hier sind einige der häufig gestellten Fragen zum IoT-Connector.
 
 Der IoT-Connector für Azure Healthcare-APIs ist der Nachfolger des IoT-Connectors für Azure API for Fast Healthcare Interoperability Resources (FHIR&#174;) (Vorschau). 
 
-Es wurden mehrere Verbesserungen eingeführt, z. B. Endpunkte für die Erfassung von Nachrichten von kundengehosteten Geräten (z. B. ein Azure Event Hub), die Verwendung von verwalteten Identitäten und Azure Role-Based Access Control (Azure RBAC).
+Es wurden mehrere Verbesserungen eingeführt, z. B. Endpunkte für die Erfassung von Vom Kunden gehosteten Gerätenachrichten (z. B. ein Azure Event Hub), die Verwendung von verwalteten Identitäten und Azure Role-Based Access Control (Azure RBAC).
 
 ### <a name="can-i-use-iot-connector-with-a-different-fhir-service-other-than-the-azure-healthcare-apis-fhir-service"></a>Kann ich den IoT-Connector mit einem anderen FHIR-Dienst als dem FHIR-Dienst der Azure Healthcare-APIs verwenden?
 
@@ -50,8 +53,8 @@ Ja. Der IoT-Connector unterstützt Gerätenachrichten von allen diesen Plattform
 ## <a name="more-frequently-asked-questions"></a>Weitere häufig gestellte Fragen
 [Häufig gestellte Fragen zu den Azure Healthcare-APIs](../healthcare-apis-faqs.md)
 
-[Häufig gestellte Fragen zum FHIR-Dienst der Azure Healthcare-APIs](../fhir/fhir-faq.md)
+[Häufig gestellte Fragen zum FHIR-Dienst für Azure Healthcare-APIs](../fhir/fhir-faq.md)
 
-[Häufig gestellte Fragen zum DICOM-Dienst der Azure Healthcare-APIs](../dicom/dicom-services-faqs.yml)
+[Häufig gestellte Fragen zum DICOM-Dienst für Azure Healthcare-APIs](../dicom/dicom-services-faqs.yml)
 
 (FHIR&#174;) ist eine registrierte Marke von [HL7](https://hl7.org/fhir/) und wird mit der Berechtigung von HL7 verwendet.

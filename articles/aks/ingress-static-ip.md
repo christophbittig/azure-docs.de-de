@@ -5,12 +5,12 @@ description: Erfahren Sie, wie Sie einen NGINX-Eingangscontroller mit einer stat
 services: container-service
 ms.topic: article
 ms.date: 04/23/2021
-ms.openlocfilehash: d56332cecc5938c8f4406f4c36ec16b9516a08b3
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 7d05e1f8878c2315d2b3966354baff8e592250f1
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122351427"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131578362"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Erstellen eines Eingangscontrollers mit einer statischen öffentlichen IP-Adresse in Azure Kubernetes Service (AKS)
 
@@ -39,7 +39,7 @@ Darüber hinaus wird in diesem Artikel vorausgesetzt, dass Sie über einen vorha
 
 ## <a name="import-the-images-used-by-the-helm-chart-into-your-acr"></a>Importieren der vom Helm-Diagramm verwendeten Images in Ihre ACR
 
-In diesem Artikel wird das [Helm-Diagramm des NGINX-Eingangsdatencontrollers][ingress-nginx-helm-chart] verwendet, das auf drei Containerimages basiert. Verwenden Sie `az acr import`, um diese Images in Ihre ACR zu importieren.
+In diesem Artikel wird das [Helm-Chart des NGINX-Eingangsdatencontrollers][ingress-nginx-helm-chart] verwendet, das auf drei Containerimages basiert. Verwenden Sie `az acr import`, um diese Images in Ihre ACR zu importieren.
 
 ```azurecli
 REGISTRY_NAME=<REGISTRY_NAME>
@@ -99,7 +99,7 @@ Sie müssen zwei zusätzliche Parameter an das Helm-Release übergeben, damit de
 Der Eingangscontroller muss ebenfalls auf einem Linux-Knoten geplant werden. Windows Server-Knoten dürfen nicht auf dem Eingangscontroller ausgeführt werden. Ein Knotenselektor wird mit dem Parameter `--set nodeSelector` angegeben, um den Kubernetes-Scheduler anzuweisen, den NGINX-Eingangscontroller auf einem Linux-basierten Knoten auszuführen.
 
 > [!TIP]
-> Im folgenden Beispiel wird der Kubernetes-Namespace namens *ingress-basic* für die Eingangsressourcen erstellt, das auch für die Verwendung in diesem Namespace vorgesehen ist. Geben Sie ggf. einen Namespace für Ihre eigene Umgebung an. Wenn in Ihrem AKS-Cluster die rollenbasierte Zugriffssteuerung (RBAC) von Kubernetes nicht aktiviert ist, fügen Sie den Helm-Befehlen `--set rbac.create=false` hinzu.
+> Im folgenden Beispiel wird der Kubernetes-Namespace namens *ingress-basic* für die Eingangsressourcen erstellt, und es ist beabsichtigt, in diesem Namespace zu arbeiten. Geben Sie ggf. einen Namespace für Ihre eigene Umgebung an. Wenn in Ihrem AKS-Cluster die rollenbasierte Zugriffssteuerung (RBAC) von Kubernetes nicht aktiviert ist, fügen Sie den Helm-Befehlen `--set rbac.create=false` hinzu.
 
 > [!TIP]
 > Wenn Sie die [Beibehaltung der Clientquell-IP][client-source-ip] für Anforderungen an Container in Ihrem Cluster aktivieren möchten, fügen Sie dem Helm-Installationsbefehl `--set controller.service.externalTrafficPolicy=Local` hinzu. Die Clientquell-IP wird in der Anforderungskopfzeile unter *X-Forwarded-For* gespeichert. Bei der Verwendung eines Eingangscontrollers mit aktivierter Clientquell-IP-Beibehaltung funktioniert TLS-Pass-Through nicht.
@@ -503,9 +503,9 @@ Sie können außerdem:
 <!-- LINKS - external -->
 [helm-cli]: ./kubernetes-helm.md
 [cert-manager]: https://github.com/jetstack/cert-manager
-[cert-manager-certificates]: https://cert-manager.readthedocs.io/en/latest/reference/certificates.html
-[cert-manager-cluster-issuer]: https://cert-manager.readthedocs.io/en/latest/reference/clusterissuers.html
-[cert-manager-issuer]: https://cert-manager.readthedocs.io/en/latest/reference/issuers.html
+[cert-manager-certificates]: https://cert-manager.io/docs/concepts/certificate/
+[cert-manager-cluster-issuer]: https://cert-manager.io/docs/concepts/issuer/
+[cert-manager-issuer]: https://cert-manager.io/docs/concepts/issuer/
 [lets-encrypt]: https://letsencrypt.org/
 [nginx-ingress]: https://github.com/kubernetes/ingress-nginx
 [helm]: https://helm.sh/

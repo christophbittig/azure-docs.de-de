@@ -9,19 +9,19 @@ ms.topic: include
 ms.date: 11/02/2021
 ms.author: lajanuar
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 504cc328d7336c829c30222f0ff95c11291c1955
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 8420373d452cdcb6a1add4d45fc990af1690ef29
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131253157"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131520051"
 ---
 <!-- markdownlint-disable MD001 -->
 <!-- markdownlint-disable MD024 -->
 <!-- markdownlint-disable MD033 -->
 <!-- markdownlint-disable MD034 -->
 
-[Referenzdokumentation](/java/api/overview/azure/ai-formrecognizer-readme) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src) | [Paket (Maven)](https://mvnrepository.com/artifact/com.azure/azure-ai-formrecognizer) | [Beispiele](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md)
+[Referenzdokumentation](/java/api/overview/azure/ai-formrecognizer-readme) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-formrecognizer_3.1.1/sdk/formrecognizer/azure-ai-formrecognizer/src) | [Paket (Maven)](https://mvnrepository.com/artifact/com.azure/azure-ai-formrecognizer) | [Beispiele](https://github.com/Azure/azure-sdk-for-java/blob/azure-ai-formrecognizer_3.1.1/sdk/formrecognizer/azure-ai-formrecognizer/src/samples/README.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -426,4 +426,4 @@ In diesem Schnellstart haben Sie die Formularerkennungs-Clientbibliothek für Ja
 > [Erstellen eines Trainingsdatasets](../../build-training-data-set.md)
 
 * [Was ist die Formularerkennung?](../../overview.md)
-* Den Beispielcode aus diesem Leitfaden (und vieles mehr) finden Sie auf [GitHub](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/formrecognizer/azure-ai-formrecognizer/src/samples).
+* Den Beispielcode aus diesem Leitfaden (und vieles mehr) finden Sie auf [GitHub](https://github.com/Azure/azure-sdk-for-java/tree/azure-ai-formrecognizer_3.1.1/sdk/formrecognizer/azure-ai-formrecognizer/src/samples).

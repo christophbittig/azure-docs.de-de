@@ -5,13 +5,13 @@ author: vicancy
 ms.author: lianwei
 ms.service: azure-web-pubsub
 ms.topic: quickstart
-ms.date: 08/06/2021
-ms.openlocfilehash: 42bcaa9697733662b3a5b890461b917fc466c492
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.date: 11/01/2021
+ms.openlocfilehash: 39a451b241952d40467e75f5a463baa3b76ab2b9
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122445173"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131576470"
 ---
 # <a name="quickstart-publish-messages-using-the-service-sdk-for-the-azure-web-pubsub-instance"></a>Schnellstart: Veröffentlichen von Nachrichten mithilfe des Dienst-SDK für die Azure Web PubSub-Instanz
 
@@ -49,11 +49,11 @@ Verwenden Sie nun das Azure Web PubSub SDK, um eine Nachricht auf dem verbundene
 
 # <a name="c"></a>[C#](#tab/csharp)
 
-* [.NET Core 2.1 oder höher](https://dotnet.microsoft.com/download)
+* [.NET Core 2.1 oder höher](https://dotnet.microsoft.com/download)
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-* [Node.js](https://nodejs.org) 12.x oder höher
+* [Node.js 12.x oder höher](https://nodejs.org)
 
 # <a name="python"></a>[Python](#tab/python)
 * [Python](https://www.python.org/)
@@ -74,7 +74,7 @@ Verwenden Sie nun das Azure Web PubSub SDK, um eine Nachricht auf dem verbundene
     mkdir publisher
     cd publisher
     dotnet new console
-    dotnet add package Azure.Messaging.WebPubSub --prerelease
+    dotnet add package Azure.Messaging.WebPubSub --version 1.0.0-beta.3
     ```
 
 2. Aktualisieren Sie die Datei `Program.cs`, um die Klasse `WebPubSubServiceClient` zu verwenden und Nachrichten an die Clients zu senden.
@@ -130,23 +130,22 @@ Verwenden Sie nun das Azure Web PubSub SDK, um eine Nachricht auf dem verbundene
     mkdir publisher
     cd publisher
     npm init -y
-    npm install --save @azure/web-pubsub
-
+    npm install --save @azure/web-pubsub@1.0.0-alpha.20211102.4
     ```
+
 2. Verwenden Sie nun das Azure Web PubSub SDK, um eine Nachricht im Dienst zu veröffentlichen. Erstellen Sie eine Datei vom Typ `publish.js` mit dem folgenden Code:
 
     ```javascript
     const { WebPubSubServiceClient } = require('@azure/web-pubsub');
 
-    if (process.argv.length !== 5) {
-    console.log('Usage: node publish <connection-string> <hub-name> <message>');
-    return 1;
+    if (process.argv.length !== 3) {
+      console.log('Usage: node publish <message>');
+      return 1;
     }
-
-    let serviceClient = new WebPubSubServiceClient(process.argv[2], process.argv[3]);
-
+    const hub = "pubsub";
+    let serviceClient = new WebPubSubServiceClient(process.env.WebPubSubConnectionString, hub);
     // by default it uses `application/json`, specify contentType as `text/plain` if you want plain-text
-    serviceClient.sendToAll(process.argv[4], { contentType: "text/plain" });
+    serviceClient.sendToAll(process.argv[2], { contentType: "text/plain" });
     ```
 
     Der Aufruf `sendToAll()` sendet einfach eine Nachricht an alle verbundenen Clients in einem Hub.
@@ -154,7 +153,8 @@ Verwenden Sie nun das Azure Web PubSub SDK, um eine Nachricht auf dem verbundene
 3. Führen Sie den folgenden Befehl aus, und ersetzen Sie `<connection_string>` durch die **Verbindungszeichenfolge**, die Sie im [vorherigen Schritt](#get-the-connectionstring-for-future-use) abgerufen haben:
 
     ```bash
-    node publish "<connection_string>" "myHub1" "Hello World"
+    export WebPubSubConnectionString="<connection-string>"
+    node publish "Hello World"
     ```
 
 4. Sie sehen, dass der vorherige CLI-Client die Nachricht empfangen hat.
@@ -178,7 +178,7 @@ Verwenden Sie nun das Azure Web PubSub SDK, um eine Nachricht auf dem verbundene
 
         # Or call .\env\Scripts\activate when you are using CMD
 
-        pip install azure-messaging-webpubsubservice
+        pip install azure-messaging-webpubsubservice==1.0.0b1
 
         ```
 2. Verwenden Sie nun das Azure Web PubSub SDK, um eine Nachricht im Dienst zu veröffentlichen. Erstellen Sie eine Datei vom Typ `publish.py` mit dem folgenden Code:

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/26/2021
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: e62f2a07b4266671bb055e6a672e13f69e2a0bab
-ms.sourcegitcommit: 7c44970b9caf9d26ab8174c75480f5b09ae7c3d7
+ms.openlocfilehash: 084768eec7863e7983fa4c552586deba8fb1b23b
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2021
-ms.locfileid: "112982814"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131578028"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Auswählen eines Tarifs für die kognitive Azure-Suche
 
@@ -64,7 +64,7 @@ Die meisten Funktionen sind in allen Tarifen (einschließlich des Free-Tarifs) v
 | [IP-Firewallzugriff](service-configure-firewall.md) | Im Free-Tarif nicht verfügbar. |
 | [Privater Endpunkt (Integration mit Azure Private Link)](service-create-private-endpoint.md) | Für eingehende Verbindungen bei einem Suchdienst, nicht im Free-Tarif verfügbar. Für ausgehende Verbindungen von Indexern zu anderen Azure-Ressourcen, nicht verfügbar im Tarif „Free“ oder „S3 HD“. Für Indexer, die Skillsets verwenden, nicht verfügbar im Tarif „Free“, „Basic“, „S1“ oder „S3 HD“| 
 | [Verfügbarkeitszonen](search-performance-optimization.md) | In den Tarifen „Free“ und „Basic“ nicht verfügbar. |
-| [Semantische Suche (Vorschau)] | In den Tarifen „Free“ und „Basic“ nicht verfügbar. |
+| [Semantische Suche (Vorschau)](semantic-search-overview.md) | In den Tarifen „Free“ und „Basic“ nicht verfügbar. |
 
 Ressourcenintensive Funktionen funktionieren möglicherweise nicht gut, wenn Sie ihnen nicht genügend Kapazität zuweisen. Beispielsweise umfasst die [KI-Anreicherung](cognitive-search-concept-intro.md) Skills mit langer Laufzeit, die bei einem kostenlosen Dienst zu einem Timeout führen, sofern es sich nicht um ein kleines Dataset handelt.
 

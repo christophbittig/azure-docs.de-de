@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 07/18/2020
 ms.author: cshoe
-ms.openlocfilehash: be5415658de782c362eca0f40a17a4578932aafa
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 3bbcf14012f7e237538e20d8219d278c4322607d
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124777220"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131575786"
 ---
 # <a name="configure-front-end-frameworks-and-libraries-with-azure-static-web-apps"></a>Konfigurieren von Front-End-Frameworks und Bibliotheken mit Azure Static Web Apps
 
@@ -31,7 +31,7 @@ Die Absicht der Tabellenspalten wird durch die folgenden Punkte erläutert:
 | Framework | Speicherort für App-Artefakte | Benutzerdefinierter Buildbefehl |
 |--|--|--|
 | [Alpine.js](https://github.com/alpinejs/alpine/) | `/` | Nicht zutreffend <sup>2</sup> |
-| [Angular](https://angular.io/) | `dist/<APP_NAME>` | `npm run build -- --prod` |
+| [Angular](https://angular.io/) | `dist/<APP_NAME>` | `npm run build -- --configuration production` |
 | [Angular Universal](https://angular.io/guide/universal) | `dist/<APP_NAME>/browser` | `npm run prerender` |
 | [Aurelia](https://aurelia.io/) | `dist` | – |
 | [Backbone.js](https://backbonejs.org/) | `/` | – |

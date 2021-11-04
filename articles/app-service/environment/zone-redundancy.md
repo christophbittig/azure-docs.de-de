@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/05/2021
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 117fe7d8c624c0776c6ec6f61296101a2f844f1b
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.openlocfilehash: a60ab8498076eb6380657b9cd57a3f8d0db31da2
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113432804"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131576413"
 ---
 # <a name="availability-zone-support-for-app-service-environments"></a>Unterstützung für Verfügbarkeitszonen in App Service-Umgebungen
 
@@ -58,29 +58,29 @@ Die einzige erforderliche Änderung in einer ARM-Vorlage zum Angeben einer zonal
 Der nachstehende Beispielcodeausschnitt für die ARM-Vorlage zeigt die neue ***zones***-Eigenschaft, die angibt, dass die ILB-ASE an Zone 2 angeheftet werden soll.
 
 ```
-   "resources": [
-      {
-         "type": "Microsoft.Web/hostingEnvironments",
-         "kind": "ASEV2",
-         "name": "yourASENameHere",
-         "apiVersion": "2015-08-01",
-         "location": "your location here",
-         "zones": [
+"resources": [
+    {
+        "type": "Microsoft.Web/hostingEnvironments",
+        "kind": "ASEV2",
+        "name": "yourASENameHere",
+        "apiVersion": "2015-08-01",
+        "location": "your location here",
+        "zones": [
             "2"
-         ],
-         "properties": {
-         "name": "yourASENameHere",
-         "location": "your location here",
-         "ipSslAddressCount": 0,
-         "internalLoadBalancingMode": "3",
-         "dnsSuffix": "contoso-internal.com",
-         "virtualNetwork": {
-             "Id": "/subscriptions/your-subscription-id-here/resourceGroups/your-resource-group-here/providers/Microsoft.Network/virtualNetworks/your-vnet-name-here",
-             "Subnet": "yourSubnetNameHere"
-          }
-         }
-      }
-    ]
+        ],
+        "properties": {
+            "name": "yourASENameHere",
+            "location": "your location here",
+            "ipSslAddressCount": 0,
+            "internalLoadBalancingMode": "3",
+            "dnsSuffix": "contoso-internal.com",
+            "virtualNetwork": {
+                "Id": "/subscriptions/your-subscription-id-here/resourceGroups/your-resource-group-here/providers/Microsoft.Network/virtualNetworks/your-vnet-name-here",
+                "Subnet": "yourSubnetNameHere"
+            }
+        }
+    }
+]
 ```
 
 Damit Ihre Apps zonenredundant sind, müssen Sie zwei zonale ILB-ASEs bereitstellen. Die beiden zonalen ILB-ASEs müssen sich in getrennten Verfügbarkeitszonen befinden. Anschließend müssen Sie Ihre Apps in beiden ILB-ASEs bereitstellen. Nach dem Erstellen Ihrer Apps müssen Sie eine Lösung für den Lastenausgleich konfigurieren. Die empfohlene Lösung ist das Bereitstellen einer [zonenredundanten Application Gateway-Instanz](../../application-gateway/application-gateway-autoscaling-zone-redundant.md) hinter den zonalen ILB-ASEs. 

@@ -1,7 +1,7 @@
 ---
 title: Neuerungen bei externen Azure Active Directory-Identitäten
 description: Neue und aktualisierte Dokumentation für externe Azure Active Directory-Identitäten
-ms.date: 10/05/2021
+ms.date: 11/04/2021
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
@@ -9,16 +9,25 @@ ms.workload: identity
 ms.author: mimart
 author: msmimart
 manager: CelesteDG
-ms.openlocfilehash: 3247f9e13e50a9fb7b4792be518af5b85767822a
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: cb90a1525f53c2a36a666ec5b37104eb4f48bae9
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129533649"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131579181"
 ---
 # <a name="azure-active-directory-external-identities-whats-new"></a>Externe Azure Active Directory-Identitäten: Neuerungen
 
 Hier erfahren Sie mehr über die Neuerungen in der Dokumentation für die externen Azure Active Directory-Identitäten. In diesem Artikel werden neu hinzugefügte Dokumente aufgelistet sowie Dokumente, die in den letzten drei Monaten grundlegend überarbeitet wurden. Informationen zu den Neuerungen beim Dienst für externe Identitäten finden Sie unter [Neuerungen in Azure Active Directory](../fundamentals/whats-new.md).
+
+## <a name="october-2021"></a>Oktober 2021
+
+### <a name="updated-articles"></a>Aktualisierte Artikel
+
+- [Authentifizierung mit Einmalkennung per E-Mail](one-time-passcode.md)
+- [Häufig gestellte Fragen zur Azure Active Directory B2B-Zusammenarbeit](faq.yml)
+- [Zurücksetzen des Einlösestatus für einen Gastbenutzer (Vorschau)](reset-redemption-status.md)
+- [Hinzufügen von Google als Identitätsanbieter für B2B-Gastbenutzer](google-federation.md)
 
 ## <a name="september-2021"></a>September 2021
 
