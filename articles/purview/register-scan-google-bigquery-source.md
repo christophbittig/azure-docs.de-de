@@ -1,19 +1,19 @@
 ---
 title: Verbindung zu Google BigQuery-Projekten herstellen und diese verwalten
 description: In dieser Anleitung wird beschrieben, wie Sie in Azure Purview eine Verbindung mit Google BigQuery-Projekten herstellen und die Funktionen von Purview zum Scannen und Verwalten Ihrer Google BigQuery-Quelle verwenden.
-author: chandrakavya
-ms.author: kchandra
+author: linda33wj
+ms.author: jingwang
 ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: e264aaef00eb0e1af12db3a7a2f3047de5e6e3e5
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c300e315571c90fd2aa1892336b6ad40d5593ed9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131056222"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131433439"
 ---
 # <a name="connect-to-and-manage-google-bigquery-projects-in-azure-purview"></a>Eine Verbindung zu Google BigQuery-Projekten in Azure Purview herstellen und diese verwalten
 
@@ -37,7 +37,7 @@ In diesem Artikel wird beschrieben, wie Sie Google BigQuery-Projekte registriere
 
 * Eine aktive [Purview-Ressource](create-catalog-portal.md)
 
-* Sie müssen ein Datenquellenadministrator und Datenleser sein, um eine Quelle zu registrieren und in Purview Studio zu verwalten. Weitere Informationen finden Sie auf unserer Seite [Azure Purview-Berechtigungen](catalog-permissions.md).
+* Sie müssen ein Datenquellenadministrator und Datenleser sein, um eine Quelle zu registrieren und in Purview Studio zu verwalten. Weitere Informationen finden Sie auf der [Seite Azure Purview-Berechtigungen](catalog-permissions.md).
 
 * Richten Sie die neueste [selbstgehostete Integration Runtime](https://www.microsoft.com/download/details.aspx?id=39717) ein. Weitere Informationen finden Sie im [Leitfaden zum Erstellen und Konfigurieren einer selbstgehosteten Integrationslaufzeit](../data-factory/create-self-hosted-integration-runtime.md).
 

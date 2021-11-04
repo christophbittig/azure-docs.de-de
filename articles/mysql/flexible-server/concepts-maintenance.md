@@ -6,21 +6,18 @@ ms.author: nlarin
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: 0da77cb5291022357384fdf2e14e90fe76850f4f
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 477d3f5c83c8fa50a4a7d895681dc0c7b2b401a7
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122639753"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131442310"
 ---
 # <a name="scheduled-maintenance-in-azure-database-for-mysql--flexible-server"></a>Geplante Wartung in Azure Database for MySQL: Flexible Server
 
 [[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 In Azure Database for MySQL – Flexible Server werden regelmäßige Wartungen durchgeführt, um die Sicherheit, Stabilität und Aktualität Ihrer verwalteten Datenbank sicherzustellen. Während der Wartung erhält der Server neue Features, Updates und Patches.
-
-> [!IMPORTANT]
-> Azure Database for MySQL – Flexible Server befindet sich in der Vorschau.
 
 ## <a name="select-a-maintenance-window"></a>Auswählen eines Wartungsfensters
 
@@ -43,13 +40,13 @@ Beim Konfigurieren der Einstellungen für den Wartungszeitplan können Sie einen
 
 Sie können die Zeitplaneinstellungen jederzeit aktualisieren. Wenn für Ihren flexiblen Server eine Wartung geplant ist und Sie die Zeitplaneinstellungen aktualisieren, wird die aktuelle Einführung planungsgemäß fortgesetzt, und die Änderungen an den Zeitplaneinstellungen werden nach dem erfolgreichen Abschluss bis zur nächsten geplanten Wartung wirksam.
 
-Sie können einen vom System verwalteten oder benutzerdefinierten Zeitplan für jeden flexiblen Server in Ihrem Azure-Abonnement definieren.  
-* Mit einem benutzerdefinierten Zeitplan können Sie Ihr Wartungsfenster für den Server angeben, indem Sie den Wochentag und ein Ein-Stunden-Zeitfenster auswählen.  
-* Bei einem vom System verwalteten Zeitplan wählt das System ein beliebiges einstündiges Fenster zwischen 23:00 Uhr und 7:00 Uhr in der Region Ihres Servers aus.  
+Sie können einen vom System verwalteten oder benutzerdefinierten Zeitplan für jeden flexiblen Server in Ihrem Azure-Abonnement definieren.
+* Mit einem benutzerdefinierten Zeitplan können Sie Ihr Wartungsfenster für den Server angeben, indem Sie den Wochentag und ein Ein-Stunden-Zeitfenster auswählen.
+* Bei einem vom System verwalteten Zeitplan wählt das System ein beliebiges einstündiges Fenster zwischen 23:00 Uhr und 7:00 Uhr in der Region Ihres Servers aus.
 
-Im Rahmen der Einführung von Änderungen wenden wir die Updates auf die Server an, die mit einem vom System verwalteten Zeitplan konfiguriert wurden, gefolgt von Servern mit benutzerdefiniertem Zeitplan nach einer Mindestlücke von 7 Tagen innerhalb einer bestimmten Region. Wenn Sie beabsichtigen, frühzeitige Updates für eine Liste von Entwicklungs- und Testumgebungsservern zu erhalten, empfiehlt es sich, den vom System verwalteten Zeitplan für Server zu konfigurieren, die in der Entwicklungs- und Testumgebung verwendet werden. Dadurch können Sie das neueste Update zuerst in Ihrer Dev/Test-Umgebung zum Testen und Auswerten für die Validierung erhalten. Wenn Verhaltensänderungen oder Breaking Changes auftreten, haben Sie Zeit, sie zu beheben, bevor das gleiche Update auf Produktionsservern mit einem benutzerdefinierten verwalteten Zeitplan ausgeführt wird. Das Update beginnt nach sieben Tagen mit der Einführung auf flexiblen Servern nach benutzerdefiniertem Zeitplan und wird im definierten Wartungsfenster auf Ihren Server angewendet. Zu diesem Zeitpunkt gibt es keine Option, das Update hinauszuzögern, nachdem die Benachrichtigung gesendet wurde. Diese benutzerdefinierte Methode wird nur für Produktionsumgebungen empfohlen. 
+Im Rahmen der Einführung von Änderungen wenden wir die Updates auf die Server an, die mit einem vom System verwalteten Zeitplan konfiguriert wurden, gefolgt von Servern mit benutzerdefiniertem Zeitplan nach einer Mindestlücke von 7 Tagen innerhalb einer bestimmten Region. Wenn Sie beabsichtigen, frühzeitige Updates für eine Liste von Entwicklungs- und Testumgebungsservern zu erhalten, empfiehlt es sich, den vom System verwalteten Zeitplan für Server zu konfigurieren, die in der Entwicklungs- und Testumgebung verwendet werden. Dadurch können Sie das neueste Update zuerst in Ihrer Dev/Test-Umgebung zum Testen und Auswerten für die Validierung erhalten. Wenn Verhaltensänderungen oder Breaking Changes auftreten, haben Sie Zeit, sie zu beheben, bevor das gleiche Update auf Produktionsservern mit einem benutzerdefinierten verwalteten Zeitplan ausgeführt wird. Das Update beginnt nach sieben Tagen mit der Einführung auf flexiblen Servern nach benutzerdefiniertem Zeitplan und wird im definierten Wartungsfenster auf Ihren Server angewendet. Zu diesem Zeitpunkt gibt es keine Option, das Update hinauszuzögern, nachdem die Benachrichtigung gesendet wurde. Diese benutzerdefinierte Methode wird nur für Produktionsumgebungen empfohlen.
 
-In seltenen Fällen kann ein Wartungsereignis vom System abgebrochen oder möglicherweise nicht erfolgreich abgeschlossen werden. Wenn das Update fehlschlägt, wird das Update wiederhergestellt, und die vorherige Version der Binärdateien wird wiederhergestellt. In solchen Szenarios mit fehlerhaften Updates kann während des Wartungsfensters weiterhin ein Neustart des Servers angezeigt werden. Wenn das Update abgebrochen wird oder fehlgeschlagen ist, erstellt das System eine Benachrichtigung über ein abgebrochenes oder fehlgeschlagenes Wartungsereignis, das Sie benachrichtigt. Der nächste Wartungsversuch wird gemäß Ihren aktuellen Zeitplaneinstellungen geplant, und Sie erhalten fünf Tage im Voraus eine Benachrichtigung. 
+In seltenen Fällen kann ein Wartungsereignis vom System abgebrochen oder möglicherweise nicht erfolgreich abgeschlossen werden. Wenn das Update fehlschlägt, wird das Update wiederhergestellt, und die vorherige Version der Binärdateien wird wiederhergestellt. In solchen Szenarios mit fehlerhaften Updates kann während des Wartungsfensters weiterhin ein Neustart des Servers angezeigt werden. Wenn das Update abgebrochen wird oder fehlgeschlagen ist, erstellt das System eine Benachrichtigung über ein abgebrochenes oder fehlgeschlagenes Wartungsereignis, das Sie benachrichtigt. Der nächste Wartungsversuch wird gemäß Ihren aktuellen Zeitplaneinstellungen geplant, und Sie erhalten fünf Tage im Voraus eine Benachrichtigung.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

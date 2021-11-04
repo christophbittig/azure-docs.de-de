@@ -8,24 +8,22 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 9/21/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: b8b7454effbef87eb44ec5e99caf5bfb03756d1a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: b737e4095fedec7260a8c666649c77443c7d4523
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "128609249"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131433534"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-flexible-server-using-azure-cli"></a>Schnellstart: Erstellen einer Azure Database for MySQL Flexible Server-Instanz mit der Azure CLI
 
-[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
+[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 
 In diesem Schnellstart erfahren Sie, wie Sie mit den Befehlen der [Azure CLI](/cli/azure/get-started-with-azure-cli) in [Azure Cloud Shell](https://shell.azure.com) in fünf Minuten eine Azure Database for MySQL Flexible Server-Instanz erstellen können. 
 
 [!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
 
-> [!IMPORTANT]
-> Azure Database for MySQL – Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
 
 ## <a name="launch-azure-cloud-shell"></a>Starten von Azure Cloud Shell
 
@@ -57,26 +55,25 @@ Erstellen Sie mithilfe des Befehls `az group create` eine [Azure-Ressourcengrupp
 az group create --name myresourcegroup --location eastus2
 ```
 
-Erstellen Sie mit dem Befehl `az mysql flexible-server create` einen flexiblen Server. Ein Server kann mehrere Datenbanken enthalten. Mit dem folgenden Befehl wird ein Server mit Dienststandards und -werten aus dem [lokalen Kontext](/cli/azure/local-context) Ihrer Azure CLI erstellt: 
+Erstellen Sie mit dem Befehl `az mysql flexible-server create` einen flexiblen Server. Ein Server kann mehrere Datenbanken enthalten. Mit dem folgenden Befehl wird ein Server mit Dienststandards und -werten aus dem [lokalen Kontext](/cli/azure/local-context) Ihrer Azure CLI erstellt:
 
 ```azurecli-interactive
 az mysql flexible-server create
 ```
 
-Der erstellte Server weist die folgenden Attribute auf: 
-- Er hat einen automatisch generierten Servernamen, Administratorbenutzernamen, ein Administratorkennwort, einen Ressourcengruppennamen (sofern nicht bereits im lokalen Kontext angegeben), und er befindet sich am selben Speicherort wie die Ressourcengruppe. 
+Der erstellte Server weist die folgenden Attribute auf:
+- Er hat einen automatisch generierten Servernamen, Administratorbenutzernamen, ein Administratorkennwort, einen Ressourcengruppennamen (sofern nicht bereits im lokalen Kontext angegeben), und er befindet sich am selben Speicherort wie die Ressourcengruppe.
 - Die Dienststandardwerte für verbleibende Serverkonfigurationen lauten wie folgt: Computetarif (Burstable) (Burstfähig), Computegröße/SKU (B1MS), Aufbewahrungszeitraum für Sicherungen (7 Tage) und MySQL-Version (5.7).
 - Die Standardkonnektivitätsmethode ist der private Zugriff (VNET-Integration) mit einem automatisch generierten virtuellen Netzwerk und Subnetz.
 
-> [!NOTE] 
+> [!NOTE]
 > Die Konnektivitätsmethode kann nicht geändert werden, nachdem der Server erstellt wurde. Wenn Sie z. B. während der Erstellung *Private access (VNet Integration)* (Privater Zugriff (VNET-Integration)) ausgewählt haben, können Sie nach der Erstellung nicht zu *Public access (allowed IP addresses)* (Öffentlicher Zugriff (zulässige IP-Adressen)) wechseln. Es wird dringend empfohlen, einen Server mit privatem Zugriff zu erstellen, um mithilfe der VNET-Integration sicher auf den Server zugreifen zu können. Weitere Informationen zum privaten Zugriff finden Sie im Artikel zu [Konzepten](./concepts-networking.md).
 
-Wenn Sie irgendwelche Standardwerte ändern möchten, finden Sie in der [Referenzdokumentation](/cli/azure/mysql/flexible-server) zur Azure CLI die komplette Liste der konfigurierbaren CLI-Parameter. 
+Wenn Sie irgendwelche Standardwerte ändern möchten, finden Sie in der [Referenzdokumentation](/cli/azure/mysql/flexible-server) zur Azure CLI die komplette Liste der konfigurierbaren CLI-Parameter.
 
-Nachstehend ist eine Beispielausgabe aufgeführt: 
+Nachstehend ist eine Beispielausgabe aufgeführt:
 
 ```json
-Command group 'mysql flexible-server' is in preview. It may be changed/removed in a future release.
 Creating Resource Group 'groupXXXXXXXXXX'...
 Creating new vnet "serverXXXXXXXXXVNET" in resource group "groupXXXXXXXXXX"...
 Creating new subnet "serverXXXXXXXXXSubnet" in resource group "groupXXXXXXXXXX" and delegating it to "Microsoft.DBforMySQL/flexibleServers"...
@@ -99,7 +96,7 @@ Make a note of your password. If you forget, you would have to reset your passwo
 }
 ```
 
-Wenn Sie irgendwelche Standardwerte ändern möchten, finden Sie in der [Referenzdokumentation](/cli/azure/mysql/flexible-server) zur Azure CLI die komplette Liste der konfigurierbaren CLI-Parameter. 
+Wenn Sie irgendwelche Standardwerte ändern möchten, finden Sie in der [Referenzdokumentation](/cli/azure/mysql/flexible-server) zur Azure CLI die komplette Liste der konfigurierbaren CLI-Parameter.
 
 ## <a name="create-a-database"></a>Erstellen einer Datenbank
 Führen Sie den folgenden Befehl aus, um eine Datenbank (**newdatabase**) zu erstellen, wenn Sie noch keine erstellt haben.
@@ -119,7 +116,7 @@ Zum Herstellen einer Verbindung zum Server müssen Sie Hostinformationen und Anm
 az mysql flexible-server show --resource-group myresourcegroup --name mydemoserver
 ```
 
-Das Ergebnis liegt im JSON-Format vor. Notieren Sie sich die Werte für **fullyQualifiedDomainName** und **administratorLogin**. Im Folgenden finden Sie ein Beispiel für die JSON-Ausgabe: 
+Das Ergebnis liegt im JSON-Format vor. Notieren Sie sich die Werte für **fullyQualifiedDomainName** und **administratorLogin**. Im Folgenden finden Sie ein Beispiel für die JSON-Ausgabe:
 
 ```json
 {
@@ -168,7 +165,6 @@ az mysql flexible-server connect -n mysqldemoserver1 -u dbuser -p "dbpassword" -
 Für eine erfolgreiche Verbindung sollte die folgende Ausgabe angezeigt werden:
 
 ```output
-Command group 'mysql flexible-server' is in preview and under development. Reference and support levels: https://aka.ms/CLI_refstatus
 Connecting to newdatabase database.
 Successfully connected to mysqldemoserver1.
 ```
@@ -211,12 +207,12 @@ Wenn Sie Ihren flexiblen Server mit **öffentlichem Zugriff** bereitgestellt hab
 Wenn Sie Azure Cloud Shell verwenden möchten, um eine Verbindung mit Ihrem flexiblen Server herzustellen, müssen Sie für Azure Cloud Shell Netzwerkzugriff auf Ihren flexiblen Server zulassen. Navigieren Sie hierzu im Azure-Portal zum Blatt **Netzwerk** für Ihren flexiblen MySQL-Server, und aktivieren Sie im Abschnitt **Firewall** das Kontrollkästchen „Öffentlichen Zugriff auf diesen Server über beliebigen Azure-Dienst in Azure gestatten“. Klicken Sie anschließend, wie im folgenden Screenshot gezeigt, auf „Speichern“, um die Einstellung zu speichern.
 
  > :::image type="content" source="./media/quickstart-create-server-portal/allow-access-to-any-azure-service.png" alt-text="Screenshot: Vorgehensweise zum Erlauben des Azure Cloud Shell-Zugriffs auf einen flexiblen MySQL-Server zum Konfigurieren des Netzwerks für öffentlichen Zugriff.":::
- 
- 
+
+
 > [!NOTE]
 > Das Kontrollkästchen **Öffentlichen Zugriff auf diesen Server über beliebigen Azure-Dienst in Azure gestatten** sollte nur zu Entwicklungs- und Testzwecken aktiviert werden. Durch diese Option wird die Firewall so konfiguriert, dass Verbindungen von IP-Adressen zugelassen werden, die einem beliebigen Azure-Dienst oder einer beliebigen Azure-Ressource zugeordnet sind. Dies schließt auch Verbindungen aus den Abonnements anderer Kunden mit ein.
 
-Klicken Sie auf **Jetzt testen**, um Azure Cloud Shell zu starten, und verwenden Sie die folgenden Befehle, um eine Verbindung mit Ihrem flexiblen Server herzustellen. Verwenden Sie im Befehl Ihren Servernamen, Benutzernamen und Ihr Kennwort. 
+Klicken Sie auf **Jetzt testen**, um Azure Cloud Shell zu starten, und verwenden Sie die folgenden Befehle, um eine Verbindung mit Ihrem flexiblen Server herzustellen. Verwenden Sie im Befehl Ihren Servernamen, Benutzernamen und Ihr Kennwort.
 
 ```azurecli-interactive
 wget --no-check-certificate https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem

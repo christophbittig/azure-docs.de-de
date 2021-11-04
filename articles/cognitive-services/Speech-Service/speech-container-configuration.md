@@ -3,19 +3,19 @@ title: Konfigurieren von Speech-Containern
 titleSuffix: Azure Cognitive Services
 description: Der Speech-Dienst stellt für jeden Container ein allgemeines Konfigurationsframework bereit, sodass Sie ganz einfach Aspekte wie Speicher, Protokollierung und Telemetrie sowie Sicherheitseinstellungen für Ihre Container konfigurieren und verwalten können.
 services: cognitive-services
-author: aahill
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/22/2021
-ms.author: aahi
-ms.openlocfilehash: f86de9cbb7bf6235af6d112f9eae396b43a911f8
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.author: eur
+ms.openlocfilehash: 8824e6cdf70fae19becb54d5a404b4cb8a9a344d
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114441390"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131503563"
 ---
 # <a name="configure-speech-service-containers"></a>Konfigurieren von Containern für den Speech-Dienst
 

@@ -3,19 +3,19 @@ title: Rollenbasierte Zugriffskontrolle in Speech Studio – Speech Dienst
 titleSuffix: Azure Cognitive Services
 description: Lernen Sie, wie Sie dem Speech Dienst über Speech Studio Zugriffsrollen zuweisen können.
 services: cognitive-services
-author: PatrickFarley
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/07/2021
-ms.author: pafarley
-ms.openlocfilehash: c234aa457c6aa77ff16f8297ca5861a66a5e05aa
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.author: eur
+ms.openlocfilehash: 4b84d73b242aba0b46674005211dcb6de77d69e4
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130264520"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131509390"
 ---
 # <a name="azure-role-based-access-control-in-speech-studio"></a>Azure rollenbasierte Zugriffskontrolle in Speech Studio 
 

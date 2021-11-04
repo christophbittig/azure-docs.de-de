@@ -11,12 +11,12 @@ metadata:
   ms.date: 11/04/2019
   ms.author: martinle
   ms.reviewer: igorstan
-  ms.openlocfilehash: 1038f368dba1beae7efa5982021f49976f4053f1
-  ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+  ms.openlocfilehash: 2fd30cfc8682b6afea3dcdc9d02fb0dfedf01908
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 06/17/2021
-  ms.locfileid: "112306006"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131474778"
 title: Häufig gestellte Fragen zum dedizierten SQL-Pool (früher SQL DW) in Azure Synapse Analytics
 summary: ''
 sections:
@@ -63,7 +63,7 @@ sections:
   - question: >
       Ich habe einen Funktionswunsch. Wie kann ich diesen übermitteln?
     answer: >
-      Wenn Sie einen Funktionswunsch haben, können Sie ihn über die Seite [UserVoice](https://feedback.azure.com/forums/307516-sql-data-warehouse) einsenden.
+      Wenn Sie einen Funktionswunsch haben, können Sie ihn über die Seite [UserVoice](https://feedback.azure.com/d365community/forum/9b9ba8e4-0825-ec11-b6e6-000d3a4f07b8) einsenden.
   - question: >
       Wo finde ich Informationen zu x?
     answer: >

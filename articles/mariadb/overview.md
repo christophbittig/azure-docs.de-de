@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: overview
 ms.custom: mvc
 ms.date: 3/18/2020
-ms.openlocfilehash: bf00ecfe947f8d34f8bd9a2520d48140fe876550
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: 4b1631fd24575c20bdc088749983407b74284bb4
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114726907"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131442500"
 ---
 # <a name="what-is-azure-database-for-mariadb"></a>Was ist Azure Database for MariaDB?
 
@@ -62,7 +62,7 @@ Fragen oder Vorschläge im Zusammenhang mit der Verwendung von Azure Database fo
 Weitere Kontaktmöglichkeiten:
 - Wenn Sie den Azure-Support kontaktieren möchten, richten Sie im Azure-Portal eine [Anfrage an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 - Sollten Sie ein Problem mit Ihrem Konto haben, richten Sie im Azure-Portal eine [Anfrage an den Support](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
-- Wenn Sie Feedback abgeben oder Vorschläge für neue Features einreichen möchten, erstellen Sie einen Eintrag in den [Azure-Feedbackforen](https://feedback.azure.com/forums/915439-azure-database-for-mariadb).
+- Wenn Sie Feedback abgeben oder Vorschläge für neue Features einreichen möchten, erstellen Sie einen Eintrag in den [Azure-Feedbackforen](https://feedback.azure.com/d365community/forum/8f6502f1-ed24-ec11-b6e6-000d3a4f0da0).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

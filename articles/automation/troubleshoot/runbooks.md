@@ -5,12 +5,12 @@ services: automation
 ms.date: 09/16/2021
 ms.topic: troubleshooting
 ms.custom: has-adal-ref, devx-track-azurepowershell
-ms.openlocfilehash: 436282ad8a2816e3307d2ad270209980b2fa0427
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 3813fa79fb6eaba5c61500d11d9b160c88d668d4
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129058435"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131435394"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Beheben von Runbookproblemen
 
@@ -266,7 +266,7 @@ Falls für Ihr Azure-Konto die mehrstufige Authentifizierung eingerichtet ist, k
 
 ### <a name="resolution"></a>Lösung
 
-Informationen zur Verwendung eines klassischen ausführenden Kontos mit Cmdlets für das klassische Azure-Bereitstellungsmodell finden Sie unter [Erstellen eines klassischen ausführenden Kontos](../automation-create-standalone-account.md#create-a-classic-run-as-account). Informationen zum Verwenden eines Dienstprinzipals mit Azure Resource Manager-Cmdlets finden Sie unter [Gewusst wie: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](../../active-directory/develop/howto-create-service-principal-portal.md) und [Gewusst wie: Verwenden von Azure PowerShell zum Erstellen eines Dienstprinzipals mit einem Zertifikat](../../active-directory/develop/howto-authenticate-service-principal-powershell.md).
+Informationen zum Verwenden eines Dienstprinzipals mit Azure Resource Manager-Cmdlets finden Sie unter [Gewusst wie: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](../../active-directory/develop/howto-create-service-principal-portal.md) und [Gewusst wie: Verwenden von Azure PowerShell zum Erstellen eines Dienstprinzipals mit einem Zertifikat](../../active-directory/develop/howto-authenticate-service-principal-powershell.md).
 
 ## <a name="scenario-runbook-fails-with-a-task-was-canceled-error-message"></a><a name="task-was-cancelled"></a>Szenario: Runbookfehler mit der Meldung „Eine Aufgabe wurde abgebrochen“
 

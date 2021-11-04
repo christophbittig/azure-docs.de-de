@@ -3,7 +3,7 @@ title: Verizon-spezifische HTTP-Header für Azure CDN-Regel-Engine | Microsoft D
 description: In diesem Artikel wird beschrieben, wie die Verizon-spezifischen HTTP-Header mit der Azure CDN-Regel-Engine verwendet werden.
 services: cdn
 documentationcenter: ''
-author: asudbring
+author: duongau
 manager: danielgi
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
-ms.author: allensu
-ms.openlocfilehash: e20f6ce9540d357b61ae2cfdf0e8f96d127dc6c0
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.author: duau
+ms.openlocfilehash: 25e51bbc96f07f29fe62e85366d1d6359dffaaea
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "84343216"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131439308"
 ---
 # <a name="verizon-specific-http-headers-for-azure-cdn-rules-engine"></a>Verizon-spezifische HTTP-Header für Azure CDN-Regel-Engine
 

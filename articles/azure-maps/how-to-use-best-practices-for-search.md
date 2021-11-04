@@ -1,18 +1,18 @@
 ---
 title: Bewährte Methoden für den Azure Maps-Suchdienst | Microsoft Azure Maps
 description: Erfahren Sie, wie Sie beim Nutzen des Suchdiensts von Microsoft Azure Maps bewährte Methoden verwenden.
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 09/02/2020
+author: stevemunk
+ms.author: v-munksteve
+ms.date: 10/28/2021
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-ms.openlocfilehash: 88ad940dfbb079b358cc36d5f1fc4a38275cd957
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f9d276c9663b294f3c9a863ab0eb54b2ba2b19cc
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355457"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131435222"
 ---
 # <a name="best-practices-for-azure-maps-search-service"></a>Bewährte Methoden für den Suchdienst von Azure Maps
 
@@ -20,6 +20,7 @@ Der Azure Maps-[Suchdienst](/rest/api/maps/search) enthält APIs, die verschiede
 
 In diesem Artikel wird erläutert, wie Sie beim Aufrufen von Daten aus dem Suchdienst von Azure Maps vernünftige Methoden anwenden können. Sie lernen Folgendes:
 > [!div class="checklist"]
+>
 > * Erstellen von Abfragen zum Zurückgeben relevanter Übereinstimmungen
 > * Einschränken von Suchergebnissen
 > * Kennenlernen der Unterschiede zwischen den Ergebnistypen
@@ -55,14 +56,13 @@ Um die Ergebnisse geografisch in den für Ihren Benutzer relevanten Bereich zu l
 
 * Um den für die Ergebnisse relevanten Bereich zu beeinflussen, definieren Sie die Koordinatenparameter `lat` und `lon`. Verwenden Sie den Parameter `radius`, um den Radius des Suchbereichs festzulegen.
 
-
 #### <a name="fuzzy-search-parameters"></a>Parameter der Fuzzysuche
 
 Es wird empfohlen, die Azure Maps-API für die [Fuzzysuche](/rest/api/maps/search/getsearchfuzzy) zu verwenden, wenn Sie Ihre Benutzereingaben für eine Suchabfrage nicht kennen. Beispielsweise kann die Eingabe des Benutzers eine Adresse oder der POI-Typ sein, wie z. B. *Einkaufszentrum*. Die API kombiniert POI-Suche und Geocodierung zu einer kanonischen *einzeiligen Suche*: 
 
-* Die Parameter `minFuzzyLevel` und `maxFuzzyLevel` helfen, relevante Übereinstimmungen zurückzugeben, selbst wenn die Abfrageparameter nicht genau mit den vom Benutzer gewünschten Informationen übereinstimmen. Um die Leistung zu maximieren und ungewöhnliche Ergebnisse zu verringern, legen Sie Suchabfragen auf die Standardwerte `minFuzzyLevel=1` und `maxFuzzyLevel=2` fest. 
+* Die Parameter `minFuzzyLevel` und `maxFuzzyLevel` helfen, relevante Übereinstimmungen zurückzugeben, selbst wenn die Abfrageparameter nicht genau mit den vom Benutzer gewünschten Informationen übereinstimmen. Um die Leistung zu maximieren und ungewöhnliche Ergebnisse zu verringern, legen Sie Suchabfragen auf die Standardwerte `minFuzzyLevel=1` und `maxFuzzyLevel=2` fest.
 
-    Wenn z. B. der Parameter `maxFuzzyLevel` auf 2 festgelegt ist, wird der Suchbegriff *restrant* zu *restaurant* zugeordnet. Sie können die standardmäßigen Fuzzyebenen bei Bedarf außer Kraft setzen. 
+    Wenn z. B. der Parameter `maxFuzzyLevel` auf 2 festgelegt ist, wird der Suchbegriff *restrant* zu *restaurant* zugeordnet. Sie können die standardmäßigen Fuzzyebenen bei Bedarf außer Kraft setzen.
 
 * Verwenden Sie den Parameter `idxSet`, um den genauen Satz von Ergebnistypen zu priorisieren. Um einen genauen Satz von Ergebnissen zu priorisieren, können Sie eine durch Trennzeichen getrennte Liste von Indizes übermitteln. In der Liste spielt die Reihenfolge der Elemente keine Rolle. Azure Maps unterstützt die folgenden Indizes:
 
@@ -73,23 +73,22 @@ Es wird empfohlen, die Azure Maps-API für die [Fuzzysuche](/rest/api/maps/searc
 * `Str` - **Straßen:** Straßen auf der Karte.
 * `XStr` - **Querstraßen oder Kreuzungen**: Kreuzungen oder Orte, an denen sich zwei Straßen kreuzen.
 
-
 #### <a name="usage-examples"></a>Anwendungsbeispiele
 
-* `idxSet=POI` – Nur POIs suchen. 
+* `idxSet=POI` – Nur POIs suchen.
 
 * `idxSet=PAD,Addr` – Nur Adressen suchen. `PAD` gibt die Punktadresse und `Addr` den Adressbereich an.
 
 ### <a name="reverse-geocode-and-filter-for-a-geography-entity-type"></a>Inverser Geocode und Filter für einen Geografieentitätstyp
 
-Wenn Sie eine inverse Geocodesuche mit der [API für die umgekehrte Adresssuche](/rest/api/maps/search/getsearchaddressreverse) durchführen, kann der Dienst Polygone für Verwaltungsbereiche zurückgeben. Ein Beispiel: Sie möchten das Flächenpolygon für einen Ort abrufen.  Nehmen Sie den Parameter `entityType` in Ihre Anforderungen auf, um die Suche auf bestimmte Geografieentitätstypen einzugrenzen. 
+Wenn Sie eine inverse Geocodesuche mit der [API für die umgekehrte Adresssuche](/rest/api/maps/search/getsearchaddressreverse) durchführen, kann der Dienst Polygone für Verwaltungsbereiche zurückgeben. Ein Beispiel: Sie möchten das Flächenpolygon für einen Ort abrufen.  Nehmen Sie den Parameter `entityType` in Ihre Anforderungen auf, um die Suche auf bestimmte Geografieentitätstypen einzugrenzen.
 
 Die resultierende Antwort enthält die Geografie-ID und den passenden Entitätstyp. Wenn Sie mehr als eine Entität angeben, gibt der Endpunkt die *kleinste verfügbare Entität* zurück. Sie können die zurückgegebene Geometrie-ID verwenden, um die Geometrie der Geografie über den [Dienst „Polygonsuche“](/rest/api/maps/search/getsearchpolygon) abzurufen.
 
 #### <a name="sample-request"></a>Beispiel für eine Anforderung
 
 ```HTTP
-https://atlas.microsoft.com/search/address/reverse/json?api-version=1.0&subscription-key={subscription-key}&query=47.6394532,-122.1304551&language=en-US&entityType=Municipality
+https://atlas.microsoft.com/search/address/reverse/json?api-version=1.0&subscription-key={Your-Azure-Maps-Primary-Subscription-key}&query=47.6394532,-122.1304551&language=en-US&entityType=Municipality
 ```
 
 #### <a name="response"></a>Antwort
@@ -127,7 +126,7 @@ https://atlas.microsoft.com/search/address/reverse/json?api-version=1.0&subscrip
 
 ### <a name="set-the-results-language"></a>Festlegen der Sprache der Ergebnisse
 
-Verwenden Sie den Parameter `language`, um die Sprache für die zurückgegebenen Suchergebnisse festzulegen. Wenn in der Anforderung die Sprache nicht festgelegt ist, verwendet der Suchdienst standardmäßig die am häufigsten verwendete Sprache des Landes oder der Region. Wenn Daten in der angegebenen Sprache nicht verfügbar sind, wird die Standardsprache verwendet. 
+Verwenden Sie den Parameter `language`, um die Sprache für die zurückgegebenen Suchergebnisse festzulegen. Wenn in der Anforderung die Sprache nicht festgelegt ist, verwendet der Suchdienst standardmäßig die am häufigsten verwendete Sprache des Landes oder der Region. Wenn Daten in der angegebenen Sprache nicht verfügbar sind, wird die Standardsprache verwendet.
 
 Weitere Informationen finden Sie unter [Unterstützte Sprachen in Azure Maps](./supported-languages.md).
 
@@ -141,7 +140,7 @@ In der folgenden Beispielabfrage wird der Suchadressdienst nach *Microso* abgefr
 #### <a name="sample-query"></a>Beispielabfrage
 
 ```HTTP
-https://atlas.microsoft.com/search/address/json?subscription-key={subscription-key}&api-version=1.0&typeahead=true&countrySet=US&lat=47.6370891183&lon=-122.123736172&query=Microsoft
+https://atlas.microsoft.com/search/address/json?subscription-key={Your-Azure-Maps-Primary-Subscription-key}&api-version=1.0&typeahead=true&countrySet=US&lat=47.6370891183&lon=-122.123736172&query=Microsoft
 ```
 
 #### <a name="response"></a>Antwort
@@ -404,7 +403,7 @@ https://atlas.microsoft.com/search/address/json?subscription-key={subscription-k
 
 ### <a name="encode-a-uri-to-handle-special-characters"></a>Codieren von URIs zum Verarbeiten von Sonderzeichen 
 
-Um Querstraßenadressen zu finden, müssen Sie den URI codieren, um Sonderzeichen in der Adresse zu behandeln. Sehen Sie sich folgendes Adressbeispiel an: *1st Avenue & Union Street, Seattle*. Codieren Sie hier das kaufmännische Und-Zeichen (`&`), bevor Sie die Anforderung senden. 
+Um Querstraßenadressen zu finden, müssen Sie den URI codieren, um Sonderzeichen in der Adresse zu behandeln. Sehen Sie sich folgendes Adressbeispiel an: *1st Avenue & Union Street, Seattle*. Codieren Sie hier das kaufmännische Und-Zeichen (`&`), bevor Sie die Anforderung senden.
 
 Es wird empfohlen, Zeichendaten in einem URI zu codieren. In einem URI codieren Sie alle Zeichen mit einem Prozentzeichen (`%`) und einem zweistelligen Hexadezimalwert, der dem UTF-8-Code der Zeichen entspricht.
 
@@ -425,57 +424,65 @@ query=1st%20Avenue%20%26%20E%20111th%20St%2C%20New%20York
 Sie können die folgenden Methoden verwenden.
 
 JavaScript oder TypeScript:
+
 ```javascript
 encodeURIComponent(query)
 ```
 
 C#- oder Visual Basic:
+
 ```csharp
 Uri.EscapeDataString(query)
 ```
 
 Java:
+
 ```Java
 URLEncoder.encode(query, "UTF-8") 
 ```
 
 Python:
+
 ```Python
 import urllib.parse 
 urllib.parse.quote(query)
 ```
 
 C++:
+
 ```C++
 #include <curl/curl.h>
 curl_easy_escape(query)
 ```
 
 PHP:
+
 ```PHP
 urlencode(query)
 ```
 
 Ruby:
+
 ```Ruby
 CGI::escape(query) 
 ```
 
 Swift:
+
 ```Swift
 query.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet()) 
 ```
 
 Go:
+
 ```Go
 import ("net/url") 
 url.QueryEscape(query)
 ```
 
-
 ## <a name="best-practices-for-poi-searching"></a>Bewährte Methoden für die POI-Suche
 
-Bei einer POI-Suche können Sie POI-Ergebnisse nach Namen anfordern. Sie können z. B. nach dem Namen eines Unternehmens suchen. 
+Bei einer POI-Suche können Sie POI-Ergebnisse nach Namen anfordern. Sie können z. B. nach dem Namen eines Unternehmens suchen.
 
 Es wird dringend empfohlen, den Parameter `countrySet` zu verwenden, um die Länder/Regionen anzugeben, die von Ihrer Anwendung abgedeckt werden sollen. Standardmäßig wird weltweit gesucht. Diese umfassende Suche könnte überflüssige Ergebnisse liefern und sehr lange dauern.
 
@@ -490,7 +497,7 @@ Um die Markensuche zu untersuchen, fordern wir eine [POI-Kategoriensuche](/rest/
 #### <a name="sample-query"></a>Beispielabfrage
 
 ```HTTP
-https://atlas.microsoft.com/search/poi/json?subscription-key={subscription-key}&api-version=1.0&query=gas%20station&limit=3&lat=47.6413362&lon=-122.1327968
+https://atlas.microsoft.com/search/poi/json?subscription-key={Your-Azure-Maps-Primary-Subscription-key}&api-version=1.0&query=gas%20station&limit=3&lat=47.6413362&lon=-122.1327968
 ```
 
 #### <a name="response"></a>Antwort
@@ -738,15 +745,15 @@ https://atlas.microsoft.com/search/poi/json?subscription-key={subscription-key}&
 
 ### <a name="airport-search"></a>Flughafensuche
 
-Mithilfe der API „Search POI“ (POI suchen) können Sie nach Flughäfen suchen, indem Sie deren offiziellen Code verwenden. Sie können z. B. *SEA* verwenden, um den Seattle-Tacoma International Airport zu finden: 
+Mithilfe der API „Search POI“ (POI suchen) können Sie nach Flughäfen suchen, indem Sie deren offiziellen Code verwenden. Sie können z. B. *SEA* verwenden, um den Seattle-Tacoma International Airport zu finden:
 
 ```HTTP
-https://atlas.microsoft.com/search/poi/json?subscription-key={subscription-key}&api-version=1.0&query=SEA 
+https://atlas.microsoft.com/search/poi/json?subscription-key={Your-Azure-Maps-Primary-Subscription-key}&api-version=1.0&query=SEA 
 ```
 
 ### <a name="nearby-search"></a>Umgebungssuche
 
-Zum Abrufen von POI-Ergebnissen um einen bestimmten Standort herum können Sie versuchen, die [API „Search Nearby“](/rest/api/maps/search/getsearchnearby) (in der Nähe suchen) zu verwenden. Der Endpunkt gibt nur POI-Ergebnisse zurück. Er übernimmt keine Suchabfrageparameter. 
+Zum Abrufen von POI-Ergebnissen um einen bestimmten Standort herum können Sie versuchen, die [API „Search Nearby“](/rest/api/maps/search/getsearchnearby) (in der Nähe suchen) zu verwenden. Der Endpunkt gibt nur POI-Ergebnisse zurück. Er übernimmt keine Suchabfrageparameter.
 
 Es wird empfohlen, den Radius festzulegen, um die Ergebnisse einzuschränken.
 
@@ -757,20 +764,20 @@ Lassen Sie uns eine Adresse in Seattle finden, indem wir eine Anforderung für e
 ### <a name="sample-query"></a>Beispielabfrage
 
 ```HTTP
-https://atlas.microsoft.com/search/address/json?subscription-key={subscription-key}&api-version=1&query=400%20Broad%20Street%2C%20Seattle%2C%20WA&countrySet=US
+https://atlas.microsoft.com/search/address/json?subscription-key={Your-Azure-Maps-Primary-Subscription-key}&api-version=1&query=400%20Broad%20Street%2C%20Seattle%2C%20WA&countrySet=US
 ```
 
 ### <a name="supported-types-of-results"></a>Unterstützte Ergebnistypen
 
-* **Punktadresse**: Punkte auf einer Karte mit einer bestimmten Adresse, die Straßenname und Hausnummer umfasst. Eine Punktadresse bietet den höchsten Grad an Genauigkeit für Adressen. 
+* **Punktadresse**: Punkte auf einer Karte mit einer bestimmten Adresse, die Straßenname und Hausnummer umfasst. Eine Punktadresse bietet den höchsten Grad an Genauigkeit für Adressen.
 
 * **Adressbereich**: Der Bereich der Adresspunkte, die über Anfang und Ende der Straße interpoliert werden.  
 
-* **geography:** Bereiche auf einer Karte, die die Verwaltungseinheiten eines Landes darstellen, z. B. Land/Region, Bundesland, Stadt. 
+* **geography:** Bereiche auf einer Karte, die die Verwaltungseinheiten eines Landes darstellen, z. B. Land/Region, Bundesland, Stadt.
 
 * **POI**: Punkte auf einer Karte, die beachtenswert sind und interessant sein können.
 
-* **Straße**: Straßen auf der Karte. Adressen werden in die Längen- und Breitenkoordinate der Straße aufgelöst, die diese Adresse enthält. Die Hausnummer wird möglicherweise nicht verarbeitet. 
+* **Straße**: Straßen auf der Karte. Adressen werden in die Längen- und Breitenkoordinate der Straße aufgelöst, die diese Adresse enthält. Die Hausnummer wird möglicherweise nicht verarbeitet.
 
 * **Querstraße**: Kreuzungen. Querstraßen stellen Kreuzungen dar, an denen sich zwei Straßen kreuzen.
 
@@ -950,11 +957,9 @@ Der Parameter `Score` für jedes Antwortobjekt gibt an, wie sich die übereinsti
 
 Der Antworttyp *Geometrie* kann die Geometrie-ID enthalten, die im Objekt `dataSources` unter `geometry` und `id` zurückgegeben wird. Sie können z. B. mit dem Dienst [Search Polygon](/rest/api/maps/search/getsearchpolygon) (Polygon suchen) die Geometriedaten in einem GeoJSON-Format anfordern. Wenn Sie dieses Format verwenden, können Sie einen Stadt- oder Flughafenumriss für eine Reihe von Entitäten erhalten. Sie können dann diese Begrenzungsdaten zum [Einrichten von Geofencing](./tutorial-geofence.md) oder zum [Suchen von POIs innerhalb der Geometrie](/rest/api/maps/search/postsearchinsidegeometry) verwenden.
 
-
 Antworten für die [Suchadressen](/rest/api/maps/search/getsearchaddress)-API oder die API für die [Fuzzysuche](/rest/api/maps/search/getsearchfuzzy) können die Geometrie-ID enthalten, die im Objekt `dataSources` unter `geometry` und `id` zurückgegeben wird:
 
-
-```JSON 
+```JSON
 "dataSources": { 
         "geometry": { 
             "id": "00005557-4100-3c00-0000-000059690938" // The geometry ID is returned in the dataSources object under "geometry" and "id".

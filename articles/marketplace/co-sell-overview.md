@@ -8,12 +8,12 @@ author: vamahtan
 ms.author: vamahtan
 ms.reviewer: stmummer
 ms.date: 07/13/2021
-ms.openlocfilehash: eccc66085ae8a3df93315054a1acdea994310d28
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: 201b6dfce65317f03bf1e97b97a16db3fd8c4c69
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130065519"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131505781"
 ---
 # <a name="co-sell-with-microsoft-sales-teams-and-partners-overview"></a>Co-Selling mit Microsoft-Vertriebsteams und -Partnern: Übersicht
 
@@ -77,7 +77,6 @@ Der Status „Business Applications Co-Sell Incentive (Standard und Premium)“ 
 
 Angebote, die den Status _Azure IP Co-Sell Incentivized_ erzielen, profitieren von den folgenden Vorteilen in Bezug auf den kommerziellen Marketplace:
 
-- CSP-Partner (Cloud Solution Provider) erhalten für den Verkauf Ihrer IaaS-Lösung oder Ihres SaaS-Angebots einen Anreiz in Höhe von 10 %. Weitere Informationen über das CSP-Programm finden Sie unter [Programm für Cloud-Lösungsanbieter](cloud-solution-providers.md).
 - Der Verkauf Ihres Angebots über Azure Marketplace trägt zu den Azure Consumption Commitments der Kunden bei. Für berechtigte Kunden ist das Angebot im Azure-Portal mit **Für Azure-Vorteil berechtigt** gekennzeichnet. Der Artikel [Vorteil eines Prepaidtarifs für den Azure-Verbrauch](/marketplace/azure-consumption-commitment-benefit) enthält weitere Informationen dazu, wie Kunden vom MACC-Programm profitieren und wie sie Lösungen mit MACC-Aktivierung finden. Informationen dazu, wie Herausgeber ihr transaktionsfähiges Angebot bei MACC registrieren können, finden Sie unter [Registrierung für den Prepaidtarif für den Azure-Verbrauch](azure-consumption-commitment-enrollment.md).
 - Angebote, die den Status _Azure IP Co-Sell Incentivized_ erreichen oder beim [Microsoft Business Applications ISV Connect Program](business-applications-isv-program.md) mit Co-Selling-Status registriert sind, erhalten in den folgenden Onlineshops auf der Angebotsseite den Badge **Bevorzugte Microsoft-Lösung**: [Azure Marketplace](https://azuremarketplace.microsoft.com/) und [AppSource](https://appsource.microsoft.com/).  Nachdem ein Angebot den entsprechenden Status erreicht hat, kann es bis zu 30 Tage dauern, bis der Badge „Bevorzugte Lösung“ im Onlineshop angezeigt wird. Der Badge bewirbt die Qualität und Leistung eines Angebots sowie dessen Fähigkeit, Kundenbedürfnisse in bestimmten Schlüsselbranchen oder in einem bestimmten Lösungsbereich zu erfüllen.
 

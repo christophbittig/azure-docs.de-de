@@ -3,21 +3,21 @@ title: Migrieren Ihrer JavaScript-Anwendung von ADAL.js zu MSAL.js | Azure
 titleSuffix: Microsoft identity platform
 description: Erfahren Sie, wie Sie eine vorhandene JavaScript-Anwendung so aktualisieren, dass anstelle der Active Directory-Authentifizierungsbibliothek (ADAL) die Microsoft-Authentifizierungsbibliothek (MSAL) für die Authentifizierung und Autorisierung verwendet wird.
 services: active-directory
-author: KarenH444
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
 ms.date: 07/06/2021
-ms.author: karenhoran
+ms.author: marsma
 ms.custom: has-adal-ref
-ms.openlocfilehash: 9e5e7b5f5bec9cf26e7dbdd019509157b9a225ba
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 6614c1d06dd1e5093dfbe7e3ea3a20ff13ec74c1
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130163902"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131501037"
 ---
 # <a name="how-to-migrate-a-javascript-app-from-adaljs-to-msaljs"></a>Gewusst wie: Migrieren einer JavaScript-App von ADAL.js zu MSAL.js
 
@@ -166,9 +166,9 @@ Andere sind veraltet, während MSAL.js neue Methoden bietet:
 | `login`                           | –                             | Veraltet. `loginPopup` oder `loginRedirect` verwenden  |
 | `logOut`                          | –                             | Veraltet. `logoutPopup` oder `logoutRedirect` verwenden|
 | –                               | `loginPopup`                    |                                                  |
-| –                               | `loginRedirect`                 |                                                  |
-| –                               | `logoutPopup`                   |                                                  |
-| –                               | `logoutRedirect`                |                                                  |
+| Nicht zutreffend                               | `loginRedirect`                 |                                                  |
+| Nicht zutreffend                               | `logoutPopup`                   |                                                  |
+| Nicht zutreffend                               | `logoutRedirect`                |                                                  |
 | –                               | `getAccountByHomeId`            | Filtert Konten nach Home-ID (oid + Mandanten-ID)    |
 | –                               | `getAccountLocalId`             | Filtert Konten nach lokaler ID (nützlich für ADFS)   |
 | –                               | `getAccountUsername`            | Filtert Konten nach Benutzername (falls vorhanden)         |
@@ -324,7 +324,7 @@ Die folgenden Codeausschnitte zeigen den minimal erforderlichen Code für eine S
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <script 
+  <script
     type="text/javascript"
     src="https://secure.aadcdn.microsoftonline-p.com/lib/1.0.18/js/adal.min.js">
   </script>
@@ -377,8 +377,8 @@ Die folgenden Codeausschnitte zeigen den minimal erforderlichen Code für eine S
 
     tokenButton.addEventListener('click', () => {
         authContext.acquireTokenPopup(
-            "https://graph.microsoft.com", 
-            null, null, 
+            "https://graph.microsoft.com",
+            null, null,
             function (error, token) {
                 console.log(error, token);
             }
@@ -401,8 +401,8 @@ Die folgenden Codeausschnitte zeigen den minimal erforderlichen Code für eine S
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <script 
-    type="text/javascript" 
+  <script
+    type="text/javascript"
     src="https://alcdn.msauth.net/browser/2.14.2/js/msal-browser.min.js">
   </script>
 </head>

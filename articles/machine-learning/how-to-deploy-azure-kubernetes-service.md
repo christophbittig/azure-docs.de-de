@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 07/28/2021
-ms.openlocfilehash: fbacf4317defe999563a936b6c263ea2619f1eab
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 9df23f6994f9dfa02afe7f7b8d659f013ddafad7
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129428405"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131433572"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Bereitstellen eines Modells in einem Azure Kubernetes Service-Cluster
 
@@ -305,7 +305,7 @@ Fügen Sie Ihrem Endpunkt eine weitere Version hinzu, und konfigurieren Sie das 
 > [!TIP]
 > Die zweite Version, die durch den folgenden Codeausschnitt erstellt wurde, akzeptiert 10 % des Datenverkehrs. Die erste Version ist für 20 % konfiguriert, sodass nur 30 % des Datenverkehrs für bestimmte Versionen konfiguriert sind. Die verbleibenden 70 % werden an die erste Endpunktversion gesendet, da diese auch die Standardversion ist.
 
- ```python
+```python
 from azureml.core.webservice import AksEndpoint
 
 # add another model deployment to the same endpoint as above
@@ -324,7 +324,7 @@ Aktualisieren Sie vorhandene Versionen, oder löschen Sie sie in einem Endpunkt.
 > [!TIP]
 > Nach dem folgenden Codeausschnitt ist nun die zweite Version die Standardversion. Sie ist jetzt für 40 % konfiguriert, während die ursprüngliche Version noch für 20 % konfiguriert ist. Dies bedeutet, dass 40 % des Datenverkehrs nicht auf Versionskonfigurationen entfallen. Der verbleibende Datenverkehr wird auf die zweite Version umgeleitet, da sie jetzt als Standardversion gilt. Sie empfängt effektiv 80 % des Datenverkehrs.
 
- ```python
+```python
 from azureml.core.webservice import AksEndpoint
 
 # update the version's scoring traffic percentage and if it is a default or control type

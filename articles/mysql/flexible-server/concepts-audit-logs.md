@@ -6,19 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: 769f178a65ac096446cd98015050ad1a35b3ef09
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 8dc495f16fe205350f5eeeae7a8aee1e933c6a1c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129612444"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131468231"
 ---
 # <a name="track-database-activity-with-audit-logs-in-azure-database-for-mysql-flexible-server"></a>Überwachen der Datenbankaktivität mit Überwachungsprotokolle in Azure Database for MySQL – Flexible Server
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
-> [!IMPORTANT]
-> Azure Database for MySQL – Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
 
 Azure Database for MySQL – Flexible Server bietet Benutzern die Möglichkeit, Überwachungsprotokolle zu konfigurieren. Überwachungsprotokolle können dazu verwendet werden, die Aktivität auf Datenbankebene zu überwachen, einschließlich Verbindungs-, Administrator-, DDL- und DML-Ereignisse. Diese Arten von Protokollen werden häufig zu Compliancezwecken verwendet.
 
@@ -27,7 +24,7 @@ Azure Database for MySQL – Flexible Server bietet Benutzern die Möglichkeit,
 >[!IMPORTANT]
 > Es wird empfohlen, nur die Ereignistypen und Benutzer zu protokollieren, die für Ihre Überwachungszwecke erforderlich sind, um sicherzustellen, dass die Leistung Ihres Servers nicht stark beeinträchtigt wird.
 
-Überwachungsprotokolle sind standardmäßig deaktiviert. Legen Sie den Serverparameter `audit_log_enabled` auf *ON* (EIN) fest, um sie zu aktivieren. Diese Konfiguration kann über das Azure-Portal oder die Azure CLI erfolgen. <!-- add link to server parameter-->. 
+Überwachungsprotokolle sind standardmäßig deaktiviert. Legen Sie den Serverparameter `audit_log_enabled` auf *ON* (EIN) fest, um sie zu aktivieren. Diese Konfiguration kann über das Azure-Portal oder die Azure CLI erfolgen. <!-- add link to server parameter-->.
 
 Sie können die folgenden anderen Parameter verwenden, um das Verhalten der Überwachungsprotokollierung zu konfigurieren:
 
@@ -153,8 +150,8 @@ Sobald Ihre Überwachungsprotokolle über Diagnoseprotokolle an Azure Monitor-Pr
     AzureDiagnostics
     | where LogicalServerName_s == '<your server name>'
     | where Category == 'MySqlAuditLogs' and event_class_s == "general_log"
-    | project TimeGenerated, LogicalServerName_s, event_class_s, event_subclass_s, event_time_t, user_s , ip_s , sql_text_s 
-    | order by TimeGenerated asc nulls last 
+    | project TimeGenerated, LogicalServerName_s, event_class_s, event_subclass_s, event_time_t, user_s , ip_s , sql_text_s
+    | order by TimeGenerated asc nulls last
     ```
 
 - Auflisten von Verbindungsereignissen (CONNECTION) auf einem bestimmten Server
@@ -163,7 +160,7 @@ Sobald Ihre Überwachungsprotokolle über Diagnoseprotokolle an Azure Monitor-Pr
     AzureDiagnostics
     | where LogicalServerName_s == '<your server name>'
     | where Category == 'MySqlAuditLogs' and event_class_s == "connection_log"
-    | project TimeGenerated, LogicalServerName_s, event_class_s, event_subclass_s, event_time_t, user_s , ip_s , sql_text_s 
+    | project TimeGenerated, LogicalServerName_s, event_class_s, event_subclass_s, event_time_t, user_s , ip_s , sql_text_s
     | order by TimeGenerated asc nulls last
     ```
 
@@ -173,7 +170,7 @@ Sobald Ihre Überwachungsprotokolle über Diagnoseprotokolle an Azure Monitor-Pr
     AzureDiagnostics
     | where LogicalServerName_s == '<your server name>'
     | where Category == 'MySqlAuditLogs'
-    | project TimeGenerated, LogicalServerName_s, event_class_s, event_subclass_s, event_time_t, user_s , ip_s , sql_text_s 
+    | project TimeGenerated, LogicalServerName_s, event_class_s, event_subclass_s, event_time_t, user_s , ip_s , sql_text_s
     | summarize count() by event_class_s, event_subclass_s, user_s, ip_s
     ```
 
@@ -183,9 +180,9 @@ Sobald Ihre Überwachungsprotokolle über Diagnoseprotokolle an Azure Monitor-Pr
     AzureDiagnostics
     | where LogicalServerName_s == '<your server name>'
     | where Category == 'MySqlAuditLogs'
-    | project TimeGenerated, LogicalServerName_s, event_class_s, event_subclass_s, event_time_t, user_s , ip_s , sql_text_s 
+    | project TimeGenerated, LogicalServerName_s, event_class_s, event_subclass_s, event_time_t, user_s , ip_s , sql_text_s
     | summarize count() by LogicalServerName_s, bin(TimeGenerated, 5m)
-    | render timechart 
+    | render timechart
     ```
 
 - Auflisten von überwachten Ereignissen auf allen MySQL-Servern mit aktivierten Diagnoseprotokollen für Überwachungsprotokolle
@@ -193,9 +190,9 @@ Sobald Ihre Überwachungsprotokolle über Diagnoseprotokolle an Azure Monitor-Pr
     ```kusto
     AzureDiagnostics
     | where Category == 'MySqlAuditLogs'
-    | project TimeGenerated, LogicalServerName_s, event_class_s, event_subclass_s, event_time_t, user_s , ip_s , sql_text_s 
+    | project TimeGenerated, LogicalServerName_s, event_class_s, event_subclass_s, event_time_t, user_s , ip_s , sql_text_s
     | order by TimeGenerated asc nulls last
-    ``` 
+    ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie mehr über [Protokolle für langsame Abfragen](concepts-slow-query-logs.md).

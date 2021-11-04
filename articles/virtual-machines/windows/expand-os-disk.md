@@ -9,13 +9,13 @@ ms.topic: article
 ms.date: 11/02/2021
 ms.author: kirpas
 ms.subservice: disks
-ms.custom: devx-track-azurepowershell, ignite-fall-2021
-ms.openlocfilehash: 4588627fdfe64c4ba005b6b3c7defadd5994e3d6
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.custom: devx-track-azurepowershell, references_regions, ignite-fall-2021
+ms.openlocfilehash: d744bf5ec5619985aaa899183657504c7e3afeff
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131046563"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131466673"
 ---
 # <a name="how-to-expand-virtual-hard-disks-attached-to-a-windows-virtual-machine"></a>Erweitern virtueller Festplatten, die an einen Windows virtuellen Computer angefügt sind
 
@@ -39,12 +39,7 @@ Sie können nun die Größe Ihrer verwalteten Datenträger ändern, ohne Ihre VM
 
 Die Vorschau für diesen Bereich hat folgende Einschränkungen:
 
-- Derzeit nur in der Region USA, Westen-Mitte verfügbar.
-
-- Wird nur für Datenfestplatten unterstützt.
-- Festplatten, die kleiner als 4 TiB sind, können nicht ohne Ausfallzeit auf 4 TiB oder mehr erweitert werden.
-    - Sobald Sie die Größe einer Festplatte auf 4 TiB oder mehr erhöht haben, kann sie ohne Ausfallzeiten erweitert werden.
-- Sie müssen entweder die [aktuelle Azure CLI](/cli/azure/install-azure-cli), das [aktuelle Azure PowerShell-Modul](/powershell/azure/install-az-ps), das Azure-Portal, wenn der Zugriff über [https://aka.ms/iaasexp/DiskLiveResize](https://aka.ms/iaasexp/DiskLiveResize) erfolgt, oder eine Azure Resource Manager-Vorlage mit einer API-Version, die 2021-04-01 oder neuer ist, installieren und verwenden.
+[!INCLUDE [virtual-machines-disks-expand-without-downtime-restrictions](../../../includes/virtual-machines-disks-expand-without-downtime-restrictions.md)]
 
 Um sich für die Funktion zu registrieren, verwenden Sie den folgenden Befehl:
 

@@ -7,19 +7,17 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 04/18/2021
-ms.openlocfilehash: 70acef205aea35439e9b88e193c65a6e34ac0b7f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: f8d32c97014e9e38f2ad5a3c6d6a1b96d4e190f5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124761473"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131425468"
 ---
 # <a name="connect-azure-database-for-mysql-flexible-server-with-private-access-connectivity-method"></a>Verbinden von Azure Database for MySQL – Flexibler Server mit der Verbindungsmethode für privaten Zugriff
 
 Azure Database for MySQL Flexible Server ist ein verwalteter Dienst, mit dem Sie hochverfügbare MySQL-Serverinstanzen in der Cloud ausführen, verwalten und skalieren können. In diesem Schnellstart erfahren Sie, wie Sie über das Azure-Portal eine Flexibler Server-Instanz in einem VNet erstellen.
 
-> [!IMPORTANT]
-> Azure Database for MySQL Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
 
 
 [!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
@@ -70,13 +68,13 @@ Führen Sie die folgenden Schritte aus, um eine Flexible Server-Instanz zu erste
 
 ## <a name="create-azure-linux-virtual-machine"></a>Erstellen einer Azure-Linux-VM
 
-Da sich der Server im virtuellen Netzwerk befindet, können Sie nur von anderen Azure-Diensten im gleichen virtuellen Netzwerk wie der Server eine Verbindung mit diesem herstellen. Erstellen Sie eine Linux-VM, um eine Verbindung mit dem Server herzustellen und ihn zu verwalten. Die VM muss in **derselben Region** und **demselben Abonnement** erstellt werden. Die Linux-VM kann als SSH-Tunnel zum Verwalten Ihres Datenbankservers verwendet werden. 
+Da sich der Server im virtuellen Netzwerk befindet, können Sie nur von anderen Azure-Diensten im gleichen virtuellen Netzwerk wie der Server eine Verbindung mit diesem herstellen. Erstellen Sie eine Linux-VM, um eine Verbindung mit dem Server herzustellen und ihn zu verwalten. Die VM muss in **derselben Region** und **demselben Abonnement** erstellt werden. Die Linux-VM kann als SSH-Tunnel zum Verwalten Ihres Datenbankservers verwendet werden.
 
 1. Wechseln Sie zu Ihrer Ressourcengruppe, in der der Server erstellt wurde. Wählen Sie **Hinzufügen**.
 2. Klicken Sie auf **Ubuntu Server 18.04 LTS**.
 3. Stellen Sie auf der Registerkarte **Grundlagen** unter **Projektdetails** sicher, dass das richtige Abonnement ausgewählt ist, und wählen Sie dann **Neu erstellen** für „Ressourcengruppe“ aus. Geben Sie als Namen *myResourceGroup* ein.
 
-   > :::image type="content" source="../../virtual-machines/linux/media/quick-create-portal/project-details.png" alt-text="Screenshot: Abschnitt „Projektdetails“, der zeigt, wo Sie das Azure-Abonnement und die Ressourcengruppe für den virtuellen Computer auswählen" lightbox="../../virtual-machines/linux/media/quick-create-portal/project-details.png"::: 
+   > :::image type="content" source="../../virtual-machines/linux/media/quick-create-portal/project-details.png" alt-text="Screenshot: Abschnitt „Projektdetails“, der zeigt, wo Sie das Azure-Abonnement und die Ressourcengruppe für den virtuellen Computer auswählen" lightbox="../../virtual-machines/linux/media/quick-create-portal/project-details.png":::
 
 2. Geben Sie unter **Instanzdetails** die Zeichenfolge *myVM* als **Name der VM** ein, und wählen Sie die **Region** mit Ihrem Datenbankserver aus.
 
@@ -104,7 +102,7 @@ Da sich der Server im virtuellen Netzwerk befindet, können Sie nur von anderen 
 
 9. Fügen Sie ein neues Subnetz für die VM hinzu.
 
-   > :::image type="content" source="./media/quickstart-create-connect-server-vnet/vm-add-new-subnet.png" alt-text="Screenshot des Hinzufügens eines neuen Subnetzes für die VM" lightbox="./media/quickstart-create-connect-server-vnet/vm-add-new-subnet.png"::: 
+   > :::image type="content" source="./media/quickstart-create-connect-server-vnet/vm-add-new-subnet.png" alt-text="Screenshot des Hinzufügens eines neuen Subnetzes für die VM" lightbox="./media/quickstart-create-connect-server-vnet/vm-add-new-subnet.png":::
 
 10. Schließen Sie die Seite, nachdem das Subnetz erfolgreich erstellt wurde.
    > :::image type="content" source="./media/quickstart-create-connect-server-vnet/subnetcreate-success.png" alt-text="Screenshot des erfolgreichen Hinzufügens eines neuen Subnetzes für die VM" lightbox="./media/quickstart-create-connect-server-vnet/subnetcreate-success.png":::

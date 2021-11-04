@@ -3,19 +3,19 @@ title: 'Schnellstart: Aufrufen von Microsoft Graph über eine Node.js-Desktop-Ap
 titleSuffix: Microsoft identity platform
 description: In dieser Schnellstartanleitung erfahren Sie, wie eine Node.js Electron-Desktopanwendung Benutzer anmelden und ein Zugriffstoken abrufen kann, um eine durch einen Microsoft Identity Platform-Endpunkt geschützte API aufzurufen.
 services: active-directory
-author: KarenH444
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.date: 02/17/2021
-ms.author: karenhoran
-ms.openlocfilehash: 362fdcddc9a8d58da30f269be44fc195870949e1
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.author: marsma
+ms.openlocfilehash: 9020f5952e224ae93e4c1acaab2ab62fcefa81fa
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130163746"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131501816"
 ---
 # <a name="quickstart-acquire-an-access-token-and-call-the-microsoft-graph-api-from-an-electron-desktop-app"></a>Schnellstart: Abrufen eines Zugriffstokens und Aufrufen der Microsoft Graph-API über eine Electron-Desktop-App
 

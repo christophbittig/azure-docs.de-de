@@ -11,12 +11,12 @@ ms.custom: references_regions
 ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/24/2021
-ms.openlocfilehash: e66333fa1174eb9a614f2028641a83a8391e39e0
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 97cf7977d6e867d0c3bbc106f599bc69db4d987b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130047981"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131465229"
 ---
 # <a name="known-issues-with-azure-sql-managed-instance"></a>Bekannte Probleme mit Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -32,7 +32,7 @@ In diesem Artikel werden die derzeit bekannten Probleme mit [Azure SQL Managed I
 |[Das Ändern des Verbindungstyps wirkt sich nicht auf Verbindungen über den Endpunkt der Failovergruppe aus.](#changing-the-connection-type-does-not-affect-connections-through-the-failover-group-endpoint)|Jan 2021|Mit Problemumgehung||
 |[Die Prozedur „sp_send_dbmail“ kann zu vorübergehenden Fehlern führen, wenn der Parameter @query verwendet wird.](#procedure-sp_send_dbmail-may-transiently-fail-when--parameter-is-used)|Jan 2021|Mit Problemumgehung||
 |[Verteilte Transaktionen können nach dem Entfernen einer verwalteten Instanz aus der Serververtrauensgruppe ausgeführt werden.](#distributed-transactions-can-be-executed-after-removing-managed-instance-from-server-trust-group)|Oktober 2020|Mit Problemumgehung||
-|[Verteilte Transaktionen können nach dem Skalierungsvorgang einer verwalteten Instanz nicht ausgeführt werden.](#distributed-transactions-cannot-be-executed-after-managed-instance-scaling-operation)|Oktober 2020|Mit Problemumgehung||
+|[Verteilte Transaktionen können nach dem Skalierungsvorgang einer verwalteten Instanz nicht ausgeführt werden.](#distributed-transactions-cannot-be-executed-after-managed-instance-scaling-operation)|Oktober 2020|Gelöst|Mai 2021|
 |[SQL Managed Instance mit demselben Namen wie der zuvor gelöschte logische Server kann nicht erstellt werden](#cannot-create-sql-managed-instance-with-the-same-name-as-logical-server-previously-deleted)|August 2020|Mit Problemumgehung||
 |[BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql)/[OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql) in Azure SQL und die `BACKUP`/`RESTORE`-Anweisung in SQL Managed Instance können keine verwalteten Azure AD-Identitäten verwenden, um sich für Azure Storage zu authentifizieren.|Sep 2020|Mit Problemumgehung||
 |[Der Dienstprinzipal kann nicht auf Azure AD und Azure Key Vault zugreifen](#service-principal-cannot-access-azure-ad-and-akv)|August 2020|Mit Problemumgehung||

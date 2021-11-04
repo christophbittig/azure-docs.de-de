@@ -10,12 +10,12 @@ ms.author: normesta
 ms.reviewer: santoshc
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 82f860b78a8c0c4114a2250912fb6ec22e040d71
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 8ffa380ec55dfcf96368782a3345ce3d13fe5f4f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128606074"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131474835"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken
 
@@ -385,9 +385,6 @@ Die Arten von Vorgängen, die von einer Ressourceninstanz für Speicherkontodate
 
 > [!NOTE]
 > Dieses Feature befindet sich in der Public Preview-Phase und ist in allen öffentlichen Cloudregionen verfügbar.
-
-> [!NOTE]
-> Ressourceninstanzregeln werden zurzeit nur für Azure Synapse unterstützt. Die Unterstützung für andere Azure-Dienste, die im Abschnitt [Vertrauenswürdiger Zugriff auf der Grundlage einer systemseitig zugewiesenen verwalteten Identität](#trusted-access-system-assigned-managed-identity) dieses Artikels aufgeführt sind, wird in den nächsten Wochen verfügbar sein.
 
 ### <a name="portal"></a>[Portal](#tab/azure-portal)
 

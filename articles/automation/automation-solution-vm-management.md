@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 05/25/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0ac3a2dccecf50b53917d878535ce62e124f8f8e
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 68283077d63b7a796b51da45ef005584c6c792a1
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110479546"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131477267"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>VMs außerhalb der Geschäftszeiten starten/beenden – Übersicht
 
@@ -56,7 +56,7 @@ Wenn Sie Mitwirkender im Abonnement und globaler Administrator in Ihrem Azure Ac
 
 Um VMs für die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden“ unter Verwendung eines vorhandenen Automation-Kontos und eines vorhandenen Log Analytics-Arbeitsbereichs zu aktivieren, benötigen Sie die folgenden Berechtigungen für den Gültigkeitsbereich der Ressourcengruppe. Weitere Informationen zu Rollen finden Sie unter [Benutzerdefinierte Azure-Rollen](../role-based-access-control/custom-roles.md).
 
-| Berechtigung | Bereich|
+| Berechtigung | `Scope`|
 | --- | --- |
 | Microsoft.Automation/automationAccounts/read | Ressourcengruppe |
 | Microsoft.Automation/automationAccounts/variables/write | Ressourcengruppe |
@@ -81,7 +81,6 @@ Um VMs für die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden�
 
 Sie können VMs für die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden“ unter Verwendung eines neuen Automation-Kontos sowie eines neuen Log Analytics-Arbeitsbereichs aktivieren. In diesem Fall benötigen Sie die im vorherigen und in diesem Abschnitt definierten Berechtigungen. Außerdem benötigen Sie die folgenden Rollen:
 
-- Co-Administrator für das Abonnement. Diese Rolle ist erforderlich, um das klassische ausführende Konto zu erstellen, wenn Sie klassische VMs verwalten möchten. [Klassische ausführende Konten](automation-create-standalone-account.md#create-a-classic-run-as-account) werden nicht mehr standardmäßig erstellt.
 - Mitglied der Rolle „Anwendungsentwickler“ in [Azure AD](../active-directory/roles/permissions-reference.md). Weitere Informationen zum Konfigurieren von ausführenden Konten finden Sie unter [Berechtigungen zum Konfigurieren von ausführenden Konten](automation-security-overview.md#permissions).
 - Mitwirkender im Abonnement oder die folgenden Berechtigungen.
 
@@ -140,7 +139,7 @@ In der folgenden Tabelle sind die in Ihrem Automation-Konto erstellten Variablen
 |External_AutoStop_Threshold | Der Schwellenwert für die Azure-Warnungsregel, der in der Variable `External_AutoStop_MetricName` angegeben ist. Prozentwerte können zwischen 1 und 100 liegen.|
 |External_AutoStop_TimeAggregationOperator | Der Zeitaggregationsoperator, der auf die ausgewählte Fenstergröße angewandt wird, um die Bedingung auszuwerten. Mögliche Werte sind `Average`, `Minimum`, `Maximum`, `Total` und `Last`.|
 |External_AutoStop_TimeWindow | Das Zeitfenster, in dem Azure ausgewählte Metriken zum Auslösen einer Warnung analysiert. Für diesen Parameter können Zeiträume eingegeben werden. Mögliche Werte reichen von 5 Minuten bis 6 Stunden.|
-|External_EnableClassicVMs| Dieser Wert gibt an, ob die Funktion auf klassische virtuelle Computer abzielt. Der Standardwert lautet „True“. Legen Sie diese Variable für Azure Cloud Solution Provider-Abonnements (CSP) auf FALSE fest. Für klassische VMs ist ein [klassisches ausführendes Konto](automation-create-standalone-account.md#create-a-classic-run-as-account) erforderlich.|
+|External_EnableClassicVMs| Dieser Wert gibt an, ob die Funktion auf klassische virtuelle Computer abzielt. Der Standardwert lautet „True“. Legen Sie diese Variable für Azure Cloud Solution Provider-Abonnements (CSP) auf FALSE fest.|
 |External_ExcludeVMNames | Durch Trennzeichen getrennte Liste mit den Namen der auszuschließenden VMs (begrenzt auf 140 VMs). Wenn Sie dieser Liste mehr als 140 VMs hinzufügen, können VMs, für die ein Ausschluss festgelegt ist, unbeabsichtigt gestartet oder beendet werden.|
 |External_Start_ResourceGroupNames | Durch Trennzeichen getrennte Liste mit mindestens einer Ressourcengruppe als Ziel für die Startaktionen.|
 |External_Stop_ResourceGroupNames | Durch Trennzeichen getrennte Liste mit mindestens einer Ressourcengruppe als Ziel für die Beendigungsaktionen.|
@@ -173,8 +172,6 @@ Aktivieren Sie nicht alle Zeitpläne, da dies zu sich überlappenden Zeitplanakt
 ## <a name="use-the-feature-with-classic-vms"></a>Verwenden der Funktion mit klassischen VMs
 
 Wenn Sie die Funktion „VMs außerhalb der Geschäftszeiten starten/beenden“ für klassische VMs verwenden, verarbeitet Automation alle Ihre VMs sequenziell pro Clouddienst. Virtuelle Computer werden weiterhin parallel in verschiedenen Clouddiensten verarbeitet. 
-
-Wenn Sie diese Funktion mit klassischen VMs verwenden möchten, benötigen Sie ein klassisches ausführendes Konto. Dieses wird nicht standardmäßig erstellt. Anweisungen zum Erstellen eines klassischen ausführenden Kontos finden Sie unter [Erstellen klassischer ausführender Konten](automation-create-standalone-account.md#create-a-classic-run-as-account).
 
 Wenn Sie über mehr als 20 VMs pro Clouddienst verfügen, beachten Sie folgende Empfehlungen:
 

@@ -3,12 +3,12 @@ title: Leitfaden und bewährte Methoden
 description: Bewährte Methoden und Anleitungen zum Sichern von Cloudworkloads und lokalen Workloads in der Cloud
 ms.topic: conceptual
 ms.date: 07/22/2020
-ms.openlocfilehash: ecac56034c78cba09133fc12ca4ac8827afb0ea2
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 462b71170bbd0534a15a54f0eacc53ff08e09f69
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124806735"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131439384"
 ---
 # <a name="backup-cloud-and-on-premises-workloads-to-cloud"></a>Sichern von Cloudworkloads und lokalen Workloads in der Cloud
 
@@ -225,7 +225,7 @@ Als Sicherungsbenutzer oder -administrator sollten Sie alle Sicherungslösungen 
 
 ### <a name="monitoring"></a>Überwachung
 
-* Azure Backup bietet **integrierte Auftragsüberwachung** für Vorgänge wie das Konfigurieren der Sicherung, das Sichern, das Wiederherstellen oder das Löschen der Sicherung. Diese bezieht sich auf den Bereich eines Tresor und eignet sich ideal für die Überwachung eines einzelnen Tresors. [Hier erhalten Sie weitere Informationen](backup-azure-monitoring-built-in-monitor.md#backup-jobs-in-recovery-services-vault).
+* Azure Backup bietet **integrierte Auftragsüberwachung** für Vorgänge wie das Konfigurieren der Sicherung, das Sichern, das Wiederherstellen oder das Löschen der Sicherung. Diese bezieht sich auf den Bereich eines Tresor und eignet sich ideal für die Überwachung eines einzelnen Tresors. [Hier erhalten Sie weitere Informationen](backup-azure-monitoring-built-in-monitor.md#backup-jobs-in-backup-center).
 
 * Wenn Sie operative Aktivitäten in großem Maßstab überwachen müssen, bietet der **Sicherungs-Explorer** eine aggregierte Ansicht Ihrer gesamten Sicherungsumgebung und ermöglicht eine detaillierte Drilldownanalyse und Problembehandlung. Eine integrierte Azure Monitor-Arbeitsmappe bietet einen einzigen, zentralen Ort zur Überwachung operativer Aktivitäten in der gesamten Sicherungsumgebung von Azure über Mandanten, Standorte, Abonnements, Ressourcengruppen und Tresore hinweg. [Hier erhalten Sie weitere Informationen](monitor-azure-backup-with-backup-explorer.md).
   * Verwenden Sie sie, um Ressourcen zu identifizieren, die nicht für die Sicherung konfiguriert sind, und um sicherzustellen, dass Sie den Schutz wichtiger Daten in Ihrer wachsenden Umgebung nicht aus den Augen verlieren.

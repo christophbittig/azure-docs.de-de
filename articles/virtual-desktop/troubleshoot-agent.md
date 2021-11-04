@@ -6,12 +6,12 @@ ms.topic: troubleshooting
 ms.date: 12/16/2020
 ms.author: sefriend
 manager: clarkn
-ms.openlocfilehash: 12132e5143546abc2b12a83e3e6cd92a43069e1e
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 3bb81f3fd29e68e04607e4f0252ccd8f0308dc67
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130263039"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471799"
 ---
 # <a name="troubleshoot-common-azure-virtual-desktop-agent-issues"></a>Behandeln häufiger Probleme mit dem Azure Virtual Desktop-Agent
 
@@ -106,7 +106,7 @@ Um dieses Problem zu lösen, überprüfen Sie, ob BrokerURI und BrokerURIGlobal 
    > ![Screenshot: nicht erfolgreicher Zugriff auf den geladenen globalen Broker-URI](media/unsuccessful-broker-global.png)
 
 8. Wenn das Netzwerk diese URLs blockiert, müssen Sie diese Blockierung für die erforderlichen URLs aufheben. Weitere Informationen finden Sie unter [Liste der erforderlichen URLs](safe-url-list.md).
-9. Wenn Ihr Problem damit nicht gelöst wird, stellen Sie sicher, dass keine Gruppenrichtlinien mit Verschlüsselungsverfahren vorhanden sind, die die Verbindung zwischen Agent und Broker blockieren. Azure Virtual Desktop verwendet dasselbe TLS 1.2-Verschlüsselungsverfahren wie [Azure Front Door](../frontdoor/front-door-faq.yml#what-are-the-current-cipher-suites-supported-by-azure-front-door-). Weitere Informationen finden Sie unter [Verbindungssicherheit](network-connectivity.md#connection-security).
+9. Wenn Ihr Problem damit nicht gelöst wird, stellen Sie sicher, dass keine Gruppenrichtlinien mit Verschlüsselungsverfahren vorhanden sind, die die Verbindung zwischen Agent und Broker blockieren. Azure Virtual Desktop verwendet dasselbe TLS 1.2-Verschlüsselungsverfahren wie [Azure Front Door](../frontdoor/concept-end-to-end-tls.md#supported-cipher-suites). Weitere Informationen finden Sie unter [Verbindungssicherheit](network-connectivity.md#connection-security).
 
 ## <a name="error-3703"></a>Fehler: 3703
 

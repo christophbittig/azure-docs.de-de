@@ -7,12 +7,12 @@ ms.service: serviceconnector
 ms.topic: quickstart
 ms.date: 10/29/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 4ee0fffb402ba3553055c732df9e0ebad94ea511
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 8d8905d58d6a67609fc28bb5cf680a66a51c2797
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131100347"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131456991"
 ---
 # <a name="quickstart-create-a-service-connection-in-spring-cloud-with-the-azure-cli"></a>Schnellstart: Erstellen einer Dienstverbindung in Spring Cloud mit der Azure-Befehlszeilenschnittstelle
 
@@ -32,6 +32,7 @@ Die [Azure-Befehlszeilenschnittstelle (Azure CLI)](/cli/azure) setzt sich aus B
 Sie verwenden den Azure CLI-Befehl [az spring-cloud connection](), um Dienstverbindungen mit Ihrer Spring Cloud-Anwendung zu erstellen und zu verwalten. 
 
 ```azurecli-interactive
+az provider register -n Microsoft.ServiceLinker
 az spring-cloud connection list-support-types
 ```
 

@@ -3,18 +3,18 @@ title: 'Tutorial: Zugreifen auf Speicherblobs unter Verwendung einer benutzerdef
 description: Informieren Sie sich darüber, wie Sie eine benutzerdefinierte Azure CDN-Domäne hinzufügen und HTTPS in dieser Domäne für Ihren benutzerdefinierten Blobspeicher-Endpunkt aktivieren.
 services: cdn
 documentationcenter: ''
-author: asudbring
+author: duongau
 ms.service: azure-cdn
 ms.topic: tutorial
 ms.date: 06/15/2018
-ms.author: allensu
+ms.author: duau
 ms.custom: mvc
-ms.openlocfilehash: 296a51edf024551a03330f4843690e97c6abd47d
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: 367db92a3bb3d1bbd91c5aad068d8cff82261abc
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "102564882"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131434862"
 ---
 # <a name="tutorial-access-storage-blobs-using-an-azure-cdn-custom-domain-over-https"></a>Tutorial: Zugreifen auf Speicherblobs unter Verwendung einer benutzerdefinierten Azure CDN-Domäne über HTTPS
 

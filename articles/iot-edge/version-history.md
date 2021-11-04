@@ -6,13 +6,12 @@ ms.author: kgremban
 ms.date: 04/07/2021
 ms.topic: conceptual
 ms.service: iot-edge
-services: iot-edge
-ms.openlocfilehash: 9cc40014c1cb5cef195ea90fb0d0a7b41e726466
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: a3e6092670ee659a098a72549060a2e1af7e4dc2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130241933"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131422974"
 ---
 # <a name="azure-iot-edge-versions-and-release-notes"></a>Azure IoT Edge-Versionen und Versionshinweise
 
@@ -43,4 +42,5 @@ Diese Tabelle enthält den aktuellen Versionsverlauf für IoT Edge-Paketreleases
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Alle Azure IoT Edge-Releases anzeigen](https://github.com/Azure/azure-iotedge/releases)
-* [Funktionsanfragen im Feedbackforum stellen oder lesen](https://feedback.azure.com/forums/907045-azure-iot-edge)
+
+* [Funktionsanfragen im Feedbackforum stellen oder lesen](https://feedback.azure.com/d365community/forum/0e2fff5d-f524-ec11-b6e6-000d3a4f0da0)

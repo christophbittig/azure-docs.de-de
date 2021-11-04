@@ -6,19 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/21/2020
-ms.openlocfilehash: 778c5e99c91cede0e67ee4250abeeb4b73e49965
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 4cc2230856690477597d147a9600b22194823318
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122639699"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131442222"
 ---
 # <a name="monitor-azure-database-for-mysql-flexible-servers-with-built-in-metrics"></a>Überwachen von Azure Database for MySQL Flexible Server mit integrierten Metriken
 
-[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
-> [!IMPORTANT]
-> Azure Database for MySQL Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
+[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 Azure Database for MySQL Flexible Server ermöglicht die Überwachung von Servern über Azure Monitor. Metriken sind numerische Werte, die einen Aspekt der Ressourcen Ihres Servers zu einem bestimmten Zeitpunkt beschreiben. Die Überwachung der Ressourcen Ihres Servers hilft Ihnen bei der Fehlerbehebung und Optimierung Ihrer Workload, indem Sie überwachen können, was für Sie am wichtigsten ist. Die Überwachung der richtigen Metriken hilft Ihnen, die Leistung, Zuverlässigkeit und Verfügbarkeit Ihres Servers und Ihrer Anwendungen aufrechtzuerhalten.
 

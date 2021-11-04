@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 02/04/2020
+ms.date: 11/03/2021
 ms.author: rortloff
-ms.reviewer: jrasnick
+ms.reviewer: wiassaf
 ms.custom: azure-synapse
-ms.openlocfilehash: 14c3ad30bac7cec4c11822d825323bb9db2ba440
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d0dc05f32ca3f2fec1e19106e93178dcc40e4d0b
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96454526"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131501341"
 ---
 # <a name="analyze-your-workload-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Analysieren Ihrer Workload für dedizierte SQL-Pools in Azure Synapse Analytics
 
@@ -103,8 +103,7 @@ SELECT  w.[wait_id]
 FROM    sys.dm_pdw_waits w
 JOIN    sys.dm_pdw_exec_sessions s  ON w.[session_id] = s.[session_id]
 JOIN    sys.dm_pdw_exec_requests r  ON w.[request_id] = r.[request_id]
-WHERE    w.[session_id] <> SESSION_ID()
-;
+WHERE    w.[session_id] <> SESSION_ID();
 ```
 
 Die `sys.dm_pdw_resource_waits`-DMV zeigt die Warteinformationen für eine bestimmte Abfrage an. Die Ressourcenwartezeit misst die Zeit, die auf die Bereitstellung von Ressourcen gewartet wird. Die Signalwartezeit ist die Zeit, die die zugrunde liegenden SQL-Server benötigen, um die Abfrage auf der CPU zu planen.
@@ -122,8 +121,7 @@ SELECT  [session_id]
 ,       [resource_class]
 ,       [wait_id]                                   AS queue_position
 FROM    sys.dm_pdw_resource_waits
-WHERE    [session_id] <> SESSION_ID()
-;
+WHERE    [session_id] <> SESSION_ID();
 ```
 
 Sie können auch die DMV `sys.dm_pdw_resource_waits` verwenden, um die Anzahl der gewährten Parallelitätsslots zu berechnen.
@@ -133,8 +131,7 @@ SELECT  SUM([concurrency_slots_used]) as total_granted_slots
 FROM    sys.[dm_pdw_resource_waits]
 WHERE   [state]           = 'Granted'
 AND     [resource_class] is not null
-AND     [session_id]     <> session_id()
-;
+AND     [session_id]     <> session_id();
 ```
 
 Die DMV `sys.dm_pdw_wait_stats` kann für Verlaufsanalysen von Wartezeiten verwendet werden.
@@ -147,10 +144,9 @@ SELECT   w.[pdw_node_id]
 ,        w.[signal_time]
 ,        w.[completed_count]
 ,        w.[wait_time]
-FROM    sys.dm_pdw_wait_stats w
-;
+FROM    sys.dm_pdw_wait_stats w;
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zum Verwalten von Datenbankbenutzern und der Sicherheit finden Sie unter [Sichern eines dedizierten SQL-Pools (früher SQL DW)](sql-data-warehouse-overview-manage-security.md). Weitere Informationen dazu, wie größere Ressourcenklassen die Qualität von gruppierten Columnstore-Indizes verbessern können, finden Sie unter [Neuerstellen von Indizes zur Verbesserung der Segmentqualität](sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality).
+Weitere Informationen zum Verwalten von Datenbankbenutzern und der Sicherheit finden Sie unter [Sichern eines dedizierten SQL-Pools (früher SQL DW)](sql-data-warehouse-overview-manage-security.md). Weitere Informationen dazu, wie größere Ressourcenklassen die Qualität von gruppierten Columnstore-Indizes verbessern können, finden Sie unter [Neuerstellen von Indizes zur Verbesserung der Segmentqualität](sql-data-warehouse-tables-index.md#rebuild-indexes-to-improve-segment-quality).

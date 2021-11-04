@@ -8,12 +8,12 @@ metadata:
   ms.topic: article
   ms.date: 01/11/2021
   ms.author: rohink
-  ms.openlocfilehash: c596fadd972503311859f2561365cd4e56dff98f
-  ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+  ms.openlocfilehash: bf8a2639887336349bbedd380a8e94a4ed4b3247
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 05/06/2021
-  ms.locfileid: "111907219"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131442766"
 title: Häufig gestellte Fragen zu Azure DNS
 summary: ''
 sections:
@@ -79,28 +79,28 @@ sections:
       Nein. Für Azure DNS wird die Option zum Erwerben von Domänennamen derzeit nicht unterstützt. Zum Erwerben von Domänen müssen Sie eine Drittanbieter-Registrierungsstelle für Domänennamen verwenden. Die Registrierungsstelle erhebt in der Regel eine geringe jährliche Gebühr. Die Domänen können dann in Azure DNS für die Verwaltung von DNS-Einträgen gehostet werden. Weitere Informationen finden Sie unter [Delegieren einer Domäne an Azure DNS](dns-domain-delegation.md).
 
 
-      Das Feature zum Erwerben von Domänennamen wird im Azure-Backlog nachverfolgt. Verwenden Sie die Feedbackwebsite, [um Ihre Unterstützung für dieses Feature zu registrieren](https://feedback.azure.com/forums/217313-networking/suggestions/4996615-azure-should-be-its-own-domain-registrar).
+      Das Feature zum Erwerben von Domänennamen wird im Azure-Backlog nachverfolgt. Verwenden Sie die Feedbackwebsite, [um Ihre Unterstützung für dieses Feature zu registrieren](https://feedback.azure.com/d365community/idea/9e9f97ea-8526-ec11-b6e6-000d3a4f0789).
   - question: >
       Unterstützt Azure DNS DNSSEC?
     answer: >
       Nein. Azure DNS unterstützt derzeit keine Domain Name System-Sicherheitserweiterungen (Domain Name System Security Extensions, DNSSEC).
 
 
-      Das Feature DNSSEC wird im Azure DNS-Backlog nachverfolgt. Verwenden Sie die Feedbackwebsite, [um Ihre Unterstützung für dieses Feature zu registrieren](https://feedback.azure.com/forums/217313-networking/suggestions/13284393-azure-dns-needs-dnssec-support).
+      Das Feature DNSSEC wird im Azure DNS-Backlog nachverfolgt. Verwenden Sie die Feedbackwebsite, [um Ihre Unterstützung für dieses Feature zu registrieren](https://feedback.azure.com/d365community/idea/d403899e-8526-ec11-b6e6-000d3a4f0789).
   - question: >
       Unterstützt Azure DNS Zonenübertragungen (AXFR/IXFR)?
     answer: >
       Nein. Azure DNS unterstützt derzeit keine Zonenübertragungen. DNS-Zonen können [mithilfe der Azure CLI in Azure DNS importiert werden](dns-import-export.md). DNS-Einträge werden über das [Azure DNS-Verwaltungsportal](dns-operations-recordsets-portal.md), die [REST-API](/powershell/module/az.dns), das [SDK](dns-sdk.md), [PowerShell-Cmdlets](dns-operations-recordsets.md) oder das [CLI-Tool](dns-operations-recordsets-cli.md) verwaltet.
 
 
-      Das Feature für Zonenübertragungen wird im Azure DNS-Backlog nachverfolgt. Verwenden Sie die Feedbackwebsite, [um Ihre Unterstützung für dieses Feature zu registrieren](https://feedback.azure.com/forums/217313-networking/suggestions/12925503-extend-azure-dns-to-support-zone-transfers-so-it-c).
+      Das Feature für Zonenübertragungen wird im Azure DNS-Backlog nachverfolgt. Verwenden Sie die Feedbackwebsite, [um Ihre Unterstützung für dieses Feature zu registrieren](https://feedback.azure.com/d365community/idea/7992f535-8726-ec11-b6e6-000d3a4f0789).
   - question: >
       Unterstützt Azure DNS URL-Umleitungen?
     answer: >
       Nein. URL-Umleitungsdienste sind kein DNS-Dienst. Sie sind nicht auf der DNS-Ebene aktiv, sondern auf der HTTP-Ebene. Bei einigen DNS-Anbietern gehört ein Dienst für URL-Umleitungen zum Gesamtangebot. Dieser Dienst wird von Azure DNS derzeit nicht unterstützt.
 
 
-      Das Feature für die URL-Umleitung wird im Azure DNS-Backlog nachverfolgt. Verwenden Sie die Feedbackwebsite, [um Ihre Unterstützung für dieses Feature zu registrieren](https://feedback.azure.com/forums/217313-networking/suggestions/10109736-provide-a-301-permanent-redirect-service-for-ape).
+      Das Feature für die URL-Umleitung wird im Azure DNS-Backlog nachverfolgt. Verwenden Sie die Feedbackwebsite, [um Ihre Unterstützung für dieses Feature zu registrieren](https://feedback.azure.com/d365community/idea/d8c8ab1c-8926-ec11-b6e6-000d3a4f0789).
   - question: >
       Unterstützt Azure DNS den erweiterten ASCII-Codierungssatz (8 Bit) für TXT-Eintragssätze?
     answer: "Ja. Azure DNS unterstützt den erweiterten ASCII-Codierungssatz für TXT-Eintragssätze. Sie müssen aber die aktuelle Version der Azure-REST-APIs und SDKs und von PowerShell und der CLI verwenden. Versionen, die ein älteres Datum als 1. Oktober 2017 haben, oder das SDK 2.1 unterstützen den erweiterten ASCII-Satz nicht. \n\nBeispielsweise können Sie eine Zeichenfolge als Wert für einen TXT-Eintrag angeben, der das erweiterte ASCII-Zeichen \\128 enthält. Ein Beispiel hierfür ist „abcd\\128efgh“. Azure DNS nutzt den Bytewert dieses Zeichens (128) für die interne Darstellung. Zum Zeitpunkt der DNS-Auflösung wird dieser Bytewert in der Antwort zurückgegeben. Beachten Sie auch, dass „abc“ und „\\097\\098\\099“, was die Auflösung betrifft, austauschbar sind. \n\nWir befolgen für TXT-Einträge die Escaperegeln für das Zonendatei-Masterformat in [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Zum Beispiel fungiert `\\` jetzt tatsächlich laut RFC als Escapezeichen für alles. Wenn Sie `A\\B` als TXT-Eintragswert angeben, wird dieser nur als `AB` dargestellt und aufgelöst. Wenn Sie wirklich möchten, dass der TXT-Eintrag in `A\\B` aufgelöst wird, müssen Sie `\\` wieder mit dem Escapezeichen versehen. Geben Sie beispielsweise `A\\\\B` an.\n\nDiese Unterstützung ist derzeit nicht für TXT-Einträge verfügbar, die im Azure-Portal erstellt wurden.\n"

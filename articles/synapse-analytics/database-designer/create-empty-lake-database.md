@@ -4,16 +4,16 @@ description: Erfahren Sie, wie Sie eine leere Lake-Datenbank in Azure Synapse An
 author: aamerril
 ms.author: aamerril
 ms.service: synapse-analytics
-ms: 'subservice:'
+ms.subservice: database-editor
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: 8717168532f84c8a3ed8735b5298eb0bb8065d20
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 9612fabc94e3425c42bb30e3075a56fb3f789626
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095247"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131510443"
 ---
 # <a name="how-to-create-an-empty-lake-database"></a>How-to: Erstellen einer leeren Lake-Datenbank
 
@@ -62,7 +62,7 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe des Datenbank-Designers eine le
     - Ihre Datenbank wird auf Fehler überprüft, bevor Sie veröffentlicht wird. Alle gefundenen Fehler werden in dem Tab Benachrichtigungen angezeigt, und zwar mit Anweisungen, wie man den Fehler beheben kann.
     
        ![Der Screenshot des Prüfungsfensters zeigt die Validierungsfehler in der Datenbank an.](./media/create-empty-lake-database/validation-error.png)
-    - Beim Veröffentlichen wird Ihre Datenbankschema im Azure Synapse Metastore erstellt. Beim Veröffentlichen wird Ihre Datenbankschema im Azure Synapse Metastore erstellt. Nach der Veröffentlichung werden die Datenbank und die Verzeichnisse für andere Azure-Dienste sichtbar und die Metadata von Ihrer Datenbank kann in Apps wie Power BI oder Purview fließen.
+    - Beim Veröffentlichen wird Ihre Datenbankschema im Azure Synapse Metastore erstellt. Nach der Veröffentlichung werden die Datenbank und die Verzeichnisse für andere Azure-Dienste sichtbar und die Metadata von Ihrer Datenbank kann in Apps wie Power BI oder Purview fließen.
 
 11. Sie haben nun eine leere Lake-Datenbank in Azure Synapse erstellt und ihr mithilfe der Optionen **Benutzerdefiniert** und **Aus Data Lake Tabellen** hinzugefügt.
 

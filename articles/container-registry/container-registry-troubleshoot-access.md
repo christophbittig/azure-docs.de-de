@@ -3,12 +3,12 @@ title: Beheben von Netzwerkproblemen mit der Registrierung
 description: Enthält eine Beschreibung der Symptome, Ursachen und Lösungen häufiger Probleme, die beim Zugreifen auf eine Azure-Containerregistrierung in einem virtuellen Netzwerk oder hinter einer Firewall auftreten.
 ms.topic: article
 ms.date: 05/10/2021
-ms.openlocfilehash: 7ea4eb698f855a98df22e2e0426a0004c890290c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f5c51f14eb5ed5a950272e43e701ec7bcc44b901
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122353664"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131446484"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>Beheben von Netzwerkproblemen mit der Registrierung
 
@@ -124,7 +124,7 @@ Seit Januar 2021 können Sie eine Registrierung mit Netzwerkeinschränkung so k
 Verwandte Links:
 
 * [Azure Container Registry-Imageprüfung durch Security Center](../security-center/defender-for-container-registries-introduction.md)
-* [Feedback](https://feedback.azure.com/forums/347535-azure-security-center/suggestions/41091577-enable-vulnerability-scanning-for-images-that-are)
+* [Feedback](https://feedback.azure.com/d365community/idea/cbe6351a-0525-ec11-b6e6-000d3a4f07b8)
 * [Zulassen des sicheren Zugriffs vertrauenswürdiger Dienste auf eine Containerregistrierung mit Netzwerkeinschränkungen](allow-access-trusted-services.md)
 
 

@@ -3,12 +3,12 @@ title: Erstellen einer privaten Registrierung für das Bicep-Modul
 description: Erfahren Sie, wie Sie eine Azure-Containerregistrierung für private Bicep-Module einrichten.
 ms.topic: conceptual
 ms.date: 10/22/2021
-ms.openlocfilehash: 1f14b29fb9d6740d661f74328c82758a74427355
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: f09b4d65c43cbd0f73543322488e56985a16aa9e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130224066"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131470317"
 ---
 # <a name="create-private-registry-for-bicep-modules-preview"></a>Erstellen einer privaten Registrierung für Bicep-Module (Vorschau)
 
@@ -29,13 +29,13 @@ Eine Bicep-Registrierung wird auf [Azure Container Registry (ACR)](../../contain
    Um den Namen des Anmeldeservers abzurufen, verwenden Sie [Get-AzContainerRegistry](/powershell/module/az.containerregistry/get-azcontainerregistry).
 
    ```azurepowershell
-   Get-AzContainerRegistry -ResourceGroupName "<resource-group-name>" -Name "<registry-name>"
+   Get-AzContainerRegistry -ResourceGroupName "<resource-group-name>" -Name "<registry-name>"  | Select-Object LoginServer
    ```
 
    Oder verwenden Sie [az acr show](/cli/azure/acr#az_acr_show).
 
    ```azurecli
-   az acr show --resource-group <resource-group-name> --name <registry-name>
+   az acr show --resource-group <resource-group-name> --name <registry-name> --query loginServer
    ```
 
    Das Format des Anmeldeservernamens lautet `<registry-name>.azurecr.io`.

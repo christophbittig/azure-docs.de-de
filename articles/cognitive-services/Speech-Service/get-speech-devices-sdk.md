@@ -3,19 +3,19 @@ title: Abrufen des SDK für sprachaktivierte Geräte
 titleSuffix: Azure Cognitive Services
 description: Der Speech-Dienst kann mit verschiedensten Geräten und Audioquellen verwendet werden. Jetzt können Sie einen Schritt weiter gehen und Ihre Sprachanwendungen mit angepasster Hardware und Software nutzen. In diesem Artikel erfahren Sie, wie Sie auf das Speech Devices SDK zugreifen und mit der Entwicklung beginnen.
 services: cognitive-services
-author: PatrickFarley
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/14/2019
-ms.author: pafarley
-ms.openlocfilehash: fe91a9d288b6fb512693b909098d2e2d5130d9e4
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.author: eur
+ms.openlocfilehash: 76ef359ea125ccd17de1ff0670390eb7e89d4290
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124771933"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131509306"
 ---
 # <a name="get-the-cognitive-services-speech-devices-sdk"></a>Abrufen des Cognitive Services Speech-Geräte-SDK
 

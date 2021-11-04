@@ -1,19 +1,19 @@
 ---
 title: 'Tutorial: Implementieren der räumlichen IoT-Analyse | Microsoft Azure Maps'
 description: Tutorial zum Integrieren von IoT Hub in Microsoft Azure Maps-Dienst-APIs
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 06/21/2021
+author: stevemunk
+ms.author: v-munksteve
+ms.date: 10/28/2021
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 ms.custom: mvc
-ms.openlocfilehash: 6fd1592e1f0b7d5da44fac15e20b03b8f237ad0a
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 7ab98fa40ddc2321f9640d2e7451fc5c55064580
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129997343"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131455357"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-by-using-azure-maps"></a>Tutorial: Implementieren der räumlichen IoT-Analyse mit Azure Maps
 
@@ -22,6 +22,7 @@ Ein gängiges IoT-Szenario ist die Erfassung und Nachverfolgung relevanter Ereig
 In diesem Lernprogramm führen Sie folgende Schritte aus:
 
 > [!div class="checklist"]
+>
 > * Erstellen eines Azure Storage-Kontos zur Protokollierung der Daten für die Fahrzeugnachverfolgung
 > * Hochladen eines Geofence mithilfe der Datenupload-API in den Azure Maps-Datendienst
 > * Erstellen eines Hubs in Azure IoT Hub und Registrieren eines Geräts
@@ -120,10 +121,10 @@ Führen Sie die folgenden Schritte aus, um den Geofence mit der Datenupload-API 
 
 1. Öffnen Sie die Postman-App und wählen Sie noch einmal **Neu** aus. Wählen Sie in dem Fenster **Neu erstellen** die Option **HTTP-Anforderung** aus und geben Sie einen Namen für die Anforderung ein.
 
-2. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode **POST** aus, und geben Sie die folgende URL ein, um die Geofencedaten in die Datenupload-API hochzuladen. Stellen Sie sicher, dass Sie `{subscription-key}` durch Ihren primären Abonnementschlüssel ersetzen.
+2. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode **POST** aus, und geben Sie die folgende URL ein, um die Geofencedaten in die Datenupload-API hochzuladen. Stellen Sie sicher, dass Sie `{Your-Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel ersetzen.
 
     ```HTTP
-    https://us.atlas.microsoft.com/mapData?subscription-key={subscription-key}&api-version=2.0&dataFormat=geojson
+    https://us.atlas.microsoft.com/mapData?subscription-key={Your-Azure-Maps-Primary-Subscription-key}&api-version=2.0&dataFormat=geojson
     ```
 
     Im URL-Pfad steht der Wert von `geojson` des Parameters `dataFormat` für das Format der hochzuladenden Daten.
@@ -133,13 +134,13 @@ Führen Sie die folgenden Schritte aus, um den Geofence mit der Datenupload-API 
 4. Wählen Sie die Option **Send** (Senden) aus, und warten Sie auf die Verarbeitung der Anforderung. Navigieren Sie nach Abschluss der Anforderung zur Registerkarte **Headers** (Header) der Antwort. Kopieren Sie den Wert des Schlüssels **Operation-Location** (Vorgangsspeicherort). Hierbei handelt es sich um die Status-URL (`status URL`).
 
     ```http
-    https://us.atlas.microsoft.com/mapData/operations/<operationId>?api-version=2.0
+    https://us.atlas.microsoft.com/mapData/operations/{operationId}?api-version=2.0
     ```
 
 5. Erstellen Sie zum Überprüfen des Status des API-Aufrufs eine **GET**-HTTP-Anforderung für `status URL`. An die URL muss zur Authentifizierung der primäre Abonnementschlüssel angefügt werden. Die **GET**-Anforderung sollte wie die folgende URL aussehen:
 
    ```HTTP
-   https://us.atlas.microsoft.com/mapData/<operationId>/status?api-version=2.0&subscription-key={subscription-key}
+   https://us.atlas.microsoft.com/mapData/{operationId}/status?api-version=2.0&subscription-key={Your-Azure-Maps-Primary-Subscription-key}
    ```
 
 6. Wenn die Anforderung erfolgreich abgeschlossen wurde, wählen Sie im Antwortfenster die Registerkarte **Header** aus. Kopieren Sie den Wert des Schlüssels **Resource Location** (Ressourcenspeicherort). Hierbei handelt es sich um die URL des Ressourcenspeicherorts (`resource location URL`).  Die URL des Ressourcenspeicherorts (`resource location URL`) enthält den eindeutigen Bezeichner (`udid`) der hochgeladenen Daten. Kopieren Sie den Wert von `udid` zur späteren Verwendung in diesem Tutorial.
@@ -149,9 +150,6 @@ Führen Sie die folgenden Schritte aus, um den Geofence mit der Datenupload-API 
 ## <a name="create-an-iot-hub"></a>Erstellen eines IoT-Hubs
 
 IoT Hub ermöglicht die sichere und zuverlässige bidirektionale Kommunikation zwischen einer IoT-Anwendung und den verwalteten Geräten. In diesem Tutorial möchten Sie Informationen von Ihrem Gerät im Fahrzeug erhalten, um die Position des Mietfahrzeugs zu ermitteln. In diesem Abschnitt erstellen Sie einen IoT-Hub in der Ressourcengruppe *ContosoRental*. Dieser Hub ist für das Veröffentlichen Ihrer Gerätetelemetrieereignisse zuständig.
-
-> [!NOTE]
-> Die Option zum Veröffentlichen von Gerätetelemetrieereignissen in Event Grid befindet sich derzeit in der Vorschauphase. Dieses Feature ist in allen Regionen verfügbar, mit Ausnahme von: „USA, Osten“, „USA, Westen“, „Europa, Westen“, „Azure Government“, „Azure China 21Vianet“ und „Azure Deutschland“.
 
 Führen Sie zum Erstellen eines IoT-Hubs in der Ressourcengruppe *ContosoRental* die Schritte unter [Erstellen eines IoT-Hubs](../iot-develop/quickstart-send-telemetry-iot-hub.md?pivots=programming-language-csharp#create-an-iot-hub) aus.
 

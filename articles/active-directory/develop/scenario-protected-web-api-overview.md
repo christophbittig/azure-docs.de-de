@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/14/2020
+ms.date: 10/26/2021
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 434c255f0b9634e0d17bad1627ddd92af9498bfe
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d34d8a361e22f25e82daf0576e65e35af192bdcd
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99582433"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131462763"
 ---
 # <a name="scenario-protected-web-api"></a>Szenario: Geschützte Web-API
 
@@ -29,7 +29,7 @@ Sie müssen entweder authentifizierten Benutzern mit Arbeits-, Schul- und Unikon
 
 Beachten Sie beim Schützen Ihrer Web-APIs die folgenden speziellen Informationen:
 
-- Ihre App-Registrierung muss mindestens einen *Gültigkeitsbereich* oder eine *Anwendungsrolle* verfügbar machen.
+- Ihre App-Registrierung muss mindestens einen _Gültigkeitsbereich_ oder eine _Anwendungsrolle_ verfügbar machen.
   - Gültigkeitsbereiche werden von Web-APIs verfügbar gemacht, die im Namen eines Benutzers aufgerufen werden.
   - Anwendungsrollen werden von Web-APIs verfügbar gemacht, die von Daemonanwendungen aufgerufen werden (die Ihre Web-API in ihrem eigenen Auftrag aufrufen).
 - Wenn Sie eine neue Web-API-App-Registrierung erstellen, wählen Sie die [Zugriffstokenversion](reference-app-manifest.md#accesstokenacceptedversion-attribute) aus, die von Ihrer Web-API für `2` akzeptiert wird. Bei älteren Web-APIs kann die akzeptierte Tokenversion `null` lauten, aber dieser Wert schränkt die Anmeldezielgruppe nur auf Organisationen ein, und persönliche Microsoft-Konten (MSA) werden nicht unterstützt.

@@ -5,12 +5,12 @@ metadata:
   ms.topic: article
   ms.service: azure
   ms.date: 05/27/2021
-  ms.openlocfilehash: 82d4003e13cf68d9777e2bcdfd57551d9ef478f4
-  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+  ms.openlocfilehash: c43e0e17884025904d56cb5b24badc3972f93937
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/17/2021
-  ms.locfileid: "122254119"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131422024"
 title: Allgemeine Fragen zu Azure Site Recovery
 summary: >
   Dieser Artikel fasst häufig gestellte Fragen zur Azure Site Recovery zusammen. In den folgenden Artikeln werden spezielle Szenarien behandelt:
@@ -232,11 +232,11 @@ sections:
   - question: >
       Kann die Replikation von vorhandenen Wiederherstellungsstandorten auf einen weiteren tertiären Standort erweitert werden?
     answer: >
-      Eine erweiterte oder verkettete Replikation wird nicht unterstützt. Fordern Sie dieses Feature im [Feedbackforum](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959).
+      Eine erweiterte oder verkettete Replikation wird nicht unterstützt. Fordern Sie dieses Feature im [Feedbackforum](https://feedback.azure.com/d365community/forum/3ccca344-2d25-ec11-b6e6-000d3a4f0f84).
   - question: >
       Kann ich eine Offlinereplikation durchführen, wenn ich zum ersten Mal in Azure repliziere?
     answer: >
-      Dies wird nicht unterstützt. Fordern Sie dieses Feature im [Feedbackforum](https://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from).
+      Dies wird nicht unterstützt. Fordern Sie dieses Feature im [Feedbackforum](https://feedback.azure.com/d365community/idea/7c09c396-2e25-ec11-b6e6-000d3a4f0f84).
   - question: >
       Können bestimmte Datenträger von der Replikation ausgeschlossen werden?
     answer: >

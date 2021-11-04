@@ -3,21 +3,21 @@ title: 'Übersicht über die Spracherkennung: Speech-Dienst'
 titleSuffix: Azure Cognitive Services
 description: Die Spracherkennungssoftware (Sprache-zu-Text) ermöglicht die Echtzeittranskription von Audiostreams in Text. Diese Texteingaben können von Ihren Anwendungen, Tools oder Geräten verwendet, angezeigt und verarbeitet werden. Dieser Artikel bietet einen Überblick über die Vorteile und Funktionen des Spracherkennungsdiensts.
 services: cognitive-services
-author: PatrickFarley
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/01/2020
-ms.author: pafarley
+ms.author: eur
 ms.custom: cog-serv-seo-aug-2020
 keywords: Spracherkennung, Spracherkennungssoftware
-ms.openlocfilehash: 7da34e76d760b8f29a90112c00a1f8f05655d940
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 78db7165e44eb53a6d34c9095f70185874d0d8ce
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123543975"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131509880"
 ---
 # <a name="what-is-speech-to-text"></a>Was ist die Spracherkennung?
 

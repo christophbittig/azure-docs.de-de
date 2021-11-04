@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: aefb039e17ee75b92829feb9e2f0b06fb5bef99a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 49e6ca8cf0fc3121aba3c3216d2a1dd5936b56d7
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131076204"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131449524"
 ---
 # <a name="connect-to-and-manage-multiple-azure-sources-in-azure-purview"></a>Verbinden und Verwalten mehrerer Azure-Quellen in Azure Purview
 
@@ -114,7 +114,7 @@ Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
     - Wenn Sie die Option auf **Alle** belassen, werden auch zukünftige Ressourcen dieses Typs bei zukünftigen Überprüfungsläufen überprüft.
     - Wenn Sie bestimmte Speicherkonten oder SQL-Datenbanken auswählen, werden zukünftige Ressourcen dieses Typs, die innerhalb dieses Abonnements oder dieser Ressourcengruppe erstellt wurden, nicht für Überprüfungen berücksichtigt, es sei denn, die Überprüfung wird in Zukunft explizit bearbeitet.
 
-1. Klicken Sie auf **Verbindung testen**. Dies testet zunächst den Zugriff, um zu prüfen, ob Sie die Azure Purview MSI-Datei als Leser auf das Abonnement oder die Ressourcengruppe angewendet haben. Wenn Sie eine Fehlermeldung erhalten, befolgen Sie diese [Anweisungen](#prerequisites-for-registration), um es zu beheben. Anschließend wird die Authentifizierung und Verbindung mit den einzelnen ausgewählten Quellen testen und ein Bericht generiert. Die Anzahl der ausgewählten Quellen wirkt sich auf die Zeit aus, die zum Generieren dieses Berichts benötigt wird. Beim Testen der Verbindung werden zunächst die Konnektivität und der Zugriff auf Abonnement-, Ressourcengruppen-/Synapse-Arbeitsbereichsebene testiert. Anschließend werden der Zugriff und die Konnektivität für jede einzelne Ressource weiterhin getestet und das Ergebnis im Bericht angezeigt. Wenn bei einigen Ressourcen ein Fehler aufgetreten ist, wird beim Bewegen des Mauszeigers auf das **X**-Symbol die ausführliche Fehlermeldung angezeigt.
+1. Klicken Sie auf **Verbindung testen**. Dies testet zunächst den Zugriff, um zu prüfen, ob Sie die Azure Purview MSI-Datei als Leser auf das Abonnement oder die Ressourcengruppe angewendet haben. Wenn Sie eine Fehlermeldung erhalten, befolgen Sie diese [Anweisungen](#prerequisites-for-registration), um es zu beheben. Anschließend wird die Authentifizierung und Verbindung mit den einzelnen ausgewählten Quellen testen und ein Bericht generiert. Die Anzahl der ausgewählten Quellen wirkt sich auf die Zeit aus, die zum Generieren dieses Berichts benötigt wird. Wenn bei einigen Ressourcen ein Fehler aufgetreten ist, wird beim Bewegen des Mauszeigers auf das **X**-Symbol die ausführliche Fehlermeldung angezeigt.
 
     :::image type="content" source="media/register-scan-azure-multiple-sources/test-connection.png" alt-text="Screenshot: Schieberegler für die Einrichtung der Überprüfung mit hervorgehobener Schaltfläche &quot;Verbindung testen&quot;.":::
     :::image type="content" source="media/register-scan-azure-multiple-sources/test-connection-report.png" alt-text="Screenshot eines Beispielberichts für eine Testverbindung, bei dem einige Verbindungen bestehen und einige fehlschlagen. Wenn Sie mit dem Zeigen auf eine der fehlerhaften Verbindungen zeigen, wird ein ausführlicher Fehlerbericht angezeigt.":::

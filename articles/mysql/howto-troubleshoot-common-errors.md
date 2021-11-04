@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 5/21/2021
-ms.openlocfilehash: ff038a585d1c11c318c3d3225ef6cc45a8865659
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: e66940b74110e5870acfffb255e7de4942ad1b71
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113088546"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131453400"
 ---
 # <a name="commonly-encountered-errors-during-or-post-migration-to-azure-database-for-mysql"></a>Häufig während oder nach der Migration zum Azure Database for MySQL-Dienst auftretende Fehler
 
@@ -127,4 +127,4 @@ Wenn Sie die gesuchte Antwort nicht gefunden haben, ziehen Sie die folgenden Opt
 * Stellen Sie Ihre Frage auf der [Frageseite von Microsoft Q&A (Fragen und Antworten)](/answers/topics/azure-database-mysql.html) oder in [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-database-mysql).
 * Senden Sie eine E-Mail an das Azure Database for MySQL-Team: [@Ask Azure DB for MySQL](mailto:AskAzureDBforMySQL@service.microsoft.com). Bei dieser E-Mail-Adresse handelt es sich nicht um einen Alias für technischen Support.
 * Wenn Sie den Azure-Support kontaktieren möchten, [erstellen Sie ein Ticket im Azure-Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). Um ein Problem mit Ihrem Konto zu beheben, richten Sie im Azure-Portal eine [Anfrage an den Support](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
-* Wenn Sie Feedback abgeben oder Vorschläge für neue Features einreichen möchten, erstellen Sie einen Eintrag über [UserVoice](https://feedback.azure.com/forums/597982-azure-database-for-mysql).
+* Wenn Sie Feedback abgeben oder Vorschläge für neue Features einreichen möchten, erstellen Sie einen Eintrag über [UserVoice](https://feedback.azure.com/d365community/forum/47b1e71d-ee24-ec11-b6e6-000d3a4f0da0).

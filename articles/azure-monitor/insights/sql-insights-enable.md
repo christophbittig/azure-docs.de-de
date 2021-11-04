@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/15/2021
-ms.openlocfilehash: d2872d2293802c435eb4bbd67078e6d1e973a6b9
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: bbef6233a82e85ea849d3b637b5c0b83caddcd04
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130004595"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131447092"
 ---
 # <a name="enable-sql-insights-preview"></a>Aktivieren von SQL Insights (Vorschau)
 In diesem Artikel wird beschrieben, wie Sie [SQL Insights](sql-insights-overview.md) zum Überwachen Ihrer SQL-Bereitstellungen aktivieren. Die Überwachung erfolgt über einen virtuellen Azure-Computer, der eine Verbindung mit Ihren SQL-Bereitstellungen herstellt und dynamische Verwaltungssichten (Dynamic Management Views, DMVs) verwendet, um Überwachungsdaten zu erfassen. Sie können mithilfe eines Überwachungsprofils steuern, welche Datasets mit welcher Häufigkeit gesammelt werden.
@@ -209,9 +209,9 @@ Die Verbindungszeichenfolge ist für jeden SQL-Ressourcentyp unterschiedlich:
 Geben Sie Ihre Verbindungszeichenfolge in dieser Form ein:
 
 ```
-sqlAzureConnections": [ 
+sqlAzureConnections": [
    "Server=mysqlserver.database.windows.net;Port=1433;Database=mydatabase;User Id=$username;Password=$password;" 
-}
+]
 ```
 
 Rufen Sie die Details aus dem Menüelement **Verbindungszeichenfolgen** für die Datenbank ab.
@@ -224,9 +224,9 @@ Zum Überwachen eines lesbaren sekundären Replikats fügen Sie den Schlüsselwe
 Geben Sie Ihre Verbindungszeichenfolge in dieser Form ein:
 
 ```
-"sqlManagedInstanceConnections": [ 
-      "Server= mysqlserver.database.windows.net;Port=1433;User Id=$username;Password=$password;" 
-    ] 
+"sqlManagedInstanceConnections": [
+   "Server= mysqlserver.database.windows.net;Port=1433;User Id=$username;Password=$password;" 
+] 
 ```
 Rufen Sie die Details aus dem Menüelement **Verbindungszeichenfolgen** für die verwaltete Instanz ab.
 
@@ -239,7 +239,7 @@ Zum Überwachen eines lesbaren sekundären Replikats fügen Sie den Schlüsselwe
 Geben Sie Ihre Verbindungszeichenfolge in dieser Form ein:
 
 ```
-"sqlVmConnections": [ 
+"sqlVmConnections": [
    "Server=MyServerIPAddress;Port=1433;User Id=$username;Password=$password;" 
 ] 
 ```

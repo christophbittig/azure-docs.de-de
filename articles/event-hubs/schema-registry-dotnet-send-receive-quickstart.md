@@ -2,14 +2,14 @@
 title: Überprüfen des Schemas beim Senden und Empfangen von Ereignissen – AMQP und .NET
 description: Dieser Artikel enthält eine exemplarische Vorgehensweise zum Erstellen einer .NET Core-Anwendung, die anhand der Schemaregistrierung Ereignisse an Azure Event Hubs sendet bzw. von dort empfängt.
 ms.topic: quickstart
-ms.date: 10/20/2021
+ms.date: 11/02/2021
 ms.custom: devx-track-csharp, ignite-fall-2021
-ms.openlocfilehash: a0c14102f4db010b641685d89f2ac1bb09022ee9
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: d87fdaff91e46811319b259de01300fb2a70dff3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131029692"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131433859"
 ---
 # <a name="validate-schema-when-sending-and-receiving-events---amqp-and-net"></a>Überprüfen des Schemas beim Senden und Empfangen von Ereignissen – AMQP und .NET 
 In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe der .NET-Bibliothek **Azure.Messaging.EventHubs** Ereignisse an einen Event Hub mit Schemaüberprüfung senden bzw. von dort empfangen. 

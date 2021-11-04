@@ -7,12 +7,12 @@ ms.author: msangapu
 ms.service: app-service
 ms.custom: subject-monitoring
 ms.date: 04/16/2021
-ms.openlocfilehash: 330629c958e036db382bed63b9ae0b9642e14bad
-ms.sourcegitcommit: 92dd25772f209d7d3f34582ccb8985e1a099fe62
+ms.openlocfilehash: bf48bd5fd5155b7409d3868635ee3529cfd97b92
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114227876"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471058"
 ---
 # <a name="monitoring-app-service-data-reference"></a>Datenreferenz zur App Service-Überwachung
 
@@ -41,10 +41,6 @@ Weitere Informationen zu Metrikdimensionen finden Sie unter [Mehrdimensionale Me
 App Service hat keine Metriken, die Dimensionen enthalten.
 
 ## <a name="resource-logs"></a>Ressourcenprotokolle
-
-> [!NOTE]
-> Die Azure Monitor-Integration in App Service befindet sich in der [Vorschauphase](https://aka.ms/appsvcblog-azmon).
->
 
 In diesem Abschnitt werden die Ressourcenprotokolltypen aufgeführt, die für App Service erfasst werden können. 
 

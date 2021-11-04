@@ -5,14 +5,14 @@ author: savjani
 ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
-ms.date: 06/17/2021
+ms.date: 10/23/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 77e9d66af8a03f9d1a55a59d9a355499a3019f29
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 7188cb16d6718fddb049a518b56b32c84ea66ec1
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129233899"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131422746"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-flexible-server-using-the-azure-cli"></a>Erstellen und Verwalten von Lesereplikaten auf flexiblen Azure Database for MySQL-Servern mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -25,10 +25,9 @@ In diesem Artikel erfahren Sie, wie Sie Lesereplikate auf flexiblen Azure Databa
 
 > [!Note]
 >
-> * Auf Servern mit Hochverfügbarkeit werden keine Replikate unterstützt. 
->* Das Feature für Lesereplikate ist nur für flexible Azure Database for MySQL-Server in den Tarifen „Universell“ oder „Arbeitsspeicheroptimiert“ verfügbar. Stellen Sie sicher, dass für den Quellserver einer der folgenden Tarife festgelegt ist.
+> * Auf Servern mit Hochverfügbarkeit werden keine Replikate unterstützt.
 >
-> * Wenn GTID auf einem primären Server aktiviert ist (`gtid_mode` = ON), wird für neu erstellte Replikate GTID ebenfalls aktiviert, und es wird die GTID-Replikation verwendet. Weitere Informationen finden Sie unter [Globaler Transaktionsbezeichner (GTID)](concepts-read-replicas.md#global-transaction-identifier-gtid)
+> * Wenn GTID auf einem primären Server aktiviert ist (`gtid_mode` = ON), wird für neu erstellte Replikate GTID ebenfalls aktiviert und die GTID-Replikation verwendet. Weitere Informationen finden Sie unter [Globaler Transaktionsbezeichner (GTID)](concepts-read-replicas.md#global-transaction-identifier-gtid)
 
 ## <a name="azure-cli"></a>Azure CLI
 
@@ -48,7 +47,7 @@ Ein Lesereplikatserver kann mit dem folgenden Befehl erstellt werden:
 
 ```azurecli-interactive
 az mysql flexible-server replica create --replica-name mydemoreplicaserver --source-server mydemoserver --resource-group myresourcegroup
-``` 
+```
 
 > [!NOTE]
 > Lesereplikate werden mit der gleichen Serverkonfiguration wie die Quelle erstellt. Die Replikatserverkonfiguration kann nach der Erstellung geändert werden. Der Replikatserver wird immer in derselben Ressourcengruppe, am selben Standort und im selben Abonnement wie der Quellserver erstellt. Wenn Sie einen Replikatserver in einer anderen Ressourcengruppe oder einem anderen Abonnement erstellen möchten, können Sie nach der Erstellung den [Replikatserver verschieben](../../azure-resource-manager/management/move-resource-group-and-subscription.md). Für die Konfiguration des Replikatservers sollten mindestens die gleichen Werte verwendet werden wie für den Quellserver, damit das Replikat über genügend Kapazität verfügt.
@@ -56,7 +55,7 @@ az mysql flexible-server replica create --replica-name mydemoreplicaserver --sou
 
 ### <a name="list-replicas-for-a-source-server"></a>Auflisten von Replikaten für einen Quellserver
 
-Führen Sie den folgenden Befehl aus, um alle Replikate für einen bestimmten Quellserver anzuzeigen: 
+Führen Sie den folgenden Befehl aus, um alle Replikate für einen bestimmten Quellserver anzuzeigen:
 
 ```azurecli-interactive
 az mysql flexible-server replica list --server-name mydemoserver --resource-group myresourcegroup

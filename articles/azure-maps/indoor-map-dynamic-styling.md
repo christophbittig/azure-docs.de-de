@@ -1,18 +1,18 @@
 ---
 title: Implementieren von dynamischen Stilen für Gebäudepläne von Azure Maps-Ersteller
 description: Erfahren Sie, wie Sie dynamische Stile für Gebäudepläne von Ersteller implementieren.
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 05/20/2021
+author: stevemunk
+ms.author: v-munksteve
+ms.date: 10/28/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
-ms.openlocfilehash: 05e169667067033428d5fc995af4d866dc46d20b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9089ff5adda1eedd441fc221ae1d5a0d3401ae12
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340286"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131462062"
 ---
 # <a name="implement-dynamic-styling-for-creator-indoor-maps"></a>Implementieren dynamischer Stile für Gebäudepläne von Ersteller
 
@@ -74,7 +74,7 @@ Im nächsten Abschnitt legen wir den *Zustand* von „occupancy“ (Belegung) vo
 4. Geben Sie die folgende URL in die [Featureupdatezustände-API](/rest/api/maps/v2/feature-state/update-states) ein (ersetzen Sie `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel und `statesetId` durch `statesetId`):
 
     ```http
-    https://us.atlas.microsoft.com/featurestatesets/{statesetId}/featureStates/UNIT26?api-version=2.0&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://us.atlas.microsoft.com/featurestatesets/{statesetId}/featureStates/UNIT26?api-version=2.0&subscription-key={Your-Azure-Maps-Primary-Subscription-key}
     ```
 
 5. Wählen Sie die Registerkarte **Headers** (Header) aus.
@@ -107,7 +107,7 @@ Im nächsten Abschnitt legen wir den *Zustand* von „occupancy“ (Belegung) vo
 10. Ändern Sie die URL, die Sie in Schritt 7 verwendet haben, indem Sie `UNIT26` durch `UNIT27` ersetzen:
 
     ```http
-    https://us.atlas.microsoft.com/featurestatesets/{statesetId}/featureStates/UNIT27?api-version=2.0&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://us.atlas.microsoft.com/featurestatesets/{statesetId}/featureStates/UNIT27?api-version=2.0&subscription-key={Your-Azure-Maps-Primary-Subscription-key}
     ```
 
 11. Kopieren Sie den folgenden JSON-Stil, und fügen Sie ihn in das **Body**-Fenster (Text) ein.
@@ -127,8 +127,9 @@ Im nächsten Abschnitt legen wir den *Zustand* von „occupancy“ (Belegung) vo
 ### <a name="visualize-dynamic-styles-on-a-map"></a>Visualisieren dynamischer Stile auf einer Karte
 
 Die Webanwendung, die Sie zuvor in einem Browser geöffnet haben, sollte jetzt den aktualisierten Zustand der Kartenfeatures widerspiegeln:
-- Office `UNIT27` (142) sollte grün angezeigt werden.
-- Office `UNIT26` (143) sollte rot angezeigt werden.
+
+* Office `UNIT27` (142) sollte grün angezeigt werden.
+* Office `UNIT26` (143) sollte rot angezeigt werden.
 
 ![Freier Raum in Grün und belegter Raum in Rot](./media/indoor-map-dynamic-styling/room-state.png)
 

@@ -7,12 +7,12 @@ ms.prod: kinect-dk
 ms.date: 06/26/2019
 ms.topic: article
 keywords: Azure, Kinect, RGB, IR, Aufzeichnung, Sensor, SDK, Zugriff, Tiefe, Video, Kamera, IMU, Bewegung, Sensor, Audio, Mikrofon, Matroska, Sensor-SDK, Download, Body, Tracking, Support
-ms.openlocfilehash: 9bb6e0ad8ebbb763389f13e317036eacc5c7d074
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a79519ec70ca85aa1e9c59559298cc27aa6df56a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "97587093"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131472957"
 ---
 # <a name="azure-kinect-support-options-and-resources"></a>Azure Kinect-Supportoptionen und Ressourcen
 
@@ -24,7 +24,7 @@ Es gibt mehrere Möglichkeiten, in öffentlichen Foren Antworten auf Ihre Fragen
 
 - [StackOverflow](https://stackoverflow.com/search?q=azurekinect&s=3b855ed0-8564-4961-856f-9614aeab4c0d&s=fd9ea920-622c-4d8e-b908-ec996e1f1403), wo Sie Fragen stellen oder die vorhandene Fragenbibliothek durchsuchen können.
 - [GitHub](https://github.com/Microsoft/Azure-Kinect-Sensor-SDK), wo Sie Fragen stellen, neue Bugs öffnen oder zur Entwicklung des Azure Kinect Sensor SDK beitragen können.
-- [Feedback geben](https://feedback.azure.com/forums/920053-azure-kinect-dk), was es Ihnen ermöglicht, Ihre Ideen für die Zukunft es Produkts zu teilen und über aktuelle Ideen abzustimmen.
+- [Feedback geben](https://feedback.azure.com/d365community/forum/fdaad9c5-f624-ec11-b6e6-000d3a4f0da0), was es Ihnen ermöglicht, Ihre Ideen für die Zukunft es Produkts zu teilen und über aktuelle Ideen abzustimmen.
 
 ## <a name="assisted-support"></a>Unterstützter Support
 

@@ -3,12 +3,12 @@ title: Regionsübergreifendes Migrieren von Azure Arc-fähigen Servern
 description: Hier erfahren Sie, wie Sie einen Azure Arc-fähigen Server aus einer Region in eine andere verschieben.
 ms.date: 07/16/2021
 ms.topic: conceptual
-ms.openlocfilehash: ea44fbf060588ca3859e7f0d51b7d7449dc318fa
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 5039ff2d00b83a8f93cf32caa27eee2032ee35dd
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124807404"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131462043"
 ---
 # <a name="how-to-migrate-azure-arc-enabled-servers-across-regions"></a>Regionsübergreifendes Migrieren von Azure Arc-fähigen Servern
 
@@ -24,7 +24,7 @@ Sie müssen die VM-Erweiterungen deinstallieren, die Ressource in Azure löschen
 > [!NOTE]
 > Bei diesem Vorgang kommt es während der Migration zu Ausfallzeiten.
 
-1. Entfernen Sie mithilfe von [Azure CLI](manage-vm-extensions-cli.md#remove-an-installed-extension) oder [Azure PowerShell](manage-vm-extensions-powershell.md#remove-an-installed-extension) installierte VM-Erweiterungen aus dem [Azure-Portal](manage-vm-extensions-portal.md#uninstall-extensions).
+1. Entfernen Sie mithilfe von [Azure CLI](manage-vm-extensions-cli.md#remove-extensions) oder [Azure PowerShell](manage-vm-extensions-powershell.md#remove-extensions) installierte VM-Erweiterungen aus dem [Azure-Portal](manage-vm-extensions-portal.md#remove-extensions).
 
 2. Verwenden Sie das **azcmagent**-Tool mit dem Parameter [Disconnect](manage-agent.md#disconnect), um den Computer von Azure Arc zu trennen und die Computerressource aus Azure zu löschen. Wenn Sie den Computer von Azure Arc-fähigen Servern trennen, wird der Connected Machine-Agent nicht entfernt, und Sie müssen den Agent nicht als Teil dieses Prozesses entfernen. Sie können dies manuell ausführen, während Sie interaktiv angemeldet sind, oder Sie können mithilfe desselben Dienstprinzipals automatisieren, den Sie für das Onboarding mehrerer Agents verwendet haben, oder mithilfe eines [Zugriffstokens](../../active-directory/develop/access-tokens.md) der Microsoft Identity-Plattform. Wenn Sie keinen Dienstprinzipal zum Registrieren des Computers bei Azure Arc-fähigen Servern verwendet haben, finden Sie im folgenden [Artikel](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) Informationen zum Erstellen eines Dienstprinzipals.
 

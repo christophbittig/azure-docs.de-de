@@ -7,12 +7,12 @@ ms.author: aapowell
 ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 10/08/2021
-ms.openlocfilehash: 49921eba1a7f4c6c898eaadf1d8743d8d210057a
-ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
+ms.openlocfilehash: 8b7fe1fc5c291f02abff88cb3e5ace2607cf32f5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129729803"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131428138"
 ---
 # <a name="custom-authentication-in-azure-static-web-apps"></a>Benutzerdefinierte Authentifizierung in Azure Static Web Apps
 
@@ -29,11 +29,11 @@ Azure Static Web Apps bietet [verwaltete Authentifizierung](authentication-autho
 
 Benutzerdefinierte Identitätsanbieter werden im Abschnitt `auth` der [Konfigurationsdatei](configuration.md) konfiguriert.
 
-Um zu vermeiden, dass Geheimnisse in die Quellcodeverwaltung aufgenommen werden, sucht die Konfiguration in den [Anwendungseinstellungen](application-settings.md) nach einem übereinstimmenden Namen in der Konfigurationsdatei. Sie können ihre Geheimnisse auch in [Azure Key Vault](./key-vault-secrets.md) speichern.
+Um zu vermeiden, dass Geheimnisse in die Quellcodeverwaltung aufgenommen werden, sucht die Konfiguration in den [Anwendungseinstellungen](application-settings.md#configure-application-settings) nach einem übereinstimmenden Namen in der Konfigurationsdatei. Sie können ihre Geheimnisse auch in [Azure Key Vault](./key-vault-secrets.md) speichern.
 
 # <a name="azure-active-directory"></a>[Azure Active Directory](#tab/aad)
 
-Um die Registrierung zu erstellen, müssen Sie zunächst die folgenden [Anwendungseinstellungen](application-settings.md) vornehmen:
+Um die Registrierung zu erstellen, müssen Sie zunächst die folgenden [Anwendungseinstellungen](application-settings.md#configure-application-settings) vornehmen:
 
 | Einstellungsname | Wert |
 | --- | --- |

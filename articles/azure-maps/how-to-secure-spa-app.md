@@ -2,19 +2,19 @@
 title: Sichern einer Einzelseiten-Webanwendung mit nicht interaktiver Anmeldung in Microsoft Azure Maps
 titleSuffix: Azure Maps
 description: Konfigurieren einer Einzelseiten-Webanwendung mit nicht interaktiver rollenbasierter Zugriffssteuerung von Azure (Azure RBAC) und Azure Maps Web SDK.
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 06/21/2021
+author: stevemunk
+ms.author: v-munksteve
+ms.date: 10/28/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 ms.custom: devx-track-js, subject-rbac-steps
-ms.openlocfilehash: 9bf18a9122bbe8406b76cfd822cc2a5a86339a52
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 8f3249cec073e7a1fd6fdabd6a7af24ce5a2c2d2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122639807"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131443583"
 ---
 # <a name="how-to-secure-a-single-page-web-application-with-non-interactive-sign-in"></a>Schützen einer Einzelseiten-Webanwendung mit nicht interaktiver Anmeldung
 
@@ -68,11 +68,11 @@ Erstellen einer gesicherten Webdienstanwendung, die für die Authentifizierung b
    1. [Erstellen eines Funktionszugriffsschlüssels](../azure-functions/functions-bindings-http-webhook-trigger.md?tabs=csharp#authorization-keys)
    1. [Sichern Sie den HTTP-Endpunkt](../azure-functions/functions-bindings-http-webhook-trigger.md?tabs=csharp#secure-an-http-endpoint-in-production) für die in Produktion befindliche Azure-Funktion.
 
-7. Konfigurieren Sie eine Azure Maps Web SDK Webanwendung. 
+7. Konfigurieren Sie eine Azure Maps Web SDK Webanwendung.
 
     ```javascript
     //URL to custom endpoint to fetch Access token
-    var url = 'https://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?code=<API_KEY>';
+    var url = 'https://{App-Name}.azurewebsites.net/api/{Function-Name}?code={API-Key}';
 
     var map = new atlas.Map('myMap', {
                 center: [-122.33, 47.6],

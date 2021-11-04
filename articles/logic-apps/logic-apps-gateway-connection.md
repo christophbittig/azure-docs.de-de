@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: arthii, azla
 ms.topic: conceptual
 ms.date: 07/14/2021
-ms.openlocfilehash: 4f49e0fbbfa4c2a98b86c96dc3b0e650d6ff6bc9
-ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
+ms.openlocfilehash: 30fa05a4aad2108ac96de820ac2ea86357cd17b6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114204824"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131457523"
 ---
 # <a name="connect-to-on-premises-data-sources-from-azure-logic-apps"></a>Herstellen einer Verbindung mit lokalen Datenquellen in Azure Logic Apps
 
@@ -63,7 +63,7 @@ Sie können auch [benutzerdefinierte Connectors](../logic-apps/custom-connector-
   * Ihre Logik-App und Gatewayressource müssen nicht zum selben Azure-Abonnement gehören. In Triggern und Aktionen, bei denen Sie die Gatewayressource verwenden können, können Sie ein anderes Azure-Abonnement auswählen, das über eine Gatewayressource verfügt, aber nur, wenn sich dieses Abonnement im selben Azure AD-Mandanten oder Verzeichnis wie Ihre Logik-App befindet. Sie müssen außerdem über Administratorberechtigungen für das Gateway verfügen, das ein anderer Administrator für Sie einrichten kann. Weitere Informationen finden Sie unter [Datengateway: Automatisierung mithilfe von PowerShell – Teil 1](https://community.powerbi.com/t5/Community-Blog/Data-Gateway-Automation-using-PowerShell-Part-1/ba-p/1117330) und [PowerShell: Datengateway – Add-DataGatewayClusterUser](/powershell/module/datagateway/add-datagatewayclusteruser).
 
     > [!NOTE]
-    > Derzeit ist es nicht möglich, eine Gatewayressource oder -installation über mehrere Abonnements hinweg zu teilen. Informationen zum Übermitteln von Produktfeedback finden Sie im [Microsoft Azure-Feedbackforum](https://feedback.azure.com/forums/34192--general-feedback).
+    > Derzeit ist es nicht möglich, eine Gatewayressource oder -installation über mehrere Abonnements hinweg zu teilen. Informationen zum Übermitteln von Produktfeedback finden Sie im [Microsoft Azure-Feedbackforum](https://feedback.azure.com/d365community/forum/79b1327d-d925-ec11-b6e6-000d3a4f06a4).
 
 <a name="create-gateway-resource"></a>
 

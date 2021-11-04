@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/01/2021
-ms.openlocfilehash: cae696e8a7bd5fbe477a1f4b5af5d4838d7d599b
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: f3db72dacc67b4e0235c2b982d547475542bc49f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111557124"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131475272"
 ---
 # <a name="how-to-index-csv-blobs-using-delimitedtext-parsing-mode-and-blob-indexers-in-azure-cognitive-search"></a>Indizieren von CSV-Blobs mit dem delimitedText-Analysemodus und mit Blobindexern in Azure Cognitive Search
 
@@ -55,10 +55,10 @@ Sie können das Trennzeichen mithilfe der Konfigurationseinstellung `delimitedTe
 ```
 
 > [!NOTE]
-> Derzeit wird nur die UTF-8-Codierung unterstützt. Wenn Sie Unterstützung für andere Codierungen benötigen, stimmen Sie unter [UserVoice](https://feedback.azure.com/forums/263029-azure-search) dafür ab.
+> Derzeit wird nur die UTF-8-Codierung unterstützt. Wenn Sie Unterstützung für andere Codierungen benötigen, stimmen Sie unter [UserVoice](https://feedback.azure.com/d365community/forum/9325d19e-0225-ec11-b6e6-000d3a4f07b8) dafür ab.
 
 > [!IMPORTANT]
-> Bei Verwendung des Analysemodus für durch Trennzeichen getrennten Text wird in der kognitiven Azure-Suche davon ausgegangen, dass alle Blobs in der Datenquelle CSV-Blobs sind. Wenn Sie eine Mischung aus CSV- und Nicht-CSV-Blobs in der gleichen Datenquelle unterstützen müssen, stimmen Sie unter [UserVoice](https://feedback.azure.com/forums/263029-azure-search) dafür ab.
+> Bei Verwendung des Analysemodus für durch Trennzeichen getrennten Text wird in der kognitiven Azure-Suche davon ausgegangen, dass alle Blobs in der Datenquelle CSV-Blobs sind. Wenn Sie eine Mischung aus CSV- und Nicht-CSV-Blobs in der gleichen Datenquelle unterstützen müssen, stimmen Sie unter [UserVoice](https://feedback.azure.com/d365community/forum/9325d19e-0225-ec11-b6e6-000d3a4f07b8) dafür ab.
 >
 
 ## <a name="request-examples"></a>Beispiele für Anforderungen
