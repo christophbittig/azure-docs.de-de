@@ -3,21 +3,21 @@ title: Schützen von APIs, die als API-Connectors in Azure AD B2C verwendet we
 titleSuffix: Azure AD B2C
 description: Hier erfahren Sie, wie Sie Ihre benutzerdefinierten RESTful-APIs schützen, die als API-Connectors in Azure AD B2C verwendet werden.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/20/2021
-ms.author: mimart
+ms.date: 10/25/2021
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: f77c099425aac4f6484db8745e036a6dd1833ed4
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 2166b2c730a6101c59dddc38ad9a09c809f4eab2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128578943"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131040488"
 ---
 # <a name="secure-your-api-used-an-api-connector-in-azure-ad-b2c"></a>Schützen Ihrer API, die als API-Connector in Azure AD B2C verwendet wird 
 
@@ -43,7 +43,7 @@ Die HTTP-Standardauthentifizierung ist in [RFC 2617](https://tools.ietf.org/htm
 Führen Sie die folgenden Schritte aus, um einen API-Connector mit HTTP-Standardauthentifizierung zu konfigurieren:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2. Wählen Sie unter **Azure-Dienste** die Option **Azure AD B2C** aus.
+2. Wählen Sie unter **Azure-Dienste** die Option **Azure AD B2C** aus, oder suchen Sie nach dem Eintrag **Azure AD B2C**, und wählen Sie diesen aus.
 3. Wählen Sie **API-Connectors** und dann den zu konfigurierenden **API-Connector** aus.
 4. Wählen Sie als **Authentifizierungstyp** die Option **Standard** aus.
 5. Geben Sie den **Benutzernamen** und das **Kennwort** für Ihren REST-API-Endpunkt an.

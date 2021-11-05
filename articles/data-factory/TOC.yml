@@ -707,6 +707,8 @@ items:
           - name: Verschlüsseln der Anmeldeinformationen für die selbstgehostete Integrationslaufzeit
             href: encrypt-credentials-self-hosted-integration-runtime.md
             displayName: self hosted
+          - name: Anmeldeinformationen in Data Factory
+            href: credentials.md
           - name: Verwaltete Identität für Data Factory
             href: data-factory-service-identity.md
           - name: Verschlüsseln von Data Factory mit vom Kunden verwalteten Schlüsseln
@@ -821,7 +823,11 @@ items:
                 href: join-azure-ssis-integration-runtime-virtual-network.md
               - name: Konfiguration von virtuellen Netzwerken
                 href: azure-ssis-integration-runtime-virtual-network-configuration.md
-              - name: Verwenden der Benutzeroberfläche von Azure Data Factory Studio
+              - name: Einschleusung virtueller Express-Netzwerke
+                href: azure-ssis-integration-runtime-express-virtual-network-injection.md
+              - name: Einschleusung virtueller Standardnetzwerke
+                href: azure-ssis-integration-runtime-standard-virtual-network-injection.md
+              - name: Verwenden der Azure Data Factory-Benutzeroberfläche
                 href: join-azure-ssis-integration-runtime-virtual-network-ui.md
               - name: Verwenden von Azure PowerShell
                 href: join-azure-ssis-integration-runtime-virtual-network-powershell.md

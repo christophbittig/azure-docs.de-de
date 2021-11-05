@@ -1,6 +1,6 @@
 ---
 title: Workloadschutz für Ihre Kubernetes-Workloads
-description: Erfahren Sie, wie Sie die Sicherheitsempfehlungen von Azure Security Center für den Kubernetes-Workloadschutz verwenden.
+description: Erfahren Sie, wie Sie die Sicherheitsempfehlungen von Microsoft Defender für Cloud zum Schutz von Kubernetes-Workloads umsetzen.
 services: security-center
 author: memildin
 manager: rkarlin
@@ -8,23 +8,26 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 06/15/2021
 ms.author: memildin
-ms.openlocfilehash: a1581742e599c24f69e6aa56bf7caf694726ae66
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 5b8aa02e2c8ada5213d6e16659008b048ec293a4
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130225641"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131075767"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>Schützen Ihrer Kubernetes-Workloads
 
-Auf dieser Seite wird beschrieben, wie Sie die Sicherheitsempfehlungen von Azure Security Center für den Kubernetes-Workloadschutz verwenden.
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
+
+Auf dieser Seite wird beschrieben, wie Sie die Sicherheitsempfehlungen von Microsoft Defender für Cloud für den Schutze von Kubernetes-Workloads umsetzen.
 
 Weitere Informationen zu diesen Features finden Sie unter [Bewährte Methoden zum Workloadschutz mithilfe der Kubernetes-Zugangssteuerung](container-security.md#workload-protection-best-practices-using-kubernetes-admission-control).
 
-Security Center bietet noch weitere Features für die Containersicherheit, wenn Sie Azure Defender aktivieren. Dies betrifft insbesondere:
+Defender für Cloud bietet weitere Sicherheitsfeatures für Container, sofern Sie Microsoft Defender für Kubernetes aktivieren. Das bedeutet Folgendes:
 
-- Scannen Ihrer Containerregistrierungen auf Sicherheitsrisiken mit [Azure Defender für Containerregistrierungen](defender-for-container-registries-introduction.md)
-- Abrufen von Warnungen zur Bedrohungserkennung in Echtzeit für Ihre K8s-Cluster mit [Azure Defender für Kubernetes](defender-for-kubernetes-introduction.md)
+- Überprüfen Ihrer Containerregistrierungen auf Sicherheitsrisiken mit [Microsoft Defender für Containerregistrierungen](defender-for-container-registries-introduction.md)
+- Abrufen von Warnungen zur Bedrohungserkennung in Echtzeit für Ihre K8s-Cluster mit [Microsoft Defender für Kubernetes](defender-for-kubernetes-introduction.md)
 
 > [!TIP]
 > Eine Liste *aller* Sicherheitsempfehlungen für Kubernetes-Cluster und -Knoten finden Sie im Abschnitt [Compute](recommendations-reference.md#recs-compute) der Referenztabelle zu Empfehlungen.
@@ -45,15 +48,15 @@ Security Center bietet noch weitere Features für die Containersicherheit, wenn 
 
 ## <a name="set-up-your-workload-protection"></a>Einrichten des Workloadschutzes
 
-Azure Security Center enthält einige Empfehlungen, die verfügbar sind, wenn Sie das **Azure Policy-Add-On für Kubernetes** installieren.
+Microsoft Defender für Cloud bietet verschiedene Empfehlungen, die verfügbar sind, wenn Sie das **Azure Policy-Add-On für Kubernetes** installieren.
 
 ### <a name="step-1-deploy-the-add-on"></a>Schritt 1: Bereitstellen des Add-Ons
 
 Installieren Sie zum Konfigurieren der Empfehlungen das **Azure Policy-Add-On für Kubernetes**. 
 
-- Sie können dieses Add-On auch automatisch bereitstellen, wie unter [Aktivieren der automatischen Bereitstellung von Log Analytics-Agent und -Erweiterungen](security-center-enable-data-collection.md#auto-provision-mma) erläutert. Wenn die automatische Bereitstellung für das Add-On auf „Ein“ festgelegt ist, wird die Erweiterung standardmäßig in allen vorhandenen und zukünftigen Clustern aktiviert (sofern diese die Add-On-Installationsanforderungen erfüllen).
+- Sie können dieses Add-On auch automatisch bereitstellen, wie unter [Aktivieren der automatischen Bereitstellung von Log Analytics-Agent und -Erweiterungen](enable-data-collection.md#auto-provision-mma) erläutert. Wenn die automatische Bereitstellung für das Add-On auf „Ein“ festgelegt ist, wird die Erweiterung standardmäßig in allen vorhandenen und zukünftigen Clustern aktiviert (sofern diese die Add-On-Installationsanforderungen erfüllen).
 
-    :::image type="content" source="media/defender-for-kubernetes-usage/policy-add-on-auto-provision.png" alt-text="Verwenden des Security Center-Tools zur automatischen Bereitstellung zur Installation des Richtlinien-Add-Ons für Kubernetes":::
+    :::image type="content" source="media/defender-for-kubernetes-usage/policy-add-on-auto-provision.png" alt-text="Verwenden des Defender für Cloud-Tools zur automatischen Bereitstellung zur Installation des Richtlinien-Add-Ons für Kubernetes":::
 
 - Gehen Sie folgendermaßen vor, um das Add-On manuell bereitzustellen:
 
@@ -71,7 +74,10 @@ Installieren Sie zum Konfigurieren der Empfehlungen das **Azure Policy-Add-On f�
 
 ### <a name="step-2-view-and-configure-the-bundle-of-recommendations"></a>Schritt 2: Anzeigen und Konfigurieren des Empfehlungspakets
 
-1. Ungefähr 30 Minuten nach Abschluss der Installation des Add-Ons zeigt Security Center den Integritätsstatus der Cluster für die folgenden Empfehlungen an (jeweils in der relevanten Sicherheitskontrolle):
+1. Ungefähr 30 Minuten nach Abschluss der Installation des Add-Ons zeigt Defender für Cloud den Integritätsstatus der Cluster für die folgenden Empfehlungen an (jeweils in der relevanten Sicherheitskontrolle):
+
+    > [!NOTE]
+    > Wenn Sie das Add-On zum ersten Mal installieren, werden diese Empfehlungen in der zugehörigen Liste als neue Ergänzungen angezeigt. 
 
     > [!TIP]
     > Einige Empfehlungen weisen Parameter auf, die über Azure Policy angepasst werden müssen, damit sie effektiv verwendet werden können. Um beispielsweise von der Empfehlung **Containerimages sollten nur von vertrauenswürdigen Registrierungen bereitgestellt werden** zu profitieren, müssen Sie Ihre vertrauenswürdigen Registrierungen definieren.
@@ -91,6 +97,7 @@ Installieren Sie zum Konfigurieren der Empfehlungen das **Azure Policy-Add-On f�
     | Container mit Rechteausweitung müssen vermieden werden                       | Zugriff und Berechtigungen verwalten            | Nein                     |
     | Für Kubernetes-Cluster muss die automatische Bereitstellung von API-Anmeldeinformationen deaktiviert werden             | Zugriff und Berechtigungen verwalten            | Nein                     |
     | Unveränderliches (schreibgeschütztes) Stammdateisystem für Container erzwingen     | Zugriff und Berechtigungen verwalten            | Nein                     |
+    | Container mit Rechteausweitung müssen vermieden werden                       | Zugriff und Berechtigungen verwalten            | Nein                     |
     | Das Ausführen von Containern als Root-Benutzer muss vermieden werden                           | Zugriff und Berechtigungen verwalten            | Nein                     |
     | Container mit Freigabe sensibler Hostnamespaces vermeiden              | Zugriff und Berechtigungen verwalten            | Nein                     |
     | Für Container müssen CPU- und Arbeitsspeicherlimits erzwungen werden                          | Anwendungen vor DDoS-Angriffen schützen | Nein                     |
@@ -101,9 +108,9 @@ Installieren Sie zum Konfigurieren der Empfehlungen das **Azure Policy-Add-On f�
 
 1. Passen Sie bei Empfehlungen, die dies erfordern, die Parameter an:
 
-    1. Wählen Sie im Menü von Security Center **Sicherheitsrichtlinie** aus.
+    1. Wählen Sie im Menü von Defender für Cloud die Option **Sicherheitsrichtlinie** aus.
     1. Wählen Sie das relevante Abonnement aus.
-    1. Wählen Sie im Abschnitt **Security Center-Standardrichtlinie** die Option **Effektive Richtlinie anzeigen** aus.
+    1. Wählen Sie im Abschnitt **Defender für Cloud-Standardrichtlinie** die Option **Effektive Richtlinie anzeigen** aus.
     1. Wählen Sie die Standardrichtlinie für den Bereich aus, den Sie aktualisieren.
     1. Öffnen Sie die Registerkarte **Parameter**, und ändern Sie die Werte nach Bedarf.
 
@@ -125,7 +132,7 @@ Installieren Sie zum Konfigurieren der Empfehlungen das **Azure Policy-Add-On f�
 
 1. So zeigen Sie die für Ihre Cluster geltenden Empfehlungen an
 
-    1. Öffnen Sie die Seite [Ressourcenbestand](asset-inventory.md) von Security Center, und verwenden Sie den Ressourcentypfilter für **Kubernetes-Dienste**.
+    1. Öffnen Sie die Seite [Ressourcenbestand](asset-inventory.md) von Defender für Cloud, und wählen Sie den Ressourcentypfilter **Kubernetes-Dienste**.
 
     1. Wählen Sie einen Cluster aus, um die für diesen verfügbaren Empfehlungen zu untersuchen und zu überprüfen. 
 
@@ -258,6 +265,6 @@ In diesem Artikel haben Sie erfahren, wie Sie den Kubernetes-Workloadschutz konf
 
 Weitere verwandte Informationen finden Sie auf den folgenden Seiten: 
 
-- [Security Center-Empfehlungen für Compute](recommendations-reference.md#recs-compute)
+- [Defender for Cloud-Empfehlungen für Compute](recommendations-reference.md#recs-compute)
 - [Warnungen auf AKS-Clusterebene](alerts-reference.md#alerts-k8scluster)
 - [Warnungen auf Containerhostebene](alerts-reference.md#alerts-containerhost)

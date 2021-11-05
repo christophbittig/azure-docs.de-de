@@ -12,12 +12,12 @@ ms.date: 07/15/2021
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf83185b5c36723621ad586839d6b92260e1a99a
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: a0e35c11a94e1c0c6e86964d68c784c5cb3e7741
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130046200"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131060191"
 ---
 # <a name="azure-active-directory-security-operations-guide"></a>Azure Active Directory: Leitfaden zu Sicherheitsvorgängen
 
@@ -156,7 +156,7 @@ Im Rahmen einer Azure-Hybridumgebung sollte Folgendes das Minimum für eine Übe
 
 * **PTA-Agent:** Der Passthrough-Authentifizierungs-Agent wird zum Aktivieren der Passthrough-Authentifizierung verwendet und lokal installiert. Informationen zum Überprüfen Ihrer Agent-Version und zu den nächsten Schritten finden Sie unter [Azure AD-Passthrough-Authentifizierung: Versionsverlauf des Agents](../hybrid/reference-connect-pta-version-history.md). 
 
-* **AD FS/WAP:** Azure Active Directory-Verbunddienste (Azure AD FS) und Webanwendungsproxy (WAP) ermöglichen die sichere Freigabe von digitalen Identitäten und Zugriffsrechten über Ihre Sicherheits- und Unternehmensgrenzen hinweg. Informationen zu Best Practices für die Sicherheit finden Sie unter [Best practices for securing Active Directory Federation Services]/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs) (Bewährte Methoden zum Schützen von Active Directory-Verbunddiensten). 
+* **AD FS/WAP:** Azure Active Directory-Verbunddienste (Azure AD FS) und Webanwendungsproxy (WAP) ermöglichen die sichere Freigabe von digitalen Identitäten und Zugriffsrechten über Ihre Sicherheits- und Unternehmensgrenzen hinweg. Informationen über bewährte Sicherheitspraktiken finden Sie unter [Best practices for securing Active Directory Federation Services](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs). 
 
 * **Azure AD Connect Health-Agent:** Dieser Agent stellt eine Kommunikationsverbindung mit Azure AD Connect Health bereit. Informationen zur Installation des Agents finden Sie unter [Installieren der Azure AD Connect Health-Agents](../hybrid/how-to-connect-health-agent-install.md). 
 

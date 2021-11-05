@@ -1,21 +1,20 @@
 ---
 title: Erstellen einer Azure Event Hubs-Schemaregistrierung
 description: In diesem Artikel erfahren Sie, wie Sie eine Schemaregistrierung in einem Azure Event Hubs-Namespace erstellen.
-ms.topic: how-to
+ms.topic: quickstart
 ms.date: 06/01/2021
-ms.custom: references_regions
-ms.openlocfilehash: 360f81157f5431a6e6e70a25ef33e707c57cc91a
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.custom: references_regions, ignite-fall-2021
+ms.openlocfilehash: f15327c6e5f35dcdd37ee45222f351257c846f5f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129536597"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131070823"
 ---
-# <a name="create-an-azure-event-hubs-schema-registry--preview"></a>Erstellen einer Azure Event Hubs-Schemaregistrierung (Vorschau)
+# <a name="create-an-azure-event-hubs-schema-registry"></a>Erstellen einer Azure Event Hubs-Schemaregistrierung
 In diesem Artikel erfahren Sie, wie Sie eine Schemagruppe mit Schemas in einer Schemaregistrierung erstellen, die von Azure Event Hubs gehostet wird. Eine Übersicht über das Schemaregistrierung-Feature von Azure Event Hubs finden Sie unter [Azure-Schemaregistrierung in Event Hubs (Vorschau)](schema-registry-overview.md).
 
 > [!NOTE]
-> - Die Funktion **Schemaregistrierung** ist derzeit als **Vorschau** verfügbar und nicht für Produktionsworkloads vorgesehen.
 > - Das Feature ist im **Basic**-Tarif nicht verfügbar.
 > - Wenn sich der Event Hub in einem **virtuellen Netzwerk** befindet, können Sie keine Schemas im Azure-Portal erstellen, es sei denn, Sie greifen von einem virtuellen Computer im gleichen virtuellen Netzwerk aus auf das Portal zu. 
 
@@ -47,24 +46,24 @@ In diesem Abschnitt fügen Sie der Schemagruppe mithilfe des Azure-Portals ein S
 
 1. Wählen Sie auf der Seite **Schemagruppe** auf der Symbolleiste **+ Schema** aus. 
 1. Führen Sie auf der Seite **Schema erstellen** die folgenden Schritte aus:
-    1. Geben Sie einen **Namen** für das Schema ein.
+    1. Geben **Sie unter Name** den Namen **orderschema ein.**
     1. Geben Sie das folgende **Schema** in das Textfeld ein. Sie können auch eine Datei mit dem Schema auswählen.
     
         ```json
         {
-            "type": "record",
-            "name": "AvroUser",
-            "namespace": "com.azure.schemaregistry.samples",
-            "fields": [
-                {
-                    "name": "name",
-                    "type": "string"
-                },
-                {
-                    "name": "favoriteNumber",
-                    "type": "int"
-                }
-            ]
+          "namespace": "com.azure.schemaregistry.samples",
+          "type": "record",
+          "name": "Order",
+          "fields": [
+            {
+              "name": "id",
+              "type": "string"
+            },
+            {
+              "name": "amount",
+              "type": "double"
+            }
+          ]
         }
         ```
     1. Klicken Sie auf **Erstellen**. 
@@ -73,12 +72,12 @@ In diesem Abschnitt fügen Sie der Schemagruppe mithilfe des Azure-Portals ein S
     :::image type="content" source="./media/create-schema-registry/select-schema.png" alt-text="Abbildung, die das ausgewählte Schema zeigt.":::
 1. Die Seite **Übersicht über Schemas** für das Schema wird angezeigt. 
 
-    :::image type="content" source="./media/create-schema-registry/schema-overview-page.png" alt-text="Abbildung, die die Seite „Schemaübersicht“ zeigt":::    
+    :::image type="content" source="./media/create-schema-registry/schema-overview-page.png" alt-text="Das Bild zeigt die Schema-Übersichtsseite.":::    
 1. Wenn mehrere Versionen eines Schemas vorhanden sind, werden Sie in der Dropdownliste **Versionen** angezeigt. Wählen Sie eine Version aus, um zu diesem Versionsschema zu wechseln. 
 
 ## <a name="create-a-new-version-of-schema"></a>Erstellen einer neuen Version des Schemas
 
-1. Aktualisieren Sie das Schema im Textfeld, und wählen Sie **Überprüfen** aus. Im folgenden Beispiel wurde dem Schema ein neues Feld `id` hinzugefügt. 
+1. Aktualisieren Sie das Schema im Textfeld, und wählen Sie **Überprüfen** aus. Im folgenden Beispiel wurde dem Schema ein neues Feld `description` hinzugefügt. 
 
     :::image type="content" source="./media/create-schema-registry/update-schema.png" alt-text="Abbildung, die die Seite „Schema aktualisieren“ zeigt":::    
     
@@ -88,9 +87,8 @@ In diesem Abschnitt fügen Sie der Schemagruppe mithilfe des Azure-Portals ein S
 1. Sie sehen, dass auf der Seite **Übersicht über Schemas** für die **Version** `2` ausgewählt ist. 
 
     :::image type="content" source="./media/create-schema-registry/new-version.png" alt-text="Abbildung, die die neue Version des Schemas zeigt":::    
-1. Wählen Sie `1` aus, um die Version 1 des Schemas anzuzeigen. 
+1. Wählen Sie `1`, um die Version 1 des Schemas zu sehen. 
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zur Schemaregistrierung finden Sie unter [Azure-Schemaregistrierung in Event Hubs (Vorschau)](schema-registry-overview.md).
-

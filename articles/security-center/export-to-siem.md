@@ -1,6 +1,6 @@
 ---
-title: Streamen von Warnungen aus Azure Security Center in SIEM-Systeme (Security Information & Event Management) und andere Überwachungslösungen
-description: Erfahren Sie, wie Sie Sicherheitswarnungen in Azure Sentinel, Drittanbieter-SIEMs, SOAR- oder ITSM-Lösungen streamen.
+title: Übertragen Sie Ihre Warnmeldungen von Microsoft Defender for Cloud auf SIEM-Systeme (Security Information and Event Management) und andere Überwachungslösungen
+description: Erfahren Sie, wie Sie Ihre Sicherheitswarnungen an Microsoft Sentinel, SIEMs von Drittanbietern, SOAR oder ITSM-Lösungen übertragen können.
 services: security-center
 author: memildin
 manager: rkarlin
@@ -8,20 +8,23 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: memildin
-ms.openlocfilehash: ad4d401072bc96784b45c0f5fd43d08f3de8ade0
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 7235fc2fe3fb06cf342408e9aa99bf6db2e13393
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124823823"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131075748"
 ---
 # <a name="stream-alerts-to-a-siem-soar-or-it-service-management-solution"></a>Streamen von Warnungen in eine SIEM-, SOAR- oder IT Service Management-Lösung
 
-Azure Security Center kann Ihre Sicherheitswarnungen in die beliebtesten Lösungen für SIEM (Security Information & Event Management), SOAR (Security Orchestration Automated Response) und ITSM (IT Service Management) streamen.
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
+
+Microsoft Defender für Cloud kann Ihre Sicherheitswarnungen in die gängigsten Lösungen für Security Information und Event Management (SIEM), Security Orchestration Automated Response (SOAR) und IT Service Management (ITSM) übertragen.
 
 Es gibt native Azure-Tools, mit denen sichergestellt wird, dass Sie die Warnungsdaten in allen heute gebräuchlichen Lösungen anzeigen können. Dazu zählen:
 
-- **Azure Sentinel**
+- **Microsoft Sentinel**
 - **Splunk Enterprise and Splunk Cloud**
 - **QRadar von IBM**
 - **ServiceNow**
@@ -29,49 +32,49 @@ Es gibt native Azure-Tools, mit denen sichergestellt wird, dass Sie die Warnungs
 - **Power BI**
 - **Palo Alto Networks**
 
-## <a name="stream-alerts-to-azure-sentinel"></a>Streamen von Warnungen in Azure Sentinel 
+## <a name="stream-alerts-to-microsoft-sentinel"></a>Warnmeldungen an Microsoft Sentinel übertragen 
 
-Security Center ist nativ in Azure Sentinel, der cloudnativen SIEM- und SOAR-Lösung von Azure, integriert. 
+Defender for Cloud ist nativ mit Microsoft Sentinel integriert, der Cloud-nativen SIEM- und SOAR-Lösung von Azure. 
 
-[Erfahren Sie mehr über Azure Sentinel](../sentinel/overview.md).
+[Erfahren Sie mehr über Microsoft Sentinel](../sentinel/overview.md).
 
-### <a name="azure-sentinels-connectors-for-security-center"></a>Azure Sentinel-Connectors für Security Center
+### <a name="microsoft-sentinels-connectors-for-defender-for-cloud"></a>Microsoft Sentinels Anschlüsse für Defender for Cloud
 
-Azure Sentinel umfasst integrierte Connectors für Azure Security Center auf Abonnement- und Mandantenebene:
+Microsoft Sentinel enthält integrierte Konnektoren für Microsoft Defender for Cloud auf Abonnement- und Mandantenebene:
 
-- [Streamen von Warnungen in Azure Sentinel auf Abonnementebene](../sentinel/connect-azure-security-center.md)
-- [Verbinden aller Abonnements im Mandanten mit Azure Sentinel](https://techcommunity.microsoft.com/t5/azure-sentinel/azure-security-center-auto-connect-to-sentinel/ba-p/1387539) 
+- [Streaming von Warnmeldungen an Microsoft Sentinel auf Abonnementebene](../sentinel/connect-azure-security-center.md)
+- [Verbinden Sie alle Abonnements in Ihrem Tenant mit Microsoft Sentinel](https://techcommunity.microsoft.com/t5/azure-sentinel/azure-security-center-auto-connect-to-sentinel/ba-p/1387539) 
 
-Wenn Sie Azure Defender mit Azure Sentinel verbinden, wird der Status der in den Azure Sentinel-Dienst übernommenen Azure Defender-Warnungen zwischen den beiden Diensten synchronisiert. Wenn also beispielsweise eine Warnung in einem Azure Defender geschlossen wird, wird diese Warnung auch in Azure Sentinel als geschlossen angezeigt. Das Ändern des Status einer Warnung in Azure Defender wirkt sich „nicht“ auf den Status von Azure Sentinel-**Incidents** aus, die die synchronisierte Azure Sentinel-Warnung enthalten, sondern nur auf den Status der synchronisierten Warnung selbst.
+Wenn Sie Defender für Cloud mit Microsoft Sentinel verbinden, wird der Status von Defender für Cloud-Warnungen, die in Microsoft Sentinel aufgenommen werden, zwischen den beiden Diensten synchronisiert. Wenn also beispielsweise eine Warnung in Defender for Cloud geschlossen wird, wird diese Warnung auch in Microsoft Sentinel als geschlossen angezeigt. Die Änderung des Status einer Warnung in Defender für Cloud wirkt sich nicht auf den Status aller Microsoft Sentinel **Vorfälle** aus, die die synchronisierte Microsoft Sentinel-Warnung enthalten, sondern nur auf den der synchronisierten Warnung selbst.
 
-Wenn Sie die Previewfunktion **bidirektionale Warnungssynchronisierung** aktivieren, wird der Status der ursprünglichen Azure Defender-Warnungen automatisch mit Azure Sentinel-Incidents synchronisiert, die die Kopien dieser Azure Defender-Warnungen enthalten. Wenn also beispielsweise ein Azure Sentinel-Incident, der eine Azure Defender-Warnung enthält, geschlossen wird, schließt Azure Defender automatisch die entsprechende ursprüngliche Warnung.
+Durch die Aktivierung der Vorschaufunktion **Bidirektionale Alarmsynchronisierung** wird der Status der ursprünglichen Defender für Cloud-Alarme automatisch mit Microsoft Sentinel-Vorfällen synchronisiert, die Kopien dieser Defender für Cloud-Alarme enthalten. Wenn zum Beispiel ein Microsoft Sentinel-Vorfall, der eine Defender für Cloud-Warnung enthält, geschlossen wird, schließt Defender für Cloud automatisch die entsprechende ursprüngliche Warnung.
 
-Weitere Informationen finden Sie unter [Verbinden von Azure Defender-Benachrichtigungen aus Azure Security Center](../sentinel/connect-azure-security-center.md).
+Erfahren Sie mehr unter [Verbinden Sie Defender für Cloud-Warnungen mit Microsoft Defender für Cloud](../sentinel/connect-azure-security-center.md).
 
 > [!NOTE]
 > Das Feature der bidirektionalen Warnungssynchronisierung ist in der Azure Government-Cloud nicht verfügbar. 
 
-### <a name="configure-ingestion-of-all-audit-logs-into-azure-sentinel"></a>Konfigurieren der Erfassung aller Überwachungsprotokolle in Azure Sentinel 
+### <a name="configure-ingestion-of-all-audit-logs-into-microsoft-sentinel"></a>Konfigurieren Sie die Aufnahme aller Audit-Protokolle in Microsoft Sentinel 
 
-Eine weitere Alternative zum Untersuchen von Security Center-Warnungen in Azure Sentinel ist das Streamen der Überwachungsprotokolle in Azure Sentinel:
+Eine weitere Alternative zur Untersuchung von Defender für Cloud-Warnungen in Microsoft Sentinel ist das Streaming Ihrer Audit-Protokolle in Microsoft Sentinel:
     - [Herstellen einer Verbindung mit Windows-Sicherheitsereignissen](../sentinel/connect-windows-security-events.md)
     - [Sammeln von Daten aus Linux-basierten Quellen mithilfe von Syslog](../sentinel/connect-syslog.md)
     - [Verknüpfen von Daten aus dem Azure-Aktivitätsprotokoll](../sentinel/data-connectors-reference.md#azure-activity)
 
 > [!TIP]
-> Azure Sentinel wird auf Grundlage der Datenmenge abgerechnet, die zur Analyse in Azure Sentinel erfasst und im Log Analytics-Arbeitsbereich von Azure Monitor gespeichert wurde. Azure Sentinel bietet ein flexibles und vorhersagbares Preismodell. [Weitere Informationen finden Sie auf der Seite „Azure Sentinel – Preise“](https://azure.microsoft.com/pricing/details/azure-sentinel/).
+> Microsoft Sentinel wird auf der Grundlage des Datenvolumens abgerechnet, das zur Analyse in Microsoft Sentinel aufgenommen und im Azure Monitor Log Analytics-Arbeitsbereich gespeichert wird. Microsoft Sentinel bietet ein flexibles und berechenbares Preismodell. [Weitere Informationen finden Sie auf der Microsoft Sentinel-Preisseite](https://azure.microsoft.com/pricing/details/azure-sentinel/).
 
 
 ## <a name="stream-alerts-with-microsoft-graph-security-api"></a>Streamen von Warnungen mit der Microsoft Graph-Sicherheits-API
 
-Security Center bietet eine vorkonfigurierte Integration in die Microsoft Graph-Sicherheits-API. Es ist keine Konfiguration erforderlich, und es fallen keine zusätzlichen Kosten an. 
+Defender für Cloud verfügt über eine sofort einsatzbereite Integration mit Microsoft Graph Security API. Es ist keine Konfiguration erforderlich, und es fallen keine zusätzlichen Kosten an. 
 
 Mithilfe dieser API können Sie Warnungen von Ihrem **gesamten Mandanten** (und Daten von vielen anderen Microsoft-Sicherheitsprodukten) in Drittanbieter-SIEMs und andere beliebte Plattformen streamen:
 
 - **Splunk Enterprise und Splunk Cloud**: [Verwenden des Microsoft Graph-Sicherheits-API-Add-Ons für Splunk](https://splunkbase.splunk.com/app/4564/) 
 - **Power BI**: [Herstellen einer Verbindung mit der Microsoft Graph-Sicherheits-API in Power BI Desktop](/power-bi/connect-data/desktop-connect-graph-security)
 - **ServiceNow**: [Installieren und Konfigurieren der Microsoft Graph-Sicherheits-API-Anwendung aus dem ServiceNow Store](https://docs.servicenow.com/bundle/orlando-security-management/page/product/secops-integration-sir/secops-integration-ms-graph/task/ms-graph-install.html)
-- **QRadar**: [Geräteunterstützungsmodul von IBM für Azure Security Center über die Microsoft Graph-API](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/com.ibm.dsm.doc/c_dsm_guide_ms_azure_security_center_overview.html) 
+- **QRadar** - [IBMs Geräteunterstützungsmodul für Microsoft Defender für Cloud über Microsoft Graph API](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/com.ibm.dsm.doc/c_dsm_guide_ms_azure_security_center_overview.html) 
 - **Palo Alto Networks**, **Anomali**, **Lookout**, **InSpark** und mehr: [Microsoft Graph-Sicherheits-API](https://www.microsoft.com/security/business/graph-security-api#office-MultiFeatureCarousel-09jr2ji)
 
 [Erfahren Sie mehr über die Microsoft Graph-Sicherheits-API](https://www.microsoft.com/security/business/graph-security-api).
@@ -79,9 +82,9 @@ Mithilfe dieser API können Sie Warnungen von Ihrem **gesamten Mandanten** (und 
 
 ## <a name="stream-alerts-with-azure-monitor"></a>Streamen von Warnungen mit Azure Monitor 
 
-Zum Streamen von Warnungen in **ArcSight**, **Splunk**, **SumoLogic**, Syslog-Server, **LogRhythm**, **Logz.io Cloud Observability Platform** und andere Überwachungslösungen stellen Sie eine Verbindung zwischen Security Center und Azure Monitor über Azure Event Hubs her:
+Zum Streamen von Warnungen in **ArcSight**, **Splunk**, **SumoLogic**, Syslog-Server, **LogRhythm**, **Logz.io Cloud Observability Platform** und andere Überwachungslösungen verbinden Sie Defender für Cloud mit Azure Monitor über Azure Event Hubs:
 
-1. Aktivieren Sie das [fortlaufende Exportieren](continuous-export.md), um Security Center-Warnungen auf Abonnementebene in einen dedizierten Azure Event Hub zu streamen. 
+1. Aktivieren Sie [kontinuierlichen Export](continuous-export.md), um Defender für Cloud-Warnungen in einen dedizierten Azure Event Hub auf Abonnementebene zu streamen. 
     > [!TIP]
     > Informationen zur Durchführung auf Verwaltungsgruppenebene mithilfe von Azure Policy finden Sie unter [Erstellen von Konfigurationen zur Automatisierung des fortlaufenden Exports](continuous-export.md?tabs=azure-policy#configure-continuous-export-at-scale-using-the-supplied-policies).
 
@@ -95,8 +98,8 @@ Zum Streamen von Warnungen in **ArcSight**, **Splunk**, **SumoLogic**, Syslog-Se
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Auf dieser Seite wurde erläutert, wie Sie sicherstellen, dass Ihre Azure Security Center-Warnungsdaten im SIEM-, SOAR- oder ITSM-Tool Ihrer Wahl verfügbar sind. Verwandte Informationen finden Sie hier:
+Auf dieser Seite wird erklärt, wie Sie sicherstellen, dass Ihre Microsoft Defender für Cloud-Warndaten im SIEM-, SOAR- oder ITSM-Tool Ihrer Wahl verfügbar sind. Verwandte Informationen finden Sie hier:
 
-- [Was ist Azure Sentinel?](../sentinel/overview.md)
-- [Warnungsüberprüfung in Azure Security Center](security-center-alert-validation.md): Überprüfen, ob Warnungen ordnungsgemäß konfiguriert sind
-- [Fortlaufendes Exportieren von Security Center-Daten](continuous-export.md)
+- [Was ist Microsoft Sentinel?](../sentinel/overview.md)
+- [Alarmvalidierung in Microsoft Defender für Cloud](alert-validation.md) - Überprüfen Sie, ob Ihre Alarme richtig konfiguriert sind
+- [Kontinuierlicher Export von Defender für Cloud-Daten](continuous-export.md)

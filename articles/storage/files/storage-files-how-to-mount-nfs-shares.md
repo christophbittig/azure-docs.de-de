@@ -4,16 +4,16 @@ description: Erfahren Sie, wie Sie eine NFS (Network File System)-Freigabe einbi
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/01/2021
+ms.date: 10/25/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 8f3565f05fc04a74e761b1070f0374677703d225
-ms.sourcegitcommit: f4e04fe2dfc869b2553f557709afaf057dcccb0b
+ms.openlocfilehash: 04d3174900ce5aa788f3793b39fa4d6c06222001
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/02/2021
-ms.locfileid: "113225251"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131036787"
 ---
 # <a name="how-to-mount-an-nfs-file-share-preview"></a>Einbinden einer NFS-Dateifreigabe (Vorschau)
 
@@ -42,12 +42,12 @@ ms.locfileid: "113225251"
 
 ## <a name="disable-secure-transfer"></a>Deaktivieren der sicheren Übertragung
 
-1. Melden Sie sich beim Azure-Portal an, und greifen Sie auf das Speicherkonto zu, das die erstellte NFS-Freigabe enthält.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an und greifen Sie auf das Speicherkonto zu, das die von Ihnen erstellte NFS-Freigabe enthält.
 1. Wählen Sie **Konfiguration** aus.
 1. Wählen Sie für **Sichere Übertragung erforderlich** die Einstellung **Deaktiviert** aus.
 1. Wählen Sie **Speichern** aus.
 
-    :::image type="content" source="media/storage-files-how-to-mount-nfs-shares/storage-account-disable-secure-transfer.png" alt-text="Screenshot mit dem Konfigurationsbildschirm des Speicherkontos und der deaktivierten Option „Sichere Übertragung erforderlich“":::
+    :::image type="content" source="media/storage-files-how-to-mount-nfs-shares/disable-secure-transfer.png" alt-text="Screenshot mit dem Konfigurationsbildschirm des Speicherkontos und der deaktivierten Option „Sichere Übertragung erforderlich“" lightbox="media/storage-files-how-to-mount-nfs-shares/disable-secure-transfer.png":::
 
 ## <a name="mount-an-nfs-share"></a>Einbinden einer NFS-Freigabe
 

@@ -2,14 +2,14 @@
 title: Diagnose mit Live Metrics Stream – Azure Application Insights
 description: Überwachen Sie Ihre Web-App mit benutzerdefinierten Metriken in Echtzeit, und diagnostizieren Sie Probleme mit einem Livefeed zu Fehlern, Ablaufverfolgungen und Ereignissen.
 ms.topic: conceptual
-ms.date: 04/22/2019
+ms.date: 10/12/2021
 ms.reviewer: sdash
-ms.openlocfilehash: 3e19d424f8aa56f37b12ab776c9ff85ca78f6738
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 7c587cc9bdfa4fdc0483a99d9248fbd986c048e8
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129614952"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131026239"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream: Überwachung und Diagnose mit einer Latenzzeit von 1 Sekunde
 
@@ -160,7 +160,7 @@ Wenn Sie eine bestimmte Serverrolleninstanz überwachen möchten, können Sie na
 ## <a name="secure-the-control-channel"></a>Sichern des Steuerkanals
 
 > [!NOTE]
-> Derzeit können Sie nur mithilfe von codebasierter Überwachung einen authentifizierten Kanal einrichten und Server nicht durch codelose Anfügung authentifizieren.
+> Derzeit können Sie einen authentifizierten Kanal nur über die manuelle Instrumentierung (SDK) einrichten und Server nicht über die Azure-Dienstintegration (oder automatische Instrumentierung) authentifizieren.
 
 Die von Ihnen im Portal für Livemetriken angegebenen benutzerdefinierten Filterkriterien werden an die Livemetrikkomponente des Application Insights SDK zurückgesendet. Der Filter können potenziell vertrauliche Informationen wie z.B. Kunden-IDs enthalten. Zum Sichern des Kanals können Sie neben dem Instrumentierungsschlüssel auch einen geheimen API-Schlüssel verwenden.
 
@@ -175,7 +175,7 @@ Die von Ihnen im Portal für Livemetriken angegebenen benutzerdefinierten Filter
 
 Fügen Sie den API-Authentifizierungsschlüssel in der Datei „applicationinsights.config“ dem QuickPulseTelemetryModule-Element hinzu:
 
-```XML
+```xml
 <Add Type="Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPulse.QuickPulseTelemetryModule, Microsoft.AI.PerfCounterCollector">
       <AuthenticationApiKey>YOUR-API-KEY-HERE</AuthenticationApiKey>
 </Add>
@@ -233,8 +233,8 @@ Wenn Sie jedoch alle verbundenen Server erkennen und ihnen vertrauen, können Si
 
 ![Authentifizierungsoptionen für Livemetriken](./media/live-stream/live-stream-auth.png)
 
->[!NOTE]
->Es wird dringend empfohlen, dass Sie den authentifizierten Kanal vor dem Eingeben von potenziell vertraulichen Informationen wie der Kunden-ID in den Filterkriterien einrichten.
+> [!NOTE]
+> Es wird dringend empfohlen, dass Sie den authentifizierten Kanal vor dem Eingeben von potenziell vertraulichen Informationen wie der Kunden-ID in den Filterkriterien einrichten.
 >
 
 ## <a name="supported-features-table"></a>Tabelle unterstützter Features

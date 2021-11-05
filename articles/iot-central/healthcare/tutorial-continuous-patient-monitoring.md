@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: eliotgra
-ms.openlocfilehash: dc1cf6a9a250b64b84cacbcf300183b913144b45
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 4d5b00526219b0a4ade24b7522ea4826236fd70e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122180164"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131057759"
 ---
 # <a name="tutorial-deploy-and-walkthrough-the-continuous-patient-monitoring-app-template"></a>Tutorial: Bereitstellen und Durchlaufen der App-Vorlage für die kontinuierliche Überwachung von Patienten
 
@@ -25,7 +25,7 @@ Bei vielen medizinischen Wearables, die in IoT-Lösungen im Gesundheitswesen zum
 
 ## <a name="mobile-phone-gateway"></a>Mobiltelefongateway
 
-Die Hauptfunktion der Mobiltelefonanwendung besteht darin, BLE-Daten von medizinischen Geräten zu erfassen und an IoT Central weiterzugeben. Die App führt Patienten außerdem durch die Geräteeinrichtung und ermöglicht es ihnen, ihre persönlichen Gesundheitsdaten anzuzeigen. Bei anderen Lösungen kann ein Tabletgateway oder ein statisches Gateway in einem Krankenzimmer verwendet werden. Für Android und iOS steht eine Open-Source-Beispielanwendung für Mobilgeräte zur Verfügung, die als Ausgangspunkt für die Anwendungsentwicklung verwendet werden kann. Weitere Informationen zur mobilen IoT Central-App für die kontinuierliche Patientenüberwachung finden Sie [hier](/samples/iot-for-all/iotc-cpm-sample/iotc-cpm-sample/).
+Die Hauptfunktion der Mobiltelefonanwendung besteht darin, BLE-Daten von medizinischen Geräten zu erfassen und an IoT Central weiterzugeben. Die App führt Patienten außerdem durch die Geräteeinrichtung und ermöglicht es ihnen, ihre persönlichen Gesundheitsdaten anzuzeigen. Bei anderen Lösungen kann ein Tabletgateway oder ein statisches Gateway in einem Krankenzimmer verwendet werden. Für Android und iOS steht eine Open-Source-Beispielanwendung für Mobilgeräte zur Verfügung, die als Ausgangspunkt für die Anwendungsentwicklung verwendet werden kann. Weitere Informationen finden Sie in der mobilen Beispielanwendung [Continuous Patient Monitoring auf GitHub](https://github.com/iot-for-all/iotc-cpm-sample).
 
 ## <a name="export-to-azure-api-for-fhirreg"></a>Exportieren nach Azure API for FHIR&reg;
 

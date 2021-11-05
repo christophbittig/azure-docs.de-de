@@ -1,0 +1,57 @@
+### YamlMime:FAQ
+metadata:
+  title: Häufig gestellte Fragen zur Teilaktualisierung von Dokumenten in Azure Cosmos DB
+  description: Häufig gestellte Fragen zur Teilaktualisierung von Dokumenten in Azure Cosmos DB
+  author: abhirockzz
+  ms.author: abhishgu
+  ms.service: cosmos-db
+  ms.topic: conceptual
+  ms.date: 09/16/2021
+  ms.openlocfilehash: 07a5a1daf0500938189ff79817a9d2a4ce058ae3
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131100297"
+title: Häufig gestellte Fragen zur Teilaktualisierung von Dokumenten in Azure Cosmos DB
+summary: >
+  [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
+
+
+  Mithilfe der Teilaktualisierung von Dokumenten können Sie bestimmte Eigenschaften oder Felder für ein Element ändern, ohne einen vollständigen Dokumentersetzungsvorgang ausführen zu müssen. In diesem Artikel werden häufig gestellte Fragen zum Azure Cosmos DB-Feature „Teilaktualisierung von Dokumenten“ beantwortet.
+sections:
+- name: Allgemein
+  questions:
+  - question: >
+      Ist dies eine Implementierung von JSON Patch RFC 6902?
+    answer: >
+      Die Azure Cosmos DB-Teilaktualisierung von Dokumenten ist *inspiriert* von [JSON Patch RFC 6902](https://datatracker.ietf.org/doc/html/rfc6902). Es gibt weitere Features wie [Conditional Patch](partial-document-update.md#supported-modes) (Bedingter Patch), während einige der Features von JSON Patch RFC 6902 wie (`Copy`, `Move`, `Test`) nicht implementiert wurden.
+  - question: >
+      Ist die Teilaktualisierung von Dokumenten mit den Abrechnungsmodi „Serverlos“, „Bereitgestellter Durchsatz“ und „Autoskalierung“ kompatibel?
+    answer: >
+      Ja, die Teilaktualisierung von Dokumenten ist für die Modi „Serverlos“, „Bereitgestellter Durchsatz“ und „Autoskalierung“ verfügbar.
+  - question: >
+      Wie werden RU/s-Preise berechnet?
+    answer: >
+      Die Teilaktualisierung von Dokumenten wird auf die gleiche Weise wie [andere Datenbankvorgänge](how-pricing-works.md) in die Abrechnung von Anforderungseinheiten normalisiert. Benutzer dürfen keine signifikante Verringerung von Anforderungseinheiten erwarten.
+  - question: >
+      Gibt es eine Beschränkung der Anzahl von Teilaktualisierungsvorgängen für Dokumente?
+    answer: >
+      Es gibt ein Limit von 10 Patchvorgängen, die in einer einzelnen Patchspezifikation hinzugefügt werden können. Wenn Sie diese Anzahl erhöhen müssen, wenden Sie sich an das [Supportteam](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+  - question: >
+      Wird die Teilaktualisierung von Dokumenten für vom System generierte Eigenschaften unterstützt?
+    answer: >
+      Wir unterstützen keine Teilaktualisierung von Dokumenten für vom System generierte Eigenschaften wie `_id`, `_ts`, `_etag` und `_rid`.
+  - question: >
+      Kann die Gültigkeitsdauer (Time to Live, TTL) gepatcht werden?
+    answer: >
+      Ja, es ist möglich, die Eigenschaft [Time to Live](time-to-live.md) (`ttl`) eines Dokuments zu patchen.
+  - question: >
+      Wie funktioniert die Konfliktlösung in mehreren Regionen für Arrays?
+    answer: >
+      Arrays werden als atomische Einheit behandelt. Wenn dieselbe Eigenschaft in einem Array gleichzeitig in verschiedenen Regionen aktualisiert wird (was zu einem Konflikt führt), wird nur eine der Änderungen persistent gespeichert.
+  - question: >
+      Wird die Teilaktualisierung von Dokumenten für Konten mit aktiviertem Analysespeicher-/Synapse-Link unterstützt?
+    answer: >
+      Ja, die Teilaktualisierung von Dokumenten funktioniert für Konten mit aktiviertem Analysespeicher-/Synapse-Link.
+additionalContent: "\n## <a name=\"next-steps\"></a>Nächste Schritte\n\n* Erfahren Sie mehr zur [Teilaktualisierung von Dokumenten](partial-document-update.md)."

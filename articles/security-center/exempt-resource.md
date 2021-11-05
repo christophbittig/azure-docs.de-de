@@ -1,5 +1,5 @@
 ---
-title: Ausschließen einer Ressource, eines Abonnements, einer Verwaltungsgruppe und einer Sicherheitsbewertung aus einer Azure Security Center-Empfehlung
+title: Ausschluss einer Microsoft Defender für Cloud-Empfehlung von einer Ressource, einem Abonnement, einer Verwaltungsgruppe und einer sicheren Bewertung
 description: Erfahren Sie, wie Sie Regeln erstellen, um Abonnements oder Verwaltungsgruppen aus Sicherheitsempfehlungen auszuschließen, und wie Sie verhindern, dass sie sich auf Ihre Sicherheitsbewertung auswirken.
 author: memildin
 ms.author: memildin
@@ -7,20 +7,23 @@ ms.date: 05/12/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: f69b7174ec37a38fd972f53daaaf09776a279cea
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 2adced83b238e471027bb7c1bf86f1fb13c64239
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339960"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131075843"
 ---
 # <a name="exempting-resources-and-recommendations-from-your-secure-score"></a>Ausschließen von Ressource und Empfehlungen aus der Sicherheitsbewertung 
 
-Für jedes Sicherheitsteam hat die Sicherstellung, dass sich die Analysten auf die für die Organisation wichtigen Aufgaben und Incidents konzentrieren können, eine sehr hohe Priorität. Security Center verfügt über viele Features zum Anpassen der Informationen, und um sicherzustellen, dass Ihre Sicherheitsbewertung die Sicherheitsprioritäten Ihrer Organisation angemessen widerspiegelt. Die Option **Ausnahme** ist ein solches Feature.
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-Wenn Sie in Azure Security Center Ihre Sicherheitsempfehlungen untersuchen, überprüfen Sie unter anderem zunächst die Liste mit den betroffenen Ressourcen.
+Für jedes Sicherheitsteam hat die Sicherstellung, dass sich die Analysten auf die für die Organisation wichtigen Aufgaben und Incidents konzentrieren können, eine sehr hohe Priorität. Defender für Cloud verfügt über zahlreiche Funktionen, mit denen Sie das Erlebnis individuell gestalten und sicherstellen können, dass Ihr Sicherheits-Score die Sicherheitsprioritäten Ihres Unternehmens widerspiegelt. Die Option **Ausnahme** ist ein solches Feature.
 
-Es kann gelegentlich vorkommen, dass eine Ressource aufgeführt ist, die Ihrer Meinung nach nicht enthalten sein sollte. Auch kann es bisweilen passieren, dass eine Empfehlung in einem Bereich angezeigt wird, zu dem sie Ihrer Meinung nach nicht gehört. Die Ressource könnte mit einem Prozess korrigiert worden sein, der von Security Center nicht nachverfolgt wird. Möglicherweise ist die Empfehlung für ein bestimmtes Abonnement nicht geeignet. Oder vielleicht hat Ihr Unternehmen einfach beschlossen, die Risiken im Zusammenhang mit der jeweiligen Ressource oder Empfehlung zu akzeptieren.
+Wenn Sie Ihre Sicherheitsempfehlungen in Microsoft Defender für Cloud untersuchen, ist eine der ersten Informationen, die Sie prüfen, die Liste der betroffenen Ressourcen.
+
+Es kann gelegentlich vorkommen, dass eine Ressource aufgeführt ist, die Ihrer Meinung nach nicht enthalten sein sollte. Auch kann es bisweilen passieren, dass eine Empfehlung in einem Bereich angezeigt wird, zu dem sie Ihrer Meinung nach nicht gehört. Die Ressource könnte durch einen Prozess behoben worden sein, der von Defender für Cloud nicht verfolgt wird. Möglicherweise ist die Empfehlung für ein bestimmtes Abonnement nicht geeignet. Oder vielleicht hat Ihr Unternehmen einfach beschlossen, die Risiken im Zusammenhang mit der jeweiligen Ressource oder Empfehlung zu akzeptieren.
 
 In solchen Fällen können Sie eine Ausnahme für eine Empfehlung erstellen:
 
@@ -33,21 +36,21 @@ In solchen Fällen können Sie eine Ausnahme für eine Empfehlung erstellen:
 | Aspekt                          | Details                                                                                                                                                                                                                                                                                                                            |
 |---------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Status des Release:                  | Vorschau<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]                                                                                                                                                                                                                                             |
-| Preise:                        | Dies ist eine Premium-Richtlinienfunktion von Azure, die für Azure Defender-Kunden kostenlos zur Verfügung steht. Für andere Benutzer fallen hierfür in Zukunft unter Umständen Gebühren an.                                                                                                                                                                 |
+| Preise:                        | Dabei handelt es sich um eine Premiumfunktion der Azure-Richtlinien, die Kunden mit aktivierten erweiterten Sicherheitsfunktionen von Microsoft Defender für Cloud ohne zusätzliche Kosten angeboten wird. Für andere Benutzer fallen hierfür in Zukunft unter Umständen Gebühren an.                                                                                                                                                                 |
 | Erforderliche Rollen und Berechtigungen: | **Besitzer** oder **Mitwirkender bei Ressourcenrichtlinien** zum Erstellen einer Ausnahme<br>Zum Erstellen einer Regel benötigen Sie Berechtigungen zum Bearbeiten von Richtlinien in Azure Policy.<br>Weitere Informationen finden Sie unter [Azure RBAC-Berechtigungen in Azure Policy](../governance/policy/overview.md#azure-rbac-permissions-in-azure-policy).                                            |
-| Einschränkungen:                    | Ausnahmen können nur für Empfehlungen erstellt werden, die in der Standardinitiative von Security Center, im [Azure-Sicherheitsvergleichstest](/security/benchmark/azure/introduction) oder in einer der bereitgestellten Initiativen für gesetzliche Standards enthalten sind. Für Empfehlungen, die über benutzerdefinierte Initiativen generiert werden, können keine Ausnahmen gemacht werden. Weitere Informationen über die Beziehungen zwischen Richtlinien, Initiativen und Empfehlungen finden Sie [unter diesem Link](security-policy-concept.md). |
+| Einschränkungen:                    | Ausnahmen können nur für Empfehlungen erstellt werden, die in der Standardinitiative von Defender für Cloud, [Azure Security Benchmark](/security/benchmark/azure/introduction), oder einer der mitgelieferten regulatorischen Standardinitiativen enthalten sind. Für Empfehlungen, die über benutzerdefinierte Initiativen generiert werden, können keine Ausnahmen gemacht werden. Weitere Informationen über die Beziehungen zwischen Richtlinien, Initiativen und Empfehlungen finden Sie [unter diesem Link](security-policy-concept.md). |
 | Clouds:                         | :::image type="icon" source="./media/icons/yes-icon.png"::: Kommerzielle Clouds<br>:::image type="icon" source="./media/icons/no-icon.png"::: National/Sovereign (Azure Government, Azure China 21Vianet)                                                                                                                                                                                         |
 |                                 |                                                                                                                                                                                                                                                                                                                                    |
 
 ## <a name="define-an-exemption"></a>Definieren einer Ausnahme
 
-Zur Feinabstimmung der Sicherheitsempfehlungen, die Security Center für Ihre Abonnements, Verwaltungsgruppe oder Ressourcen bereitstellt, können Sie eine Ausnahmeregel erstellen:
+Zur Feinabstimmung der Sicherheitsempfehlungen, die Defender für Cloud für Ihre Abonnements, Verwaltungsgruppen oder Ressourcen ausspricht, können Sie eine Ausnahmeregel erstellen:
 
 - Markieren Sie eine bestimmte **Empfehlung** als „Gemindert“ oder „Risiko akzeptiert“. Sie können Empfehlungsausnahmen für ein Abonnement, mehrere Abonnements oder eine gesamte Verwaltungsgruppe erstellen.
 - Markieren Sie **eine oder mehrere Ressourcen** für eine bestimmte Empfehlung als „Gemindert“ oder „Risiko akzeptiert“.
 
 > [!NOTE]
-> Ausnahmen können nur für Empfehlungen erstellt werden, die in der Standardinitiative von Security Center, im Azure-Sicherheitsvergleichstest oder in einer der bereitgestellten Initiativen für gesetzliche Standards enthalten sind. Für Empfehlungen, die von benutzerdefinierten Initiativen generiert werden, die Ihren Abonnements zugewiesen sind, können keine Ausnahmen gemacht werden. Weitere Informationen über die Beziehungen zwischen Richtlinien, Initiativen und Empfehlungen finden Sie [unter diesem Link](security-policy-concept.md).
+> Ausnahmen können nur für Empfehlungen erstellt werden, die in der Standardinitiative von Defender für Cloud, in Azure Security Benchmark oder in einer der bereitgestellten regulatorischen Standardinitiativen enthalten sind. Für Empfehlungen, die von benutzerdefinierten Initiativen generiert werden, die Ihren Abonnements zugewiesen sind, können keine Ausnahmen gemacht werden. Weitere Informationen über die Beziehungen zwischen Richtlinien, Initiativen und Empfehlungen finden Sie [unter diesem Link](security-policy-concept.md).
 
 > [!TIP]
 > Sie können auch Ausnahmen mithilfe der API erstellen. Ein JSON-Beispiel und eine Erläuterung der relevanten Strukturen finden Sie unter [Azure Policy-Ausnahmenstruktur](../governance/policy/concepts/exemption-structure.md).
@@ -68,7 +71,7 @@ So erstellen Sie eine Ausnahmeregel:
     1. Geben Sie einen Namen für diese Ausnahmeregel ein.
     1. Legen Sie optional ein Ablaufdatum fest.
     1. Wählen Sie die Kategorie für die Ausnahme aus:
-        - **Gelöst durch Drittanbieter (Gemindert)** : Wenn Sie einen Drittanbieterdienst verwenden, den Security Center nicht identifiziert hat. 
+        - **Lösung durch Drittanbieter (entschärft)** - wenn Sie einen Drittanbieterdienst verwenden, den Defender für Cloud nicht identifiziert hat. 
 
             > [!NOTE]
             > Wenn Sie eine Empfehlung als gemindert ausnehmen, erhalten Sie keine Punkte für Ihre Sicherheitsbewertung. Da jedoch für die fehlerhaften Ressourcen keine Punkte *entfernt* werden, ist das Ergebnis, dass Ihre Bewertung steigt.
@@ -82,9 +85,9 @@ So erstellen Sie eine Ausnahmeregel:
     Wenn die Ausnahme wirksam wird (dies kann bis zu 30 Minuten dauern):
     - Die Empfehlung oder Ressourcen haben keine Auswirkungen auf Ihre Sicherheitsbewertung.
     - Wenn Sie bestimmte Ressourcen ausgenommen haben, werden sie auf der Registerkarte **Nicht anwendbar** der Seite mit den Empfehlungsdetails aufgelistet.
-    - Wenn Sie eine Empfehlung ausgenommen haben, wird sie standardmäßig auf der Empfehlungenseite in Security Center ausgeblendet. Dies liegt daran, dass die Standardoptionen des Filters **Empfehlungsstatus** auf dieser Seite **Nicht anwendbar**-Empfehlungen ausschließen sollen. Dasselbe gilt, wenn Sie alle Empfehlungen in einer Sicherheitssteuerung ausschließen.
+    - Wenn Sie eine Empfehlung ausgenommen haben, wird sie auf der Empfehlungsseite von Defender für Cloud standardmäßig ausgeblendet. Dies liegt daran, dass die Standardoptionen des Filters **Empfehlungsstatus** auf dieser Seite **Nicht anwendbar**-Empfehlungen ausschließen sollen. Dasselbe gilt, wenn Sie alle Empfehlungen in einer Sicherheitssteuerung ausschließen.
 
-        :::image type="content" source="media/exempt-resource/recommendations-filters-hiding-not-applicable.png" alt-text="Standardfilter auf der Azure Security Center-Empfehlungenseite blenden die nicht anwendbaren Empfehlungen und Sicherheitssteuerungen aus.":::
+        :::image type="content" source="media/exempt-resource/recommendations-filters-hiding-not-applicable.png" alt-text="Standardfilter auf der Empfehlungsseite von Microsoft Defender für Cloud blenden die nicht anwendbaren Empfehlungen und Sicherheitskontrollen aus":::
 
     - In der Informationsleiste am oberen Rand der Seite mit den Empfehlungsdetails wird die Anzahl von ausgeschlossenen Ressourcen aktualisiert:
         
@@ -114,17 +117,17 @@ Wie bereits auf dieser Seite erläutert, sind Ausnahmeregeln ein leistungsfähig
 
 Damit Sie nachverfolgen können, wie Ihre Benutzer diese Funktion nutzen, haben wir eine Azure Resource Manager-Vorlage (ARM) erstellt, die ein Logik-App-Playbook und alle notwendigen API-Verbindungen bereitstellt, um Sie zu benachrichtigen, wenn eine Ausnahme erstellt wurde.
 
-- Weitere Informationen zum Playbook finden Sie im Tech Community-Blogbeitrag [How to keep track of Resource Exemptions in Azure Security Center](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-keep-track-of-resource-exemptions-in-azure-security/ba-p/1770580) (Nachverfolgen von Ressourcenausnahmen in Azure Security Center).
-- Sie finden die ARM-Vorlage im [Azure Security Center-GitHub-Repository](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation/Notify-ResourceExemption).
+- Weitere Informationen über das Playbook finden Sie im Tech-Community-Blogbeitrag [Wie man den Überblick über Ressourcenausnahmen in Microsoft Defender für Cloud behält](https://techcommunity.microsoft.com/t5/azure-security-center/how-to-keep-track-of-resource-exemptions-in-azure-security/ba-p/1770580)
+- Sie finden die ARM-Vorlage im [Microsoft Defender für Cloud GitHub-Repository](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation/Notify-ResourceExemption)
 - [Verwenden Sie diesen automatisierten Prozess](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2FAzure-Security-Center%2Fmaster%2FWorkflow%2520automation%2FNotify-ResourceExemption%2Fazuredeploy.json), um alle erforderlichen Komponenten bereitzustellen.
 
 ## <a name="use-the-inventory-to-find-resources-that-have-exemptions-applied"></a>Verwenden Sie den Bestand, um Ressourcen zu suchen, für die Ausnahmen angewendet wurden.
 
-Auf der Seite „Ressourcenbestand“ von Azure Security Center können Sie auf einer Seite den gesamten Sicherheitsstatus der Ressourcen anzeigen, die Sie mit Azure Security Center verbunden haben. Weitere Informationen finden Sie unter [Untersuchen und Verwalten Ihrer Ressourcen mit dem Ressourcenbestand und Verwaltungstools](asset-inventory.md).
+Die Inventarisierungsseite von Microsoft Defender für Cloud bietet eine einzige Seite, auf der Sie die Sicherheitslage der Ressourcen anzeigen können, die Sie mit Defender für Cloud verbunden haben. Weitere Informationen finden Sie unter [Untersuchen und Verwalten Ihrer Ressourcen mit dem Ressourcenbestand und Verwaltungstools](asset-inventory.md).
 
 Die Bestandsseite enthält viele Filter, mit denen Sie die Liste der Ressourcen auf diejenigen eingrenzen können, die für ein bestimmtes Szenario am wichtigsten sind. Ein solcher Filter ist die **Contains-Ausnahme**. Verwenden Sie diesen Filter, um alle Ressourcen zu suchen, die von einer oder mehrere Empfehlungen ausgenommen wurden.
 
-:::image type="content" source="media/exempt-resource/inventory-filter-exemptions.png" alt-text="Seite für den Ressourcenbestand in Security Center und Filter zum Suchen von Ressourcen mit Ausnahmen":::
+:::image type="content" source="media/exempt-resource/inventory-filter-exemptions.png" alt-text="Die Inventarseite von Defender für Cloud und der Filter zum Auffinden von Ressourcen mit Ausnahmen":::
 
 
 ## <a name="find-recommendations-with-exemptions-using-azure-resource-graph"></a>Suchen von Empfehlungen mit Ausnahmen mit Azure Resource Graph
@@ -135,7 +138,7 @@ So zeigen Sie alle Empfehlungen mit Ausnahmeregeln an:
 
 1. Öffnen Sie den **Azure Resource Graph-Explorer**.
 
-    :::image type="content" source="./media/security-center-identity-access/opening-resource-graph-explorer.png" alt-text="Die Empfehlungsseite des Azure Resource Graph-Explorer** wird gestartet." :::
+    :::image type="content" source="./media/multi-factor-authentication-enforcement/opening-resource-graph-explorer.png" alt-text="Die Empfehlungsseite des Azure Resource Graph-Explorer** wird gestartet." :::
 
 1. Geben Sie die folgende Abfrage ein, und wählen Sie **Abfrage ausführen** aus.
 
@@ -182,15 +185,15 @@ Weitere Informationen finden Sie auf den folgenden Seiten:
 
 Manchmal liegt eine Sicherheitsempfehlung in mehreren Richtlinieninitiativen vor. Wenn mehrere Instanzen derselben Empfehlung demselben Abonnement zugewiesen sind, und Sie eine Ausnahme für die Empfehlung erstellen, wirkt sich dies auf alle Initiativen aus, für die Sie die Berechtigung zum Bearbeiten haben. 
 
-Beispielsweise ist die Empfehlung **** Teil der Standardrichtlinieninitiative, die allen Azure-Abonnements von Azure Security Center zugewiesen wird. Sie liegt also auch in xxxxx vor.
+So ist beispielsweise die Empfehlung **** Teil der Standardrichtlinieninitiative, die allen Azure-Abonnements von Microsoft Defender für Cloud zugewiesen wird. Es ist auch in XXXXX.
 
 Wenn Sie versuchen, eine Ausnahme für diese Empfehlung zu erstellen, wird eine der beiden folgenden Meldungen angezeigt:
 
-- Wenn Sie für beide Initiativen über die erforderlichen Berechtigungen zum Bearbeiten verfügen, sehen Sie Folgendes:
+- Wenn Sie **die** notwendigen Berechtigungen zur Bearbeitung beider Initiativen haben, sehen Sie das:
 
     *Diese Empfehlung ist in mehreren Richtlinieninitiativen enthalten: [durch Kommas getrennte Initiativennamen]. Ausnahmen werden für alle erstellt.*  
 
-- Wenn Sie nicht für beide Initiativen über die erforderlichen Berechtigungen verfügen, wird stattdessen diese Meldung angezeigt:
+- Wenn Sie **die nötigen Rechte haben** , um beide Initiativen zu bearbeiten, werden Sie sehen:
 
     *Sie verfügen über eingeschränkte Berechtigungen zum Anwenden der Ausnahme auf alle Richtlinieninitiativen. Die Ausnahmen werden nur für die Initiativen mit ausreichenden Berechtigungen erstellt.*
 
@@ -217,4 +220,4 @@ Diese Empfehlungen unterstützen keine Ausnahme:
 
 In diesem Artikel wurde beschrieben, wie Sie eine Ressource aus einer Empfehlung ausschließen, damit sie sich nicht mehr auf Ihre Sicherheitsbewertung auswirkt. Weitere Informationen zur Sicherheitsbewertung finden Sie unter:
 
-- [Secure Score in Azure Security Center](secure-score-security-controls.md)
+- [Sicherheitsbewertung in Microsoft Defender für Cloud](secure-score-security-controls.md)

@@ -1,30 +1,33 @@
 ---
-title: Verwenden von Unterdrückungsregeln für Warnungen, um falsch positive oder andere unerwünschte Sicherheitswarnungen in Azure Security Center zu unterdrücken.
-description: In diesem Artikel wird erläutert, wie Sie mithilfe der Unterdrückungsregeln von Azure Security Center unerwünschte Sicherheitswarnungen ausblenden können.
+title: Verwenden von Unterdrückungsregeln für Warnungen, um falsch positive oder andere unerwünschte Sicherheitswarnungen in Microsoft Defender für Cloud zu unterdrücken.
+description: In diesem Artikel wird erläutert, wie Sie mithilfe der Unterdrückungsregeln von Microsoft Defender für Cloud unerwünschte Sicherheitswarnungen ausblenden können.
 author: memildin
 manager: rkarlin
 services: security-center
 ms.author: memildin
-ms.date: 02/17/2021
+ms.date: 10/18/2021
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 6bf722279462c1f9b6d08830af19577ec218f756
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 03b1c1be820691fccb94a659e298d235874ad6ea
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130039142"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131010591"
 ---
-# <a name="suppress-alerts-from-azure-defender"></a>Unterdrücken von Warnungen von Azure Defender
+# <a name="suppress-alerts-from-microsoft-defender-for-cloud"></a>Unterdrücken von Warnungen aus Microsoft Defender für Cloud
 
-Auf dieser Seite wird erläutert, wie Sie mithilfe von Unterdrückungsregeln für Warnungen False Positives oder andere unerwünschte Sicherheitswarnungen von Azure Defender unterdrücken können.
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
+
+Auf dieser Seite wird erläutert, wie Sie mithilfe von Unterdrückungsregeln für Warnungen falsch positive oder andere unerwünschte Sicherheitswarnungen von Defender für Cloud unterdrücken können.
 
 ## <a name="availability"></a>Verfügbarkeit
 
 |Aspekt|Details|
 |----|:----|
 |Status des Release:|Allgemeine Verfügbarkeit (General Availability, GA)|
-|Preise:|Kostenlos<br>(Die meisten Sicherheitswarnungen sind nur in Azure Defender verfügbar.)|
+|Preise:|Kostenlos<br>(Die meisten Sicherheitswarnungen sind nur mit [erweiterten Sicherheitsfeatures](enable-enhanced-security.md) verfügbar.)|
 |Erforderliche Rollen und Berechtigungen:|**Sicherheitsadministrator** und **Besitzer** können Regeln erstellen und löschen.<br>**Sicherheitsleseberechtigter** und **Leser** können Regeln anzeigen.|
 |Clouds:|:::image type="icon" source="./media/icons/yes-icon.png"::: Kommerzielle Clouds<br>:::image type="icon" source="./media/icons/yes-icon.png"::: National/Sovereign (Azure Government, Azure China 21Vianet)|
 |||
@@ -32,7 +35,7 @@ Auf dieser Seite wird erläutert, wie Sie mithilfe von Unterdrückungsregeln fü
 
 ## <a name="what-are-suppression-rules"></a>Was sind Warnungsunterdrückungsregeln?
 
-Die verschiedenen Azure Defender-Pläne erkennen Bedrohungen in einem bestimmten Bereich Ihrer Umgebung und generieren entsprechende Sicherheitswarnungen.
+Die verschiedenen Microsoft Defender-Pläne erkennen Bedrohungen in einem bestimmten Bereich Ihrer Umgebung und generieren entsprechende Sicherheitswarnungen.
 
 Wenn eine einzelne Warnung nicht interessant oder relevant ist, können Sie sie manuell verwerfen. Alternativ können Sie die Funktion „Unterdrückungsregeln“ verwenden, um ähnliche Warnungen zukünftig automatisch zu verwerfen. In der Regel verwenden Sie eine Unterdrückungsregel in folgenden Fällen:
 
@@ -43,7 +46,7 @@ Wenn eine einzelne Warnung nicht interessant oder relevant ist, können Sie sie 
 Mit Unterdrückungsregeln definieren Sie die Kriterien, nach denen Warnungen automatisch verworfen werden sollen.
 
 > [!CAUTION]
-> Durch das Unterdrücken von Sicherheitswarnungen wird die Effektivität des Bedrohungsschutzes von Azure Defender verringert. Sie sollten die potenziellen Auswirkungen der Unterdrückungsregeln sorgfältig überprüfen und diese über einen bestimmten Zeitraum überwachen.
+> Durch das Unterdrücken von Sicherheitswarnungen wird die Effektivität des Bedrohungsschutzes von Microsoft Defender für die Cloud verringert. Sie sollten die potenziellen Auswirkungen der Unterdrückungsregeln sorgfältig überprüfen und diese über einen bestimmten Zeitraum überwachen.
 
 :::image type="content" source="./media/alerts-suppression-rules/create-suppression-rule.gif" alt-text="Erstellen einer Warnungsunterdrückungsregel":::
 
@@ -58,7 +61,7 @@ Mit Unterdrückungsregeln können nur Warnungen verworfen werden, die für die a
 
 So erstellen Sie eine Regel direkt im Azure-Portal
 
-1. Auf der Security Center-Seite für Sicherheitswarnungen:
+1. Auf der Seite mit den Sicherheitswarnungen von Microsoft Defender für Cloud:
 
     - Wählen Sie die Warnung aus, die nicht mehr angezeigt werden soll, und wählen Sie im Detailbereich **Aktion ausführen** aus.
 
@@ -87,7 +90,7 @@ So erstellen Sie eine Regel direkt im Azure-Portal
 
 Die erstellten Regeln können Sie auf der Seite der Unterdrückungsregeln bearbeiten.
 
-1. Wählen Sie oben auf der Security Center-Seite für Sicherheitswarnungen den Link **Unterdrückungsregeln** aus.
+1. Wählen Sie oben auf der Seite mit den Sicherheitswarnungen von Defender für Cloud den Link **Unterdrückungsregeln** aus.
 1. Die Seite der Unterdrückungsregeln wird mit allen Regeln für das ausgewählte Abonnement geöffnet.
 
     [![Liste der Unterdrückungsregeln](media/alerts-suppression-rules/suppression-rules-page.png)](media/alerts-suppression-rules/suppression-rules-page.png#lightbox)
@@ -99,7 +102,7 @@ Die erstellten Regeln können Sie auf der Seite der Unterdrückungsregeln bearbe
 
 Wenn Sie eine oder mehrere der erstellten Regeln löschen möchten, verwenden Sie die Seite „Unterdrückungsregeln“.
 
-1. Wählen Sie oben auf der Security Center-Seite für Sicherheitswarnungen den Link **Unterdrückungsregeln** aus.
+1. Wählen Sie oben auf der Seite mit den Sicherheitswarnungen von Defender für Cloud den Link **Unterdrückungsregeln** aus.
 1. Die Seite der Unterdrückungsregeln wird mit allen Regeln für das ausgewählte Abonnement geöffnet.
 1. Um eine einzelne Regel zu löschen, öffnen Sie das Menü mit den Auslassungspunkten (...) für die Regel, und wählen Sie **Löschen** aus.
 1. Wenn Sie mehrere Regeln löschen möchten, aktivieren Sie die Kontrollkästchen für die zu löschenden Regeln, und wählen Sie **Löschen** aus.
@@ -107,7 +110,7 @@ Wenn Sie eine oder mehrere der erstellten Regeln löschen möchten, verwenden Si
 
 ## <a name="create-and-manage-suppression-rules-with-the-api"></a>Erstellen und Verwalten von Unterdrückungsregeln über die API
 
-Sie können Unterdrückungsregeln für Warnungen über die Security Center-REST-API erstellen, anzeigen oder löschen. 
+Sie können Unterdrückungsregeln für Warnungen über die REST-API von Defender für Cloud erstellen, anzeigen oder löschen. 
 
 Die relevanten HTTP-Methoden für Unterdrückungsregeln in der REST-API lauten wie folgt:
 
@@ -128,8 +131,8 @@ Ausführliche Informationen und Verwendungsbeispiele finden Sie in der [API-Doku
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel wurden Unterdrückungsregeln in Azure Security Center beschrieben, mit denen unerwünschte Warnungen automatisch verworfen werden.
+In diesem Artikel wurden Unterdrückungsregeln in Microsoft Defender für Cloud beschrieben, mit denen unerwünschte Warnungen automatisch verworfen werden.
 
-Weitere Informationen zu Sicherheitswarnungen in Azure Defender finden Sie auf den folgenden Seiten:
+Weitere Informationen zu Sicherheitswarnungen finden Sie auf den folgenden Seiten:
 
-- [Sicherheitswarnungen und Kill Chain für Absichten:](alerts-reference.md) Eine Referenzanleitung zu den Sicherheitswarnungen, die Sie möglicherweise von Azure Defender erhalten.
+- [Sicherheitswarnungen und Kill Chain für Absichten:](alerts-reference.md) Eine Referenzanleitung zu den Sicherheitswarnungen, die Sie möglicherweise von Defender für Cloud erhalten.

@@ -5,13 +5,13 @@ author: abhijitpai
 ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/23/2021
-ms.openlocfilehash: befd0daa9926f96411e1f870efb29ab68b0a8d15
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.date: 10/25/2021
+ms.openlocfilehash: ebd95ba1f4853f649fcdba2190e1bc8b816e201f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129387770"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131031003"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kontingente im Azure Cosmos DB-Dienst
 
@@ -125,7 +125,6 @@ Cosmos DB erstellt in regelmäßigen Abständen automatisch Sicherungen Ihrer Da
 
 | Resource | Begrenzung |
 | --- | --- |
-| Maximale Anzahl von Datenbanken | 500 |
 | Maximale Anzahl von Containern pro Konto  | 100 |
 | Maximale Anzahl von Regionen | 1 (beliebige Azure-Region) |
 
@@ -197,6 +196,7 @@ Azure Cosmos DB verwaltet Systemmetadaten für jedes Konto. Diese Metadaten erm�
 |Maximale Sammlungserstellungsrate pro Minute|    100|
 |Maximale Datenbankerstellungsrate pro Minute|    100|
 |Maximal Aktualisierungsrate des bereitgestellten Durchsatzes pro Minute|    5|
+|Maximaler Durchsatz, der von einem Konto für Metadatenoperationen unterstützt wird | 240 RU/s |
 
 ## <a name="limits-for-autoscale-provisioned-throughput"></a>Grenzwerte für den per Autoskalierung bereitgestellten Durchsatz
 
@@ -286,7 +286,7 @@ Erste Schritte mit Azure Cosmos DB mit einem unserer Schnellstarts:
 * [Erste Schritte mit der Tabellen-API von Azure Cosmos DB](table/create-table-dotnet.md)
 * Versuchen Sie, die Kapazitätsplanung für eine Migration zu Azure Cosmos DB durchzuführen? Sie können Informationen zu Ihrem vorhandenen Datenbankcluster für die Kapazitätsplanung verwenden.
     * Wenn Sie nur die Anzahl der virtuellen Kerne und Server in Ihrem vorhandenen Datenbankcluster kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mithilfe von virtuellen Kernen oder virtuellen CPUs](convert-vcore-to-request-unit.md) 
-    * Wenn Sie die typischen Anforderungsraten für Ihre aktuelle Datenbank-Workload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](estimate-ru-with-capacity-planner.md)
+    * Wenn Sie die typischen Anforderungsraten für Ihre aktuelle Datenbankworkload kennen, lesen Sie die Informationen zum [Schätzen von Anforderungseinheiten mit dem Azure Cosmos DB-Kapazitätsplaner](estimate-ru-with-capacity-planner.md)
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB kostenlos testen](https://azure.microsoft.com/try/cosmosdb/)

@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2021
 ms.author: pafarley
-ms.openlocfilehash: 73076c141f28bc22450c87491053130ace6b5793
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: e45c5badecfe97cb0be75e3e30f9442bf71beb69
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123540755"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131080572"
 ---
 # <a name="train-and-deploy-a-custom-speech-model"></a>Trainieren und Bereitstellen eines Custom Speech-Modells
 
@@ -27,8 +28,8 @@ Wenn Sie bei einem Basismodell auf Erkennungsprobleme stoßen, kann die Verwendu
 
 | Anwendungsfall | Datentyp |
 | -------- | --------- |
-| Verbessern der Erkennungsgenauigkeit für branchenspezifisches Vokabular und entsprechende Grammatik (z. B. aus der Medizin- oder IT-Branche) | Zugehöriger Text (Sätze/Äußerungen) |
-| Definieren der phonetischen und angezeigten Form eines Worts oder Begriffs mit nicht standardmäßiger Aussprache (beispielsweise Produktnamen oder Akronyme) | Zugehöriger Text (Aussprache) |
+| Verbessern der Erkennungsgenauigkeit für branchenspezifisches Vokabular und entsprechende Grammatik (z. B. aus der Medizin- oder IT-Branche) | Nur-Text oder strukturierte Textdaten |
+| Definieren der phonetischen und angezeigten Form eines Worts oder Begriffs mit nicht standardmäßiger Aussprache (beispielsweise Produktnamen oder Akronyme) | Aussprache-Daten oder phonetische Aussprache in strukturiertem Text |
 | Verbessern der Erkennungsgenauigkeit für Sprechweisen, Akzente oder bestimmte Hintergrundgeräusche | Audio + menschenmarkierte Transkripte |
 
 ## <a name="train-and-evaluate-a-model"></a>Trainieren und Bewerten eines Modells

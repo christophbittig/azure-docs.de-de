@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/11/2021
 ms.author: madsd
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: 5a76287385e3e24485d9ec76126eafd3c818a57c
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: fae859e0b762a36378819d48325dda0077407628
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130248619"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131012376"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Erstellen einer ASE mit einer Azure Resource Manager-Vorlage
 
@@ -53,7 +53,7 @@ Wenn Sie eine ASE erstellen möchten, verwenden Sie diese Resource Manager-Vorla
 * *zoneRedundant*: Erforderlich. In den meisten Fällen auf „false“ festlegen, was bedeutet, dass die ASE nicht in Verfügbarkeitszonen bereitgestellt wird. Zonale ASEs können in einigen Regionen bereitgestellt werden. Informationen hierzu finden Sie [hier][AZ Support for ASEv3].
 * *dedicatedHostCount*: Erforderlich. In den meisten Fällen auf 0 festlegen, was bedeutet, dass die ASE wie gewohnt ohne bereitgestellte dedizierte Hosts bereitgestellt wird.
 * *useExistingVnetandSubnet*: Erforderlich. Auf „true“ festlegen, wenn ein vorhandenes VNet und Subnetz verwendet werden. 
-* *vNetResourceGroupName*: Erforderlich, wenn ein vorhandenes VNet und Subnetz verwendet werden. Dieser Parameter definiert den Ressourcengruppennamen des vorhandenen VNets und Subnetzes, in denen sich die ASE befindet.
+* *vNetResourceGroupName*: Erforderlich bei Verwendung eines vorhandenen VNET und Subnetzes. Dieser Parameter definiert den Ressourcengruppennamen des vorhandenen VNets und Subnetzes, in denen sich die ASE befindet.
 * *virtualNetworkName*: Erforderlich, wenn ein vorhandenes VNet und Subnetz verwendet werden. Dieser Parameter definiert den Namen des virtuellen Netzwerks des vorhandenen VNets und Subnetzes, in denen sich die ASE befindet.
 * *subnetName*: Erforderlich, wenn ein vorhandenes VNet und Subnetz verwendet werden. Dieser Parameter definiert den Subnetznamen des vorhandenen VNets und Subnetzes, in denen sich die ASE befindet.
 * *createPrivateDNS*: Auf „true“ festlegen, wenn Sie nach der Erstellung der ASEv3 eine private DNS-Zone erstellen möchten. Wenn dieser Parameter auf „true“ festgelegt ist, wird für eine ILB-ASE eine private DNS-Zone als ASE-Name mit dem DNS-Suffix *appserviceenvironment.net* erstellt. 

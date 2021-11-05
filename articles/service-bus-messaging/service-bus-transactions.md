@@ -4,12 +4,12 @@ description: In diesem Artikel erhalten Sie eine Übersicht über die Transaktio
 ms.topic: article
 ms.date: 09/21/2021
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 5eb3bf6eef551fd13788f7659eb8becede8e250d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 5cdfa306b19c528fd66c6566f54c5c7992a2462e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128666210"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131046735"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>Übersicht über die Service Bus-Transaktionsverarbeitung
 
@@ -82,8 +82,7 @@ Weitere Informationen zu Service Bus-Warteschlangen finden Sie in den folgenden 
 
 * [Verwenden von Service Bus-Warteschlangen](service-bus-dotnet-get-started-with-queues.md)
 * [Verketten von Service Bus-Entitäten mit automatischer Weiterleitung](service-bus-auto-forwarding.md)
-* [Beispiel zur automatischen Weiterleitung](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AutoForward)
-* [Atomic Transactions with Service Bus](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AtomicTransactions) (Atomare Transaktionen mit Service Bus)
-* [Vergleich von Azure-Warteschlangen und Service Bus-Warteschlangen](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
-
-
+* [Autoforward Probe](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AutoForward) (`Microsoft.ServiceBus.Messaging` Bibliothek)
+* [Atomische Transaktionen mit Service Bus Beispiel](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/AtomicTransactions) (`Microsoft.ServiceBus.Messaging` Bibliothek)
+* [Arbeiten mit Transaktionsbeispielen](https://github.com/Azure/azure-sdk-for-net/blob/main/sdk/servicebus/Azure.Messaging.ServiceBus/samples/Sample06_Transactions.md) (`Azure.Messaging.ServiceBus` Bibliothek)
+* [Azure Queue Storage und Service Bus-Warteschlangen im Vergleich](service-bus-azure-and-service-bus-queues-compared-contrasted.md)

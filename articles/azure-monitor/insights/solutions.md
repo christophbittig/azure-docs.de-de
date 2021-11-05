@@ -2,18 +2,21 @@
 title: Überwachungslösungen in Azure Monitor | Microsoft-Dokumentation
 description: Hier erhalten Sie Informationen zu den vorkonfigurierten Sammlungen von Logik-, Visualisierungs- und Datenerfassungsregeln für die verschiedenen Problembereiche.
 ms.topic: conceptual
-author: bwren
-ms.author: bwren
-ms.date: 10/16/2020
+author: rboucher
+ms.author: robb
+ms.date: 10/16/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: a9f1cb05a87af95272624a4a0406deac5bc0c411
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 57f5c3f3dace57b42ed5ac32e48c5d070517e03a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128594083"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131059944"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Überwachungslösungen in Azure Monitor
+
+> [!CAUTION]
+> Überwachungslösungen befinden sich nicht mehr in der aktiven Entwicklung.  Die Ersatztechnologie heißt [Azure Monitor Insights](/azure/azure-monitor/monitor-reference#insights). Wir empfehlen Ihnen, die gewonnenen Erkenntnisse zu nutzen und keine neuen Instanzen von Lösungen einzusetzen.  
 
 Überwachungslösungen in Azure Monitor ermöglichen eine Analyse des Betriebs einer Azure-Anwendung oder eines Azure-Diensts. Dieser Artikel gibt eine kurze Übersicht über Überwachungslösungen in Azure sowie Details zu deren Verwendung und Installation. 
 

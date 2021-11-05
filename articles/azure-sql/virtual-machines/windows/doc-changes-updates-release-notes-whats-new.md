@@ -12,17 +12,32 @@ ms.topic: reference
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 09/01/2021
-ms.openlocfilehash: 69d709dc6d58e732f56ef28c9b2e69b2a5ad5594
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 592f2ae9b3d09ce84296dca31d68031b7d5fff84
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130047974"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131080914"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Dokumentationsänderungen für SQL Server auf virtuellen Azure-Computern
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Wenn Sie eine Azure-VM mit SQL Server manuell oder über ein integriertes Image bereitstellen, können Sie für eine bessere Erfahrung Azure-Features nutzen. In diesem Artikel werden die Dokumentationsänderungen zusammengefasst, die mit neuen Funktionen und Verbesserungen in den neuesten Releases von [SQL Server auf Azure-VMs](https://azure.microsoft.com/services/virtual-machines/sql-server/) in Zusammenhang stehen. Weitere Informationen zu SQL Server auf Azure-VMs finden Sie in der [Übersicht](sql-server-on-azure-vm-iaas-what-is-overview.md). 
+
+## <a name="november-2021"></a>November 2021
+
+| Änderungen | Details |
+| --- | --- |
+| **SQL-Bewertung** | Es ist jetzt möglich, die Integrität Ihrer SQL Server-VM im Azure-Portal mithilfe der [SQL-Bewertung](sql-assessment-for-sql-vm.md) einzuschätzen, um Empfehlungen zur Verbesserung der Leistung zu geben und fehlende Konfigurationen gemäß bewährter Methoden zu ermitteln. Diese Funktion steht derzeit als Vorschau zur Verfügung. |
+
+
+## <a name="october-2021"></a>Oktober 2021
+
+| Änderungen | Details |
+| --- | --- |
+| **SQL-IaaS-Erweiterung unterstützt jetzt Ubuntu** | Unterstützung für die [Registrierung](../linux/sql-iaas-agent-extension-register-vm-linux.md) Ihrer SQL Server-VM unter Ubuntu Linux mit der [SQL Server-IaaS-Erweiterung](../linux/sql-server-iaas-agent-extension-linux.md) mit eingeschränkter Funktionalität wurde hinzugefügt. | 
+
 
 ## <a name="september-2021"></a>September 2021
 

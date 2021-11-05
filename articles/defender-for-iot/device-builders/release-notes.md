@@ -2,25 +2,28 @@
 title: Neuerungen bei Azure Defender für IoT für Gerätehersteller
 description: Erfahren Sie mehr über die neuesten Releases und Funktionen von Defender für IoT für Gerätehersteller.
 ms.topic: overview
-ms.date: 06/06/2021
-ms.openlocfilehash: cde850ba6e5dedddea9d74a8232bc20e8a634c59
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.date: 10/20/2021
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: c420fddad0332b2a83907dd564bf977c31ea6d4d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113011112"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131086282"
 ---
 # <a name="whats-new-in-azure-defender-for-iot-for-device-builders"></a>Neuerungen bei Azure Defender für IoT für Gerätehersteller  
+
+[!INCLUDE [Banner for top of topics](../includes/banner.md)]
 
 In diesem Artikel sind neue und verbesserte Features von Defender für IoT aufgeführt.
 
 Die genannten Features befinden sich in der Vorschauphase. Die [ergänzenden Bestimmungen für Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden bzw. anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
 
-## <a name="versioning-and-support-for-azure-defender-for-iot"></a>Versionsverwaltung und Unterstützung für Azure Defender für IoT 
+## <a name="versioning-and-support-for-azure-defender-for-iot"></a>Versionsverwaltung und Unterstützung für Azure Defender für IoT
 
-Nachfolgend sind die Unterstützung, die Breaking Change-Richtlinien für Defender für IoT sowie die derzeit verfügbaren Versionen von Azure Defender für IoT aufgeführt. 
+Nachfolgend sind die Unterstützung, die Breaking Change-Richtlinien für Defender für IoT sowie die derzeit verfügbaren Versionen von Azure Defender für IoT aufgeführt.
 
-### <a name="servicing-information-and-timelines"></a>Wartungsinformationen und Zeitachsen 
+### <a name="servicing-information-and-timelines"></a>Wartungsinformationen und Zeitachsen
 
 Microsoft plant, mindestens vierteljährlich Updates für Azure Defender für IoT zu veröffentlichen. Jede allgemein verfügbare Version des Sensors mit Azure Defender für IoT und der lokalen Verwaltungskonsole wird nach der Veröffentlichung bis zu neun Monate lang unterstützt. Korrekturen und neue Funktionen werden auf die aktuelle allgemein verfügbare Version angewendet, die derzeit unterstützt wird. Sie werden nicht auf ältere allgemein verfügbare Versionen angewendet.
 
@@ -30,6 +33,7 @@ Microsoft plant, mindestens vierteljährlich Updates für Azure Defender für Io
 |--|--|--|
 | 10.0 | 01/2021 | 10/2021 |
 | 10.3 | 04/2021 | 02/2022 |
+| 10.5.2 | 11/2021 | 07/2022 |
 
 ## <a name="april-2021"></a>April 2021
 
@@ -37,7 +41,9 @@ Microsoft plant, mindestens vierteljährlich Updates für Azure Defender für Io
 
 Neue Threat Intelligence-Pakete können jetzt automatisch an mit der Cloud verbundene Sensoren gepusht werden, sobald sie von Microsoft Defender für IoT veröffentlicht werden. Diese Option steht zusätzlich zum Herunterladen von Threat Intelligence-Paketen und zum anschließenden Hochladen auf Sensoren zur Verfügung.
 
-Durch die Verwendung automatischer Updates lässt sich der Betriebsaufwand reduzieren und eine höhere Sicherheit gewährleisten. Aktivieren Sie die automatische Aktualisierung, indem Sie Ihren mit der Cloud verbundenen Sensor im Portal von Defender für IoT integrieren. Aktivieren Sie dazu die Umschaltfläche **Automatic Threat Intelligence Updates** (Automatische Threat Intelligence-Updates).
+Durch die Verwendung automatischer Updates lässt sich der Betriebsaufwand reduzieren und eine höhere Sicherheit gewährleisten.
+
+Aktivieren Sie die automatische Aktualisierung, indem Sie Ihren mit der Cloud verbundenen Sensor im Portal von Defender für IoT integrieren. Aktivieren Sie dazu die Umschaltfläche **Automatic Threat Intelligence Updates** (Automatische Threat Intelligence-Updates).
 
 Wenn Sie einen konservativeren Ansatz zum Aktualisieren Ihrer Threat Intelligence-Daten verfolgen möchten, können Sie Pakete nur dann manuell aus dem Portal von Azure Defender für IoT an mit der Cloud verbundene Sensoren pushen, wenn Sie es für erforderlich halten.
 Dadurch können Sie steuern, wann ein Paket installiert wird, ohne es herunterladen und dann auf Ihre Sensoren hochladen zu müssen. Updates werden in Defender für IoT über die Seite **Standorte und Sensoren** manuell an Sensoren gepusht.
@@ -65,7 +71,7 @@ Für Benutzer, die Warnungs-APIs verwenden, sind neue Felder verfügbar.
 - Quell- und Zieladresse
 - Schritte zur Bereinigung
 - Der vom Benutzer definierte Name des Sensors
-- Der Name der Zone, die dem Sensor zugeordnet ist 
+- Der Name der Zone, die dem Sensor zugeordnet ist
 - Der Name des Standorts, der dem Sensor zugeordnet ist
 
 **Sensor**
@@ -124,6 +130,7 @@ Diese Featuregruppe ist in der aktuellen öffentlichen Vorschauversion verfügba
 - [Onboarding](#onboarding)
 - [Benutzerfreundlichkeit](#usability)
 - [Andere Updates](#other-updates)
+
 ### <a name="security"></a>Sicherheit
 
 Für dieses Release wurden Verbesserungen bei der Wiederherstellung von Zertifikaten und Kennwörtern vorgenommen.

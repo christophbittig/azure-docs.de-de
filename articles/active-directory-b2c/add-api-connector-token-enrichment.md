@@ -2,21 +2,21 @@
 title: Tokenanreicherung – Azure Active Directory B2C
 description: Reichern Sie Token mit Ansprüchen aus externen Quellen unter Verwendung von APIs an.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
 ms.date: 08/29/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 20473d6a5dcbdc826605d46928a7bfbb90792e0e
-ms.sourcegitcommit: ef448159e4a9a95231b75a8203ca6734746cd861
+ms.openlocfilehash: 8f5bf34424754106c6d86195c37d23c3c9060c1c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123186063"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131008349"
 ---
 # <a name="enrich-tokens-with-claims-from-external-sources-using-api-connectors"></a>Anreichern von Token mit Ansprüchen aus externen Quellen unter Verwendung von API-Connectors
 
@@ -255,7 +255,7 @@ Nachdem Sie Ihre REST-API bereitgestellt haben, legen Sie die Metadaten des tech
     
 Weitere Konfigurationen finden Sie in den [Metadaten für das technische RESTful-Profil](restful-technical-profile.md#metadata).
 
-Die Kommentare `AuthenticationType` und `AllowInsecureAuthInProduction` oben geben Änderungen an, die Sie beim Wechsel zu einer Produktionsumgebung vornehmen sollten. Informationen zum Schützen Ihrer RESTful-APIs für die Produktionsumgebung finden Sie unter [Schützen von RESTful-APIs](secure-rest-api.md).
+Die Kommentare `AuthenticationType` und `AllowInsecureAuthInProduction` oben geben Änderungen an, die Sie beim Wechsel zu einer Produktionsumgebung vornehmen sollten. Wie Sie Ihre RESTful-APIs für die Produktion sichern können, erfahren Sie unter [Sichern Sie Ihre RESTful-API](secure-rest-api.md).
 
 ## <a name="add-an-orchestration-step"></a>Hinzufügen eines Orchestrierungsschritts
 
@@ -415,5 +415,3 @@ Informationen zum Schützen Ihrer APIs finden Sie in den folgenden Artikeln:
 - [Referenz: Technisches Profil „RESTful“](restful-technical-profile.md)
 
 ::: zone-end
-
-

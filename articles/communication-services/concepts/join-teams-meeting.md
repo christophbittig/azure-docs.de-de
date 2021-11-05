@@ -8,12 +8,12 @@ ms.date: 10/15/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 ms.subservice: teams-interop
-ms.openlocfilehash: 88025243a379b18b5b24cb3c47caee4713b47585
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: c0713588eadebbd1d9376faec8e61cf5a88dfd1d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130131541"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131068910"
 ---
 # <a name="join-a-teams-meeting"></a>Teilnehmen an einer Teams-Besprechung
 
@@ -51,6 +51,7 @@ Microsoft gibt Ihnen über die Azure Communication Services-API einen Hinweis, d
 
 - Ein BYOI-Benutzer darf an einer Teams-Besprechung teilnehmen, die für einen Teams-Kanal geplant ist, sowie Audio- und Videodaten verwenden. Er kann aber keine Chatnachrichten senden oder empfangen, weil er kein Mitglied des Kanals ist.
 - Wenn Sie Microsoft Graph verwenden, um [die Teilnehmer einer Teams-Besprechung aufzulisten](/graph/api/call-list-participants), werden derzeit keine Details für Communication Services-Benutzer berücksichtigt.
+- PowerPoint-Präsentationen werden für Nutzer der Kommunikationsdienste nicht wiedergegeben.
 - Teams-Besprechungen unterstützen bis zu 1.000 Teilnehmer, aber das Anruf-SDK von Azure Communication Services unterstützt derzeit nur 350 Teilnehmer.
 - Bei [Cloud Video Interop für Microsoft Teams](/microsoftteams/cloud-video-interop) wurden auf einigen Geräten Probleme festgestellt, wenn ein Communication Services-Benutzer den Bildschirm teilte.
 - Features wie das Heben der Hand, der Zusammen-Modus und Gruppenräume stehen nur Teams-Benutzern zur Verfügung.
@@ -60,6 +61,6 @@ Microsoft gibt Ihnen über die Azure Communication Services-API einen Hinweis, d
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-> [!div class="nextstepaction"]
-> [Verknüpfen einer BYOI-Anruf-App mit einer Teams-Besprechung](../quickstarts/voice-video-calling/get-started-teams-interop.md)
-> [Verknüpfen einer BYOI-Chat-App mit einer Teams-Besprechung](../quickstarts/chat/meeting-interop.md)
+- [Anleitung: An einer Teambesprechung teilnehmen](../how-tos/calling-sdk/teams-interoperability.md)
+- [Schnellstart: Beitritt einer BYOI-Anruf-App zu einer Teams-Besprechung](../quickstarts/voice-video-calling/get-started-teams-interop.md)
+- [Schnellstart: Beitritt einer BYOI-Chat-App zu einer Teams-Besprechung](../quickstarts/chat/meeting-interop.md)

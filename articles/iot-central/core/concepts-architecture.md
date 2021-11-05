@@ -7,12 +7,12 @@ ms.date: 08/31/2021
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 724c7e65d04b635dcaa635d29483da756cf47bfc
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 58c9f69b898a41a1d07ae41755f67d926b2ac74f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128675864"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131082453"
 ---
 # <a name="azure-iot-central-architecture"></a>Azure IoT Central-Architektur
 
@@ -57,6 +57,7 @@ In einer IoT Central-Anwendung können Sie die folgenden Sicherheitsaspekte Ihre
 
 - [Gerätekonnektivität](concepts-get-connected.md): Erstellen, Widerrufen und Aktualisieren der Sicherheitsschlüssel, mit denen Ihre Geräte eine Verbindung mit Ihrer Anwendung herstellen.
 - [App-Integrationen](howto-authorize-rest-api.md#get-an-api-token): Erstellen, Widerrufen und Aktualisieren der Sicherheitsschlüssel, die andere Anwendungen verwenden, um sichere Verbindungen mit Ihrer Anwendung herzustellen.
+- [Datenexport:](howto-export-data.md#connection-options) Verwenden Sie verwaltete Identitäten, um die Verbindung mit Ihren Datenexportzielen zu sichern.
 - [Benutzerverwaltung](howto-manage-users-roles.md): Verwalten der Benutzer, die sich bei der Anwendung anmelden können, und der Rollen, die bestimmen, über welche Berechtigungen diese Benutzer verfügen.
 - [Organisationen](howto-create-organizations.md): Definieren einer Hierarchie, um zu verwalten, welche Benutzer sehen können, welche Geräte in Ihrer IoT Central-Anwendung angezeigt werden.
 
@@ -106,4 +107,4 @@ Möglicherweise müssen Sie [Berechnungen für Ihre Daten transformieren oder du
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie nun mehr über die Architektur von Azure IoT Central erfahren haben, besteht der nächste empfohlene Schritt darin, sich mit der [Gerätekonnektivität](concepts-get-connected.md) in Azure IoT Central vertraut zu machen.
+Nachdem Sie etwas über die Architektur von Azure IoT Central erfahren haben, wird als nächster Schritt empfohlen, dass Sie sich über [Skalierbarkeit und Hochverfügbarkeit](concepts-scalability-availability.md) in Azure IoT Central informieren.

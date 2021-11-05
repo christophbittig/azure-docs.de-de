@@ -1,20 +1,23 @@
 ---
-title: Härten Sie Ihr Windows- und Linux-Betriebssystem mit Azure Security Baseline und Azure Security Center
-description: Erfahren Sie, wie das Azure Security Center die Gastkonfiguration verwendet, um Ihre Betriebssystemhärtung mit der Anleitung von Azure Security Benchmark zu vergleichen
+title: Härten des Windows- und Linux-Betriebssystems mithilfe der Azure-Sicherheitsbaseline und von Microsoft Defender for Cloud
+description: Erfahren Sie, wie Microsoft Defender for Cloud die Gastkonfiguration verwendet, um Ihre Betriebssystemhärtung mit der Anleitung von Azure Security Benchmark zu vergleichen.
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
 ms.date: 10/04/2021
 ms.author: memildin
-ms.openlocfilehash: 9a15a87eb5f00316f88109e05e069032de795807
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: a48f95c3bedd291a3639f7aabc97eb92c25d735f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129435982"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131010401"
 ---
 # <a name="apply-azure-security-baselines-to-machines"></a>Anwenden von Azure-Sicherheitsbaselines auf Computer
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 Um die Angriffsfläche eines Rechners zu verringern und bekannte Risiken zu vermeiden, ist es wichtig, das Betriebssystem (OS) so sicher wie möglich zu konfigurieren.
 
@@ -37,7 +40,7 @@ Verwenden Sie die in diesem Artikel beschriebenen Sicherheitsempfehlungen, um di
 
 ## <a name="what-are-the-hardening-recommendations"></a>Was sind die Empfehlungen zur Absicherung?
 
-Das Azure Security Center enthält zwei Empfehlungen, die prüfen, ob die Konfiguration von Windows- und Linux-Maschinen in Ihrer Umgebung den Azure-Sicherheitsgrundkonfigurationen entspricht:
+Microsoft Defender for Cloud enthält zwei Empfehlungen, die prüfen, ob die Konfiguration von Windows- und Linux-VMs in Ihrer Umgebung den Konfigurationen gemäß Azure-Sicherheitsbaseline entspricht:
 
 - Für **Windows**-Maschinen sollten [Schwachstellen in der Sicherheitskonfiguration auf Ihren Windows-Maschinen behoben werden (powered by Gastkonfiguration)](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/1f655fb7-63ca-4980-91a3-56dbc2b715c6), indem die Konfiguration mit der [Windows-Sicherheits-Baseline](../governance/policy/samples/guest-configuration-baseline-windows.md) verglichen wird.
 - Bei **Linux**-Rechnern vergleicht [Schwachstellen in der Sicherheitskonfiguration auf Ihren Linux-Rechnern sollten behoben werden (mit Hilfe der Gastkonfiguration)](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/8c3d9ad0-3639-4686-9cd2-2b2ab2609bda) die Konfiguration mit der [Linux-Sicherheitsbaseline](../governance/policy/samples/guest-configuration-baseline-linux.md).
@@ -48,7 +51,7 @@ Diese Empfehlungen verwenden die Gastkonfigurationsfunktion von Azure Policy, um
 
 So vergleichen Sie Maschinen mit den OS-Sicherheits-Baselines:
  
-1. Öffnen Sie auf den Portalseiten des Security Centers die Seite **Empfehlungen**. 
+1. Öffnen Sie auf den Portalseiten von Defender for Cloud die Seite **Empfehlungen**. 
 1. Wählen Sie die entsprechende Empfehlung:
     - Für **Windows**-Rechner, [Schwachstellen in der Sicherheitskonfiguration auf Ihren Windows-Rechnern sollten behoben werden (powered by Gastkonfiguration)](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/1f655fb7-63ca-4980-91a3-56dbc2b715c6)
     - Für **Linux**-Rechner sollten [Schwachstellen in der Sicherheitskonfiguration auf Ihren Linux-Rechnern behoben werden (mit Hilfe der Gastkonfiguration)](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/8c3d9ad0-3639-4686-9cd2-2b2ab2609bda)
@@ -98,7 +101,7 @@ Die Liste der Ressourcen auf der Registerkarte **Nicht anwendbar** enthält eine
 |                                                                   |                                                                                                                                                                                |
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Dokument haben Sie gelernt, wie Sie die Empfehlungen des Security Centers zur Gastkonfiguration verwenden können, um die Härtung Ihres Betriebssystems mit der Azure-Sicherheits-Baseline zu vergleichen.
+In diesem Dokument haben Sie gelernt, wie Sie die Empfehlungen von Defender for Cloud zur Gastkonfiguration verwenden können, um die Härtung Ihres Betriebssystems mit der Azure-Sicherheitsbaseline zu vergleichen.
 
 Um mehr über diese Konfigurationseinstellungen zu erfahren, siehe:
 

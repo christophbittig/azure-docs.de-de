@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/08/2019
-ms.openlocfilehash: 431b19595fbe2f5bc1f989e712c9c104af8e839b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 30715eee331547fe3747ff121797bb3e0939380f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101711517"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131012300"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Problembehandlung mit Azure-Diagnose
 Dieser Artikel enthält Informationen zur Problembehandlung, die für die Verwendung der Azure-Diagnose relevant sind. Weitere Informationen zur Azure-Diagnose finden Sie unter [Überblick über Azure-Diagnose](diagnostics-extension-overview.md).
@@ -20,7 +20,7 @@ Dieser Artikel enthält Informationen zur Problembehandlung, die für die Verwen
 
 **Diagnose-Plug-In (DiagnosticsPlugin.exe)** : Dient zum Konfigurieren, Starten und Verwalten der Lebensdauer des Überwachungs-Agent. Dies ist der Hauptprozess, der vom Startprogramm gestartet wird.
 
-**Überwachungs-Agent (MonAgent\*.exe-Prozesse)** : Überwacht, erfasst und überträgt die Diagnosedaten.  
+**Überwachungs-Agent (MonAgent\*.exe-Prozesse)** : Überwacht, erfasst und überträgt die Diagnosedaten.
 
 ## <a name="logartifact-paths"></a>Protokoll-/Artefaktpfade
 Hier sind die Pfade zu einigen wichtigen Protokollen und Artefakten angegeben. Wir verweisen im weiteren Verlauf des Dokuments immer wieder auf diese Informationen.
@@ -77,13 +77,12 @@ Wenn keine Daten für die spezifische Metrik vorhanden sind, sollten Sie unter *
 
 Wenn die Konfiguration richtig festgelegt ist und die Metrikdaten trotzdem nicht angezeigt werden, können Sie sich als Hilfe bei der Problembehandlung an die folgenden Richtlinien halten.
 
-
 ## <a name="azure-diagnostics-is-not-starting"></a>Die Azure-Diagnose wird nicht gestartet.
 Informationen dazu, warum die Azure-Diagnose nicht gestartet wurde, finden Sie in den Dateien **DiagnosticsPluginLauncher.log** und **DiagnosticsPlugin.log** am zuvor angegebenen Speicherort der Protokolldateien.
 
 Die Angabe `Monitoring Agent not reporting success after launch` in diesen Protokollen bedeutet, dass beim Starten von „MonAgentHost.exe“ ein Fehler aufgetreten ist. Sehen Sie sich die Protokolle an dem Speicherort an, der im vorherigen Abschnitt für `MonAgentHost log file` angegeben ist.
 
-Die letzte Zeile der Protokolldateien enthält den Exitcode.  
+Die letzte Zeile der Protokolldateien enthält den Exitcode.
 
 ```
 DiagnosticsPluginLauncher.exe Information: 0 : [4/16/2016 6:24:15 AM] DiagnosticPlugin exited with code 0
@@ -111,7 +110,6 @@ Gehen Sie wie folgt vor, wenn das Problem dadurch nicht behoben wird:
 2. Löschen Sie das Verzeichnis C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics.
 3. Installieren Sie den Agent neu.
 
-
 ### <a name="part-of-the-data-is-missing"></a>Ein Teil der Daten fehlt
 Wenn Sie nicht alle Daten erhalten, sondern nur einige, bedeutet dies, dass die Pipeline für die Datensammlung bzw. -übertragung richtig eingerichtet ist. Mit den Informationen in den folgenden Unterabschnitten können Sie die Ursache des Problems eingrenzen:
 
@@ -121,7 +119,7 @@ Die Diagnosekonfiguration enthält eine Anleitung zum Sammeln von Daten eines be
 #### <a name="is-the-host-generating-data"></a>Generierung von Daten durch den Host
 - **Leistungsindikatoren:** Öffnen Sie den Systemmonitor, und überprüfen Sie den Leistungsindikator.
 
-- **Ablaufverfolgungsprotokolle**:  Führen Sie den Remotezugriff auf die VM durch, und fügen Sie der Konfigurationsdatei der App einen TextWriterTraceListener hinzu.  Informationen zum Einrichten des Textlisteners finden Sie unter https://msdn.microsoft.com/library/sk36c28t.aspx.  Stellen Sie sicher, dass für das `<trace>`-Element `<trace autoflush="true">` festgelegt ist.<br />
+- **Protokolle verfolgen**:  Fernzugriff auf die VM und Hinzufügen eines TextWriterTraceListener zur Konfigurationsdatei der Anwendung.  Informationen zum Einrichten des Textlisteners finden Sie unter https://msdn.microsoft.com/library/sk36c28t.aspx.  Stellen Sie sicher, dass für das `<trace>`-Element `<trace autoflush="true">` festgelegt ist.<br />
 Wenn Sie nicht sehen, dass Ablaufverfolgungsprotokolle generiert werden, helfen Ihnen die Informationen unter „Weitere Informationen zu fehlenden Ablaufverfolgungsprotokollen“ weiter.
 
 - **ETW-Ablaufverfolgungen**: Führen Sie den Remotezugriff auf die VM durch, und installieren Sie PerfView.  Führen Sie in PerfView Folgendes aus: **File** > **User Command** > **Listen etwprovider1** > **etwprovider2** (Datei > Benutzerbefehl > Lauschen etwprovider1 > etwprovider2) usw. Beim Befehl **Listen** (Lauschen) wird die Groß-/Kleinschreibung beachtet, und die kommagetrennte Liste mit ETW-Anbietern darf keine Leerstellen enthalten. Falls der Befehl nicht ausgeführt werden kann, können Sie im PerfView-Tool unten rechts die Schaltfläche **Log** (Protokoll) wählen, um anzuzeigen, was ausgeführt werden sollte und wie das Ergebnis lautet.  Es wird ein neues Fenster angezeigt, wenn die Eingabe korrekt ist. Nach einigen Sekunden werden die ersten Ereignisablaufverfolgungen für Windows angezeigt.
@@ -166,7 +164,7 @@ Die Tabellen im Azure-Speicher, die ETW-Ereignisse enthalten, werden anhand des 
 
 Beispiel:
 
-```XML
+```xml
         <EtwEventSourceProviderConfiguration provider="prov1">
           <Event id="1" />
           <Event id="2" eventDestination="dest1" />
@@ -257,12 +255,12 @@ Der Überwachungs-Agent sammelt Protokolle und Artefakte in Form von `.tsf`-Date
 ```
 Eine neue Datei mit dem Namen `<relevantLogFile>.csv` wird unter demselben Pfad wie die entsprechende `.tsf`-Datei erstellt.
 
->[!NOTE]
+> [!NOTE]
 > Sie müssen dieses Hilfsprogramm nur für die TSF-Hauptdatei (z.B. „PerformanceCountersTable.tsf“) ausführen. Die dazugehörigen Dateien (z.B. „PerformanceCountersTables_\*\*001.tsf“, „PerformanceCountersTables_\*\*002.tsf“ usw.) werden automatisch verarbeitet.
 
 ### <a name="more-about-missing-trace-logs"></a>Weitere Informationen zu fehlenden Ablaufverfolgungsprotokollen
 
->[!NOTE]
+> [!NOTE]
 > Die folgenden Informationen gelten hauptsächlich für Azure Cloud Services, sofern Sie nicht das DiagnosticsMonitorTraceListener-Element für eine Anwendung konfiguriert haben, die auf Ihrer IaaS-VM ausgeführt wird.
 
 - Stellen Sie sicher, dass das **DiagnosticMonitorTraceListener**-Element in „web.config“ oder „app.config“ konfiguriert wurde.  In Clouddienstprojekten ist es standardmäßig konfiguriert. Einige Kunden kommentieren das Element aber aus, und dies führt dazu, dass die Überwachungsanweisungen von der Diagnose nicht gesammelt werden.
@@ -271,7 +269,7 @@ Eine neue Datei mit dem Namen `<relevantLogFile>.csv` wird unter demselben Pfad 
 
 - Vergewissern Sie sich, dass Sie **Diagnostics.Trace.TraceXXX** anstelle von **Diagnostics.Debug.WriteXXX** verwenden. Die Debuganweisungen werden aus einem Versionsbuild entfernt.
 
-- Stellen Sie sicher, dass der kompilierte Code über die **Diagnostics.Trace-Zeilen** verfügt (Reflector, ildasm oder ILSpy für die Überprüfung verwenden). **Diagnostics.Trace**-Befehle werden aus der kompilierten Binärdatei entfernt, sofern Sie nicht das Symbol für die bedingte TRACE-Kompilierung verwenden. Dies ist ein häufiges Problem, das auftritt, wenn Sie msbuild zum Erstellen eines Projekts verwenden.   
+- Stellen Sie sicher, dass der kompilierte Code über die **Diagnostics.Trace-Zeilen** verfügt (Reflector, ildasm oder ILSpy für die Überprüfung verwenden). **Diagnostics.Trace**-Befehle werden aus der kompilierten Binärdatei entfernt, sofern Sie nicht das Symbol für die bedingte TRACE-Kompilierung verwenden. Dies ist ein häufiges Problem, das auftritt, wenn Sie msbuild zum Erstellen eines Projekts verwenden.
 
 ## <a name="known-issues-and-mitigations"></a>Bekannte Probleme und Lösungen
 Die folgende Liste enthält bekannte Probleme und Lösungen:

@@ -1,29 +1,32 @@
 ---
-title: Versionshinweise für Azure Security Center
-description: Enthält eine Beschreibung der Neuerungen und Änderungen in Azure Security Center.
+title: Versionshinweise zu Microsoft Defender für Cloud
+description: Eine Beschreibung der Neuerungen und Änderungen in Microsoft Defender für Cloud
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: reference
 ms.date: 10/17/2021
 ms.author: memildin
-ms.openlocfilehash: bd75b5fff78c213bc9d0541fb1824969b7a798a3
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: a287709d7fb84bece1a0b8777f13297c963f3ace
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130129147"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131004669"
 ---
-# <a name="whats-new-in-azure-security-center"></a>Neuerungen in Azure Security Center
+# <a name="whats-new-in-microsoft-defender-for-cloud"></a>Neuerungen in Microsoft Defender für Cloud
 
-Azure Security Center befindet sich in der aktiven Entwicklung und wird ständig verbessert. Damit Sie bezüglich der aktuellen Entwicklungen immer auf dem neuesten Stand sind, enthält diese Seite Informationen zu neuen Features, Fehlerbehebungen und veralteten Funktionen.
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
+
+Defender für Cloud befindet sich in der aktiven Entwicklung und wird ständig verbessert. Damit Sie bezüglich der aktuellen Entwicklungen immer auf dem neuesten Stand sind, enthält diese Seite Informationen zu neuen Features, Fehlerbehebungen und veralteten Funktionen.
 
 Es ist ratsam, diese Seite regelmäßig zu besuchen, da sie immer wieder aktualisiert wird. 
 
-Weitere Informationen zu den *geplanten* Änderungen, die demnächst im Security Center anstehen, finden Sie unter [Wichtige bevorstehende Änderungen in Azure Security Center](upcoming-changes.md). 
+Informationen zu *geplanten* Änderungen, die in Kürze an Defender für Cloud vorgenommen werden, finden Sie unter [Wichtige bevorstehende Änderungen an Microsoft Defender für Cloud](upcoming-changes.md). 
 
 > [!TIP]
-> Elemente, die älter als sechs Monate sind, finden Sie im [Archiv zu den Neuerungen in Azure Security Center](release-notes-archive.md).
+> Mehr als sechs Monate zurückliegende Einträge finden Sie im [Archiv zu den Neuerungen in Microsoft Defender für Cloud](release-notes-archive.md).
 
 
 ## <a name="october-2021"></a>Oktober 2021
@@ -34,6 +37,7 @@ Updates im Oktober:
 - [Schwachstellenbewertungslösungen können jetzt automatisch aktiviert werden (in der Vorschau)](#vulnerability-assessment-solutions-can-now-be-auto-enabled-in-preview)
 - [Software-Inventarisierungsfilter zum Bestandsverzeichnis hinzugefügt (in Vorschau)](#software-inventory-filters-added-to-asset-inventory-in-preview)
 - [Ändern des Präfix einiger Warnungstypen von „ARM_“ in „VM_“](#changed-prefix-of-some-alert-types-from-arm_-to-vm_)
+- [Änderungen an der Logik einer Sicherheitsempfehlung für Kubernetes-Cluster](#changes-to-the-logic-of-a-security-recommendation-for-kubernetes-clusters)
 - [Empfehlungen Detailseiten zeigen nun verwandte Empfehlungen an](#recommendations-details-pages-now-show-related-recommendations)
 
 
@@ -41,7 +45,7 @@ Updates im Oktober:
 
 Wir haben die Integration zwischen [Azure Defender für Server](defender-for-servers-introduction.md) und Microsoft Defender für Endpoint erweitert, um eine neue Schwachstellenbewertung für Ihre Rechner zu unterstützen: [Microsoft Bedrohungs- und Schwachstellenmanagement](/microsoft-365/security/defender-endpoint/next-gen-threat-and-vuln-mgt). 
 
-Verwenden Sie **Bedrohungs- und Schwachstellenmanagement**, um Schwachstellen und Fehlkonfigurationen nahezu in Echtzeit zu erkennen, wenn die [Integration mit Microsoft Defender für Endpoint](security-center-wdatp.md) aktiviert ist, ohne dass zusätzliche Agenten oder regelmäßige Scans erforderlich sind. Das Bedrohungs- und Schwachstellenmanagement priorisiert Schwachstellen auf der Grundlage der Bedrohungslandschaft und der Entdeckungen in Ihrem Unternehmen.
+Verwenden Sie **Bedrohungs- und Schwachstellenmanagement**, um Schwachstellen und Fehlkonfigurationen nahezu in Echtzeit zu erkennen, wenn die [Integration mit Microsoft Defender für Endpoint](integration-defender-for-endpoint.md) aktiviert ist, ohne dass zusätzliche Agenten oder regelmäßige Scans erforderlich sind. Das Bedrohungs- und Schwachstellenmanagement priorisiert Schwachstellen auf der Grundlage der Bedrohungslandschaft und der Entdeckungen in Ihrem Unternehmen.
 
 Verwenden Sie die Sicherheitsempfehlung "[Eine Lösung zur Bewertung von Schwachstellen sollte auf Ihren virtuellen Maschinen aktiviert sein](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/ffff0522-1e88-47fc-8382-2a80ba848f5d)", um die von der Bedrohungs- und Schwachstellenverwaltung erkannten Schwachstellen für Ihre [unterstützten Maschinen](/microsoft-365/security/defender-endpoint/tvm-supported-os?view=o365-worldwide&preserve-view=true) anzuzeigen. 
 
@@ -53,7 +57,7 @@ Weitere Informationen finden Sie unter [Untersuchen Sie Schwachstellen mit dem B
 
 Die Seite für die automatische Bereitstellung im Security Center enthält jetzt die Option zur automatischen Aktivierung einer Lösung zur Schwachstellenanalyse für virtuelle Azure-Maschinen und Azure Arc-Maschinen in Abonnements, die durch [Azure Defender für Server](defender-for-servers-introduction.md) geschützt sind.
 
-Wenn die [Integration mit Microsoft Defender for Endpoint](security-center-wdatp.md) aktiviert ist, haben Sie außerdem eine Auswahl an Lösungen zur Schwachstellenbewertung:
+Wenn die [Integration mit Microsoft Defender for Endpoint](integration-defender-for-endpoint.md) aktiviert ist, haben Sie außerdem eine Auswahl an Lösungen zur Schwachstellenbewertung:
 
 - (**NEU**) Das Microsoft Bedrohungs- und Schwachstellenmanagement-Modul von Microsoft Defender für Endpoint (siehe [die Release Note](#microsoft-threat-and-vulnerability-management-added-as-vulnerability-assessment-solution-in-preview))
 - Der integrierte Qualys-Agent
@@ -70,7 +74,7 @@ Die Seite [Anlageninventar](asset-inventory.md) enthält jetzt einen Filter zur 
 
 Außerdem können Sie die Softwareinventardaten im **Azure Resource Graph Explorer** abfragen.
 
-Um diese neuen Funktionen nutzen zu können, müssen Sie die [Integration mit Microsoft Defender for Endpoint](security-center-wdatp.md) aktivieren. 
+Um diese neuen Funktionen nutzen zu können, müssen Sie die [Integration mit Microsoft Defender for Endpoint](integration-defender-for-endpoint.md) aktivieren. 
 
 Ausführliche Informationen, einschließlich Beispielabfragen von Kusto für Azure Resource Graph, finden Sie unter [Zugriff auf ein Softwareinventar](asset-inventory.md#access-a-software-inventory).
 
@@ -110,6 +114,12 @@ Mit diesem Update haben wir die Präfixe dieser Warnungen so geändert, dass sie
 |||
 
 Hier finden Sie weitere Informationen zu den Plänen [Azure Defender für Resource Manager](defender-for-resource-manager-introduction.md) und [Azure Defender für Server](defender-for-servers-introduction.md).
+
+### <a name="changes-to-the-logic-of-a-security-recommendation-for-kubernetes-clusters"></a>Änderungen an der Logik einer Sicherheitsempfehlung für Kubernetes-Cluster
+
+Die Empfehlung „Kubernetes-Cluster dürfen nicht den Standardnamespace verwenden“ verhindert bei einer Reihe von Ressourcentypen die Verwendung des Standardnamespace. Zwei der Ressourcentypen, die in dieser Empfehlung enthalten waren, wurden entfernt: ConfigMap und Secret. 
+
+Weitere Informationen zu dieser Empfehlung und zum Härten Ihrer Kubernetes-Cluster finden Sie unter [Grundlegendes zu Azure Policy für Kubernetes-Cluster](../governance/policy/concepts/policy-for-kubernetes.md).
 
 ### <a name="recommendations-details-pages-now-show-related-recommendations"></a>Empfehlungen Detailseiten zeigen nun verwandte Empfehlungen an
 
@@ -185,10 +195,10 @@ Wenn Defender für Endpunkt eine Bedrohung erkennt, wird eine Warnung ausgelöst
 
 Während des Vorschauzeitraums stellen Sie den [Defender für Endpunkt für Linux](/microsoft-365/security/defender-endpoint/microsoft-defender-endpoint-linux)-Sensor auf unterstützten Linux-Computern auf eine von zwei Arten zur Verfügung, je nachdem, ob Sie ihn bereits auf Ihren Windows-Computern bereitgestellt haben:
 
-- [Vorhandene Benutzer von Azure Defender und Microsoft Defender für Endpunkt für Windows](security-center-wdatp.md?tabs=linux#existing-users-of-azure-defender-and-microsoft-defender-for-endpoint-for-windows)
-- [Neue Benutzer, die die Integration in Microsoft Defender für Endpunkt für Windows noch nie aktiviert haben](security-center-wdatp.md?tabs=linux#new-users-whove-never-enabled-the-integration-with-microsoft-defender-for-endpoint-for-windows)
+- [Bestehende Benutzer mit aktivierten erweiterten Sicherheitsfeatures von Defender für Cloud und Microsoft Defender für Endpunkt für Windows](integration-defender-for-endpoint.md#existing-users-with-defender-for-clouds-enhanced-security-features-enabled-and-microsoft-defender-for-endpoint-for-windows)
+- [Neue Benutzer, die die Integration in Microsoft Defender für Endpunkt für Windows noch nie aktiviert haben](integration-defender-for-endpoint.md?tabs=linux#new-users-whove-never-enabled-the-integration-with-microsoft-defender-for-endpoint-for-windows)
 
-Weitere Informationen finden Sie unter [Schützen Sie Ihre Endpunkte mit der in Security Center integrierten EDR-Lösung: Microsoft Defender für den Endpunkt](security-center-wdatp.md).
+Weitere Informationen finden Sie unter [Schützen Sie Ihre Endpunkte mit der in Security Center integrierten EDR-Lösung: Microsoft Defender für den Endpunkt](integration-defender-for-endpoint.md).
 
 ### <a name="two-new-recommendations-for-managing-endpoint-protection-solutions-in-preview"></a>Zwei neue Empfehlungen für die Verwaltung von Endpoint Protection-Lösungen (Vorschauversion)
 
@@ -196,8 +206,8 @@ Er wurden zwei **Vorschau**-Empfehlungen für die Bereitstellung und Wartung der
 
 |Empfehlung |BESCHREIBUNG |severity |
 |---|---|---|
-|[Endpoint Protection sollte auf Ihren Computern installiert sein](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/4fb67663-9ab9-475d-b026-8c544cced439) |Installieren Sie eine unterstützte Endpoint Protection-Lösung, um Ihre Computer vor Bedrohungen und Sicherheitsrisiken zu schützen.  <br> <a href="/azure/security-center/security-center-endpoint-protection">Informieren Sie sich über die Endpoint Protection-Evaluierung für Computer.</a><br />(Zugehörige Richtlinie: [Fehlenden Endpoint Protection-Schutz in Azure Security Center überwachen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2faf6cd1bd-1635-48cb-bde7-5b15693900b9)) |Hoch |
-|[Endpoint Protection-Integritätsprobleme sollten auf Ihren Computern gelöst werden](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/37a3689a-818e-4a0e-82ac-b1392b9bb000) |Beheben Sie Endpoint Protection-Integritätsprobleme auf Ihren virtuellen Computern, um diese vor den neuesten Bedrohungen und Sicherheitsrisiken zu schützen. Von Azure Security Center unterstützte Endpoint Protection-Lösungen sind [hier](./security-center-services.md?tabs=features-windows) dokumentiert. Die Endpoint Protection-Bewertung ist <a href='/azure/security-center/security-center-endpoint-protection'>hier</a> dokumentiert.<br />(Zugehörige Richtlinie: [Fehlenden Endpoint Protection-Schutz in Azure Security Center überwachen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2faf6cd1bd-1635-48cb-bde7-5b15693900b9)) |Medium |
+|[Endpoint Protection sollte auf Ihren Computern installiert sein](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/4fb67663-9ab9-475d-b026-8c544cced439) |Installieren Sie eine unterstützte Endpoint Protection-Lösung, um Ihre Computer vor Bedrohungen und Sicherheitsrisiken zu schützen.  <br> <a href="/azure/security-center/endpoint-protection-recommendations-technical">Informieren Sie sich über die Endpoint Protection-Evaluierung für Computer.</a><br />(Zugehörige Richtlinie: [Fehlenden Endpoint Protection-Schutz in Azure Security Center überwachen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2faf6cd1bd-1635-48cb-bde7-5b15693900b9)) |Hoch |
+|[Endpoint Protection-Integritätsprobleme sollten auf Ihren Computern gelöst werden](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/37a3689a-818e-4a0e-82ac-b1392b9bb000) |Beheben Sie Endpoint Protection-Integritätsprobleme auf Ihren virtuellen Computern, um diese vor den neuesten Bedrohungen und Sicherheitsrisiken zu schützen. Von Azure Security Center unterstützte Endpoint Protection-Lösungen sind [hier](./supported-machines-endpoint-solutions-clouds.md?tabs=features-windows) dokumentiert. Die Endpoint Protection-Bewertung ist <a href='/azure/security-center/endpoint-protection-recommendations-technical'>hier</a> dokumentiert.<br />(Zugehörige Richtlinie: [Fehlenden Endpoint Protection-Schutz in Azure Security Center überwachen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2faf6cd1bd-1635-48cb-bde7-5b15693900b9)) |Medium |
 |||
 
 > [!NOTE]
@@ -222,7 +232,7 @@ Die Symbolleiste des Dashboards für die Einhaltung gesetzlicher Bestimmungen bi
 
 Sie können die Registerkarte für die relevanten Berichtstypen (PCI, SOC, ISO usw.) auswählen und Filter verwenden, um nach den benötigten spezifischen Berichten zu suchen.
 
-Weitere Informationen finden Sie unter [Generieren von Konformitätsstatusberichten und -zertifikaten](security-center-compliance-dashboard.md#generate-compliance-status-reports-and-certificates).
+Weitere Informationen finden Sie unter [Generieren von Konformitätsstatusberichten und -zertifikaten](regulatory-compliance-dashboard.md#generate-compliance-status-reports-and-certificates).
 
 :::image type="content" source="media/release-notes/audit-reports-list-regulatory-compliance-dashboard-ga.png" alt-text="Listen mit Registerkarten der verfügbaren Azure Audit -Berichte. Es werden Registerkarten für ISO-Berichte, SOC-Berichte, PCI und mehr angezeigt.":::
 
@@ -257,7 +267,7 @@ Mit diesem Update können Sie jetzt festlegen, dass Security Center diese Erweit
 
 :::image type="content" source="media/release-notes/auto-provisioning-guest-configuration.png" alt-text="Aktivieren Sie die automatische Bereitstellung der Erweiterung für Gastkonfigurationen.":::
 
-Weitere Informationen zur Funktionsweise der automatischen Bereitstellung finden Sie unter [Konfigurieren der automatischen Bereitstellung für Agents und Erweiterungen](security-center-enable-data-collection.md).
+Weitere Informationen zur Funktionsweise der automatischen Bereitstellung finden Sie unter [Konfigurieren der automatischen Bereitstellung für Agents und Erweiterungen](enable-data-collection.md).
 
 ### <a name="recommendations-to-enable-azure-defender-plans-now-support-enforce"></a>Empfehlungen zum Aktivieren von Azure Defender-Plänen unterstützen jetzt die Option „Erzwingen“
 Security Center enthält zwei Features, die sicherstellen, dass neu erstellte Ressourcen auf sichere Weise bereitgestellt werden: **Erzwingen** und **Verweigern**. Wenn eine Empfehlung diese Optionen bietet, können Sie sicherstellen, dass Ihre Sicherheitsanforderungen erfüllt werden, sobald jemand versucht, eine Ressource zu erstellen:
@@ -308,7 +318,7 @@ Zu den Updates im Juli gehören:
 
 Security Center ist nativ in [Azure Sentinel](../sentinel/index.yml), der cloudnativen SIEM- und SOAR-Lösung von Azure, integriert. 
 
-Azure Sentinel umfasst integrierte Connectors für Azure Security Center auf Abonnement- und Mandantenebene. Weitere Informationen finden Sie unter [Streamen von Warnungen in Azure Sentinel](export-to-siem.md#stream-alerts-to-azure-sentinel).
+Azure Sentinel umfasst integrierte Connectors für Azure Security Center auf Abonnement- und Mandantenebene. Weitere Informationen finden Sie unter [Streamen von Warnungen in Azure Sentinel](export-to-siem.md#stream-alerts-to-microsoft-sentinel).
 
 Wenn Sie Azure Defender mit Azure Sentinel verbinden, wird der Status der in den Azure Sentinel-Dienst übernommenen Azure Defender-Warnungen zwischen den beiden Diensten synchronisiert. Wenn also beispielsweise eine Warnung in einem Azure Defender geschlossen wird, wird diese Warnung auch in Azure Sentinel als geschlossen angezeigt. Das Ändern des Status einer Warnung in Azure Defender wirkt sich „nicht“ auf den Status von Azure Sentinel-**Incidents** aus, die die synchronisierte Azure Sentinel-Warnung enthalten, sondern nur auf den Status der synchronisierten Warnung selbst.
 
@@ -429,7 +439,7 @@ Zu den Updates im Juni gehören:
 
 Wir haben die folgende Warnung hinzugefügt, um den Bedrohungsschutz von Azure Defender für Key Vault zu erweitern:
 
-| Warnung (Warnungstyp)                                                                 | Beschreibung                                                                                                                                                                                                                                                                                                                                                      | MITRE-Taktik | severity |
+| Warnung (Warnungstyp)                                                                 | Beschreibung                                                                                                                                                                                                                                                                                                                                                      | MITRE-Taktik | Schweregrad |
 |------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------:|----------|
 | Zugriff auf einen Schlüsseltresor von einer verdächtigen IP-Adresse<br>(KV_SuspiciousIPAccess)  | Auf einen Schlüsseltresor ist ein erfolgreicher Zugriff von einer IP-Adresse erfolgt, die von Microsoft Threat Intelligence als verdächtige IP-Adresse identifiziert wurde. Dies kann ggf. ein Hinweis darauf sein, dass Ihre Infrastruktur kompromittiert wurde. Wir empfehlen Ihnen, dies eingehender zu untersuchen. Weitere Informationen finden Sie unter [Threat Intelligence-Funktionen von Microsoft](https://go.microsoft.com/fwlink/?linkid=2128684). | Zugriff auf Anmeldeinformationen                            | Medium   |
 |||
@@ -463,7 +473,7 @@ Diese Änderung wird in den Namen der Empfehlung durch das neue Präfix **[Bei B
 
 ### <a name="prefix-for-kubernetes-alerts-changed-from-aks_-to-k8s_"></a>Änderung des Präfix für Kubernetes-Warnungen von „AKS_“ in „K8S_“
 
-Azure Defender für Kubernetes wurde kürzlich erweitert, um Kubernetes-Cluster zu schützen, die lokal und in Umgebungen mit mehreren Clouds gehostet werden. Weitere Informationen finden Sie unter [Verwenden von Azure Defender für Kubernetes zum Schutz von Hybrid- und Multi-Cloud-Bereitstellungen von Kubernetes (Vorschau)](release-notes-archive.md#use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-in-preview).
+Azure Defender für Kubernetes wurde kürzlich so erweitert, dass lokal und in Umgebungen mit mehreren Clouds gehostete Kubernetes-Cluster geschützt werden. Weitere Informationen finden Sie unter [Verwenden von Azure Defender für Kubernetes zum Schutz von Hybrid- und Multi-Cloud-Bereitstellungen von Kubernetes (Vorschau)](release-notes-archive.md#use-azure-defender-for-kubernetes-to-protect-hybrid-and-multi-cloud-kubernetes-deployments-in-preview).
 
 Um deutlich zu machen, dass die von Azure Defender für Kubernetes bereitgestellten Sicherheitswarnungen nicht mehr auf Cluster in Azure Kubernetes Service beschränkt sind, haben wir das Präfix für die Warnungstypen von „AKS_“ in „K8S_“ geändert. Bei Bedarf wurden auch die Namen und Beschreibungen aktualisiert. Ein Beispiel:
 
@@ -552,7 +562,7 @@ Weitere Informationen finden Sie unter [Einführung in Azure Defender für relat
 
 Wir haben die folgenden Warnungen hinzugefügt, um den Bedrohungsschutz von Azure Defender für Resource Manager zu erweitern:
 
-| Warnung (Warnungstyp)                                                                                                                                                | Beschreibung                                                                                                                                                                                                                                                                                                                                                                                                                              | MITRE-Taktiken | severity |
+| Warnung (Warnungstyp)                                                                                                                                                | Beschreibung                                                                                                                                                                                                                                                                                                                                                                                                                              | MITRE-Taktiken | Schweregrad |
 |-------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-------------------------------------:|----------|
 |**In Ihrer Azure-Umgebung wurden für eine RBAC-Rolle auf ungewöhnliche Weise Berechtigungen gewährt (Vorschau)**<br>(ARM_AnomalousRBACRoleAssignment)|Azure Defender für Resource Manager hat die Zuweisung einer RBAC-Rolle entdeckt, die gegenüber anderen Zuweisungen derselben zuweisenden Person bzw. für dieselbe zuweisende Person oder auf Ihrem Mandanten ungewöhnlich ist, weil Anomalien in den folgenden Bereichen bestehen: Zuweisungszeitpunkt, Standort der zuweisenden Person, zuweisende Person, Authentifizierungsmethode, zugewiesene Entitäten, verwendete Clientsoftware, Umfang der Zuweisung. Dieser Vorgang wurde ggf. von einem legitimen Benutzer Ihrer Organisation durchgeführt. Unter Umständen kann dies auch ein Hinweis darauf sein, dass ein Konto Ihrer Organisation übernommen wurde und dass der Bedrohungsakteur versucht, Berechtigungen für ein weiteres Konto in seinem Besitz zu gewähren.|Seitwärtsbewegung, Umgehen von Verteidigungsmaßnahmen|Medium|
 |**Für Ihr Abonnement wurde auf verdächtige Weise eine benutzerdefinierte privilegierte Rolle erstellt (Vorschau)**<br>(ARM_PrivilegedRoleDefinitionCreation)|Azure Defender für Resource Manager hat in Ihrem Abonnement eine verdächtige Erstellung der Definition einer benutzerdefinierten privilegierten Rolle erkannt. Dieser Vorgang wurde ggf. von einem legitimen Benutzer Ihrer Organisation durchgeführt. Unter Umständen kann dies auch ein Hinweis darauf sein, dass ein Konto in Ihrer Organisation übernommen wurde und der Bedrohungsakteur versucht, eine privilegierte Rolle für die zukünftige Verwendung zu erstellen, um eine Erkennung zu vermeiden.|Seitwärtsbewegung, Umgehen von Verteidigungsmaßnahmen|Niedrig|
@@ -578,7 +588,7 @@ Weitere Informationen finden Sie unter [Identifizieren von anfälligen Container
 
 ### <a name="more-resource-graph-queries-available-for-some-recommendations"></a>Verfügbarkeit weiterer Resource Graph-Abfragen für einige Empfehlungen
 
-Für alle Empfehlungen von Security Center gibt es die Option, die Informationen zum Status der betroffenen Ressourcen mit Azure Resource Graph über **Abfrage öffnen** anzuzeigen. Ausführliche Informationen zu diesem leistungsstarken Feature finden Sie unter [Überprüfen von Empfehlungsdaten im Azure Resource Graph-Explorer (ARG)](security-center-recommendations.md#review-recommendation-data-in-azure-resource-graph-explorer-arg).
+Für alle Empfehlungen von Security Center gibt es die Option, die Informationen zum Status der betroffenen Ressourcen mit Azure Resource Graph über **Abfrage öffnen** anzuzeigen. Ausführliche Informationen zu diesem leistungsstarken Feature finden Sie unter [Überprüfen von Empfehlungsdaten im Azure Resource Graph-Explorer (ARG)](review-security-recommendations.md#review-recommendation-data-in-azure-resource-graph-explorer-arg).
 
 Security Center umfasst integrierte Überprüfungen auf Sicherheitsrisiken, um Ihre VMs, SQL Server-Instanzen und zugehörigen Hosts sowie die Containerregistrierungen auf Sicherheitsrisiken zu überprüfen. Die Ergebnisse werden als Empfehlungen zurückgegeben, wobei alle Einzelergebnisse für die einzelnen Ressourcentypen jeweils in einer Ansicht zusammengefasst sind. Die Empfehlungen lauten wie folgt:
 

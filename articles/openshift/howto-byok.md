@@ -7,19 +7,21 @@ ms.service: azure-redhat-openshift
 keywords: Verschlüsselung, BYOK, ARO, Bereitstellen, OpenShift, Red Hat
 ms.topic: how-to
 ms.date: 10/18/2021
-ms.custom: template-how-to
-ms.openlocfilehash: f9b60767f929f8fc9d40836daa6435d0c69d110f
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.custom: template-how-to, ignite-fall-2021
+ms.openlocfilehash: b4df39040ac3cfbab2ecfa8cb24c72ff19ee5bdc
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130134311"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131048233"
 ---
 # <a name="encrypt-os-disks-with-a-customer-managed-key-cmk-on-azure-red-hat-openshift-aro-preview"></a>Verschlüsseln von Betriebssystemdatenträgern mit einem kundenseitig verwalteten Schlüssel (CMK) in Azure Red Hat OpenShift (ARO) (Vorschau)
 
 Standardmäßig wurden die Betriebssystemdatenträger der virtuellen Computer in einem Azure Red Hat OpenShift-Cluster mit automatisch generierten Schlüsseln verschlüsselt, die von Microsoft Azure verwaltet wurden. Aus Sicherheitsgründen können Kunden die Betriebssystemdatenträger bei der Bereitstellung eines ARO-Clusters mit selbstverwalteten Schlüsseln verschlüsseln. Diese Features ermöglichen mehr Kontrolle, indem vertrauliche Daten mit kundenseitig verwalteten Schlüsseln verschlüsselt werden.
 
 Für Cluster, die mit kundenseitig verwalteten Schlüsseln erstellt werden, ist eine Standardspeicherklasse mit ihren Schlüsseln aktiviert. Daher werden sowohl Betriebssystemdatenträger als auch Datenträger mit diesen Schlüsseln verschlüsselt. Die kundenseitig verwalteten Schlüssel werden in Azure Key Vault gespeichert. Weitere Informationen zur Verwendung von Azure Key Vault zum Erstellen und Verwalten von Schlüsseln finden Sie unter [Serverseitige Verschlüsselung von Azure Disk Storage](../key-vault/general/basic-concepts.md) in der Microsoft Azure-Dokumentation.
+
+Mit hostbasierter Verschlüsselung werden die auf dem VM-Host der VMs Ihres ARO-Agent-Knotens gespeicherten Daten ruhend verschlüsselt und verschlüsselt an den Speicherdienst übermittelt. Dies bedeutet, dass temporäre Datenträger im Ruhezustand mit von der Plattform verwalteten Schlüsseln verschlüsselt werden. Der Cache von Betriebssystem- und sonstigen Datenträgern wird im Ruhezustand entweder mit von der Plattform verwalteten Schlüsseln oder vom Kunden verwalteten Schlüsseln verschlüsselt, je nachdem, welcher Verschlüsselungstyp auf diesen Datenträgern festgelegt wurde. Standardmäßig werden bei der Verwendung von ARO Betriebssystem- und sonstige Datenträger im Ruhezustand mit von der Plattform verwalteten Schlüsseln verschlüsselt. Dies bedeutet, dass die Caches für diese Datenträger standardmäßig auch im Ruhezustand mit von der Plattform verwalteten Schlüsseln verschlüsselt werden. Sie können Ihre eigenen verwalteten Schlüssel angeben, indem Sie die nachstehenden Verschlüsselungsschritte befolgen. Der Cache für diese Datenträger wird dann auch mit dem Schlüssel verschlüsselt, den Sie in diesem Schritt angeben.
 
 > [!IMPORTANT]
 > ARO-Vorschaufunktionen stehen gemäß dem Self-Service- und Aktivierungsprinzip zur Verfügung. Previewfunktionen werden „wie besehen“ und „wie verfügbar“ bereitgestellt und sind von den Vereinbarungen zum Service Level und der eingeschränkten Garantie ausgeschlossen. Previewfunktionen werden teilweise vom Kundensupport auf Grundlage der bestmöglichen Leistung abgedeckt. Daher sind diese Funktionen nicht für die Verwendung in der Produktion vorgesehen.
