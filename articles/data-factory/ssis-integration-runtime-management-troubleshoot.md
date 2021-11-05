@@ -9,12 +9,12 @@ ms.author: dashe
 ms.reviewer: sawinark
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
-ms.openlocfilehash: b7d6605f1a387a917c9d106078ead404842ea02c
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 5736e893242f1e24837132dc11b4b7607d22bbf9
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130251925"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131086460"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>Problembehandlung bei der SSIS Integration Runtime-Verwaltung in Azure Data Factory
 
@@ -191,3 +191,9 @@ Die Azure-SSIS IR wird regelmäßig automatisch aktualisiert. Während des Upgra
 ### <a name="publicipnotusableduringupgrade"></a>PublicIPNotUsableDuringUpgrade
 
 Wenn Sie Ihre eigenen statischen öffentlichen IP-Adressen verwenden möchten, sollten zwei öffentliche IP-Adressen angegeben werden. Eine wird verwendet, um die IR-Knoten sofort zu erstellen, und die andere wird während des Upgrades der IR verwendet. Dieser Fehler kann auftreten, wenn die andere öffentliche IP-Adresse während des Upgrades nicht verwendet werden kann. Informationen zu möglichen Ursachen finden Sie unter [InvalidPublicIPSpecified](#InvalidPublicIPSpecified).
+
+## <a name="resource-management"></a>Ressourcenverwaltung
+
+### <a name="resource-tag-not-updated"></a>Ressourcentag nicht aktualisiert
+
+Durch Anwenden von [Tags](../azure-resource-manager/management/tag-resources.md) können Sie Ihre Azure-Ressourcen in einer Taxonomie logisch strukturieren. Während die SSIS IR ausgeführt wird, werden Änderungen an deren übergeordneten Data Factory-Tags erst wirksam, wenn die SSIS IR neu gestartet wird.

@@ -7,16 +7,16 @@ ms.topic: include
 ms.date: 08/03/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: 6c295a5148f4821e3bd395a95c5b98e298da5077
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ffe45b62cbd0d6d83ad58cd1f4aef82407b2735b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128610221"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131077479"
 ---
-[![Code durchsuchen](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-java/tree/master/device/iot-device-samples/pnp-device-sample)
+[![Code durchsuchen](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-java/tree/main/device/iot-device-samples/pnp-device-sample)
 
-In dieser Schnellstartanleitung lernen Sie einen einfachen Entwicklungsworkflow für Azure IoT-Anwendungen kennen. Sie verwenden die Azure CLI und IoT Explorer, um einen Azure IoT-Hub und ein Gerät zu erstellen. Anschließend verwenden Sie ein Azure IoT-Geräte-SDK-Beispiel, um einen simulierten Temperaturregler auszuführen, ihn sicher mit dem Hub zu verbinden und Telemetriedaten zu senden.
+In dieser Schnellstartanleitung lernen Sie einen einfachen Entwicklungsworkflow für Azure IoT-Anwendungen kennen. Sie verwenden die Azure CLI und den loT Explorer, um einen Azure loT-Hub und ein Gerät zu erstellen. Anschließend verwenden Sie ein Azure IoT-Geräte-SDK-Beispiel, um einen Temperaturregler auszuführen, ihn sicher mit dem Hub zu verbinden und Telemetriedaten zu senden. Die Beispielanwendung für den Temperaturcontroller wird auf Ihrem lokalen Computer ausgeführt und generiert simulierte Sensordaten, die an IoT Hub gesendet werden sollen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 - Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
@@ -30,8 +30,8 @@ In dieser Schnellstartanleitung lernen Sie einen einfachen Entwicklungsworkflow 
 
 [!INCLUDE [iot-hub-include-create-hub-iot-explorer](iot-hub-include-create-hub-iot-explorer.md)]
 
-## <a name="run-a-simulated-device"></a>Ausführen eines simulierten Geräts
-In diesem Abschnitt verwenden Sie das Java SDK zum Senden von Nachrichten von einem simulierten Gerät an Ihren IoT-Hub. Sie führen ein Beispiel aus, das einen Temperaturregler mit zwei Thermostatsensoren implementiert.
+## <a name="run-a-device"></a>Ausführen eines Geräts
+In diesem Abschnitt verwenden Sie das Java SDK zum Senden von Nachrichten von einem Gerät an Ihren IoT-Hub. Sie führen ein Beispiel aus, das einen Temperaturregler mit zwei Thermostatsensoren implementiert.
 
 ### <a name="configure-your-environment"></a>Konfigurieren Ihrer Umgebung
 1. Öffnen Sie eine Konsole, um das Azure IoT-Java-Geräte-SDK zu installieren, und führen Sie den Buildvorgang durch und das Codebeispiel aus. Sie verwenden diese Konsole in den folgenden Schritten.
@@ -39,7 +39,7 @@ In diesem Abschnitt verwenden Sie das Java SDK zum Senden von Nachrichten von ei
     > [!NOTE]
     > Wenn Sie eine lokale Installation der Azure CLI verwenden, sind nun möglicherweise zwei Konsolenfenster geöffnet. Achten Sie darauf, dass Sie die Befehle in diesem Abschnitt in der soeben geöffneten Konsole eingeben, nicht in der Konsole, die Sie für die CLI verwendet haben.
 
-1. Legen Sie die folgenden Umgebungsvariablen fest, damit das simulierte Gerät eine Verbindung mit Azure IoT herstellen kann:
+1. Legen Sie die folgenden Umgebungsvariablen fest, damit Ihr Gerät eine Verbindung mit Azure IoT herstellen kann:
     * Legen Sie eine Umgebungsvariable mit dem Namen `IOTHUB_DEVICE_CONNECTION_STRING` fest. Verwenden Sie als Variablenwert die Geräteverbindungszeichenfolge, die Sie im vorherigen Abschnitt gespeichert haben.
     * Legen Sie eine Umgebungsvariable mit dem Namen `IOTHUB_DEVICE_SECURITY_TYPE` fest. Verwenden Sie als Variable den Literalzeichenfolgenwert `connectionString`.
 
@@ -111,7 +111,7 @@ Zum Lesen von Telemetriedaten, die von einzelnen Gerätekomponenten gesendet wer
 
 So zeigen Sie Gerätetelemetriedaten mit der Azure CLI an:
 
-1. Führen Sie den Befehl [az iot hub monitor-events](/cli/azure/iot/hub#az_iot_hub_monitor_events) zum Überwachen von Ereignissen aus, die vom simulierten Gerät an Ihren IoT-Hub gesendet werden. Verwenden Sie die Namen, die Sie zuvor in Azure IoT für Ihr Gerät und Ihren IoT-Hub erstellt haben.
+1. Führen Sie den Befehl [az iot hub monitor-events](/cli/azure/iot/hub#az_iot_hub_monitor_events) zum Überwachen von Ereignissen aus, die vom Gerät an Ihren IoT-Hub gesendet werden. Verwenden Sie die Namen, die Sie zuvor in Azure IoT für Ihr Gerät und Ihren IoT-Hub erstellt haben.
 
     ```azurecli
     az iot hub monitor-events --output table --device-id mydevice --hub-name {YourIoTHubName}

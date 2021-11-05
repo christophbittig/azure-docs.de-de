@@ -3,12 +3,12 @@ author: robinsh
 ms.author: robinsh
 ms.topic: include
 ms.date: 07/07/2021
-ms.openlocfilehash: eacee8b325317e98cd05093b71a21889f9a933ed
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 090a7ae8e053b82e157d1e46e740d9b3911fef99
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346679"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131077585"
 ---
 ## <a name="add-a-consumer-group-to-your-iot-hub"></a>Hinzufügen einer Consumergruppe zu Ihrem IoT Hub
 
@@ -18,8 +18,8 @@ Gehen Sie folgendermaßen vor, um Ihrem IoT Hub eine Consumergruppe hinzuzufüge
 
 1. Öffnen Sie im [Azure-Portal](https://portal.azure.com/) Ihren IoT-Hub.
 
-1. Wählen Sie im linken Bereich **Integrierte Endpunkte** aus. Geben Sie im Textfeld unter **Consumergruppen** einen Namen für Ihre neue Consumergruppe ein. 
+1. Wählen Sie im linken Bereich **Integrierte Endpunkte** aus. Geben Sie im Textfeld unter **Consumergruppen** einen Namen für Ihre neue Consumergruppe ein.
 
-   :::image type="content" source="./media/iot-hub-get-started-create-consumer-group/iot-hub-create-consumer-group-azure.png" alt-text="Erstellen einer Consumergruppe in Ihrem IoT Hub":::
+   :::image type="content" source="./media/iot-hub-get-started-create-consumer-group/iot-hub-create-consumer-group-azure.png" alt-text="Screenshot: Erstellen einer Consumergruppe in Ihrem IoT-Hub" border="true":::
 
 1. Klicken Sie auf eine beliebige Stelle außerhalb des Textfelds, um die Consumergruppe zu speichern.

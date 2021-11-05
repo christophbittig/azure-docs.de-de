@@ -5,18 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 02/01/2019
+ms.date: 10/25/2021
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0e9d1ef18a0cd7852227e50b116ec6ff9c1b1250
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: dc56bcf1407180aefa5ac888669f1eb2db37fbad
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124732708"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131032190"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Berichterstellungsoptionen für die Kennwortverwaltung von Azure AD
 
@@ -118,6 +119,10 @@ In der folgenden Liste werden die Details dieser Aktivität erläutert:
 * **Aktivitätsstatus**:
   * _Erfolg_: Gibt an, dass ein Administrator das Kennwort eines Benutzers erfolgreich zurückgesetzt hat.
   * _Fehler_: Gibt an, dass ein Administrator das Kennwort eines Benutzers nicht ändern konnte. Sie können die Zeile auswählen, um die Kategorie **Activity Status Reason** (Grund für den Aktivitätsstatus) anzuzeigen und mehr darüber zu erfahren, warum der Fehler aufgetreten ist.
+- **Zusätzliche Details zur Aktivität des OnPremisesAgent**:
+  - _Keine_: Gibt eine Zurücksetzung nur in der Cloud an.
+  - _AAD Connect_: Gibt an, dass das Kennwort lokal über den Azure AD Connect-Agent für das Kennwortrückschreiben zurückgesetzt wurde.
+  - _CloudSync_: Gibt an, dass das Kennwort lokal über den Azure AD CloudSync-Agent für das Kennwortrückschreiben zurückgesetzt wurde.
 
 ### <a name="activity-type-reset-password-self-service"></a>Aktivitätstyp: Reset password (self-service) (Kennwort zurücksetzen (Self-Service))
 

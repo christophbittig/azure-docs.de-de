@@ -7,14 +7,15 @@ manager: nitinme
 ms.service: applied-ai-services
 ms.subservice: forms-recognizer
 ms.topic: conceptual
-ms.date: 07/27/2021
+ms.date: 11/02/2021
 ms.author: lajanuar
-ms.openlocfilehash: 397f3c05d42837ffb5e9bb4fdb465a4aee352fbd
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 640cad589343a90912dfe0dba615f1df6baaa6b2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130233675"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131027688"
 ---
 # <a name="build-a-training-data-set-for-a-custom-model"></a>Erstellen eines Trainingsdatasets für ein benutzerdefiniertes Modell
 
@@ -43,7 +44,7 @@ Befolgen Sie diese zusätzlichen Tipps, um Ihr Dataset für das Training weiter 
 
 Wenn Sie den Satz von Formulardokumenten, die Sie für das Training verwenden möchten, zusammengestellt haben, müssen Sie ihn in einen Azure Blob Storage-Container hochladen. Wenn Sie nicht wissen, wie Sie ein Azure Storage-Konto mit einem Container erstellen, folgen Sie den Anweisungen im [Azure Storage-Schnellstart für das Azure-Portal](../../storage/blobs/storage-quickstart-blobs-portal.md). Verwenden Sie die Standardleistungsstufe.
 
-Wenn Sie manuell bezeichnete Daten verwenden möchten, müssen Sie auch die Dateien *.labels.json* und *.ocr.json* hochladen, die den Trainingsdokumenten entsprechen. Sie können das [Tool für die Beschriftung von Beispielen](label-tool.md) (oder Ihre eigene Benutzeroberfläche) verwenden, um diese Dateien zu generieren.
+Wenn Sie manuell bezeichnete Daten verwenden möchten, müssen Sie auch die Dateien *.labels.json* und *.ocr.json* hochladen, die den Trainingsdokumenten entsprechen. Sie können das [Beispielbeschriftungstool](label-tool.md) (oder Ihre eigene Benutzeroberfläche) verwenden, um diese Dateien zu generieren.
 
 ### <a name="organize-your-data-in-subfolders-optional"></a>Organisieren Ihrer Daten in Unterordnern (optional)
 
@@ -72,7 +73,7 @@ Wenn Sie dem Anforderungstext den folgenden Inhalt hinzufügen, wird die API mit
 
 Nachdem Sie nun gelernt haben, wie Sie ein Trainingsdataset erstellen, folgen Sie den Anweisungen in einem Schnellstart, um ein benutzerdefiniertes Formularerkennungsmodell zu trainieren und es mit Ihren Formularen zu verwenden.
 
-* [Schnellstart: Trainieren eines Modells zur Formularerkennung und Extrahieren von Formulardaten unter Verwendung der Clientbibliothek oder REST-API](./quickstarts/try-sdk-rest-api.md)
+* [Schnellstart: Trainieren eines Modells zur Formularerkennung und Extrahieren von Formulardaten unter Verwendung der Clientbibliothek oder REST-API](quickstarts/try-sdk-rest-api.md)
 * [Trainieren eines Formularerkennungsmodells mit Beschriftungen mithilfe des Tools für die Beschriftung von Beispielen](label-tool.md)
 
 ## <a name="see-also"></a>Weitere Informationen

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8292a4d79c7b2a83b11d1f006a6fda9521208c7c
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 5a0cd6b33caea0cd8f9a46a2f967a1291c5c94ce
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129986338"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131052634"
 ---
 # <a name="enforce-a-naming-policy-on-microsoft-365-groups-in-azure-active-directory"></a>Durchsetzen einer Benennungsrichtlinie für Microsoft 365-Gruppen in Azure Active Directory
 
@@ -240,7 +240,7 @@ Azure Active Directory-Portale | Das Azure AD-Portal und das Zugriffsbereichs-Po
 Outlook Web Access (OWA) | Outlook Web Access zeigt den durch die Benennungsrichtlinie erzwungenen Namen an, wenn der Benutzer einen Gruppennamen oder Gruppenalias eingibt. Wenn ein Benutzer ein benutzerdefiniertes blockiertes Wort eingibt, wird eine Fehlermeldung auf der Benutzeroberfläche mit dem blockierten Wort angezeigt, damit der Benutzer es entfernen kann.
 Outlook-Desktop | In Outlook-Desktop erstellte Gruppen sind mit den Einstellungen der Benennungsrichtlinie konform. Die Outlook-Desktop-App zeigt bisher noch keine Vorschau des erzwungenen Gruppennamens an, und es werden auch keine Fehler bei benutzerdefinierten blockierten Wörtern zurückgeben, wenn der Benutzer den Gruppennamen eingibt. Allerdings wird die Benennungsrichtlinie automatisch beim Erstellen oder Bearbeiten einer Gruppen angewendet, und den Benutzern wird eine Fehlermeldung angezeigt, wenn der Gruppenname oder -alias benutzerdefinierte blockierte Wörter enthält.
 Microsoft Teams | Microsoft Teams zeigt den durch die Benennungsrichtlinie erzwungenen Namen an, wenn der Benutzer einen Teamnamen eingibt. Wenn ein Benutzer ein benutzerdefiniertes blockiertes Wort eingibt, wird eine Fehlermeldung mit dem blockierten Wort angezeigt, damit der Benutzer es entfernen kann.
-SharePoint  |  SharePoint zeigt den durch die Benennungsrichtlinie erzwungenen Namen an, wenn der Benutzer einen Standortnamen oder die E-Mail-Adresse einer Gruppe eingibt. Wenn ein Benutzer ein benutzerdefiniertes blockiertes Wort eingibt, wird eine Fehlermeldung mit dem blockierten Wort angezeigt, damit der Benutzer es entfernen kann.
+SharePoint | SharePoint zeigt den durch die Benennungsrichtlinie erzwungenen Namen an, wenn der Benutzer einen Standortnamen oder die E-Mail-Adresse einer Gruppe eingibt. Wenn ein Benutzer ein benutzerdefiniertes blockiertes Wort eingibt, wird eine Fehlermeldung mit dem blockierten Wort angezeigt, damit der Benutzer es entfernen kann.
 Microsoft Stream | Microsoft Stream zeigt den durch die Benennungsrichtlinie erzwungenen Namen an, wenn der Benutzer einen Gruppennamen oder den E-Mail-Alias einer Gruppe eingibt. Wenn ein Benutzer ein benutzerdefiniertes blockiertes Wort eingibt, wird eine Fehlermeldung mit dem blockierten Wort angezeigt, damit der Benutzer es entfernen kann.
 Outlook-App für iOS und Android | In Outlook-Apps erstellte Gruppen sind mit der konfigurierten Benennungsrichtlinie konform. Die mobile Outlook-App zeigt bisher noch keine Vorschau des durch die Benennungsrichtlinie erzwungenen Gruppennamens an, und es werden auch keine Fehler bei benutzerdefinierten blockierten Wörtern zurückgeben, wenn der Benutzer den Gruppennamen eingibt. Allerdings wird die Benennungsrichtlinie automatisch beim Klicken auf „Erstellen“ oder „Bearbeiten“ angewendet, und den Benutzern wird eine Fehlermeldung angezeigt, wenn der Gruppenname oder -alias benutzerdefinierte blockierte Wörter enthält.
 Mobile Groups-App | In der mobilen Groups-App erstellte Gruppen sind mit der Benennungsrichtlinie konform. Die mobile Groups-App zeigt bisher noch keine Vorschau des durch die Benennungsrichtlinie erzwungenen Gruppennamens an, und es werden auch keine Fehler bei benutzerdefinierten blockierten Wörtern zurückgeben, wenn der Benutzer den Gruppennamen eingibt. Allerdings wird die Benennungsrichtlinie automatisch beim Erstellen oder Bearbeiten einer Gruppen angewendet, und den Benutzern wird ein entsprechender Fehler angezeigt, wenn der Gruppenname oder -alias benutzerdefinierte blockierte Wörter enthält.

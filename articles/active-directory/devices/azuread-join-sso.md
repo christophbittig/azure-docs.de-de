@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: conceptual
-ms.date: 06/28/2019
+ms.date: 10/26/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9a48cf9d6912fae91cd789ae16bb68e1d95a4a9
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 442a2e4d5f88d9716b6cc197c503888edb314040
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128585425"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131049974"
 ---
 # <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>Funktionsweise von SSO für lokale Ressourcen auf in Azure AD eingebundenen Geräten
 
@@ -34,7 +34,7 @@ Mit einem in Azure AD eingebundenen Gerät verfügen Ihre Benutzer bereits über
 
 In Azure AD eingebundene Geräte haben keine Informationen zu Ihrer lokalen AD-Umgebung, da sie nicht darin eingebunden sind. Sie können aber mit Azure AD Connect zusätzliche Informationen zu Ihrer lokalen AD-Umgebung auf diesen Geräten bereitstellen.
 
-Bei Verwendung einer sowohl aus Azure AD als auch lokalem AD bestehenden Hybridumgebung haben Sie Azure AD Connect wahrscheinlich bereits bereitgestellt, um Ihre lokalen Identitätsinformationen mit der Cloud zu synchronisieren. Im Rahmen des Synchronisierungsprozesses synchronisiert Azure AD Connect Informationen über lokale Benutzer und Domänen mit Azure AD. Wenn sich ein Benutzer in einer Hybridumgebung an einem in Azure AD eingebundenen Gerät anmeldet, ist der Ablauf wie folgt:
+In einer hybriden Umgebung (mit Azure AD und lokalem Active Directory) haben Sie wahrscheinlich Azure AD Connect oder die Cloudsynchronisierung von Azure AD Connect bereitgestellt, um die lokalen Identitätsinformationen mit der Cloud zu synchronisieren. Im Rahmen des Synchronisierungsprozesses werden lokale Benutzer- und Domäneninformationen mit Azure AD synchronisiert. Wenn sich ein Benutzer in einer Hybridumgebung an einem in Azure AD eingebundenen Gerät anmeldet, ist der Ablauf wie folgt:
 
 1. Azure AD sendet die Details der lokalen Domäne des Benutzers zusammen mit dem [primären Aktualisierungstoken](concept-primary-refresh-token.md) wieder an das Gerät zurück.
 1. Der LSA-Dienst (lokale Sicherheitsautorität) ermöglicht die Kerberos- und NTLM-Authentifizierung auf dem Gerät.
@@ -47,7 +47,7 @@ Bei Verwendung einer sowohl aus Azure AD als auch lokalem AD bestehenden Hybridu
 Bei einem Zugriffsversuch auf eine Ressource, die Kerberos oder NTLM in der lokalen Umgebung des Benutzers anfordert, geschieht auf dem Gerät Folgendes:
 
 1. Die Informationen der lokalen Domäne und die Benutzeranmeldeinformationen werden an den ermittelten DC gesendet, um den Benutzer zu authentifizieren.
-1. Das Gerät empfängt von Kerberos ein [Ticket Granting Ticket (TGT)](/windows/desktop/secauthn/ticket-granting-tickets) oder ein NTLM-Token, das auf dem von der lokalen Ressource oder Anwendung unterstützten Protokoll basiert. Wenn beim Versuch, das Kerberos-TGT oder das NTLM-Token für die Domäne abzurufen, ein Fehler auftritt (das zugehörige DCLocator-Timeout kann zu einer Verzögerung führen), werden Wiederholungsversuche mithilfe von Einträgen der Anmeldeinformationsverwaltung unternommen, oder der Benutzer wird ein Popupfenster zur Authentifizierung angezeigt, in dem Anmeldeinformationen für die Zielressource angefordert werden.
+1. Das Gerät empfängt von Kerberos ein [Ticket Granting Ticket (TGT)](/windows/desktop/secauthn/ticket-granting-tickets) oder ein NTLM-Token, das auf dem von der lokalen Ressource oder Anwendung unterstützten Protokoll basiert. Wenn beim Versuch, das Kerberos-TGT oder das NTLM-Token für die Domäne abzurufen, ein Fehler auftritt (das zugehörige DCLocator-Timeout kann zu einer Verzögerung führen), werden Wiederholungsversuche mithilfe von Einträgen der Anmeldeinformationsverwaltung unternommen, oder dem Benutzer wird ein Popupfenster zur Authentifizierung angezeigt, in dem Anmeldeinformationen für die Zielressource angefordert werden.
 
 Alle Apps, die für die **integrierte Windows-Authentifizierung** konfiguriert sind, erhalten SSO auf nahtlose Weise, wenn ein Benutzer darauf zugreift.
 
