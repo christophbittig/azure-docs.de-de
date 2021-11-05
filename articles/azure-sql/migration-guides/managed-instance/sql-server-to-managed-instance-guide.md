@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: cawrites
 ms.date: 06/25/2021
-ms.openlocfilehash: 9d1ae8214467d38958597136877baca0309b2ffc
-ms.sourcegitcommit: 98e126b0948e6971bd1d0ace1b31c3a4d6e71703
+ms.openlocfilehash: d00eb47a1e366d5ae9f3ba559a65e57f5c9c9baa
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114675263"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131044000"
 ---
 # <a name="migration-guide-sql-server-to-azure-sql-managed-instance"></a>SQL Server zu Azure SQL Managed Instance: Anleitung zur Migration
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -157,7 +157,7 @@ In diesem Leitfaden werden die beiden beliebtesten Optionen behandelt: Azure Dat
 
 Befolgen Sie diese Schritte, um Migrationen mit DMS durchzuführen:
 
-1. Registrieren Sie den Ressourcenanbieter **Microsoft.DataMigration** in Ihrem Abonnement, wenn Sie diesen Vorgang zum ersten Mal durchführen.
+1. [Registrieren Sie den Ressourcenanbieter **Microsoft.DataMigration**](../../../dms/quickstart-create-data-migration-service-portal.md#register-the-resource-provider) in Ihrem Abonnement, wenn Sie diesen Vorgang zum ersten Mal durchführen.
 1. Erstellen Sie eine Azure Database Migration Service-Instanz an einem Standort Ihrer Wahl (vorzugsweise in der Region der Azure SQL Managed Instance-Zielinstanz). Wählen Sie dann ein vorhandenes virtuelles Netzwerk aus, oder erstellen Sie ein neues, um Ihre DMS-Instanz zu hosten.
 1. Wenn Sie Ihre DMS-Instanz erstellt haben, können Sie ein neues Migrationsprojekt erstellen. Geben Sie **SQL Server** als Quellserver und **Azure SQL Managed Instance** als Zielserver an. Wählen Sie auf dem Blatt für die Projekterstellung eine Aktivität (Online- oder Offlinedatenmigration) aus. 
 1.  Geben Sie auf der Seite **Migrationsquelle** die Details zur SQL Server-Quellinstanz und auf der Seite **Migrationsziel** die Details zur Azure SQL Managed Instance-Zielinstanz ein. Wählen Sie **Weiter** aus.
@@ -208,7 +208,7 @@ Befolgen Sie diese Schritte, um die Migration mit dem Sicherungs- und Wiederhers
    ```
 1. Stellen Sie die Sicherung aus dem Azure Blob Storage-Container wieder her. Zum Beispiel: 
 
-    ```sql
+   ```sql
    RESTORE DATABASE [TargetDatabaseName] FROM URL =
      'https://mitutorials.blob.core.windows.net/databases/WideWorldImporters-Standard.bak'
    ```

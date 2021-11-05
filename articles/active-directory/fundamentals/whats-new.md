@@ -14,12 +14,12 @@ ms.author: ajburnle
 ms.reviewer: dhanyahk
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c84c121788d3af6279ac2ef1ef4c149f803bf308
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 081451297e35eb76ebd8d5eecf8ea1833e91007a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130245567"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131052349"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Neuerungen in Azure Active Directory
 
@@ -149,8 +149,6 @@ Sie können ab sofort das Erstellen, Aktualisieren und Löschen von Benutzerkont
 Weitere Informationen dazu, wie Sie Ihre Organisation durch die automatisierte Bereitstellung von Benutzerkonten besser schützen können, finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../manage-apps/user-provisioning.md).
  
 ---
- 
-[1585267](https://identitydivision.visualstudio.com/IAM/IXR/_queries?id=1585267&triage=true&fullScreen=false&_a=edit)
 
 ### <a name="new-federated-apps-available-in-azure-ad-application-gallery---september-2021"></a>Neue Verbund-Apps im Azure AD-Anwendungskatalog verfügbar – September 2021
 
@@ -165,7 +163,6 @@ Im September 2021 haben wir die folgenden 44 neuen Anwendungen mit Verbundunte
 Die Dokumentation zu allen Anwendungen finden Sie auch hier: https://aka.ms/AppsTutorial
 
 Informationen zum Auflisten Ihrer Anwendung im Azure AD-App-Katalog finden Sie hier: https://aka.ms/AzureADAppRequest
-
 
 ---
 
@@ -232,7 +229,7 @@ Wir haben die Beta-Version der MS Graph-API für Azure AD-Zugriffsüberprüfunge
 **Produktfunktion:** Identitätssicherheit und -schutz
  
 
-Die Benutzeraktion "Geräte anmelden oder beitreten" ist generell im bedingten Zugriff verfügbar. Mit dieser Benutzeraktion können Sie MFA-Richtlinien (Multi-Factor Authentication) für die Azure AD-Geräteregistrierung (Active Directory) steuern. Derzeit können Sie mit dieser Benutzeraktion die MFA nur als Steuerelement aktivieren, wenn Benutzer*innen Geräte registrieren oder zu Azure AD hinzufügen. Andere Steuerelemente, die von der Azure AD-Geräteregistrierung abhängen oder darauf nicht anwendbar sind, werden mit dieser Benutzeraktion weiterhin deaktiviert. [Weitere Informationen](../conditional-access/concept-conditional-access-cloud-apps.md#user-actions)
+Die Benutzeraktion "Geräte anmelden oder beitreten" ist generell im bedingten Zugriff verfügbar. Mit dieser Benutzeraktion können Sie Richtlinien für die Multifaktor-Authentifizierung (MFA) für die Azure Active Directory (AD)-Geräteregistrierung steuern. Derzeit können Sie mit dieser Benutzeraktion die MFA nur als Steuerelement aktivieren, wenn Benutzer Geräte registrieren oder zu Azure AD hinzufügen. Andere Steuerelemente, die von der Azure AD-Geräteregistrierung abhängen oder darauf nicht anwendbar sind, werden mit dieser Benutzeraktion weiterhin deaktiviert. [Weitere Informationen](../conditional-access/concept-conditional-access-cloud-apps.md#user-actions)
 
 ---
 
@@ -290,14 +287,14 @@ Weitere Informationen darüber, wie Sie Ihr Unternehmen durch die automatische B
  
 ---
 
-### <a name="multi-factor-mfa-fraud-report--new-audit-event"></a>Multi-Faktor-Betrugsbericht (MFA) - neues Prüfungsereignis
+### <a name="multifactor-mfa-fraud-report--new-audit-event"></a>Multi-Faktor-Betrugsbericht (MFA) – neues Prüfungsereignis
 
 **Typ:** Geändertes Feature  
 **Dienstkategorie:** MFA  
 **Produktfunktion:** Identitätssicherheit und -schutz
  
 
-Damit Administrator*innen erkennen können, dass Benutzer*innen aufgrund eines Betrugsberichts für die MFA gesperrt sind, haben wir ein neues Überwachungsereignis hinzugefügt. Dieses Audit-Ereignis wird nachverfolgt, wenn der Benutzer Betrug meldet. Das Audit-Protokoll ist zusätzlich zu den bestehenden Informationen in den Anmeldeprotokollen über Betrugsmeldungen verfügbar. Wie Sie den Prüfbericht erhalten, erfahren Sie unter [Multifaktor-Authentifizierung Betrugsalarm](../authentication/howto-mfa-mfasettings.md#fraud-alert).
+Damit Administratoren erkennen können, dass Benutzer aufgrund eines Betrugsberichts für die MFA gesperrt sind, haben wir ein neues Überwachungsereignis hinzugefügt. Dieses Audit-Ereignis wird nachverfolgt, wenn der Benutzer Betrug meldet. Das Audit-Protokoll ist zusätzlich zu den bestehenden Informationen in den Anmeldeprotokollen über Betrugsmeldungen verfügbar. Wie Sie den Prüfbericht erhalten, erfahren Sie unter [Multifaktor-Authentifizierung Betrugsalarm](../authentication/howto-mfa-mfasettings.md#fraud-alert).
 
 ---
 
@@ -533,7 +530,7 @@ Die Erkennung anomaler Token ist jetzt in Identity Protection verfügbar. Dieses
  
 Für bedingten Zugriff ist jetzt die Benutzeraktion zum Registrieren oder Hinzufügen von Geräten allgemein verfügbar. Mit dieser Benutzeraktion können Sie MFA-Richtlinien (Multi-Factor Authentication) für die Azure AD-Geräteregistrierung steuern. 
 
-Derzeit können Sie mit dieser Benutzeraktion die MFA nur als Steuerelement aktivieren, wenn Benutzer*innen Geräte registrieren oder zu Azure AD hinzufügen. Andere Steuerelemente, die von der Azure AD-Geräteregistrierung abhängen oder darauf nicht anwendbar sind, werden mit dieser Benutzeraktion weiterhin deaktiviert. [Weitere Informationen](../conditional-access/concept-conditional-access-cloud-apps.md#user-actions) 
+Derzeit können Sie mit dieser Benutzeraktion die MFA nur als Steuerelement aktivieren, wenn Benutzer Geräte registrieren oder zu Azure AD hinzufügen. Andere Steuerelemente, die von der Azure AD-Geräteregistrierung abhängen oder darauf nicht anwendbar sind, werden mit dieser Benutzeraktion weiterhin deaktiviert. [Weitere Informationen](../conditional-access/concept-conditional-access-cloud-apps.md#user-actions) 
 
 ---
 
@@ -607,7 +604,7 @@ Für die Identity Protection-Berichte „Riskante Benutzer“, „Riskante Anmel
 **Dienstkategorie**: Zugriffsüberprüfungen  
 **Produktfunktion:** Identity Governance
  
-Gruppenbesitzer in Azure AD können jetzt Azure AD-Zugriffsüberprüfungen für ihre Gruppen erstellen und verwalten. Diese Funktion ist standardmäßig deaktiviert und kann von Mandantenadministratoren über Azure AD-Zugriffsüberprüfungseinstellungen aktiviert werden. [Weitere Informationen](../governance/create-access-review.md#allow--group-owners-to-create-and-manage-access-reviews-preview)
+Gruppenbesitzer in Azure AD können jetzt Azure AD-Zugriffsüberprüfungen für ihre Gruppen erstellen und verwalten. Diese Funktion ist standardmäßig deaktiviert und kann von Mandantenadministratoren über Azure AD-Zugriffsüberprüfungseinstellungen aktiviert werden. [Weitere Informationen](../governance/create-access-review.md#allow-group-owners-to-create-and-manage-access-reviews-of-their-groups-preview)
  
 ---
 

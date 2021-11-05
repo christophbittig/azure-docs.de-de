@@ -1,22 +1,25 @@
 ---
-title: Fortlaufender Export kann Azure Security Center-Warnungen und -Empfehlungen an Log Analytics Arbeitsbereiche oder Azure-Event Hubs senden
+title: Fortlaufender Export kann Warnungen und Empfehlungen von Microsoft Defender für Cloud an Log Analytics-Arbeitsbereiche oder Azure Event Hubs senden.
 description: Hier erfahren Sie, wie Sie den fortlaufenden Export von Sicherheitswarnungen und -empfehlungen in Log Analytics-Arbeitsbereiche und Azure Event Hubs konfigurieren.
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 10/05/2021
+ms.date: 10/18/2021
 ms.author: memildin
-ms.openlocfilehash: e2b1b238e7f893df5eb56818f256eb324c5be6aa
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 1557503699a47e471abee173733007cb3d0b5380
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129536051"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131010154"
 ---
-# <a name="continuously-export-security-center-data"></a>Fortlaufendes Exportieren von Security Center-Daten
+# <a name="continuously-export-microsoft-defender-for-cloud-data"></a>Fortlaufender Export von Microsoft Defender für Cloud-Daten
 
-Azure Security Center generiert detaillierte Sicherheitswarnungen und -empfehlungen. Sie können diese im Portal oder über programmgesteuerte Tools anzeigen. Möglicherweise müssen Sie diese Informationen auch ganz oder teilweise für die Nachverfolgung mit anderen Überwachungstools in Ihrer Umgebung exportieren. 
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
+
+Microsoft Defender für Cloud generiert detaillierte Sicherheitswarnungen und -empfehlungen. Sie können diese im Portal oder über programmgesteuerte Tools anzeigen. Möglicherweise müssen Sie diese Informationen auch ganz oder teilweise für die Nachverfolgung mit anderen Überwachungstools in Ihrer Umgebung exportieren. 
 
 Mit dem **fortlaufenden Export** können Sie umfassend anpassen, *was* exportiert wird und *wohin*. Sie können z. B. die folgenden Konfigurationen vornehmen:
 
@@ -30,10 +33,10 @@ Obwohl das Feature als *fortlaufend* bezeichnet wird, gibt es auch eine Option z
 In diesem Artikel wird erläutert, wie Sie den fortlaufenden Export in Log Analytics-Arbeitsbereiche und Azure Event Hubs konfigurieren.
 
 > [!NOTE]
-> Wenn Sie Security Center mit SIEM integrieren müssen, lesen Sie [Streamen von Warnungen in eine SIEM-, SOAR- oder IT-Service-Management-Lösung](export-to-siem.md).
+> Wenn Sie Defender für Cloud in SIEM integrieren müssen, lesen Sie [Streamen von Warnungen in eine SIEM-, SOAR- oder IT-Service-Management-Lösung](export-to-siem.md).
 
 > [!TIP]
-> Security Center bietet auch die Möglichkeit, einen einmaligen manuellen Export in eine CSV-Datei auszuführen. Weitere Informationen finden Sie unter [Manueller einmaliger Export von Warnungen und Empfehlungen](#manual-one-time-export-of-alerts-and-recommendations).
+> Defender für Cloud bietet auch die Möglichkeit, einen einmaligen manuellen Export in eine CSV-Datei auszuführen. Weitere Informationen finden Sie unter [Manueller einmaliger Export von Warnungen und Empfehlungen](#manual-one-time-export-of-alerts-and-recommendations).
 
 
 ## <a name="availability"></a>Verfügbarkeit
@@ -64,21 +67,21 @@ Die folgenden Datentypen können mithilfe des fortlaufende Exports exportiert we
 
 ## <a name="set-up-a-continuous-export"></a>Einrichten eines fortlaufenden Exports 
 
-Sie können den fortlaufenden Export auf den Security Center-Seiten im Azure-Portal, über die Security Center-REST-API oder im großen Stil mithilfe der bereitgestellten Azure Policy-Vorlagen konfigurieren. Klicken Sie auf die entsprechende Registerkarte, um Details zu den einzelnen Möglichkeiten anzuzeigen.
+Sie können den fortlaufenden Export auf den Seiten für Microsoft Defender für Cloud im Azure-Portal, über die REST-API oder im großen Stil mithilfe der bereitgestellten Azure Policy-Vorlagen konfigurieren. Klicken Sie auf die entsprechende Registerkarte, um Details zu den einzelnen Möglichkeiten anzuzeigen.
 
 ### <a name="use-the-azure-portal"></a>[**Verwenden des Azure-Portals**](#tab/azure-portal)
 
-### <a name="configure-continuous-export-from-the-security-center-pages-in-azure-portal"></a>Konfigurieren des fortlaufenden Exports auf den Security Center-Seiten im Azure-Portal
+### <a name="configure-continuous-export-from-the-defender-for-cloud-pages-in-azure-portal"></a>Konfigurieren des fortlaufenden Exports auf den Seiten für Defender für Cloud im Azure-Portal
 
 Die folgenden Schritte sind unabhängig davon erforderlich, ob Sie einen fortlaufenden Export in einen Log Analytics-Arbeitsbereich oder in Azure Event Hubs einrichten.
 
-1. Wählen Sie auf der Security Center-Randleiste **Preise & Einstellungen** aus.
+1. Wählen Sie im Menü von Defender für Cloud die Option **Umgebungseinstellungen** aus.
 
 1. Wählen Sie das Abonnement aus, für das Sie den Datenexport konfigurieren möchten.
 
 1. Wählen Sie auf der Randleiste der Seite „Einstellungen“ für dieses Abonnement **Fortlaufender Export** aus.
 
-    :::image type="content" source="./media/continuous-export/continuous-export-options-page.png" alt-text="Exportoptionen in Azure Security Center.":::
+    :::image type="content" source="./media/continuous-export/continuous-export-options-page.png" alt-text="Exportoptionen in Microsoft Defender für Cloud":::
 
     Im Folgenden finden Sie die Exportoptionen. Es gibt eine Registerkarte für jedes verfügbare Exportziel. 
 
@@ -106,7 +109,7 @@ Die folgenden Schritte sind unabhängig davon erforderlich, ob Sie einen fortlau
 
 ### <a name="configure-continuous-export-using-the-rest-api"></a>Konfigurieren des fortlaufenden Exports über die REST-API
 
-Der fortlaufende Export kann über die [Automatisierungs-API](/rest/api/securitycenter/automations) in Azure Security Center konfiguriert und verwaltet werden. Verwenden Sie diese API, um Regeln für den Export an eines der folgenden möglichen Ziele zu erstellen oder zu aktualisieren:
+Der fortlaufende Export kann über die [Automatisierungs-API](/rest/api/securitycenter/automations) in Microsoft Defender für Cloud konfiguriert und verwaltet werden. Verwenden Sie diese API, um Regeln für den Export an eines der folgenden möglichen Ziele zu erstellen oder zu aktualisieren:
 
 - Azure Event Hub
 - Log Analytics-Arbeitsbereich
@@ -114,14 +117,14 @@ Der fortlaufende Export kann über die [Automatisierungs-API](/rest/api/security
 
 Die API bietet zusätzliche Funktionen, die im Azure-Portal nicht verfügbar sind, z. B.:
 
-* **Größeres Volumen** Die API ermöglicht es Ihnen, mehrere Exportkonfigurationen für ein einzelnes Abonnement zu erstellen. Die Seite **Fortlaufender Export** in der Benutzeroberfläche des Security Center-Portals unterstützt nur eine Exportkonfiguration pro Abonnement.
+* **Größeres Volumen** Die API ermöglicht es Ihnen, mehrere Exportkonfigurationen für ein einzelnes Abonnement zu erstellen. Die Seite **Fortlaufender Export** auf der Portalbenutzeroberfläche von Defender für Cloud unterstützt nur eine Exportkonfiguration pro Abonnement.
 
-* **Zusätzliche Features** – Die API bietet zusätzliche Parameter, die nicht in der Benutzeroberfläche angezeigt werden. Beispielsweise können Sie Ihrer Automatisierungsressource Tags hinzufügen und Ihren Export auf der Grundlage einer breiteren Palette von Warn- und Empfehlungseigenschaften definieren, als sie auf der Seite **Fortlaufender Export** in der Benutzeroberfläche des Security Center-Portals angeboten werden.
+* **Zusätzliche Features** – Die API bietet zusätzliche Parameter, die nicht in der Benutzeroberfläche angezeigt werden. Beispielsweise können Sie Ihrer Automatisierungsressource Tags hinzufügen und Ihren Export auf der Grundlage einer breiteren Palette von Warnungs- und Empfehlungseigenschaften definieren, als sie auf der Seite **Fortlaufender Export** auf der Portalbenutzeroberfläche von Defender für Cloud angeboten werden.
 
-* **Stärker fokussierte Bereiche**: Die API bietet eine differenziertere Ebene für den Umfang ihrer Exportkonfigurationen. Wenn Sie einen Export mit der API definieren, können Sie dies auf der Ebene der Ressourcengruppe tun. Wenn Sie die Seite **Fortlaufender Export** in der Benutzeroberfläche des Security Center-Portals verwenden, müssen Sie sie auf der Abonnementsebene definieren.
+* **Stärker fokussierte Bereiche**: Die API bietet eine differenziertere Ebene für den Umfang ihrer Exportkonfigurationen. Wenn Sie einen Export mit der API definieren, können Sie dies auf der Ebene der Ressourcengruppe tun. Wenn Sie die Seite **Fortlaufender Export** auf der Portalbenutzeroberfläche von Defender für Cloud verwenden, müssen Sie sie auf der Abonnementsebene definieren.
 
     > [!TIP]
-    > Wenn Sie mehrere Exportkonfigurationen mit der API eingerichtet haben oder reine API-Parameter verwendet haben, werden diese zusätzlichen Features nicht auf der Security Center-Benutzeroberfläche angezeigt. Stattdessen erscheint ein Banner, das Sie darüber informiert, dass andere Konfigurationen existieren.
+    > Wenn Sie mehrere Exportkonfigurationen mit der API eingerichtet haben oder reine API-Parameter verwendet haben, werden diese zusätzlichen Features nicht auf der Benutzeroberfläche von Defender für Cloud angezeigt. Stattdessen erscheint ein Banner, das Sie darüber informiert, dass andere Konfigurationen existieren.
 
 Weitere Informationen zur Automatisierungen-API finden Sie in der [REST-API-Dokumentation](/rest/api/securitycenter/automations).
 
@@ -139,8 +142,8 @@ Verwenden Sie für die Bereitstellung Ihrer Konfigurationen für den fortlaufend
 
     |Zielsetzung  |Richtlinie  |Richtlinien-ID  |
     |---------|---------|---------|
-    |Fortlaufender Export zu einem Event Hub|[Bereitstellen eines Exports für Azure Security Center-Warnungen und -Empfehlungen in Event Hub](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fcdfcce10-4578-4ecd-9703-530938e4abcb)|cdfcce10-4578-4ecd-9703-530938e4abcb|
-    |Fortlaufender Export in einen Log Analytics-Arbeitsbereich|[Bereitstellen eines Exports für Azure Security Center-Warnungen und -Empfehlungen in Log Analytics-Arbeitsbereichen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fffb6f416-7bd2-4488-8828-56585fef2be9)|ffb6f416-7bd2-4488-8828-56585fef2be9|
+    |Fortlaufender Export zu einem Event Hub|[Bereitstellen eines Exports in Event Hub für Warnungen und Empfehlungen von Microsoft Defender für Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fcdfcce10-4578-4ecd-9703-530938e4abcb)|cdfcce10-4578-4ecd-9703-530938e4abcb|
+    |Fortlaufender Export in einen Log Analytics-Arbeitsbereich|[Bereitstellen eines Exports in einem Log Analytics-Arbeitsbereich für Warnungen und Empfehlungen von Microsoft Defender für Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2fffb6f416-7bd2-4488-8828-56585fef2be9)|ffb6f416-7bd2-4488-8828-56585fef2be9|
     ||||
 
     > [!TIP]
@@ -158,7 +161,7 @@ Verwenden Sie für die Bereitstellung Ihrer Konfigurationen für den fortlaufend
         > [!TIP]
         > Jeder Parameter verfügt über eine QuickInfo, in der die verfügbaren Optionen erläutert werden.
         >
-        > Die Registerkarte „Parameter“ in Azure Policy (1) bietet ähnliche Konfigurationsoptionen wie die Seite „Fortlaufender Export“ in Security Center (2).
+        > Die Registerkarte „Parameter“ in Azure Policy (1) bietet ähnliche Konfigurationsoptionen wie die Seite „Fortlaufender Export“ in Defender für Cloud (2).
         > :::image type="content" source="./media/continuous-export/azure-policy-next-to-continuous-export.png" alt-text="Vergleich der Parameter auf der Seite „Fortlaufender Export“ mit Azure Policy." lightbox="./media/continuous-export/azure-policy-next-to-continuous-export.png":::
     1. Wenn Sie diese Zuweisung auf vorhandene Abonnements anwenden möchten, können Sie die Registerkarte **Wartung** öffnen und die Option zum Erstellen eines Wartungstasks auswählen.
 1. Überprüfen Sie die Seite „Zusammenfassung“, und klicken Sie auf **Erstellen**.
@@ -167,13 +170,13 @@ Verwenden Sie für die Bereitstellung Ihrer Konfigurationen für den fortlaufend
 
 ## <a name="information-about-exporting-to-a-log-analytics-workspace"></a>Informationen zum Export in einen Log Analytics-Arbeitsbereich
 
-Wenn Sie Azure Security Center-Daten in einem Log Analytics-Arbeitsbereich analysieren oder Azure-Warnungen zusammen mit Security Center-Warnungen verwenden möchten, richten Sie einen fortlaufenden Export für Ihren Log Analytics-Arbeitsbereich ein.
+Wenn Sie Daten von Microsoft Defender für Cloud in einem Log Analytics-Arbeitsbereich analysieren oder Azure-Warnungen zusammen mit Defender für Cloud-Warnungen verwenden möchten, richten Sie einen fortlaufenden Export für Ihren Log Analytics-Arbeitsbereich ein.
 
 ### <a name="log-analytics-tables-and-schemas"></a>Log Analytics-Tabellen und -Schemas
 
 Sicherheitswarnungen und -empfehlungen werden in den Tabellen *SecurityAlert* und *SecurityRecommendation* gespeichert. 
 
-Der Name der Log Analytics-Lösung, in der diese Tabellen enthalten sind, hängt davon ab, ob Sie Azure Defender aktiviert haben: Security („Sicherheit und Überwachung“) oder SecurityCenterFree. 
+Der Name der Log Analytics-Lösung, die diese Tabellen enthält, hängt davon ab, ob Sie die erweiterten Sicherheitsfeatures aktiviert haben: Sicherheit („Sicherheit und Überwachung“) oder SecurityCenterFree. 
 
 > [!TIP]
 > Sie müssen die Lösung **Sicherheit und Überwachung** oder **SecurityCenterFree** aktivieren, um die Daten im Zielarbeitsbereich anzuzeigen.
@@ -189,7 +192,7 @@ Sie können die exportierten Sicherheitswarnungen und Empfehlungen auch in [Azur
 
 Azure Monitor bietet eine einheitliche Warnungsbenutzeroberfläche für eine Vielzahl von Azure-Warnungen, einschließlich Diagnoseprotokoll, Metrikwarnungen und benutzerdefinierte Warnungen, die auf Log Analytics-Arbeitsbereichsabfragen basieren.
 
-Konfigurieren Sie eine Warnungsregel, die auf Log Analytics-Abfragen (Protokollwarnung) basiert, um Warnungen und Empfehlungen von Security Center in Azure Monitor anzuzeigen:
+Konfigurieren Sie eine Warnungsregel, die auf Log Analytics-Abfragen (Protokollwarnung) basiert, um Warnungen und Empfehlungen von Defender für Cloud in Azure Monitor anzuzeigen:
 
 1. Wählen Sie auf der Seite **Warnungen** von Azure Monitor **Neue Warnungsregel** aus.
 
@@ -199,12 +202,12 @@ Konfigurieren Sie eine Warnungsregel, die auf Log Analytics-Abfragen (Protokollw
 
     * Wählen Sie als **Ressource** den Log Analytics-Arbeitsbereich aus, in den Sie Sicherheitswarnungen und Empfehlungen exportiert haben.
 
-    * Wählen Sie als **Bedingung** die Option **Benutzerdefinierte Protokollsuche** aus. Konfigurieren Sie auf der Seite, die angezeigt wird, die Abfrage, den Rückblickzeitraum und den Häufigkeitszeitraum. In der Suchabfrage können Sie *SecurityAlert* oder *SecurityRecommendation* eingeben, um die Datentypen abzufragen, in die Security Center kontinuierlich exportiert, wenn Sie die Funktion „Fortlaufender Export in Log Analytics“ aktivieren. 
+    * Wählen Sie als **Bedingung** die Option **Benutzerdefinierte Protokollsuche** aus. Konfigurieren Sie auf der Seite, die angezeigt wird, die Abfrage, den Rückblickzeitraum und den Häufigkeitszeitraum. In der Suchabfrage können Sie *SecurityAlert* oder *SecurityRecommendation* eingeben, um die Datentypen abzufragen, in die Defender für Cloud kontinuierlich exportiert, wenn Sie die Funktion „Fortlaufender Export in Log Analytics“ aktivieren. 
     
     * Konfigurieren Sie optional die [Aktionsgruppe](../azure-monitor/alerts/action-groups.md), die Sie auslösen möchten. Aktionsgruppen können das Senden von E-Mails-, ITSM-Tickets, WebHooks und vieles mehr auslösen.
     ![Azure Monitor-Warnungsregel.](./media/continuous-export/azure-monitor-alert-rule.png)
 
-Ihnen werden nun neue Azure Security Center-Warnungen oder -Empfehlungen (abhängig von Ihren konfigurierten Regeln für den fortlaufenden Export und den in Ihrer Azure Monitor-Warnungsregel definierten Bedingungen) in den Azure Monitor-Warnungen angezeigt, und eine Aktionsgruppe (sofern vorhanden) wird automatisch ausgelöst.
+Ihnen werden nun neue Warnungen oder Empfehlungen von Defender für Cloud (abhängig von Ihren konfigurierten Regeln für den fortlaufenden Export und den in Ihrer Azure Monitor-Warnungsregel definierten Bedingungen) in den Azure Monitor-Warnungen angezeigt, und eine Aktionsgruppe (sofern vorhanden) wird automatisch ausgelöst.
 
 ## <a name="manual-one-time-export-of-alerts-and-recommendations"></a>Manueller einmaliger Export von Warnungen und Empfehlungen
 
@@ -252,9 +255,9 @@ Wenn Sie Ihre Umgebung für BCDR-Szenarien vorbereiten, in denen in der Zielress
 Weitere Informationen finden Sie unter [Azure Event Hubs: Georedundante Notfallwiederherstellung](../event-hubs/event-hubs-geo-dr.md).
 
 
-### <a name="is-continuous-export-available-with-azure-security-center-free"></a>Ist der fortlaufende Export mit Azure Security Center kostenlos verfügbar?
+### <a name="is-continuous-export-available-for-free"></a>Steht der fortlaufende Export kostenlos zur Verfügung?
 
-Ja! Beachten Sie, dass viele Security Center-Warnungen nur dann angezeigt werden, wenn Sie Azure Defender aktiviert haben. Eine gute Möglichkeit, eine Vorschau der in den exportierten Daten erhaltenen Warnungen anzuzeigen, besteht darin, sich die Warnungen auf den Security Center-Seiten des Azure-Portals anzuschauen.
+Ja. Beachten Sie, dass viele Warnungen nur bereitgestellt werden, wenn Sie erweiterten Schutz aktiviert haben. Eine gute Möglichkeit, eine Vorschau der in den exportierten Daten erhaltenen Warnungen anzuzeigen, besteht darin, sich die Warnungen auf den Seiten von Defender für Cloud des Azure-Portals anzuschauen.
 
 
 
@@ -266,6 +269,6 @@ Verwandtes Material finden Sie in der folgenden Dokumentation:
 
 - Informieren Sie sich über [Vorlagen zur Workflowautomatisierung](https://github.com/Azure/Azure-Security-Center/tree/master/Workflow%20automation).
 - [Dokumentation zu Azure Event Hubs](../event-hubs/index.yml)
-- [Dokumentation zu Azure Sentinel](../sentinel/index.yml)
+- [Dokumentation zu Microsoft Sentinel](../sentinel/index.yml)
 - [Azure Monitor-Dokumentation](../azure-monitor/index.yml)
 - [Exportieren von Datentypenschemas](https://aka.ms/ASCAutomationSchemas)

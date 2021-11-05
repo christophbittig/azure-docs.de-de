@@ -168,6 +168,14 @@ groups:
     title: Java
   - id: rest-api
     title: REST-API
+- id: usage-custom-language-features
+  title: Verwendungsmethoden
+  prompt: Auswählen Ihrer bevorzugten Verwendungsmethode
+  pivots:
+  - id: language-studio
+    title: Language Studio
+  - id: rest-api
+    title: REST-API
 - id: programming-languages-set-ten
   title: Programmiersprachen
   prompt: Auswählen einer Programmiersprache
@@ -921,7 +929,7 @@ groups:
   - id: platform-azp
     title: Azure-Portal
   - id: platform-azcli
-    title: Azure CLI
+    title: Azure-Befehlszeilenschnittstelle
   - id: platform-net
     title: .NET
   - id: platform-powershell
@@ -1069,7 +1077,7 @@ groups:
   - id: platform-azp
     title: Azure-Portal
   - id: platform-azcli
-    title: Azure CLI
+    title: Azure-Befehlszeilenschnittstelle
   - id: platform-net
     title: .NET
 - id: acs-plat-azp-arm-net-python-go-powershell
@@ -1109,10 +1117,10 @@ groups:
   - id: azure-arc
     title: Azure Arc
   - id: azure-portal
-    title: Security Center-Portalseiten
+    title: Portalseiten von Defender für Cloud
 - id: manage-asc-initiatives
-  title: Verwalten von Security Center-Initiativen
-  prompt: Wie verwalten Sie Ihre Security Center-Initiativen?
+  title: Verwalten von Defender für Cloud-Initiativen
+  prompt: Wie können Sie Ihre Defender für Cloud-Initiativen verwalten?
   pivots:
   - id: azure-portal
     title: Im Azure-Portal
@@ -1196,6 +1204,18 @@ groups:
     title: Go
   - id: programming-language-ruby
     title: Ruby
+- id: custom-qna-quickstart
+  title: Programmiersprachen
+  prompt: Auswählen einer Programmiersprache
+  pivots:
+  - id: studio
+    title: Language Studio
+  - id: rest
+    title: REST
+  - id: programming-language-csharp
+    title: C#
+  - id: programming-language-python
+    title: Python
 - id: azure-maps-android
   title: Programmiersprachen
   prompt: Auswählen einer Programmiersprache
@@ -1281,7 +1301,7 @@ groups:
   - id: identity-mi-methods-azp
     title: Azure-Portal
   - id: identity-mi-methods-azcli
-    title: Azure CLI
+    title: Azure-Befehlszeilenschnittstelle
   - id: identity-mi-methods-powershell
     title: PowerShell
   - id: identity-mi-methods-arm
@@ -1295,7 +1315,7 @@ groups:
   - id: identity-mi-methods-sub-azp
     title: Azure-Portal
   - id: identity-mi-methods-sub-azcli
-    title: Azure CLI
+    title: Azure-Befehlszeilenschnittstelle
   - id: identity-mi-methods-sub-powershell
     title: PowerShell
 - id: iot-dps-set1
@@ -1342,10 +1362,20 @@ groups:
     title: IAR EWARM
   - id: iot-toolset-mplab
     title: MPLAB
+- id: backup-client-powershelltier-clitier-portaltier
+  title: Clients
+  prompt: Auswählen eines Clients
+  pivots:
+  - id: client-powershelltier
+    title: PowerShell
+  - id: client-clitier
+    title: Befehlszeilenschnittstelle (CLI)
+  - id: client-portaltier
+    title: Azure-Portal
 metadata:
-  ms.openlocfilehash: 8f94e077e2983d0b3b8a71729d3d27522f3ee961
-  ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+  ms.openlocfilehash: 68d5906853d11b7309b716cc7f04c8e6be664c2b
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/29/2021
-  ms.locfileid: "129274745"
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131046487"

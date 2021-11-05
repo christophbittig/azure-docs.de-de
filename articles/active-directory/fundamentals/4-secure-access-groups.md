@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2500d1872c2c70c8d39afa0b564c35a8bb9bcb9b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c134f657e4037627fc39f321d9e579c8682a6b58
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122347219"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131067078"
 ---
 # <a name="securing-external-access-with-groups"></a>Schützen des externen Zugriffs mit Gruppen 
 
@@ -100,12 +100,12 @@ Wir empfehlen Ihnen, eine Namenskonvention für Sicherheitsgruppen zu nutzen, be
 
 Sowohl Azure AD-Sicherheitsgruppen als auch Microsoft 365-Gruppen können im Azure AD-Portal oder im Microsoft 365-Verwaltungsportal erstellt werden. Beide Arten können als Grundlage für das Schützen des externen Zugriffs verwendet werden:
 
-|Überlegungen | Azure AD-Sicherheitsgruppen (manuell und dynamisch)| Microsoft 365-Gruppen |
+| Überlegungen | Azure AD-Sicherheitsgruppen (manuell und dynamisch)| Microsoft 365-Gruppen |
 | - | - | - |
 | Was kann die Gruppe enthalten?| Benutzer<br>Gruppen<br>Dienstprinzipale<br>Geräte| Nur Benutzer |
 | Wo wird die Gruppe erstellt?| Azure AD-Portal<br>Microsoft 365-Portal (falls E-Mail-Aktivierung erforderlich ist)<br>PowerShell<br>Microsoft Graph<br>Endbenutzerportal| Microsoft 365-Portal<br>Azure AD-Portal<br>PowerShell<br>Microsoft Graph<br>In Microsoft 365-Anwendungen |
-| Von wem wird standardmäßig die Erstellung durchgeführt?| Administratoren <br>Endbenutzer| Administratoren<br>Endbenutzer |
-| Wer kann standardmäßig hinzugefügt werden?| Interne Benutzer (Mitglieder)| Mandantenmitglieder und Gäste beliebiger Organisationen |
+| Von wem wird standardmäßig die Erstellung durchgeführt?| Administratoren <br>Benutzer| Administrators<br>Benutzer |
+| Wer kann standardmäßig hinzugefügt werden?| Interne Benutzer*innen (Mandantenmitglieder)| Mandantenmitglieder und Gäste beliebiger Organisationen |
 | Worauf wird Zugriff gewährt?| Nur auf Ressourcen, für die die Zuweisung durchgeführt wurde| Alle gruppenbezogenen Ressourcen:<br>(Gruppenpostfach, Website, Team, Chats und andere enthaltene Microsoft 365-Ressourcen)<br>Alle anderen Ressourcen, denen die Gruppe hinzugefügt wird |
 | Nutzung möglich mit| Bedingter Zugriff<br>Berechtigungsverwaltung<br>Gruppenlizenzierung| Bedingter Zugriff<br>Berechtigungsverwaltung<br>Vertraulichkeitsbezeichnungen |
 
@@ -154,9 +154,9 @@ Hybridorganisationen verfügen sowohl über eine lokale Infrastruktur als auch �
 
 Für die Rollen von Microsoft 365-Gruppen gilt die folgende Unterteilung:
 
-* **Besitzer**: Gruppenbesitzer können Mitglieder hinzufügen oder entfernen und verfügen über spezielle Berechtigungen, z. B. zum Löschen von Unterhaltungen aus dem freigegebenen Postfach oder zum Ändern von Gruppeneinstellungen. Gruppenbesitzer können die Gruppe umbenennen, die Beschreibung oder das Bild aktualisieren und weitere Aufgaben durchführen.
+* **Besitzer:** Gruppenbesitzer*innen können Mitglieder hinzufügen oder entfernen und verfügen über spezifische Administratorrechte in der Gruppe, z. B. zum Löschen von Unterhaltungen aus dem freigegebenen Postfach oder zum Ändern von Gruppeneinstellungen. Gruppenbesitzer können die Gruppe umbenennen, die Beschreibung oder das Bild aktualisieren und weitere Aufgaben durchführen.
 
-* **Mitglieder**: Mitglieder haben Zugriff auf alle Elemente der Gruppe, aber sie können keine Gruppeneinstellungen ändern. Gruppenmitglieder können standardmäßig Gäste zum Beitreten zu Ihrer Gruppe einladen, aber [die Einstellung wird von Ihnen gesteuert](/microsoft-365/admin/create-groups/manage-guest-access-in-groups).
+* **Mitglieder:** Gruppenmitglieder haben Zugriff auf alle Elemente der Gruppe, aber sie können keine Gruppeneinstellungen ändern. Standardmäßig können Gruppenmitglieder Gäste dazu einladen, ihrer Gruppe beizutreten. Sie können [diese Einstellung steuern](/microsoft-365/admin/create-groups/manage-guest-access-in-groups).
 
 * **Gäste**: Gäste von Gruppen sind Mitglieder, die keine internen Mitarbeiter Ihrer Organisation sind. Für Gäste sind einige Teams-Funktionen standardmäßig eingeschränkt.
 

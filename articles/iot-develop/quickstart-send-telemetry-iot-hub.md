@@ -1,6 +1,6 @@
 ---
 title: 'Schnellstart: Senden von Gerätetelemetriedaten an Azure IoT Hub'
-description: In dieser Schnellstartanleitung erfahren Geräteentwickler, wie sie eine sichere Verbindung zwischen einem Gerät und Azure IoT Hub herstellen. Sie verwenden ein Azure IoT-Geräte-SDK für C, C#, Python, Node.js oder Java, um einen simulierten Geräteclient für Windows, Linux oder Raspberry Pi OS (Raspian) zu erstellen. Abschließend verbinden Sie das Gerät mit Azure IoT Hub und senden Telemetriedaten.
+description: In dieser Schnellstartanleitung erfahren Geräteentwickler, wie sie eine sichere Verbindung zwischen einem Gerät und Azure IoT Hub herstellen. Sie verwenden ein Azure IoT-Geräte-SDK für C, C#, Python, Node.js oder Java, um einen Geräteclient für Windows, Linux oder Raspberry Pi OS (Raspian) zu erstellen. Abschließend verbinden Sie das Gerät mit Azure IoT Hub und senden Telemetriedaten.
 author: timlt
 ms.author: timlt
 ms.service: iot-develop
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/03/2021
 ms.collection: embedded-developer, application-developer
 zone_pivot_groups: iot-develop-set1
-ms.openlocfilehash: f7b1543b91d604b6640bf97877bf2c134deee866
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: d079fd2380aed72910f5b78e2e3135c077ac59d1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129094080"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131077484"
 ---
 # <a name="quickstart-send-telemetry-from-an-iot-plug-and-play-device-to-azure-iot-hub"></a>Schnellstart: Senden von Telemetriedaten von einem IoT Plug & Play-Gerät an Azure IoT Hub
 
@@ -69,7 +69,7 @@ So löschen Sie eine Ressourcengruppe anhand des Namens:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie einen grundlegenden Workflow für Azure IoT-Anwendungen zum sicheren Verbinden eines Geräts mit der Cloud und zum Senden von Telemetriedaten vom Gerät zur Cloud kennengelernt. Sie haben die Azure CLI verwendet, um einen Azure IoT-Hub und eine Geräteinstanz zu erstellen. Anschließend haben Sie mit dem Azure IoT-Geräte-SDK ein simuliertes Gerät erstellt, eine Verbindung mit dem Hub hergestellt und Telemetriedaten gesendet. Sie haben zudem das Azure-Portal verwendet, um Telemetriedaten zu überwachen.
+In dieser Schnellstartanleitung haben Sie einen grundlegenden Workflow für Azure IoT-Anwendungen zum sicheren Verbinden eines Geräts mit der Cloud und zum Senden von Telemetriedaten vom Gerät zur Cloud kennengelernt. Sie haben die Azure CLI verwendet, um einen Azure IoT-Hub und eine Geräteinstanz zu erstellen. Anschließend haben Sie mit dem Azure IoT-Geräte-SDK einen Temperaturcontroller erstellt, eine Verbindung mit dem Hub hergestellt und Telemetriedaten gesendet. Sie haben zudem das Azure CLI verwendet, um Telemetriedaten zu überwachen.
 
 Sehen Sie sich anschließend die folgenden Artikel an, um mehr über das Erstellen von Gerätelösungen mit Azure IoT zu erfahren: 
 

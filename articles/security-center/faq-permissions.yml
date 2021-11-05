@@ -1,7 +1,7 @@
 ### YamlMime:FAQ
 metadata:
-  title: 'Häufig gestellte Fragen zu Azure Security Center: Fragen zu Berechtigungen'
-  description: Diese FAQs beantworten Fragen zu Berechtigungen in Azure Security Center, einem Produkt, das Ihnen hilft, Bedrohungen zu verhindern, zu erkennen und darauf zu reagieren.
+  title: 'Häufig gestellte Fragen zu Microsoft Defender für Cloud: Fragen zu Berechtigungen'
+  description: Hier finden Sie Antworten auf häufig gestellte Fragen zu Berechtigungen in Microsoft Defender für Cloud, einem Produkt, das Ihnen hilft, Bedrohungen zu verhindern, zu erkennen und darauf zu reagieren.
   services: security-center
   documentationcenter: na
   author: memildin
@@ -14,29 +14,29 @@ metadata:
   ms.workload: na
   ms.date: 02/25/2020
   ms.author: memildin
-  ms.openlocfilehash: ddd0b31834f6feda543e1f2c141155ea6754a37c
-  ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+  ms.openlocfilehash: ca80ae2bfeeb896baca297e88f95298c1b54c027
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 06/07/2021
-  ms.locfileid: "111907354"
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131084122"
 title: Berechtigungen
 summary: ''
 sections:
 - name: Wird ignoriert.
   questions:
-  - question: Wie funktionieren Berechtigungen in Azure Security Center?
+  - question: Wie funktionieren Berechtigungen in Microsoft Defender für Cloud?
     answer: >
-      Security Center verwendet die [rollenbasierte Zugriffssteuerung von Azure (Azure-RBAC)](../role-based-access-control/role-assignments-portal.md). Diese stellt [integrierte Rollen](../role-based-access-control/built-in-roles.md) bereit, die Benutzern, Gruppen und Diensten in Azure zugewiesen werden können.
+      Microsoft Defender für Cloud verwendet die [rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)](../role-based-access-control/role-assignments-portal.md). Diese stellt [integrierte Rollen](../role-based-access-control/built-in-roles.md) bereit, die Benutzern, Gruppen und Diensten in Azure zugewiesen werden können.
 
 
-      Security Center bewertet die Konfiguration Ihrer Ressourcen, um die Sicherheitsprobleme und Sicherheitsrisiken zu identifizieren. In Security Center werden Ihnen nur dann Informationen zu einer Ressource angezeigt, wenn Ihnen für das Abonnement oder die Ressourcengruppe, der eine Ressource angehört, die Rolle „Besitzer“, „Mitwirkender“ oder „Leser“ zugewiesen ist.
+      Defender für Cloud bewertet die Konfiguration Ihrer Ressourcen, um die Sicherheitsprobleme und Sicherheitsrisiken zu identifizieren. In Defender für Cloud werden Ihnen nur dann Informationen zu einer Ressource angezeigt, wenn Ihnen für das Abonnement oder die Ressourcengruppe, der eine Ressource angehört, die Rolle „Besitzer“, „Mitwirkender“ oder „Leser“ zugewiesen ist.
 
 
-      Informationen zu Rollen und zulässigen Aktionen in Security Center finden Sie unter [Permissions in Azure Security Center](security-center-permissions.md) (Berechtigungen in Azure Security Center).
+      Weitere Informationen zu Rollen und zulässigen Aktionen in Defender für Cloud finden Sie unter [Berechtigungen in Microsoft Defender für Cloud](permissions.md).
   - question: Wie kann ich eine Sicherheitsrichtlinie ändern?
     answer: >-
       Damit Sie eine Sicherheitsrichtlinie ändern können, müssen Sie Sicherheitsadministrator oder Besitzer bzw. Mitwirkender dieses Abonnements sein.
 
 
-      Weitere Informationen dazu, wie eine Sicherheitsrichtlinie konfiguriert wird, finden Sie unter [Festlegen von Sicherheitsrichtlinien in Azure Security Center](tutorial-security-policy.md).
+      Informationen zum Konfigurieren einer Sicherheitsrichtlinie finden Sie unter [Festlegen von Sicherheitsrichtlinien in Microsoft Defender für Cloud](tutorial-security-policy.md).

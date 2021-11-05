@@ -5,12 +5,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: contperf-fy21q1
 ms.date: 08/21/2020
-ms.openlocfilehash: 26e3c3f5daded5feaaa9063592e772314939f90f
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 1c2f8d327596c3f2d1ed3dde8611152b0bccd72a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130164601"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131033055"
 ---
 # <a name="tutorial-create-a-scala-maven-application-for-apache-spark-in-hdinsight-using-intellij"></a>Tutorial: Erstellen einer Scala Maven-Anwendung für Apache Spark in HDInsight mithilfe von IntelliJ
 
@@ -34,7 +34,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 * [Oracle Java Development Kit.](https://www.azul.com/downloads/azure-only/zulu/)  In diesem Tutorial wird die Java-Version 8.0.202 verwendet.
 
-* Eine Java-IDE. In diesem Artikel wird [IntelliJ IDEA Community  2018.3.4](https://www.jetbrains.com/idea/download/) verwendet.
+* Eine Java-IDE. In diesem Artikel wird [IntelliJ IDEA Community 2018.3.4](https://www.jetbrains.com/idea/download/) verwendet.
 
 * Azure-Toolkit für IntelliJ.  Weitere Informationen finden Sie unter [Installieren des Azure-Toolkits für IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app#installation-and-sign-in).
 
@@ -226,7 +226,7 @@ Wenn Sie diese Anwendung nicht mehr benötigen, gehen Sie wie folgt vor, um den 
 
 1. Klicken Sie auf **Löschen**. Wählen Sie **Ja** aus.
 
-:::image type="content" source="./media/apache-spark-create-standalone-application/hdinsight-azure-portal-delete-cluster.png" alt-text="HDInsight Azure Portal: Löschen von Clustern" border="true":::
+:::image type="content" source="./media/apache-spark-create-standalone-application/hdinsight-azure-portal-delete-cluster.png" alt-text="Screenshot: Löschen eines HDInsight-Clusters über das Azure-Portal." border="true":::
 
 ## <a name="next-step"></a>Nächster Schritt
 

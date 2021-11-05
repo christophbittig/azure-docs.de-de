@@ -14,12 +14,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df3c243970709ad7ae4bc52f179117affc2d8613
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: a1b237e8347a6a9238dfef505993410413537324
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124776433"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131057189"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Administratorrollen nach Administratoraufgabe in Azure Active Directory
 
@@ -366,6 +366,7 @@ In diesem Artikel finden Sie die erforderlichen Informationen, um Administratorr
 > | Hinzufügen von Benutzern zur Gruppe | Benutzeradministrator |  |
 > | Lizenz zuweisen | Lizenzadministrator | Benutzeradministrator |
 > | Erstellen eines Gastbenutzers | Gasteinladender | Benutzeradministrator |
+> | Zurücksetzen der Gastbenutzer-Einladung | Benutzeradministrator | Globaler Administrator |
 > | Benutzer erstellen | Benutzeradministrator |  |
 > | Löschen von Benutzern | Benutzeradministrator |  |
 > | Ungültige Aktualisierungstoken von Administratoren mit eingeschränkten Berechtigungen (siehe Dokumentation) | Benutzeradministrator |  |

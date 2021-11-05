@@ -17,12 +17,12 @@ ms.date: 08/30/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a8324b82a05d7e78772e0b0b6de3a9bfaa183411
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 65623f4e37397cdb7a21060d238391e105a4b3fd
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "91265390"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131046297"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>Installieren von Azure AD Connect mithilfe einer vorhandenen ADSync-Datenbank
 Azure AD Connect erfordert eine SQL Server-Datenbank zum Speichern von Daten. Sie können entweder die mit Azure AD Connect installierte SQL Server 2012 Express LocalDB-Standardinstanz oder Ihre eigene vollständige Version von SQL Server verwenden. Bei der Installation von Azure AD Connect wurde bisher immer eine neue Datenbank mit dem Namen ADSync erstellt. Ab Azure AD Connect Version 1.1.613.0 können Sie Azure AD Connect optional mit einem Verweis auf eine vorhandene ADSync-Datenbank installieren.
@@ -96,7 +96,7 @@ Anhand der folgenden Tabelle können Sie überprüfen, ob zusätzliche Schritte 
 |-----|-----|
 |Kennworthashsynchronisierung| Die Kennworthashsynchronisierung und die Kennwortrückschreibung werden für Versionen von Azure AD Connect ab 1.2.65.0 vollständig wiederhergestellt.  Wenn Sie die Wiederherstellung mit einer älteren Version von Azure AD Connect durchführen, überprüfen Sie die Einstellungen der Synchronisierungsoptionen für diese Funktionen, um sicherzustellen, dass sie mit Ihrem aktiven Synchronisierungsserver übereinstimmen.  Es sollten keine anderen Konfigurationsschritte erforderlich sein.|
 |Verbund mit AD FS|Azure-Authentifizierungen verwenden weiterhin die für Ihren aktiven Synchronisationsserver konfigurierte AD FS-Richtlinie.  Wenn Sie Azure AD Connect verwenden, um Ihre AD FS-Farm zu verwalten, können Sie optional die Anmeldemethode für den AD FS-Verbund ändern, damit Ihr Standbyserver zur aktiven Synchronisationsinstanz wird.   Wenn auf dem aktiven Synchronisationsserver Geräteoptionen aktiviert sind, konfigurieren Sie diese Optionen auf diesem Server, indem Sie die Aufgabe „Geräteoptionen konfigurieren“ ausführen.|
-|Pass-Through-Authentifizierung und einmaliges Anmelden beim Desktop|Aktualisieren Sie die Anmeldemethode, um die Konfiguration auf Ihrem aktiven Synchronisationsserver anzupassen.  Wenn diese nicht erfolgt, bevor der Server zum primären Server hochgestuft wird, wird die Pass-Through-Authentifizierung zusammen mit der nahtlosen einmaligen Anmeldung deaktiviert und Ihr Mandant wird möglicherweise gesperrt, wenn Sie keine Option zur Kennworthashsynchronisierung als Sicherungsanmeldung haben. Beachten Sie auch, dass, wenn Sie die Pass-Through-Authentifizierung im Stagingmodus aktivieren, ein neuer Authentifizierungs-Agent installiert, registriert und als hochverfügbarer Agent ausgeführt wird, der Anmeldeanforderungen akzeptiert.|
+|Pass-Through-Authentifizierung und einmaliges Anmelden beim Desktop|Aktualisieren Sie die Anmeldemethode, um die Konfiguration auf Ihrem aktiven Synchronisationsserver anzupassen.  Wenn diese nicht erfolgt, bevor der Server zum primären Server hochgestuft wird, wird die Passthrough-Authentifizierung zusammen mit der nahtlosen einmaligen Anmeldung deaktiviert und Ihr Mandant wird möglicherweise gesperrt, wenn Sie über keine Sicherungsanmeldeoption zur Kennwort-Hashsynchronisierung verfügen. Beachten Sie auch, dass, wenn Sie die Pass-Through-Authentifizierung im Stagingmodus aktivieren, ein neuer Authentifizierungs-Agent installiert, registriert und als hochverfügbarer Agent ausgeführt wird, der Anmeldeanforderungen akzeptiert.|
 |Verbund mit PingFederate|Azure-Authentifizierungen verwenden weiterhin die für Ihren aktiven Synchronisationsserver konfigurierte PingFederate-Richtlinie.  Sie können optional die Anmeldemethode für die PingFederate-Vorbereitung ändern, damit Ihr Standbyserver zur aktiven Synchronisationsinstanz wird.  Dieser Schritt kann verschoben werden, bis Sie zusätzliche Domänen mit PingFederate verbinden müssen.|
 
 ## <a name="next-steps"></a>Nächste Schritte

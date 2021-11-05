@@ -3,15 +3,15 @@ title: Verwalten von Modulen in Azure Automation
 description: In diesem Artikel erfahren Sie, wie Sie PowerShell-Module verwenden, um Cmdlets in Runbooks und DSC-Ressourcen in DSC-Konfigurationen zu aktivieren.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 04/28/2021
+ms.date: 11/01/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: f10c1f70026b905521193a0dd511ba1e65de6849
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 733cc6cb4b783a379c20328f0a31a4373ee3e372
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129274024"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131427223"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Verwalten von Modulen in Azure Automation
 
@@ -152,19 +152,29 @@ Beim Importieren eines Az-Moduls in Ihr Automation-Konto wird das Modul nicht au
 
 Sie können die Az-Module aus dem Azure-Portal in das Automation-Konto importieren. Da [Az.Accounts](https://www.powershellgallery.com/packages/Az.Accounts/1.1.0) eine Abhängigkeit für die anderen Az-Module darstellt, muss dieses Modul vor den anderen Modulen importiert werden.
 
+> [!NOTE]
+>  Mit der Einführung der Unterstützung von **PowerShell 7.1 (Vorschauversion)** wurde die Option **Katalog durchsuchen** mit den folgenden Änderungen aktualisiert:
+
+-  **Katalog durchsuchen** ist auf dem Blatt **Prozessautomatisierung** > **Module** verfügbar. 
+-  Auf der Seite **Module** werden zwei neue Spalten angezeigt: **Modulversion** und **Runtimeversion**.
+
 1. Melden Sie sich beim Azure-[Portal](https://portal.azure.com) an.
 1. Suchen Sie nach **Automation-Konten**, und wählen Sie diese Option aus.
 1. Wählen Sie auf der Seite **Automation-Konten** in der entsprechenden Liste Ihr Automation-Konto aus.
 1. Wählen Sie in Ihrem Automation-Konto unter **Freigegebene Ressourcen** die Option **Module** aus.
-1. Wählen Sie **Katalog durchsuchen** aus.  
-1. Geben Sie in die Suchleiste den Namen des Moduls ein (z. B. `Az.Accounts`).
-1. Wählen Sie auf der Seite „PowerShell-Module“ die Option **Importieren** aus, um das Modul in Ihr Automation-Konto zu importieren.
+1. Wählen Sie **Modul hinzufügen** aus. Auf der Seite **Modul hinzufügen** können Sie eine der folgenden Optionen auswählen:
+      1. **Nach Datei suchen**: Wählt eine Datei auf Ihrem lokalen Computer aus.
+      1. **Aus Katalog durchsuchen**: Sie können ein vorhandenes Modul im Katalog suchen und auswählen.
+1. Klicken Sie auf **Auswählen**, um ein Modul auszuwählen.
+1. Wählen Sie **Runtimeversion** aus, und klicken Sie auf **Importieren**.
 
-    ![Screenshot: Importieren von Modulen in Ihr Automation-Konto](../media/modules/import-module.png)
+      :::image type="content" source="../media/modules/import-module.png" alt-text="Screenshot: Importieren von Modulen in Ihr Automation-Konto":::
+
+1. Auf der Seite **Module** können Sie das importierte Modul unter dem Automation-Konto anzeigen.
 
 Sie können diesen Importvorgang auch über den [PowerShell-Katalog](https://www.powershellgallery.com) ausführen, indem Sie nach dem zu importierenden Modul suchen. Wenn Sie das Modul gefunden haben, wählen Sie es aus, und wählen Sie dann die Registerkarte **Azure Automation** aus. Wählen Sie **Deploy to Azure Automation** (In Azure Automation bereitstellen) aus.
 
-![Screenshot: direktes Importieren von Modulen aus dem PowerShell-Katalog](../media/modules/import-gallery.png)
+:::image type="content" source="../media/modules/import-gallery.png" alt-text="Screenshot: Direktes Importieren von Modulen aus dem PowerShell-Katalog":::
 
 ### <a name="test-your-runbooks"></a>Testen Ihres Runbooks
 

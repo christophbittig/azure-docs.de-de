@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: reference
 ms.date: 09/27/2021
-ms.openlocfilehash: edd43fc34a1b94c3d389670c7417ea9123d1586f
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: e3018a1b9d94ca1f750bf8d17b1ea6ba028ad07f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129214729"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131056146"
 ---
 # <a name="supported-classifications-in-azure-purview"></a>Unterstützte Klassifizierungen in Azure Purview
 
@@ -43,13 +43,16 @@ Für die Datenaufbereitung für den Bloom-Filter vom Typ „Person“ wurden die
 - [US-Volkszählungsdaten aus dem Jahr 2010: Nachnamen (162.000 Einträge)](https://www.census.gov/topics/population/genealogy/data/2010_surnames.html)
 - [Beliebte Babynamen (Quelle: US-Sozialversicherungsnummer): Jahre 1880 bis 2019 (98.000 Einträge)](https://www.ssa.gov/oact/babynames/limits.html)
 
+> [!NOTE]
+> Azure Purview klassifiziert Spalten nur, wenn die Daten Vor-/Nachnamen enthalten. Azure Purview klassifiziert keine Spalten, die vollständige Namen enthalten.
+
 ## <a name="regex-classifications"></a>Reguläre Ausdrücke: Klassifizierungen
 
 ## <a name="aba-routing-number"></a>ABA-Nummer
 
 ### <a name="format"></a>Format
 
-Neun Ziffern in einem formatierten oder unformatierten Muster
+Neun Ziffern, die in einem formatierten oder unformatierten Muster vorliegen können
 
 ### <a name="pattern"></a>Muster
 
@@ -9301,7 +9304,7 @@ Zwei Buchstaben (keine Beachtung der Groß-/Kleinschreibung), gefolgt von sieben
 
 Ja
 
-### <a name="keywords"></a>Schlüsselwörter
+### <a name="keywords"></a>Keywords
 
 #### <a name="keywords_eu_passport_number"></a>Keywords_eu_passport_number
 
@@ -10775,7 +10778,7 @@ acht Ziffern, gefolgt von einem Zeichen:
 
 Ja
 
-### <a name="keywords"></a>Schlüsselwörter
+### <a name="keywords"></a>Keywords
 
 #### <a name="keywords_eu_drivers_license_number"></a>Keywords_eu_driver's_license_number
 
@@ -11716,7 +11719,7 @@ Kombination aus 18 Buchstaben und Ziffern im angegebenen Format
 
 Ja
 
-### <a name="keywords"></a>Schlüsselwörter
+### <a name="keywords"></a>Keywords
 
 #### <a name="keywords_eu_drivers_license_number"></a>Keywords_eu_driver's_license_number
 

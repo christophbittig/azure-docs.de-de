@@ -1,37 +1,40 @@
 ---
-title: Secure Score in Azure Security Center
-description: Beschreibung des Secure Scores von Azure Security Center und seiner Sicherheitskontrollen
+title: Sicherheitsbewertung in Microsoft Defender für Cloud
+description: Hier finden Sie eine Beschreibung der Sicherheitsbewertung von Microsoft Defender für Cloud und seiner Sicherheitskontrollen.
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: article
 ms.date: 09/01/2021
 ms.author: memildin
-ms.openlocfilehash: 4bfacebc9961cdbac89252783f47267002a69a66
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 6cc1cf4aac9b8f363770495d976ad65b6ff79b49
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128597244"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131014321"
 ---
-# <a name="secure-score-in-azure-security-center"></a>Secure Score in Azure Security Center
+# <a name="secure-score-in-microsoft-defender-for-cloud"></a>Sicherheitsbewertung in Microsoft Defender für Cloud
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 ## <a name="introduction-to-secure-score"></a>Einführung in Secure Score
 
-Azure Security Center hat zwei Hauptziele: 
+Microsoft Defender für Cloud hat zwei Hauptziele: 
 
 - Ihre aktuelle Sicherheitslage besser verstehen
 - Ihre Sicherheit effizient und effektiv verbessern
 
-Der zentrale Aspekt von Security Center, mit dem Sie diese Ziele erreichen können, ist die **Sicherheitsbewertung**.
+Der zentrale Aspekt von Defender für Cloud, mit dem Sie diese Ziele erreichen können, ist die **Sicherheitsbewertung**.
 
-Security Center führt eine ständige Bewertung Ihrer Ressourcen, Abonnements und Organisation in Bezug auf Sicherheitsprobleme durch. Anschließend werden alle Ergebnisse in einer einzigen Bewertung zusammengefasst, sodass Sie auf einen Blick Ihre aktuelle Sicherheitssituation erkennen können: je höher die Bewertung, desto geringer das ermittelte Risiko.
+Defender für Cloud führt eine ständige Bewertung Ihrer Ressourcen, Abonnements und Organisation in Bezug auf Sicherheitsprobleme durch. Anschließend werden alle Ergebnisse in einer einzigen Bewertung zusammengefasst, sodass Sie auf einen Blick Ihre aktuelle Sicherheitssituation erkennen können: je höher die Bewertung, desto geringer das ermittelte Risiko.
 
 Die Sicherheitsbewertung wird auf den Seiten des Azure-Portals als Prozentwert angezeigt, aber auch die zugrunde liegenden Werte sind übersichtlich dargestellt:
 
 :::image type="content" source="./media/secure-score-security-controls/single-secure-score-via-ui.png" alt-text="Sicherheitsbewertung insgesamt, wie im Portal angezeigt":::
 
-Um Ihre Sicherheit zu verbessern, sehen Sie auf der Seite „Empfehlungen“ von Security Center nach, welche Maßnahmen erforderlich sind, um Ihre Bewertung zu steigern. Jede Empfehlung enthält Anweisungen, die Ihnen helfen sollen, das spezifische Problem zu beheben.
+Um Ihre Sicherheit zu verbessern, sehen Sie auf der Seite mit Empfehlungen von Defender für Cloud nach, welche Maßnahmen erforderlich sind, um Ihre Bewertung zu steigern. Jede Empfehlung enthält Anweisungen, die Ihnen helfen sollen, das spezifische Problem zu beheben.
 
 Die Empfehlungen sind nach **Sicherheitskontrollen** gruppiert. Jede Sicherheitskontrolle ist eine logische Gruppe verwandter Sicherheitsempfehlungen, die anfällige Angriffsflächen widerspiegelt. Ihre Bewertung verbessert sich nur, wenn Sie *alle* Empfehlungen für eine einzelne Ressource innerhalb einer Sicherheitskontrolle umsetzen. Um zu sehen, wie gut jede einzelne Angriffsfläche in Ihrer Organisation geschützt ist, sehen Sie sich die Bewertungen für die einzelnen Sicherheitskontrollen an.
 
@@ -41,9 +44,9 @@ Weitere Informationen finden Sie unter [Berechnen Ihrer Sicherheitsbewertung](se
 
 Der jeweilige Beitrag der einzelnen Sicherheitskontrollen zur gesamten Sicherheitsbewertung ist auf der Seite mit Empfehlungen eindeutig angegeben.
 
-:::image type="content" source="./media/secure-score-security-controls/security-controls.png" alt-text="Sicherheitskontrollen von Azure Security Center und deren Auswirkungen auf Ihre Sicherheitsbewertung" lightbox="./media/secure-score-security-controls/security-controls.png":::
+:::image type="content" source="./media/secure-score-security-controls/security-controls.png" alt-text="Sicherheitskontrollen von Microsoft Defender für Cloud und deren Auswirkungen auf Ihre Sicherheitsbewertung" lightbox="./media/secure-score-security-controls/security-controls.png":::
 
-Um alle zu erzielenden Punkte für eine Sicherheitskontrolle zu erhalten, müssen alle Ihre Ressourcen allen Sicherheitsempfehlungen innerhalb der Sicherheitskontrolle entsprechen. Beispielsweise enthält Security Center mehrere Empfehlungen zum Schützen Ihrer Verwaltungsports. Sie müssen alle Empfehlungen umsetzen, um eine Änderung der Sicherheitsbewertung zu erzielen.
+Um alle zu erzielenden Punkte für eine Sicherheitskontrolle zu erhalten, müssen alle Ihre Ressourcen allen Sicherheitsempfehlungen innerhalb der Sicherheitskontrolle entsprechen. Beispielsweise enthält Defender für Cloud mehrere Empfehlungen zum Schützen Ihrer Verwaltungsports. Sie müssen alle Empfehlungen umsetzen, um eine Änderung der Sicherheitsbewertung zu erzielen.
 
 ### <a name="example-scores-for-a-control"></a>Beispielbewertungen für ein Kontrollelement
 
@@ -52,7 +55,7 @@ Um alle zu erzielenden Punkte für eine Sicherheitskontrolle zu erhalten, müsse
 
 In diesem Beispiel:
 
-| #  | Name                                           | Beschreibung                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| #  | Name                                           | BESCHREIBUNG                                                                                                                                                                                                                                                                                                                                                                                                                                |
 |:-:|------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 1 | **Sicherheitskontrolle „Sicherheitsrisiken beheben“** | Dieses Kontrollelement gruppiert mehrere Empfehlungen im Zusammenhang mit der Ermittlung und Behebung bekannter Sicherheitsrisiken.                                                                                                                                                                                                                                                                                                                                   |
 | 2 | **Maximale Bewertung**                                  | Die maximale Anzahl von Punkten, die Sie durch Erfüllen aller Empfehlungen innerhalb eines Kontrollelements erhalten können. Die maximale Bewertung für ein Kontrollelement gibt die relative Bedeutung dieses Kontrollelements an und wird für jede Umgebung korrigiert. Verwenden Sie die maximale Bewertung, um die Probleme zu selektieren, die zuerst behandelt werden müssen.<br>Eine Liste aller Kontrollelemente und ihrer maximalen Bewertungen finden Sie unter [Sicherheitskontrollen und deren Empfehlungen](#security-controls-and-their-recommendations). |
@@ -69,7 +72,7 @@ In diesem Beispiel:
 |-|-|
 |**Aktuelle Bewertung der Sicherheitskontrolle**|<br>![Gleichung zum Berechnen der Bewertung einer Sicherheitskontrolle](media/secure-score-security-controls/secure-score-equation-single-control.png)<br><br>Jede einzelne Sicherheitskontrolle trägt zur Sicherheitsbewertung bei. Jede Ressource, die von einer Empfehlung innerhalb des Kontrollelements betroffen ist, trägt zur aktuellen Bewertung des Kontrollelements bei. Die aktuelle Bewertung für jedes Kontrollelement ist ein Maß für den Status der Ressourcen *innerhalb* des Kontrollelements.<br>![QuickInfos mit den Werten, die beim Berechnen der aktuellen Bewertung der Sicherheitskontrolle verwendet werden](media/secure-score-security-controls/security-control-scoring-tooltips.png)<br>In diesem Beispiel wird die maximale Bewertung von 6 durch 78 dividiert, da dies die Summe aus fehlerfreien und fehlerhaften Ressourcen ist.<br>6 / 78 = 0,0769<br>Die Multiplikation dieses Ergebnisses mit der Anzahl der fehlerfreien Ressourcen (4) ergibt die aktuelle Bewertung:<br>0,0769 * 4 = **0,31**<br><br>|
 |**Sicherheitsbewertung**<br>Ein Abonnement|<br>![Gleichung zum Berechnen der Sicherheitsbewertung eines Abonnements](media/secure-score-security-controls/secure-score-equation-single-sub.png)<br><br>![Sicherheitsbewertung eines einzelnen Abonnements, wenn alle Kontrollen aktiviert sind](media/secure-score-security-controls/secure-score-example-single-sub.png)<br>In diesem Beispiel gibt es ein einzelnes Abonnement, für das alle Sicherheitskontrollen verfügbar sind (potenzielle Höchstbewertung sind 60 Punkte). Die Bewertung gibt 28 Punkte der möglichen 60 Punkte an. Die verbleibenden 32 Punkte sind in den Zahlen für die potenzielle Bewertungssteigerung der Sicherheitskontrollen enthalten.<br>![Liste der Kontrollen und potenziellen Bewertungssteigerung](media/secure-score-security-controls/secure-score-example-single-sub-recs.png)|
-|**Sicherheitsbewertung**<br>Mehrere Abonnements|<br>![Gleichung zum Berechnen der Sicherheitsbewertung für mehrere Abonnements](media/secure-score-security-controls/secure-score-equation-multiple-subs.png)<br><br>Wenn Sie die kombinierte Bewertung für mehrere Abonnements berechnen, enthält Security Center eine *Gewichtung* für jedes Abonnement. Die relativen Gewichtungen für Ihre Abonnements werden von Security Center basierend auf Faktoren wie der Anzahl der Ressourcen bestimmt.<br>Die aktuelle Bewertung für die einzelnen Abonnements wird auf die gleiche Weise berechnet wie für ein einziges Abonnement, aber dann wird die Gewichtung wie in der Gleichung dargestellt angewendet.<br>Beim Anzeigen mehrerer Abonnements werden von Secure Score alle Ressourcen in allen aktivierten Richtlinien ausgewertet und nach deren kombinierter Auswirkung auf die Höchstbewertung der einzelnen Sicherheitskontrollen gruppiert.<br>![Sicherheitsbewertung für mehrere Abonnements, wenn alle Sicherheitskontrollen aktiviert sind](media/secure-score-security-controls/secure-score-example-multiple-subs.png)<br>Die kombinierte Bewertung ist **kein** Durchschnittswert, sondern vielmehr die Auswertung des Status aller Ressourcen in allen Abonnements.<br>Wenn Sie die Seite mit den Empfehlungen aufrufen und die potenziell verfügbaren Punkte addieren, werden Sie feststellen, dass es sich hierbei um die Differenz zwischen der aktuellen Bewertung (24) und der verfügbaren Höchstbewertung (60) handelt.|
+|**Sicherheitsbewertung**<br>Mehrere Abonnements|<br>![Gleichung zum Berechnen der Sicherheitsbewertung für mehrere Abonnements](media/secure-score-security-controls/secure-score-equation-multiple-subs.png)<br><br>Wenn Sie die kombinierte Bewertung für mehrere Abonnements berechnen, enthält Defender für Cloud eine *Gewichtung* für jedes Abonnement. Die relativen Gewichtungen für Ihre Abonnements werden von Defender für Cloud basierend auf Faktoren wie der Anzahl der Ressourcen bestimmt.<br>Die aktuelle Bewertung für die einzelnen Abonnements wird auf die gleiche Weise berechnet wie für ein einziges Abonnement, aber dann wird die Gewichtung wie in der Gleichung dargestellt angewendet.<br>Beim Anzeigen mehrerer Abonnements werden von Secure Score alle Ressourcen in allen aktivierten Richtlinien ausgewertet und nach deren kombinierter Auswirkung auf die Höchstbewertung der einzelnen Sicherheitskontrollen gruppiert.<br>![Sicherheitsbewertung für mehrere Abonnements, wenn alle Sicherheitskontrollen aktiviert sind](media/secure-score-security-controls/secure-score-example-multiple-subs.png)<br>Die kombinierte Bewertung ist **kein** Durchschnittswert, sondern vielmehr die Auswertung des Status aller Ressourcen in allen Abonnements.<br>Wenn Sie die Seite mit den Empfehlungen aufrufen und die potenziell verfügbaren Punkte addieren, werden Sie feststellen, dass es sich hierbei um die Differenz zwischen der aktuellen Bewertung (24) und der verfügbaren Höchstbewertung (60) handelt.|
 
 
 ### <a name="which-recommendations-are-included-in-the-secure-score-calculations"></a>Welche Empfehlungen sind in den Berechnungen zur Sicherheitsbewertung enthalten?
@@ -84,22 +87,22 @@ Beispiel für eine Vorschauempfehlung:
 
 ## <a name="improve-your-secure-score"></a>Verbessern Ihrer Sicherheitsbewertung
 
-Zum Verbessern Ihrer Sicherheitsbewertung setzen Sie die Sicherheitsempfehlungen in Ihrer Empfehlungsliste um. Sie können jede Empfehlung manuell für jede Ressource korrigieren oder die Option **Korrigieren** (falls verfügbar) verwenden, um ein Problem schnell für mehrere Ressourcen zu beheben. Weitere Informationen finden Sie unter [Umsetzen von Empfehlungen](security-center-remediate-recommendations.md).
+Zum Verbessern Ihrer Sicherheitsbewertung setzen Sie die Sicherheitsempfehlungen in Ihrer Empfehlungsliste um. Sie können jede Empfehlung manuell für jede Ressource korrigieren oder die Option **Korrigieren** (falls verfügbar) verwenden, um ein Problem schnell für mehrere Ressourcen zu beheben. Weitere Informationen finden Sie unter [Umsetzen von Empfehlungen](implement-security-recommendations.md).
 
 Eine andere Möglichkeit, Ihre Bewertung zu verbessern und sicherzustellen, dass Ihre Benutzer keine Ressourcen erstellen, die sich negativ auf Ihre Bewertung auswirken, besteht darin, die Erzwingungs- und Ablehnungsoptionen für die entsprechenden Empfehlungen zu konfigurieren. Weitere Informationen finden Sie unter [Verhindern von Fehlkonfigurationen mit den Optionen zum Erzwingen/Ablehnen für Empfehlungen](prevent-misconfigurations.md).
 
 ## <a name="security-controls-and-their-recommendations"></a>Sicherheitskontrollen und deren Empfehlungen
 
-In der folgenden Tabelle sind die Sicherheitskontrollen in Azure Security Center aufgelistet. Für jede Sicherheitskontrolle ist die maximale Anzahl von Punkten angegeben, die Ihrer Sicherheitsbewertung hinzugefügt wird, wenn Sie *alle* in der Sicherheitskontrolle aufgeführten Empfehlungen für *alle* Ihre Ressourcen umsetzen. 
+In der folgenden Tabelle sind die Sicherheitskontrollen in Microsoft Defender für Cloud aufgelistet. Für jede Sicherheitskontrolle ist die maximale Anzahl von Punkten angegeben, die Ihrer Sicherheitsbewertung hinzugefügt wird, wenn Sie *alle* in der Sicherheitskontrolle aufgeführten Empfehlungen für *alle* Ihre Ressourcen umsetzen. 
 
-Die Sicherheitsempfehlungen, die mit Security Center bereitgestellt werden, sind auf die verfügbaren Ressourcen in der Umgebung der jeweiligen Organisation zugeschnitten. Die Empfehlungen können durch [Deaktivieren von Richtlinien](tutorial-security-policy.md#disable-security-policies-and-disable-recommendations) und [Ausnehmen bestimmter Ressourcen von einer Empfehlung](exempt-resource.md) weiter angepasst werden. 
+Die Sicherheitsempfehlungen, die mit Defender für Cloud bereitgestellt werden, sind auf die verfügbaren Ressourcen in der Umgebung der jeweiligen Organisation zugeschnitten. Die Empfehlungen können durch [Deaktivieren von Richtlinien](tutorial-security-policy.md#disable-security-policies-and-disable-recommendations) und [Ausnehmen bestimmter Ressourcen von einer Empfehlung](exempt-resource.md) weiter angepasst werden. 
  
 Die zugewiesenen Azure Policy-Initiativen sollten von jeder Organisation sorgfältig geprüft werden. 
 
 > [!TIP]
 > Ausführliche Informationen zur Überprüfung und Bearbeitung von Initiativen finden Sie unter [Arbeiten mit Sicherheitsrichtlinien](tutorial-security-policy.md). 
 
-Die Standardsicherheitsinitiative von Security Center basiert zwar auf branchenüblichen bewährten Methoden und Standards, es gibt jedoch Szenarien, in denen die unten aufgeführten integrierten Empfehlungen möglicherweise nicht uneingeschränkt für Ihre Organisation geeignet sind. Daher ist es manchmal erforderlich, die Standardinitiative anzupassen (ohne die Sicherheit zu beeinträchtigen). Dadurch wird sichergestellt, dass sie mit den Richtlinien Ihrer Organisation sowie mit Branchenstandards, gesetzlichen Standards und Benchmarks in Einklang steht, die Sie erfüllen müssen.<br><br>
+Die Standardsicherheitsinitiative von Defender für Cloud basiert zwar auf branchenüblichen bewährten Methoden und Standards, es gibt jedoch Szenarien, in denen die unten aufgeführten integrierten Empfehlungen möglicherweise nicht uneingeschränkt für Ihre Organisation geeignet sind. Daher ist es manchmal erforderlich, die Standardinitiative anzupassen (ohne die Sicherheit zu beeinträchtigen). Dadurch wird sichergestellt, dass sie mit den Richtlinien Ihrer Organisation sowie mit Branchenstandards, gesetzlichen Standards und Benchmarks in Einklang steht, die Sie erfüllen müssen.<br><br>
 
 [!INCLUDE [security-center-controls-and-recommendations](../../includes/asc/security-control-recommendations.md)]
 
@@ -125,6 +128,6 @@ In diesem Artikel wurden die Sicherheitsbewertung und die darin enthaltenen Sich
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- [Sicherheitsempfehlungen in Azure Security Center](security-center-recommendations.md)
-- [Umsetzen von Empfehlungen in Azure Security Center](security-center-remediate-recommendations.md)
+- [Sicherheitsempfehlungen in Azure Security Center](review-security-recommendations.md)
+- [Umsetzen von Empfehlungen in Azure Security Center](implement-security-recommendations.md)
 - [Anzeigen der GitHub-basierten Tools für die programmgesteuerte Arbeit mit Sicherheitsbewertungen](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score)

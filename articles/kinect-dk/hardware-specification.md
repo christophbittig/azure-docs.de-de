@@ -7,18 +7,16 @@ ms.prod: kinect-dk
 ms.date: 03/18/2021
 ms.topic: article
 keywords: Azure, Kinect, Spezifikationen, Hardware, DK, Funktionen, Tiefe, Farbe, RGB, IMU, Mikrofon, Array, Tiefe
-ms.custom:
-- CI 114092
-- CSSTroubleshooting
+ms.custom: CI 114092, CSSTroubleshooting
 audience: ITPro
 manager: dcscontentpm
 ms.localizationpriority: high
-ms.openlocfilehash: b5ec67537fe0bd8732b4068c0ed52861ed8f2c1a
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 45941395864bde4442748671c6b5c33da81b319d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2021
-ms.locfileid: "116985848"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131082491"
 ---
 # <a name="azure-kinect-dk-hardware-specifications"></a>Hardwarespezifikationen für Azure Kinect DK
 
@@ -155,7 +153,7 @@ Die Anbieter-ID ist 0x045E (Microsoft). Die folgende Tabelle zeigt die Produkt-I
 
 |    USB-Schnittstelle        |    PNP-IP    |     Hinweise            |
 |-------------------------|--------------|----------------------|
-|    USB 3.1-Hub (1. Generation)    |    0x097A    |    Haupthub    |
+|    USB3.1-Hub (2. Generation)    |    0x097A    |    Haupthub    |
 |    USB 2.0-Hub         |    0x097B    |    HS-USB          |
 |    Tiefenkamera       |    0x097C    |    USB 3.0            |
 |    Farbkamera       |    0x097D    |    USB 3.0            |

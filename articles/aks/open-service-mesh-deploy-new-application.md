@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 8/26/2021
 ms.custom: mvc, devx-track-azurecli
 ms.author: pgibson
-ms.openlocfilehash: 77728c7b61fc6b76cb5ecb51ff1d90e0c0a93e99
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 1dc58fa0709cdf1e09482a3f3ac3ee05788cd1eb
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129535538"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131066860"
 ---
 # <a name="manage-a-new-application-with-the-open-service-mesh-osm-azure-kubernetes-service-aks-add-on"></a>Verwalten einer neuen Anwendung mit dem Open Service Mesh (OSM) Azure Kubernetes Service (AKS) Add-on
 
@@ -22,11 +22,8 @@ Die in dieser Anleitung beschriebenen Schritte gehen davon aus, dass Sie einen A
 Die folgenden Ressourcen müssen installiert sein:
 
 - Azure CLI, Version 2.20.0 oder höher
-- Erweiterung `aks-preview`, Version 0.5.5 oder höher
-- OSM-Version v0.8.0 oder höher
+- OSM, Version 0.11.1 oder höher
 - JSON-Prozessor "jq" Version 1.6+
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ## <a name="create-namespaces-for-the-application"></a>Anlegen von Namensräumen für die Anwendung
 
@@ -72,19 +69,19 @@ Namespace [bookwarehouse] successfully added to mesh [osm]
 ## <a name="deploy-the-bookstore-application-to-the-aks-cluster"></a>Bereitstellen der Bookstore-Anwendung auf dem AKS-Cluster
 
 ```azurecli-interactive
-kubectl apply -f https://raw.githubusercontent.com/openservicemesh/osm/release-v0.9/docs/example/manifests/apps/bookbuyer.yaml
+kubectl apply -f https://raw.githubusercontent.com/openservicemesh/osm/release-v0.11/docs/example/manifests/apps/bookbuyer.yaml
 ```
 
 ```azurecli-interactive
-kubectl apply -f https://raw.githubusercontent.com/openservicemesh/osm/release-v0.9/docs/example/manifests/apps/bookthief.yaml
+kubectl apply -f https://raw.githubusercontent.com/openservicemesh/osm/release-v0.11/docs/example/manifests/apps/bookthief.yaml
 ```
 
 ```azurecli-interactive
-kubectl apply -f https://raw.githubusercontent.com/openservicemesh/osm/release-v0.9/docs/example/manifests/apps/bookstore.yaml
+kubectl apply -f https://raw.githubusercontent.com/openservicemesh/osm/release-v0.11/docs/example/manifests/apps/bookstore.yaml
 ```
 
 ```azurecli-interactive
-kubectl apply -f https://raw.githubusercontent.com/openservicemesh/osm/release-v0.9/docs/example/manifests/apps/bookwarehouse.yaml
+kubectl apply -f https://raw.githubusercontent.com/openservicemesh/osm/release-v0.11/docs/example/manifests/apps/bookwarehouse.yaml
 ```
 
 Nachfolgend sind alle Bereitstellungen-Ausgänge zusammengefasst.

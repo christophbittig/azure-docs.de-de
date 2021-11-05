@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc, contperf-fy21q2, contperf-fy22q1
-ms.openlocfilehash: eb61a41cb7c7425c336145130cc61c76173f4ceb
-ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
+ms.openlocfilehash: 98de0994e430ccf8bc3ab5026e9ef739c603368a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114652371"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131024275"
 ---
 # <a name="what-is-azure-iot-central"></a>Was ist Azure IoT Central?
 
@@ -36,7 +36,7 @@ In der Dokumentation von IoT Central werden vier Benutzerrollen verwendet, die m
 
 - Ein _Lösungsentwickler_ ist zuständig für das [Erstellen einer Anwendung](quick-deploy-iot-central.md), das [Konfigurieren von Regeln und Aktionen](quick-configure-rules.md) und das [Definieren von Integrationen mit anderen Diensten](quick-export-data.md) sowie für die weitere Anpassung der Anwendung für Operatoren und Geräteentwickler.
 - Ein _Operator_ [verwaltet die Geräte](howto-manage-devices-individually.md), die mit der Anwendung verbunden sind.
-- Ein _Administrator_ kümmert sich um administrative Aufgaben – etwa um die [Verwaltung von Benutzern und Rollen](howto-administer.md) innerhalb der Anwendung.
+- Ein _Administrator_ kümmert sich um administrative Aufgaben – etwa um die [Verwaltung von Benutzerrollen und Berechtigungen](howto-administer.md) innerhalb der Anwendung sowie die [Konfiguration von verwalteten Identitäten](howto-manage-iot-central-from-portal.md#configure-a-managed-identity) zum Sichern von Verbindungen mit anderen Diensten.
 - Ein _Geräteentwickler_ [erstellt den Code, der auf einem mit der Anwendung verbundenen Gerät](concepts-telemetry-properties-commands.md) oder [IoT Edge-Modul ausgeführt wird](concepts-iot-edge.md).
 
 ## <a name="create-your-iot-central-application"></a>Erstellen der IoT Central-Anwendung

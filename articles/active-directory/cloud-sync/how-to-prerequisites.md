@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 03/17/2021
+ms.date: 10/19/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 59edce425720c08f2d973e7e61d35c851aa36fd1
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 31850f855cdf109e2337898736d273237ff65058
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128633448"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131018199"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-sync"></a>Voraussetzungen für die Azure AD Connect-Cloudsynchronisierung
 Dieser Artikel enthält Anleitungen zur Auswahl und Verwendung der Azure Active Directory Connect-Cloudsynchronisierung (Azure AD) als Identitätslösung.
@@ -26,7 +26,8 @@ Für die Verwendung der Azure AD Connect-Cloudsynchronisierung benötigen Sie Fo
 
 - Anmeldeinformationen eines Domänenadministrators oder Unternehmensadministrators zum Erstellen des gMSA (group Managed Service Account, gruppenverwaltetes Dienstkonto) für die Azure AD Connect-Cloudsynchronisierung zum Ausführen des-Agent-Diensts 
 - Ein Hybrididentität-Administratorkonto für Ihren Azure AD-Mandanten, das kein Gastbenutzer ist.
-- Einen lokalen Server für den Bereitstellungs-Agent mit Windows 2016 oder höher.  Bei diesem Server sollte es sich um einen Server der Ebene 0 im [Active Directory-Verwaltungsebenenmodell](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material) handeln.
+- Einen lokalen Server für den Bereitstellungs-Agent mit Windows 2016 oder höher.  Bei diesem Server sollte es sich um einen Server der Ebene 0 im [Active Directory-Verwaltungsebenenmodell](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material) handeln.  Die Installation des Agents auf einem Domänencontroller wird unterstützt.
+- Hochverfügbarkeit bezieht sich auf die Fähigkeit von Azure AD Connect-Cloudsynchronisierung, über einen längeren Zeitraum kontinuierlich ohne Fehler zu arbeiten.  Durch die Installation und Ausführung mehrerer aktiver Agents kann Azure AD Connect-Cloudsynchronisierung auch dann weiterhin funktionieren, wenn ein Agent ausfällt.  Microsoft empfiehlt, für Hochverfügbarkeit drei aktive Agents zu installieren.
 - lokale Firewallkonfigurationen
 
 ## <a name="group-managed-service-accounts"></a>Gruppenverwaltete Dienstkonten
@@ -53,6 +54,45 @@ Wenn Sie ein benutzerdefiniertes gMSA-Konto erstellen, müssen Sie sicherstellen
 |Allow |gMSA-Konto |Benutzerobjekte erstellen/löschen|Dieses Objekt und alle Nachfolgerobjekte| 
 
 Die Schritte zum Aktualisieren eines vorhandenen Agents für die Verwendung eines gMSA-Kontos finden Sie unter [Gruppenverwaltete Dienstkonten](how-to-install.md#group-managed-service-accounts).
+
+#### <a name="create-gmsa-account-with-powershell"></a>Erstellen eines gMSA-Kontos mithilfe von PowerShell
+Sie können das folgende PowerShell-Skript verwenden, um ein benutzerdefiniertes gMSA-Konto zu erstellen.  Anschließend können Sie die [gMSA-Cmdlets für die Cloudsynchronisierung](how-to-gmsa-cmdlets.md) verwenden, um präzisere Berechtigungen anzuwenden.
+
+```powershell
+# Filename:    1_SetupgMSA.ps1
+# Description: Creates and installs a custom gMSA account for use with Azure AD Connect cloud sync.
+#
+# DISCLAIMER:
+# Copyright (c) Microsoft Corporation. All rights reserved. This 
+# script is made available to you without any express, implied or 
+# statutory warranty, not even the implied warranty of 
+# merchantability or fitness for a particular purpose, or the 
+# warranty of title or non-infringement. The entire risk of the 
+# use or the results from the use of this script remains with you.
+#
+#
+#
+#
+# Declare variables
+$Name = 'provAPP1gMSA'
+$Description = "Azure AD Cloud Sync service account for APP1 server"
+$Server = "APP1.contoso.com"
+$Principal = Get-ADGroup 'Domain Computers'
+
+# Create service account in Active Directory
+New-ADServiceAccount -Name $Name `
+-Description $Description `
+-DNSHostName $Server `
+-ManagedPasswordIntervalInDays 30 `
+-PrincipalsAllowedToRetrieveManagedPassword $Principal `
+-Enabled $True `
+-PassThru
+
+# Install the new service account on Azure AD Cloud Sync server
+Install-ADServiceAccount -Identity $Name
+```
+
+Weitere Informationen zur Verwendung dieser Cmdlets finden Sie unter [Erste Schritte mit gruppenverwalteten Dienstkonten](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/jj128431(v=ws.11)?redirectedfrom=MSDN).
 
 ### <a name="in-the-azure-active-directory-admin-center"></a>Im Azure Active Directory Admin Center
 

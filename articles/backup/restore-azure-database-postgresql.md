@@ -4,12 +4,12 @@ description: Weitere Informationen zum Wiederherstellen von Azure Database for P
 ms.topic: how-to
 ms.date: 10/01/2021
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: df48d37f61b910dd9e8396fb8460d98479186f9c
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 2eb0d8bd462c50a0da09b4da059d8c0d185dbd3e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130224028"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131020519"
 ---
 # <a name="restore-azure-database-for-postgresql-backups-preview"></a>Wiederherstellen von Azure Database for PostgreSQL-Sicherungen (Vorschau)
 
@@ -17,8 +17,7 @@ In diesem Artikel wird erläutert, wie Sie eine von Azure Backup gesicherte Date
 
 Sie können eine Datenbank auf jedem beliebigen Azure PostgreSQL-Server innerhalb desselben Abonnements wiederherstellen, wenn der Dienst über die [entsprechenden Berechtigungen](backup-azure-database-postgresql-overview.md#azure-backup-authentication-with-the-postgresql-server) auf dem Zielserver verfügt.
 
-## <a name="restore-a-database-on-the-target-storage-account"></a>Wiederherstellen einer Datenbank im Zielspeicherkonto
-
+## <a name="restore-azure-postgresql-database"></a>Wiederherstellen von Azure Database for PostgreSQL
 
 1. Wechseln Sie zu **Azure Backup-Tresor** -> **Sicherungsinstanzen**. Wählen Sie die Datenbank aus, und klicken Sie auf **Wiederherstellen**.
 

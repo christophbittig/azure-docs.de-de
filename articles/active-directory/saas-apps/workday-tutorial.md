@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/06/2021
 ms.author: jeedes
-ms.openlocfilehash: d3e027c8a6de4cdd73197909289a00659a5839e7
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: a0a65e424d295b6cecd478a7fdff9ae8df79a3fd
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124745473"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131039951"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Workday
 
@@ -197,7 +197,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
     e. Klicken Sie auf **OK**.
 
     > [!NOTE]
-    > Stellen Sie sicher, dass Sie das einmalige Anmelden ordnungsgemäß eingerichtet haben. Falls Sie das einmalige Anmelden mit der falschen Einrichtung aktivieren, können Sie die Anwendung möglicherweise nicht mit Ihren Anmeldeinformationen öffnen und werden gesperrt. In diesem Fall bietet Workday eine Sicherungs-URL für die Anmeldung, mit der Benutzer ihren normalen Benutzernamen mit Kennwort im folgenden Format verwenden können: [Ihre Workday-URL]/login.flex?redirect=n
+    > Stellen Sie sicher, dass Sie das einmalige Anmelden ordnungsgemäß eingerichtet haben. Wenn Sie das einmalige Anmelden mit dem falschen Setup aktivieren, können Sie die Anwendung möglicherweise nicht mit Ihren Anmeldeinformationen öffnen und gesperrt werden. In diesem Fall stellt Workday eine Sicherungs-Anmelde-URL bereit, mit der sich Benutzer*innen mit ihrem normalen Benutzernamen und Kennwort im folgenden Format anmelden können: [Ihre Workday-URL]/login.flex?redirect=n
 
 ### <a name="create-workday-test-user"></a>Erstellen eines Workday-Testbenutzers
 

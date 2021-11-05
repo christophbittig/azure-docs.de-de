@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/29/2021
 ms.author: jeedes
-ms.openlocfilehash: 0a38e05c85da247fdc7a4471d3fbb5d1a99281bc
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 6126cbeec479a1f815fa09cae32e03dc8759a11c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124734459"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131063359"
 ---
 # <a name="tutorial-integrate-atlassian-cloud-with-azure-active-directory"></a>Tutorial: Integrieren von Atlassian Cloud und Azure Active Directory
 
@@ -83,7 +83,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Navigieren Sie zunächst zu Ihrer Atlassian-Produktinstanz, und kopieren und speichern Sie die Instanz-URL.
    > [!NOTE]
-   > Die URL muss das Muster `https://<INSTANCE>.atlassian.com` haben.
+   > Die URL sollte dem Muster `https://<INSTANCE>.atlassian.com` entsprechen.
 
    ![Instanzname](./media/atlassian-cloud-tutorial/instance.png)
 

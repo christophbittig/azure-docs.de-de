@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 09/13/2021
+ms.date: 10/22/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: karenhoran
-ms.reviewer: calebb
+ms.reviewer: calebb, sandeo-MSFT
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae75a0526dcccb39ba6d3b6b7779b9f6b3051039
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 89dab74b476345e08a5b995ad04d7d512d0e3a28
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128592014"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131012641"
 ---
 # <a name="conditional-access-conditions"></a>Bedingter Zugriff: Bedingungen
 
@@ -190,18 +190,23 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 Wenn Sie **Andere Clients** auswählen, können Sie eine Bedingung für Apps mit Standardauthentifizierung über E-Mail-Protokolle wie IMAP, MAPI, POP oder SMTP sowie für ältere Office-Apps angeben, die keine moderne Authentifizierung verwenden.
 
 ## <a name="device-state-preview"></a>Gerätezustand (Vorschau)
+> [!CAUTION]
+> **Diese Previewfunktion ist veraltet.** Kunden sollten die **Bedingung Filter für Geräte** im bedingten Zugriff verwenden, um Szenarien zu erfüllen, die zuvor mithilfe der Gerätestatusbedingung (Vorschau) erreicht wurden.
 
 Mit der Bedingung „Gerätezustand“ können in Hybrid-Azure AD eingebundene Geräte und/oder Geräte ausgeschlossen werden, die mit einer Microsoft Intune-Compliancerichtlinie aus den Richtlinien für bedingten Zugriff einer Organisation als konform markiert sind.
 
 Beispiel: *Alle Benutzer*, die auf die Cloud-App für die *Microsoft Azure-Verwaltung* zugreifen, einschließlich **Alle Gerätezustände**, ausgenommen **Gerät in Hybrid-Azure AD eingebunden** und **Gerät als konform markiert** und für *Zugriffssteuerungen* die Option **Blockieren**. 
    - In diesem Beispiel würde eine Richtlinie erstellt, die nur den Zugriff auf die Microsoft Azure-Verwaltung von Geräten zulässt, die in Hybrid-Azure AD eingebunden oder als konform markiert sind.
 
+Das obige Szenario kann über *Alle Benutzer* konfiguriert werden, indem auf die Cloud-App *Microsoft Azure Management* zugegriffen wird, mit Ausnahme der Bedingung **Filter für Geräte** mit der Regel **device.trustType -ne "ServerAD" -or device.isCompliant -ne True** und für *Zugriffssteuerungen*, **Blockieren**.
+- In diesem Beispiel würde eine Richtlinie erstellt, die nur den Zugriff auf die Microsoft Azure-Verwaltung von Geräten zulässt, die in Hybrid-Azure AD eingebunden oder als konform markiert sind.
+
 > [!IMPORTANT]
 > „Gerätestatus“ und „Filter für Geräte“ können in der Richtlinie für bedingten Zugriff nicht zusammen verwendet werden. „Filter für Geräte“ bietet eine präzisere Zielgruppenadressierung sowie Unterstützung für das Ansteuern von Gerätestatusinformationen über die Eigenschaften `trustType` und `isCompliant`.
 
-## <a name="filters-for-devices-preview"></a>Filter für Geräte (Vorschau)
+## <a name="filter-for-devices"></a>Filtern nach Geräten
 
-Es gibt eine neue optionale Bedingung im bedingten Zugriff, welche die Bezeichnung „Filter für Geräte“ hat. Wenn Sie „Filter für Geräte“ als Bedingung konfigurieren, können Organisationen Geräte anhand von Filtern und mithilfe eines Regelausdrucks für Geräteeigenschaften ein- oder ausschließen. Der Regelausdruck für „Filter für Geräte“ kann mithilfe des Regel-Generators oder der Regelsyntax erstellt werden. Diese Funktion ähnelt der Funktion, die für die Regeln für die dynamische Mitgliedschaft in Gruppen verwendet wird. Weitere Informationen finden Sie im Artikel [Bedingter Zugriff: Filter für Geräte (Vorschau)](concept-condition-filters-for-devices.md).
+Es gibt eine neue optionale Bedingung im bedingten Zugriff, welche die Bezeichnung „Filter für Geräte“ hat. Wenn Sie „Filter für Geräte“ als Bedingung konfigurieren, können Organisationen Geräte anhand eines Filters und mithilfe eines Regelausdrucks für Geräteeigenschaften ein- oder ausschließen. Der Regelausdruck für „Filter für Geräte“ kann mithilfe des Regel-Generators oder der Regelsyntax erstellt werden. Diese Funktion ähnelt der Funktion, die für die Regeln für die dynamische Mitgliedschaft in Gruppen verwendet wird. Weitere Informationen finden Sie im Artikel [Bedingter Zugriff: Filter für Geräte (Vorschau)](concept-condition-filters-for-devices.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

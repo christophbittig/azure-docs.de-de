@@ -841,6 +841,8 @@
           href: managed-instance/transact-sql-tsql-differences-sql-server.md
         - name: Transaktionsreplikation
           href: managed-instance/replication-transactional-overview.md
+        - name: Linkfunktion für SQL MI
+          href: managed-instance/link-feature.md
         - name: Verwaltungsvorgänge
           items:
             - name: Übersicht
@@ -1047,19 +1049,23 @@
               href: managed-instance/timezones-overview.md
             - name: Konfigurieren von Verbindungstypen
               href: managed-instance/connection-types-overview.md
-            - name: Erstellen von Warnungen für eine verwaltete Instanz
+            - name: "Erstellen von Warnungen für SQL\_MI"
               href: managed-instance/alerts-create.md
             - name: Konfigurieren der Bedrohungserkennung
               href: managed-instance/threat-detection-configure.md
         - name: Konfigurieren der Netzwerkeinstellungen
           items:
-            - name: Bestimmen der Größe des Subnetzes für verwaltete Instanzen
+            - name: "Bestimmen der Größe des SQL\_MI-Subnetzes"
               href: managed-instance/vnet-subnet-determine-size.md
-            - name: Erstellen eines neuen VNET und Subnetzes für die verwaltete Instanz
+            - name: "Erstellen eines neuen VNET und Subnetzes für SQL\_MI"
               href: managed-instance/virtual-network-subnet-create-arm-template.md
-            - name: Konfigurieren eines vorhandenen VNET und Subnetzes für die verwaltete Instanz
+            - name: "Konfigurieren eines vorhandenen VNET und Subnetzes für SQL\_MI"
               href: managed-instance/vnet-existing-add-subnet.md
-            - name: Löschen eines Subnetzes nach dem Löschen der verwalteten Instanz
+            - name: "Konfigurieren von Dienstendpunktrichtlinien für SQL\_MI"
+              href: managed-instance/service-endpoint-policies-configure.md
+            - name: "Verschieben von SQL\_MI in ein anderes Subnetz"
+              href: managed-instance/vnet-subnet-move-instance.md
+            - name: "Löschen des Subnetzes nach dem SQL\_MI-Löschvorgang"
               href: managed-instance/virtual-cluster-delete.md
             - name: Konfigurieren von benutzerdefiniertem DNS
               href: managed-instance/custom-dns-configure.md
@@ -1073,7 +1079,7 @@
               href: managed-instance/management-endpoint-verify-built-in-firewall.md
         - name: Migrieren
           items:
-            - name: Leitfaden zum Migrieren von SQL Server zu Azure SQL Managed Instance
+            - name: "Anleitung: Migrieren von SQL\_Server zu SQL\_MI"
               href: migration-guides/managed-instance/sql-server-to-managed-instance-guide.md
             - name: Migrieren einer Datenbank mithilfe des Protokollwiedergabediensts
               href: managed-instance/log-replay-service-migrate.md
@@ -1101,14 +1107,14 @@
   items:
     - name: Dokumentation
       href: virtual-machines/index.yml
+    - name: Neuigkeiten
+      href: virtual-machines/windows/doc-changes-updates-release-notes-whats-new.md
     - name: Windows
       items:
         - name: Übersicht
           items:
             - name: Was ist eine SQL Server-VM?
               href: virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
-            - name: Neuigkeiten
-              href: virtual-machines/windows/doc-changes-updates-release-notes-whats-new.md
         - name: Schnellstarts
           items:
             - name: Portal
@@ -1187,6 +1193,8 @@
                   href: virtual-machines/windows/storage-configuration.md
                 - name: Automatisiertes Patchen
                   href: virtual-machines/windows/automated-patching.md
+                - name: SQL Assessment
+                  href: virtual-machines/windows/sql-assessment-for-sql-vm.md
                 - name: Azure Key Vault-Integration
                   href: virtual-machines/windows/azure-key-vault-integration-configure.md
                 - name: Migrieren von Speicher zu Azure
@@ -1315,6 +1323,14 @@
           items:
             - name: Erstellen eines virtuellen SQL-Computers – Portal
               href: virtual-machines/linux/sql-vm-create-portal-quickstart.md
+        - name: Konzepte
+          items:
+            - name: Erweiterung für den SQL-IaaS-Agent
+              href: virtual-machines/linux/sql-server-iaas-agent-extension-linux.md
+        - name: Exemplarische Vorgehensweisen
+          items:
+            - name: Registrieren mit SQL-IaaS-Erweiterung
+              href: virtual-machines/linux/sql-iaas-agent-extension-register-vm-linux.md
         - name: Tutorials
           items:
             - name: "Einrichten einer Azure\_RHEL-VM-Verfügbarkeitsgruppe mit STONITH"
@@ -1357,7 +1373,7 @@
   items:
     - name: Referenz zur T-SQL-Sprache
       href: /sql/t-sql/language-reference
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/azure-cli-reference-for-sql
     - name: Azure PowerShell
       href: /powershell/module/az.sql

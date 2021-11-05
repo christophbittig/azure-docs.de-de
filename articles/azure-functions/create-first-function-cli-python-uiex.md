@@ -8,12 +8,12 @@ ms.custom:
 - devx-track-azurecli
 - devx-track-azurepowershell
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 8bbd177e5cf9a6148179dfec7f7f6b6c0082cdde
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 951a0cec92d531aa980b519df2a046355997c175
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121739841"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131039333"
 ---
 # <a name="quickstart-create-a-python-function-in-azure-from-the-command-line"></a>Schnellstart: Erstellen einer Python-Funktion über die Befehlszeile in Azure
 
@@ -37,13 +37,13 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
 + Ein <abbr title="Das Profil, mit dem Abrechnungsinformationen zur Azure-Nutzung verwaltet werden.">account</abbr> mit einem aktiven <abbr title="Die grundlegende Organisationsstruktur, in der Sie Ressourcen in Azure verwalten. Diese wird in der Regel einer Einzelperson oder Abteilung innerhalb einer Organisation zugeordnet.">Abonnement</abbr>. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-+ [Azure Functions Core Tools](functions-run-local.md#v2), Version 3.x. 
-  
++ [Azure Functions Core Tools](functions-run-local.md#v2), Version 3.x.
+
 + Entweder die <abbr title="Eine Reihe plattformübergreifender Befehlszeilentools für die Verwendung von Azure-Ressourcen auf Ihrem lokalen Entwicklungscomputer (als Alternative zur Verwendung des Azure-Portals).">Azure CLI</abbr> oder <abbr title="Ein PowerShell-Modul, das Befehle für die Verwendung von Azure-Ressourcen auf Ihrem lokalen Entwicklungscomputer bereitstellt (als Alternative zur Verwendung des Azure-Portals).">Azure PowerShell</abbr> zum Erstellen von Azure-Ressourcen:
 
     + [Azure CLI, Version  2.4 oder höher](/cli/azure/install-azure-cli).
 
-    + [Azure PowerShell](/powershell/azure/install-az-ps), Version 5.0 oder höher.
+    + Das [Az PowerShell-Modul](/powershell/azure/install-az-ps) Version 5.9.0 oder höher
 
 + [Python 3.8 (64 Bit)](https://www.python.org/downloads/release/python-382/), [Python 3.7 (64 Bit)](https://www.python.org/downloads/release/python-375/), [Python 3.6 (64 Bit)](https://www.python.org/downloads/release/python-368/). Diese Versionen werden alle von Version 3.x von Azure Functions unterstützt.
 
@@ -65,7 +65,7 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
 + Führen Sie in einem Terminal- oder Befehlsfenster `func --version` aus, um sich zu vergewissern, dass von <abbr title="Die Befehlszeilentools für die Arbeit mit Azure Functions auf dem lokalen Computer.">Azure Functions Core Tools</abbr> die Version 3.x installiert ist.
 
-+ Führen Sie `(Get-Module -ListAvailable Az).Version` aus, und stellen Sie sicher, dass Version 5.0 oder höher ausgeführt wird. 
++ Führen Sie `(Get-Module -ListAvailable Az).Version` aus, und stellen Sie sicher, dass Version 5.0 oder höher ausgeführt wird.
 
 + Führen Sie `Connect-AzAccount` aus, um sich bei Azure anzumelden und zu überprüfen, ob ein aktives Abonnement vorhanden ist.
 
@@ -119,7 +119,7 @@ py -m venv .venv
 
 ---
 
-Sie führen alle nachfolgenden Befehle in dieser aktivierten virtuellen Umgebung aus. 
+Sie führen alle nachfolgenden Befehle in dieser aktivierten virtuellen Umgebung aus.
 
 <br/>
 
@@ -129,7 +129,7 @@ Sie führen alle nachfolgenden Befehle in dieser aktivierten virtuellen Umgebung
 
 In diesem Abschnitt erstellen Sie ein lokales <abbr title="Ein logischer Container für eine oder mehrere einzelne Funktionen, die zusammen bereitgestellt und verwaltet werden können.">Azure Functions-Projekt</abbr> in Python. Jede Funktion im Projekt reagiert auf einen bestimmten <abbr title="Die Art von Ereignis, durch die der Funktionscode aufgerufen wird – etwa eine HTTP-Anforderung, eine Warteschlangennachricht oder eine bestimmte Uhrzeit.">Trigger (trigger)</abbr>.
 
-1. Führen Sie den Befehl `func init` aus, um in einem Ordner mit dem Namen *LocalFunctionProj* ein Funktionsprojekt mit der angegebenen Runtime zu erstellen:  
+1. Führen Sie den Befehl `func init` aus, um in einem Ordner mit dem Namen *LocalFunctionProj* ein Funktionsprojekt mit der angegebenen Runtime zu erstellen:
 
     ```console
     func init LocalFunctionProj --python
@@ -140,11 +140,11 @@ In diesem Abschnitt erstellen Sie ein lokales <abbr title="Ein logischer Contain
     ```console
     cd LocalFunctionProj
     ```
-    
+
     <br/>
     <details>
     <summary><strong>Was wird im Ordner „LocalFunctionProj“ erstellt?</strong></summary>
-    
+
     Dieser Ordner enthält verschiedene Dateien für das Projekt, z. B. die Konfigurationsdateien [local.settings.json](functions-develop-local.md#local-settings-file) und [host.json](functions-host-json.md). Da *local.settings.json* aus Azure heruntergeladene Geheimnisse enthalten kann, wird die Datei in der *GITIGNORE*-Datei standardmäßig aus der Quellcodeverwaltung ausgeschlossen.
     </details>
 
@@ -152,21 +152,21 @@ In diesem Abschnitt erstellen Sie ein lokales <abbr title="Ein logischer Contain
 
     ```console
     func new --name HttpExample --template "HTTP trigger" --authlevel "anonymous"
-    ```   
+    ```
     Das Argument `--name` ist der eindeutige Name Ihrer Funktion (HttpExample).
 
     Das Argument `--template` gibt den Trigger (HTTP) der Funktion an.
-    
+
     Durch `func new` wird ein Unterordner mit dem Namen der Funktion erstellt. Dieser enthält eine Datei vom Typ *\_\_init\_\_.py* mit dem Code der Funktion sowie eine Konfigurationsdatei namens *function.json*.
 
-    <br/>    
+    <br/>
     <details>
     <summary><strong>Code für __init__.py</strong></summary>
-    
+
     *\_\_init\_\_.py* enthält eine Python-Funktion vom Typ `main()`, die gemäß der Konfiguration in *function.json* ausgelöst wird.
-    
+
     :::code language="python" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/__init__.py":::
-    
+
     Für einen HTTP-Trigger empfängt die Funktion Anforderungsdaten in der Variablen `req`, wie dies in *function.json* definiert ist. `req` ist eine Instanz der [azure.functions.HttpRequest-Klasse](/python/api/azure-functions/azure.functions.httprequest). Das Rückgabeobjekt, das in *function.json* als `$return` definiert ist, ist eine Instanz der [azure.functions.HttpResponse-Klasse](/python/api/azure-functions/azure.functions.httpresponse). Weitere Informationen finden Sie unter [HTTP-Trigger und -Bindungen in Azure Functions](./functions-bindings-http-webhook.md?tabs=python).
     </details>
 
@@ -175,12 +175,12 @@ In diesem Abschnitt erstellen Sie ein lokales <abbr title="Ein logischer Contain
     <summary><strong>Code für „function.json“</strong></summary>
 
     *function.json* ist eine Konfigurationsdatei, die die <abbr title="Deklarative Verbindungen zwischen einer Funktion und anderen Ressourcen. Eine Eingabebindung stellt Daten für die Funktion bereit. Eine Ausgabebindung stellt Daten aus der Funktion für andere Ressourcen bereit.">Eingabe- und Ausgabebindungen</abbr> für die Funktion definiert – einschließlich des Triggertyps.
-    
+
     Falls erforderlich, können Sie `scriptFile` auch so ändern, dass eine andere Python-Datei aufgerufen wird.
-    
+
     :::code language="json" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/function.json":::
-    
-    Für jede Bindung sind eine Richtung, ein Typ und ein eindeutiger Name erforderlich. Der HTTP-Trigger weist eine Eingabebindung vom Typ [`httpTrigger`](functions-bindings-http-webhook-trigger.md) und eine Ausgabebindung vom Typ [`http`](functions-bindings-http-webhook-output.md) auf.    
+
+    Für jede Bindung sind eine Richtung, ein Typ und ein eindeutiger Name erforderlich. Der HTTP-Trigger weist eine Eingabebindung vom Typ [`httpTrigger`](functions-bindings-http-webhook-trigger.md) und eine Ausgabebindung vom Typ [`http`](functions-bindings-http-webhook-output.md) auf.
     </details>
 
 <br/>
@@ -195,21 +195,21 @@ In diesem Abschnitt erstellen Sie ein lokales <abbr title="Ein logischer Contain
     func start
     ```
 
-    Gegen Ende der Ausgabe sollten die folgenden Zeilen angezeigt werden: 
-    
+    Gegen Ende der Ausgabe sollten die folgenden Zeilen angezeigt werden:
+
     <pre class="is-monospace is-size-small has-padding-medium has-background-tertiary has-text-tertiary-invert">
     ...
-    
+
     Now listening on: http://0.0.0.0:7071
     Application started. Press Ctrl+C to shut down.
-    
+
     Http Functions:
-    
+
             HttpExample: [GET,POST] http://localhost:7071/api/HttpExample
     ...
-    
+
     </pre>
-    
+
     <br/>
     <details>
     <summary><strong>„HttpExample“ wird in der Ausgabe nicht angezeigt.</strong></summary>
@@ -242,7 +242,7 @@ Zum Bereitstellen Ihres Funktionscodes in Azure müssen Sie drei Ressourcen erst
 
     Mit dem Befehl [az login](/cli/azure/reference-index#az_login) werden Sie bei Ihrem Azure-Konto angemeldet.
 
-    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell) 
+    # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
     ```azurepowershell
     Connect-AzAccount
     ```
@@ -251,14 +251,14 @@ Zum Bereitstellen Ihres Funktionscodes in Azure müssen Sie drei Ressourcen erst
 
     ---
 
-1. Erstellen Sie eine Ressourcengruppe mit dem Namen `AzureFunctionsQuickstart-rg` in der Region `westeurope`. 
+1. Erstellen Sie eine Ressourcengruppe mit dem Namen `AzureFunctionsQuickstart-rg` in der Region `westeurope`.
 
     # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
-    
+
     ```azurecli
     az group create --name AzureFunctionsQuickstart-rg --location westeurope
     ```
- 
+
     Mit dem Befehl [az group create](/cli/azure/group#az_group_create) wird eine Ressourcengruppe erstellt. Im Allgemeinen erstellen Sie Ressourcengruppen und Ressourcen in einer <abbr title="Ein geografischer Verweis auf ein bestimmtes Azure-Rechenzentrum, in dem Ressourcen zugeordnet werden.">region</abbr> in Ihrer Nähe, indem Sie eine verfügbare Region verwenden, die vom Befehl `az account list-locations` zurückgegeben wird.
 
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
@@ -281,7 +281,7 @@ Zum Bereitstellen Ihres Funktionscodes in Azure müssen Sie drei Ressourcen erst
     az storage account create --name <STORAGE_NAME> --location westeurope --resource-group AzureFunctionsQuickstart-rg --sku Standard_LRS
     ```
 
-    Der Befehl [az storage account create](/cli/azure/storage/account#az_storage_account_create) erstellt ein Speicherkonto. 
+    Der Befehl [az storage account create](/cli/azure/storage/account#az_storage_account_create) erstellt ein Speicherkonto.
 
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
@@ -294,33 +294,33 @@ Zum Bereitstellen Ihres Funktionscodes in Azure müssen Sie drei Ressourcen erst
     ---
 
     Ersetzen Sie `<STORAGE_NAME>` durch einen Namen, der für Sie geeignet und <abbr title="Der Name muss für alle Speicherkonten, die von Azure-Kunden auf der ganzen Welt genutzt werden, eindeutig sein. Sie können beispielsweise eine Kombination aus Ihrem persönlichen Namen oder Organisationsnamen, dem Anwendungsnamen und einem numerischen Bezeichner verwenden, etwa „contosobizappstorage20“.">in Azure Storage eindeutig</abbr>. Namen dürfen nur 3 bis 24 Zeichen und ausschließlich Kleinbuchstaben enthalten. Mit `Standard_LRS` wird ein universelles Konto angegeben, das [von Functions unterstützt](storage-considerations.md#storage-account-requirements) wird.
-    
+
     Mit diesem Speicherkonto fallen für diese Schnellstartanleitung nur Kosten in Höhe von wenigen Cent (USD) an.
 
 1. Erstellen Sie die Funktions-App in Azure:
 
     # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
-        
+
     ```azurecli
     az functionapp create --resource-group AzureFunctionsQuickstart-rg --consumption-plan-location westeurope --runtime python --runtime-version 3.8 --functions-version 3 --name <APP_NAME> --storage-account <STORAGE_NAME> --os-type linux
     ```
-    
+
     Der Befehl [az functionapp create](/cli/azure/functionapp#az_functionapp_create) erstellt die Funktions-App in Azure. Wenn Sie Python 3.7 oder 3.6 verwenden, ändern Sie `--runtime-version` in `3.7` bzw. `3.6`.
-    
+
     # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
-    
+
     ```azurepowershell
     New-AzFunctionApp -Name <APP_NAME> -ResourceGroupName AzureFunctionsQuickstart-rg -StorageAccount <STORAGE_NAME> -FunctionsVersion 3 -RuntimeVersion 3.8 -Runtime python -Location 'West Europe'
     ```
-    
+
     Das Cmdlet [New-AzFunctionApp](/powershell/module/az.functions/new-azfunctionapp) erstellt die Funktions-App in Azure. Wenn Sie Python 3.7 oder 3.6 verwenden, ändern Sie `-RuntimeVersion` in `3.7` bzw. `3.6`.
 
     ---
-    
+
     Ersetzen Sie `<STORAGE_NAME>` durch den Namen des Kontos, das Sie im vorherigen Schritt verwendet haben.
 
-    Ersetzen Sie `<APP_NAME>` durch einen <abbr title="Ein Name, der für alle Azure-Kunden auf der ganzen Welt eindeutig sein muss. Sie können beispielsweise eine Kombination aus Ihrem persönlichen Namen oder Organisationsnamen, dem Anwendungsnamen und einem numerischen Bezeichner verwenden, etwa „contoso-bizapp-func-20“.">global eindeutigen Namen, der für Sie geeignet ist</abbr>. `<APP_NAME>` ist gleichzeitig die DNS-Standarddomäne für die Funktions-App. 
-    
+    Ersetzen Sie `<APP_NAME>` durch einen <abbr title="Ein Name, der für alle Azure-Kunden auf der ganzen Welt eindeutig sein muss. Sie können beispielsweise eine Kombination aus Ihrem persönlichen Namen oder Organisationsnamen, dem Anwendungsnamen und einem numerischen Bezeichner verwenden, etwa „contoso-bizapp-func-20“.">global eindeutigen Namen, der für Sie geeignet ist</abbr>. `<APP_NAME>` ist gleichzeitig die DNS-Standarddomäne für die Funktions-App.
+
     <br/>
     <details>
     <summary><strong>Welche Kosten fallen für die in Azure bereitgestellten Ressourcen an?</strong></summary>
@@ -334,7 +334,7 @@ Zum Bereitstellen Ihres Funktionscodes in Azure müssen Sie drei Ressourcen erst
 
 ## <a name="6-deploy-the-function-project-to-azure"></a>6. Bereitstellen des Funktionsprojekts in Azure
 
-Nach erfolgreicher Erstellung Ihrer Funktions-App in Azure können Sie **Ihr lokales Funktionsprojekt bereitstellen**. Verwenden Sie dazu den Befehl [func azure functionapp publish](functions-run-local.md#project-file-deployment).  
+Nach erfolgreicher Erstellung Ihrer Funktions-App in Azure können Sie **Ihr lokales Funktionsprojekt bereitstellen**. Verwenden Sie dazu den Befehl [func azure functionapp publish](functions-run-local.md#project-file-deployment).
 
 Ersetzen Sie im folgenden Beispiel `<APP_NAME>` durch den Namen Ihrer App.
 
@@ -367,7 +367,7 @@ Functions in msdocs-azurefunctions-qs:
 
 ## <a name="7-invoke-the-function-on-azure"></a>7. Aufrufen der Funktion in Azure
 
-Da für Ihre Funktion ein HTTP-Trigger verwendet wird, können Sie sie aufrufen, indem Sie im Browser eine HTTP-Anforderung an die entsprechende URL senden oder ein Tool wie <abbr title="Ein Befehlszeilentool zum Erstellen von HTTP-Anforderungen an eine URL. Siehe https://curl.se/.">curl</abbr>. 
+Da für Ihre Funktion ein HTTP-Trigger verwendet wird, können Sie sie aufrufen, indem Sie im Browser eine HTTP-Anforderung an die entsprechende URL senden oder ein Tool wie <abbr title="Ein Befehlszeilentool zum Erstellen von HTTP-Anforderungen an eine URL. Siehe https://curl.se/.">curl</abbr>.
 
 # <a name="browser"></a>[Browser](#tab/browser)
 
@@ -393,7 +393,7 @@ func azure functionapp logstream <APP_NAME> --browser
 
 Ersetzen Sie `<APP_NAME>` durch den Namen der Funktions-App.
 
-In einem separaten Terminalfenster oder im Browser rufen Sie die Remotefunktion erneut auf. Ein ausführliches Protokoll der Funktionsausführung in Azure wird im Terminal angezeigt. 
+In einem separaten Terminalfenster oder im Browser rufen Sie die Remotefunktion erneut auf. Ein ausführliches Protokoll der Funktionsausführung in Azure wird im Terminal angezeigt.
 
 <br/>
 

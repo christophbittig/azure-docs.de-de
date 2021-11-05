@@ -7,12 +7,12 @@ services: firewall
 ms.topic: overview
 ms.date: 07/19/2021
 ms.author: victorh
-ms.openlocfilehash: dba086ab0975fd710bb9d4356ddd442133d740a4
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: c8ca827495f9ccfdd2786ee3b2bbf33e939c6a16
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114481350"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131068625"
 ---
 # <a name="azure-firewall-web-categories"></a>Azure Firewall-Webkategorien
 
@@ -83,9 +83,9 @@ Mithilfe von Webkategorien können Administratoren den Benutzerzugriff auf Websi
 
 ## <a name="productivity-loss"></a>Produktivitätsverlust
 
-|Category   |Beschreibung  |
+|Category   |BESCHREIBUNG  |
 |---------|---------|
-|Werbung und Popups    |  Websites, die Werbegrafiken oder andere Dateien mit Werbeinhalten bereitstellen, die auf Webseiten angezeigt werden       |
+|Anzeigen und Popups    |  Websites, die Werbegrafiken oder andere Dateien mit Werbeinhalten bereitstellen, die auf Webseiten angezeigt werden       |
 |Chat    |   Websites, die den webbasierten Austausch von Echtzeitnachrichten über Chatdienste oder Chaträume ermöglichen.       |
 |Sekten   |   Websites, die sich auf nicht traditionelle religiöse Praktiken beziehen, die typischerweise als „Sekten“ bezeichnet werden, d. h. als unredlich, unorthodox, extremistisch oder einschränkend gelten, in denen Mitglieder häufig unter der Leitung eines charismatischen Anführers zusammenleben       |
 |Spiele    |    Websites, die sich auf Computer- oder andere Spiele beziehen, Informationen zu Spieleherstellern oder zum Abrufen von Cheat Codes enthalten. Websites zur Veröffentlichung von Spielen.      |

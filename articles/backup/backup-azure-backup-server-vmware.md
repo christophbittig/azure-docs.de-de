@@ -3,12 +3,12 @@ title: Sichern von VMware-VMs mit Azure Backup Server
 description: In diesem Artikel erfahren Sie, wie Sie Azure Backup Server verwenden, um VMware-VMs zu sichern, die auf einem VMware vCenter-/ESXi-Server ausgeführt werden.
 ms.topic: conceptual
 ms.date: 07/27/2021
-ms.openlocfilehash: d734b9852da54c13d498cfd4a60caf007735d2f6
-ms.sourcegitcommit: bb1c13bdec18079aec868c3a5e8b33ef73200592
+ms.openlocfilehash: f8ab0de1a1fb126d8aabd536a596c4e73f66d4af
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/27/2021
-ms.locfileid: "114722585"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131026068"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Sichern von VMware-VMs mit Azure Backup Server
 
@@ -468,9 +468,9 @@ Führen Sie die nachfolgenden Schritte aus, um den Ausschluss eines Datenträger
   1. Navigieren Sie in der VMware-Konsole zu den Einstellungen der VM, für die der Datenträger ausgeschlossen werden soll.
   2. Wählen Sie den Datenträger aus, der ausgeschlossen werden soll, und notieren Sie sich den Pfad für diesen Datenträger.
 
-        Um beispielsweise die Festplatte 2 von TestVM4 auszuschließen, lautet der Pfad für Festplatte 2 **[datastore1] TestVM4/TestVM4\_1.vmdk**.
+     Um beispielsweise die Festplatte 2 von TestVM4 auszuschließen, lautet der Pfad für Festplatte 2 **[datastore1] TestVM4/TestVM4\_1.vmdk**.
 
-        ![Auszuschließende Festplatte](./media/backup-azure-backup-server-vmware/test-vm.png)
+     ![Auszuschließende Festplatte](./media/backup-azure-backup-server-vmware/test-vm.png)
 
 ### <a name="configure-mabs-server"></a>Konfigurieren des MABS-Servers
 
@@ -478,93 +478,93 @@ Navigieren Sie zu dem MABS-Server, auf dem die VMware-VM für den Schutz konfigu
 
   1. Rufen Sie die Details des VMware-Hosts ab, der auf dem MABS-Server geschützt ist.
 
-        ```powershell
-        $psInfo = get-DPMProductionServer
-        $psInfo
-        ```
+     ```powershell
+     $psInfo = get-DPMProductionServer
+     $psInfo
+     ```
 
-        ```output
-        ServerName   ClusterName     Domain            ServerProtectionState
-        ----------   -----------     ------            ---------------------
-        Vcentervm1                   Contoso.COM       NoDatasourcesProtected
-        ```
+     ```output
+     ServerName   ClusterName     Domain            ServerProtectionState
+     ----------   -----------     ------            ---------------------
+     Vcentervm1                   Contoso.COM       NoDatasourcesProtected
+     ```
 
   2. Wählen Sie den VMware-Host aus, und listen Sie die geschützten VMs für den VMware-Host auf.
 
-        ```powershell
-        $vmDsInfo = get-DPMDatasource -ProductionServer $psInfo[0] -Inquire
-        $vmDsInfo
-        ```
+     ```powershell
+     $vmDsInfo = get-DPMDatasource -ProductionServer $psInfo[0] -Inquire
+     $vmDsInfo
+     ```
 
-        ```output
-        Computer     Name     ObjectType
-        --------     ----     ----------
-        Vcentervm1  TestVM2      VMware
-        Vcentervm1  TestVM1      VMware
-        Vcentervm1  TestVM4      VMware
-        ```
+     ```output
+     Computer     Name     ObjectType
+     --------     ----     ----------
+     Vcentervm1  TestVM2      VMware
+     Vcentervm1  TestVM1      VMware
+     Vcentervm1  TestVM4      VMware
+     ```
 
   3. Wählen Sie die VM aus, für die ein Datenträger ausgeschlossen werden soll.
 
-        ```powershell
-        $vmDsInfo[2]
-        ```
+     ```powershell
+     $vmDsInfo[2]
+     ```
 
-        ```output
-        Computer     Name      ObjectType
-        --------     ----      ----------
-        Vcentervm1   TestVM4   VMware
-        ```
+     ```output
+     Computer     Name      ObjectType
+     --------     ----      ----------
+     Vcentervm1   TestVM4   VMware
+     ```
 
   4. Navigieren Sie zum Ausschließen des Datenträgers zum Ordner `Bin`, und führen Sie das Skript *ExcludeDisk.ps1* mit den folgenden Parametern aus:
 
-        > [!NOTE]
-        > Beenden Sie vor dem Ausführen dieses Befehls den DPMRA-Dienst auf dem MABS-Server. Andernfalls gibt das Skript die erfolgreiche Ausführung zurück, aktualisiert aber die Ausschlussliste nicht. Stellen Sie sicher, dass keine Aufträge ausgeführt werden, bevor Sie den Dienst beenden.
+     > [!NOTE]
+     > Beenden Sie vor dem Ausführen dieses Befehls den DPMRA-Dienst auf dem MABS-Server. Andernfalls gibt das Skript die erfolgreiche Ausführung zurück, aktualisiert aber die Ausschlussliste nicht. Stellen Sie sicher, dass keine Aufträge ausgeführt werden, bevor Sie den Dienst beenden.
 
      **Führen Sie den folgenden Befehl aus, um den Datenträger in der Ausschlussliste hinzuzufügen oder zu entfernen:**
 
-      ```powershell
-      ./ExcludeDisk.ps1 -Datasource $vmDsInfo[0] [-Add|Remove] "[Datastore] vmdk/vmdk.vmdk"
-      ```
+     ```powershell
+     ./ExcludeDisk.ps1 -Datasource $vmDsInfo[0] [-Add|Remove] "[Datastore] vmdk/vmdk.vmdk"
+     ```
 
      **Beispiel:**
 
      Um den Ausschluss des Datenträgers für TestVM4 hinzuzufügen, führen Sie folgenden Befehl aus:
 
-       ```powershell
-      C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin> ./ExcludeDisk.ps1 -Datasource $vmDsInfo[2] -Add "[datastore1] TestVM4/TestVM4\_1.vmdk"
-       ```
+     ```powershell
+     C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin> ./ExcludeDisk.ps1 -Datasource $vmDsInfo[2] -Add "[datastore1] TestVM4/TestVM4\_1.vmdk"
+     ```
 
-      ```output
-       Creating C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin\excludedisk.xml
-       Disk : [datastore1] TestVM4/TestVM4\_1.vmdk, has been added to disk exclusion list.
-      ```
+     ```output
+     Creating C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin\excludedisk.xml
+     Disk : [datastore1] TestVM4/TestVM4\_1.vmdk, has been added to disk exclusion list.
+     ```
 
   5. Überprüfen Sie, ob der Datenträger der Ausschlussliste hinzugefügt wurde.
 
      **Führen Sie den folgenden Befehl aus, um den vorhandenen Ausschluss für bestimmte VMs anzuzeigen:**
 
-        ```powershell
-        ./ExcludeDisk.ps1 -Datasource $vmDsInfo[0] [-view]
-        ```
+     ```powershell
+     ./ExcludeDisk.ps1 -Datasource $vmDsInfo[0] [-view]
+     ```
 
      **Beispiel**
 
-        ```powershell
-        C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin> ./ExcludeDisk.ps1 -Datasource $vmDsInfo[2] -view
-        ```
+     ```powershell
+     C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin> ./ExcludeDisk.ps1 -Datasource $vmDsInfo[2] -view
+     ```
 
-        ```output
-        <VirtualMachine>
-        <UUID>52b2b1b6-5a74-1359-a0a5-1c3627c7b96a</UUID>
-        <ExcludeDisk>[datastore1] TestVM4/TestVM4\_1.vmdk</ExcludeDisk>
-        </VirtualMachine>
-        ```
+     ```output
+     <VirtualMachine>
+       <UUID>52b2b1b6-5a74-1359-a0a5-1c3627c7b96a</UUID>
+       <ExcludeDisk>[datastore1] TestVM4/TestVM4\_1.vmdk</ExcludeDisk>
+     </VirtualMachine>
+     ```
 
-     Nachdem Sie den Schutz für die VM konfiguriert haben, wird der ausgeschlossene Datenträger während des Schutzes nicht aufgelistet.
+     Nachdem Sie den Schutz für diese VM konfiguriert haben, wird der ausgeschlossene Datenträger während des Schutzes nicht aufgelistet.
 
-        > [!NOTE]
-        > Wenn Sie diese Schritte für eine bereits geschützte VM ausführen, müssen Sie die Konsistenzprüfung manuell ausführen, nachdem Sie den Datenträger für den Ausschluss hinzugefügt haben.
+     > [!NOTE]
+     > Wenn Sie diese Schritte für eine bereits geschützte VM ausführen, müssen Sie die Konsistenzprüfung manuell ausführen, nachdem Sie den Datenträger für den Ausschluss hinzugefügt haben.
 
 ### <a name="remove-the-disk-from-exclusion"></a>Entfernen des Datenträgers aus der Ausschlussliste
 

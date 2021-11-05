@@ -8,12 +8,12 @@ ms.date: 10/14/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: 2ed6da37d1e0e2cd61a6954903f7233f851c75bc
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: b2999019ce991ef8a8bbb9e1087b22190a6c54bb
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130047984"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131022453"
 ---
 # <a name="premium-block-blob-storage-accounts"></a>Blockblobspeicher mit Premium-Leistung
 
@@ -95,7 +95,7 @@ Einige unserer Partner entwickeln Software für die Videobearbeitung. Jedes Upda
 
 Benutzer können mit Datenvisualisierungssoftware viel produktiver arbeiten, wenn die Renderingzeit schnell ist. 
  
-Wir haben gesehen, dass Unternehmen in der Kartierungsbranche Kartierungs-Editoren verwenden, um Probleme mit Karten zu erkennen. Diese Editoren verwenden Daten, die aus GPS-Kundendaten (Global Positioning System) generiert werden. Zur Erstellung von Kartenüberlappungen rendert die Bearbeitungssoftware kleine Abschnitte einer Karte durch schnelles Ausführen von Key-Lookups. 
+Wir haben gesehen, dass Unternehmen in der Kartierungsbranche Kartierungs-Editoren verwenden, um Probleme mit Karten zu erkennen. Diese Editoren verwenden Daten, die aus GPS-Kundendaten (Global Positioning System) generiert werden. Zum Erstellen von Kartenüberlappungen rendert die Bearbeitungssoftware kleine Abschnitte einer Karte durch schnelles Ausführen von Key-Lookups. 
 
 In einem Fall hat ein Partner vor der Verwendung von Premium-Blockblobspeicher HDInsight mit HBase verwendet, das durch Standardspeicher vom Typ „Universell V2“ unterstützt wird. Es wurde jedoch teuer, große Cluster ständig auszuführen. Dieser Partner hat sich entschieden, von dieser Architektur abzuweichen, und stattdessen Premium-Blockblobspeicher für schnelle Key-Lookups verwendet. Zum Erstellen von Überlappungen hat er REST-APIs verwendet, um Kacheln zu rendern, die GPS-Koordinaten entsprechen. Das Premium-Konto für Blockblobspeicher bot ihm eine kostengünstige Lösung, und Latenzen waren wesentlich besser vorhersagbar.
 
@@ -149,14 +149,14 @@ Daten werden in mehrere Blob-Storage-Konten mit Premium-Leistung hochgeladen. Je
 
 ## <a name="getting-started-with-premium"></a>Erste Schritte mit Premium
 
-Überprüfen Sie zuerst, ob Ihre bevorzugten Blob Storage-Features mit Premium-Konten für Blockblobspeicher kompatibel sind, und erstellen Sie dann das Konto. 
+Überprüfen Sie zuerst, ob Ihre bevorzugten Blob Storage-Features mit Premium-Blockblobspeicherkonten kompatibel sind, und erstellen Sie dann das Konto. 
 
 >[!NOTE]
-> Sie können ein vorhandenes Standardspeicherkonto vom Typ „Universell V2“ nicht in ein Premium-Konto für Blockblobspeicher konvertieren. Zum Migrieren zu einem Premium-Konto für Blockblobspeicher müssen Sie erst ein neues Premium-Konto für Blockblobspeicher erstellen und dann die Daten dorthin migrieren. 
+> Sie können ein vorhandenes Speicherkonto vom Typ „Standard, Universell V2“ nicht in ein Premium-Blockblobspeicherkonto konvertieren. Zum Migrieren zu einem Premium-Blockblobspeicherkonto müssen Sie erst ein neues Premium-Blockblobspeicherkonto erstellen und dann die Daten dorthin migrieren. 
 
 ### <a name="check-for-blob-storage-feature-compatibility"></a>Überprüfen der Kompatibilität von Blob Storage-Features
 
-Einige Blob Storage-Features werden in Premium-Konten für Blockblobspeicher noch nicht oder nur teilweise unterstützt. Bevor Sie Premium auswählen, lesen Sie den Artikel [Unterstützung von Blob Storage-Features in Azure Storage-Konten](storage-feature-support-in-storage-accounts.md), um zu ermitteln, ob die Features, die Sie nutzen möchten, in Ihrem Konto vollständig unterstützt werden. Die Funktionsunterstützung wird ständig erweitert, daher sollten Sie diesen Artikel regelmäßig auf Updates überprüfen.
+Einige Blob Storage-Features werden in Premium-Blockblobspeicherkonten noch nicht oder nur teilweise unterstützt. Bevor Sie Premium auswählen, lesen Sie den Artikel [Unterstützung von Blob Storage-Features in Azure Storage-Konten](storage-feature-support-in-storage-accounts.md), um zu ermitteln, ob die Features, die Sie nutzen möchten, in Ihrem Konto vollständig unterstützt werden. Die Funktionsunterstützung wird ständig erweitert, daher sollten Sie diesen Artikel regelmäßig auf Updates überprüfen.
 
 ### <a name="create-a-new-storage-account"></a>Neues Speicherkonto erstellen
 

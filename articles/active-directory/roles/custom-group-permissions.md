@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: roles
 ms.topic: reference
-ms.date: 10/18/2021
+ms.date: 10/26/2021
 ms.author: rolyon
 ms.reviewer: ''
 ms.custom: it-pro
-ms.openlocfilehash: 1c798104e950312b49c86d88a83428772aeb1ef0
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 5e768d9661a7030fb75d8089a6a49e9d5022d612
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130167781"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131057208"
 ---
 # <a name="group-management-permissions-for-azure-ad-custom-roles-preview"></a>Gruppenverwaltungsberechtigungen für benutzerdefinierte Azure AD-Rollen (Vorschau)
 
@@ -34,6 +34,9 @@ Gruppenverwaltungsberechtigungen können in benutzerdefinierten Rollendefinition
 - Verwalten eines bestimmten Gruppentyps
 
 In diesem Artikel werden die Berechtigungen aufgeführt, die Sie in Ihren benutzerdefinierten Rollen für verschiedene Gruppenverwaltungsszenarien verwenden können. Informationen zum Erstellen benutzerdefinierter Rollen finden Sie unter [Erstellen und Zuweisen einer benutzerdefinierten Rolle](custom-create.md).
+
+> [!NOTE]
+> Das Zuweisen von benutzerdefinierten Rollen in einem Gruppenbereich mithilfe des Azure-Portal ist derzeit **nur** für Azure AD Premium P1 verfügbar.
 
 ## <a name="how-to-interpret-group-management-permissions"></a>Interpretieren von Gruppenverwaltungsberechtigungen
 

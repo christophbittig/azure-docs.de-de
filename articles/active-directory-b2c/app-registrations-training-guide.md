@@ -11,12 +11,12 @@ ms.date: 05/25/2020
 ms.custom: project-no-code
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 01f51e20176a7535681bdb21b4cee6c7fa298292
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 262d9a123180588ed8eaee35a5faf17797cbbc07
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130038021"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131008102"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>Neue Benutzeroberfläche für App-Registrierungen in Azure Active Directory B2C
 
@@ -45,7 +45,7 @@ Die Azure AD B2C-Benutzeroberfläche für App-Registrierungen basiert auf der al
 
 - Im Bereich **Endpunkte** können Sie schnell die relevanten Endpunkte für Ihr Szenario ermitteln, einschließlich der Endpunkte für die OpenID Connect-Konfiguration, SAML-Metadaten, Microsoft Graph-API sowie des [OAuth 2.0-Benutzerflows](tokens-overview.md#endpoints).
 
-- Über die Funktionen **API-Berechtigungen** und **Eine API verfügbar machen** verfügen Sie über erweiterte Möglichkeiten zur Verwaltung von Bereichen, Berechtigungen und Einwilligungen. Sie können einer App nun auch MS Graph- und Azure AD Graph-Berechtigungen zuweisen.
+- Über die Funktionen **API-Berechtigungen** und **Eine API verfügbar machen** verfügen Sie über erweiterte Möglichkeiten zur Verwaltung von Bereichen, Berechtigungen und Einwilligungen. Sie können einer App nun auch MS Graph-Berechtigungen zuweisen.
 
 -   Die Funktionen **Besitzer** und **Manifest** sind jetzt für Apps verfügbar, die sich bei Azure AD B2C authentifizieren. Sie können Ihren Registrierungen Besitzer hinzufügen und mithilfe des [Manifest-Editors](../active-directory/develop/reference-app-manifest.md) die Anwendungseigenschaften direkt bearbeiten.
 

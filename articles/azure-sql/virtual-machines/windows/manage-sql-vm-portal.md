@@ -13,12 +13,13 @@ ms.workload: iaas-sql-server
 ms.date: 05/30/2021
 ms.author: pamela
 ms.reviewer: mathoma
-ms.openlocfilehash: a25f5bf28feb8fcb3903094f45568e96388ec0bd
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 16b2a041dc384e8c04df077638a51db1a7823da2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130162168"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131072109"
 ---
 # <a name="manage-sql-server-vms-by-using-the-azure-portal"></a>Verwalten von SQL Server-VMs über das Azure-Portal
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -124,6 +125,13 @@ Zeigen Sie auf der Seite **Security Center** der Ressource „Virtuelle SQL-Comp
 
 ![Konfigurieren von Einstellungen für das SQL Server-Security Center im Azure-Portal mithilfe der Ressource „Virtuelle SQL-Computer“](./media/manage-sql-vm-portal/sql-vm-security-center.png)
 
+## <a name="sql-assessment-preview"></a>SQL-Bewertung (Vorschau)
+
+Auf der Seite **SQL-Bewertung** der SQL-VM-Ressource können Sie die Integrität Ihrer SQL Server-VM bewerten. Nach Aktivierung des Features werden Ihre SQL Server-Instanzen und -Datenbanken überprüft und es werden Empfehlungen zur Verbesserung der Leistung (Indizes, Statistiken, Ablaufverfolgungsflags usw.) und zur Ermittlung fehlender Konfigurationen gemäß bewährter Methoden angezeigt. Die SQL-Bewertung befindet sich derzeit in der Vorschauphase. 
+
+:::image type="content" source="./media/manage-sql-vm-portal/sql-vm-assessment-workbook.png" alt-text="Anzeigen von SQL-Bewertungen im Azure-Portal auf der Seite der SQL-VM-Ressource." lightbox="./media/manage-sql-vm-portal/sql-vm-assessment-workbook.png":::
+
+Weitere Informationen finden Sie unter [SQL-Bewertung für SQL Server auf Azure-VMs](sql-assessment-for-sql-vm.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -133,5 +141,3 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 * [Häufig gestellte Fragen zu SQL Server auf virtuellen Windows-Computern](frequently-asked-questions-faq.yml)
 * [Preisinformationen für SQL Server auf virtuellen Windows-Computern](pricing-guidance.md)
 * [Neuerungen für SQL Server auf virtuellen Azure-Computern](doc-changes-updates-release-notes-whats-new.md)
-
-

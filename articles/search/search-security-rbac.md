@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/04/2021
-ms.openlocfilehash: ceb65226c30d6ee9768388bb18807dd7cf6d6f85
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 5318ee205c66757409b9e0ffd8de864bcb69689a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130070582"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131064979"
 ---
 # <a name="use-role-based-authorization-in-azure-cognitive-search"></a>Verwenden der rollenbasierten Autorisierung in Azure Cognitive Search
 
@@ -21,10 +21,10 @@ Azure bietet ein [Autorisierungssystem mit rollenbasierter Zugriffssteuerung](..
 
 + Verwenden Sie für die Dienstverwaltung allgemein verfügbare Rollen.
 
-+ Verwenden Sie für die Inhaltsverwaltung (Erstellen und Verwalten von Indizes und anderen Objekten der obersten Ebene) neue Vorschaurollen, [**die beantragt werden können**](https://aka.ms/azure-cognitive-search/rbac-preview).
++ Verwenden Sie für die Inhaltsverwaltung (Erstellen und Verwalten von Indizes und anderen Objekten der obersten Ebene) neue Vorschaurollen, [**die unter Vorschau verfügbar sind**](#step-1-preview-sign-up).
 
 > [!NOTE]
-> „Suchdienstmitwirkender“ ist eine allgemein verfügbare Rolle mit Vorschaumöglichkeiten. Es ist die einzige Rolle, die eine echte Hybridlösung für Dienst- und Inhaltsverwaltungsaufgaben unterstützt und alle Vorgänge für einen bestimmten Suchdienst zulässt. Um in den Genuss der Vorschaufunktionen bei der Inhaltsverwaltung für diese Rolle zu kommen, [**registrieren Sie sich für die Vorschauversion**](https://aka.ms/azure-cognitive-search/rbac-preview).
+> „Suchdienstmitwirkender“ ist eine allgemein verfügbare Rolle mit Vorschaumöglichkeiten. Es ist die einzige Rolle, die eine echte Hybridlösung für Dienst- und Inhaltsverwaltungsaufgaben unterstützt und alle Vorgänge für einen bestimmten Suchdienst zulässt. Um in den Genuss der Vorschaufunktionen bei der Inhaltsverwaltung für diese Rolle zu kommen, [**registrieren Sie sich für die Vorschauversion**](#step-1-preview-sign-up).
 
 Einige RBAC-Szenarien werden **nicht** unterstützt bzw. nicht in diesem Artikel behandelt:
 
@@ -47,7 +47,7 @@ Es gibt keine regions-, ebenen- oder preisbezogenen Einschränkungen für die Nu
 | [Besitzer](../role-based-access-control/built-in-roles.md#owner) | Dienstbetrieb (allgemein verfügbar) | Vollzugriff auf die Suchressource, einschließlich Fähigkeit zum Zuweisen von Azure-Rollen. Abonnementadministratoren sind standardmäßig Mitglieder. |
 | [Mitwirkender](../role-based-access-control/built-in-roles.md#contributor) | Dienstbetrieb (allgemein verfügbar) | Gleiche Zugriffsebene wie Besitzer, jedoch ohne die Fähigkeit, Rollen zuzuweisen oder Autorisierungsoptionen zu ändern. |
 | [Leser](../role-based-access-control/built-in-roles.md#reader) | Dienstbetrieb (allgemein verfügbar) | Eingeschränkter Zugriff auf partielle Dienstinformationen. Im Portal kann die Rolle „Leser“ auf der Seite „Übersicht“ des Diensts im Abschnitt „Zusammenfassung“ und auf der Registerkarte „Monitor“ auf Informationen zugreifen. Der Zugriff auf alle anderen Registerkarten und Seiten ist nicht möglich. </br></br>Diese Rolle hat Zugriff auf Dienstinformationen: Ressourcengruppe, Dienststatus, Abonnementname und -ID, Tags, URL, Tarif, Replikate, Partitionen und Sucheinheiten. </br></br>Diese Rolle hat auch Zugriff auf Dienstmetriken: Suchlatenz, Prozentsatz der gedrosselten Anforderungen, durchschnittliche Abfragen pro Sekunde. </br></br>Sie hat keinen Zugriff auf API-Schlüssel, Rollenzuweisungen, Inhalte (Indizes oder Synonymzuordnungen) oder Inhaltsmetriken (verbrauchter Speicher, Anzahl von Objekten). |
-| [Mitwirkender von Suchdienst](../role-based-access-control/built-in-roles.md#search-service-contributor) | Dienstbetrieb (allgemein verfügbar) und Objekte der obersten Ebene (Vorschau) | Diese Rolle ist eine Kombination aus den Berechtigungen für „Mitwirkender“ auf Dienstebene und dem Vollzugriff auf alle Aktionen für Indizes, Synonymzuordnungen, Indexer, Datenquellen und Skillsets über [`Microsoft.Search/searchServices/*`](/azure/role-based-access-control/resource-provider-operations#microsoftsearch). Diese Rolle ist für Suchdienstadministratoren vorgesehen, die die Möglichkeit haben müssen, den Dienst vollständig zu verwalten. </br></br>Ebenso wie Mitwirkende können Mitglieder dieser Rolle keine Rollenzuweisungen vornehmen oder verwalten oder Autorisierungsoptionen ändern. |
+| [Mitwirkender von Suchdienst](../role-based-access-control/built-in-roles.md#search-service-contributor) | Dienstbetrieb (allgemein verfügbar) und Objekte der obersten Ebene (Vorschau) | Diese Rolle ist eine Kombination aus den Berechtigungen für „Mitwirkender“ auf Dienstebene und dem Vollzugriff auf alle Aktionen für Indizes, Synonymzuordnungen, Indexer, Datenquellen und Skillsets über [`Microsoft.Search/searchServices/*`](../role-based-access-control/resource-provider-operations.md#microsoftsearch). Diese Rolle ist für Suchdienstadministratoren vorgesehen, die die Möglichkeit haben müssen, den Dienst vollständig zu verwalten. </br></br>Ebenso wie Mitwirkende können Mitglieder dieser Rolle keine Rollenzuweisungen vornehmen oder verwalten oder Autorisierungsoptionen ändern. |
 | [Mitwirkender an Suchindexdaten](../role-based-access-control/built-in-roles.md#search-index-data-contributor) | Dokumentensammlung (Vorschau) | Bietet Vollzugriff auf Inhalte in allen Indizes des Suchdiensts. Diese Rolle ist für Entwickler oder Indexbesitzer gedacht, die die Dokumentsammlung eines Index importieren, aktualisieren oder abfragen müssen. |
 | [Suchindexdatenleser](../role-based-access-control/built-in-roles.md#search-index-data-reader) | Dokumentsammlung (Vorschau) | Bietet schreibgeschützten Zugriff auf Suchindizes im Suchdienst. Diese Rolle ist für Apps und Benutzer gedacht, die Abfragen ausführen. |
 
@@ -62,11 +62,18 @@ Es gibt keine regions-, ebenen- oder preisbezogenen Einschränkungen für die Nu
 
 Neue integrierte Vorschaurollen bieten einen präzisen Satz von Berechtigungen für Inhalte im Suchdienst. Obwohl integrierte Rollen stets im Azure-Portal sichtbar sind, ist eine Dienstregistrierung erforderlich, um sie betriebsbereit zu machen.
 
-Gehen Sie zur Registrierung beim Vorschauprogramm wie folgt vor:
+So fügen Sie Ihr Abonnement zu der Vorschau hinzu:
 
-+ [Füllen Sie dieses Formular aus](https://aka.ms/azure-cognitive-search/rbac-preview).
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zur Seite **Abonnements**.
+1. Wählen Sie das Abonnement aus, das Sie verwenden möchten.
+1. Wählen Sie auf der linken Seite der Abonnementseite die Option **Previewfunktion** aus.
+1. Verwenden Sie die Suchleiste oder Filter, um die **Rollenbasierte Zugriffssteuerung für den Suchdienst (Vorschauversion)** zu suchen und auszuwählen.
+1. Wählen Sie **Registrieren** aus, um das Feature Ihrem Abonnement hinzuzufügen.
 
-Die Verarbeitung von Registrierungsanfragen kann bis zu zwei Werktage in Anspruch nehmen. Sie erhalten eine E-Mail, wenn Ihr Dienst einsatzbereit ist.
+![Registrieren für rbac auf afec](media/search-howto-aad/rbac-signup-afec.png)
+
+Weitere Informationen zum Hinzufügen von Vorschaufeatures finden Sie unter [Einrichten von Vorschaufeatures im Azure-Abonnement](../azure-resource-manager/management/preview-features.md?tabs=azure-portal).
+
 
 ## <a name="step-2-preview-configuration"></a>Schritt 2: Vorschau auf die Konfiguration
 
@@ -218,7 +225,7 @@ Denken Sie daran, dass Sie den Zugriff nur auf Ressourcen der obersten Ebene bes
 
   :::image type="content" source="media/search-security-rbac/rest-authorization-header.png" alt-text="Screenshot einer HTTP-Anforderung mit Autorisierungsheader" border="true":::
 
-Weitere Informationen zum Abrufen eines Tokens für eine bestimmte Umgebung finden Sie unter [Microsoft Identity Platform-Authentifizierungsbibliotheken](/azure/active-directory/develop/reference-v2-libraries).
+Weitere Informationen zum Abrufen eines Tokens für eine bestimmte Umgebung finden Sie unter [Microsoft Identity Platform-Authentifizierungsbibliotheken](../active-directory/develop/reference-v2-libraries.md).
 
 ### <a name="net-sdk"></a>[**.NET SDK**](#tab/test-dotnet)
 

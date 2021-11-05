@@ -3,12 +3,12 @@ title: Bicep-Module
 description: Hier wird beschrieben, wie ein Modul in einer Bicep-Datei definiert und wie Modulbereiche eingesetzt werden.
 ms.topic: conceptual
 ms.date: 10/15/2021
-ms.openlocfilehash: 21dc273e506f0c0f148e8a220ca4ea160c7423a8
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: a8a0b9c1eeeb56c12926774a78d45bb58e7d8437
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130074492"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131087379"
 ---
 # <a name="bicep-modules"></a>Bicep-Module
 
@@ -17,6 +17,10 @@ Mit Bicep können Sie Bereitstellungen in Modulen organisieren. Bei einem Modul 
 Um Module für Personen innerhalb Ihrer Organisation freizugeben, [erstellen Sie eine private Registrierung](private-module-registry.md). Module in der Registrierung sind nur für Benutzer mit den richtigen Berechtigungen verfügbar.
 
 Bicep-Module werden in eine einzelne ARM-Vorlage (Azure Resource Manager) mit [geschachtelten Vorlagen](../templates/linked-templates.md#nested-template) konvertiert.
+
+### <a name="microsoft-learn"></a>Microsoft Learn
+
+Weitere Informationen zu Modulen und praktische Anleitungen finden Sie unter [Erstellen von zusammensetzbaren Bicep-Dateien mithilfe von Modulen](/learn/modules/create-composable-bicep-files-using-modules/) auf **Microsoft Learn**.
 
 ## <a name="definition-syntax"></a>Definitionssyntax
 
@@ -49,17 +53,17 @@ Um **ein Modul bedingt bereitzustellen**, fügen Sie einen `if`-Ausdruck hinzu. 
 
 ::: code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/modules/conditional-definition.bicep" highlight="2" :::
 
-Um **mehrere Instanzen** eines Moduls bereitzustellen, fügen Sie den `for`-Ausdruck hinzu. Weitere Informationen finden Sie unter [Moduliteration in Bicep](loop-modules.md).
+Um **mehrere Instanzen** eines Moduls bereitzustellen, fügen Sie den `for`-Ausdruck hinzu. Weitere Informationen finden Sie unter [Iterative Schleifen in Bicep](loops.md).
 
 ::: code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/modules/iterative-definition.bicep" highlight="3" :::
 
-Module werden wie Ressourcen parallel bereitgestellt, es sei denn, sie hängen von anderen Modulen oder Ressourcen ab. In der Regel müssen Sie keine Abhängigkeiten festlegen, da sie implizit bestimmt werden. Wenn Sie eine explizite Abhängigkeit festlegen müssen, können Sie `dependsOn` der Moduldefinition hinzufügen. Weitere Informationen zu Abhängigkeiten finden Sie unter [Festlegen von Ressourcenabhängigkeiten](resource-declaration.md#set-resource-dependencies).
+Module werden wie Ressourcen parallel bereitgestellt, es sei denn, sie hängen von anderen Modulen oder Ressourcen ab. In der Regel müssen Sie keine Abhängigkeiten festlegen, da sie implizit bestimmt werden. Wenn Sie eine explizite Abhängigkeit festlegen müssen, können Sie `dependsOn` der Moduldefinition hinzufügen. Weitere Informationen zu Abhängigkeiten finden Sie unter [Ressourcenabhängigkeiten](resource-declaration.md#dependencies).
 
 ::: code language="bicep" source="~/azure-docs-bicep-samples/syntax-samples/modules/dependsOn-definition.bicep" highlight="6-8" :::
 
 ## <a name="path-to-module"></a>Pfad zum Modul
 
-Die Datei für das Modul kann entweder eine lokale Datei oder eine externe Datei in einer Bicep-Modulregistrierung sein. Die Syntax für beide Optionen ist unten dargestellt.
+Die Datei für das Modul kann entweder eine lokale Datei oder eine externe Datei in einer Bicep-Modulregistrierung sein. Beide Optionen werden nachstehend vorgestellt.
 
 ### <a name="local-file"></a>Lokale Datei
 

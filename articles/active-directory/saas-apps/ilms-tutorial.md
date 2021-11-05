@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/08/2021
 ms.author: jeedes
-ms.openlocfilehash: 285fea57252c23776c9d7bc3b172889311356909
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: c55a1fd185e9ff730ad55b046d4b843e0d1264da
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124768475"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131046221"
 ---
 # <a name="tutorial-integrate-ilms-with-azure-active-directory"></a>Tutorial: Integrieren von iLMS in Azure Active Directory
 
@@ -191,7 +191,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 Die Anwendung unterstützt die Just-in-Time-Benutzerbereitstellung (JIT). Nach der Authentifizierung werden Benutzer in der Anwendung automatisch erstellt. JIT funktioniert, wenn Sie während der Konfiguration der SAML-Einstellungen im iLMS-Verwaltungsportal das Kontrollkästchen **Create Un-recognized User Account** aktiviert haben.
 
-Führen Sie die folgenden Schritte aus, wenn Sie einen Benutzer manuell erstellen müssen:
+Wenn Sie manuell Benutzer*innen erstellen müssen, führen Sie die folgenden Schritte aus:
 
 1. Melden Sie sich bei der iLMS-Unternehmenswebsite als Administrator an.
 

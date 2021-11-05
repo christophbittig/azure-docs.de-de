@@ -43,6 +43,14 @@
           href: tutorial-cross-region-powershell.md
         - name: 'Erstellen eines regionsübergreifenden Lastenausgleichs: Azure CLI'
           href: tutorial-cross-region-cli.md
+    - name: Gateway Load Balancer
+      items:
+        - name: 'Erstellen einer Gateway Load Balancer-Instanz: Portal'
+          href: tutorial-gateway-portal.md
+        - name: 'Erstellen einer Gateway Load Balancer-Instanz: PowerShell'
+          href: tutorial-gateway-powershell.md
+        - name: 'Erstellen einer Gateway Load Balancer-Instanz: Azure CLI'
+          href: tutorial-gateway-cli.md
     - name: NAT Gateway
       items:
         - name: "Integrieren des öffentlichen Lastenausgleichs von NAT\_Gateway"
@@ -55,7 +63,7 @@
           href: tutorial-load-balancer-ip-backend-portal.md
 - name: Beispiele
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: cli-samples.md
     - name: Azure PowerShell
       href: powershell-samples.md
@@ -67,6 +75,8 @@
       href: manage.md
     - name: Regionsübergreifender Lastenausgleich
       href: cross-region-overview.md
+    - name: Gateway Load Balancer
+      href: gateway-overview.md
     - name: Neuigkeiten
       href: whats-new.md
     - name: Komponenten
@@ -139,7 +149,7 @@
           href: upgrade-InternalBasic-To-PublicStandard.md
     - name: Erstellen des öffentlichen Lastenausgleichs mit IPv6
       items:
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: ./virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md
         - name: Azure PowerShell
           href: ./virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md

@@ -7,13 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 05/26/2021
 ms.author: memildin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 2e28058742dfb262c3b8ef68bbc9f940a0d7117e
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 54c3866ed631ac8b0243478fac36355c9d60e691
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096086"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131445386"
 ---
 # <a name="improve-your-network-security-posture-with-adaptive-network-hardening"></a>Verbessern des Netzwerksicherheitsstatus mit adaptiver Netzwerkhärtung
 

@@ -3,17 +3,17 @@ title: PowerShell-Funktionen für Azure IoT Edge für Linux unter Windows | Micr
 description: Referenzinformationen zu PowerShell-Funktionen für Azure IoT Edge für Linux unter Windows zum Bereitstellen und Abrufen des Status von IoT Edge für Linux unter Windows-VMs.
 author: v-tcassi
 ms.author: fcabrera
-ms.date: 06/18/2021
+ms.date: 10/15/2021
 ms.topic: reference
 ms.service: iot-edge
 services: iot-edge
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: cfa116f91978ea5f9bc076c7d666a0428f3b6c72
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 9038f8b99728b2808cb1d4cf6b23a7673fa5d92e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130259184"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131085903"
 ---
 # <a name="powershell-functions-for-iot-edge-for-linux-on-windows"></a>PowerShell-Funktionen für IoT Edge für Linux unter Windows
 
@@ -49,13 +49,13 @@ Wenn Ihr PowerShell-Verzeichnis nicht den Ordner **AzureEflow** enthält, führe
    Set-ExecutionPolicy -ExecutionPolicy AllSigned -Force
    ```
 
-## <a name="connect-eflowvm"></a>Connect-EflowVM
+## <a name="connect-eflowvm"></a>Connect-EflowVm
 
-Der Befehl **Connect-EflowVM** stellt mithilfe von SSH eine Verbindung mit dem virtuellen Computer her. Das einzige Konto, das zum Herstellen eines SSH mit dem virtuellen Computer zulässig ist, ist der Benutzer, der es erstellt.
+Der Befehl **Connect-EflowVm** stellt mithilfe von SSH eine Verbindung mit dem virtuellen Computer her. Das einzige Konto, das zum Herstellen eines SSH mit dem virtuellen Computer zulässig ist, ist der Benutzer, der es erstellt.
 
 Dieser Befehl funktioniert nur bei einer PowerShell-Sitzung, die auf dem Hostgerät ausgeführt wird. Er funktioniert nicht, wenn Windows Admin Center oder PowerShell ISE verwendet wird.
 
-Weitere Informationen erhalten Sie mit dem Befehl `Get-Help Connect-EflowVM -full`.
+Weitere Informationen erhalten Sie mit dem Befehl `Get-Help Connect-EflowVm -full`.
 
 ## <a name="copy-eflowvmfile"></a>Copy-EflowVmFile
 
@@ -73,7 +73,7 @@ Weitere Informationen erhalten Sie mit dem Befehl `Get-Help Copy-EflowVMFile -fu
 
 ## <a name="deploy-eflow"></a>Deploy-Eflow
 
-Der Befehl **Deploy-Eflow** ist die Hauptbereitstellungsmethode. Der Bereitstellungsbefehl erstellt den virtuellen Computer und stellt Dateien sowie das IoT Edge-Agentmodul bereit. Obwohl keiner der Parameter erforderlich ist, kann damit während der Bereitstellung Ihr IoT Edge-Gerät bereitgestellt werden, und es können während der Erstellung Einstellungen für den virtuellen Computer geändert werden.
+Der Befehl **Deploy-Eflow** ist die Hauptbereitstellungsmethode. Der Bereitstellungsbefehl erstellt den virtuellen Computer und stellt Dateien sowie das IoT Edge-Agentmodul bereit. Obwohl keiner der Parameter erforderlich ist, können sie verwendet werden, um Einstellungen für den virtuellen Computer während der Erstellung zu ändern.
 
 | Parameter | Zulässige Werte | Kommentare |
 | --------- | --------------- | -------- |
@@ -104,7 +104,6 @@ Der Befehl **Get-EflowHostConfiguration** gibt die Hostkonfiguration zurück. Be
 
 Weitere Informationen erhalten Sie mit dem Befehl `Get-Help Get-EflowHostConfiguration -full`.
 
-
 ## <a name="get-eflowlogs"></a>Get-EflowLogs
 
 Der Befehl **Get-EflowLogs** sammelt und bündelt Protokolle aus der Bereitstellung und Installation von IoT Edge für Linux unter Windows. Die gebündelten Protokolle werden in Form eines `.zip`-Ordners ausgegeben.
@@ -120,7 +119,7 @@ Der Befehl **Get-EflowVm** gibt die aktuelle Konfiguration des virtuellen Comput
 * EdgeRuntimeStatus
 * SystemStatistics
 
-Wenn Sie eine bestimmte Eigenschaft in einer lesbaren Liste anzeigen möchten, führen Sie den Befehl `Get-EflowVM` mit der erweiterten Eigenschaft aus. Zum Beispiel:
+Wenn Sie eine bestimmte Eigenschaft in einer lesbaren Liste anzeigen möchten, führen Sie den Befehl `Get-EflowVM` mit der erweiterten Eigenschaft aus. Beispiel:
 
 ```powershell
 Get-EflowVM | Select -ExpandProperty VmConfiguration | Format-List
@@ -140,7 +139,7 @@ Der Befehl **Get-EflowVmFeature** gibt den Status der Aktivierung von IoT Edge f
 
 | Parameter | Zulässige Werte | Kommentare |
 | --------- | --------------- | -------- |
-| Feature | **DpsTpm** | Featurename zum Umschalten. |
+| Feature | **DpsTpm** | Der abzufragende Featurename |
 
 Weitere Informationen erhalten Sie mit dem Befehl `Get-Help Get-EflowVmFeature -full`.
 
@@ -156,17 +155,14 @@ Der Befehl **Get-EflowVmTelemetryOption** zeigt den Status der Telemetrie (entwe
 
 Weitere Informationen erhalten Sie mit dem Befehl `Get-Help Get-EflowVmTelemetryOption -full`.
 
-
 ## <a name="get-eflowvmtpmprovisioninginfo"></a>Get-EflowVmTpmProvisioningInfo
 
 Der Befehl **Get-EflowVmTpmProvisioningInfo** gibt die TPM-Bereitstellungsinformationen zurück. Bei diesem Befehl werden keine Parameter verwendet. Er gibt ein Objekt mit zwei Eigenschaften zurück:
 
 * Endorsement Key
-* Registrierungs-ID 
+* Registrierungs-ID
 
 Weitere Informationen erhalten Sie mit dem Befehl `Get-Help Get-EflowVmTpmProvisioningInfo -full`.
-
-
 
 ## <a name="invoke-eflowvmcommand"></a>Invoke-EflowVmCommand
 
@@ -205,7 +201,7 @@ Der Befehl **Set-EflowVM** aktualisiert die Konfiguration des virtuellen Compute
 
 | Parameter | Zulässige Werte | Kommentare |
 | --------- | --------------- | -------- |
-| cpuCount | Ganzzahliger Wert zwischen 1 und den GPU-Kernen des Geräts | Anzahl der CPU-Kerne für den virtuellen Computer. |
+| cpuCount | Ganzzahliger Wert zwischen 1 und den CPU-Kernen des Geräts | Anzahl der CPU-Kerne für den virtuellen Computer. |
 | memoryInMB | Ganzzahliger Wert zwischen 1.024 und der maximalen Menge an freiem Arbeitsspeicher des Geräts | Der für den virtuellen Computer zugeordnete Arbeitsspeicher. |
 | gpuName | GPU-Gerätename |  Name des GPU-Geräts, das für Passthrough verwendet werden soll. |
 | gpuPassthroughType | **DirectDeviceAssignment**, **ParaVirtualization** oder keine (kein Passthrough) |  GPU-Passthrough-Typ |

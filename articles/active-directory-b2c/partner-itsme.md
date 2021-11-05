@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/20/2021
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 4d33746fb39d54fdeb9ed6a6754f22aea14a2a7c
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 73802a0d429d2eb71ec24be8b18d635eb5c2f003
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130035902"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131044568"
 ---
 # <a name="configure-itsme-openid-connect-oidc-with-azure-active-directory-b2c"></a>Konfigurieren von itsme OpenID Connect (OIDC) mit Azure Active Directory B2C
 
@@ -52,7 +52,7 @@ Please clarify step 1 in the description below - we don't have steps in this tut
 |8     |  Die itsme-Umgebung gibt den OAuth-Autorisierungscode an Azure AD B2C zurück. |
 |9     |  Mit dem Autorisierungscode wird von Azure AD B2C eine Tokenanforderung durchgeführt. |
 | 10 | Die itsme-Umgebung überprüft die Tokenanforderung. Falls sie noch gültig ist, gibt sie das OAuth-Zugriffstoken und das ID-Token mit den angeforderten Benutzerinformationen zurück. |
-| 11 | Abschließend wird der Benutzer als authentifizierter Benutzer an die Umleitungs-URL umgeleitet.  |
+| 11 | Abschließend werden Benutzer*innen als authentifizierte Benutzer*innen an die Umleitungs-URL umgeleitet.  |
 |   |   |
 
 ## <a name="onboard-with-itsme"></a>Durchführen des Onboardings mit itsme

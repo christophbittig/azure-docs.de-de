@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/30/2021
 ms.author: jeedes
-ms.openlocfilehash: 9653e837350f1149a19eed52283187a356cf9efc
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 7178d525a1f38083fe732a1e2b7a0183dd16d39e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124791116"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131058177"
 ---
 # <a name="tutorial-integrate-freedcamp-with-azure-active-directory"></a>Tutorial: Integrieren von Freedcamp in Azure Active Directory
 
@@ -87,7 +87,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.freedcamp.com/login`
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte mit dem tatsächlichen Bezeichner, der Antwort-URL und der Anmelde-URL aktualisieren. Benutzer können auch die URL-Werte für ihre eigene Benutzerdomäne eingeben, und diese Werte müssen nicht unbedingt das Format `freedcamp.com` haben. Benutzer können einen beliebigen, für die Benutzerdomäne spezifischen Wert eingeben, der speziell für ihre Anwendungsinstanz gilt. Sie können sich auch an das [Supportteam für den Freedcamp-Client](mailto:devops@freedcamp.com) wenden, um weitere Informationen zu URL-Mustern zu erhalten.
+    > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte mit dem tatsächlichen Bezeichner, der Antwort-URL und der Anmelde-URL aktualisieren. Benutzer*innen können auch die URL-Werte für ihre eigene Benutzerdomäne eingeben, und diese Werte müssen nicht unbedingt das Format `freedcamp.com` haben. Sie können einen beliebigen, für die Benutzerdomäne spezifischen Wert eingeben, der speziell für ihre Anwendungsinstanz gilt. Sie können sich auch an das [Supportteam für Freedcamp Client](mailto:devops@freedcamp.com) wenden, um weitere Informationen zu URL-Mustern zu erhalten.
 
 1. Suchen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** den Eintrag **Zertifikat (Base64)** . Klicken Sie auf **Herunterladen**, um das Zertifikat herunterzuladen, und speichern Sie es auf Ihrem Computer.
 

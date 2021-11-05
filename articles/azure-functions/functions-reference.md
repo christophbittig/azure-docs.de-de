@@ -4,12 +4,12 @@ description: Lernen Sie die Konzepte und Techniken der Azure Functions kennen, d
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 9/02/2021
-ms.openlocfilehash: b29ae41d85d243e64fea777dcb0cf9ee5ccff581
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 94760d7029c74cb5669a1275c4d670f1b89b6c12
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130137361"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131048777"
 ---
 # <a name="azure-functions-developer-guide"></a>Azure Functions: Entwicklerhandbuch
 In Azure Functions nutzen bestimmte Funktionen einige wichtige technische Konzepte und Komponenten gemeinsam, unabhängig von der verwendeten Sprache oder Bindung. Bevor Sie sich mit den spezifischen Details einer bestimmten Sprache oder Bindung beschäftigen, sollten Sie diese Übersicht lesen, die für alle Funktionen gilt.
@@ -103,13 +103,13 @@ Der Standardkonfigurationsanbieter verwendet Umgebungsvariablen. Diese werden m�
 
 Wenn der Verbindungsname in einen einzelnen exakten Wert aufgelöst wird, identifiziert die Laufzeit den Wert als _Verbindungszeichenfolge_, die in der Regel ein Geheimnis enthält. Die Details einer Verbindungszeichenfolge werden durch den Dienst definiert, mit dem Sie eine Verbindung herstellen möchten.
 
-Ein Verbindungsname kann jedoch auch auf eine Sammlung mehrerer Konfigurationselemente verweisen. Umgebungsvariablen können als Sammlung behandelt werden, indem ein gemeinsames Präfix verwendet wird, das auf doppelte Unterstriche (`__`) endet. Auf die Gruppe kann dann verwiesen werden, indem der Verbindungsname auf dieses Präfix festgelegt wird.
+Ein Verbindungsname kann jedoch auch auf eine Sammlung von mehreren Konfigurationselementen verweisen, die für das Konfigurieren [identitätsbasierter Verbindungen](#configure-an-identity-based-connection) nützlich ist. Umgebungsvariablen können als Sammlung behandelt werden, indem ein gemeinsames Präfix verwendet wird, das auf doppelte Unterstriche (`__`) endet. Auf die Gruppe kann dann verwiesen werden, indem der Verbindungsname auf dieses Präfix festgelegt wird.
 
 Beispielsweise kann die `connection`-Eigenschaft für eine Azure-Blobtriggerdefinition „Storage1“ lauten. Solange kein einzelner Zeichenfolgenwert von einer Umgebungsvariablen namens „Storage1“ konfiguriert wurde, kann die `blobServiceUri`-Eigenschaft durch eine Umgebungsvariable namens `Storage1__blobServiceUri` über die Verbindung informiert werden. Die Verbindungseigenschaften unterscheiden sich für jeden Dienst. In der Dokumentation finden Sie Informationen zu der Komponente, die die Verbindung verwendet.
 
 ### <a name="configure-an-identity-based-connection"></a>Konfigurieren einer identitätsbasierten Verbindung
 
-Einige Verbindungen in Azure Functions können so konfiguriert werden, dass anstelle eines Geheimnisses eine Identität verwendet wird. Die Unterstützung hängt von der Erweiterung ab, die die Verbindung verwendet. In einigen Fällen ist möglicherweise weiterhin eine Verbindungszeichenfolge in Functions erforderlich, obwohl der Dienst, mit dem Sie eine Verbindung herstellen, identitätsbasierte Verbindungen unterstützt.
+Einige Verbindungen in Azure Functions können so konfiguriert werden, dass anstelle eines Geheimnisses eine Identität verwendet wird. Die Unterstützung hängt von der Erweiterung ab, die die Verbindung verwendet. In einigen Fällen ist möglicherweise weiterhin eine Verbindungszeichenfolge in Functions erforderlich, obwohl der Dienst, mit dem Sie eine Verbindung herstellen, identitätsbasierte Verbindungen unterstützt. Ein Tutorial zum Konfigurieren Ihrer Funktions-Apps mit verwalteten Identitäten finden Sie im [Tutorial zum Erstellen einer Funktions-App mit identitätsbasierten Verbindungen](./functions-identity-based-connections-tutorial.md).
 
 Identitätsbasierte Verbindungen werden von den folgenden Komponenten unterstützt:
 
@@ -159,7 +159,7 @@ Wählen Sie unten eine Registerkarte aus, um mehr über Berechtigungen für die 
 
 Eine identitätsbasierte Verbindung für einen Azure-Dienst akzeptiert die folgenden allgemeinen Eigenschaften, wobei `<CONNECTION_NAME_PREFIX>` der Wert Ihrer `connection`-Eigenschaft in der Trigger- oder Bindungsdefinition ist:
 
-| Eigenschaft    |  Vorlage für Umgebungsvariablen | BESCHREIBUNG |
+| Eigenschaft    |  Vorlage für Umgebungsvariable | BESCHREIBUNG |
 |---|---|---|---|
 | Token-Anmeldeinformationen |  `<CONNECTION_NAME_PREFIX>__credential` | Damit wird festgelegt, wie für die Verbindung ein Token abgerufen werden soll. Wird nur empfohlen, wenn eine vom Benutzer zugewiesene Identität angegeben wird. Dann muss sie auf „managedidentity“ festgelegt werden. Dies gilt nur, wenn sie im Azure Functions-Dienst gehostet wird. |
 | Client-ID | `<CONNECTION_NAME_PREFIX>__clientId` | Wenn `credential` auf „managedidentity“ festgelegt ist, wird mit dieser Eigenschaft die vom Benutzer zugewiesene Identität angegeben, die beim Abrufen eines Tokens verwendet werden soll. Die Eigenschaft akzeptiert eine Client-ID, die einer vom Benutzer zugewiesenen Identität entspricht, die der Anwendung zugeordnet ist. Wenn nichts angegeben wird, wird die vom System zugewiesene Identität verwendet. Diese Eigenschaft wird in [Szenarios für die lokale Entwicklung](#local-development-with-identity-based-connections) anders verwendet, wenn `credential` nicht festgelegt werden darf. |
@@ -167,6 +167,9 @@ Eine identitätsbasierte Verbindung für einen Azure-Dienst akzeptiert die folge
 Für einen bestimmten Verbindungstyp können weitere Optionen unterstützt werden. Weitere Informationen finden Sie in der Dokumentation zu der Komponente, die die Verbindung herstellt.
 
 ##### <a name="local-development-with-identity-based-connections"></a>Lokale Entwicklung mit identitätsbasierten Verbindungen
+
+> [!NOTE]
+> Die lokale Entwicklung mit identitätsbasierten Verbindungen erfordert aktualisierte Versionen der [Azure Functions Core Tools](./functions-run-local.md). Sie können die derzeit installierte Version überprüfen, indem Sie `func -v` ausführen. Verwenden Sie für Functions v3 die Version `3.0.3904` oder höher. Verwenden Sie für Functions v4 die Version `4.0.3904` oder höher. 
 
 Bei lokaler Ausführung weist die Konfiguration oben die Laufzeit an, Ihre lokale Entwickleridentität zu verwenden. Die Verbindung versucht, ein Token von den folgenden Speicherorten in der angegebenen Reihenfolge abzurufen:
 
@@ -181,7 +184,7 @@ Da dabei die Entwickleridentität verwendet wird, verfügen Sie möglicherweise 
 
 In einigen Fällen möchten Sie möglicherweise die Verwendung einer anderen Identität angeben. Sie können Konfigurationseigenschaften für die Verbindung hinzufügen, die auf die alternative Identität basierend auf einer Client-ID und einem geheimen Clientschlüssel für ein Azure Active Directory-Dienstprinzipal verweisen. **Diese Konfigurationsoption wird nicht unterstützt, wenn das Hosting im Azure Functions-Dienst erfolgt.** Um eine ID und ein Geheimnis auf Ihrem lokalen Computer zu verwenden, definieren Sie die Verbindung mit den folgenden zusätzlichen Eigenschaften:
 
-| Eigenschaft    | Vorlage für Umgebungsvariablen | BESCHREIBUNG |
+| Eigenschaft    | Vorlage für Umgebungsvariable | BESCHREIBUNG |
 |---|---|---|
 | Mandanten-ID | `<CONNECTION_NAME_PREFIX>__tenantId` | Die ID des Azure Active Directory-Mandanten (Verzeichnis). |
 | Client-ID | `<CONNECTION_NAME_PREFIX>__clientId` |  Die Client-ID (Anwendungs-ID) einer App-Registrierung im Mandanten. |
@@ -207,8 +210,8 @@ Beispiel für `local.settings.json`-Eigenschaften, die für identitätsbasierte 
 Azure Functions verwendet standardmäßig die „AzureWebJobsStorage“-Verbindung für Kernfunktionalitäten wie die Koordination der Singletonausführung von Timertriggern und der standardmäßigen Speicherung von App-Schlüsseln. Sie kann auch so konfiguriert werden, dass eine Identität genutzt wird.
 
 > [!CAUTION]
-> Andere Komponenten in Functions basieren für Standardverhalten auf „AzureWebJobsStorage“. Sie sollten sie nicht in eine identitätsbasierte Verbindung verschieben, wenn Sie ältere Versionen von Erweiterungen verwenden, die diese Art von Verbindung nicht unterstützen, einschließlich Triggern und Bindungen für Azure-Blobs und Event Hubs.
-> 
+> Andere Komponenten in Functions basieren für Standardverhalten auf „AzureWebJobsStorage“. Sie sollten sie nicht in eine identitätsbasierte Verbindung verschieben, wenn Sie ältere Versionen von Erweiterungen verwenden, die diese Art von Verbindung nicht unterstützen, einschließlich Triggern und Bindungen für Azure-Blobs und Event Hubs. Ebenso wird `AzureWebJobsStorage` für Bereitstellungsartefakte verwendet, wenn der serverseitig integrierte Linux-Verbrauch verwendet wird. Wenn Sie diese Option aktivieren, müssen Sie die Bereitstellung über [ein externes Bereitstellungspaket](/run-functions-from-deployment-package) durchführen.
+>
 > Außerdem verwenden einige Apps „AzureWebJobsStorage“ für andere Speicherverbindungen in ihren Triggern, Bindungen und/oder in ihrem Funktionscode wieder. Stellen Sie sicher, dass alle Benutzer*innen von „AzureWebJobsStorage“ das identitätsbasierte Verbindungsformat verwenden können, bevor Sie diese Verbindung einer Verbindungszeichenfolge ändern.
 
 Um eine identitätsbasierte Verbindung für „AzureWebJobsStorage“ zu verwenden, konfigurieren Sie die folgenden App-Einstellungen:

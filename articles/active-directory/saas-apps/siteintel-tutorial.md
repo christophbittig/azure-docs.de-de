@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/02/2020
 ms.author: jeedes
-ms.openlocfilehash: b782de623deac68e9a5a305e5cfd1e7ad8578040
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 3c08b2b8e11aa4086c5861733a4a0d49529c416e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124775719"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131032010"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-siteintel"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit SiteIntel
 
@@ -98,7 +98,7 @@ Führen Sie die folgenden Schritte aus, um einmaliges Anmelden von Azure AD im 
 
 1. Wählen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** die Schaltfläche **Kopieren** aus, um die URL im Feld **App-Verbundmetadaten-URL** zu kopieren.
 
-    ![Screenshot: Schaltfläche „Kopieren“ neben „App-Verbundmetadaten-URL“](common/copy-metadataurl.png)
+    ![Screenshot: Schaltfläche zum Kopieren neben „App-Verbundmetadaten-URL“](common/copy-metadataurl.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 

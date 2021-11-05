@@ -5,12 +5,12 @@ author: yanivlavi
 ms.author: yalavi
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 101a575d9acac5da4a8c0399f60e8f32e591d2cf
-ms.sourcegitcommit: c6a2d9a44a5a2c13abddab932d16c295a7207d6a
+ms.openlocfilehash: f3d55bfe93ec3bcaa713e77db6326488851994d1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/09/2021
-ms.locfileid: "107285357"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131026220"
 ---
 # <a name="upgrade-to-the-current-log-alerts-api-from-legacy-log-analytics-alert-api"></a>Upgrade von der Log Analytics-Legacywarnungs-API auf die aktuelle Protokollwarnungs-API
 
@@ -25,11 +25,12 @@ In der Vergangenheit haben Benutzer die [Log Analytics-Legacywarnungs-API](./api
 ## <a name="benefits"></a>Vorteile
 
 - einzelne Vorlage für die Erstellung von Warnungsregeln (zuvor drei separate Vorlagen erforderlich)
-- einzelne API für Log Analytics-Arbeitsbereiche oder Application Insights-Ressourcen
+- Einzelne API für alle Protokollwarnungen für Azure-Ressourcen
+- Unterstützung für zustandsbasierte und 1-minütige Protokollwarnungsvorschau
 - [Unterstützung von PowerShell-Cmdlets](./alerts-log.md#managing-log-alerts-using-powershell)
 - Ausrichtung von Schweregraden auf alle anderen Warnungstypen
 - Möglichkeit zum Erstellen von [arbeitsbereichsübergreifenden Warnungsregeln](../logs/cross-workspace-query.md), die mehrere externe Ressourcen wie Log Analytics-Arbeitsbereiche oder Application Insights-Ressourcen umfassen
-- Angeben von Dimensionen durch Benutzer, um die Warnungen mithilfe des „Aggregieren nach“-Parameters aufzuteilen
+- Benutzer können Dimensionen angeben, um die Warnungen zu teilen.
 - verlängerte Zeiträume von bis zu zwei Tagen bei Protokollwarnungen für Daten (zuvor auf einen Tag beschränkt)
 
 ## <a name="impact"></a>Auswirkung

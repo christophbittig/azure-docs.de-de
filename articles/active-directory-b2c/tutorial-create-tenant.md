@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 09/25/2021
+ms.date: 10/26/2021
 ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: ce5da1ae3ae87d3dbfc91b72fbda412ad179cfa9
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 48577b7625b80954d856d02fcee9e0696393bc55
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130233959"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131036255"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Tutorial: Erstellen eines Azure Active Directory B2C-Mandanten
 
@@ -47,7 +47,7 @@ Im nächsten Tutorial erfahren Sie, wie Sie eine Anwendung registrieren.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an. 
 
-1. Wählen Sie das Verzeichnis aus, das Ihr Abonnement enthält:
+1. Navigieren Sie zu dem Verzeichnis, das Ihr Abonnement enthält:
     1. Wählen Sie im Azure-Portal auf der Symbolleiste das Filtersymbol **Verzeichnisse und Abonnements** aus. 
     
         ![Filtersymbol „Verzeichnisse und Abonnements“](media/tutorial-create-tenant/directories-subscription-filter-icon.png)
@@ -58,8 +58,8 @@ Im nächsten Tutorial erfahren Sie, wie Sie eine Anwendung registrieren.
 
 1. Fügen Sie **Microsoft.AzureActiveDirectory** als Ressourcenanbieter für das verwendete Azure-Abonnement hinzu ([weitere Informationen](../azure-resource-manager/management/resource-providers-and-types.md?WT.mc_id=Portal-Microsoft_Azure_Support#register-resource-provider-1)):
 
-    1. Wählen Sie im Menü oder auf der **Startseite** des Azure-Portals die Option **Abonnements** aus.
-    2. Wählen Sie Ihr Abonnement und dann im Menü auf der linken Seite **Ressourcenanbieter** aus.
+    1. Suchen Sie im Azure-Portal nach dem Eintrag **Abonnements**, und wählen Sie ihn aus.
+    2. Wählen Sie Ihr Abonnement und dann im Menü auf der linken Seite **Ressourcenanbieter** aus. Wenn Ihnen das linke Menü nicht angezeigt wird, wählen Sie das Symbol **Menü anzeigen für < Name Ihres Abonnements >** oben links auf der Seite, um das Menü zu öffnen.
     3. Stellen Sie sicher, dass in der Zeile **Microsoft.AzureActiveDirectory** der Status **Registriert** angezeigt wird. Falls nicht, wählen Sie die Zeile und dann **Registrieren** aus.
 
 1. Wählen Sie im Menü des Azure-Portals oder auf der **Startseite** die Option **Ressource erstellen** aus.

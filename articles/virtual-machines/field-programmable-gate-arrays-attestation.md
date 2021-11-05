@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-gpu
 ms.topic: conceptual
 ms.date: 04/01/2021
 ms.author: vikancha
-ms.openlocfilehash: dba6962199f61eeb93dfb2f98e3e448c94ff633a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 110021730ecc91281f2c187a5ef6f1f989fbaf87
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128567098"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131018468"
 ---
 # <a name="fpga-attestation-for-azure-np-series-vms-preview"></a>FPGA-Nachweis für Azure-VMs der NP-Serie (Vorschau)
 
@@ -34,9 +34,9 @@ Sie müssen Ihre Mandanten- und Abonnement-ID für die Übermittlung an den Nach
 
 ## <a name="building-your-design-for-attestation"></a>Erstellen eines Entwurfs für den Nachweis  
 
-Das bevorzugte Xilinx-Toolset zum Entwickeln von Entwürfen ist Vitis 2020.2. Die Verwendung von netlist-Dateien, die mit einer früheren Version des Toolsets erstellt wurden und mit 2020.2 kompatibel sind, ist möglich. Vergewissern Sie sich, dass Sie die richtige Shell für die Entwicklung geladen haben. Die derzeit unterstützte Version ist „xilinx_u250_gen3x16_xdma_2_1_202010_1“. Die unterstützenden Dateien können aus der Xilinx Alveo Lounge heruntergeladen werden. 
+Das bevorzugte Xilinx-Toolset zum Entwickeln von Entwürfen ist Vitis 2020.2. Die Verwendung von netlist-Dateien, die mit einer früheren Version des Toolsets erstellt wurden und mit 2020.2 kompatibel sind, ist möglich. Vergewissern Sie sich, dass Sie die richtige Shell für die Entwicklung geladen haben. Die zurzeit unterstützte Version ist `xilinx_u250_gen3x16_xdma_2_1_202010_1`. Die unterstützenden Dateien können aus der Xilinx Alveo Lounge heruntergeladen werden.
 
-Sie müssen das folgende Argument in Vitis einfügen (v++-Befehlszeile), um eine XCLBIN-Datei zu erstellen, die anstelle eines Bitstreams eine netlist enthält.   
+Sie müssen das folgende Argument in Vitis (v++-Befehlszeile) einschließen, um eine `xclbin`-Datei zu erstellen, die anstelle einer Bitstream-Datei eine Entwurfsprüfpunkt-Datei enthält.
 
 `--advanced.param compiler.acceleratorBinaryContent=dcp`
 

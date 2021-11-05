@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/14/2021
 ms.author: wachegha
 ms.custom: devx-track-js
-ms.openlocfilehash: 568117bf629117e42af177845c9444996853f6c2
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: be664a5bf29c95143e7706b2df2b49648959f584
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130067210"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131013667"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-with-azure-functions"></a>Hinzufügen einer API zu Azure Static Web Apps mit Azure Functions
 

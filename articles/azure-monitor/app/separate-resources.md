@@ -3,12 +3,12 @@ title: 'Entwerfen der Application Insights-Bereitstellung: Eine oder mehrere Res
 description: Leiten Sie Telemetriedaten für Entwicklungs-, Test- und Produktionsabläufe an verschiedene Ressourcen.
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 9a60981e692a45dd3630073300b206289cfd2a30
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: ffa3c0c6248fd34f91ec1756c3e7e5177134717e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102424664"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131078235"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>Wie viele Application Insights-Ressourcen soll ich bereitstellen?
 
@@ -24,23 +24,23 @@ Jede Application Insights-Ressource umfasst Metriken, die standardmäßig verfü
 
 ### <a name="when-to-use-a-single-application-insights-resource"></a>Verwenden einer einzelnen Application Insights-Ressource
 
--   Für Anwendungskomponenten, die gemeinsam bereitgestellt werden. Normalerweise von einem einzelnen Team entwickelt und von der gleichen Gruppe von DevOps/ITOps-Benutzern verwaltet.
--   Wenn es sinnvoll ist, KPIs (Key Performance Indicators), wie z. B. Antwortzeiten, Fehlerraten in Dashboards usw., standardmäßig für alle Komponenten zu aggregieren (Sie können auf der Metriken-Explorer-Benutzeroberfläche eine Segmentierung nach Rollenname auswählen).
--   Wenn die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC) zwischen den Anwendungskomponenten nicht unterschiedlich verwaltet werden muss.
--   Wenn Sie keine Warnungskriterien für Metriken benötigen, die sich zwischen den Komponenten unterscheiden.
--   Wenn Sie fortlaufende Exporte zwischen den Komponenten nicht unterschiedlich verwalten müssen.
--   Wenn Sie die Abrechnung/Kontingente zwischen den Komponenten nicht unterschiedlich verwalten müssen.
--   Wenn es in Ordnung ist, dass ein API-Schlüssel den gleichen Zugriff auf Daten von allen Komponenten hat. und 10 API-Schlüssel für die Anforderungen aller Komponenten ausreichend sind.
--   Wenn es in Ordnung ist, dass alle Rollen die gleichen Einstellungen für die intelligente Erkennung und Arbeitselementintegration aufweisen.
+- Für Anwendungskomponenten, die gemeinsam bereitgestellt werden. Normalerweise von einem einzelnen Team entwickelt und von der gleichen Gruppe von DevOps/ITOps-Benutzern verwaltet.
+- Wenn es sinnvoll ist, KPIs (Key Performance Indicators), wie z. B. Antwortzeiten, Fehlerraten in Dashboards usw., standardmäßig für alle Komponenten zu aggregieren (Sie können auf der Metriken-Explorer-Benutzeroberfläche eine Segmentierung nach Rollenname auswählen).
+- Wenn die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC) zwischen den Anwendungskomponenten nicht unterschiedlich verwaltet werden muss.
+- Wenn Sie keine Warnungskriterien für Metriken benötigen, die sich zwischen den Komponenten unterscheiden
+- Wenn Sie fortlaufende Exporte zwischen den Komponenten nicht unterschiedlich verwalten müssen.
+- Wenn Sie die Abrechnung/Kontingente zwischen den Komponenten nicht unterschiedlich verwalten müssen.
+- Wenn es in Ordnung ist, dass ein API-Schlüssel den gleichen Zugriff auf Daten von allen Komponenten hat. und 10 API-Schlüssel für die Anforderungen aller Komponenten ausreichend sind.
+- Wenn es in Ordnung ist, dass alle Rollen die gleichen Einstellungen für die intelligente Erkennung und Arbeitselementintegration aufweisen.
 
 > [!NOTE]
 > Wenn Sie mehrere Application Insights-Ressourcen konsolidieren möchten, können Sie Ihre vorhandenen Anwendungskomponenten auf eine neue, konsolidierte Application Insights-Ressource verweisen. Die in der alten Ressource gespeicherten Telemetriedaten werden nicht an die neue Ressource übertragen. Löschen Sie die alte Ressource also erst, wenn Sie über genügend Telemetriedaten zur Geschäftskontinuität in der neuen Ressource verfügen.
 
 ### <a name="other-things-to-keep-in-mind"></a>Weitere zu beachtende Punkte
 
--   Möglicherweise müssen Sie benutzerdefinierten Code hinzufügen, um sicherzustellen, dass aussagekräftige Werte im Attribut [Cloud_RoleName](./app-map.md?tabs=net#set-or-override-cloud-role-name) festgelegt werden. Wenn für dieses Attribut keine aussagekräftigen Werte festgelegt werden, funktioniert *KEINE* der Benutzeroberflächen im Portal.
+- Möglicherweise müssen Sie benutzerdefinierten Code hinzufügen, um sicherzustellen, dass aussagekräftige Werte im Attribut [Cloud_RoleName](./app-map.md?tabs=net#set-or-override-cloud-role-name) festgelegt werden. Wenn für dieses Attribut keine aussagekräftigen Werte festgelegt werden, funktioniert *KEINE* der Benutzeroberflächen im Portal.
 - Bei Service Fabric-Anwendungen und klassischen Clouddiensten liest das SDK automatisch aus der Azure-Rollenumgebung und legt diese fest. Bei allen anderen App-Typen müssen Sie dies wahrscheinlich explizit festlegen.
--   Die Benutzeroberfläche für Livemetriken unterstützt kein Aufteilen nach Rollenname.
+- Die Benutzeroberfläche für Livemetriken unterstützt kein Aufteilen nach Rollenname.
 
 ## <a name="dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a> Dynamischer Instrumentationsschlüssel
 
@@ -99,7 +99,7 @@ Es gibt verschiedene Methoden, um die Eigenschaft "Anwendungsversion" festzulege
 * Umschließen Sie diese Zeile in einem [Telemetrieinitialisierer](../../azure-monitor/app/api-custom-events-metrics.md#defaults) , um sicherzustellen, dass alle TelemetryClient-Instanzen einheitlich festgelegt werden.
 * [ASP.NET] Legen Sie die Version in `BuildInfo.config`fest. Das Webmodul übernimmt die Version aus dem Knoten "BuildLabel". Schließen Sie diese Datei in Ihr Projekt ein, und denken Sie daran, die Eigenschaft "Immer kopieren" im Projektmappen-Explorer festzulegen.
 
-    ```XML
+    ```xml
     <?xml version="1.0" encoding="utf-8"?>
     <DeploymentEvent xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns="http://schemas.microsoft.com/VisualStudio/DeploymentEvent/2013/06">
       <ProjectName>AppVersionExpt</ProjectName>
@@ -113,7 +113,7 @@ Es gibt verschiedene Methoden, um die Eigenschaft "Anwendungsversion" festzulege
     ```
 * [ASP.NET] Generieren Sie "BuildInfo.config" automatisch in MSBuild. Fügen Sie zu diesem Zweck Ihrer `.csproj`-Datei einige Zeilen hinzu:
 
-    ```XML
+    ```xml
     <PropertyGroup>
       <GenerateBuildInfoConfigFile>true</GenerateBuildInfoConfigFile>    <IncludeServerNameInBuildInfo>true</IncludeServerNameInBuildInfo>
     </PropertyGroup>
@@ -126,9 +126,9 @@ Es gibt verschiedene Methoden, um die Eigenschaft "Anwendungsversion" festzulege
     Um das Generieren von Versionsnummern in MSBuild zu ermöglichen, legen Sie in "AssemblyReference.cs" die Version fest, z. B. `1.0.*`.
 
 ## <a name="version-and-release-tracking"></a>Versionsnachverfolgung
-Stellen Sie für die Nachverfolgung der Anwendungsversion sicher, dass `buildinfo.config` über den Prozess Ihrer Microsoft-Build-Engine generiert wird. Fügen Sie in der `.csproj`-Datei Folgendes hinzu:  
+Stellen Sie für die Nachverfolgung der Anwendungsversion sicher, dass `buildinfo.config` über den Prozess Ihrer Microsoft-Build-Engine generiert wird. Fügen Sie in der `.csproj`-Datei Folgendes hinzu:
 
-```XML
+```xml
 <PropertyGroup>
   <GenerateBuildInfoConfigFile>true</GenerateBuildInfoConfigFile>
   <IncludeServerNameInBuildInfo>true</IncludeServerNameInBuildInfo>
@@ -140,7 +140,8 @@ Wenn das Webmodul Application Insights über die Buildinformationen verfügt, f�
 Beachten Sie aber, dass die Buildversionsnummer nur von der Microsoft-Build-Engine generiert wird, und nicht vom Entwicklerbuild aus Visual Studio.
 
 ### <a name="release-annotations"></a>Versionsanmerkungen
-Bei Verwendung von Azure DevOps können Sie Ihren Diagrammen einen [Anmerkungsmarker](../../azure-monitor/app/annotations.md) hinzufügen lassen, wenn Sie eine neue Version veröffentlichen. 
+
+Bei Verwendung von Azure DevOps können Sie Ihren Diagrammen einen [Anmerkungsmarker](../../azure-monitor/app/annotations.md) hinzufügen lassen, wenn Sie eine neue Version veröffentlichen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

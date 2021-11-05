@@ -13,12 +13,12 @@ ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 27353b62255e22f342ce0648a3a9ebde4bd5eb30
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 81067c8c1b24897d88f3d8da4d21329b030cbd03
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130227847"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131036445"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Einrichten der Anmeldung für eine bestimmte Azure Active Directory-Organisation in Azure Active Directory B2C
 
@@ -51,10 +51,10 @@ Wenn Sie die Anmeldung für Benutzer mit einem Azure AD-Konto einer bestimmten 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD-Mandanten Ihrer Organisation (z. B. Contoso) enthält. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnisse und Abonnements** aus.
 1. Suchen Sie auf der Seite **Portaleinstellungen > Verzeichnisse + Abonnements** das Azure AD-Verzeichnis in der Liste **Verzeichnisname**, und klicken Sie dann auf **Wechseln**.
-1. Klicken Sie links oben im Azure-Portal auf **Alle Dienste**, suchen Sie nach **App-Registrierungen**, und wählen Sie dann diese Option aus.
+1. Wählen Sie unter **Azure-Dienste** **App-Registrierungen** aus, oder suchen Sie nach  **App-Registrierungen** und wählen Sie diese aus.
 1. Wählen Sie **Neue Registrierung** aus.
 1. Geben Sie einen **Namen** für Ihre Anwendung ein. Beispiel: `Azure AD B2C App`.
-1. Übernehmen Sie für diese Anwendung die Standardauswahl von **Nur Konten in diesem Organisationsverzeichnis**.
+1. Übernehmen Sie für diese Anwendung die Standardauswahl von **Nur Konten in diesem Organisationsverzeichnis (Nur Standardverzeichnis – einzelner Tenant**).
 1. Übernehmen Sie den Wert **Web** als **Umleitungs-URI**, geben Sie die folgende URL in Kleinbuchstaben ein, und ersetzen Sie dabei `your-B2C-tenant-name` durch den Namen Ihres Azure AD B2C-Mandanten.
 
     ```

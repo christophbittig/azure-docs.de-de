@@ -10,12 +10,13 @@ ms.topic: conceptual
 ms.date: 07/01/2021
 ms.author: lajanuar
 keywords: Lokal, Docker, Container, Identifizieren
-ms.openlocfilehash: 1fb19ef8f7b4855107d089e6b0ce21673ce5b841
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: bdd04a42ba97721d5d5dafd23f9e8e7b5b661f4b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129057339"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131026997"
 ---
 # <a name="install-and-run-form-recognizer-v21-preview-containers"></a>Installieren und Ausführen der Container für die Formularerkennung v2.1 (Vorschau)
 
@@ -430,11 +431,11 @@ http {
 
 * Legen Sie sich einen Satz mit mindestens sechs Formularen desselben Typs zurecht. Diese Daten verwenden Sie zum Trainieren des Modells und zum Testen eines Formulars. Sie können ein [Beispieldataset](https://go.microsoft.com/fwlink/?linkid=2090451) verwenden (*sample_data.zip* herunterladen und extrahieren). Laden Sie die Trainingsdateien in den Ordner **shared** herunter, den Sie oben erstellt haben.
 
-* Wenn Sie Ihre Daten beschriften möchten, laden Sie das [Formularerkennungstool für die Beschriftung von Beispielen für Windows](https://github.com/microsoft/OCR-Form-Tools/releases/tag/v2.1-ga) herunter. Durch den Download wird die EXE-Datei des Beschriftungstools importiert, das Sie zum Beschriften der Daten verwenden, die in Ihrem lokalen Dateisystem vorhanden sind. Sie können alle Warnungen ignorieren, die während des Downloadvorgangs auftreten.
+* Wenn Sie Ihre Daten beschriften möchten, laden Sie das [Beispielbeschriftungstool für die Formularerkennung für Windows](https://github.com/microsoft/OCR-Form-Tools/releases/tag/v2.1-ga) herunter. Durch den Download wird die EXE-Datei des Beschriftungstools importiert, das Sie zum Beschriften der Daten verwenden, die in Ihrem lokalen Dateisystem vorhanden sind. Sie können alle Warnungen ignorieren, die während des Downloadvorgangs auftreten.
 
-#### <a name="create-a-new-sample-labeling-tool-project"></a>Erstellen eines neuen Projekts für die Beschriftung von Beispielen
+#### <a name="create-a-new-sample-labeling-tool-project"></a>Erstellen eines neuen Projekts für das Beispielbeschriftungstool
 
-* Öffnen Sie das Beschriftungstool, indem Sie auf die EXE-Datei für das Tool für die Beschriftung von Beispielen doppelklicken.
+* Öffnen Sie das Beschriftungstool, indem Sie auf die EXE-Datei für das Beispielbeschriftungstool doppelklicken.
 * Wählen Sie im linken Bereich des Tools die Registerkarte „Connections“ (Verbindungen) aus.
 * Wählen Sie die Option zum Erstellen eines neuen Projekts aus, und geben Sie einen Namen und eine Beschreibung ein.
 * Wählen Sie als Anbieter die Option für das lokale Dateisystem aus. Stellen Sie beim lokalen Ordner sicher, dass Sie den Pfad zu dem Ordner eingeben, in dem Sie die Beispieldatendateien gespeichert haben.

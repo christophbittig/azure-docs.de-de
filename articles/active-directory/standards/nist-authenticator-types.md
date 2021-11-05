@@ -13,12 +13,12 @@ ms.reviewer: martinco
 ms.date: 4/26/2021
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f878e18a914b0319657790864d02832bf91fbe36
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: c3ee6cc0c913533b83be1eb389e7d7402875e4dd
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111889650"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131012414"
 ---
 # <a name="nist-authenticator-types-and-aligned-azure-active-directory-methods"></a>NIST-Authentifikatortypen und angeglichene Azure Active Directory-Methoden
 
@@ -27,7 +27,7 @@ Der Authentifizierungsprozess beginnt, wenn ein Anforderer seine Kontrolle über
 | Der NIST-Authentifikatortyp (National Institute of Standards and Technology)| Azure Active Directory-Authentifizierungsmethoden (Azure AD) |
 | - | - |
 |  Gespeichertes Geheimnis <br> (etwas, das Sie wissen)|  Kennwort (Cloudkonten)  <br>Kennwort (Verbund)<br> Kennwort (Kennwort-Hashsynchronisierung)<br>Kennwort (Pass-Through-Authentifizierung) |
-|Lookupgeheimnis <br> (etwas, das Sie haben)| Keine. Bei einem Lookupgeheimnis handelt es sich definitionsgemäß um Daten, die nicht in einem System gespeichert sind. |
+|Geheimnis nachschlagen <br> (etwas, das Sie haben)| Keine. Bei einem Lookupgeheimnis handelt es sich definitionsgemäß um Daten, die nicht in einem System gespeichert sind. |
 |Out-of-band <br>(etwas, das Sie haben)| Telefon (SMS) – nicht empfohlen |
 | Single-Factor-Einmalkennwort <br>‎(etwas, das Sie haben)| Microsoft Authenticator-App (einmaliges Kennwort)  <br>Single-Factor-Einmalkennwort ‎(über OTP-Hersteller)<sup data-htmlnode="">1</sup> | 
 | Multi-Factor-Einmalkennwort<br>(etwas, das Sie haben + etwas, das Sie wissen oder etwas, das Sie sind)| Multi-Factor-Einmalkennwort ‎(über OTP-Hersteller) <sup data-htmlnode="">1</sup>| 
@@ -55,7 +55,7 @@ SMS-Textnachrichten erfüllen zwar den NIST-Standard, werden von NIST aber nicht
 
 [NIST-Authentifikatortypen](nist-authenticator-types.md)
 
-[Realisieren von NIST AAL1 mit Azure AD](nist-authenticator-assurance-level-1.md)
+[Erzielen der NIST-Authentifikator-Sicherheitsstufe 1 mit Azure Active Directory](nist-authenticator-assurance-level-1.md)
 
 [Realisieren von NIST AAL2 mit Azure AD](nist-authenticator-assurance-level-2.md)
 

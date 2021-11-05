@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: tutorials
 ms.topic: tutorial
 ms.date: 07/05/2021
-ms.openlocfilehash: 6297956cb77898c26beaa617a59b1b43cc111e80
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 1c0e6e052b9e65f02ab57a7a2c165c9ba67be0a8
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124771762"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131031041"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>Inkrementelles Laden von Daten aus Azure SQL Managed Instance in Azure Storage mithilfe von Change Data Capture (CDC)
 
@@ -230,7 +230,9 @@ In diesem Schritt wird eine Pipeline erstellt, die zunächst mithilfe einer **Lo
 
     :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/first-lookup-activity-name.png" alt-text="Lookup-Aktivität – Name":::
 4. Wechseln Sie im Fenster **Eigenschaften** zu **Einstellungen**:
+
    1. Geben Sie im Feld **Source Dataset** (Quelldataset) den Namen des SQL Managed Instance-Datasets an.
+
    2. Wählen Sie die Option „Abfrage“ aus, und geben Sie Folgendes in das Abfragefeld ein:
     ```sql
     DECLARE  @from_lsn binary(10), @to_lsn binary(10);  
@@ -238,9 +240,11 @@ In diesem Schritt wird eine Pipeline erstellt, die zunächst mithilfe einer **Lo
     SET @to_lsn = sys.fn_cdc_map_time_to_lsn('largest less than or equal',  GETDATE());
     SELECT count(1) changecount FROM cdc.fn_cdc_get_all_changes_dbo_customers(@from_lsn, @to_lsn, 'all')
     ```
+
    3. Aktivieren Sie das Kontrollkästchen **First row only** (Nur erste Zeile).
 
     :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/first-lookup-activity-settings.png" alt-text="Lookup-Aktivität – Einstellungen":::
+
 5. Klicken Sie auf die Schaltfläche **Datenvorschau**, um sich zu vergewissern, dass durch die Lookup-Aktivität eine gültige Ausgabe abgerufen wird.
 
     :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/first-lookup-activity-preview.png" alt-text="Lookup-Aktivität: Vorschau":::
@@ -337,31 +341,38 @@ In diesem Schritt wird ein Trigger für ein rollierendes Fenster erstellt, um de
    1. Klicken Sie in den Dataseteigenschaften auf die Registerkarte **Verbindung**, und fügen Sie dynamische Inhalte für die Abschnitte **Verzeichnis** und **Datei** hinzu. 
    2. Geben Sie im Abschnitt **Verzeichnis** den folgenden Ausdruck ein, indem Sie unter dem Textfeld auf den Link für dynamischen Inhalt klicken:
     
-    ```sql
-    @concat('customers/incremental/',formatDateTime(dataset().triggerStart,'yyyy/MM/dd'))
-    ```
+      ```sql
+      @concat('customers/incremental/',formatDateTime(dataset().triggerStart,'yyyy/MM/dd'))
+      ```
    3. Geben Sie im Abschnitt **Datei** den folgenden Ausdruck ein. Dadurch werden Dateinamen auf der Grundlage des Startdatums und der Startzeit des Triggers erstellt und mit dem Suffix „.csv“ versehen:
     
-    ```sql
-    @concat(formatDateTime(dataset().triggerStart,'yyyyMMddHHmmssfff'),'.csv')
-    ```
-    :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-configuration-3.png" alt-text="Konfiguration des Senkendatasets: 3":::
+      ```sql
+      @concat(formatDateTime(dataset().triggerStart,'yyyyMMddHHmmssfff'),'.csv')
+      ```
+
+      :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-configuration-3.png" alt-text="Konfiguration des Senkendatasets: 3":::
 
    4. Klicken Sie auf die Registerkarte **IncrementalCopyPipeline**, um zu den Einstellungen für die **Senke** in der Aktivität **Copy** zurückzukehren. 
    5. Erweitern Sie die Dataseteigenschaften, und geben Sie im triggerStart-Parameterwert dynamischen Inhalt mit dem folgenden Ausdruck ein:
-     ```sql
-     @pipeline().parameters.triggerStartTime
-     ```
-    :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-configuration-4.png" alt-text="Konfiguration des Senkendatasets: 4":::
+
+      ```sql
+      @pipeline().parameters.triggerStartTime
+      ```
+
+     :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/sink-dataset-configuration-4.png" alt-text="Konfiguration des Senkendatasets: 4":::
 
 6. Klicken Sie auf „Debuggen“, um die Pipeline zu testen und sich zu vergewissern, dass die Ordnerstruktur und die Ausgabedatei erwartungsgemäß generiert werden. Laden Sie die Datei herunter, und öffnen Sie sie, um den Inhalt zu überprüfen. 
 
     :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/incremental-copy-pipeline-debug-3.png" alt-text="Debuggen des inkrementellen Kopierens: 3":::
+
 7. Vergewissern Sie sich, dass die Parameter in die Abfrage eingefügt werden, indem Sie die Eingabeparameter der Pipelineausführung überprüfen.
 
     :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/incremental-copy-pipeline-debug-4.png" alt-text="Debuggen des inkrementellen Kopierens: 4":::
+
 8. Veröffentlichen Sie Entitäten (verknüpfte Dienste, Datasets und Pipelines) für den Data Factory-Dienst, indem Sie auf die Schaltfläche **Alle veröffentlichen** klicken. Warten Sie, bis die Meldung **Veröffentlichung erfolgreich** angezeigt wird.
+
 9. Konfigurieren Sie abschließend einen Trigger für ein rollierendes Fenster, um die Pipeline in regelmäßigen Abständen auszuführen, und legen Sie Parameter für Start- und Endzeit fest. 
+
    1. Klicken Sie auf die Schaltfläche **Trigger hinzufügen**, und wählen Sie **Neu/Bearbeiten** aus.
 
    :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/add-trigger.png" alt-text="Hinzufügen eines neuen Triggers":::
@@ -371,17 +382,19 @@ In diesem Schritt wird ein Trigger für ein rollierendes Fenster erstellt, um de
    :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/tumbling-window-trigger.png" alt-text="Trigger für ein rollierendes Fenster":::
 
    3. Geben Sie im nächsten Bildschirm die folgenden Werte für den Start- bzw. Endparameter an:
-    ```sql
-    @formatDateTime(trigger().outputs.windowStartTime,'yyyy-MM-dd HH:mm:ss.fff')
-    @formatDateTime(trigger().outputs.windowEndTime,'yyyy-MM-dd HH:mm:ss.fff')
-    ```
 
-   :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/tumbling-window-trigger-2.png" alt-text="Trigger für ein rollierendes Fenster: 2":::
+      ```sql
+      @formatDateTime(trigger().outputs.windowStartTime,'yyyy-MM-dd HH:mm:ss.fff')
+      @formatDateTime(trigger().outputs.windowEndTime,'yyyy-MM-dd HH:mm:ss.fff')
+      ```
+
+      :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/tumbling-window-trigger-2.png" alt-text="Trigger für ein rollierendes Fenster: 2":::
 
 > [!NOTE]
-> Beachten Sie, dass der Trigger erst ausgeführt wird, nachdem er veröffentlicht wurde. Das erwartete Verhalten des rollierenden Fensters besteht außerdem in der Ausführung aller historischen Intervalle seit dem Startdatum bis zum aktuellen Zeitpunkt. Weitere Informationen zu Triggern für ein rollierendes Fenster finden Sie [hier](./how-to-create-tumbling-window-trigger.md). 
-  
+> Der Trigger wird erst ausgeführt wird, nachdem er veröffentlicht wurde. Das erwartete Verhalten des rollierenden Fensters besteht außerdem in der Ausführung aller historischen Intervalle seit dem Startdatum bis zum aktuellen Zeitpunkt. Weitere Informationen zu Triggern für ein rollierendes Fenster finden Sie [hier](./how-to-create-tumbling-window-trigger.md). 
+
 10. Nehmen Sie mithilfe von **SQL Server Management Studio** einige weitere Änderungen an der Kundentabelle vor, indem Sie den folgenden SQL-Code ausführen:
+
     ```sql
     insert into customers (customer_id, first_name, last_name, email, city) values (4, 'Farlie', 'Hadigate', 'fhadigate3@zdnet.com', 'Reading');
     insert into customers (customer_id, first_name, last_name, email, city) values (5, 'Anet', 'MacColm', 'amaccolm4@yellowbook.com', 'Portsmouth');
@@ -390,10 +403,11 @@ In diesem Schritt wird ein Trigger für ein rollierendes Fenster erstellt, um de
     delete from customers where customer_id=5;
     ```
 11. Klicken Sie auf die Schaltfläche **Alle veröffentlichen**. Warten Sie, bis die Meldung **Veröffentlichung erfolgreich** angezeigt wird.  
+
 12. Nach ein paar Minuten wurde die Pipeline ausgelöst, und eine neue Datei wurde in Azure Storage geladen.
 
-
 ### <a name="monitor-the-incremental-copy-pipeline"></a>Überwachen der inkrementellen Kopierpipeline
+
 1. Klicken Sie links auf die Registerkarte **Überwachen**. Die Pipelineausführung wird in der Liste mit ihrem Status angezeigt. Klicken Sie zum Aktualisieren der Liste auf **Aktualisieren**. Zeigen Sie auf eine Stelle in der Nähe des Namens der Pipeline, um auf die Aktion „Erneut ausführen“ und auf den Verbrauchsbericht zuzugreifen.
 
     :::image type="content" source="./media/tutorial-incremental-copy-change-data-capture-feature-portal/copy-pipeline-runs.png" alt-text="Pipelineausführungen":::

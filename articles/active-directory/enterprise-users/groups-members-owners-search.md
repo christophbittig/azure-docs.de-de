@@ -9,72 +9,57 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/02/2021
+ms.date: 10/22/2021
 ms.author: curtand
-ms.reviewer: krbain
+ms.reviewer: jodah
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c1c30008a45130ba044cfaad91f4a3fd0726f00
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 8774bef1dd939daea4384a25bc35d22f3475f57a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129986357"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131049599"
 ---
-# <a name="search-groups-and-members-preview-in-azure-active-directory"></a>Suchen von Gruppen und Mitgliedern (Vorschau) in Azure Active Directory
+# <a name="search-groups-and-members-in-azure-active-directory"></a>Suchen von Gruppen und Mitgliedern in Azure Active Directory
 
-In diesem Artikel erfahren Sie, wie Sie nach Mitgliedern und Besitzern einer Gruppe suchen, und wie Sie Suchfilter im Rahmen der Vorschau der Verbesserung für Gruppen im Azure Active Directory-Portal (Azure AD) verwenden. Es gibt viele Verbesserungen in den Gruppenbenutzeroberflächen, mit denen Sie Ihre Gruppen, einschließlich der Mitglieder und Besitzer, schnell und unkompliziert verwalten können. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+In diesem Artikel erfahren Sie, wie Sie nach Mitgliedern und Besitzern einer Gruppe suchen, und wie Sie Suchfilter im Azure Active Directory-Portal (Azure AD) verwenden. Zu den Suchfunktionen für Gruppen gehören:
 
-Zu den Änderungen in dieser Vorschau gehören:
+- Gruppensuchfunktionen wie z. B. Suchen von Teilzeichenfolgen in Gruppennamen
+- Filter- und Sortieroptionen für Mitglieds- und Besitzerlisten
+- Suchfunktionen für Mitglieds- und Besitzerlisten
 
-- Neue Gruppensuchfunktionen wie z. B. Suchen von Teilzeichenfolgen in Gruppennamen
-- Neu Filter- und Sortieroptionen für Mitglieds- und Besitzerlisten
-- Neue Suchfunktionen für Mitglieds- und Besitzerlisten
-- Genauere Gruppenanzahl für große Gruppen
+## <a name="group-search-and-sort"></a>Suchen und Sortieren in Gruppen
 
-## <a name="enabling-and-managing-the-preview"></a>Aktivieren und Verwalten der Vorschau
+Wenn Sie auf der Seite **Alle Gruppen** eine Suchzeichenfolge eingeben, können Sie jetzt nur auf der Seite **Alle Gruppen** zwischen den Suchvorgängen „contains“ (enthält) und „starts with“ (beginnt mit) wechseln. Die Teilzeichenfolgensuche wird nur für ganze Wörter durchgeführt, und alle Sonderzeichen werden auch als mit dem UND-Operator gesucht. Wenn Sie beispielsweise nach „-Name“ suchen, wird eine Suche nach der Teilzeichenfolge „Name“ und eine Suche nach „-“ gestartet. Bei der Teilzeichenfolgesuche wird zwischen Groß- und Kleinschreibung unterschieden. Objekt-ID- oder mailNickname-Eigenschaften werden ebenfalls durchsucht.
 
-Wir haben die Teilnahme an der Vorschau erleichtert:
+![Neue Teilzeichenfolgesuchen auf der Seite „Alle Gruppen“](./media/groups-members-owners-search/members-list.png)
 
-  1. Melden Sie sich beim [Azure AD-Portal](https://portal.azure.com) an, und wählen Sie **Gruppen** aus.
-  2. Wählen Sie auf der Seite „Gruppen – Alle Gruppen“ das Banner am oberen Rand der Seite aus, um an der Vorschau teilzunehmen.
+Eine Suche nach „Policy“ gibt z. B. sowohl „MDM policy – West“ als auch „Policy group“ zurück. Eine Gruppe mit dem Namen „New_policy“ würde nicht zurückgegeben. Sie können die Liste **Alle Gruppen** nach Namen in aufsteigender oder absteigender Reihenfolge sortieren.
 
-Um die neuesten Features und Verbesserungen kennenzulernen, können Sie auch **Vorschauinfo** auf der Seite **Alle Gruppen** auswählen. Wenn Sie an der Vorschau teilnehmen, sehen Sie das Vorschautag auf allen Gruppenseiten, die Verbesserungen aufweisen und Teil der Vorschau sind. Nicht jede Gruppenseite wurde im Rahmen dieser Vorschauversion aktualisiert.
-
-Wenn Probleme auftreten, können Sie wieder zur Legacyoberfläche zurückkehren, indem Sie das Banner am oberen Rand der Seite **Alle Gruppen** auswählen. Wir freuen uns über Ihr Feedback, denn es gibt uns wertvolle Anregungen zur Verbesserung unserer Benutzeroberflächen.
-
-## <a name="group-search-and-sorting"></a>Suchen und Sortieren bei Gruppen
-
-Die Suche in der Gruppenliste wurde verbessert. Sobald Sie mit der Eingabe einer Suchzeichenfolge beginnen, führt die Suchfunktion automatisch eine `startswith`- und Teilzeichenfolgesuche in der Liste der Gruppennamen durch. Die Teilzeichenfolgesuche wird nur bei ganzen Wörtern durchgeführt und berücksichtigt keine Sonderzeichen. Bei der Teilzeichenfolgesuche wird zwischen Groß- und Kleinschreibung unterschieden.
-
-![Neue Teilzeichenfolgesuchen auf der Seite „Alle Gruppen“](./media/groups-members-owners-search/groups-search-preview.png)
-
-Eine Suche nach „Policy“ gibt nun z. B. sowohl „MDM policy – West“ als auch „Policy group“ zurück. Eine Gruppe mit dem Namen „New_policy“ würde nicht zurückgegeben.
-
-- Sie können dieselbe Suche auch in Gruppenmitgliedschaftslisten durchführen.
-- Jetzt können Sie die Gruppenliste mithilfe der Pfeile rechts neben der Namenspaltenüberschrift nach Namen sortieren, um die Liste in aufsteigender oder absteigender Reihenfolge zu sortieren.
-
-## <a name="group-member-search-and-filtering"></a>Suchen und Filtern von Gruppenmitgliedern
+## <a name="group-member-search-and-filter"></a>Suchen und Filtern von Gruppenmitgliedern
 
 ### <a name="search-group-member-and-owner-lists"></a>Suchen in Gruppenmitglieder- und Besitzerlisten
 
-Jetzt können Sie die Mitglieder einer bestimmten Gruppe nach Namen suchen und die gleiche Suche auch in der Liste der Gruppenbesitzer durchführen. Wenn Sie in der neuen Benutzeroberfläche eine Zeichenfolge in das Suchfeld eingeben, wird automatisch eine „Beginnt mit“-Suche durchgeführt. Beispielsweise gibt eine Suche nach „Scott“ „Scott Wilkinson“ zurück.
+Sie können die Mitglieder oder Besitzer*innen einer bestimmten Gruppe nach Namen durchsuchen. Wenn Sie eine Suchzeichenfolge eingeben, wird automatisch eine `contains`-Suche durchgeführt. Beispielsweise gibt eine Suche nach „Scott“ sowohl Scott Wilkinson als auch Maya Scott zurück.
 
-![Neue Teilzeichenfolgen-Suchvorgänge in Gruppenmitglieder- und Besitzerlisten](./media/groups-members-owners-search/members-list.png)
+![Neue Teilzeichenfolgen-Suchvorgänge in Gruppenmitglieder- und Besitzerlisten](./media/groups-members-owners-search/groups-search-preview.png)
 
-### <a name="filter-member-and-owners-list"></a>Filtern von Mitglieder- und Besitzerlisten
+### <a name="filter-member-and-owner-lists"></a>Filtern von Mitglieder- und Besitzerlisten
 
-Neben der Suche können Sie nun die Mitglieder- und Besitzerlisten nach dem Benutzertyp filtern. Diese Information enthält die Spalte „Benutzertyp“ der Liste. Daher können Sie die Liste nach Mitgliedern und Gästen filtern, um zu ermitteln, ob in der Gruppe Gäste vorhanden sind.
+Sie können die Gruppenmitglieder- und Besitzerlisten auch nach Benutzertyp filtern. Diese Informationen finden Sie in der Spalte **Benutzertyp** in der Liste der Mitglieder oder Besitzer. Sie können die Liste so filtern, dass nur Mitglieder oder Gäste angezeigt werden.
 
-### <a name="view-and-manage-membership"></a>Anzeigen und Verwalten der Mitgliedschaft
+Die Seite **Mitglieder** enthält alle eindeutigen Mitglieder der Gruppe, einschließlich aller Mitglieder, die ihre Gruppenmitgliedschaft von einer anderen Gruppe erben.
 
-Zusätzlich zum Anzeigen der direkten Mitglieder einer bestimmten Gruppe können Sie nun die Liste aller Mitglieder der Gruppe auf der Seite „Mitglieder“ anzeigen. Die Mitgliederliste enthält alle eindeutigen Mitglieder der Gruppe einschließlich transitiver Mitglieder.
+Sie können die Listen auch einzeln durchsuchen und filtern. Das Filtern der Liste alle Mitglieder wirkt sich nicht auf die Filter aus, die auf die Liste der direkten Mitglieder angewendet werden.
 
-Sie können auch die Liste der direkten Mitglieder und die Liste alle Mitglieder einzeln durchsuchen und filtern. Das Filtern der Liste alle Mitglieder wirkt sich nicht auf die Filter aus, die auf die Liste der direkten Mitglieder angewendet werden.
+## <a name="group-memberships"></a>Gruppenmitgliedschaften
 
-## <a name="improved-group-member-counts"></a>Verbesserte Anzahl der Gruppenmitglieder
+Sie können Gruppenmitgliedschaften für eine Gruppe auch auf der Seite **Gruppenmitgliedschaften** anzeigen. Die Seite **Gruppenmitgliedschaften** unterstützt Such-, Sortier- und Filtervorgänge, die den anderen Gruppenseiten ähneln.
 
-Wir haben die Seite **Übersicht** für Gruppen so verbessert, dass die Gruppenmitgliederzahlen von Gruppen aller Größen berücksichtigt werden. Sie sehen auch die Mitgliederzahlen für Gruppen mit mehr als 1.000 Mitgliedern. Jetzt können Sie die Gesamtzahl der direkten Mitglieder einer Gruppe und die Gesamtzahl der Mitgliedschaften (alle eindeutigen Mitglieder der Gruppe einschließlich transitiver Mitglieder) auf der Seite **Übersicht** sehen.
+## <a name="group-member-counts"></a>Anzahl der Gruppenmitglieder
+
+Auf der Seite **Übersicht** wird die Mitgliederanzahl für Gruppen bereitgestellt. Jetzt können Sie die Gesamtzahl der direkten Mitglieder einer Gruppe und die Gesamtzahl der Mitgliedschaften (alle eindeutigen Mitglieder der Gruppe einschließlich geerbter Mitgliedschaften) auf der Seite **Übersicht** anzeigen.
 
 ![Höhere Genauigkeit bei der Anzahl der Gruppenmitgliedschaften](./media/groups-members-owners-search/member-numbers.png)
 

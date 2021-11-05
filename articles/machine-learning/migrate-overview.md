@@ -8,12 +8,12 @@ ms.topic: how-to
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 08/23/2021
-ms.openlocfilehash: 4f4b0cd13095c83f84c96e57e73f255caf4fcdc9
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 95e95e3c6eaa3a2e1738dd3a9dea9afd5e56e008
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124736334"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131088120"
 ---
 # <a name="migrate-to-azure-machine-learning"></a>Migrieren zu Azure Machine Learning 
 
@@ -26,7 +26,7 @@ ms.locfileid: "124736334"
 
 Erfahren Sie, wie Sie eine Migration von Studio (klassisch) zu Azure Machine Learning durchführen. Machine Learning bietet eine modernisierte Data-Science-Plattform, die Ansätze ohne Code und Code-First-Ansätze kombiniert.
 
-Dies ist ein Leitfaden für eine einfache Lift & Shift-Migration. Wenn Sie einen vorhandenen Workflow für maschinelles Lernen optimieren oder eine ML-Plattform modernisieren möchten, finden Sie im [Framework für die Azure Machine Learning-Einführung](https://aka.ms/mlstudio-classic-migration-repo) weitere Ressourcen, wie z. B. Tools für digitale Umfragen, Arbeitsblätter und Planungsvorlagen.
+Dies ist ein Leitfaden für eine einfache Lift & Shift-Migration. Wenn Sie einen vorhandenen Workflow für maschinelles Lernen optimieren oder eine Machine Learning-Plattform modernisieren möchten, finden Sie im [Framework für die Azure Machine Learning-Einführung](https://aka.ms/mlstudio-classic-migration-repo) weitere Ressourcen (z. B. Tools für digitale Umfragen, Arbeitsblätter und Planungsvorlagen).
 
 ![Framework für die Azure Machine Learning-Einführung](./media/migrate-overview/aml-adoption-framework.png)
 

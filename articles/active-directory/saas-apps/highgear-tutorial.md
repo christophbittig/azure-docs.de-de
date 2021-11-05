@@ -11,17 +11,16 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 4d8a093e4008d747aee8bab48ed2db7dcd81fd2a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: ae50e0d9cee09cafe0b6a43cec1122832857b7fd
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124826317"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131058975"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-highgear"></a>Tutorial: Azure Active Directory-Integration mit HighGear
 
-In diesem Tutorial erfahren Sie, wie Sie HighGear in Azure Active Directory (Azure AD) integrieren.
-Die Integration von HighGear in Azure AD hat folgende Vorteile:
+In diesem Tutorial erfahren Sie, wie Sie HighGear in Azure Active Directory (Azure AD) integrieren. Die Integration von HighGear in Azure AD hat folgende Vorteile:
 
 * Sie können in Azure AD steuern, wer Zugriff auf HighGear haben soll.
 * Sie können Benutzern ermöglichen, sich mit ihrem Azure AD-Konto automatisch bei HighGear anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
@@ -101,29 +100,29 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
     ![Screenshot der grundlegenden S A M L-Konfiguration, in der Sie I D und Antwort-U R L eingeben und „Speichern“ auswählen](common/idp-intiated.png)
 
-    a. Fügen Sie im Textfeld **Bezeichner** die **ID der Dienstanbieterentität** ein, die in Ihrem HighGear-System auf der Seite mit den Einstellungen für einmaliges Anmelden angegeben ist.
+    1. Fügen Sie im Textfeld **Bezeichner** die **ID der Dienstanbieterentität** ein, die in Ihrem HighGear-System auf der Seite mit den Einstellungen für einmaliges Anmelden angegeben ist.
 
-    ![Das Feld mit der ID der Dienstanbieterentität](media/highgear-tutorial/service-provider-entity-id-field.png)
-    
-    > [!NOTE]
-    > Sie müssen sich bei Ihrem HighGear-System anmelden, um auf die Seite mit den Einstellungen für einmaliges Anmelden zugreifen zu können. Bewegen Sie nach der Anmeldung Ihren Mauszeiger in HighGear auf die Verwaltungsregisterkarte, und klicken Sie auf das Menüelement für die Einstellungen für einmaliges Anmelden.
-    
-    ![Das Menüelement für die Einstellungen für einmaliges Anmelden](media/highgear-tutorial/single-sign-on-settings-menu-item.png)
+       ![Das Feld mit der ID der Dienstanbieterentität](media/highgear-tutorial/service-provider-entity-id-field.png)
 
-    b. Fügen Sie im Textfeld **Antwort-URL** die **Assertionsverbraucherdienst-URL** ein, die in Ihrem HighGear-System auf der Seite mit den Einstellungen für einmaliges Anmelden angegeben ist.
+       > [!NOTE]
+       > Sie müssen sich bei Ihrem HighGear-System anmelden, um auf die Seite mit den Einstellungen für einmaliges Anmelden zugreifen zu können. Bewegen Sie nach der Anmeldung Ihren Mauszeiger in HighGear auf die Verwaltungsregisterkarte, und klicken Sie auf das Menüelement für die Einstellungen für einmaliges Anmelden.
 
-    ![Das Feld mit der Assertionsverbraucherdienst-URL](media/highgear-tutorial/assertion-consumer-service-url-field.png)
+       ![Das Menüelement für die Einstellungen für einmaliges Anmelden](media/highgear-tutorial/single-sign-on-settings-menu-item.png)
 
-    c. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
+    1. Fügen Sie im Textfeld **Antwort-URL** die **Assertionsverbraucherdienst-URL** ein, die in Ihrem HighGear-System auf der Seite mit den Einstellungen für einmaliges Anmelden angegeben ist.
 
-     ![Screenshot von „Zusätzliche U R Ls festlegen“, wo Sie eine Anmelde-U R L eingeben können](common/metadata-upload-additional-signon.png)
+       ![Das Feld mit der Assertionsverbraucherdienst-URL](media/highgear-tutorial/assertion-consumer-service-url-field.png)
 
-     Fügen Sie im Textfeld **URL für Anmeldung** die **ID der Dienstanbieterentität** ein, die in Ihrem HighGear-System auf der Seite mit den Einstellungen für einmaliges Anmelden angegeben ist. (Diese Entitäts-ID ist gleichzeitig die Basis-URL des HighGear-Systems, die bei der SP-initiierten Anmeldung verwendet wird.)
+    1. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-    ![Das Feld mit der ID der Dienstanbieterentität](media/highgear-tutorial/service-provider-entity-id-field.png)
+       ![Screenshot von „Zusätzliche U R Ls festlegen“, wo Sie eine Anmelde-U R L eingeben können](common/metadata-upload-additional-signon.png)
 
-    > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit den tatsächlichen Werten für Bezeichner, Antwort-URL und Anmelde-URL, die in Ihrem HighGear-System auf der Seite mit den **Einstellungen für einmaliges Anmelden** angegeben sind. Sollten Sie Hilfe benötigen, wenden Sie sich an das [HighGear-Supportteam](mailto:support@highgear.com).
+       Fügen Sie im Textfeld **URL für Anmeldung** die **ID der Dienstanbieterentität** ein, die in Ihrem HighGear-System auf der Seite mit den Einstellungen für einmaliges Anmelden angegeben ist. (Diese Entitäts-ID ist gleichzeitig die Basis-URL des HighGear-Systems, die bei der SP-initiierten Anmeldung verwendet wird.)
+
+       ![Das Feld mit der ID der Dienstanbieterentität](media/highgear-tutorial/service-provider-entity-id-field.png)
+
+       > [!NOTE]
+       > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit den tatsächlichen Werten für Bezeichner, Antwort-URL und Anmelde-URL, die in Ihrem HighGear-System auf der Seite mit den **Einstellungen für einmaliges Anmelden** angegeben sind. Sollten Sie Hilfe benötigen, wenden Sie sich an das [HighGear-Supportteam](mailto:support@highgear.com).
 
 4. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das **Zertifikat (Base64)** herunterzuladen, und speichern Sie es auf Ihrem Computer. Sie benötigen es in einem späteren Konfigurationsschritt.
 
@@ -133,11 +132,11 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
-    a. Anmelde-URL: Diesen Wert benötigen Sie unter **Konfigurieren des einmaligen Anmeldens für HighGear** in Schritt 2.
+    1. Anmelde-URL: Diesen Wert benötigen Sie unter **Konfigurieren des einmaligen Anmeldens für HighGear** in Schritt 2.
 
-    b. Azure AD-Bezeichner: Diesen Wert benötigen Sie unter **Konfigurieren des einmaligen Anmeldens für HighGear** in Schritt 3.
+    1. Azure AD-Bezeichner: Diesen Wert benötigen Sie unter **Konfigurieren des einmaligen Anmeldens für HighGear** in Schritt 3.
 
-    c. Abmelde-URL: Diesen Wert benötigen Sie unter **Konfigurieren des einmaligen Anmeldens für HighGear** in Schritt 4.
+    1. Abmelde-URL: Diesen Wert benötigen Sie unter **Konfigurieren des einmaligen Anmeldens für HighGear** in Schritt 4.
 
 ### <a name="configure-highgear-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für HighGear
 
@@ -175,14 +174,13 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     ![Dialogfeld „Benutzer“](common/user-properties.png)
 
-    a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
+    1. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
   
-    b. Geben Sie im Feld **Benutzername** Folgendes ein: **brittasimon\@ihreunternehmensdomäne.erweiterung**.  
-    Zum Beispiel, BrittaSimon@contoso.com
+    1. Geben Sie im Feld **Benutzername** den Namen **brittasimon\@yourcompanydomain.extension** (z. B. BrittaSimon@contoso.com) ein.
 
-    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Kennwortfeld.
+    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Kennwortfeld.
 
-    d. Klicken Sie auf **Erstellen**.
+    1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

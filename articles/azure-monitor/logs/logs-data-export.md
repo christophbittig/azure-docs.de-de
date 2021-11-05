@@ -6,12 +6,12 @@ ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
 author: yossi-y
 ms.author: yossiy
 ms.date: 10/17/2021
-ms.openlocfilehash: 25d1d07edabdc8ee3d46175a51d8a20c5d9cc9eb
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: f5dc1ad57b745ee26f9edb1b9c31091a1aaec42c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130133110"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131069974"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Datenexport im Log Analytics-Arbeitsbereich in Azure Monitor (Vorschau)
 Der Datenexport im Log Analytics-Arbeitsbereich in Azure Monitor ermöglicht es Ihnen, Daten aus ausgewählten Tabellen in Ihrem Log Analytics-Arbeitsbereich bei der Sammlung fortlaufend in ein Azure Storage-Konto oder in Azure Event Hubs zu exportieren. In diesem Artikel werden dieses Feature und die Schritte zum Konfigurieren des Datenexports in Ihren Arbeitsbereichen ausführlich beschrieben.
@@ -173,7 +173,8 @@ Datenexportziele weisen Grenzwerte auf, und sie sollten überwacht werden, um Ex
     | Namespacesname | Event Hub-Standardmetriken | Fehler aufgrund von Kontingentüberschreitung | Anzahl | Zwischen 1 % und 5 % der Anforderung |
 
 1. Warnung vor Abhilfemaßnahmen
-   - Erhöhung der Anzahl der Einheiten (TU oder PU)
+   - Konfigurieren Sie die Funktion [Auto-inflate](../../event-hubs/event-hubs-auto-inflate.md), um die Anzahl der Durchsatzeinheiten automatisch zu erhöhen, um den Nutzungsanforderungen gerecht zu werden.
+   - Überprüfen sie die Erhöhung der Durchsatzeinheiten, um die Last zu ermöglichen.
    - Aufteilen von Tabellen zwischen zusätzlichen Namespaces
    - Verwenden Sie die Stufen "Prämie" oder "Dedizierte" für einen höheren Durchsatz
 
@@ -653,6 +654,10 @@ Die Unterstützung für Tabellen ist zurzeit auf die unten genannten beschränkt
 | ABSBotRequests |  |
 | ACSAuthIncomingOperations |  |
 | ACSBillingUsage |  |
+| ACRConnectedClientList |  |
+| ACRConnectedClientList |  |
+| ACSCallDiagnostics |  |
+| ACSCallSummary |  |
 | ACSChatIncomingOperations |  |
 | ACSSMSIncomingOperations |  |
 | ADAssessmentRecommendation |  |
@@ -674,7 +679,19 @@ Die Unterstützung für Tabellen ist zurzeit auf die unten genannten beschränkt
 | AegDeliveryFailureLogs |  |
 | AegPublishFailureLogs |  |
 | AEWAuditLogs |  |
+| AgriFoodApplicationAuditLogs |  |
+| AgriFoodApplicationAuditLogs |  |
+| AgriFoodFarmManagementLogs |  |
+| AgriFoodFarmManagementLogs |  |
+| AgriFoodFarmOperationLogs |  |
+| AgriFoodInsightLogs |  |
+| AgriFoodJobProcessedLogs |  |
+| AgriFoodModelInferenceLogs |  |
+| AgriFoodProviderAuthLogs |  |
+| AgriFoodSatelliteLogs |  |
+| AgriFoodWeatherLogs |  |
 | Warnung |  |
+| AlertEvidence |  |
 | AmlOnlineEndpointConsoleLog |  |
 | ApiManagementGatewayLogs |  |
 | AppCenterError |  |
@@ -685,6 +702,7 @@ Die Unterstützung für Tabellen ist zurzeit auf die unten genannten beschränkt
 | AppServiceFileAuditLogs |  |
 | AppServiceHTTPLogs |  |
 | AppServicePlatformLogs |  |
+| ATCExpressRouteCircuitIpfix |  |
 | AuditLogs |  |
 | AutoscaleEvaluationsLog |  |
 | AutoscaleScaleActionsLog |  |
@@ -704,6 +722,7 @@ Die Unterstützung für Tabellen ist zurzeit auf die unten genannten beschränkt
 | CDBPartitionKeyRUConsumption |  |
 | CDBPartitionKeyStatistics |  |
 | CDBQueryRuntimeStatistics |  |
+| CloudAppEvents |  |
 | CommonSecurityLog |  |
 | ComputerGroup |  |
 | ConfigurationData | Teilweise unterstützt: Einige Daten werden durch interne Dienste erfasst, die für den Export nicht unterstützt werden. Dieser Teil fehlt derzeit im Export. |
@@ -747,9 +766,9 @@ Die Unterstützung für Tabellen ist zurzeit auf die unten genannten beschränkt
 | HDInsightHiveAndLLAPMetrics |  |
 | HDInsightHiveTezAppStats |  |
 | HDInsightJupyterNotebookEvents |  |
-| HDInsightKafkaLogs |  |
 | HDInsightKafkaMetrics |  |
 | HDInsightOozieLogs |  |
+| HDInsightRangerAuditLogs |  |
 | HDInsightSecurityLogs |  |
 | HDInsightSparkApplicationEvents |  |
 | HDInsightSparkBlockManagerEvents |  |
@@ -785,17 +804,17 @@ Die Unterstützung für Tabellen ist zurzeit auf die unten genannten beschränkt
 | NWConnectionMonitorTestResult |  |
 | OfficeActivity | In Government-Clouds teilweise unterstützt: Einige der Daten werden über Webhooks von O365 in LA erfasst. Dieser Teil fehlt derzeit im Export. |
 | Vorgang | Teilweise unterstützt: Einige Daten werden durch interne Dienste erfasst, die für den Export nicht unterstützt werden. Dieser Teil fehlt derzeit im Export. |
-| Perf | Partieller Support: Zurzeit werden nur Windows-Leistungsdaten unterstützt. Linux-Leistungsdaten fehlen derzeit im Export. |
+| Perf | Teilweise unterstützt: Zurzeit werden nur Windows-Leistungsdaten unterstützt. Linux-Leistungsdaten fehlen derzeit im Export. |
 | PowerBIDatasetsWorkspace |  |
+| HDInsightRangerAuditLogs |  |
 | PurviewScanStatusLogs |  |
 | SCCMAssessmentRecommendation |  |
 | SCOMAssessmentRecommendation |  |
 | SecurityAlert |  |
 | SecurityBaseline |  |
 | SecurityBaselineSummary |  |
-| SecurityCef |  |
 | SecurityDetection |  |
-| SecurityEvent | Teilweise Unterstützung: Daten, die vom Log Analytics-Agent (MMA) oder vom Azure Monitor-Agent (AMA) eintreffen, werden beim Exportvorgang vollständig unterstützt. Daten, die über den Diagnoseerweiterungs-Agent eingehen, werden über den Speicher gesammelt. Dieser Pfad wird beim Export jedoch nicht unterstützt.2 |
+| SecurityEvent | Teilweise Unterstützung: Daten, die vom Log Analytics-Agent (MMA) oder vom Azure Monitor-Agent (AMA) eintreffen, werden beim Exportvorgang vollständig unterstützt. Daten, die über den Diagnoseerweiterungs-Agent eingehen, werden über den Speicher gesammelt. Dieser Pfad wird beim Export jedoch nicht unterstützt. |
 | SecurityIncident |  |
 | SecurityIoTRawEvent |  |
 | SecurityNestedRecommendation |  |
@@ -822,7 +841,7 @@ Die Unterstützung für Tabellen ist zurzeit auf die unten genannten beschränkt
 | SynapseSqlPoolRequestSteps |  |
 | SynapseSqlPoolSqlRequests |  |
 | SynapseSqlPoolWaits |  |
-| syslog | Teilweise Unterstützung: Daten, die vom Log Analytics-Agent (MMA) oder vom Azure Monitor-Agent (AMA) eintreffen, werden beim Exportvorgang vollständig unterstützt. Daten, die über den Diagnoseerweiterungs-Agent eingehen, werden über den Speicher gesammelt. Dieser Pfad wird beim Export jedoch nicht unterstützt.2 |
+| syslog | Teilweise Unterstützung: Daten, die vom Log Analytics-Agent (MMA) oder vom Azure Monitor-Agent (AMA) eintreffen, werden beim Exportvorgang vollständig unterstützt. Daten, die über den Diagnoseerweiterungs-Agent eingehen, werden über den Speicher gesammelt. Dieser Pfad wird beim Export jedoch nicht unterstützt. |
 | ThreatIntelligenceIndicator |  |
 | Aktualisieren | Teilweise unterstützt: Einige Daten werden durch interne Dienste erfasst, die für den Export nicht unterstützt werden. Dieser Teil fehlt derzeit im Export. |
 | UpdateRunProgress |  |

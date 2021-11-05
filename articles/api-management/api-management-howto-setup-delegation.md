@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/13/2021
 ms.author: danlep
-ms.openlocfilehash: a642206389c5c92209a8d47e7a72992296b46428
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: dbb948e45473bf091cb2d69e82ad2adf5fcfe8a2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128603617"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131058633"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>Delegieren von Benutzerregistrierung und Produktabonnierung
 
@@ -153,7 +153,7 @@ Empfohlene Schritte zum Erstellen eines neuen Delegierungsendpunkts zur Implemen
 
 Die Codebeispiele zeigen Folgendes:
 
-* Abrufen des *Validierungsschlüssels für Delegierungen*, der auf dem Bildschirm für die **Delegierung** im Herausgeberportal festgelegt wird.
+* Abrufen des *Validierungsschlüssels für Delegierungen*, der auf dem Bildschirm **Delegierung** im Azure-Portal festgelegt wird.
 * Erstellen Sie einen HMAC, mit dem die Signatur überprüft und dadurch die Gültigkeit der übergebenen „returnUrl“ nachgewiesen wird.
 
 Mit kleineren Änderungen können Sie denselben Code für die **productId** und **userID** verwenden.

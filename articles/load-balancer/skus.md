@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/01/2020
+ms.date: 10/21/2021
 ms.author: allensu
-ms.openlocfilehash: fc474bf8a6df613a8dc1e95169b4730251ff22b7
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 5000ac68cc0e00cdbe9d0ebd430f8cd88fe49e98
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114472848"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131057702"
 ---
 # <a name="azure-load-balancer-skus"></a>Azure Load Balancer-SKUs
 
@@ -34,6 +34,7 @@ Eigenständige virtuelle Computer, Verfügbarkeitsgruppen und VM-Skalierungsgrup
 
 | | Load Balancer Standard | Load Balancer Basic |
 | --- | --- | --- |
+| **Back-End-Typ** | IP-basiert, NIC-basiert | NIC-basiert |
 | **[Größe des Back-End-Pools](../azure-resource-manager/management/azure-subscription-service-limits.md#load-balancer)** | Unterstützt bis zu 1.000 Instanzen | Unterstützt bis zu 300 Instanzen |
 | **Endpunkte des Back-End-Pools** | Virtuelle Computer oder VM-Skalierungsgruppen in einem einzelnen Netzwerk | Virtuelle Computer in einer einzelnen Verfügbarkeitsgruppe oder VM-Skalierungsgruppe |
 | **[Integritätstests](./load-balancer-custom-probe-overview.md#types)** | TCP, HTTP, HTTPS | TCP, HTTP |
@@ -53,7 +54,7 @@ Weitere Informationen finden Sie unter [Load Balancer-Grenzwerte](../azure-resou
 
 ## <a name="limitations"></a>Einschränkungen
 
-- SKUs sind nicht veränderlich. Sie können die SKU einer vorhandenen Ressource nicht ändern.
+- Sie können [ein Upgrade für Load Balancer-SKUs vornehmen](upgrade-basic-standard.md).
 - Eine Ressource eines eigenständigen virtuellen Computers, eine Verfügbarkeitsgruppenressource oder eine Ressource einer VM-Skalierungsgruppe kann auf eine SKU verweisen, nie auf beide.
 - [Verschiebevorgänge:](../azure-resource-manager/management/move-resource-group-and-subscription.md)
   - Vorgänge zum Verschieben von Ressourcengruppen (innerhalb desselben Abonnements) werden für Load Balancer Standard und für öffentliche IP-Standardadressen **unterstützt**. 

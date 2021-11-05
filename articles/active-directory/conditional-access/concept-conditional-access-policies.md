@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/17/2021
+ms.date: 10/26/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 674f4cf80d68095ebd7b134c679b60b45ff2a548
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 54155113920c61d2f32474f0fac2414a6751bcdf
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128619342"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131067411"
 ---
 # <a name="building-a-conditional-access-policy"></a>Erstellen einer Richtlinie für bedingten Zugriff
 
@@ -28,15 +28,17 @@ Wie erstellt eine Organisation diese Richtlinien? Was ist erforderlich? Wie werd
 
 Mehrere Richtlinien für bedingten Zugriff können jederzeit auf einen einzelnen Benutzer angewendet werden. In diesem Fall müssen alle geltenden Richtlinien erfüllt werden. Wenn also beispielsweise eine Richtlinie die Verwendung der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA) und eine weitere Richtlinie ein konformes Gerät erfordert, müssen Sie die MFA durchlaufen und ein konformes Gerät verwenden. Alle Zuweisungen sind logisch per **UND**-Operator verbunden. Wenn Sie mehr als eine Zuweisung konfiguriert haben, müssen die Bedingungen aller Zuweisungen erfüllt sein, damit eine Richtlinie ausgelöst wird.
 
+Wenn eine Richtlinie ausgewählt ist, bei der „Eine der ausgewählten Steuerungen anfordern“ ausgewählt ist, wird in der definierten Reihenfolge eine Eingabeaufforderung angezeigt, sobald die Richtlinienanforderungen erfüllt sind. Der Zugriff wird gewährt.
+
 Alle Richtlinien werden in zwei Phasen erzwungen:
 
 - Phase 1: Sammeln von Sitzungsdetails 
    - Sammeln Sie Sitzungsdetails wie Netzwerkstandort und Geräteidentität, die für die Richtlinienauswertung benötigt werden. 
    - Phase 1 der Richtlinienauswertung gilt für aktivierte Richtlinien sowie für Richtlinien im Modus [Nur Bericht](concept-conditional-access-report-only.md).
 - Phase 2: Erzwingung 
-   - Identifizieren Sie anhand der in Phase 1 gesammelten Sitzungsdetails alle Anforderungen, die nicht erfüllt wurden. 
-   - Wenn es eine Richtlinie gibt, die so konfiguriert ist, dass der Zugriff blockiert wird (mit dem Gewährungssteuerelement „Blockieren“), wird die Erzwingung hier angehalten, und der Benutzer wird blockiert. 
-   - Der Benutzer wird aufgefordert, zusätzliche Anforderungen der Gewährungssteuerelemente zu erfüllen, die in Phase 1 nicht erfüllt wurden, und zwar in der folgenden Reihenfolge, bis die Richtlinie erfüllt ist:  
+   - Verwenden Sie die in Phase 1 gesammelten Sitzungsdetails, um alle Anforderungen zu identifizieren, die nicht erfüllt wurden. 
+   - Wenn eine Richtlinie zum Blockieren des Zugriffs mit dem Gewährungssteuerelement „Blockieren“ konfiguriert ist, wird die Erzwingung hier angehalten, und der*die Benutzer*in wird blockiert. 
+   - Der*die Benutzer*in wird aufgefordert, weitere Gewährungssteuerungsanforderungen auszuführen, die während Phase 1 nicht in der folgenden Reihenfolge erfüllt wurden, bis die Richtlinie erfüllt ist:  
       - Multi-Factor Authentication 
       - Genehmigte Client-App/App-Schutzrichtlinie 
       - Verwaltetes Gerät (kompatibel oder hybrid in Azure AD eingebunden) 
@@ -77,9 +79,9 @@ Standortdaten werden von IP-Geolocation-Daten bereitgestellt. Administratoren k�
 
 #### <a name="client-apps"></a>Client-Apps
 
-Alle neu erstellten Richtlinien für bedingten Zugriff gelten standardmäßig für alle Client-App-Typen, auch wenn die Client-Apps-Bedingung nicht konfiguriert ist.
+Standardmäßig gelten alle neu erstellten Richtlinien für bedingten Zugriff auch dann für alle Client-App-Typen, wenn die Client-Apps-Bedingung nicht konfiguriert ist.
 
-Das Verhalten der Client-Apps-Bedingung wurde im August 2020 aktualisiert. Vorhandene Richtlinien für bedingten Zugriff bleiben unverändert erhalten. Wenn Sie jedoch auf eine vorhandene Richtlinie klicken, sehen Sie, dass die Umschaltfläche „Konfigurieren“ nicht vorhanden ist und die Client-Apps, für die die Richtlinie gilt, ausgewählt sind.
+Das Verhalten der Client-Apps-Bedingung wurde im August 2020 aktualisiert. Wenn Sie über Richtlinien für bedingten Zugriff verfügen, bleiben sie unverändert. Wenn Sie jedoch eine vorhandene Richtlinie auswählen, wurde die Umschaltfläche „Konfigurieren“ entfernt, und die Client-Apps, für die die Richtlinie gilt, werden ausgewählt.
 
 #### <a name="device-state"></a>Gerätestatus
 

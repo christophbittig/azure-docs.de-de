@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/08/2021
 ms.author: alkohli
 ms.custom: contperf-fy21q4
-ms.openlocfilehash: 2cacb9a975dba536fc4744a24ea26ec1083b5668
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: b79f878b7149bb41732f924c657f711f9bdf3128
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124827091"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131033112"
 ---
 # <a name="system-requirements-for-azure-stack-edge-pro-with-gpu"></a>Systemanforderungen für Azure Stack Edge Pro mit GPU 
 
@@ -85,6 +85,17 @@ Die folgende Tabelle enthält die Portkonfiguration für Server, die die Azure I
 | TCP 443 (HTTPS)| aus       | WAN        | Ja      | Ausgehend offen für die IoT Edge-Bereitstellung. Diese Konfiguration ist bei Verwendung manueller Skripts oder des Azure IoT Device Provisioning-Diensts (Device Provisioning Service, DPS) erforderlich.|
 
 Ausführliche Informationen finden Sie unter [Firewall- und Portkonfigurationsregeln für die IoT Edge-Bereitstellung](../iot-edge/troubleshoot.md).
+
+
+### <a name="port-requirements-for-kubernetes-on-azure-stack-edge"></a>Portanforderungen für Kubernetes für Azure Stack Edge
+
+| Port-Nr. | ein oder aus | Portbereich | Erforderlich | Anleitungen |
+|----------|-----------|------------|----------|----------|
+| TCP 31000 (HTTPS)| In       | LAN        | In einigen Fällen. <br> Siehe Hinweise.      |Dieser Port ist nur erforderlich, wenn Sie eine Verbindung mit dem Kubernetes-Dashboard herstellen, um Ihr Gerät zu überwachen. |
+| TCP 6443 (HTTPS)| In       | LAN        | In einigen Fällen. <br> Siehe Hinweise.       |Dieser Port ist für den Kubernetes-API-Server nur erforderlich, wenn Sie `kubectl` für den Zugriff auf Ihr Gerät verwenden. |
+
+> [!IMPORTANT]
+> Wenn die Firewall des Rechenzentrums Datenverkehr basierend auf Quell-IPs oder MAC-Adressen einschränkt oder filtert, stellen Sie sicher, dass die Compute-IPs (Kubernetes-Knoten-IPs) und MAC-Adressen in der Liste zulässiger Adressen enthalten sind. Die MAC-Adressen können durch Ausführen des `Set-HcsMacAddressPool`-Cmdlets auf der PowerShell-Schnittstelle des Geräts angegeben werden.
 
 ## <a name="url-patterns-for-firewall-rules"></a>URL-Muster für Firewallregeln
 

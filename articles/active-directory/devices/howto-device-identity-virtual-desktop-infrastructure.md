@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca70009eea6f8988fadd8f09a0460911fac299de
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b81bdc056bd56e96669bde7e6d0473ef3feb3402
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128630317"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131049841"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Geräteidentität und Desktopvirtualisierung
 
@@ -94,7 +94,7 @@ Microsoft empfiehlt IT-Administratoren, den folgenden Leitfaden zu implementiere
    - Implementieren Sie **dsregcmd /join** als Teil der Startsequenz/Reihenfolge des virtuellen Computers und vor der Benutzeranmeldung.
    - Führen Sie „dsregcmd /leave“ **NICHT** als Teil des Prozesses zum Herunterfahren/Neustarten der VM aus.
 - Definieren und implementieren Sie einen Prozess zum [Verwalten veralteter Geräte](manage-stale-devices.md).
-   - Sobald Sie über eine Strategie zum Identifizieren Ihrer nicht beständigen, in Azure AD Hybrid eingebundenen Geräte verfügen (z. B. die Verwendung eines Präfixes für den Computeranzeigenamen), können Sie die Bereinigung dieser Geräte aggressiver betreiben, um sicherzustellen, dass Ihr Verzeichnis nicht von vielen veralteten Geräten genutzt wird.
+   - Sobald Sie über eine Strategie zum Identifizieren Ihrer nicht beständigen, in Azure AD Hybrid eingebundenen Geräte verfügen (wie z. B. das Verwenden eines Präfixes für den Computeranzeigenamen), können Sie die Bereinigung dieser Geräte aggressiver betreiben, um sicherzustellen, dass Ihr Verzeichnis nicht von vielen veralteten Geräten verwendet wird.
    - Für nicht beständige VDI-Bereitstellungen von aktuellen und kompatiblen Windows-Geräten sollten Sie Geräte löschen, deren **ApproximateLastLogonTimestamp** älter als 15 Tage ist.
 
 > [!NOTE]

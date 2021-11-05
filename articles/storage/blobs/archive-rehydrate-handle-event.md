@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 08/11/2021
+ms.date: 10/25/2021
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: 06239708293be94f13c62cab7004c7a57d00eea1
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 2385bfead10efc82e0a1f3c8f0f02f1cd8d9f2f4
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129275504"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131019265"
 ---
 # <a name="run-an-azure-function-in-response-to-a-blob-rehydration-event"></a>Ausführen einer Azure-Funktion als Reaktion auf ein Blobaktivierungsereignis
 
@@ -253,7 +253,7 @@ Immer, wenn Sie Änderungen am Code in Ihrer Azure-Funktion vornehmen, müssen S
 
 Jetzt verfügen Sie über eine Funktions-App mit einer Azure-Funktion, die als Reaktion auf ein Ereignis ausgeführt werden kann. Als nächsten Schritt erstellen Sie ein Ereignisabonnement für Ihr Speicherkonto. Mit dem Ereignisabonnement wird das Speicherkonto so konfiguriert, dass als Reaktion auf einen Blobvorgang in Ihrem Speicherkonto ein Ereignis über Event Grid veröffentlicht wird. Event Grid sendet das Ereignis an den von Ihnen angegebenen Ereignishandlerendpunkt. In diesem Fall ist die im vorhergehenden Abschnitt erstellte Azure-Funktion der Ereignishandler.
 
-Wenn Sie das Ereignisabonnement erstellen, können Sie filtern, welche Ereignisse an den Ereignishandler gesendet werden. Um die Aktivierung eines Blobs auf der Archivebene abzufangen, verwenden Sie die Ereignisse **Microsoft.Storage.BlobTierChanged**, das dem Vorgang [Blobtarif festlegen](/rest/api/storageservices/set-blob-tier) entspricht, und **Microsoft.Storage.BlobCreated**, das einem Vorgang zum [Blob kopieren](/rest/api/storageservices/copy-blob) oder [Blob aus URL kopieren](/rest/api/storageservices/copy-blob-from-url) entspricht. Je nach Szenario behandeln Sie nur eines dieser Ereignisse.
+Wenn Sie das Ereignisabonnement erstellen, können Sie filtern, welche Ereignisse an den Ereignishandler gesendet werden. Die Ereignisse, die beim Aktiveren eines Blobs von der Archivebene erfasst werden sollen, sind **Microsoft.Storage. BlobTierChanged**, das einem Vorgang zum [Blobtarif festlegen](/rest/api/storageservices/set-blob-tier) entspricht, und **Microsoft.Storage. BlobCreated**-Ereignisse, die einem [Blob kopieren](/rest/api/storageservices/copy-blob)-Vorgang entsprechen. Je nach Szenario behandeln Sie nur eines dieser Ereignisse.
 
 Führen Sie zum Erstellen des Ereignisabonnements die folgenden Schritte aus:
 

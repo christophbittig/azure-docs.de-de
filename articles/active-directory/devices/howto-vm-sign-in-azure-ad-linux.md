@@ -5,26 +5,26 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: devices
 ms.topic: how-to
-ms.date: 07/26/2021
+ms.date: 10/21/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli, subject-rbac-steps
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 996c82b428c01ce9f598fbf8e35e2fb664ef8763
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: aeca09f5763cf11edc13cecd2df0c267fad8a23d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128601955"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131049746"
 ---
 # <a name="preview-login-to-a-linux-virtual-machine-in-azure-with-azure-active-directory-using-ssh-certificate-based-authentication"></a>Vorschau: Anmelden bei einem virtuellen Linux-Computer in Azure mit Azure Active Directory mithilfe der zertifikatbasierten SSH-Authentifizierung
 
 Zur Optimierung der Sicherheit von virtuellen Linux-Computern in Azure können Sie diese in die Azure Active Directory-Authentifizierung (Azure AD) integrieren. Sie können jetzt Azure AD als Kernauthentifizierungsplattform und Zertifizierungsstelle verwenden, um mit AD und der zertifikatbasierten SSH-Authentifizierung eine SSH-Verbindung zu einem virtuellen Linux-Computer herzustellen. Mit dieser Funktion können Organisationen die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure und Richtlinien für bedingten Zugriff (zur Verwaltung des Zugriffs auf die virtuellen Computer) zentral steuern und erzwingen. In diesem Artikel wird beschrieben, wie Sie einen virtuellen Linux-Computer erstellen und konfigurieren und mithilfe der zertifikatbasierten SSH-Authentifizierung eine Anmeldung bei Azure AD realisieren.
 
 > [!IMPORTANT]
-> Diese Funktion befindet sich derzeit in der Phase der öffentlichen Vorschau. [Die bisherige Version, die den Gerätecodeflow verwendet, wird am 15. August 2021 als veraltet markiert](../../virtual-machines/linux/login-using-aad.md). Informationen zum Migrieren von der alten Version zu dieser Version finden Sie im Abschnitt [Migration von der vorherigen Vorschauversion](#migration-from-previous-preview).
+> Diese Funktion befindet sich derzeit in der Phase der öffentlichen Vorschau. [Die bisherige Version, die den Gerätecodeflow verwendet, ist seit dem 15. August 2021 veraltet](../../virtual-machines/linux/login-using-aad.md). Informationen zum Migrieren von der alten Version zu dieser Version finden Sie im Abschnitt [Migration von der vorherigen Vorschauversion](#migration-from-previous-preview).
 > Diese Vorschau wird ohne Vereinbarung zum Servicelevel bereitgestellt und nicht für Produktionsworkloads empfohlen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Verwenden Sie dieses Feature auf einem virtuellen Testcomputer, von dem Sie davon ausgehen, dass er nach dem Testen verworfen wird. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Die Verwendung von Azure AD mit der zertifikatbasierten SSH-Authentifizierung für die Anmeldung bei virtuellen Linux-Computern in Azure bietet viele Vorteile, z. B.:
@@ -44,19 +44,17 @@ Während der Vorschauphase dieser Funktion werden aktuell die folgenden Linux-Di
 
 | Distribution | Version |
 | --- | --- |
-| CentOS | CentOS 7, CentOS 8.3 |
+| CentOS | CentOS 7, CentOS 8 |
 | Debian | Debian 9, Debian 10 |
-| openSUSE | openSUSE Leap 42.3 |
-| Red Hat Enterprise Linux | RHEL 7.4 bis RHEL 7.10, RHEL 8.3 |
-| SUSE Linux Enterprise Server | SLES 12 |
+| openSUSE | openSUSE Leap 42.3, openSUSE Leap 15.1 oder höher |
+| Red Hat Enterprise Linux | RHEL 7.4 bis RHEL 7.10, RHEL 8.3 oder höher |
+| SUSE Linux Enterprise Server | SLES 12, SLES 15.1 oder höher |
 | Ubuntu Server | Ubuntu Server 16.04 bis Ubuntu Server 20.04 |
 
 Während der Vorschauphase dieses Features werden derzeit die folgenden Azure-Regionen unterstützt:
 
 - Azure Global
 
-> [!Note]
-> Die Vorschau dieser Funktion wird bis Juni 2021 in Azure Government und Azure China unterstützt.
  
 Die Verwendung dieser Erweiterung für AKS-Cluster (Azure Kubernetes Service) wird nicht unterstützt. Weitere Informationen finden Sie unter [Unterstützungsrichtlinien für AKS](../../aks/support-policies.md).
 
@@ -96,13 +94,13 @@ Azure China
 Stellen Sie sicher, dass Ihr virtueller Computer mit der folgenden Funktionalität konfiguriert ist:
 
 - Systemseitig zugewiesene verwaltete Identität. Diese Option wird automatisch ausgewählt, wenn Sie das Azure-Portal zum Erstellen des virtuellen Computers verwenden und die Azure AD-Anmeldung auswählen. Sie können die systemseitig zugewiesene verwaltete Identität auch mithilfe der Azure CLI auf einem neuen oder vorhandenen virtuellen Computer aktivieren.
-- „aadsshlogin“ bzw. „aadsshlogin-selinux“ (wie zutreffend). Diese Pakete werden mit der VM-Erweiterung „AADSSHLoginForLinux“ installiert. Die Erweiterung wird installiert, wenn Sie das Azure-Portal (oder die Azure CLI) zum Erstellen eines virtuellen Computers und zum Aktivieren der Azure AD-Anmeldung verwenden (Registerkarte „Verwaltung“).
+- `aadsshlogin` und `aadsshlogin-selinux` (sofern zutreffend). Diese Pakete werden mit der VM-Erweiterung „AADSSHLoginForLinux“ installiert. Die Erweiterung wird installiert, wenn Sie das Azure-Portal (oder die Azure CLI) zum Erstellen eines virtuellen Computers und zum Aktivieren der Azure AD-Anmeldung verwenden (Registerkarte „Verwaltung“).
 
 ### <a name="client"></a>Client
 
 Stellen Sie sicher, dass Ihr Client folgende Anforderungen erfüllt:
 
-- Der SSH-Client muss OpenSSH-basierte Zertifikate für die Authentifizierung unterstützen. Zur Erfüllung dieser Anforderung können Sie Az CLI (2.21.1 oder höher) mit OpenSSH (enthalten in Windows 10, Version 1803 oder höher) oder Azure Cloud Shell verwenden. 
+- Der SSH-Client muss OpenSSH-basierte Zertifikate für die Authentifizierung unterstützen. Zur Erfüllung dieser Anforderung können Sie Az CLI (2.21.1 oder höher) mit OpenSSH (enthalten in Windows 10, Version 1803 oder höher) oder Azure Cloud Shell verwenden. 
 - SSH-Erweiterung für Azure CLI. Diese Erweiterung können Sie mithilfe von `az extension add --name ssh` installieren. Sie müssen diese Erweiterung jedoch nicht installieren, wenn Sie Azure Cloud Shell verwenden, da sie vorinstalliert ist.
 - Wenn Sie einen anderen SSH-Client als die Azure CLI oder Azure Cloud Shell verwenden, der OpenSSH-Zertifikate unterstützt, müssen Sie weiterhin die Azure CLI mit der SSH-Erweiterung zum Abrufen von kurzlebigen SSH-Zertifikaten (und optional einer Konfigurationsdatei) und dann die Konfigurationsdatei bei Ihrem SSH-Client verwenden.
 - TCP-Konnektivität vom Client zur öffentlichen oder privaten IP-Adresse des virtuellen Computers („ProxyCommand“ oder SSH-Weiterleitung an einen Computer mit Konnektivität funktioniert ebenfalls).
@@ -340,13 +338,13 @@ Wenn Benutzer mit der ihnen zugewiesenen VM-Administratorrolle erfolgreich eine 
 
 VM-Skalierungsgruppen werden unterstützt, doch sind die Schritte zum Aktivieren und Herstellen einer Verbindung zu den virtuellen Computern der VM-Skalierungsgruppe etwas anders.
 
-Erstellen Sie zunächst eine VM-Skalierungsgruppe, oder wählen Sie eine bereits vorhandene aus. Aktivieren Sie eine systemseitig zugewiesene verwaltete Identität für Ihre VM-Skalierungsgruppe.
+1. Erstellen Sie eine VM-Skalierungsgruppe, oder wählen Sie eine bereits vorhandene aus. Aktivieren Sie eine systemseitig zugewiesene verwaltete Identität für Ihre VM-Skalierungsgruppe.
 
 ```azurecli
 az vmss identity assign --vmss-name myVMSS --resource-group AzureADLinuxVMPreview
 ```
 
-Installieren Sie die Azure AD-Erweiterung in Ihrer VM-Skalierungsgruppe.
+2. Installieren Sie die Azure AD-Erweiterung in Ihrer VM-Skalierungsgruppe.
 
 ```azurecli
 az vmss extension set --publisher Microsoft.Azure.ActiveDirectory --name Azure ADSSHLoginForLinux --resource-group AzureADLinuxVMPreview --vmss-name myVMSS
@@ -363,21 +361,30 @@ az ssh vm --ip 10.11.123.456
 
 ## <a name="migration-from-previous-preview"></a>Migration von der vorherigen Vorschauversion
 
-Führen Sie für Kunden, die eine frühere Version der Azure AD-Anmeldung für Linux auf Basis des Gerätecodeflows verwenden, die folgenden Schritte aus.
+Führen Sie für Kunden, die eine frühere Version der Azure AD-Anmeldung für Linux auf Basis des Gerätecodeflows verwenden, die folgenden Schritte mithilfe von Azure CLI aus:
 
 1. Deinstallieren Sie die Erweiterung „AADLoginForLinux“ auf dem virtuellen Computer.
-   1. Mit der Azure CLI: `az vm extension delete -g MyResourceGroup --vm-name MyVm -n AADLoginForLinux`
-1. Aktivieren Sie eine systemseitig zugewiesene verwaltete Identität auf Ihrem virtuellen Computer.
-   1. Mit der Azure CLI: `az vm identity assign -g myResourceGroup -n myVm`
+   
+   ```azurecli
+   az vm extension delete -g MyResourceGroup --vm-name MyVm -n AADLoginForLinux
+   ```
+
+1. Aktivieren Sie eine systemseitig zugewiesene verwaltete Identität auf dem virtuellen Computer.
+
+   ```azurecli
+   az vm identity assign -g myResourceGroup -n myVm
+   ```
+
 1. Installieren der Erweiterung „AADSSHLoginForLinux“ auf dem virtuellen Computer
-   1. Mit der Azure CLI:
-      ```azurecli
-      az vm extension set \
-                --publisher Microsoft.Azure.ActiveDirectory \
-                --name AADSSHLoginForLinux \
-                --resource-group myResourceGroup \
-                --vm-name myVM
-      ```
+
+    ```azurecli
+    az vm extension set \
+        --publisher Microsoft.Azure.ActiveDirectory \
+        --name AADSSHLoginForLinux \
+        --resource-group myResourceGroup \
+        --vm-name myVM
+    ```
+
 ## <a name="using-azure-policy-to-ensure-standards-and-assess-compliance"></a>Verwenden von Azure Policy zum Sicherstellen von Standards und für die Konformitätsbewertung
 
 Verwenden Sie Azure Policy, um sicherzustellen, dass die Azure AD-Anmeldung für Ihre neuen und vorhandenen virtuellen Linux-Computer aktiviert ist, und bewerten Sie bedarfsgerecht die Konformität Ihrer Umgebung auf dem Compliancedashboard von Azure Policy. Mit dieser Funktion können Sie viele Erzwingungsstufen verwenden: Sie können neue und vorhandene virtuelle Linux-Computer in Ihrer Umgebung kennzeichnen, für die keine Azure AD-Anmeldung aktiviert ist. Sie können Azure Policy auch zum Bereitstellen der Azure AD-Erweiterung auf neuen virtuellen Linux-Computern verwenden, auf denen diese noch nicht aktiviert ist. Sie können aber auch vorhandene virtuelle Linux-Computer auf denselben Standard aktualisieren. Neben diesen Funktionen können Sie Azure Policy auch zum Erkennen und Kennzeichnen von virtuellen Linux-Computern verwenden, auf denen nicht genehmigte lokale Konten erstellt wurden. Weitere Informationen finden Sie unter [Was ist Azure Policy?](../../governance/policy/overview.md).
@@ -447,6 +454,6 @@ Bei Verbindungen zu VM-Skalierungsgruppen können Fehler auftreten, wenn auf den
 
 ## <a name="preview-feedback"></a>Feedback zur Vorschauversion
 
-Geben Sie Feedback zu dieser Previewfunktion, oder melden Sie Probleme bei der Verwendung der Funktion im [Azure AD-Feedbackforum](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
+Geben Sie Feedback zu dieser Previewfunktion, oder melden Sie Probleme bei der Verwendung der Funktion im [Azure AD-Feedbackforum](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789).
 
 ## <a name="next-steps"></a>Nächste Schritte

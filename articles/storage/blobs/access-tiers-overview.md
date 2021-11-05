@@ -4,17 +4,17 @@ titleSuffix: Azure Storage
 description: Azure Storage weist verschiedene Zugriffsebenen auf, sodass Sie Blobdaten basierend auf ihrer Verwendung auf die kostengünstigste Weise speichern können. In diesem Artikel erhalten Sie Informationen zu den Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“ für Blob Storage.
 author: tamram
 ms.author: tamram
-ms.date: 10/07/2021
+ms.date: 10/25/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: fryu
-ms.openlocfilehash: 7af8e29890c63429a50c9818baa001bb5990c26b
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 45f330ad2e40cce5b5fca0b6f6fd99d3271bea76
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129709001"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131063782"
 ---
 # <a name="hot-cool-and-archive-access-tiers-for-blob-data"></a>Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“ für Blobdaten
 
@@ -57,22 +57,21 @@ Die Archivebene ist eine Offlineebene für die Speicherung von Daten, auf die nu
 
 Die Daten müssen sich mindestens 180 Tage lang auf der Archivspeicherebene befinden, sonst unterliegen sie einer Gebühr für frühe Löschung. Wenn ein Blob beispielsweise auf die Archivspeicherebene verschoben und dann nach 45 Tagen gelöscht oder auf die heiße Ebene verschoben wird, wird Ihnen eine Gebühr für frühes Löschen berechnet, die den 135 Speichertagen (180 - 45) dieses Blobs im Archiv entspricht.
 
-Solange sich ein Blob auf der Archivebene befindet, kann es nicht gelesen oder geändert werden. Um ein Blob, das sich auf der Archivebene befindet, lesen oder herunterladen zu können, müssen Sie es zunächst auf einer Onlineebene (heiße oder kalte Ebene) aktivieren. Die Aktivierung von Daten auf Archivebene kann bis zu 15 Stunden dauern. Weitere Informationen zur Blobaktivierung finden Sie unter [Übersicht über die Aktivierung von Blobs aus der Archivebene](archive-rehydrate-overview.md).
+Solange sich ein Blob auf der Archivebene befindet, kann es nicht gelesen oder geändert werden. Um ein Blob, das sich auf der Archivebene befindet, lesen oder herunterladen zu können, müssen Sie es zunächst auf einer Onlineebene (heiße oder kalte Ebene) aktivieren. Abhängig von der Priorität, die Sie für den Aktivierungsvorgang angeben, kann es bis zu 15 Stunden dauern, bis die Daten auf der Archivebene aktiviert sind. Weitere Informationen zur Blobaktivierung finden Sie unter [Übersicht über die Aktivierung von Blobs aus der Archivebene](archive-rehydrate-overview.md).
 
 Die Metadaten eines archivierten Blobs bleiben für den Lesezugriff verfügbar, sodass Sie das Blob und seine Eigenschaften, Metadaten und Indextags auflisten können. Die Metadaten von Blobs auf Archivebene sind schreibgeschützt, Blobindextags können dagegen gelesen oder geschrieben werden. Momentaufnahmen werden für archivierte Blobs nicht unterstützt.
 
 Für Blobs auf der Archivebene werden folgende Vorgänge unterstützt:
 
-- [Get Blob Properties](/rest/api/storageservices/get-blob-properties)
-- [Get Blob Metadata](/rest/api/storageservices/get-blob-metadata)
-- [Festlegen von Blobtags](/rest/api/storageservices/set-blob-tags)
-- [Abrufen von Blobtags](/rest/api/storageservices/get-blob-tags)
-- [Suchen nach Blobs anhand von Tags](/rest/api/storageservices/find-blobs-by-tags)
-- [Auflisten von Blobs](/rest/api/storageservices/list-blobs)
-- [Set Blob Tier](/rest/api/storageservices/set-blob-tier)
 - [Copy Blob](/rest/api/storageservices/copy-blob)
-- [Copy Blob From URL](/rest/api/storageservices/copy-blob-from-url)
 - [Delete Blob](/rest/api/storageservices/delete-blob)
+- [Suchen nach Blobs anhand von Tags](/rest/api/storageservices/find-blobs-by-tags)
+- [Get Blob Metadata](/rest/api/storageservices/get-blob-metadata)
+- [Get Blob Properties](/rest/api/storageservices/get-blob-properties)
+- [Abrufen von Blobtags](/rest/api/storageservices/get-blob-tags)
+- [Auflisten von Blobs](/rest/api/storageservices/list-blobs)
+- [Festlegen von Blobtags](/rest/api/storageservices/set-blob-tags)
+- [Set Blob Tier](/rest/api/storageservices/set-blob-tier)
 
 > [!NOTE]
 > Die Archivspeicherebene wird für ZRS-, GZRS- oder RA-GZRS-Konten nicht unterstützt. Die Migration von LRS zu GRS wird unterstützt, solange keine Blobdaten in die Archivebene verschoben wurden, während das Konto auf LRS festgelegt wurde. Ein Konto kann zurück in GRS verschoben werden, wenn die Aktualisierung weniger als 30 Tage nach der Umstellung des Kontos auf LRS erfolgt und keine Blobs auf die Archivebene verschoben wurden, während das Konto auf LRS festgelegt war.
@@ -85,7 +84,7 @@ Die Standardzugriffsebene für ein neues universelles v2-Speicherkonto ist stand
 
 Für ein Blob, dem keine explizite Ebene zugewiesen ist, wird die zugehörige Ebene von der Einstellung für die Standardzugriffsebene des Kontos abgeleitet. Wenn die Zugriffsebene eines Blobs von der Einstellung für die Standardzugriffsebene des Kontos abgeleitet ist, wird im Azure-Portal als Zugriffsebene **Heiß (abgeleitet)** oder **Kalt (abgeleitet)** angezeigt.
 
-Die Änderung der Einstellung für die Standardzugriffsebene eines Kontos gilt für alle Blobs im Konto, für die keine explizite Zugriffsebene festgelegt ist. Wenn Sie die Einstellung für die Standardzugriffsebene eines Kontos vom Typ „Universell v2“ von „Heiß“ in „Kalt“ ändern, werden Ihnen Schreibvorgänge (pro 10.000) für alle Blobs berechnet, für die die Zugriffsebene abgeleitet wird. Wenn Sie in einem allgemeinen v2-Konto von "cool" auf "hot" umschalten, werden Ihnen sowohl Lesevorgänge (pro 10.000) als auch Datenabrufe (pro GB) berechnet.
+Die Änderung der Einstellung für die Standardzugriffsebene eines Speicherkontos gilt für alle Blobs im Konto, für die keine explizite Zugriffsebene festgelegt ist. Wenn Sie die Einstellung für die Standardzugriffsebene vom Typ „Universell v2“ von „Heiß“ in „Kalt“ ändern, werden Ihnen Schreibvorgänge (pro 10.000) für alle Blobs berechnet, für die die Zugriffsebene abgeleitet wird. Wenn Sie in einem allgemeinen v2-Konto von "cool" auf "hot" umschalten, werden Ihnen sowohl Lesevorgänge (pro 10.000) als auch Datenabrufe (pro GB) berechnet.
 
 Wenn Sie ein Legacy-Blob-Storage-Konto erstellen, müssen Sie bei der Erstellung die Standard-Zugriffsebene als Hot oder Cool festlegen. Das Ändern der Standard-Zugriffsebene von "Hot" zu "Cool" in einem Legacy-Blob-Storage-Konto ist kostenlos. Wenn Sie in einem Blob-Storage-Konto von "cool" auf "hot" umschalten, werden Ihnen sowohl Lesevorgänge (pro 10.000) als auch Datenabrufe (pro GB) in Rechnung gestellt. Microsoft empfiehlt, wenn möglich allgemeine v2-Speicherkonten anstelle von Blob-Storage-Konten zu verwenden.
 
@@ -98,7 +97,7 @@ Um die Ebene eines Blobs beim Erstellen explizit festzulegen, geben Sie sie beim
 
 Nach dem Erstellen eines Blobs können Sie die zugehörige Ebene mit einer der folgenden Methoden ändern:
 
-- Durch Aufrufen des Vorgangs [Set Blob Tier](/rest/api/storageservices/set-blob-tier), entweder direkt oder über eine Richtlinie zur [Lebenszyklusverwaltung](#blob-lifecycle-management). Der Aufruf von [Set Blob Tier](/rest/api/storageservices/set-blob-tier) ist in der Regel die beste Option, wenn die Ebene eines Blobs von einer heißen in eine kältere Ebene geändert wird.
+- Durch Aufrufen des Vorgangs [Set Blob Tier](/rest/api/storageservices/set-blob-tier), entweder direkt oder über eine Richtlinie zur [Lebenszyklusverwaltung](#blob-lifecycle-management). Der Aufruf von [Blobtarif festlegen](/rest/api/storageservices/set-blob-tier) ist in der Regel die beste Option, um die Ebene eines Blobs von einer heißen in eine kältere Ebene zu ändern.
 - Durch Aufrufen des Vorgangs [Copy Blob](/rest/api/storageservices/copy-blob) zum Kopieren eines Blobs zwischen Ebenen. Der Aufruf von [Copy Blob](/rest/api/storageservices/copy-blob) wird für die meisten Szenarien empfohlen, bei denen Sie ein Blob aus der Archivebene auf einer Onlineebene aktivieren oder von der kalten auf die heiße Ebene verschieben. Durch Kopieren eines Blobs können Sie die Gebühr für frühzeitiges Löschen vermeiden, wenn das erforderliche Speicherintervall für das Quellblob noch nicht verstrichen ist. Das Kopieren eines Blobs führt jedoch zu Kapazitätsgebühren für zwei Blobs: das Quellblob und das Zielblob.
 
 Die Änderung der Ebene eines Blobs von „Heiß“ in „Kalt“ oder „Archiv“ erfolgt sofort. Dies gilt auch für die Änderung von „Kalt“ in „Heiß“. Die Aktivierung eines Blobs aus der Archivebene auf der heißen oder kalten Ebene kann bis zu 15 Stunden dauern.
@@ -107,6 +106,14 @@ Beachten Sie beim Wechsel zwischen der kalten und der Archivebene für ein Blob 
 
 - Wenn ein Blob aufgrund der Standardspeicherebene des Speicherkontos als „kalt“ eingestuft und auf die Archivspeicherebene verschoben wird, fallen keine Gebühren für das frühzeitige Löschen an.
 - Wenn ein Blob explizit in die kalte Speicherebene verschoben wurde und dann auf die Archivspeicherebene verschoben wird, werden Gebühren für das frühzeitige Löschen berechnet.
+
+In der folgenden Tabelle sind die Ansätze zusammengefasst, die Sie zum Verschieben von Blobs zwischen verschiedenen Ebenen nutzen können.
+
+| Ursprung/Ziel | Heiße Zugriffsebene | Kalte Zugriffsebene | Archivzugriffsebene |
+|--|--|--|--|
+| **Zugriffsebene „Heiß“** | – | Ändern Sie die Ebene eines Blobs mit **Blobtarif festlegen** oder **Blob kopieren** von „Heiß“ in „Kalt“. [Weitere Informationen](manage-access-tier.md)<br /><br />Verschieben Sie Blobs mit einer Richtlinie für die Lebenszyklusverwaltung auf die Ebene „Kalt“. [Weitere Informationen](lifecycle-management-overview.md) | Ändern Sie die Ebene eines Blobs mit **Blobtarif festlegen** oder **Blob kopieren** von „Heiß“ in „Archiv“. [Weitere Informationen](archive-blob.md) <br /><br />Archivieren Sie Blobs mit einer Richtlinie für die Lebenszyklusverwaltung. [Weitere Informationen](lifecycle-management-overview.md) |
+| **Zugriffsebene „Kalt“** | Ändern Sie die Ebene eines Blobs mit **Blobtarif festlegen** oder **Blob kopieren** von „Kalt“ in „Heiß“. [Weitere Informationen](manage-access-tier.md) <br /><br />Verschieben Sie Blobs mit einer Richtlinie für die Lebenszyklusverwaltung auf die Ebene „Heiß“. [Weitere Informationen](lifecycle-management-overview.md) | – | Ändern Sie die Ebene eines Blobs mit **Blobtarif festlegen** oder **Blob kopieren** von „Kalt“ in „Archiv“. [Weitere Informationen](archive-blob.md) <br /><br />Archivieren Sie Blobs mit einer Richtlinie für die Lebenszyklusverwaltung. [Weitere Informationen](lifecycle-management-overview.md) |
+| **Zugriffsebene „Archiv“** | Aktivieren Sie ein Blob mit **Blobtarif festlegen** oder **Blob kopieren** für die Ebene „Heiß“. [Weitere Informationen](archive-rehydrate-to-online-tier.md) | Aktivieren Sie ein Blob mit **Blobtarif festlegen** oder **Blob kopieren** für die Ebene „Kalt“. [Weitere Informationen](archive-rehydrate-to-online-tier.md) | – |
 
 ## <a name="blob-lifecycle-management"></a>Lebenszyklusverwaltung für Blobs
 

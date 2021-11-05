@@ -3,12 +3,12 @@ title: 'Azure Blueprint: Übersicht'
 description: Hier wird erläutert, wie Sie den Azure Blueprints-Dienst zum Erstellen, Definieren und Bereitstellen von Artefakten in Ihrer Azure-Umgebung verwenden.
 ms.date: 06/21/2021
 ms.topic: overview
-ms.openlocfilehash: 445ecce12c9900dbae2eb4d7a3c1278c979d6cd9
-ms.sourcegitcommit: d137460f55a38a0e8f8b9e6594e480d5e5f662ed
+ms.openlocfilehash: be0f512d4aaad922bb91e64ded9c8a5e4a5af88e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/22/2021
-ms.locfileid: "112427865"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131081237"
 ---
 # <a name="what-is-azure-blueprints"></a>Was ist Azure Blueprint?
 
@@ -30,7 +30,7 @@ Der Azure-Dienst für Blaupausen wird vom global verteilten [Azure Cosmos DB](..
 
 Der Dienst soll die _Umgebungseinrichtung_ vereinfachen. Diese Einrichtung umfasst häufig eine Reihe von Ressourcengruppen, Richtlinien, Rollenzuweisungen und Bereitstellungen von ARM-Vorlagen. Eine Blaupause ist ein Paket, in dem die einzelnen _Artefakttypen_ zusammengeführt werden. Sie können das Paket zusammenstellen und versionieren, z. B. auch über eine CI/CD-Pipeline (Continuous Integration/Continuous Delivery). Letztlich wird jede in einem einzelnen Vorgang, der überwacht und nachverfolgt werden kann, einem Abonnement zugewiesen.
 
-Nahezu alle Elemente, die Sie für die Bereitstellung in Azure Blueprints einfügen möchten, können über eine ARM-Vorlage eingefügt werden. Eine ARM-Vorlage ist aber ein Dokument, das in Azure nicht nativ vorhanden ist, sondern entweder lokal oder in der Quellcodeverwaltung gespeichert wird. Die Vorlage wird für die Bereitstellung einer oder mehrerer Azure-Ressourcen verwendet. Nach der Bereitstellung dieser Ressourcen besteht jedoch keine aktive Verbindung oder Beziehung mehr mit der Vorlage.
+Nahezu alle Elemente, die Sie für die Bereitstellung in Azure Blueprints einfügen möchten, können über eine ARM-Vorlage eingefügt werden. Eine ARM-Vorlage ist aber ein Dokument, das in Azure nicht nativ vorhanden ist, sondern entweder lokal, in der Quellcodeverwaltung oder unter [Vorlagen (Vorschau)](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Gallery%2Fmyareas%2Fgalleryitems) gespeichert wird. Die Vorlage wird für die Bereitstellung einer oder mehrerer Azure-Ressourcen verwendet. Nach der Bereitstellung dieser Ressourcen besteht jedoch keine aktive Verbindung oder Beziehung mehr mit der Vorlage.
 
 Mit Azure Blueprints bleibt die Beziehung zwischen der Blaupausendefinition (was _soll_ bereitgestellt werden) und der Blaupausenzuweisung (was _wurde_ bereitgestellt) erhalten. Diese Verbindung ermöglicht eine erweiterte Nachverfolgung und Überprüfung von Bereitstellungen. Mit Azure Blueprints lassen sich auch mehrere Abonnements, die der gleichen Blaupause unterliegen, gleichzeitig upgraden.
 

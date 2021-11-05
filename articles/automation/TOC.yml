@@ -3,7 +3,7 @@
 - name: Übersicht
   items:
     - name: Was ist Automation?
-      href: automation-intro.md
+      href: overview.md
     - name: Häufig gestellte Fragen
       href: automation-faq.md
     - name: Neuigkeiten
@@ -249,7 +249,7 @@
               items:
                 - name: Entfernen von „Änderungsnachverfolgung und Bestand“
                   href: change-tracking/remove-feature.md
-                - name: Entfernen virtueller Computer aus Änderungsnachverfolgung und Bestand
+                - name: Entfernen von Computern
                   href: change-tracking/remove-vms-from-change-tracking.md
             - name: Problembehandlung
               items:
@@ -321,7 +321,7 @@
           items:
             - name: Entfernen der Updateverwaltung
               href: update-management/remove-feature.md
-            - name: Entfernen virtueller Computer aus der Updateverwaltung
+            - name: Entfernen von Computern
               href: update-management/remove-vms.md
         - name: Problembehandlung
           items:

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 10/17/2021
 ms.author: bwren
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1713d3091794ed95438a5e9d7944b3f5ee41f5ee
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: 650ccc08d5cec7e037a6203f71ac8429f1bc2bf0
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130131788"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131078995"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen    
 
@@ -201,7 +201,7 @@ Standardmäßig werden zwei Datentypen – `Usage` und `AzureActivity` – koste
 
 Datentypen von arbeitsbereichsbasierten Application Insights-Ressourcen (`AppAvailabilityResults`, `AppBrowserTimings`, `AppDependencies`, `AppExceptions`, `AppEvents`, `AppMetrics`, `AppPageViews`, `AppPerformanceCounters`, `AppRequests`, `AppSystemEvents` und `AppTraces`) werden ebenfalls standardmäßig 90 Tage lang kostenlos aufbewahrt. Die jeweilige Aufbewahrungsdauer kann mithilfe der Funktion für die Aufbewahrung nach Datentyp angepasst werden. 
 
-Die [Bereinigungs-API](/rest/api/loganalytics/workspacepurge/purge) von Log Analytics hat keine Auswirkungen auf die Aufbewahrungsabrechnung und ist für die Verwendung in einer sehr begrenzten Anzahl von Fällen vorgesehen. Um Ihre Aufbewahrungsrechnung zu verringern, muss die Aufbewahrungsdauer entweder für den Arbeitsbereich oder für bestimmte Datentypen gesenkt werden. 
+Die [Bereinigungs-API](/rest/api/loganalytics/workspacepurge/purge) von Log Analytics hat keine Auswirkungen auf die Aufbewahrungsabrechnung und ist für die Verwendung in einer sehr begrenzten Anzahl von Fällen vorgesehen. Um Ihre Aufbewahrungsrechnung zu verringern, muss die Aufbewahrungsdauer entweder für den Arbeitsbereich oder für bestimmte Datentypen gesenkt werden. Weitere Informationen finden Sie im [Leitfaden für personenbezogene Daten, die in Log Analytics und Application Insights gespeichert sind](./personal-data-mgmt.md).
 
 ### <a name="retention-by-data-type"></a>Aufbewahrung nach Datentyp
 
@@ -577,7 +577,7 @@ Auf dieser Tabelle finden Sie einige Vorschläge zum Verringern des Umfangs der 
 | Sicherheitsereignisse            | Wählen Sie [Sicherheitsereignisse vom Typ „Allgemein“ oder „Minimal“](../../security-center/security-center-enable-data-collection.md#data-collection-tier) aus. <br> Ändern der Sicherheitsüberwachungsrichtlinie, sodass nur benötigte Ereignisse erfasst werden. Überprüfen Sie insbesondere die Notwendigkeit zum Erfassen von Ereignissen für Folgendes: <br> - [Überwachung der Filterplattform](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772749(v=ws.10)) <br> - [Überwachung der Registrierung](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941614(v%3dws.10)) <br> - [Überwachung des Dateisystems](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772661(v%3dws.10)) <br> - [Überwachung von Kernelobjekten](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd941615(v%3dws.10)) <br> - [Überwachung der Handleänderung](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd772626(v%3dws.10)) <br> – Überwachung von Wechselmedien |
 | Leistungsindikatoren       | Ändern Sie die [Leistungsindikatoren-Konfiguration](../agents/data-sources-performance-counters.md) folgendermaßen: <br> – Reduzieren der Sammlungshäufigkeit <br> – Reduzieren der Anzahl von Leistungsindikatoren |
 | Ereignisprotokolle                 | Ändern Sie die [Ereignisprotokollkonfiguration](../agents/data-sources-windows-events.md) folgendermaßen: <br> – Reduzieren der Anzahl von erfassten Ereignisprotokollen <br> - Ausschließliches Erfassen von erforderlichen Ereignisebenen. Erfassen Sie beispielsweise keine Ereignisse der Ebene *Informationen*. |
-| syslog                     | Ändern Sie die [syslog-Konfiguration](../agents/data-sources-syslog.md) folgendermaßen: <br> – Reduzieren der Anzahl von erfassten Einrichtungen <br> - Ausschließliches Erfassen von erforderlichen Ereignisebenen. Erfassen Sie beispielsweise keine Ereignisse der Ebenen *Info* und *Debuggen*. |
+| Syslog                     | Ändern Sie die [syslog-Konfiguration](../agents/data-sources-syslog.md) folgendermaßen: <br> – Reduzieren der Anzahl von erfassten Einrichtungen <br> - Ausschließliches Erfassen von erforderlichen Ereignisebenen. Erfassen Sie beispielsweise keine Ereignisse der Ebenen *Info* und *Debuggen*. |
 | AzureDiagnostics           | Ändern Sie die [Ressourcenprotokollsammlung](../essentials/diagnostic-settings.md#create-in-azure-portal) folgendermaßen: <br> – Verringern der Anzahl von Ressourcen, die Protokolle an Log Analytics senden <br> – Ausschließliches Erfassen von erforderlichen Protokollen |
 | Lösungsdaten von Computern, für die die Lösung nicht erforderlich ist | Verwenden Sie die [Zielgruppenadressierung für Lösungen](../insights/solution-targeting.md), um Daten nur für erforderliche Gruppen mit Computern zu erfassen. |
 | Application Insights | Erwägen Sie die Optionen zum [Verwalten des Application Insights-Datenvolumens](../app/pricing.md#managing-your-data-volume). |

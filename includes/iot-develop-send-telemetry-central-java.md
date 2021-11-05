@@ -7,16 +7,16 @@ ms.topic: include
 ms.date: 04/28/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: 3fb812a15aa1670404fe8a5d403f99acf522f3a5
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: b62bba14bd2a83e3776cfdde5ca8ef8c96fe08f1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129516744"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131032766"
 ---
 [![Code durchsuchen](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-java/tree/main/device/iot-device-samples/pnp-device-sample)
 
-In dieser Schnellstartanleitung lernen Sie einen einfachen Entwicklungsworkflow für Azure IoT-Anwendungen kennen. Zunächst erstellen Sie eine Azure IoT Central-Anwendung zum Hosten von Geräten. Anschließend verwenden Sie ein Azure IoT-Geräte-SDK-Beispiel, um einen simulierten Temperaturregler auszuführen, ihn sicher mit IoT Central zu verbinden und Telemetriedaten zu senden.
+In dieser Schnellstartanleitung lernen Sie einen einfachen Entwicklungsworkflow für Azure IoT-Anwendungen kennen. Zunächst erstellen Sie eine Azure IoT Central-Anwendung zum Hosten von Geräten. Anschließend verwenden Sie ein SDK-Beispiel für ein Azure IoT-Gerät, um einen Temperaturregler zu erstellen, ihn sicher mit IoT Central zu verbinden und Telemetriedaten zu senden. Die Beispielanwendung für den Temperaturregler wird auf Ihrem lokalen Computer ausgeführt und generiert simulierte Sensordaten, die an IoT Central gesendet werden sollen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 - Einen Entwicklungscomputer mit Java SE Development Kit 8 oder höher. Sie können das Java 8 JDK (LTS) für mehrere Plattformen unter [Herunterladen von Zulu-Builds von OpenJDK](https://www.azul.com/downloads/zulu-community/) herunterladen. Wählen Sie im Installationsprogramm die Option **Zu PATH hinzufügen** aus.
@@ -25,14 +25,14 @@ In dieser Schnellstartanleitung lernen Sie einen einfachen Entwicklungsworkflow 
 
 [!INCLUDE [iot-develop-create-central-app-with-device](iot-develop-create-central-app-with-device.md)]
 
-## <a name="run-a-simulated-device"></a>Ausführen eines simulierten Geräts
-In diesem Abschnitt konfigurieren Sie Ihre lokale Umgebung, installieren das Azure IoT-Java-Geräte-SDK und führen ein Beispiel aus, mit dem ein simulierter Temperaturregler erstellt wird.
+## <a name="run-a-device"></a>Ausführen eines Geräts
+In diesem Abschnitt konfigurieren Sie Ihre lokale Umgebung, installieren das Azure IoT-Java-Geräte-SDK und führen ein Beispiel aus, mit dem ein Temperaturregler erstellt wird.
 
 ### <a name="configure-your-environment"></a>Konfigurieren Ihrer Umgebung
 
 1. Öffnen Sie eine Konsole, etwa die Windows-Eingabeaufforderung, PowerShell oder Bash.
 
-1. Legen Sie mit den entsprechenden Befehle für Ihre Konsole die folgenden Umgebungsvariablen fest. Das simulierte Gerät verwendet diese Werte, um eine Verbindung mit IoT Central herzustellen. Verwenden Sie für `IOTHUB_DEVICE_DPS_ID_SCOPE`, `IOTHUB_DEVICE_DPS_DEVICE_KEY` und `IOTHUB_DEVICE_DPS_DEVICE_ID` die Geräteverbindungswerte, die Sie zuvor gespeichert haben.
+1. Legen Sie mit den entsprechenden Befehle für Ihre Konsole die folgenden Umgebungsvariablen fest. Das Gerät verwendet diese Werte, um eine Verbindung mit IoT Central herzustellen. Verwenden Sie für `IOTHUB_DEVICE_DPS_ID_SCOPE`, `IOTHUB_DEVICE_DPS_DEVICE_KEY` und `IOTHUB_DEVICE_DPS_DEVICE_ID` die Geräteverbindungswerte, die Sie zuvor gespeichert haben.
 
     **Windows-Eingabeaufforderung**
 
@@ -81,12 +81,12 @@ In diesem Abschnitt konfigurieren Sie Ihre lokale Umgebung, installieren das Azu
     cd device/iot-device-samples/pnp-device-sample/temperature-controller-device-sample
     ```
 
-1. Führen Sie in Ihrer Konsole das folgende Codebeispiel aus. Im Beispiel wird ein simulierter Temperaturregler mit Thermostatsensoren erstellt.
+1. Führen Sie in Ihrer Konsole das folgende Codebeispiel aus. Im Beispiel wird ein Temperaturregler mit Thermostatsensoren erstellt.
     ```console
     mvn exec:java -Dexec.mainClass="samples.com.microsoft.azure.sdk.iot.device.TemperatureController"
     ```
 
-    Nachdem Ihr simuliertes Gerät eine Verbindung mit der IoT Central-Anwendung hergestellt hat, stellt es eine Verbindung mit der Geräteinstanz her, die Sie in der Anwendung erstellt haben, und beginnt mit dem Senden von Telemetriedaten. Nach einigen anfänglichen Bereitstellungsdetails beginnt die Konsole mit der Ausgabe der Telemetriedaten für den Temperaturregler.
+    Nachdem Ihr Gerät eine Verbindung mit der IoT Central-Anwendung hergestellt hat, stellt es eine Verbindung mit der Geräteinstanz her, die Sie in der Anwendung erstellt haben, und beginnt mit dem Senden von Telemetriedaten. Nach einigen anfänglichen Bereitstellungsdetails beginnt die Konsole mit der Ausgabe der Telemetriedaten für den Temperaturregler.
     
     ```output
     2021-05-13 15:39:26.411 DEBUG Mqtt:253 - Sending MQTT SUBSCRIBE packet for topic $iothub/twin/res/#

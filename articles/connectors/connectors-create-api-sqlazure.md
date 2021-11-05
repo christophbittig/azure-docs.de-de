@@ -7,12 +7,12 @@ ms.reviewer: estfan, logicappspm, azla
 ms.topic: conceptual
 ms.date: 03/24/2021
 tags: connectors
-ms.openlocfilehash: 2e06616914f1e78a71a540fbd64021c0e1bfcbab
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: 9901caefe7d50b1042ea5c621bb064efc8c3eb0b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107785971"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131045271"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>Automatisieren von Workflows für eine SQL-Datenbank mithilfe von Azure Logic Apps
 
@@ -78,6 +78,7 @@ Wenn Sie zum ersten Mal entweder einen [SQL-Trigger](#add-sql-trigger) oder eine
    |----------------|-------------|
    | [**Azure AD-Integration**](../azure-sql/database/authentication-aad-overview.md) | – Unterstützt sowohl den Non-ISE- als auch den ISE-Connector von SQL Server. <p><p>– Erfordert eine gültige Identität in Azure Active Directory (Azure AD), die Zugriff auf Ihre Datenbank hat. <p>Weitere Informationen finden Sie in den folgenden Themen: <p>- [Azure SQL-Sicherheitsübersicht – Authentifizierung](../azure-sql/database/security-overview.md#authentication) <br>- [Autorisieren des Datenbankzugriffs auf Azure SQL – Authentifizierung und Autorisierung](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) <br>- [Azure SQL – Azure AD-Integrationsauthentifizierung](../azure-sql/database/authentication-aad-overview.md) |
    | [**SQL Server-Authentifizierung**](/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication) | – Unterstützt sowohl den Non-ISE- als auch den ISE-Connector von SQL Server. <p><p>– Erfordert einen gültigen Benutzernamen und ein sicheres Kennwort, die in Ihrer Datenbank erstellt und gespeichert werden. <p>Weitere Informationen finden Sie in den folgenden Themen: <p>- [Azure SQL-Sicherheitsübersicht – Authentifizierung](../azure-sql/database/security-overview.md#authentication) <br>- [Autorisieren des Datenbankzugriffs auf Azure SQL – Authentifizierung und Autorisierung](../azure-sql/database/logins-create-manage.md#authentication-and-authorization) |
+   | **Verwaltete Identität** | – Unterstützt sowohl den Non-ISE- als auch den ISE-Connector von SQL Server. <p><p>– Erfordert eine gültige verwaltete Identität mit [Zugriff auf Ihre Datenbank](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-sql.md), Zugriff auf die Rolle **Mitwirkender von SQL DB** auf die SQL Server-Ressource und Zugriff als **Mitwirkender** auf die Ressourcengruppe, die die SQL Server enthält. <p>Weitere Informationen finden Sie unter [SQL: Rollen auf Serverebene](/sql/relational-databases/security/authentication-access/server-level-roles).
    |||
 
    Dieses Beispiel wird mit **Azure AD-Integration** fortgesetzt:
@@ -269,7 +270,7 @@ Wenn Sie eine gespeicherte Prozedur mit dem SQL Server-Connector aufzurufen, ist
 
 ### <a name="connection-problems"></a>Verbindungsprobleme
 
-Verbindungsprobleme können häufig auftreten. Informationen zur Behebung dieser Probleme finden Sie unter [Beheben von Fehlern bei der Konnektivität mit SQL Server](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server). Hier einige Beispiele:
+Verbindungsprobleme können häufig auftreten. Informationen zur Behebung dieser Probleme finden Sie unter [Beheben von Fehlern bei der Konnektivität mit SQL Server](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server). Im Folgenden finden Sie einige Beispiele:
 
 * `A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections.`
 

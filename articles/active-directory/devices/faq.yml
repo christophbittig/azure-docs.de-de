@@ -12,12 +12,12 @@ metadata:
   manager: karenhoran
   ms.reviewer: ravenn
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: ddb697605b12505970f25609eb2365e39646de4f
-  ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+  ms.openlocfilehash: 34faf66c08f951ea5cfc53d56ae359a1a5cdda0f
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/24/2021
-  ms.locfileid: "128620880"
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131049860"
 title: 'Azure Active Directory: Häufig gestellte Fragen zur Geräteverwaltung'
 summary: ''
 sections:
@@ -66,6 +66,9 @@ sections:
     answer: "Ja. Windows verfügt über eine Zwischenspeicherfunktion für Benutzernamen und Kennwörter, die es Benutzern, die sich zuvor angemeldet haben, ermöglicht, auch ohne Netzwerkverbindung schnell auf den Desktop zuzugreifen. \n\nEin in Azure AD gelöschtes oder deaktiviertes Gerät wird vom Windows-Gerät nicht erkannt. Benutzer, die sich zuvor angemeldet haben, greifen also weiterhin mit dem im Cache gespeicherten Benutzernamen und Kennwort auf den Desktop zu. Wenn das Gerät gelöscht oder deaktiviert wird, können die Benutzer aber nicht auf Ressourcen zugreifen, die durch den gerätebasierten bedingten Zugriff geschützt sind. \n\nBenutzer, die sich zuvor nicht angemeldet haben, können nicht auf das Gerät zugreifen. Es wurde kein zwischengespeicherter Benutzernamen oder Kennwort für sie aktiviert. \n"
   - question: Kann sich ein deaktivierter oder gelöschter Benutzer bei in Azure AD eingebundenen Geräten anmelden?
     answer: "Ja, aber nur für einen begrenzten Zeitraum. Ein in Azure AD gelöschter oder deaktivierter Benutzer wird vom Windows-Gerät nicht sofort erkannt. Benutzer, die sich zuvor angemeldet haben, greifen also mit dem im Cache gespeicherten Benutzernamen und Kennwort auf den Desktop zu. \n\nIn der Regel ist das Gerät in weniger als vier Stunden über den Benutzerstatus informiert. Dann blockiert Windows den Zugriff dieser Benutzer auf den Desktop. Wie der Benutzer gelöscht oder in Azure AD deaktiviert ist, werden alle seine Token widerrufen. Daher kann der Benutzer auf keine Ressourcen mehr zugreifen. \n\nGelöschte oder deaktivierte Benutzer, die sich zuvor nicht angemeldet haben, können nicht auf das Gerät zugreifen. Es wurde kein zwischengespeicherter Benutzernamen oder Kennwort für sie aktiviert. \n"
+  - question: Kann sich ein*e Gastbenutzer*in bei einem in Azure AD eingebundenen Gerät anmelden?
+    answer: >
+      Nein. Derzeit können sich Gastbenutzer*innen nicht bei einem in Azure AD eingebundenen Gerät anmelden.
   - question: Warum haben meine Benutzer nach dem Ändern des UPN Probleme mit in Azure AD eingebundenen Geräten?
     answer: "Derzeit werden UPN-Änderungen nicht vollständig auf in Azure AD eingebundenen Geräten unterstützt. Also tritt bei der Authentifizierung mit Azure AD nach den UPN-Änderungen ein Fehler auf. Infolgedessen haben Benutzer Probleme mit SSO und bedingtem Zugriff auf ihren Geräten. Zu diesem Zeitpunkt müssen sich die Benutzer über die Kachel „Anderer Benutzer“ mit ihrem neuen UPN bei Windows anmelden, um dieses Problem zu lösen. Wir arbeiten derzeit an einer Lösung für das Problem. Allerdings tritt das Problem bei Benutzern, die sich mit Windows Hello for Business anmelden, nicht auf. \n\nUPN-Änderungen werden mit dem Windows 10-Update 2004 unterstützt. Bei Benutzern, die Geräte mit diesem Update verwenden, kann der UPN problemlos geändert werden.\n"
   - question: Meine Benutzer können über in Azure AD eingebundene Geräte keine Drucker suchen. Wie kann ich das Drucken über diese Geräte aktivieren?

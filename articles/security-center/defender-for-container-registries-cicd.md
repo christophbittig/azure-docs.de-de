@@ -1,26 +1,29 @@
 ---
-title: Azure Defender-Sicherheitsrisikoscanner für Containerimages in CI/CD-Workflows
-description: Hier erfahren Sie mehr über die Verwendung von Azure Defender für Containerregistrierungen zum Überprüfen von Containerimages in CI/CD-Workflows.
+title: Der Schwachstellen-Scanner von Defender für Cloud für Container-Images in CI/CD-Workflows
+description: Erfahren Sie, wie Sie Container-Images in CI/CD-Workflows mit Microsoft Defender nach Container-Registrierungen scannen können
 author: memildin
 ms.author: memildin
 ms.date: 05/25/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: eb7309f067c350eac0d9455767b137377caf588b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 97fed8a7afce16a33497860cda70b12fc90bed2c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346499"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131014897"
 ---
 # <a name="identify-vulnerable-container-images-in-your-cicd-workflows"></a>Identifizieren anfälliger Containerimages in CI/CD-Workflows
 
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
+
 Auf dieser Seite wird erläutert, wie Sie Ihre Azure Container Registry-basierten Containerimages mit dem integrierten Sicherheitsrisikoscanner überprüfen, wenn sie als Teil Ihrer GitHub-Workflows erstellt werden.
 
-Sie müssen zum Einrichten des Scanners **Azure Defender für Containerregistrierungen** und die CI/CD-Integration aktivieren. Wenn Ihre CI/CD-Workflows Images an Ihre Registrierungen pushen, können Sie die Ergebnisse der Registrierungsüberprüfung und eine Zusammenfassung der CI/CD-Überprüfungsergebnisse anzeigen.
+Um den Scanner einzurichten, müssen Sie den **Microsoft Defender für Container-Registrierungen** und die CI/CD-Integration aktivieren. Wenn Ihre CI/CD-Workflows Images an Ihre Registrierungen pushen, können Sie die Ergebnisse der Registrierungsüberprüfung und eine Zusammenfassung der CI/CD-Überprüfungsergebnisse anzeigen.
 
-Die Ergebnisse der CI/CD-Überprüfungen sind eine Erweiterung der vorhandenen Registrierungsüberprüfungsergebnisse von Qualys. Die CI/CD-Überprüfung von Azure Defender wird von [Aqua Trivy](https://github.com/aquasecurity/trivy) unterstützt.
+Die Ergebnisse der CI/CD-Überprüfungen sind eine Erweiterung der vorhandenen Registrierungsüberprüfungsergebnisse von Qualys. Das CI/CD-Scanning von Defender für Cloud wird von [Aqua Trivy](https://github.com/aquasecurity/trivy) unterstützt.
 
 Sie erhalten Nachverfolgbarkeitsinformationen wie den GitHub-Workflow und die GitHub-Ausführungs-URL, um die Workflows zu identifizieren, die zu anfälligen Images führen.
 
@@ -32,25 +35,25 @@ Sie erhalten Nachverfolgbarkeitsinformationen wie den GitHub-Workflow und die Gi
 |Aspekt|Details|
 |----|:----|
 |Status des Release:| **Diese CI/CD-Integration befindet sich in der Vorschauphase.**<br>Sie sollten daher nur mit Workflows experimentieren, die keine Produktionsworkflows sind.<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]|
-|Preise:|**Azure Defender für Containerregistrierungen** wird gemäß den Angaben in der [Preisübersicht für Security Center](https://azure.microsoft.com/pricing/details/security-center/) abgerechnet.|
+|Preise:|**Microsoft Defender für Container-Registrierungen** wird wie auf der [Preisseite](https://azure.microsoft.com/pricing/details/security-center/) angegeben berechnet|
 |Clouds:|:::image type="icon" source="./media/icons/yes-icon.png"::: Kommerzielle Clouds<br>:::image type="icon" source="./media/icons/no-icon.png"::: National/Sovereign (Azure Government, Azure China 21Vianet)|
 |||
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-In Ihrem Abonnement muss **Azure Defender für Containerregistrierungen** aktiviert sein, damit Sie Ihre Images beim Pushen in Ihre Registrierungen durch CI/CD-Workflows überprüfen können. 
+Um Ihre Images zu scannen, wenn sie von CI/CD-Workflows in Ihre Registrierungen verschoben werden, müssen Sie **Microsoft Defender für Container-Registrierungen** im Abonnement aktiviert haben. 
 
 ## <a name="set-up-vulnerability-scanning-of-your-cicd-workflows"></a>Einrichten der Sicherheitsrisikoüberprüfung Ihrer CI/CD-Workflows
 
 So aktivieren Sie Sicherheitsrisikoüberprüfungen von Images in Ihren GitHub-Workflows:
 
-[Schritt 1: Aktivieren der CI/CD-Integration in Security Center](#step-1-enable-the-cicd-integration-in-security-center)
+[Schritt 1. Aktivieren Sie die CI/CD-Integration in Defender für Cloud](#step-1-enable-the-cicd-integration-in-defender-for-cloud)
 
 [Schritt 2: Hinzufügen der erforderlichen Zeilen zu Ihrem GitHub-Workflow](#step-2-add-the-necessary-lines-to-your-github-workflow-and-perform-a-scan)
 
-### <a name="step-1-enable-the-cicd-integration-in-security-center"></a>Schritt 1: Aktivieren der CI/CD-Integration in Security Center
+### <a name="step-1-enable-the-cicd-integration-in-defender-for-cloud"></a>Schritt 1: Aktivieren Sie die CI/CD-Integration in Defender für Cloud
 
-1. Wählen Sie auf der Security Center-Randleiste **Preise & Einstellungen** aus.
+1. Wählen Sie im Menü von Defender für Cloud die Optionen **Umgebungseinstellungen**.
 1. Wählen Sie das relevante Abonnement aus.
 1. Klicken Sie auf der Randleiste der Seite „Einstellungen“ für dieses Abonnement auf **Integrationen**.
 1. Wählen Sie im angezeigten Bereich ein Application Insights-Konto aus, um die CI/CD-Überprüfungsergebnisse aus Ihrem Workflow zu pushen.
@@ -67,6 +70,10 @@ So aktivieren Sie Sicherheitsrisikoüberprüfungen von Images in Ihren GitHub-Wo
 
     > [!TIP]
     > Es wird empfohlen, wie unten gezeigt zwei Geheimnisse in Ihrem Repository zu erstellen, auf die in Ihrer YAML-Datei verwiesen wird. Die Geheimnisse können gemäß Ihren eigenen Namenskonventionen benannt werden. In diesem Beispiel wird mit **AZ_APPINSIGHTS_CONNECTION_STRING** und **AZ_SUBSCRIPTION_TOKEN** auf die Geheimnisse verwiesen.
+
+    > [!IMPORTANT]
+    >  Die Übermittlung an das Register muss vor der Veröffentlichung der Ergebnisse erfolgen.
+
 
 
     ```yml
@@ -93,7 +100,7 @@ So aktivieren Sie Sicherheitsrisikoüberprüfungen von Images in Ihren GitHub-Wo
         subscription-token: ${{ secrets.AZ_SUBSCRIPTION_TOKEN }} 
     ```
 
-1. Führen Sie den Workflow aus, der das Image in die ausgewählte Containerregistrierung pusht. Nachdem das Image in die Registrierung gepusht wurde, wird eine Überprüfung der Registrierung durchgeführt, und Sie können die Ergebnisse der CI/CD-Überprüfung zusammen mit den Ergebnissen der Registrierungsüberprüfung in Azure Security Center anzeigen.
+1. Führen Sie den Workflow aus, der das Image in die ausgewählte Containerregistrierung pusht. Sobald das Image in die Registrierung übertragen wurde, wird ein Scan der Registrierung durchgeführt, und Sie können die CI/CD-Scanergebnisse zusammen mit den Ergebnissen des Registrierungsscans in Microsoft Defender für Cloud anzeigen.
 
 1. [Zeigen Sie die Ergebnisse der CI/CD-Überprüfung an.](#view-cicd-scan-results)
 
@@ -135,5 +142,4 @@ So aktivieren Sie Sicherheitsrisikoüberprüfungen von Images in Ihren GitHub-Wo
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-> [!div class="nextstepaction"]
-> Weitere Informationen zu [Azure Defender](azure-defender.md).
+Erfahren Sie mehr über [die erweiterten Schutzpläne von Microsoft Defender](defender-for-cloud-introduction.md).

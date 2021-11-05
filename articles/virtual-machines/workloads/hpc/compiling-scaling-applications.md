@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/16/2021
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: c6396eab9cb7a2224d660e0e034f8592a879510d
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 408f55592ee7a192172c85e7a417db0b277f0f46
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122688458"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131054512"
 ---
 # <a name="scaling-hpc-applications"></a>Skalieren von HPC-Anwendungen
 
@@ -91,14 +91,14 @@ $ gfortran [gFortran flags]
 ```
    
 ### <a name="pgi-compiler"></a>PGI-Compiler
-Version 17 der PGI Community Edition kann mit AMD EPYC verwendet werden. Eine PGI-kompilierte Version von STREAM stellt die vollständige Speicherbandbreite der Plattform bereit. Die neuere Community Edition 18.10 (November 2018) sollte ebenso problemlos funktionieren. Hier sehen Sie ein CLI-Beispiel zur optimalen Kompilierung mit dem Intel-Compiler:
+Es wurde bestätigt, dass PGI Community Edition 17 mit AMD EPYC-Prozessoren funktioniert. Eine PGI-kompilierte Version von STREAM stellt die vollständige Speicherbandbreite der Plattform bereit. Die neuere Community Edition 18.10 (November 2018) sollte ebenso problemlos funktionieren. Hier sehen Sie ein CLI-Beispiel zur optimalen Kompilierung mit dem Intel-Compiler:
 
 ```bash
 pgcc $(OPTIMIZATIONS_PGI) $(STACK) -DSTREAM_ARRAY_SIZE=800000000 stream.c -o stream.pgi
 ```
 
 ### <a name="intel-compiler"></a>Intel-Compiler
-Version 18 des Intel-Compilers kann mit AMD EPYC verwendet werden. Hier sehen Sie ein CLI-Beispiel zur optimalen Kompilierung mit dem Intel-Compiler:
+Es wurde bestätigt, dass Intel Compiler 18 mit AMD EPYC-Prozessoren funktioniert. Hier sehen Sie ein CLI-Beispiel zur optimalen Kompilierung mit dem Intel-Compiler:
 
 ```bash
 icc -o stream.intel stream.c -DSTATIC -DSTREAM_ARRAY_SIZE=800000000 -mcmodel=large -shared-intel -Ofast –qopenmp

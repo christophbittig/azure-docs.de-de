@@ -3,15 +3,15 @@ title: Ausführen von Azure Automation-Runbooks in einem Hybrid Runbook Worker
 description: In diesem Artikel wird beschrieben, wie Sie Runbooks auf Computern in Ihrem lokalen Rechenzentrum oder bei anderen Cloudanbietern mit dem Hybrid Runbook Worker ausführen.
 services: automation
 ms.subservice: process-automation
-ms.date: 09/30/2021
+ms.date: 11/01/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 702fcc816bac95345fca8c701be504e4eaa3a1fe
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 71f13679a1f19672368a7b72987e28813232f846
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129354752"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131465553"
 ---
 # <a name="run-automation-runbooks-on-a-hybrid-runbook-worker"></a>Ausführen von Automation-Runbooks in einem Hybrid Runbook Worker
 
@@ -32,8 +32,18 @@ Azure Automation behandelt Aufträge in Hybrid Runbook Workern anders als Auftr�
 ### <a name="windows"></a>Windows 
 
 Aufträge für Hybrid Runbook Worker werden mit dem lokalen Konto **System** ausgeführt.
+>[!NOTE]
+>  Informationen zum Ausführen von PowerShell 7.x auf einem Windows Hybrid Runbook Worker finden Sie unter [Installieren von PowerShell unter Windows](/powershell/scripting/install/installing-powershell-on-windows).
+> Derzeit unterstützen wir nur das Onboarding von Hybrid Worker-Erweiterungen, wie [hier](/azure/automation/extension-based-hybrid-runbook-worker-install) erwähnt. 
+
+Stellen Sie sicher, dass der Pfad, in dem sich die ausführbare Datei *pwsh.exe* befindet, der Umgebungsvariablen PATH hinzugefügt wird. Starten Sie den Hybrid Runbook Worker nach Abschluss der Installation neu.
 
 ### <a name="linux"></a>Linux
+
+>[!NOTE]
+> Informationen zum Ausführen von PowerShell 7.x auf einem Linux Hybrid Runbook Worker finden Sie unter [Installieren von PowerShell unter Linux](/powershell/scripting/install/installing-powershell-on-linux).
+> Derzeit unterstützen wir nur das Onboarding von Hybrid Worker-Erweiterungen, wie [hier](/azure/automation/extension-based-hybrid-runbook-worker-install) erwähnt.
+
 
 Die Dienstkonten **nxautomation** und **omsagent** werden erstellt. Das Erstellungs- und Berechtigungszuweisungsskript kann unter [https://github.com/microsoft/OMS-Agent-for-Linux/blob/master/installer/datafiles/linux.data](https://github.com/microsoft/OMS-Agent-for-Linux/blob/master/installer/datafiles/linux.data) angezeigt werden. Die Konten mit den entsprechenden sudo-Berechtigungen müssen bei der [Installation eines Linux-Hybrid Runbook Workers](automation-linux-hrw-install.md) vorhanden sein. Wenn Sie versuchen, den Worker zu installieren, und das Konto nicht vorhanden ist oder nicht über die entsprechenden Berechtigungen verfügt, tritt bei der Installation ein Fehler auf. Ändern Sie keine Berechtigungen oder Besitzeinstellungen für den Ordner `sudoers.d`. Die Berechtigung vom Typ „sudo“ ist für die Konten erforderlich, und die Berechtigungen sollten nicht entfernt werden. Eine Beschränkung auf bestimmte Ordner oder Befehle kann ggf. eine grundlegende Änderung (Breaking Change) bewirken. Der Benutzer **nxautomation**, der im Rahmen der Updateverwaltung aktiviert wurde, führt nur signierte Runbooks aus.
 
@@ -225,6 +235,9 @@ Sie können eine Windows Hybrid Runbook Worker so konfigurieren, dass nur signie
 > [!IMPORTANT]
 > Wenn Sie einen Hybrid Runbook Worker dafür konfiguriert haben, nur signierte Runbooks auszuführen, können von dem Worker keine nicht signierten Runbooks mehr ausgeführt werden.
 
+> [!NOTE]
+>  PowerShell 7.x unterstützt keine signierten Runbooks für Windows und Linux Hybrid Runbook Worker.  
+
 ### <a name="create-signing-certificate"></a>Erstellen des Signaturzertifikats
 
 In folgendem Beispiel wird ein selbstsigniertes Zertifikat erstellt, das für das Signieren von Runbooks verwendet werden kann. Mit diesem Code wird das Zertifikat erstellt und exportiert, damit der Runbook Worker es später importieren kann. Der Fingerabdruck wird auch für die spätere Verwendung beim Verweisen auf das Zertifikat zurückgegeben.
@@ -293,6 +306,9 @@ Führen Sie die folgenden Schritte aus, um die Konfiguration abzuschließen:
 * Bereitstellen des Schlüsselbunds für den Hybrid Runbook Worker
 * Überprüfen, ob die Signaturüberprüfung aktiviert ist
 * Signieren eines Runbooks
+
+> [!NOTE]
+>  PowerShell 7.x unterstützt keine signierten Runbooks für Windows und Linux Hybrid Runbook Worker.
 
 ### <a name="create-a-gpg-keyring-and-keypair"></a>Erstellen eines GPG-Schlüsselbunds und -Schlüsselpaars
 

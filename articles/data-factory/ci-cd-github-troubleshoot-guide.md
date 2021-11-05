@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.subservice: ci-cd
 ms.custom: synapse
 ms.topic: troubleshooting
-ms.date: 09/09/2021
-ms.openlocfilehash: afba2903fc01a8f6e866f91074bdefa427dff7aa
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.date: 10/25/2021
+ms.openlocfilehash: 1c73346cde1eb20f17973b65e43a8d1c4148b41c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129217939"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131073242"
 ---
 # <a name="troubleshoot-ci-cd-azure-devops-and-github-issues-in-azure-data-factory-and-synapse-analytics"></a>Beheben von CI/CD-, Azure DevOps- und GitHub-Problemen in Azure Data Factory und Synapse Analytics 
 
@@ -298,6 +298,29 @@ Es gibt mehrere Szenarien, die dieses Verhalten auslösen können. Bei allen Sze
 #### <a name="resolution"></a>Lösung
 
 Neue Ausführungen der übergeordneten Pipeline werden automatisch erfolgreich ausgeführt, sodass normalerweise keine Aktion erforderlich ist. Um diese Fehler zu vermeiden, sollten Kunden jedoch beim Erstellen und Planen von Bereitstellungen darauf achten, dass es bei Abhängigkeiten nicht zu Breaking Changes kommt. 
+
+### <a name="cannot-parameterize-integration-run-time-in-linked-service"></a>Integrationslaufzeit im verknüpften Dienst kann nicht parametrisiert werden
+
+#### <a name="issue"></a>Problem
+Notwendigkeit der Parametrisierung der verknüpften Dienstintegration zur Laufzeit
+
+#### <a name="cause"></a>Ursache
+Diese Funktion wird nicht unterstützt. 
+
+#### <a name="resolution"></a>Lösung
+Sie müssen manuell auswählen und eine Integrationslaufzeit festlegen. Sie können auch die PowerShell-API zum Ändern verwenden.  Diese Veränderung kann nachgelagerte Auswirkungen haben. 
+
+### <a name="updatechange-integration-runtime-during-cicd"></a>Aktualisierung/Änderung der Integrationslaufzeit während CI/CD. 
+ 
+#### <a name="issue"></a>Problem
+Ändern des Namens der Integrationslaufzeit während der CI/CD-Bereitstellung.  
+ 
+#### <a name="cause"></a>Ursache
+Die Parametrisierung einer Entitätsreferenz (Integrationslaufzeit in Linked Service, Dataset in Aktivität, Linked Service in Dataset) wird nicht unterstützt.  Das Ändern des Laufzeitnamens während der Bereitstellung führt dazu, dass die abhängige Ressource (Ressource, die die Integrationslaufzeit referenziert) mit einer ungültigen Referenz missgebildet wird.  
+ 
+#### <a name="resolution"></a>Lösung
+Data Factory erfordert, dass Sie in allen Phasen von CI/CD denselben Namen und Typ der Integrationslaufzeit verwenden. 
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

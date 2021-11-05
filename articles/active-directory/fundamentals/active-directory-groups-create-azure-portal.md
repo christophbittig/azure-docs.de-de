@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: krbain
 ms.custom: it-pro, seodec18, contperf-fy20q4
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8041656a11689d0cca64c3edae1af2e70409028
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 5a16bca98611e766aba2cdbe249cda8943efb42d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97027712"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131049518"
 ---
 # <a name="create-a-basic-group-and-add-members-using-azure-active-directory"></a>Erstellen einer Basisgruppe und Hinzufügen von Mitgliedern mit Azure Active Directory
 Sie können über das Azure Active Directory-Portal (Azure AD) eine Basisgruppe erstellen. Für die Zwecke dieses Artikels wird einer einzelnen Ressource eine Basisgruppe durch den Ressourcenbesitzer (Administrator) hinzugefügt und bestimmte Mitglieder (Mitarbeiter) eingeschlossen, die auf diese Ressource zugreifen müssen. Informationen zu komplexeren Szenarien wie dynamische Mitgliedschaften und die Erstellung von Regeln finden Sie in der [Dokumentation für die Verwaltung von Azure Active Directory-Benutzern](../enterprise-users/index.yml).
@@ -75,9 +75,9 @@ Sie können eine Basisgruppe erstellen und gleichzeitig Ihre Mitglieder hinzufü
 
     ![Seite der Gruppenübersicht mit der Anzahl von markierten Mitgliedern](media/active-directory-groups-create-azure-portal/group-overview-blade-number-highlight.png)
 
-## <a name="turn-on-or-off-group-welcome-email"></a>Aktivieren oder Deaktivieren der Gruppenbegrüßungs-E-Mail
+## <a name="turn-off-group-welcome-email"></a>Deaktivieren der Begrüßungs-E-Mail für Gruppen
 
-Wenn eine neue Microsoft 365-Gruppe erstellt wird, wird eine Begrüßungsnachricht an alle Benutzer gesendet, die der Gruppe hinzugefügt wurden – unabhängig davon, ob die Mitglieder dynamisch oder statisch hinzugefügt werden. Wenn sich Attribute eines Benutzers oder Geräts ändern, werden alle dynamischen Gruppenregeln in der Organisation verarbeitet, um mögliche Änderungen an der Mitgliedschaft zu ermitteln. Hinzugefügte Benutzer erhalten dann ebenfalls eine Begrüßungsnachricht. Sie können dieses Verhalten in [Exchange PowerShell](/powershell/module/exchange/users-and-groups/Set-UnifiedGroup) deaktivieren. 
+Wenn eine neue Microsoft 365-Gruppe erstellt wird, wird eine Begrüßungsnachricht an alle Benutzer gesendet, die der Gruppe hinzugefügt wurden – unabhängig davon, ob die Mitglieder dynamisch oder statisch hinzugefügt werden. Wenn sich Attribute eines Benutzers oder Geräts ändern, werden alle dynamischen Gruppenregeln in der Organisation verarbeitet, um mögliche Änderungen an der Mitgliedschaft zu ermitteln. Hinzugefügte Benutzer erhalten dann ebenfalls eine Begrüßungsnachricht. Sie können dieses Verhalten in [Exchange PowerShell](/powershell/module/exchange/users-and-groups/Set-UnifiedGroup) deaktivieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/07/2021
 ms.author: thwimmer
-ms.openlocfilehash: 82fdfb7621762828a32ad67774e9b0141c6b0464
-ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
+ms.openlocfilehash: 462accaebda816fee959a5a586e331151badc269
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122207306"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131058855"
 ---
 # <a name="tutorial-configure-holmes-cloud-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren der automatischen Benutzerbereitstellung für Holmes Cloud
 
@@ -52,7 +52,7 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
 > [!NOTE]
 > * Nach dem Erwerb des Abonnements erhalten Sie Ihre Holmes Cloud-Mandanten-URL vom **Holmes Cloud-Supportteam** (<cs@holmescloud.com>).
-> * Die Informationen zum Einrichten des Bereitstellungsdiensts (Endpunkt-URL, Token usw.) finden Sie auf der Seite **Company Settings** (Unternehmenseinstellungen), solange Sie einmaliges Anmelden und den Benutzerbereitstellungsdienst abonnieren.
+> * Die zum Einrichten des Bereitstellungsdiensts benötigten Informationen (Endpunkt-URL, Token, usw.) finden Sie auf der Seite **Unternehmenseinstellungen**, solange Sie das einmalige Anmelden und den Benutzerbereitstellungsdienst abonnieren.
  
 1. Melden Sie sich mit Ihren Holmes Cloud-Anmeldeinformationen beim Holmes Cloud-Konto an.
 1. Wählen Sie das Menü „社設定“ (Unternehmenseinstellungen) und dann das Hutsymbol aus.
@@ -109,7 +109,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
 1. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit Holmes Cloud synchronisiert werden. Beachten Sie, dass die als **Übereinstimmung** ausgewählten Attribute für den Abgleich der Benutzerkonten in Holmes Cloud für Updatevorgänge verwendet werden. Wenn Sie das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) ändern möchten, müssen Sie sicherstellen, dass die Holmes Cloud-API das Filtern von Benutzern nach diesem Attribut unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-   |attribute|Typ|Unterstützung für das Filtern|
+   |attribute|type|Unterstützung für das Filtern|
    |---|---|---|
    |userName|String|&check;
    |aktiv|Boolean|   
@@ -121,7 +121,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
 1. Überprüfen Sie im Abschnitt **Attributzuordnung** die Gruppenattribute, die von Azure AD mit Holmes Cloud synchronisiert werden. Die als **Übereinstimmung** ausgewählten Attribute werden für den Abgleich der Gruppen in Holmes Cloud für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-      |attribute|Typ|Unterstützung für das Filtern|
+      |attribute|type|Unterstützung für das Filtern|
       |---|---|---|
       |displayName|String|&check;
       |members|Verweis|

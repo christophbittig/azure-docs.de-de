@@ -1,21 +1,21 @@
 ---
-title: ClaimsSchema – Azure Active Directory B2C | Microsoft-Dokumentation
+title: ClaimsSchema – Azure Active Directory B2C
 description: In diesem Artikel erfahren Sie, wie Sie das ClaimsSchema-Element einer benutzerdefinierten Richtlinie in Azure Active Directory B2C angeben.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 03/05/2020
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 2ff43408cfa6d95dbd5a235a950269c47d57a416
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 8930ceceb3b4f55bf579e110c15f58893bbfa6d2
+ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "97654029"
+ms.lasthandoff: 10/15/2021
+ms.locfileid: "131008045"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -42,7 +42,7 @@ Das **ClaimsSchema**-Element definiert die Anspruchstypen, auf die als Teil der 
 
 Das **ClaimType**-Element enthält die folgenden Attribute:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Id | Ja | Ein Bezeichner, der für den Anspruchsnamen verwendet wird. Andere Elemente können diesen Bezeichner in der Richtlinie verwenden. |
 
@@ -125,7 +125,7 @@ Infolgedessen gibt das von Azure AD B2C ausgestellte JWT-Token `family_name` ans
 
 Das **Mask**-Element enthält die folgenden Attribute:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | `Type` | Ja | Der Typ der Anspruchsmaske. Mögliche Werte: `Simple` oder `Regex`. Der Wert `Simple` gibt an, dass auf den vorderen Teil eines Zeichenfolgenanspruchs eine einfache Textmaske angewandt wird. Der Wert `Regex` gibt an, dass ein regulärer Ausdruck auf den Zeichenfolgenausdruck als Ganzes angewandt wird.  Wenn der Wert `Regex` angegeben wird, muss mit dem zu verwendenden regulären Ausdruck auch ein optionales Attribut definiert werden. |
 | `Regex` | Nein | Wenn **`Type`** auf `Regex` festgelegt wird, geben Sie den zu verwendenden regulären Ausdruck an.
@@ -165,7 +165,7 @@ Das Identity Experience Framework rendert nur den ersten Buchstaben der E-Mail-A
 
 Das **Restriction**-Element enthält möglicherweise das folgende Attribut:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | MergeBehavior | Nein | Die Methode, die zum Zusammenführen von Enumerationswerten mit einem Anspruchstyp in einer übergeordneten Richtlinie mit dem gleichen Bezeichner verwendet wird. Verwenden Sie dieses Attribut, wenn Sie einen Anspruch überschreiben, der in der Basisrichtlinie angegeben ist. Mögliche Werte: `Append`, `Prepend` oder `ReplaceAll`. Beim Wert `Append` handelt es sich um eine Sammlung von Daten, die an das Ende der in der übergeordneten Richtlinie angegebenen Sammlung angefügt werden soll. Beim Wert `Prepend` handelt es sich um eine Sammlung von Daten, die vor der in der übergeordneten Richtlinie angegebenen Sammlung hinzugefügt werden soll. Beim Wert `ReplaceAll` handelt es sich um eine Sammlung von in der übergeordneten Richtlinie angegebenen Daten, die ignoriert werden sollen. |
 
@@ -182,7 +182,7 @@ Das **Enumeration**-Element definiert die auf der Benutzeroberfläche verfügbar
 
 Das **Enumeration**-Element enthält die folgenden Attribute:
 
-| Attribut | Erforderlich | BESCHREIBUNG |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | Text | Ja | Die Anzeigezeichenfolge, die dem Benutzer auf der Benutzeroberfläche für diese Option angezeigt wird. |
 |Wert | Ja | Der Wert des Anspruchs, der der Auswahl dieser Option zugeordnet ist. |
@@ -211,7 +211,7 @@ Im folgenden Beispiel wird ein **city**-Dropdownlistenanspruch mit dem Standardw
 
 Das **Pattern**-Element kann die folgenden Attribute enthalten:
 
-| Attribut | Erforderlich | Beschreibung |
+| attribute | Erforderlich | Beschreibung |
 | --------- | -------- | ----------- |
 | RegularExpression | Ja | Der reguläre Ausdruck, mit dem Ansprüche dieses Typs übereinstimmen müssen, damit sie gültig sind. |
 | HelpText | Nein | Eine Fehlermeldung für Benutzer, wenn die Überprüfung des regulären Ausdrucks einen Fehler ergibt. |
@@ -239,7 +239,7 @@ Das Identity Experience Framework rendert den E-Mail-Adressenanspruch mit Eingab
 
 ### <a name="userinputtype"></a>UserInputType
 
-Azure AD B2C unterstützt eine Vielzahl von Benutzereingabetypen wie ein Textfeld, Kennwort und eine Dropdownliste, die bei der manuellen Eingabe von Anspruchsdaten für den Anspruchstyp verwendet werden können. Sie müssen **UserInputType** angeben, wenn Sie mit einem [selbstbestätigten technischen Profil ](self-asserted-technical-profile.md) und [Anzeigesteuerelementen](display-controls.md) Informationen vom Benutzer sammeln.
+Azure AD B2C unterstützt eine Vielzahl von Benutzereingabetypen wie ein Textfeld, Kennwort und eine Dropdownliste, die bei der manuellen Eingabe von Anspruchsdaten für den Anspruchstyp verwendet werden können. Sie müssen **UserInputType** angeben, wenn Sie mit einem [selbstbestätigten technischen Profil](self-asserted-technical-profile.md) und [Anzeigesteuerelementen](display-controls.md) Informationen vom Benutzer sammeln.
 
 Das Element **UserInputType** verfügt über folgende Benutzereingabetypen:
 

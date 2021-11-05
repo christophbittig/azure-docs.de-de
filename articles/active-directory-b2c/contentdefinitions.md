@@ -3,20 +3,20 @@ title: ContentDefinitions
 titleSuffix: Azure AD B2C
 description: Erfahren Sie, wie Sie das ContentDefinitions-Element einer benutzerdefinierten Richtlinie in Azure Active Directory B2C angeben.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/12/2021
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: bbe79082f63065ed73b573ab87f3299f7df79148
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: af77df3d3839a019e4977b32c6b8b138b375b4f1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124740239"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131007446"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -79,7 +79,7 @@ Das **ContentDefinition**-Element enthält die folgenden Elemente:
 
 Das Element **LoadUri** wird verwendet, um die URL der HTML5-Seite für die Inhaltsdefinition anzugeben. Die [Starter Packs für benutzerdefinierte Richtlinien](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack) von Azure AD B2C enthalten Inhaltsdefinitionen, die Azure AD B2C-HTML-Seiten verwenden. Das Element **LoadUri** beginnt mit `~`. einem relativen Pfad zu Ihrem Azure AD B2C-Mandanten.
 
-```XML
+```xml
 <ContentDefinition Id="api.signuporsignin">
   <LoadUri>~/tenant/templates/AzureBlue/unified.cshtml</LoadUri>
   ...
@@ -88,12 +88,12 @@ Das Element **LoadUri** wird verwendet, um die URL der HTML5-Seite für die Inha
 
 Sie können [die Benutzeroberfläche mit HTML-Vorlagen anpassen](customize-ui-with-html.md). Bei der Verwendung von HTML-Vorlagen müssen Sie eine absolute URL angeben. Im folgenden Beispiel wird eine Inhaltsdefinition mit HTML-Vorlage veranschaulicht:
 
-```XML
+```xml
 <ContentDefinition Id="api.signuporsignin">
   <LoadUri>https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html</LoadUri>
   ...
 </ContentDefinition>
-``` 
+```
 
 ### <a name="datauri"></a>DataUri
 
@@ -150,7 +150,7 @@ Um vom alten **DataUri-Wert** (ohne Seitenvertrag) zur Seitenlayoutversion zu mi
 | `urn:com:microsoft:aad:b2c:elements:multifactor:1.0.0` | `urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.2.5` |
 | `urn:com:microsoft:aad:b2c:elements:multifactor:1.1.0` | `urn:com:microsoft:aad:b2c:elements:contract:multifactor:1.2.5` |
 
-Im folgenden Beispiel werden die Inhaltsdefinitions-IDs mit dem zugehörigen **DataUri** für die [aktuelle Seitenversion](page-layout.md) gezeigt: 
+Im folgenden Beispiel werden die Inhaltsdefinitions-IDs mit dem zugehörigen **DataUri** für die [aktuelle Seitenversion](page-layout.md) gezeigt:
 
 ```xml
 <!-- 

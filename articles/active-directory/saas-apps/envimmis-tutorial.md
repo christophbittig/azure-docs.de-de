@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/12/2021
 ms.author: jeedes
-ms.openlocfilehash: d6265163ad60b1ac057ccc3a08cc281b7b54ca5d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 9be5d831afc5781c4951f76e72a332abd7be1e4c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124835604"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131059052"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-envi-mmis"></a>Tutorial: Azure Active Directory-Integration mit Envi MMIS
 
@@ -75,9 +75,9 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
 
-    a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://www.<CUSTOMER DOMAIN>.com/Account`
+    1. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://www.<CUSTOMER DOMAIN>.com/Account`
 
-    b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://www.<CUSTOMER DOMAIN>.com/Account/Acs`
+    1. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://www.<CUSTOMER DOMAIN>.com/Account/Acs`
 
 5. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
@@ -142,11 +142,11 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     ![Screenshot des Popupmenüs „Upload Metadata“, in dem die Option „Datei“ ausgewählt und das Symbol „Datei auswählen“ und die Schaltfläche „OK“ hervorgehoben sind](./media/envimmis-tutorial/file.png)
 
-    a. Wählen Sie im Dropdownmenü **Upload from** (Hochladen aus) die Option **File** (Datei) aus.
+    1. Wählen Sie im Dropdownmenü **Upload from** (Hochladen aus) die Option **File** (Datei) aus.
 
-    b. Laden Sie die heruntergeladene Metadatendatei aus dem Azure-Portal hoch, indem Sie auf das Symbol **Choose File** (Datei auswählen) klicken.
+    1. Laden Sie die heruntergeladene Metadatendatei aus dem Azure-Portal hoch, indem Sie auf das Symbol **Choose File** (Datei auswählen) klicken.
 
-    c. Klicken Sie auf **OK**.
+    1. Klicken Sie auf **OK**.
 
 7. Nach dem Hochladen der heruntergeladenen Metadatendatei werden die Felder automatisch aufgefüllt. Klicken Sie auf **Aktualisieren**.
 
@@ -172,19 +172,19 @@ Damit sich Azure AD-Benutzer bei Envi MMIS anmelden können, müssen sie in Envi
 
     ![Screenshot: Hinzufügen eines Mitarbeiters.](./media/envimmis-tutorial/add-user.png)
 
-    a. Geben Sie im Textfeld **User Name** (Benutzername) den Benutzernamen des Kontos von Britta Simon ein. (Beispiel: **brittasimon\@contoso.com**)
+    1. Geben Sie im Textfeld **User Name** (Benutzername) den Benutzernamen des Kontos von Britta Simon ein. (Beispiel: **brittasimon\@contoso.com**)
     
-    b. Geben Sie im Textfeld **First Name** (Vorname) den Vornamen von Britta Simon ein: **Britta**.
+    1. Geben Sie im Textfeld **First Name** (Vorname) den Vornamen von Britta Simon ein: **Britta**.
 
-    c. Geben Sie im Textfeld **Last Name** (Nachname) den Nachnamen von Britta Simon ein: **Simon**.
+    1. Geben Sie im Textfeld **Last Name** (Nachname) den Nachnamen von Britta Simon ein: **Simon**.
 
-    d. Geben Sie im Textfeld **Title** (Titel) den Titel des Benutzers ein.
-    
-    e. Geben Sie im Textfeld **Email Address** (E-Mail-Adresse) die E-Mail-Adresse des Kontos von Britta Simon ein. (Beispiel: **brittasimon\@contoso.com**)
+    1. Geben Sie im Textfeld **Title** (Titel) den Titel des Benutzers ein.
 
-    f. Geben Sie im Textfeld **SSO User Name** (Benutzername für einmaliges Anmelden) den Benutzernamen des Kontos von Britta Simon ein. (Beispiel: **brittasimon\@contoso.com**)
+    1. Geben Sie im Textfeld **Email Address** (E-Mail-Adresse) die E-Mail-Adresse des Kontos von Britta Simon ein. (Beispiel: **brittasimon\@contoso.com**)
 
-    g. Klicken Sie auf **Speichern**.
+    1. Geben Sie im Textfeld **SSO User Name** (Benutzername für einmaliges Anmelden) den Benutzernamen des Kontos von Britta Simon ein. (Beispiel: **brittasimon\@contoso.com**)
+
+    1. Klicken Sie auf **Speichern**.
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens
 

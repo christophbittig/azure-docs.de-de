@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/10/2020
 ms.author: jeedes
-ms.openlocfilehash: eb9ea2c55422fd4212b9c670f430d4699472018a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 83bfd80e3a687466c459aa63a5394000a6ab1265
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124761446"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131039847"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-aruba-user-experience-insight"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Aruba User Experience Insight
 

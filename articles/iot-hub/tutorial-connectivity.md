@@ -12,15 +12,15 @@ ms.custom:
 - 'Role: IoT Device'
 - devx-track-js
 - devx-track-azurecli
-ms.date: 02/22/2019
+ms.date: 10/26/2021
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: 43ec1680d0855ba70b084771e7e98f4285c0af58
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 39f29933a8b4d9858ca12de8e79f29cbda55c1c2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121724426"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131024435"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Tutorial: Verwenden eines simulierten Geräts zum Testen der Konnektivität mit Ihrem IoT Hub
 
@@ -193,7 +193,7 @@ Im Terminalfenster werden Informationen angezeigt, während Telemetriedaten an I
 
 Sie können die Option **Metriken** im Portal nutzen, um sicherzustellen, dass die Telemetrienachrichten Ihren IoT Hub erreichen. Wählen Sie Ihren IoT Hub in der Dropdownliste **Ressourcen** aus, wählen Sie **Telemetry messages sent** (Gesendete Telemetrienachrichten) als Metrik aus, und legen Sie den Zeitraum auf **Letzte Stunde** fest. Im Diagramm wird die Aggregatanzahl von Nachrichten angezeigt, die vom simulierten Gerät gesendet werden:
 
-![Anzeigen von IoT Hub-Metriken](media/tutorial-connectivity/metrics-portal.png)
+:::image type="content" source="media/tutorial-connectivity/metrics-portal.png" alt-text="Screenshot: Metriken im linken Bereich" border="true":::
 
 Es dauert einige Minuten, bis die Metriken nach dem Starten des simulierten Geräts zur Verfügung stehen.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/05/2021
 ms.author: jeedes
-ms.openlocfilehash: 62e963cdf3c0cdb60648e032a0520fdd71a90874
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: d33c54bae01d6406e32a0a2c97ef7695df48da9a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129856279"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131058786"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-perception-united-states-non-ultipro"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD mit Perception United States (Non-UltiPro)
 

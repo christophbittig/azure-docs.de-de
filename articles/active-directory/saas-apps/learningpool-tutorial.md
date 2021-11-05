@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/06/2021
 ms.author: jeedes
-ms.openlocfilehash: 8829da481abbddc61c1cc90da0984742775059ae
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: eb7d97b5e796ae9433b695c15ef809f7674f53f3
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111556512"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131032125"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learning-pool-lms"></a>Tutorial: Azure Active Directory-Integration mit Learning Pool LMS
 
@@ -115,7 +115,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     g. Klicken Sie auf **Speichern**.
 
-7. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“ bei der **App-Verbundmetadaten-URL** und geben Sie diese URL zurück an das Learning Pool LMS Delivery.
+7. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche zum Kopieren bei der **App-Verbundmetadaten-URL**, und geben Sie diese URL an das Learning Pool Delivery-Team weiter.
 
     ![Downloadlink für das Zertifikat](common/copy-metadataurl.png)
 

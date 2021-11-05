@@ -11,12 +11,12 @@ ms.date: 06/16/2021
 ms.author: ryanwi
 ms.reviewer: stsoneff
 ms.custom: azureday1, devx-track-azurecli, devx-track-azurepowershell, subject-rbac-steps
-ms.openlocfilehash: b6d04053d4b63552c2329a675c2557e6f1cd8fee
-ms.sourcegitcommit: 8b7d16fefcf3d024a72119b233733cb3e962d6d9
+ms.openlocfilehash: be170a07340fdea84b9b4af03bd329fcdf91483d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/16/2021
-ms.locfileid: "114290018"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131065549"
 ---
 # <a name="tutorial-access-azure-storage-from-a-web-app"></a>Tutorial: Zugreifen auf Azure-Speicher über eine Web-App
 
@@ -301,4 +301,10 @@ In diesem Tutorial haben Sie gelernt, wie die folgenden Aufgaben ausgeführt wer
 > * Zugreifen auf Speicher über eine Web-App mit verwalteten Identitäten
 
 > [!div class="nextstepaction"]
+> [Tutorial: Isolieren der Back-End-Kommunikation mit virtueller Netzwerkintegration](tutorial-networking-isolate-vnet.md)
+
+> [!div class="nextstepaction"]
 > [App Service: Zugreifen auf Microsoft Graph im Namen des Benutzers](scenario-secure-app-access-microsoft-graph-as-user.md)
+
+> [!div class="nextstepaction"]
+> [Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure App Service](app-service-web-tutorial-custom-domain.md)

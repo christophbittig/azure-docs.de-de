@@ -6,12 +6,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/11/2020
-ms.openlocfilehash: 5dc75b3f28198bd3686df48b1d46cb5a8e192a23
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: af32a91344d2201899757d806019f70eccd736ad
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130132510"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131072273"
 ---
 # <a name="bring-your-own-storage-to-save-workbooks"></a>Verwenden des eigenen Speichers zum Speichern von Arbeitsmappen
 
@@ -27,11 +27,11 @@ Es kommt vor, dass Sie über eine Abfrage oder eine Geschäftslogik verfügen, d
 3. Wählen Sie die Schaltfläche **Speichern** aus, um die Arbeitsmappe zu speichern.
 4. Aktivieren Sie das Kontrollkästchen `Save content to an Azure Storage Account`, um den Inhalt in einem Azure-Speicherkonto zu speichern.
 
-    ![Screenshot des Dialogfelds zum Speichern](./media/workbooks-bring-your-own-storage/saved-dialog-default.png)
+    ![Screenshot: Dialogfeld **Speichern**](./media/workbooks-bring-your-own-storage/saved-dialog-default.png)
 
 5. Wählen Sie das gewünschte Speicherkonto und den gewünschten Container aus. Die Liste „Speicherkonto“ stammt aus dem oben ausgewählten Abonnement.
 
-    ![Screenshot eines Dialogfelds zum Speichern mit einer Speicheroption](./media/workbooks-bring-your-own-storage/save-dialog-with-storage.png)
+    ![Screenshot eines Dialogfelds **Speichern** mit einer Speicheroption](./media/workbooks-bring-your-own-storage/save-dialog-with-storage.png)
 
 6. Wählen Sie dann **Ändern** aus, um eine zuvor erstellte verwaltete Identität auszuwählen.
 

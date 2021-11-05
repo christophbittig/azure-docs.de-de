@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 8/26/2021
 ms.custom: mvc, devx-track-azurecli
 ms.author: pgibson
-ms.openlocfilehash: c06e6fe787070adbe0817e295380b2a2ef2775b5
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: ee313000b5b2fd21e7f629c57f45bbe0d3557835
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123440732"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131066822"
 ---
 # <a name="deploy-an-application-managed-by-open-service-mesh-osm-with-nginx-ingress"></a>Bereitstellen einer von Open Service Mesh (OSM) verwalteten Anwendung mit NGINX-Eingang
 
@@ -36,11 +36,8 @@ Die in dieser Artikel beschriebenen Schritte gehen davon aus, dass Sie einen AKS
 Die folgenden Ressourcen müssen installiert sein:
 
 - Azure CLI, Version 2.20.0 oder höher
-- Erweiterung `aks-preview`, Version 0.5.5 oder höher
-- OSM-Version v0.8.0 oder höher
+- OSM, Version 0.11.1 oder höher
 - JSON-Prozessor „jq“ ab Version 1.6
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ### <a name="view-and-verify-the-current-osm-cluster-configuration"></a>Anzeigen und Überprüfen der aktuellen OSM-Cluster Konfiguration
 
@@ -177,7 +174,7 @@ service/bookwarehouse created
 deployment.apps/bookwarehouse created
 ```
 
-## <a name="update-the-bookbuyer-service"></a>Aktualisieren des Buchkäufer-Dienstanbieter
+## <a name="update-the-bookbuyer-service"></a>Aktualisieren des Bookbuyer-Diensts
 
 Aktualisieren Sie den `bookbuyer`-Dienst mit dem folgenden Dienstmanifest auf die richtige Konfiguration des Eingangsports:
 

@@ -12,12 +12,12 @@ ms.date: 07/19/2021
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 8c8c6fd5662637161f98f062234686ec77b92c76
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 704488af57fcc2228b949ff97710901ec12efed0
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123105665"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131050221"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft Identity Platform und der Flow für die implizite Genehmigung
 
@@ -197,7 +197,7 @@ Wenn Sie diesen Fehler in der IFrame-Anforderung erhalten, muss sich der Benutze
 
 ## <a name="refreshing-tokens"></a>Aktualisieren von Token
 
-Die implizite Genehmigung stellt keine Aktualisierungstoken bereit. `id_token`s und `access_token`s laufen nach kurzer Zeit ab. Ihre App muss daher diese Token in regelmäßigen Abständen aktualisieren. Zum Aktualisieren beider Tokentypen können Sie die oben erwähnte verborgene IFrame-Anforderung unter Verwendung des Parameters `prompt=none` ausführen, um das Verhalten der Microsoft Identity Platform zu steuern. Wenn Sie ein neues `id_token` erhalten möchten, verwenden Sie unbedingt `id_token` in `response_type` und `scope=openid` sowie einen `nonce`-Parameter.
+Die implizite Gewährung stellt keine Aktualisierungstoken bereit. `id_token`s und `access_token`s laufen nach kurzer Zeit ab. Ihre App muss daher diese Token in regelmäßigen Abständen aktualisieren. Zum Aktualisieren beider Tokentypen können Sie die oben erwähnte verborgene IFrame-Anforderung unter Verwendung des Parameters `prompt=none` ausführen, um das Verhalten der Microsoft Identity Platform zu steuern. Wenn Sie ein neues `id_token` erhalten möchten, verwenden Sie unbedingt `id_token` in `response_type` und `scope=openid` sowie einen `nonce`-Parameter.
 
 In Browsern, für die keine Drittanbietercookies unterstützt werden, führt dies zu einer Fehlermeldung mit dem Hinweis, dass kein Benutzer angemeldet ist. 
 

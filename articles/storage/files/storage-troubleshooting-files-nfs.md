@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: jeffpatt
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: e2cdcf3b42fbb71751644efbaa394c51d2f861fc
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 730b7344a213922bd87d5efa3a659d352ff8624f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123258328"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131019139"
 ---
 # <a name="troubleshoot-azure-nfs-file-share-problems"></a>Behandeln von Problemen mit Azure NFS-Dateifreigaben
 
@@ -40,7 +40,7 @@ Auch wenn idmapping ordnungsgemäß deaktiviert wurde, werden die Einstellungen 
 - Heben Sie die Einbindung der Freigabe auf.
 - Deaktivieren Sie id-mapping mit # echo Y > /sys/module/nfs/parameters/nfs4_disable_idmapping
 - Binden Sie die Freigabe wieder ein
-- Wenn rsync ausgeführt wird, führen Sie rsync mit dem Argument „–numeric-ids“ in einem Verzeichnis aus, das keine ungültigen Verzeichnis-/Dateinamen aufweist.
+- Wenn Sie rsync ausführen, führen Sie rsync mit dem Argument „–numeric-ids“ aus einem Verzeichnis aus, das keinen ungültigen Verzeichnis-/Dateinamen hat.
 
 ## <a name="unable-to-create-an-nfs-share"></a>Es kann keine NFS-Freigabe erstellt werden.
 
@@ -122,7 +122,7 @@ Die doppelte Verschlüsselung wird für NFS-Freigaben noch nicht unterstützt. A
 
 Deaktivieren Sie auf dem Blatt „Konfiguration“ des Speicherkontos die Option „Sichere Übertragung erforderlich“.
 
-:::image type="content" source="media/storage-files-how-to-mount-nfs-shares/storage-account-disable-secure-transfer.png" alt-text="Screenshot mit dem Blatt „Konfiguration“ des Speicherkontos und der deaktivierten Option „Sichere Übertragung erforderlich“":::
+:::image type="content" source="media/storage-files-how-to-mount-nfs-shares/disable-secure-transfer.png" alt-text="Screenshot mit dem Blatt „Konfiguration“ des Speicherkontos und der deaktivierten Option „Sichere Übertragung erforderlich“":::
 
 ### <a name="cause-3-nfs-common-package-is-not-installed"></a>Ursache 3: Das Paket „nfs-common“ ist nicht installiert.
 Installieren Sie das Paket, bevor Sie den mount-Befehl ausführen, indem Sie den unten angegebenen distributionsspezifischen Befehl ausführen.
@@ -157,29 +157,6 @@ Das NFS-Protokoll kommuniziert über Port 2049 mit dem Server. Stellen Sie sich
 
 Überprüfen Sie, ob Port 2049 auf dem Client geöffnet ist, indem Sie den folgenden Befehl ausführen: `telnet <storageaccountnamehere>.file.core.windows.net 2049`. Wenn der Port nicht geöffnet ist, öffnen Sie ihn.
 
-## <a name="ls-list-files-command-shows-incorrectinconsistent-results"></a>ls-Befehl (list files, Dateien auflisten) zeigt falsche/inkonsistente Ergebnisse
-
-### <a name="cause-inconsistency-between-cached-values-and-server-file-metadata-values-when-the-file-handle-is-open"></a>Ursache: Abweichungen zwischen den zwischengespeicherten Werten und den Metadatenwerten der Serverdatei bei geöffnetem Dateihandle
-Manchmal zeigt der Befehl „list files“, „df“ oder „find“ wie erwartet eine Größe ungleich null an, während der direkt folgende Befehl „list files“ stattdessen als Größe 0 oder einen sehr alten Zeitstempel ausgibt. Dies ist ein bekanntes Problem aufgrund einer inkonsistenten Zwischenspeicherung von Dateimetadaten bei geöffneter Datei. Führen Sie eine der folgenden Problemumgehungen aus, um dieses Problem zu beheben:
-
-#### <a name="workaround-1-for-fetching-file-size-use-wc--c-instead-of-ls--l"></a>Problemumgehung 1: Verwenden Sie zum Fetchen der Dateigröße „wc -c“ anstelle von „ls -l“.
-Bei Verwendung von „wc -c“ wird immer der aktuelle Wert vom Server abgerufen, sodass keine Inkonsistenzen auftreten.
-
-#### <a name="workaround-2-use-noac-mount-flag"></a>Problemumgehung 2: Verwenden Sie das Einbindungsflag „noac“.
-Binden Sie das Dateisystem mit dem Befehl „mount“ und dem Flag „noac“ erneut ein. Damit werden immer alle Metadatenwerte vom Server abgerufen. Bei allen Metadatenvorgängen kann ein geringfügiger Leistungsmehraufwand auftreten, wenn diese Problemumgehung verwendet wird.
-
-
-## <a name="unable-to-mount-an-nfs-share-that-is-restored-back-from-soft-deleted-state"></a>Eine NFS-Freigabe, die aus dem Zustand „Vorläufig gelöscht“ wiederhergestellt wird, kann nicht wiederhergestellt werden
-Während der Vorschauversion tritt ein bekanntes Problem auf, bei dem NFS-Freigaben vorläufig gelöscht werden, obwohl sie von der Plattform nicht vollständig unterstützt werden. Diese Freigaben werden nach Ablauf routinemäßig gelöscht. Sie können sie auch frühzeitig löschen, indem Sie den Flow „Freigabe wiederherstellen + vorläufig löschen deaktivieren + Freigabe löschen“ aktivieren. Wenn Sie jedoch versuchen, die Freigaben wiederherzustellen und zu verwenden, erhalten Sie „Zugriff verweigert“ oder „Berechtigung verweigert“ bzw. „NFS-E/A-Fehler“ auf dem Client.
-
-## <a name="ls-la-throws-io-error"></a>ls –la löst einen E/A-Fehler aus
-
-### <a name="cause-a-known-bug-that-has-been-fixed-in-newer-linux-kernel"></a>Ursache: Ein bekannter Fehler, der im neueren Linux-Kernel behoben wurde
-In älteren Kernels bewirkt NFS4ERR_NOT_SAME, dass der Client die Aufzählung beendet (anstatt für das Verzeichnis neu zu starten). Neuere Kernel werden sofort entsperrt. Leider gibt es für Distributionen wie SUSE keinen Patch für SUSE Enterprise Linux Server 12 oder 15, der den Kernel auf den neuesten Stand bringen würde.  Der Patch ist ab Kernel 5.12 verfügbar.  Der Patch für die clientseitige Korrektur wird hier beschrieben: [PATCH v3 15/17 NFS: Handle NFS4ERR_NOT_SAME and NFSERR_BADCOOKIE from readdir calls](https://www.spinics.net/lists/linux-nfs/msg80096.html).
-
-#### <a name="workaround-use-latest-kernel-workaround-while-the-fix-reaches-the-region-hosting-your-storage-account"></a>Problemumgehung: Verwenden Sie die neueste Kernelumgehung, bis die Fehlerbehebung die Region erreicht, in der Ihr Speicherkonto gehostet wird.
-Der Patch ist ab Kernel 5.12 verfügbar.
-
 ## <a name="ls-hangs-for-large-directory-enumeration-on-some-kernels"></a>ls hängt bei umfangreichen Verzeichnisenumerationen in einigen Kernels
 
 ### <a name="cause-a-bug-was-introduced-in-linux-kernel-v511-and-was-fixed-in-v5125"></a>Ursache: Im Linux-Kernel v5.11 wurde ein Fehler eingeführt, der in v5.12.5 behoben wurde.  
@@ -188,12 +165,6 @@ Der Fehler wurde im Linux-Kernel v5.11 eingeführt und in v5.12.5 behoben. Alle 
 
 #### <a name="workaround-downgrading-or-upgrading-the-kernel"></a>Problemumgehung: Führen Sie ein Downgrade oder Upgrade des Kernels aus.
 Durch das Downgrade oder Upgraden des Kernels auf eine beliebige Version außerhalb der betroffenen Kernelversionen wird das Problem behoben.
-
-## <a name="df-and-find-command-shows-inconsistent-results-on-clients-other-than-where-the-writes-happen"></a>df- und find-Befehl zeigt inkonsistente Ergebnisse auf Clients an, auf denen keine Schreibvorgänge stattfinden
-Dies ist ein bekanntes Problem. Microsoft arbeitet aktiv an einer Lösung.
-
-## <a name="application-fails-with-error-underlying-file-changed-by-an-external-force-when-using-exclusive-open"></a>Die Anwendung schlägt mit der Fehlermeldung fehl, dass die zugrundeliegende Datei von außen geändert wurde, wenn exklusives OPEN verwendet wird 
-Dies ist ein bekanntes Problem. Microsoft arbeitet aktiv an einer Lösung.
 
 ## <a name="need-help-contact-support"></a>Sie brauchen Hilfe? Wenden Sie sich an den Support.
 [Wenden Sie sich an den Support](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), falls Sie weitere Hilfe benötigen, um das Problem schnell beheben zu lassen.

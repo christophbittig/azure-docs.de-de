@@ -4,24 +4,24 @@ description: Es wird beschrieben, wie Sie eine Linux-VM erstellen und für die A
 ms.service: virtual-machines
 ms.topic: how-to
 ms.workload: infrastructure
-ms.date: 05/11/2021
+ms.date: 10/21/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7679c10a5b40edb163974c246fe7fb219ec8effa
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 5ad78f50685aeb7a5b2133173ae726980012878b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129274632"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131074466"
 ---
 # <a name="deprecated-login-to-a-linux-virtual-machine-in-azure-with-azure-active-directory-using-device-code-flow-authentication"></a>Veraltet: Anmeldung bei einem virtuellen Linux-Computer in Azure mit Azure Active Directory mithilfe der Gerätecode-Flussauthentifizierung
 
 > [!CAUTION]
-> **Das in diesem Artikel beschriebene Public Preview-Feature ist ab dem 15. August 2021 veraltet.**
+> **Das in diesem Artikel beschriebene Public Preview-Feature ist seit dem 15. August 15, 2021 veraltet.**
 > 
 > Dieses Feature wird durch die Möglichkeit ersetzt, Azure AD und SSH über zertifikatbasierte Authentifizierung zu verwenden. Weitere Informationen finden Sie im Artikel [Vorschau: Anmelden bei einem virtuellen Linux-Computer in Azure mit Azure Active Directory mithilfe der zertifikatbasierten SSH-Authentifizierung](../../active-directory/devices/howto-vm-sign-in-azure-ad-linux.md). Informationen zum Migrieren von der alten Version zu dieser Version finden Sie unter [Migration von der vorherigen Vorschauversion](../../active-directory/devices/howto-vm-sign-in-azure-ad-linux.md#migration-from-previous-preview).
 
@@ -211,7 +211,7 @@ Benutzer, die Zugriffsrechte über geschachtelte Gruppen oder Rollenzuweisungen 
 
 ## <a name="preview-feedback"></a>Feedback zur Vorschauversion
 
-Geben Sie Feedback zu diesem Vorschaufeature oder melden Sie Probleme bei der Verwendung davon im [Azure AD-Feedbackforum](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
+Geben Sie Feedback zu diesem Vorschaufeature oder melden Sie Probleme bei der Verwendung davon im [Azure AD-Feedbackforum](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

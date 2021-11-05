@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 10/13/2021
+ms.date: 10/25/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ad562e46b88772cd38e3e3d39920e7fdcf29d23
-ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
+ms.openlocfilehash: e33f2c7393a9c7b91dcd6fd9188bd9a89f190215
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130137321"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131050710"
 ---
 # <a name="conditional-access-session"></a>Bedingter Zugriff: Sitzung
 
@@ -26,7 +26,7 @@ In einer Richtlinie für bedingten Zugriff kann ein Administrator Sitzungssteuer
 
 ## <a name="application-enforced-restrictions"></a>Durch die Anwendung erzwungene Einschränkungen
 
-Organisationen können dieses Steuerelement verwenden, um zu erzwingen, dass Azure AD die Geräteinformationen an die ausgewählten Cloud-Apps übergibt. Mithilfe der Geräteinformationen können Cloud-Apps herausfinden, ob eine Verbindung von einem konformen oder einem in die Domäne eingebundenen Gerät initiiert wird, und die Sitzungserfahrung ändern. Diese Steuermöglichkeit unterstützt nur SharePoint Online und Exchange Online als ausgewählte Cloud-Apps. Wenn diese Option ausgewählt ist, verwendet die Cloud-App die Geräteinformationen, um Benutzern je nach Gerätestatus eine eingeschränkte (für nicht verwaltete Geräte) oder eine vollständige Funktionalität (für verwaltete und konforme Geräte) zu bieten.
+Organisationen können dieses Steuerelement verwenden, um zu erzwingen, dass Azure AD die Geräteinformationen an die ausgewählten Cloud-Apps übergibt. Mithilfe der Geräteinformationen können Cloud-Apps herausfinden, ob eine Verbindung von einem konformen oder einem in die Domäne eingebundenen Gerät gestartet wird, und die Sitzungserfahrung ändern. Diese Steuermöglichkeit unterstützt nur SharePoint Online und Exchange Online als ausgewählte Cloud-Apps. Wenn diese Option ausgewählt ist, verwendet die Cloud-App die Geräteinformationen, um Benutzern je nach Gerätestatus eine eingeschränkte (für nicht verwaltete Geräte) oder eine vollständige Funktionalität (für verwaltete und konforme Geräte) zu bieten.
 
 Weitere Informationen zum Verwenden und Konfigurieren von durch die App erzwungenen Einschränkungen finden Sie in den folgenden Artikeln:
 
@@ -71,6 +71,23 @@ Weitere Informationen finden Sie im Artikel [Konfigurieren der Verwaltung von Au
 Bei einer persistenten Browsersitzung können Benutzer angemeldet bleiben, nachdem sie ihr Browserfenster geschlossen und erneut geöffnet haben.
 
 Weitere Informationen finden Sie im Artikel [Konfigurieren der Verwaltung von Authentifizierungssitzungen mit bedingtem Zugriff](howto-conditional-access-session-lifetime.md#persistence-of-browsing-sessions).
+
+## <a name="customize-continuous-access-evaluation"></a>Fortlaufende Zugriffsevaluierung anpassen
+
+[Die fortlaufende Zugriffsevaluierung](concept-continuous-access-evaluation.md) wird automatisch als Teil der Richtlinien für bedingten Zugriff einer Organisation aktiviert. Für Organisationen, die die fortlaufende Zugriffsauswertung deaktivieren oder strikt erzwingen möchten, ist diese Konfiguration jetzt eine Option innerhalb der Sitzungssteuerung im bedingten Zugriff. Richtlinien für die Fortlaufende Zugriffsauswertung können auf alle Benutzer oder bestimmte Benutzer und Gruppen aufgeteilt werden. Administratoren können beim Erstellen einer neuen Richtlinie oder beim Bearbeiten einer vorhandenen Richtlinie für bedingten Zugriff die folgende Auswahl treffen.
+
+- **Deaktivieren** wird erreicht, wenn **Alle Cloud-Apps** ausgewählt sind, keine Bedingungen ausgewählt sind und **Deaktivieren** unter **Sitzung** > **Auswertung des kontinuierlichen Zugriffs anpassen** in einer Richtlinie für bedingten Zugriff ausgewählt ist.
+- **Strenge Erzwingung** bedeutet, dass alle kritischen Ereignisse und Richtlinien in Echtzeit erzwungen werden. Alle CAE-fähigen Dienste erhalten immer CAE-Tokens, unabhängig davon, was der Kunde oder Benutzer beantragt oder tut. Es gibt zwei Szenarien, in denen CAE nicht ins Spiel kommt, wenn der strenge Erzwingungsmodus aktiviert ist:
+   - Nicht CAE-fähige Clients sollten kein reguläres Token für CAE-fähige Dienste erhalten.
+   - Ablehnen, wenn die vom Ressourcenanbieter verwendete IP-Adresse nicht im zulässigen Bereich liegt.
+
+:::image type="content" source="media/concept-conditional-access-session/continuous-access-evaluation-session-controls.png" alt-text="CAE-Einstellungen in einer neuen Richtlinie für bedingten Zugriff in der Azure-Portal." lightbox="media/concept-conditional-access-session/continuous-access-evaluation-session-controls.png":::
+
+## <a name="disable-resilience-defaults-preview"></a>Standardwerte für Resilienz deaktivieren (Vorschau)
+
+Während eines Ausfalls erweitert Azure AD den Zugriff auf vorhandene Sitzungen und erzwingt Richtlinien für bedingten Zugriff. Wenn eine Richtlinie nicht ausgewertet werden kann, wird der Zugriff durch Resilienzeinstellungen bestimmt. 
+
+Wenn Resilienz-Standardwerte deaktiviert sind, wird der Zugriff verweigert, sobald vorhandene Sitzungen ablaufen. Weitere Informationen finden Sie im Artikel [Bedingter Zugriff: Standardwerte für Resilienz](resilience-defaults.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

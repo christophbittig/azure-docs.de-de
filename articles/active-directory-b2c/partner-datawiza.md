@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 7/07/2021
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 87cce83adcd24c9933d1d0668e4b9ce5a8fb6c2e
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: c33694c624deafa8cdc7ef37ac1dc39d98b5a4f9
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130036073"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131044739"
 ---
 # <a name="tutorial-configure-azure-ad-b2c-with-datawiza-to-provide-secure-hybrid-access"></a>Tutorial: Konfigurieren von Azure AD B2C mit Datawiza zum Bereitstellen eines sicheren Hybridzugriffs
 
@@ -67,7 +67,7 @@ Wenden Sie sich an [Datawiza](https://login.datawiza.com/df3f213b-68db-4966-bee4
 
 2. [Konfigurieren Sie einen Benutzerflow für Registrierung und Anmeldung](https://docs.datawiza.com/idp/azureb2c.html#configure-a-user-flow) im Azure-Verwaltungsportal.
 
-  >[!Note]
+  >[!NOTE]
   >Sie benötigen den Mandantennamen, den Namen des Benutzerflows, die Client-ID und den geheimen Clientschlüssel später, wenn Sie DAB in DCMC einrichten.
 
 ## <a name="create-an-application-on-dcmc"></a>Erstellen einer Anwendung in der DCMC
@@ -82,7 +82,7 @@ Wenden Sie sich an [Datawiza](https://login.datawiza.com/df3f213b-68db-4966-bee4
 
 1. Sie können entweder Docker oder Kubernetes für die DAB-Ausführung verwenden. Das Docker-Image ist erforderlich, damit Benutzer eine headerbasierte Beispielanwendung erstellen können. Weitere Informationen finden Sie in den Anleitungen zum [Konfigurieren der DAB- und SSO-Integration](https://docs.datawiza.com/step-by-step/step3.html) und zum [Bereitstellen von DAB mit Kubernetes](https://docs.datawiza.com/tutorial/web-app-AKS.html) für Kubernetes-spezifische Anweisungen. Es wird ein Docker-Beispielimage `docker-compose.yml file` bereitgestellt, das Sie herunterladen und nutzen können. Melden Sie sich bei der Containerregistrierung an, um die Images für DAB und die headerbasierte Anwendung herunterzuladen. Gehen Sie wie [hier](https://docs.datawiza.com/step-by-step/step3.html#important-step) beschrieben vor.
  
-   ```YML
+   ```yaml
    version: '3'
 
     services:

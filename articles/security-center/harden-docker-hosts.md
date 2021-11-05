@@ -1,5 +1,5 @@
 ---
-title: Verwenden von Azure Security Center zum Härten Ihrer Docker-Hosts und Schützen der Container
+title: Verwenden von Microsoft Defender für Cloud zum Härten Ihrer Docker-Hosts und Schützen der Container
 description: Schützen Ihrer Docker-Hosts und Sicherstellen, dass sie mit dem CIS-Docker-Benchmark konform sind
 author: memildin
 ms.author: memildin
@@ -7,18 +7,21 @@ ms.date: 07/18/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 2e421815fd962a62760c4d16106daa7f85fb1599
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: f6a507f16918bfbba1e31f52889af9b1c16c839e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339334"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131009679"
 ---
 # <a name="harden-your-docker-hosts"></a>Härten Ihrer Docker-Hosts
 
-Azure Security Center identifiziert nicht verwaltete Container, die auf IaaS-Linux-VMs oder anderen Linux-Computern gehostet werden, auf denen Docker-Container ausgeführt werden. Security Center bewertet kontinuierlich die Konfigurationen dieser Container. Anschließend werden sie mit dem [Docker-Benchmark von Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/docker/) verglichen.
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-Security Center umfasst den gesamten Regelsatz des CIS-Docker-Benchmark und benachrichtigt Sie, sobald Ihre Container eine der Steuerungen nicht erfüllen. Werden Fehlkonfigurationen gefunden, generiert Security Center Sicherheitsempfehlungen. Verwenden Sie die Seite **Empfehlungen** in Security Center, um Empfehlungen anzuzeigen und Probleme zu beheben.
+Microsoft Defender für Cloud identifiziert nicht verwaltete Container, die auf IaaS-Linux-VMs oder anderen Linux-Computern mit ausgeführten Docker-Containern gehostet werden. Defender für Cloud führt eine ständige Bewertung der Konfigurationen dieser Container durch. Anschließend werden sie mit dem [Docker-Benchmark von Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/docker/) verglichen.
+
+Defender für Cloud umfasst den gesamten Regelsatz des Docker-Benchmarks des CSI und benachrichtigt Sie, falls Ihre Container eine der Kontrollen nicht bestehen. Falls Fehlkonfigurationen gefunden werden, werden von Defender für Cloud Sicherheitsempfehlungen generiert. Verwenden Sie die Seite **Empfehlungen** in Defender für Cloud, um Empfehlungen anzuzeigen und Probleme zu beheben.
 
 Wenn Sicherheitsrisiken gefunden wurden, werden diese in einer einzigen Empfehlung gruppiert.
 
@@ -30,14 +33,14 @@ Wenn Sicherheitsrisiken gefunden wurden, werden diese in einer einzigen Empfehlu
 |Aspekt|Details|
 |----|:----|
 |Status des Release:|Allgemeine Verfügbarkeit (General Availability, GA)|
-|Preise:|Erfordert [Azure Defender für Server](defender-for-servers-introduction.md)|
+|Preise:|[Microsoft Defender für Server](defender-for-servers-introduction.md) erforderlich|
 |Erforderliche Rollen und Berechtigungen:|**Leser** in dem Arbeitsbereich, mit dem der Host verbunden wird|
 |Clouds:|:::image type="icon" source="./media/icons/yes-icon.png"::: Kommerzielle Clouds<br>:::image type="icon" source="./media/icons/yes-icon.png"::: National/Sovereign (Azure Government, Azure China 21Vianet)|
 |||
 
 ## <a name="identify-and-remediate-security-vulnerabilities-in-your-docker-configuration"></a>Identifizieren und Beheben von Sicherheitsrisiken in der Docker-Konfiguration
 
-1. Öffnen Sie über das Menü von Security Center die Seite **Empfehlungen**.
+1. Öffnen Sie im Menü von Defender für Cloud die Seite **Empfehlungen**.
 
 1. Filtern Sie nach der Empfehlung **Sicherheitsrisiken in Containersicherheitskonfigurationen sollten behoben werden**, und wählen Sie diese Empfehlung aus.
 
@@ -66,6 +69,6 @@ Wenn Sicherheitsrisiken gefunden wurden, werden diese in einer einzigen Empfehlu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Die Docker-Härtung ist nur ein Aspekt der Containersicherheitsfeatures von Security Center. 
+Die Docker-Härtung ist nur ein Aspekt der Containersicherheitsfeatures von Defender für Cloud. 
 
-Erfahren Sie mehr über [Containersicherheit in Security Center](container-security.md).
+Weitere Informationen finden Sie unter [Containersicherheit in Defender für Cloud](container-security.md).

@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Recovery Services-Tresore z
 ms.topic: conceptual
 ms.date: 08/06/2021
 ms.custom: references_regions
-ms.openlocfilehash: cbb1280b1ed78d82c312169f99a0d46f312fbd9d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: dde592064c5cd4f42bd8baf94854fa2f95f4945e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122345795"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131078273"
 ---
 # <a name="create-and-configure-a-recovery-services-vault"></a>Erstellen und Konfigurieren von Recovery Services-Tresoren
 
@@ -22,7 +22,7 @@ Azure Backup übernimmt automatisch die Speicherung für den Tresor. Sie müssen
 > [!NOTE]
 > Bevor Sicherungen im Tresor konfiguriert werden, muss der **Speicherreplikationstyp** (lokal redundant/georedundant) für einen Recovery Services-Tresor geändert werden. Sobald Sie eine Sicherung konfigurieren, wird die Änderungsoption deaktiviert.
 >
->- Wenn Sie noch keine Sicherung konfiguriert haben, [führen Sie die folgenden Schritte aus](#set-storage-redundancy), um die Einstellungen zu überprüfen und zu ändern.
+>- Wenn Sie noch keine Sicherungskopie (Backup) konfiguriert haben, führen Sie die folgenden Schritte aus, um die Einstellungen zu überprüfen und zu ändern.
 >- Wenn Sie die Sicherung bereits konfiguriert haben und von georedundantem Speicher (GRS) zu lokal redundantem Speicher (LRS) wechseln müssen, [überprüfen Sie diese Problemumgehungen](#how-to-change-from-grs-to-lrs-after-configuring-backup).
 
 1. Wählen Sie im Bereich **Recovery Services-Tresore** den neuen Tresor aus. Wählen Sie im Abschnitt **Einstellungen** die Option **Eigenschaften** aus.
@@ -59,7 +59,7 @@ Beim Wiederherstellen einer VM können Sie die VM oder den zugehörigen Datentr�
 
 Wählen Sie zur Auswahl dieses Features im Bereich **Sicherungskonfiguration** die Option **Bereichsübergreifende Wiederherstellung aktivieren** aus.
 
-Da dieser Prozess auf Speicherebene erfolgt, hat er [Auswirkungen auf den Preis](https://azure.microsoft.com/pricing/details/backup/).
+Da dieser Prozess auf Speicherebene erfolgt, bringt er [Kosten](https://azure.microsoft.com/pricing/details/backup/) mit sich.
 
 >[!NOTE]
 >Vorbereitungen

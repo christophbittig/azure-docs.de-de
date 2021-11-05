@@ -7,13 +7,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 04/07/2021
 ms.author: memildin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 5159779352ffdda4c06e03936a136d375b3583f1
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 6a22cc027e8abd631cb0c5b1a40e722d37225900
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096079"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131475386"
 ---
 # <a name="security-alerts-and-incidents-in-microsoft-defender-for-cloud"></a>Sicherheitswarnungen und -incidents in Microsoft Defender für Cloud
 
@@ -119,7 +118,7 @@ Informationen zum Verwalten Ihrer Sicherheitsincidents finden Sie unter [Verwalt
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel wurden die unterschiedlichen Arten von Sicherheitswarnungen in Defender für Cloud beschrieben. Weitere Informationen finden Sie unter:
+In diesem Artikel wurden die unterschiedlichen Arten von Sicherheitswarnungen in Defender für Cloud beschrieben. Weitere Informationen finden Sie unter
 
 - [Sicherheitswarnungen im Azure-Aktivitätsprotokoll](https://go.microsoft.com/fwlink/?linkid=2114113): Sicherheitswarnungen und -incidents sind nicht nur im Azure-Portal oder programmgesteuert verfügbar, sondern werden auch im Azure-Aktivitätsprotokoll als Ereignisse überwacht.
 - [Referenztabelle der Defender für Cloud-Warnungen](alerts-reference.md)

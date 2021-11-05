@@ -1,24 +1,27 @@
 ---
-title: Workflowautomatisierung in Azure Security Center | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie Workflows in Azure Security Center erstellen und automatisieren.
+title: Workflowautomatisierung in Microsoft Defender für Cloud | Microsoft-Dokumentation
+description: Es wird beschrieben, wie Sie Workflows in Microsoft Defender für Cloud erstellen und automatisieren.
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
 ms.date: 05/03/2021
 ms.author: memildin
-ms.openlocfilehash: ecedf0854d7d670cf88a8dcb729a01adaa88b646
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 4cf12721cc691f4719cc4442b4092b44f6d8e1b7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340237"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131004566"
 ---
-# <a name="automate-responses-to-security-center-triggers"></a>Automatisieren der Reaktionen auf Security Center-Trigger
+# <a name="automate-responses-to-microsoft-defender-for-cloud-triggers"></a>Automatisieren der Reaktionen auf Trigger von Microsoft Defender für Cloud
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 Jedes Sicherheitsprogramm umfasst mehrere Workflows für die Reaktion auf Vorfälle. Diese Prozesse können das Benachrichtigen relevanter Stakeholder, das Starten eines Change Management-Prozesses und das Anwenden spezifischer Korrekturschritte umfassen. Sicherheitsexperten empfehlen, möglichst viele Schritte dieser Verfahren zu automatisieren. Durch Automatisierung wird der Aufwand reduziert. Außerdem können Sie so die Sicherheit erhöhen, indem Sie sicherstellen, dass die Prozessschritte schnell, konsistent und gemäß Ihren vordefinierten Anforderungen ausgeführt werden.
 
-In diesem Artikel wird die Funktion zur Workflowautomatisierung von Azure Security Center beschrieben. Dieses Feature kann Logic Apps bei Sicherheitswarnungen, Empfehlungen und Änderungen der Einhaltung gesetzlicher Bestimmungen auslösen. Beispielsweise können Sie von Security Center E-Mail-Nachrichten an einen bestimmten Benutzer senden, wenn eine Warnung auftritt. Außerdem erfahren Sie, wie Sie Logik-Apps mithilfe von [Azure Logic Apps](../logic-apps/logic-apps-overview.md) erstellen.
+In diesem Artikel wird das Feature für die Workflowautomatisierung von Microsoft Defender für Cloud beschrieben. Dieses Feature kann Logic Apps bei Sicherheitswarnungen, Empfehlungen und Änderungen der Einhaltung gesetzlicher Bestimmungen auslösen. Beispielsweise können Sie festlegen, dass von Defender für Cloud eine E-Mail an einen bestimmten Benutzer gesendet wird, wenn eine Warnung auftritt. Außerdem erfahren Sie, wie Sie Logik-Apps mithilfe von [Azure Logic Apps](../logic-apps/logic-apps-overview.md) erstellen.
 
 
 ## <a name="availability"></a>Verfügbarkeit
@@ -35,7 +38,7 @@ In diesem Artikel wird die Funktion zur Workflowautomatisierung von Azure Securi
 
 ## <a name="create-a-logic-app-and-define-when-it-should-automatically-run"></a>Erstellen einer Logik-App und Definieren des Zeitpunkts ihrer automatischen Ausführung 
 
-1. Wählen Sie auf der Seitenleiste in Security Center **Workflowautomatisierung** aus.
+1. Wählen Sie in der Randleiste von Defender für Cloud die Option **Workflowautomatisierung** aus.
 
     :::image type="content" source="./media/workflow-automation/list-of-workflow-automations.png" alt-text="Liste der Workflowautomatisierungen.":::
 
@@ -54,26 +57,30 @@ In diesem Artikel wird die Funktion zur Workflowautomatisierung von Azure Securi
 
         :::image type="content" source="./media/workflow-automation/add-workflow.png" alt-text="Bereich „Workflowautomatisierung hinzufügen“.":::
 
-1. Klicken Sie im Abschnitt „Aktionen“ auf **Erstellen Sie eine neue**, um mit der Erstellung der Logik-App zu beginnen.
+1. Wählen Sie im Abschnitt „Aktionen“ die Option **Logic Apps-Seite besuchen** aus, um mit dem Prozess für die Logik-App-Erstellung zu beginnen.
 
     Sie werden zu Azure Logic Apps umgeleitet.
 
+1. Wählen Sie **Hinzufügen**. 
+
     [![Erstellen einer neuen Logik-App.](media/workflow-automation/logic-apps-create-new.png)](media/workflow-automation/logic-apps-create-new.png#lightbox)
 
-1. Geben Sie einen Namen, eine Ressourcengruppe und einen Speicherort ein, und klicken Sie auf **Erstellen**.
+1. Geben Sie einen Namen, eine Ressourcengruppe und einen Standort ein, und wählen **Überprüfen und erstellen** > **Erstellen** aus.
+
+    Die Meldung **Bereitstellung wird durchgeführt** wird angezeigt. Warten Sie, bis die Benachrichtigung „Bereitstellung abgeschlossen“ angezeigt wird, und wählen Sie darin **Zu Ressource wechseln** aus.
 
 1. Sie können in Ihrer neuen Logik-App zwischen integrierten, vordefinierten Vorlagen der Kategorie „Sicherheit“ auswählen. Sie können aber auch einen benutzerdefinierten Ereignisflow definieren, der beim Auslösen dieses Prozesses gestartet wird.
 
     > [!TIP]
-    > Manchmal sind in einer Logikanwendung Parameter im Connector als Teil einer Zeichenfolge und nicht in einem eigenen Feld enthalten. Ein Beispiel für das Extrahieren von Parametern finden Sie in Schritt 14 von [Working with logic app parameters while building Azure Security Center workflow automations](https://techcommunity.microsoft.com/t5/azure-security-center/working-with-logic-app-parameters-while-building-azure-security/ba-p/1342121) (Arbeiten mit Parametern der Logik-App beim Erstellen von Azure Security Center-Workflowautomatisierungen).
+    > Manchmal sind in einer Logikanwendung Parameter im Connector als Teil einer Zeichenfolge und nicht in einem eigenen Feld enthalten. Ein Beispiel für das Extrahieren von Parametern finden Sie in Schritt 14 unter [Arbeiten mit Parametern der Logik-App beim Erstellen von Microsoft Defender für Cloud-Workflowautomatisierungen](https://techcommunity.microsoft.com/t5/azure-security-center/working-with-logic-app-parameters-while-building-azure-security/ba-p/1342121).
 
-    Der Logik-App-Designer unterstützt diese Security Center-Trigger:
+    Der Logik-App-Designer unterstützt die folgenden Defender für Cloud-Trigger:
 
-    - **Bei Erstellen oder Auslösen einer Azure Security Center-Empfehlung**: Wenn Ihre Logik-App auf einer Empfehlung basiert, die veraltet ist oder ersetzt wird, funktioniert die Automatisierung nicht mehr, und Sie müssen den Trigger aktualisieren. Informationen zum Nachverfolgen von Änderungen an Empfehlungen finden Sie unter [Versionshinweise für Azure Security Center](release-notes.md).
+    - **Bei Erstellung oder Auslösung einer Microsoft Defender für Cloud-Empfehlung**: Wenn Ihre Logik-App auf einer Empfehlung basiert, die veraltet ist oder ersetzt wird, funktioniert die Automatisierung nicht mehr, und Sie müssen den Trigger aktualisieren. Informationen zum Nachverfolgen der Änderungen von Empfehlungen finden Sie in den [Versionshinweisen](release-notes.md).
 
-    - **Bei Erstellen oder Auslösen einer Azure Security Center-Warnung**: Sie können den Trigger so anpassen, dass er sich nur auf Warnungen mit den für sie interessanten Schweregraden bezieht.
+    - **Bei Erstellung oder Auslösung einer Defender für Cloud-Warnung**: Sie können den Trigger so anpassen, dass er nur für Warnungen mit den für sie interessanten Schweregraden gilt.
     
-    - **Wenn eine Bewertung der Einhaltung gesetzlicher Vorschriften durch das Security Center erstellt oder ausgelöst wird** – Auslösen von Automatisierungen basierend auf Aktualisierungen von Bewertungen der Einhaltung gesetzlicher Vorschriften.
+    - **Bei Erstellung oder Auslösung einer Bewertung der Einhaltung gesetzlicher Vorschriften durch Defender für Cloud**: Sie können festlegen, dass Automatisierungen basierend auf den Aktualisierungen von Bewertungen der Einhaltung gesetzlicher Vorschriften ausgelöst werden.
 
     > [!NOTE]
     > Wenn Sie den älteren Trigger „Beim Auslösen einer Antwort auf eine Azure Security Center-Warnung“ verwenden, wird Ihre Logik-App nicht von der Funktion „Workflowautomatisierung“ gestartet. Verwenden Sie stattdessen einen der oben genannten Trigger. 
@@ -84,7 +91,7 @@ In diesem Artikel wird die Funktion zur Workflowautomatisierung von Azure Securi
 
     ![Aktualisieren.](media/workflow-automation/refresh-the-list-of-logic-apps.png)
 
-1. Wählen Sie die Logik-App aus, und speichern Sie die Automatisierung. Beachten Sie, dass in der Logik-App-Dropdownliste nur Logik-Apps mit unterstützenden Security Center-Connectors angezeigt werden.
+1. Wählen Sie die Logik-App aus, und speichern Sie die Automatisierung. Beachten Sie, dass in der Dropdownliste nur Logik-Apps angezeigt werden, die über die oben beschriebenen unterstützenden Defender für Cloud-Connectors verfügen.
 
 
 ## <a name="manually-trigger-a-logic-app"></a>Manuelles Auslösen einer Logik-App
@@ -110,9 +117,9 @@ So implementieren Sie diese Richtlinien
 
     |Zielsetzung  |Richtlinie  |Richtlinien-ID  |
     |---------|---------|---------|
-    |Workflowautomatisierung für Sicherheitswarnungen              |[Bereitstellen der Workflowautomatisierung für Azure Security Center-Warnungen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2ff1525828-9a90-4fcf-be48-268cdd02361e)|f1525828-9a90-4fcf-be48-268cdd02361e|
-    |Workflowautomatisierung für Sicherheitsempfehlungen     |[Bereitstellen der Workflowautomatisierung für Azure Security Center-Empfehlungen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f73d6ab6c-2475-4850-afd6-43795f3492ef)|73d6ab6c-2475-4850-afd6-43795f3492ef|
-    |Workflowautomatisierung für Änderungen bei der Einhaltung gesetzlicher Bestimmungen|[Workflowautomatisierung für die Einhaltung gesetzlicher Bestimmungen in Azure Security Center bereitstellen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f509122b9-ddd9-47ba-a5f1-d0dac20be63c)|509122b9-ddd9-47ba-a5f1-d0dac20be63c|
+    |Workflowautomatisierung für Sicherheitswarnungen              |[Bereitstellen der Workflowautomatisierung für Microsoft Defender für Cloud-Warnungen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2ff1525828-9a90-4fcf-be48-268cdd02361e)|f1525828-9a90-4fcf-be48-268cdd02361e|
+    |Workflowautomatisierung für Sicherheitsempfehlungen     |[Bereitstellen der Workflowautomatisierung für Microsoft Defender für Cloud-Empfehlungen](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f73d6ab6c-2475-4850-afd6-43795f3492ef)|73d6ab6c-2475-4850-afd6-43795f3492ef|
+    |Workflowautomatisierung für Änderungen bei der Einhaltung gesetzlicher Bestimmungen|[Bereitstellen der Workflowautomatisierung für die Einhaltung gesetzlicher Bestimmungen in Microsoft Defender für Cloud](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2fproviders%2fMicrosoft.Authorization%2fpolicyDefinitions%2f509122b9-ddd9-47ba-a5f1-d0dac20be63c)|509122b9-ddd9-47ba-a5f1-d0dac20be63c|
     ||||
 
     > [!TIP]
@@ -130,7 +137,7 @@ So implementieren Sie diese Richtlinien
         > [!TIP]
         > Jeder Parameter verfügt über eine QuickInfo, in der die verfügbaren Optionen erläutert werden.
         >
-        > Die Registerkarte „Parameter“ in Azure Policy (1) bietet ähnliche Konfigurationsoptionen wie die Seite „Workflowautomatisierung“ in Security Center (2).
+        > Die Registerkarte „Parameter“ in Azure Policy (1) ermöglicht den Zugriff auf ähnliche Konfigurationsoptionen wie auf der Seite „Workflowautomatisierung“ von Defender für Cloud (2).
         > :::image type="content" source="./media/workflow-automation/azure-policy-next-to-workflow-automation.png" alt-text="Vergleich der Parameter auf der Seite „Workflowautomatisierung“ mit Azure Policy." lightbox="./media/workflow-automation/azure-policy-next-to-workflow-automation.png":::
 
     1. Wenn Sie diese Zuweisung auf vorhandene Abonnements anwenden möchten, können Sie die Registerkarte **Wartung** öffnen und die Option zum Erstellen eines Wartungstasks auswählen.
@@ -140,7 +147,7 @@ So implementieren Sie diese Richtlinien
 
 ## <a name="data-types-schemas"></a>Datentypenschemas
 
-Um die unformatierten Ereignisschemas der Sicherheitswarnungen oder Empfehlungsereignisse anzuzeigen, die an die Logik-App-Instanz übermittelt werden, sehen Sie sich die [Schemas für Workflowautomatisierungs-Datentypen](https://aka.ms/ASCAutomationSchemas) an. Dies kann nützlich sein, wenn Sie nicht die oben genannten integrierten Logik-App-Connectors von Security Center verwenden, sondern den generischen HTTP-Connector der Logik-App. Sie können die Analyse bei Bedarf mit dem JSON-Ereignisschema manuell durchführen.
+Um die unformatierten Ereignisschemas der Sicherheitswarnungen oder Empfehlungsereignisse anzuzeigen, die an die Logik-App-Instanz übermittelt werden, sehen Sie sich die [Schemas für Workflowautomatisierungs-Datentypen](https://aka.ms/ASCAutomationSchemas) an. Dies kann nützlich sein, wenn Sie nicht die oben genannten integrierten Logik-App-Connectors von Defender für Cloud, sondern den generischen HTTP-Connector der Logik-App verwenden. Sie können die Analyse hierfür bei Bedarf mit dem JSON-Ereignisschema manuell durchführen.
 
 
 ## <a name="faq---workflow-automation"></a>Häufig gestellte Fragen: Workflowautomatisierung
@@ -155,13 +162,13 @@ Weitere Informationen zu [Business Continuity & Disaster Recovery für Azure Log
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie gelernt, wie Sie Logik-Apps erstellen, deren Ausführung in Security Center automatisieren und sie manuell ausführen.
+In diesem Artikel haben Sie erfahren, wie Sie Logik-Apps erstellen, deren Ausführung in Defender für Cloud automatisieren und sie manuell ausführen.
 
 Verwandte Informationen finden Sie hier: 
 
 - [Das Microsoft Learn-Modul über die Verwendung der Workflowautomatisierung zur Automatisierung einer Sicherheitsreaktion](/learn/modules/resolve-threats-with-azure-security-center/)
-- [Sicherheitsempfehlungen in Azure Security Center](security-center-recommendations.md)
-- [Sicherheitswarnungen in Azure Security Center](security-center-alerts-overview.md)
+- [Sicherheitsempfehlungen in Microsoft Defender für Cloud](review-security-recommendations.md)
+- [Sicherheitswarnungen in Microsoft Defender für Cloud](alerts-overview.md)
 - [Informationen zu Azure Logic Apps](../logic-apps/logic-apps-overview.md)
 - [Connectors für Azure Logic Apps](../connectors/apis-list.md)
 - [Workflowautomatisierungs-Datentypenschemas](https://aka.ms/ASCAutomationSchemas)

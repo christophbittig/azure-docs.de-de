@@ -8,16 +8,16 @@ manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/04/2021
+ms.date: 10/25/2021
 ms.custom: project-no-code
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: a39b34f0b783997a90e634157354543aa3eab79a
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: c0713bd45f344ce6dc994cde61cb275f9fdef3a4
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130042976"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131036331"
 ---
 # <a name="manage-your-azure-active-directory-b2c-tenant"></a>Verwalten Ihres Azure Active Directory B2C-Mandanten
 
@@ -39,19 +39,21 @@ Führen Sie diese Schritte aus, um ein neues Administratorenkonto zu erstellen:
 1. Wählen Sie unter **Azure-Dienste** die Option **Azure AD B2C** aus. Oder verwenden Sie das Suchfeld, um nach **Azure AD B2C** zu suchen und diese Option auszuwählen.
 1. Wählen Sie unter **Verwalten** die Option **Benutzer** aus.
 1. Wählen Sie **Neuer Benutzer** aus.
+1. Wählen Sie **Benutzer erstellen** aus (Sie können viele Benutzer gleichzeitig erstellen, indem Sie **Ich möchte Benutzer per Massenvorgang erstellen** auswählen).
 1. Geben Sie auf der Seite **Benutzer** Informationen für diesen Benutzer ein:
 
-   - **Name**: Erforderlich. Der Vor- und Nachname des neuen Benutzers. Beispielsweise *Mary Parker*.
-   - **Benutzername**. Erforderlich. Der Benutzername des neuen Benutzers. Beispiel: `mary@contoso.com`.
-     Der Domänenteil des Benutzernamens muss entweder der anfängliche Standarddomänenname oder *\<yourdomainname>onmicrosoft.com* sein.
-   - **Gruppen**. Optional können Sie den Benutzer einer oder mehreren vorhandenen Gruppen hinzufügen. Sie können den Benutzer auch später zu Gruppen hinzufügen. 
+  
+   - **Benutzername**. *Erforderlich*. Der Benutzername des neuen Benutzers. Beispiel: `mary@contoso.com`.
+     Der Domänenteil des Benutzernamens muss entweder der anfängliche Standarddomänenname , *\<tenant name>.onmicrosoft.com*, oder Ihr [benutzerdefinierter Domänennamen](custom-domain.md), z. B. `contoso.com` sein.
+   - **Name**: *Erforderlich*. Der Vor- und Nachname des neuen Benutzers. Beispielsweise *Mary Parker*.
+   - **Gruppen**. *Optional:* Sie können den Benutzer einer oder mehreren vorhandenen Gruppen hinzufügen. Sie können den Benutzer auch später zu Gruppen hinzufügen. 
    - **Verzeichnisrolle**: Wenn Sie Azure AD-Administratorberechtigungen für den Benutzer benötigen, können Sie diese einer Azure AD-Rolle hinzufügen. Sie können dem Benutzer die Rolle „Globaler Administrator“ oder mindestens eine der eingeschränkten Administratorrollen in Azure AD zuweisen. Weitere Informationen zum Zuweisen von Rollen finden Sie unter [Verwenden von Rollen zum Steuern des Ressourcenzugriffs](roles-resource-access-control.md).
    - **Angaben zum Beruf**: Hier können Sie weitere Informationen zum Benutzer hinzufügen oder dies später erledigen. 
 
 1. Kopieren Sie das automatisch generierte Kennwort aus dem Feld **Kennwort**. Sie müssen dieses Kennwort dem Benutzer für die erste Anmeldung bereitstellen.
 1. Klicken Sie auf **Erstellen**.
 
-Der Benutzer wird erstellt und Ihrem Azure AD B2C-Mandanten hinzugefügt. Es ist besser, mindestens ein natives Arbeitskonto für Ihren Azure AD B2C-Mandanten zu verwenden, dem die Rolle „Globaler Administrator“ zugewiesen ist. Dieses Konto kann als Break-Glass-Konto betrachtet werden.
+Der Benutzer wird erstellt und Ihrem Azure AD B2C-Mandanten hinzugefügt. Es ist besser, mindestens ein natives Arbeitskonto für Ihren Azure AD B2C-Mandanten zu verwenden, dem die Rolle „Globaler Administrator“ zugewiesen ist. Dieses Konto kann als *Break-Glass-Konto* betrachtet werden.
 
 ## <a name="invite-an-administrator-guest-account"></a>Einladen eines Administrators (Gastkonto)
 
@@ -67,10 +69,10 @@ Um einen Benutzer einzuladen, befolgen Sie diese Schritte:
 1. Wählen Sie **Neues Gastkonto** aus.
 1. Geben Sie auf der Seite **Benutzer** Informationen für diesen Benutzer ein:
 
-   - **Name**: Erforderlich. Der Vor- und Nachname des neuen Benutzers. Beispielsweise *Mary Parker*.
-   - **E-Mail-Adresse**. Erforderlich. Die E-Mail-Adresse des Benutzers, den Sie einladen möchten. Beispiel: `mary@contoso.com`.   
+   - **Name**: *Erforderlich*. Der Vor- und Nachname des neuen Benutzers. Beispielsweise *Mary Parker*.
+   - **E-Mail-Adresse**. *Erforderlich*. Die E-Mail-Adresse des Benutzers, den Sie einladen möchten, bei der es sich um ein Microsoft-Konto handeln muss. Beispiel: `mary@contoso.com`.   
    - **Persönliche Nachricht**: Sie fügen eine persönliche Nachricht hinzu, die in der Einladungs-E-Mail enthalten ist.
-   - **Gruppen**. Optional können Sie den Benutzer einer oder mehreren vorhandenen Gruppen hinzufügen. Sie können den Benutzer auch später zu Gruppen hinzufügen.
+   - **Gruppen**. *Optional:* Sie können den Benutzer einer oder mehreren vorhandenen Gruppen hinzufügen. Sie können den Benutzer auch später zu Gruppen hinzufügen.
    - **Verzeichnisrolle**: Wenn Sie Azure AD-Administratorberechtigungen für den Benutzer benötigen, können Sie diese einer Azure AD-Rolle hinzufügen. Sie können dem Benutzer die Rolle „Globaler Administrator“ oder mindestens eine der eingeschränkten Administratorrollen in Azure AD zuweisen. Weitere Informationen zum Zuweisen von Rollen finden Sie unter [Verwenden von Rollen zum Steuern des Ressourcenzugriffs](roles-resource-access-control.md).
    - **Angaben zum Beruf**: Hier können Sie weitere Informationen zum Benutzer hinzufügen oder dies später erledigen.
 

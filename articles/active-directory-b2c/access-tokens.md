@@ -11,12 +11,12 @@ ms.date: 05/26/2021
 ms.custom: project-no-code
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: de89199f3400b3d6e434916835411531f288747f
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 2d6aeddaaf2efc039150d7060f76f46045bd0efe
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130041118"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131008311"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>Anfordern eines Zugriffstokens in Azure Active Directory B2C
 
@@ -66,7 +66,7 @@ Wenn der Parameter **response_type** in einer `/authorize`-Anforderung `token` e
 
 Zur Anforderung eines Zugriffstokens benötigen Sie einen Autorisierungscode. Nachfolgend ist ein Beispiel für eine Anforderung an den Endpunkt `/authorize` für einen Autorisierungscode aufgeführt. Benutzerdefinierte Domänen werden zur Verwendung mit Zugriffstoken nicht unterstützt. Verwenden Sie die Domäne „Mandantenname.onmicrosoft.com“ in der Anforderungs-URL.
 
-Ersetzen Sie im folgenden Beispiel diese Werte:
+Ersetzen Sie im folgenden Beispiel diese Werte in der Abfragezeichenfolge:
 
 - `<tenant-name>`: Name des Azure AD B2C-Mandanten.
 - `<policy-name>`: Name der benutzerdefinierten Richtlinie oder des Benutzerflows.
@@ -90,7 +90,7 @@ Die Antwort mit dem Autorisierungscode sollte dem folgenden Beispiel ähneln:
 https://jwt.ms/?code=eyJraWQiOiJjcGltY29yZV8wOTI1MjAxNSIsInZlciI6IjEuMC...
 ```
 
-Nach dem Empfang des Autorisierungscodes können Sie über diesen Code ein Zugriffstoken anfordern:
+Nach dem Empfang des Autorisierungscodes können Sie über diesen Code ein Zugriffstoken anfordern. Beachten Sie, dass sich die Parameter im Text der HTTP POST-Anforderung befinden:
 
 ```http
 POST <tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/token HTTP/1.1
@@ -104,7 +104,7 @@ grant_type=authorization_code
 &redirect_uri=https://jwt.ms
 &client_secret=2hMG2-_:y12n10vwH...
 ```
-
+ 
 Die Antwort sollte der folgenden ähneln:
 
 ```json

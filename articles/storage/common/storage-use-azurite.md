@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: how-to
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e097a9860c4e3cde968bc9b7c7bddb7eebd99349
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 567b54aae5ac2ac1defeedb390ee9d5c04f5f6bb
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128624859"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131013515"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development"></a>Verwenden des Azurite-Emulators für die lokale Azure Storage-Entwicklung
 
@@ -26,6 +26,11 @@ Es gibt verschiedene Möglichkeiten, Azurite auf Ihrem lokalen System zu install
 ## <a name="install-and-run-azurite"></a>Installieren und Ausführen von Azurite
 
 ### <a name="visual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+> [!TIP]
+> Azurite ist in [Visual Studio 2022-Preview](https://visualstudio.microsoft.com/vs/preview/) automatisch verfügbar. Wenn Sie also die Vorschauversion installieren, müssen Sie Azurite nicht manuell installieren. 
+
+Bei den Anweisungen in diesem Abschnitt wird davon ausgegangen, dass Sie Visual Studio 2022-Preview noch nicht installiert haben.
 
 Erstellen Sie in Visual Studio ein Azure-Projekt, z. B. ein **Azure Functions**-Projekt.
 

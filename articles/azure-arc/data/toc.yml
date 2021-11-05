@@ -85,6 +85,10 @@ items:
             href: retrieve-the-username-password-for-data-controller.md
           - name: Aktualisieren der Anmeldeinformationen für einen Dienstprinzipal
             href: update-service-principal-credentials.md
+      - name: Aktualisieren
+        items:
+          - name: Indirekter Datencontroller – CLI
+            href: upgrade-data-controller-indirect-cli.md
       - name: Problembehandlung
         items:
           - name: Handbuch
@@ -193,6 +197,10 @@ items:
                 href: reserved-capacity-overview.md
               - name: Löschen
                 href: delete-managed-instance.md
+          - name: Aktualisieren
+            items:
+              - name: Upgrade über die CLI
+                href: upgrade-sql-managed-instance-cli.md
           - name: Migrieren
             items:
               - name: "Migrieren zu SQL\_Managed Instance (Azure Arc)"

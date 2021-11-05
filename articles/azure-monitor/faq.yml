@@ -8,12 +8,12 @@ metadata:
   author: bwren
   ms.author: bwren
   ms.date: 10/08/2020
-  ms.openlocfilehash: 439248f37075f7cbc91af0e15dcdf6b029e95b92
-  ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+  ms.openlocfilehash: 45e86a925c83f32ab4f704ea7ffc4f83ff3089ae
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/15/2021
-  ms.locfileid: "130066697"
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131059925"
 title: Häufig gestellte Fragen zu Azure Monitor
 summary: >
   Dieser Microsoft-Artikel enthält eine Liste häufig gestellter Fragen zu Azure Monitor. Wenn Sie weiteren Fragen haben, können Sie diese im [Diskussionsforum](/answers/questions/topics/single/24223.html) stellen. Wenn eine Frage häufiger gestellt wird, fügen wir sie diesem Artikel hinzu, damit sie schnell und einfach gefunden werden kann.
@@ -74,6 +74,15 @@ sections:
       Wie greife ich auf die von Azure Monitor gesammelten Daten zu?
     answer: >
       Erkenntnisse und Lösungen bieten eine benutzerdefinierte Oberfläche zum Arbeiten mit Daten, die in Azure Monitor gespeichert wurden. Sie können direkt mit Protokolldaten arbeiten, indem Sie eine in der Kusto-Abfragesprache (KQL) geschriebene Protokollabfrage verwenden. Im Azure-Portal können Sie Abfragen schreiben und ausführen sowie Daten interaktiv mit Log Analytics analysieren. Analysieren Sie Metriken im Azure-Portal mit dem Metrik-Explorer. Weitere Informationen finden Sie unter [Analysieren von Protokolldaten in Azure Monitor](logs/log-query-overview.md) und [Erste Schritte mit dem Azure-Metrik-Explorer](essentials/metrics-getting-started.md).
+  - question: >
+      Welche doppelten Datensätze werden in Azure Monitor-Protokollen angezeigt?
+    answer: >
+      Sie können gelegentlich doppelte Datensätze in Azure Monitor-Protokollen bemerken. Dies erfolgt in der Regel aus einer der folgenden beiden Bedingungen.
+
+
+      - Komponenten in der Pipeline verfügen über Wiederholungsversuche, um eine zuverlässige Bereitstellung am Ziel sicherzustellen. Gelegentlich kann dies zu Duplikaten für einen sehr kleinen Prozentsatz von Telemetrieelementen führen.
+
+      - Wenn die doppelten Datensätze von einem virtuellen Computer stammen, ist möglicherweise sowohl der Log Analytics-Agent als auch Azure Monitor Agent installiert. Wenn Sie den Log Analytics-Agent weiterhin installieren müssen, konfigurieren Sie den Log Analytics-Arbeitsbereich so, dass keine Daten mehr gesammelt werden, die auch von der Datensammlungsregel erfasst werden, die von Azure Monitor Agent verwendet wird.
 - name: Lösungen und Erkenntnisse
   questions:
   - question: >

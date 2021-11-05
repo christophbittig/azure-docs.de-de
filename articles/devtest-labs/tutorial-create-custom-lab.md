@@ -3,12 +3,12 @@ title: Tutorial zum Erstellen eines Labs
 description: In diesem Tutorial erstellen Sie über das Azure-Portal ein Lab in Azure DevTest Labs. Ein Lab-Administrator richtet ein Lab ein, erstellt virtuelle Computer im Lab und konfiguriert Richtlinien.
 ms.topic: tutorial
 ms.date: 06/26/2020
-ms.openlocfilehash: 52640469ff02fd167b0add4210ddec11db05af97
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 239f92aa172e4239403869e488ec7c9348623009
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128655598"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131073120"
 ---
 # <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>Tutorial: Erstellen eines Labs mithilfe von Azure DevTest Labs
 In diesem Tutorial erstellen Sie ein Lab über das Azure-Portal. Ein Lab-Administrator richtet ein Lab in einer Organisation ein, erstellt VMs im Lab und konfiguriert Richtlinien. Lab-Benutzer (z.B. Entwickler und Tester) fordern virtuelle Computer im Lab an, stellen eine Verbindung mit ihnen her und nutzen sie. 
@@ -73,18 +73,24 @@ Die folgenden Schritte beschreiben, wie Sie mithilfe des Azure-Portals ein Lab i
 
 ## <a name="add-a-user-to-the-lab-user-role"></a>Hinzufügen eines Benutzers zur Rolle „Lab-Benutzer“
 
-1. Wählen Sie im linken Menü die Option **Konfiguration und Richtlinien** aus. 
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als [Benutzerzugangsadministrator](../role-based-access-control/built-in-roles.md#user-access-administrator) oder [Besitzer](../role-based-access-control/built-in-roles.md#owner) an.
 
-    ![Konfiguration und Richtlinien](./media/tutorial-create-custom-lab/configuration-and-policies-menu.png)
-1. Wählen Sie im Menü **Zugriffssteuerung (IAM)** und dann auf der Symbolleiste **+ Rollenzuweisung hinzufügen** aus. 
+1. Öffnen Sie die Ressourcengruppe, die das von Ihnen erstellte Labor enthält
 
-    ![Rollenzuweisung hinzufügen (Schaltfläche)](./media/tutorial-create-custom-lab/add-role-assignment-button.png)
-1. Gehen Sie auf der Seite **Berechtigungen hinzufügen** folgendermaßen vor:
-    1. Wählen Sie für **Rolle** die Option **DevTest Labs-Benutzer**. 
-    2. Wählen Sie den **Benutzer** aus, den Sie hinzufügen möchten. 
-    3. Wählen Sie **Speichern** aus.
+1. Wählen Sie im Navigationsmenü **Zugriffssteuerung (IAM)** aus.
 
-        ![Benutzer hinzufügen](./media/tutorial-create-custom-lab/add-user.png)
+1. Wählen Sie **Hinzufügen** > **Rollenzuweisung hinzufügen**.
+
+    ![Seite „Zugriffssteuerung (IAM)“ mit geöffnetem Menü „Rollenzuweisung hinzufügen“](../../includes/role-based-access-control/media/add-role-assignment-menu-generic.png)
+
+1. Wählen Sie auf der Registerkarte **Rolle** die Rolle **DevelopmentTest Labs User** (EntwicklungTestlabor Benutzer).
+
+    ![Seite „Rollenzuweisung hinzufügen“ mit ausgewählter Registerkarte „Rolle“](../../includes/role-based-access-control/media/add-role-assignment-role-generic.png)
+
+1. Wählen Sie auf der Registerkarte **Mitglieder** den Benutzer, dem Sie die gewünschte Rolle zuweisen möchten.
+
+1. Wählen Sie auf der Registerkarte **Überprüfen und zuweisen** die Option **Überprüfen und zuweisen** aus, um die Rolle zuzuweisen.
+
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 Das nächste Tutorial zeigt, wie ein Lab-Benutzer eine VM im Lab abrufen und sich mit ihr verbinden kann. Wenn Sie dieses Tutorial nicht durchführen möchten und die im Rahmen dieses Tutorials erstellten Ressourcen bereinigen möchten, gehen Sie folgendermaßen vor: 

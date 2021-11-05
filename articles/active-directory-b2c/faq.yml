@@ -8,15 +8,15 @@ metadata:
   ms.service: active-directory
   ms.workload: identity
   ms.topic: conceptual
-  ms.date: 09/16/2021
+  ms.date: 10/26/2021
   ms.author: kengaderdus
   ms.subservice: B2C
-  ms.openlocfilehash: 1a40ae657ae3aa93e12c6c3a828783b84d8c9b2d
-  ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+  ms.openlocfilehash: a60d5e15f08ad845e2c0eaa8644b6ee2521458b3
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/15/2021
-  ms.locfileid: "130041365"
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131007313"
 title: 'Azure AD B2C: Häufig gestellte Fragen (FAQ)'
 summary: Auf dieser Seite werden häufig gestellte Fragen zu Azure Active Directory B2C (Azure AD B2C) beantwortet. Die Seite wird bei Bedarf aktualisiert.
 sections:
@@ -163,6 +163,15 @@ sections:
       Kann ich Azure AD B2C als Teil der Enterprise Mobility Suite erwerben?
     answer: >
       Nein. Azure AD B2C ist ein Azure-Dienst mit nutzungsbasierter Bezahlung und nicht Teil der Enterprise Mobility Suite.
+  - question: >
+      Welche Azure AD B2C-Features sind in Microsoft Azure Government nicht verfügbar?
+    answer: >
+      Die folgenden AD B2C-Features sind in Microsoft Azure Government derzeit nicht verfügbar:
+
+
+      * API-Connectors
+
+      * Bedingter Zugriff
   - question: >
       Wie melde ich Probleme mit Azure AD B2C?
     answer: Siehe [Senden von Supportanfragen für Azure Active Directory B2C](support-options.md).

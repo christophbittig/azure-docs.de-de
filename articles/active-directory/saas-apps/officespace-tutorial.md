@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/14/2021
 ms.author: jeedes
-ms.openlocfilehash: 236de12c84e185969eb25c7488bb184f50e84098
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: eb6e00b3cf57b9a41660a964e176aaac40efa1e8
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124808572"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131032129"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-officespace-software"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory-Integration mit OfficeSpace Software
 
@@ -162,7 +162,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 In diesem Abschnitt wird in OfficeSpace Software ein Benutzer namens B. Simon erstellt. OfficeSpace Software unterstützt die Just-in-Time-Benutzerbereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in OfficeSpace Software vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
 
 > [!NOTE]
-> Wenden Sie sich an das [Supportteam von OfficeSpace Software](mailto:support@officespacesoftware.com), wenn Sie einen Benutzer manuell erstellen müssen.
+> Wenden Sie sich an das [Supportteam von OfficeSpace Software](mailto:support@officespacesoftware.com), wenn Sie Benutzer*innen manuell erstellen müssen.
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 

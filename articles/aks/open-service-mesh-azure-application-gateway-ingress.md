@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 8/26/2021
 ms.custom: mvc, devx-track-azurecli
 ms.author: pgibson
-ms.openlocfilehash: 765eb53098f757d29072d736d50086f31bb11dc3
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 70eaa03f3a10e01e9e3f17963f355117890a510d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128649753"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131066803"
 ---
 # <a name="deploy-an-application-managed-by-open-service-mesh-osm-using-azure-application-gateway-ingress-aks-add-on"></a>Bereitstellen einer von Open Service Mesh (OSM) verwalteten Anwendung mit dem AKS-Add-On für den Azure Application Gateway-Eingang
 
@@ -34,11 +34,8 @@ Die in dieser Anleitung beschriebenen Schritte setzen voraus, dass Sie zuvor das
 Die folgenden Ressourcen müssen installiert sein:
 
 - Azure CLI, Version 2.20.0 oder höher
-- Erweiterung `aks-preview`, Version 0.5.5 oder höher
-- OSM-Version v0.8.0 oder höher
+- OSM, Version 0.11.1 oder höher
 - JSON-Prozessor „jq“ ab Version 1.6
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ## <a name="view-and-verify-the-current-osm-cluster-configuration"></a>Anzeigen und Überprüfen der aktuellen OSM-Cluster Konfiguration
 

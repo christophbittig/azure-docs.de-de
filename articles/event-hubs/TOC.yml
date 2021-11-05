@@ -13,7 +13,7 @@
       items:
         - name: Azure-Portal
           href: event-hubs-create.md
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: event-hubs-quickstart-cli.md
         - name: Azure PowerShell
           href: event-hubs-quickstart-powershell.md
@@ -48,6 +48,12 @@
           href: event-hubs-capture-python.md
     - name: Streamen an Event Hubs für Apache Kafka
       href: event-hubs-quickstart-kafka-enabled-event-hubs.md
+    - name: Verwenden der Schemaregistrierung
+      items:
+        - name: Erstellen einer Schemaregistrierung
+          href: create-schema-registry.md
+        - name: Überprüfen von Ereignissen mithilfe eines Schemas (.NET und AMQP)
+          href: schema-registry-dotnet-send-receive-quickstart.md
     - name: Erstellen eines dedizierten Clusters
       href: event-hubs-dedicated-cluster-create-portal.md
 - name: Tutorials
@@ -157,8 +163,6 @@
           href: configure-processing-units-premium-namespace.md
         - name: Hinzufügen benutzerdefinierter Daten zu Ereignissen
           href: add-custom-data-event.md
-        - name: Erstellen einer Schemaregistrierung
-          href: create-schema-registry.md
         - name: Dynamisches Hinzufügen von Partitionen
           href: dynamically-add-partitions.md
         - name: Verwenden von Blob Storage als Prüfpunktspeicher in Azure Stack Hub

@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 09/13/2021
+ms.date: 10/21/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: jlu
 ms.custom: has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 18cc593e3aa1f50dcdaeaea32d7ac584f8bd4a24
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 71a1e5f8ee6bb3641fce243233a654d15363e254
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129354064"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131012622"
 ---
 # <a name="continuous-access-evaluation"></a>Fortlaufende Zugriffsevaluierung
 
@@ -156,6 +156,23 @@ Organisationen haben Optionen, wenn es um die Aktivierung von CAE geht.
 1. Kunden, die **Vorschau aktivieren** wählen, profitieren sofort von der neuen Funktionalität und müssen bei allgemeiner Verfügbarkeit keine Änderungen vornehmen. 
 1. Kunden, die **Vorschau deaktivieren** wählen, haben Zeit, CAE nach ihrem eigenen Zeitplan zu übernehmen. Diese Einstellung wird bei der allgemeinen Verfügbarkeit als **Deaktiviert** beibehalten.
 
+#### <a name="migration"></a>Migration
+
+Die CAE-Einstellung wurde in den Bereich „Bedingter Zugriff“ verschoben. Kunden, die bisher CAE-Einstellungen unter „Sicherheit“ konfiguriert haben, müssen diese Einstellungen in eine Richtlinie für bedingten Zugriff migrieren. Führen Sie die folgenden Schritte aus, um die Einstellungen zu einer Richtlinie für bedingten Zugriff zu migrieren.
+
+:::image type="content" source="media/concept-continuous-access-evaluation/migrate-continuous-access-evaluation.png" alt-text="Portalansicht mit der Option zum Migrieren der fortlaufenden Zugriffsauswertung zu einer Richtlinie für bedingten Zugriff." lightbox="media/concept-continuous-access-evaluation/migrate-continuous-access-evaluation.png":::
+
+1. Melden Sie sich als Administrator für bedingten Zugriff, Sicherheitsadministrator oder globaler Administrator beim **Azure-Portal** an. 
+1.  Navigieren Sie zu **Azure Active Directory** > **Sicherheit** > **Fortlaufende Zugriffsevaluierung (Vorschauversion)** . 
+1.  Es wird die Option **Migrieren** der Richtlinie angezeigt. Diese Aktion ist die einzige Aktion, auf die Sie zu diesem Zeitpunkt zugreifen können.
+1. Navigieren Sie zu **Bedingter Zugriff**. Sie sehen dort eine neue Richtlinie namens **ZS-Richtlinie aus CAE-Einstellungen**, die mit Ihren Einstellungen konfiguriert ist. Administratoren können diese Richtlinie anpassen oder eine eigene Richtlinie erstellen, um sie zu ersetzen.
+
+Weitere Informationen zur fortlaufenden Zugriffsauswertung als Sitzungssteuerung finden Sie im Abschnitt [Anpassen der fortlaufenden Zugriffsauswertung](concept-conditional-access-session.md#customize-continuous-access-evaluation).
+
+### <a name="strict-enforcement"></a>Strict Enforcement (Strenge Erzwingung) 
+
+Bei der aktuellsten CAE-Einstellung unter „Bedingter Zugriff“ ist Strict Enforcement (Strenge Erzwingung) ein neues Feature, das eine erhöhte Sicherheit auf der Grundlage von zwei Faktoren ermöglicht: IP-Adressvariation und Clientfunktion. Diese Funktion kann beim Anpassen von CAE-Optionen für eine bestimmte Richtlinie aktiviert werden. Durch Aktivieren von Strict Enforcement (Strenge Erzwingung) widerruft CAE den Zugriff, wenn Instanzen von [IP-Adressvariationen](#ip-address-variation) oder fehlende [CAE-Clientfunktionen](#client-capabilities)erkannt werden.
+
 ## <a name="limitations"></a>Einschränkungen
 
 ### <a name="group-membership-and-policy-update-effective-time"></a>Zeitraum bis zur Wirksamkeit einer Aktualisierung von Gruppenmitgliedschaft und Richtlinien
@@ -229,4 +246,5 @@ Die Anmeldehäufigkeit wird mit oder ohne CAE berücksichtigt.
 
 - [Verwenden von CAE-fähigen APIs in Ihren Anwendungen](../develop/app-resilience-continuous-access-evaluation.md)
 - [Anspruchsherausforderungen, Anspruchsanforderungen und Clientfunktionen](../develop/claims-challenge.md)
+- [Bedingter Zugriff: Sitzung](concept-conditional-access-session.md)
 - [Überwachung und Problembehandlung von fortlaufender Zugriffsevaluierung](howto-continuous-access-evaluation-troubleshoot.md)

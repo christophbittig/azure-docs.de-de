@@ -6,12 +6,12 @@ author: bwren
 ms.author: bwren
 ms.date: 11/12/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0af9aeb9efe3b652f52b01e3b45307253e810742
-ms.sourcegitcommit: 34aa13ead8299439af8b3fe4d1f0c89bde61a6db
+ms.openlocfilehash: 392b9d5b753ff75ab64a2f21a87301ba17de24c3
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2021
-ms.locfileid: "122418651"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131058006"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Verschieben von Log Analytics-Arbeitsbereichen in ein anderes Abonnement oder eine andere Ressourcengruppe
 
@@ -42,6 +42,7 @@ Die Quell- und Zielabonnements des Arbeitsbereichs müssen in demselben Azure Ac
 > **Azure Sentinel-Kunden**
 > - Derzeit wird nach der Bereitstellung von Azure Sentinel in einem Arbeitsbereich das Verschieben des Arbeitsbereichs in eine andere Ressourcengruppe oder ein anderes Abonnement nicht unterstützt. 
 > - Haben Sie den Arbeitsbereich bereits verschoben, deaktivieren Sie alle aktiven Regeln unter **Analytics**, und aktivieren Sie sie nach fünf Minuten wieder. Dieser Vorgang sollte in den meisten Fällen eine effektive Lösung sein. Für die Iteration wird er jedoch nicht unterstützt und auf eigenes Risiko ausgeführt.
+> - Azure Resource Manager braucht evtl. einige Stunden, bis der Vorgang abgeschlossen ist, und Lösungen reagieren während des Vorgangs möglicherweise nicht.
 > 
 > **Neuerstellen von Warnungen**
 > - Alle Warnungen müssen neu erstellt werden, da die Berechtigungen auf der Arbeitsbereichsressourcen-ID basieren, die sich während der Verschiebung des Arbeitsbereichs oder einer Änderung des Ressourcennamens ändert. Warnungen in Arbeitsbereichen, die nach dem 1. Juni 2019 erstellt wurden, oder in Arbeitsbereichen, die [von der Log Analytics-Warnungs-Legacy-API auf die scheduledQueryRules-API aktualisiert wurden](../alerts/alerts-log-api-switch.md), können in eine Vorlage exportiert und nach dem Verschieben bereitgestellt werden. Sie können überprüfen, [ob die scheduledQueryRules-API für Warnungen in Ihrem Arbeitsbereich verwendet wird](../alerts/alerts-log-api-switch.md#check-switching-status-of-workspace). Alternativ können Sie Warnungen manuell im Zielarbeitsbereich konfigurieren.

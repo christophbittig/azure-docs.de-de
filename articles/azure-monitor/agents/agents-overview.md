@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/22/2021
-ms.openlocfilehash: 8728371fab634c9673e264e9cb9fa99c54931e01
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 7bd926b12a85b62b79f55be3afd3dbbd67af4a25
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129710345"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131058424"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Übersicht über Azure Monitor-Agents
 
@@ -61,7 +61,7 @@ Verwenden Sie den Azure Monitor-Agent zu folgenden Zwecken:
 - Manage the security of your machines using [Azure Security Center](../../security-center/security-center-introduction.md)  or [Azure Sentinel](../../sentinel/overview.md). (Available in private preview.)
 - Use [VM insights](../vm/vminsights-overview.md) which allows you to monitor your machines at scale and monitors their processes and dependencies on other resources and external processes..  
 - Manage the security of your machines using [Azure Security Center](../../security-center/security-center-introduction.md)  or [Azure Sentinel](../../sentinel/overview.md).
-- Use different [solutions](../monitor-reference.md#insights-and-core-solutions) to monitor a particular service or application. */
+- Use different [solutions](../monitor-reference.md#insights-and-curated-visualizations) to monitor a particular service or application. */
 -->
 Einschränkungen des Azure Monitor-Agents:
 - Log Analytics-Lösungen können nicht in der Produktion verwendet werden (nur in der Vorschau verfügbar, siehe[Unterstützte Dienste und Features](./azure-monitor-agent-overview.md#supported-services-and-features)).
@@ -85,7 +85,7 @@ Verwenden Sie den Log Analytics-Agent für Folgendes:
 * Verwenden von [VM Insights](../vm/vminsights-overview.md) zur Überwachung Ihrer Computer im großen Stil sowie zur Überwachung der zugehörigen Prozesse und Abhängigkeiten von anderen Ressourcen und externen Prozessen.  
 * Verwalten der Sicherheit Ihrer Computer mithilfe von [Azure Security Center](../../security-center/security-center-introduction.md) oder [Azure Sentinel](../../sentinel/overview.md).
 * Verwenden von [Azure Automation-Updateverwaltung](../../automation/update-management/overview.md), [Azure Automation State Configuration](../../automation/automation-dsc-overview.md) oder [Azure Automation für Änderungsnachverfolgung und Bestand](../../automation/change-tracking/overview.md) zur umfassenden Verwaltung Ihrer Azure- und Nicht-Azure-Computer.
-* Verwenden verschiedener [Lösungen](../monitor-reference.md#insights-and-core-solutions) zur Überwachung eines bestimmten Diensts oder einer bestimmten Anwendung
+* Verwenden verschiedener [Lösungen](../monitor-reference.md#insights-and-curated-visualizations) zur Überwachung eines bestimmten Diensts oder einer bestimmten Anwendung
 
 Einschränkungen des Log Analytics-Agents:
 
@@ -181,7 +181,7 @@ In der folgenden Tabelle sind die Betriebssysteme aufgeführt, die von den Azure
 | Oracle Linux 7                                              | X | X |   | X |
 | Oracle Linux 6                                              |   | X |   |   |
 | Oracle Linux 6.4+                                           |   | X |   | X |
-| Red Hat Enterprise Linux Server 8.2, 8.3, 8.4               | X<sup>3</sup> | X | X |   |
+| Red Hat Enterprise Linux Server 8.1, 8.2, 8.3, 8.4          | X<sup>3</sup> | X | X |   |
 | Red Hat Enterprise Linux Server 8                           | X<sup>3</sup> | X | X |   |
 | Red Hat Enterprise Linux Server 7                           | X | X | X | X |
 | Red Hat Enterprise Linux Server 6                           |   | X | X |   |
@@ -206,7 +206,9 @@ Da der Dependency-Agent auf der Kernelebene arbeitet, ist die Unterstützung auc
 
 | Distribution | Betriebssystemversion | Kernelversion |
 |:---|:---|:---|
-|  Red Hat Linux 8   | 8,2     | 4.18.0-193.\*el8_2.x86_64 |
+|  Red Hat Linux 8   | 8,4     | 4.18.0-305.\*el8.x86_64, 4.18.0-305.\*el8_4.x86_64 |
+|                    | 8.3     |  4.18.0-240.\*el8_3.x86_64 |
+|                    | 8,2     | 4.18.0-193.\*el8_2.x86_64 |
 |                    | 8.1     | 4.18.0-147.\*el8_1.x86_64 |
 |                    | 8.0     | 4.18.0-80.\*el8.x86_64<br>4.18.0-80.\*el8_0.x86_64 |
 |  Red Hat Linux 7   | 7.9     | 3.10.0-1160 |
@@ -217,7 +219,9 @@ Da der Dependency-Agent auf der Kernelebene arbeitet, ist die Unterstützung auc
 |                    | 7.4     | 3.10.0-693  |
 | Red Hat Linux 6    | 6.10    | 2.6.32-754 |
 |                    | 6.9     | 2.6.32-696  |
-| CentOS Linux 8     | 8,2     | 4.18.0-193.\*el8_2.x86_64 |
+| CentOS Linux 8     | 8,4     | 4.18.0-305.\*el8.x86_64, 4.18.0-305.\*el8_4.x86_64 |
+|                    | 8.3     | 4.18.0-240.\*el8_3.x86_64 |
+|                    | 8,2     | 4.18.0-193.\*el8_2.x86_64 |
 |                    | 8.1     | 4.18.0-147.\*el8_1.x86_64 |
 |                    | 8.0     | 4.18.0-80.\*el8.x86_64<br>4.18.0-80.\*el8_0.x86_64 |
 | CentOS Linux 7     | 7.9     | 3.10.0-1160 |
@@ -229,10 +233,12 @@ Da der Dependency-Agent auf der Kernelebene arbeitet, ist die Unterstützung auc
 |                    | 18,04   | 5.3.0-1020<br>5.0 (enthält optimierten Azure-Kernel)<br>4.18 *<br>4.15* |
 |                    | 16.04.3 | 4.15.\* |
 |                    | 16.04   | 4.13.\*<br>4.11.\*<br>4.10.\*<br>4.8.\*<br>4.4.\* |
-| SUSE Linux 12 Enterprise Server | 15     | 4.12.14-150\*
-|                                 | 12 SP4 | 4.12.* (enthält optimierten Azure-Kernel) |
-|                                 | 12 SP3 | 4.4.* |
-|                                 | 12 SP2 | 4.4.* |
+| SUSE Linux 12 Enterprise Server | 12 SP5     | 4.12.14-122.\*-default, 4.12.14-16.\*-azure|
+|                                 | 12 SP4 | 4.12.\* (enthält optimierten Azure-Kernel) |
+|                                 | 12 SP3 | 4.4.\* |
+|                                 | 12 SP2 | 4.4.\* |
+| SUSE Linux 15 Enterprise Server | 15 SP1 | 4.12.14-197.\*-default, 4.12.14-8.\*-azure |
+|                                 | 15     | 4.12.14-150.\*-default |
 | Debian                          | 9      | 4,9  | 
 
 ## <a name="next-steps"></a>Nächste Schritte

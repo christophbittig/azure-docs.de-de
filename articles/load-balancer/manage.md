@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 08/16/2021
 ms.author: allensu
-ms.openlocfilehash: 024a523939e5f03cf01aec937a646f1159f6b79b
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 1911c3a97892a440d0819025c6f040732d03e6e7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130254644"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131079546"
 ---
 # <a name="azure-load-balancer-portal-settings"></a>Azure Load Balancer – Portaleinstellungen
 
@@ -163,7 +163,7 @@ Wenn Sie in der Integritätstestkonfiguration der Lastenausgleichsregel oben **N
 
 Wählen Sie auf der Portalseite „Lastenausgleich erstellen“ auf der Registerkarte **Eingehende Regeln** die Option **+ NAT-Regel für eingehenden Datenverkehr hinzufügen** aus, um die Erstellungsseite zu öffnen.
 
-#### <a name="-add-a-an-inbound-nat-rule"></a>**+ NAT-Regel für eingehenden Datenverkehr hinzufügen**
+#### <a name="-add-an-inbound-nat-rule"></a>**NAT-Regel für eingehenden Datenverkehr hinzufügen**
 
 Auf der Erstellungsseite **+ NAT-Regel für eingehenden Datenverkehr hinzufügen** wird Folgendes angezeigt:
 

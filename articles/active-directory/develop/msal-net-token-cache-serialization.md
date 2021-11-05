@@ -13,12 +13,12 @@ ms.date: 09/30/2021
 ms.author: jmprieur
 ms.reviewer: mmacy
 ms.custom: devx-track-csharp, aaddev, has-adal-ref
-ms.openlocfilehash: 5452f6bd6adc4693b74a20d174b6efe42346226d
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 896e52bf70229358a25055a23403ab2a5a2d7963
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129351841"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131054303"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>Serialisierung des Tokencaches in MSAL.NET
 
@@ -39,7 +39,7 @@ Die Bibliothek [Microsoft.Identity.Web](https://github.com/AzureAD/microsoft-ide
 
 | Erweiterungsmethode | BESCHREIBUNG  |
 | ---------------- | ------------ |
-| `AddInMemoryTokenCaches` | InMemory-Tokencacheserialisierung. Diese Implementierung eignet sich hervorragend für Beispiele. Sie eignet sich auch für Produktionsanwendungen, falls es Ihnen nichts ausmacht, wenn der Tokencache beim Neustart der Web-App verloren geht. `AddInMemoryTokenCaches` verwendet einen optionalen Parameter vom Typ `MsalMemoryTokenCacheOptions`, mit dem Sie die Zeitspanne angeben können, nach der der Cacheeintrag abläuft, sofern er nicht verwendet wird.
+| `AddInMemoryTokenCaches` | InMemory-Tokencacheserialisierung. Die Implementierung ist in Beispielen und in Daemonanwendungen (App-zu-App-Token/`AcquireTokenForClient`) gut geeignet. Sie eignet sich auch für Produktionsanwendungen, falls es Ihnen nichts ausmacht, wenn der Tokencache beim Neustart der Web-App verloren geht. Ab Microsoft.Identity.Web 1.19.0 wird MSAL so konfiguriert, dass ein statischer (freigegebener) Cache für alle App-Instanzen verwendet wird. Er ist deutlich schneller als andere Cachemechanismen.
 | `AddSessionTokenCaches` | Der Tokencache ist an die Benutzersitzung gebunden. Diese Option ist nicht ideal, wenn das ID-Token viele Ansprüche enthält, da das Cookie zu groß wird.
 | `AddDistributedTokenCaches` | Der Tokencache ist ein Adapter für die ASP.NET Core-Implementierung `IDistributedCache`. Daher stehen ein verteilter Speichercache, ein Redis-Cache, ein verteilter NCache oder ein SQL Server-Cache zur Auswahl. Details zur Implementierung von `IDistributedCache` finden Sie unter [Verteilter Arbeitsspeichercache](/aspnet/core/performance/caching/distributed).
 

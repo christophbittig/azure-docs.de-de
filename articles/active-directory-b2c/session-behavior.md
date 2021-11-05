@@ -1,23 +1,23 @@
 ---
-title: Konfigurieren des Sitzungsverhaltens – Azure Active Directory B2C | Microsoft-Dokumentation
+title: Konfigurieren des Sitzungsverhaltens – Azure Active Directory B2C
 description: Hier erfahren Sie, wie Sie das Sitzungsverhalten in Azure Active Directory B2C konfigurieren.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/20/2021
+ms.date: 10/05/2021
 ms.custom: project-no-code
-ms.author: mimart
+ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 8c6e1e1e22f8d694a020174af15ee8f12c6838d7
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 59d14afdbe6f4949f2761ddccb3a48a4770c3bd1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128594724"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131028175"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Konfigurieren des Sitzungsverhaltens in Azure Active Directory B2C
 
@@ -63,7 +63,7 @@ Nehmen Sie das folgende Szenario als Beispiel:
 
 ### <a name="application-session"></a>Anwendungssitzung
 
-Eine mobile Anwendung bzw. eine Web- oder Single-Page-Anwendung kann durch OAuth-Zugriff, ID-Token oder SAML-Token geschützt werden. Wenn ein Benutzer versucht, auf eine geschützte Ressource in der App zuzugreifen, prüft die App, ob seitens der Anwendung eine aktive Sitzung vorhanden ist. Wenn keine App-Sitzung vorhanden oder die Sitzung abgelaufen ist, leitet die App den Benutzer zur Azure AD B2C-Anmeldeseite.
+Eine mobile Anwendung bzw. eine Web- oder Single-Page-Anwendung kann durch einen OAuth2-Zugriffstoken, ID-Token oder SAML-Token geschützt werden. Wenn ein Benutzer versucht, auf eine geschützte Ressource in der App zuzugreifen, prüft die App, ob seitens der Anwendung eine aktive Sitzung vorhanden ist. Wenn keine App-Sitzung vorhanden oder die Sitzung abgelaufen ist, leitet die App den Benutzer zur Azure AD B2C-Anmeldeseite weiter.
 
 Die Anwendungssitzung kann eine cookiebasierte Sitzung sein, die unter dem Domänennamen der Anwendung gespeichert wird, z. B. `https://contoso.com`. Mobile Anwendungen speichern die Sitzung möglicherweise anders, verwenden aber einen ähnlichen Ansatz.
 
@@ -246,7 +246,7 @@ Auf die Abmeldeanforderung reagiert Azure AD B2C wie folgt:
 
 ::: zone pivot="b2c-user-flow"
 1. Die cookiebasierte Azure AD B2C-Sitzung wird für ungültig erklärt.
-1. Azure AD B2C versucht, den Benutzer vom Verbundidentitätsanbieter abzumelden
+1. Azure AD B2C versucht, den Benutzer vom Verbundidentitätsanbieter abzumelden.
 ::: zone-end
 
 ::: zone pivot="b2c-custom-policy"
@@ -265,11 +265,13 @@ Bei der Abmeldung wird zwar der SSO-Status des Benutzers bei Azure AD B2C gelös
 
 ::: zone pivot="b2c-custom-policy"
 
-### <a name="single-sign-out"></a>Einmaliges Abmelden 
+## <a name="single-sign-out"></a>Einmaliges Abmelden 
 
-Wenn Sie den Benutzer zum Azure AD B2C-Abmeldeendpunkt (für OAuth2- und SAML-Protokolle) umleiten, löscht Azure AD B2C die Sitzung des Benutzers im Browser. Allerdings kann der Benutzer weiterhin bei anderen Anwendungen angemeldet sein, die Azure AD B2C für die Authentifizierung verwenden. Damit der Benutzer gleichzeitig auch bei diesen Anwendungen abgemeldet werden kann, sendet Azure AD B2C eine HTTP GET-Anforderung an die registrierte `LogoutUrl` aller Anwendungen, bei denen der Benutzer aktuell angemeldet ist.
+Wenn Sie den Benutzer zum [Azure AD B2C-Abmeldeendpunkt](openid-connect.md#send-a-sign-out-request) (für OAuth2 und OpenID Connect) umleiten oder eine `LogoutRequest` senden (für SAML), löscht Azure AD B2C die Sitzung des Benutzers im Browser. Allerdings kann der Benutzer weiterhin bei anderen Anwendungen angemeldet sein, die Azure AD B2C für die Authentifizierung verwenden. Um den Benutzer von allen Anwendungen abzumelden, für die eine Sitzung aktiv ist, unterstützt Azure AD B2C *einmaliges Abmelden*, auch als *Single Log-Out (SLO)* bezeichnet.
 
-Anwendungen müssen auf diese Anforderung antworten, indem sie alle Sitzungen löschen, mit denen der Benutzer identifiziert wird, und eine `200`-Antwort zurückgeben. Wenn Sie das einmalige Abmelden in Ihrer Anwendung unterstützen möchten, müssen Sie eine `LogoutUrl` im Code Ihrer Anwendung implementieren. 
+Bei der Abmeldung sendet Azure AD B2C gleichzeitig eine HTTP-Anforderung an die registrierte Abmelde-URL aller Anwendungen, bei denen der Benutzer aktuell angemeldet ist.
+
+### <a name="configure-your-custom-policy"></a>Konfigurieren Ihrer benutzerdefinierten Richtlinie
 
 Um das einmalige Abmelden zu unterstützen, müssen die technischen Profile des Tokenausstellers für JWT und SAML Folgendes angeben:
 
@@ -314,6 +316,29 @@ Das folgende Beispiel veranschaulicht die JWT- und SAML-Tokenaussteller mit einm
   </TechnicalProfiles>
 </ClaimsProvider>
 ```
+
+### <a name="configure-your-application"></a>Konfigurieren der Anwendung
+
+Konfigurieren einer Anwendung für einmaliges Abmelden:
+
+- Konfigurieren Sie für [SAML-Dienstanbieter](saml-service-provider.md) die Anwendung mit dem [SingleLogoutService-Speicherort im SAML-Metadatendokument](saml-service-provider.md#override-or-set-the-logout-url-optional). Sie können auch die App-Registrierung `logoutUrl` konfigurieren. Weitere Informationen finden Sie unter [Festlegen der Abmelde-URL](saml-service-provider.md#override-or-set-the-logout-url-optional).
+- Legen Sie für OpenID Connect- oder OAuth2-Anwendungen das `logoutUrl`-Attribut Ihres App-Registrierungsmanifests fest. Konfigurieren der Abmelde-URL:
+    1. Wählen Sie im Azure AD B2C-Menü die Option **App-Registrierungen**.
+    1. Wählen Sie Ihre Anwendungsregistrierung aus.
+    1. Wählen Sie unter **Verwalten** die Option **Authentifizierung** aus.
+    1. Konfigurieren Sie unter der **Front-Channel-Abmelde-URL** Ihre Abmelde-URL.
+
+### <a name="handling-single-sign-out-requests"></a>Verarbeiten von Anforderungen für einmaliges Abmelden
+
+Wenn Azure AD B2C die Abmeldeanforderung empfängt, wird ein Front-Channel-HTML-iFrame verwendet, um eine HTTP-Anforderung an die registrierte Abmelde-URL jeder konfigurierten Anwendung zu senden, bei der der Benutzer aktuell angemeldet ist. Beachten Sie, dass die Anwendung, welche die Abmeldeanforderung auslöst, diese Abmeldemeldung nicht erhält. Die Anwendungen müssen auf die Abmeldeanforderung mit dem Löschen der Anwendungssitzung reagieren, die den Benutzer identifiziert.
+
+- Bei OpenID Connect- und OAuth2-Anwendungen sendet Azure AD B2C eine HTTP GET-Anforderung an die registrierte Abmelde-URL.
+- Bei SAML-Anwendungen sendet Azure AD B2C eine SAML-Abmeldeanforderung an die registrierte Abmelde-URL.
+
+Wenn alle Anwendungen über die Abmeldung benachrichtigt wurden, führt Azure AD B2C einen der folgenden Schritte aus:
+
+- Bei OpenID Connect- oder OAuth2-Anwendungen wird der Benutzer an den angeforderten `post_logout_redirect_uri` umgeleitet, einschließlich des (optionalen) `state`-Parameters, der in der ersten Anforderung angegeben ist. Beispiel: `https://contoso.com/logout?state=foo`.
+- Bei SAML-Anwendungen wird eine SAML-Abmeldeantwort über HTTP POST an die Anwendung gesendet, die die Abmeldeanforderung ursprünglich gesendet hat.
 
 ::: zone-end
 

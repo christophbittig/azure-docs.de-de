@@ -1,5 +1,5 @@
 ---
-title: Übersicht über SQL Server auf virtuellen Azure Windows-Computern | Microsoft-Dokumentation
+title: Übersicht über SQL Server auf Windows Azure Virtual Machines
 description: Hier erfahren Sie, wie Sie Vollversionen von SQL Server auf virtuellen Azure-Computern in der Cloud ausführen können, ohne lokale Hardware verwalten zu müssen.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.workload: iaas-sql-server
 ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 3f426af6719b821373a565c58e27919e7f6082f7
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 168f0bb17a63dea874f782fdb04906526822de81
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130247908"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131071889"
 ---
-# <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Was ist SQL Server auf Azure Virtual Machines (Windows)?
+# <a name="what-is-sql-server-on-windows-azure-virtual-machines"></a>Was ist SQL Server auf Windows Azure Virtual Machines?
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!div class="op_single_selector"]

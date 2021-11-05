@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 07/22/2021
-ms.openlocfilehash: 1a4fbbb84eb296acabd383461e01e90cbf570d9d
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.openlocfilehash: 1bbc831b32d2a29cf590f36ea0f2c436f739ee6b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129657376"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131076697"
 ---
 # <a name="run-jupyter-notebooks-in-your-workspace"></a>Ausführen von Jupyter Notebooks in Ihrem Arbeitsbereich
 
@@ -150,6 +150,8 @@ Um ein Notebook oder ein Python-Skript auszuführen, stellen Sie zunächst eine 
 * Wenn Sie über eine angehaltene Compute-Instanz verfügen, wählen Sie rechts neben der Dropdownliste „Compute“ die Option **Start compute** (Compute starten) aus. Je nach Bildschirmgröße befindet sich dies möglicherweise unter einem **...** -Menü.
 
     :::image type="content" source="media/how-to-run-jupyter-notebooks/start-compute.png" alt-text="Starten einer Compute-Instanz":::
+    
+Sobald Sie mit einer Compute-Instanz verbunden sind, verwenden Sie die Symbolleiste, um alle Zellen im Notebook auszuführen, oder die Tastenkombination „Steuerung + Eingabe“, um eine einzelne ausgewählte Zelle auszuführen. 
 
 Nur Sie können die von Ihnen erstellten Computeinstanzen sehen und verwenden.  Ihre **Benutzerdateien** werden getrennt vom virtuellen Computer gespeichert und von allen Computeinstanzen im Arbeitsbereich gemeinsam genutzt.
 

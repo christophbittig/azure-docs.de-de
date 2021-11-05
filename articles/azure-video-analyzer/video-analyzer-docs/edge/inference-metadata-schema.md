@@ -2,14 +2,14 @@
 title: 'Schema für Rückschlussmetadaten: Azure'
 description: Im Azure Video Analyzer folgt jedes Inferenzobjekt, unabhängig von der Verwendung eines HTTP-basierten Vertrags oder eines gRPC-basierten Vertrags, dem in diesem Thema beschriebenen Objektmodell.
 ms.topic: reference
-ms.date: 06/01/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 9d22e4b05a19b7d0c120f02f4a97017865563314
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: a9447623f369b62cd5578bab2bd234ba7af1eca0
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095039"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131554277"
 ---
 # <a name="inference-metadata-schema"></a>Schema für Rückschlussmetadaten 
 

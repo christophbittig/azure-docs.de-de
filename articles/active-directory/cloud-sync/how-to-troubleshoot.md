@@ -8,12 +8,12 @@ ms.date: 01/19/2021
 ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: 65022d98c7ee7e90d8f1fe5b6854605c841ad05b
-ms.sourcegitcommit: 49b2069d9bcee4ee7dd77b9f1791588fe2a23937
+ms.openlocfilehash: 863d043bc3185b5fd7f44056ba13bca5ed700f30
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/16/2021
-ms.locfileid: "107530320"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131018241"
 ---
 # <a name="cloud-sync-troubleshooting"></a>Problembehandlung bei der Cloudsynchronisierung
 
@@ -167,21 +167,22 @@ Durch Klicken auf den Status können Sie zusätzliche Informationen zur Quarant�
 ![Screenshot mit zusätzlichen Informationen zur Quarantäne](media/how-to-troubleshoot/quarantine-2.png)
 
 Wenn Sie mit der rechten Maustaste auf den Status klicken, werden zusätzliche Optionen angezeigt:
-    
-   - Bereitstellungsprotokolle anzeigen
-   - Agent anzeigen
-   - Quarantäne löschen
+
+- Bereitstellungsprotokolle anzeigen
+- Agent anzeigen
+- Quarantäne löschen
 
 ![Screenshot der Optionen im Kontextmenü](media/how-to-troubleshoot/quarantine-4.png)
 
-
 ### <a name="resolve-a-quarantine"></a>Aufheben einer Quarantäne
-Es gibt zwei Möglichkeiten, eine Quarantäne aufzuheben.  Sie lauten wie folgt:
 
-  - Aufheben der Quarantäne: Löschen Sie das Wasserzeichen, und führen Sie eine Deltasynchronisierung aus.
-  - Erneutes Starten des Bereitstellungsauftrags: Löschen Sie das Wasserzeichen, und führen Sie eine Erstsynchronisierung aus.
+Es gibt zwei Möglichkeiten, eine Quarantäne aufzuheben. Sie lauten wie folgt:
+
+- Aufheben der Quarantäne: Löschen Sie das Wasserzeichen, und führen Sie eine Deltasynchronisierung aus.
+- Erneutes Starten des Bereitstellungsauftrags: Löschen Sie das Wasserzeichen, und führen Sie eine Erstsynchronisierung aus.
 
 #### <a name="clear-quarantine"></a>Aufheben der Quarantäne
+
 Wenn Sie das Wasserzeichen löschen und eine Deltasynchronisierung für den Bereitstellungsauftrag ausführen möchten, nachdem Sie diesen überprüft haben, klicken Sie einfach mit der rechten Maustaste auf den Status, und wählen Sie **Clear quarantine** (Quarantäne löschen) aus.
 
 Es sollte ein Hinweis angezeigt werden, dass die Quarantäne aufgehoben wird.
@@ -193,11 +194,13 @@ Daraufhin sollte der Status des Agents als fehlerfrei angezeigt werden.
 ![Informationen zum Quarantänestatus](media/how-to-troubleshoot/quarantine-6.png)
 
 #### <a name="restart-the-provisioning-job"></a>Erneutes Starten des Bereitstellungsauftrags
+
 Verwenden Sie das Azure-Portal, um den Bereitstellungsauftrag neu zu starten. Wählen Sie auf der Seite mit der Agent-Konfiguration die Option **Bereitstellung erneut starten** aus.
 
   ![Erneutes Starten der Bereitstellung](media/how-to-troubleshoot/quarantine-3.png)
 
 - Verwenden Sie Microsoft Graph, um [den Bereitstellungsauftrag neu zu starten](/graph/api/synchronization-synchronizationjob-restart?tabs=http&view=graph-rest-beta&preserve-view=true). Sie haben vollständige Kontrolle über die Elemente, die Sie neu starten. Sie können auswählen, dass Folgendes geschieht:
+
   - Der Zählerwert wird auf 0 zurückgesetzt und steigt wieder an, sobald neue Elemente in Quarantäne verschoben werden.
   - Eine Anwendung wird aus der Quarantäne entfernt.
   - Grenzwerte werden geändert. 
@@ -207,19 +210,25 @@ Verwenden Sie das Azure-Portal, um den Bereitstellungsauftrag neu zu starten. W�
   `POST /servicePrincipals/{id}/synchronization/jobs/{jobId}/restart`
 
 ## <a name="repairing-the-the-cloud-sync-service-account"></a>Reparieren des Cloud Sync-Dienstkontos
-Wenn Sie das Cloud Sync-Dienstkonto reparieren müssen, können Sie das Cmdlet `Repair-AADCloudSyncToolsAccount` verwenden.  
 
+Wenn Sie das Cloud Sync-Dienstkonto reparieren müssen, können Sie das Cmdlet `Repair-AADCloudSyncToolsAccount` verwenden.
 
-   1.  Führen Sie zunächst die [hier](reference-powershell.md#install-the-aadcloudsynctools-powershell-module) beschriebenen Installationsschritte aus, und fahren Sie dann mit den verbleibenden Schritten fort.
-   2.  Geben Sie in einer Windows PowerShell-Sitzung mit Administratorrechten den folgenden Befehl ein (Sie können ihn auch kopieren und einfügen): 
-    ```
-    Connect-AADCloudSyncTools
-    ```  
+   1. Führen Sie zunächst die [hier](reference-powershell.md#install-the-aadcloudsynctools-powershell-module) beschriebenen Installationsschritte aus, und fahren Sie dann mit den verbleibenden Schritten fort.
+
+   2. Geben Sie in einer PowerShell-Sitzung mit Administratorrechten den folgenden Befehl ein (Sie können ihn auch kopieren und einfügen):
+
+      ```powershell
+      Connect-AADCloudSyncTools
+      ```
+
    3. Geben Sie die Anmeldeinformationen des globalen Azure AD-Administrators ein.
-   4. Geben Sie den folgenden Befehl ein (Sie können ihn auch kopieren und einfügen): 
-    ```
-    Repair-AADCloudSyncToolsAccount
-    ```  
+
+   4. Geben Sie den folgenden Befehl ein (Sie können ihn auch kopieren und einfügen):
+
+      ```powershell
+      Repair-AADCloudSyncToolsAccount
+      ```
+
    5. Nach Abschluss dieses Vorgangs sollten Sie die Meldung erhalten, dass das Konto erfolgreich repariert wurde.
 
 ## <a name="next-steps"></a>Nächste Schritte 

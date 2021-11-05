@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 11/07/2020
+ms.date: 10/26/2021
 ms.author: adbadram
 ms.reviewer: mathoma
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: bc4bfc48c9b8f6891c45730215f2c49e84467a42
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 8c0e4e5c0c12284bd3cc2f777f6951e04cc06926
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130161885"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131071855"
 ---
 # <a name="register-multiple-sql-vms-in-azure-with-the-sql-iaas-agent-extension"></a>Registrieren mehrerer SQL Server-VMs mit der SQL-IaaS-Agent-Erweiterung in Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -38,6 +38,8 @@ In diesem Artikel erfahren Sie, wie Sie SQL Server-VMs in einem Massenvorgang m
 Mit dem Cmdlet `Register-SqlVMs` können alle virtuellen Computer in einer bestimmten Liste von Abonnements, Ressourcengruppen oder einer Liste mit bestimmten virtuellen Computern registriert werden. Mit dem Cmdlet werden die virtuellen Computer im [Verwaltungsmodus „Lightweight“](sql-server-iaas-agent-extension-automate-management.md#management-modes) registriert, und dann [ein Bericht und eine Protokolldatei](#output-description) generiert. 
 
 Der Registrierungsprozess birgt keine Risiken, führt nicht zu Ausfallzeiten und startet den SQL Server-Dienst oder den virtuellen Computer nicht neu. 
+
+Standardmäßig werden Azure-VMs, auf denen SQL Server 2016 oder höher installiert ist, automatisch bei der Erweiterung für den SQL-IaaS-Agent registriert, wenn sie vom [CEIP-Dienst](/sql/sql-server/usage-and-diagnostic-data-configuration-for-sql-server) erkannt werden.  Weitere Informationen finden Sie unter [Ergänzende Datenschutzbestimmungen zu SQL Server](/sql/sql-server/sql-server-privacy#non-personal-data).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

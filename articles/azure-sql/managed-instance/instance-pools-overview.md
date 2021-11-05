@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: urosmil
 ms.author: urmilano
 ms.reviewer: mathoma
-ms.date: 09/05/2019
-ms.openlocfilehash: b84ff58517d413be884b81b6498f5b626ba02016
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.date: 10/25/2021
+ms.openlocfilehash: 3812be11d53b8a9c70e871b88ee61c474312c872
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110697246"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131031383"
 ---
 # <a name="what-is-an-azure-sql-managed-instance-pool-preview"></a>Was ist ein Azure SQL Managed Instance-Pool (Vorschauversion)?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -82,7 +82,7 @@ In Bezug auf Instanzenpools und Instanzen innerhalb von Pools bestehen verschied
     - 8 virtuelle Kerne unterstützen bis zu 200 Datenbanken.
     - 16 virtuelle Kerne unterstützen bis zu 400 Datenbanken.
     - Pools mit 24 oder mehr virtuellen Kernen unterstützen bis zu 500 Datenbanken.
-- Der AAD-Administrator kann nicht für die im Instanzpool bereitgestellten Instanzen festgelegt werden, weshalb die AAD-Authentifizierung nicht verwendet werden kann.
+- Azure AD-Authentifizierung kann nach dem Erstellen oder Festlegen einer verwalteten Instanz mit dem `-AssignIdentity`-Flag verwendet werden. Weitere Informationen finden Sie unter [New-AzSqlInstance](/powershell/module/az.sql/new-azsqlinstance) und [Set-AzSqlInstance](/powershell/module/az.sql/set-azsqlinstance). Benutzer können dann einen Azure AD-Administrator für die Instanz festlegen, indem Sie [Azure AD Administrator (SQL verwaltete Instanz) bereitstellen](/azure/azure-sql/database/authentication-aad-configure#provision-azure-ad-admin-sql-managed-instance) ausführen.
 
 Die Gesamtspeicherzuordnung und die Gesamtanzahl der Datenbanken in allen Instanzen muss kleiner oder gleich der über Instanzenpools verfügbar gemachten Limits sein.
 
@@ -104,6 +104,7 @@ Für die Public Preview gelten die folgenden Einschränkungen:
 - Die Erstellung und die Konfiguration von Instanzenpools werden im Azure-Portal noch nicht unterstützt. Alle Vorgänge für Instanzenpools werden nur über PowerShell unterstützt. Auch die erste Bereitstellung von Instanzen in einem vorab erstellten Pool wird nur über PowerShell unterstützt. Nach der Bereitstellung in einem Pool können verwaltete Instanzen über das Azure-Portal aktualisiert werden.
 - Verwaltete Instanzen, die außerhalb des Pools erstellt werden, können nicht in einen vorhandenen Pool verschoben werden, und Instanzen, die in einem Pool erstellt werden, können nicht als Einzelinstanzen aus dem Pool und nicht in einen anderen Pool verschoben werden.
 - Preise für [Reservekapazität](../database/reserved-capacity-overview.md)-Instanzen sind nicht verfügbar.
+- Failovergruppen werden für Instanzen im Pool nicht unterstützt.
 
 ## <a name="sql-features-supported"></a>Unterstützte SQL-Features
 

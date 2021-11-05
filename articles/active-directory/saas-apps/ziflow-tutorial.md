@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/15/2021
 ms.author: jeedes
-ms.openlocfilehash: eccd83b7c29ec31c40271efc09d5318d35ba6d2a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: fd6979056859c9ed0d38413d9bd6713e8cb4fb62
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124764904"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131056875"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ziflow"></a>Tutorial: Azure Active Directory-Integration mit Ziflow
 
@@ -156,7 +156,7 @@ Führen Sie zum Bereitstellen eines Benutzerkontos die folgenden Schritte aus:
 
     ![Screenshot, auf der die Option „Add user“ (Benutzer hinzufügen) ausgewählt ist](./media/ziflow-tutorial/add-tab.png)
 
-4. Führen Sie im Popup **Add a user** (Benutzer hinzufügen) die folgenden Schritte aus:
+4. Führen Sie im Popupfenster **Benutzer hinzufügen** die folgenden Schritte aus:
 
     ![Screenshot: Dialogfeld „Add a user“ (Benutzer hinzufügen), in dem Sie die beschriebenen Werte eingeben können](./media/ziflow-tutorial/add-user.png)
 

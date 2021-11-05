@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: how-to
 ms.date: 07/30/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: d46a4f812d9fd6a4de89bb2e0e0f82fdaf48dca6
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f3f865d28452c6930ef53f5882e59570b07ef551
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339680"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131016604"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>Verwenden von MongoDB-Erweiterungsbefehlen zum Verwalten von Daten in der API für MongoDB von Azure Cosmos DB 
 [!INCLUDE[appliesto-mongodb-api](../includes/appliesto-mongodb-api.md)]
@@ -148,7 +148,7 @@ In der folgenden Tabelle sind die Parameter des Befehls beschrieben:
 |---------|---------|---------|
 |  `customAction`   |   `string`      |   Der Name des benutzerdefinierten Befehls. Er muss „GetDatabase“ lauten.|
         
-### <a name="output"></a>Ausgabe
+### <a name="output"></a>Output
 
 Wenn der Befehl erfolgreich ist, enthält die Antwort ein Dokument mit den folgenden Feldern:
 
@@ -221,9 +221,9 @@ In der folgenden Tabelle sind die Parameter des Befehls beschrieben:
 | `offerThroughput` | `int` | Optional | Bereitgestellter Durchsatz, der für die Datenbank festgelegt werden soll. Wenn dieser Parameter nicht angegeben wird, wird standardmäßig der Mindestwert 400 RU/s verwendet. *Um einen Durchsatz über 10.000 RU/s hinaus anzugeben, ist der Parameter `shardKey` erforderlich.|
 | `shardKey` | `string` | Für Sammlungen mit hohem Durchsatz erforderlich | Der Pfad des Shardschlüssels für die horizontal partitionierte Sammlung. Dieser Parameter ist erforderlich, wenn Sie mehr als 10.000 RU/s in `offerThroughput` festlegen.  Falls angegeben, erfordern alle eingefügten Dokumente diesen Schlüssel und Wert. |
 | `autoScaleSettings` | `Object` | Für [Modus „Autoskalierung“](../provision-throughput-autoscale.md) erforderlich. | Dieses Objekt enthält die mit dem Kapazitätsmodus „Autoskalierung“ festgelegten Einstellungen. Sie können den Wert `maxThroughput` einrichten, der die höchste Anzahl von Anforderungseinheiten angibt, auf die die Sammlung dynamisch erhöht wird. |
-| `indexes` | `Array` | Konfigurieren Sie optional Indizes. Dieser Parameter wird nur für Konten ab Version 3.6 unterstützt. | Sofern vorhanden, wird ein Index für _id benötigt. Jeder Eintrag im Array muss einen Schlüssel aus einem oder mehreren Feldern, einen Namen und optional Indexoptionen enthalten. Verwenden Sie beispielsweise diesen Eintrag, um einen zusammengesetzten eindeutigen Index für die Felder a und b zu erstellen: `{key: {a: 1, b: 1}, name:"a_1_b_1", unique: true}`.
+| `indexes` | `Array` | Konfigurieren Sie optional Indizes. Dieser Parameter wird nur für Konten ab Version 3.6 unterstützt. | Sofern vorhanden, wird ein Index für _id benötigt. Jeder Eintrag im Array muss einen Schlüssel aus einem oder mehreren Feldern, einen Namen und optional Indexoptionen enthalten. Verwenden Sie beispielsweise diesen Eintrag, um einen zusammengesetzten eindeutigen Index für die Felder `a` und `b` zu erstellen: `{key: {a: 1, b: 1}, name:"a_1_b_1", unique: true}`.
 
-### <a name="output"></a>Ausgabe
+### <a name="output"></a>Output
 
 Gibt eine Standardantwort für den benutzerdefinierten Befehl zurück. Informationen hierzu finden Sie in der [Standardausgabe](#default-output) des benutzerdefinierten Befehls für die Parameter in der Ausgabe.
 
@@ -316,7 +316,7 @@ In der folgenden Tabelle sind die Parameter des Befehls beschrieben:
 | `autoScaleSettings` | `Object` | Für [Modus „Autoskalierung“](../provision-throughput-autoscale.md) erforderlich. Dieses Objekt enthält die mit dem Kapazitätsmodus „Autoskalierung“ festgelegten Einstellungen. Der Wert `maxThroughput` beschreibt die höchste Anzahl von Anforderungseinheiten, auf die die Sammlung dynamisch erhöht wird. |
 | `indexes` | `Array` | Konfigurieren Sie optional Indizes. Dieser Parameter wird nur für Konten ab Version 3.6 unterstützt. Sofern vorhanden, werden die bestehenden Indizes der Sammlung durch den angegebenen Indexsatz ersetzt (einschließlich der Löschung von Indizes). Es wird ein Index für _id benötigt. Jeder Eintrag im Array muss einen Schlüssel aus einem oder mehreren Feldern, einen Namen und optional Indexoptionen enthalten. Verwenden Sie beispielsweise diesen Eintrag, um einen zusammengesetzten eindeutigen Index für die Felder a und b zu erstellen: `{key: {a: 1, b: 1}, name: "a_1_b_1", unique: true}`.
 
-## <a name="output"></a>Ausgabe
+### <a name="output"></a>Ausgabe
 
 Gibt eine Standardantwort für den benutzerdefinierten Befehl zurück. Informationen hierzu finden Sie in der [Standardausgabe](#default-output) des benutzerdefinierten Befehls für die Parameter in der Ausgabe.
 
@@ -350,7 +350,7 @@ In der folgenden Tabelle sind die Parameter des Befehls beschrieben:
 | `customAction`    |   `string`      |   Der Name des benutzerdefinierten Befehls. Er muss „GetCollection“ lauten.      |
 | `collection`    |    `string`     |    Name der Sammlung     |
 
-### <a name="output"></a>Ausgabe
+### <a name="output"></a>Output
 
 Wenn der Befehl erfolgreich ist, enthält die Antwort ein Dokument mit den folgenden Feldern:
 

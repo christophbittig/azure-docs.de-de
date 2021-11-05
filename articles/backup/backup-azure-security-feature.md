@@ -4,12 +4,12 @@ description: In diesem Artikel wird erläutert, wie Sie mithilfe der Azure Backu
 ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 04/26/2021
-ms.openlocfilehash: 6cf2af6016df358243b36d47766eab38dacc5db4
-ms.sourcegitcommit: 5f785599310d77a4edcf653d7d3d22466f7e05e1
+ms.openlocfilehash: 10a3420003197fc76f9baefbfd4c58c40a6dacfc
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/27/2021
-ms.locfileid: "108064195"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131073660"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Sicherheitsfeatures für den Schutz von Hybridsicherungen mit Azure Backup
 
@@ -51,13 +51,13 @@ Wenn Sie einen Recovery Services-Tresor erstellen, können Sie alle Sicherheitsf
 5. Wählen Sie aus der Dropdownliste **Haben Sie Azure AD Multi-Factor Authentication konfiguriert?** und dann einen Wert aus, um zu bestätigen, dass Sie [Azure AD Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md) aktiviert haben. Wenn Azure Multi-Factor Authentication aktiviert ist, werden Sie gebeten, sich bei der Anmeldung beim Azure-Portal über ein anderes Gerät (z. B. Mobiltelefon) zu authentifizieren.
 
    Wenn Sie wichtige Vorgänge in der Sicherung ausführen, müssen Sie eine im Azure Portal verfügbare Sicherheits-PIN eingeben. Das Aktivieren der Azure AD Multi-Factor Authentication sorgt so für eine zusätzliche Sicherheitsebene. Nur autorisierte Benutzer mit gültigen Azure-Anmeldeinformationen, die über ein zweites Gerät authentifiziert sind, können auf das Azure-Portal zugreifen.
-6. Klicken Sie zum Speichern der Sicherheitseinstellungen auf **Aktivieren** und dann auf **Speichern**. **Aktivieren** können Sie nur dann auswählen, wenn Sie im vorherigen Schritt einen Wert aus der Dropdownliste **Haben Sie Azure AD Multi-Factor Authentication konfiguriert?** ausgewählt haben.
+6. Klicken Sie zum Speichern der Sicherheitseinstellungen auf **Aktivieren** und dann auf **Speichern**.
 
     ![Screenshot der Sicherheitseinstellungen](./media/backup-azure-security-feature/enable-security-settings-dpm-update.png)
 
 ## <a name="recover-deleted-backup-data"></a>Wiederherstellen von gelöschten Sicherungsdaten
 
-Backup bewahrt gelöschte Sicherungsdaten weitere 14 Tage lang auf und löscht sie nicht sofort, wenn der Vorgang **Stop backup with delete backup data** (Sicherung abbrechen mit Löschen der Sicherungsdaten) ausgeführt wird. Um diese Daten innerhalb dieser 14 Tage wiederherzustellen, gehen Sie je nachdem, was Sie verwenden, folgendermaßen vor:
+Wenn die Sicherheitsfeatureeinstellung aktiviert ist, bewahrt Azure Backup gelöschte Sicherungsdaten weitere 14 Tage lang auf und löscht sie nicht sofort, wenn der Vorgang **Stop backup with delete backup data** (Sicherung abbrechen mit Löschen der Sicherungsdaten) ausgeführt wird. Um diese Daten innerhalb dieser 14 Tage wiederherzustellen, gehen Sie je nachdem, was Sie verwenden, folgendermaßen vor:
 
 Für Benutzer des **Microsoft Azure Recovery Services-Agent**:
 

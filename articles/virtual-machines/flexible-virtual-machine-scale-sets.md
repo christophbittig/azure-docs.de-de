@@ -9,12 +9,12 @@ ms.subservice: flexible-scale-sets
 ms.date: 10/13/2021
 ms.reviewer: jushiman
 ms.custom: mimckitt, devx-track-azurecli, vmss-flex
-ms.openlocfilehash: b5c52d2ab3b788a1f06edbc59d8dab05cc8285dd
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 56ba42b3aca7d48a62edd264a8ec867fcda5107c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130257991"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131074515"
 ---
 # <a name="flexible-orchestration-for-virtual-machine-scale-sets-in-azure"></a>Flexible Orchestrierung für VM-Skalierungsgruppen in Azure
 
@@ -98,6 +98,10 @@ Der flexible Orchestrierungsmodus kann mit VM-SKUs verwendet werden, die [speich
 az vm list-skus -l eastus --size standard_d2s_v3 --query "[].capabilities[].[name, value]" -o table
 ```
 
+> [!IMPORTANT]
+> Das Netzwerkverhalten hängt davon ab, wie Sie virtuelle Computer in Ihrer Skalierungsgruppe erstellen. Weitere Informationen finden Sie im Abschnitt [Skalierbare Netzwerkkonnektivität](../virtual-machines/flexible-virtual-machine-scale-sets-migration-resources.md#create-scalable-network-connectivity).
+
+
 ## <a name="features"></a>Funktionen
 In den folgenden Tabellen sind die Features des Orchestrierungsmodus „Flexibel“ sowie Links zur entsprechenden Dokumentation aufgeführt.
 
@@ -120,7 +124,7 @@ In den folgenden Tabellen sind die Features des Orchestrierungsmodus „Flexibel
 | Verwaltete Identität  | Nur benutzerseitig zugewiesene Identität  |
 | Hinzufügung/Entfernung einer vorhandenen VM für Gruppe  | Nein  |
 | Service Fabric  | Nein  |
-| Azure Kubernetes Service (AKS)-/AKE-/k8s-Knotenpool  | Nein  |
+| Azure Kubernetes Service (AKS)/AKE  | Nein  |
 | UserData  | Partiell, UserData können für einzelne VMs angegeben werden. |
 
 
