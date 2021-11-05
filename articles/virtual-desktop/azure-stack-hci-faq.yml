@@ -1,0 +1,35 @@
+### YamlMime:FAQ
+metadata:
+  title: Häufig gestellte Fragen zu Azure Virtual Desktop für Azure Stack HCI – Azure
+  description: Häufig gestellte Fragen zu Azure Virtual Desktop für Azure Stack HCI.
+  author: Heidilohr
+  ms.topic: conceptual
+  ms.date: 11/02/2021
+  ms.author: helohr
+  ms.custom: devx-track-azurepowershell
+  manager: femila
+  ms.openlocfilehash: 732371ae56de0949609aa52086a0bcbaf6d98ccc
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131101760"
+title: Häufig gestellte Fragen zu Azure Virtual Desktop für Azure Stack HCI
+summary: In diesem Artikel erhalten Sie Antworten auf häufig gestellte Fragen zu Azure Virtual Desktop für Azure Stack HCI.
+sections:
+- name: Wird ignoriert.
+  questions:
+  - question: >
+      Welche Betriebssystemimages des Sitzungshosts werden von diesem Feature unterstützt?
+    answer: "Azure Virtual Desktop für Azure Stack HCI unterstützt die folgenden x64-Betriebssystemimages:\n  \n  - Windows 11 Enterprise mit mehreren Sitzungen (Vorschau)\n  - Windows 11 Enterprise (Vorschau)\n  - Windows 10 Enterprise (mehrere Sitzungen)\n  - Windows 10 Enterprise\n  - Windows Server 2022\n  - Windows Server 2019\n"
+  - question: >
+      Welche Azure Virtual Desktop-Clients werden von diesem Feature unterstützt?
+    answer: >
+      Azure Virtual Desktop für Azure Stack HCI unterstützt die gleichen Clients wie Azure Virtual Desktop.
+  - question: >
+      Kann ich Azure Virtual Desktop mit einer anderen lokalen Infrastruktur als Azure Stack HCI verwenden?
+    answer: >
+      Nein. Die lokalen Funktionen von Azure Virtual Desktop gelten nur für Sitzungshosts, auf denen Azure Stack HCI-Infrastruktur ausgeführt wird.
+  - question: >
+      Bedeutet die Verwendung von Azure Virtual Desktop für Azure Stack HCI, dass alle meine Daten lokal gespeichert werden?
+    answer: Nein, die Verwendung von Azure Virtual Desktop für Azure Stack HCI garantiert nicht, dass alle Daten lokal gespeichert werden. Administratoren können Benutzerdaten lokal speichern, indem sie Sitzungshost-VMs und zugehörige Dienste wie Dateiserver lokal ermitteln. Einige Kundendaten, Diagnosedaten und vom Dienst generierte Daten werden jedoch weiterhin in einem Rechenzentrum gespeichert. Weitere Informationen dazu, wie Azure Virtual Desktop verschiedene Arten von Daten speichert, finden Sie unter [Datenspeicherorte für Azure Virtual Desktop](data-locations.md).

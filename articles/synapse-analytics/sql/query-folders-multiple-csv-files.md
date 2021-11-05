@@ -9,12 +9,13 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: a91ca96e69ae5408a3232513eea3ba1443c97064
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 960c13baea77fc8a6b900a5e68828af0377b0087
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123253596"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131018600"
 ---
 # <a name="query-folders-and-multiple-files"></a>Abfragen von Ordnern und mehreren Dateien  
 
@@ -66,6 +67,34 @@ SELECT
     SUM(fare_amount) AS fare_total
 FROM OPENROWSET(
         BULK 'csv/taxi/yellow_tripdata_2017-*.csv',
+        DATA_SOURCE = 'sqlondemanddemo',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0',
+        FIRSTROW = 2
+    )
+    WITH (
+        payment_type INT 10,
+        fare_amount FLOAT 11
+    ) AS nyc
+GROUP BY payment_type
+ORDER BY payment_type;
+```
+
+> [!NOTE]
+> Alle Dateien, auf die mit dem einzelnen OPENROWSET zugegriffen wird, müssen dieselbe Struktur aufweisen (d. h. Anzahl der Spalten und Typ der Daten).
+
+### <a name="read-subset-of-files-in-folder-using-multiple-file-paths"></a>Lesen einer Teilmenge von Dateien im Ordner mithilfe mehrerer Dateipfade
+
+Das folgende Beispiel liest die „NYC Yellow Taxi“-Datendateien für 2017 aus dem Ordner *csv/taxi*, wobei zwei Dateipfade verwendet werden. Die erste Angabe mit dem vollständigen Pfad zur Datei mit den Daten des Monats Januar und die zweite Angabe mit einem Platzhalter für die Monate November und Dezember, der den Gesamtfahrpreis pro Zahlungsart zurückgibt.
+
+```sql
+SELECT 
+    payment_type,  
+    SUM(fare_amount) AS fare_total
+FROM OPENROWSET(
+        BULK (
+            'csv/taxi/yellow_tripdata_2017-01.csv',
+            'csv/taxi/yellow_tripdata_2017-1*.csv'
+        ),
         DATA_SOURCE = 'sqlondemanddemo',
         FORMAT = 'CSV', PARSER_VERSION = '2.0',
         FIRSTROW = 2

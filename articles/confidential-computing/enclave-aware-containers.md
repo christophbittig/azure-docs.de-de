@@ -7,16 +7,17 @@ ms.subservice: confidential-computing
 ms.topic: overview
 ms.date: 9/22/2020
 ms.author: amgowda
-ms.openlocfilehash: 74c0ea83d5792083993c6ce9c5dab88684234928
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 2f1f13a67bb827aa29b9d2de83f2fb46f95095d6
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114469580"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131056659"
 ---
-# <a name="enclave-aware-containers"></a>Enklavefähige Container
+# <a name="enclave-aware-containers-with-intel-sgx"></a>Enklave-fähige Container mit Intel SGX
 
-Bei einer Enklave handelt es sich um einen geschützten Arbeitsspeicherbereich, der Vertraulichkeit für Daten und für die Codeausführung bietet. Sie ist eine Instanz einer hardwaregeschützten vertrauenswürdigen Ausführungsumgebung (Trusted Execution Environment, TEE). Von Confidential Computing-Knoten in AKS wird [Intel SGX (Software Guard Extensions)](https://software.intel.com/sgx) verwendet, um Umgebungen mit isolierten Enklaven in den Knoten zwischen den einzelnen Containeranwendungen zu erstellen.
+Bei einer Enklave handelt es sich um einen geschützten Arbeitsspeicherbereich, der Vertraulichkeit für Daten und für die Codeausführung bietet. Sie ist eine Instanz einer hardwaregeschützten vertrauenswürdigen Ausführungsumgebung (Trusted Execution Environment, TEE). Der Support von Confidential Computing-VMs in AKS verwendet [Intel SGX (Software Guard Extensions)](https://software.intel.com/sgx), um Umgebungen mit isolierten Enklaven in den Knoten zwischen den einzelnen Containeranwendungen zu erstellen.
 
 Genau wie virtuelle Intel SGX-Computer verfügen auch Containeranwendungen, die für die Ausführung in Enklaven entwickelt werden, über zwei Komponenten:
 
@@ -30,7 +31,7 @@ Die Anwendungsarchitektur enklavefähiger Container bietet maximale Kontrolle ü
 ## <a name="enablers"></a>Grundvoraussetzungen
 
 ### <a name="open-enclave-sdk"></a>Open Enclave SDK
-Das Open Enclave SDK ist eine hardwareunabhängige Open-Source-Bibliothek für die Entwicklung von C- und C++-Anwendungen, von denen hardwarebasierte vertrauenswürdige Ausführungsumgebungen genutzt werden. Die aktuelle Implementierung unterstützt Intel SGX und bietet eine Vorschauunterstützung für [OP-TEE OS on Arm TrustZone](https://optee.readthedocs.io/en/latest/general/about.html).
+Das [Open Enclave SDK](https://github.com/openenclave/openenclave/tree/master/docs/GettingStartedDocs) ist eine hardwareunabhängige Open-Source-Bibliothek für die Entwicklung von C- und C++-Anwendungen, von denen hardwarebasierte vertrauenswürdige Ausführungsumgebungen genutzt werden. Die aktuelle Implementierung unterstützt Intel SGX und bietet eine Vorschauunterstützung für [OP-TEE OS on Arm TrustZone](https://optee.readthedocs.io/en/latest/general/about.html).
 
 Informationen zu den ersten Schritten mit Open Enclave-basierten Containeranwendungen finden Sie [hier](https://github.com/openenclave/openenclave/tree/master/docs/GettingStartedDocs).
 
@@ -60,10 +61,12 @@ Das Open-Source [EGo-SDK](https://www.ego.dev) bringt Unterstützung für die Pr
 
 [Azure-Beispiele für enklavefähige Container in AKS](https://github.com/Azure-Samples/confidential-computing/tree/main/containersamples)
 
+[Bereitstellen eines AKS-Clusters mit Vertraulichen Intel SGX-VM-Knoten](./confidential-enclave-nodes-aks-get-started.md)
+
 <!-- LINKS - external -->
 [Azure Attestation](../attestation/overview.md)
 
 
 <!-- LINKS - internal -->
-[Virtuelle DC-Computer](./virtual-machine-solutions.md)
+[Intel SGX Confidential Virtual Machine in Azure](./virtual-machine-solutions-sgx.md)
 [Vertrauliche Container](./confidential-containers.md)

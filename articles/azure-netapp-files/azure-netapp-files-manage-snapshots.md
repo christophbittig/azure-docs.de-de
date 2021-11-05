@@ -12,21 +12,22 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 08/12/2021
+ms.date: 10/25/2021
 ms.author: b-juche
-ms.openlocfilehash: 2a17ed67830dfcfc3f1c5c3cbd6cc06ceedc8028
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: c6bbc11fc77de516d2e163d1463444f2a3c0210e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128614180"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131069936"
 ---
 # <a name="create-an-on-demand-snapshot-for-a-volume"></a>Erstellen einer Momentaufnahme bei Bedarf für ein Volume
 
 Azure NetApp Files unterstützt das Erstellen bedarfsbasierter [Momentaufnahmen](snapshots-introduction.md) und das Verwenden von Momentaufnahmerichtlinien zum Planen der automatischen Erstellung von Momentaufnahmen. Sie können auch eine [Momentaufnahme auf einem neuen Volume wiederherstellen](snapshots-restore-new-volume.md), [eine einzelne Datei mithilfe eines Clients wiederherstellen](snapshots-restore-file-client.md) oder [ein vorhandenes Volume mithilfe einer Momentaufnahme wiederherstellen](snapshots-revert-volume.md). In diesem Artikel wird erläutert, wie Sie eine bedarfsgesteuerte Momentaufnahme für ein Volume erstellen. 
 
 > [!NOTE] 
-> Überlegungen zur Verwaltung von Momentaufnahmen bei der regionsübergreifenden Replikation finden Sie unter [Regionsübergreifende Replikation: Anforderungen und Überlegungen](cross-region-replication-requirements-considerations.md).
+> * Überlegungen zur Verwaltung von Momentaufnahmen bei der regionsübergreifenden Replikation finden Sie unter [Regionsübergreifende Replikation: Anforderungen und Überlegungen](cross-region-replication-requirements-considerations.md).
+> * Sie können das Tool für konsistente Momentaufnahmen in Azure-Anwendungen (AzAcSnap) verwenden, um Datenschutz für Datenbanken von Drittanbietern zu aktivieren. Weitere Informationen finden Sie unter [Tool für konsistente Momentaufnahmen in Azure-Anwendungen](azacsnap-introduction.md).
  
 ## <a name="steps"></a>Schritte
 

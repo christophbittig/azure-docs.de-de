@@ -5,26 +5,28 @@ description: In diesem Tutorial lernen Sie, wie Sie eine Netzwerkfunktion als ve
 author: prmitt
 ms.service: network-function-manager
 ms.topic: tutorial
-ms.date: 06/16/2021
+ms.date: 11/02/2021
 ms.author: prmitt
-ms.openlocfilehash: 0e45f8db150505b323f45cd79eed40215b3a44f8
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 3ac4c4e0654e1d5f22c128c45106079916676a4f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130223327"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131005079"
 ---
-# <a name="tutorial-deploy-network-functions-on-azure-stack-edge-preview"></a>Tutorial: Bereitstellen von Netzwerkfunktionen in Azure Stack Edge (Vorschauversion)
+# <a name="tutorial-deploy-network-functions-on-azure-stack-edge"></a>Tutorial: Bereitstellen von Netzwerkfunktionen in Azure Stack Edge
 
 In diesem Tutorial lernen Sie, wie Sie eine Netzwerkfunktion über den Azure Marketplace in Azure Stack Edge bereitstellen. Der Netzwerkfunktions-Manager ermöglicht die vereinfachte Bereitstellung von Azure Managed Applications-Apps in Azure Stack Edge.
 
 > [!div class="checklist"]
-> * [Voraussetzungen](overview.md#prereq) überprüfen
+> * [Voraussetzungen](#prereq) überprüfen
 > * Netzwerkfunktion erstellen
 > * Details der Netzwerkfunktion prüfen
 
-## <a name="prerequisites"></a>Voraussetzungen
+## <a name="prerequisites"></a><a name="prereq"></a>Voraussetzungen
 
+* Sie haben alle Voraussetzungen erfüllt, die im Artikel [Voraussetzungen und Anforderungen](requirements.md) aufgeführt werden.
 * Sie haben eine Geräteressource für den Netzwerkfunktions-Manager erstellt. Wenn Sie diese Schritte nicht abgeschlossen haben, finden Sie weitere Informationen unter [Erstellen einer Geräteressource](create-device.md).
 * Überprüfen Sie auf der Registerkarte **Übersicht** für das Gerät, ob die folgenden Werte vorhanden sind:
   * Bereitstellungsstatus = Erfolgreich
@@ -32,7 +34,7 @@ In diesem Tutorial lernen Sie, wie Sie eine Netzwerkfunktion über den Azure Mar
 
 ## <a name="create-a-network-function"></a><a name="create"></a>Erstellen einer Netzwerkfunktion
 
-1. Melden Sie sich beim [Azure-Vorschauportal](https://aka.ms/AzureNetworkFunctionManager) an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Navigieren Sie zu der **Geräteressource**, in der Sie eine Netzwerkfunktion bereitstellen möchten, und wählen Sie **+Netzwerkfunktion erstellen** aus.
 
    :::image type="content" source="./media/deploy-functions/create-network-function.png" alt-text="Screenshot: Option „+Netzwerkfunktion erstellen“" lightbox="./media/deploy-functions/create-network-function.png":::
@@ -57,7 +59,7 @@ In diesem Tutorial lernen Sie, wie Sie eine Netzwerkfunktion über den Azure Mar
 1. Konfigurieren Sie die Grundeinstellungen.
 
    :::image type="content" source="./media/deploy-functions/basics-blade.png" alt-text="Screenshot: Grundeinstellungen" lightbox="./media/deploy-functions/basics-blade.png":::
-1. Wenden Sie die verwaltete Identität an. Weitere Informationen finden Sie unter [Verwaltete Identität](overview.md#managed-identity).
+1. Wenden Sie die verwaltete Identität an. Weitere Informationen finden Sie unter [Verwaltete Identität](resources-permissions.md).
 
    :::image type="content" source="./media/deploy-functions/managed-identity.png" alt-text="Screenshot: verwaltete Identität" lightbox="./media/deploy-functions/managed-identity.png":::
 1. Geben Sie die IP-Adressinformationen für die Verwaltungs-, LAN- und WAN-Schnittstellen für die Fusion Core-VM an.

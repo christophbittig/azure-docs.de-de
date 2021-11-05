@@ -10,12 +10,12 @@ ms.author: wiassaf
 ms.reviewer: mathoma
 ms.custom: references_regions
 ms.date: 10/15/2021
-ms.openlocfilehash: 123ea592e46c270830bccef1dc06f9caa3e8fd6e
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: c73ee217fd802a839b565cd1174c94f8da288a0e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130071871"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131026049"
 ---
 # <a name="maintenance-window-preview"></a>Wartungsfenster (Vorschau)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -42,8 +42,10 @@ Bedeutsame Updates werden durch die Azure SQL-Wartungsrichtlinie standardmäßi
 
 Sie können die Wartungsupdates weiter auf eine für Ihre Azure SQL-Ressourcen geeignete Zeit anpassen, indem Sie eines der zwei zusätzlichen Wartungszeitfenster auswählen:
  
-* Wartungsfenster „Wochentag“, 22 Uhr bis 6 Uhr Ortszeit (Montag-Donnerstag)
-* Wartungsfenster „Wochenende“, 22 Uhr bis 6 Uhr Ortszeit (Freitag-Sonntag)
+* Wartungsfenster **Wochentag**: 22 Uhr bis 6 Uhr Ortszeit, Montag bis Donnerstag
+* Wartungsfenster **Wochenende**: 22 Uhr bis 6 Uhr Ortszeit, Freitag bis Sonntag
+
+In den aufgelisteten Tagen des Wartungsfensters wird der Starttag jedes achtstündigen Wartungsfensters angegeben. „22:00 Uhr bis 6:00 Uhr Ortszeit, Montag bis Donnerstag“ bedeutet beispielsweise, dass die Wartungsfenster an jedem Tag (Montag bis Donnerstag) um 22:00 Uhr Ortszeit beginnen und am folgenden Tag (Dienstag bis Freitag) um 6:00 Uhr Ortszeit abgeschlossen sind.
 
 Nach Auswahl des Wartungsfensters und nach Abschluss der Dienstkonfiguration werden alle geplanten Wartungen nur im von Ihnen ausgewählten Wartungsfenster ausgeführt. Wartungsereignisse werden in der Regel innerhalb eines einzelnen Fensters abgeschlossen, einige Wartungsereignisse können sich jedoch über zwei oder mehr angrenzende Fenster erstrecken.   
 
