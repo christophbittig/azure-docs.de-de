@@ -6,12 +6,12 @@ ms.author: jgao
 ms.topic: conceptual
 ms.date: 09/02/2021
 ms.custom: github-actions-azure
-ms.openlocfilehash: df644fb081e6c15eb72e20a2a84af4b4c9386ba7
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 20830623514d98bd7dc1e0606cf0cf79bb0e86b4
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123427028"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131087398"
 ---
 # <a name="deploy-bicep-files-by-using-github-actions"></a>Bereitstellen von Bicep-Dateien mithilfe von GitHub Actions
 
@@ -158,4 +158,4 @@ Wenn Ihre Ressourcengruppe und das Repository nicht mehr benötigt werden, berei
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Learn-Modul: Erstellen Ihres ersten Bicep-Bereitstellungsworkflows mithilfe von GitHub Actions](/learn/modules/build-first-bicep-deployment-pipeline-using-github-actions/)
+> [Lernpfad: Bereitstellen von Azure-Ressourcen mithilfe von Bicep und GitHub Actions](/learn/paths/bicep-github-actions)

@@ -1,6 +1,6 @@
 ---
-title: 'Image Builder: Erstellen eines Windows Virtual Desktop-Images'
-description: Erstellen eines Azure-VM-Images von Windows Virtual Desktop mithilfe von Azure VM Image Builder in PowerShell.
+title: 'Image Builder: Erstellen eines Azure Virtual Desktop-Images'
+description: Erstellen Sie ein Azure-VM-Image von Azure Virtual Desktop mithilfe von Azure VM Image Builder in PowerShell.
 author: kof-f
 ms.author: kofiforson
 ms.reviewer: cynthn
@@ -10,21 +10,21 @@ ms.service: virtual-machines
 ms.collection: windows
 ms.subservice: image-builder
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: fdda25ecc9d111d626b7c9836757c31d4972c25f
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 046bec93d3a9ae0ffef8b189470f412ab357943d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122692447"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131018487"
 ---
-# <a name="create-a-windows-virtual-desktop-image-using-azure-vm-image-builder-and-powershell"></a>Erstellen eines Windows Virtual Desktop-Images mithilfe von Azure VM Image Builder und PowerShell
+# <a name="create-a-azure-virtual-desktop-image-using-azure-vm-image-builder-and-powershell"></a>Erstellen eines Azure Virtual Desktop-Images mithilfe von Azure VM Image Builder und PowerShell
 
-**Gilt für**: :heavy_check_mark: Windows VMs 
+**Gilt für**: :heavy_check_mark: Windows-VMs 
 
-In diesem Artikel wird erläutert, wie Sie ein Windows Virtual Desktop-Image mit folgenden Anpassungen erstellen:
+In diesem Artikel wird erläutert, wie Sie ein Azure Virtual Desktop-Image mit folgenden Anpassungen erstellen:
 
 * Installieren von [FsLogix](https://github.com/DeanCefola/Azure-WVD/blob/master/PowerShell/FSLogixSetup.ps1)
-* Ausführen eines [Optimierungsskripts für Windows Virtual Desktop](https://github.com/The-Virtual-Desktop-Team/Virtual-Desktop-Optimization-Tool) aus dem Communityrepository
+* Ausführen eines [Optimierungsskripts für Azure Virtual Desktop](https://github.com/The-Virtual-Desktop-Team/Virtual-Desktop-Optimization-Tool) aus dem Communityrepository
 * Installieren von [Microsoft Teams](../../virtual-desktop/teams-on-avd.md)
 * [Neu starten](../linux/image-builder-json.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#windows-restart-customizer)
 * Ausführen von [Windows Update](../linux/image-builder-json.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#windows-update-customizer)
@@ -276,7 +276,7 @@ $getStatus.LastRunStatusRunSubState
 ## <a name="create-a-vm"></a>Erstellen einer VM
 Sobald der Buildprozess abgeschlossen ist, können Sie eine VM anhand des Images erstellen. Sie können dazu die unter [New-AzVM (Az.Compute)](/powershell/module/az.compute/new-azvm#examples) aufgeführten Beispiele verwenden.
 
-## <a name="clean-up"></a>Bereinigung
+## <a name="clean-up"></a>Bereinigen
 
 Löschen Sie zunächst die Ressourcengruppenvorlage. Löschen Sie nicht nur die gesamte Ressourcengruppe, da andernfalls nicht die in AIB verwendete Stagingressourcengruppe (*IT_* ) bereinigt wird.
 

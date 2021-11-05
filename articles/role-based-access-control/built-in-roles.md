@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 09/28/2021
+ms.date: 10/23/2021
 ms.custom: generated
-ms.openlocfilehash: 3f9154a2ec6c7900ffa15fd19e9910c89649be2d
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: b8e3fe1f29650feebe5a666a60d37c4a09a4e363
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129709296"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131023745"
 ---
 # <a name="azure-built-in-roles"></a>Integrierte Azure-Rollen
 
@@ -98,8 +98,8 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | [SignalR-REST-API-Leser](#signalr-rest-api-reader) | Bietet schreibgeschützten Zugriff auf Azure SignalR Service-REST-APIs. | ddde6b66-c0df-4114-a159-3618637b3035 |
 > | [SignalR Service-Besitzer](#signalr-service-owner) | Bietet Vollzugriff auf Azure SignalR Service-REST-APIs. | 7e4f1700-ea5a-4f59-8f37-079cfe29dce3 |
 > | [SignalR-/Web PubSub-Mitwirkender](#signalrweb-pubsub-contributor) | Ermöglicht das Erstellen, Lesen, Aktualisieren und Löschen von SignalR Service-Ressourcen. | 8cf5e20a-e4b2-4e9d-b3a1-5ceb692c2761 |
-> | [Mitwirkender von Webplan](#web-plan-contributor) | Ermöglicht Ihnen das Verwalten der Webpläne für Websites, nicht aber den Zugriff darauf. | 2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
-> | [Mitwirkender von Website](#website-contributor) | Ermöglicht Ihnen das Verwalten von Websites (nicht der Webpläne), nicht aber den Zugriff darauf. | de139f84-1756-47ae-9be6-808fbbe84772 |
+> | [Mitwirkender von Webplan](#web-plan-contributor) | Dieser verwaltet die Webpläne für Websites. Ermöglicht es Ihnen nicht, Rollen in Azure RBAC zuzuweisen. | 2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
+> | [Mitwirkender von Website](#website-contributor) | Verwalten von Websites, aber nicht von Webplänen. Ermöglicht es Ihnen nicht, Rollen in Azure RBAC zuzuweisen. | de139f84-1756-47ae-9be6-808fbbe84772 |
 > | **Container** |  |  |
 > | [AcrDelete](#acrdelete) | Löschen von Repositorys, Tags oder Manifesten aus einer Containerregistrierung | c2f4ef07-c644-48eb-af81-4b1b4947fb11 |
 > | [AcrImageSigner](#acrimagesigner) | Pushen oder Pullen vertrauenswürdiger Images in einer Containerregistrierung, die für Inhaltsvertrauen aktiviert ist | 6cef56e8-d556-48e5-a04f-b8e64114680f |
@@ -236,10 +236,11 @@ Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen.
 > | [Arbeitsmappenmitwirkender](#workbook-contributor) | Kann freigegebene Arbeitsmappen speichern. | e8ddcd69-c73f-4f9f-9844-4100522f16ad |
 > | [Arbeitsmappenleser](#workbook-reader) | Kann Arbeitsmappen lesen. | b279062a-9be3-42a0-92ae-8b3cf002ec4d |
 > | **Verwaltung und Governance** |  |  |
+> | [Mitwirkender für Automatisierung](#automation-contributor) | Verwalten von Azure Automation-Ressourcen und anderen Ressourcen mit Azure Automation. | f353d9bd-d4a6-484e-a77a-8050b599b867 |
 > | [Automation-Auftragsoperator](#automation-job-operator) | Hiermit werden Aufträge mithilfe von Automation-Runbooks erstellt und verwaltet. | 4fe576fe-1146-4730-92eb-48519fa6bf9f |
 > | [Operator für Automation](#automation-operator) | Automatisierungsoperatoren können Aufträge starten, beenden, anhalten und fortsetzen. | d3881f73-407a-4167-8283-e981cbba0404 |
 > | [Automation-Runbookoperator](#automation-runbook-operator) | Runbookeigenschaften lesen: Ermöglicht das Erstellen von Runbookaufträgen. | 5fb5aef8-1081-4b8e-bb16-9d5d0385bab5 |
-> | [Azure Arc-aktivierte Kubernetes-Cluster-Benutzerrolle](#azure-arc-enabled-kubernetes-cluster-user-role) | Aktion zum Auflisten der Anmeldeinformationen eines Clusterbenutzers. | 00493d72-78f6-4148-b6c5-d3ce8e4799dd |
+> | [Benutzerrolle für Azure Arc-aktivierte Kubernetes-Cluster](#azure-arc-enabled-kubernetes-cluster-user-role) | Aktion zum Auflisten der Anmeldeinformationen eines Clusterbenutzers. | 00493d72-78f6-4148-b6c5-d3ce8e4799dd |
 > | [Azure Arc Kubernetes-Administrator](#azure-arc-kubernetes-admin) | Ermöglicht Ihnen das Verwalten aller Ressourcen unter einem Cluster/Namespace, außer das Aktualisieren oder Löschen von Ressourcenkontingenten und Namespaces. | dffb1e0c-446f-4dde-a09f-99eb5cc68b96 |
 > | [Azure Arc Kubernetes-Clusteradministrator](#azure-arc-kubernetes-cluster-admin) | Ermöglicht Ihnen das Verwalten aller Ressourcen im Cluster. | 8393591c-06b9-48a2-a542-1bd6b377f6a2 |
 > | [Anzeigeberechtigter für Azure Arc Kubernetes](#azure-arc-kubernetes-viewer) | Ermöglicht Ihnen das Anzeigen aller Ressourcen im Cluster/Namespace mit Ausnahme von Geheimnissen. | 63f0a09d-1495-4db4-a681-037d84835eb4 |
@@ -608,10 +609,10 @@ Erstellen und Verwalten von VMs, Verwalten von Datenträgern und Datenträgermom
 > | --- | --- |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/availabilitySets/* | Erstellen und Verwalten von Compute-Verfügbarkeitsgruppen |
-> | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/cloudServices/* | Erstellen und Verwalten von Cloud Services (erweiterter Support) |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/locations/* | Erstellen und Verwalten von Compute-Speicherorten |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachines/* | Ausführen beliebiger Aktionen für virtuelle Computer, einschließlich Erstellen, Aktualisieren, Löschen, Starten, Neustarten und Ausschalten virtueller Computer. Ausführen von Skripts auf VMs |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/virtualMachineScaleSets/* | Erstellen und Verwalten von Skalierungsgruppen für virtuelle Computer |
+> | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/cloudServices/* |  |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/disks/write | Erstellt einen neuen Datenträger oder aktualisiert einen bereits vorhandenen. |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/disks/read | Dient zum Abrufen der Eigenschaften eines Datenträgers. |
 > | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/disks/delete | Löscht den Datenträger. |
@@ -672,6 +673,7 @@ Erstellen und Verwalten von VMs, Verwalten von Datenträgern und Datenträgermom
         "Microsoft.Compute/locations/*",
         "Microsoft.Compute/virtualMachines/*",
         "Microsoft.Compute/virtualMachineScaleSets/*",
+        "Microsoft.Compute/cloudServices/*",
         "Microsoft.Compute/disks/write",
         "Microsoft.Compute/disks/read",
         "Microsoft.Compute/disks/delete",
@@ -2930,6 +2932,7 @@ Gewährt Lese-, Schreib- und Löschzugriff auf kartenbezogene Daten von einem Az
 > | [Microsoft.Maps](resource-provider-operations.md#microsoftmaps)/accounts/*/read |  |
 > | [Microsoft.Maps](resource-provider-operations.md#microsoftmaps)/accounts/*/write |  |
 > | [Microsoft.Maps](resource-provider-operations.md#microsoftmaps)/accounts/*/delete |  |
+> | [Microsoft.Maps](resource-provider-operations.md#microsoftmaps)/accounts/*/action |  |
 > | **NotDataActions** |  |
 > | *keine* |  |
 
@@ -2948,7 +2951,8 @@ Gewährt Lese-, Schreib- und Löschzugriff auf kartenbezogene Daten von einem Az
       "dataActions": [
         "Microsoft.Maps/accounts/*/read",
         "Microsoft.Maps/accounts/*/write",
-        "Microsoft.Maps/accounts/*/delete"
+        "Microsoft.Maps/accounts/*/delete",
+        "Microsoft.Maps/accounts/*/action"
       ],
       "notDataActions": []
     }
@@ -3955,7 +3959,7 @@ Ermöglicht das Erstellen, Lesen, Aktualisieren und Löschen von SignalR Service
 
 ### <a name="web-plan-contributor"></a>Mitwirkender von Webplan
 
-Ermöglicht Ihnen das Verwalten der Webpläne für Websites, nicht aber den Zugriff darauf.
+Dieser verwaltet die Webpläne für Websites. Ermöglicht es Ihnen nicht, Rollen in Azure RBAC zuzuweisen.
 
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |
@@ -4008,7 +4012,7 @@ Ermöglicht Ihnen das Verwalten der Webpläne für Websites, nicht aber den Zugr
 
 ### <a name="website-contributor"></a>Mitwirkender von Website
 
-Ermöglicht Ihnen das Verwalten von Websites (nicht der Webpläne), nicht aber den Zugriff darauf.
+Verwalten von Websites, aber nicht von Webplänen. Ermöglicht es Ihnen nicht, Rollen in Azure RBAC zuzuweisen.
 
 > [!div class="mx-tableFixed"]
 > | Aktionen | BESCHREIBUNG |
@@ -10751,6 +10755,65 @@ Kann Arbeitsmappen lesen. [Weitere Informationen](../sentinel/tutorial-monitor-y
 ## <a name="management--governance"></a>Verwaltung + Governance
 
 
+### <a name="automation-contributor"></a>Mitwirkender für Automatisierung
+
+Verwalten von Azure Automation-Ressourcen und anderen Ressourcen mit Azure Automation. [Weitere Informationen](../automation/automation-role-based-access-control.md)
+
+> [!div class="mx-tableFixed"]
+> | Aktionen | BESCHREIBUNG |
+> | --- | --- |
+> | [Microsoft.Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/* |  |
+> | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | Lesen von Rollen und Rollenzuweisungen |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | Erstellen und Verwalten einer Bereitstellung |
+> | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
+> | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | Erstellen und Aktualisieren eines Supporttickets |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/ActionGroups/* |  |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/ActivityLogAlerts/* |  |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/MetricAlerts/* |  |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/ScheduledQueryRules/* |  |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/diagnosticSettings/* | Erstellt, aktualisiert oder liest die Diagnoseeinstellung für den Analysis-Server. |
+> | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/sharedKeys/action | Ruft die gemeinsam verwendeten Schlüssel für den Arbeitsbereich ab. Diese Schlüssel werden verwendet, um Microsoft Operational Insights-Agents mit dem Arbeitsbereich zu verbinden. |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Manage azure automation resources and other resources using azure automation.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/f353d9bd-d4a6-484e-a77a-8050b599b867",
+  "name": "f353d9bd-d4a6-484e-a77a-8050b599b867",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Automation/automationAccounts/*",
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.Insights/ActionGroups/*",
+        "Microsoft.Insights/ActivityLogAlerts/*",
+        "Microsoft.Insights/MetricAlerts/*",
+        "Microsoft.Insights/ScheduledQueryRules/*",
+        "Microsoft.Insights/diagnosticSettings/*",
+        "Microsoft.OperationalInsights/workspaces/sharedKeys/action"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Automation Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ### <a name="automation-job-operator"></a>Automation-Auftragsoperator
 
 Hiermit werden Aufträge mithilfe von Automation-Runbooks erstellt und verwaltet. [Weitere Informationen](../automation/automation-role-based-access-control.md)
@@ -10942,7 +11005,7 @@ Runbookeigenschaften lesen: Ermöglicht das Erstellen von Runbookaufträgen. [We
 }
 ```
 
-### <a name="azure-arc-enabled-kubernetes-cluster-user-role"></a>Azure Arc-aktivierte Kubernetes-Cluster-Benutzerrolle
+### <a name="azure-arc-enabled-kubernetes-cluster-user-role"></a>Benutzerrolle für Azure Arc-aktivierte Kubernetes-Cluster
 
 Aktion zum Auflisten der Anmeldeinformationen eines Clusterbenutzers.
 

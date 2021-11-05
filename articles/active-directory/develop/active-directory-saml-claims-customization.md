@@ -13,12 +13,12 @@ ms.date: 07/20/2021
 ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 77d564cb54910391b0a0eb9f2492bfa74a044512
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: f4ef55cd1a780612647e5e39eb13eed84fdead42
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129619026"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131032167"
 ---
 # <a name="customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Anpassen von Ansprüchen im SAML-Token für Unternehmensanwendungen
 
@@ -50,7 +50,7 @@ Gehen Sie wie folgt vor, um die NameID (den Wert für den Namensbezeichner) zu b
 
 Wenn die SAML-Anforderung das NameIDPolicy-Element in einem bestimmten Format enthält, berücksichtigt Microsoft Identity Platform das Format in der Anforderung.
 
-Wenn die SAML-Anforderung kein Element für NameIDPolicy enthält, gibt Microsoft Identity Platform die NameID in dem von Ihnen angegebenen Format aus. Wenn kein Format angegeben ist, verwendet Microsoft Identity Platform das Standardquellformat, das der ausgewählten Anspruchsquelle zugeordnet ist. Wenn eine Transformation zu einem NULL- oder unzulässigen Wert führt, sendet Azure AD in nameIdentifier einen persistenten paarweisen Bezeichner. 
+Wenn die SAML-Anforderung kein Element für NameIDPolicy enthält, gibt Microsoft Identity Platform die NameID in dem von Ihnen angegebenen Format aus. Wenn kein Format angegeben ist, verwendet Microsoft Identity Platform das Standardquellformat, das der ausgewählten Anspruchsquelle zugeordnet ist. Wenn eine Transformation zu einem NULL- oder ungültigen Wert führt, sendet Azure AD in nameIdentifier einen persistenten paarweisen Bezeichner. 
 
 Im Dropdownmenü **Namensbezeichnerformat auswählen** können Sie eine der folgenden Optionen auswählen.
 
@@ -141,7 +141,7 @@ Zum Transformieren von Ansprüchen können Sie die folgenden Funktionen verwende
 | **IfEmpty()** | Gibt ein Attribut oder eine Konstante aus, wenn die Eingabe null oder leer ist.<br/>Beispiel: Sie möchten ein in einem Erweiterungsattribut (extensionattribute) gespeichertes Attribut ausgeben, wenn die Mitarbeiter-ID für einen bestimmten Benutzer leer ist. Hierzu konfigurieren Sie die folgenden Werte:<br/>Parameter 1 (Eingabe): user.employeeid<br/>Parameter 2 (Ausgabe): user.extensionattribute1<br/>Parameter 3 (Ausgabe, wenn keine Übereinstimmung vorhanden ist): user.employeeid |
 | **IfNotEmpty()** | Gibt ein Attribut oder eine Konstante aus, wenn die Eingabe nicht null oder leer ist.<br/>Beispiel: Sie möchten ein in einem Erweiterungsattribut (extensionattribute) gespeichertes Attribut ausgeben, wenn die Mitarbeiter-ID für einen bestimmten Benutzer nicht leer ist. Hierzu konfigurieren Sie die folgenden Werte:<br/>Parameter 1 (Eingabe): user.employeeid<br/>Parameter 2 (Ausgabe): user.extensionattribute1 |
 
-Wenn Sie zusätzliche Transformationen benötigen, senden Sie Ihre Vorschläge an das [Azure AD-Feedbackforum](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=160599). Verwenden Sie dort die Kategorie *SaaS-Anwendung*.
+Wenn Sie zusätzliche Transformationen benötigen, senden Sie Ihre Vorschläge an das [Azure AD-Feedbackforum](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789). Verwenden Sie dort die Kategorie *SaaS-Anwendung*.
 
 ## <a name="add-the-upn-claim-to-saml-tokens"></a>Hinzufügen des UPN-Anspruchs zu SAML-Token
 

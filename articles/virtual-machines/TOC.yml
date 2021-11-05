@@ -163,6 +163,8 @@
               href: sizes-b-series-burstable.md
             - name: DCsv2-Serie
               href: dcv2-series.md
+            - name: DCsv3- und DCdsv3-Serie
+              href: dcv3-series.md
             - name: Dv2- und DSv2-Serie
               href: dv2-dsv2-series.md
             - name: Dv3- und DSv3-Serie
@@ -916,7 +918,7 @@
         - name: Übersicht
           displayName: 'availability and scale, availability, scale, autoscale, availability zones, AV zones'
           href: ../availability-zones/az-overview.md?context=/azure/virtual-machines/context/context
-        - name: CLI
+        - name: Befehlszeilenschnittstelle (CLI)
           displayName: 'availability and scale, availability, scale, autoscale, availability zones, AV zones'
           href: ./linux/create-cli-availability-zone.md
         - name: PowerShell
@@ -930,7 +932,7 @@
         - name: Übersicht
           displayName: 'proximity placement groups, ppg'
           href: co-location.md
-        - name: CLI
+        - name: Befehlszeilenschnittstelle (CLI)
           displayName: 'proximity placement groups, ppg'
           href: ./linux/proximity-placement-groups.md
         - name: PowerShell
@@ -973,7 +975,7 @@
         - name: Übersicht
           displayName: 'availability and scale, availability, scale, autoscale, availability sets, AV sets'
           href: availability-set-overview.md
-        - name: CLI
+        - name: Befehlszeilenschnittstelle (CLI)
           displayName: 'availability and scale, availability, scale, autoscale, availability sets, AV sets'
           href: ./linux/tutorial-availability-sets.md
         - name: PowerShell
@@ -1369,7 +1371,7 @@
           href: ../virtual-network/ip-services/virtual-network-deploy-static-pip-arm-portal.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
         - name: Azure PowerShell
           href: ../virtual-network/ip-services/virtual-network-deploy-static-pip-arm-ps.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: ../virtual-network/ip-services/virtual-network-deploy-static-pip-arm-cli.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
         - name: Hinzufügen einer öffentlichen IP-Adresse zu einem vorhanden virtuellen Computer
           href: ../virtual-network/ip-services/associate-public-ip-address-vm.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
@@ -1389,7 +1391,7 @@
           href: ../virtual-network/ip-services/virtual-network-multiple-ip-addresses-portal.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
         - name: Azure PowerShell
           href: ../virtual-network/ip-services/virtual-network-multiple-ip-addresses-powershell.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: ../virtual-network/ip-services/virtual-network-multiple-ip-addresses-cli.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
         - name: Hinzufügen oder Entfernen von Netzwerkschnittstellen
           href: ../virtual-network/virtual-network-network-interface-vm.md?context=/azure/virtual-machines/context/context
@@ -1397,7 +1399,7 @@
           items:
             - name: Azure PowerShell
               href: ./windows/multiple-nics.md
-            - name: Azure CLI
+            - name: Azure-Befehlszeilenschnittstelle
               href: ./linux/multiple-nics.md
     - name: 'Erstellen eines virtuellen Computers: beschleunigter Netzwerkbetrieb'
       items:

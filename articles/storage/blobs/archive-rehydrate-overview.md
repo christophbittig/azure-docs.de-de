@@ -1,38 +1,38 @@
 ---
-title: Rehydrierung von Klecksen aus der Archivebene
-description: Während ein Blob sich auf der Archivzugriffsebene befindet, wird es als offline betrachtet und kann nicht gelesen oder geändert werden. Wenn Daten in einem archivierten Blob gelesen oder geändert werden sollen, muss das Blob zunächst auf einer Onlineebene (heiße oder kalte Ebene) aktiviert werden.
+title: Aktivierung von Blobs aus der Archivebene
+description: Während ein Blob sich auf der Archivebene befindet, wird es als offline betrachtet und kann nicht gelesen oder geändert werden. Wenn Daten in einem archivierten Blob gelesen oder geändert werden sollen, muss das Blob zunächst auf einer Onlineebene (heiße oder kalte Ebene) aktiviert werden.
 services: storage
 author: tamram
 ms.author: tamram
-ms.date: 09/29/2021
+ms.date: 10/25/2021
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: fryu
-ms.openlocfilehash: 195238c6ef4191266a0f4b5dd481fbf24b70528f
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 170d6e8cdd8115eab48d7e0714fe189305488f67
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129271819"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131013572"
 ---
-# <a name="blob-rehydration-from-the-archive-tier"></a>Rehydrierung von Klecksen aus der Archivebene
+# <a name="blob-rehydration-from-the-archive-tier"></a>Aktivierung von Blobs aus der Archivebene
 
-Während ein Blob sich auf der Archivzugriffsebene befindet, wird es als offline betrachtet und kann nicht gelesen oder geändert werden. Wenn Daten in einem archivierten Blob gelesen oder geändert werden sollen, muss das Blob zunächst auf einer Onlineebene (heiße oder kalte Ebene) aktiviert werden. Es gibt zwei Möglichkeiten, ein auf der Archivebene gespeichertes Blob zu aktivieren:
+Während ein Blob sich auf der Archivebene befindet, wird es als offline betrachtet und kann nicht gelesen oder geändert werden. Wenn Daten in einem archivierten Blob gelesen oder geändert werden sollen, muss das Blob zunächst auf einer Onlineebene (heiße oder kalte Ebene) aktiviert werden. Es gibt zwei Möglichkeiten, ein auf der Archivebene gespeichertes Blob zu aktivieren:
 
-- [Kopieren eines archivierten Blobs auf eine Onlineebene](#copy-an-archived-blob-to-an-online-tier): Sie können ein archiviertes Blob mithilfe des Vorgangs[Copy Blob](/rest/api/storageservices/copy-blob) oder [Copy Blob from URL](/rest/api/storageservices/copy-blob-from-url) in ein neues Blob auf der heißen oder kalten Ebene kopieren. Microsoft empfiehlt diese Option für die meisten Szenarios.
+- [Kopieren eines archivierten Blobs in eine Onlineebene](#copy-an-archived-blob-to-an-online-tier): Sie können ein archiviertes Blob mithilfe des Vorgangs [Copy Blob](/rest/api/storageservices/copy-blob) in ein neues Blob auf der heißen oder kalten Ebene kopieren und so aktivieren. Microsoft empfiehlt diese Option für die meisten Szenarien.
 
-- [Ändern der Zugriffsebene eines Blobs in eine Onlineebene](#change-a-blobs-access-tier-to-an-online-tier): Sie können ein archiviertes Blob auf der heißen oder kalten Ebene aktivieren, indem Sie die Ebene mithilfe des Vorgangs [Blobebene festlegen](/rest/api/storageservices/set-blob-tier) ändern.
+- [Ändern der Zugriffsebene eines Blobs in eine Onlineebene](#change-a-blobs-access-tier-to-an-online-tier): Sie können ein archiviertes Blob auf der heißen oder kalten Ebene aktivieren, indem Sie die Ebene mithilfe des Vorgangs [Set Blob Tier](/rest/api/storageservices/set-blob-tier) ändern.
 
-Die Aktivierung eines Blobs aus der Archivebene kann mehrere Stunden dauern. Microsoft empfiehlt, größere Blobs zu aktivieren, um eine optimale Leistung zu erzielen. Es kann länger dauern, wenn mehrere kleine Blobs gleichzeitig aktiviert werden.
+Die Aktivierung eines Blobs aus der Archivebene kann mehrere Stunden dauern. Microsoft empfiehlt, größere Blobs zu aktivieren, um eine optimale Leistung zu erzielen. Es kann länger dauern, wenn mehrere kleine Blobs gleichzeitig aktiviert werden. Pro Speicherkonto können maximal 10 GiB pro Stunde aktiviert werden.
 
 Sie können [Azure Event Grid](../../event-grid/overview.md) so konfigurieren, dass ein Ereignis ausgelöst wird, wenn ein Blob aus der Archivebene in einer Onlineebene aktiviert wird, und dass das Ereignis an einen Ereignishandler gesendet wird. Weitere Informationen hierzu finden Sie unter [Behandeln eines Ereignisses bei der Blobaktivierung](#handle-an-event-on-blob-rehydration).
 
-Weitere Informationen über Zugriffsebenen in Azure Storage finden Sie unter [Heiße, kühle und Archiv-Zugriffsebenen für Blobdaten](access-tiers-overview.md).
+Weitere Informationen zu Zugriffsebenen in Azure Storage finden Sie unter [Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“ für Blobdaten](access-tiers-overview.md).
 
 ## <a name="rehydration-priority"></a>Aktivierungspriorität
 
-Wenn Sie ein Blob aktivieren, können Sie die Priorität für den Aktivierungsvorgang über den optionalen *x-ms-rehydrate-priority*-Header bei den Vorgängen [Set Blob Tier](/rest/api/storageservices/set-blob-tier) oder [Copy Blob](/rest/api/storageservices/copy-blob)/[Copy Blob from URL](/rest/api/storageservices/copy-blob-from-url) festlegen. Optionen für Aktivierungspriorität:
+Wenn Sie ein Blob aktivieren, können Sie die Priorität für den Aktivierungsvorgang über den optionalen Header *x-ms-rehydrate-priority* bei den Vorgängen [Set Blob Tier](/rest/api/storageservices/set-blob-tier) oder [Copy Blob](/rest/api/storageservices/copy-blob) festlegen. Optionen für Aktivierungspriorität:
 
 - **Standardpriorität**: Die Aktivierungsanforderung gemäß der Eingangsreihenfolge verarbeitet und kann bis zu 15 Stunden dauern.
 - **Hohe Priorität**: Die Aktivierungsanforderung hat Vorrang vor Anforderungen mit Standardpriorität und kann bei Objekten mit einer Größe von weniger als 10 GB in weniger als einer Stunde verarbeitet werden.
@@ -41,18 +41,24 @@ Wenn Sie die Aktivierungspriorität während des Aktivierungsvorgangs prüfen m�
 
 Die Standardpriorität ist die Standardaktivierungsoption. Die Aktivierung mit hoher Priorität ist eine schnellere Option, kostet aber auch mehr als die Aktivierung mit Standardpriorität. Die Aktivierung mit hoher Priorität kann je nach Blobgröße und aktueller Auslastung länger als eine Stunde dauern. Microsoft empfiehlt, die Aktivierung mit hoher Priorität nur in Notfallsituationen zu verwenden, in denen Daten dringend wiederhergestellt werden müssen.
 
+Während ein Aktivierungsvorgang mit Standardpriorität läuft, können Sie die Einstellung der Aktivierungspriorität für ein Blob in *Hoch* ändern, um dieses Blog schneller zu aktivieren. Wenn Sie viele Blobs auf einmal aktivieren, können Sie im ersten Vorgang die Priorität *Standard* für alle Blobs festlegen und die Priorität dann für alle Blobs in *Hoch* ändern, die schneller online geschaltet werden müssen. Der Grenzwert liegt bei 10 GiB pro Stunde.
+
+Die Einstellung der Aktivierungspriorität kann nicht für ausstehende Vorgänge nicht von *Hoch* auf *Standard* gesenkt werden. Beachten Sie, dass eine Änderung der Aktivierungspriorität sich auf die Kosten auswirken kann.
+
+Weitere Informationen zum Festlegen und Aktualisieren der Aktivierungspriorität finden Sie unter [Aktivieren eines archivierten Blobs auf einer Onlineebene](archive-rehydrate-to-online-tier.md).
+
 Weitere Informationen zu den Preisunterschieden zwischen Aktivierungsanforderungen mit Standardpriorität und hoher Priorität finden Sie unter [Preise für Azure Blob Storage](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
 ## <a name="copy-an-archived-blob-to-an-online-tier"></a>Kopieren eines archivierten Blobs auf eine Onlineebene
 
-Die erste Möglichkeit, ein Blob aus der Archivebene in eine Onlineebene zu verschieben, besteht darin, das archivierte Blob in ein neues Zielblob, also die heiße oder kalte Ebene, zu kopieren. Zum Kopieren des Blobs kann der Vorgang [Copy Blob](/rest/api/storageservices/copy-blob) oder [Copy Blob from URL](/rest/api/storageservices/copy-blob-from-url) verwendet werden. Wenn ein archiviertes Blob in ein neues Blob auf der Onlineebene kopiert wird, bleibt das Quellblob auf der Archivebene unverändert.
+Die erste Möglichkeit, ein Blob aus der Archivebene in eine Onlineebene zu verschieben, besteht darin, das archivierte Blob in ein neues Zielblob, also die heiße oder kalte Ebene, zu kopieren. Sie können den Vorgang [Copy Blob](/rest/api/storageservices/copy-blob) verwenden, um das Blob zu kopieren. Wenn ein archiviertes Blob in ein neues Blob auf der Onlineebene kopiert wird, bleibt das Quellblob auf der Archivebene unverändert.
 
 Das archivierte Blob muss in ein neues Blob mit einem anderen Namen oder in einen anderen Container kopiert werden. Das Quellblob kann nicht durch Kopieren in dasselbe Blob überschrieben werden.
 
 Microsoft empfiehlt in den meisten Fällen, in denen ein Blob aus der Archivebene in eine Onlineebene verschoben werden muss, aus folgenden Gründen einen Kopiervorgang durchzuführen:
 
 - Durch einen Kopiervorgang wird die Gebühr für vorzeitiges Löschen vermieden, die erhoben wird, wenn die Ebene für das Blob aus der Archivebene vor Ablauf der vorgesehenen Frist von 180 Tagen gewechselt wird. Weitere Informationen finden Sie unter [Zugriffsebene „Archiv“](access-tiers-overview.md#archive-access-tier).
-- Wenn für das Speicherkonto eine Lebenszyklusverwaltungsrichtlinie gilt, kann die Aktivierung eines Blobs mit [Set Blob Tier](/rest/api/storageservices/set-blob-tier) dazu führen, dass das Blob aufgrund der Lebenszyklusrichtlinie nach der Aktivierung auf die Archivebene zurück verschoben wird, weil der Zeitpunkt der letzten Änderung nach dem für die Richtlinie festgelegten Schwellenwert liegt. Bei einem Kopiervorgang bleibt das Quellblob auf der Archivebene und es wird ein neues Blob mit einem anderen Namen und einem neuen Wert für den Zeitpunkt der letzten Änderung erstellt, sodass keine Gefahr besteht, dass das aktivierte Blob aufgrund der Lebenszyklusrichtlinie auf die Archivebene zurück verschoben wird.
+- Wenn für das Speicherkonto eine Lebenszyklusverwaltungsrichtlinie gilt, kann die Aktivierung eines Blobs mit [Set Blob Tier](/rest/api/storageservices/set-blob-tier) dazu führen, dass das Blob aufgrund der Lebenszyklusrichtlinie nach der Aktivierung auf die Archivebene zurück verschoben wird, weil der Zeitpunkt der letzten Änderung nach dem für die Richtlinie festgelegten Schwellenwert liegt. Bei einem Kopiervorgang bleibt das Quellblob auf der Archivebene, und es wird ein neues Blob mit einem anderen Namen und einem neuen Wert für den Zeitpunkt der letzten Änderung erstellt, sodass keine Gefahr besteht, dass das aktivierte Blob aufgrund der Lebenszyklusrichtlinie auf die Archivebene zurück verschoben wird.
 
 Das Kopieren eines Blobs aus dem Archiv kann je nach ausgewählter Aktivierungspriorität mehrere Stunden dauern. Im Hintergrund wird beim Vorgang „Copy Blob“ das archivierte Quellblob gelesen und so auf der ausgewählten Zielebene ein neues Onlineblob erstellt. Das neue Blob wird möglicherweise bereits vor Abschluss der Aktivierung in der Liste der Blobs im übergeordneten Container angezeigt, wobei die Ebene des Blobs jedoch auf Archiv festgelegt ist. Die Daten sind erst verfügbar, wenn der Lesevorgang aus dem Quellblob in die Archivebene abgeschlossen ist und der Inhalt des Blobs in das Zielblob auf einer Onlineebene geschrieben wurde. Beim neuen Blob handelt es sich um eine unabhängige Kopie, sodass es keine Auswirkungen auf das Quellblob auf der Archivebene hat, wenn das neue Blob geändert oder gelöscht wird.
 
@@ -73,7 +79,7 @@ In der folgenden Tabelle ist das Verhalten eines Blobkopiervorgangs abhängig vo
 
 ## <a name="change-a-blobs-access-tier-to-an-online-tier"></a>Ändern der Zugriffsebene eines Blobs in eine Onlineebene
 
-Die zweite Möglichkeit, ein Blob aus der Archivebene in einer Onlineebene zu aktivieren, besteht darin, die Ebene des Blobs durch den Aufruf von [Set Blob Tier](/rest/api/storageservices/set-blob-tier) zu wechseln. Mit diesem Vorgang kann die Ebene des archivierten Blobs in heiß oder kalt geändert werden.
+Die zweite Möglichkeit, ein Blob aus der Archivebene in einer Onlineebene zu aktivieren, besteht darin, die Ebene des Blobs durch den Aufruf von [Set Blob Tier](/rest/api/storageservices/set-blob-tier) zu wechseln. Mit diesem Vorgang kann die Ebene des archivierten Blobs in „Heiß“ oder „Kalt“ geändert werden.
 
 Sobald eine [Set Blob Tier](/rest/api/storageservices/set-blob-tier)-Anforderung initiiert wurde, kann sie nicht mehr abgebrochen werden. Während des Aktivierungsvorgangs wird die Zugriffsebene des Blobs weiterhin als archiviert angezeigt, bis der Aktivierungsprozess abgeschlossen ist. Nach Abschluss des Aktivierungsvorgangs wird die Zugriffsebeneneigenschaft des Blobs aktualisiert, sodass die neue Ebene angezeigt wird.
 
@@ -94,7 +100,7 @@ Die Aktivierung eines archivierten Blobs kann bis zu 15 Stunden dauern, und das
 
 Je nachdem, welcher Vorgang zum Aktivieren des Blobs verwendet wurde, wird bei der Blobaktivierung durch Azure Event Grid eines der beiden Ereignisse ausgelöst:
 
-- Das Ereignis **Microsoft.Storage.BlobCreated** wird ausgelöst, wenn ein Blob erstellt wird. Im Kontext einer Blobaktivierung wird dieses Ereignis ausgelöst, wenn bei einem [Copy Blob](/rest/api/storageservices/copy-blob)- oder [Copy Blob from URL](/rest/api/storageservices/copy-blob-from-url)-Vorgang in der heißen oder kalten Ebene ein neues Zielblob erstellt wird und die Daten des Blobs aus der Archivebene vollständig aktiviert werden.
+- Das Ereignis **Microsoft.Storage.BlobCreated** wird ausgelöst, wenn ein Blob erstellt wird. Im Kontext einer Blobaktivierung wird dieses Ereignis ausgelöst, wenn bei einem [Copy Blob](/rest/api/storageservices/copy-blob)-Vorgang in der heißen oder kalten Ebene ein neues Zielblob erstellt wird und die Daten des Blobs aus der Archivebene vollständig aktiviert werden.
 - Das Ereignis **Microsoft.Storage.BlobTierChanged** wird ausgelöst, wenn sich die Ebene des Blobs ändert. Im Kontext einer Blobaktivierung wird dieses Ereignis ausgelöst, wenn bei einem [Set Blob Tier](/rest/api/storageservices/set-blob-tier)-Vorgang die Ebene eines archivierten Blobs erfolgreich in die heiße oder kalte Ebene geändert wird.
 
 Informationen zum Aufzeichnen eines Ereignisses bei der Aktivierung und zum Senden des Ereignisses an einen Ereignishandler einer Azure-Funktion finden Sie unter [Ausführen einer Azure-Funktion als Reaktion auf ein Blob-Aktivierungsereignis](archive-rehydrate-handle-event.md).
@@ -105,15 +111,15 @@ Weitere Informationen zur Behandlung von Ereignissen in Blob Storage finden Sie 
 
 Ein Aktivierungsvorgang mit [Set Blob Tier](/rest/api/storageservices/set-blob-tier) wird pro Datenlesetransaktion und je nach Datenabrufgröße berechnet. Eine Aktivierung mit hoher Priorität verursachen höhere Vorgangs- und Datenabrufkosten als Vorgänge mit Standardpriorität. Aktivierungsvorgänge mit hoher Priorität werden auf Ihrer Rechnung als separater Posten ausgewiesen. Wenn eine Anforderung zum Abruf eines einige Gigabytes großen archivierten Blobs mit hoher Priorität über fünf Stunden dauert, werden Ihnen nicht die Gebühren für einen Abruf mit hoher Priorität berechnet. Stattdessen werden die Standardgebühren für Abrufvorgänge berechnet.
 
-Das Kopieren eines archivierten Blobs in eine Onlineebene mit [Copy Blob](/rest/api/storageservices/copy-blob) oder [Copy Blob from URL](/rest/api/storageservices/copy-blob-from-url) wird pro Datenlesetransaktion und je nach Datenabrufgröße berechnet. Das Erstellen des Zielblobs in einer Onlineebene wird pro Datenschreibtransaktion berechnet. Gebühren für frühes Löschen fallen beim Kopieren in ein Onlineblob nicht an, weil das Quellblob auf der Archivzugriffsebene unverändert bleibt. Für einen Abruf mit hoher Priorität werden Gebühren berechnet, sofern dieser ausgewählt ist.
+Das Kopieren eines archivierten Blobs in eine Onlineebene mit [Copy Blob](/rest/api/storageservices/copy-blob) wird pro Datenlesetransaktion und je nach Datenabrufgröße berechnet. Das Erstellen des Zielblobs in einer Onlineebene wird pro Datenschreibtransaktion berechnet. Gebühren für frühzeitiges Löschen fallen beim Kopieren in ein Onlineblob nicht an, weil das Quellblob auf der Archivebene unverändert bleibt. Für einen Abruf mit hoher Priorität werden Gebühren berechnet, sofern dieser ausgewählt ist.
 
-Blobs auf Archivzugriffsebene müssen mindestens 180 Tage lang gespeichert werden. Für das Löschen oder Ändern der Ebene eines archivierten Blobs vor Ablauf der 180-Tage-Frist wird eine Gebühr für vorzeitiges Löschen berechnet. Weitere Informationen finden Sie unter [Zugriffsebene „Archiv“](access-tiers-overview.md#archive-access-tier).
+Blobs auf Archivebene müssen mindestens 180 Tage lang gespeichert werden. Für das Löschen oder Ändern der Ebene eines archivierten Blobs vor Ablauf der 180-Tage-Frist wird eine Gebühr für vorzeitiges Löschen berechnet. Weitere Informationen finden Sie unter [Zugriffsebene „Archiv“](access-tiers-overview.md#archive-access-tier).
 
 Weitere Informationen zu den Preisen für Blockblobs und Datenaktivierung finden Sie unter [Preise für Azure Storage](https://azure.microsoft.com/pricing/details/storage/blobs/). Weitere Informationen zu den Kosten für ausgehende Datenübertragungen finden Sie unter [Datenübertragungen – Preisdetails](https://azure.microsoft.com/pricing/details/data-transfers/).
 
 ## <a name="see-also"></a>Weitere Informationen
 
-- [Hot-, Cool- und Archivzugriffsebenen für Blobdaten](access-tiers-overview.md).
+- [Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“ für Blobdaten](access-tiers-overview.md)
 - [Aktivieren eines archivierten Blobs auf einer Onlineebene](archive-rehydrate-to-online-tier.md)
 - [Ausführen einer Azure-Funktion als Reaktion auf ein Blob-Aktivierungsereignis](archive-rehydrate-handle-event.md)
 - [Reacting to Blob storage events (preview)](storage-blob-event-overview.md) (Reagieren auf Blob Storage-Ereignisse (Vorschauversion))

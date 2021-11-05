@@ -9,12 +9,12 @@ ms.subservice: orchestration
 ms.custom: synapse
 ms.topic: conceptual
 ms.date: 09/09/2021
-ms.openlocfilehash: c3e5dc6c0a45d8db64d697232d7a5d3f0c212317
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 30aa69b414770a1d787767f0be4b1e27b50d86d7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124782625"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131084916"
 ---
 # <a name="delete-activity-in-azure-data-factory-and-azure-synapse-analytics"></a>Aktivitäten in Azure Data Factory and Azure Synapse Analytics löschen
 
@@ -82,7 +82,7 @@ Nachfolgend sind einige Empfehlungen für die Verwendung der Delete-Aktivität a
 
 ## <a name="type-properties"></a>Typeigenschaften
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | dataset | Stellt die Datasetreferenz zur Ermittlung der zu löschenden Dateien oder Ordner bereit. | Ja |
 | recursive | Gibt an, ob die Dateien rekursiv aus den Unterordnern oder nur aus dem angegebenen Ordner gelöscht werden.  | Nein. Der Standardwert lautet `false`. |
@@ -365,10 +365,10 @@ Sie können eine Pipeline erstellen, um die alten oder abgelaufenen Dateien mith
 
 ### <a name="move-files-by-chaining-the-copy-activity-and-the-delete-activity"></a>Verschieben von Dateien durch Verkettung der Copy-Aktivität und der Delete-Aktivität
 
-Sie können eine Datei verschieben. Nutzen Sie dazu die Copy-Aktivität zum Kopieren einer Datei und anschließend die Delete-Aktivität zum Löschen einer Datei in einer Pipeline.  Wenn Sie mehrere Dateien verschieben möchten, können Sie wie im Beispiel weiter unten die folgenden Aktivitäten verwenden: GetMetadata-Aktivität, Filter-Aktivität, ForEach-Aktivität, Copy-Aktivität und Delete-Aktivität:
+Sie können eine Datei verschieben. Nutzen Sie dazu die Kopieren-Funktion zum Kopieren einer Datei und anschließend die Löschen-Funktion zum Löschen einer Datei in einer Pipeline.  Wenn Sie mehrere Dateien verschieben möchten, können Sie wie im Beispiel weiter unten die folgenden Funktionen verwenden: GetMetadata-Funktion, Filter-Funktion, ForEach-Funktion, Kopieren-Funktion und Löschen-Funktion:
 
 > [!NOTE]
-> Lassen Sie Vorsicht walten, wenn Sie den gesamten Ordner verschieben möchten, indem Sie ein Dataset nur mit einem Ordnerpfad definieren und anschließend eine Copy- und eine Delete-Aktivität verwenden, um auf das gleiche Dataset zu verweisen, das einen Ordner darstellt. In diesem Fall müssen Sie sicherstellen, dass zwischen dem Kopiervorgang und dem Löschvorgang KEINE neuen Dateien im Ordner platziert werden.  Wenn neue Dateien zu dem Zeitpunkt im Ordner platziert werden, zu dem die Copy-Aktivität gerade abgeschlossen, die Delete-Aktivität jedoch noch nicht gestartet wurde, werden diese neuen Dateien, die noch NICHT ins Ziel kopiert wurden, unter Umständen von der Delete-Aktivität durch Löschung des gesamten Ordners gelöscht. 
+> Lassen Sie Vorsicht walten, wenn Sie den gesamten Ordner verschieben möchten, indem Sie einen Datensatz auf nur einem Ordnerpfad festlegen und anschließend eine Kopieren- und Löschen-Funktion anwenden, um auf den gleichen Datensatz zu verweisen, das einen Ordner darstellt. Sie müssen sicherstellen, dass zwischen dem Kopiervorgang und dem Löschvorgang **keine** neuen Dateien im Ordner eintreffen. Wenn neue Dateien zu dem Zeitpunkt im Ordner platziert werden, zu dem der Kopiervorgang gerade abgeschlossen wurde, der Löschvorgang jedoch noch nicht gestartet wurde, können diese neuen Dateien, die noch NICHT ins Ziel kopiert wurden, unter Umständen beim Löschvorgang durch Löschung des gesamten Ordners gelöscht werden. 
 
 #### <a name="sample-pipeline"></a>Beispiel-Pipeline
 

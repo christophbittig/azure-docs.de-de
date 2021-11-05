@@ -5,12 +5,12 @@ author: mumian
 ms.topic: conceptual
 ms.author: jgao
 ms.date: 06/23/2021
-ms.openlocfilehash: 1c8817fcc6a0cf24a0983f2df60f02cc42b79200
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 30ab8481456dd03f4ecee597c9626c07772bbe3a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124764372"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131059754"
 ---
 # <a name="integrate-bicep-with-azure-pipelines"></a>Integration von Bicep in Azure Pipelines
 
@@ -87,6 +87,6 @@ Für eine Azure CLI-Aufgabe werden die folgenden Eingaben benötigt:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zur Verwendung von Bicep mit Azure Pipelines sowie praktische Anleitungen finden Sie unter [Erstellen Ihrer ersten Bicep-Bereitstellungspipeline mithilfe von Azure Pipelines](/learn/modules/build-first-bicep-deployment-pipeline-using-azure-pipelines/) auf **Microsoft Learn**.
+* Weitere Informationen zur Verwendung von Bicep mit Azure-Pipelines sowie praktische Anleitungen finden Sie unter [Anwenden von Azure-Ressourcen mithilfe von Bicep und Azure-Pipelines](/learn/paths/bicep-azure-pipelines/) auf **Microsoft Learn**.
 * Informationen zum Verwenden des Was-wäre-wenn-Vorgangs in einer Pipeline finden Sie unter [Testen von ARM-Vorlagen mit Was-wäre-wenn-Vorgang in einer Pipeline](https://4bes.nl/2021/03/06/test-arm-templates-with-what-if/).
 * Informationen zur Verwendung der Bicep-Datei mit GitHub Actions finden Sie unter [Bereitstellen von Bicep-Dateien mithilfe von GitHub Actions](./deploy-github-actions.md).

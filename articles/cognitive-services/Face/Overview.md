@@ -11,12 +11,12 @@ ms.date: 09/27/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: Gesichtserkennung, Gesichtserkennungssoftware, Gesichtsanalyse, Gesichtsabgleich, Gesichtserkennungs-App, Gesichtserkennungssuche nach Bild, Gesichtserkennungssuche
-ms.openlocfilehash: 90a2b656d66c15eed10d68be8e5af5c35f35d135
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 25e79bb8ab2d37c5b32a6519158cd53d79c1d94b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130005689"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131071418"
 ---
 # <a name="what-is-the-azure-face-service"></a>Was ist der Azure-Gesichtserkennungsdienst?
 
@@ -86,9 +86,9 @@ Das folgende Beispiel zeigt das Zielgesicht:
 
 Und diese Bilder sind die Kandidatengesichter:
 
-![Fünf Bilder mit lächelnden Personen. Die Bilder a und b gehören zu derselben Person.](./Images/FaceFindSimilar.Candidates.jpg)
+![Fünf Bilder mit lächelnden Personen. Die Bilder A und B zeigen dieselbe Person.](./Images/FaceFindSimilar.Candidates.jpg)
 
-Für die Suche nach vier ähnlichen Gesichtern gibt der Modus **matchPerson** a und b zurück. Diese zeigen dieselbe Person wie das Zielgesicht. Im Modus **matchFace** werden a, b, c und d zurückgegeben, also genau vier Kandidaten – auch wenn es sich teilweise um andere Personen handelt oder die Ähnlichkeit nur gering ist. Weitere Informationen finden Sie im Konzeptleitfaden zur [Gesichtserkennung](concepts/face-recognition.md) oder in der Referenzdokumentation zur [Find Similar-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237).
+Für die Suche nach vier ähnlichen Gesichtern gibt der Modus **matchPerson** A und B zurück. Diese zeigen dieselbe Person wie das Zielgesicht. Im Modus **matchFace** werden A, B, C und D zurückgegeben, also genau vier Kandidaten – auch wenn es sich teilweise um andere Personen handelt oder die Ähnlichkeit nur gering ist. Weitere Informationen finden Sie im Konzeptleitfaden zur [Gesichtserkennung](concepts/face-recognition.md) oder in der Referenzdokumentation zur [Find Similar-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237).
 
 ## <a name="group-faces"></a>Gruppieren von Gesichtern
 

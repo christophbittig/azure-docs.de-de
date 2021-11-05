@@ -7,12 +7,12 @@ ms.author: hickeys
 ms.date: 10/05/2021
 ms.topic: article
 ms.service: azure-fluid
-ms.openlocfilehash: 934122f4cb952a4be915c55c2555e336705a71c2
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 38999f706cdec3b27f41b9408c1ffcf5c689c41b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129710391"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131039480"
 ---
 # <a name="managing-fluid-containers"></a>Verwalten von Fluid-Containern
 
@@ -45,6 +45,22 @@ Container werden zum Zeitpunkt der Containererstellung vom Azure Fluid Relay-Die
 ### <a name="container-discovery"></a>Containerermittlung
 
 Entwickler sind für alle Erfahrungen und Geschäftslogiken im Zusammenhang mit der Benutzerermittlung von vorhandenen Containern verantwortlich. Dies könnte in Form einer durchsuchbaren Liste von Containern auf der Grundlage der Teilnahme des Benutzers an der Fluid-Sitzung, der direkten gemeinsamen Nutzung von Containern durch andere Benutzer oder der programmgesteuerten Zuweisung von Containern zu bestehenden Artefakten oder Prozessen erfolgen.
+
+## <a name="example-container-creation-flow"></a>Beispielflow für die Containererstellung
+
+:::image type="content" source="../images/container-creation-flow.jpg" lightbox="../images/container-creation-flow-lightbox.jpg" alt-text="Ein Diagramm, das die Datenflüsse für den Containererstellungsprozess beschreibt":::
+
+In diesem Beispiel wird die App/Seite mit einem generischen JWT geladen (nicht an einen bestimmten Container gebunden), den die Client-App zum Zeitpunkt der Erstellung eines neuen Containers verwendet.
+
+Die clientseitige App verwendet die Fluid Framework-API, um einen neuen Container im Azure Fluid Relay-Dienst zu erstellen, was zu einem Containerobjekt mit einer neu zugewiesenen Container-ID führt. Weitere Interaktionen mit dem Container erfordern ein neues JWT, das die Container-ID enthält.
+
+Nachdem der Client den neuen Container erstellt hat, speichert er die Container-ID in einem System, das Containern und Benutzern die Verwaltung von Berechtigungen zuordnet. Dieses System steuert alle Containerermittlungs-/Browserumgebungen, die Entwickler*innen für ihre Benutzer*innen erstellen möchten.
+
+Vor der Interaktion mit dem Container fordert der Client ein containerspezifisches JWT an, das für nachfolgende Aufrufe von der Fluid Framework-Runtime an den Azure Fluid Relay-Dienst verwendet wird. 
+
+## <a name="exporting-container-content"></a>Exportieren von Containerinhalten
+
+Wenn eine Anwendung Daten speichert, die möglicherweise von Endbenutzer*innen exportiert werden müssen, sind Anwendungsentwickler*innen dafür verantwortlich, diese Exportfunktionalität in die Anwendung zu integrieren. Dabei wird der aktuelle Status des Fluidcontainers verwendet, wie er durch die im Container definierten verteilten Datenstrukturen dargestellt wird. Weitere Informationen zum Herstellen einer Verbindung mit und zum Öffnen von Fluid-Containern finden Sie unter [Container (fluidframework.com)](https://fluidframework.com/docs/build/containers/). Weitere Informationen zum Auflisten und Löschen von Containern mit der Steuerungsebenen-API finden Sie unter [Löschen von Fluidcontainern in Microsoft Azure Fluid Relay Server](../how-tos/container-deletion.md).
 
 ## <a name="see-also"></a>Siehe auch
 

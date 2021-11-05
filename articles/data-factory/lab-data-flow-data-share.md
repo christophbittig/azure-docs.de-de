@@ -8,12 +8,12 @@ ms.subservice: tutorials
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 06/04/2021
-ms.openlocfilehash: 4194c277a8472f8834362de462d804db2a3b406d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 4d99139e708f0b69b3ddacd40e380853dabf8b2b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124798862"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131077950"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Datenintegration mit Azure Data Factory und Azure Data Share
 
@@ -97,7 +97,7 @@ Unter den verknüpften Azure Data Factory-Diensten definieren Sie die Informatio
 
 Im Abschnitt *Transformieren von Daten per Zuordnung von Datenflüssen* erstellen Sie Zuordnungsdatenflüsse. Eine bewährte Methode vor dem Erstellen von Zuordnungsdatenflüssen ist das Aktivieren des Debugmodus. Dies ermöglicht Ihnen das Testen der Transformationslogik innerhalb weniger Sekunden in einem aktiven Spark-Cluster.
 
-Klicken Sie zum Aktivieren des Debuggens auf der oberen Leiste der Datenfluss- oder Pipelinecanvas auf den Schieberegler **Datenflüsse debuggen**, wenn **Datenflussaktivitäten** vorhanden sind. Klicken Sie auf „OK“, wenn das Bestätigungsdialogfeld angezeigt wird. Es dauert ca. 5 bis 7 Minuten, bis der Startvorgang für den Cluster abgeschlossen ist. Fahren Sie mit dem *Erfassen von Daten aus Azure SQL-Datenbank in ADLS Gen2 per Copy-Aktivität* fort, während der Initialisierungsvorgang läuft.
+Klicken Sie zum Aktivieren des Debuggens auf der oberen Leiste der Datenfluss- oder Pipelinecanvas auf den Schieberegler **Datenflüsse debuggen**, wenn **Datenflussaktivitäten** vorhanden sind. Klicken Sie auf **OK**, wenn das Bestätigungsdialogfeld angezeigt wird. Der Cluster wird in etwa fünf bis sieben Minuten gestartet. Fahren Sie mit dem *Erfassen von Daten aus Azure SQL-Datenbank in ADLS Gen2 per Copy-Aktivität* fort, während der Initialisierungsvorgang läuft.
 
 :::image type="content" source="media/lab-data-flow-data-share/configure10.png" alt-text="Portal: Konfigurieren 10":::
 

@@ -9,12 +9,13 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 07/23/2021
 ms.author: lajanuar
-ms.openlocfilehash: 5b27e3db548c54cec4e77ee169921e45ac700524
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 2d61c48204478cc19be51d5d2c0d2974c674661d
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122343507"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131020842"
 ---
 # <a name="use-table-tags-to-train-your-custom-form-model"></a>Verwenden von Tabellentags zum Trainieren Ihres benutzerdefinierten Formularmodells
 
@@ -30,7 +31,7 @@ Im Folgenden sind einige Beispiele dafür aufgeführt, wann Tabellentags verwend
 > [!NOTE]
 > Die Formularerkennung findet und extrahiert automatisch alle Tabellen in Ihren Dokumenten, unabhängig davon, ob die Tabellen getaggt sind oder nicht. Daher müssen Sie nicht jede Tabelle des Formulars mit einem Tabellentag versehen, und die Tabellentags müssen nicht die Struktur jeder Tabelle in Ihrem Formular abbilden. Tabellen, die automatisch von der Formularerkennung extrahiert wurden, sind im Abschnitt pageResults der JSON-Ausgabe enthalten.
 
-## <a name="create-a-table-tag-with-the-form-recognizer-sample-labeling-tool"></a>Erstellen eines Tabellentags mit dem Formularerkennungstool für die Beschriftung von Beispielen
+## <a name="create-a-table-tag-with-the-form-recognizer-sample-labeling-tool"></a>Erstellen eines Tabellentags mit dem Tool für die Beschriftung von Beispielen für die Formularerkennung
 <!-- markdownlint-disable MD004 -->
 * Legen Sie fest, ob Sie ein Tabellentag mit **dynamischer** oder **fester Größe** erstellen möchten. Wenn die Anzahl der Zeilen von Dokument zu Dokument variiert, verwenden Sie ein dynamisches Tabellentag. Wenn die Anzahl der Zeilen in Ihren Dokumenten immer gleich ist, verwenden Sie ein Tabellentag mit fester Größe.
 * Wenn das Tabellentag dynamisch ist, definieren Sie die Spaltennamen sowie den Datentyp und das Format für die einzelnen Spalten.
@@ -47,9 +48,9 @@ Im Folgenden sind einige Beispiele dafür aufgeführt, wann Tabellentags verwend
 Sehen Sie sich den Schnellstart für das Trainieren und Verwenden Ihres benutzerdefinierten Modells für die Formularerkennung an:
 
 > [!div class="nextstepaction"]
-> [Trainieren eines Formularerkennungsmodells mit Beschriftungen mithilfe des Tools für die Beschriftung von Beispielen](label-tool.md)
+> [Trainieren eines benutzerdefinierten Modells mithilfe des Tools für die Beschriftung von Beispielen](label-tool.md)
 
 ## <a name="see-also"></a>Weitere Informationen
 
-* [Trainieren eines benutzerdefinierten Modells mit dem Tool für die Beschriftung von Beispielen](label-tool.md)
+* [Trainieren eines benutzerdefinierten Modells mithilfe des Tools für die Beschriftung von Beispielen](label-tool.md)
 >

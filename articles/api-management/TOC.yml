@@ -110,6 +110,8 @@
           href: restify-soap-api.md
         - name: Importieren einer WebSocket-API
           href: websocket-api.md
+        - name: Importieren einer GraphQL-API
+          href: graphql-api.md
         - name: Importieren einer Web-App
           href: import-app-service-as-api.md
         - name: Importieren einer Funktionen-App
@@ -290,6 +292,8 @@
           href: api-management-dapr-policies.md
         - name: Überprüfungsrichtlinien
           href: validation-policies.md
+        - name: GraphQL-Überprüfungsrichtlinien
+          href: graphql-validation-policies.md
     - name: Verwalten in Produktion
       items:
         - name: Exportieren von APIs in Power Platform
@@ -332,7 +336,7 @@
           href: diagnose-solve-problems.md
 - name: Verweis
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/apim
     - name: Azure PowerShell
       href: /powershell/module/az.apimanagement/

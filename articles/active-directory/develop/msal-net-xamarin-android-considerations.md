@@ -13,12 +13,12 @@ ms.date: 08/28/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 11642480ac817b50d102e396b8ab5e200948a615
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 04194dc73b7c91bd1e59140a032232246b72420e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "103199565"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131052701"
 ---
 # <a name="configuration-requirements-and-troubleshooting-tips-for-xamarin-android-with-msalnet"></a>Konfigurationsanforderungen und Tipps zur Problembehandlung für Xamarin Android mit MSAL.NET
 
@@ -129,7 +129,7 @@ Wenn Sie System WebView für den Fall, dass Sie für Ihre Anwendung die Brokerau
 </activity>
 ```
 
-Ersetzen Sie den Wert `android:host=` durch den Paketnamen, den Sie im Azure-Portal registriert haben. Ersetzen Sie den Wert `android:path=` durch den Schlüsselhash, den Sie im Azure-Portal registriert haben. Der Signaturhash darf *nicht* URL-codiert sein. Der Signaturhash muss mit einem führenden Schrägstrich (`/`) beginnen.
+Ersetzen Sie den Wert `android:host=` durch den Paketnamen, den Sie im Azure-Portal registriert haben. Ersetzen Sie den Wert `android:path=` durch den Schlüsselhash, den Sie im Azure-Portal registriert haben. Der Signaturhash darf **nicht** URL-codiert sein. Der Signaturhash muss mit einem führenden Schrägstrich (`/`) beginnen.
 
 ### <a name="xamarinforms-43x-manifest"></a>Xamarin.Forms 4.3.x-Manifest
 

@@ -1,6 +1,6 @@
 ---
-title: Verbinden Ihrer Nicht-Azure-Computer mit Azure Security Center
-description: Erfahren Sie, wie Sie Ihre Nicht-Azure-Computer mit Security Center verbinden.
+title: Verbinden von Nicht-Azure-Computern mit Microsoft Defender für Cloud
+description: Erfahren Sie, wie Sie Nicht-Azure-Computer mit Microsoft Defender für Cloud verbinden.
 author: memildin
 ms.author: memildin
 ms.date: 07/12/2021
@@ -8,21 +8,24 @@ ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
 zone_pivot_groups: non-azure-machines
-ms.openlocfilehash: 73384ff81ddbcc987bb07cd6e516921c32a4c296
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 0e5c44033a5f03726dc7e1f1129287edef5350aa
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129712893"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131014376"
 ---
-# <a name="connect-your-non-azure-machines-to-security-center"></a>Verbinden Ihrer Nicht-Azure-Computer mit Security Center
+# <a name="connect-your-non-azure-machines-to-microsoft-defender-for-cloud"></a>Verbinden von Nicht-Azure-Computern mit Microsoft Defender für Cloud
 
-Security Center kann den Sicherheitsstatus Ihrer Azure-fremden Computer überwachen. Dazu müssen diese jedoch mit Azure verbunden werden.
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
+
+Defender für Cloud kann den Sicherheitsstatus Ihrer Nicht-Azure-Computer überwachen. Dazu müssen diese jedoch zunächst mit Azure verbunden werden.
 
 Sie können Azure-fremde Computer auf eine der folgenden Arten verbinden:
 
 - Verwenden von Servern mit Azure Arc-Unterstützung (**empfohlen**)
-- Auf den Security Center-Seiten im Azure-Portal (**Erste Schritte** und **Bestand**)
+- Auf den Defender für Cloud-Seiten im Azure-Portal (**Erste Schritte** und **Bestand**)
 
 Beide Methoden werden auf dieser Seite beschrieben.
 
@@ -30,14 +33,14 @@ Beide Methoden werden auf dieser Seite beschrieben.
 
 ## <a name="add-non-azure-machines-with-azure-arc"></a>Hinzufügen eines Azure-fremden Computers mit Azure Arc
 
-Die bevorzugte Methode zum Hinzufügen Ihrer Azure-fremden Computer zu Azure Security Center ist die Verwendung von [Servern mit Azure Arc-Unterstützung](../azure-arc/servers/overview.md).
+Die bevorzugte Methode zum Hinzufügen Ihrer Nicht-Azure-Computer zu Microsoft Defender für Cloud ist die Verwendung von [Azure Arc-fähigen Servern](../azure-arc/servers/overview.md).
 
-Ein Computer mit Servern mit Azure Arc-Unterstützung wird zu einer Azure-Ressource und – wenn Sie den Log Analytics-Agent darauf installiert haben – in Security Center wie Ihre anderen Azure-Ressourcen mit Empfehlungen angezeigt.
+Ein Computer mit Azure Arc-fähigen Servern wird zu einer Azure-Ressource und – sofern Sie den Log Analytics-Agent darauf installiert haben – in Defender für Cloud wie Ihre anderen Azure-Ressourcen mit Empfehlungen angezeigt.
 
 Außerdem bieten Server mit Azure Arc-Unterstützung erweiterte Funktionen, wie z. B. die Möglichkeit, Gastkonfigurationsrichtlinien auf dem Computer zu aktivieren, die Bereitstellung mit anderen Azure-Diensten zu vereinfachen usw. Eine Übersicht über die Vorteile finden Sie unter [Unterstützte Cloudvorgänge](../azure-arc/servers/overview.md#supported-cloud-operations).
 
 > [!NOTE]
-> Die Tools zur automatischen Bereitstellung von Security Center, mit denen der Log Analytics-Agent bereitgestellt werden kann, bieten keine Unterstützung für Computer mit Azure Arc. Wenn Sie Ihre Computer mit Azure Arc verbunden haben, befolgen Sie die entsprechende Security Center-Empfehlung für die Agent-Bereitstellung, und profitieren Sie von den umfassenden Schutzfunktionen, die Security Center bietet:
+> Die Tools zur automatischen Bereitstellung von Defender für Cloud, mit denen der Log Analytics-Agent bereitgestellt werden kann, bieten keine Unterstützung für Computer mit ausgeführtem Azure Arc. Wenn Sie Ihre Computer mit Azure Arc verbunden haben, befolgen Sie die entsprechende Defender für Cloud-Empfehlung für die Agent-Bereitstellung, und profitieren Sie von den umfassenden Schutzfunktionen, die Defender für Cloud bietet:
 >
 > - [Der Log Analytics-Agent sollte auf Ihren Azure Arc-Computern unter Linux installiert sein](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/720a3e77-0b9a-4fa9-98b6-ddf0fd7e32c1)
 > - [Der Log Analytics-Agent sollte auf Ihren Azure Arc-Computern unter Windows installiert sein](https://portal.azure.com/#blade/Microsoft_Azure_Security/RecommendationsBlade/assessmentKey/27ac71b1-75c5-41c2-adc2-858f5db45b08)
@@ -50,7 +53,7 @@ Erfahren Sie mehr über [Server mit Azure Arc-Unterstützung](../azure-arc/serve
 - Informationen zum Herstellen einer Verbindung zwischen mehreren Computern und Servern mit Azure Arc-Unterstützung im großen Stil finden Sie unter [Verbinden von Hybridcomputern mit Azure im großen Stil](../azure-arc/servers/onboard-service-principal.md).
 
 > [!TIP]
-> Wenn Sie unter Amazon Web Services (AWS) ausgeführte Computer integrieren, verarbeitet der Security Center-Connector für AWS die Azure Arc-Bereitstellung transparent für Sie. Weitere Informationen finden Sie unter [Verbinden Ihrer AWS-Konten mit Azure Security Center](quickstart-onboard-aws.md).
+> Wenn Sie in Amazon Web Services (AWS) ausgeführte Computer integrieren, verarbeitet der Defender für Cloud-Connector für AWS die Azure Arc-Bereitstellung transparent für Sie. Weitere Informationen finden Sie unter [Verbinden Ihrer AWS-Konten mit Microsoft Defender für Cloud](quickstart-onboard-aws.md).
 
 ::: zone-end
 
@@ -58,19 +61,18 @@ Erfahren Sie mehr über [Server mit Azure Arc-Unterstützung](../azure-arc/serve
 
 ## <a name="add-non-azure-machines-from-the-azure-portal"></a>Hinzufügen Azure-fremder Computer über das Azure-Portal
 
-1. Öffnen Sie über das Menü von Security Center die Seite **Erste Schritte**.
+1. Öffnen Sie im Menü von Defender für Cloud die Seite **Erste Schritte**.
 1. Wählen Sie die Registerkarte **Erste Schritte** aus.
-
-    :::image type="content" source="./media/security-center-onboarding/onboarding-get-started-tab.png" alt-text="Registerkarte „Erste Schritte“ auf der Seite „Erste Schritte“" lightbox="./media/security-center-onboarding/onboarding-get-started-tab.png":::
-
 1. Wählen Sie unter **Nicht-Azure-Server hinzufügen** die Option **Konfigurieren** aus.
+
+    :::image type="content" source="./media/quickstart-onboard-machines/onboarding-get-started-tab.png" alt-text="Registerkarte „Erste Schritte“ auf der Seite „Erste Schritte“" lightbox="./media/quickstart-onboard-machines/onboarding-get-started-tab.png":::
 
     > [!TIP]
     > Sie können auch über die Schaltfläche **Nicht-Azure-Server hinzufügen** auf der Seite **Bestand** die Option „Computer hinzufügen“ öffnen.
     > 
-    > :::image type="content" source="./media/security-center-onboarding/onboard-inventory.png" alt-text="Hinzufügen von Azure-fremden Computern über die Seite „Ressourcenbestand“":::
+    > :::image type="content" source="./media/quickstart-onboard-machines/onboard-inventory.png" alt-text="Hinzufügen von Azure-fremden Computern über die Seite „Ressourcenbestand“":::
 
-    Es wird eine Liste Ihrer Log Analytics-Arbeitsbereiche angezeigt. Die Liste enthält, falls zutreffend, den Standardarbeitsbereich, der von Security Center für Sie erstellt wurde, wenn die automatische Bereitstellung aktiviert wurde. Wählen Sie diesen Arbeitsbereich oder einen anderen Arbeitsbereich aus, den Sie verwenden möchten.
+    Es wird eine Liste Ihrer Log Analytics-Arbeitsbereiche angezeigt. Die Liste enthält, falls zutreffend, den Standardarbeitsbereich, der von Defender für Cloud für Sie erstellt wurde, wenn die automatische Bereitstellung aktiviert wurde. Wählen Sie diesen Arbeitsbereich oder einen anderen Arbeitsbereich aus, den Sie verwenden möchten.
 
     Sie können Computer einem vorhandenen Arbeitsbereich hinzufügen oder einen neuen Arbeitsbereich erstellen.
 
@@ -91,7 +93,7 @@ Zum Hinzufügen von Azure Stack Hub-VMs benötigen Sie die Informationen auf der
 
 1. Kopieren Sie auf der Seite **Agent-Verwaltung** die **Arbeitsbereichs-ID** und den **Primärschlüssel** in Editor.
 1. Melden Sie sich bei Ihrem **Azure Stack Hub**-Portal an, und öffnen Sie die Seite **Virtuelle Computer**.
-1. Wählen Sie den virtuellen Computer aus, der mit Security Center geschützt werden soll.
+1. Wählen Sie den virtuellen Computer aus, der mit Defender für Cloud geschützt werden soll.
     >[!TIP]
     > Informationen zum Erstellen eines virtuellen Computers in Azure Stack Hub finden Sie im [Schnellstart für Windows-VMs](/azure-stack/user/azure-stack-quick-windows-portal) oder im [Schnellstart für Linux-VMs](/azure-stack/user/azure-stack-quick-linux-portal).
 1. Wählen Sie **Erweiterungen**. Die Liste der auf dieser VM installierten VM-Erweiterungen wird angezeigt.
@@ -100,7 +102,7 @@ Zum Hinzufügen von Azure Stack Hub-VMs benötigen Sie die Informationen auf der
     >[!NOTE]
     > Falls die Erweiterung **Azure Monitor, Update- und Konfigurationsverwaltung** in Ihrem Marketplace nicht aufgeführt ist, können Sie sich an Ihren Azure Stack Hub-Betreiber wenden, damit sie zur Verfügung gestellt wird.
 1. Fügen Sie auf der Konfigurationsseite **Erweiterung installieren** die **Arbeitsbereichs-ID** und den **Arbeitsbereichsschlüssel (Primärschlüssel)** ein, die Sie im vorherigen Schritt in Editor kopiert haben.
-1. Wählen Sie zum Abschluss der Konfiguration **OK** aus. Als Status der Erweiterung wird **Bereitstellung erfolgreich** angezeigt. Es kann bis zu einer Stunde dauern, bis der virtuelle Computer in Security Center angezeigt wird.
+1. Wählen Sie zum Abschluss der Konfiguration **OK** aus. Als Status der Erweiterung wird **Bereitstellung erfolgreich** angezeigt. Es kann bis zu einer Stunde dauern, bis der virtuelle Computer in Defender für Cloud angezeigt wird.
 
 ### <a name="onboard-your-linux-machines"></a>Integrieren Ihrer Linux-Computer
 
@@ -109,7 +111,7 @@ Zum Hinzufügen von Linux-Computern benötigen Sie den Befehl wget von der Seite
 1. Kopieren Sie auf der Seite **Agent-Verwaltung** den Befehl **wget** in Editor. Speichern Sie diese Datei an einem Speicherort, auf den auf Ihrem Linux-Computer zugegriffen werden kann.
 1. Öffnen Sie die Datei auf Ihrem Linux-Computer mit dem Befehl wget. Wählen Sie den gesamten Inhalt aus, kopieren Sie ihn, und fügen Sie ihn in eine Terminalkonsole ein.
 1. Nach Abschluss der Installation können Sie überprüfen, ob der *omsagent* installiert wurde, indem Sie den Befehl *pgrep* ausführen. Der Befehl gibt die PID von *omsagent* zurück.
-    Die Protokolle für den Agent finden Sie unter: */var/opt/microsoft/omsagent/\<workspace id>/log/* . Es kann bis zu 30 Minuten dauern, bis der neue Linux-Computer in Security Center angezeigt wird.
+    Die Protokolle für den Agent finden Sie unter: */var/opt/microsoft/omsagent/\<workspace id>/log/* . Es kann bis zu 30 Minuten dauern, bis der neue Linux-Computer in Defender für Cloud angezeigt wird.
 
 ### <a name="onboard-your-windows-machines"></a>Integrieren Ihrer Windows-Computer
 
@@ -135,14 +137,14 @@ Weitere Informationen zum Installieren und Konfigurieren des Agents finden Sie u
 
 Herzlichen Glückwunsch! Nun können Sie Ihre Azure- und Nicht-Azure-Computer an einem Ort anzeigen. Öffnen Sie die [Seite für den Ressourcenbestand](asset-inventory.md), und filtern Sie nach den entsprechenden Ressourcentypen. Die Typen werden durch diese Symbole unterschieden:
 
-  ![ASC-Symbol für Azure-fremde Computer](./media/quick-onboard-linux-computer/security-center-monitoring-icon1.png) Nicht-Azure-Computer
+  ![ASC-Symbol für Azure-fremde Computer](./media/quickstart-onboard-machines/security-center-monitoring-icon1.png) Nicht-Azure-Computer
 
-  ![ASC-Symbol für Azure-Computer](./media/quick-onboard-linux-computer/security-center-monitoring-icon2.png) Azure VM
+  ![ASC-Symbol für Azure-Computer](./media/quickstart-onboard-machines/security-center-monitoring-icon2.png) Azure VM
 
-  ![ASC-Symbol für Azure Arc-Server](./media/quick-onboard-linux-computer/arc-enabled-machine-icon.png) Server mit Azure Arc-Unterstützung
+  ![ASC-Symbol für Azure Arc-Server](./media/quickstart-onboard-machines/arc-enabled-machine-icon.png) Server mit Azure Arc-Unterstützung
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Auf dieser Seite wurde gezeigt, wie Sie in Azure Security Center Ihre Nicht-Azure-Computer hinzufügen. Um ihren Status zu überwachen, verwenden Sie die Inventartools wie auf der folgenden Seite erläutert:
+Auf dieser Seite wurde gezeigt, wie Sie Ihre Nicht-Azure-Computer zu Microsoft Defender für Cloud hinzufügen. Um ihren Status zu überwachen, verwenden Sie die Inventartools wie auf der folgenden Seite erläutert:
 
 - [Untersuchen und Verwalten Ihrer Ressourcen mit dem Ressourcenbestand und Verwaltungstools](asset-inventory.md)

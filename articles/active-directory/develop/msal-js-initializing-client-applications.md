@@ -9,22 +9,22 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/17/2020
+ms.date: 10/21/2021
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, devx-track-js
-ms.openlocfilehash: fee241ba9f4a340513951c515f1996fc7e2385bf
-ms.sourcegitcommit: 73fb48074c4c91c3511d5bcdffd6e40854fb46e5
+ms.openlocfilehash: 2680f78f7bcd1caaa3d6d1280c51c81b97a52048
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/31/2021
-ms.locfileid: "106063592"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131050639"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>Initialisieren von Clientanwendungen mithilfe von MSAL.js
 
 Dieser Artikel beschreibt die Initialisierung der Microsoft Authentication Library für JavaScript (MSAL.js) mit einer Instanz einer Benutzer-Agent-Anwendung.
 
-Die Benutzer-Agent-Anwendung ist eine Form der öffentlichen Clientanwendung, bei der der Clientcode in einem Benutzer-Agent wie beispielsweise einem Webbrowser ausgeführt wird. In solchen Clients werden keine Geheimnisse gespeichert, da der Browserkontext offen zugänglich ist.
+Die Benutzer-Agent-Anwendung ist eine Form der öffentlichen Clientanwendung, bei der der Clientcode in einem Benutzer-Agent wie beispielsweise einem Webbrowser ausgeführt wird. Diese Clients speichern keine Geheimnisse, da der Browserkontext offen zugänglich ist.
 
 Weitere Informationen zu Clientanwendungstypen und Optionen für die Anwendungskonfiguration finden Sie unter [Öffentliche und vertrauliche Client-Apps in MSAL](msal-client-applications.md).
 
@@ -34,12 +34,12 @@ Bevor Sie eine Anwendung initialisieren, müssen Sie zunächst [die Anwendung im
 
 Nachdem Sie Ihre App registriert haben, benötigen Sie mindestens einige der folgenden Werte, die im Azure-Portal zu finden sind.
 
-| Wert | Erforderlich | BESCHREIBUNG |
-|:----- | :------: | :---------- |
-| Anwendungs-ID (Client) | Erforderlich | Eine GUID, die Ihre Anwendung in Microsoft Identity Platform eindeutig identifiziert. |
-| Authority | Optional | Die URL des Identitätsanbieters (die *Instanz*) und die *Zielgruppe für die Anmeldung* für Ihre Anwendung. Wenn Instanz und Zielgruppe für die Anmeldung verkettet werden, bilden sie die *Autorität*. |
-| Verzeichnis-ID (Mandant) | Optional | Geben Sie diese ID an, wenn Sie eine Geschäftsanwendung nur für Ihre Organisation entwickeln (auch als *Einzelmandantenanwendung* bezeichnet). |
-| Umleitungs-URI | Optional | Wenn Sie eine Web-App entwickeln, gibt der `redirectUri` an, wohin der Identitätsanbieter (Microsoft Identity Platform) die ausgestellten Sicherheitstoken zurückgeben soll. |
+| Wert                   | Erforderlich | BESCHREIBUNG                                                                                                                                                                |
+| :---------------------- | :------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Anwendungs-ID (Client) | Erforderlich | Eine GUID, die Ihre Anwendung in Microsoft Identity Platform eindeutig identifiziert.                                                                                   |
+| Authority               | Optional | Die URL des Identitätsanbieters (die _Instanz_) und die _Zielgruppe für die Anmeldung_ für Ihre Anwendung. Wenn Instanz und Zielgruppe für die Anmeldung verkettet werden, bilden sie die _Autorität_. |
+| Verzeichnis-ID (Mandant)   | Optional | Geben Sie die Verzeichnis-ID (Mandant) an, wenn Sie eine line-of-business-Anwendung ausschließlich für Ihre Organisation erstellen, die häufig als _Anwendung mit nur einem Mandanten_ bezeichnet wird.          |
+| Umleitungs-URI            | Optional | Wenn Sie eine Web-App entwickeln, gibt der `redirectUri` an, wohin der Identitätsanbieter (Microsoft Identity Platform) die ausgestellten Sicherheitstoken zurückgeben soll.   |
 
 ## <a name="initialize-msaljs-2x-apps"></a>Initialisieren von MSAL.js 2.x-Apps
 
@@ -49,56 +49,63 @@ Im Folgenden finden Sie ein Beispiel für ein Konfigurationsobjekt und die Insta
 
 ```javascript
 const msalConfig = {
-    auth: {
-        clientId: "11111111-1111-1111-111111111111",
-        authority: "https://login.microsoftonline.com/common",
-        knownAuthorities: [],
-        redirectUri: "https://localhost:3001",
-        postLogoutRedirectUri: "https://localhost:3001/logout",
-        navigateToLoginRequestUrl: true
+  auth: {
+    clientId: "11111111-1111-1111-111111111111",
+    authority: "https://login.microsoftonline.com/common",
+    knownAuthorities: [],
+    redirectUri: "https://localhost:3001",
+    postLogoutRedirectUri: "https://localhost:3001/logout",
+    navigateToLoginRequestUrl: true,
+  },
+  cache: {
+    cacheLocation: "sessionStorage",
+    storeAuthStateInCookie: false,
+  },
+  system: {
+    loggerOptions: {
+      loggerCallback: (
+        level: LogLevel,
+        message: string,
+        containsPii: boolean
+      ): void => {
+        if (containsPii) {
+          return;
+        }
+        switch (level) {
+          case LogLevel.Error:
+            console.error(message);
+            return;
+          case LogLevel.Info:
+            console.info(message);
+            return;
+          case LogLevel.Verbose:
+            console.debug(message);
+            return;
+          case LogLevel.Warning:
+            console.warn(message);
+            return;
+        }
+      },
+      piiLoggingEnabled: false,
     },
-    cache: {
-        cacheLocation: "sessionStorage",
-        storeAuthStateInCookie: false
-    },
-    system: {
-        loggerOptions: {
-            loggerCallback: (level: LogLevel, message: string, containsPii: boolean): void => {
-                if (containsPii) {
-                    return;
-                }
-                switch (level) {
-                    case LogLevel.Error:
-                        console.error(message);
-                        return;
-                    case LogLevel.Info:
-                        console.info(message);
-                        return;
-                    case LogLevel.Verbose:
-                        console.debug(message);
-                        return;
-                    case LogLevel.Warning:
-                        console.warn(message);
-                        return;
-                }
-            },
-            piiLoggingEnabled: false
-        },
-        windowHashTimeout: 60000,
-        iframeHashTimeout: 6000,
-        loadFrameTimeout: 0
-    }
+    windowHashTimeout: 60000,
+    iframeHashTimeout: 6000,
+    loadFrameTimeout: 0,
+  },
 };
 
 // Create an instance of PublicClientApplication
 const msalInstance = new PublicClientApplication(msalConfig);
 
 // Handle the redirect flows
-msalInstance.handleRedirectPromise().then((tokenResponse) => {
+msalInstance
+  .handleRedirectPromise()
+  .then((tokenResponse) => {
     // Handle redirect response
-}).catch((error) => {
+  })
+  .catch((error) => {
     // Handle redirect error
-});
+  });
 ```
 
 ### `handleRedirectPromise`
@@ -115,21 +122,21 @@ Die Zusage (Promise) kann drei mögliche Ergebnisse beinhalten:
 
 Initialisieren Sie den MSAL 1.x-Authentifizierungskontext, indem Sie [UserAgentApplication][msal-js-useragentapplication] mit einem Konfigurationsobjekt instanziieren. Für die Konfiguration ist mindestens eine Eigenschaft, die `clientID` Ihrer Anwendung, erforderlich. Diese wird im Azure-Portal auf der **Übersichtsseite** für die App-Registrierung als **Anwendungs-ID (Client)** angezeigt.
 
-Bei Authentifizierungsmethoden mit Umleitungsflows ([loginRedirect][msal-js-loginredirect] und [acquireTokenRedirect][msal-js-acquiretokenredirect]) in MSAL.js 1.2.x oder früheren Versionen müssen Sie mit der Methode `handleRedirectCallback()` explizit einen Rückruf bei Erfolg oder Fehler registrieren. Die explizite Registrierung des Rückrufs ist in MSAL.js 1.2.x und früheren Versionen erforderlich, da Umleitungsflows keine Zusagen zurückgeben, wie das bei Methoden mit einer Popup-Darstellung der Fall ist. Die Registrierung des Rückrufs ist in MSAL.js 1.3.x und höher *optional*.
+Bei Authentifizierungsmethoden mit Umleitungsflows ([loginRedirect][msal-js-loginredirect] und [acquireTokenRedirect][msal-js-acquiretokenredirect]) in MSAL.js 1.2.x oder früheren Versionen müssen Sie mit der Methode `handleRedirectCallback()` explizit einen Rückruf bei Erfolg oder Fehler registrieren. Die explizite Registrierung des Rückrufs ist in MSAL.js 1.2.x und früheren Versionen erforderlich, da Umleitungsflows keine Zusagen zurückgeben, wie das bei Methoden mit einer Popup-Darstellung der Fall ist. Die Registrierung des Rückrufs ist in MSAL.js 1.3.x und höher _optional_.
 
 ```javascript
 // Configuration object constructed
 const msalConfig = {
-    auth: {
-        clientId: "11111111-1111-1111-111111111111"
-    }
-}
+  auth: {
+    clientId: "11111111-1111-1111-111111111111",
+  },
+};
 
 // Create UserAgentApplication instance
 const msalInstance = new UserAgentApplication(msalConfig);
 
 function authCallback(error, response) {
-    // Handle redirect response
+  // Handle redirect response
 }
 
 // Register a redirect callback for Success or Error (when using redirect methods)
@@ -151,6 +158,7 @@ Das folgende MSAL.js 2.x-Codebeispiel auf GitHub veranschaulicht die Instanziie
 [Azure-Samples/ms-identity-javascript-v2](https://github.com/Azure-Samples/ms-identity-javascript-v2)
 
 <!-- LINKS - External -->
+
 [msal-browser]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-browser/
 [msal-core]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/msal-core/
 [msal-js-acquiretokenredirect]: https://azuread.github.io/microsoft-authentication-library-for-js/ref/classes/_azure_msal.useragentapplication.html#acquiretokenredirect

@@ -1,26 +1,29 @@
 ---
-title: Verwenden von Azure Defender für Containerregistrierungen
-description: Hier erfahren Sie etwas über die Verwendung von Azure Defender für Containerregistrierungen zum Überprüfen von Linux-Images in Ihren von Linux gehosteten Registrierungen.
+title: Verwenden von Microsoft Defender für Containerregistrierungen
+description: Hier erfahren Sie etwas über die Verwendung von Microsoft Defender für Containerregistrierungen zum Überprüfen von Linux-Images in Ihren von Linux gehosteten Registrierungen.
 author: memildin
 ms.author: memildin
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 195e47ce7165a02c5bb7126521432d448e2199a9
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 9925fcb9f6a4d4284c7c6784a45e896ea825abc0
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112238802"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131056089"
 ---
-# <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>Verwenden von Azure Defender für Containerregistrierungen zum Überprüfen Ihrer Images auf Sicherheitsrisiken
+# <a name="use-microsoft-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>Verwenden von Microsoft Defender für Containerregistrierungen zum Überprüfen Ihrer Images auf Sicherheitsrisiken
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 Auf dieser Seite wird erläutert, wie Sie den integrierten Sicherheitsrisikoscanner verwenden, um die in Ihrer auf Azure Resource Manager basierenden Azure Container Registry gespeicherten Containerimages zu überprüfen.
 
-Wenn **Azure Defender für Containerregistrierungen** aktiviert ist, wird jedes in Ihre Registrierung gepushte Image sofort überprüft. Außerdem wird jedes in den letzten 30 Tagen gepullte Image ebenfalls überprüft. 
+Wenn **Microsoft Defender für Containerregistrierungen** aktiviert ist, wird jedes in Ihre Registrierung gepushte Image sofort überprüft. Außerdem wird jedes in den letzten 30 Tagen gepullte Image ebenfalls überprüft. 
 
-Wenn der Scanner Sicherheitsrisiken an Security Center meldet, stellt Security Center die Ergebnisse und zugehörigen Informationen als Empfehlungen dar. Darüber hinaus enthalten die Ergebnisse zugehörige Informationen, etwa Problembehandlungsschritte, relevante CVEs, CVSS-Bewertungen und mehr. Sie können die ermittelten Sicherheitsrisiken für ein oder mehrere Abonnements oder für eine bestimmte Registrierung anzeigen.
+Wenn bei der Überprüfung Sicherheitsrisiken an Defender für Cloud gemeldet werden, stellt Defender für Cloud die Ergebnisse und zugehörigen Informationen als Empfehlungen dar. Darüber hinaus enthalten die Ergebnisse zugehörige Informationen, etwa Problembehandlungsschritte, relevante CVEs, CVSS-Bewertungen und mehr. Sie können die ermittelten Sicherheitsrisiken für ein oder mehrere Abonnements oder für eine bestimmte Registrierung anzeigen.
 
 > [!TIP]
 > Sie können Containerimages auch auf Sicherheitsrisiken überprüfen, da die Images in Ihren CI/CD-GitHub-Workflows erstellt werden. Weitere Informationen finden Sie unter [Identifizieren von anfälligen Containerimages in Ihren CI/CD-Workflows](defender-for-container-registries-cicd.md).
@@ -30,24 +33,24 @@ Wenn der Scanner Sicherheitsrisiken an Security Center meldet, stellt Security C
 
 So aktivieren Sie Sicherheitsrisikoscans von Images in Ihrer auf Azure Resource Manager basierenden Azure Container Registry
 
-1. Aktivieren Sie **Azure Defender für Containerregistrierungen** für Ihr Abonnement. Security Center ist jetzt bereit, Images in Ihren Registrierungen zu überprüfen.
+1. Aktivieren Sie **Microsoft Defender für Containerregistrierungen** für Ihr Abonnement. Defender für Cloud ist jetzt bereit, Images in Ihren Registrierungen zu überprüfen.
 
     >[!NOTE]
     > Dieses Feature wird pro Image abgerechnet.
 
 1. Imagescans werden für jeden Push- oder Importvorgang und für den Fall ausgelöst, dass das Image innerhalb der letzten 30 Tage gepullt wurde. 
 
-    Wenn der Scanvorgang abgeschlossen ist (in der Regel nach ungefähr zwei Minuten, er kann aber auch bis zu 15 Minuten dauern), sind die Ergebnisse als Security Center-Empfehlungen verfügbar.
+    Wenn der Scanvorgang abgeschlossen ist (in der Regel nach ungefähr zwei Minuten, er kann aber auch bis zu 15 Minuten dauern), sind die Ergebnisse als Defender für Cloud-Empfehlungen verfügbar.
 
 1. [Zeigen Sie die Ergebnisse an, und beheben Sie sie, wie nachstehend erläutert.](#view-and-remediate-findings)
 
 ## <a name="identify-vulnerabilities-in-images-in-other-container-registries"></a>Identifizieren von Sicherheitsrisiken in Images in anderen Containerregistrierungen 
 
-1. Verwenden Sie die ACR-Tools, um Images aus Docker Hub oder Microsoft Container Registry in Ihre Registrierung zu übertragen.  Wenn der Import abgeschlossen ist, werden die importierten Images von Azure Defender gescannt. 
+1. Verwenden Sie die ACR-Tools, um Images aus Docker Hub oder Microsoft Container Registry in Ihre Registrierung zu übertragen.  Nach Abschluss des Imports werden die importierten Images von der integrierten Lösung zur Sicherheitsrisikobewertung überprüft.
 
     Weitere Informationen finden Sie unter [Importieren von Containerimages in eine Containerregistrierung](../container-registry/container-registry-import-images.md).
 
-    Wenn der Scanvorgang abgeschlossen ist (in der Regel nach ungefähr zwei Minuten, er kann aber auch bis zu 15 Minuten dauern), sind die Ergebnisse als Security Center-Empfehlungen verfügbar.
+    Wenn der Scanvorgang abgeschlossen ist (in der Regel nach ungefähr zwei Minuten, er kann aber auch bis zu 15 Minuten dauern), sind die Ergebnisse als Defender für Cloud-Empfehlungen verfügbar.
 
 1. [Zeigen Sie die Ergebnisse an, und beheben Sie sie, wie nachstehend erläutert.](#view-and-remediate-findings)
 
@@ -149,5 +152,4 @@ So erstellen Sie eine Regel:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-> [!div class="nextstepaction"]
-> Weitere Informationen zu [Azure Defender](azure-defender.md).
+Erfahren Sie mehr über [die erweiterten Schutzpläne von Microsoft Defender](defender-for-cloud-introduction.md).

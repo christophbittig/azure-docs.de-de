@@ -12,16 +12,13 @@ ms.topic: conceptual
 ms.date: 06/25/2021
 ms.author: hirsin
 ms.reviewer: hirsin
-ms.custom:
-- aaddev
-- identityplatformtop40
-- fasttrack-edit
-ms.openlocfilehash: a6c2b3bb09160d60cfd03311329666d6e2b80487
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.custom: aaddev, identityplatformtop40, fasttrack-edit
+ms.openlocfilehash: fb20ed3a3a09c7bef7495d439ad2856f646e8a51
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129657909"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131067190"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft Identity Platform – ID-Token
 
@@ -78,10 +75,10 @@ Die nachfolgende Liste zeigt die Ansprüche, die (sofern nichts anderes angegebe
 |-----|--------|-------------|
 |`aud` |  Die Zeichenfolge einer App-ID-GUID | Identifiziert den vorgesehenen Empfänger des Tokens. In `id_tokens` ist die Zielgruppe die Anwendungs-ID Ihrer App, die Ihrer App im Azure-Portal zugewiesen ist. Dieser Wert sollte überprüft werden. Das Token sollte abgelehnt werden, wenn es nicht mit der Anwendungs-ID Ihrer App übereinstimmt. |
 |`iss` |  Die Zeichenfolge einer Aussteller-URI | Sie identifiziert den Aussteller oder den „Autorisierungsserver“, der das Token erstellt und zurückgibt. Sie identifiziert auch den Azure AD-Mandanten, für den der Benutzer authentifiziert wurde. Wenn das Token vom v2.0-Endpunkt ausgegeben wurde, endet der URI mit `/v2.0`.  Die GUID, die angibt, dass der Benutzer ein Consumer-Benutzer eines Microsoft-Kontos ist, lautet `9188040d-6c67-4c5b-b112-36a304b66dad`. Ihre App sollte ggf. den GUID-Teil des Anspruchs verwenden, um die Mandanten einzuschränken, die sich bei der App anmelden können. |
-|`iat` |  Ganze Zahl, ein UNIX-Zeitstempel | „Issued At“ gibt an, wann die Authentifizierung für dieses Token erfolgt ist.  |
+|`iat` |  int, ein UNIX-Zeitstempel | „Issued At“ gibt an, wann die Authentifizierung für dieses Token erfolgt ist.  |
 |`idp`|Zeichenfolge, in der Regel ein STS-URI | Der Identitätsanbieter, der den Antragsteller des Tokens authentifiziert hat. Dieser Wert ist identisch mit dem Wert des Ausstelleranspruchs, es sei denn, das Benutzerkonto ist nicht im gleichen Mandanten wie der Aussteller vorhanden (etwa Gäste). Wenn der Anspruch nicht vorhanden ist, bedeutet dies, dass stattdessen der Wert `iss` verwendet werden kann.  Für in einem Organisationskontext verwendete persönliche Konten (etwa ein zu einem Azure AD-Mandanten eingeladenes persönliches Konto) kann der `idp`-Anspruch „live.com“ oder ein STS-URI sein, der den Microsoft-Kontomandanten `9188040d-6c67-4c5b-b112-36a304b66dad` enthält. |
-|`nbf` |  Ganze Zahl, ein UNIX-Zeitstempel | Der Anspruch „nbf“ (nicht vor) gibt die Zeit an, vor der das JWT NICHT für die Bearbeitung akzeptiert werden darf.|
-|`exp` |  Ganze Zahl, ein UNIX-Zeitstempel | Der Anspruch „exp“ (Ablaufzeit) gibt die Ablaufzeit an, ab oder nach der das JWT NICHT für die Bearbeitung akzeptiert werden darf.  Es ist wichtig zu beachten, dass eine Ressource unter bestimmten Umständen das Token vor diesem Zeitpunkt ablehnen kann. Das kann zum Beispiel geschehen, wenn eine Änderung der Authentifizierung erforderlich ist oder ein Tokenwiderruf erkannt wurde. |
+|`nbf` |  int, ein UNIX-Zeitstempel | Der Anspruch „nbf“ (nicht vor) gibt die Zeit an, vor der das JWT NICHT für die Bearbeitung akzeptiert werden darf.|
+|`exp` |  int, ein UNIX-Zeitstempel | Der Anspruch „exp“ (Ablaufzeit) gibt die Ablaufzeit an, ab oder nach der das JWT zur Bearbeitung **nicht akzeptiert werden darf**.  Es ist wichtig zu beachten, dass eine Ressource unter bestimmten Umständen das Token vor diesem Zeitpunkt ablehnen kann. Das kann zum Beispiel geschehen, wenn eine Änderung der Authentifizierung erforderlich ist oder ein Tokenwiderruf erkannt wurde. |
 | `c_hash`| String |Der Codehash ist nur dann in ID-Token enthalten, wenn das ID-Token zusammen mit einem OAuth 2.0-Autorisierungscode ausgestellt wird. Mit seiner Hilfe kann die Authentizität eines Autorisierungscodes überprüft werden. Um zu verstehen, wie diese Überprüfung durchgeführt wird, finden Sie Informationen in der [OpenID Connect-Spezifikation](https://openid.net/specs/openid-connect-core-1_0.html#HybridIDToken). |
 |`at_hash`| String |Der Zugriffstokenhash ist nur in ID-Token enthalten, wenn das ID-Token vom `/authorize`-Endpunkt zusammen mit einem OAuth 2.0-Zugriffstoken ausgestellt wird. Mit seiner Hilfe kann die Authentizität eines Zugriffstokens überprüft werden. Um zu verstehen, wie diese Überprüfung durchgeführt wird, finden Sie Informationen in der [OpenID Connect-Spezifikation](https://openid.net/specs/openid-connect-core-1_0.html#HybridIDToken). Dies wird für ID-Token vom `/token`-Endpunkt nicht zurückgegeben. |
 |`aio` | Nicht transparente Zeichenfolge | Ein interner Anspruch, der von Azure AD verwendet wird, um Daten für die Wiederverwendung von Token aufzuzeichnen. Sollte ignoriert werden.|

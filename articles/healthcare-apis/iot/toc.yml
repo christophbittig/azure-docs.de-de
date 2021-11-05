@@ -19,14 +19,14 @@ items:
     items:
       - name: IoT-Datenfluss
         href: iot-data-flow.md
-  - name: Anleitungen
+  - name: Exemplarische Vorgehensweisen
     expanded: true
     items:
       - name: Empfangen von Gerätedaten über Azure IoT Hub
         href: device-data-through-iot-hub.md
-      - name: Verwenden der Gerätezuordnung
+      - name: Verwenden von Gerätezuordnungen
         href: how-to-use-device-mapping-iot.md
-      - name: Verwenden der FHIR-Zielzuordnung
+      - name: Verwenden von FHIR-Zielzuordnungen
         href: how-to-use-fhir-mapping-iot.md
       - name: Exportieren von IoT-Connectormetriken über Diagnoseeinstellungen
         href: iot-metrics-diagnostics-export.md

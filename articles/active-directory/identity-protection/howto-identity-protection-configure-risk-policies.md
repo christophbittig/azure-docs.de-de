@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: how-to
-ms.date: 05/27/2021
+ms.date: 10/26/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11751323d1341cbcde19451bc101197c7d714368
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c9e3bfc88442f495d49116e01cc06e876be95787
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346740"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131051589"
 ---
 # <a name="how-to-configure-and-enable-risk-policies"></a>Anleitung: Konfigurieren und Aktivieren von Risikorichtlinien
 
@@ -41,7 +41,7 @@ Konfigurierte vertrauenswürdige [Netzwerkadressen](../conditional-access/locati
 
 ### <a name="risk-remediation"></a>Risikowartung
 
-Organisationen können den Zugriff blockieren, wenn ein Risiko erkannt wird. Das Blockieren hindert berechtigte Benutzer manchmal daran, das zu tun, was sie tun müssen. Eine bessere Lösung besteht darin, Selbstwartung mithilfe von Azure AD Multi-Factor Authentication (MFA) und Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) zuzulassen. 
+Organisationen können den Zugriff blockieren, wenn ein Risiko erkannt wird. Das Blockieren hindert berechtigte Benutzer manchmal daran, das zu tun, was sie tun müssen. Eine bessere Lösung besteht darin, Selbstwartung mithilfe von Azure AD Multi-Factor Authentication (MFA) und Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) zuzulassen.
 
 - Wenn eine Benutzerrisikorichtlinie ausgelöst wird: 
    - Administratoren können eine sichere Kennwortzurücksetzung verlangen, die Azure AD MFA erforderlich macht, bevor der Benutzer ein neues Kennwort mit SSPR erstellt, um das Benutzerrisiko zurückzusetzen. 
@@ -67,6 +67,8 @@ Es gibt zwei Orte, an denen diese Richtlinien konfiguriert werden können: bedin
    - Verwendung von mehr Attributen für bedingten Zugriff in der Richtlinie
 
 > [!VIDEO https://www.youtube.com/embed/zEsbbik-BTE]
+
+Vor dem Aktivieren von Korrekturrichtlinien sollten Organisationen eventuell alle aktiven Risiken [untersuchen](howto-identity-protection-investigate-risk.md) und [korrigieren](howto-identity-protection-remediate-unblock.md).
 
 ### <a name="user-risk-with-conditional-access"></a>Benutzerrisiko bei bedingtem Zugriff
 

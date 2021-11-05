@@ -9,12 +9,12 @@ ms.subservice: iot-edge
 ms.date: 05/10/2021
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6263a58aebcb7e6eb9d50d18e63257a3deb2cff5
-ms.sourcegitcommit: 5163ebd8257281e7e724c072f169d4165441c326
+ms.openlocfilehash: f4402cac05520e8e3dd76b8894335d314ec87d64
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/21/2021
-ms.locfileid: "112416540"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131080021"
 ---
 # <a name="tutorial-publish-subscribe-to-events-in-cloud"></a>Tutorial: Veröffentlichen und Abonnieren von Ereignissen in der Cloud
 
@@ -61,7 +61,7 @@ public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
 Klicken Sie in Ihrer neuen Funktion rechts oben auf **Funktions-URL abrufen**, wählen Sie die Standardeinstellung (**Funktionstaste**) aus, und klicken Sie dann auf **Kopieren**. Sie verwenden die Funktions-URL später im Tutorial.
 
 > [!NOTE]
-> Weitere Beispiele und Tutorials zur Reaktion auf Ereignisse und die Verwendung von Event Grid-Ereignistriggern finden Sie in der Dokumentation zu [Azure Functions](../../azure-functions/functions-overview.md).
+> Weitere Beispiele und Tutorials zur Reaktion auf Ereignisse sowie zur Verwendung von Event Grid-Triggern finden Sie in der [Azure Functions](../../azure-functions/functions-overview.md)-Dokumentation.
 
 ## <a name="create-a-topic"></a>Erstellen eines Themas
 

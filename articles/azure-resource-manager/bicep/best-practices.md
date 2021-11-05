@@ -5,12 +5,12 @@ author: johndowns
 ms.author: jodowns
 ms.topic: conceptual
 ms.date: 06/01/2021
-ms.openlocfilehash: 46efbf883e6dc0409e7f8d5f8d379693079acafc
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: cea4adc3ed6843e9d07670cd2959e27311c2f22a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124788437"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131059716"
 ---
 # <a name="best-practices-for-bicep"></a>Bewährte Methoden für Bicep
 
@@ -42,7 +42,7 @@ Weitere Informationen zu Bicep-Parametern finden Sie unter [Parameter in Bicep](
 
 ## <a name="variables"></a>Variablen
 
-* Verwenden Sie gemischte Groß-/Kleinschreibung für Variablennamen (beispielsweise `myVariableName`).
+* Verwenden Sie gemischte Groß-/Kleinschreibung für Variablennamen, beispielsweise `myVariableName`.
 
 * Beim Definieren einer Variablen ist der [Datentyp](data-types.md) nicht erforderlich. Bei Variablen wird der Typ vom Auflösungswert abgeleitet.
 

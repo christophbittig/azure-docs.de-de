@@ -4,12 +4,12 @@ description: Dieser Artikel enthält Informationen zur Authentifizierung einer A
 ms.topic: conceptual
 ms.date: 06/14/2021
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: cf9e65468567764e5fe7c91455f010dd6d46831f
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 3ca9284746460b3ab3369b4c9c00d7951784cff8
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129359943"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131064010"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>Authentifizieren und Autorisieren einer Anwendung mit Azure Active Directory für den Zugriff auf Azure Service Bus-Entitäten
 Azure Service Bus unterstützt die Verwendung von Azure Active Directory (Azure AD), um Anforderungen an Service Bus-Entitäten (Warteschlangen, Themen, Abonnements oder Filter) zu autorisieren. Mit Azure AD können Sie die rollenbasierte Zugriffssteuerung von Azure (Azure RBAC) zum Gewähren von Berechtigungen für einen Sicherheitsprinzipal verwenden, bei dem es sich um einen Benutzer, eine Gruppe oder einen Anwendungsdienstprinzipal handeln kann. Weitere Informationen zu Rollen und Rollenzuweisungen finden Sie unter [Grundlegendes zu den verschiedenen Rollen](../role-based-access-control/overview.md).
@@ -102,9 +102,9 @@ Die Anwendung benötigt zum Beweis ihrer Identität einen geheimen Clientschlüs
     ![Geheimer Clientschlüssel](./media/authenticate-application/client-secret.png)
 
 ### <a name="permissions-for-the-service-bus-api"></a>Berechtigungen für die Service Bus-API
-Wenn es sich bei Ihrer Anwendung um eine Konsolenanwendung handelt, müssen Sie eine native Anwendung registrieren und den **erforderlichen Berechtigungen** API-Berechtigungen für **Microsoft.ServiceBus** hinzufügen. Native Anwendungen benötigen auch einen Wert für **redirect-URI** in Azure AD, der als Bezeichner fungiert. Bei dem URI muss es sich nicht um ein Netzwerkziel handeln. Verwenden Sie in diesem Beispiel `https://servicebus.microsoft.com`, da der Beispielcode diesen URI bereits verwendet.
+Wenn es sich bei Ihrer Anwendung um eine Konsolenanwendung handelt, müssen Sie eine native Anwendung registrieren und den **erforderlichen Berechtigungen** API-Berechtigungen für **Microsoft.ServiceBus** hinzufügen. Native Anwendungen benötigen auch einen **redirect-uri** in Azure AD, der als Bezeichner fungiert. Bei dem URI muss es sich nicht um ein Netzwerkziel handeln. Verwenden Sie in diesem Beispiel `https://servicebus.microsoft.com`, da der Beispielcode diesen URI bereits verwendet.
 
-### <a name="authenticating-the-service-bus-client"></a>Authentifizieren des Service Bus-Clients   
+### <a name="authenticating-the-service-bus-client"></a>Authentifizieren des Service Bus-Clients
 Nachdem Sie Ihre Anwendung registriert und ihr Berechtigungen zum Senden/Empfangen von Daten in Azure Service Bus erteilt haben, können Sie Ihren Client mit den Anmeldeinformationen mit geheimem Clientschlüssel authentifizieren, wodurch Sie Anforderungen an Azure Service Bus vornehmen können.
 
 Eine Liste der Szenarien, für die das Abrufen von Token unterstützt wird, finden Sie im GitHub-Repository [Microsoft Authentication Library (MSAL) for .NET](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) im Bereich [Scenarios](https://aka.ms/msal-net-scenarios).

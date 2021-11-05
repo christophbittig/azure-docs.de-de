@@ -10,12 +10,12 @@ metadata:
   author: sidram
   ms.author: sidram
   ms.date: 09/16/2019
-  ms.openlocfilehash: 2567279bd2c22a2b6f0ff7bf5203efcce56b2466
-  ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+  ms.openlocfilehash: 226ebb46cdd72b93549c0345fc009f2dd0627c39
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 01/08/2021
-  ms.locfileid: "98015571"
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131013496"
 landingContent:
 - title: Informationen zu Azure Stream Analytics
   linkLists:
@@ -141,9 +141,9 @@ landingContent:
     links:
     - text: Erkennen von Anomalien mit maschinellem Lernen
       url: stream-analytics-machine-learning-anomaly-detection.md
-    - text: Durchführen einer Standpunktanalyse mit Azure Machine Learning Studio (klassisch)
+    - text: Durchführen einer Stimmungsanalyse mit Machine Learning Studio (klassisch)
       url: stream-analytics-machine-learning-integration-tutorial.md
-    - text: Skalieren von Aufträgen mit Funktionen von Azure Machine Learning Studio (klassisch)
+    - text: Skalieren von Aufträgen mit Funktionen von Machine Learning Studio (klassisch)
       url: stream-analytics-scale-with-machine-learning-functions.md
 - title: Erstellen und Verwalten von Aufträgen mit Entwicklertools
   linkLists:

@@ -4,14 +4,14 @@ description: In diesem Tutorial lernen Sie, wie Sie Azure Defender für loT in F
 author: ElazarK
 ms.author: v-ekrieg
 ms.topic: tutorial
-ms.date: 09/23/2021
+ms.date: 10/25/2021
 ms.custom: template-tutorial
-ms.openlocfilehash: 30c60a71c15b8b597735c69f2f1f76178016b749
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 81bbedf86c3559b8f668dcfcf26cb0d9dab21af0
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128701380"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131070905"
 ---
 # <a name="tutorial-integrate-fortinet-with-azure-defender-for-iot"></a>Tutorial: Integrieren von Fortinet in Azure Defender für loT
 
@@ -113,7 +113,7 @@ Die FortiGate-Firewall kann zum Blockieren von verdächtigem Datenverkehr verwen
 
 1. Wählen Sie **Weiterleitungsregeln erstellen** aus, und definieren Sie die folgenden Regelparameter:
 
-    | Parameter | Beschreibung |
+    | Parameter | BESCHREIBUNG |
     | --------- | ----------- |
     | **Name** | Geben Sie einen aussagekräftigen Namen für die Weiterleitungsregel ein. |
     | **Schweregrad** | Wählen Sie im Dropdownmenü den Mindestschweregrad für die Weiterleitung von Vorfällen aus. Wenn z. B. **Gering** ausgewählt ist, werden Warnungen mit einem geringen Schweregrad und alle Warnungen mit höheren Schweregraden weitergeleitet. |
@@ -133,9 +133,9 @@ Die FortiGate-Firewall kann zum Blockieren von verdächtigem Datenverkehr verwen
     |--|--|
     | **Host** | Geben Sie die IP-Adresse für den FortiGate-Server ein. |
     | **API-Schlüssel** | Geben Sie den [API-Schlüssel](#create-an-api-key-in-fortinet) ein, den Sie in FortiGate erstellt haben. |
-    | **Incoming Interface (Eingehende Schnittstelle)** | Geben Sie den Port für die eingehende Schnittstelle ein. |
-    | **Outgoing Interface (Ausgehende Schnittstelle)** | Geben Sie den Port für die ausgehende Schnittstelle ein. |
-    | **Konfigurieren**| Vergewissern Sie sich, dass bei den folgenden Optionen ein **√** angezeigt wird, um die Blockierung von verdächtigen Quellen über die FortiGate-Firewall zu aktivieren: <br> - **Block illegal function codes** (Ungültige Funktionscodes blockieren): Protokollverletzungen: Ungültiger Feldwert, der gegen die ICS-Protokollspezifikation verstößt (potenzieller Exploit) <br /> - **Block unauthorized PLC programming/firmware updates** (Nicht autorisierte PLC-Programmierung/Firmwareupdates blockieren): Nicht autorisierte SPS-Änderungen <br /> - **Block unauthorized PLC stop** (Nicht autorisierte SPS-Beendigung blockieren): SPS-Beendigung (Downtime) <br /> - **Block malware-related alerts** (Warnungen zu Schadsoftware blockieren): Blockierung der Angriffsversuche durch industrielle Schadsoftware (TRITON, NotPetya usw.) <br /> -  **(Optional)** Sie können die Option für **Automatische Blockierung** auswählen. Wenn „Automatische Blockierung“ ausgewählt ist, wird die Blockierung automatisch und sofort ausgeführt. <br /> - **Block unauthorized scanning** (Nicht autorisierte Überprüfung blockieren): Nicht autorisierte Überprüfung (potenzielle Aufklärung) |
+    | **Incoming Interface (Eingehende Schnittstelle)** | Geben Sie den Port für die eingehende Firewallschnittstelle ein. |
+    | **Outgoing Interface (Ausgehende Schnittstelle)** | Geben Sie den Port für die ausgehende Firewallschnittstelle ein. |
+    | **Konfigurieren**| Vergewissern Sie sich, dass bei den folgenden Optionen ein **√** angezeigt wird, um die Blockierung von verdächtigen Quellen über die FortiGate-Firewall zu aktivieren: <br> - **Block illegal function codes** (Ungültige Funktionscodes blockieren): Protokollverletzungen: Ungültiger Feldwert, der gegen die ICS-Protokollspezifikation verstößt (potenzieller Exploit) <br /> - **Block unauthorized PLC programming/firmware updates** (Nicht autorisierte PLC-Programmierung/Firmwareupdates blockieren): Nicht autorisierte SPS-Änderungen <br /> - **Block unauthorized PLC stop** (Nicht autorisierte SPS-Beendigung blockieren): SPS-Beendigung (Downtime) <br> - **Block malware-related alerts** (Warnungen zu Schadsoftware blockieren): Blockierung der Angriffsversuche durch industrielle Schadsoftware (TRITON, NotPetya usw.) <br> -  **(Optional)** Sie können die Option für **Automatische Blockierung** auswählen. Wenn „Automatische Blockierung“ ausgewählt ist, wird die Blockierung automatisch und sofort ausgeführt. <br /> - **Block unauthorized scanning** (Nicht autorisierte Überprüfung blockieren): Nicht autorisierte Überprüfung (potenzielle Aufklärung) |
 
 1. Klicken Sie auf **Submit** (Senden).
 
@@ -187,7 +187,7 @@ Sie können dann Weiterleitungsregeln in Defender für IoT verwenden, um Warnung
 
 2. Wählen Sie **Create Forwarding Rules** (Weiterleitungsregeln erstellen) aus, und definieren Sie die Parameter für die Regel.
 
-    | Parameter | Beschreibung |
+    | Parameter | BESCHREIBUNG |
     |--|--|
     | **Name** | Geben Sie einen aussagekräftigen Namen für die Weiterleitungsregel ein. |
     | **Schweregrad** | Wählen Sie den Mindestschweregrad für die Weiterleitung von Vorfällen aus. Wenn z. B. **Gering** ausgewählt ist, werden Warnungen mit einem geringen Schweregrad und alle Warnungen mit höheren Schweregraden weitergeleitet. |
@@ -241,13 +241,24 @@ Beispielsweise kann die schädliche Quelle durch folgende Warnung blockiert werd
 
    :::image type="content" source="media/tutorial-fortinet/edit.png" alt-text="Screenshot: Ansicht des FortiGate-Fensters zum Bearbeiten der IPv4-Richtlinie":::
 
+    | Parameter | BESCHREIBUNG|
+    |--|--|
+    | **Name** | Der Name der Richtlinie. |
+    | **Incoming Interface (Eingehende Schnittstelle)** | Hierbei handelt es sich um die eingehende Firewallschnittstelle für den Datenverkehr. |
+    | **Outgoing Interface (Ausgehende Schnittstelle)** | Hierbei handelt es sich um die ausgehende Firewallschnittstelle für den Datenverkehr. |
+    | **Quelle** | Hierbei handelt es sich um Quelladresse(n) für den Datenverkehr. |
+    | **Ziel** | Hierbei handelt es sich um Zieladresse(n) für den Datenverkehr. |
+    | **Zeitplan** | Hier wird festgelegt, wann die neu definierte Regel gilt. Beispiel: `always`. |
+    | **Service** | Hierbei handelt es sich um das Protokoll oder bestimmte Ports für den Datenverkehr. |
+    | **Aktion** | Hierbei handelt es sich um die Aktion, die die Firewall ausführt. |
+
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Es müssen keine Ressourcen bereinigt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie gelernt, wie Sie mit der Fortinet-Integration beginnen können. Lesen Sie weiter, um mehr über unsere [Palo Alto-Integration](./tutorial-palo-alto.md) zu erfahren.
+In diesem Tutorial haben Sie gelernt, wie Sie mit der Fortinet-Integration beginnen können. Lesen Sie weiter, um mehr über unsere Palo Alto-Integration zu erfahren.
 
 > [!div class="nextstepaction"]
 > [Schaltfläche „Nächste Schritte“](./tutorial-palo-alto.md)

@@ -9,12 +9,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 01/13/2019
 ms.author: cynthn
-ms.openlocfilehash: de96ea4b32b9a2fc6baefd4cd6b14d31dea98165
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 5d43ce73efa602cded23c533fefd29009998b809
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122690806"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131003350"
 ---
 # <a name="download-a-windows-vhd-from-azure"></a>Herunterladen einer Windows-VHD von Azure
 

@@ -10,12 +10,12 @@ ms.subservice: B2C
 ms.workload: identity
 ms.topic: how-to
 ms.date: 10/15/2021
-ms.openlocfilehash: 1db63555d2bf0ad8cfedcdfe90ba2ebae14292ee
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: ca0d912c837a4c3fb218d1bb3fb8b07b43100119
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130253916"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131044625"
 ---
 # <a name="tutorial-extend-azure-active-directory-b2c-to-protect-on-premises-applications-using-f5-big-ip"></a>Tutorial: Erweitern von Azure Active Directory B2C zum Schutz von lokalen Anwendungen mithilfe von F5 BIG-IP
 
@@ -64,7 +64,7 @@ Die sichere Hybridzugriffslösung für dieses Szenario besteht aus den folgenden
 
 - **Anwendung**: Back-End-Dienst, der durch Azure AD B2C- und sicheren BIG-IP-Hybridzugriff geschützt wird
 
-- **Azure AD B2C**: Der IdP- und OIDC-Autorisierungsserver (Open ID Connect), der für die Überprüfung von Benutzeranmeldeinformationen, MFA und SSO beim BIG-IP APM verantwortlich ist.
+- **Azure AD B2C**: Der IdP- und OIDC-Autorisierungsserver (Open ID Connect), der für die Überprüfung von Benutzeranmeldeinformationen, Multi-Faktor-Authentifizierung (MFA) und SSO bei BIG-IP APM verantwortlich ist
 
 - **BIG-IP**: Als Reverseproxy für die Anwendung wird der BIG-IP APM auch zum OIDC-Client, der Authentifizierung an den OIDC-Autorisierungsserver delegiert, bevor headerbasiertes SSO mit dem Back-End-Dienst ausgeführt wird.
 
@@ -72,7 +72,7 @@ Die folgende Abbildung veranschaulicht den vom Dienstanbieter initiierten Ablauf
 
 ![Screenshot: Der vom Dienstanbieter initiierte Ablauf für dieses Szenario](./media/partner-f5/flow-diagram.png)
 
-|Schritt| Beschreibung|
+|Schritt| BESCHREIBUNG|
 |:----|:-------|
 | 1. | Der Benutzer stellt eine Verbindung mit dem Anwendungsendpunkt mit BIG-IP als Dienstanbieter her. |
 | 2. | Der BIG-IP APM, der den OIDC-Client darstellt, leitet den Benutzer an den Azure AD B2C-Mandantenendpunkt (den OIDC-Autorisierungsserver) um. |
@@ -222,9 +222,9 @@ Hier konfigurieren wir Azure AD B2C als OAuth2-IdP. Sie werden feststellen, das
 
   |Eigenschaften | Beschreibungen|
   |:---------|:---------|
-  | Client-ID | Die Client-ID der Anwendung, die BIG-IP in Ihrem Azure AD B2C-Mandanten darstellt.|
+  | Client-ID | Die Client-ID der Anwendung, die BIG-IP in Ihrem Azure AD B2C-Mandanten darstellt. |
   | Geheimer Clientschlüssel | Der entsprechende geheime Clientschlüssel der Anwendung. |
-  |SSL-Profil des Client-Servers | Durch Festlegen eines SSL-Profils wird sichergestellt, dass der APM mit dem Azure AD B2C-IdP über TLS kommuniziert. Wählen Sie die serverssl-Standardoption aus.|
+  |SSL-Profil des Client-Servers | Durch Festlegen eines SSL-Profils wird sichergestellt, dass der APM mit dem Azure AD B2C-IdP über TLS kommuniziert. Wählen Sie die Standardoption `serverssl` aus. |
 
 - **OAuth-Anforderungseinstellungen**
 
@@ -234,38 +234,38 @@ Hier konfigurieren wir Azure AD B2C als OAuth2-IdP. Sie werden feststellen, das
 
   | Eigenschaften | BESCHREIBUNG |
   |:-----------|:------------|
-  |Auswählen der OAuth-Anforderung | Neu erstellen |
+  | Auswählen der OAuth-Anforderung | Neu erstellen |
   | HTTP-Methode | POST |
-  |Aktivieren von Headern| Deaktiviert |
+  | Aktivieren von Headern| Deaktiviert |
   | Aktivieren von Parametern | Überprüft |
 
   | Parametertyp | Parametername | Parameterwert|
   |:---------|:---------------|:----------------|
-  | client-id| client-id | |
-  |nonce |nonce| |
+  | client-id | client-id | |
+  | nonce | nonce| |
   | redirect-uri | redirect-uri | |
   | scope | scope | |
-  | response-type |response-type | |
-  |client-secret| client-secret| |
+  | response-type | response-type | |
+  | client-secret | client-secret | |
   | custom | grant_type | authorization_code |
 
 - **Authentifizierungsumleitungsanforderung: Aktiviert**
 
   | Eigenschaften | BESCHREIBUNG |
   |:-----------|:------------|
-  |Auswählen der OAuth-Anforderung | Neu erstellen |
-  |HTTP-Methode | GET |
-  |Art der Eingabeaufforderung | Keine |
-  |Aktivieren von Headern | Deaktiviert |
-  |Aktivieren von Parametern | Überprüft |
+  | Auswählen der OAuth-Anforderung | Neu erstellen |
+  | HTTP-Methode | GET |
+  | Art der Eingabeaufforderung | Keine |
+  | Aktivieren von Headern | Deaktiviert |
+  | Aktivieren von Parametern | Überprüft |
 
   | Parametertyp | Parametername | Parameterwert|
   |:---------|:---------------|:----------------|
-  | client-id| client-id | |
+  | client-id | client-id | |
   | redirect-uri | redirect-uri | |
   | response-type |response-type | |
   | scope | scope | |
-  |nonce| nonce| |
+  | nonce | nonce | |
 
 - **Token refresh request** - **Disabled** (Tokenaktualisierungsanforderung > Deaktiviert): Kann bei Bedarf aktiviert und konfiguriert werden.
 
@@ -281,7 +281,7 @@ Hier konfigurieren wir Azure AD B2C als OAuth2-IdP. Sie werden feststellen, das
   | Dienstport | HTTPS |
   | Aktivieren des Weiterleitungsports | Aktivieren Sie diese Option, damit Benutzer automatisch von HTTP an HTTPS umgeleitet werden. |
   | Umleitungsport | HTTP |
-  | Client-SSL-Profil | Ersetzen Sie das vordefinierte clientssl-Profil durch das Profil, das Ihr SSL-Zertifikat enthält. Das Testen mit dem Standardprofil ist ebenfalls in Ordnung, verursacht aber wahrscheinlich eine Browserwarnung.|
+  | Client-SSL-Profil | Ersetzen Sie das vordefinierte Profil `clientssl` durch das Profil, das Ihr SSL-Zertifikat enthält. Das Testen mit dem Standardprofil ist ebenfalls in Ordnung, verursacht aber wahrscheinlich eine Browserwarnung. |
 
 - **Pooleigenschaften**
 

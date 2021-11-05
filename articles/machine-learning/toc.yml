@@ -313,6 +313,9 @@
             - name: Machine Learning mit Azure Arc-Unterstützung
               displayName: 'Azure Arc, Kubernetes, on-premise, multi-cloud'
               href: how-to-attach-arc-kubernetes.md
+            - name: Kubernetes-Instanztypen
+              displayName: 'Azure Arc, Kubernetes, on-premise, multi-cloud'
+              href: how-to-kubernetes-instance-type.md
             - name: Azure Kubernetes Service
               displayName: 'AKS, inference'
               href: how-to-create-attach-kubernetes.md
@@ -547,7 +550,7 @@
           items:
             - name: Echtzeit
               items:
-                - name: Bereitstellen eines ML-Modells mit einem verwalteten Onlineendpunkt
+                - name: Bereitstellen eines ML-Modells mit einem Onlineendpunkt
                   href: how-to-deploy-managed-online-endpoints.md
                 - name: Bereitstellen eines benutzerdefinierten Containers mit einem verwalteten Onlineendpunkt
                   href: how-to-deploy-custom-container.md

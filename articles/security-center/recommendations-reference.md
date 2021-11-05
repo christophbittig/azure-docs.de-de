@@ -1,28 +1,30 @@
 ---
-title: Referenztabelle für alle Azure Security Center-Empfehlungen
-description: In diesem Artikel sind die Azure Security Center-Sicherheitsempfehlungen aufgeführt, die Ihnen beim Härten und Schützen Ihrer Ressourcen helfen.
+title: Referenztabelle für alle Microsoft Defender für Cloud-Empfehlungen
+description: In diesem Artikel sind die Microsoft Defender für Cloud-Sicherheitsempfehlungen aufgeführt, die Ihnen beim Härten und Schützen Ihrer Ressourcen helfen.
 author: memildin
 ms.service: security-center
 ms.topic: reference
 ms.date: 09/05/2021
 ms.author: memildin
 ms.custom: generated
-ms.openlocfilehash: a1fd045bebf4a5821d9f411f409d301b5d2c453d
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: 34f970884c97105a3831734cf672376e17f43a98
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123536867"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131014465"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Sicherheitsempfehlungen: Referenzhandbuch
 
-In diesem Artikel sind die Empfehlungen aufgeführt, die in Azure Security Center angezeigt werden können. Welche Empfehlungen in Ihrer Umgebung angezeigt werden, hängt von den geschützten Ressourcen und Ihrer angepassten Konfiguration ab.
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
-Security Center-Empfehlungen beruhen auf dem [Azure-Sicherheitsvergleichstest](../security/benchmarks/introduction.md). Beim Azure-Sicherheitsvergleichstest handelt es sich um einen von Microsoft erstellten Satz Azure-spezifischer Richtlinien zu bewährten Methoden für Sicherheit und Compliance, die auf allgemeinen Complianceframeworks basieren. Diese weit verbreitete Benchmark basiert auf den Kontrollen des [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) und des [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) und konzentriert sich auf cloudzentrierte Sicherheit.
+In diesem Artikel sind die Empfehlungen aufgeführt, die möglicherweise in Microsoft Defender für Cloud angezeigt werden. Welche Empfehlungen in Ihrer Umgebung angezeigt werden, hängt von den geschützten Ressourcen und Ihrer angepassten Konfiguration ab.
 
-Informationen zum Umgang mit diesen Empfehlungen finden Sie unter [Umsetzen von Empfehlungen in Azure Security Center](security-center-remediate-recommendations.md).
+Defender für Cloud-Empfehlungen beruhen auf dem [Azure-Sicherheitsvergleichstest](../security/benchmarks/introduction.md). Beim Azure-Sicherheitsvergleichstest handelt es sich um einen von Microsoft erstellten Satz Azure-spezifischer Richtlinien zu bewährten Methoden für Sicherheit und Compliance, die auf allgemeinen Complianceframeworks basieren. Diese weit verbreitete Benchmark basiert auf den Kontrollen des [Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/azure/) und des [National Institute of Standards and Technology (NIST)](https://www.nist.gov/) und konzentriert sich auf cloudzentrierte Sicherheit.
 
-Ihre Sicherheitsbewertung basiert auf der Anzahl der Security Center-Empfehlungen, die Sie umgesetzt haben. Sehen Sie sich den Schweregrad jeder einzelnen Empfehlung und deren mögliche Auswirkung auf Ihre Sicherheitsbewertung an, um zu entscheiden, welche Empfehlungen zuerst umgesetzt werden sollten.
+Informationen zum Umgang mit diesen Empfehlungen finden Sie unter [Umsetzen von Empfehlungen in Microsoft Defender für Cloud](implement-security-recommendations.md).
+
+Ihre Sicherheitsbewertung basiert auf der Anzahl der Defender für Cloud-Empfehlungen, die Sie umgesetzt haben. Sehen Sie sich den Schweregrad jeder einzelnen Empfehlung und deren mögliche Auswirkung auf Ihre Sicherheitsbewertung an, um zu entscheiden, welche Empfehlungen zuerst umgesetzt werden sollten.
 
 > [!TIP]
 > Wenn es in der Beschreibung einer Empfehlung heißt: „Keine zugehörige Richtlinie“, so liegt das normalerweise daran, dass diese Empfehlung von einer anderen Empfehlung und _deren_ Richtlinie abhängig ist. Die Empfehlung „Endpoint Protection-Integritätsfehler sollten behoben werden...“ stützt sich beispielsweise auf die Empfehlung, die prüft, ob _überhaupt_ eine Endpoint Protection-Lösung installiert ist. („Endpoint Protection-Lösung sollte installiert werden...“). Die zugrunde liegende Empfehlung _verfügt_ über eine Richtlinie.
@@ -73,4 +75,4 @@ Ihre Sicherheitsbewertung basiert auf der Anzahl der Security Center-Empfehlung
 Weitere Informationen zu Empfehlungen finden Sie in den folgenden Artikeln:
 
 - [Was sind Sicherheitsrichtlinien, Initiativen und Empfehlungen?](security-policy-concept.md)
-- [Überprüfen Ihrer Sicherheitsempfehlungen](security-center-recommendations.md)
+- [Überprüfen Ihrer Sicherheitsempfehlungen](review-security-recommendations.md)

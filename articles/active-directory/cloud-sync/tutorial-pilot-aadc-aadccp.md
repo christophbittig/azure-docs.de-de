@@ -11,12 +11,12 @@ ms.date: 03/22/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5053bd0c3d63b13b1021476a09dca39dd08f581
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.openlocfilehash: ff64e9778b035d43a7502fcf416ffe037ff54ffa
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105108756"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131057607"
 ---
 # <a name="pilot-cloud-sync-for-an-existing-synced-ad-forest"></a>Pilotcloudsynchronisierung für eine vorhandene synchronisierte AD-Gesamtstruktur 
 
@@ -201,7 +201,7 @@ Die Azure AD Connect-Synchronisierung synchronisiert Änderungen in Ihrem loka
 >[!NOTE] 
 >Wenn Sie Ihren eigenen benutzerdefinierten Scheduler für die Azure AD Connect-Synchronisierung ausführen, aktivieren Sie den Scheduler. 
 
-Sobald der Scheduler aktiviert ist, beendet Azure AD Connect den Export jeglicher Änderungen an Objekten mit `cloudNoFlow=true` im Metaverse, es sei denn ein Verweisattribut (z. B. „manager“) wird aktualisiert. Falls eine Verweisattributaktualisierung für das Objekt vorhanden ist, ignoriert Azure AD Connect das `cloudNoFlow`-Signal und exportiert alle Aktualisierungen für das Objekt.
+Sobald der Scheduler aktiviert ist, beendet Azure AD Connect den Export jeglicher Änderungen an Objekten mit `cloudNoFlow=true` im Metaverse, es sei denn ein Verweisattribut (z. B. `manager`) wird aktualisiert. Falls eine Verweisattributaktualisierung für das Objekt vorhanden ist, ignoriert Azure AD Connect das `cloudNoFlow`-Signal und exportiert alle Aktualisierungen für das Objekt.
 
 ## <a name="something-went-wrong"></a>Wenn Fehler auftreten
 Falls die Pilotbereitstellung nicht wie erwartet funktioniert, können Sie wie folgt zum Setup der Azure AD Connect-Synchronisierung zurückkehren:

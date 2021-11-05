@@ -10,12 +10,12 @@ author: Blackmist
 ms.date: 09/23/2021
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 16def8c00db3702a77e261b71841aa7d2d3c3728
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 029202fa236f5a7be2e3b3cbc650f2e54a4d1015
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128655503"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131085752"
 ---
 # <a name="manage-azure-machine-learning-workspaces-using-azure-cli"></a>Verwalten von Azure Machine Learning-Arbeitsbereichen mithilfe der Azure CLI
 
@@ -346,6 +346,8 @@ Weitere Informationen über den Befehl „sync-keys“ finden Sie unter [az ml w
 
 ### <a name="delete-a-workspace"></a>Löschen eines Arbeitsbereichs
 
+[!INCLUDE [machine-learning-delete-workspace](../../includes/machine-learning-delete-workspace.md)]
+
 Um einen Arbeitsbereich zu löschen, wenn er nicht mehr benötigt wird, verwenden Sie den folgenden Befehl:
 
 ```azurecli-interactive
@@ -362,6 +364,8 @@ az group delete -g <resource-group-name>
 ```
 
 Weitere Informationen finden Sie in der Dokumentation zu [az ml workspace delete](/cli/azure/ml/workspace#az_ml_workspace_delete).
+
+Wenn Sie Ihren Arbeitsbereich versehentlich gelöscht haben, können Sie Ihre Notizbücher trotzdem wiederherstellen. Weitere Informationen finden Sie in [dieser Dokumentation](/azure/machine-learning/how-to-high-availability-machine-learning#workspace-deletion).
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

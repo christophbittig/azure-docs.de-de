@@ -4,16 +4,16 @@ description: In diesem Artikel erfahren Sie, wie Sie eine Azure-Dateifreigabe er
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/01/2021
+ms.date: 10/25/2021
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 2b1e7f17445fe2b24b19acf4669637ef4c47c196
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: f146d51cdd43b8c4a52285476e47d0c6237efe0f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339151"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131046601"
 ---
 # <a name="how-to-create-an-nfs-share-preview"></a>Erstellen einer NFS-Freigabe (Vorschau)
 Azure-Dateifreigaben sind vollständig verwaltete Dateifreigaben, die in der Cloud gespeichert werden. In diesem Artikel erfahren Sie, wie Sie eine Dateifreigabe erstellen, für die das NFS-Protokoll verwendet wird (Vorschau).
@@ -111,7 +111,7 @@ Derzeit sind NFS 4.1-Freigaben nur als Premium-Dateifreigaben verfügbar. Wenn 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 Navigieren Sie zum Erstellen eines FileStorage-Speicherkontos zum Azure-Portal.
 
-1. Wählen Sie im Azure-Portal im linken Menü **Speicherkonten** aus.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) im linken Menü **Speicherkonten** aus.
 
     ![Hauptseite im Azure-Portal: Auswählen eines Speicherkontos](media/storage-how-to-create-premium-fileshare/azure-portal-storage-accounts.png)
 
@@ -164,6 +164,32 @@ az storage account create \
     --location $location \
     --sku Premium_LRS \
     --kind FileStorage
+```
+---
+
+## <a name="disable-secure-transfer"></a>Deaktivieren der sicheren Übertragung
+
+Sie können eine NFS-Dateifreigabe nur einbinden, wenn Sie die sichere Übertragung deaktivieren.
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+
+1. Navigieren Sie zu dem Speicherkonto, das Sie erstellt haben.
+1. Wählen Sie **Konfiguration** aus.
+1. Wählen Sie für **Sichere Übertragung erforderlich** die Einstellung **Deaktiviert** aus.
+1. Wählen Sie **Speichern** aus.
+
+    :::image type="content" source="media/storage-files-how-to-mount-nfs-shares/disable-secure-transfer.png" alt-text="Screenshot mit dem Konfigurationsbildschirm des Speicherkontos und der deaktivierten Option „Sichere Übertragung erforderlich“" lightbox="media/storage-files-how-to-mount-nfs-shares/disable-secure-transfer.png":::
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+```azurepowershell
+Set-AzStorageAccount -Name "{StorageAccountName}" -ResourceGroupName "{ResourceGroupName}" -EnableHttpsTrafficOnly $False
+```
+
+# <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
+
+```azurecli
+az storage account update -g {ResourceGroupName} -n {StorageAccountName} --https-only false
 ```
 ---
 

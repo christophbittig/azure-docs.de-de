@@ -10,12 +10,12 @@ ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
 ms.date: 05/05/2021
-ms.openlocfilehash: fc13ac868f2abb1ccd466b245c22682af79ba915
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 70429e7d9b1628f17672aaaa545c6c5bba3c30b1
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130161270"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131032682"
 ---
 # <a name="failover-for-business-continuity-and-disaster-recovery"></a>Failover für Business Continuity & Disaster Recovery
 
@@ -29,6 +29,8 @@ Microsoft möcht sicherstellen, dass Azure-Dienste immer verfügbar sind. Es kan
 
 > [!NOTE]
 > Azure Machine Learning selbst bietet kein automatisches Failover bzw. keine automatische Notfallwiederherstellung.
+
+Falls Sie Ihren Arbeitsbereich oder die entsprechenden Komponenten versehentlich gelöscht haben, enthält dieser Artikel auch die derzeit unterstützten Wiederherstellungsoptionen.
 
 ## <a name="understand-azure-services-for-azure-machine-learning"></a>Grundlegendes zu Azure-Diensten für Azure Machine Learning
 
@@ -186,6 +188,18 @@ Die folgenden Artefakte können mithilfe der [Azure CLI-Erweiterung für Azure M
 > [!TIP]
 > * __Registrierte Datasets__ können nicht heruntergeladen oder verschoben werden. Dies schließt von Azure Machine Learning generierte Datasets ein, z. B. Zwischen-Pipelinedatasets. Datasets, die auf einen freigegebenen Dateispeicherort verweisen, auf den beide Arbeitsbereiche zugreifen können, oder bei dem der zugrunde liegende Datenspeicher repliziert wird, können jedoch in beiden Arbeitsbereichen registriert werden. Verwenden Sie [az ml dataset register](/cli/azure/ml(v1)/dataset#ext_azure_cli_ml_az_ml_dataset_register), um ein Dataset zu registrieren.
 > * __Ausführungsausgaben__ werden im Standardspeicherkonto gespeichert, das einem Arbeitsbereich zugeordnet ist. Während bei einem Dienstausfall möglicherweise nicht mehr über die Studio-Benutzeroberfläche auf Ausführungsausgaben zugegriffen werden kann, können Sie direkt über das Speicherkonto auf die Daten zugreifen. Weitere Informationen zum Arbeiten mit in Blobs gespeicherten Daten finden Sie unter [Erstellen, Herunterladen und Auflisten von Blobs mit der Azure-Befehlszeilenschnittstelle](../storage/blobs/storage-quickstart-blobs-cli.md).
+
+## <a name="recovery-options"></a>Wiederherstellungsoptionen
+
+### <a name="workspace-deletion"></a>Löschen eines Arbeitsbereichs
+
+Wenn Sie Ihren Arbeitsbereich versehentlich gelöscht haben, ist es derzeit nicht möglich, ihn wiederherzustellen. Sie können Ihre vorhandenen Notebooks jedoch aus dem entsprechenden Speicher abrufen, wenn Sie die folgenden Schritte ausführen:
+* Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu dem Speicherkonto, das mit dem gelöschten Azure Machine Learning-Arbeitsbereich verknüpft war.
+* Klicken Sie im Abschnitt „Datenspeicher“ auf der linken Seite auf **Dateifreigaben**.
+* Ihre Notebooks befinden sich auf der Dateifreigabe mit dem Namen, der Ihre Arbeitsbereichs-ID enthält. 
+
+![Notebook-Dateifreigabe zur Referenz](./media/how-to-high-availability-machine-learning/notebook-file-share.png)
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Verwenden Sie eine [Azure Resource Manager-Vorlage](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.machinelearningservices/), um Azure Machine Learning mit zugeordneten Ressourcen mit Ihren Hochverfügbarkeitseinstellungen bereitzustellen.

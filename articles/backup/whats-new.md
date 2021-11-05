@@ -2,13 +2,13 @@
 title: Neuerungen in Azure Backup
 description: Erfahren Sie mehr über die neuen Features in Azure Backup.
 ms.topic: conceptual
-ms.date: 08/05/2021
-ms.openlocfilehash: e05b98e61a632ee494689eeb1cf013996150bcb3
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.date: 10/20/2021
+ms.openlocfilehash: 398833135c97d3d067e7e2b29704ffd6bad25bbd
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130244227"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131020424"
 ---
 # <a name="whats-new-in-azure-backup"></a>Neuerungen in Azure Backup
 
@@ -18,6 +18,8 @@ Weitere Informationen zu den neuen Releases erhalten Sie, indem Sie diese Seite 
 
 ## <a name="updates-summary"></a>Übersicht über Updates
 
+- Oktober 2021
+  - [Azure Backup Metrics und Metrics Alerts (in der Vorschau)](#azure-backup-metrics-and-metrics-alerts-in-preview)
 - Juli 2021
   - [Unterstützung der Archivebene für SQL Server in Azure VM for Azure Backup jetzt allgemein verfügbar](#archive-tier-support-for-sql-server-in-azure-vm-for-azure-backup-is-now-generally-available)
 - Mai 2021
@@ -46,6 +48,25 @@ Weitere Informationen zu den neuen Releases erhalten Sie, indem Sie diese Seite 
   - [Sichern von SAP HANA in Azure Virtual Machines unter RHEL (in der Vorschau)](#backup-sap-hana-in-rhel-azure-virtual-machines-in-preview)
   - [Zonenredundanter Speicher (ZRS) für Sicherungsdaten (in der Vorschau)](#zone-redundant-storage-zrs-for-backup-data-in-preview)
   - [Vorläufiges Löschen für SQL Server- und SAP HANA-Workloads auf Azure-VMs](#soft-delete-for-sql-server-and-sap-hana-workloads)
+
+## <a name="azure-backup-metrics-and-metrics-alerts-in-preview"></a>Azure Backup-Metriken und Metrik-Warnungen (in der Vorschau)
+
+Azure Backup bietet jetzt über [Azure Monitor](/azure/azure-monitor/essentials/data-platform-metrics) eine Reihe von integrierten Metriken, mit denen Sie den Zustand Ihrer Backups überwachen können. Sie können auch Warnregeln konfigurieren, die Warnungen auslösen, wenn die Metriken die festgelegten Schwellenwerte überschreiten.
+
+Azure Backup bietet die folgenden Hauptfunktionen:
+ 
+- Die Möglichkeit, sofort einsatzbereite Metriken in Bezug auf den Sicherungs- und Wiederherstellungszustand Ihrer Sicherungselemente sowie die damit verbundenen Trends anzuzeigen.
+- Die Möglichkeit, benutzerdefinierte Warnregeln für diese Metriken zu erstellen, um den Zustand Ihrer Sicherungselemente effizient zu überwachen.
+- Möglichkeit, ausgelöste Metrikwarnungen an verschiedene von Azure Monitor unterstützte Benachrichtigungskanäle weiterzuleiten, wie z. B. E-Mail, ITSM, Webhook, Logik-Apps und so weiter.
+ 
+Derzeit unterstützt Azure Backup integrierte Metriken für die folgenden Workload-Typen:
+
+- Azure VM
+- SQL-Datenbanken in Azure VM
+- SAP HANA-Datenbanken in Azure VM
+- Azure-Dateien.
+
+Weitere Einzelheiten finden Sie unter [Überwachen Sie den Zustand Ihrer Backups mit Azure Backup Metrics (Vorschau)](metrics-overview.md).
 
 ## <a name="archive-tier-support-for-sql-server-in-azure-vm-for-azure-backup-is-now-generally-available"></a>Unterstützung der Archivebene für SQL Server in Azure VM for Azure Backup jetzt allgemein verfügbar
 
@@ -167,7 +188,7 @@ Weitere Informationen finden Sie in der [Unterstützungsmatrix für die Sicherun
 
 ## <a name="zone-redundant-storage-zrs-for-backup-data-in-preview"></a>Zonenredundanter Speicher (ZRS) für Sicherungsdaten (in der Vorschau)
 
-Azure Storage bietet über verschiedene Redundanzoptionen eine hervorragende Balance zwischen hoher Leistung, Hochverfügbarkeit und hoher Datenresilienz. Mit Azure Backup können Sie diese Vorteile auch auf die Sicherungsdaten ausweiten. So haben Sie z. B. die Möglichkeit, Ihre Sicherungen in lokal redundantem Speicher (LRS) und georedundantem Speicher (GRS) zu speichern. Darüber hinaus gibt es nun zusätzliche Dauerhaftigkeitsoptionen mit zusätzlicher Unterstützung für zonenredundanten Speicher (ZRS).
+Azure Storage bietet über verschiedene Redundanzoptionen eine hervorragende Balance zwischen hoher Leistung, Hochverfügbarkeit und hoher Datenresilienz. Mit Azure Backup können Sie diese Vorteile auch auf die Sicherungsdaten ausdehnen. Sie haben die Möglichkeit, Ihre Sicherungen in lokal redundantem Speicher (LRS) und georedundantem Speicher (GRS) zu speichern. Darüber hinaus gibt es nun zusätzliche Dauerhaftigkeitsoptionen mit zusätzlicher Unterstützung für zonenredundanten Speicher (ZRS).
 
 Weitere Informationen finden Sie unter [Festlegen der Speicherredundanz für den Recovery Services-Tresor](backup-create-rs-vault.md#set-storage-redundancy).
 

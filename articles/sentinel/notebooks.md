@@ -8,16 +8,18 @@ ms.assetid: 1721d0da-c91e-4c96-82de-5c7458df566b
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: conceptual
-ms.custom: mvc
+ms.custom: mvc, ignite-fall-2021
 ms.date: 06/24/2021
-ms.openlocfilehash: d57941c06f4917c8ff3b27f5e566fc9d5f95474b
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 172eaeae01f75ccebd20725f932dd2ad3f9eb39c
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129273001"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131009249"
 ---
 # <a name="use-jupyter-notebooks-to-hunt-for-security-threats"></a>Aufspüren von Sicherheitsrisiken mit Jupyter Notebooks
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
 
 [!INCLUDE [reference-to-feature-availability](includes/reference-to-feature-availability.md)]
 
@@ -27,8 +29,8 @@ Die gleiche API ist auch für externe Tools wie [Jupyter Notebooks](https://jupy
 
 Verwenden Sie Notebooks beispielsweise für Folgendes:
 
-- **Durchführen von Analysen**, die nicht in Azure Sentinel integriert sind, z. B. einige Python-Features für maschinelles Lernen
-- **Erstellen von Datenvisualisierungen**, die nicht in Azure Sentinel integriert sind, z. B. benutzerdefinierte Zeitachsen und Prozessstrukturen
+- **Durchführen von Analysen**, die nicht standardmäßig in Azure Sentinel enthalten sind, z. B. einige Python-Features für maschinelles Lernen
+- **Erstellen von Datenvisualisierungen**, die nicht standardmäßig in Azure Sentinel enthalten sind, z. B. benutzerdefinierte Zeitachsen und Prozessstrukturen
 - **Integrieren von Datenquellen**, die sich außerhalb von Azure Sentinel befinden, z. B. eines lokalen Datasets.
 
 Wir haben die Jupyter-Benutzeroberfläche in das Azure-Portal integriert, sodass Sie Notebooks auf einfache Weise erstellen und mit diesen Notebooks Daten analysieren können. Mit der *Kqlmagic*-Bibliothek als verbindende Komponente können Sie [KQL](https://kusto.azurewebsites.net/docs/kusto/query/index.html)-Abfragen von Azure Sentinel annehmen und diese direkt in einem Notebook ausführen.
@@ -139,7 +141,7 @@ Nachdem Sie einen AML-Arbeitsbereich erstellt haben, starten Sie Ihre Notebooks 
 
     Wenn Sie das Notebook gefunden haben, das Sie verwenden möchten, wählen Sie **Notebook speichern** aus, um es in Ihren eigenen Arbeitsbereich zu klonen.
 
-    Bearbeiten Sie den Namen nach Bedarf. Wenn das Notebook bereits in Ihrem Arbeitsbereich vorhanden ist, haben Sie die Möglichkeit, das vorhandene Notebook zu überschreiben oder ein neues zu erstellen.
+    Bearbeiten Sie den Namen nach Bedarf. Wenn das Notebook bereits in Ihrem Arbeitsbereich vorhanden ist, können Sie das vorhandene Notebook überschreiben oder ein neues erstellen.
 
     :::image type="content" source="media/notebooks/save-notebook.png" alt-text="Speichern Sie ein Notebook, um es in Ihren eigenen Arbeitsbereich zu klonen.":::
 
@@ -246,7 +248,6 @@ Wenn Azure Sentinel-Notebooks in Ihrem Azure ML-Arbeitsbereich gespeichert sind,
     !cd azure-sentinel-nb && git pull
     ```
 
-
 ## <a name="troubleshooting"></a>Problembehandlung
 
 In der Regel wird ein Notebook nahtlos erstellt oder an einen Kernel angefügt, und Sie müssen keine manuellen Änderungen vornehmen. Wenn Sie Fehler erhalten oder das Notebook scheinbar nicht ausgeführt wird, müssen Sie möglicherweise die Version und den Status des Kernels überprüfen.
@@ -271,7 +272,7 @@ Standardmäßig werden Benutzerkonten und Anmeldeinformationen zwischen Notebook
     To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the 9-digit device code to authenticate.
     ```
 
-1. Wählen Sie das aus neun Zeichen bestehende Token aus der Ausgabe aus, und kopieren Sie es, und wählen Sie die `devicelogin`-URL aus, um zur angegebenen Seite zu wechseln. 
+1. Wählen Sie in der Ausgabe das aus neun Zeichen bestehende Token aus, und kopieren Sie es. Wählen Sie dann die `devicelogin`-URL aus, um zur angegebenen Seite zu navigieren. 
 
 1. Fügen Sie das Token in das Dialogfeld ein, und fahren Sie mit der Anmeldung fort, wenn Sie dazu aufgefordert werden.
 
@@ -306,7 +307,7 @@ If the *Runtime dependency of PyGObject is missing* error appears when you load 
     qry_prov = QueryProvider("AzureSentinel")
     ```
 
-    Eine Warnung ähnlich der folgenden wird angezeigt, die auf eine fehlende Python-Abhängigkeit (`pygobject`) hinweist:
+    Es wird eine Warnung angezeigt, die der folgenden Meldung ähnelt. Sie weist auf eine fehlende Python-Abhängigkeit (`pygobject`) hin:
 
     ```output
     Runtime dependency of PyGObject is missing.
@@ -335,7 +336,9 @@ If the *Runtime dependency of PyGObject is missing* error appears when you load 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Die im [Azure Sentinel-GitHub-Repository](https://github.com/Azure/Azure-Sentinel-Notebooks) verfügbaren Notebooks sind als nützliche Tools, Veranschaulichungen und Codebeispiele gedacht, die Sie beim Entwickeln eigener Notebooks verwenden können.
+Integrieren Sie Ihre Notebookumgebung in Big Data-Analysen in Azure Synapse. Weitere Informationen finden Sie unter [Integrieren von Notebooks mit Azure Synapse (Public Preview)](notebooks-with-synapse.md).
+
+Andere im [Azure Sentinel-GitHub-Repository](https://github.com/Azure/Azure-Sentinel-Notebooks) verfügbare Notebooks sind als nützliche Tools, Veranschaulichungen und Codebeispiele gedacht, die Sie beim Entwickeln eigener Notebooks verwenden können.
 
 Wir freuen uns über Feedback, Vorschläge, gewünschte Funktionen, eigene Notebooks, Fehlerberichte oder Verbesserungen und Ergänzungen zu vorhandenen Notebooks. Besuchen Sie die [Azure Sentinel-Community GitHub](https://github.com/Azure/Azure-Sentinel), um ein Problem zu melden oder eine Verzweigung anzulegen oder um einen Beitrag hochzuladen.
 
@@ -352,7 +355,7 @@ Wir freuen uns über Feedback, Vorschläge, gewünschte Funktionen, eigene Noteb
 
 Weitere Informationen finden Sie unter
 
-  - [Tutorial: Get started with Jupyter notebooks and MSTICPy in Azure Sentinel](notebook-get-started.md) (Tutorial: Erste Schritte mit Jupyter Notebooks und MSTICPy in Azure Sentinel)
+- [Tutorial: Get started with Jupyter notebooks and MSTICPy in Azure Sentinel](notebook-get-started.md) (Tutorial: Erste Schritte mit Jupyter Notebooks und MSTICPy in Azure Sentinel)
 - [Tutorial: Azure Sentinel: Notebooks – erste Schritte](https://www.youtube.com/results?search_query=azazure+sentinel+notebooks) (Video)
 - [Tutorial: Bearbeiten und Ausführen von Jupyter Notebooks, ohne Azure ML Studio zu verlassen](https://www.youtube.com/watch?v=AAj-Fz0uCNk) (Video)
 - [Webinar: Grundlagen von Azure Sentinel-Notebooks](https://www.youtube.com/watch?v=rewdNeX6H94)

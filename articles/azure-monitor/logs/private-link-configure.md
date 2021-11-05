@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 08/01/2021
-ms.openlocfilehash: 9f0b1a3f51a5eae7b10ed74880c8abe1c92aae7a
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 99e8830b1b4b667d68bb8db1243d1c0ddaeab15a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129278992"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131006770"
 ---
 # <a name="configure-your-private-link"></a>Konfigurieren von Private Link
 Zum Konfigurieren von Private Link sind einige Schritte erforderlich: 
@@ -303,5 +303,5 @@ Diese Zone konfiguriert die Konnektivität mit dem Speicherkonto der Lösungspak
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über [privaten Speicher](private-storage.md).
+- Hier erfahren Sie mehr über [privaten Speicher](private-storage.md) für benutzerdefinierte Protokolle und vom Kunden verwaltete Schlüssel (Customer Managed Keys, CMK).
 - Erfahren Sie mehr über [Private Link für Automation](../../automation/how-to/private-link-security.md).

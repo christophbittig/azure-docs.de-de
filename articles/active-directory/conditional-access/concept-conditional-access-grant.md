@@ -9,14 +9,14 @@ ms.date: 06/25/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: karenhoran
-ms.reviewer: calebb
+ms.reviewer: calebb, sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d8c0bf5ac063fbf300cf43cd46a22e8904cb6bf
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 36d6283bd8304a33b80797e502edde45c952e06a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128548785"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131067392"
 ---
 # <a name="conditional-access-grant"></a>Bedingter Zugriff: Erteilen
 
@@ -62,11 +62,26 @@ Ein Gerät kann von Intune (beliebiges Gerätebetriebssystem) oder vom MDM-Syste
 
 Geräte müssen in Azure AD registriert werden, damit Sie als kompatibel gekennzeichnet werden können. Weitere Informationen zur Geräteregistrierung finden Sie im Artikel [Was ist eine Geräteidentität?](../devices/overview.md).
 
+**Anmerkungen**
+
+- Die **Anforderung, dass das Gerät als konform gekennzeichnet werden muss**:
+   - Unterstützt nur Windows aktuelle (Windows 10+), iOS-, Android- und macOS-Geräte, die bei Azure AD intune registriert sind.
+   - Für Geräte, die bei MDM-Systemen von Drittanbietern registriert sind, siehe [Unterstützung von Drittanbieter-Geräte-Compliance-Partnern in Intune](/mem/intune/protect/device-compliance-partners).
+   - Der bedingte Zugriff kann Microsoft Edge im InPrivate-Modus einer genehmigten Client-App nicht berücksichtigen.
+
+
 ### <a name="require-hybrid-azure-ad-joined-device"></a>Gerät mit Hybrid-Azure AD-Einbindung erforderlich
 
 Organisationen können die Geräteidentität als Teil ihrer Richtlinie für bedingten Zugriff verwenden. Mit diesem Kontrollkästchen können Organisationen festlegen, dass Geräte in Hybrid-Azure AD eingebunden sein müssen. Im Artikel [Was ist eine Geräteidentität?](../devices/overview.md) finden Sie weitere Informationen zu Geräteidentitäten.
 
 Bei Verwendung des [OAuth-Gerätecodeflows](../develop/v2-oauth2-device-code.md) werden das Gewährungssteuerelement „Verwaltetes Gerät erforderlich“ oder eine Gerätestatusbedingung nicht unterstützt. Dies liegt daran, dass das Gerät, das die Authentifizierung ausführt, seinen Gerätestatus nicht für das Gerät bereitstellen kann, das einen Code bereitstellt. Zudem ist der Gerätestatus im Token für das Gerät, das die Authentifizierung ausführt, gesperrt. Verwenden Sie stattdessen das Gewährungssteuerelement „Mehrstufige Authentifizierung erforderlich“.
+
+**Anmerkungen**
+
+- Die Anforderung **Hybrid Azure AD eingebundenes Gerät** ist 
+erforderlich:
+   - Unterstützt nur in die Domäne eingebundene Windows (vor Windows 10) und Windows aktuelle Geräten (Windows 10+).
+   - Conditional Access kann Microsoft Edge im InPrivate-Modus nicht als hybrides, mit Azure AD verbundenes Gerät berücksichtigen.
 
 ### <a name="require-approved-client-app"></a>Genehmigte Client-App erforderlich
 
@@ -146,7 +161,7 @@ Für die folgenden Client-Apps wurde bestätigt, dass diese Einstellung unterst�
 - Nine Mail – Email & Calendar
 
 > [!NOTE]
-> Microsoft Kaizala, Microsoft Skype for Business und Microsoft Visio unterstützen den Gewährungstyp **App-Schutzrichtlinie erforderlich** nicht. Wenn Sie mit diesen Apps arbeiten müssen, verwenden Sie exklusiv den Gewährungstyp **Genehmigte Apps erforderlich**. Die Verwendung der OR-Klausel zwischen den beiden Gewährungstypen funktioniert für diese drei Anwendungen nicht.
+> Microsoft Kaizala, Microsoft Skype for Business und Microsoft Visio unterstützen den Gewährungstyp **App-Schutzrichtlinie erforderlich** nicht. Wenn Sie mit diesen Apps arbeiten müssen, verwenden Sie exklusiv den Gewährungstyp **Genehmigte Apps erforderlich**. Die Verwendung der `or`Klausel zwischen den beiden Gewährungstypen funktioniert für diese drei Anwendungen nicht.
 
 **Anmerkungen**
 

@@ -1,6 +1,6 @@
 ---
 title: Erstellen von Vorhersagepipelines für Daten
-description: Hier erfahren Sie, wie Sie mithilfe der Batchausführungsaktivität von Azure Machine Learning Studio (Classic) eine Vorhersagepipeline in Azure Data Factory oder Synapse Analytics erstellen.
+description: Hier erfahren Sie, wie Sie mithilfe der Batchausführungsaktivität von Machine Learning Studio (Classic) eine Vorhersagepipeline in Azure Data Factory oder Synapse Analytics erstellen.
 titleSuffix: Azure Data Factory & Azure Synapse
 author: nabhishek
 ms.author: abnarain
@@ -9,14 +9,14 @@ ms.subservice: tutorials
 ms.topic: conceptual
 ms.custom: synapse
 ms.date: 09/09/2021
-ms.openlocfilehash: 5645dcf87906f1e88ffb5e680a3a02f59fbfdeea
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: fea9f928a42503448c249ed04c753ab416cce35f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124805990"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131020139"
 ---
-# <a name="create-a-predictive-pipeline-using-azure-machine-learning-studio-classic-with-azure-data-factory-or-synapse-analytics"></a>Erstellen einer Vorhersagepipeline mithilfe von Azure Machine Learning Studio (Classic) mit Azure Data Factory oder Synapse Analytics
+# <a name="create-a-predictive-pipeline-using-machine-learning-studio-classic-with-azure-data-factory-or-synapse-analytics"></a>Erstellen einer Vorhersagepipeline mithilfe von Machine Learning Studio (Classic) mit Azure Data Factory oder Synapse Analytics
 
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
 > * [Version 1](v1/data-factory-azure-ml-batch-execution-activity.md)
@@ -30,10 +30,10 @@ ms.locfileid: "124805990"
 2. **Konvertierten in ein Vorhersageexperiment**. Sobald Ihr Modell mit vorhandenen Daten trainiert wurde, können Sie es verwenden, um neue Daten zu bewerten. Sie bereiten das Experiment auf die Bewertung vor und optimieren es.
 3. **Bereitstellen des Experiments als Webdienst**. Sie können das Bewertungsexperiment als Azure-Webdienst veröffentlichen. Sie können Daten über diesen Webdienstendpunkt an Ihr Modell senden und Ergebnisvorhersagen vom Modell empfangen.
 
-### <a name="using-azure-machine-learning-studio-classic-with-azure-data-factory-or-synapse-analytics"></a>Verwenden von Azure Machine Learning Studio (Classic) mit Azure Data Factory oder Synapse Analytics
-Azure Data Factory und Synapse Analytics ermöglichen die einfache Erstellung von Pipelines, die einen veröffentlichten [Azure Machine Learning Studio (Classic)](https://azure.microsoft.com/documentation/services/machine-learning)-Webdienst für Predictive Analytics nutzen. Bei Verwendung der **Batchausführungsaktivität** in einer Pipeline können Sie einen Webdienst von Azure Machine Learning Studio (Classic) aufrufen, um Vorhersagen auf der Grundlage der Daten im Batch zu erstellen.
+### <a name="using-machine-learning-studio-classic-with-azure-data-factory-or-synapse-analytics"></a>Verwenden von Machine Learning Studio (Classic) mit Azure Data Factory oder Synapse Analytics
+Azure Data Factory und Synapse Analytics ermöglichen die einfache Erstellung von Pipelines, die einen veröffentlichten [Machine Learning Studio (Classic)](https://azure.microsoft.com/documentation/services/machine-learning)-Webdienst für Predictive Analytics nutzen. Bei Verwendung der **Batchausführungsaktivität** in einer Pipeline können Sie den Webdienst für Machine Learning Studio (Classic) aufrufen, um Vorhersagen auf der Grundlage der Daten im Batch zu erstellen.
 
-Im Laufe der Zeit müssen die Vorhersagemodelle in den Bewertungsexperimenten für Azure Machine Learning Studio (klassisch) mit neuen Eingabedatasets neu trainiert werden. Sie können ein Modell über eine Pipeline neu trainieren, indem Sie die folgenden Schritte ausführen:
+Im Laufe der Zeit müssen die Vorhersagemodelle in den Bewertungsexperimenten für Machine Learning Studio (Classic) mit neuen Eingabedatasets neu trainiert werden. Sie können ein Modell über eine Pipeline neu trainieren, indem Sie die folgenden Schritte ausführen:
 
 1. Veröffentlichen Sie das Trainingsexperiment (nicht das Vorhersageexperiment) als Webdienst. Für diesen Schritt verwenden Sie ML Studio (Classic), wie Sie es beim Veröffentlichen des Vorhersageexperiments als Webdienst im vorherigen Szenario getan haben.
 2. Verwenden Sie die Batch Execution-Aktivität von ML Studio (Classic), um den Webdienst für das Trainingsexperiment aufzurufen. Grundsätzlich können Sie die Batch Execution-Aktivität von ML Studio (Classic) verwenden, um den Trainingswebdienst und den Bewertungswebdienst aufzurufen.
@@ -42,7 +42,7 @@ Nachdem Sie das erneute Training abgeschlossen haben, aktualisieren Sie den Bewe
 
 ## <a name="ml-studio-classic-linked-service"></a>Verknüpfter Dienst von ML Studio (Classic)
 
-Sie können einen verknüpften **Azure Machine Learning Studio (Classic)** -Dienst erstellen, um einen Azure Machine Learning Studio (Classic)-Webdienst zu verknüpfen. Der verknüpfte Dienst wird von der Batchausführungsaktivität und [Ressourcenaktualisierungsaktivität](update-machine-learning-models.md) von Azure Machine Learning Studio (Classic) verwendet.
+Sie können einen verknüpften **Machine Learning Studio (Classic)** -Dienst erstellen, um einen Machine Learning Studio (Classic)-Webdienst zu verknüpfen. Der verknüpfte Dienst wird von der Batchausführungsaktivität und [Ressourcenaktualisierungsaktivität](update-machine-learning-models.md) von Machine Learning Studio (Classic) verwendet.
 
 ```JSON
 {
@@ -67,7 +67,7 @@ Sie können einen verknüpften **Azure Machine Learning Studio (Classic)** -Dien
 
 Im Artikel zu [von Azure Data Factory unterstützten Compute-Umgebungen](compute-linked-services.md) finden Sie Beschreibungen der Eigenschaften in der JSON-Definition.
 
-Azure Machine Learning Studio (Classic) unterstützt für Ihr Vorhersageexperiment sowohl klassische als auch neue Webdienste. Sie können den jeweiligen Dienst im Data Factory- oder Synapse-Arbeitsbereich auswählen. Um die Informationen zur Erstellung des verknüpften Azure Machine Learning Studio (Classic)-Diensts zu erhalten, besuchen Sie https://services.azureml.net. Hier sind alle Ihre neuen und klassischen Webdienste aufgelistet. Klicken Sie auf den Webdienst, auf den Sie zugreifen möchten, und klicken Sie auf die Seite **Consume**. Kopieren Sie **Primary Key** für die **apiKey**-Eigenschaft und **Batch Requests** für die **mlEndpoint**-Eigenschaft.
+Machine Learning Studio (Classic) unterstützt für Ihr Vorhersageexperiment sowohl klassische als auch neue Webdienste. Sie können den jeweiligen Dienst im Data Factory- oder Synapse-Arbeitsbereich auswählen. Um die Informationen zur Erstellung des verknüpften Machine Learning Studio (Classic)-Diensts zu erhalten, besuchen Sie https://services.azureml.net. Hier sind alle Ihre neuen und klassischen Webdienste aufgelistet. Klicken Sie auf den Webdienst, auf den Sie zugreifen möchten, und klicken Sie auf die Seite **Consume**. Kopieren Sie **Primary Key** für die **apiKey**-Eigenschaft und **Batch Requests** für die **mlEndpoint**-Eigenschaft.
 
 :::image type="content" source="./media/transform-data-using-machine-learning/web-services.png" alt-text="Webdienste von ML Studio (Classic)":::
 
@@ -137,7 +137,7 @@ Der folgende JSON-Codeausschnitt definiert eine Batchausführungsaktivität für
 
 ### <a name="scenario-1-experiments-using-web-service-inputsoutputs-that-refer-to-data-in-azure-blob-storage"></a>Szenario 1: Experimente mit Eingaben/Ausgaben für den Webdienst, die auf Daten in Azure Blob Storage verweisen
 
-In diesem Szenario werden mit dem Azure Machine Learning Studio (Classic)-Webdienst anhand der Daten aus einer Datei in Azure Blob Storage Vorhersagen erstellt und die Vorhersageergebnisse in Blob Storage gespeichert. Das folgende JSON-Skript definiert eine Pipeline mit einer AzureMLBatchExecution-Aktivität. Auf die Eingabe- und Ausgabedaten in Azure Blob Storage wird über ein Paar aus „LinkedName“ und „FilePath“ verwiesen. In dem Beispiel des verknüpften Diensts sind die Ein- und Ausgaben unterschiedlich. Sie können verschiedene verknüpfte Dienste für Ihre einzelnen Eingaben/Ausgaben verwenden, damit der Dienst die richtigen Dateien auswählen und an den Webdienst von Azure Machine Learning Studio (Classic) senden kann.
+In diesem Szenario werden mit dem Machine Learning Studio (Classic)-Webdienst anhand der Daten aus einer Datei in einem Azure-Blobspeicher Vorhersagen erstellt und die Vorhersageergebnisse im Blobspeicher gespeichert. Das folgende JSON-Skript definiert eine Pipeline mit einer AzureMLBatchExecution-Aktivität. Auf die Eingabe- und Ausgabedaten in Azure Blob Storage wird über ein Paar aus „LinkedName“ und „FilePath“ verwiesen. In dem Beispiel des verknüpften Diensts sind die Ein- und Ausgaben unterschiedlich. Sie können verschiedene verknüpfte Dienste für Ihre einzelnen Eingaben/Ausgaben verwenden, damit der Dienst die richtigen Dateien auswählen und an den Webdienst von Machine Learning Studio (Classic) senden kann.
 
 > [!IMPORTANT]
 > In Ihrem Experiment in ML Studio (Classic) haben Eingabe- und Ausgabeports von Webdiensten sowie globale Parameter Standardnamen („input1“, „input2“), die Sie anpassen können. Die Namen, die Sie für die Einstellungen webServiceInputs, webServiceOutputs und globalParameters verwenden, müssen den Namen in den Experimenten genau entsprechen. Sie können die Beispiel-Anforderungspayload auf der Hilfeseite für die Batchausführung für Ihren ML Studio (Classic)-Endpunkt anzeigen, um die erwartete Zuordnung zu überprüfen.

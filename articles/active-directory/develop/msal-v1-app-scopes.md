@@ -12,12 +12,12 @@ ms.date: 11/25/2019
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, has-adal-ref
-ms.openlocfilehash: c1d9c88825dc8460c619131b8f69b5e802a8758b
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: 03926f656bd96205057703e610bfab17c144dd5e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129080748"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131059374"
 ---
 # <a name="scopes-for-a-web-api-accepting-v10-tokens"></a>Geltungsbereiche für eine Web-API, die v1.0-Token akzeptiert
 
@@ -65,7 +65,7 @@ Die von Azure AD verwendete Logik lautet wie folgt:
 
 - Für einen Endpunkt zu einer Active Directory-Authentifizierungsbibliothek (v1.0) mit einem v1.0-Zugriffstoken (einzige Möglichkeit): aud=resource
 - Für MSAL (Microsoft Identity Platform) bei der Abfrage eines Zugriffstokens für eine Ressource, die v2.0-Token akzeptiert: `aud=resource.AppId`
-- Für einen MSAL-Endpunkt (v2.0), der ein Zugriffstoken für eine Ressource abfragt, die ein v1.0-Zugriffstoken akzeptiert (wie im Fall oben), analysiert Azure AD die gewünschte Zielgruppe aus dem angeforderten Geltungsbereich, indem alles vor dem letzten Schrägstrich als Ressourcenbezeichner interpretiert wird. Wenn „https:\//database.windows.net“ die Zielgruppe „https:\//database.windows.net/“ erwartet, müssen Sie daher den Geltungsbereich „https:\//database.windows.net//.default“ anfordern. Siehe auch GitHub-Problem [#747: Resource url's trailing slash is omitted, which caused sql auth failure](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747) (Bei der URL der Ressource wurde der nachgestellte Schrägstrich ausgelassen, wodurch bei der SQL-Authentifizierung ein Fehler aufgetreten ist).
+- Für einen MSAL-Endpunkt (v2.0), der ein Zugriffstoken für eine Ressource abfragt, die ein v1.0-Zugriffstoken akzeptiert (wie im Fall oben), analysiert Azure AD die gewünschte Zielgruppe aus dem angeforderten Geltungsbereich, indem alles vor dem letzten Schrägstrich als Ressourcenbezeichner interpretiert wird. Wenn `https://database.windows.net` die Zielgruppe `https://database.windows.net` erwartet, müssen Sie daher den Geltungsbereich `https://database.windows.net//.default` anfordern. Siehe auch GitHub-Problem [#747: `Resource url's trailing slash is omitted, which caused sql auth failure`](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/issues/747).
 
 ## <a name="scopes-to-request-access-to-all-the-permissions-of-a-v10-application"></a>Geltungsbereiche, mit denen der Zugriff auf alle Berechtigungen einer v1.0-Anwendung angefordert wird
 

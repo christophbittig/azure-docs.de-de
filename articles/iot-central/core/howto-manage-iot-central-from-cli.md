@@ -1,6 +1,6 @@
 ---
 title: Verwalten von IoT Central über Azure CLI oder PowerShell | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie Sie Ihre IoT Central-Anwendung über die Azure-Befehlszeilenschnittstelle (Azure CLI) oder PowerShell erstellen und verwalten. Sie können die Anwendung mithilfe dieser Tools anzeigen, ändern und entfernen.
+description: In diesem Artikel wird beschrieben, wie Sie Ihre IoT Central-Anwendung über die Azure-Befehlszeilenschnittstelle (Azure CLI) oder PowerShell erstellen und verwalten. Sie können die Anwendung mithilfe dieser Tools anzeigen, ändern und entfernen. Sie können auch eine verwaltete Systemidentität konfigurieren, mit der Sie einen sicheren Datenexport einrichten können.
 services: iot-central
 ms.service: iot-central
 author: dominicbetts
@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.custom:
 - devx-track-azurecli
 - devx-track-azurepowershell
-ms.openlocfilehash: 05eca5bb95906ebb34e51f79d70a33cc003f2220
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 979da680c3a5a9b70973fa7da00613f7ffbcf86b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129091633"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131088070"
 ---
 # <a name="manage-iot-central-from-azure-cli-or-powershell"></a>Verwalten von IoT Central über Azure CLI oder PowerShell
 
@@ -180,6 +180,30 @@ Remove-AzIotCentralApp -ResourceGroupName "MyIoTCentralResourceGroup" `
 ```
 
 ---
+
+## <a name="configure-a-managed-identity"></a>Konfigurieren einer verwalteten Identität
+
+Eine IoT Central-Anwendung kann eine systemseitig zugewiesene [verwaltete Identität](../../active-directory/managed-identities-azure-resources/overview.md) verwenden, um die Verbindung mit einem [Datenexportziel](howto-export-data.md#connection-options) zu schützen.
+
+Verwenden Sie zum Aktivieren der verwalteten Identität entweder das [Azure-Portal (Konfigurieren einer verwalteten Identität)](howto-manage-iot-central-from-portal.md#configure-a-managed-identity) oder die [REST-API](howto-manage-iot-central-with-rest-api.md):
+
+:::image type="content" source="media/howto-manage-iot-central-from-cli/managed-identity.png" alt-text="Screenshot: Verwaltete Identität im Azure-Portal":::
+
+Nachdem Sie die verwaltete Identität aktiviert haben, können Sie die Rollenzuweisungen mithilfe der CLI konfigurieren.
+
+Verwenden Sie zum Erstellen einer Rollenzuweisung den Befehl [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create). Mit den folgenden Befehlen wird beispielsweise zuerst die Prinzipal-ID der verwalteten Identität abgerufen. Der zweite Befehl weist die Rolle `Azure Event Hubs Data Sender` der Prinzipal-ID im Bereich der Ressourcengruppe `MyIoTCentralResourceGroup` zu:
+
+```azurecli-interactive
+spID=$(az resource list -n myiotcentralapp --query [*].identity.principalId --out tsv)
+az role assignment create --assignee $spID --role "Azure Event Hubs Data Sender" \
+  --scope /subscriptions/<your subscription id>/resourceGroups/MyIoTCentralResourceGroup
+```
+
+Weitere Informationen zu den Rollenzuweisungen finden Sie unter:
+
+- [Integrierte Rollen für Azure Event Hubs](../../event-hubs/authenticate-application.md#built-in-roles-for-azure-event-hubs)
+- [Integrierte Rollen für Azure Service Bus](../../service-bus-messaging/authenticate-application.md#azure-built-in-roles-for-azure-service-bus)
+- [Integrierte Rollen für Azure-Speicherdienste](/rest/api/storageservices/authorize-with-azure-active-directory#manage-access-rights-with-rbac)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

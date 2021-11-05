@@ -13,12 +13,12 @@ ms.date: 06/25/2021
 ms.author: hirsin
 ms.reviewer: marsma
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: d633f52d739552a02999295ec083a965e0fa45fd
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: 17c8ec1b17cc0e7b26a94b64826c247a31ecd229
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114447026"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131027871"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft Identity Platform-Zugriffstoken
 
@@ -95,9 +95,9 @@ Einige Ansprüche werden verwendet, um Azure AD das Schützen von Token im Fall 
 | `aud` | Zeichenfolge, App-ID-URI oder GUID | Identifiziert den vorgesehenen Empfänger des Tokens – die Zielgruppe.  Ihre API muss diesen Wert überprüfen und das Token ablehnen, wenn der Wert nicht übereinstimmt. In v2.0-Token ist dies immer die Client-ID der API, während es in v1.0-Token die Client-ID oder der in der Anforderung verwendete Ressourcen-URI sein kann. Das richtet sich danach, wie der Client das Token angefordert hat.|
 | `iss` | Zeichenfolge, ein STS-URI | Identifiziert den Sicherheitstokendienst (STS), der das Token und den Azure AD-Mandanten, in dem der Benutzer authentifiziert wurde, erstellt und zurückgibt. Wenn das ausgegebene Token ein v2. 0-Token ist (weitere Informationen finden Sie im Anspruch `ver`), endet der URI in `/v2.0`. Die GUID, die angibt, dass der Benutzer ein Consumer-Benutzer eines Microsoft-Kontos ist, lautet `9188040d-6c67-4c5b-b112-36a304b66dad`. Ihre App kann den GUID-Teil des Anspruchs verwenden, um die Mandanten einzuschränken, die sich bei der App anmelden können (sofern zutreffend). |
 |`idp`| Zeichenfolge, in der Regel ein STS-URI | Der Identitätsanbieter, der den Antragsteller des Tokens authentifiziert hat. Dieser Wert ist identisch mit dem Wert des Ausstelleranspruchs, es sei denn, das Benutzerkonto ist nicht im gleichen Mandanten wie der Aussteller vorhanden (etwa Gäste). Wenn der Anspruch nicht vorhanden ist, bedeutet dies, dass stattdessen der Wert `iss` verwendet werden kann.  Für in einem Organisationskontext verwendete persönliche Konten (etwa ein zu einem Azure AD-Mandanten eingeladenes persönliches Konto) kann der `idp`-Anspruch „live.com“ oder ein STS-URI sein, der den Microsoft-Kontomandanten `9188040d-6c67-4c5b-b112-36a304b66dad` enthält. |
-| `iat` | Ganze Zahl, ein UNIX-Zeitstempel | „Issued At“ gibt an, wann die Authentifizierung für dieses Token erfolgt ist. |
-| `nbf` | Ganze Zahl, ein UNIX-Zeitstempel | Der Anspruch „nbf“ (nicht vor) gibt die Zeit an, vor der das JWT NICHT für die Bearbeitung akzeptiert werden darf. |
-| `exp` | Ganze Zahl, ein UNIX-Zeitstempel | Der Anspruch „exp“ (Ablaufzeit) gibt die Ablaufzeit an, ab oder nach der das JWT NICHT für die Bearbeitung akzeptiert werden darf. Wichtig ist hierbei, dass eine Ressource das Token auch vor diesem Zeitpunkt ablehnen kann (beispielsweise wenn eine Änderung der Authentifizierung erforderlich ist oder ein Tokenwiderruf erkannt wurde). |
+| `iat` | Integer, ein UNIX-Zeitstempel | „Issued At“ gibt an, wann die Authentifizierung für dieses Token erfolgt ist. |
+| `nbf` | Integer, ein UNIX-Zeitstempel | Der Anspruch „nbf“ (nicht vor) gibt die Zeit an, vor der das JWT NICHT für die Bearbeitung akzeptiert werden darf. |
+| `exp` | Integer, ein UNIX-Zeitstempel | Der Anspruch „exp“ (Ablaufzeit) gibt die Ablaufzeit an, ab oder nach der das JWT NICHT für die Bearbeitung akzeptiert werden darf. Wichtig ist hierbei, dass eine Ressource das Token auch vor diesem Zeitpunkt ablehnen kann (beispielsweise wenn eine Änderung der Authentifizierung erforderlich ist oder ein Tokenwiderruf erkannt wurde). |
 | `aio` | Nicht transparente Zeichenfolge | Ein interner Anspruch, der von Azure AD verwendet wird, um Daten für die Wiederverwendung von Token aufzuzeichnen. Ressourcen sollten diesen Anspruch nicht verwenden. |
 | `acr` | Zeichenfolge, 0 oder 1 | Ist nur in v1.0-Token vorhanden. Der Anspruch „Authentication context class“ (Authentifizierungskontextklasse). Der Wert "0" gibt an, dass die Endbenutzerauthentifizierung nicht die ISO/IEC 29115-Anforderungen erfüllt. |
 | `amr` | JSON-Array von Zeichenfolgen | Ist nur in v1.0-Token vorhanden. Gibt an, wie der Antragsteller des Tokens authentifiziert wurde. Weitere Details finden Sie im Abschnitt zum [amr-Anspruch](#the-amr-claim). |
@@ -152,7 +152,7 @@ Die folgenden Ansprüche werden ggf. in v1.0-Token eingeschlossen, sind standard
 |-----|--------|-------------|
 | `ipaddr`| String | Die IP-Adresse, mit der sich der Benutzer authentifiziert hat. |
 | `onprem_sid`| Zeichenfolge, im [SID-Format](/windows/desktop/SecAuthZ/sid-components) | In Fällen, in denen der Benutzer über eine lokale Authentifizierung verfügt, gibt dieser Anspruch die SID an. Sie können `onprem_sid` für die Autorisierung in älteren Anwendungen verwenden.|
-| `pwd_exp`| Ganze Zahl, ein UNIX-Zeitstempel | Gibt an, wann das Kennwort des Benutzers abläuft. |
+| `pwd_exp`| Integer, ein UNIX-Zeitstempel | Gibt an, wann das Kennwort des Benutzers abläuft. |
 | `pwd_url`| String | Eine URL, an die Benutzer zum Zurücksetzen ihres Kennworts weitergeleitet werden können. |
 | `in_corp`| boolean | Signalisiert, ob sich der Client aus dem Unternehmensnetzwerk anmeldet. Andernfalls ist der Anspruch nicht enthalten. |
 | `nickname`| String | Ein zusätzlicher Name für den Benutzer, der vom Vor- oder Nachnamen abweicht.|

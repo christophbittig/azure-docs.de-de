@@ -1,28 +1,27 @@
 ---
-title: 'Tutorial: Antworten auf Warnungen – Azure Security Center'
+title: Tutorial zur Reaktion auf Warnungen – Microsoft Defender für Cloud
 description: In diesem Tutorial erfahren Sie, wie Sie Sicherheitswarnungen selektieren und die Grundursache und den Bereich eines Vorfalls ermitteln.
 services: security-center
-documentationcenter: na
 author: memildin
 manager: rkarlin
 ms.assetid: 181e3695-cbb8-4b4e-96e9-c4396754862f
 ms.service: security-center
-ms.devlang: na
 ms.topic: tutorial
-ms.custom: mvc
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 02/17/2021
 ms.author: memildin
-ms.openlocfilehash: 6d11384a3a1cab1ef5145a8e29a64e26552862da
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: ac1a72efe9d71725e27162ee19fc3b8b02645023
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112236875"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131014271"
 ---
 # <a name="tutorial-triage-investigate-and-respond-to-security-alerts"></a>Tutorial: Selektieren, Untersuchen und Beantworten von Sicherheitswarnungen
-Security Center analysiert Ihre Hybrid Cloud-Workloads ständig mithilfe von Advanced Analytics- und Threat Intelligence-Funktionen, um Sie vor potenziell schädlichen Aktivitäten auf Ihren Cloudressourcen warnen zu können. Sie können auch Warnungen aus anderen Sicherheitsprodukten und -diensten in Security Center integrieren. Nach der Auslösung einer Warnung muss schnell gehandelt werden, um das potenzielle Sicherheitsproblem zu untersuchen und zu beheben. 
+
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
+
+Microsoft Defender für Cloud analysiert Ihre Hybrid Cloud-Workloads ständig mithilfe von Advanced Analytics- und Threat Intelligence-Funktionen, um Sie vor potenziell schädlichen Aktivitäten auf Ihren Cloudressourcen warnen zu können. Sie können auch Warnungen aus anderen Sicherheitsprodukten und -diensten in Defender für Cloud integrieren. Nach der Auslösung einer Warnung muss schnell gehandelt werden, um das potenzielle Sicherheitsproblem zu untersuchen und zu beheben. 
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -34,22 +33,22 @@ In diesem Tutorial lernen Sie Folgendes:
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Zum Durchlaufen der in diesem Tutorial behandelten Features muss Azure Defender aktiviert sein. Sie können Azure Defender kostenlos testen. Weitere Informationen finden Sie auf der [Preisseite](https://azure.microsoft.com/pricing/details/security-center/). In der Schnellstartanleitung [Erste Schritte mit Security Center](security-center-get-started.md) werden die erforderlichen Schritte für das Upgrade erläutert.
+Um die in diesem Tutorial behandelten Features kennenzulernen, müssen Sie die erweiterten Sicherheitsfeatures von Defender für Cloud aktiviert haben. Sie können diese Features kostenlos testen. Weitere Informationen finden Sie auf der [Preisseite](https://azure.microsoft.com/pricing/details/security-center/). In der Schnellstartanleitung [Erste Schritte mit Defender für Cloud](get-started.md) werden die erforderlichen Schritte für den Upgradevorgang beschrieben.
 
 
 ## <a name="triage-security-alerts"></a>Selektieren von Sicherheitswarnungen
-Mit Security Center erhalten Sie einen einheitlichen Überblick über alle Sicherheitswarnungen. Sicherheitswarnungen werden nach Schweregrad der erkannten Aktivität angeordnet. 
+Mit Defender für Cloud können Sie sich einen Gesamtüberblick über alle Sicherheitswarnungen verschaffen. Sicherheitswarnungen werden nach Schweregrad der erkannten Aktivität angeordnet. 
 
 Beurteilen Sie die Warnungen auf der Seite **Sicherheitswarnungen**:
 
-:::image type="content" source="media/security-center-managing-and-responding-alerts/alerts-page.png" alt-text="Liste der Sicherheitswarnungen von Azure Security Center":::
+:::image type="content" source="media/managing-and-responding-alerts/alerts-page.png" alt-text="Liste mit Sicherheitswarnungen von Microsoft Defender für Cloud":::
 
 Überprüfen Sie auf dieser Seite die aktiven Sicherheitswarnungen in Ihrer Umgebung, um die Warnungen auszuwählen, die Sie zuerst untersuchen möchten.
 
-Wenn Sie Sicherheitswarnungen selektieren, priorisieren Sie Warnungen nach ihrem Schweregrad, indem Sie sich den Warnungen mit höherem Schweregrad zuerst widmen. Weitere Informationen zum Schweregrad von Warnungen finden Sie unter [Wie werden Warnungen klassifiziert?](security-center-alerts-overview.md#how-are-alerts-classified).
+Wenn Sie Sicherheitswarnungen selektieren, priorisieren Sie Warnungen nach ihrem Schweregrad, indem Sie sich den Warnungen mit höherem Schweregrad zuerst widmen. Weitere Informationen zum Schweregrad von Warnungen finden Sie unter [Wie werden Warnungen klassifiziert?](alerts-overview.md#how-are-alerts-classified).
 
 > [!TIP]
-> Sie können Azure Security Center mit verbreiteten SIEM-Lösungen wie Azure Sentinel verbinden und die Warnungen über ein Tool Ihrer Wahl nutzen. Weitere Informationen finden Sie unter [Streamen von Warnungen in eine SIEM-, SOAR- oder IT-Service-Management-Lösung](export-to-siem.md).
+> Sie können Microsoft Defender für Cloud mit den beliebtesten SIEM-Lösungen verbinden, z. B. Microsoft Sentinel, und die Warnungen im Tool Ihrer Wahl empfangen. Weitere Informationen finden Sie unter [Streamen von Warnungen in eine SIEM-, SOAR- oder IT-Service-Management-Lösung](export-to-siem.md).
 
 
 ## <a name="investigate-a-security-alert"></a>Untersuchen einer Sicherheitswarnung
@@ -76,7 +75,7 @@ Gehen Sie wie folgt vor, sobald Sie entschieden haben, welche Warnung Sie zuerst
     - Untersuchen der von der angegriffenen Ressource generierten unformatierten Protokolle
 
 ## <a name="respond-to-a-security-alert"></a>Reagieren auf eine Sicherheitswarnung
-Nachdem Sie eine Warnung untersucht und ihr Ausmaß ermittelt haben, können Sie in Azure Security Center auf Sicherheitswarnungen reagieren:
+Nachdem Sie eine Sicherheitswarnung untersucht und deren Umfang verstanden haben, können Sie in Microsoft Defender für Cloud auf die Warnung reagieren:
 
 1.  Öffnen Sie die Registerkarte **Aktion ausführen**, um die empfohlenen Reaktionen anzuzeigen.
 
@@ -104,23 +103,32 @@ Nachdem Sie eine Warnung untersucht und ihr Ausmaß ermittelt haben, können Sie
 
 ## <a name="end-the-tutorial"></a>Abschließen des Tutorials
 
-Andere Schnellstartanleitungen und Tutorials in dieser Sammlung bauen auf dieser Schnellstartanleitung auf. Falls Sie weitere Schnellstartanleitungen und Tutorials durchgehen möchten, lassen Sie die automatische Bereitstellung sowie Azure Defender aktiviert. 
+Andere Schnellstartanleitungen und Tutorials in dieser Sammlung bauen auf dieser Schnellstartanleitung auf. Falls Sie weitere Schnellstartanleitungen und Tutorials durcharbeiten möchten, sollten Sie die automatische Bereitstellung und die erweiterten Sicherheitsfeatures von Defender für Cloud aktiviert lassen. 
 
 Wenn Sie nicht mit den anderen Tutorials fortfahren möchten oder wenn Sie eines dieser Features deaktivieren möchten:
 
-1. Kehren Sie zum Hauptmenü von Security Center zurück, und wählen Sie **Preise und Einstellungen** aus.
+1. Wählen Sie im Menü von Defender für Cloud die Option **Umgebungseinstellungen** aus.
 1. Wählen Sie das relevante Abonnement aus.
-1. Wählen Sie zum Herabstufen **Azure Defender aus** aus.
-1. Um die automatische Bereitstellung zu deaktivieren, öffnen Sie die Seite **Datensammlung**, und legen Sie **Automatische Bereitstellung** auf **Aus** fest.
+1. Wählen Sie **Defender-Pläne** und dann die Option **Erhöhte Sicherheit deaktiviert** aus.
+
+    :::image type="content" source="./media/enable-enhanced-security/disable-plans.png" alt-text="Aktivieren bzw. Deaktivieren der erweiterten Sicherheitsfeatures von Defender für Cloud":::
+
 1. Wählen Sie **Speichern** aus.
 
->[!NOTE]
-> Wenn Sie die automatische Bereitstellung deaktivieren, wird der Log Analytics-Agent nicht von virtuellen Azure-Computern entfernt, auf denen der Agent bereitgestellt wurde. Wenn Sie die automatische Bereitstellung deaktivieren, schränkt dies die Sicherheitsüberwachung für Ihre Ressourcen ein.
->
+    > [!NOTE]
+    > Nachdem Sie die erweiterten Sicherheitsfeatures deaktiviert haben – unabhängig davon, ob Sie einen einzelnen Plan oder alle Pläne gleichzeitig deaktivieren –, wird die Datensammlung ggf. noch für kurze Zeit fortgesetzt. 
+
+1. Wählen Sie im Menü von Defender für Cloud die Option **Umgebungseinstellungen** aus.
+1. Wählen Sie das relevante Abonnement aus.
+1. Wählen Sie **Automatische Bereitstellung** aus.
+1. Deaktivieren Sie die relevanten Erweiterungen.
+
+    >[!NOTE]
+    > Wenn Sie die automatische Bereitstellung deaktivieren, wird der Log Analytics-Agent nicht von virtuellen Azure-Computern entfernt, auf denen der Agent bereitgestellt wurde. Wenn Sie die automatische Bereitstellung deaktivieren, schränkt dies die Sicherheitsüberwachung für Ihre Ressourcen ein.
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Tutorial haben Sie Informationen zu Security Center-Features erhalten, die zum Reagieren auf eine Sicherheitswarnung verwendet werden: Verwandte Informationen finden Sie hier:
+In diesem Tutorial haben Sie Informationen zu Defender für Cloud-Features erhalten, die zum Reagieren auf eine Sicherheitswarnung verwendet werden. Verwandte Informationen finden Sie hier:
 
-- [Reagieren auf Warnungen zu Azure Defender für Key Vault](defender-for-key-vault-usage.md)
+- [Reagieren auf Warnungen von Microsoft Defender für Key Vault](defender-for-key-vault-usage.md)
 - [Sicherheitswarnungen (Referenzhandbuch)](alerts-reference.md)
-- [Einführung in Azure Defender](azure-defender.md)
+- [Einführung in Defender für Cloud](defender-for-cloud-introduction.md)

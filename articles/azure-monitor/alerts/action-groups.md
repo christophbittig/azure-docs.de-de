@@ -3,14 +3,14 @@ title: Erstellen und Verwalten von Aktionsgruppen im Azure-Portal
 description: Erfahren Sie, wie Sie Aktionsgruppen im Azure-Portal erstellen und verwalten.
 author: dkamstra
 ms.topic: conceptual
-ms.date: 05/28/2021
+ms.date: 10/18/2021
 ms.author: dukek
-ms.openlocfilehash: cc5d5aa589b56fb6e6fda1845e50606ff492fbdd
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 7a2efe5a47e88fd8ad8e9a382d522271d8ab4c3b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129217881"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131017899"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Erstellen und Verwalten von Aktionsgruppen im Azure-Portal
 Eine Aktionsgruppe ist eine Sammlung von Benachrichtigungseinstellungen, die vom Besitzer eines Azure-Abonnements definiert wurden. Azure Monitor-, Service Health- und Azure Advisor-Warnungen verwenden Aktionsgruppen, um Benutzer über das Auslösen einer Warnung zu informieren. Verschiedene Warnungen können je nach den Bedürfnissen des Benutzers die gleiche Aktionsgruppe oder verschiedene Aktionsgruppen verwenden. 
@@ -51,7 +51,7 @@ Gehen Sie unter **Instanzendetails** wie folgt vor:
 
 1. Geben Sie einen **Anzeigenamen** ein. Der Anzeigename wird anstelle eines vollständigen Aktionsgruppennamens verwendet, wenn Benachrichtigungen unter Verwendung dieser Gruppe gesendet werden.
 
-      ![Das Dialogfeld „Aktionsgruppe hinzufügen“](./media/action-groups/action-group-1-basics.png)
+      ![Das Dialogfeld "Aktionsgruppe hinzufügen](./media/action-groups/action-group-1-basics.png)
 
 
 ### <a name="configure-notifications"></a>Konfigurieren von Benachrichtigungen
@@ -158,6 +158,14 @@ Beim Einrichten der *E-Mail-ARM-Rolle* müssen Sie sicherstellen, dass die drei 
 
 > [!NOTE]
 > Es kann bis zu **24** Stunden dauern, bis ein Kunde Benachrichtigungen empfängt, nachdem er seinem Abonnement eine neue ARM-Rolle hinzugefügt hat.
+
+### <a name="event-hub-preview"></a>Event Hub (Vorschau)
+> [!NOTE]
+> Der Event Hub-Aktionstyp befindet sich derzeit in *Vorschau*. Während der Vorschau kann es zu Fehlern und Unterbrechungen bei der Verfügbarkeit der Funktionen kommen.
+
+Eine Event Hub-Aktion veröffentlicht Benachrichtigungen an einen [Azure Event Hub](~/articles/event-hubs/event-hubs-about.md). Sie können dann den Benachrichtigungsstrom über Ihren Ereignisverbraucher abonnieren.
+
+Derzeit kann die Event Hub-Aktion nur mit einer [Azure Resource Manager-Vorlage](./action-groups-create-resource-manager-template.md) definiert werden.
 
 ### <a name="function"></a>Funktion
 Diese Aktion ruft einen vorhandenen HTTP-Triggerendpunkt in [Azure Functions](../../azure-functions/functions-get-started.md) auf. Ihr Endpunkt muss das HTTP POST-Verb verarbeiten, um eine Anforderung zu verarbeiten.

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1e409fa879f4a541f1f3da7b1c68c06d01e1f8d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a9d56443885c79f6d5aa153695df76156f4f9407
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128587117"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131012679"
 ---
 # <a name="conditional-access-cloud-apps-actions-and-authentication-context"></a>Bedingter Zugriff: Cloud-Apps, Aktionen und Authentifizierungskontext
 
@@ -71,7 +71,7 @@ Administratoren können den folgenden Cloud-Apps von Microsoft eine Richtlinie f
 - Windows Defender ATP
 
 > [!IMPORTANT]
-> Anwendungen, die für den bedingten Zugriff verfügbar sind, haben einen Onboarding- und Validierungsprozess durchlaufen. Diese Liste schließt nicht alle Microsoft-Apps ein, da viele Back-End-Dienste sind und nicht vorgesehen ist, Richtlinien direkt auf sie anzuwenden. Wenn Sie eine fehlende Anwendung suchen, können Sie sich an das jeweilige Anwendungsteam wenden oder eine Anforderung an [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=167259) senden.
+> Anwendungen, die für den bedingten Zugriff verfügbar sind, haben einen Onboarding- und Validierungsprozess durchlaufen. Diese Liste schließt nicht alle Microsoft-Apps ein, da viele Back-End-Dienste sind und nicht vorgesehen ist, Richtlinien direkt auf sie anzuwenden. Wenn Sie eine fehlende Anwendung suchen, können Sie sich an das jeweilige Anwendungsteam wenden oder eine Anforderung an [UserVoice](https://feedback.azure.com/d365community/forum/22920db1-ad25-ec11-b6e6-000d3a4f0789) senden.
 
 ### <a name="office-365"></a>Office 365
 

@@ -7,12 +7,12 @@ ms.date: 08/09/2021
 author: palma21
 ms.author: jpalma
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2e3a51430ef2f57f3d9ea095dee8b297d01187a2
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: ea1112f614e9c08bde1ff0427af706aae4c14896
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124758387"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131063122"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Unterstützte Kubernetes-Versionen in Azure Kubernetes Service (AKS)
 
@@ -173,7 +173,7 @@ Den Verlauf der letzten Versionen finden Sie unter [Kubernetes](https://en.wikip
 | 1.19  | 04. August 2020  | Sep 2020   | November 2020  | 1.22 GA |
 | 1.20  | Dec-08-20  | Jan 2021   | März 2021  | 1.23 GA |
 | 1.21  | 08. April 2021 | Mai 2021   | Juli 2021  | 1.24: Allgemeine Verfügbarkeit |
-| 1.22  | 04. August 21 | September 2021   | Oktober 2021  | 1.25 Allgemeine Verfügbarkeit |
+| 1.22  | 04. August 21 | September 2021   | November 2021  | 1.25 Allgemeine Verfügbarkeit |
 | 1.23  | Dezember 2021 | Januar 2022   | Februar 2022  | 1.26 Allgemeine Verfügbarkeit |
 
 ## <a name="faq"></a>Häufig gestellte Fragen

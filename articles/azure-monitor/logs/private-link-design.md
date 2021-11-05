@@ -5,12 +5,12 @@ author: noakup
 ms.author: noakuper
 ms.topic: conceptual
 ms.date: 08/01/2021
-ms.openlocfilehash: b42b3c9146b99ee6e65dc83968ba8e97c8f209fb
-ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
+ms.openlocfilehash: 6bc664d5f7dab7d000f1ea540db56e240c307e15
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129730487"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131006656"
 ---
 # <a name="design-your-private-link-setup"></a>Entwerfen Ihres Private Link-Setups
 
@@ -151,9 +151,9 @@ Wenn Ihr Private Link-Setup vor dem 19. April 2021 erstellt wurde, ist der L�
     |Azure China 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Ausgehend
 
 ### <a name="collecting-custom-logs-and-iis-log-over-private-link"></a>Erfassen von benutzerdefinierten Protokollen und des IIS-Protokolls über Private Link
-Beim Erfassungsprozess für benutzerdefinierte Protokolle werden Speicherkonten verwendet. Standardmäßig sind dies dienstseitig verwaltete Speicherkonten. Um jedoch benutzerdefinierte Protokolle in Private Links zu erfassen, müssen Sie Ihre eigenen Speicherkonten verwenden und sie Log Analytics-Arbeitsbereichen zuordnen. Informieren Sie sich in diesem Artikel zur [Befehlszeile](/cli/azure/monitor/log-analytics/workspace/linked-storage), wie Sie solche Konten einrichten.
+Beim Erfassungsprozess für benutzerdefinierte Protokolle werden Speicherkonten verwendet. Standardmäßig sind dies dienstseitig verwaltete Speicherkonten. Um jedoch benutzerdefinierte Protokolle in Private Links zu erfassen, müssen Sie Ihre eigenen Speicherkonten verwenden und sie Log Analytics-Arbeitsbereichen zuordnen.
 
-Weitere Informationen zum Verbinden Ihres eigenen Speicherkontos finden Sie unter [Kundeneigene Speicherkonten für die Protokollerfassung](private-storage.md).
+Weitere Informationen zum Herstellen einer Verbindung mit Ihrem eigenen Speicherkonto finden Sie unter [Verwenden von kundenseitig verwalteten Speicherkonten in Azure Monitor Log Analytics](private-storage.md), insbesondere in den Abschnitten [Verwenden von privaten Verbindungen](private-storage.md#using-private-links) und [Verknüpfen von Speicherkonten mit dem Log Analytics-Arbeitsbereich](private-storage.md#link-storage-accounts-to-your-log-analytics-workspace).
 
 ### <a name="automation"></a>Automation
 Wenn Sie Log Analytics-Lösungen verwenden, die ein Automation-Konto erfordern (z. B. Updateverwaltung, Änderungsnachverfolgung oder den Bestand), sollten Sie auch eine Private Link-Instanz für Ihr Automation-Konto erstellen. Weitere Informationen finden Sie unter [Verwenden von Azure Private Link zum sicheren Verbinden von Netzwerken mit Azure Automation](../../automation/how-to/private-link-security.md).
@@ -206,5 +206,5 @@ Der [`externaldata`-Operator](/azure/data-explorer/kusto/query/externaldata-oper
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie mehr über das [Konfigurieren von Private Link](private-link-configure.md).
-- Erfahren Sie mehr über [privaten Speicher](private-storage.md).
+- Hier erfahren Sie mehr über [privaten Speicher](private-storage.md) für benutzerdefinierte Protokolle und kundenseitig verwaltete Schlüssel (Customer Managed Keys, CMKs).
 - Erfahren Sie mehr über [Private Link für Automation](../../automation/how-to/private-link-security.md).

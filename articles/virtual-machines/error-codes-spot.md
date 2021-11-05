@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: f035d7813dfcf84d21e5913fa4626188e125db9a
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: b38730604072fdf61c551ade8e147e18a487a160
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122691085"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131082745"
 ---
 # <a name="error-messages-for-azure-spot-virtual-machines-and-scale-sets"></a>Fehlermeldungen für Azure Spot-VMs und -Skalierungsgruppen
 
@@ -39,6 +39,8 @@ Im Folgenden finden Sie einige mögliche Fehlercodes, die Sie bei Verwendung von
 | MoveResourcesWithAzureSpotVMNotSupported  |  Die Anforderung zum Verschieben von Ressourcen enthält eine Azure Spot Virtual Machine-Instanz. Wird nicht unterstützt. Überprüfen Sie die Fehlerdetails für die IDs der virtuellen Computer. | Azure Spot Virtual Machines kann nicht verschoben werden. |
 | MoveResourcesWithAzureSpotVmssNotSupported  |  Die Anforderung zum Verschieben von Ressourcen enthält eine Azure-Spot-VM-Skalierungsgruppe. Wird nicht unterstützt. Überprüfen Sie die Fehlerdetails für die IDs der VM-Skalierungsgruppen. | Azure Spot-VM-Skalierungsgruppeninstanzen können nicht verschoben werden. |
 | AzureSpotVMNotSupportedInVmssWithVMOrchestrationMode | Azure Spot Virtual Machine wird in der VM-Skalierungsgruppe mit dem VM-Orchestrierungsmodus nicht unterstützt. | Legen Sie den Orchestrierungsmodus auf die VM-Skalierungsgruppe fest, um Azure Spot Virtual Machine-Instanzen zu verwenden. |
+| SpotRestorationIsNotSupportedForThisAPIVersion | Die Spot-Wiederherstellungsfunktion wird für diese API-Version nicht unterstützt. |  Führen Sie für eine vorhandene Skalierung einen PATCH unter Verwendung der API-Version 2021-07-01 oder höher durch. <br><br> Fügen Sie für Bereitstellungen neuer Skalierungen der Vorlage Azure Resource Manager mithilfe der API-Version 2021-07-01 oder höher die folgende Eigenschaft hinzu: <br><br> :::image type="content" source="media/spot/spot-try-restore-error-codes-1.png" alt-text="Fehlercodebeispiel für die Verwendung der richtigen API-Version.":::| 
+| SpotRestorationIsSupportedOnlyForAzureSpotScaleSets | Das Spot-Wiederherstellungsfeature wird nur für Azure Spot-VM-Skalierunggruppen unterstützt. | Das Spot-Wiederherstellungsfeature wird nur für Azure Spot-VM-Skalierunggruppen unterstützt. Um dieses Feature zu verwenden, stellen Sie Azure Spot mithilfe von VM-Skalierungssätzen bereit. | 
 
 
 **Nächste Schritte**: Weitere Informationen finden Sie unter [Spot-VMs](./spot-vms.md).

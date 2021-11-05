@@ -12,12 +12,12 @@ ms.date: 07/15/2021
 ms.author: baselden
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfe41b61a21aea87a35446f1b5c7052f62595b29
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 1a139ffb47ad9f92cdb275191fc3eb983523c72a
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130046618"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131046330"
 ---
 # <a name="azure-active-directory-security-operations-guide-for-applications"></a>Leitfaden für Azure Active Directory-Sicherheitsvorgänge für Anwendungen
 
@@ -181,7 +181,7 @@ Weitere Informationen zu Einwilligungsvorgängen finden Sie in den folgenden Res
 | Zu überwachende Elemente| Risikostufe| Hierbei gilt:| Filter/Unterfilter| Notizen |
 |-|-|-|-|-|
 | Verwaister URI| Hoch| Azure AD-Protokolle und Anwendungsregistrierung| Dienst – Kernverzeichnis, Kategorie: ApplicationManagement<br>Aktivität: Anwendung aktualisieren<br>Erfolg: Eigenschaftenname, AppAddress| Achten Sie zum Beispiel auf verwaiste URIs, die auf eine Domäne verweisen, die nicht mehr vorhanden ist oder die Sie nicht explizit besitzen. |
-| Änderungen an der Konfiguration des Umleitungs-URI| Hoch| Azure AD-Protokolle| Dienst – Kernverzeichnis, Kategorie: ApplicationManagement<br>Aktivität: Anwendung aktualisieren<br>Erfolg: Eigenschaftenname, AppAddress| Achten Sie auf URIs ohne HTTPS*, URIs mit Platzhaltern am Ende oder der Domäne der URL, URIs, die für die Anwendung nicht eindeutig sind, und URIs, die auf eine Domäne verweisen, die Sie nicht kontrollieren. |
+| Änderungen an der Konfiguration des Umleitungs-URI| Hoch| Azure AD-Protokolle| Dienst – Kernverzeichnis, Kategorie: ApplicationManagement<br>Aktivität: Anwendung aktualisieren<br>Erfolg: Eigenschaftenname, AppAddress| Achten Sie auf URIs ohne HTTPS*, URIs mit Platzhaltern am Ende oder der Domäne der URL, URIs, die für die Anwendung NICHT eindeutig sind, und URIs, die auf eine Domäne verweisen, die Sie nicht kontrollieren. |
 
 Warnung auslösen, wenn diese Änderungen erkannt werden.
 

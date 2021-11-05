@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 07/10/2020
 author: manishmsfte
 ms.author: mansha
-ms.openlocfilehash: ca2f0ffa8384cd908d479ec8f68a14459e4d4d9b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 0fc2b11f924a5ae50cf1f6ae96f0ed82ab1813ad
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121784336"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131041069"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Schnellstart: Erstellen, Abfragen und Durchlaufen einer Azure Cosmos DB-Graphdatenbank mithilfe der Gremlin-Konsole
 [!INCLUDE[appliesto-gremlin-api](../includes/appliesto-gremlin-api.md)]
@@ -40,7 +40,7 @@ Zum Erstellen eines Azure Cosmos DB-Kontos für diesen Schnellstart benötigen S
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-Außerdem müssen Sie die [Gremlin-Konsole](https://tinkerpop.apache.org/downloads.html) installieren. Die **empfohlene Version ist v3.4.3** oder früher. (Zur Verwendung der Gremlin-Konsole unter Windows müssen Sie [Java Runtime](https://www.oracle.com/technetwork/java/javase/overview/index.html) installieren).
+Außerdem müssen Sie die [Gremlin-Konsole](https://tinkerpop.apache.org/downloads.html) installieren. Die **empfohlene Version ist v3.4.3** oder früher. (Um die Gremlin-Konsole auf Windows verwenden zu können, müssen Sie die [Java-Runtime](https://www.oracle.com/technetwork/java/javase/overview/index.html) installieren. Es ist mindestens Java 8 erforderlich, bevorzugt sollte aber Java 11 verwendet werden.)
 
 ## <a name="create-a-database-account"></a>Erstellen eines Datenbankkontos
 

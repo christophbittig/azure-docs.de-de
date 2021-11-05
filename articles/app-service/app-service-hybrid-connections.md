@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 05/05/2021
 ms.author: madsd
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 6ebfa0cb7e65ce09178e3b468a1bf766a0379595
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: b907e6539762f08dc299304eea49ee2950f18ab7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129425826"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131065701"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure App Service-Hybridverbindungen
 
@@ -225,6 +225,7 @@ Gehen Sie wie folgt vor, wenn der Status **Verbunden** lautet, die App den Endpu
 * Stellen Sie sicher, dass Sie einen DNS-Namen in Ihrer Hybridverbindung verwenden. Wenn Sie eine IP-Adresse verwenden, wird möglicherweise das erforderliche Client-DNS-Lookup nicht durchgeführt. Wenn der Client, der in Ihrer Web-App ausgeführt wird, kein DNS-Lookup durchführt, funktioniert die Hybridverbindung nicht.
 * Prüfen Sie, ob der DNS-Name, der in Ihrer Hybridverbindung verwendet wird, vom HCM-Host aufgelöst werden kann. Überprüfen Sie die Auflösung mithilfe von *nslookup EndpointDNSname*, wobei EndpointDNSname eine genaue Entsprechung für die Verwendung in der Definition Ihrer Hybridverbindung ist.
 * Testen Sie den Zugriff von Ihrem HCM-Host auf den Endpunkt mithilfe des PowerShell-Befehls *Test-NetConnection EndpointDNSname -P Port*. Wenn Sie den Endpunkt von Ihrem HCM-Host aus nicht erreichen können, überprüfen Sie die Firewalls zwischen den beiden Hosts einschließlich aller hostbasierten Firewalls für den Zielhost.
+* Wenn Sie App Service für Linux verwenden, verwenden Sie nicht „localhost“ als Endpunkthost. Verwenden Sie stattdessen Ihren Computernamen, wenn Sie versuchen, eine Verbindung mit einer Ressource auf Ihrem lokalen Computer herzustellen.
 
 In App Service kann das Befehlszeilentool **tcpping** über die Konsole „Erweiterte Tools (Kudu)“ aufgerufen werden. Mit diesem Tool können Sie feststellen, ob Sie auf einen TCP-Endpunkt zugreifen können, jedoch nicht, ob Sie über Zugriff auf einen Hybridverbindungsendpunkt verfügen. Wenn Sie das Tool an der Konsole für einen Hybridverbindungsendpunkt verwenden, bestätigen Sie damit nur, dass eine Host-Port-Kombination verwendet wird.  
 

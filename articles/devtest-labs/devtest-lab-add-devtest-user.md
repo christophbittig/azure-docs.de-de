@@ -4,12 +4,12 @@ description: Hinzufügen von Besitzern und Benutzern in Azure DevTest Labs über
 ms.topic: how-to
 ms.date: 06/26/2020
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e3c85ed9f38996bfa542bd5d71d19419fc2fde6b
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 6edf548658d02ae3427fe5ac448dcc3e38a6b4e2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130251792"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131068758"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Hinzufügen von Besitzern und Benutzern in Azure DevTest Labs
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
@@ -54,17 +54,24 @@ Die folgende Tabelle zeigt die Aktionen, die von Benutzern in jeder dieser Rolle
 Besitzer und Benutzer können über das Azure-Portal auf der Lab-Ebene hinzugefügt werden. Bei einem Benutzer kann es sich um einen externen Benutzer mit gültigem [Microsoft-Konto (MSA)](./devtest-lab-faq.yml) handeln.
 Die folgenden Schritte führen Sie durch den Prozess des Hinzufügens eines Besitzers oder Benutzers zu einem Lab in Azure DevTest Labs:
 
-1. Melden Sie sich beim [Azure-Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) an.
-2. Wählen Sie **Alle Dienste** und dann in der Liste die Option **DevTest Labs**.
-3. Wählen Sie in der Liste der Labs das gewünschte Lab aus.
-4. Wählen Sie auf dem Blatt des Labs die Option **Konfiguration und Richtlinien** aus. 
-5. Klicken Sie auf der Seite **Konfiguration und Richtlinien** im Menü auf der linken Seite auf **Zugriffssteuerung (IAM)** . 
-6. Klicken Sie auf der Symbolleiste auf **Rollenzuweisung hinzufügen**, um einen Benutzer einer Rolle hinzuzufügen.
-1. Gehen Sie im Fenster **Berechtigungen hinzufügen** wie folgt vor: 
-    1. Wählen Sie eine Rolle aus (beispielsweise „DevTest Labs-Benutzer“). Im Abschnitt [Aktionen, die in jeder Rolle ausgeführt werden können](#actions-that-can-be-performed-in-each-role) finden Sie die verschiedenen Aktionen, die Benutzer in den Rollen „Besitzer“, „DevTest-Benutzer“ und „Beitragender“ ausführen können.
-    2. Wählen Sie den Benutzer aus, den Sie der Rolle hinzufügen möchten. 
-    3. Wählen Sie **Speichern** aus. 
-11. Wenn Sie zum Blatt **Benutzer** zurückkehren, wurde der Benutzer hinzugefügt.  
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als [Benutzerzugangsadministrator](../role-based-access-control/built-in-roles.md#user-access-administrator) oder [Besitzer](../role-based-access-control/built-in-roles.md#owner) an.
+
+1. Öffnen Sie die gewünschte Ressourcengruppe und wählen Sie **DevTest Labs**.
+
+1. Wählen Sie im Navigationsmenü **Zugriffssteuerung (IAM)** aus.
+
+1. Wählen Sie **Hinzufügen** > **Rollenzuweisung hinzufügen**.
+
+    ![Seite „Zugriffssteuerung (IAM)“ mit geöffnetem Menü „Rollenzuweisung hinzufügen“](../../includes/role-based-access-control/media/add-role-assignment-menu-generic.png)
+
+1. Wählen Sie auf der Registerkarte **Rolle** die Rolle **Besitzer** oder **USER**.
+
+    ![Seite „Rollenzuweisung hinzufügen“ mit ausgewählter Registerkarte „Rolle“](../../includes/role-based-access-control/media/add-role-assignment-role-generic.png)
+
+1. Wählen Sie auf der Registerkarte **Mitglieder** den Benutzer, dem Sie die gewünschte Rolle zuweisen möchten.
+
+1. Wählen Sie auf der Registerkarte **Überprüfen und zuweisen** die Option **Überprüfen und zuweisen** aus, um die Rolle zuzuweisen.
+
 
 ## <a name="add-an-external-user-to-a-lab-using-powershell"></a>Hinzufügen eines externen Benutzers zu einem Lab mit PowerShell
 
@@ -111,20 +118,23 @@ Sie können einem Lab über das entsprechende Blatt im [Azure-Portal](https://go
 
 Um einen Besitzer zu einem Azure-Abonnement hinzuzufügen, gehen Sie folgendermaßen vor:
 
-1. Melden Sie sich beim [Azure-Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) an.
-2. Wählen Sie **Alle Dienste** und dann **Abonnements** aus der Liste aus.
-3. Wählen Sie das gewünschte Abonnement aus.
-4. Wählen Sie das Symbol **Zugriff** aus. 
-   
-    ![Auf Benutzer zugreifen](./media/devtest-lab-add-devtest-user/access-users.png)
-5. Wählen Sie auf dem Blatt **Benutzer** **Hinzufügen**.
-   
-    ![Benutzer hinzufügen](./media/devtest-lab-add-devtest-user/devtest-users-blade.png)
-6. Wählen Sie auf dem Blatt **Rolle auswählen** **Besitzer**.
-7. Geben Sie auf dem Blatt **Hinzufügen von Benutzern** die E-Mail-Adresse oder den Namen des Benutzers ein, den Sie als Besitzer hinzufügen möchten. Wenn der Benutzer nicht gefunden werden kann, erhalten Sie eine Fehlermeldung, die das Problem erklärt. Wenn der Benutzer gefunden wird, wird dieser Benutzer unter dem Textfeld **Benutzer** aufgeführt.
-8. Wählen Sie den gefundenen Benutzernamen aus.
-9. Wählen Sie **Auswählen**.
-10. Wählen Sie **OK**, um das Blatt **Zugriff hinzufügen** zu schließen.
-11. Wenn Sie zum Blatt **Benutzer** zurückkehren, wurde der Benutzer als Besitzer hinzugefügt. Dieser Benutzer ist nun Besitzer aller Labs, die in diesem Abonnement erstellt werden, und kann daher die Aufgaben eines Besitzers ausführen. 
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) als [Benutzerzugangsadministrator](../role-based-access-control/built-in-roles.md#user-access-administrator) oder [Besitzer](../role-based-access-control/built-in-roles.md#owner) an.
+
+1. Öffnen Sie die gewünschte Abonnementgruppe.
+
+1. Wählen Sie im Navigationsmenü **Zugriffssteuerung (IAM)** aus.
+
+1. Wählen Sie **Hinzufügen** > **Rollenzuweisung hinzufügen**.
+
+    ![Seite „Zugriffssteuerung (IAM)“ mit geöffnetem Menü „Rollenzuweisung hinzufügen“](../../includes/role-based-access-control/media/add-role-assignment-menu-generic.png)
+
+1. Wählen Sie auf der Registerkarte **Rolle** die Rolle **Besitzer**.
+
+    ![Seite „Rollenzuweisung hinzufügen“ mit ausgewählter Registerkarte „Rolle“](../../includes/role-based-access-control/media/add-role-assignment-role-generic.png)
+
+1. Wählen Sie auf der Registerkarte **Mitglieder** den Benutzer, dem Sie die Eigentümerrolle zuweisen möchten.
+
+1. Wählen Sie auf der Registerkarte **Überprüfen und zuweisen** die Option **Überprüfen und zuweisen** aus, um die Rolle zuzuweisen.
+
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]

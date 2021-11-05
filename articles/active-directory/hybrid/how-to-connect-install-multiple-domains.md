@@ -16,12 +16,12 @@ ms.date: 05/31/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c71ae3378c1d5d6304b506f2d5a4dbaa9b15e8e
-ms.sourcegitcommit: 67cdbe905eb67e969d7d0e211d87bc174b9b8dc0
+ms.openlocfilehash: 671c9f9eadb7a272e718587417e78ff85d182b07
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/09/2021
-ms.locfileid: "111855024"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131049365"
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>Unterstützung mehrerer Domänen für den Verbund mit Azure AD
 Die folgende Dokumentation enthält eine Anleitung dazu, wie Sie mehrere Domänen der obersten Ebene und Unterdomänen verwenden, wenn Sie einen Verbund mit Microsoft 365- oder Azure AD-Domänen erstellen.
@@ -65,7 +65,7 @@ Wenn Sie sich die Einstellungen der Domäne „bmfabrikam.com“ ansehen, erkenn
 
 `-SupportMultipleDomain` führt nicht zu einer Änderung der anderen Endpunkte, die weiterhin so konfiguriert sind, dass sie auf den Verbunddienst unter „adfs.bmcontoso.com“ verweisen.
 
-Außerdem wird mit `-SupportMultipleDomain` sichergestellt, dass das AD FS-System den richtigen Issuer-Wert in Token einfügt, die für Azure AD ausgegeben werden. Dazu wird der Domänenteil des Benutzerprinzipalnamens (UPN) verwendet und als Domäne im IssuerUri festgelegt, d.h. „https://{upn suffix}/adfs/services/trust“.
+Außerdem wird mit `-SupportMultipleDomain` sichergestellt, dass das AD FS-System den richtigen Issuer-Wert in Token einfügt, die für Azure AD ausgegeben werden. Dieser Wert wird festgelegt, indem der Domänenteil des UPN der Benutzer*innen verwendet und als Domäne im IssuerUri verwendet wird, d. h. in `https://{upn suffix}/adfs/services/trust`.
 
 Während der Authentifizierung in Azure AD oder Microsoft 365 wird daher das IssuerUri-Element im Token des Benutzers verwendet, um die Domäne in Azure AD zu finden. Wenn keine Übereinstimmung gefunden wird, schlägt die Authentifizierung fehl.
 

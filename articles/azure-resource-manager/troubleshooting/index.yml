@@ -1,0 +1,107 @@
+### YamlMime:Landing
+title: Dokumentation zur Problembehandlung bei Bereitstellungen
+summary: Problembehandlung bei Azure-Bereitstellungen für Azure Resource Manager-Vorlagen und Bicep-Dateien
+metadata:
+  title: Dokumentation zur Problembehandlung bei Bereitstellungen
+  description: Hier finden Sie Informationen zur Problembehandlung bei Azure-Bereitstellungen für Azure Resource Manager-Vorlagen und Bicep-Dateien.
+  services: azure-resource-manager
+  ms.service: azure-resource-manager
+  ms.subservice: templates, bicep
+  ms.topic: landing-page
+  ms.collection: na
+  author: mumian
+  ms.author: jgao
+  ms.date: 11/01/2021
+  ms.openlocfilehash: 04756d25bf54a560753f890e654fd13df349444a
+  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 11/02/2021
+  ms.locfileid: "131088452"
+landingContent:
+- title: Informationen zu Bereitstellungen
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Was ist die Problembehandlung für Bereitstellungen?
+      url: overview.md
+- title: Erste Schritte
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Problembehandlung bei Bereitstellungen von ARM-Vorlagen
+      url: quickstart-troubleshoot-arm-deployment.md
+    - text: Problembehandlung bei Bereitstellungen von Bicep-Dateien
+      url: quickstart-troubleshoot-bicep-deployment.md
+- title: Behandeln von Bereitstellungsproblemen
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Häufige Bereitstellungsfehler
+      url: common-deployment-errors.md
+    - text: Dateisyntax der ARM-Vorlage
+      url: ../templates/syntax.md
+    - text: Resource Manager-Vorlagen-Testtoolkit
+      url: ../templates/test-toolkit.md
+    - text: Bicep-Dateisyntax
+      url: ../bicep/file.md
+    - text: Bicep-Linter
+      url: ../bicep/linter.md
+    - text: Azure-Schnellstartvorlagen
+      url: https://azure.microsoft.com/resources/templates/
+- title: Bereitstellen von Vorlagen
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: ARM-Vorlagenbereitstellung
+      url: ../templates/deployment-tutorial-local-template.md
+    - text: Bicep-Dateibereitstellung
+      url: ../bicep/deploy-powershell.md
+    - text: Anzeigen des Bereitstellungsverlaufs
+      url: ../templates/deployment-history.md
+  - linkListType: how-to-guide
+    links:
+    - text: PowerShell
+      url: ../templates/deploy-powershell.md
+    - text: Azure-Befehlszeilenschnittstelle
+      url: ../templates/deploy-cli.md
+    - text: Portal
+      url: ../templates/deploy-portal.md
+    - text: REST-API
+      url: ../templates/deploy-rest.md
+    - text: Schaltfläche zum Bereitstellen in Azure
+      url: ../templates/deploy-to-azure-button.md
+    - text: Cloud Shell der ARM-Vorlage
+      url: ../templates/deploy-cloud-shell.md
+    - text: Cloud Shell der Bicep-Datei
+      url: ../bicep/deploy-cloud-shell.md
+    - text: Was-wäre-wenn-Bereitstellung der ARM-Vorlage
+      url: ../templates/deploy-what-if.md
+    - text: Was-wäre-wenn-Bereitstellung der Bicep-Datei
+      url: ../bicep/deploy-what-if.md
+- title: Erkunden des Referenzinhalts
+  linkLists:
+  - linkListType: reference
+    links:
+    - text: Vorlagenreferenz
+      url: /azure/templates/
+    - text: REST-API
+      url: /rest/api/resources/
+    - text: Azure PowerShell
+      url: /powershell/module/az.resources
+    - text: Azure CLI
+      url: /cli/azure/resource
+    - text: .NET
+      url: /dotnet/api/microsoft.azure.management.resourcemanager
+    - text: Java
+      url: /java/api/com.microsoft.azure.management.resources
+    - text: Python
+      url: /python/api/overview/azure/resources
+- title: Verwalten von Vorlagen
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Exportieren von Vorlagen
+      url: ../templates/export-template-portal.md
+    - text: CI/CD
+      url: ../templates/add-template-to-azure-pipelines.md

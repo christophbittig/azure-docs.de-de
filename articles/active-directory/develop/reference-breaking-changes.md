@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 6/4/2021
+ms.date: 10/22/2021
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, has-adal-ref
-ms.openlocfilehash: 606d1d06a76a1783b38841f2344f2e5273add915
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 04dffd4dcebee3cee9023cf445fda6e3fd05b008
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130069563"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131050677"
 ---
 # <a name="whats-new-for-authentication"></a>Neuerungen bei der Authentifizierung
 
@@ -35,7 +35,27 @@ Für das Authentifizierungssystem werden fortlaufend Änderungen vorgenommen und
 
 ## <a name="upcoming-changes"></a>Bevorstehende Änderungen
 
+Keine bevorstehenden Änderungen, die Sie beachten sollten. 
+
 ## <a name="october-2021"></a>Oktober 2021
+
+### <a name="error-50105-has-been-fixed-to-not-return-interaction_required-during-interactive-authentication"></a>Der Fehler 50105 wurde behoben, damit während der interaktiven Authentifizierung `interaction_required` nicht zurückgegeben wird.
+
+**Gültig ab**: Oktober 2021
+
+**Betroffene Endpunkte:** v2.0 und v1.0
+
+**Betroffenes Protokoll:** Alle Benutzerabläufe für Apps, für die eine [Benutzerzuweisung erforderlich](../manage-apps/what-is-access-management.md#requiring-user-assignment-for-an-app) ist
+
+**Änderung**
+
+Fehler 50105 (die aktuelle Bezeichnung) wird ausgegeben, wenn nicht zugewiesene Benutzer*innen versuchen, sich bei einer App zu anzumelden, für die Administrator*innen eine Benutzerzuweisung als erforderlich markiert haben.  Dies ist ein gängiges Zugriffssteuerungsmuster, und Benutzer*innen müssen häufig Administrator*innen finden, um die Zuweisung zum Entsperren des Zugriffs anzufordern.  Dabei gab es einen Fehler, der endlose Schleifen in gut codierten Anwendungen verursachte, die die `interaction_required`-Fehlerantwort ordnungsgemäß verarbeiteten. `interaction_required` weist eine App an, eine interaktive Authentifizierung durchzuführen, aber auch danach gab Azure AD noch eine `interaction_required`-Fehlerantwort zurück.  
+
+Das Fehlerszenario wurde aktualisiert, sodass die App während der nicht-interaktiven Authentifizierung (bei der `prompt=none` zum Ausblenden von UX verwendet wird) angewiesen wird, die interaktive Authentifizierung mithilfe einer `interaction_required`-Fehlerantwort durchzuführen. In der nachfolgenden interaktiven Authentifizierung hält Azure AD Benutzer*innen jetzt und zeigt direkt eine Fehlermeldung an, sodass keine Schleife auftritt. 
+
+Zur Erinnerung: Azure AD unterstützt keine Anwendungen, die einzelne Fehlercodes erkennen, z. B. das Überprüfen von Zeichenfolgen auf `AADSTS50105`. Stattdessen lautet der [Azure AD-Leitfaden](reference-aadsts-error-codes.md#handling-error-codes-in-your-application), die Standards zu befolgen und die [standardisierten Authentifizierungsantworten](https://openid.net/specs/openid-connect-core-1_0.html#AuthError) wie `interaction_required` und `login_required` zu verwenden. Diese befinden sich im Standardfeld `error` in der Antwort. Die anderen Felder während der Problembehandlung von menschlichen Benutzer*innen benötigt. 
+
+Sie können den aktuellen Text des Fehlers 50105 und mehr im Fehlersuchedienst überprüfen: https://login.microsoftonline.com/error?code=50105. 
 
 ### <a name="appid-uri-in-single-tenant-applications-will-require-use-of-default-scheme-or-verified-domains"></a>Der AppId-URI in Anwendungen mit einem Mandanten erfordert die Verwendung des Standardschemas oder überprüfter Domänen.
 
@@ -57,21 +77,7 @@ Wenn eine Anforderung bei der Überprüfung fehlschlägt, gibt die Anwendungs-AP
 
 [!INCLUDE [active-directory-identifierUri](../../../includes/active-directory-identifier-uri-patterns.md)]
 
-## <a name="june-2021"></a>Juni 2021
-
-### <a name="the-device-code-flow-ux-will-now-include-an-app-confirmation-prompt"></a>Der UX-Gerätecodeflow enthält jetzt eine Eingabeaufforderung zur App-Bestätigung
-
-**Gültig ab**: Juni 2021.
-
-**Betroffene Endpunkte:** v2.0 und v1.0
-
-**Betroffenes Protokoll:** Der [Gerätecodeflow](v2-oauth2-device-code.md)
-
-Zur Verbesserung der Sicherheit wurde der Gerätecodeflow aktualisiert und um eine zusätzliche Eingabeaufforderung ergänzt, mit der überprüft wird, ob sich der Benutzer bei der erwarteten App anmeldet. Diese Erweiterung soll Phishingangriffe verhindern.
-
-Die angezeigte Eingabeaufforderung sieht wie die folgende aus:
-
-:::image type="content" source="media/breaking-changes/device-code-flow-prompt.png" alt-text="Neue Eingabeaufforderung mit dem Text „Versuchen Sie, sich bei der Azure CLI anzumelden?“":::
+## <a name="august-2021"></a>August 2021
 
 ### <a name="conditional-access-will-only-trigger-for-explicitly-requested-scopes"></a>Bedingter Zugriff wird nur für explizit angeforderte Bereiche ausgelöst.
 
@@ -97,9 +103,26 @@ Wenn die App dann `scope=files.readwrite` anfordert, wird der bedingte Zugriff a
 
 Wenn die App dann eine letzte Anforderung für einen der drei Bereiche (z. B. `scope=tasks.read`) ausführt, ist für Azure AD erkennbar, dass der Benutzer bereits die für `files.readwrite` erforderlichen Richtlinien für bedingten Zugriff erfüllt hat, und es wird erneut ein Token ausgestellt, das alle drei Bereiche enthält. 
 
+
+## <a name="june-2021"></a>Juni 2021
+
+### <a name="the-device-code-flow-ux-will-now-include-an-app-confirmation-prompt"></a>Der UX-Gerätecodeflow enthält jetzt eine Eingabeaufforderung zur App-Bestätigung
+
+**Gültig ab**: Juni 2021.
+
+**Betroffene Endpunkte:** v2.0 und v1.0
+
+**Betroffenes Protokoll:** Der [Gerätecodeflow](v2-oauth2-device-code.md)
+
+Zur Verbesserung der Sicherheit wurde der Gerätecodeflow aktualisiert und um eine zusätzliche Eingabeaufforderung ergänzt, mit der überprüft wird, ob sich der Benutzer bei der erwarteten App anmeldet. Diese Erweiterung soll Phishingangriffe verhindern.
+
+Die angezeigte Eingabeaufforderung sieht wie die folgende aus:
+
+:::image type="content" source="media/breaking-changes/device-code-flow-prompt.png" alt-text="Neue Eingabeaufforderung mit dem Text „Versuchen Sie, sich bei der Azure CLI anzumelden?“":::
+
 ## <a name="may-2020"></a>Mai 2020
 
-### <a name="bug-fix-azure-ad-will-no-longer-url-encode-the-state-parameter-twice"></a>Behebung von Programmfehlern: Azure AD kodiert den Statusparameter in der URL nicht mehr zweimal
+### <a name="bug-fix-azure-ad-will-no-longer-url-encode-the-state-parameter-twice"></a>Fehlerbehebung: Azure AD kodiert den Statusparameter in der URL nicht mehr zweimal.
 
 **Gültig ab**: Mai 2021
 
@@ -107,7 +130,7 @@ Wenn die App dann eine letzte Anforderung für einen der drei Bereiche (z. B. `s
 
 **Betroffenes Protokoll**: alle Flows, die den `/authorize` Endpunkt aufrufen (impliziter Fluss-und Autorisierungs-Code-Fluss)
 
-Ein Fehler wurde in der Azure AD Autorisierungs-Antwort gefunden und behoben. Während der `/authorize` Authentifizierung wird der- `state` Parameter aus der Anforderung in die Antwort eingeschlossen, um den App-Status beizubehalten und CSRF-Angriffe zu verhindern. Azure AD falsche URL-Codierung für den `state` Parameter vor dem Einfügen in die Antwort, in der er nochmal codiert wurde.  Dies würde dazu führen, dass Anwendungen die Antwort von Azure AD fälschlicherweise ablehnen. 
+Ein Fehler wurde in der Azure AD Autorisierungs-Antwort gefunden und behoben. Während der `/authorize` Authentifizierung wird der- `state` Parameter aus der Anforderung in die Antwort eingeschlossen, um den App-Status beizubehalten und CSRF-Angriffe zu verhindern. Azure AD hat den `state`-Parameter vor dem Einfügen in die Antwort falsch URL-codiert. Dort wurde er nochmal codiert.  Dies würde dazu führen, dass Anwendungen die Antwort von Azure AD fälschlicherweise ablehnen.
 
 Azure AD wird diesen Parameter nicht mehr doppelt codieren, sodass Apps das Ergebnis ordnungsgemäß analysieren können. Diese Änderung wird für alle Anwendungen vorgenommen. 
 

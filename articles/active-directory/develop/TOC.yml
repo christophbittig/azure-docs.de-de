@@ -156,6 +156,8 @@
       href: authentication-flows-app-scenarios.md
     - name: Anwendungen und Dienstprinzipale
       href: app-objects-and-service-principals.md
+    - name: Workload-Identitätsverbund
+      href: workload-identity-federation.md
     - name: Bewährte Methoden für die Identitätsplattform
       href: identity-platform-integration-checklist.md
     - name: App-Sicherheit
@@ -545,6 +547,10 @@
           href: howto-authenticate-service-principal-powershell.md
         - name: Erstellen eines Dienstprinzipals mit dem Azure-Portal
           href: howto-create-service-principal-portal.md
+        - name: Konfigurieren einer Vertrauensstellung zwischen einer App und einem GitHub-Repository
+          href: workload-identity-federation-create-trust-github.md
+        - name: Konfigurieren einer Vertrauensstellung zwischen einer App und einem externen Identitätsanbieter
+          href: workload-identity-federation-create-trust.md
     - name: Akzeptieren von Anmeldungen von mehreren Mandanten
       items:
         - name: Ändern der von einer App unterstützten Konten

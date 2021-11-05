@@ -310,8 +310,6 @@ items:
                 href: ../common/storage-account-recover.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
               - name: Abrufen von Kontokonfigurationseigenschaften
                 href: ../common/storage-account-get-info.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-              - name: Verwalten der Standardzugriffsebene eines Speicherkontos
-                href: ../common/manage-account-default-access-tier.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
           - name: Erstellen und Verwalten von Containern
             items:
               - name: Erstellen oder Löschen eines Containers (.NET)
@@ -326,8 +324,6 @@ items:
                 href: storage-blobs-list.md
               - name: Verwalten von Blobeigenschaften und Metadaten (.NET)
                 href: storage-blob-properties-metadata.md
-              - name: Verwalten der Zugriffsebene eines Blobs
-                href: manage-access-tier.md
               - name: Kopieren eines Blobs (SDK)
                 href: storage-blob-copy.md
               - name: Verwenden von Blobindextags
@@ -476,14 +472,18 @@ items:
                 href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
           - name: Verwalten von Blobtiering und Lebenszyklus
             items:
-              - name: Konfigurieren der Richtlinien für die Lebenszyklusverwaltung
-                href: lifecycle-management-policy-configure.md
-              - name: Verwalten von Daten auf der Archivebene
+              - name: Ändern der Zugriffsebene eines Blobs
+                href: access-tiers-online-manage.md
+              - name: Verwalten der Datenarchivierung
                 items:
+                  - name: Archivieren eines Blobs
+                    href: archive-blob.md
                   - name: Aktivieren eines archivierten Blobs
                     href: archive-rehydrate-to-online-tier.md
                   - name: Behandeln eines Ereignisses bei der Blobaktivierung
                     href: archive-rehydrate-handle-event.md
+              - name: Konfigurieren der Richtlinien für die Lebenszyklusverwaltung
+                href: lifecycle-management-policy-configure.md
           - name: Verwalten der Objektreplikation
             items:
               - name: Konfigurieren von Objektreplikationsrichtlinien
@@ -887,7 +887,7 @@ items:
           - name: .NET
             href: /dotnet/api/azure.storage.files.datalake
           - name: Java
-            href: 'https://docs.microsoft.com/java/api/overview/azure/storage-file-datalake-readme'
+            href: /java/api/overview/azure/storage-file-datalake-readme
           - name: Python
             href: 'https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0b5/index.html'
           - name: JavaScript

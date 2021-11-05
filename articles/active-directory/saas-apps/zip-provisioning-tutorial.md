@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2021
 ms.author: thwimmer
-ms.openlocfilehash: c548e0398ad7d27d6a145f518a9351e706aacf08
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 9450d8fddcee604aed05a8d7d8e8194a1044840e
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122323331"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131056811"
 ---
 # <a name="tutorial-configure-zip-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Zip für die automatische Benutzerbereitstellung
 
@@ -48,7 +48,7 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
 ## <a name="step-2-configure-zip-to-support-provisioning-with-azure-ad"></a>Schritt 2: Konfigurieren von Zip für die Unterstützung der Bereitstellung mit Azure AD
 
-Wenn Sie Zip für die Unterstützung der Bereitstellung mit Azure AD konfigurieren möchten, wenden Sie sich an das Zip-Supportteam (<support@ziphq.com>). Das Supportteam stellt die Mandanten-URL und das geheime Token bereit, die zum Einrichten der automatischen Benutzerbereitstellung in Zip erforderlich sind (siehe Schritt 5).
+Wenn Sie Zip für die Unterstützung der Bereitstellung mit Azure AD konfigurieren möchten, wenden Sie sich an das Zip-Supportteam <support@ziphq.com>. Das Supportteam stellt die Mandanten-URL und den geheimen Token bereit, die zum Einrichten der automatischen Benutzerbereitstellung in Zip erforderlich sind, wie in Schritt 5 erwähnt.
 
 ## <a name="step-3-add-zip-from-the-azure-ad-application-gallery"></a>Schritt 3: Hinzufügen von Zip aus dem Azure AD-Anwendungskatalog
 
@@ -99,7 +99,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
 1. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Zip synchronisiert werden. Mit den als **übereinstimmende** Eigenschaften ausgewählten Attributen werden die Benutzerkonten in Zip bei Updatevorgängen abgeglichen. Wenn Sie sich dafür entscheiden, das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) zu ändern, müssen Sie sicherstellen, dass die Zip-API das Filtern von Benutzern anhand dieses Attributs unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-   |attribute|Typ|Unterstützung für das Filtern|
+   |attribute|type|Unterstützung für das Filtern|
    |---|---|---|
    |userName|String|&check;
    |aktiv|Boolean|   
@@ -120,7 +120,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
 1. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenattribute, die von Azure AD mit Zip synchronisiert werden. Mit den als **übereinstimmende** Eigenschaften ausgewählten Attributen werden die Gruppen in Zip bei Updatevorgängen abgeglichen. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-      |attribute|Typ|Unterstützung für das Filtern|
+      |attribute|type|Unterstützung für das Filtern|
       |---|---|---|
       |displayName|String|&check;
       |members|Verweis|

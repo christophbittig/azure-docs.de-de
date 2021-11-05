@@ -1,29 +1,32 @@
 ---
-title: Verwenden des Dashboards für die Einhaltung gesetzlicher Bestimmungen in Azure Security Center
-description: Hier erfahren Sie, wie Sie gesetzliche Standards auf dem Dashboard für die Einhaltung gesetzlicher Bestimmungen in Security Center hinzufügen und entfernen.
+title: Dashboard für die Einhaltung gesetzlicher Bestimmungen in Microsoft Defender für Cloud
+description: Hier erfahren Sie, wie Sie gesetzliche Standards auf dem Dashboard für die Einhaltung gesetzlicher Bestimmungen in Defender für Cloud hinzufügen und entfernen.
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
 ms.date: 08/05/2021
 ms.author: memildin
-ms.openlocfilehash: 523375ff69d6139a1e910b9253a6816235bfecc4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: d5d54fe73c417f3d79c518ec1e78bade71135cfb
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339800"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131037383"
 ---
 # <a name="customize-the-set-of-standards-in-your-regulatory-compliance-dashboard"></a>Anpassen der Standards in Ihrem Dashboard für die Einhaltung gesetzlicher Bestimmungen
 
-Azure Security Center vergleicht die Konfiguration Ihrer Ressourcen kontinuierlich mit den Anforderungen von Branchenstandards, Vorschriften und Benchmarks. Das **Dashboard für die Einhaltung gesetzlicher Bestimmungen** bietet Erkenntnisse zu Ihrem Compliancestatus basierend auf der Erfüllung bestimmter Complianceanforderungen.
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
+
+Microsoft Defender für Cloud vergleicht die Konfiguration Ihrer Ressourcen kontinuierlich mit den Anforderungen von Branchenstandards, Vorschriften und Benchmarks. Das **Dashboard für die Einhaltung gesetzlicher Bestimmungen** bietet Erkenntnisse zu Ihrem Compliancestatus basierend auf der Erfüllung bestimmter Complianceanforderungen.
 
 > [!TIP]
-> Weitere Informationen zum Security Center-Dashboard zur Einhaltung gesetzlicher Bestimmungen finden Sie in den [häufig gestellten Fragen](security-center-compliance-dashboard.md#faq---regulatory-compliance-dashboard).
+> Weitere Informationen zum Dashboard für die Einhaltung gesetzlicher Bestimmungen in Defender für Cloud finden Sie unter den [häufig gestellten Fragen](regulatory-compliance-dashboard.md#faq---regulatory-compliance-dashboard).
 
-## <a name="how-are-regulatory-compliance-standards-represented-in-security-center"></a>Wie werden die Standards für die Einhaltung gesetzlicher Bestimmungen in Azure Security Center dargestellt?
+## <a name="how-are-regulatory-compliance-standards-represented-in-defender-for-cloud"></a>Wie werden die Standards für die Einhaltung gesetzlicher Bestimmungen in Defender für Cloud dargestellt?
 
-Branchenstandards, gesetzliche Standards und Benchmarks werden im Security Center im Dashboard für die Einhaltung gesetzlicher Bestimmungen dargestellt. Jeder Standard kann als eine in Azure Policy definierte Initiative verstanden werden.
+Branchenstandards, gesetzliche Standards und Benchmarks werden in Defender für Cloud im Dashboard für die Einhaltung gesetzlicher Bestimmungen dargestellt. Jeder Standard kann als eine in Azure Policy definierte Initiative verstanden werden.
 
 Fügen Sie der Verwaltungsgruppe oder dem Abonnement auf der Seite **Sicherheitsrichtlinie** ein Compliancestandard hinzu, um Compliancedaten als zugeordnete Bewertungen in Ihrem Dashboard anzuzeigen. Weitere Informationen zu Azure Policy und Initiativen finden Sie unter [Arbeiten mit Sicherheitsrichtlinien](tutorial-security-policy.md).
 
@@ -32,7 +35,7 @@ Nachdem Sie dem ausgewählten Bereich einen Standard oder Vergleichstest zugewie
 Microsoft überwacht die gesetzlichen Standards selbst und passt die Pakete im Laufe der Zeit entsprechend an. Wenn Microsoft neue Inhalte für die Initiative veröffentlicht,werden diese in Ihrem Dashboard automatisch als neue Richtlinien, die Regeln im Standard entsprechen, hinzugefügt.
 
 
-## <a name="what-regulatory-compliance-standards-are-available-in-security-center"></a>Welche Standards für die Einhaltung gesetzlicher Bestimmungen sind im Azure Security Center verfügbar?
+## <a name="what-regulatory-compliance-standards-are-available-in-defender-for-cloud"></a>Welche Standards für die Einhaltung gesetzlicher Bestimmungen sind in Defender für Cloud verfügbar?
 
 Standardmäßig ist jedem Abonnement der **Azure Security-Vergleichstest** zugewiesen. Hierbei handelt es sich um von Microsoft erstellte, Azure-spezifische Richtlinien zu bewährten Methoden für Sicherheit und Compliance, die auf allgemeinen Complianceframeworks basieren. [Weitere Informationen zum Azure-Sicherheitsvergleichstest](/security/benchmark/azure/introduction)
 
@@ -53,10 +56,15 @@ Standards werden dem Dashboard hinzugefügt, sobald Sie verfügbar werden.
 
 In den folgenden Schritten wird erklärt, wie Sie ein Paket hinzufügen, um Ihre Compliance mit einem der unterstützten gesetzlichen Standards zu überwachen.
 
-> [!NOTE]
-> Um dem Dashboard Standards hinzufügen zu können, muss Azure Defender für das Abonnement aktiviert sein. Zudem haben nur Benutzer, die Besitzer oder Mitwirkende an Richtlinien sind, die erforderlichen Berechtigungen zum Hinzufügen von Compliancestandards. 
+### <a name="prerequisites"></a>Voraussetzungen
+Zum Hinzufügen von Standards in Ihrem Dashboard ist Folgendes erforderlich:
 
-1. Wählen Sie auf der Seitenleiste in Security Center **Einhaltung gesetzlicher Bestimmungen** aus, um das Dashboard für die Einhaltung gesetzlicher Bestimmungen zu öffnen. Hier sehen Sie die Compliancestandards, die den aktuell ausgewählten Abonnements zugeordnet sind.   
+- Für das Abonnement müssen die erweiterten Sicherheitsfeatures von Defender für Cloud aktiviert sein.
+- Der Benutzer muss über die Berechtigungen „Besitzer“ oder „Richtlinienmitwirkender“ verfügen.
+
+### <a name="add-a-standard"></a>Hinzufügen eines Standards
+
+1. Wählen Sie im Menü von Defender für Cloud die Option **Einhaltung gesetzlicher Bestimmungen** aus, um das Dashboard für die Einhaltung gesetzlicher Bestimmungen zu öffnen. Hier sehen Sie die Compliancestandards, die den aktuell ausgewählten Abonnements zugeordnet sind.   
 
 1. Wählen Sie oben auf der Seite **Konformitätsrichtlinien verwalten** aus. Dadurch wird die Seite für die Richtlinienverwaltung geöffnet.
 
@@ -79,18 +87,18 @@ In den folgenden Schritten wird erklärt, wie Sie ein Paket hinzufügen, um Ihre
     - **CMMC Level 3**
     - **Durch New Zealand ISM eingeschränkt**
     
-    ![Hinzufügen von gesetzlichen Standards zum Dashboard für die Einhaltung gesetzlicher Bestimmungen in Azure Security Center.](./media/update-regulatory-compliance-packages/dynamic-regulatory-compliance-additional-standards.png)
+    ![Hinzufügen gesetzlicher Standards im Dashboard für die Einhaltung gesetzlicher Bestimmungen in Microsoft Defender für Cloud](./media/update-regulatory-compliance-packages/dynamic-regulatory-compliance-additional-standards.png)
 
 1. Klicken Sie auf **Hinzufügen**, und geben Sie alle notwendigen Details für die jeweilige Initiative ein, z. B. Bereich, Parameter und Wartung.
 
-1. Wählen Sie auf der Seitenleiste in Security Center erneut **Einhaltung gesetzlicher Bestimmungen** aus, um zum Dashboard für die Einhaltung gesetzlicher Bestimmungen zurückzukehren.
+1. Wählen Sie im Menü von Defender für Cloud erneut die Option **Einhaltung gesetzlicher Bestimmungen** aus, um zum Dashboard für die Einhaltung gesetzlicher Bestimmungen zurückzukehren.
 
     Ihr neuer Standard wird jetzt in der Liste der Branchen- und gesetzlichen Standards aufgeführt. 
 
     > [!NOTE]
     > Es kann einige Stunden dauern, bis ein neu hinzugefügter Standard im Compliance-Dashboard angezeigt wird.
 
-    :::image type="content" source="./media/security-center-compliance-dashboard/compliance-dashboard.png" alt-text="Dashboard für die Einhaltung gesetzlicher Bestimmungen." lightbox="./media/security-center-compliance-dashboard/compliance-dashboard.png":::
+    :::image type="content" source="./media/regulatory-compliance-dashboard/compliance-dashboard.png" alt-text="Dashboard für die Einhaltung gesetzlicher Bestimmungen." lightbox="./media/regulatory-compliance-dashboard/compliance-dashboard.png":::
 
 ## <a name="remove-a-standard-from-your-dashboard"></a>Entfernen eines Standards aus Ihrem Dashboard
 
@@ -98,7 +106,7 @@ Falls einer der angegebenen gesetzlichen Standards für Ihre Organisation nicht 
 
 Entfernen Sie einen Standard wie folgt:
 
-1. Wählen Sie im Menü von Security Center **Sicherheitsrichtlinie** aus.
+1. Wählen Sie im Menü von Defender für Cloud die Option **Sicherheitsrichtlinie** aus.
 
 1. Wählen Sie das relevante Abonnement aus, aus dem Sie einen Standard entfernen möchten.
 
@@ -107,7 +115,7 @@ Entfernen Sie einen Standard wie folgt:
 
     Die Seite mit der Sicherheitsrichtlinie wird geöffnet. Für das ausgewählte Abonnement werden die Standardrichtlinie, die Branchen- und gesetzlichen Standards sowie alle von Ihnen erstellten benutzerdefinierten Initiativen angezeigt.
 
-    :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard.png" alt-text="Entfernen eines gesetzlichen Standards aus Ihrem Dashboard für die Einhaltung gesetzlicher Bestimmungen in Azure Security Center.":::
+    :::image type="content" source="./media/update-regulatory-compliance-packages/remove-standard.png" alt-text="Entfernen eines gesetzlichen Standards aus Ihrem Dashboard für die Einhaltung gesetzlicher Bestimmungen in Microsoft Defender für Cloud":::
 
 1. Wählen Sie für den Standard, den Sie entfernen möchten, die Option **Deaktivieren** aus. Ein Bestätigungsfenster wird angezeigt.
 
@@ -123,5 +131,5 @@ In diesem Artikel haben Sie Informationen zum **Hinzufügen von Compliancestanda
 Verwandte Informationen finden Sie auf den folgenden Seiten:
 
 - [Einführung zum Azure Security-Vergleichstest](/security/benchmark/azure/introduction)
-- [Security Center-Dashboard für die Einhaltung gesetzlicher Bestimmungen](security-center-compliance-dashboard.md) – Erfahren Sie, wie Sie Ihre Daten über die Einhaltung gesetzlicher Vorschriften mit Security Center und externen Tools verfolgen und exportieren.
+- [Defender für Cloud-Dashboard für die Einhaltung gesetzlicher Bestimmungen](regulatory-compliance-dashboard.md) – Erfahren Sie, wie Sie Ihre Daten über die Einhaltung gesetzlicher Vorschriften mit Defender für Cloud und externen Tools verfolgen und exportieren.
 - [Arbeiten mit Sicherheitsrichtlinien](tutorial-security-policy.md)

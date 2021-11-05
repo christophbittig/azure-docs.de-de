@@ -4,16 +4,14 @@ services: azure-arc
 ms.service: azure-arc
 ms.date: 03/03/2021
 ms.topic: conceptual
-author: tcare
-ms.author: tcare
 description: Dieser Artikel enthält eine konzeptionelle Übersicht über einen CI/CD-Workflow mit GitOps.
 keywords: GitOps, Kubernetes, K8s, Azure, Helm, Arc, AKS, Azure Kubernetes Service, Container, CI, CD, Azure DevOps
-ms.openlocfilehash: 47633ed5bec1a07c878983d0e93e03149d8967ba
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 837c0124739fa6659fc4c7652fcb9ca7be4fbf85
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105025865"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131039656"
 ---
 # <a name="cicd-workflow-using-gitops---azure-arc-enabled-kubernetes"></a>CI/CD-Workflow mit GitOps: Kubernetes mit Azure Arc-Unterstützung
 
@@ -29,7 +27,7 @@ In diesem Beispiel wird eine Anwendung verwendet, die in mindestens einer Kubern
 
 ### <a name="application-repo"></a>Anwendungsrepository
 Das Anwendungsrepository enthält den Anwendungscode, an dem Entwickler während der inneren Schleife arbeiten. Die Bereitstellungsvorlagen der Anwendung sind in generischer Form (z. B. Helm oder Kustomize) in diesem Repository vorhanden. Es werden keine umgebungsspezifischen Werte gespeichert. Durch Änderungen an diesem Repository wird eine PR- oder CI-Pipeline aufgerufen, die den Bereitstellungsprozess startet.
-### <a name="container-registry"></a>Container Registry
+### <a name="container-registry"></a>Containerregistrierung
 Die Containerregistrierung enthält alle Erst- und Drittanbieterimages, die in den Kubernetes-Umgebungen verwendet werden. Versehen Sie Anwendungsimages von Erstanbietern mit lesbaren Tags und dem Git-Commit für die Imageerstellung. Speichern Sie Images von Drittanbietern zwischen, um die Sicherheit, Geschwindigkeit und Resilienz zu verbessern. Legen Sie einen Plan für zeitnahe Tests und die Integration von Sicherheitsupdates fest. Weitere Informationen sowie ein Beispiel finden Sie unter [Verwenden und Verwalten von öffentlichen Inhalten mit Azure Container Registry Tasks](../../container-registry/tasks-consume-public-content.md).
 ### <a name="pr-pipeline"></a>PR-Pipeline
 Das Gating von PRs für das Anwendungsrepository basiert auf einer erfolgreichen Ausführung der PR-Pipeline. Von dieser Pipeline werden die grundlegenden Quality Gates (wie Linten und Komponententests) für den Anwendungscode ausgeführt. Die Pipeline testet die Anwendung und lintet Dockerfiles und Helm-Vorlagen, die für die Bereitstellung in einer Kubernetes-Umgebung verwendet werden. Docker-Images sollten erstellt und getestet, aber nicht gepusht werden. Halten Sie die Pipelinedauer relativ kurz, um schnelle Iterationen zu ermöglichen.
@@ -42,7 +40,7 @@ Die CD-Pipeline wird automatisch durch erfolgreiche CI-Buildvorgänge ausgelöst
 ### <a name="gitops-repo"></a>GitOps-Repository
 Das GitOps-Repository stellt clusterübergreifend den aktuellen gewünschten Zustand aller Umgebungen dar. Änderungen an diesem Repository werden vom Flux-Dienst in jedem Cluster aufgegriffen und bereitgestellt. PRs mit Änderungen am gewünschten Zustand werden erstellt, überprüft und zusammengeführt. Diese PRs enthalten sowohl Änderungen an Bereitstellungsvorlagen als auch Änderungen an den resultierenden gerenderten Kubernetes-Manifesten. Gerenderte Manifeste auf niedriger Ebene ermöglichen eine sorgfältigere Überprüfung von Änderungen, die in der Regel auf Vorlagenebene nicht sichtbar sind.
 ### <a name="kubernetes-clusters"></a>Kubernetes-Cluster
-Die verschiedenen, von der Anwendung benötigten Umgebungen werden von mindestens einem Kubernetes-Cluster mit Azure Arc-Unterstützung bereitgestellt. Über unterschiedliche Namespaces kann von einem einzelnen Cluster beispielsweise sowohl die Entwicklungs- als auch die Qualitätssicherungsumgebung bereitgestellt werden. Die Verwendung eines zweiten Clusters ermöglicht eine einfachere Trennung der Umgebungen sowie eine präzisere Steuerung.
+Die verschiedenen von der Anwendung benötigten Umgebungen werden von mindestens einem Kubernetes-Cluster mit Azure Arc-Unterstützung bereitgestellt. Über unterschiedliche Namespaces kann von einem einzelnen Cluster beispielsweise sowohl die Entwicklungs- als auch die Qualitätssicherungsumgebung bereitgestellt werden. Die Verwendung eines zweiten Clusters ermöglicht eine einfachere Trennung der Umgebungen sowie eine präzisere Steuerung.
 ## <a name="example-workflow"></a>Beispielworkflow
 Als Anwendungsentwickler führt Alice folgende Schritte aus:
 * Sie schreibt Anwendungscode.
