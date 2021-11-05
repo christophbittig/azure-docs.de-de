@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 10/20/2021
 ms.author: miwithro
-ms.openlocfilehash: 488b5a6736e308abc78d53b3e9bdbf14af488ca3
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 03d6b2e101103607ec1c699ebdf814d6f41cdb76
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131067864"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131427397"
 ---
 # <a name="aks-managed-azure-active-directory-integration"></a>Von AKS verwaltete Azure Active Directory-Integration
 
@@ -27,7 +27,6 @@ Informieren Sie sich in der [Dokumentation zu den Konzepten der Azure Active Dir
 * Die von AKS verwaltete Azure AD-Integration kann nicht deaktiviert werden.
 * Das Ändern eines integrierten, von AKS verwalteten Azure AD-Clusters in Legacy-AAD wird nicht unterstützt.
 * In Clustern ohne Aktivierung der Kubernetes-RBAC wird die von AKS verwaltete Azure AD-Integration nicht unterstützt.
-* Die Änderung des mit der von AKS verwalteten Azure AD-Integration verknüpften Azure AD-Mandanten wird nicht unterstützt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

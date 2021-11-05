@@ -13,12 +13,12 @@ ms.date: 11/26/2019
 ms.author: marsma
 ms.reviewer: brandwe
 ms.custom: aaddev, identityplatformtop40, has-adal-ref
-ms.openlocfilehash: 0c79ad939a28913a13193b2743c6fda98f553663
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 44afa745df2799b18e67e43fe4a24b09089636d5
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128587079"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131050392"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-application"></a>Tutorial: Anmelden von Benutzern und Aufrufen der Microsoft Graph-API aus einer Android-Anwendung
 
@@ -141,12 +141,12 @@ Falls Sie noch nicht über eine Android-Anwendung verfügen, gehen Sie wie folgt
     ```
 
     Ersetzen Sie den Wert `android:host=` durch den Paketnamen, den Sie im Azure-Portal registriert haben.
-    Ersetzen Sie den Wert `android:path=` durch den Schlüsselhash, den Sie im Azure-Portal registriert haben. Der Signaturhash darf **nicht** als URL codiert sein. Der Signaturhash muss mit einem führenden Schrägstrich (`/`) beginnen.
+    Ersetzen Sie den Wert `android:path=` durch den Schlüsselhash, den Sie im Azure-Portal registriert haben. Der Signatur-Hash sollte **nicht** URL-kodiert sein. Der Signaturhash muss mit einem führenden Schrägstrich (`/`) beginnen.
     
-    Der „Paketname“, mit dem der Wert `android:host` ersetzt wird, sollte ungefähr wie folgt aussehen: com.azuresamples.msalandroidapp.
-    Der „Signaturhash“, mit dem Sie den Wert `android:path` ersetzen, sollte in etwa wie folgt aussehen: /1wIqXSqBj7w+h11ZifsnqwgyKrY=.
+    Der "Paketname", mit dem Sie den Wert `android:host` ersetzen, sollte etwa so aussehen: `com.azuresamples.msalandroidapp`.
+    Der "Signature Hash", mit dem Sie Ihren `android:path`-Wert ersetzen, sollte ähnlich aussehen wie: `/1wIqXSqBj7w+h11ZifsnqwgyKrY=`.
     
-    Sie finden diese Werte auch auf dem Blatt „Authentifizierung“ Ihrer App-Registrierung. Ihr Umleitungs-URI sieht in etwa wie folgt aus: „msauth://com.azuresamples.msalandroidapp/1wIqXSqBj7w%2Bh11ZifsnqwgyKrY%3D“. Am Ende dieses Werts ist der Signaturhash zwar als URL codiert, im Wert `android:path` darf der Signaturhash allerdings **nicht** als URL codiert sein.
+    Sie finden diese Werte auch auf dem Blatt „Authentifizierung“ Ihrer App-Registrierung. Beachten Sie, dass Ihr Redirect-URI ähnlich aussehen wird wie: `msauth://com.azuresamples.msalandroidapp/1wIqXSqBj7w%2Bh11ZifsnqwgyKrY%3D`. Während der Signatur-Hash am Ende dieses Wertes URL-kodiert ist, sollte der Signatur-Hash **nicht** in Ihrem `android:path` Wert URL-kodiert sein.
 
 ## <a name="use-msal"></a>Verwendung von MSAL
 

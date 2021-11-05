@@ -7,12 +7,12 @@ ms.date: 10/18/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 0816cb3a7662b62804a1864f3c0579387ded7ca0
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: cb538b6c8777a9aeb1d02fe705a87831f7aaf5b9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096030"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131433779"
 ---
 # <a name="how-to-use-the-iot-central-rest-api-to-manage-data-exports"></a>Verwenden der IoT Central-REST-API zum Verwalten von Datenexporten
 
@@ -33,7 +33,7 @@ Jede Datenexportdefinition kann Daten an ein oder mehrere Ziele senden. Erstelle
 Verwenden Sie die folgende Anforderung, um eine Zieldefinition zu erstellen oder zu aktualisieren:
 
 ```http
-PUT https://{subdomain}.{baseDomain}/api/dataExport/destinations/{destinationId}?api-version=1.0
+PUT https://{subdomain}.{baseDomain}/api/dataExport/destinations/{destinationId}?api-version=1.1-preview
 ```
 
 * destinationId: Dies ist die eindeutige ID für das Ziel.
@@ -74,7 +74,7 @@ Die Antwort auf diese Anforderung sieht wie das folgende Beispiel aus:
 Verwenden Sie die folgende Anforderung, um Details eines Ziels aus Ihrer Anwendung abzurufen:
 
 ```http
-GET https://{subdomain}.{baseDomain}/api/dataExport/destinations/{destinationId}?api-version=1.0
+GET https://{subdomain}.{baseDomain}/api/dataExport/destinations/{destinationId}?api-version=1.1-preview
 ```
 
 Die Antwort auf diese Anforderung sieht wie das folgende Beispiel aus:
@@ -95,7 +95,7 @@ Die Antwort auf diese Anforderung sieht wie das folgende Beispiel aus:
 Verwenden Sie die folgende Anforderung, um eine Liste der Ziele aus Ihrer Anwendung abzurufen:
 
 ```http
-GET https://{subdomain}.{baseDomain}/api/dataExport/destinations?api-version=1.0
+GET https://{subdomain}.{baseDomain}/api/dataExport/destinations?api-version=1.1-preview
 ```
 
 Die Antwort auf diese Anforderung sieht wie das folgende Beispiel aus: 
@@ -130,7 +130,7 @@ Die Antwort auf diese Anforderung sieht wie das folgende Beispiel aus:
 ### <a name="patch-a-destination"></a>Patchen eines Ziels
 
 ```http
-PATCH https://{subdomain}.{baseDomain}/api/dataExport/destinations/{destinationId}?api-version=1.0
+PATCH https://{subdomain}.{baseDomain}/api/dataExport/destinations/{destinationId}?api-version=1.1-preview
 ```
 
 Sie können Folgendes verwenden, um ein inkrementelles Update für einen Export durchzuführen. Der Beispielanforderungstext sieht wie im folgenden Beispiel aus, in dem der `displayName` auf ein Ziel aktualisiert wird:
@@ -162,7 +162,7 @@ Die Antwort auf diese Anforderung sieht wie das folgende Beispiel aus:
 Verwenden Sie die folgende Anforderung zum Löschen eines Ziels:
 
 ```http
-DELETE https://{subdomain}.{baseDomain}/api/dataExport/destinations/{destinationId}?api-version=1.0
+DELETE https://{subdomain}.{baseDomain}/api/dataExport/destinations/{destinationId}?api-version=1.1-preview
 ```
 
 ### <a name="create-or-update-an-export-definition"></a>Erstellen oder Aktualisieren einer Exportdefinition
@@ -170,7 +170,7 @@ DELETE https://{subdomain}.{baseDomain}/api/dataExport/destinations/{destination
 Verwenden Sie die folgende Anforderung, um eine Datenexportdefinition zu erstellen oder zu aktualisieren:
 
 ```http
-PUT https://{subdomain}.{baseDomain}/api/dataExport/exports/{exportId}?api-version=1.0
+PUT https://{subdomain}.{baseDomain}/api/dataExport/exports/{exportId}?api-version=1.1-preview
 ```
 
 Das folgende Beispiel zeigt einen Anforderungstext, der eine Exportdefinition für Gerätetelemetriedaten erstellt:
@@ -232,7 +232,7 @@ Die Antwort auf diese Anforderung sieht wie das folgende Beispiel aus:
 Verwenden Sie die folgende Anforderung zum Abrufen von Details zu einer Exportdefinition aus Ihrer Anwendung:
 
 ```http
-GET https://{subdomain}.{baseDomain}/api/dataExport/exports/{exportId}?api-version=1.0
+GET https://{subdomain}.{baseDomain}/api/dataExport/exports/{exportId}?api-version=1.1-preview
 ```
 
 Die Antwort auf diese Anforderung sieht wie das folgende Beispiel aus:
@@ -253,7 +253,7 @@ Die Antwort auf diese Anforderung sieht wie das folgende Beispiel aus:
 Verwenden Sie die folgende Anforderung, um eine Liste der Exportdefinitionen aus Ihrer Anwendung abzurufen:
 
 ```http
-GET https://{subdomain}.{baseDomain}/api/dataExport/exports?api-version=1.0
+GET https://{subdomain}.{baseDomain}/api/dataExport/exports?api-version=1.1-preview
 ```
 
 Die Antwort auf diese Anforderung sieht wie das folgende Beispiel aus: 
@@ -302,7 +302,7 @@ Die Antwort auf diese Anforderung sieht wie das folgende Beispiel aus:
 ### <a name="patch-an-export-definition"></a>Patchen einer Exportdefinition
 
 ```http
-PATCH https://{subdomain}.{baseDomain}/dataExport/exports/{exportId}?api-version=1.0
+PATCH https://{subdomain}.{baseDomain}/dataExport/exports/{exportId}?api-version=1.1-preview
 ```
 
 Sie können Folgendes verwenden, um ein inkrementelles Update für einen Export durchzuführen. Der Beispielanforderungstext sieht wie im folgenden Beispiel aus, in dem `enrichments` auf einen Export aktualisiert wird:
@@ -352,7 +352,7 @@ Die Antwort auf diese Anforderung sieht wie das folgende Beispiel aus:
 Verwenden Sie die folgende Anforderung, um eine Exportdefinition zu löschen:
 
 ```http
-DELETE https://{subdomain}.{baseDomain}/api/dataExport/destinations/{destinationId}?api-version=1.0
+DELETE https://{subdomain}.{baseDomain}/api/dataExport/destinations/{destinationId}?api-version=1.1-preview
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

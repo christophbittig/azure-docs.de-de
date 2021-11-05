@@ -11,12 +11,12 @@ ms.date: 12/04/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f12e0d99a2444510d9a26c2bebb4147614f871a
-ms.sourcegitcommit: 62e800ec1306c45e2d8310c40da5873f7945c657
+ms.openlocfilehash: 14b9ae4733773c45650f2efae8ad72d41f17aff2
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108164271"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131018222"
 ---
 # <a name="how-to-programmatically-configure-cloud-sync-using-ms-graph-api"></a>Programmgesteuertes Konfigurieren der Cloudsynchronisierung mithilfe der Microsoft Graph-API
 
@@ -136,7 +136,7 @@ Objekt-ID: 8895955e-2e6c-4d79-8943-4d72ca36878f App-ID: 00000014-0000-0000-c000-
 
 Sie müssen die Domäne aktualisieren, auf die diese Konfiguration abzielt, indem Sie die Geheimnisse für diese Domäne aktualisieren.
 
-Achten Sie darauf, denselben Domänennamen und dieselbe URL zu verwenden wie für Ihren lokalen Domänencontroller.
+Stellen Sie sicher, dass der von Ihnen verwendete Domänenname dieselbe URL ist, die Sie für Ihren lokalen Domänencontroller festgelegt haben.
 
 ```
 PUT – https://graph.microsoft.com/beta/servicePrincipals/[SERVICE_PRINCIPAL_ID]/synchronization/secrets

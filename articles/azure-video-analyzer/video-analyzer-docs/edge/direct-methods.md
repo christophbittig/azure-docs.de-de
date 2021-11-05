@@ -2,14 +2,14 @@
 title: Verwenden direkter Methoden in Azure Video Analyzer – Azure
 description: Das Edgemodul von Azure Video Analyzer macht mehrere direkte Methoden verfügbar, die in diesem Thema beschrieben werden.
 ms.topic: conceptual
-ms.date: 10/01/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 8ccf325164705e9b375cb4fa1c32af2228dcbed5
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 39a1ddaeca42240e3f37f8e70679d5bd3d24957b
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131094921"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131556462"
 ---
 # <a name="azure-video-analyzer-direct-methods"></a>Direkte Methoden in Azure Video Analyzer
 

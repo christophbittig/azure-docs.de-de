@@ -8,13 +8,12 @@ ms.service: security-center
 ms.topic: overview
 ms.date: 10/13/2020
 ms.author: memildin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: e0f09e842fe7a50a9b978d5882405ad6b11576a4
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 21e9ccfad8364bffd28dac9346b74c1180397437
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131101000"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131445272"
 ---
 # <a name="microsoft-defender-for-cloud-data-security"></a>Datensicherheit in Microsoft Defender für Cloud
 

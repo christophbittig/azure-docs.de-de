@@ -1,23 +1,25 @@
 ---
 title: Erstellen einer Sicherheitsautomatisierung für bestimmte Sicherheitswarnungen mithilfe einer ARM-Vorlage (Azure Resource Manager)
-description: Hier erfahren Sie, wie Sie mithilfe einer ARM-Vorlage (Azure Resource Manager) eine Azure Security Center-Automatisierung zum Auslösen einer Logik-App erstellen.
+description: Erfahren Sie, wie Sie eine Microsoft Defender für Cloud-Automatisierung erstellen, um eine Logik-App auszulösen, die bei bestimmten Defender für Cloud-Warnungen unter Verwendung einer Azure Resource Manager-Vorlage (ARM-Vorlage) ausgelöst wird.
 services: azure-resource-manager
 author: memildin
 ms.service: azure-resource-manager
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, ignite-fall-2021
 ms.author: memildin
 ms.date: 08/20/2020
-ms.openlocfilehash: 856cef0da55b12e808565d25ffe2ac92db4762eb
-ms.sourcegitcommit: f3b930eeacdaebe5a5f25471bc10014a36e52e5e
+ms.openlocfilehash: 9fa7ae478352846e2f2c256988fb6109f9ae25a7
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/16/2021
-ms.locfileid: "112238126"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131047738"
 ---
 # <a name="quickstart-create-an-automatic-response-to-a-specific-security-alert-using-an-arm-template"></a>Schnellstart: Erstellen einer automatischen Reaktion auf eine bestimmte Sicherheitswarnung mithilfe einer ARM-Vorlage
 
-In dieser Schnellstartanleitung wird beschrieben, wie Sie mithilfe einer ARM-Vorlage (Azure Resource Manager) eine Workflowautomatisierung erstellen, die eine Logik-App auslöst, wenn von Azure Security Center bestimmte Sicherheitswarnungen empfangen werden.
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
+
+In diesem Schnellstart wird beschrieben, wie Sie mithilfe einer ARM-Vorlage (Azure Resource Manager) eine Workflowautomatisierung erstellen, die eine Logik-App auslöst, wenn von Microsoft Defender für Cloud bestimmte Sicherheitswarnungen empfangen werden.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -29,7 +31,7 @@ Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von A
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-Eine Liste der Rollen und Berechtigungen, die für die Arbeit mit dem Azure Security Center-Feature für die Workflowautomatisierung erforderlich sind, finden Sie unter [Workflowautomatisierung](workflow-automation.md).
+Eine Liste der Rollen und Berechtigungen, die für die Arbeit mit dem Microsoft Defender für Cloud-Feature für die Workflowautomatisierung erforderlich sind, finden Sie unter [Workflowautomatisierung](workflow-automation.md).
 
 ## <a name="review-the-template"></a>Überprüfen der Vorlage
 
@@ -39,10 +41,10 @@ Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit 
 
 ### <a name="relevant-resources"></a>Relevante Ressourcen (möglicherweise nur in englischer Sprache)
 
-- [**Microsoft.Security/automations**](/azure/templates/microsoft.security/automations): Die Automatisierung, die bei Eingang einer Azure Security Center-Warnung mit einer bestimmten Zeichenfolge die Logik-App auslöst
+- [**Microsoft.Security/automations**](/azure/templates/microsoft.security/automations): Die Automatisierung, die die Logik-App auslöst, wenn eine Microsoft Defender für Cloud-Warnung mit einer bestimmten darin enthaltenen Zeichenfolge empfangen wird.
 - [**Microsoft.Logic/workflows**](/azure/templates/microsoft.logic/workflows): Eine leere auslösbare Logik-App.
 
-Weitere von der Community bereitgestellte Security Center-Schnellstartvorlagen finden Sie [hier](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Security&pageNumber=1&sort=Popular).
+Weitere von der Community bereitgestellte Defender für Cloud-Schnellstartvorlagen finden Sie [hier](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Security&pageNumber=1&sort=Popular).
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
@@ -70,9 +72,9 @@ Weitere von der Community bereitgestellte Security Center-Schnellstartvorlagen 
 
 Überprüfen Sie mithilfe des Azure-Portals, ob die Workflowautomatisierung bereitgestellt wurde.
 
-1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) das **Security Center**.
+1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) die Option **Defender für Cloud**.
 1. Wählen Sie auf der oberen Menüleiste das Filtersymbol aus, und wählen Sie das Abonnement aus, in dem Sie die neue Workflowautomatisierung bereitgestellt haben.
-1. Öffnen Sie auf der Seitenleiste von Security Center **Workflowautomatisierung**, und suchen Sie nach der neuen Automatisierung.
+1. Öffnen Sie im Menü von Defender für Cloud die **Workflowautomatisierung**, und prüfen Sie, ob Ihre neue Automatisierung verfügbar ist.
     :::image type="content" source="./media/quickstart-automation-alert/validating-template-run.png" alt-text="Liste konfigurierter Automatisierungen" lightbox="./media/quickstart-automation-alert/validating-template-run.png":::
     >[!TIP]
     > Wenn Ihr Abonnement viele Workflowautomatisierungen enthält, verwenden Sie die Option **Nach Name filtern**.
@@ -81,9 +83,9 @@ Weitere von der Community bereitgestellte Security Center-Schnellstartvorlagen 
 
 Löschen Sie die Workflowautomatisierung mithilfe des Azure-Portals, wenn Sie sie nicht mehr benötigen.
 
-1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) das **Security Center**.
+1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) die Option **Defender für Cloud**.
 1. Wählen Sie auf der oberen Menüleiste das Filtersymbol aus, und wählen Sie das Abonnement aus, in dem Sie die neue Workflowautomatisierung bereitgestellt haben.
-1. Öffnen Sie auf der Seitenleiste von Security Center **Workflowautomatisierung**, und suchen Sie nach der zu löschenden Automatisierung.
+1. Öffnen Sie im Menü von Defender für Cloud die **Workflowautomatisierung**, und suchen Sie die zu löschende Automatisierung.
     :::image type="content" source="./media/quickstart-automation-alert/deleting-workflow-automation.png" alt-text="Schritte zum Entfernen einer Workflowautomatisierung" lightbox="./media/quickstart-automation-alert/deleting-workflow-automation.png":::
 1. Aktivieren Sie das Kontrollkästchen für das zu löschende Element.
 1. Wählen Sie auf der Symbolleiste die Option **Löschen** aus.

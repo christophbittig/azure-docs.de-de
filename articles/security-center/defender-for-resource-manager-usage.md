@@ -1,22 +1,25 @@
 ---
-title: Reagieren auf Warnungen von Azure Defender für Resource Manager
-description: Erfahren Sie etwas über die erforderlichen Schritte zum Reagieren auf Warnungen von Azure Defender für Resource Manager.
+title: Reagieren auf Warnungen von Microsoft Defender für Resource Manager
+description: Enthält eine Beschreibung der erforderlichen Schritte zum Reagieren auf Warnungen von Microsoft Defender für Resource Manager.
 author: memildin
 ms.author: memildin
 ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 54790795aab8aac247e17198159130d7139dd38c
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.custom: ignite-fall-2021
+ms.openlocfilehash: 7aa0dda56474b33175823cd2db331d136551760b
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96754507"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131009698"
 ---
-# <a name="respond-to-azure-defender-for-resource-manager-alerts"></a>Reagieren auf Warnungen von Azure Defender für Resource Manager
+# <a name="respond-to-microsoft-defender-for-resource-manager-alerts"></a>Reagieren auf Warnungen von Microsoft Defender für Resource Manager
 
-Wenn Sie eine Warnung von Azure Defender für Resource Manager erhalten, empfiehlt es sich, die Warnung wie unten beschrieben zu untersuchen und auf sie zu reagieren. Azure Defender für Resource Manager schützt alle verbundenen Ressourcen. Selbst wenn Sie mit der Anwendung oder dem Benutzer, die bzw. der die Warnung ausgelöst hat, vertraut sind, sollten Sie bei jeder Warnung die Situation unbedingt überprüfen.  
+[!INCLUDE [Banner for top of topics](./includes/banner.md)]
+
+Wenn Sie eine Warnung von Microsoft Defender für Resource Manager erhalten, empfehlen wir Ihnen, die Warnung wie unten beschrieben zu untersuchen und entsprechend darauf zu reagieren. Microsoft Defender für Resource Manager schützt alle verbundenen Ressourcen. Auch wenn Sie mit der Anwendung oder dem Benutzer vertraut sind, von der bzw. dem die Warnung ausgelöst wurde, sollten Sie bei jeder Warnung die Situation aber unbedingt überprüfen.  
 
 
 ## <a name="step-1-contact"></a>Schritt 1: Contact
@@ -36,7 +39,7 @@ Wenn Sie eine Warnung von Azure Defender für Resource Manager erhalten, empfieh
     - Entfernen Sie alle unbekannten Runbooks aus dem kompromittierten Automation-Konto.
     - Überprüfen Sie die IAM-Berechtigungen für das Abonnement, und entfernen Sie Berechtigungen für alle unbekannten Benutzerkonten.
     - Überprüfen Sie alle Azure-Ressourcen im Abonnement, und löschen Sie alle unbekannten.
-    - Überprüfen und untersuchen Sie alle Sicherheitswarnungen für das Abonnement in Azure Security Center.
+    - Überprüfen und untersuchen Sie alle Sicherheitswarnungen für das Abonnement in Microsoft Defender für Cloud.
     - Verwenden Sie Azure-Aktivitätsprotokolle, um alle in dem Abonnement ausgeführten Aktivitäten zu überprüfen und dabei alle verdächtigen Aktionen zu identifizieren.
 
 1. Korrigieren Sie die kompromittierten virtuellen Computer.
@@ -47,8 +50,8 @@ Wenn Sie eine Warnung von Azure Defender für Resource Manager erhalten, empfieh
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Auf dieser Seite wurde die Reaktion auf eine Warnung von Azure Defender für Resource Manager erläutert. Zugehörige Informationen finden Sie auf den folgenden Seiten:
+Auf dieser Seite wurde die Reaktion auf eine Warnung von Microsoft Defender für Resource Manager beschrieben. Zugehörige Informationen finden Sie auf den folgenden Seiten:
 
-- [Einführung in Azure Defender für Resource Manager](defender-for-resource-manager-introduction.md)
-- [Unterdrücken von Warnungen von Azure Defender](alerts-suppression-rules.md)
-- [Fortlaufendes Exportieren von Security Center-Daten](continuous-export.md)
+- [Einführung in Microsoft Defender für Resource Manager](defender-for-resource-manager-introduction.md)
+- [Unterdrücken von Sicherheitswarnungen](alerts-suppression-rules.md)
+- [Fortlaufender Export von Defender für Cloud-Daten](continuous-export.md)

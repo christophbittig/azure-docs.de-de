@@ -2,14 +2,14 @@
 title: 'Tutorial: Fortlaufende Videoaufzeichnung und -wiedergabe – Azure Video Analyzer'
 description: In diesem Tutorial wird beschrieben, wie Sie Azure Video Analyzer zum fortlaufenden Aufzeichnen von Videos in der Cloud und Wiedergeben dieser Aufzeichnungen verwenden.
 ms.topic: tutorial
-ms.date: 09/27/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: c7fb6e35b3fa4f06734ab5aedb4c7b8df6d8ba27
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 6a86dac6b242139d406dd6513a70846c57fa1c05
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131030335"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131559350"
 ---
 # <a name="tutorial-continuous-video-recording-and-playback"></a>Tutorial: Fortlaufende Videoaufzeichnung und -wiedergabe
 

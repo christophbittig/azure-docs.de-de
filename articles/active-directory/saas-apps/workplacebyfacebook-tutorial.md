@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/15/2021
 ms.author: jeedes
-ms.openlocfilehash: e6dd9403912d6fddf0b0c6a8d3953756c7432ea6
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: cec6bb5bb4e74526ef2fae6a288a7bc996a9084e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131039993"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131444115"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workplace-by-facebook"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Workplace by Facebook
 
@@ -43,7 +43,7 @@ In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure
 
 * Workplace by Facebook unterstützt **SP**-initiiertes einmaliges Anmelden.
 * Workplace by Facebook unterstützt **Just-in-Time-Bereitstellung**.
-* Workplace by Facebook unterstützt **[automatische Benutzerbereitstellung](workplacebyfacebook-provisioning-tutorial.md)** .
+* Workplace by Facebook unterstützt **[automatische Benutzerbereitstellung](workplace-by-facebook-provisioning-tutorial.md)** .
 * Mobile Workplace by Facebook-Anwendungen können nun mit Azure AD konfiguriert werden, um SSO zu ermöglichen. In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 
@@ -83,11 +83,11 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
 
-    a. Geben Sie im Textfeld **Anmelde-URL** („Recipient URL“ (Empfänger-URL) in Workplace) eine URL im folgenden Format ein: `https://.workplace.com/work/saml.php`.
+    a. Geben Sie im Textfeld **Anmelde-URL** („Recipient URL“ (Empfänger-URL) in Workplace) eine URL im folgenden Format ein: `https://.facebook.com/work/saml.php`.
 
-    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** („Audience URL“ (Zielgruppen-URL) in Workplace) eine URL im folgenden Format ein: `https://www.workplace.com/company/`.
+    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** („Audience URL“ (Zielgruppen-URL) in Workplace) eine URL im folgenden Format ein: `https://www.facebook.com/company/`.
 
-    c. Geben Sie im Textfeld **Antwort-URL** („Assertion Consumer Service“ (Assertionsverbraucherdienst) in Workplace) eine URL in folgendem Format ein: `https://.workplace.com/work/saml.php`.
+    c. Geben Sie im Textfeld **Antwort-URL** („Assertion Consumer Service“ (Assertionsverbraucherdienst) in Workplace) eine URL in folgendem Format ein: `https://.facebook.com/work/saml.php`.
 
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL, den tatsächlichen Bezeichner und die tatsächliche Antwort-URL. Die richtigen Werte für die Workplace-Community finden Sie auf der Authentifizierungsseite des Workplace-Unternehmensdashboards. Dies wird weiter unten im Tutorial erläutert.

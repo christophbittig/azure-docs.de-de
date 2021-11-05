@@ -5,12 +5,12 @@ ms.topic: how-to
 ms.date: 10/22/2021
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 7e4d861418739660eb948e289af32d673a269b91
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: bfcd178a43e7a21ea6ef35d4462956bd49037e6f
+ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131435755"
+ms.lasthandoff: 11/02/2021
+ms.locfileid: "131006865"
 ---
 # <a name="configure-a-custom-container-for-azure-app-service"></a>Konfigurieren eines benutzerdefinierten Containers für Azure App Service
 
@@ -126,10 +126,10 @@ Jetzt ist alles festgelegt, und die Web-App verwendet jetzt die verwaltete Ident
 
 ## <a name="use-an-image-from-a-network-protected-registry"></a>Verwenden eines Images aus einer netzwerkgeschützten Registrierung
 
-Um eine Verbindung mit einer Registrierung in einem virtuellen Netzwerk oder lokal herzustellen und zu pullen, muss Ihre App mithilfe des VNet-Integrationsfeatures mit einem virtuellen Netzwerk verbunden sein. Dies ist auch für Azure Container Registry mit privatem Endpunkt erforderlich. Wenn Ihre Netzwerk- und DNS-Lösung konfiguriert sind, aktivieren Sie das Routing des Image-Pulls über das VNet, indem Sie die App-Einstellung `WEBSITE_PULL_IMAGE_OVER_VNET=true` festlegen:
+Um eine Verbindung mit einer Registrierung in einem virtuellen Netzwerk oder lokal herzustellen und zu pullen, muss Ihre App mithilfe des VNet-Integrationsfeatures mit einem virtuellen Netzwerk verbunden sein. Dies ist auch für Azure Container Registry mit privatem Endpunkt erforderlich. Wenn Ihre Netzwerk- und DNS-Lösung konfiguriert sind, aktivieren Sie das Routing des Image-Pulls über das VNet, indem Sie die App-Einstellung `WEBISTE_PULL_IMAGE_OVER_VNET=true` festlegen:
 
 ```azurecli-interactive
-az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITE_PULL_IMAGE_OVER_VNET=true
+az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBISTE_PULL_IMAGE_OVER_VNET=true
 ```
 
 ::: zone-end
@@ -261,7 +261,7 @@ Es gibt verschiedene Möglichkeiten, um auf Docker-Protokolle zuzugreifen:
 - [Im Azure-Portal](#in-azure-portal)
 - [In der Kudu-Konsole](#from-the-kudu-console)
 - [Mit der Kudu-API](#with-the-kudu-api)
-- [Senden von Protokollen an Azure Monitor](troubleshoot-diagnostic-logs.md#send-logs-to-azure-monitor)
+- [Senden von Protokollen an Azure Monitor](troubleshoot-diagnostic-logs.md#send-logs-to-azure-monitor-preview)
 
 ### <a name="in-azure-portal"></a>Im Azure-Portal
 

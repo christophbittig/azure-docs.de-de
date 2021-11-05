@@ -2,14 +2,14 @@
 title: Produktionsbereitschaft und Best Practices
 description: Dieser Artikel enthält eine Anleitung zum Konfigurieren und Bereitstellen des Azure Video Analyzer-Edgemoduls in Produktionsumgebungen.
 ms.topic: reference
-ms.date: 10/01/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 1baf85b21c9b6b2792eb93ca2d4c94ef50170395
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: d25965ed8143b8d74f33794fbc97282502b84b96
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095682"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131560186"
 ---
 # <a name="production-readiness-and-best-practices"></a>Produktionsbereitschaft und Best Practices
 

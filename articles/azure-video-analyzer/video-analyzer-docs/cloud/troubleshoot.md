@@ -2,14 +2,14 @@
 title: Problembehandlung für den Azure Video Analyzer-Dienst
 description: Dieser Artikel beschreibt Schritte zur Problembehandlung für den Azure Video Analyzer-Dienst.
 ms.topic: troubleshooting
-ms.date: 10/21/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 732ca8c04cb642e8a17858d00d2ed70bde1c45fc
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 26d4675274d05500b54bbc43ecb84838b114f0c9
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095054"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131554695"
 ---
 # <a name="troubleshoot-azure-video-analyzer-service"></a>Problembehandlung für den Azure Video Analyzer-Dienst
 

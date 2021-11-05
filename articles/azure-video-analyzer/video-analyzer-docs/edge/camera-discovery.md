@@ -2,14 +2,14 @@
 title: Entdecken von Kameras mit ONVIF-Unterstützung im lokalen Subnetz
 description: In dieser Lerneinheit erfahren Sie, wie Sie das Video Analyzer-Edgemodul verwenden können, um ONVIF-fähige Kameras in Ihrem lokalen Subnetz zu entdecken.
 ms.topic: how-to
-ms.date: 10/22/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 04d46daedd88ceef8b91ce4f0135d80b2d1c9045
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 8e0629294ba5d19315da096072fa804824649acc
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095449"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131564022"
 ---
 # <a name="discovering-onvif-capable-cameras-in-the-local-subnet"></a>Entdecken von Kameras mit ONVIF-Unterstützung im lokalen Subnetz
 

@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 11/02/2021
 ms.custom: language-service-question-answering, ignite-fall-2021
-ms.openlocfilehash: 6e5c6bb17c4b31126b05af32a8b1582c7f025c2c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0ba6e7a0a336a5fbcb560a07a7731c8cdcc66e9e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131101153"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131439023"
 ---
 # <a name="improve-quality-of-response-with-synonyms"></a>Verbessern der Antwortqualität mit Synonymen
 
@@ -80,8 +80,7 @@ Wie Sie sehen, haben wir, bevor `troubleshoot` als Synonym hinzugefügt wurde, e
 
 > [!NOTE]
 > Bei Synonymen wird die Groß-/Kleinschreibung nicht berücksichtigt. Synonyme funktionieren möglicherweise nicht wie erwartet, wenn Sie Stoppwörter als Synonyme hinzufügen. Die Liste der Stoppwörter finden Sie hier: [Liste der Stoppwörter](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/STOPWORDS.md).
-
-Beispiel: In der englischen Sprache ist **it** (es) ein Stoppwort. Wenn in dieser Sprache die Abkürzung **IT** für Informationstechnologie hinzugefügt wird, erkennt das System den Begriff möglicherweise nicht, da „it“ ein Stoppwort ist, das bei der Verarbeitung der Abfrage herausgefiltert wird.
+> Beispiel: In der englischen Sprache ist **it** (es) ein Stoppwort. Wenn in dieser Sprache die Abkürzung **IT** für Informationstechnologie hinzugefügt wird, erkennt das System den Begriff möglicherweise nicht, da „it“ ein Stoppwort ist, das bei der Verarbeitung der Abfrage herausgefiltert wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

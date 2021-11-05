@@ -5,15 +5,15 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: how-to
-ms.date: 10/26/2021
+ms.date: 11/02/2021
 ms.author: victorh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: a27f2432ec309f6ff9203921122ddd9f6b1860eb
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 1aeb31ff49389235d54950b76c68deb882e13797
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131086225"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131438491"
 ---
 # <a name="migrate-to-azure-firewall-premium"></a>Migrieren zu Azure Firewall Premium
 
@@ -187,6 +187,9 @@ TransformPolicyToPremium -Policy $policy
 ## <a name="migrate-azure-firewall-using-stopstart"></a>Migrieren von Azure Firewall mithilfe von Beenden/Starten
 
 Wenn Sie eine Azure Firewall Standard-SKU mit Firewallrichtlinie verwenden, können Sie die Methode Zuordnen/Zuordnung aufheben verwenden, um Ihre Firewall-SKU zu Premium zu migrieren. Dieser Migrationsansatz wird sowohl für VNET Hub-Firewalls als auch für Secure Hub-Firewalls unterstützt. Beim Migrieren einer Secure Hub-Bereitstellung, wird die öffentliche IP-Adresse der Firewall beibehalten.
+
+Mindestanforderung ist Azure PowerShell Version 6.5.0. Weitere Informationen finden Sie unter [Az 6.5.0](https://www.powershellgallery.com/packages/Az/6.5.0).
+
  
 ### <a name="migrate-a-vnet-hub-firewall"></a>Migrieren einer VNET Hub-Firewall
 
@@ -210,7 +213,6 @@ Wenn Sie eine Azure Firewall Standard-SKU mit Firewallrichtlinie verwenden, kön
 
 ### <a name="migrate-a-secure-hub-firewall"></a>Migrieren einer Secure Hub-Firewall
 
-Mindestanforderung ist Azure PowerShell Version 6.5.0. Weitere Informationen finden Sie unter [Az 6.5.0](https://www.powershellgallery.com/packages/Az/6.5.0).
 
 - Heben Sie die Zuordnung der Standardfirewall auf
 
