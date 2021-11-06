@@ -1,7 +1,7 @@
 items:
   - name: IoT-Konnektor
     href: index.yml
-  - name: Übersicht
+  - name: Überblick
     expanded: true
     items:
       - name: Informationen zum IoT-Connector
@@ -17,9 +17,15 @@ items:
   - name: Konzepte
     expanded: true
     items:
-      - name: IoT-Datenfluss
+      - name: Datenfluss des IoT-Konnektors
         href: iot-data-flow.md
-  - name: Exemplarische Vorgehensweisen
+      - name: IoT-Connector und Azure Machine Learning Service
+        href: iot-connector-machine-learning.md
+      - name: IoT-Connector und Microsoft Power BI
+        href: iot-connector-power-bi.md
+      - name: IoT-Connector und Microsoft Teams
+        href: iot-connector-teams.md
+  - name: Anleitungen
     expanded: true
     items:
       - name: Empfangen von Gerätedaten über Azure IoT Hub
