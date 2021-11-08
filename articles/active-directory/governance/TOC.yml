@@ -74,6 +74,8 @@
           items:
             - name: Erstellen eines Ressourcenkatalogs
               href: entitlement-management-catalog-create.md
+            - name: Erstellen einer benutzerdefinierten Erweiterung (Logik-Apps) für Kataloge
+              href: entitlement-management-logic-apps-integration.md
             - name: Delegieren an Zugriffspaketmanager
               href: entitlement-management-delegate-managers.md
         - name: Zugriffspaketmanager und Zugriffspaket-Zuweisungsmanager

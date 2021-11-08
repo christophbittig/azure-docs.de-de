@@ -112,9 +112,11 @@
           href: websocket-api.md
         - name: Importieren einer GraphQL-API
           href: graphql-api.md
-        - name: Importieren einer Web-App
+        - name: "Importieren einer App\_Service-Web-API"
           href: import-app-service-as-api.md
-        - name: Importieren einer Funktionen-App
+        - name: Importieren einer Container-App-Web-API
+          href: import-container-app-with-oas.md
+        - name: Importieren einer Funktions-App-Web-API
           href: import-function-app-as-api.md
         - name: Importieren einer Logik-App
           href: import-logic-app-as-api.md
@@ -336,7 +338,7 @@
           href: diagnose-solve-problems.md
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/apim
     - name: Azure PowerShell
       href: /powershell/module/az.apimanagement/

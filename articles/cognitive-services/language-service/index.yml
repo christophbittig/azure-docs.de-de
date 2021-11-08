@@ -11,7 +11,7 @@ metadata:
   manager: nitinme
   ms.service: speech-service
   ms.topic: hub-page
-  ms.date: 09/13/2021
+  ms.date: 11/02/2021
   ms.author: aahi
 highlightedContent:
   items:
@@ -30,6 +30,7 @@ highlightedContent:
 conceptualContent:
   items:
     - title: Extrahieren von Informationen
+      summary: 'Verwenden Sie NLU (Natural Language Understanding, Verstehen natürlicher Sprache), um Informationen aus unstrukturiertem Text zu extrahieren. Identifizieren Sie beispielsweise Schlüsselbegriffe oder personenbezogene Informationen (Personally Identifiable Information, PII), fassen Sie Text zusammen, erkennen und kategorisieren Sie benannte Entitäten, oder passen Sie ein Entitätsextraktionsmodell auf der Grundlage Ihres Domänensatzes an.'
       links:
         - itemType: overview
           text: Schlüsselbegriffe extrahieren
@@ -49,7 +50,11 @@ conceptualContent:
         - itemType: overview
           text: Textanalyse für Gesundheit
           url: text-analytics-for-health/overview.md
+        - itemType: overview
+          text: Textzusammenfassung
+          url: text-summarization/overview.md
     - title: Klassifizieren von Text
+      summary: 'Verwenden Sie NLU (Natural Language Understanding, Verstehen natürlicher Sprache), um die Sprache zu erkennen oder die Stimmung ihres Texts zu klassifizieren. Sie können Ihre Textdokumente auch klassifizieren, indem Sie ein Klassifizierungsmodell für Ihr Dataset anpassen.'
       links:
         - itemType: overview
           text: Analysieren der Stimmung und Auswerten von Text nach Meinungen
@@ -60,24 +65,24 @@ conceptualContent:
         - itemType: overview
           text: Benutzerdefinierte Textklassifizierung
           url: custom-classification/overview.md
-    - title: Verstehen von Unterhaltungen und Beantworten von Fragen
+    - title: Beantworten von Fragen
+      summary: 'Geben Sie mithilfe unserer vordefinierten Funktionen Antworten auf Fragen, die in unstrukturierten Texten gestellt werden, oder passen Sie Ihre domänenspezifischen Frage-Antwort-Paare über die von Ihnen angegebenen Daten an.'
+      links:
+        - itemType: overview
+          text: Fragen und Antworten
+          url: question-answering/overview.md
+    - title: Verstehen von Konversationen
+      summary: 'Erstellen Sie ein eigenes Modell für das Unterhaltungssprachverständnis, um Konversationsäußerungen zu klassifizieren und detaillierte Informationen daraus zu extrahieren, um Szenarien zu erfüllen.'
       links:
         - itemType: overview
           text: Unterhaltungssprachverständnis
           url: conversational-language-understanding/overview.md
-        - itemType: overview
-          text: Fragen und Antworten
-          url: question-answering/overview.md
     - title: Text übersetzen
+      summary: 'Verwenden Sie cloudbasierte neuronale maschinelle Übersetzung, um intelligente, mehrsprachige Lösungen für Ihre Anwendungen zu erstellen.'
       links:
         - itemType: overview
           text: Verwenden von maschinellen Übersetzungen für Text
           url: ../translator/translator-overview.md
-    - title: Zusammenfassen von Text
-      links:
-        - itemType: overview
-          text: Textzusammenfassung
-          url: text-summarization/overview.md
 additionalContent:
   sections:
     - items:

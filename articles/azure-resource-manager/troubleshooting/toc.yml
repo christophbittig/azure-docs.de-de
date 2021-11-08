@@ -12,9 +12,15 @@
       href: quickstart-troubleshoot-bicep-deployment.md
 - name: Anleitung
   items:
-    - name: Behandeln von Bereitstellungsproblemen
+    - name: Ermitteln des Fehlercodes
+      href: find-error-code.md
+    - name: Debugprotokollierung aktivieren
+      href: enable-debug-logging.md
+    - name: Erstellen einer Vorlage zur Problembehandlung
+      href: create-troubleshooting-template.md
+    - name: Suchen der Lösung nach Fehlercode
       items:
-        - name: Behandeln von Bereitstellungsfehlern
+        - name: Häufige Bereitstellungsfehler
           href: common-deployment-errors.md
         - name: AccountNameInvalid
           href: error-storage-account-name.md
@@ -56,7 +62,7 @@
       href: /rest/api/resources/
     - name: Azure PowerShell
       href: /powershell/module/az.resources
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/resource
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.resourcemanager

@@ -209,6 +209,8 @@
           items:
             - name: Identifizieren von Problemen aufgrund von beeinträchtigter Abfrageleistung
               href: identify-query-performance-issues.md
+            - name: Behandeln von Leistungsproblemen
+              href: database/intelligent-insights-troubleshoot-performance.md
             - name: Batchverarbeitung zur Verbesserung der Leistung
               href: performance-improve-use-batching.md
             - name: Laden von Daten mit BCP
@@ -1373,7 +1375,7 @@
   items:
     - name: Referenz zur T-SQL-Sprache
       href: /sql/t-sql/language-reference
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/azure-cli-reference-for-sql
     - name: Azure PowerShell
       href: /powershell/module/az.sql
@@ -1450,6 +1452,8 @@
           href: database/troubleshoot-common-errors-issues.md
         - name: Allgemeine Verbindungsprobleme
           href: database/troubleshoot-common-connectivity-issues.md
+        - name: Behandeln von Fehlern im Zusammenhang mit zu wenig Arbeitsspeicher
+          href: database/troubleshoot-memory-errors-issues.md
         - name: Keine Reaktion des Import/Export-Diensts
           href: database/database-import-export-hang.md
         - name: Transaktionsprotokollfehler

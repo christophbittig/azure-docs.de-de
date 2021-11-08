@@ -175,7 +175,9 @@
           href: core/howto-export-data.md
         - name: Exportieren von Daten in Cloudziele (Legacy)
           href: core/howto-export-data-legacy.md
-        - name: Transformieren von Daten
+        - name: Internes Transformieren von Daten für den Export
+          href: core/howto-transform-data-internally.md
+        - name: Externes Transformieren von Daten
           href: core/howto-transform-data.md
         - name: Integrieren in andere Dienste mithilfe von Workflows
           href: core/howto-configure-rules-advanced.md

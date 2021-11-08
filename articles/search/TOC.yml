@@ -340,6 +340,8 @@
               href: search-howto-index-encrypted-blobs.md
         - name: Azure-Tabellen
           href: search-howto-indexing-azure-tables.md
+        - name: Azure Files
+          href: search-file-storage-integration.md
         - name: Azure Cosmos DB
           items:
             - name: SQL- und MongoDB-APIs
@@ -404,7 +406,7 @@
               href: knowledge-store-projections-examples.md
             - name: Beispiel für eine Projektion
               href: knowledge-store-projection-example-long.md
-            - name: Anzeigen mit Storage-Explorer
+            - name: Anzeigen mit dem Speicherbrowser
               href: knowledge-store-view-storage-explorer.md
             - name: Herstellen einer Verbindung mit Power BI
               href: knowledge-store-connect-power-bi.md

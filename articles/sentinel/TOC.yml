@@ -23,6 +23,8 @@
       href: notebook-get-started.md
     - name: "Erstellen eines Power\_BI-Berichts über Azure Sentinel"
       href: powerbi.md
+    - name: Bereitstellen und Überwachen von Tarn-Honeytoken
+      href: monitor-key-vault-honeytokens.md
 - name: Konzepte
   items:
     - name: 'Azure Sentinel: Voraussetzungen'
@@ -135,7 +137,7 @@
             - name: "Microsoft\_365 Defender"
               href: connect-microsoft-365-defender.md
             - name: Windows-Sicherheitsereignisse
-              href: connect-windows-security-events.md
+              href: data-connectors-reference.md#windows-security-events-via-ama
         - name: Verbindungsanweisungen nach Typ
           items:
             - name: 'Azure-, Windows- und Microsoft-Connectors'
@@ -316,6 +318,8 @@
               href: registry-event-normalization-schema.md
             - name: Schema zur Legacynetzwerknormalisierung
               href: normalization-schema-v1.md
+        - name: Windows-Sätze mit sicherheitsrelevanten Ereignissen
+          href: windows-security-event-id-reference.md
     - name: Erkennungs- und Analysereferenzen
       items:
         - name: Wichtigste Azure Sentinel-Arbeitsmappen

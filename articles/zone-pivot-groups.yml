@@ -826,16 +826,28 @@ groups:
     title: C#
   - id: programming-language-python
     title: Python
-- id: app-service-ide
+- id: app-service-vscode-cli-portal
   title: Entwicklungsumgebung
   prompt: Wählen einer Entwicklungsumgebung
+  pivots:
+  - id: development-environment-vscode
+    title: Visual Studio Code
+  - id: development-environment-cli
+    title: Befehlszeilenschnittstelle
+  - id: development-environment-azure-portal
+    title: Azure-Portal
+- id: app-service-ide
+  title: Entwicklungsumgebung
+  prompt: Auswählen einer Bereitstellungsumgebung
   pivots:
   - id: development-environment-vs
     title: Visual Studio
   - id: development-environment-vscode
     title: Visual Studio Code
   - id: development-environment-cli
-    title: Befehlszeilenschnittstelle
+    title: Azure-Befehlszeilenschnittstelle
+  - id: development-environment-ps
+    title: Azure PowerShell
 - id: app-service-ide-oss
   title: Entwicklungsumgebung
   prompt: Wählen einer Entwicklungsumgebung
@@ -1126,6 +1138,14 @@ groups:
     title: Im Azure-Portal
   - id: rest-api
     title: Mit den REST-APIs
+- id: connect-aws-accounts
+  title: Verbinden eines AWS-Kontos mit einem Azure-Abonnement
+  prompt: Wie stellen Sie eine Verbindung mit Ihrem AWS-Konto her?
+  pivots:
+  - id: env-settings
+    title: Seite mit Umgebungseinstellungen
+  - id: classic-connector
+    title: Klassischer Cloudconnector
 - id: client-operating-system-macos-and-linux-windows-powershell
   title: Betriebssystem/Konsole
   prompt: Auswählen eines Betriebssystems und einer Konsole
@@ -1373,9 +1393,9 @@ groups:
   - id: client-portaltier
     title: Azure-Portal
 metadata:
-  ms.openlocfilehash: 68d5906853d11b7309b716cc7f04c8e6be664c2b
-  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.openlocfilehash: 871fbc4fe1242f30d1fcb141e8be97be3cb02787
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 11/02/2021
-  ms.locfileid: "131046487"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131466350"

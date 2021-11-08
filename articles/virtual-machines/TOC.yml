@@ -169,12 +169,18 @@
               href: dv2-dsv2-series.md
             - name: Dv3- und DSv3-Serie
               href: dv3-dsv3-series.md
+            - name: Dv4- und Dsv4-Serie
+              href: dv4-dsv4-series.md
             - name: Dav4- und Dasv4-Serie
               href: dav4-dasv4-series.md
             - name: Ddv4- und Ddsv4-Serie
               href: ddv4-ddsv4-series.md
-            - name: Dv4- und Dsv4-Serie
-              href: dv4-dsv4-series.md
+            - name: Dv5- und Dsv5-Serie
+              href: dv5-dsv5-series.md
+            - name: Ddv5- und Ddsv5-Serie
+              href: ddv5-ddsv5-series.md
+            - name: Dasv5- und Dadsv5-Serie
+              href: dasv5-dadsv5-series.md
         - name: Computeoptimiert
           items:
             - name: Übersicht
@@ -199,6 +205,12 @@
               href: edv4-edsv4-series.md
             - name: Ev4- und Esv4-Serie
               href: ev4-esv4-series.md
+            - name: Ev5- und Esv5-Serie
+              href: ev5-esv5-series.md
+            - name: Edv5- und Edsv5-Serie
+              href: edv5-edsv5-series.md
+            - name: Easv5- und Eadsv5-Serie
+              href: easv5-eadsv5-series.md
             - name: M-Serie
               href: m-series.md
             - name: Msv2- und Mdsv2-Serie mit mittlerem Arbeitsspeicher
@@ -237,6 +249,8 @@
               href: nct4-v3-series.md
             - name: NDasrA100_v4-Serie
               href: nda100-v4-series.md
+            - name: NDm_A100_v4-Serie
+              href: ndm-a100-v4-series.md
             - name: ND-Serie
               href: nd-series.md
             - name: NDv2-Serie
@@ -336,6 +350,248 @@
           href: azure-vms-no-temp-disk.yml
         - name: Benennungskonventionen für Azure-VM-Größen
           href: vm-naming-conventions.md
+    - name: Azure Compute Gallery
+      items:
+        - name: Übersicht
+          displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
+          href: ./shared-image-galleries.md
+        - name: Erstellen eines Katalogs
+          displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
+          href: create-gallery.md
+        - name: Freigeben eines Katalogs
+          href: share-gallery.md
+        - name: Bilder
+          items:
+            - name: Erfassen eines virtuellen Computers im Portal
+              href: capture-image-portal.md
+            - name: Erstellen eines Images
+              displayName: 'VM, image, VHD, storage account'
+              href: image-version.md
+            - name: Erstellen einer VM
+              items:
+                - name: Generalisiert
+                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
+                  href: vm-generalized-image-version.md
+                - name: Spezialisiert
+                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
+                  href: vm-specialized-image-version.md
+            - name: Aktualisieren von Imageressourcen
+              displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
+              href: update-image-resources.md
+            - name: App-Registrierung für die Freigabe
+              items:
+                - name: Linux
+                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image, app registration'
+                  href: ./linux/share-images-across-tenants.md
+                - name: Windows
+                  displayName: 'Shared Image Gallery, SIG, sig, gallery, image, app registration'
+                  href: ./windows/share-images-across-tenants.md
+            - name: Resource Manager-Vorlagen
+              items:
+                - name: Erstellen einer Azure Compute Gallery-Instanz
+                  href: 'https://azure.microsoft.com/resources/templates/sig-create/'
+                - name: Erstellen einer Imagedefinition in einer Azure Compute Gallery-Instanz
+                  href: 'https://azure.microsoft.com/resources/templates/sig-image-definition-create/'
+                - name: Erstellen einer Imageversion in einer Azure Compute Gallery-Instanz
+                  href: 'https://azure.microsoft.com/resources/templates/sig-image-version-create/'
+            - name: Problembehandlung für freigegebene Images
+              displayName: 'Shared Image Gallery, SIG, sig, gallery, image, troubleshooting, Azure Compute Gallery'
+              href: troubleshooting-shared-images.md
+            - name: Verwendung der kundenseitig verwalteten Schlüssel
+              displayName: 'SSE, CMK, encrypt'
+              href: image-version-encryption.md
+            - name: Verwalteter Datenträger aus Imageversion
+              href: managed-disk-from-image-version.md
+            - name: Informationen zum Erwerbsplan
+              href: marketplace-images.md
+        - name: VM-Anwendungen
+          items:
+            - name: Übersicht
+              href: vm-applications.md
+            - name: Bereitstellen von VM-Anwendungen
+              href: vm-applications-how-to.md
+    - name: Bilder
+      items:
+        - name: "Suchen nach Azure\_Marketplace-Images"
+          items:
+            - name: Befehlszeilenschnittstelle (CLI)
+              displayName: 'Images, imaging, marketplace, publisher, plan, offer, URN, purchase plan, terms'
+              href: ./linux/cli-ps-findimage.md
+            - name: PowerShell
+              displayName: 'Images, imaging, marketplace, URN, purchase plan, terms'
+              href: ./windows/cli-ps-findimage.md
+            - name: Windows-Clientimages
+              displayName: 'Images, imaging, marketplace, Windows, Client'
+              href: ./windows/client-images.md
+            - name: "Rechte für das Hosten mehrerer Mandanten für Windows\_10"
+              displayName: 'MTHR, multi-tenant, multitenant, hosting, rights'
+              href: ./windows/windows-desktop-multitenant-hosting-deployment.md
+        - name: Benutzerdefinierte Linux-Images
+          items:
+            - name: Übersicht
+              displayName: 'Linux custom images, custom, image'
+              href: ./linux/imaging.md
+            - name: Linux-Bereitstellung
+              href: ./linux/provisioning.md
+            - name: Spezifische Anforderungen für Linux-Bereitstellungen
+              items:
+                - name: Allgemeine Schritte
+                  displayName: 'Linux distribution specific requirements, generic'
+                  href: ./linux/create-upload-generic.md
+                - name: CentOS
+                  displayName: 'Linux distribution specific requirements, CentOS'
+                  href: ./linux/create-upload-centos.md
+                - name: Debian
+                  displayName: 'Linux distribution specific requirements, Debian'
+                  href: ./linux/debian-create-upload-vhd.md
+                - name: Flatcar Container Linux
+                  displayName: 'Linux distribution specific requirements, Flatcar, Container'
+                  href: ./linux/flatcar-create-upload-vhd.md
+                - name: FreeBSD
+                  displayName: 'Linux distribution specific requirements, FreeBSD'
+                  href: ./linux/freebsd-intro-on-azure.md
+                - name: Oracle Linux
+                  displayName: 'Linux distribution specific requirements, Oracle'
+                  href: ./linux/oracle-create-upload-vhd.md
+                - name: OpenBSD
+                  displayName: 'Linux distribution specific requirements, OpenBSD'
+                  href: ./linux/create-upload-openbsd.md
+                - name: Red Hat
+                  displayName: 'Linux distribution specific requirements, Redhat'
+                  href: ./linux/redhat-create-upload-vhd.md
+                - name: SUSE
+                  displayName: 'Linux distribution specific requirements, SUSE'
+                  href: ./linux/suse-create-upload-vhd.md
+                - name: Ubuntu
+                  displayName: 'Linux distribution specific requirements, Ubuntu'
+                  href: ./linux/create-upload-ubuntu.md
+            - name: Verwenden von cloud-init
+              items:
+                - name: Übersicht zu cloud-init
+                  href: ./linux/using-cloud-init.md
+                - name: Ausführliche Betrachtung
+                  href: ./linux/cloud-init-deep-dive.md
+                  displayname: cloud-init
+                - name: Problembehandlung
+                  href: ./linux/cloud-init-troubleshooting.md
+                  displayname: cloud-init
+                - name: Konfigurieren des Hostnamens virtueller Computer
+                  href: ./linux/cloudinit-update-vm-hostname.md
+                  displayname: cloud-init
+                - name: Updates auf einem virtuellen Computer
+                  href: ./linux/cloudinit-update-vm.md
+                  displayname: cloud-init
+                - name: Hinzufügen eines Benutzers auf einem virtuellen Computer
+                  href: ./linux/cloudinit-add-user.md
+                  displayname: cloud-init
+                - name: Konfigurieren der Auslagerungsdatei
+                  href: ./linux/cloudinit-configure-swapfile.md
+                  displayname: cloud-init
+                - name: Ausführen des vorhandenen Bash-Skripts
+                  href: ./linux/cloudinit-bash-script.md
+                  displayname: cloud-init
+            - name: Erstellen von Linux-Images ohne Bereitstellungs-Agent
+              href: ./linux/no-agent.md
+            - name: Deaktivieren der Linux-Agent-Bereitstellung
+              href: ./linux/disable-provisioning.md
+        - name: Benutzerdefinierte Windows-Images
+          items:
+            - name: Vorbereiten einer VHD für den Upload
+              displayName: 'Windows custom images, images, windows, upload, prepare, VHD'
+              href: ./windows/prepare-for-upload-vhd-image.md
+            - name: Generalisieren eines virtuellen Computers
+              href: generalize.md
+            - name: Hochladen einer VHD und Erstellen eines verwalteten Images
+              displayName: 'Windows custom images, images, windows, upload, prepare, VHD, managed'
+              href: ./windows/upload-generalized-managed.md
+            - name: Erfassen eines verwalteten Images
+              displayName: 'Windows custom images, images, windows, upload, prepare, VHD, managed, capture'
+              href: ./windows/capture-image-resource.md
+            - name: Erstellen eines virtuellen Computers aus einem verwalteten Image
+              displayName: 'Windows custom images, images, windows, upload, prepare, VHD, create, managed'
+              href: ./windows/create-vm-generalized-managed.md
+            - name: Visual Studio
+              href: ./windows/using-visual-studio-vm.md
+        - name: Image Builder
+          items:
+            - name: Übersicht
+              displayName: 'Image builder, images, building'
+              href: image-builder-overview.md
+            - name: Befehlszeilenschnittstelle (CLI)
+              items:
+                - name: Linux
+                  displayName: 'Image builder, images, building, cli, Linux'
+                  href: ./linux/image-builder.md
+                - name: Windows
+                  displayName: 'Image builder, images, building, cli, Windows'
+                  href: ./windows/image-builder.md
+            - name: PowerShell
+              items:
+                - name: Windows
+                  displayName: 'Image builder, images, building, PowerShell'
+                  href: ./windows/image-builder-powershell.md
+                - name: Windows Virtual Desktop
+                  href: ./windows/image-builder-virtual-desktop.md
+            - name: Sicherheit
+              items:
+                - name: Sicherheitskontrollen von Azure Policy
+                  displayName: 'Image builder, images, building'
+                  href: ./security-controls-policy-image-builder.md
+            - name: Verwenden eines VNET
+              items:
+                - name: Befehlszeilenschnittstelle (CLI)
+                  displayName: 'Image builder, images, building'
+                  href: ./linux/image-builder-vnet.md
+                - name: PowerShell
+                  displayName: 'Image builder, images, building'
+                  href: ./windows/image-builder-vnet.md
+            - name: Netzwerkoptionen
+              displayName: 'Image builder, images, building'
+              href: ./linux/image-builder-networking.md
+            - name: Konfigurieren von Berechtigungen
+              items:
+                - name: CLI
+                  displayName: 'Image builder, images, building'
+                  href: ./linux/image-builder-permissions-cli.md
+                - name: PowerShell
+                  displayName: 'Image builder, images, building'
+                  href: ./linux/image-builder-permissions-powershell.md
+            - name: DevOps-Aufgabe
+              displayName: 'Image builder, images, building'
+              href: ./linux/image-builder-devops-task.md
+            - name: Image Builder-Vorlagenreferenz
+              displayName: 'Image builder, images, building, json, ARM, template'
+              href: ./linux/image-builder-json.md
+            - name: Entwickeln für Imagekataloge
+              items:
+                - name: Linux
+                  displayName: 'Image builder, images, building'
+                  href: ./linux/image-builder-gallery.md
+                - name: Windows
+                  displayName: 'Image builder, images, building'
+                  href: ./windows/image-builder-gallery.md
+            - name: Aktualisieren eines vorhandenen Images
+              items:
+                - name: Linux
+                  displayName: 'Image builder, images, building, update'
+                  href: ./linux/image-builder-gallery-update-image-version.md
+                - name: Windows
+                  displayName: 'Image builder, images, building, update'
+                  href: ./windows/image-builder-gallery-update-image-version.md
+            - name: Speichern von Skripts
+              displayName: 'Image builder, images, building, scripts'
+              href: ./linux/image-builder-user-assigned-identity.md
+            - name: Problembehandlung
+              displayName: 'Image builder, images, building'
+              href: ./linux/image-builder-troubleshoot.md
+        - name: Erstellen eines Images mit Packer
+          items:
+            - name: Linux
+              displayName: 'Image builder, images, building, packer'
+              href: ./linux/build-image-with-packer.md
+            - name: Windows
+              displayName: 'Image builder, images, building, packer'
+              href: ./windows/build-image-with-packer.md
     - name: Dedizierte Hosts
       displayName: 'sole-tenant, sole tenant, isolated, isolation'
       items:
@@ -345,6 +601,9 @@
         - name: Vorgehensweise
           displayName: dedicated adh
           href: dedicated-hosts-how-to.md
+        - name: Packen von virtuellen Computern
+          displayName: 'dedicated, packing, dedicated host'
+          href: dedicated-host-packing.md
     - name: Azure Spot-VMs
       items:
         - name: Übersicht
@@ -485,12 +744,17 @@
           href: ./windows/time-sync.md
     - name: Befehl ausführen
       items:
-        - name: Linux
+        - name: Übersicht
           displayName: Run command
+          href: run-command-overview.md
+        - name: Aktionsbezogene Ausführungsbefehle für Linux
           href: ./linux/run-command.md
-        - name: Windows
-          displayName: Run command
+        - name: Aktionsbezogene Ausführungsbefehle für Windows
           href: ./windows/run-command.md
+        - name: Verwaltete Ausführungsbefehle für Linux (Vorschau)
+          href: ./linux/run-command-managed.md
+        - name: Verwaltete Ausführungsbefehle für Windows (Vorschau)
+          href: ./windows/run-command-managed.md
     - name: Erweiterungen
       items:
         - name: Übersicht
@@ -672,242 +936,6 @@
         - name: Häufig gestellte Fragen
           displayName: 'classic, migration, classic to ARM, CSES, Cloud Services'
           href: migration-classic-resource-manager-faq.yml
-- name: Bilder
-  items:
-    - name: "Suchen nach Azure\_Marketplace-Images"
-      items:
-        - name: Befehlszeilenschnittstelle (CLI)
-          displayName: 'Images, imaging, marketplace, publisher, plan, offer, URN, purchase plan, terms'
-          href: ./linux/cli-ps-findimage.md
-        - name: PowerShell
-          displayName: 'Images, imaging, marketplace, URN, purchase plan, terms'
-          href: ./windows/cli-ps-findimage.md
-        - name: Windows-Clientimages
-          displayName: 'Images, imaging, marketplace, Windows, Client'
-          href: ./windows/client-images.md
-        - name: "Rechte für das Hosten mehrerer Mandanten für Windows\_10"
-          displayName: 'MTHR, multi-tenant, multitenant, hosting, rights'
-          href: ./windows/windows-desktop-multitenant-hosting-deployment.md
-    - name: Benutzerdefinierte Linux-Images
-      items:
-        - name: Übersicht
-          displayName: 'Linux custom images, custom, image'
-          href: ./linux/imaging.md
-        - name: Linux-Bereitstellung
-          href: ./linux/provisioning.md
-        - name: Spezifische Anforderungen für Linux-Bereitstellungen
-          items:
-            - name: Allgemeine Schritte
-              displayName: 'Linux distribution specific requirements, generic'
-              href: ./linux/create-upload-generic.md
-            - name: CentOS
-              displayName: 'Linux distribution specific requirements, CentOS'
-              href: ./linux/create-upload-centos.md
-            - name: Debian
-              displayName: 'Linux distribution specific requirements, Debian'
-              href: ./linux/debian-create-upload-vhd.md
-            - name: Flatcar Container Linux
-              displayName: 'Linux distribution specific requirements, Flatcar, Container'
-              href: ./linux/flatcar-create-upload-vhd.md
-            - name: FreeBSD
-              displayName: 'Linux distribution specific requirements, FreeBSD'
-              href: ./linux/freebsd-intro-on-azure.md
-            - name: Oracle Linux
-              displayName: 'Linux distribution specific requirements, Oracle'
-              href: ./linux/oracle-create-upload-vhd.md
-            - name: OpenBSD
-              displayName: 'Linux distribution specific requirements, OpenBSD'
-              href: ./linux/create-upload-openbsd.md
-            - name: Red Hat
-              displayName: 'Linux distribution specific requirements, Redhat'
-              href: ./linux/redhat-create-upload-vhd.md
-            - name: SUSE
-              displayName: 'Linux distribution specific requirements, SUSE'
-              href: ./linux/suse-create-upload-vhd.md
-            - name: Ubuntu
-              displayName: 'Linux distribution specific requirements, Ubuntu'
-              href: ./linux/create-upload-ubuntu.md
-        - name: Verwenden von cloud-init
-          items:
-            - name: Übersicht zu cloud-init
-              href: ./linux/using-cloud-init.md
-            - name: Ausführliche Betrachtung
-              href: ./linux/cloud-init-deep-dive.md
-              displayname: cloud-init
-            - name: Problembehandlung
-              href: ./linux/cloud-init-troubleshooting.md
-              displayname: cloud-init
-            - name: Konfigurieren des Hostnamens virtueller Computer
-              href: ./linux/cloudinit-update-vm-hostname.md
-              displayname: cloud-init
-            - name: Updates auf einem virtuellen Computer
-              href: ./linux/cloudinit-update-vm.md
-              displayname: cloud-init
-            - name: Hinzufügen eines Benutzers auf einem virtuellen Computer
-              href: ./linux/cloudinit-add-user.md
-              displayname: cloud-init
-            - name: Konfigurieren der Auslagerungsdatei
-              href: ./linux/cloudinit-configure-swapfile.md
-              displayname: cloud-init
-            - name: Ausführen des vorhandenen Bash-Skripts
-              href: ./linux/cloudinit-bash-script.md
-              displayname: cloud-init
-        - name: Erstellen von Linux-Images ohne Bereitstellungs-Agent
-          href: ./linux/no-agent.md
-        - name: Deaktivieren der Linux-Agent-Bereitstellung
-          href: ./linux/disable-provisioning.md
-    - name: Benutzerdefinierte Windows-Images
-      items:
-        - name: Vorbereiten einer VHD für den Upload
-          displayName: 'Windows custom images, images, windows, upload, prepare, VHD'
-          href: ./windows/prepare-for-upload-vhd-image.md
-        - name: Generalisieren eines virtuellen Computers
-          href: generalize.md
-        - name: Hochladen einer VHD und Erstellen eines verwalteten Images
-          displayName: 'Windows custom images, images, windows, upload, prepare, VHD, managed'
-          href: ./windows/upload-generalized-managed.md
-        - name: Erfassen eines verwalteten Images
-          displayName: 'Windows custom images, images, windows, upload, prepare, VHD, managed, capture'
-          href: ./windows/capture-image-resource.md
-        - name: Erstellen eines virtuellen Computers aus einem verwalteten Image
-          displayName: 'Windows custom images, images, windows, upload, prepare, VHD, create, managed'
-          href: ./windows/create-vm-generalized-managed.md
-        - name: Visual Studio
-          href: ./windows/using-visual-studio-vm.md
-    - name: Kataloge mit freigegebenen Images
-      items:
-        - name: Übersicht
-          displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
-          href: ./shared-image-galleries.md
-        - name: Erstellen eines Katalogs
-          displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
-          href: create-gallery.md
-        - name: Freigeben eines Katalogs
-          href: share-gallery.md
-        - name: Erfassen eines virtuellen Computers im Portal
-          href: capture-image-portal.md
-        - name: Erstellen eines Images
-          displayName: 'VM, image, VHD, storage account'
-          href: image-version.md
-        - name: Erstellen einer VM
-          items:
-            - name: Generalisiert
-              displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
-              href: vm-generalized-image-version.md
-            - name: Spezialisiert
-              displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
-              href: vm-specialized-image-version.md
-        - name: Aktualisieren von Imageressourcen
-          displayName: 'Shared Image Gallery, SIG, sig, gallery, image'
-          href: update-image-resources.md
-        - name: App-Registrierung für die Freigabe
-          items:
-            - name: Linux
-              displayName: 'Shared Image Gallery, SIG, sig, gallery, image, app registration'
-              href: ./linux/share-images-across-tenants.md
-            - name: Windows
-              displayName: 'Shared Image Gallery, SIG, sig, gallery, image, app registration'
-              href: ./windows/share-images-across-tenants.md
-        - name: Resource Manager-Vorlagen
-          items:
-            - name: Erstellen einer Shared Image Gallery-Instanz
-              href: 'https://azure.microsoft.com/resources/templates/sig-create/'
-            - name: Erstellen einer Imagedefinition in einer Shared Image Gallery-Instanz
-              href: 'https://azure.microsoft.com/resources/templates/sig-image-definition-create/'
-            - name: Erstellen einer Imageversion in einer Shared Image Gallery-Instanz
-              href: 'https://azure.microsoft.com/resources/templates/sig-image-version-create/'
-        - name: Ansible
-          href: /azure/developer/ansible/vm-configure-from-azure-shared-image-gallery?tabs=ansible
-        - name: Problembehandlung für freigegebene Images
-          displayName: 'Shared Image Gallery, SIG, sig, gallery, image, troubleshooting'
-          href: troubleshooting-shared-images.md
-        - name: Verwendung der kundenseitig verwalteten Schlüssel
-          displayName: 'SSE, CMK, encrypt'
-          href: image-version-encryption.md
-        - name: Verwalteter Datenträger aus Imageversion
-          href: managed-disk-from-image-version.md
-        - name: Informationen zum Erwerbsplan
-          href: marketplace-images.md
-    - name: Image Builder
-      items:
-        - name: Übersicht
-          displayName: 'Image builder, images, building'
-          href: image-builder-overview.md
-        - name: Befehlszeilenschnittstelle (CLI)
-          items:
-            - name: Linux
-              displayName: 'Image builder, images, building, cli, Linux'
-              href: ./linux/image-builder.md
-            - name: Windows
-              displayName: 'Image builder, images, building, cli, Windows'
-              href: ./windows/image-builder.md
-        - name: PowerShell
-          items:
-            - name: Windows
-              displayName: 'Image builder, images, building, PowerShell'
-              href: ./windows/image-builder-powershell.md
-            - name: Windows Virtual Desktop
-              href: ./windows/image-builder-virtual-desktop.md
-        - name: Sicherheit
-          items:
-            - name: Sicherheitskontrollen von Azure Policy
-              displayName: 'Image builder, images, building'
-              href: ./security-controls-policy-image-builder.md
-        - name: Verwenden eines VNET
-          items:
-            - name: Befehlszeilenschnittstelle (CLI)
-              displayName: 'Image builder, images, building'
-              href: ./linux/image-builder-vnet.md
-            - name: PowerShell
-              displayName: 'Image builder, images, building'
-              href: ./windows/image-builder-vnet.md
-        - name: Netzwerkoptionen
-          displayName: 'Image builder, images, building'
-          href: ./linux/image-builder-networking.md
-        - name: Konfigurieren von Berechtigungen
-          items:
-            - name: CLI
-              displayName: 'Image builder, images, building'
-              href: ./linux/image-builder-permissions-cli.md
-            - name: PowerShell
-              displayName: 'Image builder, images, building'
-              href: ./linux/image-builder-permissions-powershell.md
-        - name: DevOps-Aufgabe
-          displayName: 'Image builder, images, building'
-          href: ./linux/image-builder-devops-task.md
-        - name: Image Builder-Vorlagenreferenz
-          displayName: 'Image builder, images, building, json, ARM, template'
-          href: ./linux/image-builder-json.md
-        - name: Entwickeln für Imagekataloge
-          items:
-            - name: Linux
-              displayName: 'Image builder, images, building'
-              href: ./linux/image-builder-gallery.md
-            - name: Windows
-              displayName: 'Image builder, images, building'
-              href: ./windows/image-builder-gallery.md
-        - name: Aktualisieren eines vorhandenen Images
-          items:
-            - name: Linux
-              displayName: 'Image builder, images, building, update'
-              href: ./linux/image-builder-gallery-update-image-version.md
-            - name: Windows
-              displayName: 'Image builder, images, building, update'
-              href: ./windows/image-builder-gallery-update-image-version.md
-        - name: Speichern von Skripts
-          displayName: 'Image builder, images, building, scripts'
-          href: ./linux/image-builder-user-assigned-identity.md
-        - name: Problembehandlung
-          displayName: 'Image builder, images, building'
-          href: ./linux/image-builder-troubleshoot.md
-    - name: Erstellen eines Images mit Packer
-      items:
-        - name: Linux
-          displayName: 'Image builder, images, building, packer'
-          href: ./linux/build-image-with-packer.md
-        - name: Windows
-          displayName: 'Image builder, images, building, packer'
-          href: ./windows/build-image-with-packer.md
 - name: Verfügbarkeit und Umfang
   items:
     - name: Übersicht
@@ -1600,7 +1628,7 @@
             - name: Portal
               displayName: 'Maintenance control for OS image upgrade, OS, image, upgrade'
               href: virtual-machine-scale-sets-maintenance-control-portal.md
-    - name: Automatisches Patchen von VM-Gästen (Vorschau)
+    - name: Automatische VM-Gastpatches
       items:
         - name: Übersicht
           displayName: 'Automatic VM guest patching, guest, OS, patching'

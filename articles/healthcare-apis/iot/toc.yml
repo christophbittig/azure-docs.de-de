@@ -1,7 +1,7 @@
 items:
   - name: IoT-Konnektor
     href: index.yml
-  - name: Überblick
+  - name: Übersicht
     expanded: true
     items:
       - name: Informationen zum IoT-Connector
@@ -23,7 +23,7 @@ items:
         href: iot-connector-machine-learning.md
       - name: IoT-Connector und Microsoft Power BI
         href: iot-connector-power-bi.md
-      - name: IoT-Connector und Microsoft Teams
+      - name: IoT-Connector und Microsoft Teams Benachrichtigungen
         href: iot-connector-teams.md
   - name: Anleitungen
     expanded: true
@@ -32,6 +32,8 @@ items:
         href: device-data-through-iot-hub.md
       - name: Verwenden von Gerätezuordnungen
         href: how-to-use-device-mapping-iot.md
+      - name: Verwenden benutzerdefinierter Funktionen
+        href: iot-connector-custom-functions.md
       - name: Verwenden von FHIR-Zielzuordnungen
         href: how-to-use-fhir-mapping-iot.md
       - name: Exportieren von IoT-Connectormetriken über Diagnoseeinstellungen

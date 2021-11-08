@@ -26,6 +26,8 @@
       items:
         - name: Entwickeln mit Helm
           href: quickstart-helm.md
+        - name: Entwickeln mit Dapr (Vorschau)
+          href: quickstart-dapr.md
     - name: Abonnieren von AKS-Ereignissen mit Event Grid (Vorschau)
       href: quickstart-event-grid.md
 - name: Tutorials
@@ -61,7 +63,7 @@
           href: ./security-controls-policy.md
     - name: Netzwerk
       href: concepts-network.md
-    - name: Speicher
+    - name: Storage
       href: concepts-storage.md
     - name: Skalieren
       href: concepts-scale.md
@@ -270,6 +272,8 @@
               href: egress-outboundtype.md
             - name: Verwenden eines Lastenausgleichs im Basic-Tarif und einer statischen IP-Adresse
               href: egress.md
+            - name: Verwaltete NAT Gateway-Instanz (Vorschau)
+              href: nat-gateway.md
         - name: Anpassen von CoreDNS
           href: coredns-custom.md
     - name: Sicherheit und Authentifizierung
@@ -300,6 +304,8 @@
               href: managed-aad.md
             - name: "Azure\_AD-Integration (Legacy)"
               href: azure-ad-integration-cli.md
+            - name: Aktivieren der GMSA-Integration (Vorschau)
+              href: use-group-managed-service-accounts.md
         - name: Verwenden von Azure RBAC für die Kubernetes-Autorisierung
           href: manage-azure-rbac.md
         - name: Verwenden der rollenbasierten Zugriffssteuerung von Kubernetes mit Azure AD-Integration
@@ -313,8 +319,16 @@
           href: azure-disk-customer-managed-keys.md
         - name: Aktivieren der hostbasierten Verschlüsselung
           href: enable-host-encryption.md
-        - name: Secrets Store CSI-Treiber (Vorschau)
-          href: csi-secrets-store-driver.md
+        - name: Secrets Store CSI-Treiber
+          items:
+            - name: Konfiguration des Secrets Store CSI-Treibers
+              href: csi-secrets-store-driver.md
+            - name: Bereitstellen von Azure Key Vault-Zugriff
+              href: csi-secrets-store-identity-access.md
+            - name: Konfigurieren von TLS für den NGINX-Eingangsdatencontroller
+              href: csi-secrets-store-nginx-tls.md
+            - name: Problembehandlung
+              href: csi-secrets-store-troubleshooting.md
     - name: Überwachung und Protokollierung
       items:
         - name: Überwachen von AKS
@@ -365,14 +379,14 @@
           href: howto-deploy-java-liberty-app.md
         - name: Verwenden von Azure API Management
           href: ../api-management/api-management-kubernetes.md
-        - name: Verwenden von Dapr
+        - name: Verwenden von Dapr (Vorschau)
           href: dapr.md
           maintainContext: true
     - name: Bereitstellen eines Dienstnetzes
       items:
         - name: Informationen zu Dienstnetzen
           href: servicemesh-about.md
-        - name: Open Service Mesh AKS-Zusatzmodul (Vorschau)
+        - name: Open Service Mesh AKS-Add-On
           items:
             - name: Übersicht über OSM
               href: open-service-mesh-about.md
