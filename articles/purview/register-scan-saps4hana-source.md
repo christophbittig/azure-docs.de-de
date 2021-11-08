@@ -1,19 +1,19 @@
 ---
 title: Verbinden mit und Verwalten einer SAP S/4HANA-Quelle
 description: In diesem Leitfaden wird beschrieben, wie Sie in Azure Purview eine Verbindung mit SAP S/4HANA herstellen und mit den Features von Purview Ihre SAP S/4HANA-Quelle überprüfen und verwalten.
-author: chandrakavya
-ms.author: kchandra
+author: linda33wj
+ms.author: jingwang
 ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: 8c08c76ebfe624be3f6724dfdebabc277a3a3795
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c3497b39699d66cc665ea2c217dea5e016ca42df
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131010952"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131472407"
 ---
 # <a name="connect-to-and-manage-sap-s4hana-in-azure-purview"></a>Verbinden mit und Verwalten von SAP S/4HANA in Azure Purview
 
@@ -31,7 +31,7 @@ In diesem Artikel wird beschrieben, wie Sie SAP S/4HANA in Azure Purview registr
 
 * Eine aktive [Purview-Ressource](create-catalog-portal.md)
 
-* Sie müssen ein Datenquellenadministrator und Datenleser sein, um eine Quelle zu registrieren und in Purview Studio zu verwalten. Weitere Informationen finden Sie auf unserer Seite [Azure Purview-Berechtigungen](catalog-permissions.md).
+* Sie müssen ein Datenquellenadministrator und Datenleser sein, um eine Quelle zu registrieren und in Purview Studio zu verwalten. Weitere Informationen finden Sie auf der [Seite Azure Purview-Berechtigungen](catalog-permissions.md).
 
 * Richten Sie die neueste [selbstgehostete Integration Runtime](https://www.microsoft.com/download/details.aspx?id=39717) ein. Weitere Informationen finden Sie im [Leitfaden zum Erstellen und Konfigurieren einer selbstgehosteten Integrationslaufzeit](../data-factory/create-self-hosted-integration-runtime.md).
 
@@ -52,7 +52,7 @@ In diesem Artikel wird beschrieben, wie Sie SAP S/4HANA in Azure Purview registr
   * STFC_CONNECTION (Konnektivität überprüfen)
   * RFC_SYSTEM_INFO (Systeminformationen überprüfen)
 
-## <a name="register"></a>Register
+## <a name="register"></a>Registrieren
 
 In diesem Abschnitt wird beschrieben, wie Sie SAP S/4HANA in Azure Purview mithilfe von [Purview Studio](https://web.purview.azure.com/) registrieren.
 

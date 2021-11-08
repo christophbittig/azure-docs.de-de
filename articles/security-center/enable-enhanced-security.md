@@ -7,13 +7,12 @@ manager: rkarlin
 ms.service: security-center
 ms.topic: quickstart
 ms.date: 06/07/2021
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 44acbc3ace06af2e741b3daf5c6afe9a50a2efe0
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 689fe8336594e26c283a75b5f4dfb0026c73ef32
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131029636"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131441874"
 ---
 # <a name="quickstart-enable-enhanced-security-features"></a>Schnellstart: Aktivieren erweiterter Sicherheitsfeatures
 
@@ -71,7 +70,7 @@ Wenn Sie alle Defender für Cloud-Features, einschließlich Bedrohungsschutz, ak
 
 Wenn Sie die erweiterten Sicherheitsfeatures für ein Abonnement deaktivieren müssen, ist das Verfahren identisch, aber Sie wählen stattdessen die Option **Erhöhte Sicherheit deaktiviert** aus.
  
-1. Wählen Sie im Menü von Defender für Cloud die Option **Umgebungseinstellungen** aus.
+1. Öffnen Sie im Menü von Defender für Cloud **Umgebungseinstellungen**.
 1. Wählen Sie das relevante Abonnement aus.
 1. Wählen Sie **Defender-Pläne** und dann die Option **Erhöhte Sicherheit deaktiviert** aus.
 

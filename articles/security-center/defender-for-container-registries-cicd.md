@@ -7,13 +7,12 @@ ms.date: 05/25/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 97fed8a7afce16a33497860cda70b12fc90bed2c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 044976ac6fb0e017c7cf9c5cff8bc7f6c31f3da2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131014897"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131428898"
 ---
 # <a name="identify-vulnerable-container-images-in-your-cicd-workflows"></a>Identifizieren anfälliger Containerimages in CI/CD-Workflows
 
@@ -53,7 +52,7 @@ So aktivieren Sie Sicherheitsrisikoüberprüfungen von Images in Ihren GitHub-Wo
 
 ### <a name="step-1-enable-the-cicd-integration-in-defender-for-cloud"></a>Schritt 1: Aktivieren Sie die CI/CD-Integration in Defender für Cloud
 
-1. Wählen Sie im Menü von Defender für Cloud die Optionen **Umgebungseinstellungen**.
+1. Öffnen Sie im Menü von Defender für Cloud **Umgebungseinstellungen**.
 1. Wählen Sie das relevante Abonnement aus.
 1. Klicken Sie auf der Randleiste der Seite „Einstellungen“ für dieses Abonnement auf **Integrationen**.
 1. Wählen Sie im angezeigten Bereich ein Application Insights-Konto aus, um die CI/CD-Überprüfungsergebnisse aus Ihrem Workflow zu pushen.

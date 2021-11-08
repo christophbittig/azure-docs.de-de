@@ -7,13 +7,12 @@ ms.date: 07/18/2021
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: f6a507f16918bfbba1e31f52889af9b1c16c839e
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 35567d7e52259095a04be2fbfd1d865d267949c2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131009679"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131422442"
 ---
 # <a name="harden-your-docker-hosts"></a>Härten Ihrer Docker-Hosts
 
@@ -33,7 +32,7 @@ Wenn Sicherheitsrisiken gefunden wurden, werden diese in einer einzigen Empfehlu
 |Aspekt|Details|
 |----|:----|
 |Status des Release:|Allgemeine Verfügbarkeit (General Availability, GA)|
-|Preise:|[Microsoft Defender für Server](defender-for-servers-introduction.md) erforderlich|
+|Preise:|[Microsoft Defender für Server](defender-for-servers-introduction.md) erforderlich|
 |Erforderliche Rollen und Berechtigungen:|**Leser** in dem Arbeitsbereich, mit dem der Host verbunden wird|
 |Clouds:|:::image type="icon" source="./media/icons/yes-icon.png"::: Kommerzielle Clouds<br>:::image type="icon" source="./media/icons/yes-icon.png"::: National/Sovereign (Azure Government, Azure China 21Vianet)|
 |||

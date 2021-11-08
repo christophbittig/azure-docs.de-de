@@ -9,13 +9,12 @@ ms.service: security-center
 ms.topic: tutorial
 ms.date: 02/17/2021
 ms.author: memildin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: ac1a72efe9d71725e27162ee19fc3b8b02645023
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 7053bcc1e28eeb262dda8833ddf98806aae770b5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131014271"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131472103"
 ---
 # <a name="tutorial-triage-investigate-and-respond-to-security-alerts"></a>Tutorial: Selektieren, Untersuchen und Beantworten von Sicherheitswarnungen
 
@@ -107,7 +106,7 @@ Andere Schnellstartanleitungen und Tutorials in dieser Sammlung bauen auf dieser
 
 Wenn Sie nicht mit den anderen Tutorials fortfahren möchten oder wenn Sie eines dieser Features deaktivieren möchten:
 
-1. Wählen Sie im Menü von Defender für Cloud die Option **Umgebungseinstellungen** aus.
+1. Öffnen Sie im Menü von Defender für Cloud **Umgebungseinstellungen**.
 1. Wählen Sie das relevante Abonnement aus.
 1. Wählen Sie **Defender-Pläne** und dann die Option **Erhöhte Sicherheit deaktiviert** aus.
 
@@ -118,7 +117,7 @@ Wenn Sie nicht mit den anderen Tutorials fortfahren möchten oder wenn Sie eines
     > [!NOTE]
     > Nachdem Sie die erweiterten Sicherheitsfeatures deaktiviert haben – unabhängig davon, ob Sie einen einzelnen Plan oder alle Pläne gleichzeitig deaktivieren –, wird die Datensammlung ggf. noch für kurze Zeit fortgesetzt. 
 
-1. Wählen Sie im Menü von Defender für Cloud die Option **Umgebungseinstellungen** aus.
+1. Öffnen Sie im Menü von Defender für Cloud **Umgebungseinstellungen**.
 1. Wählen Sie das relevante Abonnement aus.
 1. Wählen Sie **Automatische Bereitstellung** aus.
 1. Deaktivieren Sie die relevanten Erweiterungen.

@@ -3,14 +3,14 @@ title: 'Unterstützte Vorgänge zur räumlichen Analyse: Azure'
 description: In diesem Referenzartikel werden die verschiedenen Eigenschaften der Vorgänge zur räumlichen Analyse beschrieben, die von Azure Video Analyzer unterstützt werden.
 ms.service: azure-video-analyzer
 ms.topic: reference
-ms.date: 11/01/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 448bbf4231620118fd187ed5a9e38f357a5acf1c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 11062ebbe48e8c7e2451ff448770055073d7e792
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095679"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131560141"
 ---
 # <a name="supported-spatial-analysis-operations"></a>Unterstützte Vorgänge zur räumlichen Analyse
 

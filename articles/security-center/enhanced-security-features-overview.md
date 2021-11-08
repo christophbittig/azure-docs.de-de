@@ -7,13 +7,12 @@ manager: rkarlin
 ms.service: security-center
 ms.topic: overview
 ms.date: 10/21/2021
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 9435ba38ead8799a8628b0a888d074f2432ffd2e
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 7cd13ebef2e548d9596823f829041e48c99e532e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131101670"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131441835"
 ---
 # <a name="microsoft-defender-for-clouds-enhanced-security-features"></a>Die erweiterten Sicherheitsfunktionen von Microsoft Defender für Cloud
 
@@ -79,7 +78,7 @@ Sie können eine der folgenden Möglichkeiten nutzen, um erweiterte Sicherheit f
 |-------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
 | Defender für Cloud-Seiten des Azure-Portals    | [Erweiterte Schutzmaßnahmen aktivieren](enable-enhanced-security.md)                                                                                         |
 | REST-API                                        | [Pricings-API](/rest/api/securitycenter/pricings)                                                                                                  |
-| Azure CLI                                       | [az security pricing](/cli/azure/security/pricing)                                                                                                 |
+| Azure-Befehlszeilenschnittstelle                                       | [az security pricing](/cli/azure/security/pricing)                                                                                                 |
 | PowerShell                                      | [Set-AzSecurityPricing](/powershell/module/az.security/set-azsecuritypricing)                                                                      |
 | Azure Policy                                    | [Bundle-Preise](https://github.com/Azure/Azure-Security-Center/blob/master/Pricing%20%26%20Settings/ARM%20Templates/Set-ASC-Bundle-Pricing.json) |
 |                                                 |                                                                                                                                                    |

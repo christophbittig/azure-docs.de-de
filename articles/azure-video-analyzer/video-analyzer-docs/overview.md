@@ -2,14 +2,14 @@
 title: Was ist Azure Video Analyzer?
 description: Dieses Thema enthält eine Übersicht über Azure Video Analyzer.
 ms.topic: overview
-ms.date: 10/30/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 7485eb54996228ae9a781c0f0bb97c0fa55ba936
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: b72abcd0f3df246e441d68643456ee7134522728
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131058405"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131563148"
 ---
 # <a name="what-is-azure-video-analyzer-preview"></a>Was ist Azure Video Analyzer? (Vorschauversion)
  

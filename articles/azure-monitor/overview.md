@@ -4,13 +4,13 @@ description: Übersicht über die Microsoft-Dienste und -Funktionen, die zu eine
 ms.topic: overview
 author: bwren
 ms.author: bwren
-ms.date: 10/14/2021
-ms.openlocfilehash: a47c26f2b600d7ed2ffd67877ab7202a763a4054
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/01/2021
+ms.openlocfilehash: 35ffbe3a329aae483b4da841ba4dfe34c1a07f9a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131036312"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131435128"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor – Übersicht
 
@@ -55,7 +55,7 @@ Azure Monitor kann Daten aus [vielen verschiedenen Quellen](monitor-reference.md
 
 - **Überwachungsdaten zu Anwendungen**: Daten zur Leistung und Funktionalität des von Ihnen geschriebenen Codes, unabhängig von seiner Plattform.
 - **Überwachungsdaten zum Gast-BS:** Daten zum Betriebssystem, unter dem die Anwendung ausgeführt wird. Es kann in Azure, einer anderen Cloud oder lokal ausgeführt werden. 
-- **Überwachungsdaten zur Azure-Ressource:** Daten zum Betrieb einer Azure-Ressource. Eine vollständige Liste der Ressourcen mit Metriken oder Protokollen finden Sie unter [Was können Sie mit Azure Monitor überwachen?](monitor-reference.md#list-of-azure monitor-supported-services).
+- **Überwachungsdaten zur Azure-Ressource:** Daten zum Betrieb einer Azure-Ressource. Eine vollständige Liste der Ressourcen mit Metriken oder Protokollen finden Sie unter [Was können Sie mit Azure Monitor überwachen?](monitor-reference.md#azure-supported-services).
 - **Überwachungsdaten zum Azure-Abonnement**: Daten zum Betrieb und zur Verwaltung eines Azure-Abonnements sowie Daten zur Integrität und zum Betrieb von Azure selbst. 
 - **Überwachungsdaten zu Azure-Mandanten**: Daten zum Betrieb von Azure-Diensten auf Mandantenebene, z. B. Azure Active Directory.
 

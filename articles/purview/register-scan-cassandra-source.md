@@ -1,19 +1,19 @@
 ---
 title: Verbinden mit und Verwalten von Cassandra
 description: In diesem Leitfaden wird beschrieben, wie Sie in Azure Purview eine Verbindung mit Cassandra herstellen und Ihre Cassandra-Quelle mit den Features von Purview überprüfen und verwalten.
-author: chandrakavya
-ms.author: kchandra
+author: linda33wj
+ms.author: jingwang
 ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: b193ccb0cbe1d5eadbe654fa9b344e272bd694c1
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 88eda8bbfcf10594ce0c60d2337e6f3ad63fac81
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131056260"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131472464"
 ---
 # <a name="connect-to-and-manage-cassandra-in-azure-purview"></a>Verbinden mit und Verwalten von Cassandra in Azure Purview
 
@@ -34,7 +34,7 @@ In diesem Artikel wird beschrieben, wie Sie Cassandra in Azure Purview registrie
 
 * Eine aktive [Purview-Ressource](create-catalog-portal.md)
 
-* Sie müssen ein Datenquellenadministrator und Datenleser sein, um eine Quelle zu registrieren und in Purview Studio zu verwalten. Weitere Informationen finden Sie auf unserer Seite [Azure Purview-Berechtigungen](catalog-permissions.md).
+* Sie müssen ein Datenquellenadministrator und Datenleser sein, um eine Quelle zu registrieren und in Purview Studio zu verwalten. Weitere Informationen finden Sie auf der [Seite Azure Purview-Berechtigungen](catalog-permissions.md).
 
 * Richten Sie die neueste [selbstgehostete Integration Runtime](https://www.microsoft.com/download/details.aspx?id=39717) ein.
   Weitere Informationen finden Sie im [Leitfaden zum Erstellen und Konfigurieren einer selbstgehosteten Integrationslaufzeit](../data-factory/create-self-hosted-integration-runtime.md).

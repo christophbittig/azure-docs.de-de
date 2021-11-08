@@ -7,13 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 10/08/2021
 ms.author: memildin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 9441d285a97ca4c3a1ee46ab40c49f71f5d405f3
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 4c414fcd568834205c9e213928af21ca14d4b1aa
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131021398"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131441854"
 ---
 # <a name="protect-your-endpoints-with-defender-for-clouds-integrated-edr-solution-microsoft-defender-for-endpoint"></a>Schützen Sie Ihre Endpunkte mit der im Security Center integrierten EDR-Lösung: Microsoft Defender für den Endpunkt
 

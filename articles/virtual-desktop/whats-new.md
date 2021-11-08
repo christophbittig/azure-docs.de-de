@@ -8,12 +8,12 @@ ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: femila
 ms.custom: references_regions
-ms.openlocfilehash: bddf6510b5763a592be6cf44ba3668568bfc0964
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: a4d451233277b76106f3176a68d451bd0c5847ff
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131054550"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131433021"
 ---
 # <a name="whats-new-in-azure-virtual-desktop"></a>Neues in Azure Virtual Desktop
 
@@ -75,27 +75,27 @@ Sie sind neugierig auf die neuesten Updates für FSLogix? Informieren Sie sich �
 
 Das hat sich im Oktober 2021 geändert:
 
-## <a name="azure-virtual-desktop-support-for-windows-11"></a>Unterstützung von Azure Virtual Desktop für Windows 11
+### <a name="azure-virtual-desktop-support-for-windows-11"></a>Unterstützung von Azure Virtual Desktop für Windows 11
 
 Die Unterstützung von Azure Virtual Desktop für Windows 11 ist jetzt allgemein für Einzel- und Multisession-Bereitstellungen verfügbar. Sie können jetzt Windows 11-Images verwenden, wenn Sie Host-Pools im Azure-Portal erstellen. Weitere Informationen finden Sie in [unserem Blogbeitrag](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/windows-11-is-now-generally-available-on-azure-virtual-desktop/ba-p/2810545).
 
-## <a name="rdp-shortpath-now-generally-available"></a>RDP Shortpath jetzt allgemein verfügbar
+### <a name="rdp-shortpath-now-generally-available"></a>RDP Shortpath jetzt allgemein verfügbar
 
 Remote Desktop Protocol (RDP) Shortpath für verwaltete Netzwerke ist jetzt allgemein verfügbar. RDP Shortpath stellt eine direkte Verbindung zwischen dem Remotedesktop-Client und dem Sitzungshost her. Diese direkte Verbindung verringert die Abhängigkeit von Gateways, verbessert die Zuverlässigkeit der Verbindung und erhöht die für jede Benutzersitzung verfügbare Bandbreite. Weitere Informationen finden Sie in [unserem Blogbeitrag](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/rdp-shortpath-for-managed-networks-is-generally-available/m-p/2861468).
 
-## <a name="screen-capture-protection-updates"></a>Updates für den Schutz von Bildschirmaufnahmen
+### <a name="screen-capture-protection-updates"></a>Updates für den Schutz von Bildschirmaufnahmen
 
 Der Schutz von Bildschirmaufnahmen wird jetzt auf dem macOS-Client und in den Azure Government und Azure China Clouds unterstützt. Weitere Informationen finden Sie in [unserem Blogbeitrag](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/screen-capture-protection-for-macos-client-and-support-for/m-p/2840089#M7940).
 
-## <a name="azure-active-directory-domain-join"></a>Azure Active Directory-Domänenbeitritt 
+### <a name="azure-active-directory-domain-join"></a>Azure Active Directory-Domänenbeitritt 
 
 Azure Active Directory Domain Join für Azure Virtual Desktop VMs ist jetzt in den Azure Government und Azure China Clouds verfügbar. Microsoft Endpoint Manager (Intune) wird derzeit nur in der Azure Public Cloud unterstützt. Weitere Informationen finden Sie unter [Bereitstellung von Azure AD-gekoppelten virtuellen Maschinen in Azure Virtual Desktop](deploy-azure-ad-joined-vm.md).
 
-## <a name="breaking-change-in-azure-virtual-desktop-azure-resource-manager-template"></a>Änderung in der Azure Virtual Desktop Azure Resource Manager-Vorlage
+### <a name="breaking-change-in-azure-virtual-desktop-azure-resource-manager-template"></a>Änderung in der Azure Virtual Desktop Azure Resource Manager-Vorlage
 
 In der Azure Resource Manager-Vorlage für Azure Virtual Desktop wurde eine wichtige Änderung eingeführt. Wenn Sie einen Code verwenden, der von der Änderung abhängt, müssen Sie die Anweisungen in [unserem Blogbeitrag](https://techcommunity.microsoft.com/t5/azure-virtual-desktop/azure-virtual-desktop-arm-template-change-removal-of-script/m-p/2851538#M7971) befolgen, um das Problem zu beheben.
 
-## <a name="autoscale-preview-public-preview"></a>Autoscale (Vorschau) öffentliche Vorschau
+### <a name="autoscale-preview-public-preview"></a>Autoscale (Vorschau) öffentliche Vorschau
 
 Autoscale für Azure Virtual Desktop ist jetzt in der öffentlichen Vorschau. Diese Funktion schaltet Ihre virtuellen Maschinen (VMs) in gepoolten Host-Pools je nach Verfügbarkeitsbedarf automatisch ein oder aus. Durch die Planung des Ein- und Ausschaltens Ihrer VMs werden die Bereitstellungskosten optimiert, und diese Funktion bietet außerdem flexible, auf Ihre Bedürfnisse abgestimmte Planungsoptionen. Sobald Sie die erforderliche benutzerdefinierte RBAC-Rolle (Role-Based Access Control) konfiguriert haben, können Sie mit der Konfiguration Ihres Skalierungsplans beginnen. Weitere Informationen finden Sie unter [Autoscale (Vorschau) für Azure Virtual Desktop-Hostpools](autoscale-scaling-plan.md).
 

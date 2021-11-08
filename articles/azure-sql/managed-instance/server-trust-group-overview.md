@@ -12,12 +12,12 @@ ms.author: sasapopo
 ms.reviewer: mathoma
 ms.date: 11/02/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: ad3d7c45fb621d3f12146548bdb9e5ac5693a622
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 857af87fac233ff15bad924746c87e0856f90b1f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131071999"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131431045"
 ---
 # <a name="set-up-trust-between-instances-with-server-trust-group-azure-sql-managed-instance"></a>Einrichten der Vertrauensstellung zwischen Instanzen mithilfe einer Serververtrauensgruppe (Azure SQL Managed Instance)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -99,4 +99,4 @@ Folgende Einschränkungen gelten für Serververtrauensgruppen:
 
 * Weitere Informationen zu verteilten Transaktionen in Azure SQL Managed Instance finden Sie unter [Verteilte Transaktionen](../database/elastic-transactions-overview.md).
 * Informationen zu Releaseupdates und bekannten Problemen finden Sie unter [Neuigkeiten](doc-changes-updates-release-notes-whats-new.md).
-* Wenn Sie weitere Features benötigen, können Sie diese im [Forum für SQL Managed Instance](https://feedback.azure.com/forums/915676-sql-managed-instance) veröffentlichen.
+* Wenn Sie weitere Features benötigen, können Sie diese im [Forum für Managed Instance](https://feedback.azure.com/d365community/forum/a99f7006-3425-ec11-b6e6-000d3a4f0f84) veröffentlichen.

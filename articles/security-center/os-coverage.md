@@ -7,13 +7,12 @@ ms.service: security-center
 ms.topic: overview
 ms.date: 03/31/2020
 ms.author: memildin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: f3c8538ca327c031bed7ca0a17098af07fc5bfd9
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 4cf49562119503e7b0c54cb0691cbb520c6a0f9e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131101775"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131428347"
 ---
 # <a name="supported-platforms"></a>Unterstützte Plattformen 
 

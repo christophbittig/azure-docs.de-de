@@ -7,13 +7,12 @@ ms.service: security-center
 ms.topic: quickstart
 ms.date: 10/21/2021
 ms.author: memildin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: f194a0326f4caa90fc57bfd9af2991a9f4e1fbeb
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0d623789b1f99e6e7728fd5d3f80bb7ca2be7218
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131029495"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131441778"
 ---
 # <a name="quickstart-set-up-microsoft-defender-for-cloud"></a>Schnellstart: Einrichten von Microsoft Defender für Cloud
 

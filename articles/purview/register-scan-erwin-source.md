@@ -1,19 +1,19 @@
 ---
 title: Verbindung zu erwin Mart-Servern herstellen und verwalten
 description: Dieser Leitfaden beschreibt, wie Sie sich mit erwin Mart-Servern in Azure Purview verbinden und die Purview-Funktionen zum Scannen und Verwalten Ihrer erwin Mart-Serverquelle nutzen.
-author: chandrakavya
-ms.author: kchandra
+author: linda33wj
+ms.author: jingwang
 ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: 0d8e19a1f416a162d1a1c37b5403ea38c721e508
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0a6aef0cdbf55772ada02bef7090ccc3165b5658
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131056241"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131472445"
 ---
 # <a name="connect-to-and-manage-erwin-mart-servers-in-azure-purview-preview"></a>Verbindung zu und Verwaltung von erwin Mart Servern in Azure Purview (Vorschau)
 
@@ -43,7 +43,7 @@ Die erwin-Quelle unterstützt eine vollständige Überprüfung, um Metadaten aus
 
 * Eine aktive [Purview-Ressource](create-catalog-portal.md)
 
-* Sie müssen ein Datenquellenadministrator und Datenleser sein, um eine Quelle zu registrieren und in Purview Studio zu verwalten. Weitere Informationen finden Sie auf unserer Seite [Azure Purview-Berechtigungen](catalog-permissions.md).
+* Sie müssen ein Datenquellenadministrator und Datenleser sein, um eine Quelle zu registrieren und in Purview Studio zu verwalten. Weitere Informationen finden Sie auf der [Seite Azure Purview-Berechtigungen](catalog-permissions.md).
 
 * Richten Sie die neueste [selbstgehostete Integration Runtime](https://www.microsoft.com/download/details.aspx?id=39717) ein. Weitere Informationen finden Sie im [Leitfaden zum Erstellen und Konfigurieren einer selbstgehosteten Integrationslaufzeit](../data-factory/create-self-hosted-integration-runtime.md).
 

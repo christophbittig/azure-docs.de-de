@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/27/2021
+ms.date: 11/04/2021
 ms.author: b-juche
-ms.openlocfilehash: 0fb94a505b30c538e50ec11eff746d41b64be6ab
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 8b37458635f73b463bf4e01630e406753e26f353
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131087531"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131576318"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Lösungsarchitekturen mit Azure NetApp Files
 Dieser Artikel enthält Verweise auf bewährte Methoden, die Ihnen helfen können, die Lösungsarchitekturen für die Verwendung von Azure NetApp Files zu verstehen.  
@@ -164,6 +164,9 @@ Dieser Abschnitt enthält Referenzen zu Lösungen für High Performance Computin
 * [Best Practices für die Verwendung von Microsoft Azure mit SAS®](https://communities.sas.com/t5/Administration-and-Deployment/Best-Practices-for-Using-Microsoft-Azure-with-SAS/m-p/676833#M19680)
 * [Leitfaden zur Architektur von SAS in Azure – Azure Architecture Center | Azure NetApp Files](/azure/architecture/guide/sas/sas-overview#azure-netapp-files-nfs)
 
+### <a name="healthcare"></a>Integritätsressourcen
+
+* [Epic EHR on Microsoft Azure Using Azure NetApp Files](https://www.netapp.com/pdf.html?item=/media/62375-tr-4909.pdf) (Epic EHR in Microsoft Azure unter Verwendung von Azure NetApp Files)
 
 ## <a name="azure-platform-services-solutions"></a>Lösungen für Azure-Plattformdienste
 

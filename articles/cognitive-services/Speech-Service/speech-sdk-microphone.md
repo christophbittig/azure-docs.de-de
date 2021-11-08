@@ -3,20 +3,20 @@ title: Empfehlungen zur Mikrofonanordnung für Speech-SDK-Geräte
 titleSuffix: Azure Cognitive Services
 description: Empfehlungen zur Mikrofonanordnung für Speech-SDK-Geräte. Diese Arraygeometrien werden für Microsoft Audio Stack empfohlen.
 services: cognitive-services
-author: PatrickFarley
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/16/2019
-ms.author: pafarley
+ms.author: eur
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: c95ec117ee099c3441bff122fdeeb510309e4b6c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: aface1bb2b34975426a2fffb3b75d8c6d14b835a
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095118"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131506427"
 ---
 # <a name="speech-sdk-microphone-array-recommendations"></a>Empfehlungen zur Mikrofonanordnung für Speech-SDK-Geräte
 

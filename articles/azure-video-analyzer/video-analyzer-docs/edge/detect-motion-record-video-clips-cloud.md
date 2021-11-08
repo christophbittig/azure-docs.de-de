@@ -2,14 +2,14 @@
 title: Erkennen von Bewegung, Aufzeichnen von Video in Azure Video Analyzer
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie das Edgemodul von Azure Video Analyzer verwenden, um Bewegungen in einem Livevideostream zu erkennen und Videos im Video Analyzer-Konto aufzuzeichnen.
 ms.topic: quickstart
-ms.date: 06/01/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: a62af8ee0ac3859a6d8f7e7d81d7115877afda35
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 5cc04dc9ce6a149a64a61fb9fabdeeaca6593f51
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131030076"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131552884"
 ---
 # <a name="quickstart-detect-motion-record-video-to-video-analyzer"></a>Schnellstart: Erkennen von Bewegung, Aufzeichnen von Video in Video Analyzer
 

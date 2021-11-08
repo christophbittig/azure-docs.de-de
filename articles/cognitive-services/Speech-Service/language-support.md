@@ -3,20 +3,20 @@ title: Sprachunterstützung – Speech-Dienst
 titleSuffix: Azure Cognitive Services
 description: Der Speech-Dienst unterstützt neben der Sprachübersetzung zahlreiche Sprachen für die Konvertierung von Sprache in Text und Text in Sprache. Dieser Artikel enthält eine umfassende Liste zur Sprachunterstützung der einzelnen Dienstfunktionen.
 services: cognitive-services
-author: PatrickFarley
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/07/2021
-ms.author: pafarley
+ms.author: eur
 ms.custom: references_regions, ignite-fall-2021
-ms.openlocfilehash: 84841dff43fa827a942eee28cb9cbcc1499e1fcc
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: da7d2acfe48d4d598e2bbbfddccb55e2a7d20241
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131011805"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131505363"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Sprach- und Stimmunterstützung für den Speech-Dienst
 
@@ -483,7 +483,7 @@ Es stehen mehr als 75 Standardstimmen in mehr als 45 Sprachen und Gebietsschemas
 
 | Sprache | Gebietsschema (BCP-47) | Geschlecht | Name der Stimme |
 |--|--|--|--|
-| Arabisch (Arabisch) | `ar-EG` | Female | `ar-EG-Hoda`|
+| Arabisch (Ägypten) | `ar-EG` | Female | `ar-EG-Hoda`|
 | Arabisch (Saudi-Arabien) | `ar-SA` | Male | `ar-SA-Naayf`|
 | Bulgarisch (Bulgarien) | `bg-BG` | Male | `bg-BG-Ivan`|
 | Katalanisch (Spanien) | `ca-ES` | Female | `ca-ES-HerenaRUS`|
@@ -576,25 +576,36 @@ Custom Voice ist auf der neuronalen Ebene (auch als „benutzerdefinierte neuron
 
 | Sprache | Gebietsschema | Neuronal | Sprachübergreifend |
 |--|--|--|--|
-| Bulgarisch (Bulgarien)| `bg-BG` | Ja | Nein |
+| Arabisch (Ägypten) | `ar-EG` | Ja | Nein |
+| Bulgarisch (Bulgarien) | `bg-BG` | Ja | Nein |
 | Chinesisch (Mandarin, vereinfacht) | `zh-CN` | Ja | Ja |
 | Chinesisch (Mandarin, vereinfacht), zweisprachig mit Englisch | `zh-CN` (zweisprachig) | Ja | Ja |
-| Niederländisch (Niederlande)   | `nl-NL` | Ja | Nein |
+| Chinesisch (Taiwanesisch, Mandarin) | `zh-TW` | Ja | Nein |
+| Tschechisch (Tschechische Republik) | `cs-CZ` | Ja | Nein |
+| Niederländisch (Niederlande) | `nl-NL` | Ja | Nein |
 | Englisch (Australien) | `en-AU` | Ja | Ja |
+| Englisch (Kanada) | `en-CA` | Ja | Nein |
 | Englisch (Indien) | `en-IN` | Ja | Nein |
+| Englisch (Irland) | `en-IE` | Ja | Nein |
 | Walisisch (Großbritannien) | `en-GB` | Ja | Ja |
 | Englisch (USA) | `en-US` | Ja | Ja |
 | Französisch (Kanada) | `fr-CA` | Ja | Ja |
 | Französisch (Frankreich) | `fr-FR` | Ja | Ja |
+| Deutsch (Österreich) | `de-AT` | Ja | Nein |
 | Deutsch (Deutschland) | `de-DE` | Ja | Ja |
+| Ungarisch (Ungarn) | `hu-HU` | Ja | Nein |
 | Italienisch (Italien) | `it-IT` | Ja | Ja |
 | Japanisch (Japan) | `ja-JP` | Ja | Ja |
 | Koreanisch (Korea) | `ko-KR` | Ja | Ja |
 | Norwegisch, Bokmål (Norwegen) | `nb-NO` | Ja | Nein |
 | Portugiesisch (Brasilien) | `pt-BR` | Ja | Ja |
+| Portugiesisch (Portugal) | `pt-PT` | Ja | Nein |
 | Russisch (Russische Föderation) | `ru-RU` | Ja | Ja |
+| Slowakisch (Slowakei) | `sk-SK` | Ja | Nein |
 | Spanisch (Mexiko) | `es-MX` | Ja | Ja |
 | Spanisch (Spanien) | `es-ES` | Ja | Ja |
+| Türkisch (Türkei) | `tr-TR` | Ja | Nein |
+| Vietnamesisch (Vietnam) | `vi-VN` | Ja | Nein |
 
 Wählen Sie das richtige Gebietsschema, das den Trainingsdaten entspricht, die Sie für das Training eines benutzerdefinierten Sprachmodells benötigen. Wenn die von Ihnen aufgenommenen Daten beispielsweise auf Englisch mit britischem Akzent gesprochen werden, wählen Sie `en-GB`.
 
@@ -707,20 +718,20 @@ Die Sprechererkennung ist größtenteils sprachunabhängig. Wir haben ein univer
 
 | Sprache | Gebietsschema (BCP-47) | Textabhängige Überprüfung | Textunabhängige Überprüfung | Textunabhängige Identifikation |
 |----|----|----|----|----|
-|Englisch (USA)  |  `en-US`  |  ja  |  Ja  |  ja |
-|Chinesisch (Mandarin, vereinfacht) | `zh-CN`     |     – |     Ja |     ja|
-|Englisch (Australien)     | `en-AU`    | –     | Ja     | ja|
-|Englisch (Kanada)     | `en-CA`     | – |     Ja |     Ja|
-|Englisch (Indien)     | `en-IN`     | – |     Ja |     ja|
-|English (UK)     | `en-GB`     | –     | Ja     | ja|
-|Französisch (Kanada)     | `fr-CA`     | –     | Ja |     ja|
-|Französisch (Frankreich)     | `fr-FR`     | –     | Ja     | ja|
-|Deutsch (Deutschland)     | `de-DE`     | –     | Ja     | ja|
-|Italienisch | `it-IT`     |     –     | Ja |     ja|
-|Japanisch     | `ja-JP` | –     | Ja     | ja|
-|Portugiesisch (Brasilien) | `pt-BR` |     – |     Ja |     ja|
-|Spanisch (Mexiko)     | `es-MX`     | – |     Ja |     ja|
-|Spanisch (Spanien)     | `es-ES` | –     | Ja |     Ja|
+|Englisch (USA)  |  `en-US`  |  ja  |  ja  |  ja |
+|Chinesisch (Mandarin, vereinfacht) | `zh-CN`     |     – |     ja |     ja|
+|Englisch (Australien)     | `en-AU`    | –     | ja     | ja|
+|Englisch (Kanada)     | `en-CA`     | – |     ja |     ja|
+|Englisch (Indien)     | `en-IN`     | – |     ja |     ja|
+|English (UK)     | `en-GB`     | –     | ja     | ja|
+|Französisch (Kanada)     | `fr-CA`     | –     | ja |     ja|
+|Französisch (Frankreich)     | `fr-FR`     | –     | ja     | ja|
+|Deutsch (Deutschland)     | `de-DE`     | –     | ja     | ja|
+|Italienisch | `it-IT`     |     –     | ja |     ja|
+|Japanisch     | `ja-JP` | –     | ja     | ja|
+|Portugiesisch (Brasilien) | `pt-BR` |     – |     ja |     ja|
+|Spanisch (Mexiko)     | `es-MX`     | – |     ja |     ja|
+|Spanisch (Spanien)     | `es-ES` | –     | ja |     Ja|
 
 ## <a name="custom-keyword-and-keyword-verification"></a>Benutzerdefiniertes Schlüsselwort und Schlüsselwortüberprüfung
 
