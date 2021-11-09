@@ -2,14 +2,14 @@
 title: Azure Backup-Unterstützungsmatrix für die SQL Server-Sicherung auf Azure-VMs
 description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und Einschränkungen für die Sicherung von SQL Server auf Azure-VMs mit dem Azure Backup-Dienst.
 ms.topic: conceptual
-ms.date: 08/20/2021
+ms.date: 10/22/2021
 ms.custom: references_regions
-ms.openlocfilehash: 78dace2a60ff566af3485e6be0b7d9efc42d8654
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: c0b46a1c75c47b85985946646bf3216c9ab719f5
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123103877"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130219260"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Unterstützungsmatrix für die SQL Server-Sicherung auf Azure-VMs
 
@@ -33,6 +33,7 @@ Mit Azure Backup können Sie SQL Server-Datenbanken auf Azure-VMs sichern, die
 |Anzahl von Datenbanken, die auf einem Server (und in einem Tresor) geschützt werden können    |   2000      |
 |Unterstützte Datenbankgröße (bei größeren Datenbanken können Leistungsprobleme auftreten)   |   6 TB*      |
 |Anzahl von in einer Datenbank unterstützten Dateien    |   1000      |
+|Anzahl der unterstützten vollständigen Sicherungen pro Tag    |    Eine geplante Sicherung. <br><br> Drei bedarfsgesteuerte Sicherungen. <br><br> Es wird empfohlen, nicht mehr als drei Sicherungen pro Tag auszulösen. Um jedoch Wiederholungen von Benutzern bei fehlgeschlagenen Versuchen zuzulassen, wird die harte Grenze für bedarfsorientierte Sicherungen auf neun Versuche festgelegt. |
 
 _*Der Grenzwert für die Datenbankgröße hängt von der unterstützten Datenübertragungsrate und der Konfiguration des Sicherungszeitlimits ab. Dies ist nicht die harte Grenze. [Erfahren Sie mehr](#backup-throughput-performance) über die Leistung des Sicherungsdurchsatzes._
 
@@ -41,8 +42,8 @@ _*Der Grenzwert für die Datenbankgröße hängt von der unterstützten Datenüb
 * Alle Sicherungstypen (vollständig/differenziell/Protokoll) und Wiederherstellungsmodelle (einfach/vollständig/massenprotokolliert) werden unterstützt.
 * Bei **schreibgeschützten** Datenbanken: Es werden nur die Sicherungstypen „Vollständig“ und „Nur vollständig kopieren“ unterstützt.
 * Die native SQL-Komprimierung wird unterstützt, wenn sie vom Benutzer explizit in der Sicherungsrichtlinie aktiviert wurde. Je nachdem, welcher Wert vom Benutzer für dieses Steuerelement festgelegt wurde, überschreibt Azure Backup die Standardwerte auf Instanzebene mit der COMPRESSION- bzw. NO_COMPRESSION-Klausel.
-* Für TDE aktivierte Datenbanksicherungen werden unterstützt. Wenn Sie eine mit TDE verschlüsselte Datenbank in einer anderen SQL Server-Instanz wiederherstellen möchten, müssen Sie zuerst [das Zertifikat auf dem Zielserver wiederherstellen](/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server). Eine Komprimierung der Sicherungen für TDE-fähige Datenbanken für SQL Server 2016 und höhere Versionen ist verfügbar, allerdings für geringere Übertragungsgrößen, wie [hier](https://techcommunity.microsoft.com/t5/sql-server/backup-compression-for-tde-enabled-databases-important-fixes-in/ba-p/385593) erläutert.
-* Sicherungs- und Wiederherstellungsvorgänge für Spiegeldatenbanken und Datenbankmomentaufnahmen werden nicht unterstützt.
+* Für TDE aktivierte Datenbanksicherungen werden unterstützt. Wenn Sie eine mit TDE verschlüsselte Datenbank in einer anderen SQL Server-Instanz wiederherstellen möchten, müssen Sie zuerst [das Zertifikat auf dem Zielserver wiederherstellen](/sql/relational-databases/security/encryption/move-a-tde-protected-database-to-another-sql-server). Die Komprimierung der Sicherungen für TDE-fähige Datenbanken für SQL Server 2016 und höhere Versionen ist verfügbar, allerdings für geringere Übertragungsgrößen, wie [hier](https://techcommunity.microsoft.com/t5/sql-server/backup-compression-for-tde-enabled-databases-important-fixes-in/ba-p/385593) erläutert.
+* Die Sicherungs- und Wiederherstellungsvorgänge für Spiegeldatenbanken und Datenbankmomentaufnahmen werden nicht unterstützt.
 * Eine SQL Server-**Failoverclusterinstanz (FCI)** wird nicht unterstützt.
 
 ## <a name="backup-throughput-performance"></a>Durchsatzleistung bei der Sicherung

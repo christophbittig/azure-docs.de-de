@@ -7,14 +7,14 @@ ms.assetid: ''
 ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
-ms.date: 07/20/2020
+ms.date: 10/26/2021
 ms.author: mbaldwin
-ms.openlocfilehash: d7d438b369c863660a032f101e466b6fadf639fa
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: acfa59c13f0f9429135ea7f2218ca8fec121c8a3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98879713"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131428309"
 ---
 # <a name="azure-encryption-overview"></a>Übersicht über die Azure-Verschlüsselung
 
@@ -22,7 +22,7 @@ Dieser Artikel bietet eine Übersicht über die Verwendung der Verschlüsselung 
 
 ## <a name="encryption-of-data-at-rest"></a>Verschlüsselung für ruhende Daten
 
-Ruhende Daten umfassen Informationen, die in einem beliebigen digitalen Format im dauerhaften Speicher auf physischen Medien gespeichert sind. Zu den Medien gehören Dateien auf Magnet- oder optischen Datenträgern, archivierte Daten und Datensicherungen. Microsoft Azure bietet eine Reihe von Datenspeicherlösungen für verschiedene Anforderungen, darunter Datei-, Daten-, Blob- und Tabellenspeicher. Microsoft bietet zudem eine Verschlüsselung zum Schutz von [Azure SQL-Datenbank](../../azure-sql/database/sql-database-paas-overview.md), [Azure Cosmos DB](../../data-factory/introduction.md) und Azure Data Lake.
+Ruhende Daten umfassen Informationen, die in einem beliebigen digitalen Format im dauerhaften Speicher auf physischen Medien gespeichert sind. Zu den Medien gehören Dateien auf Magnet- oder optischen Datenträgern, archivierte Daten und Datensicherungen. Microsoft Azure bietet eine Reihe von Datenspeicherlösungen für verschiedene Anforderungen, darunter Datei-, Daten-, Blob- und Tabellenspeicher. Microsoft bietet zudem eine Verschlüsselung zum Schutz von [Azure SQL-Datenbank](../../azure-sql/database/sql-database-paas-overview.md), [Azure Cosmos DB](../../cosmos-db/database-encryption-at-rest.md) und Azure Data Lake.
 
 Die Verschlüsselung ruhender Daten ist für Dienste in allen Software-as-a-Service- (SaaS), Platform-as-a-Service- (PaaS) und Infrastructure-as-a-Service-Cloudmodellen (IaaS) verfügbar. In diesem Artikel werden Ressourcen zusammenfassend beschrieben und bereitgestellt, mit denen Sie die Verschlüsselungsoptionen von Azure nutzen können.
 
@@ -99,7 +99,7 @@ CLE verfügt über integrierte Funktionen, mit denen Sie Daten über symmetrisch
 
 ### <a name="cosmos-db-database-encryption"></a>Cosmos DB-Datenbankverschlüsselung
 
-[Azure Cosmos DB](../../cosmos-db/database-encryption-at-rest.md) ist eine global verteilte Datenbank von Microsoft mit mehreren Modellen. Die in Cosmos DB in nichtflüchtigem Speicher (Solid State Drives) gespeicherten Benutzerdaten werden standardmäßig verschlüsselt. Es sind keine Steuerelemente zum Aktivieren oder Deaktivieren vorhanden. Die Verschlüsselung ruhender Daten wird über eine Reihe von Sicherheitstechnologien implementiert, einschließlich der Speichersysteme für sichere Schlüssel, verschlüsselter Netzwerke und Kryptografie-APIs. Die Verschlüsselungsschlüssel werden von Microsoft verwaltet und entsprechend internen Microsoft-Richtlinien rotiert.
+[Azure Cosmos DB](../../cosmos-db/database-encryption-at-rest.md) ist eine global verteilte Datenbank von Microsoft mit mehreren Modellen. Die in Cosmos DB in nichtflüchtigem Speicher (Solid State Drives) gespeicherten Benutzerdaten werden standardmäßig verschlüsselt. Es sind keine Steuerelemente zum Aktivieren oder Deaktivieren vorhanden. Die Verschlüsselung ruhender Daten wird über eine Reihe von Sicherheitstechnologien implementiert, einschließlich der Speichersysteme für sichere Schlüssel, verschlüsselter Netzwerke und Kryptografie-APIs. Die Verschlüsselungsschlüssel werden von Microsoft verwaltet und entsprechend internen Microsoft-Richtlinien rotiert. Optional können Sie eine zweite Verschlüsselungsebene mit von Ihnen verwalteten Schlüsseln hinzufügen, indem Sie das Feature [Kundenseitig verwaltete Schlüssel oder CMK](../../cosmos-db/how-to-setup-cmk.md) verwenden.
 
 ### <a name="at-rest-encryption-in-data-lake"></a>Verschlüsselung ruhender Daten in Data Lake
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 08f4c00d5d0d1d0d6d060d2170024ac166c308b8
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.openlocfilehash: a353a2d95f9da4b78d88118555d20fc79bae5fd7
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114458553"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131437606"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Einrichten der Notfallwiederherstellung für eine IIS-basierte Webanwendung mit mehreren Ebenen
 
@@ -69,9 +69,9 @@ Azure|Nicht verfügbar|Ja
 
 Um mit der Replikation aller virtuellen Computer einer IIS Webfarm in Azure zu beginnen, befolgen Sie die Anleitung unter [Testfailover nach Azure in Site Recovery](site-recovery-test-failover-to-azure.md).
 
-Wenn Sie eine statische IP-Adresse verwenden, können Sie die IP-Adresse angeben, die Sie dem virtuellen Computer zuordnen möchten. Um die IP-Adresse festzulegen, wechseln Sie zu **Einstellungen für Compute und Netzwerk** > **ZIEL-IP**.
+Wenn Sie eine statische IP-Adresse verwenden, können Sie die IP-Adresse angeben, die Sie dem virtuellen Computer zuordnen möchten. Um die IP-Adresse festzulegen, wechseln Sie zu **Netzwerkeinstellungen** > **ZIEL-IP**.
 
-![Screenshot, der zeigt, wie die Ziel-IP-Adresse im Site Recovery-Bereich „Compute und Netzwerk“ festgelegt wird](./media/site-recovery-active-directory/dns-target-ip.png)
+![Screenshot, der zeigt, wie die Ziel-IP-Adresse im Site Recovery-Bereich „Netzwerk“ festgelegt wird](./media/site-recovery-active-directory/dns-target-ip.png)
 
 ## <a name="create-a-recovery-plan"></a>Erstellen eines Wiederherstellungsplans
 Ein Wiederherstellungsplan unterstützt die Sequenzierung der verschiedenen Ebenen in einer Anwendung mit mehreren Ebenen während eines Failovers. Die Sequenzierung trägt zur Wahrung der Anwendungskonsistenz bei. Beim Erstellen eines Wiederherstellungsplans für eine Webanwendung mit mehreren Ebenen führen Sie die unter [Erstellen eines Wiederherstellungsplans mit Site Recovery](site-recovery-create-recovery-plans.md) beschriebenen Schritte aus.

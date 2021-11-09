@@ -7,12 +7,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/15/2021
-ms.openlocfilehash: 26f70e4750d29231b3f139ecd617b43071e369bb
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: f0558d7e3cffd744ec4effa1d4f81f359e909e97
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130066089"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131503169"
 ---
 # <a name="shaping-data-for-projection-into-a-knowledge-store"></a>Strukturieren von Daten für die Projektion in einen Wissensspeicher
 
@@ -20,7 +20,7 @@ In Azure Cognitive Search beschreibt das „Strukturieren von Daten“ einen Sch
 
 Beim Ausführen von Skills werden die Ausgaben in eine Anreicherungsstruktur in einer Knotenhierarchie geschrieben. Zwar möchten Sie die Anreicherungsstruktur möglicherweise in ihrer Gesamtheit anzeigen und nutzen, doch ist es wahrscheinlicher, dass Sie eine differenziertere Struktur wünschen und Teilmengen von Knoten für verschiedene Szenarios erstellen, z. B. indem Sie die Knoten im Zusammenhang mit übersetztem Text oder extrahierten Entitäten in bestimmten Tabellen platzieren.
 
-Die Anreicherungsstruktur selbst enthält keine Logik, die Aufschluss darüber gibt, wie ihr Inhalt in einem Wissensspeicher dargestellt wird. Datenstrukturen füllen diese Lücke, indem sie das Schema für die einzelnen Tabellen-, Objekt- und Dateiprojektionen bereitstellen. Sie können sich eine Datenstruktur als eine benutzerdefinierte Definition oder Ansicht der angereicherten Daten vorstellen. Sie können beliebig viele Strukturen erstellen und diese dann Projektionen in einer Wissensspeicherdefinition zuweisen. 
+Die Anreicherungsstruktur selbst enthält keine Logik, die Aufschluss darüber gibt, wie ihr Inhalt in einem Wissensspeicher dargestellt wird. Datenstrukturen füllen diese Lücke, indem sie das Schema für die einzelnen Tabellen-, Objekt- und Dateiprojektionen bereitstellen. Sie können sich eine Datenstruktur als eine benutzerdefinierte Definition oder Ansicht der angereicherten Daten vorstellen. Sie können beliebig viele Strukturen erstellen und diese dann [Projektionen](knowledge-store-projection-overview.md) in einer Wissensspeicherdefinition zuweisen. 
 
 ## <a name="approaches-for-creating-shapes"></a>Ansätze zum Erstellen von Strukturen
 

@@ -2,14 +2,17 @@
 title: Überwachen von geschützten Azure Backup-Workloads
 description: In diesem Artikel erfahren Sie mehr über die Überwachungs- und Benachrichtigungsfunktionen für Azure Backup-Workloads im Azure-Portal.
 ms.topic: conceptual
-ms.date: 08/06/2021
+ms.date: 11/02/2021
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: f3d353f7d42baf1f9cc968cb37baac1077a35085
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: afc23090ce15621542ec6035c67d36b85a3414c1
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129231670"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131439773"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Überwachen von Azure Backup-Workloads
 
@@ -19,20 +22,20 @@ Azure Backup enthält mehrere Sicherheitslösungen, deren Einsatz von den Anford
 
 ## <a name="backup-items-in-recovery-services-vault"></a>Sicherungselemente im Recovery Services-Tresor
 
-Sie können alle Ihre Sicherungselemente über einen Recovery Services-Tresor überwachen. Wenn Sie im Tresor zum Abschnitt **Sicherungselemente** navigieren, wird eine Ansicht geöffnet, die die Anzahl der mit dem Tresor verbundenen Sicherungselemente jedes Workloadtyps anzeigt. Wenn Sie auf eine beliebige Zeile klicken, wird eine detaillierte Ansicht geöffnet, in der alle Sicherungselemente des angegebenen Workloadtyps aufgelistet sind, mit Informationen zum letzten Sicherungsstatus für jedes Element, dem letzten verfügbaren Wiederherstellungspunkt und so weiter.
+Sie können alle Ihre Sicherungselemente über einen Recovery Services-Tresor überwachen. Wenn Sie im **Backup Center** zum Abschnitt **Sicherungsinstanzen** navigieren, wird eine Ansicht mit einer eine detaillierten Liste geöffnet, in der alle Sicherungselemente des angegebenen Workloadtyps aufgelistet sind, mit Informationen zum letzten Sicherungsstatus für jedes Element, dem letzten verfügbaren Wiederherstellungspunkt und so weiter.
 
-![Screenshot: Anzeigen der Sicherungselemente im Recovery Services-Tresor](media/backup-azure-monitoring-laworkspace/backup-items-view.png)
+:::image type="content" source="./media/backup-azure-monitoring-laworkspace/backup-center-instances-inline.png" alt-text="Screenshot: Anzeigen von Sicherungselementen für den Recovery Services-Tresor." lightbox="./media/backup-azure-monitoring-laworkspace/backup-center-instances-expanded.png":::
 
-> [!NOTE]
-> Für Elemente, die mit DPM nach Azure gesichert wurden, zeigt die Liste alle mit dem DPM-Server geschützten Datenquellen an (sowohl auf dem Datenträger als auch online). Wird der Schutz für die Datenquelle unter Beibehaltung der Sicherungsdaten beendet, wird die Datenquelle weiterhin im Portal aufgeführt. Sie können zu den Details der Datenquelle navigieren, um zu sehen, ob die Wiederherstellungspunkte auf dem Datenträger, online oder an beiden Orten vorhanden sind. Auch für Datenquellen, deren Onlineschutz beendet wurde, deren Daten aber erhalten bleiben, wird die Abrechnung der Onlinewiederherstellungspunkte fortgesetzt, bis die Daten vollständig gelöscht werden.
+>[!NOTE]
+>Für Elemente, die mit DPM nach Azure gesichert wurden, zeigt die Liste alle mit dem DPM-Server geschützten Datenquellen an (sowohl auf dem Datenträger als auch online). Wird der Schutz für die Datenquelle unter Beibehaltung der Sicherungsdaten beendet, wird die Datenquelle weiterhin im Portal aufgeführt. Sie können zu den Details der Datenquelle navigieren, um zu sehen, ob die Wiederherstellungspunkte auf dem Datenträger, online oder an beiden Orten vorhanden sind. Auch für Datenquellen, deren Onlineschutz beendet wurde, deren Daten aber erhalten bleiben, wird die Abrechnung der Onlinewiederherstellungspunkte fortgesetzt, bis die Daten vollständig gelöscht werden.
 >
 > Die DPM-Version muss DPM 1807 (5.1.378.0) oder DPM 2019 (Version 10.19.58.0 oder höher) sein, damit die Sicherungselemente im Portal des Recovery Services-Tresors sichtbar sind.
 
-## <a name="backup-jobs-in-recovery-services-vault"></a>Sicherungsaufträge im Recovery Services-Tresor
+## <a name="backup-jobs-in-backup-center"></a>Sicherungsaufträge im Backup Center
 
-Azure Backup bietet integrierte Überwachungs- und Warnungsfunktionen für durch Azure Backup geschützte Workloads. In den Einstellungen für den Recovery Services-Tresor finden Sie im Abschnitt **Überwachung** die integrierten Aufträge und Warnungen.
+Azure Backup bietet integrierte Überwachungs- und Warnungsfunktionen für durch Azure Backup geschützte Workloads. Wenn Sie im **Backup Center** zum Bereich **Sicherungsaufträge** navigieren, können Sie die aktuellen Sicherungs- und Wiederherstellungsaufträge in Ihren Tresoren anzeigen.
 
-![Screenshot: in den Recovery Services-Tresor integrierte Überwachung](media/backup-azure-monitoring-laworkspace/rs-vault-inbuilt-monitoring-menu.png)
+:::image type="content" source="./media/backup-azure-monitoring-laworkspace/backup-center-jobs-inline.png" alt-text="Screenshot: Integrierte Überwachung des Recovery Services-Tresors." lightbox="./media/backup-azure-monitoring-laworkspace/backup-center-jobs-expanded.png":::
 
 Aufträge werden generiert, wenn Vorgänge wie das Konfigurieren der Sicherung, die Sicherung, Wiederherstellung oder das Löschen der Sicherung durchgeführt werden.
 
@@ -141,7 +144,7 @@ In der folgenden Tabelle werden die verschiedenen, derzeit über Azure Monitor (
 
 ### <a name="turning-on-azure-monitor-alerts-for-job-failure-scenarios"></a>Aktivieren von Azure Monitor-Warnungen für Szenarios mit Auftragsfehlern
 
-Führen Sie die folgenden Schritte aus, um Azure Monitor-Warnungen in Szenarios mit Sicherungs- und Wiederherstellungsfehlern zu aktivieren:
+Führen Sie die folgenden Schritte aus, um Azure Monitor-Warnungen in Szenarien mit Sicherungs- und Wiederherstellungsfehlern zu aktivieren:
 
 1. Öffnen Sie das Azure-Portal, und suchen Sie nach **Previewfunktionen**.
 
@@ -150,7 +153,7 @@ Führen Sie die folgenden Schritte aus, um Azure Monitor-Warnungen in Szenarios 
 2. Sie können die Liste aller Previewfunktionen anzeigen, die Sie aktivieren können.
 
     * Wenn Sie Auftragsfehlerwarnungen für Workloads erhalten möchten, die in Recovery Services-Tresoren gesichert sind, wählen Sie das Flag **EnableAzureBackupJobFailureAlertsToAzureMonitor** aus, das zu dem Anbieter „Microsoft.RecoveryServices“ (Spalte 3) gehört.
-    * Wenn Sie Auftragsfehlerwarnungen für Workloads erhalten möchten, die in Backup-Tresoren gesichert sind, wählen Sie das Flag **EnableAzureBackupJobFailureAlertsToAzureMonitor** aus, das zu dem Anbieter „Microsoft.DataProtection“ (Spalte 3) gehört.
+    * Wenn Sie Auftragsfehlerwarnungen für Workloads erhalten möchten, die in den Sicherungstresoren gesichert sind, wählen Sie das Flag **EnableAzureBackupJobFailureAlertsToAzureMonitor** aus, das zu dem Anbieter „Microsoft.DataProtection“ (Spalte 3) gehört.
 
     ![Screenshot: Vorschau der Warnungsregistrierung](media/backup-azure-monitoring-laworkspace/alert-preview-feature-flags.png)
 

@@ -3,12 +3,12 @@ title: Bewährte Methoden
 description: Erfahren Sie, welche bewährten Methoden und nützlichen Tipps es für das Entwickeln Ihrer Azure Batch-Lösungen gibt.
 ms.date: 09/03/2021
 ms.topic: conceptual
-ms.openlocfilehash: 5227b738ab5d7af19ed2877a1c3d6b37ea08c556
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: e910fd444fc443ef93d9cc513632ad6ab11a124e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123535813"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131461569"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch: bewährte Methoden
 
@@ -61,7 +61,7 @@ Es ist möglich, dass es bei Batch-Pools in Azure zu Ausfallzeiten kommt. Beacht
 
 ### <a name="custom-image-pools"></a>Benutzerdefinierte Imagepools
 
-Wenn Sie einen Azure Batch-Pool mithilfe der Konfiguration des virtuellen Computers erstellen, geben Sie das Image eines virtuellen Computers (VM) an, das das Betriebssystem für jeden Computeknoten im Pool bereitstellt. Sie können den Pool mit einem unterstützten Azure Marketplace-Image erstellen oder [ein benutzerdefiniertes Image aus einem Shared Image Gallery-Image erstellen](batch-sig-images.md). Sie können zum Erstellen eines benutzerdefinierten Imagepools ein [verwaltetes Image](batch-custom-images.md) verwenden. Es empfiehlt sich jedoch, nach Möglichkeit mit Shared Image Gallery benutzerdefinierte Images zu erstellen. Durch die Verwendung von Shared Image Gallery können Sie Pools schneller bereitstellen, eine größere Anzahl von virtuellen Computern skalieren und die Zuverlässigkeit bei der Bereitstellung virtueller Computer verbessern.
+Wenn Sie einen Azure Batch-Pool mithilfe der Konfiguration des virtuellen Computers erstellen, geben Sie das Image eines virtuellen Computers (VM) an, das das Betriebssystem für jeden Computeknoten im Pool bereitstellt. Sie können den Pool mit einem unterstützten Azure Marketplace-Image erstellen oder [ein benutzerdefiniertes Image aus einem Azure Compute Gallery-Image erstellen](batch-sig-images.md). Sie können zum Erstellen eines benutzerdefinierten Imagepools ein [verwaltetes Image](batch-custom-images.md) verwenden. Es empfiehlt sich jedoch, nach Möglichkeit mit Azure Compute Gallery benutzerdefinierte Images zu erstellen. Durch die Verwendung von Azure Compute Gallery können Sie Pools schneller bereitstellen, eine größere Anzahl von virtuellen Computern skalieren und die Zuverlässigkeit bei der Bereitstellung virtueller Computer verbessern.
 
 ### <a name="third-party-images"></a>Images von Drittanbietern
 

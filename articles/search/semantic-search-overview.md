@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/01/2021
 ms.custom: references_regions
-ms.openlocfilehash: 7d7eb6bae2a6000f2f117dbe8f38976a13504825
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 18ed79768f1a803c4565426de67f6cde35a0a1fe
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131014802"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131577990"
 ---
 # <a name="semantic-search-in-azure-cognitive-search"></a>Semantische Suche in Azure Cognitive Search
 
@@ -90,9 +90,9 @@ Die semantische Suche ist nach der [Registrierung](https://aka.ms/SemanticSearch
 | Komponente | Tarif | Region | Registrieren | Preise |
 |---------|------|--------|---------------------|-------------------|
 | Semantische Suche (Rang, Titel, Hervorhebungen, Antworten) | Standardebene (S1, S2, S3) | „USA, Norden-Mitte“, „USA, Westen“, „USA, Westen 2“, „USA, Osten 2“, „Europa, Norden“, „Europa, Westen“ | Erforderlich | [Preisübersicht für Cognitive Search](https://azure.microsoft.com/pricing/details/search/)  |
-| Rechtschreibprüfung | Basic<sup>1</sup> und höher  | Alle | Keine | Keine (kostenlos) |
+| Rechtschreibprüfung | Basic<sup>1</sup> und höher  | All | Keine | Keine (kostenlos) |
 
-<sup>1</sup> Aufgrund der Bereitstellungsmechanismen und der Lebensdauer freigegebener (kostenloser) Suchdienste verfügt eine kleine Anzahl von Diensten über eine kostenlose     Rechtschreibprüfung. Die Verfügbarkeit der Rechtschreibprüfung für Dienste im Free-Tarif ist jedoch nicht garantiert und kann nicht hinzugefügt werden, wenn sie noch nicht vorhanden ist.
+<sup>1</sup> Aufgrund der Bereitstellungsmechanismen und der Lebensdauer freigegebener (kostenloser) Suchdienste verfügt eine kleine Anzahl von Diensten über eine kostenlose Rechtschreibprüfung. Die Verfügbarkeit der Rechtschreibprüfung für Dienste im Free-Tarif ist jedoch nicht garantiert und sollte nicht erwartet werden.
 
 Gebühren für die semantische Suche werden erhoben, wenn Abfrageanforderungen „queryType=semantic“ enthalten und die Suchzeichenfolge nicht leer ist (z. B. „search=pet friendly hotels in new york“). Wenn Ihre Suchzeichenfolge leer ist („search=*“), werden Ihnen auch dann keine Gebühren berechnet, wenn „queryType“ auf „semantic“ festgelegt ist.
 

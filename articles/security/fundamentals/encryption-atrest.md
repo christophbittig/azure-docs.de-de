@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a73965d0ec5d0d3fbcf665d648137e1153506721
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 174c7d552097bb3d15db198c9874755a919816e4
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340034"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131428328"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure-Datenverschlüsselung ruhender Daten
 
@@ -68,21 +68,21 @@ Der Speicherort der Verschlüsselungsschlüssel und der Zugriffssteuerung dieser
 
 Berechtigungen zum Speichern der Schlüssel in Azure Key Vault, um sie zu verwalten oder um auf sie zur Ver- und Entschlüsselung ruhender Daten zuzugreifen, können Azure AD-Konten gewährt werden.
 
-### <a name="key-hierarchy"></a>Schlüsselhierarchie
+### <a name="envelope-encryption-with-a-key-hierarchy"></a>Umschlagverschlüsselung mit einer Schlüsselhierarchie
 
-Bei der Implementierung einer Verschlüsselung ruhender Daten wird mehr als ein Schlüssel verwendet. Das Speichern eines Verschlüsselungsschlüssels in Azure Key Vault gewährleistet den sicheren Schlüsselzugriff und die zentrale Verwaltung von Schlüsseln. Allerdings ist die Wartung des lokalen Zugriffs auf Verschlüsselungsschlüssel für die Massenverschlüsselung und -entschlüsselung effizienter als die Interaktion mit Key Vault für jeden Datenvorgang und ermöglicht eine stärkere Verschlüsselung und bessere Leistung. Das Einschränken des Gebrauchs eines einzelnen Verschlüsselungsschlüssels mindert das Risiko, das die Sicherheit des Schlüssels gefährdet wird. Zudem werden die Kosten für die erneute Verschlüsselung gesenkt, wenn ein Schlüssel ersetzt werden muss. Azure-Modelle für die Verschlüsselung ruhender Daten arbeiten mit einer Schlüsselhierarchie, die sich aus den folgenden Typen von Schlüsseln zusammensetzt, um allen diesen Anforderungen gerecht zu werden:
+Bei der Implementierung einer Verschlüsselung ruhender Daten wird mehr als ein Schlüssel verwendet. Das Speichern eines Verschlüsselungsschlüssels in Azure Key Vault gewährleistet den sicheren Schlüsselzugriff und die zentrale Verwaltung von Schlüsseln. Allerdings ist die Wartung des lokalen Zugriffs auf Verschlüsselungsschlüssel für die Massenverschlüsselung und -entschlüsselung effizienter als die Interaktion mit Key Vault für jeden Datenvorgang und ermöglicht eine stärkere Verschlüsselung und bessere Leistung. Das Einschränken des Gebrauchs eines einzelnen Verschlüsselungsschlüssels mindert das Risiko, das die Sicherheit des Schlüssels gefährdet wird. Zudem werden die Kosten für die erneute Verschlüsselung gesenkt, wenn ein Schlüssel ersetzt werden muss. Azure-Modelle für die Verschlüsselung ruhender Daten verwenden die Umschlagverschlüsselung, bei der ein Schlüsselverschlüsselungsschlüssel einen Datenverschlüsselungsschlüssel verschlüsselt. Dieses Modell bildet eine Schlüsselhierarchie, die Leistungs- und Sicherheitsanforderungen besser erfüllen kann:
 
-- **Datenverschlüsselungsschlüssel (DEK)** : Ein symmetrischer AES256-Schlüssel zum Verschlüsseln einer Partition oder eines Datenblocks.  Eine einzelne Ressource kann aus viele Partitionen bestehen und deshalb auch viele DEKs haben. Das Verschlüsseln jedes Datenblocks mit einem anderen Schlüssel erschwert Kryptoanalyseangriffe. Der Ressourcenanbieter oder die Anwendungsinstanz, die einen spezifischen Block ver- oder entschlüsselt, muss Zugriff auf die DEKs gewähren. Wenn ein DEK durch einen neuen Schlüssel ersetzt wird, müssen nur die Daten im verknüpften Block erneut mit dem neuen Schlüssel verschlüsselt werden.
-- **Schlüsselverschlüsselungsschlüssel (KEK)** : Ein Verschlüsselungsschlüssel zur Verschlüsselung der Datenverschlüsselungsschlüssel. Mit einem KEK, der Key Vault nie verlässt, können die DEKs selbst verschlüsselt und gesteuert werden. Die Entität, die auf den KEK zugreifen kann, kann sich von der Entität unterscheiden, die den DEK erfordert. Eine Entität kann den Zugriff auf die DEK aushandeln, um den Zugriff jedes DEK auf eine bestimmte Partition zu begrenzen. Da der KEK erforderlich ist, um DEKs zu entschlüsseln, ist der KEK ein Punkt, an dem DEKs gelöscht werden können, indem der KEK gelöscht wird.
+- **Datenverschlüsselungsschlüssel (DEK)** : Ein symmetrischer AES256-Schlüssel, der zum Verschlüsseln einer Partition oder eines Datenblocks verwendet wird, manchmal auch einfach als Datenschlüssel bezeichnet.  Eine einzelne Ressource kann aus viele Partitionen bestehen und deshalb auch viele DEKs haben. Das Verschlüsseln jedes Datenblocks mit einem anderen Schlüssel erschwert Kryptoanalyseangriffe. Außerdem wird die Leistung maximiert, indem DEK lokal für den Dienst gespeichert werden, der die Daten verschlüsselt und entschlüsselt.
+- **Schlüsselverschlüsselungsschlüssel (KEK)** : Ein Verschlüsselungsschlüssel, der zum Verschlüsseln der Datenverschlüsselungsschlüssel unter Verwendung der Umschlagverschlüsselung verwendet wird, auch als Wrapping bezeichnet. Mit einem KEK, der Key Vault nie verlässt, können die DEKs selbst verschlüsselt und gesteuert werden. Die Entität, die auf den KEK zugreifen kann, kann sich von der Entität unterscheiden, die den DEK erfordert. Eine Entität kann den Zugriff auf die DEK aushandeln, um den Zugriff jedes DEK auf eine bestimmte Partition zu begrenzen. Da der KEK zum Entschlüsseln der DEK erforderlich ist, können Kunden DEK und Daten kryptografisch löschen, indem sie den KEK deaktivieren.
 
-Ressourcenanbieter und Anwendungsinstanzen speichern die mit den Schlüsselverschlüsselungsschlüsseln verschlüsselten Datenverschlüsselungsschlüssel oft als Metadaten zu den Daten, die durch die Datenverschlüsselungsschlüssel geschützt werden. Nur eine Entität mit Zugriff auf den Schlüsselverschlüsselungsschlüssel kann diese Datenverschlüsselungsschlüssel entschlüsseln. Es werden verschiedene Schlüsselspeichermodelle unterstützt. Weitere Informationen finden Sie unter [Datenverschlüsselungsmodelle](encryption-models.md).
+Ressourcenanbieter und Anwendungsinstanzen speichern die verschlüsselten Datenverschlüsselungsschlüssel als Metadaten. Nur eine Entität mit Zugriff auf den Schlüsselverschlüsselungsschlüssel kann diese Datenverschlüsselungsschlüssel entschlüsseln. Es werden verschiedene Schlüsselspeichermodelle unterstützt. Weitere Informationen finden Sie unter [Datenverschlüsselungsmodelle](encryption-models.md).
 
 ## <a name="encryption-at-rest-in-microsoft-cloud-services"></a>Verschlüsselung ruhender Daten in Microsoft-Clouddiensten
 
 Microsoft Cloud-Dienste werden in drei Cloudmodellen verwendet: IaaS, PaaS und SaaS. Unten finden Sie Beispiele, wie diese in das jeweilige Modell passen:
 
 - Softwaredienste, als Software-as-a-Service (SaaS) bezeichnet, mit denen Anwendungen über die Cloud bereitgestellt werden, z. B. Microsoft 365
-- Plattformdienste, mit denen Kunden die Cloud in ihren Anwendungen nutzen, z.B. für Speicherung, Analysen und Service Bus-Funktionalität.
+- Plattformdienste, mit denen Kunden die Cloud z. B. für Speicherung, Analysen und Service Bus-Funktionalität in ihren Anwendungen nutzen.
 - IaaS-Dienste (Infrastructure-as-a-Service), in denen Kunden Betriebssysteme und Anwendungen bereitstellen, die in der Cloud gehostet werden. Zudem haben sie die Möglichkeit, auch andere Clouddienste zu nutzen.
 
 ### <a name="encryption-at-rest-for-saas-customers"></a>Verschlüsselung ruhender Daten für SaaS-Kunden

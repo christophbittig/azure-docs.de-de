@@ -2,13 +2,16 @@
 title: Sichern einer SAP HANA-Datenbank mit Azure Backup in Azure
 description: In diesem Artikel erfahren Sie, wie Sie eine SAP HANA-Datenbanken mit dem Azure Backup-Dienst auf virtuellen Azure-Computern sichern können.
 ms.topic: conceptual
-ms.date: 09/27/2021
-ms.openlocfilehash: 472a83ddac9b88179f583868ba4e19136b147154
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.date: 11/02/2021
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: 5c92daa02a98e87f440bc76c114f5b6839eadd08
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130236040"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131439634"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Computern
 
@@ -102,19 +105,28 @@ Im Recovery Services-Tresor können Sie die regionsübergreifende Wiederherstell
 
 ## <a name="discover-the-databases"></a>Ermitteln der Datenbanken
 
-1. Wählen Sie im Tresor unter **Erste Schritte** die Option **Sicherung** aus. Wählen Sie unter **Wo wird Ihre Workload ausgeführt?** den Eintrag **SAP HANA in Azure-VM** aus.
-2. Wählen Sie **Ermittlung starten** aus. Dadurch wird die Ermittlung nicht geschützter Linux-VMs in der Tresorregion initiiert.
+1. Wechseln Sie im Azure-Portal zu **Backup Center**, und klicken Sie auf **+Sicherung**.
+
+   :::image type="content" source="./media/backup-azure-sap-hana-database/backup-center-configure-inline.png" alt-text="Screenshot: Starten der Überprüfung auf SAP HANA-Datenbanken." lightbox="./media/backup-azure-sap-hana-database/backup-center-configure-expanded.png":::
+
+1. Wählen Sie **SAP HANA in Azure-VM** als Datenquellentyp und anschließend einen Recovery Services-Tresor aus, der für die Sicherung verwendet werden soll, und klicken Sie dann auf **Weiter**.
+
+   :::image type="content" source="./media/backup-azure-sap-hana-database/hana-select-vault.png" alt-text="Screenshot: Auswählen einer SAP HANA-Datenbank auf einem virtuellen Azure-Computer.":::
+
+1. Wählen Sie **Ermittlung starten** aus. Dadurch wird die Ermittlung nicht geschützter Linux-VMs in der Tresorregion initiiert.
 
    * Nach der Ermittlung werden nicht geschützte VMs im Portal nach Name und Ressourcengruppe sortiert angezeigt.
    * Wenn ein virtueller Computer nicht wie erwartet aufgeführt wird, überprüfen Sie, ob er bereits in einem Tresor gesichert wird.
    * Mehrere virtuelle Computer können den gleichen Namen aufweisen, gehören dann aber verschiedenen Ressourcengruppen an.
 
-3. Wählen Sie im Bereich **Virtuelle Computer auswählen** den Link zum Herunterladen des Skripts aus, das dem Azure Backup-Dienst Berechtigungen zum Zugreifen auf die SAP HANA-VMs für die Ermittlung von Datenbanken erteilt.
-4. Führen Sie das Skript auf jedem virtuellen Computer aus, der die zu sichernden SAP HANA-Datenbanken hostet.
-5. Wählen Sie nach dem Ausführen des Skripts auf den VMs im Bereich **Virtuelle Computer auswählen** die VMs aus. Wählen Sie dann **DBs ermitteln** aus.
-6. Azure Backup ermittelt alle SAP HANA-Datenbanken auf dem virtuellen Computer. Während der Ermittlung registriert Azure Backup den virtuellen Computer beim Tresor und installiert eine Erweiterung auf dem VM. Für die Datenbank wird kein Agent installiert.
+   :::image type="content" source="./media/backup-azure-sap-hana-database/hana-discover-databases.png" alt-text="Screenshot: Auswählen von &quot;Ermittlung starten&quot;.":::
 
-    ![Ermitteln von SAP HANA-Datenbanken](./media/backup-azure-sap-hana-database/hana-discover.png)
+1. Wählen Sie im Bereich **Virtuelle Computer auswählen** den Link zum Herunterladen des Skripts aus, das dem Azure Backup-Dienst Berechtigungen zum Zugreifen auf die SAP HANA-VMs für die Ermittlung von Datenbanken erteilt.
+1. Führen Sie das Skript auf jedem virtuellen Computer aus, der die zu sichernden SAP HANA-Datenbanken hostet.
+1. Wählen Sie nach dem Ausführen des Skripts auf den VMs im Bereich **Virtuelle Computer auswählen** die VMs aus. Wählen Sie dann **DBs ermitteln** aus.
+1. Azure Backup ermittelt alle SAP HANA-Datenbanken auf dem virtuellen Computer. Während der Ermittlung registriert Azure Backup den virtuellen Computer beim Tresor und installiert eine Erweiterung auf dem VM. Für die Datenbank wird kein Agent installiert.
+
+   :::image type="content" source="./media/backup-azure-sap-hana-database/hana-select-virtual-machines-inline.png" alt-text="Screenshot: Ermittelte SAP HANA-Datenbanken." lightbox="./media/backup-azure-sap-hana-database/hana-select-virtual-machines-expanded.png":::
 
 ## <a name="configure-backup"></a>Konfigurieren der Sicherung  
 
@@ -122,13 +134,16 @@ Aktivieren Sie jetzt die Sicherung.
 
 1. Wählen Sie in Schritt 2 **Sicherung konfigurieren** aus.
 
-    ![Konfiguration der Sicherung](./media/backup-azure-sap-hana-database/configure-backup.png)
+   :::image type="content" source="./media/backup-azure-sap-hana-database/hana-configure-backups.png" alt-text="Screenshot: Konfigurieren der Sicherung.":::
+
 2. Wählen Sie unter **Zu sichernde Elemente auswählen** alle Datenbanken aus, die Sie schützen möchten, und wählen Sie dann **OK** aus.
 
-    ![Auswählen von Elementen für die Sicherung](./media/backup-azure-sap-hana-database/select-items.png)
+   :::image type="content" source="./media/backup-azure-sap-hana-database/hana-select-databases-inline.png" alt-text="Screenshot: Auswählen von Datenbanken, die gesichert werden sollen." lightbox="./media/backup-azure-sap-hana-database/hana-select-databases-expanded.png":::
+
 3. Wählen Sie **Sicherungsrichtlinie** > **Sicherungsrichtlinie auswählen** aus, und erstellen Sie eine neue Sicherungsrichtlinie für die Datenbanken gemäß den unten stehenden Anweisungen.
 
-    ![Auswählen der Sicherungsrichtlinie](./media/backup-azure-sap-hana-database/backup-policy.png)
+   :::image type="content" source="./media/backup-azure-sap-hana-database/hana-policy-summary.png" alt-text="Screenshot: Auswählen der Sicherungsrichtlinie.":::
+
 4. Wählen Sie nach dem Erstellen der Richtlinie im Menü **Sicherung** die Option **Sicherung aktivieren** aus.
 
     ![Aktivieren der Sicherung](./media/backup-azure-sap-hana-database/enable-backup.png)
