@@ -1,24 +1,24 @@
 ---
 title: Strategien für Blau-Grün-Bereitstellungen in Azure Spring Cloud
 description: In diesem Thema werden zwei Ansätze für Blau-Grün-Bereitstellungen in Azure Spring Cloud erläutert.
-author: yevster
-ms.author: yebronsh
+author: barbkess
+ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 05/12/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: 3ed83d0bcc1998b63738eb586acaf83b3a281ee6
-ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
+ms.openlocfilehash: 194529a03a493ec22d22260576a678ab07401f4c
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109838787"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132056566"
 ---
 # <a name="blue-green-deployment-strategies-in-azure-spring-cloud"></a>Strategien für Blau-Grün-Bereitstellungen in Azure Spring Cloud
 
 In diesem Artikel wird die Unterstützung für Blau-Grün-Bereitstellungen in Azure Spring Cloud beschrieben.
 
-Azure Spring Cloud (Standard-Tarif und höher) erlaubt zwei Bereitstellungen für jede App, von denen nur eine Produktionsdatenverkehr empfängt. Dieses Muster wird häufig als Blau-Grün-Bereitstellung bezeichnet. Die Unterstützung von Azure Spring Cloud für Blau-Grün-Bereitstellungen, zusammen mit einer [CD](/azure/devops/learn/what-is-continuous-delivery)-Pipeline (Continuous Delivery) und rigorosen automatisierten Tests, ermöglicht das agile Bereitstellen von Anwendungen mit hohem Vertrauen.
+Azure Spring Cloud (Standard-Tarif und höher) erlaubt zwei Bereitstellungen für jede App, von denen nur eine Produktionsdatenverkehr empfängt. Dieses Muster wird häufig als Blau-Grün-Bereitstellung bezeichnet. Die Unterstützung von Azure Spring Cloud für Blau-Grün-Bereitstellungen, zusammen mit einer [CD](/devops/deliver/what-is-continuous-delivery)-Pipeline (Continuous Delivery) und rigorosen automatisierten Tests, ermöglicht das agile Bereitstellen von Anwendungen mit hohem Vertrauen.
 
 ## <a name="alternating-deployments"></a>Abwechseln der Bereitstellungen
 

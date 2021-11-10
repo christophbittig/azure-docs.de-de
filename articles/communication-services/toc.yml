@@ -143,6 +143,8 @@ items:
         href: concepts/identity-model.md
       - name: Authentifizierung
         href: concepts/authentication.md
+      - name: Network Traversal
+        href: concepts/network-traversal.md
       - name: Datenschutz
         href: concepts/privacy.md
       - name: Preise
@@ -204,7 +206,7 @@ items:
             href: how-tos/calling-sdk/events.md
   - name: Proben
     items:
-      - name: Übersicht
+      - name: Überblick
         href: samples/overview.md
       - name: Hero-Beispiel für Gruppenanrufe
         href: samples/calling-hero-sample.md

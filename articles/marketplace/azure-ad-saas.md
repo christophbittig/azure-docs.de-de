@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/04/2020
-ms.openlocfilehash: 4638139b6cc57e18b11382341b291a13b6c558c0
-ms.sourcegitcommit: bd65925eb409d0c516c48494c5b97960949aee05
+ms.openlocfilehash: 224fda3a9f308bfb0b6683d58bbc6de3c2822259
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2021
-ms.locfileid: "111540068"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132059315"
 ---
 # <a name="azure-ad-and-transactable-saas-offers-in-the-commercial-marketplace"></a>Azure AD und transaktionsfähige SaaS-Angebote im kommerziellen Marketplace
 
@@ -53,7 +53,7 @@ Diese Tabelle enthält Details zu den Schritten für die Einkaufsverwaltung.
 | ------------ | ------------- | ------------- |
 | 1. Der Käufer meldet sich mit seiner Azure-ID-Identität beim kommerziellen Marketplace an und wählt ein SaaS-Angebot aus. | Es ist keine Aktion seitens des Herausgebers erforderlich. | Nicht verfügbar |
 | 2. Nach dem Kauf wählt der Käufer die Option **Konto konfigurieren** im Azure Marketplace oder **Jetzt konfigurieren** in AppSource aus. So wird er zur Landing Page des Herausgebers dieses Angebots weitergeleitet. Der Käufer muss in der Lage sein, sich per einmaligem Anmelden in Azure AD bei der SaaS-Anwendung des Herausgebers anzumelden. Außerdem muss er nur eine minimale Zustimmung geben, ohne dass eine Genehmigung des Azure AD-Administrators erforderlich ist. | Gestalten Sie die [Landing Page](azure-ad-transactable-saas-landing-page.md) für das Angebot so, dass Benutzer mit ihrer Azure-AD- oder MSA-Identität (Microsoft-Konto) empfangen werden und dass zusätzliche Voraussetzungen oder Konfigurationen, die erforderlich sein können, erfüllt werden. | Erforderlich |
-| 3. Der Herausgeber fordert Details zum Kauf von der SaaS-Fulfillment-API an. | Rufen Sie mit einem [Zugriffstoken](./partner-center-portal/pc-saas-registration.md), das unter Verwendung der Anwendungs-ID der Landing Page generiert wurde, den [Endpunkt für die Auflösung](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription) auf, um Einzelheiten zum Kauf abzurufen. | Erforderlich |
+| 3. Der Herausgeber fordert Details zum Kauf von der SaaS-Fulfillment-API an. | Rufen Sie mit einem [Zugriffstoken](./partner-center-portal/pc-saas-registration.md), das unter Verwendung der Anwendungs-ID der Landing Page generiert wurde, den [Endpunkt für die Auflösung](./partner-center-portal/pc-saas-fulfillment-subscription-api.md#resolve-a-purchased-subscription) auf, um Einzelheiten zum Kauf abzurufen. | Erforderlich |
 | 4. Der Herausgeber erfasst über Azure AD und die Microsoft Graph-API Details zum Unternehmen und zum Benutzer, die für die Bereitstellung des Käufers in der SaaS-Anwendung des Herausgebers erforderlich sind.  | Gliedern Sie das Azure AD-Benutzertoken auf, um den Namen und die E-Mail-Adresse zu ermitteln, oder rufen Sie die [Microsoft Graph-API](/graph/use-the-api) auf, um unter Verwendung delegierter Berechtigungen [Informationen zum angemeldeten Benutzer](/graph/api/user-get) abzurufen. | Erforderlich |
 ||||
 
@@ -67,7 +67,7 @@ In dieser Tabelle werden die Schritte für die Abonnementverwaltung ausführlich
 
 | Schritt | Aktion des Herausgebers | Für Herausgeber empfohlen oder erforderlich |
 | ------------ | ------------- | ------------- |
-| 5. Der Herausgeber verwaltet das Abonnement für die SaaS-Anwendung über die SaaS-Fulfillment-API. | Führen Sie Abonnementänderungen und andere Verwaltungsaufgaben über die [SaaS-Fulfillment-APIs](./partner-center-portal/pc-saas-fulfillment-api-v2.md) durch.<br><br>Dieser Schritt erfordert ein Zugriffstoken, wie in Schritt 3 beschrieben. | Erforderlich |
+| 5. Der Herausgeber verwaltet das Abonnement für die SaaS-Anwendung über die SaaS-Fulfillment-API. | Führen Sie Abonnementänderungen und andere Verwaltungsaufgaben über die [SaaS-Fulfillment-APIs](./partner-center-portal/pc-saas-fulfillment-apis.md) durch.<br><br>Dieser Schritt erfordert ein Zugriffstoken, wie in Schritt 3 beschrieben. | Erforderlich |
 | 6. Bei Verwendung eines getakteten Preismodells gibt der Herausgeber Nutzungsereignisse für die Messungsdienst-API aus. | Wenn für Ihre SaaS-App die nutzungsbasierte Abrechnung verwendet wird, generieren Sie Nutzungsbenachrichtigungen über die [Marketplace-Messungsdienst-APIs](marketplace-metering-service-apis.md).<br><br>Dieser Schritt erfordert ein Zugriffstoken, wie in Schritt 3 beschrieben. | Für Messung erforderlich |
 ||||
 

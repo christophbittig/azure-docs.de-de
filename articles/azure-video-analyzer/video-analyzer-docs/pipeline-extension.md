@@ -3,14 +3,14 @@ title: Pipelineerweiterung – Azure Video Analyzer
 description: Azure Video Analyzer ermöglicht es Ihnen, seine Pipeline-Verarbeitungsfunktionen über einen Pipeline-Erweiterungsknoten zu erweitern. In diesem Artikel wird der Pipelineerweiterungsknoten beschrieben.
 ms.service: azure-video-analyzer
 ms.topic: conceptual
-ms.date: 10/21/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 70c5ab2f2bc3a82889501496d23eb8a681c7ec68
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 7641524fb712d9564fca46ef40e8949f4dd9bad1
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131020583"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131851578"
 ---
 # <a name="pipeline-extension"></a>Pipelineerweiterung
 

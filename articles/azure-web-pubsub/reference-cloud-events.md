@@ -5,13 +5,13 @@ author: vicancy
 ms.author: lianwei
 ms.service: azure-web-pubsub
 ms.topic: conceptual
-ms.date: 08/16/2021
-ms.openlocfilehash: 6503433f164e0b8153aa8832473fd06ad3959bae
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.date: 11/08/2021
+ms.openlocfilehash: 52c9d3f303b657a437beba31e6e6945346397e54
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123434860"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131997360"
 ---
 #  <a name="cloudevents-extension-for-azure-web-pubsub"></a>CloudEvents-Erweiterung für Azure Web PubSub
 
@@ -327,7 +327,7 @@ Der Dienst ruft den Ereignishandler-Webhook für jede gültige benutzerdefiniert
 }
 ```
 
-Was der Upstream-Ereignishandler empfängt (siehe unten); der `Content-Type` der CloudEvents-HTTP-Anforderung ist `text/plain` für `dataType`=`text`.
+Was der Upstream-Ereignishandler empfängt (siehe unten). Der `Content-Type` der CloudEvents-HTTP-Anforderung ist `text/plain` für `dataType`=`text`.
 
 ```HTTP
 POST /upstream HTTP/1.1

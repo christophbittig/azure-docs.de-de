@@ -8,12 +8,12 @@ metadata:
   ms.date: 06/01/2020
   author: saasguide
   ms.author: souchak
-  ms.openlocfilehash: 0abeb7dd6573293a72e8b6aede6f5e281b553049
-  ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+  ms.openlocfilehash: 8666fdbb7618b1698d4480e187cfb4affdd49781
+  ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/05/2021
-  ms.locfileid: "129455302"
+  ms.lasthandoff: 11/09/2021
+  ms.locfileid: "132063173"
 title: APIs für getaktete Abrechnung im Marketplace – Häufig gestellte Fragen
 summary: Nachdem ein Kunde einen SaaS-Dienst oder eine Azure-Anwendung mit einem Plan für verwaltete Apps mit getakteter Abrechnung abonniert hat, wird der Verbrauch für jede verwendete Abrechnungsdimension nachverfolgt.  Wenn der Verbrauch die eingeschlossenen Mengen für den vom Benutzer ausgewählten Abrechnungszeitraum überschreitet, gibt der Dienst Nutzungsereignisse aus.
 sections:
@@ -84,7 +84,7 @@ sections:
   - question: >
       Kann ich eine Liste aller SaaS-Abonnements, einschließlich aktiver und gekündigter Abonnements, abrufen?
     answer: >
-      Ja, durch Aufruf der [API zum Abrufen der Abonnementliste](partner-center-portal/pc-saas-fulfillment-api-v2.md#subscription-apis), da sie eine Liste aller SaaS-Abonnements enthält. Im Statusfeld in der Antwort für das jeweilige SaaS-Abonnement wird angegeben, ob das Abonnement aktiv oder gekündigt ist.
+      Ja, durch Aufruf der [API zum Abrufen der Abonnementliste](./partner-center-portal/pc-saas-fulfillment-subscription-api.md#get-list-of-all-subscriptions), da sie eine Liste aller SaaS-Abonnements enthält. Im Statusfeld in der Antwort für das jeweilige SaaS-Abonnement wird angegeben, ob das Abonnement aktiv oder gekündigt ist.
   - question: >
       Sind das Start- und Enddatum der SaaS-Abonnementlaufzeit und die Ausgabe der Überschreitungsnutzung miteinander verbunden?
     answer: "Überschreitungsereignisse können jederzeit für ein vorhandenes SaaS-Abonnement im Status *Subscribed* (Abonniert) ausgegeben werden. Es ist Aufgabe des Herausgebers, Nutzungsereignisse auf Grundlage der im Abrechnungsplan definierten Richtlinie auszugeben. Die Überschreitung muss basierend auf den Datumsangaben berechnet werden, die für den Abrechnungszeitraum des SaaS-Abonnements definiert sind. \n\nWenn der Herausgeber z. B. einen SaaS-Plan definiert, bei dem 1000 E-Mails für 100 US-Dollar im monatlichen Pauschalpreis enthalten sind, wird für jede E-Mail über der Anzahl von 1000 eine benutzerdefinierte Dimension von 1 US-Dollar berechnet.\n\nWenn der Kunde das Abonnement am 6. Januar kauft und aktiviert, werden die im Pauschalpreis enthaltenen 1000 E-Mails ab diesem Tag gezählt. Wenn also bis zum 5. Februar (Ende des ersten Abonnementmonats) nur 900 E-Mails gesendet werden, zahlt der Kunde nur den Pauschalbetrag für den ersten Monat dieses Abonnements, und es werden zwischen dem 6. Januar und dem 5. Februar keine Überschreitungsereignisse vom Herausgeber ausgegeben. Am 6. Februar wird das Abonnement automatisch verlängert, und die Zählung wird erneut gestartet. Wenn der Kunde am 15. Februar bereits 1000 E-Mails gesendet hat, werden die restlichen E-Mails, die bis zum 5. März gesendet werden, als Überschreitung (1 US-Dollar pro E-Mail) basierend auf den vom Herausgeber ausgegebenen Überschreitungsereignissen in Rechnung gestellt.\n"

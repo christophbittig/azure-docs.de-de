@@ -2,16 +2,16 @@
 title: Verwalten eines Azure Kubernetes Service-Clusters mit dem Webdashboard
 description: Erfahren Sie mehr über die Verwendung des integrierten Kubernetes-Dashboards mit Webbenutzeroberfläche zur Verwaltung eines Azure Kubernetes Service-Clusters (AKS).
 services: container-service
-author: mlearned
+author: georgewallace
 ms.topic: article
 ms.date: 06/03/2020
-ms.author: mlearned
-ms.openlocfilehash: e7356319a875f3289531c24e5a053e745a543c0a
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.author: gwallace
+ms.openlocfilehash: 64898c6e8782c0830439d35c023a3c90fa1ebe26
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124830137"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132053177"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Zugreifen auf das Kubernetes-Webdashboard in Azure Kubernetes Service (AKS)
 

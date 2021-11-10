@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 07/21/2020
-ms.openlocfilehash: 0c3c4f4dbf7de3924b15d7c5394ae0e7d36b4e64
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 689c934d9d175b4e40c7f7d65b3b710bbe4a94fe
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131077798"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132059448"
 ---
 # <a name="tutorial-migrateupgrade-azure-db-for-postgresql---single-server-to-azure-db-for-postgresql---single-server--online-using-dms-via-the-azure-portal"></a>Tutorial: Onlinemigration/Onlineupgrade von einer Azure Database for PostgreSQL – Einzelserver-Instanz zu einer anderen Azure Database for PostgreSQL – Einzelserver-Instanz mithilfe von DMS über das Azure-Portal
 
@@ -105,60 +105,9 @@ Zum Fertigstellen aller Datenbankobjekte wie Tabellenschemas, Indizes und gespei
     ```
     psql -h mypgserver-source.postgres.database.azure.com  -U pguser@mypgserver-source -d dvdrental citus < dvdrentalSchema.sql
     ```
-
-4. Um das Skript zum Löschen von Fremdschlüsseln zu extrahieren und im Ziel (Azure Database for PostgreSQL) hinzuzufügen, führen Sie das folgende Skript in PgAdmin oder psql aus.
-
-   > [!IMPORTANT]
-   > Fremdschlüssel in Ihrem Schema verursachen Fehler beim ersten Ladevorgang und bei der fortlaufenden Synchronisierung der Migration.
-
-    ```
-    SELECT Q.table_name
-        ,CONCAT('ALTER TABLE ','"', table_schema,'"', '.','"', table_name ,'"', STRING_AGG(DISTINCT CONCAT(' DROP CONSTRAINT ','"', foreignkey,'"'), ','), ';') as DropQuery
-            ,CONCAT('ALTER TABLE ','"', table_schema,'"', '.','"', table_name,'"', STRING_AGG(DISTINCT CONCAT(' ADD CONSTRAINT ','"', foreignkey,'"', ' FOREIGN KEY (','"', column_name,'"', ')', ' REFERENCES ','"', foreign_table_schema,'"', '.','"', foreign_table_name,'"', '(','"', foreign_column_name,'"', ')',' ON UPDATE ',update_rule,' ON DELETE ',delete_rule), ','), ';') as AddQuery
-    FROM
-        (SELECT
-        S.table_schema,
-        S.foreignkey,
-        S.table_name,
-        STRING_AGG(DISTINCT S.column_name, ',') AS column_name,
-        S.foreign_table_schema,
-        S.foreign_table_name,
-        STRING_AGG(DISTINCT S.foreign_column_name, ',') AS foreign_column_name,
-        S.update_rule,
-        S.delete_rule
-    FROM
-        (SELECT DISTINCT
-        tc.table_schema,
-        tc.constraint_name AS foreignkey,
-        tc.table_name,
-        kcu.column_name,
-        ccu.table_schema AS foreign_table_schema,
-        ccu.table_name AS foreign_table_name,
-        ccu.column_name AS foreign_column_name,
-        rc.update_rule AS update_rule,
-        rc.delete_rule AS delete_rule
-        FROM information_schema.table_constraints AS tc
-        JOIN information_schema.key_column_usage AS kcu ON tc.constraint_name = kcu.constraint_name AND tc.table_schema = kcu.table_schema
-        JOIN information_schema.constraint_column_usage AS ccu ON ccu.constraint_name = tc.constraint_name AND ccu.table_schema = tc.table_schema
-        JOIN information_schema.referential_constraints as rc ON rc.constraint_name = tc.constraint_name AND rc.constraint_schema = tc.table_schema
-    WHERE constraint_type = 'FOREIGN KEY'
-        ) S
-        GROUP BY S.table_schema, S.foreignkey, S.table_name, S.foreign_table_schema, S.foreign_table_name,S.update_rule,S.delete_rule
-        ) Q
-        GROUP BY Q.table_schema, Q.table_name;
-    ```
-
-5. Führen Sie „drop foreign key“ (zweite Spalte) im Abfrageergebnis aus.
-
-6. Um Trigger in der Zieldatenbank zu deaktivieren, führen Sie das folgende Skript aus.
-
-   > [!IMPORTANT]
-   > Trigger („insert“ oder „update“) in den Daten erzwingen Datenintegrität am Ziel, bevor die Daten aus der Quelle repliziert werden. Daher empfiehlt es sich, Trigger während der Migration in allen Tabellen **im Ziel** zu deaktivieren und nach Abschluss der Migration wieder zu aktivieren.
-
-    ```
-    SELECT DISTINCT CONCAT('ALTER TABLE ', event_object_schema, '.', event_object_table, ' DISABLE TRIGGER ', trigger_name, ';')
-    FROM information_schema.triggers
-    ```
+    
+   > [!NOTE]
+   > Der Migrationsdienst verwaltet intern die Aktivierung/Deaktivierung von Fremdschlüsseln und Triggern, um eine zuverlässige und stabile Datenmigration zu gewährleisten. Daher müssen Sie sich keine Gedanken über Änderungen am Schema der Zieldatenbank machen.
 
 [!INCLUDE [resource-provider-register](../../includes/database-migration-service-resource-provider-register.md)]
 

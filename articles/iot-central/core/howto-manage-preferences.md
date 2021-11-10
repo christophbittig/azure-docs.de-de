@@ -1,19 +1,19 @@
 ---
 title: Verwalten Ihrer persönlichen Einstellungen unter IoT Central | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie Ihre persönlichen Anwendungseinstellungen in Ihrer IoT Central-Anwendung verwalten, z. B. wie Sie die Sprache, das Design oder die Standardorganisation ändern.
-author: lmasieri
-ms.author: lmasieri
+author: dominicbetts
+ms.author: dobett
 ms.date: 08/30/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 175a2295d7c820e048ac4a289ab1b6208035e692
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: 3c2c27ecbe76112d651c05c276e3119908be69d8
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129081204"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131997721"
 ---
 # <a name="manage-your-personal-application-preferences"></a>Verwalten Ihrer persönlichen Anwendungseinstellungen
 

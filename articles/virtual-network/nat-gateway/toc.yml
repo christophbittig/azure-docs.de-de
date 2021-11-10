@@ -30,7 +30,7 @@ items:
       - name: Sicherheit
         items:
           - name: Virtual Network NAT-Sicherheitsbaseline
-            href: nat-security-baseline.md
+            href: /security/benchmark/azure/baselines/virtual-network-nat-security-baseline
   - name: Vorgehensweise
     items:
       - name: Problembehandlung
@@ -39,7 +39,7 @@ items:
             href: troubleshoot-nat.md
   - name: Verweis
     items:
-      - name: Azure-Befehlszeilenschnittstelle
+      - name: Azure CLI
         href: /cli/azure/azure-cli-reference-for-network
       - name: Azure PowerShell
         href: /powershell/module/az.network

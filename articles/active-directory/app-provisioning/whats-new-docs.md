@@ -1,7 +1,7 @@
 ---
 title: Neuerungen bei der Azure Active Directory-Anwendungsbereitstellung
 description: Neue und aktualisierte Dokumentation für die Azure Active Directory-Anwendungsbereitstellung
-ms.date: 10/05/2021
+ms.date: 11/04/2021
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: reference
@@ -9,16 +9,23 @@ ms.workload: identity
 ms.author: kenwith
 author: kenwith
 manager: karenh444
-ms.openlocfilehash: 7404e91f9a5f71276749b704355a080f5c3cc29f
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 1eaccdcc6d8922f75ac9d00b060ebdb311485c98
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129990518"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131851380"
 ---
 # <a name="azure-active-directory-application-provisioning-whats-new"></a>Azure Active Directory-Anwendungsbereitstellung: Neues
 
 Hier erfahren Sie mehr über die Neuerungen in der Dokumentation zur Azure Active Directory-Anwendungsbereitstellung. In diesem Artikel werden neu hinzugefügte Dokumente aufgelistet sowie Dokumente, die in den letzten drei Monaten grundlegend überarbeitet wurden. Informationen zu den Neuerungen beim Bereitstellungsdienst finden Sie unter [Neuerungen in Azure Active Directory](../fundamentals/whats-new.md).
+
+## <a name="october-2021"></a>Oktober 2021
+
+### <a name="new-articles"></a>Neue Artikel
+
+- [Konfigurieren von Azure AD zum Bereitstellen von Benutzer*innen in LDAP-Verzeichnissen](on-premises-ldap-connector-configure.md)
+
 
 ## <a name="september-2021"></a>September 2021
 

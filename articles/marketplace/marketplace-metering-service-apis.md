@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/15/2021
 author: saasguide
 ms.author: souchak
-ms.openlocfilehash: 84e55aa971eae4c67bc6ec2dcaa4618b55c8f737
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: f420934489c6e5e65b050ce30ded8fb922dfdfe8
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130134106"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132061360"
 ---
 # <a name="marketplace-metered-billing-apis"></a>APIs für getaktete Abrechnung im Marketplace
 
@@ -72,7 +72,7 @@ Für jede Stunde eines Kalendertags kann pro Ressource nur ein Nutzungsereignis 
 
 Bei von Azure-Anwendungen verwalteten App-Plänen ist `resourceId` die `resource group Id` der verwalteten App. Ein Beispielskript zum Abrufen der ID finden Sie unter [Verwenden des Tokens für von Azure verwaltete Identitäten](./marketplace-metering-service-authentication.md#using-the-azure-managed-identities-token). 
 
-Bei SaaS-Angeboten ist `resourceId` die SaaS-Abonnement-ID. Weitere Informationen zu SaaS-Abonnements finden Sie unter [Auflisten von Abonnements](partner-center-portal/pc-saas-fulfillment-api-v2.md#get-list-of-all-subscriptions).
+Bei SaaS-Angeboten ist `resourceId` die SaaS-Abonnement-ID. Weitere Informationen zu SaaS-Abonnements finden Sie unter [Auflisten von Abonnements](partner-center-portal/pc-saas-fulfillment-subscription-api.md#get-list-of-all-subscriptions).
 
 ### <a name="responses"></a>Antworten
 
@@ -170,7 +170,7 @@ Mit der API für Batchnutzungsereignisse können Sie Nutzungsereignisse gleichze
 >[!NOTE]
 >Im Anforderungstext besitzt der Ressourcenbezeichner unterschiedliche Bedeutungen für SaaS-Apps und für verwaltete Azure-Apps, die eine benutzerdefinierte Verbrauchseinheit ausgeben. Der Ressourcenbezeichner für die SaaS-App lautet `resourceID`. Der Ressourcenbezeichner für Pläne verwalteter Azure-Anwendungs-Apps lautet `resourceUri`.
 
-Bei SaaS-Angeboten ist `resourceId` die SaaS-Abonnement-ID. Weitere Informationen zu SaaS-Abonnements finden Sie unter [Auflisten von Abonnements](partner-center-portal/pc-saas-fulfillment-api-v2.md#get-list-of-all-subscriptions).
+Bei SaaS-Angeboten ist `resourceId` die SaaS-Abonnement-ID. Weitere Informationen zu SaaS-Abonnements finden Sie unter [Auflisten von Abonnements](partner-center-portal/pc-saas-fulfillment-subscription-api.md#get-list-of-all-subscriptions).
 
 *Beispiel für Anforderungstext für SaaS-Apps:*
 

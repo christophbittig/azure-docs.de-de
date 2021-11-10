@@ -4,16 +4,16 @@ description: Hier erfahren Sie, wie Sie mit dem Azure-Portal Azure-SSIS Integrat
 ms.service: data-factory
 ms.subservice: integration-services
 ms.topic: conceptual
-ms.date: 10/27/2021
+ms.date: 10/22/2021
 author: swinarko
 ms.author: sawinark
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: bcbb939f35e7bb4fa1a3508f7403f990edd6e282
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 13c5a0d77e82e699c24f13fce3f27d0ddea7fc9e
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131038751"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131851171"
 ---
 # <a name="create-an-azure-ssis-integration-runtime-via-azure-portal"></a>Erstellen von Azure-SSIS Integration Runtime über das Azure-Portal 
 

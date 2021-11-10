@@ -1,27 +1,26 @@
 ---
 title: Zugreifen auf die in Azure Confidential Ledger gespeicherten Hashes
 description: Erfahren Sie, wie Sie mit dem Azure SQL-Datenbank-Ledger auf die in Azure Confidential Ledger (ACL) gespeicherten Digests zugreifen.
-ms.custom: references_regions
-ms.date: 07/23/2021
+ms.date: 09/09/2021
 ms.service: sql-database
 ms.subservice: security
 ms.reviewer: vanto
 ms.topic: how-to
-author: JasonMAnderson
-ms.author: janders
-ms.openlocfilehash: 7a5253879daf3aaa9551b91a91c38135d29be10e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+author: rothja
+ms.author: jroth
+ms.openlocfilehash: f011494412b6f9cf1ac186f171b62fe82d02aaaa
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339242"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132061737"
 ---
 # <a name="access-the-digests-stored-in-confidential-ledger"></a>Zugreifen auf die in Azure Confidential Ledger gespeicherten Digests
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!NOTE]
-> Der Azure SQL-Datenbank-Ledger befindet sich derzeit in der öffentlichen Vorschauphase und ist in den Regionen West „Europa, Westen“, „Brasilien, Süden“ und „USA, Westen-Mitte“ verfügbar.
+> Der Azure SQL-Datenbank-Ledger ist zurzeit als Public Preview (Öffentliche Vorschau) verfügbar.
 
 In diesem Artikel erfahren Sie, wie Sie auf einen in [Azure Confidential Ledger (ACL)](../../confidential-ledger/index.yml) gespeicherten [Azure SQL-Datenbank-Ledgerdigest](ledger-overview.md) zugreifen, um End-to-End-Sicherheits- und -Integritätsgarantien zu erhalten. In diesem Artikel wird erläutert, wie Sie auf die gespeicherten Informationen zugreifen und ihre Integrität überprüfen.
 

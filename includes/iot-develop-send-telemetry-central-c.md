@@ -1,5 +1,5 @@
 ---
-title: Datei einfügen
+title: include file
 description: Datei einfügen
 author: timlt
 ms.service: iot-develop
@@ -7,16 +7,16 @@ ms.topic: include
 ms.date: 09/10/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: da7d554e695b70bab01e738c46ad3c977abcc3f9
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 7f02dba36ceee1d3acba9f359f26fc3bbe7aa1ae
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131032791"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131860946"
 ---
 [![Code durchsuchen](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/pnp)
 
-In dieser Schnellstartanleitung lernen Sie einen einfachen Entwicklungsworkflow für Azure IoT-Anwendungen kennen. Zunächst erstellen Sie eine Azure IoT Central-Anwendung zum Hosten von Geräten. Anschließend verwenden Sie ein Beispiel für ein Azure IoT-Geräte-SDK, um einen Temperaturregler zu erstellen, ihn sicher mit IoT Central zu verbinden und Telemetriedaten zu senden. Die Beispielanwendung für den Temperaturregler wird auf Ihrem lokalen Computer ausgeführt und generiert simulierte Sensordaten, die an IoT Central gesendet werden sollen.
+In dieser Schnellstartanleitung lernen Sie einen einfachen Entwicklungsworkflow für Azure IoT-Anwendungen kennen. Zunächst erstellen Sie eine Azure IoT Central-Anwendung zum Hosten von Geräten. Anschließend verwenden Sie ein SDK-Beispiel für ein Azure IoT-Gerät, um einen Temperaturregler zu erstellen, ihn sicher mit IoT Central zu verbinden und Telemetriedaten zu senden. Die Beispielanwendung für den Temperaturregler wird auf Ihrem lokalen Computer ausgeführt und generiert simulierte Sensordaten, die an IoT Central gesendet werden sollen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Diese Schnellstartanleitung wird unter Windows, Linux und Raspberry Pi ausgeführt. Sie wurde mit den folgenden Betriebssystem- und Geräteversionen getestet:
@@ -56,7 +56,7 @@ Installieren Sie Visual Studio 2019 zum Abschließen dieser Schnellstartanleitun
 
 [!INCLUDE [iot-develop-create-central-app-with-device](iot-develop-create-central-app-with-device.md)]
 
-## <a name="run-a-device"></a>Ausführen eines Geräts
+## <a name="run-the-device-sample"></a>Ausführen des Gerätebeispiels
 In diesem Abschnitt konfigurieren Sie Ihre lokale Umgebung, installieren das Azure IoT-C-Geräte-SDK und führen ein Beispiel aus, mit dem ein Temperaturregler erstellt wird.
 
 ### <a name="configure-your-environment"></a>Konfigurieren Ihrer Umgebung

@@ -1,27 +1,26 @@
 ---
 title: 'Azure SQL-Datenbank: aktualisierbare Ledgertabellen'
 description: Dieser Artikel enthält Informationen zu aktualisierbaren Ledgertabellen, dem Ledgerschema und Ledgeransichten in Azure SQL-Datenbank.
-ms.custom: references_regions
-ms.date: 07/23/2021
+ms.date: 09/09/2021
 ms.service: sql-database
 ms.subservice: security
 ms.reviewer: vanto
 ms.topic: conceptual
-author: JasonMAnderson
-ms.author: janders
-ms.openlocfilehash: 4a84cb359a0840f593fd732339a4ef9f9f3588db
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+author: rothja
+ms.author: jroth
+ms.openlocfilehash: 3010ba83f8d45083213f3725626f92b111fb839d
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114665509"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132056188"
 ---
 # <a name="azure-sql-database-updatable-ledger-tables"></a>Azure SQL-Datenbank: aktualisierbare Ledgertabellen
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!NOTE]
-> Der Azure SQL-Datenbank-Ledger befindet sich derzeit in der öffentlichen Vorschauphase und ist in den Regionen West „Europa, Westen“, „Brasilien, Süden“ und „USA, Westen-Mitte“ verfügbar.
+> Der Azure SQL-Datenbank-Ledger ist zurzeit als Public Preview (Öffentliche Vorschau) verfügbar.
 
 Aktualisierbare Ledgertabellen sind Tabellen mit vom System verwalteten Versionen, für die Benutzer Updates und Löschungen durchführen können und die gleichzeitig Beweisfunktionen für Manipulationen bereitstellen. Bei Updates oder Löschungen werden alle früheren Versionen einer Zeile in einer sekundären Tabelle beibehalten, die als Verlaufstabelle bezeichnet wird. Die Verlaufstabelle hat dasselbe Schema wie die aktualisierbare Ledgertabelle. Bei einem Update einer Zeile verbleibt die neueste Version der Zeile in der Ledgertabelle, während ihre frühere Version vom System in die Verlaufstabelle eingefügt wird. Dieser Vorgang ist für die Anwendung vollkommen transparent. 
 

@@ -8,15 +8,15 @@ ms.topic: quickstart
 ms.date: 06/11/2021
 ms.author: markvi
 author: MarkusVi
-manager: mtillman
+manager: karenhoran
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c684db974dfd939287cd15d63079693b4cf1d668
-ms.sourcegitcommit: 190658142b592db528c631a672fdde4692872fd8
+ms.openlocfilehash: 51bc001c5f6984e855adb11b1bdb7c938d2d5783
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112008152"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131995500"
 ---
 # <a name="quickstart-filter-your-azure-ad-audit-log"></a>Schnellstart: Filtern des Azure AD-Überwachungsprotokolls 
 
@@ -27,7 +27,7 @@ Durch die Informationen im Azure AD-Überwachungsprotokoll erhalten Sie Zugriff
 
 Für die Durchführung des Szenarios im Rahmen dieses Schnellstarts benötigen Sie Folgendes:
 
-- **Zugriff auf einen Azure AD-Mandanten**: Wenn Sie keinen Zugriff auf einen Azure AD-Mandanten besitzen, lesen Sie [Erstellen Sie noch heute Ihr kostenloses Azure-Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
+- **Zugriff auf einen Azure AD-Mandanten**: Wenn Sie keinen Zugriff auf einen Azure AD-Mandanten besitzen, können Sie hier ein [kostenloses Azure-Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 - **Ein Testkonto unter dem Namen Isabella Simonsen**: Wenn Sie nicht wissen, wie Sie ein Testkonto erstellen, lesen Sie [Hinzufügen von cloudbasierten Benutzern](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
 
 ## <a name="find-the-new-user-account"></a>Ermitteln des neuen Benutzerkontos

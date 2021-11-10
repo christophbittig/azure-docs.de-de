@@ -12,16 +12,14 @@ ms.date: 09/01/2020
 ms.author: eur
 ms.custom: cog-serv-seo-aug-2020
 keywords: Sprachsynthese
-ms.openlocfilehash: a086ebf1d7e9da9f8394a6cdde411e5ee55a5f28
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: c3a4caa638debfa32fa6d571b473b2bf5bd0cf09
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131511062"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131990374"
 ---
 # <a name="what-is-neural-text-to-speech"></a>Was ist die neuronale Sprachsynthese?
-
-[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 Die neuronale Sprachsynthese von Microsoft verwenden Deep Neural Network-Instanzen, um die Stimmen von Computern so zu gestalten, dass sie von Aufzeichnungen von Personen nahezu nicht zu unterscheiden sind. Durch natürliche, menschenähnliche Intonation und klare Aussprache von Wörtern kann die neuronale Sprachsynthese die Hörermüdung bei der Interaktion mit KI-Systemen erheblich verringern.
 

@@ -10,12 +10,12 @@ ms.date: 11/20/2020
 author: nelgson
 ms.author: negust
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 04d9b7ab0255212ed1b753d0bf6f31abfe1db03d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: d72db64026ff3d4d4cee759b34047662248737a6
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131018948"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131845131"
 ---
 # <a name="quickstart-configure-prerequisites-for-using-cognitive-services-in-azure-synapse-analytics"></a>Schnellstart: Konfigurieren der Voraussetzungen für die Verwendung von Cognitive Services in Azure Synapse Analytics
 
@@ -75,7 +75,7 @@ Sie können im Azure-Portal eine Ressource des Typs [Sprache](https://ms.portal.
 ## <a name="create-a-key-vault-and-configure-secrets-and-access"></a>Erstellen eines Schlüsseltresors und Konfigurieren von Geheimnissen und Zugriff
 
 1. Erstellen Sie einen [Schlüsseltresor](https://ms.portal.azure.com/#create/Microsoft.KeyVault) im Azure-Portal.
-2. Navigieren Sie zu **Key Vault** > **Zugriffsrichtlinien**, und gewähren Sie der [MSI des Azure Synapse-Arbeitsbereichs](../security/synapse-workspace-managed-identity.md) Berechtigungen zum Lesen von Geheimnissen aus Azure Key Vault.
+2. Navigieren Sie zu **Key Vault** > **Zugriffsrichtlinien**, und gewähren Sie der [MSI des Azure Synapse-Arbeitsbereichs](../../data-factory/data-factory-service-identity.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics) Berechtigungen zum Lesen von Geheimnissen aus Azure Key Vault.
 
    > [!NOTE]
    > Stellen Sie sicher, dass die Richtlinienänderungen gespeichert werden. Dieser Schritt ist leicht zu übersehen.

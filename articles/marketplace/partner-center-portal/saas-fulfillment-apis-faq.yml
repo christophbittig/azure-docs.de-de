@@ -8,12 +8,12 @@ metadata:
   ms.date: 03/19/2021
   author: saasguide
   ms.author: souchak
-  ms.openlocfilehash: 4092ad53e67cc7ed526f66b4e5214a9bb9a1aeda
-  ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+  ms.openlocfilehash: b16e1b8e014e28b1ec02f93a23a48aa6df57dbde
+  ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/15/2021
-  ms.locfileid: "130043299"
+  ms.lasthandoff: 11/09/2021
+  ms.locfileid: "132056169"
 title: Häufig gestellte Fragen zu SaaS-Fulfillment-APIs
 summary: Dieser Artikel beschreibt einige der Integrationsanforderungen für den kommerziellen Microsoft-Marketplace, damit Azure-Kunden SaaS-Angebote abonnieren können.
 sections:
@@ -58,7 +58,7 @@ sections:
       ![Ablauf für Kundenabonnement](media/saas-metering-service-integration-flow-a.png)
 
 
-      Weitere Informationen zur Abwicklung von Transaktionen im Lebenszyklus eines SaaS-Angebots finden Sie unter [SaaS-Fulfillment-API](pc-saas-fulfillment-api-v2.md).
+      Weitere Informationen zur Abwicklung von Transaktionen im Lebenszyklus eines SaaS-Angebots finden Sie unter [SaaS-Fulfillment-API](pc-saas-fulfillment-apis.md).
   - question: >
       Woher wissen Sie, welches SaaS-Angebot der Benutzer in Azure abonniert?
     answer: >

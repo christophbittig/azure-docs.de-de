@@ -1,19 +1,19 @@
 ---
 title: Schützen einer App in Azure Container Apps (Vorschauversion)
 description: Erfahren Sie, wie Sie Anwendungen in Azure Container Apps schützen.
-services: app-service
+services: container-apps
 author: craigshoemaker
-ms.service: app-service
+ms.service: container-apps
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.author: cshoe
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 3de81d40065a37f3d8443594621a2dec99120017
-ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
+ms.openlocfilehash: aca235582babedaa9bf6a7c44a835734ba4cb5dc
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131578934"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132026993"
 ---
 # <a name="secure-an-app-in-azure-container-apps-preview"></a>Schützen einer App in Azure Container Apps (Vorschauversion)
 
@@ -83,7 +83,7 @@ Geheimnisse werden mit dem `--secrets`-Parameter definiert.
 - Der Parameter akzeptiert einen durch Trennzeichen getrennten Satz von Name/Wert-Paaren.
 - Jedes Paar wird durch ein Gleichheitszeichen (`=`) getrennt.
 
-```powershell
+```azurecli
 az containerapp create `
   --resource-group "my-resource-group" `
   --name queuereader `
@@ -134,7 +134,7 @@ Hier ruft die Umgebungsvariable mit dem Namen `connection-string` ihren Wert aus
 
 In diesem Beispiel erstellen Sie mithilfe des Azure CLI eine Anwendung mit einem Geheimnis, auf das in einer Umgebungsvariablen verwiesen wird.
 
-```powershell
+```azurecli
 az containerapp create `
   --resource-group "my-resource-group" `
   --name myQueueApp `

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 11/23/2020
 ms.author: eur
-ms.openlocfilehash: d19b05eae65e6d01e6e9daa4700318eca451e88d
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 739f5b448f49b825cbb0fbec2c02c5385e0de138
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131505306"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131990000"
 ---
 # <a name="what-is-the-speech-service"></a>Worum handelt es sich beim Speech-Dienst?
 
@@ -39,9 +39,6 @@ Die folgenden Features sind Teil des Speech-Diensts. Verwenden Sie die Links in 
 | [Sprachübersetzung](speech-translation.md) | Sprachübersetzung | Die Sprachübersetzung ermöglicht Echtzeitübersetzungen in mehreren Sprachen für Ihre Anwendungen, Tools und Geräte. Verwenden Sie diesen Dienst für die Übersetzung von Sprache in Sprache und Sprache in Text. | [Ja](./speech-sdk.md) | Nein |
 | [Sprachassistenten](voice-assistants.md) | Sprachassistenten | Sprachassistenten, die den Speech-Dienst verwenden, ermöglichen es Entwicklern, natürliche Konversationsschnittstellen für ihre Anwendungen und Umgebungen zu erstellen, die der menschlichen Sprache nahekommen. Der Dienst für Sprachassistenten ermöglicht eine schnelle und zuverlässige Interaktion zwischen einem Gerät und einer Assistentenimplementierung über den Direct Line Speech-Kanal des Bot-Frameworks oder über den Dienst „Benutzerdefinierte Befehle“ für die Aufgabenausführung. | [Ja](voice-assistants.md) | Nein |
 | [Sprechererkennung](speaker-recognition-overview.md) | Sprecherüberprüfung und -identifikation | Der Dienst „Sprechererkennung“ bietet Algorithmen, mit denen Sprecher anhand ihrer individuellen Stimmmerkmale überprüft und identifiziert werden. Sprechererkennung wird verwendet, um herauszufinden, wer spricht. | Ja | [Ja](/rest/api/speakerrecognition/) |
-
-
-[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 ## <a name="try-the-speech-service-for-free"></a>Kostenloses Testen des Speech-Diensts
 

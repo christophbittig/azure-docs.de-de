@@ -2,14 +2,14 @@
 title: Analysieren von Livevideos ohne Aufzeichnung - Azure
 description: Eine Pipelinetopologie kann auch nur verwendet werden, um Analysen aus einem Livevideostream zu extrahieren, ohne dass dieser am Edge oder in der Cloud aufgezeichnet werden muss. Dieses Konzept wird in diesem Artikel erläutert.
 ms.topic: conceptual
-ms.date: 06/01/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 5bf4490a058fb00e12c9c43faa5af0a6f261fede
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 6230c565e7f193264c0640a3a278b2812f20ad7d
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131043943"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131847069"
 ---
 # <a name="analyzing-live-videos-without-recording"></a>Analysieren von Livevideos ohne Aufzeichnung
 

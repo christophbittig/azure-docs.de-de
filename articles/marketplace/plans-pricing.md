@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mingshen
 ms.author: mingshen
 ms.date: 07/05/2021
-ms.openlocfilehash: 6ea06820a9f66c831847808d9f6de9a6bf4803b1
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 71efd629463f53519d98458afaa449c7a7f46ffb
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130073960"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132062337"
 ---
 # <a name="plans-and-pricing-for-commercial-marketplace-offers"></a>Pläne und Preise für Angebote im kommerziellen Marketplace
 
@@ -162,7 +162,7 @@ Nachdem ein Kunde eine kostenlose Testversion für einen Plan ausgewählt hat, k
 > [!NOTE]
 > Nachdem ein Kunde mit den Zahlungen für einen Plan begonnen hat, kann er keine kostenlose Testversion für dasselbe Angebot mehr erhalten, auch wenn er zu einem anderen Plan wechselt, der kostenlose Testversionen unterstützt.
 
-Wenn Sie Informationen zu Kundenabonnements abrufen möchten, die derzeit an einer kostenlosen Testversion teilnehmen, verwenden Sie die neue API-Eigenschaft `isFreeTrial`, die als „true“ oder „false“ gekennzeichnet ist. Weitere Informationen finden Sie unter der [API zum Abrufen von SaaS-Abonnements](./partner-center-portal/pc-saas-fulfillment-api-v2.md#get-subscription).
+Wenn Sie Informationen zu Kundenabonnements abrufen möchten, die derzeit an einer kostenlosen Testversion teilnehmen, verwenden Sie die neue API-Eigenschaft `isFreeTrial`, die als „true“ oder „false“ gekennzeichnet ist. Weitere Informationen finden Sie unter der [API zum Abrufen von SaaS-Abonnements](./partner-center-portal/pc-saas-fulfillment-subscription-api.md#get-subscription).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -11,16 +11,16 @@ ms.topic: overview
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-custom-classification, ignite-fall-2021
-ms.openlocfilehash: 69846496c05716cc00ca782c979bc3c970537b0b
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 220995b286824b2daf2eb79c6b0ec917c5549263
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131029582"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132061961"
 ---
 # <a name="how-to-prepare-data-and-define-a-schema"></a>Vorbereiten von Daten und Definieren eines Schemas
 
-Zum Erstellen eines benutzerdefinierten Klassifizierungsmodells benötigen Sie Qualitätsdaten, um es zu trainieren. In diesem Artikel wird beschrieben, wie Sie bei der Auswahl und Vorbereitung Ihrer Daten und beim Definieren eines Schemas vorgehen sollten. Ein Schema definiert die Klassen, in die Ihr Modell Ihren Text zur Laufzeit klassifizieren muss, und ist der erste Schritt bei der [Entwicklung einer benutzerdefinierten Klassifizierungsanwendung](../overview.md#application-development-lifecycle).
+Zum Erstellen eines benutzerdefinierten Klassifizierungsmodells benötigen Sie Qualitätsdaten, um es zu trainieren. In diesem Artikel wird beschrieben, wie Sie bei der Auswahl und Vorbereitung Ihrer Daten und beim Definieren eines Schemas vorgehen sollten. Ein Schema definiert die Klassen, in die Ihr Modell Ihren Text zur Laufzeit klassifizieren muss, und ist der erste Schritt bei der [Entwicklung einer benutzerdefinierten Klassifizierungsanwendung](../overview.md#project-development-lifecycle).
 
 
 ## <a name="data-selection"></a>Datenauswahl

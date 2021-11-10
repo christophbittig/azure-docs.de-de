@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-custom-classification, ignite-fall-2021
-ms.openlocfilehash: eae333dfd399e33063b2b18777c45ea2c1b89a54
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 73513e90f37a3d003351604d119612306ba66277
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095210"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132062736"
 ---
 # <a name="improve-model-performance"></a>Verbessern der Modellleistung
 
@@ -32,7 +32,7 @@ Zum optionalen Verbessern eines Modells müssen diese Voraussetzungen gegeben se
 * Überprüfen Sie die [Modellauswertungsdetails](view-model-evaluation.md), um die Leistung Ihres Modells zu bestimmen.
 * Vertrautheit mit den für die Auswertung verwendeten [Auswertungsmetriken](../concepts/evaluation.md)
 
-Weitere Informationen finden Sie im [Lebenszyklus der Anwendungsentwicklung](../overview.md#application-development-lifecycle).
+Weitere Informationen finden Sie im [Lebenszyklus der Anwendungsentwicklung](../overview.md#project-development-lifecycle).
 
 ## <a name="review-test-set-predictions"></a>Überprüfen von Testmengenvorhersagen
 
@@ -65,7 +65,7 @@ In den [Auswertungsmetriken](../concepts/evaluation.md) weist eine überrepräse
 So untersuchen Sie die Datenverteilung in Ihrem Dataset:
 
 1. Wechseln Sie in Language Studio zu Ihrer [Projektseite.](https://aka.ms/languageStudio)
-    1. Suchen Sie in Language Studio den Abschnitt **Text klassifizieren**.
+    1. Wechseln Sie in Language Studio zum Abschnitt **Text klassifizieren**.
     2. Wählen Sie **Benutzerdefinierte Textklassifizierung** aus. 
 
 2. Wählen Sie im Menü auf der linken Seite **Modell verbessern** aus.

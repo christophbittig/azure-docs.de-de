@@ -10,12 +10,12 @@ ms.date: 8/05/2021
 ms.author: ronytho
 ms.reviewer: jrasnick, wiassaf
 ms.custom: subject-rbac-steps
-ms.openlocfilehash: 3e90ab30e8eb916ef70248af32b7b95ff0a48428
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: d80b12e807e6c6f0999927bc373fe64c1feb1b40
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131003540"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131846594"
 ---
 # <a name="how-to-set-up-access-control-for-your-azure-synapse-workspace"></a>Einrichten der Zugriffssteuerung für Ihren Azure Synapse-Arbeitsbereich 
 
@@ -129,7 +129,7 @@ Erstellen Sie im Azure-Portal einen Azure Synapse-Arbeitsbereich:
 
 ## <a name="step-4-grant-the-workspace-msi-access-to-the-default-storage-container"></a>SCHRITT 4: Gewähren von Zugriff auf den Standardspeichercontainer für die Arbeitsbereichs-MSI
 
-Zum Ausführen von Pipelines und Systemaufgaben in Azure Synapse muss eine vom Arbeitsbereich verwaltete Dienstidentität (MSI) Zugriff auf `container1` im ADLS Gen2-Standardkonto haben. Weitere Informationen finden Sie unter [Vom Azure Synapse-Arbeitsbereich verwaltete Identität](synapse-workspace-managed-identity.md).
+Zum Ausführen von Pipelines und Systemaufgaben in Azure Synapse muss eine vom Arbeitsbereich verwaltete Dienstidentität (MSI) Zugriff auf `container1` im ADLS Gen2-Standardkonto haben. Weitere Informationen finden Sie unter [Vom Azure Synapse-Arbeitsbereich verwaltete Identität](../../data-factory/data-factory-service-identity.md?context=/azure/synapse-analytics/context/context&tabs=synapse-analytics).
 
 - Öffnen Sie das Azure-Portal.
 - Suchen Sie das Speicherkonto `storage1` und dann `container1`.

@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie mithilfe von Java Funktionen entwickeln könn
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: d03a4121394141b7b39ae441d7eb3cf653a0b374
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: ae47e03e2b72c94c5419744164cf9daa2182b7de
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129232145"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132027126"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Java-Entwicklerhandbuch für Azure Functions
 
@@ -154,6 +154,7 @@ Die folgende Tabelle zeigt die aktuell von den jeweiligen Hauptversionen der Fun
 
 | Functions-Version | Java-Versionen (Windows) | Java-Versionen (Linux) |
 | ----- | ----- | --- |
+| 4.x | 11 <br/>8 | 11 <br/>8 |
 | 3.x | 11 <br/>8 | 11 <br/>8 |
 | 2.x | 8 | – |
 

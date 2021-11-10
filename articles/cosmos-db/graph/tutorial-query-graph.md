@@ -6,15 +6,15 @@ ms.author: mansha
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: tutorial
-ms.date: 12/03/2018
+ms.date: 11/08/2021
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 11bc5a7f0880930e5680289a013c68dd2d04ee6d
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: ac6aef98b06c485bc16777b130c39f9006e6ffff
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121785343"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132060601"
 ---
 # <a name="tutorial-query-azure-cosmos-db-gremlin-api-by-using-gremlin"></a>Tutorial: Abfragen der Gremlin-API von Azure Cosmos DB mithilfe von Gremlin
 [!INCLUDE[appliesto-gremlin-api](../includes/appliesto-gremlin-api.md)]
@@ -51,7 +51,7 @@ g.V().hasLabel('person').has('age', gt(40))
 Sie können bestimmte Eigenschaften in den Abfrageergebnissen mit dem `values`-Schritt projizieren:
 
 ```
-g.V().hasLabel('person').values('firstName')
+g.V().hasLabel('person').values('name')
 ```
 
 ## <a name="find-related-edges-and-vertices"></a>Suchen verwandter Kanten und Scheitelpunkte

@@ -1,5 +1,5 @@
 ---
-title: Datei einfügen
+title: include file
 description: Datei einfügen
 author: timlt
 ms.service: iot-develop
@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 09/17/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: d448a7179e2fa512690dba638747010ec292427c
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: d96e331727c1c4d306746c35565f759fcd12a4c8
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131521072"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131860394"
 ---
 [![Code durchsuchen](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples/javascript)
 
@@ -37,7 +37,7 @@ Installieren Sie die folgenden Voraussetzungen auf Ihrem Entwicklungscomputer �
 
 [!INCLUDE [iot-hub-include-create-hub-iot-explorer](iot-hub-include-create-hub-iot-explorer.md)]
 
-## <a name="run-a-device"></a>Ausführen eines Geräts
+## <a name="run-the-device-sample"></a>Ausführen des Gerätebeispiels
 In diesem Abschnitt verwenden Sie das Node.js SDK zum Senden von Nachrichten von einem Gerät an Ihren IoT-Hub. Sie führen ein Beispiel aus, das einen Temperaturregler mit zwei Thermostatsensoren implementiert.
 
 1. Öffnen Sie eine neue Konsole wie Windows CMD: PowerShell oder Bash. In den folgenden Schritten werden Sie diese Konsole verwenden, um das Node.js SDK zu installieren und mit Node.js-Beispielcode zu arbeiten.

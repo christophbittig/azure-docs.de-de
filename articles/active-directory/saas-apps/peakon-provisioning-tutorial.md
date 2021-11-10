@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: thwimmer
-ms.openlocfilehash: 65416e8e0117f91d97374ae10fbc633d1783b823
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: e1fd9d3d00c083e448755176f42b2493999e604c
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113766512"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131989507"
 ---
 # <a name="tutorial-configure-peakon-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Peakon für die automatische Benutzerbereitstellung
 
@@ -33,6 +33,9 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 * Einen Azure AD-Mandanten.
 * [Einen Peakon-Mandanten](https://peakon.com/us/pricing/).
 * Ein Benutzerkonto in Peakon mit Administratorberechtigungen.
+
+> [!NOTE]
+> Diese Integration kann auch über die Azure AD-Umgebung für die US Government-Cloud verwendet werden. Sie finden diese Anwendung im Azure AD-Katalog für US Government-Cloudanwendungen und konfigurieren sie auf die gleiche Weise wie in der öffentlichen Cloud.
 
 ## <a name="assigning-users-to-peakon"></a>Zuweisen von Benutzern zu Peakon
 

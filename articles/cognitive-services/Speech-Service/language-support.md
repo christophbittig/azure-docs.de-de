@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2021
 ms.author: eur
 ms.custom: references_regions, ignite-fall-2021
-ms.openlocfilehash: da7d2acfe48d4d598e2bbbfddccb55e2a7d20241
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 67ac8e5cc3f7d555086ad6f643b82e8615168fa3
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131505363"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132028114"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Sprach- und Stimmunterstützung für den Speech-Dienst
 
@@ -163,44 +163,44 @@ Gestalten Sie mit neuronalen Stimmen Interaktionen mit Chatbots und Sprachassist
 
 | Sprache | Gebietsschema | Geschlecht | Name der Stimme | Stilunterstützung |
 |---|---|---|---|---|
-| Afrikaans (Südafrika) | af-ZA | Female | `af-ZA-AdriNeural` <sup>Neu</sup>  | Allgemein |
-| Afrikaans (Südafrika) | af-ZA | Male | `af-ZA-WillemNeural` <sup>Neu</sup>  | Allgemein |
-| Amharisch (Äthiopien) | am-ET | Female | `am-ET-MekdesNeural` <sup>Neu</sup>  | Allgemein |
-| Amharisch (Äthiopien) | am-ET | Male | `am-ET-AmehaNeural` <sup>Neu</sup>  | Allgemein |
-| Arabisch (Algerien) | ar-DZ | Female | `ar-DZ-AminaNeural` <sup>Neu</sup>  | Allgemein |
-| Arabisch (Algerien) | ar-DZ | Male | `ar-DZ-IsmaelNeural` <sup>Neu</sup>  | Allgemein |
-| Arabisch (Bahrain) | ar-BH | Female | `ar-BH-LailaNeural` <sup>Neu</sup>  | Allgemein |
-| Arabisch (Bahrain) | ar-BH | Male | `ar-BH-AliNeural` <sup>Neu</sup>  | Allgemein |
+| Afrikaans (Südafrika) | `af-ZA` | Female | `af-ZA-AdriNeural` <sup>Neu</sup>  | Allgemein |
+| Afrikaans (Südafrika) | `af-ZA` | Male | `af-ZA-WillemNeural` <sup>Neu</sup>  | Allgemein |
+| Amharisch (Äthiopien) | `am-ET` | Female | `am-ET-MekdesNeural` <sup>Neu</sup>  | Allgemein |
+| Amharisch (Äthiopien) | `am-ET` | Male | `am-ET-AmehaNeural` <sup>Neu</sup>  | Allgemein |
+| Arabisch (Algerien) | `ar-DZ` | Female | `ar-DZ-AminaNeural` <sup>Neu</sup>  | Allgemein |
+| Arabisch (Algerien) | `ar-DZ` | Male | `ar-DZ-IsmaelNeural` <sup>Neu</sup>  | Allgemein |
+| Arabisch (Bahrain) | `ar-BH` | Female | `ar-BH-LailaNeural` <sup>Neu</sup>  | Allgemein |
+| Arabisch (Bahrain) | `ar-BH` | Male | `ar-BH-AliNeural` <sup>Neu</sup>  | Allgemein |
 | Arabisch (Ägypten) | `ar-EG` | Female | `ar-EG-SalmaNeural` | Allgemein |
 | Arabisch (Ägypten) | `ar-EG` | Male | `ar-EG-ShakirNeural` | Allgemein |
-| Arabisch (Irak) | ar-IQ | Female | `ar-IQ-RanaNeural` <sup>Neu</sup>  | Allgemein |
-| Arabisch (Irak) | ar-IQ | Male | `ar-IQ-BasselNeural` <sup>Neu</sup>  | Allgemein |
-| Arabisch (Jordanien) | ar-JO | Female | `ar-JO-Sana Neural` <sup>Neu</sup>  | Allgemein |
-| Arabisch (Jordanien) | ar-JO | Male | `ar-JO-Taim Neural` <sup>Neu</sup>  | Allgemein |
-| Arabisch (Kuwait) | ar-KW | Female | `ar-KW-NouraNeural` <sup>Neu</sup>  | Allgemein |
-| Arabisch (Kuwait) | ar-KW | Male | `ar-KW-FahedNeural` <sup>Neu</sup>  | Allgemein |
-| Arabisch (Libyen) | ar-LY | Female | `ar-LY-ImanNeural` <sup>Neu</sup>  | Allgemein |
-| Arabisch (Libyen) | ar-LY | Male | `ar-LY-OmarNeural` <sup>Neu</sup>  | Allgemein |
-| Arabisch (Marokko) | ar-MA | Female | `ar-MA-MounaNeural` <sup>Neu</sup>  | Allgemein |
-| Arabisch (Marokko) | ar-MA | Male | `ar-MA-JamalNeural` <sup>Neu</sup>  | Allgemein |
-| Arabisch (Katar) | ar-QA | Female | `ar-QA-AmalNeural` <sup>Neu</sup>  | Allgemein |
-| Arabisch (Katar) | ar-QA | Male | `ar-QA-MoazNeural` <sup>Neu</sup>  | Allgemein |
+| Arabisch (Irak) | `ar-IQ` | Female | `ar-IQ-RanaNeural` <sup>Neu</sup>  | Allgemein |
+| Arabisch (Irak) | `ar-IQ` | Male | `ar-IQ-BasselNeural` <sup>Neu</sup>  | Allgemein |
+| Arabisch (Jordanien) | `ar-JO` | Female | `ar-JO-Sana Neural` <sup>Neu</sup>  | Allgemein |
+| Arabisch (Jordanien) | `ar-JO` | Male | `ar-JO-Taim Neural` <sup>Neu</sup>  | Allgemein |
+| Arabisch (Kuwait) | `ar-KW` | Female | `ar-KW-NouraNeural` <sup>Neu</sup>  | Allgemein |
+| Arabisch (Kuwait) | `ar-KW` | Male | `ar-KW-FahedNeural` <sup>Neu</sup>  | Allgemein |
+| Arabisch (Libyen) | `ar-LY` | Female | `ar-LY-ImanNeural` <sup>Neu</sup>  | Allgemein |
+| Arabisch (Libyen) | `ar-LY` | Male | `ar-LY-OmarNeural` <sup>Neu</sup>  | Allgemein |
+| Arabisch (Marokko) | `ar-MA` | Female | `ar-MA-MounaNeural` <sup>Neu</sup>  | Allgemein |
+| Arabisch (Marokko) | `ar-MA` | Male | `ar-MA-JamalNeural` <sup>Neu</sup>  | Allgemein |
+| Arabisch (Katar) | `ar-QA` | Female | `ar-QA-AmalNeural` <sup>Neu</sup>  | Allgemein |
+| Arabisch (Katar) | `ar-QA` | Male | `ar-QA-MoazNeural` <sup>Neu</sup>  | Allgemein |
 | Arabisch (Saudi-Arabien) | `ar-SA` | Female | `ar-SA-ZariyahNeural` | Allgemein |
 | Arabisch (Saudi-Arabien) | `ar-SA` | Male | `ar-SA-HamedNeural` | Allgemein |
-| Arabisch (Syrien) | ar-SY | Female | `ar-SY-AmanyNeural` <sup>Neu</sup>  | Allgemein |
-| Arabisch (Syrien) | ar-SY | Male | `ar-SY-LaithNeural` <sup>Neu</sup>  | Allgemein |
-| Arabisch (Tunesien) | ar-TN | Female | `ar-TN-ReemNeural` <sup>Neu</sup>  | Allgemein |
-| Arabisch (Tunesien) | ar-TN | Male | `ar-TN-HediNeural` <sup>Neu</sup>  | Allgemein |
-| Arabisch (Vereinigte Arabische Emirate) | ar-AE | Female | `ar-AE-FatimaNeural` <sup>Neu</sup>  | Allgemein |
-| Arabisch (Vereinigte Arabische Emirate) | ar-AE | Male | `ar-AE-HamdanNeural` <sup>Neu</sup>  | Allgemein |
-| Arabisch (Jemen) | ar-YE | Female | `ar-YE-MaryamNeural` <sup>Neu</sup>  | Allgemein |
-| Arabisch (Jemen) | ar-YE | Male | `ar-YE-SalehNeural` <sup>Neu</sup>  | Allgemein |
-| Bangla (Bangladesch) | bn-BD | Female | `bn-BD-NabanitaNeural` <sup>Neu</sup>  | Allgemein |
-| Bangla (Bangladesch) | bn-BD | Male | `bn-BD-PradeepNeural` <sup>Neu</sup>  | Allgemein |
+| Arabisch (Syrien) | `ar-SY` | Female | `ar-SY-AmanyNeural` <sup>Neu</sup>  | Allgemein |
+| Arabisch (Syrien) | `ar-SY` | Male | `ar-SY-LaithNeural` <sup>Neu</sup>  | Allgemein |
+| Arabisch (Tunesien) | `ar-TN` | Female | `ar-TN-ReemNeural` <sup>Neu</sup>  | Allgemein |
+| Arabisch (Tunesien) | `ar-TN` | Male | `ar-TN-HediNeural` <sup>Neu</sup>  | Allgemein |
+| Arabisch (Vereinigte Arabische Emirate) | `ar-AE` | Female | `ar-AE-FatimaNeural` <sup>Neu</sup>  | Allgemein |
+| Arabisch (Vereinigte Arabische Emirate) | `ar-AE` | Male | `ar-AE-HamdanNeural` <sup>Neu</sup>  | Allgemein |
+| Arabisch (Jemen) | `ar-YE` | Female | `ar-YE-MaryamNeural` <sup>Neu</sup>  | Allgemein |
+| Arabisch (Jemen) | `ar-YE` | Male | `ar-YE-SalehNeural` <sup>Neu</sup>  | Allgemein |
+| Bangla (Bangladesch) | `bn-BD` | Female | `bn-BD-NabanitaNeural` <sup>Neu</sup>  | Allgemein |
+| Bangla (Bangladesch) | `bn-BD` | Male | `bn-BD-PradeepNeural` <sup>Neu</sup>  | Allgemein |
 | Bulgarisch (Bulgarien) | `bg-BG` | Female | `bg-BG-KalinaNeural` | Allgemein |
 | Bulgarisch (Bulgarien) | `bg-BG` | Male | `bg-BG-BorislavNeural` | Allgemein |
-| Birmanisch (Myanmar) | my-MM | Female | `my-MM-NilarNeural` <sup>Neu</sup>  | Allgemein |
-| Birmanisch (Myanmar) | my-MM | Male | `my-MM-ThihaNeural` <sup>Neu</sup>  | Allgemein |
+| Birmanisch (Myanmar) | `my-MM` | Female | `my-MM-NilarNeural` <sup>Neu</sup>  | Allgemein |
+| Birmanisch (Myanmar) | `my-MM` | Male | `my-MM-ThihaNeural` <sup>Neu</sup>  | Allgemein |
 | Katalanisch (Spanien) | `ca-ES` | Female | `ca-ES-AlbaNeural` | Allgemein |
 | Katalanisch (Spanien) | `ca-ES` | Female | `ca-ES-JoanaNeural` | Allgemein |
 | Katalanisch (Spanien) | `ca-ES` | Male | `ca-ES-EnricNeural` | Allgemein |
@@ -240,20 +240,20 @@ Gestalten Sie mit neuronalen Stimmen Interaktionen mit Chatbots und Sprachassist
 | Englisch (Indien) | `en-IN` | Male | `en-IN-PrabhatNeural` | Allgemein |
 | Englisch (Irland) | `en-IE` | Female | `en-IE-EmilyNeural` | Allgemein |
 | Englisch (Irland) | `en-IE` | Male | `en-IE-ConnorNeural` | Allgemein |
-| Englisch (Kenia) | en-KE | Female | `en-KE-AsiliaNeural` <sup>Neu</sup>  | Allgemein |
-| Englisch (Kenia) | en-KE | Male | `en-KE-ChilembaNeural` <sup>Neu</sup>  | Allgemein |
+| Englisch (Kenia) | `en-KE` | Female | `en-KE-AsiliaNeural` <sup>Neu</sup>  | Allgemein |
+| Englisch (Kenia) | `en-KE` | Male | `en-KE-ChilembaNeural` <sup>Neu</sup>  | Allgemein |
 | Englisch (Neuseeland) | `en-NZ` | Female | `en-NZ-MollyNeural` | Allgemein |
 | Englisch (Neuseeland) | `en-NZ` | Male | `en-NZ-MitchellNeural` | Allgemein |
-| Englisch (Nigeria) | en-NG | Female | `en-NG-EzinneNeural` <sup>Neu</sup>  | Allgemein |
-| Englisch (Nigeria) | en-NG | Male | `en-NG-AbeoNeural` <sup>Neu</sup>  | Allgemein |
+| Englisch (Nigeria) | `en-NG` | Female | `en-NG-EzinneNeural` <sup>Neu</sup>  | Allgemein |
+| Englisch (Nigeria) | `en-NG` | Male | `en-NG-AbeoNeural` <sup>Neu</sup>  | Allgemein |
 | Englisch (Philippinen) | `en-PH` | Female | `en-PH-RosaNeural` | Allgemein | 
 | Englisch (Philippinen) | `en-PH` | Male | `en-PH-JamesNeural` | Allgemein | 
 | Englisch (Singapur) | `en-SG` | Female | `en-SG-LunaNeural` | Allgemein |
 | Englisch (Singapur) | `en-SG` | Male | `en-SG-WayneNeural` | Allgemein |
 | Englisch (Südafrika) | `en-ZA` | Female | `en-ZA-LeahNeural` | Allgemein |
 | Englisch (Südafrika) | `en-ZA` | Male | `en-ZA-LukeNeural` | Allgemein |
-| Englisch (Tansania) | en-TZ | Female | `en-TZ-ImaniNeural` <sup>Neu</sup>  | Allgemein |
-| Englisch (Tansania) | en-TZ | Male | `en-TZ-ElimuNeural` <sup>Neu</sup>  | Allgemein |
+| Englisch (Tansania) | `en-TZ` | Female | `en-TZ-ImaniNeural` <sup>Neu</sup>  | Allgemein |
+| Englisch (Tansania) | `en-TZ` | Male | `en-TZ-ElimuNeural` <sup>Neu</sup>  | Allgemein |
 | Walisisch (Großbritannien) | `en-GB` | Female | `en-GB-LibbyNeural` | Allgemein |
 | Walisisch (Großbritannien) | `en-GB` | Female | `en-GB-MiaNeural` <sup>Ab 30. Oktober außer Betrieb, siehe unten</sup> | Allgemein |
 | Walisisch (Großbritannien) | `en-GB` | Female | `en-GB-SoniaNeural` | Allgemein |
@@ -275,8 +275,8 @@ Gestalten Sie mit neuronalen Stimmen Interaktionen mit Chatbots und Sprachassist
 | Englisch (USA) | `en-US` | Male | `en-US-JacobNeural` | Allgemein |
 | Estnisch (Estland) | `et-EE` | Female | `et-EE-AnuNeural` | Allgemein |
 | Estnisch (Estland) | `et-EE` | Male | `et-EE-KertNeural` | Allgemein |
-| Philippinisch (Philippinen) | fil-PH | Female | `fil-PH-BlessicaNeural` <sup>Neu</sup>  | Allgemein |
-| Philippinisch (Philippinen) | fil-PH | Male | `fil-PH-AngeloNeural` <sup>Neu</sup>  | Allgemein |
+| Philippinisch (Philippinen) | `fil-PH` | Female | `fil-PH-BlessicaNeural` <sup>Neu</sup>  | Allgemein |
+| Philippinisch (Philippinen) | `fil-PH` | Male | `fil-PH-AngeloNeural` <sup>Neu</sup>  | Allgemein |
 | Finnisch (Finnland) | `fi-FI` | Female | `fi-FI-NooraNeural` | Allgemein |
 | Finnisch (Finnland) | `fi-FI` | Female | `fi-FI-SelmaNeural` | Allgemein |
 | Finnisch (Finnland) | `fi-FI` | Male | `fi-FI-HarriNeural` | Allgemein |
@@ -289,8 +289,8 @@ Gestalten Sie mit neuronalen Stimmen Interaktionen mit Chatbots und Sprachassist
 | Französisch (Frankreich) | `fr-FR` | Male | `fr-FR-HenriNeural` | Allgemein |
 | Französisch (Schweiz) | `fr-CH` | Female | `fr-CH-ArianeNeural` | Allgemein |
 | Französisch (Schweiz) | `fr-CH` | Male | `fr-CH-FabriceNeural` | Allgemein |
-| Galicisch (Spanien) | gl-ES | Female | `gl-ES-SabelaNeural` <sup>Neu</sup>  | Allgemein |
-| Galicisch (Spanien) | gl-ES | Male | `gl-ES-RoiNeural` <sup>Neu</sup>  | Allgemein |
+| Galicisch (Spanien) | `gl-ES` | Female | `gl-ES-SabelaNeural` <sup>Neu</sup>  | Allgemein |
+| Galicisch (Spanien) | `gl-ES` | Male | `gl-ES-RoiNeural` <sup>Neu</sup>  | Allgemein |
 | Deutsch (Österreich) | `de-AT` | Female | `de-AT-IngridNeural` | Allgemein |
 | Deutsch (Österreich) | `de-AT` | Male | `de-AT-JonasNeural` | Allgemein |
 | Deutsch (Deutschland) | `de-DE` | Female | `de-DE-KatjaNeural` | Allgemein |
@@ -316,10 +316,10 @@ Gestalten Sie mit neuronalen Stimmen Interaktionen mit Chatbots und Sprachassist
 | Italienisch (Italien) | `it-IT` | Male | `it-IT-DiegoNeural` | Allgemein |
 | Japanisch (Japan) | `ja-JP` | Female | `ja-JP-NanamiNeural` | Allgemein |
 | Japanisch (Japan) | `ja-JP` | Male | `ja-JP-KeitaNeural` | Allgemein |
-| Javanesisch (Indonesien) | jv-ID | Female | `jv-ID-SitiNeural` <sup>Neu</sup>  | Allgemein |
-| Javanesisch (Indonesien) | jv-ID | Male | `jv-ID-DimasNeural` <sup>Neu</sup>  | Allgemein |
-| Khmer (Kambodscha) | km-KH | Female | `km-KH-SreymomNeural` <sup>Neu</sup>  | Allgemein |
-| Khmer (Kambodscha) | km-KH | Male | `km-KH-PisethNeural` <sup>Neu</sup>  | Allgemein |
+| Javanesisch (Indonesien) | `jv-ID` | Female | `jv-ID-SitiNeural` <sup>Neu</sup>  | Allgemein |
+| Javanesisch (Indonesien) | `jv-ID` | Male | `jv-ID-DimasNeural` <sup>Neu</sup>  | Allgemein |
+| Khmer (Kambodscha) | `km-KH` | Female | `km-KH-SreymomNeural` <sup>Neu</sup>  | Allgemein |
+| Khmer (Kambodscha) | `km-KH` | Male | `km-KH-PisethNeural` <sup>Neu</sup>  | Allgemein |
 | Koreanisch (Korea) | `ko-KR` | Female | `ko-KR-SunHiNeural` | Allgemein |
 | Koreanisch (Korea) | `ko-KR` | Male | `ko-KR-InJoonNeural` | Allgemein |
 | Lettisch (Lettland) | `lv-LV` | Female | `lv-LV-EveritaNeural` | Allgemein |
@@ -335,8 +335,8 @@ Gestalten Sie mit neuronalen Stimmen Interaktionen mit Chatbots und Sprachassist
 | Norwegisch, Bokmål (Norwegen) | `nb-NO` | Female | `nb-NO-IselinNeural` | Allgemein |
 | Norwegisch, Bokmål (Norwegen) | `nb-NO` | Female | `nb-NO-PernilleNeural` | Allgemein |
 | Norwegisch, Bokmål (Norwegen) | `nb-NO` | Male | `nb-NO-FinnNeural` | Allgemein |
-| Persisch (Iran) | fa-IR | Female | `fa-IR-DilaraNeural` <sup>Neu</sup>  | Allgemein |
-| Persisch (Iran) | fa-IR | Male | `fa-IR-FaridNeural` <sup>Neu</sup>  | Allgemein |
+| Persisch (Iran) | `fa-IR` | Female | `fa-IR-DilaraNeural` <sup>Neu</sup>  | Allgemein |
+| Persisch (Iran) | `fa-IR` | Male | `fa-IR-FaridNeural` <sup>Neu</sup>  | Allgemein |
 | Polnisch (Polen) | `pl-PL` | Female | `pl-PL-AgnieszkaNeural` | Allgemein |
 | Polnisch (Polen) | `pl-PL` | Female | `pl-PL-ZofiaNeural` | Allgemein |
 | Polnisch (Polen) | `pl-PL` | Male | `pl-PL-MarekNeural` | Allgemein |
@@ -354,67 +354,67 @@ Gestalten Sie mit neuronalen Stimmen Interaktionen mit Chatbots und Sprachassist
 | Slowakisch (Slowakei) | `sk-SK` | Male | `sk-SK-LukasNeural` | Allgemein |
 | Slowenisch (Slowenien) | `sl-SI` | Female | `sl-SI-PetraNeural` | Allgemein |
 | Slowenisch (Slowenien) | `sl-SI` | Male | `sl-SI-RokNeural` | Allgemein |
-| Somali (Somalia) | so-SO | Female | `so-SO-UbaxNeural` <sup>Neu</sup>  | Allgemein |
-| Somali (Somalia) | so-SO | Male | `so-SO-MuuseNeural` <sup>Neu</sup>  | Allgemein |
+| Somali (Somalia) | `so-SO` | Female | `so-SO-UbaxNeural` <sup>Neu</sup>  | Allgemein |
+| Somali (Somalia) | `so-SO`| Male | `so-SO-MuuseNeural` <sup>Neu</sup>  | Allgemein |
 | Spanisch (Argentinien) | `es-AR` | Female | `es-AR-ElenaNeural` | Allgemein |
 | Spanisch (Argentinien) | `es-AR` | Male | `es-AR-TomasNeural` | Allgemein |
-| Spanisch (Bolivien) | es-BO | Female | `es-BO-SofiaNeural` <sup>Neu</sup>  | Allgemein |
-| Spanisch (Bolivien) | es-BO | Male | `es-BO-MarceloNeural` <sup>Neu</sup>  | Allgemein |
-| Spanisch (Chile) | es-CL | Female | `es-CL-CatalinaNeural` <sup>Neu</sup>  | Allgemein |
-| Spanisch (Chile) | es-CL | Male | `es-CL-LorenzoNeural` <sup>Neu</sup>  | Allgemein |
+| Spanisch (Bolivien) | `es-BO` | Female | `es-BO-SofiaNeural` <sup>Neu</sup>  | Allgemein |
+| Spanisch (Bolivien) | `es-BO` | Male | `es-BO-MarceloNeural` <sup>Neu</sup>  | Allgemein |
+| Spanisch (Chile) | `es-CL` | Female | `es-CL-CatalinaNeural` <sup>Neu</sup>  | Allgemein |
+| Spanisch (Chile) | `es-CL` | Male | `es-CL-LorenzoNeural` <sup>Neu</sup>  | Allgemein |
 | Spanisch (Kolumbien) | `es-CO` | Female | `es-CO-SalomeNeural` | Allgemein |
 | Spanisch (Kolumbien) | `es-CO` | Male | `es-CO-GonzaloNeural` | Allgemein |
-| Spanisch (Costa Rica) | es-CR | Female | `es-CR-MariaNeural` <sup>Neu</sup>  | Allgemein |
-| Spanisch (Costa Rica) | es-CR | Male | `es-CR-JuanNeural` <sup>Neu</sup>  | Allgemein |
-| Spanisch (Kuba) | es-CU | Female | `es-CU-BelkysNeural` <sup>Neu</sup>  | Allgemein |
-| Spanisch (Kuba) | es-CU | Male | `es-CU-ManuelNeural` <sup>Neu</sup>  | Allgemein |
-| Spanisch (Dominikanische Republik) | es-DO | Female | `es-DO-RamonaNeural` <sup>Neu</sup>  | Allgemein |
-| Spanisch (Dominikanische Republik) | es-DO | Male | `es-DO-EmilioNeural` <sup>Neu</sup>  | Allgemein |
-| Spanisch (Ecuador) | es-EC | Female | `es-EC-AndreaNeural` <sup>Neu</sup>  | Allgemein |
-| Spanisch (Ecuador) | es-EC | Male | `es-EC-LuisNeural` <sup>Neu</sup>  | Allgemein |
-| Spanisch (El Salvador) | es-SV | Female | `es-SV-LorenaNeural` <sup>Neu</sup>  | Allgemein |
-| Spanisch (El Salvador) | es-SV | Male | `es-SV-RodrigoNeural` <sup>Neu</sup>  | Allgemein |
-| Spanisch (Äquatorialguinea) | es-GQ | Female | `es-GQ-TeresaNeural` <sup>Neu</sup>  | Allgemein |
-| Spanisch (Äquatorialguinea) | es-GQ | Male | `es-GQ-JavierNeural` <sup>Neu</sup>  | Allgemein |
-| Spanisch (Guatemala) | es-GT | Female | `es-GT-MartaNeural` <sup>Neu</sup>  | Allgemein |
-| Spanisch (Guatemala) | es-GT | Male | `es-GT-AndresNeural` <sup>Neu</sup>  | Allgemein |
-| Spanisch (Honduras) | es-HN | Female | `es-HN-KarlaNeural` <sup>Neu</sup>  | Allgemein |
-| Spanisch (Honduras) | es-HN | Male | `es-HN-CarlosNeural` <sup>Neu</sup>  | Allgemein |
+| Spanisch (Costa Rica) | `es-CR` | Female | `es-CR-MariaNeural` <sup>Neu</sup>  | Allgemein |
+| Spanisch (Costa Rica) | `es-CR` | Male | `es-CR-JuanNeural` <sup>Neu</sup>  | Allgemein |
+| Spanisch (Kuba) | `es-CU` | Female | `es-CU-BelkysNeural` <sup>Neu</sup>  | Allgemein |
+| Spanisch (Kuba) | `es-CU` | Male | `es-CU-ManuelNeural` <sup>Neu</sup>  | Allgemein |
+| Spanisch (Dominikanische Republik) | `es-DO` | Female | `es-DO-RamonaNeural` <sup>Neu</sup>  | Allgemein |
+| Spanisch (Dominikanische Republik) | `es-DO` | Male | `es-DO-EmilioNeural` <sup>Neu</sup>  | Allgemein |
+| Spanisch (Ecuador) | `es-EC` | Female | `es-EC-AndreaNeural` <sup>Neu</sup>  | Allgemein |
+| Spanisch (Ecuador) | `es-EC` | Male | `es-EC-LuisNeural` <sup>Neu</sup>  | Allgemein |
+| Spanisch (El Salvador) | `es-SV` | Female | `es-SV-LorenaNeural` <sup>Neu</sup>  | Allgemein |
+| Spanisch (El Salvador) | `es-SV` | Male | `es-SV-RodrigoNeural` <sup>Neu</sup>  | Allgemein |
+| Spanisch (Äquatorialguinea) | `es-GQ` | Female | `es-GQ-TeresaNeural` <sup>Neu</sup>  | Allgemein |
+| Spanisch (Äquatorialguinea) | `es-GQ` | Male | `es-GQ-JavierNeural` <sup>Neu</sup>  | Allgemein |
+| Spanisch (Guatemala) | `es-GT` | Female | `es-GT-MartaNeural` <sup>Neu</sup>  | Allgemein |
+| Spanisch (Guatemala) | `es-GT` | Male | `es-GT-AndresNeural` <sup>Neu</sup>  | Allgemein |
+| Spanisch (Honduras) | `es-HN` | Female | `es-HN-KarlaNeural` <sup>Neu</sup>  | Allgemein |
+| Spanisch (Honduras) | `es-HN` | Male | `es-HN-CarlosNeural` <sup>Neu</sup>  | Allgemein |
 | Spanisch (Mexiko) | `es-MX` | Female | `es-MX-DaliaNeural` | Allgemein |
 | Spanisch (Mexiko) | `es-MX` | Male | `es-MX-JorgeNeural` | Allgemein |
-| Spanisch (Nicaragua) | es-NI | Female | `es-NI-YolandaNeural` <sup>Neu</sup>  | Allgemein |
-| Spanisch (Nicaragua) | es-NI | Male | `es-NI-FedericoNeural` <sup>Neu</sup>  | Allgemein |
-| Spanisch (Panama) | es-PA | Female | `es-PA-MargaritaNeural` <sup>Neu</sup>  | Allgemein |
-| Spanisch (Panama) | es-PA | Male | `es-PA-RobertoNeural` <sup>Neu</sup>  | Allgemein |
-| Spanisch (Paraguay) | es-PY | Female | `es-PY-TaniaNeural` <sup>Neu</sup>  | Allgemein |
-| Spanisch (Paraguay) | es-PY | Male | `es-PY-MarioNeural` <sup>Neu</sup>  | Allgemein |
-| Spanisch (Peru) | es-PE | Female | `es-PE-CamilaNeural` <sup>Neu</sup>  | Allgemein |
-| Spanisch (Peru) | es-PE | Male | `es-PE-AlexNeural` <sup>Neu</sup>  | Allgemein |
-| Spanisch (Puerto Rico) | es-PR | Female | `es-PR-Karina Neural` <sup>Neu</sup>  | Allgemein |
-| Spanisch (Puerto Rico) | es-PR | Male | `es-PR-Victor Neural` <sup>Neu</sup>  | Allgemein |
+| Spanisch (Nicaragua) | `es-NI` | Female | `es-NI-YolandaNeural` <sup>Neu</sup>  | Allgemein |
+| Spanisch (Nicaragua) | `es-NI` | Male | `es-NI-FedericoNeural` <sup>Neu</sup>  | Allgemein |
+| Spanisch (Panama) | `es-PA` | Female | `es-PA-MargaritaNeural` <sup>Neu</sup>  | Allgemein |
+| Spanisch (Panama) | `es-PA` | Male | `es-PA-RobertoNeural` <sup>Neu</sup>  | Allgemein |
+| Spanisch (Paraguay) | `es-PY` | Female | `es-PY-TaniaNeural` <sup>Neu</sup>  | Allgemein |
+| Spanisch (Paraguay) | `es-PY` | Male | `es-PY-MarioNeural` <sup>Neu</sup>  | Allgemein |
+| Spanisch (Peru) | `es-PE` | Female | `es-PE-CamilaNeural` <sup>Neu</sup>  | Allgemein |
+| Spanisch (Peru) | `es-PE` | Male | `es-PE-AlexNeural` <sup>Neu</sup>  | Allgemein |
+| Spanisch (Puerto Rico) | `es-PR` | Female | `es-PR-Karina Neural` <sup>Neu</sup>  | Allgemein |
+| Spanisch (Puerto Rico) | `es-PR` | Male | `es-PR-Victor Neural` <sup>Neu</sup>  | Allgemein |
 | Spanisch (Spanien) | `es-ES` | Female | `es-ES-ElviraNeural` | Allgemein |
 | Spanisch (Spanien) | `es-ES` | Male | `es-ES-AlvaroNeural` | Allgemein |
-| Spanisch (Uruguay) | es-UY | Female | `es-UY-ValentinaNeural` <sup>Neu</sup>  | Allgemein |
-| Spanisch (Uruguay) | es-UY | Male | `es-UY-MateoNeural` <sup>Neu</sup>  | Allgemein |
+| Spanisch (Uruguay) | `es-UY` | Female | `es-UY-ValentinaNeural` <sup>Neu</sup>  | Allgemein |
+| Spanisch (Uruguay) | `es-UY` | Male | `es-UY-MateoNeural` <sup>Neu</sup>  | Allgemein |
 | Spanisch (USA) | `es-US` | Female | `es-US-PalomaNeural` | Allgemein |
 | Spanisch (USA) | `es-US` | Male | `es-US-AlonsoNeural` | Allgemein |
-| Spanisch (Venezuela) | es-VE | Female | `es-VE-PaolaNeural` <sup>Neu</sup>  | Allgemein |
-| Spanisch (Venezuela) | es-VE | Male | `es-VE-SebastianNeural` <sup>Neu</sup>  | Allgemein |
-| Sundanesisch (Indonesien) | su-ID | Female | `su-ID-TutiNeural` <sup>Neu</sup>  | Allgemein |
-| Sundanesisch (Indonesien) | su-ID | Male | `su-ID-JajangNeural` <sup>Neu</sup>  | Allgemein |
+| Spanisch (Venezuela) | `es-VE` | Female | `es-VE-PaolaNeural` <sup>Neu</sup>  | Allgemein |
+| Spanisch (Venezuela) | `es-VE` | Male | `es-VE-SebastianNeural` <sup>Neu</sup>  | Allgemein |
+| Sundanesisch (Indonesien) | `su-ID` | Female | `su-ID-TutiNeural` <sup>Neu</sup>  | Allgemein |
+| Sundanesisch (Indonesien) | `su-ID` | Male | `su-ID-JajangNeural` <sup>Neu</sup>  | Allgemein |
 | Suaheli (Kenia) | `sw-KE` | Female | `sw-KE-ZuriNeural` | Allgemein |
 | Suaheli (Kenia) | `sw-KE` | Male | `sw-KE-RafikiNeural` | Allgemein |
-| Suaheli (Tansania) | sw-TZ | Female | `sw-TZ-RehemaNeural` <sup>Neu</sup>  | Allgemein |
-| Suaheli (Tansania) | sw-TZ | Male | `sw-TZ-DaudiNeural` <sup>Neu</sup>  | Allgemein |
+| Suaheli (Tansania) | `sw-TZ` | Female | `sw-TZ-RehemaNeural` <sup>Neu</sup>  | Allgemein |
+| Suaheli (Tansania) | `sw-TZ` | Male | `sw-TZ-DaudiNeural` <sup>Neu</sup>  | Allgemein |
 | Schwedisch (Schweden) | `sv-SE` | Female | `sv-SE-HilleviNeural` | Allgemein |
 | Schwedisch (Schweden) | `sv-SE` | Female | `sv-SE-SofieNeural` | Allgemein |
 | Schwedisch (Schweden) | `sv-SE` | Male | `sv-SE-MattiasNeural` | Allgemein |
 | Tamil (Indien) | `ta-IN` | Female | `ta-IN-PallaviNeural` | Allgemein |
 | Tamil (Indien) | `ta-IN` | Male | `ta-IN-ValluvarNeural` | Allgemein |
-| Tamilisch (Singapur) | ta-SG | Female | `ta-SG-VenbaNeural` <sup>Neu</sup>  | Allgemein |
-| Tamilisch (Singapur) | ta-SG | Male | `ta-SG-AnbuNeural` <sup>Neu</sup>  | Allgemein |
-| Tamilisch (Sri Lanka) | ta-LK | Female | `ta-LK-SaranyaNeural` <sup>Neu</sup>  | Allgemein |
-| Tamilisch (Sri Lanka) | ta-LK | Male | `ta-LK-KumarNeural` <sup>Neu</sup>  | Allgemein |
+| Tamilisch (Singapur) | `ta-SG` | Female | `ta-SG-VenbaNeural` <sup>Neu</sup>  | Allgemein |
+| Tamilisch (Singapur) | `ta-SG` | Male | `ta-SG-AnbuNeural` <sup>Neu</sup>  | Allgemein |
+| Tamilisch (Sri Lanka) | `ta-LK` | Female | `ta-LK-SaranyaNeural` <sup>Neu</sup>  | Allgemein |
+| Tamilisch (Sri Lanka) | `ta-LK` | Male | `ta-LK-KumarNeural` <sup>Neu</sup>  | Allgemein |
 | Telugu (Indien) | `te-IN` | Female | `te-IN-ShrutiNeural` | Allgemein |
 | Telugu (Indien) | `te-IN` | Male | `te-IN-MohanNeural` | Allgemein |
 | Thai (Thailand) | `th-TH` | Female | `th-TH-AcharaNeural` | Allgemein |
@@ -424,18 +424,18 @@ Gestalten Sie mit neuronalen Stimmen Interaktionen mit Chatbots und Sprachassist
 | Türkisch (Türkei) | `tr-TR` | Male | `tr-TR-AhmetNeural` | Allgemein |
 | Ukrainisch (Ukraine) | `uk-UA` | Female | `uk-UA-PolinaNeural` | Allgemein | 
 | Ukrainisch (Ukraine) | `uk-UA` | Male | `uk-UA-OstapNeural` | Allgemein | 
-| Urdu (Indien) | ur-IN | Female | `ur-IN-GulNeural` <sup>Neu</sup>  | Allgemein |
-| Urdu (Indien) | ur-IN | Male | `ur-IN-SalmanNeural` <sup>Neu</sup>  | Allgemein |
+| Urdu (Indien) | `ur-IN` | Female | `ur-IN-GulNeural` <sup>Neu</sup>  | Allgemein |
+| Urdu (Indien) | `ur-IN` | Male | `ur-IN-SalmanNeural` <sup>Neu</sup>  | Allgemein |
 | Urdu (Pakistan) | `ur-PK` | Female | `ur-PK-UzmaNeural`  | Allgemein | 
 | Urdu (Pakistan) | `ur-PK` | Male | `ur-PK-AsadNeural` | Allgemein | 
-| Usbekisch (Usbekistan) | uz-UZ | Female | `uz-UZ-MadinaNeural` <sup>Neu</sup>  | Allgemein |
-| Usbekisch (Usbekistan) | uz-UZ | Male | `uz-UZ-SardorNeural` <sup>Neu</sup>  | Allgemein |
+| Usbekisch (Usbekistan) | `uz-UZ` | Female | `uz-UZ-MadinaNeural` <sup>Neu</sup>  | Allgemein |
+| Usbekisch (Usbekistan) | `uz-UZ` | Male | `uz-UZ-SardorNeural` <sup>Neu</sup>  | Allgemein |
 | Vietnamesisch (Vietnam) | `vi-VN` | Female | `vi-VN-HoaiMyNeural` | Allgemein |
 | Vietnamesisch (Vietnam) | `vi-VN` | Male | `vi-VN-NamMinhNeural` | Allgemein |
 | Walisisch (Großbritannien) | `cy-GB` | Female | `cy-GB-NiaNeural` | Allgemein | 
 | Walisisch (Großbritannien) | `cy-GB` | Male | `cy-GB-AledNeural` | Allgemein | 
-| Zulu (Südafrika) | zu-ZA | Female | `zu-ZA-ThandoNeural` <sup>Neu</sup>  | Allgemein |
-| Zulu (Südafrika) | zu-ZA | Male | `zu-ZA-ThembaNeural` <sup>Neu</sup>  | Allgemein |
+| Zulu (Südafrika) | `zu-ZA` | Female | `zu-ZA-ThandoNeural` <sup>Neu</sup>  | Allgemein |
+| Zulu (Südafrika) | `zu-ZA` | Male | `zu-ZA-ThembaNeural` <sup>Neu</sup>  | Allgemein |
 
 > [!IMPORTANT]
 > Die Stimme „Englisch (Vereinigtes Königreich) `en-GB-MiaNeural`“ wird am **30. Oktober 2021** außer Betrieb genommen. Alle Dienstanforderungen an `en-GB-MiaNeural` werden nach dem **30. Oktober 2021** automatisch an `en-GB-SoniaNeural` weitergeleitet.

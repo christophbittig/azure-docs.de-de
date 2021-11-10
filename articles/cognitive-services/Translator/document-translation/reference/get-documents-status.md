@@ -3,19 +3,17 @@ title: Abrufen des Dokumentstatus
 titleSuffix: Azure Cognitive Services
 description: Die Methode „Abrufen des Dokumentstatus“ (Get Operation Documents Status) gibt den Status aller Dokumente in einer Dokumentübersetzungs-Batchanforderung zurück.
 services: cognitive-services
-author: jann-skotdal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/21/2021
-ms.author: v-jansk
-ms.openlocfilehash: 355e692d6091cee443608c2239173c873bb8e1a5
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 4da15c603028524c0501819c0ecbc3884080ca6f
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110453543"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132053460"
 ---
 # <a name="get-documents-status"></a>Abrufen des Dokumentstatus
 
@@ -50,7 +48,7 @@ Erfahren Sie, wie Sie Ihren [benutzerdefinierten Domänennamen](../get-started-w
 
 Die folgenden Anforderungsparameter werden in der Abfragezeichenfolge übergeben:
 
-|Query parameter (Abfrageparameter)|Geben Sie in|Erforderlich|Typ|BESCHREIBUNG|
+|Query parameter (Abfrageparameter)|Geben Sie in|Erforderlich|type|BESCHREIBUNG|
 |--- |--- |--- |--- |--- |
 |id|path|True|Zeichenfolge|Vorgangs-ID.|
 |$maxpagesize|Abfrage|False|integer int32|Mit $maxpagesize wird die maximale Anzahl der Elemente angegeben, die in einer Seite zurückgegeben werden. Wenn über $top weitere Elemente angefordert werden (oder $top nicht angegeben ist und weitere Elemente zurückgegeben werden sollen), enthält @nextLink den Link zur nächsten Seite. Clients KÖNNEN servergesteuertes Paging mit einer bestimmten Seitengröße anfordern, indem sie eine $maxpagesize-Einstellung angeben. Der Server SOLLTE diese Einstellung berücksichtigen, wenn die angegebene Seitengröße kleiner als die Standardseitengröße des Servers ist.|
@@ -90,7 +88,7 @@ Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zu
 
 Die folgenden Informationen werden bei erfolgreicher Antwort zurückgegeben.
 
-|Name|Typ|Beschreibung|
+|Name|type|BESCHREIBUNG|
 |--- |--- |--- |
 |@nextLink|Zeichenfolge|Die URL für die nächste Seite. Null, wenn keine weiteren Seiten verfügbar sind.|
 |Wert|DocumentStatus []|Der detaillierte Status der einzelnen unten aufgeführten Dokumente.|
@@ -106,7 +104,7 @@ Die folgenden Informationen werden bei erfolgreicher Antwort zurückgegeben.
 
 ### <a name="error-response"></a>Fehlerantwort
 
-|Name|Typ|Beschreibung|
+|Name|type|BESCHREIBUNG|
 |--- |--- |--- |
 |code|Zeichenfolge|Enumerationen, die High-Level-Fehlercodes enthalten. Mögliche Werte:<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>Nicht autorisiert</li></ul>|
 |message|Zeichenfolge|Ruft High-Level-Fehlermeldung ab.|

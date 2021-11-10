@@ -13,12 +13,12 @@ ms.author: rolyon
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 996a3f5f48685630a6946a5708c26cfecaf3b0a0
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 7a2d152e18f039b88957a0dab32f5d451642d6bd
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122354845"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132058712"
 ---
 # <a name="application-registration-permissions-for-custom-roles-in-azure-active-directory"></a>Berechtigungen für Anwendungsregistrierung für benutzerdefinierte Rollen in Azure Active Directory
 
@@ -46,7 +46,7 @@ Wird diese Berechtigung zugewiesen, wird der Ersteller als erster Besitzer der e
 
 #### <a name="microsoftdirectoryapplicationscreate"></a>microsoft.directory/applications/create
 
-Wird diese Berechtigung zugewiesen, wird der Ersteller nicht als erster Besitzer der erstellten App-Registrierung hinzugefügt, und die erstellte App-Registrierung zählt nicht zum Kontingent von 250 erstellten Objekten des Erstellers. Verwenden Sie diese Berechtigung mit Bedacht, da der zugewiesene Benutzer in diesem Fall so viele App-Registrierungen erstellen kann, bis das Kontingent auf der Verzeichnisebene erreicht ist. Sind beide Berechtigungen zugewiesen, hat diese Berechtigung Vorrang.
+Wird diese Berechtigung zugewiesen, wird der Ersteller nicht als erster Besitzer der erstellten App-Registrierung hinzugefügt, und die erstellte App-Registrierung zählt nicht zum Kontingent von 250 erstellten Objekten des Erstellers. Verwenden Sie diese Berechtigung mit Bedacht, da der zugewiesene Benutzer in diesem Fall so viele App-Registrierungen erstellen kann, bis das Kontingent auf der Verzeichnisebene erreicht ist.
 
 Wenn beide Berechtigungen zugewiesen sind, hat die Berechtigung zum Erstellen („/create“) Vorrang. Obwohl mit der Berechtigung „/createAsOwner“ der Ersteller nicht automatisch als erster Besitzer hinzufügt wird, können Besitzer bei der Erstellung der App-Registrierung angegeben werden, wenn Graph-APIs oder PowerShell-Cmdlets verwendet werden.
 

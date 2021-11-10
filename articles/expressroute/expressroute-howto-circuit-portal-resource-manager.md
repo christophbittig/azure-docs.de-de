@@ -8,12 +8,12 @@ ms.date: 04/23/2021
 ms.topic: quickstart
 ms.service: expressroute
 ms.custom: mode-portal
-ms.openlocfilehash: c1bcbd91ae960eb8fb690b04b09445183d787e94
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 449925c1588ad05fccf2d5d5509ad621b6041956
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131005440"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131867131"
 ---
 # <a name="quickstart-create-and-modify-an-expressroute-circuit"></a>Schnellstart: Erstellen und Ändern einer ExpressRoute-Verbindung
 
@@ -25,7 +25,7 @@ In diesem Schnellstart erfahren Sie, wie Sie eine ExpressRoute-Verbindung mithil
 
 * Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Lesen Sie vor Beginn der Konfiguration die Seiten zu den [Voraussetzungen](expressroute-prerequisites.md) und [Workflows](expressroute-workflows.md).
-* Sie können sich das [Video ansehen](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit), bevor Sie beginnen, um die Schritte besser zu verstehen.
+* Sie können sich das [Video ansehen](https://channel9.msdn.com/Blogs/Azure/Azure-ExpressRoute-How-to-create-an-ExpressRoute-circuit), bevor Sie beginnen, um die Schritte besser zu verstehen.
 
 ## <a name="create-and-provision-an-expressroute-circuit"></a><a name="create"></a>Erstellen und Bereitstellen einer ExpressRoute-Verbindung
 

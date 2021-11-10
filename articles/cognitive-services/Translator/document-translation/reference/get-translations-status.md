@@ -3,19 +3,17 @@ title: Abrufen des Übersetzungsstatus
 titleSuffix: Azure Cognitive Services
 description: Die Methode „Abrufen des Übersetzungsstatus“ (Get translation status) gibt eine Liste der übermittelten Batchanforderungen und den Status der einzelnen Anforderungen zurück.
 services: cognitive-services
-author: jann-skotdal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/22/2021
-ms.author: v-jansk
-ms.openlocfilehash: 5ed4c565ad784bb50ebbc464d4229bfcabb7a5d7
-ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
+ms.openlocfilehash: d16de5ccc4beddef8296211d7e5f0c154f10776d
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112540690"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132059013"
 ---
 # <a name="get-translations-status"></a>Abrufen des Übersetzungsstatus
 

@@ -9,12 +9,12 @@ ms.date: 07/02/2021
 ms.author: justipat
 ms.reviewer: sngun
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: c683af7a6f8889204f697a0ee36bf3b3719efa73
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: f8e97865f1d2d9cd0f9d6caa0e50ec1ab79c8bd4
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114731974"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132062489"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>Verwenden von systemseitig zugewiesenen verwalteten Identitäten für den Zugriff auf Azure Cosmos DB-Daten
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -186,7 +186,7 @@ namespace Monitor
             var result = await httpClient.PostAsync(endpoint, new StringContent(""));
 
             // Get the result back as a DatabaseAccountListKeysResult.
-            DatabaseAccountListKeysResult keys = await result.Content.ReadAsAsync<DatabaseAccountListKeysResult>();
+            DatabaseAccountListKeysResult keys = await result.Content.ReadFromJsonAsync<DatabaseAccountListKeysResult>();
 
             log.LogInformation("Starting to create the client");
 

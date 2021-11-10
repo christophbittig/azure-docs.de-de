@@ -5,13 +5,13 @@ author: yjin81
 ms.author: yajin1
 ms.service: azure-web-pubsub
 ms.topic: overview
-ms.date: 04/26/2021
-ms.openlocfilehash: 3dcb151058d15088556bf8c4396c96a105ec6b86
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.date: 11/08/2021
+ms.openlocfilehash: 0c3bda42dd7dd95efb0875c7a3eb3f84cc64f578
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122445239"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131997992"
 ---
 # <a name="quickstart-connect-to-the-azure-web-pubsub-instance-from-the-browser"></a>Schnellstart: Herstellen einer Verbindung mit der Azure Web PubSub-Instanz im Browser
 

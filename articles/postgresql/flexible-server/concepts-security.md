@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 10/01/2021
-ms.openlocfilehash: 8e474cd0ae6635034607a088aceee47a83c500de
-ms.sourcegitcommit: 7bd48cdf50509174714ecb69848a222314e06ef6
+ms.openlocfilehash: 26403d2de9fe0a4235dc1460f13adcd78e595e77
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2021
-ms.locfileid: "129388772"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131867017"
 ---
 # <a name="security-in-azure-database-for-postgresql---flexible-server"></a>Sicherheit in Azure Database for PostgreSQL – Flexible Server
 
@@ -49,7 +49,7 @@ Wenn Sie Azure Database for PostgreSQL – Flexible Server ausführen, haben Si
 
 Während Sie den Azure Database for PostgreSQL-Server erstellen, geben Sie Anmeldeinformationen für eine Administratorrolle ein. Diese Administratorrolle kann zum Erstellen weiterer [PostgreSQL-Rollen](https://www.postgresql.org/docs/current/user-manag.html) genutzt werden.
 
-Beispiel:
+Ein auf ein Objekt angewendeter
 
 ```SQL
 postgres=> create role demouser with password 'password123';
@@ -78,7 +78,7 @@ oid            | 24827
 
 ```
 
-Für Flexible Server ist auch die [Überwachungsprotokollierung](../concepts-audit.md) verfügbar, um Aktivitäten in Ihren Datenbanken nachverfolgen zu können. 
+Für Flexible Server ist auch die [Überwachungsprotokollierung](concepts-audit.md) verfügbar, um Aktivitäten in Ihren Datenbanken nachverfolgen zu können. 
 
 > [!NOTE]
 > Azure Database for PostgreSQL – Flexible Server unterstützt zurzeit den [Azure Defender-Datenschutz](../../security-center/azure-defender.md) nicht. 
@@ -93,7 +93,7 @@ Befolgen Sie die [Anleitung](./how-to-manage-server-portal.md#reset-admin-passwo
 
 ### <a name="update-database-user-password"></a>Aktualisieren eines Kennworts für Datenbankbenutzer
 
-Sie können Clienttools verwenden, um die Kennwörter von Datenbankbenutzern zu aktualisieren. Beispiel:
+Sie können Clienttools verwenden, um die Kennwörter von Datenbankbenutzern zu aktualisieren. Ein auf ein Objekt angewendeter
 ```SQL
 postgres=> alter role demouser with password 'Password123!';
 ALTER ROLE

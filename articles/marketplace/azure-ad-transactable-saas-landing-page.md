@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 10/25/2021
-ms.openlocfilehash: 8a0e7ab7fad8b0da025f143ab2401e5740972ec7
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: cd03abdf01d11fa3b6de869a7d95feafff0ca393
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131078254"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132060356"
 ---
 # <a name="build-the-landing-page-for-your-transactable-saas-offer-in-the-commercial-marketplace"></a>Erstellen der Landing Page für Ihr transaktionsfähiges SaaS-Angebot im kommerziellen Marketplace
 
@@ -81,7 +81,7 @@ Dadurch kann die Lösung auch in Szenarien verwendet werden, die auf dem Prinzip
 
 ## <a name="resolve-the-marketplace-purchase-identification-token"></a>Auflösen des Identifizierungstokens des Marketplace-Kaufs
 
-Wenn der Käufer auf Ihre Landing Page weitergeleitet wird, wird dem URL-Parameter ein Token hinzugefügt. Dieses Token unterscheidet sich sowohl vom Token, das von Azure AD ausgestellt wird, als auch vom Zugriffstoken, das für die Dienst-zu-Dienst-Authentifizierung verwendet wird. Vielmehr wird dieses Token als Eingabe für den Auflösungsaufruf der [SaaS-Fulfillment-APIs](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription) verwendet, um die Einzelheiten des Abonnements abzurufen. Wie bei allen Aufrufen der SaaS-Fulfillment-APIs wird Ihre Dienst-zu-Dienst-Anforderung mit einem Zugriffstoken authentifiziert, das auf der Azure AD-Anwendungs-ID (Benutzer) der App für die Dienst-zu-Dienst-Authentifizierung basiert.
+Wenn der Käufer auf Ihre Landing Page weitergeleitet wird, wird dem URL-Parameter ein Token hinzugefügt. Dieses Token unterscheidet sich sowohl vom Token, das von Azure AD ausgestellt wird, als auch vom Zugriffstoken, das für die Dienst-zu-Dienst-Authentifizierung verwendet wird. Vielmehr wird dieses Token als Eingabe für den Auflösungsaufruf der [SaaS-Fulfillment-APIs](./partner-center-portal/pc-saas-fulfillment-subscription-api.md#resolve-a-purchased-subscription) verwendet, um die Einzelheiten des Abonnements abzurufen. Wie bei allen Aufrufen der SaaS-Fulfillment-APIs wird Ihre Dienst-zu-Dienst-Anforderung mit einem Zugriffstoken authentifiziert, das auf der Azure AD-Anwendungs-ID (Benutzer) der App für die Dienst-zu-Dienst-Authentifizierung basiert.
 
 > [!NOTE]
 > In den meisten Fällen sollte dieser Aufruf von einer zweiten Anwendung mit einem einzelnen Mandanten erfolgen. Weitere Informationen finden Sie unter [Verwenden von zwei Azure AD-Apps, um die Sicherheit in einer Produktionsumgebung zu verbessern](#use-two-azure-ad-apps-to-improve-security-in-production) weiter oben in diesem Artikel.
@@ -92,7 +92,7 @@ Zur Authentifizierung Ihrer Anwendung mit den SaaS-Fulfillment-APIs benötigen S
 
 ### <a name="call-the-resolve-endpoint"></a>Aufrufen des Auflösungsendpunkts
 
-Die SaaS-Fulfillment-APIs implementieren den [Auflösungsendpunkt](./partner-center-portal/pc-saas-fulfillment-api-v2.md#resolve-a-purchased-subscription), der aufgerufen werden kann, um die Gültigkeit des Marketplace-Tokens zu bestätigen und Informationen zum Abonnement zurückzugeben.
+Die SaaS-Fulfillment-APIs implementieren den [Auflösungsendpunkt](./partner-center-portal/pc-saas-fulfillment-subscription-api.md#resolve-a-purchased-subscription), der aufgerufen werden kann, um die Gültigkeit des Marketplace-Tokens zu bestätigen und Informationen zum Abonnement zurückzugeben.
 
 ## <a name="read-information-from-claims-encoded-in-the-id-token"></a>Lesen von Informationen aus Ansprüchen, die im ID-Token codiert sind
 

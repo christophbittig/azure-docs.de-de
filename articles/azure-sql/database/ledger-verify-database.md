@@ -5,24 +5,23 @@ ms.service: sql-database
 ms.subservice: security
 ms.devlang: ''
 ms.topic: how-to
-author: JasonMAnderson
-ms.author: janders
+author: rothja
+ms.author: jroth
 ms.reviewer: vanto
-ms.date: 07/23/2021
-ms.custom: references_regions
-ms.openlocfilehash: 7684cc6ecff0d4e36fec0d7df54edd8602aa145f
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.date: 09/09/2021
+ms.openlocfilehash: 272138471499cbd62085301df8e518ea47a7ddc3
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114665492"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132058844"
 ---
 # <a name="verify-a-ledger-table-to-detect-tampering"></a>Überprüfen einer Ledgertabelle zum Erkennen von Manipulationen
 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 > [!NOTE]
-> Der Azure SQL-Datenbank-Ledger befindet sich derzeit in der öffentlichen Vorschauphase und ist in den Regionen West „Europa, Westen“, „Brasilien, Süden“ und „USA, Westen-Mitte“ verfügbar.
+> Der Azure SQL-Datenbank-Ledger ist zurzeit als Public Preview (Öffentliche Vorschau) verfügbar.
 
 In diesem Artikel überprüfen Sie die Integrität der Daten in Ihren Azure SQL-Datenbank-Ledgertabellen. Wenn Sie beim [Erstellen Ihrer Datenbank in SQL-Datenbank](ledger-create-a-single-database-with-ledger-enabled.md) die Option **Automatischen Digestspeicher aktivieren** aktiviert haben, befolgen Sie die Anweisungen im Azure-Portal, damit das Transact-SQL-Skript (T-SQL), das für die Überprüfung des Datenbankledgers im [Abfrage-Editor](connect-query-portal.md) erforderlich ist, automatisch generiert wird. Befolgen Sie andernfalls die T-SQL-Anweisungen für [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) oder [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio).
 

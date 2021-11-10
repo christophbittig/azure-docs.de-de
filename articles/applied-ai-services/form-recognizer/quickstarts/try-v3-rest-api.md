@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 11/02/2021
 ms.author: lajanuar
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 097387d1a84aa02e6d81292a65404ca2e837ed98
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c19e08dce4c2cfcae67555189b55d085b18eceb0
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131020994"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131988556"
 ---
 # <a name="quickstart-rest-api---preview"></a>Schnellstart: REST-API | Vorschau
 
@@ -67,7 +67,7 @@ In dieser Schnellstartanleitung verwenden Sie die folgenden Funktionen, um Daten
 
 * [**Layout:**](#try-it-layout-model) Analysieren und Extrahieren von Tabellen, Zeilen, Wörtern und Auswahlmarkierungen, z. B. Optionsfeldern und Kontrollkästchen in Formulardokumenten, ohne ein Modell trainieren zu müssen
 
-* [**Vordefiniertes Modell:** ](#try-it-prebuilt-model) Analysieren und Extrahieren von Daten aus gängigen Dokumenttypen mit einem vorab trainierten Modell
+* [**Vordefiniertes Modell:**](#try-it-prebuilt-model) Analysieren und Extrahieren von Daten aus gängigen Dokumenttypen mit einem vorab trainierten Modell
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -122,7 +122,7 @@ https://{host}/formrecognizer/documentModels/{modelId}/analyzeResults/**{resultI
 
 ### <a name="get-general-document-results"></a>Abrufen von Ergebnissen für allgemeine Dokumente
 
-Rufen Sie nach dem Aufrufen der **[Analyze Document](https://westus.api.cognitive.microsoft.com/formrecognizer/documentModels/prebuilt-document:analyze?api-version=2021-09-30-preview&stringIndexType=textElements)**-API die **[Get Analyze Result](https://westus.api.cognitive.microsoft.com/formrecognizer/documentModels/prebuilt-document/analyzeResults/{resultId}?api-version=2021-09-30-preview)**-API auf, um den Status des Vorgangs und die extrahierten Daten abzurufen. Nehmen Sie die folgenden Änderungen vor, bevor Sie den Befehl ausführen:
+Rufen Sie nach dem Aufrufen der **[Analyze Document](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/AnalyzeDocument)**-API die **[Get Analyze Result](https://westus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v3-0-preview-1/operations/GetAnalyzeDocumentResultw)**-API auf, um den Status des Vorgangs und die extrahierten Daten abzurufen. Nehmen Sie die folgenden Änderungen vor, bevor Sie den Befehl ausführen:
 
 1. Ersetzen Sie `{endpoint}` durch den Endpunkt, den Sie mit Ihrem Abonnement für die Formularerkennung erhalten haben.
 1. Ersetzen Sie `{subscription key}` durch den Abonnementschlüssel, den Sie im vorherigen Schritt kopiert haben.

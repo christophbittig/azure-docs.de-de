@@ -482,7 +482,7 @@
               href: backup-azure-diagnostics-mode-data-model.md
     - name: Automation
       items:
-        - name: Verwenden der Azure Backup-Automatisierung
+        - name: Überblick
           href: automation-backup.md
         - name: Integrierte Azure Policy-Instanz für Azure Backup
           items:

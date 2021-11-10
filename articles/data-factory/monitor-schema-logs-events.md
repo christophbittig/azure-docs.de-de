@@ -1,19 +1,19 @@
 ---
 title: Schema von Protokollen und Ereignissen
 description: Erfahren Sie mehr über das Schema, das von Azure Data Factory-Protokollen und -Ereignissen für die Überwachung verwendet wird.
-author: minhe-msft
-ms.author: hemin
+author: joshuha-msft
+ms.author: joowen
 ms.reviewer: jburchel
 ms.service: data-factory
 ms.subservice: monitoring
 ms.topic: conceptual
 ms.date: 09/02/2021
-ms.openlocfilehash: 4b64818b505863ad7f7e2878640eeb28224af2f1
-ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
+ms.openlocfilehash: 0245d988ab9b116a515ec76ecb9d7031936918be
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2021
-ms.locfileid: "129400190"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131853926"
 ---
 # <a name="schema-of-logs-and-events"></a>Schema von Protokollen und Ereignissen
 
@@ -61,7 +61,7 @@ Die folgenden Listen mit Attributen werden für die Überwachung verwendet.
 }
 ```
 
-| Eigenschaft | Typ | BESCHREIBUNG | Beispiel |
+| Eigenschaft | type | BESCHREIBUNG | Beispiel |
 | --- | --- | --- | --- |
 | **Level** |String | Die Ebene der Diagnoseprotokolle. Legen Sie für Aktivitätsausführungsprotokolle den Eigenschaftswert auf „4“ fest. | `4` |
 | **correlationId** |String | Die eindeutige ID für die Nachverfolgung einer bestimmten Anforderung. | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
@@ -107,7 +107,7 @@ Die folgenden Listen mit Attributen werden für die Überwachung verwendet.
 }
 ```
 
-| Eigenschaft | Typ | BESCHREIBUNG | Beispiel |
+| Eigenschaft | type | BESCHREIBUNG | Beispiel |
 | --- | --- | --- | --- |
 | **Level** |String | Die Ebene der Diagnoseprotokolle. Legen Sie für Aktivitätsausführungsprotokolle den Eigenschaftswert auf „4“ fest. | `4` |
 | **correlationId** |String | Die eindeutige ID für die Nachverfolgung einer bestimmten Anforderung. | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
@@ -150,7 +150,7 @@ Die folgenden Listen mit Attributen werden für die Überwachung verwendet.
 }
 ```
 
-| Eigenschaft | Typ | BESCHREIBUNG | Beispiel |
+| Eigenschaft | type | BESCHREIBUNG | Beispiel |
 | --- | --- | --- | --- |
 | **Level** |String | Die Ebene der Diagnoseprotokolle. Legen Sie für Aktivitätsausführungsprotokolle den Eigenschaftswert auf „4“ fest. | `4` |
 | **correlationId** |String | Die eindeutige ID für die Nachverfolgung einer bestimmten Anforderung. | `319dc6b4-f348-405e-b8d7-aafc77b73e77` |
@@ -187,7 +187,7 @@ Im Folgenden finden Sie die Protokollattribute der SQL Server Integration Servi
 }
 ```
 
-| Eigenschaft                   | Typ   | BESCHREIBUNG                                                   | Beispiel                        |
+| Eigenschaft                   | type   | BESCHREIBUNG                                                   | Beispiel                        |
 | -------------------------- | ------ | ------------------------------------------------------------- | ------------------------------ |
 | **time**                   | String | Ereigniszeitpunkt im UTC-Format: `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | String | Name Ihres SSIS IR-Vorgangs                            | `Start/Stop/Maintenance/Heartbeat` |
@@ -227,7 +227,7 @@ Nachstehend finden Sie die Protokollattribute von Bedingungen der Ereignismeldun
 }
 ```
 
-| Eigenschaft                   | Typ   | BESCHREIBUNG                                                          | Beispiel                        |
+| Eigenschaft                   | type   | BESCHREIBUNG                                                          | Beispiel                        |
 | -------------------------- | ------ | -------------------------------------------------------------------- | ------------------------------ |
 | **time**                   | String | Ereigniszeitpunkt im UTC-Format: `YYYY-MM-DDTHH:MM:SS.00000Z`        | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | String | Legen Sie den Wert `YourSSISIRName-SSISPackageEventMessageContext`       | `mysqlmissisir-SSISPackageEventMessageContext` |
@@ -277,7 +277,7 @@ Nachstehend finden Sie die Protokollattribute von Ereignismeldungen, die von SSI
 }
 ```
 
-| Eigenschaft                   | Typ   | BESCHREIBUNG                                                        | Beispiel                        |
+| Eigenschaft                   | type   | BESCHREIBUNG                                                        | Beispiel                        |
 | -------------------------- | ------ | ------------------------------------------------------------------ | ------------------------------ |
 | **time**                   | String | Ereigniszeitpunkt im UTC-Format: `YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | String | Legen Sie den Wert `YourSSISIRName-SSISPackageEventMessages`           | `mysqlmissisir-SSISPackageEventMessages` |
@@ -326,7 +326,7 @@ Nachstehend finden Sie die Protokollattribute der Statistiken von ausführbaren 
 }
 ```
 
-| Eigenschaft                   | Typ   | BESCHREIBUNG                                                      | Beispiel                        |
+| Eigenschaft                   | type   | BESCHREIBUNG                                                      | Beispiel                        |
 | -------------------------- | ------ | ---------------------------------------------------------------- | ------------------------------ |
 | **time**                   | String | Ereigniszeitpunkt im UTC-Format: `YYYY-MM-DDTHH:MM:SS.00000Z`    | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | String | Legen Sie den Wert `YourSSISIRName-SSISPackageExecutableStatistics`  | `mysqlmissisir-SSISPackageExecutableStatistics` |
@@ -371,7 +371,7 @@ Nachstehend finden Sie die Protokollattribute von den Runtimestatistiken für di
 }
 ```
 
-| Eigenschaft                   | Typ   | BESCHREIBUNG                                                         | Beispiel                        |
+| Eigenschaft                   | type   | BESCHREIBUNG                                                         | Beispiel                        |
 | -------------------------- | ------ | ------------------------------------------------------------------- | ------------------------------ |
 | **time**                   | String | Ereigniszeitpunkt im UTC-Format: `YYYY-MM-DDTHH:MM:SS.00000Z`       | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | String | Legen Sie den Wert `YourSSISIRName-SSISPackageExecutionComponentPhases` | `mysqlmissisir-SSISPackageExecutionComponentPhases` |
@@ -419,7 +419,7 @@ Nachstehend finden Sie die Protokollattribute von Datenverschiebungen durch die 
 }
 ```
 
-| Eigenschaft                     | Typ   | BESCHREIBUNG                                                        | Beispiel                        |
+| Eigenschaft                     | type   | BESCHREIBUNG                                                        | Beispiel                        |
 | ---------------------------- | ------ | ------------------------------------------------------------------ | ------------------------------ |
 | **time**                     | String | Ereigniszeitpunkt im UTC-Format: `YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**            | String | Legen Sie den Wert `YourSSISIRName-SSISPackageExecutionDataStatistics` | `mysqlmissisir-SSISPackageExecutionDataStatistics` |

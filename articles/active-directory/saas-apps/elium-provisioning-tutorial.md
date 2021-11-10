@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/19/2019
 ms.author: thwimmer
-ms.openlocfilehash: 6c97bd16978295b34e671a0af2598869f0218993
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: fd99228da135e8a0a2eb2c1413243537efe7efc8
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113767960"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131990417"
 ---
 # <a name="tutorial-configure-elium-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Elium für die automatische Benutzerbereitstellung
 
@@ -34,6 +34,9 @@ Dieses Tutorial setzt voraus, dass Sie bereits über die folgenden erforderliche
 * Einen Azure AD-Mandanten
 * [Einen Elium-Mandanten](https://www.elium.com/pricing/)
 * Ein Benutzerkonto in Elium, mit Administratorberechtigungen
+
+> [!NOTE]
+> Diese Integration kann auch über die Azure AD-Umgebung für die US Government-Cloud verwendet werden. Sie finden diese Anwendung im Azure AD-Katalog für US Government-Cloudanwendungen und konfigurieren sie auf die gleiche Weise wie in der öffentlichen Cloud.
 
 ## <a name="assigning-users-to-elium"></a>Zuweisen von Benutzern zu Elium
 

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 10/25/2021
-ms.openlocfilehash: 6a0b7494d5ce33527640c144faf8630d523ab941
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 39e41febed0809486d2e6796284d86a0874c13f5
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131061369"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132059674"
 ---
 # <a name="add-technical-details-for-a-saas-offer"></a>Hinzufügen technischer Details für ein SaaS-Angebot
 
@@ -31,7 +31,7 @@ Auf der Registerkarte **Technische Konfiguration** definieren Sie die technische
   > [!IMPORTANT]
   > Ihre Angebotsseite sollte rund um die Uhr aktiv sein. Dies ist die einzige Möglichkeit, Sie über neue Käufe Ihrer SaaS-Angebote im kommerziellen Marketplace oder über Konfigurationsanforderungen eines aktiven Abonnements für ein Angebot zu benachrichtigen. Fügen Sie das Pfund-Zeichen (#) nicht in die URL der Landing Page ein. Andernfalls können die Kunden nicht auf Ihre Landing Page zugreifen.
 
-- **Verbindungswebhook** (erforderlich): Für alle asynchronen Ereignisse, die Microsoft an Sie senden muss (etwa, wenn das SaaS-Abonnement gekündigt wurde), muss eine [Verbindungswebhook-URL](./partner-center-portal/pc-saas-fulfillment-api-v2.md#implementing-a-webhook-on-the-saas-service) angegeben werden. Diese URL wird aufgerufen, um Sie über das Ereignis zu informieren.
+- **Verbindungswebhook** (erforderlich): Für alle asynchronen Ereignisse, die Microsoft an Sie senden muss (etwa, wenn das SaaS-Abonnement gekündigt wurde), muss eine [Verbindungswebhook-URL](./partner-center-portal/pc-saas-fulfillment-webhook.md) angegeben werden. Diese URL wird aufgerufen, um Sie über das Ereignis zu informieren.
 
   > [!IMPORTANT]
   > Ihr Webhook sollte rund um die Uhr in Betrieb sein, da Sie nur so über Aktualisierungen der SaaS-Abonnements Ihrer Kunden, welche über den kommerziellen Marktplatz erworben wurden, informiert werden.

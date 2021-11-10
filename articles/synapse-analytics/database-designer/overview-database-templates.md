@@ -8,12 +8,12 @@ ms.subservice: database-editor
 ms.topic: overview
 ms.date: 11/02/2021
 ms.custom: template-overview, ignite-fall-2021
-ms.openlocfilehash: f34ce2b785aa1515db39cb0266963d8da5c85558
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: c3022ff0c5334b96fde38bf386c3340fb4b5c2e7
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131437426"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131997588"
 ---
 # <a name="what-is-azure-synapse-database-templates"></a>Was sind Azure Synapse-Datenbankvorlagen?
 
@@ -32,7 +32,7 @@ Wenn Sie beispielsweise eine Produktempfehlungslösung für Ihre Einzelhandelsku
 
 Sie können diesen Anwendungsfall einrichten, indem Sie die sechs Tabellen in der Datenbankvorlage für den Einzelhandel auswählen. 
 
-[[retail-database-template-example.png|alt=Beispiel einer Vorlage für eine Einzelhandelsdatenbank]]
+![image](https://user-images.githubusercontent.com/84302758/140736847-9d93436d-47b4-4175-8b09-a33de0bcde05.png)
 
 Eine typische Datenbankvorlage erfüllt die grundlegenden Anforderungen einer bestimmten Branche und umfasst Folgendes: 
 

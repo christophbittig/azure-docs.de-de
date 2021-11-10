@@ -5,13 +5,13 @@ author: vicancy
 ms.author: lianwei
 ms.service: azure-web-pubsub
 ms.topic: conceptual
-ms.date: 08/18/2021
-ms.openlocfilehash: a7adef1e705d14578cdec9bec7a947cc9be0db20
-ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
+ms.date: 11/08/2021
+ms.openlocfilehash: ec1a0bfcc883e9434c8c80264c574c3630e395b0
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122598396"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131995084"
 ---
 #  <a name="azure-web-pubsub-service-internals"></a>Ausführliche Informationen zum Azure Web PubSub-Dienst
 
@@ -59,7 +59,7 @@ Unser Dienst unterstützt zwei Arten von Clients:
 <a name="simple_client"></a>
 
 ### <a name="the-simple-websocket-client"></a>Einfacher WebSocket-Client
-Ein einfacher WebSocket-Client ist, wie der Name schon sagt, eine einfache WebSocket-Verbindung. Er kann zudem über ein eigenes Unterprotokoll verfügen. 
+Ein einfacher WebSocket-Client ist, wie die Name schon sagt, eine einfache WebSocket-Verbindung. Er kann auch sein eigenes Unterprotokoll besitzen. 
 
 Beispielsweise kann in JS ein einfacher WebSocket-Client mithilfe folgender Komponenten erstellt werden:
 ```js
@@ -203,7 +203,7 @@ Wie Sie bei der Beschreibung der PubSub-WebSocket-Clients erfahren haben, kann e
 | Nicht angegeben | Der Client kann Ereignisse senden.
 | `webpubsub.joinLeaveGroup` | Der Client kann einer beliebigen Gruppe beitreten/diese verlassen.
 | `webpubsub.sendToGroup` | Der Client kann Nachrichten in einer beliebigen Gruppe veröffentlichen.
-| `webpubsub.joinLeaveGroup.<group>` | Der Client kann der Gruppe `<group>` beitreten/diese verlassen.
+| `webpubsub.joinLeaveGroup.<group>` | Der Client kann Gruppe `<group>` beitreten/verlassen.
 | `webpubsub.sendToGroup.<group>` | Der Client kann Nachrichten in der Gruppe `<group>` veröffentlichen.
 
 Auch serverseitig können über das [Serverprotokoll](#connection_manager) Berechtigungen des Clients dynamisch erteilt oder widerrufen werden, wie in einem späteren Abschnitt gezeigt.
@@ -248,7 +248,7 @@ Aktuell werden [WebHook-Request-Rate](https://github.com/cloudevents/spec/blob/v
 - Einfache Authentifizierung, `code` wird über die konfigurierte Webhook-URL bereitgestellt.
 - Azure Active Directory-Authentifizierung 
    - Fügen Sie in den App-Registrierungen von AAD einen geheimen Clientschlüssel hinzu, und stellen Sie den geheimen Clientschlüssel über das Portal oder die CLI für Azure Web PubSub bereit.
-   - Bereitstellen der [Identität](/azure/app-service/overview-managed-identity?tabs=dotnet) für Azure Web PubSub über das Portal/die CLI
+   - Bereitstellen der [Identität](../app-service/overview-managed-identity.md?tabs=dotnet) für Azure Web PubSub über das Portal/die CLI
 
 <a name="connection_manager"></a>
 

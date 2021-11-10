@@ -12,16 +12,14 @@ ms.date: 09/01/2020
 ms.author: eur
 ms.custom: devx-track-csharp, cog-serv-seo-aug-2020
 keywords: Sprachübersetzung
-ms.openlocfilehash: 19332b801493359dc0cf8a8f1d5bab951b9be983
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 13d82c334504b2d396f10b1c80b99c0c264c9ea0
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131502747"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131988879"
 ---
 # <a name="what-is-speech-translation"></a>Was ist Sprachübersetzung?
-
-[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 In dieser Übersicht lernen Sie die Vorteile und Funktionen des Sprachübersetzungsdiensts kennen, der eine [mehrsprachige Sprache-zu-Sprache-Übersetzung](language-support.md#speech-translation) und eine Sprache-zu-Text-Übersetzung von Audiostreams in Echtzeit ermöglicht. Mit dem Speech SDK haben Ihre Anwendungen, Tools und Geräte Zugriff auf Quelltranskriptionen und Übersetzungsausgaben für bereitgestelltes Audio. Die Zwischenergebnisse der Transkription und Übersetzung werden zurückgegeben, wenn Sprache erkannt wird, und die Endergebnisse können in synthetisierte Sprache konvertiert werden.
 

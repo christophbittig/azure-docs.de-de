@@ -6,18 +6,18 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: dd0328314cbe1f93565a421e0ff4f68f410b10dc
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 409a86883cf010390b3d37c8d3af945ed3702eae
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131459974"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131851843"
 ---
 # <a name="understanding-azure-virtual-desktop-network-connectivity"></a>Grundlegendes zur Netzwerkkonnektivität für Azure Virtual Desktop
 
 Azure Virtual Desktop bietet die Möglichkeit, Clientsitzungen auf den Sitzungshosts zu hosten, die in Azure ausgeführt werden. Microsoft verwaltet Teile der Dienste im Auftrag des Kunden und stellt sichere Endpunkte zum Verbinden von Clients und Sitzungshosts bereit. Das folgende Diagramm bietet eine allgemeine Übersicht über die von Azure Virtual Desktop verwendeten Netzwerkverbindungen.
 
-:::image type="content" source="media/windows-virtual-desktop-network-connections.svg" alt-text="Diagramm: Netzwerkverbindungen von Azure Virtual Desktop" lightbox="media/windows-virtual-desktop-network-connections.svg":::
+:::image type="content" source="media/azure-virtual-desktop-network-connections.svg" alt-text="Diagramm: Netzwerkverbindungen von Azure Virtual Desktop" lightbox="media/azure-virtual-desktop-network-connections.svg":::
 
 ## <a name="session-connectivity"></a>Sitzungskonnektivität
 

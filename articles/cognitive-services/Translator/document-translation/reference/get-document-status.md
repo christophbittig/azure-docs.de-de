@@ -3,19 +3,17 @@ title: Methode „Abrufen des Dokumentstatus“
 titleSuffix: Azure Cognitive Services
 description: Die Methode „Get Document Status“ gibt den Status für ein bestimmtes Dokument zurück.
 services: cognitive-services
-author: jann-skotdal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 04/21/2021
-ms.author: v-jansk
-ms.openlocfilehash: 69172956d36aa4b43c88858a65771fdb183a39f6
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: 4ec9132a237ace9f43b33580f1956e38e6be634c
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110453613"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132058994"
 ---
 # <a name="get-document-status"></a>Abrufen des Dokumentstatus
 
@@ -67,7 +65,7 @@ Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zu
 
 ### <a name="successful-get-document-status-response"></a>Erfolgreiche Antwort zum Get-Dokument Status
 
-|Name|Typ|Beschreibung|
+|Name|type|Beschreibung|
 |--- |--- |--- |
 |path|Zeichenfolge|Speicherort des Dokuments oder des Ordners.|
 |sourcePath|Zeichenfolge|Speicherort des Quelldokuments.|
@@ -81,7 +79,7 @@ Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zu
 
 ### <a name="error-response"></a>Fehlerantwort
 
-|Name|Typ|Beschreibung|
+|Name|type|BESCHREIBUNG|
 |--- |--- |--- |
 |code|Zeichenfolge|Enumerationen, die High-Level-Fehlercodes enthalten. Mögliche Werte:<br/><ul><li>InternalServerError</li><li>InvalidArgument</li><li>InvalidRequest</li><li>RequestRateTooHigh</li><li>ResourceNotFound</li><li>ServiceUnavailable</li><li>Nicht autorisiert</li></ul>|
 |message|Zeichenfolge|Ruft High-Level-Fehlermeldung ab.|

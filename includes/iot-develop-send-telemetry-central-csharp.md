@@ -1,5 +1,5 @@
 ---
-title: Datei einfügen
+title: include file
 description: Datei einfügen
 author: timlt
 ms.service: iot-develop
@@ -7,16 +7,16 @@ ms.topic: include
 ms.date: 10/08/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: ab1618125ba42545702571629e7242871ecec4f7
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 1a61f369d0987caac2cc821e37c1e5e1ed7cda40
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131032773"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131860483"
 ---
 [![Code durchsuchen](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/main/iot-hub/Samples/device/PnpDeviceSamples)
 
-In dieser Schnellstartanleitung lernen Sie einen einfachen Entwicklungsworkflow für Azure IoT-Anwendungen kennen. Zunächst erstellen Sie eine Azure IoT Central-Anwendung zum Hosten von Geräten. Dann verwenden Sie ein Azure IoT Device SDK-Beispiel, um einen Temperaturregler zu erstellen, ihn sicher mit IoT Central zu verbinden und Telemetriedaten zu senden. Die Beispielanwendung für den Temperaturregler läuft auf Ihrem lokalen Computer und erzeugt simulierte Sensordaten, die an die IoT-Zentrale gesendet werden.
+In dieser Schnellstartanleitung lernen Sie einen einfachen Entwicklungsworkflow für Azure IoT-Anwendungen kennen. Zunächst erstellen Sie eine Azure IoT Central-Anwendung zum Hosten von Geräten. Anschließend verwenden Sie ein SDK-Beispiel für ein Azure IoT-Gerät, um einen Temperaturregler zu erstellen, ihn sicher mit IoT Central zu verbinden und Telemetriedaten zu senden. Die Beispielanwendung für den Temperaturregler wird auf Ihrem lokalen Computer ausgeführt und generiert simulierte Sensordaten, die an IoT Central gesendet werden sollen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -37,14 +37,14 @@ Installieren Sie die folgenden Komponenten auf dem Entwicklungscomputer:
 
 [!INCLUDE [iot-develop-create-central-app-with-device](iot-develop-create-central-app-with-device.md)]
 
-## <a name="run-a-device"></a>Ausführen eines Geräts
+## <a name="run-the-device-sample"></a>Ausführen des Gerätebeispiels
 In diesem Abschnitt konfigurieren Sie Ihre lokale Umgebung, installieren die Azure IoT C#-Beispiele und führen ein Beispiel aus, das einen Temperaturregler erstellt.
 
 ### <a name="configure-your-environment"></a>Konfigurieren Ihrer Umgebung
 
 1. Öffnen Sie eine Konsole, etwa die Windows-Eingabeaufforderung, PowerShell oder Bash.
 
-1. Legen Sie mit den entsprechenden Befehle für Ihre Konsole die folgenden Umgebungsvariablen fest. Das Gerät verwendet diese Werte für die Verbindung mit der IoT-Zentrale. Verwenden Sie für `IOTHUB_DEVICE_DPS_ID_SCOPE`, `IOTHUB_DEVICE_DPS_DEVICE_KEY` und `IOTHUB_DEVICE_DPS_DEVICE_ID` die Geräteverbindungswerte, die Sie zuvor gespeichert haben.
+1. Legen Sie mit den entsprechenden Befehle für Ihre Konsole die folgenden Umgebungsvariablen fest. Das Gerät verwendet diese Werte, um eine Verbindung mit IoT Central herzustellen. Verwenden Sie für `IOTHUB_DEVICE_DPS_ID_SCOPE`, `IOTHUB_DEVICE_DPS_DEVICE_KEY` und `IOTHUB_DEVICE_DPS_DEVICE_ID` die Geräteverbindungswerte, die Sie zuvor gespeichert haben.
 
     **Eingabeaufforderung (Windows)**
 
@@ -117,7 +117,7 @@ In diesem Abschnitt konfigurieren Sie Ihre lokale Umgebung, installieren die Azu
     dotnet run
     ```
 
-    Nachdem Ihr Gerät eine Verbindung zu Ihrer IoT Central-Anwendung hergestellt hat, verbindet es sich mit der Geräteinstanz, die Sie in der Anwendung erstellt haben, und beginnt, Telemetriedaten zu senden. Die Verbindungsdetails und die Telemetrieausgabe werden in der Konsole angezeigt:
+    Nachdem Ihr Gerät eine Verbindung mit der IoT Central-Anwendung hergestellt hat, stellt es eine Verbindung mit der Geräteinstanz her, die Sie in der Anwendung erstellt haben, und beginnt mit dem Senden von Telemetriedaten. Die Verbindungsdetails und die Telemetrieausgabe werden in der Konsole angezeigt:
 
     ```output
     [10/09/2021 00:29:18]info: Microsoft.Azure.Devices.Client.Samples.TemperatureControllerSample[0]

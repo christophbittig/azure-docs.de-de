@@ -1,19 +1,19 @@
 ---
 title: Einrichten von eingehendem HTTPS-Datenverkehr in Azure Container Apps-Vorschau
 description: Aktivieren von öffentlichen und privaten Endpunkten in Ihrer App mit Azure Container Apps
-services: app-service
+services: container-apps
 author: craigshoemaker
-ms.service: app-service
+ms.service: container-apps
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.author: cshoe
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: e4b465b593fadcacce59a14c9fbced0780c252a9
-ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
+ms.openlocfilehash: 5979588ec977ef7655fab21ef30e4fd233c12b43
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131578290"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132026423"
 ---
 # <a name="set-up-https-ingress-in-azure-container-apps-preview"></a>Einrichten von eingehendem HTTPS-Datenverkehr in Azure Container Apps-Vorschau
 
@@ -48,7 +48,7 @@ Der Abschnitt mit der Konfiguration des eingehenden Datenverkehrs hat das folgen
 
 Die folgenden Eigenschaften sind beim Konfigurieren des eingehenden Datenverkehrs verfügbar:
 
-| Eigenschaft | Beschreibung | Werte | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Werte | Erforderlich |
 |---|---|---|---|
 | `external` | Ihre Eingangs-IP und Ihr vollqualifizierter Domänenname können entweder extern im Internet oder intern in VNet sichtbar sein. |`true` für externe Sichtbarkeit, `false` für interne Sichtbarkeit (Standard) | Ja |
 | `targetPort` | Der Port, dem Ihr Container für eingehende Anforderungen lauscht | Geben Sie für diesen Wert die Portnummer ein, die Ihr Container verwendet. Der Eingangsendpunkt Ihrer Anwendung ist im Port `443` immer verfügbar. | Ja |

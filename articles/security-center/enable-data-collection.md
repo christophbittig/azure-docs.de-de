@@ -5,14 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: quickstart
-ms.date: 10/08/2021
+ms.date: 11/08/2021
 ms.author: memildin
-ms.openlocfilehash: 8d9fa0e724c20d0327d6b3907fee8e954deda41f
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: de36239b769434fb9d3a61c70f0f79ed922687db
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131453096"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131997531"
 ---
 # <a name="configure-auto-provisioning-for-agents-and-extensions-from-microsoft-defender-for-cloud"></a>Konfigurieren der automatischen Bereitstellung von Agents und Erweiterungen in Microsoft Defender für Cloud
 
@@ -29,7 +29,7 @@ Für den Einstieg in Defender für Cloud benötigen Sie ein Microsoft Azure-Abon
 |-------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Status des Release:          | **Feature**: Die automatische Bereitstellung ist allgemein verfügbar (GA).<br>**Agent und Erweiterungen:** Der Log Analytics-Agent für Azure-VMs ist in der GA-Version (allgemeine Verfügbarkeit) verfügbar, der Microsoft Dependency-Agent befindet sich in der Vorschauversion, das Richtlinien-Add-On für Kubernetes ist „GA“, der Gastkonfigurations-Agent ist in der Vorschauversion.  |
 | Preise:                | Kostenlos                                                                                                                                                                                                                         |
-| Unterstützte Ziele: | :::image type="icon" source="./media/icons/yes-icon.png"::: Azure-Computer<br>:::image type="icon" source="./media/icons/no-icon.png"::: Azure Arc-Computer<br>:::image type="icon" source="./media/icons/no-icon.png"::: Kubernetes-Knoten<br>:::image type="icon" source="./media/icons/no-icon.png"::: Virtual Machine Scale Sets |
+| Unterstützte Ziele: | :::image type="icon" source="./media/icons/yes-icon.png"::: Azure-Computer<br>:::image type="icon" source="./media/icons/yes-icon.png"::: Azure Arc-Computer<br>:::image type="icon" source="./media/icons/no-icon.png"::: Kubernetes-Knoten<br>:::image type="icon" source="./media/icons/no-icon.png"::: Virtual Machine Scale Sets |
 | Clouds:                 | **Feature**:<br>:::image type="icon" source="./media/icons/yes-icon.png"::: Kommerzielle Clouds<br>:::image type="icon" source="./media/icons/yes-icon.png"::: Azure Government, Azure China 21Vianet<br>**Agent und Erweiterungen:**<br>Der Log Analytics-Agent für Azure-VMs ist in allen Clouds verfügbar, das Richtlinien-Add-On für Kubernetes ist in allen Clouds verfügbar, der Gastkonfigurations-Agent ist nur in kommerziellen Clouds verfügbar.  |
 |                         |                                                                                                                                                                                                                              |
 

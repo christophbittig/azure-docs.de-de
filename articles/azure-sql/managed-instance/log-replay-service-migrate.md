@@ -10,12 +10,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: mathoma
 ms.date: 09/21/2021
-ms.openlocfilehash: 2928ce1f58ddefce368a361b32fe65f9c79994cc
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 8dbe12ec428820f14cce427e4780ec4d5d4fd5c8
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128630241"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131893308"
 ---
 # <a name="migrate-databases-from-sql-server-to-sql-managed-instance-by-using-log-replay-service-preview"></a>Migrieren von Datenbanken aus SQL Server zu SQL Managed Instance mit dem Protokollwiedergabedienst (Vorschau)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -415,9 +415,9 @@ Für den Protokollwiedergabedienst gelten die folgenden funktionalen Beschränku
 Verwenden Sie nach dem Starten des Protokollwiedergabediensts das Cmdlet für die Überwachung (`get-azsqlinstancedatabaselogreplay` oder `az_sql_midb_log_replay_show`), um den Status des Vorgangs anzuzeigen. Falls der Protokollwiedergabedienst nicht gestartet werden kann und ein Fehler angezeigt wird, sollten Sie eine Überprüfung auf die häufigsten Fehler durchführen:
 
 - Verfügt eine vorhandene Datenbank in SQL Managed Instance über den gleichen Namen wie die Datenbank, die aus SQL Server migriert werden soll? Lösen Sie diesen Konflikt auf, indem Sie eine der Datenbanken umbenennen.
-- Wurde die Datenbanksicherung in SQL Server mithilfe der Option `CHECKSUM` erstellt?
-- Verfügt das SAS-Token nur über die Berechtigungen „Lesen“ und „Auflisten“ für LRS?
-- Haben Sie das SAS-Token für LRS nach dem Fragezeichen (`?`) kopiert, dessen Inhalt mit `sv=2020-02-10...` beginnt? 
+- Wurde für die Erstellung der Datenbanksicherung unter SQL Server die Option `CHECKSUM` verwendet?
+- Verfügt das SAS-Token ausschließlich über die Berechtigungen „Lesen“ und „Auflisten“ für den Protokollwiedergabedienst?
+- Haben Sie als SAS-Token für den Protokollwiedergabedienst die Zeichenfolge nach dem Fragezeichen (`?`) kopiert, die mit `sv=2020-02-10...` beginnt? 
 - Stimmt die Gültigkeitsdauer des SAS-Tokens mit dem Zeitfenster für Starten und Abschließen der Migration überein? Aufgrund der unterschiedlichen Zeitzonen, die für SQL Managed Instance und das SAS-Token verwendet werden, kann es ggf. zu Konflikten kommen. Versuchen Sie, das SAS-Token erneut zu generieren und das Gültigkeitsdauer-Zeitfenster des Tokens vor und nach dem aktuellen Datum zu vergrößern.
 - Sind der Datenbankname, der Ressourcengruppenname und der Name der verwalteten Instanz richtig geschrieben?
 - Wenn Sie den Protokollwiedergabedienst im Modus „AutoVervollständigen“ gestartet haben: Wurde für die letzte Sicherungsdatei ein gültiger Dateiname angegeben?

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/15/2021
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 104d8665a1a7754475e0bcad14546775335c389f
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: 7021f75bb63e7cb7e7467cf7827a365d81b09bd6
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130131256"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132059617"
 ---
 # <a name="metered-billing-for-saas-using-the-commercial-marketplace-metering-service"></a>Volumenabrechnung für SaaS mit dem Messungsdienst für den kommerziellen Marketplace
 
@@ -23,7 +23,7 @@ Mit dem Messungsdienst für den kommerziellen Marketplace können Sie Software-a
 Damit die getaktete Abrechnung auf ein SaaS-Angebot angewendet werden kann, müssen folgende Voraussetzungen erfüllt sein:
 
 - Es muss alle Angebotsanforderungen für ein [Angebot für den Verkauf durch Microsoft](../plan-saas-offer.md#listing-options) erfüllen, wie unter [Erstellen eines SaaS-Angebots im kommerziellen Marketplace](../create-new-saas-offer.md) beschrieben.
-- Es muss in die [SaaS-Fulfillment-APIs](./pc-saas-fulfillment-api-v2.md) integriert werden, damit Kunden Ihr Angebot bereitstellen und eine Verbindung damit herstellen können.  
+- Es muss in die [SaaS-Fulfillment-APIs](./pc-saas-fulfillment-apis.md) integriert werden, damit Kunden Ihr Angebot bereitstellen und eine Verbindung damit herstellen können.  
 - Es muss ein **Pauschalgebührenmodell** konfiguriert werden, um Kunden Ihren Dienst in Rechnung stellen zu können.  Dimensionen sind eine optionale Erweiterung des Pauschalpreismodells. 
 
 Anschließend kann das SaaS-Angebot in die [APIs für den Messungsdienst für den kommerziellen Marketplace](../marketplace-metering-service-apis.md) integriert werden, um Microsoft über abrechenbare Ereignisse zu informieren.

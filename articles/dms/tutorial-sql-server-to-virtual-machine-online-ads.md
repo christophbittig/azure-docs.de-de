@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 10/05/2021
-ms.openlocfilehash: 4ee20be013ab2771709a3b8d4e508d9689f1c456
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: 67937f35449915a313b5958009573d9bf33139b5
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129547090"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132027411"
 ---
 # <a name="tutorial-migrate-sql-server-to-sql-server-on-azure-virtual-machine-online-using-azure-data-studio-with-dms-preview"></a>Tutorial: Onlinemigration von SQL Server zu SQL Server auf Azure Virtual Machines mithilfe von Azure Data Studio mit DMS (Vorschau)
 
@@ -47,7 +47,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
     - Mitwirkender für die Zielinstanz von Azure SQL Managed Instance (und Storage-Konto zum Hochladen Ihrer Datenbanksicherungsdateien von der SMB-Netzwerkfreigabe).
     - Rolle „Besitzer“ oder „Mitwirkender“ für die Azure-Ressourcengruppen, die die Zielinstanz von Azure SQL Managed Instance oder das Azure-Speicherkonto enthalten.
     - Rolle „Besitzer“ oder „Mitwirkender“ für das Azure-Abonnement.
-* Erstellen Sie ein Ziel [SQL Server auf Azure Virtual Machines](../azure-sql/virtual-machines/windows/create-sql-vm-portal.md).
+* Erstellen Sie eine Zielinstanz von [SQL Server auf Azure Virtual Machines](../azure-sql/virtual-machines/windows/create-sql-vm-portal.md).
 * Stellen Sie sicher, dass die zum Herstellen einer Verbindung mit der SQL Server-Quellinstanz verwendeten Anmeldungen Mitglieder der *sysadmin*-Serverrolle sind oder über `CONTROL SERVER`-Berechtigung verfügen. 
 * Verwenden Sie eine der folgenden Speicheroptionen für die vollständigen Datenbank- und Transaktionsprotokoll-Sicherungsdateien: 
     - SMB-Netzwerkfreigabe 
@@ -56,7 +56,6 @@ Für dieses Tutorial benötigen Sie Folgendes:
     > [!IMPORTANT]
     > - Wenn Ihre Datenbanksicherungsdateien in einer SMB-Netzwerkfreigabe bereitgestellt werden, [erstellen Sie ein Azure Storage-Konto](../storage/common/storage-account-create.md), mit dem der DMS-Dienst die Datenbanksicherungsdateien hochladen kann.  Achten Sie darauf, das Azure Storage-Konto in der gleichen Region zu erstellen, in der auch die Azure Database Migration Service-Instanz erstellt wird.
     > - Azure Database Migration Service initiiert keine Sicherungen, sondern verwendet für die Migration vorhandene Sicherungen, die Sie im Rahmen Ihres Notfallwiederherstellungsplans möglicherweise bereits besitzen.
-    > - Sie sollten [Sicherungen mit der `WITH CHECKSUM`-Option](/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server) erstellen. 
     > - Jede Sicherung kann entweder in eine separate Sicherungsdatei oder in mehrere Sicherungsdateien geschrieben werden. Das Anfügen mehrerer Sicherungen (vollständig und Transaktionsprotokoll) an ein einzelnes Sicherungsmedium wird jedoch nicht unterstützt. 
     > - Verwenden Sie komprimierte Sicherungen, um die Wahrscheinlichkeit von potenziellen Problemen bei der Migration großer Sicherungen zu verringern.
 * Stellen Sie sicher, dass das Dienstkonto, das die SQL Server-Quellinstanz ausführt, über Lese- und Schreibberechtigungen für die SMB-Netzwerkfreigabe verfügt, die Datenbanksicherungsdateien enthält.
@@ -82,8 +81,8 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 1. Öffnen Sie Azure Data Studio, und wählen Sie das Serversymbol aus, um eine Verbindung mit Ihrer lokalen SQL Server-Instanz (oder der SQL Server-Instanz auf Azure Virtual Machines) herzustellen.
 1. Klicken Sie auf der Serververbindung mit der rechten Maustaste, und wählen Sie **Verwalten** aus.
-1. Wählen Sie auf der Startseite des Servers **Azure SQL-Migrationserweiterung** aus.
-1. Wählen Sie im Azure SQL Migration-Dashboard die Option **Migrieren zu Azure SQL** aus, um den Migrations-Assistenten zu starten.
+1. Wählen Sie auf der Startseite des Servers die Erweiterung **Azure SQL-Migration** aus.
+1. Wählen Sie im Azure SQL Migration-Dashboard die Option **Zu Azure SQL migrieren** aus, um den Migrations-Assistenten zu starten.
     :::image type="content" source="media/tutorial-sql-server-to-virtual-machine-online-ads/launch-migrate-to-azure-sql-wizard.png" alt-text="Starten des Assistenten zum Migrieren zu Azure SQL":::
 1. Verknüpfen Sie im ersten Schritt des Migrations-Assistenten Ihr vorhandenes oder neues Azure-Konto mit Azure Data Studio.
 
@@ -102,14 +101,14 @@ Für dieses Tutorial benötigen Sie Folgendes:
     > Im Onlinemigrationsmodus ist die SQL Server-Quelldatenbank für Lese- und Schreibaktivitäten verfügbar, während Datenbanksicherungen auf der SQL Server-Zielinstanz auf Azure Virtual Machines kontinuierlich wiederhergestellt werden. Die Ausfallzeit der Anwendung ist auf die Dauer der Übernahme am Ende der Migration beschränkt.
 1. Wählen Sie in Schritt 5 den Speicherort Ihrer Datenbanksicherungen aus. Ihre Datenbanksicherungen können sich entweder auf einer lokalen Netzwerkfreigabe oder in einem Azure-Speicherblobcontainer befinden.
     > [!NOTE]
-    > Wenn Ihre Datenbanksicherungen in einer lokalen Netzwerkfreigabe bereitgestellt werden, müssen Sie im nächsten Schritt des Assistenten in DMS die selbstgehostete Integration Runtime einrichten. Die selbstgehostete Integration Runtime ist erforderlich, um auf Ihre Quelldatenbanksicherungen zuzugreifen, die Gültigkeit des Sicherungssets zu überprüfen und sie in das Azure-Speicherkonto hochzuladen.<br/> Wenn sich Ihre Datenbanksicherungen bereits in einem Azure-Speicherblobcontainer befinden, müssen Sie keine selbstgehostete Integration Runtime einrichten.
+    > Wenn Ihre Datenbanksicherungen in einer lokalen Netzwerkfreigabe bereitgestellt werden, müssen Sie im nächsten Schritt des Assistenten in DMS die selbstgehostete Integration Runtime einrichten. Die selbstgehostete Integration Runtime ist erforderlich, um auf Ihre Quelldatenbanksicherungen zuzugreifen, die Gültigkeit des Sicherungssatzes zu überprüfen und sie in das Azure-Speicherkonto hochzuladen.<br/> Wenn sich Ihre Datenbanksicherungen bereits in einem Azure-Speicherblobcontainer befinden, müssen Sie keine selbstgehostete Integration Runtime einrichten.
 1. Nachdem Sie den Sicherungsspeicherort ausgewählt haben, geben Sie Details zur SQL Server-Quellinstanz und zum Quellsicherungsspeicherort an.
 
     |Feld    |BESCHREIBUNG  |
     |---------|-------------|
-    |**Anmeldeinformationen: Benutzername**    |Die Anmeldeinformationen (Windows/SQL-Authentifizierung) zum Herstellen einer Verbindung mit der SQL Server-Quellinstanz und Überprüfen der Sicherungsdateien.         |
-    |**Anmeldeinformationen: Kennwort**    |Die Anmeldeinformationen (Windows/SQL-Authentifizierung) zum Herstellen einer Verbindung mit der SQL Server-Quellinstanz und Überprüfen der Sicherungsdateien.         |
-    |**Netzwerkfreigabespeicherort, der Sicherungen enthält**     |Der Speicherort der Netzwerkfreigabe, der die vollständigen und Transaktionsprotokoll-Sicherungsdateien enthält. Alle ungültigen Dateien oder Sicherungsdateien in der Netzwerkfreigabe, die nicht zum gültigen Sicherungssatz gehören, werden während des Migrationsprozesses automatisch ignoriert.        |
+    |**Anmeldeinformationen für die Quelle: Benutzername**    |Die Anmeldeinformationen (Windows-/SQL-Authentifizierung) zum Herstellen einer Verbindung mit der SQL Server-Quellinstanz und Überprüfen der Sicherungsdateien         |
+    |**Anmeldeinformationen für die Quelle: Kennwort**    |Die Anmeldeinformationen (Windows-/SQL-Authentifizierung) zum Herstellen einer Verbindung mit der SQL Server-Quellinstanz und Überprüfen der Sicherungsdateien         |
+    |**Speicherort der Netzwerkfreigabe, die Sicherungen enthält**     |Der Speicherort der Netzwerkfreigabe, der die vollständigen und Transaktionsprotokoll-Sicherungsdateien enthält. Alle ungültigen Dateien oder Sicherungsdateien in der Netzwerkfreigabe, die nicht zum gültigen Sicherungssatz gehören, werden während des Migrationsprozesses automatisch ignoriert.        |
     |**Windows-Benutzerkonto mit Lesezugriff auf den Speicherort der Netzwerkfreigabe**     |Die Windows-Anmeldeinformationen (Benutzername), die zum Abrufen der Sicherungsdateien über Lesezugriff auf die Netzwerkfreigabe verfügen.       |
     |**Kennwort**     |Die Windows-Anmeldeinformationen (Kennwort), die zum Abrufen der Sicherungsdateien über Lesezugriff auf die Netzwerkfreigabe verfügen.         |
     |**Name der Zieldatenbank** |Der Name der Zieldatenbank kann geändert werden, wenn Sie den Datenbanknamen auf dem Ziel während des Migrationsprozesses ändern möchten.            |
@@ -121,18 +120,18 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 ## <a name="create-azure-database-migration-service"></a>Erstellen einer Instanz von Azure Database Migration Service
 
-1. Erstellen Sie eine neue Azure Database Migration Service-Instanz, oder verwenden Sie erneut einen vorhandenen Dienst, den Sie zuvor erstellt haben.
+1. Erstellen Sie eine neue Azure Database Migration Service-Instanz, oder verwenden Sie einen vorhandenen Dienst, den Sie zuvor erstellt haben.
     > [!NOTE]
-    > Wenn Sie zuvor eine DMS-Instanz über das Azure-Portal erstellt haben, können Sie diese nicht im Migrations-Assistenten in Azure Data Studio verwenden. Nur DMS-Instanzen, die zuvor mit Azure Data Studio erstellt wurden, können wiederverwendet werden.
+    > Wenn Sie zuvor eine DMS-Instanz über das Azure-Portal erstellt haben, können Sie diese nicht im Migrationsassistenten in Azure Data Studio verwenden. Nur DMS-Instanzen, die zuvor mit Azure Data Studio erstellt wurden, können wiederverwendet werden.
 1. Wählen Sie die **Ressourcengruppe** aus, in der Sie über eine DMS-Instanz verfügen oder eine neue erstellen müssen. In der Dropdownliste **Azure Database Migration Service** werden alle in der ausgewählten Ressourcengruppe vorhandenen DMS-Instanzen aufgeführt.
 1. Um eine vorhandene DMS-Instanz wiederzuverwenden, wählen Sie sie aus der Dropdownliste aus, und der Status der selbstgehosteten Integration Runtime wird unten auf der Seite angezeigt.
 1. Wählen Sie zum Erstellen einer neuen DMS-Instanz die Option **Neu erstellen** aus.
 1. Geben Sie auf dem Bildschirm **Azure Database Migration Service-Instanz erstellen** den Namen für Ihre DMS-Instanz an, und wählen Sie **Erstellen** aus.
 1. Nach der erfolgreichen Erstellung der DMS-Instanz erhalten Sie Details zum **Einrichten der Integration Runtime**.
 1. Wählen Sie **Integration Runtime herunterladen und installieren** aus, um den Downloadlink in einem Webbrowser zu öffnen. Schließen Sie den Download ab. Installieren Sie die Integration Runtime auf einem Computer, der die Voraussetzungen für das Herstellen einer Verbindung mit der SQL Server-Quellinstanz und dem Speicherort mit der Quellsicherung erfüllt.
-1. Nach Abschluss der Installation wird der **Konfigurations-Manager von Microsoft Integration Runtime** automatisch gestartet, um den Registrierungsprozess zu starten.
-1. Kopieren Sie einen der auf dem Bildschirm des Assistenten in Azure Data Studio bereitgestellten Authentifizierungsschlüssel, und fügen Sie ihn ein. Wenn der Authentifizierungsschlüssel gültig ist, wird im Konfigurations-Manager von Integration Runtime ein grünes Häkchensymbol angezeigt, das angibt, dass Sie mit dem **Registrieren** fortfahren können.
-1. Nachdem Sie die Registrierung der selbstgehosteten Integration Runtime erfolgreich abgeschlossen haben, schließen Sie den **Konfigurations-Manager von Microsoft Integration Runtime**, und wechseln Sie zurück zum Migrations-Assistenten in Azure Data Studio.
+1. Nach Abschluss der Installation wird der **Konfigurations-Manager für Microsoft Integration Runtime** automatisch gestartet, um den Registrierungsprozess zu starten.
+1. Kopieren Sie einen der auf dem Bildschirm des Assistenten in Azure Data Studio bereitgestellten Authentifizierungsschlüssel, und fügen Sie ihn ein. Wenn der Authentifizierungsschlüssel gültig ist, wird im Konfigurations-Manager für Integration Runtime ein grünes Häkchensymbol angezeigt, das angibt, dass Sie mit dem **Registrieren** fortfahren können.
+1. Nachdem Sie die Registrierung der selbstgehosteten Integration Runtime erfolgreich abgeschlossen haben, schließen Sie den **Konfigurations-Manager für Microsoft Integration Runtime**, und wechseln Sie zurück zum Migrations-Assistenten in Azure Data Studio.
 1. Wählen Sie im Bildschirm **Azure Database Migration Service-Instanz erstellen** in Azure Data Studio die Option **Verbindung testen** aus, um zu überprüfen, ob die neu erstellte DMS-Instanz mit der neu registrierten selbstgehosteten Integration Runtime verbunden ist, und wählen Sie **Fertig** aus.
     :::image type="content" source="media/tutorial-sql-server-to-virtual-machine-online-ads/test-connection-integration-runtime-complete.png" alt-text="Testen der Verbindung mit der Integration Runtime":::
 1. Überprüfen Sie die Zusammenfassung, und wählen Sie **Fertig** aus, um die Datenbankmigration zu starten.
@@ -147,12 +146,12 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
     | Status | BESCHREIBUNG |
     |--------|-------------|
-    | Empfangen | Sicherungsdatei wurde am Speicherort der Quellsicherung empfangen und überprüft |
-    | Hochladen | Integration Runtime lädt gerade die Sicherungsdatei in Azure-Speicher hoch|
-    | Hochgeladen | Sicherungsdatei ist in Azure-Speicher hochgeladen |
-    | Restoring | Azure Database Migration Service stellt gerade die Sicherungsdatei in Azure SQL Managed Instance wieder her|
-    | Wiederherstellen | Die Sicherungsdatei wurde erfolgreich in Azure SQL Managed Instance wiederhergestellt |
-    | Canceled | Migrationsprozess wurde abgebrochen |
+    | Empfangen | Die Sicherungsdatei wurde am Speicherort der Quellsicherung empfangen und überprüft. |
+    | Hochladen | Die Integration Runtime lädt gerade die Sicherungsdatei in Azure-Speicher hoch.|
+    | Hochgeladen | Die Sicherungsdatei ist in Azure-Speicher hochgeladen. |
+    | Restoring | Der Azure Database Migration Service stellt gerade die Sicherungsdatei in Azure SQL Managed Instance wieder her.|
+    | Wiederherstellen | Die Sicherungsdatei wurde erfolgreich in Azure SQL Managed Instance wiederhergestellt. |
+    | Canceled | Der Migrationsprozess wurde abgebrochen. |
     | Wird ignoriert. | Die Sicherungsdatei wurde ignoriert, da sie nicht zu einer gültigen Datenbanksicherungskette gehört |
 
     :::image type="content" source="media/tutorial-sql-server-to-virtual-machine-online-ads/online-to-vm-migration-status-detailed.png" alt-text="Details zur Wiederherstellung der Online-VM-Sicherung":::
@@ -175,4 +174,4 @@ Während des Übernahmeprozesses ändert sich der Migrationsstatus von *In Bearb
 
 * Informationen zum Migrieren einer Datenbank zu SQL Server auf Azure Virtual Machines mithilfe des T-SQL RESTORE-Befehls finden Sie unter [Migrieren einer SQL Server-Datenbank zu SQL Server auf einem virtuellen Computer](../azure-sql/virtual-machines/windows/migrate-to-vm-from-sql-server.md).
 * Informationen zur Verwendung von SQL Server auf Azure Virtual Machines finden Sie unter [Was ist SQL Server auf Azure Virtual Machines (Windows)?](../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md).
-* Informationen zum Herstellen der Verbindung von Apps mit SQL Server auf Azure Virtual Machines finden Sie unter [Herstellen einer Verbindung mit einem virtuellen SQL Server-Computer in Azure](../azure-sql/virtual-machines/windows/ways-to-connect-to-sql.md).
+* Informationen zum Herstellen der Verbindung von Apps mit SQL Server auf Azure Virtual Machines finden Sie unter [Herstellen einer Verbindung mit einem virtuellen SQL Server-Computer in Azure](../azure-sql/virtual-machines/windows/ways-to-connect-to-sql.md).

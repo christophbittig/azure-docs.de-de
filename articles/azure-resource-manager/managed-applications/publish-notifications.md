@@ -2,15 +2,13 @@
 title: Verwaltete Apps mit Benachrichtigungen
 description: Konfigurieren Sie verwaltete Anwendungen mit Webhookendpunkten, um Benachrichtigungen über Erstellungs-, Aktualisierungs- und Löschungsereignisse sowie Fehler in den Instanzen verwalteter Anwendungen zu erhalten.
 ms.topic: conceptual
-ms.author: ilahat
-author: ilahat
 ms.date: 11/01/2019
-ms.openlocfilehash: 229abeb71a580444525a314f648ee09452585336
-ms.sourcegitcommit: c072eefdba1fc1f582005cdd549218863d1e149e
+ms.openlocfilehash: ef87fc014b2870602aa05b758afaffdde046f659
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111971919"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132060848"
 ---
 # <a name="azure-managed-applications-with-notifications"></a>Verwaltete Azure-Anwendungen mit Benachrichtigungen
 

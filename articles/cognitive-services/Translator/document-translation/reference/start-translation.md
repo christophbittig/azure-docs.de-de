@@ -3,19 +3,17 @@ title: Starten der Übersetzung
 titleSuffix: Azure Cognitive Services
 description: Übermitteln Sie eine Anforderung zur Übersetzung eines Dokuments mit dem Dienst Document Translation.
 services: cognitive-services
-author: jann-skotdal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/22/2021
-ms.author: v-jansk
-ms.openlocfilehash: 39173fbd5fd6725d8307d2e390bec6b397406cb7
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: eaa12d4fff9331f5170a2a7b7d28b5ebb4d06a74
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130062688"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132061001"
 ---
 # <a name="start-translation"></a>Starten der Übersetzung
 

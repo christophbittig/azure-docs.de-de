@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/07/2019
 ms.author: jeedes
-ms.openlocfilehash: ae3b4687608c98dbb6d68002d95f4c68af223125
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: 04f4d1c25fcd7a0072e8d72eb28c1cfac106166f
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113764191"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131988784"
 ---
 # <a name="tutorial-configure-comeet-recruiting-software-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Comeet Recruiting Software für die automatische Benutzerbereitstellung
 
@@ -35,6 +35,8 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 * [Einen Comeet Recruiting Software-Mandanten](https://www.comeet.co/)
 * Ein Benutzerkonto in Comeet Recruiting Software mit Administratorberechtigungen.
 
+> [!NOTE]
+> Diese Integration kann auch über die Azure AD-Umgebung für die US Government-Cloud verwendet werden. Sie finden diese Anwendung im Azure AD-Katalog für US Government-Cloudanwendungen und konfigurieren sie auf die gleiche Weise wie in der öffentlichen Cloud.
 ## <a name="add-comeet-recruiting-software-from-the-gallery"></a>Hinzufügen von Comeet Recruiting Software aus dem Katalog
 
 Bevor Sie Comeet Recruiting Software für die automatische Benutzerbereitstellung mit Azure AD konfigurieren, müssen Sie Comeet Recruiting Software aus dem Azure AD-Anwendungskatalog zur Liste der verwalteten SaaS-Anwendungen hinzufügen.

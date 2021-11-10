@@ -4,16 +4,14 @@ services: azure-arc
 ms.service: azure-arc
 ms.date: 03/03/2021
 ms.topic: article
-author: mlearned
-ms.author: mlearned
 description: Bereitstellen von Azure IoT Edge-Workloads
 keywords: Kubernetes, Arc, Azure, K8s, Container
-ms.openlocfilehash: e77446170e5a6adac995394d66640fd183f453b8
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: 9870e6ce0904510c549033dfd64de9d377b886af
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102121727"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132056414"
 ---
 # <a name="deploy-azure-iot-edge-workloads"></a>Bereitstellen von Azure IoT Edge-Workloads
 

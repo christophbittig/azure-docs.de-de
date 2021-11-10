@@ -4,7 +4,7 @@ description: Bietet Ihnen eine Lösung für fehlende Daten in Azure Active Direc
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
-manager: daveba
+manager: karenhoran
 editor: ''
 ms.assetid: 7cbe4337-bb77-4ee0-b254-3e368be06db7
 ms.service: active-directory
@@ -17,12 +17,12 @@ ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f48c26a65314e2f23513fba155f07db3805a516
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a41d51c6cf5b723f4bbb7a94d0af87d5c3f67758
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "93123063"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131995690"
 ---
 # <a name="troubleshoot-missing-data-in-the-azure-active-directory-activity-logs"></a>Problembehandlung: Fehlende Daten in Azure Active Directory-Aktivitätsprotokollen 
 
@@ -95,5 +95,5 @@ Sie haben zwei Möglichkeiten, um die Daten länger als 30 Tage beibehalten. Mit
 
 * [Vermerkdauer für Azure AD-Berichte](reference-reports-data-retention.md)
 * [Latenzen bei Azure Active Directory-Berichten](reference-reports-latencies.md)
-* [Häufig gestellte Fragen zu Azure Active Directory-Berichten](reports-faq.md)
+* [Häufig gestellte Fragen zu Azure Active Directory-Berichten](reports-faq.yml)
 

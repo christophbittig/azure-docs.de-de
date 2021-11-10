@@ -2,15 +2,15 @@
 title: Durchführen von Upgrades für AKS-Knotenimages (Azure Kubernetes Service)
 description: Erfahren Sie, wie Sie für die Images auf AKS-Clusterknoten und Knotenpools ein Upgrade durchführen.
 ms.service: container-service
-ms.topic: conceptual
+ms.topic: article
 ms.date: 11/25/2020
 ms.author: jpalma
-ms.openlocfilehash: 05d957fac23f1fd9d33a44fa74642eb162550880
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: dba73de70d9e650aba780cf4552ecac7714cb99e
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340291"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131841807"
 ---
 # <a name="azure-kubernetes-service-aks-node-image-upgrade"></a>Upgrade für AKS-Knotenimages (Azure Kubernetes Service)
 
