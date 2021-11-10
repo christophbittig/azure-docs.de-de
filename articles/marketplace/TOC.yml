@@ -576,11 +576,19 @@
         - name: Registrieren einer SaaS-Anwendung
           href: partner-center-portal/pc-saas-registration.md
         - name: SaaS-Fulfillment-APIs v2
-          href: partner-center-portal/pc-saas-fulfillment-api-v2.md
-        - name: SaaS-Fulfillment-APIs v1 (veraltet)
-          href: partner-center-portal/pc-saas-fulfillment-api-v1.md
+          items:
+            - name: Lebenszyklus von SaaS-Abonnements
+              href: partner-center-portal/pc-saas-fulfillment-life-cycle.md
+            - name: Abonnement-APIs
+              href: partner-center-portal/pc-saas-fulfillment-subscription-api.md
+            - name: Vorgangs-APIs
+              href: partner-center-portal/pc-saas-fulfillment-operations-api.md
+        - name: Implementieren eines Webhooks
+          href: partner-center-portal/pc-saas-fulfillment-webhook.md
         - name: SaaS-Fulfillment-APIs – Häufig gestellte Fragen
           href: partner-center-portal/saas-fulfillment-apis-faq.yml
+        - name: SaaS-Fulfillment-APIs v1 (veraltet)
+          href: partner-center-portal/pc-saas-fulfillment-api-v1.md
 - name: Ressourcen
   items:
     - name: Häufig gestellte Fragen zum kommerziellen Marketplace

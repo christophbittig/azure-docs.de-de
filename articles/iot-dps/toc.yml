@@ -96,6 +96,8 @@
           href: how-to-control-access.md
         - name: Konfigurieren der IP-Filterung
           href: iot-dps-ip-filtering.md
+        - name: Verwalten des Zugriffs über öffentliche Netzwerke
+          href: public-network-access.md
     - name: Bereitstellen von IoT Edge-Geräten
       items:
         - name: Linux

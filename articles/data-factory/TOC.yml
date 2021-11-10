@@ -741,6 +741,8 @@ items:
                 href: monitor-install-analytics.md
           - name: Überwachung mit SDKs
             href: monitor-programmatically.md
+          - name: Pipelinefehler und Fehlerbehandlung
+            href: tutorial-pipeline-failure-error-handling.md
           - name: Überwachen von Pipelines mit E-Mail-Benachrichtigungen
             href: how-to-send-email.md
           - name: "Überwachen von Pipelines mit Microsoft\_Teams-Benachrichtigungen"

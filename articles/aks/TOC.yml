@@ -186,6 +186,8 @@
           href: availability-zones.md
         - name: Verwenden von Knotenpools
           items:
+            - name: Momentaufnahme des Knotenpools
+              href: node-pool-snapshot.md
             - name: Verwenden mehrerer Knotenpools
               href: use-multiple-node-pools.md
             - name: Verwenden von Spot-Knotenpools

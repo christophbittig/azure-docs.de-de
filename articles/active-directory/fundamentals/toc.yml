@@ -278,6 +278,10 @@
           href: license-users-groups.md
         - name: Wiederherstellen eines gelöschten Benutzers
           href: active-directory-users-restore.md
+    - name: Szenarien
+      items:
+        - name: Verwenden von Azure Active Directory zum Schützen des Zugriffs auf SAP-Plattformen und -Anwendungen
+          href: scenario-azure-first-sap-identity-integration.md
 - name: Problembehandlung
   expanded: true
   items:

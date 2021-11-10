@@ -141,12 +141,18 @@ items:
             href: register-scan-hive-metastore-source.md
           - name: Looker
             href: register-scan-looker-source.md
+          - name: MySQL
+            href: register-scan-mysql.md
           - name: Lokaler SQL Server
             href: register-scan-on-premises-sql-server.md
           - name: Oracle
             href: register-scan-oracle-source.md
+          - name: PostgreSQL
+            href: register-scan-postgresql.md
           - name: 'Power BI-Mandant: Portal'
             href: register-scan-power-bi-tenant.md
+          - name: Salesforce
+            href: register-scan-salesforce.md
           - name: SAP ECC
             href: register-scan-sapecc-source.md
           - name: SAP S/4HANA
@@ -265,6 +271,8 @@ items:
         href: disaster-recovery.md
       - name: Überwachung mit Azure Monitor
         href: how-to-monitor-with-azure-monitor.md
+      - name: Integration in Azure-Sicherheitsprodukte
+        href: how-to-integrate-with-azure-security-products.md
       - name: Zugriffsrichtlinien für Datenbesitzer
         items:
           - name: Datenzugriffsrichtlinie für Azure Storage
