@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 09/21/2021
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 3f781b32c000ec42c876fa61a90d9ef70c3eb01c
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: c5f89a755cecd2dcf36d3a8a41711fe941108ffa
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129354549"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131427264"
 ---
 # <a name="send-an-email-from-am-automation-runbook"></a>Senden einer E-Mail aus einem Automation-Runbook
 
@@ -103,7 +103,7 @@ Erstellen Sie eine Azure Key Vault-Instanz und eine [Key Vault-Zugriffsrichtlini
 
 ## <a name="assign-permissions-to-managed-identities"></a>Zuweisen von Berechtigungen zu verwalteten Identitäten
 
-Weisen Sie der entsprechenden [verwalteten Identität](./automation-security-overview.md#managed-identities-preview) Berechtigungen zu. Das Runbook kann entweder die systemseitig zugewiesene verwaltete Identität des Automation-Kontos oder eine benutzerseitig zugewiesene verwaltete Identität verwenden. Schritte zur Zuweisung von Berechtigungen für die einzelnen Identitäten werden angegeben. In den folgenden Schritten wird PowerShell verwendet. Informationen zur Verwendung des Azure-Portals finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](./../role-based-access-control/role-assignments-portal.md).
+Weisen Sie der entsprechenden [verwalteten Identität](./automation-security-overview.md#managed-identities) Berechtigungen zu. Das Runbook kann die systemseitig zugewiesene verwaltete Identität des Automation-Kontos oder eine benutzerseitig zugewiesene verwaltete Identität verwenden. Schritte zur Zuweisung von Berechtigungen für jede Identität sind angegeben. In den folgenden Schritten wird PowerShell verwendet. Informationen zur Verwendung des Azure-Portals finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](./../role-based-access-control/role-assignments-portal.md).
 
 1. Verwenden Sie das PowerShell-Cmdlet [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment), um der systemseitig zugewiesenen verwalteten Identität eine Rolle zu zuweisen.
 
@@ -131,7 +131,7 @@ Weisen Sie der entsprechenden [verwalteten Identität](./automation-security-ove
 
 ## <a name="create-the-runbook-to-send-an-email"></a>Erstellen des Runbooks zum Senden einer E-Mail
 
-Wenn Sie einen Schlüsseltresor erstellt und Ihren `SendGrid`-API-Schlüssel gespeichert haben, können Sie das Runbook erstellen, das den API-Schlüssel abruft und eine E-Mail sendet. Wir verwenden ein Runbook, das die [systemseitig zugewiesene verwaltete Identität](./automation-security-overview.md#managed-identities-preview) für die Authentifizierung bei Azure verwendet, um das Geheimnis aus Azure Key Vault abzurufen. Wir nennen das Runbook **Send-GridMailMessage**. Sie können das PowerShell-Skript ändern, das für verschiedene Szenarien verwendet wird.
+Wenn Sie einen Schlüsseltresor erstellt und Ihren `SendGrid`-API-Schlüssel gespeichert haben, können Sie das Runbook erstellen, das den API-Schlüssel abruft und eine E-Mail sendet. Wir verwenden ein Runbook, das die [systemseitig zugewiesene verwaltete Identität](./automation-security-overview.md#managed-identities) für die Authentifizierung bei Azure verwendet, um das Geheimnis aus Azure Key Vault abzurufen. Wir nennen das Runbook **Send-GridMailMessage**. Sie können das PowerShell-Skript ändern, das für verschiedene Szenarien verwendet wird.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie zu Ihrem Automation-Konto.
 
@@ -139,7 +139,7 @@ Wenn Sie einen Schlüsseltresor erstellt und Ihren `SendGrid`-API-Schlüssel ges
 
 1. Wählen Sie **+ Runbook erstellen** aus.
     1. Nennen Sie das Runbook `Send-GridMailMessage`.
-    1. Wählen Sie in der Dropdownliste **Runbooktyp** die Option **PowerShell** aus.
+    1. Wählen Sie in der Dropdownliste **Runbooktyp** den Wert **PowerShell** aus.
     1. Wählen Sie **Erstellen** aus.
 
    ![Runbook erstellen](./media/automation-send-email/automation-send-email-runbook.png)
