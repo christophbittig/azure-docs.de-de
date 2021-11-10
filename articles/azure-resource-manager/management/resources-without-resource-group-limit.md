@@ -2,13 +2,13 @@
 title: Ressourcen ohne Beschränkung auf 800 Instanzen
 description: Aufstellung der Azure-Ressourcentypen, die mehr als 800 Instanzen in einer Ressourcengruppe aufweisen können.
 ms.topic: conceptual
-ms.date: 07/13/2021
-ms.openlocfilehash: 123148a863f74a6490a524ecc2d39bc44e65299d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 10/20/2021
+ms.openlocfilehash: 728e41167fcabb6d30fa7af79cdb17f5aaad07d6
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124807055"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130260662"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Ressourcen ohne Beschränkung auf 800 Instanzen pro Ressourcengruppe
 
@@ -16,7 +16,7 @@ Standardmäßig können Sie bis zu 800 Instanzen eines Ressourcentyps in jeder 
 
 Für einige Ressourcentypen müssen Sie sich an den Support wenden, damit die Beschränkung auf 800 Instanzen aufgehoben wird. Diese Ressourcentypen sind in diesem Artikel angegeben.
 
-Für einige Ressourcen gilt ein Grenzwert für die Anzahl von Instanzen pro Region. Dieser Grenzwert unterscheidet sich von den 800 Instanzen pro Ressourcengruppe. Um Ihre Instanzen pro Region zu überprüfen, verwenden Sie die Azure-Portal. Wählen Sie im linken Bereich Ihr Abonnement und **Nutzung + Kontingente** aus. Weitere Informationen finden Sie unter [Überprüfen der Ressourcennutzung anhand von Grenzwerten](../../networking/check-usage-against-limits.md). 
+Für einige Ressourcen gilt ein Grenzwert für die Anzahl von Instanzen pro Region. Dieser Grenzwert unterscheidet sich von den 800 Instanzen pro Ressourcengruppe. Um Ihre Instanzen pro Region zu überprüfen, verwenden Sie die Azure-Portal. Wählen Sie im linken Bereich Ihr Abonnement und **Nutzung + Kontingente** aus. Weitere Informationen finden Sie unter [Überprüfen der Ressourcennutzung anhand von Grenzwerten](../../networking/check-usage-against-limits.md).
 
 ## <a name="microsoftalertsmanagement"></a>Microsoft.AlertsManagement
 
@@ -137,6 +137,7 @@ Für einige Ressourcen gilt ein Grenzwert für die Anzahl von Instanzen pro Regi
 * netAppAccounts/capacityPools/volumes
 * netAppAccounts/capacityPools/volumes/mountTargets
 * netAppAccounts/capacityPools/volumes/snapshots
+* netAppAccounts/capacityPools/volumes/subvolumes
 * netAppAccounts/snapshotPolicies
 * netAppAccounts/volumeGroups
 

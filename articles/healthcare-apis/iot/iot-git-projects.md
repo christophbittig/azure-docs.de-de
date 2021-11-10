@@ -7,12 +7,12 @@ ms.service: healthcare-apis
 ms.topic: reference
 ms.date: 10/28/2021
 ms.author: jasteppe
-ms.openlocfilehash: f82e1f2bacd0ae863b4ddac19a16a45e52ff173a
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 85fa6aff2e9c1702813c1c865d7f5e85c315c343
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131445949"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132156467"
 ---
 # <a name="open-source-projects"></a>Open-Source-Projekte
 
@@ -22,7 +22,7 @@ Sehen Sie sich unsere Open-Source-Projekte auf GitHub, die Quellcode und Anweisu
 
 #### <a name="fhir-integration"></a>FHIR-Integration
 
-* [microsoft/iomt-fhir:](https://github.com/microsoft/iomt-fhir)Open-Source-Version des verwalteten IoT-Connectordiensts der Azure Healthcare-APIs. Kann mit jedem beliebigen Fast Healthcare Interoperability Resources-Dienst (FHIR&#174;) verwendet werden, der [FHIR R7-&#174;](https://https://www.hl7.org/implement/standards/product_brief.cfm?product_id=491)
+* [microsoft/iomt-fhir:](https://github.com/microsoft/iomt-fhir)Open-Source-Version des verwalteten IoT-Connectordiensts der Azure Healthcare-APIs. Kann mit jedem beliebigen Fast Healthcare Interoperability Resources-Dienst (FHIR&#174;) verwendet werden, der [FHIR R7-&#174;](https://www.hl7.org/implement/standards/product_brief.cfm?product_id=491)
 
 #### <a name="device-and-fhir-destination-mappings"></a>Geräte- und FHIR-Zielzuordnungen
 
@@ -42,7 +42,7 @@ HealthKit
 
 Google Fit in FHIR
 
-* [microsoft/googlefit-on-fhir:](https://github.com/microsoft/googlefit-on-fhir)Bring Google Fit&#174; data to a FHIR service.
+* [microsoft/googlefit-on-fhir:](https://github.com/microsoft/googlefit-on-fhir)Bring Google Fit&#174; Daten in einen FHIR-Dienst.
 
 Integrität Datensynchronisierung
 
