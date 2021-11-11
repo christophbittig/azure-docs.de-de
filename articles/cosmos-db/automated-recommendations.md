@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/26/2021
 ms.reviewer: sngun
-ms.openlocfilehash: 3844e71a1c3c9e823586a428b9ae98a3b804d502
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 73bad87352176e4272a68248bf7f052dccc0165a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123034548"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131446408"
 ---
 # <a name="automated-recommendations-for-azure-cosmos-db"></a>Automatisierte Empfehlungen in Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -66,6 +66,8 @@ In dieser Kategorie erkennt der Advisor die RU/s-Nutzung und stellt fest, dass S
 | Reservierte Kapazität | Erkennt den Verbrauch von RU/s und empfiehlt reservierte Instanzen für Benutzer, die davon profitieren können. |
 | Inaktive Container | Erkennt Container, die seit mehr als 30 Tagen nicht mehr verwendet wurden, und empfiehlt, den Durchsatz für diese Container zu reduzieren oder sie zu löschen.|
 | Neue Abonnements mit hohem Durchsatz | Erkennt neue Abonnements mit Konten, die ungewöhnlich viele RU/s pro Tag verbrauchen, und sendet diesen eine Benachrichtigung. Diese Benachrichtigung dient hauptsächlich dazu, neuen Kunden ins Bewusstsein zu rufen, dass Azure Cosmos DB mit einem auf bereitgestelltem Durchsatz basierenden Modell arbeitet, nicht mit einem nutzungsbasierten Modell. |
+| Aktivieren der automatischen Skalierung | Erkennt, ob Ihre Datenbanken und Container, die derzeit den manuellen Durchsatz verwenden, Kosteneinsparungen erzielen würden, wenn die Autoskalierung aktiviert wird. |
+| Verwenden des manuellen Durchsatzes anstelle der Autoskalierung | Erkennt, ob Ihre Datenbanken und Container, die derzeit die Autoskalierung verwenden, Kosteneinsparungen erzielen würden, wenn sie zum manuellen Durchsatz wechseln. |
 
 ## <a name="migration-recommendations"></a>Empfehlungen zur Migration
 

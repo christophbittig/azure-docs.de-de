@@ -1,6 +1,6 @@
 ---
-title: Automanage für Windows Server-Dienste (Vorschauversion)
-description: Übersicht über Automanage für Windows Server-Dienste und -funktionen mit Windows Server Azure Edition
+title: Automanage für Windows Server
+description: Übersicht über Azure Automanage für Windows Server-Funktionen in der Windows Server Azure Edition
 author: nwashburn-ms
 ms.service: virtual-machines
 ms.subservice: automanage
@@ -8,27 +8,24 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 07/09/2021
 ms.author: niwashbu
-ms.openlocfilehash: 09b011d76a570aaed1a9ea8c0b9bdc74e80eca53
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: efd5b643608b8d3de5cacbc1f810a9b1e9efb612
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122772186"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131501588"
 ---
-# <a name="automanage-for-windows-server-services-preview"></a>Automanage für Windows Server-Dienste (Vorschauversion)
+# <a name="azure-automanage-for-windows-server"></a>Azure Automanage für Windows Server
 
-Automanage für Windows Server-Dienste stellt neue Funktionen bereit, insbesondere für _Windows Server Azure Edition_.  Diese Funktionen umfassen:
-- Hotpatch
+Azure Automanage für Windows Server stellt neue Funktionen bereit, insbesondere für die _Windows Server Azure Edition_.  Diese Funktionen umfassen:
+- Hotpatch (Vorschau)
 - SMB über QUIC
-- Erweitertes Netzwerk
+- Erweitertes Netzwerk für Azure
 
 > [!IMPORTANT]
-> Automanage für Windows Server-Dienste befindet sich derzeit in der öffentlichen Vorschauphase. Es ist ein Anmeldungsverfahren (opt-in) erforderlich, um die unten beschriebene Hotpatch-Funktion verwenden zu können.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
+> Der Hotpatch ist zurzeit öffentliche Vorschauversion verfügbar. Es ist ein Anmeldungsverfahren (opt-in) erforderlich, um die unten beschriebene Hotpatch-Funktion verwenden zu können.
+> Diese Vorschau wird ohne Vereinbarung zum Servicelevel bereitgestellt und nicht für Produktionsworkloads empfohlen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
 > Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-> [!NOTE]
-> Hotpatch kann in der _Vorschauversion von Windows Server 2022 Datacenter Azure Edition (Core)_ evaluiert werden.  Hotpatch in der _Vorschauversion von Windows Server 2019 Datacenter Azure Edition Preview_ kann nicht mehr evaluiert werden.
 
 Automanage für Windows Server-Funktionen befinden sich in einem dieser _Windows Server Azure Edition_-Images: 
 
@@ -39,7 +36,7 @@ Die Funktionen variieren je nach Image. Weitere Informationen finden Sie unter [
 
 ## <a name="automanage-for-windows-server-capabilities"></a>Funktionen von Automanage für Windows Server
 
-### <a name="hotpatch"></a>Hotpatch
+### <a name="hotpatch-preview"></a>Hotpatch (Vorschau)
 
 Hotpatch ist in der öffentlichen Vorschauphase in den folgenden Images verfügbar:
 
@@ -54,11 +51,16 @@ SMB über QUIC ist in der öffentlichen Vorschauphase in den folgenden Images ve
 - Windows Server 2022 Datacenter: Azure Edition (Desktoperfahrung)
 - Windows Server 2022 Datacenter: Azure Edition (Core)
 
-SMB über QUIC ermöglicht Benutzern den Zugriff auf Dateien, wenn sie remote ohne VPN arbeiten, indem SMB-Datenverkehr über das QUIC-Protokoll getunnelt wird.  Weitere Informationen finden Sie unter [SMB über QUIC](/windows-server/storage/file-server/smb-over-quic).  
+SMB über QUIC bietet ein SMB-VPN für Telearbeiter, Benutzer mobiler Geräte und Zweigstellen mit sicherer, zuverlässiger Konnektivität mit Edgedateiservern über nicht vertrauenswürdige Netzwerke wie das Internet. [QUIC](https://datatracker.ietf.org/doc/rfc9000/) ist ein Protokoll nach IETF-Standard, das in HTTP/3 verwendet wird und für maximalen Datenschutz mit TLS 1.3 konzipiert ist. Es erfordert eine Verschlüsselung, die nicht deaktiviert werden kann. SMB verhält sich innerhalb des QUIC-Tunnels normal, das bedeutet, die Benutzeroberfläche ändert sich nicht. SMB-Features wie Multichannel, Signierung, Komprimierung, kontinuierliche Verfügbarkeit und Verzeichnisleasing funktionieren normal. 
 
-### <a name="azure-extended-network"></a>Erweitertes Azure-Netzwerk
+SMB über QUIC ist auch in [Automanage für Best Practices für Windows Server-Computer](automanage-windows-server.md) integriert, um die Verwaltung von SMB über QUIC zu vereinfachen. QUIC verwendet Zertifikate, um die Verschlüsselung zu ermöglichen, und Organisationen haben häufig Probleme, komplexe Public Key-Infrastrukturen zu verwalten. Automanage für Best Practices für Computer stellt sicher, dass Zertifikate nicht ohne Warnung ablaufen und dass SMB über QUIC aktiviert bleibt, um eine maximale Dienstkontinuität zu gewährleisten.
 
-Azure Extended Network ist in der öffentlichen Vorschau in den folgenden Images verfügbar:
+Weitere Informationen finden Sie unter [SMB über QUIC](https://aka.ms/smboverquic) und [Verwaltung von SMB über QUIC mit Automanage für Best Practices für Computer](automanage-smb-over-quic.md).
+ 
+
+### <a name="extended-network-for-azure"></a>Erweitertes Netzwerk für Azure
+
+Das erweiterte Netzwerk für Azure ist auf den folgenden Images verfügbar:
 
 - Windows Server 2022 Datacenter: Azure Edition (Desktoperfahrung)
 - Windows Server 2022 Datacenter: Azure Edition (Core)
@@ -74,12 +76,15 @@ Es ist wichtig, im Voraus zu überlegen, welche Funktionen von Automanage für W
 
 |Image|Funktionen|
 |--|--|
-|Windows Server 2022 Datacenter: Azure Edition (Desktoperfahrung) | SMB über QUIC, Extended Network | 
-| Windows Server 2022 Datacenter: Azure Edition (Core) | Hotpatch, SMB über QUIC, Extended Network | 
+|Windows Server 2022 Datacenter: Azure Edition (Desktoperfahrung) | SMB über QUIC, erweitertes Netzwerk für Azure | 
+| Windows Server 2022 Datacenter: Azure Edition (Core) | Hotpatch, SMB über QUIC, erweitertes Netzwerk für Azure | 
 
 ### <a name="creating-a-vm"></a>Erstellen eines virtuellen Computers
 
-Um die Funktionen von Automanage für Windows Server auf einem neuen virtuellen Computer zu verwenden, verwenden Sie Ihre bevorzugte Methode zum Erstellen eines virtuellen Azure-Computers, und wählen Sie das _Windows Server Azure Edition_-Image aus, das dem Umfang von [Funktionen](#getting-started-with-windows-server-azure-edition) entspricht.  Die Konfiguration dieser Funktionen muss ggf. während der VM-Erstellung erfolgen. Weitere Informationen zur VM-Konfiguration finden Sie in den einzelnen Funktionsthemen (z. B. [Hotpatch](automanage-hotpatch.md)).
+Um die Funktionen von Automanage für Windows Server auf einem neuen virtuellen Computer zu verwenden, verwenden Sie Ihre bevorzugte Methode zum Erstellen eines virtuellen Azure-Computers, und wählen Sie das _Windows Server Azure Edition_-Image aus, das dem Umfang von [Funktionen](#getting-started-with-windows-server-azure-edition) entspricht.  
+
+> [!IMPORTANT]
+> Einige Funktionen verfügen über bestimmte Konfigurationsschritte, die während der VM-Erstellung ausgeführt werden müssen, und einige in der Vorschauphase befindliche Funktionen stellen bestimmte Anforderungen an die Aktivierung und die Anzeige im Portal.  Weitere Informationen zur Verwendung dieser Funktion mit Ihrer VM finden Sie in den obigen Themen zu den einzelnen Funktionen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -10,12 +10,12 @@ ms.date: 08/16/2021
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 187c4c1808133308f607bf9cb70b851a16d50e57
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 7b5f2e6e8f883470826343c0aee1103a9a245be4
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130039123"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131437541"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>Ändern der Replikation eines Speicherkontos
 

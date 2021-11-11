@@ -1,22 +1,22 @@
 ---
-title: 'Vorschau: Vertrauenswürdiger Start für Azure-VMs'
+title: Vertrauenswürdiger Start für Azure-VMs
 description: Informationen zum vertrauenswürdigen Start für Azure-VMs.
 author: khyewei
 ms.author: khwei
 ms.service: virtual-machines
 ms.subservice: trusted-launch
 ms.topic: conceptual
-ms.date: 02/26/2021
+ms.date: 10/26/2021
 ms.reviewer: cynthn
 ms.custom: template-concept; references_regions
-ms.openlocfilehash: 9b2dfe8d4ae7bb17eee4d875178ff059080cb4e0
-ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
+ms.openlocfilehash: 03bbb681c61f28c2b4fbed580094fd8f47017de0
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129728891"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131466769"
 ---
-# <a name="trusted-launch-for-azure-virtual-machines-preview"></a>Vertrauenswürdiger Start für Azure-VMs (Vorschau)
+# <a name="trusted-launch-for-azure-virtual-machines"></a>Vertrauenswürdiger Start für Azure-VMs
 
 **Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen
 
@@ -24,11 +24,7 @@ Azure bietet den vertrauenswürdigen Start als nahtlose Möglichkeit zur Verbess
 
 > [!IMPORTANT]
 > Der vertrauenswürdige Start erfordert die Erstellung neuer VMs. Sie können den vertrauenswürdigen Start nicht für vorhandene VMs aktivieren, die ursprünglich ohne vertrauenswürdigen Start erstellt wurden.
->
-> Der vertrauenswürdige Start befindet sich derzeit in der öffentlichen Vorschau.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. 
->
-> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 
 
 ## <a name="benefits"></a>Vorteile 
@@ -38,9 +34,9 @@ Azure bietet den vertrauenswürdigen Start als nahtlose Möglichkeit zur Verbess
 - Einblicke und Vertrauen in die Integrität der gesamten Startkette
 - Sicherstellen der Vertrauenswürdigkeit und Überprüfbarkeit von Workloads
 
-## <a name="public-preview-limitations"></a>Einschränkungen der öffentlichen Vorschauversion
+## <a name="limitations"></a>Einschränkungen
 
-**Unterstützte Größen:**
+**Unterstützte VM-Größen:**
 - B-Serie
 - Dav4-, Dasv4-Serie
 - DCsv2-Serie
@@ -60,6 +56,8 @@ Azure bietet den vertrauenswürdigen Start als nahtlose Möglichkeit zur Verbess
 - Debian 11
 - CentOS 8.4
 - Oracle Linux 8.3
+- CBL-Mariner
+- Windows Server 2022
 - Windows Server 2019
 - Windows Server 2016
 - Windows 11 Pro
@@ -74,14 +72,16 @@ Azure bietet den vertrauenswürdigen Start als nahtlose Möglichkeit zur Verbess
 
 **Preise:** keine zusätzlichen Kosten zu den bestehenden VM-Preisen.
 
-**Folgende Funktionen werden in dieser Vorschauversion nicht unterstützt:**
+**Folgende Funktionen werden nicht unterstützt**:
 - Backup
 - Azure Site Recovery
-- Gemeinsamer Image-Katalog
+- Azure Compute Gallery (früher Shared Image Gallery genannt)
 - Kurzlebiger Betriebssystemdatenträger
 - Freigegebener Datenträger
+- Ultra-Datenträger
 - Verwaltetes Image
 - Azure Dedicated Host 
+- Geschachtelte Virtualisierung
 
 ## <a name="secure-boot"></a>Sicherer Start
 
@@ -108,7 +108,8 @@ Der vertrauenswürdige Start ist in Azure Security Center integriert, um sicherz
 
 - **Empfehlung zum Aktivieren des sicheren Starts:** Diese Empfehlung gilt nur für VMs, die den vertrauenswürdigen Start unterstützen. In Azure Security Center werden VMs identifiziert, auf denen der sichere Start aktiviert werden kann, jedoch deaktiviert ist. Es wird eine Empfehlung mit niedrigem Schweregrad für die Aktivierung ausgegeben.
 - **Empfehlung zum Aktivieren von vTPM:** Wenn auf der VM vTPM aktiviert ist, können in Azure Security Center Nachweisvorgänge für Gäste durchgeführt und komplexe Bedrohungsmuster identifiziert werden. Wenn in Azure Security Center VMs identifiziert werden, auf denen der vertrauenswürdige Start unterstützt wird und vTPM deaktiviert ist, wird eine Empfehlung mit niedrigem Schweregrad für die Aktivierung ausgegeben. 
-- **Bewertung des Integritätsnachweises:** Wenn vTPM auf der VM aktiviert ist, kann über eine Erweiterung von Azure Security Center überprüft werden, ob die VM fehlerfrei gestartet wurde. Dies wird als Remotenachweis bezeichnet. In Azure Security Center wird eine Bewertung ausgegeben, die den Status des Remotenachweises angibt.
+- **Empfehlung zum Installieren der Gastnachweiserweiterung:** Wenn auf Ihrem virtuellen Computer der sichere Start und vTPM aktiviert ist, aber die Gastnachweiserweiterung nicht installiert ist, gibt Azure Security Center eine Installationsempfehlung mit geringem Schweregrad aus. Mit dieser Erweiterung kann Azure Security Center die Startintegrität Ihrer VMs proaktiv bestätigen und überwachen. Der Nachweis der Startintegrität erfolgt per Remotenachweis.  
+- **Bewertung des Integritätsnachweises:** Wenn auf der VM vTPM aktiviert und eine Nachweiserweiterung installiert ist, kann Azure Security Center remote überprüfen, ob die VM fehlerfrei gestartet wurde. Dies wird als Remotenachweis bezeichnet. In Azure Security Center wird eine Bewertung ausgegeben, die den Status des Remotenachweises angibt.
 
 ## <a name="azure-defender-integration"></a>Integration von Azure Defender
 
@@ -118,8 +119,7 @@ Wenn die VMs ordnungsgemäß mit dem vertrauenswürdigen Start eingerichtet sind
     Beim VM-Nachweis können aus folgenden Gründen Fehler auftreten:
     - Die nachgewiesenen Informationen, einschließlich eines Startprotokolls, weichen von einer vertrauenswürdigen Baseline ab. Dies kann darauf hinweisen, dass nicht vertrauenswürdige Module geladen wurden und das Betriebssystem möglicherweise kompromittiert ist.
     - Es konnte nicht überprüft werden, ob das Nachweisangebot von der vTPM-Instanz der VM stammt, für die der Nachweis erstellt wurde. Dies kann darauf hinweisen, dass Schadsoftware vorhanden ist und Datenverkehr an die vTPM-Instanz abgefangen wird.
-    - Die Nachweiserweiterung auf der VM reagiert nicht. Dies kann auf einen Denial-of-Service-Angriff durch Schadsoftware oder einen Betriebssystemadministrator hindeuten.
-
+    
     > [!NOTE]
     >  Diese Warnung ist für VMs mit aktivierter vTPM-Instanz und installierter Nachweiserweiterung verfügbar. Der sichere Start muss aktiviert sein, damit der Nachweisvorgang erfolgreich durchgeführt wird. Beim Nachweisvorgang treten Fehler auf, wenn der sichere Start deaktiviert ist. Wenn Sie den sicheren Start deaktivieren möchten, können Sie diese Warnung unterdrücken, um False Positives zu vermeiden.
 
@@ -154,10 +154,16 @@ In Azure Security Center werden in regelmäßigen Abständen Nachweisvorgänge d
 
   
 ### <a name="how-does-trusted-launch-compared-to-hyper-v-shielded-vm"></a>Wie unterscheidet sich der vertrauenswürdige Start von einer abgeschirmten Hyper-V-VM?
+
 Abgeschirmte Hyper-V-VMs sind derzeit nur für Hyper-V verfügbar. [Abgeschirmte Hyper-V-VMs](/windows-server/security/guarded-fabric-shielded-vm/guarded-fabric-and-shielded-vms) werden normalerweise in Verbindung mit einem geschützten Fabric bereitgestellt. Ein geschütztes Fabric besteht aus einem Hostüberwachungsdienst (Host Guardian Service, HGS), einem oder mehreren geschützten Hosts und einer Gruppe von abgeschirmten VMs. Abgeschirmte Hyper-V-VMs sind zur Verwendung in Fabrics vorgesehen, in denen die Daten und der Zustand der VM vor Fabricadministratoren sowie vor nicht vertrauenswürdiger Software geschützt werden müssen, die möglicherweise auf den Hyper-V-Hosts ausgeführt wird. Der vertrauenswürdige Start kann dagegen in Azure als eigenständige VM oder als VM-Skalierungsgruppe ohne zusätzliche Bereitstellung und Verwaltung von HGS bereitgestellt werden. Alle Funktionen des vertrauenswürdigen Starts können mit einer einfachen Änderung im Bereitstellungscode oder einem Kontrollkästchen im Azure-Portal aktiviert werden.  
 
 ### <a name="how-can-i-convert-existing-vms-to-trusted-launch"></a>Wie kann ich vorhandene VMs auf den vertrauenswürdigen Start umstellen?
-Für VMs der Generation 2 ist der Migrationspfad zur Konvertierung in den vertrauenswürdigen Start für die allgemeine Verfügbarkeit vorgesehen.
+
+Für VMs der Generation 2 ist der Migrationspfad zur Konvertierung in den vertrauenswürdigen Start nach der allgemeinen Verfügbarkeit vorgesehen.
+
+### <a name="what-is-vm-guest-state-vmgs"></a>Was ist der VM-Gastzustand (VMGS)?  
+
+Der VM-Gastzustand (VMGS) ist für VMs mit vertrauenswürdigem Start spezifisch. Es handelt sich um ein von Azure verwaltetes Blob, das die UEFI-Datenbanken (Unified Extensible Firmware Interface) für sichere Startsignaturen und andere Sicherheitsinformationen enthält. Der Lebenszyklus des VMGS-Blobs ist an den Lebenszyklus des Betriebssystemdatenträgers gebunden.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 

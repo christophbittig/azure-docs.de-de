@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/15/2021
 ms.author: thwimmer
-ms.openlocfilehash: b03e173dca962b1758670f37bb9a463d16fcc875
-ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
+ms.openlocfilehash: 60017b92ad9afc007775e205f56d269f8050d918
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122207373"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131424231"
 ---
 # <a name="tutorial-configure-iris-intranet-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Iris Intranet für die automatische Benutzerbereitstellung
 
@@ -98,7 +98,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit Iris Intranet synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in Iris Intranet für Aktualisierungsvorgänge verwendet. Wenn Sie das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) ändern möchten, müssen Sie sicherstellen, dass die Iris Intranet-API das Filtern von Benutzern anhand dieses Attributs unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-   |attribute|Typ|Unterstützung für das Filtern|
+   |attribute|type|Unterstützung für das Filtern|
    |---|---|---|
    |userName|String|&check;|
    |aktiv|Boolean|

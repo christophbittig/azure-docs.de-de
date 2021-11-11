@@ -10,12 +10,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: 245bcbfd59644946ac6f039e35fe02147054cc8c
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 69cb9048ef723744da93478b01ba7122152e1db9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129273229"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131460303"
 ---
 # <a name="optimize-costs-by-automatically-managing-the-data-lifecycle"></a>Optimieren von Kosten durch automatisches Verwalten des Datenlebenszyklus
 
@@ -371,7 +371,7 @@ In der folgenden Tabelle wird gezeigt, wie dieses Feature in Ihrem Konto unterst
 | Standard, Universell V2 | ![Ja](../media/icons/yes-icon.png) |![Ja](../media/icons/yes-icon.png)              | ![Ja](../media/icons/yes-icon.png) |
 | Premium-Blockblobs          | ![Ja](../media/icons/yes-icon.png)|![Ja](../media/icons/yes-icon.png) | ![Ja](../media/icons/yes-icon.png) |
 
-<sup>1</sup>    Data Lake Storage Gen2 und das Network File System (NFS) 3.0-Protokoll erfordern beide ein Speicherkonto mit einem aktivierten hierarchischen Namespace.
+<sup>1</sup>    Für Data Lake Storage Gen2 und das NFS 3.0-Protokoll (Network File System) ist ein Speicherkonto mit aktiviertem hierarchischem Namespace erforderlich.
 
 ## <a name="regional-availability-and-pricing"></a>Regionale Verfügbarkeit und Preise
 

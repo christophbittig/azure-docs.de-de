@@ -5,15 +5,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 10/18/2021
+ms.date: 11/02/2021
 ms.author: memildin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 1557503699a47e471abee173733007cb3d0b5380
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 23908a7824e4e489da575fd1563b82c340d42def
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131010154"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131425176"
 ---
 # <a name="continuously-export-microsoft-defender-for-cloud-data"></a>Fortlaufender Export von Microsoft Defender für Cloud-Daten
 
@@ -28,7 +27,7 @@ Mit dem **fortlaufenden Export** können Sie umfassend anpassen, *was* exportier
 - Bestimmte Empfehlungen werden bei Erstellung an eine Event Hub-Instanz oder einen Log Analytics-Arbeitsbereich gesendet. 
 - Die Sicherheitsbewertung für ein Abonnement wird immer an einen Log Analytics-Arbeitsbereich gesendet, wenn sich die Bewertung für eine Kontrolle um 0,01 oder mehr ändert. 
 
-Obwohl das Feature als *fortlaufend* bezeichnet wird, gibt es auch eine Option zum Exportieren von wöchentlichen Momentaufnahmen der Daten zu Sicherheitsbewertungen oder gesetzlicher Compliance.
+Obwohl das Feature als *fortlaufend* bezeichnet wird, gibt es auch eine Option zum Exportieren von wöchentlichen Momentaufnahmen.
 
 In diesem Artikel wird erläutert, wie Sie den fortlaufenden Export in Log Analytics-Arbeitsbereiche und Azure Event Hubs konfigurieren.
 
@@ -75,7 +74,7 @@ Sie können den fortlaufenden Export auf den Seiten für Microsoft Defender für
 
 Die folgenden Schritte sind unabhängig davon erforderlich, ob Sie einen fortlaufenden Export in einen Log Analytics-Arbeitsbereich oder in Azure Event Hubs einrichten.
 
-1. Wählen Sie im Menü von Defender für Cloud die Option **Umgebungseinstellungen** aus.
+1. Öffnen Sie im Menü von Defender für Cloud **Umgebungseinstellungen**.
 
 1. Wählen Sie das Abonnement aus, für das Sie den Datenexport konfigurieren möchten.
 
@@ -89,7 +88,7 @@ Die folgenden Schritte sind unabhängig davon erforderlich, ob Sie einen fortlau
 
 1. Wählen Sie die gewünschte Exporthäufigkeit aus:
     - **Streaming**: Bewertungen werden gesendet, wenn der Integritätszustand einer Ressource aktualisiert wird (wenn keine Updates durchgeführt werden, werden keine Daten gesendet).
-    - **Momentaufnahmen**: Eine Momentaufnahme des aktuellen Status aller Bewertungen zur Einhaltung gesetzlicher Bestimmungen wird einmal pro Woche pro Abonnement gesendet. Diese Previewfunktion bietet wöchentliche Momentaufnahmen von Sicherheitsbewertungen und Daten zur Einhaltung gesetzlicher Bestimmungen. Suchen Sie nach dem Feld ``IsSnapshot``, um Momentaufnahmedaten zu identifizieren.
+    - **Momentaufnahmen**: Eine Momentaufnahme des aktuellen Status der ausgewählten Datentypen wird einmal pro Woche pro Abonnement gesendet. Suchen Sie nach dem Feld ``IsSnapshot``, um Momentaufnahmedaten zu identifizieren.
 
 1. Wenn Ihre Auswahl eine dieser Empfehlungen enthält, können Sie optional die Ergebnisse der Sicherheitsrisikobewertung mit aufnehmen:
     -  Bei SQL-Datenbanken sollten gefundene Sicherheitsrisiken behoben werden.

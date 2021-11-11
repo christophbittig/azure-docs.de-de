@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 09/27/2021
-ms.openlocfilehash: 12af9165b8393291b67fd0cbe4cb2ced6ae77a17
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 8e1e43b1c1f11ae6eb37ab599f9636bc47423f8b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129212124"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131442139"
 ---
 # <a name="custom-classifications-in-azure-purview"></a>Benutzerdefinierte Klassifizierungen in Azure Purview
 
@@ -28,6 +28,9 @@ Sie haben auch die Möglichkeit, benutzerdefinierte Klassifizierungen zu erstell
 
 > [!Note]
 > Unsere [Datenstichprobenregeln](sources-and-scans.md#sampling-within-a-file) werden sowohl auf System- als auch auf benutzerdefinierte Klassifizierungen angewendet.  
+
+> [!NOTE]
+> Benutzerdefinierte Purview-Klassifizierungen werden nur auf strukturierte Datenquellen wie SQL und CosmosDB sowie auf strukturierte Dateitypen wie CSV, JSON und Parquet angewendet. Die benutzerdefinierte Klassifizierung wird nicht auf unstrukturierte Datentypen wie DOC, PDF und XLSX angewendet.
 
 ## <a name="steps-to-create-a-custom-classification"></a>Schritte zum Erstellen einer benutzerdefinierten Klassifizierung
 
@@ -97,7 +100,7 @@ So erstellen Sie eine benutzerdefinierte Klassifizierungsregel:
 
 5. Das Dialogfeld **Neue Klassifizierungsregel** wird geöffnet. Füllen Sie die Felder aus, und entscheiden Sie, ob Sie eine Regel vom Typ **Regulärer Ausdruck** oder eine Regel vom Typ **Wörterbuch** erstellen möchten.
 
-   |Feld     |Beschreibung  |
+   |Feld     |BESCHREIBUNG  |
    |---------|---------|
    |Name   |    Erforderlich. Es sind maximal 100 Zeichen zulässig.    |
    |BESCHREIBUNG      |Optional. Es sind maximal 256 Zeichen zulässig.    |

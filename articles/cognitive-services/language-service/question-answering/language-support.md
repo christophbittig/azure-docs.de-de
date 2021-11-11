@@ -9,20 +9,18 @@ ms.subservice: language-service
 ms.topic: reference
 ms.date: 11/02/2021
 ms.custom: language-service-question-answering, ignite-fall-2021
-ms.openlocfilehash: 24e5f8baa8b90dbdaf848711ce87006c0de90ee6
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: dbef13bdb39085c650a1fc5cedceb6c143eea4ad
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096034"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131450113"
 ---
 # <a name="language-support-for-custom-question-answering-and-knowledge-bases"></a>Sprachunterstützung für benutzerdefinierte Fragebeantwortung und Wissensdatenbanken
 
-In diesem Artikel werden die Sprachunterstützungsoptionen für Ressourcen und Wissensdatenbanken mit aktivierter benutzerdefinierter Fragebeantwortung beschrieben. 
+In diesem Artikel werden die Sprachunterstützungsoptionen für Ressourcen und Wissensdatenbanken mit aktivierter benutzerdefinierter Fragebeantwortung beschrieben.
 
 Bei der benutzerdefinierten Fragebeantwortung haben Sie die Möglichkeit, die Sprache jedes Mal beim Hinzufügen eines neuen Projekts zu einer Ressource auszuwählen, das die Unterstützung mehrerer Sprachen zulässt, oder Sie können eine Sprache auswählen, die für alle zukünftigen Projekte für eine Ressource gilt.
-
-Wenn Sie die Spracheinstellung für alle Projekte aktivieren möchten, können Sie diese Einstellung nicht deaktivieren.
 
 ## <a name="supporting-multiple-languages-in-one-custom-question-answering-enabled-resource"></a>Unterstützen mehrerer Sprachen in einer Ressource mit aktivierter benutzerdefinierter Fragebeantwortung
 
@@ -50,7 +48,7 @@ Wenn Sie **die Option zum Festlegen der Sprache auswählen, die von allen mit de
 
 ## <a name="languages-supported"></a>Unterstützte Sprachen
 
-Die folgende Liste enthält die Sprachen, die für QnA Maker-Ressourcen unterstützt werden. 
+Die folgende Liste enthält die Sprachen, die für Fragen und Antworten-Ressourcen unterstützt werden.
 
 | Sprache |
 |--|
@@ -111,7 +109,7 @@ Die folgende Liste enthält die Sprachen, die für QnA Maker-Ressourcen unterst�
 ## <a name="query-matching-and-relevance"></a>Abfrageabgleich und Relevanz
 Die benutzerdefinierte Fragebeantwortung nutzt [Sprachanalysefunktionen von Azure Cognitive Search](/rest/api/searchservice/language-support), um Ergebnisse bereitzustellen.
 
-Während die Azure Cognitive Search-Funktionen für unterstützte Sprachen ebenbürtig sind, verfügt QnA Maker über ein zusätzliches Rangfolgemodul, das oberhalb der Azure-Suchergebnisse ansetzt. In diesem Rangfolgemodul verwenden wir einige besondere semantische und wortbasierte Funktionen in den folgenden Sprachen.
+Während die Azure Cognitive Search-Funktionen für unterstützte Sprachen ebenbürtig sind, verfügt die Fragebeantwortung über ein zusätzliches Rangfolgemodul, das oberhalb der Azure-Suchergebnisse ansetzt. In diesem Rangfolgemodul verwenden wir einige besondere semantische und wortbasierte Funktionen in den folgenden Sprachen.
 
 |Sprachen mit zusätzlichem Rangfolgemodul|
 |--|

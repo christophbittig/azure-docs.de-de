@@ -1,19 +1,19 @@
 ---
 title: Verbinden Ihres AWS-Kontos mit Microsoft Defender für Cloud
-description: Überwachen Ihrer AWS-Ressourcen aus Microsoft Defender für Cloud
+description: Schützen Ihrer AWS-Ressourcen mit Microsoft Defender für Cloud
 author: memildin
 ms.author: memildin
-ms.date: 01/24/2021
+ms.date: 11/02/2021
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: fb37074fae4d984009f33b45c805cb4dcc886551
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+zone_pivot_groups: connect-aws-accounts
+ms.openlocfilehash: 9877ec3b69829d8210eed18577a3d0738dcef889
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131047779"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131428542"
 ---
 #  <a name="connect-your-aws-accounts-to-microsoft-defender-for-cloud"></a>Verbinden Ihrer AWS-Konten mit Microsoft Defender für Cloud
 
@@ -23,20 +23,93 @@ Cloudworkloads umfassen in der Regel mehrere Cloudplattformen, daher muss das au
 
 Microsoft Defender für Cloud schützt Workloads in Azure, Amazon Web Services (AWS) und Google Cloud Platform (GCP).
 
-Durch das Onboarding Ihres AWS-Kontos in Defender für Cloud werden AWS Security Hub und Microsoft Defender für Cloud integriert. Defender für Cloud bietet somit Sichtbarkeit und Schutz für diese beiden Cloudumgebungen, um Folgendes bereitzustellen:
+Zum Schutz Ihrer AWS-basierten Ressourcen können Sie ein Konto mit einem von zwei Mechanismen verbinden:
 
-- Automatische Agent-Bereitstellung (Defender für Cloud verwendet [Azure Arc](../azure-arc/servers/overview.md) zum Bereitstellen des Log Analytics-Agents für Ihre AWS-Instanzen)
-- Richtlinienverwaltung
-- Verwaltung von Sicherheitsrisiken
-- Integrierte Endpunkterkennung und -antwort (Endpoint Detection and Response, EDR)
-- Erkennung von Sicherheitsfehlkonfigurationen
-- Eine einzelne Ansicht, die Defender für Cloud-Empfehlungen und AWS Security Hub-Ergebnisse zeigt
-- Integrieren Ihrer AWS-Ressourcen in die Sicherheitsbewertungsberechnungen von Defender für Cloud
-- Bewerten der Einhaltung gesetzlicher Bestimmungen für Ihre AWS-Ressourcen
+- **Klassische Benutzeroberfläche für Cloudconnectors**: Im Rahmen des ersten Multi-Cloud-Angebots haben wir diese Cloudconnectors als Möglichkeit zum Verbinden Ihrer AWS- und GCP-Konten eingeführt. Wenn Sie bereits einen AWS-Connector über die klassische Benutzeroberfläche für Cloudconnectors konfiguriert haben, empfiehlt es sich, das Konto mithilfe des neueren Mechanismus erneut zu verbinden. Wenn Sie Ihr Konto über die Seite mit den Umgebungseinstellungen hinzugefügt haben, entfernen Sie den alten Connector, um zu vermeiden, dass doppelte Empfehlungen angezeigt werden.
 
-Im folgenden Screenshot können Sie AWS-Konten sehen, die im Übersichtsdashboard von Defender für Cloud angezeigt werden.
+- **Seite „Umgebungseinstellungen“ (in der Vorschau)** (empfohlen): Diese Vorschauseite bietet eine deutlich verbesserte, einfachere Onboardingumgebung (einschließlich automatischer Bereitstellung). Dieser Mechanismus weitet zudem die erweiterten Sicherheitsfeatures von Defender für Cloud auf Ihre AWS-Ressourcen aus.
 
-:::image type="content" source="./media/quickstart-onboard-aws/aws-account-in-overview.png" alt-text="Drei GCP-Projekte, die im Übersichtsdashboard von Defender für Cloud aufgeführt sind" lightbox="./media/quickstart-onboard-gcp/gcp-account-in-overview.png":::
+    - Die **CSPM-Features von Defender für Cloud** werden auf Ihre AWS-Ressourcen ausgeweitet. Dieser Plan ohne Agent bewertet Ihre AWS-Ressourcen gemäß AWS-spezifischen Sicherheitsempfehlungen und ist in Ihrer Sicherheitsbewertung enthalten. Die Ressourcen werden auch auf Einhaltung integrierter AWS-spezifischer Standards (AWS CIS, AWS PCI-DSS und AWS Foundational Security Best Practices) bewertet. Die Seite [Bestandsverzeichnis](asset-inventory.md) von Defender für Cloud ist eine Multi-Cloud-Funktion, die Ihnen hilft, Ihre AWS-Ressourcen zusammen mit Ihren Azure-Ressourcen zu verwalten.
+    - Mit **Microsoft Defender für Kubernetes** werden die Containerbedrohungserkennung und erweiterten Schutzmaßnahmen auf Ihre **Amazon EKS Linux-Cluster** ausgeweitet.
+    - **Microsoft Defender für Server** stattet Ihre Windows- und Linux-EC2-Instanzen mit Bedrohungserkennung und erweiterten Schutzmaßnahmen aus. Dieser Plan umfasst die integrierte Lizenz für Microsoft Defender für Endpunkt, Sicherheitsbaselines und Bewertungen auf Betriebssystemebene, Überprüfungen zur Sicherheitsrisikobewertung, adaptive Anwendungssteuerung (AAC), Überwachung der Dateiintegrität (FIM) und mehr.
+
+Im folgenden Screenshot sehen Sie die AWS-Konten, die im [Übersichtsdashboard](overview-page.md) von Defender für Cloud angezeigt werden.
+
+:::image type="content" source="./media/quickstart-onboard-aws/aws-account-in-overview.png" alt-text="Vier AWS-Projekte, die im Dashboard „Übersicht“ von Defender für Cloud aufgeführt sind" lightbox="./media/quickstart-onboard-aws/aws-account-in-overview.png":::
+
+
+::: zone pivot="env-settings"
+
+## <a name="availability"></a>Verfügbarkeit
+
+|Aspekt|Details|
+|----|:----|
+|Status des Release:|Vorschau.<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]|
+|Preise:|Der CSPM-Plan ist kostenlos.<br>Der Defender für Kubernetes-Plan ist während der Vorschau kostenlos. Danach erfolgt die Abrechnung zum gleichen Preis wie beim Defender für Kubernetes-Plan für Azure-Ressourcen.<br>Für jeden AWS-Computer, der mit [Servern mit Azure Arc-Unterstützung](../azure-arc/servers/overview.md) verbunden ist, wird der Defender für Server-Plan zum gleichen Preis abgerechnet wie der Defender für Server-Plan für Azure-Computer. Wenn in AWS EC2 der Azure Arc-Agent nicht bereitgestellt ist, wird Ihnen dieser Computer nicht in Rechnung gestellt.|
+|Erforderliche Rollen und Berechtigungen:|**Besitzer** des relevanten Azure-Abonnements<br>**Mitwirkender**: Kann auch eine Verbindung mit einem AWS-Konto herstellen, wenn er von einem Besitzer die Dienstprinzipaldetails erhält (für den Defender für Server-Plan erforderlich)|
+|Clouds:|:::image type="icon" source="./media/icons/yes-icon.png"::: Kommerzielle Clouds<br>:::image type="icon" source="./media/icons/no-icon.png"::: National/Sovereign (Azure Government, Azure China 21Vianet)|
+|||
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+- Um ein AWS-Konto mit Ihrem Azure-Abonnement zu verbinden, benötigen Sie natürlich Zugriff auf ein AWS-Konto.
+
+- **Um den Defender für Kubernetes-Plan zu aktivieren,** benötigen Sie Folgendes:
+    - Mindestens einen Amazon EKS-Cluster mit Zugriffsberechtigung auf den EKS K8s-API-Server.
+    - Die Ressourcenkapazität zum Erstellen einer neuen SQS-Warteschlange, des Kinesis Fire Hose-Übermittlungsstreams und des S3-Buckets in der Region des Clusters.
+    
+    > [!TIP]
+    > Befolgen Sie die Anleitung unter [Erste Schritte mit Amazon EKS – eksctl](https://docs.aws.amazon.com/eks/latest/userguide/getting-started-eksctl.html), um einen neuen EKS-Cluster zu erstellen.
+
+- **Um den Defender für Server-Plan zu aktivieren,** benötigen Sie Folgendes:
+    - Microsoft Defender für Server wurde aktiviert (siehe [Schnellstart: Aktivieren von erweiterten Sicherheitsfeatures](enable-enhanced-security.md))
+    - Ein aktives AWS-Konto mit EC2-Instanzen, die von AWS Systems Manager (SSM) verwaltet werden und den SSM-Agent verwenden
+
+    > [!TIP]
+    > Bei einigen Amazon Machine Images (AMIs) ist der SSM-Agent vorinstalliert und ihre AMIs sind unter [AMIs mit vorinstalliertem SSM-Agent](https://docs.aws.amazon.com/systems-manager/latest/userguide/ssm-agent-technical-details.html#ami-preinstalled-agent) aufgeführt. 
+
+    - Wenn Ihre EC2-Instanzen über keinen SSM-Agent verfügen, führen Sie die entsprechenden Anweisungen von Amazon aus:
+        - [Installieren des SSM-Agents für eine Hybridumgebung (Windows)](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-install-managed-win.html)
+        - [Installieren des SSM-Agents für eine Hybridumgebung (Linux)](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-install-managed-linux.html)
+
+
+## <a name="connect-your-aws-account"></a>Herstellen einer Verbindung mit Ihrem AWS-Konto
+
+Führen Sie die folgenden Schritte aus, um Ihren AWS-Cloudconnector zu erstellen: 
+
+1. Öffnen Sie im Menü von Defender für Cloud **Umgebungseinstellungen**.
+1. Wählen Sie **Umgebung hinzufügen** > **Amazon Web Services** aus.
+
+    :::image type="content" source="media/quickstart-onboard-aws/add-aws-account-environment-settings.png" alt-text="Verbinden eines AWS-Kontos mit einem Azure-Abonnement.":::
+
+1. Geben Sie die Details des AWS-Kontos ein, einschließlich des Speicherorts für die Connectorressource, und wählen Sie **Weiter: Pläne auswählen** aus.
+
+    :::image type="content" source="media/quickstart-onboard-aws/add-aws-account-details.png" alt-text="Schritt 1 des Assistenten zum Hinzufügen von AWS-Konten: Eingeben der Kontodetails.":::
+
+1. Auf der Registerkarte „Pläne auswählen“ wählen Sie aus, welche Defender für Cloud-Funktionen für dieses AWS-Konto aktiviert werden sollen. 
+
+    > [!IMPORTANT]
+    > Jede Funktion verfügt über eigene Anforderungen für Berechtigungen und kann Gebühren verursachen.
+
+    :::image type="content" source="media/quickstart-onboard-aws/add-aws-account-plans-selection.png" alt-text="Auf der Registerkarte „Pläne auswählen“ wählen Sie aus, welche Defender für Cloud-Funktionen für dieses AWS-Konto aktiviert werden sollen.":::
+
+    - Um die Defender für Server-Abdeckung auf AWS EC2 auszuweiten, legen Sie den **Servers**-Plan auf **Ein** fest, und bearbeiten Sie die Konfiguration nach Bedarf. 
+
+    - Um die Defender für Kubernetes-Abdeckung auf Ihre AWS EKS-Linux-Cluster auszuweiten, legen Sie den **Containers**-Plan auf **Ein** fest, und bearbeiten Sie die Konfiguration nach Bedarf.
+
+1. Schließen Sie die Installation ab:
+    1. Wählen Sie **Weiter: Zugriff konfigurieren** aus.
+    1. Laden Sie die Vorlage „CloudFormation“ herunter.
+    1. Erstellen Sie mithilfe der heruntergeladenen CloudFormation-Vorlage den Stapel in AWS gemäß den Anweisungen auf dem Bildschirm.
+    1. Wählen Sie **Weiter: Überprüfen und generieren** aus.
+    1. Klicken Sie auf **Erstellen**.
+
+Defender für Cloud beginnt sofort mit der Überprüfung Ihrer AWS-Ressourcen, und innerhalb weniger Stunden werden Sicherheitsempfehlungen angezeigt.
+
+::: zone-end
+
+
+::: zone pivot="classic-connector"
 
 ## <a name="availability"></a>Verfügbarkeit
 
@@ -49,7 +122,6 @@ Im folgenden Screenshot können Sie AWS-Konten sehen, die im Übersichtsdashboar
 |||
 
 
-
 ## <a name="connect-your-aws-account"></a>Herstellen einer Verbindung mit Ihrem AWS-Konto
 
 Führen Sie die folgenden Schritte aus, um Ihren AWS-Cloudconnector zu erstellen: 
@@ -59,19 +131,17 @@ Führen Sie die folgenden Schritte aus, um Ihren AWS-Cloudconnector zu erstellen
 1. Um Sicherheitsempfehlungen für mehrere Regionen anzuzeigen, wiederholen Sie die folgenden Schritte für jede relevante Region.
 
     > [!IMPORTANT]
-    > Wenn Sie ein AWS-Masterkonto verwenden, wiederholen Sie die folgenden drei Schritte, um das Masterkonto und alle verbundenen Mitgliedskonten in allen relevanten Regionen zu konfigurieren.
+    > Wenn Sie ein AWS-Verwaltungskonto verwenden, wiederholen Sie die folgenden drei Schritte, um das Verwaltungskonto und alle verbundenen Mitgliedskonten in allen relevanten Regionen zu konfigurieren.
 
     1. Aktivieren Sie [AWS Config](https://docs.aws.amazon.com/config/latest/developerguide/gs-console.html).
     1. Aktivieren Sie [AWS Security Hub](https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-settingup.html).
-    1. Stellen Sie sicher, dass Daten an Security Hub übertragen werden.
-
-        Wenn Sie Security Hub erstmalig aktivieren, kann es mehrere Stunden dauern, bis die Daten verfügbar sind.
+    1. Überprüfen Sie, ob Daten an den Security Hub fließen. Wenn Sie Security Hub erstmalig aktivieren, kann es mehrere Stunden dauern, bis die Daten verfügbar sind.
 
 ### <a name="step-2-set-up-authentication-for-defender-for-cloud-in-aws"></a>Schritt 2: Einrichten der Authentifizierung für Defender für Cloud in AWS
 
 Es gibt zwei Methoden, um Defender für Cloud die Authentifizierung bei AWS zu ermöglichen:
 
-- **Erstellen einer IAM-Rolle für Defender für Cloud**: Dies ist die sicherste Methode, und sie wird empfohlen.
+- **Erstellen einer IAM-Rolle für Defender für Cloud** (empfohlen): Dies ist die sicherste Methode.
 - **AWS-Benutzer für Defender für Cloud**: Diese Option ist weniger sicher und kann genutzt werden, wenn IAM nicht aktiviert ist.
 
 #### <a name="create-an-iam-role-for-defender-for-cloud"></a>Erstellen einer IAM-Rolle für Defender für Cloud
@@ -112,7 +182,7 @@ Es gibt zwei Methoden, um Defender für Cloud die Authentifizierung bei AWS zu e
 1. Klicken Sie auf **Weiter: Tags**. Fügen Sie optional Tags hinzu. Das Hinzufügen von Tags zum Benutzer wirkt sich nicht auf die Verbindung aus.
 1. Wählen Sie **Review** (Überprüfen) aus.
 1. Speichern Sie die CSV-Datei mit der automatisch generierten **Zugriffsschlüssel-ID** und dem **geheimen Zugriffsschlüssel** zur späteren Verwendung.
-1. Überprüfen Sie die Zusammenfassung, und klicken Sie anschließend auf **Create user** (Benutzer erstellen).
+1. Überprüfen Sie die Zusammenfassung, und wählen Sie **Benutzer erstellen** aus.
 
 
 ### <a name="step-3-configure-the-ssm-agent"></a>Schritt 3: Konfigurieren des SSM-Agents
@@ -133,7 +203,10 @@ AWS Systems Manager ist für die Automatisierung von Aufgaben in Ihren AWS-Resso
 
 ### <a name="step-5-connect-aws-to-defender-for-cloud"></a>Schritt 5. Herstellen einer Verbindung zwischen AWS und Defender für Cloud
 
-1. Wählen Sie im Menü von Defender für Cloud **Multi-Cloud-Connectors** aus.
+1. Öffnen Sie im Defender für Cloud-Menü die Option **Umgebungseinstellungen**, und wählen Sie die Option aus, um zurück zur klassischen Connectorumgebung zu wechseln.
+
+    :::image type="content" source="media/quickstart-onboard-gcp/classic-connectors-experience.png" alt-text="Zurückwechseln zur klassischen Benutzeroberfläche für Cloudconnectors in Defender für Cloud.":::
+
 1. Wählen Sie **Add AWS Account** (AWS-Konto hinzufügen) aus.
     :::image type="content" source="./media/quickstart-onboard-aws/add-aws-account.png" alt-text="Schaltfläche „AWS-Konto hinzufügen“ auf der Seite „Multi-Cloud-Connectors“ von Defender für Cloud":::
 1. Konfigurieren Sie die Optionen auf der Registerkarte **AWS authentication** (AWS-Authentifizierung):
@@ -141,6 +214,7 @@ AWS Systems Manager ist für die Automatisierung von Aufgaben in Ihren AWS-Resso
     1. Überprüfen Sie, ob das Azure-Abonnement richtig ist. Dabei handelt es sich um das Abonnement, das die Empfehlungen für den Connector und den AWS Security Hub enthält.
     1. Je nach der Authentifizierungsoption, die Sie in [Schritt 2. Einrichten der Authentifizierung für Defender für Cloud in AWS](#step-2-set-up-authentication-for-defender-for-cloud-in-aws) ausgewählt haben:
         - Wählen Sie **Assume Role** (Rolle übernehmen) aus, und fügen Sie den ARN aus [Erstellen einer IAM-Rolle für Defender für Cloud](#create-an-iam-role-for-defender-for-cloud) ein.
+
             :::image type="content" source="./media/quickstart-onboard-aws/paste-arn-in-portal.png" alt-text="Einfügen der ARN-Dabei im entsprechenden Feld des AWS-Verbindungs-Assistenten im Azure-Portal":::
 
             oder
@@ -173,13 +247,16 @@ Wenn der Connector erfolgreich erstellt und AWS Security Hub ordnungsgemäß kon
 - Der Defender für Cloud-Dienst sucht alle sechs Stunden nach neuen AWS EC2-Instanzen und führt für sie der Konfiguration entsprechend automatisch ein Onboarding durch.
 - Der AWS-CIS-Standard wird im Dashboard für die Einhaltung gesetzlicher Bestimmungen von Defender für Cloud angezeigt.
 - Wenn die Security Hub-Richtlinie aktiviert wurde, werden 5–10 Minuten nach Abschluss des Onboardings Empfehlungen im Defender für Cloud-Portal und im Dashboard für die Einhaltung gesetzlicher Bestimmungen angezeigt.
-    :::image type="content" source="./media/quickstart-onboard-aws/aws-resources-in-recommendations.png" alt-text="AWS-Ressourcen und -Empfehlungen auf der Empfehlungsseite in Defender für Cloud":::
 
+
+::: zone-end
+
+:::image type="content" source="./media/quickstart-onboard-aws/aws-resources-in-recommendations.png" alt-text="AWS-Ressourcen und -Empfehlungen auf der Empfehlungsseite in Defender für Cloud" lightbox="./media/quickstart-onboard-aws/aws-resources-in-recommendations.png":::
 
 
 ## <a name="monitoring-your-aws-resources"></a>Überwachen Ihrer AWS-Ressourcen
 
-Wie oben zu sehen ist, werden auf der Seite mit Sicherheitsempfehlungen in Microsoft Defender für Cloud Ihre AWS-Ressourcen in Verbindung mit Ihren Azure- und GCP-Ressourcen für eine echte Multi-Cloud-Ansicht angezeigt.
+Wie im vorherigen Screenshot zu sehen, werden auf der Seite „Sicherheitsempfehlungen“ von Defender für Cloud Ihre AWS-Ressourcen angezeigt. Sie können den Umgebungsfilter verwenden, um die Multi-Cloud-Funktionen von Defender für Cloud zu nutzen: Zeigen Sie die Empfehlungen für Azure-, AWS- und GCP-Ressourcen zusammen an.
 
 Zum Anzeigen aller aktiven Empfehlungen für Ihre Ressourcen nach Ressourcentyp verwenden Sie die Ressourcenbestandsseite von Defender für Cloud, und filtern Sie nach dem gewünschten AWS-Ressourcentyp:
 

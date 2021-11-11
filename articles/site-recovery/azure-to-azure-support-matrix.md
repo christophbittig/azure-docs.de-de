@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 11/29/2020
 author: Sharmistha-Rai
 ms.author: sharrai
-ms.openlocfilehash: 3efa65a016eca74b8c5abdc7aeb6fd22b511c4d7
-ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
+ms.openlocfilehash: e05756ed777caaa8e5cebae1b861ef7c401f32d5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129668388"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131441759"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Unterstützungsmatrix für die Notfallwiederherstellung von Azure-VMs zwischen Azure-Regionen
 
@@ -328,9 +328,9 @@ Interner Lastenausgleich | Unterstützt | Ordnen Sie den vorkonfigurierten Laste
 Öffentliche IP-Adresse | Unterstützt | Ordnen Sie der Netzwerkkarte eine vorhandene öffentliche IP-Adresse zu. Oder erstellen Sie eine öffentliche IP-Adresse, und ordnen Sie diese der Netzwerkkarte zu, indem Sie ein Azure-Automatisierungsskript in einem Wiederherstellungsplan verwenden.
 NSG auf Netzwerkkarte | Unterstützt | Ordnen Sie die NSG der Netzwerkkarte zu, indem Sie ein Azure-Automatisierungsskript in einem Wiederherstellungsplan verwenden.
 NSG im Subnetz | Unterstützt | Ordnen Sie die NSG dem Subnetz zu, indem Sie ein Azure-Automatisierungsskript in einem Wiederherstellungsplan verwenden.
-Reservierte (statische) IP-Adresse | Unterstützt | Wenn die Netzwerkkarte auf dem virtuellen Quellcomputer über eine statische IP-Adresse verfügt und für das Zielsubnetz die gleiche IP-Adresse verfügbar ist, wird sie der VM zugewiesen, für die das Failover ausgeführt wurde.<br/><br/> Falls das Zielsubnetz nicht über die gleiche IP-Adresse verfügt, wird eine der verfügbaren IP-Adressen im Subnetz für den virtuellen Computer reserviert.<br/><br/> Sie können eine feste IP-Adresse und ein Subnetz auch unter **Replizierte Elemente** > **Einstellungen** > **Compute und Netzwerk** > **Netzwerkschnittstellen** angeben.
+Reservierte (statische) IP-Adresse | Unterstützt | Wenn die Netzwerkkarte auf dem virtuellen Quellcomputer über eine statische IP-Adresse verfügt und für das Zielsubnetz die gleiche IP-Adresse verfügbar ist, wird sie der VM zugewiesen, für die das Failover ausgeführt wurde.<br/><br/> Falls das Zielsubnetz nicht über die gleiche IP-Adresse verfügt, wird eine der verfügbaren IP-Adressen im Subnetz für den virtuellen Computer reserviert.<br/><br/> Sie können eine feste IP-Adresse und ein Subnetz auch unter **Replizierte Elemente** > **Einstellungen** > **Netzwerk** > **Netzwerkschnittstellen** angeben.
 Dynamische IP-Adresse | Unterstützt | Wenn die Netzwerkkarte auf der Quelle über eine dynamische IP-Adressierung verfügt, ist die Netzwerkkarte auf dem virtuellen Computer, für den das Failover ausgeführt wurde, standardmäßig ebenfalls dynamisch.<br/><br/> Sie können dies in eine feste IP-Adresse ändern, falls es erforderlich ist.
-Mehrere IP-Adressen | Nicht unterstützt | Wenn Sie ein Failover für einen virtuellen Computer mit einem Netzwerkadapter mit mehreren IP-Adressen ausführen, wird nur die primäre IP-Adresse des Netzwerkadapters in der Quellregion beibehalten. Wenn Sie mehrere IP-Adressen zuweisen möchten, können Sie virtuelle Computer zu einem [Wiederherstellungsplan](recovery-plan-overview.md) hinzufügen und ein Skript anfügen, um dem Plan zusätzliche IP-Adressen zuzuweisen. Alternativ können Sie die Änderung nach dem Failover manuell oder mithilfe eines Skripts vornehmen.
+Mehrere IP-Adressen | Unterstützt | Wenn Sie ein Failover für einen virtuellen Computer mit einem Netzwerkadapter mit mehreren IP-Adressen ausführen, wird standardmäßig nur die primäre IP-Adresse des Netzwerkadapters in der Quellregion beibehalten. Um ein Failover für sekundäre IP-Konfigurationen durchzuführen, können Sie die dafür notwendigen Konfigurationen auf dem Blatt **Netzwerk** vornehmen.
 Traffic Manager     | Unterstützt | Sie können Traffic Manager so vorkonfigurieren, dass Datenverkehr in regelmäßigen Abständen an den Endpunkt in der Quellregion und bei einem Failover an den Endpunkt in der Zielregion weitergeleitet wird.
 Azure DNS | Unterstützt |
 Benutzerdefinierter DNS    | Unterstützt |

@@ -1,5 +1,5 @@
 ---
-title: Problembehandlung für regionsübergreifende Replikation in Azure NetApp Files | Microsoft-Dokumentation
+title: Problembehandlung bei Fehlern der regionsübergreifenden Replikation in Azure NetApp Files | Microsoft-Dokumentation
 description: In diesem Artikel werden Fehlermeldungen und Lösungen beschrieben, mit denen Sie Probleme der regionsübergreifenden Replikation für Azure NetApp Files beheben können.
 services: azure-netapp-files
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 03/10/2021
 ms.author: b-juche
-ms.openlocfilehash: d3d944646689e9e6189b0343e8bf67c8fb0abcbd
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bae0ed7fc15843c50af9dca860367d2074af33ec
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104590924"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130256271"
 ---
-# <a name="troubleshoot-cross-region-replication"></a>Problembehandlung für die regionsübergreifende Replikation
+# <a name="troubleshoot-cross-region-replication-errors"></a>Behandeln von Fehlern bei der regionsübergreifenden Replikation
 
 In diesem Artikel werden Fehlermeldungen und Lösungen beschrieben, mit denen Sie Probleme der regionsübergreifenden Replikation für Azure NetApp Files beheben können. 
 

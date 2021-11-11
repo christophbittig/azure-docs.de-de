@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 06/02/2021
 ms.author: albecker1
 ms.custom: include file
-ms.openlocfilehash: 0ae0fa18c2d3d223435656d871bd0d5be00627e4
-ms.sourcegitcommit: 025a2bacab2b41b6d211ea421262a4160ee1c760
+ms.openlocfilehash: f7454d26c57795383cc6bc8464e2259b1b29ed38
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/06/2021
-ms.locfileid: "113356945"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131506321"
 ---
-### <a name="on-demand-bursting-preview"></a>Bedarfsgesteuertes Bursting (Vorschau)
+### <a name="on-demand-bursting"></a>Bedarfsgesteuertes Bursting
 
 SSD Premium-Datenträger, die das bedarfsgesteuerte Burstingmodell des Datenträgerburstings verwenden, können das Bursting über ihre ursprünglich bereitgestellten Ziele hinaus durchführen und auch so oft wie von ihrer Workload benötigt (bis zum maximalen Burstziel). Beispielsweise ist für einen P30-Datenträger (1 TiB) der bereitgestellte IOPS-Wert 5000 IOPS. Wenn auf diesem Datenträger das Datenträgerbursting aktiviert ist, können Ihre Workloads E/As bis zur maximalen Burstleistung von 30.000 IOPS und 1.000 Mbit/s auf diesem Datenträger ausgeben.
 
@@ -72,9 +72,13 @@ Das Bursting auf VM-Ebene ist in allen Regionen in der öffentlichen Azure-Cloud
 - [Dsv4-Serie](../articles/virtual-machines/dv4-dsv4-series.md)
 - [Dasv4-Serie](../articles/virtual-machines/dav4-dasv4-series.md)
 - [Ddsv4-Serie](../articles/virtual-machines/ddv4-ddsv4-series.md)
+- [Dasv5-Serie](../articles/virtual-machines/dasv5-dadsv5-series.md)
+- [Dadsv5-Serie](../articles/virtual-machines/dasv5-dadsv5-series.md)
 - [Esv4-Serie](../articles/virtual-machines/ev4-esv4-series.md)
 - [Easv4-Serie](../articles/virtual-machines/eav4-easv4-series.md)
 - [Edsv4-Serie](../articles/virtual-machines/edv4-edsv4-series.md)
+- [Easv5-Serie](../articles/virtual-machines/easv5-eadsv5-series.md)
+- [Eadsv5-Serie](../articles/virtual-machines/easv5-eadsv5-series.md)
 - [B-Serie](../articles/virtual-machines/sizes-b-series-burstable.md)
 - [Fsv2-Serie](../articles/virtual-machines/fsv2-series.md)
 - [Dsv3-Serie](../articles/virtual-machines/dv3-dsv3-series.md)

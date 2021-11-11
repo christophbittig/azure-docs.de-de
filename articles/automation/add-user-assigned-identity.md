@@ -1,20 +1,20 @@
 ---
-title: Verwenden einer benutzerseitig zugewiesenen verwalteten Identität für ein Azure Automation-Konto (Vorschau)
+title: Verwenden einer benutzerseitig zugewiesenen verwalteten Identität für ein Azure Automation-Konto
 description: In diesem Artikel wird beschrieben, wie Sie eine benutzerseitig verwaltete Identität für Azure Automation-Konten einrichten.
 services: automation
 ms.subservice: process-automation
-ms.date: 09/23/2021
+ms.date: 10/26/2021
 ms.topic: conceptual
-ms.openlocfilehash: 7b1a75aac3166b1fdd3cdd39f5f66bd380339975
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 033f25f5d5902b339a2777cffc8c526a459ca587
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129061787"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131435527"
 ---
-# <a name="using-a-user-assigned-managed-identity-for-an-azure-automation-account-preview"></a>Verwenden einer benutzerseitig zugewiesenen verwalteten Identität für ein Azure Automation-Konto (Vorschau)
+# <a name="using-a-user-assigned-managed-identity-for-an-azure-automation-account"></a>Verwenden einer benutzerseitig zugewiesenen verwalteten Identität für ein Azure Automation-Konto
 
-In diesem Artikel erfahren Sie, wie eine benutzerseitig zugewiesene verwaltete Identität für ein Azure Automation-Konto hinzugefügt und für den Zugriff auf andere Ressourcen verwendet wird. Weitere Informationen zur Funktionsweise verwalteter Identitäten mit Azure Automation finden Sie unter [Verwaltete Identitäten](automation-security-overview.md#managed-identities-preview).
+In diesem Artikel erfahren Sie, wie eine benutzerseitig zugewiesene verwaltete Identität für ein Azure Automation-Konto hinzugefügt und für den Zugriff auf andere Ressourcen verwendet wird. Weitere Informationen zur Funktionsweise verwalteter Identitäten mit Azure Automation finden Sie unter [Verwaltete Identitäten](automation-security-overview.md#managed-identities).
 
 > [!NOTE]
 > Benutzerseitig zugewiesene verwaltete Identitäten werden nur für Cloudaufträge unterstützt.  
@@ -25,7 +25,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 - Ein Azure Automation-Konto. Eine Anleitung hierzu finden Sie unter [Erstellen eines Azure Automation-Kontos](./quickstarts/create-account-portal.md).
 
-- Eine systemseitig zugewiesene verwaltete Identität. Anleitungen finden Sie unter [Verwenden einer systemseitig zugewiesenen verwalteten Identität für ein Azure Automation-Konto (Vorschau)](enable-managed-identity-for-automation.md).
+- Eine systemseitig zugewiesene verwaltete Identität. Anleitungen finden Sie unter [Verwenden einer systemseitig zugewiesenen verwalteten Identität für ein Azure Automation-Konto](enable-managed-identity-for-automation.md).
 
 - Eine vom Benutzer zugewiesene verwaltete Identität. Anleitungen finden Sie unter [Erstellen einer benutzerseitig zugewiesenen verwalteten Identität](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity).
 
@@ -397,8 +397,8 @@ print(response.text)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Wenn Ihre Runbooks nicht erfolgreich abgeschlossen werden, lesen Sie [Behandlung von Problemen mit der verwalteten Azure Automation-Identität (Vorschau)](troubleshoot/managed-identity.md).
+- Wenn Ihre Runbooks nicht erfolgreich abgeschlossen werden, lesen Sie [Behandlung von Problemen mit der verwalteten Azure Automation-Identität](troubleshoot/managed-identity.md).
 
-- Wenn Sie eine verwaltete Identität deaktivieren müssen, finden Sie weitere Informationen unter [ Deaktivieren der verwalteten Identität Ihres Azure Automation-Kontos (Vorschauversion)](disable-managed-identity-for-automation.md).
+- Wenn Sie eine verwaltete Identität deaktivieren müssen, finden Sie weitere Informationen unter [Deaktivieren der verwalteten Identität Ihres Azure Automation-Kontos](disable-managed-identity-for-automation.md).
 
 - Eine Übersicht über die Azure Automation-Kontosicherheit finden Sie unter [Übersicht über die Automation-Kontoauthentifizierung.](automation-security-overview.md)

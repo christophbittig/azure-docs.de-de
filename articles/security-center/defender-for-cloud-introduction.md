@@ -6,15 +6,15 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.custom: mvc, ignite-fall-2021
-ms.date: 11/02/2021
+ms.custom: mvc
+ms.date: 11/04/2021
 ms.author: memildin
-ms.openlocfilehash: 0d75d3c3a7276e15f114f7356941f38ac2ac7c64
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 2b6c756b0dd752d3e4de349b624f17342fad1c9d
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131100994"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131576451"
 ---
 # <a name="what-is-microsoft-defender-for-cloud"></a>Was ist Microsoft Defender für Cloud?
 
@@ -37,7 +37,7 @@ Defender für Cloud erfüllt drei wichtige Anforderungen, wenn Sie die Sicherhei
 
 ## <a name="posture-management-and-workload-protection"></a>Verwalten des Sicherheitsstatus und Schutz von Workloads
 
-Die Features von Microsoft Defenders für Cloud decken die zwei Grundpfeiler der Cloudsicherheit ab: Verwaltung des Cloudsicherheitsstatus und Schutz von Cloudworkloads.
+Die Features von Microsoft Defender für Cloud decken die zwei Grundpfeiler der Cloudsicherheit ab: Verwaltung des Cloudsicherheitsstatus und Schutz von Cloudworkloads.
 
 ### <a name="cloud-security-posture-management-cspm"></a>Cloud Security Posture Management (CSPM)
 
@@ -65,7 +65,7 @@ Defender für Cloud stellt Sicherheitswarnungen auf der Grundlage von [Microsoft
 
 Da Defender für Cloud ein nativer Azure-Dienst ist, werden viele Azure-Dienste überwacht und geschützt, ohne dass eine Bereitstellung erforderlich ist.
 
-Bei Bedarf kann Defender für Cloud automatisch einen Log Analytics-Agent bereitstellen, um sicherheitsbezogene Daten zu sammeln. Bei Azure-Computern erfolgt die Bereitstellung direkt. Für Hybrid- und Multi-Cloud-Umgebungen erfolgt die Bereitstellung mithilfe von [Azure Arc](https://azure.microsoft.com/services/azure-arc/).
+Bei Bedarf kann Defender für Cloud automatisch einen Log Analytics-Agent bereitstellen, um sicherheitsbezogene Daten zu sammeln. Bei Azure-Computern erfolgt die Bereitstellung direkt. Für Hybrid- und Multi-Cloud-Umgebungen werden die Microsoft Defender-Pläne mit Hilfe von [Azure Arc](https://azure.microsoft.com/services/azure-arc/) auf Nicht-Azure-Computer ausgeweitet. Die CSPM-Features werden auf Multi-Cloud-Computer ausgeweitet, ohne dass Agents erforderlich sind (siehe [Verteidigen von Ressourcen in anderen Clouds](#defend-resources-running-on-other-clouds)).
 
 
 ### <a name="azure-native-protections"></a>Nativer Azure-Schutz
@@ -84,17 +84,17 @@ Zusätzlich zum Schutz Ihrer Azure-Umgebung können Sie Ihrer Hybrid Cloud-Umgeb
 
 Um den Schutz auf lokale Computer auszuweiten, stellen Sie [Azure Arc](https://azure.microsoft.com/services/azure-arc/) bereit und aktivieren die erweiterten Sicherheitsfunktionen von Defender für Cloud. Weitere Informationen finden Sie unter [Hinzufügen eines Azure-fremden Computers mit Azure Arc](quickstart-onboard-machines.md#add-non-azure-machines-with-azure-arc).
 
-
 ### <a name="defend-resources-running-on-other-clouds"></a>Schutz von Ressourcen, die in anderen Clouds ausgeführt werden 
 
 Defender für Cloud kann Ressourcen in anderen Clouds (z. B. AWS und GCP) schützen. 
 
-Folgende Multi-Cloud-Schutzpläne sind verfügbar:
+Wenn Sie beispielsweise [ein AWS-Konto (Amazon Web Services) mit einem Azure-Abonnement verbunden haben](quickstart-onboard-aws.md), können Sie die folgenden Schutzfunktionen aktivieren:
 
-- **CSPM**: Bereitstellung von Sicherheitsbewertungen und Härtungsempfehlungen für Ihre Ressourcen bei anderen Cloudanbietern.
-- **Microsoft Defender für Kubernetes**: Bietet eine optimale Umgebungshärtung sowie Workload- und Runtimeschutz für Ihre Kubernetes-Cluster.
-- **Microsoft Defender für Server**: Stattet Ihre Windows- und Linux-Computer mit Bedrohungserkennung und erweiterten Schutzmaßnahmen aus.
+- Die **CSPM-Features von Defender für Cloud** werden auf Ihre AWS-Ressourcen ausgeweitet. Dieser Plan ohne Agent bewertet Ihre AWS-Ressourcen gemäß AWS-spezifischen Sicherheitsempfehlungen und ist in Ihrer Sicherheitsbewertung enthalten. Die Ressourcen werden auch auf Einhaltung integrierter AWS-spezifischer Standards (AWS CIS, AWS PCI-DSS und AWS Foundational Security Best Practices) bewertet. Die Seite [Bestandsverzeichnis](asset-inventory.md) von Defender für Cloud ist eine Multi-Cloud-Funktion, die Ihnen hilft, Ihre AWS-Ressourcen zusammen mit Ihren Azure-Ressourcen zu verwalten.
+- Mit **Microsoft Defender für Kubernetes** werden die Containerbedrohungserkennung und erweiterten Schutzmaßnahmen auf Ihre **Amazon EKS Linux-Cluster** ausgeweitet.
+- **Microsoft Defender für Server** stattet Ihre Windows- und Linux-EC2-Instanzen mit Bedrohungserkennung und erweiterten Schutzmaßnahmen aus. Dieser Plan umfasst die integrierte Lizenz für Microsoft Defender für Endpunkt, Sicherheitsbaselines und Bewertungen auf Betriebssystemebene, Überprüfungen zur Sicherheitsrisikobewertung, adaptive Anwendungssteuerung (AAC), Überwachung der Dateiintegrität (FIM) und mehr.
 
+Weitere Informationen zum Verbinden Ihrer [AWS](quickstart-onboard-aws.md)- und [GCP](quickstart-onboard-gcp.md)-Konten mit Microsoft Defender für Cloud.
 
 ## <a name="vulnerability-assessment-and-management"></a>Sicherheitsrisikobewertung und -management
 
@@ -136,7 +136,7 @@ Damit Sie besser nachvollziehen können, wie wichtig die einzelnen Empfehlungen 
 
 Defender für Cloud bietet Folgendes:
 
-- **Sicherheitswarnungen:** Wenn Defender für Cloud in einem der Bereiche Ihrer Umgebung eine Bedrohung erkennt, wird eine Sicherheitswarnung generiert. Diese Warnungen beschreiben Details zu den betroffenen Ressourcen, empfohlene Problembehandlungsschritte sowie in einigen Fällen eine Option, mit der eine Logik-App als Reaktion ausgelöst werden kann. Sie können Warnungen exportieren – unabhängig davon, ob sie von Defender für Cloud generiert oder über ein integriertes Sicherheitsprodukt in Defender für Cloud empfangen wurden. Befolgen Sie die Anweisungen unter [Streamen von Warnungen an eine SIEM-, SOAR- oder IT-Dienstverwaltungslösung](export-to-siem.md), um die Warnungen nach Microsoft Sentinel (oder ein Drittanbieter-SIEM) bzw. ein beliebiges anderes externes Tool zu exportieren. Der Bedrohungsschutz von Defender für Cloud umfasst eine Fusion-Schrittfolgenanalyse, bei der Warnungen in Ihrer Umgebung basierend auf einer Cyber-Kill-Chain-Analyse automatisch korreliert werden. Dadurch können Sie den gesamten Verlauf eines Angriffs, seinen Ausgangspunkt und die Auswirkungen auf Ihre Ressourcen besser nachvollziehen. [Die von Defender für Cloud unterstützten Kill-Chain-Absichten basieren auf Version 7 der MITRE ATT&CK-Matrix.](alerts-reference.md#intentions)
+- **Sicherheitswarnungen:** Wenn Defender für Cloud in einem der Bereiche Ihrer Umgebung eine Bedrohung erkennt, wird eine Sicherheitswarnung generiert. Diese Warnungen beschreiben Details zu den betroffenen Ressourcen, empfohlene Problembehandlungsschritte sowie in einigen Fällen eine Option, mit der eine Logik-App als Reaktion ausgelöst werden kann. Sie können Warnungen exportieren – unabhängig davon, ob sie von Defender für Cloud generiert oder über ein integriertes Sicherheitsprodukt in Defender für Cloud empfangen wurden. Befolgen Sie die Anweisungen unter [Streamen von Warnungen an eine SIEM-, SOAR- oder IT-Dienstverwaltungslösung](export-to-siem.md), um die Warnungen nach Microsoft Sentinel, ein Drittanbieter-SIEM-System oder ein beliebiges anderes externes Tool zu exportieren. Der Bedrohungsschutz von Defender für Cloud umfasst eine Fusion-Schrittfolgenanalyse, bei der Warnungen in Ihrer Umgebung basierend auf einer Cyber-Kill-Chain-Analyse automatisch korreliert werden. Dadurch können Sie den gesamten Verlauf eines Angriffs, seinen Ausgangspunkt und die Auswirkungen auf Ihre Ressourcen besser nachvollziehen. [Die von Defender für Cloud unterstützten Kill-Chain-Absichten basieren auf Version 7 der MITRE ATT&CK-Matrix.](alerts-reference.md#intentions)
 
 - **Erweiterte Funktionen zum Schutz vor Bedrohungen** für VMs, SQL-Datenbanken, Container, Webanwendungen, Ihr Netzwerk und vieles mehr: Zu den Schutzfunktionen gehören die Sicherung der Verwaltungsports Ihrer VMs mit [Just-in-Time-Zugriff](just-in-time-access-overview.md) und [adaptiver Anwendungssteuerung](adaptive-application-controls.md) zur Erstellung von Positivlisten für Apps, die auf Ihren Rechnern ausgeführt bzw. nicht ausgeführt werden dürfen.
 
@@ -163,7 +163,7 @@ Verwenden Sie die Kacheln für erweiterte Funktionen im [Dashboard für den Work
 
 - Zum Einstieg in Defender für Cloud benötigen Sie ein Microsoft Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie sich für ein [kostenloses Konto](https://azure.microsoft.com/free/) registrieren.
 
-- Der kostenlose Plan von Defender für Cloud wird für alle vorhandenen Azure-Abonnements aktiviert, wenn Sie das Dashboard von Defender für Cloud im Azure-Portal zum ersten Mal aufrufen, oder wenn die Aktivierung programmgesteuert über die REST-API erfolgt. Sie müssen die erweiterten Sicherheitsfeatures aktivieren, um erweiterte Funktionen für die Sicherheitsverwaltung und Bedrohungserkennung nutzen zu können. Diese Features sind in den ersten 30 Tagen kostenlos. [Weitere Informationen erhalten Sie in der Preisübersicht](https://azure.microsoft.com/pricing/details/security-center/).
+- Der kostenlose Plan von Defender für Cloud wird für alle vorhandenen Azure-Abonnements aktiviert, wenn Sie die Defender für Cloud-Seiten im Azure-Portal zum ersten Mal aufrufen, oder wenn die Aktivierung programmgesteuert über die REST-API erfolgt. Sie müssen die erweiterten Sicherheitsfeatures aktivieren, um erweiterte Funktionen für die Sicherheitsverwaltung und Bedrohungserkennung nutzen zu können. Diese Features sind in den ersten 30 Tagen kostenlos. [Weitere Informationen erhalten Sie in der Preisübersicht](https://azure.microsoft.com/pricing/details/security-center/).
 
 - Wenn Sie bereit sind, die erweiterten Sicherheitsfunktionen jetzt zu aktivieren, führt Sie der [Schnellstart: Aktivieren der erweiterten Sicherheitsfeatures](enable-enhanced-security.md) durch die einzelnen Schritte.
 

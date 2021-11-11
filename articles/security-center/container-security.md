@@ -1,19 +1,18 @@
 ---
-title: Containersicherheit mit Microsoft Defender für Cloud und Microsoft Defender
+title: Containersicherheit mit Microsoft Defender für Cloud
 description: Enthält Informationen zu den Features für die Containersicherheit von Microsoft Defender für Cloud.
 author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: overview
-ms.date: 04/06/2021
+ms.date: 11/02/2021
 ms.author: memildin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: e3b839d572437e3fd9677ebabb111de68ef4d005
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 947aa4c5506b01ee3d22cd4372a4e5a5f0ca4992
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131010085"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131579272"
 ---
 # <a name="container-security-in-microsoft-defender-for-cloud"></a>Containersicherheit in Microsoft Defender für Cloud
 
@@ -48,15 +47,15 @@ Wenn Sie Images in Ihren Azure Resource Manager-basierten Azure-Containerregistr
 
 Wenn Probleme gefunden werden – von Qualys oder Defender für Cloud –, werden Sie im [Dashboard für den Workloadschutz](workload-protections-dashboard.md) entsprechend benachrichtigt. Für jedes Sicherheitsrisiko stellt Defender für Cloud umsetzbare Empfehlungen sowie eine Klassifizierung des Schweregrads und Anleitungen für die Behebung des Problems bereit. Ausführliche Informationen zu den Defender für Cloud-Empfehlungen für Container finden Sie in der [Referenzliste mit den Empfehlungen](recommendations-reference.md#recs-compute).
 
-Defender für Cloud filtert und klassifiziert die Ergebnisse des Scanners. Wenn ein Image fehlerfrei ist, wird es von Defender für Cloud entsprechend gekennzeichnet. Defender für Cloud generiert Sicherheitsempfehlungen nur für Images, bei denen Probleme behoben werden müssen. Indem Sie nur benachrichtigt werden, wenn Probleme auftreten, sorgt Defender für Cloud für eine Reduzierung der potenziell unerwünschten Informationswarnungen.
+Defender für Cloud filtert und klassifiziert die Ergebnisse der Überprüfung. Wenn ein Image fehlerfrei ist, wird es von Defender für Cloud entsprechend gekennzeichnet. Defender für Cloud generiert Sicherheitsempfehlungen nur für Images, bei denen Probleme behoben werden müssen. Indem Sie nur benachrichtigt werden, wenn Probleme auftreten, sorgt Defender für Cloud für eine Reduzierung der potenziell unerwünschten Informationswarnungen.
 
 ## <a name="environment-hardening"></a>Umgebungshärtung
 
 ### <a name="continuous-monitoring-of-your-docker-configuration"></a>Kontinuierliche Überwachung ihrer Docker-Konfiguration
 
-Microsoft Defender für Cloud identifiziert nicht verwaltete Container, die auf IaaS-Linux-VMs oder anderen Linux-Computern mit ausgeführten Docker-Containern gehostet werden. Defender für Cloud führt eine ständige Bewertung der Konfigurationen dieser Container durch. Anschließend werden sie mit dem [Docker-Benchmark von Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/docker/) verglichen.
+Microsoft Defender für Cloud identifiziert nicht verwaltete Container, die auf IaaS-Linux-VMs oder anderen Linux-Computern mit ausgeführten Docker-Containern gehostet werden. Defender für Cloud bewertet kontinuierlich die Konfigurationen dieser Container. Anschließend werden sie mit dem [Docker-Benchmark von Center for Internet Security (CIS)](https://www.cisecurity.org/benchmark/docker/) verglichen.
 
-Defender für Cloud umfasst den gesamten Regelsatz des Docker-Benchmarks des CSI und benachrichtigt Sie, falls Ihre Container eine der Kontrollen nicht bestehen. Falls Fehlkonfigurationen gefunden werden, werden von Defender für Cloud Sicherheitsempfehlungen generiert. Verwenden Sie die Seite **Empfehlungen** in Defender für Cloud, um Empfehlungen anzuzeigen und Probleme zu beheben. Die CIS-Benchmarkprüfungen können nicht auf von AKS verwalteten Instanzen oder von Databricks verwalteten virtuellen Computern ausgeführt werden.
+Defender für Cloud umfasst den gesamten Regelsatz des CIS-Docker-Benchmarks und benachrichtigt Sie, sobald Ihre Container eine der Kontrollen nicht bestehen. Falls Fehlkonfigurationen gefunden werden, werden von Defender für Cloud Sicherheitsempfehlungen generiert. Verwenden Sie die Seite **Empfehlungen** in Defender für Cloud, um Empfehlungen anzuzeigen und Probleme zu beheben. Die CIS-Benchmarkprüfungen können nicht auf von AKS verwalteten Instanzen oder von Databricks verwalteten virtuellen Computern ausgeführt werden.
 
 Ausführliche Informationen zu den möglichen relevanten Defender für Cloud-Empfehlungen für dieses Feature finden Sie im Abschnitt [Compute](recommendations-reference.md#recs-compute) der Referenztabelle zu den Empfehlungen.
 

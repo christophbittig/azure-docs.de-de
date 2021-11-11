@@ -7,13 +7,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 05/03/2021
 ms.author: memildin
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 4cf12721cc691f4719cc4442b4092b44f6d8e1b7
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: cefeb17946f5723d7ea44ee89f8245eef01d28c3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131004566"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131445136"
 ---
 # <a name="automate-responses-to-microsoft-defender-for-cloud-triggers"></a>Automatisieren der Reaktionen auf Trigger von Microsoft Defender für Cloud
 
@@ -40,13 +39,15 @@ In diesem Artikel wird das Feature für die Workflowautomatisierung von Microsof
 
 1. Wählen Sie in der Randleiste von Defender für Cloud die Option **Workflowautomatisierung** aus.
 
-    :::image type="content" source="./media/workflow-automation/list-of-workflow-automations.png" alt-text="Liste der Workflowautomatisierungen.":::
+    :::image type="content" source="./media/workflow-automation/list-of-workflow-automations.png" alt-text="Screenshot der Seite „Workflowautomatisierung“ mit der Liste der definierten Automatisierungen." lightbox="./media/workflow-automation/list-of-workflow-automations.png":::
 
     Auf dieser Seite können Sie neue Automatisierungsregeln erstellen sowie vorhandene aktivieren, deaktivieren oder löschen.
 
-1. Um einen neuen Workflow zu definieren, klicken Sie auf **Workflowautomatisierung hinzufügen**. 
+1. Um einen neuen Workflow zu definieren, klicken Sie auf **Workflowautomatisierung hinzufügen**. Der Bereich „Optionen“ für Ihre neue Automatisierung wird geöffnet.
 
-    Ein Bereich mit Optionen für die neue Automatisierung wird angezeigt. Darin können Sie Folgendes eingeben:
+    :::image type="content" source="./media/workflow-automation/add-workflow.png" alt-text="Bereich „Workflowautomatisierung hinzufügen“.":::
+
+    Darin können Sie Folgendes eingeben:
     1. Einen Namen und eine Beschreibung für die Automatisierung
     1. Die Trigger zum Auslösen dieses automatischen Workflows. Sie könnten beispielsweise Ihre Logik-App ausführen, wenn eine Sicherheitswarnung generiert wird, die „SQL“ enthält.
 
@@ -54,8 +55,6 @@ In diesem Artikel wird das Feature für die Workflowautomatisierung von Microsof
         > Wenn Ihr Trigger eine Empfehlung mit „untergeordneten Empfehlungen“ ist, z. B. **Ergebnisse der Sicherheitsrisikobewertung in Ihren SQL Datenbanken müssen beseitigt werden**, wird die Logik-App nicht bei jedem neuen Sicherheitsergebnis ausgelöst, sondern nur dann, wenn sich der Status der übergeordneten Empfehlung ändert.
 
     1. Die Logik-App, die ausgeführt wird, wenn die Triggerbedingungen erfüllt sind 
-
-        :::image type="content" source="./media/workflow-automation/add-workflow.png" alt-text="Bereich „Workflowautomatisierung hinzufügen“.":::
 
 1. Wählen Sie im Abschnitt „Aktionen“ die Option **Logic Apps-Seite besuchen** aus, um mit dem Prozess für die Logik-App-Erstellung zu beginnen.
 

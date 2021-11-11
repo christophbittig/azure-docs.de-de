@@ -7,13 +7,13 @@ ms.subservice: extensions
 author: amjads1
 ms.author: amjads
 ms.collection: linux
-ms.date: 02/18/2020
-ms.openlocfilehash: 352aea7f000082a2f978005d958b41669e191584
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.date: 11/02/2021
+ms.openlocfilehash: 3c857f01ba5a706c8b20289221badbee3aa3dccf
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122342943"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471628"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>Log Analytics-VM-Erweiterung für Linux
 
@@ -21,10 +21,8 @@ ms.locfileid: "122342943"
 
 Azure Monitor-Protokolle bieten Überwachungs- und Warnungsfunktionen sowie Funktionen zum Beheben von Warnungen für cloudbasierte und lokale Ressourcen. Die Log Analytics-VM-Erweiterung für Linux wird von Microsoft veröffentlicht und unterstützt. Die Erweiterung installiert den Log Analytics-Agent auf virtuellen Azure-Computern und registriert virtuelle Computer in einem vorhandenen Log Analytics-Arbeitsbereich. Dieses Dokument enthält ausführliche Informationen zu den unterstützten Plattformen, Konfigurationen und Bereitstellungsoptionen für die Log Analytics-VM-Erweiterung für Linux.
 
->[!NOTE]
->Im Rahmen der laufenden Umstellung von der Microsoft Operations Management Suite (OMS) auf Azure Monitor wird der OMS-Agent für Windows bzw. Linux nun als Log Analytics-Agent für Windows bzw. Log Analytics-Agent für Linux bezeichnet.
-
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+> [!NOTE]
+> Mit Azure-Arc-fähigen Servern können Sie Log Analytics-Agent-Erweiterungen für virtuelle Computer auf nicht in Azure gehosteten Windows- und Linux-Computern bereitstellen, entfernen und aktualisieren, um die Verwaltung Ihrer Hybridcomputer über den gesamten Lebenszyklus hinweg zu vereinfachen. Weitere Informationen finden Sie unter [Verwaltung von VM-Erweiterungen mit Azure Arc-fähigen Servern](../../azure-arc/servers/manage-vm-extensions.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -33,6 +31,7 @@ Azure Monitor-Protokolle bieten Überwachungs- und Warnungsfunktionen sowie Funk
 Ausführliche Informationen zu den unterstützten Linux-Distributionen finden Sie im Artikel [Übersicht über Azure Monitor-Agents](../../azure-monitor/agents/agents-overview.md#supported-operating-systems).
 
 ### <a name="agent-and-vm-extension-version"></a>Version des Agents und der VM-Erweiterung
+
 Die folgende Tabelle enthält eine Zuordnung der Version der Log Analytics-VM-Erweiterung und des Log Analytics-Agent-Pakets für jede Version. Ein Link zu den Anmerkungen zur jeweiligen Log Analytics-Agent-Paketversion ist enthalten. Anmerkungen zur Version enthalten Details zu Fehlerbehebungen und neuen Features, die für eine bestimmte Agentversion verfügbar sind.  
 
 | Version der Log Analytics-VM-Erweiterung unter Linux | Log Analytics-Agent-Paketversion | 
@@ -108,7 +107,6 @@ Der folgende JSON-Code zeigt das Schema für die Log Analytics-Agent-Erweiterung
 | typeHandlerVersion | 1.13 |
 | workspaceId (z.B.) | 6f680a37-00c6-41c7-a93f-1437e3462574 |
 | workspaceKey (z.B.) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI+rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ== |
-
 
 ## <a name="template-deployment"></a>Bereitstellung von Vorlagen
 

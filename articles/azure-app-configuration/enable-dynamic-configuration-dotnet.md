@@ -9,58 +9,55 @@ ms.custom: devx-track-csharp
 ms.topic: tutorial
 ms.date: 07/24/2020
 ms.author: alkemper
-ms.openlocfilehash: 03940a86176d0bc93c5066977fdc87de5c456060
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: d6c3bc0ee45c214419820208598e5721309ea144
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96932760"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130261042"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-a-net-framework-app"></a>Tutorial: Verwenden der dynamischen Konfiguration in einer .NET Framework-App
 
-Die App Configuration-.NET-Clientbibliothek unterstützt die Aktualisierung einer Reihe von Konfigurationseinstellungen bei Bedarf, ohne dass eine Anwendung neu gestartet werden muss. Dies kann implementiert werden, indem zuerst eine Instanz von `IConfigurationRefresher` aus den Optionen für den Konfigurationsanbieter abgerufen und anschließend `TryRefreshAsync` für diese Instanz an einer beliebigen Stelle Ihres Codes aufgerufen wird.
-
-Um die Einstellungen auf dem aktuellen Stand zu halten und zu viele Aufrufe des Konfigurationsspeichers zu vermeiden, wird ein Cache für jede Einstellung verwendet. Bis der zwischengespeicherte Wert einer Einstellung abgelaufen ist, wird der Wert vom Aktualisierungsvorgang nicht aktualisiert. Dies gilt auch, wenn sich der Wert im Konfigurationsspeicher geändert hat. Die Standardablaufzeit jeder Anforderung beträgt 30 Sekunden, aber dies kann bei Bedarf außer Kraft gesetzt werden.
-
-In diesem Tutorial wird veranschaulicht, wie Sie dynamische Konfigurationsupdates in Ihrem Code implementieren können. Dies baut auf der App auf, die in den Schnellstartanleitungen vorgestellt wurde. Durchlaufen Sie zuerst die Schnellstartanleitung zum [Erstellen einer .NET Framework-App mit Azure App Configuration](./quickstart-dotnet-app.md), bevor Sie fortfahren.
+Daten aus App Configuration können als App-Einstellungen in eine .NET Framework-App geladen werden. Weitere Informationen finden Sie im [Schnellstart](./quickstart-dotnet-app.md). Wie im .NET Framework vorgesehen, können die App-Einstellungen jedoch nur beim Neustart der App aktualisiert werden. Der .NET-Anbieter von App Configuration ist eine .NET Standard-Bibliothek. Sie unterstützt das dynamische Zwischenspeichern und Aktualisieren der Konfiguration ohne App-Neustart. In diesem Tutorial wird veranschaulicht, wie Sie dynamische Konfigurationsupdates in einer .NET Framework-Konsolen-App implementieren können.
 
 In diesem Tutorial lernen Sie, wie die folgenden Aufgaben ausgeführt werden:
 
 > [!div class="checklist"]
 > * Einrichten Ihrer .NET Framework-App für die Aktualisierung der Konfiguration als Reaktion auf Änderungen in einem App Configuration-Speicher
 > * Einfügen der aktuellen Konfiguration in Ihre Anwendung
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Azure-Abonnement – [Erstellen eines kostenlosen Kontos](https://azure.microsoft.com/free/)
-- [Visual Studio 2019](https://visualstudio.microsoft.com/vs)
-- [.NET Framework 4.7.1 oder höher](https://dotnet.microsoft.com/download)
+- [Visual Studio](https://visualstudio.microsoft.com/vs)
+- [.NET Framework 4.7.2 oder höher](https://dotnet.microsoft.com/download/dotnet-framework)
 
 ## <a name="create-an-app-configuration-store"></a>Erstellen eines App Configuration-Speichers
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-7. Wählen Sie **Konfigurations-Explorer** >  **+ Erstellen** > **Schlüssel-Wert** aus, um die folgenden Schlüssel-Wert-Paare hinzuzufügen:
+7. Wählen Sie **Konfigurations-Explorer** >  **+ Erstellen** > **Schlüssel-Wert** aus, um das folgende Schlüssel-Wert-Paar hinzuzufügen:
 
-    | Schlüssel | Wert |
-    |---|---|
-    | TestApp:Settings:Message | Daten aus Azure App Configuration |
+    | Key                        | Wert                               |
+    |----------------------------|-------------------------------------|
+    | *TestApp:Settings:Message* | *Daten aus Azure App Configuration* |
 
-    Lassen Sie **Bezeichnung** und **Inhaltstyp** vorerst leer.
-
-8. Wählen Sie **Übernehmen**.
+    Lassen Sie **Bezeichnung** und **Inhaltstyp** leer.
 
 ## <a name="create-a-net-framework-console-app"></a>Erstellen einer .NET Framework-Konsolen-App
 
-1. Starten Sie Visual Studio, und wählen Sie **Datei** > **Neu** > **Projekt** aus.
+1. Starten Sie Visual Studio, und wählen Sie **Neues Projekt erstellen** aus.
 
-1. Filtern Sie unter **Neues Projekt erstellen** nach dem Projekttyp **Konsole**, und klicken Sie auf **Console App (.NET Framework)** (Konsolen-App (.NET Framework)). Klicken Sie auf **Weiter**.
+1. Filtern Sie unter **Neues Projekt erstellen** nach dem Projekttyp **Konsole**, und klicken Sie in der Projektvorlagenliste auf **Konsolen-App (.NET Framework)** mit C#. Klicken Sie auf **Weiter**.
 
-1. Geben Sie unter **Neues Projekt konfigurieren** einen Projektnamen ein. Wählen Sie unter **Framework** die Option **.NET Framework 4.7.1** oder höher aus. Klicken Sie auf **Erstellen**.
+1. Geben Sie unter **Neues Projekt konfigurieren** einen Projektnamen ein. Wählen Sie unter **Framework** die Option **.NET Framework 4.7.2** oder höher aus. Klicken Sie auf **Erstellen**.
 
 ## <a name="reload-data-from-app-configuration"></a>Erneutes Laden von Daten aus App Configuration
-1. Klicken Sie mit der rechten Maustaste auf Ihr Projekt, und wählen Sie **NuGet-Pakete verwalten** aus. Suchen Sie auf der Registerkarte **Durchsuchen** nach dem NuGet-Paket *Microsoft.Extensions.Configuration.AzureAppConfiguration*, und fügen Sie es Ihrem Projekt hinzu. Wenn Sie es nicht finden können, aktivieren Sie das Kontrollkästchen **Vorabversion einbeziehen**.
+1. Klicken Sie mit der rechten Maustaste auf Ihr Projekt, und wählen Sie **NuGet-Pakete verwalten** aus. Suchen Sie auf der Registerkarte **Durchsuchen** die neueste Version des folgenden NuGet-Pakets, und fügen Sie sie Ihrem Projekt hinzu.
 
-1. Öffnen Sie *Program.cs*, und fügen Sie einen Verweis auf den App Configuration-Anbieter für .NET Core hinzu.
+   *Microsoft.Extensions.Configuration.AzureAppConfiguration*
+
+1. Öffnen Sie *Program.cs*, und fügen Sie die folgenden Namespaces hinzu.
 
     ```csharp
     using Microsoft.Extensions.Configuration;
@@ -70,8 +67,8 @@ In diesem Tutorial lernen Sie, wie die folgenden Aufgaben ausgeführt werden:
 1. Fügen Sie zwei Variablen zum Speichern konfigurationsbezogener Objekte hinzu.
 
     ```csharp
-    private static IConfiguration _configuration = null;
-    private static IConfigurationRefresher _refresher = null;
+    private static IConfiguration _configuration;
+    private static IConfigurationRefresher _refresher;
     ```
 
 1. Aktualisieren Sie mit den angegebenen Aktualisierungsoptionen die Methode `Main`, um eine Verbindung mit App Configuration herzustellen.
@@ -83,10 +80,13 @@ In diesem Tutorial lernen Sie, wie die folgenden Aufgaben ausgeführt werden:
         builder.AddAzureAppConfiguration(options =>
         {
             options.Connect(Environment.GetEnvironmentVariable("ConnectionString"))
+                    // Load all keys that start with `TestApp:`.
+                    .Select("TestApp:*")
+                    // Configure to reload the key 'TestApp:Settings:Message' if it is modified.
                     .ConfigureRefresh(refresh =>
                     {
                         refresh.Register("TestApp:Settings:Message")
-                            .SetCacheExpiration(TimeSpan.FromSeconds(10));
+                               .SetCacheExpiration(TimeSpan.FromSeconds(10));
                     });
 
             _refresher = options.GetRefresher();
@@ -96,12 +96,10 @@ In diesem Tutorial lernen Sie, wie die folgenden Aufgaben ausgeführt werden:
         PrintMessage().Wait();
     }
     ```
-    Die `ConfigureRefresh`-Methode wird genutzt, um die Einstellungen anzugeben, die zum Aktualisieren der Konfigurationsdaten mit dem App Configuration-Speicher verwendet werden, wenn ein Aktualisierungsvorgang ausgelöst wird. Eine Instanz von `IConfigurationRefresher` kann durch das Aufrufen der `GetRefresher`-Methode in den Optionen der `AddAzureAppConfiguration`-Methode abgerufen werden. Die `TryRefreshAsync`-Methode dieser Instanz kann verwendet werden, um einen Aktualisierungsvorgang an einer beliebigen Stelle Ihres Codes auszulösen.
 
-    > [!NOTE]
-    > Die Standardablaufzeit für eine Konfigurationseinstellung beträgt 30 Sekunden, aber dieser Wert kann außer Kraft gesetzt werden. Rufen Sie hierzu die `SetCacheExpiration`-Methode im Initialisierer für die Optionen auf, die als Argument an die `ConfigureRefresh`-Methode übergeben wird.
+    In der Methode `ConfigureRefresh` wird ein Schlüssel in Ihrem App Configuration-Speicher für die Änderungsüberwachung registriert. Die Methode `Register` enthält den optionalen booleschen Parameter `refreshAll`, mit dem angegeben werden kann, ob alle Konfigurationswerte bei einer Änderung des registrierten Schlüssels aktualisiert werden sollen. In diesem Beispiel wird nur der Schlüssel *TestApp:Settings:Message* aktualisiert. Durch die Methode `SetCacheExpiration` wird angegeben, wie viel Zeit mindestens verstreichen muss, bevor eine neue Anforderung an App Configuration gesendet wird, um nach Konfigurationsänderungen zu suchen. In diesem Beispiel wird die Standardablaufzeit von 30 Sekunden zu Demonstrationszwecken in 10 Sekunden geändert.
 
-1. Fügen Sie eine Methode namens `PrintMessage()` hinzu, die eine manuelle Aktualisierung der Konfigurationsdaten aus App Configuration auslöst.
+1. Fügen Sie eine Methode namens `PrintMessage()` hinzu, die eine Aktualisierung der Konfigurationsdaten aus App Configuration auslöst.
 
     ```csharp
     private static async Task PrintMessage()
@@ -116,18 +114,20 @@ In diesem Tutorial lernen Sie, wie die folgenden Aufgaben ausgeführt werden:
     }
     ```
 
+    Das Aufrufen der Methode `ConfigureRefresh` allein führt nicht dazu, dass die Konfiguration automatisch aktualisiert wird. Sie rufen die Methode `TryRefreshAsync` über die Schnittstelle `IConfigurationRefresher` auf, um eine Aktualisierung auszulösen. Dadurch sollen Phantomanforderungen vermieden werden, die an App Configuration gesendet werden, auch wenn sich Ihre Anwendung im Leerlauf befindet. Sie können den Aufruf `TryRefreshAsync` dort verwenden, wo Sie Ihre Anwendung als aktiv betrachten. Dies kann beispielsweise der Fall sein, wenn Sie eine eingehende Nachricht, eine Bestellung oder eine Iteration einer komplexen Aufgabe verarbeiten. Er kann auch Teil eines Timers sein, wenn Ihre Anwendung ständig aktiv ist. In diesem Beispiel rufen Sie `TryRefreshAsync` auf, wenn Sie die EINGABETASTE drücken. Beachten Sie, dass Ihre Anwendung auch dann weiterhin die zwischengespeicherte Konfiguration verwendet, wenn beim Aufruf `TryRefreshAsync` aus irgendeinem Grund ein Fehler auftritt. Ein weiterer Versuch wird unternommen, wenn die konfigurierte Cacheablaufzeit verstrichen ist und der Aufruf `TryRefreshAsync` von Ihrer Anwendungsaktivität erneut ausgelöst wird. Das Aufrufen von `TryRefreshAsync` ist vor Verstreichen der konfigurierten Cacheablaufzeit keine Option. Daher sind die Auswirkungen auf die Leistung minimal, auch wenn der Aufruf häufig erfolgt.
+
 ## <a name="build-and-run-the-app-locally"></a>Lokales Erstellen und Ausführen der App
 
-1. Legen Sie eine Umgebungsvariable mit dem Namen **ConnectionString** fest, und geben Sie dafür den Zugriffsschlüssel für Ihren App Configuration-Speicher an. Führen Sie bei Verwendung einer Windows-Eingabeaufforderung den folgenden Befehl aus, und starten Sie die Eingabeaufforderung neu, damit die Änderung wirksam wird:
+1. Legen Sie eine Umgebungsvariable namens **ConnectionString** auf die Verbindungszeichenfolge mit schreibgeschütztem Schlüssel fest, die Sie bei der Erstellung Ihres App Configuration-Speichers erhalten haben. 
 
+    Führen Sie bei Verwendung der Windows-Eingabeaufforderung den folgenden Befehl aus:
     ```console
-        setx ConnectionString "connection-string-of-your-app-configuration-store"
+    setx ConnectionString "connection-string-of-your-app-configuration-store"
     ```
 
     Führen Sie bei Verwendung von Windows PowerShell den folgenden Befehl aus:
-
     ```powershell
-        $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
+    $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
     ```
 
 1. Starten Sie Visual Studio, damit die Änderung wirksam wird. 
@@ -136,13 +136,11 @@ In diesem Tutorial lernen Sie, wie die folgenden Aufgaben ausgeführt werden:
 
     ![Lokaler App-Start](./media/dotnet-app-run.png)
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Klicken Sie auf **Alle Ressourcen**, und wählen Sie dann die Instanz des App Configuration-Speichers aus, die Sie in der Schnellstartanleitung erstellt haben.
+1. Navigieren Sie im Azure-Portal zum **Konfigurations-Explorer** Ihres App Configuration-Speichers, und aktualisieren Sie den Wert des folgenden Schlüssels.
 
-1. Wählen Sie den **Konfigurations-Explorer** aus, und aktualisieren Sie die Werte der folgenden Schlüssel:
-
-    | Schlüssel | Wert |
-    |---|---|
-    | TestApp:Settings:Message | Daten aus Azure App Configuration: Aktualisiert |
+    | Key                        | Wert                                         |
+    |----------------------------|-----------------------------------------------|
+    | *TestApp:Settings:Message* | *Daten aus Azure App Configuration: Aktualisiert* |
 
 1. Drücken Sie in der ausgeführten Anwendung die EINGABETASTE, um eine Aktualisierung auszulösen, und geben Sie den aktualisierten Wert in der Eingabeaufforderung oder im PowerShell-Fenster aus.
 
@@ -157,7 +155,12 @@ In diesem Tutorial lernen Sie, wie die folgenden Aufgaben ausgeführt werden:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie Ihre .NET Framework-App aktiviert, um Konfigurationseinstellungen dynamisch aus App Configuration zu aktualisieren. Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie eine von Azure verwaltete Identität hinzufügen, um den Zugriff auf App Configuration zu optimieren.
+In diesem Tutorial haben Sie Ihre .NET Framework-App aktiviert, um Konfigurationseinstellungen dynamisch aus App Configuration zu aktualisieren. Fahren Sie mit dem nächsten Tutorial fort, um zu erfahren, wie Sie die dynamische Konfiguration in einer ASP.NET-Webanwendung (.NET Framework) aktivieren:
+
+> [!div class="nextstepaction"]
+> [Aktivieren der dynamischen Konfiguration in ASP.NET-Webanwendungen](./enable-dynamic-configuration-aspnet-netfx.md)
+
+Im nächsten Tutorial erfahren Sie, wie Sie eine von Azure verwaltete Identität hinzufügen, um den Zugriff auf App Configuration zu optimieren:
 
 > [!div class="nextstepaction"]
 > [Integration der verwalteten Identität](./howto-integrate-azure-managed-service-identity.md)

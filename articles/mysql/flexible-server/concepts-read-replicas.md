@@ -6,19 +6,16 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 06/17/2021
-ms.openlocfilehash: 7040b9b813d57d1ad10b2406e8167ac2ec0cd690
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 7def4d2afac4a1f52db89defb226857b7f8b41fa
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130166397"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131468345"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql---flexible-server"></a>Lesereplikate in Azure Database for MySQL – Flexible Server
 
-[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
-> [!IMPORTANT]
-> Lesereplikate auf flexiblen Azure Database for MySQL-Servern befinden sich in der Vorschauphase.
+[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 MySQL ist eine der beliebtesten Datenbank-Engines für die Ausführung von Web- und mobilen Anwendungen im Internet. Viele unserer Kunden verwenden es für ihre Onlinebildungsdienste, Videostreamingdienste, digitalen Zahlungslösungen, E-Commerce-Plattformen, Gamingdienste, Nachrichtenportale sowie für Websites für Behörden und das Gesundheitswesen. Diese Dienste müssen in dem Maße, wie der Datenverkehr im Web oder bei mobilen Anwendungen zunimmt, genutzt und skaliert werden.
 
@@ -118,17 +115,17 @@ Wenn Ihre Anwendung Lese- und Schreibvorgänge erfolgreich verarbeitet, haben Si
 
 Der globale Transaktionsbezeichner (GTID) ist ein eindeutiger Bezeichner, der mit jeder Transaktion auf einem Quellserver, für die ein Commit erfolgt, erstellt wird. Er ist für den flexiblen Azure Database for MySQL-Server standardmäßig deaktiviert. GTID wird von den Versionen 5.7 und 8.0 unterstützt. Weitere Informationen zum GTID und seiner Verwendung in der Replikation finden Sie unter [Replikation mit GTID](https://dev.mysql.com/doc/refman/5.7/en/replication-gtids.html) in der MySQL-Dokumentation.
 
-Die folgenden Serverparameter sind für die Konfiguration des globalen Transaktionsbezeichners (GTID) verfügbar: 
+Die folgenden Serverparameter sind für die Konfiguration des globalen Transaktionsbezeichners (GTID) verfügbar:
 
 |**Serverparameter**|**Beschreibung**|**Standardwert**|**Werte**|
 |--|--|--|--|
 |`gtid_mode`|Gibt an, ob GTIDs zur Identifizierung von Transaktionen verwendet werden. Änderungen zwischen Modi können nur nacheinander in aufsteigender Reihenfolge durchgeführt werden (z. B. `OFF` -> `OFF_PERMISSIVE` -> `ON_PERMISSIVE` -> `ON`)|`OFF*`|`OFF`: Sowohl neue als auch replizierte Transaktionen müssen anonym sein <br> `OFF_PERMISSIVE`: Neue Transaktionen sind anonym. Replizierte Transaktionen können entweder anonyme Transaktionen oder GTID-Transaktionen sein. <br> `ON_PERMISSIVE`: Neue Transaktionen sind GTID-Transaktionen. Replizierte Transaktionen können entweder anonyme Transaktionen oder GTID-Transaktionen sein. <br> `ON`: Sowohl neue als auch replizierte Transaktionen müssen GTID-Transaktionen sein.|
-|`enforce_gtid_consistency`|Erzwingt die GTID-Konsistenz, indem die Ausführung nur der Anweisungen zugelassen wird, die auf transaktionssichere Weise protokolliert werden können. Dieser Wert muss vor dem Aktivieren der GTID-Replikation auf `ON` festgelegt werden. |`OFF*`|`OFF`: Alle Transaktionen können die GTID-Konsistenz verletzen.  <br> `ON`: Keine Transaktion darf die GTID-Konsistenz verletzen. <br> `WARN`: Alle Transaktionen können gegen GTID-Konsistenz verstoßen, aber es wird eine Warnung generiert. | 
+|`enforce_gtid_consistency`|Erzwingt die GTID-Konsistenz, indem die Ausführung nur der Anweisungen zugelassen wird, die auf transaktionssichere Weise protokolliert werden können. Dieser Wert muss vor dem Aktivieren der GTID-Replikation auf `ON` festgelegt werden. |`OFF*`|`OFF`: Alle Transaktionen können die GTID-Konsistenz verletzen.  <br> `ON`: Keine Transaktion darf die GTID-Konsistenz verletzen. <br> `WARN`: Alle Transaktionen können gegen GTID-Konsistenz verstoßen, aber es wird eine Warnung generiert. |
 
 **Für flexible Azure Database for MySQL-Server mit aktiviertem Feature „Hochverfügbarkeit“ ist der Standardwert auf `ON` festgelegt.*
 > [!NOTE]
 >
-> * Wenn GTID aktiviert ist, können Sie ihn nicht wieder deaktivieren. Wenn Sie GTID deaktivieren müssen, wenden Sie sich an den Support. 
+> * Wenn GTID aktiviert ist, können Sie ihn nicht wieder deaktivieren. Wenn Sie GTID deaktivieren müssen, wenden Sie sich an den Support.
 >
 > * Das Ändern der GTIDs von einem Wert in einen anderen kann nur schrittweise in aufsteigender Reihenfolge der Modi erfolgen. Wenn z. B. gtid_mode derzeit auf OFF_PERMISSIVE festgelegt ist, ist eine Änderung in ON_PERMISSIVE möglich, aber nicht in ON.
 >
@@ -154,7 +151,7 @@ Wenn GTID auf einem Quellserver aktiviert ist (`gtid_mode` = ON), wird für neu 
 | Beendete Replikate | Wenn Sie die Replikation zwischen einem Quellserver und einem Lesereplikat beenden, wird das beendete Replikat zu einem eigenständigen Server, der sowohl Lese- als auch Schreibzugriffe akzeptiert. Der eigenständige Server kann nicht wieder in ein Replikat umgewandelt werden. |
 | Gelöschte Quellserver und eigenständige Server | Wenn ein Quellserver gelöscht wird, wird die Replikation an alle Lesereplikate beendet. Diese Replikate werden automatisch zu eigenständigen Servern und können sowohl Lese- als auch Schreibvorgänge akzeptieren. Der Quellserver selbst wird gelöscht. |
 | Benutzerkonten | Benutzer auf dem Quellserver werden an die Lesereplikate repliziert. Sie können nur mit denjenigen Benutzerkonten eine Verbindung mit einem Lesereplikat herstellen, die auf dem Quellserver verfügbar sind. |
-| Serverparameter | Um zu verhindern, dass Daten nicht synchronisiert werden und um einen möglichen Datenverlust oder eine Beschädigung zu vermeiden, sind einige Serverparameter bei der Verwendung von Lesereplikaten für die Aktualisierung gesperrt. <br> Die folgenden Serverparameter sind sowohl auf dem Quell- als auch auf dem Replikatserver gesperrt:<br> - [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/8.0/en/innodb-file-per-table-tablespaces.html) <br> - [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) <br> Der Parameter [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler) ist auf den Replikatservern gesperrt. <br> Um einen der oben genannten Parameter auf dem Quellserver zu aktualisieren, löschen Sie Replikatserver, aktualisieren Sie den Parameterwert für die Quelle, und erstellen Sie Replikate neu. 
+| Serverparameter | Um zu verhindern, dass Daten nicht synchronisiert werden und um einen möglichen Datenverlust oder eine Beschädigung zu vermeiden, sind einige Serverparameter bei der Verwendung von Lesereplikaten für die Aktualisierung gesperrt. <br> Die folgenden Serverparameter sind sowohl auf dem Quell- als auch auf dem Replikatserver gesperrt:<br> - [`innodb_file_per_table`](https://dev.mysql.com/doc/refman/8.0/en/innodb-file-per-table-tablespaces.html) <br> - [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) <br> Der Parameter [`event_scheduler`](https://dev.mysql.com/doc/refman/5.7/en/server-system-variables.html#sysvar_event_scheduler) ist auf den Replikatservern gesperrt. <br> Um einen der oben genannten Parameter auf dem Quellserver zu aktualisieren, löschen Sie Replikatserver, aktualisieren Sie den Parameterwert für die Quelle, und erstellen Sie Replikate neu.
 <br> Beim Konfigurieren von Parametern auf Sitzungsebene wie foreign_keys_checks für das Lesereplikat ist darauf zu achten, dass die für das Lesereplikat festgelegten Parameterwerte mit denen des Ausgangsservers übereinstimmen.|
 | Sonstige | – Die Erstellung des Replikats eines Replikats wird nicht unterstützt. <br> – In-Memory-Tabellen können dazu führen, dass Replikate nicht mehr synchron sind. Dies ist eine Einschränkung der MySQL-Replikationstechnologie. Weitere Informationen finden Sie in der [MySQL-Referenzdokumentation](https://dev.mysql.com/doc/refman/5.7/en/replication-features-memory.html). <br>– Stellen Sie sicher, dass die Quellservertabellen über Primärschlüssel verfügen. Das Fehlen von Primärschlüsseln kann zu Replikationslatenz zwischen der Quelle und den Replikaten führen.<br>– Eine vollständige Liste aller Einschränkungen der MySQL-Replikation finden Sie in der [MySQL-Dokumentation](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html). |
 

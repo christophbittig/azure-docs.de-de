@@ -6,12 +6,12 @@ ms.subservice: process-automation
 ms.date: 09/22/2021
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ee8d8929dc444d72539893a7978b828fc5c3742d
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 2584390610aaef5ddd8364d33f3c065ecf3bd321
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129352609"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131443830"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Verwenden einer Warnung zum Auslösen eines Azure Automation-Runbooks
 
@@ -49,7 +49,7 @@ Da sich die Daten unterscheiden, die von den einzelnen Typen von Warnungen berei
 
 ## <a name="assign-permissions-to-managed-identities"></a>Zuweisen von Berechtigungen zu verwalteten Identitäten
 
-Weisen Sie der betreffenden [verwalteten Identität](./automation-security-overview.md#managed-identities-preview) Berechtigungen zu, damit sie eine VM beenden kann. Das Runbook kann die vom System zugewiesene verwaltete Identität des Automation-Kontos oder eine von den Benutzer*innen zugewiesene verwaltete Identität verwenden. Schritte zur Zuweisung von Berechtigungen für jede Identität sind angegeben. In den folgenden Schritten wird PowerShell verwendet. Informationen zur Verwendung des Azure-Portals finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](./../role-based-access-control/role-assignments-portal.md).
+Weisen Sie der betreffenden [verwalteten Identität](./automation-security-overview.md#managed-identities) Berechtigungen zu, damit sie eine VM beenden kann. Das Runbook kann die vom System zugewiesene verwaltete Identität des Automation-Kontos oder eine von den Benutzer*innen zugewiesene verwaltete Identität verwenden. Schritte zur Zuweisung von Berechtigungen für jede Identität sind angegeben. In den folgenden Schritten wird PowerShell verwendet. Informationen zur Verwendung des Azure-Portals finden Sie unter [Zuweisen von Azure-Rollen über das Azure-Portal](./../role-based-access-control/role-assignments-portal.md).
 
 1. Melden Sie sich interaktiv mithilfe des Cmdlets [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount) bei Azure an, und befolgen Sie die Anweisungen.
 
@@ -107,7 +107,7 @@ Wie im vorherigen Abschnitt beschrieben, weist jeder Typ von Warnung ein anderes
 
 In diesem Beispiel wird eine Warnung von einer Azure-VM verwendet. Es ruft die VM-Daten aus der Nutzlast ab und verwendet diese Informationen dann, um den virtuellen Computer zu beenden. Die Verbindung muss in dem Automation-Konto eingerichtet sein, unter dem das Runbook ausgeführt wird. Wenn Sie Warnungen zum Auslösen von Runbooks verwenden, müssen Sie unbedingt den Zustand der Warnung im ausgelösten Runbook überprüfen. Das Runbook wird bei jeder Zustandsänderung der Warnung ausgelöst. Warnungen verfügen über mehrere Zustände, deren beiden häufigsten „Aktiviert“ und „Aufgelöst“ sind. Prüfen Sie in Ihrer Runbooklogik auf diesen Zustand, um sicherzustellen, dass Ihr Runbook nur einmal ausgeführt wird. Das Beispiel in diesem Artikel zeigt, wie Sie die Suche auf Warnungen mit dem Zustand „Aktiviert“ einschränken.
 
-Das Runbook verwendet die [systemseitig zugewiesene verwaltete Identität](./automation-security-overview.md#managed-identities-preview) des Automation-Kontos für die Authentifizierung bei Azure, um die Verwaltungsaktion für die VM durchzuführen. Das Runbook kann problemlos geändert werden, um eine benutzerseitig zugewiesene verwaltete Identität zu verwenden.
+Das Runbook verwendet die [systemseitig zugewiesene verwaltete Identität](./automation-security-overview.md#managed-identities) des Automation-Kontos für die Authentifizierung bei Azure, um die Verwaltungsaktion für die VM durchzuführen. Das Runbook kann problemlos geändert werden, um eine benutzerseitig zugewiesene verwaltete Identität zu verwenden.
 
 Verwenden Sie dieses Beispiel, um ein Runbook mit dem Namen **Stop-AzureVmInResponsetoVMAlert** zu erstellen. Sie können das PowerShell-Skript ändern und mit vielen verschiedenen Ressourcen nutzen.
 

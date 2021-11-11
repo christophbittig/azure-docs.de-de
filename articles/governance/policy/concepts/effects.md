@@ -3,12 +3,12 @@ title: Funktionsweise von Auswirkungen
 description: Die Azure Policy-Definitionen haben verschiedene Auswirkungen, mit denen festgelegt wird, wie die Konformität verwaltet und gemeldet wird.
 ms.date: 09/01/2021
 ms.topic: conceptual
-ms.openlocfilehash: bca5d7535cbbcbf2fc7b6f54e853872c788c723d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: bbcdce83fad513c85ab45f4c38c936b345828ef3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124792275"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131449676"
 ---
 # <a name="understand-azure-policy-effects"></a>Grundlegendes zu Azure Policy-Auswirkungen
 
@@ -198,7 +198,7 @@ Die **details**-Eigenschaft der Auswirkung „AuditIfNotExists“ umfasst die fo
   - Legt den Bereich fest, aus dem die entsprechende Ressource für den Abgleich abgerufen werden soll.
   - Diese Einstellung ist nicht anwendbar, wenn **type** eine Ressource unterhalb der **if**-Bedingungsressource angibt.
   - Für _ResourceGroup_ bedeutet dies eine Beschränkung auf die Ressourcengruppe der **if** -Bedingungsressource oder die in **ResourceGroupName** angegebene Ressourcengruppe.
-  - Für _Subscription_ wird das gesamte Abonnement nach der entsprechenden Ressource abgefragt.
+  - Für _Subscription_ wird das gesamte Abonnement nach der entsprechenden Ressource abgefragt. Der Zuweisungsbereich sollte für die ordnungsgemäße Auswertung auf das Abonnement oder höher festgelegt werden. 
   - Die Standardeinstellung ist _ResourceGroup_.
 - **EvaluationDelay** (optional)
   - Hiermit wird angegeben, wann die Existenz der zugehörigen Ressourcen ausgewertet werden soll. Die Verzögerung wird nur bei Auswertungen verwendet, die das Ergebnis einer Erstell- oder Aktualisierungsanforderung für die Ressource sind.
@@ -353,7 +353,7 @@ Die **details**-Eigenschaft der Auswirkung „DeployIfNotExists“ umfasst alle 
   - Legt den Bereich fest, aus dem die entsprechende Ressource für den Abgleich abgerufen werden soll.
   - Diese Einstellung ist nicht anwendbar, wenn **type** eine Ressource unterhalb der **if**-Bedingungsressource angibt.
   - Für _ResourceGroup_ bedeutet dies eine Beschränkung auf die Ressourcengruppe der **if** -Bedingungsressource oder die in **ResourceGroupName** angegebene Ressourcengruppe.
-  - Für _Subscription_ wird das gesamte Abonnement nach der entsprechenden Ressource abgefragt.
+  - Für _Subscription_ wird das gesamte Abonnement nach der entsprechenden Ressource abgefragt. Der Zuweisungsbereich sollte für die ordnungsgemäße Auswertung auf das Abonnement oder höher festgelegt werden. 
   - Die Standardeinstellung ist _ResourceGroup_.
 - **EvaluationDelay** (optional)
   - Hiermit wird angegeben, wann die Existenz der zugehörigen Ressourcen ausgewertet werden soll. Die Verzögerung wird nur bei Auswertungen verwendet, die das Ergebnis einer Erstell- oder Aktualisierungsanforderung für die Ressource sind.

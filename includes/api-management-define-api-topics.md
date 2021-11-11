@@ -1,15 +1,15 @@
 ---
-author: vladvino
+author: adrianhall
 ms.service: api-management
 ms.topic: include
-ms.date: 03/18/2021
-ms.author: vlvinogr
-ms.openlocfilehash: ba3bb99854fe1ffe1493f644e3a263403970587d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/03/2021
+ms.author: adhal
+ms.openlocfilehash: 9bfa785ac6049f4896127a75d52d6a1352346b5a
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131048948"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131570902"
 ---
 ## <a name="related-topics"></a>Zugehörige Themen
 
@@ -18,6 +18,7 @@ ms.locfileid: "131048948"
 * [Importieren einer SOAP-API](../articles/api-management/import-soap-api.md)
 * [Importieren einer SOAP-API und Konvertieren dieser in REST](../articles/api-management/restify-soap-api.md)
 * [Importieren einer App Service-API](../articles/api-management/import-app-service-as-api.md)
+* [Importieren einer Container-App-API](../articles/api-management/import-container-app-with-oas.md)
 * [Importieren einer WebSocket-API](../articles/api-management/websocket-api.md)
 * [Importieren einer GraphQL-API (Vorschauversion)](../articles/api-management/graphql-api.md)
 * [Importieren einer Azure Functions-App als API](../articles/api-management/import-function-app-as-api.md)

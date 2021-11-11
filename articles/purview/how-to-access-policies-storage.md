@@ -8,12 +8,12 @@ ms.subservice: purview-data-policies
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: references_regions, ignite-fall-2021
-ms.openlocfilehash: cbd6214687e23b90d0c289dd5a34d9410b7f092a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ea5285c5fd29bfe34f97c87b2ac0c9bd7a5502a9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131021358"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131425233"
 ---
 # <a name="dataset-provisioning-by-data-owner-for-azure-storage"></a>Datensatz-Bereitstellung durch Datenbesitzer für Azure Storage
 
@@ -25,18 +25,23 @@ Die Purview-Richtlinienerstellung unterstützt die folgenden Funktionen:
 > [!IMPORTANT]
 > Diese Funktionen befinden sich derzeit in der Vorschau. Diese Vorschauversion wird ohne Servicelevelvereinbarung bereitgestellt und sollte nicht für Produktionsworkloads verwendet werden. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
+
+
 ## <a name="prerequisites"></a>Voraussetzungen
+
+### <a name="opt-in-to-participate-in-azure-purview-data-use-policy-preview"></a>Anmelden für die Teilnahme an der Vorschau der Azure Purview-Datennutzungsrichtlinie
+Diese Funktion befindet sich derzeit in der Vorschauphase, sodass Sie sich für [Teilnahme an der Vorschau der Purview-Datennutzungsrichtlinie](https://aka.ms/opt-in-data-use-policy) anmelden müssen.
 
 ### <a name="provision-new-accounts-in-an-isolated-test-subscription"></a>Bereitstellen neuer Konten in einem isolierten Testabonnement
 Führen Sie die folgenden Schritte aus, um ein neues Azure Purview-Konto und ein neues Azure Storage-Konto in einem isolierten Testabonnement zu erstellen. Aktivieren Sie dann die Zugriffsrichtlinienfunktionalität in diesen Konten.
 
-## <a name="supported-regions"></a>Unterstützte Regionen
+### <a name="supported-regions"></a>Unterstützte Regionen
 
 > [!IMPORTANT]
 > 1. Die Zugriffsrichtlinienfunktion ist nur für neue Azure Purview- und Azure Storage-Konten verfügbar.
 > 2. Dieses Feature kann nur in den unten aufgeführten Regionen verwendet werden, in denen die Zugriffsrichtlinienfunktionalität bereitgestellt wird.
 
-### <a name="azure-purview"></a>Azure Purview 
+#### <a name="azure-purview"></a>Azure Purview 
 
 -   Nordeuropa
 -   Europa, Westen
@@ -51,7 +56,7 @@ Führen Sie die folgenden Schritte aus, um ein neues Azure Purview-Konto und ein
 -   Frankreich, Mitte
 
 
-### <a name="azure-storage"></a>Azure Storage
+#### <a name="azure-storage"></a>Azure Storage
 
 -   Frankreich, Mitte
 -   Kanada, Mitte
@@ -186,7 +191,6 @@ Die Schritte zum Veröffentlichen einer Richtlinie lauten wie folgt
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Lesen Sie diese Artikel, um die Konzepte im Zusammenhang mit Zugriffsrichtlinien zu verstehen:
+Lesen Sie diesen Artikel, um die Konzepte im Zusammenhang mit Azure Purview zu verstehen:
 
-* [Konzepte für Azure Purview-Zugriffsrichtlinien](concept-data-policies.md)
-* [Konzepte für Azure Purview Self-Service-Datenermittlung und -Zugriff](concept-self-service.md)
+* [Übersicht über Azure Purview](overview.md)

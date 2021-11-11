@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: d06a4af7d9280eb3bab076ff103968d94fd38839
-ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+ms.openlocfilehash: dcefed148b8def1b40d824554852c230fcbdaaad
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123215405"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130242253"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>Schnellstart: Bereitstellen Ihres ersten IoT Edge-Moduls auf einem virtuellen Linux-Gerät
 
@@ -102,7 +102,7 @@ Bei der Konfiguration der Runtime geben Sie eine Geräte-Verbindungszeichenfolge
 
 ### <a name="deploy-the-iot-edge-device"></a>Bereitstellen des IoT Edge-Geräts
 
-In diesem Abschnitt wird eine Azure Resource Manager-Vorlage verwendet, um einen neuen virtuellen Computer zu erstellen und darauf die IoT Edge-Runtime zu installieren. Falls Sie stattdessen Ihr eigenes Linux-Gerät verwenden möchten, können Sie die Installationsschritte unter [Installieren der Azure IoT Edge-Runtime](how-to-install-iot-edge.md) ausführen und dann zu dieser Schnellstartanleitung zurückkehren.
+In diesem Abschnitt wird eine Azure Resource Manager-Vorlage verwendet, um einen neuen virtuellen Computer zu erstellen und darauf die IoT Edge-Runtime zu installieren. Falls Sie stattdessen Ihr eigenes Linux-Gerät verwenden möchten, können Sie die Installationsschritte unter [Manuelles Bereitstellen eines einzelnen IoT Edge-Geräts unter Linux](how-to-provision-single-device-linux-symmetric.md) ausführen und dann zu dieser Schnellstartanleitung zurückkehren.
 
 <!-- 1.1 -->
 :::moniker range="iotedge-2018-06"

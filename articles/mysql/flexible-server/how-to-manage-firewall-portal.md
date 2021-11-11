@@ -6,19 +6,17 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: 426a83836a16fd3d4a403b3cda015dd5f49af22e
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: fa41da095b196f13c423b56a0411e6b67dab24a2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346450"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131442223"
 ---
-# <a name="create-and-manage-firewall-rules-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>Erstellen und Verwalten von Firewallregeln für Azure Database for MySQL – Flexible Server mit Azure-Portal
+# <a name="manage-firewall-rules-for-azure-database-for-mysql---flexible-server-using-the-azure-portal"></a>Verwalten von Firewallregeln für Azure Database for MySQL – Flexible Server mit Azure-Portal
 
-[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
+[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-> [!IMPORTANT]
-> Azure Database for MySQL Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
 
 Azure Database for MySQL Flexible Server unterstützt zwei Arten von sich gegenseitig ausschließenden Netzwerkverbindungsmethoden, mit denen eine Verbindung mit Ihrem flexiblen Server hergestellt werden kann. Die zwei Optionen sind:
 

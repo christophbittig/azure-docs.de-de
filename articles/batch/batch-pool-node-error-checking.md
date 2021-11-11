@@ -5,12 +5,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 03/15/2021
 ms.topic: how-to
-ms.openlocfilehash: 86ea4ce4d596875e455d7b86250882713a14337f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 295877bd894d9a91ba310d133c670a40db5f10ec
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "104720150"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131454939"
 ---
 # <a name="check-for-pool-and-node-errors"></a>Suchen nach Pool- und Knotenfehlern
 
@@ -40,7 +40,7 @@ Häufige Gründe für Größenänderungsfehler sind:
 - Nicht genügend Ressourcen, wenn sich ein [Pool in einem virtuellen Netzwerk](./batch-virtual-network.md) befindet
   - Sie können Ressourcen, wie z. B. Lastenausgleichsmodule, öffentliche IP-Adressen und Netzwerksicherheitsgruppen, im selben Abonnement wie das Azure Batch-Konto erstellen. Vergewissern Sie sich, dass die Abonnementkontingente für diese Ressourcen ausreichend sind.
 - Große Pools mit benutzerdefinierten VM-Images
-  - Die Zuordnung großer Pools, die benutzerdefinierte Images verwenden, kann länger dauern und zu Timeouts bei Größenänderungen führen.  Empfehlungen zu Grenzwerten und zur Konfiguration finden Sie unter [Erstellen eines Pools mit Shared Image Gallery](batch-sig-images.md).
+  - Die Zuordnung großer Pools, die benutzerdefinierte Images verwenden, kann länger dauern und zu Timeouts bei Größenänderungen führen.  Empfehlungen zu Grenzwerten und zur Konfiguration finden Sie unter [Erstellen eines Pools mit Azure Compute Gallery](batch-sig-images.md).
 
 ### <a name="automatic-scaling-failures"></a>Fehler bei der automatischen Skalierung
 

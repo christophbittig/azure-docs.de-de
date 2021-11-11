@@ -3,12 +3,12 @@ title: Sprache „Bicep“ für das Bereitstellen von Azure-Ressourcen
 description: Hier wird die Sprache „Bicep“ für das Bereitstellen der Infrastruktur in Azure beschrieben. Bei der Entwicklung von Vorlagen vereinfacht sie im Vergleich zur Verwendung von JSON die Erstellung.
 ms.topic: conceptual
 ms.date: 09/09/2021
-ms.openlocfilehash: ace417bb8a71a277bbcb4ef178c6aaf24b97533b
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 565f849edafaa6c083a1e7d21bb67f8b3ab8453e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124831939"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131443488"
 ---
 # <a name="what-is-bicep"></a>Was ist Bicep?
 
@@ -109,6 +109,10 @@ Damit dieses Ziel erreicht werden kann, ist die Verwendung einiger APIs außerha
 Diese funktionieren weiterhin genau so wie zuvor. Sie müssen keine Änderungen vornehmen. Die JSON-Sprache wird für zugrunde liegende ARM-Vorlagen weiterhin unterstütz. Bicep-Dateien werden in JSON kompiliert, und dieser JSON-Code wird für die Bereitstellung an Azure gesendet.
 
 Sie können die [JSON-Dateien umgehend in Bicep dekompilieren](./decompile.md).
+
+**Kann ich Bicep zum Bereitstellen in Azure Stack Hub verwenden?**
+
+Ja, Sie können Bicep für Ihre Azure Stack Hub-Bereitstellungen verwenden, aber beachten Sie dabei, dass Bicep möglicherweise Typen anzeigt, die in Azure Stack Hub noch nicht verfügbar sind. Sie können eine Reihe von Beispielen im [GitHub-Repository mit Azure Stack Hub-Schnellstartvorlagen](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/Bicep) anzeigen. 
 
 ## <a name="known-limitations"></a>Bekannte Einschränkungen
 

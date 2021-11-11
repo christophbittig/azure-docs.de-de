@@ -5,15 +5,15 @@ services: app-service
 author: craigshoemaker
 ms.service: app-service
 ms.topic: conceptual
-ms.date: 09/16/2021
+ms.date: 11/02/2021
 ms.author: cshoe
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: d33c3d6687179e734f82f0b109bb0fb9b45be205
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: b02d4d06b855229f41a0bae0b04d1729a29e4e49
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095125"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131579006"
 ---
 # <a name="set-scaling-rules-in-azure-container-apps"></a>Festlegen von Skalierungsregeln in Azure Container Apps
 
@@ -166,7 +166,7 @@ Das folgende Beispiel zeigt das Erstellen einer CPU-Skalierungsregel.
 
 ## <a name="memory"></a>Arbeitsspeicher
 
-Mithilfe von CPU-Skalierung kann Ihre App je nach Auslastung der CPU horizontal hoch- oder abskalieren. Bei der CPU-Skalierung kann Ihre Container-App nicht auf 0 skaliert werden. Weitere Informationen zu diesem Skalierer finden Sie unter [KEDA-Speicherskalierer](https://keda.sh/docs/scalers/memory/).
+Mithilfe der Skalierung des Arbeitsspeichers kann Ihre App je nach Auslastung des Arbeitsspeichers horizontal hoch- oder abskalieren. Bei der Skalierung des Arbeitsspeichers kann Ihre Container-App nicht auf 0 skaliert werden. Weitere Informationen zu diesem Skalierer finden Sie unter [KEDA-Speicherskalierer](https://keda.sh/docs/scalers/memory/).
 
 Das folgende Beispiel zeigt das Erstellen einer Arbeitsspeicher-Skalierungsregel.
 

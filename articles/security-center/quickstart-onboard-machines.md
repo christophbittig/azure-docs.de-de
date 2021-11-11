@@ -8,13 +8,12 @@ ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
 zone_pivot_groups: non-azure-machines
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 0e5c44033a5f03726dc7e1f1129287edef5350aa
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 390a628640389b2d2b89afbf36b4aab41f1eb115
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131014376"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131422309"
 ---
 # <a name="connect-your-non-azure-machines-to-microsoft-defender-for-cloud"></a>Verbinden von Nicht-Azure-Computern mit Microsoft Defender für Cloud
 
@@ -28,6 +27,9 @@ Sie können Azure-fremde Computer auf eine der folgenden Arten verbinden:
 - Auf den Defender für Cloud-Seiten im Azure-Portal (**Erste Schritte** und **Bestand**)
 
 Beide Methoden werden auf dieser Seite beschrieben.
+
+> [!TIP]
+> Wenn Sie Computer von anderen Cloudanbietern verbinden möchten, lesen Sie [Verbinden Ihrer AWS-Konten](quickstart-onboard-aws.md) oder [Verbinden Ihrer GCP-Konten](quickstart-onboard-gcp.md).
 
 ::: zone pivot="azure-arc"
 

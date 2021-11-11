@@ -7,12 +7,12 @@ ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/06/2021
-ms.openlocfilehash: 7833dcf8fbe2b6460346310a4d094c7bb5d606c4
-ms.sourcegitcommit: d63f15674f74d908f4017176f8eddf0283f3fac8
+ms.openlocfilehash: 057c06b2d3b83b49448e2ec6edd0b1140a324375
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/07/2021
-ms.locfileid: "106581578"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131422518"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>Entwurfsmuster für mehrinstanzenfähige SaaS-Anwendungen und die kognitive Azure-Suche
 
@@ -104,7 +104,7 @@ Die kognitive Azure-Suche ermöglicht die Skalierung von einzelnen Indizes sowie
 
 Wenn die Gesamtanzahl der Indizes für einen einzelnen Dienst zu groß wird, muss ein anderer Dienst bereitgestellt werden, um die neuen Mandanten zu unterstützen. Wenn Indizes zwischen Suchdiensten verschoben werden müssen, weil neue Dienste hinzugefügt werden, müssen die Daten aus dem Index manuell in einen anderen Index kopiert werden, da das Verschieben eines Index in der kognitiven Azure-Suche nicht zulässig ist.
 
-## <a name="model-2-once-service-per-tenant"></a>Modell 2: Ein Dienst pro Mandant
+## <a name="model-2-one-service-per-tenant"></a>Modell 2: Ein Dienst pro Mandant
 
 :::image type="content" source="media/search-modeling-multitenant-saas-applications/azure-search-service-per-tenant.png" alt-text="Eine Abbildung des Dienst-pro-Mandant-Modells" border="false":::
 

@@ -8,12 +8,12 @@ author: shashankbarsin
 ms.author: shasb
 description: Beschreibung des Arc-Validierungsprogramms für Kubernetes-Distributionen
 keywords: Kubernetes, Arc, Azure, K8s, Validierung
-ms.openlocfilehash: f5057a7785ec77109d8fe8efb44e1015976786c8
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 53000b0099ef31bd31346c22d759d45321ae4369
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128672854"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131423886"
 ---
 # <a name="azure-arc-enabled-kubernetes-validation"></a>Validierung für Kubernetes mit Azure Arc-Unterstützung
 
@@ -38,6 +38,7 @@ Die folgenden Anbieter und ihre entsprechenden Kubernetes-Distributionen haben d
 | SUSE Rancher      | [Rancher Kubernetes Engine](https://rancher.com/products/rke/) | RKE CLI-Version: [v1.2.4](https://github.com/rancher/rke/releases/tag/v1.2.4); Kubernetes-Versionen: [1.19.6](https://github.com/kubernetes/kubernetes/releases/tag/v1.19.6)), [1.18.14](https://github.com/kubernetes/kubernetes/releases/tag/v1.18.14)), [1.17.16](https://github.com/kubernetes/kubernetes/releases/tag/v1.17.16))  |
 | Nutanix      | [Karbon](https://www.nutanix.com/products/karbon)    | Version 2.2.1 |
 | Platform9      | [Platform9 Managed Kubernetes (PMK)](https://platform9.com/managed-kubernetes/)    | PMK Version [5.3.0](https://platform9.com/docs/kubernetes/release-notes#platform9-managed-kubernetes-version-53-release-notes); Kubernetes-Versionen: v1.20.5, v1.19.6, v1.18.10 |
+| Cisco | [Intersight Kubernetes Service (IKS)](https://www.cisco.com/c/en/us/products/cloud-systems-management/cloud-operations/intersight-kubernetes-service.html)-Distribution | Upstream K8s-Version: 1.19.5 |
 
 Das Azure Arc-Team führte auch die Konformitätstests durch und überprüfte Kubernetes-Szenarien mit Azure Arc-Aktivierung auf den folgenden öffentlichen Cloudanbietern:
 

@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: routlaw
-ms.openlocfilehash: f61f08f32ebb2b721846d3c3017405af99421104
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b0abb7a982cc3be95c92035ffffb7c3a4778ab40
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "95542217"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131457315"
 ---
 # <a name="using-nodejs-modules-with-azure-applications"></a>Verwenden von Node.js-Modulen mit Azure-Anwendungen
 Dieses Dokument bietet Anweisungen zur Verwendung von Node.js-Modulen mit Anwendungen, die auf Azure gehostet werden. Sie erfahren, wie Sie sicherstellen können, dass eine Anwendung eine bestimmte Version eines Moduls sowie systemeigene Module von Azure verwendet.
@@ -70,7 +70,7 @@ Ein potenzielles Problem bei der Datei **package.json** besteht darin, dass nur 
 >
 >
 
-### <a name="using-a-npm-shrinkwrapjson-file"></a>Verwenden einer npm-shrinkwrap.json-Datei
+### <a name="using-an-npm-shrinkwrapjson-file"></a>Verwenden einer npm-shrinkwrap.json-Datei
 Die Datei **npm-shrinkwrap.json** ist ein Versuch, die Modulversionsbegrenzungen der Datei **package.json** zu umgehen. Während die Datei **package.json** nur Versionen der Module auf oberster Ebene enthält, enthält die Datei **npm-shrinkwrap.json** die Versionsanforderungen für die vollständige Modulabhängigkeitskette.
 
 Wenn die Anwendung für die Produktion bereit ist, können Sie die Versionsanforderungen sperren und eine Datei **npm-shrinkwrap.json** über den Befehl **npm shrinkwrap** erstellen. Dieser Befehl verwendet die derzeit im Ordner **node\_modules** installierten Versionen und speichert sie in der Datei **npm-shrinkwrap.json**. Nachdem die Anwendung zur Hostingumgebung bereitgestellt wurde, wird der Befehl **npm install** verwendet, um die Datei **npm-shrinkwrap.json** zu analysieren und alle aufgelisteten Abhängigkeiten zu installieren. Weitere Informationen finden Sie unter [npm-shrinkwrap](https://docs.npmjs.com/cli/shrinkwrap).

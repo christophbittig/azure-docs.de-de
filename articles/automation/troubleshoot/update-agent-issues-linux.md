@@ -2,15 +2,15 @@
 title: Beheben von Problemen mit dem Linux Update-Agent in Azure Automation
 description: In diesem Artikel erfahren Sie, wie Sie Fehler und Probleme mit dem Linux Update-Agent in der Updateverwaltung beheben können.
 services: automation
-ms.date: 01/25/2021
+ms.date: 11/01/2021
 ms.topic: troubleshooting
 ms.subservice: update-management
-ms.openlocfilehash: 9fdfa1541e928491aecc039d51338f7ef1f1ef3d
-ms.sourcegitcommit: 2d412ea97cad0a2f66c434794429ea80da9d65aa
+ms.openlocfilehash: 99758393b3d6545d534563a67f1346f7622b56db
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/14/2021
-ms.locfileid: "122356334"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131477096"
 ---
 # <a name="troubleshoot-linux-update-agent-issues"></a>Beheben von Problemen mit dem Linux Update-Agent
 
@@ -49,14 +49,7 @@ Wenn die Überprüfungen abgeschlossen sind, werden die Ergebnisse im Fenster zu
 
 ### <a name="operating-system"></a>Betriebssystem
 
-Die Betriebssystemprüfung untersucht, ob der Hybrid Runbook Worker unter einem der folgenden Betriebssysteme ausgeführt wird:
-
-|Betriebssystem  |Notizen  |
-|---------|---------|
-|CentOS 6 (x86/x64) und 7 (x64)      | Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen. Für klassifizierungsbasiertes Patchen muss „yum“ Sicherheitsdaten zurückgeben, über die CentOS nicht standardmäßig verfügt.         |
-|Red Hat Enterprise 6 (x86/x64) und 7 (x64)     | Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen.        |
-|SUSE Linux Enterprise Server 11 (x86/x64) und 12 (x64)     | Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen.        |
-|Ubuntu 14.04 LTS, 16.04 LTS und 18.04 LTS (x86/x64)      |Für Linux-Agents muss Zugriff auf ein Updaterepository bestehen.         |
+Die Betriebssystemprüfung verifiziert, ob der Hybrid Runbook Worker unter einem der [unterstützten Betriebssysteme](../update-management/operating-system-requirements.md#supported-operating-systems) ausgeführt wird.
 
 ## <a name="monitoring-agent-service-health-checks"></a>Integritätsüberprüfungen für den Monitoring Agent-Dienst
 
@@ -124,7 +117,13 @@ Durch diese Überprüfung wird sichergestellt, dass der Computer Zugriff auf die
 
 ## <a name="troubleshoot-offline"></a><a name="troubleshoot-offline"></a>Offlineproblembehandlung
 
-Sie können die Problembehandlung offline auf einem Hybrid Runbook Worker ausführen, indem Sie das Skript lokal ausführen. Das Python-Skript, [UM_Linux_Troubleshooter_Offline.py](https://github.com/Azure/updatemanagement/blob/main/UM_Linux_Troubleshooter_Offline.py), finden Sie auf GitHub. Hier sehen Sie eine Beispielausgabe dieses Skripts:
+Sie können die Problembehandlung offline auf einem Hybrid Runbook Worker ausführen, indem Sie das Skript lokal ausführen. Das Python-Skript, [UM_Linux_Troubleshooter_Offline.py](https://github.com/Azure/updatemanagement/blob/main/UM_Linux_Troubleshooter_Offline.py), finden Sie auf GitHub.
+
+> [!NOTE]
+> Die aktuelle Version des Problembehandlungsskripts unterstützt Ubuntu 20.04 nicht.
+>
+
+Hier sehen Sie eine Beispielausgabe dieses Skripts:
 
 ```output
 Debug: Machine Information:   Static hostname: LinuxVM2

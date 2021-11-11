@@ -1,18 +1,18 @@
 ---
-title: Verwenden einer benutzerseitig zugewiesenen verwalteten Identität für ein Azure Automation-Konto (Vorschau)
+title: Entfernen einer benutzerseitig zugewiesenen verwalteten Identität für ein Azure Automation-Konto
 description: In diesem Artikel wird das Entfernen einer benutzerseitig zugewiesenen verwalteten Identität für ein Azure Automation-Konto erläutert.
 services: automation
 ms.subservice: process-automation
-ms.date: 07/24/2021
+ms.date: 10/26/2021
 ms.topic: conceptual
-ms.openlocfilehash: 2f5aba42974c34f9d6799f3965848bdd0ca3787c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 11db735a21e4d4007c35f1a82f1e5dfadb377fd1
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128635164"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131432451"
 ---
-# <a name="remove-user-assigned-managed-identity-for-azure-automation-account-preview"></a>Verwenden einer benutzerseitig zugewiesenen verwalteten Identität für ein Azure Automation-Konto (Vorschau)
+# <a name="remove-user-assigned-managed-identity-for-azure-automation-account"></a>Entfernen einer benutzerseitig zugewiesenen verwalteten Identität für ein Azure Automation-Konto
 
 Sie können eine benutzerseitig zugewiesene verwaltete Identität in Azure Automation über das Azure-Portal, über PowerShell, über die Azure REST-API oder über eine ARM-Vorlage (Azure Resource Manager) entfernen.
 
@@ -233,6 +233,6 @@ Verwenden Sie zur Überprüfung das Cmdlet [Get-AzAutomationAccount](/powershell
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zum Aktivieren der verwalteten Identitäten in Azure Automation finden Sie unter [Aktivieren und Verwenden der verwalteten Identität für Automation (Vorschau)](enable-managed-identity-for-automation.md).
+- Weitere Informationen zum Aktivieren von verwalteten Identitäten in Azure Automation finden Sie unter [Aktivieren und Verwenden der verwalteten Identität für Automation](enable-managed-identity-for-automation.md).
 
 - Eine Übersicht über die Automation-Kontosicherheit finden Sie unter [Übersicht über die Automation-Kontoauthentifizierung.](automation-security-overview.md)

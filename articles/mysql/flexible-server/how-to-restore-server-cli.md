@@ -6,19 +6,16 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 04/01/2021
-ms.openlocfilehash: 5239812bdd916b19571059aa2641eb738ef5ba09
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 46602d13441fd972f3d292d0bfd48b9fd2919231
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130249455"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131467984"
 ---
-# <a name="point-in-time-restore-of-a-azure-database-for-mysql---flexible-server-with-azure-cli"></a>Zeitpunktwiederherstellung von Azure Database for MySQL – Flexible Server mit Azure CLI
+# <a name="point-in-time-restore-of-a-azure-database-for-mysql-flexible-server-with-azure-cli"></a>Zeitpunktwiederherstellung eines Azure Database for MySQL-Flexible Servers mit Azure CLI
 
 [[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
-> [!IMPORTANT]
-> Azure Database for MySQL Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
 
 In diesem Artikel wird Schritt für Schritt beschrieben, wie Sie Zeitpunktwiederherstellungen in einer Flexible Server-Instanz mithilfe von Sicherungen durchführen.
 

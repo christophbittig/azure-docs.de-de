@@ -5,12 +5,12 @@ author: mumian
 ms.author: jgao
 ms.topic: conceptual
 ms.date: 07/30/2021
-ms.openlocfilehash: be7e52cb093eb9920be5b6e8e9971b7f882f7f06
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 0c2f154a0c45dd46a56a4321aa67a75e2263b317
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124793833"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130219600"
 ---
 # <a name="conditional-deployment-in-bicep"></a>Bedingte Bereitstellung in Bicep
 
@@ -46,7 +46,7 @@ module dnsZone 'dnszones.bicep' = if (deployZone) {
 }
 ```
 
-Bedingungen können mit Abhängigkeitsdeklarationen verwendet werden. Bei [expliziten Abhängigkeiten](resource-declaration.md#set-resource-dependencies) entfernt Azure Resource Manager sie automatisch aus den erforderlichen Abhängigkeiten, wenn die Ressource nicht bereitgestellt wird. Bei impliziten Abhängigkeiten kann zwar auf eine Eigenschaft einer bedingten Ressource verwiesen werden, dies kann allerdings einen Bereitstellungsfehler zur Folge haben.
+Bedingungen können mit Abhängigkeitsdeklarationen verwendet werden. Bei [expliziten Abhängigkeiten](resource-declaration.md#dependencies) entfernt Azure Resource Manager sie automatisch aus den erforderlichen Abhängigkeiten, wenn die Ressource nicht bereitgestellt wird. Bei impliziten Abhängigkeiten kann zwar auf eine Eigenschaft einer bedingten Ressource verwiesen werden, dies kann allerdings einen Bereitstellungsfehler zur Folge haben.
 
 ## <a name="new-or-existing-resource"></a>Neue oder vorhandene Ressource
 
@@ -113,4 +113,4 @@ output mgmtStatus string = ((!empty(logAnalytics)) ? 'Enabled monitoring for VM!
 
 * Ein Microsoft Learn-Modul zu Bedingungen und Schleifen finden Sie unter [Erstellen flexibler Bicep-Vorlagen mithilfe von Bedingungen und Schleifen](/learn/modules/build-flexible-bicep-templates-conditions-loops/).
 * Empfehlungen zum Erstellen von Bicep-Dateien finden Sie unter [Bewährte Methoden für Bicep](best-practices.md).
-* Informationen, wie mehrere Instanzen einer Ressource erstellt werden, finden Sie unter [Ressourceniteration in Bicep](loop-resources.md).
+* Informationen zum Erstellen mehrerer Instanzen einer Ressource finden Sie unter [Iterative Schleifen in Bicep](loops.md).

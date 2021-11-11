@@ -3,18 +3,17 @@ title: Verwalten und Finden von Azure-Blobdaten mit Blobindextags
 description: Erfahren Sie, wie Sie Blobindextags verwenden, um Blobobjekte zu kategorisieren, zu verwalten und abzufragen.
 author: normesta
 ms.author: normesta
-ms.date: 08/25/2021
+ms.date: 11/01/2021
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.reviewer: klaasl
 ms.custom: references_regions, devx-track-azurepowershell
-ms.openlocfilehash: fa2284e03c8d69bacb40a2fe99d3c3cb10a73828
-ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
+ms.openlocfilehash: dfa77490b95f67e7c75e658211602fe5a27c1c57
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129154639"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131441417"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-tags"></a>Verwalten und Finden von Azure-Blobdaten mit Blobindextags
 
@@ -263,21 +262,32 @@ Für Vorgänge von Indextags sind zusätzliche Berechtigungen erforderlich, die 
 
 Benutzern, die eine [Shared Access Signature (SAS)](../common/storage-sas-overview.md) verwenden, können bereichsbezogene Berechtigungen für das Arbeiten mit Blobindextags erteilt werden.
 
-#### <a name="blob-sas"></a>Blob-SAS
+#### <a name="service-sas-for-a-blob"></a>Dienst-SAS für ein Blob
 
-Die folgenden Berechtigungen können in einer Blob-SAS erteilt werden, um den Zugriff auf Blobindextags zuzulassen. Lese- und Schreibberechtigungen für Blobs allein reichen nicht aus, um die zugehörigen Indextags lesen oder schreiben zu können.
+Die folgenden Berechtigungen können in einer Dienst-SAS für ein Blob erteilt werden, um den Zugriff auf Blobindextags zu gestatten. Die Lese- (`r`) und Schreibberechtigungen (`w`) für Blobs allein reichen nicht aus, um die zugehörigen Indextags lesen oder schreiben zu können.
 
 | Berechtigung | URI-Symbol | Zulässige Vorgänge                |
 |------------|------------|-----------------------------------|
 | Indextags |     t      | Abrufen und Festlegen von Indextags für ein Blob |
 
-#### <a name="container-sas"></a>Container-SAS
+#### <a name="service-sas-for-a-container"></a>Dienst-SAS für einen Container
 
-Die folgenden Berechtigungen können in einer Container-SAS erteilt werden, um das Filtern anhand von Blobtags zuzulassen. Die Berechtigung `Blob List` reicht nicht aus, um Blobs nach ihren Indextags filtern zu können.
+Die folgenden Berechtigungen können in einer Dienst-SAS für einen Container erteilt werden, um das Filtern anhand von Blobtags zu gestatten. Die Berechtigung zum Auflisten (`i`) von Blobs reicht nicht aus, um Blobs nach ihren Indextags filtern zu können.
 
 | Berechtigung | URI-Symbol | Zulässige Vorgänge         |
 |------------|------------|----------------------------|
 | Indextags |     f      | Suchen nach Blobs anhand von Indextags |
+
+#### <a name="account-sas"></a>Konto-SAS
+
+Die folgenden Berechtigungen können in einer Konto-SAS erteilt werden, um den Zugriff auf Blobindextags und das Filtern nach Blobtags zuzulassen. 
+
+| Berechtigung | URI-Symbol | Zulässige Vorgänge                |
+|------------|------------|-----------------------------------|
+| Indextags |     t      | Abrufen und Festlegen von Indextags für ein Blob |
+| Indextags |     f      | Suchen nach Blobs anhand von Indextags |
+
+Die Lese- (`r`) und Schreibberechtigungen (`w`) des Blobs allein reichen nicht aus, um das Lesen oder Schreiben von Indextags zu ermöglichen, und die Auflistungsberechtigung (`i`) reicht nicht aus, um das Filtern von Blobs nach ihren Indextags zu ermöglichen.
 
 ## <a name="choosing-between-metadata-and-blob-index-tags"></a>Unterschiede zwischen Metadaten und Blobindextags
 
@@ -307,7 +317,7 @@ Ihnen wird die durchschnittliche monatliche Anzahl von Indextags innerhalb eines
 
 ## <a name="feature-support"></a>Featureunterstützung
 
-In der folgenden Tabelle wird gezeigt, wie dieses Feature in Ihrem Konto unterstützt wird und welche Auswirkungen die Aktivierung bestimmter Funktionen auf den Support hat.
+In der folgenden Tabelle wird gezeigt, wie dieses Feature in Ihrem Konto unterstützt wird und welche Auswirkungen die Aktivierung bestimmter Funktionen auf die Unterstützung hat.
 
 | Speicherkontotyp                | Blob Storage (Standardunterstützung)   | Data Lake Storage Gen2 <sup>1</sup>                        | NFS 3.0 <sup>1</sup>
 |-----------------------------|---------------------------------|------------------------------------|--------------------------------------------------|

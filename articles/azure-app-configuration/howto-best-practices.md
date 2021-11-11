@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: alkemper
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: d56760b85bfca74cb18481ebf08ece2e4255d389
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: e75fb11379ccbdff90d1acd1a3bce36b62bd8a1d
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130178009"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130250861"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Bewährte Methoden für Azure App Configuration
 
@@ -61,7 +61,7 @@ Unter [Verwenden von Bezeichnungen zum Aktivieren verschiedener Konfigurationen 
 
 App Configuration dient zum Speichern jeglicher Konfigurationsdaten, die Sie normalerweise in Konfigurationsdateien oder Umgebungsvariablen speichern würden. Einige Datentypen eignen sich jedoch möglicherweise besser für die Speicherung in anderen Quellen. Speichern Sie beispielsweise Geheimnisse in Key Vault, Dateien in Azure Storage, Mitgliedschaftsinformationen in Azure AD-Gruppen oder Kundenlisten in einer Datenbank.
 
-Sie können dennoch die Vorteile von App Configuration nutzen, indem Sie einen Verweis auf externe Daten in einem Schlüsselwert speichern. Wenn Ihre Anwendung einen Verweis liest, laden Sie die Daten aus der Quelle, auf die verwiesen wird. Falls Sie den Speicherort Ihrer externen Daten ändern, müssen Sie den Verweis nur in App Configuration aktualisieren, anstatt Ihre gesamte Anwendung zu aktualisieren und erneut bereitzustellen.
+Sie können dennoch die Vorteile von App Configuration nutzen, indem Sie einen Verweis auf externe Daten in einem Schlüsselwert speichern. Sie können den [Inhaltstyp verwenden](./concept-key-value.md#use-content-type), um jede Datenquelle zu unterscheiden. Wenn Ihre Anwendung einen Verweis liest, laden Sie die Daten aus der Quelle, auf die verwiesen wird. Falls Sie den Speicherort Ihrer externen Daten ändern, müssen Sie den Verweis nur in App Configuration aktualisieren, anstatt Ihre gesamte Anwendung zu aktualisieren und erneut bereitzustellen.
 
 Das [Key Vault](use-key-vault-references-dotnet-core.md)-Verweisfeature von App Configuration ist in diesem Fall ein Beispiel. Es gestattet die Aktualisierung der für eine Anwendung erforderlichen Geheimnisse nach Bedarf, während die zugrunde liegenden Geheimnisse selbst in Key Vault verbleiben.
 
@@ -88,7 +88,9 @@ Sie können Web-Apps oder Azure Functions mit einer der folgenden Methoden Zugri
 
 * Überwachen Sie eher einen einzelnen *Sentinel-Schlüssel*, anstatt einzelne Schlüssel zu überwachen. Aktualisieren Sie alle Konfigurationen nur, wenn sich der Sentinel-Schlüssel ändert. Ein Beispiel finden Sie unter [Verwenden der dynamischen Konfiguration in einer ASP.NET Core-App](enable-dynamic-configuration-aspnet-core.md).
 
-* Verwenden Sie Azure Event Grid, um Benachrichtigungen zu empfangen, wenn sich die Konfiguration ändert, anstatt ständig Änderungen abzufragen. Weitere Informationen finden Sie unter [Weiterleiten von Azure App Configuration-Ereignissen an einen Webendpunkt](./howto-app-configuration-event.md).
+* Verwenden Sie Azure Event Grid, um Benachrichtigungen zu empfangen, wenn sich die Konfiguration ändert, anstatt ständig Änderungen abzufragen. Weitere Informationen finden Sie unter [Verwenden von Event Grid für App Configuration-Datenänderungsbenachrichtigungen](./howto-app-configuration-event.md).
+
+* Verteilen Sie Ihre Anforderungen auf mehrere App Configuration-Speicher. Verwenden Sie beispielsweise einen anderen Speicher aus jeder geografischen Region für eine global bereitgestellte Anwendung. Jeder App Configuration-Speicher verfügt über ein eigenes Anforderungskontingent. Diese Einrichtung bietet Ihnen ein Modell für Skalierbarkeit und vermeidet den Single Point of Failure.
 
 ## <a name="importing-configuration-data-into-app-configuration"></a>Importieren von Konfigurationsdaten in App Configuration
 

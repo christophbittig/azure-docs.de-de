@@ -1,96 +1,85 @@
 ---
 title: Testen Ihrer App in Azure
-description: Erfahren Sie, wie Sie eine Dateifreigabe in einem Lab erstellen und auf Ihrem lokalen Computer und auf einem virtuellen Computer im Lab einbinden und dann Desktop-/Webanwendungen in der Dateifreigabe bereitstellen und testen.
-ms.topic: tutorial
-ms.date: 06/26/2020
-ms.openlocfilehash: e9d4e78bf0ebe5e28ac9bb180acafae3fcdd0f08
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+description: Erfahren Sie, wie Sie Desktop-/Webanwendungen in einer Dateifreigabe bereitstellen und testen.
+ms.topic: how-to
+ms.date: 11/03/2021
+ms.openlocfilehash: af9fc320c6f08e0ef4141aac8076e121a2e6292d
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128604377"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131575939"
 ---
 # <a name="test-your-app-in-azure"></a>Testen Ihrer App in Azure 
-Dieser Artikel enthält Schritte zum Testen der Anwendung in Azure mithilfe von DevTest Labs. Zunächst richten Sie eine Dateifreigabe in einem Lab ein und binden sie als Laufwerk auf Ihrem lokalen Entwicklungscomputer und einem virtuellen Computer in einem Lab ein. Anschließend stellen Sie die App in Visual Studio 2019 in der Dateifreigabe bereit, damit Sie die App auf dem virtuellen Computer im Lab ausführen können.  
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+In diesem Leitfaden erfahren Sie, wie Sie Ihre Anwendung in Azure mithilfe von DevTest Labs testen. Sie verwenden Visual Studio, um Ihre App in einer Azure-Dateifreigabe bereitzustellen. Anschließend greifen Sie über eine Lab-VM auf die Freigabe zu.  
 
-## <a name="prerequisites"></a>Voraussetzungen 
-1. [Erstellen Sie ein Azure-Abonnement](https://azure.microsoft.com/free/), wenn Sie noch keines besitzen, und melden Sie sich im [Azure-Portal](https://portal.azure.com) an.
-2. Befolgen Sie die Anweisungen in [diesem Artikel](devtest-lab-create-lab.md), um mithilfe von Azure DevTest Labs ein Lab zu erstellen. Heften Sie das Lab an Ihr Dashboard an, damit Sie es bei Ihrer nächsten Anmeldung leichter finden. Mit Azure DevTest Labs können Sie Ressourcen in Azure schnell erstellen und dabei den Ressourcenverbrauch minimieren und die Kontrolle über die Kosten behalten. Weitere Informationen zu DevTest Labs finden Sie in der [Übersicht](devtest-lab-overview.md). 
-3. Erstellen Sie anhand der Anweisungen im Artikel [Erstellen eines Speicherkontos](../storage/common/storage-account-create.md) ein Azure Storage-Konto in der Ressourcengruppe des Labs. Wählen Sie auf der Seite **Speicherkonto erstellen** die Option **Vorhandene verwenden** für **Ressourcengruppe** und die **Lab-Ressourcengruppe** aus. 
-4. Erstellen Sie anhand der Anweisungen im Artikel [Erstellen einer Dateifreigabe in Azure Files](../storage/files/storage-how-to-create-file-share.md) eine Dateifreigabe in Ihrem Azure-Speicher. 
+## <a name="prerequisites"></a>Voraussetzungen
 
-## <a name="mount-the-file-share-on-your-local-machine"></a>Einbinden der Dateifreigabe auf dem lokalen Computer
-1. Verwenden Sie auf dem lokalen Computer das Skript aus dem Abschnitt [Einbinden der Azure-Dateifreigabe](../storage/files/storage-how-to-use-files-windows.md#mount-the-azure-file-share) des Artikels [Verwenden einer Azure-Dateifreigabe mit Windows](../storage/files/storage-how-to-use-files-windows.md). 
-2. Verwenden Sie dann den Befehl `net use`, um die Dateifreigabe auf dem Computer einzubinden. Beispielbefehl: Geben Sie den Namen Ihres Azure-Speichers und der Dateifreigabe an, bevor Sie den Befehl ausführen. 
+- Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-    `net use Z: \\<YOUR AZURE STORAGE NAME>.file.core.windows.net\<YOUR FILE SHARE NAME> /persistent:yes`
+- Eine lokale Arbeitsstation mit [Visual Studio](https://visualstudio.microsoft.com/free-developer-offers/).
 
-## <a name="create-a-vm-in-the-lab"></a>Erstellen eines virtuellen Computers im Lab
-1. Wählen Sie auf der Seite **Dateifreigabe** oben im Breadcrumb-Menü die Option **Ressourcengruppe** aus. Die Seite **Ressourcengruppe** wird angezeigt. 
-    
-    ![Auswählen der Ressourcengruppe im Breadcrumb-Menü](media/test-app-in-azure/select-resource-group-bread-crump.png)
-2. Wählen Sie auf der Seite **Ressourcengruppe** das in DevTest Labs erstellte **Lab** aus.
+- Ein Lab in [DevTest Labs](devtest-lab-overview.md).
 
-    ![Auswählen des Labs](media/test-app-in-azure/select-devtest-lab-in-resource-group.png)
-3. Wählen Sie auf der Seite **DevTest Lab** für das Lab auf der Symbolleiste die Option **+ Hinzufügen** aus. 
+- Eine [Azure-VM](devtest-lab-add-vm.md) unter Windows in Ihrem Lab.
 
-    ![Schaltfläche „Hinzufügen“ für das Lab](media/test-app-in-azure/add-button-in-lab.png)
-4. Suchen Sie auf der Seite **Basis auswählen** nach **smalldisk**, und wählen Sie **[smalldisk] Windows Server 2016 Data Center** aus. 
+- Eine [Dateifreigabe](../storage/files/storage-how-to-create-file-share.md) im vorhandenen Azure-Speicherkonto Ihres Labs. Mit einem Lab wird automatisch ein Speicherkonto erstellt.
 
-    ![Auswählen eines smalldisk-Windows-Servers](media/test-app-in-azure/choose-small-disk-windows-server.png)
-5. Geben Sie auf der Seite **Virtueller Computer** den **Namen des virtuellen Computers**, den **Benutzernamen** und das **Kennwort** an, und wählen Sie **Erstellen** aus.    
-    
-    ![Seite zum Erstellen des virtuellen Computers](media/test-app-in-azure/create-virtual-machine-page.png)    
-
-## <a name="mount-the-file-share-on-your-vm"></a>Einbinden der Dateifreigabe auf dem virtuellen Computer
-1. Nachdem der virtuelle Computer erfolgreich erstellt wurde, wählen Sie den **virtuellen Computer** in der Liste aus.    
-
-    ![Auswählen der Lab-VM](media/test-app-in-azure/select-lab-vm.png)
-2. Wählen Sie auf der Symbolleiste **Verbinden** aus, um eine Verbindung mit dem virtuellen Computer herzustellen. 
-3. [Installieren Sie Azure PowerShell](/powershell/azure/install-az-ps).
-4. Befolgen Sie die Anweisungen im Abschnitt „Einbinden der Dateifreigabe“. 
+- Die [Azure-Dateifreigabe](../storage/files/storage-how-to-use-files-windows.md#mount-the-azure-file-share), die auf Ihrer lokalen Arbeitsstation und Lab-VM eingebunden ist.
 
 ## <a name="publish-your-app-from-visual-studio"></a>Veröffentlichen der App über Visual Studio
-In diesem Abschnitt veröffentlichen Sie Ihre App über Visual Studio auf einem virtuellen Testcomputer in der Cloud.
 
-1. Erstellen Sie eine Desktop-/Webanwendung in Visual Studio 2019.
-2. Erstellen Sie die App.
-3. Klicken Sie zum Veröffentlichen der App im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **Veröffentlichen** aus. 
-4. Geben Sie im **Veröffentlichungs-Assistenten** das **Laufwerk** ein, das der Dateifreigabe zugeordnet ist.
+In diesem Abschnitt veröffentlichen Sie Ihre App über Visual Studio in Ihrer Azure-Dateifreigabe.
 
-    **Desktop-App:**
+1. Öffnen Sie Visual Studio, und wählen Sie im Fenster „Start“ die Option **Neues Projekt erstellen** aus.
 
-    ![Desktop-App](media/test-app-in-azure/desktop-app.png)
+    :::image type="content" source="./media/test-app-in-azure/launch-visual-studio.png" alt-text="Screenshot: Visual Studio-Startseite":::
 
-    **Web-App:**
+1. Wählen Sie **Konsolenanwendung** aus, und klicken Sie dann auf **Weiter**.
 
-    ![Web-App](media/test-app-in-azure/web-app.png)
+    :::image type="content" source="./media/test-app-in-azure/select-console-application.png" alt-text="Screenshot: Option zum Auswählen der Konsolenanwendung":::
 
-1. Wählen Sie **Weiter** aus, um den Veröffentlichungsworkflow abzuschließen, und wählen Sie dann **Fertig stellen** aus. Nachdem Sie die Schritte im Assistenten beendet haben, wird die Anwendung in Visual Studio erstellt und in der Dateifreigabe veröffentlicht. 
+1. Übernehmen Sie auf der Seite **Neues Projekt konfigurieren** die Standardwerte, und klicken Sie auf **Weiter**.
 
+1. Übernehmen Sie auf der Seite **Zusätzliche Informationen** die Standardwerte, und klicken Sie auf **Erstellen**.
+
+1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf Ihr Projekt, und wählen Sie **Erstellen** aus.
+
+1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf Ihr Projekt, und wählen Sie **Veröffentlichen** aus.
+
+    :::image type="content" source="./media/test-app-in-azure/publish-application.png" alt-text="Screenshot: Option zum Veröffentlichen der Anwendung":::
+
+1. Wählen Sie auf der Seite **Veröffentlichen** die Option **Ordner** aus, und klicken Sie dann auf **Weiter**.
+
+    :::image type="content" source="./media/test-app-in-azure/publish-to-folder.png" alt-text="Screenshot: Option zum Veröffentlichen in einem Ordner":::
+
+1. Wählen Sie für die Option **Bestimmtes Ziel** die Option **Ordner** aus, und klicken Sie dann auf **Weiter**.
+
+1. Wählen Sie für die Option **Speicherort** die Option **Durchsuchen** aus, und wählen Sie die Dateifreigabe aus, die Sie zuvor eingebunden haben. Klicken Sie auf **OK** und dann auf **Fertig stellen**. 
+
+    :::image type="content" source="./media/test-app-in-azure/selecting-file-share.png" alt-text="Screenshot: Option zum Auswählen der Dateifreigabe":::
+
+1. Klicken Sie auf **Veröffentlichen**. Visual Studio erstellt Ihre Anwendung und veröffentlicht sie in Ihrer Dateifreigabe.
+
+    :::image type="content" source="./media/test-app-in-azure/final-publish.png" alt-text="Screenshot: Schaltfläche „Veröffentlichen“":::
 
 ## <a name="test-the-app-on-your-test-vm-in-the-lab"></a>Testen der App auf dem virtuellen Testcomputer im Lab
 
-1. Navigieren Sie zu der Seite Ihres virtuellen Computers im Lab. 
-2. Wählen Sie auf der Symbolleiste **Starten** aus, um den virtuellen Computer zu starten, wenn er sich im Status „Beendet“ befindet. Sie können Richtlinien für das automatische Startes und Herunterfahren für die virtuellen Computer einrichten, um zu verhindern, dass sie jedes Mal gestartet und beendet werden. 
-3. Wählen Sie **Verbinden**.
+1. Stellen Sie eine Verbindung mit Ihrer Lab-VM her.
 
-    ![Seite für den virtuellen Computer](media/test-app-in-azure/virtual-machine-page.png)
-4. Starten Sie **Datei-Explorer** innerhalb des virtuellen Computers, und wählen Sie **Dieser PC** aus, um Ihre Dateifreigabe zu suchen.
+1. Starten Sie auf der VM den **Datei-Explorer**, und wählen Sie **Dieser PC** aus, um die zuvor eingebundene Dateifreigabe zu suchen.
 
-    ![Suchen der Freigabe auf dem virtuellen Computer](media/test-app-in-azure/find-share-on-vm.png)
+    :::image type="content" source="./media/test-app-in-azure/find-share-on-vm.png" alt-text="Screenshot: Datei-Explorer":::
 
-    > [!NOTE]
-    > Wenn Sie die Dateifreigabe auf dem virtuellen Computer oder dem lokalen Computer nicht finden, können Sie sie durch Ausführen des Befehls `net use` erneut einbinden. Den Befehl `net use` finden Sie im Assistenten **Verbinden** der **Dateifreigabe** im Azure-Portal.
 1. Öffnen Sie die Dateifreigabe, und überprüfen Sie, ob die über Visual Studio bereitgestellte App angezeigt wird. 
 
-    ![Öffnen der Freigabe auf dem virtuellen Computer](media/test-app-in-azure/open-file-share.png)
+    :::image type="content" source="./media/test-app-in-azure/open-file-share.png" alt-text="Screenshot: Inhalt der Dateifreigabe":::
 
     Sie können nun auf die App zugreifen und sie innerhalb des virtuellen Testcomputers testen, den Sie in Azure erstellt haben.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Informationen zum Verwenden von virtuellen Computern in einem Lab finden Sie in den folgenden Artikeln. 
 
 - [Hinzufügen eines virtuellen Computers zu einem Lab](devtest-lab-add-vm.md)

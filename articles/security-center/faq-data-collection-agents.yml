@@ -3,23 +3,19 @@ metadata:
   title: 'Häufig gestellte Fragen zu Microsoft Defender für Cloud: Datensammlung und Agents'
   description: Hier finden Sie häufig gestellte Fragen zu Datensammlung, Agents und Arbeitsbereichen für Microsoft Defender für Cloud – einem Produkt, das Ihnen dabei hilft, Bedrohungen zu verhindern und zu erkennen und auf Bedrohungen zu reagieren.
   services: security-center
-  documentationcenter: na
   author: memildin
   manager: rkarlin
   ms.assetid: be2ab6d5-72a8-411f-878e-98dac21bc5cb
   ms.service: security-center
-  ms.devlang: na
   ms.topic: conceptual
-  ms.tgt_pltfrm: na
-  ms.workload: na
-  ms.date: 11/15/2020
+  ms.date: 11/04/2021
   ms.author: memildin
-  ms.openlocfilehash: 8dfad55fff78e88aadd05f4fda64b37683dbde5d
-  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.openlocfilehash: ea151e241ea99ebbe3642961dc6256a4fa1c8c9d
+  ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 11/02/2021
-  ms.locfileid: "131084204"
+  ms.lasthandoff: 11/04/2021
+  ms.locfileid: "131561913"
 title: 'Häufig gestellte Fragen: Datensammlung, Agents und Arbeitsbereiche'
 summary: >
   Defender für Cloud erfasst Daten von Ihren virtuellen Azure-Computern (VMs), VM-Skalierungsgruppen, IaaS-Containern und Nicht-Azure-Computern (auch lokal), um sie auf Sicherheitslücken und Bedrohungen zu überwachen. Die Daten werden mit dem Log Analytics-Agent erfasst. Der Agent liest verschiedene sicherheitsrelevante Konfigurationen und Ereignisprotokolle auf dem Computer und kopiert die Daten zur Analyse in den Arbeitsbereich.
@@ -100,7 +96,7 @@ sections:
       Entfernen Sie zur Wiederherstellung den Log Analytics-Agent auf den VMs, die mit dem gelöschten Arbeitsbereich verbunden sind. Defender für Cloud installiert den Agent erneut und erstellt neue Standardarbeitsbereiche.
   - question: >
       Wie kann ich meinen vorhandenen Log Analytics-Arbeitsbereich verwenden?
-    answer: "Sie können einen vorhandenen Log Analytics-Arbeitsbereich zum Speichern der von Defender für Cloud gesammelten Daten auswählen. Wenn Sie Ihren vorhandenen Log Analytics-Arbeitsbereich verwenden möchten, gilt Folgendes:\n\n- Der Arbeitsbereich muss Ihrem ausgewählten Azure-Abonnement zugeordnet sein.\n- Sie müssen mindestens über Leseberechtigungen verfügen, um auf den Arbeitsbereich zugreifen zu können.\n\n> [!NOTE]\n> Ein Log Analytics-Agent und der Computer, auf dem er ausgeführt wird, sollten beide Berichte an einen Log Analytics-Arbeitsbereich im gleichen Mandanten übermitteln. Wenn sie Berichte an verschiedene Mandanten senden, erhalten Sie keine Sicherheitswarnungen von diesem Agent.\n\nSo wählen Sie einen vorhandenen Log Analytics-Arbeitsbereich aus:\n\n1. Wählen Sie im Menü von Defender für Cloud die Option **Umgebungseinstellungen** aus.\n1. Wählen Sie das relevante Abonnement aus.\n1. Öffnen Sie die Seite **Automatische Bereitstellung**.\n1. Wählen Sie für den Log Analytics-Agent **Konfiguration bearbeiten** aus. \n\n    :::image type=\"content\" source=\"./media/enable-data-collection/edit-configuration-auto-deploy-agent.png\" alt-text=\"Die Konfiguration des Log Analytics-Agents, der bei Verwendung der automatischen Bereitstellung verwendet werden soll\" lightbox=\"./media/enable-data-collection/edit-configuration-auto-deploy-agent.png\":::\n\n1. Wählen Sie **Azure-VMs mit einem anderen Arbeitsbereich verbinden** und dann den vorhandenen Arbeitsbereich aus.\n\n    :::image type=\"content\" source=\"./media/enable-data-collection/choose-workspace.png\" alt-text=\"Auswählen eines nicht standardmäßigen Arbeitsbereichs, an den der Log Analytics-Agent berichten soll\" lightbox=\"./media/enable-data-collection/choose-workspace.png\":::\n\n    > [!TIP]\n    > Die Liste enthält nur Arbeitsbereiche, auf die Sie Zugriff haben und die in Ihrem Azure-Abonnement enthalten sind.\n\n1. Wählen Sie **Speichern** aus. Sie werden gefragt, ob Sie überwachte virtuelle Computer neu konfigurieren möchten.\n\n    - Klicken Sie auf **Nein**, wenn die neuen Arbeitsbereichseinstellungen **nur auf neue virtuelle Computer angewendet werden sollen**. Die neuen Arbeitsbereichseinstellungen gelten nur für neue Agent-Installationen (neu ermittelte virtuelle Computer, auf denen der Log Analytics-Agent nicht installiert ist).\n    - Klicken Sie auf **Ja**, wenn die neuen Arbeitsbereichseinstellungen **auf alle virtuellen Computer angewendet werden sollen**. Darüber hinaus wird jeder virtuelle Computer, der mit einem von Defender für Cloud erstellten Arbeitsbereich verbunden ist, nun mit dem neuen Zielarbeitsbereich verbunden.\n\n    > [!NOTE]\n    > Wenn Sie **Ja** auswählen, löschen Sie die von Defender für Cloud erstellten Arbeitsbereiche erst, wenn alle virtuellen Computer mit dem neuen Zielarbeitsbereich verbunden sind. Dieser Vorgang ist nicht erfolgreich, wenn ein Arbeitsbereich zu früh gelöscht wird.\n"
+    answer: "Sie können einen vorhandenen Log Analytics-Arbeitsbereich zum Speichern der von Defender für Cloud gesammelten Daten auswählen. Wenn Sie Ihren vorhandenen Log Analytics-Arbeitsbereich verwenden möchten, gilt Folgendes:\n\n- Der Arbeitsbereich muss Ihrem ausgewählten Azure-Abonnement zugeordnet sein.\n- Sie müssen mindestens über Leseberechtigungen verfügen, um auf den Arbeitsbereich zugreifen zu können.\n\n> [!NOTE]\n> Ein Log Analytics-Agent und der Computer, auf dem er ausgeführt wird, sollten beide Berichte an einen Log Analytics-Arbeitsbereich im gleichen Mandanten übermitteln. Wenn sie Berichte an verschiedene Mandanten senden, erhalten Sie keine Sicherheitswarnungen von diesem Agent.\n\nSo wählen Sie einen vorhandenen Log Analytics-Arbeitsbereich aus:\n\n1. Öffnen Sie im Menü von Defender für Cloud **Umgebungseinstellungen**.\n1. Wählen Sie das relevante Abonnement aus.\n1. Öffnen Sie die Seite **Automatische Bereitstellung**.\n1. Wählen Sie für den Log Analytics-Agent **Konfiguration bearbeiten** aus. \n\n    :::image type=\"content\" source=\"./media/enable-data-collection/edit-configuration-auto-deploy-agent.png\" alt-text=\"Die Konfiguration des Log Analytics-Agents, der bei Verwendung der automatischen Bereitstellung verwendet werden soll\" lightbox=\"./media/enable-data-collection/edit-configuration-auto-deploy-agent.png\":::\n\n1. Wählen Sie **Azure-VMs mit einem anderen Arbeitsbereich verbinden** und dann den vorhandenen Arbeitsbereich aus.\n\n    :::image type=\"content\" source=\"./media/enable-data-collection/choose-workspace.png\" alt-text=\"Auswählen eines nicht standardmäßigen Arbeitsbereichs, an den der Log Analytics-Agent berichten soll\" lightbox=\"./media/enable-data-collection/choose-workspace.png\":::\n\n    > [!TIP]\n    > Die Liste enthält nur Arbeitsbereiche, auf die Sie Zugriff haben und die in Ihrem Azure-Abonnement enthalten sind.\n\n1. Wählen Sie **Speichern** aus. Sie werden gefragt, ob Sie überwachte virtuelle Computer neu konfigurieren möchten.\n\n    - Klicken Sie auf **Nein**, wenn die neuen Arbeitsbereichseinstellungen **nur auf neue virtuelle Computer angewendet werden sollen**. Die neuen Arbeitsbereichseinstellungen gelten nur für neue Agent-Installationen (neu ermittelte virtuelle Computer, auf denen der Log Analytics-Agent nicht installiert ist).\n    - Klicken Sie auf **Ja**, wenn die neuen Arbeitsbereichseinstellungen **auf alle virtuellen Computer angewendet werden sollen**. Darüber hinaus wird jeder virtuelle Computer, der mit einem von Defender für Cloud erstellten Arbeitsbereich verbunden ist, nun mit dem neuen Zielarbeitsbereich verbunden.\n\n    > [!NOTE]\n    > Wenn Sie **Ja** auswählen, löschen Sie die von Defender für Cloud erstellten Arbeitsbereiche erst, wenn alle virtuellen Computer mit dem neuen Zielarbeitsbereich verbunden sind. Dieser Vorgang ist nicht erfolgreich, wenn ein Arbeitsbereich zu früh gelöscht wird.\n"
   - question: >
       Was passiert, wenn der Log Analytics-Agent bereits als Erweiterung auf der VM installiert wurde?
     answer: >
@@ -141,7 +137,7 @@ sections:
       Sie können die automatische Bereitstellung für Ihre Abonnements in der Sicherheitsrichtlinie deaktivieren, dies wird jedoch nicht empfohlen. Die Deaktivierung der automatischen Bereitstellung schränkt die Empfehlungen und Warnungen von Defender für Cloud ein. So deaktivieren Sie die automatische Bereitstellung:
 
 
-      1. Wählen Sie im Menü von Defender für Cloud die Option **Umgebungseinstellungen** aus.
+      1. Öffnen Sie im Menü von Defender für Cloud **Umgebungseinstellungen**.
 
       1. Wählen Sie das relevante Abonnement aus.
 
@@ -184,7 +180,7 @@ sections:
       Damit Defender für Cloud Sicherheitsdaten auf virtuellen Computern erfassen und Empfehlungen und Warnungen bereitstellen kann, installieren Sie die Log Analytics-Agent-Erweiterung manuell. Eine Anleitung zur Installation finden Sie unter [Agent-Installation für Windows-VM](../virtual-machines/extensions/oms-windows.md) oder [Agent-Installation für Linux-VM](../virtual-machines/extensions/oms-linux.md).
 
 
-      Sie können den Agent mit jedem vorhandenen benutzerdefinierten Arbeitsbereich oder in Defender für Cloud erstellten Arbeitsbereich verbinden. Wenn in einem benutzerdefinierten Arbeitsbereich die Lösungen „Security“ oder „SecurityCenterFree“ nicht aktiviert sind, müssen Sie eine Lösung anwenden. Wählen Sie zum Anwenden den benutzerdefinierten Arbeitsbereich oder das Abonnement aus, und wenden Sie einen Tarif über die Seite **Sicherheitsrichtlinie – Tarif** an.
+      Sie können den Agent mit jedem vorhandenen benutzerdefinierten Arbeitsbereich oder in Defender für Cloud erstellten Arbeitsbereich verbinden. Wenn in einem benutzerdefinierten Arbeitsbereich die Lösungen „Security“ oder „SecurityCenterFree“ nicht aktiviert sind, müssen Sie eine Lösung anwenden. Wählen Sie zum Anwenden den benutzerdefinierten Arbeitsbereich aus, und wenden Sie einen Tarif über die Seite **Sicherheitsrichtlinie – Tarif** an.
 
 
       :::image type="content" source="./media/platform-migration-faq/pricing-tier.png" alt-text="Aktivieren oder Deaktivieren von Azure Defender":::

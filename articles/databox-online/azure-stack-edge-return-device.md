@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 09/15/2021
+ms.date: 10/28/2021
 ms.author: alkohli
-ms.openlocfilehash: 3fa49fdab111c60c9f73dad5703c39dbc33e1472
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b17b613c07430ce7d4a86e251a86a96d250f0255
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128554208"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131469295"
 ---
 # <a name="return-your-azure-stack-edge-device"></a>Zurückgeben Ihres Azure Stack Edge-Geräts
 
@@ -49,6 +49,53 @@ Sie können Ihr Gerät über die lokale Webbenutzeroberfläche oder über PowerS
 ## <a name="initiate-device-return"></a>Initiieren der Geräterückgabe
 
 Beginnen Sie den Rückgabeprozess mit den folgenden Schritten.
+
+---
+
+### <a name="azure-edge-hardware-center-preview"></a>[Azure Edge Hardware Center (Vorschau)](#tab/azure-edge-hardware-center) 
+
+Wenn Sie das Azure Edge Hardware Center für die Bestellung Ihres Geräts verwendet haben, müssen Sie bei der Rückgabe des Geräts die folgenden Schritte befolgen:
+
+1. Wechseln Sie im Azure-Portal zu Ihrer Azure Edge Hardware Center-Bestellartikelressource. Wählen Sie in der **Übersicht** über die obere Befehlsleiste im rechten Bereich die Option **Rückgabe** aus. Die Rückgabeoption ist erst aktiviert, nachdem Sie ein Gerät erhalten haben.
+
+    ![Zurückgeben des Geräts 1](media/azure-stack-edge-return-device/hardware-center-return-device-1.png)  
+
+1. Geben Sie auf dem Blatt **Hardware zurückgeben** die folgenden Informationen ein:
+
+    ![Zurückgeben des Geräts 2](media/azure-stack-edge-return-device/hardware-center-return-device-2.png) 
+
+    1. Wählen Sie in der Dropdownliste einen **Grund für die Rückgabe** aus.
+
+    1. Geben Sie die Seriennummer des Geräts an. Die Seriennummer des Geräts ist auf der lokalen Webbenutzeroberfläche des Geräts in der **Übersicht** angegeben.  
+    
+       ![Seriennummer des Geräts 1](media/azure-stack-edge-return-device/device-serial-number-1.png) 
+
+    1. Geben Sie (optional) die Nummer des **Serviceetiketts** ein. Die Nummer des Serviceetiketts ist ein Bezeichner mit fünf oder mehr Zeichen, der für Ihr Gerät eindeutig ist. Das Serviceetikett befindet sich in der rechten unteren Ecke des Geräts (wenn Sie auf das Gerät blicken). Ziehen Sie das Informationsetikett heraus. Der Auszug enthält Systeminformationen wie Serviceetikett, NIC, MAC-Adresse und Ähnliches. 
+    
+       ![Serviceetikettnummer 1](media/azure-stack-edge-return-device/service-tag-number-1.png)
+
+    1. Um einen Rücksendekarton anzufordern, können Sie **Versandkarton erforderlich, um Hardwareeinheit zurückzugeben** auswählen. Antworten Sie mit **Ja** auf die Frage **Benötigen Sie einen leeren Karton für die Rückgabe?** .
+    
+    1. Lesen Sie die **Datenschutzbestimmungen**, und aktivieren Sie das Kontrollkästchen, um zu bestätigen, dass Sie die Datenschutzbestimmungen gelesen haben und ihnen zustimmen.
+
+    1. Überprüfen Sie die **Abholdetails**. Standardmäßig wird die Lieferadresse als Abholadresse festgelegt. Sie können entweder eine neue Adresse hinzufügen oder aus den gespeicherten Adressen eine andere für die Abholung auswählen.
+
+        ![Zurückgeben des Geräts 3](media/azure-stack-edge-return-device/hardware-center-return-device-3.png) 
+
+    1. Wählen Sie **Rückgabe initiieren** aus.
+
+1. Nach der Übermittlung des Rückgabeanforderung wird der Status Ihrer Rückgabe von der Bestellartikelressource widerspiegelt. Der Status verändert sich von **Rückgabe initiiert** zu **Abgeholt** zu **Rückgabe abgeschlossen**. Verwenden Sie das Portal, um den Rückgabestatus Ihrer Ressource jederzeit zu überprüfen.
+
+    ![Zurückgeben des Geräts 5](media/azure-stack-edge-return-device/hardware-center-return-device-4.png) 
+
+1. Nachdem die Rückgabeanforderung initiiert wurde, wird sich das Betriebsteam von Azure Stack Edge an Sie wenden, um die Abholung des Geräts zu planen.
+
+Im nächsten Schritt muss das Gerät verpackt werden.
+
+
+### <a name="portal-classic"></a>[Portal (klassisch)](#tab/azure-portal)
+
+Wenn Sie Ihr Gerät klassisch über das Portal bestellt haben, müssen Sie für die Rückgabe des Geräts die folgenden Schritte befolgen:
 
 1. Navigieren Sie im Azure-Portal zu Ihrer Azure Stack Edge-Ressource. Wählen Sie in der **Übersicht** über die Befehlsleiste im rechten Bereich die Option **Gerät zurückgeben** aus. 
 
@@ -87,6 +134,8 @@ Beginnen Sie den Rückgabeprozess mit den folgenden Schritten.
 
 7. Nachdem das Azure Stack Edge-Betriebsteam die E-Mail erhalten hat, sendet es Ihnen ein Etikett für die Rücksendung. Nach Erhalt dieses Etiketts können Sie die Geräteabholung mit dem Versandunternehmen planen. 
 
+---
+
 ## <a name="pack-the-device"></a>Verpacken des Geräts
 
 Führen Sie die folgenden Schritte aus, um das Gerät zu verpacken.
@@ -94,14 +143,17 @@ Führen Sie die folgenden Schritte aus, um das Gerät zu verpacken.
 1. Fahren Sie das Gerät herunter. Wechseln Sie auf der lokalen Webbenutzeroberfläche zu **Wartung > Power settings** (Energieeinstellungen).
 2. Wählen Sie **Herunterfahren** aus. Wenn Sie zur Bestätigung aufgefordert werden, klicken Sie auf **Ja**, um fortzufahren. Weitere Informationen finden Sie unter [Verwalten der Energieeinstellungen](../databox-online/azure-stack-edge-manage-access-power-connectivity-mode.md#manage-power).
 3. Trennen Sie die Netzkabel, und entfernen Sie alle Netzwerkkabel vom Gerät.
-4. Bereiten Sie das Versandpaket den folgenden Anweisungen entsprechend sorgfältig vor:
+4. Bereiten Sie das Versandpaket den folgenden Anweisungen entsprechend und wie im folgenden Diagramm dargestellt sorgfältig vor:
+
+    ![Verpackung des Geräts](media/azure-stack-edge-return-device/device-packaging-1.svg) 
+
     1. Verwenden Sie die Versandschachtel, die Sie von Azure angefordert haben, oder die Originalversandschachtel mit der zugehörigen Schaumstoffverpackung. 
     1. Legen Sie das untere Schaumstoffteil in die Schachtel.
     1. Legen Sie das Gerät auf den Schaumstoff, und achten Sie darauf, dass es passend im Schaumstoff sitzt.
     1. Legen Sie das obere Schaumstoffteil in das Paket.
     1. Bringen Sie die Netzkabel im Zubehörfach unter, und legen Sie die Schienen auf das obere Schaumstoffteil.
     1. Verschließen Sie die Schachtel, und bringen Sie das Adressetikett, das Sie von Azure erhalten haben, auf dem Paket an.
-    
+   
     > [!IMPORTANT]
     > Wenn die Richtlinien für die Vorbereitung der Rücklieferung nicht ordnungsgemäß beachtet werden, kann das Gerät u. U. beschädigt werden, sodass eine Gebühr für beschädigte Geräte anfallen kann. Weitere Informationen finden Sie in den [Produktbestimmungen](https://www.microsoft.com/licensing/product-licensing/products) und den [häufig gestellten Fragen zu verloren gegangenen oder beschädigten Geräten](https://azure.microsoft.com/pricing/details/databox/edge/).
  
@@ -119,11 +171,24 @@ Führen Sie die folgenden Schritte aus, um eine Abholung zu planen:
 
     Wenn Sie keine Abholung planen können oder möchten, können Sie das Azure Stack Edge-Gerät auch an der nächstgelegenen Versandstelle abgeben.
 
-## <a name="delete-the-resource"></a>Löschen der Ressource
+## <a name="complete-return"></a>Vollständige Rückgabe
+
+In diesem Abschnitt können Sie überprüfen, wann die Rückgabe abgeschlossen ist, und die Bestellung anschließend löschen. 
+
+---
+
+### <a name="azure-edge-hardware-center-preview"></a>[Azure Edge Hardware Center (Vorschau)](#tab/azure-edge-hardware-center)
 
 Nachdem das Gerät im Azure-Rechenzentrum eingegangen ist, wird das Gerät auf Beschädigungen oder Anzeichen von Manipulation untersucht.
 
-- Wenn das Gerät intakt und in gutem Zustand eintrifft, endet die Abrechnung für diese Ressource. Das Azure Stack Edge-Betriebsteam setzt sich mit Ihnen in Verbindung, um die Rückgabe des Geräts zu bestätigen. Anschließend können Sie die Ressource löschen, die im Azure-Portal mit dem Gerät verknüpft ist.
+- Wenn das Gerät intakt und in gutem Zustand eintrifft, endet die Abrechnung für diese Ressource. Das Azure Stack Edge-Betriebsteam setzt sich mit Ihnen in Verbindung, um die Rückgabe des Geräts zu bestätigen. Die abgeschlossene Rückgabe wird im Bestellartikelstatus angezeigt.  Sie können jetzt die Bestellartikelressource im Azure-Portal löschen.
+- Wenn das Gerät erheblich beschädigt eintrifft, fallen möglicherweise Gebühren an. Weitere Informationen finden Sie unter [häufig gestellten Fragen zu verloren gegangenen oder beschädigten Geräten](https://azure.microsoft.com/pricing/details/databox/edge/) und [Produktbestimmungen](https://www.microsoft.com/licensing/product-licensing/products). 
+
+### <a name="portal-classic"></a>[Portal (klassisch)](#tab/azure-portal) 
+
+Nachdem das Gerät im Azure-Rechenzentrum eingegangen ist, wird das Gerät auf Beschädigungen oder Anzeichen von Manipulation untersucht.
+
+- Wenn das Gerät intakt und in gutem Zustand eintrifft, endet die Abrechnung für diese Ressource. Das Azure Stack Edge-Betriebsteam setzt sich mit Ihnen in Verbindung, um die Rückgabe des Geräts zu bestätigen. Wahlweise können Sie die Ressource löschen, die im Azure-Portal mit dem Gerät verknüpft ist.
 - Wenn das Gerät erheblich beschädigt eintrifft, fallen möglicherweise Gebühren an. Weitere Informationen finden Sie unter [häufig gestellten Fragen zu verloren gegangenen oder beschädigten Geräten](https://azure.microsoft.com/pricing/details/databox/edge/) und [Produktbestimmungen](https://www.microsoft.com/licensing/product-licensing/products).  
 
 
@@ -147,6 +212,7 @@ Löschen Sie mit folgenden Schritten das Gerät und die Ressource im Azure-Porta
 
 Sie werden nach erfolgreichem Löschen von Gerät und zugeordneter Ressource benachrichtigt.
 
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
 

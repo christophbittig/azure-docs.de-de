@@ -1,20 +1,20 @@
 ---
-title: Behandlung von Problemen mit verwalteten Identitäten für Azure Automation (Vorschau)
+title: Behandlung von Problemen mit verwalteten Identitäten für Azure Automation
 description: In diesem Artikel erfahren Sie, wie Sie Probleme beheben, wenn Sie eine verwaltete Identität mit einem Automation-Konto verwenden.
 services: automation
 ms.subservice: ''
-ms.date: 06/28/2021
+ms.date: 10/26/2021
 ms.topic: troubleshooting
-ms.openlocfilehash: 89d3785ef527eebc822eefbbae2c887dd40108ee
-ms.sourcegitcommit: 6f4378f2afa31eddab91d84f7b33a58e3e7e78c1
+ms.openlocfilehash: f26c10468322992a5b3fbc302739ff827e841bba
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2021
-ms.locfileid: "113687495"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131443659"
 ---
-# <a name="troubleshoot-azure-automation-managed-identity-issues-preview"></a>Behandlung von Problemen mit verwalteten Identitäten für Azure Automation (Vorschau)
+# <a name="troubleshoot-azure-automation-managed-identity-issues"></a>Behandlung von Problemen mit verwalteten Identitäten für Azure Automation
 
-In diesem Artikel werden Lösungen für Probleme beschrieben, die bei Verwendung einer verwalteten Identität mit Ihrem Automation-Konto auftreten können. Allgemeine Informationen zur Verwendung von verwalteten Identitäten mit Automation-Konten finden Sie unter [Übersicht über die Azure Automation-Kontoauthentifizierung](../automation-security-overview.md#managed-identities-preview).
+In diesem Artikel werden Lösungen für Probleme beschrieben, die bei Verwendung einer verwalteten Identität mit Ihrem Automation-Konto auftreten können. Allgemeine Informationen zur Verwendung von verwalteten Identitäten mit Automation-Konten finden Sie unter [Übersicht über die Azure Automation-Kontoauthentifizierung](../automation-security-overview.md#managed-identities).
 
 ## <a name="scenario-fail-to-get-msi-token-for-account"></a>Szenario: Fehler beim Abrufen des MSI-Tokens für das Konto
 
@@ -73,7 +73,7 @@ Wenn das Problem darin besteht, dass Sie die Identität vor der Verwendung nicht
 
 ### <a name="resolution"></a>Lösung
 
-Sie müssen eine Identität für Ihr Automation-Konto aktivieren, bevor Sie den Dienst für verwaltete Identitäten verwenden können. Siehe [Aktivieren einer verwalteten Identität für Ihr Azure Automation-Konto (Vorschau)](../enable-managed-identity-for-automation.md)
+Sie müssen eine Identität für Ihr Automation-Konto aktivieren, bevor Sie den Dienst für verwaltete Identitäten verwenden können. Siehe [Aktivieren einer verwalteten Identität für Ihr Azure Automation-Konto](../enable-managed-identity-for-automation.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

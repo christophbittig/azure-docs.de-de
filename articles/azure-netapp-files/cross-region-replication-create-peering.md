@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 10/14/2021
+ms.date: 11/02/2021
 ms.author: b-juche
-ms.openlocfilehash: 34ee024344fb5ed7bf7da32f181a0bc43cbfc8fd
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 8a937074cfc0cd4305ac5946bdb792d612c44f7b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130038648"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131465381"
 ---
 # <a name="create-volume-replication-for-azure-netapp-files"></a>Erstellen der Volumereplikation für Azure NetApp Files
 
@@ -75,7 +75,7 @@ Stellen Sie für das NFS-Protokoll sicher, dass die Exportrichtlinienregeln die 
 
 7. Erstellen Sie auf der Registerkarte **Tags** Schlüssel-Wert-Paare nach Bedarf.  
 
-8. Fügen Sie auf der Registerkarte **Replikation** die Ressourcen-ID des Quellvolumes ein, die Sie unter [Auffinden der Ressourcen-ID des Quellvolumes](#locate-the-source-volume-resource-id) abgerufen haben, und wählen Sie dann den gewünschten Replikationszeitplan aus. Die Optionen für den Replikationszeitplan umfassen: alle 10 Minuten, stündlich, täglich, wöchentlich und monatlich.  
+8. Fügen Sie auf der Registerkarte **Replikation** die Ressourcen-ID des Quellvolumes ein, die Sie unter [Auffinden der Ressourcen-ID des Quellvolumes](#locate-the-source-volume-resource-id) abgerufen haben, und wählen Sie dann den gewünschten Replikationszeitplan aus. Die Optionen für den Replikationszeitplan umfassen: alle 10 Minuten, stündlich und täglich.
 
     ![Erstellen der Volumereplikation](../media/azure-netapp-files/cross-region-replication-create-volume-replication.png)
 

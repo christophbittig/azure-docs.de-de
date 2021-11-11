@@ -4,13 +4,13 @@ description: In diesem Thema erfahren Sie, wie Sie mit Log Analytics Daten samme
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/12/2021
-ms.openlocfilehash: 749d807f15419445ff82f8e4b621efca034885a7
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/02/2021
+ms.openlocfilehash: 1fa0763c9d4ccdb4e0233a5c6159be7c0d745be6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131074230"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131470393"
 ---
 # <a name="log-analytics-agent-overview"></a>Übersicht über den Log Analytics-Agent
 
@@ -20,6 +20,7 @@ Der Azure Log Analytics-Agent sammelt Telemetrie von virtuellen Windows- und Lin
 > Der Log Analytics-Agent wird ggf. auch als Microsoft Monitoring Agent (MMA) bezeichnet.
 
 ## <a name="comparison-to-azure-diagnostics-extension"></a>Vergleich mit der Azure-Diagnoseerweiterung
+
 Die [Azure-Diagnoseerweiterung](./diagnostics-extension-overview.md) in Azure Monitor kann ebenfalls zum Erfassen von Überwachungsdaten aus dem Gastbetriebssystem virtueller Azure-Computer verwendet werden. Je nach Ihren Anforderungen können Sie eine der Möglichkeiten oder beide nutzen. Einen ausführlichen Vergleich der Azure Monitor-Agents finden Sie unter [Übersicht über die Azure Monitor-Agents](../agents/agents-overview.md). 
 
 Beachten Sie die folgenden Hauptunterschiede:
@@ -83,14 +84,14 @@ Abhängig von Ihren Anforderungen gibt es mehrere Möglichkeiten, um den Log An
 
 ### <a name="windows-virtual-machine-on-premises-or-in-another-cloud"></a>Virtueller Windows-Computer, lokal oder in einer anderen Cloud
 
-- Verwenden Sie [Azure Arc-fähige Server](../../azure-arc/servers/overview.md), um die Log Analytics-VM-Erweiterung bereitzustellen und zu verwalten.
+- Verwenden Sie [Azure Arc-fähige Server](../../azure-arc/servers/overview.md), um die Log Analytics-VM-Erweiterung bereitzustellen und zu verwalten. Sehen Sie sich die [Bereitstellungsoptionen](../../azure-arc/servers/concept-log-analytics-extension-deployment.md) an, um die verschiedenen Methoden zu verstehen, die verfügbar sind, um die Erweiterung für Computer, die bei Arc-fähigen Servern registriert sind, bereitzustellen.
 - Installieren Sie den Agent [manuell](../agents/agent-windows.md) über die Befehlszeile.
 - Automatisieren Sie die Installation mit [Azure Automation DSC](../agents/agent-windows.md#install-agent-using-dsc-in-azure-automation).
 - Verwenden Sie eine [Resource Manager-Vorlage mit Azure Stack](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win).
 
 ### <a name="linux-virtual-machine-on-premises-or-in-another-cloud"></a>Virtueller Linux-Computer, lokal oder in einer anderen Cloud
 
-- Verwenden Sie [Azure Arc-fähige Server](../../azure-arc/servers/overview.md), um die Log Analytics-VM-Erweiterung bereitzustellen und zu verwalten.
+- Verwenden Sie [Azure Arc-fähige Server](../../azure-arc/servers/overview.md), um die Log Analytics-VM-Erweiterung bereitzustellen und zu verwalten. Sehen Sie sich die [Bereitstellungsoptionen](../../azure-arc/servers/concept-log-analytics-extension-deployment.md) an, um die verschiedenen Methoden zu verstehen, die verfügbar sind, um die Erweiterung für Computer, die bei Arc-fähigen Servern registriert sind, bereitzustellen.
 - Installieren Sie den Agent [manuell](../vm/monitor-virtual-machine.md) durch Aufrufen eines Wrapperskripts, das auf GitHub gehostet wird.
 - Integrieren Sie [System Center Operations Manager](./om-agents.md) mit Azure Monitor, um die gesammelten Daten von Windows-Computern weiterzuleiten, die Berichte für eine Verwaltungsgruppe erstellen.
 
@@ -148,6 +149,6 @@ Beispiel: `https://user01:password@proxy01.contoso.com:30443`
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Lesen Sie [Datenquellen](../agents/agent-data-sources.md), um die Datenquellen zu verstehen, die für die Erfassung von Daten aus Ihrem Windows- oder Linux-System zur Verfügung stehen. 
+* Lesen Sie [Datenquellen](../agents/agent-data-sources.md), um die Datenquellen zu verstehen, die für die Erfassung von Daten aus Ihrem Windows- oder Linux-System zur Verfügung stehen.
 * Erfahren Sie mehr über [Protokollabfragen](../logs/log-query-overview.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten. 
 * Erfahren Sie mehr über [Überwachungslösungen](../insights/solutions.md), die Azure Monitor um zusätzliche Funktionen erweitern und ebenfalls Daten für den Log Analytics-Arbeitsbereich sammeln.

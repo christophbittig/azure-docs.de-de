@@ -3,14 +3,14 @@ title: Konfigurieren von Azure AD-Authentifizierung
 description: Erfahren Sie, wie Sie die Azure Active Directory-Authentifizierung als Identitätsanbieter für Ihre App Services- oder Azure Functions-App konfigurieren.
 ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
-ms.date: 04/14/2020
+ms.date: 10/26/2021
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 039a32d1f1ec1327ee032c17af36dc910f363eed
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: cc5761afe295bd9ef71c86cf6ffdafb8c0e847ff
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130045973"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131435831"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>Konfigurieren Ihrer App Service- oder Azure Functions-App zur Verwendung der Azure AD-Anmeldung
 
@@ -49,7 +49,7 @@ Ein Beispiel für die Konfiguration der Azure AD-Anmeldung für eine Web-App, d
 
 ## <a name="option-2-use-an-existing-registration-created-separately"></a><a name="advanced"> </a>Option 2: Verwenden einer vorhandenen, separat erstellten Registrierung
 
-Sie können Ihre Anwendung auch manuell für die Microsoft Identity-Plattform registrieren, die Registrierung anpassen und die APP Service Authentifizierung mit den Registrierungsdetails konfigurieren. Dies ist beispielsweise hilfreich, wenn Sie eine App-Registrierung von einem anderen Azure AD-Mandanten als dem verwenden möchten, auf dem sich Ihre App Service-App befindet.
+Sie können Ihre Anwendung auch manuell für die Microsoft Identity-Plattform registrieren, die Registrierung anpassen und die App Service Authentifizierung mit den Registrierungsdetails konfigurieren. Dies ist beispielsweise hilfreich, wenn Sie eine App-Registrierung von einem anderen Azure AD-Mandanten als dem verwenden möchten, auf dem sich Ihre App Service-App befindet.
 
 ### <a name="create-an-app-registration-in-azure-ad-for-your-app-service-app"></a><a name="register"> </a>Erstellen einer App-Registrierung in Azure AD für Ihre App Service-App
 
@@ -68,7 +68,7 @@ Gehen Sie wie folgt vor, um die App zu registrieren:
 1. Wählen Sie unter **Umleitungs-URIs** die Option **Web** aus, und geben Sie `<app-url>/.auth/login/aad/callback` ein. Beispiel: `https://contoso.azurewebsites.net/.auth/login/aad/callback`.
 1. Wählen Sie **Registrieren**.
 1. Nachdem die App-Registrierung erstellt wurde, kopieren Sie die **Anwendungs-ID (Client)** und die **Verzeichnis-ID (Mandant)** , damit Sie diese später verwenden können.
-1. Wählen Sie **Authentifizierung** aus. Aktivieren Sie unter **Implizite Genehmigung** die Option **ID-Token**, um OpenID Connect-Benutzeranmeldungen von App Service zuzulassen.
+1. Wählen Sie **Authentifizierung** aus. Aktivieren Sie unter **Implizite Genehmigung und Hybridflows** die Option **ID-Token**, um OpenID Connect-Benutzeranmeldungen von App Service zuzulassen.  Wählen Sie **Speichern** aus.
 1. (Optional) Wählen Sie **Branding** aus. Geben Sie in **URL der Startseite** die URL Ihrer App Service-App ein, und wählen Sie **Speichern** aus.
 1. Wählen Sie **Eine API verfügbar machen** aus, und klicken Sie neben „Anwendungs-ID-URI“ auf **Festlegen**. Dieser Wert identifiziert die Anwendung eindeutig, wenn sie als Ressource verwendet wird, sodass Token angefordert werden können, die Zugriff gewähren. Er wird als Präfix für Bereiche verwendet, die Sie erstellen.
 
@@ -77,10 +77,11 @@ Gehen Sie wie folgt vor, um die App zu registrieren:
     Nachdem Sie den Wert eingegeben haben, klicken Sie auf **Speichern**.
 
 1. Wählen Sie **Bereich hinzufügen**.
+   1. Unter **Bereich hinzufügen** ist der **Anwendungs-ID-URI** der Wert, den Sie in einem vorherigen Schritt festgelegt haben.  Wählen Sie **Speichern und fortfahren** aus.
    1. Geben Sie in **Bereichsname** den Namen *user_impersonation* ein.
    1. Geben Sie in die Textfelder den Namen und die Beschreibung für den Einwilligungsbereich ein, die Benutzern auf der Einwilligungsseite angezeigt werden sollen. Geben Sie z. B. *Zugriff auf &lt;Anwendungsname&gt;* ein.
    1. Wählen Sie **Bereich hinzufügen** aus.
-1. (Optional) Um einen geheimen Clientschlüssel zu erstellen, wählen Sie **Zertifikate und Geheimnisse** > **Neuer geheimer Clientschlüssel** > **Hinzufügen** aus. Kopieren Sie den Wert des geheimen Clientschlüssels, der auf der Seite angezeigt wird. Er wird nicht noch einmal angezeigt.
+1. (Optional) Um einen geheimen Clientschlüssel zu erstellen, wählen Sie **Zertifikate und Geheimnisse** > **Geheime Clientschlüssel** > **Neuer geheimer Clientschlüssel** aus.  Geben Sie eine Beschreibung und den Ablauf ein, und wählen Sie **Hinzufügen** aus. Kopieren Sie den Wert des geheimen Clientschlüssels, der auf der Seite angezeigt wird. Er wird nicht noch einmal angezeigt.
 1. (Optional) Wenn Sie mehrere **Antwort-URLs** hinzufügen möchten, wählen Sie **Authentifizierung** aus.
 
 ### <a name="enable-azure-active-directory-in-your-app-service-app"></a><a name="secrets"> </a>Aktivieren von Azure Active Directory in Ihrer App Service-App
@@ -93,7 +94,7 @@ Gehen Sie wie folgt vor, um die App zu registrieren:
     |Feld|BESCHREIBUNG|
     |-|-|
     |Anwendungs-ID (Client)| Verwenden Sie die **Anwendungs-ID (Client)** der App-Registrierung. |
-    |Geheimer Clientschlüssel (optional)| Verwenden Sie den geheimen Clientschlüssel, den Sie in der App-Registrierung generiert haben. Bei einem geheimen Clientschlüssel wird der Hybridflow verwendet, und der App Service gibt Zugriffs- und Aktualisierungstoken zurück. Wenn der geheime Clientschlüssel nicht festgelegt ist, wird impliziter Flow verwendet und nur ein ID-Token zurückgegeben. Diese Token werden vom Anbieter gesendet und im EasyAuth-Tokenspeicher gespeichert.|
+    |Geheimer Clientschlüssel| Verwenden Sie den geheimen Clientschlüssel, den Sie in der App-Registrierung generiert haben. Bei einem geheimen Clientschlüssel wird der Hybridflow verwendet, und der App Service gibt Zugriffs- und Aktualisierungstoken zurück. Wenn der geheime Clientschlüssel nicht festgelegt ist, wird impliziter Flow verwendet und nur ein ID-Token zurückgegeben. Diese Token werden vom Anbieter gesendet und im EasyAuth-Tokenspeicher gespeichert.|
     |Aussteller-URL| Verwenden Sie `<authentication-endpoint>/<tenant-id>/v2.0`, und ersetzen Sie *\<authentication-endpoint>* durch den [Authentifizierungsendpunkt für Ihre Cloudumgebung](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) (z. B. „https://login.microsoftonline.com“ für globales Azure), und ersetzen Sie *\<tenant-id>* durch die **Verzeichnis (Mandanten)-ID**, in der die App-Registrierung erstellt wurde. Dieser Wert wird verwendet, um Benutzer an den richtigen Azure AD-Mandanten umzuleiten sowie um die entsprechenden Metadaten herunterzuladen, um die entsprechenden Tokensignaturschlüssel und den Anspruchswert des Tokenausstellers zu ermitteln. Lassen Sie für Anwendungen, die Azure AD v1 verwenden, und für Azure Functions-Apps die Zeichenfolge `/v2.0` in der URL aus.|
     |Zulässige Tokenzielgruppen| Wenn dies eine Cloud- oder Server-App ist und Sie Authentifizierungstoken von einer Web-App zulassen möchten, fügen Sie hier den **Anwendungs-ID-URI** der Web-App hinzu. Die konfigurierte **Client-ID** wird *immer* implizit als zulässige Zielgruppe angesehen.|
 
