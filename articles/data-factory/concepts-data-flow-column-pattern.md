@@ -9,13 +9,13 @@ ms.service: data-factory
 ms.subservice: data-flows
 ms.custom: synapse
 ms.topic: conceptual
-ms.date: 09/09/2021
-ms.openlocfilehash: 32d39c956121881da0073b53fe5b4196dbc179de
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 11/08/2021
+ms.openlocfilehash: 7b8343c06dd0815f8c0fb44fa00f85c2c0195b13
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124828498"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132058523"
 ---
 # <a name="using-column-patterns-in-mapping-data-flow"></a>Verwenden von Spaltenmustern in Mappingdatenflüssen
 
@@ -81,11 +81,12 @@ Wenn Ihre definierte Projektion eine Hierarchie hat, können Sie die regelbasier
 
 :::image type="content" source="media/data-flow/rule-based-hierarchy.png" alt-text="Screenshot: Regelbasierte Zuordnung für eine Hierarchie":::
 
-Das obige Beispiel stimmt mit allen Unterspalten der komplexen Spalte `a` überein. `a` enthält die beiden Unterspalten `b` und `c`. Das Ausgabeschema enthält die beiden Spalten `b` und `c`, da die „Name as“-Bedingung `$$` lautet.
+Das obige Beispiel stimmt mit allen Unterspalten der komplexen Spalte `a` überein. `a` enthält die beiden Unterspalten `b` und `c`. Das Ausgabeschema weist die beiden Spalten `b` und `c` auf, da die Bedingung „Name as“ `$$` ist.
 
 ## <a name="pattern-matching-expression-values"></a>Ausdruckswerte für den Musterabgleich
 
-* `$$` wird zur Laufzeit in den Namen oder Wert der jeweiligen Übereinstimmung umgewandelt. Stellen Sie sich `$$` als gleichwertig zu `this` vor.
+* `$$` wird zur Laufzeit in den Namen oder Wert der jeweiligen Übereinstimmung umgewandelt. Stellen Sie sich `$$` als Entsprechung zu `this` vor.
+* `$0` wird zur Laufzeit in die aktuelle Übereinstimmung des Spaltennamens für skalare Typen umgewandelt. Bei hierarchischen Typen stellt `$0` den Hierarchiepfad der übereinstimmenden Spalte dar.
 * `name` stellt den Namen der einzelnen eingehenden Spalten dar.
 * `type` stellt den Datentyp der einzelnen eingehenden Spalten dar. Die Liste der Datentypen im Datenflusstypsystem finden Sie [hier](concepts-data-flow-overview.md#data-flow-data-types).
 * `stream` stellt den Namen dar, der dem jeweiligen Datenstrom oder der Transformation in Ihrem Flow zugeordnet ist.

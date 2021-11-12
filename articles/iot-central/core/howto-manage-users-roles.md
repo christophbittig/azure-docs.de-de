@@ -1,25 +1,24 @@
 ---
 title: Verwalten von Benutzern und Rollen in Ihrer Azure IoT Central-Anwendung | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie als Administrator Benutzer und Rollen in Ihrer Azure IoT Central-Anwendung verwalten.
-author: lmasieri
-ms.author: lmasieri
-ms.date: 04/16/2021
+author: dominicbetts
+ms.author: dobett
+ms.date: 08/20/2021
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-manager: corywink
-ms.openlocfilehash: acb26e18fd208f73053505d6e3ab5cca0f33fd2e
-ms.sourcegitcommit: cd7d099f4a8eedb8d8d2a8cae081b3abd968b827
+ms.openlocfilehash: 4398ab5ed46276c397e812cb4ffbcd1e6e1296e6
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/25/2021
-ms.locfileid: "112963201"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131997569"
 ---
 # <a name="manage-users-and-roles-in-your-iot-central-application"></a>Verwalten von Benutzern und Rollen in Ihrer IoT Central-Anwendung
 
 In diesem Artikel wird beschrieben, wie Sie Benutzer in Ihrer Azure IoT Central-Anwendung hinzufügen, bearbeiten und löschen. Außerdem erfahren Sie, wie Sie Rollen in Ihrer Anwendung verwalten.
 
-Um auf den Abschnitt **Verwaltung** zugreifen und diesen verwenden zu können, muss Ihnen die Rolle **Administrator** für eine Azure IoT Central-Anwendung zugewiesen sein. Wenn Sie eine Azure IoT Central-Anwendung erstellen, wird Ihnen automatisch die Rolle **Administrator** für die diese Anwendung hinzugefügt.
+Um auf den Abschnitt **Verwaltung** zugreifen und ihn verwenden zu können, muss Ihnen die Rolle **App-Administrator** für eine Azure IoT Central-Anwendung oder eine benutzerdefinierte Rolle mit Administratorberechtigungen zugewiesen sein. Wenn Sie eine Azure IoT Central-Anwendung erstellen, werden Sie der Rolle **Administrator** für diese Anwendung automatisch hinzugefügt.
 
 ## <a name="add-users"></a>Hinzufügen von Benutzern
 
@@ -33,19 +32,23 @@ Weitere Informationen finden Sie unter [Hilfe zum Microsoft-Konto](https://suppo
 
 1. Wählen Sie auf der Seite **Benutzer** die Option **+ Benutzer zuweisen** aus, um einen Benutzer hinzuzufügen.
 
+1. Wenn Ihre Anwendung [Organisationen](howto-create-organizations.md) verwendet,wählen Sie im Dropdownmenü **Organisation** die Organisation aus, die dem Benutzer zugewiesen werden soll.
+
 1. Wählen Sie aus der Dropdownliste **Rolle** eine Rolle für den Benutzer aus. Weitere Informationen zu Rollen finden Sie in diesem Artikel im Abschnitt [Verwalten von Rollen](#manage-roles).
 
     :::image type="content" source="media/howto-manage-users-roles/add-user-pnp.png" alt-text="Screenshot: Hinzufügen eines Benutzers und Auswählen einer Rolle":::
 
-  > [!NOTE]
-  > Ein Benutzer mit einer benutzerdefinierten Rolle, die ihm die Berechtigung zum Hinzufügen anderer Benutzer gewährt, kann nur Benutzer einer Rolle mit denselben oder niedrigeren Berechtigungen wie die eigene Rolle hinzufügen.
+    Die verfügbaren Rollen sind abhängig von der Organisation, der der Benutzer zugeordnet ist. Sie können Rollen des Typs **App** Benutzern, die der Stammorganisation zugeordnet sind, und Rollen des Typs **Organisation** Benutzern zuweisen, die einer anderen Organisation in der Hierarchie zugeordnet sind.
 
-  > [!NOTE]
-  > Wenn ein Benutzer aus Azure Active Directory gelöscht und anschließend erneut hinzugefügt wird, kann sich der Benutzer nicht mehr bei der IoT Central-Anwendung anmelden. Der Administrator der Anwendung muss den Benutzer auch in der Anwendung löschen und erneut hinzufügen, um den Zugriff zu reaktivieren.
+    > [!NOTE]
+    > Ein Benutzer mit einer benutzerdefinierten Rolle, die ihm die Berechtigung zum Hinzufügen anderer Benutzer gewährt, kann nur Benutzer einer Rolle mit denselben oder niedrigeren Berechtigungen wie die eigene Rolle hinzufügen.
+  
+    > [!NOTE]
+    > Wenn ein Benutzer aus Azure Active Directory gelöscht und anschließend erneut hinzugefügt wird, kann sich der Benutzer nicht mehr bei der IoT Central-Anwendung anmelden. Der Administrator der Anwendung muss den Benutzer auch in der Anwendung löschen und erneut hinzufügen, um den Zugriff zu reaktivieren.
 
-### <a name="edit-the-roles-that-are-assigned-to-users"></a>Bearbeiten der den Benutzern zugewiesenen Rollen
+### <a name="edit-the-roles-and-organizations-that-are-assigned-to-users"></a>Bearbeiten der Rollen und Organisationen, die Benutzern zugewiesen sind
 
-Rollen können nach ihrer Zuweisung nicht mehr geändert werden. Um die einem Benutzer zugewiesene Rolle zu ändern, löschen Sie den Benutzer und fügen den Benutzer dann erneut mit einer anderen Rolle hinzu.
+Rollen und Organisationen können nach ihrer Zuweisung nicht mehr geändert werden. Wenn Sie die einem Benutzer zugewiesene Rolle oder Organisation ändern möchten, löschen Sie den Benutzer, und fügen Sie ihn dann erneut mit einer anderen Rolle bzw. Organisation hinzu.
 
 > [!NOTE]
 > Die zugewiesenen Rollen gelten nur für die IoT Central-Anwendung und können nicht über das Azure-Portal verwaltet werden.
@@ -60,29 +63,56 @@ Mit Rollen können Sie steuern, wer in Ihrer Organisation verschiedene Aufgaben 
 
 :::image type="content" source="media/howto-manage-users-roles/manage-roles-pnp.png" alt-text="Screenshot: Auswahl von „Rollen verwalten“":::
 
+### <a name="app-administrator"></a>App-Administrator
 
-### <a name="administrator"></a>Administrator
+Benutzer mit der Rolle **App-Administrator** können jeden Teil der Anwendung verwalten und steuern, einschließlich der Abrechnung.
 
-Benutzer mit der Rolle **Administrator** können jeden Aspekt der Anwendung verwalten und steuern, einschließlich der Abrechnung.
+Dem Benutzer, der eine Anwendung erstellt, wird die Rolle **App-Administrator** automatisch zugewiesen. Es muss immer mindestens einen Benutzer mit der Rolle **App-Administrator** geben.
 
-Dem Benutzer, der eine Anwendung erstellt, wird automatisch die Rolle **Administrator** zugewiesen. Es muss immer mindestens ein Benutzer mit der Rolle **Administrator** vorhanden sein.
+### <a name="app-builder"></a>App-Ersteller
 
-### <a name="builder"></a>Generator
+Benutzer mit der Rolle **App-Ersteller** können jeden Teil der App verwalten, aber keine Änderungen auf den Registerkarten „Verwaltung“ oder „Kontinuierlicher Datenexport“ vornehmen.
 
-Benutzer mit der Rolle **Ersteller** können alle Aspekte der App verwalten, sie können jedoch keine Änderungen auf den Registerkarten „Verwaltung“ und „Kontinuierlicher Datenexport“ vornehmen.
+### <a name="app-operator"></a>App-Operator
 
-### <a name="operator"></a>Operator
+Benutzer mit der Rolle **App-Operator** können die Integrität und den Status des Geräts überwachen. Sie dürfen keine Änderungen an Gerätevorlagen vornehmen und die Anwendung nicht verwalten. Anwendungsoperatoren können Geräte hinzufügen und löschen, Gerätesätze verwalten sowie Analysen und Aufträge ausführen.
 
-Benutzer mit der Rolle **Operator** können die Integrität und den Status des Geräts überwachen. Sie dürfen keine Änderungen an Gerätevorlagen vornehmen und die Anwendung nicht verwalten. Anwendungsoperatoren können Geräte hinzufügen und löschen, Gerätesätze verwalten sowie Analysen und Aufträge ausführen.
+### <a name="org-administrator"></a>Org Administrator (Organisationsadministrator)
+
+IoT Central fügt diese Rolle automatisch hinzu, wenn Sie Ihrer Anwendung eine Organisation hinzufügen. Diese Rolle schränkt den Zugriff von Organisationsadministratoren bei einigen anwendungsweiten Funktionen wie Abrechnung, Branding, Farben, API-Token und Registrierungsgruppeninformationen ein.
+
+Benutzer mit der Rolle **Organisationsadministrator** können Benutzer zur Anwendung einladen, Unterorganisationen innerhalb ihrer Organisationshierarchie erstellen und die Geräte innerhalb ihrer Organisation verwalten.
+
+### <a name="org-operator"></a>Organisationsoperator
+
+IoT Central fügt diese Rolle automatisch hinzu, wenn Sie Ihrer Anwendung eine Organisation hinzufügen. Diese Rolle schränkt Organisationsoperators beim Zugriff auf einige anwendungsweite Funktionen ein.
+
+Benutzer mit der Rolle **Organisationsoperator** können Aufgaben wie das Hinzufügen von Geräten, Ausführen von Befehlen, Anzeigen von Gerätedaten, Erstellen von Dashboards und Erstellen von Gerätegruppen ausführen.
+
+### <a name="org-viewer"></a>Org Viewer (Organisationszuschauer)
+
+IoT Central fügt diese Rolle automatisch hinzu, wenn Sie Ihrer Anwendung eine Organisation hinzufügen.
+
+Benutzer mit der Rolle **Org Viewer** können Elemente wie Geräte und deren Daten, Organisationsdashboards, Gerätegruppen und Gerätevorlagen anzeigen.
 
 ## <a name="create-a-custom-role"></a>Erstellen einer benutzerdefinierten Rolle
 
-Wenn Sie für Ihre Lösung eine präzisere Zugriffssteuerung benötigen, können Sie Rollen mit benutzerdefinierten Berechtigungen erstellen. Um eine benutzerdefinierte Rolle zu erstellen, navigieren Sie im Abschnitt **Verwaltung** Ihrer Anwendung zur Seite **Rollen**. Wählen Sie dann **+ Neue Rolle** aus, und fügen Sie einen Namen und eine Beschreibung für die Rolle hinzu. Wählen Sie die Berechtigungen aus, die für die Rolle erforderlich sind, und wählen Sie dann **Speichern** aus.
+Wenn Sie für Ihre Lösung eine präzisere Zugriffssteuerung benötigen, können Sie Rollen mit benutzerdefinierten Berechtigungen erstellen. Um eine benutzerdefinierte Rolle zu erstellen, navigieren Sie im Abschnitt **Verwaltung** Ihrer Anwendung zur Seite **Rollen**, und wählen Sie eine der folgenden Optionen aus:
 
-Sie können Ihrer benutzerdefinierten Rolle Benutzer auf die gleiche Weise hinzufügen wie bei einer integrierten Rolle.
+- Wählen Sie **+ Neu** aus, fügen Sie einen Namen und eine Beschreibung für Ihre Rolle hinzu, und wählen Sie **Anwendung** oder **Organisation** als Rollentyp aus. Bei dieser Option können Sie eine Rollendefinition von Grund auf neu erstellen.
+- Navigieren Sie zu einer vorhandenen Rolle, und wählen Sie **Kopieren** aus. Bei dieser Option können Sie mit einer vorhandenen Rollendefinition beginnen und sie dann anpassen.
 
 :::image type="content" source="media/howto-manage-users-roles/create-custom-role-pnp.png" alt-text="Screenshot: Erstellen einer benutzerdefinierten Rolle":::
 
+> [!WARNING]
+> Nachdem Sie eine Rolle erstellt haben, können Sie den Rollentyp nicht mehr ändern.
+
+Wenn Sie einen Benutzer zu Ihrer Anwendung einladen und ihn Folgendem zuordnen:
+
+- – der Stammorganisation. Dann sind nur Rollen des Typs **Anwendungsrollen** verfügbar.
+- – einer beliebigen anderen Organisation. Dann sind nur Rollen des Typs **Organisation** verfügbar.
+
+Sie können Ihrer benutzerdefinierten Rolle Benutzer genauso wie bei einer integrierten Rolle hinzufügen.
 
 ### <a name="custom-role-options"></a>Optionen für benutzerdefinierte Rollen
 
@@ -206,6 +236,16 @@ Wenn Sie eine benutzerdefinierte Rolle definieren, wählen Sie den Berechtigungs
 | Hinzufügen | Sicht <br/> Weitere Abhängigkeiten: Anzeigen benutzerdefinierter Rollen |
 | Löschen | Sicht <br/> Weitere Abhängigkeiten: Anzeigen benutzerdefinierter Rollen |
 | Vollzugriff | Anzeigen, hinzufügen, löschen <br/> Weitere Abhängigkeiten: Anzeigen benutzerdefinierter Rollen |
+
+**Berechtigungen für die Organisationsverwaltung**
+
+| Name | Abhängigkeiten |
+| ---- | -------- |
+| Sicht | Keine |
+| Aktualisieren | Sicht |
+| Erstellen | Anzeigen, aktualisieren |
+| Löschen | Sicht |
+| Vollzugriff | Anzeigen, aktualisieren, erstellen, löschen |
 
 > [!NOTE]
 > Ein Benutzer mit einer benutzerdefinierten Rolle, die ihm die Berechtigung zum Hinzufügen anderer Benutzer gewährt, kann nur Benutzer einer Rolle mit denselben oder niedrigeren Berechtigungen wie die eigene Rolle hinzufügen.

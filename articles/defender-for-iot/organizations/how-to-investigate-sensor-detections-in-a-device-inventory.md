@@ -3,12 +3,12 @@ title: Einblicke in Geräte, die von einem bestimmten Sensor erkannt werden
 description: Die Gerätebestand zeigt verschiedenste Geräteattribute an, die von einem Sensor erkannt werden.
 ms.date: 12/06/2020
 ms.topic: how-to
-ms.openlocfilehash: 10df10a64059e5f5673a9e4ae6f18a09e4c41838
-ms.sourcegitcommit: 555ea0d06da38dea1de6ecbe0ed746cddd4566f5
+ms.openlocfilehash: 423ddcb9b50be6aa758e28f20291f8d66e58e3f4
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/08/2021
-ms.locfileid: "113515271"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132028190"
 ---
 # <a name="investigate-sensor-detections-in-a-device-inventory"></a>Grundlagen zu Sensorerkennungen in einem Gerätebestand
 
@@ -45,7 +45,20 @@ Die folgenden Attribute werden in der Gerätebestandstabelle angezeigt:
 | Last Activity (Letzte Aktivität) | Die letzte Aktivität, die das Gerät ausgeführt hat |
 | Discovered | Wann dieses Gerät zum ersten Mal im Netzwerk erkannt wurde |
 
-So können Sie den Gerätebestand anzeigen:
+## <a name="what-is-an-inventory-device"></a>Was ist ein Bestandsgerät?
+
+Der Defender für IoT-Gerätebestand zeigt eine Vielzahl von Ressourcenattributen an. Sie werden von Sensoren erkannt, die die Netzwerke und verwalteten Endpunkte der Organisation überwachen.
+
+Defender für IoT identifiziert und klassifiziert Geräte als ein einzelnes eindeutiges Netzwerkgerät im Bestand für:
+
+1. Eigenständige IT-/OT-/IoT-Geräte (mit einem oder mehreren NICs)
+1. Geräte, die aus mehreren Rückwandplatinenkomponenten bestehen (einschließlich aller Racks/Slots/Module)
+1. Geräte, die als Netzwerkinfrastruktur fungieren, z. B. Switch/Router (mit mehreren NICs). 
+
+Öffentliche Internet-IP-Adressen, Multicastgruppen und Broadcastgruppen werden nicht als Bestandsgeräte betrachtet.
+Geräte, die seit mehr als 60 Tagen inaktiv sind, werden als inaktive Bestandsgeräte klassifiziert.
+
+**So können Sie den Gerätebestand anzeigen:**
 
 1. Wählen Sie im linken Bereich die Option **Devices** (Geräte) aus. Der Bereich **Devices** wird auf der rechten Seite geöffnet.
 

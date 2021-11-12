@@ -8,12 +8,12 @@ author: lrtoyou1223
 ms.author: lle
 ms.custom: seo-lt-2019
 ms.date: 06/16/2021
-ms.openlocfilehash: f59948204af76ce5e2d940c2910601b848bb4605
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 5a1cf4366ffd86491cc3e3e09358e364d878cb87
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122641065"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131989335"
 ---
 # <a name="self-hosted-integration-runtime-auto-update-and-expire-notification"></a>Benachrichtigung zur automatischen Aktualisierung und zum Ablauf der selbstgehosteten Integration Runtime
 
@@ -38,9 +38,11 @@ Sie können diesen [PowerShell-Befehl](/powershell/module/az.datafactory/get-azd
 > Wenn Sie über mehrere selbstgehostete Integration Runtime-Knoten verfügen, kommt es während dem automatischen Update nicht zu Ausfallzeiten. Das automatische Update erfolgt zuerst auf einem Knoten, während andere an Aufgaben arbeiten. Wenn der erste Knoten das Update abgeschlossen hat, übernimmt er die übrigen Aufgaben, wenn andere Knoten aktualisiert werden. Wenn Sie nur über eine selbstgehostete Integration Runtime verfügen, kommt es während des automatischen Updates zu Ausfallzeiten.
 
 ## <a name="auto-update-version-vs-latest-version"></a>Version mit automatischem Update im Vergleich zu neuester Version
-Obwohl wir jeden Monat zwei Versionen veröffentlichen, wird pro Monat nur eine Version gepusht, um die Stabilität der selbstgehosteten Integration Runtime zu gewährleisten. Gelegentlich werden Sie daher feststellen, dass es sich bei der automatisch aktualisierten Version nicht um die aktuelle, sondern um die vorherige Version handelt. Wenn Sie die neueste Version erhalten möchten, wechseln Sie zum [Download Center](https://www.microsoft.com/download/details.aspx?id=39717).
+Obwohl wir jeden Monat zwei Versionen veröffentlichen, wird pro Monat nur eine Version gepusht, um die Stabilität der selbstgehosteten Integration Runtime zu gewährleisten. Gelegentlich werden Sie daher feststellen, dass es sich bei der automatisch aktualisierten Version nicht um die aktuelle, sondern um die vorherige Version handelt. Wenn Sie die neueste Version erhalten möchten, wechseln Sie zum [Download Center](https://www.microsoft.com/download/details.aspx?id=39717). Darüber hinaus wird die automatische Aktualisierung auf eine Version einmal verwaltet. Sie können sie nicht ändern. Wenn Sie ein Upgrade auf die neueste Version durchführen möchten, müssen Sie dies manuell erledigen. 
 
 Die selbstgehostete Integration Runtime-Seite **Auto update** (Automatische Aktualisierung) im ADF-Portal zeigt die neuere Version an, wenn die aktuelle Version veraltet ist. Wenn Ihre selbstgehostete Integration Runtime online ist, handelt es sich bei dieser Version um eine automatische Updateversion, und Ihre selbstgehostete Integration Runtime wird automatisch zur geplanten Zeit aktualisiert. Wenn Ihre selbstgehostete Integration Runtime jedoch offline ist, wird auf der Seite nur die neueste Version angezeigt.
+
+Wenn Sie über mehrere Knoten verfügen und einige davon aus bestimmten Gründen nicht automatisch aktualisiert werden, wird für diese Knoten ein Rollback auf die Version ausgeführt, die vor dem automatischen Update auf allen Knoten identisch war. 
 
 ## <a name="self-hosted-integration-runtime-expire-notification"></a>Benachrichtigung zum Ablauf der selbstgehosteten Integration Runtime
 Wenn Sie die Version der selbstgehosteten Integration Runtime manuell steuern möchten, können Sie die Einstellung zur automatischen Aktualisierung deaktivieren und die Integration Runtime manuell installieren. Jede Version der selbstgehosteten Integration Runtime läuft nach einem Jahr ab. Die Ablaufnachricht wird im ADF-Portal und auf dem Client der selbstgehosteten Integration Runtime **90 Tage** vor dem Ablaufdatum angezeigt.

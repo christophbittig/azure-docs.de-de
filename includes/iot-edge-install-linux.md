@@ -5,12 +5,12 @@ author: kgremban
 ms.author: kgremban
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 2f4c83e7bb3976d7ac4eba245a921d01d40f3a92
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 32adad7acee7c1dbb75516d4ccaa597f2c69b9fb
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131505479"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131845071"
 ---
 ## <a name="install-iot-edge"></a>Installieren von IoT Edge
 
@@ -44,7 +44,7 @@ Es gibt zwei Schritte, die Sie auf Ihrem Gerät ausführen müssen, bevor es fü
 
    ```bash
    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-   sudo cp ./microsoft.gpg /etc/apt/trust.gpg.d/
+   sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
    ```
 
 > [!NOTE]
