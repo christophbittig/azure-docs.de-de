@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 10/26/2021
+ms.date: 10/29/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 055ffcb662b5a12dfefe194b08e293f277ba5005
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 95cce7e79ea8eaf3a542b52ac5c04b954ed56e0e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131005611"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131469101"
 ---
 ::: zone target="docs"
 
@@ -89,7 +89,7 @@ Befolgen Sie die Richtlinien für die Region, aus der Sie versenden, wenn Sie de
 
 [!INCLUDE [data-box-shipping-in-eu](../../includes/data-box-shipping-in-eu.md)]
 
-**Beim Versand aus Deutschland oder der Schweiz** können Sie auch den [selbst verwalteten Versand](#self-managed-shipping) nutzen.
+**Bei Rücksendung an Azure-Rechenzentren in Deutschland oder der Schweiz** können Sie auch den [selbst verwalteten Versand](#self-managed-shipping) nutzen.
 
 ## <a name="uk"></a>[UK](#tab/in-uk)
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 10/12/2021
 ms.author: cherylmc
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 9e9504220ac6aa001314c8ebf78bdb11a6cd011a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 243b8a068c5301c5545c2afe8567ae1fbf71284c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131071589"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131426713"
 ---
 # <a name="quickstart-configure-azure-bastion-from-vm-settings"></a>Schnellstart: Konfigurieren von Azure Bastion über VM-Einstellungen
 
@@ -63,7 +63,7 @@ Sie können beim Erstellen dieser Konfiguration die folgenden Beispielwerte verw
 | --- | --- |
 | Name | VNet1-bastion |
 | + Subnetzname | AzureBastionSubnet |
-| AzureBastionSubnet-Adressen | Ein Subnetz innerhalb Ihres VNet-Adressraums mit einer Subnetzmaske von „/27“ oder mehr.<br> Beispiel: 10.1.1.0/26.  |
+| AzureBastionSubnet-Adressen | Ein Subnetz innerhalb Ihres VNET-Adressraums mit einer Subnetzmaske von „/26“ oder höher.<br> Beispiel: 10.1.1.0/26.  |
 | Tarif/SKU | Standard |
 | Öffentliche IP-Adresse |  Neu erstellen |
 | Name der öffentlichen IP-Adresse | VNet1-ip  |
@@ -89,7 +89,7 @@ Es gibt verschiedene Möglichkeiten, einen Bastionhost zu konfigurieren. In den 
 
    :::image type="content" source="./media/quickstart-host-portal/create-step-1.png" alt-text="Screenshot der in Schritt 1 vorausgefüllten Einstellungen" lightbox="./media/quickstart-host-portal/create-step-1.png":::
 
-1. **Schritt 2**: Konfigurieren Sie die Subnetz-Werte auf der Seite **Verbindung herstellen über Azure Bastion**. Der AzureBastionSubnet-Adressraum wird mit einem empfohlenen Adressraum vorab aufgefüllt. Das AzureBastionSubnet muss über einen Adressraum der Größe „/27“ oder mehr (/26, /25 usw.) verfügen. Es wird empfohlen, „/26“ zu verwenden, damit die Hostskalierung uneingeschränkt möglich ist. Nachdem Sie die Konfiguration dieser Einstellung abgeschlossen haben, klicken Sie auf **Subnetz erstellen**, um das AzureBastionSubnet zu erstellen.
+1. **Schritt 2**: Konfigurieren Sie die Subnetz-Werte auf der Seite **Verbindung herstellen über Azure Bastion**. Der AzureBastionSubnet-Adressraum wird mit einem empfohlenen Adressraum vorab aufgefüllt. Das AzureBastionSubnet muss über einen Adressraum der Größe /26 oder mehr (/25, /24 usw.) verfügen. Es wird empfohlen, „/26“ zu verwenden, damit die Hostskalierung uneingeschränkt möglich ist. Nachdem Sie die Konfiguration dieser Einstellung abgeschlossen haben, klicken Sie auf **Subnetz erstellen**, um das AzureBastionSubnet zu erstellen.
 
      :::image type="content" source="./media/quickstart-host-portal/create-subnet.png" alt-text="Screenshot der Erstellung des Subnetzes für Bastion":::
 
