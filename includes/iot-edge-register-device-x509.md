@@ -5,12 +5,12 @@ author: kgremban
 ms.author: kgremban
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3e07cbe5b8b90ff236b9cdc0d12f31af601a253a
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 34aa41ae6762790bfa41cb612aac04418cfea212
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131842685"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131576809"
 ---
 ## <a name="register-your-device"></a>Registrieren Ihres Geräts
 
@@ -43,7 +43,7 @@ Derzeit unterstützt die Azure IoT-Erweiterung für Visual Studio Code die Gerä
 Verwenden Sie den Befehl [az iot hub device-identity create](/cli/azure/iot/hub/device-identity), um eine neue Geräteidentität in Ihrem IoT-Hub zu erstellen. Beispiel:
 
    ```azurecli
-   az iot hub device-identity create --device-id device_id_here --hub-name hub_name_here --edge-enabled --auth-method x509_thumbprint --primary-thumbprint primary_SHA_thumbprint_here --secondary-thumbprint secdonary_SHA_thumbprint_here
+   az iot hub device-identity create --device-id [device_id] --hub-name [hub_name] --edge-enabled --auth-method x509_thumbprint --primary-thumbprint [SHA_thumbprint] --secondary-thumbprint [SHA_thumbprint]
    ```
 
 Dieser Befehl umfasse mehrere Parameter:
@@ -82,7 +82,7 @@ Alle Geräte, die Verbindungen mit Ihrem IoT Hub herstellen, werden im Abschnitt
 Verwenden Sie den Befehl [az iot hub device-identity list](/cli/azure/iot/hub/device-identity), um alle Geräte in Ihrem IoT-Hub anzuzeigen. Beispiel:
 
    ```azurecli
-   az iot hub device-identity list --hub-name hub_name_here
+   az iot hub device-identity list --hub-name [hub_name]
    ```
 
 Alle als IoT Edge-Gerät registrierten Geräte weisen die **capabilities.iotEdge**-Eigenschaft mit dem Wert **true** auf.
