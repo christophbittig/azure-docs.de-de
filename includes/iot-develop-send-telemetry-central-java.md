@@ -1,5 +1,5 @@
 ---
-title: include file
+title: Datei einfügen
 description: Datei einfügen
 author: timlt
 ms.service: iot-develop
@@ -7,16 +7,16 @@ ms.topic: include
 ms.date: 11/02/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: 6e3a7b7b37e02f6f351caf985fd997d7daafd70c
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 142f8a9dd1c62442c76f35f53a3cb762c6948704
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131861070"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131521170"
 ---
 [![Code durchsuchen](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-java/tree/main/device/iot-device-samples/pnp-device-sample)
 
-In dieser Schnellstartanleitung lernen Sie einen einfachen Entwicklungsworkflow für Azure IoT-Anwendungen kennen. Zunächst erstellen Sie eine Azure IoT Central-Anwendung zum Hosten von Geräten. Anschließend verwenden Sie ein SDK-Beispiel für ein Azure IoT-Gerät, um einen Temperaturregler zu erstellen, ihn sicher mit IoT Central zu verbinden und Telemetriedaten zu senden. Die Beispielanwendung für den Temperaturregler wird auf Ihrem lokalen Computer ausgeführt und generiert simulierte Sensordaten, die an IoT Central gesendet werden sollen.
+In dieser Schnellstartanleitung lernen Sie einen einfachen Entwicklungsworkflow für Azure IoT-Anwendungen kennen. Zunächst erstellen Sie eine Azure IoT Central-Anwendung zum Hosten von Geräten. Dann verwenden Sie ein Azure IoT Device SDK-Beispiel, um einen Temperaturregler zu erstellen, ihn sicher mit IoT Central zu verbinden und Telemetriedaten zu senden. Die Beispielanwendung für den Temperaturregler läuft auf Ihrem lokalen Computer und erzeugt simulierte Sensordaten, die an die IoT-Zentrale gesendet werden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -58,7 +58,7 @@ Installieren Sie die folgende Software zum Ausführen dieser Schnellstartanleitu
         sudo apt install default-jdk
         ```
 
-        Alternativ können Sie eine Version des zu installierenden JDK angeben. Beispiel:
+        Alternativ können Sie eine Version des zu installierenden JDK angeben. Zum Beispiel:
 
         ```bash
         sudo apt update
@@ -107,7 +107,7 @@ Installieren Sie die folgende Software zum Ausführen dieser Schnellstartanleitu
 
 [!INCLUDE [iot-develop-create-central-app-with-device](iot-develop-create-central-app-with-device.md)]
 
-## <a name="run-the-device-sample"></a>Ausführen des Gerätebeispiels
+## <a name="run-a-device"></a>Ausführen eines Geräts
 
 In diesem Abschnitt konfigurieren Sie Ihre lokale Umgebung, installieren das Azure IoT-Java-Geräte-SDK und führen ein Beispiel aus, mit dem ein Temperaturregler erstellt wird.
 
@@ -119,7 +119,7 @@ In diesem Abschnitt konfigurieren Sie Ihre lokale Umgebung, installieren das Azu
 
     Vergewissern Sie sich, dass die JAVA_HOME-Umgebungsvariable (`echo $JAVA_HOME`) festgelegt wurde. Diese Umgebungsvariable muss so festgelegt sein, dass das SDK und die Beispiele erfolgreich erstellt werden. Informationen zum Festlegen von JAVA_HOME finden Sie unter [Voraussetzungen für Linux/Raspberry Pi](#linux-or-raspberry-pi-os).
 
-1. Legen Sie mit den entsprechenden Befehle für Ihre Konsole die folgenden Umgebungsvariablen fest. Das Gerät verwendet diese Werte, um eine Verbindung mit IoT Central herzustellen. Verwenden Sie für `IOTHUB_DEVICE_DPS_ID_SCOPE`, `IOTHUB_DEVICE_DPS_DEVICE_KEY` und `IOTHUB_DEVICE_DPS_DEVICE_ID` die Geräteverbindungswerte, die Sie zuvor gespeichert haben.
+1. Legen Sie mit den entsprechenden Befehle für Ihre Konsole die folgenden Umgebungsvariablen fest. Das Gerät verwendet diese Werte für die Verbindung mit der IoT-Zentrale. Verwenden Sie für `IOTHUB_DEVICE_DPS_ID_SCOPE`, `IOTHUB_DEVICE_DPS_DEVICE_KEY` und `IOTHUB_DEVICE_DPS_DEVICE_ID` die Geräteverbindungswerte, die Sie zuvor gespeichert haben.
 
     **Windows-Eingabeaufforderung**
 
@@ -175,7 +175,7 @@ In diesem Abschnitt konfigurieren Sie Ihre lokale Umgebung, installieren das Azu
     cd device/iot-device-samples/pnp-device-sample/temperature-controller-device-sample
     ```
 
-1. Führen Sie das folgende Codebeispiel aus dem SDK aus. Im Beispiel wird ein Temperaturregler mit Thermostatsensoren erstellt.
+1. Führen Sie das folgende Codebeispiel aus dem SDK aus. Das Beispiel erstellt einen Temperaturregler mit Thermostatsensoren.
 
     ```console
     mvn exec:java -Dexec.mainClass="samples.com.microsoft.azure.sdk.iot.device.TemperatureController"
