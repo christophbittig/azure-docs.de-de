@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/08/2021
 ms.author: duau
-ms.openlocfilehash: ed47d310f418936b84c505fcf254947a67f0eb6d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 3bae55a4a5b2a2b6ec5ae8ce7c63fb52b96fbd9f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124824415"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131464184"
 ---
 # <a name="troubleshooting-common-routing-problems"></a>Behandeln von häufigen Routingproblemen
 
@@ -29,7 +29,7 @@ In diesem Artikel wird beschrieben, wie Sie häufige Routingprobleme in Ihrer Az
 
 * Reguläre Anforderungen, die ohne Azure Front Door an das Back-End gesendet werden, sind erfolgreich. Das Durchlaufen von Azure Front Door führt zu 503-Fehlermeldungen.
 * Der Fehler von Azure Front Door wird in der Regel nach ungefähr 30 Sekunden angezeigt.
-* Zeitweilige 503-Fehler mit dem Protokoll `ErrorInfo: OriginInvalidResponse`.
+* Intermittierende 503-Fehler mit Protokoll `ErrorInfo: OriginInvalidResponse`.
 
 ### <a name="cause"></a>Ursache
 
@@ -37,7 +37,7 @@ Für dieses Problem gibt es drei mögliche Ursachen:
  
 * Ihr Back-End benötigt länger als das konfigurierte Timeout (Standardwert: 30 Sekunden), um die Anforderung von Azure Front Door zu erhalten.
 * Die zum Beantworten der Anforderung von Azure Front Door erforderliche Zeit überschreitet den Timeoutwert.
-* Der Client hat eine Bytebereichsanforderung mit `Accept-Encoding header` (Komprimierung aktiviert) gesendet.
+* Der Client hat eine Byte-Bereichsanforderung mit `Accept-Encoding header` (Kompression aktiviert).
 
 ### <a name="troubleshooting-steps"></a>Schritte zur Problembehandlung
 
@@ -50,6 +50,22 @@ Für dieses Problem gibt es drei mögliche Ursachen:
 * Wenn das Timeout das Problem nicht löst, verwenden Sie ein Tool wie Fiddler oder das Entwicklertool Ihres Browsers, um zu überprüfen, ob der Client Bytebereichsanforderungen mit Accept-Encoding-Headern sendet, was dazu führt, dass das Ursprungsobjekt mit unterschiedlichen Inhaltslängen antwortet. Wenn ja, können Sie entweder die Komprimierung für das Ursprungsobjekt bzw. Azure Front Door deaktivieren oder eine Regelsatzregel erstellen, um `accept-encoding` aus der Anforderung für Bytebereichsanforderungen zu entfernen.
 
     :::image type="content" source=".\media\troubleshoot-route-issues\remove-encoding-rule.png" alt-text="Screenshot der Accept-Encoding-Regel im Regelmodul.":::
+
+## <a name="https-traffic-to-backend-fails"></a>Fehler beim HTTPS-Datenverkehr zum Back-End
+
+### <a name="symptom"></a>Symptom
+
+Fehler beim HTTPS-Datenverkehr zur Back-End-Ressource
+
+### <a name="cause"></a>Ursache
+
+* Das Zertifikat mit den Namen der Subjekte ist während des TLS-Handschlags (TLS-Handshakes) nicht mit dem Back-End-Hostnamen übereinstimmend.
+* Das Back-End-Hostingzertifikat stammt nicht von einer gültigen Zertifizierungsstelle.
+
+### <a name="troubleshooting-steps"></a>Schritte zur Problembehandlung
+
+* Auch wenn es im Hinblick auf Compliance nicht empfohlen wird, können Sie diesen Fehler umgehen, indem Sie die Prüfung des Zertifikatantragsteller-Namens für Ihre Front Door-Instanz deaktivieren. Diese Option finden Sie unter „Einstellungen“ im Azure-Portal und unter „BackendPoolsSettings“ in der API.
+* In Front Door können nur Zertifikate von [gültigen Zertifizierungsstellen](https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT) am Back-End verwendet werden. Zertifikate von internen Zertifizierungsstellen oder selbstsignierte Zertifikate sind nicht zulässig. Das Zertifikat muss über eine vollständige Zertifikatkette mit Blatt- und Zwischenzertifikaten verfügen, und die Stammzertifizierungsstelle muss in der [Microsoft-Liste der vertrauenswürdigen Zertifizierungsstellen](https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT) enthalten sein.
 
 ## <a name="requests-sent-to-the-custom-domain-return-a-400-status-code"></a>Für an die benutzerdefinierte Domäne gesendete Anforderungen wird der Statuscode 400 zurückgegeben
 

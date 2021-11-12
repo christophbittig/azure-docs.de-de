@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 04/26/2021
 ms.author: rohink
-ms.openlocfilehash: 9e8ed0e21f1a6a98915dd3db1d5b8c2dcc1d6103
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: fa1729029d7576dac1dab2ea77cfe1c257441b42
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108763287"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131500809"
 ---
 # <a name="what-is-a-virtual-network-link"></a>Was ist eine virtuelle Netzwerkverknüpfung?
 
@@ -26,7 +26,7 @@ Aus der Perspektive des virtuellen Netzwerks wird die private DNS-Zone zur Regis
 
 ## <a name="resolution-virtual-network"></a>Virtuelles Auflösungsnetzwerk
 
-Wenn Sie Ihr virtuelles Netzwerk ohne automatische Registrierung mit der privaten DNS-Zone verknüpfen möchten, wird das virtuelle Netzwerk nur als virtuelles Auflösungsnetzwerk behandelt. Für VMs, die in diesem virtuellen Netzwerk bereitgestellt sind, werden nicht automatisch DNS-Einträge in der privaten Zone erstellt. Die im virtuellen Netzwerk bereitgestellten VMs können jedoch erfolgreich DNS-Einträge in der privaten DNS-Zone abfragen. Dies schließt manuell erstellte und automatisch registrierte Einträge aus anderen virtuellen Netzwerken ein, die mit der privaten DNS-Zone verknüpft sind.
+Für den Fall, dass Sie Ihr virtuelles Netzwerk ohne automatische Registrierung mit der privaten DNS-Zone verknüpfen möchten. wird das virtuelle Netzwerk nur als virtuelles Auflösungsnetzwerk behandelt. Für VMs, die in diesem virtuellen Netzwerk bereitgestellt sind, werden nicht automatisch DNS-Einträge in der privaten Zone erstellt. Die im virtuellen Netzwerk bereitgestellten VMs können jedoch erfolgreich DNS-Einträge in der privaten DNS-Zone abfragen. Dies schließt manuell erstellte und automatisch registrierte Einträge aus anderen virtuellen Netzwerken ein, die mit der privaten DNS-Zone verknüpft sind.
 
 Eine private DNS-Zone kann mehrere virtuelle Auflösungsnetzwerke aufweisen, und einem virtuellen Netzwerk können mehrere Auflösungszonen zugeordnet sein.
 

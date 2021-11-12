@@ -11,12 +11,12 @@ ms.author: tracych
 ms.reviewer: laobri
 ms.date: 10/21/2021
 ms.custom: how-to, devplatv2
-ms.openlocfilehash: 966b8abf60e0569a683932824045253ac32c724e
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 481227a747fca327f107049734a69008aa3c3bcf
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131560485"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132063777"
 ---
 # <a name="use-batch-endpoints-preview-for-batch-scoring"></a>Verwenden von Batchendpunkten (Vorschau) für die Batchbewertung
 
@@ -64,7 +64,7 @@ Legen Sie den Namen Ihres Endpunkts fest. Ersetzen Sie `YOUR_ENDPOINT_NAME` durc
 
 Führen Sie für Unix den folgenden Befehl aus:
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/batch-score.sh" ID="set_variables" :::
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="set_variables" :::
 
 Führen Sie für Windows den folgenden Befehl aus:
 
@@ -79,7 +79,7 @@ set ENDPOINT_NAME="<YOUR_ENDPOINT_NAME>"
 
 Batchendpunkte werden nicht lokal, sondern ausschließlich auf Cloud Computing-Ressourcen ausgeführt. Eine Cloud Computing-Ressource ist ein wiederverwendbarer Cluster virtueller Computer. Führen Sie den folgenden Code aus, um einen Azure Machine Learning-Computecluster zu erstellen. In den folgenden Beispielen in diesem Artikel wird das hier erstellte Computecluster mit dem Namen `batch-cluster` verwendet. Passen Sie diese nach Bedarf an und verweisen Sie mit `azureml:<your-compute-name>` auf Ihre Computeressourcen.
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/batch-score.sh" ID="create_compute" :::
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="create_compute" :::
 
 > [!NOTE]
 > Zu diesem Zeitpunkt werden Ihnen noch keine Computeressourcen in Rechnung gestellt, da der Cluster bei 0 Knoten verbleibt, bis ein Batchendpunkt aufgerufen und ein Batchbewertungsauftrag übermittelt wird. Erfahren Sie mehr über das [Verwalten und Optimieren von Kosten für AmlCompute](how-to-manage-optimize-cost.md#use-azure-machine-learning-compute-cluster-amlcompute).
@@ -93,7 +93,7 @@ Ein Batchendpunkt ist ein HTTPS-Endpunkt, den Clients aufrufen können, um einen
 
 Die folgende YAML-Datei definiert einen Batchendpunkt, den Sie in den CLI-Befehl für die [Batchendpunkterstellung](#create-a-batch-endpoint) integrieren können. Im Repository befindet sich diese Datei unter `/cli/endpoints/batch/batch-endpoint.yml`.
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/batch/batch-endpoint.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/batch/batch-endpoint.yml":::
 
 In der folgenden Tabelle werden die wichtigsten Eigenschaften des Endpunkt-YAML beschrieben. Das vollständige YAML-Schema für den Batchendpunkt finden Sie unter [CLI (v2) Batchendpunkt-YAML-Schema](./reference-yaml-endpoint-batch.md).
 
@@ -114,7 +114,7 @@ Weitere Informationen zum Verweisen auf eine Azure ML-Entität finden Sie unter 
 
 Das Beispielrepository enthält alle erforderlichen Dateien. Die folgende YAML-Datei definiert eine Batchbereitstellung mit allen erforderlichen Eingaben und optionalen Einstellungen. Sie können diese Datei in Ihrem CLI-Befehl zum [Erstellen Ihrer Batchbereitstellung](#create-a-batch-deployment) verwenden. Im Repository befindet sich diese Datei unter `/cli/endpoints/batch/nonmlflow-deployment.yml`. 
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/batch/nonmlflow-deployment.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/batch/nonmlflow-deployment.yml":::
 
 In der folgenden Tabelle werden die wichtigsten Eigenschaften des Bereitstellungs-YAML beschrieben. Das vollständige YAML-Schema für die Batchbereitstellung finden Sie unter [CLI (v2) Batchbereitstellungs-YAML-Schema](./reference-yaml-deployment-batch.md).
 
@@ -157,7 +157,7 @@ Nun stellen wir das Modell mit Batchendpunkten bereit und führen die Batchbewer
 
 Die einfachste Möglichkeit zum Erstellen eines Batchendpunkts besteht darin, den folgenden Code auszuführen, für den nur ein `--name` bereitgestellt werden muss.
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/batch-score.sh" ID="create_batch_endpoint" :::
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="create_batch_endpoint" :::
 
 Sie können einen Batchendpunkt auch mithilfe einer YAML-Datei erstellen. Fügen Sie im obigen Befehl den `--file`-Parameter hinzu und geben Sie den YAML-Dateipfad an.
 
@@ -165,7 +165,7 @@ Sie können einen Batchendpunkt auch mithilfe einer YAML-Datei erstellen. Fügen
 
 Führen Sie den folgenden Code aus, um eine Batchbereitstellung mit dem Namen `nonmlflowdp` unter dem Batchendpunkt zu erstellen und diese als Standardbereitstellung festzulegen. 
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/batch-score.sh" ID="create_batch_deployment_set_default" :::
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="create_batch_deployment_set_default" :::
 
 > [!TIP]
 > Der `--set-default`-Parameter legt die neu erstellte Bereitstellung als Standardbereitstellung des Endpunkts fest. Insbesondere beim erstmaligen Erstellen einer Bereitstellung ist dies eine praktische Möglichkeit, um eine neue Standardbereitstellung des Endpunkts zu erstellen. Als bewährte Methode für Produktionsszenarien können Sie auch eine neue Bereitstellung erstellen, die nicht als Standard festgelegt wird. Anschließend können Sie diese überprüfen und die Standardbereitstellung später entsprechend aktualisieren. Weitere Informationen finden Sie im Abschnitt [Bereitstellen eines neuen Modells](#deploy-a-new-model).
@@ -176,11 +176,11 @@ Verwenden Sie `show`, um die Batchendpunkt- und Bereitstellungsdetails zu überp
 
 Führen Sie den folgenden Code aus, um eine Batchbereitstellung zu überprüfen:
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/batch-score.sh" ID="check_batch_deployment_detail" :::
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="check_batch_deployment_detail" :::
 
 Führen Sie den folgenden Code aus, um einen Batchendpunkt zu überprüfen: Da die neu erstellte Bereitstellung als Standardbereitstellung festgelegt ist, sollte als `defaults.deployment_name` der Antwort `nonmlflowdp` angezeigt werden.
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/batch-score.sh" ID="check_batch_endpooint_detail" :::
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="check_batch_endpooint_detail" :::
 
 ### <a name="invoke-the-batch-endpoint-to-start-a-batch-scoring-job"></a>Aufrufen eines Batchendpunkts zum Starten eines Batchbewertungsauftrags
 
@@ -198,7 +198,7 @@ Für die Angabe der Dateneingaben in CLI `invoke` stehen drei Optionen zur Verf�
 
     Im Beispiel werden öffentlich verfügbare Daten in einem Ordner von `https://pipelinedata.blob.core.windows.net/sampledata/mnist` verwendet, der tausende von handschriftlichen Ziffern enthält. Der Name des Batchbewertungsauftrags wird von der Aufrufantwort zurückgegeben. Führen Sie den folgenden Code aus, um den Batchendpunkt mit diesen Daten aufzurufen. `--query name` wird hinzugefügt, um nur den Auftragsnamen aus der Aufrufantwort zurückzugeben. Später wird es verwendet, um den [Ausführungsstatus des Batchbewertungsauftrags zu überwachen](#monitor-batch-scoring-job-execution-progress) und um [Batchbewertungsergebnisse zu überprüfen](#check-batch-scoring-results). Entfernen Sie `--query name -o tsv`, wenn Sie die vollständige Aufrufantwort anzeigen möchten. Weitere Informationen über den Parameter `--query` finden Sie unter [Abfragen der Azure CLI-Befehlsausgabe](/cli/azure/query-azure-cli).
 
-    :::code language="azurecli" source="~/azureml-examples-cli-preview/cli/batch-score.sh" ID="start_batch_scoring_job" :::
+    :::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="start_batch_scoring_job" :::
 
 * __Option 2: Registriertes Dataset__
 
@@ -234,7 +234,7 @@ Beim Aufrufen eines Batchendpunkts können einige Einstellungen überschrieben w
 
 Führen Sie den folgenden Code aus, um den Ausgabespeicherort anzugeben und um Einstellungen beim Aufrufen zu überschreiben. Im Beispiel werden die Ausgaben in einem Ordner mit dem gleichen Namen wie der Endpunkt im Standardblobspeicher des Arbeitsbereichs gespeichert. Außerdem wird ein zufälliger Dateiname verwendet, um die Eindeutigkeit des Ausgabespeicherorts sicherzustellen. Der Code sollte in Unix funktionieren. Ersetzen Sie ihn durch Ihren eigenen eindeutigen Ordner- und Dateinamen.
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/batch-score.sh" ID="start_batch_scoring_job_configure_output_settings" :::
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="start_batch_scoring_job_configure_output_settings" :::
 
 ### <a name="monitor-batch-scoring-job-execution-progress"></a>Überwachen des Ausführungsfortschritts des Batchbewertungsauftrags
 
@@ -242,7 +242,7 @@ Bei Batchbewertungsaufträgen dauert es in der Regel etwas, bis sämtliche Einga
 
 Sie können CLI `job show` verwenden, um den Auftrag anzuzeigen. Führen Sie den folgenden Code aus, um den Auftragsstatus des vorherigen Endpunktaufrufs zu überprüfen. Um mehr über Auftragsbefehle zu erfahren, führen Sie `az ml job -h` aus.
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/batch-score.sh" ID="check_job_status" :::
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="check_job_status" :::
 
 ### <a name="check-batch-scoring-results"></a>Überprüfen der Ergebnisse der Batchbewertung
 
@@ -250,7 +250,7 @@ Befolgen Sie die nachstehenden Schritte, um die Bewertungsergebnisse in Azure St
 
 1. Führen Sie den folgenden Code aus, um den Batchbewertungsauftrag in Azure Machine Learning Studio zu öffnen. Der Studio-Link des Auftrags ist ebenfalls in der Antwort von `invoke` als Wert von `interactionEndpoints.Studio.endpoint` enthalten.
 
-    :::code language="azurecli" source="~/azureml-examples-cli-preview/cli/batch-score.sh" ID="show_job_in_studio" :::
+    :::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="show_job_in_studio" :::
 
 1. Wählen Sie im Ausführungsgraph den Schritt `batchscoring` aus.
 1. Wählen Sie die Registerkarte __Ausgaben und Protokolle__ und dann **Datenausgaben anzeigen** aus.
@@ -270,7 +270,7 @@ Sobald Sie über einen Batchendpunkt verfügen, können Sie Ihr Modell weiter op
 
 Führen Sie den folgenden Code aus, um eine neue Batchbereitstellung unter dem vorhandenen Batchendpunkt zu erstellen, aber nicht als Standardbereitstellung festzulegen:
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/batch-score.sh" ID="create_new_deployment_not_default" :::
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="create_new_deployment_not_default" :::
 
 Beachten Sie, dass `--set-default` nicht verwendet wird. Wenn Sie den Batchendpunkt erneut anzeigen (`show`), sollte `defaults.deployment_name` unverändert sein. 
 
@@ -278,7 +278,7 @@ Im Beispiel wird ein Modell (`/cli/endpoints/batch/autolog_nyc_taxi`) verwendet,
 
 Im Folgenden finden Sie die YAML-Datei, die im Beispiel für die Bereitstellung eines MLflow-Modells verwendet wird, das nur die minimal erforderlichen Eigenschaften enthält. Die Quelldatei im Repository ist `/cli/endpoints/batch/mlflow-deployment.yml`.
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/batch/mlflow-deployment.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/batch/mlflow-deployment.yml":::
 
 > [!NOTE]
 > Die automatische Generierung von `scoring_script` und `environment` unterstützt nur die Modellkonfiguration der Python-Funktion und die spaltenbasierte Modellsignatur.
@@ -287,7 +287,7 @@ Im Folgenden finden Sie die YAML-Datei, die im Beispiel für die Bereitstellung 
 
 Führen Sie den folgenden Code aus, um die neue nicht standardmäßige Bereitstellung zu testen. Im Beispiel wird ein anderes Modell verwendet, das eine öffentlich verfügbare CSV-Datei aus `https://pipelinedata.blob.core.windows.net/sampledata/nytaxi/taxi-tip-data.csv` akzeptiert.
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/batch-score.sh" ID="test_new_deployment" :::
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="test_new_deployment" :::
 
 Beachten Sie, dass `--deployment-name` für die Angabe des neuen Bereitstellungsnamens verwendet wird. Mit diesem Parameter ist es möglich, eine nicht standardmäßige Bereitstellung aufzurufen (`invoke`), ohne die Standardbereitstellung des Batchendpunkts zu aktualisieren.
 
@@ -295,7 +295,7 @@ Beachten Sie, dass `--deployment-name` für die Angabe des neuen Bereitstellungs
 
 Führen Sie den folgenden Code aus, um die Standard-Batchbereitstellung des Endpunkts zu aktualisieren:
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/batch-score.sh" ID="update_default_deployment" :::
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="update_default_deployment" :::
 
 Wenn Sie den Batchendpunkt nun erneut anzeigen (`show`), sollte `defaults.deployment_name` auf `mlflowdp` festgelegt sein. Sie können den Batchendpunkt auch direkt ohne den Parameter `--deployment-name` aufrufen (`invoke`).
 
@@ -307,11 +307,11 @@ Wenn Sie die Bereitstellung aktualisieren möchten (z. B. den Code, das Modell, 
 
 Wenn Sie die alte Batchbereitstellung nicht weiter verwenden möchten, sollten Sie sie löschen, indem Sie den folgenden Code ausführen. `--yes` wird verwendet, um den Löschvorgang zu bestätigen.
 
-::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/batch-score.sh" ID="delete_deployment" :::
+::: code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="delete_deployment" :::
 
 Führen Sie den folgenden Code aus, um den Batchendpunkt und alle zugrundeliegenden Bereitstellungen zu löschen. Batchbewertungsaufträge werden nicht gelöscht.
 
-::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/batch-score.sh" ID="delete_endpoint" :::
+::: code language="azurecli" source="~/azureml-examples-main/cli/batch-score.sh" ID="delete_endpoint" :::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

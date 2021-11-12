@@ -11,22 +11,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/21/2021
 ms.author: allensu
-ms.openlocfilehash: 5000ac68cc0e00cdbe9d0ebd430f8cd88fe49e98
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 204de2d0b3ed6e75d8b599e094a58e0b2e1826b0
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131057702"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131576109"
 ---
 # <a name="azure-load-balancer-skus"></a>Azure Load Balancer-SKUs
 
 Azure Load Balancer verfügt über zwei SKUs.
 
 ## <a name="sku-comparison"></a><a name="skus"></a> SKU-Vergleich
+Azure Load Balancer hat 3 SKUs - Basic, Standard und Gateway. Jede SKU ist auf ein bestimmtes Szenario zugeschnitten und unterscheidet sich in Umfang, Funktionen und Preis. 
 
-Der Lastenausgleich unterstützt sowohl Standard- als auch Basic-SKUs. Diese SKUs unterscheiden sich in Bezug auf Skalierung, Features und Preise. Jedes Szenario, das mit dem Lastenausgleich im Tarif „Basic“ möglich ist, kann auch mit dem Lastenausgleich im Tarif „Standard“ erstellt werden.
-
-Weitere Informationen zu den Unterschieden finden Sie in der folgenden Tabelle. Weitere Informationen finden Sie unter [Übersicht: Azure Load Balancer Standard](./load-balancer-overview.md).
+Um die Unterschiede zwischen Basic und Standard SKU zu vergleichen und zu verstehen, siehe die folgende Tabelle. Weitere Informationen finden Sie unter [Übersicht: Azure Load Balancer Standard](./load-balancer-overview.md). Informationen zu Gateway SKU - für virtuelle Netzwerk-Appliances (NVAs) von Drittanbietern, die sich derzeit in der Vorschau befinden - finden Sie unter [Gateway Load Balancer - Überblick](gateway-overview.md)
 
 >[!NOTE]
 > Microsoft empfiehlt den Lastenausgleich im Tarif „Standard“.
@@ -34,6 +33,7 @@ Eigenständige virtuelle Computer, Verfügbarkeitsgruppen und VM-Skalierungsgrup
 
 | | Load Balancer Standard | Load Balancer Basic |
 | --- | --- | --- |
+| **Szenario** |  Ausgestattet für den Lastausgleich des Datenverkehrs auf der Netzwerkebene, wenn hochleistungs und extrem niedrige Latenzzeiten erforderlich sind. Leitet den Datenverkehr innerhalb von und zwischen Regionen sowie zu Verfügbarkeitszonen für hohe Ausfallsicherheit. | Ausgestattet für kleine Anwendungen, die keine hohe Verfügbarkeit oder Redundanz benötigen. Nicht kompatibel mit Verfügbarkeitszonen. |
 | **Back-End-Typ** | IP-basiert, NIC-basiert | NIC-basiert |
 | **[Größe des Back-End-Pools](../azure-resource-manager/management/azure-subscription-service-limits.md#load-balancer)** | Unterstützt bis zu 1.000 Instanzen | Unterstützt bis zu 300 Instanzen |
 | **Endpunkte des Back-End-Pools** | Virtuelle Computer oder VM-Skalierungsgruppen in einem einzelnen Netzwerk | Virtuelle Computer in einer einzelnen Verfügbarkeitsgruppe oder VM-Skalierungsgruppe |

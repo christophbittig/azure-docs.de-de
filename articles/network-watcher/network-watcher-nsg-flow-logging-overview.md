@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/04/2021
 ms.author: damendo
-ms.openlocfilehash: aab3c66a76e22e17e5e5d6c0cd03ebca4562734d
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 6d51aa87232445e35533632d5071abd121a3fcfb
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129277649"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131442196"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen
 
@@ -375,6 +375,8 @@ Darüber hinaus wird beim Löschen einer NSG standardmäßig die zugeordnete Dat
 **Aus Internet-IP-Adressen protokollierte eingehende Datenflüsse an virtuelle Computer ohne öffentliche IP-Adressen**: Für virtuelle Computer, denen keine öffentliche IP-Adresse über eine öffentliche IP-Adresse zugewiesen wurde, die der Netzwerkkarte als öffentliche IP-Adresse auf Instanzebene zugeordnet ist, oder die zu einem Basis-Back-End-Pool für Lastenausgleich gehören, werden [standardmäßiges SNAT](../load-balancer/load-balancer-outbound-connections.md) und eine IP-Adresse verwendet, die von Azure zugewiesen wurde, um ausgehende Verbindung zu unterstützen. Daher sehen Sie möglicherweise Datenflussprotokolleinträge für Datenflüsse von Internet-IP-Adressen, wenn der jeweilige Datenfluss für einen Port im Bereich der Ports bestimmt war, die für SNAT zugewiesen sind. Obwohl Azure diese Datenflüsse zu dem virtuellen Computer nicht zulässt, wird der Versuch protokolliert und konzeptbedingt im NSG-Datenflussprotokoll von Network Watcher aufgeführt. Es empfiehlt sich, unerwünschten eingehenden Internet-Datenverkehr explizit mit NSG zu blockieren.
 
 **Netzwerksicherheitsgruppe in ExpressRoute-Gatewaysubnetz**: Es wird nicht empfohlen, Flüsse im ExpressRoute-Gatewaysubnetz zu protokollieren, weil der Datenverkehr das ExpressRoute-Gateway umgehen kann (Beispiel: [FastPath](../expressroute/about-fastpath.md)). Wenn also eine Netzwerksicherheitsgruppe mit einem ExpressRoute-Gatewaysubnetz verknüpft ist und Netzwerksicherheitsgruppen-Flussprotokolle aktiviert sind, werden ausgehende Flüsse zu virtuellen Computern möglicherweise nicht erfasst. Solche Flüsse müssen im Subnetz oder der NIC des virtuellen Computers erfasst werden. 
+
+**Datenverkehr über Private Link** - Aktivieren Sie die NSG-Datenflussprotokolle in einer Subnetz-NSG, die den privaten Link enthält, um Datenverkehr beim Zugriff auf PaaS-Ressourcen über private Links zu protokollieren. Aufgrund von Plattformeinschränkungen kann der Datenverkehr auf allen virtuellen Quell-Computern nur erfasst werden, während dies auf der Ziel-PaaS-Ressource nicht erfasst werden kann.
 
 **Problem mit der Netzwerksicherheitsgruppe des Application Gateway V2-Subnetzes:** Datenflussprotokollierung wird für die NSG des Application Gateway V2-Subnetzes derzeit [nicht unterstützt](../application-gateway/application-gateway-faq.yml#are-nsg-flow-logs-supported-on-nsgs-associated-to-application-gateway-v2-subnet). Dieses Problem wirkt sich nicht auf Application Gateway V1 aus.
 

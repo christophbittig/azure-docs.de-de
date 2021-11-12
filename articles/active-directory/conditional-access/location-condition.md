@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 06/21/2021
+ms.date: 10/27/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: karenhoran
-ms.reviewer: calebb, olhuan
+ms.reviewer: calebb, mewal
 ms.collection: M365-identity-device-management
 ms.custom: contperf-fy20q4
-ms.openlocfilehash: 09dbcf3557dd45d005a61f9aed99e29abbc684e6
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ef2a7671b1db13e1db9fae8339ae33726a2eb3b1
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128626416"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131444275"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>Verwenden der Standortbedingung in einer Richtlinie für bedingten Zugriff 
 
@@ -80,7 +80,7 @@ Wenn Sie **Standort anhand der IP-Adresse bestimmen (nur IPv4)** auswählen, erf
 > [!NOTE]
 > Anmeldungen von IPv6-Adressen können keinen Ländern oder Regionen zugeordnet werden und gelten als unbekannte Bereiche. Nur IPv4-Adressen können Ländern oder Regionen zugeordnet werden.
 
-Wenn Sie **Standort anhand von GPS-Koordinaten bestimmen (Vorschau)** auswählen, muss die Microsoft Authenticator-App auf dem mobilen Gerät des Benutzers installiert sein. Die Microsoft Authenticator-App des Benutzers wird vom System stündlich kontaktiert, um den GPS-Standort des mobilen Geräts des Benutzers zu erfassen.
+Wenn Sie **Standort anhand von GPS-Koordinaten bestimmen** auswählen, muss die Authentifizerungs-Anwendung von Microsoft auf dem mobilen Gerät des Benutzers installiert sein. Die Microsoft Authenticator-App des Benutzers wird vom System stündlich kontaktiert, um den GPS-Standort des mobilen Geräts des Benutzers zu erfassen.
 
 Wenn der Benutzer seinen Standort zum ersten Mal über die Microsoft Authenticator-App übermitteln muss, erhält er eine Benachrichtigung in der App. Der Benutzer muss die App öffnen und Standortberechtigungen erteilen. 
 

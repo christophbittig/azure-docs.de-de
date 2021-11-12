@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: mlops
 ms.author: keli19
 author: likebupt
-ms.date: 04/09/2020
+ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: designer
-ms.openlocfilehash: b3ef6f684123c863fd2bdfb5a5ec953b3b20cc6f
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: d600f7ad651b58f3cf194c8f5dace8f6dc4c7695
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129428063"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131560338"
 ---
 # <a name="use-pipeline-parameters-in-the-designer-to-build-versatile-pipelines"></a>Verwenden von Pipelineparametern im Designer zum Erstellen vielseitiger Pipelines
 
@@ -41,8 +41,8 @@ In diesem Artikel lernen Sie Folgendes:
 ## <a name="create-pipeline-parameter"></a>Erstellen von Pipelineparametern
 
 Es gibt drei Möglichkeiten, einen Pipelineparameter im Designer zu erstellen:
-- Erstellen Sie im Einstellungsbereich einen Pipelineparameter, und binden Sie ihn an ein Modul.
-- Stufen Sie einen Modulparameter zu einem Pipelineparameter herauf.
+- Erstellen Sie im Einstellungsfenster einen Pipeline-Parameter, und binden Sie ihn an eine Komponente.
+- Einen Komponentenparameter in einen Pipeline-Parameter umwandeln.
 - Höherstufen eines Datasets zu einem Pipelineparameter
 
 > [!NOTE]
@@ -52,7 +52,7 @@ Es gibt drei Möglichkeiten, einen Pipelineparameter im Designer zu erstellen:
 
 In diesem Abschnitt erstellen Sie einen Pipelineparameter im Einstellungsbereich.
 
-In diesem Beispiel erstellen Sie einen Pipelineparameter, der definiert, wie eine Pipeline fehlende Daten mit dem Modul **Clean Missing Data** (Fehlende Daten bereinigen) einfüllt.
+In diesem Beispiel erstellen Sie einen Pipeline-Parameter, der definiert, wie eine Pipeline fehlende Daten mit der Komponente **Fehlende Daten bereinigen** auffüllt.
 
 1. Wählen Sie neben dem Namen des Pipelineentwurfs das **Zahnradsymbol** aus, um den Bereich **Einstellungen** zu öffnen.
 
@@ -65,18 +65,18 @@ In diesem Beispiel erstellen Sie einen Pipelineparameter, der definiert, wie ein
    ![Screenshot, der zeigt, wie ein Pipelineparameter erstellt wird](media/how-to-use-pipeline-parameter/create-pipeline-parameter.png)
 
 
-Nachdem Sie einen Pipelineparameter erstellt haben, müssen Sie [ihn an den Modul-Parameter anfügen](#attach-module-parameter-to-pipeline-parameter), den Sie dynamisch festlegen möchten.
+Nachdem Sie einen Pipeline-Parameter erstellt haben, müssen Sie ihn [ mit dem Komponentenparameter](#attach-component-parameter-to-pipeline-parameter) verbinden, den Sie dynamisch einstellen wollen.
 
-### <a name="option-2-promote-a-module-parameter"></a>Option 2: Höherstufen eines Modulparameters
+### <a name="option-2-promote-a-component-parameter"></a>Option 2: Heraufsetzen eines Komponentenparameters
 
-Die einfachste Möglichkeit, einen Pipelineparameter für einen Modulwert zu erstellen, ist das Höherstufen eines Modulparameters. Gehen Sie folgendermaßen vor, um einen Modulparameter zu einem Pipelineparameter heraufzustufen:
+Die einfachste Möglichkeit, einen Pipeline-Parameter für einen Komponentenwert zu erstellen, besteht darin, einen Komponentenparameter zu fördern. Gehen Sie wie folgt vor, um einen Komponentenparameter zu einem Pipeline-Parameter zu machen:
 
-1. Wählen Sie das Modul aus, an das Sie einen Pipelineparameter anfügen möchten.
-1. Setzen Sie im Detailbereich des Moduls den Mauszeiger auf den Parameter, den Sie angeben möchten.
+1. Wählen Sie die Komponente aus, der Sie einen Pipeline-Parameter zuordnen möchten.
+1. Bewegen Sie den Mauszeiger im Detailfenster der Komponente auf den Parameter, den Sie angeben möchten.
 1. Wählen Sie die angezeigten Auslassungspunkte ( **...** ) aus.
 1. Wählen Sie **Zu Pipelineparameter hinzufügen** aus.
 
-    ![Screenshot, der das Höherstufen eines Modulparameters zu einem Pipelineparameter zeigt](media/how-to-use-pipeline-parameter/promote-module-para-to-pipeline-para.png)
+    ![Bildschirmbild, das zeigt, wie man Komponentenparameter zu Pipeline-Parameter1 macht](media/how-to-use-pipeline-parameter/promote-module-para-to-pipeline-para.png)
 
 1. Geben Sie einen Parameternamen und einen Standardwert ein.
 1. Wählen Sie **Speichern** aus.
@@ -95,19 +95,19 @@ Wenn Sie Ihre Pipeline mit Variablendatasets übermitteln möchten, müssen Sie 
 
 Wenn Sie die Pipeline das nächste Mal ausführen, können Sie mit dem Pipelineparameter nun ein anderes Dataset angeben.
 
-## <a name="attach-and-detach-module-parameter-to-pipeline-parameter"></a>Anfügen und Trennen von Modulparametern an bzw. von Pipelineparametern 
+## <a name="attach-and-detach-component-parameter-to-pipeline-parameter"></a>Anhängen und Abkoppeln von Komponentenparametern an Pipeline-Parameter 
 
-In diesem Abschnitt erfahren Sie, wie Sie Modulparameter an Pipelineparameter anfügen und sie davon trennen.
+In diesem Abschnitt erfahren Sie, wie Sie Komponentenparameter an Pipeline-Parameter anhängen und von ihnen trennen können.
 
-### <a name="attach-module-parameter-to-pipeline-parameter"></a>Anfügen von Modulparametern an Pipelineparameter
+### <a name="attach-component-parameter-to-pipeline-parameter"></a>Komponentenparameter an Pipeline-Parameter anhängen
 
-Sie können dieselben Modulparameter duplizierter Module an denselben Pipelineparameter anfügen, wenn Sie den Wert beim Auslösen der Pipelineausführung gleichzeitig ändern möchten.
+Sie können dieselben Komponentenparameter von duplizierten Komponenten an denselben Pipelineparameter anhängen, wenn Sie den Wert beim Auslösen des Pipelinelaufs auf einmal ändern möchten.
 
-Das folgende Beispiel enthält ein dupliziertes **Clean Missing Data**-Modul. Fügen Sie für jedes **Clean Missing Data**-Modul den **Replacement value** (Ersatzwert) an den Pipelineparameter **replace-missing-value** an:
+Das folgende Beispiel hat die Komponente **Fehlende Daten bereinigen** dupliziert. Fügen Sie für jede Komponente **Fehlende Daten bereinigen** den **Ersatzwert** dem Pipeline-Parameter **Ersatzwert** zu:
 
-1. Wählen Sie das Modul **Clean Missing Data** (Fehlende Daten bereinigen) aus.
+1. Wählen Sie die Komponente **Fehlende Daten bereinigen**.
 
-1. Legen Sie im Detailbereich des Moduls auf der rechten Seite der Canvas für den **Cleaning mode** (Reinigungsmodus) „Custom substitution value“ (benutzerdefinierter Ersatzwert) fest.
+1. Setzen Sie in der Komponentendetailansicht rechts vom Canvas den **Bereinigungsmodus** auf "Benutzerdefinierter Substitutionswert".
 
 1. Setzen Sie den Mauszeiger über das Feld **Replacement value**.
 
@@ -120,11 +120,11 @@ Das folgende Beispiel enthält ein dupliziertes **Clean Missing Data**-Modul. F�
 Sie haben das Feld **Replacement value** erfolgreich Ihrem Pipelineparameter angefügt. 
 
 
-### <a name="detach-module-parameter-to-pipeline-parameter"></a>Trennen von Modulparametern von Pipelineparametern
+### <a name="detach-component-parameter-to-pipeline-parameter"></a>Komponentenparameter an Pipeline-Parameter abkoppeln
 
 Nachdem Sie den **Replacement value** an den Pipelineparameter angefügt haben, ist er nicht aktionsfähig.
 
-Sie können den Modulparameter vom Pipelineparameter trennen, indem Sie auf die Auslassungspunkte ( **...** ) neben dem Modulparameter klicken und **Detach from pipeline parameter** (Vom Pipelineparameter trennen) auswählen.
+Sie können Komponentenparameter von Pipeline-Parametern abkoppeln, indem Sie auf die Ellipsen ( **...** ) neben dem Komponentenparameter klicken und **Abkoppeln von Pipeline-Parameter** wählen.
 
  ![Screenshot, der den nicht aktionsfähigen „Replacement value“ nach dem Anfügen an den Pipelineparameter zeigt](media/how-to-use-pipeline-parameter/non-actionable-module-parameter.png)
 
@@ -134,7 +134,7 @@ In diesem Abschnitt erfahren Sie, wie Sie Pipelineparameter aktualisieren und l�
 
 ### <a name="update-pipeline-parameters"></a>Aktualisieren von Pipelineparametern
 
-Führen Sie die folgenden Schritte aus, um einen Modul-Pipelineparameter zu aktualisieren:
+Gehen Sie wie folgt vor, um einen Komponenten-Pipeline-Parameter zu aktualisieren:
 
 1. Wählen Sie im oberen Bereich der Canvas das Zahnradsymbol aus.
 1. Im Abschnitt **Pipeline parameters** können Sie den Namen und den Standardwert für alle Ihre Pipelineparameter anzeigen und aktualisieren.
@@ -143,26 +143,26 @@ Führen Sie die folgenden Schritte aus, um einen Modul-Pipelineparameter zu aktu
 
 Einen Dataset-Pipelineparameter können Sie mit den folgenden Schritten löschen:
 
-1. Wählen Sie das Datasetmodul aus.
+1. Wählen Sie die Komponente "Datensatz".
 1. Deaktivieren Sie die Option **Set as pipeline parameter** (Als Pipelineparameter festlegen).
 
 
-### <a name="delete-module-pipeline-parameters"></a>Löschen eines Modul-Pipelineparameters
+### <a name="delete-component-pipeline-parameters"></a>Komponenten-Pipeline-Parameter löschen
 
-Löschen Sie mit folgenden Schritten einen Modul-Pipelineparameter:
+Gehen Sie wie folgt vor, um einen Komponenten-Pipeline-Parameter zu löschen:
 
 1. Wählen Sie im oberen Bereich der Canvas das Zahnradsymbol aus.
 
 1. Wählen Sie die Auslassungspunkte ( **...** ) neben dem Pipelineparameter aus.
 
-    In dieser Ansicht sehen Sie, welchen Modulen der Pipelineparameter angefügt ist.
+    In dieser Ansicht sehen Sie, mit welchen Komponenten der Pipeline-Parameter verbunden ist.
 
-    ![Screenshot, der den aktuellen Pipelineparameter zeigt, der auf ein Modul angewendet wird](media/how-to-use-pipeline-parameter/delete-pipeline-parameter2.png)
+    ![Screenshot, der den aktuellen Pipeline-Parameter zeigt, der auf eine Komponente angewendet wird](media/how-to-use-pipeline-parameter/delete-pipeline-parameter2.png)
 
 1. Wählen Sie **Delete parameter** (Parameter löschen) aus, um den Pipelineparameter zu löschen.
 
     > [!NOTE]
-    > Das Löschen eines Pipelineparameters bewirkt, dass alle angefügten Modulparameter getrennt werden und der Wert der getrennten Modulparameter den aktuellen Wert des Pipelineparameters beibehält.     
+    > Das Löschen eines Pipeline-Parameters führt dazu, dass alle angehängten Komponentenparameter abgetrennt werden und der Wert der abgetrennten Komponentenparameter den aktuellen Pipeline-Parameterwert behält.     
 
 ## <a name="trigger-a-pipeline-run-with-pipeline-parameters"></a>Auslösen einer Pipelineausführung mit Pipelineparametern 
 

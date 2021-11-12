@@ -1,15 +1,15 @@
 ---
 title: Übersicht über den Connected Machine-Agent
 description: Dieser Artikel bietet eine ausführliche Übersicht über den Agent für Server mit Azure Arc-Unterstützung, der die Überwachung von VMs unterstützt, die in Hybridumgebungen gehostet werden.
-ms.date: 10/12/2021
+ms.date: 10/28/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 71446d57d5f73e81c859a0d8453a2017f4c5fd12
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: c2fa68aedd837df2f7c573da8adaece3e4d16477
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129984362"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131462100"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Übersicht über den Agent für Server mit Azure Arc-Unterstützung
 
@@ -78,7 +78,13 @@ Der Azure Connected Machine-Agent für Windows und Linux kann abhängig von Ih
 
 ### <a name="supported-environments"></a>Unterstützte Umgebungen
 
-Azure Arc-fähige Server unterstützen die Installation des Connected Machine-Agents auf jedem physischen Server und virtuellen Computer, der *außerhalb* von Azure gehostet wird. Dies gilt auch für virtuelle Computer, die auf Plattformen wie VMware, Azure Stack HCI und anderen Cloudumgebungen ausgeführt werden. Azure Arc-fähige Server unterstützen nicht die Installation des Agents auf virtuellen Computern, die in Azure ausgeführt werden, oder auf virtuellen Computern, die in Azure Stack Hub oder Azure Stack Edge ausgeführt werden, da sie bereits als Azure-VMs modelliert sind.
+Azure Arc-fähige Server unterstützen die Installation des Connected-Machine-Agenten auf jedem physischen Server und virtuellen Computer, der *außerhalb* von Azure gehostet wird. Dies schließt Unterstützung für virtuelle Computer ein, die auf Plattformen laufen wie:
+
+* VMware
+* Azure Stack HCI
+* Andere Cloud-Umgebungen
+
+Azure Arc-fähige Server unterstützen *nicht* die Installation des Agenten auf virtuellen Computern, die in Azure ausgeführt werden, oder auf virtuellen Computern, die in Azure Stack Hub oder Azure Stack Edge ausgeführt werden, da sie bereits als virtuelle Azure-Computer ausgewiesen sind.
 
 ### <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
 

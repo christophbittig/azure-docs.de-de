@@ -5,14 +5,14 @@ services: firewall
 author: gopimsft
 ms.service: firewall
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 11/01/2021
 ms.author: victorh
-ms.openlocfilehash: e63336b0e84d303b51eda56f90ca6fb453d8ae0d
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 207097258a78d79d77e56052fc254065ca8a293c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "99831840"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131457613"
 ---
 # <a name="monitor-logs-using-azure-firewall-workbook"></a>Überwachen von Protokollen mit Azure Firewall Workbook
 
@@ -36,9 +36,13 @@ Die Übersichtsseite ermöglicht, Arbeitsbereiche, Zeit und Firewalls zu filtern
 
 ## <a name="application-rule-log-statistics"></a>Anwendungsregelprotokoll-Statistik
 
-Auf dieser Seite werden die eindeutigen Quellen der IP-Adresse im Zeitverlauf, die Nutzungshäufigkeit der Anwendungsregeln, der verweigerte/zulässige FQDN im Zeitverlauf und gefilterte Daten angezeigt. Sie können Daten auf der IP-Adresse basierend filtern.
+Auf dieser Seite werden die eindeutigen Quellen der IP-Adresse im Zeitverlauf, die Nutzungshäufigkeit der Anwendungsregeln, der verweigerte/zulässige FQDN im Zeitverlauf und gefilterte Daten angezeigt. Sie können Daten auf der IP-Adresse basierend filtern. 
 
 :::image type="content" source="./media/firewall-workbook/firewall-workbook-application-rule.png" alt-text="Anwendungsregelprotokoll von Azure Firewall Workbook":::
+
+In der Ansicht Webkategorien werden alle Aktionen zum Zulassen und Verweigern des Zugriffsprotokolls basierend auf dem Schweregrad zusammengefasst, der vom Firewalladministrator konfiguriert wurde.
+
+:::image type="content" source="./media/firewall-workbook/firewall-workbook-webcategory.png" alt-text="Azure Firewall Web-Kategorie Zusammenfassung":::
 
 ## <a name="network-rule-log-statistics"></a>Netzwerkregelprotokoll-Statistik
 
@@ -50,11 +54,18 @@ Sie können Protokolle auch auf Zeitfensterbasis filtern:
 
 :::image type="content" source="./media/firewall-workbook/firewall-workbook-network-rule-time.png" alt-text="Netzwerkregelprotokoll-Zeitfenster von Azure Firewall Workbook":::
 
+## <a name="idps-log-statistics"></a>Abfrageprotokollstatistik
+
+Diese Seite bietet einen Überblick über die Anzahl der IDPS-Aktionen für den gesamten Verkehr, der den IDPS-Regeln entspricht: Protokoll, Signatur-ID, Quell-IP.
+
+:::image type="content" source="./media/firewall-workbook/firewall-workbook-idps.png" alt-text="Azure Firewall Workbook idps Protokoll":::
+
 ## <a name="investigations"></a>Untersuchungen
 
 Sie können die Protokolle ansehen und auf Basis der Quell-IP-Adresse mehr über die Ressource erfahren. Sie können Informationen wie den Namen des virtuellen Computers und der Netzwerkschnittstelle erhalten. Es ist einfach, in den Protokollen nach der Ressource zu filtern.
 
 :::image type="content" source="./media/firewall-workbook/firewall-workbook-investigation.png" alt-text="Azure Firewall Workbook-Untersuchung":::
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

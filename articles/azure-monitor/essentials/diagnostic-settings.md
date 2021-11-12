@@ -1,17 +1,17 @@
 ---
 title: Erstellen von Diagnoseeinstellungen zum Senden von Plattformprotokollen und Metriken an verschiedene Ziele
 description: Senden Sie Metriken und Protokolle der Azure Monitor-Plattform mithilfe von Diagnoseeinstellungen an Azure Monitor-Protokolle, Azure Storage oder Azure Event Hubs.
-author: bwren
-ms.author: bwren
+author: rboucher
+ms.author: robb
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 06/09/2021
-ms.openlocfilehash: 50eb92441c248884930e556551a92acb9e43661b
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.date: 11/02/2021
+ms.openlocfilehash: 39cb496d02ca77a65e4adff7aabf591b54e07ea4
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130176404"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131459005"
 ---
 # <a name="create-diagnostic-settings-to-send-platform-logs-and-metrics-to-different-destinations"></a>Erstellen von Diagnoseeinstellungen zum Senden von Plattformprotokollen und Metriken an verschiedene Ziele
 [Plattformprotokolle](./platform-logs-overview.md) in Azure, z. B. das Azure-Aktivitätsprotokoll und Ressourcenprotokolle, liefern ausführliche Diagnose- und Überwachungsinformationen für Azure-Ressourcen und die Azure-Plattform, von der sie abhängen. [Plattformmetriken](./data-platform-metrics.md) werden standardmäßig gesammelt und in der Regel in der Azure Monitor-Metrikdatenbank gespeichert. Dieser Artikel enthält Details zum Erstellen und Konfigurieren von Diagnoseeinstellungen, um Plattformmetriken und -protokolle an verschiedene Ziele zu senden.
@@ -47,6 +47,7 @@ Plattformprotokolle und -metriken können an die Ziele in der folgenden Tabelle 
 | [Log Analytics-Arbeitsbereich](../logs/design-logs-deployment.md) | Das Senden von Protokollen und Metriken in einen Log Analytics-Arbeitsbereich gibt Ihnen die Möglichkeit, diese Daten zusammen mit anderen Überwachungsdaten, die mithilfe leistungsstarker Protokollabfragen von Azure Monitor erfasst werden, zu analysieren und andere Azure Monitor-Funktionen wie Warnungen und Visualisierungen zu nutzen. |
 | [Event Hubs](../../event-hubs/index.yml) | Das Senden von Protokollen und Metriken an Event Hubs ermöglicht Ihnen das Streamen von Daten an externe Systeme, z. B. SIEMs und andere Protokollanalyselösungen von Drittanbietern.  |
 | [Azure-Speicherkonto](../../storage/blobs/index.yml) | Das Archivieren von Protokollen und Metriken in einem Azure Storage-Konto ist für die Überwachung, statische Analyse oder Sicherung nützlich. Im Vergleich zu Azure Monitor-Protokollen und einem Log Analytics Arbeitsbereich ist Azure Storage kostengünstiger, und die Protokolle können unbegrenzt aufbewahrt werden.  |
+| [Azure Monitor – integrierte Partnerlösungen](/azure/partner-solutions/overview/)| Spezialisierte Integrationen zwischen Azure Monitor und anderen Überwachungsplattformen, die nicht von Mircrosoft stammen. |
 
 
 ### <a name="destination-requirements"></a>Anforderungen für Ziele
@@ -123,12 +124,12 @@ Sie können Diagnoseeinstellungen im-Azure-Portal entweder über das Azure Monit
         ![Senden an den Speicher](media/diagnostic-settings/storage-settings-new.png)
 
         > [!TIP]
-        > Legen Sie die Aufbewahrungsrichtlinie auf 0 fest, und löschen Sie die Daten mithilfe eines geplanten Auftrags manuell aus dem Speicher, um mögliche Verwirrung in Zukunft zu vermeiden.
+        > Denken Sie daran, die Aufbewahrungsrichtlinie auf 0 festzulegen, und verwenden Sie entweder die [ Lebenszyklusrichtlinie für den Azure-Speicher](/azure/storage/blobs/lifecycle-management-policy-configure) oder löschen Sie Ihre Daten mithilfe eines geplanten Auftrags aus dem Speicher. Diese Vorgehensweise sorgt wahrscheinlich für ein konstanteres Verhalten. 
         >
-        > Erstens: Wenn Sie Speicher für die Archivierung verwenden, sollten Sie die Daten in der Regel für mehr als 365 Tage aufbewahren. Zweitens: Wenn Sie eine Aufbewahrungsrichtlinie über 0 auswählen, wird das Ablaufdatum beim Zeitpunkt des Speicherns an die Protokolle angefügt. Nach dem Speichern können Sie das Datum für diese Protokolle nicht mehr ändern.
-        >
-        > Wenn Sie z. B. die Aufbewahrungsrichtlinie für *WorkflowRuntime* auf 180 Tage und dann 24 Stunden später auf 365 Tage festlegen, werden die in den ersten 24 Stunden gespeicherten Protokolle automatisch nach 180 Tagen gelöscht, während alle nachfolgenden Protokolle dieses Typs nach 365 Tagen automatisch gelöscht werden. Das Ändern der Aufbewahrungsrichtlinie zu einem späteren Zeitpunkt sorgt nicht dafür, dass die Protokolle aus den ersten 24 Stunden 365 Tage lang aufbewahrt werden.
-
+        > Erstens: Wenn Sie Speicher für die Archivierung verwenden, sollten Sie die Daten in der Regel für mehr als 365 Tage aufbewahren. Zweitens: Wenn Sie eine Aufbewahrungsrichtlinie über 0 auswählen, wird das Ablaufdatum beim Zeitpunkt des Speicherns an die Protokolle angefügt. Nach dem Speichern können Sie das Datum für diese Protokolle nicht mehr ändern. Wenn Sie z. B. die Aufbewahrungsrichtlinie für *WorkflowRuntime* auf 180 Tage und dann 24 Stunden später auf 365 Tage festlegen, werden die in den ersten 24 Stunden gespeicherten Protokolle automatisch nach 180 Tagen gelöscht, während alle nachfolgenden Protokolle dieses Typs nach 365 Tagen automatisch gelöscht werden. Das Ändern der Aufbewahrungsrichtlinie zu einem späteren Zeitpunkt sorgt nicht dafür, dass die Protokolle aus den ersten 24 Stunden 365 Tage lang aufbewahrt werden.
+    
+     1. **Partnerintegration** - Sie müssen zunächst eine Partnerintegration in Ihrem Abonnement installieren. Weitere Informationen finden Sie unter [Azure Monitor-Partnerintegrationen](/azure/partner-solutions/overview/). 
+    
 6. Klicken Sie auf **Speichern**.
 
 Nach einigen Augenblicken wird die neue Einstellung in der Liste der Einstellungen für diese Ressource angezeigt, und Protokolle werden an die angegebenen Ziele gestreamt, sobald neue Ereignisdaten generiert werden. Zwischen der Ausgabe eines Ereignisses und dessen [Anzeige in einem Log Analytics-Arbeitsbereich](../logs/data-ingestion-time.md) können bis zu 15 Minuten vergehen.

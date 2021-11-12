@@ -4,12 +4,12 @@ description: Lernen Sie die Konzepte und Techniken der Azure Functions kennen, d
 ms.assetid: d8efe41a-bef8-4167-ba97-f3e016fcd39e
 ms.topic: conceptual
 ms.date: 9/02/2021
-ms.openlocfilehash: 94760d7029c74cb5669a1275c4d670f1b89b6c12
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: db0fc469d7f4429d8a99c5869940dfc50b63e845
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131048777"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131477058"
 ---
 # <a name="azure-functions-developer-guide"></a>Azure Functions: Entwicklerhandbuch
 In Azure Functions nutzen bestimmte Funktionen einige wichtige technische Konzepte und Komponenten gemeinsam, unabhängig von der verwendeten Sprache oder Bindung. Bevor Sie sich mit den spezifischen Details einer bestimmten Sprache oder Bindung beschäftigen, sollten Sie diese Übersicht lesen, die für alle Funktionen gilt.
@@ -115,10 +115,10 @@ Identitätsbasierte Verbindungen werden von den folgenden Komponenten unterstüt
 
 | Verbindungsquelle                                       | Unterstützte Pläne | Weitere Informationen                                                                                                         |
 |---------------------------------------------------------|-----------------|--------------------------------------------------------------------------------------------------------------------|
-| Trigger und Bindungen bei Azure-Blob – Vorschau              | All             | [Erweiterungsversion 5.0.0-beta1 oder höher](./functions-bindings-storage-blob.md#storage-extension-5x-and-higher)     |
-| Trigger und Bindungen bei Azure Queue – Vorschau             | All             | [Erweiterungsversion 5.0.0-beta1 oder höher](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher)    |
-| Trigger und Bindungen bei Azure Event Hubs – Vorschau        | All             | [Erweiterungsversion 5.0.0-beta1 oder höher](./functions-bindings-event-hubs.md#event-hubs-extension-5x-and-higher)    |
-| Trigger und Bindungen bei Azure Service Bus – Vorschau       | All             | [Erweiterungsversion 5.0.0-beta2 oder höher](./functions-bindings-service-bus.md#service-bus-extension-5x-and-higher)  |
+| Azure Blob Auslöser und Bindungen               | All             | [Erweiterung Version 5.0.0 oder höher](./functions-bindings-storage-blob.md#storage-extension-5x-and-higher)     |
+| Azure Queue Auslöser und Bindungen            | Alle             | [Erweiterung Version 5.0.0 oder höher](./functions-bindings-storage-queue.md#storage-extension-5x-and-higher)    |
+| Azure Event Hubs Auslöser und Bindungen     | Alle             | [Erweiterung Version 5.0.0 oder höher](./functions-bindings-event-hubs.md#event-hubs-extension-5x-and-higher)    |
+| Azure Service Bus Auslöser und Bindungen       | Alle             | [Erweiterung Version 5.0.0 oder höher](./functions-bindings-service-bus.md#service-bus-extension-5x-and-higher)  |
 | Trigger und Bindungen bei Azure Cosmos DB – Vorschau         | Elastic Premium | [Erweiterungsversion 4.0.0-preview1 oder höher](./functions-bindings-cosmosdb-v2.md#cosmos-db-extension-4x-and-higher) |
 | Vom Host benötigter Speicher („AzureWebJobsStorage“) – Vorschau | All             | [Verbinden zum Hostspeicher mit einer Identität](#connecting-to-host-storage-with-an-identity-preview)                        |
 
@@ -145,11 +145,11 @@ Wählen Sie unten eine Registerkarte aus, um mehr über Berechtigungen für die 
 
 [!INCLUDE [functions-service-bus-permissions](../../includes/functions-service-bus-permissions.md)]
 
-# <a name="azure-cosmos-db-extension"></a>[Azure Cosmos DB-Erweiterung](#tab/cosmos)
+# <a name="azure-cosmos-db-extension-preview"></a>[Azure Cosmos DB Erweiterung (Vorschau)](#tab/cosmos)
 
 [!INCLUDE [functions-cosmos-permissions](../../includes/functions-cosmos-permissions.md)]
 
-# <a name="functions-host-storage"></a>[Functions-Hostspeicher](#tab/azurewebjobsstorage)
+# <a name="functions-host-storage-preview"></a>[Funktionen Hostspeicher (Vorschau)](#tab/azurewebjobsstorage)
 
 [!INCLUDE [functions-azurewebjobsstorage-permissions](../../includes/functions-azurewebjobsstorage-permissions.md)]
 

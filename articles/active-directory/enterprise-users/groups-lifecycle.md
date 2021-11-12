@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: jodah
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7bde4362580ebfd04f67b5311c79cb8c64e85ddc
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 6aee712f22bd4110670a93dc5f7a9709689f2f96
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131052653"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131440802"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>Konfigurieren der Ablaufrichtlinie für Microsoft 365-Gruppen
 
@@ -67,7 +67,7 @@ Nachfolgend sind Rollen aufgeführt, mit denen der Ablauf für Microsoft 365-Gr
 Role | Berechtigungen
 -------- | --------
 Globaler Administrator, Gruppenadministrator oder Benutzeradministrator | Kann die Einstellungen der Ablaufrichtlinie für Microsoft 365-Gruppen erstellen, lesen, aktualisieren oder löschen<br>Kann eine beliebige Microsoft 365-Gruppe erneuern
-Benutzer | Kann eine Microsoft 365-Gruppe, deren Besitzer er ist, erneuern<br>Kann eine Microsoft 365 Gruppe, deren Besitzer er ist, wiederherstellen<br>Kann die Einstellungen der Ablaufrichtlinie lesen
+Benutzer | Sie können eine Microsoft 365-Gruppe erneuern, die sie besitzen<br>Sie können eine Microsoft 365-Gruppe wiederherstellen, die sie besitzen<br>Kann die Einstellungen der Ablaufrichtlinie lesen
 
 Weitere Informationen zu Berechtigungen zum Wiederherstellen einer gelöschten Gruppe finden Sie unter [Wiederherstellen einer gelöschten Microsoft 365-Gruppe in Azure Active Directory](groups-restore-deleted.md).
 
@@ -116,7 +116,7 @@ Wenn die Gruppe, die Sie wiederherstellen, Dokumente, SharePoint-Websites oder a
 
 ## <a name="how-to-retrieve-microsoft-365-group-expiration-date"></a>Abrufen des Ablaufdatums für eine Microsoft 365-Gruppe
 
-Zusätzlich zum Zugriffsbereich, in dem Benutzer Gruppendetails einschließlich Ablaufdatum und letztem Erneuerungsdatum anzeigen können, kann das Ablaufdatum für eine Microsoft 365-Gruppe aus der Betaversion der Microsoft Graph-REST-API abgerufen werden. expirationDateTime als Gruppeneigenschaft wurde in der Betaversion von Microsoft Graph aktiviert. Sie kann mit einer GET-Anforderung abgerufen werden. Weitere Informationen finden Sie in [diesem Beispiel](/graph/api/group-get?view=graph-rest-beta#example&preserve-view=true).
+Zusätzlich zum Zugriffsbereich, in dem Benutzer Gruppendetails einschließlich des Ablaufdatums und des Datums der letzten Erneuerung anzeigen können, kann das Ablaufdatum einer Microsoft 365-Gruppe von der Microsoft Graph REST API Beta abgerufen werden. expirationDateTime als Gruppeneigenschaft wurde in der Betaversion von Microsoft Graph aktiviert. Sie kann mit einer GET-Anforderung abgerufen werden. Weitere Informationen finden Sie in [diesem Beispiel](/graph/api/group-get?view=graph-rest-beta#example&preserve-view=true).
 
 > [!NOTE]
 > Um Gruppenmitgliedschaften im Zugriffsbereich zu verwalten, muss „Zugriff auf Gruppen im Zugriffsbereich einschränken“ in der Allgemeinen Einstellung für Azure Active Directory-Gruppen auf „Nein“ festgelegt werden.

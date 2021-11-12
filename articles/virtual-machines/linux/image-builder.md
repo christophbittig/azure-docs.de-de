@@ -1,6 +1,6 @@
 ---
-title: Verwenden von Azure Image Builder mit einem Imagekatalog für virtuelle Linux-Computer
-description: Erstellen Sie Linux-VM-Images mit Azure Image Builder und einem Katalog für freigegebene Images.
+title: Verwenden von Azure Image Builder bei Azure Compute Gallery auf virtuellen Linux-Computern
+description: Erstellen Sie Linux-Images für virtuelle Computer mit dem Azure Image Builder und der Azure Compute Gallery.
 author: kof-f
 ms.author: kofiforson
 ms.reviewer: cynthn
@@ -8,23 +8,23 @@ ms.date: 03/02/2020
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: image-builder
-ms.openlocfilehash: ea18c4f5738fef119106dd983b58252ef364bae8
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: c6a8017f241fe1636b6f9c922c167bb5e2d4ecde
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122770356"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471457"
 ---
-# <a name="create-a-linux-image-and-distribute-it-to-a-shared-image-gallery-by-using-azure-cli"></a>Erstellen eines Linux-Images und Verteilen des Images über eine Shared Image Gallery mithilfe der Azure CLI
+# <a name="create-a-linux-image-and-distribute-it-to-an-azure-compute-gallery-by-using-azure-cli"></a>Erstellen eines Linux-Images und Verteilen des Images auf die Azure Compute Gallery mithilfe von Azure CLI
 
-**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Flexible Skalierungsgruppen 
+**Gilt für:** :heavy_check_mark: Linux-VMs :heavy_check_mark: Flexible Skalierungsgruppen 
 
-In diesem Artikel erfahren Sie, wie Sie mit Azure Image Builder und der Azure CLI eine Imageversion in einem [Katalog für freigegebene Images](../shared-image-galleries.md) erstellen und wie Sie diese dann global verteilen. Sie können zu diesem Zweck auch [Azure PowerShell](../windows/image-builder-gallery.md) verwenden.
+In diesem Abschnitt erfahren Sie, wie Sie mit Azure Image Builder und Azure CLI eine Imageversion in einer [Azure Compute Gallery](../shared-image-galleries.md) (ehemals Shared Image Gallery) erstellen und wie Sie diese dann global verteilen. Sie können zu diesem Zweck auch [Azure PowerShell](../windows/image-builder-gallery.md) verwenden.
 
 
 Wir verwenden zum Konfigurieren des Images eine JSON-Beispielvorlage. Wir verwenden die JSON-Datei [helloImageTemplateforSIG.json](https://github.com/danielsollondon/azvmimagebuilder/blob/master/quickquickstarts/1_Creating_a_Custom_Linux_Shared_Image_Gallery_Image/helloImageTemplateforSIG.json). 
 
-Die Vorlage verwendet [sharedImage](image-builder-json.md#distribute-sharedimage) als Wert für den `distribute`-Abschnitt der Vorlage, um das Image in einem Katalog für freigegebene Images zu verteilen.
+Die Vorlage verwendet [sharedImage](image-builder-json.md#distribute-sharedimage) (freigegebenes Image) als Wert für den Abschnitt `distribute` der Vorlage, um das Image an die Azure Compute Gallery zu verteilen.
 
 
 ## <a name="register-the-features"></a>Registrieren des Features
@@ -63,7 +63,7 @@ sigResourceGroup=ibLinuxGalleryRG
 location=westus2
 # Additional region to replicate the image to - we are using East US in this example
 additionalregion=eastus
-# name of the shared image gallery - in this example we are using myGallery
+# name of the Azure Compute Gallery - in this example we are using myGallery
 sigName=myIbGallery
 # name of the image definition to be created - in this example we are using myImageDef
 imageDefName=myIbImageDef
@@ -84,7 +84,7 @@ az group create -n $sigResourceGroup -l $location
 ```
 
 ## <a name="create-a-user-assigned-identity-and-set-permissions-on-the-resource-group"></a>Erstellen einer vom Benutzer zugewiesene Identität und Festlegen von Berechtigungen für die Ressourcengruppe
-Image Builder verwendet die angegebene [Benutzeridentität](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity), um das Image in die Azure Shared Image Gallery (SIG) einzufügen. In diesem Beispiel erstellen Sie eine Azure-Rollendefinition, die über die präzisen Aktionen zur Verteilung des Images an die SIG verfügt. Die Rollendefinition wird dann der Benutzeridentität zugewiesen.
+Image Builder verwendet die angegebene [Benutzeridentität](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity), um das Image in die Azure Compute Gallery-Instanz. In diesem Beispiel erstellen Sie eine Azure-Rollendefinition, die über die präzisen Aktionen zur Verteilung des Images an die SIG verfügt. Die Rollendefinition wird dann der Benutzeridentität zugewiesen.
 
 ```bash
 # create user assigned identity for image builder to access the storage account where the script is located
@@ -120,9 +120,9 @@ az role assignment create \
 
 ## <a name="create-an-image-definition-and-gallery"></a>Erstellen einer Imagedefinition und eines Imagekatalogs
 
-Zum Verwenden von Image Builder mit einem Katalog mit freigegebenen Images benötigen Sie einen vorhandenen Imagekatalog und eine Imagedefinition. Imagekatalog und Imagedefinition werden nicht von Image Builder für Sie erstellt.
+Zum Verwenden von Image Builder mit einer Azure Compute Gallery benötigen Sie eine vorhandene Galerie und eine Imagedefinition. Die Galerie und die Imagedefinition werden nicht von Image Builder für Sie erstellt.
 
-Wenn Sie noch nicht über einen zu verwendenden Katalog und eine Imagedefinition verfügen, erstellen Sie diese zunächst. Erstellen Sie zuerst einen Imagekatalog.
+Wenn Sie noch nicht über einen zu verwendenden Katalog und eine Imagedefinition verfügen, erstellen Sie diese zunächst. Erstellen Sie zunächst eine Galerie.
 
 ```azurecli-interactive
 az sig create \
@@ -225,7 +225,7 @@ Wenn Sie die Imageversion erneut anpassen möchten, um eine neue Version desselb
 
 Das erstellte Image und dessen Ressourcendateien werden gelöscht. Achten Sie darauf, dass Sie mit dieser Bereitstellung fertig sind, bevor Sie die Ressourcen löschen.
 
-Wenn Sie die Imagekatalogressourcen löschen, müssen Sie alle Imageversionen löschen, bevor Sie die Imagedefinition löschen können, die für deren Erstellung verwendet wurde. Sie müssen zunächst alle Imagedefinitionen im Katalog löschen, um den Katalog löschen zu können.
+Beim Löschen von Galerie-Ressourcen müssen Sie alle Imageversionen löschen, bevor Sie die Imagedefinition löschen können, mit der sie erstellt wurden. Sie müssen zunächst alle Imagedefinitionen im Katalog löschen, um den Katalog löschen zu können.
 
 Löschen Sie die Image Builder-Vorlage.
 
@@ -289,4 +289,4 @@ az group delete -n $sigResourceGroup -y
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über [Azure-Kataloge mit freigegebenen Images](../shared-image-galleries.md).
+Weitere Informationen zu [Azure Compute Gallery](../shared-image-galleries.md).

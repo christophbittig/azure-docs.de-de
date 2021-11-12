@@ -10,12 +10,12 @@ ms.author: chez
 ms.reviewer: jburchel
 ms.topic: conceptual
 ms.date: 09/09/2021
-ms.openlocfilehash: e2621a6eea481866bb5351623065e7d113e8e9bd
-ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
+ms.openlocfilehash: da1348f0e31fbe0c3e2528692d40675d799e43da
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130138673"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131469690"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-a-storage-event"></a>Erstellen eines Triggers zum Ausführen einer Pipeline als Reaktion auf ein Speicherereignis
 
@@ -31,6 +31,9 @@ Das folgende Video enthält eine zehnminütige Einführung und Demonstration die
 
 > [!NOTE]
 > Die in diesem Artikel beschriebene Integration basiert auf [Azure Event Grid](https://azure.microsoft.com/services/event-grid/). Stellen Sie sicher, dass Ihr Abonnement für den Event Grid-Ressourcenanbieter registriert ist. Weitere Informationen finden Sie unter [Ressourcenanbieter und -typen](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal). Sie müssen dazu in der Lage sein, die Aktion *Microsoft.EventGrid/eventSubscriptions/* * auszuführen. Diese Aktion ist Teil der integrierten Rolle EventGrid-EventSubscription-Mitwirkender.
+
+> [!NOTE]
+> Wenn sich das Blob Speicherkonto hinter einem [privaten Endpunkt](../storage/common/storage-private-endpoints.md) befindet und den Zugriff auf öffentliche Netzwerke blockiert, müssen Sie Netzwerkregeln konfigurieren, um die Kommunikation von Blob Storage zu Azure Event Grid zu ermöglichen. Sie können entweder Speicherzugriff auf vertrauenswürdige Azure-Dienste gewähren, z. B. Event Grid, wie in der [Storage-Dokumentation](../storage/common/storage-network-security.md#grant-access-to-trusted-azure-services) beschrieben, oder private Endpunkte für Event Grid konfigurieren, die an den VNET-Adressraum entsprechend der [Event Grid-Dokumentation](../event-grid/configure-private-endpoints.md) zuordnen
 
 ## <a name="create-a-trigger-with-ui"></a>Erstellen eines Triggers über die Benutzeroberfläche
 

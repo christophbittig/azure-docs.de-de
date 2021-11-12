@@ -2,14 +2,14 @@
 title: Übersicht über Sicherungstresore
 description: Übersicht über Sicherungstresore
 ms.topic: conceptual
-ms.date: 09/08/2021
+ms.date: 10/31/2021
 ms.custom: references_regions
-ms.openlocfilehash: afe103e7fb6c2cb59634029c5ae9a75acadf0afc
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 1a3909e525adadc2e5983e2792e407301a5b321d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130235884"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131473640"
 ---
 # <a name="backup-vaults-overview"></a>Übersicht über Sicherungstresore
 
@@ -132,7 +132,7 @@ In diesem Abschnitt wird erläutert, wie Sie einen (für Azure Backup konfigurie
 
 ### <a name="supported-regions"></a>Unterstützte Regionen
 
-Das Verschieben des Tresors zwischen Abonnements und Ressourcengruppen wird derzeit in den folgenden Regionen unterstützt: „USA, Westen“, „USA, Süden-Mitte“, „Asien, Osten“, „Schweiz, Norden“, „Südafrika, Norden“, „Vereinigtes Königreich, Westen“, „Vereinigtes Königreich, Westen“, „VAE, Norden“, „Vereinigtes Königreich, Westen“, „Australien, Südosten“, „Japan, Westen“, „Kanada, Osten“, „Südkorea, Mitte“, „Australien, Mitte“, „USA, Westen-Mitte“, „Indien, Mitte“, „Indien, Westen“, „Indien, Süden“, VAE, Mitte“, „USA, Westen-Mitte“, „Norwegen, Westen“, „Schweiz, Westen“
+Das Verschieben des Tresors zwischen Abonnements und Ressourcengruppen wird in allen öffentlichen Bereichen unterstützt.
 
 ### <a name="use-azure-portal-to-move-backup-vault-to-a-different-resource-group"></a>Verwenden des Azure-Portals zum Verschieben eines Azure Backup-Tresors in eine andere Ressourcengruppe
 

@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: c785bec3fc403a1090d5604d0954271992aea1f3
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: c4dec92555d52a1e405c9d27c4242237add47619
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122689646"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131456459"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>Erstellen eines virtuellen Computers aus einem verwalteten Image
 
@@ -23,7 +23,7 @@ Sie können über das Azure-Portal oder mit PowerShell mehrere virtuelle Compute
 
 Vor dem Erstellen eines neuen virtuellen Computers müssen Sie [ein verwaltetes VM-Image erstellen](capture-image-resource.md), das als Quellimage verwendet werden soll, und auf dem Image jedem Benutzer, der darauf zugreifen soll, Lesezugriff gewähren. 
 
-Ein verwaltetes Image unterstützt bis zu 20 Bereitstellungen gleichzeitig. Wenn Sie versuchen, mehr als 20 VMs gleichzeitig aus demselben verwalteten Image zu erstellen, kann dies aufgrund der Einschränkungen bei der Speicherleistung einer einzelnen VHD zu Timeouts bei der Bereitstellung führen. Wenn Sie mehr als 20 VMs gleichzeitig erstellen möchten, verwenden Sie ein Image für [Shared Image Gallerys](../shared-image-galleries.md), das mit jeweils einem Replikat pro 20 gleichzeitige VM-Bereitstellungen konfiguriert wurde.
+Ein verwaltetes Image unterstützt bis zu 20 Bereitstellungen gleichzeitig. Wenn Sie versuchen, mehr als 20 VMs gleichzeitig aus demselben verwalteten Image zu erstellen, kann dies aufgrund der Einschränkungen bei der Speicherleistung einer einzelnen VHD zu Timeouts bei der Bereitstellung führen. Wenn Sie mehr als 20 virtuelle Computer gleichzeitig erstellen möchten, verwenden Sie ein Image für [Azure Compute Gallery](../shared-image-galleries.md) (früher Shared Image Gallery genannt), das mit jeweils einem Replikat pro 20 gleichzeitiger Bereitstellungen an virtuellen Computern konfiguriert wurde.
 
 ## <a name="use-the-portal"></a>Verwenden des Portals
 

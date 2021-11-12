@@ -9,12 +9,12 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.date: 10/21/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: dd43c01cac8b0c0c24a3a17385c90d9630da35c5
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 95753a40c60e6b191b768fa3ac9cae3c5e9cb466
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131019640"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131433268"
 ---
 # <a name="whats-new-in-azure-sentinel"></a>Neuerungen in Azure Sentinel
 
@@ -37,6 +37,21 @@ Elemente, die älter als sechs Monate sind, finden Sie im [Archiv zu den Neuerun
 >
 
 ## <a name="november-2021"></a>November 2021
+
+### <a name="windows-forwarded-events-connector-now-available-public-preview"></a>Windows Forwarded Events Connector jetzt verfügbar (öffentliche Vorschau)
+
+Dank dieses neuen Datenkonnektors können Sie jetzt Ereignisprotokolle von Windows-Servern, die mit Ihrem Azure Sentinel-Arbeitsbereich verbunden sind, mit Windows Event Collection/Windows Event Forwarding (WEC/WEF) streamen. Der Connector verwendet den neuen Azure Monitor Agent (AMA), der eine Reihe von Vorteilen gegenüber dem alten Log Analytics Agent (auch bekannt als MMA) bietet:
+- **Skalierbarkeit:** Wenn Sie die Windows-Ereignissammlung (WEC) aktiviert haben, können Sie den Azure Monitor Agent (AMA) auf dem WEC-Rechner installieren, um Protokolle von vielen Servern über einen einzigen Verbindungspunkt zu sammeln.
+
+- **Geschwindigkeit:** Die AMA kann Daten mit einer verbesserten Rate von 5K EPS senden, was eine schnellere Datenaktualisierung ermöglicht.
+
+- **Effizienz:** Mit der AMA können Sie komplexe Datensammelregeln (DCR) entwerfen, um die Protokolle an der Quelle zu filtern und genau die Ereignisse auszuwählen, die an Ihren Arbeitsbereich weitergeleitet werden sollen. DCRs tragen dazu bei, den Netzwerkverkehr und die Ingestionskosten zu senken, indem unerwünschte Ereignisse ausgelassen werden.
+
+- **Abdeckung:** WEC/WEF ermöglicht das Sammeln von Windows-Ereignisprotokollen von älteren (lokalen und physischen) Servern sowie von stark genutzten oder sensiblen Rechnern, wie z. B. Domänencontrollern, bei denen die Installation eines Agenten unerwünscht ist. 
+
+Wir empfehlen, diesen Konnektor mit den installierten Parsern [Azure Sentinel Information Model (ASIM)](normalization.md) zu verwenden, um eine vollständige Unterstützung der Datennormalisierung zu gewährleisten.
+
+Erfahren Sie mehr über den [Windows Forwarded Events Connector](data-connectors-reference.md#windows-forwarded-events-preview).
 
 ### <a name="near-real-time-nrt-threat-detection-rules-now-available-public-preview"></a>Bedrohungserkennungsregeln nahezu in Echtzeit (NRT) jetzt verfügbar (Public Preview)
 
@@ -79,7 +94,7 @@ Wir entwickeln unsere aktuelle kostenlose Testversion um die folgenden Updates w
 Nutzungen, die diese Grenzwerte überschreiten, werden gemäß den Preisen berechnet, die auf der [Seite Azure Sentinel Preise](https://azure.microsoft.com/pricing/details/azure-sentinel) aufgeführt sind. Gebühren im Zusammenhang mit zusätzlichen Funktionen für die[Automatisierung](automation-in-azure-sentinel.md)sowie [ ‘Bringen Sie Ihr eigenes Maschinen-Lernen](bring-your-own-ml.md) mit‘ gelten auch während des kostenlosen Testversionszeitraums weiter.
 
 > [!TIP]
-> Während Ihrer kostenlosen Testversion finden Sie Ressourcen für Kostenverwaltung, Schulungen und vieles mehr in der Registerkarte  **Neues und Leitfäden> Kostenlose Testversion** in Azure Sentinel. Auf dieser Registerkarte werden auch Details zu den Datumsangaben Ihrer kostenlosen Testversion und zu der Anzahl der Tage angezeigt, die Sie bis zum Ablauf der Testversion noch haben.
+> Während Ihrer kostenlosen Testversion finden Sie Ressourcen für Kostenverwaltung, Schulungen und vieles mehr in den **Leitfäden** zu News & > Registerkarte Kostenlose Testversion in Azure Sentinel. Auf dieser Registerkarte werden auch Details zu den Datumsangaben Ihrer kostenlosen Testversion und zu der Anzahl der Tage angezeigt, die Sie bis zum Ablauf der Testversion noch haben.
 >
 
 Weitere Informationen finden Sie unter [Planen und Verwalten von Kosten für Azure Sentinel](azure-sentinel-billing.md).
@@ -134,7 +149,7 @@ Die folgende Liste enthält Highlights der neuen sofort einsatzbereiten Lösunge
    :::column-end:::
 :::row-end:::
 
-Weitere Informationen finden Sie unter:
+Weitere Informationen finden Sie unter
 
 - [Informationen zu Azure Sentinel-Lösungen](sentinel-solutions.md)
 - [Entdecken und Bereitstellen von Azure Sentinel-Lösungen](sentinel-solutions-deploy.md)
@@ -166,7 +181,7 @@ Beispiel:
 > Die Geolocation- und WhoIs-Informationen stammen vom Microsoft Threat Intelligence-Dienst, auf den Sie auch über die API zugreifen können. Weitere Informationen finden Sie unter [Anreichern von Entitäten mit Geolocationdaten über die API](geolocation-data-api.md).
 >
 
-Weitere Informationen finden Sie unter:
+Weitere Informationen finden Sie unter
 
 - [Grundlegendes zu Threat Intelligence in Azure Sentinel](understand-threat-intelligence.md)
 - [Threat Intelligence-Integrationen](threat-intelligence-integration.md)
@@ -202,6 +217,20 @@ Beispiel:
 :::image type="content" source="media/whats-new/notebooks-synapse.png" alt-text="Screenshot der neuen Azure Synapse-Funktionalität auf der Seite &quot;Notebooks&quot;." lightbox="media/whats-new/notebooks-synapse.png":::
 
 Weitere Informationen finden Sie unter [Aufspüren von Sicherheitsrisiken mit Jupyter Notebook verwenden](notebooks.md).
+
+
+### <a name="deploy-and-monitor-azure-key-vault-honeytokens-with-azure-sentinel"></a>Bereitstellung und Überwachung von Azure Key Vault-Honeytokens mit Azure Sentinel
+
+Die neue Lösung **Azure Sentinel Deception** hilft Ihnen bei der Überwachung bösartiger Aktivitäten in Ihren Key Vaults, indem sie Ihnen hilft, Scheinschlüssel und Geheimnisse, so genannte *Honey*-Tokens, in ausgewählten Azure Key Vaults einzusetzen.
+
+Nach der Bereitstellung erzeugt jeder Zugriff oder Vorgang mit den Honigtoken-Schlüsseln und -Geheimnissen Vorfälle, die Sie in Azure Sentinel untersuchen können.
+
+Da es keinen Grund gibt, Honeytoken-Schlüssel und -Geheimnisse zu verwenden, kann jede ähnliche Aktivität in Ihrem Arbeitsbereich bösartig sein und sollte untersucht werden.
+
+Die Lösung **Azure Sentinel Deception** umfasst eine Arbeitsmappe, die Sie bei der Bereitstellung der Honigtokens unterstützt, entweder in großem Umfang oder einzeln, Watchlists zur Verfolgung der erstellten Honigtokens und Analyseregeln zur Erzeugung von Vorfällen nach Bedarf.
+
+Weitere Informationen finden Sie unter [Bereitstellung und Überwachung von Azure Key Vault-Honeytokens mit Azure Sentinel (öffentliche Vorschau)](monitor-key-vault-honeytokens.md).
+
 
 ## <a name="october-2021"></a>Oktober 2021
 
@@ -386,7 +415,7 @@ Azure Sentinel bietet jetzt die integrierte **Microsoft Threat Intelligence-Abgl
 Die Regel **Microsoft Threat Intelligence-Abgleichsanalyse** gleicht derzeit Domänenindikatoren mit den folgenden Protokollquellen ab:
 
 - [CEF](connect-common-event-format.md)
-- [DNS](./data-connectors-reference.md#domain-name-server)
+- [DNS](./data-connectors-reference.md#windows-dns-server-preview)
 - [Syslog](connect-syslog.md)
 
 Weitere Informationen finden Sie unter [Erkennen von Bedrohungen mithilfe von Abgleichsanalysen (öffentliche Vorschau)](work-with-threat-indicators.md#detect-threats-using-matching-analytics-public-preview).

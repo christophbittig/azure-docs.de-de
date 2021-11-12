@@ -5,14 +5,18 @@ author: craftyhouse
 ms.topic: conceptual
 ms.date: 10/19/2021
 ms.author: micraft
-ms.openlocfilehash: 11660a3bb10e7004ce78d2788f93ac6fc2fc821d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 17ec57ca04defa61080ebb5a67f879c737ea16fa
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131094950"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131460391"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-node-type-with-managed-data-diskspreview"></a>Bereitstellen eines Azure Service Fabric-Clusterknotentyps mit verwalteten Datenträgern (Vorschau)
+
+>[!NOTE]
+> Die Unterstützung für Managed Data-Datenträger befindet sich derzeit nur in der Vorschau und sollte nicht mit Produktions-Workloads verwendet werden.
+
 
 Service Fabric-Knotentypen verwenden standardmäßig auf jeder VM in der zugrunde liegenden VM-Skalierungsgruppe den temporären Datenträger für die Datenspeicherung. Da der temporäre Datenträger jedoch nicht persistent ist und die Größe des temporären Datenträgers an eine bestimmte VM-SKU gebunden ist, kann dies für einige Szenarios zu restriktiv sein. Mit Azure Managed Disks verfügen Kunden über einen persistenten Datenträger, auf dem sie die Größe und Leistung für einen Knotentyp getrennt von einer VM-SKU angeben können. Das folgende Dokument enthält die Schritte zur Verwendung der nativen Unterstützung von Service Fabric, um Azure Managed Disks als Standarddatenpfad zu konfigurieren und zu verwenden. Service Fabric konfiguriert Azure Managed Disks automatisch bei der Erstellung des Knotentyps und behandelt Situationen, in denen für VMs oder die VM-Skalierungsgruppe ein Reimaging durchgeführt wird.
 
@@ -28,7 +32,7 @@ Konfigurieren Sie die zugrunde liegende VM-Skalierungsgruppenressource wie folgt
     * For Linux: **useManagedDataDisk:true** und **dataPath: '\mnt\sfdataroot'** .
 
 >[!NOTE]
-> Unterstützung für verwaltete Datenträger für Linux Service Fabric-Cluster ist derzeit nicht für die Produktion verfügbar. Kund*innen können sie jedoch mithilfe der Erweiterung „Service Fabric testen“ für Linux testen.
+> Unterstützung für Managed Data Disks für Linux Service Fabric-Cluster ist derzeit nicht verfügbar.
 
 Azure Resource Manager-Vorlage für die Service Fabric-Erweiterung
 ```json

@@ -12,12 +12,12 @@ manager: karenhoran
 ms.reviewer: jlu
 ms.custom: has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71a1e5f8ee6bb3641fce243233a654d15363e254
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0a0eaee3c6e265063270d5cb3b2ea43d3c22fbb0
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131012622"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131553074"
 ---
 # <a name="continuous-access-evaluation"></a>Fortlaufende Zugriffsevaluierung
 
@@ -172,6 +172,9 @@ Weitere Informationen zur fortlaufenden Zugriffsauswertung als Sitzungssteuerung
 ### <a name="strict-enforcement"></a>Strict Enforcement (Strenge Erzwingung) 
 
 Bei der aktuellsten CAE-Einstellung unter „Bedingter Zugriff“ ist Strict Enforcement (Strenge Erzwingung) ein neues Feature, das eine erhöhte Sicherheit auf der Grundlage von zwei Faktoren ermöglicht: IP-Adressvariation und Clientfunktion. Diese Funktion kann beim Anpassen von CAE-Optionen für eine bestimmte Richtlinie aktiviert werden. Durch Aktivieren von Strict Enforcement (Strenge Erzwingung) widerruft CAE den Zugriff, wenn Instanzen von [IP-Adressvariationen](#ip-address-variation) oder fehlende [CAE-Clientfunktionen](#client-capabilities)erkannt werden.
+
+> [!NOTE] 
+> Sie sollten die strikte Durchsetzung erst aktivieren, nachdem Sie sichergestellt haben, dass alle Clientanwendungen CAE unterstützen und Sie alle IP-Adressen, die von Azure AD und den Ressourcenanbietern wie Exchange online und Azure Resource Mananger gesehen werden, in Ihre Standortrichtlinie unter Conditional Access aufgenommen haben. Andernfalls könnten Sie gesperrt werden.
 
 ## <a name="limitations"></a>Einschränkungen
 

@@ -1,21 +1,23 @@
 ---
-title: Ausführen von PowerShell-Skripts in einer Windows-VM unter Azure
+title: Ausführen von Skripts auf einem virtuellen Windows-Computer in Azure mithilfe der Aktion Befehle ausführen
 description: In diesem Thema wird beschrieben, wie PowerShell-Skripts auf einem virtuellen Azure Windows-Computer mithilfe des Features „Befehl ausführen“ ausgeführt werden.
+services: automation
 ms.service: virtual-machines
 ms.collection: windows
-author: bobbytreed
-ms.author: robreed
-ms.date: 06/22/2021
+author: cynthn
+ms.author: cynthn
+ms.date: 10/28/2021
 ms.topic: how-to
+ms.reviewer: jushiman
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 81ffce59b1f99628580418836d690d650ea94a1c
-ms.sourcegitcommit: e0ef8440877c65e7f92adf7729d25c459f1b7549
+ms.openlocfilehash: b9501004578068f2c7841fd5f52091f50e97924b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/09/2021
-ms.locfileid: "113566244"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131441094"
 ---
-# <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>Ausführen von PowerShell-Skripts in Ihrer Windows-VM mithilfe von „Befehl ausführen“
+# <a name="run-scripts-in-your-windows-vm-by-using-action-run-commands"></a>Ausführen von Skripts auf Ihrem virtuellen Windows-Computer mithilfe der Aktion Befehle ausführen
 
 Das Feature „Befehl ausführen“ verwendet den VM-Agent, um PowerShell-Skripts innerhalb einer Azure Windows-VM auszuführen. Diese Skripts können für die allgemeine Computer- oder Anwendungsverwaltung verwendet werden. Mit ihrer Hilfe können Sie Zugriffs- und Netzwerkprobleme eines virtuellen Computers schnell diagnostizieren und beheben und den virtuellen Computer wieder in einen funktionierenden Zustand versetzen.
 

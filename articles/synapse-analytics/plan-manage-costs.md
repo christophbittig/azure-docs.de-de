@@ -8,12 +8,12 @@ ms.service: synapse-analytics
 ms.subservice: overview
 ms.topic: how-to
 ms.date: 06/08/2021
-ms.openlocfilehash: 1527888458a494e0b2d7177246c991228440d255
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 053ff6ec2a2b690ef612d9d6d2d188dfe5f6198a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340351"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131460050"
 ---
 # <a name="plan-and-manage-costs-for-azure-synapse-analytics"></a>Planen und Verwalten der Kosten für Azure Synapse Analytics
 
@@ -42,7 +42,7 @@ Wenn Sie Azure Synapse Analytics-Ressourcen erstellen oder verwenden, werden Ihn
 - Datenauswertung und Data Warehousing 
     - Dedizierter SQL-Pool: Ihnen werden Gebühren basierend auf der Anzahl von DWU-Blöcken und den ausgeführten Stunden in Rechnung gestellt.
     - Speicher: Ihnen werden Gebühren basierend auf der Anzahl der gespeicherten TBs in Rechnung gestellt.
-    - Serverloser SQL-Pool: Ihnen werden Gebühren basierend auf den verarbeiteten DAT-Daten in TB in Rechnung gestellt.
+    - Serverloser SQL-Pool - Die Abrechnung erfolgt nach dem TB der verarbeiteten Daten.
 - Apache Spark Pool: Ihnen werden Gebühren basierend auf der Anzahl der Instanzen und der ausgeführten Stunden in Rechnung gestellt.
 - Datenintegration 
     - Orchestrierungsaktivitätsausführungen: Ihnen werden Gebühren basierend auf der Anzahl der Aktivitätsausführungen in Rechnung gestellt.

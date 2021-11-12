@@ -5,17 +5,17 @@ description: Erfahren Sie etwas über das Content Moderator-Prüfungstool, eine 
 services: cognitive-services
 author: PatrickFarley
 manager: mikemcca
-ms.date: 03/15/2019
+ms.date: 10/28/2021
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.author: pafarley
-ms.openlocfilehash: b4336b24dd68df2ce52081e6b0d3d1e49517f3d8
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: 10caecde2eb28a73252ce8581d279c657223f1c9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112031761"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131469975"
 ---
 # <a name="content-moderator-review-tool"></a>Content Moderator-Prüfungstool
 
@@ -31,7 +31,7 @@ Bei Verwendung in Kombination mit den computergestützten Moderations-APIs ermö
 - Automatisieren der Erstellung von [Überprüfungen](../review-api.md#reviews) durch Personen aus den Ergebnissen der Moderations-API
 - Zuweisen oder Eskalieren von Inhaltsüberprüfungen an mehrere, nach Inhaltskategorie oder Erfahrungsstufe organisierte Überprüfungsteams
 - Verwenden von standardmäßigen oder benutzerdefinierten Logikfiltern ([Workflows](../review-api.md#workflows)) zum Sortieren und Nachverfolgen von Inhalten ohne jeglichen Code
-- Verwenden Sie [Connectors](./configure.md#connectors) zum Verarbeiten von Inhalten mit Microsoft PhotoDNA, Textanalyse und Gesichtserkennungsdiensten zusätzlich zu den Content Moderator-APIs.
+- Verwenden Sie [Connectors](./configure.md#connectors) zum Verarbeiten von Inhalten mit Microsoft PhotoDNA, Sprache und Gesichtserkennungsdiensten zusätzlich zu den Content Moderator-APIs.
 - Abrufen von Leistungsmetriken zu Ihren Inhaltsmoderationsprozessen
 
 ## <a name="review-tool-dashboard"></a>Prüfungstool-Dashboard

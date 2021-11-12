@@ -3,12 +3,12 @@ title: Verwenden rechenintensiver Azure-VMs mit Batch
 description: Informationen zum Nutzen der HPC- und GPU-VM-Größen in Azure Batch-Pools. Hier finden Sie Informationen zu Betriebssystemabhängigkeiten und erhalten einige Szenariobeispiele.
 ms.topic: how-to
 ms.date: 12/17/2018
-ms.openlocfilehash: 8f3156296e1ae1ec892be86fc41738fcb7f29090
-ms.sourcegitcommit: aba63ab15a1a10f6456c16cd382952df4fd7c3ff
+ms.openlocfilehash: 10abcfeb8a754ccaeac6de9986612c81fe4decbe
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/25/2021
-ms.locfileid: "107988332"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131426656"
 ---
 # <a name="use-rdma-or-gpu-instances-in-batch-pools"></a>Verwenden RDMA-fähiger oder GPU-fähiger Instanzen in Batch-Pools
 
@@ -36,8 +36,8 @@ Die RDMA- oder GPU-Funktionen rechenintensiver Größen in Batch werden nur unte
 | Size | Funktion | Betriebssysteme | Erforderliche Software | Pooleinstellungen |
 | -------- | -------- | ----- |  -------- | ----- |
 | [H16r, H16mr, A8, A9](../virtual-machines/sizes-hpc.md)<br/>[NC24r, NC24rs_v2, NC24rs_v3, ND24rs<sup>*</sup>](../virtual-machines/linux/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Ubuntu 16.04 LTS oder<br/>CentOS-basierter HPC<br/>(Azure Marketplace) | Intel MPI 5<br/><br/>Linux-RDMA-Treiber | Knotenübergreifende Kommunikation aktivieren, parallele Taskausführung deaktivieren |
-| [NC-, NCv2-, NCv3-, NDv2-Serie](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla GPU (je nach Serie) | Ubuntu 16.04 LTS oder<br/>CentOS 7.3 oder 7.4<br/>(Azure Marketplace) | NVIDIA CUDA- oder CUDA Toolkit-Treiber | – | 
-| [NV-, NVv2-Serie](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Ubuntu 16.04 LTS oder<br/>CentOS 7.3<br/>(Azure Marketplace) | NVIDIA GRID-Treiber | – |
+| [NC-, NCv2-, NCv3-, NDv2-Serie](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla GPU (je nach Serie) | Ubuntu 16.04 LTS oder<br/>CentOS 7.3 oder 7.4<br/>(Azure Marketplace) | NVIDIA CUDA- oder CUDA Toolkit-Treiber | Nicht zutreffend | 
+| [NV-, NVv2-Serie](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Ubuntu 16.04 LTS oder<br/>CentOS 7.3<br/>(Azure Marketplace) | NVIDIA GRID-Treiber | Nicht zutreffend |
 
 <sup>*</sup>RDMA-fähige Größen der N-Serie umfassen auch NVIDIA Tesla GPUs.
 
@@ -46,8 +46,8 @@ Die RDMA- oder GPU-Funktionen rechenintensiver Größen in Batch werden nur unte
 | Size | Funktion | Betriebssysteme | Erforderliche Software | Pooleinstellungen |
 | -------- | ------ | -------- | -------- | ----- |
 | [H16r, H16mr, A8, A9](../virtual-machines/sizes-hpc.md)<br/>[NC24r, NC24rs_v2, NC24rs_v3, ND24rs<sup>*</sup>](../virtual-machines/windows/n-series-driver-setup.md#rdma-network-connectivity) | RDMA | Windows Server 2016, 2012 R2 oder<br/>2012 (Azure Marketplace) | Microsoft MPI 2012 R2 oder höher oder<br/> Intel MPI 5<br/><br/>Windows-RDMA-Treiber | Knotenübergreifende Kommunikation aktivieren, parallele Taskausführung deaktivieren |
-| [NC-, NCv2-, NCv3-, ND-, NDv2-Serie](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla GPU (je nach Serie) | Windows Server 2016 oder <br/>2012 R2 (Azure Marketplace) | NVIDIA CUDA- oder CUDA Toolkit-Treiber| – | 
-| [NV-, NVv2-Serie](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Windows Server 2016 oder<br/>2012 R2 (Azure Marketplace) | NVIDIA GRID-Treiber | – |
+| [NC-, NCv2-, NCv3-, ND-, NDv2-Serie](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla GPU (je nach Serie) | Windows Server 2016 oder <br/>2012 R2 (Azure Marketplace) | NVIDIA CUDA- oder CUDA Toolkit-Treiber| Nicht zutreffend | 
+| [NV-, NVv2-Serie](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Windows Server 2016 oder<br/>2012 R2 (Azure Marketplace) | NVIDIA GRID-Treiber | Nicht zutreffend |
 
 <sup>*</sup>RDMA-fähige Größen der N-Serie umfassen auch NVIDIA Tesla GPUs.
 
@@ -136,7 +136,7 @@ Um Windows-MPI-Anwendungen in einem Pool von Azure H16r-VM-Knoten ausführen zu 
 1. Stellen Sie eine Remotedesktopverbindung mit dem virtuellen Computer her.
 1. Laden Sie das [Setuppaket](https://www.microsoft.com/download/details.aspx?id=57467) („MSMpiSetup.exe“) für die neueste Version von Microsoft MPI herunter, und installieren Sie Microsoft MPI.
 1. Befolgen Sie die Schritte zum Erstellen eines [Shared Image Gallery-Images](batch-sig-images.md) für das Batch.
-1. Erstellen Sie mit den Batch-APIs oder dem Azure-Portal einen Pool [mit der Shared Image Gallery](batch-sig-images.md) sowie der gewünschten Anzahl von Knoten und der gewünschten Skalierung. Die folgende Tabelle enthält Beispielpooleinstellungen für das Image:
+1. Erstellen Sie mit den Batch-APIs oder dem Azure-Portal einen Pool [mit der Azure Compute Gallery](batch-sig-images.md) sowie der gewünschten Anzahl von Knoten und der gewünschten Skalierung. Die folgende Tabelle enthält Beispielpooleinstellungen für das Image:
 
 | Einstellung | Wert |
 | ---- | ---- |

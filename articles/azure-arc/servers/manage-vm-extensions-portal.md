@@ -3,12 +3,12 @@ title: Aktivieren von VM-Erweiterungen über das Azure-Portal
 description: In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal VM-Erweiterungen auf Azure Arc-fähigen Servern bereitstellen, die in Hybrid Cloud-Umgebungen ausgeführt werden.
 ms.date: 10/15/2021
 ms.topic: conceptual
-ms.openlocfilehash: d6ecbbc57237192f68b9949ab960fb36cda64c81
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: b3bb6e6b6dcb70dc229dc01a02d04cf195c89700
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130069594"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131423905"
 ---
 # <a name="enable-azure-vm-extensions-from-the-azure-portal"></a>Aktivieren von Azure-VM-Erweiterungen über das Azure-Portal
 
@@ -89,7 +89,7 @@ Sie können eine Erweiterung auf eine von drei Arten upgraden:
 
     :::image type="content" source="media/manage-vm-extensions-portal/vm-extensions-update-selected.png" alt-text="Aktualisieren der ausgewählten Erweiterung" border="true":::
 
-## <a name="uninstall-extensions"></a>Deinstallieren von Erweiterungen
+## <a name="remove-extensions"></a>Entfernen von Erweiterungen
 
 Sie können über das Azure-Portal Erweiterungen von einem Azure Arc-fähigen Server entfernen. Führen Sie dann die folgenden Schritte aus, um eine Erweiterung zu entfernen.
 

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: e205d403a8d482d5af3278ed42dde60e5808a00a
-ms.sourcegitcommit: 91fdedcb190c0753180be8dc7db4b1d6da9854a1
+ms.openlocfilehash: 829d55cd156f2396014b2b5b55c380e347c7878d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/17/2021
-ms.locfileid: "112280799"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131458264"
 ---
 # <a name="importing-from-data-sources"></a>Importieren aus Datenquellen
 
@@ -69,7 +69,7 @@ Wenn Sie nicht sicher sind, wie Sie Ihr QnA-Paar in der Datei vom Typ `.tsv` dar
 Sie können eine Wissensdatenbank auch auf Basis unstrukturierter Inhalte erstellen, die über eine Datei importiert werden. Derzeit ist diese Funktionalität nur über das Hochladen von Dokumenten in einem der unterstützten Dateiformate verfügbar.
 
 > [!IMPORTANT]
-> Die Unterstützung unstrukturierter Inhalte über das Hochladen von Dateien ist nur in „Benutzerdefinierte Fragen und Antworten“ (Vorschauversion) verfügbar.
+> Die Unterstützung unstrukturierter Inhalte über das Hochladen von Dateien ist nur in [Fragen und Antworten](../../language-service/question-answering/overview.md) verfügbar.
 
 ## <a name="content-types-of-documents-you-can-add-to-a-knowledge-base"></a>Inhaltstypen von Dokumenten, die Sie einer Wissensdatenbank hinzufügen können
 Zu den Inhaltstypen gehören viele strukturierte Standarddokumente wie PDF, DOC und TXT.

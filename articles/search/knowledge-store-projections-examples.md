@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/15/2021
-ms.openlocfilehash: 3414e3d5b339334bf0762427c99020ff3a3170ad
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: 0aa980d2268f6d055f3aa05a8e30d57712c022df
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130134182"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131563623"
 ---
 # <a name="define-projections-in-a-knowledge-store"></a>Definieren von Projektionen in einem Wissensspeicher
 
@@ -272,7 +272,7 @@ Sie können Projektionen anhand der folgenden Schritte verarbeiten:
 
 1. [Überwachen Sie Ausführung des Indexers](search-howto-monitor-indexers.md), um über den Fortschritt und etwaige Fehler informiert zu sein.
 
-1. Verwenden Sie den [Storage-Explorer](knowledge-store-view-storage-explorer.md), um die Objekterstellung in Azure Storage zu überprüfen.
+1. [Verwenden Sie den Speicherbrowser](knowledge-store-view-storage-explorer.md), um die Objekterstellung in Azure Storage zu überprüfen.
 
 1. Wenn Sie Tabellen projiziert haben, [importieren Sie sie in Power BI](knowledge-store-connect-power-bi.md), um Sie zu bearbeiten und zu visualisieren. In den meisten Fällen ermittelt Power BI automatisch die Beziehungen zwischen Tabellen.
 

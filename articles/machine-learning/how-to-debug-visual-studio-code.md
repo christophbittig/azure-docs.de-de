@@ -4,17 +4,17 @@ titleSuffix: Azure Machine Learning
 description: Interaktives Debuggen von Azure Machine Learning-Code, -Pipelines und -Bereitstellungen mit Visual Studio Code
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mlops
 ms.topic: how-to
 author: luisquintanilla
 ms.author: luquinta
-ms.date: 09/16/2021
-ms.openlocfilehash: 78726daeb82b652bb162eb1d9b165521cccb62c0
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/21/2021
+ms.openlocfilehash: eb1f4fb0e3f833bdcc9631f72c6ffe127005a0e3
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128591613"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131556481"
 ---
 # <a name="interactive-debugging-with-visual-studio-code"></a>Interaktives Debuggen mit Visual Studio Code
 
@@ -343,6 +343,9 @@ Speichern Sie den Wert von `ip_address`. Sie werden im nächsten Abschnitt verwe
 ## <a name="debug-and-troubleshoot-deployments"></a>Debuggen und Durchführen der Problembehandlung für Bereitstellungen
 
 In einigen Fällen müssen Sie den in der Modellbereitstellung enthaltenen Python-Code ggf. interaktiv debuggen. Dies ist beispielsweise der Fall, wenn das Einstiegsskript fehlschlägt und der Grund nicht durch zusätzliche Protokollierung ermittelt werden kann. Mit VS Code und debugpy können Sie Elemente an den Code anfügen, der im Docker-Container ausgeführt wird.
+
+> [!TIP]
+> Sparen Sie Zeit und finden Sie Fehler frühzeitig, indem Sie verwaltete Online-Endpunkte und Bereitstellungen lokal debuggen. Weitere Informationen finden Sie unter [Lokal verwaltete Online-Endpunkte in Visual Studio Code debuggen (Vorschau)](how-to-debug-managed-online-endpoints-visual-studio-code.md).
 
 > [!IMPORTANT]
 > Diese Methode des Debuggens funktioniert nicht, wenn `Model.deploy()` und `LocalWebservice.deploy_configuration` verwendet werden, um ein Modell lokal bereitzustellen. Stattdessen müssen Sie ein Image mithilfe der [Model.package()](/python/api/azureml-core/azureml.core.model.model#package-workspace--models--inference-config-none--generate-dockerfile-false-)-Methode erstellen.

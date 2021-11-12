@@ -1,35 +1,35 @@
 ---
 title: Erstellen einer Imagedefinition und Imageversion
-description: Erfahren Sie, wie Sie ein Image in einem Katalog mit freigegebenen Images in Azure erstellen.
+description: Erfahren Sie, wie Sie ein Image in der Azure Compute Gallery erstellen.
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: shared-image-gallery
+ms.subservice: gallery
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 08/31/2021
 ms.author: cynthn
 ms.custom: ''
-ms.openlocfilehash: f0ff3a0cc6bc228951fa47eb5723c520684d1dc5
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: e52457a67e2c653d1fa4e191ee568b35cb7e365f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123452536"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471514"
 ---
 # <a name="create-an-image-definition-and-an-image-version"></a>Erstellen einer Imagedefinition und einer Imageversion 
 
-Der [Katalog mit freigegebenen Images](shared-image-galleries.md) vereinfacht das Freigeben benutzerdefinierter Images in Ihrer Organisation. Benutzerdefinierte Images sind wie Marketplace-Images, Sie erstellen sie jedoch selbst. Benutzerdefinierte Images können zum Laden von Bereitstellungsaufgaben verwendet werden, z.B. zum Vorabladen von Anwendungen sowie für Anwendungskonfigurationen und andere Betriebssystemkonfigurationen. 
+Eine [Azure Compute Gallery](shared-image-galleries.md) (früher Shared Image Gallery) vereinfacht das Freigeben benutzerdefinierter Images in Ihrer Organisation. Benutzerdefinierte Images sind wie Marketplace-Images, Sie erstellen sie jedoch selbst. Benutzerdefinierte Images können zum Laden von Bereitstellungsaufgaben verwendet werden, z.B. zum Vorabladen von Anwendungen sowie für Anwendungskonfigurationen und andere Betriebssystemkonfigurationen. 
 
-Der Katalog mit geteilten Images gestattet es Ihnen, Ihre benutzerdefinierten VM-Images mit anderen Personen in Ihrer Organisation, innerhalb einer oder zwischen Regionen, innerhalb eines AAD-Mandanten zu teilen. Wählen Sie aus, welche Images Sie teilen möchten, in welchen Regionen Sie sie verfügbar machen möchten, und mit wem Sie sie teilen möchten. Sie können mehrere Kataloge erstellen, damit Sie geteilte Images logisch gruppieren können. 
+Mit der Azure Compute Gallery können Sie ihre benutzerdefinierten Images der virtuellen Computer für andere Personen in Ihrer Organisation, innerhalb eines AAD-Mandanten, innerhalb einer Region oder zwischen den Regionen freigeben. Wählen Sie aus, welche Images Sie teilen möchten, in welchen Regionen Sie sie verfügbar machen möchten, und mit wem Sie sie teilen möchten. Sie können mehrere Galerien erstellen, damit Sie die Images sinnvoll gruppieren können. 
 
-Die Funktion „Katalog mit geteilten Images“ verfügt über mehrere Ressourcentypen:
+Die Funktion „Azure Compute Gallery“ verfügt über mehrere Ressourcentypen:
 
 [!INCLUDE [virtual-machines-shared-image-gallery-resources](./includes/virtual-machines-shared-image-gallery-resources.md)]
 
 
-## <a name="before-you-begin"></a>Voraussetzungen
+## <a name="before-you-begin"></a>Vorbereitung
 
-Für diesen Artikel müssen Sie über einen vorhandenen Katalog mit freigegebenen Images und eine Quelle für Ihr Image verfügen, die in Azure verfügbar ist. Folgende Imagequellen sind möglich:
+Für diesen Abschnitt müssen Sie über eine vorhandene Azure Compute Gallery und einer Quelle für Ihr Image in Azure verfügen. Folgende Imagequellen sind möglich:
 - Eine VM in Ihrem Abonnement. Sie können sowohl für [spezialisierte als auch für generalisierte](shared-image-galleries.md#generalized-and-specialized-images) VMs ein Image erstellen. 
 - Ein verwaltetes Image,
 - Verwaltete Datenträger für Betriebssystem und Daten.
@@ -54,10 +54,10 @@ Informationen zum Erstellen eines Images von einer VM im Portal finden Sie unter
 
 Führen Sie die folgenden Schritte aus, um ein Image mit einer anderen Quelle als einer VM zu erstellen.
 
-1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com), suchen Sie nach **Shared Image Gallery** (Katalog mit freigegebenen Images), und wählen Sie diese Option aus.
+1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com) und suchen Sie dann nach **Azure Compute Gallery**, was Sie dann bitte auswählen.
 1. Wählen Sie den gewünschten Katalog aus der Liste aus.
-1. Wählen Sie auf der Seite Ihres Imagekatalogs **Neue Imagedefinition hinzufügen** oben auf der Seite aus. 
-1. Wählen Sie auf der Seite **Neue Imagedefinition zum Katalog mit freigegebenen Images hinzufügen** auf der Registerkarte **Grundlagen** eine **Region** aus. 
+1. Wählen Sie oben auf der Seite Ihrer Galerie **Hinzufügen** und dann im Dropdownmenü **Imagedefinition für virtuelle Computer** aus. 
+1. Wählen Sie auf der Seite **Neue Imagedefinition zu Azure Compute Gallery hinzufügen** auf der Registerkarte **Grundlagen** eine **Region** aus. 
 1. Geben Sie für **Name der Imagedefinition** einen Namen wie *meineImageDefinition* ein.
 1. Wählen Sie für **Betriebssystem** die richtige Option basierend auf Ihrer Quelle aus.  
 1. Wählen Sie für **VM-Generation** die Option basierend auf Ihrer Quelle aus. In den meisten Fällen wird dies *1. Generation* sein. Weitere Informationen finden Sie unter [Unterstützung für VMs der Generation 2 in Azure](generation-2.md).

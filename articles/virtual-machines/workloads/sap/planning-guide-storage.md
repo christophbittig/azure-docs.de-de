@@ -13,18 +13,18 @@ ms.service: virtual-machines-sap
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/17/2021
+ms.date: 11/02/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 25cdaf3bd916b587adeeaf200d0c55b0c4001ad2
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: eb1e315d0fce2b43ed15c2808ddaf37c605c79dd
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130074549"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131432793"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>Azure Storage-Typen für die SAP-Workload
-Azure umfasst zahlreiche Speichertypen, die sich in den Funktionen, dem Durchsatz, der Latenz und den Preisen stark unterscheiden. Einige der Speichertypen sind für SAP-Szenarien nicht oder nur eingeschränkt verwendbar. Dagegen sind verschiedene Azure-Speichertypen für spezifische SAP-Workloadszenarien gut geeignet und optimiert. Speziell für SAP HANA wurden einige Azure-Speichertypen für die Verwendung mit SAP HANA zertifiziert. In diesem Dokument werden die verschiedenen Speichertypen erläutert und ihre Funktionen und Verwendbarkeit mit SAP-Workloads und SAP-Komponenten beschrieben.
+Azure umfasst zahlreiche Speichertypen, die sich in den Funktionen, dem Durchsatz, der Latenz und den Preisen stark unterscheiden. Einige der Speichertypen sind für SAP-Szenarien nicht oder nur eingeschränkt verwendbar. Dagegen sind verschiedene Azure-Speichertypen für spezifische SAP-Nutzdaten-Szenarien gut geeignet und optimiert. Speziell für SAP HANA wurden einige Azure-Speichertypen für die Verwendung mit SAP HANA zertifiziert. In diesem Dokument werden die verschiedenen Speichertypen erläutert und ihre Funktionen und Verwendbarkeit mit SAP-Workloads und SAP-Komponenten beschrieben.
 
 Anmerkung zu den in diesem Artikel verwendeten Einheiten: Die Anbieter von öffentlichen Clouds sind dazu übergegangen, GiB ([Gibibyte](https://en.wikipedia.org/wiki/Gibibyte)) oder TiB ([Tebibyte](https://en.wikipedia.org/wiki/Tebibyte) anstelle von Gigabyte oder Terabyte als Größeneinheiten zu verwenden. Daher werden diese Einheiten in der gesamten Dokumentation und Preisgestaltung für Azure verwendet.  Im gesamten Dokument wird ausschließlich auf die Größeneinheiten MiB, GiB und TiB Bezug genommen. Möglicherweise möchten Sie mit MB, GB und TB planen. Dann sind einige kleine Unterschiede in den Berechnungen zu beachten, wenn Sie die Größenanpassung für einen Durchsatz von 400 MiB/s anstatt für einen Durchsatz von 250 MiB/s vornehmen möchten.
 
@@ -79,16 +79,16 @@ Bevor auf die Einzelheiten eingegangen wird, werden zunächst die Zusammenfassun
 
 | Verwendungsszenario | HDD Standard | SSD Standard | Storage Premium | Ultra-Datenträger | Azure NetApp Files |
 | --- | --- | --- | --- | --- | --- |
-| Betriebssystem-Datenträger | nicht geeignet |  eingeschränkt geeignet (nicht in der Produktion) | empfohlen | nicht möglich | nicht möglich |
-| Globales Transportverzeichnis | Nicht unterstützt | Nicht unterstützt | empfohlen | empfohlen | empfohlen |
-| /sapmnt | nicht geeignet | eingeschränkt geeignet (nicht in der Produktion) | empfohlen | empfohlen | empfohlen |
-| DBMS-Datenvolume, SAP HANA, M/Mv2-VM-Familien | Nicht unterstützt | Nicht unterstützt | empfohlen | empfohlen | empfohlen<sup>2</sup> |
-| DBMS-Protokollvolume, SAP HANA, M/Mv2-VM-Familien | Nicht unterstützt | Nicht unterstützt | empfohlen<sup>1</sup> | empfohlen | empfohlen<sup>2</sup> | 
-| DBMS-Datenvolume, SAP HANA, Esv3/Edsv4-VM-Familien | Nicht unterstützt | Nicht unterstützt | empfohlen | empfohlen | empfohlen<sup>2</sup> |
-| DBMS-Protokollvolume, SAP HANA, Esv3/Edsv4-VM-Familien | Nicht unterstützt | Nicht unterstützt | Nicht unterstützt | empfohlen | empfohlen<sup>2</sup> | 
-| DBMS-Datenvolume, Nicht-HANA | Nicht unterstützt | eingeschränkt geeignet (nicht in der Produktion) | empfohlen | empfohlen | Nur für bestimmte Oracle-Releases unter Oracle Linux und Db2 unter Linux |
-| DBMS-Protokollvolume, Nicht-HANA, M/Mv2-VM-Familien | Nicht unterstützt | eingeschränkt geeignet (nicht in der Produktion) | empfohlen<sup>1</sup> | empfohlen | Nur für bestimmte Oracle-Releases unter Oracle Linux und Db2 unter Linux |
-| DBMS-Protokollvolume, Nicht-HANA, Nicht-M/Mv2-VM-Familien | Nicht unterstützt | eingeschränkt geeignet (nicht in der Produktion) | geeignet für bis zu mittlerer Workload | empfohlen | Nur für bestimmte Oracle-Releases unter Oracle Linux und Db2 unter Linux |
+| Betriebssystem-Datenträger | Nicht geeignet |  Bedingt geeignet (nicht in der Produktion) | Empfohlen | Nicht möglich | Nicht möglich |
+| Globales Transportverzeichnis | Nicht unterstützt | Nicht unterstützt | Empfohlen | Empfohlen | Empfohlen |
+| /sapmnt | Nicht geeignet | Bedingt geeignet (nicht in der Produktion) | Empfohlen | Empfohlen | Empfohlen |
+| DBMS-Datenvolume, SAP HANA, M/Mv2-VM-Familien | Nicht unterstützt | Nicht unterstützt | Empfohlen | Empfohlen | Empfohlen<sup>2</sup> |
+| DBMS-Protokollvolume, SAP HANA, M/Mv2-VM-Familien | Nicht unterstützt | Nicht unterstützt | Empfohlen<sup>1</sup> | Empfohlen | Empfohlen<sup>2</sup> | 
+| DBMS-Datenvolume, SAP HANA, Esv3/Edsv4-VM-Familien | Nicht unterstützt | Nicht unterstützt | Empfohlen | Empfohlen | Empfohlen<sup>2</sup> |
+| DBMS-Protokollvolume, SAP HANA, Esv3/Edsv4-VM-Familien | Nicht unterstützt | Nicht unterstützt | Nicht unterstützt | Empfohlen | Empfohlen<sup>2</sup> | 
+| DBMS-Datenvolume, Nicht-HANA | Nicht unterstützt | Bedingt geeignet (nicht in der Produktion) | Empfohlen | Empfohlen | Nur für bestimmte Oracle-Releases unter Oracle Linux, Db2 und SAP ASE unter SLES/RHEL Linux |
+| DBMS-Protokollvolume, Nicht-HANA, M/Mv2-VM-Familien | Nicht unterstützt | Bedingt geeignet (nicht in der Produktion) | Empfohlen<sup>1</sup> | Empfohlen | Nur für bestimmte Oracle-Releases unter Oracle Linux, Db2 und SAP ASE unter SLES/RHEL Linux |
+| DBMS-Protokollvolume, Nicht-HANA, Nicht-M/Mv2-VM-Familien | Nicht unterstützt | eingeschränkt geeignet (nicht in der Produktion) | Geeignet bis zu einer mittleren Workload | Empfohlen | Nur für bestimmte Oracle-Releases unter Oracle Linux, Db2 und SAP ASE unter SLES/RHEL Linux |
 
 
 <sup>1</sup> Mit Verwendung der [Azure-Schreibbeschleunigung](../../how-to-enable-write-accelerator.md) für M/Mv2-VM-Familien für Protokoll- und Wiederholungsprotokollvolumes <sup>2</sup> Für die Verwendung von ANF müssen „/hana/data“ und „/hana/log“ in ANF enthalten sein. 
@@ -97,15 +97,15 @@ Merkmale der verschiedenen Speichertypen:
 
 | Verwendungsszenario | HDD Standard | SSD Standard | Storage Premium | Ultra-Datenträger | Azure NetApp Files |
 | --- | --- | --- | --- | --- | --- |
-| Durchsatz/IOPS-SLA | nein | nein | ja | ja | ja |
-| Latenz Lesevorgänge | high | mittel bis hoch | niedrig | unter einer Millisekunde | unter einer Millisekunde |
-| Latenz Schreibvorgänge | high | mittel bis hoch  | niedrig (unter einer Millisekunde<sup>1</sup>) | unter einer Millisekunde | unter einer Millisekunde |
-| Von HANA unterstützt | nein | nein | ja<sup>1</sup> | ja | ja |
-| Datenträger-Momentaufnahmen möglich | ja | ja | ja | nein | ja |
-| Zuordnung von Datenträgern in verschiedenen Speicherclustern bei Verwendung von Verfügbarkeitsgruppen | über verwaltete Datenträger | über verwaltete Datenträger | über verwaltete Datenträger | Datenträgertyp wird mit über Verfügbarkeitsgruppen bereitgestellten virtuellen Computern nicht unterstützt | nein<sup>3</sup> |
-| Angepasst an Verfügbarkeitszonen | ja | ja | ja | ja | erfordert Unterstützung von Microsoft |
-| Zonenredundanz | nicht für verwaltete Datenträger | nicht für verwaltete Datenträger | nicht für verwaltete Datenträger | nein | nein |
-| Georedundanz | nicht für verwaltete Datenträger | nicht für verwaltete Datenträger | nein | nein | nein |
+| Durchsatz/IOPS-SLA | Nein | Nein | Ja | Ja | Ja |
+| Latenz Lesevorgänge | High | Mittel bis hoch | Niedrig | unter einer Millisekunde | unter einer Millisekunde |
+| Latenz Schreibvorgänge | High | Mittel bis hoch  | Niedrig (unter einer Millisekunde<sup>1</sup>) | unter einer Millisekunde | unter einer Millisekunde |
+| Von HANA unterstützt | Nein | Nein | ja<sup>1</sup> | Ja | Ja |
+| Datenträger-Momentaufnahmen möglich | Ja | Ja | Ja | Nein | Ja |
+| Zuordnung von Datenträgern in verschiedenen Speicherclustern bei Verwendung von Verfügbarkeitsgruppen | Über verwaltete Datenträger | Über verwaltete Datenträger | Über verwaltete Datenträger | Datenträgertyp wird mit über Verfügbarkeitsgruppen bereitgestellten virtuellen Computern nicht unterstützt | Nein<sup>3</sup> |
+| Angepasst an Verfügbarkeitszonen | Ja | Ja | Ja | Ja | Erfordert Unterstützung von Microsoft |
+| Zonenredundanz | Nicht für verwaltete Datenträger | Nicht für verwaltete Datenträger | Nicht für verwaltete Datenträger | Nein | Nein |
+| Georedundanz | Nicht für verwaltete Datenträger | Nicht für verwaltete Datenträger | Nein | Nein | Nein |
 
 
 <sup>1</sup> Mit Verwendung der [Azure-Schreibbeschleunigung](../../how-to-enable-write-accelerator.md) für M/Mv2-VM-Familien für Protokoll- und Wiederholungsprotokollvolumes
@@ -142,23 +142,23 @@ Die Funktionsmatrix für die SAP-Workload sieht folgendermaßen aus:
 
 | Funktion| Comment| Hinweise/Links | 
 | --- | --- | --- | 
-| Basis-VHD für Betriebssystem | geeignet | alle Systeme |
-| Datenträger | geeignet | alle Systeme – [speziell für SAP HANA](../../how-to-enable-write-accelerator.md) |
-| Globales SAP-Transportverzeichnis | YES | [Unterstützt](https://launchpad.support.sap.com/#/notes/2015553) |
-| SAP-Verzeichnis „sapmnt“ | geeignet | alle Systeme |
-| Sicherungsspeicher | geeignet | für die kurzfristige Speicherung von Sicherungen |
-| Freigaben/freigegebener Datenträger | nicht verfügbar | Azure Files Premium oder Drittanbieter erforderlich |
+| Basis-VHD für Betriebssystem | Geeignet | Alle Systeme |
+| Datenträger | Geeignet | Alle Systeme – [speziell für SAP HANA](../../how-to-enable-write-accelerator.md) |
+| Globales SAP-Transportverzeichnis | Ja | [Unterstützt](https://launchpad.support.sap.com/#/notes/2015553) |
+| SAP-Verzeichnis „sapmnt“ | Geeignet | Alle Systeme |
+| Sicherungsspeicher | Geeignet | Für die kurzfristige Speicherung von Sicherungen |
+| Freigaben/freigegebener Datenträger | Nicht verfügbar | Azure Files Premium oder Drittanbieter erforderlich |
 | Resilienz | LRS | GRS oder ZRS für Datenträger nicht verfügbar |
-| Latency | niedrig bis mittel | - |
-| IOPS-SLA | YES | - |
+| Latency | Niedrig bis mittel | - |
+| IOPS-SLA | Ja | - |
 | IOPS linear zur Kapazität | halblinear in Klammern  | [Verwaltete Datenträger – Preise](https://azure.microsoft.com/pricing/details/managed-disks/) |
 | Maximale Anzahl IOPS pro Datenträger | 20.000, [abhängig von der Größe des Datenträgers](https://azure.microsoft.com/pricing/details/managed-disks/) | Zu berücksichtigen sind auch die [Grenzwerte für virtuelle Computer](../../sizes.md) |
-| Durchsatz-SLA | YES | - |
-| Durchsatz linear zur Kapazität | halblinear in Klammern | [Verwaltete Datenträger – Preise](https://azure.microsoft.com/pricing/details/managed-disks/) |
-| HANA-zertifiziert | YES | [speziell für SAP HANA](../../how-to-enable-write-accelerator.md) |
-| Datenträger-Momentaufnahmen möglich | YES | - |
-| Azure Backup-VM-Momentaufnahmen möglich | YES | mit Ausnahme von Cachedatenträgern mit [Schreibbeschleunigung](../../how-to-enable-write-accelerator.md)  |
-| Kosten | MEDIUM | - |
+| Durchsatz-SLA | Ja | - |
+| Durchsatz linear zur Kapazität | Halblinear in Klammern | [Verwaltete Datenträger – Preise](https://azure.microsoft.com/pricing/details/managed-disks/) |
+| HANA-zertifiziert | Ja | [speziell für SAP HANA](../../how-to-enable-write-accelerator.md) |
+| Datenträger-Momentaufnahmen möglich | Ja | - |
+| Azure Backup-VM-Momentaufnahmen möglich | Ja | Mit Ausnahme von Cachedatenträgern mit [Schreibbeschleunigung](../../how-to-enable-write-accelerator.md)  |
+| Kosten | Medium| - |
 
 Azure Storage Premium erfüllt nicht die Speicherlatenz-KPIs für SAP HANA mit den gängigen Cachetypen, die mit Azure Storage Premium angeboten werden. Um die Speicherlatenz-KPIs für SAP HANA-Protokollschreibvorgänge zu erfüllen, müssen Sie das im Artikel [Aktivieren der Schreibbeschleunigung](../../how-to-enable-write-accelerator.md) beschriebene Caching der Azure-Schreibbeschleunigung verwenden. Die Azure-Schreibbeschleunigung kommt allen anderen DBMS-Systemen bei den zugehörigen Schreibvorgängen für Transaktionsprotokolle und Wiederholungsprotokolle zugute. Daher wird empfohlen, sie in allen SAP-DBMS-Bereitstellungen zu verwenden. Für SAP HANA ist die Verwendung der Azure-Schreibbeschleunigung in Verbindung mit Azure Storage Premium obligatorisch.
 
@@ -200,20 +200,20 @@ Die Funktionsmatrix für die SAP-Workload sieht folgendermaßen aus:
 
 | Funktion| Comment| Hinweise/Links | 
 | --- | --- | --- | 
-| Basis-VHD für Betriebssystem | funktioniert nicht | - |
-| Datenträger | geeignet | alle Systeme  |
-| Globales SAP-Transportverzeichnis | YES | [Unterstützt](https://launchpad.support.sap.com/#/notes/2015553) |
-| SAP-Verzeichnis „sapmnt“ | geeignet | alle Systeme |
-| Sicherungsspeicher | geeignet | für die kurzfristige Speicherung von Sicherungen |
-| Freigaben/freigegebener Datenträger | nicht verfügbar | Drittanbieter erforderlich |
+| Basis-VHD für Betriebssystem | Funktioniert nicht | - |
+| Datenträger | Geeignet | Alle Systeme  |
+| Globales SAP-Transportverzeichnis | Ja | [Unterstützt](https://launchpad.support.sap.com/#/notes/2015553) |
+| SAP-Verzeichnis „sapmnt“ | Geeignet | Alle Systeme |
+| Sicherungsspeicher | Geeignet | Für die kurzfristige Speicherung von Sicherungen |
+| Freigaben/freigegebener Datenträger | Nicht verfügbar | Drittanbieter erforderlich |
 | Resilienz | LRS | GRS oder ZRS für Datenträger nicht verfügbar |
-| Latency | sehr niedrig | - |
-| IOPS-SLA | YES | - |
-| IOPS linear zur Kapazität | halblinear in Klammern  | [Verwaltete Datenträger – Preise](https://azure.microsoft.com/pricing/details/managed-disks/) |
+| Latency | Sehr niedrig | - |
+| IOPS-SLA | Ja | - |
+| IOPS linear zur Kapazität | Halblinear in Klammern  | [Verwaltete Datenträger – Preise](https://azure.microsoft.com/pricing/details/managed-disks/) |
 | Maximale Anzahl IOPS pro Datenträger | 1\.200 bis 160.000 | abhängig von der Datenträgerkapazität |
-| Durchsatz-SLA | YES | - |
-| Durchsatz linear zur Kapazität | halblinear in Klammern | [Verwaltete Datenträger – Preise](https://azure.microsoft.com/pricing/details/managed-disks/) |
-| HANA-zertifiziert | YES | - |
+| Durchsatz-SLA | Ja | - |
+| Durchsatz linear zur Kapazität | Halblinear in Klammern | [Verwaltete Datenträger – Preise](https://azure.microsoft.com/pricing/details/managed-disks/) |
+| HANA-zertifiziert | Ja | - |
 | Datenträger-Momentaufnahmen möglich | Nein | - |
 | Azure Backup-VM-Momentaufnahmen möglich | Nein | - |
 | Kosten | höher als bei Storage Premium | - |
@@ -243,9 +243,10 @@ Der ANF-Speicher wird derzeit für verschiedene SAP-Workloadszenarien unterstüt
 - SAP HANA-Bereitstellungen mit NFS v4.1-Freigaben für „/hana/data“- und „/hana/log“-Volumes und/oder NFS v4.1- oder NFS v3-Freigaben für „/hana/shared“-Volumes, wie im Artikel [SAP HANA: Speicherkonfigurationen für virtuelle Azure-Computer](./hana-vm-operations-storage.md) beschrieben
 - IBM Db2 unter Suse- oder Red Hat Linux-Gastbetriebssystem
 - Oracle-Bereitstellungen im Oracle Linux-Gastbetriebssystem mit [dNFS](https://docs.oracle.com/en/database/oracle/oracle-database/19/ntdbi/creating-an-oracle-database-on-direct-nfs.html#GUID-2A0CCBAB-9335-45A8-B8E3-7E8C4B889DEA) für Oracle-Daten- und Wiederholungsprotokollvolumes. Weitere Informationen finden Sie im Artikel [Oracle-DBMS-Bereitstellung für SAP-Workload auf Azure Virtual Machines](./dbms_guide_oracle.md).
+- SAP ASE unter Suse- oder Red-Hat-Linux-Gastbetriebssystem
 
 > [!NOTE]
-> Für Azure NetApp Files-basierte NFS- oder SMB-Freigaben werden keine anderen DBMS-Workloads unterstützt. Wenn sich dies ändert, werden Aktualisierungen und Änderungen zur Verfügung gestellt.
+> Bisher werden in SMB basierend auf Azure NetApp Files keine DBMS-Workloads unterstützt.
 
 Wie bereits bei Azure Storage Premium kann eine feste oder lineare Durchsatzgröße pro GB ein Problem darstellen, wenn Sie Mindestzahlen beim Durchsatz einhalten müssen. Dies ist auch bei SAP HANA der Fall. Bei ANF kann dieses Problem stärker ausgeprägt sein als bei Azure Premium-Datenträgern. Im Fall von Azure Storage Premium können Sie bei mehreren kleineren Datenträgern mit einem relativ hohen Durchsatz pro GiB ein Stripeset über die Datenträger erstellen, um Kosteneffizienz und einen höheren Durchsatz bei geringerer Kapazität zu erzielen. Diese Art von Striping funktioniert nicht bei NFS- oder SMB-Freigaben, die unter ANF gehostet werden. Diese Einschränkung führt zur Bereitstellung von überdimensionierter Kapazität:
 
@@ -257,20 +258,20 @@ Die Funktionsmatrix für die SAP-Workload sieht folgendermaßen aus:
 
 | Funktion| Comment| Hinweise/Links | 
 | --- | --- | --- | 
-| Basis-VHD für Betriebssystem | funktioniert nicht | - |
-| Datenträger | geeignet | nur SAP HANA  |
-| Globales SAP-Transportverzeichnis | YES | SMB und NFS |
-| SAP-Verzeichnis „sapmnt“ | geeignet | alle Systeme – SMB (nur Windows) oder NFS (nur Linux) |
-| Sicherungsspeicher | geeignet | - |
-| Freigaben/freigegebener Datenträger | YES | SMB 3.0, NFS v3, und NFS v4.1 |
+| Basis-VHD für Betriebssystem | Funktioniert nicht | - |
+| Datenträger | Geeignet | SAP HANA, Oracle unter Oracle Linux, Db2 und SAP ASe unter SLES/RHEL  |
+| Globales SAP-Transportverzeichnis | Ja | SMB und NFS |
+| SAP-Verzeichnis „sapmnt“ | Geeignet | Alle SMB- (nur Windows) oder NFS-Systeme (nur Linux) |
+| Sicherungsspeicher | Geeignet | - |
+| Freigaben/freigegebener Datenträger | Ja | SMB 3.0, NFS v3, und NFS v4.1 |
 | Resilienz | LRS | GRS oder ZRS für Datenträger nicht verfügbar |
-| Latency | sehr niedrig | - |
-| IOPS-SLA | YES | - |
+| Latency | Sehr niedrig | - |
+| IOPS-SLA | Ja | - |
 | IOPS linear zur Kapazität | streng linear  | abhängig von der [Dienstebene](../../../azure-netapp-files/azure-netapp-files-service-levels.md) |
-| Durchsatz-SLA | YES | - |
-| Durchsatz linear zur Kapazität | halblinear in Klammern | abhängig von der [Dienstebene](../../../azure-netapp-files/azure-netapp-files-service-levels.md) |
-| HANA-zertifiziert | YES | - |
-| Datenträger-Momentaufnahmen möglich | YES | - |
+| Durchsatz-SLA | Ja | - |
+| Durchsatz linear zur Kapazität | Halblinear in Klammern | abhängig von der [Dienstebene](../../../azure-netapp-files/azure-netapp-files-service-levels.md) |
+| HANA-zertifiziert | Ja | - |
+| Datenträger-Momentaufnahmen möglich | Ja | - |
 | Azure Backup-VM-Momentaufnahmen möglich | Nein | - |
 | Kosten | höher als bei Storage Premium | - |
 
@@ -290,20 +291,20 @@ Im Vergleich zu Azure HDD Standard-Speichern bieten Azure SSD Standard-Speicher 
 
 | Funktion| Comment| Hinweise/Links | 
 | --- | --- | --- | 
-| Basis-VHD für Betriebssystem | eingeschränkt geeignet | nicht produktive Systeme |
-| Datenträger | eingeschränkt geeignet | einige nicht produktive Systeme mit geringen Anforderungen an IOPS und Latenz |
+| Basis-VHD für Betriebssystem | Bedingt geeignet | Nicht-Produktionssysteme |
+| Datenträger | Bedingt geeignet | Einige Nicht-Produktionssysteme mit geringen Anforderungen an IOPS und Latenz |
 | Globales SAP-Transportverzeichnis | Nein | [Nicht unterstützt](https://launchpad.support.sap.com/#/notes/2015553) |
-| SAP-Verzeichnis „sapmnt“ | eingeschränkt geeignet | nicht produktive Systeme |
-| Sicherungsspeicher | geeignet | - |
-| Freigaben/freigegebener Datenträger | nicht verfügbar | Drittanbieter erforderlich |
+| SAP-Verzeichnis „sapmnt“ | Bedingt geeignet | Nicht-Produktionssysteme |
+| Sicherungsspeicher | Geeignet | - |
+| Freigaben/freigegebener Datenträger | Nicht verfügbar | Drittanbieter erforderlich |
 | Resilienz | LRS, GRS | ZRS für Datenträger nicht verfügbar |
-| Latency | high | zu hoch für globales SAP-Transportverzeichnis oder Produktionssysteme |
+| Latency | high | Zu hoch für das globale SAP-Transportverzeichnis oder Produktionssysteme |
 | IOPS-SLA | Nein | - |
 | Maximale Anzahl IOPS pro Datenträger | 500 | unabhängig von der Datenträgergröße |
 | Durchsatz-SLA | Nein | - |
 | HANA-zertifiziert | Nein | - |
-| Datenträger-Momentaufnahmen möglich | YES | - |
-| Azure Backup-VM-Momentaufnahmen möglich | YES | - |
+| Datenträger-Momentaufnahmen möglich | Ja | - |
+| Azure Backup-VM-Momentaufnahmen möglich | Ja | - |
 | Kosten | LOW | - |
 
 
@@ -317,21 +318,21 @@ Azure HDD Standard war der einzige verfügbare Speichertyp, als die Azure-Infras
 
 | Funktion| Comment| Hinweise/Links | 
 | --- | --- | --- | 
-| Basis-VHD für Betriebssystem | nicht geeignet | - |
-| Datenträger | nicht geeignet | - |
+| Basis-VHD für Betriebssystem | Nicht geeignet | - |
+| Datenträger | Nicht geeignet | - |
 | Globales SAP-Transportverzeichnis | Nein | [Nicht unterstützt](https://launchpad.support.sap.com/#/notes/2015553) |
 | SAP-Verzeichnis „sapmnt“ | Nein | Nicht unterstützt |
-| Sicherungsspeicher | geeignet | - |
-| Freigaben/freigegebener Datenträger | nicht verfügbar | Azure Files oder Drittanbieter erforderlich |
+| Sicherungsspeicher | Geeignet | - |
+| Freigaben/freigegebener Datenträger | Nicht verfügbar | Azure Files oder Drittanbieter erforderlich |
 | Resilienz | LRS, GRS | ZRS für Datenträger nicht verfügbar |
-| Latency | high | zu hoch für DBMS-Verwendung, globales SAP-Transportverzeichnis oder „apmnt/saploc“ |
+| Latency | high | Zu hoch für die DBMS-Verwendung, das globale SAP-Transportverzeichnis oder „sapmnt/saploc“ |
 | IOPS-SLA | Nein | - |
 | Maximale Anzahl IOPS pro Datenträger | 500 | unabhängig von der Datenträgergröße |
 | Durchsatz-SLA | Nein | - |
 | HANA-zertifiziert | Nein | - |
-| Datenträger-Momentaufnahmen möglich | YES | - |
-| Azure Backup-VM-Momentaufnahmen möglich | YES | - |
-| Kosten | LOW | - |
+| Datenträger-Momentaufnahmen möglich | Ja | - |
+| Azure Backup-VM-Momentaufnahmen möglich | Ja | - |
+| Kosten | Niedrig | - |
 
 
 

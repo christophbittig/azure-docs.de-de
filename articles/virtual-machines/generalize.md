@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 06/16/2021
 ms.author: cynthn
 ms.custom: portal
-ms.openlocfilehash: 7b733043a6b9a8e68aad94aaa57baf5c4d3fd2aa
-ms.sourcegitcommit: 695a33a2123429289ac316028265711a79542b1c
+ms.openlocfilehash: e28ec0a10431316f7c5658ec006a7136f5388ff3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113128910"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131444609"
 ---
 # <a name="remove-machine-specific-information-by-generalizing-a-vm-before-creating-an-image"></a>Entfernen VM-spezifischer Informationen durch Generalisieren einer VM vor Erstellen eines Images
 
-Die Generalisierung einer VM ist für die Erstellung eines Images in einer [Shared Image Gallery](shared-image-galleries.md#generalized-and-specialized-images) nicht erforderlich, es sei denn, Sie möchten ausdrücklich ein generalisiertes Image erstellen. Beim Erstellen eines verwalteten Images außerhalb eines Katalogs ist eine Generalisierung erforderlich.
+Die Generalisierung eines virtuellen Computers ist für die Erstellung eines Images in einer [Azure Compute Gallery](shared-image-galleries.md#generalized-and-specialized-images) nicht erforderlich, es sei denn, Sie möchten ausdrücklich ein generalisiertes Image erstellen. Beim Erstellen eines verwalteten Images außerhalb eines Katalogs ist eine Generalisierung erforderlich.
 
 Bei der Generalisierung werden VM-spezifische Informationen entfernt, sodass das Image zum Erstellen mehrerer VMs verwendet werden kann. Nachdem die VM generalisiert wurde, müssen Sie die Plattform darüber informieren, dass dieser Schritt erfolgt ist, damit die Startsequenz ordnungsgemäß festgelegt werden kann. Nachdem eine VM generalisiert wurde, darf sie nicht neu gestartet werden.
 

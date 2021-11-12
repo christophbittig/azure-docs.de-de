@@ -11,12 +11,12 @@ ms.reviewer: cephalin
 ms.custom: seodec18, devx-track-java, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 adobe-target: true
-ms.openlocfilehash: d994716f24c0a5dff4fd42f8152a08cabc4fe12c
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: bd98cd6a0317400bcae932d9f08f719cb8c7fc0f
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130253419"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131558913"
 ---
 # <a name="configure-a-java-app-for-azure-app-service"></a>Konfigurieren einer Java-App für Azure App Service
 
@@ -115,7 +115,7 @@ Nachfolgend eine Beispielkonfiguration in`pom.xml`:
     ```
 
 1. Konfigurieren Sie Ihre Web-App-Details. Die entsprechenden Azure-Ressourcen werden erstellt, wenn sie nicht vorhanden sind.
-Hier ist eine Beispielkonfiguration. Weitere Informationen finden Sie in diesem [Dokument](https://github.com/microsoft/azure-gradle-plugins/wiki/Webapp-Configuration).
+Hier ist eine Beispielkonfiguration, Details finden Sie in diesem [Dokument](https://github.com/microsoft/azure-gradle-plugins/wiki/Webapp-Configuration).
     ```groovy
     azurewebapp {
         subscription = '<your subscription id>'
@@ -143,7 +143,7 @@ Hier ist eine Beispielkonfiguration. Weitere Informationen finden Sie in diesem 
     ```
     
 ### <a name="ides"></a>IDEs
-Azure bietet nahtlose Java-App Service-Entwicklungserfahrung in beliebten Java-IDEs, einschließlich:
+Azure bietet nahtlose Java App Service-Entwicklungserfahrung in gängigen Java-IDEs, einschließlich:
 - *VS Code*: [Java Web Apps mit Visual Studio Code](https://code.visualstudio.com/docs/java/java-webapp#_deploy-web-apps-to-the-cloud)
 - *IntelliJ IDEA*:[Erstellen einer „Hello World“-Web-App für Azure App Service mithilfe von IntelliJ](/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app)
 - *Eclipse*:[Erstellen einer „Hello World“-Web-App für Azure App Service mithilfe von Eclipse](/azure/developer/java/toolkit-for-eclipse/create-hello-world-web-app)
@@ -211,9 +211,9 @@ Alle Java-Laufzeiten in App Service, die Azul-JVMs verwenden, enthalten Zulu Fli
 
 #### <a name="timed-recording"></a>Zeitgesteuerte Aufzeichnung
 
-Um eine zeitgesteuerte Aufzeichnung zu erstellen, benötigen Sie die PID (Prozess-ID) der Java-Anwendung. Öffnen Sie zum Ermitteln der PID einen Browser mit der SCM-Website Ihrer Web-App (`https://<your-site-name>.scm.azurewebsites.net/ProcessExplorer/`). Auf dieser Seite werden die in Ihrer Web-App ausgeführten Prozesse angezeigt. Suchen Sie in der Tabelle den Prozess mit dem Namen „Java“, und kopieren Sie die entsprechende PID (Prozess-ID).
+Für eine zeitgesteuerte Aufnahme benötigen Sie die PID (Prozess-ID) der Java-Anwendung. Öffnen Sie zum Ermitteln der PID einen Browser mit der SCM-Website Ihrer Web-App (`https://<your-site-name>.scm.azurewebsites.net/ProcessExplorer/`). Auf dieser Seite werden die in Ihrer Web-App ausgeführten Prozesse angezeigt. Suchen Sie in der Tabelle den Prozess mit dem Namen „Java“, und kopieren Sie die entsprechende PID (Prozess-ID).
 
-Öffnen Sie dann auf der oberen Symbolleiste der SCM-Website die **Debugging-Konsole**, und führen Sie den folgenden Befehl aus. Ersetzen Sie `<pid>` durch die Prozess-ID, die Sie zuvor kopiert haben. Dieser Befehl startet eine 30-Sekunden-Profileraufzeichnung der Java-Anwendung und generiert eine Datei mit dem Namen `timed_recording_example.jfr` im Verzeichnis `D:\home`.
+Öffnen Sie dann auf der oberen Symbolleiste der SCM-Website die **Debugging-Konsole**, und führen Sie den folgenden Befehl aus. Ersetzen Sie `<pid>` durch die Prozess-ID, die Sie zuvor kopiert haben. Dieser Befehl startet eine 30-sekündige Profiler-Aufnahme Ihrer Java-Anwendung und erzeugt eine Datei mit dem Namen `timed_recording_example.jfr` im Verzeichnis `D:\home`.
 
 ```
 jcmd <pid> JFR.start name=TimedRecording settings=profile duration=30s filename="D:\home\timed_recording_example.JFR"
@@ -237,7 +237,7 @@ Führen Sie den folgenden Befehl aus, um eine 30-sekündige Aufnahme der JVM zu 
 jcmd 116 JFR.start name=MyRecording settings=profile duration=30s filename="/home/jfr_example.jfr"
 ```
 
-Während des 30-sekündigen Intervalls können Sie durch Ausführung von `jcmd 116 JFR.check` überprüfen, ob die Aufnahme wirklich stattfindet. Daraufhin werden alle Aufzeichnungen für den entsprechenden Java-Prozess gezeigt.
+Während des 30-Sekunden-Intervalls können Sie überprüfen, ob die Aufnahme stattfindet, indem Sie `jcmd 116 JFR.check` ausführen. Daraufhin werden alle Aufzeichnungen für den entsprechenden Java-Prozess gezeigt.
 
 #### <a name="continuous-recording"></a>Fortlaufende Aufzeichnung
 
@@ -270,7 +270,7 @@ Aktivieren Sie die [Anwendungsprotokollierung](troubleshoot-diagnostic-logs.md#e
 
 Aktivieren Sie die [Anwendungsprotokollierung](troubleshoot-diagnostic-logs.md#enable-application-logging-linuxcontainer) über das Azure-Portal oder die [Azure-Befehlszeilenschnittstelle](/cli/azure/webapp/log#az_webapp_log_config), um App Service so zu konfigurieren, dass die Streams mit der Standardkonsolenausgabe und den Standardkonsolenfehlern Ihrer Anwendung in das lokale Dateisystem oder Azure Blob Storage geschrieben werden. Wenn Sie eine längere Beibehaltung benötigen, konfigurieren Sie die Anwendung für die Ausgabe in einen Blob Storage-Container. Ihre Java- und Tomcat-App-Protokolle befinden sich im Verzeichnis */home/LogFiles/Application/* .
 
-Die Azure Blob Storage-Protokollierung für App Services auf Linux-Basis kann nur mit [Azure Monitor (Vorschauversion)](./troubleshoot-diagnostic-logs.md#send-logs-to-azure-monitor-preview) konfiguriert werden. 
+Die Protokollierung von Azure Blob Storage für Linux-basierte App Services kann nur mit [Azure Monitor](./troubleshoot-diagnostic-logs.md#send-logs-to-azure-monitor) konfiguriert werden. 
 
 ::: zone-end
 
@@ -278,7 +278,7 @@ Wenn Ihre Anwendung [Logback](https://logback.qos.ch/) oder [Log4j](https://logg
 
 ## <a name="customization-and-tuning"></a>Anpassung und Optimierung
 
-Azure App Service für Linux unterstützt eine sofort verfügbare Optimierung und Anpassung über das Azure-Portal und die CLI. Lesen Sie die folgenden Artikel zur nicht Java-spezifischen Web-App-Konfiguration:
+Azure App Service unterstützt eine sofort verfügbare Optimierung und Anpassung über das Azure-Portal und die CLI. Lesen Sie die folgenden Artikel zur nicht Java-spezifischen Web-App-Konfiguration:
 
 - [Konfigurieren von App-Einstellungen](configure-common.md#configure-app-settings)
 - [Einrichten einer benutzerdefinierten Domäne](app-service-web-tutorial-custom-domain.md)
@@ -286,12 +286,11 @@ Azure App Service für Linux unterstützt eine sofort verfügbare Optimierung un
 - [Hinzufügen eines CDN](../cdn/cdn-add-to-web-app.md)
 - [Konfigurieren der Kudu-Website](https://github.com/projectkudu/kudu/wiki/Configurable-settings#linux-on-app-service-settings)
 
-
 ### <a name="set-java-runtime-options"></a>Festlegen von Java-Runtimeoptionen
 
 Um reservierten Arbeitsspeicher oder andere JVM-Runtimeoptionen festzulegen, erstellen Sie mit den Optionen eine [App-Einstellung](configure-common.md#configure-app-settings) mit dem Namen `JAVA_OPTS`. App Service übergibt diese Einstellung beim Start als Umgebungsvariable an die Java-Runtime.
 
-Erstellen Sie im Azure-Portal unter **Anwendungseinstellungen** für die Web-App eine neue App-Einstellung mit dem Namen `JAVA_OPTS` für Java SE bzw. `CATALINA_OPTS` für Tomcat, in der die zusätzlichen Einstellungen, z. B. `-Xms512m -Xmx1204m`, enthalten sind.
+Erstellen Sie im Azure-Portal unter **Anwendungseinstellungen** für die Webanwendung eine neue Anwendungseinstellung mit dem Namen `JAVA_OPTS` für Java SE oder `CATALINA_OPTS` für Tomcat, die weitere Einstellungen wie `-Xms512m -Xmx1204m` enthält.
 
 Um die App-Einstellung über das Maven-Plug-In zu konfigurieren, fügen Sie Einstellungs-/Werttags im Azure-Plug-In-Abschnitt hinzu. Im folgenden Beispiel werden bestimmte Mindest- und Höchstwerte für die Java-Heapgröße festgelegt:
 
@@ -304,11 +303,30 @@ Um die App-Einstellung über das Maven-Plug-In zu konfigurieren, fügen Sie Eins
 </appSettings>
 ```
 
+::: zone pivot="platform-windows"
+
+> [!NOTE]
+> Sie müssen keine web.config-Datei erstellen, wenn Sie Tomcat unter Windows App Service verwenden. 
+
+::: zone-end
+
 Entwickler, die eine einzige Anwendung mit einem Bereitstellungsslot in ihrem App Service-Plan ausführen, können die folgenden Optionen verwenden:
 
 - B1- und S1-Instanzen: `-Xms1024m -Xmx1024m`
 - B2- und S2-Instanzen: `-Xms3072m -Xmx3072m`
 - B3- und S3-Instanzen: `-Xms6144m -Xmx6144m`
+- P1v2-Instanzen: `-Xms3072m -Xmx3072m`
+- P2v2-Instanzen: `-Xms6144m -Xmx6144m`
+- P3v2-Instanzen: `-Xms12800m -Xmx12800m`
+- P1v3-Instanzen: `-Xms6656m -Xmx6656m`
+- P2v3-Instanzen: `-Xms14848m -Xmx14848m`
+- P3v3-Instanzen: `-Xms30720m -Xmx30720m`
+- I1 Instanzen: `-Xms3072m -Xmx3072m`
+- I2 Instanzen: `-Xms6144m -Xmx6144m`
+- I3 Instanzen: `-Xms12800m -Xmx12800m`
+- I1v2-Instanzen: `-Xms6656m -Xmx6656m`
+- I2v2-Instanzen: `-Xms14848m -Xmx14848m`
+- I3v2-Instanzen: `-Xms30720m -Xmx30720m`
 
 Überprüfen Sie beim Optimieren Ihrer Anwendungsheapeinstellungen Ihre App Service-Plandetails, und berücksichtigen Sie mehrere Anwendungs- und Bereitstellungsslotanforderungen, um die optimale Zuordnung von Arbeitsspeicher zu ermitteln.
 
@@ -382,7 +400,7 @@ for (Object key : map.keySet()) {
     }
 ```
 
-Verwenden Sie den `/.auth/ext/logout`-Pfad, um Benutzer abzumelden. Informationen zur Durchführung von anderen Aktionen finden Sie in der Dokumentation unter [Anpassen von An- und Abmeldungen](configure-authentication-customize-sign-in-out.md). Es gibt auch offizielle Dokumentation zur Tomcat [HttpServletRequest-Schnittstelle](https://tomcat.apache.org/tomcat-5.5-doc/servletapi/javax/servlet/http/HttpServletRequest.html) und ihren Methoden. Die folgenden Servletmethoden werden auch basierend auf Ihrer App Service-Konfiguration aktualisiert:
+Um Benutzer abzumelden, verwenden Sie den Pfad `/.auth/ext/logout`. Weitere Aktionen finden Sie in der Dokumentation zu [Anpassen der An- und Abmeldungen](configure-authentication-customize-sign-in-out.md). Es gibt auch offizielle Dokumentation zur Tomcat [HttpServletRequest-Schnittstelle](https://tomcat.apache.org/tomcat-5.5-doc/servletapi/javax/servlet/http/HttpServletRequest.html) und ihren Methoden. Die folgenden Servletmethoden werden auch basierend auf Ihrer App Service-Konfiguration aktualisiert:
 
 ```java
 public boolean isSecure()
@@ -404,7 +422,7 @@ Befolgen Sie die Anleitung unter [Schützen eines benutzerdefinierten DNS-Namens
 
 Befolgen Sie zunächst die Anweisungen zum [Gewähren des Zugriffs auf KeyVault für Ihre App](app-service-key-vault-references.md#granting-your-app-access-to-key-vault) und zum [Erstellen eines KeyVault-Verweises auf Ihr Geheimnis in einer Anwendungseinstellung](app-service-key-vault-references.md#reference-syntax). Sie können überprüfen, ob der Verweis auf das Geheimnis aufgelöst wird, indem Sie die Umgebungsvariable ausgeben, während Sie remote auf das App Service-Terminal zugreifen.
 
-Um diese Geheimnisse in Ihre Spring- oder Tomcat-Konfigurationsdatei einzufügen, verwenden Sie die Syntax der Umgebungsvariablen (`${MY_ENV_VAR}`). Informationen zu Spring-Konfigurationsdateien finden Sie in dieser Dokumentation zu [externalisierten Konfigurationen](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html).
+Um diese Geheimnisse in Ihre Spring- oder Tomcat-Konfigurationsdatei einzufügen, verwenden Sie die Syntax der Umgebungsvariablen (`${MY_ENV_VAR}`). Für Spring-Konfigurationsdateien, siehe diese Dokumentation über [externalisierte Konfigurationen](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html).
 
 ::: zone pivot="platform-linux"
 
@@ -412,7 +430,7 @@ Um diese Geheimnisse in Ihre Spring- oder Tomcat-Konfigurationsdatei einzufügen
 
 Standardmäßig werden alle öffentlichen oder privaten Zertifikate, die [in App Service Linux hochgeladen](configure-ssl-certificate.md) wurden, beim Start des Containers in den jeweiligen Java-Keystore geladen. Nach dem Hochladen Ihres Zertifikats müssen Sie Ihre App Service-Instanz neu starten, damit es in den Java-Keystore geladen wird. Öffentliche Zertifikate werden unter `$JAVA_HOME/jre/lib/security/cacerts` in den Schlüsselspeicher geladen, und private Zertifikate werden unter `$JAVA_HOME/lib/security/client.jks` gespeichert.
 
-Zur Verschlüsselung Ihrer JDBC-Verbindung mit Zertifikaten im Java-Schlüsselspeicher sind möglicherweise zusätzliche Konfigurationsschritte erforderlich. Weitere Informationen finden Sie in der Dokumentation für den gewählten JDBC-Treiber.
+Für die Verschlüsselung Ihrer JDBC-Verbindung mit Zertifikaten im Java Key Store kann eine weitere Konfiguration erforderlich sein. Lesen Sie die Dokumentation für den von Ihnen gewählten JDBC-Treiber.
 
 - [PostgreSQL](https://jdbc.postgresql.org/documentation/head/ssl-client.html)
 - [SQL Server](/sql/connect/jdbc/connecting-with-ssl-encryption)
@@ -440,7 +458,7 @@ keyStore.load(
 
 Sie können Zertifikate manuell in den Schlüsselspeicher laden. Erstellen Sie die App-Einstellung `SKIP_JAVA_KEYSTORE_LOAD` mit dem Wert `1`, damit die Zertifikate nicht automatisch von App Service in den Keystore geladen werden. Alle öffentlichen Zertifikate, die über das Azure-Portal in App Service hochgeladen werden, werden unter `/var/ssl/certs/` gespeichert. Private Zertifikate werden unter `/var/ssl/private/` gespeichert.
 
-Sie können mit dem Java-Schlüsseltool interagieren oder Debuggingschritte ausführen, indem Sie eine [SSH-Verbindung](configure-linux-open-ssh-session.md) mit Ihrer App Service-Instanz herstellen und den Befehl `keytool`ausführen. Eine Liste mit Befehlen finden Sie in der [Dokumentation des Schlüsseltools](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html). Weitere Informationen zur Keystore-API finden Sie in der [offiziellen Dokumentation](https://docs.oracle.com/javase/8/docs/api/java/security/KeyStore.html).
+Sie können mit dem Java-Schlüsseltool interagieren oder Debuggingschritte ausführen, indem Sie eine [SSH-Verbindung](configure-linux-open-ssh-session.md) mit Ihrer App Service-Instanz herstellen und den Befehl `keytool`ausführen. Eine Liste mit Befehlen finden Sie in der [Dokumentation des Schlüsseltools](https://docs.oracle.com/javase/8/docs/technotes/tools/unix/keytool.html). Weitere Informationen über die KeyStore API finden Sie in [der offiziellen Dokumentation](https://docs.oracle.com/javase/8/docs/api/java/security/KeyStore.html).
 
 ::: zone-end
 
@@ -450,7 +468,7 @@ In diesem Abschnitt wird veranschaulicht, wie Sie Java-Anwendungen, die in Azure
 
 ### <a name="configure-application-insights"></a>Application Insights konfigurieren
 
-Azure Monitor Application Insights ist ein cloudnativer Anwendungsüberwachungsdienst, mit dem Kunden Fehler, Engpässe und Nutzungsmuster beobachten können, um die Anwendungsleistung zu verbessern und die durchschnittliche Auflösungszeit (Mean Time To Resolution, MTTR) zu reduzieren. Mit wenigen Klicks oder CLI-Befehlen können Sie die Überwachung für Ihre Node.js- oder Java-Apps aktivieren, wobei Protokolle, Metriken und verteilte Ablaufverfolgungen automatisch erfasst werden, sodass kein SDK in Ihre App eingeschlossen werden muss.
+Azure Monitor Application Insights ist ein Cloud-nativer Anwendungsüberwachungsdienst, der es Kunden ermöglicht, Ausfälle, Engpässe und Nutzungsmuster zu beobachten, um die Anwendungsleistung zu verbessern und die mittlere Zeit bis zur Lösung (MTTR) zu reduzieren. Mit wenigen Klicks oder CLI-Befehlen können Sie die Überwachung für Ihre Node.js- oder Java-Apps aktivieren, wobei Protokolle, Metriken und verteilte Ablaufverfolgungen automatisch erfasst werden, sodass kein SDK in Ihre App eingeschlossen werden muss.
 
 #### <a name="azure-portal"></a>Azure-Portal
 
@@ -574,7 +592,7 @@ Für das Verbinden mit Datenquellen in Spring Boot-Anwendungen wird empfohlen, V
     app.datasource.url=${CUSTOMCONNSTR_exampledb}
     ```
 
-Weitere Informationen zu diesem Thema finden Sie in der Spring Boot-Dokumentation unter [Data Access](https://docs.spring.io/spring-boot/docs/current/reference/html/howto-data-access.html) (Datenzugriff) und [Externalized Configuration](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html) (Externalisierte Konfiguration).
+Weitere Informationen zu diesem Thema finden Sie in der [Spring Boot Dokumentation über Datenzugriff](https://docs.spring.io/spring-boot/docs/current/reference/html/howto-data-access.html) und [externalisierte Konfigurationen](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html).
 
 ::: zone pivot="platform-windows"
 
@@ -892,11 +910,11 @@ Alternativ können Sie zum Hochladen des JDBC-Treibers auch einen FTP-Client ver
 
 Diese Anweisungen gelten für alle Datenbankverbindungen. Für die Platzhalter müssen der Treiberklassenname und die JAR-Datei der gewählten Datenbank angegeben werden. In der folgenden Tabelle finden Sie Klassennamen und Treiberdownloads für gängige Datenbanken:
 
-| Datenbank   | Treiberklassenname                             | JDBC-Treiber                                                                      |
+| Datenbank   | Treiberklassenname                             | JDBC-Treiber                                                                              |
 |------------|-----------------------------------------------|------------------------------------------------------------------------------------------|
 | PostgreSQL | `org.postgresql.Driver`                        | [Download](https://jdbc.postgresql.org/download.html)                                    |
 | MySQL      | `com.mysql.jdbc.Driver`                        | [Download](https://dev.mysql.com/downloads/connector/j/) (Wählen Sie „Platform Independent“ (Plattformunabhängig) aus.) |
-| SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [Download](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server#download)                                                           |
+| SQL Server | `com.microsoft.sqlserver.jdbc.SQLServerDriver` | [Download](/sql/connect/jdbc/download-microsoft-jdbc-driver-for-sql-server#download)     |
 
 Wenn Sie Tomcat für die Verwendung von Java Database Connectivity (JDBC) oder der Java-Persistenz-API (JPA) konfigurieren möchten, passen Sie zuerst die Umgebungsvariable `CATALINA_OPTS` an, die von Tomcat beim Start eingelesen wird. Diese Werte können mithilfe einer App-Einstellung im [App Service-Maven-Plug-In](https://github.com/Microsoft/azure-maven-plugins/blob/develop/azure-webapp-maven-plugin/README.md) festgelegt werden:
 
@@ -1090,7 +1108,7 @@ Um sich zu vergewissern, dass die Datenquelle dem JBoss-Server hinzugefügt wurd
 
 ## <a name="choosing-a-java-runtime-version"></a>Auswählen einer Java Runtime-Version
 
-App Service ermöglicht es Benutzern, die Hauptversion der JVM (z. B. Java 8 oder Java 11) sowie die Nebenversion (z. B. 1.8.0 _232 oder 11.0.5) auszuwählen. Sie können auch auswählen, dass die Nebenversion automatisch aktualisiert wird, sobald neue Nebenversionen verfügbar werden. In den meisten Fällen sollten Produktionsstandorte angeheftete JVM-Nebenversionen verwenden. Dadurch werden unerwartete Ausfälle während einer automatischen Aktualisierung einer Nebenversion verhindert. Alle Java-Web-Apps verwenden 64-Bit-JVMs, was nicht konfigurierbar ist.
+App Service ermöglicht es den Benutzern, die Hauptversion der JVM, wie Java 8 oder Java 11, und die Nebenversion, wie 1.8.0_232 oder 11.0.5, auszuwählen. Sie können auch auswählen, dass die Nebenversion automatisch aktualisiert wird, sobald neue Nebenversionen verfügbar werden. In den meisten Fällen sollten Produktionsstandorte angeheftete JVM-Nebenversionen verwenden. Dadurch werden unerwartete Ausfälle während einer automatischen Aktualisierung einer Nebenversion verhindert. Alle Java-Web-Apps verwenden 64-Bit-JVMs, was nicht konfigurierbar ist.
 
 Wenn Sie sich für das Anheften der Nebenversion entscheiden, müssen Sie die JVM-Nebenversion in regelmäßigen Abständen am Standort aktualisieren. Um sicherzustellen, dass Ihre Anwendung mit der neueren Nebenversion funktioniert, erstellen Sie einen Stagingslot, und erhöhen Sie die Nebenversion am Stagingstandort. Nachdem Sie bestätigt haben, dass die Anwendung in der neuen Nebenversion ordnungsgemäß ausgeführt wird, können Sie den Stagingbereich gegen den Produktionsslot austauschen.
 
@@ -1111,7 +1129,7 @@ Als Java Development Kit (JDK) wird das von [Azul Systems](https://www.azul.com/
 
 Aktualisierungen von Hauptversionen werden in Azure App Service durch neue Laufzeitoptionen bereitgestellt. Kunden führen das Update auf diese neueren Versionen von Java durch die Konfiguration ihrer App Service-Bereitstellung durch und müssen durch Tests sicherstellen, dass das größere Update ihren Anforderungen entspricht.
 
-Unterstützte JDKs werden jedes Vierteljahr im Januar, April, Juli und Oktober automatisch gepatcht. Weitere Informationen zu Java in Azure finden Sie in [diesem Supportdokument](/azure/developer/java/fundamentals/java-support-on-azure).
+Unterstützte JDKs werden jedes Vierteljahr im Januar, April, Juli und Oktober automatisch gepatcht. Weitere Informationen zu Java auf Azure finden Sie in [diesem Support-Dokument](/azure/developer/java/fundamentals/java-support-on-azure).
 
 ### <a name="security-updates"></a>Sicherheitsupdates
 

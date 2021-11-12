@@ -8,15 +8,15 @@ ms.reviewer: nibaccam
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: automl
-ms.date: 09/27/2021
+ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: devx-track-python,contperf-fy21q1, automl, contperf-fy21q4, FY21Q4-aml-seo-hack, contperf-fy22q1
-ms.openlocfilehash: 59bf4007cad596b4d14c17a729c9da4e4cfb3957
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0b8d9b3beaf965cc8c5c745d243da429c0de10e4
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131065264"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131561022"
 ---
 # <a name="set-up-automl-training-with-python"></a>Einrichten von AutoML-Training mit Python
 
@@ -211,7 +211,7 @@ Informationen zu den speziellen Definitionen dieser Metriken finden Sie unter [G
 
 #### <a name="metrics-for-classification-scenarios"></a>Metriken für Klassifizierungsszenarien 
 
-Postschwellenwertmetriken wie `accuracy`, `average_precision_score_weighted`, `norm_macro_recall`, und `precision_score_weighted` optimieren möglicherweise nicht so gut für Datensätze, die klein sind, eine sehr große Klassenschieflage (Klassenungleichgewicht) aufweisen oder wenn der erwartete Metrikwert sehr nahe bei 0,0 oder 1,0 liegt. In diesen Fällen eignet sich `AUC_weighted` möglicherweise besser als primäre Metrik. Nach Abschluss des automatisierten ML können Sie das stärkste Modell basierend auf der Metrik auswählen, die sich am besten für Ihre Geschäftsanforderungen eignet.
+Schwellenwertabhängige Metriken wie `accuracy`, `recall_score_weighted`, `norm_macro_recall` und `precision_score_weighted` sind möglicherweise nicht optimal für kleine Datensätze, die eine sehr große Klassenschiefe (Klassenungleichgewicht) aufweisen, oder wenn der erwartete Metrikwert sehr nahe bei 0,0 oder 1,0 liegt. In diesen Fällen eignet sich `AUC_weighted` möglicherweise besser als primäre Metrik. Nach Abschluss des automatisierten ML können Sie das stärkste Modell basierend auf der Metrik auswählen, die sich am besten für Ihre Geschäftsanforderungen eignet.
 
 | Metrik | Beispiel eines Anwendungsfalls |
 | ------ | ------- |
@@ -222,10 +222,16 @@ Postschwellenwertmetriken wie `accuracy`, `average_precision_score_weighted`, `n
 | `precision_score_weighted` |  |
 
 #### <a name="metrics-for-regression-scenarios"></a>Metriken für Regressionsszenarien
- 
-Mit Metriken wie `r2_score` und `spearman_correlation` lässt sich die Qualität des Modells besser darstellen, wenn für den vorherzusagenden Wert eine Vielzahl von Größenordnungen verfügbar sind. Nehmen wir die Schätzung eines Gehalts als Beispiel: Viele Menschen verfügen über ein Gehalt zwischen 20.000 und 100.000 USD, es gibt jedoch auch Gehälter von rund 100 Millionen. 
 
-In diesem Fall würden `normalized_mean_absolute_error` und `normalized_root_mean_squared_error` einen Vorhersagefehler im Bereich 20.000 USD bei einem Mitarbeiter mit 30.000 USD Jahresgehalt und einem Mitarbeiter mit 20 Millionen USD Jahresgehalt identisch behandeln. Tatsächlich ist ein Vorhersagefehler bzw. eine Abweichung von 20.000 USD bei einem Jahresgehalt von 20 Millionen USD jedoch sehr nah am eigentlichen Wert (eine geringe relative Differenz von 0,1 %), wohingegen ein Vorhersagefehler bzw. eine Abweichung von 20.000 USD bei einem Gehalt von 30.000 USD eine erhebliche Abweichung darstellt (eine große relative Differenz von 67 %). `normalized_mean_absolute_error` und `normalized_root_mean_squared_error` sind nützlich, wenn die Größenordnung der vorherzusagenden Werte ähnlich ist.
+`r2_score`, `normalized_mean_absolute_error` und `normalized_root_mean_squared_error` versuchen alle, die Vorhersagefehler zu minimieren. `r2_score` und `normalized_root_mean_squared_error` minimieren beide die durchschnittlichen quadratischen Fehler, während `normalized_mean_absolute_error` den durchschnittlichen absoluten Wert der Fehler minimiert. Der absolute Wert behandelt Fehler aller Größenordnungen gleich, und quadrierte Fehler haben einen viel größeren Nachteil für Fehler mit größeren absoluten Werten. Je nachdem, ob größere Fehler stärker bestraft werden sollen oder nicht, kann man wählen, ob man den quadratischen Fehler oder den absoluten Fehler optimiert.
+
+Der Hauptunterschied zwischen `r2_score` und `normalized_root_mean_squared_error` ist die Art und Weise, wie sie normalisiert werden, und ihre Bedeutung. `normalized_root_mean_squared_error` ist der mittlere quadratische Fehler, normiert auf den Bereich und kann als durchschnittliche Fehlergröße für die Vorhersage interpretiert werden. `r2_score` ist der mittlere quadratische Fehler, normalisiert durch eine Schätzung der Varianz der Daten. Es ist der Anteil der Variation, der durch das Modell erfasst werden kann. 
+
+> [! Hinweis] `r2_score` und `normalized_root_mean_squared_error` verhalten sich auch als primäre Metriken ähnlich. Wenn ein fester Validierungssatz verwendet wird, optimieren diese beiden Metriken dasselbe Ziel, nämlich den mittleren quadratischen Fehler, und werden von demselben Modell optimiert. Wenn nur ein Trainingsset zur Verfügung steht und Kreuzvalidierung angewendet wird, würden sie sich leicht unterscheiden, da der Normalisierer für `normalized_root_mean_squared_error` als Bereich des Trainingssets festgelegt ist, aber der Normalisierer für `r2_score` würde für jede Falte variieren, da er die Varianz für jede Falte darstellt.
+
+Wenn der Rang und nicht der genaue Wert von Interesse ist, kann `spearman_correlation` die bessere Wahl sein, da er die Rangkorrelation zwischen realen Werten und Vorhersagen misst.
+
+Derzeit gibt es jedoch keine primäre Regressionsmetrik, die sich mit relativen Unterschieden befasst. Alle `r2_score`, `normalized_mean_absolute_error` und `normalized_root_mean_squared_error` behandeln einen Vorhersagefehler von $20k für einen Arbeitnehmer mit einem Gehalt von $30k genauso wie für einen Arbeitnehmer, der $20M verdient, wenn diese beiden Datenpunkte zum selben Datensatz für die Regression oder zur selben Zeitreihe gehören, die durch den Zeitreihenbezeichner angegeben wird. Tatsächlich ist ein Vorhersagefehler bzw. eine Abweichung von 20.000 USD bei einem Jahresgehalt von 20 Millionen USD jedoch sehr nah am eigentlichen Wert (eine geringe relative Differenz von 0,1 %), wohingegen ein Vorhersagefehler bzw. eine Abweichung von 20.000 USD bei einem Gehalt von 30.000 USD eine erhebliche Abweichung darstellt (eine große relative Differenz von 67 %). Um das Problem der relativen Unterschiede zu lösen, kann man ein Modell mit den verfügbaren primären Metriken trainieren und dann das Modell mit den besten `mean_absolute_percentage_error` oder `root_mean_squared_log_error` auswählen.
 
 | Metrik | Beispiel eines Anwendungsfalls |
 | ------ | ------- |

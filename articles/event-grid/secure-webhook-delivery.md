@@ -3,12 +3,12 @@ title: Sichere WebHook-Zustellung mit Azure AD in Azure Event Grid
 description: Beschreibt, wie Ereignisse mittels Azure Event Grid an HTTPS-Endpunkte zugestellt werden, die von Azure Active Directory geschützt werden.
 ms.topic: how-to
 ms.date: 09/29/2021
-ms.openlocfilehash: 18db7a5244cb498ff54999646082d3d5628468e1
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: 2e5c816d0902fe34ecdff9b967422814e345599a
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130066884"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131511095"
 ---
 # <a name="deliver-events-to-azure-active-directory-protected-endpoints"></a>Bereitstellen von Ereignissen auf mit Azure Active Directory geschützten Endpunkten
 Dieser Artikel beschreibt, wie Sie Azure Active Directory (Azure AD) verwenden, um die Verbindung zwischen Ihrem **Ereignisabonnement** und Ihrem **Webhook-Endpunkt** sichern. Eine Übersicht über Azure AD-Anwendungen und -Dienstprinzipale finden Sie unter [Microsoft Identity Platform (v2.0): Übersicht](../active-directory/develop/v2-overview.md).
@@ -116,48 +116,55 @@ Führen Sie basierend auf der Abbildung oben die nächsten Schritte aus, um den 
 
 ## <a name="deliver-events-to-a-webhook-in-a-different-azure-ad-tenant"></a>Übermitteln von Ereignissen an einen Webhook in einem anderen Azure AD-Mandanten 
 
-Um ein sicheres Webhookabonnement über mehrere Mandanten hinweg zu aktivieren, müssen Sie diese Aufgabe mithilfe einer Azure AD-Anwendung durchführen. Dieser Prozess ist derzeit nicht verfügbar, wenn Sie den Azure AD-Benutzer aus dem Portal verwenden.
+Zum Schützen der Verbindung zwischen Ihrem Ereignisabonnement und Ihrem Webhookendpunkt, die sich in verschiedenen Azure AD Mandanten befinden, müssen Sie eine Azure AD Anwendung verwenden, wie in diesem Abschnitt gezeigt. Derzeit ist es nicht möglich, diese Verbindung mithilfe eines Azure AD Benutzers im Azure-Portal zu sichern. 
 
 ![Ereignisse mehrerer Mandanten mit Azure AD und Webhooks](./media/secure-webhook-delivery/multitenant-diagram.png)
 
 Führen Sie basierend auf der Abbildung oben die nächsten Schritte aus, um beide Mandanten zu konfigurieren.
 
-1. Erstellen Sie in **Mandant A** eine Azure AD-Anwendung für den Event Grid-Abonnementwriter, der für die Zusammenarbeit mit einem beliebigen Azure AD-Verzeichnis (mehrere Mandanten) konfiguriert ist.
+### <a name="tenant-a"></a>Mandant A
 
-2. Erstellen Sie ein Geheimnis für die Azure AD-Anwendung, die Sie zuvor in **Mandant A** erstellt haben, und speichern Sie den Wert (Sie benötigen diesen Wert später).
+Gehen Sie in **Mandant A** wie folgt vor: 
 
-3. Wechseln Sie in **Mandant A** im Event Grid-Thema zur Zugriffssteuerung (IAM), und fügen Sie die Rollenzuweisung der Azure AD-Anwendung des Event Grid-Abonnementwriters als Event Grid-Mitwirkender hinzu. Dieser Schritt ermöglicht es, Zugriff auf die Event Grid-Ressource zu erhalten, wenn wir uns mit der Azure AD-Anwendung mithilfe der Azure CLI bei Azure angemeldet haben.
+1. Erstellen Sie eine Azure AD-Anwendung für den Event Grid-Abonnementwriter, der für die Zusammenarbeit mit einem beliebigen Azure AD-Verzeichnis (mehrere Mandanten) konfiguriert ist.
 
-4. Erstellen Sie in **Mandant B** eine Azure AD-Anwendung für den Webhook, der für die Zusammenarbeit mit dem Microsoft-Verzeichnis (einzelner Mandant) konfiguriert ist.
+2. Erstellen Sie ein Geheimnis für die Azure AD-Anwendung, die Sie zuvor in **Mandant A** erstellt haben, und speichern Sie den Wert (Sie werden diesen Wert später benötigen).
 
-5. Öffnen Sie die [Azure-Shell](https://portal.azure.com/#cloudshell/) in **Mandant B**, und wählen Sie die PowerShell-Umgebung aus.
+3. Navigieren Sie zur Seite **Zugriffssteuerung (IAM)** für das Event Grid-Thema. Fügen Sie Azure AD Anwendung des Event Grid-Abonnementwriters zur Rolle **Event Grid Mitwirkender** hinzu. Dieser Schritt ermöglicht der Anwendung den Zugriff auf die Event Grid Ressource, wenn Sie sich mit der Azure AD Anwendung mithilfe des Azure CLI bei Azure anmelden.
 
+### <a name="tenant-b"></a>Mandant B
+
+Gehen Sie in **Mandant B** wie folgt vor:
+
+1. Erstellen Sie eine Azure AD-Anwendung für den Webhook, der für die Zusammenarbeit mit dem Microsoft-Verzeichnis (einzelner Mandant) konfiguriert ist.
+5. Öffnen Sie die [Azure-Shell](https://portal.azure.com/#cloudshell/) im Mandanten, und wählen Sie die PowerShell-Umgebung aus.
 6. Ändern Sie den Wert von **$webhookAadTenantId**, um eine Verbindung mit **Mandant B** herzustellen.
-
     - Variables:
         - **$webhookAadTenantId**: Azure-Mandanten-ID für **Mandant B**
 
-    ```Shell
-    PS /home/user>$webhookAadTenantId = "[REPLACE_WITH_YOUR_TENANT_ID]"
-    PS /home/user>Connect-AzureAD -TenantId $webhookAadTenantId
-    ```
-
+        ```Shell
+        PS /home/user>$webhookAadTenantId = "[REPLACE_WITH_YOUR_TENANT_ID]"
+        PS /home/user>Connect-AzureAD -TenantId $webhookAadTenantId
+        ```
 7. Öffnen Sie das [folgende Skript](scripts/event-grid-powershell-webhook-secure-delivery-azure-ad-app.md), aktualisieren Sie die Werte von **$webhookAppObjectId** und **$eventSubscriptionWriterAppId** mit Ihren Bezeichnern, und fahren Sie dann mit dem Ausführen des Skripts fort.
 
     - Variables:
         - **$webhookAppObjectId**: Azure AD-Anwendungs-ID, die für den Webhook erstellt wurde
         - **$eventSubscriptionWriterAppId**: Azure AD-Anwendungs-ID für Event Grid-Abonnementwriter
 
-    > [!NOTE]
-    > Sie müssen den Wert von **```$eventGridAppId```** nicht ändern, für dieses Skript legen wir **AzureEventGridSecureWebhookSubscriber** als Wert für **```$eventGridRoleName```** fest. Denken Sie daran, dass Sie Mitglied der [Rolle „Azure AD-Anwendungsadministrator“](../active-directory/roles/permissions-reference.md#all-roles) sein müssen, um dieses Skript ausführen zu können.
+            > [!NOTE]
+            > Sie müssen den Wert von **```$eventGridAppId```** nicht ändern, für dieses Skript legen wir **AzureEventGridSecureWebhookSubscriber** als Wert für **```$eventGridRoleName```** fest. Denken Sie daran, dass Sie Mitglied der [Rolle „Azure AD-Anwendungsadministrator“](../active-directory/roles/permissions-reference.md#all-roles) sein müssen, um dieses Skript ausführen zu können.
 
-8. Öffnen Sie die [Azure-Shell](https://portal.azure.com/#cloudshell/) in **Mandant A**, und melden Sie sich als die Azure AD-Anwendung Event Grid-Abonnementwriter an, indem Sie den Befehl ausführen.
+### <a name="tenant-a"></a>Mandant A
+
+Wieder zurück in **Mandant A**, gehen Sie wie folgt vor: 
+
+1. Öffnen Sie die [Azure-Shell](https://portal.azure.com/#cloudshell/), und melden Sie sich als Azure AD-Anwendung Event Grid-Abonnementwriter an, indem Sie den Befehl ausführen.
 
     ```Shell
     PS /home/user>az login --service-principal -u [REPLACE_WITH_APP_ID] -p [REPLACE_WITH_SECRET_VALUE] --tenant [REPLACE_WITH_TENANT_ID]
     ```
-
-9. Erstellen Sie Ihr Abonnement, indem Sie den Befehl ausführen.
+2. Erstellen Sie Ihr Abonnement, indem Sie den Befehl ausführen.
 
     ```Shell
     PS /home/user>az eventgrid system-topic event-subscription create --name [REPLACE_WITH_SUBSCRIPTION_NAME] -g [REPLACE_WITH_RESOURCE_GROUP] --system-topic-name [REPLACE_WITH_SYSTEM_TOPIC] --endpoint [REPLACE_WITH_WEBHOOK_ENDPOINT] --event-delivery-schema [REPLACE_WITH_WEBHOOK_EVENT_SCHEMA] --azure-active-directory-tenant-id [REPLACE_WITH_TENANT_B_ID] --azure-active-directory-application-id-or-uri [REPLACE_WITH_APPLICATION_ID_FROM_SCRIPT] --endpoint-type webhook
@@ -165,11 +172,10 @@ Führen Sie basierend auf der Abbildung oben die nächsten Schritte aus, um beid
 
     > [!NOTE]
     > In diesem Szenario verwenden wir ein Event Grid-Systemthema. Weitere Informationen finden Sie [hier](/cli/azure/eventgrid), wenn Sie ein Abonnement für benutzerdefinierte Themen oder Event Grid-Domänen mithilfe der Azure CLI erstellen möchten.
-
-10. Wenn alles ordnungsgemäß konfiguriert wurde, können Sie das Webhookabonnement in Ihrem Event Grid-Thema erfolgreich erstellen.
+3. Wenn alles ordnungsgemäß konfiguriert wurde, können Sie das Webhookabonnement in Ihrem Event Grid-Thema erfolgreich erstellen.
 
     > [!NOTE]
-    > Zu diesem Zeitpunkt übergibt Event Grid das Azure AD-Bearertoken in jeder Nachricht an den Webhookclient. Sie müssen das Autorisierungstoken in Ihrem Webhook validieren.
+    > An diesem Punkt übergibt Event Grid nun den Azure AD Bearertoken in jeder Nachricht an den Webhookclient. Sie müssen den Autorisierungstoken in Ihrem Webhook überprüfen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

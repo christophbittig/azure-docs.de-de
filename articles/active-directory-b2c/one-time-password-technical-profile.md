@@ -11,12 +11,13 @@ ms.topic: reference
 ms.date: 10/19/2020
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 4815eec021e4ebecda065667dca4568ded703ac5
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.custom: b2c-support
+ms.openlocfilehash: c54f5636ee7af8142bf5fcd401a2160a69cf550c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "131044872"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131436895"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Definieren eines technischen Einmalkennwortprofils in einer benutzerdefinierten Azure AD B2C-Richtlinie
 
@@ -76,7 +77,7 @@ Die folgenden Einstellungen können verwendet werden, um den Codegenerierungsmod
 | CodeExpirationInSeconds | Nein | Die Zeit in Sekunden bis zum Ablauf des Codes. Mindestwert: `60`, Maximalwert: `1200`, Standardwert: `600`. Bei jeder Codebereitstellung (gleicher Code mit `ReuseSameCode` oder neuer Code) wird der Codeablauf verlängert. Diese Zeit wird auch zum Festlegen des Wiederholungstimeouts verwendet (sobald die maximale Anzahl der Versuche erreicht ist, kann der Benutzer vor Ablauf dieses Zeitraums keinen neuen Code abrufen). |
 | CodeLength | Nein | Die Länge des Codes. Standardwert: `6`. |
 | CharacterSet | Nein | Der Zeichensatz für den Code, der für die Verwendung in einem regulären Ausdruck formatiert ist. Beispiel: `a-z0-9A-Z`. Standardwert: `0-9`. Der Zeichensatz muss mindestens zehn verschiedene Zeichen enthalten, die im angegebenen Zeichensatz enthalten sind. |
-| NumRetryAttempts | Nein | Die Anzahl der Überprüfungsversuche, bevor der Code als ungültig betrachtet wird. Standardwert: `5`. |
+| NumRetryAttempts | Nein | Die Anzahl der Überprüfungsversuche, bevor der Code als ungültig betrachtet wird. Standardwert: `5`. Wenn Sie NumRetryAttempts beispielsweise auf 2 festlegen, sind insgesamt nur zwei Versuche zulässig (erster + 1 Wiederholungsversuch). Beim dritten Versuch wird „maximale Anzahl an Versuchen erreicht“ (max attempts reached) angezeigt, unabhängig davon, ob der Code richtig ist oder nicht.|
 | NumCodeGenerationAttempts | Nein | Die maximale Anzahl von Codegenerierungsversuchen pro Bezeichner. Der Standardwert lautet „10“, wenn keine Angabe erfolgt. |
 | Vorgang | Ja | Der Vorgang, der ausgeführt werden soll. Möglicher Wert: `GenerateCode`. |
 | ReuseSameCode | Nein | Gibt an, ob der gleiche Code angegeben werden soll, anstatt einen neuen Code zu generieren, wenn der angegebene Code noch nicht abgelaufen und gültig ist. Standardwert: `false`.  |

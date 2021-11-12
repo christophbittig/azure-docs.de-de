@@ -7,12 +7,12 @@ ms.date: 11/02/2021
 ms.author: helohr
 manager: femila
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 8b456b534dd176fd8dc6bcd3b31b2a713fd8d7a2
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 5faea9929fb62af8736e62ca6e629cb2bde01f3a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131021522"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131452165"
 ---
 # <a name="azure-virtual-desktop-for-azure-stack-hci-preview"></a>Azure Virtual Desktop für Azure Stack HCI (Vorschauversion)
 
@@ -66,7 +66,7 @@ Folgende Probleme, die sich auf die Public Preview-Version von Azure Virtual De
 
 - Auf der Registerkarte „Azure Virtual Desktop“ im Azure-Portal ist es nicht möglich, neue virtuelle Computer direkt in der Azure Stack HCI-Infrastruktur zu erstellen. Stattdessen müssen Administratoren separat lokale virtuelle Computer erstellen und sie dann bei einem Azure Virtual Desktop-Hostpool registrieren.
 
-- Bei der Verbindungsherstellung mit einem virtuellen Desktop mit mehreren Sitzungen unter Windows 10 oder Windows 11 Enterprise wird Benutzern unter Umständen eine Meldung angezeigt, die besagt, dass eine Aktivierung erforderlich ist, auch wenn sie über eine geeignete Lizenz verfügen.
+- Beim Herstellen einer Verbindung mit einem virtuellen Windows-10- oder 11-Unternehmens-Desktop mit mehreren Sitzungen können für Benutzer Aktivierungsprobleme angezeigt werden, z. B. ein Desktop-Wasserzeichen mit den Worten "Windows aktivieren", selbst wenn sie über eine berechtigte Lizenz verfügen.
 
 - Azure Virtual Desktop für Azure Stack HCI unterstützt derzeit keine Hostpools, die sowohl cloudbasierte als auch lokale Sitzungshosts enthalten. Jeder Hostpool in der Bereitstellung darf nur einen einzelnen Hostpooltyp aufweisen.
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/22/2021
 ms.author: oldoll
-ms.openlocfilehash: 8e70919b229ff1c29590a370a201f8b8a0ebc62b
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: ce34b313661106e903a92aaf1a3b2f65213a1634
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130067461"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131577259"
 ---
 # <a name="new-version-of-azure-vm-extension-for-sap-solutions"></a>Neue Version der Azure-VM-Erweiterung für SAP-Lösungen 
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -90,6 +90,8 @@ Die neue VM-Erweiterung für SAP verwendet eine verwaltete Identität, die der V
 1. Führen Sie das folgende PowerShell-Cmdlet aus.
     Führen Sie das Cmdlet `Get-AzEnvironment` aus, um eine Liste der verfügbaren Umgebungen zu erhalten. Falls Sie öffentliches Azure verwenden möchten, lautet die zugehörige Umgebung **AzureCloud**. Wählen Sie für Azure China 21Vianet die Option **AzureChinaCloud**.
 
+    Die VM-Erweiterung für SAP unterstützt die Konfiguration eines Proxys, den die Erweiterung verwenden soll, um sich mit externen Ressourcen zu verbinden, zum Beispiel mit der Azure Resource Manager API. Bitte verwenden Sie den Parameter -ProxyURI, um den Proxy zu setzen.
+
     ```powershell
     $env = Get-AzEnvironment -Name <name of the environment>
     Connect-AzAccount -Environment $env
@@ -122,6 +124,8 @@ Die neue VM-Erweiterung für SAP verwendet eine verwaltete Identität, die der V
   
 1. Aktivieren Sie die neue Erweiterung:
   
+   Die VM-Erweiterung für SAP unterstützt die Konfiguration eines Proxys, den die Erweiterung verwenden soll, um sich mit externen Ressourcen zu verbinden, zum Beispiel mit der Azure Resource Manager API. Bitte verwenden Sie den Parameter --proxy-uri, um den Proxy zu setzen.
+
    ```azurecli
    az vm aem set -g <resource-group-name> -n <vm name> --install-new-extension
    ```

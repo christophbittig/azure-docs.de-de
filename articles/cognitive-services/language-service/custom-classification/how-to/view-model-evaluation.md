@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-custom-classification, ignite-fall-2021
-ms.openlocfilehash: 89cb476141544c136ac38abf996cf16d3ac4d002
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 6b7d56ee6eb7280b285442a2c82001b100d1cf06
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095669"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132054370"
 ---
 # <a name="view-the-model-evaluation"></a>Anzeigen der Modellauswertung
 
@@ -31,7 +31,7 @@ Bevor Sie Ihr Modell trainieren, benötigen Sie Folgendes:
 * [Mit einem Tag versehene Daten](tag-data.md)
 * Ein [erfolgreich trainiertes Modell](train-model.md)
 
-Weitere Informationen finden Sie im [Lebenszyklus der Anwendungsentwicklung](../overview.md#application-development-lifecycle).
+Weitere Informationen finden Sie im [Lebenszyklus der Anwendungsentwicklung](../overview.md#project-development-lifecycle).
 
 ## <a name="model-evaluation"></a>Modellauswertung
 
@@ -60,13 +60,16 @@ Der Auswertungsprozess nutzt das trainierte Modell zum Vorhersagen benutzerdefin
 
 Unter der **Konfusionsmatrix für Testsatz** finden Sie die Konfusionsmatrix für das Modell.
 
+> [!NOTE]
+> Die Konfusionsmatrix wird derzeit nicht für Klassifizierungsprojekte mit mehreren Bezeichnungen unterstützt.
+
 **Klassifizierung mit einzelnen Bezeichnungen**
 
 :::image type="content" source="../media/conf-matrix-single.png" alt-text="Konfusionsmatrix für die Klassifizierung einzelner Klassen" lightbox="../media/conf-matrix-single.png":::
 
-**Klassifizierung mit mehreren Bezeichnungen**
+<!-- **Multiple Label Classification**
 
-:::image type="content" source="../media/conf-matrix-multi.png" alt-text="Konfusionsmatrix für die Klassifizierung mehrerer Klassen" lightbox="../media/conf-matrix-multi.png":::
+:::image type="content" source="../media/conf-matrix-multi.png" alt-text="Confusion matrix for multiple class classification" lightbox="../media/conf-matrix-multi.png"::: -->
 
 ## <a name="next-steps"></a>Nächste Schritte
 

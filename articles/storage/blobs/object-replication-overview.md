@@ -10,12 +10,12 @@ ms.date: 09/02/2021
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6808160b97d6d1d46917f2e1733b7b1badb4c5f4
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 1c3f90087c2e016cdfd160c98df28cf3da25ca28
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129534363"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471951"
 ---
 # <a name="object-replication-for-block-blobs"></a>Objektreplikation für Blockblobs
 
@@ -65,7 +65,7 @@ Die Objektreplikation unterstützt keine Blobmomentaufnahmen. Momentaufnahmen f�
 
 ### <a name="blob-tiering"></a>Blobtiering
 
-Die Objektreplikation wird unterstützt, wenn sich das Quell- und das Zielkonto in der Ebene „Heiß“ oder „Kalt“ befinden. Quell- und Zielkonten befinden sich möglicherweise in unterschiedlichen Ebenen. Die Objektreplikation schlägt jedoch ein fehl, wenn ein Blob im Quell- oder Zielkonto in die Archivzugriffsebene verschoben wurde. Weitere Informationen zu Blobebenen finden Sie unter [heiße Ebene, kalte Ebene und Archivebene für Blobdaten](access-tiers-overview.md).
+Die Objektreplikation wird unterstützt, wenn sich das Quell- und das Zielkonto in der Ebene „Heiß“ oder „Kalt“ befinden. Quell- und Zielkonten befinden sich möglicherweise in unterschiedlichen Ebenen. Die Objektreplikation schlägt jedoch ein fehl, wenn ein Blob im Quell- oder Zielkonto in die Archivzugriffsebene verschoben wurde. Weitere Informationen zu Blob-Ebenen finden Sie unter [Zugriffsebenen für Blobdaten „Heiß“, „Kalt“ und „Archiv“](access-tiers-overview.md).
 
 ### <a name="immutable-blobs"></a>Unveränderliche Blobs
 
@@ -99,7 +99,7 @@ Sie können ferner einen oder mehrere Filter als Teil einer Replikationsregel an
 
 Die Quell- und Zielcontainer müssen beide vorhanden sein, bevor Sie sie in einer Regel angeben können. Nachdem Sie die Replikationsrichtlinie erstellt haben, sind Schreibvorgänge im Zielcontainer nicht zulässig. Alle Versuche, in den Zielcontainer zu schreiben, schlagen mit dem Fehlercode 409 (Konflikt) fehl. Wenn Sie in einen Zielcontainer schreiben möchten, für den eine Replikationsregel konfiguriert ist, müssen Sie entweder die für diesen Container konfigurierte Regel löschen oder die Replikationsrichtlinie entfernen. Lese- und Löschvorgänge im Zielcontainer sind zulässig, wenn die Replikationsrichtlinie aktiv ist.
 
-Sie können den Vorgang [Blobebene festlegen](/rest/api/storageservices/set-blob-tier) für einen Blob im Zielcontainer aufrufen, um ihn auf die Archivebene zu verschieben. Weitere Informationen zur Archivebene finden Sie unter [heiße Ebene, kalte Ebene und Archivebene für Blobdaten](access-tiers-overview.md#archive-access-tier).
+Sie können den Vorgang [Blobebene festlegen](/rest/api/storageservices/set-blob-tier) für einen Blob im Zielcontainer aufrufen, um ihn auf die Archivebene zu verschieben. Weitere Informationen zur Archivebene finden Sie unter [Zugriffsebenen für Blobdaten „Heiß“, „Kalt“ und „Archiv“](access-tiers-overview.md#archive-access-tier).
 
 ## <a name="policy-definition-file"></a>Richtliniendefinitionsdatei
 

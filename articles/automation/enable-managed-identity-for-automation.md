@@ -1,21 +1,21 @@
 ---
-title: Verwenden einer systemseitig zugewiesenen verwalteten Identität für ein Azure Automation-Konto (Vorschau)
+title: Verwenden einer vom System zugewiesenen verwalteten Identität für ein Azure Automation Konto
 description: In diesem Artikel wird beschrieben, wie Sie eine verwaltete Identität für Azure Automation-Konten einrichten.
 services: automation
 ms.subservice: process-automation
-ms.date: 09/23/2021
+ms.date: 10/26/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: eb883fafd7c738ca99fe2282edb67d1849b9b1af
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: 685126603c302a02d56aff51873cd34340947494
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129858156"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131470754"
 ---
-# <a name="using-a-system-assigned-managed-identity-for-an-azure-automation-account-preview"></a>Verwenden einer systemseitig zugewiesenen verwalteten Identität für ein Azure Automation-Konto (Vorschau)
+# <a name="using-a-system-assigned-managed-identity-for-an-azure-automation-account"></a>Verwenden einer vom System zugewiesenen verwalteten Identität für ein Azure Automation Konto
 
-In diesem Artikel erfahren Sie, wie eine systemseitig zugewiesene verwaltete Identität für ein Azure Automation-Konto erstellt und für den Zugriff auf andere Ressourcen verwendet wird. Weitere Informationen zur Funktionsweise verwalteter Identitäten mit Azure Automation finden Sie unter [Verwaltete Identitäten](automation-security-overview.md#managed-identities-preview).
+In diesem Artikel erfahren Sie, wie eine systemseitig zugewiesene verwaltete Identität für ein Azure Automation-Konto erstellt und für den Zugriff auf andere Ressourcen verwendet wird. Weitere Informationen zur Funktionsweise verwalteter Identitäten mit Azure Automation finden Sie unter [Verwaltete Identitäten](automation-security-overview.md#managed-identities).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -64,7 +64,7 @@ $automationAccount = "automationAccountName"
 ```
 
 > [!IMPORTANT]
-> Die neue Identität auf Automation-Kontoebene überschreibt alle vorherigen vom System zugewiesenen Identitäten auf VM-Ebene, die unter Verwendung der [Runbook-Authentifizierung](./automation-hrw-run-runbooks.md#runbook-auth-managed-identities) mit verwalteten Identitäten beschrieben sind. Wenn Sie Hybridaufträge auf virtuellen Azure-Computern ausführen, die die vom System zugewiesene Identität eines virtuellen Computers für den Zugriff auf Runbookressourcen verwenden, wird die Identität des Automation-Kontos für die Hybridaufträge verwendet. Dies bedeutet, dass ihre vorhandene Auftragsausführung beeinträchtigt werden kann, wenn Sie das CmK-Feature (Customer Managed Keys) Ihres Automation-Kontos verwendet haben.<br/><br/>Wenn Sie die verwaltete Identität des virtuellen Computers weiterhin verwenden möchten, sollten Sie die Identität auf Automation-Kontoebene nicht aktivieren. Wenn Sie dies bereits aktiviert haben, können Sie die systemseitig zugewiesene verwaltete Identität des Automation-Kontos deaktivieren. Weitere Informationen finden Sie unter [verwaltete Identität ihres Azure Automation-Kontos deaktivieren](./disable-managed-identity-for-automation.md).
+> Die neue Identität der Automation-Kontoebene überschreibt alle vorherigen vom System zugewiesenen Identitäten auf Ebene der virtuellen Computer, die unter [Verwendung der Runbook-Authentifizierung mit verwalteten Identitäten](./automation-hrw-run-runbooks.md#runbook-auth-managed-identities) beschrieben sind. Wenn Sie Hybridaufträge auf virtuellen Azure-Computern ausführen, die die vom System zugewiesene Identität eines virtuellen Computers für den Zugriff auf Runbookressourcen verwenden, wird die Identität des Automation-Kontos für die Hybridaufträge verwendet. Dies bedeutet, dass ihre vorhandene Auftragsausführung beeinträchtigt werden kann, wenn Sie das CmK-Feature (Customer Managed Keys) Ihres Automation-Kontos verwendet haben.<br/><br/>Wenn Sie die verwaltete Identität des virtuellen Computers weiterhin verwenden möchten, sollten Sie die Identität auf Automation-Kontoebene nicht aktivieren. Wenn Sie dies bereits aktiviert haben, können Sie die systemseitig zugewiesene verwaltete Identität des Automation-Kontos deaktivieren. Weitere Informationen finden Sie unter [verwaltete Identität ihres Azure Automation-Kontos deaktivieren](./disable-managed-identity-for-automation.md).
 
 ### <a name="enable-using-the-azure-portal"></a>Aktivieren mithilfe des Azure-Portals
 
@@ -101,7 +101,7 @@ Die Ausgabe sollte in etwa wie folgt aussehen:
 
 :::image type="content" source="media/enable-managed-identity-for-automation/set-azautomationaccount-output.png" alt-text="Ausgabe des Befehls „Set-AzAutomationAccount“.":::
 
-Führen Sie für eine zusätzliche Ausgabe `$output.identity | ConvertTo-Json` aus.
+Ändern Sie für eine zusätzliche Ausgabe das Beispiel so, dass Folgendes angegeben wird: `$output.identity | ConvertTo-Json`.
 
 ### <a name="enable-using-a-rest-api"></a>Aktivieren mithilfe einer REST-API
 
@@ -257,7 +257,7 @@ Ein Automation-Konto kann mithilfe seiner systemseitig zugewiesenen verwalteten 
 
 Bevor Sie die systemseitig verwaltete Identität für die Authentifizierung verwenden können, richten Sie den Zugriff dieser Identität auf die Azure-Ressource ein, in der Sie die Identität verwenden möchten. Für diese Aufgabe muss der Identität in der Azure-Zielressource die entsprechende Rolle zugewiesen werden.
 
-Befolgen Sie das Prinzip der geringsten Berechtigung und weisen Sie sorgfältig nur die Berechtigungen zu, die für die Ausführung Ihres Runbooks erforderlich sind. Beispiel: Wenn das Automatisierungskonto nur zum Starten oder Stoppen einer Azure-VM erforderlich ist, dann müssen die dem Konto "Ausführen als" oder der verwalteten Identität zugewiesenen Berechtigungen nur zum Starten oder Stoppen der VM dienen. Ähnlich verhält es sich, wenn ein Runbook aus dem Blob-Speicher liest, dann weisen Sie nur Leseberechtigungen zu. in diesem Beispiel wird anhand von Azure PowerShell gezeigt, wie Sie dem Contributor
+Befolgen Sie das Prinzip der geringsten Berechtigung und weisen Sie sorgfältig nur die Berechtigungen zu, die für die Ausführung Ihres Runbooks erforderlich sind. Beispiel: Wenn das Automatisierungskonto nur zum Starten oder Stoppen einer Azure-VM erforderlich ist, dann müssen die dem Konto "Ausführen als" oder der verwalteten Identität zugewiesenen Berechtigungen nur zum Starten oder Stoppen der VM dienen. Weisen Sie ebenso Leseberechtigungen zu, wenn ein Runbook aus dem Blobspeicher liest.
 
 In diesem Beispiel wird Azure PowerShell verwendet, um zu zeigen, wie die Rolle Mitwirkender im Abonnement der Azure-Zielressource zugewiesen wird. Die Rolle Mitwirkender wird als Beispiel verwendet und ist in Ihrem Fall möglicherweise erforderlich.
 
@@ -295,7 +295,7 @@ Stellen Sie für HTTP-Endpunkte Folgendes sicher.
 - Der X-IDENTITY-HEADER sollte auf den Wert der Umgebungsvariablen festgelegt werden, IDENTITY_HEADER für Hybrid Runbook Workers.
 - Der Inhaltstyp für die Post-Anforderung muss „application/x-www-form-urlencoded“ sein.
 
-### <a name="get-access-token-for-system-assigned-identity-using-http-get"></a>Abrufen des Zugriffstokens für die systemseitig zugewiesene verwaltete Identität mithilfe von HTTP Get
+### <a name="get-access-token-for-system-assigned-managed-identity-using-http-get"></a>Abrufen des Zugriffstokens für die systemseitig zugewiesene verwaltete Identität mithilfe von HTTP Get
 
 ```powershell
 $resource= "?resource=https://management.azure.com/" 
@@ -388,10 +388,22 @@ $command.ExecuteNonQuery()
 $conn.Close()
 ```
 
+## <a name="migrate-from-existing-run-as-accounts-to-managed-identity"></a>Migrieren von vorhandenen ausführenden Konten zu einer verwalteten Identität
+
+Azure Automation bietet eine Authentifizierung für die Verwaltung von Azure Resource Manager-Ressourcen oder von Ressourcen, die im klassischen Bereitstellungsmodell mit einem ausführendem Konto bereitgestellt wurden. Führen Sie die folgenden Schritte aus, um von einem ausführenden Konto zu einer verwalteten Identität für Ihre Runbook-Authentifizierung zu wechseln.
+
+1. Aktivieren Sie [eine vom System zugewiesene](enable-managed-identity-for-automation.md), vom Benutzer [zugewiesene](add-user-assigned-identity.md)oder beide Typen von verwalteten Identitäten.
+1. Gewähren Sie der verwalteten Identität die gleichen Berechtigungen für die Azure-Ressourcen, die mit dem übereinstimmen, was dem ausführenden Konto zugewiesen wurde.
+1. Aktualisieren Sie Ihre Runbooks für die Authentifizierung mithilfe der verwalteten Identität.
+1. Ändern Sie Runbooks so, dass die verwaltete Identität verwendet wird. Verwenden Sie für die Identitätsunterstützung das Az cmdlet `Connect-AzAccount` cmdlet. Weitere Informationen finden Sie in der PowerShell-Referenz unter [Connect-AzAccount](/powershell/module/az.accounts/Connect-AzAccount).
+
+   - Wenn Sie AzureRM-Module verwenden, aktualisieren Sie `AzureRM.Profile` auf die neueste Version, und ersetzen Sie sie mithilfe von  `Add-AzureRMAccount` Cmdlets durch `Connect-AzureRMAccount –Identity`.
+   - Wenn Sie Az-Module verwenden, aktualisieren Sie auf die neueste Version, indem Sie die Schritte im Abschnitt [Azure PowerShell Module aktualisieren](automation-update-azure-modules.md#update-az-modules) ausführen.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Wenn Ihre Runbooks nicht erfolgreich abgeschlossen werden, lesen Sie [Behandlung von Problemen mit der verwalteten Azure Automation-Identität (Vorschau)](troubleshoot/managed-identity.md).
+- Wenn Ihre Runbooks nicht erfolgreich abgeschlossen werden, lesen Sie [Behandlung von Problemen mit der verwalteten Azure Automation-Identität](troubleshoot/managed-identity.md).
 
-- Wenn Sie eine verwaltete Identität deaktivieren müssen, finden Sie weitere Informationen unter [ Deaktivieren der verwalteten Identität Ihres Azure Automation-Kontos (Vorschauversion)](disable-managed-identity-for-automation.md).
+- Wenn Sie eine verwaltete Identität deaktivieren müssen, finden Sie weitere Informationen unter [Deaktivieren der verwalteten Identität Ihres Azure Automation-Kontos](disable-managed-identity-for-automation.md).
 
 - Eine Übersicht über die Azure Automation-Kontosicherheit finden Sie unter [Übersicht über die Automation-Kontoauthentifizierung.](automation-security-overview.md)

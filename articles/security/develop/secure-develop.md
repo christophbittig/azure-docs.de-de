@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: cf76427df2c1802ed49dc5ff848059d88ba9658e
-ms.sourcegitcommit: 832e92d3b81435c0aeb3d4edbe8f2c1f0aa8a46d
+ms.openlocfilehash: 2f81cd3e37b6fefea1a76a8a4bb50c756ff1fca4
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/07/2021
-ms.locfileid: "111558546"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131463523"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Entwickeln sicherer Anwendungen in Azure
 
@@ -31,8 +31,7 @@ In diesem Artikel werden die folgenden SDL-Phasen behandelt:
 
 ## <a name="implementation"></a>Implementierung
 
-Der Schwerpunkt der Implementierungsphase besteht darin, bewährte Methoden für die frühe Prävention einzurichten und Sicherheitsprobleme im Code zu erkennen und daraus zu entfernen.
-Angenommen, Ihre Anwendung wird auf Arten verwendet, für die sie nicht beabsichtigt war. Dies hilft dabei, Sie vor versehentlichem oder vorsätzlichem Missbrauch Ihrer Anwendung zu schützen.
+Der Schwerpunkt der Implementierungsphase besteht darin, bewährte Methoden für die frühe Prävention einzurichten und Sicherheitsprobleme im Code zu erkennen und daraus zu entfernen. Angenommen, Ihre Anwendung wird auf Arten verwendet, für die sie nicht beabsichtigt war. Dies hilft dabei, Sie vor versehentlichem oder vorsätzlichem Missbrauch Ihrer Anwendung zu schützen.
 
 ### <a name="perform-code-reviews"></a>Ausführen von Code Reviews
 
@@ -55,10 +54,10 @@ Aufnehmen in die Sperrliste und Setzen auf die Positivliste sind zwei allgemeine
   - Beim Aufnehmen in die Sperrliste wird versucht, zu bestätigen, dass eine bestimmte Benutzereingabe keinen „bekannt bösartigen“ Inhalt aufweist.
 
   - Beim Setzen auf die Positivliste wird versucht, zu bestätigen, dass eine bestimmte Benutzereingabe einem Satz „bekannt gutartiger“ Eingaben entspricht. Zeichenbasiertes Setzen auf die Positivliste ist eine Form des Setzens auf die Positivliste, bei der eine Anwendung überprüft, ob die Benutzereingabe nur „bekannt gutartige“ Zeichen enthält bzw. ob die Eingabe einem bekannten Format entspricht.
+
     Dies kann beispielsweise die Überprüfung umfassen, ob ein Benutzername nur alphanumerische Zeichen enthält, oder ob er genau zwei Zahlen enthält.
 
-Setzen auf die Positivliste ist der zu bevorzugende Ansatz zum Erstellen sicherer Software.
-Aufnehmen in die Sperrliste ist anfällig für Fehler, da es nicht möglich ist, eine vollständige Liste potenziell schädlicher Eingaben aufzustellen.
+Setzen auf die Positivliste ist der zu bevorzugende Ansatz zum Erstellen sicherer Software. Aufnehmen in die Sperrliste ist anfällig für Fehler, da es nicht möglich ist, eine vollständige Liste potenziell schädlicher Eingaben aufzustellen.
 
 Führen Sie diese Arbeit auf dem Server aus, nicht auf dem Client (oder auf dem Server und auf dem Client).
 

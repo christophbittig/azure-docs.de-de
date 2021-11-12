@@ -1,18 +1,18 @@
 ---
-title: Deaktivieren einer systemseitig zugewiesenen verwalteten Identität für ein Azure Automation-Konto (Vorschau)
+title: Deaktivieren einer systemseitig zugewiesenen verwalteten Identität für ein Azure Automation-Konto
 description: In diesem Artikel wird erläutert, wie Sie eine systemseitig zugewiesene verwaltete Identität für ein Azure Automation deaktivieren.
 services: automation
 ms.subservice: process-automation
-ms.date: 07/24/2021
+ms.date: 10/26/2021
 ms.topic: conceptual
-ms.openlocfilehash: 178da223b5d5f14cc27034c39bd4cc3a05f82631
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: b3bf648914635e6ea9345a234c49bfb64c757bc1
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128606587"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131435413"
 ---
-# <a name="disable-system-assigned-managed-identity-for-azure-automation-account-preview"></a>Deaktivieren einer systemseitig zugewiesenen verwalteten Identität für ein Azure Automation-Konto (Vorschau)
+# <a name="disable-system-assigned-managed-identity-for-azure-automation-account"></a>Deaktivieren einer systemseitig zugewiesenen verwalteten Identität für ein Azure Automation-Konto
 
 Sie können eine systemseitig zugewiesene verwaltete Identität in Azure Automation über das Azure-Portal oder unter Verwendung der REST-API deaktivieren.
 
@@ -126,6 +126,6 @@ Führen Sie die folgenden Schritte aus:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zum Aktivieren der verwalteten Identitäten in Azure Automation finden Sie unter [Aktivieren und Verwenden der verwalteten Identität für Automation (Vorschau)](enable-managed-identity-for-automation.md).
+- Weitere Informationen zum Aktivieren von verwalteten Identitäten in Azure Automation finden Sie unter [Aktivieren und Verwenden der verwalteten Identität für Automation](enable-managed-identity-for-automation.md).
 
 - Eine Übersicht über die Automation-Kontosicherheit finden Sie unter [Übersicht über die Automation-Kontoauthentifizierung.](automation-security-overview.md)

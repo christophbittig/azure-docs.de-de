@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: dnethi
 ms.author: dinethi
 ms.reviewer: mikeray
-ms.date: 07/30/2021
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: 195325ff9bad726ed62c5955b393d31e4c457f2e
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 836ca4cca73b71f98415c05fd89227f53332a265
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124836775"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131555379"
 ---
 # <a name="create-azure-arc-data-controller-using-the-cli"></a>Erstellen eines Azure Arc-Datencontrollers mithilfe der Befehlszeilenschnittstelle
 
@@ -29,27 +29,31 @@ Um den Datencontroller mithilfe der Befehlszeilenschnittstelle zu erstellen, mü
 
 [Installieren der [!INCLUDE [azure-data-cli-azdata](../../../includes/azure-data-cli-azdata.md)]](install-client-tools.md)
 
-Unabhängig von der ausgewählten Zielplattform müssen Sie vor der Erstellung die folgenden Umgebungsvariablen für den Datencontrolleradministrator festlegen. Sie können diese Anmeldeinformationen anderen Benutzern mitteilen, die ggf. Administratorzugriff auf den Datencontroller benötigen.
+Unabhängig davon, welche Zielplattform Sie wählen, müssen Sie die folgenden Umgebungsvariablen vor der Erstellung des Data Controllers festlegen. Diese Umgebungsvariablen werden nach der Erstellung des Datencontrollers zu den Anmeldeinformationen, die für den Zugriff auf die Dashboards für Metriken und Protokolle verwendet werden.
+
 
 ### <a name="set-environment-variables"></a>Festlegen von Umgebungsvariablen
 
-**AZDATA_USERNAME:** ein Benutzername Ihrer Wahl für den Kibana/Grafana-Administrator. Beispiel: `arcadmin`
+Nachfolgend finden Sie zwei Sätze von Umgebungsvariablen, die für den Zugriff auf die Dashboards für Metriken und Protokolle erforderlich sind.
 
-**AZDATA_PASSWORD:** ein Kennwort Ihrer Wahl für den Kibana/Grafana-Administrator. Das Kennwort muss mindestens acht Zeichen enthalten, die aus drei der folgenden vier Kategorien stammen: Großbuchstaben, Kleinbuchstaben, Ziffern und Symbole.
+#### <a name="windows-powershell"></a>Windows PowerShell
+
+```powershell
+$ENV:AZDATA_LOGSUI_USERNAME="<username for Kibana dashboard>"
+$ENV:AZDATA_LOGSUI_PASSWORD="<password for Kibana dashboard>"
+$ENV:AZDATA_METRICSUI_USERNAME="<username for Grafana dashboard>"
+$ENV:AZDATA_METRICSUI_PASSWORD="<password for Grafana dashboard>"
+```
 
 #### <a name="linux-or-macos"></a>Linux oder macOS
 
 ```console
-export AZDATA_USERNAME="<your username of choice>"
-export AZDATA_PASSWORD="<your password of choice>"
+export AZDATA_LOGSUI_USERNAME="<username for Kibana dashboard>"
+export AZDATA_LOGSUI_PASSWORD="<password for Kibana dashboard>"
+export AZDATA_METRICSUI_USERNAME="<username for Grafana dashboard>"
+export AZDATA_METRICSUI_PASSWORD="<password for Grafana dashboard>"
 ```
 
-#### <a name="windows-powershell"></a>Windows PowerShell
-
-```console
-$ENV:AZDATA_USERNAME="<your username of choice>"
-$ENV:AZDATA_PASSWORD="<your password of choice>"
-```
 
 Sie müssen eine Verbindung mit einem Kubernetes-Cluster herstellen und sich authentifizieren sowie einen vorhandenen Kubernetes-Kontext auswählen, bevor Sie mit der Erstellung des Azure Arc-Datencontrollers beginnen. Wie Sie eine Verbindung mit einem Kubernetes-Cluster oder -Dienst herstellen, ist von Fall zu Fall unterschiedlich. Informieren Sie sich in der Dokumentation zur verwendeten Kubernetes-Distribution oder zum verwendeten Kubernetes-Dienst darüber, wie eine Verbindung mit dem Kubernetes-API-Server hergestellt wird.
 

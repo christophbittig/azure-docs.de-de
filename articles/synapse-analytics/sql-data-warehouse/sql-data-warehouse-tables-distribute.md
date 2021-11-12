@@ -1,22 +1,22 @@
 ---
 title: Entwurfsleitfaden für verteilte Tabellen
-description: Empfehlungen für das Entwerfen von Tabellen mit Hashverteilung und verteilten Roundrobintabellen mithilfe eines dedizierten SQL-Pools in Azure Synapse Analytics
+description: Empfehlungen für das Entwerfen von Tabellen mit Hashverteilung und verteilten Round-Robintabellen in dedizierten SQL-Pools.
 services: synapse-analytics
-author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 04/17/2018
-ms.author: xiaoyul
-ms.reviewer: igorstan
+ms.date: 11/02/2021
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: ''
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 1f85a8d539c8f841bafaae9d877446c5e6ecb416
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: f1cae70e186d6fb1467dcb5f31ea5c9ee15df6eb
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122351488"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131500619"
 ---
 # <a name="guidance-for-designing-distributed-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>Leitfaden zum Entwerfen von verteilten Tabellen mithilfe eines dedizierten SQL-Pools in Azure Synapse Analytics
 
@@ -42,11 +42,11 @@ Für den Tabellenentwurf sollten Sie möglichst umfassende Kenntnisse zu Ihren D
 
 Bei einer Tabelle mit Hashverteilung werden Tabellenzeilen mithilfe einer deterministischen Hashfunktion, die jede Zeile einer [Verteilung](massively-parallel-processing-mpp-architecture.md#distributions) zuweist, auf die Computeknoten verteilt.
 
-![Verteilte Tabelle](./media/sql-data-warehouse-tables-distribute/hash-distributed-table.png "Verteilte Tabelle")  
+:::image type="content" source="./media/sql-data-warehouse-tables-distribute/hash-distributed-table.png" alt-text="Verteilte Tabelle" lightbox="./media/sql-data-warehouse-tables-distribute/hash-distributed-table.png":::
 
 Da identische Werte per Hash immer der gleichen Verteilung zugewiesen werden, sind die Zeilenpositionen in SQL Analytics bekannt. Der dedizierte SQL-Pool nutzt dieses Wissen, um Datenverschiebungen während Abfragen zu minimieren, was die Abfrageleistung verbessert.
 
-Tabellen mit Hashverteilung eignen sich gut für umfangreiche Faktentabellen in einem Sternschema. Sie können sehr viele Zeilen umfassen und trotzdem eine hohe Leistung bieten. Es gibt natürlich einige Entwurfsaspekte, die dazu beitragen, die Leistung zu erreichen, für die das verteilte System konzipiert ist. Einer dieser Aspekte, der auch in diesem Artikel beschrieben wird, ist die Wahl einer geeigneten Verteilungsspalte.
+Tabellen mit Hashverteilung eignen sich gut für umfangreiche Faktentabellen in einem Sternschema. Sie können sehr viele Zeilen umfassen und trotzdem eine hohe Leistung bieten. Es gibt natürlich einige Konzeptionsüberlegungen, die dazu beitragen, die Leistung zu erreichen, für die das verteilte System ausgelegt ist. Einer dieser Aspekte, der auch in diesem Artikel beschrieben wird, ist die Wahl einer geeigneten Verteilungsspalte.
 
 Geeignete Szenarien für die Verwendung einer Tabelle mit Hashverteilung:
 
@@ -70,7 +70,7 @@ Geeignete Szenarien für die Verwendung der Roundrobinverteilung in einer Tabell
 
 Im Tutorial [Laden von Daten zu New Yorker Taxis](./load-data-from-azure-blob-storage-using-copy.md#load-the-data-into-your-data-warehouse) wird anhand eines Beispiels das Laden von Daten in eine Roundrobin-Stagingtabelle gezeigt.
 
-## <a name="choosing-a-distribution-column"></a>Wählen einer Verteilungsspalte
+## <a name="choose-a-distribution-column"></a>Auswählen einer Verteilungsspalte
 
 Eine Tabelle mit Hashverteilung besitzt eine Verteilungsspalte. Dabei handelt es sich um den Hashschlüssel. Der folgende Code erstellt beispielsweise eine Tabelle mit Hashverteilung, bei der die Spalte „ProductKey“ als Verteilungsspalte fungiert.
 
@@ -88,8 +88,7 @@ CREATE TABLE [dbo].[FactInternetSales]
 WITH
 (   CLUSTERED COLUMNSTORE INDEX
 ,  DISTRIBUTION = HASH([ProductKey])
-)
-;
+);
 ```
 
 Die in der Verteilungsspalte gespeicherten Daten können aktualisiert werden. Aktualisierungen von Daten in der Verteilungsspalte können zu einer Zufallswiedergabe von Daten führen.
@@ -119,7 +118,7 @@ Zur Minimierung von Datenverschiebungen muss die Verteilungsspalte folgende Krit
 
 - Sie wird in Klauseln vom Typ `JOIN`, `GROUP BY`, `DISTINCT`, `OVER` und `HAVING` verwendet. Wenn zwei umfangreiche Faktentabellen über häufige Joins verfügen, verbessert sich die Abfrageleistung, wenn die Verteilung der beiden Tabellen auf einer der Verknüpfungsspalten basiert.  Wenn eine Tabelle nicht in Joins verwendet wird, können Sie sie ggf. auf der Grundlage einer Tabelle verteilen, die in der `GROUP BY`-Klausel verwendet wird.
 - Sie wird *nicht* in `WHERE`-Klauseln verwendet. Dies kann die Abfrage eingrenzen und dazu führen, dass sie nicht für alle Verteilungen ausgeführt wird.
-- Sie ist *keine* Datumsspalte. WHERE-Klauseln werden häufig zum Filtern nach Datum verwendet.  In diesem Fall findet die gesamte Verarbeitung unter Umständen nur in einigen wenigen Verteilungen statt.
+- Sie ist *keine* Datumsspalte. `WHERE` Klauseln werden häufig zum Filtern nach Datum verwendet.  In diesem Fall findet die gesamte Verarbeitung unter Umständen nur in einigen wenigen Verteilungen statt.
 
 ### <a name="what-to-do-when-none-of-the-columns-are-a-good-distribution-column"></a>Was, wenn keine der Spalten als Verteilungsspalte geeignet ist?
 
@@ -142,7 +141,7 @@ DBCC PDW_SHOWSPACEUSED('dbo.FactInternetSales');
 
 So ermitteln Sie Tabellen mit einer Datenschiefe von mehr als zehn Prozent:
 
-1. Erstellen Sie die Ansicht „dbo.vTableSizes“ aus dem Artikel mit der [Tabellenübersicht](sql-data-warehouse-tables-overview.md#table-size-queries).  
+1. Erstellen Sie die Ansicht `dbo.vTableSizes`, die im Artikel [Tabellenübersicht](sql-data-warehouse-tables-overview.md#table-size-queries) gezeigt wird.  
 2. Führen Sie die folgende Abfrage aus:
 
 ```sql

@@ -6,19 +6,16 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 03/30/2021
-ms.openlocfilehash: 68461802f24a34f66fd51dd6653fda97854c6cca
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 31645daf978aa24dfbdc7a947d7d3d8a609936b7
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "128565321"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131460601"
 ---
-# <a name="restartstopstart-an-azure-database-for-mysql---flexible-server-preview"></a>Neu starten/Beenden/Starten einer Instanz von Azure Database for MySQL – Flexible Server (Vorschau)
+# <a name="restartstopstart-an-azure-database-for-mysql-flexible-server"></a>Neu starten/Beenden/Starten einer Azure-Datenbank für MySQL–flexible Server
 
 [[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
-> [!IMPORTANT]
-> Azure Database for MySQL Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
 
 In diesem Artikel erfahren Sie, wie Sie flexible Server mithilfe der Azure CLI neu starten, starten und beenden.
 
@@ -34,7 +31,7 @@ In diesem Artikel erfahren Sie, wie Sie flexible Server mithilfe der Azure CLI n
     az login
     ````
 
-- Wenn Sie über mehrere Abonnements verfügen, wählen Sie das entsprechende Abonnement aus, in dem Sie den Server mithilfe des Befehls ```az account set``` erstellen möchten.
+- Wenn Sie über mehrere Abonnements verfügen, wählen Sie das entsprechende Abonnement aus, in dem Sie den Server mit dem ```az account set```-Befehl erstellen.
 `
     ```azurecli
     az account set --subscription <subscription id>

@@ -6,12 +6,12 @@ ms.date: 11/04/2020
 ms.custom: devx-track-java
 author: mattmccleary
 ms.author: mmcc
-ms.openlocfilehash: c5de4ed71de7f6cb6534620cbfd1bc62226123e5
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: 31a7ed92f6fbdfc60753b91709738209acc38fc2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130132795"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131465476"
 ---
 # <a name="configuration-options---azure-monitor-application-insights-for-java"></a>Konfigurationsoptionen – Azure Monitor Application Insights für Java
 
@@ -39,14 +39,14 @@ Weitere Informationen und zusätzliche Konfigurationsoptionen finden Sie unten.
 
 ## <a name="configuration-file-path"></a>Pfad der Konfigurationsdatei
 
-Standardmäßig erwartet Application Insights Java 3.x eine Konfigurationsdatei mit dem Namen `applicationinsights.json`, die sich im gleichen Verzeichnis wie `applicationinsights-agent-3.2.0.jar` befindet.
+Standardmäßig erwartet Application Insights Java 3.x eine Konfigurationsdatei mit dem Namen `applicationinsights.json`, die sich im gleichen Verzeichnis wie `applicationinsights-agent-3.2.2.jar` befindet.
 
 Verwenden Sie eines der folgenden Elemente, um einen eigenen Pfad für Ihre Konfigurationsdatei anzugeben:
 
 * Umgebungsvariable `APPLICATIONINSIGHTS_CONFIGURATION_FILE` oder
 * Java-Systemeigenschaft `applicationinsights.configuration.file`
 
-Wenn Sie einen relativen Pfad angeben, wird dieser relativ zum Verzeichnis von `applicationinsights-agent-3.2.0.jar` aufgelöst.
+Wenn Sie einen relativen Pfad angeben, wird dieser relativ zum Verzeichnis von `applicationinsights-agent-3.2.2.jar` aufgelöst.
 
 ## <a name="connection-string"></a>Verbindungszeichenfolge
 
@@ -348,11 +348,16 @@ Ab Version 3.2.0 können die folgenden Vorschauminstrumentierungen aktiviert wer
       },
       "springIntegration": {
         "enabled": true
-      }
+      },
+      "akka": { 
+        "enabled": true
+      },
     }
   }
 }
 ```
+> [!NOTE]
+> Die Akka-Instrumentierung ist ab Version 3.2.2 verfügbar.
 
 ## <a name="heartbeat"></a>Heartbeat
 
@@ -458,7 +463,7 @@ Application Insights Java 3.x protokolliert standardmäßig auf Ebene `INFO` in
 
 `level` kann `OFF`, `ERROR`, `WARN`, `INFO`, `DEBUG` oder `TRACE` sein.
 
-`path` kann ein absoluter oder ein relativer Pfad sein. Relative Pfade werden anhand des Verzeichnisses aufgelöst, in dem sich `applicationinsights-agent-3.2.0.jar` befindet.
+`path` kann ein absoluter oder ein relativer Pfad sein. Relative Pfade werden anhand des Verzeichnisses aufgelöst, in dem sich `applicationinsights-agent-3.2.2.jar` befindet.
 
 `maxSizeMb` entspricht der maximalen Größe der Protokolldatei, bevor ein Rollover durchgeführt wird.
 

@@ -3,13 +3,16 @@ title: Sicherheitsfeatures für den Schutz von Hybridsicherungen
 description: In diesem Artikel wird erläutert, wie Sie mithilfe der Azure Backup-Sicherheitsfunktionen mehr Sicherheit für Ihre Sicherungen gewinnen können.
 ms.reviewer: utraghuv
 ms.topic: conceptual
-ms.date: 04/26/2021
-ms.openlocfilehash: 10a3420003197fc76f9baefbfd4c58c40a6dacfc
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/02/2021
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: eebf21c5b967d08d3f38eef74239dbff0e3d4e7d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131073660"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131443420"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Sicherheitsfeatures für den Schutz von Hybridsicherungen mit Azure Backup
 
@@ -20,15 +23,18 @@ Die Sorgen bezüglich Sicherheitsproblemen wie Schadsoftware, Ransomware und Ein
 - **Wiederherstellen**. Gelöschte Sicherungsdaten werden für zusätzliche 14 Tage ab dem Löschdatum aufbewahrt. So wird gewährleistet, dass die Daten innerhalb des vorgegebenen Zeitraums wiederhergestellt werden können und auch bei Angriffen keine Datenverluste auftreten. Zum Schutz vor beschädigten Daten werden darüber hinaus auch mehr Mindestwiederherstellungspunkte gepflegt.
 
 > [!NOTE]
-> Sicherheitsfeatures sollten nicht aktiviert werden, wenn Sie eine IaaS-VM-Sicherung (Infrastructure-as-a-Service) verwenden. Sie stehen für die IaaS-VM-Sicherung noch nicht zur Verfügung, die Aktivierung hat also keine Auswirkungen. Die Sicherheitsfeatures sollten nur aktiviert werden, wenn Sie Folgendes verwenden: <br/>
->
-> - **Azure Backup-Agent**. Agent-Mindestversion: 2.0.9052. Nach der Aktivierung dieser Features sollten Sie auf diese Agent-Version aktualisieren, um kritische Vorgänge auszuführen. <br/>
-> - **Azure Backup Server**. Azure Backup-Agent-Mindestversion: 2.0.9052 mit Azure Backup Server-Update 1. <br/>
-> - **System Center Data Protection Manager**. Azure Backup-Agent-Mindestversion 2.0.9052 mit Data Protection Manager 2012 R2 UR12 oder Data Protection Manager 2016 UR2. <br/>
+> Diese Features sind nur für den Recovery Services-Tresor verfügbar. Bei allen neu erstellten Recovery Services-Tresoren sind diese Features standardmäßig aktiviert. Für vorhandene Recovery Services-Tresore müssen die Benutzer diese Features anhand der Schritte im folgenden Abschnitt aktivieren. Nach der Aktivierung gelten die Features für alle Recovery Services-Agent-Computer, Azure Backup Server-Instanzen und Data Protection Manager-Server, die im Tresor registriert sind.
 
-> [!NOTE]
-> Diese Features sind nur für den Recovery Services-Tresor verfügbar. Bei allen neu erstellten Recovery Services-Tresoren sind diese Features standardmäßig aktiviert. Für vorhandene Recovery Services-Tresore müssen die Benutzer diese Features anhand der Schritte im folgenden Abschnitt aktivieren. Nach der Aktivierung gelten die Features für alle Recovery Services-Agent-Computer, Azure Backup Server-Instanzen und Data Protection Manager-Server, die im Tresor registriert sind. Die Aktivierung dieser Einstellung ist eine einmalige Aktion, und die Features können nach der Aktivierung nicht wieder deaktiviert werden.
->
+## <a name="minimum-version-requirements"></a>Mindestanforderungen an die Version
+
+Aktivieren Sie die Sicherheitsfunktionen nur, wenn Sie sie verwenden:
+
+- **Azure Backup-Agent**: Minimale Agentenversion _2.0.9052_. Nachdem Sie diese Funktionen aktiviert haben, aktualisieren Sie die Version des Agenten, um kritische Vorgänge durchzuführen.
+- **Azure Backup Server**: Minimum Azure Backup Agent Version _2.0.9052_ mit _Azure Backup Server Update 1_.
+- **System Center Data Protection Manager**: Minimum Azure Backup Agent Version _2.0.9052_ mit _Data Protection Manager 2012 R2 UR12_/ _Data Protection Manager 2016 UR2_.
+
+>[!Note]
+>Stellen Sie sicher, dass Sie die Sicherheitsfunktionen nicht aktivieren, wenn Sie IaaS (Infrastructure as a Service) VM-Backup verwenden. Derzeit sind diese Funktionen für IaaS-VM-Backups nicht verfügbar, so dass ihre Aktivierung keine Auswirkungen hat.
 
 ## <a name="enable-security-features"></a>Aktivieren der Sicherheitsfeatures
 

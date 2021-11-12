@@ -2,21 +2,21 @@
 title: Partitionierungstabellen im dedizierten SQL-Pool
 description: Empfehlungen und Beispiele für die Verwendung von Tabellenpartitionen in einem dedizierten SQL-Pool
 services: synapse-analytics
-author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 08/19/2021
-ms.author: xiaoyul
-ms.reviewer: igorstan, wiassaf
+ms.date: 11/02/2021
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: ''
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: ea941ae782e7da33cc07932d4b0c79613790b2e8
-ms.sourcegitcommit: d43193fce3838215b19a54e06a4c0db3eda65d45
+ms.openlocfilehash: af068f531a07be05da8ff8911ffff68242f7f4cf
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122515038"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131504738"
 ---
 # <a name="partitioning-tables-in-dedicated-sql-pool"></a>Partitionierungstabellen im dedizierten SQL-Pool
 
@@ -42,7 +42,7 @@ Die Partitionierung kann auch verwendet werden, um die Abfrageleistung zu verbes
 
 Beispiel: Wenn eine Umsatzfaktentabelle auf Grundlage des Verkaufsdatumsfelds in 36 Monate partitioniert wird, kann bei Abfragen, die das Verkaufsdatum als Filter verwenden, das Durchsuchen von Partitionen übersprungen werden, die nicht dem Filter entsprechen.
 
-## <a name="sizing-partitions"></a>Anpassen der Größe von Partitionen
+## <a name="partition-sizing"></a>Festlegen der Partitionsgröße
 
 Die Partitionierung kann zwar verwendet werden, um die Leistung in einigen Szenarien zu verbessern, aber das Erstellen einer Tabelle mit **zu vielen** Partitionen kann die Leistung unter Umständen beeinträchtigen.  Dies gilt besonders für gruppierte Columnstore-Tabellen. 
 
@@ -60,7 +60,7 @@ Ein dedizierter SQL-Pool bietet eine einfachere Möglichkeit zum Definieren von 
 
 Die Syntax der Partitionierung kann gegenüber SQL Server leicht variieren, aber die grundlegenden Konzepte sind identisch. SQL Server und ein dedizierter SQL-Pool unterstützen eine Partitionsspalte pro Tabelle, bei der es sich um eine Bereichspartition handeln kann. Weitere Informationen zur Partitionierung finden Sie unter [Partitionierte Tabellen und Indizes](/sql/relational-databases/partitions/partitioned-tables-and-indexes?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true).
 
-Im folgenden Beispiel wird mit der [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true)-Anweisung die Tabelle „FactInternetSales“ nach der Spalte „OrderDateKey“ partitioniert:
+Das folgende Beispiel verwendet die Anweisung [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) zur Partitionierung der Tabelle `FactInternetSales` anhand der Spalte `OrderDateKey`:
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales]
@@ -86,7 +86,7 @@ WITH
 ;
 ```
 
-## <a name="migrating-partitioning-from-sql-server"></a>Migrieren der Partitionierung von SQL Server
+## <a name="migrate-partitions-from-sql-server"></a>Partitionen vom SQL Server migrieren
 
 Gehen Sie wie folgt vor, um SQL Server-Partitionsdefinitionen zu einem dedizierten SQL-Pool zu migrieren:
 
@@ -194,7 +194,10 @@ Der folgende Split-Befehl erhält eine Fehlermeldung:
 ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
 ```
 
-Msg 35346, Level 15, State 1, Line 44 SPLIT clause of ALTER PARTITION statement failed because the partition is not empty. Wenn ein columnstore-Index für die Tabelle vorhanden ist, können nur leere Partitionen aufgeteilt werden. Deaktivieren Sie ggf. den Columnstore-Index vor Ausgabe der ALTER PARTITION-Anweisung, und erstellen Sie dann nach Abschluss von ALTER PARTITION den Columnstore-Index neu.
+```
+Msg 35346, Level 15, State 1, Line 44
+SPLIT clause of ALTER PARTITION statement failed because the partition is not empty. Only empty partitions can be split in when a columnstore index exists on the table. Consider disabling the columnstore index before issuing the ALTER PARTITION statement, then rebuilding the columnstore index after ALTER PARTITION is complete.
+```
 
 Sie können aber auch `CTAS` zum Erstellen einer neuen Datentabelle verwenden.
 

@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 08/10/2021
 ms.custom: references_regions
-ms.openlocfilehash: dfb4cf341c6014854e219c17d387076f5beab595
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 8010de7d6aa0af0d096a0c7ed23740f23734cda2
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131010724"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131554391"
 ---
 # <a name="ai-enrichment-in-azure-cognitive-search"></a>KI-Anreicherung in Azure Cognitive Search
 
@@ -121,7 +121,7 @@ Indizes und Wissensspeicher sind vollständig unabhängig voneinander. Sie müss
 
 Nach Abschluss der Verarbeitung verfügen Sie über einen [Suchindex](search-what-is-an-index.md) mit angereicherten Dokumenten, die mit Azure Cognitive Search im Volltext durchsucht werden können. Entwickler und Benutzer greifen über das [**Abfragen des Indexes**](search-query-overview.md) auf den von der Pipeline generierten angereicherten Inhalt zu. Der Index ist vergleichbar mit beliebigen anderen Indizes, die für Azure Cognitive Search erstellt werden können: Sie können Textanalyse durch benutzerdefinierte Analysen ergänzen, Fuzzysuchabfragen aufrufen, Filter hinzufügen oder zur Optimierung der Suchrelevanz mit Bewertungsprofilen experimentieren.
 
-Sie könnten auch einen [Wissensspeicher](knowledge-store-concept-intro.md) verwenden. Der Wissensspeicher enthält Daten, die in Knowledge Mining-Szenarien wie Analysen oder Machine Learning genutzt werden können. Sie können [Storage Explorer](knowledge-store-view-storage-explorer.md), [Power BI](knowledge-store-connect-power-bi.md) oder jede andere Anwendung verwenden, die eine Verbindung zu Azure Storage herstellt.
+Sie könnten auch einen [Wissensspeicher](knowledge-store-concept-intro.md) verwenden. Der Wissensspeicher enthält Daten, die in Knowledge Mining-Szenarien wie Analysen oder Machine Learning genutzt werden können. Sie können den [ Storage Browser ](knowledge-store-view-storage-explorer.md), [Power BI](knowledge-store-connect-power-bi.md) oder jede Anwendung, die eine Verbindung zu Azure Storage herstellt.
 
 ## <a name="checklist-a-typical-workflow"></a>Prüfliste: Typischer Workflow
 

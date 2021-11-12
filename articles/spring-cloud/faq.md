@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: karler
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 79ff649d9710d4f114b7d8de85d275896f26a729
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: a1653b9940f7b278d2d1a7e4b21bd2b9d57b9411
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131003559"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131474816"
 ---
 # <a name="azure-spring-cloud-faq"></a>Häufig gestellte Fragen zu Azure Spring Cloud
 
@@ -47,7 +47,7 @@ Azure Spring Cloud plant Ihre Anwendungen intelligent auf den zugrunde liegenden
 
 ### <a name="is-any-customer-data-stored-outside-of-the-specified-region"></a>Werden Kundendaten außerhalb der angegebenen Region gespeichert?
 
-Azure Spring Cloud ist ein regionaler Dienst. Alle Kundendaten in Azure Spring Cloud werden aus Redundanzgründen in mehreren Regionen innerhalb desselben geografischen Raums wie die angegebene Region gespeichert. Weitere Informationen zu geografischen Räumen und Regionen finden Sie unter [Data Residency in Azure](https://azure.microsoft.com/global-infrastructure/data-residency/).
+Azure Spring Cloud ist ein regionaler Dienst. Alle Kundendaten in Azure Spring Cloud werden in einer einzigen, festgelegten Region gespeichert. Weitere Informationen zu geografischen Räumen und Regionen finden Sie unter [Data Residency in Azure](https://azure.microsoft.com/global-infrastructure/data-residency/).
 
 ### <a name="what-are-the-known-limitations-of-azure-spring-cloud"></a>Welche Einschränkungen sind für Azure Spring Cloud bekannt?
 
@@ -64,11 +64,11 @@ Welchen Tarif sollte ich verwenden, und welche Beschränkungen gelten für die e
 * Für Azure Spring Cloud gibt es zwei Tarife: Basic und Standard. Der Tarif „Basic“ ist für Dev/Test-Prozesse und den Einstieg in Azure Spring Cloud vorgesehen. Der Tarif „Standard“ ist für anfallenden universellen Produktionsdatenverkehr optimiert. Weitere Informationen zu Beschränkungen sowie einen Vergleich der Features beider Tarife finden Sie unter [Azure Spring Cloud – Preise](https://azure.microsoft.com/pricing/details/spring-cloud/).
 
 ### <a name="whats-the-difference-between-service-binding-and-service-connector"></a>Was ist der Unterschied zwischen Dienstbindung und Dienstconnector?
-Wir entwickeln nicht aktiv zusätzliche Funktionen für die Dienstbindung zugunsten der neuen Azure-weisen Lösung mit dem Namen Dienstconnector. Auf der einen Seite bietet die neue Lösung konsistente Integrationserfahrung für App-Hostingdienste in Azure wie App Service. Andererseits deckt sie Ihre Anforderungen besser ab, indem sie mit der Unterstützung von mehr als 10 am häufigsten verwendeten Azure-Zieldiensten beginnt, einschließlich MySQL, SQL DB, Cosmos DB, Postgres DB, Redis, Storage und mehr. Service Connector befindet sich derzeit in Public Preview. Wir laden Sie ein, die neue Benutzeroberfläche auszuprobieren.
+Wir entwickeln nicht aktiv zusätzliche Funktionen für Service Binding zu Gunsten der neuen Azure-weisen Lösung namens [Service Connector](/azure/service-connector/overview). Auf der einen Seite bietet die neue Lösung konsistente Integrationserfahrung für App-Hostingdienste in Azure wie App Service. Andererseits deckt sie Ihre Anforderungen besser ab, indem sie mit der Unterstützung von mehr als 10 am häufigsten verwendeten Azure-Zieldiensten beginnt, einschließlich MySQL, SQL DB, Cosmos DB, Postgres DB, Redis, Storage und mehr. Service Connector befindet sich derzeit in Public Preview. Wir laden Sie ein, die neue Benutzeroberfläche auszuprobieren.
 
 ### <a name="how-can-i-provide-feedback-and-report-issues"></a>Wie kann ich Feedback geben und Probleme melden?
 
-Wenn bei der Azure Spring Cloud Probleme auftreten, erstellen Sie eine [Azure-Supportanfrage](../azure-portal/supportability/how-to-create-azure-support-request.md). Besuchen Sie [Azure-Feedback](https://feedback.azure.com/forums/34192--general-feedback), um eine Featureanforderung oder Feedback einzureichen.
+Wenn bei der Azure Spring Cloud Probleme auftreten, erstellen Sie eine [Azure-Supportanfrage](../azure-portal/supportability/how-to-create-azure-support-request.md). Besuchen Sie [Azure-Feedback](https://feedback.azure.com/d365community/forum/79b1327d-d925-ec11-b6e6-000d3a4f06a4), um eine Featureanforderung oder Feedback einzureichen.
 
 ## <a name="development"></a>Entwicklung
 

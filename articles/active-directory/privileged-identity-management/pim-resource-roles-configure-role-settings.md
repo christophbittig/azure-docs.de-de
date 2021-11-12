@@ -16,12 +16,12 @@ ms.author: curtand
 ms.reviewer: shaunliu
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ff40238d5b3b666ec6a64fef5b7cc4fc91ee677
-ms.sourcegitcommit: bee590555f671df96179665ecf9380c624c3a072
+ms.openlocfilehash: d2b3707fd3b9b56131d24274555761f616991600
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129669414"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131508738"
 ---
 # <a name="configure-azure-resource-role-settings-in-privileged-identity-management"></a>Konfigurieren von Einstellungen für Azure-Ressourcenrollen in Privileged Identity Management
 
@@ -100,7 +100,7 @@ Privileged Identity Management ermöglicht die optionale Erzwingung der Azure A
 
 ### <a name="on-active-assignment"></a>Bei aktiver Zuweisung
 
-Diese Option erfordert, dass Administratoren eine Mehrfaktoren- Authentifizierung abschließen müssen, bevor sie eine aktive (und nicht nur berechtigte) Rollenzuweisung erstellen. Privileged Identity Management kann die mehrstufige Authentifizierung nicht erzwingen, wenn der Benutzer seine Rollenzuweisung verwendet, weil die Rolle ab dem Zeitpunkt der Zuweisung bereits aktiv ist.
+Diese Option erfordert, dass Administratoren eine Mehrfaktoren- Authentifizierung abschließen müssen, bevor sie eine aktive (und nicht nur berechtigte) Rollenzuweisung erstellen. Das Privileged Identity Management kann die mehrstufige Authentifizierung nicht erzwingen, wenn der Benutzer ihre Rollenzuweisung aktiviert, weil die Rolle ab dem Zeitpunkt der Zuweisung bereits aktiv ist.
 
 Um die mehrstufige Authentifizierung beim Erstellen einer aktiven Rollenzuweisung zu erzwingen, können Sie die mehrstufige Authentifizierung bei der aktiven Zuweisung erzwingen, indem Sie das Kontrollkästchen **Multi-Factor Authentication bei aktiver Zuweisung erforderlich** aktivieren.
 

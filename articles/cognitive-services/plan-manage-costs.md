@@ -6,17 +6,17 @@ ms.author: pafarley
 ms.custom: subject-cost-optimization
 ms.service: cognitive-services
 ms.topic: how-to
-ms.date: 12/15/2020
-ms.openlocfilehash: df7d5264fd4620f50bb4848a4c52bfdc5f5b9100
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 10/28/2021
+ms.openlocfilehash: 2fa5a5867bc64da126e24c65b1b6d0c5d618ae18
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131073337"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131446541"
 ---
 # <a name="plan-and-manage-costs-for-azure-cognitive-services"></a>Planen und Verwalten von Kosten für Azure Cognitive Services
 
-In diesem Artikel erfahren Sie, wie Sie die Kosten für Azure Cognitive Services planen und verwalten. Verwenden Sie zunächst den Azure-Preisrechner, um die Kosten für Cognitive Services zu planen, bevor Sie Ressourcen für den Dienst hinzufügen, um die voraussichtlichen Kosten zu ermitteln. Überprüfen Sie dann beim Hinzufügen von Azure-Ressourcen die voraussichtlichen Kosten. Nachdem Sie mit der Nutzung von Cognitive Services-Ressourcen wie Speech, maschinelles Sehen, LUIS, Textanalyse, Übersetzer und Ähnlichem begonnen haben, können Sie Cost Management-Features verwenden, um Budgets festzulegen und die Kosten zu überwachen. Sie können auch vorhergesagte Kosten überprüfen und Ausgabentrends ermitteln, um die Bereiche zu identifizieren, in denen ggf. Maßnahmen erforderlich sind. Kosten für Cognitive Services stellen nur einen Teil der monatlichen Kosten Ihrer Azure-Rechnung dar. Zwar wird in diesem Artikel das Planen und Verwalten der Kosten für Cognitive Services erläutert, doch werden Ihnen alle Azure-Dienste und -Ressourcen in Rechnung gestellt, die für Ihr Azure-Abonnement verwendet werden, einschließlich der Dienste von Drittanbietern.
+In diesem Artikel erfahren Sie, wie Sie die Kosten für Azure Cognitive Services planen und verwalten. Verwenden Sie zunächst den Azure-Preisrechner, um die Kosten für Cognitive Services zu planen, bevor Sie Ressourcen für den Dienst hinzufügen, um die voraussichtlichen Kosten zu ermitteln. Überprüfen Sie dann beim Hinzufügen von Azure-Ressourcen die voraussichtlichen Kosten. Nachdem Sie mit der Nutzung von Cognitive Services-Ressourcen wie Speech, Computer Vision, LUIS, Sprachenservice, Übersetzer und Ähnlichem begonnen haben, können Sie Cost Management-Features verwenden, um Budgets festzulegen und die Kosten zu überwachen. Sie können auch vorhergesagte Kosten überprüfen und Ausgabentrends ermitteln, um die Bereiche zu identifizieren, in denen ggf. Maßnahmen erforderlich sind. Kosten für Cognitive Services stellen nur einen Teil der monatlichen Kosten Ihrer Azure-Rechnung dar. Zwar wird in diesem Artikel das Planen und Verwalten der Kosten für Cognitive Services erläutert, doch werden Ihnen alle Azure-Dienste und -Ressourcen in Rechnung gestellt, die für Ihr Azure-Abonnement verwendet werden, einschließlich der Dienste von Drittanbietern.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -53,7 +53,7 @@ Wenn Sie Cognitive Services-Ressourcen erstellen oder verwenden, werden Ihnen m�
 | **Sprache** | | |
 | [Language Understanding (LUIS)](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) | Kostenlose Erstellung, kostenlose Vorhersage, Standard | Abrechnung nach der Anzahl der Transaktionen. Der Preis pro Transaktion variiert je nach Feature (Sprachanforderungen, Textanforderungen). Ausführliche Informationen finden Sie unter [Preise](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/). |
 | [QnA Maker](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/) | Free, Standard | Monatliche Abrechnung der Abonnementgebühr. Ausführliche Informationen finden Sie unter [Preise](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/). | 
-| [Textanalyse](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) | Free, Standard | Abrechnung nach Anzahl der Textdatensätze. | 
+| [Sprachdienst](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) | Free, Standard | Abrechnung nach Anzahl der Textdatensätze. | 
 | [Translator](https://azure.microsoft.com/pricing/details/cognitive-services/translator/) | Free (Kostenlos), Nutzungsbasierte Bezahlung (S1), Volumenrabatt (S2, S3, S4, C2, C3, C4, D3) | Die Preise variieren je nach Verbrauchseinheit und Feature. Ausführliche Informationen finden Sie unter [Preise](https://azure.microsoft.com/pricing/details/cognitive-services/translator/). <li>Die Textübersetzung wird nach der Anzahl der übersetzten Zeichen abgerechnet.</li><li>Die Dokumentübersetzung wird nach übersetzten Zeichen abgerechnet.</li><li>Die benutzerdefinierte Übersetzung wird anhand von Zeichen der Quell- und Zieltrainingsdaten abgerechnet.</li> |  
 | **Entscheidung** | | |
 | [Anomalieerkennung](https://azure.microsoft.com/pricing/details/cognitive-services/anomaly-detector/) | Free, Standard | Abrechnung nach der Anzahl der Transaktionen. | 

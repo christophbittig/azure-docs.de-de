@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: 0bc3035b934f5b450345449b21e5aedd44642cf4
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: c5ad35114edaae42019e0949cc4ad8aa4b291ec6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130070753"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131441189"
 ---
 # <a name="ev4-and-esv4-series"></a>Ev4- und Esv4-Serie
 
@@ -80,7 +80,7 @@ Die Größen der Esv4-Serie laufen auf dem Intel&reg; Xeon&reg; Platinum 8272CL 
 | Standard_E32s_v4 | 32 | 256 | Nur Remotespeicher | 32 | 51200/768  | 64000/1600 | 8|16000 |
 | Standard_E48s_v4 | 48 | 384 | Nur Remotespeicher | 32 | 76800/1152 | 80.000/2.000 | 8|24.000 |
 | Standard_E64s_v4 <sup>2</sup> | 64 | 504| Nur Remotespeicher | 32 | 80000/1200 | 80.000/2.000 | 8|30.000 |
-| Standard_E80is_v4 <sup>3</sup> | 80 | 504 | Nur Remotespeicher | 32 | 80000/1200 | 80.000/2.000 | 8|30.000 |
+| Standard_E80is_v4 <sup>3</sup> | 80 | 504 | Nur Remotespeicher | 64 | 80000/1200 | 80.000/2.000 | 8|30.000 |
 
 <sup>1</sup> VMs der Esv4-Serie können mit einem [Burst](./disk-bursting.md) ihre Datenträgerleistung für jeweils bis zu 30 Minuten auf das maximale Bursting verbessern.<br>
 <sup>2</sup> [Eingeschränkte Kerngrößen verfügbar](./constrained-vcpu.md).<br>

@@ -2,18 +2,18 @@
 title: Anpassen von Netzwerkkonfigurationen für eine Failover-VM | Microsoft-Dokumentation
 description: Hier finden Sie eine Übersicht über das Anpassen von Netzwerkkonfigurationen für eine Failover-VM in der Replikation von virtuellen Azure-Computern mit Azure Site Recovery.
 services: site-recovery
-author: sideeksh
-manager: rochakm
+author: rishjai-msft
+manager: gaggupta
 ms.service: site-recovery
 ms.topic: article
-ms.date: 10/21/2019
-ms.author: sideeksh
-ms.openlocfilehash: 29896c026b65859448f923bc542ea7198e8f848b
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 10/01/2021
+ms.author: rishjai
+ms.openlocfilehash: 79a33226da71071d8985daf723dde7314116ce37
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131083458"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131475131"
 ---
 # <a name="customize-networking-configurations-of-the-target-azure-vm"></a>Anpassen der Netzwerkkonfigurationen des virtuellen Azure-Zielcomputers
 
@@ -28,7 +28,8 @@ Erfahren Sie, wie Site Recovery die Notfallwiederherstellung für [dieses Szenar
 Beim Replizieren von virtuellen Azure-Computern können die folgenden Konfigurationen für Schlüsselressourcen für den virtuellen Failovercomputer bereitgestellt werden:
 
 - [Interner Lastenausgleich](../load-balancer/load-balancer-overview.md)
-- [Öffentliche IP-Adresse](../virtual-network/ip-services/public-ip-addresses.md)
+- [Öffentliche IP-Adresse](../virtual-network/public-ip-addresses.md)
+- [Sekundäre IP-Adresse](../virtual-network/ip-services/virtual-network-multiple-ip-addresses-portal.md)
 - [Netzwerksicherheitsgruppe](../virtual-network/manage-network-security-group.md) für das Subnetz und für den Netzwerkadapter
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -40,14 +41,14 @@ Beim Replizieren von virtuellen Azure-Computern können die folgenden Konfigurat
 
 1. Wechseln Sie zu **Replizierte Elemente**. 
 2. Wählen Sie die gewünschte Azure-VM aus.
-3. Wählen Sie **Compute und Netzwerk** und **Bearbeiten** aus. Sie werden feststellen, dass die Konfigurationseinstellungen des Netzwerkadapters die entsprechenden Ressourcen an der Quelle enthalten. 
+3. Wählen Sie **Netzwerk** und **Bearbeiten** aus. Sie werden feststellen, dass die Konfigurationseinstellungen des Netzwerkadapters die entsprechenden Ressourcen an der Quelle enthalten. 
 
-     ![Anpassen der Netzwerkkonfigurationen für das Failover](media/azure-to-azure-customize-networking/edit-networking-properties.png)
+    :::image type="content" source="./media/azure-to-azure-customize-networking/edit-networking-properties.png" alt-text="Anpassen der Netzwerkkonfigurationen für das Failover" lightbox="./media/azure-to-azure-customize-networking/edit-networking-properties-expanded.png":::
 
 4. Wählen Sie ein virtuelles Netzwerk für den Testfailover aus.
-5. Wählen Sie neben dem Netzwerkadapter, den Sie konfigurieren möchten, die Option **Bearbeiten** aus. Wählen Sie auf dem nächsten Blatt, das geöffnet wird, die entsprechenden vorab erstellten Ressourcen am Testfailover- und Failoverstandort aus.
+5. Wählen Sie die Registerkarte NIC aus, die Sie konfigurieren möchten. Wählen Sie jetzt die entsprechenden vorab erstellten Ressourcen am Testfailover- und Failover-Standort aus.
 
-    ![Bearbeiten der Konfiguration des Netzwerkadapters](media/azure-to-azure-customize-networking/nic-drilldown.png) 
+    :::image type="content" source="./media/azure-to-azure-customize-networking/nic-drilldown.png" alt-text="Bearbeiten der Konfiguration des Netzwerkadapters" lightbox="./media/azure-to-azure-customize-networking/nic-drilldown-expanded.png":::
 
 6. Klicken Sie auf **OK**.
 

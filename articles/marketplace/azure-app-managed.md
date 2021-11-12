@@ -7,13 +7,13 @@ ms.reviewer: dannyevers
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
-ms.date: 06/01/2021
-ms.openlocfilehash: cba8ba5c8c5ff300fe585d75aab98fd4003a475d
-ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+ms.date: 11/02/2021
+ms.openlocfilehash: cbdde26b030b5e3b89d96304ece6e6d698884c19
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122608231"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131468516"
 ---
 # <a name="configure-a-managed-application-plan"></a>Konfigurieren eines Plans für verwaltete Anwendungen
 
@@ -155,6 +155,8 @@ Weitere Informationen zu den Bereitstellungsmodi finden Sie unter [Azure Resourc
 ### <a name="provide-a-notification-endpoint-url"></a>Angeben einer URL für den Benachrichtigungsendpunkt
 
 Geben Sie im Feld **Benachrichtigungsendpunkt-URL** einen HTTPS-Webhookendpunkt an, um Benachrichtigungen zu allen CRUD-Vorgängen für Instanzen verwalteter Anwendungen dieser Planversion zu erhalten.
+
+Azure fügt `/resource` an das Ende Ihrer Webhook-URIs an, bevor es ihn aufruft. Daher muss Ihre Webhook-URL mit `/resource` enden, darf aber nicht `/resource` in der URL enthalten, die Sie in das Feld **Benachrichtigungsendpunkt-URL** eingeben. Weitere Informationen zur Webhook-URL finden Sie unter [Planen einer verwalteten Anwendung](plan-azure-app-managed-app.md#notification-endpoint-url).
 
 ### <a name="customize-allowed-customer-actions-optional"></a>Anpassen der zulässigen Kundenaktionen (optional)
 

@@ -2,14 +2,14 @@
 title: Versionshinweise zu Azure Video Analyzer – Azure
 description: Dieser Artikel enthält Versionshinweise zu Releases, Verbesserungen, Fehlerbehebungen und bekannten Problemen von Azure Video Analyzer.
 ms.topic: conceptual
-ms.date: 11/01/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 8b17c19d96699a6442bd6d606ffbc88b25088afe
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 89ab651416237e06343f950d2a9202f082555e58
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131087037"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131556443"
 ---
 # <a name="azure-video-analyzer-release-notes"></a>Versionshinweise zu Azure Video Analyzer
 
@@ -51,6 +51,10 @@ Die ARM-API-Version des Video Analyzer-Dienstes ist folgende:
 * Sie können [den gewünschten Teil Ihres aufgenommenen Videos](cloud/export-portion-of-video-as-mp4.md) in eine MP4-Datei exportieren.
 * Sie können für jedes Ihrer aufgenommenen Videos eine Aufbewahrungsrichtlinie festlegen, bei der der Dienst regelmäßig Inhalte kürzt, die älter als die angegebene Anzahl von Tagen sind.
 * Videos, die mit dem Edge-Modul von Video Analyzer aufgenommen wurden, können regelmäßig [Vorschaubilder](edge/enable-video-preview-images.md) oder Miniaturansichten enthalten, um ein besseres Surferlebnis zu ermöglichen.
+
+### <a name="known-issues"></a>Bekannte Probleme
+* Beim Streaming mit niedriger Latenzzeit kann jeweils nur ein Client mit dem Dienst verbunden werden
+* Bei Verwendung eines gRPC-Erweiterungsmoduls für die Rückschließen mit gemeinsamem Speicher sollten sowohl das Video Analyzer-Edge-Modul als auch das Erweiterungsmodul unter demselben [Benutzer und derselben Gruppe](https://docs.docker.com/engine/reference/builder/#user) laufen
 
 ## <a name="october-1-2021"></a>1\. Oktober 2021
 Der Video Analyzer-Dienst ist jetzt (in der Vorschau) in Ost-Australien verfügbar. Aktuelle Informationen zur Verfügbarkeit finden Sie [hier](https://azure.microsoft.com/global-infrastructure/services/?products=video-analyzer&regions=all).

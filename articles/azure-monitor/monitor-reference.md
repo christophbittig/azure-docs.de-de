@@ -4,13 +4,13 @@ description: Eine Referenz aller Dienste und anderer Ressourcen, die von Azure M
 ms.topic: conceptual
 author: rboucher
 ms.author: robb
-ms.date: 10/15/2021
-ms.openlocfilehash: 3d61e6d91409963f0f1578a03bfdeb83b7c54960
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/02/2021
+ms.openlocfilehash: 043f366bfc34ca496af866b4add3a73f44b15b71
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131078938"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131505023"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Was wird von Azure Monitor überwacht?
 
@@ -34,7 +34,7 @@ In der folgenden Tabelle sind die verfügbaren kuratierten Visualisierungen und 
 | [Azure Backup Insights](/azure/backup/backup-azure-monitoring-use-azuremonitor) | Allgemein verfügbar | [Ja](https://ms.portal.azure.com/#blade/Microsoft_Azure_DataProtection/BackupCenterMenuBlade/backupReportsConfigure/menuId/backupReportsConfigure) | Stellt integrierte Überwachungs-und Warnungsfunktionen in einem Recovery Services-Tresor bereit | 
 | [Erkunden von Azure Monitor für Azure Cache for Redis (Vorschauversion)](/azure/azure-monitor/insights/redis-cache-insights-overview) | Allgemein verfügbar | [Ja](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/redisCacheInsights) | Bietet eine einheitliche, interaktive Ansicht der Gesamtleistung, Fehler, Kapazität und Betriebsintegrität | 
 | [Azure Cosmos DB Insights](/azure/azure-monitor/insights/cosmosdb-insights-overview) | Allgemein verfügbar | [Ja](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/cosmosDBInsights) | Bietet eine Übersicht über Gesamtleistung, Fehler, Kapazität und Betriebsintegrität aller Ihrer Azure Cosmos DB-Ressourcen auf einer vereinheitlichten interaktiven Oberfläche. | 
-| [Azure Data Explorer-Cluster](/azure/azure-monitor/insights/data-explorer) | Allgemein verfügbar | [Ja](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/adxClusterInsights) | Azure Data Explorer Insights ermöglicht die umfassende Überwachung Ihrer Cluster mithilfe einer einheitlichen Ansicht der Leistung, Vorgänge, Nutzung und Fehler Ihres Clusters. | 
+| [Azure Daten-Explorer Einblicke](/azure/azure-monitor/insights/data-explorer) | Allgemein verfügbar | [Ja](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/adxClusterInsights) | Azure Data Explorer Insights ermöglicht die umfassende Überwachung Ihrer Cluster mithilfe einer einheitlichen Ansicht der Leistung, Vorgänge, Nutzung und Fehler Ihres Clusters. | 
 | [Azure HDInsight (Vorschau)](/azure/hdinsight/log-analytics-migration#insights) | Vorschau | Nein | Eine Azure Monitor-Arbeitsmappe, die wichtige Leistungsmetriken aus Ihrem HDInsight-Cluster erfasst und die Visualisierungen und Dashboards für die meisten gängigen Szenarios bereitstellt. Bietet eine vollständige Ansicht eines einzelnen HDInsight-Clusters, einschließlich Ressourcennutzung und Anwendungsstatus.|
  | [Azure IoT Edge Insights](/azure/iot-edge/how-to-explore-curated-visualizations/) | Allgemein verfügbar | Nein | Visualisieren und erkunden Sie die vom IoT Edge-Gerät gesammelten Metriken mithilfe von Azure Monitor-Arbeitsmappen direkt im Azure-Portal. Die kuratierten Arbeitsmappen nutzen integrierte Metriken aus der IoT Edge-Runtime. Für diese Ansichten ist keinerlei Metrikinstrumentierung aus den Workloadmodulen erforderlich. | 
  | [Azure Key Vault Insights (Vorschau)](/azure/azure-monitor/insights/key-vault-insights-overview) | Allgemein verfügbar | [Ja](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/keyvaultsInsights) | Ermöglicht eine umfassende Überwachung Ihrer Schlüsseltresore. Zu diesem Zweck wird eine einheitliche Darstellung der Anforderungen, Leistung, Fehler und Latenz im Zusammenhang mit Key Vault bereitgestellt. | 
@@ -74,13 +74,34 @@ Die in der folgenden Tabelle aufgeführten anderen Dienste und älteren Überwac
 | [SQL-Analyse-Lösung](insights/azure-sql.md) | Verwenden Sie stattdessen SQL Insights. |
 | [Surface Hub-Lösung](insights/surface-hubs.md) |  |
 
-## <a name="list-of-azure-monitor-supported-services"></a>Liste der von Azure Monitor unterstützten Dienste
+
+## <a name="third-party-integration"></a>Integration von Drittanbietern
+
+| Integration | BESCHREIBUNG |
+|:---|:---|
+| [ITSM](alerts/itsmc-overview.md) | Der ITSM-Connector ermöglicht Ihnen, Azure und ein unterstütztes ITSM-Produkt bzw. einen unterstützten ITSM-Dienst zu verbinden.  |
+| [Azure Monitor Partners](/azure/azure-monitor/partners/) | Eine Liste von Partnern, die in irgendeiner Form mit Azure Monitor integriert sind | 
+| [Azure Monitor Partner-Integrationen](/azure/partner-solutions/overview/)| Spezialisierte Integrationen zwischen Azure Monitor und anderen Nicht-Microsoft-Überwachungsplattformen, wenn Sie bereits darauf aufgebaut haben.  Beispiele dafür sind Datadog und Elastic|
+
+
+## <a name="resources-outside-of-azure"></a>Ressourcen außerhalb von Azure
+
+Mithilfe der in der folgenden Tabelle aufgeführten Methoden kann Azure Monitor Daten von Ressourcen außerhalb von Azure sammeln.
+
+| Resource | Methode |
+|:---|:---|
+| Anwendungen | Überwachen von Webanwendungen außerhalb von Azure mithilfe von Application Insights. Informationen finden Sie unter [Was ist Application Insights?](./app/app-insights-overview.md) |
+| Virtuelle Computer | Verwenden von Agents zum Sammeln von Daten aus dem Gastbetriebssystem virtueller Computer in anderen Cloudumgebungen oder lokal. Siehe [Übersicht über Azure Monitor-Agents](agents/agents-overview.md) |
+| REST-API-Client | Zum Schreiben von Daten in Azure Monitor-Protokolle und -Metriken von jedem Rest-API-Client aus stehen separate APIs zur Verfügung. Weitere Informationen finden Sie unter [Senden von Protokolldaten an Azure Monitor mit der HTTP-Datensammler-API](logs/data-collector-api.md) (für Protokolle) und [Senden benutzerdefinierter Metriken für eine Azure-Ressource an den Azure Monitor-Metrikspeicher mithilfe einer REST-API](essentials/metrics-store-custom-rest-api.md) (für Metriken). |
+
+
+## <a name="azure-supported-services"></a>Von Azure unterstützte Dienste
  
 In der folgenden Tabelle sind Azure-Dienste und die damit in Azure Monitor erfassten Daten aufgeführt. 
 
 - Metriken: Der Dienst erfasst automatisch Metriken in Azure Monitor-Metriken. 
-- Protokolle: Der Dienst unterstützt Diagnoseeinstellungen, mit denen Plattformprotokolle und -metriken in Azure Monitor-Protokollen erfasst werden können.
-- Erkenntnis: Es ist eine Erkenntnis für den Dienst verfügbar, die eine angepasste Überwachungsoberfläche für den Dienst bereitstellt.
+- Protokolle - Der Dienst unterstützt Diagnoseeinstellungen, die Metriken und Plattformprotokolle an Azure Monitor Logs zur Analyse in Log Analytics senden können.
+- Einsicht - Es ist eine Einsicht verfügbar, die eine individuelle Überwachung des Dienstes ermöglicht.
 
 | Dienst | Namespace des Ressourcenanbieters | Verfügt über Metriken | Verfügt über Protokolle | Erkenntnis | Notizen
 |---------|---------------------------------------|----------------|-----------|----------|--------|
@@ -117,8 +138,8 @@ In der folgenden Tabelle sind Azure-Dienste und die damit in Azure Monitor erfas
  | [Cray ClusterStor in Azure](https://azure.microsoft.com/blog/supercomputing-in-the-cloud-announcing-three-new-cray-in-azure-offers/) | Microsoft.ClusterStor/nodes | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftclusterstornodes) | Nein |   | |
  | [Azure Cognitive Services](/azure/cognitive-services/)   | Microsoft.CognitiveServices/accounts | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftcognitiveservicesaccounts) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftcognitiveservicesaccounts) |   | |
  | [Azure Communication Services](/azure/communication-services/) | Microsoft.Communication/CommunicationServices | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftcommunicationcommunicationservices) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftcommunicationcommunicationservices) |   | |
- | [Dokumentation zu virtuellen Computern](/azure/virtual-machines/)<br />[Skalierungsgruppen für virtuelle Computer](/azure/virtual-machine-scale-sets/)   | Microsoft.Compute/cloudServices | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftcomputecloudservices) | Nein | [VM Insights](/azure/azure-monitor/insights/vminsights-overview) | Agent zum Überwachen von Gastbetriebssystem und Workflows erforderlich.|
- | [Dokumentation zu virtuellen Computern](/azure/virtual-machines/)<br />[Skalierungsgruppen für virtuelle Computer](/azure/virtual-machine-scale-sets/)   | Microsoft.Compute/cloudServices/roles | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftcomputecloudservicesroles) | Nein | [VM Insights](/azure/azure-monitor/insights/vminsights-overview) | Agent zum Überwachen von Gastbetriebssystem und Workflows erforderlich.|
+ | [Azure Cloud Services](/azure/cloud-services-extended-support/)   | Microsoft.Compute/cloudServices | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftcomputecloudservices) | Nein |  | Agent zum Überwachen von Gastbetriebssystem und Workflows erforderlich.|
+ | [Azure Cloud Services](/azure/cloud-services-extended-support/) | Microsoft.Compute/cloudServices/roles | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftcomputecloudservicesroles) | Nein | | Agent zum Überwachen von Gastbetriebssystem und Workflows erforderlich.|
  | [Dokumentation zu virtuellen Computern](/azure/virtual-machines/)<br />[Skalierungsgruppen für virtuelle Computer](/azure/virtual-machine-scale-sets/)   | Microsoft.Compute/disks | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftcomputedisks) | Nein | [VM Insights](/azure/azure-monitor/insights/vminsights-overview) | |
  | [Dokumentation zu virtuellen Computern](/azure/virtual-machines/)<br />[Skalierungsgruppen für virtuelle Computer](/azure/virtual-machine-scale-sets/)   | Microsoft.Compute/virtualMachines | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftcomputevirtualmachines) | Nein | [VM Insights](/azure/azure-monitor/insights/vminsights-overview) | Agent zum Überwachen von Gastbetriebssystem und Workflows erforderlich.|
  | [Dokumentation zu virtuellen Computern](/azure/virtual-machines/)<br />[Skalierungsgruppen für virtuelle Computer](/azure/virtual-machine-scale-sets/)   | Microsoft.Compute/virtualMachineScaleSets | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftcomputevirtualmachinescalesets) | Nein | [VM Insights](/azure/azure-monitor/insights/vminsights-overview) | Agent zum Überwachen von Gastbetriebssystem und Workflows erforderlich.|
@@ -255,24 +276,6 @@ In der folgenden Tabelle sind Azure-Dienste und die damit in Azure Monitor erfas
  | [Azure App Service](/azure/app-service/)<br />[Azure-Funktionen](/azure/azure-functions/)   | Microsoft.Web/sites/slots | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftwebsitesslots) | [**Ja**](/azure/azure-monitor/essentials/resource-log-categories#microsoftwebsitesslots) | [Azure Monitor Application Insights](/azure/azure-monitor/app/app-insights-overview) | |
  | [Azure App Service](/azure/app-service/)<br />[Azure-Funktionen](/azure/azure-functions/)   | Microsoft.Web/staticSites | [**Ja**](/azure/azure-monitor/essentials/metrics-supported#microsoftwebstaticsites) | Nein | [Azure Monitor Application Insights](/azure/azure-monitor/app/app-insights-overview) | |
 
-
-
-## <a name="third-party-integration"></a>Integration von Drittanbietern
-
-| Lösung | BESCHREIBUNG |
-|:---|:---|
-| [ITSM](alerts/itsmc-overview.md) | Der ITSM-Connector ermöglicht Ihnen, Azure und ein unterstütztes ITSM-Produkt bzw. einen unterstützten ITSM-Dienst zu verbinden.  |
-
-
-## <a name="resources-outside-of-azure"></a>Ressourcen außerhalb von Azure
-
-Mithilfe der in der folgenden Tabelle aufgeführten Methoden kann Azure Monitor Daten von Ressourcen außerhalb von Azure sammeln.
-
-| Resource | Methode |
-|:---|:---|
-| Anwendungen | Überwachen von Webanwendungen außerhalb von Azure mithilfe von Application Insights. Informationen finden Sie unter [Was ist Application Insights?](./app/app-insights-overview.md) |
-| Virtuelle Computer | Verwenden von Agents zum Sammeln von Daten aus dem Gastbetriebssystem virtueller Computer in anderen Cloudumgebungen oder lokal. Siehe [Übersicht über Azure Monitor-Agents](agents/agents-overview.md) |
-| REST-API-Client | Zum Schreiben von Daten in Azure Monitor-Protokolle und -Metriken von jedem Rest-API-Client aus stehen separate APIs zur Verfügung. Weitere Informationen finden Sie unter [Senden von Protokolldaten an Azure Monitor mit der HTTP-Datensammler-API](logs/data-collector-api.md) (für Protokolle) und [Senden benutzerdefinierter Metriken für eine Azure-Ressource an den Azure Monitor-Metrikspeicher mithilfe einer REST-API](essentials/metrics-store-custom-rest-api.md) (für Metriken). |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

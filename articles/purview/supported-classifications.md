@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: reference
 ms.date: 09/27/2021
-ms.openlocfilehash: e3018a1b9d94ca1f750bf8d17b1ea6ba028ad07f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: fa92330fcbae0bba9e3f9d18cb3e56d9c16a9ee6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131056146"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131449448"
 ---
 # <a name="supported-classifications-in-azure-purview"></a>Unterstützte Klassifizierungen in Azure Purview
 
@@ -410,7 +410,10 @@ Acht oder neun alphanumerische Zeichen
 
 ### <a name="pattern"></a>Muster
 
-- Ein Buchstabe (N, E, D, F, A, C, U, X), gefolgt von sieben Ziffern oder
+- ein Buchstabe (N, E, D, F, A, C, U, X) gefolgt von sieben Ziffern
+
+**or**
+
 - Zwei Buchstaben (PA, PB, PC, PD, PE, PF, PU, PW, PX, PZ), gefolgt von sieben Ziffern
 
 ### <a name="checksum"></a>Checksum
@@ -1566,9 +1569,13 @@ Sieben oder zwölf Ziffern
 Eine kanadische Bankkontonummer ist sieben oder zwölf Ziffern lang.
 
 Kanadische Bankkonto-Überweisungsnummer:
+
 - Fünf Ziffern
 - Ein Bindestrich
-- Drei Ziffern ODER
+- Drei Ziffern
+
+**or**
+
 - Eine Null („0“)
 - Acht Ziffern
 
@@ -7170,9 +7177,13 @@ Sieben bis zwölf Ziffern
 ### <a name="pattern"></a>Muster
 
 Sieben bis zwölf Ziffern:
+
 - Vier Ziffern
 - Ein Bindestrich (optional)
-- Sechs Ziffern ODER
+- Sechs Ziffern
+
+*or*
+
 - Sieben bis zwölf aufeinanderfolgende Ziffern
 
 ### <a name="checksum"></a>Checksum
@@ -9352,7 +9363,10 @@ Diese als vertraulich eingestufte Nummer ist nur für folgende Zwecke verfügbar
 
 9- oder 14-stellige Zahl:
 
-- neun Ziffern oder
+- Neun Ziffern
+
+**or**
+
 - Neun Ziffern
 - Bindestrich
 - Fünf Ziffern

@@ -1,21 +1,21 @@
 ---
-title: Azure Traffic Manager-Endpunktüberwachung | Microsoft Docs
+title: Azure-Traffic-Manager-Endpunktüberwachung
 description: In diesem Artikel wird beschrieben, wie Traffic Manager die Endpunktüberwachung und das automatische Endpunktfailover verwendet, um Azure-Kunden bei der Bereitstellung von Anwendungen mit hoher Verfügbarkeit zu unterstützen.
 services: traffic-manager
-author: duongau
+author: asudbring
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/22/2021
-ms.author: duau
-ms.openlocfilehash: ce4ff8cfa4bee895e17cd7ad22c54ff777d210ff
-ms.sourcegitcommit: beff1803eeb28b60482560eee8967122653bc19c
+ms.date: 11/02/2021
+ms.author: allensu
+ms.openlocfilehash: 52edf0cbae53540152a9991980499698b3292287
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/07/2021
-ms.locfileid: "113435180"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131467205"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager-Endpunktüberwachung
 
@@ -134,8 +134,11 @@ Die Zeitachse in der folgenden Abbildung enthält eine ausführliche Beschreibun
 9. **Service wird wieder online geschaltet**. Der Dienst wird verfügbar. Der Endpunkt behält in Traffic Manager den Status „Heruntergestuft“, bis das Überwachungssystem die nächste Integritätsprüfung durchführt.
 10. **Datenverkehr an den Dienst wird wieder aufgenommen**. Traffic Manager sendet eine GET-Anforderung und empfängt eine 200 OK-Statusantwort. Der Dienst befindet sich wieder in einem fehlerfreien Zustand. Die Traffic Manager-Namensserver werden aktualisiert und beginnen damit, den DNS-Namen des Diensts in DNS-Antworten wieder anzugeben. Der Datenverkehr wird wieder an den Endpunkt geleitet, wenn zwischengespeicherte DNS-Antworten mit Rückgabe anderer Endpunkte ablaufen und vorhandene Verbindungen mit anderen Endpunkten beendet werden.
 
+    > [!IMPORTANT]
+    > Der Traffic Manager stellt für jeden Endpunkt mehrere Tests von mehreren Standorten aus zur Verfügung. Mehrere Tests erhöhen die Resilienz für die Endpunktüberwachung. Der Traffic Manager fasst die durchschnittliche Integrität der Tests zusammen, anstatt sich auf eine einzelne Testinstanz zu verlassen. Die Redundanz des Testsystems ist standardmäßig. Endpunktwerte sollten ganzheitlich und nicht pro Test betrachtet werden. Die für die Testzustandsanzeige angezeigte Zahl ist ein Durchschnittswert. Der Status sollte nur dann ein Problem sein, wenn weniger als 50 % (0,5) der Tests einen **Aktiv**-Status veröffentlichen.
+
     > [!NOTE]
-    > Da Traffic Manager auf DNS-Ebene arbeitet, kann er vorhandene Verbindungen mit Endpunkten nicht beeinflussen. Beim Weiterleiten von Datenverkehr zwischen Endpunkten (entweder durch geänderte Profileinstellungen oder beim Failover oder Failback) leitet Traffic Manager neue Verbindungen an verfügbare Endpunkte weiter. Andere Endpunkte erhalten jedoch möglicherweise über vorhandene Verbindungen weiterhin Datenverkehr, bis diese Sitzungen beendet werden. Um diesen Datenverkehr aus den vorhandenen Verbindungen zu beseitigen, sollte die Sitzungsdauer für Anwendungen verringert werden, die für einen Endpunkt jeweils verwendet wird.
+    > Da Traffic Manager auf DNS-Ebene arbeitet, kann er vorhandene Verbindungen mit Endpunkten nicht beeinflussen. Beim Weiterleiten von Datenverkehr zwischen Endpunkten (entweder durch geänderte Profileinstellungen oder beim Failover oder Failback) leitet Traffic Manager neue Verbindungen an verfügbare Endpunkte weiter. Andere Endpunkte erhalten jedoch möglicherweise über bestehende Verbindungen weiterhin Datenverkehr, bis diese Sitzungen beendet werden. Um diesen Datenverkehr aus den vorhandenen Verbindungen zu beseitigen, sollte die Sitzungsdauer für Anwendungen verringert werden, die für einen Endpunkt jeweils verwendet wird.
 
 ## <a name="traffic-routing-methods"></a>Methoden für das Datenverkehrrouting
 

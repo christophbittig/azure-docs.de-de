@@ -6,12 +6,12 @@ ms.author: anvar
 ms.manager: bsiva
 ms.topic: how-to
 ms.date: 03/02/2021
-ms.openlocfilehash: 187ed49a116b99524f6cfca408bdb0d7e15a47ca
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 9a041511dcd921c7bf4a9316cdbf3d7617ef66b7
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129092583"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131503713"
 ---
 # <a name="scale-agentless-migration-of-vmware-virtual-machines-to-azure"></a>Skalieren der Migration von virtuellen VMware-Computern zu Azure ohne Agents
 
@@ -70,7 +70,7 @@ Klicken Sie unter **Download Azure Migrate appliance** (Azure Migrate-Appliance 
 > 2. Führen Sie den folgenden Befehl aus, um den Hash für die gezippte Datei zu generieren:
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Beispielverwendung: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
-> 3. Laden Sie die neueste Version des Installationsprogramms für die Appliance für die horizontale Skalierung aus dem Portal herunter, wenn der berechnete Hashwert nicht mit dieser Zeichenfolge identisch ist: BA84B58E88DDFE23E5D4CE73530227EBBC187B3634B66A3E0F0B3E5DF5F0A94F
+> 3. Laden Sie die neueste Version des Installationsprogramms für die Skalierungs-Anwendung vom Portal herunter, wenn der berechnete Hashwert nicht mit dieser Zeichenfolge übereinstimmen sollte: 3C00F9EB54CC6C55E127EDE47DFA28CCCF752697377EB1C9F3435E75DA5AA029
 
 ### <a name="3-run-the-azure-migrate-installer-script"></a>3. Ausführen des Azure Migrate-Installationsskripts
 

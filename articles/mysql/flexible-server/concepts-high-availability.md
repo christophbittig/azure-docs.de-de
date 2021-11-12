@@ -6,21 +6,18 @@ ms.author: sunaray
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/26/2021
-ms.openlocfilehash: 276bcd288f519a5060f859bf6b5a74c0453e7c79
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 1d1ec1b6196dd543b9310a945fc9b07e26673c84
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129994060"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131472768"
 ---
-# <a name="high-availability-in-azure-database-for-mysql---flexible-server-preview"></a>Hochverfügbarkeit in Azure Database for MySQL Flexible Server (Vorschau)
+# <a name="high-availability-concepts-in-azure-database-for-mysql-flexible-server"></a>Hochverfügbarkeitskonzepte in der Azure Datenbank für MySQL-flexible Server
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-> [!IMPORTANT] 
-> Azure Database for MySQL Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
-
-Azure Database for MySQL Flexible Server (Vorschau) ermöglicht das Konfigurieren von Hochverfügbarkeit (High Availability, HA) mit automatischem Failover. Die Hochverfügbarkeitslösung ist so konzipiert, dass committete Daten nie aufgrund von Fehlern verloren gehen und die Datenbank keinen Single Point of Failure (SPOF) in der Softwarearchitektur darstellt. Beim Konfigurieren von Hochverfügbarkeit stellt Flexible Server automatisch ein Standbyreplikat bereit und verwaltet dieses. Es gibt zwei Architekturmodelle für Hochverfügbarkeit:
+Die Azure Datenbank für MySQL-flexible Server ermöglicht das Konfigurieren der Hochverfügbarkeit mit automatischem Failover. Die Hochverfügbarkeitslösung ist so konzipiert, dass Daten, für die ein Commit ausgeführt wurde, nie aufgrund von Fehlern verloren gehen und die Datenbank keinen Single Point of Failure (SPOF) in der Softwarearchitektur darstellt. Beim Konfigurieren von Hochverfügbarkeit stellt Flexible Server automatisch ein Standbyreplikat bereit und verwaltet dieses. Es gibt zwei Architekturmodelle für Hochverfügbarkeit:
 
 * **Zonenredundante Hochverfügbarkeit:** Diese Option wird für die vollständige Isolation und Redundanz der Infrastruktur für mehrere Verfügbarkeitszonen bevorzugt. Sie bietet den höchsten Verfügbarkeitsgrad, erfordert aber eine zonenübergreifende Konfiguration der Anwendungsredundanz. Zonenredundante Hochverfügbarkeit wird bevorzugt, wenn bei jedem Infrastrukturausfall in der Verfügbarkeitszone die bestmögliche Verfügbarkeit erzielt werden soll und die Latenz in der Verfügbarkeitszone akzeptabel ist. Sie kann nur während der Erstellung des Servers aktiviert werden. Die zonenredundante Hochverfügbarkeit ist nur in [Azure-Regionen](./overview.md#azure-regions) verfügbar, die mehrere [Verfügbarkeitszonen](../../availability-zones/az-overview.md) und [zonenredundante Premium-Dateifreigaben](../..//storage/common/storage-redundancy.md#zone-redundant-storage) unterstützen.
 

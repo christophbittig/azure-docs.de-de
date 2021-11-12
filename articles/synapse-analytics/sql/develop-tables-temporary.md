@@ -2,20 +2,20 @@
 title: Verwenden von temporären Tabellen in Synapse SQL
 description: Grundlegender Leitfaden für die Verwendung temporärer Tabellen in Synapse SQL.
 services: synapse-analytics
-author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
-ms.date: 04/15/2020
-ms.author: xiaoyul
-ms.reviewer: igorstan
-ms.openlocfilehash: 8513df83196b3521a749515c6bb22caad7d255b7
-ms.sourcegitcommit: 260a2541e5e0e7327a445e1ee1be3ad20122b37e
+ms.date: 11/02/2021
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: ''
+ms.openlocfilehash: 3244152e4d7eb7cac78dcab07995719bdd07e863
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/21/2021
-ms.locfileid: "107816038"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131508549"
 ---
 # <a name="temporary-tables-in-synapse-sql"></a>Temporäre Tabellen in Synapse SQL
 
@@ -95,8 +95,7 @@ GROUP BY
 
 > [!NOTE]
 > `CTAS` ist ein leistungsfähiger Befehl und bietet den zusätzlichen Vorteil, dass er den Speicherplatz für das Transaktionsprotokoll effizient verwendet. 
-> 
-> 
+
 
 ### <a name="drop-temporary-tables"></a>Löschen temporärer Tabellen
 

@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c134f657e4037627fc39f321d9e579c8682a6b58
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: b5e6813391c8077e44e2bb09b71404242707df5a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131067078"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131459404"
 ---
 # <a name="securing-external-access-with-groups"></a>Schützen des externen Zugriffs mit Gruppen 
 
@@ -150,7 +150,7 @@ Hybridorganisationen verfügen sowohl über eine lokale Infrastruktur als auch �
 
 ## <a name="microsoft-365-groups"></a>Microsoft 365-Gruppen
 
-[Microsoft 365-Gruppen](/microsoft-365/admin/create-groups/office-365-groups) stellen den grundlegenden Mitgliedschaftsdienst für die Steuerung des gesamten Microsoft 365-Zugriffs dar. Diese Gruppen können im [Azure-Portal](https://portal.azure.com/) oder im [Microsoft 365-Portal](https://admin.microsoft.com/) erstellt werden. Wenn eine Microsoft 365-Gruppe erstellt wird, gewähren Sie den Zugriff auf eine Gruppe von Ressourcen für die Zusammenarbeit. Eine umfassende Liste dieser Ressourcen finden Sie unter [Übersicht über Microsoft 365-Gruppen für Administratoren](/microsoft-365/admin/create-groups/office-365-groups).
+[Microsoft 365-Gruppen](/microsoft-365/admin/create-groups/office-365-groups) stellen den grundlegenden Mitgliedschaftsdienst für die Steuerung des gesamten Microsoft 365-Zugriffs dar. Diese Gruppen können im [Azure-Portal](https://portal.azure.com/) oder im [Microsoft 365-Portal](https://admin.microsoft.com/) erstellt werden. Wenn Sie eine Microsoft 365-Gruppe erstellen, gewähren Sie Zugriff auf eine Gruppe von Ressourcen, die für die Zusammenarbeit genutzt werden. Eine umfassende Liste dieser Ressourcen finden Sie unter [Übersicht über Microsoft 365-Gruppen für Administratoren](/microsoft-365/admin/create-groups/office-365-groups).
 
 Für die Rollen von Microsoft 365-Gruppen gilt die folgende Unterteilung:
 

@@ -6,14 +6,14 @@ titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 02/10/2021
+ms.date: 10/28/2021
 ms.author: cherylmc
-ms.openlocfilehash: e2edd8b00be0ce7ef0cff2b3aa01a111b1c4c5e5
-ms.sourcegitcommit: 49bd8e68bd1aff789766c24b91f957f6b4bf5a9b
+ms.openlocfilehash: c43cff8648ac428385ba787c09cf2399c30dab46
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/29/2021
-ms.locfileid: "108229574"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131466388"
 ---
 # <a name="modify-local-network-gateway-settings-using-powershell"></a>Ändern der Einstellungen des lokalen Netzwerkgateways mit PowerShell
 
@@ -24,6 +24,10 @@ Manchmal ändern sich die Einstellungen für „AddressPrefix“ oder „Gateway
 > * [PowerShell](vpn-gateway-modify-local-network-gateway.md)
 > * [Azure-Befehlszeilenschnittstelle](vpn-gateway-modify-local-network-gateway-cli.md)
 >
+>
+
+>[!NOTE]
+> Das Vornehmen von Änderungen an einem lokalen Netzwerk-Gateway, das über eine Verbindung verfügt, kann zu Tunnel-Unterbrechungen und Ausfallzeiten führen.
 >
 
 ## <a name="before-you-begin"></a><a name="before"></a>Voraussetzungen

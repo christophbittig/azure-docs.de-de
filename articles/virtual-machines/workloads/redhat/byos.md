@@ -8,12 +8,12 @@ ms.collection: linux
 ms.topic: article
 ms.date: 06/10/2020
 ms.author: mamccrea
-ms.openlocfilehash: 59a89c069c332d4d0346e0f3c795763818c601de
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: cb15ab04a92e22099f9c04d9e05bb2e44c182826
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129457105"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471476"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Bring-Your-Own-Subscription-Gold-Images für Red Hat Enterprise Linux in Azure
 
@@ -193,7 +193,7 @@ Schritte zum Anwenden von Azure Disk Encryption sind unter [Azure Disk Encryptio
 
     Wenden Sie sich in diesem Fall an Microsoft oder Red Hat, um Ihr Abonnement aktivieren zu lassen.
 
-- Wenn Sie eine Momentaufnahme aus einem BYOS-Image für RHEL ändern und versuchen, das Image in der [Shared Image Gallery](../../shared-image-galleries.md) zu veröffentlichen, müssen Sie Planinformationen bereitstellen, die mit der ursprünglichen Quelle der Momentaufnahme übereinstimmen. Ein Beispielbefehl:
+- Wenn Sie eine Momentaufnahme aus einem BYOS-Image für RHEL ändern und versuchen, das benutzerdefinierte Image in der [Azure Compute Gallery](../../shared-image-galleries.md) (ehemals Shared Image Gallery) zu veröffentlichen, müssen Sie Planinformationen bereitstellen, die mit der ursprünglichen Quelle der Momentaufnahme übereinstimmen. Ein Beispielbefehl:
 
     ```azurecli
     az vm create –image \

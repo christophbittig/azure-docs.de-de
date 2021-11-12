@@ -6,21 +6,18 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
-ms.openlocfilehash: 5500a197b7cb2566b3ea78b6c2acba9403a7a8ae
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 677301275beb561a583ffeea92861132a54b3e34
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "122639748"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131445457"
 ---
-# <a name="manage-an-azure-database-for-mysql---flexible-server-preview-using-azure-portal"></a>Verwalten einer Azure Database for MySQL – Flexible Server-Instanz (Vorschau) mithilfe des Azure-Portals
+# <a name="manage-an-azure-database-for-mysql---flexible-server-using-azure-portal"></a>Verwalten einer Azure-Datenbank für MySQL-flexible Server mit dem Azure-Portal
+[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-> [!IMPORTANT]
-> Azure Database for MySQL Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
-
-In diesem Artikel erfahren Sie, wie Sie Ihre Instanz von Azure Database for MySQL Flexible Server (Vorschau) verwalten. Zu den Verwaltungsaufgaben gehören die Skalierung von Compute und Speicher, die Wiederherstellung des Kennworts des Serveradministrators und das Löschen Ihres Servers.
+In diesem Abschnitt erfahren Sie, wie Sie Ihre Azure Datenbank für MySQL-flexible Server verwalten. Zu den Verwaltungsaufgaben gehören die Skalierung von Compute und Speicher, die Wiederherstellung des Kennworts des Serveradministrators und das Löschen Ihres Servers.
 
 ## <a name="sign-in"></a>Anmelden
 
@@ -37,7 +34,7 @@ Nach der Servererstellung können Sie zwischen verschiedenen [Tarifen](https://a
    > [!div class="mx-imgBorder"]
    > :::image type="content" source="./media/howto-manage-server-portal/scale-server.png" alt-text="Skalieren des Speichers, Flexible Server":::
 
-   
+
 > [!IMPORTANT]
    > - Der Speicher kann nicht herunterskaliert werden.
    > - Das Skalieren der virtuellen Kerne löst einen Neustart des Servers aus.

@@ -16,12 +16,12 @@ ms.date: 05/31/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 671c9f9eadb7a272e718587417e78ff85d182b07
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 1af2a466dc5906f752970cbc6b8898aeeea39475
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131049365"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131477495"
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>Unterstützung mehrerer Domänen für den Verbund mit Azure AD
 Die folgende Dokumentation enthält eine Anleitung dazu, wie Sie mehrere Domänen der obersten Ebene und Unterdomänen verwenden, wenn Sie einen Verbund mit Microsoft 365- oder Azure AD-Domänen erstellen.
@@ -42,7 +42,7 @@ Sie können das IssuerUri-Element mit dem folgenden PowerShell-Befehl anzeigen: 
 
 Ein Problem tritt auf, wenn Sie mehr als eine Domäne der obersten Ebene hinzufügen.  Nehmen wir beispielsweise an, dass Sie einen Verbund zwischen Azure AD und Ihrer lokalen Umgebung eingerichtet haben.  Für dieses Dokument wird die Domäne „bmcontoso.com“ verwendet.  Nun wurde eine zweite Domäne der obersten Ebene hinzugefügt: „bmfabrikam.com“.
 
-![Screenshot mit mehreren Domänen der obersten Ebene](./media/how-to-connect-install-multiple-domains/domains.png)
+![Ein Screenshot mit mehreren Top-Level-Domains](./media/how-to-connect-install-multiple-domains/domains.png)
 
 Wenn Sie versuchen, die Domäne „bmfabrikam.com“ in einen Verbund zu konvertieren, wird ein Fehler angezeigt.  Der Grund hierfür ist, dass für Azure AD eine Einschränkung gilt. Es ist nicht zulässig, dass die IssuerUri-Eigenschaft für mehr als eine Domäne den gleichen Wert aufweist.  
 

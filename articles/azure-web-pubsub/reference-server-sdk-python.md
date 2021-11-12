@@ -1,48 +1,48 @@
 ---
-title: 'Referenz: Python-Server-SDK für den Azure Web PubSub-Dienst'
-description: In dieser Referenz wird das Python-Server-SDK für den Azure Web PubSub-Dienst beschrieben.
+title: Referenz - Python-Server-SDK für Azure Web PubSub
+description: Diese Referenz beschreibt das Python-Server-SDK für den Azure Web PubSub-Dienst.
 author: vicancy
 ms.author: lianwei
 ms.service: azure-web-pubsub
 ms.topic: conceptual
 ms.date: 08/26/2021
-ms.openlocfilehash: c394258a49e73055f6848eed87dd15e75bd1c069
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: f28ab302aa6899e35c080821ccddf01d5e7cb76e
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123115412"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131578328"
 ---
-# <a name="python-server-sdk-for-azure-web-pubsub-service"></a>Python-Server-SDK für den Azure Web PubSub-Dienst
+# <a name="python-server-sdk-for-azure-web-pubsub"></a>Python-Server-SDK für Azure Web PubSub
 
-Verwenden Sie die Bibliothek für:
+Sie können diese Bibliothek verwenden, um:
 
-- Das Versenden von Nachrichten an Hubs und Gruppen
-- Das Versenden von Nachrichten an bestimmte Benutzer und Verbindungen
-- Das Organisieren von Benutzern und Verbindungen in Gruppen
-- Das Schließen von Verbindungen
-- Das Erteilen, Widerrufen und Prüfen von Berechtigungen für eine vorhandene Verbindung
+- Das Versenden von Nachrichten an Hubs und Gruppen. 
+- Das Versenden von Nachrichten an bestimmte Benutzer und Verbindungen.
+- Das Organisieren von Benutzern und Verbindungen in Gruppen.
+- Enge Verbindungen.
+- Erteilen, Entziehen und Überprüfen von Berechtigungen für eine bestehende Verbindung.
 
 [Quellcode](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/webpubsub/azure-messaging-webpubsubservice) | [Paket (Pypi)][package] | [API-Referenzdokumentation](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/webpubsub/azure-messaging-webpubsubservice) | [Produktdokumentation][webpubsubservice_docs] |
 [Beispiele][samples_ref]
 
-## <a name="getting-started"></a>Erste Schritte
+## <a name="get-started"></a>Erste Schritte
 
-### <a name="installations-the-package"></a>Installieren des Pakets
+Installieren Sie das Paket wie folgt:
 
 ```bash
-python -m pip install azure-messaging-webpubsubservice
+python -m pip install azure-messaging-webpubsubservice==1.0.0b1
 ```
 
-#### <a name="prerequisites"></a>Voraussetzungen
+### <a name="prerequisites"></a>Voraussetzungen
 
-- Für die Verwendung dieses Pakets ist Python 2.7 bzw. 3.6 oder höher erforderlich.
-- Sie benötigen ein [Azure-Abonnement][azure_sub] und eine [Azure Web PubSub-Dienstinstanz][webpubsubservice_docs], um dieses Paket zu verwenden.
+- Python 2.7 oder 3.6 oder höher ist erforderlich, um dieses Paket zu verwenden.
+- Ein [Azure-Abonnement][azure_sub].
 - Eine vorhandene Azure Web PubSub-Dienstinstanz.
 
-### <a name="authenticating-the-client"></a>Authentifizieren des Clients
+### <a name="authenticate-the-client"></a>Authentifizieren des Clients
 
-Für die Interaktion mit dem Azure Web PubSub-Dienst müssen Sie eine Instanz der [WebPubSubServiceClient][webpubsubservice_client_class]-Klasse erstellen. Für die Authentifizierung beim Dienst müssen Sie eine AzureKeyCredential-Instanz mit Endpunkt und Zugriffsschlüssel übergeben. Den Endpunkt und den Zugriffsschlüssel finden Sie im Azure-Portal.
+Um mit dem Azure WebPubSub-Dienst zu interagieren, müssen Sie eine Instanz der Klasse [`WebPubSubServiceClient`][webpubsubservice_client_class] erstellen. Um sich gegenüber dem Dienst zu authentifizieren, müssen Sie eine "AzureKeyCredential"-Instanz mit Endpunkt und Zugangsschlüssel übergeben. Sie finden den Endpunkt und den Zugangsschlüssel im Azure-Portal.
 
 ```python
 >>> from azure.messaging.webpubsubservice import WebPubSubServiceClient
@@ -82,10 +82,7 @@ Für die Interaktion mit dem Azure Web PubSub-Dienst müssen Sie eine Instanz de
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
-### <a name="logging"></a>Protokollierung
-
-Dieses SDK verwendet die Python-Standardprotokollierungsbibliothek.
-Sie können die Protokollierung von Debuginformationen zur Ausgabe in stdout oder an einer beliebigen anderen Stelle konfigurieren.
+Dieses SDK verwendet die Standard-Protokollierungsbibliothek von Python. Sie können die Protokollierung so konfigurieren, dass Debugging-Informationen in den `stdout` oder an eine beliebige Stelle gedruckt werden.
 
 ```python
 import logging
@@ -93,9 +90,9 @@ import logging
 logging.basicConfig(level=logging.DEBUG)
 ```
 
-HTTP-Anforderungs- und Antwortdetails werden bei dieser Protokollierungskonfiguration in stdout gedruckt.
+Die Details der HTTP-Anforderung und -Antwort werden bei dieser Protokollierungskonfiguration nach `stdout` gedruckt.
 
-[webpubsubservice_docs]: https://aka.ms/awps/doc
+[webpubsubservice_docs]: ./index.yml
 [azure_cli]: /cli/azure
 [azure_sub]: https://azure.microsoft.com/free/
 [webpubsubservice_client_class]: https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/webpubsub/azure-messaging-webpubsubservice/azure/messaging/webpubsubservice/__init__.py
