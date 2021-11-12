@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-custom-classification, ignite-fall-2021
-ms.openlocfilehash: 9a532dfebb6b61224b7122be2253ff84761aa85c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 13e031c502538fa2126e6d4ab4e9e4eb49616142
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131029456"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131509079"
 ---
 # <a name="language-support"></a>Sprachunterstützung
 
@@ -27,7 +27,7 @@ In diesem Artikel erfahren Sie, welche Sprachen bei der benutzerdefinierten Text
 Mit benutzerdefinierter Textklassifizierung können Sie ein Modell in einer Sprache trainieren und in einer anderen Sprache testen. Dieses Feature ist sehr leistungsfähig, da es Ihnen hilft, Zeit und Aufwand zu sparen: Anstatt separate Projekte für jede Sprache zu erstellen, können Sie mehrsprachige Datasets in einem Projekt verarbeiten.  Ihr Dataset muss nicht zur Gänze in derselben Sprache vorliegen, aber Sie müssen diese Option bei der Projekterstellung angeben. Wenn Sie während des Auswertungsprozesses feststellen, dass Ihr Modell in bestimmten Sprachen eine schlechte Leistung aufweist, sollten Sie ihrem Trainingssatz weitere Daten in den betreffenden Sprachen hinzufügen.
 
 > [!NOTE]
-> Zum Aktivieren der Unterstützung für mehrere Sprachen müssen Sie diese Option beim [Erstellen Ihres Projekts](how-to/create-project.md) aktivieren.
+> Zum Aktivieren der Unterstützung für mehrere Sprachen müssen Sie diese Option beim [Erstellen Ihres Projekts](how-to/create-project.md) oder später über die Seite mit den Projekteinstellungen aktivieren.
 
 ## <a name="languages-supported-by-custom-text-classification"></a>Von der benutzerdefinierten Textklassifizierung unterstützte Sprachen
 

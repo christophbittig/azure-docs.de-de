@@ -8,18 +8,18 @@ ms.service: media-services
 ms.topic: overview
 ms.date: 03/24/2021
 ms.author: inhenkel
-ms.openlocfilehash: e17ec995ad9d8171d1d6a0b51b5112e4597d618f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1f7397423eef2969e3a3e61b2201770a1e54a2ed
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128656675"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131438347"
 ---
 # <a name="media-services-v3-samples"></a>Media Services v3-Beispiele
 
 [!INCLUDE [media services api v3 logo](./includes/v3-hr.md)]
 
-Dieser Artikel enthält eine Liste aller verfügbaren Beispiele für Media Services, geordnet nach Methode und SDK.  Es gibt Beispiele für .NET, Node.JS (Typescript), Python und Java sowie REST mit Postman.
+Dieser Artikel enthält eine Liste aller verfügbaren Beispiele für Media Services, geordnet nach Methode und SDK.  Es gibt Beispiele für .NET, Node.js (TypeScript), Python und Java sowie REST mit Postman.
 
 ## <a name="samples-by-sdk"></a>Beispiele nach SDK
 

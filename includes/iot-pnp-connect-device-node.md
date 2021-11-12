@@ -4,16 +4,16 @@ ms.author: dobett
 ms.service: iot-develop
 ms.topic: include
 ms.date: 11/20/2020
-ms.openlocfilehash: 087d5c3e43d1b01754f19978d8b76d012e9c55a7
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 2970634988a174d67ce4b92daa376a9d393fb449
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129725563"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131520850"
 ---
 In diesem Schnellstart erfahren Sie, wie Sie eine IoT Plug & Play-Beispielgeräteanwendung erstellen, mit Ihrem IoT-Hub verbinden und die von ihm gesendeten Telemetriedaten mithilfe des Tools Azure IoT-Explorer anzeigen. Die Beispielanwendung wurde in Node.js geschrieben und ist im Azure IoT-Geräte-SDK für Node.js enthalten. Ein Lösungsentwickler kann mithilfe von Azure IoT-Explorer mehr über die Funktionen eines IoT Plug & Play-Geräts erfahren, ohne Gerätecode anzeigen zu müssen.
 
-[![Code durchsuchen](../articles/iot-central/core/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples/javascript/pnp)
+[![Code durchsuchen](../articles/iot-central/core/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-node/tree/master/device/samples)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -41,7 +41,7 @@ git clone https://github.com/Azure/azure-iot-sdk-node
 
 Sie verwenden das Geräte-SDK, um den enthaltenen Beispielcode zu erstellen. Die von Ihnen erstellte Anwendung simuliert ein Gerät, mit dem eine Verbindung mit einem IoT-Hub hergestellt wird. Die Anwendung sendet Telemetriedaten und Eigenschaften und empfängt Befehle.
 
-1. Wechseln Sie in einem lokalen Terminalfenster zum Ordner Ihres geklonten Repositorys, und navigieren Sie zum Ordner */azure-iot-sdk-node/device/samples/pnp*. Führen Sie dann den folgenden Befehl aus, um die erforderlichen Bibliotheken zu installieren:
+1. Wechseln Sie in einem lokalen Terminalfenster zum Ordner Ihres geklonten Repositorys, und navigieren Sie zum Ordner */azure-iot-sdk-node/device/samples/javascript*. Führen Sie dann den folgenden Befehl aus, um die erforderlichen Bibliotheken zu installieren:
 
     ```cmd/sh
     npm install
@@ -57,7 +57,7 @@ Sie verwenden das Geräte-SDK, um den enthaltenen Beispielcode zu erstellen. Die
 
 In diesem Beispiel wird ein einfacher IoT Plug & Play-Thermostat implementiert. Das in diesem Beispiel implementierte Modell verwendet keine IoT Plug & Play-[Komponenten](../articles/iot-develop/concepts-modeling-guide.md). Die [DTDL-Modelldatei für den Thermostat](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) definiert die vom Gerät implementierten Telemetriedaten, Eigenschaften und Befehle.
 
-Öffnen Sie die Datei _simple_thermostat.js_. In dieser Datei können Sie folgende Aktionen sehen:
+Öffnen Sie die Datei _pnp_simple_thermostat.js_. In dieser Datei können Sie folgende Aktionen sehen:
 
 1. Importieren der erforderlichen Schnittstellen
 1. Schreiben eines Updatehandlers für Eigenschaften und eines Befehlshandlers
@@ -75,12 +75,12 @@ In der Hauptfunktion können Sie sehen, wie alles zusammengestellt wird:
 
 [!INCLUDE [iot-pnp-environment](iot-pnp-environment.md)]
 
-Weitere Informationen zur Beispielkonfiguration finden Sie in der [Beispiel-Infodatei](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/javascript/pnp/readme.md).
+Weitere Informationen zur Beispielkonfiguration finden Sie in der [Beispiel-Infodatei](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/readme.md#iot-plug-and-play-device-samples).
 
 Führen Sie die Beispielanwendung zum Simulieren eines IoT Plug & Play-Geräts aus, das Telemetriedaten an Ihren IoT-Hub sendet. Um die Beispielanwendung auszuführen, verwenden Sie den folgenden Befehl:
 
 ```cmd\sh
-node simple_thermostat.js
+node pnp_simple_thermostat.js
 ```
 
 Sie sehen die folgende Ausgabe. Das bedeutet, dass das Gerät mit dem Senden von Telemetriedaten an den Hub begonnen hat und jetzt zum Empfangen von Befehlen und Eigenschaftenaktualisierungen bereit ist.

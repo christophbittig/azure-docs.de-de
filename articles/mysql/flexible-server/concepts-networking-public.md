@@ -6,21 +6,18 @@ ms.author: dimadhus
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 8/6/2021
-ms.openlocfilehash: 414b2f8d6e64112c737fe220003ca2c58b3e9d7b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: a8d2e1e6ef3f1aa2dcb736336232b1b149eb7b89
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340141"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131438196"
 ---
-# <a name="public-network-access-for-azure-database-for-mysql---flexible-server-preview"></a>Übersicht über den Zugriff auf öffentliche Netzwerke für Flexibler Azure Database for MySQL-Server (Vorschau)
+# <a name="public-network-access-for-azure-database-for-mysql---flexible-server"></a>Zugriff aus öffentlichen Netzwerken für Azure Database for MySQL – Flexibler Server
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 In diesem Artikel werden die öffentlichen Konnektivitätsoptionen für Ihren Server beschrieben. Sie erfahren im Detail die Konzepte zum Erstellen eines flexiblen Azure Database for MySQL-Servers, auf den über das Internet sicher zugegriffen werden kann.
-
-> [!IMPORTANT]
-> Azure Database for MySQL – Flexible Server befindet sich in der Vorschau.
 
 ## <a name="public-access-allowed-ip-addresses"></a>Öffentlicher Zugriff (zugelassene IP-Adressen)
 
@@ -58,7 +55,7 @@ Wenn der Zugriff auf den Serverdienst „Microsoft Azure Database for MySQL“ n
 
   * Fragen Sie Ihren Internetdienstanbieter nach dem IP-Adressbereich, der Ihren Clientcomputern zugewiesen ist, die auf den Azure Database for MySQL-Server zugreifen, und fügen Sie dann den IP-Adressbereich als Firewallregel hinzu.
   * Verwenden Sie stattdessen die statische IP-Adressierung für die Clientcomputer, und fügen Sie dann die statische IP-Adresse als Firewallregel hinzu.
-  
+
 * **Die Firewallregel ist für das IPv6-Format nicht verfügbar:** Firewallregeln müssen das IPv4-Format aufweisen. Wenn Sie Firewallregeln im IPv6-Format angeben, wird ein Validierungsfehler angezeigt.
 
 ## <a name="next-steps"></a>Nächste Schritte

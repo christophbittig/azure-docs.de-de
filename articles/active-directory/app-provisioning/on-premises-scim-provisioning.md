@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/16/2021
+ms.date: 10/16/2021
 ms.author: billmath
 ms.reviewer: arvinh
-ms.openlocfilehash: b1fb5523f0a487b4076c469e04cc97db01fa36b5
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 232735af49cd0f38ff169c224a48b76b0707c97d
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129991107"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130261137"
 ---
 # <a name="azure-ad-on-premises-application-provisioning-to-scim-enabled-apps"></a>Lokale Azure AD-Anwendungsbereitstellung in SCIM-fähigen Apps
 
@@ -61,7 +61,7 @@ So stellen Sie Benutzer für SCIM-fähige Apps bereit:
 * Achten Sie darauf, dass Ihre [SCIM](https://techcommunity.microsoft.com/t5/identity-standards-blog/provisioning-with-scim-getting-started/ba-p/880010)-Implementierung die [Azure AD SCIM-Anforderungen](use-scim-to-provision-users-and-groups.md) erfüllt.
   
   Azure AD bietet Open-Source-[Referenzcode](https://github.com/AzureAD/SCIMReferenceCode/wiki), den Entwickler zum Bootstrapping ihrer SCIM-Implementierung verwenden können. Der Code wird so bereitgestellt, wie er ist.
-* Unterstützen Sie den /schemaDiscovery-Endpunkt, um den im Azure-Portal erforderlichen Konfigurationsaufwand zu reduzieren. 
+* Unterstützen Sie den /schemas-Endpunkt, um den im Azure-Portal erforderlichen Konfigurationsaufwand zu reduzieren. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

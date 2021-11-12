@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Erstellen eines FAQ-Bots für mehrere Domänen mit Azure Bot Service'
-description: In diesem Tutorial erstellen Sie mit QnA Maker und Azure Bot Service einen FAQ-Bot ohne Code für Anwendungsfälle in der Produktion.
+title: 'Tutorial: Erstellen eines FAQ-Bots für mehrere Kategorien mit Azure Bot Service'
+description: In diesem Tutorial erstellen Sie mit „Fragen und Antworten“ und Azure Bot Service einen FAQ-Bot ohne Code für Anwendungsfälle in der Produktion.
 ms.service: cognitive-services
 ms.subservice: language-service
 ms.topic: tutorial
@@ -8,19 +8,19 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 11/02/2021
 ms.custom: language-service-question-answering, ignite-fall-2021
-ms.openlocfilehash: 7fdf1178cd9e737b6696374bc126312c1aa819f6
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ed5f8bf8009df79f2d49b3040aef7a5fe5635fab
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131029958"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131458169"
 ---
-# <a name="add-multiple-domains-to-your-faq-bot"></a>Hinzufügen mehrerer Domänen zu Ihrem FAQ-Bot
+# <a name="add-multiple-categories-to-your-faq-bot"></a>Hinzufügen mehrerer Kategorien zu Ihrem FAQ-Bot
 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Erstellen eines Projekts und Markieren von Frage-Antwort-Paaren in unterschiedlichen Domänen mit Metadaten
+> * Erstellen eines Projekts und Markieren von Frage-Antwort-Paaren in unterschiedlichen Kategorien mit Metadaten
 > * Erstellen eines separaten Projekts für jede Domäne
 > * Erstellen einer separaten Sprachressource für jede Domäne
 
@@ -105,4 +105,4 @@ Wenn die Frage des Benutzers vom Dienst empfangen wird, müssen Sie `projectName
 
 ## <a name="create-a-separate-language-resource-for-each-domain"></a>Erstellen einer separaten Sprachressource für jede Domäne
 
-Angenommen, das Marketingteam von Microsoft möchte einen Bot für den Kundensupport erstellen, der häufige Abfragen von Benutzern zu Surface- und Xbox-Produkten beantwortet. Geplant ist, verschiedenen Teams den Zugriff auf die Wissensdatenbanken für Surface und Xbox zuzuweisen. In diesem Fall ist es ratsam, zwei QnA Maker-Ressourcen zu erstellen: eine für Surface und eine für Xbox. Sie können jedoch unterschiedliche Rollen für Benutzer definieren, die auf dieselbe Ressource zugreifen.
+Angenommen, das Marketingteam von Microsoft möchte einen Bot für den Kundensupport erstellen, der häufige Abfragen von Benutzern zu Surface- und Xbox-Produkten beantwortet. Geplant ist, verschiedenen Teams den Zugriff auf die Wissensdatenbanken für Surface und Xbox zuzuweisen. In diesem Fall ist es ratsam, zwei Ressourcen für Fragen und Antworten zu erstellen: eine für Surface und eine für Xbox. Sie können jedoch unterschiedliche Rollen für Benutzer definieren, die auf dieselbe Ressource zugreifen.

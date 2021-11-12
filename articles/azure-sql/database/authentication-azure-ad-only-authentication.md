@@ -8,14 +8,14 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 10/21/2021
+ms.date: 11/03/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 74b02577e6bb59481182afda881216ebff0544cf
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 050a9690f22ef34b39d89a5cd0cf4d8a6c7d340b
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131044036"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131503051"
 ---
 # <a name="azure-ad-only-authentication-with-azure-sql"></a>Reine Azure AD-Authentifizierung mit Azure SQL
 
@@ -402,7 +402,7 @@ Wenn die reine Azure AD-Authentifizierung für die SQL-Datenbank aktiviert ist, 
 - [Serverrollen der Azure SQL-Datenbank](security-server-roles.md)
 - [Elastische Aufträge](job-automation-overview.md)
 - [SQL-Datensynchronisierung](sql-data-sync-data-sql-server-sql-database.md)
-- [Change Data Capture (CDC)](/sql/relational-databases/track-changes/about-change-data-capture-sql-server)
+- [Change Data Capture (CDC)](/sql/relational-databases/track-changes/about-change-data-capture-sql-server) – Wenn Sie eine Datenbank als Azure AD-Benutzer in Azure SQL-Datenbank erstellen und Change Data Capture für diese aktivieren, kann ein SQL-Benutzer keine Änderungen an CDC-Artefakten deaktivieren oder vornehmen. Ein anderer Azure AD-Benutzer kann CDC jedoch für dieselbe Datenbank aktivieren oder deaktivieren. Analog dazu funktioniert, wenn Sie eine Azure SQL-Datenbank als SQL Benutzer erstellen, das Aktivieren oder Deaktivieren von CDC als Azure AD-Benutzer nicht.
 - [Transaktionsreplikation](/azure/azure-sql/managed-instance/replication-transactional-overview): Die SQL-Authentifizierung ist für die Konnektivität zwischen Replikationsteilnehmern erforderlich. Wenn also die reine Azure AD-Authentifizierung aktiviert ist, wird die Transaktionsreplikation für die SQL-Datenbank nicht für Szenarios unterstützt, in denen die Transaktionsreplikation zum Pushen von Änderungen in einer Azure SQL Managed Instance, auf einem lokalen SQL Server oder in einer Azure VM SQL Server-Instanz in eine Datenbank in Azure SQL-Datenbank verwendet wird.
 - [Erkenntnisse zu SQL](/azure/azure-monitor/insights/sql-insights-overview)
 - EXEC AS-Anweisung für Azure AD-Gruppenmitgliedskonten

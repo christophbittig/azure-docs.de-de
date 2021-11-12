@@ -7,16 +7,16 @@ ms.service: confidential-ledger
 ms.topic: overview
 ms.date: 04/15/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 69166e2d049bd2c7a9a4c356ec759096a6cda479
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: b710b7f0879edfcf908ab2be01624123220be255
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385989"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131458131"
 ---
-# <a name="register-the-confidential-ledger-resource-provider"></a>Registrieren des Confidential Ledger-Ressourcenanbieters
+# <a name="register-the-azure-confidential-ledger-resource-provider"></a>Registrieren des Azure Confidential Ledger-Ressourcenanbieters
 
-Bevor Sie Azure Confidential Ledger verwenden, müssen Sie zunächst den Confidential Ledger-Ressourcenanbieter registrieren.
+Bevor Sie Azure Confidential Ledger verwenden, müssen Sie zunächst den Azure Confidential Ledger-Ressourcenanbieter registrieren.
 
 ## <a name="how-to-register"></a>Registrierung
 

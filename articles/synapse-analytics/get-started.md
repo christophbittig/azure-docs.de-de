@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 04/04/2021
-ms.openlocfilehash: d31634809786ca4e62b156b6659289012e27a560
-ms.sourcegitcommit: 77d7639e83c6d8eb6c2ce805b6130ff9c73e5d29
+ms.openlocfilehash: 111898a8b0719129f7e35d538585dee25cb2ccab
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2021
-ms.locfileid: "106387008"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131437408"
 ---
 # <a name="get-started-with-azure-synapse-analytics"></a>Erste Schritte mit Azure Synapse Analytics
 
@@ -25,11 +25,12 @@ Folgen Sie den unten aufgeführten Schritten *in dieser Reihenfolge*, und Sie we
 
 * [Schritt 1: Erstellen und Einrichten eines Synapse-Arbeitsbereichs](get-started-create-workspace.md)
 * [Schritt 2: Analysieren mithilfe eines serverlosen SQL-Pools](get-started-analyze-sql-on-demand.md)
-* [Schritt 3: Analysieren mithilfe von Apache Spark](get-started-analyze-spark.md)
-* [Schritt 4: Analysieren mithilfe eines dedizierten SQL-Pools](get-started-analyze-sql-pool.md)
-* [Schritt 5: Analysieren von Daten in einem Speicherkonto](get-started-analyze-storage.md)
-* [Schritt 6: Orchestrieren mit Pipelines](get-started-pipelines.md)
-* [Schritt 7: Visualisieren von Daten mit Power BI](get-started-visualize-power-bi.md)
-* [Schritt 8: Überwachen von Aktivitäten](get-started-monitor.md)
-* [Schritt 9: Weitere Informationen zu Knowledge Center](get-started-knowledge-center.md)
-* [Schritt 10: Hinzufügen eines Administrators](get-started-add-admin.md)
+* [Schritt 3: Analysieren mithilfe eines Data Explorer-Pools](get-started-analyze-data-explorer.md)
+* [Schritt 4: Analysieren mithilfe von Apache Spark](get-started-analyze-spark.md)
+* [Schritt 5: Analysieren mithilfe eines dedizierten SQL-Pools](get-started-analyze-sql-pool.md)
+* [Schritt 6: Analysieren von Daten in einem Speicherkonto](get-started-analyze-storage.md)
+* [Schritt 7: Orchestrieren mit Pipelines](get-started-pipelines.md)
+* [Schritt 8: Visualisieren von Daten mit Power BI](get-started-visualize-power-bi.md)
+* [Schritt 9: Überwachen von Aktivitäten](get-started-monitor.md)
+* [Schritt 10: Weitere Informationen zu Knowledge Center](get-started-knowledge-center.md)
+* [Schritt 11: Hinzufügen eines Administrators](get-started-add-admin.md)

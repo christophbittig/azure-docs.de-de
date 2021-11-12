@@ -9,14 +9,14 @@ ms.topic: tutorial
 author: cartacioS
 ms.author: sacartac
 ms.reviewer: nibaccam
-ms.date: 07/01/2021
+ms.date: 10/21/2021
 ms.custom: automl, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: e3664e9a42a502509e74c43643d47f18e153ff6e
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 6c080e89dab3193f373b0a1e194cb18661132bbd
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129429963"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131559616"
 ---
 # <a name="tutorial-train-a-classification-model-with-no-code-automl-in-the-azure-machine-learning-studio"></a>Tutorial: Trainieren eines Klassifizierungsmodells mit AutoML ohne Schreiben von Code in Azure Machine Learning Studio
 
@@ -127,8 +127,10 @@ Nach dem Laden und Konfigurieren Ihrer Daten können Sie Ihr Experiment einricht
 
     1. Wählen Sie **y** als Zielspalte aus, in der Sie Vorhersagen ausführen möchten. Diese Spalte gibt an, ob der Kunde eine Termineinlage bei der Bank gezeichnet hat.
     
-    1. Wählen Sie **+Create a new compute** (Neuen Compute erstellen) aus, und konfigurieren Sie Ihr Computeziel. Ein Computeziel ist eine lokale oder cloudbasierte Ressourcenumgebung, in der Ihr Trainingsskript ausgeführt oder Ihre Dienstbereitstellung gehostet wird. Für dieses Experiment verwenden wir eine cloudbasierte Computeumgebung. 
-        1. Füllen Sie das Formular für den **virtuellen Computer** aus, um Ihre Compute-Instanz einzurichten.
+    1. Wählen Sie **Computecluster** als Computetyp aus. 
+    
+    1.  Verwenden Sie **+Neu** zum Konfigurieren Ihres Computeziels. Ein Computeziel ist eine lokale oder cloudbasierte Ressourcenumgebung, in der Ihr Trainingsskript ausgeführt oder Ihre Dienstbereitstellung gehostet wird. Für dieses Experiment verwenden wir eine cloudbasierte Computeumgebung. 
+        1. Füllen Sie das Formular zum **Auswählen der VM** aus, um Ihre Compute-Instanz einzurichten.
 
             Feld | BESCHREIBUNG | Wert für das Tutorial
             ----|---|---

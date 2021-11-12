@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 07/16/2021
+ms.date: 10/25/2021
 ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5940205b9a1a17a6d6d51d96a6ab792ac744d3f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 1d783fcd44fac0c22b83023e1e50b24c209fed8c
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131051627"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131577181"
 ---
 # <a name="sign-in-logs-in-azure-active-directory"></a>Anmeldeprotokolle in Azure Active Directory
 
@@ -280,6 +280,7 @@ Wenn Sie auf der Seite **Benutzer** im Abschnitt **Aktivität** auf **Anmeldevor
 Die Registerkarte **Authentifizierungsdetails** im Anmeldebericht enthält die folgenden Informationen für jeden Authentifizierungsversuch:
 
 - Eine Liste der angewendeten Authentifizierungsrichtlinien (z. B. bedingter Zugriff, MFA pro Benutzer, Sicherheitsstandards)
+- Eine Liste der angewendeten Richtlinien für die Sitzungslebensdauer (z. B. Anmeldehäufigkeit, MFA-Speicherung, konfigurierbare Tokengültigkeitsdauer)
 - Die Abfolge der für die Anmeldung verwendeten Authentifizierungsmethoden
 - Ob der Authentifizierungsversuch erfolgreich war oder nicht
 - Ausführliche Informationen zu den Gründen, aus denen der Authentifizierungsversuch erfolgreich war oder nicht
@@ -287,6 +288,7 @@ Die Registerkarte **Authentifizierungsdetails** im Anmeldebericht enthält die f
 Mit diesen Informationen können Administratoren die Problembehandlung für jeden Schritt bei der Anmeldung eines Benutzers und Nachverfolgungen durchführen:
 
 - Umfang der durch mehrstufige Authentifizierung geschützten Anmeldungen 
+- Grund für die Authentifizierungsaufforderung basierend auf den Richtlinien für die Sitzungslebensdauer
 - Nutzungs- und Erfolgsraten für jede Authentifizierungsmethode 
 - Verwendung kennwortloser Authentifizierungsmethoden (z. B. kennwortlose Anmeldung per Telefon, FIDO2 und Windows Hello for Business) 
 - Wie häufig Authentifizierungsanforderungen durch Tokenansprüche erfüllt werden (wobei Benutzer nicht interaktiv zur Eingabe eines Kennworts, eines SMS-OTP usw. aufgefordert werden)

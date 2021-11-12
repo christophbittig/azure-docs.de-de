@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.subservice: confidential-computing
 ms.workload: infrastructure
 ms.topic: conceptual
-ms.date: 11/01/2021
+ms.date: 11/04/2021
 ms.author: JenCook
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 2e0a4496265e2399a6f8a1bbbff554c971067d24
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: f0d28b9f6e9894ec8a5506a428b8c15cadb2f716
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131021504"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131845492"
 ---
 # <a name="confidential-computing-deployment-models"></a>Confidential Computing-Bereitstellungsmodelle
 
@@ -64,7 +64,7 @@ Für VM-Administratoren oder andere Apps oder Dienste, die innerhalb der Grenzen
 
 Die AMD SEV-SNP-Technologie ermöglicht die Isolation der VM vom Hypervisor. Der hardwarebasierte Schutz der Speicherintegrität trägt dazu bei, schädliche Hypervisor-basierte Angriffe zu verhindern. Beim SEV-SNP-Modell werden der AMD Secure Processor und der virtuelle Computer als vertrauenswürdig angesehen. Andere Hardware- und Softwarekomponenten werden bei diesem Modell nicht als vertrauenswürdig eingestuft. Zu den nicht vertrauenswürdigen Komponenten gehören auch das BIOS und der Hypervisor auf dem Hostsystem.
 
-![Diagramm: AMD SEV-SNP-Architektur für VM mit vertrauenswürdigen und nicht vertrauenswürdigen Komponenten](media/confidential-computing-deployment-models/amd-sev-snp-vm.jpg)
+:::image type="content" source="media/confidential-computing-deployment-models/amd-sev-snp-vm.png" alt-text="Diagramm: AMD SEV-SNP-Architektur für VM mit vertrauenswürdigen und nicht vertrauenswürdigen Komponenten":::
 
 ### <a name="secure-enclaves-on-intel-sgx"></a>Secure Enclaves unter Intel SGX
 
@@ -72,7 +72,7 @@ Bei Verwendung von **Secure Enclaves unter Intel SGX** werden Speicherbereiche 
 
 Bei Intel SGX werden die verwendeten Daten per Anwendungsisolation geschützt. Indem bestimmter Code und bestimmte Daten vor Änderungen geschützt werden, können Entwickler ihre Anwendung in gehärtete Enclaves oder vertrauenswürdige Ausführungsmodule partitionieren, um die Anwendungssicherheit zu erhöhen. Entitäten außerhalb der Enclave können unabhängig von ihren Berechtigungsstufen keine Lese- und Schreibvorgänge für den Enclavespeicher durchführen. Der Hypervisor oder das Betriebssystem können diesen Zugriff über einfache Aufrufe auf Betriebssystemebene ebenfalls nicht erhalten. Um eine Enclavefunktion aufzurufen, müssen Sie für die Intel SGX-CPUs einen neuen Satz mit Anweisungen verwenden. Dieser Prozess umfasst mehrere Schutzüberprüfungen.
 
-![Diagramm: Intel SGX-Architektur mit Enclaves und Anzeige sicherer Informationen innerhalb der App-Enclave](media/confidential-computing-deployment-models/intel-sgx-enclave.jpg)
+:::image type="content" source="media/confidential-computing-deployment-models/intel-sgx-enclave.png" alt-text="Diagramm: Intel SGX-Architektur mit Enclaves und Anzeige sicherer Informationen innerhalb der App-Enclave":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

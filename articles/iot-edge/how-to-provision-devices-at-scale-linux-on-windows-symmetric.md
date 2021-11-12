@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 250a11c7f79bc4c19327523075b369b9dd85a3de
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 8b11313c7ff443226352558ffb172c3bbf59964b
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131506237"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131852121"
 ---
 # <a name="create-and-provision-iot-edge-for-linux-on-windows-devices-at-scale-using-symmetric-keys"></a>Erstellen und Bereitstellen von IoT Edge für Linux auf Windows-Geräten im großen Stil mithilfe von symmetrischen Schlüsseln 
 
@@ -81,7 +81,7 @@ Führen Sie für Windows Admin Center die folgenden Schritte aus:
 
 ---
 
-## <a name="verify-successful-configuration"></a>Überprüfen der erfolgreichen Konfiguration
+## <a name="verify-successful-installation"></a>Bestätigen einer erfolgreichen Installation
 
 Vergewissern Sie sich, dass IoT Edge für Linux unter Windows erfolgreich auf Ihrem IoT Edge-Gerät installiert und konfiguriert wurde.
 

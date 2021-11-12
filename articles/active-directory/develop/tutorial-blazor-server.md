@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.openlocfilehash: f7d62b6fa3523accbeba9a083c74330ff344e2ae
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 6cbfd1432945bdf45fc1461440b835783e0b2079
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124786368"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131456155"
 ---
 # <a name="tutorial-create-a-blazor-server-app-that-uses-the-microsoft-identity-platform-for-authentication"></a>Tutorial: Erstellen einer Blazor Server-App, die Microsoft Identity Platform für die Authentifizierung verwendet
 
@@ -44,7 +44,7 @@ Wählen Sie unter **Verwalten** die Optionen **Authentifizierung** > **Implizite
 
 Und weil die App eine geschützte API (in diesem Fall Microsoft Graph) aufruft, benötigt sie schließlich einen geheimen Clientschlüssel, um ihre Identität zu überprüfen, wenn sie ein Zugriffstoken zum Aufrufen dieser API anfordert.
 
-1. Wählen Sie in derselben App-Registrierung unter **Verwalten** die Option **Zertifikate und Geheimnisse** aus.
+1. Wählen Sie in derselben App-Registrierung unter **Verwalten** die Option **Zertifikate und Geheimnisse** und anschließend **Geheime Clientschlüssel** aus.
 2. Erstellen Sie einen **neuen geheimen Clientschlüssel**, der nie abläuft.
 3. Notieren Sie sich den **Wert** des geheimen Clientschlüssels, da Sie ihn im nächsten Schritt benötigen. Sie können nicht mehr darauf zugreifen, sobald Sie aus diesem Bereich navigieren. Sie können ihn jedoch bei Bedarf neu erstellen.
 

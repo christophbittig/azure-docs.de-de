@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 506aed16f1b8a6c631a759bb1367aef8242859ac
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: dec042c66ebed15a51d5c6c1f3ef6a3e3e2fb456
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "98734779"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131428024"
 ---
 # <a name="azure-synapse-analytics-workload-group-isolation"></a>Azure Synapse Analytics – Workloadisolation mit Arbeitsauslastungsgruppen
 
@@ -61,7 +61,7 @@ Durch Konfigurieren der Workloadkapselung wird implizit ein maximaler Grad an Pa
 
 ## <a name="resources-per-request-definition"></a>Definition von Ressourcen pro Anforderung
 
-Arbeitsauslastungsgruppen bieten mit den Parametern REQUEST_MIN_RESOURCE_GRANT_PERCENT und REQUEST_MAX_RESOURCE_GRANT_PERCENT in der Syntax [CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) einen Mechanismus zum Definieren der Mindest- und Höchstmenge an Ressourcen, die pro Anforderung zugewiesen werden.  Ressourcen sind in diesem Fall CPU und Arbeitsspeicher.  Durch Konfigurieren dieser Werte wird bestimmt, wie viele Ressourcen und welcher Grad an Parallelität auf dem System erreicht werden können.
+Arbeitsauslastungsgruppen bieten mit den Parametern REQUEST_MIN_RESOURCE_GRANT_PERCENT und REQUEST_MAX_RESOURCE_GRANT_PERCENT in der Syntax [CREATE WORKLOAD GROUP](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) einen Mechanismus zum Definieren der Mindest- und Höchstmenge an Ressourcen, die pro Anforderung zugewiesen werden.  Die Ressource ist in diesem Fall der Arbeitsspeicher. CPU-Ressourcen werden durch den CAP_PERCENTAGE_RESOURCE Wert der Arbeitsauslastungsgruppe begrenzt und nicht auf Ebene einzelner Anforderungen gesteuert. Durch Konfigurieren dieser Werte wird bestimmt, wie viele Ressourcen und welcher Grad an Parallelität auf dem System erreicht werden können.
 
 > [!NOTE]
 > REQUEST_MAX_RESOURCE_GRANT_PERCENT ist ein optionaler Parameter, der standardmäßig auf den gleichen Wert gesetzt wird, der für REQUEST_MIN_RESOURCE_GRANT_PERCENT angegeben ist.

@@ -1,5 +1,5 @@
 ---
-title: Datei einfügen
+title: include file
 description: Datei einfügen
 author: timlt
 ms.service: iot-develop
@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 11/02/2021
 ms.author: timlt
 ms.custom: include file
-ms.openlocfilehash: c837cf94fcd81eef39c565b6eef7e3fad584a06f
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 093a75b77be2c24de11e97fe7d1627623fb1e2f9
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131520112"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131861507"
 ---
 [![Code durchsuchen](../articles/iot-develop/media/common/browse-code.svg)](https://github.com/Azure/azure-iot-sdk-java/tree/main/device/iot-device-samples/pnp-device-sample)
 
@@ -52,7 +52,7 @@ Installieren Sie die folgende Software zum Ausführen dieser Schnellstartanleitu
 > [!NOTE]
 > Die Schritte in diesem Abschnitt basieren auf Linux Ubuntu-/Debian-Distributionen. (Raspberry Pi OS basiert auf Debian.) Wenn Sie eine andere Linux-Distribution verwenden, müssen Sie die Schritte entsprechend ändern.
 
-- OpenJDK (Open Java Development Kit) 8 oder höher. Sie können mit dem Befehl `java -version` die auf Ihrem System installierte Java-Version überprüfen. Sorgen Sie dafür, dass das JDK installiert wird, nicht nur die Java-Runtime (JRE).
+- OpenJDK (Open Java Development Kit) 8 oder höher. Sie können mit dem Befehl `java -version` die auf Ihrem System installierte Java-Version überprüfen. Stellen Sie sicher, dass das JDK und nicht nur die Java-Runtime (JRE) installiert ist.
 
     1. Geben Sie die folgenden Befehle ein, um das OpenJDK für Ihr System zu installieren:
 
@@ -63,14 +63,14 @@ Installieren Sie die folgende Software zum Ausführen dieser Schnellstartanleitu
         sudo apt install default-jdk
         ```
 
-        Alternativ können Sie eine Version des zu installierenden JDK angeben. Zum Beispiel:
+        Alternativ können Sie eine Version des zu installierenden JDK angeben. Beispiel:
 
         ```bash
         sudo apt update
         sudo apt install openjdk-8-jdk
         ```
 
-    1. Wenn auf Ihrem System mehrere Java-Versionen installiert sind, können Sie die Standardversionen (automatisch) von Java und den Java-Compiler mit den folgenden Befehlen konfigurieren.
+    1. Wenn auf Ihrem System mehrere Java-Versionen installiert sind, können Sie die Standardversionen (automatisch) von Java und dem Java-Compiler anhand der folgenden Befehle konfigurieren.
 
         ```bash
         update-java-alternatives --list          #list the Java versions installed
@@ -78,16 +78,16 @@ Installieren Sie die folgende Software zum Ausführen dieser Schnellstartanleitu
         sudo  update-alternatives --config javac #set the default Java compiler version
         ```
 
-    1. Legen Sie die Umgebungsvariable `JAVA_HOME` auf den Pfad Ihrer JDK-Installation fest. (Dies ist im Allgemeinen ein Unterverzeichnis mit Versionsangabe im Verzeichnis **/usr/lib/jvm.)**
+    1. Legen Sie die Umgebungsvariable `JAVA_HOME` auf den Pfad Ihrer JDK-Installation fest. (Dies ist im Allgemeinen ein Unterverzeichnis mit Versionsangabe im Verzeichnis **/usr/lib/jvm**.)
 
         ```bash
         export JAVA_HOME=$(readlink -f /usr/bin/java | sed "s:bin/java::")
         ```
 
         > [!IMPORTANT]
-        > Dieser Befehl legt die Variable `JAVA_HOME` in Ihrer aktuellen Shellumgebung fest. Wir empfehlen, den Befehl Ihrer Datei `~/.bashrc` oder `/etc/profile` hinzuzufügen, um ihn verfügbar zu machen, wenn Sie eine neue Shell öffnen.
+        > Dieser Befehl legt die Variable `JAVA_HOME` in Ihrer aktuellen Shellumgebung fest. Wir empfehlen, den Befehl Ihrer Datei `~/.bashrc` oder `/etc/profile` hinzuzufügen, damit er verfügbar ist, wenn Sie eine neue Shell öffnen.
 
-    1. Überprüfen Sie bei der installierten Version des Java-JDK (und der JRE), ob Ihre Java-Compilerversion mit der JDK-Version übereinstimmt und die Umgebungsvariable `JAVA_HOME` ordnungsgemäß festgelegt wurde.
+    1. Stellen Sie bei der installierten Version des Java-JDK (und der JRE) sicher, dass Ihre Java-Compilerversion mit der JDK-Version übereinstimmt und dass die Umgebungsvariable `JAVA_HOME` ordnungsgemäß festgelegt wurde.
 
         ```bash
         java -version
@@ -112,7 +112,7 @@ Installieren Sie die folgende Software zum Ausführen dieser Schnellstartanleitu
 
 [!INCLUDE [iot-hub-include-create-hub-iot-explorer](iot-hub-include-create-hub-iot-explorer.md)]
 
-## <a name="run-a-device"></a>Ausführen eines Geräts
+## <a name="run-the-device-sample"></a>Ausführen des Gerätebeispiels
 
 In diesem Abschnitt verwenden Sie das Java SDK zum Senden von Nachrichten von einem Gerät an Ihren IoT-Hub. Sie führen ein Beispiel aus, das einen Temperaturregler mit zwei Thermostatsensoren implementiert.
 

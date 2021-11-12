@@ -4,16 +4,16 @@ description: Erfahren Sie mehr über die Unterstützung von unveränderten Conta
 services: container-service
 author: agowdamsft
 ms.topic: article
-ms.date: 11/01/2011
+ms.date: 11/04/2021
 ms.author: amgowda
 ms.service: container-service
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: d7c94570a7b83fba70a8e95d17f5c6eb215740bb
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 69045817c081ebe4eccf6044829b074d23ecd83c
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131067501"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131853541"
 ---
 # <a name="confidential-containers-on-azure"></a>Vertrauliche Container auf Azure
 
@@ -23,7 +23,7 @@ Eine hardwarebasierte Trusted Execution Environment (TEE) bietet starke Zusicher
 
 Vertrauliche Container unterstützen benutzerdefinierte Anwendungen, die mit beliebigen Programmiersprachen entwickelt wurden. Sie können Docker-Container-Apps auch im Standard ausführen.
 
-![Diagramm der Grenze für den Schutz vertraulicher Container in Kubernetes.](./media/confidential-containers/sgx-confidential-container.jpg)
+:::image type="content" source="./media/confidential-containers/sgx-confidential-container.png" alt-text="Diagramm der Grenze für den Schutz vertraulicher Container in Kubernetes; kein Zugriff für Administratoren.":::
 
 ## <a name="enablers-with-intel-sgx-on-azure-kubernetes-serviceaks"></a>Enablers mit Intel SGX auf Azure Kubernetes Service (AKS)
 
@@ -31,7 +31,7 @@ Vertrauliche Container unterstützen benutzerdefinierte Anwendungen, die mit bel
 
 Azure Kubernetes Service (AKS) unterstützt vertrauliche Container vollständig. Sie können vorhandene Container vertraulich in AKS ausführen.
 
-![Diagramm der Konvertierung vertraulicher Container mit neuen Schritten zum Aktivieren von Intel SGX und AKS](./media/confidential-containers/confidential-containers-deploy-steps.jpg)
+:::image type="content" source="./media/confidential-containers/confidential-containers-deploy-steps.png" alt-text="Diagramm der Konvertierung vertraulicher Container mit neuen Schritten zum Aktivieren von Intel SGX und AKS.":::
 
 ## <a name="partner-enablers"></a>Grundvoraussetzungen für Partner
 
