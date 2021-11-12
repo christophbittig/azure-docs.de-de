@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/17/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 14f8cc665ef1d7335116a2e5b68ea3f58424063a
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 9d7740a1b5840674720bfc8e180b54334256e488
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129274442"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131441436"
 ---
 # <a name="optimize-costs-for-blob-storage-with-reserved-capacity"></a>Optimieren der Kosten für Blobspeicher mit reservierter Kapazität
 
@@ -114,7 +114,7 @@ Die Anzahl der möglichen Umtausche ist nach oben hin nicht begrenzt. Zudem ist 
 
 ### <a name="refund-a-reservation"></a>Rückerstatten einer Reservierung
 
-Sie können eine Azure Storage-Reservierung jederzeit stornieren. Bei der Stornierung erhalten Sie eine anteilige Rückerstattung basierend auf der Restlaufzeit der Reservierung abzüglich einer Gebühr für vorzeitige Kündigung in Höhe von 12 Prozent. Die maximale Erstattung pro Jahr beträgt 50.000 USD.
+Sie können eine Azure Storage-Reservierung jederzeit stornieren. Bei der Stornierung erhalten Sie eine anteilige Rückerstattung basierend auf der Restlaufzeit der Reservierung. Die maximale Erstattung pro Jahr beträgt 50.000 USD.
 
 Bei der Stornierung einer Reservierung wird die Reservierung sofort beendet und die verbleibenden Monate werden an Microsoft zurückgegeben. Der verbleibende anteilige Saldo wird in der ursprünglichen Kaufform erstattet, abzüglich der Gebühr.
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc, contperf-fy21q1
 ms.date: 09/01/2021
 ms.author: victorh
-ms.openlocfilehash: 7e7f05516dd380ec6d0c8f44f887981de77942a3
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: bd773dd1a865f50d441ca09760a9ee3130ed3898
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123439324"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130226317"
 ---
 # <a name="what-is-azure-firewall"></a>Was ist Azure Firewall?
 
@@ -69,6 +69,7 @@ Azure Firewall weist die folgenden bekannten Probleme auf:
 |DNAT wird bei aktivierter Tunnelerzwingung nicht unterstützt.|Mit aktivierter Tunnelerzwingung bereitgestellte Firewalls können aufgrund des asymmetrischen Routings keinen eingehenden Zugriff über das Internet unterstützen.|Dies ist systembedingt und auf das asymmetrische Routing zurückzuführen. Der Rückgabepfad für eingehende Verbindungen verläuft über die lokale Firewall, der noch nicht bekannt ist, dass die Verbindung hergestellt wurde.
 |Abhängig von Ihrer FTP-Serverkonfiguration kann ausgehendes passives FTP für Firewalls mit mehreren öffentlichen IP-Adressen unter Umständen nicht verwendet werden.|Durch passives FTP werden unterschiedliche Verbindungen für Steuerungs- und Datenkanäle hergestellt. Wenn eine Firewall mit mehreren öffentlichen IP-Adressen ausgehende Daten sendet, wird nach dem Zufallsprinzip eine der öffentlichen IP-Adressen als Quell-IP-Adresse ausgewählt. Abhängig von Ihrer FTP-Serverkonfiguration funktioniert FTP möglicherweise nicht, wenn für Daten- und Steuerungskanäle unterschiedliche Quell-IP-Adressen verwendet werden.|Eine explizite SNAT-Konfiguration ist geplant. In der Zwischenzeit können Sie den FTP-Server so konfigurieren, dass er Daten- und Steuerungskanäle von verschiedenen Quell-IP-Adressen akzeptiert (siehe ein [Beispiel für IIS](/iis/configuration/system.applicationhost/sites/sitedefaults/ftpserver/security/datachannelsecurity)). Erwägen Sie in einem solchen Fall alternativ die Verwendung einer einzelnen IP-Adresse.|
 |Abhängig von Ihrer FTP-Serverkonfiguration kann eingehendes passives FTP möglicherweise nicht verwendet werden. |Durch passives FTP werden unterschiedliche Verbindungen für Steuerungs- und Datenkanäle hergestellt. Eingehende Verbindungen an Azure Firewall werden per SNAT in eine der privaten Firewall-IP-Adressen übersetzt, um symmetrisches Routing sicherzustellen. Abhängig von Ihrer FTP-Serverkonfiguration funktioniert FTP möglicherweise nicht, wenn für Daten- und Steuerungskanäle unterschiedliche Quell-IP-Adressen verwendet werden.|Die Beibehaltung der ursprünglichen Quell-IP-Adresse wird zurzeit untersucht. In der Zwischenzeit können Sie den FTP-Server so konfigurieren, dass er Daten- und Steuerungskanäle von verschiedenen Quell-IP-Adressen akzeptiert.|
+|Aktives FTP funktioniert nicht, wenn der FTP-Client einen FTP-Server über das Internet erreichen muss.|Aktives FTP verwendet einen PORT-Befehl vom FTP-Client, der dem FTP-Server mitteilt, welche IP-Adresse und welcher Port für den Datenkanal verwendet werden soll. Dieser PORT-Befehl verwendet die private IP-Adresse des Clients, die nicht geändert werden kann. Clientseitiger Datenverkehr, der die Azure Firewall passiert, wird für die internetbasierte Kommunikation per NAT übersetzt, sodass der PORT-Befehl vom FTP-Server als ungültig angesehen wird.|Dies ist eine allgemeine Einschränkung von aktivem FTP bei Verwendung in Kombination mit einer clientseitigen Netzwerkadressenübersetzung (Network Address Translation, NAT).|
 |Für die Metrik „NetworkRuleHit“ fehlt eine Protokolldimension.|Die Metrik „ApplicationRuleHit“ ermöglicht protokollbasiertes Filtern, diese Funktion fehlt jedoch in der entsprechenden Metrik vom Typ „NetworkRuleHit“.|Es wird bereits nach einer Lösung gesucht.|
 |NAT-Regeln mit Ports zwischen 64000 und 65535 werden nicht unterstützt.|Azure Firewall lässt beliebige Ports im Bereich 1-65535 in Netzwerk- und Anwendungsregeln zu. NAT-Regeln unterstützen jedoch nur Ports im Bereich 1-63999.|Dies ist eine aktuelle Beschränkung.
 |Konfigurationsaktualisierungen können durchschnittlich fünf Minuten dauern.|Eine Aktualisierung der Azure Firewall-Konfiguration kann durchschnittlich zwischen drei und fünf Minuten dauern, und parallele Aktualisierungen werden nicht unterstützt.|Es wird bereits nach einer Lösung gesucht.|

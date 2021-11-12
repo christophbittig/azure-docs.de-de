@@ -2,14 +2,14 @@
 title: Unterstützungsmatrix für die Sicherung virtueller Azure-Computer
 description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und Einschränkungen bei der Sicherung virtueller Azure-Computer mit dem Azure Backup-Dienst.
 ms.topic: conceptual
-ms.date: 09/17/2021
+ms.date: 10/19/2021
 ms.custom: references_regions
-ms.openlocfilehash: 17cd2ca7d4b42e79d1b5012fa36e09a509fa28fe
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 50350c5fdb2904c0f562d79d1f9779d324da9108
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129090968"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131454996"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Unterstützungsmatrix für die Sicherung virtueller Azure-Computer
 
@@ -57,7 +57,7 @@ In der folgenden Tabelle sind die unterstützten Betriebssysteme für die Sicher
 
 **Szenario** | **Betriebssystemunterstützung**
 --- | ---
-Sicherung mit der Azure-VM-Agent-Erweiterung | – Windows 10 Client (nur 64 Bit) <br/><br/>- Windows Server 2019 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2016 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2012 R2 (Datacenter/Standard) <br/><br/> - Windows Server 2012 (Datacenter/Standard) <br/><br/> - Windows Server 2008 R2 (RTM und SP1 Standard)  <br/><br/> – Windows Server 2008 (nur 64 Bit)
+Sicherung mit der Azure-VM-Agent-Erweiterung | – Windows 10 Client (nur 64 Bit) <br/><br/>- Windows Server 2022 (Datacenter/Datacenter Core/Standard)   <br/><br/>- Windows Server 2019 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2016 (Datacenter/Datacenter Core/Standard) <br/><br/> - Windows Server 2012 R2 (Datacenter/Standard) <br/><br/> - Windows Server 2012 (Datacenter/Standard) <br/><br/> - Windows Server 2008 R2 (RTM und SP1 Standard)  <br/><br/> – Windows Server 2008 (nur 64 Bit)
 Sicherung mit dem MARS-Agent | [Unterstützte](backup-support-matrix-mars-agent.md#supported-operating-systems) Betriebssysteme
 Sicherung mit DPM/MABS | Unterstützte Betriebssysteme für die Sicherung mit [MABS](backup-mabs-protection-matrix.md) und [DPM](/system-center/dpm/dpm-protection-matrix)
 
@@ -174,7 +174,7 @@ Datenträgergröße | Die Größe einzelner Datenträger kann bis zu 32 TB und m
 Speichertyp | HDD Standard, SSD Standard, SSD Premium.
 Verwaltete Datenträger | Unterstützt.
 Verschlüsselte Datenträger | Unterstützt.<br/><br/> Virtuelle Azure-Computer mit aktiviertem Azure Disk Encryption können (mit oder ohne Azure AD-App) gesichert werden.<br/><br/> Verschlüsselte VMs können nicht auf Datei- oder Ordnerebene wiederhergestellt werden. Stattdessen muss die gesamte VM wiederhergestellt werden.<br/><br/> Sie können die Verschlüsselung auf virtuellen Computern aktivieren, die bereits durch Azure Backup geschützt werden.
-Datenträger mit aktivierter Schreibbeschleunigung | Derzeit werden virtuelle Azure-Computer mit Datenträgersicherung mit Schreibbeschleunigung in allen öffentlichen Azure-Regionen als Vorschauversion bereitgestellt. <br><br> (Das Kontingent ist überschritten, und bis zur allgemeinen Verfügbarkeit ist keine weitere Änderung der genehmigten Liste möglich.) <br><br> Momentaufnahmen enthalten keine Datenträgermomentaufnahmen mit Schreibbeschleunigung für nicht unterstützte Abonnements, da der Datenträger mit Schreibbeschleunigung ausgeschlossen wird. <br><br>**Wichtig** <br> Virtuelle Computer mit Datenträgern mit Schreibbeschleunigung benötigen eine Internetverbindung für eine erfolgreiche Sicherung (auch wenn diese Datenträger von der Sicherung ausgeschlossen sind).
+Datenträger mit aktivierter Schreibbeschleunigung | Derzeit werden virtuelle Azure-Computer mit Datenträgersicherung mit Schreibbeschleunigung in allen öffentlichen Azure-Regionen als Vorschauversion bereitgestellt. <br><br> Um Ihr Abonnement für WA Disk zu registrieren, schreiben Sie uns unter [askazurebackupteam@microsoft.com](mailto:askazurebackupteam@microsoft.com). <br><br> Momentaufnahmen enthalten keine Datenträgermomentaufnahmen mit Schreibbeschleunigung für nicht unterstützte Abonnements, da der Datenträger mit Schreibbeschleunigung ausgeschlossen wird. <br><br>**Wichtig** <br> Virtuelle Computer mit Datenträgern mit Schreibbeschleunigung benötigen eine Internetverbindung für eine erfolgreiche Sicherung (auch wenn diese Datenträger von der Sicherung ausgeschlossen sind).
 Sichern und Wiederherstellen von deduplizierten VMs/Datenträgern | Azure Backup unterstützt die Deduplizierung nicht. Weitere Informationen finden Sie in [diesem Artikel](./backup-support-matrix.md#disk-deduplication-support). <br/> <br/>  – Azure Backup dedupliziert nicht VM-übergreifend im Recovery Services-Tresor. <br/> <br/>  – Wenn es während der Wiederherstellung VMs im Deduplizierungsstatus gibt, können die Dateien nicht wiederhergestellt werden, da der Tresor das Format nicht verarbeiten kann. Allerdings können Sie die vollständige VM-Wiederherstellung erfolgreich ausführen.
 Hinzufügen eines Datenträgers zu geschütztem virtuellen Computer | Unterstützt.
 Ändern der Datenträgergröße auf geschütztem virtuellen Computer | Unterstützt.

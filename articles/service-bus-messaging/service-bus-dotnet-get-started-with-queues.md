@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.date: 10/11/2021
 ms.custom: contperf-fy22q2
-ms.openlocfilehash: 69c44e8fe4ff1eeb77ce2efc1cf9ac11158d82ee
-ms.sourcegitcommit: 54e7b2e036f4732276adcace73e6261b02f96343
+ms.openlocfilehash: 80a9701fb4d7ac3f93d7ba9c35cba2cc34dc7416
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129811335"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130258542"
 ---
 # <a name="get-started-with-azure-service-bus-queues-net"></a>Erste Schritte mit Azure Service Bus-Warteschlangen (.NET)
 Diese Schnellstartanleitung umfasst folgende Schritte:
@@ -450,7 +450,7 @@ In diesem Abschnitt fügen Sie Code hinzu, mit dem Nachrichten aus der Warteschl
 1. Sehen Sie sich erneut die Informationen im Portal an. Warten Sie einige Minuten, und aktualisieren Sie die Seite, wenn für **Aktive Nachrichten** nicht `0` angezeigt wird. 
 
     - Die Werte für **Anzahl aktiver Nachrichten** und **Aktuelle Größe** lauten jetzt **0**.
-    - Im unteren Abschnitt **Metriken** im Diagramm **Nachrichten** können Sie sehen, dass für die Warteschlange acht ein- und acht ausgehende Nachrichten vorhanden sind. 
+    - Im Diagramm **Nachrichten** im unteren Abschnitt **Metriken** können Sie sehen, dass für die Warteschlange drei eingehende und drei ausgehende Nachrichten vorhanden sind. 
     
         :::image type="content" source="./media/service-bus-dotnet-get-started-with-queues/queue-messages-size-final.png" alt-text="Aktive Nachrichten und Größe nach dem Empfang" lightbox="./media/service-bus-dotnet-get-started-with-queues/queue-messages-size-final.png":::
 

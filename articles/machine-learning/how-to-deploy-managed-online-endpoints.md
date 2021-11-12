@@ -11,12 +11,12 @@ author: rsethur
 ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: how-to, devplatv2, ignite-fall-2021
-ms.openlocfilehash: c535c31b41f1e95c7a7d49b3e7a310aeafcbe8bb
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: dba2e849fb28dfb0f6667b496c65bdef8cbdf046
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132058371"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131557545"
 ---
 # <a name="deploy-and-score-a-machine-learning-model-by-using-an-online-endpoint-preview"></a>Bereitstellen und Bewerten eines Machine Learning-Modells mit einem Onlineendpunkt (Vorschau)
 
@@ -64,7 +64,7 @@ Wählen Sie zum Festlegen Ihres Endpunktnamens je nach Betriebssystem einen der 
 
 Führen Sie für Unix den folgenden Befehl aus:
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-local-endpoint.sh" ID="set_endpoint_name":::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-local-endpoint.sh" ID="set_endpoint_name":::
 
 > [!NOTE]
 > Wir haben vor Kurzem die CLI-Schnittstelle geändert: Früher hatten wir sowohl `endpoint` als auch `deployment` unter `az ml endpoint`, jetzt haben wir sie in `az ml online-endpoint` und `az ml online-deployment` getrennt.  Dadurch wird die Verwendung von Endpunkten in CI/CD-Skripts vereinfacht.
@@ -76,7 +76,7 @@ Führen Sie für Unix den folgenden Befehl aus:
 
 Der folgende Codeausschnitt zeigt die Datei *endpoints/online/managed/sample/endpoint.yml:* 
 
-:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/managed/sample/endpoint.yml":::
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/online/managed/sample/endpoint.yml":::
 
 > [!NOTE]
 > Eine vollständige Beschreibung zu YAML finden Sie in der [YAML-Referenz zu verwalteten Onlineendpunkten (Vorschauversion)](reference-yaml-endpoint-managed-online.md).
@@ -99,7 +99,7 @@ Das Beispiel enthält alle Dateien, die zum Bereitstellen eines Modells auf eine
 
 Der folgende Codeausschnitt zeigt die Datei *endpoints/online/managed/sample/blue-deployment.yml* mit allen erforderlichen Eingaben: 
 
-:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/managed/sample/blue-deployment.yml":::
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/online/managed/sample/blue-deployment.yml":::
 
 In der Tabelle werden die Attribute von `deployment` beschrieben:
 
@@ -162,11 +162,11 @@ Um Zeit beim Debuggen zu sparen, *wird dringend empfohlen*, den Endpunkt lokal z
 
 Erstellen Sie zunächst den Endpunkt. Optional können Sie für einen lokalen Endpunkt diesen Schritt überspringen und die Bereitstellung (nächster Schritt) direkt erstellen, wodurch wiederum die erforderlichen Metadaten erstellt werden. Dies ist für Entwicklungs- und Testzwecke nützlich.
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-local-endpoint.sh" ID="create_endpoint":::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-local-endpoint.sh" ID="create_endpoint":::
 
 Erstellen Sie nun eine Bereitstellung mit dem Namen `blue` unter dem Endpunkt.
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-local-endpoint.sh" ID="create_deployment":::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-local-endpoint.sh" ID="create_deployment":::
 
 Das `--local`-Flag weist die CLI an, den Endpunkt in der Docker-Umgebung bereitzustellen.
 
@@ -177,7 +177,7 @@ Das `--local`-Flag weist die CLI an, den Endpunkt in der Docker-Umgebung bereitz
 
 Überprüfen Sie den Status, um festzustellen, ob das Modell ohne Fehler bereitgestellt wurde:
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-local-endpoint.sh" ID="get_status":::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-local-endpoint.sh" ID="get_status":::
 
 Die Ausgabe sollte in etwa dem folgenden JSON-Code entsprechen. Beachten Sie, dass der `provisioning_state``Succeeded` ist.
 
@@ -198,7 +198,7 @@ Die Ausgabe sollte in etwa dem folgenden JSON-Code entsprechen. Beachten Sie, da
 
 Rufen Sie den Endpunkt auf, um das Modell mithilfe des praktischen Befehls `invoke` und der Übergabe von in einer JSON-Datei gespeicherten Abfrageparametern zu bewerten:
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-local-endpoint.sh" ID="test_endpoint":::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-local-endpoint.sh" ID="test_endpoint":::
 
 Wenn Sie einen REST-Client (z. B. curl) verwenden möchten, müssen Sie über den Bewertungs-URI verfügen. Führen Sie `az ml online-endpoint show --local -n $ENDPOINT_NAME` aus, um den Bewertungs-URI abzurufen. Suchen Sie in den zurückgegebenen Daten das Attribut `scoring_uri`. Curl-basierte Beispielbefehle sind weiter später in diesem Dokument verfügbar.
 
@@ -206,7 +206,7 @@ Wenn Sie einen REST-Client (z. B. curl) verwenden möchten, müssen Sie über d
 
 In der *score.py*-Beispieldatei protokolliert die `run()`-Methode einige Ausgaben in der Konsole. Sie können diese Ausgabe mit dem Befehl `get-logs` erneut anzeigen:
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-local-endpoint.sh" ID="get_logs":::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-local-endpoint.sh" ID="get_logs":::
 
 ##  <a name="deploy-your-managed-online-endpoint-to-azure"></a>Bereitstellen Ihres verwalteten Onlineendpunkts in Azure
 
@@ -216,11 +216,11 @@ Stellen Sie als nächstes Ihren verwalteten Onlineendpunkt in Azure bereit.
 
 Führen Sie den folgenden Code aus, um den Endpunkt in der Cloud zu erstellen:
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint.sh" ID="create_endpoint" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint.sh" ID="create_endpoint" :::
 
 Führen Sie den folgenden Code aus, um die Bereitstellung mit dem Namen `blue` unter dem Endpunkt zu erstellen:
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint.sh" ID="create_deployment" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint.sh" ID="create_deployment" :::
 
 Diese Bereitstellung kann bis zu 15 Minuten dauern, je nachdem, ob die zugrunde liegende Umgebung bzw. das zugrunde liegende Image zum ersten Mal erstellt wird. Nachfolgende Bereitstellungen, die dieselbe Umgebung verwenden, werden schneller abgeschlossen.
 
@@ -236,7 +236,7 @@ Diese Bereitstellung kann bis zu 15 Minuten dauern, je nachdem, ob die zugrunde
 
 Der Befehl `show` enthält Informationen in `provisioning_status` zum Endpunkt und zur Bereitstellung:
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint.sh" ID="get_status" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint.sh" ID="get_status" :::
 
 Sie können alle Endpunkte im Arbeitsbereich in einem Tabellenformat mit dem Befehl `list` auflisten:
 
@@ -248,7 +248,7 @@ az ml online-endpoint list --output table
 
 Überprüfen Sie die Protokolle, um festzustellen, ob das Modell ohne Fehler bereitgestellt wurde:
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint.sh" ID="get_logs" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint.sh" ID="get_logs" :::
 
 Standardmäßig werden Protokolle per Pullvorgang vom Rückschlussserver abgerufen. Wenn Sie die Protokolle aus dem Speicherinitialisierer (der die Ressourcen wie Modell und Code in den Container einbindet) anzeigen möchten, fügen Sie das Flag `--container storage-initializer` hinzu.
 
@@ -256,15 +256,15 @@ Standardmäßig werden Protokolle per Pullvorgang vom Rückschlussserver abgeruf
 
 Sie können entweder den `invoke`-Befehl oder einen REST-Client Ihrer Wahl verwenden, um den Endpunkt aufzurufen und einige Daten zu bewerten: 
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint.sh" ID="test_endpoint" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint.sh" ID="test_endpoint" :::
 
 Das folgende Beispiel zeigt, wie Sie den Schlüssel für die Authentifizierung beim Endpunkt erhalten:
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint.sh" ID="test_endpoint_using_curl_get_key":::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint.sh" ID="test_endpoint_using_curl_get_key":::
 
 Verwenden Sie als Nächstes curl, um Daten zu bewerten.
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint.sh" ID="test_endpoint_using_curl" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint.sh" ID="test_endpoint_using_curl" :::
 
 Beachten Sie, dass wir die Befehle `show` und `get-credentials` verwenden, um die Anmeldeinformationen für die Authentifizierung zu erhalten. Beachten Sie zudem, dass wir das Flag `--query` verwenden, um die Attribute auf die erforderlichen Angaben zu beschränken. Weitere Informationen zu `--query` finden Sie unter [Abfragen der Azure CLI-Befehlsausgabe](/cli/azure/query-azure-cli).
 
@@ -293,7 +293,7 @@ Informationen zur Funktionsweise von `update`:
     
 1. Da Sie die Funktion `init()` geändert haben (`init()` wird ausgeführt, wenn der Endpunkt erstellt oder aktualisiert wird), befindet sich die Meldung `Updated successfully` in den Protokollen. Rufen Sie die Protokolle ab, indem Sie Folgendes ausführen:
 
-    :::code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint.sh" ID="get_logs" :::
+    :::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint.sh" ID="get_logs" :::
 
 Der Befehl `update` funktioniert auch mit lokalen Bereitstellungen. Verwenden Sie denselben `az ml online-deployment update`-Befehl mit dem Flag `--local`.
 
@@ -336,7 +336,7 @@ Die Verbindung mit den Protokollen kann bis zu einer Stunde dauern. Senden Sie n
 
 Wenn Sie die Bereitstellung nicht verwenden, sollten Sie sie durch Ausführen des folgenden Codes löschen (der Endpunkt und alle zugrunde liegenden Bereitstellungen werden gelöscht):
 
-::: code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint.sh" ID="delete_endpoint" :::
+::: code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint.sh" ID="delete_endpoint" :::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

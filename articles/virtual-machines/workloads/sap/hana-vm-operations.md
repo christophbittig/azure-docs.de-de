@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6507e2367005c1f400c68f46f2ea15705205e819
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 81b40887710645f4ee9164ab6c6c2da3bf60e0da
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130262981"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131466578"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>SAP HANA-Infrastrukturkonfigurationen und -Vorgänge in Azure
 Dieses Dokument enthält Anleitungen für die Konfiguration der Azure-Infrastruktur und SAP HANA-Betriebssystemen, die auf nativen virtuellen Azure-Computern bereitgestellt werden. Das Dokument enthält auch Informationen zur Konfiguration für die horizontale SAP HANA-Skalierung für die M128s-VM-SKU. Dieses Dokument ist nicht als Ersatz für die SAP-Standarddokumentation gedacht, zu der folgende Inhalte gehören:
@@ -67,7 +67,7 @@ Stellen Sie die virtuellen Computer in Azure bereit, indem Sie Folgendes verwend
 Sie können eine vollständig installierte SAP HANA-Plattform auch über die [SAP Cloudplattform](https://cal.sap.com/) auf den Azure Virtual Machine-Diensten bereitstellen. Der Installationsvorgang ist unter [Bereitstellen von SAP S/4HANA oder BW/4HANA in Azure](./cal-s4h.md) beschrieben. Alternativ können Sie die in [GitHub](https://github.com/AzureCAT-GSI/SAP-HANA-ARM) beschriebene automatisierte Installation nutzen.
 
 >[!IMPORTANT]
-> Um M208xx_v2-VMs verwenden zu können, müssen Sie Ihr Linux-Image sorgfältig aus dem Katalog mit Azure-VM-Images auswählen. Einzelheiten finden Sie im Artikel [Arbeitsspeicheroptimierte Größen virtueller Computer](../../mv2-series.md).
+> Um M208xx_v2-VMs verwenden zu können, müssen Sie Ihr Linux-Image sorgfältig auswählen. Weitere Informationen finden Sie unter [Arbeitsspeicheroptimierte VM-Größen](../../mv2-series.md).
 > 
 
 
@@ -143,7 +143,7 @@ Die grundlegende Konfiguration von einem VM-Knoten für die horizontale SAP HANA
 - Alle anderen Datenträgervolumes werden nicht für die unterschiedlichen Knoten freigegeben und basieren nicht auf NFS. Installationskonfigurationen und Schritte für HANA-Installationen mit horizontaler Skalierung mit nicht freigegebenen **/hana/data**- und **/hana/log**-Volumes finden Sie im weiteren Verlauf dieses Dokuments. Informationen zu für HANA zertifiziertem Speicher, der verwendet werden kann, finden Sie im Artikel [SAP HANA: Speicherkonfigurationen für virtuelle Azure-Computer](./hana-vm-operations-storage.md).
 
 
-Informationen zum Anpassen der Größe der Volumes oder Datenträger finden Sie im Dokument [SAP HANA: TDI-Speicheranforderungen](https://blogs.saphana.com/wp-content/uploads/2015/02/Storage-Whitepaper-2-54.pdf). Es enthält Angaben zur erforderlichen Größe abhängig von der Anzahl der Workerknoten. Das Dokument enthält eine Formel, die Sie anwenden müssen, um die erforderliche Kapazität des Volumes zu erhalten.
+Informationen zum Anpassen der Größe der Volumes oder Datenträger finden Sie im Dokument [SAP HANA: TDI-Speicheranforderungen](https://archive.sap.com/kmuuid2/70c8e423-c8aa-3210-3fae-e043f5c1ca92/SAP%20HANA%20TDI%20-%20Storage%20Requirements.pdf). Es enthält Angaben zur erforderlichen Größe abhängig von der Anzahl der Workerknoten. Das Dokument enthält eine Formel, die Sie anwenden müssen, um die erforderliche Kapazität des Volumes zu erhalten.
 
 Die anderen Designkriterien, die in der Grafik der Einzelknotenkonfiguration für eine SAP HANA-VM mit horizontaler Skalierung dargestellt werden, beziehen sich auf das VNET (besser gesagt: die Subnetzkonfiguration). SAP empfiehlt dringend eine Trennung des client-/anwendungsbezogenen Datenverkehrs von der Kommunikation zwischen den HANA-Knoten. Wie in der Grafik dargestellt, können Sie dafür zwei verschiedene VNICs an die VM anfügen. Beide NICs befinden sich in unterschiedlichen Subnetzen und haben zwei verschiedene IP-Adressen. Anschließend steuern Sie den Datenverkehr mit Routingregeln über NSGs oder benutzerdefinierte Routen.
 

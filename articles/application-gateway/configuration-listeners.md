@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/09/2020
 ms.author: surmb
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 0a88acaf29187c648b24f74877a260a8772f6008
-ms.sourcegitcommit: 52491b361b1cd51c4785c91e6f4acb2f3c76f0d5
+ms.openlocfilehash: e9468de9cbd88e9ad4406ac929aebc6bda938fb3
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/30/2021
-ms.locfileid: "108319681"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131447377"
 ---
 # <a name="application-gateway-listener-configuration"></a>Application Gateway-Listenerkonfiguration
 
@@ -54,7 +54,7 @@ Wählen Sie HTTP oder HTTPS aus:
 - Wählen Sie HTTPS aus, wenn Sie die [TLS-Beendigung](features.md#secure-sockets-layer-ssltls-termination) oder [End-to-End-TLS-Verschlüsselung](./ssl-overview.md) verwenden möchten. Der Datenverkehr zwischen dem Client und dem Application Gateway ist verschlüsselt. Außerdem wird die TLS-Verbindung am Application Gateway getrennt. Wenn Sie die End-to-End-TLS-Verschlüsselung wünschen, müssen Sie HTTPS auswählen und die Einstellung des **Back-End-HTTP** konfigurieren. Dadurch wird sichergestellt, dass der Datenverkehr auf dem Weg vom Application Gateway zum Back-End erneut verschlüsselt wird.
 
 
-Zum Konfigurieren der TLS-Beendigung und End-to-End-TLS-Verschlüsselung müssen Sie ein Zertifikat zum Listener hinzufügen, um Application Gateway das Ableiten eines symmetrischen Schlüssels zu ermöglichen. Dies wird durch die TLS-Protokollspezifikation vorgegeben. Der symmetrische Schlüssel wird zum Verschlüsseln und Entschlüsseln des an das Gateway gesendeten Datenverkehrs verwendet. Das Gatewayzertifikat muss im PFX-Format (Personal Information Exchange, privater Informationsaustausch) vorliegen. Mit diesem Format können Sie den privaten Schlüssel exportieren, den das Gateway zum Verschlüsseln und Entschlüsseln von Datenverkehr verwendet.
+Zum Konfigurieren der TLS-Terminierung muss dem Listener ein TLS/SSL-Zertifikat hinzugefügt werden. Dadurch kann der Application Gateway eingehenden Datenverkehr entschlüsseln und den Antwortdatenverkehr an den Client verschlüsseln. Das Zertifikat für den Application Gateway muss im PFX-Format (Personal Information Exchange) vorliegen, das sowohl die privaten als auch die öffentlichen Schlüssel enthält.
 
 ## <a name="supported-certificates"></a>Unterstützte Zertifikate
 

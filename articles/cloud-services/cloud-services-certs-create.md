@@ -8,12 +8,12 @@ author: hirenshah1
 ms.author: hirshah
 ms.reviewer: mimckitt
 ms.custom: ''
-ms.openlocfilehash: e2c5ecdd43d90fbfe6e6b792b1d0a6e990bb3736
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: e96d3219668475760556c209b3d7a4d59da1b275
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122824902"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131423354"
 ---
 # <a name="certificates-overview-for-azure-cloud-services-classic"></a>Übersicht über Zertifikate für Azure Cloud Services (klassisch)
 
@@ -48,6 +48,8 @@ Verwaltungszertifikate ermöglichen Ihnen die Authentifizierung mit dem klassisc
 
 ### <a name="limitations"></a>Einschränkungen
 Pro Abonnement sind maximal 100 Verwaltungszertifikate zulässig. Ebenso sind maximal 100 Verwaltungszertifikate für alle Abonnements unter der Benutzer-ID eines bestimmten Dienstadministrators zulässig. Wenn über die Benutzer-ID für den Kontoadministrator bereits 100 Verwaltungszertifikate hinzugefügt wurden und weitere Zertifikate benötigt werden, können Sie einen Co-Administrator festlegen, um die zusätzlichen Zertifikate hinzuzufügen. 
+
+Darüber hinaus können Verwaltungszertifikate nicht mit CSP-Abonnements verwendet werden, da CSP-Abonnements nur das Azure Resource Manager-Bereitstellungsmodell unterstützen und Verwaltungszertifikate das klassische Bereitstellungsmodell verwenden. Weitere Informationen zu Ihren Optionen für CSP-Abonnements finden Sie unter [Azure Resource Manager vs. klassisches Bereitstellungsmodell](/azure/azure-resource-manager/management/deployment-models) und [Authentifizierung mit dem Azure SDK für .NET verstehen](/dotnet/azure/sdk/authentication).
 
 <a name="create"></a>
 ## <a name="create-a-new-self-signed-certificate"></a>Erstellen eines neuen selbstsignierten Zertifikats

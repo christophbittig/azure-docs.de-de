@@ -7,15 +7,15 @@ ms.service: machine-learning
 ms.subservice: mlops
 ms.author: keli19
 author: likebupt
-ms.date: 02/05/2021
+ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: designer
-ms.openlocfilehash: 85562dd33031ae0f392efac6aed6d5e4ecc5c2e5
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: da37ffd719585c5f4d00d2cac1411ee3057a8472
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129428272"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131562141"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>Ausführen von Batchvorhersagen mit dem Azure Machine Learning-Designer
 
@@ -67,7 +67,7 @@ Um Vorhersagen für neue Daten zu erstellen, können Sie entweder manuell ein an
 
 In diesem Abschnitt erstellen Sie einen Datasetparameter, um ein anderes Dataset anzugeben, für das Vorhersagen gemacht werden sollen.
 
-1. Wählen Sie das Datasetmodul aus.
+1. Wählen Sie die Dataset-Komponente aus.
 
 1. Rechts neben der Canvas wird ein Bereich angezeigt. Wählen Sie am unteren Rand des Bereichs die Option **Als Pipelineparameter festlegen** aus.
    
@@ -153,13 +153,13 @@ Wenn Sie in Ihrer Trainingspipeline Änderungen vornehmen, müssen Sie die Train
 
 Beachten Sie, dass nur Modelle in der Rückschlusspipeline aktualisiert werden. Die Datentransformation wird dagegen nicht aktualisiert.
 
-Wenn Sie die aktualisierte Transformation in der Rückschlusspipeline verwenden möchten, müssen Sie die Transformationsausgabe des Transformationsmoduls als Dataset registrieren.
+Wenn Sie die aktualisierte Transformation in der Rückschlusspipeline verwenden möchten, müssen Sie die Transformationsausgabe der Transformationskomponente als Dataset registrieren.
 
 ![Screenshot: Registrieren des Transformationsdatasets](./media/how-to-run-batch-predictions-designer/register-transformation-dataset.png)
 
-Ersetzen Sie dann manuell das Modul **TD-** in der Rückschlusspipeline durch das registrierte Dataset.
+Ersetzen Sie anschließend die **TD-** -Komponente in der Rückschlusspipeline manuell durch das registrierte Dataset.
 
-![Screenshot: Ersetzen des Transformationsmoduls](./media/how-to-run-batch-predictions-designer/replace-td-module-batch-inference-pipeline.png)
+![Screenshot: Ersetzen der Transformationskomponente](./media/how-to-run-batch-predictions-designer/replace-td-module-batch-inference-pipeline.png)
 
 Anschließend können Sie die Rückschlusspipeline mit dem aktualisierten Modell und der aktualisierten Transformation übermitteln und veröffentlichen.
 

@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 93685e97c06bf16ee316fbd3d16f272e01103fd4
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 199fbe82cc1c3c88020bf9c2bc39d7df7380cc2f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130072725"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131459024"
 ---
 # <a name="azure-queue-storage-trigger-and-bindings-for-azure-functions-overview"></a>Azure Queue Storage-Trigger und -Bindungen für Azure Functions – Übersicht
 
@@ -36,23 +36,22 @@ Das Arbeiten mit Triggern und Bindungen erfordert, dass Sie auf das entsprechend
 
 #### <a name="storage-extension-5x-and-higher"></a>Storage-Erweiterung 5.x und höher
 
-Eine neue Version der Erweiterung Storage bindings ist in der Vorschau verfügbar. Sie führt die Möglichkeit ein, [sich mit einer Identität anstelle eines Geheimnisses](./functions-reference.md#configure-an-identity-based-connection) zu verbinden. Für .NET-Anwendungen werden auch die Typen geändert, mit denen eine Bindung erfolgen kann. Dabei werden die Typen aus `WindowsAzure.Storage` und `Microsoft.Azure.Storage` durch neuere Typen aus [Azure.Storage.Queues](/dotnet/api/azure.storage.queues) ersetzt.
+Eine neue Version der Erweiterung Storage bindings ist jetzt verfügbar. Sie führt die Möglichkeit ein, [sich mit einer Identität anstelle eines Geheimnisses](./functions-reference.md#configure-an-identity-based-connection) zu verbinden. Ein Tutorial zum Konfigurieren Ihrer Funktions-Apps mit verwalteten Identitäten finden Sie im [Tutorial zum Erstellen einer Funktions-App mit identitätsbasierten Verbindungen](./functions-identity-based-connections-tutorial.md). Für .NET-Anwendungen gilt auch, dass die neue Version der Erweiterung die Typen ändert, mit denen eine Bindung erfolgen kann. Dabei werden die Typen aus `WindowsAzure.Storage` und `Microsoft.Azure.Storage` durch neuere Typen aus [Azure.Storage.Queues](/dotnet/api/azure.storage.queues) ersetzt.
 
-Diese Erweiterungsversion ist als [Vorschau-NuGet-Paket] verfügbar oder kann aus dem Vorschaubündel für Erweiterungen v3 hinzugefügt werden, indem Sie Folgendes in Ihrer `host.json` Datei hinzufügen:
+Diese Erweiterungsversion ist nach der Installation des [NuGet-Pakets] Version 5.x verfügbar oder kann aus dem Erweiterungspaket v3 hinzugefügt werden, indem Sie Folgendes in Ihrer Datei `host.json` hinzufügen:
 
 ```json
 {
   "version": "2.0",
   "extensionBundle": {
-    "id": "Microsoft.Azure.Functions.ExtensionBundle.Preview",
-    "version": "[3.*, 4.0.0)"
+    "id": "Microsoft.Azure.Functions.ExtensionBundle",
+    "version": "[3.3.0, 4.0.0)"
   }
 }
 ```
 
 Weitere Informationen finden Sie unter [Aktualisierung Ihrer Erweiterungen].
 
-[Vorschau NuGet-Paket]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage/5.0.0-beta.5
 [core tools]: ./functions-run-local.md
 [Erweiterungspaket]: ./functions-bindings-register.md#extension-bundles
 [NuGet-Paket]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage

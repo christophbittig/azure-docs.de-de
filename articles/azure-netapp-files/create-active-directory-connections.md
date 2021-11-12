@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/09/2021
+ms.date: 11/02/2021
 ms.author: b-juche
-ms.openlocfilehash: ba34d9d1d85ae5845247133289001ffe58174213
-ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
+ms.openlocfilehash: e05850686fca42a8d21bc477e39171ff792db307
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129407644"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131473830"
 ---
 # <a name="create-and-manage-active-directory-connections-for-azure-netapp-files"></a>Erstellen und Verwalten von Active Directory-Verbindungen für Azure NetApp Files
 
@@ -92,6 +92,17 @@ Für einige Features von Azure NetApp Files ist eine Active Directory-Verbindun
     Die Konfiguration der [LDAP-Kanalbindung](https://support.microsoft.com/help/4034879/how-to-add-the-ldapenforcechannelbinding-registry-entry) hat allein keine Auswirkungen auf den Azure NetApp Files-Dienst. Wenn Sie jedoch sowohl die LDAP-Kanalbindung als auch sicheres LDAP verwenden (z. B. LDAPS oder `start_tls`), tritt bei der Erstellung des SMB-Volumes ein Fehler auf.
 
 * Für nicht in AD integriertes DNS sollten Sie einen A/PTR-DNS-Eintrag hinzufügen, um Azure NetApp Files die Funktion mit einem „Anzeigenamen“ zu ermöglichen. 
+
+* In der folgenden Tabelle wird die Gültigkeitsdauer (Time to Live, TTL) für den LDAP-Cache beschrieben. Sie müssen warten, bis der Cache aktualisiert wird, bevor Sie versuchen, über einen Client auf eine Datei oder ein Verzeichnis zuzugreifen. Andernfalls wird auf dem Client eine Meldung vom Typ „Zugriff oder Berechtigung verweigert“ angezeigt. 
+
+    |     Fehlerzustand    |     Lösung    |
+    |-|-|
+    | Cache |  Standardzeitlimit |
+    | Gruppenmitgliedschaftsliste  | 24 Stunden Gültigkeitsdauer  |
+    | Unix-Gruppen  | 24 Stunden Gültigkeitsdauer, 1 Minute negative Gültigkeitsdauer  |
+    | UNIX-Benutzer  | 24 Stunden Gültigkeitsdauer, 1 Minute negative Gültigkeitsdauer  |
+
+    Caches haben einen bestimmten Timeoutzeitraum namens *Gültigkeitsdauer*. Nach Ablauf des Timeouts werden Einträge als veraltet eingestuft, damit veraltete Einträge nicht gesperrt werden. Der *negative TTL* -Wert ist der Ort, an dem die Suche fehlgeschlagen ist, um Leistungsprobleme aufgrund von LDAP-Abfragen für Objekte zu vermeiden, die möglicherweise nicht vorhanden sind.“   
 
 ## <a name="decide-which-domain-services-to-use"></a>Festlegen der zu verwendenden Domänendienste 
 

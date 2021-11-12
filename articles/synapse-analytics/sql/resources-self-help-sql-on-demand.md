@@ -10,12 +10,12 @@ ms.date: 9/23/2021
 ms.author: stefanazaric
 ms.reviewer: jrasnick, wiassaf
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: c5057290f21a87a2a8c599de7d3fdd2c8b76ebb6
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 5f783ad0ee776d4f07e313595e54dc6661dd8661
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131046544"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131556766"
 ---
 # <a name="self-help-for-serverless-sql-pool"></a>Selbsthilfe für serverlose SQL-Pools
 
@@ -165,6 +165,12 @@ FROM
 
     AS [result]
 ```
+
+### <a name="cannot-bulk-load-because-the-file-could-not-be-opened"></a>Massenladen nicht möglich, weil die Datei nicht geöffnet werden konnte
+
+Dieser Fehler wird zurückgegeben, wenn eine Datei während der Abfrageausführung geändert wird. In der Regel erhalten Sie einen Fehler wie den folgenden: `Cannot bulk load because the file {file path} could not be opened. Operating system error code 12(The access code is invalid.).`
+
+Die serverlosen SQL-Pools können keine Dateien lesen, die während der Ausführung der Abfrage geändert werden. Die Abfrage kann keine Sperre für die Dateien erstellen. Wenn Sie wissen, dass der Änderungsvorgang **append** lautet, können Sie versuchen, die folgende Option `{"READ_OPTIONS":["ALLOW_INCONSISTENT_READS"]}` festzulegen. Weitere Informationen finden Sie unter [Abfragen von nur anfügbaren Dateien](query-single-csv-file.md#querying-appendable-files) oder [Erstellen von Tabellen für nur anfügbare Dateien](create-use-external-tables.md#external-table-on-appendable-files).
 
 ### <a name="query-fails-with-conversion-error"></a>Konvertierungsfehler bei Abfrage
 Eine Fehlermeldung der Art „Datenkonvertierungsfehler (Typkonflikte oder ungültiges Zeichen für die angegebene Codeseite) beim Massenladen für Zeile „n“, Spalte „m“ [Spaltenname] in der Datendatei [Dateipfad]“ für Ihre Abfrage bedeutet, dass Ihre Datentypen nicht zu den tatsächlichen Daten für die Zeilennummer „n“ und die Spalte „m“ gepasst haben. 
@@ -401,9 +407,28 @@ FROM
     AS [result]
 ```
 
+### <a name="waitiocompletion-call-failed"></a>Fehler bei Aufruf `WaitIOCompletion`
+
+Diese Meldung weist darauf hin, dass die Abfrage fehlgeschlagen ist, während auf den Abschluss des E/A-Vorgangs gewartet wurde, der Daten aus dem Remotespeicher (Azure Data Lake) liest. Stellen Sie sicher, dass sich Ihr Speicher in derselben Region befindet wie der serverlose SQL-Pool, und dass Sie keinen `archive access`-Speicher verwenden, der standardmäßig pausiert ist. Überprüfen Sie die Speichermetriken, und vergewissern Sie sich, dass keine anderen Workloads auf der Speicherebene (Hochladen neuer Dateien) vorhanden sind, die zu einer E/A-Anforderungsüberlastung führen könnten.
+
 ### <a name="incorrect-syntax-near-not"></a>Falsche Syntax in der Nähe von 'NOT'
 
-Dieser Fehler ist ein Hinweis darauf, dass einige externe Tabellen vorhanden sind, bei denen Spalten in der Spaltendefinition die Einschränkung `NOT NULL` enthalten. Aktualisieren Sie die Tabelle, um `NOT NULL` aus der Spaltendefinition zu entfernen.
+Dieser Fehler ist ein Hinweis darauf, dass einige externe Tabellen vorhanden sind, bei denen Spalten in der Spaltendefinition die Einschränkung `NOT NULL` enthalten. Aktualisieren Sie die Tabelle, um `NOT NULL` aus der Spaltendefinition zu entfernen. 
+
+### <a name="inserting-value-to-batch-for-column-type-datetime2-failed"></a>Fehler beim Einfügen eines Werts in den Batch für den Spaltentyp DATETIME2
+
+Der in der Parquet/Delta-Lake-Datei gespeicherte datetime-Wert kann nicht als `DATETIME2`-Spalte dargestellt werden. Untersuchen Sie den Mindestwert in der Datei mithilfe von Spark, und überprüfen Sie, ob Datumsangaben kleiner als 0001-01-03 vorhanden sind. Es könnte ein Unterschied von 2 Tagen zwischen dem julianischen Kalender, der zum Schreiben der Werte in Parquet (in einigen Spark-Versionen) verwendet wird, und dem proleptischen gregorianischen Kalender vorliegen, der im serverlosen SQL-Pool verwendet wird. Dies wiederum kann zu einer Konvertierung in einen ungültigen (negativen) Datumswert führen. 
+
+Versuchen Sie, diese Werte mithilfe von Spark zu aktualisieren. Das folgende Beispiel zeigt, wie die Werte in Delta Lake aktualisiert werden:
+
+```spark
+from delta.tables import *
+from pyspark.sql.functions import *
+
+deltaTable = DeltaTable.forPath(spark, 
+             "abfss://my-container@myaccount.dfs.core.windows.net/delta-lake-data-set")
+deltaTable.update(col("MyDateTimeColumn") < '0001-02-02', { "MyDateTimeColumn": null } )
+```
 
 ## <a name="configuration"></a>Konfiguration
 
@@ -471,7 +496,7 @@ In der folgenden Tabelle werden mögliche Fehler und entsprechende Problembehebu
 | Die Spalte `column name` des Typs `type name` ist mit dem externen Datentyp `type name` nicht kompatibel. | Der in der `WITH`-Klausel angegebene Spaltentyp stimmt nicht mit dem Typ im Azure Cosmos DB-Container überein. Versuchen Sie, den Spaltentyp zu ändern, so wie im Abschnitt [Zuordnung von SQL-Typen zu Azure Cosmos DB](query-cosmos-db-analytical-store.md#azure-cosmos-db-to-sql-type-mappings) beschrieben, oder verwenden Sie den Typ `VARCHAR`. |
 | Die Spalte enthält `NULL`-Werte in allen Zellen. | Möglicherweise falscher Spaltenname oder Pfadausdruck in der `WITH`-Klausel. Der Spaltenname (oder der Pfadausdruck nach dem Spaltentyp) in der `WITH`-Klausel muss mit einem Eigenschaftsnamen in der Azure Cosmos DB-Sammlung übereinstimmen. Beim Vergleich *wird die Groß-/Kleinschreibung beachtet*. Beispielsweise sind `productCode` und `ProductCode` unterschiedliche Eigenschaften. |
 
-Auf der [Azure Synapse Analytics-Feedbackseite](https://feedback.azure.com/forums/307516-azure-synapse-analytics?category_id=387862) können Sie Vorschläge übermitteln und Probleme melden.
+Auf der [Azure Synapse Analytics-Feedbackseite](https://feedback.azure.com/d365community/forum/9b9ba8e4-0825-ec11-b6e6-000d3a4f07b8) können Sie Vorschläge übermitteln und Probleme melden.
 
 ### <a name="utf-8-collation-warning-is-returned-while-reading-cosmosdb-string-types"></a>Beim Lesen von CosmosDB-Zeichenfolgentypen wird eine UTF-8-Sortierungswarnung zurückgegeben.
 
@@ -517,7 +542,7 @@ Es gibt einige Einschränkungen und bekannte Probleme, die bei der Delta Lake-U
   - Geben Sie keine Platzhalter an, um das Partitionsschema zu beschreiben. Die Delta Lake-Partitionen werden von der Delta Lake-Abfrage automatisch identifiziert. 
 - Delta Lake-Tabellen, die in den Apache Spark-Pools erstellt wurden, sind im serverlosen SQL-Pool nicht automatisch verfügbar. Um solche Delta Lake-Tabellen mit T-SQL Sprache abzufragen, führen Sie die Anweisung [CREATE EXTERNAL TABLE](./create-use-external-tables.md#delta-lake-external-table) aus, und geben Sie als Format „Delta“ an.
 - Externe Tabellen unterstützen keine Partitionierung. Verwenden Sie [partitionierte Sichten](create-use-views.md#delta-lake-partitioned-views) im Delta Lake-Ordner, um die Partitionsentfernung zu nutzen. Weiter unten finden Sie bekannte Probleme und Problemumgehungen.
-- Serverlose SQL-Pools unterstützen keine Zeitreiseabfragen. Sie können auf der [Azure-Feedbackwebsite](https://feedback.azure.com/forums/307516-azure-synapse-analytics/suggestions/43656111-add-time-travel-feature-in-delta-lake) für dieses Feature abstimmen. Verwenden Sie Apache Spark-Pools in Azure Synapse Analytics, um [Verlaufsdaten zu lesen](../spark/apache-spark-delta-lake-overview.md?pivots=programming-language-python#read-older-versions-of-data-using-time-travel).
+- Serverlose SQL-Pools unterstützen keine Zeitreiseabfragen. Sie können auf der [Azure-Feedbackwebsite](https://feedback.azure.com/d365community/idea/8fa91755-0925-ec11-b6e6-000d3a4f07b8) für dieses Feature abstimmen. Verwenden Sie Apache Spark-Pools in Azure Synapse Analytics, um [Verlaufsdaten zu lesen](../spark/apache-spark-delta-lake-overview.md?pivots=programming-language-python#read-older-versions-of-data-using-time-travel).
 - Serverlose SQL-Pools unterstützen keine Aktualisierung von Delta Lake-Dateien. Sie können einen serverlosen SQL-Pool verwenden, um die neueste Version von Delta Lake abzufragen. Verwenden Sie Apache Spark-Pools in Azure Synapse Analytics, um [Delta Lake zu aktualisieren](../spark/apache-spark-delta-lake-overview.md?pivots=programming-language-python#update-table-data).
 - Serverlose SQL-Pools in Azure Synapse Analytics unterstützen keine Datasets mit dem [BLOOM-Filter](/azure/databricks/delta/optimizations/bloom-filters).
 - Delta Lake-Unterstützung ist in dedizierten SQL-Pools nicht verfügbar. Stellen Sie sicher, dass Sie serverlose Pools verwenden, um Delta Lake-Dateien abzufragen.
@@ -544,63 +569,9 @@ FORMAT='csv', FIELDQUOTE = '0x0b', FIELDTERMINATOR ='0x0b', ROWTERMINATOR = '0x0
 
 Wenn diese Abfrage zu einem Fehler führt, verfügt der Aufrufer nicht über die Berechtigung zum Lesen der zugrunde liegenden Speicherdateien. 
 
-Dies können Sie am einfachsten erreichen, indem Sie sich die Rolle „Mitwirkender an Storage-Blobdaten“ für das Speicherkonto zuweisen, für das Sie Abfragen ausführen möchten. 
+Am einfachsten ist es, wenn Sie sich selbst die Rolle `Storage Blob Data Contributor` für das Speicherkonto zuweisen, das Sie abfragen möchten. 
 - [Weitere Informationen finden Sie im vollständigen Leitfaden zur Azure Active Directory-Zugriffssteuerung für Speicher.](../../storage/blobs/assign-azure-role-data-access.md) 
 - Besuchen Sie [Steuern des Speicherkontozugriffs für einen serverlosen SQL-Pool in Azure Synapse Analytics](develop-storage-files-storage-access-control.md).
-
-### <a name="partitioning-column-returns-null-values"></a>Partitionierungsspalte gibt NULL-Werte zurück
-
-**Status**: Behoben.
-
-**Release**: August 2021
-
-### <a name="query-failed-because-of-a-topology-change-or-compute-container-failure"></a>Abfragefehler aufgrund einer Topologieänderung oder eines Computecontainerfehlers
-
-**Status**: Behoben.
-
-**Release**: August 2021
-
-### <a name="column-of-type-varchar-is-not-compatible-with-external-data-type-parquet-column-is-of-nested-type"></a>Die Spalte des Typs „VARCHAR“ ist mit dem externen Datentyp „Parquet-Spalte hat geschachtelten Typ“ nicht kompatibel
-
-Sie möchten Delta Lake-Dateien lesen, die einige Spalten vom Typ „Geschachtelt“ enthalten, ohne dass die WITH-Klausel angegeben ist (per automatischem Schemarückschluss).
-
-```sql
-SELECT TOP 10 *
-FROM OPENROWSET(
-    BULK 'https://sqlondemandstorage.blob.core.windows.net/delta-lake/data-set-with-complex-type/',
-    FORMAT = 'delta') as rows;
-```
-
-Der automatische Schemarückschluss funktioniert für geschachtelte Spalten in Delta Lake nicht. Stellen Sie sicher, dass die Abfrage überhaupt Ergebnisse zurückgibt, wenn Sie „FORMAT='parquet'“ angeben und ** an den Pfad anfügen.
-
-**Problemumgehung:** Verwenden Sie die `WITH`-Klausel, und weisen Sie den geschachtelten Spalten explizit den Typ `VARCHAR` zu. Beachten Sie, dass dies nicht funktioniert, wenn Ihr DataSet partitioniert ist. Dies liegt an einem anderen bekannten Problem, bei dem die `WITH` Klausel `NULL` für Partitionsspalten zurückgibt. Partitionierte DataSets mit komplexen Typspalten werden derzeit nicht unterstützt.
-
-### <a name="cannot-parse-field-type-in-json-object"></a>Das Feld „type“ im JSON-Objekt kann nicht analysiert werden.
-
-Sie möchten Delta Lake-Dateien lesen, die einige Spalten vom Typ „Geschachtelt“ enthalten, ohne dass die WITH-Klausel angegeben ist (per automatischem Schemarückschluss). 
-
-```sql
-SELECT TOP 10 *
-FROM OPENROWSET(
-    BULK 'https://sqlondemandstorage.blob.core.windows.net/delta-lake/data-set-with-complex-type/',
-    FORMAT = 'delta') as rows;
-```
-
-Der automatische Schemarückschluss funktioniert für geschachtelte Spalten in Delta Lake nicht. Stellen Sie sicher, dass die Abfrage überhaupt Ergebnisse zurückgibt, wenn Sie „FORMAT='parquet'“ angeben und ** an den Pfad anfügen.
-
-**Problemumgehung:** Verwenden Sie die `WITH`-Klausel, und weisen Sie den geschachtelten Spalten explizit den Typ `VARCHAR` zu. Beachten Sie, dass dies nicht funktioniert, wenn Ihr DataSet partitioniert ist. Dies liegt an einem anderen bekannten Problem, bei dem die `WITH` Klausel `NULL` für Partitionsspalten zurückgibt. Partitionierte DataSets mit komplexen Typspalten werden derzeit nicht unterstützt.
-
-### <a name="cannot-find-value-of-partitioning-column-in-file"></a>Der Wert der Partitionierungsspalte kann in der Datei nicht gefunden werden 
-
-Delta Lake-Datasets können in den Partitionierungsspalten ggf. `NULL`-Werte enthalten. Diese Partitionen werden im Ordner `HIVE_DEFAULT_PARTITION` gespeichert. Dies wird im serverlosen SQL-Pool derzeit nicht unterstützt. In diesem Fall erhalten Sie einen Fehler der folgenden Art:
-
-```
-Resolving Delta logs on path 'https://....core.windows.net/.../' failed with error:
-Cannot find value of partitioning column '<column name>' in file 
-'https://......core.windows.net/...../<column name>=__HIVE_DEFAULT_PARTITION__/part-00042-2c0d5c0e-8e89-4ab8-b514-207dcfd6fe13.c000.snappy.parquet'.
-```
-
-**Problemumgehung:** Versuchen Sie, Ihr Delta Lake-Dataset mit Apache Spark-Pools zu aktualisieren, und verwenden Sie einen Wert (leere Zeichenfolge oder `"null"`) anstelle von `null` in der Partitionierungsspalte.
 
 ### <a name="json-text-is-not-properly-formatted"></a>JSON-Text ist nicht korrekt formatiert.
 
@@ -608,43 +579,51 @@ Dieser Fehler gibt an, dass der serverlose SQL-Pool das Delta Lake-Transaktionsp
 
 ```
 Msg 13609, Level 16, State 4, Line 1
-JSON text is not properly formatted. Unexpected character '{' is found at position 263934.
+JSON text is not properly formatted. Unexpected character '' is found at position 263934.
 Msg 16513, Level 16, State 0, Line 1
 Error reading external metadata.
 ```
-Stellen Sie zunächst sicher, dass Ihr Delta Lake-DataSet nicht beschädigt ist.
-- Überprüfen Sie, ob Sie den Inhalt des Delta Lake-Ordners mit dem Apache Spark-Pool in Azure Synapse oder dem Databricks-Cluster lesen können. Auf diese Weise stellen Sie sicher, dass die `_delta_log` Datei nicht beschädigt ist.
-- Stellen Sie sicher, dass Sie den Inhalt von Datendateien lesen können, indem Sie am Ende des URI-Pfads `FORMAT='PARQUET'` angeben und einen rekursiven Platzhalter `/**` verwenden. Wenn Sie alle Parquet-Dateien lesen können, liegt das Problem im `_delta_log` Transaktionsprotokollordner.
+Stellen Sie zunächst sicher, dass Ihr Delta Lake-Dataset nicht beschädigt ist. Überprüfen Sie, ob Sie den Inhalt des Delta Lake-Ordners unter Verwendung des Apache Spark-Pools in Azure Synapse lesen können. Auf diese Weise stellen Sie sicher, dass die `_delta_log` Datei nicht beschädigt ist.
 
-Einige häufige Fehler und Problemumgehungen:
+**Problemumgehung**: Versuchen Sie, mithilfe eines Apache Spark-Pools einen Prüfpunkt für das Delta Lake-Dataset zu erstellen, und führen Sie die Abfrage erneut aus. Der Prüfpunkt aggregiert transaktionale JSON-Protokolldateien und behebt das Problem möglicherweise.
 
-- `JSON text is not properly formatted. Unexpected character '.'` – Es ist möglich, dass die zugrunde liegenden Parquet-Dateien Datentypen enthalten, die in serverlosen SQL-Pools nicht unterstützt werden.
-
-**Problemumgehung**: Versuchen Sie, das WITH-Schema zu verwenden, das nicht unterstützte Typen ausschließt.
-
-- `JSON text is not properly formatted. Unexpected character '{'` – Es ist möglich, dass Sie eine `_UTF8`-Datenbanksortierung verwenden. 
-
-**Problemumgehung**: Versuchen Sie, eine Abfrage auf der `master`-Datenbank oder einer anderer Datenbank auszuführen, die nicht über eine UTF8-Sortierung verfügt. Wenn das Problem dadurch behoben wird, verwenden Sie eine Datenbank ohne `_UTF8` Sortierung. Geben Sie in der Spaltendefinition in der `WITH`-Klausel die `_UTF8`-Sortierung an.
-
-**Allgemeine Problemumgehung**: Versuchen Sie, mithilfe eines Apache Spark-Pools einen Prüfpunkt für das Delta Lake-Dataset zu erstellen, und führen Sie die Abfrage erneut aus. Der Prüfpunkt aggregiert transaktionale JSON-Protokolldateien und behebt das Problem möglicherweise.
-
-Wenn das Dataset gültig ist und die Problembehandlungen nicht helfen, melden Sie ein Supportticket, und stellen Sie dem Azure-Support eine Repro zur Verfügung:
+Wenn das Dataset gültig ist, [erstellen Sie ein Supportticket](../../azure-portal/supportability/how-to-create-azure-support-request.md#create-a-support-request), und geben Sie zusätzliche Informationen an:
 - Nehmen Sie keine Änderungen vor (wie z. B. das Hinzufügen/Entfernen der Spalten oder das Optimieren der Tabelle), da dies den Status der Delta Lake-Transaktionsprotokolldateien ändern kann.
 - Kopieren Sie den Inhalt des `_delta_log` Ordners in einen neuen leeren Ordner. Dateien **NICHT** kopieren`.parquet data`.
 - Versuchen Sie, den Inhalt zu lesen, den Sie in den neuen Ordner kopiert haben, und stellen Sie sicher, dass Sie den gleichen Fehler erhalten.
-- Jetzt können Sie den Delta Lake-Ordner mit dem Spark-Pool weiter verwenden. Sie stellen kopierte Daten an den Microsoft-Support zur Verfügung, wenn Sie die Berechtigung zur Freigabe haben.
 - Senden Sie den Inhalt der kopierten `_delta_log` Datei an Azure-Support.
 
-Das Azure-Team überprüft den Inhalt der `delta_log` Datei und stellt weitere Informationen zu möglichen Fehlern und Problemlösungen zur Verfügung.
+Jetzt können Sie den Delta Lake-Ordner mit dem Spark-Pool weiter verwenden. Sie stellen kopierte Daten an den Microsoft-Support zur Verfügung, wenn Sie die Berechtigung zur Freigabe haben. Das Azure-Team überprüft den Inhalt der `delta_log` Datei und stellt weitere Informationen zu möglichen Fehlern und Problemlösungen zur Verfügung.
+
+### <a name="partitioning-column-returns-null-values"></a>Partitionierungsspalte gibt NULL-Werte zurück
+
+**Status**: Behoben.
+
+**Release**: August 2021
+
+### <a name="column-of-type-varchar-is-not-compatible-with-external-data-type-parquet-column-is-of-nested-type"></a>Die Spalte des Typs „VARCHAR“ ist mit dem externen Datentyp „Parquet-Spalte hat geschachtelten Typ“ nicht kompatibel
+
+**Status**: Behoben.
+
+**Release**: Oktober 2021
+
+### <a name="cannot-parse-field-type-in-json-object"></a>Das Feld „type“ im JSON-Objekt kann nicht analysiert werden.
+
+**Status**: Behoben.
+
+**Release**: Oktober 2021
+
+### <a name="cannot-find-value-of-partitioning-column-in-file"></a>Der Wert der Partitionierungsspalte kann in der Datei nicht gefunden werden 
+
+**Status**: Behoben.
+
+**Release**: November 2021
 
 ### <a name="resolving-delta-log-on-path--failed-with-error-cannot-parse-json-object-from-log-file"></a>Fehler beim Auflösen der Deltaprotokolle im Pfad ...: Das JSON-Objekt aus der Protokolldatei kann nicht analysiert werden.
 
-Dieser Fehler kann aufgrund der folgenden Ursachen/nicht unterstützten Features auftreten:
-- [BLOOM-Filter](/azure/databricks/delta/optimizations/bloom-filters) im Delta Lake-Dataset. Serverlose SQL-Pools in Azure Synapse Analytics unterstützen keine Datasets mit dem [BLOOM-Filter](/azure/databricks/delta/optimizations/bloom-filters).
-- Spalte „float“ im Delta Lake-Dataset mit Statistiken.
-- An einer „float“-Spalte partitioniertes Dataset.
+**Status**: Behoben.
 
-**Problemumgehung**: [Entfernen Sie den BLOOM-Filter](/azure/databricks/delta/optimizations/bloom-filters#drop-a-bloom-filter-index), wenn Sie den Delta Lake-Ordner mithilfe des serverlosen SQL-Pools lesen möchten. Wenn Sie über `float`-Spalten verfügen, die das Problem verursachen, müssten Sie das Dataset neu partitionieren oder die Statistiken entfernen.
+**Release**: November 2021
 
 ## <a name="performance"></a>Leistung
 
@@ -690,7 +669,7 @@ Wenn Sie eine Rollenzuweisung für den Dienstprinzipalbezeichner/die AAD-App mit
 ```
 Login error: Login failed for user '<token-identified principal>'.
 ```
-Für Dienstprinzipale sollte die Anmeldung mit der Anwendungs-ID als SID (nicht mit der Objekt-ID) erstellt werden. Es gibt eine bekannte Einschränkung für Dienstprinzipals, die verhindert, dass der Azure Synapse-Dienst die Anwendungs-ID aus dem Azure AD Graph abruft, wenn er eine Rollenzuweisung für eine andere SPI/App erstellt.  
+Für Dienstprinzipale sollte die Anmeldung mit der Anwendungs-ID als SID (nicht mit der Objekt-ID) erstellt werden. Es gibt eine bekannte Einschränkung für Dienstprinzipale, die verhindert, dass der Azure Synapse-Dienst die Anwendungs-ID aus Microsoft Graph abruft, wenn eine Rollenzuweisung für eine weitere Dienstprinzipal-ID/App erstellt wird.  
 
 #### <a name="solution-1"></a>Lösung 1
 Navigieren Sie zum „Azure-Portal > Synapse Studio > Verwalten > Zugriffssteuerung“, und fügen Sie „Synapse-Administrator“ oder „Synapse SQL-Administrator“ für den gewünschten Dienstprinzipal manuell hinzu.

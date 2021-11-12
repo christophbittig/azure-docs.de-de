@@ -5,14 +5,14 @@ author: msjasteppe
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: quickstart
-ms.date: 10/19/2021
+ms.date: 11/10/2021
 ms.author: jasteppe
-ms.openlocfilehash: 4b4a91f8c8e1e5207973e621e87c17f9bbadb807
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: f4eaee6afb134513da55b7f39e2d1f6df6c547b7
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: MT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130259528"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132345328"
 ---
 # <a name="deploy-iot-connector-in-the-azure-portal"></a>Bereitstellen des IoT-Connectors im Azure-Portal
 
@@ -31,8 +31,7 @@ Es ist wichtig, dass Sie die folgenden Voraussetzungen erfüllt haben, bevor Sie
 * [In Azure Healthcare-APIs bereitgestellter Arbeitsbereich](../healthcare-apis-quickstart.md)  
 * [In Azure Healthcare-APIs bereitgestellter FHIR-Dienst](../fhir/fhir-portal-quickstart.md) 
 
-
-## <a name="deploy-iot-connector"></a>Bereitstellen des IoT-Connectors 
+## <a name="deploy-iot-connector"></a>Bereitstellen von IoT-Konnektor 
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an, und geben Sie dann den Ressourcennamen Ihres Arbeitsbereichs für die Gesundheits-APIs in das Feld **Suchleiste** ein.
  
@@ -64,7 +63,7 @@ Füllen Sie auf der Registerkarte **Grundlagen** die erforderlichen Felder unter
 
 3. Geben Sie die **Consumergruppe ein.**
 
-   Der Name der Consumergruppe befindet sich über die **Suchleiste,** um zu der Event Hubs Instanz zu wechseln, die Sie bereitgestellt haben, und indem Sie das Blatt  **Consumergruppen** auswählen.
+   Der Name der Consumergruppe befindet sich über die **Suchleiste,** um zu der bereitgestellten Event Hubs-Instanz zu wechseln, und indem Sie das Blatt  **Consumergruppen** auswählen.
 
    ![Screenshot: Name der Consumergruppe](media/consumer-group-name.png#lightbox)
 
@@ -144,14 +143,14 @@ Geben Sie auf der Registerkarte **Tags** die Tageigenschaften ein, die dem IoT-C
  
 1. Geben Sie einen **Namen** ein.
 2. Geben Sie einen **Wert** ein.
-3. Klicken Sie auf **Überprüfen + erstellen**.
+3. Klicken Sie auf **Überprüfen und erstellen**.
 
    Sie sollten eine **Erfolgreiche Überprüfungsmeldung** wie in der folgenden Abbildung sehen. 
 
    ![Screenshot: Meldung zum Erfolgreichen Überprüfen](media/iot-connector-validation-success.png#lightbox) 
 
    > [!NOTE]
-   > Wenn Ihr IoT-Connector die Überprüfung nicht überprüft hat, überprüfen Sie die Fehlermeldung zur Überprüfung, und beheben Sie das Problem. Es wird empfohlen, die Eigenschaften auf jeder IoT-Connectorregisterkarte zu überprüfen, die Sie konfiguriert haben.
+   > Wenn Ihr IoT-Connector die Überprüfung nicht überprüft hat, überprüfen Sie die Fehlermeldung zur Überprüfung, und beheben Sie das Problem. Es wird empfohlen, die Eigenschaften auf jeder Registerkarte des IoT-Connectors zu überprüfen, die Sie konfiguriert haben.
 
 4. Wählen Sie als Nächstes die Option **Erstellen**.
 
@@ -199,7 +198,7 @@ Um sicherzustellen, dass Ihr IoT-Connector ordnungsgemäß funktioniert, muss er
 
    ![Screenshot: Meldung zu hinzugefügter Rollenzuweisung](media/event-hub-added-role-assignment.png#lightbox)
 
-Weitere Informationen zum Erstellen des Zugriffs auf Event Hubs Ressourcen finden Sie unter [Autorisieren des Zugriffs mit Azure Active Directory](../../event-hubs/authorize-access-azure-active-directory.md).  
+Weitere Informationen zum Erstellen des Zugriffs auf Event Hubs-Ressourcen finden Sie unter [Autorisieren des Zugriffs mit Azure Active Directory](../../event-hubs/authorize-access-azure-active-directory.md).  
 
 ### <a name="accessing-the-iot-connector-from-the-fhir-service"></a>Zugreifen auf den IoT-Connector über den FHIR-Dienst
 
@@ -229,7 +228,7 @@ Weitere Informationen zum Erstellen des Zugriffs auf Event Hubs Ressourcen finde
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie gelernt, wie Sie einen IoT-Connector in der Azure-Portal. Eine Übersicht über den IoT-Connector finden Sie unter
+In diesem Artikel haben Sie erfahren, wie Sie einen IoT-Connector in der Azure-Portal. Eine Übersicht über den IoT-Connector finden Sie unter
 
 >[!div class="nextstepaction"]
 >[Übersicht über den IoT-Connector](iot-connector-overview.md)

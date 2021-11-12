@@ -4,15 +4,15 @@ description: Dieser Artikel enthält eine Übersicht über die Azure Automation
 keywords: Automation-Sicherheit, sicher Automation; Automation-Authentifizierung
 services: automation
 ms.subservice: process-automation
-ms.date: 08/02/2021
+ms.date: 10/26/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5a86a5c8c0922e0861411e93376047344ba6c5af
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 08f265d4e2af8fe985db3ceab78b535db2f73924
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124789102"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131470868"
 ---
 # <a name="azure-automation-account-authentication-overview"></a>Übersicht über die Azure Automation-Kontoauthentifizierung
 
@@ -22,7 +22,7 @@ In diesem Artikel werden von Azure Automation unterstützte Authentifizierungssz
 
 ## <a name="automation-account"></a>Automation-Konto
 
-Wenn Sie das erste Mal mit Azure Automation arbeiten, müssen Sie zunächst mindestens ein Automation-Konto erstellen. Mithilfe von Automation-Konten können Sie Ihre Automation-Ressourcen, Runbooks, Objekte und Konfigurationen von den Ressourcen anderer Konten isolieren. Sie können Automation-Konten dazu verwenden, Ressourcen in separate logische Umgebungen oder delegierte Verantwortlichkeiten zu trennen. Beispielsweise können Sie ein Konto für die Entwicklung, ein Konto für die Produktion und ein Konto für Ihre lokale Umgebung nutzen. Sie können auch ein Automation-Konto zum Verwalten von Betriebssystemupdates auf allen Computern mit [Updateverwaltung](update-management/overview.md) festlegen. 
+Wenn Sie das erste Mal mit Azure Automation arbeiten, müssen Sie zunächst mindestens ein Automation-Konto erstellen. Mithilfe von Automation-Konten können Sie Ihre Automation-Ressourcen, Runbooks, Objekte und Konfigurationen von den Ressourcen anderer Konten isolieren. Sie können Automation-Konten dazu verwenden, Ressourcen in separate logische Umgebungen oder delegierte Verantwortlichkeiten zu trennen. Beispielsweise können Sie ein Konto für die Entwicklung, ein Konto für die Produktion und ein Konto für Ihre lokale Umgebung nutzen. Sie können auch ein Automation-Konto zum Verwalten von Betriebssystemupdates auf allen Computern mit [Updateverwaltung](update-management/overview.md) festlegen.
 
 Ein Azure Automation-Konto unterscheidet sich von einem Microsoft-Konto, das unter Ihrem Azure-Abonnement erstellt wird. Eine Einführung in die Erstellung eines Automation-Kontos finden Sie unter [Erstellen eines Azure Automation-Kontos](./quickstarts/create-account-portal.md).
 
@@ -32,9 +32,11 @@ Die Automation-Ressourcen für jedes Automation-Konto sind zwar mit einer einzel
 
 Alle Aufgaben, die Sie für Ressourcen mit Azure Resource Manager und den PowerShell-Cmdlets in Azure Automation erstellen, müssen gegenüber Azure mit Azure Active Directory (Azure AD) basierend auf den Anmeldeinformationen für die Organisationsidentität authentifiziert werden.
 
-## <a name="managed-identities-preview"></a>Verwaltete Identitäten (Vorschau)
+## <a name="managed-identities"></a>Verwaltete Identitäten
 
 Durch eine verwaltete Entität aus Azure Active Directory (Azure AD) kann Ihr Runbook mühelos auf andere durch Azure AD geschützte Ressourcen zugreifen. Da die Identität von der Azure-Plattform verwaltet wird, müssen Sie keine Geheimnisse bereitstellen oder rotieren. Weitere Informationen zu verwalteten Identitäten in Azure AD finden Sie unter [Verwaltete Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md).
+
+Verwaltete Identitäten werden zur Authentifizierung in Ihren Runbooks empfohlen und als Standardauthentifizierungsmethode für Ihr Automation-Konto eingesetzt.
 
 Nachstehend sind einige Vorteile der Verwendung von verwalteten Identitäten beschrieben:
 
@@ -42,11 +44,9 @@ Nachstehend sind einige Vorteile der Verwendung von verwalteten Identitäten bes
 
 - Die Nutzung von verwalteten Identitäten verursacht keine zusätzlichen Kosten.
 
-- Sie müssen das vom ausführenden Automation-Konto verwendete Zertifikat nicht erneuern.
-
 - Sie müssen das Verbindungsobjekt „Ausführen als“ nicht in Ihrem Runbook-Code angeben. Sie können mithilfe der verwalteten Identität Ihres Automation-Kontos über ein Runbook auf Ressourcen zugreifen, ohne Zertifikate, Verbindungen, ausführende Konten usw. zu erstellen.
 
-Einem Automation-Konto können zwei Arten von Identitäten gewährt werden:
+Ein Automation-Konto kann sich mit zwei Arten von verwalteten Identitäten authentifizieren:
 
 - Eine systemseitig zugewiesene Identität ist an Ihre Anwendung gebunden und wird gelöscht, wenn Ihre App gelöscht wird. Eine App kann nur über eine systemseitig zugewiesene Identität verfügen.
 
@@ -55,7 +55,7 @@ Einem Automation-Konto können zwei Arten von Identitäten gewährt werden:
 > [!NOTE]
 > Benutzerseitig zugewiesene Identitäten werden nur für Cloudaufträge unterstützt. Weitere Informationen zu den verschiedenen verwalteten Identitäten finden Sie unter [Verwalten von Identitätstypen](../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types).
 
-Weitere Informationen zur Verwendung verwalteter Identitäten finden Sie unter [Aktivieren der verwalteten Identität für Azure Automation (Vorschau)](enable-managed-identity-for-automation.md).
+Weitere Informationen zur Verwendung verwalteter Identitäten finden Sie unter [Aktivieren der verwalteten Identität für Azure Automation](enable-managed-identity-for-automation.md).
 
 ## <a name="run-as-accounts"></a>Ausführende Konten
 
@@ -66,6 +66,9 @@ Zum Erstellen oder Erneuern eines ausführenden Kontos sind Berechtigungen auf d
 - Abonnement,
 - Azure Active Directory (Azure AD) und
 - Automation-Konto
+
+> [!NOTE]
+> Das ausführende Konto wird nicht automatisch von Azure Automation erstellt. Es wurde durch die Nutzung verwalteter Identitäten ersetzt.
 
 ### <a name="subscription-permissions"></a>Abonnementberechtigungen
 
@@ -100,8 +103,10 @@ Weitere Informationen zum Resource Manager-Bereitstellungsmodell und zum klassis
 
 Wenn Sie ein Automation-Konto erstellen, wird standardmäßig gleichzeitig ein ausführendes Konto mit einem selbstsignierten Zertifikat erstellt. Wenn Sie sich entscheiden, es nicht zusammen mit dem Automation-Konto zu erstellen, können Sie es zu einem späteren Zeitpunkt separat erstellen. Ein klassisches ausführendes Azure-Konto ist optional und wird getrennt erstellt, wenn Sie klassische Ressourcen verwalten müssen.
 
-Wenn Sie anstelle des standardmäßigen selbstsignierten Zertifikats ein Zertifikat verwenden möchten, das von Ihrer Unternehmens- oder einer Drittanbieterzertifizierungsstelle ausgestellt wurde, können Sie das [PowerShell-Skript zum Erstellen eines ausführenden Kontos](create-run-as-account.md#powershell-script-to-create-a-run-as-account) für Ihr ausführendes Konto und für klassische ausführende Konten verwenden.
+> [!NOTE]
+> Das ausführende Konto wird nicht automatisch von Azure Automation erstellt. Es wurde durch die Nutzung verwalteter Identitäten ersetzt.
 
+Wenn Sie anstelle des standardmäßigen selbstsignierten Zertifikats ein Zertifikat verwenden möchten, das von Ihrer Unternehmens- oder einer Drittanbieterzertifizierungsstelle ausgestellt wurde, können Sie das [PowerShell-Skript zum Erstellen eines ausführenden Kontos](create-run-as-account.md#powershell-script-to-create-a-run-as-account) für Ihr ausführendes Konto und für klassische ausführende Konten verwenden.
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RWwtF3]
 

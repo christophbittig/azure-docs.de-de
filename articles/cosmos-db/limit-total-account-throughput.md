@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 11/04/2021
 ms.author: thweiss
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: b8812e0d61485a4fd5c7ceb7a2f57d47b90bfeca
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 1423d4444c7ec53e40f77d951acb58a63538cfbf
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131094854"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131557792"
 ---
 # <a name="limit-the-total-throughput-provisioned-on-your-azure-cosmos-db-account"></a>Begrenzen des gesamten für Ihr Azure Cosmos DB-Konto bereitgestellten Durchsatzes
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -39,6 +39,9 @@ Nachdem Sie eine Obergrenze für den Gesamtdurchsatz Ihres Kontos festgelegt hab
 
 > [!NOTE]
 > Bei Ressourcen, die im Autoskalierungsmodus konfiguriert sind, wird der maximale für die Ressource konfigurierte Durchsatz auf den Gesamtdurchsatz Ihres Kontos angerechnet.
+
+> [!IMPORTANT]
+> Sobald ein Grenzwert für den Gesamtdurchsatz für Ihr Konto aktiviert ist, müssen Sie beim Erstellen neuer Container einen expliziten Durchsatzwert übergeben. Derzeit erhalten Sie eine Fehlermeldung, wenn Sie versuchen, einen Container ohne expliziten Durchsatz zu erstellen.
 
 ## <a name="set-the-total-throughput-limit-from-the-azure-portal"></a>Festlegen der Obergrenze für den Gesamtdurchsatz im Azure-Portal
 
@@ -91,6 +94,12 @@ Beim Erstellen oder Aktualisieren Ihres Azure Cosmos DB-Kontos mit Azure Resour
 ```
 
 Legen Sie diese Eigenschaft auf `-1` fest, um die Obergrenze zu deaktivieren.
+
+## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
+
+#### <a name="are-there-situations-where-the-total-provisioned-throughput-can-exceed-the-limit"></a>Gibt es Situationen, in denen der gesamte bereitgestellte Durchsatz den Grenzwert überschreiten kann?
+
+Azure Cosmos DB erzwingt einen Mindestdurchsatz von 10 RU/s pro GB gespeicherter Daten. Wenn Sie Daten auf dem Mindestwert erfasst haben, erhöht sich der für Ihre Ressourcen bereitgestellte Durchsatz automatisch, um 10 RU/s pro GB zu verarbeiten. In diesem Fall und nur in diesem Fall kann der gesamte bereitgestellte Durchsatz den von Ihnen festgelegten Grenzwert überschreiten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

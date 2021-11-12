@@ -11,12 +11,12 @@ author: justinha
 manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1d146be642050c169dabf009352a34ad595fab84
-ms.sourcegitcommit: 02d443532c4d2e9e449025908a05fb9c84eba039
+ms.openlocfilehash: 853174bd96f0a88f8513df848aab7a3d34aceb28
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/06/2021
-ms.locfileid: "108746421"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131451842"
 ---
 # <a name="deployment-frequently-asked-questions-faqs-for-hybrid-fido2-security-keys-in-azure-ad"></a>Häufig gestellte Fragen (FAQs) zur Bereitstellung hybrider FIDO2-Sicherheitsschlüssel in Azure AD 
 
@@ -208,7 +208,7 @@ Wenn Sie über mehrere AD DS-Gesamtstrukturen verfügen, ist für jede Domäne 
 
 Verwenden Sie zum Anzeigen aller Objekte die PowerShell-Cmdlets für Azure AD Kerberos-Server aus der neuesten Version von Azure AD Connect.
 
-Weitere Informationen finden Sie unter [Erstellen eines Kerberos-Serverobjekts](howto-authentication-passwordless-security-key-on-premises.md#create-kerberos-server-object). Hier erfahren Sie auch wie Sie die Objekte anzeigen.
+Weitere Informationen finden Sie unter [Erstellen eines Kerberos-Serverobjekts](howto-authentication-passwordless-security-key-on-premises.md#create-a-kerberos-server-object). Hier erfahren Sie auch wie Sie die Objekte anzeigen.
 
 ### <a name="why-cant-we-have-the-public-key-registered-to-on-premises-ad-ds-so-there-is-no-dependency-on-the-internet"></a>Warum kann der öffentliche Schlüssel nicht bei der lokalen AD DS-Instanz registriert werden, um vom Internet unabhängig zu sein?
 
@@ -219,7 +219,7 @@ Wir haben Feedback zur Komplexität des Bereitstellungsmodells für Windows Hell
 Die Verschlüsselungsschlüssel vom Typ *krbtgt* des Azure AD Kerberos-Servers sollten genau wie bei anderen DCs regelmäßig rotiert werden. Dabei sollte der gleiche Zeitplan verwendet werden wie beim Rotieren aller anderen AD DS-Schlüssel vom Typ *krbtgt*.
 
 > [!NOTE]
-> Schlüssel vom Typ *krbtgt* können zwar auch mit anderen Tools rotiert werden, Sie müssen jedoch die [PowerShell-Cmdlets zum Rotieren der Schlüssel vom Typ *krbtgt*](howto-authentication-passwordless-security-key-on-premises.md#rotating-the-azure-ad-kerberos-server-key) Ihres Azure AD Kerberos-Servers verwenden. Dadurch wird sichergestellt, dass die Schlüssel sowohl in der lokalen AD DS-Umgebung als auch in Azure AD aktualisiert werden.
+> Schlüssel vom Typ *krbtgt* können zwar auch mit anderen Tools rotiert werden, Sie müssen jedoch die [PowerShell-Cmdlets zum Rotieren der Schlüssel vom Typ *krbtgt*](howto-authentication-passwordless-security-key-on-premises.md#rotate-the-azure-ad-kerberos-server-key) Ihres Azure AD Kerberos-Servers verwenden. Dadurch wird sichergestellt, dass die Schlüssel sowohl in der lokalen AD DS-Umgebung als auch in Azure AD aktualisiert werden.
 
 ### <a name="why-do-we-need-azure-ad-connect-does-it-write-any-info-back-to-ad-ds-from-azure-ad"></a>Warum ist Azure AD Connect erforderlich? Werden dadurch Informationen aus Azure AD in AD DS zurückgeschrieben?
 

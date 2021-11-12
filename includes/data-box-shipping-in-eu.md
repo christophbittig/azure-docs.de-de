@@ -3,21 +3,21 @@ author: v-dalc
 ms.service: databox
 ms.subservice: pod
 ms.topic: include
-ms.date: 10/22/2021
+ms.date: 10/29/2021
 ms.author: alkohli
-ms.openlocfilehash: 20476e26d9120b883fcc577d68f5e8455ee88988
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0ce47d9442f9b9bb7625b99e5544af158e1351ba
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131005575"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131449969"
 ---
 Wenn Sie das Gerät in Europa zurückgeben möchten, gehen Sie wie folgt vor:
 
 1. Vergewissern Sie sich, dass das Gerät ausgeschaltet ist und die Kabel entfernt wurden.
 2. Wickeln Sie das mit dem Gerät gelieferte Netzkabel auf, und befestigen Sie es sicher an der Rückseite des Geräts.
 3. Stellen Sie sicher, dass das Adressetikett auf dem Freihanddisplay angezeigt wird, und vereinbaren Sie einen Abholtermin mit Ihrem Kurierdienst. Falls das Adressetikett beschädigt oder nicht mehr vorhanden ist oder nicht in der E-Ink-Anzeige angezeigt wird, [wenden Sie sich an den Microsoft-Support](..\articles\databox\data-box-disk-contact-microsoft-support.md). Sofern dies vom Support empfohlen wird, können Sie im Azure-Portal zu **Übersicht > Versandetikett herunterladen** navigieren. Laden Sie das Versandetikett herunter, und bringen Sie es am Gerät an.
-1. **Beim Versand aus Deutschland oder der Schweiz** muss das Azure-Rechenzentrum vorab über alle Geräterückgaben informiert werden:
+1. **Bei Rücksendung an Azure-Rechenzentren in Deutschland oder der Schweiz** muss das Azure-Rechenzentrum vorab über alle Geräterückgaben informiert werden:
     1. Senden Sie eine E-Mail an das Azure Data Box Operations-Team unter [adbops@microsoft.com](mailto:adbops@microsoft.com), um eine Eingangs-ID zu erhalten. Senden Sie eine E-Mail an [adbops@microsoft.com](mailto:adbops@microsoft.com). Verwenden Sie hierfür die folgende Vorlage.
 
        ```
@@ -39,8 +39,6 @@ Wenn Sie das Gerät in Europa zurückgeben möchten, gehen Sie wie folgt vor:
     * Falls während der Planung einer Abholung Probleme auftreten oder wenn Sie aufgefordert werden, zusätzliche Gebühren zu bezahlen, wenden Sie sich an Azure Data Box Operations. Senden Sie eine E-Mail an [adbops@microsoft.com](mailto:adbops@microsoft.com).
 
     Wenn Sie keine Abholung planen können oder möchten, können Sie die Data Box auch an der nächstgelegenen Versandstelle abgeben.
-
-    <!--FOLLOW-UP: Move this to after the Include in data-box-deploy-picked-up. This has been done already in data-box-export-deploy-picked-up. - **If you're shipping from Germany or Switzerland,** you can also [use self-managed shipping](data-box-deploy-picked-up.md#self-managed-shipping).-->
 
 4. Nachdem die Data Box vom Kurierdienst abgeholt und eingescannt wurde, wird der Status der Bestellung im Portal in **Abgeholt** geändert. Außerdem wird eine Nachverfolgungs-ID angezeigt.
 

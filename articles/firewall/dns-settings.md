@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 09/28/2021
+ms.date: 11/08/2021
 ms.author: victorh
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e3c1da0e21f13357c5c537da2530e012101423dd
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: 44a9da990b1f44f151ab6492cbca65d1b445ae65
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129215698"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132059543"
 ---
 # <a name="azure-firewall-dns-settings"></a>DNS-Einstellungen für Azure Firewall
 
@@ -75,9 +75,9 @@ Wenn Sie die FQDN-Filterung in Netzwerkregeln aktivieren und virtuelle Clientcom
 
 Wenn Azure Firewall ein DNS-Proxy ist, können zwei Arten von Zwischenspeicherungsfunktionen auftreten:
 
-- **Positiver Cache**: Die DNS-Auflösung ist erfolgreich. Die Firewall verwendet den TTL-Wert (Time-To-Live) des Pakets oder Objekts. 
+- **Positiver Cache**: Die DNS-Auflösung ist erfolgreich. Die Antworten werden von der Firewall gemäß der TTL (Gültigkeitsdauer) maximal 1 Stunde lang in der Antwort zwischengespeichert. 
 
-- **Negativer Cache**: Die DNS-Auflösung führt zu keiner Antwort oder keiner Auflösung. Die Firewall speichert diese Information eine Stunde lang zwischen.
+- **Negativer Cache**: Die DNS-Auflösung führt zu keiner Antwort oder keiner Auflösung. Die Antworten werden von der Firewall gemäß der TTL maximal 30 Minuten lang in der Antwort zwischengespeichert.
 
 Der DNS-Proxy speichert alle aufgelösten IP-Adressen von FQDNs in Netzwerkregeln. Als Best Practice sollten Sie FQDNs verwenden, die in eine einzige IP-Adresse aufgelöst werden.
 

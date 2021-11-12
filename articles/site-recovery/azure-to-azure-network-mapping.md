@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/15/2019
 ms.author: harshacs
-ms.openlocfilehash: b7c4b0f75dd94a5aa61b75b99bbb553c98090aac
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: afc8bd93704008860882150b53e1624072871778
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339073"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131441805"
 ---
 # <a name="set-up-network-mapping-and-ip-addressing-for-vnets"></a>Einrichten der Netzwerkzuordnung und IP-Adressierung für VNETs
 
@@ -52,7 +52,7 @@ Wenn Sie die Netzwerkzuordnung nicht vorbereitet haben, bevor Sie die Notfallwie
 
 >[!NOTE]
 >* Das Ändern der Netzwerkzuordnung ändert nur die Standardwerte für neue VM-Replikationen. Der Vorgang wirkt sich nicht auf die Auswahl des virtuellen Zielnetzwerks für vorhandene Replikationen aus.
->* Wenn Sie das Zielnetzwerk für eine vorhandene Replikation ändern möchten, verwenden Sie die Einstellungen unter „Compute und Netzwerk“ für das replizierte Element.
+>* Wenn Sie das Zielnetzwerk für eine vorhandene Replikation ändern möchten, rufen Sie die **Netzwerk**-Einstellungen für das replizierte Element auf.
 
 ## <a name="specify-a-subnet"></a>Angeben eines Subnetzes
 
@@ -60,9 +60,9 @@ Das Subnetz der Ziel-VM wird basierend auf dem Namen des Subnetzes der Quell-VM 
 
 - Wenn im Zielnetzwerk ein Subnetz mit demselben Namen wie bei der Quell-VM verfügbar ist, wird dieses Subnetz für die Ziel-VM ausgewählt.
 - Wenn im Zielnetzwerk kein Subnetz mit demselben Namen vorhanden ist, wird das erste Subnetz in der alphabetischen Reihenfolge als Zielsubnetz ausgewählt.
-- Sie können das Zielsubnetz in den **Compute und Netzwerk**-Einstellungen für die VM ändern.
+- Sie können das Zielsubnetz in den **Netzwerk**-Einstellungen für die VM ändern.
 
-    ![Fenster „Eigenschaften für Compute und Netzwerk“](./media/site-recovery-network-mapping-azure-to-azure/modify-subnet.png)
+    ![Fenster „Netzwerkeigenschaften“](./media/site-recovery-network-mapping-azure-to-azure/modify-subnet.png)
 
 
 ## <a name="set-up-ip-addressing-for-target-vms"></a>Einrichten der IP-Adressierung für Ziel-VMs
@@ -72,6 +72,7 @@ Die IP-Adresse für die einzelnen Netzwerkkarten auf einem virtuellen Zielcomput
 - **DHCP**: Falls die Netzwerkkarte der Quell-VM DHCP verwendet, wird die Netzwerkkarte der Ziel-VM ebenfalls als DHCP festgelegt.
 - **Statische IP-Adresse**: Wenn die Netzwerkkarte der Quell-VM die statische IP-Adressierung verwendet, verwendet die Netzwerkkarte der Ziel-VM auch eine statische IP-Adresse.
 
+Dasselbe gilt auch für die sekundären IP-Konfigurationen.
 
 ## <a name="ip-address-assignment-during-failover"></a>IP-Adresszuweisung beim Failover
 
@@ -91,7 +92,7 @@ Das Zielnetzwerk ist nicht das Failover-VNET. | – Die Ziel-IP-Adresse ist stat
 
 - Das Failover-VNET ist das Zielnetzwerk, das Sie beim Einrichten der Notfallwiederherstellung auswählen.
 - Es wird empfohlen, immer ein Netzwerk für das Testfailover zu verwenden, das nicht für die Produktion bestimmt ist.
-- Sie können die Ziel-IP-Adresse in den Einstellungen unter **Compute und Netzwerk** der VM ändern.
+- Sie können die Ziel-IP-Adresse in den **Netzwerk**-Einstellungen der VM ändern.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

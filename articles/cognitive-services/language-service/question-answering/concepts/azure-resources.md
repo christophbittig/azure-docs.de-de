@@ -6,12 +6,12 @@ ms.subservice: language-service
 ms.topic: conceptual
 ms.date: 10/10/2021
 ms.custom: language-service-question-answering, ignite-fall-2021
-ms.openlocfilehash: 0ed037e44ff202ec1fd0cacfbbbcfb16ee9be273
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ddd5ed0c51c412342b6e8093a69cdef900346be2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095657"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131476678"
 ---
 # <a name="azure-resources-for-question-answering"></a>Azure-Ressourcen für Fragen und Antworten
 
@@ -67,9 +67,6 @@ Ihr Feature „Benutzerdefinierte Fragen und Antworten“ befasst sich mit zwei 
 
 Verwenden Sie diese Schlüssel, wenn Sie Anforderungen an den Dienst über APIs senden.
 
-> [!div class="mx-imgBorder"]
-> ![Screenshot: Verwaltete Vorschau der Schlüsselverwaltung](../../../qnamaker/media/qnamaker-how-to-key-management/custom-question-answering-key-management.png)
-
 |Name|Standort|Zweck|
 |--|--|--|
 |Erstellungs-/Abonnementschlüssel|[Azure portal](https://azure.microsoft.com/free/cognitive-services/)|Diese Schlüssel werden für den Zugriff auf die Sprachdienst-APIs verwendet. Mit diesen APIs können Sie die Fragen und Antworten in Ihrer Wissensdatenbank bearbeiten und Ihre Wissensdatenbank veröffentlichen. Diese Schlüssel werden erstellt, wenn Sie eine neue Ressource erstellen.<br><br>Sie finden diese Schlüssel in der Ressource **Cognitive Services** auf der Seite **Schlüssel und Endpunkt**.|
@@ -77,9 +74,9 @@ Verwenden Sie diese Schlüssel, wenn Sie Anforderungen an den Dienst über APIs 
 
 ### <a name="find-authoring-keys-in-the-azure-portal"></a>Suchen von Erstellungsschlüsseln im Azure-Portal
 
-Sie können Ihre Erstellungsschlüssel im Azure-Portal anzeigen und zurücksetzen, in dem Sie das benutzerdefinierte Fragen und Antworten-Feature (Vorschau) in der Textanalyse-Ressource hinzugefügt haben.
+Sie können Ihre Dokumenterstellungsschlüssel aus dem Azure-Portal anzeigen und zurücksetzen, wo Sie das benutzerdefinierte Feature „Fragen und Antworten“ in Ihrer Sprachressource hinzugefügt haben.
 
-1. Wechseln Sie im Azure-Portal zur Textanalyse-Ressource, und wählen Sie die Ressource mit dem *Cognitive Services*-Typ aus:
+1. Wechseln Sie im Azure-Portal zur Sprachressource, und wählen Sie die Ressource aus, die den Typ *Cognitive Services* hat:
 
     > [!div class="mx-imgBorder"]
     > ![Screenshot: Ressourcenliste für „Fragen und Antworten“](../../../qnamaker/media/qnamaker-how-to-setup-service/resources-created-question-answering.png)

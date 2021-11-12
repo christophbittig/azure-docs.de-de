@@ -9,12 +9,12 @@ ms.subservice: ip-services
 ms.topic: conceptual
 ms.date: 04/29/2021
 ms.author: allensu
-ms.openlocfilehash: 5f24b2478acc0b305595b70b579d744320f0da3a
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: a57c4ea8d058f0f565b6dbec7fdb74b07ea7564e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130261194"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471400"
 ---
 # <a name="public-ip-addresses"></a>Öffentliche IP-Adressen
 
@@ -106,7 +106,7 @@ Statische öffentliche IP-Adressen werden häufig in den folgenden Szenarien ver
 * Ihre Azure-Ressourcen kommunizieren mit anderen Apps oder Diensten, die ein auf IP-Adressen basierendes Sicherheitsmodell verwenden.
 * Sie verwenden TLS/SSL-Zertifikate, die mit einer IP-Adresse verknüpft sind.
 
-Öffentliche Basic-IPv4- und -IPv6-Adressen unterstützen eine **dynamische** Zuweisung.  Bei Auswahl von „Dynamisch“ wird die IP-Adresse **nicht** bei der Erstellung der Ressource zugewiesen.  Die IP-Adresse wird zugewiesen, wenn Sie der öffentlichen IP-Adresse eine Ressource zuordnen. Die IP-Adresse wird freigegeben, wenn Sie die Ressource beenden oder löschen.   Beispielsweise wird eine öffentliche IP-Adressressource von einer Ressource mit dem Namen **Ressource A** freigegeben. **Ressource A** erhält beim Starten eine andere IP-Adresse, wenn die öffentliche IP-Ressource neu zugewiesen wird. Jede zugeordnete IP-Adresse wird freigegeben, wenn die Zuordnungsmethode von **Statisch** in **Dynamisch** geändert wird. Legen Sie die Zuordnungsmethode auf **Statisch** fest, damit die IP-Adresse unverändert bleibt.
+Öffentliche Basic-IPv4- und -IPv6-Adressen unterstützen eine **dynamische** Zuweisung.  Bei Auswahl von „Dynamisch“ wird die IP-Adresse **nicht** bei der Erstellung der Ressource zugewiesen.  Die IP-Adresse wird zugewiesen, wenn Sie der öffentlichen IP-Adresse eine Ressource zuordnen. Die IP-Adresse wird freigegeben, wenn Sie die Ressource beenden oder löschen.   Beispielsweise wird eine öffentliche IP-Adressressource von einer Ressource mit dem Namen **Ressource A** freigegeben. **Ressource A** erhält beim Starten eine andere IP-Adresse, wenn die öffentliche IP-Ressource neu zugewiesen wird. Jede zugeordnete IP-Adresse wird freigegeben, wenn die Zuordnungsmethode von **Statisch** in **Dynamisch** geändert wird. Jede zugeordnete IP-Adresse bleibt unverändert, wenn die Zuordnungsmethode von **Dynamisch** in **Statisch** geändert wird. Legen Sie die Zuordnungsmethode auf **Statisch** fest, damit die IP-Adresse unverändert bleibt.
 
 > [!NOTE]
 > Azure ordnet öffentliche IP-Adressen aus einem Bereich zu, der für jede Region in jeder Azure-Cloud eindeutig ist. Sie können die Liste von Bereichen (Präfixen) für die [öffentliche Azure-Cloud](https://www.microsoft.com/download/details.aspx?id=56519), die [Azure US Government-Cloud](https://www.microsoft.com/download/details.aspx?id=57063) sowie für die Azure-Cloud in [China](https://www.microsoft.com/download/details.aspx?id=57062) und [Deutschland](https://www.microsoft.com/download/details.aspx?id=57064) herunterladen.

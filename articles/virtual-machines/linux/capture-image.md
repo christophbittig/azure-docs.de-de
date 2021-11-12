@@ -9,20 +9,20 @@ ms.date: 08/27/2021
 ms.author: cynthn
 ms.custom: legacy, devx-track-azurecli
 ms.collection: linux
-ms.openlocfilehash: 3645e36c89debc1e9bc032f4df5b7feaa7b6a720
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: 0aae67dbe347c8299e00d741163370d9097c8114
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123449763"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131432850"
 ---
 # <a name="how-to-create-a-managed-image-of-a-virtual-machine-or-vhd"></a>Erstellen eines verwalteten Images eines virtuellen Computers oder einer VHD
 
 **Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Flexible Skalierungsgruppen 
 
-Um mehrere Kopien eines virtuellen Computers (VM) für die Verwendung zum Entwickeln und Testen in Azure zu erstellen, erfassen Sie ein verwaltetes Image der VM oder der Betriebssystem-VHD. Informationen zum Erstellen, Speichern und Freigeben von Images in jeder Größenordnung finden Sie unter [Kataloge mit freigegebenen Images](../create-gallery.md).
+Um mehrere Kopien eines virtuellen Computers (VM) für die Verwendung zum Entwickeln und Testen in Azure zu erstellen, erfassen Sie ein verwaltetes Image der VM oder der Betriebssystem-VHD. Informationen zum Erstellen, Speichern und Freigeben von Images in jeder Größenordnung finden Sie unter [Azure Compute Galleries](../create-gallery.md).
 
-Ein verwaltetes Image unterstützt bis zu 20 Bereitstellungen gleichzeitig. Wenn Sie versuchen, mehr als 20 VMs gleichzeitig aus demselben verwalteten Image zu erstellen, kann dies aufgrund der Einschränkungen bei der Speicherleistung einer einzelnen VHD zu Timeouts bei der Bereitstellung führen. Wenn Sie mehr als 20 VMs gleichzeitig erstellen möchten, verwenden Sie ein Image für [Kataloge mit freigegebenen Images](../shared-image-galleries.md), das mit jeweils einem Replikat pro 20 gleichzeitige VM-Bereitstellungen konfiguriert wurde.
+Ein verwaltetes Image unterstützt bis zu 20 Bereitstellungen gleichzeitig. Wenn Sie versuchen, mehr als 20 VMs gleichzeitig aus demselben verwalteten Image zu erstellen, kann dies aufgrund der Einschränkungen bei der Speicherleistung einer einzelnen VHD zu Timeouts bei der Bereitstellung führen. Wenn Sie mehr als 20 virtuelle Computer gleichzeitig erstellen möchten, verwenden Sie ein Image für [Azure Compute Gallery](../shared-image-galleries.md) (früher Shared Image Gallery genannt), das mit jeweils 1 Replikat pro 20 gleichzeitiger Bereitstellungen an virtuellen Computern konfiguriert wurde.
 
 Wenn Sie ein verwaltetes Image erstellen möchten, müssen Sie persönliche Kontoinformationen entfernen. In den folgenden Schritten heben Sie die Bereitstellung eines vorhandenen virtuellen Computers auf, heben dessen Zuordnung auf und erstellen ein Image. Sie können dieses Image verwenden, um virtuelle Computer über jede Ressourcengruppe innerhalb Ihres Abonnements hinweg zu erstellen.
 
@@ -142,4 +142,4 @@ az vm show \
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Informationen zum Erstellen, Speichern und Freigeben von Images in jeder Größenordnung finden Sie unter [Kataloge mit freigegebenen Images](../create-gallery.md).
+Informationen zum Erstellen, Speichern und Freigeben von Images in jeder Größenordnung finden Sie unter [Azure Compute Galleries](../create-gallery.md).

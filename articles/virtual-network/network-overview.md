@@ -7,12 +7,12 @@ ms.service: virtual-network
 ms.topic: conceptual
 ms.date: 08/17/2021
 ms.author: allensu
-ms.openlocfilehash: 27c4340071e80cdcac806b80c28873e0955cd586
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: d8ca819e7a63c7a0c4d507709c8495b604d19002
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122444708"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130257668"
 ---
 # <a name="virtual-networks-and-virtual-machines-in-azure"></a>Virtuelle Netzwerke und virtuelle Computer in Azure
 
@@ -54,7 +54,7 @@ In dieser Tabelle sind die Methoden aufgeführt, die Sie zum Erstellen einer Net
 
 ## <a name="ip-addresses"></a>IP-Adressen
 
-Sie können diese Arten von [IP-Adressen](../virtual-network/public-ip-addresses.md) einer Netzwerkschnittstelle in Azure zuweisen:
+Sie können diese Arten von [IP-Adressen](./ip-services/public-ip-addresses.md) einer Netzwerkschnittstelle in Azure zuweisen:
 
 - **Öffentliche IP-Adressen**: werden für die eingehende und ausgehende Kommunikation (ohne Netzwerkadressübersetzung) mit dem Internet und anderen Azure-Ressourcen verwendet, die nicht mit einem virtuellen Netzwerk verbunden sind. Das Zuweisen einer öffentlichen IP-Adresse zu einer NIC ist optional. Für öffentliche IP-Adressen wird eine geringe Gebühr berechnet, und es kann nur eine bestimmte Anzahl dieser IP-Adressen pro Abonnement verwendet werden.
 - **Private IP-Adressen**: werden für die Kommunikation in einem virtuellen Netzwerk, Ihrem lokalen Netzwerk und dem Internet (mit Netzwerkadressübersetzung) verwendet. Einem virtuellen Computer muss mindestens eine private IP-Adresse zugewiesen werden. Weitere Informationen zu NAT in Azure finden Sie unter [Grundlegendes zu ausgehenden Verbindungen in Azure](../load-balancer/load-balancer-outbound-connections.md).
@@ -79,9 +79,9 @@ In dieser Tabelle sind die Methoden aufgeführt, die Sie zum Erstellen einer IP-
 
 | Methode | BESCHREIBUNG |
 | ------ | ----------- |
-| [Azure portal](../virtual-network/virtual-network-deploy-static-pip-arm-portal.md) | Öffentliche IP-Adressen sind standardmäßig dynamisch. Die IP-Adresse kann sich ändern, wenn die VM beendet oder gelöscht wird. Erstellen Sie eine statische öffentliche IP-Adresse, um sicherzustellen, dass für die VM immer die gleiche öffentliche IP-Adresse verwendet wird. Standardmäßig wird einer NIC beim Erstellen einer VM vom Portal eine dynamische private IP-Adresse zugewiesen. Sie können diese IP-Adresse in „Statisch“ ändern, nachdem die VM erstellt wurde.|
-| [Azure PowerShell](../virtual-network/virtual-network-deploy-static-pip-arm-ps.md) | Sie verwenden [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) mit dem Parameter **`-AllocationMethod`** mit dem Wert „Dynamic“ oder „Static“. |
-| [Azure-Befehlszeilenschnittstelle](../virtual-network/virtual-network-deploy-static-pip-arm-cli.md) | Sie verwenden [az network public-ip create](/cli/azure/network/public-ip) mit dem Parameter **`--allocation-method`** mit dem Wert „Dynamic“ oder „Static“. |
+| [Azure portal](./ip-services/virtual-network-deploy-static-pip-arm-portal.md) | Öffentliche IP-Adressen sind standardmäßig dynamisch. Die IP-Adresse kann sich ändern, wenn die VM beendet oder gelöscht wird. Erstellen Sie eine statische öffentliche IP-Adresse, um sicherzustellen, dass für die VM immer die gleiche öffentliche IP-Adresse verwendet wird. Standardmäßig wird einer NIC beim Erstellen einer VM vom Portal eine dynamische private IP-Adresse zugewiesen. Sie können diese IP-Adresse in „Statisch“ ändern, nachdem die VM erstellt wurde.|
+| [Azure PowerShell](./ip-services/virtual-network-deploy-static-pip-arm-ps.md) | Sie verwenden [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) mit dem Parameter **`-AllocationMethod`** mit dem Wert „Dynamic“ oder „Static“. |
+| [Azure-Befehlszeilenschnittstelle](./ip-services/virtual-network-deploy-static-pip-arm-cli.md) | Sie verwenden [az network public-ip create](/cli/azure/network/public-ip) mit dem Parameter **`--allocation-method`** mit dem Wert „Dynamic“ oder „Static“. |
 | [Vorlage](../virtual-network/template-samples.md) | Weitere Informationen zum Bereitstellen einer öffentlichen IP-Adresse mit einer Vorlage finden Sie unter [Netzwerkschnittstelle in einem virtuellen Netzwerk mit öffentlicher IP-Adresse](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.network/nic-publicip-dns-vnet). |
 
 Nach dem Erstellen einer öffentlichen IP-Adresse können Sie diese einer VM zuordnen, indem Sie sie einer NIC zuweisen.
@@ -158,7 +158,7 @@ Beim Erstellen eines Lastenausgleichs müssen Sie auch die folgenden Konfigurati
 
 In dieser Tabelle sind die Methoden aufgeführt, die Sie zum Erstellen eines Lastenausgleichs für den Internetzugriff verwenden können.
 
-| Methode | BESCHREIBUNG |
+| Methode | Beschreibung |
 | ------ | ----------- |
 | Azure-Portal |  Sie können [einen Lastausgleich für den Internetdatenverkehr an virtuelle Computer mit dem Azure-Portal vornehmen](../load-balancer/quickstart-load-balancer-standard-public-portal.md). |
 | [Azure PowerShell](../load-balancer/quickstart-load-balancer-standard-public-powershell.md) | Verwenden Sie zum Angeben des Bezeichners der zuvor erstellten öffentlichen IP-Adresse [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) mit dem Parameter **`-PublicIpAddress`** . Verwenden Sie [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig), um die Konfiguration des Back-End-Adresspools zu erstellen. Verwenden Sie [New-AzLoadBalancerInboundNatRuleConfig](/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig), um NAT-Regeln für den eingehenden Datenverkehr zu erstellen, die der von Ihnen erstellten Front-End-IP-Konfiguration zugeordnet sind. Verwenden Sie [New-AzLoadBalancerProbeConfig](/powershell/module/az.network/new-azloadbalancerprobeconfig), um die erforderlichen Tests zu erstellen. Verwenden Sie [New-AzLoadBalancerRuleConfig](/powershell/module/az.network/new-azloadbalancerruleconfig), um die Konfiguration für den Lastenausgleich zu erstellen. Verwenden Sie [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer), um den Lastenausgleich zu erstellen.|
@@ -167,16 +167,12 @@ In dieser Tabelle sind die Methoden aufgeführt, die Sie zum Erstellen eines Las
 
 In dieser Tabelle sind die Methoden aufgeführt, die Sie zum Erstellen eines internen Lastenausgleichs verwenden können.
 
-| Methode | BESCHREIBUNG |
+| Methode | Beschreibung |
 | ------ | ----------- |
 | Azure-Portal | Sie können die [interne Datenverkehrslast mithilfe eines Lastenausgleichsmoduls im Azure-Portal ausgleichen](../load-balancer/quickstart-load-balancer-standard-internal-portal.md). |
 | [Azure PowerShell](../load-balancer/quickstart-load-balancer-standard-internal-powershell.md) | Verwenden Sie zum Angeben einer privaten IP-Adresse im Netzwerksubnetz [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) mit dem Parameter **`-PrivateIpAddress`** . Verwenden Sie [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig), um die Konfiguration des Back-End-Adresspools zu erstellen. Verwenden Sie [New-AzLoadBalancerInboundNatRuleConfig](/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig), um NAT-Regeln für den eingehenden Datenverkehr zu erstellen, die der von Ihnen erstellten Front-End-IP-Konfiguration zugeordnet sind. Verwenden Sie [New-AzLoadBalancerProbeConfig](/powershell/module/az.network/new-azloadbalancerprobeconfig), um die erforderlichen Tests zu erstellen. Verwenden Sie [New-AzLoadBalancerRuleConfig](/powershell/module/az.network/new-azloadbalancerruleconfig), um die Konfiguration für den Lastenausgleich zu erstellen. Verwenden Sie [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer), um den Lastenausgleich zu erstellen.|
 | [Azure-Befehlszeilenschnittstelle](../load-balancer/quickstart-load-balancer-standard-internal-cli.md) | Verwenden Sie den Befehl [az network lb create](/cli/azure/network/lb), um die erste Konfiguration für den Lastenausgleich zu erstellen. Verwenden Sie zum Definieren der privaten IP-Adresse [az network lb frontend-ip create](/cli/azure/network/lb/frontend-ip) mit dem Parameter **`--private-ip-address`** . Verwenden Sie [az network lb address-pool create](/cli/azure/network/lb/address-pool), um die Konfiguration des Back-End-Adresspools hinzuzufügen. Verwenden Sie [az network lb inbound-nat-rule create](/cli/azure/network/lb/inbound-nat-rule), um NAT-Regeln hinzuzufügen. Verwenden Sie [az network lb rule create](/cli/azure/network/lb/rule), um die Lastenausgleichsregeln hinzuzufügen. Verwenden Sie [az network lb probe create](/cli/azure/network/lb/probe), um die Tests hinzuzufügen.|
 | [Vorlage](../load-balancer/quickstart-load-balancer-standard-internal-template.md) | Verwenden Sie [Create 2 Virtual Machines under an Internal Load balancer and configure Load Balancing rules for the VMs](https://github.com/Azure/azure-quickstart-templates/tree/master/quickstarts/microsoft.compute/2-vms-internal-load-balancer) (Erstellen von 2 VMs unter einem internen Lastenausgleich und Konfigurieren von Lastenausgleichsregeln für die VMs, in englischer Sprache) als Leitfaden zum Bereitstellen eines Lastenausgleichs mit einer Vorlage. |
-
-## <a name="virtual-machine-scale-sets"></a>VM-Skalierungsgruppen
-
-Weitere Informationen zu Lastenausgleich und VM-Skalierungsgruppen finden Sie unter [Netzwerk für Azure-VM-Skalierungsgruppen](../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md).
 
 ## <a name="virtual-machines"></a>Virtuelle Computer
 
@@ -203,6 +199,8 @@ Die ausgehende Konnektivität kann für jedes Subnetz mit NAT definiert werden. 
 NAT ist mit Ressourcen für öffentliche IP-Adressen und Präfixressourcen für öffentliche IP-Adressen der Standard-SKU kompatibel (bzw. einer Kombination dieser Ressourcen). Sie können das Präfix einer öffentlichen IP-Adresse direkt nutzen, oder die öffentlichen IP-Adressen des Präfixes auf mehrere NAT-Gatewayressourcen verteilen. Mit NAT wird der gesamte Datenverkehr auf den IP-Adressbereich des Präfixes bereinigt. Das Filtern von IP-Adressen Ihrer Bereitstellungen ist einfacher.
 
 Der gesamte ausgehende Datenverkehr für das Subnetz wird per NAT ohne Konfiguration durch den Kunden automatisch verarbeitet. Benutzerdefinierte Routen sind nicht erforderlich. NAT hat Vorrang vor anderen Ausgangsszenarien und ersetzt das Standard-Internetziel eines Subnetzes.
+
+Virtuelle Computer, die von VM-Skalierungsgruppen im Orchestrierungsmodus „Flexibel“ erstellt werden, haben keinen ausgehenden Standardzugriff. Virtual Network NAT ist die empfohlene Methode für den ausgehenden Zugriff für den flexiblen Orchestrierungsmodus von VM-Skalierungssätzen.
 
 Weitere Informationen über die NAT-Gatewayressource und Virtual Network NAT finden Sie unter [Was ist Azure Virtual Network NAT?](./nat-gateway/nat-overview.md).
 

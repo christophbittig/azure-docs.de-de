@@ -8,12 +8,12 @@ author: smannepalle
 ms.author: smannepalle
 ms.reviewer: sroy
 ms.date: 09/27/2021
-ms.openlocfilehash: 95d0ced24ee4f7426cac96ff2e550f2be88d8d02
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.openlocfilehash: 85352f2cb1b2a0fe042b36fbe795435250385f65
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129083358"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130246340"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>Dashboard „Aufträge“ in Analysen für den kommerziellen Marketplace
 
@@ -43,7 +43,7 @@ Im [Dashboard „Aufträge“](https://go.microsoft.com/fwlink/?linkid=2165914) 
 #### <a name="workspaces-view"></a>[Ansicht „Arbeitsbereiche“](#tab/workspaces-view)
 
 1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/home) an.
-1. Wählen Sie auf der Startseite die Kachel **Insights** aus.
+1. Wählen Sie auf der Homepage die Kachel **Insights** aus.
 
     [ ![Veranschaulichung der Kachel „Insights“ auf der Startseite in Partner Center](./media/workspaces/partner-center-insights-tile.png) ](./media/workspaces/partner-center-insights-tile.png#lightbox)
 
@@ -148,7 +148,7 @@ In der Tabelle „Auftragsdetails“ wird eine nummerierte Liste der 1.000 beste
 | MonthStartDate | Monatsstartdatum | Das Monatsstartdatum steht für den Monat des Kaufs. Das Format ist JJJJ-MM-TT. | MonthStartDate |
 | Angebotstyp | Angebotstyp | Der Typ des Angebots im kommerziellen Marketplace | OfferType |
 | Azure-Lizenztyp | Azure-Lizenztyp | Die Art der Lizenzvereinbarung, über die Kunden Azure erwerben. Wird auch als Kanal bezeichnet. Mögliche Werte sind:<ul><li>[Cloud Solution Provider](cloud-solution-providers.md)</li><li>Enterprise</li><li>Enterprise über Handelspartner</li><li>Nutzungsbasierte Bezahlung</li><li>GTM</li></ul> | AzureLicenseType |
-| Marketplace-Lizenztyp | Marketplace-Lizenztyp | Die Abrechnungsmethode für das Angebot im kommerziellen Marketplace. Die unterschiedlichen Werte sind:<ul><li>Abrechnung über Azure</li><li>BYOL (Bring Your Own License)</li><li>Kostenlos</li><li>Microsoft als Handelspartner</li></ul> | MarketplaceLicenseType |
+| Marketplace-Lizenztyp | Marketplace-Lizenztyp | Die Abrechnungsmethode für das Angebot im kommerziellen Marketplace. Die unterschiedlichen Werte sind:<ul><li>[Cloud Solution Provider](cloud-solution-providers.md) (CSP)</li><li>Enterprise (EA)</li><li>Enterprise über Handelspartner</li><li>Nutzungsbasierte Bezahlung</li><li>[Markteinführung](co-sell-overview.md) (GTM, Go to market)</li></ul> | MarketplaceLicenseType |
 | SKU | SKU | Der dem Angebot zugeordnete Plan | SKU |
 | Land des Kunden | Land/Region des Kunden | Der vom Kunden angegebene Name für das Land bzw. die Region. Das Land/die Region kann sich von dem im Azure-Abonnement eines Kunden angegebenen Land bzw. der angegebenen Region unterscheiden. | CustomerCountry |
 | Vorschau-SKU | Vorschau-SKU | Der Wert gibt an, ob Sie die SKU als „Vorschau“ gekennzeichnet haben. Der Wert ist „Ja“, wenn Sie die SKU entsprechend gekennzeichnet haben und nur von Ihnen autorisierte Azure-Abonnements dieses Image bereitstellen und nutzen können. Der Wert ist „Nein“, wenn die SKU nicht als „Vorschau“ definiert wurde. | IsPreviewSKU |

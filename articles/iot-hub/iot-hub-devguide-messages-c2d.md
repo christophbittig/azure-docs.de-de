@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.custom: mqtt, devx-track-azurecli
-ms.openlocfilehash: 3901f624f5df8770a235c6cd184aca4a3409c26b
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: f712f3f9928816e237504f504ec8ef28ec45d0e6
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129547131"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130263559"
 ---
 # <a name="send-cloud-to-device-messages-from-an-iot-hub"></a>Senden von C2D-Nachrichten von einem IoT-Hub
 
@@ -84,7 +84,7 @@ Wenn der **Ack**-Wert auf *Voll* festgelegt ist und Sie keine Feedbacknachricht 
 
 Wie im Abschnitt [Endpunkte](iot-hub-devguide-endpoints.md) erläutert, übermittelt der IoT-Hub Feedback in Form von Nachrichten über einen dienstseitigen Endpunkt (*/messages/servicebound/feedback*). Die Semantik für den Empfang von Feedback entspricht der Semantik für C2D-Nachrichten. Nachrichtenfeedback wird nach Möglichkeit in einer einzigen Nachricht zusammengefasst, die das folgende Format aufweist:
 
-| Eigenschaft     | BESCHREIBUNG |
+| Eigenschaft     | Beschreibung |
 | ------------ | ----------- |
 | EnqueuedTime | Ein Zeitstempel, der angibt, wann die Feedbacknachricht vom Hub empfangen wurde |
 | UserId       | `{iot hub name}` |
@@ -144,9 +144,9 @@ Jede IoT Hub-Instanz legt die folgenden Konfigurationsoptionen für das C2D-Mess
 
 Sie können die Konfigurationsoptionen auf eine der folgenden Weisen festlegen:
 
-* **Azure-Portal:** Wählen Sie für Ihren IoT-Hub unter **Einstellungen** die Option **Integrierte Endpunkte** aus, und erweitern Sie **Cloud-zu-Gerät-Nachrichten**. (Das Festlegen der Eigenschaften **feedback.maxDeliveryCount** und **feedback.lockDurationAsIso8601** im Azure-Portal wird derzeit nicht unterstützt.)
+* **Azure-Portal:** Wählen Sie für Ihren IoT-Hub unter **Hub-Einstellungen** die Option **Integrierte Endpunkte** aus, und gehen Sie zu **Cloud-zu-Gerät-Nachrichten**. (Das Festlegen der Eigenschaften **feedback.maxDeliveryCount** und **feedback.lockDurationAsIso8601** im Azure-Portal wird derzeit nicht unterstützt.)
 
-    ![Festlegen von Konfigurationsoptionen für Cloud-zu-Gerät-Nachrichten im Portal](./media/iot-hub-devguide-messages-c2d/c2d-configuration-portal.png)
+:::image type="content" source="./media/iot-hub-devguide-messages-c2d/c2d-configuration-portal.png" alt-text="Festlegen von Konfigurationsoptionen für Cloud-zu-Gerät-Nachrichten im Portal" border="true":::
 
 * **Azure CLI:** Verwenden Sie den Befehl [az iot hub update](/cli/azure/iot/hub#az_iot_hub_update):
 
