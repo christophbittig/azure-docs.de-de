@@ -10,12 +10,12 @@ author: mx-iao
 ms.author: minxia
 ms.date: 10/21/2021
 ms.reviewer: laobri
-ms.openlocfilehash: ff49606e2f1a3877b6949d9ec0ae8a125c533484
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: ecfd6d57d7f978e64bed0003253a05941effa910
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131557925"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132060962"
 ---
 # <a name="cli-v2-command-job-yaml-schema"></a>YAML-Schema für Befehlsaufträge der CLI (v2)
 
@@ -33,19 +33,19 @@ Das JSON-Quellschema finden Sie unter https://azuremlschemas.azureedge.net/lates
 | `display_name` | Zeichenfolge | Anzeigename des Auftrags auf der Studio-Benutzeroberfläche. Kann innerhalb des Arbeitsbereichs nicht eindeutig sein. Wenn kein Wert angegeben wird, generiert Azure ML automatisch einen für Menschen lesbaren Adjektiv-Nomen-Bezeichner für den Anzeigenamen. | | |
 | `experiment_name` | Zeichenfolge | Experimentname, unter dem der Auftrag organisiert werden soll. Die Ausführungsaufzeichnung jedes Auftrags wird in Studio unter dem entsprechenden Experiment auf der Registerkarte „Experimente“ organisiert. Ohne Angabe verwendet Azure ML standardmäßig den Namen des Arbeitsverzeichnisses verwendet, in dem der Auftrag erstellt wurde. | | |
 | `description` | Zeichenfolge | Beschreibung des Auftrags. | | |
-| `tags` | Objekt | Wörterbuch der Tags für den Auftrag. | | |
+| `tags` | Objekt (object) | Wörterbuch der Tags für den Auftrag. | | |
 | `command` | Zeichenfolge | **Erforderlich.** Den auszuführenden Befehl. | | |
 | `code.local_path` | Zeichenfolge | Lokaler Pfad zum Quellcodeverzeichnis, das hochgeladen und für den Auftrag verwendet werden soll. | | |
 | `environment` | Zeichenfolge oder Objekt | **Erforderlich.** Die Umgebung, die für den Auftrag verwendet werden soll. Dies kann entweder ein Verweis auf eine vorhandene Umgebung mit Versionsangabe im Arbeitsbereich oder eine Inlineumgebungsspezifikation sein. <br><br> Verwenden Sie die Syntax `azureml:<environment_name>:<environment_version>`, um auf eine vorhandene Umgebung zu verweisen. <br><br> Um eine Umgebung inline zu definieren, befolgen Sie das [Umgebungsschema](reference-yaml-environment.md#yaml-syntax). Schließen Sie die Eigenschaften `name` und `version` aus, da sie für Inlineumgebungen nicht unterstützt werden. | | |
-| `environment_variables` | Objekt | Wörterbuch der Name-Wert-Paare von Umgebungsvariablen, die für den Prozess festgelegt werden, in dem der Befehl ausgeführt wird. | | |
-| `distribution` | Objekt | Die Verteilungskonfiguration für verteilte Trainingsszenarien. Eine von [MpiConfiguration,](#mpiconfiguration)[PyTorchConfiguration](#pytorchconfiguration)oder [TensorFlowConfiguration](#tensorflowconfiguration). | | |
+| `environment_variables` | Objekt (object) | Wörterbuch der Name-Wert-Paare von Umgebungsvariablen, die für den Prozess festgelegt werden, in dem der Befehl ausgeführt wird. | | |
+| `distribution` | Objekt (object) | Die Verteilungskonfiguration für verteilte Trainingsszenarien. Eine von [MpiConfiguration,](#mpiconfiguration)[PyTorchConfiguration](#pytorchconfiguration)oder [TensorFlowConfiguration](#tensorflowconfiguration). | | |
 | `compute` | Zeichenfolge | Name des Computeziels, auf dem der Auftrag ausgeführt werden soll. Dies kann entweder ein Verweis auf ein vorhandenes Compute im Arbeitsbereich (mithilfe der Syntax `azureml:<compute_name>`) oder `local` zum Festlegen der lokalen Ausführung sein. | | `local` |
 | `resources.instance_count` | integer | Die Anzahl von Knoten, die für den Auftrag verwendet werden sollen. | | `1` |
 | `limits.timeout` | integer | Die maximale Zeit in Sekunden, die der Auftrag ausgeführt werden darf. Sobald dieser Grenzwert erreicht ist, bricht das System den Auftrag ab. | | |
-| `inputs` | Objekt | Wörterbuch der Eingaben für den Auftrag. Der Schlüssel ist ein Name für die Eingabe im Kontext des Auftrags, und der Wert ist der Eingabewert. <br><br> Eingaben können im `command` mit dem Ausdruck `${{ inputs.<input_name> }}` verwiesen werden. | | |
+| `inputs` | Objekt (object) | Wörterbuch der Eingaben für den Auftrag. Der Schlüssel ist ein Name für die Eingabe im Kontext des Auftrags, und der Wert ist der Eingabewert. <br><br> Eingaben können im `command` mit dem Ausdruck `${{ inputs.<input_name> }}` verwiesen werden. | | |
 | `inputs.<input_name>` | number, integer, boolean, string oder object | Einer eines Literalwerts (vom Typ number, integer, boolean oder string), [JobInputUri](#jobinputuri)oder [JobInputDataset.](#jobinputdataset) | | |
-| `outputs` | Objekt | Wörterbuch der Ausgabekonfigurationen des Auftrags. Der Schlüssel ist ein Name für die Ausgabe im Kontext des Auftrags, und der Wert ist die Ausgabekonfiguration. <br><br> Ausgaben können im `command` mit dem Ausdruck `${{ outputs.<output_name> }}` verwiesen werden. | |
-| `outputs.<output_name>` | Objekt | Sie können entweder einen optionalen `mode` angeben oder das Objekt leer lassen. Für jede im Wörterbuch (`outputs`) angegebene benannte Ausgabe generiert Azure ML automatisch einen Ausgabespeicherort. | |
+| `outputs` | Objekt (object) | Wörterbuch der Ausgabekonfigurationen des Auftrags. Der Schlüssel ist ein Name für die Ausgabe im Kontext des Auftrags, und der Wert ist die Ausgabekonfiguration. <br><br> Ausgaben können im `command` mit dem Ausdruck `${{ outputs.<output_name> }}` verwiesen werden. | |
+| `outputs.<output_name>` | Objekt (object) | Sie können entweder einen optionalen `mode` angeben oder das Objekt leer lassen. Für jede im Wörterbuch (`outputs`) angegebene benannte Ausgabe generiert Azure ML automatisch einen Ausgabespeicherort. | |
 | `outputs.<output_name>.mode` | Zeichenfolge | Modus, wie Ausgabedateien an den Zielspeicher übermittelt werden. Für den Lese-/Schreib-Bereitstellungsmodus ist das Ausgabeverzeichnis ein bereitgestelltes Verzeichnis. Im Upload-Modus werden Dateien, die in das Ausgabeverzeichnis geschrieben werden, zum Auftragsende hochgeladen. | `rw_mount`, `upload` | `rw_mount` |
 
 ### <a name="distribution-configurations"></a>Verteilungskonfigurationen
@@ -99,71 +99,71 @@ Beispiele finden Sie im [GitHub-Repository für Beispiele](https://github.com/Az
 
 ## <a name="yaml-hello-world"></a>YAML: Hallo Welt
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-world.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-world.yml":::
 
 ## <a name="yaml-display-name-experiment-name-description-and-tags"></a>YAML: Anzeigename, Experimentname, Beschreibung und Tags
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-world-org.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-world-org.yml":::
 
 ## <a name="yaml-environment-variables"></a>YAML: Umgebungsvariablen
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-world-env-var.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-world-env-var.yml":::
 
 ## <a name="yaml-source-code"></a>YAML: Quellcode
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-code.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-code.yml":::
 
 ## <a name="yaml-literal-inputs"></a>YAML: Literaleingaben
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-world-input.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-world-input.yml":::
 
 ## <a name="yaml-write-to-default-outputs"></a>YAML: Schreiben in Standardausgabe
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-world-output.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-world-output.yml":::
 
 ## <a name="yaml-write-to-named-data-output"></a>YAML: Schreiben in benannte Datenausgabe
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-world-output-data.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-world-output-data.yml":::
 
 ## <a name="yaml-datastore-uri-file-input"></a>YAML: Eingabe der Datenspeicher-URI-Datei
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-iris-datastore-file.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-iris-datastore-file.yml":::
 
 ## <a name="yaml-datastore-uri-folder-input"></a>YAML: Eingabe des Datenspeicher-URI-Ordners
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-iris-datastore-folder.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-iris-datastore-folder.yml":::
 
 ## <a name="yaml-uri-file-input"></a>YAML: URI-Dateieingabe
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-iris-file.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-iris-file.yml":::
 
 ## <a name="yaml-uri-folder-input"></a>YAML: URI-Ordnereingabe
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-iris-folder.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-iris-folder.yml":::
 
 ## <a name="yaml-notebook-via-papermill"></a>YAML: Notebook über Papermill
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-notebook.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-notebook.yml":::
 
 ## <a name="yaml-basic-python-model-training"></a>YAML: Grundlegendes Python-Modelltraining
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/single-step/scikit-learn/iris/job.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/single-step/scikit-learn/iris/job.yml":::
 
 ## <a name="yaml-basic-r-model-training-with-local-docker-build-context"></a>YAML: Grundlegendes R-Modelltraining mit lokalem Docker-Buildkontext
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/single-step/r/iris/job.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/single-step/r/iris/job.yml":::
 
 ## <a name="yaml-distributed-pytorch"></a>YAML: verteiltes PyTorch
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/single-step/pytorch/cifar-distributed/job.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/single-step/pytorch/cifar-distributed/job.yml":::
 
 ## <a name="yaml-distributed-tensorflow"></a>YAML: verteilter TensorFlow
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/single-step/tensorflow/mnist-distributed/job.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/single-step/tensorflow/mnist-distributed/job.yml":::
 
 ## <a name="yaml-distributed-mpi"></a>YAML: verteiltes MPI
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/single-step/tensorflow/mnist-distributed-horovod/job.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/single-step/tensorflow/mnist-distributed-horovod/job.yml":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 
