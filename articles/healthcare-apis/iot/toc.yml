@@ -25,7 +25,7 @@ items:
         href: iot-connector-power-bi.md
       - name: IoT-Connector und Microsoft Teams Benachrichtigungen
         href: iot-connector-teams.md
-  - name: Anleitungen
+  - name: Exemplarische Vorgehensweisen
     expanded: true
     items:
       - name: Empfangen von Gerätedaten über Azure IoT Hub
@@ -36,8 +36,8 @@ items:
         href: iot-connector-custom-functions.md
       - name: Verwenden von FHIR-Zielzuordnungen
         href: how-to-use-fhir-mapping-iot.md
-      - name: Exportieren von IoT-Connectormetriken über Diagnoseeinstellungen
-        href: iot-metrics-diagnostics-export.md
+      - name: Anzeigen von Metriken
+        href: iot-display-metrics.md
   - name: Ressourcen
     expanded: true
     items:

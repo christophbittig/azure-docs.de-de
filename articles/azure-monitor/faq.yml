@@ -8,12 +8,12 @@ metadata:
   author: bwren
   ms.author: bwren
   ms.date: 10/08/2020
-  ms.openlocfilehash: 45e86a925c83f32ab4f704ea7ffc4f83ff3089ae
-  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.openlocfilehash: 83ef818f3b9555fc152f1ca31149a8c5686430ac
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 11/02/2021
-  ms.locfileid: "131059925"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131473754"
 title: Häufig gestellte Fragen zu Azure Monitor
 summary: >
   Dieser Microsoft-Artikel enthält eine Liste häufig gestellter Fragen zu Azure Monitor. Wenn Sie weiteren Fragen haben, können Sie diese im [Diskussionsforum](/answers/questions/topics/single/24223.html) stellen. Wenn eine Frage häufiger gestellt wird, fügen wir sie diesem Artikel hinzu, damit sie schnell und einfach gefunden werden kann.
@@ -75,7 +75,7 @@ sections:
     answer: >
       Erkenntnisse und Lösungen bieten eine benutzerdefinierte Oberfläche zum Arbeiten mit Daten, die in Azure Monitor gespeichert wurden. Sie können direkt mit Protokolldaten arbeiten, indem Sie eine in der Kusto-Abfragesprache (KQL) geschriebene Protokollabfrage verwenden. Im Azure-Portal können Sie Abfragen schreiben und ausführen sowie Daten interaktiv mit Log Analytics analysieren. Analysieren Sie Metriken im Azure-Portal mit dem Metrik-Explorer. Weitere Informationen finden Sie unter [Analysieren von Protokolldaten in Azure Monitor](logs/log-query-overview.md) und [Erste Schritte mit dem Azure-Metrik-Explorer](essentials/metrics-getting-started.md).
   - question: >
-      Welche doppelten Datensätze werden in Azure Monitor-Protokollen angezeigt?
+      Warum werden mir in Azure Monitor-Protokollen doppelte Datensätze angezeigt?
     answer: >
       Sie können gelegentlich doppelte Datensätze in Azure Monitor-Protokollen bemerken. Dies erfolgt in der Regel aus einer der folgenden beiden Bedingungen.
 
@@ -262,7 +262,7 @@ sections:
       Können Ereignisse anhand der Ereignis-ID gefiltert werden, d. h. eine präzisere Ereignisfilterung mithilfe des neuen Azure Monitor-Agents vorgenommen werden?
     answer: "Ja. Sie können **Xpath-Abfragen** zum Filtern von Ereignissen auf Windows-Computern verwenden. [Weitere Informationen](agents/data-collection-rule-azure-monitor-agent.md#limit-data-collection-with-custom-xpath-queries)  \nIn Fall von Leistungsindikatoren können Sie bestimmte Leistungsindikatoren angeben, die Sie erfassen möchten, und nicht benötigten Leistungsindikatoren ausschließen.\nFür Syslog unter Linux können Sie Einrichtungen und die Protokollebene für jede zu erfassende Einrichtung auswählen.\n"
   - question: >
-      Unterstützt der neue Azure Monitor-Agent das Senden von Daten an EventHubs und Azure Storage-Konten?
+      Unterstützt der neue Azure Monitor-Agent das Senden von Daten an Event Hubs und Azure Storage-Konten?
     answer: >
       Noch nicht, aber der neue Agent unterstützt in Zukunft zusammen mit Datensammlungsregeln das Senden von Daten sowohl an Event Hubs als auch an Azure Storage-Konten. Achten Sie auf Ankündigungen in Azure-Updates, oder treten Sie dem [Teams-Kanal](https://teams.microsoft.com/l/team/19%3af3f168b782f64561b52abe75e59e83bc%40thread.tacv2/conversations?groupId=770d6aa5-c2f7-4794-98a0-84fd6ae7f193&tenantId=72f988bf-86f1-41af-91ab-2d7cd011db47) bei, um regelmäßige Updates, Support, Neuigkeiten und vieles mehr zu erhalten.
   - question: >
@@ -1114,4 +1114,4 @@ sections:
       Wie häufig werden Daten erfasst?
     answer: >
       Die Häufigkeit der Datenerfassung ist anpassbar. Details zu den Standardhäufigkeiten finden Sie unter [Von SQL Insights erfasste Daten](../insights/../azure-monitor/insights/sql-insights-overview.md#collected-data) und Anweisungen zum Anpassen der Häufigkeiten finden Sie unter [SQL-Überwachungsprofi](../insights/../azure-monitor/insights/sql-insights-enable.md#create-sql-monitoring-profile)l erstellen.
-additionalContent: "\n## <a name=\"next-steps\"></a>Nächste Schritte\n\nWenn Ihre Frage hier nicht beantwortet wurde, finden Sie in den folgenden Foren weitere Fragen und Antworten.\n\n- [Log Analytics](/answers/topics/azure-monitor.html)\n- [Application Insights](/answers/topics/azure-monitor.html)\n\nAllgemeines Feedback zu Azure Monitor finden Sie im [Feedbackforum](https://feedback.azure.com/forums/34192--general-feedback)."
+additionalContent: "\n## <a name=\"next-steps\"></a>Nächste Schritte\n\nWenn Ihre Frage hier nicht beantwortet wurde, finden Sie in den folgenden Foren weitere Fragen und Antworten.\n\n- [Log Analytics](/answers/topics/azure-monitor.html)\n- [Application Insights](/answers/topics/azure-monitor.html)\n\nAllgemeines Feedback zu Azure Monitor finden Sie im [Feedbackforum](https://feedback.azure.com/d365community/forum/79b1327d-d925-ec11-b6e6-000d3a4f06a4)."
