@@ -9,12 +9,12 @@ ms.topic: reference
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ec39fb3ec368d315d6d9fa4a17d2cb763e49bce6
-ms.sourcegitcommit: 5361d9fe40d5c00f19409649e5e8fed660ba4800
+ms.openlocfilehash: 47de9f252e70b7281b8499612718cbd4b23365a1
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130137587"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131444590"
 ---
 # <a name="create-an-azure-image-builder-template"></a>Erstellen einer Azure Image Builder-Vorlage 
 
@@ -89,7 +89,7 @@ Das grundlegende Format der Vorlage:
 Der Azure VM Image Builder-Dienst speichert/verarbeitet Kundendaten nicht außerhalb von Regionen, die strenge Anforderungen an die Datenresidenz in einer Region haben, wenn ein Kunde einen Build in dieser Region an fordert. Bei einem Dienstausfall für Regionen mit Anforderungen an die Datenresidenz müssen Sie Vorlagen in einer anderen Region und Geografie erstellen.
 
 ### <a name="zone-redundancy"></a>Zonenredundanz
-Die Verteilung unterstützt Zonenredundanz, VHDs werden standardmäßig auf ein Konto für zonenredundanten Speicher verteilt, und die Version der Shared Image Gallery unterstützt einen [ZRS-Speichertyp](../disks-redundancy.md#zone-redundant-storage-for-managed-disks), falls angegeben.
+Die Verteilung unterstützt Zonenredundanz, VHDs werden standardmäßig auf ein Konto für zonenredundanten Speicher verteilt, und die Version der Azure Compute Gallery (ehemals Shared Image Gallery) unterstützt einen [ZRS-Speichertyp](../disks-redundancy.md#zone-redundant-storage-for-managed-disks), falls angegeben.
  
 ## <a name="vmprofile"></a>vmProfile
 ## <a name="buildvm"></a>buildVM
@@ -159,12 +159,12 @@ Weitere Informationen zur Bereitstellung dieses Features finden Sie unter [Konfi
 
 ## <a name="properties-source"></a>Eigenschaften: source
 
-Der Abschnitt `source` enthält Informationen über das Quellimage, das von Image Builder verwendet wird. Image Builder unterstützt derzeit nativ nur die Erstellung von Images der Hyper-V-Generation 1 (Gen1) für Azure Shared Image Gallery (SIG) oder Managed Image. Wenn Sie Gen2-Images erstellen möchten, müssen Sie ein Gen2-Quellimage verwenden und an VHD verteilen. Danach müssen Sie ein verwaltetes Image von der VHD erstellen und es als Gen2-Image in SIG einfügen.
+Der Abschnitt `source` enthält Informationen über das Quellimage, das von Image Builder verwendet wird. Image Builder unterstützt derzeit nativ nur die Erstellung von Images der Hyper-V-Generation 1 (Gen1) für Azure Compute Gallery oder Managed Image. Wenn Sie Gen2-Images erstellen möchten, müssen Sie ein Gen2-Quellimage verwenden und an VHD verteilen. Danach müssen Sie ein verwaltetes Image von der VHD erstellen und es als Gen2-Image in SIG einfügen.
 
 Die API erfordert eine SourceType-Eigenschaft, die die Quelle für die Imageerstellung definiert. Derzeit stehen die folgenden drei Typen zur Verfügung:
 - PlatformImage: gibt an, dass es sich beim Quellimage um ein Marketplace-Image handelt.
 - ManagedImage: Verwenden Sie diesen Typ, wenn Sie mit einem normal verwalteten Image beginnen.
-- SharedImageVersion: Dieser Typ wird verwendet, wenn Sie eine Imageversion aus einem Katalog mit freigegebenen Images als Quellimage verwenden.
+- SharedImageVersion: Dieser Typ wird verwendet, wenn Sie eine Imageversion aus einer Azure Compute Gallery als Quellimage verwenden.
 
 
 > [!NOTE]
@@ -190,7 +190,7 @@ Die Eigenschaften hier entsprechen denen, die zum Erstellen der VM verwendet wur
 az vm image list -l westus -f UbuntuServer -p Canonical --output table –-all 
 ```
 
-Sie können „latest“ in der Version verwenden. Die Version wird bei der Imageerstellung und nicht beim Übermitteln der Vorlage ausgewertet. Wenn Sie diese Funktion mit dem Shared Image Gallery-Ziel verwenden, können Sie die erneute Übermittlung der Vorlage vermeiden und die Imageerstellung in Intervallen erneut ausführen, sodass Ihre Images aus den neuesten Images neu erstellt werden.
+Sie können „latest“ in der Version verwenden. Die Version wird bei der Imageerstellung und nicht beim Übermitteln der Vorlage ausgewertet. Wenn Sie diese Funktion mit dem Azure Compute Gallery-Ziel verwenden, können Sie die erneute Übermittlung der Vorlage vermeiden und die Imageerstellung in Intervallen erneut ausführen, sodass Ihre Images aus den neuesten Images neu erstellt werden.
 
 #### <a name="support-for-market-place-plan-information"></a>Unterstützung für Informationen zum Marketplaceplan
 Sie können auch Planinformationen angeben. Beispiel:
@@ -225,7 +225,7 @@ Hiermit wird ein vorhandenes verwaltetes Image einer generalisierten VHD oder VM
 
 
 ### <a name="sharedimageversion-source"></a>SharedImageVersion-Quelle
-Hiermit wird eine vorhandene Imageversion aus einem Katalog mit freigegebenen Images als Quellimage festgelegt.
+Hiermit wird eine vorhandene Imageversion aus einer Azure Compute Gallery als Quellimage festgelegt.
 
 > [!NOTE]
 > Das verwaltete Quellimage muss ein Image eines unterstützten Betriebssystems sein und sich in derselben Region wie Ihre Azure Image Builder-Vorlage befinden. Wenn dies nicht der Fall ist, replizieren Sie die Imageversion in die Region der Image Builder-Vorlage.
@@ -527,7 +527,7 @@ Diese Befehle werden von Image Builder gelesen und in den AIB-Protokollen („cu
 Azure Image Builder unterstützt drei Verteilungsziele: 
 
 - **managedImage:** ein verwaltetes Image
-- **sharedImage:** Katalog mit freigegebenen Images
+- **sharedImage** - Azure Compute Gallery.
 - **VHD:** VHD in einem Speicherkonto
 
 Sie können ein Image in ein und derselben Konfiguration an beide Zieltypen verteilen.
@@ -535,7 +535,7 @@ Sie können ein Image in ein und derselben Konfiguration an beide Zieltypen vert
 > [!NOTE]
 > Der standardmäßige AIB-Sysprep-Befehl enthält „/mode:vm“ nicht. Dies ist jedoch möglicherweise erforderlich, wenn Sie Images erstellen, in denen die HyperV-Rolle installiert ist. Wenn Sie dieses Befehlsargument hinzufügen müssen, müssen Sie den Sysprep-Befehl überschreiben.
 
-Da Sie mehrere Verteilungsziele verwenden können, verwaltet Image Builder für jedes Verteilungsziel einen Zustand, auf den durch Abfragen von `runOutputName` zugegriffen werden kann.  `runOutputName` ist ein Objekt, das Sie nach der Verteilung abfragen können, um Informationen über die Verteilung abzurufen. Sie können beispielsweise den Speicherort der VHD oder die Regionen abfragen, in denen die Imageversion repliziert wurde. Dies ist eine Eigenschaft aller Verteilungsziele. `runOutputName` muss für jedes Verteilungsziel eindeutig sein. Das folgende Beispiel fragt eine Shared Image Gallery-Distribution ab:
+Da Sie mehrere Verteilungsziele verwenden können, verwaltet Image Builder für jedes Verteilungsziel einen Zustand, auf den durch Abfragen von `runOutputName` zugegriffen werden kann.  `runOutputName` ist ein Objekt, das Sie nach der Verteilung abfragen können, um Informationen über die Verteilung abzurufen. Sie können beispielsweise den Speicherort der VHD oder die Regionen abfragen, in denen die Imageversion repliziert wurde. Dies ist eine Eigenschaft aller Verteilungsziele. `runOutputName` muss für jedes Verteilungsziel eindeutig sein. Das folgende Beispiel fragt eine Azure Compute Gallery-Distribution ab:
 
 ```bash
 subscriptionID=<subcriptionID>
@@ -598,15 +598,15 @@ Verteilungseigenschaften:
 > Wenn Sie ein Image in einer anderen Region verteilt werden soll, steigt auch die erforderliche Bereitstellungszeit. 
 
 ### <a name="distribute-sharedimage"></a>Distribute: sharedImage 
-Der Azure-Katalog mit freigegebenen Images ist ein neuer Dienst für die Verwaltung von Images, mit dem die Imagereplikation in Regionen, die Versionskontrolle und die Freigabe benutzerdefinierter Images verwaltet werden können. Azure Image Builder unterstützt die Verteilung mit diesem Dienst. Sie können Images also in Regionen verteilen, die vom Katalog mit freigegebenen Images unterstützt werden. 
+Die Azure Compute Gallery ist ein neuer Dienst für die Verwaltung von Images, mit dem die Imagereplikation in Regionen, die Versionskontrolle und die Freigabe benutzerdefinierter Images verwaltet werden können. Azure Image Builder unterstützt die Verteilung mit diesem Dienst. Sie können Images also in Regionen verteilen, die von der Azure Compute Gallery unterstützt werden. 
  
-Ein Katalog mit freigegebenen Images besteht aus: 
+Eine Azure Compute Gallery besteht aus: 
  
-- Katalog: Container für mehrere freigegebene Images. Ein Katalog wird in einer Region bereitgestellt.
+- Katalog: Container für mehrere Images. Ein Katalog wird in einer Region bereitgestellt.
 - Imagedefinitionen: eine konzeptionelle Gruppierung von Images. 
 - Imageversionen: ein Imagetyp für die Bereitstellung einer VM oder Skalierungsgruppe. Imageversionen können in andere Regionen repliziert werden, in denen VMs bereitgestellt werden müssen.
  
-Bevor Sie ein Image an den Imagekatalog verteilen können, müssen Sie einen Katalog und eine Imagedefinition erstellen. Informationen dazu finden Sie unter [Erstellen eines Katalogs mit freigegebenen Images mit der Azure-Befehlszeilenschnittstelle](../create-gallery.md). 
+Bevor Sie ein Image an den Katalog verteilen können, müssen Sie einen Katalog und eine Imagedefinition erstellen. Informationen dazu finden Sie unter [Erstellen eines Katalogs](../create-gallery.md). 
 
 ```json
 {
@@ -624,17 +624,17 @@ Bevor Sie ein Image an den Imagekatalog verteilen können, müssen Sie einen Kat
 }
 ``` 
 
-Verteilungseigenschaften für Kataloge mit freigegebenen Images:
+Verteilen von Eigenschaften für Kataloge:
 
 - **type:** sharedImage  
-- **galleryImageId**: ID der Shared Image Gallery, die in zwei Formaten angegeben werden kann:
+- **galleryImageId**: ID der Azure Compute Gallery, die in zwei Formaten angegeben werden kann:
     * Automatische Versionsverwaltung: Image Builder generiert eine monotone Versionsnummer für Sie. Dies ist nützlich, wenn Sie weiterhin Images aus derselben Vorlage neu erstellen möchten: Das Format ist `/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Compute/galleries/<sharedImageGalleryName>/images/<imageGalleryName>`.
     * Explizite Versionsverwaltung: Sie können die Versionsnummer übergeben, die von Image Builder verwendet werden soll. Das Format ist `/subscriptions/<subscriptionID>/resourceGroups/<rgName>/providers/Microsoft.Compute/galleries/<sharedImageGalName>/images/<imageDefName>/versions/<version e.g. 1.1.1>`
 
 - **runOutputName:** eindeutiger Name zur Identifikation der Verteilung.  
 - **artifactTags:** optionale vom Benutzer angegebene Schlüssel-Wert-Paar-Tags.
 - **replicationRegions:** Array von Regionen für die Replikation. In einer der hier enthaltenen Regionen muss der Katalog bereitgestellt werden. Das Hinzufügen von Regionen bedeutet eine Erhöhung der Buildzeit, da der Build erst abgeschlossen wird, wenn die Replikation fertig ist.
-- **excludeFromLatest** (optional): Hiermit können Sie die von Ihnen erstellte Imageversion markieren, die nicht als neueste Version in der SIG-Definition verwendet wird. Der Standardwert ist „false“.
+- **excludeFromLatest** (optional): Hiermit können Sie die von Ihnen erstellte Imageversion markieren, die nicht als neueste Version in der Katalogdefinition verwendet wird. Der Standardwert ist „false“.
 - **storageAccountType** (optional): AIB unterstützt die Angabe dieser Speichertypen für die Imageversion, die erstellt werden soll:
     * „Standard_LRS“
     * „Standard_ZRS“

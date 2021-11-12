@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 08/14/2019
 ms.author: helohr
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 44a8c8ab6420db717533e83af9e01a89fad47bad
-ms.sourcegitcommit: abf31d2627316575e076e5f3445ce3259de32dac
+ms.openlocfilehash: 856cefa33948f530ee859ee1eeadfaf2cdf73de6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/15/2021
-ms.locfileid: "114205028"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471780"
 ---
 # <a name="apply-windows-license-to-session-host-virtual-machines"></a>Anwenden einer Windows-Lizenz auf virtuelle Sitzungshostcomputer
 
@@ -65,4 +65,4 @@ $vms | Where-Object {$_.LicenseType -like "Windows_Client"} | Select-Object Reso
 
 ## <a name="requirements-for-deploying-windows-server-remote-desktop-services"></a>Anforderungen für die Bereitstellung von Windows Server Remote Desktop Services
 
-Wenn Sie Windows Server 2019, 2016 oder 2012 R2 als Azure Virtual Desktop-Hosts in Ihrer Bereitstellung einsetzen, muss ein Remote-Desktop-Dienste-Lizenzserver von diesen virtuellen Computern aus erreichbar sein. Der Remote-Desktop-Dienste-Lizenzserver kann sich lokal oder in Azure befinden. Weitere Informationen finden Sie unter [Aktivieren des Remote-Desktop-Dienste-Lizenzservers](/windows-server/remote/remote-desktop-services/rds-activate-license-server).
+Wenn Sie Windows Server als Azure Virtual Desktop-Hosts in Ihrer Bereitstellung einsetzen, muss ein Remote-Desktop-Dienste-Lizenzserver von diesen virtuellen Computern aus erreichbar sein. Der Remote-Desktop-Dienste-Lizenzserver kann sich lokal oder in Azure befinden. Weitere Informationen finden Sie unter [Aktivieren des Remote-Desktop-Dienste-Lizenzservers](/windows-server/remote/remote-desktop-services/rds-activate-license-server).

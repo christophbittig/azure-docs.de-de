@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 06/03/2021
 ms.author: victorh
-ms.openlocfilehash: 8a757b1825cb1c1e2f471a965077ea5801000dc4
-ms.sourcegitcommit: 9339c4d47a4c7eb3621b5a31384bb0f504951712
+ms.openlocfilehash: be89c299d5b45f54a5d147bf3841384526f54360
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113761450"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131556671"
 ---
 # <a name="overview-of-tls-termination-and-end-to-end-tls-with-application-gateway"></a>Übersicht über TLS-Beendigung und End-to-End-TLS mit Application Gateway
 
@@ -27,7 +27,7 @@ Application Gateway unterstützt die TLS-Beendigung am Gateway, wonach der Daten
 - **Intelligentes Routing:** Durch die Entschlüsselung des Datenverkehrs erhält das Anwendungsgateway Zugriff auf Anforderungsinhalte wie Header, URI etc. und kann diese Daten dann zum Weiterleiten von Anforderungen verwenden.
 - **Zertifikatverwaltung:** Zertifikate müssen nicht für alle Back-End-Server, sondern nur für das Anwendungsgateway erworben und installiert werden. Das spart Zeit und Geld.
 
-Zum Konfigurieren der TLS-Terminierung muss dem Listener ein TLS/SSL-Zertifikat hinzugefügt werden, damit Application Gateway einen symmetrischen Schlüssel gemäß der Spezifikation des TLS/SSL-Protokolls ableiten kann. Der symmetrische Schlüssel wird dann zum Verschlüsseln und Entschlüsseln des Datenverkehrs mit dem Gateway verwendet. Das TLS/SSL-Zertifikat muss im PFX-Format (privater Informationsaustausch) vorliegen. In diesem Dateiformat können Sie den privaten Schlüssel exportieren. Das ist erforderlich, damit das Anwendungsgateway die Ver- und Entschlüsselung des Datenverkehrs durchführen kann.
+Zum Konfigurieren der TLS-Terminierung muss dem Listener ein TLS/SSL-Zertifikat hinzugefügt werden. Dadurch kann der Application Gateway eingehenden Datenverkehr entschlüsseln und den Antwortdatenverkehr an den Client verschlüsseln. Das Zertifikat für die Application Gateway muss im PFX-Format (Personal Information Exchange) vorliegen, das sowohl die privaten als auch die öffentlichen Schlüssel enthält.
 
 > [!IMPORTANT] 
 > Das Zertifikat auf dem Listener erfordert das Hochladen der gesamten Zertifikatskette (Stammzertifikat von der Zertifizierungsstelle, die Zwischenzertifikate und untergeordnetes Zertifikat), um die Vertrauenskette herzustellen. 
@@ -150,6 +150,7 @@ Szenario | v1 | V2 |
 | --- | --- | --- |
 | SNI-Header (server_name) während des TLS-Handshakes als FQDN | Wird als FQDN über den Back-End-Pool festgelegt. Gemäß [RFC 6066](https://tools.ietf.org/html/rfc6066) sind IPv4- und IPv6-Literaladressen im SNI-Hostnamen nicht zulässig. <br> **Hinweis:** FQDN im Back-End-Pool sollte eine DNS-Auflösung in die IP-Adresse (öffentlich oder privat) des Back-End-Servers durchführen. | Der SNI-Header (server_name) wird als Hostname aus den HTTP-Einstellungen festgelegt. Wenn andernfalls die Option *PickHostnameFromBackendAddress* ausgewählt ist oder kein Hostname angegeben ist, wird er als FQDN in der Konfiguration des Back-End-Pools festgelegt.
 | Die Adresse des Back-End-Pools ist eine IP-Adresse, oder der Hostname ist in den HTTP-Einstellungen nicht festgelegt. | Die SNI wird gemäß [RFC 6066](https://tools.ietf.org/html/rfc6066) nicht festgelegt, wenn der Eintrag des Back-End-Pools kein FQDN ist. | Die SNI wird als Hostname aus dem Eingabe-FQDN des Clients festgelegt, und der allgemeine Name (CN) des Back-End-Zertifikats muss mit diesem Hostnamen identisch sein.
+| Der Hostname wird nicht in HTTP-Einstellungen angegeben, aber ein FQDN wird als Ziel für ein Back-End-Poolmitglied angegeben | Die SNI wird als Hostname aus dem Eingabe-FQDN des Clients festgelegt, und der allgemeine Name (CN) des Back-End-Zertifikats muss mit diesem Hostnamen identisch sein. | Die SNI wird als Hostname aus dem Eingabe-FQDN des Clients festgelegt, und der allgemeine Name (CN) des Back-End-Zertifikats muss mit diesem Hostnamen identisch sein.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

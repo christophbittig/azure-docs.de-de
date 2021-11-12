@@ -1,5 +1,5 @@
 ---
-title: Übersicht über die Unterstützung des Archiv-Tarifs
+title: Azure Backup – Übersicht über die Archivebene
 description: Informationen zur Unterstützung des Archiv-Tarifs für Azure Backup.
 ms.topic: overview
 ms.date: 10/23/2021
@@ -7,14 +7,14 @@ ms.custom: references_regions
 author: v-amallick
 ms.service: backup
 ms.author: v-amallick
-ms.openlocfilehash: 3c28d99c066bf71ea3970ce8a01eb68989e11123
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 9712b198e8be9a7a90699cc6ce544a627bfdea63
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131080895"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131510357"
 ---
-# <a name="about-archive-tier-support"></a>Informationen zur Unterstützung des Archiv-Tarifs
+# <a name="overview-of-archive-tier-in-azure-backup"></a>Übersicht über die Archivebene in Azure Backup
 
 Kunden setzen zum Speichern von Sicherungsdaten, darunter auch Sicherungsdaten für die langfristige Aufbewahrung, auf Azure Backup. Die entsprechenden Anforderungen an die Aufbewahrungsdauer werden in den Konformitätsregeln des jeweiligen Unternehmens definiert. In den meisten Fällen erfolgt nur selten ein Zugriff auf die älteren Sicherungsdaten, die ausschließlich zu Konformitätszwecken gespeichert werden.
 

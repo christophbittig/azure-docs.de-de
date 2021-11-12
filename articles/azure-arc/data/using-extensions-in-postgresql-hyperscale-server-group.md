@@ -8,14 +8,14 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 07/30/2021
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: 831b3e220afe826b5190588b8855b72a8d648916
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 52e024043726c463c0bea5b9b16421a0674a2cd2
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339906"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131558837"
 ---
 # <a name="use-postgresql-extensions-in-your-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Verwenden von PostgreSQL-Erweiterungen in Servergruppen mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung
 
@@ -25,7 +25,7 @@ PostgreSQL eignet sich am besten für die Verwendung mit Erweiterungen. Tatsäch
 
 ## <a name="supported-extensions"></a>Unterstützte Erweiterungen
 Die Standarderweiterungen vom Typ [`contrib`](https://www.postgresql.org/docs/12/contrib.html) sowie die folgenden Erweiterungen wurden bereits in den Containern Ihrer Servergruppe mit PostgreSQL Hyperscale mit Azure Arc-Unterstützung bereitgestellt:
-- [`citus`](https://github.com/citusdata/citus), Version 10.0. Die Citus-Erweiterung von [Citus Data](https://www.citusdata.com/) wird standardmäßig geladen, da sie die Hyperscale-Funktion für die PostgreSQL-Engine bereitstellt. Das Löschen der Citus-Erweiterung aus Ihrer PostgreSQL Hyperscale-Servergruppe mit Azure Arc-Unterstützung wird nicht unterstützt.
+- [`citus`](https://github.com/citusdata/citus), v: 10.2. Die Citus-Erweiterung von [Citus Data](https://www.citusdata.com/) wird standardmäßig geladen, da sie die Hyperscale-Funktion für die PostgreSQL-Engine bereitstellt. Das Löschen der Citus-Erweiterung aus Ihrer PostgreSQL Hyperscale-Servergruppe mit Azure Arc-Unterstützung wird nicht unterstützt.
 - [`pg_cron`](https://github.com/citusdata/pg_cron), Version 1.3
 - [`pgaudit`](https://www.pgaudit.org/), Version 1.4
 - plpgsql, Version 1.0
@@ -60,11 +60,11 @@ Ausführliche Informationen zu `shared_preload_libraries` finden Sie in der [Pos
 
 ### <a name="add-an-extension-at-the-creation-time-of-a-server-group"></a>Hinzufügen einer Erweiterung beim Erstellen einer Servergruppe
 ```azurecli
-az postgres arc-server create -n <name of your postgresql server group> --extensions <extension names>
+az postgres arc-server create -n <name of your postgresql server group> --extensions <extension names> --k8s-namespace <namespace> --use-k8s
 ```
 ### <a name="add-an-extension-to-an-instance-that-already-exists"></a>Hinzufügen einer Erweiterung zu einer bereits vorhandenen Instanz
 ```azurecli
-az postgres arc-server server edit -n <name of your postgresql server group> --extensions <extension names>
+az postgres arc-server server edit -n <name of your postgresql server group> --extensions <extension names> --k8s-namespace <namespace> --use-k8s
 ```
 
 
@@ -75,31 +75,30 @@ Führen Sie einen der folgenden Befehlen aus.
 
 ### <a name="with-cli-command"></a>Mit Befehl an der Befehlszeilenschnittstelle
 ```azurecli
-az postgres arc-server show -n <server group name>
+az postgres arc-server show -n <server group name> --k8s-namespace <namespace> --use-k8s
 ```
 Scrollen Sie durch die Ausgabe, und beachten Sie die engine\extensions-Abschnitte in den Spezifikationen Ihrer Servergruppe. Zum Beispiel:
 ```console
-"engine": {
+  "spec": {
+    "dev": false,
+    "engine": {
       "extensions": [
         {
           "name": "citus"
-        },
-        {
-          "name": "pg_cron"
         }
-      ]
-    },
+      ],
 ```
 ### <a name="with-kubectl"></a>Verwenden von kubectl
 ```console
-kubectl describe postgresql-12s/postgres02
+kubectl describe postgresqls/<server group name> -n <namespace>
 ```
 Scrollen Sie durch die Ausgabe, und beachten Sie die engine\extensions-Abschnitte in den Spezifikationen Ihrer Servergruppe. Zum Beispiel:
 ```console
-Engine:
+Spec:
+  Dev:  false
+  Engine:
     Extensions:
-      Name:  citus
-      Name:  pg_cron
+      Name:   citus
 ```
 
 

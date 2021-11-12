@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: mayg
-ms.openlocfilehash: f7df260f0ef02df5d706bc78ed4938cb1868eead
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: 01956fa1dc12d992d05f004d21572b9fc045d5f9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130065082"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131437674"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Einrichten der Notfallwiederherstellung für Active Directory und DNS
 
@@ -47,7 +47,7 @@ Der mithilfe von Site Recovery replizierte Domänencontroller wird für ein [Tes
 
 ### <a name="configure-vm-network-settings"></a>Konfigurieren von VM-Netzwerkeinstellungen
 
-Konfigurieren Sie für die VM, die den Domänencontroller bzw. DNS hostet, die Netzwerkeinstellungen in Site Recovery unter den Einstellungen für **Compute und Netzwerk** des replizierten virtuellen Computers. So wird sichergestellt, dass der virtuelle Computer nach einem Failover mit dem richtigen Netzwerk verbunden wird.
+Konfigurieren Sie für die VM, die den Domänencontroller bzw. DNS hostet, die Netzwerkeinstellungen in Site Recovery unter den **Netzwerk**-Einstellungen des replizierten virtuellen Computers. So wird sichergestellt, dass der virtuelle Computer nach einem Failover mit dem richtigen Netzwerk verbunden wird.
 
 ## <a name="protect-active-directory"></a>Schützen von Active Directory
 
@@ -77,12 +77,12 @@ Bei den meisten Anwendungen muss ein Domänencontroller oder ein DNS-Server vorh
 
 1. [Replizieren](vmware-azure-tutorial.md) Sie mit Site Recovery den virtuellen Computer, der den Domänencontroller oder das DNS hostet.
 1. Erstellen Sie ein isoliertes Netzwerk. Jedes in Azure erstellte virtuelle Netzwerk ist standardmäßig von anderen Netzwerken isoliert. Sie sollten denselben IP-Adressbereich für dieses Netzwerk verwenden, den Sie in Ihrem Produktionsnetzwerk verwenden. Aktivieren Sie nicht die Standort-zu-Standort-Konnektivität in diesem Netzwerk.
-1. Geben Sie eine DNS-IP-Adresse im isolierten Netzwerk an. Verwenden Sie die IP-Adresse, die der virtuelle DNS-Computer abrufen soll. Wenn Sie in Azure replizieren, geben Sie die IP-Adresse für den virtuellen Computer an, der bei einem Failover verwendet wird. Um die IP-Adresse einzugeben, wählen Sie im replizierten virtuellen Computer in den Einstellungen für **Compute und Netzwerk** die **Ziel-IP-** Einstellungen.
+1. Geben Sie eine DNS-IP-Adresse im isolierten Netzwerk an. Verwenden Sie die IP-Adresse, die der virtuelle DNS-Computer abrufen soll. Wenn Sie in Azure replizieren, geben Sie die IP-Adresse für den virtuellen Computer an, der bei einem Failover verwendet wird. Um die IP-Adresse einzugeben, wählen Sie im replizierten virtuellen Computer in den **Netzwerk**-Einstellungen die **Ziel-IP-** Einstellungen.
 
    :::image type="content" source="./media/site-recovery-active-directory/azure-test-network.png" alt-text="Azure-Testnetzwerk":::
 
    > [!TIP]
-   > Site Recovery versucht, virtuelle Testcomputer in einem Subnetz mit demselben Namen und derselben IP-Adresse zu erstellen, die in den Einstellungen des virtuellen Computers unter **Compute und Netzwerk** angegeben sind. Wenn ein Subnetz mit demselben Namen nicht im virtuellen Azure-Netzwerk für das Testfailover verfügbar ist, wird ein virtueller Testcomputer im (in alphabetischer Reihenfolge) ersten Subnetz erstellt.
+   > Site Recovery versucht, virtuelle Testcomputer in einem Subnetz mit demselben Namen und derselben IP-Adresse zu erstellen, die in den Einstellungen des virtuellen Computers unter **Netzwerk** angegeben sind. Wenn ein Subnetz mit demselben Namen nicht im virtuellen Azure-Netzwerk für das Testfailover verfügbar ist, wird ein virtueller Testcomputer im (in alphabetischer Reihenfolge) ersten Subnetz erstellt.
    >
    > Wenn die Ziel-IP-Adresse Teil des ausgewählten Subnetzes ist, versucht Site Recovery, die Testfailover-VM mit der Ziel-IP-Adresse zu erstellen. Wenn die Ziel-IP-Adresse nicht Teil des ausgewählten Subnetzes ist, wird die Testfailover-VM mit der nächsten verfügbaren IP-Adresse im ausgewählten Subnetz erstellt.
 

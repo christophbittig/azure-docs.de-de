@@ -7,21 +7,21 @@ ms.subservice: azure-arc-data
 author: TheJY
 ms.author: jeanyd
 ms.reviewer: mikeray
-ms.date: 07/30/2021
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: b3e7df998d32317763c6a0de7c0e7c1cc2f2420b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 286754a121dc2aabeeacda47dd82dd4f3a1ed83b
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355207"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131564516"
 ---
 # <a name="scale-out-and-in-your-azure-arc-enabled-postgresql-hyperscale-server-group-by-adding-more-worker-nodes"></a>Auf- und Abskalieren der PostgreSQL Hyperscale-Servergruppe mit Azure Arc-Unterstützung durch Hinzufügen weiterer Workerknoten
 In diesem Dokument wird erläutert, wie Sie eine PostgreSQL Hyperscale-Servergruppe mit Azure Arc-Unterstützung auf- und abskalieren. Dies geschieht anhand eines Szenarios. **Wenn Sie das Szenario nicht durchlaufen möchten und sich lediglich über das Konzept des Aufskalierens informieren möchten, fahren Sie mit dem Absatz [Aufskalieren](#scale-out)** oder [Abskalieren]() fort.
 
-Beim Aufskalieren fügen Sie Ihrer PostgreSQL Hyperscale-Instanz mit Azure Arc-Unterstützung Postgres-Instanzen (Postgres Hyperscale-Workerknoten) hinzu.
+Beim Aufskalieren fügen Sie Ihrer PostgreSQL Hyperscale-Servergruppe mit Azure Arc-Unterstützung Postgres-Instanzen (Postgres Hyperscale-Workerknoten) hinzu.
 
-Beim Abskalieren entfernen Sie Postgres-Instanzen (Postgres Hyperscale-Workerknoten) aus Ihrer PostgreSQL Hyperscale-Instanz mit Azure Arc-Unterstützung.
+Beim Abskalieren entfernen Sie Postgres-Instanzen (Postgres Hyperscale-Workerknoten) aus Ihrer PostgreSQL Hyperscale-Servergruppe mit Azure Arc-Unterstützung.
 
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
@@ -53,26 +53,35 @@ az postgres arc-server endpoint list -n <server name>  --k8s-namespace <namespac
 ```
 Zum Beispiel:
 ```azurecli
-az postgres arc-server endpoint list -n postgres01  --k8s-namespace <namespace> --use-k8s
+az postgres arc-server endpoint list -n postgres01  --k8s-namespace arc --use-k8s
 ```
 
 Beispielausgabe:
 
 ```console
-[
-  {
-    "Description": "PostgreSQL Instance",
-    "Endpoint": "postgresql://postgres:<replace with password>@12.345.123.456:1234"
-  },
-  {
-    "Description": "Log Search Dashboard",
-    "Endpoint": "https://12.345.123.456:12345/kibana/app/kibana#/discover?_a=(query:(language:kuery,query:'custom_resource_name:\"postgres01\"'))"
-  },
-  {
-    "Description": "Metrics Dashboard",
-    "Endpoint": "https://12.345.123.456:12345/grafana/d/postgres-metrics?var-Namespace=arc3&var-Name=postgres01"
-  }
-]
+{
+  "instances": [
+    {
+      "endpoints": [
+        {
+          "description": "PostgreSQL Instance",
+          "endpoint": "postgresql://postgres:<replace with password>@12.345.567.89:5432"
+        },
+        {
+          "description": "Log Search Dashboard",
+          "endpoint": "https://23.456.78.99:5601/app/kibana#/discover?_a=(query:(language:kuery,query:'custom_resource_name:postgres01'))"
+        },
+        {
+          "description": "Metrics Dashboard",
+          "endpoint": "https://34.567.890.12:3000/d/postgres-metrics?var-Namespace=arc&var-Name=postgres01"
+        }
+      ],
+      "engine": "PostgreSql",
+      "name": "postgres01"
+    }
+  ],
+  "namespace": "arc"
+}
 ```
 
 ##### <a name="connect-with-the-client-tool-of-your-choice"></a>Stellen Sie eine Verbindung mit dem Clienttool Ihrer Wahl her.
@@ -160,7 +169,7 @@ az postgres arc-server edit -n <server group name> -w <target number of worker n
 In diesem Beispiel erhöhen wir die Anzahl der Workerknoten von 2 auf 4, indem wir den folgenden Befehl ausführen:
 
 ```azurecli
-az postgres arc-server edit -n postgres01 -w 4 --k8s-namespace <namespace> --use-k8s 
+az postgres arc-server edit -n postgres01 -w 4 --k8s-namespace arc --use-k8s 
 ```
 
 Während Sie Knoten hinzufügen, wird für die Servergruppe der Status „Ausstehend“ angezeigt. Zum Beispiel:
@@ -169,9 +178,12 @@ az postgres arc-server list --k8s-namespace <namespace> --use-k8s
 ```
 
 ```console
-Name        State          Workers
-----------  -------------  ---------
-postgres01  Pending 4/5    4
+{
+    "name": "postgres01",
+    "replicas": 1,
+    "state": "Updating",
+    "workers": 4
+  }
 ```
 
 Sobald die Knoten verfügbar sind, wird der Hyperscale-Shardrebalancer automatisch ausgeführt, um die Daten auf die neuen Knoten zu verteilen. Die Aufskalierung ist ein Onlinevorgang. Während die Knoten hinzugefügt und die Daten neu auf die Knoten verteilt werden, bleiben die Daten für Abfragen verfügbar.
@@ -184,27 +196,31 @@ Verwenden Sie eine der folgenden Methoden, um zu überprüfen, ob die Servergrup
 Führen Sie den folgenden Befehl aus:
 
 ```azurecli
-az postgres arc-server list --k8s-namespace <namespace> --use-k8s
+az postgres arc-server list --k8s-namespace arc --use-k8s
 ```
 
 Mit dem Befehl wird neben der Anzahl der Workerknoten die Liste der Servergruppen zurückgegeben, die in Ihrem Namespace erstellt wurden. Zum Beispiel:
 ```console
-Name        State    Workers
-----------  -------  ---------
-postgres01  Ready    4
+{
+    "name": "postgres01",
+    "replicas": 1,
+    "state": "Ready",
+    "workers": 4
+  }
 ```
 
 #### <a name="with-kubectl"></a>Mit kubectl:
 Führen Sie den folgenden Befehl aus:
 ```console
-kubectl get postgresqls
+kubectl get postgresqls -n arc
 ```
 
 Mit dem Befehl wird neben der Anzahl der Workerknoten die Liste der Servergruppen zurückgegeben, die in Ihrem Namespace erstellt wurden. Zum Beispiel:
 ```console
-NAME         STATE   READY-PODS   EXTERNAL-ENDPOINT   AGE
-postgres01   Ready   4/4          10.0.0.4:31066      4d20h
+NAME         STATE   READY-PODS   PRIMARY-ENDPOINT     AGE
+postgres01   Ready   5/5          12.345.567.89:5432   9d
 ```
+Beachten Sie, dass ein Pod mehr als die Anzahl der Workerknoten vorhanden ist. Der zusätzliche Pod wird zum Hosten der Postgres-Instanz verwendet, die über die Koordinatorrolle verfügt
 
 #### <a name="with-a-sql-query"></a>Mit einer SQL-Abfrage:
 Stellen Sie mit dem Clienttool Ihrer Wahl eine Verbindung mit Ihrer Servergruppe her, und führen Sie die folgende Abfrage aus:
@@ -245,7 +261,6 @@ Das allgemeine Format des Befehls zum Abskalieren lautet wie folgt:
 ```azurecli
 az postgres arc-server edit -n <server group name> -w <target number of worker nodes> --k8s-namespace <namespace> --use-k8s
 ```
-
 
 Die Abskalierung ist ein Onlinevorgang. Ihre Anwendungen greifen weiterhin ohne Ausfallzeiten auf die Daten zu, während die Knoten entfernt und die Daten auf die verbleibenden Knoten verteilt werden.
 

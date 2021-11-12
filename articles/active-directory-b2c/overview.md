@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 10/01/2021
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 6a56d8135a55b472f282781bbf50af5726d18785
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: f17e7e0d5a42b3926f85c39cd424c8ffc8e00c03
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130036130"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131451918"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Was ist Azure Active Directory B2C?
 
@@ -25,7 +25,7 @@ Azure Active Directory B2C ermöglicht die Benutzeridentifizierung für Unterneh
 
 Azure AD B2C ist eine CIAM-Lösung (Customer Identity Access Management), die Millionen von Benutzer*innen und Milliarden von Authentifizierungen pro Tag unterstützt. Es sorgt für die Skalierung und Sicherheit der Authentifizierungsplattform sowie die Überwachung und automatische Behandlung von Bedrohungen wie Denial-of-Service-, Kennwort-Spray- oder Brute-Force-Angriffen.
 
-Azure AD B2C ist ein von [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) getrennter Dienst. Er basiert auf der gleichen Technologie wie Azure AD, dient aber einem anderen Zweck. Er ermöglicht es Unternehmen, kundenorientierte Anwendungen zu erstellen, bei denen sich dann alle Benutzer ohne Einschränkungen des Benutzerkontos registrieren können.
+Azure AD B2C ist ein von [Azure Active Directory (Azure AD)](../active-directory/fundamentals/active-directory-whatis.md) getrennter Dienst. Er basiert auf der gleichen Technologie wie Azure AD, dient aber einem anderen Zweck. Er ermöglicht Unternehmen die Erstellung kundenorientierter Anwendungen, bei denen sich dann alle Benutzer ohne Einschränkungen des Benutzerkontos registrieren können.
    
 ## <a name="who-uses-azure-ad-b2c"></a>Zielgruppe von Azure AD B2C
 Alle Unternehmen oder Einzelpersonen, die Endbenutzer mithilfe einer White-Label-Authentifizierungslösung bei ihren webbasierten/mobilen Anwendungen authentifizieren möchten. Neben der Authentifizierung wird der Azure AD B2C-Dienst für die Autorisierung verwendet, etwa für den Zugriff authentifizierter Benutzer auf API-Ressourcen. Azure AD B2C ist für die Nutzung durch **IT-Administratoren** und **Entwickler** vorgesehen.
