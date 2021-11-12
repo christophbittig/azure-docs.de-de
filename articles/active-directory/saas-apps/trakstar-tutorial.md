@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/27/2021
 ms.author: jeedes
-ms.openlocfilehash: 23c77e7072755dfb04005c2028358823d669deee
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 1ff1ef66fd8dc4e9d8d52b048da197274bdee89d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124825377"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131451329"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trakstar"></a>Tutorial: Azure Active Directory-Integration mit Trakstar
 
@@ -77,15 +77,18 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
+4. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Werte in die entsprechenden Eingabefelder ein:
 
-    a. Fügen Sie in das Textfeld **Anmelde-URL** den Wert für **ACS (Consumer) URL** aus Trakstar unter „Settings > Authentication & SSO“ (Einstellungen > Authentifizierung und SSO) im folgenden Format ein: `https://app.trakstar.com/auth/saml/callback?namespace=<YOUR_NAMESPACE>`
-
-    b. Übernehmen Sie im Textfeld **Bezeichner (Entitäts-ID)** den Standardwert: `https://app.trakstar.com`.
-
+    | Feldname | Wert | Hinweis | 
+    | ---------------------- | ----- | ---- |
+    | **Antwort-URL (Assertionsverbraucherdienst-URL)** | `https://app.trakstar.com/auth/saml/callback?namespace=<YOUR_NAMESPACE>` | Ersetzen Sie `<YOUR_NAMESPACE>` durch einen realen Wert, der im Feld **ACS -URL (Consumer)** in Trakstar Perform angezeigt wird. Sehen Sie sich den Hinweis im Anschluss an diese Tabelle an. |
+    | **Anmelde-URL** | `https://app.trakstar.com/auth/saml/?namespace=<YOUR_NAMESPACE>` | Diese URL _ähnelt_ der vorangehenden URL, enthält jedoch nicht den `/callback`-Teil. |
+    | **Bezeichner (Entitäts-ID)** | `https://app.trakstar.com` | |
+    
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie die Werte mit der tatsächlichen Anmelde-URL. Melden Sie sich bei Trakstar als Administrator an, um diese Werte abzurufen.
-    > Wird die Registerkarte „Authentication & SSO“ (Authentifizierung und SSO) nicht unter „Settings“ (Einstellungen) angezeigt, steht Ihnen dieses Feature möglicherweise nicht zur Verfügung. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Diese Werte sind nur Beispiele. Sie müssen die Werte verwenden, die für Ihren Namespace in Trakstar Perform spezifisch sind. Diese werden angezeigt, wenn Sie sich bei der Anwendung anmelden und zu **Settings** > **Authentication & SSO** > **SAML 2.0** > **Configure** navigieren.
+    > 
+    > Falls die Registerkarte **Authentication & SSO** nicht unter **Settings** angezeigt wird, steht Ihnen dieses Feature möglicherweise nicht zur Verfügung. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende **Zertifikat (Base64)** aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 

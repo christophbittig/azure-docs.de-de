@@ -9,12 +9,12 @@ metadata:
   ms.reviewer: mimckitt
   ms.date: 10/13/2020
   ms.custom: references_regions
-  ms.openlocfilehash: bb2ee07d3d5c603df11d5b17b6afea496f4b31c8
-  ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+  ms.openlocfilehash: bf35360b41fe136ec0ea3af8c846e398465d1a81
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/03/2021
-  ms.locfileid: "123424094"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130235770"
 title: Häufig gestellte Fragen zu Azure Cloud Services (erweiterter Support)
 summary: In diesem Artikel werden häufig gestellte Fragen zu Azure Cloud Services (erweiterter Support) behandelt.
 sections:
@@ -51,6 +51,10 @@ sections:
   - question: >
       Wie ändern sich Web- und Workerrollen?
     answer: "Es gibt keine Änderungen am Entwurf, an der Architektur oder den Komponenten von Web- und Workerrollen. \n"
+  - question: >
+      Bei der Skalierung von Rolleninstanzen kommt es immer wieder Fehlern. Wie lässt sich dies beheben?
+    answer: >
+      Wenn annähernd zeitgleich mehrere Skalierungsaufrufe für denselben Clouddienst (für verschiedene Rollen) erfolgen, werden die Microsoft Platform-Komponenten aufgrund einer Racebedingung nicht mehr synchronisiert, was zu Fehlern führt. Microsoft arbeitet aktiv an der Behebung dieses Problems. Als Übergangslösung sollte nicht für alle Rollen gleichzeitig eine automatische Skalierung durchgeführt werden.
   - question: >
       Wie ändern sich Rolleninstanzen?
     answer: "Es gibt keine Änderungen am Entwurf, an der Architektur oder den Komponenten der Rolleninstanzen. \n"
@@ -151,4 +155,10 @@ sections:
       Muss sich die KeyVault-Ressource beim Angeben von Geheimnissen/Zertifikaten, die in einem Clouddienst installiert werden sollen, in derselben Region wie die Clouddienst-Ressource befinden?
     answer: >
       Ja. Der Grund, warum Regionsgrenzen erzwungen werden, besteht darin, zu verhindern, dass Benutzer Architekturen erstellen, die regionsübergreifende Abhängigkeiten aufweisen. Die regionale Isolation ist ein wichtiges Entwurfsprinzip von cloudbasierten Anwendungen. Sie können jedoch die Key Vault-Erweiterung verwenden, um abonnement- und regionsübergreifende Unterstützung für Ihre Zertifikate zu erhalten. Weitere Informationen finden Sie in der Dokumentation [hier](./enable-key-vault-virtual-machine.md)
+- name: Bekannte Probleme
+  questions:
+  - question: >
+      Bei der Skalierung von Rolleninstanzen kommt es immer wieder Fehlern. Wie lässt sich dies beheben?
+    answer: >
+      Wenn annähernd zeitgleich mehrere Skalierungsaufrufe für denselben Clouddienst (für verschiedene Rollen) erfolgen, werden die Microsoft Platform-Komponenten aufgrund einer Racebedingung nicht mehr synchronisiert, was zu Fehlern führt. Microsoft arbeitet aktiv an der Behebung dieses Problems. Als Übergangslösung sollte nicht für alle Rollen gleichzeitig eine automatische Skalierung durchgeführt werden.
 additionalContent: "\n## <a name=\"next-steps\"></a>Nächste Schritte\n\nWeitere Informationen zum Einstieg in Cloud Services (erweiterter Support) finden Sie unter [Bereitstellen einer Cloud Services-Instanz (erweiterter Support) mithilfe von PowerShell](deploy-powershell.md)."

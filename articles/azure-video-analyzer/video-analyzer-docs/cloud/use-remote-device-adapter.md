@@ -2,14 +2,14 @@
 title: Verbinden einer Kamera mit der Cloud mithilfe eines Remotegeräteadapters
 description: In diesem Artikel wird erläutert, wie Sie eine Kamera mithilfe eines Remotegeräteadapters mit dem Azure Video Analyzer-Dienst verbinden.
 ms.topic: how-to
-ms.date: 11/01/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 71bcf82420d9777158cbb878c4943b350d51353b
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 74734444b33c6963097d4e23e3859aedbc9a91e7
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095051"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131563205"
 ---
 # <a name="connect-cameras-to-the-cloud-using-a-remote-device-adapter"></a>Verbinden von Kameras mit der Cloud mithilfe eines Remotegeräteadapters
 
@@ -23,16 +23,13 @@ Mit dem Azure Video Analyzer-Dienst können Benutzer Videodaten von RTSP-Kameras
 ## <a name="pre-reading"></a>Vorbereitung
 
 * [Verbinden von Kameras mit der Cloud](connect-cameras-to-cloud.md)
+* [Schnellstart: Erste Schritte mit Video Analyzer-Livepipelines im Azure-Portal](get-started-livepipelines-portal.md)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein Azure-Konto mit einem aktiven Abonnement. Sie können ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), falls Sie noch keins besitzen.
-* IoT Hub
-* [Video Analyzer-Konto](../create-video-analyzer-account.md) mit diesen zugeordneten Elementen:
-  * Speicherkonto
-  * vom Benutzer zugewiesene verwaltete Identität (User-assigned Managed Identity, UAMI)
-  * [IoT Hub muss mit dem Video Analyzer-Konto verbunden sein](../create-video-analyzer-account.md#post-deployment-steps)
-* [IoT-Edgegerät mit installiertem und konfiguriertem Video Analyzer-Edgemodul](../edge/deploy-iot-edge-device.md)
+* [Bereitstellen von Azure Video Analyzer auf einem IoT Edge-Gerät](../edge/deploy-iot-edge-device.md)
+* [IoT Hub muss mit dem Video Analyzer-Konto verbunden sein](../create-video-analyzer-account.md#post-deployment-steps)
 * [RTSP-Kameras](../quotas-limitations.md#supported-cameras)
   * Vergewissern Sie sich, dass sich die Kameras im gleichen Netzwerk wie das Edgegerät befinden.
   * Vergewissern Sie sich, dass Sie die Kamera so konfigurieren können, dass Videos mit oder unter einer maximalen Bandbreite (gemessen in KBit/s oder Kilobit/Sekunde) gesendet werden.
@@ -70,7 +67,7 @@ Damit das Video Analyzer-Edgemodul als transparentes Gateway für Videos zwische
 Führen Sie im Azure-Portal die folgenden Schritte aus:
 
 1. Navigieren Sie zum IoT Hub
-1. Wählen Sie unter **Automatische Geräteverwaltung** den Bereich **IoT Edge** aus.
+1. Wählen Sie unter **Geräteverwaltung** den Bereich **IoT Edge** aus.
 1. Wählen Sie das IoT-Edgegerät (wie etwa **ava-sample-device**) aus, auf dem das Video Analyzer-Edgemodul bereitgestellt wurde
 1. Wählen Sie unter dem Modulen das Video Analyzer-Edgemodul aus (z. B. **avaedge**)
 1. Wählen Sie **</> Direkte Methode** aus 
@@ -99,14 +96,20 @@ Führen Sie im Azure-Portal die folgenden Schritte aus:
 
 Bei Erfolg erhalten Sie eine Antwort mit dem Statuscode 201.
 
+Um alle eingerichteten Remotegeräteadapter aufzulisten, rufen Sie die direkte Methode **remoteDeviceAdapterList** mit den folgenden Nutzdaten auf:
+```
+ {
+   "@apiVersion" : "1.1"
+ }
+```
+
 
 ## <a name="create-pipeline-topology-in-the-video-analyzer-service"></a>Erstellen einer Pipelinetopologie im Video Analyzer-Dienst
 
 Beim Erstellen einer Cloudpipelinetopologie für die Erfassung von einer Kamera hinter einer Firewall muss auf dem RTSP-Quellknoten der Pipelinetopologie Tunneln aktiviert werden. Sehen Sie sich ein Beispiel für eine solche [Pipelinetopologie](https://github.com/Azure/video-analyzer/tree/main/pipelines/live/topologies/cloud-record-camera-behind-firewall) an.  
 
-[In dieser Schnellstartanleitung](get-started-livepipelines-portal.md#deploy-a-live-pipeline) werden die Schritte zum Erstellen einer Pipelinetopologie und einer Livepipeline im Azure-Portal beschrieben. Verwenden Sie die Beispieltopologie `Live capture, record, and stream from RTSP camera behind firewall`.
 
-Die folgenden Werte, die auf dem in den vorherigen Anweisungen bereitgestellten IoT-Gerät basieren, sind erforderlich, um das Tunneln auf dem RTSP-Quellknoten zu aktivieren:
+Die folgenden Werte, die auf dem in den vorherigen Anweisungen erstellten IoT-Gerät basieren, sind erforderlich, um das Tunneln auf dem RTSP-Quellknoten zu aktivieren:
 
 * IoT Hub-Name
 * IoT Hub-Geräte-ID
@@ -138,6 +141,8 @@ Stellen Sie Folgendes sicher:
 * `Endpoint` auf `UnsecuredEndpoint`
 * `Tunnel` auf `SecureIotDeviceRemoteTunnel`
 
+[Dieser Schnellstart](get-started-livepipelines-portal.md#deploy-a-live-pipeline) kann als Referenz verwendet werden, da er die Schritte zum Erstellen einer Pipelinetopologie und einer Livepipeline im Azure-Portal beschreibt. Verwenden Sie die Beispieltopologie `Live capture, record, and stream from RTSP camera behind firewall`. 
+
 ## <a name="create-and-activate-a-live-pipeline"></a>Erstellen und Aktivieren einer Livepipeline
 
 Beim Erstellen der Livepipeline müssen die RTSP-URL, der RTSP-Benutzername, das RTSP-Kennwort und die IoT Hub-Geräte-ID definiert werden. Eine Beispielnutzlast finden Sie unten.
@@ -152,7 +157,7 @@ Beim Erstellen der Livepipeline müssen die RTSP-URL, der RTSP-Benutzername, das
         "parameters": [
             {
                 "name": "rtspUrlParameter",
-                "value": "rtsp://localhost:554/<camera-specific-suffix>"
+                "value": "<RTSP URL for building404-camera1 such as rtsp://localhost:554/media/video>"
             },
             {
                 "name": "rtspUsernameParameter",
@@ -174,7 +179,7 @@ Beim Erstellen der Livepipeline müssen die RTSP-URL, der RTSP-Benutzername, das
        }
    }
 ```
-Die RTSP-URL muss **localhost** lauten. Vergewissern Sie sich, dass der Wert `bitrateKbps` mit der Einstellung für die maximale Bitrate der Videodaten von der RTSP-Kamera übereinstimmt.
+Die IP-Adresse der RTSP-URL muss **localhost** lauten. Vergewissern Sie sich, dass der Wert `bitrateKbps` mit der Einstellung für die maximale Bitrate der Videodaten von der RTSP-Kamera übereinstimmt.
 
 Nach dem Erstellen der Livepipeline kann die Pipeline aktiviert werden, um die Aufzeichnung in die Video Analyzer-Videoressource zu starten. In der im vorherigen Schritt erwähnten [Schnellstartanleitung](get-started-livepipelines-portal.md#deploy-a-live-pipeline) wird auch beschrieben, wie Sie eine Livepipeline in Azure-Portal aktivieren.
 

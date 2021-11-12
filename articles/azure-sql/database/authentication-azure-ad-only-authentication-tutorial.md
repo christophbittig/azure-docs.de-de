@@ -8,22 +8,19 @@ ms.topic: tutorial
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 08/31/2021
-ms.openlocfilehash: 76425e37c83ea5ac44653e20753e35606b89d370
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 11/02/2021
+ms.openlocfilehash: 09e855391a591e39d31c1eb939bce6c2dc1cc6b2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128643230"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131473621"
 ---
 # <a name="tutorial-enable-azure-active-directory-only-authentication-with-azure-sql"></a>Tutorial: Aktivieren der reinen Azure Active Directory-Authentifizierung mit Azure SQL
 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-> [!NOTE]
-> Die in diesem Artikel behandelte **reine Azure AD-Authentifizierung** befindet sich in der **Public Preview-Phase**. 
-
-Dieser Artikel beschreibt die Vorgehensweise zur Aktivierung der [reinen Azure AD-Authentifizierung](authentication-azure-ad-only-authentication.md) mit Azure SQL-Datenbank und Azure SQL Managed Instance. Wenn Sie eine SQL-Datenbank oder eine verwaltete Instanz bereitstellen möchten, für die ausschließlich die Azure AD-Authentifizierung aktiviert ist, finden Sie weitere Informationen unter [Erstellen eines Servers mit aktivierter reiner Azure AD-Authentifizierung in Azure SQL](authentication-azure-ad-only-authentication-create-server.md).
+Dieser Artikel beschreibt die Vorgehensweise zur Aktivierung der [reinen Azure AD-Authentifizierung](authentication-azure-ad-only-authentication.md) mit Azure SQL-Datenbank und Azure SQL Managed Instance. Wenn Sie eine SQL-Datenbank- oder eine SQL Managed Instance-Instanz bereitstellen möchten, für die ausschließlich die Azure AD-Authentifizierung aktiviert ist, finden Sie weitere Informationen unter [Erstellen eines Servers mit aktivierter reiner Azure AD-Authentifizierung in Azure SQL](authentication-azure-ad-only-authentication-create-server.md).
 
 In diesem Tutorial lernen Sie, wie die folgenden Aufgaben ausgeführt werden:
 
@@ -76,9 +73,16 @@ Führen Sie die folgenden Schritte aus, um die reine Azure AD-Authentifizierung 
 1. Aktivieren Sie das Kontrollkästchen **Unterstützung der Authentifizierung nur bei Azure Active Directory-Authentifizierung für diesen Server**.
 1. Das Popupfenster **Nur Azure AD-Authentifizierung aktivieren** wird angezeigt. Klicken Sie auf **Ja**, um die Funktion zu aktivieren, und **speichern** Sie die Einstellung.
 
-## <a name="azure-sql-managed-instance"></a>Verwaltete Azure SQL-Instanz
+## <a name="enable-in-sql-managed-instance-using-azure-portal"></a>Aktivierung in SQL Managed Instance mithilfe des Azure-Portals
 
-Das Verwalten der reinen Azure AD-Authentifizierung für eine verwaltete SQL-Instanz im Portal wird derzeit nicht unterstützt.
+Führen Sie die folgenden Schritte aus, um die reine Azure AD-Authentifizierung im Azure-Portal zu aktivieren.
+
+1. Melden Sie sich mit dem Benutzer mit der zugewiesenen Rolle [SQL Security Manager](../../role-based-access-control/built-in-roles.md#sql-security-manager) im [Azure-Portal](https://portal.azure.com/) an.
+1. Wechseln Sie zu Ihrer **SQL Managed Instance**-Ressource, und wählen Sie im Menü **Einstellungen** die Option **Active Directory-Administrator** aus.
+
+1. Bevor Sie die reine Azure AD-Authentifizierung aktivieren können, müssen Sie einen **Azure Active Directory-Administrator** hinzufügen, sofern Sie dies noch nicht getan haben.
+1. Aktivieren Sie das Kontrollkästchen **Nur Unterstützung für die Azure Active Directory-Authentifizierung für diese verwaltete Instanz**.
+1. Das Popupfenster **Nur Azure AD-Authentifizierung aktivieren** wird angezeigt. Klicken Sie auf **Ja**, um die Funktion zu aktivieren, und **speichern** Sie die Einstellung.
 
 # <a name="the-azure-cli"></a>[Die Azure-CLI](#tab/azure-cli)
 
@@ -167,7 +171,7 @@ Weitere Informationen über das Verwalten der reinen Azure AD-Authentifizierung 
    Connect-AzAccount
    ```
 
-1. Führen Sie den folgenden Befehl aus, und ersetzen Sie dabei `<myinstance>` durch den Namen Ihrer SQL Managed Instance und `<myresource>` durch Ihre Azure-Ressource, die die verwaltete SQL-Instanz enthält.
+1. Führen Sie den folgenden Befehl aus, und ersetzen Sie dabei `<myinstance>` durch den Namen Ihrer SQL Managed Instance-Instanz und `<myresource>` durch Ihre Azure-Ressource, die die **SQL Managed Instance**-Instanz enthält.
 
    ```powershell
    Enable-AzSqlInstanceActiveDirectoryOnlyAuthentication -InstanceName <myinstance> -ResourceGroupName <myresource>
@@ -181,7 +185,13 @@ Weitere Informationen über das Verwalten der reinen Azure AD-Authentifizierung 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zu Ihrer **SQL Server**-Ressource. Wählen Sie im Menü **Einstellungen** das **Azure Active Directory** aus. Die Portalunterstützung für die reine Azure AD-Authentifizierung ist nur für die Azure SQL-Datenbank verfügbar.
+## <a name="check-status-in-sql-database"></a>Überprüfen des Status in SQL-Datenbank
+
+Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zu Ihrer **SQL Server**-Ressource. Wählen Sie im Menü **Einstellungen** das **Azure Active Directory** aus.
+
+## <a name="check-status-in-sql-managed-instance"></a>Überprüfen des Status in SQL Managed Instance
+
+Öffnen Sie Ihre **SQL Managed Instance**-Ressource im [Azure-Portal](https://portal.azure.com/). Wählen Sie unter **Einstellungen** die Option **Active Directory-Administrator** aus.
 
 # <a name="the-azure-cli"></a>[Die Azure-CLI](#tab/azure-cli)
 
@@ -267,7 +277,7 @@ Der Status gibt **True** zurück, wenn die Funktion aktiviert ist, und **False**
    Connect-AzAccount
    ```
 
-1. Führen Sie den folgenden Befehl aus, und ersetzen Sie dabei `<myinstance>` durch den Namen Ihrer SQL Managed Instance und `<myresource>` durch Ihre Azure-Ressource, die die verwaltete SQL-Instanz enthält.
+1. Führen Sie den folgenden Befehl aus, und ersetzen Sie dabei `<myinstance>` durch den Namen Ihrer SQL Managed Instance-Instanz und `<myresource>` durch Ihre Azure-Ressource, die die **SQL Managed Instance**-Instanz enthält.
 
    ```powershell
    Get-AzSqlInstanceActiveDirectoryOnlyAuthentication -InstanceName <myinstance> -ResourceGroupName <myresource>
@@ -277,7 +287,7 @@ Der Status gibt **True** zurück, wenn die Funktion aktiviert ist, und **False**
 
 ## <a name="test-sql-authentication-with-connection-failure"></a>Testen der SQL-Authentifizierung mit Verbindungsfehler
 
-Nachdem Sie die reine Azure AD-Authentifizierung aktiviert haben, testen Sie mit [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms), ob Sie eine [Verbindung mit Ihrer SQL-Datenbank oder mit SQL Managed Instance herstellen können](connect-query-ssms.md). Verwenden Sie die SQL-Authentifizierung für die Verbindung.
+Nachdem Sie die reine Azure AD-Authentifizierung aktiviert haben, testen Sie mithilfe von [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms), ob Sie eine [Verbindung mit Ihrer SQL-Datenbank- oder SQL Managed Instance-Instanz herstellen können](connect-query-ssms.md). Verwenden Sie die SQL-Authentifizierung für die Verbindung.
 
 Es wird in etwa folgende „Anmeldung fehlgeschlagen“-Meldung angezeigt:
 
@@ -294,11 +304,17 @@ Wenn Sie die Funktion für die reine Azure AD-Authentifizierung deaktivieren, er
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
+## <a name="disable-in-sql-database-using-azure-portal"></a>Deaktivierung in SQL-Datenbank mithilfe des Azure-Portals
+
 1. Melden Sie sich mit dem Benutzer mit der zugewiesenen Rolle [SQL Security Manager](../../role-based-access-control/built-in-roles.md#sql-security-manager) im [Azure-Portal](https://portal.azure.com/) an.
 1. Wechseln Sie zu Ihrer SQL-Serverressource, und wählen Sie im Menü **Einstellungen** das **Azure Active Directory** aus.
 1. Deaktivieren Sie das Kontrollkästchen **Unterstützung der Authentifizierung nur bei Azure Active Directory-Authentifizierung für diesen Server** und **speichern** Sie die Einstellung, um die reine Azure AD-Authentifizierung zu deaktivieren.
 
-Das Verwalten der reinen Azure AD-Authentifizierung für eine verwaltete SQL-Instanz im Portal wird derzeit nicht unterstützt.
+## <a name="disable-in-sql-managed-instance-using-azure-portal"></a>Deaktivierung in SQL Managed Instance mithilfe des Azure-Portals
+
+1. Melden Sie sich mit dem Benutzer mit der zugewiesenen Rolle [SQL Security Manager](../../role-based-access-control/built-in-roles.md#sql-security-manager) im [Azure-Portal](https://portal.azure.com/) an.
+1. Wechseln Sie zu Ihrer **SQL Managed Instance**-Ressource, und wählen Sie im Menü **Einstellungen** die Option **Active Directory-Administrator** aus.
+1. Deaktivieren Sie das Kontrollkästchen **Nur Unterstützung für die Azure Active Directory-Authentifizierung für diese verwaltete Instanz**, und **Speichern** Sie die Einstellung, um die reine Azure AD-Authentifizierung zu deaktivieren.
 
 # <a name="the-azure-cli"></a>[Die Azure-CLI](#tab/azure-cli)
 
@@ -386,7 +402,7 @@ Nutzen Sie die folgenden Befehle, um die reine Azure AD-Authentifizierung in Azu
    Connect-AzAccount
    ```
 
-1. Führen Sie den folgenden Befehl aus, und ersetzen Sie dabei `<myinstance>` durch den Namen Ihrer SQL Managed Instance und `<myresource>` durch Ihre Azure-Ressource, die die verwaltete SQL-Instanz enthält.
+1. Führen Sie den folgenden Befehl aus, und ersetzen Sie dabei `<myinstance>` durch den Namen Ihrer SQL Managed Instance-Instanz und `<myresource>` durch Ihre Azure-Ressource, die die verwaltete Instanz enthält.
 
    ```powershell
    Disable-AzSqlInstanceActiveDirectoryOnlyAuthentication -InstanceName <myinstance> -ResourceGroupName <myresource>

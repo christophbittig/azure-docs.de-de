@@ -9,12 +9,12 @@ metadata:
   ms.topic: troubleshooting
   ms.date: 02/22/2021
   ms.author: deanwe
-  ms.openlocfilehash: dca933c5b86875b50d04a67f482713830437350b
-  ms.sourcegitcommit: 0ede6bcb140fe805daa75d4b5bdd2c0ee040ef4d
+  ms.openlocfilehash: fff4dff979c1d37f7bda9c96e445a325f96b1f96
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/20/2021
-  ms.locfileid: "122608102"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131443811"
 title: Häufig gestellte Fragen zur automatischen Azure-Verwaltung für VMs
 summary: >
   Dieser Artikel bietet Antworten auf einige der häufigsten Fragen zur [automatischen Azure-Verwaltung für virtuelle Computer](automanage-virtual-machines.md).
@@ -41,10 +41,10 @@ sections:
   - question: >
       Welche Azure RBAC-Berechtigung ist erforderlich, um die automatische Azure-Verwaltung zu aktivieren?
     answer: >
-      Wenn Sie Automanage auf einem virtuellen Computer mit einem vorhandenen Automanage-Konto aktivieren, benötigen Sie die Rolle „Mitwirkender“ für die Ressourcengruppe, in der sich der virtuelle Computer befindet.
+      Wenn Sie Automanage aktivieren, benötigen Sie die Rolle „Mitwirkender“ für die Ressourcengruppe, in der sich die VM befindet.
 
 
-      Wenn Sie beim Aktivieren ein neues Automanage-Konto verwenden, müssen Sie entweder über die Rolle „Besitzer“ oder über die Rollen „Mitwirkender“ und „Benutzerzugriffsadministrator“ für das Abonnement verfügen.
+      Wenn Sie Automanage erstmalig für ein Abonnement aktivieren, müssen Sie entweder über die Rolle „Besitzer“ oder über die Rollen „Mitwirkender“ und „Benutzerzugriffsadministrator“ für das Abonnement verfügen.
   - question: >
       Welche Regionen werden unterstützt?
     answer: >
@@ -58,9 +58,13 @@ sections:
     answer: >
       Automanage unterstützt zurzeit keine Arc-fähigen VMs.
   - question: >
+      Was bedeutet der Status „Upgrade erforderlich“?
+    answer: >
+      Automanage unterstützt eine neue API für das Onboarding (Version 2021-04-30-preview oder höher). Wenn Sie die Vorgängerversion von Automanage verwenden (Version 2020-06-30-preview), müssen Sie Automanage deaktivieren und anschließend erneut aktivieren. Das Onboarding für die aktuelle Version erfolgt automatisch.
+  - question: >
       Kann ich Konfigurationen für die automatische Azure-Verwaltung anpassen?
     answer: >
-      Kunden können die Einstellungen für bestimmte Dienste, z. B. die Datenaufbewahrung von Azure Backup, durch Konfigurationseinstellungen anpassen. Eine vollständige Liste der Einstellungen, die geändert werden können, finden Sie [hier](automanage-virtual-machines.md#customizing-an-environment-using-preferences) in der Dokumentation.
+      Kunden können die Einstellungen für bestimmte Dienste, wie z. B. die Datenaufbewahrung von Azure Backup, über benutzerdefinierte Profile anpassen. Eine vollständige Liste der Einstellungen, die geändert werden können, finden Sie [hier](automanage-virtual-machines.md#custom-profiles) in der Dokumentation.
   - question: >
       Funktioniert die automatische Azure-Verwaltung sowohl mit Linux- als auch mit Windows-VMs?
     answer: >
@@ -84,7 +88,11 @@ sections:
   - question: >
       Was ist ein Konto für die automatische Verwaltung?
     answer: >
-      Das Konto für die automatische Verwaltung ist eine verwaltete Dienstidentität (Managed Service Identity, MSI), die den Sicherheitskontext oder die Identität bereitstellt, unter der die automatisierten Vorgänge erfolgen.
+      Das Automanage-Konto wird nur für Computer verwendet, die mit einer Vorgängerversion von Automanage (Version 2020-06-30-preview) eingebunden wurden. Es handelt sich um eine verwaltete Dienstidentität (Managed Service Identity, MSI), die den Sicherheitskontext oder die Identität bereitstellt, mit denen die automatisierten Vorgänge durchgeführt werden.
+  - question: >
+      Was ist eine Konfigurationseinstellung?
+    answer: >
+      Die „Konfigurationseinstellung“ wird nur für Computer verwendet, die mit einer Vorgängerversion von Automanage (Version 2020-06-30-preview) eingebunden wurden. Sie unterstützt das Anpassen einer Teilmenge der Einstellungen. Diese Funktion wurde in der aktuellen Version von Automanage auf „Benutzerdefinierte Profile“ aktualisiert.
   - question: >
       Wirkt sich die Aktivierung von Automanage auf zusätzliche VMs außer den von mir ausgewählten VMs aus?
     answer: >

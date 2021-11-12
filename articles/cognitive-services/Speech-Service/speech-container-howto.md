@@ -12,12 +12,12 @@ ms.date: 10/11/2021
 ms.author: eur
 ms.custom: cog-serv-seo-aug-2020
 keywords: Lokal, Docker, Container
-ms.openlocfilehash: 3a1bee0399a00a758339a636d55e46321794a93b
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 3297231244cd5323c0218dcce02ac20453456685
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131501072"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131867169"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Installieren und Ausführen von Docker-Containern für die APIs des Speech-Diensts 
 
@@ -30,11 +30,11 @@ Mit Speech-Containern können Kunden eine Speech-basierte Anwendungsarchitektur 
 
 | Container | Features | Neueste Version | Releasestatus |
 |--|--|--|--|
-| Spracherkennung | Analysiert die Stimmung und transkribiert kontinuierliche Echtzeitsprach- oder Batchaudioaufzeichnungen mit Zwischenergebnissen.  | 2.15.0 | Allgemein verfügbar |
-| Benutzerdefinierte Spracherkennung | Verwendet ein benutzerdefiniertes Modell aus dem [Custom Speech-Portal](https://speech.microsoft.com/customspeech) und transkribiert kontinuierliche Echtzeitsprach- oder Batchaudioaufzeichnungen in Text mit Zwischenergebnissen. | 2.15.0 | Allgemein verfügbar |
+| Spracherkennung | Analysiert die Stimmung und transkribiert kontinuierliche Echtzeitsprach- oder Batchaudioaufzeichnungen mit Zwischenergebnissen.  | 2.16.0 | Allgemein verfügbar |
+| Benutzerdefinierte Spracherkennung | Verwendet ein benutzerdefiniertes Modell aus dem [Custom Speech-Portal](https://speech.microsoft.com/customspeech) und transkribiert kontinuierliche Echtzeitsprach- oder Batchaudioaufzeichnungen in Text mit Zwischenergebnissen. | 2.16.0 | Allgemein verfügbar |
 | Text-zu-Sprache | Konvertiert Text in natürlich klingende Sprache mit Nur-Text-Eingaben oder SSML (Speech Synthesis Markup Language, Markupsprache für Sprachsynthese). | 1.15.0 | Allgemein verfügbar |
 | Speech-Sprachenerkennung | Erkennen der in Audiodateien gesprochenen Sprache | 1.3.0 | preview |
-| Text-zu-Sprache (neuronal) | Konvertiert Text mithilfe von Deep Neural Network-Technologie in natürlich klingende Sprache, die eine natürlichere synthetische Sprache ermöglicht. | 1.9.0 | Allgemein verfügbar |
+| Text-zu-Sprache (neuronal) | Konvertiert Text mithilfe von Deep Neural Network-Technologie in natürlich klingende Sprache, die eine natürlichere synthetische Sprache ermöglicht. | 1.10.0 | Allgemein verfügbar |
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

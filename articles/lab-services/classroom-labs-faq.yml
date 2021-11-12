@@ -5,12 +5,12 @@ metadata:
   ms.topic: how-to
   ms.service: lab-services
   ms.date: 06/26/2020
-  ms.openlocfilehash: 50aed3f3b515a2387efcefbfdf19fb9b1f51d905
-  ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+  ms.openlocfilehash: 2558c36e145dd0a2d1ae526bf3cadf5ad06136a2
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/19/2021
-  ms.locfileid: "130181253"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130232696"
 title: 'Labs in Azure Lab Services: Häufig gestellte Fragen (FAQ)'
 summary: Hier erhalten Sie Antworten auf einige der am häufigsten gestellten Fragen zu Labs in Azure Lab Services.
 sections:
@@ -20,7 +20,8 @@ sections:
     answer: >
       Das Kontingent, das Sie für ein Lab festlegen, gilt für jeden Kursteilnehmer für die gesamte Dauer des Labs. Und die [geplante Ausführungszeit von virtuellen Computern](how-to-create-schedules.md) wird nicht mit dem Kontingent eines Benutzers verrechnet. Das Kontingent dient für die Zeiten außerhalb der Stunden im Zeitplan, die ein Kursteilnehmer mit VMs verbringt.  Weitere Informationen zu Kontingenten finden Sie unter [Festlegen von Kontingenten für Benutzer](how-to-configure-student-usage.md#set-quotas-for-users).
   - question: "Wenn ein Lehrer/Dozent einen virtuellen Kursteilnehmercomputer einschaltet, wirkt sich dies auf das Kursteilnehmerkontingent aus? \n"
-    answer: "Nein. Tut es nicht. Wenn der Lehrer/Dozent den virtuellen Kursteilnehmercomputer einschaltet, wirkt sich dies nicht auf das dem Kursteilnehmer zugeteilte Kontingent aus. \n"
+    answer: >
+      Nein. Tut es nicht. Wenn der Lehrer/Dozent den virtuellen Kursteilnehmercomputer einschaltet, wirkt sich dies nicht auf das dem Kursteilnehmer zugeteilte Kontingent aus.
 - name: Zeitpläne
   questions:
   - question: "Werden alle VMs im Lab automatisch gestartet, wenn ein Zeitplan festgelegt wird? \n"
@@ -50,8 +51,35 @@ sections:
   - question: >
       Wie viele Benutzer können sich in einem Classroom-Lab befinden?
     answer: "Sie können einem Classroom-Lab bis zu 400 Benutzer hinzufügen.\n\n## <a name=\"blog-post\"></a>Blogbeitrag\n\nAbonnieren Sie den [Azure Lab Services-Blog](https://aka.ms/azlabs-blog).\n\n## <a name=\"update-notifications\"></a>Updatebenachrichtigungen\n\nAbonnieren Sie [Lab Services-Updates](https://azure.microsoft.com/updates/?product=lab-services), um über neue Features in Labs Services auf dem Laufenden zu bleiben.          \n"
+- name: Linux
+  questions:
+  - question: >
+      Wenn ich die Einstellungen zum automatischen Herunterfahren für mein Lab auswähle, warum ist diese Seite leer bzw. warum wird die Einstellung zum automatischen Trennen der Benutzer bei inaktiven VMs nicht angezeigt?
+    answer: >
+      Im Allgemeinen unterstützen Linux-Labs das automatische Herunterfahren nur, wenn Benutzer die Verbindung trennen und wenn VMs gestartet werden, Benutzer aber keine Verbindung herstellen.  Die Unterstützung für diese Einstellungen variiert jedoch auch abhängig von [bestimmten Distributionen und Versionen von Linux](../virtual-machines/extensions/diagnostics-linux.md#supported-linux-distributions).  Einstellungen zum Herunterfahren werden vom Image [Data Science Virtual Machine – Ubuntu 18.04](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) nicht unterstützt.
+
+      Weitere Informationen zu den Einstellungen für das Herunterfahren finden Sie in den folgenden Artikeln:
+        - [Aktivieren der Einstellungen für das Herunterfahren](./how-to-enable-shutdown-disconnect.md)
+        - [Einstellungen für automatisches Herunterfahren zur Kostenkontrolle](./cost-management-guide.md#automatic-shutdown-settings-for-cost-control)
+  - question: >
+      Wie kann ich Ubuntu 18.04 Server LTS verwenden und entweder die grafischen GNOME- oder MATE-Desktops installieren?
+    answer: >
+      Bei Verwendung von Ubuntu 18.04 LTS [besteht ein bekannter Netzwerkkonflikt zwischen grafischen GNOME\MATE-Desktops](./how-to-enable-remote-desktop-linux.md) und dem Azure Linux-VM-Agent.  Daher empfehlen wir Folgendes:
+        - Erwägen Sie anstelle von GNOME\MATE die Verwendung des grafischen XFCE-Desktops, bei dem dieses Problem nicht auftritt.  Beispielsweise ist das [Data Science VM-Image standardmäßig für die Verwendung von XFCE konfiguriert](../machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro.md#x2go).
+        - Erwägen Sie anstelle von Ubuntu 18.04 LTS die Verwendung von Ubuntu 20.04 oder 21.04 LTS, bei denen dieser Netzwerkkonflikt mit dem Agent nicht besteht, wenn GNOME\MATE installiert ist.
+        - Andernfalls müssen Sie zur Verwendung von 18.04 LTS und GNOME\MATE eine Problemumgehung anwenden, um den Netzwerkkonflikt mit dem Agent zu beheben.
+      Siehe hierzu unsere [ReadMe-Dateien und Skripts](https://github.com/Azure/azure-devtestlab/blob/master/samples/ClassroomLabs/Scripts/LinuxGraphicalDesktopSetup/GNOME_MATE/ReadMe.md), die Ubuntu Server 18.04\20.04\21.04 mit GNOME\MATE einrichten.  Wenn Sie diese Skripts zum Einrichten von 18.04 mit GNOME\MATE verwenden, wenden sie die Problemumgehung für den Netzwerkkonflikt an.
 - name: Allgemein
   questions:
   - question: >
+      Wie verhindere ich Kapazitätseinschränkungen und Azure Compute-Kapazitätsbegrenzungen für mein Abonnement?
+    answer: >
+      Wenn Sie Azure Lab Services zum ersten Mal nutzen, müssen Sie einen Antrag auf Erhöhung des Azure Compute-Kapazitätslimits stellen, das für Ihr Abonnement gilt.  Wenn Ihre Lab-Nutzung zunimmt und die Anzahl benötigter VM-Kerne steigt, müssen Sie möglicherweise einen weiteren Antrag zur Erhöhung Ihres Kontingentlimits stellen.
+
+      Bei jeder Bereitstellung neuer Labs müssen Sie im Rahmen Ihrer Vorabplanung sicherstellen, dass in der Region, in der Sie die Bereitstellung planen, eine ausreichende Anzahl von VM-Kernen vorhanden ist.  Dies ist besonders wichtig für GPUs.
+
+      Weitere Informationen zum Planen von Kapazitäts- und Azure Compute-Kapazitätseinschränkungen finden Sie im folgenden Artikel:
+        - [Kapazitätsgrenzen in Azure Lab Services](./capacity-limits.md)
+  - question: >
       Was kann ich tun, wenn meine Frage hier nicht beantwortet wird?
-    answer: "Wenn Ihre Frage hier nicht aufgeführt wird, informieren Sie uns, damit wir Ihnen helfen können, eine Antwort zu finden.\n\n- Veröffentlichen Sie eine Frage am Ende dieses Artikels zu häufig gestellten Fragen. \n- Um eine größere Zielgruppe zu erreichen, veröffentlichen Sie eine Frage im [Tech Community-Forum zu Azure Lab Services](https://techcommunity.microsoft.com/t5/azure-lab-services/bd-p/AzureLabServices). \n- Um Funktionsanforderungen einzureichen, übermitteln Sie Ihre Anfragen und Ideen an die [UserVoice-Plattform für Azure Lab Services](https://feedback.azure.com/forums/320373-lab-services?category_id=352774)."
+    answer: "Wenn Ihre Frage hier nicht aufgeführt wird, informieren Sie uns, damit wir Ihnen helfen können, eine Antwort zu finden.\n\n- Veröffentlichen Sie eine Frage am Ende dieses Artikels zu häufig gestellten Fragen. \n- Um eine größere Zielgruppe zu erreichen, veröffentlichen Sie eine Frage im [Tech Community-Forum zu Azure Lab Services](https://techcommunity.microsoft.com/t5/azure-lab-services/bd-p/AzureLabServices)."

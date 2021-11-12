@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-custom-classification, ignite-fall-2021
-ms.openlocfilehash: 912aa02fadef0f950f5d89535bfe38133b61137b
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c7018ad879e5877c131af041685722d30b2906b2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131101501"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131520131"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -57,8 +57,29 @@ Das bereitgestellte Beispieldataset enthält etwa 200 Filmzusammenfassungen, di
 
 ## <a name="create-a-custom-classification-project"></a>Erstellen eines Projekts zur benutzerdefinierten Klassifizierung
 
-[!INCLUDE [Language Studio project creation](../create-project.md)]
+1. Melden Sie sich bei [Language Studio](https://aka.ms/languageStudio) an. Es wird ein Fenster angezeigt, in dem Sie Ihr Abonnement und Ihre Sprachressource auswählen können. Wählen Sie die Ressource aus, die Sie im Schritt oben erstellt haben.
 
+2. Wählen Sie im Abschnitt **Text klassifizieren** von Language Studio in den verfügbaren Diensten die **benutzerdefinierte Textklassifizierung** aus, und wählen Sie sie aus.
+
+3. Wählen Sie im oberen Menü Ihrer Projektseite **Neues Projekt erstellen** aus. Durch das Erstellen eines Projekts können Sie Daten kennzeichnen sowie Ihre Modelle trainieren, auswerten, verbessern und bereitstellen. 
+
+    :::image type="content" source="../../media/create-project.png" alt-text="Screenshot der Seite zur Projekterstellung." lightbox="../../media/create-project.png":::
+<!--
+4. If you have created your resource using the steps above, the **Connect storage** step will be completed already. You only need to do this step once for each resource you use and it is irreversible. If you connect a storage account to your resource, you cannot disconnect it later.
+
+    :::image type="content" source="../../../custom-named-entity-recognition/media/connect-storage.png" alt-text="A screenshot showing the storage connection screen." lightbox="../../../custom-named-entity-recognition/media/connect-storage.png":::
+-->
+4. Wenn Sie Ihre Ressource mithilfe der oben genannten Schritten erstellt haben, ist der Schritt **Verbindungsherstellung mit dem Speicher** bereits abgeschlossen. Andernfalls müssen Sie [Rollen für Ihr Speicherkonto](../../how-to/create-project.md#roles-for-your-storage-account) zuweisen, bevor Sie dieses mit der Ressource verbinden.
+
+5. Geben Sie die Projektinformationen ein, darunter einen Namen, eine Beschreibung und die Sprache der Dateien in Ihrem Projekt. Sie können den Namen Ihres Projekts später nicht mehr ändern.
+    >[!TIP]
+    > Ihr Dataset muss nicht zur Gänze in derselben Sprache vorliegen. Sie können mehrere Dateien verwenden, jede mit jeweils einer anderen unterstützten Sprache. Wenn Ihr Dataset Dateien in verschiedenen Sprachen enthält oder Sie zur Laufzeit mit verschiedenen Sprachen rechnen, wählen Sie **mehrsprachiges Dataset aktivieren** aus, wenn Sie die grundlegenden Informationen für Ihr Projekt eingeben.
+
+6. Wählen Sie Ihren Projekttyp aus. In diesem Schnellstart werden wir ein Projekt zur Klassifizierung mehrerer Beschriftungen erstellen, bei dem Sie derselben Datei mehrere Klassen zuweisen können. Klicken Sie dann auf **Weiter**. Erfahren Sie mehr über die [Projekttypen](../../glossary.md#project-types).
+
+7. Wählen Sie den Container aus, in den Sie Ihre Daten hochgeladen haben. Für diese Schnellstartanleitung verwenden wir die vorhandene Tagdatei, die im Container verfügbar ist. Klicken Sie dann auf **Weiter**.
+
+8. Überprüfen Sie die eingegebenen Daten, und wählen Sie **Projekt erstellen** aus.
     
 ## <a name="train-your-model"></a>Trainieren Ihres Modells
 

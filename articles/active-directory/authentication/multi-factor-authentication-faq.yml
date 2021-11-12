@@ -12,12 +12,12 @@ metadata:
   manager: daveba
   ms.reviewer: michmcla
   ms.collection: M365-identity-device-management
-  ms.openlocfilehash: 101eec41e463be264f51015c9672b60bd52e0d40
-  ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+  ms.openlocfilehash: 083889b09517f8a0462abb7ea0f76e6071a03f95
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/13/2021
-  ms.locfileid: "124787393"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130233807"
 title: Häufig gestellte Fragen zu Azure AD Multi-Factor Authentication
 summary: >
   Dieser Artikel enthält Antworten auf häufig gestellte Fragen zu Azure AD Multi-Factor Authentication und zur Nutzung des Multi-Factor Authentication-Diensts. Er ist unterteilt in allgemeine Fragen zum Dienst sowie in Fragen zu Abrechnungsmodellen, zur Benutzeroberfläche und zur Problembehandlung.
@@ -285,4 +285,11 @@ sections:
 
 
       Um diesen Fehler zu umgehen, können Sie separate Benutzerkonten für Administratoraufgaben und Nicht-Administratoraufgaben erstellen. Später können Sie die Postfächer beider Konten miteinander verknüpfen, sodass Sie sich bei Outlook lediglich über ihr Nicht-Administratorkonto anmelden. Weitere Informationen über diese Lösung und wie ein Administrator die Möglichkeit erhält, den Inhalt des Postfachs eines Benutzers zu öffnen und anzuzeigen, finden Sie in [Verwalten von Berechtigungen für Empfänger](https://help.outlook.com/141/gg709759.aspx?sl=1).
+  - question: >
+      Was sind die möglichen Gründe für einen Benutzerfehler mit dem Fehlercode „LsaLogonUser-Fehler mit NTSTATUS -1073741715 für MFA Server“?
+    answer: >
+      Fehler 1073741715 = Statusfehler bei der Anmeldung -> Die versuchte Anmeldung ist ungültig. Dies ist entweder auf einen falschen Benutzernamen oder eine falsche Authentifizierung zurückzuführen.
+
+
+      Ein möglicher Grund für diesen Fehler: Wenn die eingegebenen primären Anmeldeinformationen korrekt sind, liegt möglicherweise ein Konflikt zwischen der unterstützten NTLM-Version auf dem MFA-Server und dem Domänencontroller vor. MFA Server unterstützt nur NTLMv1 (LmCompatabilityLevel=1 bis 4), nicht jedoch NTLMv2 (LmCompatabilityLevel=5).
 additionalContent: "## <a name=\"next-steps\"></a>Nächste Schritte\n  Wenn Ihre Frage hier nicht beantwortet wird, sind die folgenden Supportoptionen verfügbar:\n        \n  * Durchsuchen Sie die [Microsoft Support Wissensdatenbank](https://support.microsoft.com) nach Lösungen für häufige technische Probleme.\n  * In [Azure Active Directory Q&A](/answers/topics/azure-active-directory.html)können Sie nach technischen Fragen und Antworten aus der Community suchen oder eine eigene Frage stellen.\n  * Wenden Sie sich über den [Support für Azure Multi-Factor Authentication-Server](https://support.microsoft.com/oas/default.aspx?prid=14947) an einen Support-Experten. Es ist hilfreich, wenn Sie uns so viele Informationen wie möglich über Ihr Problem geben, wenn Sie sich mit uns in Verbindung setzen. Diese Informationen können die Website umfassen, auf der der Fehler aufgetreten ist, den spezifischen Fehlercode, die spezifische Sitzungs-ID, und die ID des Benutzers, der den Fehler beobachtet hat.\n  * Wenn Sie ein PhoneFactor-Kunde mit einem älteren Gerät sind und Fragen haben oder Hilfe beim Zurücksetzen eines Kennworts benötigen, öffnen Sie über die E-Mail-Adresse [phonefactorsupport@microsoft.com](mailto:phonefactorsupport@microsoft.com) einen Supportvorgang."

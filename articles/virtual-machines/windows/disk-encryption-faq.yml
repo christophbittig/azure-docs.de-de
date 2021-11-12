@@ -10,12 +10,12 @@ metadata:
   ms.author: mbaldwin
   ms.date: 11/01/2019
   ms.custom: seodec18
-  ms.openlocfilehash: ed0948b665846c6114ce0bf69872f384d7703c5e
-  ms.sourcegitcommit: 23040f695dd0785409ab964613fabca1645cef90
+  ms.openlocfilehash: add854c34ccce78dcd8af98a1f62ea089fad197a
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 06/14/2021
-  ms.locfileid: "112063605"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130262943"
 title: Häufig gestellte Fragen zu Azure Disk Encryption für virtuelle Windows-Computer
 summary: >
   Dieser Artikel bietet Antworten auf häufig gestellte Fragen (FAQ) zu Azure Disk Encryption für virtuelle Windows-Computer. Weitere Informationen zu diesem Dienst finden Sie unter [Azure Disk Encryption-Übersicht](disk-encryption-overview.md).
@@ -63,9 +63,13 @@ sections:
       Wie rotiere ich geheime oder Verschlüsselungsschlüssel?
     answer: "Zum Rotieren geheimer Schlüssel rufen Sie einfach den gleichen Befehl auf, den Sie ursprünglich zur Aktivierung der Datenträgerverschlüsselung verwendet haben, und geben Sie einen anderen Key Vault an. Zum Rotieren des Schlüssels für die Verschlüsselung anderer Schlüssel (Key Encryption Key, KEK) rufen Sie den gleichen Befehl auf, den Sie ursprünglich zum Aktivieren der Datenträgerverschlüsselung verwendet haben, und geben die neue Schlüsselverschlüsselung an. \n\n>[!WARNING]\n> - Wenn Sie zuvor [Azure Disk Encryption mit Azure AD-App](disk-encryption-windows-aad.md) durch Angabe von Azure AD-Anmeldeinformationen zum Verschlüsseln dieses virtuellen Computers verwendet haben, müssen Sie diese Verschlüsselungsoption auch weiterhin für Ihren virtuellen Computer verwenden. Sie können Azure Disk Encryption auf diesem verschlüsselten VM nicht verwenden, da dies kein unterstütztes Szenario ist und das Verlassen der AAD-Anwendung für diese verschlüsselte VM somit noch nicht unterstützt wird.\n"
   - question: >
-      Wie füge ich einen Schlüssels für die Verschlüsselung anderer Schlüssel (Key Encryption Key, KEK) hinzu oder entferne ihn, wenn ich ursprünglich keinen verwendet habe?
+      Wie entferne ich oder füge einen Schlüssel für die Verschlüsselung anderer Schlüssel (Key Encryption Key, KEK) hinzu, wenn ursprünglich kein Schlüssel verwendet wurde?
     answer: >
       Um einen KEK hinzuzufügen, rufen Sie den Aktivierungsbefehl erneut auf, und übergeben den KEK-Parameter. Um einen KEK zu entfernen, rufen Sie den Aktivierungsbefehl erneut ohne den KEK-Parameter auf.
+  - question: >
+      Welche Größe sollte ich für meinen KEK verwenden?
+    answer: >
+      Windows Server 2022 umfasst eine neuere Version von BitLocker, und wie in den Voraussetzungen beschrieben, wird empfohlen, mit einer Schlüsselgröße von 3072 oder 4096 Bit zu beginnen. Für frühere Versionen von Windows können Sie auch 2048 Bit als Schlüsselgröße verwenden.
   - question: >
       Ermöglicht Azure Disk Encryption die Verwendung von BYOK (Bring Your Own Key)?
     answer: >
