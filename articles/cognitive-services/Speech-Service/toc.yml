@@ -619,6 +619,8 @@ items:
             href: speech-sdk.md
           - name: Einrichten des Speech SDK
             href: quickstarts/setup-platform.md
+          - name: Problembehandlung für das Speech SDK
+            href: troubleshooting.md
           - name: Versionsanmerkungen zum Speech-SDK
             href: releasenotes.md
           - name: Verweis

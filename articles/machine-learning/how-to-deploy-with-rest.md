@@ -8,15 +8,15 @@ ms.subservice: core
 ms.topic: how-to
 author: rsethur
 ms.author: seramasu
-ms.date: 08/05/2021
+ms.date: 10/21/2021
 ms.reviewer: laobri
 ms.custom: devplatv2
-ms.openlocfilehash: 9cb3718a0e4ac8ef322fafd16236dfab0fa6f6fc
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 05622e6300dc19e28efaba114aded16fc1a26788
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131087588"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131557355"
 ---
 # <a name="deploy-models-with-rest-preview"></a>Bereitstellen von Modellen per REST (Vorschau)
 
@@ -46,7 +46,7 @@ In diesem Artikel wird beschrieben, wie Sie die neuen REST-APIs für folgende Zw
 > [!NOTE]
 > Endpunktnamen müssen auf Azure-Regionsebene eindeutig sein. Beispielsweise kann es nur einen Endpunkt namens „my-endpoint“ in „westus2“ geben.
 
-:::code language="rest" source="~/azureml-examples-main/cli/deploy-rest.sh" id="set_endpoint_name":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/deploy-rest.sh" id="set_endpoint_name":::
 
 ## <a name="azure-machine-learning-managed-online-endpoints"></a>Verwaltete Azure Machine Learning-Onlineendpunkte
 Verwaltete Onlineendpunkte (Vorschau) gestatten Ihnen die Bereitstellung Ihres Modells, ohne dass Sie die zugrunde liegende Infrastruktur erstellen und verwalten müssen. In diesem Artikel erstellen Sie einen Onlineendpunkt und eine Bereitstellung und überprüfen ihn, indem Sie ihn aufrufen. Zunächst müssen Sie jedoch die für die Bereitstellung erforderlichen Ressourcen registrieren, einschließlich Modell, Code und Umgebung.
@@ -61,15 +61,11 @@ In den folgenden REST-API-Aufrufen verwenden wir `SUBSCRIPTION_ID`, `RESOURCE_GR
 
 Für administrative REST-Anforderungen wird ein [Token für die Dienstprinzipalauthentifizierung](how-to-manage-rest.md#retrieve-a-service-principal-authentication-token) angefordert. Ersetzen Sie `TOKEN` durch Ihren eigenen Wert. Sie können dieses Token mit dem folgenden Befehl abrufen:
 
-```bash
-TOKEN=$(az account get-access-token --query accessToken -o tsv)
-```
+:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/deploy-rest.sh" id="get_access_token":::
 
-Der Dienstanbieter verwendet das `api-version`-Argument, um Kompatibilität zu gewährleisten. Das `api-version`-Argument variiert von Dienst zu Dienst. Die aktuelle Version der Azure Machine Learning-API lautet `2021-03-01-preview`. Legen Sie die API-Version zur Vorbereitung für zukünftige Versionen als Variable fest:
+Der Dienstanbieter verwendet das `api-version`-Argument, um Kompatibilität zu gewährleisten. Das `api-version`-Argument variiert von Dienst zu Dienst. Legen Sie die API-Version zur Vorbereitung für zukünftige Versionen als Variable fest:
 
-```bash
-API_VERSION="2021-03-01-preview"
-```
+:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/deploy-rest.sh" id="api_version":::
 
 ### <a name="get-storage-account-details"></a>Abrufen von Speicherkontodetails
 
@@ -77,88 +73,82 @@ Um das Modell und den Code zu registrieren, müssen sie zuerst in ein Speicherko
 
 Sie können das Tool [jq](https://stedolan.github.io/jq/) verwenden, um das JSON-Ergebnis zu analysieren und die erforderlichen Werte zu ermitteln. Sie können diese Informationen auch über das Azure-Portal ermitteln:
 
-:::code language="rest" source="~/azureml-examples-main/cli/deploy-rest.sh" id="get_storage_details":::
-
-Speicherschlüssel abrufen:
-
-```bash
-export AZURE_STORAGE_KEY=$(az storage account keys list --account-name $AZURE_STORAGE_ACCOUNT | jq '.[0].value')
-```
+:::code language="rest-api" source="~/azureml-examples-main/cli/deploy-rest.sh" id="get_storage_details":::
 
 ### <a name="upload--register-code"></a>Hochladen und Registrieren des Codes
 
 Nachdem Sie über den Datenspeicher verfügen, können Sie das Bewertungsskript hochladen. Verwenden Sie die Azure Storage-CLI, um ein Blob in Ihren Standardcontainer hochzuladen:
 
-:::code language="rest" source="~/azureml-examples-main/cli/deploy-rest.sh" id="upload_code":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/deploy-rest.sh" id="upload_code":::
 
 > [!TIP]
 > Sie können auch andere Uploadmethoden verwenden, z. B. das Azure-Portal oder [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/).
 
 Nachdem Sie Ihren Code hochgeladen haben, können Sie ihn mit einer PUT-Anforderung angeben und mit `datastoreId` auf den Datenspeicher verweisen:
 
-:::code language="rest" source="~/azureml-examples-main/cli/deploy-rest.sh" id="create_code":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/deploy-rest.sh" id="create_code":::
 
 ### <a name="upload-and-register-model"></a>Hochladen und Registrieren des Modells
 
 Laden Sie die Modelldateien ähnlich wie den Code hoch:
 
-:::code language="rest" source="~/azureml-examples-main/cli/deploy-rest.sh" id="upload_model":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/deploy-rest.sh" id="upload_model":::
 
 Registrieren Sie jetzt das Modell:
 
-:::code language="rest" source="~/azureml-examples-main/cli/deploy-rest.sh" id="create_model":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/deploy-rest.sh" id="create_model":::
 
 ### <a name="create-environment"></a>Erstellen der Umgebung
 Die Bereitstellung muss in einer Umgebung ausgeführt werden, die über die erforderlichen Abhängigkeiten verfügt. Erstellen Sie die Umgebung mit einer PUT-Anforderung. Verwenden Sie ein Docker-Image aus Microsoft Container Registry. Sie können das Docker-Image mit `Docker` konfigurieren und Conda-Abhängigkeiten mit `condaFile` hinzufügen.
 
 Im folgenden Codeausschnitt wurde der Inhalt einer Conda-Umgebung (YAML-Datei) in eine Umgebungsvariable gelesen:
 
-:::code language="rest" source="~/azureml-examples-main/cli/deploy-rest.sh" id="create_environment":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/deploy-rest.sh" id="create_environment":::
 
 ### <a name="create-endpoint"></a>Endpunkt erstellen
 
 Erstellen Sie den Onlineendpunkt:
 
-:::code language="rest" source="~/azureml-examples-main/cli/deploy-rest.sh" id="create_endpoint":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/deploy-rest.sh" id="create_endpoint":::
 
 ### <a name="create-deployment"></a>Bereitstellung erstellen
 
 Erstellen Sie eine Bereitstellung unter dem Endpunkt:
 
-:::code language="rest" source="~/azureml-examples-main/cli/deploy-rest.sh" id="create_deployment":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/deploy-rest.sh" id="create_deployment":::
 
 ### <a name="invoke-the-endpoint-to-score-data-with-your-model"></a>Aufrufen des Endpunkts zum Bewerten von Daten mit Ihrem Modell
 
 Wir benötigen den Bewertungs-URI und das Zugriffstoken, um den Endpunkt aufzurufen. Rufen Sie zunächst den Bewertungs-URI ab:
 
-:::code language="rest" source="~/azureml-examples-main/cli/deploy-rest.sh" id="get_endpoint":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/deploy-rest.sh" id="get_endpoint":::
 
 Rufen Sie das Zugriffstoken des Endpunkts ab:
 
-:::code language="rest" source="~/azureml-examples-main/cli/deploy-rest.sh" id="get_access_token":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/deploy-rest.sh" id="get_access_token":::
 
 Rufen Sie jetzt den Endpunkt mit curl auf:
 
-:::code language="rest" source="~/azureml-examples-main/cli/deploy-rest.sh" id="score_endpoint":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/deploy-rest.sh" id="score_endpoint":::
 
 ### <a name="check-the-logs"></a>Überprüfen der Protokolle
 
 Überprüfen Sie die Bereitstellungsprotokolle:
 
-:::code language="rest" source="~/azureml-examples-main/cli/deploy-rest.sh" id="get_deployment_logs":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/deploy-rest.sh" id="get_deployment_logs":::
 
 ### <a name="delete-the-endpoint"></a>Löschen des Endpunkts
 
 Wenn Sie die Bereitstellung nicht verwenden, sollten Sie sie mit dem folgenden Befehl löschen (der Endpunkt und alle zugrunde liegenden Bereitstellungen werden gelöscht):
 
-:::code language="rest" source="~/azureml-examples-main/cli/deploy-rest.sh" id="delete_endpoint":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/deploy-rest.sh" id="delete_endpoint":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Erfahren Sie, wie Sie Ihr Modell [mithilfe der Azure-Befehlszeilenschnittstelle](how-to-deploy-managed-online-endpoints.md) bereitstellen.
 * Erfahren Sie, wie Sie Ihr Modell [über das Studio](how-to-use-managed-online-endpoint-studio.md) bereitstellen.
-* Erfahren Sie mehr über die [Problembehandlung für die Bereitstellung und Bewertung verwalteter Onlineendpunkte (Vorschau)](./how-to-troubleshoot-online-endpoints.md).
-* Erfahren Sie mehr über das [Zugreifen auf Azure-Ressourcen mit einem verwalteten Onlineendpunkt und einer systemseitig verwalteten Identität (Vorschau)](tutorial-deploy-managed-endpoints-using-system-managed-identity.md).
+* Erfahren Sie mehr über die [Problembehandlung für die Bereitstellung und Bewertung verwalteter Onlineendpunkte (Vorschau)](how-to-troubleshoot-managed-online-endpoints.md).
+* Erfahren Sie, wie Sie [mit einem verwalteten Online-Endpunkt und einer verwalteten Identität auf Azure-Ressourcen zugreifen (Vorschau)](how-to-access-resources-from-endpoints-managed-identities.md)
 * Erfahren Sie, wie Sie [Onlineendpunkte überwachen](how-to-monitor-online-endpoints.md).
 * Erfahren Sie mehr über den [sicheren Rollout für Onlineendpunkte (Vorschau)](how-to-safely-rollout-managed-endpoints.md).
 * [Anzeigen der Kosten für einen verwalteten Azure Machine Learning-Onlineendpunkt (Vorschau)](how-to-view-online-endpoints-costs.md)

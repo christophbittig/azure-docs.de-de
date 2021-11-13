@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 42cdee3f9b4354e2396f14e17f5f146c27ff29c5
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 59c29f3ce91f5ee1e1e5ee65710cc34ce1572907
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131506128"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131845994"
 ---
 # <a name="create-and-provision-iot-edge-for-linux-on-windows-devices-at-scale-using-x509-certificates"></a>Erstellen und Bereitstellen von Geräten für IoT Edge für Linux unter Windows im großen Stil mithilfe von X.509-Zertifikaten
 
@@ -108,7 +108,7 @@ Führen Sie für Windows Admin Center die folgenden Schritte aus:
 
 ---
 
-## <a name="verify-successful-configuration"></a>Überprüfen der erfolgreichen Konfiguration
+## <a name="verify-successful-installation"></a>Bestätigen einer erfolgreichen Installation
 
 Vergewissern Sie sich, dass IoT Edge für Linux unter Windows erfolgreich auf Ihrem IoT Edge-Gerät installiert und konfiguriert wurde.
 
@@ -118,7 +118,7 @@ Sie können überprüfen, ob die individuelle Registrierung, die Sie im Geräteb
 
 # <a name="group-enrollment"></a>[Gruppenregistrierung](#tab/group-enrollment)
 
-Sie können überprüfen, ob die Gruppenregistrierung, die Sie im Gerätebereitstellungs-Service erstellt haben, verwendet wurde. Navigieren Sie im Azure-Portal zu Ihrer Gerätebereitstellungs-Service-Instanz. Öffnen Sie die Registrierungsdetails für die von Ihnen erstellte Gruppenregistrierung. Wechseln Sie zur Registerkarte **Registrierungsdatensätze**, um alle in dieser Gruppe registrierten Geräte anzuzeigen.
+Sie können überprüfen, ob die Gruppenregistrierung, die Sie im Gerätebereitstellungsdienst erstellt haben, verwendet wurde. Navigieren Sie im Azure-Portal zu Ihrer Gerätebereitstellungs-Service-Instanz. Öffnen Sie die Registrierungsdetails für die von Ihnen erstellte Gruppenregistrierung. Wechseln Sie zur Registerkarte **Registrierungsdatensätze**, um alle in dieser Gruppe registrierten Geräte anzuzeigen.
 
 ---
 
@@ -169,7 +169,7 @@ Wenn Sie ein neues IoT Edge-Gerät erstellen, wird es im Azure-Portal mit dem St
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Der Gerätebereitstellungs-Service ermöglicht es Ihnen, die Geräte-ID und Gerätezwillingstags beim Bereitstellen des neuen Geräts festzulegen. Sie können diese Werte verwenden, um einzelne Geräte oder Gruppen von Geräten über die automatische Geräteverwaltung als Ziel festzulegen. Weitere Informationen finden Sie unter [Bedarfsgerechtes Bereitstellen und Überwachen von IoT Edge-Modulen mithilfe des Azure-Portals](how-to-deploy-at-scale.md) oder [Verwenden der Azure CLI](how-to-deploy-cli-at-scale.md).
+Der Registrierungsprozess des Gerätebereitstellungs-Service ermöglicht es Ihnen, die Geräte-ID und die Tags von Gerätezwillingen beim Bereitstellen des neuen Geräts festzulegen. Sie können diese Werte verwenden, um einzelne Geräte oder Gruppen von Geräten über die automatische Geräteverwaltung als Ziel festzulegen. Weitere Informationen finden Sie unter [Bedarfsgerechtes Bereitstellen und Überwachen von IoT Edge-Modulen mithilfe des Azure-Portals](how-to-deploy-at-scale.md) oder [Verwenden der Azure CLI](how-to-deploy-cli-at-scale.md).
 
 Sie können außerdem:
 

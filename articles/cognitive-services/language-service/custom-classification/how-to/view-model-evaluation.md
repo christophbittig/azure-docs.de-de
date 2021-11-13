@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-custom-classification, ignite-fall-2021
-ms.openlocfilehash: 6b7d56ee6eb7280b285442a2c82001b100d1cf06
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: d0b708f3b06eaeb458df4e4c9da73e86b451e137
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132054370"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131469649"
 ---
 # <a name="view-the-model-evaluation"></a>Anzeigen der Modellauswertung
 
@@ -31,7 +31,7 @@ Bevor Sie Ihr Modell trainieren, benötigen Sie Folgendes:
 * [Mit einem Tag versehene Daten](tag-data.md)
 * Ein [erfolgreich trainiertes Modell](train-model.md)
 
-Weitere Informationen finden Sie im [Lebenszyklus der Anwendungsentwicklung](../overview.md#project-development-lifecycle).
+Weitere Informationen finden Sie im [Lebenszyklus der Anwendungsentwicklung](../overview.md#application-development-lifecycle).
 
 ## <a name="model-evaluation"></a>Modellauswertung
 

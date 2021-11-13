@@ -1399,7 +1399,7 @@
           href: ../virtual-network/ip-services/virtual-network-deploy-static-pip-arm-portal.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
         - name: Azure PowerShell
           href: ../virtual-network/ip-services/virtual-network-deploy-static-pip-arm-ps.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: ../virtual-network/ip-services/virtual-network-deploy-static-pip-arm-cli.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
         - name: Hinzufügen einer öffentlichen IP-Adresse zu einem vorhanden virtuellen Computer
           href: ../virtual-network/ip-services/associate-public-ip-address-vm.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
@@ -1419,7 +1419,7 @@
           href: ../virtual-network/ip-services/virtual-network-multiple-ip-addresses-portal.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
         - name: Azure PowerShell
           href: ../virtual-network/ip-services/virtual-network-multiple-ip-addresses-powershell.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: ../virtual-network/ip-services/virtual-network-multiple-ip-addresses-cli.md?context=%2fazure%2fvirtual-machines%2fcontext%2fcontext
         - name: Hinzufügen oder Entfernen von Netzwerkschnittstellen
           href: ../virtual-network/virtual-network-network-interface-vm.md?context=/azure/virtual-machines/context/context
@@ -1427,7 +1427,7 @@
           items:
             - name: Azure PowerShell
               href: ./windows/multiple-nics.md
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: ./linux/multiple-nics.md
     - name: 'Erstellen eines virtuellen Computers: beschleunigter Netzwerkbetrieb'
       items:
@@ -1491,7 +1491,7 @@
     - name: Übersicht
       displayName: Security Overview
       href: ../security/fundamentals/virtual-machines-overview.md?context=/azure/virtual-machines/context/context
-    - name: Azure Security Center
+    - name: Microsoft Defender für Cloud
       href: ../security-center/security-center-introduction.md
     - name: Sicherheitsbaselines
       items:

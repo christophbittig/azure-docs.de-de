@@ -10,12 +10,12 @@ author: Blackmist
 ms.date: 09/23/2021
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 30347ccbea23fc91429a9653857aba9292afbc6a
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 710402b4222a01a5235bba43d30dcf318a322275
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131560946"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132063796"
 ---
 # <a name="manage-azure-machine-learning-workspaces-using-azure-cli"></a>Verwalten von Azure Machine Learning-Arbeitsbereichen mithilfe der Azure CLI
 
@@ -125,7 +125,7 @@ az ml workspace create -w <workspace-name>
 
 Um einen neuen Arbeitsbereich zu erstellen und dabei vorhandene zugehörige Ressourcen mithilfe der CLI zu verwenden, müssen Sie zunächst in einer Konfigurationsdatei festlegen, wie Ihr Arbeitsbereich konfiguriert werden soll.
 
-:::code language="YAML" source="~/azureml-examples-cli-preview/cli/resources/workspace/with-existing-resources.yml":::
+:::code language="YAML" source="~/azureml-examples-main/cli/resources/workspace/with-existing-resources.yml":::
 
 Dann können Sie auf diese Konfigurationsdatei als Teil des CLI-Befehls zur Erstellung des Arbeitsbereichs verweisen.
 
@@ -202,7 +202,7 @@ Weitere Einzelheiten zur Verwendung dieser Befehle finden Sie auf den [CLI-Refer
 
 Wenn Sie einen privaten Link verwenden, kann Ihr Arbeitsbereich keine Azure Container Registry-Aufgaben für die Image-Erstellung verwenden. Daher müssen Sie die Eigenschaft image_build_compute auf den Namen eines CPU-Compute-Clusters setzen, der für die Erstellung der Docker-Image-Umgebung verwendet werden soll. Mit der Eigenschaft public_network_access können Sie außerdem festlegen, ob der private Link-Arbeitsbereich über das Internet zugänglich sein soll.
 
-:::code language="YAML" source="~/azureml-examples-cli-preview/cli/resources/workspace/privatelink.yml":::
+:::code language="YAML" source="~/azureml-examples-main/cli/resources/workspace/privatelink.yml":::
 
 ```azurecli-interactive
 az ml workspace create -g <resource-group-name> --file privatelink.yml
@@ -250,7 +250,7 @@ Verwenden Sie den `customer_managed_key`-Parameter, der die Parameter `key_vault
 
 Um die [von Microsoft in Ihrem Arbeitsbereich erfassten Daten einzuschränken](./concept-data-encryption.md#encryption-at-rest), können Sie zusätzlich die `hbi_workspace`-Eigenschaft angeben. 
 
-:::code language="YAML" source="~/azureml-examples-cli-preview/cli/resources/workspace/cmk.yml":::
+:::code language="YAML" source="~/azureml-examples-main/cli/resources/workspace/cmk.yml":::
 
 Dann können Sie auf diese Konfigurationsdatei als Teil des CLI-Befehls zur Erstellung des Arbeitsbereichs verweisen.
 

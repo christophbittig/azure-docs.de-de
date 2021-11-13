@@ -5,12 +5,12 @@ author: kgremban
 ms.author: kgremban
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 128c9736d67f3abfde92ef594bd8bc0d2de4c6ec
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 16338971721edfb68c93821ddf08c5cc36caf0b3
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131505482"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131845993"
 ---
 ## <a name="create-a-dps-enrollment"></a>Erstellen einer DPS-Registrierung
 
@@ -63,6 +63,8 @@ Individuelle Registrierungen verwenden den öffentlichen Teil des Identitätszer
       ```
 
 1. Wählen Sie **Speichern** aus.
+
+Unter **Registrierungen verwalten** wird die **Registrierungs-ID** für die Registrierung angezeigt, die Sie gerade erstellt haben. Notieren Sie sich diese ID, da sie bei der Bereitstellung Ihres Geräts verwendet werden kann.
 
 Nachdem nun eine Registrierung für dieses Gerät vorhanden ist, kann die IoT Edge-Runtime das Gerät während der Installation automatisch bereitstellen.
 
@@ -141,6 +143,8 @@ Weitere Informationen zu Registrierungen im Device Provisioning Service finden S
       ```
 
 1. Wählen Sie **Speichern** aus.
+
+Unter **Registrierungen verwalten** wird die **Registrierungs-ID** für die Registrierung angezeigt, die Sie gerade erstellt haben. Notieren Sie sich diese ID, da sie bei der Bereitstellung Ihres Geräts verwendet werden kann.
 
 Nachdem jetzt eine Registrierung für diese Geräte vorhanden ist, kann die IoT Edge-Runtime die Geräte während der Installation automatisch bereitstellen.
 

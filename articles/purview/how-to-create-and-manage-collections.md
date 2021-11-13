@@ -6,16 +6,21 @@ ms.author: viseshag
 ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: how-to
-ms.date: 11/04/2021
+ms.date: 10/22/2021
 ms.custom: template-how-to
-ms.openlocfilehash: 0c288971fefc95bfed7d5c4b7496dda628bb1f90
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: e96a3e1e523c466cc3dc851725b648cba78dc8e8
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131845264"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131502115"
 ---
 # <a name="create-and-manage-collections-in-azure-purview"></a>Erstellen und Verwalten von Sammlungen in Azure Purview
+
+> [!NOTE]
+> Zurzeit gilt dieser Leitfaden nur für Azure Purview-Instanzen, die **am oder nach dem 18. August 2021** erstellt wurden. Vor dem 18. August erstellte Instanzen können Sammlungen erstellen, aber keine Berechtigungen über diese Sammlungen verwalten. Informationen zum Erstellen einer Sammlung für Purview-Instanzen, die vor dem 18. August erstellt wurden, finden Sie im [**Leitfaden zu Legacysammlungen**](#legacy-collection-guide) am Ende dieses Artikels.
+>
+> Alle Legacykonten erhalten in den kommenden Wochen automatisch ein Upgrade. Sie erhalten eine E-Mail-Benachrichtigung, wenn Ihr Purview-Konto aktualisiert wird. Informationen darüber, was sich bei einem Upgrade Ihres Kontos ändert, finden Sie in unserem Leitfaden zum [Upgrade von Konten](concept-account-upgrade.md).
 
 Sammlungen in Azure Purview können verwendet werden, um Assets und Quellen nach den Abläufen in Ihrem Unternehmen zu organisieren, aber sie sind auch das Werkzeug, um den Zugriff in Purview zu verwalten. Der vorliegende Leitfaden führt Sie durch die Erstellung und Verwaltung dieser Sammlungen und beschreibt die Schritte zum Registrieren von Quellen und zum Hinzufügen von Ressourcen zu Ihren Sammlungen.
 
@@ -272,6 +277,27 @@ Ressourcen und Quellen sind ebenfalls Sammlungen zugeordnet. Wenn während einer
 1. Um die Details einer Ressource anzuzeigen, wählen Sie den Ressourcennamen im Suchergebnis aus. Sie können die Ressourcen auch überprüfen und sie per Massenbearbeitung ändern.
 
     :::image type="content" source="./media/how-to-create-and-manage-collections/view-asset-details.png" alt-text="Screenshot: Purview Studio-Katalogfenster mit ausgewählter Registerkarte „Nach Sammlung“ und hervorgehobenen Kontrollkästchen für die Ressource"border="true":::
+
+## <a name="legacy-collection-guide"></a>Leitfaden zu Legacysammlungen
+
+> [!NOTE]
+> Dieser Leitfaden für Legacysammlungen gilt nur für Purview-Instanzen, die vor dem 18. August 2021 erstellt wurden. Für Instanzen, die nach diesem Zeitpunkt erstellt wurden, sollten Sie dem obigen Leitfaden folgen.
+
+Legacysammlungen ordnen lediglich Quellen in der Datenzuordnung an und verwalten keine Berechtigungen für diese Quellen.
+
+### <a name="create-a-legacy-collection"></a>Erstellen einer Legacysammlung
+
+1. Wählen Sie im linken Bereich „Data Map“ aus, um die Datenzuordnung zu öffnen. Mithilfe der Zuordnungsansicht können Sie Ihre Sammlungen und die darunter aufgeführten Quellen anzeigen.
+
+    :::image type="content" source="./media/how-to-create-and-manage-collections/legacy-collection-view.png" alt-text="Screenshot: Purview Studio-Fenster mit geöffneter Option „Data Map“" border="true":::
+
+1. Wählen Sie **+ Neue Sammlung** aus.
+
+    :::image type="content" source="./media/how-to-create-and-manage-collections/legacy-collection-create.png" alt-text="Screenshot: Purview Studio-Fenster mit geöffneter Option „Data Map“ und hervorgehobener Option „+ Neue Sammlung“" border="true":::
+
+1. Geben Sie Ihrer Sammlung einen Namen, und wählen Sie ein übergeordnetes Element oder „Keine“ aus. Klicken Sie auf **Erstellen**. Die Sammlungsinformationen werden in der Datenzuordnung widergespiegelt.
+
+    :::image type="content" source="./media/how-to-create-and-manage-collections/legacy-collection-name.png" alt-text="Screenshot: Purview Studio mit dem Fenster für die neue Sammlung" border="true":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

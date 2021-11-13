@@ -70,10 +70,10 @@ items:
         href: choose-pricing-tier.md
       - name: Creator für Gebäudepläne
         items:
-          - name: Geografischer Bereich des Creator-Diensts
-            href: creator-geographic-scope.md
           - name: Konzepte für Gebäudepläne
             href: creator-indoor-maps.md
+          - name: Geografischer Bereich des Creator-Diensts
+            href: creator-geographic-scope.md
           - name: Fehler und Warnungen bei der Zeichnungskonvertierung
             href: drawing-conversion-error-codes.md
       - name: Verschlüsselung für ruhende Daten

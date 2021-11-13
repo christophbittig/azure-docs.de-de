@@ -53,9 +53,9 @@
         - name: Architektur der Regel-Engine
           href: front-door-rules-engine.md
         - name: Vergleichsbedingungen für Regeln
-          href: front-door-rules-engine-match-conditions.md
+          href: rules-match-conditions.md
         - name: Regelaktionen
-          href: front-door-rules-engine-actions.md
+          href: rules-actions.md
     - name: URL Rewrite
       href: front-door-url-rewrite.md
     - name: URL Redirect
@@ -131,7 +131,7 @@
         - name: Edgestandorte nach Region
           href: edge-locations-by-region.md
         - name: Edgestandorte nach Abkürzung
-          href: edge-locations-abbreviation.md
+          href: edge-locations-by-abbreviation.md
     - name: Azure CLI
       href: /cli/azure/afd/
     - name: Azure PowerShell

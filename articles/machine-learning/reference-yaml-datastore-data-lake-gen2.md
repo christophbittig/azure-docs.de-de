@@ -10,12 +10,12 @@ author: ynpandey
 ms.author: yogipandey
 ms.date: 10/21/2021
 ms.reviewer: laobri
-ms.openlocfilehash: 56041a7fc16b09f1622d7090a3ef6e2d088742ee
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: a72738215c83aaef0e1260058f87a1bf06911774
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131556063"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132059467"
 ---
 # <a name="cli-v2-azure-data-lake-gen2-yaml-schema"></a>CLI (V2) YAML-Schema für Azure Data Lake Gen2
 
@@ -31,12 +31,12 @@ Das JSON-Quellschema finden Sie unter https://azuremlschemas.azureedge.net/lates
 | `type` | Zeichenfolge | **Erforderlich.** Der Typ des Datenspeichers. | `azure_data_lake_gen2` | |
 | `name` | Zeichenfolge | **Erforderlich.** Der Name des Datenspeichers | | |
 | `description` | Zeichenfolge | Beschreibung des Datenspeichers | | |
-| `tags` | Objekt | Wörterbuch der Tags für den Datenspeicher. | | |
+| `tags` | Objekt (object) | Wörterbuch der Tags für den Datenspeicher. | | |
 | `account_name` | Zeichenfolge | **Erforderlich.** Name des Azure-Speicherkontos. | | |
 | `filesystem` | Zeichenfolge | **Erforderlich.** Name des Dateisystems. Das übergeordnete Verzeichnis, das die Dateien und Ordner enthält. Dies entspricht einem Container in Azure Blob Storage. | | |
 | `endpoint` | Zeichenfolge | Endpunktsuffix des Speicherdienstes, das zur Erstellung der Endpunkt-URL des Speicherkontos verwendet wird, indem der Name des Speicherkontos und `endpoint` kombiniert werden. Beispiel für die URL eines Speicherkontos: `https://<storage-account-name>.dfs.core.windows.net`. | | `core.windows.net` |
 | `protocol` | Zeichenfolge | Protokoll, das für die Verbindung zum Dateisystem verwendet werden soll. | `https`, `abfss` | `https` |
-| `credentials` | Objekt | Anmeldeinformationen des Dienstherrn für die Verbindung mit dem Azure-Speicherkonto. Die geheimen Zugangsdaten werden im Schlüsseltresor des Arbeitsbereichs gespeichert. | | |
+| `credentials` | Objekt (object) | Anmeldeinformationen des Dienstherrn für die Verbindung mit dem Azure-Speicherkonto. Die geheimen Zugangsdaten werden im Schlüsseltresor des Arbeitsbereichs gespeichert. | | |
 | `credentials.tenant_id` | Zeichenfolge | Die Mieter-ID des Dienstherrn. **Erforderlich, wenn `credentials` angegeben ist.** | | |
 | `credentials.client_id` | Zeichenfolge | Die Client-ID des Dienstherrn. **Erforderlich, wenn `credentials` angegeben ist.** | | |
 | `credentials.client_secret` | Zeichenfolge | Das Kundengeheimnis des Dienstherrn. **Erforderlich, wenn `credentials` angegeben ist.** | | |
@@ -53,11 +53,11 @@ Beispiele sind im [Beispiele GitHub-Repository](https://github.com/Azure/azureml
 
 ## <a name="yaml-identity-based-access"></a>YAML: Identitätsbasierter Zugriff
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/resources/datastore/adls-gen2-credless.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/resources/datastore/adls-gen2-credless.yml":::
 
 ## <a name="yaml-tenant-id-client-id-client-secret"></a>YAML: Mieter-ID, Mandanten-ID, Mandantengeheimnis
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/resources/datastore/adls-gen2.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/resources/datastore/adls-gen2.yml":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

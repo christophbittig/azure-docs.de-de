@@ -7,14 +7,14 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 06/02/2021
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: 620e304ffa7fae9b12a26c3ba15f57e33aaeed6c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 20214832a79dcf22bd14f6c6594f37a7036669fe
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128664502"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131558856"
 ---
 # <a name="create-a-postgresql-hyperscale-server-group-using-kubernetes-tools"></a>Erstellen einer PostgreSQL Hyperscale-Servergruppe mit Kubernetes-Tools
 
@@ -30,13 +30,13 @@ Zum Erstellen einer PostgreSQL Hyperscale-Servergruppe mithilfe von Kubernetes-
 
 ## <a name="overview"></a>Übersicht
 
-Zum Erstellen einer PostgreSQL Hyperscale-Servergruppe müssen Sie ein Kubernetes-Geheimnis erstellen, um Ihren Postgres-Administratoranmeldenamen und das Kennwort sicher zu speichern, sowie eine benutzerdefinierte PostgreSQL Hyperscale-Servergruppenressource, die auf der postgresql-12- oder postgresql-11-Definition für benutzerdefinierte Ressourcen basiert.
+Um eine PostgreSQL-Hyperscale-Servergruppe zu erstellen, müssen Sie ein Kubernetes-Geheimnis erstellen, um Ihr Postgres-Administrator-Login und -Passwort sicher zu speichern, sowie eine benutzerdefinierte PostgreSQL-Hyperscale-Servergruppen-Ressource, die auf den benutzerdefinierten Ressourcendefinitionen _postgresqls_ basiert.
 
 ## <a name="create-a-yaml-file"></a>Erstellen einer YAML-Datei
 
 Sie können die [YAML-Vorlagedatei](https://raw.githubusercontent.com/microsoft/azure_arc/main/arc_data_services/deploy/yaml/postgresql.yaml) als Ausgangspunkt verwenden, um Ihre eigene benutzerdefinierte YAML-Datei für die PostgreSQL Hyperscale-Servergruppe zu erstellen.  Laden Sie diese Datei auf Ihren Computer herunter, und öffnen Sie sie in einem Text-Editor.  Es ist hilfreich, einen Text-Editor wie [VS Code](https://code.visualstudio.com/download) zu verwenden, der Syntaxhervorhebung und Linten für YAML-Dateien unterstützen.
 
-Dies ist eine YAML-Beispieldatei:
+**Beispiel yaml-Datei**:
 
 ```yaml
 apiVersion: v1
@@ -86,7 +86,7 @@ spec:
 ```
 
 ### <a name="customizing-the-login-and-password"></a>Anpassen des Anmeldenamens und des Kennworts.
-Ein Kubernetes-Geheimnis wird als Base64-codierte Zeichenfolge gespeichert – eine für den Benutzernamen und eine für das Kennwort.  Sie müssen den Anmeldenamen und das Kennwort eines Administrators base64-codieren und sie am Platzhalterort unter `data.password` und `data.username` ablegen.  Nehmen Sie nicht die Symbole `<` und `>` mit auf, die in der Vorlage vorhanden sind.
+Ein Kubernetes-Geheimnis wird als Base64-codierte Zeichenfolge gespeichert – eine für den Benutzernamen und eine für das Kennwort.  Sie müssen einen Administrator-Login und ein Passwort mit base64 kodieren und in den Platzhaltern `data.password` und `data.username` unterbringen.  Nehmen Sie nicht die Symbole `<` und `>` mit auf, die in der Vorlage vorhanden sind.
 
 Sie können ein Onlinetool verwenden, um den gewünschten Benutzernamen und das zugehörige Kennwort mit einer Base64-Codierung zu versehen, oder Sie können abhängig von Ihrer Plattform integrierte CLI-Tools verwenden.
 
@@ -111,7 +111,7 @@ echo -n '<your string to encode here>' | base64
 
 ### <a name="customizing-the-name"></a>Anpassen des Namens
 
-Die Vorlage hat für das Attribut „name“ den Wert „pg1“.  Sie können diesen ändern, hierbei muss es sich aber um Zeichen handeln, die die DNS-Benennungsstandards einhalten.  Sie müssen außerdem den Namen des Geheimnisses entsprechend ändern.  Wenn Sie z. B. den Namen der PostgreSQL Hyperscale-Servergruppe in „pg2“ ändern, müssen Sie den Namen des Geheimnisses von „pg1-login-secret“ in „pg2-login-secret“ ändern.
+Die Vorlage hat einen Wert von `pg1` für das Attribut name.  Sie können diesen Wert ändern, aber es müssen Zeichen sein, die den DNS-Namensstandards entsprechen. Wenn Sie den Namen ändern, müssen Sie auch den Namen des Geheimnisses entsprechend ändern.  Wenn Sie zum Beispiel den Namen der PostgreSQL Hyperscale-Servergruppe in `pg2` ändern, müssen Sie den Namen des Geheimnisses von `pg1-login-secret` in `pg2-login-secret` ändern.
 
 ### <a name="customizing-the-engine-version"></a>Anpassen der Engine-Version
 
@@ -128,7 +128,7 @@ Anforderungen für Ressourcenlimits und -anforderungen:
 - Der Grenzwert für die Anzahl von Kernen ist aus Abrechnungsgründen **obligatorisch**.
 - Der Rest der Ressourcenanforderungen und -limits ist optional.
 - Das Limit und die Anforderung für Kerne müssen ein positiver ganzzahliger Wert sein, falls angegeben.
-- Für die Kerneanforderung ist mindestens 1 Kern erforderlich, falls angegeben.
+- Für die Anforderung von Kernen ist mindestens ein Kern erforderlich, sofern angegeben.
 - Das Format des Arbeitsspeicherwerts folgt der Kubernetes-Notation.  
 
 ### <a name="customizing-service-type"></a>Anpassen des Diensttyps
@@ -137,7 +137,7 @@ Der Diensttyp kann bei Bedarf in „NodePort“ geändert werden.  Es wird eine 
 
 ### <a name="customizing-storage"></a>Anpassen von Speicher
 
-Sie können die Speicherklassen für Speicher so anpassen, dass sie Ihrer Umgebung entsprechen.  Wenn Sie nicht sicher sind, welche Speicherklassen verfügbar sind, können Sie den Befehl `kubectl get storageclass` ausführen, um sie anzuzeigen.  Die Vorlage enthält den Standardwert „default“ (Standard).  Dies bedeutet, dass es eine Speicherklasse _namens_ „default“ gibt, nicht dass es eine Speicherklasse gibt, die der Standard _ist_.  Sie können die Größe Ihres Speichers auch optional ändern.  Weitere Informationen zur [Speicherkonfiguration](./storage-configuration.md).
+Sie können die Speicherklassen für Speicher so anpassen, dass sie Ihrer Umgebung entsprechen.  Wenn Sie nicht sicher sind, welche Speicherklassen verfügbar sind, führen Sie den Befehl `kubectl get storageclass` aus, um sie anzuzeigen.  Die Vorlage hat einen Standardwert von `default`.  Dieser Wert bedeutet, dass es eine Speicherklasse _mit dem Namen_  gibt `default` und nicht, dass es eine Speicherklasse gibt, die _der Standard ist_.  Sie können die Größe Ihres Speichers auch optional ändern.  Weitere Informationen zur [Speicherkonfiguration](./storage-configuration.md).
 
 ## <a name="creating-the-postgresql-hyperscale-server-group"></a>Erstellen der PostgreSQL Hyperscale-Servergruppe
 
@@ -156,7 +156,7 @@ kubectl create -n <your target namespace> -f <path to your yaml file>
 Es dauert einige Minuten, bis die PostgreSQL Hyperscale-Servergruppe erstellt ist. Mithilfe der folgenden Befehle können Sie den Status in einem anderen Terminalfenster überwachen:
 
 > [!NOTE]
->  Bei den folgenden Beispielbefehlen wird davon ausgegangen, dass Sie eine PostgreSQL Hyperscale-Servergruppe namens „pg1“ sowie einen Kubernetes-Namespace namens „arc“ erstellt haben.  Wenn Sie einen anderen Namen für den Namespace oder die PostgreSQL Hyperscale-Servergruppe verwendet haben, können Sie „arc“ und „pg1“ durch Ihre Namen ersetzen.
+>  Die folgenden Beispielbefehle gehen davon aus, dass Sie eine PostgreSQL Hyperscale-Servergruppe mit dem Namen `pg1` und einen Kubernetes-Namespace mit dem Namen `arc` erstellt haben.  Wenn Sie einen anderen Namespace/PostgreSQL Hyperscale Server Gruppennamen verwendet haben, können Sie `arc` und `pg1` durch Ihre Namen ersetzen.
 
 ```console
 kubectl get postgresqls/pg1 --namespace arc
@@ -166,7 +166,7 @@ kubectl get postgresqls/pg1 --namespace arc
 kubectl get pods --namespace arc
 ```
 
-Sie können auch den Erstellungsstatus eines bestimmten Pods überprüfen, indem Sie einen Befehl wie den folgenden ausführen.  Dies ist besonders bei der Problembehandlung hilfreich.
+Sie können auch den Erstellungsstatus eines bestimmten Pods überprüfen, indem Sie den Befehl `kubectl describe` ausführen.  Der Befehl `describe` ist besonders nützlich bei der Fehlersuche. Zum Beispiel:
 
 ```console
 kubectl describe pod/<pod name> --namespace arc

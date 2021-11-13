@@ -1,18 +1,18 @@
 ---
 title: Veröffentlichen von Revisionen mit GitHub-Aktionen in der Vorschau der Azure Container Anwendungen
 description: Informationen zum automatischen Erstellen neuer Revisionen mithilfe von GitHub-Aktionen in der Vorschau der Azure Container Anwendungen
-services: app-service
+services: container-apps
 author: craigshoemaker
-ms.service: app-service
+ms.service: container-apps
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.author: cshoe
-ms.openlocfilehash: d83c6904f721d429488bca50359c3b32877ad50b
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: c06ce3b75ac9b33d0dd82b74ba068a6a0039bbee
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131478854"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132027373"
 ---
 # <a name="publish-revisions-with-github-actions-in-azure-container-apps-preview"></a>Veröffentlichen von Revisionen mit GitHub-Aktionen in der Vorschau der Azure Container Anwendungen
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2021
 ms.author: bagol
-ms.openlocfilehash: 23b7ef6b159438bb171ab4326652c81796bcaf91
-ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
+ms.openlocfilehash: 160abcf739cbece61d34cd3db4118fd9f2f0ed9f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "131990094"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131478941"
 ---
 # <a name="deploy-and-monitor-azure-key-vault-honeytokens-with-azure-sentinel-public-preview"></a>Stellen Sie Azure Key Vault Honeytoken bereit und überwachen sie mit Azure Sentinel (öffentliche Vorschau)
 
@@ -33,7 +33,7 @@ Verwenden Sie [die Analyseregeln](detect-threats-built-in.md), [Watchlists](watc
 
 Wenn Sie Honeytoken in Ihrem System verwenden, bleiben die Erkennungsprinzipien unverändert. Da es keinen legitimen Grund für den Zugriff auf einen Honeytoken gibt, deutet jede Aktivität auf das Vorhandensein eines Benutzers hin, der nicht mit der Umgebung vertraut ist und möglicherweise ein Angreifer sein könnte.
 
-## <a name="before-you-begin"></a>Voraussetzungen
+## <a name="before-you-begin"></a>Vorbereitung
 
 Stellen Sie sicher, dass Sie über die folgenden Azure Sentinel verfügen, um mit der Verwendung der Lösung "Azure Sentinel-Täuschung **(Honeytoken)"** zu beginnen:
 
@@ -48,7 +48,7 @@ Stellen Sie sicher, dass Sie über die folgenden Azure Sentinel verfügen, um mi
 
 ## <a name="install-the-solution"></a>Installieren der Lösung
 
-Installieren Sie die **Azure Sentinel Deception (Honey Token)** Lösung so wie [jede andere Lösung](sentinel-solutions-deploy.md) auch. Wählen Sie auf der Seite für die **Azure Sentinel Deception** Lösung die Option **Start**, um zu beginnen.
+Installieren Sie die **Azure Sentinel Deception (Honey Token)** Lösung so wie [jede andere Lösung](monitor-key-vault-honeytokens.md) auch. Wählen Sie auf der Seite für die **Azure Sentinel Deception** Lösung die Option **Start**, um zu beginnen.
 
 :::image type="content" source="media/monitor-key-vault-honeytokens/honeytoken-create-solution.png" alt-text="Screenshot der Erstellungsvalidierungsseite.":::
 
@@ -127,8 +127,8 @@ In den folgenden Schritten werden bestimmte Aktionen beschrieben, die für die *
 
     |Feld  |BESCHREIBUNG  |
     |---------|---------|
-    |**Schlüssel für Schlüsselwörter**     |  Geben Sie durch Komma getrennte Listen von Werten ein, die Sie mit Ihren Lockvogel-Honeytokennamen verwenden möchten.  Beispielsweise `key,prod,dev`.  Werte dürfen nur alphanumerisch sein.   |
-    |**Geheimnisse**     |   Geben Sie durch Komma getrennte Listen von Werten ein, die Sie mit Ihren Lockvogel-Honeytokengeheimnissen verwenden möchten.  Beispielsweise `secret,secretProd,secretDev`. Werte dürfen nur alphanumerisch sein.    |
+    |**Schlüssel für Schlüsselwörter**     |  Geben Sie durch Komma getrennte Listen von Werten ein, die Sie mit Ihren Lockvogel-Honeytokennamen verwenden möchten.  Beispiel: `key,prod,dev`.  Werte dürfen nur alphanumerisch sein.   |
+    |**Geheimnisse**     |   Geben Sie durch Komma getrennte Listen von Werten ein, die Sie mit Ihren Lockvogel-Honeytokengeheimnissen verwenden möchten.  Beispiel: `secret,secretProd,secretDev`. Werte dürfen nur alphanumerisch sein.    |
     |**Zusätzliche HoneyToken-Wahrscheinlichkeit**     |  Geben Sie einen Wert im Bereich von `0` und `1` ein, wie beispielsweise `0.6`. Dieser Wert definiert die Wahrscheinlichkeit, dass mehr als ein Honeytoken dem Key Vault hinzugefügt wird.       |
     |     |         |
 
@@ -288,7 +288,7 @@ Sie können jederzeit den direkten Link zur Arbeitsmappe freigeben. Altenativ k�
 
     Die Schaltflächen **In Azure Bereitstellen** verwenden dieselben URLs, die auf der Registerkarte **Ausgabe** nach der [Installation der Lösung](#install-the-solution) angezeigt werden.
 
-    | Bereitstellungsoption | BESCHREIBUNG | In Azure bereitstellen | GitHub-Link |
+    | Bereitstellungsoption | BESCHREIBUNG | Bereitstellen in Azure | GitHub-Link |
     |-------------------|-------------|-------------|-----------------|
     | Verwaltungsgruppe | Empfohlen für die unternehmensweite Bereitstellung| [![DTA-Button-MG]][DTA-MG]  |[Beispiel auf GitHub][GitHub-MG] |
     | Subscription | Empfohlen zum Testen in einem einzelnen Abonnement | [![DTA-Button-Sub]][DTA-Sub]  | [Beispiel auf GitHub][GitHub-Sub] |
@@ -336,10 +336,10 @@ Weitere Informationen finden Sie in der [Azure Security Center-Dokumentation](/a
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen finden Sie unter:
+Weitere Informationen finden Sie unter
 
 - [Informationen zu Azure Sentinel-Lösungen](sentinel-solutions.md)
-- [Entdecken und Bereitstellen von Azure Sentinel-Lösungen](sentinel-solutions-deploy.md)
+- [Entdecken und Bereitstellen von Azure Sentinel-Lösungen](monitor-key-vault-honeytokens.md)
 - [Azure Sentinel-Lösungskatalog](sentinel-solutions-catalog.md)
 - [Standardmäßig verfügbare Erkennung von Bedrohungen](detect-threats-built-in.md)
 - [Häufig verwendete Azure Sentinel-Arbeitsmappen](top-workbooks.md)

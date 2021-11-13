@@ -5,13 +5,13 @@ author: vicancy
 ms.author: lianwei
 ms.service: azure-web-pubsub
 ms.topic: conceptual
-ms.date: 08/26/2021
-ms.openlocfilehash: f28ab302aa6899e35c080821ccddf01d5e7cb76e
-ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
+ms.date: 11/08/2021
+ms.openlocfilehash: ba9ed9a90dc39ef51e7e1ee57940afb75b38f7f6
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131578328"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131997512"
 ---
 # <a name="python-server-sdk-for-azure-web-pubsub"></a>Python-Server-SDK für Azure Web PubSub
 

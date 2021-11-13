@@ -131,6 +131,8 @@
           href: azure-netapp-files-create-netapp-account.md
         - name: Delegieren eines Subnetzes an Azure NetApp Files
           href: azure-netapp-files-delegate-subnet.md
+        - name: Anfordern des Zugriffs auf eine Region
+          href: request-region-access.md
     - name: Verwalten von Active Directory
       items:
         - name: "Erstellen und Verwalten von Active\_Directory-Verbindungen"

@@ -44,9 +44,9 @@
         - name: Architektur der Regel-Engine
           href: concept-rule-set.md
         - name: Vergleichsbedingungen für Regeln
-          href: concept-rule-set-match-conditions.md
+          href: ../rules-match-conditions.md?toc=%2fazure%2ffrontdoor%2fstandard-premium%2ftoc.json
         - name: Regelaktionen
-          href: concept-rule-set-actions.md
+          href: ../rules-actions.md?toc=%2fazure%2ffrontdoor%2fstandard-premium%2ftoc.json
     - name: Umleiten und Umschreiben von URLs
       href: concept-rule-set-url-redirect-and-rewrite.md
     - name: Sicherheit
@@ -146,9 +146,9 @@
     - name: Azure Front Door-Edgestandorte
       items:
         - name: Edgestandorte nach Region
-          href: edge-locations.md
+          href: ../edge-locations-by-region.md?toc=%2fazure%2ffrontdoor%2fstandard-premium%2ftoc.json
         - name: Edgestandorte nach Abkürzung
-          href: edge-locations-by-abbreviation.md
+          href: ../edge-locations-by-abbreviation.md?toc=%2fazure%2ffrontdoor%2fstandard-premium%2ftoc.json
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.cdn
     - name: REST-API

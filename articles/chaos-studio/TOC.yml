@@ -31,11 +31,23 @@
 - name: Anleitungen
   items:
     - name: Erstellen und Ausführen eines Experiments – Dienstbezogene Fehler
-      href: chaos-studio-tutorial-service-direct.md
+      items:
+        - name: Portal
+          href: chaos-studio-tutorial-service-direct-portal.md
+        - name: Befehlszeilenschnittstelle (CLI)
+          href: chaos-studio-tutorial-service-direct-cli.md
     - name: Erstellen und Ausführen eines Experiments – Agentenbasierte Fehler
-      href: chaos-studio-tutorial-agent-based.md
+      items:
+        - name: Portal
+          href: chaos-studio-tutorial-agent-based-portal.md
+        - name: Befehlszeilenschnittstelle (CLI)
+          href: chaos-studio-tutorial-agent-based-cli.md
     - name: Erstellen und Ausführen eines Experiments – Chaos Mesh-Fehler in AKS
-      href: chaos-studio-tutorial-aks.md
+      items:
+        - name: Portal
+          href: chaos-studio-tutorial-aks-portal.md
+        - name: Befehlszeilenschnittstelle (CLI)
+          href: chaos-studio-tutorial-aks-cli.md
     - name: Häufig auftretende Probleme und Problembehandlung
       href: troubleshooting.md
 - name: Verweis
@@ -50,6 +62,8 @@
       href: chaos-studio-service-limits.md
     - name: REST-API-Dokumentation
       href: 'https://docs.microsoft.com/rest/api/chaosstudio'
+    - name: Python SDK
+      href: 'https://docs.microsoft.com/python/api/azure-mgmt-chaos/?view=azure-python-preview'
 - name: Ressourcen
   items:
     - name: Azure-Roadmap

@@ -4,15 +4,15 @@ description: Dieser Artikel enthält eine Übersicht über die Azure Automation
 keywords: Automation-Sicherheit, sicher Automation; Automation-Authentifizierung
 services: automation
 ms.subservice: process-automation
-ms.date: 10/26/2021
+ms.date: 11/05/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 08f265d4e2af8fe985db3ceab78b535db2f73924
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 7d6a509e4d99b95e2113aceb00ff1dab9a98fd91
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131470868"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131866656"
 ---
 # <a name="azure-automation-account-authentication-overview"></a>Übersicht über die Azure Automation-Kontoauthentifizierung
 
@@ -37,6 +37,9 @@ Alle Aufgaben, die Sie für Ressourcen mit Azure Resource Manager und den PowerS
 Durch eine verwaltete Entität aus Azure Active Directory (Azure AD) kann Ihr Runbook mühelos auf andere durch Azure AD geschützte Ressourcen zugreifen. Da die Identität von der Azure-Plattform verwaltet wird, müssen Sie keine Geheimnisse bereitstellen oder rotieren. Weitere Informationen zu verwalteten Identitäten in Azure AD finden Sie unter [Verwaltete Identitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md).
 
 Verwaltete Identitäten werden zur Authentifizierung in Ihren Runbooks empfohlen und als Standardauthentifizierungsmethode für Ihr Automation-Konto eingesetzt.
+
+> [!NOTE]
+> Wenn Sie ein Automation-Konto erstellen, ist die Option zum Erstellen eines ausführenden Kontos nicht mehr verfügbar. Wir unterstützen ein ausführendes Konto jedoch weiterhin bei vorhandenen und neuen Automation-Konten. Sie können ein [ausführendes Konto](create-run-as-account.md) in Ihrem Automation-Konto über das Azure-Portal oder mithilfe von PowerShell erstellen.
 
 Nachstehend sind einige Vorteile der Verwendung von verwalteten Identitäten beschrieben:
 
@@ -68,7 +71,7 @@ Zum Erstellen oder Erneuern eines ausführenden Kontos sind Berechtigungen auf d
 - Automation-Konto
 
 > [!NOTE]
-> Das ausführende Konto wird nicht automatisch von Azure Automation erstellt. Es wurde durch die Nutzung verwalteter Identitäten ersetzt.
+> Azure Automation erstellt das ausführende Konto nicht automatisch. Es wurde durch verwaltete Identitäten ersetzt. Wir unterstützen ein ausführendes Konto jedoch weiterhin bei vorhandenen und neuen Automation-Konten. Sie können ein [ausführendes Konto](create-run-as-account.md) in Ihrem Automation-Konto über das Azure-Portal oder mithilfe von PowerShell erstellen.
 
 ### <a name="subscription-permissions"></a>Abonnementberechtigungen
 

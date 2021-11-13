@@ -5,12 +5,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: include
 ms.date: 11/01/2021
-ms.openlocfilehash: 51d0252b374eb2e4a24d6e0a7ece2bff010d0caa
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 238db4caa1bcb11e0f4c27b6e490b0859b1e536d
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131464041"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131851482"
 ---
 ### <a name="copy-activity-support"></a>Unterstützung der Copy-Aktivität
 
@@ -30,6 +30,7 @@ ms.locfileid: "131464041"
 | Azure SQL-Datenbank \* | Ja | 
 | Azure SQL Managed Instance \* | Ja | 
 | Azure Synapse Analytics \* | Ja | 
+| Dedizierter Azure-SQL-Pool (vormals SQL DW) \* | Ja | 
 | Azure Table Storage | Ja |
 | Amazon S3 | Ja | 
 | Hive \* | Ja | 
@@ -73,6 +74,7 @@ Zusätzlich zur Datenherkunft wird das Datenobjektschema (siehe Registerkarte Ob
 | Azure SQL-Datenbank \* | Ja |
 | Azure SQL Managed Instance \* | Ja | 
 | Azure Synapse Analytics \* | Ja |
+| Dedizierter Azure-SQL-Pool (vormals SQL DW) \* | Ja | 
 
 *\* Azure Purview unterstützt derzeit keine Abfrage oder gespeicherte Prozedur für die Erfassung der Herkunft oder Überprüfung. Die Herkunft ist auf Tabellen- und Ansichtsquellen beschränkt.*
 

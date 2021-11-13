@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.workload: infrastructure
 ms.date: 6/8/2021
 ms.reviewer: cynthn
-ms.openlocfilehash: 921770c9cef41cedd8bf1ee01371da9a71e06e1a
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: fa87bdf9acca99b38f63ec6e9547d5cc5279afc5
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131437123"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132060905"
 ---
 # <a name="store-and-share-images-in-an-azure-compute-gallery"></a>Speichern und Freigeben von Images in einer Azure Compute Gallery-Instanz
 
 **Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
 
-Azure Compute Gallery umfasst jetzt den Shared Image Gallery-Dienst und die neuen Features und Funktionen von [VM-Anwendungen])(vm-applications.md).  
+Azure Compute Gallery enthält jetzt den Shared Image Gallery-Dienst und die neuen Features und Funktionen von [VM-Anwendungen](vm-applications.md).  
 
 Azure Compute Gallery unterstützt Sie beim Erstellen einer Struktur und Organisation für Ihre Azure-Ressourcen, z. B. Images und [Anwendungen])(vm-applications.md). Eine Azure Compute Gallery-Instanz bietet Ihnen folgendes:
 - Globale Replikation

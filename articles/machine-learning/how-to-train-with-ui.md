@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.custom: devplatv2
 author: wenxwei
 ms.author: wenxwei
-ms.date: 06/22/2021
+ms.date: 10/21/2021
 ms.reviewer: laobri
-ms.openlocfilehash: 2d69263d1c4037640eefd44a1328414f8a47ad06
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: a626c789737b8af53c18946450c9be7ee5f91176
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129705401"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131562008"
 ---
 # <a name="create-a-training-job-with-the-job-creation-ui-preview"></a>Erstellen eines Trainingsauftrags mit der Benutzeroberfläche für die Auftragserstellung (Vorschau)
 
@@ -28,7 +28,7 @@ Es gibt viele Möglichkeiten zum Erstellen eines Trainingsauftrags mit Azure Mac
 
 * Ein Azure Machine Learning-Arbeitsbereich. Weitere Informationen finden Sie unter [Erstellen eines Azure Machine Learning-Arbeitsbereichs](how-to-manage-workspace.md). 
 
-* Grundlegende Informationen zur Bedeutung eines Auftrags in Azure Machine Learning. Weitere Informationen finden Sie unter [Einführung in Aufträge](how-to-train-cli.md#introducing-jobs).
+* Grundlegende Informationen zur Bedeutung eines Auftrags in Azure Machine Learning. Siehe [Wie man Modelle mit der CLI (v2) trainiert ](how-to-train-cli.md).
 
 ## <a name="get-started"></a>Erste Schritte
 
@@ -69,7 +69,7 @@ Wenn Sie zum ersten Mal Azure Machine Learning verwenden, werden eine leere List
 
 Weitere Informationen zum Erstellen der verschiedenen Typen finden Sie unter:
 
-| Computetyp | Anleitung | 
+| Computetyp | Vorgehensweise | 
 | --- | --- | 
 | Compute-Instanz | [Erstellen und Verwalten einer Azure Machine Learning-Compute-Instanz](how-to-create-manage-compute-instance.md) | 
 | Computecluster | [Erstellen eines Computeclusters für Azure Machine Learning](how-to-create-attach-compute-cluster.md) | 

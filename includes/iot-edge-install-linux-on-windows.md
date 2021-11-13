@@ -5,12 +5,12 @@ author: kgremban
 ms.author: kgremban
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 4207e171b07d203fd7a71f4c9783baef3d4f6a90
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 890ec787bfc7a4316df9d27271460a90d5047175
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131506102"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131842683"
 ---
 ## <a name="install-iot-edge"></a>Installieren von IoT Edge
 
@@ -18,7 +18,7 @@ Stellen Sie Azure IoT Edge für Linux unter Windows auf Ihrem Zielgerät bereit.
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Installieren Sie Azure IoT Edge für Linux unter Windows auf Ihrem Zielgerät.
+Installieren Sie IoT Edge für Linux unter Windows auf Ihrem Zielgerät.
 
 > [!NOTE]
 > Das folgende PowerShell-Verfahren beschreibt, wie Sie IoT Edge für Linux unter Windows auf dem lokalen Gerät bereitstellen. Für die Bereitstellung auf einem Remotezielgerät mithilfe von PowerShell können Sie über [Remote PowerShell](/powershell/module/microsoft.powershell.core/about/about_remote) eine Verbindung mit einem Remotegerät herstellen und diese Befehle remote auf dem Gerät ausführen.
@@ -52,7 +52,7 @@ Installieren Sie Azure IoT Edge für Linux unter Windows auf Ihrem Zielgerät.
    >
    >Sie können die verfügbaren Ressourcen des VM mithilfe der optionalen Parameter des Befehls `Deploy-Eflow` anpassen.
    >
-   >Mit dem folgenden Befehl wird beispielsweise ein VM mit vier vCPU-Kernen, 4 GB RAM und 20 GB Speicherplatz erstellt:
+   >Mit dem folgenden Befehl wird beispielsweise ein VM mit 4 vCPU-Kernen, 4 GB RAM (angegeben in MB) und 20 GB Speicherplatz erstellt:
    >
    >   ```powershell
    >   Deploy-Eflow -cpuCount 4 -memoryInMB 4096 -vmDiskSize 20
@@ -75,7 +75,7 @@ Installieren Sie Azure IoT Edge für Linux unter Windows auf Ihrem Zielgerät.
 
    ![Bei einer erfolgreichen Bereitstellung wird am Ende der Meldungen „Bereitstellung erfolgreich“ angezeigt (PNG).](./media/iot-edge-install-linux-on-windows/successful-powershell-deployment.png)
 
-Nach Abschluss dieses Vorgangs können Sie Ihr Gerät bereitstellen.
+   Nach einer erfolgreichen Bereitstellung können Sie Ihr Gerät bereitstellen.
 
 # <a name="windows-admin-center"></a>[Windows Admin Center](#tab/windowsadmincenter)
 

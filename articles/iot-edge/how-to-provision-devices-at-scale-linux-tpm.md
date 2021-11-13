@@ -1,19 +1,19 @@
 ---
-title: Bereitstellen von Geräten mit einem virtuellen TPM unter Linux – Azure IoT Edge
+title: Erstellen und Bereitstellen von Geräten mit einem virtuellen TPM unter Linux – Azure IoT Edge
 description: Verwenden eines simulierten TPMs auf einem Linux-Gerät, um den Azure IoT Hub-Dienst für Azure IoT Edge zu testen
-author: v-tcassi
-manager: philmea
-ms.author: v-tcassi
-ms.date: 07/09/2021
+author: kgremban
+manager: lizross
+ms.author: kgremban
+ms.date: 10/28/2021
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e55d4f2bcb6e8f86a45d22e4a3a16555fefe8f81
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: b353f683a64444a0ad89f062d0b826484260681f
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130246622"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131852045"
 ---
 # <a name="create-and-provision-iot-edge-devices-at-scale-with-a-tpm-on-linux"></a>Bedarfsgerechtes Erstellen und Bereitstellen von IoT Edge-Geräten mit einem TPM unter Linux
 
@@ -49,24 +49,18 @@ Aufgaben:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
+<!-- Cloud resources prerequisites H3 and content -->
+[!INCLUDE [iot-edge-prerequisites-at-scale-cloud-resources.md](../../includes/iot-edge-prerequisites-at-scale-cloud-resources.md)]
+
+### <a name="iot-edge-installation"></a>IoT Edge-Installation
+
 # <a name="physical-device"></a>[Physisches Gerät](#tab/physical-device)
 
-* Ein aktiver IoT-Hub.
-* Eine Instanz des IoT Hub Device Provisioning Service in Azure, die mit Ihrem IoT-Hub verknüpft ist.
-  * Wenn Sie nicht über eine Instanz des Device Provisioning Service verfügen, führen Sie die Anleitungen in den folgenden zwei Abschnitten des Schnellstarts „IoT Hub Device Provisioning Service“ aus:
-     - [Erstellen eines neuen IoT Hub Device Provisioning Service](../iot-dps/quick-setup-auto-provision.md#create-a-new-iot-hub-device-provisioning-service)
-     - [Verknüpfen des IoT-Hubs und Ihres Gerätebereitstellungsdiensts](../iot-dps/quick-setup-auto-provision.md#link-the-iot-hub-and-your-device-provisioning-service)
-  * Nachdem Sie den Device Provisioning Service ausgeführt haben, kopieren Sie den Wert von **ID-Bereich** von der Seite „Übersicht“. Sie können diesen Wert verwenden, wenn Sie IoT Edge-Runtime konfigurieren.
+Ein physisches Gerät, das das IoT Edge-Gerät sein soll.
 
 # <a name="virtual-machine"></a>[Virtueller Computer](#tab/virtual-machine)
 
-* Ein aktiver IoT-Hub.
-* Eine Instanz des IoT Hub Device Provisioning Service in Azure, die mit Ihrem IoT-Hub verknüpft ist.
-  * Wenn Sie nicht über eine Instanz des Device Provisioning Service verfügen, führen Sie die Anleitungen in folgenden zwei Abschnitten des Schnellstarts „IoT Hub Device Provisioning Service“ aus:
-    - [Erstellen eines neuen IoT Hub Device Provisioning Service](../iot-dps/quick-setup-auto-provision.md#create-a-new-iot-hub-device-provisioning-service)
-    - [Verknüpfen des IoT-Hubs und Ihres Gerätebereitstellungsdiensts](../iot-dps/quick-setup-auto-provision.md#link-the-iot-hub-and-your-device-provisioning-service)
-  * Nachdem Sie den Device Provisioning Service ausgeführt haben, kopieren Sie den Wert von **ID-Bereich** von der Seite „Übersicht“. Sie können diesen Wert verwenden, wenn Sie IoT Edge-Runtime konfigurieren.
-* Ein Windows-Entwicklungscomputer mit [aktiviertem Hyper-V](/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v). In diesem Artikel wird das Betriebssystem Windows 10 verwendet, auf dem ein Ubuntu Server-VM ausgeführt wird.
+Ein Windows-Entwicklungscomputer mit [aktiviertem Hyper-V](/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v). In diesem Artikel wird das Betriebssystem Windows 10 verwendet, auf dem ein Ubuntu Server-VM ausgeführt wird.
 
 ---
 
@@ -137,7 +131,7 @@ Die Erstellung der neuen VM kann einige Minuten dauern.
 
 1. Aktivieren Sie **Trusted Platform Module aktivieren**.
 
-1. Wählen Sie **OK** aus.
+1. Klicken Sie auf **OK**.
 
 ### <a name="start-the-virtual-machine"></a>Starten des virtuellen Computers
 
@@ -174,164 +168,13 @@ In diesem Abschnitt erstellen Sie ein Tool, mit dem Sie die Registrierungs-ID un
 
 Nachdem Sie über Ihre Registrierungs-ID und Ihren Endorsement Key verfügen, können Sie den Vorgang fortsetzen.
 
-## <a name="create-a-device-provisioning-service-enrollment"></a>Erstellen einer Registrierung für den Device Provisioning Service
+<!-- Create an enrollment for your device using TPM provisioning information H2 and content -->
+[!INCLUDE [tpm-create-a-device-provision-service-enrollment.md](../../includes/tpm-create-a-device-provision-service-enrollment.md)]
 
-Rufen Sie die Bereitstellungsinformationen aus Ihrem TPM ab, und verwenden Sie die Informationen zum Erstellen einer individuellen Registrierung im Gerätebereitstellungsdienst.
+<!-- Install IoT Edge on Linux H2 and content -->
+[!INCLUDE [install-iot-edge-linux.md](../../includes/iot-edge-install-linux.md)]
 
-Wenn Sie eine Registrierung im Device Provisioning Service erstellen, haben Sie die Möglichkeit, einen **anfänglichen Gerätezwillingsstatus** zu deklarieren. Im Gerätezwilling können Sie Tags zum Gruppieren von Geräten nach jeder beliebigen Metrik – z. B. Region, Umgebung, Speicherort oder Gerätetyp – festlegen, die in Ihrer Lösung verwendet wird. Diese Tags werden zum Erstellen von [automatischen Bereitstellungen](how-to-deploy-at-scale.md) verwendet.
-
-> [!TIP]
-> Die Schritte in diesem Artikel beziehen sich auf das Azure-Portal. Sie können aber auch individuelle Registrierungen über die Azure CLI erstellen. Weitere Informationen finden Sie unter [az iot dps-Registrierung](/cli/azure/iot/dps/enrollment). Verwenden Sie als Teil des CLI-Befehls das Flag **edge-enabled** (Edge-fähig), um anzugeben, dass die Registrierung für ein IoT Edge-Gerät gilt.
-
-1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer Instanz des IoT Hub Device Provisioning Service.
-
-1. Klicken Sie in **Einstellungen** auf **Registrierungen verwalten**.
-
-1. Wählen Sie **Individuelle Registrierung hinzufügen** aus, und führen Sie dann die folgenden Schritte zum Konfigurieren der Registrierung aus:
-
-   1. Klicken Sie unter **Mechanismus** auf die Option **TPM**.
-
-   1. Geben Sie den **Endorsement Key** und die **Registrierungs-ID** an, den bzw. die Sie von Ihrer VM oder Ihrem physischen Gerät kopiert haben.
-
-   1. Geben Sie bei Bedarf eine ID für Ihr Gerät an. Wenn Sie keine Geräte-ID angeben, wird die Registrierungs-ID verwendet.
-
-   1. Wählen Sie **True** aus, um zu deklarieren, dass Ihre VM oder Ihr physisches Gerät ein IoT Edge-Gerät ist.
-
-   1. Wählen Sie die verknüpfte IoT Hub-Instanz, mit der Sie Ihr Gerät verbinden möchten, oder **Link to new IoT Hub** (Mit neuer IoT Hub-Instanz verknüpfen) aus. Sie können mehrere Hubs auswählen. Das Gerät wird dann je nach gewählter Zuweisungsrichtlinie einem dieser Hubs zugewiesen.
-
-   1. Fügen Sie bei Bedarf einen Tagwert zu **Anfänglicher Status von Gerätezwilling** hinzu. Sie können mithilfe von Tags Gruppen von Geräten als Ziel für die Modulbereitstellung festlegen. Weitere Informationen finden Sie unter [Bedarfsgerechtes Bereitstellen von IoT Edge-Modulen mithilfe des Azure-Portals](how-to-deploy-at-scale.md).
-
-   1. Wählen Sie **Speichern** aus.
-
-Nachdem nun eine Registrierung für dieses Gerät vorhanden ist, kann die IoT Edge-Runtime das Gerät während der Installation automatisch bereitstellen.
-
-## <a name="install-the-iot-edge-runtime"></a>Installieren der IoT Edge-Runtime
-
-In diesem Abschnitt bereiten Sie Ihre Linux-VM oder Ihr physisches Gerät für IoT Edge vor. Danach installieren Sie loT Edge.
-
-Es gibt zwei Schritte, die Sie auf Ihrem Gerät ausführen müssen, bevor es für die Installation der IoT Edge-Runtime bereit ist. Ihr Gerät benötigt Zugang zu den Microsoft-Installationspaketen, und es muss eine Container-Engine installiert werden.
-
-### <a name="access-the-microsoft-installation-packages"></a>Zugriff auf die Microsoft-Installationspakete
-
-Ihr Gerät muss Zugriff auf die Microsoft-Installationspakete haben.
-
-1. Installieren Sie die Repository-Konfiguration, die dem Betriebssystem Ihres Geräts entspricht.
-
-   * **Ubuntu Server 18.04**:
-
-      ```bash
-      curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
-      ```
-
-   * **Raspberry Pi OS Stretch**:
-
-      ```bash
-      curl https://packages.microsoft.com/config/debian/stretch/multiarch/prod.list > ./microsoft-prod.list
-      ```
-
-1. Kopieren Sie die generierte Liste in das Verzeichnis „sources.list.d“.
-
-   ```bash
-   sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
-   ```
-
-1. Installieren Sie den öffentlichen Schlüssel von Microsoft GPG.
-
-   ```bash
-   curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-   sudo cp ./microsoft.gpg /etc/apt/trust.gpg.d/
-   ```
-
-> [!NOTE]
-> Für Azure IoT Edge-Softwarepakete gelten die in jedem Paket (im Verzeichnis `usr/share/doc/{package-name}` oder `LICENSE`) enthaltenen Lizenzbedingungen. Lesen Sie die Lizenzbedingungen, bevor Sie ein Paket verwenden. Durch Ihre Installation und Verwendung eines Pakets erklären Sie Ihre Zustimmung zu diesen Bedingungen. Wenn Sie den Lizenzbedingungen nicht zustimmen, verwenden Sie das Paket nicht.
-
-### <a name="install-a-container-engine"></a>Installieren einer Containerengine
-
-IoT Edge basiert auf einer OCI-kompatiblen Containerruntime. Für Produktionsszenarien empfehlen wir die Verwendung der Moby-Engine. Die Moby-Engine ist die einzige Container-Engine, das bei IoT Edge offiziell unterstützt wird. Docker CE/EE-Containerimages sind mit der Moby-Runtime kompatibel.
-
-1. Aktualisieren Sie die Paketlisten auf Ihrem Gerät.
-
-   ```bash
-   sudo apt-get update
-   ```
-
-1. Installieren Sie die Moby-Engine.
-
-   ```bash
-   sudo apt-get install moby-engine
-   ```
-
-   > [!TIP]
-   > Wenn beim Installieren der Moby-Containerengine Fehler angezeigt werden, überprüfen Sie Ihren Linux-Kernel auf Moby-Kompatibilität. Einige Hersteller von eingebetteten Geräten stellen Geräteimages mit benutzerdefinierten Linux-Kernels bereit, denen die Funktionen für die Containerengine-Kompatibilität fehlen. Führen Sie den folgenden Befehl aus, der das von Moby bereitgestellte [check-config-Skript](https://github.com/moby/moby/blob/master/contrib/check-config.sh) verwendet, um die Kernelkonfiguration zu überprüfen:
-   >
-   >   ```bash
-   >   curl -ssl https://raw.githubusercontent.com/moby/moby/master/contrib/check-config.sh -o check-config.sh
-   >   chmod +x check-config.sh
-   >   ./check-config.sh
-   >   ```
-   >
-   > Überprüfen Sie in der Ausgabe des Skripts, ob alle Elemente unter `Generally Necessary` und `Network Drivers` aktiviert sind. Wenn Funktionen fehlen, aktivieren Sie diese, indem Sie Ihren Kernel aus der Quelle neu erstellen und die zugehörigen Module auswählen, die in die entsprechende Konfigurationsdatei für den Kernel eingebunden werden sollen. Gleiches gilt, wenn Sie einen Kernelkonfigurationsgenerator wie `defconfig` oder `menuconfig` verwenden: Suchen und aktivieren Sie die entsprechenden Funktionen, und erstellen Sie dann den Kernel dementsprechend neu. Sobald Sie Ihren bearbeiteten Kernel bereitgestellt haben, führen Sie das check-config-Skript erneut aus, um zu überprüfen, ob alle erforderlichen Funktionen erfolgreich aktiviert wurden.
-
-### <a name="install-iot-edge"></a>Installieren von IoT Edge
-
-<!-- 1.1 -->
-:::moniker range="iotedge-2018-06"
-
-Der Daemon für IoT Edge-Sicherheit dient zum Bereitstellen und Einhalten von Sicherheitsstandards auf dem IoT Edge-Gerät. Der Daemon wird bei jedem Start gestartet und führt durch Starten der restlichen IoT Edge-Runtime einen Bootstrap für das Gerät aus.
-
-Die in diesem Abschnitt beschriebenen Schritte stellen den typischen Prozess zum Installieren der neuesten Version auf einem Gerät dar, das über eine Internetverbindung verfügt. Wenn Sie eine bestimmte Version installieren müssen, z. B. eine Vorabversion, oder wenn Sie offline installieren müssen, führen Sie die Schritte zu „Offlineinstallation oder Installation einer bestimmten Version“ aus.
-
-1. Aktualisieren Sie die Paketlisten auf Ihrem Gerät.
-
-   ```bash
-   sudo apt-get update
-   ```
-
-1. Installieren Sie IoT Edge, Version 1.1.*, zusammen mit dem Paket **libiothsm-std**.
-
-   ```bash
-   sudo apt-get install iotedge
-   ```
-
-   > [!NOTE]
-   > *IoT Edge, Version 1.1, ist der Branch für langfristigen Support von IoT Edge. Wenn Sie eine ältere Version ausführen, empfehlen wir, den neuesten Patch zu installieren oder darauf zu aktualisieren, da ältere Versionen nicht mehr unterstützt werden.
-
-:::moniker-end
-<!-- end 1.1 -->
-
-<!-- 1.2 -->
-:::moniker range=">=iotedge-2020-11"
-
-Der IoT Edge-Dienst stellt Sicherheitsstandards auf dem IoT Edge-Gerät bereit und sorgt für deren Einhaltung. Der Dienst wird bei jedem Start gestartet und führt durch Starten der restlichen IoT Edge-Runtime einen Bootstrap für das Gerät aus.
-
-Der IoT-Identitätsdienst wurde zusammen mit Version 1.2 von IoT Edge eingeführt. Dieser Dienst übernimmt die Identitätsbereitstellung und -verwaltung für IoT Edge und andere Gerätekomponenten, die mit IoT Hub kommunizieren müssen.
-
-Die in diesem Abschnitt beschriebenen Schritte stellen den typischen Prozess zum Installieren der neuesten Version auf einem Gerät dar, das über eine Internetverbindung verfügt. Wenn Sie eine bestimmte Version installieren müssen, z. B. eine Vorabversion, oder wenn Sie offline installieren müssen, führen Sie die Schritte zu „Offlineinstallation oder Installation einer bestimmten Version“ aus.
-
-Aktualisieren Sie die Paketlisten auf Ihrem Gerät.
-
-   ```bash
-   sudo apt-get update
-   ```
-
-Überprüfen Sie, welche Versionen von IoT Edge und des IoT-Identitätsdiensts zur Verfügung stehen.
-
-   ```bash
-   apt list -a aziot-edge aziot-identity-service
-   ```
-
-Installieren Sie die neueste Version von IoT Edge und des IoT-Identitätsdienstpakets mit dem folgenden Befehl:
-
-   ```bash
-   sudo apt-get install aziot-edge
-   ```
-
-Wenn Sie aber lieber eine andere IoT Edge-Version als die neueste installieren möchten, müssen Sie für den `aziot-edge`- und den `aziot-identity-service`-Dienst unbedingt dieselbe Version installieren.
-
-:::moniker-end
-<!-- end 1.2 -->
-
-## <a name="configure-the-device-with-provisioning-information"></a>Konfigurieren des Geräts mit Bereitstellungsinformationen
+## <a name="provision-the-device-with-its-cloud-identity"></a>Bereitstellen des Geräts mit seiner Cloud-Identität
 
 Nachdem die Runtime auf Ihrem Gerät installiert wurde, konfigurieren Sie es mit den Informationen, die es zum Herstellen einer Verbindung zwischen dem Device Provisioning Service und IoT Hub verwendet.
 
@@ -355,10 +198,10 @@ Nachdem die Runtime auf Ihrem Gerät installiert wurde, konfigurieren Sie es mit
    provisioning:
      source: "dps"
      global_endpoint: "https://global.azure-devices-provisioning.net"
-     scope_id: "<SCOPE_ID>"
+     scope_id: "SCOPE_ID_HERE"
      attestation:
        method: "tpm"
-       registration_id: "<REGISTRATION_ID>"
+       registration_id: "REGISTRATION_ID_HERE"
    # always_reprovision_on_startup: true
    # dynamic_reprovisioning: false
    ```
@@ -396,11 +239,11 @@ Nachdem die Runtime auf Ihrem Gerät installiert wurde, konfigurieren Sie es mit
    [provisioning]
    source = "dps"
    global_endpoint = "https://global.azure-devices-provisioning.net"
-   id_scope = "<SCOPE_ID>"
+   id_scope = "SCOPE_ID_HERE"
    
    [provisioning.attestation]
    method = "tpm"
-   registration_id = "<REGISTRATION_ID>"
+   registration_id = "REGISTRATION_ID_HERE"
    ```
 
 1. Aktualisieren Sie die Werte `id_scope` und `registration_id` mit Ihrem Gerätebereitstellungsdienst und den Geräteinformationen. Der `scope_id` Wert ist der **ID-Bereich** auf der Übersichtsseite Ihrer Gerätebereitstellungsdienst-Instanz.
@@ -532,7 +375,7 @@ Sie können Zugriff auf das TPM gewähren, indem Sie die Systemeinstellungen üb
 :::moniker-end
 <!-- end 1.2 -->
 
-## <a name="restart-iot-edge-and-verify-successful-installation"></a>Neustarten von IoT Edge und Überprüfen der erfolgreichen Installation
+## <a name="verify-successful-installation"></a>Bestätigen einer erfolgreichen Installation
 
 <!-- 1.1 -->
 :::moniker range="iotedge-2018-06"

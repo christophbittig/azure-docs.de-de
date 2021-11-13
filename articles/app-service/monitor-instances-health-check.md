@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 07/19/2021
 ms.author: msangapu
 ms.custom: contperf-fy22q1
-ms.openlocfilehash: 37b876b177b7879c57255619d3f5e7e113a2a284
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 59e3d0f8e71de6333b3978dd9d40b51206a8a2a1
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129278065"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131462346"
 ---
 # <a name="monitor-app-service-instances-using-health-check"></a>Überwachen von App Service-Instanzen mit der Integritätsprüfung
 
@@ -24,7 +24,7 @@ In diesem Artikel wird die Integritätsprüfung im Azure-Portal verwendet, um Ap
 
 - Wenn Sie einen Pfad Ihrer App an die Integritätsprüfung übergeben, pingt diese den Pfad bei allen Instanzen Ihrer App Service-App in Intervallen von 1 Minute.
 - Wenn eine Instanz nach zwei oder mehr Anforderungen nicht mit einem Statuscode zwischen 200 und 299 (inklusive) antwortet oder nicht auf das Pingsignal reagiert, bestimmt das System, dass sie fehlerhaft ist, und entfernt sie.
-- Nach der Entfernung wird die fehlerhafte Instanz von der Integritätsprüfung weiterhin gepingt. Wenn diese weiterhin erfolglos antwortet, startet App Service den zugrunde liegenden virtuellen Computer neu, um so die Instanz wieder in einen fehlerfreien Zustand zu versetzen.
+- Nach der Entfernung wird die fehlerhafte Instanz von der Integritätsprüfung weiterhin gepingt. Wenn die Instanz mit einem gesunden Statuscode (200-299) zu antworten beginnt, wird die Instanz an den Load Balancer zurückgegeben.
 - Wenn eine Instanz für eine Stunde fehlerhaft bleibt, wird sie durch eine neue Instanz ersetzt.
 - Beim zentralen Hoch- oder Herunterskalieren pingt App Service außerdem den Pfad der Integritätsüberprüfung, um sicherzustellen, dass neue Instanzen bereit sind.
 
@@ -81,7 +81,7 @@ Die Integritätsprüfungsanforderungen werden intern an Ihren Standort gesendet,
 
 ### <a name="are-the-health-check-requests-sent-over-http-or-https"></a>Werden die Integritätsprüfungsanforderungen über HTTP oder HTTPS gesendet?
 
-Die Integritätsprüfungsanforderungen werden über HTTPS gesendet, wenn im Standort [Nur HTTPS](configure-ssl-bindings.md#enforce-https) aktiviert ist. Andernfalls werden sie über HTTP gesendet.
+Bei Windows App Service werden die Health Check-Anfragen über HTTPS gesendet, wenn [Nur HTTPS](configure-ssl-bindings.md#enforce-https) auf der Site aktiviert ist. Andernfalls werden sie über HTTP gesendet. Unter Linux App Service werden die Health Check-Anfragen nur über HTTP gesendet und können derzeit nicht über HTTP **S** gesendet werden.
 
 ### <a name="what-if-i-have-multiple-apps-on-the-same-app-service-plan"></a>Was geschieht, wenn ich mehrere Apps im selben App Service-Plan habe?
 

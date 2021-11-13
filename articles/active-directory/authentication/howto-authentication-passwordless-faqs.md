@@ -11,14 +11,14 @@ author: justinha
 manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 853174bd96f0a88f8513df848aab7a3d34aceb28
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: e2ea3a8213fa57aa7c8066b81ea7c790ec0b1db9
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131451842"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131988822"
 ---
-# <a name="deployment-frequently-asked-questions-faqs-for-hybrid-fido2-security-keys-in-azure-ad"></a>Häufig gestellte Fragen (FAQs) zur Bereitstellung hybrider FIDO2-Sicherheitsschlüssel in Azure AD 
+# <a name="deployment-frequently-asked-questions-faqs-for-hybrid-fido2-security-keys-in-azure-ad"></a>Häufig gestellte Fragen (FAQs) zur Bereitstellung hybrider FIDO2-Sicherheitsschlüssel in Azure AD
 
 In diesem Artikel werden häufig gestellte Fragen (Frequently Asked Questions, FAQs) zur Bereitstellung von in Azure AD eingebundenen Hybridgeräten und zur kennwortlosen Anmeldung bei lokalen Ressourcen behandelt. Bei diesem kennwortlosen Feature können Sie die Azure AD-Authentifizierung auf Windows 10-Geräten für in Azure AD eingebundene Hybridgeräte mithilfe von FIDO2-Sicherheitsschlüsseln aktivieren. Benutzer können sich auf ihren Geräten mit modernen Anmeldeinformationen wie FIDO2-Schlüsseln bei Windows anmelden und auf herkömmliche AD DS-basierte Ressourcen (Active Directory Domain Services) zugreifen, indem sie für ihre lokalen Ressourcen nahtloses einmaliges Anmelden (Single Sign-On, SSO) nutzen.
 
@@ -185,7 +185,7 @@ Es gibt zwei Komponenten: die lokale AD DS-Umgebung und den Azure AD-Mandanten
 Der Azure AD Kerberos-Server wird in einer lokalen AD DS-Umgebung als DC-Objekt (Domänencontroller) dargestellt. Dieses DC-Objekt setzt sich aus mehreren Objekten zusammen:
 
 * *CN=AzureADKerberos,OU=Domain Controllers,\<domain-DN>*
-    
+
     Ein Objekt vom Typ *Computer*, das einen schreibgeschützten Domänencontroller (Read-Only Domain Controller, RODC) in AD DS darstellt. Diesem Objekt ist kein Computer zugeordnet. Stattdessen handelt es sich um eine logische Darstellung eines DC.
 
 * *CN=krbtgt_AzureAD,CN=Users,\<domain-DN>*

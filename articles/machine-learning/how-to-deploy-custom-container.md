@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: deploy, devplatv2
-ms.openlocfilehash: 9b36a5799444b6da011693693b58f6574b135799
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: fdbe6f6232bcd4d53ce3473a80de2829f02fb6bf
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131553631"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132056661"
 ---
 # <a name="deploy-a-tensorflow-model-served-with-tf-serving-using-a-custom-container-in-a-managed-online-endpoint-preview"></a>Bereitstellen eines TensorFlow-Modells mit TF Serving mithilfe eines benutzerdefinierten Containers in einem verwalteten Onlineendpunkt (Vorschau)
 
@@ -58,35 +58,35 @@ cd azureml-examples/cli
 
 Definieren von Umgebungsvariablen:
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-tfserving.sh" id="initialize_variables":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-tfserving.sh" id="initialize_variables":::
 
 ## <a name="download-a-tensorflow-model"></a>Herunterladen eines TensorFlow-Modells
 
 Laden Sie ein Modell herunter, das eine Eingabe durch zwei dividiert und dem Ergebnis 2 hinzufügt, und entzippen Sie es:
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-tfserving.sh" id="download_and_unzip_model":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-tfserving.sh" id="download_and_unzip_model":::
 
 ## <a name="run-a-tf-serving-image-locally-to-test-that-it-works"></a>Lokales Ausführen eines TF Serving-Images, um zu testen, ob es funktioniert
 
 Verwenden Sie Docker, um Ihr Image lokal zum Testen auszuführen:
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-tfserving.sh" id="run_image_locally_for_testing":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-tfserving.sh" id="run_image_locally_for_testing":::
 
 ### <a name="check-that-you-can-send-liveness-and-scoring-requests-to-the-image"></a>Überprüfen, ob Sie Verfügbarkeits- und Bewertungsanforderungen an das Image senden können
 
 Überprüfen Sie zunächst, ob der Container „lebt“, d. h. der Prozess noch im Container ausgeführt wird. Sie sollten eine „200 (OK)“-Antwort erhalten.
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-tfserving.sh" id="check_liveness_locally":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-tfserving.sh" id="check_liveness_locally":::
 
 Überprüfen Sie dann, ob Sie Vorhersagen zu Daten ohne Bezeichnung erhalten:
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-tfserving.sh" id="check_scoring_locally":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-tfserving.sh" id="check_scoring_locally":::
 
 ### <a name="stop-the-image"></a>Beenden des Images
 
 Nachdem Sie das Image lokal getestet haben, beenden Sie es:
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-tfserving.sh" id="stop_image":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-tfserving.sh" id="stop_image":::
 
 ## <a name="create-a-yaml-file-for-your-endpoint-and-deployment"></a>Erstellen Sie eine YAML-Datei für Ihren Endpunkt und Ihr Bereitstellen.
 
@@ -94,11 +94,11 @@ Sie können Ihre Cloudbereitstellung mit YAML konfigurieren. Schauen Sie sich da
 
 __tfserving-endpoint.yml__
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/online/custom-container/tfserving-endpoint.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/custom-container/tfserving-endpoint.yml":::
 
 __tfserving-deployment.yml__
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/online/custom-container/tfserving-deployment.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/custom-container/tfserving-deployment.yml":::
 
 In dieser YAML-Datei sind einige wichtige Konzepte zu beachten:
 
@@ -171,7 +171,7 @@ az ml online-deployment create --name tfserving-deployment -f endpoints/online/c
 
 Nachdem die Bereitstellung abgeschlossen ist, prüfen Sie, ob Sie eine Bewertungsanforderung an den bereitgestellten Endpunkt senden können.
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-tfserving.sh" id="invoke_endpoint":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-tfserving.sh" id="invoke_endpoint":::
 
 ### <a name="delete-endpoint-and-model"></a>Löschen von Endpunkt und Modell
 
