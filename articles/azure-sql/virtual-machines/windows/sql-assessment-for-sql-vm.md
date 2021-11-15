@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/02/2021
 ms.reviewer: mathoma
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 47b74190884f40e3d1e7504133758e35c1fb3ba7
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: b0c163f3ea101ec47eda25bc81f78033893cad6a
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095166"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131500277"
 ---
 # <a name="sql-assessment-for-sql-server-on-azure-vms-preview"></a>SQL-Bewertung für SQL Server für Azure-VMs (Vorschau)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -29,7 +29,7 @@ Sobald die SQL-Bewertungsfunktion aktiviert ist, werden Ihre SQL Server-Instanz 
 
 Bewertungsergebnisse werden mithilfe von [Microsoft Monitoring Agent (MMA)](../../../azure-monitor/agents/log-analytics-agent.md) in Ihren [Log Analytics-Arbeitsbereich](../../../azure-monitor/logs/quick-create-workspace.md) hochgeladen. Wenn Ihre VM bereits für die Verwendung von Log Analytics konfiguriert ist, verwendet das SQL-Bewertungsfeature die vorhandene Verbindung.  Andernfalls wird die MMA-Erweiterung auf der SQL Server-VM installiert und mit dem angegebenen Log Analytics-Arbeitsbereich verbunden.
 
-Die Ausführungszeit der Bewertung hängt von Ihrer Umgebung ab (Anzahl der Datenbanken, Objekte usw.) und kann von einigen Minuten bis zu einer Stunde dauern. Die Größe des Bewertungsergebnisses hängt ebenfalls von Ihrer Umgebung ab. 
+Die Ausführungszeit der Bewertung hängt von Ihrer Umgebung ab (Anzahl der Datenbanken, Objekte usw.) und kann von einigen Minuten bis zu einer Stunde dauern. Die Größe des Bewertungsergebnisses hängt ebenfalls von Ihrer Umgebung ab. Die Bewertung wird für Ihre Instanz und alle Datenbanken auf dieser Instanz ausgeführt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -37,6 +37,7 @@ Um das SQL-Bewertungsfeature verwenden zu können, müssen die folgenden Vorauss
 
 - Ihre SQL Server-VM muss bei der [IaaS-Erweiterung von SQL Server im vollständigen Modus](sql-agent-extension-manually-register-single-vm.md#full-mode) registriert sein. 
 - Es muss ein [Log Analytics-Arbeitsbereich](../../../azure-monitor/logs/quick-create-workspace.md) im gleichen Abonnement wie Ihre SQL Server-VM vorhanden sein, in den Bewertungsergebnisse hochgeladen werden. 
+- Die SQL Server-Version muss 2012 oder höher sein.
 
 
 ## <a name="enable"></a>Aktivieren
@@ -56,7 +57,7 @@ Um SQL-Bewertungen zu aktivieren, führen Sie die folgenden Schritte aus:
 
 Die Ausführung von Bewertungen erfolgt:
 - Nach einem Zeitplan
-- Bei Bedarf
+- On-Demand-Streaming
 
 ### <a name="run-scheduled-assessment"></a>Ausführen einer geplanten Bewertung
 
@@ -100,6 +101,10 @@ Wenn an einem Tag mehrere Ausführungen erfolgt sind, ist nur die letzte Ausfüh
 
 Bei der Verwendung von SQL-Bewertungen können einige der folgenden bekannten Probleme auftreten. 
 
+### <a name="configuration-error-for-enable-assessment"></a>Konfigurationsfehler beim Aktivieren der Bewertung
+
+Wenn Ihr virtueller Computer bereits einem Log Analytics-Arbeitsbereich zugeordnet ist, auf den Sie keinen Zugriff haben oder der sich in einem anderen Abonnement befindet, wird auf dem Konfigurationsblatt ein Fehler angezeigt. Im ersten Fall können Sie entweder Berechtigungen für diesen Arbeitsbereich abrufen oder Ihren virtuellen Computer in einen anderen Log Analytics-Arbeitsbereich verschieben, indem Sie [diese Anweisungen](../../../azure-monitor/agents/agent-manage.md) zum Entfernen von Microsoft Monitoring Agent befolgen. Wir arbeiten daran, ein Szenario zu ermöglichen, bei dem sich der Log Analytics-Arbeitsbereich in einem anderen Abonnement befindet.
+
 ### <a name="deployment-failure-for-enable-or-run-assessment"></a>Bereitstellungsfehler beim Aktivieren oder Ausführen der Bewertung 
 
 Verwenden Sie den [Bereitstellungsverlauf](../../../azure-resource-manager/templates/deployment-history.md) der Ressourcengruppe, die die SQL-VM enthält, um die Fehlermeldung im Zusammenhang mit der fehlgeschlagenen Aktion anzuzeigen. 
@@ -108,12 +113,12 @@ Verwenden Sie den [Bereitstellungsverlauf](../../../azure-resource-manager/templ
 
 **Fehler bei der Bewertungsausführung**: Dies weist darauf hin, dass die SQL-IaaS-Erweiterung beim Ausführen der Bewertung ein Problem festgestellt hat. Die ausführliche Fehlermeldung ist im Erweiterungsprotokoll auf der VM unter `C:\WindowsAzure\Logs\Plugins\Microsoft.SqlServer.Management.SqlIaaSAgent\2.0.X.Y` verfügbar, wobei `2.0.X.Y ` der neueste vorhandene Versionsordner ist.  
 
-**Fehler beim Hochladen des Ergebnisses in den Log Analytics-Arbeitsbereich**: Dies bedeutet, dass der Microsoft Monitoring Agent (MMA) die Ergebnisse nicht zeitgerecht hochladen konnte. Stellen Sie sicher, dass die MMA-Erweiterung [ordnungsgemäß bereitgestellt](../../../azure-monitor/visualize/vmext-troubleshoot.md) ist, und lesen Sie den [Leitfaden zur Problembehandlung](../../../azure-monitor/agents/agent-windows-troubleshoot.md) für MMA, um das „Problem mit benutzerdefinierten Protokollen“ zu identifizieren, das im Leitfaden beschrieben wird. 
+**Fehler beim Hochladen des Ergebnisses in den Log Analytics-Arbeitsbereich**: Dies bedeutet, dass Microsoft Monitoring Agent (MMA) die Ergebnisse nicht zeitgerecht hochladen konnte. Stellen Sie sicher, dass die MMA-Erweiterung [ordnungsgemäß bereitgestellt](../../../azure-monitor/visualize/vmext-troubleshoot.md) ist, und sehen Sie sich die Probleme mit Konnektivität und Datenerfassung an, die in diesem [Leitfaden zur Problembehandlung](../../../azure-monitor/agents/agent-windows-troubleshoot.md) aufgeführt sind. 
 
 >[!TIP]
 >Wenn Sie TLS 1.0 oder höher in Windows erzwungen und ältere SSL-Protokolle wie [hier](/troubleshoot/windows-server/windows-security/restrict-cryptographic-algorithms-protocols-schannel#schannel-specific-registry-keys) beschrieben deaktiviert haben, müssen Sie auch sicherstellen, dass .NET Framework für die Verwendung starker Kryptografie [konfiguriert](../../../azure-monitor/agents/agent-windows.md#configure-agent-to-use-tls-12) ist. 
 
-**Ergebnis ist aufgrund der Datenaufbewahrung des Log Analytics-Arbeitsbereichs abgelaufen**: Dies weist darauf hin, dass die Ergebnisse nicht mehr im Log Analytics-Arbeitsbereich basierend auf der Aufbewahrungsrichtlinie beibehalten werden. Sie können den [Aufbewahrungszeitraum für den Arbeitsbereich ändern](../../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period).
+**Ergebnis ist aufgrund der Datenaufbewahrung im Log Analytics-Arbeitsbereich abgelaufen**: Dies weist darauf hin, dass die Ergebnisse basierend auf der Aufbewahrungsrichtlinie nicht mehr im Log Analytics-Arbeitsbereich beibehalten werden. Sie können den [Aufbewahrungszeitraum für den Arbeitsbereich ändern](../../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

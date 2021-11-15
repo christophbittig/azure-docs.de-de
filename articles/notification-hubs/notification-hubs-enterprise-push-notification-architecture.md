@@ -17,12 +17,12 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0553d15eccb7e3fee4422b17a545caf5cfc9378b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 9b521427b5fc3fd0eb3f0e91e8122d3da543296f
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122346076"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132027658"
 ---
 # <a name="enterprise-push-architectural-guidance"></a>Anleitung für eine unternehmensbezogene Pusharchitektur
 
@@ -72,48 +72,46 @@ Der vollständige Beispielcode ist unter [Notification Hubs Samples] verfügbar.
 
 1. **EnterprisePushBackendSystem**
 
-    a. Dieses Projekt verwendet das NuGet-Paket **WindowsAzure.ServiceBus** und basiert auf [WindowsAzure.ServiceBus].
+    a. Dieses Projekt verwendet das NuGet-Paket **Azure.Messaging.ServiceBus** und basiert auf [Veröffentlichungs-/Abonnementprogrammierung für Service Bus].
 
     b. Bei der Anwendung handelt es sich um eine einfache C#-Konsolen-App zum Simulieren eines Branchensystems, mit dem das Senden einer Nachricht an eine mobile App veranlasst wird.
 
     ```csharp
-    static void Main(string[] args)
+    static async Task Main(string[] args)
     {
         string connectionString =
-            CloudConfigurationManager.GetSetting("Microsoft.ServiceBus.ConnectionString");
+            ConfigurationManager.AppSettings.Get("Azure.ServiceBus.ConnectionString");
 
         // Create the topic
-        CreateTopic(connectionString);
+        await CreateTopicAsync(connectionString);
 
         // Send message
-        SendMessage(connectionString);
+        await SendMessageAsync(connectionString);
     }
     ```
 
-    c. `CreateTopic` wird zum Erstellen des Service Bus-Themas verwendet.
+    c. `CreateTopicAsync` wird zum Erstellen des Service Bus-Themas verwendet.
 
     ```csharp
-    public static void CreateTopic(string connectionString)
+    public static async Task CreateTopicAsync(string connectionString)
     {
         // Create the topic if it does not exist already
+        ServiceBusAdministrationClient client = new ServiceBusAdministrationClient(connectionString);
 
-        var namespaceManager =
-            NamespaceManager.CreateFromConnectionString(connectionString);
-
-        if (!namespaceManager.TopicExists(sampleTopic))
+        if (!await client.TopicExistsAsync(topicName))
         {
-            namespaceManager.CreateTopic(sampleTopic);
+            await client.CreateTopicAsync(topicName);
         }
     }
     ```
 
-    d. `SendMessage` wird verwendet, um die Nachrichten an dieses Service Bus-Thema zu senden. Dieser Code sendet für dieses Beispiel einfach regelmäßig einen Satz von zufälligen Nachrichten an das Thema. Normalerweise ist ein Back-End-System vorhanden, das die Nachrichten sendet, wenn ein Ereignis auftritt.
+    d. `SendMessageAsync` wird verwendet, um die Nachrichten an dieses Service Bus-Thema zu senden. Dieser Code sendet für dieses Beispiel einfach regelmäßig einen Satz von zufälligen Nachrichten an das Thema. Normalerweise ist ein Back-End-System vorhanden, das die Nachrichten sendet, wenn ein Ereignis auftritt.
 
     ```csharp
-    public static void SendMessage(string connectionString)
+    public static sync Task SendMessageAsync(string connectionString)
     {
-        TopicClient client =
-            TopicClient.CreateFromConnectionString(connectionString, sampleTopic);
+        await using var client = new ServiceBusClient(connectionString);
+        ServiceBusSender sender = client.CreateSender(topicName);
 
         // Sends random messages every 10 seconds to the topic
         string[] messages =
@@ -130,8 +128,8 @@ Der vollständige Beispielcode ist unter [Notification Hubs Samples] verfügbar.
             string notification = String.Format(messages[rnd.Next(0,messages.Length)], employeeId);
 
             // Send Notification
-            BrokeredMessage message = new BrokeredMessage(notification);
-            client.Send(message);
+            ServiceBusMessage message = new ServiceBusMessage(notification);
+            await sender.SendMessageAsync(message);
 
             Console.WriteLine("{0} Message sent - '{1}'", DateTime.Now, notification);
 
@@ -139,63 +137,60 @@ Der vollständige Beispielcode ist unter [Notification Hubs Samples] verfügbar.
         }
     }
     ```
+
 2. **ReceiveAndSendNotification**
 
-    a. Dieses Projekt verwendet die NuGet-Pakete *WindowsAzure.ServiceBus* und **Microsoft.Web.WebJobs.Publish** und basiert auf [WindowsAzure.ServiceBus].
+    a. Dieses Projekt verwendet die NuGet-Pakete *Azure.Messaging.ServiceBus* und **Microsoft.Web.WebJobs.Publish** und basiert auf [Veröffentlichungs-/Abonnementprogrammierung für Service Bus].
 
     b. Die folgende Konsolen-App ist als [Azure WebJob] implementiert, weil sie kontinuierlich ausgeführt werden muss, um auf Nachrichten aus den Branchen- bzw. Back-End-Systemen zu lauschen. Diese Anwendung ist Teil Ihres mobilen Back-Ends.
 
     ```csharp
-    static void Main(string[] args)
+    static async Task Main(string[] args)
     {
         string connectionString =
-                 CloudConfigurationManager.GetSetting("Microsoft.ServiceBus.ConnectionString");
+                 ConfigurationManager.AppSettings.Get("Azure.ServiceBus.ConnectionString");
 
         // Create the subscription that receives messages
-        CreateSubscription(connectionString);
+        await CreateSubscriptionAsync(connectionString);
 
         // Receive message
-        ReceiveMessageAndSendNotification(connectionString);
+        await ReceiveMessageAndSendNotificationAsync(connectionString);
     }
     ```
 
-    c. `CreateSubscription` wird zum Erstellen eines Service Bus-Abonnements für das Thema verwendet, an das das Back-End-System Nachrichten sendet. Je nach Geschäftsszenario erstellt diese Komponente mindestens ein Abonnement für die jeweiligen Themen (z.B. empfangen einige Themen Nachrichten aus dem Personalsystem, einige aus dem Finanzsystem usw.).
+    c. `CreateSubscriptionAsync` wird zum Erstellen eines Service Bus-Abonnements für das Thema verwendet, an das das Back-End-System Nachrichten sendet. Je nach Geschäftsszenario erstellt diese Komponente mindestens ein Abonnement für die jeweiligen Themen (z.B. empfangen einige Themen Nachrichten aus dem Personalsystem, einige aus dem Finanzsystem usw.).
 
     ```csharp
-    static void CreateSubscription(string connectionString)
+    static async Task CreateSubscriptionAsync(string connectionString)
     {
         // Create the subscription if it does not exist already
-        var namespaceManager =
-            NamespaceManager.CreateFromConnectionString(connectionString);
+        ServiceBusAdministrationClient client = new ServiceBusAdministrationClient(connectionString);
 
-        if (!namespaceManager.SubscriptionExists(sampleTopic, sampleSubscription))
+        if (!await client.SubscriptionExistsAsync(topicName, subscriptionName))
         {
-            namespaceManager.CreateSubscription(sampleTopic, sampleSubscription);
+            await client.CreateSubscriptionAsync(topicName, subscriptionName);
         }
     }
     ```
 
-    d. `ReceiveMessageAndSendNotification` wird verwendet, um die Nachricht über das dazugehörige Abonnement aus dem Thema zu lesen und, wenn der Lesevorgang erfolgreich war, eine Benachrichtigung zu erstellen (im Beispielszenario eine native Windows-Popupbenachrichtigung), die über Azure Notification Hubs an die mobile Anwendung gesendet werden soll.
+    d. `ReceiveMessageAndSendNotificationAsync` wird verwendet, um die Nachricht über das dazugehörige Abonnement aus dem Thema zu lesen und, wenn der Lesevorgang erfolgreich war, eine Benachrichtigung zu erstellen (im Beispielszenario eine native Windows-Popupbenachrichtigung), die über Azure Notification Hubs an die mobile Anwendung gesendet werden soll.
 
     ```csharp
-    static void ReceiveMessageAndSendNotification(string connectionString)
+    static async Task ReceiveMessageAndSendNotificationAsync(string connectionString)
     {
         // Initialize the Notification Hub
-        string hubConnectionString = CloudConfigurationManager.GetSetting
+        string hubConnectionString = ConfigurationManager.AppSettings.Get
                 ("Microsoft.NotificationHub.ConnectionString");
         hub = NotificationHubClient.CreateClientFromConnectionString
                 (hubConnectionString, "enterprisepushservicehub");
 
-        SubscriptionClient Client =
-            SubscriptionClient.CreateFromConnectionString
-                    (connectionString, sampleTopic, sampleSubscription);
-
-        Client.Receive();
+        ServiceBusClient Client = new ServiceBusClient(connectionString);
+        ServiceBusReceiver receiver = Client.CreateReceiver(topicName, subscriptionName);
 
         // Continuously process messages received from the subscription
         while (true)
         {
-            BrokeredMessage message = Client.Receive();
+            ServiceBusReceivedMessage message = await receiver.ReceiveMessageAsync();
             var toastMessage = @"<toast><visual><binding template=""ToastText01""><text id=""1"">{messagepayload}</text></binding></visual></toast>";
 
             if (message != null)
@@ -204,19 +199,19 @@ Der vollständige Beispielcode ist unter [Notification Hubs Samples] verfügbar.
                 {
                     Console.WriteLine(message.MessageId);
                     Console.WriteLine(message.SequenceNumber);
-                    string messageBody = message.GetBody<string>();
+                    string messageBody = message.Body.ToString();
                     Console.WriteLine("Body: " + messageBody + "\n");
 
                     toastMessage = toastMessage.Replace("{messagepayload}", messageBody);
                     SendNotificationAsync(toastMessage);
 
                     // Remove message from subscription
-                    message.Complete();
+                    await receiver.CompleteMessageAsync(message);
                 }
                 catch (Exception)
                 {
                     // Indicate a problem, unlock message in subscription
-                    message.Abandon();
+                    await receiver.AbandonMessageAsync(message);
                 }
             }
         }

@@ -6,12 +6,12 @@ ms.service: virtual-wan
 ms.topic: troubleshooting
 ms.date: 08/18/2021
 ms.author: cherylmc
-ms.openlocfilehash: eaeefcfc48492686abc88215e80bc6d74a836f4f
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: 65b39c7cae553663cc4b482ff98a4be3c2e03876
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129545037"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132026043"
 ---
 # <a name="virtual-wan-faq"></a>Virtual WAN – Häufig gestellte Fragen
 
@@ -209,7 +209,7 @@ Nein. Für Virtual WAN ist keine ExpressRoute-Verbindung mit jedem Standort erfo
 
 ### <a name="is-there-a-network-throughput-or-connection-limit-when-using-azure-virtual-wan"></a>Gibt es bei Verwendung von Azure Virtual WAN einen Grenzwert für den Netzwerkdurchsatz oder die Anzahl der Verbindungen?
 
-Der Netzwerkdurchsatz wird in einem virtuellen WAN-Hub pro Dienst angegeben. Sie können beliebig viele virtuelle WANs verwenden, aber jedes Virtual WAN gestattet nur einen Hub pro Region. In jedem Hub beträgt der aggregierte VPN-Durchsatz bis zu 20 GBit/s, der aggregierte ExpressRoute-Durchsatz bis zu 20 GBit/s und der aggregierte Benutzer-VPN/Point-to-Site-VPN-Durchsatz bis zu 20 GBit/s. Der Router im virtuellen Hub unterstützt bis zu 50 GBit/s für VNET-zu-VNET-Datenverkehr und geht übergreifend für alle mit einem einzelnen virtuellen Hub verbundenen VNETs von einer Gesamtworkload von 2.000 virtuellen Computern aus.
+Der Netzwerkdurchsatz wird in einem virtuellen WAN-Hub pro Dienst angegeben. Sie können beliebig viele virtuelle WANs verwenden, aber jedes Virtual WAN gestattet nur einen Hub pro Region. In jedem Hub beträgt der aggregierte VPN-Durchsatz bis zu 20 GBit/s, der aggregierte ExpressRoute-Durchsatz bis zu 20 GBit/s und der aggregierte Benutzer-VPN/Point-to-Site-VPN-Durchsatz bis zu 20 GBit/s. Der Router im virtuellen Hub unterstützt bis zu 50 GBit/s für VNET-zu-VNET-Datenverkehr und geht übergreifend für alle mit einem einzelnen virtuellen Hub verbundenen VNETs von einer Gesamtworkload von 2.000 virtuellen Computern aus. Dieser [Grenzwert](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#virtual-wan-limits) kann erhöht werden, indem eine Online-Kundensupportanfrage gestellt wird. Informationen zu den Kostenauswirkungen finden Sie unter Kosten für *Routinginfrastruktureinheiten* auf der Seite [Preise für Azure Virtual WAN](https://azure.microsoft.com/pricing/details/virtual-wan/). 
 
 VPN-Standorte stellen die Konnektivität mit einem Hub über Verbindungen her. Virtual WAN unterstützt bis zu 1.000 Verbindungen oder 2.000 IPsec-Tunnel pro virtuellem Hub. Wenn Remotebenutzer eine Verbindung mit einem virtuellen Hub herstellen, verbinden sie sich mit dem P2S-VPN-Gateway, das je nach der für das P2S-VPN-Gateway im virtuellen Hub ausgewählten Skalierungseinheit (Bandbreite) bis zu 10.000 Benutzer unterstützt.
 

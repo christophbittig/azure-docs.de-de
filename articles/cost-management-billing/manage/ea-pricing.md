@@ -7,15 +7,15 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 01/07/2021
+ms.date: 10/19/2021
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: d563907d3567607e537eebfc5c91be02e27fd758
-ms.sourcegitcommit: 42a4d0e8fa84609bec0f6c241abe1c20036b9575
+ms.openlocfilehash: 8ee5cc31e0127ead62fa91f6b1bfab66854aac83
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2021
-ms.locfileid: "98014762"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130260403"
 ---
 # <a name="view-and-download-your-organizations-azure-pricing"></a>Anzeigen und Herunterladen der Azure-Preise für Ihre Organisation
 
@@ -27,12 +27,15 @@ Je nach den durch den Unternehmensadministrator für Ihre Organisation festgeleg
 
 1. Melden Sie sich als Unternehmensadministrator beim [Azure-Portal](https://portal.azure.com/) an.
 1. Suchen Sie nach *Kostenverwaltung + Abrechnung*.  
-   ![Screenshot der Suche im Azure-Portal](./media/ea-pricing/portal-cm-billing-search.png)
-1. Wählen Sie unter dem Rechnungskonto **Verbrauch + Gebühren** aus.  
+   ![Screenshot: Suche im Azure-Portal](./media/ea-pricing/portal-cm-billing-search.png)
+1. Wählen Sie ein Abrechnungsprofil aus. Abhängig von Ihren Zugriffsberechtigungen müssen Sie möglicherweise zuerst ein Abrechnungskonto auswählen.
+1. Wählen Sie im Navigationsmenü **Verbrauch + Gebühren** aus.  
    ![Screenshot von „Verbrauch + Gebühren“ unter „Abrechnung“](./media/ea-pricing/ea-pricing-usage-charges-nav.png)
 1. Wählen Sie ![Symbol „Herunterladen“](./media/ea-pricing/download-icon.png) für den Monat **Herunterladen** aus.
-1. Wählen Sie unter **Preisblatt** die Option **CSV herunterladen** aus.  
+1. Wählen Sie auf der Seite „Verbrauch + Gebühren“ unter dem Preisblatt **Prepare document** (Dokument vorbereiten) aus. Es kann eine Weile dauern, bis die Datei vorbereitet ist.  
     :::image type="content" source="./media/ea-pricing/download-enterprise-agreement-price-sheet-01.png" alt-text="Screenshot mit den Optionen für „Nutzung und Gebühren herunterladen“" :::
+1. Wenn die Datei zum Herunterladen bereit ist, wählen Sie **CSV herunterladen** aus.
+
 
 ## <a name="download-pricing-for-an-mca-or-mpa-account"></a>Herunterladen der Preise für ein MCA- oder MPA-Konto
 

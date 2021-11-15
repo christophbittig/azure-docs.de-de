@@ -1,25 +1,27 @@
 ---
-title: Einrichten der Autoskalierung für Microserviceanwendungen
+title: Einrichten von Autoskalierung für Anwendungen
 description: In diesem Artikel wird beschrieben, wie Sie über das Microsoft Azure-Portal oder die Azure CLI Autoskalierungseinstellungen für Ihre Anwendungen einrichten.
 author: karlerickson
 ms.author: karler
 ms.service: spring-cloud
 ms.topic: how-to
-ms.date: 07/22/2020
+ms.date: 11/03/2021
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: d1e0b9cb6beb48e6f9ae8c8d5d985f4dfd930d2d
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: 67b5976e8df650ac8961cdb428338ca8147878d4
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340458"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131846632"
 ---
-# <a name="set-up-autoscale-for-microservice-applications"></a>Einrichten der Autoskalierung für Microserviceanwendungen
+# <a name="set-up-autoscale-for-applications"></a>Einrichten von Autoskalierung für Anwendungen
 
 **Dieser Artikel gilt für:** ✔️ Java ✔️ C#
 
-Die in Azure Spring Cloud integrierte Autoskalierung trägt dazu bei, dass Microserviceanwendungen auch dann optimal funktionieren, wenn sich der Bedarf ändert. Dazu gehört das Ändern der Anzahl virtueller CPUs, des Arbeitsspeichers und der App-Instanzen. In diesem Artikel wird beschrieben, wie Sie über das Microsoft Azure-Portal oder die Azure CLI Autoskalierungseinstellungen für Ihre Anwendungen einrichten.
+In diesem Artikel wird beschrieben, wie Sie über das Microsoft Azure-Portal oder die Azure CLI Autoskalierungseinstellungen für Ihre Anwendungen einrichten.
 
+Die in Azure Spring Cloud integrierte Autoskalierung trägt dazu bei, dass Anwendungen auch dann optimal funktionieren, wenn sich der Bedarf ändert. Azure Spring Cloud unterstützt horizontale Skalierung und Abskalieren, einschließlich der Änderung der Anzahl von App-Instanzen und des Lastenausgleichs.
+ 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Um die folgenden Verfahren ausführen zu können, benötigen Sie Folgendes:
@@ -44,7 +46,7 @@ Um die folgenden Verfahren ausführen zu können, benötigen Sie Folgendes:
 
 Es gibt zwei Optionen für die Autoskalierungsbedarfsverwaltung:
 
-* Manuelles Skalieren: Beibehalten einer festen Anzahl von Instanzen Im Standard-Tarif können Sie auf maximal 500 Instanzen aufskalieren. Dieser Wert ändert die Anzahl separat ausgeführter Instanzen der Microserviceanwendung.
+* Manuelles Skalieren: Beibehalten einer festen Anzahl von Instanzen Im Standard-Tarif können Sie auf maximal 500 Instanzen aufskalieren. Dieser Wert ändert die Anzahl separat ausgeführter Instanzen der Anwendung.
 * Benutzerdefinierte Autoskalierung: Skalieren nach einem beliebigen Zeitplan basierend auf Metriken
 
 Wählen Sie im Azure-Portal aus, wie Sie skalieren möchten.  In der folgenden Abbildung sind die Option **Benutzerdefinierte Autoskalierung** und Moduseinstellungen dargestellt.

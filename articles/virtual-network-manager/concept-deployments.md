@@ -7,12 +7,12 @@ ms.service: virtual-network-manager
 ms.topic: conceptual
 ms.date: 11/02/2021
 ms.custom: template-concept, ignite-fall-2021
-ms.openlocfilehash: bbf38eff6ffc5d24ae566ec94167a1c0c6ff9263
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: f7e192133bac66d9ec593350a43d0d005bb05933
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095855"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131866675"
 ---
 # <a name="configuration-deployments-in-azure-virtual-network-manager-preview"></a>Konfigurationsbereitstellung in Azure Virtual Network Manager (Vorschau)
 
@@ -29,7 +29,7 @@ In diesem Artikel erfahren Sie, wie die Konfigurationen auf Ihre Netzwerkressour
 
 ## <a name="deployment-against-network-group-membership-types"></a><a name="deployment"></a>Bereitstellung gegen Netzgruppenmitgliedschaftstypen
 
-Aktualisierungen der Bereitstellung sind für statische und dynamische Gruppenmitglieder in einer Netzwerkgruppe unterschiedlich. Wenn Sie dynamische Gruppenmitglieder haben, wird ein Zielzustandsmodell verwendet. Azure Virtual Network Manager stellt automatisch fest, ob die dynamischen Mitglieder die Anforderungen der Konfiguration erfüllen und passt sie an, ohne dass Sie die Konfiguration erneut bereitstellen müssen. Wenn Sie jedoch virtuelle Netzwerke haben, die als statische Mitglieder hinzugefügt wurden, müssen Sie die Konfiguration erneut bereitstellen, damit die Änderungen übernommen werden. Wenn Sie zum Beispiel ein neues virtuelles Netzwerk als statisches Mitglied hinzufügen, müssen Sie die Konfiguration erneut bereitstellen, damit sie wirksam wird.
+Das Ändern der Definition einer Netzwerkgruppe hat keine Auswirkungen, es sei denn, die Konfiguration, die diese Netzwerkgruppe verwendet, wird bereitgestellt. Daher sind Aktualisierungen der Bereitstellung für statische und dynamische Gruppenmitglieder in einer Netzwerkgruppe unterschiedlich. Wenn Sie eine dynamische Gruppenmitgliedschaft definiert haben, z. B. alle virtuellen Netzwerke, deren Name die Angabe „production“ enthält, ermittelt Azure Virtual Network Manager automatisch, ob die dynamischen Mitglieder die Anforderungen der Konfiguration erfüllen, und passt sie an, ohne dass Sie die Konfiguration erneut bereitstellen müssen. Dies liegt daran, dass Sie die Bedingung der Mitgliedschaft bereits definiert haben und die Definition nicht geändert wurde. Wenn Sie jedoch virtuelle Netzwerke haben, die als statische Mitglieder hinzugefügt wurden, müssen Sie die Konfiguration erneut bereitstellen, damit die Änderungen übernommen werden. Wenn Sie beispielsweise ein neues virtuelles Netzwerk als statisches Mitglied hinzufügen, müssen Sie die Konfiguration erneut bereitstellen, damit sie wirksam wird.
 
 ## <a name="deployment-status"></a>Bereitstellungsstatus
 

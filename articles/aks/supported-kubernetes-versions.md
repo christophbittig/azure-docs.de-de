@@ -7,12 +7,12 @@ ms.date: 08/09/2021
 author: palma21
 ms.author: jpalma
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: ea1112f614e9c08bde1ff0427af706aae4c14896
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 3c094a40cd0150fe4134bf1352dfbe418346d63b
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131063122"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131577705"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Unterstützte Kubernetes-Versionen in Azure Kubernetes Service (AKS)
 
@@ -217,7 +217,8 @@ Die Steuerungsebene muss sich innerhalb eines Fensters von Versionen aller Knote
 
 **Kann ich während eines Clusterupgrades mehrere AKS-Versionen überspringen?**
 
-Beim Upgrade eines unterstützten AKS-Clusters können Nebenversionen von Kubernetes nicht übersprungen werden. Beispielsweise Upgrades zwischen:
+Beim Upgrade eines unterstützten AKS-Clusters können Nebenversionen von Kubernetes nicht übersprungen werden. Die [Richtlinie zur Versionsabweichung](https://kubernetes.io/releases/version-skew-policy/) der Kubernetes-Steuerungsebenen unterstützt das Überspringen von Nebenversionen nicht. Beispielsweise Upgrades zwischen:
+
   * *1.12.x* -> *1.13.x*: zulässig.
   * *1.13.x* -> *1.14.x*: zulässig.
   * *1.12.x* -> *1.14.x*: nicht zulässig.
@@ -226,7 +227,7 @@ So führen Sie ein Upgrade von *1.12.x* -> *1.14.x* aus:
 1. Führen Sie ein Upgrade von *1.12.x* -> *1.13.x* aus.
 1. Führen Sie ein Upgrade von *1.13.x* -> *1.14.x* aus.
 
-Das Überspringen mehrerer Versionen ist nur möglich, wenn ein Upgrade von einer nicht unterstützten Version auf eine unterstützte Version erfolgt. Beispielsweise können Sie ein Upgrade von einer nicht unterstützten Version *1.10.x* auf eine unterstützte Version *1.15.x* durchführen.
+Das Überspringen mehrerer Versionen ist nur möglich, wenn ein Upgrade von einer nicht unterstützten Version auf eine mindestens unterstützte Version erfolgt. Beispielsweise können Sie ein Upgrade von einer nicht unterstützten Version *1.10.x* auf eine unterstützte Version *1.15.x* durchführen, wenn *1.15* die mindestens unterstützte Nebenversion ist.
 
 **Kann ich während des 30-tägigen Supportzeitraums einen neuen 1.xx.x-Cluster erstellen?**
 

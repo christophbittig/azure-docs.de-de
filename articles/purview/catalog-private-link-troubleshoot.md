@@ -7,17 +7,17 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/15/2021
-ms.openlocfilehash: cb41c6bd06541f414b5cd8f353e59f6094182d13
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: 3a41e3e131c4537e21e3844dbf0db360e2b77b28
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130063354"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130214717"
 ---
 # <a name="troubleshooting-private-endpoint-configuration-for-purview-accounts"></a>Problembehandlung bei der Konfiguration privater Endpunkte für Purview-Konten
 
 > [!IMPORTANT]
-> Wenn Sie einen privaten _Portalendpunkt_ für Ihr Purview-Konto **vor dem 27. September 2021 um 15:30 UTC** erstellt haben, müssen Sie die erforderlichen Maßnahmen ergreifen, wie in [DNS für private Portalendpunkte neu konfigurieren](./catalog-private-link.md#reconfigure-dns-for-portal-private-endpoints) beschrieben. **Diese Aktionen müssen vor dem 11. Oktober 2021 abgeschlossen sein. Wenn dies nicht geschieht, funktionieren vorhandene private Endpunkte im Portal nicht mehr**.
+> Wenn Sie einen privaten _Portalendpunkt_ für Ihr Purview-Konto **vor dem 27. September 2021 um 15:30 UTC** erstellt haben, müssen Sie die erforderlichen Maßnahmen ergreifen, wie in [DNS für private Portalendpunkte neu konfigurieren](./catalog-private-link.md#reconfigure-dns-for-portal-private-endpoints) beschrieben. **Diese Maßnahmen müssen vor dem 12. November 2021 abgeschlossen sein. Andernfalls werden die vorhandenen privaten Portalendpunkte nicht mehr funktionieren**.
 
 Dieser Leitfaden fasst bekannte Einschränkungen im Zusammenhang mit der Verwendung privater Endpunkte für Azure Purview zusammen und enthält eine Liste der Schritte und Lösungen zum Beheben einiger der häufigsten relevanten Probleme. 
 
@@ -29,7 +29,7 @@ Dieser Leitfaden fasst bekannte Einschränkungen im Zusammenhang mit der Verwend
 - Bei Verwendung des Azure-Portals können die privaten Erfassungsendpunkte über die in den vorherigen Schritten beschriebene Benutzeroberfläche des Azure Purview-Portals erstellt werden. Sie können nicht über Private Link Center erstellt werden.
 - Wenn sich die privaten Azure DNS-Zonen in einem anderen Abonnement befinden als die privaten Endpunkte, wird das Erstellen von DNS-A-Einträgen für private Erfassungsendpunkte innerhalb vorhandener Azure DNS-Zonen über das Azure Purview-Portal nicht unterstützt. A-Einträge können manuell in den DNS-Zielzonen im anderen Abonnement hinzugefügt werden. 
 - Der Computer mit der selbstgehosteten Integration Runtime muss in demselben VNet bereitgestellt werden, in dem der private Azure Purview-Erfassungsendpunkt bereitgestellt wird.
-- Das Überprüfen eines Power BI-Mandanten, für den ein privater Endpunkt konfiguriert und der öffentliche Zugriff blockiert ist, wird derzeit nicht unterstützt.
+- Das Überprüfen eines Power BI-Mandanten, für den ein privater Endpunkt konfiguriert und der öffentliche Zugriff blockiert ist, wird derzeit nicht unterstützt.
 - Informationen zu Einschränkungen im Zusammenhang mit dem Private Link-Dienst finden Sie unter [Private Link-Grenzwerte](../azure-resource-manager/management/azure-subscription-service-limits.md#private-link-limits).
 
 ## <a name="recommended-troubleshooting-steps"></a>Empfohlene Schritte zur Problembehandlung  

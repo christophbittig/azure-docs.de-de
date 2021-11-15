@@ -6,12 +6,12 @@ author: palma21
 ms.topic: article
 ms.date: 03/15/2019
 ms.author: jpalma
-ms.openlocfilehash: 2472e6cc2c0b24ed73532f3b04cd514a266542fd
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c62e269ae20b8da974b4ba7ef72ac7171ee0e88d
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122338893"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131577971"
 ---
 # <a name="customize-coredns-with-azure-kubernetes-service"></a>Anpassen von CoreDNS mit Azure Kubernetes Service
 
@@ -46,16 +46,15 @@ metadata:
   namespace: kube-system
 data:
   test.server: | # you may select any name here, but it must end with the .server file extension
-    <domain to be rewritten>.com:53 {
-        errors
-        cache 30
-        rewrite name substring <domain to be rewritten>.com default.svc.cluster.local
-        kubernetes cluster.local in-addr.arpa ip6.arpa {
-          pods insecure
-          fallthrough in-addr.arpa ip6.arpa
-        }
-        forward .  /etc/resolv.conf # you can redirect this to a specific DNS server such as 10.0.0.10, but that server must be able to resolve the rewritten domain name
-    }
+  <domain to be rewritten>.com:53 {
+  log
+  errors
+  rewrite stop {
+    name regex (.*)\.<domain to be rewritten>.com {1}.default.svc.cluster.local
+    answer name (.*)\.default\.svc\.cluster\.local {1}.<domain to be rewritten>.com
+  }
+  forward . /etc/resolv.conf # you can redirect this to a specific DNS server such as 10.0.0.10, but that server must be able to resolve the rewritten domain name
+}
 ```
 
 > [!IMPORTANT]
@@ -80,7 +79,7 @@ kubectl delete pod --namespace kube-system -l k8s-app=kube-dns
 ```
 
 > [!Note]
-> Der obige Befehl ist richtig. Während wir `coredns` ändern, befindet sich die Bereitstellung unter dem Namen **kube-dns**.
+> Der obige Befehl ist richtig. Während wir `coredns` ändern, befindet sich die Bereitstellung unter der Bezeichnung **kube-dns**.
 
 ## <a name="custom-forward-server"></a>Benutzerdefinierter Weiterleitungsserver
 

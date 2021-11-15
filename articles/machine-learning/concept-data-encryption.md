@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
-ms.date: 08/02/2021
-ms.openlocfilehash: e367f6685e73cb6cdfd9e777e6cb554c186c616c
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.date: 10/21/2021
+ms.openlocfilehash: 1ac26da492c4236d89ed71edf738dbc6cd813563
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129429222"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131552694"
 ---
 # <a name="data-encryption-with-azure-machine-learning"></a>Datenverschlüsselung mit Azure Machine Learning
 
@@ -66,10 +66,13 @@ Um die Bereitstellung einer Cosmos DB-Instanz in Ihrem Abonnement mit vom Kunden
 
 * Verwenden Sie die folgenden Parameter, wenn Sie den Azure Machine Learning-Arbeitsbereich erstellen. Beide Parameter sind obligatorisch und werden beim SDK, der Azure-Befehlszeilenschnittstelle, bei REST-APIs und in Resource Manager-Vorlagen unterstützt.
 
+    * `cmk_keyvault`: Dieser Parameter ist die Ressourcen-ID des Schlüsseltresors in Ihrem Abonnement. Dieser Schlüsseltresor muss sich in derselben Region und demselben Abonnement befinden, das Sie für den Azure Machine Learning-Arbeitsbereich verwenden werden. 
+
     * `resource_cmk_uri`: Dieser Parameter ist der vollständige Ressourcen-URI des vom Kunden verwalteten Schlüssels in Ihrem Schlüsseltresor, einschließlich der [Versionsinformationen für den Schlüssel](../key-vault/general/about-keys-secrets-certificates.md#objects-identifiers-and-versioning). 
 
-    * `cmk_keyvault`: Dieser Parameter ist die Ressourcen-ID des Schlüsseltresors in Ihrem Abonnement. Dieser Schlüsseltresor muss sich in derselben Region und demselben Abonnement befinden, das Sie für den Azure Machine Learning-Arbeitsbereich verwenden werden. 
-    
+        > [!NOTE]
+        > Vor dem Erstellen eines verschlüsselten Machine Learning-Arbeitsbereichs ist die Aktivierung des vorläufigen Löschens und des Bereinigungsschutzes für die CMK-Schlüsseltresorinstanz erforderlich, um vor versehentlichem Datenverlust im Falle einer Tresorlöschung zu schützen.
+        
         > [!NOTE]
         > Diese Schlüsseltresorinstanz kann sich von dem Schlüsseltresor unterscheiden, der von Azure Machine Learning beim Bereitstellen des Arbeitsbereichs erstellt wird. Wenn Sie dieselbe Schlüsseltresorinstanz für den Arbeitsbereich verwenden möchten, übergeben Sie denselben Schlüsselspeicher beim Bereitstellen des Arbeitsbereichs mithilfe des [key_vault-Parameters](/python/api/azureml-core/azureml.core.workspace%28class%29#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-). 
 

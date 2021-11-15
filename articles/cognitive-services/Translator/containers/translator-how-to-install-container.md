@@ -8,22 +8,24 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: how-to
-ms.date: 05/25/2021
+ms.date: 10/14/2021
 ms.author: lajanuar
 recommendations: false
 keywords: Lokal, Docker, Container, Identifizieren
-ms.openlocfilehash: 680f1f6f1bfddc5bf525ae06b61bcf9098dc850f
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: dbee487212f56eb5c99d3cc785cf8a2205280fcf
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355748"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131426143"
 ---
 # <a name="install-and-run-translator-containers-preview"></a>Installieren und Ausführen von Containern für die Textübersetzung (Vorschau)
 
-  Mithilfe von Containern können Sie verschiedene Features des Textübersetzungsdiensts in Ihrer eigenen Umgebung ausführen. Container eignen sich hervorragend für bestimmte Sicherheits- und Datengovernanceanforderungen. In diesem Artikel erfahren Sie, wie Sie einen Container für die Textübersetzung herunterladen, installieren und ausführen.
+Mithilfe von Containern können Sie verschiedene Features des Textübersetzungsdiensts in Ihrer eigenen Umgebung ausführen. Container eignen sich hervorragend für bestimmte Sicherheits- und Datengovernanceanforderungen. In diesem Artikel erfahren Sie, wie Sie einen Container für die Textübersetzung herunterladen, installieren und ausführen.
 
 Mit Containern für die Textübersetzung können Sie eine Anwendungsarchitektur für die Textübersetzung erstellen, die sowohl von widerstandsfähigen Cloudfunktionen als auch von der Edgeposition profitieren kann.
+
+Sehen Sie sich die Liste der [unterstützten Sprachen](../language-support.md) bei der Verwendung von Übersetzercontainern an. 
 
 > [!IMPORTANT]
 >
@@ -158,6 +160,8 @@ Es gibt mehrere Möglichkeiten zu überprüfen, ob ein Container aktiv ist:
 | `http://localhost:5000/swagger` | Der Container stellt eine umfassende Dokumentation für die Endpunkte sowie die Funktion **Jetzt ausprobieren** bereit. Diese Funktion ermöglicht Ihnen die Eingabe Ihrer Einstellungen in einem webbasierten HTML-Formular, sodass Sie die Abfrage ausführen können, ohne Code schreiben zu müssen. Nach der Rückgabe der Abfrage wird ein cURL-Beispielbefehl bereitgestellt, der das erforderliche Format für HTTP-Header und -Text veranschaulicht. |
 
 :::image type="content" source="../../../../includes/media/cognitive-services-containers-api-documentation/container-webpage.png" alt-text="Homepage des Containers":::
+
+[!INCLUDE [Diagnostic container](../../containers/includes/diagnostics-container.md)]
 
 ## <a name="text-translation-code-samples"></a>Codebeispiele für die Textübersetzung
 

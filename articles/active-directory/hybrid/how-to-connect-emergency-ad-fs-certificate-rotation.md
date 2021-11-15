@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 03/22/2021
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 7153b33b0019600f58ea678079b553a9ad6c6672
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 3b03dc507a76254f8568989af27f76aa75ad4e20
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124823021"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130222436"
 ---
 # <a name="emergency-rotation-of-the-ad-fs-certificates"></a>Notfallrotation von AD FS-Zertifikaten
 Wenn Sie die AD FS Zertifikate unverzüglich rotieren müssen, können Sie die folgenden in diesem Abschnitt beschriebenen Schritte ausführen.
@@ -41,7 +41,7 @@ Standardmäßig ist AD FS so konfiguriert, dass die Zertifikate für die Tokensi
 
 Sie können den folgenden Windows PowerShell-Befehl ausführen: `PS C:\>Get-AdfsProperties | FL AutoCert*, Certificate*`.
 
-Die AutoCertificateRollover-Eigenschaft beschreibt, ob AD FS so konfiguriert ist, dass die Tokensignatur- und die Tokenentschlüsselungszertifikate automatisch erneuert werden.  Befolgen Sie die unten unter [Generieren eines neuen selbstsignierten Zertifikats, wenn AutoCertificateRollover auf TRUE festgelegt ist] beschriebenen Anweisungen, wenn AutoCertificateRollover auf TRUE festgelegt ist.  Befolgen Sie die unten unter [Manuelles Generieren neuer Zertifikate, wenn AutoCertificateRollover auf FALSE festgelegt ist] beschriebenen Anweisungen, wenn AutoCertificateRollover auf FALSE festgelegt ist.
+Die AutoCertificateRollover-Eigenschaft beschreibt, ob AD FS so konfiguriert ist, dass die Tokensignatur- und die Tokenentschlüsselungszertifikate automatisch erneuert werden.  Befolgen Sie die unten unter [Generieren eines neuen selbstsignierten Zertifikats, wenn AutoCertificateRollover auf TRUE festgelegt ist](#generating-new-self-signed-certificate-if-autocertificaterollover-is-set-to-true) beschriebenen Anweisungen, wenn AutoCertificateRollover auf TRUE festgelegt ist.  Befolgen Sie die unten unter [Manuelles Generieren neuer Zertifikate, wenn AutoCertificateRollover auf FALSE festgelegt ist](#generating-new-certificates-manually-if-autocertificaterollover-is-set-to-false) beschriebenen Anweisungen, wenn AutoCertificateRollover auf FALSE festgelegt ist.
 
 
 ## <a name="generating-new-self-signed-certificate-if-autocertificaterollover-is-set-to-true"></a>Generieren eines neuen selbstsignierten Zertifikats, wenn AutoCertificateRollover auf TRUE festgelegt ist

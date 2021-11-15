@@ -6,19 +6,17 @@ ms.author: bahusse
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 1/28/2021
-ms.openlocfilehash: 8388df72352669eb81a22df392ca077f91d13cfb
-ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
+ms.openlocfilehash: 69aeb2e450a78ce6c3bdc7378d9d53edf3706720
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129754651"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131475690"
 ---
-# <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server-preview"></a>Compute- und Speicheroptionen in Azure Database for MySQL: Flexible Server (Vorschau)
+# <a name="compute-and-storage-options-in-azure-database-for-mysql---flexible-server"></a>Compute- und Speicheroptionen in Azure Database for MySQL: Flexible Server
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-> [!IMPORTANT]
-> Azure Database for MySQL Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
 
 Sie können eine Azure Database for MySQL Flexible Server-Instanz basierend auf drei unterschiedlichen Computeebenen erstellen: „Burstfähig“, „Allgemeiner Zweck“ und „Arbeitsspeicheroptimiert“. Die Computeebenen werden durch die zugrunde liegende VM-SKU unterschieden, die die B-Serie, die D-Serie und die E-Serie verwendet. Die Auswahl von Computeebene und -größe bestimmt den auf dem Server verfügbaren Arbeitsspeicher und die Anzahl der virtuellen Kerne (vCores). Über sämtliche Computeebenen hinweg wird dieselbe Speichertechnologie verwendet. Alle Ressourcen werden auf der MySQL-Serverebene bereitgestellt. Ein Server kann über eine oder mehrere Datenbanken verfügen.
 
@@ -111,9 +109,7 @@ Denken Sie daran, dass der Speicher nach dem automatischen Hochskalieren nicht h
 
 Flexible Azure Database for MySQL-Server unterstützen die Bereitstellung zusätzlicher IOPS. Diese Funktion ermöglicht Ihnen, zusätzlich zum kostenlosen IOPS-Limit weitere IOPS bereitzustellen. Mit dieser Funktion können Sie die Anzahl der IOPS basierend auf Ihren Workloadanforderungen jederzeit erhöhen oder verringern. 
 
-Der minimale IOPS-Wert beträgt für alle Computegrößen 360, und der maximale IOPS-Wert wird durch die ausgewählte Computegröße bestimmt. In der Vorschauversion beträgt die maximale Anzahl unterstützter IOPS 20.000.
-
-Weitere Informationen zum maximalen IOPS-Wert pro Computegröße finden Sie weiter unten: 
+Der minimale IOPS-Wert beträgt für alle Computegrößen 360, und der maximale IOPS-Wert wird durch die ausgewählte Computegröße bestimmt. Weitere Informationen zum maximalen IOPS-Wert pro Computegröße finden Sie weiter unten: 
 
 | Computegröße         | Maximale IOPS-Anzahl        | 
 |----------------------|---------------------|
@@ -143,9 +139,9 @@ Die maximale Anzahl von IOPS ist abhängig von den maximal verfügbaren IOPS pro
 > [!Important]
 > Die **zusätzlichen IOPS** werden wie folgt berechnet: MINIMUM(„Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s“ von Computegröße, 300 + bereitgestellter Speicher in GiB * 3).<br>
 > Der **minimale IOPS-Wert** ist für alle Computegrößen 360.<br>
-> Der **maximale IOPS-Wert** wird durch die ausgewählte Computegröße bestimmt. In der Vorschauversion beträgt die maximale Anzahl unterstützter IOPS 20.000.
+> Der **maximale IOPS-Wert** wird durch die ausgewählte Computegröße bestimmt. 
 
-Sie können Ihren E/A-Verbrauch im Azure-Portal (mit Azure Monitor) mit der Metrik [E/A in Prozent](./concepts-monitoring.md) überwachen. Wenn Sie mehr IOPS benötigen, müssen Sie Ihre Computegröße skalieren, da der maximale IOPS-Wert auf der Computegröße basiert.
+Sie können Ihren E/A-Verbrauch im Azure-Portal (mit Azure Monitor) mit der Metrik [E/A in Prozent](./concepts-monitoring.md) überwachen. Wenn Sie mehr IOPS als den maximalen IOPS-Wert auf Grundlage der Computegröße benötigen, müssen Sie die Computegröße Ihres Servers skalieren.
 
 ## <a name="backup"></a>Backup
 

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: bef6439ae51c6e15f7be997758acbbd3722ae4ff
-ms.sourcegitcommit: 40866facf800a09574f97cc486b5f64fced67eb2
+ms.openlocfilehash: 8e4bc76203ee84d71f4a9f201dac6e63d4728c34
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123223258"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130238058"
 ---
 # <a name="troubleshoot"></a>Problembehandlung
 
@@ -39,7 +39,7 @@ Wenn Sie an einem Laptop mit zwei GPUs arbeiten, kann es vorkommen, dass die GPU
 
 Das zu häufige Senden von REST-API-Befehlen bewirkt, dass der Server eine Drosselung durchführt und schließlich einen Fehler zurückgibt. Der HTTP-Statuscode für die Drosselung lautet 429 („Zu viele Anforderungen“). Als Faustregel sollte eine Verzögerung von **5–10 Sekunden zwischen nachfolgenden Aufrufen** erfolgen.
 
-Beachten Sie, dass dieses Limit nicht nur direkte REST-API-Aufrufe betrifft, sondern auch die C#-/C++-Entsprechungen wie `Session.GetPropertiesAsync`, `Session.RenewAsync` oder `Frontend.GetAssetConversionStatusAsync`.
+Beachten Sie, dass dieses Limit nicht nur direkte REST-API-Aufrufe betrifft, sondern auch die C#-/C++-Entsprechungen wie `Session.GetPropertiesAsync`, `Session.RenewAsync` oder `Frontend.GetAssetConversionStatusAsync`. Einige Funktionen geben auch Informationen zurück, wenn der Vorgang gefahrlos wiederholt werden kann. `RenderingSessionPropertiesResult.MinimumRetryDelay` gibt beispielsweise an, wie viele Sekunden gewartet werden soll, bevor eine weitere Überprüfung versucht wird. Die Verwendung eines solchen Rückgabewerts (falls verfügbar) ist die beste Option, da Sie dann ohne Drosselung Überprüfungen so oft wie möglich durchführen können.
 
 Wenn eine serverseitige Drosselung auftritt, ändern Sie den Code so, dass die Aufrufe seltener durchgeführt werden. Der Server setzt den Drosselungsstatus jede Minute zurück, sodass der Code nach einer Minute sicher erneut ausgeführt werden kann.
 

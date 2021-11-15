@@ -4,16 +4,16 @@ description: Erfahren Sie, wie Sie den Wiederherstellungszeitpunkt ermitteln und
 author: kanshiG
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 07/29/2021
+ms.date: 11/03/2021
 ms.author: govindk
 ms.reviewer: sngun
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1f8622b37055cf8585e9c43f2e822756ac06d1de
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 3161971323ebda6b55ec0fb423089d3115cd9c01
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129352198"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131562122"
 ---
 # <a name="restore-an-azure-cosmos-db-account-that-uses-continuous-backup-mode"></a>Wiederherstellen eines Azure Cosmos DB-Kontos, das den fortlaufenden Sicherungsmodus verwendet
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -93,6 +93,18 @@ Wählen Sie nach dem Einleiten eines Wiederherstellungsvorgangs das Glockensymbo
 
 :::image type="content" source="./media/restore-account-continuous-backup/track-restore-operation-status.png" alt-text="Der Status des wiederhergestellten Kontos wird nach Abschluss des Vorgangs von „Wird erstellt“ in „Online“ geändert." border="true" lightbox="./media/restore-account-continuous-backup/track-restore-operation-status.png":::
 
+### <a name="get-the-restore-details-from-the-restored-account"></a>Erhalten Sie die Wiederherstellungsdetails aus dem wiederhergestellten Konto
+
+Nach Abschluss des Wiederherstellungsvorgangs möchten Sie möglicherweise die Details des Quellkontos, von dem aus Sie die Wiederherstellung durchgeführt haben oder den Zeitpunkt der Wiederherstellung erfahren.
+
+Gehen Sie wie folgt vor, um die Wiederherstellungsdetails aus dem Azure-Portal abzurufen:
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an und navigieren Sie zum wiederhergestellten Konto.
+
+1. Navigieren Sie zum Bereich **Vorlage exportieren**. Es wird eine JSON-Vorlage geöffnet, die dem wiederhergestellten Konto entspricht.
+
+1. Das Objekt **resources** > **properties** > **restoreParameters** (Ressourcen / Eigenschaften / Parameter wiederherstellen) enthält die Wiederherstellungsdetails. Mit **restoreTimestampInUtc** erhalten Sie den Zeitpunkt, zu dem das Konto wiederhergestellt wurde und **databasesToRestore** zeigt die spezifische Datenbank und den Container an, aus denen das Konto wiederhergestellt wurde.
+
 ## <a name="restore-an-account-using-azure-powershell"></a><a id="restore-account-powershell"></a>Wiederherstellen eines Kontos mithilfe von Azure PowerShell
 
 Installieren Sie vor der Wiederherstellung des Kontos die [neueste Version von Azure PowerShell](/powershell/azure/install-az-ps?view=azps-6.2.1&preserve-view=true) oder eine höhere Version als 6.2.0. Stellen Sie dann eine Verbindung mit Ihrem Azure-Konto her, und wählen Sie das erforderliche Abonnement mit den folgenden Befehlen aus:
@@ -150,6 +162,14 @@ Restore-AzCosmosDBAccount `
   -DatabasesToRestore $datatabaseToRestore1, $datatabaseToRestore2 `
   -Location "West US"
 
+```
+
+### <a name="get-the-restore-details-from-the-restored-account"></a>Erhalten Sie die Wiederherstellungsdetails aus dem wiederhergestellten Konto
+
+Importieren Sie das Modul `Az.CosmosDB` und führen Sie den folgenden Befehl aus, um die Wiederherstellungsdetails abzurufen. Der restoreTimestamp befindet sich unter dem Objekt „restoreParameters“:
+
+```azurepowershell
+Get-AzCosmosDBAccount -ResourceGroupName MyResourceGroup -Name MyCosmosDBDatabaseAccount 
 ```
 
 ### <a name="enumerate-restorable-resources-for-sql-api"></a><a id="enumerate-sql-api"></a>Aufzählen von wiederherstellbaren Ressourcen für die SQL-API
@@ -314,6 +334,14 @@ Die einfachste Möglichkeit zum Auslösen einer Wiederherstellung besteht darin,
     --databases-to-restore name=MyDB2 collections=Collection3 Collection4
 
    ```
+
+### <a name="get-the-restore-details-from-the-restored-account"></a>Erhalten Sie die Wiederherstellungsdetails aus dem wiederhergestellten Konto
+
+Führen Sie den folgenden Befehl aus, um die Wiederherstellungsdetails zu erhalten. Der restoreTimestamp befindet sich unter dem Objekt „restoreParameters“:
+
+```azurecli-interactive
+az cosmosdb show --name MyCosmosDBDatabaseAccount --resource-group MyResourceGroup
+```
 
 ### <a name="enumerate-restorable-resources-for-sql-api"></a><a id="enumerate-sql-api"></a>Auflisten von wiederherstellbaren Ressourcen für die SQL-API
 

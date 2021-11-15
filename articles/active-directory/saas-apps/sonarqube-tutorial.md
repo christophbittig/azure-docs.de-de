@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Sonarqube | Microsoft-Dokumentation'
+title: 'Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD mit Sonarqube'
 description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Sonarqube konfigurieren.
 services: active-directory
 author: jeevansd
@@ -11,14 +11,14 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/25/2021
 ms.author: jeedes
-ms.openlocfilehash: e6f366fcc1f268f3c0fa629bd1903be4f8c8d2b8
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 8d209990a84464aa31d4f32a66c30de9f2047804
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124785798"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131462478"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sonarqube"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Sonarqube
+# <a name="tutorial-azure-ad-sso-integration-with-sonarqube"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD mit Sonarqube
 
 In diesem Tutorial erfahren Sie, wie Sie Sonarqube in Azure Active Directory (Azure AD) integrieren. Die Integration von Sonarqube in Azure AD ermöglicht Folgendes:
 
@@ -78,7 +78,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
-    a. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://servicessonar.<YOUR_ORGANIZATION>.com`
+    a. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: ` https://sonar.<companyspecificurl>.io/oauth2/callback/saml`
 
     b. Geben Sie im Textfeld **Anmelde-URL** eine der folgenden URLs ein:
 

@@ -7,18 +7,18 @@ ms.author: jtoland
 ms.custom: mvc
 ms.topic: conceptual
 ms.date: 06/17/2021
-ms.openlocfilehash: f28b30be15ea4808490851b6fd29c642438a43f8
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: ef710559cb8d51b21e859bb08c50c5a2ed07b74c
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131472654"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131894201"
 ---
 # <a name="whats-new-in-azure-database-for-mysql---single-server"></a>Neuerungen in Azure Database for MySQL Single Server
 
 [!INCLUDE[applies-to-mysql-single-server](includes/applies-to-mysql-single-server.md)]
 
-Azure Database for MySQL ist ein relationaler Datenbankdienst in der Microsoft-Cloud. Der Dienst basiert auf der [Datenbank-Engine MySQL Community Edition](https://www.mysql.com/products/community/) (verfügbar unter der GPLv2-Lizenz) und unterstützt die Versionen 5.6, 5.7 und 8.0. Bei [Azure Database for MySQL Single Server](./overview.md#azure-database-for-mysql---single-server) handelt es sich um einen Bereitstellungsmodus, der einen vollständig verwalteten Datenbankdienst mit minimalen Anforderungen für die Anpassung der Datenbank bietet. Die Single Server-Plattform kann die meisten Funktionen zur Datenbankverwaltung bereitstellen, z. B. Patching, Sicherungen, Hochverfügbarkeit sowie Sicherheit, alle mit minimaler Benutzerkonfiguration und -steuerung.
+Azure Database for MySQL ist ein relationaler Datenbankdienst in der Microsoft-Cloud. Der Dienst basiert auf der [Datenbank-Engine MySQL Community Edition](https://www.mysql.com/products/community/) (verfügbar unter der GPLv2-Lizenz) und unterstützt die Versionen 5.6 (eingestellt), 5.7 und 8.0. Bei [Azure Database for MySQL Single Server](./overview.md#azure-database-for-mysql---single-server) handelt es sich um einen Bereitstellungsmodus, der einen vollständig verwalteten Datenbankdienst mit minimalen Anforderungen für die Anpassung der Datenbank bietet. Die Single Server-Plattform kann die meisten Funktionen zur Datenbankverwaltung bereitstellen, z. B. Patching, Sicherungen, Hochverfügbarkeit sowie Sicherheit, alle mit minimaler Benutzerkonfiguration und -steuerung.
 
 In diesem Artikel werden neue Releases und Features in Azure Database for MySQL Single Server ab Januar 2021 zusammengefasst. Auflistungen werden in umgekehrter chronologischer Reihenfolge angezeigt, die neuesten Updates zuerst.
 

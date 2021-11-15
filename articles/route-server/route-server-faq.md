@@ -5,14 +5,14 @@ services: route-server
 author: duongau
 ms.service: route-server
 ms.topic: article
-ms.date: 09/23/2021
+ms.date: 11/02/2021
 ms.author: duau
-ms.openlocfilehash: fa5ea8f191c0b2ea9c7db483eb4d7b9c5a679be0
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.openlocfilehash: 47584994586e735647be4116fb49de610e5f97f5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129094365"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131453267"
 ---
 # <a name="azure-route-server-faq"></a>Häufig gestellte Fragen zu Azure Route Server
 
@@ -91,6 +91,12 @@ Nein, Azure Route Server unterstützt die Zuordnung von NSGs zum RouteServerSubn
 ***Topologie: NVA1 -> RouteServer1 -> (über VNet-Peering) -> RouteServer2 -> NVA2***
 
 Nein, Azure Route Server leitet keinen Datenverkehr weiter. Richten Sie zum Aktivieren der Transitkonnektivität über das NVA eine direkte Verbindung (z. B. einen IPsec-Tunnel) zwischen den NVAs ein, und verwenden Sie die Routenserver für die dynamische Routenweitergabe. 
+
+### <a name="can-i-use-azure-route-server-to-direct-traffic-between-subnets-in-the-same-virtual-network-to-flow-inter-subnet-traffic-through-the-nva"></a>Kann ich Azure Route Server verwenden, um Datenverkehr zwischen Subnetzen im gleichen virtuellen Netzwerk so zu leiten, dass dieser über das NVA geführt wird?
+
+Nein. Systemrouten für Datenverkehr im Zusammenhang mit virtuellen Netzwerken, virtuellen Netzwerken über Peerings oder VNET-Dienstendpunkten sind die bevorzugten Routen, auch wenn BGP-Routen spezifischer sind. Da Route Server BGP zum Ankündigen von Routen verwendet, wird dies derzeit nicht standardmäßig unterstützt. Sie müssen weiterhin UDRs verwenden, um das Außerkraftsetzen der Routen zu erzwingen, und Sie können BGP nicht verwenden, um schnell ein Failover für diese Routen durchzuführen. Sie müssen weiterhin eine Drittanbieterlösung verwenden, um die UDRs in einer Failoversituation über die API zu aktualisieren, oder eine Azure Load Balancer-Instanz mit dem Modus für Hochverfügbarkeitsports verwenden, um Datenverkehr weiterzuleiten.
+
+Sie können Route Server weiterhin verwenden, um Datenverkehr zwischen Subnetzen in verschiedenen virtuellen Netzwerken mithilfe des NVA weiterzuleiten. Der einzig mögliche Entwurf, der funktionieren könnte, sieht folgendermaßen aus: Es ist ein Subnetz pro virtuellem „Spoke“-Netzwerk vorhanden, und alle virtuellen Netzwerke sind per Peering mit einem virtuellen „Hub“-Netzwerk verbunden. Dieser Entwurf weist jedoch starke Einschränkungen auf, und es müssen Überlegungen zur Skalierung und die maximalen Grenzwerte von Azure für virtuelle Netzwerke und Subnetze berücksichtigt werden.
 
 ## <a name="route-server-limits"></a><a name = "limitations"></a>Grenzwerte für Route Server
 

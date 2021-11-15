@@ -7,12 +7,12 @@ ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: mimckitt
-ms.openlocfilehash: 251d9d2afd541159ae48d5e769b24e0f925fd65d
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e42078618ad15850420b8c9c57c66e3419d586d2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124776593"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131466920"
 ---
 # <a name="ev3-and-esv3-series"></a>Ev3- und Esv3-Serie
 
@@ -69,7 +69,7 @@ Virtuelle Computer der Esv3-Serie verfügen über Hyperthreading-Technologie von
 [Kurzlebige Betriebssystemdatenträger](ephemeral-os-disks.md): Unterstützt <br>
 <br>
 
-| Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB) | Zwischengespeicherter Burst und Durchsatz des temporären Speichers: IOPS/Megabits pro Sekunde<sup>3</sup> | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s |  Durchsatz des Datenträgers mit Burst ohne Cache: IOPS/Megabits pro Sekunde<sup>3</sup>| Maximale Anzahl NICs/erwartete Netzwerkbandbreite (MBit/s) |
+| Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz (Cache und temporärer Speicher): IOPS/MBit/s (Cachegröße in GiB) | Zwischengespeicherter Burst und Durchsatz des temporären Speichers: IOPS/Megabits pro Sekunde<sup>3</sup> | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s |  Durchsatz des Datenträgers mit Burst ohne Cache: IOPS/Megabits pro Sekunde<sup>3</sup>| Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (MBit/s) |
 |---|---|---|---|---|---|---|---|---|---|
 | Standard_E2s_v3<sup>4</sup>                | 2  | 16  | 32  | 4  | 4000/32 (50)       | 4000/100    | 3200/48    | 4000/100 | 2/1000 |
 | Standard_E4s_v3 <sup>1</sup>   | 4  | 32  | 64  | 8  | 8000/64 (100)      | 8000/200    | 6400/96    | 8000/200 | 2/2000 |

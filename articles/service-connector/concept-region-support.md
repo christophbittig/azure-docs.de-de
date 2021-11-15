@@ -6,13 +6,13 @@ ms.author: xshi
 ms.service: serviceconnector
 ms.topic: conceptual
 ms.date: 10/29/2021
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: 33eefc9a36fcd6e230d95e962da344d7ad738d7d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.custom: ignite-fall-2021, references_regions
+ms.openlocfilehash: 75678da43f400eb3ee56f956dcd307207b501e91
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131021535"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131853052"
 ---
 # <a name="service-connector-region-support"></a>Support von Service-Connector-Region
 
@@ -20,11 +20,21 @@ Wenn Sie mit Service Connector eine Dienstverbindung erstellen, wird die konzept
 
 ## <a name="supported-regions-with-regional-endpoint"></a>Unterstützte Regionen mit regionalem Endpunkt
 
-Sie finden die aktuelle Supportliste für Regionen unter [Azure-Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=service-connector). Wenn sich Ihre Computedienstinstanz in einer der von Service Connector unterstützten Regionen befindet, können Sie mit Service Connector Dienstverbindungen erstellen und verwalten.
+Wenn sich Ihre Computedienstinstanz in einer der von Service Connector unterstützten unten aufgeführten Regionen befindet, können Sie mit Service Connector Dienstverbindungen erstellen und verwalten.
+
+- USA, Westen-Mitte
+- Europa, Westen
+- Nordeuropa
+- East US
+- USA, Westen 2
 
 ## <a name="supported-regions-with-geographical-endpoint"></a>Unterstützte Regionen mit geografischem Endpunkt
 
 Ihre Compute-Service-Instanz wird möglicherweise in der Region erstellt, in der Service Connector Unterstützung für geografische Regionen bietet. Dies bedeutet, dass Ihre Dienstverbindung in einer anderen Region als Ihre Compute-Instanz erstellt wird. Sie sehen ein Banner mit diesen Informationen, wenn Sie eine Dienstverbindung erstellen. Der regionale Unterschied kann sich auf Ihre Compliance, Datenresidenz und Datenlatenz auswirken.
+
+- USA (Ost) 2
+- USA, Westen 3
+- USA Süd Mitte
 
 ## <a name="not-supported-regions-in-public-preview"></a>Nicht unterstützte Regionen in der öffentlichen Vorschau
 

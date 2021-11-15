@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 10/11/2021
 author: mattmccleary
 ms.author: mmcc
-ms.openlocfilehash: 3961f7233de1fcd09dc8a2199dfa424b505add27
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ae52a8977247903574b9d23fda795e5fd8b7ea3d
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131058101"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132054427"
 ---
 # <a name="enable-azure-monitor-opentelemetry-exporter-for-net-nodejs-and-python-applications-preview"></a>Aktivieren von Azure Monitor OpenTelemetry Exporter für .NET-, Node.js- und Python-Anwendungen (Vorschau)
 
@@ -40,7 +40,7 @@ In diesem Artikel wird beschrieben, wie das OpenTelemetry-basierte Azure Monitor
  - Möglichkeit zum Überschreiben des [Vorgangsnamens](correlation.md#data-model-for-telemetry-correlation)
  - Möglichkeit zum manuellen Festlegen der Benutzer-ID oder authentifizierten Benutzer-ID
  - Weitergabe des Vorgangsnamens an Abhängigkeitstelemetrie
- - Verteilte Ablaufverfolgung von Kontextweitergabe (Instrumentierungsbibliotheken) über Azure Functions-Worker
+ - Unterstützung von [Instrumentierungsbibliotheken](#instrumentation-libraries) in Azure Functions
 
 Diejenigen Benutzer, die den vollen Funktionsumfang benötigen, sollten das vorhandene Application Insights [ASP.NET](asp-net.md) oder [ASP.NET Core](asp-net-core.md) SDK verwenden, bis das OpenTelemetry-basierte Angebot ausgereift ist.
 
@@ -81,7 +81,7 @@ Diejenigen Benutzer, die den vollen Funktionsumfang benötigen, sollten das vorh
  - Möglichkeit zum Überschreiben des [Vorgangsnamens](correlation.md#data-model-for-telemetry-correlation)
  - Möglichkeit zum manuellen Festlegen der Benutzer-ID oder authentifizierten Benutzer-ID
  - Weitergabe des Vorgangsnamens an Abhängigkeitstelemetrie
- - Verteilte Ablaufverfolgung von Kontextweitergabe (Instrumentierungsbibliotheken) über Azure Functions-Worker
+ - Unterstützung von [Instrumentierungsbibliotheken](#instrumentation-libraries) in Azure Functions
 
 Diejenigen Benutzer, die den vollen Funktionsumfang benötigen, sollten das vorhandene [Application Insights Python-OpenCensus SDK](opencensus-python.md) verwenden, bis das OpenTelemetry-basierte Angebot ausgereift ist.
 
@@ -175,7 +175,7 @@ pip install azure-monitor-opentelemetry-exporter
 
 ##### <a name="net"></a>[.NET](#tab/net)
 
-Der folgende Code veranschaulicht das Aktivieren von OpenTelemetry in einer C#-Konsolenanwendung durch Einrichten von OpenTelemetry TracerProvider. Dieser Code muss beim Anwendungsstart enthalten sein. Für ASP.NET Core wird dies in der Regel in der Klasse `ConfigureServices`Anwendungsmethode`Startup` durchgeführt. Für ASP.NET-Anwendungen erfolgt dies in der Regel in `Global.aspx.cs`.
+Der folgende Code veranschaulicht das Aktivieren von OpenTelemetry in einer C#-Konsolenanwendung durch Einrichten von OpenTelemetry TracerProvider. Dieser Code muss beim Anwendungsstart enthalten sein. Für ASP.NET Core wird dies in der Regel in der Klasse `ConfigureServices`Anwendungsmethode`Startup` durchgeführt. Für ASP.NET-Anwendungen erfolgt dies in der Regel in `Global.asax.cs`.
 
 ```csharp
 using System.Diagnostics;
@@ -457,7 +457,7 @@ Span-Attribute können mit einer der folgenden beiden Methoden hinzugefügt werd
 1. Verwenden von Optionen, die von [Instrumentierungsbibliotheken](#instrumentation-libraries) bereitgestellt werden.
 2. Hinzufügen eines benutzerdefinierten Span-Prozessors.
 
-Zu diesen Attributen kann das Hinzufügen einer benutzerdefinierten Geschäftseigenschaft zu Ihrer Telemetrie gehören. Sie können auch Attribute verwenden, um optionale Felder im Application Insights-Schema festzulegen, z. B. Benutzer-ID oder Client-IP.
+Zu diesen Attributen kann das Hinzufügen einer benutzerdefinierten Eigenschaft zu Ihrer Telemetrie gehören. Sie können auch Attribute verwenden, um optionale Felder im Application Insights-Schema festzulegen, z. B. Client-IP.
 
 > [!TIP]
 > Der Vorteil der Verwendung von „von Instrumentierungsbibliotheken bereitgestellten Optionen“ (sofern verfügbar) besteht darin, dass der gesamte Kontext verfügbar ist, was bedeutet, dass Benutzer zusätzliche Attribute hinzufügen oder filtern können. Die Anreicherungsoption der HttpClient-Instrumentierungsbibliothek umfasst z. B. das Gewähren von Benutzerzugriff auf httpRequestMessage selbst, um beliebige Elemente auszuwählen und als Attribut zu speichern.
@@ -586,6 +586,7 @@ Sie können das Feld _client_IP_ für Anforderungen auffüllen, indem Sie das `h
 Verwenden Sie das [Beispiel zum Hinzufügen einer benutzerdefinierten Eigenschaft](#add-custom-property), ersetzen Sie dabei aber die folgenden Codezeilen in `ActivityEnrichingProcessor.cs`:
 
 ```C#
+// only applicable in case of activity.Kind == Server
 activity.SetTag("http.client_ip", "<IP Address>");
 ```
 

@@ -3,14 +3,14 @@ title: Suchen von Fehlercodes
 description: Beschreibt, wie Sie Fehlercodes suchen, um Probleme mit Azure-Ressourcen zu beheben, die mit Azure Resource Manager-Vorlagen (ARM-Vorlagen) oder Bicep-Dateien bereitgestellt wurden.
 tags: top-support-issue
 ms.topic: troubleshooting
-ms.date: 11/02/2021
+ms.date: 11/04/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8343dd5523c57a172dda53a8ad2d758825cccc28
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: dc33dec3f043332b4ce5b2e7fe53b9f16d41d54f
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131478757"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131846309"
 ---
 # <a name="find-error-codes"></a>Suchen von Fehlercodes
 
@@ -18,17 +18,19 @@ Wenn eine Azure-Ressourcenbereitstellung unter Verwendung von Azure Resource Man
 
 ## <a name="error-types"></a>Fehlertypen
 
-Es gibt drei Arten von Fehlern, die auftreten können:
+Es gibt drei Arten von Fehlern, die mit einer Bereitstellung zusammenhängen:
 
-- **Validierungsfehler** treten auf, bevor eine Bereitstellung beginnt, und werden durch Syntaxfehler verursacht. Verwenden Sie zum Identifizieren von Validierungsfehlern [Visual Studio Code](https://code.visualstudio.com) mit der neuesten [Bicep-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep) oder [Azure Resource Manager-Tools-Erweiterung](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools).
-- **Preflight-Validierungsfehler** treten auf, wenn die Bereitstellung zwar beginnt, Ressourcen aber nicht bereitgestellt werden. Beispielsweise ein falscher Parameterwert oder ein ungültiger Ressourcenname.
-- **Bereitstellungsfehler** treten während der Bereitstellung auf, und eine Problembehandlung ist erforderlich, um die Ursache zu ermitteln.
+- **Validierungsfehler** treten auf, bevor ein Einsatz beginnt, und werden durch Syntaxfehler in Ihrer Datei verursacht. Ihr Editor kann diese Fehler identifizieren.
+- **Preflight-Validierungsfehler** treten auf, wenn ein Bereitstellungsbefehl zwar ausgeführt wird, Ressourcen aber nicht bereitgestellt werden. Diese Fehler werden gefunden, ohne dass die Bereitstellung gestartet wird. Wenn zum Beispiel ein Parameterwert falsch ist, wird der Fehler bei der Preflight-Validierung gefunden.
+- **Einrichtungsfehler** treten während des Einrichtungsprozesses auf und können nur durch die Bewertung des Einrichtungsfortschritts gefunden werden.
 
-Validierungs- und Preflight-Fehlercodes werden im Aktivitätsprotokoll einer Ressourcengruppe und im [Aktivitätsprotokoll](../../azure-monitor/essentials/activity-log.md) des Abonnements gemeldet. Eine Ausnahme ist die Bicep-Syntaxvalidierung, die nur in der Ausgabe des Editors oder des Bereitstellungsbefehls angezeigt wird. Bereitstellungsfehlercodes werden im Bereitstellungsverlauf und Aktivitätsprotokoll einer Ressourcengruppe angezeigt.
+Alle Fehlertypen geben einen Fehlercode zurück, den Sie bei der Fehlersuche in der Bereitstellung verwenden können. Validierungs- und Preflight-Fehler werden im Aktivitätsprotokoll angezeigt, aber nicht im Bereitstellungsverlauf. Eine Bicep-Datei mit Syntaxfehlern wird weder in JSON kompiliert noch im Aktivitätsprotokoll angezeigt.
+
+Verwenden Sie zum Identifizieren von Syntaxfehlern [Visual Studio Code](https://code.visualstudio.com) mit der neuesten [Bicep-Erweiterung](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-bicep) oder [Azure Resource Manager-Tools-Erweiterung](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools).
 
 ## <a name="validation-errors"></a>Überprüfungsfehler
 
-Vorlagen werden während des Bereitstellungsprozesses überprüft, und Fehlercodes werden angezeigt. Bevor Sie eine Bereitstellung ausführen, können Sie Validierungstests mit Azure PowerShell oder Azure CLI ausführen.
+Vorlagen werden während des Bereitstellungsprozesses überprüft, und Fehlercodes werden angezeigt. Bevor Sie eine Bereitstellung ausführen, können Sie Validierungstests mit Azure PowerShell oder Azure CLI ausführen, um Validierungs- und Preflight-Fehler zu identifizieren.
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
@@ -44,7 +46,7 @@ Wählen Sie die Meldung aus, um weitere Details zu sehen. Die Vorlage weist eine
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Um eine ARM-Vorlage vor der Bereitstellung zu überprüfen, führen Sie [Test-AzResourceGroupDeployment](/powershell/module/az.resources/test-azresourcegroupdeployment) aus. Derselbe Fehler wird angezeigt, wenn Sie eine Bereitstellung ausführen.
+Um eine ARM-Vorlage vor der Bereitstellung zu überprüfen, führen Sie [Test-AzResourceGroupDeployment](/powershell/module/az.resources/test-azresourcegroupdeployment) aus.
 
 ```azurepowershell
 Test-AzResourceGroupDeployment `
@@ -81,7 +83,7 @@ Es gibt weitere PowerShell-Cmdlets zum Überprüfen von Bereitstellungsvorlagen:
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-Um eine ARM-Vorlage vor der Bereitstellung zu überprüfen, führen Sie [az deployment group validate](/cli/azure/deployment/group#az_deployment_group_validate) aus. Derselbe Fehler wird angezeigt, wenn Sie eine Bereitstellung ausführen.
+Um eine ARM-Vorlage vor der Bereitstellung zu überprüfen, führen Sie [az deployment group validate](/cli/azure/deployment/group#az_deployment_group_validate) aus.
 
 ```azurecli
 az deployment group validate \

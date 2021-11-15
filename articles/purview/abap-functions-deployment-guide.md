@@ -6,13 +6,13 @@ ms.author: jingwang
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
-ms.date: 09/27/2021
-ms.openlocfilehash: b8d67c3c5b596627fc1795cf97d807d7f582e326
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.date: 11/07/2021
+ms.openlocfilehash: 7894e187efedf91e3c586dd0d8caaf35e753be3c
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131442158"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132028577"
 ---
 # <a name="deploy-the-metadata-extraction-abap-function-module-for-the-sap-r3-family-of-bridges"></a>Bereitstellen des ABAP-Funktionsmoduls für die Metadatenextraktion für die SAP R3-Brückenfamilie
 
@@ -32,6 +32,12 @@ In diesem Dokument werden die erforderlichen Schritte zum Bereitstellen dieses M
 
 > [!Note]
 > Die folgenden Anweisungen wurden basierend auf der SAP GUI v. 7.2 zusammengestellt.
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+Laden Sie den Quellcode des ABAP-Funktionsmoduls aus Purview Studio herunter. Wenn Sie eine Quelle registrieren und dann einen neuen Scan für [SAP ECC](register-scan-sapecc-source.md) oder [SAP S/4HANA](register-scan-saps4hana-source.md) durchführen, finden Sie wie folgt einen Downloadlink. 
+
+:::image type="content" source="media/abap-functions-deployment-guide/download-abap-code.png" alt-text="Herunterladen des Quellcodes des ABAP-Funktionsmoduls aus Purview Studio" border="true":::
 
 ## <a name="deployment-of-the-module"></a>Bereitstellung des Moduls
 
@@ -79,7 +85,7 @@ Wenn das Modul erstellt wurde, geben Sie die folgenden Informationen an:
 
 3. Navigieren Sie zur Registerkarte **Source code** (Quellcode). Es gibt zwei Möglichkeiten, Code für die Funktion bereitzustellen:
 
-   a. Laden Sie über das Hauptmenü die Textdatei [Z\_MITI\_DOWNLOAD](https://github.com/Azure/Purview-Samples/tree/master/connectors/sap) hoch. Hierfür wählen Sie **Hilfsprogramme**, **Weitere Hilfsprogramme**, dann **Hochladen/Herunterladen** und schließlich **Hochladen** aus.
+   a. Laden Sie im Hauptmenü die Textdatei hoch, die Sie wie in den [Voraussetzungen](#prerequisites) beschrieben von Purview Studio heruntergeladen haben. Hierfür wählen Sie **Hilfsprogramme**, **Weitere Hilfsprogramme**, dann **Hochladen/Herunterladen** und schließlich **Hochladen** aus.
 
    b. Öffnen Sie alternativ die Datei, kopieren Sie den Inhalt, und fügen Sie ihn in den Bereich **Source code** (Quellcode) ein.
 

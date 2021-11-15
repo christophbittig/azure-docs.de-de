@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/20/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: aca884ebbfc10cc847bade34ea1a9bd73ada18c9
-ms.sourcegitcommit: 557ed4e74f0629b6d2a543e1228f65a3e01bf3ac
+ms.openlocfilehash: 764f0b8f8e78e41f20558f0a825d37cc8f118f6c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129458395"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131446093"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>Tutorial: Verwenden von Azure IoT Hub-Nachrichtenanreicherungen
 
@@ -251,7 +251,7 @@ Jetzt sind alle Ressourcen eingerichtet, und das Nachrichtenrouting ist konfigur
 
 1. Wählen Sie **Ressourcengruppen** aus, um zu Ihrem IoT-Hub zu wechseln. Wählen Sie dann die für dieses Tutorial eingerichtete Ressourcengruppe aus (**ContosoResourcesMsgEn**). Suchen Sie den IoT-Hub in der Liste, und wählen Sie ihn aus. Wählen Sie für den IoT-Hub **Nachrichtenrouting** aus.
 
-   ![Auswählen von „Nachrichtenrouting“](./media/tutorial-message-enrichments/select-iot-hub.png)
+   :::image type="content" source="./media/tutorial-message-enrichments/select-iot-hub.png" alt-text="Screenshot: Auswählen des Nachrichtenroutings" border="true":::
 
    Im Bereich „Nachrichtenrouting“ gibt es drei Registerkarten mit den Bezeichnungen **Routen**, **Benutzerdefinierte Endpunkte** und **Nachrichten anreichern**. Durchsuchen Sie die ersten beiden Registerkarten, um die vom Skript eingerichtete Konfiguration anzuzeigen. Auf der dritten Registerkarte können Sie Nachrichtenanreicherungen hinzufügen. Reichern Sie jetzt Nachrichten an, indem Sie zum Endpunkt für den Speichercontainer **enriched** wechseln. Geben Sie den Namen und Wert ein, und wählen Sie in der Dropdownliste den Endpunkt **ContosoStorageEndpointEnriched** aus. Hier ist ein Beispiel für das Einrichten einer Anreicherung, die den Namen des IoT-Hubs zur Nachricht hinzufügt:
 

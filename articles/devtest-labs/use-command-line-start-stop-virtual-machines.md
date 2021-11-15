@@ -2,87 +2,120 @@
 title: Starten und Beenden von VMs mit Befehlszeilentools
 description: Erfahren Sie, wie Sie Befehlszeilentools verwenden, um virtuelle Computer in Azure DevTest Labs zu starten und zu beenden.
 ms.topic: how-to
-ms.date: 06/26/2020
+ms.date: 10/22/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e0c75cda526f5a365badf3f97aeb92a94b93588f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 58440d00f888816f95aac0159063a7b6d6fc5289
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128655560"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131430189"
 ---
 # <a name="use-command-line-tools-to-start-and-stop-azure-devtest-labs-virtual-machines"></a>Starten und Beenden von virtuellen Computern in Azure DevTest Labs mit Befehlszeilentools
-In diesem Artikel erfahren Sie, wie Sie mithilfe von Azure PowerShell oder der Azure CLI virtuelle Computer in einem Lab in Azure DevTest Labs starten bzw. beenden. Zur Automatisierung dieser Vorgänge können Sie PowerShell- bzw. CLI-Skripts erstellen. 
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+In diesem Artikel erfahren Sie, wie Sie eine Lab-VM in Azure DevTest Labs starten oder beenden. Zur Automatisierung dieser Vorgänge können Sie Azure PowerShell- oder Azure CLI-Skripte erstellen. 
+
+## <a name="prerequisites"></a>Voraussetzungen
+- Wenn Sie PowerShell verwenden, müssen Sie das [Az-Modul](/powershell/azure/new-azureps-module-az) auf Ihrer Arbeitsstation installieren. Stellen Sie sicher, dass Sie über die aktuelle Version verfügen. Führen Sie gegebenenfalls `Update-Module -Name Az` aus.
+
+- Wenn Sie die Azure-Befehlszeilenschnittstelle verwenden möchten, diese aber noch nicht installiert haben, lesen Sie [Installieren der Azure CLI](/cli/azure/install-azure-cli).
+
+- Ein virtueller Computer in einem Lab von DevTest Labs
 
 ## <a name="overview"></a>Übersicht
-Mit Azure DevTest Labs erhalten Sie schnelle, einfache und schlanke Entwicklungs-/Testumgebungen. Sie können damit Kosten verwalten, schnell VMs bereitstellen und Ausschuss minimieren.  Im Azure-Portal gibt es integrierte Funktionen, mit denen Sie VMs in einem Lab so konfigurieren können, dass diese automatisch zu bestimmten Zeiten gestartet oder beendet werden. 
 
-In einigen Szenarios sollten Sie das Starten und Beenden von VMs jedoch ggf. über PowerShell- bzw. CLI-Skripts automatisieren. Diese Methode bietet Ihnen mehr Flexibilität, wenn Sie einzelne virtuelle Computer jederzeit starten und beenden möchten und nicht nur zu bestimmten Zeitpunkten. Folgende Beispiele beschreiben Situationen, in denen das Ausführen dieser Tasks mithilfe von Skripts nützlich wäre.
+Mit Azure DevTest Labs können Sie schnelle, einfache und schlanke Dev/Test-Umgebungen erstellen. Labs macht es Ihnen möglich, Kosten zu verwalten, schnell VMs zu erstellen und Verschwendung zu reduzieren. Sie können die Features im Azure-Portal nutzen, um VMs zu bestimmten Zeiten automatisch zu starten und zu beenden. Sie sollten eventuell jedoch das Starten und Beenden von VMs über Skripts automatisieren. Folgende Beispiele beschreiben Situationen, in denen das Ausführen dieser Tasks mithilfe von Skripts nützlich ist.
 
-- Bei der Verwendung dreistufiger Anwendungen im Rahmen einer Testumgebung müssen die Stufen in einer bestimmten Reihenfolge gestartet werden. 
-- Eine VM soll beendet werden, sobald ein benutzerdefiniertes Kriterium erfüllt ist, um so Geld zu sparen. 
-- Ein Task soll innerhalb eines CI/CD-Workflows ausgeführt werden, um die VMs am Anfang des Workflows zu starten, die VMs als Build-Computer, Testcomputer oder Infrastruktur zu verwenden und dann die VMs nach Abschluss des Prozesses zu beenden. Ein Beispiel hierfür wäre die benutzerdefinierte Image Factory mit Azure DevTest Labs.  
+- Bei der Verwendung dreistufiger Anwendungen im Rahmen einer Testumgebung, und wenn die Stufen in einer bestimmten Reihenfolge gestartet werden müssen. 
+- Zum Beenden einer VM, sobald ein benutzerdefiniertes Kriterium erfüllt ist, um Geld zu sparen. 
+- Als Aufgabe innerhalb eines Continuous Integration und Continuous Delivery-Workflows, die am Anfang gestartet werden soll, und dann die VMs beenden soll, wenn der Prozess abgeschlossen ist. Ein Beispiel für diesen Workflow ist die benutzerdefinierte Image Factory in Azure DevTest Labs.  
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
-> [!NOTE]
-> Das folgende Skript verwendet das Azure PowerShell-Az-Modul. 
+Das folgende PowerShell-Skript kann eine VM in einem Lab starten oder beenden. [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction) ist der Schwerpunkt dieses Skripts. Der **ResourceId**-Parameter ist die vollqualifizierte Ressourcen-ID für die VM in dem Lab. Im **Action**-Parameter werden je nach Bedarf die Optionen **Start** bzw. **Stop** festgelegt.
 
-Das folgende PowerShell-Skript startet eine VM in einem Lab. [Invoke-AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction) ist der Schwerpunkt dieses Skripts. Der **ResourceId**-Parameter ist die vollqualifizierte Ressourcen-ID für die VM in dem Lab. Im **Action**-Parameter werden je nach Bedarf die Optionen **Start** bzw. **Stop** festgelegt.
+1. Melden Sie sich auf Ihrer Arbeitsstation mit dem PowerShell-Cmdlet [Connect-AzAccount](/powershell/module/Az.Accounts/Connect-AzAccount) bei Ihrem Azure-Abonnement an, und befolgen Sie die Anweisungen auf dem Bildschirm.
 
-```powershell
-# The id of the subscription
-$subscriptionId = "111111-11111-11111-1111111"
+    ```powershell
+    # Sign in to your Azure subscription
+    $sub = Get-AzSubscription -ErrorAction SilentlyContinue
+    if(-not($sub))
+    {
+        Connect-AzAccount
+    }
+    
+    # If you have multiple subscriptions, set the one to use
+    # Set-AzContext -SubscriptionId "<SUBSCRIPTIONID>"
+    ```
 
-# The name of the lab
-$devTestLabName = "yourlabname"
+1. Geben Sie einen geeigneten Wert für die Variablen an, und führen Sie dann das Skript aus.
 
-# The name of the virtual machine to be started
-$vMToStart = "vmname"
+    ```powershell
+    $devTestLabName = "yourlabname"
+    $vMToStart = "vmname"
+    
+    # The action on the virtual machine (Start or Stop)
+    $vmAction = "Start"
+    ```
 
-# The action on the virtual machine (Start or Stop)
-$vmAction = "Start"
+1. Starten oder beenden Sie die VM basierend auf dem Wert, den Sie an `$vmAction` übergeben haben.
 
-# Select the Azure subscription
-Select-AzSubscription -SubscriptionId $subscriptionId
-
-# Get the lab information
-$devTestLab = Get-AzResource -ResourceType 'Microsoft.DevTestLab/labs' -ResourceName $devTestLabName
-
-# Start the VM and return a succeeded or failed status
-$returnStatus = Invoke-AzResourceAction `
-                    -ResourceId "$($devTestLab.ResourceId)/virtualmachines/$vMToStart" `
-                    -Action $vmAction `
-                    -Force
-
-if ($returnStatus.Status -eq 'Succeeded') {
-    Write-Output "##[section] Successfully updated DTL machine: $vMToStart, Action: $vmAction"
-}
-else {
-    Write-Error "##[error]Failed to update DTL machine: $vMToStart, Action: $vmAction"
-}
-```
-
+    ```powershell
+    # Get the lab information
+    $devTestLab = Get-AzResource -ResourceType 'Microsoft.DevTestLab/labs' -ResourceName $devTestLabName
+    
+    # Start or stop the VM and return a succeeded or failed status
+    $returnStatus = Invoke-AzResourceAction `
+                        -ResourceId "$($devTestLab.ResourceId)/virtualmachines/$vMToStart" `
+                        -Action $vmAction `
+                        -Force
+    
+    if ($returnStatus.Status -eq 'Succeeded') {
+        Write-Output "##[section] Successfully updated DTL machine: $vMToStart, Action: $vmAction"
+    }
+    else {
+        Write-Error "##[error]Failed to update DTL machine: $vMToStart, Action: $vmAction"
+    }
+    ```
 
 ## <a name="azure-cli"></a>Azure CLI
-Die [Azure CLI](/cli/azure/get-started-with-azure-cli) ist eine weitere Möglichkeit, das Starten und Beenden von VMs in DevTest Labs zu automatisieren. Die Azure CLI kann unter verschiedenen Betriebssystemen [installiert](/cli/azure/install-azure-cli) werden. Im folgenden Skript finden Sie Befehle zum Starten und Beenden einer VM in einem Lab. 
 
-```azurecli
-# Sign in to Azure
-az login 
+Die [Azure CLI](/cli/azure/get-started-with-azure-cli) ist eine weitere Möglichkeit, das Starten und Beenden von VMs in DevTest Labs zu automatisieren. Im folgenden Skript finden Sie Befehle zum Starten und Beenden einer VM in einem Lab. Die Verwendung von Variablen in diesem Abschnitt basiert auf einer Windows-Umgebung. Leichte Variationen werden für bash- oder andere Umgebungen erforderlich.
 
-## Get the name of the resource group that contains the lab
-az resource list --resource-type "Microsoft.DevTestLab/labs" --name "yourlabname" --query "[0].resourceGroup" 
+1. Ersetzen Sie `SubscriptionID`, `yourlabname`, `yourVM` und `action` durch die entsprechenden Werte. Führen Sie das Skript dann aus.
 
-## Start the VM
-az lab vm start --lab-name yourlabname --name vmname --resource-group labResourceGroupName
+    ```azurecli
+    set SUBSCIPTIONID=SubscriptionID
+    set DEVTESTLABNAME=yourlabname
+    set VMNAME=yourVM
+    
+    REM The action on the virtual machine (Start or Stop)
+    set ACTION=action
+    ```
 
-## Stop the VM
-az lab vm stop --lab-name yourlabname --name vmname --resource-group labResourceGroupName
-```
+1. Melden Sie sich bei Ihrem Azure-Abonnement an, und rufen Sie den Namen der Ressourcengruppe ab, die das Lab enthält.
 
+    ```azurecli
+    az login
+    
+    REM If you have multiple subscriptions, set the one to use
+    REM az account set --subscription %SUBSCIPTIONID%
+
+    az resource list --resource-type "Microsoft.DevTestLab/labs" --name %DEVTESTLABNAME% --query "[0].resourceGroup"
+    ```
+
+1. Ersetzen Sie `resourceGroup` durch den Wert, den Sie im vorherigen Schritt erhalten haben. Führen Sie das Skript dann aus.
+
+    ```azurecli
+    set RESOURCEGROUP=resourceGroup
+    ```
+
+1. Starten oder beenden Sie die VM basierend auf dem Wert, den Sie an `ACTION` übergeben haben.
+
+    ```azurecli
+    az lab vm %ACTION% --lab-name %DEVTESTLABNAME% --name %VMNAME% --resource-group %RESOURCEGROUP%
+    ```
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Im folgenden Artikel erfahren Sie, wie Sie diese Vorgänge über das Azure-Portal ausführen: [Neustart einer VM](devtest-lab-restart-vm.md).

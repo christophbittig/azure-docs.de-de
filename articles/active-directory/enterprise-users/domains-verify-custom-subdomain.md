@@ -9,23 +9,23 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/01/2021
+ms.date: 10/28/2021
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a5d3eb79931c845b3e67a65d3e0d77d227f5022
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: eb41fbaf1b1430cddb1ce5c44748edf35801405e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129986832"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131427644"
 ---
 # <a name="change-subdomain-authentication-type-in-azure-active-directory"></a>Ändern des Authentifizierungstyps der Unterdomäne in Azure Active Directory
 
 Nachdem Azure Active Directory (Azure AD) eine Stammdomäne hinzugefügt wurde, erben alle nachfolgenden untergeordneten Domänen, die diesem Stamm in Ihrer Azure AD-Organisation hinzugefügt werden, automatisch die Authentifizierungseinstellung von der Stammdomäne. Wenn Sie jedoch Domänenauthentifizierungseinstellungen unabhängig von den Einstellungen der Stammdomäne verwalten möchten, können Sie dies jetzt über die Microsoft Graph-API ausführen. Wenn Sie z. B. eine Verbundstammdomäne wie contoso.com haben, können Sie anhand dieses Artikels eine Unterdomäne wie child.contoso.com als verwaltet anstatt als Verbund bestätigen.
 
-Wenn die übergeordnete Domäne im Azure AD-Portal eine Verbunddomäne ist und der Administrator versucht, auf der Seite **Benutzerdefinierte Domänennamen** eine verwaltete Unterdomäne zu bestätigen, erhalten Sie die Fehlermeldung „Fehler beim Hinzufügen der Domäne“ mit der Begründung „Mindestens eine Eigenschaft enthält ungültige Werte“. Wenn Sie versuchen, diese Unterdomäne aus dem Microsoft 365 Admin Center hinzuzufügen, erhalten Sie einen ähnlichen Fehler. Weitere Informationen zu diesem Fehler finden Sie unter [Eine untergeordnete Domäne erbt keine Änderungen der übergeordneten Domäne in Office 365, Azure oder Intune](/office365/troubleshoot/administration/child-domain-fails-inherit-parent-domain-changes).
+Wenn die übergeordnete Domäne im Azure AD-Portal eine Verbunddomäne ist und der Administrator versucht, auf der Seite **Benutzerdefinierte Domänennamen** eine verwaltete Unterdomäne zu überprüfen, wird die Fehlermeldung „Fehler beim Hinzufügen der Domäne“ mit der Begründung „Mindestens eine Eigenschaft enthält ungültige Werte“ angezeigt. Wenn Sie versuchen, diese Unterdomäne aus dem Microsoft 365 Admin Center hinzuzufügen, erhalten Sie einen ähnlichen Fehler. Weitere Informationen zu diesem Fehler finden Sie unter [Eine untergeordnete Domäne erbt keine Änderungen der übergeordneten Domäne in Office 365, Azure oder Intune](/office365/troubleshoot/administration/child-domain-fails-inherit-parent-domain-changes).
 
 ## <a name="how-to-verify-a-custom-subdomain"></a>Überprüfen einer benutzerdefinierten Unterdomäne
 

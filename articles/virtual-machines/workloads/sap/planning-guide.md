@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.date: 04/08/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 6a707f349d4153c7b7a5dca78e2a739625cc7db5
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: b6d31f3a55338a9a92549954dd8ae1a3367c3da4
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130232231"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131428062"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines – Planung und Implementierung für SAP NetWeaver
 
@@ -455,7 +455,7 @@ Azure bietet eine umfangreiche Auswahl an virtuellen Computern, die Sie für die
 
 ![Positionieren von Microsoft Azure Virtual Machine-Dienste][planning-guide-figure-400]
 
-Mit virtuellen Azure-Computern ermöglicht Ihnen Microsoft das Bereitstellen benutzerdefinierter Images in Azure als IaaS-Instanzen. Sie können auch Betriebssystemimages aus den umfangreichen Auswahlmöglichkeiten im Azure-Imagekatalog auswählen.
+Mit virtuellen Azure-Computern ermöglicht Ihnen Microsoft das Bereitstellen benutzerdefinierter Images in Azure als IaaS-Instanzen. Sie können auch Betriebssystemimages aus den umfangreichen Auswahlmöglichkeiten in Azure Marketplace auswählen.
 
 Aus Betriebsperspektive bietet der Azure Virtual Machine-Dienst ähnliche Funktionen wie lokal bereitgestellte virtuellen Computer. Für Verwaltung, Betrieb und Patchen des jeweiligen Betriebssystems, das auf einer Azure-VM ausgeführt wird, und den zugehörigen Anwendungen auf dem betreffenden virtuellen Computer sind Sie verantwortlich. Microsoft stellt keine weiteren Dienste bereit, die über das Hosting des betreffenden virtuellen Computers in der Azure-Infrastruktur (Infrastructure-as-a-Service, IaaS) hinausgehen. Für SAP-Workloads, die Sie als Kunde bereitstellen, gibt es von Microsoft keine über die IaaS-Angebote hinausgehenden Angebote.
 

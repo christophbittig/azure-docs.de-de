@@ -1,4 +1,4 @@
-- name: Azure Defender für IoT für Endbenutzerorganisationen
+- name: Microsoft Defender für IoT für Endbenutzerorganisationen
   href: index.yml
   items: null
 - name: Übersicht
@@ -17,13 +17,13 @@
     - name: Systemanforderungen
       displayName: 'firewall, proxy, open ports'
       href: quickstart-system-prerequisites.md
-    - name: Erste Schritte mit Azure Defender für IoT
+    - name: Erste Schritte mit Microsoft Defender für IoT
       displayName: 'getting started, registration, onboarding, activation, threat intelligence, trial, free, subscription'
       href: getting-started.md
-- name: Tutorials
+- name: Lernprogramme
   expanded: false
   items:
-    - name: Setup der Azure Defender für IoT-Testversion
+    - name: Setup der Testversion von Microsoft Defender für IoT
       href: tutorial-onboarding.md
     - name: Integrieren von ClearPass
       href: tutorial-clearpass.md
@@ -184,7 +184,7 @@
     - name: Nachverfolgen der Sensoraktivität
       displayName: 'timeline, time line, time-line, event'
       href: how-to-track-sensor-activity.md
-    - name: Konfigurieren von Azure Sentinel mit Defender für IoT für Endbenutzerorganisationen
+    - name: Konfigurieren von Microsoft Sentinel mit Defender für IoT für Endbenutzerorganisationen
       displayName: Sentinel
       href: how-to-configure-with-sentinel.md
     - name: Behandeln von Problemen mit dem Sensor und der lokalen Verwaltungskonsole
@@ -228,8 +228,8 @@
       items:
         - name: Ausbauen von Sicherheitskenntnissen mit Microsoft Learn
           href: /learn/browse/?term=securityS&terms=securityS
-        - name: Dokumentation zu Azure Security Center
-          href: ../../security-center/
+        - name: Dokumentation zu Microsoft Defender for Cloud
+          href: ../../defender-for-cloud/
         - name: Dokumentation zur Azure-Sicherheit
           href: ../../security/index.yml
         - name: "Azure\_IoT-Blog zu Sicherheit, Datenschutz und Compliance"

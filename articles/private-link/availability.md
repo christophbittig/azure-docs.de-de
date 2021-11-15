@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 3/15/2021
 ms.custom: template-concept,references_regions
-ms.openlocfilehash: 175b940995ed4e68e1358989e8c9b09c201f3ce4
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: ff4b23ffaf366ac9c1583b6fb9eb87f87b7db0e0
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129711813"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131428936"
 ---
 # <a name="azure-private-link-availability"></a>Azure Private Link-Verfügbarkeit
 
@@ -85,6 +85,7 @@ In den folgenden Tabellen sind die Private Link-Dienste und die Regionen, in den
 | ------------ | ----------------| ------------| ----------------|
 | Azure-Automatisierung  | Alle öffentlichen Regionen<br/> Alle Government-Regionen |  | Allgemein verfügbar </br> [Erfahren Sie, wie Sie einen privaten Endpunkt für Azure Automation erstellen.](../automation/how-to/private-link-security.md)|
 |Azure Backup | Alle öffentlichen Regionen<br/> Alle Government-Regionen   |  | Allgemein verfügbar <br/> [Erfahren Sie, wie Sie einen privaten Endpunkt für Azure Backup erstellen.](../backup/private-endpoints.md)   |
+|Azure Purview | „Asien, Südosten“, „Australien, Osten“, „Brasilien, Süden“, „Europa, Norden“, „Europa, Westen“, „Kanada, Mitte“, „USA, Osten“, „USA, Osten 2“, „USA, Osten 2 EUAP“, „USA, Süden-Mitte“, „USA, Westen-Mitte“, „USA, Westen 2“, „Indien, Mitte“, „Vereinigtes Königreich, Süden“   | [Auswählen, um bekannte Einschränkungen aufzurufen](../purview/catalog-private-link-troubleshoot.md#known-limitations) | Allgemein verfügbar <br/> [Informationen dazu, wie Sie einen privaten Endpunkt für Azure Purview erstellen](../purview/catalog-private-link.md)   |
 
 ### <a name="security"></a>Sicherheit
 

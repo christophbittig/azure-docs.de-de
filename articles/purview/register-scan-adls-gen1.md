@@ -7,12 +7,12 @@ ms.service: purview
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: 2887511d9d92fcf9112473207ba3445282b8b87f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 743db90c66f4499b356ca0413ab1827aa73d5f2e
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131015611"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131852748"
 ---
 # <a name="connect-to-azure-data-lake-gen1-in-azure-purview"></a>Verbinden zu Azure Data Lake Gen1 in Azure Purview
 
@@ -25,7 +25,9 @@ In diesem Artikel wird der Prozess zum Registrieren einer Azure Data Lake Storag
 
 |**Metadatenextrahierung**|  **Vollständige Überprüfung**  |**Inkrementelle Überprüfung**|**Bereichsbezogene Überprüfung**|**Klassifizierung**|**Zugriffsrichtlinie**|**Herkunft**|
 |---|---|---|---|---|---|---|
-| [Ja](#register) | [Ja](#scan)|[Ja](#scan) | [Ja](#scan)|[Ja](#scan)| Nein |[Data Factory-Datenherkunft](how-to-link-azure-data-factory.md) |
+| [Ja](#register) | [Ja](#scan)|[Ja](#scan) | [Ja](#scan)|[Ja](#scan)| Nein |Eingeschränkt** |
+
+\** Herkunft wird unterstützt, wenn das Dataset als Quelle/Senke in der [Data Factory Copy-Aktivität](how-to-link-azure-data-factory.md) verwendet wird. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -33,7 +35,7 @@ In diesem Artikel wird der Prozess zum Registrieren einer Azure Data Lake Storag
 
 * Eine aktive [Purview-Ressource](create-catalog-portal.md)
 
-* Sie müssen ein Datenquellenadministrator und Datenleser sein, um eine Quelle zu registrieren und in Purview Studio zu verwalten. Weitere Informationen finden Sie auf der [Seite Azure Purview-Berechtigungen](catalog-permissions.md).
+* Sie müssen Datenquellenadministrator und Datenleser sein, um eine Quelle zu registrieren und in Purview Studio zu verwalten. Weitere Informationen finden Sie auf der [Seite Azure Purview-Berechtigungen](catalog-permissions.md).
 
 ## <a name="register"></a>Register
 
@@ -47,13 +49,13 @@ Es ist wichtig, die Datenquelle in Azure Purview zu registrieren, bevor Sie eine
 
     :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-purview-acct.png" alt-text="Screenshot: Purview-Konto zum Registrieren der Datenquelle":::
 
-1. **Öffnen Sie Purview Studio** und navigieren Sie zu **Data Map --> Quellen**
+1. **Öffnen Sie Purview Studio** uns navigieren Sie zu **Data Map --> Quellen**
 
     :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-open-purview-studio.png" alt-text="Screenshot: Link zum Öffnen von Purview Studio":::
 
-    :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-sources.png" alt-text="Screenshot: Navigieren zum Quellen-Link in der Data Map":::
+    :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-sources.png" alt-text="Screenshot: Navigieren zum Link Quellen in der Data Map":::
 
-1. Erstellen Sie die [Sammlungshierarchie](./quickstart-create-collection.md) mithilfe des Menüs **Sammlungen**, und weisen Sie den einzelnen untergeordneten Sammlungen nach Bedarf Berechtigungen zu
+1. Erstellen Sie die [Sammlungshierarchie](./quickstart-create-collection.md) mithilfe des **Menüs Sammlungen**, und weisen Sie den einzelnen untergeordneten Sammlungen nach Bedarf Berechtigungen zu
 
     :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-collection.png" alt-text="Screenshot: Sammlungsmenü zum Erstellen einer Sammlungshierarchie":::
 
@@ -83,11 +85,11 @@ Die folgenden Optionen werden unterstützt:
 > [!Note]
 > Wenn Sie für das Speicherkonto eine Firewall aktiviert haben, müssen Sie beim Einrichten einer Überprüfung als Authentifizierungsmethode Verwaltete Identität verwenden.
 
-* **Verwaltete Identität (empfohlen)** : Sobald das Azure Purview-Konto erstellt wurde, wird automatisch eine **verwaltete Systemidentität** in Azure AD Mandanten erstellt. Je nach Ressourcentyp sind bestimmte RBAC-Rollenzuweisungen erforderlich, damit die Azure Purview-MSI die Überprüfungen durchführen kann.
+* **Verwaltete Identität (empfohlen):** Sobald das Azure Purview-Konto erstellt wurde, wird automatisch eine **verwaltete Systemidentität** in Azure AD Mandanten erstellt. Je nach Ressourcentyp sind bestimmte RBAC-Rollenzuweisungen erforderlich, damit die Azure Purview-MSI die Überprüfungen durchführen kann.
 
-* **Dienstprinzipal**: Bei dieser Methode können Sie einen neuen Dienstprinzipal erstellen oder einen vorhandenen Dienstprinzipal in Ihrem Azure Active Directory verwenden.
+* **Dienstprinzipal** – Bei dieser Methode können Sie einen neuen Dienstprinzipal erstellen oder einen vorhandenen Dienstprinzipal in Ihrem Azure Active Directory verwenden.
 
-### <a name="authentication-for-a-scan"></a>Authentifizierung für eine Überprüfung
+### <a name="authentication-for-a-scan"></a>Einrichten der Authentifizierung für eine Überprüfung
 
 #### <a name="using-managed-identity-for-scanning"></a>Verwenden der verwalteten Identität für die Überprüfung
 
@@ -119,20 +121,20 @@ Wenn Sie die Berechtigung zum Überprüfen von zukünftig hinzugefügten Dateien
 
 ##### <a name="creating-a-new-service-principal"></a>Erstellen eines neuen Dienstprinzipals
 
-Wenn Sie [einen neuen Dienstprinzipal erstellen](./create-service-principal-azure.md) müssen, müssen Sie eine Anwendung in Ihrem Azure AD Mandanten registrieren und den Zugriff auf den Dienstprinzipal in Ihren Datenquellen bereitstellen. Ihr Azure AD allgemeiner Administrator oder andere Rollen, z. B. Anwendungsadministrator, können diesen Vorgang ausführen.
+Wenn Sie [einen neuen Dienstprinzipal erstellen](./create-service-principal-azure.md)müssen, müssen Sie eine Anwendung in Ihrem Azure AD Mandanten registrieren und den Zugriff auf den Dienstprinzipal in Ihren Datenquellen bereitstellen. Ihr Azure AD allgemeiner Administrator oder andere Rollen, z. B. Anwendungsadministrator, können diesen Vorgang ausführen.
 
 ##### <a name="getting-the-service-principals-application-id"></a>Abrufen der Anwendungs-ID des Dienstprinzipals
 
-1. Kopieren Sie die **Anwendungs-ID (Client)** , die in der **Übersicht** über das bereits erstellten [_Dienstprinzipal_](./create-service-principal-azure.md) vorhanden ist
+1. Kopieren Sie die **Anwendungs-ID (Client)**, die in der **Übersicht** über den bereits erstellten [_Dienstprinzipal_](./create-service-principal-azure.md) vorhanden ist
 
-    :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-sp-appl-id.png" alt-text="Screenshot: Anwendungs-ID (Client) für das Dienstprinzipal":::
+    :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-sp-appl-id.png" alt-text="Screenshot: Anwendungs-ID (Client) für den Dienstprinzipal":::
 
 ##### <a name="granting-the-service-principal-access-to-your-adls-gen1-account"></a>Gewähren des Zugriffs auf Ihr ADLS Gen1-Konto für den Dienstprinzipal
 
 Es ist wichtig, ihrem Dienstprinzipal die Berechtigung zum Überprüfen der ADLS Gen2 zu erteilen. Sie können die Katalog-MSI auf der Ebene des Abonnements, der Ressourcengruppe oder der Ressource hinzufügen, je nachdem, wofür die Berechtigungen zum Überprüfen erteilt werden sollen.
 
 > [!Note]
-> Sie müssen ein Besitzer des Abonnements sein, um einer Azure-Ressource ein Dienstprinzipal hinzufügen zu können.
+> Sie müssen Besitzer des Abonnements sein, um einer Azure-Ressource eine verwaltete Identität hinzufügen zu können.
 
 1. Geben Sie dem Dienstprinzipal Zugriff auf das Speicherkonto, indem Sie das Speicherkonto öffnen und auf **Übersicht** --> **Daten-Explorer** klicken
 
@@ -153,7 +155,7 @@ Es ist wichtig, ihrem Dienstprinzipal die Berechtigung zum Überprüfen der ADLS
 
     :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-purview-acct.png" alt-text="Screenshot: Öffnen von Purview Studio":::
 
-1. Navigieren Sie zu **Datenzuordnungs** --> **quelle**, um die Sammlungshierarchie anzuzeigen
+1. Navigieren Sie zu **Datenzuordnungsquellen,** -->  um die Sammlungshierarchie anzuzeigen
 
     :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-open-purview-studio.png" alt-text="Screenshot: Sammlungshierarchie":::
 
@@ -173,7 +175,7 @@ Geben Sie einen **Namen** für die Überprüfung an, wählen Sie unter **Anmelde
 
     :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-sp.png" alt-text="Screenshot: Option Dienstprinzipal":::
 
-1. Wählen Sie die entsprechende **Schlüsseltresor-Verbindung** und den **geheimen Namen** aus, die beim Erstellen des _Dienstprinzipals_ verwendet wurden. Die **Dienstprinzipal-ID** ist die **Anwendungs-ID (Client)** , die wie oben angegeben kopiert wurde
+1. Wählen Sie die entsprechende **Schlüsseltresor-Verbindung** und den **geheimen Namen** aus, die beim Erstellen des _Dienstprinzipals_ verwendet wurden. Die **Dienstprinzipal-ID** ist die **Anwendungs-ID (Client)**, die wie oben angegeben kopiert wurde
 
     :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-sp-key-vault.png" alt-text="Screenshot: Option Schlüsseltresor des Dienstprinzipals":::
 
@@ -199,6 +201,7 @@ Geben Sie einen **Namen** für die Überprüfung an, wählen Sie unter **Anmelde
 
     :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-classification-rules.png" alt-text="Überprüfen von Klassifizierungsregeln":::
 
+
     :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-select-scan-rule-set.png" alt-text="Überprüfen der Regelauswahl":::
 
 1. Wählen Sie den Auslöser für die Überprüfung. Sie können einen Zeitplan einrichten oder die Überprüfung einmalig ausführen.
@@ -215,7 +218,7 @@ Geben Sie einen **Namen** für die Überprüfung an, wählen Sie unter **Anmelde
 
 1. Navigieren Sie zur _Datenquelle_ in der _Sammlung_ und klicken Sie auf **Details anzeigen**, um den Status der Überprüfung zu checken
 
-    :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-view-scan.png" alt-text="Überprüfung anzeigen":::
+    :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-view-scan.png" alt-text="Anzeigen der Überprüfung":::
 
 1. Die Scandetails geben den Fortschritt der Überprüfung im **Status der letzten Ausführung** an sowie die Anzahl der _gescannten_ und _klassifizierten_ Objekte
 
@@ -237,7 +240,7 @@ Geben Sie einen **Namen** für die Überprüfung an, wählen Sie unter **Anmelde
 
 1. Sie können _die Überprüfung erneut ausführen_, _die Überprüfung bearbeiten_ oder _die Überprüfung löschen_  
 
-    :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-manage-scan-options.png" alt-text="Verwalten von Überprüfungsoptionen":::
+    :::image type="content" source="media/register-scan-adls-gen1/register-adls-gen1-manage-scan-options.png" alt-text="Verwalten von Scanoptionen":::
 
     > [!NOTE]
     > * Beim Löschen Ihrer Überprüfung werden nicht die Katalogressourcen aus den vorherigen Überprüfungen gelöscht.
@@ -251,8 +254,8 @@ Geben Sie einen **Namen** für die Überprüfung an, wählen Sie unter **Anmelde
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie Ihre Quelle registriert haben, halten Sie sich an die folgenden Anleitungen, um mehr über Purview und Ihre Daten zu erfahren.
+Nachdem Sie Ihre Quelle registriert haben, befolgen Sie die folgenden Anleitungen, um mehr über Purview und Ihre Daten zu erfahren.
 
-- [Dateneinblicke in Azure Purview](concept-insights.md)
+- [Datenerkenntnisse in Azure Purview](concept-insights.md)
 - [Datenherkunft in Azure Purview](catalog-lineage-user-guide.md)
 - [Data Catalog suchen](how-to-search-catalog.md)

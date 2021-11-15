@@ -3,24 +3,24 @@ title: Freigabe einer Galerie mit RBAC
 description: Erfahren Sie, wie Sie eine Galerie mithilfe der rollenbasierten Zugriffskontrolle (RBAC) freigeben können.
 author: cynthn
 ms.service: virtual-machines
-ms.subservice: shared-image-gallery
+ms.subservice: gallery
 ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 08/31/2021
 ms.author: cynthn
 ms.custom: template-how-to
-ms.openlocfilehash: 01c98ba8d619573c241e5a8fdfa2f774b4aed22d
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: 373ea9917fb4386ee9b977f64b003eb24a2803fc
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123452517"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131462991"
 ---
-# <a name="use-rbac-to-share-image-gallery-resources"></a>RBAC zur Freigabe von Bildgalerieressourcen verwenden
+# <a name="use-rbac-to-share-gallery-resources"></a>RBAC zur Freigabe von Katalogressourcen verwenden
 
-Da es sich bei der Shared Image Gallery, der Bilddefinition und der Bildversion um Ressourcen handelt, können sie mit den integrierten Azure RBAC-Steuerelementen freigegeben werden. Mithilfe von Azure RBAC können Sie diese Ressourcen für andere Benutzer, Dienstprinzipale und Gruppen freigeben. Sie können sogar Zugriff für Personen freigeben, die sich außerhalb des Mandanten befinden, in dem sie erstellt wurden. Sobald ein Benutzer Zugriff auf die Version eines freigegebenen Images hat, kann er einen virtuellen Computer oder eine VM-Skalierungsgruppe bereitstellen.  
+Azure Compute Gallery, Definitionen und Versionen sind allesamt Ressourcen. Sie können mithilfe der integrierten nativen Azure RBAC-Steuerelemente freigegeben werden. Mithilfe von Azure RBAC können Sie diese Ressourcen für andere Benutzer, Dienstprinzipale und Gruppen freigeben. Sie können sogar Zugriff für Personen freigeben, die sich außerhalb des Mandanten befinden, in dem sie erstellt wurden. Sobald ein Benutzer Zugriff auf das Image oder die Version einer Anwendung hat, kann er einen virtuellen Computer oder eine VM-Skalierungsgruppe bereitstellen.  
 
-Zur Erzielung der besten Leistung empfiehlt sich ein Freigeben auf Katalogebene. Wir empfehlen nicht, einzelnen Imageversionen freizugeben. Weitere Informationen zu Azure RBAC finden Sie unter [Zuweisen von Azure-Rollen](../role-based-access-control/role-assignments-portal.md).
+Zur Erzielung der besten Leistung empfiehlt sich ein Freigeben auf Katalogebene. Wir empfehlen nicht, einzelne Image- oder Anwendungsversionen freizugeben. Weitere Informationen zu Azure RBAC finden Sie unter [Zuweisen von Azure-Rollen](../role-based-access-control/role-assignments-portal.md).
 
 Wenn sich der Benutzer außerhalb Ihrer Organisation befindet, erhält er eine E-Mail-Einladung, um der Organisation beizutreten. Der Benutzer muss die Einladung annehmen, woraufhin er in der Lage ist, den Katalog und alle Imagedefinitionen und -versionen in seiner Liste der Ressourcen anzuzeigen.
 
@@ -28,9 +28,9 @@ Wenn sich der Benutzer außerhalb Ihrer Organisation befindet, erhält er eine E
 
 ### <a name="portal"></a>[Portal](#tab/portal)
 
-Wenn sich der Benutzer außerhalb Ihrer Organisation befindet, erhält er eine E-Mail-Einladung, um der Organisation beizutreten. Der Benutzer muss die Einladung annehmen, woraufhin er in der Lage ist, den Katalog und alle Imagedefinitionen und -versionen in seiner Liste der Ressourcen anzuzeigen.
+Wenn sich der Benutzer außerhalb Ihrer Organisation befindet, erhält er eine E-Mail-Einladung, um der Organisation beizutreten. Der Benutzer muss die Einladung annehmen, woraufhin er in der Lage ist, den Katalog und alle Definitionen und Versionen in seiner Liste der Ressourcen anzuzeigen.
 
-1. Wählen Sie auf der Seite für Ihre Bildergalerie im Menü auf der linken Seite die Option **Zugangskontrolle (IAM)** . 
+1. Wählen Sie auf der Seite für Ihren Katalog im Menü auf der linken Seite die Option **Zugangskontrolle (IAM)** . 
 1. Wählen Sie unter **Rollenzuweisung hinzufügen** die Option **Hinzufügen** aus. Der Bereich **Rollenzuweisung hinzufügen** wird geöffnet. 
 1. Wählen Sie unter **Rolle** die Option **Leser** aus.
 1. Behalten Sie unter **Zugriff zuweisen zu** den Standardwert von **Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal** bei.
@@ -49,7 +49,7 @@ az sig show \
    --query id
 ```
 
-Verwenden Sie die Objekt-ID als Bereich, zusammen mit einer E-Mail-Adresse und [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create), um einem Benutzer Zugriff auf den geteilten Imagekatalog zu gewähren. Ersetzen Sie `<email-address>` und `<gallery iD>` durch Ihre eigenen Angaben.
+Verwenden Sie die Objekt-ID als Bereich, zusammen mit einer E-Mail-Adresse und [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create), um einem Benutzer Zugriff auf Azure Compute Gallery zu gewähren. Ersetzen Sie `<email-address>` und `<gallery iD>` durch Ihre eigenen Angaben.
 
 ```azurecli-interactive
 az role assignment create \
@@ -82,12 +82,10 @@ New-AzRoleAssignment `
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erstellen Sie eine Bilddefinition [ und eine Bildversion](image-version.md).
+Erstellen Sie eine [Imagedefinition und eine Imageversion](image-version.md).
 
-[Azure Image Builder (Vorschauversion)](./image-builder-overview.md) hilft beim Automatisieren der Erstellung von Imageversionen. Sie können den Dienst sogar zum Aktualisieren und [Erstellen einer neuen Imageversion aus einer vorhandenen](./windows/image-builder-gallery-update-image-version.md) verwenden. 
+Sie können auch mithilfe von Vorlagen eine Ressourcen in der Azure Compute Gallery erstellen. Es stehen mehrere Azure-Schnellstartvorlagen zur Verfügung: 
 
-Sie können auch mithilfe von Vorlagen eine Ressource im Katalog für freigegebene Images erstellen. Es stehen mehrere Azure-Schnellstartvorlagen zur Verfügung: 
-
-- [Erstellen eines Katalogs mit freigegebenen Images](https://azure.microsoft.com/resources/templates/sig-create/)
-- [Erstellen einer Imagedefinition in einem Katalog mit freigegebenen Images](https://azure.microsoft.com/resources/templates/sig-image-definition-create/)
-- [Erstellen einer Imageversion in einem Katalog mit freigegebenen Images](https://azure.microsoft.com/resources/templates/sig-image-version-create/)
+- [Erstellen einer Azure Compute Gallery-Instanz](https://azure.microsoft.com/resources/templates/sig-create/)
+- [Erstellen einer Imagedefinition in einer Azure Compute Gallery-Instanz](https://azure.microsoft.com/resources/templates/sig-image-definition-create/)
+- [Erstellen einer Imageversion in einer Azure Compute Gallery-Instanz](https://azure.microsoft.com/resources/templates/sig-image-version-create/)

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 09/15/2021
-ms.openlocfilehash: fd4f7d583df6c949fd549cfdc3020f15468f0e2c
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 699906e99adabdd14520eb0b391d7b1d6018ffa5
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128661220"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130219060"
 ---
 # <a name="pagination-in-azure-cosmos-db"></a>Paginierung in Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -23,7 +23,7 @@ In Azure Cosmos DB können Abfragen mehrere Ergebnisseiten enthalten. In diesem
 
 Manchmal werden Abfrageergebnisse auf mehrere Seiten aufgeteilt. Die Ergebnisse der einzelnen Seiten werden durch eine separate Abfrageausführung generiert. Wenn Abfrageergebnisse nicht in einer einzelnen Ausführung zurückgegeben werden können, teilt Azure Cosmos DB die Ergebnisse automatisch auf mehrere Seiten auf.
 
-Sie können die maximale Anzahl von Elementen angeben, die von einer Abfrage zurückgegeben werden, indem Sie den `MaxItemCount`festlegen. Der `MaxItemCount` wird pro Anforderung angegeben und besagt, dass die Abfrage-Engine maximal diese Anzahl von Elementen zurückgibt. Sie können `MaxItemCount` auf `-1` festlegen, wenn Sie keine Beschränkung für die Anzahl der Ergebnisse pro Abfrageausführung festlegen möchten.
+Sie können die maximale Anzahl von Elementen angeben, die von einer Abfrage zurückgegeben werden, indem Sie den `MaxItemCount`festlegen. Der `MaxItemCount` wird pro Anforderung angegeben und besagt, dass die Abfrage-Engine maximal diese Anzahl von Elementen zurückgeben soll. Sie können `MaxItemCount` auf `-1` festlegen, wenn Sie keine Beschränkung für die Anzahl der Ergebnisse pro Abfrageausführung festlegen möchten.
 
 Darüber hinaus gibt es weitere Gründe dafür, dass die Abfrage-Engine Abfrageergebnisse möglicherweise auf mehrere Seiten aufteilen muss. Dazu gehören:
 
@@ -47,12 +47,13 @@ Im Folgenden finden Sie einige Beispiele für die Verarbeitung der Ergebnisse vo
 
 ## <a name="continuation-tokens"></a>Fortsetzungstoken
 
-Sie können im .NET SDK und im Java SDK optional Fortsetzungstoken als Lesezeichen für den Fortschritt der Abfrage verwenden. Azure Cosmos DB-Abfrageausführungen sind auf der Serverseite zustandslos und können jederzeit mit dem Fortsetzungstoken fortgesetzt werden. Fortsetzungstoken werden im Node.js SDK nicht unterstützt. Beim Python SDK werden sie für Abfragen in einer einzelnen Partition unterstützt, und der PK muss im Options-Objekt angegeben werden, da das Vorhandensein in der Abfrage selbst nicht ausreicht.
+Sie können im .NET SDK und im Java SDK optional Fortsetzungstoken als Lesezeichen für den Fortschritt der Abfrage verwenden. Azure Cosmos DB-Abfrageausführungen sind auf der Serverseite zustandslos und können jederzeit mit dem Fortsetzungstoken fortgesetzt werden. Beim Python SDK und beim Node.js SDK werden sie für Abfragen in einer einzelnen Partition unterstützt, und der PK muss im options-Objekt angegeben werden, da das Vorhandensein in der Abfrage selbst nicht ausreicht.
 
 Im Folgenden finden Sie ein Beispiel für die Verwendung von Fortsetzungstoken:
 
 - [.NET SDK](https://github.com/Azure/azure-cosmos-dotnet-v3/blob/master/Microsoft.Azure.Cosmos.Samples/Usage/Queries/Program.cs#L230)
 - [Java SDK](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/main/src/main/java/com/azure/cosmos/examples/queries/sync/QueriesQuickstart.java#L216)
+- [Node.js SDK](https://github.com/Azure/azure-sdk-for-js/blob/2186357a6e6a64b59915d0cf3cba845be4d115c4/sdk/cosmosdb/cosmos/samples/src/BulkUpdateWithSproc.ts#L16-L31)
 - [Python SDK](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/test/test_query.py#L533)
 
 Wenn die Abfrage ein Fortsetzungstoken zurückgibt, stehen zusätzliche Abfrageergebnisse bereit.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: rsetlem
-ms.openlocfilehash: 317c02a71f555328dfd4d646eb294541df11a0b7
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: d86b7b59e05aa923efd3e4d9228d8ac422fc863d
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130161533"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130219530"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Failoverclusterinstanzen mit SQL Server in Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -75,6 +75,8 @@ Im restlichen Teil dieses Abschnitts werden die Vorteile und Einschränkungen de
 - Unterstützt Filestream.
 - SSD Premium-Instanzen unterstützen Verfügbarkeitsgruppen. 
 
+> [!NOTE]
+> Freigegebene Azure-Datenträger unterstützen zwar auch [SSD Standard-Größen](../../../virtual-machines/disks-shared.md#disk-sizes), die Verwendung von SSD Standard-Datenträgern für SQL Server-Workloads wird aber aufgrund der Leistungseinschränkungen nicht empfohlen.
 
 **Einschränkungen:** 
 - Es wird empfohlen, die virtuellen Computer in derselben Verfügbarkeitsgruppe und Näherungsplatzierungsgruppe zu platzieren.

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/01/2021
 ms.author: mmcrey
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: a7fc9d45db3469fa9198990e4308e431ac0cbc68
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 09d4c88bec94c881fd9895557aa35264ea4ffab4
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095859"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131561212"
 ---
 # <a name="dcsv3-and-dcdsv3-series"></a>DCsv3- und DCdsv3-Serie
 
@@ -39,7 +39,7 @@ CPU: Skalierbarer Intel® Xeon-Prozessor der 3. Generation 8370C<br>
 Basisfrequenz aller Kerne: 2,8 GHz<br>
 [Turbo Boost Max 3.0:](https://www.intel.com/content/www/us/en/gaming/resources/turbo-boost.html)Aktiviert, maximale Frequenz 3,5 GHz<br>
 [Hyperthreading](https://www.intel.com/content/www/us/en/gaming/resources/hyper-threading.html): Nicht unterstützt<br>
-Verschlüsselung des gesamten Arbeitsspeichers: Multi Key aktiviert<br>
+[Verschlüsselung des gesamten Arbeitsspeichers – Multi Key](https://itpeernetwork.intel.com/memory-encryption/): Aktiviert<br>
 [Storage Premium](premium-storage-performance.md): Unterstützt<br>
 [Disk Storage Ultra](disks-enable-ultra-ssd.md): Unterstützt<br>
 [Beschleunigter Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-cli.md): Unterstützt (nur CLI-Bereitstellung oder ARM-Vorlage)<br>

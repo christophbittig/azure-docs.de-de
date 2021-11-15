@@ -7,14 +7,14 @@ ms.reviewer: mikeray
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-data
-ms.date: 07/30/2021
+ms.date: 11/03/2021
 ms.topic: overview
-ms.openlocfilehash: 6ac96cb0420ecdba934b364c185bedf01f9f4321
-ms.sourcegitcommit: d11ff5114d1ff43cc3e763b8f8e189eb0bb411f1
+ms.openlocfilehash: 9c3c5cd60c7eec5832d8e609e960fd42d38855cc
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122822646"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131557811"
 ---
 #  <a name="create-azure-arc-data-controller-from-azure-portal---direct-connectivity-mode"></a>Bereitstellen eines Azure Arc-Datencontrollers vom Microsoft Azure-Portal im direkten Verbindungsmodus
 
@@ -43,13 +43,12 @@ Jede dieser Aktionen sollte Sie zur Seite „Azure Arc-Voraussetzungen für den 
   - Wählen Sie einen bereits erstellten **Benutzerdefinierten Speicherort** oder wählen Sie „Neu erstellen“, um einen neuen benutzerdefinierten Speicherort zu erstellen. Wenn Sie einen neuen benutzerdefinierten Speicherort erstellen möchten, geben Sie einen Namen für den neuen benutzerdefinierten Speicherort ein. Wählen Sie dann in der Dropdownliste den Azure Arc-fähigen Kubernetes-Cluster aus, und geben Sie einen Namespace ein, der dem neuen benutzerdefinierten Speicherort zugeordnet werden soll. Wählen Sie schließlich im Fenster „Neuen benutzerdefinierten Speicherort erstellen“ die Option „Erstellen“ aus. Erfahren Sie mehr über [benutzerdefinierte Speicherorte](../kubernetes/conceptual-custom-locations.md)
   - **Kubernetes-Konfiguration**: Wählen Sie in der Dropdownliste eine Kubernetes-Konfigurationsvorlage aus, die ihrer Kubernetes-Verteilung am besten entspricht. Wenn Sie ihre eigenen Einstellungen verwenden oder über ein benutzerdefiniertes Profil verfügen, das Sie verwenden möchten, wählen Sie in der Dropdownliste die Option „Benutzerdefinierte Vorlage“ aus. Geben Sie auf dem Blatt, das auf der rechten Seite geöffnet wird, die Details für die Docker-Anmeldeinformationen, die Repository-Informationen, das Imagetag, die Image-Pullrichtlinie, den Infrastrukturtyp und die Speichereinstellungen für die Daten, die Protokolle und deren Größe, den Diensttyp und die Ports für den Controller und den Verwaltungsproxy ein. Wählen Sie „Übernehmen“ aus, wenn alle erforderlichen Informationen bereitgestellt sind. Sie können auch Ihre eigene Vorlagendatei hochladen, indem Sie oben auf dem Blatt „Eine Vorlage hochladen (JSON)“ auswählen. Wenn Sie benutzerdefinierte Einstellungen verwenden und eine Kopie dieser Einstellungen herunterladen möchten, verwenden Sie hierzu „Diese Vorlage herunterladen (JSON)“. Erfahren Sie mehr über die [benutzerdefinierten Konfigurationsprofile](create-custom-configuration-template.md).
   - Wählen Sie den passenden **Diensttyp** für Ihre Umgebung aus
-  - **Administratorkonto**: Geben Sie die Anmeldeinformationen für die Datencontroller-Anmeldung und das Kennwort ein
-  - **Dienstprinzipal**: Geben Sie die Client-ID, die Mandanten-ID und die Geheimen Clientinformationen für das zu verwendende Dienstprinzipalkonto ein.
+  - **Anmeldeinformationen für das Dashboard für Metriken und Protokolle:** Geben Sie die Anmeldeinformationen für das Grafana- und das Kibana-Dashboard ein.
   - Klicken Sie auf die Schaltfläche „Weiter“ und dann „Zusätzliche Einstellungen“, um fortzufahren, nachdem alle erforderlichen Informationen bereitgestellt wurden.
 - Auf der Seite mit den **Zusätzliche Einstellungen**:
-  - Wenn Sie Ihre Protokolle automatisch in Azure Log Analytics hochladen möchten, geben Sie die Log Analytics-Arbeitsbereichs-ID und den gemeinsam genutzten Log Analytics-Zugriffsschlüssel ein
-  - Wenn Sie Ihre Protokolle NICHT automatisch in Azure Log Analytics hochladen möchten, deaktivieren Sie das Kontrollkästchen „Hochladen von Protokollen aktivieren“.
-  - Wählen Sie: „Weiter“ und dann „Tags“, um fortzufahren.
+  - **Metrikupload:** Wählen Sie diese Option aus, um Ihre Metriken automatisch in Azure Monitor hochzuladen, um Metriken aggregieren und analysieren, Warnungen auslösen, Benachrichtigungen senden oder automatisierte Aktionen auslösen zu können. Die erforderliche Rolle **Überwachung des Metriken-Verlegers** wird der verwalteten Identität der Erweiterung zugewiesen. 
+  - **Protokollupload:** Wählen Sie diese Option aus, um Protokolle automatisch in einen vorhandenen Log Analytics-Arbeitsbereich hochzuladen. Geben Sie die Log Analytics-Arbeitsbereichs-ID und den gemeinsam genutzten Log Analytics-Zugriffsschlüssel ein. 
+  - Wählen Sie „Weiter: Tags“ aus, um fortzufahren.
 - Auf der Seite **Tags**, geben Sie die Namen und die Werte für Ihre Tags ein und wählen „Weiter“ und dann „Überprüfen + Erstellen“.
 - Auf der Seite **Überprüfen + Erstellen** wird Ihnen die Zusammenfassung Ihrer Bereitstellung angezeigt. Stellen Sie sicher, dass alle Einstellungen korrekt sind und wählen Sie „Erstellen“ aus, um die Bereitstellung des Azure Arc-Datencontrollers zu starten.
 

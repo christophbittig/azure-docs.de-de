@@ -1,18 +1,18 @@
 ---
-title: Erste Schritte mit Ihrem individuellen VSS-Azure-Dev/Test- Gutschriftabonnement
-description: Dieser Artikel behandelt zwei Optionen für eine Einzelperson für den Zugriff auf ein Azure-Gutschriftabonnement.
+title: Verwenden einer einzelnen Azure Dev/Test-Gutschrift
+description: Erfahren Sie, wie Sie als Visual Studio-Abonnent auf ein Azure-Gutschriftenabonnement zugreifen.
 author: jamestramel
 ms.author: jametra
 ms.date: 10/20/2021
 ms.topic: how-to
 ms.prod: visual-studio-windows
 ms.custom: devtestoffer
-ms.openlocfilehash: 2901d8a7ec602878fb02d4c501efa26465619dc4
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 99dd3bb1f259fff02a46ee9ceb1930dee1327b06
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095466"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132059959"
 ---
 # <a name="how-to-get-started-with-your-individual-azure-credit-subscription"></a>Erste Schritte mit Ihrem individuellen Azure-Gutschriftabonnement  
 

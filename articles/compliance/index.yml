@@ -370,7 +370,7 @@ additionalContent:
       summary: Für den Zugriff auf eine Ressource müssen Sie möglicherweise bei Ihrem Clouddienst angemeldet sein.
       items:
         - title: Überwachungsberichte und Zertifikate
-          summary: "Zugänglich im Azure-Portal unter „Startseite“\_> „Security Center“\_> „Einhaltung gesetzlicher Bestimmungen“"
+          summary: "Zugänglich im Azure-Portal unter „Startseite“\_> „Defender für Cloud“\_> „Einhaltung gesetzlicher Bestimmungen“"
           links:
             - text: 'ISO 20000-1, 22301, 27001, 27017, 27018, 27701, 9001'
               url: 'https://ms.portal.azure.com/#blade/Microsoft_Azure_Security/AuditReportsBlade'

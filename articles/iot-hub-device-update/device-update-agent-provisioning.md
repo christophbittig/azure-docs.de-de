@@ -6,12 +6,12 @@ ms.author: valls
 ms.date: 2/16/2021
 ms.topic: how-to
 ms.service: iot-hub-device-update
-ms.openlocfilehash: e65dc85dff7692f82118871ab93c628efe6cecf8
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: ecfbd8ac385a3449ce2934ec93b10c255d621fe1
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128661676"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130259073"
 ---
 # <a name="device-update-agent-provisioning"></a>Bereitstellen des Geräte-Update-Agents
 
@@ -87,7 +87,7 @@ Führen Sie die Schritte in allen oder einigen der folgenden Abschnitte aus, um 
 
 Befolgen Sie diese Anweisungen, um den Geräte-Update-Agent auf [IOT Edge aktivierten Geräten](../iot-edge/index.yml)bereitzustellen.
 
-1. Befolgen Sie die Anleitung unter [Installieren oder Deinstallieren von Azure IoT Edge für Linux](../iot-edge/how-to-install-iot-edge.md?preserve-view=true&view=iotedge-2020-11).
+1. Führen Sie die Schritte unter [Manuelles Bereitstellen eines einzelnen Linux-IoT Edge-Geräts](../iot-edge/how-to-provision-single-device-linux-symmetric.md?preserve-view=true&view=iotedge-2020-11) aus.
 
 1. Installieren Sie den Device Update-Agent für Imageupdates.
 

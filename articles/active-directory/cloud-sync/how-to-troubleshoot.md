@@ -4,16 +4,16 @@ description: In diesem Artikel wird beschrieben, wie Sie Probleme beheben, die b
 author: billmath
 ms.author: billmath
 manager: daveba
-ms.date: 01/19/2021
+ms.date: 10/13/2021
 ms.topic: how-to
 ms.prod: windows-server-threshold
 ms.technology: identity-adfs
-ms.openlocfilehash: 863d043bc3185b5fd7f44056ba13bca5ed700f30
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 4fa397505d7bb98235a97e5818409baee9c9c9e4
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131018241"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131451861"
 ---
 # <a name="cloud-sync-troubleshooting"></a>Problembehandlung bei der Cloudsynchronisierung
 
@@ -27,6 +27,7 @@ Die Cloudsynchronisierung berührt viele verschiedene Bereiche und weist viele u
 |[Agent-Probleme](#agent-problems)|Hier überprüfen Sie, ob der Agent korrekt installiert wurde und vergewissern sich, dass er mit Azure Active Directory (Azure AD) kommuniziert.|
 |[Objektsynchronisierungsprobleme](#object-synchronization-problems)|Hier verwenden Sie Bereitstellungsprotokolle, um Probleme bei der Objektsynchronisierung zu beheben.|
 |[Bereitstellungsprobleme im Status „Quarantäne“](#provisioning-quarantined-problems)|Hier lernen Sie Bereitstellungsprobleme im Status „Quarantäne“ und deren Behebung kennen.|
+|[Kennwortrückschreiben](#password-writeback)|Informationen zu häufigen Problemen beim Kennwortrückschreiben und deren Behebung.|
 
 
 ## <a name="agent-problems"></a>Agent-Probleme
@@ -230,6 +231,19 @@ Wenn Sie das Cloud Sync-Dienstkonto reparieren müssen, können Sie das Cmdlet `
       ```
 
    5. Nach Abschluss dieses Vorgangs sollten Sie die Meldung erhalten, dass das Konto erfolgreich repariert wurde.
+
+## <a name="password-writeback"></a>Kennwortrückschreiben
+Die folgenden Informationen sind im Hinblick auf die Aktivierung und Verwendung des Kennwortrückschreibens mit der Cloudsynchronisierung zu beachten.
+
+- Wenn Sie die [Berechtigungen für das gruppenverwaltete Dienstkonto (gMSA)](how-to-gmsa-cmdlets.md#using-set-aadcloudsyncpermissions) aktualisieren müssen, kann es eine Stunde oder länger dauern, bis diese Berechtigungen auf alle Objekte in Ihrem Verzeichnis repliziert wurden. Wenn Sie diese Berechtigungen nicht zuweisen, scheint die Rückschreibung ordnungsgemäß konfiguriert zu sein, aber die Benutzer erhalten möglicherweise Fehler, wenn sie ihre lokalen Kennwörter über die Cloud aktualisieren. Berechtigungen müssen für „Dieses und alle untergeordneten Objekte“ gelten, damit **Abgelaufenes Kennwort wiederherstellen** angezeigt wird. 
+- Wenn Kennwörter für einige Benutzerkonten nicht in das lokale Verzeichnis zurückgeschrieben werden, stellen Sie sicher, dass die Vererbung für das Konto in der lokalen AD DS-Umgebung nicht deaktiviert ist. Schreibberechtigungen für Kennwörter müssen auf Nachfolgerobjekte angewendet werden, damit die Funktion ordnungsgemäß funktioniert. 
+- Kennwortrichtlinien in der lokalen AD DS-Umgebung verhindern unter Umständen, dass Kennwortzurücksetzungen ordnungsgemäß verarbeitet werden. Wenn Sie diese Funktion testen und das Kennwort für Benutzer mehr als einmal pro Tag zurücksetzen möchten, muss die Gruppenrichtlinie für das Mindestalter von Kennwörtern auf 0 festgelegt werden. Diese Einstellung finden Sie in der Datei **gpmc.msc** unter **Computerkonfiguration > Richtlinien > Windows-Einstellungen > Sicherheitseinstellungen > Kontorichtlinien**. 
+     - Warten Sie beim Aktualisieren der Gruppenrichtlinie, bis die aktualisierte Richtlinie repliziert wurde, oder verwenden Sie den Befehl „gpupdate /force“. 
+     - Damit Kennwörter sofort geändert werden können, muss für Mindestalter für Kennwörter die Einstellung „0“ festgelegt werden. Wenn sich Benutzer aber an die lokalen Richtlinien halten und „Minimales Kennwortalter“ auf einen höheren Wert als 0 festgelegt ist, funktioniert das Kennwortrückschreiben auch nach dem Auswerten der lokalen Richtlinien noch. 
+
+
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte 
 

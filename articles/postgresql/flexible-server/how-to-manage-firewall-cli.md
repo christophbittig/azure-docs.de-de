@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: beed3dac1a2ca5bc6d2a87ba2a9044333e798fa9
-ms.sourcegitcommit: 4b0e424f5aa8a11daf0eec32456854542a2f5df0
+ms.openlocfilehash: e571d29dc9bade1069f6c67257bf04552ff894ef
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/20/2021
-ms.locfileid: "107778515"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130241608"
 ---
 # <a name="create-and-manage-azure-database-for-postgresql---flexible-server-firewall-rules-using-the-azure-cli"></a>Erstellen und Verwalten von Firewallregeln für Azure Database for PostgreSQL – Flexible Server mithilfe der Azure CLI
 
@@ -97,19 +97,19 @@ In der Referenzdokumentation zur Azure CLI <!--FIXME --> finden Sie eine vollst�
 
 ### <a name="create-a-firewall-rule"></a>Erstellen einer Firewallregel
 Verwenden Sie den Befehl `az postgres flexible-server firewall-rule create`, um die neue Firewallregel für den Server zu erstellen.
-Zum Zulassen eines IP-Adressbereichs geben Sie die Start- und End-IP-Adressen an (siehe Beispiel).
+Zum Zulassen eines IP-Adressbereichs geben Sie die Start- und End-IP-Adressen an (siehe Beispiel). Dieser Befehl benötigt auch den Namen der Azure-Ressourcengruppe, in der sich der Server als Parameter befindet. 
 ```azurecli-interactive
-az postgres flexible-server firewall-rule create --name mydemoserver --start-ip-address 13.83.152.0 --end-ip-address 13.83.152.15
+az postgres flexible-server firewall-rule create --name mydemoserver --resource-group testGroup --start-ip-address 13.83.152.0 --end-ip-address 13.83.152.15
 ```
 
 Zum Zulassen des Zugriffs für nur eine einzelne IP-Adresse geben Sie lediglich die einzelne IP-Adresse an (siehe Beispiel).
 ```azurecli-interactive
-az postgres flexible-server firewall-rule create --name mydemoserver --start-ip-address 1.1.1.1
+az postgres flexible-server firewall-rule create --name mydemoserver  --resource-group testGroup  --start-ip-address 1.1.1.1
 ```
 
 Geben Sie die IP-Adresse „0.0.0.0“ als Start-IP-Adresse an, um Anwendungen über Azure-IP-Adressen das Herstellen einer Verbindung mit Ihrem flexiblen Server zu erlauben (siehe Beispiel).
 ```azurecli-interactive
-az postgres flexible-server firewall-rule create --name mydemoserver --start-ip-address 0.0.0.0
+az postgres flexible-server firewall-rule create --name mydemoserver --resource-group testGroup --start-ip-address 0.0.0.0
 ```
 
 > [!IMPORTANT]
@@ -120,17 +120,17 @@ Bei erfolgreicher Ausführung listet die Befehlsausgabe für die Erstellung die 
 ### <a name="list-firewall-rules"></a>Auflisten von Firewallregeln 
 Verwenden Sie den Befehl `az postgres flexible-server firewall-rule list`, um die vorhandenen Firewallregeln des Servers aufzulisten. Beachten Sie, dass das Attribut für den Servernamen in der Option **--name** angegeben wird. 
 ```azurecli-interactive
-az postgres flexible-server firewall-rule list --name mydemoserver
+az postgres flexible-server firewall-rule list --name mydemoserver --resource-group testGroup
 ```
 Die Ausgabe listet die Regeln (sofern vorhanden) standardmäßig im JSON-Format auf. Sie können die Option „--output table“ verwenden, um die Ergebnisse in einer Tabellenformat auszugeben, das leichter zu lesen ist.
 ```azurecli-interactive
-az postgres flexible-server firewall-rule list --name mydemoserver --output table
+az postgres flexible-server firewall-rule list --name mydemoserver --resource-group testGroup --output table
 ```
 
 ### <a name="update-a-firewall-rule"></a>Aktualisieren einer Firewallregel
 Verwenden Sie den Befehl `az postgres flexible-server firewall-rule update`, um eine vorhandene Firewallregel für den Server zu aktualisieren. Geben Sie den Namen der vorhandenen Firewallregel als Eingabe sowie die zu aktualisierenden Attribute für die Start- und End-IP-Adresse ein.
 ```azurecli-interactive
-az postgres flexible-server firewall-rule update --name mydemoserver --rule-name FirewallRule1 --start-ip-address 13.83.152.0 --end-ip-address 13.83.152.1
+az postgres flexible-server firewall-rule update --name mydemoserver --rule-name FirewallRule1 --resource-group testGroup --start-ip-address 13.83.152.0 --end-ip-address 13.83.152.1
 ```
 Bei erfolgreicher Ausführung listet die Befehlsausgabe die Details der von Ihnen aktualisierten Firewallregel standardmäßig im JSON-Format auf. Falls ein Fehler auftritt, wird in der Ausgabe stattdessen eine Fehlermeldung angezeigt.
 
@@ -139,14 +139,14 @@ Bei erfolgreicher Ausführung listet die Befehlsausgabe die Details der von Ihne
 ### <a name="show-firewall-rule-details"></a>Anzeigen der Details einer Firewallregel
 Verwenden Sie den Befehl `az postgres flexible-server firewall-rule show`, um Details zu einer vorhandenen Firewallregel des Servers anzuzeigen. Geben Sie den Namen der vorhandenen Firewallregel als Eingabe an.
 ```azurecli-interactive
-az postgres flexible-server firewall-rule show --name mydemoserver --rule-name FirewallRule1
+az postgres flexible-server firewall-rule show --name mydemoserver --rule-name FirewallRule1 --resource-group testGroup
 ```
 Bei erfolgreicher Ausführung listet die Befehlsausgabe die Details der von Ihnen angegebenen Firewallregel standardmäßig im JSON-Format auf. Falls ein Fehler auftritt, wird in der Ausgabe stattdessen eine Fehlermeldung angezeigt.
 
 ### <a name="delete-a-firewall-rule"></a>Löschen einer Firewallregel
 Verwenden Sie den Befehl `az postgres flexible-server firewall-rule delete`, um eine vorhandene Firewallregel für den Server zu löschen. Geben Sie den Namen der vorhandenen Firewallregel an.
 ```azurecli-interactive
-az postgres flexible-server firewall-rule delete --name mydemoserver --rule-name FirewallRule1
+az postgres flexible-server firewall-rule delete --name mydemoserver --rule-name FirewallRule1 --resource-group testGroup
 ```
 Bei erfolgreicher Ausführung wird keine Ausgabe angezeigt. Bei einem Fehler wird eine Fehlermeldung angezeigt.
 

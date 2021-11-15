@@ -1,26 +1,26 @@
 ---
-title: Problembehandlung für die Bereitstellung verwalteter Onlineendpunkte (Vorschau)
+title: Problembehandlung bei der Bereitstellung von Onlineendpunkten (Vorschau)
 titleSuffix: Azure Machine Learning
-description: Es wird beschrieben, wie Sie die Problembehandlung für einige häufige Fehler bei der Bereitstellung und Bewertung mit verwalteten Onlineendpunkten durchführen.
+description: Erfahren Sie, wie Sie die Problembehandlung für einige häufige Fehler bei der Bereitstellung und Bewertung mit Onlineendpunkten durchführen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: mlops
 author: petrodeg
 ms.author: petrodeg
 ms.reviewer: laobri
-ms.date: 05/13/2021
+ms.date: 11/03/2021
 ms.topic: troubleshooting
 ms.custom: devplatv2
-ms.openlocfilehash: e4c4b611b4316f0e9a950c9f13144e37c9c1762b
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: 06c8c9c128528b3e50c49e9c29a0849c9640d7eb
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129425751"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131560680"
 ---
-# <a name="troubleshooting-managed-online-endpoints-deployment-and-scoring-preview"></a>Problembehandlung für die Bereitstellung und Bewertung verwalteter Onlineendpunkte (Vorschau)
+# <a name="troubleshooting-online-endpoints-deployment-and-scoring-preview"></a>Problembehandlung bei der Bereitstellung und Bewertung von Onlineendpunkten (Vorschau)
 
-In diesem Artikel wird beschrieben, wie Sie häufige Probleme bei der Bereitstellung und Bewertung von verwalteten Azure Machine Learning-Onlineendpunkten (Vorschau) beheben.
+Erfahren Sie, wie Sie häufige Probleme bei der Bereitstellung und Bewertung von Azure Machine Learning-Onlineendpunkten (Vorschau) beheben.
 
 Dieses Dokument ist so strukturiert, wie Sie die Problembehandlung durchführen sollten:
 
@@ -42,11 +42,15 @@ Im Abschnitt [HTTP-Statuscodes](#http-status-codes) wird beschrieben, welche Auf
 
 Bei der lokalen Bereitstellung wird ein Modell in einer lokalen Docker-Umgebung bereitgestellt. Die lokale Bereitstellung ist für Test- und Debugvorgänge vor der Bereitstellung in der Cloud nützlich.
 
+> [!TIP]
+> Verwenden Sie Visual Studio Code, um Ihre Endpunkte lokal zu testen und zu debuggen. Weitere Informationen finden Sie unter [Lokales Debuggen von Onlineendpunkten in Visual Studio Code](how-to-debug-managed-online-endpoints-visual-studio-code.md).
+
 Für die lokale Bereitstellung werden das Erstellen, Aktualisieren und Löschen eines lokalen Endpunkts unterstützt. Darüber hinaus können Sie hierbei Protokolle aufrufen bzw. vom Endpunkt abrufen. Fügen Sie dem entsprechenden CLI-Befehl `--local` hinzu, um die lokale Bereitstellung zu verwenden:
 
 ```azurecli
-az ml endpoint create -n <endpoint-name> -f <spec_file.yaml> --local
+az ml online-deployment create --endpoint-name <endpoint-name> -n <deployment-name> -f <spec_file.yaml> --local
 ```
+
 Im Rahmen der lokalen Bereitstellung werden die folgenden Schritte ausgeführt:
 
 - Docker erstellt entweder ein neues Containerimage oder pullt ein vorhandenes Image aus dem lokalen Docker-Cache. Ein vorhandenes Image wird verwendet, falls für ein Image eine Übereinstimmung mit dem Umgebungsteil der Spezifikationsdatei besteht.
@@ -61,13 +65,13 @@ Sie können keinen direkten Zugriff auf den virtuellen Computer erhalten, auf de
 Verwenden Sie den folgenden CLI-Befehl, um die Protokollausgabe für den Container anzuzeigen:
 
 ```azurecli
-az ml endpoint get-logs -n <endpoint-name> -d <deployment-name> -l 100
+az ml online-deployment get-logs -e <endpoint-name> -n <deployment-name> -l 100
 ```
 
 oder
 
 ```azurecli
-    az ml endpoint get-logs --name <endpoint-name> --deployment <deployment-name> --lines 100
+    az ml online-deployment get-logs --endpoint-name <endpoint-name> --name <deployment-name> --lines 100
 ```
 
 Fügen Sie den obigen Befehlen `--resource-group` und `--workspace-name` hinzu, falls Sie diese Parameter nicht bereits mit `az configure` festgelegt haben.
@@ -75,7 +79,7 @@ Fügen Sie den obigen Befehlen `--resource-group` und `--workspace-name` hinzu, 
 Führen Sie Folgendes aus, um Informationen dazu anzuzeigen, wie Sie diese Parameter festlegen und welche Werte bereits festgelegt wurden:
 
 ```azurecli
-az ml endpoint get-logs -h
+az ml online-deployment get-logs -h
 ```
 
 Standardmäßig werden die Protokolle per Pullvorgang vom Rückschlussserver abgerufen. Die Protokolle enthalten das Konsolenprotokoll vom Rückschlussserver, in dem die print/log-Anweisungen aus Ihrem „score.py“-Code enthalten sind.
@@ -129,7 +133,7 @@ Wenn das Image beispielsweise `testacr.azurecr.io/azureml/azureml_92a029f831ce58
 Führen Sie Folgendes aus, um weitere Details zu diesem Fehler abzurufen:
 
 ```azurecli
-az ml endpoint get-logs -n <endpoint-name> --deployment <deployment-name> --tail 100
+az ml online-deployment get-logs -e <endpoint-name> -n <deployment-name> -l 100
 ```
 
 ### <a name="err_1300-unable-to-download-user-modelcode-artifacts"></a>ERR_1300: Unable to download user model/code artifacts (Benutzermodell-/Codeartefakte können nicht heruntergeladen werden)
@@ -160,7 +164,7 @@ Nach der Bereitstellung der Computeressource versucht Azure beim Erstellen der B
 Führen Sie Folgendes aus, um weitere Details zu diesem Fehler abzurufen:
 
 ```azurecli
-az ml endpoint get-logs -n <endpoint-name> --deployment <deployment-name> --lines 100
+az ml online-deployment get-logs -e <endpoint-name> -n <deployment-name> -l 100
 ```
 
 ### <a name="err_1350-unable-to-download-user-model-not-enough-space-on-the-disk"></a>ERR_1350: Unable to download user model, not enough space on the disk (Benutzermodell kann nicht heruntergeladen werden, nicht genügend Speicherplatz auf dem Datenträger verfügbar)
@@ -176,7 +180,7 @@ Dieser Fehler ist ein Hinweis darauf, dass dieser Container nicht gestartet werd
 Führen Sie Folgendes aus, um die genaue Ursache für einen Fehler zu ermitteln: 
 
 ```azurecli
-az ml endpoint get-logs
+az ml online-deployment get-logs -e <endpoint-name> -n <deployment-name> -l 100
 ```
 
 ### <a name="err_2101-kubernetes-unschedulable"></a>ERR_2101: Kubernetes nicht planbar
@@ -203,9 +207,13 @@ Um die bei der Bereitstellung angegebene Datei `score.py` auszuführen, wird von
 
 Wir tun zwar unser Bestes, um einen stabilen und zuverlässigen Dienst bereitzustellen, aber es kann vorkommen, dass nicht immer alles nach Plan verläuft. Das Auftreten dieses Fehlers bedeutet, dass bei uns ein Problem besteht, das behoben werden muss. Übermitteln Sie ein [Kundensupportticket](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) mit allen zugehörigen Informationen, damit wir das Problem beheben können.  
 
+## <a name="autoscaling-issues"></a>Probleme mit der automatischen Skalierung
+
+Wenn Sie Probleme mit der automatischen Skalierung haben, finden Sie weitere Informationen unter [Problembehandlung für automatische Skalierung in Azure](../azure-monitor/autoscale/autoscale-troubleshoot.md).
+
 ## <a name="http-status-codes"></a>HTTP-Statuscodes
 
-Wenn Sie auf verwaltete Onlineendpunkte mit REST-Anforderungen zugreifen, sind die zurückgegebenen Statuscodes an den Standardvorgaben für [HTTP-Statuscodes](https://aka.ms/http-status-codes) ausgerichtet. Unten finden Sie ausführliche Informationen dazu, welche HTTP-Statuscodes für welche Aufruf- und Vorhersagefehler für verwaltete Endpunkte gelten.
+Wenn Sie mit REST-Anforderungen auf Onlineendpunkte zugreifen, entsprechen die zurückgegebenen Statuscodes den Standardvorgaben für [HTTP-Statuscodes](https://aka.ms/http-status-codes). Unten finden Sie ausführliche Informationen dazu, welche HTTP-Statuscodes für welche Aufruf- und Vorhersagefehler für Endpunkte gelten.
 
 | Statuscode| Ursachentext |  Grund für den Code |
 | --- | --- | --- |
@@ -214,10 +222,10 @@ Wenn Sie auf verwaltete Onlineendpunkte mit REST-Anforderungen zugreifen, sind d
 | 404 | Nicht gefunden | Ihre URL ist fehlerhaft. |
 | 408 | Anforderungszeitlimit | Die Modellausführung hat mehr Zeit benötigt, als in der Konfiguration Ihrer Modellbereitstellung in `request_timeout_ms` unter `request_settings` als Zeitlimit angegeben ist.|
 | 413 | Payload too large (Nutzlast zu groß) | Ihre Anforderungsnutzlast ist größer als 1,5 MB. |
-| 424 | Modellfehler: original-code=`<original code>` | Wenn von Ihrem Modellcontainer eine andere Antwort als „200“ zurückgegeben wird, gibt Azure „424“ zurück. |
+| 424 | Modellfehler | Wenn von Ihrem Modellcontainer eine andere Antwort als „200“ zurückgegeben wird, gibt Azure „424“ zurück. Weitere Informationen finden Sie unter den Antwortheadern `ms-azureml-model-error-statuscode` und `ms-azureml-model-error-reason`. |
 | 424 | Response payload too large (Antwortnutzlast zu groß) | Wenn Ihr Container eine Nutzlast zurückgibt, die größer als 1,5 MB ist, gibt Azure „424“ zurück. |
 | 429 | Rate-limiting (Ratenbegrenzung) | Sie haben versucht, mehr als 100 Anforderungen pro Sekunde an Ihren Endpunkt zu senden. |
-| 429 | Too many pending requests (Zu viele ausstehende Anforderungen) | Ihr Modell erhält mehr Anforderungen, als es verarbeiten kann. Es sind jeweils zwei Anforderungen vom Typ *`max_concurrent_requests_per_instance` bzw.* `instance_count` zulässig. Weitere Anforderungen werden abgelehnt. Sie können diese Einstellungen in der Konfiguration Ihrer Modellbereitstellung unter `request_settings` und `scale_settings` überprüfen. Wenn Sie die automatische Skalierung verwenden, erhält Ihr Modell die Anforderungen in so kurzer Zeit, dass das System mit dem Hochskalieren nicht Schritt halten kann. Bei der automatischen Skalierung können Sie versuchen, Anforderungen mit [exponentiellem Backoff](https://aka.ms/exponential-backoff) erneut zu senden. Das System hat dann Zeit, die entsprechenden Anpassungen vorzunehmen. |
+| 429 | Too many pending requests (Zu viele ausstehende Anforderungen) | Ihr Modell erhält mehr Anforderungen, als es verarbeiten kann. Es sind jeweils 2 × `max_concurrent_requests_per_instance` * `instance_count` Anforderungen zulässig. Weitere Anforderungen werden abgelehnt. Sie können diese Einstellungen in der Konfiguration Ihrer Modellbereitstellung unter `request_settings` und `scale_settings` überprüfen. Wenn Sie die automatische Skalierung verwenden, erhält Ihr Modell die Anforderungen in so kurzer Zeit, dass das System mit dem Hochskalieren nicht Schritt halten kann. Bei der automatischen Skalierung können Sie versuchen, Anforderungen mit [exponentiellem Backoff](https://aka.ms/exponential-backoff) erneut zu senden. Das System hat dann Zeit, die entsprechenden Anpassungen vorzunehmen. |
 | 500 | Interner Serverfehler | Fehler bei der von Azure ML bereitgestellten Infrastruktur. |
 
 ## <a name="next-steps"></a>Nächste Schritte

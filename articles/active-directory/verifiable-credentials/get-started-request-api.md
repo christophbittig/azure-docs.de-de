@@ -10,36 +10,34 @@ ms.topic: how-to
 ms.subservice: verifiable-credentials
 ms.date: 10/08/2021
 ms.author: barclayn
-ms.openlocfilehash: 9b701589f7ee28cd3da8d4c028750459c53bb793
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 805ba2fc9a24536a940e4baf02e2934d26c10d75
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130216918"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131474020"
 ---
 # <a name="request-service-rest-api-preview"></a>Anforderungsdienst-REST-API (Vorschau)
 
-Die Anforderungsdienst-REST-API für die Nachweisanforderung von Azure Active Directory ermöglicht Ihnen, mithilfe des Azure AD-Nachweisdiensts Nachweise auszustellen und zu überprüfen. In diesem Artikel wird gezeigt, wie Sie mit der Arbeit mit der Anforderungsdienst-REST-API beginnen.
+Azure Active Directory-Nachweise (Azure AD) enthalten die Anforderungsdienst-REST-API. Mit dieser API können Sie Anmeldeinformationen ausstellen und überprüfen. In diesem Artikel wird gezeigt, wie Sie mit der Arbeit mit der Anforderungsdienst-REST-API beginnen.
 
 > [!IMPORTANT]
-> Die Anforderungsdienst-REST-API befindet sich derzeit in der öffentlichen Vorschau (Betaversion).
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt. Während der Vorschau können Sie von Zeit zu Zeit mit Breaking Changes und eingestellter Unterstützung für die API rechnen. Die API wird in der Vorschauversion nicht für Produktionsworkloads empfohlen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
+> Die Anforderungsdienst-REST-API ist derzeit als Vorschauversion verfügbar. Diese Vorschauversion wird ohne eine Vereinbarung zum Servicelevel bereitgestellt. Sie können gelegentliche Breaking Changes und die Einstellung der Unterstützung für die API erwarten, solange Sie sich noch in der Vorschauversion befindet. Die Vorschauversion der API wird nicht für Produktionsworkloads empfohlen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="api-access-token"></a>API-Zugriffstoken
 
-Damit Ihre Anwendung auf die Anforderungsdienst-REST-API zugreifen kann, müssen Sie neben den erforderlichen Berechtigungen ein gültiges Zugriffstoken hinzufügen. Die von Microsoft Identity Platform ausgestellten Zugriffstoken enthalten Informationen (Bereiche), welche die Anforderungsdienst-REST-API verwendet, um den Aufrufer zu überprüfen. So wird sichergestellt, dass der Aufrufer über die richtigen Berechtigungen zum Ausführen des Vorgangs verfügt, den er anfordert.
+Damit Ihre Anwendung auf die Anforderungsdienst-REST-API zugreifen kann, müssen Sie neben den erforderlichen Berechtigungen ein gültiges Zugriffstoken hinzufügen. Die von Microsoft Identity Platform ausgestellten Zugriffstoken enthalten Informationen (Bereiche), welche die Anforderungsdienst-REST-API verwendet, um den Aufrufer zu überprüfen. Durch ein Zugriffstoken wird sichergestellt, dass der Anrufer die ordnungsgemäßen Berechtigungen hat, um den Vorgang auszuführen, der angefordert wird.
 
-Um ein Zugriffstoken zu erhalten, muss Ihre App bei Microsoft Identity Platform registriert und von einem Administrator für den Zugriff auf die Anforderungsdienst-API autorisiert werden. Wenn Sie die Anwendung *Nachweis-App* noch nicht registriert haben, führen Sie die unter [Registrieren der App](verifiable-credentials-configure-tenant.md#step-3-register-an-application-in-azure-ad) beschriebenen Schritte aus, und [generieren Sie dann ein Anwendungsgeheimnis](verifiable-credentials-configure-issuer.md#configure-the-verifiable-credentials-app).
+Um ein Zugriffstoken zu erhalten, muss Ihre App bei der Plattform Microsoft Identity Platform registriert sein und von einem*einer Administrator*in für den Zugriff auf die Anforderungsdienst-API autorisiert werden. Wenn Sie die *verifiable-credentials-app* (Nachweise-App) noch nicht registriert haben, führen Sie die unter [Registrieren der App](verifiable-credentials-configure-tenant.md#register-an-application-in-azure-ad) beschriebenen Schritte aus und [generieren Sie dann ein Anwendungsgeheimnis](verifiable-credentials-configure-issuer.md#configure-the-verifiable-credentials-app).
 
 ### <a name="get-an-access-token"></a>Abrufen eines Zugriffstokens
 
-Verwenden Sie den [Flow zur Gewährung von OAuth 2.0-Clientanmeldeinformationen](../../active-directory/develop/v2-oauth2-client-creds-grant-flow.md), um mithilfe von Microsoft Identity Platform das Zugriffstoken anzufordern. Es wird empfohlen, eine vertrauenswürdige OAuth-Bibliothek zu verwenden. In diesem Tutorial wird die [Microsoft-Authentifizierungsbibliothek (Microsoft Authentication Library, MSAL)](../../active-directory/develop/msal-overview.md) verwendet. MSAL ist eine von Microsoft bereitgestellte Bibliothek, die das Hinzufügen von Authentifizierung und Autorisierung zu Ihrer App vereinfacht, die eine sichere Web-API aufrufen kann.
+Verwenden Sie den [Flow zur Gewährung von OAuth 2.0-Clientanmeldeinformationen](../../active-directory/develop/v2-oauth2-client-creds-grant-flow.md), um mithilfe von Microsoft Identity Platform das Zugriffstoken anzufordern. Verwenden Sie dazu eine vertrauenswürdige Bibliothek. In diesem Tutorial wird die [Microsoft-Authentifizierungsbibliothek (Microsoft Authentication Library, MSAL)](../../active-directory/develop/msal-overview.md) verwendet. MSAL vereinfacht das Hinzufügen von Authentifizierung und Autorisierung zu einer Anwendung, die eine sichere Web-API aufrufen kann.
 
 # <a name="http"></a>[HTTP](#tab/http)
 
 ```http
-Pleaes refer to to the Microsoft Authentication Library (MSAL) documentation for more information on how to acquire tokens via HTTP.
+Refer to to the Microsoft Authentication Library (MSAL) documentation for more information on how to acquire tokens via HTTP.
 ```
 
 # <a name="c"></a>[C#](#tab/csharp)
@@ -93,19 +91,18 @@ const result = await mainApp.msalCca.acquireTokenByClientCredential(mainApp.msal
 
 ---
 
-Geben Sie im obigen Code die folgenden Parameter an.
+Geben Sie im vorangehenden Code die folgenden Parameter an:
 
 | Parameter | Bedingung | BESCHREIBUNG |
 | --- | --- | --- |
-| Authority | Erforderlich | Der Verzeichnismandant, der von der Anwendung für den Betrieb verwendet werden soll. Ersetzen Sie z. B. bei `https://login.microsoftonline.com/{your-tenant}` `your-tenant` durch Ihre [Mandanten-ID oder den Namen Ihres Mandanten](../fundamentals/active-directory-how-to-find-tenant.md). |
+| Authority | Erforderlich | Der Verzeichnismandant, der von der Anwendung für den Betrieb verwendet werden soll. Beispiel: `https://login.microsoftonline.com/{your-tenant}`. (Ersetzen Sie `your-tenant` mit Ihrer [Mandanten-ID oder Ihrem Namen](../fundamentals/active-directory-how-to-find-tenant.md).) |
 | Client-ID | Erforderlich | Die Anwendungs-ID, die Ihrer App zugewiesen ist. Diese Informationen finden Sie im Azure-Portal, in dem Sie Ihre App registriert haben. |
 | Geheimer Clientschlüssel | Erforderlich | Der geheime Clientschlüssel, den Sie für Ihre App generiert haben.|
 | Bereiche | Erforderlich | Muss auf `bbb94529-53a3-4be5-a069-7eaf2712b826/.default` festgelegt sein. |
 
+Weitere Informationen zum Abrufen eines Zugriffstokens mithilfe der Identität einer Konsolen-App finden Sie in einem der folgenden Artikel: [C#](../develop/quickstart-v2-netcore-daemon.md), [Python](../develop/quickstart-v2-python-daemon.md), [Node.js](../develop/quickstart-v2-nodejs-console.md), oder [Java](../develop/quickstart-v2-java-daemon.md).
 
-Weitere Informationen zum Abrufen eines Zugriffstokens mithilfe der Identität einer Konsolen-App finden Sie in einem der folgenden Artikel: [C#](../develop/quickstart-v2-netcore-daemon.md), [Python](../develop/quickstart-v2-python-daemon.md), [Node.js](../develop/quickstart-v2-nodejs-console.md) oder [Java](../develop/quickstart-v2-java-daemon.md).
-
-Anstelle eines geheimen Clientschlüssels können Sie auch ein [Zugriffstoken mit einem Zertifikat anfordern](../develop/v2-oauth2-client-creds-grant-flow.md).
+Sie können auch [auf eine Tokenanforderung mit einem Zertifikat](../develop/v2-oauth2-client-creds-grant-flow.md) anstelle eines geheimen Clientschlüssels zugreifen.
 
 # <a name="http"></a>[HTTP](#tab/http)
 
@@ -180,7 +177,7 @@ const result = await mainApp.msalCca.acquireTokenByClientCredential(mainApp.msal
 
 Führen Sie die folgenden Schritte aus, um einen Nachweis auszustellen oder zu überprüfen:
 
-1. Erstellen Sie eine HTTP POST-Anforderung für die Anforderungsdienst-REST-API. Ersetzen Sie `{tenantID}` durch Ihre **Mandanten-ID** oder durch den Namen Ihres Mandanten.
+1. Erstellen Sie eine HTTP POST-Anforderung für die Anforderungsdienst-REST-API. Ersetzen Sie `{tenantID}` durch Ihre Mandanten-ID oder durch den Namen Ihres Mandanten.
 
     ```http
     POST https://beta.did.msidentity.com/v1.0/{tenantID}/verifiablecredentials/request
@@ -235,7 +232,10 @@ Authorization: Bearer  <token>
 }
 ```  
 
-Den vollständigen Code finden Sie in einem der folgenden Codebeispiele: [C#](https://github.com/Azure-Samples/active-directory-verifiable-credentials-dotnet/blob/main/AspNetCoreVerifiableCredentials/IssuerController.cs) und [Node.js](https://github.com/Azure-Samples/active-directory-verifiable-credentials-node/blob/main/1-node-api-idtokenhint/issuer.js).
+Den vollständigen Code finden Sie in einem der folgenden Beispiele:
+
+- [C#](https://github.com/Azure-Samples/active-directory-verifiable-credentials-dotnet/blob/main/AspNetCoreVerifiableCredentials/IssuerController.cs)
+- [Node.js](https://github.com/Azure-Samples/active-directory-verifiable-credentials-node/blob/main/1-node-api-idtokenhint/issuer.js)
 
 ## <a name="presentation-request-example"></a>Beispiel für Präsentationsanforderung
 
@@ -274,24 +274,24 @@ Authorization: Bearer  <token>
 }
 ```
 
-Den vollständigen Code finden Sie in einem der folgenden Codebeispiele:
+Den vollständigen Code finden Sie in einem der folgenden Beispiele:
 
 - [C#](https://github.com/Azure-Samples/active-directory-verifiable-credentials-dotnet/blob/main/1-asp-net-core-api-idtokenhint/VerifierController.cs) 
-- [Node.js](https://github.com/Azure-Samples/active-directory-verifiable-credentials-node/blob/main/1-node-api-idtokenhint/verifier.js).
+- [Node.js](https://github.com/Azure-Samples/active-directory-verifiable-credentials-node/blob/main/1-node-api-idtokenhint/verifier.js)
 
 ## <a name="callback-events"></a>Rückrufereignisse
 
-Die Anforderungsnutzdaten enthalten den [Ausstellungs-](issuance-request-api.md#callback-events) und [Präsentations](presentation-request-api.md#callback-events)-Rückrufendpunkt. Der Endpunkt ist Bestandteil Ihrer Webanwendung und sollte öffentlich verfügbar sein. Der Azure AD-Nachweisdienst ruft Ihren Endpunkt auf, um Ihre App über bestimmte Ereignisse zu informieren, zum Beispiel, wenn ein Benutzer den QR-Code scannt, den Deep Link seiner Authentifikator-App verwendet oder den Präsentationsprozess abschließt.
+Die Anforderungsnutzdaten enthalten den [Ausstellungs-](issuance-request-api.md#callback-events) und [Präsentations](presentation-request-api.md#callback-events)-Rückrufendpunkt. Der Endpunkt ist Bestandteil Ihrer Webanwendung und sollte öffentlich verfügbar sein. Azure AD-Nachweise rufen Ihren Endpunkt auf, um Ihre App über bestimmte Ereignisse zu informieren. Solche Ereignisse können beispielsweise das Scannen des QR-Codes durch eine*n Benutzer*in, das Verwenden des Deep-Links zur Authentifikator-App oder das Beenden des Präsentationsprozesses sein.
 
 Im folgenden Diagramm werden der Aufruf ihrer App an die Anforderungsdienst-REST-API und die Rückrufe an Ihre Anwendung beschrieben.
 
-![Das Diagramm beschreibt den Aufruf der API und die Rückrufereignisse.](media/get-started-request-api/callback-events.png)
+![Diagramm, das den Aufruf der API und die Rückrufereignisse beschreibt](media/get-started-request-api/callback-events.png)
 
-Konfigurieren Sie Ihren Endpunkt für das Lauschen auf eingehende HTTP POST-Anforderungen. Im folgenden Codeausschnitt wird veranschaulicht, wie die HTTP-Anforderung für den Ausstellungsrückruf behandelt und die Benutzeroberfläche entsprechend aktualisiert wird:
+Konfigurieren Sie Ihren Endpunkt für das Lauschen auf eingehende HTTP POST-Anforderungen. Im folgenden Codeausschnitt wird veranschaulicht, wie die HTTP-Anforderung für den Ausstellungsrückruf behandelt und die Benutzeroberfläche entsprechend aktualisiert werden kann:
 
 # <a name="http"></a>[HTTP](#tab/http)
 
-Nicht zutreffend. Wählen Sie eine der oben genannten Programmiersprachen aus.
+Nicht zutreffend. Wählen Sie eine der anderen Programmiersprachen aus.
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -359,7 +359,7 @@ Den vollständigen Code finden Sie im [Ausstellungs-](https://github.com/Azure-S
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Schauen Sie sich die folgenden Artikel an:
+Hier erfahren Sie mehr über diese Spezifikationen:
 
 - [Spezifikation der Ausstellungs-API](issuance-request-api.md)
 - [Spezifikation der Darstellungs-API](presentation-request-api.md)

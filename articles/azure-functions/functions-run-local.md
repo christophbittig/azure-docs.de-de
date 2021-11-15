@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 10/05/2021
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: fa804ee911d8b810de391916f7ae92ff46efe0b1
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 8512df7ba32e7fabee5d666ca119197da7d82d6b
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129613280"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132028399"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Arbeiten mit Azure Functions Core Tools
 
@@ -39,13 +39,13 @@ Es sind zwei Versionen von Azure Functions Core Tools verfügbar. Welche Version
 
 Wählen Sie unten eine Registerkarte „Version“ aus, um mehr über die einzelnen Versionen und detaillierte Installationsanweisungen zu erfahren:
 
+# <a name="version-4x"></a>[Version 4.x](#tab/v4)
+
+Unterstützt [Version 4.x](functions-versions.md) der Functions-Runtime. Diese Versionen unterstützen Windows, macOS und Linux und verwenden plattformspezifische Paket-Manager oder npm für die Installation. Dies ist die empfohlene Version der Functions-Runtime und der Core Tools.
+
 # <a name="version-3x"></a>[Version 3.x](#tab/v3)
 
-Unterstützt [Version 3.x](functions-versions.md) der Azure Functions-Runtime. Diese Versionen unterstützen Windows, macOS und Linux und verwenden plattformspezifische Paket-Manager oder npm für die Installation. Dies ist die empfohlene Version der Functions-Runtime und der Core Tools.
-
-# <a name="version-4x-preview"></a>[Version 4.x (Vorschau)](#tab/v4)
-
-Die in der Vorschau befindliche [Version 4.x](functions-versions.md) der Functions Runtime wird unterstützt. Diese Versionen unterstützen Windows, macOS und Linux und verwenden plattformspezifische Paket-Manager oder npm für die Installation. Wenn Sie Ihre C#-Funktionen nicht unter .NET 6.0 ausführen müssen, sollten Sie Version 3.x der Functions-Runtime und der Core Tools verwenden.
+Unterstützt [Version 3.x](functions-versions.md) der Azure Functions-Runtime. Diese Versionen unterstützen Windows, macOS und Linux und verwenden plattformspezifische Paket-Manager oder npm für die Installation. 
 
 # <a name="version-2x"></a>[Version 2.x](#tab/v2)
 

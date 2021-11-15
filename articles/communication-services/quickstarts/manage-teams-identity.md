@@ -10,12 +10,13 @@ ms.date: 06/30/2021
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.subservice: identity
-ms.openlocfilehash: 5fb6632fa31143c26d3cad84d42d1417aaf97496
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+zone_pivot_groups: acs-js-csharp-java-python
+ms.openlocfilehash: ba36a1cc58b4f244517b74996aa6f29c2d9bc04a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129081337"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131461149"
 ---
 # <a name="quickstart-set-up-and-manage-teams-access-tokens"></a>Schnellstart: Einrichten und Verwalten von Teams-Zugriffstoken
 
@@ -43,7 +44,7 @@ Die folgenden Abschnitte führen Sie durch die Schritte für Administratoren, En
 
 Die Administratorrolle verfügt in AAD über erweiterte Berechtigungen. Mitglieder dieser Rolle können Ressourcen einrichten und Informationen im Azure-Portal lesen. Im folgenden Diagramm werden alle Aktionen angezeigt, die von Administratoren ausgeführt werden müssen.
 
-![Administratoraktionen zum Aktivieren eines benutzerdefinierten Teams-Endpunkts](./media/teams-identities/teams-identity-admin-overview.png)
+![Administratoraktionen zum Aktivieren eines benutzerdefinierten Teams-Endpunkts](./media/teams-identities/teams-identity-admin-overview.svg)
 
 1. Der Administrator von Contoso erstellt eine *Anwendung* in Azure Active Directory oder wählt eine vorhandene aus. Die Eigenschaft *Unterstützte Kontotypen* legt fest, ob Benutzer aus einem anderen Mandanten sich bei der Anwendung authentifizieren können. Die Eigenschaft *Umleitungs-URI* dient zur Umleitung einer erfolgreichen Authentifizierungsanforderung an den *Server* von Contoso.
 1. Der Contoso-Administrator erweitert das Anwendungsmanifest mit Communication Services VoIP-Berechtigung. 
@@ -51,8 +52,8 @@ Die Administratorrolle verfügt in AAD über erweiterte Berechtigungen. Mitglied
 1. Der Contoso-Administrator kann optional Aktualisierungen vornehmen.
 1. Der Contoso-Administrator aktiviert den Endpunkt, indem er [dieses Formular ausfüllt und übermittelt](https://forms.office.com/r/B8p5KqCH19).
 1. Der Administrator von Contoso erstellt die Communication Services-Dienste, die für die Authentifizierung der Austauschanforderungen verwendet werden, oder wählt vorhandene aus. AAD-Benutzertoken werden gegen Teams-Zugriffstoken ausgetauscht. Ausführlichere Informationen hierzu finden Sie unter [Schnellstart: Erstellen und Verwalten einer Communication Services-Ressource](./create-communication-resource.md).
-1. Der Fabrikam-Administrator richtet einen neuen Dienstprinzipal für Communication Services im Fabrikam-Mandanten ein.
-1. Der Fabrikam-Administrator erteilt Communication Services die VoIP-Berechtigung für die Contoso-Anwendung. Dieser Schritt ist nur erforderlich, wenn die Anwendung von Contoso nicht überprüft wurde. 
+1. Der Fabrikam-Administrator richtet einen neuen Dienstprinzipal für Communication Services im Fabrikam-Mandanten ein. Dieser Schritt ist erforderlich, wenn die Anwendung fehlt.
+1. Der Fabrikam-Administrator erteilt Communication Services die VoIP-Berechtigung und/oder die `Teams.ManageCalls`-Berechtigung für die Contoso-Anwendung. Dieser Schritt ist nur erforderlich, wenn die Anwendung von Contoso nicht überprüft wurde. 
 
 ### <a name="step-1-create-an-azure-ad-application-registration-or-select-an-azure-ad-application"></a>Schritt 1: Erstellen einer Azure AD Anwendungsregistrierung oder Auswählen einer Azure AD Anwendung 
 
@@ -73,38 +74,22 @@ Im Bereich **Authentifizierung** Ihrer Anwendung wird als konfigurierte Plattfor
 ### <a name="step-3-optional-update-the-publisher-domain"></a>Schritt 3: (Optional) Aktualisieren der Herausgeberdomäne 
 Im Bereich **Branding** können Sie Ihre Herausgeberdomäne für die Anwendung aktualisieren. Dies ist nützlich für Anwendungen mit mehreren Mandanten, bei denen die Anwendung als von Azure überprüft gekennzeichnet wird. Weitere Informationen finden Sie unter [Konfigurieren der Herausgeberdomäne einer Anwendung](../../active-directory/develop/howto-configure-publisher-domain.md).
 
-### <a name="step-4-define-the-communication-services-voip-permission-in-the-application"></a>Schritt 4: Definieren der Communication Services VoIP-Berechtigung in der Anwendung
+### <a name="step-4-add-the-communication-services-permissions-in-the-application"></a>Schritt 4: Hinzufügen der Communication Services-Berechtigungen in der Anwendung
 
-Wechseln Sie zu den Details der Anwendung, wählen Sie den Bereich  **Manifest** aus, und suchen Sie dann nach der Eigenschaft *requiredResourceAccess*. Es handelt sich um ein Array von Objekten, die die Berechtigungen der Anwendung definieren. Erweitern Sie das Manifest mit den VoIP-Berechtigungen für die Erstanbieteranwendung Communication Services. Fügen Sie dem Array das folgende Objekt hinzu:
+- Navigieren Sie im Azure-Portal zu Ihrer AAD-App, und wählen Sie **API-Berechtigungen** aus.
+- Wählen Sie **Berechtigungen hinzufügen** aus.
+- Wählen Sie im Menü **Berechtigungen hinzufügen** die Option **Azure Communication Services** aus.
+- Wählen Sie die gewünschten Berechtigungen für **VoIP** und/oder **Teams.ManageCalls** aus, und klicken Sie auf **Berechtigungen hinzufügen**.
 
-> [!NOTE] 
-> Ändern Sie keinesfalls die GUIDs im Codeausschnitt, da sie die Anwendung und die Berechtigungen eindeutig identifizieren.
+![Berechtigungen Teil1](./media/active_directory_permissions.png)
 
-```json
-{
-   "resourceAppId": "1fd5118e-2576-4263-8130-9503064c837a",
-   "resourceAccess": [
-      {
-         "id": "31f1efa3-6f54-4008-ac59-1bf1f0ff9958",
-         "type": "Scope"
-      }
-   ]
-}
-```
+### <a name="step-5-create-or-select-a-communication-services-resource"></a>Schritt 5: Erstellen oder Auswählen einer Communication Services-Ressource
 
-Wählen Sie **Speichern** aus, um die Änderungen zu übernehmen. Die *VoIP-Berechtigung von Azure Communication Services* wird jetzt im Bereich **API-Berechtigungen** angezeigt.
+Mithilfe Ihrer Communication Services-Ressource werden alle Anforderungen für den Austausch von AAD-Benutzertoken mit Teams-Zugriffstoken authentifiziert. Sie können diesen Austausch mithilfe des Communication Services Identity SDK, das Sie mit einem Zugriffsschlüssel authentifizieren können, oder mithilfe der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure auslösen. Sie können den Zugriffsschlüssel entweder im Azure-Portal abrufen oder Azure RBAC über den Bereich **Zugriffssteuerung (IAM)** konfigurieren.
 
-### <a name="step-5-enable-a-custom-teams-endpoint-experience-for-the-application"></a>Schritt 5: Aktivieren eines benutzerdefinierten Teams-Endpunkts für die Anwendung
+Wenn Sie eine neue Communication Services-Ressource erstellen möchten, finden Sie weitere Informationen unter [Schnellstart: Erstellen und Verwalten einer Communication Services-Ressource](./create-communication-resource.md).
 
-Um den benutzerdefinierten Teams-Endpunkt für die Anwendung zu aktivieren, füllt der Azure AD-Administrator [dieses Formular aus und übermittelt es](https://forms.office.com/r/B8p5KqCH19).
-
-### <a name="step-6-create-or-select-a-communication-services-resource"></a>Schritt 6: Erstellen oder Auswählen einer Communication Services-Ressource
-
-Mithilfe Ihrer Communication Services-Ressource werden alle Anforderungen für den Austausch von AAD-Benutzertoken mit Teams-Zugriffstoken authentifiziert. Sie können diesen Austausch mithilfe des Communication Services Identitäts-SDK auslösen, das Sie mit einem Zugriffsschlüssel authentifizieren können, oder mithilfe der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure. Sie können den Zugriffsschlüssel entweder im Azure-Portal abrufen oder Azure RBAC über den Bereich **Zugriffssteuerung (IAM)** konfigurieren.
-
-Wenn Sie neue Ressourcen Communication Services erstellen möchten, finden Sie weitere Informationen unter [Erstellen und Verwalten einer Communication Services-Ressource](./create-communication-resource.md).
-
-### <a name="step-7-set-up-a-communication-services-service-principal"></a>Schritt 7: Einrichten eines Communication Services-Dienstprinzipals
+### <a name="step-6-set-up-a-communication-services-service-principal"></a>Schritt 6: Einrichten eines Communication Services-Dienstprinzipals
 
 Um den benutzerdefinierten Teams-Endpunkt im Mandanten von Fabrikam zu aktivieren, muss der AAD-Administrator von Fabrikam einen Dienstprinzipal namens „Azure Communication Services“ mit der Anwendungs-ID *1fd5118e-2576-4263-8130-9503064c837a* einrichten. Wenn diese Anwendung nicht im Bereich für **Unternehmensanwendungen** in Azure Active Directory angezeigt wird, muss sie manuell hinzugefügt werden.
 
@@ -132,7 +117,7 @@ Nachdem Sie eine Verbindung mit dem Azure-Portal hergestellt und sich authentifi
 New-AzureADServicePrincipal -AppId "1fd5118e-2576-4263-8130-9503064c837a"
 ```
 
-### <a name="step-8-provide-administrator-consent"></a>Schritt 8: Erteilen der Administrator-Einwilligung
+### <a name="step-7-provide-administrator-consent"></a>Schritt 7: Erteilen der Administratoreinwilligung
 
 Wenn die Anwendung von Contoso nicht geprüft ist, muss der AAD-Administrator der Anwendung von Contoso die Berechtigung für Communication Services VoIP gewähren. Der AAD-Administrator von Fabrikam erteilt die Einwilligung über eine eindeutige URL. 
 
@@ -159,7 +144,7 @@ Der Entwickler von Contoso muss die *Clientanwendung* für die Authentifizierung
 
 Die erforderlichen Aktionen des Entwicklers sind in der folgenden Abbildung dargestellt:
 
-![Diagramm der Entwickleraktionen zum Aktivieren eines benutzerdefinierten Teams-Endpunkts](./media/teams-identities/teams-identity-developer-overview.png)
+![Diagramm der Entwickleraktionen zum Aktivieren eines benutzerdefinierten Teams-Endpunkts](./media/teams-identities/teams-identity-developer-overview.svg)
 
 1. Der Entwickler von Contoso konfiguriert die MSAL-Bibliothek, um den Benutzer für die Anwendung zu authentifizieren, die zuvor vom Administrator für die Communication Services VoIP-Berechtigung erstellt wurde.
 1. Der Entwickler von Contoso initialisiert das Communication Services Identitäts-SDK und tauscht das eingehende AAD-Benutzertoken gegen das Teams-Zugriffstoken über das SDK aus. Die Teams-Zugriffstoken werden dann an die *Clientanwendung* zurückgegeben.
@@ -169,134 +154,30 @@ Mithilfe der Microsoft Authentication Library können Entwickler AAD-Benutzertok
 Weitere Informationen zum Einrichten von Umgebungen in der öffentlichen Dokumentation finden Sie unter [Übersicht über die Microsoft-Authentifizierungsbibliothek](../../active-directory/develop/msal-overview.md).
 
 > [!NOTE]
-> In den folgenden Abschnitten wird beschrieben, wie sie AAD-Zugriffstoken für das Teams-Zugriffstoken für die Konsolenanwendung in .NET austauschen.
+> In den folgenden Abschnitten wird beschrieben, wie sie Azure AD-Zugriffstoken für das Teams-Zugriffstoken für die Konsolenanwendung austauschen.
 
-### <a name="create-a-new-application"></a>Erstellen einer neuen Anwendung
+::: zone pivot="programming-language-csharp"
+[!INCLUDE [.NET](./includes/manage-teams-identity-net.md)]
+::: zone-end
 
-Verwenden Sie in einem Konsolenfenster (z. B. cmd, PowerShell oder Bash) den Befehl `dotnet new` zum Erstellen einer neuen Konsolen-App mit dem Namen `TeamsAccessTokensQuickstart`. Dieser Befehl erstellt ein einfaches C#-Projekt vom Typ „Hallo Welt“ mit einer einzelnen Quelldatei, *program.cs*.
+::: zone pivot="programming-language-javascript"
+[!INCLUDE [JavaScript](./includes/manage-teams-identity-js.md)]
+::: zone-end
 
-```console
-dotnet new console -o TeamsAccessTokensQuickstart
-```
+::: zone pivot="programming-language-python"
+[!INCLUDE [Python](./includes/manage-teams-identity-python.md)]
+::: zone-end
 
-Wechseln Sie zum neu erstellten App-Ordner, und verwenden Sie den Befehl `dotnet build`, um Ihre Anwendung zu kompilieren.
+::: zone pivot="programming-language-java"
+[!INCLUDE [Java](./includes/manage-teams-identity-java.md)]
+::: zone-end
 
-```console
-cd TeamsAccessTokensQuickstart
-dotnet build
-```
-#### <a name="install-the-package"></a>Installieren des Pakets
-Installieren Sie im Anwendungsverzeichnis mithilfe des Befehls `dotnet add package` die Azure Communication Services-Identitätsbibliothek für das .NET-Paket.
-
-```console
-dotnet add package Azure.Communication.Identity
-dotnet add package Microsoft.Identity.Client
-```
-
-> [!NOTE]
-> Pakete für die private Vorschau sind in offiziellen Paketrepositorys wie NPM oder NuGet.org nicht verfügbar. Sie finden SDKs in den folgenden Paketrepositorys: [. NET](https://dev.azure.com/azure-sdk/public/_packaging?_a=package&feed=azure-sdk-for-net&package=Azure.Communication.Identity&protocolType=NuGet&version=1.1.0-alpha.20210531.2) und [JavaScript](https://www.npmjs.com/package/@azure/communication-identity/v/1.1.0-alpha.20210531.1).
-
-#### <a name="set-up-the-app-framework"></a>Einrichten des App-Frameworks
-
-Führen Sie im Projektverzeichnis die folgenden Schritte aus:
-
-1. Öffnen Sie die Datei *Program.cs* in einem Text-Editor.
-1. Ergänzen Sie eine `using`-Anweisung, um die folgenden Namespaces hinzuzufügen: 
-    - Azure.Communication
-    - Azure.Communication.Identity
-    - Microsoft.Identity.Client
-1. Ändern Sie die Deklaration der `Main`-Methode so, dass `async` Code unterstützt wird.
-
-Verwenden Sie zum Einstieg den folgenden Code:
-
-```csharp
-using System;
-using System.Text;
-using Azure.Communication;
-using Azure.Communication.Identity;
-using Microsoft.Identity.Client;
-
-namespace TeamsAccessTokensQuickstart
-{
-    class Program
-    {
-        static async System.Threading.Tasks.Task Main(string[] args)
-        {
-            Console.WriteLine("Azure Communication Services – Teams access tokens quickstart");
-
-            // Quickstart code goes here
-        }
-    }
-}
-```
-
-### <a name="step-1-receive-the-azure-ad-user-token-via-the-msal-library"></a>Schritt 1: Empfangen des Azure AD-Benutzertokens über die MSAL-Bibliothek
-
-Verwenden Sie die MSAL-Bibliothek, um Benutzer mit der VoIP-Berechtigung von Communication Services in AAD für die Anwendung von Contoso zu authentifizieren. Konfigurieren Sie den Client für die Anwendung von Contoso (*Parameter applicationId*) in der öffentlichen Cloud (*Parameter authority*). Das AAD-Benutzertoken wird an den Umleitungs-URI (Parameter *redirectUri*) zurückgegeben. Die Anmeldeinformationen werden aus dem interaktiven Popupfenster übernommen, das sich in Ihrem Standardbrowser öffnet.
-
-> [!NOTE] 
-> Der Umleitungs-URI muss mit dem in der Anwendung festgelegten Wert übereinstimmen. Lesen Sie den ersten Schritt im Administratorleitfaden, um zu erfahren, wie Sie den Umleitungs-URI konfigurieren.
-
-```csharp
-const string applicationId = "Contoso's_Application_ID";
-const string authority = "https://login.microsoftonline.com/common";
-const string redirectUri = "http://localhost";
-
-var client = PublicClientApplicationBuilder
-                .Create(applicationId)
-                .WithAuthority(authority)
-                .WithRedirectUri(redirectUri)
-                .Build();
-
-const string scope = "https://auth.msft.communication.azure.com/VoIP";
-
-var aadUserToken = await client.AcquireTokenInteractive(new[] { scope }).ExecuteAsync();
-
-Console.WriteLine("\nAuthenticated user: " + aadUserToken.Account.Username);
-Console.WriteLine("AAD user token expires on: " + aadUserToken.ExpiresOn);
-```
-
-Die Variable *aadUserToken* enthält jetzt ein gültiges AAD-Benutzertoken, das für den Austausch verwendet wird.
-
-### <a name="step-2-exchange-the-azure-ad-user-token-for-the-teams-access-token"></a>Schritt 2: Austausch des AAD-Benutzertokens gegen das Teams-Zugriffstoken
-
-Mit einem gültigen AAD-Benutzertoken werden Benutzer bei AAD über die VoIP-Berechtigung von Communication Services für Drittanbieteranwendungen authentifiziert. Der folgende Code wird vom Communication Services Identitäts-SDK verwendet, um den Austausch des AAD-Benutzertokens gegen das Teams-Zugriffstoken zu ermöglichen.
-
-> [!NOTE]
-> Ersetzen Sie im folgenden Code „\<Connection-String>“ durch eine gültige Verbindungszeichenfolge, oder verwenden Sie für die Authentifizierung Azure RBAC. Weitere Informationen finden Sie unter [Schnellstart: Erstellen und Verwalten von Zugriffstoken](./access-tokens.md).
-
-```csharp
-var identityClient = new CommunicationIdentityClient("<Connection-String>");
-var teamsAccessToken = identityClient.ExchangeTeamsToken(aadUserToken.AccessToken);
-
-Console.WriteLine("\nTeams access token expires on: " + teamsAccessToken.Value.ExpiresOn);
-```
-
-Wenn alle erforderlichen Bedingungen erfüllt sind, erhalten Sie ein Teams Zugriffstoken, das 24 Stunden lang gültig ist.
-
-#### <a name="run-the-code"></a>Ausführen des Codes
-Führen Sie die Anwendung mit dem Befehl `dotnet run` aus dem Anwendungsverzeichnis aus.
-
-```console
-dotnet run
-```
-
-In der Ausgabe der App wird die jeweils abgeschlossene Aktion beschrieben:
-
-```console
-Azure Communication Services - Teams access tokens quickstart
-
-Authenticated user: john.smith@contoso.com
-Azure AD user token expires on: 6/10/2021 10:13:17 AM +00:00
-
-Teams access token expires on: 6/11/2021 9:13:18 AM +00:00
-```
 
 ## <a name="user-actions"></a>Benutzeraktionen
 
 Der Benutzer stellt die Fabrikam-Benutzer der Contoso-Anwendung dar. Die Benutzeraktionen sind im folgenden Diagramm dargestellt:
 
-![Diagramm der Benutzeraktionen zum Aktivieren eines benutzerdefinierten Teams-Endpunkts](./media/teams-identities/teams-identity-user-overview.png)
+![Diagramm der Benutzeraktionen zum Aktivieren eines benutzerdefinierten Teams-Endpunkts](./media/teams-identities/teams-identity-user-overview.svg)
 
 1. Der Benutzer von Fabrikam verwendet die *Clientanwendung* von Contoso und wird zur Authentifizierung aufgefordert.
 1. Die *Clientanwendung* von Contoso authentifiziert den Benutzer mithilfe der MSAL-Bibliothek und des AAD-Mandanten von Fabrikam mit der VoIP-Berechtigung von Communication Services für die Anwendung von Contoso. 

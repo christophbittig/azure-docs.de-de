@@ -15,12 +15,12 @@ ms.topic: reference
 ms.date: 10/12/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: b7f0cc91f8705ac865cac4820402051dce1e9eff
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: b02ce290d0910e2dccc19643c94ee338f80b6989
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131064105"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131467452"
 ---
 # <a name="azure-sentinel-content-hub-catalog"></a>Azure Sentinel Content Hub-Katalog
 
@@ -41,7 +41,8 @@ Weitere Informationen finden Sie unter [Zentrales Entdecken und Bereitstellen vo
 |Name    |Includes  |Kategorien |Unterstützt von  |
 |---------|---------|---------|---------|
 |**Microsoft Insider-Risikomanagement** |[Datenconnector](data-connectors-reference.md#microsoft-365-insider-risk-management-irm-preview), Arbeitsmappe, Analyseregeln, Hunting-Abfragen |Sicherheit - Insider-Bedrohung | Microsoft|
-|**Microsoft MITRE ATT&CK-Lösung für die Cloud**| Arbeitsmappen, Analyseregeln, Hunting-Abfragen|Sicherheit - Bedrohungsschutz, Sicherheit - Andere |Microsoft |
+| **Microsoft MITRE ATT&CK-Lösung für die Cloud**| Arbeitsmappen, Analyseregeln, Hunting-Abfragen|Sicherheit - Bedrohungsschutz, Sicherheit - Andere |Microsoft |
+| **Azure Sentinel Deception** | [Arbeitsmappen, Analyseregeln, Watchlists](monitor-key-vault-honeytokens.md)  | Sicherheit - Bedrohungsschutz  |Microsoft |
 |**Zero Trust** (TIC3.0) |Arbeitsmappen |Identität, Sicherheit - Andere |Microsoft |
 | | | | |
 

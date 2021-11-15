@@ -368,7 +368,7 @@ items:
                     items:
                       - name: PowerShell
                         href: storage-blob-user-delegation-sas-create-powershell.md
-                      - name: Azure-Befehlszeilenschnittstelle
+                      - name: Azure CLI
                         href: storage-blob-user-delegation-sas-create-cli.md
                       - name: .NET
                         href: storage-blob-user-delegation-sas-create-dotnet.md
@@ -432,7 +432,7 @@ items:
                         href: ../common/transport-layer-security-configure-client-version.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                   - name: Konfigurieren der Netzwerkroutingpräferenz
                     href: ../common/configure-network-routing-preference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-              - name: Konfigurieren von Azure Defender für Bedrohungsschutz
+              - name: Aktivieren des Bedrohungsschutzes mit Microsoft Defender für Speicher
                 href: ../common/azure-defender-storage-configure.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
           - name: Schützen von Blobdaten
             items:

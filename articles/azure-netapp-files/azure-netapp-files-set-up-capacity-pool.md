@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 06/14/2021
+ms.date: 11/4/2021
 ms.author: b-juche
-ms.openlocfilehash: 3488b6807982f97cd5feef9b07a6dc7cbe180dcd
-ms.sourcegitcommit: f3f2ec7793ebeee19bd9ffc3004725fb33eb4b3f
+ms.openlocfilehash: 90867546e0866d0d899bc990a9eb5225fbaf4c1e
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129407549"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132027715"
 ---
 # <a name="create-a-capacity-pool-for-azure-netapp-files"></a>Erstellen eines Kapazitätspools für Azure NetApp Files
 
@@ -51,7 +51,7 @@ Sie müssen bereits ein NetApp-Konto erstellt haben.
 
     * **Größe**     
      Geben Sie die Größe des Kapazitätspools an, den Sie erwerben.        
-     Die Mindestgröße eines Kapazitätspools beträgt 4 TiB. Die Poolgröße kann auf ein Vielfaches von 4 TiB festgelegt werden.   
+     Die Mindestgröße eines Kapazitätspools beträgt 4 TiB. Sie können die Größe eines Kapazitätspools in Schritten von 1 TiB ändern.
 
    * **QoS**   
      Geben Sie an, ob für den Kapazitätspool der QoS-Typ **Manuell** oder **Automatisch** verwendet werden soll.  

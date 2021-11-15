@@ -6,21 +6,21 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 07/13/2021
+ms.date: 11/03/2021
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: b30bb21369e75b76c5aba299d38b2ccfc3259803
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6d2d2f530d64e3c459e0363079bebc9f99d44cf3
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128651596"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131578817"
 ---
 # <a name="assign-an-azure-role-for-access-to-blob-data"></a>Zuweisen einer Azure-Rolle für den Zugriff auf Blobdaten
 
-Azure Active Directory (Azure AD) autorisiert Rechte für den Zugriff auf geschützte Ressourcen über die [rollenbasierte Zugriffssteuerung in Azure](../../role-based-access-control/overview.md) (Azure Role-Based Access Control, Azure RBAC). Azure Storage definiert eine Reihe von in Azure integrierten Rollen mit allgemeinen Berechtigungssätzen für den Zugriff auf Blob-Daten.
+Azure Active Directory (AAD) autorisiert Rechte für den Zugriff auf geschützte Ressourcen über die [rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)](../../role-based-access-control/overview.md). Azure Storage definiert eine Reihe von in Azure integrierten Rollen mit allgemeinen Berechtigungssätzen für den Zugriff auf Blob-Daten.
 
 Wenn einem Azure AD-Sicherheitsprinzipal eine Azure-Rolle zugewiesen wird, gewährt Azure diesem Sicherheitsprinzipal Zugriff auf diese Ressourcen. Eine Azure AD-Sicherheitsprinzipal kann ein Benutzer, eine Gruppe, ein Anwendungsdienstprinzipal oder eine [verwaltete Identität für Azure-Ressourcen](../../active-directory/managed-identities-azure-resources/overview.md) sein.
 
@@ -57,13 +57,49 @@ Sie können auch eine Azure Resource Manager-Rolle zuweisen, die zusätzliche Be
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Wenn Sie eine Azure-Rolle einem Sicherheitsprinzipal mit PowerShell zuweisen möchten, rufen Sie den Befehl [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) auf. Das Format des Befehls kann je nach Bereich der Zuweisung unterschiedlich sein. Zur Ausführung des Befehls müssen Sie über eine Rolle verfügen, die **Microsoft.Authorization/roleAssignments/write**-Berechtigungen enthält, die Ihnen im entsprechenden Bereich oder höher zugewiesen wurden.
+Wenn Sie eine Azure-Rolle einem Sicherheitsprinzipal mit PowerShell zuweisen möchten, rufen Sie den Befehl [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) auf. Zur Ausführung des Befehls müssen Sie über eine Rolle verfügen, die **Microsoft.Authorization/roleAssignments/write**-Berechtigungen enthält, die Ihnen im entsprechenden Bereich oder höher zugewiesen wurden. 
 
-Geben Sie zum Zuweisen einer auf einen Container begrenzten Rolle für den Parameter `--scope` eine Zeichenfolge an, die den Containerbereich enthält. Der Bereich für einen Container weist folgendes Format auf:
+Das Format des Befehls kann je nach Bereich der Zuweisung unterschiedlich sein, doch `-ObjectId` und `-RoleDefinitionName` sind erforderliche Parameter. Es muss zwar kein Wert für den Parameter `-Scope` übergeben werden, doch wird dies dringend empfohlen, um das Prinzip der geringsten Rechte zu wahren. Durch das Einschränken von Rollen und Bereichen begrenzen Sie die Ressourcen, die bei einer Kompromittierung des Sicherheitsprinzipals gefährdet sind.
+
+Der Parameter `-ObjectId` ist die AAD-Objekt-ID (Azure Active Directory) des Benutzers, der Gruppe oder des Dienstprinzipals, dem bzw. der die Rolle zugewiesen wird. Zum Abrufen des Bezeichners können Sie [get-AzADUser](/powershell/module/az.resources/get-azaduser) verwenden, um Azure Active Directory Benutzer zu filtern, wie im folgenden Beispiel gezeigt.
+
+```azurepowershell
+Get-AzADUser -DisplayName '<Display Name>'
+(Get-AzADUser -StartsWith '<substring>').Id
+```
+
+Die erste Antwort gibt den Sicherheitsprinzipal und die zweite die Objekt-ID des Sicherheitsprinzipals zurück.
+
+```Response
+UserPrincipalName : markpdaniels@contoso.com
+ObjectType        : User
+DisplayName       : Mark P. Daniels
+Id                : ab12cd34-ef56-ab12-cd34-ef56ab12cd34
+Type              : 
+
+ab12cd34-ef56-ab12-cd34-ef56ab12cd34
+```
+
+Der Parameterwert `-RoleDefinitionName` ist der Name der RBAC-Rolle, die dem Prinzipal zugewiesen werden muss. Für den Zugriff auf Blobdaten im Azure-Portal mit Azure AD-Anmeldeinformationen muss ein Benutzer über die folgenden Rollenzuweisungen verfügen:
+
+- Eine Datenzugriffsrolle, z. B. **Mitwirkender an Storage-Blobdaten** oder **Storage-Blobdatenleser**
+- Die Azure Resource Manager-Rolle **Leser**
+
+Zum Zuweisen einer auf einen Blobcontainer oder ein Speicherkonto begrenzten Rolle sollten Sie eine Zeichenfolge für den Parameter `-Scope` angeben, die den Ressourcenbereich enthält. Diese Aktion entspricht dem Prinzip der geringsten Rechte, einem Informationssicherheitskonzept, bei dem einem Benutzer die geringstmögliche Zugriffsberechtigung zum Ausführen seiner Aufgaben gewährt wird. Diese Vorgehensweise verringert das potenzielle Risiko von versehentlichen oder absichtlichen Schäden, die durch unnötige Berechtigungen verursacht werden können.
+
+Der Bereich für einen Container weist folgendes Format auf:
 
 ```
 /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/blobServices/default/containers/<container-name>
 ```
+
+Der Bereich für ein Speicherkonto weist folgendes Format auf:
+
+```
+/subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>
+```
+
+Geben Sie zum Zuweisen einer auf ein Speicherkonto begrenzten Rolle für den Parameter `--scope` eine Zeichenfolge an, die den Containerbereich enthält.
 
 Im folgenden Beispiel wird die Rolle **Mitwirkender an Storage-Blobdaten** einem Benutzer zugewiesen und auf einen Container mit dem Namen *sample-container* begrenzt. Ersetzen Sie die Beispielwerte und die Platzhalterwerte in Klammern durch Ihre eigenen Werte:
 
@@ -73,7 +109,29 @@ New-AzRoleAssignment -SignInName <email> `
     -Scope  "/subscriptions/<subscription>/resourceGroups/sample-resource-group/providers/Microsoft.Storage/storageAccounts/<storage-account>/blobServices/default/containers/sample-container"
 ```
 
-Informationen zum Zuweisen von Rollen mit PowerShell im Abonnement-, Ressourcengruppen- oder Speicherkontobereich finden Sie unter [Zuweisen von Azure-Rollen mithilfe von Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md).
+Im folgenden Beispiel wird einem Benutzer durch Angabe der Objekt-ID die Rolle **Storage-Blobdatenleser** zugewiesen. Die Rollenzuweisung ist auf ein Speicherkonto mit dem Namen **storage-account** begrenzt. Ersetzen Sie die Beispielwerte und die Platzhalterwerte in Klammern durch Ihre eigenen Werte: 
+
+```powershell
+New-AzRoleAssignment -ObjectID "ab12cd34-ef56-ab12-cd34-ef56ab12cd34" `
+    -RoleDefinitionName "Storage Blob Data Reader" `
+    -Scope  "/subscriptions/<subscription>/resourceGroups/sample-resource-group/providers/Microsoft.Storage/storageAccounts/storage-account"
+```
+
+Die Ausgabe sollte in etwa wie folgt aussehen:
+
+```Response
+RoleAssignmentId   : /subscriptions/<subscription ID>/resourceGroups/<Resource Group>/providers/Microsoft.Storage/storageAccounts/<Storage Account>/providers/Microsoft.Authorization/roleAssignments/<Role Assignment ID>
+Scope              : /subscriptions/<subscription ID>/resourceGroups/<Resource Group>/providers/Microsoft.Storage/storageAccounts/<Storage Account>
+DisplayName        : Mark Patrick
+SignInName         : markpdaniels@contoso.com
+RoleDefinitionName : Storage Blob Data Reader
+RoleDefinitionId   : <Role Definition ID>
+ObjectId           : <Object ID>
+ObjectType         : User
+CanDelegate        : False
+```
+
+Informationen zum Zuweisen von Rollen mit PowerShell im Abonnement- oder Ressourcengruppenbereich finden Sie unter [Zuweisen von Azure-Rollen mithilfe von Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md).
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 

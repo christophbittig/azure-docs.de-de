@@ -13,15 +13,15 @@ ms.assetid: ad8e5c75-0cf6-4564-ae62-ea1246b4e5f2
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 10/26/2021
+ms.date: 11/02/2021
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 883c4a0b4abe05d563ff418e84b507051e20c14c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 4c8d53392a48c821cb126e729f8e29bf7c686b3d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131013059"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131441075"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Verwenden von Azure zum Hosten und Ausführen von SAP-Workloadszenarien
 
@@ -80,6 +80,10 @@ In diesem Abschnitt finden Sie Informationen zum Konfigurieren des einmaligen An
 In diesem Abschnitt finden Sie Dokumente zur Integration von Microsoft Power BI in SAP-Datenquellen sowie zur Integration von Azure Data Factory in SAP BW.
 
 ## <a name="change-log"></a>Änderungsprotokoll
+- 
+- 02. November 2021: Geänderte [Azure Storage-Typen für die SAP-Workload](./planning-guide-storage.md) und [SAP ASE Azure Virtual Machines DBMS-Bereitstellung für die SAP-Workload](./dbms_guide_sapase.md), um SAP ASE-Unterstützung für NFS in Azure NetApp Files zu deklarieren.
+- 02. November 2021: [SAP-Workloadkonfigurationen mit Azure-Verfügbarkeitszonen](./sap-ha-availability-zones.md) geändert, um „Singapur, Südosten“ in Regionen für Aktiv/Aktiv-Konfigurationen zu verschieben
+- 02. November 2021: Änderung der [Hochverfügbarkeit von SAP HANA auf Azure-VMs unter Red Hat Enterprise Linux](./sap-hana-high-availability-rhel.md), um Anweisungen für eine hochskalierte Aktiv/Aktiv-HANA-Konfiguration (leseaktiviert) zu aktualisieren.
 - 26. Oktober 2021: Änderung in [horizontaler SAP HANA HSR-Skalierung mit Pacemaker auf Azure-VMs unter RHEL](./sap-hana-high-availability-scale-out-hsr-rhel.md), um Ressourcennamen in einer horizontal skalierten Aktiv/Aktiv-Konfiguration (leseaktiviert) zu aktualisieren.
 - 19. Oktober 2021: Änderung in [horizontaler SAP HANA HSR-Skalierung mit Pacemaker auf Azure-VMs unter RHEL](./sap-hana-high-availability-scale-out-hsr-rhel.md), um Anweisungen für eine horizontal skalierte Aktiv/Aktiv-Konfiguration (leseaktiviert) hinzuzufügen.
 - 11. Oktober 2021: Änderung des [Clusters einer SAP ASCS/SCS-Instanz auf einem Windows-Failovercluster mithilfe eines freigegebenen Clusterdatenträgers in Azure](./sap-high-availability-guide-wsfc-shared-disk.md), [Vorbereiten der Azure-Infrastruktur für SAP HA mithilfe eines Windows-Failoverclusters und freigegebenen Datenträgers für SAP ASCS/SCS](./sap-high-availability-infrastructure-wsfc-shared-disk.md)- und [SAP ASCS/SCS-Instanz mit Multi-SID-Hochverfügbarkeit mit Windows-Serverfailoverclustering und freigegebenen Azure-Datenträgern](./sap-ascs-ha-multi-sid-wsfc-azure-shared-disk.md) zum Hinzufügen von Anweisungen zu zonenredundantem Speicher (ZRS) für die Unterstützung freigegebener Azure-Datenträger.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 09/28/2021
 ms.author: rolyon
 ms.custom: ''
-ms.openlocfilehash: c68849dcb3c0c5683bfc160a0b4a1cb03ae0e13a
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: e60c9f2e7cf4c2f2ed19612ff8e01260a5f8fcb7
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129356060"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132055102"
 ---
 # <a name="understand-azure-role-definitions"></a>Grundlegendes zu Azure-Rollendefinitionen
 
@@ -86,7 +86,7 @@ Der Teil `{action}` einer Aktionszeichenfolge gibt den Typ der Aktionen an, die 
 
 ### <a name="role-definition-example"></a>Beispiel für eine Rollendefinition
 
-Im folgenden Codeausschnitt finden Sie die Definition für die Rolle [Mitwirkender](built-in-roles.md#contributor), so wie sie in Azure PowerShell und in der Azure CLI angezeigt wird. Die Platzhalteraktionen (`*`) unter `Actions` geben an, dass der Prinzipal, der dieser Rolle zugewiesen ist, alle Aktionen ausführen und somit alles verwalten kann. Dies schließt auch Aktionen ein, die später definiert werden, wenn Azure neue Ressourcentypen hinzufügt. Die Aktionen unter `NotActions` werden von den `Actions` abgezogen. Im Fall der Rolle [Mitwirkender](built-in-roles.md#contributor) sorgt `NotActions` dafür, dass die Rolle weder den Zugriff auf Ressourcen noch die Zuweisungen für Azure Blueprint verwalten kann.
+Im folgenden Codeausschnitt finden Sie die Definition für die Rolle [Mitwirkender](built-in-roles.md#contributor), so wie sie in Azure PowerShell und in der Azure CLI angezeigt wird. Die Platzhalteraktionen (`*`) unter `Actions` geben an, dass der Prinzipal, der dieser Rolle zugewiesen ist, alle Aktionen ausführen und somit alles verwalten kann. Dies schließt auch Aktionen ein, die später definiert werden, wenn Azure neue Ressourcentypen hinzufügt. Die Aktionen unter `NotActions` werden von den `Actions` abgezogen. Im Fall der Rolle [Mitwirkender](built-in-roles.md#contributor) sorgt `NotActions` dafür, dass die Rolle weder den Zugriff auf Ressourcen noch die Zuweisungen für Azure Blueprints verwalten kann.
 
 Rolle „Mitwirkender“, so wie sie in Azure PowerShell angezeigt wird:
 

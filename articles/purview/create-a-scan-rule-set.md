@@ -1,18 +1,18 @@
 ---
 title: Erstellen eines Überprüfungsregelsatzes
 description: Erstellen Sie einen Überprüfungsregelsatz in Azure Purview, um die Datenquellen Ihrer Organisation schnell überprüfen zu können.
-author: chandrakavya
-ms.author: kchandra
+author: linda33wj
+ms.author: jingwang
 ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 09/27/2021
-ms.openlocfilehash: 0b9175a2795ac926c7adf93dc81f84ff7b5a4472
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: fb3151b3981d0bd28120efab9bdba7fd143ae86d
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129207380"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131510961"
 ---
 # <a name="create-a-scan-rule-set"></a>Erstellen eines Überprüfungsregelsatzes
 
@@ -60,7 +60,7 @@ Erstellen Sie wie folgt einen Überprüfungsregelsatz:
 
 1. Wählen Sie **Erstellen** aus, um die Erstellung des Überprüfungsregelsatzes abzuschließen.
 
-### <a name="create-a-custom-file-type"></a>Erstellen eines benutzerdefinierten Dateityps
+## <a name="create-a-custom-file-type"></a>Erstellen eines benutzerdefinierten Dateityps
 
 Azure Purview unterstützt das Hinzufügen einer benutzerdefinierten Erweiterung und das Definieren eines benutzerdefinierten Spaltentrennzeichens in einem Überprüfungsregelsatz.
 
@@ -91,6 +91,26 @@ Erstellen Sie wie folgt einen benutzerdefinierten Dateityp:
 1. Wählen Sie auf der Kachel für den neuen Dateityp die Option **Bearbeiten** aus, falls Sie ihn ändern oder löschen möchten.
 
 1. Wählen Sie **Weiter** aus, um die Konfiguration des Überprüfungsregelsatzes abzuschließen.
+
+## <a name="ignore-patterns"></a>Ignorieren von Mustern
+
+Azure Purview unterstützt das Definieren regulärer Ausdrücke (RegEx), um Ressourcen während des Überprüfens auszuschließen. Während des Überprüfens vergleicht Azure Purview die URL der Ressource mit diesen regulären Ausdrücken. Alle Ressourcen, die mit einem der erwähnten RegExes übereinstimmen, werden beim Überprüfen ignoriert.
+
+Auf dem Blatt **Muster ignorieren** wird ein RegEx für Spark-Transaktionsdateien vorab aufgefüllt. Sie können das bereits vorhandene Muster entfernen, wenn es nicht erforderlich ist. Sie können bis zu 10 Muster definieren, die ignoriert werden sollen.
+
+:::image type="content" source="./media/create-a-scan-rule-set/ignore-patterns-blade.png" alt-text="Screenshot: Das Blatt „Muster ignorieren“ mit vier definierten regulären Ausdrücken. Der erste ist der vorab aufgefüllte RegEx der Spark-Transaktion, der zweite \\.txt$, der dritte ist \\csv$, und der letzte ist .folderB/.*.":::
+
+Im obigen Beispiel:
+
+- Die RegExes 2 und 3 ignorieren alle Dateien, die während der Überprüfung mit .txt und .csv enden.
+- Der RegEx 4 ignoriert /folderB/ und seinen gesamten Inhalt werden des Überprüfens.
+
+Im Folgenden finden Sie einige weitere Tipps zum Ignorieren von Mustern:
+
+- Währen des Verarbeitens des RegEx fügt Azure Purview dem RegEx standardmäßig $ hinzu.
+- Eine gute Möglichkeit, zu verstehen, welche URL der Scan-Agent mit Ihrem regulären Ausdruck vergleicht, besteht darin, den Purview-Datenkatalog zu durchsuchen, die Ressource zu suchen, die Sie in Zukunft ignorieren möchten, und ihren vollqualifizierten Namen (FQN) auf der Registerkarte **Übersicht** anzuzeigen.
+
+   :::image type="content" source="./media/create-a-scan-rule-set/fully-qualified-name.png" alt-text="Screenshot: Der vollqualifizierte Name der Ressource auf der Registerkarte „Übersicht“":::.
 
 ## <a name="system-scan-rule-sets"></a>Überprüfungsregelsätze des Systems
 

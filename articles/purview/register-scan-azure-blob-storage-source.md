@@ -7,12 +7,12 @@ ms.service: purview
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: 9f6f13805a1b93f415bd7398299ed5e4b2f27947
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: d740ba049353a250468321741d90d1f8b7b88d2b
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131062503"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131848987"
 ---
 # <a name="connect-to-azure-blob-storage-in-azure-purview"></a>Verbinden Sie sich mit Azure Blob Storage in Azure Purview
 
@@ -22,7 +22,9 @@ In diesem Artikel wird der Prozess zum Registrieren eines Azure Blob Storage-Kon
 
 |**Metadatenextrahierung**|  **Vollständige Überprüfung**  |**Inkrementelle Überprüfung**|**Bereichsbezogene Überprüfung**|**Klassifizierung**|**Zugriffsrichtlinie**|**Herkunft**|
 |---|---|---|---|---|---|---|
-| [Ja](#register) | [Ja](#scan)|[Ja](#scan) | [Ja](#scan)|[Ja](#scan)| Ja | Nein|
+| [Ja](#register) | [Ja](#scan)|[Ja](#scan) | [Ja](#scan)|[Ja](#scan)| Ja | Eingeschränkt** |
+
+\** Herkunft wird unterstützt, wenn das Dataset als Quelle/Senke in der [Data Factory Copy-Aktivität](how-to-link-azure-data-factory.md) verwendet wird. 
 
 Für Dateitypen wie CSV, TSV, PSV und SSV wird das Schema extrahiert, wenn die folgenden Logiken vorhanden sind:
 
@@ -36,7 +38,7 @@ Für Dateitypen wie CSV, TSV, PSV und SSV wird das Schema extrahiert, wenn die f
 
 * Eine aktive [Purview-Ressource](create-catalog-portal.md)
 
-* Sie müssen ein Datenquellenadministrator und Datenleser sein, um eine Quelle zu registrieren und in Purview Studio zu verwalten. Weitere Informationen finden Sie auf der [Seite Azure Purview-Berechtigungen](catalog-permissions.md).
+* Sie müssen Datenquellenadministrator und Datenleser sein, um eine Quelle zu registrieren und in Purview Studio zu verwalten. Weitere Informationen finden Sie auf der [Seite Azure Purview-Berechtigungen](catalog-permissions.md).
 
 ## <a name="register"></a>Register
 
@@ -50,13 +52,13 @@ Es ist wichtig, die Datenquelle in Azure Purview zu registrieren, bevor Sie eine
 
    :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-purview-acct.png" alt-text="Screenshot: Purview-Konto zum Registrieren der Datenquelle":::
 
-1. **Öffnen Sie Purview Studio** und navigieren Sie zu **Data Map --> Quellen**
+1. **Öffnen Sie Purview Studio** uns navigieren Sie zu **Data Map --> Quellen**
 
    :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-open-purview-studio.png" alt-text="Screenshot: Link zum Öffnen von Purview Studio":::
 
-   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-sources.png" alt-text="Screenshot: Navigieren zum Quellen-Link in der Data Map":::
+   :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-sources.png" alt-text="Screenshot: Navigieren zum Link Quellen in der Data Map":::
 
-1. Erstellen Sie die [Sammlungshierarchie](./quickstart-create-collection.md) mithilfe des Menüs **Sammlungen**, und weisen Sie den einzelnen untergeordneten Sammlungen nach Bedarf Berechtigungen zu
+1. Erstellen Sie die [Sammlungshierarchie](./quickstart-create-collection.md) mithilfe des **Menüs Sammlungen**, und weisen Sie den einzelnen untergeordneten Sammlungen nach Bedarf Berechtigungen zu
 
    :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-collections.png" alt-text="Screenshot: Sammlungsmenü zum Erstellen einer Sammlungshierarchie":::
 
@@ -87,7 +89,7 @@ Die folgenden Optionen werden unterstützt:
 > [!Note]
 > Wenn Sie für das Speicherkonto eine Firewall aktiviert haben, müssen Sie beim Einrichten einer Überprüfung als Authentifizierungsmethode Verwaltete Identität verwenden.
 
-- **Verwaltete Identität (empfohlen)** : Sobald das Azure Purview-Konto erstellt wurde, wird automatisch eine **verwaltete Systemidentität** in Azure AD Mandanten erstellt. Je nach Ressourcentyp sind bestimmte RBAC-Rollenzuweisungen erforderlich, damit die Azure Purview-MSI die Überprüfungen durchführen kann.
+- **Verwaltete Identität (empfohlen):** Sobald das Azure Purview-Konto erstellt wurde, wird automatisch eine **verwaltete Systemidentität** in Azure AD Mandanten erstellt. Je nach Ressourcentyp sind bestimmte RBAC-Rollenzuweisungen erforderlich, damit die Azure Purview-MSI die Überprüfungen durchführen kann.
 
 - **Kontoschlüssel**: Geheimnisse können in einer Azure Key Vault erstellt werden, um Anmeldeinformationen zu speichern, um den Zugriff für Azure Purview zum sicheren Überprüfen von Datenquellen mithilfe der Geheimnisse zu ermöglichen. Ein Geheimnis kann ein Speicherkontoschlüssel, ein SQL Anmeldekennwort oder ein Kennwort sein.
 
@@ -164,7 +166,7 @@ Wenn **Kontoschlüssel** als Authentifizierungsmethode ausgewählt wird, müssen
 
 ##### <a name="creating-a-new-service-principal"></a>Erstellen eines neuen Dienstprinzipals
 
-Wenn Sie [einen neuen Dienstprinzipal erstellen](./create-service-principal-azure.md) müssen, müssen Sie eine Anwendung in Ihrem Azure AD Mandanten registrieren und den Zugriff auf den Dienstprinzipal in Ihren Datenquellen bereitstellen. Ihr Azure AD allgemeiner Administrator oder andere Rollen, z. B. Anwendungsadministrator, können diesen Vorgang ausführen.
+Wenn Sie [einen neuen Dienstprinzipal erstellen](./create-service-principal-azure.md)müssen, müssen Sie eine Anwendung in Ihrem Azure AD Mandanten registrieren und den Zugriff auf den Dienstprinzipal in Ihren Datenquellen bereitstellen. Ihr Azure AD allgemeiner Administrator oder andere Rollen, z. B. Anwendungsadministrator, können diesen Vorgang ausführen.
 
 ##### <a name="getting-the-service-principals-application-id"></a>Abrufen der Anwendungs-ID des Dienstprinzipals
 
@@ -241,6 +243,7 @@ Geben Sie einen **Namen** für die Überprüfung an, wählen Sie die entsprechen
 
    :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-classification rules.png" alt-text="Überprüfen von Klassifizierungsregeln":::
 
+
    :::image type="content" source="media/register-scan-azure-blob-storage-source/register-blob-select-scan-rule-set.png" alt-text="Überprüfen der Regelauswahl":::
 
 1. Wählen Sie den Auslöser für die Überprüfung. Sie können einen Zeitplan einrichten oder die Überprüfung einmalig ausführen.
@@ -285,8 +288,8 @@ Geben Sie einen **Namen** für die Überprüfung an, wählen Sie die entsprechen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie Ihre Quelle registriert haben, halten Sie sich an die folgenden Anleitungen, um mehr über Purview und Ihre Daten zu erfahren.
+Nachdem Sie Ihre Quelle registriert haben, befolgen Sie die folgenden Anleitungen, um mehr über Purview und Ihre Daten zu erfahren.
 
-- [Dateneinblicke in Azure Purview](concept-insights.md)
+- [Datenerkenntnisse in Azure Purview](concept-insights.md)
 - [Datenherkunft in Azure Purview](catalog-lineage-user-guide.md)
 - [Data Catalog suchen](how-to-search-catalog.md)

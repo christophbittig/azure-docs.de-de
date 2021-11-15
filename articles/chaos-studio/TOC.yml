@@ -18,6 +18,14 @@
   items:
     - name: Azure-REST-API
       href: chaos-studio-samples-rest-api.md
+    - name: ARM-Vorlagen
+      items:
+        - name: Ziele und Funktionen
+          href: sample-template-targets.md
+        - name: Experimente
+          href: sample-template-experiment.md
+    - name: Azure-Richtliniendefinitionen
+      href: sample-policy-targets.md
 - name: Konzepte
   items:
     - name: Chaos-Experimente

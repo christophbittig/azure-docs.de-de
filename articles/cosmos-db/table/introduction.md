@@ -5,14 +5,14 @@ author: SnehaGunda
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: overview
-ms.date: 08/25/2021
+ms.date: 11/03/2021
 ms.author: sngun
-ms.openlocfilehash: 1cb2b9057a1be20896523eba5e1111046a2901ed
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: aa065a4c5cd8100ee9e6cb235555f9aefc910643
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124798938"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131504776"
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Einführung in Azure Cosmos DB: Tabelle-API
 [!INCLUDE[appliesto-table-api](../includes/appliesto-table-api.md)]
@@ -31,7 +31,7 @@ Mit [Azure Cosmos DB](introduction.md) wird die Tabellen-API für Anwendungen be
 > Der [serverlose Kapazitätsmodus](../serverless.md) ist nun in der Tabellen-API von Azure Cosmos DB verfügbar.
 
 > [!IMPORTANT]
-> Die .NET Cosmos DB-Tabellenbibliothek [Microsoft.Azure.Cosmos.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) befindet sich im Wartungsmodus und wird demnächst eingestellt. Aktualisieren Sie auf das neue .NET Azure Tables SDK [Azure.Data.Tables](https://www.nuget.org/packages/Azure.Data.Tables/), um weiterhin die neuesten Features zu erhalten, die von der Tabellen-API unterstützt werden.
+> Das .NET Azure Tables SDK [Azure.Data.Tables](https://www.nuget.org/packages/Azure.Data.Tables/) bietet aktuelle Features, die von der Tabellen-API unterstützt werden. Die Azure Tables-Clientbibliothek kann nahtlos auf Azure Table Storage- oder Azure Cosmos DB-Tabellendienstendpunkte ohne Codeänderungen ausgerichtet werden.
 
 ## <a name="table-offerings"></a>Tabellenangebote
 

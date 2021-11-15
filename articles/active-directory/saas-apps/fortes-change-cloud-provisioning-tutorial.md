@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/15/2021
 ms.author: thwimmer
-ms.openlocfilehash: 5a4c3d697926f5b64548ec631761fb7c4e22277f
-ms.sourcegitcommit: 86ca8301fdd00ff300e87f04126b636bae62ca8a
+ms.openlocfilehash: 7a31240c6074be759033324a1abb447d98cc2355
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2021
-ms.locfileid: "122207349"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131444021"
 ---
 # <a name="tutorial-configure-fortes-change-cloud-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren der automatischen Benutzerbereitstellung für Fortes Change Cloud
 
@@ -104,7 +104,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Fortes Change Cloud synchronisiert werden. Beachten Sie, dass die als **übereinstimmend** ausgewählten Attribute für den Abgleich der Benutzerkonten in Fortes Change Cloud für Updatevorgänge verwendet werden. Wenn Sie sich dafür entscheiden, das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) zu ändern, müssen Sie sicherstellen, dass die Fortes Change Cloud-API das Filtern von Benutzern anhand dieses Attributs unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-   |attribute|Typ|Unterstützung für das Filtern|
+   |attribute|type|Unterstützung für das Filtern|
    |---|---|---|
    |userName|String|&check;|
    |aktiv|Boolean|
@@ -140,6 +140,10 @@ Nachdem Sie die Bereitstellung konfiguriert haben, können Sie mit den folgenden
 * Mithilfe der [Bereitstellungsprotokolle](../reports-monitoring/concept-provisioning-logs.md) können Sie ermitteln, welche Benutzer erfolgreich bzw. nicht erfolgreich bereitgestellt wurden.
 * Anhand der [Fortschrittsleiste](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md) können Sie den Status des Bereitstellungszyklus überprüfen und den Fortschritt der Bereitstellung verfolgen.
 * Wenn sich die Bereitstellungskonfiguration in einem fehlerhaften Zustand zu befinden scheint, wird die Anwendung unter Quarantäne gestellt. Weitere Informationen zu den verschiedenen Quarantänestatus finden Sie [hier](../app-provisioning/application-provisioning-quarantine-status.md).  
+
+## <a name="change-log"></a>Änderungsprotokoll
+
+* 28.10.2021: **Schemaermittlung** aktiviert
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

@@ -10,12 +10,12 @@ ms.subservice: blobs
 ms.topic: how-to
 ms.reviewer: fryu
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 2e6a5cc63dceff6145f66fd5a23e4ffb89a3817f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 7cd01ff89ffdf01676a9a7c3ef5d41ac1bf138a6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095525"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131441493"
 ---
 # <a name="set-a-blobs-access-tier"></a>Festlegen der Zugriffsebene eines Blobs
 

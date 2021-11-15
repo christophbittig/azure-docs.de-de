@@ -9,16 +9,16 @@ ms.workload: infrastructure
 ms.date: 08/31/2021
 ms.author: cynthn
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 7468218fbbb08a2e7157d8fc10d6433d6d784d2e
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: a9b1dc77eb8eaae9e634cb362beed527a74a84be
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123452520"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131474513"
 ---
 # <a name="create-a-vm-from-a-generalized-image-version"></a>Erstellen einer VM aus einer generalisierten Imageversion
 
-Erstellen Sie eine VM aus einer [generalisierten Imageversion](./shared-image-galleries.md#generalized-and-specialized-images), die in einem Katalog mit freigegebenen Images gespeichert ist. Informationen zum Erstellen einer VM aus einem spezialisierten Image finden Sie unter [Erstellen einer VM aus einem spezialisierten Image](vm-specialized-image-version.md). 
+Erstellen Sie eine VM aus einer [generalisierten Imageversion](./shared-image-galleries.md#generalized-and-specialized-images), die in einer Azure Compute Gallery (früher als Shared Image Gallery bezeichnet) gespeichert ist. Informationen zum Erstellen einer VM aus einem spezialisierten Image finden Sie unter [Erstellen einer VM aus einem spezialisierten Image](vm-specialized-image-version.md). 
 
 
 ### <a name="portal"></a>[Portal](#tab/portal)

@@ -3,25 +3,25 @@ title: Verwenden eines verwalteten Images zum Erstellen eines benutzerdefinierte
 description: Erstellen Sie einen benutzerdefinierten Batch-Imagepool über ein verwaltetes Image, um Serverknoten mit den Softwarekomponenten und Daten für Ihre Anwendung bereitzustellen.
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 9baa65c0f1c1844ea10e3d5b4f0b48924912d233
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9e70d3391ca9c8d4854c4cd587ffb6e840ef4254
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105023876"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131476887"
 ---
 # <a name="use-a-managed-image-to-create-a-custom-image-pool"></a>Verwenden eines verwalteten Images zum Erstellen eines benutzerdefinierten Imagepools
 
-Zum Erstellen eines benutzerdefinierten Imagepools für die virtuellen Computer des Batch-Pools können Sie ein verwaltetes Image zum Erstellen eines [Shared Image Gallery-Images](batch-sig-images.md) verwenden. Die ausschließliche Verwendung eines verwalteten Images wird ebenfalls unterstützt, jedoch nur für API-Versionen bis einschließlich 2019-08-01.
+Zum Erstellen eines benutzerdefinierten Imagepools für die VMs Ihres Batch-Pools können mithilfe eines verwalteten Images ein [Azure Compute Gallery-Image](batch-sig-images.md) erstellen. Die ausschließliche Verwendung eines verwalteten Images wird ebenfalls unterstützt, jedoch nur für API-Versionen bis einschließlich 2019-08-01.
 
 > [!IMPORTANT]
-> In den meisten Fällen sollten Sie benutzerdefinierte Images mithilfe von Shared Image Gallery erstellen. Durch die Verwendung von Shared Image Gallery können Sie Pools schneller bereitstellen, eine größere Anzahl von virtuellen Computern skalieren und die Zuverlässigkeit bei der Bereitstellung virtueller Computer verbessern. Weitere Informationen finden Sie unter [Verwenden von Shared Image Gallery zum Erstellen eines benutzerdefinierten Pools](batch-sig-images.md).
+> In den meisten Fällen sollten Sie benutzerdefinierte Images mithilfe von Azure Compute Gallery erstellen. Durch die Verwendung von Azure Compute Gallery können Sie Pools schneller bereitstellen, eine größere Anzahl von VMs skalieren und die Zuverlässigkeit bei der Bereitstellung von VMs verbessern. Weitere Informationen finden Sie unter [Verwenden von Azure Compute Gallery zum Erstellen eines benutzerdefinierten Pools](batch-sig-images.md).
 
 In diesem Thema wird erläutert, wie ein benutzerdefinierter Imagepool nur mithilfe eines verwalteten Images erstellt wird.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- **Eine verwaltete Imageressource**: Um einen Pool von virtuellen Computern mithilfe eines benutzerdefinierten Images zu erstellen, müssen Sie eine verwaltete Imageressource in demselben Azure-Abonnement und in derselben Region wie das Batch-Konto besitzen oder erstellen. Das Image sollte auf der Grundlage von Momentaufnahmen des Betriebssystemdatenträgers des virtuellen Computers und optional seiner angefügten Datenträger erstellt werden.
+- **Eine verwaltete Imageressource**: Um einen Pool von virtuellen Computern mithilfe eines benutzerdefinierten Images zu erstellen, müssen Sie eine verwaltete Imageressource in demselben Azure-Abonnement und in derselben Region wie das Batch-Konto besitzen oder erstellen. Das Image sollte auf der Grundlage von Momentaufnahmen des Betriebssystemdatenträgers der VM und optional der angefügten Datenträger erstellt werden.
   - Verwenden Sie ein eindeutiges benutzerdefiniertes Image für jeden von Ihnen erstellten Pool.
   - Geben Sie die **Ressourcen-ID** des Images im Format `/subscriptions/xxxx-xxxxxx-xxxxx-xxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Compute/images/myImage` an, wenn Sie mithilfe der Batch-APIs einen Pool mit dem Image erstellen möchten.
   - Die verwaltete Imageressource sollte während der Lebensdauer des Pools vorhanden sein, damit der Pool zentral hochskaliert werden kann. Nach dem Löschen des Pools kann sie entfernt werden.
@@ -54,7 +54,7 @@ Wenn Sie einen neuen virtuellen Computer für das Image erstellen, können Sie e
 
 ### <a name="create-a-vm-snapshot"></a>Erstellen einer Momentaufnahme eines virtuellen Computers
 
-Eine Momentaufnahme ist eine vollständige, schreibgeschützte Kopie einer VHD. Sie können zum Erstellen einer Momentaufnahme des Betriebssystemdatenträgers oder der Datenträger eines virtuellen Computers das Azure-Portal oder Befehlszeilentools verwenden. Schritte und Optionen zum Erstellen einer Momentaufnahme finden Sie in der Anleitung für virtuelle [Linux](../virtual-machines/linux/snapshot-copy-managed-disk.md)- oder [Windows](../virtual-machines/windows/snapshot-copy-managed-disk.md)-Computer.
+Eine Momentaufnahme ist eine vollständige, schreibgeschützte Kopie einer VHD. Sie können zum Erstellen einer Momentaufnahme des Betriebssystemdatenträgers oder der Datenträger einer VM das Azure-Portal oder Befehlszeilentools verwenden. Die Schritte und Optionen zur Erstellung eines Snapshots finden Sie in der Anleitung für [VMs](../virtual-machines/snapshot-copy-managed-disk.md).
 
 ### <a name="create-an-image-from-one-or-more-snapshots"></a>Erstellen eines Images auf der Grundlage von Momentaufnahmen
 
@@ -141,7 +141,7 @@ Beachten Sie außerdem die folgenden Überlegungen:
 
   Wenn Sie einen Pool mit mehr als 300 Computeknoten planen, müssen Sie die Größe des Pools unter Umständen mehrmals ändern, um die Zielgröße zu erreichen.
   
-Durch Verwenden von [Shared Image Gallery](batch-sig-images.md) können Sie größere Pools mit Ihren benutzerdefinierten Images zusammen mit weiteren freigegebenen Imagereplikaten erstellen. Bei Verwendung von freigegebenen Images verkürzt sich die Zeit, die der Pool benötigt, um den stabilen Status zu erreichen, um bis zu 25 %, und die Leerlaufzeit des virtuellen Computers verkürzt sich um bis zu 30 %.
+Mit [Azure Compute Gallery](batch-sig-images.md) können Sie größere Pools mit Ihren benutzerdefinierten Images zusammen mit weiteren freigegebenen Imagereplikaten erstellen. Bei Verwendung von freigegebenen Images verkürzt sich die Zeit, die der Pool benötigt, um den stabilen Status zu erreichen, um bis zu 25 %, und die Leerlaufzeit des virtuellen Computers verkürzt sich um bis zu 30 %.
 
 ## <a name="considerations-for-using-packer"></a>Überlegungen zur Verwendung von Packer
 
@@ -155,5 +155,5 @@ Weitere Informationen zur Verwendung von Packer zum Erstellen eines virtuellen C
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie, wie sie mit der [Shared Image Gallery](batch-sig-images.md) einen benutzerdefinierten Pool erstellen können.
+- Erfahren Sie, wie Sie [Azure Compute Gallery](batch-sig-images.md) zum Erstellen eines benutzerdefinierten Pools verwenden.
 - Eine ausführliche Übersicht über Batch finden Sie unter [Workflow und Ressourcen des Batch-Diensts](batch-service-workflow-features.md).

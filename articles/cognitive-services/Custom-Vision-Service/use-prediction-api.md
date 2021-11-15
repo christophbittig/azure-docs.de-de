@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 04/02/2019
+ms.date: 10/27/2021
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 7f1939536e033d2cf964dd2f4ee562e4ee20061b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: c3b0090c1c75c8d341ff67b15e7e0391be45c157
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "88934751"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131446693"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>Verwenden des Modells mit der Vorhersage-API
 
-Nachdem Sie Ihr Modell trainiert haben, können Sie Bilder programmgesteuert testen, indem Sie sie an den Endpunkt der Vorhersage-API senden.
+Nachdem Sie Ihr Modell trainiert haben, können Sie es programmgesteuert testen, indem Sie Images an den Endpunkt der Vorhersage-API senden.
 
 > [!NOTE]
 > Dieser Artikel veranschaulicht, wie Sie mit C# ein Bild an die Vorhersage-API senden. Weitere Informationen und Beispiele finden Sie in der [Vorhersage-API-Referenz](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c15).

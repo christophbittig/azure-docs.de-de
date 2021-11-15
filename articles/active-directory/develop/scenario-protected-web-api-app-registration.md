@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/15/2020
+ms.date: 10/26/2021
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: dcfedf2cceddb59d456d421c4846f3cd252a65b3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a0b6e11720f6384b002f563dafddcd9d98aa549a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101651863"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131459480"
 ---
 # <a name="protected-web-api-app-registration"></a>Geschützte Web-API: App-Registrierung
 
@@ -39,12 +39,11 @@ Nachdem Sie die Anwendung erstellt haben, können Sie die akzeptierte Tokenversi
 1. Wählen Sie im Azure-Portal Ihre App und dann **Manifest** aus.
 1. Suchen Sie im Manifest nach der Eigenschaft **accessTokenAcceptedVersion**.
 1. Dieser Wert gibt Azure Active Directory (Azure AD) an, welche Tokenversion die Web-API akzeptiert.
-    - Mit dem Wert „2“ akzeptiert die Web-API v2.0-Token.
-    - Ist der Wert **Null**, akzeptiert die Web-API v1.0-Token.
+   - Mit dem Wert „2“ akzeptiert die Web-API v2.0-Token.
+   - Ist der Wert **Null**, akzeptiert die Web-API v1.0-Token.
 1. Falls Sie die Tokenversion geändert haben, wählen Sie **Speichern** aus.
 
-> [!NOTE]
-> Die Web-API gibt an, welche Tokenversion akzeptiert wird. Wenn ein Client ein Token für Ihre Web-API von Microsoft Identity Platform anfordert, erhält er ein Token, das angibt, welche Tokenversion die Web-API akzeptiert.
+Die Web-API gibt an, welche Tokenversion akzeptiert wird. Wenn ein Client ein Token für Ihre Web-API von Microsoft Identity Platform anfordert, erhält er ein Token, das angibt, welche Tokenversion die Web-API akzeptiert.
 
 ## <a name="no-redirect-uri"></a>Kein Umleitungs-URI
 
@@ -66,14 +65,14 @@ Definieren Sie bei der App-Registrierung die folgenden Parameter:
 
 Standardmäßig empfiehlt das Anwendungsregistrierungsportal die Verwendung von `api://{clientId}` als Ressourcen-URI. Dieser URI ist eindeutig, aber nicht von Menschen lesbar. Wenn Sie den URI ändern, müssen Sie sicherstellen, dass der neue Wert eindeutig ist. Das Anwendungsregistrierungsportal stellt sicher, dass Sie eine [konfigurierte Herausgeberdomäne](howto-configure-publisher-domain.md) verwenden.
 
-Den Clientanwendungen werden Bereiche als *delegierte Berechtigungen* und App-Rollen als *Anwendungsberechtigungen* für Ihre Web-API angezeigt.
+Den Clientanwendungen werden Bereiche als _delegierte Berechtigungen_ und App-Rollen als _Anwendungsberechtigungen_ für Ihre Web-API angezeigt.
 
 Bereiche werden den Benutzern Ihrer App auch im Zustimmungsfenster angezeigt. Geben Sie daher die entsprechenden Zeichenfolgen an, die den Bereich beschreiben:
 
 - Aus Sicht eines Benutzers
 - Aus Sicht eines Mandantenadministrators, der Administratoreinwilligung erteilen kann
 
-Die Einwilligung zu App-Rollen kann nicht durch einen Benutzer erteilt werden (da sie von einer Anwendung verwendet werden, die die Web-API selbstständig oder im Auftrag aufruft). Ein Mandantenadministrator muss in Clientanwendungen der App-Rollen einwilligen, die Ihre Web-API verfügbar machen. Weitere Informationen finden Sie unter [Administratoreinwilligung](v2-admin-consent.md).
+Die Einwilligung zu App-Rollen kann nicht durch einen Benutzer erteilt werden (da sie von einer Anwendung verwendet werden, die die Web-API im eigenen Auftrag aufruft). Ein Mandantenadministrator muss in Clientanwendungen der App-Rollen einwilligen, die Ihre Web-API verfügbar machen. Weitere Informationen finden Sie unter [Administratoreinwilligung](v2-admin-consent.md).
 
 ### <a name="exposing-delegated-permissions-scopes"></a>Verfügbarmachen delegierter Berechtigungen (Bereiche)
 
@@ -81,20 +80,20 @@ Die Einwilligung zu App-Rollen kann nicht durch einen Benutzer erteilt werden (d
 1. Wählen Sie **Bereich hinzufügen**.
 1. Übernehmen Sie, wenn Sie dazu aufgefordert werden, den vorgeschlagenen Anwendungs-ID-URI (`api://{clientId}`), indem Sie **Speichern und fortfahren** auswählen.
 1. Geben Sie folgende Werte an:
-    - Wählen Sie **Bereichsname** aus, und geben Sie **access_as_user** ein.
-    - Wählen Sie **Zum Einwilligen berechtigte Personen** aus, und stellen Sie sicher, dass **Admins und Benutzer** ausgewählt ist.
-    - Wählen Sie **Anzeigename der Administratorzustimmung** aus, und geben Sie **Zugriff auf TodoListService als Benutzer** ein.
-    - Wählen Sie **Beschreibung der Administratorzustimmung** aus, und geben Sie **Greift als Benutzer auf die TodoListService-Web-API zu** ein.
-    - Wählen Sie **Anzeigename der Benutzerzustimmung** aus, und geben Sie **Zugriff auf TodoListService als Benutzer** ein.
-    - Wählen Sie **Beschreibung der Benutzerzustimmung** aus, und geben Sie **Greift als Benutzer auf die TodoListService-Web-API zu** ein.
-    - Behalten Sie **Aktiviert** als Einstellung für den Wert **Status** bei.
- 1. Wählen Sie **Bereich hinzufügen** aus.
+   - Wählen Sie **Bereichsname** aus, und geben Sie **access_as_user** ein.
+   - Wählen Sie **Zum Einwilligen berechtigte Personen** aus, und stellen Sie sicher, dass **Admins und Benutzer** ausgewählt ist.
+   - Wählen Sie **Anzeigename der Administratorzustimmung** aus, und geben Sie **Zugriff auf TodoListService als Benutzer** ein.
+   - Wählen Sie **Beschreibung der Administratorzustimmung** aus, und geben Sie **Greift als Benutzer auf die TodoListService-Web-API zu** ein.
+   - Wählen Sie **Anzeigename der Benutzerzustimmung** aus, und geben Sie **Zugriff auf TodoListService als Benutzer** ein.
+   - Wählen Sie **Beschreibung der Benutzerzustimmung** aus, und geben Sie **Greift als Benutzer auf die TodoListService-Web-API zu** ein.
+   - Behalten Sie **Aktiviert** als Einstellung für den Wert **Status** bei.
+1. Wählen Sie **Bereich hinzufügen** aus.
 
 ### <a name="if-your-web-api-is-called-by-a-daemon-app"></a>Aufrufen der Web-API von Daemon-Apps
 
 In diesem Abschnitt erfahren Sie, wie Sie Ihre geschützte Web-API registrieren, damit Daemon-Apps sie sicher aufrufen können.
 
-- Sie deklarieren lediglich *Anwendungsberechtigungen* und machen diese verfügbar, da Daemon-Apps nicht mit Benutzern interagieren. Delegierte Berechtigungen würden keinen Sinn machen.
+- Sie deklarieren lediglich _Anwendungsberechtigungen_ und machen diese verfügbar, da Daemon-Apps nicht mit Benutzern interagieren. Delegierte Berechtigungen würden keinen Sinn machen.
 - Mandantenadministratoren können Azure AD auffordern, Web-API-Token nur an Anwendungen auszugeben, die für den Zugriff auf eine der Anwendungsberechtigungen der Web-API registriert wurden.
 
 #### <a name="exposing-application-permissions-app-roles"></a>Verfügbarmachen von Anwendungsberechtigungen (App-Rollen)
@@ -134,20 +133,17 @@ So fügen Sie diese erhöhte Sicherheit hinzu
 1. Wechseln Sie in Ihrer App-Registrierung zur Seite **Übersicht** der App.
 1. Wählen Sie unter **Verwaltete Anwendung in lokalem Verzeichnis** den Link mit dem Namen Ihrer App aus. Die Bezeichnung für diese Auswahl ist u. U. abgeschnitten. Möglicherweise wird nur **Verwaltete Anwendung in...** angezeigt.
 
-   > [!NOTE]
-   >
-   > Wenn Sie diesen Link auswählen, wechseln Sie zur Seite **Übersicht über Unternehmensanwendungen**. Diese Seite ist mit dem Dienstprinzipal für Ihre Anwendung in dem Mandanten verknüpft, in dem Sie sie erstellt haben. Über die Schaltfläche „Zurück“ in Ihrem Browser können Sie wieder zur App-Registrierungsseite wechseln.
+   Wenn Sie diesen Link auswählen, wechseln Sie zur Seite **Übersicht über Unternehmensanwendungen**. Diese Seite ist mit dem Dienstprinzipal für Ihre Anwendung in dem Mandanten verknüpft, in dem Sie sie erstellt haben. Über die Schaltfläche „Zurück“ in Ihrem Browser können Sie wieder zur App-Registrierungsseite wechseln.
 
 1. Wählen Sie im Abschnitt **Verwalten** der Unternehmensanwendungsseiten die Seite **Eigenschaften** aus.
 1. Wenn Azure AD den Zugriff auf Ihre Web-API nur von bestimmten Clients aus zulassen soll, stellen Sie **Benutzerzuweisung erforderlich?** auf **Ja** ein.
 
-   > [!IMPORTANT]
-   >
-   > Wenn Sie **Benutzerzuweisung erforderlich?** auf **Ja** einstellen, überprüft Azure AD die App-Rollenzuweisungen des Clients, wenn er ein Zugriffstoken für die Web-API anfordert. Wenn dem Client keinen App-Rollen zugewiesen sind, gibt Azure AD folgenden Fehler zurück: „invalid_client: AADSTS501051: Anwendung \<application name\> ist keine Rolle für die \<web API\> zugewiesen“.
-   >
-   > Wenn Sie **Benutzerzuweisung erforderlich?** auf **Nein** eingestellt lassen, überprüft Azure AD die App-Rollenzuweisungen nicht, wenn ein Client ein Zugriffstoken für Ihre Web-API anfordert. Jeder Daemon-Client (d. h. jeder Client, der den Clientanmeldeinformations-Flow verwendet) kann ein Zugriffstoken für die API abrufen, indem er lediglich seine Zielgruppe angibt. Jede Anwendung kann auf die API zugreifen, ohne für sie Berechtigungen anfordern zu müssen.
-   >
-   > Ihre Web-API kann jedoch, wie im vorherigen Abschnitt erläutert, immer überprüfen, ob die Anwendung die richtige Rolle (d. h. vom Mandantenadministrator autorisiert) hat. Die API führt diese Überprüfung durch, indem sie überprüft, ob das Zugriffstoken einen Rollenanspruch hat und ob der Wert für diesen Anspruch richtig ist. Im vorherigen JSON-Beispiel ist der Wert `access_as_application`.
+   
+   Wenn Sie **Benutzerzuweisung erforderlich?** auf **Ja** einstellen, überprüft Azure AD die App-Rollenzuweisungen des Clients, wenn er ein Zugriffstoken für die Web-API anfordert. Wenn der Client keiner App-Rolle zugewiesen ist, gibt Azure AD die Fehlermeldung "invalid_client: AADSTS501051: Anwendung \<application name\> ist keiner Rolle für die \<web API\> zugewiesen" zurück.
+   
+   Wenn Sie **Benutzerzuweisung erforderlich?** auf **Nein** eingestellt lassen, überprüft Azure AD die App-Rollenzuweisungen nicht, wenn ein Client ein Zugriffstoken für Ihre Web-API anfordert. Jeder Daemon-Client (d. h. jeder Client, der den Clientanmeldeinformations-Flow verwendet) kann ein Zugriffstoken für die API abrufen, indem er lediglich seine Zielgruppe angibt. Jede Anwendung kann auf die API zugreifen, ohne für sie Berechtigungen anfordern zu müssen.
+   
+   Wie im vorherigen Abschnitt erläutert, kann Ihre Web-API jedoch immer überprüfen, ob die Anwendung über die richtige Rolle verfügt, die vom Mandantenadministrator autorisiert wird. Die API führt diese Überprüfung durch, indem überprüft wird, ob das Zugriffstoken über einen Rollenanspruch verfügt und der Wert für diesen Anspruch korrekt ist. Im vorherigen JSON-Beispiel ist der Wert `access_as_application`.
 
 1. Wählen Sie **Speichern** aus.
 

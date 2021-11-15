@@ -3,12 +3,12 @@ title: Speicheraspekte für Azure Functions
 description: Erfahren Sie über die Speicheranforderungen von Azure Functions und über das Verschlüsseln gespeicherter Daten.
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: dfbaf2947dd3eaacd155a240541a6abae3894b35
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6dc2bad744118e57b9e958658814f5c194f633ad
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128599979"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130216616"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Speicheraspekte für Azure Functions
 
@@ -73,12 +73,14 @@ Azure Files wird standardmäßig für Premium- und Nicht-Linux-Verbrauchspläne 
 
 Wenn Azure Files nicht verwendet wird, müssen Sie Folgendes berücksichtigen:
 
-* Sie müssen die Bereitstellung über eine externe Paket-URL ausführen
-* Ihre App kann sich nicht auf ein freigegebenes beschreibbares Dateisystem verlassen
-* Die App kann runtime v1 von Functions nicht verwenden
+* Sie müssen die Bereitstellung über eine externe Paket-URL ausführen.
+* Ihre App kann sich nicht auf ein freigegebenes beschreibbares Dateisystem verlassen.
+* Die App kann runtime v1 von Functions nicht verwenden.
 * Für Protokollstreaming in Clients wie dem Azure-Portal werden standardmäßig Dateisystemprotokolle verwendet. Sie sollten stattdessen Application Insights-Protokolle verwenden.
 
 Wenn die oben genannten Punkte ordnungsgemäß berücksichtigt werden, können Sie die App ohne Azure Files erstellen. Erstellen Sie die Funktions-App, ohne die Anwendungseinstellungen `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` und `WEBSITE_CONTENTSHARE` anzugeben. Hierzu können Sie eine ARM-Vorlage für eine Standardbereitstellung generieren, diese beiden Einstellungen entfernen und dann die Vorlage bereitstellen. 
+
+Da Functions Azure Files in Teilen der dynamischen horizontalen Skalierung verwendet, kann Skalierung eingeschränkt werden, wenn die Ausführung ohne Azure Files in Verbrauchs- und Premium-Plänen erfolgt.
 
 ## <a name="mount-file-shares"></a>Einbinden von Dateifreigaben
 

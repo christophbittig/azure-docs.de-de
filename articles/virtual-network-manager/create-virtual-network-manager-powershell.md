@@ -7,12 +7,12 @@ ms.service: virtual-network-manager
 ms.topic: quickstart
 ms.date: 11/02/2021
 ms.custom: template-quickstart, ignite-fall-2021
-ms.openlocfilehash: a25f96fc9584c776c51798ea05d6221116b0b6a9
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: effbdd0482e40535793e2c60dcdce3b4cdb518e6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131029371"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131466462"
 ---
 # <a name="quickstart-create-a-mesh-network-with-azure-virtual-network-manager-using-azure-powershell"></a>Schnellstart: Erstellen eines Cloudnetzwerks mit Azure Virtual Network Manager und Azure PowerShell
 
@@ -30,6 +30,22 @@ In diesem Schnellstart stellen Sie drei virtuelle Netzwerke bereit und erstellen
 * Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Stellen Sie sicher, dass Sie über die aktuellen PowerShell-Module verfügen, oder verwenden Sie Azure Cloud Shell im Portal.
 * Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzAccount` ausführen, um eine Verbindung mit Azure herzustellen.
+
+## <a name="register-subscription-for-public-preview"></a>Registrieren eines Abonnements für die Public Preview
+
+Verwenden Sie den folgenden Befehl, um Ihr Azure-Abonnement für die Public Preview von Azure Virtual Network Manager zu registrieren:
+
+```azurepowershell-interactive
+Register-AzProviderFeature -FeatureName AllowAzureNetworkManager -ProviderNamespace Microsoft.Network
+```
+
+## <a name="install-azure-powershell-module"></a>Installieren des Azure PowerShell-Moduls
+
+Installieren Sie mithilfe des folgenden Befehls das aktuelle Azure PowerShell-Modul *Az.Network*:
+
+```azurepowershell-interactive
+Install-Module -Name Az.Network -AllowPrerelease
+```
 
 ## <a name="create-virtual-network-manager"></a>Erstellen einer Virtual Network Manager-Instanz
 

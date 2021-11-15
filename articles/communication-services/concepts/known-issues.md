@@ -8,12 +8,12 @@ ms.author: rifox
 ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 3016fb18827c0c1323cb151024303a15a2454c5a
-ms.sourcegitcommit: 92889674b93087ab7d573622e9587d0937233aa2
+ms.openlocfilehash: 02c0d31ec07c210197968e514573e372ef24dd59
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130177933"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130219108"
 ---
 # <a name="known-issues"></a>Bekannte Probleme
 Dieser Artikel enthält Informationen zu Einschränkungen und bekannten Problemen im Zusammenhang mit Azure Communication Services Calling SDKs und Azure Communication Services-APIs für die Anrufautomatisierung.
@@ -49,15 +49,20 @@ Anwendungen können keine Mikrofon-/Lautsprechergeräte (z. B. Bluetooth) in Sa
 
 Wenn Sie Safari unter macOS verwenden, kann Ihre App über den Geräte-Manager von Communication Services keine Lautsprecher auflisten bzw. auswählen. In diesem Szenario müssen Geräte über das Betriebssystem ausgewählt werden. Wenn Sie Chrome unter macOS verwenden, kann die App Geräte über den Geräte-Manager von Communication Services aufzählen/auswählen.
 
-#### <a name="audio-connectivity-is-lost-when-receiving-sms-messages-or-calls-during-an-ongoing-voip-call"></a>Die Audioverbindung wird unterbrochen, wenn während eines VoIP-Anrufs SMS-Nachrichten oder Anrufe eingehen.
-Dieses Problem kann verschiedene Ursachen haben:
+#### <a name="device-will-get-muted-and-incoming-video-will-stop-rendering-when-an-interruption-occurs-that-takes-over-device-access"></a>Das Gerät wird stummgeschaltet, und das Rendering eingehender Videos wird beendet, wenn eine Unterbrechung auftritt, die den Gerätezugriff übernimmt.
+Dieses Problem kann in erster Linie durch eine andere Anwendung oder das Betriebssystem hervorgerufen werden, das die Steuerung des Mikrofons oder der Kamera übernimmt. Einige Beispiele sind unten zu sehen:
 
-- Bei einigen mobilen Browsern geht die Konnektivität verloren, wenn sie sich im Hintergrund befinden. Dies kann zur Beeinträchtigung des Anrufs führen, wenn der VoIP-Anruf durch ein Ereignis unterbrochen wurde, das Ihre Anwendung in den Hintergrund drängt. 
-- Manchmal werden die Audiodaten von einer SMS oder von einem Festnetzanruf gebunden und nicht an den VoIP-Anruf zurückgegeben. Dieses Problem wurde von Apple in iOS-Versionen ab 14.4.1 behoben. 
+- Während der Benutzer sich in einem Anruf befindet, geht ein PSTN-Anruf ein und übernimmt den Gerätezugriff auf das Mikrofon.
+- Während sich der Benutzer in einem Anruf befindet, navigiert er zu einer anderen nativen Anwendung, die den Zugriff auf das Mikrofon oder die Kamera übernimmt, beispielsweise zur Wiedergabe eines YouTube-Videos oder zum Einleiten eines FaceTime-Anrufs.
+- Während der Benutzer sich in einem Anruf befindet, aktiviert er Siri, die den Zugriff auf das Mikrofon übernimmt.
+
+Zur Wiederherstellung muss der Benutzer in allen genannten Fällen zur Anwendung zurückkehren, um die Stummschaltung aufzuheben und das Videosignal zu starten, damit die Audio- und Videodaten nach der Unterbrechung wieder zu fließen beginnen.
+
+In einigen Fällen werden die Geräte (Mikrofon oder Kamera) nicht rechtzeitig freigegeben, und dies kann zu Problemen mit dem ursprünglichen Anruf führen, z. B. wenn der Benutzer versucht, die Stummschaltung beim Ansehen eines YouTube-Videos oder bei einem gleichzeitigen PSTN-Anruf aufzuheben. 
 
 <br/>Clientbibliothek: Calling (JavaScript)
-<br/>Browser: Safari, Chrome
-<br/>Betriebssystem: iOS, Android
+<br/>Browser: Safari
+<br/>Betriebssystem: iOS
 
 #### <a name="repeatedly-switching-video-devices-may-cause-video-streaming-to-temporarily-stop"></a>Ein wiederholter Wechsel von Videogeräten kann dazu führen, dass das Videostreaming vorübergehend angehalten wird.
 
@@ -105,7 +110,7 @@ Wenn Benutzer die Videoübertragung schnell ein-/ausschalten, während sich der 
 Wird untersucht
 
 #### <a name="enumeratingaccessing-devices-for-safari-on-macos-and-ios"></a>Aufzählen von Geräten für Safari unter macOS und iOS bzw. Zugreifen auf solche Geräte 
-Wenn Zugriff auf Geräte erteilt wird, werden die Geräteberechtigungen nach einer gewissen Zeit zurückgesetzt. Safari unter MacOS und iOS hält die Berechtigungen nicht sehr lange aufrecht, es sei denn, es wurde ein Stream erlangt. Dieses Problem lässt sich am einfachsten umgehen, indem vor dem Aufrufen der Geräteaufzählungs-APIs des Geräte-Managers („DeviceManager.getCameras()“, „DeviceManager.getSpeakers()“ und „DeviceManager.getMicrophones()“) die API „DeviceManager.askDevicePermission()“ aufgerufen wird. Sind die Berechtigungen vorhanden, wird dem Benutzer nichts angezeigt. Andernfalls erfolgt eine erneute Anforderung.
+Wenn Zugriff auf Geräte erteilt wird, werden die Geräteberechtigungen nach einer gewissen Zeit zurückgesetzt. Safari hält unter macOS und iOS die Berechtigungen nicht sehr lange aufrecht, es sei denn, es wurde ein Stream erlangt. Dieses Problem lässt sich am einfachsten umgehen, indem vor dem Aufrufen der Geräteaufzählungs-APIs des Geräte-Managers („DeviceManager.getCameras()“, „DeviceManager.getSpeakers()“ und „DeviceManager.getMicrophones()“) die API „DeviceManager.askDevicePermission()“ aufgerufen wird. Sind die Berechtigungen vorhanden, wird dem Benutzer nichts angezeigt. Andernfalls erfolgt eine erneute Anforderung.
 
 <br/>Betroffene Geräte: iPhone
 <br/>Clientbibliothek: Calling (JavaScript)
@@ -118,8 +123,8 @@ Während eines laufenden Gruppenanrufs sendet _Benutzer A_ Videodaten, und _Ben
 #### <a name="using-3rd-party-libraries-to-access-gum-during-the-call-may-result-in-audio-loss"></a>Die Verwendung von Drittanbieterbibliotheken für den Zugriff auf GUM während des Anrufs kann zu Audioverlusten führen.
 Die separate Verwendung von „getUserMedia“ innerhalb der Anwendung führt zu einem Verlust des Audiodatenstroms, da eine Drittanbieterbibliothek den Gerätezugriff von der ACS-Bibliothek übernimmt.
 Entwicklern wird empfohlen, folgende Schritte zu unternehmen:
-1. Verwenden Sie während des Anrufs keine Drittanbieterbibliotheken, die intern die GetUserMedia-API verwenden.
-2. Wenn Sie dennoch die Drittanbieterbibliothek verwenden müssen, besteht die einzige Möglichkeit zur Wiederherstellung darin, entweder das ausgewählte Gerät zu wechseln (wenn der Benutzer über mehrere verfügt) oder den Anruf neu zu starten.
+- Verwenden Sie während des Anrufs keine Drittanbieterbibliotheken, die intern die GetUserMedia-API verwenden.
+- Wenn Sie dennoch die Drittanbieterbibliothek verwenden müssen, besteht die einzige Möglichkeit zur Wiederherstellung darin, entweder das ausgewählte Gerät zu wechseln (wenn der Benutzer über mehrere verfügt) oder den Anruf neu zu starten.
 
 <br/>Browser: Safari
 <br/>Betriebssystem: iOS

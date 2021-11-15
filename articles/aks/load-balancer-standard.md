@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/14/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 764f6585aab43ba1f6db29a234cc2bc554b78c58
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: d290549baf39f11c495c1f028a6eea2aba75d701
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130236673"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131576661"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>Verwenden einer öffentlichen Instanz von Load Balancer Standard in Azure Kubernetes Service (AKS)
 
@@ -296,6 +296,8 @@ spec:
   - MY_EXTERNAL_IP_RANGE
 ```
 
+In diesem Beispiel wird die Regel aktualisiert, um eingehenden externen Datenverkehr nur aus dem `MY_EXTERNAL_IP_RANGE`-Bereich zuzulassen. Wenn Sie `MY_EXTERNAL_IP_RANGE` durch die IP-Adresse des internen Subnetzes ersetzen, wird der Datenverkehr nur auf die internen IP-Adressen des Clusters beschränkt. Wenn der Datenverkehr auf interne Cluster-IPs beschränkt ist, können Clients außerhalb Ihres Kubernetes-Clusters nicht auf den Lastenausgleich zugreifen.
+
 > [!NOTE]
 > Eingehender, externer Datenverkehr wird vom Lastenausgleich an das virtuelle Netzwerk für Ihren AKS-Cluster geleitet. Das virtuelle Netzwerk verfügt über eine Netzwerksicherheitsgruppe (NSG), die den gesamten eingehenden Datenverkehr vom Lastenausgleich zulässt. Diese NSG verwendet ein [Diensttag][service-tags] vom Typ *LoadBalancer*, um den Datenverkehr vom Lastenausgleich zuzulassen.
 
@@ -321,7 +323,7 @@ spec:
 
 Hier ist eine Liste mit Anmerkungen angegeben, die für Kubernetes-Dienste vom Typ `LoadBalancer` unterstützt werden. Diese Anmerkungen gelten nur für eingehende Datenflüsse (**INBOUND**):
 
-| Anmerkung | Wert | Beschreibung
+| Anmerkung | Wert | BESCHREIBUNG
 | ----------------------------------------------------------------- | ------------------------------------- | ------------------------------------------------------------ 
 | `service.beta.kubernetes.io/azure-load-balancer-internal`         | `true` oder `false`                     | Geben Sie an, ob es ein interner Lastenausgleich sein soll. Wenn Sie nichts angeben, wird standardmäßig „Öffentlich“ verwendet.
 | `service.beta.kubernetes.io/azure-load-balancer-internal-subnet`  | Name des Subnetzes                    | Geben Sie an, an welches Subnetz der interne Lastenausgleich gebunden werden soll. Wenn Sie nichts angeben, wird standardmäßig das in der Cloudkonfigurationsdatei konfigurierte Subnetz verwendet.
@@ -330,7 +332,7 @@ Hier ist eine Liste mit Anmerkungen angegeben, die für Kubernetes-Dienste vom T
 | `service.beta.kubernetes.io/azure-load-balancer-resource-group`   | Name der Ressourcengruppe            | Geben Sie die Ressourcengruppe von öffentlichen IP-Adressen des Lastenausgleichs an, die sich nicht in derselben Ressourcengruppe wie die Clusterinfrastruktur (Knotenressourcengruppe) befinden.
 | `service.beta.kubernetes.io/azure-allowed-service-tags`           | Liste mit zulässigen Diensttags          | Geben Sie eine Liste mit den zulässigen [Diensttags][service-tags] an (mit Kommas als Trennzeichen).
 | `service.beta.kubernetes.io/azure-load-balancer-tcp-idle-timeout` | TCP-Leerlauftimeouts in Minuten          | Geben Sie die Dauer in Minuten für Leerlauftimeouts von TCP-Verbindungen ein, die für den Lastenausgleich auftreten. Der Standard- und Minimalwert ist 4. Der Maximalwert ist 30. Dieser Wert muss eine ganze Zahl sein.
-|`service.beta.kubernetes.io/azure-load-balancer-disable-tcp-reset` | `true`                                | Deaktivieren von `enableTcpReset` für SLB
+|`service.beta.kubernetes.io/azure-load-balancer-disable-tcp-reset` | `true`                                | Deaktivieren von `enableTcpReset` für SLB In Kubernetes 1.18 als veraltet gekennzeichnet und in 1.20 entfernt. 
 
 
 ## <a name="troubleshooting-snat"></a>Problembehandlung für SNAT
@@ -355,9 +357,6 @@ Nutzen Sie nach Möglichkeit immer die Wiederverwendung von Verbindungen und Ver
 Nutzen Sie Verbindungspools, um Ihre Verbindungsdatenmenge zu steuern.
 - Vermeiden Sie den Abbruch eines TCP-Datenflusses im Hintergrund, und verlassen Sie sich nicht darauf, dass dies über TCP-Timer bereinigt wird. Wenn Sie die explizite Verbindungstrennung durch TCP nicht zulassen, bleibt der Zuordnungszustand bei Zwischensystemen und -endpunkten erhalten, und SNAT-Ports stehen nicht für andere Verbindungen zur Verfügung. Dieses Muster kann zu einer Auslösung von Anwendungsausfällen und zu einer SNAT-Überlastung führen.
 - Ändern Sie Timerwerte für die TCP-Verbindungstrennung auf der Betriebssystemebene nur, wenn Sie mit den Auswirkungen vertraut sind, die sich dadurch ergeben. Der TCP-Stapel wird zwar wiederhergestellt, aber Ihre Anwendungsleistung kann beeinträchtigt werden, wenn für die Endpunkte einer Verbindung unterschiedliche Erwartungen bestehen. Der Wunsch nach einer Änderung von Timern ist normalerweise ein Zeichen für ein zugrunde liegendes Entwurfsproblem. Sehen Sie sich die folgenden Empfehlungen an.
-
-
-Im obigen Beispiel wird die Regel so angepasst, dass nur eingehender externer Datenverkehr aus dem Bereich *MY_EXTERNAL_IP_RANGE* zugelassen wird. Wenn Sie *MY_EXTERNAL_IP_RANGE* durch die IP-Adresse des internen Subnetzes ersetzen, wird der Datenverkehr nur auf die internen IP-Adressen des Clusters beschränkt. Für Clients außerhalb Ihres Kubernetes-Clusters ist es dann nicht möglich, auf den Lastenausgleich zuzugreifen.
 
 ## <a name="moving-from-a-basic-sku-load-balancer-to-standard-sku"></a>Wechseln von einem Lastenausgleich mit der SKU „Basic“ zur SKU „Standard“
 

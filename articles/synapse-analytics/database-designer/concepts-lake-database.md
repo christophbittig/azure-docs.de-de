@@ -4,15 +4,16 @@ description: Lernen Sie das Konzept der Lake-Datenbank kennen, und erfahren Sie,
 author: gsaurer
 ms.author: gesaur
 ms.service: synapse-analytics
+ms.subservice: database-editor
 ms.topic: conceptual
 ms.date: 11/02/2021
 ms.custom: template-concept, ignite-fall-2021
-ms.openlocfilehash: b0c288fe2f7b6ac9bf6c0a2a636131a1d89ffe5d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 5b030bc1551bc8d21101b127c123507f08abf62c
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095392"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131510426"
 ---
 # <a name="lake-database"></a>Lake-Datenbank
 

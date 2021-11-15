@@ -10,12 +10,12 @@ services: synapse-analytics
 ms.service: synapse-analytics
 ms.subservice: data-explorer
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 338798b017bd36be2dd3c717b67515064a245ebb
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: f43d48d4ce0f66fbd1663d58eb92728532833783
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131101766"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131563376"
 ---
 # <a name="what-is-azure-synapse-data-explorer-preview"></a>Was ist Azure Synapse Data Explorer? (Vorschau)
 
@@ -72,7 +72,7 @@ Diese effizienten Indizierungsfunktionen ermöglichen Data Explorer, die Daten n
 
 ### <a name="kusto-query-language"></a>Kusto-Abfragesprache
 
-Für KQL gibt es eine große, wachsende Community, die Azure Monitor, Azure Application Insights, Azure Sentinel, Azure Data Explorer und andere Microsoft-Lösungen schnell eingeführt hat. Die Sprache bietet eine leicht verständliche Syntax und ermöglicht einen reibungslosen Übergang von einfachen Einzeilern zu komplexen Datenverarbeitungsabfragen. Dadurch bietet Data Explorer eine umfangreiche Intellisense-Unterstützung und Vielzahl von Sprachkonstrukten und integrierten Funktionen für Aggregationen, Zeitreihen und Benutzeranalysen, die in SQL nicht verfügbar sind, um Telemetriedaten schneller zu erkunden.
+Für KQL gibt es eine große, wachsende Community, die Azure Monitor Log Analytics und Application Insights, Azure Sentinel, Azure Data Explorer und andere Microsoft-Angebote schnell eingeführt hat. Die Sprache bietet eine leicht verständliche Syntax und ermöglicht einen reibungslosen Übergang von einfachen Einzeilern zu komplexen Datenverarbeitungsabfragen. Dadurch bietet Data Explorer eine umfangreiche Intellisense-Unterstützung und Vielzahl von Sprachkonstrukten und integrierten Funktionen für Aggregationen, Zeitreihen und Benutzeranalysen, die in SQL nicht verfügbar sind, um Telemetriedaten schneller zu erkunden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

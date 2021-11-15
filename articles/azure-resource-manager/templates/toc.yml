@@ -269,7 +269,7 @@
           href: ../../key-vault/keys/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
         - name: 'Key Vault: Geheimnis'
           href: ../../key-vault/secrets/quick-create-template.md?toc=/azure/azure-resource-manager/templates/toc.json
-        - name: Security Center
+        - name: Defender für Cloud
           href: ../../security-center/quickstart-automation-alert.md?toc=/azure/azure-resource-manager/templates/toc.json
     - name: Storage
       items:
@@ -478,7 +478,7 @@
       href: /rest/api/resources/
     - name: Azure PowerShell
       href: /powershell/module/az.resources
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/resource
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.resourcemanager

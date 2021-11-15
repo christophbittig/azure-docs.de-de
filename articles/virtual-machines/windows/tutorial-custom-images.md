@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Erstellen benutzerdefinierter VM-Images mit Azure PowerShell'
-description: In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure PowerShell ein benutzerdefiniertes Image für virtuelle Windows-Computer in einer Azure Shared Image Gallery-Instanz erstellen.
+description: In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure PowerShell ein benutzerdefiniertes Image für virtuelle Windows-Computer in einer Azure Compute Gallery-Instanz erstellen.
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: shared-image-gallery
@@ -9,24 +9,24 @@ ms.workload: infrastructure
 ms.date: 05/01/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: fe7698a0a2a7c0059db6e5f96e3f86445bc5871f
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: 5c7ce289d515892db72b681e1e7ef5337eb7cb9b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123449446"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131421633"
 ---
 # <a name="tutorial-create-windows-vm-images-with-azure-powershell"></a>Tutorial: Erstellen von Windows-VM-Images mit Azure PowerShell
 **Gilt für:** :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen 
 
-Images können für das Bootstrapping von Bereitstellungen verwendet werden und sorgen für VM-übergreifende Konsistenz. In diesem Tutorial erstellen Sie mithilfe von PowerShell ein eigenes spezialisiertes Image eines virtuellen Azure-Computers und speichern es in einer Shared Image Gallery-Instanz. Folgendes wird vermittelt:
+Images können für das Bootstrapping von Bereitstellungen verwendet werden und sorgen für VM-übergreifende Konsistenz. In diesem Tutorial erstellen Sie mithilfe von PowerShell ein eigenes spezialisiertes Image eines virtuellen Azure-Computers und speichern es in einer Azure Compute Gallery-Instanz (früher als „Shared Image Gallery“ bezeichnet). Folgendes wird vermittelt:
 
 > [!div class="checklist"]
-> * Erstellen einer Shared Image Gallery-Instanz
+> * Erstellen einer Azure Compute Gallery-Instanz
 > * Erstellen einer Imagedefinition
 > * Erstellen einer Imageversion
 > * Erstellen eines virtuellen Computers aus einem Image 
-> * Freigeben eines Imagekatalogs
+> * Freigeben eines Katalogs
 
 
 
@@ -38,11 +38,11 @@ Für das Beispiel in diesem Tutorial muss ein virtueller Computer vorhanden sein
 
 ## <a name="overview"></a>Übersicht
 
-Der [Katalog mit freigegebenen Images](../shared-image-galleries.md) vereinfacht das Freigeben benutzerdefinierter Images in Ihrer Organisation. Benutzerdefinierte Images sind wie Marketplace-Images, Sie erstellen sie jedoch selbst. Benutzerdefinierte Images können zum Starten von Konfigurationen verwendet werden, z.B. zum Vorabladen von Anwendungen, Anwendungskonfigurationen und anderen Betriebssystemkonfigurationen. 
+Eine [Azure Compute Gallery](../shared-image-galleries.md)-Instanz vereinfacht das Freigeben benutzerdefinierter Images in Ihrer Organisation. Benutzerdefinierte Images sind wie Marketplace-Images, Sie erstellen sie jedoch selbst. Benutzerdefinierte Images können zum Starten von Konfigurationen verwendet werden, z.B. zum Vorabladen von Anwendungen, Anwendungskonfigurationen und anderen Betriebssystemkonfigurationen. 
 
-Shared Image Gallery ermöglicht Ihnen die Freigabe Ihrer benutzerdefinierten VM-Images für andere Benutzer. Wählen Sie aus, welche Images Sie teilen möchten, in welchen Regionen Sie sie verfügbar machen möchten, und mit wem Sie sie teilen möchten. 
+Mithilfe von Azure Compute Gallery können Sie Ihre benutzerdefinierten VM-Images für andere Benutzer freigeben. Wählen Sie aus, welche Images Sie teilen möchten, in welchen Regionen Sie sie verfügbar machen möchten, und mit wem Sie sie teilen möchten. 
 
-Die Funktion „Katalog mit geteilten Images“ verfügt über mehrere Ressourcentypen:
+Die Funktion „Azure Compute Gallery“ verfügt über mehrere Ressourcentypen:
 
 [!INCLUDE [virtual-machines-shared-image-gallery-resources](../includes/virtual-machines-shared-image-gallery-resources.md)]
 
@@ -75,18 +75,18 @@ $resourceGroup = New-AzResourceGroup `
    -Location 'EastUS'
 ```
 
-## <a name="create-an-image-gallery"></a>Erstellen eines Imagekatalogs 
+## <a name="create-a-gallery"></a>Erstellen eines Katalogs 
 
-Ein Imagekatalog ist die primäre Ressource, die zur Ermöglichung des Teilens von Images verwendet wird. Zulässige Zeichen für Katalognamen sind Groß- und Kleinbuchstaben, Zahlen und Punkte. Der Katalogname darf keine Bindestriche enthalten. Katalognamen müssen innerhalb Ihres Abonnements eindeutig sein. 
+Ein Katalog ist die primäre Ressource, die zur Ermöglichung der Imagefreigabe verwendet wird. Zulässige Zeichen für Katalognamen sind Groß- und Kleinbuchstaben, Zahlen und Punkte. Der Katalogname darf keine Bindestriche enthalten. Katalognamen müssen innerhalb Ihres Abonnements eindeutig sein. 
 
-Erstellen Sie mit [New-AzGallery](/powershell/module/az.compute/new-azgallery) einen Imagekatalog. Im folgenden Beispiel wird der Katalog *myGallery* in der Ressourcengruppe *myGalleryRG* erstellt.
+Erstellen Sie mithilfe von [New-AzGallery](/powershell/module/az.compute/new-azgallery) einen Katalog. Im folgenden Beispiel wird der Katalog *myGallery* in der Ressourcengruppe *myGalleryRG* erstellt.
 
 ```azurepowershell-interactive
 $gallery = New-AzGallery `
    -GalleryName 'myGallery' `
    -ResourceGroupName $resourceGroup.ResourceGroupName `
    -Location $resourceGroup.Location `
-   -Description 'Shared Image Gallery for my organization'  
+   -Description 'Azure Compute Gallery for my organization' 
 ```
 
 
@@ -180,7 +180,7 @@ New-AzVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 
 ## <a name="share-the-gallery"></a>Teilen des Katalogs
 
-Wir empfehlen, dass Sie den Zugriff auf der Ebene des Imagekatalogs teilen. Verwenden Sie eine E-Mail-Adresse und das Cmdlet [Get-AzADUser](/powershell/module/az.resources/get-azaduser), um die Objekt-ID für den Benutzer abzurufen, und verwenden Sie dann [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment), um ihnen Zugriff auf den Katalog zu gewähren. Ersetzen Sie die Beispiel-E-Mail-Adresse alinne_montes@contoso.com in diesem Beispiel durch Ihre eigenen Informationen.
+Es wird empfohlen, den Zugriff auf der Katalogebene freizugeben. Verwenden Sie eine E-Mail-Adresse und das Cmdlet [Get-AzADUser](/powershell/module/az.resources/get-azaduser), um die Objekt-ID für den Benutzer abzurufen, und verwenden Sie dann [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment), um ihnen Zugriff auf den Katalog zu gewähren. Ersetzen Sie die Beispiel-E-Mail-Adresse alinne_montes@contoso.com in diesem Beispiel durch Ihre eigenen Informationen.
 
 ```azurepowershell-interactive
 # Get the object ID for the user
@@ -215,11 +215,11 @@ Azure bietet darüber hinaus den auf Packer basierenden Dienst [Azure VM Image B
 In diesem Tutorial haben Sie ein spezialisiertes VM-Image erstellt. Sie haben Folgendes gelernt:
 
 > [!div class="checklist"]
-> * Erstellen einer Shared Image Gallery-Instanz
+> * Erstellen einer Azure Compute Gallery-Instanz
 > * Erstellen einer Imagedefinition
 > * Erstellen einer Imageversion
 > * Erstellen eines virtuellen Computers aus einem Image 
-> * Freigeben eines Imagekatalogs
+> * Freigeben eines Katalogs
 
 Im nächsten Tutorial erhalten Sie Informationen zum Erstellen hoch verfügbarer virtueller Computer.
 

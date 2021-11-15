@@ -67,7 +67,7 @@
               href: /security/benchmark/azure/baselines/sql-database-security-baseline?toc=/azure/azure-sql/toc.json
             - name: Always Encrypted
               href: database/always-encrypted-landing.yml
-            - name: Azure Defender für SQL
+            - name: Microsoft Defender für SQL
               href: database/azure-defender-for-sql.md
             - name: Erweiterter Schutz vor Bedrohungen
               href: database/threat-detection-overview.md
@@ -479,6 +479,8 @@
                   href: database/ledger-limits.md
             - name: Kontrolle des Netzwerkzugriffs
               href: database/network-access-controls-overview.md
+            - name: Ausgehende Firewallregeln
+              href: database/outbound-firewall-rule-overview.md
             - name: Private Link
               href: database/private-endpoint-overview.md
             - name: VNET-Endpunkte
@@ -1227,39 +1229,56 @@
                     - name: "Automatisierte Sicherung (SQL\_2014)"
                       href: virtual-machines/windows/automated-backup-sql-2014.md
                 - name: Verfügbarkeitsgruppe
+                  displayName: 'Always On, alwayson, availability group'
                   items:
-                    - name: Erstellen einer Verfügbarkeitsgruppe
+                    - name: Konfigurieren einer Verfügbarkeitsgruppe (mehrere Subnetze)
+                      displayName: 'Always On, alwayson, availability group'
+                      items:
+                        - name: Voraussetzungen
+                          href: virtual-machines/windows/availability-group-manually-configure-prerequisites-tutorial-multi-subnet.md
+                          displayName: 'Always On, alwayson, availability group'
+                        - name: Erstellen der Verfügbarkeitsgruppe
+                          href: virtual-machines/windows/availability-group-manually-configure-tutorial-multi-subnet.md
+                          displayName: 'Always On, alwayson, availability group'
+                    - name: Konfigurieren einer Verfügbarkeitsgruppe (einzelnes Subnetz)
+                      displayName: 'Always On, alwayson, availability group'
                       items:
                         - name: Azure-Portal
                           href: virtual-machines/windows/availability-group-azure-portal-configure.md
+                          displayName: 'Always On, alwayson, availability group'
                         - name: PowerShell oder Azure CLI
                           href: virtual-machines/windows/availability-group-az-commandline-configure.md
+                          displayName: 'Always On, alwayson, availability group'
                         - name: Azure-Schnellstartvorlagen
                           href: virtual-machines/windows/availability-group-quickstart-template-configure.md
+                          displayName: 'Always On, alwayson, availability group'
                         - name: Mehrere Regionen
                           href: virtual-machines/windows/availability-group-manually-configure-multiple-regions.md
+                          displayName: 'Always On, alwayson, availability group'
                         - name: Domänenunabhängig (Arbeitsgruppe)
                           href: virtual-machines/windows/availability-group-clusterless-workgroup-configure.md
-                        - name: Manuelles Konfigurieren
+                          displayName: 'Always On, alwayson, availability group'
+                        - name: Manuell
                           items:
                             - name: Voraussetzungen
-                              href: virtual-machines/windows/availability-group-manually-configure-prerequisites-tutorial.md
-                            - name: Lernprogramm
-                              href: virtual-machines/windows/availability-group-manually-configure-tutorial.md
+                              href: virtual-machines/windows/availability-group-manually-configure-prerequisites-tutorial-single-subnet.md
+                              displayName: 'Always On, alwayson, availability group'
+                            - name: Erstellen der Verfügbarkeitsgruppe
+                              href: virtual-machines/windows/availability-group-manually-configure-tutorial-single-subnet.md
                             - name: Load Balancer – Azure-Portal
                               href: virtual-machines/windows/availability-group-load-balancer-portal-configure.md
                             - name: Load Balancer – Azure PowerShell
                               href: virtual-machines/windows/availability-group-listener-powershell-configure.md
-                    - name: Konfigurieren von Konnektivität
-                      items:
-                        - name: VNN-Listener
-                          displayName: virtual network name
-                          href: virtual-machines/windows/availability-group-vnn-azure-load-balancer-configure.md
-                        - name: DNN-Listener
-                          displayName: distributed network name
-                          href: virtual-machines/windows/availability-group-distributed-network-name-dnn-listener-configure.md
-                        - name: DNN-Interoperabilität
-                          href: virtual-machines/windows/availability-group-dnn-interoperability.md
+                        - name: Konfigurieren von Konnektivität
+                          items:
+                            - name: VNN-Listener
+                              displayName: virtual network name
+                              href: virtual-machines/windows/availability-group-vnn-azure-load-balancer-configure.md
+                            - name: DNN-Listener
+                              displayName: distributed network name
+                              href: virtual-machines/windows/availability-group-distributed-network-name-dnn-listener-configure.md
+                            - name: DNN-Interoperabilität
+                              href: virtual-machines/windows/availability-group-dnn-interoperability.md
                 - name: Failoverclusterinstanz (FCI)
                   items:
                     - name: Vorbereiten des virtuellen Computers für FCI
@@ -1272,7 +1291,7 @@
                           href: virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md
                         - name: "Premium-Dateifreigabe (ab Win\_2012)"
                           href: virtual-machines/windows/failover-cluster-instance-premium-file-share-manually-configure.md
-                    - name: Konfigurieren von Konnektivität
+                    - name: Konfigurieren der Konnektivität (einzelnes Subnetz)
                       items:
                         - name: 'Name des virtuellen Netzwerks (Virtual Network Name, VNN)'
                           href: virtual-machines/windows/failover-cluster-instance-vnn-azure-load-balancer-configure.md

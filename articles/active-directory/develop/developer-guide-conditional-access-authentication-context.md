@@ -12,12 +12,12 @@ manager: CelesteDG
 ms.reviewer: kkrishna
 ms.workload: identity
 ms.custom: aaddev
-ms.openlocfilehash: 0a310df6793d2caecda095f0c89244ffee5e46eb
-ms.sourcegitcommit: ee8ce2c752d45968a822acc0866ff8111d0d4c7f
+ms.openlocfilehash: 48e9598acac2739b7663fcd9a46006208d44783c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2021
-ms.locfileid: "113728028"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131459499"
 ---
 # <a name="developers-guide-to-conditional-access-authentication-context"></a>Anleitung für Entwickler zu Authentifizierungskontext für bedingten Zugriff
 
@@ -43,7 +43,7 @@ Im Folgenden werden die Voraussetzungen und Schritte für die Verwendung von Aut
 
 ### <a name="prerequisites"></a>Voraussetzungen
 
-**Erstens** sollte die App mit Microsoft Identity Platform integriert werden, indem [OpenID Connect](v2-protocols-oidc.md)/ [OAuth 2.0](v2-oauth2-auth-code-flow.md)-Protokolle für die Authentifizierung und Autorisierung verwendet werden. Es empfiehlt sich, dass Sie [Microsoft Identity Platform-Authentifizierungsbibliotheken](reference-v2-libraries.md) verwenden, um Ihre Anwendung mit Azure Active Directory zu integrieren und entsprechend abzusichern. Die [Microsoft Identity Platform-Dokumentation](index.yml) ist ein guter Ausgangspunkt, wenn Sie sich damit vertraut machen möchten, wie Sie Anwendungen mit Microsoft Identity Platform integrieren. Die Unterstützung von Authentifizierungskontext für bedingten Zugriff basiert auf Protokollerweiterungen, die vom Branchenstandardprotokoll [OpenID Connect](v2-protocols-oidc.md) bereitgestellt werden. Entwickler verwenden einen [für bedingten Zugriff genutzten Authentifizierungskontextverweis](/graph/api/resources/authenticationcontextclassreference)-**Wert** mit dem [Anspruchsanforderungsparameter](claims-challenge.md), um für Anwendungen eine Möglichkeit verfügbar zu machen, Richtlinien auszulösen und zu erfüllen.
+**Erstens** sollte die App mit Microsoft Identity Platform integriert werden, indem [OpenID Connect](v2-protocols-oidc.md)/ [OAuth 2.0](v2-oauth2-auth-code-flow.md)-Protokolle für die Authentifizierung und Autorisierung verwendet werden. Es empfiehlt sich, dass Sie [Microsoft Identity Platform-Authentifizierungsbibliotheken](reference-v2-libraries.md) verwenden, um Ihre Anwendung mit Azure Active Directory zu integrieren und entsprechend abzusichern. Die [Microsoft Identity Platform-Dokumentation](index.yml) ist ein guter Ausgangspunkt, wenn Sie sich damit vertraut machen möchten, wie Sie Anwendungen mit Microsoft Identity Platform integrieren. Die Unterstützung von Authentifizierungskontext für bedingten Zugriff basiert auf Protokollerweiterungen, die vom Branchenstandardprotokoll [OpenID Connect](v2-protocols-oidc.md) bereitgestellt werden. Entwickler verwenden einen [für bedingten Zugriff genutzten Authentifizierungskontextverweis](/graph/api/conditionalaccessroot-list-authenticationcontextclassreferences)-**Wert** mit dem [Anspruchsanforderungsparameter](claims-challenge.md), um für Anwendungen eine Möglichkeit verfügbar zu machen, Richtlinien auszulösen und zu erfüllen.
 
 **Zweitens** ist für [bedingten Zugriff](../conditional-access/overview.md) eine Azure Active Directory Premium P1-Lizenzierung erforderlich. Weitere Informationen zur Lizenzierung finden Sie auf der Seite [Azure Active Directory (AD) – Preise](https://www.microsoft.com/security/business/identity-access-management/azure-ad-pricing).
 

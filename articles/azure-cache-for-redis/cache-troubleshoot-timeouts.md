@@ -6,13 +6,13 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.custom: devx-track-csharp
-ms.date: 10/18/2019
-ms.openlocfilehash: fab4587cc6320cc020a1d92eb1c6fc2f8fa3e3af
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.date: 11/3/2021
+ms.openlocfilehash: 09f461b5d64b52ded281e338e1307876d7e5f86b
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129537385"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131843820"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>Problembehandlung bei Timeouts bei Azure Cache for Redis
 
@@ -41,40 +41,24 @@ Diese Fehlermeldung enthält Metriken, mit deren Hilfe Sie die Ursache und die m
 
 | Metrik in der Fehlermeldung | Details |
 | --- | --- |
-| inst |In der letzten Zeitscheibe: 0 Befehle wurden ausgegeben. |
-| mgr |Der Socket-Manager führt `socket.select` aus, was bedeutet, dass er das Betriebssystem auffordert, einen Socket anzugeben, der beschäftigt ist. Der Reader liest nicht aktiv aus dem Netzwerk, weil er meint, dass nichts zu tun ist |
-| queue |Es sind insgesamt 73 Vorgänge in Bearbeitung. |
-| qu |6 der in Bearbeitung befindlichen Vorgänge befinden sich in der Warteschlange für „Nicht gesendet“ und wurden noch nicht in das Netzwerk für ausgehenden Datenverkehr geschrieben. |
-| qs |67 der in Bearbeitung befindlichen Vorgänge wurden an den Server gesendet, aber es ist noch keine Antwort verfügbar. Als Antwort ist Folgendes möglich: `Not yet sent by the server` oder `sent by the server but not yet processed by the client.`. |
-| qc |Für 0 der in Bearbeitung befindlichen Vorgänge liegt eine Antwort vor, aber die Vorgänge wurden noch nicht als abgeschlossen markiert, weil noch auf die Abschlussschleife gewartet wird. |
-| wr |Es ist ein aktiver Writer vorhanden (d. h., die 6 noch nicht gesendeten Anforderungen werden nicht ignoriert); Bytes/aktive Writer. |
-| in |Es sind keine aktiven Reader vorhanden, und null Bytes sind zum Lesen auf der NIC (Network Interface Card, Netzwerkschnittstellenkarte) vorhanden; Bytes/aktive Reader |
+| `inst` |In der letzten Zeitscheibe: 0 Befehle wurden ausgegeben. |
+| `mgr` |Der Socket-Manager führt `socket.select` aus, was bedeutet, dass er das Betriebssystem auffordert, einen Socket anzugeben, der beschäftigt ist. Der Reader liest nicht aktiv aus dem Netzwerk, weil er meint, dass nichts zu tun ist |
+| `queue` |Es sind insgesamt 73 Vorgänge in Bearbeitung. |
+| `qu` |6 der in Bearbeitung befindlichen Vorgänge befinden sich in der Warteschlange für „Nicht gesendet“ und wurden noch nicht in das Netzwerk für ausgehenden Datenverkehr geschrieben. |
+| `qs`|67 der in Bearbeitung befindlichen Vorgänge wurden an den Server gesendet, aber es ist noch keine Antwort verfügbar. Als Antwort ist Folgendes möglich: `Not yet sent by the server` oder `sent by the server but not yet processed by the client.`. |
+| `qc` |Für keinen (Null) der in Bearbeitung befindlichen Vorgänge liegt eine Antwort vor, aber die Vorgänge wurden noch nicht als abgeschlossen markiert, weil noch auf die Abschlussschleife gewartet wird. |
+| `wr` |Es ist ein aktiver Writer vorhanden (d. h., die sechs noch nicht gesendeten Anforderungen werden nicht ignoriert); Bytes/aktive Writer. |
+| `in` |Es sind keine aktiven Reader vorhanden, und null Bytes sind zum Lesen auf der NIC (Network Interface Card, Netzwerkschnittstellenkarte) vorhanden; Bytes/aktive Reader |
 
 Im vorherigen Ausnahmebeispiel enthalten die Abschnitte `IOCP` und `WORKER` jeweils einen `Busy`-Wert, der größer als der `Min`-Wert ist. Der Unterschied bedeutet, dass Sie Ihre `ThreadPool`-Einstellungen anpassen sollten. Sie können Ihre [ThreadPool-Einstellungen](cache-management-faq.yml#important-details-about-threadpool-growth) so konfigurieren, dass sichergestellt ist, dass Ihr Threadpool bei Datenverkehrsspitzen schnell hochskaliert wird.
 
-Mithilfe der folgenden Schritte können Sie mögliche Ursachen ermitteln.
+Mithilfe der folgenden Schritte können Sie mögliche Ursachen beseitigen.
 
-1. Wenn Sie den StackExchange.Redis-Client verwenden, sollten Sie als bewährte Methode zum Herstellen der Verbindung das folgende Muster verwenden.
+1. Stellen Sie als bewährte Methode sicher, dass Sie das ForceReconnect-Muster verwenden, um angehaltene Verbindungen zu erkennen und zu ersetzen, wie im Artikel [Verbindungsresilienz](cache-best-practices-connection.md#using-forcereconnect-with-stackexchangeredis) beschrieben.
 
-    ```csharp
-    private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
-    {
-        return ConnectionMultiplexer.Connect("cachename.redis.cache.windows.net,abortConnect=false,ssl=true,password=...");
+   Weitere Informationen zur Verwendung von „StackExchange.Redis“ finden Sie unter [Herstellen einer Verbindung mit dem Cache mithilfe von StackExchange.Redis](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache). 
 
-    });
-
-    public static ConnectionMultiplexer Connection
-    {
-        get
-        {
-            return lazyConnection.Value;
-        }
-    }
-    ```
-
-    Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit dem Cache mithilfe von StackExchange.Redis](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache).
-
-1. Stellen Sie sicher, dass sich Ihr Server und die Clientanwendung in der gleichen Azure-Region befinden. Wenn Ihr Cache z. B. in der Region „USA, Osten“ und Ihr Client in der Region „USA, Westen“ angesiedelt ist, erhalten Sie möglicherweise Timeouts, und die Anforderung wird nicht innerhalb des `synctimeout`-Intervalls abgeschlossen. Auch beim Debuggen über den lokalen Entwicklungscomputer können Timeouts auftreten. 
+1. Stellen Sie sicher, dass sich Ihr Server und die Clientanwendung in der gleichen Azure-Region befinden. Wenn Ihr Cache z. B. in der Region „USA, Osten“ und Ihr Client in der Region „USA, Westen“ angesiedelt ist, erhalten Sie möglicherweise Timeouts, und die Anforderung wird nicht innerhalb des `synctimeout`-Intervalls abgeschlossen. Auch beim Debuggen über den lokalen Entwicklungscomputer können Timeouts auftreten.
 
     Es wird dringend empfohlen, den Cache und den Client in der gleichen Azure-Region anzusiedeln. Wenn Ihr Szenario regionsübergreifende Aufrufe beinhaltet, sollten Sie das `synctimeout`-Intervall auf einen höheren Wert als die standardmäßigen 5000 ms festlegen. Nehmen Sie zu diesem Zweck eine `synctimeout`-Eigenschaft in die Verbindungszeichenfolge auf. Das folgende Beispiel zeigt einen Codeausschnitt aus einer Verbindungszeichenfolge für StackExchange.Redis, bereitgestellt von Azure Cache for Redis, mit einem `synctimeout` von 8000 ms.
 

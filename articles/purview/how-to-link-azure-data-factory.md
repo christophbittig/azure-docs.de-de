@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/01/2021
-ms.openlocfilehash: f939d397db80e303ec2ed36d4112df0d38d090aa
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 2ba2c135a0b07df6c6a4802c241b064b2ef94335
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131464042"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131851483"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>Verbinden von Azure Data Factory und Azure Purview
 
@@ -36,17 +36,15 @@ Mehrere Azure Data Factory-Instanzen können eine Verbindung mit einer einzelnen
 
 >[!Note]
 >Damit Sie die Data Factory-Verbindungen anzeigen können, muss Ihnen die folgende Rolle zugewiesen sein. Die Vererbung von Rollen aus der Verwaltungsgruppe wird nicht unterstützt.
->- Für ein Purview-Konto, das **am oder nach dem 18. August 2021** erstellt wurde: Rolle **Sammlungsadministratoren** für die Stammsammlung.
->- Für ein Purview-Konto, das **vor dem 18. August 2021** erstellt wurde: Integrierte Azure-Rolle **Besitzer**, **Mitwirkender**, **Leser** oder **Benutzerzugriffsadministrator**.
+>Rolle **Sammlungsadministratoren** in der Stammsammlung.
 
 ## <a name="create-new-data-factory-connection"></a>Erstellen einer neuen Data Factory-Verbindung
 
 >[!Note]
 >Um die Data Factory-Verbindungen hinzufügen oder entfernen zu können, muss Ihnen die folgende Rolle zugewiesen sein. Die Vererbung von Rollen aus der Verwaltungsgruppe wird nicht unterstützt.
->- Für ein Purview-Konto, das **am oder nach dem 18. August 2021** erstellt wurde: Rolle **Sammlungsadministratoren** für die Stammsammlung.
->- Für ein Purview-Konto, das **vor dem 18. August 2021** erstellt wurde: Rolle **Besitzer** oder **Benutzerzugriffsadministrator**.
+>Rolle **Sammlungsadministratoren** in der Stammsammlung.
 >
-> Außerdem müssen die Benutzer die Rolle „Besitzer“ oder „Mitwirkender“ für die Data Factory aufweisen.
+> Darüber hinaus müssen die Benutzer die Rolle „Besitzer“ oder „Mitwirkender“ für die Data Factory aufweisen.
 
 Führen Sie die folgenden Schritte aus, um eine vorhandene Data Factory mit Ihrem Purview-Konto zu verbinden. Sie können auch [über ADF eine Verbindung zwischen der Data Factory und dem Purview-Konto herstellen](../data-factory/connect-data-factory-to-azure-purview.md).
 
@@ -71,9 +69,7 @@ Führen Sie die folgenden Schritte aus, um eine vorhandene Data Factory mit Ihre
 
 Die verwaltete Identität für die Data Factory wird verwendet, um Pushvorgänge für Herkunftsdaten von der Data Factory zu Purview zu authentifizieren. Wenn Sie die Data Factory über die Benutzeroberfläche mit Purview verbinden, wird die Rollenzuweisung automatisch hinzugefügt.
 
-- Weisen Sie für Purview-Konten, die **am oder nach dem 18. August 2021** erstellt wurden, der verwalteten Identität der Data Factory die Rolle **Datenkurator** für die Purview-**Stammsammlung** zu. Weitere Informationen finden Sie unter [Zugriffssteuerung in Azure Purview](../purview/catalog-permissions.md) und unter [Hinzufügen von Rollen und Einschränken des Zugriffs über Sammlungen](../purview/how-to-create-and-manage-collections.md#add-roles-and-restrict-access-through-collections).
-
-- Weisen Sie für Purview-Konten, die **vor dem 18. August 2021** erstellt wurden, der verwalteten Identität für die Data Factory die in Azure integrierte Rolle [**Datenkurator für Purview (Legacy)**](../role-based-access-control/built-in-roles.md#purview-data-curator-legacy) für das Purview-Konto zu. Weitere Informationen zu Legacyberechtigungen für die Zugriffssteuerung in Azure Purview finden Sie [hier](../purview/catalog-permissions.md#legacy-permission-guide).
+Erteilen Sie der verwalteten Identität der Data Factory die Rolle **Datenkurator** für die Purview-**Stammsammlung**. Weitere Informationen finden Sie unter [Zugriffssteuerung in Azure Purview](../purview/catalog-permissions.md) und unter [Hinzufügen von Rollen und Einschränken des Zugriffs über Sammlungen](../purview/how-to-create-and-manage-collections.md#add-roles-and-restrict-access-through-collections).
 
 ### <a name="remove-data-factory-connections"></a>Entfernen von Data Factory-Verbindungen
 

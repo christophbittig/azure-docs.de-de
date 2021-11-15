@@ -5,13 +5,13 @@ author: vicancy
 ms.author: lianwei
 ms.service: azure-web-pubsub
 ms.topic: tutorial
-ms.date: 08/16/2021
-ms.openlocfilehash: cf3f6f174cc5302b4215db21ec7362401b3454e9
-ms.sourcegitcommit: 16e25fb3a5fa8fc054e16f30dc925a7276f2a4cb
+ms.date: 11/01/2021
+ms.openlocfilehash: fd055903c0a5969c6facd881fc1b0f676c9596c8
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/25/2021
-ms.locfileid: "122829733"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131579215"
 ---
 # <a name="tutorial-create-a-chat-app-with-azure-web-pubsub-service"></a>Tutorial: Erstellen einer Chat-App mit dem Azure Web PubSub-Dienst
 
@@ -40,11 +40,11 @@ In diesem Tutorial lernen Sie Folgendes:
 
 [!INCLUDE [Create a Web PubSub instance](includes/cli-awps-creation.md)]
 
-### <a name="get-the-connectionstring-for-future-use"></a>Abrufen der Verbindungszeichenfolge (ConnectionString) zur späteren Verwendung
+### <a name="get-the-connectionstring-for-future-use"></a>Abrufen der Verbindungszeichenfolge zur späteren Verwendung
 
 [!INCLUDE [Get the connection string](includes/cli-awps-connstr.md)]
 
-Kopieren Sie den abgerufenen **ConnectionString**-Wert. Diese Verbindungszeichenfolge wird später im Tutorial als Wert für `<connection_string>` verwendet.
+Kopieren Sie den abgerufenen **ConnectionString**-Wert. Diese Zeichenfolge wird später im Tutorial als Wert für `<connection_string>` verwendet.
 
 ## <a name="set-up-the-project"></a>Einrichten des Projekts
 
@@ -81,7 +81,7 @@ Erstellen wir zunächst eine leere ASP.NET Core-App.
 
     ```bash
     dotnet new web
-    dotnet add package Azure.Messaging.WebPubSub --prerelease
+    dotnet add package Azure.Messaging.WebPubSub --version 1.0.0-beta.3
     ```
 
 2.  Fügen Sie dann `app.UseStaticFiles();` vor `app.UseRouting();` in `Startup.cs` ein, um statische Dateien zu unterstützen. Entfernen Sie das standardmäßige `endpoints.MapGet` in `app.UseEndpoints`.
@@ -119,11 +119,14 @@ Sie können den Server testen, indem Sie `dotnet run --urls http://localhost:808
 
 Sie erinnern sich vielleicht, dass der Abonnent im [Tutorial zum Veröffentlichen und Abonnieren von Nachrichten](./tutorial-pub-sub-messages.md) eine API im Web PubSub SDK verwendet, um ein Zugriffstoken aus der Verbindungszeichenfolge zu generieren und damit eine Verbindung mit dem Dienst herzustellen. Dies ist für eine reale Anwendung im Allgemeinen keine sichere Vorgehensweise, da die Verbindungszeichenfolge über weitreichende Berechtigungen zum Ausführen von Vorgängen für den Dienst verfügt und deshalb für keinen Client freigegeben werden sollte. Wir ändern diesen Prozess zur Generierung von Zugriffstoken in eine REST-API auf Serverseite. So kann der Client diese API immer dann zur Anforderung eines Zugriffstokens aufrufen, wenn eine Verbindung hergestellt werden muss, ohne die Verbindungszeichenfolge speichern zu müssen.
 
-1.  Installieren von Microsoft.Extensions.Azure
+1.  Installieren Sie Abhängigkeiten, und verwenden Sie das [Geheimnis-Manager-Tool](/aspnet/core/security/app-secrets#secret-manager) für .NET Core, um die Verbindungszeichenfolge festzulegen. Führen Sie den folgenden Befehl aus, und ersetzen Sie `<connection_string>` darin durch den Wert, den Sie im [vorherigen Schritt](#get-the-connectionstring-for-future-use) abgerufen haben:
 
     ```bash
     dotnet add package Microsoft.Extensions.Azure
+    dotnet user-secrets init
+    dotnet user-secrets set Azure:WebPubSub:ConnectionString "<connection-string>"
     ```
+
 2. Registrieren Sie den Dienstclient per DI in `ConfigureServices`, und vergessen Sie nicht, `<connection_string>` durch die Verbindungszeichenfolge für Ihre Dienste zu ersetzen.
 
     ```csharp
@@ -131,7 +134,7 @@ Sie erinnern sich vielleicht, dass der Abonnent im [Tutorial zum Veröffentliche
     {
         services.AddAzureClients(builder =>
         {
-            builder.AddWebPubSubServiceClient("<connection_string>", "chat");
+            builder.AddWebPubSubServiceClient(Configuration["Azure:WebPubSub:ConnectionString"], "chat");
         });
     }
     ```
@@ -225,7 +228,7 @@ Sie erinnern sich vielleicht, dass der Abonnent im [Tutorial zum Veröffentliche
 1.  Installieren Sie das Azure Web PubSub SDK.
 
     ```bash
-    npm install --save @azure/web-pubsub
+    npm install --save @azure/web-pubsub@1.0.0-alpha.20211102.4
     ```
 
 2.  Fügen Sie dem Server eine `/negotiate`-API hinzu, um das Token zu generieren.
@@ -236,8 +239,9 @@ Sie erinnern sich vielleicht, dass der Abonnent im [Tutorial zum Veröffentliche
 
     const app = express();
     const hubName = 'chat';
+    const port = 8080;
 
-    let serviceClient = new WebPubSubServiceClient(process.argv[2], hubName);
+    let serviceClient = new WebPubSubServiceClient(process.env.WebPubSubConnectionString, hubName);
 
     app.get('/negotiate', async (req, res) => {
       let id = req.query.id;
@@ -245,7 +249,7 @@ Sie erinnern sich vielleicht, dass der Abonnent im [Tutorial zum Veröffentliche
         res.status(400).send('missing user id');
         return;
       }
-      let token = await serviceClient.getAuthenticationToken({ userId: id });
+      let token = await serviceClient.getClientAccessToken({ userId: id });
       res.json({
         url: token.url
       });
@@ -257,7 +261,14 @@ Sie erinnern sich vielleicht, dass der Abonnent im [Tutorial zum Veröffentliche
 
     Dieser Code zum Generieren des Tokens ähnelt dem Code, den wir im [Tutorial zum Veröffentlichen und Abonnieren von Nachrichten](./tutorial-pub-sub-messages.md) verwendet haben – abgesehen davon, dass wir beim Generieren des Tokens ein weiteres Argument (`userId`) übergeben. Mithilfe der Benutzer-ID kann der Client identifiziert werden, damit Sie beim Empfang einer Nachricht wissen, woher die Nachricht stammt.
 
-    Sie können diese API testen, indem Sie `node server "<connection-string>"` ausführen und auf `http://localhost:8080/negotiate?id=<user-id>` zugreifen. Dadurch erhalten Sie die vollständige URL der Azure Web PubSub-Instanz mit einem Zugriffstoken.
+    Führen Sie den folgenden Befehl aus, um diese API zu testen:
+
+    ```bash
+    export WebPubSubConnectionString="<connection-string>"
+    node server
+    ```
+
+    Greifen Sie auf `http://localhost:8080/negotiate?id=<user-id>` zu. Dadurch erhalten Sie die vollständige URL der Azure Web PubSub-Instanz mit einem Zugriffstoken.
 
 3.  Aktualisieren Sie dann `index.html` mit dem folgenden Skript, um das Token vom Server abzurufen und eine Verbindung mit dem Dienst herzustellen.
  
@@ -475,7 +486,7 @@ Im Moment müssen Sie den Ereignishandler selbst in C# implementieren. Die Schri
     app.UseEndpoints(endpoints =>
     {
         // abuse protection
-        endpoints.Map("/eventhandler", async context =>
+        endpoints.Map("/eventhandler/{*path}", async context =>
         {
             if (context.Request.Method == "OPTIONS")
             {
@@ -495,7 +506,7 @@ Im Moment müssen Sie den Ereignishandler selbst in C# implementieren. Die Schri
     app.UseEndpoints(endpoints =>
     {
         // abuse protection
-        endpoints.Map("/eventhandler", async context =>
+        endpoints.Map("/eventhandler/{*path}", async context =>
         {
             if (context.Request.Method == "OPTIONS")
             {
@@ -531,13 +542,13 @@ Wenn Sie das Web PubSub SDK verwenden, ist bereits eine Implementierung zum Anal
 Fügen Sie den folgenden Code hinzu, um (durch die express-Middleware, die vom Web PubSub SDK bereitgestellt wird) eine REST-API unter `/eventhandler` verfügbar zu machen, um das mit dem Client verbundene Ereignis zu verarbeiten:
 
 ```bash
-npm install --save @azure/web-pubsub-express
+npm install --save @azure/web-pubsub-express@1.0.0-alpha.20211102.4
 ```
 
 ```javascript
 const { WebPubSubEventHandler } = require('@azure/web-pubsub-express');
 
-let handler = new WebPubSubEventHandler(hubName, ['*'], {
+let handler = new WebPubSubEventHandler(hubName, {
   path: '/eventhandler',
   onConnected: async req => {
     console.log(`${req.context.userId} connected`);
@@ -605,16 +616,15 @@ ngrok gibt eine URL (`https://<domain-name>.ngrok.io`) aus, auf die über das In
 
 Anschließend aktualisieren wir den Dienstereignishandler und legen die Webhook-URL fest.
 
-Verwenden Sie den Azure CLI-Befehl [az webpubsub event-handler hub](/cli/azure/webpubsub/event-handler/hub), um die Ereignishandlereinstellungen zu aktualisieren:
+Verwenden Sie den Azure CLI-Befehl [az webpubsub hub create](/cli/azure/webpubsub/hub#az_webpubsub_hub_update), um die Ereignishandlereinstellungen für den Chathub zu aktualisieren:
 
   > [!Important]
   > Ersetzen Sie &lt;your-unique-resource-name&gt; durch den Namen Ihrer Web PubSub-Instanz, die in den vorherigen Schritten erstellt wurde.
-  > Ersetzen Sie &lt;domain-name&lt; durch den von ngrok ausgegebenen Namen.
+  > Ersetzen Sie &lt;domain-name&gt; durch den von ngrok ausgegebenen Namen.
 
 ```azurecli-interactive
-az webpubsub event-handler hub update -n "<your-unique-resource-name>" -g "myResourceGroup" --hub-name chat --template url-template="https://<domain-name>.ngrok.io/eventHandler" user-event-pattern="*" system-event-pattern="connected"
+az webpubsub hub create -n "<your-unique-resource-name>" -g "myResourceGroup" --hub-name "chat" --event-handler url-template="https://<domain-name>.ngrok.io/eventHandler" user-event-pattern="*" system-event="connected"
 ```
-
 
 Öffnen Sie nach Abschluss der Aktualisierung die Startseite http://localhost:8080/index.html, und geben Sie Ihren Benutzernamen ein. Daraufhin wird in der Konsole die Meldung zur Verbindungsherstellung angezeigt.
 
@@ -632,7 +642,7 @@ Der `ce-type` des `message`-Ereignisses lautet immer `azure.webpubsub.user.messa
     app.UseEndpoints(endpoints =>
     {
         // abuse protection
-        endpoints.Map("/eventhandler", async context =>
+        endpoints.Map("/eventhandler/{*path}", async context =>
         {
             var serviceClient = context.RequestServices.GetRequiredService<WebPubSubServiceClient>();
             if (context.Request.Method == "OPTIONS")
@@ -714,7 +724,7 @@ Der `ce-type` des `message`-Ereignisses lautet immer `azure.webpubsub.user.messa
     app.UseEndpoints(endpoints =>
     {
         // abuse protection
-        endpoints.Map("/eventhandler", async context =>
+        endpoints.Map("/eventhandler/{*path}", async context =>
         {
             if (context.Request.Method == "OPTIONS")
             {
@@ -751,7 +761,7 @@ Das vollständige Codebeispiel für dieses Tutorial finden Sie [hier][code-cshar
 1. Fügen Sie einen neuen `handleUserEvent`-Handler hinzu.
 
     ```javascript
-    let handler = new WebPubSubEventHandler(hubName, ['*'], {
+    let handler = new WebPubSubEventHandler(hubName, {
       path: '/eventhandler',
       onConnected: async req => {
         console.log(`${req.context.userId} connected`);
@@ -810,7 +820,7 @@ Das vollständige Codebeispiel für dieses Tutorial finden Sie [hier][code-cshar
 3. `sendToAll` akzeptiert ein Objekt als Eingabe und sendet JSON-Text an die Clients. In einem realen Szenario benötigen wir wahrscheinlich ein komplexes Objekt, um mehr Informationen über die Nachricht zu erhalten. Aktualisieren Sie abschließend die Handler, um JSON-Objekte an alle Clients zu übertragen:
 
     ```javascript
-    let handler = new WebPubSubEventHandler(hubName, ['*'], {
+    let handler = new WebPubSubEventHandler(hubName, {
       path: '/eventhandler',
       onConnected: async req => {
         console.log(`${req.context.userId} connected`);

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 06/10/2020
+ms.date: 10/28/2021
 ms.author: lajanuar
-ms.openlocfilehash: 0055cae979e1ab116d71a387f3f9d7e61afb9d32
-ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
+ms.openlocfilehash: ef091072d7d5847ca1e8daa206de1734dccf4ff2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129754480"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131469899"
 ---
 # <a name="translator-language-support"></a>Sprachunterstützung für den Übersetzer
 
@@ -185,7 +185,8 @@ Der [Transliterate-Vorgang](reference/v3-0-transliterate.md) im Textübersetzung
 Fügen Sie Ihren Apps und Workflows zusätzliche Funktionen hinzu, indem Sie andere Cognitive Services mit dem Translator verwenden. Nachstehend finden Sie Sprachlisten für zusätzliche Dienste.
 * [Maschinelles Sehen](../computer-vision/language-support.md) 
 * [Speech](../speech-service/language-support.md) 
-* [Textanalyse](../text-analytics/language-support.md) 
+* [Sprachdienst](../language-service/index.yml) 
+    * Wählen Sie das Feature aus, das Sie verwenden möchten, und klicken Sie dann im linken Navigationsmenü auf **Sprachunterstützung**.
 
 Alle [Cognitive Services](../index.yml) anzeigen 
 

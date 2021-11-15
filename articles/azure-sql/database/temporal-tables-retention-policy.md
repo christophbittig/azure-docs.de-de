@@ -10,13 +10,13 @@ ms.topic: how-to
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: mathoma
-ms.date: 09/25/2018
-ms.openlocfilehash: bd1884785f5c6e84abd4aae5af29805ec4c004cb
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 10/18/2021
+ms.openlocfilehash: d3cf9b884dd1d2610aabe0aa0869ab8ad528da01
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339748"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130216226"
 ---
 # <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>Verwalten von Verlaufsdaten in temporalen Tabellen mit einer Aufbewahrungsrichtlinie
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -182,7 +182,5 @@ SET TEMPORAL_HISTORY_RETENTION  ON
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informationen zur Verwendung temporaler Tabellen in Ihren Anwendungen finden Sie unter [Erste Schritte mit temporalen Tabellen](../temporal-tables.md).
-
-Auf Channel 9 können Sie sich einen [Kundenerfahrungsbericht zur Temporal-Implementierung](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions) anhören und eine [Temporal-Live-Demo](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016) ansehen.
 
 Ausführliche Informationen zu temporalen Tabellen finden Sie unter [Temporale Tabellen](/sql/relational-databases/tables/temporal-tables).

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: NikaKinska
 ms.author: nnikolic
 ms.reviewer: mathoma, wiassaf
-ms.date: 03/23/2021
-ms.openlocfilehash: 8ea21993103e5c461a8cea84f7739160338605a4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 10/18/2021
+ms.openlocfilehash: 564b82854769d0cff730c82f3cd4b99a67b08a41
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122347201"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130247956"
 ---
 # <a name="automatic-tuning-in-azure-sql-database-and-azure-sql-managed-instance"></a>Automatische Optimierung bei Azure SQL-Datenbank und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -47,10 +47,6 @@ Die Mechanismen für die automatische Optimierung sind ausgereift und wurden auf
 ![Wie funktioniert die automatische Optimierung?](./media/automatic-tuning-overview/how-does-automatic-tuning-work.png)
 
 Die automatische Optimierung von Azure SQL-Datenbank teilt sich die Kernlogik mit SQL Server für das Feature zur automatischen Optimierung in der Datenbank-Engine. Weitere technische Informationen zum integrierten Intelligenzmechanismus finden Sie unter [Automatic tuning](/sql/relational-databases/automatic-tuning/automatic-tuning) (Automatische Optimierung).
-
-Im folgenden Video können Sie sich einen Überblick über die Funktionsweise der automatischen Optimierung in typischen Verwendungsszenarien verschaffen:
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Improve-Azure-SQL-Database-Performance-with-automatic-tuning/player]
 
 ## <a name="enable-automatic-tuning"></a>Aktivieren der automatischen Optimierung
 

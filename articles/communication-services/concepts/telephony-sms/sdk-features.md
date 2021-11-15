@@ -10,12 +10,12 @@ ms.date: 06/30/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 ms.subservice: sms
-ms.openlocfilehash: c3564a7c66002241a6b678d7314c4abe92cd3d24
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 3be8101834eaa9f023c12b61d37c3b572d7a6ac6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128609629"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131434121"
 ---
 # <a name="sms-sdk-overview"></a>Übersicht über das SMS SDK
 
@@ -38,7 +38,7 @@ Die folgende Liste enthält die Features, die aktuell in unseren SDKs verfügbar
 |                   | Unterstützung für Idempotenz                                                               | ✔️   | ✔️    | ✔️    | ✔️      |
 |                   | Benutzerdefinierte Tags für Nachrichten                                                             | ✔️   | ✔️    | ✔️    | ✔️      |
 | Ereignisse            | Verwenden von Event Grid, um Webhooks für den Empfang von eingehenden Nachrichten und Zustellberichten zu konfigurieren | ✔️   | ✔️    | ✔️    | ✔️      |
-| Rufnummer      | Gebührenfreie Nummern                                                                     | ✔️   | ✔️    | ✔️    | ✔️      |
+| Rufnummer      | Gebührenfreie Telefonnummern, Kurzcodes (*demnächst verfügbar*)                                        | ✔️   | ✔️    | ✔️    | ✔️      |
 | PSTN-Anrufe      | Hinzufügen von PSTN-Anruffunktionen zu Ihrer für SMS geeigneten gebührenfreien Telefonnummer                    | ✔️   | ✔️    | ✔️    | ✔️      |
 
 ## <a name="next-steps"></a>Nächste Schritte

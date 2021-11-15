@@ -10,12 +10,12 @@ ms.service: virtual-machines
 ms.collection: windows
 ms.subservice: image-builder
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 046bec93d3a9ae0ffef8b189470f412ab357943d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 503b2663d6de83d982e6f8e9c2538de3765c9294
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131018487"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131466654"
 ---
 # <a name="create-a-azure-virtual-desktop-image-using-azure-vm-image-builder-and-powershell"></a>Erstellen eines Azure Virtual Desktop-Images mithilfe von Azure VM Image Builder und PowerShell
 
@@ -29,7 +29,7 @@ In diesem Artikel wird erläutert, wie Sie ein Azure Virtual Desktop-Image mit f
 * [Neu starten](../linux/image-builder-json.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#windows-restart-customizer)
 * Ausführen von [Windows Update](../linux/image-builder-json.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#windows-update-customizer)
 
-Es wird beschrieben, wie Sie diese Vorgänge mithilfe von Azure VM Image Builder automatisieren und das Image an eine [Shared Image Gallery](../shared-image-galleries.md)-Instanz verteilen, wo Sie die Replikation in anderen Regionen durchführen, die Skalierung steuern und das Image innerhalb und außerhalb Ihrer Organisationen freigeben können.
+Es wird beschrieben, wie Sie diese Vorgänge mithilfe von Azure VM Image Builder automatisieren und das Image an eine [Azure Compute Gallery](../shared-image-galleries.md)-Instanz (zuvor als Shared Image Gallery bezeichnet) verteilen, in der Sie die Replikation in anderen Regionen durchführen, die Skalierung steuern und das Image innerhalb und außerhalb Ihrer Organisationen freigeben können.
 
 
 Um die Bereitstellung einer Image Builder-Konfiguration zu vereinfachen, wird in diesem Beispiel eine Azure Resource Manager-Vorlage mit der darin geschachtelten Image Builder-Vorlage verwendet. Dies bietet Ihnen einige weitere Vorteile, z. B. Variablen und Parametereingaben. Sie können Parameter auch über die Befehlszeile übergeben.
@@ -167,9 +167,9 @@ New-AzRoleAssignment -ObjectId $idenityNamePrincipalId -RoleDefinitionName $imag
 > Wenn der Fehler „New-AzRoleDefinition: Das Limit für Rollendefinitionen ist überschritten. Es können keine weiteren Rollendefinitionen erstellt werden.“ angezeigt wird, Weitere Informationen finden Sie unter [Behandeln von Problemen bei Azure RBAC](../../role-based-access-control/troubleshooting.md).
 
 
-## <a name="create-the-shared-image-gallery"></a>Erstellen der Shared Image Gallery-Instanz 
+## <a name="create-the-azure-compute-gallery"></a>Erstellen der Azure Compute Gallery 
 
-Wenn Sie noch über keine Shared Image Gallery-Instanz verfügen, müssen Sie eine erstellen.
+Wenn Sie noch nicht über eine Azure Compute Gallery-Instanz verfügen, müssen Sie eine solche erstellen.
 
 ```azurepowershell-interactive
 $sigGalleryName= "myaibsig01"

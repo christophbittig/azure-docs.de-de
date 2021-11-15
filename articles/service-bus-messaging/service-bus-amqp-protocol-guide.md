@@ -3,12 +3,12 @@ title: AMQP 1.0 in Azure Service Bus und Event Hubs – Protokollleitfaden | Mic
 description: Enthält einen Protokollleitfaden für Ausdrücke und eine Beschreibung von AMQP 1.0 in Azure Service Bus und Event Hubs.
 ms.topic: article
 ms.date: 04/14/2021
-ms.openlocfilehash: d786b3d0e9afbf7ab4e895c6788209644d9f921f
-ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+ms.openlocfilehash: 1a299843b402d03543adbf9a9efdf86800abd564
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/30/2021
-ms.locfileid: "113092753"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132063758"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>AMQP 1.0 in Azure Service Bus und Event Hubs – Protokollleitfaden
 
@@ -67,7 +67,7 @@ Sitzungen verfügen über ein fensterbasiertes Flusssteuerungsmodell. Wenn eine 
 
 Dieses fensterbasierte Modell entspricht im Wesentlichen dem TCP-Konzept der fensterbasierten Flusssteuerung, aber auf Sitzungsebene innerhalb des Sockets. Das Konzept des Protokolls, mehrere gleichzeitige Sitzungen zuzulassen, hat den Zweck, dass Datenverkehr mit hoher Priorität gedrosselten normalen Verkehr überholen kann – wie auf der linken Spur auf der Autobahn.
 
-In Azure Service Bus wird für jede Verbindung derzeit genau eine Sitzung verwendet. Die maximale Service Bus-Framegröße beträgt 262.144 Byte (256 KB) für Service Bus Standard. Für Service Bus Premium und Event Hubs sind es 1.048.576 Byte (1 MB). Service Bus gibt keine bestimmten Fenster für die Drosselung auf Sitzungsebene vor, sondern setzt das Fenster im Rahmen der Flusssteuerung auf Verknüpfungsebene regelmäßig zurück (siehe [nächster Abschnitt](#links)).
+In Azure Service Bus wird für jede Verbindung derzeit genau eine Sitzung verwendet. Die maximale Service Bus-Framegröße beträgt 262.144 Byte (256 KB) für Service Bus Standard. Für Service Bus Premium und Event Hubs sind es 1.048.576 Byte (100 MB). Service Bus gibt keine bestimmten Fenster für die Drosselung auf Sitzungsebene vor, sondern setzt das Fenster im Rahmen der Flusssteuerung auf Verknüpfungsebene regelmäßig zurück (siehe [nächster Abschnitt](#links)).
 
 Verbindungen, Kanäle und Sitzungen sind flüchtig. Wenn die zugrunde liegende Verbindung getrennt wird, müssen Verbindungen, TLS-Tunnel, SASL-Autorisierungskontext und Sitzungen wiederhergestellt werden.
 

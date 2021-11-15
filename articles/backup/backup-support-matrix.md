@@ -4,12 +4,12 @@ description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und 
 ms.topic: conceptual
 ms.date: 09/21/2021
 ms.custom: references_regions
-ms.openlocfilehash: eee136952f2830e8d204a2d5346c97101be2a7da
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 11ed401ef3a1591bd3dc38ad7b4964033adfa3ac
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129363435"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132059372"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Supportmatrix für Azure Backup
 
@@ -39,7 +39,7 @@ In der folgenden Tabelle werden die Features von Recovery Services-Tresoren besc
 **Verschieben von Tresoren** | Sie können Tresore zwischen Abonnements oder Ressourcengruppen innerhalb desselben Abonnements [verschieben](./backup-azure-move-recovery-services-vault.md). Das Verschieben von Tresoren zwischen Regionen wird hingegen nicht unterstützt.
 **Daten zwischen Tresoren verschieben** | Das Verschieben von gesicherten Daten zwischen Tresoren wird nicht unterstützt.
 **Tresorspeichertyp ändern** | Sie können den Speicherreplikationstyp für einen Tresor anpassen (entweder georedundanter Speicher oder lokal redundanter Speicher), bevor Sicherungen gespeichert werden. Nachdem Sicherungsvorgänge im Tresor begonnen haben, kann der Replikationstyp nicht mehr geändert werden.
-**Zonenredundanter Speicher (ZRS)** | Unterstützt in der Vorschau in Großbritannien Süd, Südostasien, Australien Ost, Nordeuropa, Zentral-USA, Ost-USA 2, Brasilien Süd und Japan Ost.
+**Zonenredundanter Speicher (ZRS)** | Unterstützt in der Vorschauversion in Vereinigtes Königreich, Süden; Asien, Südosten; Australien, Osten; Europa, Norden; USA, Mitte; USA, Osten 2; Brasilien, Süden; USA, Süden-Mitte; Südkorea, Mitte; Norwegen, Osten; Frankreich, Mitte; Europa, Westen; Asien, Osten; Schweden, Mitte und Japan, Osten.
 **Private Endpunkte** | In [diesem Abschnitt](./private-endpoints.md#before-you-start) finden Sie Informationen zu den Anforderungen für die Erstellung privater Endpunkte aus einem Recovery Services-Tresor.  
 
 ## <a name="on-premises-backup-support"></a>Unterstützung von lokalen Sicherungen

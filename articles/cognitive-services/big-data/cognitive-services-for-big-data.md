@@ -6,14 +6,14 @@ author: mhamilton723
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: overview
-ms.date: 07/09/2020
+ms.date: 10/28/2021
 ms.author: marhamil
-ms.openlocfilehash: aaade03edbbb109656fb7371a063cdc2512c5a20
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 71b89cc6b54ff99864bdd0f15ebcee472a36cd70
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461627"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131434482"
 ---
 # <a name="azure-cognitive-services-for-big-data"></a>Azure Cognitive Services für Big Data
 
@@ -54,7 +54,7 @@ Von Cognitive Services für Big Data können Dienste aus einer beliebigen Region
 
 |Service Name|Dienstbeschreibung|
 |:-----------|:------------------|
-|[Textanalyse](../text-analytics/index.yml "Textanalyse")| Der Textanalysedienst ermöglicht die Verarbeitung natürlicher Sprache in unformatiertem Text für Standpunktanalyse, Schlüsselbegriffserkennung und Sprachenerkennung.|
+|[Sprachdienst](../language-service/index.yml "Sprachdienst")| Der Sprachdienst ermöglicht die Verarbeitung natürlicher Sprache in unformatiertem Text für Standpunktanalyse, Schlüsselbegriffserkennung und Sprachenerkennung.|
 
 ### <a name="search"></a>Suchen,
 

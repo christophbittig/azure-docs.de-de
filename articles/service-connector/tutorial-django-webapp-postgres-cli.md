@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/28/2021
 zone_pivot_groups: postgres-server-options
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: a14dc7e27c49d9f4e253e3a3a51c0526a56cadf9
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 24c6d2cee0748d342c0d8d797d4a07692f6da9db
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131100435"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131444912"
 ---
 # <a name="tutorial-using-service-connector-preview-to-build-a-django-app-with-postgres-on-azure-app-service"></a>Tutorial: Verwenden des Dienstconnectors (Vorschauversion) zum Erstellen einer Django-App mit Postgres für Azure App Service
 
@@ -331,6 +331,7 @@ Die Ressourcengruppe sowie der App- und Datenbankname werden den zwischengespeic
 - Der Befehl erstellt wie vom App-Code erwartet die Einstellungen AZURE_POSTGRESQL_HOST, AZURE_POSTGRESQL_NAME, AZURE_POSTGRESQL_USER, AZURE_POSTGRESQL_PASS.
 - Wenn Sie Ihre Administratoranmeldeinformationen vergessen haben, können Sie sie mit diesem Befehl zurücksetzen.
 
+
 ::: zone-end
 
 ::: zone pivot="postgres-flexible-server"
@@ -344,6 +345,9 @@ Die Ressourcengruppe sowie der App- und Datenbankname werden den zwischengespeic
 - Wenn Sie Ihre Administratoranmeldeinformationen vergessen haben, können Sie sie mit diesem Befehl zurücksetzen.
 
 ::: zone-end
+
+> [!NOTE]
+> Wird die Fehlermeldung „Das Abonnement ist nicht für die Verwendung des Ressourcenanbieters "{0}" registriert.“ angezeigt, führen Sie `az provider register -n Microsoft.ServiceLinker` aus, um den Dienstconnector-Ressourcenanbieter zu registrieren. Führen Sie anschließend erneut den Verbindungsbefehl aus. 
 
 In Ihrem Python-Code wird auf diese Einstellungen in Form von Umgebungsvariablen mit Anweisungen wie `os.environ.get('AZURE_POSTGRESQL_HOST')`zugegriffen. Weitere Informationen finden Sie unter [Zugreifen auf Umgebungsvariablen](../app-service/configure-language-python.md#access-environment-variables).
 

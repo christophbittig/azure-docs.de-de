@@ -10,18 +10,18 @@ ms.date: 10/25/2021
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
-ms.openlocfilehash: 5b779df91c4f0347e329348b7bdccd49691d0d5d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: d83cb752eaaa2ed3edf58d3d1f31d6d7c5af76cd
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131094834"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131433135"
 ---
 # <a name="archive-a-blob"></a>Archivieren eines Blobs
 
 Die Archivebene ist eine Offlineebene für die Speicherung von Daten, auf die nur selten zugegriffen wird. Die Archivebene hat im Vergleich zur (heißen und kalten) Online-Ebene die niedrigsten Speicherkosten, aber dafür höhere Datenabrufkosten und eine höhere Latenz. Die Daten müssen sich mindestens 180 Tage lang auf der Archivebene befinden, sonst könnten sie frühzeitig gelöscht werden. Weitere Informationen zur Archivebene finden Sie unter [Archivzugriffsebene](access-tiers-overview.md#archive-access-tier).
 
-Solange sich ein Blob auf der Archivebene befindet, kann es nicht gelesen oder geändert werden. Um ein Blob, das sich auf der Archivebene befindet, lesen oder herunterladen zu können, müssen Sie es zunächst auf einer Onlineebene (heiße oder kalte Ebene) aktivieren. Abhängig von der Priorität, die Sie für den Aktivierungsvorgang angeben, kann es bis zu 15 Stunden dauern, bis die Daten auf der Archivebene aktiviert sind. Weitere Informationen zur Blobaktivierung finden Sie unter [Übersicht über die Aktivierung von Blobs aus der Archivebene](archive-rehydrate-overview.md).
+Solange sich ein Blob auf der Archivebene befindet, kann es nicht gelesen oder geändert werden. Um ein Blob, das sich auf der Archivebene befindet, lesen oder herunterladen zu können, müssen Sie es zunächst auf einer Onlineebene („Heiß“ oder „Kalt“) aktivieren. Abhängig von der Priorität, die Sie für den Aktivierungsvorgang angeben, kann es bis zu 15 Stunden dauern, bis die Daten auf der Archivebene aktiviert sind. Weitere Informationen zur Blobaktivierung finden Sie unter [Übersicht über die Aktivierung von Blobs aus der Archivebene](archive-rehydrate-overview.md).
 
 > [!CAUTION]
 > Ein Blob auf der Archivebene ist &mdash; offline, d. h., es kann erst gelesen oder geändert werden, &mdash; wenn es aktiviert wurde. Der Aktivierungsprozess kann mehrere Stunden dauern und ist mit Kosten verbunden. Bevor Sie Daten auf die Archivebene verschieben, sollten Sie sich überlegen, ob sich das Offlineschalten von Blob-Daten auf Ihren Arbeitsablauf auswirken kann.
@@ -228,7 +228,7 @@ Um Blobs mit einem Batchvorgang zu archivieren, verwenden Sie eine der Azure Sto
 
 Ein ausführliches Beispiel, das zeigt, wie Sie Ebenen mit einem Batchvorgang ändern, finden Sie unter [AzBulkSetBlobTier](/samples/azure/azbulksetblobtier/azbulksetblobtier/).
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
 
 - [Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“ für Blobdaten](access-tiers-overview.md)
 - [Reaktivierung von Blobs aus der Archivebene](archive-rehydrate-overview.md)

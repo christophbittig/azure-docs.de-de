@@ -1,37 +1,28 @@
 ---
-title: 'Referenz: Der Azure Web PubSub-Dienst für das JavaScript-SDK'
-description: In der Referenz wird der Azure Web PubSub-Dienst für das JavaScript-SDK beschrieben
+title: 'Referenz: JavaScript-SDK für Azure Web PubSub'
+description: In der Referenz wird das JavaScript-SDK für den Azure Web PubSub-Dienst beschrieben.
 author: vicancy
 ms.author: lianwei
 ms.service: azure-web-pubsub
 ms.topic: conceptual
-ms.date: 08/26/2021
-ms.openlocfilehash: 1d507f29b184403cb9ef31d84111af60f75c1584
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.date: 11/01/2021
+ms.openlocfilehash: 4571bb8581892525785c3f08e0c627bf20f511aa
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123115253"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131578343"
 ---
-# <a name="javascript-sdk-for-the-azure-web-pubsub-service"></a>Der Azure Web PubSub-Dienst für das JavaScript-SDK
+# <a name="javascript-sdk-for-azure-web-pubsub"></a>JavaScript-SDK für Azure Web PubSub
 
-Es werden zwei Bibliotheken für JavaScript angeboten:
-- Verwenden Sie den [Clientbibliothek-Dienst](#service-client-library) für die folgenden Aktionen
-    - Das Versenden von Nachrichten an Hubs und Gruppen.
-    - Das Versenden von Nachrichten an bestimmte Benutzer und Verbindungen.
-    - Das Organisieren von Benutzern und Verbindungen in Gruppen.
-    - Das Schließen von Verbindungen
-    - Das Erteilen, Widerrufen und Prüfen von Berechtigungen für eine vorhandene Verbindung
-- [Express-Middleware](#express) für die Verarbeitung eingehender Clientereignisse
-  - Anfragen von Missbrauchsüberprüfungen verarbeiten
-  - Anfragen von den eingehenden Clientereignissen verarbeiten
+Für JavaScript werden zwei Bibliotheken angeboten: die Dienstclientbibliothek und Express-Middleware. Die folgenden Abschnitte enthalten weitere Informationen zu diesen Bibliotheken.
 
 <a name="service-client-library"></a>
 
 ## <a name="azure-web-pubsub-service-client-library-for-javascript"></a>Die Clientbibliothek des Azure Web PubSub-Diensts für JavaScript
-Verwenden Sie die Clientbibliothek für:
 
-- Das Versenden von Nachrichten an Hubs und Gruppen.
+Sie können diese Bibliothek für folgende Zwecke verwenden:
+- Das Versenden von Nachrichten an Hubs und Gruppen. 
 - Das Versenden von Nachrichten an bestimmte Benutzer und Verbindungen.
 - Das Organisieren von Benutzern und Verbindungen in Gruppen.
 - Das Schließen von Verbindungen
@@ -40,27 +31,23 @@ Verwenden Sie die Clientbibliothek für:
 [Quellcode](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/web-pubsub/web-pubsub) |
 [Paket (NPM)](https://www.npmjs.com/package/@azure/web-pubsub) |
 [API-Referenzdokumentation](/javascript/api/@azure/web-pubsub/) |
-[Produktdokumentation](https://aka.ms/awps/doc) |
+[Produktdokumentation](./index.yml) |
 [Beispiele][samples_ref]
 
-### <a name="getting-started"></a>Erste Schritte
+### <a name="get-started"></a>Erste Schritte
 
-#### <a name="currently-supported-environments"></a>Die derzeitig unterstützten Umgebungen
-
-- [Node.js](https://nodejs.org/) Version 8.x.x oder höher
-
-#### <a name="prerequisites"></a>Voraussetzungen
+Verwenden Sie [Node.js](https://nodejs.org/) ab Version 8.x.x. Stellen Sie außerdem sicher, dass die folgenden Voraussetzungen erfüllt sind:
 
 - Ein [Azure-Abonnement][azure_sub].
 - Eine vorhandene Azure Web PubSub-Dienstinstanz.
 
-#### <a name="1-install-the-azureweb-pubsub-package"></a>1. Installieren Sie das Paket `@azure/web-pubsub`
+#### <a name="install-the-azureweb-pubsub-package"></a>Installieren Sie das Paket `@azure/web-pubsub`.
 
 ```bash
 npm install @azure/web-pubsub
 ```
 
-#### <a name="2-create-and-authenticate-a-webpubsubserviceclient"></a>2. Erstellen und Authentifizieren Sie einen WebPubSubServiceClient
+#### <a name="create-and-authenticate-webpubsubserviceclient"></a>Erstellen und Authentifizieren von `WebPubSubServiceClient`
 
 ```js
 const { WebPubSubServiceClient } = require("@azure/web-pubsub");
@@ -68,7 +55,7 @@ const { WebPubSubServiceClient } = require("@azure/web-pubsub");
 const serviceClient = new WebPubSubServiceClient("<ConnectionString>", "<hubName>");
 ```
 
-Sie können die `WebPubSubServiceClient` auch mithilfe eines Endpunkts und eines `AzureKeyCredential` authentifizieren:
+Sie können `WebPubSubServiceClient` auch mithilfe eines Endpunkts und eines `AzureKeyCredential` authentifizieren:
 
 ```js
 const { WebPubSubServiceClient, AzureKeyCredential } = require("@azure/web-pubsub");
@@ -114,9 +101,7 @@ await serviceClient.sendToAll(payload.buffer);
 
 ### <a name="troubleshooting"></a>Problembehandlung
 
-#### <a name="enable-logs"></a>Aktivieren von Protokollen
-
-Sie können die folgende Umgebungsvariable festlegen, um Debugprotokolle anzuzeigen, wenn Sie diese Bibliothek verwenden.
+Sie können die folgende Umgebungsvariable festlegen, um Debugprotokolle anzuzeigen, wenn Sie diese Bibliothek verwenden:
 
 - Abrufen von Debugprotokollen aus der SignalR-Clientbibliothek
 
@@ -124,13 +109,13 @@ Sie können die folgende Umgebungsvariable festlegen, um Debugprotokolle anzuzei
 export AZURE_LOG_LEVEL=verbose
 ```
 
-Ausführlichere Anweisungen zum Aktivieren von Protokollen finden Sie in der [@azure/logger Paketdokumentation](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/core/logger).
+Ausführlichere Anweisungen zum Aktivieren von Protokollen finden Sie in der [Dokumentation zum Paket @azure/logger](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/core/logger).
 
 <a name="express"></a>
 
 ## <a name="azure-web-pubsub-cloudevents-handlers-for-express"></a>Azure Web PubSub CloudEvents-Handler für Express
 
-Verwenden Sie die Expressbibliothek für Folgendes:
+Sie können die Expressbibliothek für Folgendes verwenden:
 - Hinzufügen von Azure Web PubSub CloudEvents-Middleware zum Verarbeiten eingehender Clientereignisse
   - Anfragen von Missbrauchsüberprüfungen verarbeiten
   - Anfragen von den eingehenden Clientereignissen verarbeiten
@@ -138,28 +123,23 @@ Verwenden Sie die Expressbibliothek für Folgendes:
 [Quellcode](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/web-pubsub/web-pubsub-express) |
 [Paket (NPM)](https://www.npmjs.com/package/@azure/web-pubsub-express) |
 [API-Referenzdokumentation](/javascript/api/@azure/web-pubsub-express/) |
-[Produktdokumentation](https://aka.ms/awps/doc) |
+[Produktdokumentation](./index.yml) |
 [Beispiele][samples_ref]
 
-### <a name="getting-started"></a>Erste Schritte
+### <a name="get-started"></a>Erste Schritte
 
-#### <a name="currently-supported-environments"></a>Die derzeitig unterstützten Umgebungen
-
-- [Node.js](https://nodejs.org/) Version 8.x.x oder höher
-- [Express](https://expressjs.com/) Version 4.x.x oder höher
-
-#### <a name="prerequisites"></a>Voraussetzungen
+Verwenden Sie [Node.js](https://nodejs.org/) ab Version 8.x.x oder [Express](https://expressjs.com/) ab Version 4.x.x. Stellen Sie außerdem sicher, dass die folgenden Voraussetzungen erfüllt sind:
 
 - Ein [Azure-Abonnement][azure_sub].
 - Ein vorhandener Azure Web PubSub-Endpunkt.
 
-#### <a name="1-install-the-azureweb-pubsub-express-package"></a>1. Installieren Sie das `@azure/web-pubsub-express`-Paket
+#### <a name="install-the-azureweb-pubsub-express-package"></a>Installieren Sie das Paket `@azure/web-pubsub-express`.
 
 ```bash
 npm install @azure/web-pubsub-express
 ```
 
-#### <a name="2-create-a-webpubsubeventhandler"></a>2. Erstellen Sie ein WebPubSubEventHandler
+#### <a name="create-webpubsubeventhandler"></a>Erstellen Sie `WebPubSubEventHandler`.
 
 ```js
 const express = require("express");
@@ -189,13 +169,13 @@ app.listen(3000, () =>
 
 ### <a name="key-concepts"></a>Wichtige Begriffe
 
-#### <a name="client-events"></a>Clientereignisse
+- **Clientereignisse**: Ein Client erstellt Ereignisse während des Lebenszyklus einer Verbindung erstellt. Eine einfache WebSocket-Clientverbindung erstellt beispielsweise die folgenden Ereignisse:
+  - Ein `connect`-Ereignis, wenn versucht wird, eine Verbindung mit dem Dienst herzustellen.
+  - Ein `connected`-Ereignis, wenn erfolgreich eine Verbindung mit dem Dienst hergestellt wurde.
+  - Ein `message`-Ereignis, wenn Nachrichten an den Dienst gesendet werden.
+  - Ein `disconnected`-Ereignis, wenn die Verbindung mit demDienst getrennt wurde.
 
-Ereignisse werden während des Lebenszyklus einer Clientverbindung erstellt. Eine einfache WebSocket-Clientverbindung erstellt z. B. ein `connect`-Ereignis, wenn versucht wird, eine Verbindung mit dem Dienst herzustellen, ein `connected`-Ereignis, wenn erfolgreich eine Verbindung mit dem Dienst hergestellt wurde, ein `message`-Ereignis, wenn Nachrichten an den Dienst gesendet werden und ein `disconnected`-Ereignis, wenn die Verbindung mit dem Dienst getrennt wird.
-
-#### <a name="event-handler"></a>Ereignishandler
-
-Der Event-Handler enthält die Logik zum Behandeln der Clientereignisse. Der Ereignishandler muss im Dienst über das Portal oder die Azure CLI im Voraus registriert und konfiguriert werden. Der Ort zum Hosten der Ereignishandlerlogik wird im Allgemeinen als serverseitig betrachtet.
+- **Ereignishandler:** Der Ereignishandler enthält die Logik zum Behandeln der Clientereignisse. Der Ereignishandler muss im Dienst über das Azure-Portal oder die Azure CLI im Voraus registriert und konfiguriert werden. Der Server hostet in der Regel die Ereignishandlerlogik.
 
 ### <a name="troubleshooting"></a>Problembehandlung
 

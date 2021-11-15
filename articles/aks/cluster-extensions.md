@@ -6,12 +6,12 @@ ms.date: 10/13/2021
 ms.topic: article
 author: nickomang
 ms.author: nickoman
-ms.openlocfilehash: d9ef2efbd4b77f70bb43830e59b7dee0ae8ad26a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 80d6eb34e1b1e0bbce6a8a1f1d2de58dbec51b4c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095540"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131447422"
 ---
 # <a name="deploy-and-manage-cluster-extensions-for-azure-kubernetes-service-aks-preview"></a>Bereitstellung und Verwaltung von Cluster-Erweiterungen für Azure Kubernetes Service (AKS) (Vorschau)
 
@@ -121,12 +121,10 @@ az extension update --name k8s-extension
 >[!NOTE]
 > Cluster-Erweiterungen bieten eine Plattform für verschiedene Erweiterungen, die auf einem AKS-Cluster installiert und verwaltet werden können. Wenn Sie bei der Verwendung einer dieser Erweiterungen auf Probleme stoßen, eröffnen Sie bitte ein Support-Ticket bei dem entsprechenden Dienst.
 
-<!--
-| Extension | Description |
+| Durchwahl | BESCHREIBUNG |
 | --------- | ----------- |
--->
-
-Derzeit sind keine Erweiterungen verfügbar.
+| [Dapr][dapr-overview] | Dapr ist eine portable, ereignisgesteuerte Runtime, die es jedem Entwickler einfach macht, robuste, zustandslose und zustandsbehaftete Anwendungen zu erstellen, die in der Cloud und in Edge ausgeführt werden. |
+| [Azure ML][azure-ml-overview] | Verwenden Sie Azure Kubernetes Service-Cluster zum Trainieren, für Rückschlüsse und zum Verwalten von Machine Learning-Modellen in Azure Machine Learning. |
 
 ## <a name="supported-regions-and-kubernetes-versions"></a>Unterstützte Regionen und Kubernetes-Versionen
 
@@ -227,23 +225,14 @@ az k8s-extension update --name azureml --extension-type Microsoft.AzureML.Kubern
 
 ### <a name="delete-extension-instance"></a>Löschen der Erweiterungsinstanz
 
+>[!NOTE]
+> Die Azure-Ressource, die diese Erweiterung darstellt, wird sofort gelöscht. Die Helm-Freigabe auf dem Cluster, die dieser Erweiterung zugeordnet ist, wird nur gelöscht, wenn die auf dem Kubernetes-Cluster ausgeführten Agents über Netzwerkkonnektivität verfügen und wieder auf Azure-Dienste zugreifen können, um den gewünschten Status abzurufen.
+
 Löschen einer Erweiterungsinstanz auf einem Cluster mit `k8s-extension delete`, wobei Werte für die obligatorischen Parameter übergeben werden.
 
 ```azurecli
 az k8s-extension delete --name azureml --cluster-name <clusterName> --resource-group <resourceGroupName> --cluster-type managedClusters
 ```
-
->[!NOTE]
-> Die Azure-Ressource, die diese Erweiterung darstellt, wird sofort gelöscht. Die Helm-Freigabe auf dem Cluster, die dieser Erweiterung zugeordnet ist, wird nur gelöscht, wenn die auf dem Kubernetes-Cluster ausgeführten Agents über Netzwerkkonnektivität verfügen und wieder auf Azure-Dienste zugreifen können, um den gewünschten Status abzurufen.
-
-<!-- when extensions are available, add this section
-## Next steps
-
-Learn more about the cluster extensions currently available for AKS:
-
-> [!div class="nextstepaction"]
-
--->
 
 <!-- LINKS -->
 <!-- INTERNAL -->
@@ -251,8 +240,8 @@ Learn more about the cluster extensions currently available for AKS:
 [az-feature-register]: /cli/azure/feature#az_feature_register
 [az-feature-list]: /cli/azure/feature#az_feature_list
 [az-provider-register]: /cli/azure/provider#az_provider_register
-[azure-ml-overview]:  <!-- need link -->
-[dapr-overview]: <!-- Not yet live -->
+[azure-ml-overview]: ../machine-learning/how-to-attach-arc-kubernetes.md
+[dapr-overview]: ./dapr.md
 [k8s-extension-reference]: /cli/azure/k8s-extension
 
 <!-- EXTERNAL -->

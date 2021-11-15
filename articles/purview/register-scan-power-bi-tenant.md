@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: 9ee623656ee83347d2edc1fe010131913a07ccb4
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 39b6dd297ad0fbb739272db41900e68c799e790d
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131023783"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131853783"
 ---
 # <a name="connect-to-and-manage-a-power-bi-tenant-in-azure-purview"></a>Verbinden mit und Verwalten eines Power BI-Mandanten in Azure Purview
 
@@ -41,7 +41,7 @@ In diesem Artikel wird beschrieben, wie Sie in einen Power BI-Mandanten Azure P
 
 * Eine aktive [Purview-Ressource](create-catalog-portal.md)
 
-* Sie müssen ein Datenquellenadministrator und Datenleser sein, um eine Quelle zu registrieren und in Purview Studio zu verwalten. Weitere Informationen finden Sie auf der [Seite Azure Purview-Berechtigungen](catalog-permissions.md).
+* Sie müssen Datenquellenadministrator und Datenleser sein, um eine Quelle zu registrieren und in Purview Studio zu verwalten. Weitere Informationen finden Sie auf der [Seite Azure Purview-Berechtigungen](catalog-permissions.md).
 
 ## <a name="register"></a>Register
 
@@ -172,26 +172,38 @@ Verwenden Sie diese Anleitung, wenn sich der Azure AD-Mandant, in dem sich der P
 
    1. Erstellen Sie eine App-Registrierung in Ihrem Azure Active Directory-Mandanten, in dem sich Power BI befindet. Stellen Sie sicher, dass Sie das Feld `password` mit einem sicheren Kennwort aktualisieren und `app_display_name` mit einem nicht vorhandenen Anwendungsnamen in Ihrem Azure AD-Mandanten aktualisieren, in dem der Power BI-Mandant gehostet wird.
 
-       ```powershell   
-       $SecureStringPassword = ConvertTo-SecureString -String <'password'> -AsPlainText -Force
-       $AppName = '<app_display_name>'
-       New-AzADApplication -DisplayName $AppName -Password $SecureStringPassword
-       ```
+      ```powershell   
+      $SecureStringPassword = ConvertTo-SecureString -String <'password'> -AsPlainText -Force
+      $AppName = '<app_display_name>'
+      New-AzADApplication -DisplayName $AppName -Password $SecureStringPassword
+      ```
 
    1. Wählen Sie aus dem Azure Active Directory-Dashboard die neu erstellte Anwendung und dann **App-Registrierung** aus. Weisen Sie der Anwendung die folgenden delegierten Berechtigungen zu, und erteilen Sie dem Mandanten die Administratoreinwilligung:
 
-         - Power BI Service     Tenant.Read.All
-         - Microsoft Graph      openid
+      - Power BI Service     Tenant.Read.All
+      - Microsoft Graph      openid
 
-   1. Wählen Sie aus dem Azure Active Directory-Dashboard die neu erstellte Anwendung und dann **Authentifizierung** aus. Wählen Sie unter **Unterstützte Kontotypen** die Option **Konten in einem beliebigen Organisationsverzeichnis (beliebigen Azure AD-Verzeichnis – mehrinstanzenfähig)** aus.
+      :::image type="content" source="media/setup-power-bi-scan-catalog-portal/power-bi-delegated-permissions.png" alt-text="Screenshot: delegierte Berechtigungen für Power BI Service und Microsoft Graph.":::
+
+   1. Wählen Sie aus dem Azure Active Directory-Dashboard die neu erstellte Anwendung und dann **Authentifizierung** aus. Wählen Sie unter **Unterstützte Kontotypen** die Option **Konten in einem beliebigen Organisationsverzeichnis (beliebigen Azure AD-Verzeichnis – mehrinstanzenfähig)** aus. 
+
+      :::image type="content" source="media/setup-power-bi-scan-catalog-portal/power-bi-multitenant.png" alt-text="Screenshot: Unterstützung mehrerer Mandanten durch Kontotyp.":::
+
+   1. Achten Sie darauf, dass Sie unter **Implizite Genehmigung und Hybridflows** die Option **ID-Token (werden für implizite und Hybridflows verwendet)** ausgewählt ist.
+    
+      :::image type="content" source="media/setup-power-bi-scan-catalog-portal/power-bi-id-token-hybrid-flows.png" alt-text="Screenshot: Hybridflows für ID-Token.":::
 
    1. Erstellen Sie eine mandantenspezifische Anmelde-URL für Ihren Dienstprinzipal, indem Sie die folgende URL in Ihrem Webbrowser ausführen:
 
-     https://login.microsoftonline.com/<purview_tenant_id>/oauth2/v2.0/authorize?client_id=<client_id_to_delegate_the_pbi_admin>&scope=openid&response_type=id_token&response_mode=fragment&state=1234&nonce=67890
-
-    Ersetzen Sie die Parameter durch die richtigen Informationen: <purview_tenant_id> ist die Azure Active Directory-Mandanten-ID (GUID), in der das Azure Purview-Konto bereitgestellt wird.
-    <client_id_to_delegate_the_pbi_admin> ist die Anwendungs-ID, die Ihrem Dienstprinzipal entspricht.
-
+      ```
+      https://login.microsoftonline.com/<purview_tenant_id>/oauth2/v2.0/authorize?client_id=<client_id_to_delegate_the_pbi_admin>&scope=openid&response_type=id_token&response_mode=fragment&state=1234&nonce=67890
+      ```
+    
+      Stellen Sie sicher, dass Sie die Parameter durch die richtigen Informationen ersetzen:
+      
+      - `<purview_tenant_id>` ist die Mandanten-ID (GUID) von Azure Active Directory, in der das Azure Purview-Konto bereitgestellt wird.
+      - `<client_id_to_delegate_the_pbi_admin>` ist die Anwendungs-ID, die Ihrem Dienstprinzipal entspricht.
+   
    1. Melden Sie sich mit einem beliebigen Nicht-Administratorkonto an. Dies ist erforderlich, um Ihren Dienstprinzipal im Fremdmandanten bereitstellen zu können.
 
    1. Wenn Sie dazu aufgefordert werden, akzeptieren Sie die erforderliche Berechtigung für _Ihr grundlegendes Profil anzeigen_ und _Zugriff auf Daten beibehalten, für die Sie der App Zugriff erteilt haben_.
@@ -209,7 +221,12 @@ Verwenden Sie diese Anleitung, wenn sich der Azure AD-Mandant, in dem sich der P
     $Password = '<pbi_admin_password>'
     ```
 
-1. Suchen Sie im Azure Purview-Abonnement Ihr Purview-Konto, und verwenden Sie Azure RBAC-Rollen, und weisen Sie dem Dienstprinzipal und dem Power BI-Benutzer den _Purview-Datenquellenadministrator_ zu.
+    > [!Note]
+    > Wenn Sie im Portal ein Benutzerkonto in Azure Active Directory erstellen, ist die Standardoption für öffentliche Clientflows **Nein**. Sie müssen sie auf **Ja** umschalten:
+    > <br>
+    > :::image type="content" source="media/setup-power-bi-scan-catalog-portal/power-bi-public-client-flows.png" alt-text="Screenshot: Öffentliche Clientflows.":::
+    
+1. Weisen Sie in Azure Purview Studio dem Dienstprinzipal und dem Power BI-Benutzer in der Stammsammlung die Rolle als _Datenquellenadministrator_ zu. 
 
 1. Um den mandantenübergreifenden Power BI-Mandanten als neue Datenquelle im Azure Purview-Konto zu registrieren, aktualisieren Sie `service_principal_key` und führen die folgenden Cmdlets in der PowerShell-Sitzung aus:
 
@@ -273,8 +290,8 @@ Führen Sie zum Erstellen und Ausführen einer neuen Überprüfung in Azure Purv
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie Ihre Quelle registriert haben, halten Sie sich an die folgenden Anleitungen, um mehr über Purview und Ihre Daten zu erfahren.
+Nachdem Sie Ihre Quelle registriert haben, befolgen Sie die folgenden Anleitungen, um mehr über Purview und Ihre Daten zu erfahren.
 
-- [Dateneinblicke in Azure Purview](concept-insights.md)
+- [Datenerkenntnisse in Azure Purview](concept-insights.md)
 - [Datenherkunft in Azure Purview](catalog-lineage-user-guide.md)
 - [Data Catalog suchen](how-to-search-catalog.md)

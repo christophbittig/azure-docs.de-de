@@ -1,5 +1,5 @@
 ---
-title: Behandeln von Problemen mit dem ECMA-Connectorhost und Azure AD
+title: Behandeln von Problemen bei der Bereitstellung für lokale Anwendungen
 description: Hier wird die Behandlung verschiedener Probleme beschrieben, die bei der Installation und Verwendung des ECMA-Connectorhosts auftreten können.
 services: active-directory
 author: billmath
@@ -7,24 +7,24 @@ manager: karenh444
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 08/24/2021
+ms.date: 10/21/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 002c57afde5909a6f02644b554b389d02735def0
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: a364995ae443f121112c7e259525735bc7b8a13c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129991129"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131456345"
 ---
-# <a name="troubleshoot-ecma-connector-host-issues"></a>Problembehandlung für den ECMA-Connectorhost
+# <a name="troubleshoot-on-premises-application-provisioning"></a>Problembehandlung bei der Bereitstellung lokaler Anwendungen
 
 >[!IMPORTANT]
 > Die Vorschauversion zur lokalen Bereitstellung ist derzeit nur mit Einladung verfügbar. Um Zugriff auf die Funktion anzufordern, verwenden Sie das [Zugriffsanforderungsformular](https://aka.ms/onpremprovisioningpublicpreviewaccess). Wir öffnen die Vorschauversion im Rahmen der Vorbereitung auf die allgemeine Verfügbarkeit in den nächsten Monaten für weitere Kunden und Connectors.
 
 ## <a name="troubleshoot-test-connection-issues"></a>Beheben von Testverbindungsproblemen
-Nach dem Konfigurieren des ECMA-Hosts und des Bereitstellungs-Agents ist es an der Zeit, die Konnektivität zwischen dem Azure AD-Bereitstellungsdienst (Azure Active Directory) und dem Bereitstellungs-Agent, dem ECMA-Host und der Anwendung zu testen. Dieser End-to-End-Test kann durch Auswählen von **Verbindung testen** in der Anwendung im Azure-Portal durchgeführt werden. Wenn beim Testen der Verbindung ein Fehler auftritt, führen Sie die folgenden Schritte zur Problembehandlung aus:
+Nach dem Konfigurieren des Bereitstellungs-Agents und des ECMA-Hosts ist es an der Zeit, die Konnektivität zwischen dem Azure AD-Bereitstellungsdienst (Azure Active Directory) und dem Bereitstellungs-Agent, dem ECMA-Host und der Anwendung zu testen. Dieser End-to-End-Test kann durch Auswählen von **Verbindung testen** in der Anwendung im Azure-Portal durchgeführt werden. Wenn beim Testen der Verbindung ein Fehler auftritt, führen Sie die folgenden Schritte zur Problembehandlung aus:
 
  1. Überprüfen Sie, ob der Agent und der ECMA-Host ausgeführt werden:
      1. Öffnen Sie auf dem Server, auf dem der Agent installiert ist, die Seite **Dienste**, indem Sie zu **Start** > **Ausführen** > **Services.msc** navigieren.

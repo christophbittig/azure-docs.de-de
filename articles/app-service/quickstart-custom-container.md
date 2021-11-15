@@ -7,23 +7,19 @@ ms.date: 06/30/2021
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: 29d2f44dec6a80f2512e6ef23c2627c8dd098be4
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 02d9f115a5fbeb364719a2fc6cafb22e6ea03cf7
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121741561"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131465856"
 ---
 # <a name="run-a-custom-container-in-azure"></a>Ausführen eines benutzerdefinierten Containers in Azure
 
 ::: zone pivot="container-windows"
-[Azure App Service](overview.md) stellt vordefinierte Anwendungsstapel unter Windows wie ASP.NET oder Node.js bereit (ausgeführt unter IIS). Die vorkonfigurierte Umgebung für Windows-Container sperrt das Betriebssystem, um Administratorzugriff, Softwareinstallationen, Änderungen am globalen Assemblycache usw. zu verhindern. Weitere Informationen finden Sie unter [Betriebssystemfunktionen für Azure App Service](operating-system-functionality.md). Wenn für Ihre Anwendung umfangreichere Zugriffsrechte erforderlich sind, als die vorkonfigurierte Umgebung zulässt, können Sie stattdessen einen benutzerdefinierten Windows-Container bereitstellen.
+[Azure App Service](overview.md) stellt vordefinierte Anwendungsstapel unter Windows wie ASP.NET oder Node.js bereit (ausgeführt unter IIS). Die vorkonfigurierten Anwendungsstapel [sperren jedoch das Betriebssystem und verhindern den Zugriff auf niedriger Ebene](operating-system-functionality.md). Für benutzerdefinierte Windows-Container gelten diese Einschränkungen nicht, und Entwickler können die Container vollständig anpassen und Containeranwendungen Vollzugriff auf Windows-Funktionen erteilen. 
 
 In dieser Schnellstartanleitung erfahren Sie, wie Sie über Visual Studio in [Docker Hub](https://hub.docker.com/) eine ASP.NET-App (in einem Windows-Image) bereitstellen. Die App wird in einem benutzerdefinierten Container in Azure App Service ausgeführt.
-
-> [!NOTE]
-> Windows-Container sind auf Azure Files beschränkt und unterstützen derzeit kein Azure-Blob.
-
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -199,7 +195,7 @@ In diesem Schnellstart wird Azure Container Registry als Registrierung ausgewäh
 Verwenden Sie für das Erstellen einer Containerregistrierung die Anweisungen unter [Schnellstart: Erstellen einer privaten Containerregistrierung im Azure-Portal](../container-registry/container-registry-get-started-portal.md).
 
 > [!IMPORTANT]
-> Stellen Sie sicher, dass Sie beim Erstellen der Containerregistrierung in Azure die Option **Administratorbenutzer** auf **Aktivieren** festlegen. Sie können die Option auch im Azure-Portal im Abschnitt **Zugriffsschlüssel** Ihrer Registrierungsseite festlegen. Diese Einstellung ist für den App Service-Zugriff erforderlich.
+> Stellen Sie sicher, dass Sie beim Erstellen der Containerregistrierung in Azure die Option **Administratorbenutzer** auf **Aktivieren** festlegen. Sie können die Option auch im Azure-Portal im Abschnitt **Zugriffsschlüssel** Ihrer Registrierungsseite festlegen. Diese Einstellung ist für den App Service-Zugriff erforderlich. Informationen zur verwalteten Identität finden Sie unter [Konfigurieren von App Service für die Bereitstellung des Images über die Registrierung](tutorial-custom-container.md?pivots=container-linux#configure-app-service-to-deploy-the-image-from-the-registry).
 
 ## <a name="sign-in"></a>Anmelden
 

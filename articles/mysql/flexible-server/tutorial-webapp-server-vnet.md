@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Erstellen einer Instanz von Azure Database for MySQL Flexible Server (Vorschau) und Azure App Service-Web-App im gleichen virtuellen Netzwerk'
-description: Schnellstartanleitung zum Erstellen einer Instanz von Azure Database for MySQL Flexible Server (Vorschau) mit Web-App in einem virtuellen Netzwerk
+title: 'Tutorial: Erstellen einer Instanz von Azure Database for MySQL Flexible Server und Azure App Service-Web-App im gleichen virtuellen Netzwerk'
+description: Schnellstartanleitung zum Erstellen einer Instanz von Azure Database for MySQL Flexible Server mit Web-App in einem virtuellen Netzwerk
 author: mksuni
 ms.author: sumuth
 ms.service: mysql
@@ -8,23 +8,18 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 03/18/2021
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 0d95def7048b3077232bb728a97c28107ec80313
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 2c53a76469edbb9fdaa507fb30af1157cca2608d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "128654463"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131429202"
 ---
-# <a name="tutorial-create-an-azure-database-for-mysql---flexible-server-preview-with-app-services-web-app-in-virtual-network"></a>Tutorial: Erstellen einer Instanz von Azure Database for MySQL Flexible Server (Vorschau) mit App Services-Web-App im virtuellen Netzwerk
+# <a name="tutorial-create-an-azure-database-for-mysql---flexible-server-with-app-services-web-app-in-virtual-network"></a>Tutorial: Erstellen einer Instanz von Azure Database for MySQL Flexible Server mit App Services-Web-App im virtuellen Netzwerk
 
 [[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-
-> [!IMPORTANT]
-> Azure Database for MySQL Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
-
-
-In diesem Tutorial wird gezeigt, wie Sie eine Azure App Service-Web-App mit MySQL Flexible Server (Vorschau) in einem [virtuellen Netzwerk](../../virtual-network/virtual-networks-overview.md) erstellen.
+In diesem Tutorial wird gezeigt, wie Sie eine Azure App Service-Web-App mit MySQL Flexible Server in einem [virtuellen Netzwerk](../../virtual-network/virtual-networks-overview.md) erstellen.
 
 In diesem Lernprogramm lernen Sie Folgendes:
 >[!div class="checklist"]
@@ -32,7 +27,7 @@ In diesem Lernprogramm lernen Sie Folgendes:
 > * Erstellen eines Subnetzes für die Delegation an App Service
 > * Erstellen einer Web-App
 > * Hinzufügen der Web-App zum virtuellen Netzwerk
-> * Herstellen einer Verbindung mit Postgres aus der Web-App 
+> * Herstellen einer Verbindung mit Postgres aus der Web-App
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -70,12 +65,12 @@ Kopieren Sie die Verbindungszeichenfolge und den Namen des neu erstellten virtue
 > Notieren Sie sich das Kennwort, das für Sie generiert wird, wenn es nicht angegeben wird. Wenn Sie das Kennwort vergessen haben, müssen Sie das Kennwort mit dem ``` az mysql flexible-server update```-Befehl zurücksetzen.
 
 ## <a name="create-subnet-for-app-service-endpoint"></a>Erstellen eines Subnetzes für den App Service-Endpunkt
-Sie benötigen nun ein Subnetz, das an den App Service-Web-App-Endpunkt delegiert wird. Führen Sie den folgenden Befehl aus, um ein neues Subnetz im gleichen virtuellen Netzwerk zu erstellen, in dem auch der Datenbankserver erstellt wurde. 
+Sie benötigen nun ein Subnetz, das an den App Service-Web-App-Endpunkt delegiert wird. Führen Sie den folgenden Befehl aus, um ein neues Subnetz im gleichen virtuellen Netzwerk zu erstellen, in dem auch der Datenbankserver erstellt wurde.
 
 ```azurecli
 az network vnet subnet create -g myresourcegroup --vnet-name VNETName --name webappsubnetName  --address-prefixes 10.0.1.0/24  --delegations Microsoft.Web/serverFarms --service-endpoints Microsoft.Web
 ```
-Notieren Sie sich nach diesem Befehl den Namen des virtuellen Netzwerks und des Subnetzes, da Sie diese nach der Erstellung der Web-App zum Hinzufügen einer VNet-Integrationsregel benötigen. 
+Notieren Sie sich nach diesem Befehl den Namen des virtuellen Netzwerks und des Subnetzes, da Sie diese nach der Erstellung der Web-App zum Hinzufügen einer VNet-Integrationsregel benötigen.
 
 ## <a name="create-a-web-app"></a>Erstellen einer Web-App
 

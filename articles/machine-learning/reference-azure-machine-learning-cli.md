@@ -9,12 +9,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 04/02/2021
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: 501b431e86b19c8e6cf3aa7cfacb0758691eb93b
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 41f12d9421a49cb926a666469beda97cd8f53eac
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339469"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131559730"
 ---
 # <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>Installieren und Verwenden der CLI-Erweiterung für Azure Machine Learning
 
@@ -61,7 +61,10 @@ Andere Methoden zur Authentifizierung finden Sie unter [Anmelden mit der Azure C
 
 ## <a name="install-the-extension"></a>Installieren der Erweiterung
 
-Die Erweiterung wird automatisch installiert, wenn Sie zum ersten Mal versuchen, einen Befehl zu verwenden, der mit `az ml` beginnt.
+So installieren Sie die CLI-Erweiterung (v1):
+```azurecli-interactive
+az extension add -n azure-cli-ml
+```
 
 ## <a name="update-the-extension"></a>Aktualisieren der Erweiterung
 

@@ -7,12 +7,12 @@ ms.service: serviceconnector
 ms.topic: conceptual
 ms.date: 10/29/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 99c793fb5b9b249acd440669a01e50f14c7b6de5
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: fda89409a39644057ebd76d949665b281d32dc2a
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131021532"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131501664"
 ---
 # <a name="service-connector-internals"></a>Besonderheiten des Dienstconnectors
 

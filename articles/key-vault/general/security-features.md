@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 04/15/2021
 ms.author: mbaldwin
-ms.openlocfilehash: dd32e421b678b9cfc6277bdc593a06f93fab447f
-ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
+ms.openlocfilehash: e63867a4c46f8249db93c13914ab7a7297252f48
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113136110"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130238452"
 ---
 # <a name="azure-key-vault-security"></a>Azure Key Vault – Sicherheit
 
@@ -73,6 +73,12 @@ Ein Sicherheitsprinzipal ist ein Objekt, das Benutzer, Gruppen, Dienste oder Anw
 - Ein **Dienstprinzipal** ist ein Typ von Sicherheitsprinzipal, der für eine Anwendung oder einen Dienst steht und sozusagen ein Codeausschnitt anstelle eines Benutzers oder einer Gruppe ist. Die Objekt-ID eines Dienstprinzipals wird als dessen **Client-ID** bezeichnet und verhält sich wie der Benutzername. Der **geheime Clientschlüssel** oder das **Zertifikat** des Dienstprinzipals verhält sich wie sein Kennwort. Viele Azure-Dienste unterstützen das Zuweisen von [Verwaltete Identität](../../active-directory/managed-identities-azure-resources/overview.md) mit automatisierter Verwaltung von **Client-ID** und **Zertifikat**. „Verwaltete Identität“ ist die sicherste und empfohlene Option zum Authentifizieren in Azure.
 
 Weitere Informationen zur Authentifizierung bei Key Vault finden Sie unter [Authentifizieren bei Azure Key Vault](authentication.md).
+
+## <a name="conditional-access"></a>Bedingter Zugriff 
+
+Key Vault bietet Unterstützung für Azure Active Directory-Richtlinien für bedingten Zugriff. Mithilfe von Richtlinien für bedingten Zugriff können Sie bei Bedarf die richtigen Zugriffssteuerungen auf Key Vault anwenden, um die Sicherheit Ihrer Organisation zu gewährleisten, und behindern die Benutzer*innen ansonsten nicht.
+
+Weitere Informationen finden Sie unter [Übersicht über den bedingten Zugriff](../../active-directory/conditional-access/overview.md).
 
 ## <a name="privileged-access"></a>Privilegierter Zugriff
 

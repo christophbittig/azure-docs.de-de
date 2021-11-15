@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/13/2021
 ms.author: mjbrown
 ms.custom: seodec18, devx-track-azurepowershell
-ms.openlocfilehash: b6d1a8ddcbf7982c4b8c2a44bbd23c8bb78676df
-ms.sourcegitcommit: f53f0b98031cd936b2cd509e2322b9ee1acba5d6
+ms.openlocfilehash: 39f7b829cb3ccff2bae002d47ab320bad1a80b62
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2021
-ms.locfileid: "123214175"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131476279"
 ---
 # <a name="manage-azure-cosmos-db-core-sql-api-resources-using-powershell"></a>Verwalten von Ressourcen für die Core-API (SQL) von Azure Cosmos DB mit PowerShell
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -121,7 +121,7 @@ Mit diesem Befehl können Sie die Eigenschaften Ihres Azure Cosmos DB-Datenbankk
 > [!NOTE]
 > Mit diesem Befehl können Sie Regionen hinzufügen und entfernen, aber weder Failoverprioritäten anpassen noch ein manuelles Failover auslösen. Weitere Informationen finden Sie unter [Anpassen der Failoverpriorität für ein Azure Cosmos DB-Konto](#modify-failover-priority) und [Auslösen eines manuellen Failovers](#trigger-manual-failover).
 > [!TIP]
-> Wenn eine neue Region hinzugefügt wird, müssen alle Daten vollständig repliziert und in die neue Region committet werden, bevor die Region als verfügbar markiert wird. Wie lange dieser Vorgang dauert, hängt davon ab, wie viele Daten in dem Konto gespeichert sind.
+> Wenn eine neue Region hinzugefügt wird, müssen alle Daten vollständig repliziert und in die neue Region committet werden, bevor die Region als verfügbar markiert wird. Wie lange dieser Vorgang dauert, hängt davon ab, wie viele Daten in dem Konto gespeichert werden. Wenn ein [asynchroner Durchsatzskalierungsvorgang](../scaling-provisioned-throughput-best-practices.md#background-on-scaling-rus) ausgeführt wird, wird der Vorgang zum horizontalen Hochskalieren des Durchsatzes angehalten und automatisch fortgesetzt, sobald der Vorgang zum Hinzufügen/Entfernen von Regionen abgeschlossen ist. 
 
 ```azurepowershell-interactive
 # Create account with two regions
@@ -323,6 +323,9 @@ Gehen Sie im folgenden Beispiel davon aus, dass für das Konto aktuell die Failo
 
 > [!CAUTION]
 > Wenn `locationName` in `failoverPriority=0` geändert wird, wird ein manuelles Failover für ein Azure Cosmos DB-Konto ausgelöst. Bei anderen Prioritätsänderungen wird kein Failover ausgelöst.
+
+> [!NOTE]
+> Wenn Sie einen manuellen Failovervorgang ausführen, während ein [asynchroner Durchsatzskalierungsvorgang](../scaling-provisioned-throughput-best-practices.md#background-on-scaling-rus) aktiv ist, wird der Vorgang zum horizontalen Hochskalieren des Durchsatzes angehalten. Er wird automatisch fortgesetzt, sobald der Failovervorgang abgeschlossen ist.
 
 ```azurepowershell-interactive
 $resourceGroupName = "myResourceGroup"

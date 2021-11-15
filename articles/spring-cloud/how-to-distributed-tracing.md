@@ -8,14 +8,16 @@ ms.date: 10/06/2019
 ms.author: karler
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: bacf4f808a7e963c11e8790636dabe1f3f4e4a47
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 702b2fcd2c5cb88adf7c610287dbb9be7089268b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129044187"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130258314"
 ---
 # <a name="use-distributed-tracing-with-azure-spring-cloud-deprecated"></a>Verwenden der verteilten Ablaufverfolgung mit Azure Spring Cloud (veraltet)
+> [!NOTE]
+> Die verteilte Ablaufverfolgung ist veraltet. Weitere Informationen finden Sie unter [Application Insights: Java-In-Process-Agents in Azure Spring Cloud](./how-to-application-insights.md).
 
 Mit den Tools zur verteilten Ablaufverfolgung in Azure Spring Cloud können Sie komplexe Probleme problemlos debuggen und überwachen. Azure Spring Cloud integriert [Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) in [Azure Application Insights](../azure-monitor/app/app-insights-overview.md). Diese Integration bietet leistungsstarke Funktionen für die verteilte Ablaufverfolgung aus dem Azure-Portal.
 
@@ -105,7 +107,7 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um diese Prozeduren zu befolgen, benötigen Sie einen Azure Spring Cloud-Dienst, der bereits bereitgestellt ist und ausgeführt wird. Arbeiten Sie den Schnellstart [Bereitstellen Ihrer ersten Azure Spring Cloud-Anwendung](./quickstart.md) durch, um einen Azure Spring Cloud-Dienst bereitzustellen und auszuführen.
+Um diese Prozeduren zu befolgen, benötigen Sie einen Azure Spring Cloud-Dienst, der bereits bereitgestellt ist und ausgeführt wird. Schließen Sie den Schnellstart [Bereitstellen Ihrer ersten Spring Boot-App in Azure Spring Cloud](./quickstart.md) ab, um einen Azure Spring Cloud-Dienst bereitzustellen und auszuführen.
 
 ## <a name="add-dependencies"></a>Hinzufügen von Abhängigkeiten
 

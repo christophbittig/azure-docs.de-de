@@ -8,12 +8,12 @@ ms.service: serviceconnector
 ms.topic: tutorial
 ms.date: 10/28/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 84508ab3634ac86a517b11d790d11a3ef56c4c49
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: a407d164ec0214ddce6e1d8bf6254876d3642230
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131100424"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131449220"
 ---
 # <a name="tutorial-deploy-a-spring-boot-app-connected-to-apache-kafka-on-confluent-cloud-with-service-connector-in-azure-spring-cloud"></a>Tutorial: Bereitstellen einer mit Apache Kafka in Confluent Cloud verbundenen Spring Boot-App mithilfe eines Dienstconnectors in Azure Spring Cloud
 
@@ -119,6 +119,9 @@ az spring-cloud connection create confluent-cloud -g <your-spring-cloud-resource
 * **Ersetzen** Sie *\<cluster-api-key>* und *\<cluster-api-secret>* durch Ihren Cluster-API-Schlüssel und das zugehörige Geheimnis.
 * **Ersetzen** Sie *\<kafka-schema-registry-endpoint>* durch den Endpunkt Ihrer Kafka-Schemaregistrierung (der Wert sollte ungefähr so aussehen: `https://psrc-xxxx.westus2.azure.confluent.cloud`).
 * **Ersetzen** Sie *\<registry-api-key>* und *\<registry-api-secret>* durch Ihren Kafka-Schemaregistrierungs-API-Schlüssel und das zugehörige Geheimnis.
+
+> [!NOTE]
+> Wird die Fehlermeldung „Das Abonnement ist nicht für die Verwendung des Ressourcenanbieters "{0}" registriert.“ angezeigt, führen Sie `az provider register -n Microsoft.ServiceLinker` aus, um den Dienstconnector-Ressourcenanbieter zu registrieren. Führen Sie anschließend erneut den Verbindungsbefehl aus. 
 
 #### <a name="portal"></a>[Portal](#tab/Azure-portal)
 

@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.subservice: ''
 ms.date: 06/30/2020
 ms.reviewer: mimckitt
-ms.openlocfilehash: c4ad34729b81d6ca13bb2ff52c30dc77cd1614b9
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 0e3cab3835abc8ca3fed652830437dfa7c425e74
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130167374"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131466958"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>Was sind Skalierungsgruppen für virtuelle Computer?
 
@@ -41,7 +41,7 @@ Zur Sicherstellung von Redundanz und einer höheren Leistung werden Anwendungen 
     - Die automatische Skalierung verringert auch die Anzahl von unnötigen VM-Instanzen, auf denen Ihre Anwendung ausgeführt wird, wenn die Nachfrage gering ist. Kunden erhalten weiterhin eine akzeptable Leistungsebene, wenn die Nachfrage zunimmt und automatisch weitere VM-Instanzen hinzugefügt werden. Diese Möglichkeit trägt zur Reduzierung von Kosten und zur effizienten bedarfsabhängigen Erstellung von Azure-Ressourcen bei.
 
 - **Großer Umfang**
-    - Skalierungsgruppen unterstützen bis zu 1.000 VM-Instanzen für Marketplace-Standardimages und benutzerdefinierte Images über Shared Image Gallery. Wenn Sie eine Skalierungsgruppe mithilfe eines verwalteten Images erstellen, beträgt der Grenzwert 600 VM-Instanzen.
+    - Skalierungsgruppen unterstützen bis zu 1.000 VM-Instanzen für Marketplace-Standardimages und benutzerdefinierte Images über Azure Compute Gallery. Wenn Sie eine Skalierungsgruppe mithilfe eines verwalteten Images erstellen, beträgt der Grenzwert 600 VM-Instanzen.
     - Verwenden Sie [Azure Managed Disks](../virtual-machines/managed-disks-overview.md), um für Produktionsworkloads die beste Leistung zu erzielen.
 
 

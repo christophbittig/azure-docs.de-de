@@ -6,15 +6,15 @@ author: nabhishek
 ms.service: data-factory
 ms.subservice: security
 ms.topic: conceptual
-ms.date: 07/19/2021
+ms.date: 10/22/2021
 ms.author: abnarain
 ms.custom: devx-track-azurepowershell, synapse
-ms.openlocfilehash: ed7cd2836f601e412aca7f73c52f2a0e13173a8a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 8e1eaad6d25623c9cb1697137fdb69340cb6aeca
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131011482"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131846119"
 ---
 # <a name="managed-identity-for-azure-data-factory-and-azure-synapse"></a>Verwaltete Identität für Azure Data Factory und Azure Synapse 
 
@@ -37,7 +37,7 @@ Eine verwaltete Identität hat folgende Vorteile:
 
 - [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md): In diesem Fall wird die verwaltete Identität für die Azure Key Vault-Authentifizierung verwendet.
 - Greifen Sie mit verwalteter Identitätsauthentifizierung auf Datenspeicher oder Berechnungen zu, einschließlich Azure Blob Storage, Azure Data Explorer, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2, Azure SQL Database, Azure SQL Managed Instance, Azure Synapse Analytics, REST, Databricks-Aktivität, Web-Aktivität und mehr. Überprüfen Sie die Anschluss- und Aktivitätsartikel für Details.
-- Benutzerseitig zugewiesene verwaltete Identitäten werden auch zum Verschlüsseln/Entschlüsseln von Metadaten mithilfe des kundenseitig verwalteten Schlüssels verwendet, der in Azure Key Vault gespeichert ist, was eine Mehrfachverschlüsselung ermöglicht. 
+- Verwaltete Identitäten werden auch zum Verschlüsseln/Entschlüsseln von Daten und Metadaten mithilfe des kundenseitig verwalteten Schlüssels verwendet, der in Azure Key Vault gespeichert ist, was eine Mehrfachverschlüsselung ermöglicht. 
 
 ## <a name="system-assigned-managed-identity"></a>Systemseitig zugewiesene verwaltete Identität 
 

@@ -3,16 +3,16 @@ title: Häufig gestellte Fragen (FAQ) zu Azure Files | Microsoft-Dokumentation
 description: Hier erhalten Sie Antworten auf häufig zu Azure Files gestellte Fragen. Sie können Azure-Dateifreigaben gleichzeitig unter Cloud- und lokalen Bereitstellungen von Windows, Linux oder macOS einbinden.
 author: roygara
 ms.service: storage
-ms.date: 09/15/2021
+ms.date: 11/5/2021
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 717cafbfc3623e52b9d9a0d70e6a22c9e562616b
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 79cb958616bc709ddd2dd866283eed0bd90d5610
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131471837"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131866721"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Häufig gestellte Fragen (FAQ) zu Azure Files
 [Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das Branchenstandardprotokoll [Server Message Block (SMB)](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) sowie über das [Network File System-Protokoll (NFS)](https://en.wikipedia.org/wiki/Network_File_System) (Vorschau) zugegriffen werden kann. Sie können Azure-Dateifreigaben gleichzeitig unter Cloud- und lokalen Bereitstellungen von Windows, Linux und macOS einbinden. Azure-Dateifreigaben können auch auf Windows Server-Computern zwischengespeichert werden, indem die Azure-Dateisynchronisierung verwendet wird, um den schnellen Zugriff in der Nähe der Datennutzung zu ermöglichen.
@@ -21,7 +21,7 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 
 1. Im Abschnitt „Kommentare“ dieses Artikels.
 2. [Frageseite von Microsoft Q&A (Fragen und Antworten) zu Azure Storage](/answers/topics/azure-file-storage.html).
-3. [Azure Files UserVoice](https://feedback.azure.com/d365community/forum/a8bb4a47-3525-ec11-b6e6-000d3a4f0f84?c=c860fa6b-3525-ec11-b6e6-000d3a4f0f84) 
+3. [Azure-Communityfeedback](https://feedback.azure.com/d365community/forum/a8bb4a47-3525-ec11-b6e6-000d3a4f0f84?c=c860fa6b-3525-ec11-b6e6-000d3a4f0f84). 
 4. Microsoft-Support. Wählen Sie zum Erstellen einer neuen Supportanfrage im Azure-Portal auf der Registerkarte **Hilfe** die Schaltfläche **Hilfe und Support** und anschließend die Option **Neue Supportanfrage**.
 
 ## <a name="general"></a>Allgemein

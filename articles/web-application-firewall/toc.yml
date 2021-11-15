@@ -139,7 +139,7 @@
           href: ./afds/waf-front-door-tutorial-geo-filtering.md
         - name: Überwachen und Protokollieren
           href: ./afds/waf-front-door-monitor.md
-    - name: Verwenden von Azure Sentinel mit Web Application Firewall
+    - name: Verwenden von Microsoft Sentinel mit Web Application Firewall
       href: waf-sentinel.md
     - name: Problembehandlung
       items:

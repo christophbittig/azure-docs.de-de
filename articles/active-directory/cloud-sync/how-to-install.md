@@ -11,12 +11,12 @@ ms.date: 10/19/2021
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4a34bda9f5f25d31dec881bd6ea1e00442fbfafc
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 294e66b8b7cef3cec9931b5369562a51b138ab28
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130217163"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131448669"
 ---
 # <a name="install-the-azure-ad-connect-provisioning-agent"></a>Installieren des Azure AD Connect-Bereitstellungs-Agents
 In diesem Artikel erhalten Sie Informationen zum Installationsvorgang für den Azure AD Connect-Bereitstellungs-Agent (Azure Active Directory) und dessen Erstkonfiguration im Azure-Portal.
@@ -104,6 +104,18 @@ So überprüfen Sie, ob der Agent ausgeführt wird:
 
 >[!IMPORTANT]
 >Nachdem Sie den Agent installiert haben, muss er konfiguriert und aktiviert werden, bevor er mit der Synchronisierung von Benutzern beginnen kann. Informationen zum Konfigurieren eines neuen Agents finden Sie unter [Erstellen einer neuen Konfiguration für die Azure AD Connect-Cloudsynchronisierung](how-to-configure.md).
+
+### <a name="enable-password-writeback-in-azure-ad-connect-cloud-sync"></a>Aktivieren des Kennwortrückschreibens in der Azure AD Connect-Cloudsynchronisierung 
+
+Um das Kennwortrückschreiben zu verwenden und den SSPR-Dienst zum Erkennen des Cloudsynchronisierungs-Agents zu aktivieren, müssen Sie das Cmdlet `Set-AADCloudSyncPasswordWritebackConfiguration` und die Anmeldeinformationen des globalen Administrators des Mandanten verwenden: 
+
+  ```   
+   Import-Module "C:\\Program Files\\Microsoft Azure AD Connect Provisioning Agent\\Microsoft.CloudSync.Powershell.dll" 
+   Set-AADCloudSyncPasswordWritebackConfiguration -Enable $true -Credential $(Get-Credential)
+  ```
+
+Weitere Informationen zur Verwendung des Kennwortrückschreibens mit der Azure AD Connect-Cloudsynchronisierung finden Sie unter.
+
 
 ## <a name="next-steps"></a>Nächste Schritte 
 

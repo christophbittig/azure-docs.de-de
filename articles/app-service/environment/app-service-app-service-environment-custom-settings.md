@@ -4,15 +4,15 @@ description: Konfigurieren Sie Einstellungen, die für die gesamte Azure App Ser
 author: madsd
 ms.assetid: 1d1d85f3-6cc6-4d57-ae1a-5b37c642d812
 ms.topic: tutorial
-ms.date: 01/29/2021
+ms.date: 11/03/2021
 ms.author: madsd
 ms.custom: mvc, seodec18
-ms.openlocfilehash: e95f8a4434f0ca27c57791edfe8663df9e77bbaa
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: 863a3fe9ae7b51f347055def7dcaaaa5445293c9
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130002711"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131510057"
 ---
 # <a name="custom-configuration-settings-for-app-service-environments"></a>Benutzerdefinierte Konfigurationseinstellungen für App Service-Umgebungen
 ## <a name="overview"></a>Übersicht
@@ -49,7 +49,7 @@ Das Attribut **clusterSettings** kann in eine Resource Manager-Vorlage eingefüg
 ## <a name="use-azure-resource-explorer-to-update-an-app-service-environment"></a>Aktualisieren einer App Service-Umgebung mit dem Azure-Ressourcen-Explorer
 Alternativ dazu können Sie die App Service-Umgebung mit dem [Azure-Ressourcen-Explorer](https://resources.azure.com)aktualisieren.  
 
-1. Navigieren Sie im Ressourcen-Explorer zum Knoten für die App Service-Umgebung (**subscriptions** > **resourceGroups** > **providers** > **Microsoft.Web** > **hostingEnvironments**). Klicken Sie dann auf die App Service-Umgebung, die aktualisiert werden soll.
+1. Navigieren Sie im Ressourcen-Explorer zum Knoten für die App Service-Umgebung (**subscriptions** >  **{Ihr Abonnement}**  > **resourceGroups** >  **{Ihre Ressourcengruppe}**  > **providers** > **Microsoft.Web** > **hostingEnvironments**). Klicken Sie dann auf die App Service-Umgebung, die aktualisiert werden soll.
 2. Klicken Sie im rechten Bereich in der oberen Symbolleiste auf **Lesen/Schreiben** , um eine interaktive Bearbeitung im Ressourcen-Explorer zuzulassen.  
 3. Klicken Sie dann auf die blaue Schaltfläche **Bearbeiten** , um die Bearbeitung der Resource Manager-Vorlage zu ermöglichen.
 4. Scrollen Sie zum Ende des rechten Bereichs. Das Attribut **clusterSettings** wird ganz unten angezeigt. Sie können entweder einen Attributwert eingeben oder den vorhandenen Wert aktualisieren.

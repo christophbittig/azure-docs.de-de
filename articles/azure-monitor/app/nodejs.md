@@ -2,14 +2,14 @@
 title: Überwachen von Node.js-Diensten per Azure Application Insights | Microsoft-Dokumentation
 description: Es wird beschrieben, wie Sie die Leistung überwachen und Probleme in Node.js-Diensten mit Application Insights diagnostizieren.
 ms.topic: conceptual
-ms.date: 06/01/2020
+ms.date: 10/12/2021
 ms.custom: devx-track-js
-ms.openlocfilehash: 3148dccc9bf6e99d528e34fe54643c871d4a28b5
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 40477ecc4e5b76ee351b74c9d1056f2b7ef91c38
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130162857"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130245017"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Überwachen Ihrer Node.js-Dienste und -Apps mit Application Insights
 
@@ -20,6 +20,9 @@ Fügen Sie das SDK in Ihren Code ein, und richten Sie dann in Azure eine entspre
 Das Node.js SDK kann ein- und ausgehende HTTP-Anforderungen, Ausnahmen und einige Systemmetriken automatisch überwachen. Ab Version 0.20 kann das SDK auch einige [Drittanbieterpakete](https://github.com/microsoft/node-diagnostic-channel/tree/master/src/diagnostic-channel-publishers#currently-supported-modules) überwachen, z. B. MongoDB, MySQL und Redis. Alle Ereignisse, die sich auf eine eingehende HTTP-Anforderung beziehen, werden zur Beschleunigung der Problembehandlung korreliert.
 
 Sie können die TelemetryClient-API verwenden, um weitere Aspekte Ihrer App und Ihres Systems manuell zu instrumentieren und zu überwachen. Die TelemetryClient-API wird weiter unten in diesem Artikel näher beschrieben.
+
+> [!NOTE]
+> Eine Vorschau zum [OpenTelemetry-basierten Node.js-Angebot](opentelemetry-enable.md?tabs=nodejs) ist verfügbar. [Weitere Informationen](opentelemetry-overview.md).
 
 ## <a name="get-started"></a>Erste Schritte
 
@@ -71,7 +74,7 @@ Fügen Sie das SDK in Ihre App ein, damit Daten gesammelt werden können.
 5. Rufen Sie `appInsights.start();` auf, um mit dem automatischen Sammeln und Senden von Daten zu beginnen.
 
 > [!NOTE]
-> Im Rahmen der Verwendung der Application Insights-Instrumentierung sammeln und senden wir Diagnosedaten an Microsoft. Diese Daten helfen uns bei der Ausführung und Verbesserung von Application Insights. Sie haben die Möglichkeit, die Sammlung nicht wesentlicher Daten zu deaktivieren. [Weitere Informationen](./statsbeat.md).
+> Im Rahmen der Verwendung der Application Insights-Instrumentierung sammeln und senden wir Diagnosedaten an Microsoft. Diese Daten helfen uns, Application Insights auszuführen und zu verbessern. Sie haben die Möglichkeit, die Sammlung nicht wesentlicher Daten zu deaktivieren. [Weitere Informationen](./statsbeat.md).
 
 ### <a name="monitor-your-app"></a><a name="monitor"></a> Überwachen Ihrer App
 

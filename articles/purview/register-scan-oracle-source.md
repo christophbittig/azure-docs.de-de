@@ -1,19 +1,19 @@
 ---
 title: Herstellen einer Verbindung mit und Verwalten von Oracle
 description: In diesem Leitfaden wird beschrieben, wie Sie eine Verbindung mit Oracle in Azure Purview herstellen und die Purview-Features verwenden, um Ihre Oracle-Quelle zu überprüfen und zu verwalten.
-author: chandrakavya
-ms.author: kchandra
+author: linda33wj
+ms.author: jingwang
 ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: 6b04ef7f0ea408f1529346ed7fbc2b4cc45b4b35
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 6387149cc9f2392d2dccf382280ca7559593a6cc
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131010933"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131441988"
 ---
 # <a name="connect-to-and-manage-oracle-in-azure-purview"></a>Herstellen einer Verbindung mit und Verwalten von Oracle in Azure Purview
 
@@ -36,7 +36,7 @@ Der Proxyserver wird beim Überprüfen der Oracle-Quelle nicht unterstützt.
 
 * Eine aktive [Purview-Ressource](create-catalog-portal.md)
 
-* Sie müssen ein Datenquellenadministrator und Datenleser sein, um eine Quelle zu registrieren und in Purview Studio zu verwalten. Weitere Informationen finden Sie auf unserer Seite [Azure Purview-Berechtigungen](catalog-permissions.md).
+* Sie müssen ein Datenquellenadministrator und Datenleser sein, um eine Quelle zu registrieren und in Purview Studio zu verwalten. Weitere Informationen finden Sie auf der [Seite Azure Purview-Berechtigungen](catalog-permissions.md).
 
 * Richten Sie die neueste [selbstgehostete Integration Runtime](https://www.microsoft.com/download/details.aspx?id=39717) ein. Weitere Informationen finden Sie im [Leitfaden zum Erstellen und Konfigurieren einer selbstgehosteten Integrationslaufzeit](../data-factory/create-self-hosted-integration-runtime.md).
 
@@ -109,7 +109,7 @@ Gehen Sie auf dem Bildschirm **Quellen registrieren (Oracle)** wie folgt vor:
 1. Geben Sie unter **Host** den Hostnamen ein, mit dem eine Verbindung mit einer Oracle-Quelle hergestellt werden soll. Hierfür kommt infrage:
     * Ein Hostname, der von JDBC verwendet wird, um eine Verbindung mit dem Datenbankserver herzustellen. Beispiel: MyDatabaseServer.com
     * Eine IP-Adresse. Beispiel: 192.169.1.2
-    * Es ist eine vollqualifizierte JDBC-Verbindungszeichenfolge. Zum Beispiel:
+    * Es ist eine vollqualifizierte JDBC-Verbindungszeichenfolge. Beispiel:
 
          ```
         jdbc:oracle:thin:@(DESCRIPTION=(LOAD_BALANCE=on)(ADDRESS=(PROTOCOL=TCP)(HOST=oracleserver1)(PORT=1521))(ADDRESS=(PROTOCOL=TCP)(HOST=oracleserver2)(PORT=1521))(ADDRESS=(PROTOCOL=TCP)(HOST=oracleserver3)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=orcl)))

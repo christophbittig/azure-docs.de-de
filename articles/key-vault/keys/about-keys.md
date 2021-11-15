@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: overview
 ms.date: 02/17/2021
 ms.author: mbaldwin
-ms.openlocfilehash: ef1725161630e4a79b078a3c473f56e3d14a06ca
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: d89cde13500757ae38ceaba66044b10225508cb9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129994516"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131460904"
 ---
 # <a name="about-keys"></a>Informationen zu Schlüsseln
 
@@ -81,9 +81,15 @@ Key Vault unterstützt RSA- und EC-Schlüssel. Verwaltete HSMs unterstützen RSA
 |Durch HSM geschützte Schlüssel in verwalteten HSMs|FIPS 140-2 Level 3|
 |||
 
-
-
 Ausführliche Informationen zu den einzelnen Schlüsseltypen, Algorithmen, Vorgängen, Attributen und Tags finden Sie unter [Schlüsseltypen, Algorithmen und Vorgänge](about-keys-details.md).
+
+## <a name="usage-scenarios"></a>Verwendungsszenarien
+
+| Verwendung | Beispiele |
+|--------------|-------------|
+| Serverseitige Azure-Datenverschlüsselung für integrierte Ressourcenanbieter mit kundenseitig verwalteten Schlüsseln | - [Serverseitige Verschlüsselung mit vom Kunden verwalteten Schlüsseln in Azure Key Vault](https://docs.microsoft.com/azure/security/fundamentals/encryption-models#server-side-encryption-using-customer-managed-keys-in-azure-key-vault) |
+| Clientseitige Datenverschlüsselung | - [Clientseitige Verschlüsselung und Azure Key Vault für Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption?tabs=dotnet)|
+| Schlüsselloses TLS | - Verwenden Sie [Clientbibliotheken](../general/client-libraries.md#client-libraries-per-language-and-object) für Schlüssel. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Informationen zu Key Vault](../general/overview.md)

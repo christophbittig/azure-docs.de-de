@@ -2,14 +2,14 @@
 title: Unterstützungsmatrix für SAP HANA-Sicherungen
 description: Dieser Artikel enthält Informationen zu den unterstützten Szenarien und zu Einschränkungen beim Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Computern unter Verwendung von Azure Backup.
 ms.topic: conceptual
-ms.date: 09/01/2021
+ms.date: 10/22/2021
 ms.custom: references_regions
-ms.openlocfilehash: 09dab8a35c5ed06ec9680b2cb57ca6ac0d27109f
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: b9d642d0c70b06677aedcce99c1f21ac4b3a7d34
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123427937"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130244538"
 ---
 # <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>Unterstützungsmatrix für die Sicherung von SAP HANA-Datenbanken auf virtuellen Azure-Computern
 
@@ -33,6 +33,7 @@ Azure Backup unterstützt die Sicherung von SAP HANA-Datenbanken in Azure. In d
 | **Sicherungstypen**           | Vollständig, Differenziell, Inkrementell und Protokollsicherungen                          |  Momentaufnahmen                                       |
 | **Wiederherstellungstypen**          | Informationen zu den unterstützten Wiederherstellungstypen finden Sie im SAP HANA-Hinweis [1642148](https://launchpad.support.sap.com/#/notes/1642148). |                                                              |
 | **Grenzwerte für Sicherungen**          | Vollständige Sicherungen bis zu einer Größe von 8 TB pro SAP HANA-Instanz (weicher Grenzwert)         |                                                              |
+| **Anzahl vollständiger Sicherungen pro Tag**     |   Eine geplante Sicherung.  <br><br>   Drei bedarfsgesteuerte Sicherungen. <br><br> Es wird empfohlen, nicht mehr als drei Sicherungen pro Tag auszulösen. Um jedoch Wiederholungen von Benutzern bei fehlgeschlagenen Versuchen zuzulassen, wird die harte Grenze für bedarfsorientierte Sicherungen auf neun Versuche festgelegt.  |
 | **Besondere Konfigurationen** |                                                              | SAP HANA + Dynamic Tiering <br>  Klonen über LaMa        |
 
 ------

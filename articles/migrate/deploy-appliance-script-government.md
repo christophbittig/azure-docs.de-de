@@ -5,13 +5,13 @@ author: vikram1988
 ms.author: vibansa
 ms.manager: abhemraj
 ms.topic: how-to
-ms.date: 03/13/2021
-ms.openlocfilehash: 84bb24daf4586f874c0caf3994bc59773e663337
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.date: 11/02/2021
+ms.openlocfilehash: 9586685bc5fd482bf3e87dcfd6848a08c74dfc4f
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129093590"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131509666"
 ---
 # <a name="set-up-an-appliance-for-azure-government-cloud"></a>Einrichten einer Appliance für Azure Government Cloud
 
@@ -61,7 +61,7 @@ Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist
 
     **Download** | **Hashwert**
     --- | ---
-    [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2140337) | BA84B58E88DDFE23E5D4CE73530227EBBC187B3634B66A3E0F0B3E5DF5F0A94F
+    [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2140337) | 3C00F9EB54CC6C55E127EDE47DFA28CCCF752697377EB1C9F3435E75DA5AA029
 
 
 ### <a name="run-the-script"></a>Führen Sie das Skript aus.
@@ -122,7 +122,7 @@ Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist
 
     **Download** | **Hashwert**
     --- | ---
-    [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2140424) | BA84B58E88DDFE23E5D4CE73530227EBBC187B3634B66A3E0F0B3E5DF5F0A94F
+    [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2140424) | 3C00F9EB54CC6C55E127EDE47DFA28CCCF752697377EB1C9F3435E75DA5AA029
 
 ### <a name="run-the-script"></a>Führen Sie das Skript aus.
 
@@ -182,7 +182,7 @@ Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist
 
     **Download** | **Hashwert**
     --- | ---
-    [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2140338) | BA84B58E88DDFE23E5D4CE73530227EBBC187B3634B66A3E0F0B3E5DF5F0A94F
+    [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2140338) | 3C00F9EB54CC6C55E127EDE47DFA28CCCF752697377EB1C9F3435E75DA5AA029
 
 > [!NOTE]
 > Das gleiche Skript kann verwendet werden, um eine physische Appliance für Azure Government Cloud mit Konnektivität für öffentliche oder private Endpunkte einzurichten.

@@ -8,15 +8,15 @@ ms.subservice: automl
 ms.author: nibaccam
 author: cartacioS
 ms.reviewer: nibaccam
-ms.date: 06/11/2021
+ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: automl, FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: a48fa9df38b9892c740713b1463010c1f601506d
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: d7bf32faabd6b0a9d2037ad5599a5b2cceb70053
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "130000022"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131556253"
 ---
 # <a name="set-up-no-code-automl-training-with-the-studio-ui"></a>Einrichten des Trainings für automatisiertes maschinelles Lernen ohne Code über die Studio-Benutzeroberfläche 
 
@@ -94,7 +94,9 @@ Andernfalls wird eine Liste Ihrer letzten Experimente für automatisiertes masch
 
 1. Wählen Sie eine Zielspalte aus: Dies ist die Spalte, für die Sie Vorhersagen ausführen möchten.
 
-1. Wählen Sie einen Compute für den Datenprofilerstellungs- und Trainingsauftrag aus. Eine Liste Ihrer vorhandenen Computes ist in der Dropdownliste verfügbar. Folgen Sie den Anweisungen in Schritt 7, um einen neuen Compute zu erstellen.
+1. Wählen Sie einen Computetyp für den Datenprofilerstellungs- und Trainingsauftrag aus. Sie können einen [Computecluster](concept-compute-target.md#azure-machine-learning-compute-managed) oder eine [Compute-Instanz](concept-compute-instance.md) auswählen. 
+    
+1. Wählen Sie in der Dropdownliste Ihrer vorhandenen Computeressourcen eine Computeressource aus.  Folgen Sie den Anweisungen in Schritt 8, um eine neue Computeressource zu erstellen.
 
 1. Wählen Sie **Create a new compute** (Neue Computeressource erstellen) aus, um den Computekontext für dieses Experiment zu konfigurieren.
 

@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: Dokumentation zu Azure Defender für IoT für Gerätehersteller
-summary: 'Azure Defender für IoT bietet umfassende Bedrohungserkennung für IoT-/OT-Umgebungen mit mehreren Bereitstellungsoptionen, u. a. für vollständig lokale Bereitstellung, Bereitstellung mit Cloudverbindung oder Hybridbereitstellung. HINWEIS: Azure Defender für IoT wird in Microsoft Defender für IoT umbenannt. Die Dokumentation wird in Kürze aktualisiert.'
+title: Dokumentation zu Microsoft Defender für IoT für Gerätehersteller
+summary: 'Microsoft Defender für IoT bietet umfassende Bedrohungserkennung für IoT-/OT-Umgebungen mit mehreren Bereitstellungsoptionen, u. a. für vollständig lokale Bereitstellung, Bereitstellung mit Cloudverbindung oder Hybridbereitstellung. HINWEIS: Azure Defender für IoT wird in Microsoft Defender für IoT umbenannt. Die Dokumentation wird in Kürze aktualisiert.'
 metadata:
-  title: Dokumentation zu Azure Defender für IoT für Gerätehersteller
-  description: Azure Defender für IoT bietet umfassende Bedrohungserkennung für IoT-/OT-Umgebungen mit mehreren Bereitstellungsoptionen, u. a. für vollständig lokale Bereitstellung, Bereitstellung mit Cloudverbindung oder Hybridbereitstellung.
+  title: Dokumentation zu Microsoft Defender für IoT für Gerätehersteller
+  description: Microsoft Defender für IoT bietet umfassende Bedrohungserkennung für IoT-/OT-Umgebungen mit mehreren Bereitstellungsoptionen, u. a. für vollständig lokale Bereitstellung, Bereitstellung mit Cloudverbindung oder Hybridbereitstellung.
   services: service
   ms.service: defender-for-iot
   ms.topic: landing-page
@@ -11,19 +11,19 @@ metadata:
   author: elazark
   ms.author: v-ekrieg
   manager: raynew
-  ms.date: 06/17/2021
-  ms.openlocfilehash: 0c46acdd0a6e5f1278710b0ad66acc3eab9adb78
-  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.date: 11/09/2021
+  ms.openlocfilehash: 43c54696ec3ce5359d2c61c71e9f5d9803a1ba41
+  ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 11/02/2021
-  ms.locfileid: "131056602"
+  ms.lasthandoff: 11/11/2021
+  ms.locfileid: "132283940"
 landingContent:
-- title: Informationen zu Azure Defender für IoT für Gerätehersteller
+- title: Informationen zu Microsoft Defender für IoT für Gerätehersteller
   linkLists:
   - linkListType: overview
     links:
-    - text: Was ist Azure Defender für IoT für Gerätehersteller?
+    - text: Was ist Microsoft Defender für IoT für Gerätehersteller?
       url: overview.md
     - text: Architektur einer Agent-basierten Lösung für Gerätehersteller
       url: architecture-agent-based.md
@@ -33,7 +33,7 @@ landingContent:
     links:
     - text: Durchführen des Onboardings für Defender für IoT in einer Agent-basierten Lösung
       url: quickstart-onboard-iot-hub.md
-    - text: Konfigurieren Ihrer Lösung mit Azure Defender für IoT
+    - text: Konfigurieren Ihrer Lösung für Microsoft Defender für IoT
       url: quickstart-configure-your-solution.md
 - title: Sicherheit
   linkLists:
@@ -47,7 +47,7 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Konfigurieren einer Agent-basierten Lösung für Azure Defender für IoT
+    - text: Konfigurieren einer Agent-basierten Lösung für Microsoft Defender für IoT
       url: how-to-configure-agent-based-solution.md
     - text: Untersuchen der Betriebssystembaseline
       url: how-to-investigate-cis-benchmark.md

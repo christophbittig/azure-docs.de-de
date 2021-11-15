@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 09/07/2021
 ms.author: ccompy
 ms.custom: references_regions
-ms.openlocfilehash: e422f6316cce204a4b6ea152ff9be4489bb3e331
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 99700ec8b58a1eb9ab1465cca915216748a74dec
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124767905"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131435641"
 ---
 # <a name="app-service-environment-overview"></a>Übersicht über die App Service-Umgebung 
 > [!NOTE]
@@ -23,7 +23,7 @@ Die Azure App Service-Umgebung ist ein Feature von Azure App Service, das eine v
 
 - Windows-Web-Apps
 - Linux-Web-Apps
-- Docker-Container
+- Docker-Container (Windows und Linux)
 - Functions
 
 App Service-Umgebungen (App Service Environments, ASEs) sind ideal geeignet für Anwendungsworkloads mit folgenden Anforderungen:

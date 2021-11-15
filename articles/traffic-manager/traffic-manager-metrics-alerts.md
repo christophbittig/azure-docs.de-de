@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/11/2018
 ms.author: duau
-ms.openlocfilehash: b18e0329aeb4e95e021c3326b6b428c10edc0c6e
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: eaa1ef35432a0e31376bcff8f50bc8bdffbfaf58
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "100586421"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132054662"
 ---
 # <a name="traffic-manager-metrics-and-alerts"></a>Traffic Manager-Metriken und -Warnungen
 
@@ -62,6 +62,17 @@ Sie können diese Metriken über das Portal des [Azure Monitor-Diensts](../azure
 
 ## <a name="alerts-on-traffic-manager-metrics"></a>Warnungen für Traffic Manager-Metriken
 Zusätzlich zum Verarbeiten und Anzeigen von Metriken aus Traffic Manager ermöglicht Azure Monitor den Kunden, Warnungen zu konfigurieren und zu empfangen, die mit diesen Metriken verknüpft sind. Sie können auswählen, welche Bedingungen in diesen Metriken erfüllt sein müssen, damit eine Warnung auftritt, wie oft diese Bedingungen beobachtet werden müssen und wie die Warnungen an Sie gesendet werden sollen. Weitere Informationen finden Sie in der [Dokumentation zu Azure Monitor-Warnungen](../azure-monitor/alerts/alerts-metric.md).
+
+Die Warnungsüberwachung ist wichtig, um sicherzustellen, dass das System benachrichtigt, wenn Tests nicht erfolgreich sind. Eine übermäßig empfindliche Überwachung kann ablenkend wirken. Traffic Manager stellt mehrere Tests bereit, um die Resilienz zu erhöhen. Der Schwellenwert für den Status von Tests sollte niedriger als 0,5 sein. Wenn der Durchschnitt für den Status **Erfolgreich** unter 0,5 fällt (d. h. weniger als 50 % der Tests sind erfolgreich), sollte eine Warnung für einen Endpunktfehler ausgegeben werden.
+
+> [!NOTE]
+> Es werden mehrere Tests bereitgestellt, um die Resilienz zu erhöhen. Wenn ein Test von den vielen, die gesendet werden, nicht erfolgreich ist, spiegelt dies nicht unbedingt wider, dass der Endpunkt ausgefallen ist. Der Endpunkt wird nur als ausgefallen klassifiziert, wenn der Großteil der zurückgegebenen Tests nicht erfolgreich ist.
+
+Die folgende Konfiguration ist ein Beispiel für eine Warnungseinrichtung.
+
+:::image type="content" source="./media/traffic-manager-metrics-alerts/alert-example.png" alt-text="Screenshot des Beispiels für eine testschwellenwertabhängige Warnung.":::
+
+Weitere Informationen zu Tests und Überwachung finden Sie unter [Traffic Manager-Endpunktüberwachung](traffic-manager-monitoring.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Erfahren Sie mehr über den [Azure Monitor-Dienst](../azure-monitor/essentials/metrics-supported.md).

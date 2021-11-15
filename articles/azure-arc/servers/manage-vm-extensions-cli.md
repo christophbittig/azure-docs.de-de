@@ -1,19 +1,19 @@
 ---
 title: Aktivieren von VM-Erweiterungen mithilfe der Azure-Befehlszeilenschnittstelle
 description: In diesem Artikel erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnittstelle VM-Erweiterungen auf Servern mit Azure Arc-Unterstützung bereitstellen, die in Hybrid Cloud-Umgebungen ausgeführt werden.
-ms.date: 10/15/2021
+ms.date: 10/28/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 41924f20679de16205af3c7cb962d6005e757e2d
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: b7294285cd6e4fa7c2bbfac859c3fec8dfa3a474
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130069632"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131440410"
 ---
 # <a name="enable-azure-vm-extensions-using-the-azure-cli"></a>Aktivieren von Azure-VM-Erweiterungen mithilfe der Azure-Befehlszeilenschnittstelle
 
-In diesem Artikel erfahren Sie, wie Sie die Azure-Befehlszeilenschnittstelle verwenden, um VM-Erweiterungen, die von Servern mit Azure Arc-Unterstützung unterstützt werden, auf einem Linux- oder Windows-Hybridcomputer bereitzustellen oder zu deinstallieren.
+In diesem Artikel erfahren Sie, wie Sie die Azure-Befehlszeilenschnittstelle verwenden, um VM-Erweiterungen, die von Servern mit Azure Arc-Unterstützung unterstützt werden, auf einem Linux- oder Windows-Hybridcomputer bereitzustellen, zu upgraden, zu aktualisieren oder zu deinstallieren.
 
 > [!NOTE]
 > Das Bereitstellen und Verwalten von VM-Erweiterungen auf Azure-VMs wird auf Servern mit Azure Arc-Unterstützung nicht unterstützt. Informationen zu Azure-VMs finden Sie im Artikel [Erweiterungen und Features für virtuelle Azure-Computer](../../virtual-machines/extensions/overview.md).
@@ -83,7 +83,31 @@ Das folgende Beispiel zeigt die partielle JSON-Ausgabe des Befehls `az connected
     "namePropertiesInstanceViewName": "DependencyAgentWindows",
 ```
 
-## <a name="remove-an-installed-extension"></a>Entfernen einer installierten Erweiterung
+## <a name="update-extension-configuration"></a>Aktuelen der Erweiterungskonfiguration
+
+Einige VM-Erweiterungen erfordern Konfigurationseinstellungen, um sie auf dem Arc-fähigen Server zu installieren, z. B. die benutzerdefinierte Skripterweiterung und die Log Analytics-Agent-VM-Erweiterung. Verwenden Sie [az connectedmachine extension update](/cli/azure/connectedmachine/extension#az_connectedmachine_extension_update), um die Konfiguration einer Erweiterung zu aktualisieren.
+
+Das folgende Beispiel zeigt, wie die benutzerdefinierte Skripterweiterung konfiguriert wird:
+
+```azurecli
+az connectedmachine extension update --name "CustomScriptExtension" --type "CustomScriptExtension" --publisher "Microsoft.HybridCompute" --settings "{\"commandToExecute\":\"powershell.exe -c \\\"Get-Process | Where-Object { $_.CPU -lt 100 }\\\"\"}" --type-handler-version "1.10" --machine-name "myMachine" --resource-group "myResourceGroup"
+```
+
+## <a name="upgrade-extensions"></a>Upgraden von Erweiterungen
+
+Wenn eine neue Version einer unterstützten VM-Erweiterung veröffentlicht wird, können Sie diese auf diese neueste Version upgraden. Verwenden Sie [az connectedmachine upgrade-extension](/cli/azure/connectedmachine) mit den Parametern `--machine-name`, `--resource-group` und `--extension-targets`, um eine VM-Erweiterung zu upgraden.
+
+Für den `--extension-targets`-Parameter müssen Sie die Erweiterung und die neueste verfügbare Version angeben. Sie können diese Informationen auf der Seite **Erweiterungen** für den ausgewählten Arc-fähigen Server im Azure-Portal abrufen oder [az vm extension image list](/cli/azure/vm/extension/image#az_vm_extension_image_list) ausführen, um zu ermitteln, welche Version aktuell verfügbar ist.
+
+Führen Sie den folgenden Befehl aus, um die Log Analytics-Agent-Erweiterung für Windows mit einer neueren Version zu upgraden:
+
+```azurecli
+az connectedmachine upgrade-extension --machine-name "myMachineName" --resource-group "myResourceGroup --extension-targets  --extension-targets "{\"MicrosoftMonitoringAgent\":{\"targetVersion\":\"1.0.18053.0\"}}"" 
+```
+
+Sie können die Version der installierten VM-Erweiterungen jederzeit überprüfen, indem Sie den Befehl [az connectedmachine extension list](/cli/azure/connectedmachine/extension#az_connectedmachine_extension_list) ausführen. Der `typeHandlerVersion`-Eigenschaftswert stellt die Version der Erweiterung dar.
+
+## <a name="remove-extensions"></a>Entfernen von Erweiterungen
 
 Verwenden Sie [az connectedmachine extension delete](/cli/azure/connectedmachine/extension#az_connectedmachine_extension_delete) mit den Parametern `--extension-name`, `--machine-name` und `--resource-group`, um eine installierte VM-Erweiterung von Ihrem Server mit Azure Arc-Unterstützung zu entfernen.
 

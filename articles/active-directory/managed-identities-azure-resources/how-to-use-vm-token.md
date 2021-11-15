@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/12/2021
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a31cad4f2828a505eb89782bf28b01049a46cfc
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.openlocfilehash: f923cafa9e43d965674050e43c2f2c6a14917dea
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129998008"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130266135"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Verwenden von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer zum Abrufen eines Zugriffstokens 
 
@@ -367,6 +367,9 @@ In diesem Abschnitt sind die möglichen Fehlerantworten aufgeführt. Der Status 
 |           | unsupported_response_type | Der Autorisierungsserver unterstützt das Abrufen eines Zugriffstokens mit dieser Methode nicht. |  |
 |           | invalid_scope | Der angeforderte Bereich ist ungültig, unbekannt oder falsch formatiert. |  |
 | 500 Interner Serverfehler | unknown | Beim Abrufen des Tokens aus Active Directory ist ein Fehler aufgetreten. Einzelheiten finden Sie in den Protokollen unter *\<file path\>* . | Stellen Sie sicher, dass verwaltete Identitäten für Azure-Ressourcen auf dem virtuellen Computer aktiviert wurden. Hilfe zur Konfiguration des virtuellen Computers finden Sie unter [Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Computer über das Azure-Portal](qs-configure-portal-windows-vm.md).<br><br>Überprüfen Sie zudem, ob Ihr HTTP GET-Anforderungs-URI richtig formatiert ist. Dies gilt vor allem für den Ressourcen-URI, der in der Abfragezeichenfolge angegeben ist. Unter „Beispiel für eine Anforderung“ im vorherigen REST-Abschnitt finden Sie ein Beispiel, und unter [Azure-Dienste, die die Azure AD-Authentifizierung unterstützen](./services-support-managed-identities.md) finden Sie eine Liste mit Diensten und den dazugehörigen Ressourcen-IDs.
+
+> [!IMPORTANT]
+> - IMDS ist nicht für die Verwendung hinter einem Proxy vorgesehen. Dies wird nicht unterstützt. Beispiele zum Umgehen von Proxys finden Sie unter [Beispiele für Azure-Instanzmetadaten](https://github.com/microsoft/azureimds).  
 
 ## <a name="retry-guidance"></a>Informationen zur Wiederholung 
 

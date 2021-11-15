@@ -6,13 +6,13 @@ ms.author: esarroyo
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: how-to
-ms.date: 10/04/2021
-ms.openlocfilehash: 58ea7624b32b7730863fe3d29f6d9245c4199d25
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.date: 10/19/2021
+ms.openlocfilehash: 1bc32941ec6ca5c7053b39a7730852568d13fb28
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129535300"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130219039"
 ---
 # <a name="migrate-your-application-to-use-the-azure-cosmos-db-net-sdk-v3"></a>Migrieren einer Anwendung für die Verwendung des Azure Cosmos DB .NET SDK v3
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -197,6 +197,17 @@ Einige Einstellungen in `ConnectionPolicy` wurden umbenannt oder ersetzt:
 |`EnableEndpointRediscovery`|`LimitToEndpoint` – Der Wert wird jetzt invertiert; wenn `EnableEndpointRediscovery` auf `true` festgelegt wurde, sollte `LimitToEndpoint` auf `false` festgelegt werden. Bevor Sie diese Einstellung verwenden, müssen Sie verstehen, [wie sie sich auf den Client auswirkt](troubleshoot-sdk-availability.md).|
 |`ConnectionProtocol`|Entfernt. Das Protokoll ist an den Modus gebunden – entweder „Gateway“ (HTTPS) oder „Direct“ (TCP). Der direkte Modus mit dem HTTPS-Protokoll wird von V3 SDK nicht mehr unterstützt. Die Empfehlung lautet, das TCP-Protokoll zu verwenden. |
 |`MediaRequestTimeout`|Entfernt. Anlagen werden nicht mehr unterstützt.|
+
+### <a name="indexing-policy"></a>Indizierungsrichtlinie
+
+In der Indizierungsrichtlinie können diese Eigenschaften nicht konfiguriert werden. Ohne Festlegung weisen diese Eigenschaften jetzt immer die folgenden Werte auf:
+
+| **Eigenschaftenname**     | **Neuer Wert (nicht konfigurierbar)** |
+| ----------------------- | -------------------------------- |
+| `Kind`   | `range` |
+| `dataType`    | `String` und `Number` |
+
+Exemplarische Indizierungsrichtlinien zum Ein- und Ausschließen von Pfaden finden Sie in [diesem Abschnitt](how-to-manage-indexing-policy.md#indexing-policy-examples). Aufgrund von Verbesserungen in der Abfrage-Engine hat die Konfiguration dieser Eigenschaften auch bei Verwendung einer älteren SDK-Version keine Auswirkungen auf die Leistung.
 
 ### <a name="session-token"></a>Sitzungstoken
 

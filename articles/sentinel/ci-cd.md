@@ -1,6 +1,6 @@
 ---
-title: Verwalten benutzerdefinierter Inhalte für Azure Sentinel in Ihrem eigenen Repository | Microsoft-Dokumentation
-description: In diesem Artikel wird beschrieben, wie Sie Verbindungen mit einem GitHub- oder Azure DevOps-Repository erstellen, in dem Sie Ihre benutzerdefinierten Inhalte speichern können.
+title: Bereitstellen benutzerdefinierter Inhalte aus Ihrem Repository | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie Sie Verbindungen mit einem GitHub- oder Azure DevOps-Repository erstellen, in dem Sie Ihre benutzerdefinierten Inhalte speichern und diese für Azure Sentinel bereitstellen können.
 services: sentinel
 cloud: na
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.topic: how-to
 ms.date: 10/20/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 7d1a20fd1d74c3b5057201cac38a9353737f98dd
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 2b31e2e67058e6762e590f99e49eb1e4658b6c2e
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131094956"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131990075"
 ---
 # <a name="deploy-custom-content-from-your-repository-public-preview"></a>Bereitstellen benutzerdefinierter Inhalte aus Ihrem Repository (Public Preview)
 
@@ -113,7 +113,7 @@ Jede Verbindung kann mehrere Arten von benutzerdefinierten Inhalten unterstütze
 
         - Bei allen anderen Inhaltstypen führt die Wahl eines Inhaltstyps im Bereich **Neue Verbindung erstellen** dazu, dass nur diese Inhalte für Azure Sentinel bereitgestellt werden. Inhalte anderer Art werden nicht bereitgestellt.
 
-    1. Wählen Sie **Erstellen** aus, um die Verbindung zu erstellen. Zum Beispiel:
+    1. Wählen Sie **Erstellen** aus, um die Verbindung zu erstellen. Beispiel:
 
         :::image type="content" source="media/ci-cd/create-new-connection-devops.png" alt-text="Screenshot: Neue GitHub-Repositoryverbindung":::
 
@@ -125,7 +125,9 @@ Jede Verbindung kann mehrere Arten von benutzerdefinierten Inhalten unterstütze
 
 Nachdem die Verbindung erstellt wurde, wird ein neuer Workflow oder eine neue Pipeline in Ihrem Repository generiert, und die in Ihrem Repository gespeicherten Inhalte werden in Ihrem Azure Sentinel-Arbeitsbereich bereitgestellt.
 
-Die Bereitstellungszeit kann abhängig von der Menge der bereitgestellten Inhalte variieren. Sehen Sie sich den Bereitstellungsstatus an:
+Die Bereitstellungszeit kann abhängig von der Menge der bereitgestellten Inhalte variieren. 
+
+### <a name="view-the-deployment-status"></a>Sehen Sie sich den Bereitstellungsstatus an:
 
 - **Auf GitHub:** Auf der Registerkarte **Aktionen** des Repositorys. Wählen Sie die dort angezeigte **YAML**-Workflowdatei aus, um auf ausführliche Bereitstellungsprotokolle und ggf. auf spezifische Fehlermeldungen zuzugreifen.
 - **In Azure DevOps:** Auf der Registerkarte **Pipelines** des Repositorys.

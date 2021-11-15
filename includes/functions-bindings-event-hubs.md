@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: 5a3b9ab410ff8a757aa3ef23ee7d097ee1b3071b
-ms.sourcegitcommit: 37cc33d25f2daea40b6158a8a56b08641bca0a43
+ms.openlocfilehash: 70544909ae419cdf215bdad88c3ac19968f6e4f0
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130077815"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131520831"
 ---
 ## <a name="add-to-your-functions-app"></a>Hinzufügen zu Ihrer Funktions-App
 
@@ -31,23 +31,22 @@ Das Arbeiten mit Triggern und Bindungen erfordert, dass Sie auf das entsprechend
 
 ### <a name="event-hubs-extension-5x-and-higher"></a>Event Hubs-Erweiterung 5.x und höher
 
-Eine neue Version der Event Hubs-Bindungserweiterung ist als Vorschau verfügbar. Sie bietet die Möglichkeit, eine [Verbindung mit einer Identität anstelle eines Geheimnisses](../articles/azure-functions/functions-reference.md#configure-an-identity-based-connection) herzustellen. Für .NET-Anwendungen werden auch die Typen geändert, mit denen eine Bindung erfolgen kann. Dabei werden die Typen aus `Microsoft.Azure.EventHubs` durch neuere Typen aus [Azure.Messaging.EventHubs](/dotnet/api/azure.messaging.eventhubs) ersetzt.
+Eine neue Version der Event Hubs-Bindungserweiterung ist nun verfügbar. Sie führt die Möglichkeit ein, [sich mit einer Identität anstelle eines Geheimnisses](../articles/azure-functions/functions-reference.md#configure-an-identity-based-connection) zu verbinden. Ein Tutorial zum Konfigurieren Ihrer Funktions-Apps mit verwalteten Identitäten finden Sie im [Tutorial zum Erstellen einer Funktions-App mit identitätsbasierten Verbindungen](../articles/azure-functions/functions-identity-based-connections-tutorial.md). Für .NET-Anwendungen werden auch die Typen geändert, mit denen eine Bindung erfolgen kann. Dabei werden die Typen aus `Microsoft.Azure.EventHubs` durch neuere Typen aus [Azure.Messaging.EventHubs](/dotnet/api/azure.messaging.eventhubs) ersetzt.
 
-Diese Erweiterungsversion ist als [NuGet-Vorschaupaket] verfügbar oder kann aus dem Vorschauerweiterungspaket v3 hinzugefügt werden, indem Sie Folgendes in Ihrer Datei `host.json` hinzufügen:
+Diese Erweiterungsversion ist nach der Installation des [NuGet-Pakets] Version 5.x verfügbar oder kann aus dem Erweiterungspaket v3 hinzugefügt werden, indem Sie Folgendes in Ihrer Datei `host.json` hinzufügen:
 
 ```json
 {
   "version": "2.0",
   "extensionBundle": {
-    "id": "Microsoft.Azure.Functions.ExtensionBundle.Preview",
-    "version": "[3.*, 4.0.0)"
+    "id": "Microsoft.Azure.Functions.ExtensionBundle",
+    "version": "[3.3.0, 4.0.0)"
   }
 }
 ```
 
-Weitere Informationen finden Sie unter [Aktualisieren Ihrer Erweiterungen].
+Weitere Informationen finden Sie unter [Aktualisierung Ihrer Erweiterungen].
 
-[NuGet-Vorschaupaket]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs/5.0.0-beta.7
 [core tools]: ./functions-run-local.md
 [Erweiterungspaket]: ./functions-bindings-register.md#extension-bundles
 [NuGet-Paket]: https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventHubs/
@@ -61,6 +60,6 @@ Functions 1.x-Apps enthalten automatisch einen Verweis auf das NuGet-Paket, Ver
 ## <a name="hostjson-settings"></a>Einstellungen für „host.json“
 <a name="host-json"></a>
 
-Die Datei [host.json](../articles/azure-functions/functions-host-json.md#eventhub) enthält Einstellungen, die das Verhalten des Event Hubs-Triggers steuern. Die Konfiguration unterscheidet sich abhängig von der Azure Functions-Version.
+Die Datei [host.json](../articles/azure-functions/functions-host-json.md#eventhub) enthält Einstellungen, die das Verhalten für Event Hubs-Trigger steuern. Die Konfiguration unterscheidet sich abhängig von der Azure Functions-Version.
 
 [!INCLUDE [functions-host-json-event-hubs](../articles/azure-functions/../../includes/functions-host-json-event-hubs.md)]

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: how-to
 ms.date: 10/13/2021
 ms.custom: template-how-to, devx-track-azurecli
-ms.openlocfilehash: d6bb3be48769c19afc525330d6b33810b04066a3
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: cdab72e0a1633aa75a5594acf9b506d944f0eaa0
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131507356"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131893005"
 ---
 # <a name="use-the-azure-key-vault-provider-for-secrets-store-csi-driver-in-an-azure-kubernetes-service-aks-cluster"></a>Verwenden Sie den Azure Key Vault Anbieter für Secrets Store CSI-Treiber in einem Azure Kubernetes Service(AKS)-Cluster
 
@@ -121,7 +121,7 @@ Der Secrets Store CSI-Treiber ermöglicht den Zugriff auf eine Azure Key Vault-I
 - [Azure Active Directory Podidentität][aad-pod-identity]
 - Vom Benutzer oder vom System zugewiesene verwaltete Identität
 
-Führen Sie die Schritte zum [Bereitstellen einer Identität für den Zugriff auf Azure Key Vault][csi-secrets-store-identity-access.md] für die gewählte Methode aus.
+Führen Sie die Schritte zum [Bereitstellen einer Identität für den Zugriff auf Azure Key Vault][identity-access-methods] für die ausgewählte Methode aus.
 
 ## <a name="validate-the-secrets"></a>Überprüfen der Geheimnisse
 
@@ -141,7 +141,7 @@ Azure Key Vault unterscheidet stark zwischen Schlüsseln, Geheimnissen und Zerti
 
 |Object|Rückgabewert|Zeigt die gesamte Zertifikatskette an|
 |---|---|---|
-|`key`|Der öffentliche Schlüssel im PEM-Format|Nicht zutreffend|
+|`key`|Der öffentliche Schlüssel im PEM-Format|–|
 |`cert`|Das Zertifikat im PEM-Format|Nein|
 |`secret`|Der private Schlüssel und das Zertifikat im PEM-Format|Ja|
 
@@ -207,7 +207,7 @@ Verwenden Sie beim Erstellen einer SecretProviderClass das Feld `secretObjects`,
 > Stellen Sie sicher, dass der `objectName` in `secretObjects` mit dem Dateinamen des eingebundenen Inhalts übereinstimmt. Wenn stattdessen `objectAlias` verwendet wird, sollte Übereinstimmung mit dem Objektalias bestehen.
 
 ```yml
-apiVersion: secrets-store.csi.x-k8s.io/v1alpha1
+apiVersion: secrets-store.csi.x-k8s.io/v1
 kind: SecretProviderClass
 metadata:
   name: azure-sync
@@ -272,7 +272,7 @@ curl localhost:8898/metrics
 
 In der folgenden Tabelle sind die Metriken aufgeführt, die vom Azure Key Vault-Anbieter für Secrets Store CSI-Treiber bereitgestellt werden:
 
-|Metric|BESCHREIBUNG|`Tags`|
+|Metric|BESCHREIBUNG|Tags|
 |----|----|----|
 |keyvault_request|Zeit, die füe das Abrufen von keyvault gebraucht wurde|`os_type=<runtime os>`, `provider=azure`, `object_name=<keyvault object name>`, `object_type=<keyvault object type>`, `error=<error if failed>`|
 |grpc_request|Zeit, die für die gRPC-Anforderungen gebraucht wurde|`os_type=<runtime os>`, `provider=azure`, `grpc_method=<rpc full method>`, `grpc_code=<grpc status code>`, `grpc_message=<grpc status message>`|
@@ -288,7 +288,7 @@ curl localhost:8095/metrics
 
 In der folgenden Tabelle sind die Metriken aufgeführt, die vom Secrets Store CSI-Treiber bereitgestellt werden:
 
-|Metric|BESCHREIBUNG|`Tags`|
+|Metric|BESCHREIBUNG|Tags|
 |----|----|----|
 |total_node_publish|Gesamtzahl der erfolgreichen Anforderungen für die Volume-Bereitstellung|`os_type=<runtime os>`, `provider=<provider name>`|
 |total_node_unpublish|Gesamtzahl der erfolgreichen Anforderungen zum Aufheben der Volume-Bereitstellung|`os_type=<runtime os>`|

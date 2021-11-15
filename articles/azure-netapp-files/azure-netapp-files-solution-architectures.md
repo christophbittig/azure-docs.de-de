@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/04/2021
+ms.date: 11/4/2021
 ms.author: b-juche
-ms.openlocfilehash: 8b37458635f73b463bf4e01630e406753e26f353
-ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
+ms.openlocfilehash: a69dd2528b4804e434cf6652d1ce2b03357025ee
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131576318"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131848608"
 ---
 # <a name="solution-architectures-using-azure-netapp-files"></a>Lösungsarchitekturen mit Azure NetApp Files
 Dieser Artikel enthält Verweise auf bewährte Methoden, die Ihnen helfen können, die Lösungsarchitekturen für die Verwendung von Azure NetApp Files zu verstehen.  
@@ -31,6 +31,15 @@ Das folgende Diagramm zeigt die Kategorien der Lösungsarchitekturen, die Azure 
 ## <a name="linux-oss-apps-and-database-solutions"></a>Lösungen für Linux OSS-Apps und Datenbanken
 
 In diesem Abschnitt finden Sie Referenzen zu Lösungen für Linux OSS-Anwendungen und Datenbanken. 
+
+### <a name="linux-oss-apps"></a>Linux OSS-Apps
+
+* [Migration einer lokalen AIX UNIX-Instanz zu Azure Linux – Azure-Beispielszenarien](/azure/architecture/example-scenario/unix-migration/migrate-aix-azure-linux)
+
+### <a name="mainframe-refactor"></a>Mainframe-Umgestaltung
+
+* [Allgemeine Mainframe-Umgestaltung in Azure – Azure-Beispielszenarien](/azure/architecture/example-scenario/mainframe/general-mainframe-refactor)
+* [Umgestalten von Mainframeanwendungen mit Erweitert – Azure-Beispielszenarien](/azure/architecture/example-scenario/mainframe/refactor-mainframe-applications-advanced)
 
 ### <a name="oracle"></a>Oracle
 
@@ -74,6 +83,7 @@ Dieser Abschnitt enthält Referenzen zu Lösungen für SAP in Azure.
 
 ### <a name="generic-sap-and-sap-netweaver"></a>SAP allgemein und SAP Netweaver 
 
+* [Ausführen von SAP NetWeaver unter Windows in Azure – Azure Architecture Center](/azure/architecture/reference-architectures/sap/sap-netweaver)
 * [SAP applications on Microsoft Azure using Azure NetApp Files](https://www.netapp.com/us/media/tr-4746.pdf) (SAP-Anwendungen in Microsoft Azure mithilfe von Azure NetApp Files)
 * [Hochverfügbarkeit für SAP NetWeaver auf Azure-VMs unter SUSE Linux Enterprise Server mit Azure NetApp Files für SAP-Anwendungen](../virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files.md)
 * [Hochverfügbarkeit von SAP NetWeaver auf virtuellen Azure-Computern unter Red Hat Enterprise Linux mit Azure NetApp Files für SAP-Anwendungen](../virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files.md)
@@ -82,6 +92,9 @@ Dieser Abschnitt enthält Referenzen zu Lösungen für SAP in Azure.
 
 ### <a name="sap-hana"></a>SAP HANA 
 
+* [SAP HANA für Linux-VMs in hochskalierten Systemen – Azure Architecture Center](/azure/architecture/reference-architectures/sap/run-sap-hana-for-linux-virtual-machines)
+* [SAP S/4HANA unter Linux in Azure – Azure Architecture Center](/azure/architecture/reference-architectures/sap/sap-s4hana)
+* [Ausführen von SAP BW/4HANA mit Linux-VMs – Azure Architecture Center](/azure/architecture/reference-architectures/sap/run-sap-bw4hana-with-linux-virtual-machines)
 * [SAP HANA: Speicherkonfigurationen für virtuelle Azure-Computer](../virtual-machines/workloads/sap/hana-vm-operations-storage.md)
 * [NFS v4.1-Volumes unter Azure NetApp Files für SAP HANA](../virtual-machines/workloads/sap/hana-vm-operations-netapp.md)
 * [Hochverfügbarkeit bei hochskalierten SAP HANA-Lösungen mit Azure NetApp Files unter Red Hat Enterprise Linux](../virtual-machines/workloads/sap/sap-hana-high-availability-netapp-files-red-hat.md)
@@ -93,6 +106,7 @@ Dieser Abschnitt enthält Referenzen zu Lösungen für SAP in Azure.
 
 ### <a name="sap-anydb"></a>SAP AnyDB
 
+* [SAP-System auf Oracle Database in Azure – Azure Architecture Center](/azure/architecture/example-scenario/apps/sap-on-oracle)
 * [Oracle-DBMS-Bereitstellung in Azure Virtual Machines für SAP-Workload: Azure Virtual Machines](../virtual-machines/workloads/sap/dbms_guide_oracle.md#oracle-configuration-guidelines-for-sap-installations-in-azure-vms-on-linux)
 * [Deploy SAP AnyDB (Oracle 19c) with Azure NetApp Files](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/deploy-sap-anydb-oracle-19c-with-azure-netapp-files/ba-p/2064043) (Bereitstellen von SAP AnyDB (Oracle 19c) mit Azure NetApp Files)
 * [Verwenden von Azure NetApp Files](../virtual-machines/workloads/sap/dbms_guide_ibm.md#using-azure-netapp-files)
@@ -159,10 +173,10 @@ Dieser Abschnitt enthält Referenzen zu Lösungen für High Performance Computin
 
 ### <a name="analytics"></a>Analytics
 
+* [Leitfaden zur Architektur von SAS in Azure – Azure Architecture Center | Azure NetApp Files](/azure/architecture/guide/sas/sas-overview#azure-netapp-files-nfs)
 * [Azure NetApp Files: A shared file system to use with SAS Grid on Microsoft Azure](https://communities.sas.com/t5/Administration-and-Deployment/Azure-NetApp-Files-A-shared-file-system-to-use-with-SAS-Grid-on/m-p/705192) (Azure NetApp Files: Dateifreigabesystem zur Verwendung mit SAS Grid in Microsoft Azure)
 * [Azure NetApp Files: A shared file system to use with SAS Grid on MS Azure (RHEL8.3/nconnect UPDATE)](https://communities.sas.com/t5/Administration-and-Deployment/Azure-NetApp-Files-A-shared-file-system-to-use-with-SAS-Grid-on/m-p/722261#M21648) (Azure NetApp Files: Dateifreigabesystem für SAS Grid in Microsoft Azure (RHEL8.3/nconnect UPDATE))
 * [Best Practices für die Verwendung von Microsoft Azure mit SAS®](https://communities.sas.com/t5/Administration-and-Deployment/Best-Practices-for-Using-Microsoft-Azure-with-SAS/m-p/676833#M19680)
-* [Leitfaden zur Architektur von SAS in Azure – Azure Architecture Center | Azure NetApp Files](/azure/architecture/guide/sas/sas-overview#azure-netapp-files-nfs)
 
 ### <a name="healthcare"></a>Integritätsressourcen
 
@@ -184,7 +198,6 @@ Dieser Abschnitt enthält Lösungen für Azure-Plattformdienste.
 ### <a name="azure-red-hat-openshift"></a>Azure Red Hat Openshift   
 
 *   [Verwenden von Trident zum Automatisieren von Azure NetApp Files von OpenShift](https://techcommunity.microsoft.com/t5/fasttrack-for-azure/using-trident-to-automate-azure-netapp-files-from-openshift/ba-p/2367351)
-
 
 ### <a name="azure-batch"></a>Azure Batch
 

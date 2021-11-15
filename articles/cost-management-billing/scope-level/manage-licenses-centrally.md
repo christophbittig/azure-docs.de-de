@@ -1,6 +1,6 @@
 ---
-title: Die Anwendung zugewiesener SQL-Lizenzen auf die stündliche Nutzung durch Azure
-description: Dieser Artikel enthält eine ausführliche Erläuterung über die Anwendung zugewiesener SQL-Lizenzen auf die stündliche Nutzung durch Azure mit dem Azure-Hybridvorteil.
+title: Anwendung zentral zugewiesener SQL-Lizenzen auf den stündlichen Verbrauch durch Azure
+description: Dieser Artikel enthält eine ausführliche Erläuterung über die Anwendung zentral zugewiesener SQL-Lizenzen auf den stündlichen Verbrauch durch Azure mit dem Azure-Hybridvorteil.
 keywords: ''
 author: bandersmsft
 ms.author: banders
@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: ahb
 ms.reviewer: chrisrin
-ms.openlocfilehash: 69517a84fa28a6c1d9cde0cb51df82a296bd653a
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 53f8538e6e34c91023bc55e7d47e5f28e9fb3e21
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129710160"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130243845"
 ---
-# <a name="how-azure-applies-assigned-sql-licenses-to-hourly-usage"></a>Die Anwendung zugewiesener SQL-Lizenzen auf die stündliche Nutzung durch Azure
+# <a name="how-azure-applies-centrally-assigned-sql-licenses-to-hourly-usage"></a>Anwendung zentral zugewiesener SQL-Lizenzen auf den stündlichen Verbrauch durch Azure
 
-Dieser Artikel enthält eine ausführliche Erläuterung dazu, wie der Azure-Hybridvorteil auf der Bereichsebene funktioniert, um Sie bei der Verwaltung Ihrer SQL Server-Lizenzen zu unterstützen. Der Prozess beginnt damit, dass ein Administrator dem Abonnement oder einem Abrechnungskontobereich Lizenzen zuweist.
+Dieser Artikel enthält Details zur zentralen Verwaltung des Azure-Hybridvorteils für SQL Server auf Bereichsebene. Der Prozess beginnt damit, dass ein Administrator dem Abonnement oder einem Abrechnungskontobereich Lizenzen zuweist.
 
 Jede Ressource meldet ihre Nutzung einmal pro Stunde unter Verwendung des entsprechenden vollen Preises oder der Verbrauchseinheiten bei der nutzungsbasierten Bezahlung. Das Usage Application-Modul wertet die verfügbaren normalisierten Core-Lizenzen (Normalized Cores License NCL) intern in Azure aus und wendet sie für diese Stunde an. Für eine bestimmte Stunde des Ressourcenverbrauchs der virtuellen Kerne werden die verbrauchsbasierten Bezahlungen auf die entsprechende Azure-Hybridvorteil Verbrauchsnummer umgestellt. Sie werden mit einem Preis von 0 (0 USD) berechnet, wenn genügend nicht ausgelastete NCLs im ausgewählten Bereich vorhanden sind.
 
@@ -45,5 +45,5 @@ Das folgende Diagramm zeigt, wie die zugewiesenen Microsoft SQL-Server-Lizenzen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Lesen Sie die [häufig gestellten Fragen zur Verwaltung des Azure-Hybridvorteils auf Bereichsebene](faq-azure-hybrid-benefit-scope.yml).
+- Lesen Sie die [häufig gestellten Fragen zum zentral verwalteten Azure-Hybridvorteil](faq-azure-hybrid-benefit-scope.yml).
 - Erfahren Sie mehr über den [Übergang von der vorhandenen Azure-Hybridvorteilserfahrung](transition-existing.md).

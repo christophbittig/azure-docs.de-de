@@ -5,12 +5,12 @@ services: service-bus-messaging
 ms.devlang: PHP
 ms.topic: how-to
 ms.date: 07/23/2021
-ms.openlocfilehash: d0909c4e2ea5ef53a1438ce05f5ddad485c80248
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b5f1a3b09594a6f47d285f03ca841f763b759a3c
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121725126"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132055924"
 ---
 # <a name="how-to-use-service-bus-queues-with-php"></a>Verwenden von Service Bus-Warteschlangen mit PHP
 [!INCLUDE [service-bus-selector-queues](./includes/service-bus-selector-queues.md)]
@@ -159,7 +159,7 @@ catch(ServiceException $e){
 
 Die Nachrichten, die an die Service Bus-Warteschlangen gesendet werden (und von diesen eingehen), sind Instanzen der [BrokeredMessage][BrokeredMessage]-Klasse. [BrokeredMessage][BrokeredMessage]-Objekte verfügen über einen Satz von Standardmethoden und -eigenschaften zum Speichern benutzerdefinierter anwendungsspezifischer Eigenschaften sowie über Text mit beliebigen Anwendungsdaten.
 
-Service Bus-Warteschlangen unterstützen eine maximale Nachrichtengröße von 256 KB für den [Standard-Tarif](service-bus-premium-messaging.md) und 1 MB für den [Premium-Tarif](service-bus-premium-messaging.md). Der Header, der die standardmäßigen und benutzerdefinierten Anwendungseigenschaften enthält, kann eine maximale Größe von 64 KB haben. Bei der Anzahl der Nachrichten, die in einer Warteschlange aufgenommen werden können, besteht keine Beschränkung. Allerdings gilt eine Deckelung bei der Gesamtgröße der in einer Warteschlange aufzunehmenden Nachrichten. Die Obergrenze für die Warteschlangengröße beträgt 5 GB.
+Service Bus-Warteschlangen unterstützen eine maximale Nachrichtengröße von 256 KB für den [Standard-Tarif](service-bus-premium-messaging.md) und 100 MB für den [Premium-Tarif](service-bus-premium-messaging.md). Der Header, der die standardmäßigen und benutzerdefinierten Anwendungseigenschaften enthält, kann eine maximale Größe von 64 KB haben. Bei der Anzahl der Nachrichten, die in einer Warteschlange aufgenommen werden können, besteht keine Beschränkung. Allerdings gilt eine Deckelung bei der Gesamtgröße der in einer Warteschlange aufzunehmenden Nachrichten. Die Obergrenze für die Warteschlangengröße beträgt 5 GB.
 
 ## <a name="receive-messages-from-a-queue"></a>Empfangen von Nachrichten aus einer Warteschlange
 

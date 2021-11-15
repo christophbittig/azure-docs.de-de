@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/14/2019
 ms.custom: devx-track-csharp
 ms.reviewer: mbullwin
-ms.openlocfilehash: 2bba7516637bedf6e81747cbb27f926964c63f53
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 3723896da2cd14762fd3fe81fa50caaa4b74b0b8
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128556507"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130250709"
 ---
 # <a name="telemetry-channels-in-application-insights"></a>Telemetriekanäle in Application Insights
 
@@ -94,7 +94,7 @@ public void ConfigureServices(IServiceCollection services)
 ```
 
 > [!IMPORTANT]
-> Die Konfiguration des Kanals mithilfe von `TelemetryConfiguration.Active` wird für ASP.NET Core-Anwendungen nicht empfohlen.
+> Die Konfiguration des Kanals mithilfe von `TelemetryConfiguration.Active` wird für ASP.NET Core-Anwendungen nicht unterstützt.
 
 ### <a name="configuration-in-code-for-netnet-core-console-applications"></a>Konfiguration im Code für .NET/.NET Core Konsolenanwendungen
 
@@ -147,7 +147,9 @@ Die kurze Antwort ist, dass keiner der integrierten Kanäle als Transaktionstyp 
 
 1. Die Standardspeicherorte auf dem Datenträger zum Speichern von Telemetriedaten unter Windows sind %LOCALAPPDATA% oder %TEMP%. Diese Speicherorte befinden sich normalerweise lokal auf dem Computer. Wenn die Anwendung physisch von einem Speicherort an einen anderen migriert, gehen alle Telemetriedaten verloren, die am ursprünglichen Speicherort gespeichert sind.
 
-1. In Web-Apps unter Windows ist der Standardspeicherort auf dem Datenträger „D:\local\LocalAppData“. Dieser Speicherort ist nicht permanent. Er wird bei App-Neustarts, horizontalem Hochskalieren und ähnlichen Vorgängen gelöscht, was zu einem Verlust der dort gespeicherte Telemetriedaten führt. Sie können die Standardeinstellung überschreiben und eine Speicherung an einem permanenten Speicherort wie „D:\home“ angeben. Solche permanenten Speicherorte basieren jedoch auf Remotespeicher und können daher langsam sein.
+1. In Azure-Web-Apps unter Windows ist der Standardspeicherort auf dem Datenträger „D:\local\LocalAppData“. Dieser Speicherort ist nicht permanent. Er wird bei App-Neustarts, horizontalem Hochskalieren und ähnlichen Vorgängen gelöscht, was zu einem Verlust der dort gespeicherte Telemetriedaten führt. Sie können die Standardeinstellung überschreiben und eine Speicherung an einem permanenten Speicherort wie „D:\home“ angeben. Solche permanenten Speicherorte basieren jedoch auf Remotespeicher und können daher langsam sein.
+
+Es ist zwar weniger wahrscheinlich, aber dennoch möglich, dass der Kanal doppelte Telemetrieelemente verursacht. Dies ist dann der Fall, wenn `ServerTelemetryChannel` aufgrund eines Netzwerkfehlers/-timeouts einen erneuten Versuch unternimmt, obwohl die Telemetriedaten an das Back-End übermittelt wurden, die Antwort aber aufgrund von Netzwerkproblemen verloren ging oder ein Timeout auftrat.
 
 ### <a name="does-servertelemetrychannel-work-on-systems-other-than-windows"></a>Kann ServerTelemetryChannel auf anderen Systemen als Windows verwendet werden?
 

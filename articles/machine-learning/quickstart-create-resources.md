@@ -8,15 +8,15 @@ ms.subservice: core
 ms.topic: quickstart
 author: sdgilley
 ms.author: sgilley
-ms.date: 06/10/2021
+ms.date: 10/21/2021
 adobe-target: true
 ms.custom: FY21Q4-aml-seo-hack, contperf-fy21q4
-ms.openlocfilehash: c20c5f96820ae4cbf8aa361b29483fac260ec5ae
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 749400cc3f5c798b16dc08485f0cbff14cb276e7
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124824180"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131556945"
 ---
 # <a name="quickstart-create-workspace-resources-you-need-to-get-started-with-azure-machine-learning"></a>Schnellstart: So erstellen Sie Arbeitsbereichsressourcen, die Sie für die ersten Schritte mit Azure Machine Learning benötigen
 
@@ -81,7 +81,7 @@ Studio ist Ihr Webportal für Azure Machine Learning. In diesem Portal werden 
 
     * Im Abschnitt **Notebooks** können Sie Jupyter Notebook-Instanzen erstellen, Beispiel-Notebooks kopieren und Notebooks und Python-Skripts ausführen.
     * **Automatisiertes ML** ermöglicht die schrittweise Erstellung eines Machine Learning-Modells, ohne Code zu schreiben.
-    * Der **Designer** bietet Ihnen eine Drag & Drop-Option zum Erstellen von Modellen mithilfe vordefinierter Module.
+    * Der **Designer** bietet Ihnen eine Drag & Drop-Option zum Erstellen von Modellen mithilfe vordefinierter Komponenten.
 
 * Im Abschnitt **Ressourcen** von Studio können Sie die Ressourcen nachverfolgen, die Sie beim Ausführen Ihrer Aufträge erstellen.  Wenn Sie über einen neuen Arbeitsbereich verfügen, enthalten diese Abschnitte noch keine Elemente.
 

@@ -7,13 +7,13 @@ ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.date: 05/11/2021
-ms.openlocfilehash: 781cce588654ab5babcd74277a3fca97f9f906c1
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.date: 10/21/2021
+ms.openlocfilehash: 3d72b151e73b9adc39f71cd89362027ae2cd9e0f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123252581"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130256233"
 ---
 # <a name="azure-active-directory-service-principal-with-azure-sql"></a>Azure Active Directory-Dienstprinzipal mit Azure SQL
 
@@ -51,14 +51,14 @@ Die Unterstützung dieser Funktionalität ist hilfreich in Automatisierungsproze
 
 Zum Aktivieren einer Azure AD-Objekterstellung in SQL-Datenbank im Auftrag einer Azure AD-Anwendung sind die folgenden Einstellungen erforderlich:
 
-1. Weisen Sie die Serveridentität zu. Die zugewiesene Serveridentität stellt die MSI (Managed Service Identity, verwaltete Dienstidentität) dar. Derzeit unterstützt die Serveridentität für Azure SQL keine UMIs (User Managed Identity, benutzerseitig zugewiesene verwaltete Identität).
+1. Weisen Sie die Serveridentität zu. Die zugewiesene Serveridentität stellt die MSI (Managed Service Identity, verwaltete Dienstidentität) dar. Aktuell unterstützt die Serveridentität für Azure SQL benutzerseitig zugewiesene verwaltete Identitäten (UMIs) nicht.
     - Führen Sie bei einem neuen logischen Azure SQL-Server den folgenden PowerShell-Befehl aus:
     
     ```powershell
     New-AzSqlServer -ResourceGroupName <resource group> -Location <Location name> -ServerName <Server name> -ServerVersion "12.0" -SqlAdministratorCredentials (Get-Credential) -AssignIdentity
     ```
 
-    Weitere Informationen finden Sie unter dem Befehl [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver).
+    Weitere Informationen finden Sie im Befehl [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) oder im Befehl [New-AzSqlInstance](/powershell/module/az.sql/new-azsqlinstance) für SQL Managed Instance.
 
     - Führen Sie bei vorhandenen logischen Azure SQL-Servern den folgenden Befehl aus:
     
@@ -66,7 +66,7 @@ Zum Aktivieren einer Azure AD-Objekterstellung in SQL-Datenbank im Auftrag eine
     Set-AzSqlServer -ResourceGroupName <resource group> -ServerName <Server name> -AssignIdentity
     ```
 
-    Weitere Informationen finden Sie unter dem [AzSqlServer](/powershell/module/az.sql/set-azsqlserver)-Befehl.
+    Weitere Informationen finden Sie im Befehl [Set-AzSqlServer](/powershell/module/az.sql/set-azsqlserver) oder im Befehl [Set-AzSqlInstance](/powershell/module/az.sql/set-azsqlinstance) für SQL Managed Instance.
 
     - Führen Sie den Befehl „Get-azsqlserver“ aus, um zu überprüfen, ob die Serveridentität dem Server zugewiesen wurde.
 

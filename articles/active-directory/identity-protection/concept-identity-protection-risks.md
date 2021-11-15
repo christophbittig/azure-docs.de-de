@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 09/23/2021
+ms.date: 10/28/2021
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f59d127342eabf3b951972a8d9d2bd82e0a6fa0
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a6dddc2825c580507177fd60479f2f496ba742c7
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128622073"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131447947"
 ---
 # <a name="what-is-risk"></a>Was bedeutet Risiko?
 
@@ -34,6 +34,9 @@ Identity Protection bietet Organisationen Zugriff auf leistungsstarke Ressourcen
 Risiken können auf Ebene der **Benutzer** und der **Anmeldungen** erkannt werden, und es gibt zwei Arten der Erkennung oder Berechnung (**Echtzeit** und **Offline**).
 
 Echtzeit-Erkennungen werden möglicherweise erst nach fünf bis 10 Minuten in den Berichten angezeigt. Offline-Erkennungen werden unter Umständen erst nach 48 Stunden in der Berichterstattung angezeigt.
+
+> [!NOTE] 
+> Unser System erkennt möglicherweise, dass das Risikoereignis, das zur Risikobewertung „Risikobenutzer“ beigetragen hat, falsch positiv war oder das Benutzerrisiko durch die Richtliniendurchsetzung behoben wurde, wie z. B. das Abschließen einer MFA-Eingabeaufforderung oder die Änderung in ein sicheres Kennwort. Aus diesem Grund wird der Risikostatus von unserem System verworfen, und es wird ein Risikodetail angezeigt, dass die KI die Anmeldung als sicher bestätigt, sodass dies nicht mehr zum Risiko des Benutzers beiträgt. 
 
 ### <a name="user-linked-detections"></a>Mit dem Benutzer verknüpfte Erkennungen
 
@@ -58,7 +61,7 @@ Diese Risiken können in Echtzeit oder offline anhand interner und externer Thre
 | Ungewöhnlicher Ortswechsel | Offline | Mit diesem Risikoerkennungstyp werden zwei Anmeldungen identifiziert, die von weit entfernten Orten durchgeführt wurden und bei denen mindestens einer der Orte aufgrund des bisherigen Verhaltens atypisch für den Benutzer ist. Neben zahlreichen anderen Faktoren berücksichtigt dieser Machine Learning-Algorithmus die Zeit zwischen den beiden Anmeldungen sowie die Zeit, die der Benutzer für einen Ortswechsel benötigen würde, wovon sich ableiten lässt, dass ein anderer Benutzer die gleichen Anmeldeinformationen verwendet. <br><br> Bei diesem Algorithmus werden offensichtliche falsch positive Ergebnisse ignoriert, die zu den unmöglichen Ortswechselbedingungen beitragen. Hierzu zählen etwa VPNs und regelmäßig von anderen Benutzern der Organisation verwendete Standorte. Das System verfügt über einen anfänglichen Lernzeitraum von 14 Tagen oder 10 Anmeldungen (je nachdem, welcher Punkt früher erreicht wird), in dem das Anmeldeverhalten des neuen Benutzers erlernt wird. |
 | Anomales Token | Offline | Diese Erkennung deutet darauf hin, dass der Token ungewöhnliche Merkmale aufweist, z.B. eine ungewöhnliche Gültigkeitsdauer oder einen Token, der von einem unbekannten Ort aus gespielt wird. Diese Erkennung deckt Sitzungstoken und Aktualisierungstoken ab. |
 | Anomaler Tokenaussteller | Offline |Diese Risikoerkennung gibt an, dass der SAML-Tokenaussteller für das zugeordnete SAML-Token möglicherweise kompromittiert ist. Die im Token enthaltenen Ansprüche sind ungewöhnlich oder stimmen mit bekannten Angriffsmustern überein. |
-| Mit Schadsoftware verknüpfte IP-Adresse | Offline | Mit diesem Risikoerkennungstyp werden Anmeldungen von IP-Adressen identifiziert, die mit Schadsoftware infiziert sind und bekanntermaßen aktiv mit einem Botserver kommunizieren. Diese Erkennung wird ermittelt, indem IP-Adressen des Benutzergeräts mit IP-Adressen korreliert werden, die in Kontakt mit einem Botserver gestanden haben, während der Botserver aktiv war. |
+| Mit Schadsoftware verknüpfte IP-Adresse | Offline | Mit diesem Risikoerkennungstyp werden Anmeldungen von IP-Adressen identifiziert, die mit Schadsoftware infiziert sind und bekanntermaßen aktiv mit einem Botserver kommunizieren. Diese Erkennung wird ermittelt, indem IP-Adressen des Benutzergeräts mit IP-Adressen korreliert werden, die in Kontakt mit einem Botserver gestanden haben, während der Botserver aktiv war. <br><br> **[Diese Erkennung ist veraltet](../fundamentals/whats-new.md#planned-deprecation---malware-linked-ip-address-detection-in-identity-protection)** . Identity Protection generiert keine neuen Erkennungen des Typs „Mit Schadsoftware verknüpfte IP-Adresse“ mehr. Kunden, die derzeit Erkennungen des Typs „Mit Schadsoftware verknüpfte IP-Adresse“ in ihrem Mandanten haben, können diese bis zum Erreichen der 90-tägigen Aufbewahrungsdauer für Erkennungen weiterhin anzeigen, bereinigen oder verwerfen.|
 | Verdächtiger Browser | Offline | Die Erkennung „Verdächtiger Browser“ weist auf ein anomales Verhalten hin, das auf verdächtigen Anmeldeaktivitäten mehrerer Mandanten aus verschiedenen Ländern im selben Browser beruht. |
 | Ungewöhnliche Anmeldeeigenschaften | Echtzeit | Dieser Risikoerkennungstyp berücksichtigt den bisherigen Anmeldeverlauf (IP-Adresse, Breitengrad/Längengrad und ASN), um nach anomalen Anmeldungen zu suchen. Im System werden Informationen zu den vorherigen Standorten gespeichert, die von einem Benutzer genutzt wurden, und diese werden als „vertraute“ Standorte angesehen. Die Risikoerkennung wird ausgelöst, wenn die Anmeldung von einem Standort aus erfolgt, der in der Liste der bekannten Standorte noch nicht enthalten ist. Neu angelegte Benutzer befinden sich eine Zeit lang im "Lernmodus", in dem die Erkennung unbekannter Anmeldeeigenschaften ausgeschaltet wird, während unsere Algorithmen das Verhalten des Benutzers lernen. Die Dauer des Lernmodus ist dynamisch und hängt davon ab, wie lange es dauert, bis der Algorithmus genügend Informationen über die Anmeldemuster des Benutzers gesammelt hat. Die Mindestdauer beträgt fünf Tage. Ein Benutzer kann nach einer langen Zeit der Inaktivität erneut in den Lernmodus wechseln. Außerdem ignoriert das System Anmeldungen von vertrauten Geräten und von Standorten aus, die geografisch nahe an einem bekannten Speicherort liegen. <br><br> Diese Erkennung wird auch für die Standardauthentifizierung (bzw. ältere Protokolle) ausgeführt. Da diese Protokolle nicht über moderne Eigenschaften wie die Client-ID verfügen, gibt es nur begrenzte Telemetriedaten, um Fehlalarme zu reduzieren. Wir empfehlen unseren Kunden, auf eine moderne Authentifizierung umzusteigen. <br><br> Unbekannte Anmeldungseigenschaften können sowohl bei interaktiven als auch bei nicht-interaktiven Anmeldungen erkannt werden. Wenn diese Erkennung bei nicht-interaktiven Anmeldungen festgestellt wird, sollte sie aufgrund des Risikos von Token-Wiederholungsangriffen besonders sorgfältig geprüft werden.  |
 | Benutzergefährdung durch Administrator bestätigt | Offline | Diese Erkennung gibt an, dass ein Administrator auf der Benutzeroberfläche für riskante Benutzer oder mithilfe der riskyUsers-API die Option „Benutzergefährdung bestätigen“ ausgewählt hat. Überprüfen Sie den Risikoverlauf des Benutzers (auf der Benutzeroberfläche oder über die API), um zu überprüfen, welcher Administrator diese Benutzergefährdung bestätigt hat. |
@@ -88,6 +91,10 @@ Microsoft stellt zwar keine spezifischen Details zur Risikoberechnung bereit, ab
 ### <a name="password-hash-synchronization"></a>Kennworthashsynchronisierung
 
 Damit Risiken wie kompromittierte Anmeldeinformationen erkannt werden können, müssen Kennworthashes vorhanden sein. Weitere Informationen zur Kennworthashsynchronisierung finden Sie unter [Implementieren der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung](../hybrid/how-to-connect-password-hash-synchronization.md).
+
+### <a name="why-are-there-risk-detections-generated-for-disabled-user-accounts"></a>Warum werden Risikoerkennungen für deaktivierte Benutzerkonten generiert?
+          
+Deaktivierte Benutzerkonten können erneut aktiviert werden. Wenn die Anmeldeinformationen eines deaktivierten Kontos kompromittiert sind und das Konto erneut aktiviert wird, könnten böswillige Akteure diese Anmeldeinformationen verwenden, um Zugriff zu erhalten. Aus diesem Grund generiert Identity Protection für deaktivierte Benutzerkonten Risikoerkennungen für verdächtige Aktivitäten, um Kunden über eine potenzielle Kontokompromittierung zu informieren. Wenn ein Konto nicht mehr verwendet und auch nicht wieder aktiviert wird, sollten Kunden erwägen, es zu löschen, um eine Kompromittierung zu verhindern. Für gelöschte Konten werden keine Risikoerkennungen generiert.
 
 ### <a name="leaked-credentials"></a>Kompromittierte Anmeldeinformationen
 

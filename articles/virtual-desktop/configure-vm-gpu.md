@@ -5,12 +5,12 @@ author: gundarev
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: 2ace40157681b250b56fcd595486260f07ec80c3
-ms.sourcegitcommit: 03e84c3112b03bf7a2bc14525ddbc4f5adc99b85
+ms.openlocfilehash: 0bd470650ca3a2d6a8fd2d672d2eac0e5790dc89
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2021
-ms.locfileid: "129400703"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130241001"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-azure-virtual-desktop"></a>Konfigurieren der Beschleunigung durch Graphics Processing Units (GPUs) für Azure Virtual Desktop
 
@@ -82,6 +82,9 @@ Der Remotedesktop codiert alle Grafiken, die von Apps und Desktops gerendert wer
 3. Melden Sie sich bei der Remotedesktopsitzung ab.
 
 ## <a name="configure-fullscreen-video-encoding"></a>Konfigurieren der Vollbildvideocodierung
+
+>[!NOTE]
+>Die Vollbildvideocodierung kann auch ohne eine GPU aktiviert werden.
 
 Wenn Sie häufig Anwendungen verwenden, die Inhalte mit hoher Bildfrequenz herstellen, z. B. Anwendungen zur 3D-Modellierung oder CAD/CAM- und Videoanwendungen, können Sie die Vollbildvideocodierung für eine Remotesitzung aktivieren. Das Vollbildvideoprofil bietet eine höhere Bildfrequenz und mehr Benutzerfreundlichkeit für solche Anwendungen, allerdings zum Nachteil der Netzwerkbandbreite, des Sitzungshosts und der Clientressourcen. Es wird empfohlen, die durch GPU beschleunigte Framecodierung für die Codierung von Vollbildvideos zu verwenden. Konfigurieren Sie eine Gruppenrichtlinie für den Sitzungshost, um die Vollbildvideocodierung zu aktivieren. Führen Sie ähnlich wie oben die folgenden Schritte durch:
 

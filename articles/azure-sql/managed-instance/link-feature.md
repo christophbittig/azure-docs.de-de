@@ -12,12 +12,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: mathoma, danil
 ms.date: 11/02/2021
-ms.openlocfilehash: fcae82f988ed019717f6693d0d3a63a025113fb4
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0d2a02510a70f35a9744370da8675636a7f296c5
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095172"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131465262"
 ---
 # <a name="link-feature-for-azure-sql-managed-instance-limited-preview"></a>Linkfeature für Azure SQL Managed Instance (eingeschränkte Vorschauversion)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -94,7 +94,7 @@ Für das Linkfeature benötigen Sie Folgendes:
 
 Weitere Informationen zum Linkfeature finden Sie in den folgenden Themen:
 
-- [Das Linkfeature für SQL Managed Instance – neu konzipierte Datenmobilität zwischen SQL Server und Azure](https://aka.ms/mi-link-techblog).
+- [Das Linkfeature für Azure SQL Managed Instance – Das Herstellen einer Verbindung zwischen SQL Server und Azure neu gedacht](https://aka.ms/mi-link-techblog)
 
 Informationen zu anderen Replikationsszenarien finden Sie unter: 
 

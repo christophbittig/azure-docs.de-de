@@ -3,12 +3,12 @@ title: Referenz zu Umgebungsvariablen und App-Einstellungen
 description: Dieser Artikel beschreibt die häufig verwendeten Umgebungsvariablen und welche mit App-Einstellungen geändert werden können.
 ms.topic: article
 ms.date: 06/14/2021
-ms.openlocfilehash: d945b34eb4803da8d94f4cdcfc8a998212e24afa
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: e315a51e7d160bcc2d8864cfa954924f0fe4c094
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130224354"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132025751"
 ---
 # <a name="environment-variables-and-app-settings-in-azure-app-service"></a>Umgebungsvariablen und App-Einstellungen in Azure App Service
 
@@ -18,7 +18,7 @@ In [Azure App Service](overview.md) sind bestimmte Einstellungen für die Bereit
 
 Die folgenden Umgebungsvariablen hängen allgemein mit der App-Umgebung zusammen.
 
-| Einstellungsname| Beschreibung | Beispiel |
+| Einstellungsname| BESCHREIBUNG | Beispiel |
 |-|-|-|
 | `WEBSITE_SITE_NAME` | Schreibgeschützt. App-Name. ||
 | `WEBSITE_RESOURCE_GROUP` | Schreibgeschützt. Name der Azure-Ressourcengruppe, die die App-Ressource enthält. ||
@@ -110,7 +110,7 @@ WEBSITE_RUN_FROM_PACKAGE_BLOB_MI_RESOURCE_ID
 
 Die Kudu-Buildkonfiguration gilt für native Windows-Apps und wird verwendet, um das Verhalten von Git-basierten (oder ZIP-basierten) Bereitstellungen zu steuern.
 
-| Einstellungsname| Beschreibung | Beispiel |
+| Einstellungsname| BESCHREIBUNG | Beispiel |
 |-|-|-|
 | `SCM_BUILD_ARGS` | Fügen Sie Elemente am Ende der MsBuild-Befehlszeile hinzu, sodass alle vorherigen Teile der Standardbefehlszeile überschrieben werden. | So erstellen Sie einen bereinigten Build: `-t:Clean;Compile`|
 | `SCM_SCRIPT_GENERATOR_ARGS` | Kudu verwendet den [hier](http://blog.amitapple.com/post/38418009331/azurewebsitecustomdeploymentpart2) beschriebenen Befehl `azure site deploymentscript`, um ein Bereitstellungsskript zu generieren. Er erkennt automatisch den Typ des Sprachframeworks und bestimmt die Parameter, die an den Befehl übergeben werden sollen. Diese Einstellung überschreibt die automatisch generierten Parameter. | So behandeln Sie Ihr Repository als einfache Inhaltsdateien: `--basic -p <folder-to-deploy>` |
@@ -158,7 +158,7 @@ In diesem Abschnitt werden die konfigurierbaren Laufzeiteinstellungen für jedes
 
 # <a name="java"></a>[Java](#tab/java)
 
-| Einstellungsname | Beschreibung | Beispiel |
+| Einstellungsname | BESCHREIBUNG | Beispiel |
 |-|-|-|
 | `JAVA_HOME` | Pfad des Java-Installationsverzeichnisses ||
 | `JAVA_OPTS` | Umgebungsvariablen, die für Java SE-Apps an den Befehl `java` übergeben werden sollen. Kann Systemvariablen enthalten. Verwenden Sie für Tomcat `CATALINA_OPTS`. | `-Dmysysproperty=%DRIVEPATH%` |
@@ -229,7 +229,7 @@ APPSVC_REMOTE_DEBUGGING_BREAK | debugArgs+=" -debugWait" -->
 
 # <a name="php"></a>[PHP](#tab/php)
 
-| Einstellungsname | Beschreibung | Beispiel|
+| Einstellungsname | BESCHREIBUNG | Beispiel|
 |-|-|-|
 | `PHP_Extensions` | Durch Trennzeichen getrennte Liste von PHP-Erweiterungen. | `extension1.dll,extension2.dll,Name1=value1` |
 | `PHP_ZENDEXTENSIONS` | Legen Sie für native Windows-Apps den Wert auf den Pfad der XDebug-Erweiterung fest, z. B. `D:\devtools\xdebug\2.6.0\php_7.2\php_xdebug-2.6.0-7.2-vc15-nts.dll`. Legen Sie für Linux-Apps den Wert auf `xdebug` fest, um die XDebug-Version des PHP-Containers zu verwenden. ||
@@ -252,7 +252,7 @@ APACHE_RUN_GROUP | RUN sed -i 's!User ${APACHE_RUN_GROUP}!Group www-data!g' /etc
 
 # <a name="ruby"></a>[Ruby](#tab/ruby)
 
-| Einstellungsname | Beschreibung | Beispiel |
+| Einstellungsname | BESCHREIBUNG | Beispiel |
 |-|-|-|
 | `PORT` | Schreibgeschützt. Port, an dem die Rails-App im Container lauscht. ||
 | `WEBSITE_ROLE_INSTANCE_ID` | Schreibgeschützt. Die ID der aktuellen Instanz. ||
@@ -268,7 +268,7 @@ APACHE_RUN_GROUP | RUN sed -i 's!User ${APACHE_RUN_GROUP}!Group www-data!g' /etc
 
 ## <a name="domain-and-dns"></a>Domäne und DNS
 
-| Einstellungsname| Beschreibung | Beispiel |
+| Einstellungsname| BESCHREIBUNG | Beispiel |
 |-|-|-|
 | `WEBSITE_DNS_SERVER` | IP-Adresse des primären DNS-Servers für ausgehende Verbindungen (z. B. zu einem Back-End-Dienst). Der DNS-Standardserver für App Service ist Azure DNS, dessen IP-Adresse `168.63.129.16` ist. Wenn Ihre App die [VNet-Integration](./overview-vnet-integration.md) verwendet oder sich in einer [App Service-Umgebung](environment/intro.md) befindet, erbt sie standardmäßig die DNS-Serverkonfiguration vom VNet. | `10.0.0.1` |
 | `WEBSITE_DNS_ALT_SERVER` | IP-Adresse des Fallback-DNS-Servers für ausgehende Verbindungen. Siehe `WEBSITE_DNS_SERVER`. | |
@@ -293,12 +293,12 @@ Weitere Informationen finden Sie unter [Verwenden eines TLS-/SSL-Zertifikats in 
 
 Weitere Informationen zu Bereitstellungsslots finden Sie unter [Einrichten von Stagingumgebungen in Azure App Service](deploy-staging-slots.md).
 
-| Einstellungsname| Beschreibung | Beispiel |
+| Einstellungsname| BESCHREIBUNG | Beispiel |
 |-|-|-|
 |`WEBSITE_SLOT_NAME`| Schreibgeschützt. Name des aktuellen Bereitstellungsslots. Der Name des Produktionsslots ist `Production`. ||
 |`WEBSITE_OVERRIDE_STICKY_EXTENSION_VERSIONS`| Standardmäßig sind die Versionen für Websiteerweiterungen für jeden Slot spezifisch. Dies verhindert unerwartetes Anwendungsverhalten aufgrund von Änderungen der Erweiterungsversionen nach einem Austausch. Wenn Sie möchten, dass die Erweiterungsversionen auch ausgetauscht werden, legen Sie für *alle Slots* den Wert auf `1` fest. ||
 |`WEBSITE_OVERRIDE_PRESERVE_DEFAULT_STICKY_SLOT_SETTINGS`| Bestimmte Einstellungen werden [standardmäßig als „persistent“ oder „nicht austauschbar“](deploy-staging-slots.md#which-settings-are-swapped) festgelegt. Der Standardwert ist `true`. Legen Sie diese Einstellung für *alle Bereitstellungsslots* auf `false` oder `0` fest, damit sie stattdessen ausgetauscht werden können. Es gibt keine fein abgrenzende Steuerung für bestimmte Einstellungstypen. ||
-|`WEBSITE_SWAP_WARMUP_PING_PATH`| Ein Pfad zum Pingen, um den Zielslot in einem Austausch vorzubereiten. Er beginnt mit einem Schrägstrich. Der Standardwert ist `/`; er pingt den Stammpfad. | `/statuscheck` |
+|`WEBSITE_SWAP_WARMUP_PING_PATH`| Ein Pfad zum Pingen, um den Zielslot in einem Austausch vorzubereiten. Er beginnt mit einem Schrägstrich. Der Standardwert ist `/` und pingt den Stammpfad über HTTP. | `/statuscheck` |
 |`WEBSITE_SWAP_WARMUP_PING_STATUSES`| Gültige HTTP-Antwortcodes für den Vorbereitungsvorgang während eines Austauschs. Ist der zurückgegebene Statuscode nicht in der Liste enthalten, werden die Vorbereitungs- und Austauschvorgänge beendet. Standardmäßig sind alle Antwortcodes gültig. | `200,202` |
 | `WEBSITE_SLOT_NUMBER_OF_TIMEOUTS_BEFORE_RESTART` | Während eines Slottauschs die maximale Anzahl von Timeouts, nach denen ein Neustart der Site auf einer bestimmten VM-Instanz erzwungen wird. Der Standardwert lautet `3`. ||
 | `WEBSITE_SLOT_MAX_NUMBER_OF_TIMEOUTS` | Während eines Slottauschs die maximale Anzahl von Timeoutanforderungen für eine einzelne URL, bevor aufgegeben wird. Der Standardwert lautet `5`. ||
@@ -312,7 +312,7 @@ Weitere Informationen zu Bereitstellungsslots finden Sie unter [Einrichten von S
 
 Weitere Informationen zu benutzerdefinierten Containern finden Sie unter [Ausführen eines benutzerdefinierten Containers in Azure](quickstart-custom-container.md).
 
-| Einstellungsname| Beschreibung | Beispiel |
+| Einstellungsname| BESCHREIBUNG | Beispiel |
 |-|-|-|
 | `WEBSITES_ENABLE_APP_SERVICE_STORAGE` | Legen Sie diese Option auf `true` fest, damit das `/home`-Verzeichnis für skalierte Instanzen freigegeben werden kann. Der Standard ist `false` für benutzerdefinierte Container. ||
 | `WEBSITES_CONTAINER_START_TIME_LIMIT` | Die Zeit in Sekunden, die auf den Abschluss des Containerstartvorgangs gewartet wird, bevor der Container neu gestartet wird. Der Standardwert ist `230`. Sie können ihn bis zum Maximum von `1800` erhöhen. ||
@@ -348,7 +348,7 @@ WEBSITE_DISABLE_PRELOAD_HANG_MITIGATION
 
 ## <a name="logging"></a>Protokollierung
 
-| Einstellungsname| Beschreibung | Beispiel |
+| Einstellungsname| BESCHREIBUNG | Beispiel |
 |-|-|-|
 | `WEBSITE_HTTPLOGGING_ENABLED` | Schreibgeschützt. Zeigt an, ob die Webserverprotokollierung für native Windows-Apps aktiviert (`1`) oder nicht aktiviert (`0`) ist. ||
 | `WEBSITE_HTTPLOGGING_RETENTION_DAYS` | Aufbewahrungsdauer von Webserverprotokollen für native Windows-Apps in Tagen, wenn Webserverprotokolle aktiviert sind. | `10` |
@@ -435,7 +435,7 @@ Die folgenden Umgebungsvariablen beziehen sich auf [Hybridverbindungen](app-serv
 |-|-|
 | `WEBSITE_RELAYS` | Schreibgeschützt. Daten, die zum Konfigurieren der Hybridverbindung erforderlich sind, einschließlich Endpunkte und Service Bus-Daten. |
 | `WEBSITE_REWRITE_TABLE` | Schreibgeschützt. Wird zur Laufzeit verwendet, um die Lookups durchzuführen und die Verbindungen entsprechend neu zu schreiben. | 
-| `WEBSITE_VNET_ROUTE_ALL` | Wenn Sie die [regionale VNet-Integration](./overview-vnet-integration.md#regional-vnet-integration) verwenden, leitet Ihre App standardmäßig nur RFC1918-Datenverkehr an Ihr VNet weiter. Legen Sie diese Einstellung auf `1` fest, um den gesamten ausgehenden Datenverkehr an Ihr VNet weiterzuleiten und denselben NSGs und UDRs zu unterliegen. Mit der Einstellung können Sie über Ihr VNet auf Nicht-RFC1918-Endpunkte zugreifen, den gesamten ausgehenden Datenverkehr, der Ihre App verlässt, schützen und erzwingen, dass der gesamte ausgehende Datenverkehr zu einer von Ihnen ausgewählten Netzwerkappliance getunnelt wird. |
+| `WEBSITE_VNET_ROUTE_ALL` | Wenn Sie die [regionale VNet-Integration](./overview-vnet-integration.md#regional-virtual-network-integration) verwenden, leitet Ihre App standardmäßig nur RFC1918-Datenverkehr an Ihr VNet weiter. Legen Sie diese Einstellung auf `1` fest, um den gesamten ausgehenden Datenverkehr an Ihr VNet weiterzuleiten und denselben NSGs und UDRs zu unterliegen. Mit der Einstellung können Sie über Ihr VNet auf Nicht-RFC1918-Endpunkte zugreifen, den gesamten ausgehenden Datenverkehr, der Ihre App verlässt, schützen und erzwingen, dass der gesamte ausgehende Datenverkehr zu einer von Ihnen ausgewählten Netzwerkappliance getunnelt wird. |
 | `WEBSITE_PRIVATE_IP` | Schreibgeschützt. IP-Adresse, die der App zugeordnet ist, wenn [sie mit einem VNet integriert](./overview-vnet-integration.md) ist. Bei der regionalen VNet-Integration ist der Wert eine IP-Adresse aus dem Adressbereich des delegierten Subnetzes, und bei der für das Gateway erforderlichen VNet-Integration ist der Wert eine IP-Adresse aus dem Adressbereich des Point-to-Site-Adresspools, der auf dem Gateway des virtuellen Netzwerks konfiguriert ist. Diese IP-Adresse wird von der App zum Herstellen einer Verbindung mit den Ressourcen über das VNet verwendet. Sie kann sich auch innerhalb des beschriebenen Adressbereichs ändern. |
 | `WEBSITE_PRIVATE_PORTS` | Schreibgeschützt. Zeigt in der VNet-Integration an, welche Ports von der App für die Kommunikation mit anderen Knoten verwendet werden können. |
 

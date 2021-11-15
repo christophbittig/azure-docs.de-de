@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 10/26/2021
+ms.date: 10/29/2021
 ms.author: alkohli
-ms.openlocfilehash: ea9a918ee32a3ada83651085290fa7c7b26c6e0e
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 544454e4022da67db50fb194d7aea72a6bd716bd
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131024370"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131449968"
 ---
 # <a name="tutorial-return-azure-data-box"></a>Tutorial: Zurücksenden von Azure Data Box
 
@@ -59,7 +59,7 @@ Befolgen Sie die Richtlinien für die Region, aus der Sie versenden, wenn Sie de
 
 [!INCLUDE [data-box-shipping-in-eu](../../includes/data-box-shipping-in-eu.md)]
 
-**Beim Versand aus Deutschland oder der Schweiz** können Sie auch den [selbst verwalteten Versand](#self-managed-shipping) nutzen.
+**Bei der Rücksendung an Azure-Rechenzentren in Deutschland oder der Schweiz** können Sie auch den [selbst verwalteten Versand](#self-managed-shipping) nutzen.
 
 ## <a name="uk"></a>[UK](#tab/in-uk)
 
@@ -85,7 +85,7 @@ Befolgen Sie die Richtlinien für die Region, aus der Sie versenden, wenn Sie de
 
 [!INCLUDE [data-box-shipping-in-korea](../../includes/data-box-shipping-in-korea.md)]
 
-## <a name="s-africa"></a>[S Afrika](#tab/in-sa)
+## <a name="s-africa"></a>[Südafrika](#tab/in-sa)
 
 [!INCLUDE [data-box-shipping-in-sa](../../includes/data-box-shipping-in-sa.md)]
 

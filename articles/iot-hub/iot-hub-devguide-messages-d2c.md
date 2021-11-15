@@ -11,12 +11,12 @@ ms.author: nehsin
 ms.custom:
 - 'Role: Cloud Development'
 - devx-track-csharp
-ms.openlocfilehash: cfa6865ee7facdc00303f725de78a3e523ff301d
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 5a405c50c94a16394a92ba7c4830ab3f3aee072f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128595991"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131449714"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Verwenden des IoT Hub-Nachrichtenroutings zum Senden von D2C-Nachrichten an verschiedene Endpunkte
 
@@ -49,7 +49,7 @@ IoT Hub unterstützt derzeit folgende Endpunkte:
 
 ## <a name="built-in-endpoint-as-a-routing-endpoint"></a>Integrierter Endpunkt als Routingendpunkt
 
-Sie können standardmäßige [Event Hubs-Integration und -SDKs](iot-hub-devguide-messages-read-builtin.md) zum Empfangen von D2C-Nachrichten vom integrierten Endpunkt (**messages/events**) verwenden. Sobald eine Route erstellt wird, werden keine Daten mehr an den integrierten Endpunkt gesendet, es sei denn, eine Route zu diesem Endpunkt wird erstellt.
+Sie können standardmäßige [Event Hubs-Integration und -SDKs](iot-hub-devguide-messages-read-builtin.md) zum Empfangen von D2C-Nachrichten vom integrierten Endpunkt (**messages/events**) verwenden. Sobald eine Route erstellt wird, werden keine Daten mehr an den integrierten Endpunkt gesendet, es sei denn, eine Route zu diesem Endpunkt wird erstellt. Auch wenn keine Routen erstellt werden, muss eine Fallbackroute aktiviert werden, um Nachrichten an den integrierten Endpunkt weiterzuleiten. Die Fallbackfunktion ist standardmäßig aktiviert, wenn Sie Ihren Hub über das Portal oder die Befehlszeilenschnittstelle erstellen.
 
 ## <a name="azure-storage-as-a-routing-endpoint"></a>Azure Storage als Routingendpunkt
 

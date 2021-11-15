@@ -8,19 +8,19 @@ manager: nolachar
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: sample
-ms.date: 04/17/2019
+ms.date: 10/27/2021
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: dd2ceaa97a456d72227d6180596aeccc9e00a614
-ms.sourcegitcommit: 80d311abffb2d9a457333bcca898dfae830ea1b4
+ms.openlocfilehash: e083bc3d5f313be6bd32a75f413f858ef68e0993
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/26/2021
-ms.locfileid: "110453896"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131469994"
 ---
 # <a name="sample-explore-an-image-processing-app-with-c"></a>Beispiel: Erkunden einer Bildverarbeitungs-App mit C#
 
-Lernen Sie eine einfache Windows-Anwendung kennen, die maschinelles Sehen verwendet, um eine optische Zeichenerkennung (OCR) durchzuführen, intelligent zugeschnittene Miniaturansichten zu erstellen sowie visuelle Merkmale (einschließlich Gesichter) in einem Bild zu erkennen, zu kategorisieren, zu markieren und zu beschreiben. Im folgenden Beispiel können Sie eine Bild-URL oder eine lokal gespeicherte Datei übermitteln. Sie können dieses Open-Source-Beispiel als Vorlage verwenden, um Ihre eigene App für Windows mit der Maschinelles Sehen-API und Windows Presentation Foundation (WPF), einer Komponenten von .NET Framework, zu erstellen.
+Lernen Sie eine einfache Windows-Anwendung kennen, die maschinelles Sehen verwendet, um eine optische Zeichenerkennung (OCR) durchzuführen, intelligent zugeschnittene Miniaturansichten zu erstellen sowie visuelle Merkmale (einschließlich Gesichter) in einem Bild zu erkennen, zu kategorisieren, zu markieren und zu beschreiben. Im folgenden Beispiel können Sie eine Bild-URL oder eine lokal gespeicherte Datei übermitteln. Sie können dieses Open-Source-Beispiel als Vorlage verwenden, um Ihre eigene App für Windows mithilfe der Maschinelles Sehen-API und von Windows Presentation Foundation (WPF), einer Komponente von .NET Framework, zu erstellen.
 
 > [!div class="checklist"]
 > * Abrufen der Beispiel-App aus GitHub
@@ -49,7 +49,7 @@ git clone --recurse-submodules https://github.com/Microsoft/Cognitive-Vision-Win
 ```
 
 > [!IMPORTANT]
-> Laden Sie dieses Repository nicht als ZIP-Datei herunter. Git enthält keine Submodule, wenn das Repository als ZIP-Datei heruntergeladen wird.
+> Laden Sie dieses Repository nicht als _ZIP_-Datei herunter. Git enthält keine Submodule, wenn das Repository als _ZIP_-Datei heruntergeladen wird.
 
 ### <a name="get-optional-sample-images"></a>Abrufen optionaler Beispielbilder
 

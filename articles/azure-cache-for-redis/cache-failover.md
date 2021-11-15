@@ -5,13 +5,13 @@ author: curib
 ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
-ms.date: 10/18/2019
-ms.openlocfilehash: 3ede36ef718fbe4ef535e9999edf55a0381cfd2e
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.date: 11/3/2021
+ms.openlocfilehash: 67b3ad49033a2fb4708b93c65e0d9f7110726cee
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129538570"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131850962"
 ---
 # <a name="failover-and-patching-for-azure-cache-for-redis"></a>Failover und Patching für Azure Cache for Redis
 
@@ -29,7 +29,7 @@ Wir beginnen mit einer Übersicht über das Failover für Azure Cache for Redis.
 
 ### <a name="a-quick-summary-of-cache-architecture"></a>Kurze Zusammenfassung der Cachearchitektur
 
-Ein Cache wird von mehreren virtuellen Computern mit separaten privaten IP-Adressen erstellt. Jeder virtuelle Computer, der auch als Knoten bezeichnet wird, ist mit einem freigegebenen Load Balancer mit einer einzelnen virtuellen IP-Adresse verbunden. Jeder Knoten führt den Redis-Serverprozess aus, und auf jeden Knoten kann über den Hostnamen und die Redis-Ports zugegriffen werden. Jeder Knoten gilt entweder als primärer oder Replikatknoten. Wenn eine Clientanwendung eine Verbindung mit einem Cache herstellt, durchläuft der zugehörige Datenverkehr diesen Load Balancer und wird automatisch an den primären Knoten weitergeleitet.
+Ein Cache wird aus mehreren virtuellen Computern mit separaten und privaten IP-Adressen erstellt. Jeder virtuelle Computer, der auch als Knoten bezeichnet wird, ist mit einem freigegebenen Load Balancer mit einer einzelnen virtuellen IP-Adresse verbunden. Jeder Knoten führt den Redis-Serverprozess aus, und auf jeden Knoten kann über den Hostnamen und die Redis-Ports zugegriffen werden. Jeder Knoten gilt entweder als primärer oder Replikatknoten. Wenn eine Clientanwendung eine Verbindung mit einem Cache herstellt, durchläuft der zugehörige Datenverkehr diesen Load Balancer und wird automatisch an den primären Knoten weitergeleitet.
 
 In einem Basic-Cache ist der einzelne Knoten immer auch der primäre. Ein Standard- oder Premium-Cache umfasst zwei Knoten: einen ausgewählten primären Knoten und einen Replikatknoten. Da Standard- und Premium-Caches mehrere Knoten umfassen, ist ein Knoten möglicherweise nicht verfügbar, während auf dem anderen weiterhin Anforderungen verarbeitet werden. Gruppierte Caches bestehen aus vielen Shards, die jeweils unterschiedliche primäre und Replikatknoten umfassen. Ein Shard kann ausgefallen sein, während die anderen verfügbar bleiben.
 
@@ -84,7 +84,7 @@ Viele Clientbibliotheken können bei Verbindungsabbrüchen verschiedene Arten vo
 
 Anzahl und Typ der Ausnahmen hängen davon ab, wo sich die Anforderung im Codepfad befindet, wenn der Cache die Verbindungen schließt. Beispielsweise tritt bei einem Vorgang, bei dem eine Anforderung gesendet wird, für die zum Zeitpunkt des Failovers jedoch noch keine Antwort zurückgegeben wurde, möglicherweise eine Timeoutausnahme auf. Bei neuen Anforderungen für das geschlossene Verbindungsobjekt treten Verbindungsausnahmen auf, bis die Verbindung erfolgreich wiederhergestellt wird.
 
-Die meisten Clientbibliotheken versuchen, erneut eine Verbindung mit dem Cache herzustellen, wenn sie entsprechend konfiguriert sind. Durch unvorhergesehene Fehler können die Bibliotheksobjekte jedoch gelegentlich in einen nicht wiederherstellbaren Zustand gesetzt werden. Wenn Fehler länger als eine vorkonfigurierte Zeitspanne andauern, sollte das Verbindungsobjekt neu erstellt werden. In Microsoft .NET und anderen objektorientierten Sprachen kann die Neuerstellung der Verbindung ohne Neustart der Anwendung durch Verwendung eines [Lazy\<T\>-Musters](https://gist.github.com/JonCole/925630df72be1351b21440625ff2671f#reconnecting-with-lazyt-pattern) erreicht werden.
+Die meisten Clientbibliotheken versuchen, erneut eine Verbindung mit dem Cache herzustellen, wenn sie entsprechend konfiguriert sind. Durch unvorhergesehene Fehler können die Bibliotheksobjekte jedoch gelegentlich in einen nicht wiederherstellbaren Zustand gesetzt werden. Wenn Fehler länger als eine vorkonfigurierte Zeitspanne andauern, sollte das Verbindungsobjekt neu erstellt werden. In Microsoft .NET und anderen objektorientierten Sprachen kann die Neuerstellung der Verbindung ohne Neustart der Anwendung durch Verwendung eines [ForceReconnect-Musters](cache-best-practices-connection.md#using-forcereconnect-with-stackexchangeredis) erreicht werden.
 
 ### <a name="can-i-be-notified-in-advance-of-planned-maintenance"></a>Kann ich im Voraus über eine geplante Wartung informiert werden?
 

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET, devx-track-js
-ms.openlocfilehash: 26e0ae48c65953312757eb7ac4d6cb51ba2a44c5
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: f0b75b49ce36ef4fb3e45b76ace5402dd5c39efe
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128590079"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131456193"
 ---
 # <a name="quickstart-add-sign-in-using-openid-connect-to-a-nodejs-web-app"></a>Schnellstart: Hinzufügen der Anmeldung mit OpenID Connect zu einer Node.js-Web-App
 
@@ -31,7 +31,7 @@ In dieser Schnellstartanleitung laden Sie ein Codebeispiel herunter und führen 
 ## <a name="register-your-application"></a>Anwendung registrieren
 
 1. Melden Sie sich beim <a href="https://portal.azure.com/" target="_blank">Azure-Portal</a> an.
-1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, in dem Sie die Anwendung registrieren möchten.
+1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, für den Sie die Anwendung registrieren möchten.
 1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
 1. Wählen Sie unter **Verwalten** Folgendes aus: **App-Registrierungen** > **Neue Registrierung**.
 1. Geben Sie unter **Name** einen Namen für Ihre Anwendung ein (beispielsweise `MyWebApp`). Benutzern Ihrer App wird wahrscheinlich dieser Namen angezeigt. Sie können ihn später ändern.
@@ -47,7 +47,7 @@ In dieser Schnellstartanleitung laden Sie ein Codebeispiel herunter und führen 
 1. Geben Sie `https://localhost:3000` als **URL für Front-Channel-Abmeldung** an.
 1. Wählen Sie im Abschnitt **Implizite Genehmigung und Hybridflows** die Option **ID-Token** aus, da in diesem Beispiel der [Flow für implizite Genehmigungen](./v2-oauth2-implicit-grant-flow.md) aktiviert werden muss, um den Benutzer anzumelden.
 1. Wählen Sie **Konfigurieren** aus.
-1. Wählen Sie unter **Verwalten** Folgendes aus: **Zertifikate und Geheimnisse** > **Neuer geheimer Clientschlüssel**.
+1. Wählen Sie unter **Verwalten** die Optionen **Zertifikate und Geheimnisse** > **Geheime Clientschlüssel** > **Neuer geheimer Clientschlüssel** aus.
 1. Geben Sie eine Schlüsselbeschreibung ein (beispielsweise „app secret“).
 1. Wählen Sie eine Schlüsseldauer aus: **In 1 Jahr, In 2 Jahren** oder **Läuft nie ab**.
 1. Wählen Sie **Hinzufügen** aus. Der Schlüsselwert wird angezeigt. Kopieren Sie den Schlüsselwert, und speichern Sie ihn zur späteren Verwendung an einem sicheren Ort.

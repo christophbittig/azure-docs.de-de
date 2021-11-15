@@ -2,19 +2,22 @@
 title: Speichern von Helm-Diagrammen
 description: Erfahren Sie, wie Sie Helm-Charts für Ihre Kubernetes-Anwendungen mithilfe von Depots in Azure Container Registry speichern.
 ms.topic: article
-ms.date: 07/19/2021
-ms.openlocfilehash: cdc4b0c6fb5aabdb96597cfbbe151598b16a2cc0
-ms.sourcegitcommit: 7d63ce88bfe8188b1ae70c3d006a29068d066287
+ms.date: 10/20/2021
+ms.openlocfilehash: 9bf771fae26d61a457299244910eff1cc6724b84
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/22/2021
-ms.locfileid: "114438906"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130232978"
 ---
 # <a name="push-and-pull-helm-charts-to-an-azure-container-registry"></a>Pushen und Pullen von Helm-Charts in Azure Container Registry
 
 Sie können den [Open Source-Paket-Manager von Helm][helm] verwenden, um Anwendungen für Kubernetes ohne großen Aufwand zu verwalten und bereitzustellen. Bei Helm werden Anwendungspakete als [Charts](https://helm.sh/docs/topics/charts/) definiert, die gesammelt und in einem [Helm-Chartrepository](https://helm.sh/docs/topics/chart_repository/) gespeichert werden.
 
 In diesem Artikel erfahren Sie, wie Sie mithilfe von Helm 3-Befehlen und durch Speichern von Charts als [OCI-Artefakte](container-registry-image-formats.md#oci-artifacts) Helm-Chartrepositorys in einer Azure-Containerregistrierung hosten. In vielen Szenarien würden Sie für Ihre selbst entwickelten Anwendungen eigene Charts erstellen und hochladen. Weitere Informationen zum Erstellen eigener Helm-Charts finden Sie unter [Entwicklerhandbuch für Chartvorlagen][develop-helm-charts]. Sie können auch ein vorhandenes Helm-Chart aus einem anderen Helm-Repository speichern.
+
+> [!IMPORTANT]
+> Dieser Artikel wurde mit Helm 3-Befehlen der Version **3.7.1** aktualisiert. Helm 3.7.1 enthält Änderungen an Helm CLI-Befehlen und der OCI-Unterstützung, die in früheren Versionen von Helm 3 eingeführt wurden. 
 
 ## <a name="helm-3-or-helm-2"></a>Helm 3 oder Helm 2?
 
@@ -25,8 +28,8 @@ Helm 3 sollte zum Hosten von Helm-Charts in Azure Container Registry verwendet 
 * Speichern und Verwalten von Helm-Charts in Repositorys in einer Azure-Containerregistrierung.
 * Speichern von Helm-Charts in einer Registrierung als [OCI-Artefakte](container-registry-image-formats.md#oci-artifacts). Azure Container Registry bietet allgemeine Unterstützung für OCI-Artefakte, einschließlich Helm-Charts.
 * Authentifizieren bei Ihrer Registrierung mithilfe des Befehls `helm registry login` oder `az acr login`.
-* Pushen, Pullen und Verwalten von Helm-Charts in einer Registrierung mithilfe von `helm chart`-Befehlen.
-* Verwenden Sie `helm install`, um Charts aus einem lokalen Repositorycache in einem Kubernetes-Cluster zu installieren.
+* Pushen, Pullen und Verwalten von Helm-Charts in einer Registrierung mithilfe von `helm`-Befehlen.
+* Verwenden Sie `helm install`, um Charts aus der Registrierung in einem Kubernetes-Cluster zu installieren.
 
 ### <a name="feature-support"></a>Featureunterstützung
 
@@ -63,7 +66,7 @@ Wenn Sie zuvor Charts mithilfe von Helm 2 und Azure Container Registry gespeiche
 Die folgenden Ressourcen sind für das Szenario in diesem Artikel erforderlich:
 
 - Eine **Azure Container Registry**-Instanz in Ihrem Azure-Abonnement. Erstellen Sie bei Bedarf eine Registrierung im [Azure-Portal](container-registry-get-started-portal.md) oder über die [Azure-Befehlszeilenschnittstelle](container-registry-get-started-azure-cli.md).
-- **Version 3.1.0 oder höher des Helm-Clients:** Führen Sie `helm version` aus, um Ihre aktuelle Version zu ermitteln. Weitere Informationen zum Installieren und Aktualisieren von Helm finden Sie unter [Installieren von Helm][helm-install].
+- **Version 3.7.1 oder höher des Helm-Clients:** Führen Sie `helm version` aus, um Ihre aktuelle Version zu ermitteln. Weitere Informationen zum Installieren und Aktualisieren von Helm finden Sie unter [Installieren von Helm][helm-install]. Wenn Sie ein Upgrade von einer früheren Version von Helm 3 durchführen, lesen Sie die [Versionshinweise](https://github.com/helm/helm/releases).
 - **Ein Kubernetes-Cluster**, in dem Sie später ein Helm-Chart installieren. Erstellen Sie bei Bedarf einen [Azure Kubernetes Service-Cluster][aks-quickstart]. 
 - **Version 2.0.71 oder höher der Azure-Befehlszeilenschnittstelle:** Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][azure-cli-install].
 
@@ -114,24 +117,21 @@ EOF
 
 Weitere Informationen zum Erstellen und Ausführen dieses Beispiels finden Sie in der Helm-Dokumentation unter [Erste Schritte](https://helm.sh/docs/chart_template_guide/getting_started/).
 
-## <a name="save-chart-to-local-registry-cache"></a>Speichern des Charts im lokalen Registrierungscache
+## <a name="save-chart-to-local-archive"></a>Speichern eines Charts im lokalen Archiv
 
-Wechseln Sie in das Unterverzeichnis `hello-world`. Führen Sie anschließend `helm chart save` aus, um eine Kopie des Charts lokal zu speichern und einen Alias mit dem vollqualifizierten Namen der Registrierung (nur Kleinbuchstaben) sowie des Zielrepositorys und des Tags zu erstellen. 
+Wechseln Sie in das Unterverzeichnis `hello-world`. Führen Sie dann `helm package` aus, um das Chart in einem lokalen Archiv zu speichern. 
 
-Im folgenden Beispiel lautet der Registrierungsname *mycontainerregistry*, das Zielrepository ist *helm/hello-world*, und das Zielcharttag ist *0.1.0*. Damit Abhängigkeiten erfolgreich per Pull abgerufen werden können, müssen Name und Tag des Zielchartimages mit dem Namen und der Version in `Chart.yaml` übereinstimmen.
+Im folgenden Beispiel wird das Chart mit dem Namen und der Version in `Chart.yaml` gespeichert.
 
 ```console
 cd ..
-helm chart save . hello-world:0.1.0
-helm chart save . mycontainerregistry.azurecr.io/helm/hello-world:0.1.0
+helm package .
 ```
 
-Führen Sie `helm chart list` aus, um zu überprüfen, ob die Charts im lokalen Registrierungscache gespeichert wurden. Die Ausgabe Die Ausgabe lautet in etwa wie folgt:
+Die Ausgabe Die Ausgabe lautet in etwa wie folgt:
 
-```console
-REF                                                      NAME            VERSION DIGEST  SIZE            CREATED
-hello-world:0.1.0                                        hello-world      0.1.0   5899db0 3.2 KiB        2 minutes 
-mycontainerregistry.azurecr.io/helm/hello-world:0.1.0    hello-world      0.1.0   5899db0 3.2 KiB        2 minutes
+```output
+Successfully packaged chart and saved it to: /my/path/hello-world-0.1.0.tgz
 ```
 
 ## <a name="authenticate-with-the-registry"></a>Authentifizieren bei der Registrierung
@@ -149,23 +149,19 @@ echo $spPassword | helm registry login mycontainerregistry.azurecr.io \
 > [!TIP]
 > Sie können sich auch mit Ihrer [individuellen Azure AD-Identität](container-registry-authentication.md?tabs=azure-cli#individual-login-with-azure-ad) bei der Registrierung anmelden, um Helm-Charts zu pushen und zu pullen.
 
-## <a name="push-chart-to-registry"></a>Pushen eines Charts in die Registrierung
+## <a name="push-chart-to-registry-as-oci-artifact"></a>Pushen eines Charts als OCI-Artefakt in die Registrierung
 
-Führen Sie den Befehl `helm chart push` in der Helm 3-Befehlszeilenschnittstelle aus, um das Chart in das vollqualifizierte Zielrepository zu pushen:
+Führen Sie den Befehl `helm push` in der Helm 3-Befehlszeilenschnittstelle aus, um das Chartarchiv in das vollqualifizierte Zielrepository zu pushen. Im folgenden Beispiel lautet der Ziel-Repositorynamespace `helm/hello-world`, und das Chart ist mit `0.1.0` gekennzeichnet:
 
 ```console
-helm chart push mycontainerregistry.azurecr.io/helm/hello-world:0.1.0
+helm push hello-world-0.1.0.tgz oci://mycontainerregistry.azurecr.io/helm
 ```
 
 Nach einem erfolgreichen Push ähnelt die Ausgabe der folgenden:
 
 ```output
-The push refers to repository [mycontainerregistry.azurecr.io/helm/hello-world]
-ref:     mycontainerregistry.azurecr.io/helm/hello-world:0.1.0
-digest:  5899db028dcf96aeaabdadfa5899db025899db025899db025899db025899db02
-size:    3.2 KiB
-name:    hello-world
-version: 0.1.0
+Pushed: mycontainerregistry.azurecr.io/helm/hello-world:0.1.0
+digest: sha256:5899db028dcf96aeaabdadfa5899db025899db025899db025899db025899db02
 ```
 
 ## <a name="list-charts-in-the-repository"></a>Auflisten von Diagrammen im Repository
@@ -190,9 +186,9 @@ Die Ausgabe Die Ausgabe lautet in etwa wie folgt:
     "readEnabled": true,
     "writeEnabled": true
   },
-  "createdTime": "2020-03-20T18:11:37.6701689Z",
+  "createdTime": "2021-10-05T12:11:37.6701689Z",
   "imageName": "helm/hello-world",
-  "lastUpdateTime": "2020-03-20T18:11:37.7637082Z",
+  "lastUpdateTime": "2021-10-05T12:11:37.7637082Z",
   "manifestCount": 1,
   "registry": "mycontainerregistry.azurecr.io",
   "tagCount": 1
@@ -214,70 +210,29 @@ Die Ausgabe (in diesem Beispiel abgekürzt) zeigt `application/vnd.cncf.helm.con
   {
     [...]
     "configMediaType": "application/vnd.cncf.helm.config.v1+json",
-    "createdTime": "2020-03-20T18:11:37.7167893Z",
+    "createdTime": "2021-10-05T12:11:37.7167893Z",
     "digest": "sha256:0c03b71c225c3ddff53660258ea16ca7412b53b1f6811bf769d8c85a1f0663ee",
     "imageSize": 3301,
-    "lastUpdateTime": "2020-03-20T18:11:37.7167893Z",
+    "lastUpdateTime": "2021-10-05T12:11:37.7167893Z",
     "mediaType": "application/vnd.oci.image.manifest.v1+json",
     "tags": [
       "0.1.0"
     ]
 ```
 
-## <a name="pull-chart-to-local-cache"></a>Pullen eines Charts in den lokalen Cache
-
-Um ein Helm-Chart in Kubernetes zu installieren, muss sich das Chart im lokalen Cache befinden. Führen Sie in diesem Beispiel zuerst `helm chart remove` aus, um das vorhandene lokale Chart mit dem Namen `mycontainerregistry.azurecr.io/helm/hello-world:0.1.0` zu entfernen:
-
-```console
-helm chart remove mycontainerregistry.azurecr.io/helm/hello-world:0.1.0
-```
-
-Führen Sie `helm chart pull` aus, um das Chart aus Azure Container Registry in Ihren lokalen Cache herunterzuladen:
-
-```console
-helm chart pull mycontainerregistry.azurecr.io/helm/hello-world:0.1.0
-```
-
-## <a name="export-helm-chart"></a>Exportieren von Helm-Charts
-
-Wenn Sie mit dem Chart weiterarbeiten möchten, exportieren Sie es mithilfe von `helm chart export` in ein lokales Verzeichnis. Exportieren Sie z. B. das Chart, das Sie in das Verzeichnis `install` gepullt haben:
-
-```console
-helm chart export mycontainerregistry.azurecr.io/helm/hello-world:0.1.0 \
-  --destination ./install
-```
-
-Um Informationen zum exportierten Chart im Repository anzuzeigen, führen Sie den Befehl `helm show chart` in dem Verzeichnis aus, in das Sie das Chart exportiert haben.
-
-```console
-cd install
-helm show chart hello-world
-```
-
-Helm gibt ausführliche Informationen zur aktuellen Version Ihres Charts zurück, wie in der folgenden Beispielausgabe zu sehen:
-
-```output
-apiVersion: v2
-appVersion: 1.16.0
-description: A Helm chart for Kubernetes
-name: hello-world
-type: application
-version: 0.1.0    
-```
-
 ## <a name="install-helm-chart"></a>Installieren von Helm-Charts
 
-Führen Sie `helm install` aus, um das Helm-Chart, das Sie in den lokalen Cache gepullt und exportiert haben, zu installieren. Geben Sie einen Releasenamen (beispielsweise *myhelmtest*) an, oder übergeben Sie den Parameter `--generate-name`. Beispiel:
+Führen Sie `helm install` aus, um das Helm-Chart zu installieren, das Sie in die Registrierung gepusht haben. Das Charttag wird mithilfe des Parameters `--version` übergeben. Geben Sie einen Releasenamen (beispielsweise *myhelmtest*) an, oder übergeben Sie den Parameter `--generate-name`. Beispiel:
 
 ```console
-helm install myhelmtest ./hello-world
+helm install myhelmtest oci://mycontainerregistry.azurecr.io/helm/hello-world --version 0.1.0
 ```
 
 Die Ausgabe nach erfolgreicher Chartinstallation sieht in etwa wie folgt aus:
 
 ```console
 NAME: myhelmtest
-LAST DEPLOYED: Fri Mar 20 14:14:42 2020
+LAST DEPLOYED: Tue Oct  4 16:59:51 2021
 NAMESPACE: default
 STATUS: deployed
 REVISION: 1
@@ -296,6 +251,14 @@ Führen Sie `helm uninstall` aus, um das Chart-Release in Ihrem Cluster zu deins
 
 ```console
 helm uninstall myhelmtest
+```
+
+## <a name="pull-chart-to-local-archive"></a>Pullen eines Charts in das lokale Archiv
+
+Optional können Sie ein Chart mithilfe von `helm pull` aus der Containerregistrierung in ein lokales Archiv pullen. Das Charttag wird mithilfe des Parameters `--version` übergeben. Wenn ein lokales Archiv im aktuellen Pfad vorhanden ist, wird es durch diesen Befehl überschrieben.
+
+```console
+helm pull oci://mycontainerregistry.azurecr.io/helm/hello-world --version 0.1.0
 ```
 
 ## <a name="delete-chart-from-the-registry"></a>Löschen eines Charts aus der Registrierung
@@ -345,17 +308,18 @@ myregistry/wordpress            9.0.3           5.3.2           Web publishing p
 [...]
 ```
 
-### <a name="save-charts-as-oci-artifacts"></a>Speichern von Charts als OCI-Artefakte
+### <a name="pull-chart-archives-locally"></a>Lokales Pullen von Chartarchiven
 
-Ziehen Sie jedes Chart im Repository per Pull auf einen lokalen Standort, und speichern Sie es als OCI-Artefakt. Beispiel:
+Pullen Sie für jedes Chart im Repository das Chartarchiv lokal, und notieren Sie sich den Dateinamen:
 
 ```console 
-helm pull myregisry/ingress-nginx --untar
-cd ingress-nginx
-helm chart save . myregistry.azurecr.io/ingress-nginx:3.20.1
+helm pull myregisry/ingress-nginx
+ls *.tgz
 ```
 
-### <a name="push-charts-to-registry"></a>Pushen von Charts in die Registrierung
+Ein lokales Chartarchiv wie `ingress-nginx-3.20.1.tgz` wird erstellt.
+
+### <a name="push-charts-as-oci-artifacts-to-registry"></a>Pushen von Charts als OCI-Artefakte in eine Registrierung
 
 Melden Sie sich bei der Registrierung an:
 
@@ -363,10 +327,10 @@ Melden Sie sich bei der Registrierung an:
 az acr login --name myregistry
 ```
 
-Pushen Sie jedes Chart in die Registrierung:
+Pushen Sie jedes Chartarchiv in die Registrierung. Beispiel:
 
 ```console
-helm chart push myregistry.azurecr.io/ingress-nginx:3.20.1
+helm push ingress-nginx-3.20.1.tgz oci://myregistry.azurecr.io/helm
 ```
 
 Vergewissern Sie sich nach dem Pushen eines Charts, dass es in der Registrierung gespeichert ist:

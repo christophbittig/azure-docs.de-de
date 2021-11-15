@@ -4,15 +4,15 @@ description: Erfahren Sie mehr über den Azure Cosmos DB-Transaktionsspeicher (
 author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 07/12/2021
+ms.date: 11/02/2021
 ms.author: rosouz
 ms.custom: seo-nov-2020
-ms.openlocfilehash: 09b5d7c1865020ba33a89e73b2ba39260f473e6a
-ms.sourcegitcommit: d2875bdbcf1bbd7c06834f0e71d9b98cea7c6652
+ms.openlocfilehash: fd9984d6db66413f3c53d20fa63ffb4e1a106f3d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2021
-ms.locfileid: "129859340"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131454540"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store"></a>Was ist der Azure Cosmos DB-Analysespeicher?
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -324,6 +324,10 @@ Nachdem der Analysespeicher aktiviert wurde, können Sie basierend auf den Anfor
 ## <a name="global-distribution"></a>Globale Verteilung
 
 Wenn Sie über ein global verteiltes Azure Cosmos DB-Konto verfügen, ist es nach dem Aktivieren des Analysespeichers für einen Container in allen Regionen für dieses Konto verfügbar.  Änderungen an operativen Daten werden in allen Regionen global repliziert. Sie können analytische Abfragen effektiv für die nächstgelegene regionale Kopie Ihrer Daten in Azure Cosmos DB ausführen.
+
+## <a name="partitioning"></a>Partitionierung
+
+Die Partitionierung des Analysespeichers ist vollkommen unabhängig von der Partitionierung im Transaktionsspeicher. Daten im Analysespeicher sind standardmäßig nicht partitioniert. Wenn Ihre analytischen Abfragen häufig Filter verwenden, können Sie basierend auf diesen Feldern partitionieren, um die Abfrageleistung zu verbessern. Weitere Informationen finden Sie in den Artikeln zur [Einführung in die benutzerdefinierte Partitionierung](custom-partitioning-analytical-store.md) und [Konfigurieren der benutzerdefinierten Partitionierung](configure-custom-partitioning.md).  
 
 ## <a name="security"></a>Sicherheit
 

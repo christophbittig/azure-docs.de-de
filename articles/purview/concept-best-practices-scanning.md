@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: conceptual
 ms.date: 10/08/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 53cf2144dfbb858d21030da7147805155ca1b982
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 85dc954dcb352f9bc2447e72322d35e8d5e73cb3
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131056298"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131552656"
 ---
 # <a name="azure-purview-scanning-best-practices"></a>Best Practices für die Azure Purview-Überprüfung
 
@@ -98,6 +98,7 @@ Um unerwartete Kosten und Überarbeitungen zu vermeiden, empfiehlt es sich, die 
             - Kontoschlüssel oder Standardauthentifizierung (z. B. für SAP S/4HANA-Quellen)
             > [!Note]
             > Wenn Sie für das Speicherkonto eine Firewall aktiviert haben, müssen Sie beim Einrichten einer Überprüfung als Authentifizierungsmethode Verwaltete Identität verwenden.
+            > Beim Einrichten neuer Anmeldeinformationen darf der Anmeldeinformationsname nur _Buchstaben, Zahlen, Unterstriche und Bindestriche_ enthalten. 
 
     - **Integrationslaufzeit**
         - Verwenden Sie nach Möglichkeit eine Azure Integration Runtime mit automatischer Auflösung.
@@ -114,7 +115,7 @@ Um unerwartete Kosten und Überarbeitungen zu vermeiden, empfiehlt es sich, die 
             - Ausführliche Informationen finden Sie in [diesem Dokument](./register-scan-sapecc-source.md#create-and-run-scan).
 
     - **Bereichsüberprüfung**
-        - Wählen Sie bei der Festlegung des Bereichs für die Überprüfung nur die Ressourcen aus, die auf untergeordneter oder übergeordneter Ebene relevant sind. Dadurch werden optimale Überprüfungskosten und eine effiziente Leistung sichergestellt. Alle zukünftigen Ressourcen unterhalb eines bestimmten übergeordneten Elements werden automatisch ausgewählt, wenn das übergeordnete Element vollständig oder teilweise markiert wird. Beispiel:
+        - Wählen Sie bei der Festlegung des Bereichs für die Überprüfung nur die Ressourcen aus, die auf untergeordneter oder übergeordneter Ebene relevant sind. Dadurch werden optimale Überprüfungskosten und eine effiziente Leistung sichergestellt. Alle zukünftigen Ressourcen unterhalb eines bestimmten übergeordneten Elements werden automatisch ausgewählt, wenn das übergeordnete Element vollständig oder teilweise markiert wird. Zum Beispiel:
             - Für Azure SQL-Datenbank oder ADLS Gen2 können Sie den Bereich Ihrer Überprüfung auf bestimmte Teile der Datenquelle (etwa auf Ordner, Sammlungen oder Schemas) festlegen, indem Sie in der Liste die entsprechenden Kontrollkästchen aktivieren.
             - Für Oracle-, Hive-Metastore-Datenbank- und Teradata-Quellen kann eine spezifische Liste der zu exportierenden Schemas über durch Semikolons getrennte Werte oder über Schemanamensmuster unter Verwendung von SQL-LIKE-Ausdrücken angegeben werden.
             - Bei Google Big-Abfragen kann eine spezifische Liste der zu exportierenden Datasets über durch Semikolons getrennte Werte angegeben werden.
@@ -135,7 +136,7 @@ Um unerwartete Kosten und Überarbeitungen zu vermeiden, empfiehlt es sich, die 
         - Der Überprüfungsprozess kann sofort ausgelöst oder für eine regelmäßige Ausführung (wöchentlich oder monatlich) geplant werden, um die Metadaten auf dem neuesten Stand zu halten. Außerdem ist die Ressourcenverwendung auch stark von der Menge der Daten abhängig, die überprüft werden.
         - Es wird empfohlen, die Überprüfungen außerhalb der Geschäftszeiten oder außerhalb der Spitzenzeiten auszuführen, um eine Überlastung der Quelle zu vermeiden.
         - Bei der ersten Überprüfung handelt es sich um eine vollständige Überprüfung, und jede nachfolgende Überprüfung erfolgt inkrementell. Nachfolgende Überprüfungen können als regelmäßige inkrementelle Überprüfungen geplant werden.
-        - Die Häufigkeit der Überprüfungen sollte sich nach dem Zeitplan für das Change Management der Datenquelle und/oder nach den Geschäftsanforderungen richten. Beispiel:
+        - Die Häufigkeit der Überprüfungen sollte sich nach dem Zeitplan für das Change Management der Datenquelle und/oder nach den Geschäftsanforderungen richten. Zum Beispiel:
             - Wenn sich die Struktur der Quelle möglicherweise wöchentlich ändert (durch Hinzufügung, Änderung oder Löschung neuer Ressourcen oder Felder innerhalb einer Ressource), sollte die Häufigkeit der Überprüfung entsprechend angepasst werden.
             - Wenn die Klassifizierungs-/Vertraulichkeitsbezeichnungen wöchentlich auf dem neuesten Stand sein sollen (z. B. aus rechtlichen Gründen), sollte eine wöchentliche Überprüfung festgelegt werden.
             Wenn einem Quell-Data Lake beispielsweise wöchentlich Partitionsdateien hinzugefügt werden, sollten Sie eher monatliche als wöchentliche Überprüfungen planen, da sich die Metadaten nicht ändern (vorausgesetzt, es gibt keine neuen Klassifizierungsszenarien).

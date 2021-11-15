@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: 7d01566c2c9f20b86d3cf135fc126bd5d5982e98
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0978293d82de908ca31706fa40ebfdc489fab8fd
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131056317"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131848854"
 ---
 # <a name="connect-to-and-manage-dedicated-sql-pools-in-azure-purview"></a>Verbinden und Verwalten dedizierter SQL Pools in Azure Purview
 
@@ -26,7 +26,9 @@ In diesem Artikel wird beschrieben, wie Sie dedizierte SQL Pools (ehemals SQL DW
 
 |**Metadatenextrahierung**|  **Vollständige Überprüfung**  |**Inkrementelle Überprüfung**|**Bereichsbezogene Überprüfung**|**Klassifizierung**|**Zugriffsrichtlinie**|**Herkunft**|
 |---|---|---|---|---|---|---|
-| [Ja](#register) | [Ja](#scan)| [Ja](#scan)| [Ja](#scan)| [Ja](#scan)| Nein | Nein|
+| [Ja](#register) | [Ja](#scan)| [Ja](#scan)| [Ja](#scan)| [Ja](#scan)| Nein | nein** |
+
+\** Herkunft wird unterstützt, wenn das Dataset als Quelle/Senke in der [Data Factory Copy-Aktivität](how-to-link-azure-data-factory.md) verwendet wird. 
 
 ### <a name="known-limitations"></a>Bekannte Einschränkungen
 
@@ -38,7 +40,7 @@ In diesem Artikel wird beschrieben, wie Sie dedizierte SQL Pools (ehemals SQL DW
 
 * Eine aktive [Purview-Ressource](create-catalog-portal.md)
 
-* Sie müssen ein Datenquellenadministrator und Datenleser sein, um eine Quelle zu registrieren und in Purview Studio zu verwalten. Weitere Informationen finden Sie auf der [Seite Azure Purview-Berechtigungen](catalog-permissions.md).
+* Sie müssen Datenquellenadministrator und Datenleser sein, um eine Quelle zu registrieren und in Purview Studio zu verwalten. Weitere Informationen finden Sie auf der [Seite Azure Purview-Berechtigungen](catalog-permissions.md).
 
 ## <a name="register"></a>Register
 
@@ -179,8 +181,8 @@ Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie Ihre Quelle registriert haben, halten Sie sich an die folgenden Anleitungen, um mehr über Purview und Ihre Daten zu erfahren.
+Nachdem Sie Ihre Quelle registriert haben, befolgen Sie die folgenden Anleitungen, um mehr über Purview und Ihre Daten zu erfahren.
 
-- [Dateneinblicke in Azure Purview](concept-insights.md)
+- [Datenerkenntnisse in Azure Purview](concept-insights.md)
 - [Datenherkunft in Azure Purview](catalog-lineage-user-guide.md)
 - [Data Catalog suchen](how-to-search-catalog.md)

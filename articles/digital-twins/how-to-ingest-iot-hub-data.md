@@ -1,20 +1,22 @@
 ---
 title: Erfassen von Telemetriedaten aus IoT Hub
 titleSuffix: Azure Digital Twins
-description: Erfahren Sie, wie Sie Gerätetelemetrienachrichten aus IoT Hub erfassen.
+description: Erfahren Sie, wie Sie Gerätetelemetrienachrichten aus Azure IoT Hub in digitalen Zwillingen in einer Instanz von Azure Digital Twins erfassen.
 author: baanders
 ms.author: baanders
-ms.date: 9/9/2021
+ms.date: 10/28/2021
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 8fd5b6a046c53a34e41340250c8d6ac38fdf5706
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 1b10a87312fd7b27c22bbfa56a928a0357d4698e
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128667348"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131500925"
 ---
 # <a name="ingest-iot-hub-telemetry-into-azure-digital-twins"></a>Erfassen von IoT Hub Telemetriedaten in Azure Digital Twins
+
+Dieser Leitfaden führt Sie durch das Schreiben einer Funktion, die Telemetriedaten aus IoT Hub erfassen und an eine Instanz von Azure Digital Twins senden kann.
 
 Azure Digital Twins wird mit Daten von IoT-Geräten und anderen Quellen gesteuert. Eine gängige Quelle für Gerätedaten zur Verwendung in Azure Digital Twins ist [IoT Hub](../iot-hub/about-iot-hub.md).
 
@@ -103,7 +105,7 @@ Damit Ihre Funktions-App auf Azure Digital Twins zugreifen kann, muss sie über 
 
 ## <a name="connect-your-function-to-iot-hub"></a>Verbinden Ihrer Funktion mit IoT Hub
 
-In diesem Abschnitt richten Sie Ihre Funktion als Ereignisziel für die IoT Hub-Gerätedaten ein. Dadurch wird sichergestellt, dass die Daten aus dem Thermostatgerät in IoT Hub zur Verarbeitung an die Azure-Funktion gesendet werden.
+In diesem Abschnitt richten Sie Ihre Funktion als Ereignisziel für die IoT Hub-Gerätedaten ein. Wenn Sie Ihre Funktion so einrichten, wird sichergestellt, dass die Daten aus dem Thermostatgerät in IoT Hub zur Verarbeitung an die Azure-Funktion gesendet werden.
 
 Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zu Ihrer IoT Hub-Instanz, die Sie im Abschnitt [Voraussetzungen](#prerequisites) erstellt haben. Erstellen Sie unter **Ereignisse** ein Abonnement für Ihre Funktion.
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/16/2020
 ms.author: sedusch
-ms.openlocfilehash: 89890c243fa3fba659c8da3aaf5627ded7d27fb1
-ms.sourcegitcommit: 4abfec23f50a164ab4dd9db446eb778b61e22578
+ms.openlocfilehash: 96fdec13ce028f3cac5f42c7092ca9b189923b9f
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130065576"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131577781"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Azure Virtual Machines – Bereitstellung für SAP NetWeaver
 
@@ -835,7 +835,9 @@ Legen Sie die folgenden Parameter fest:
    sudo service waagent restart
    ```
 
-Die Proxyeinstellungen in „\\etc\\waagent.conf“ gelten auch für die erforderlichen VM-Erweiterungen. Falls Sie die Azure-Repositorys verwenden möchten, sollten Sie darauf achten, dass der Datenverkehr mit diesen Repositorys nicht über das lokale Intranet geführt wird. Falls benutzerdefinierte Routen zum Aktivieren erzwungener Tunnel erstellt wurden, muss eine Route hinzugefügt werden, die den Datenverkehr an die Repositorys direkt in das Internet umleitet, und nicht über die Site-to-Site-VPN-Verbindung.
+Falls Sie die Azure-Repositorys verwenden möchten, sollten Sie darauf achten, dass der Datenverkehr mit diesen Repositorys nicht über das lokale Intranet geführt wird. Falls benutzerdefinierte Routen zum Aktivieren erzwungener Tunnel erstellt wurden, muss eine Route hinzugefügt werden, die den Datenverkehr an die Repositorys direkt in das Internet umleitet, und nicht über die Site-to-Site-VPN-Verbindung.
+
+Die VM-Erweiterung für SAP muss auch auf das Internet zugreifen können. Installieren Sie unbedingt die neue VM-Erweiterung für SAP, und führen Sie die Schritte unter [Konfigurieren der Azure-VM-Erweiterung für SAP-Lösungen mit der Azure CLI](vm-extension-for-sap-new.md#fa4428b9-bed6-459a-9dfb-74cc27454481) im Installationsleitfaden zur VM-Erweiterung für SAP aus, um den Proxy zu konfigurieren.
 
 * **SLES**
 

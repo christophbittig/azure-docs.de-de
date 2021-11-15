@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 10/27/2021
 author: saasguide
 ms.author: souchak
-ms.openlocfilehash: 4e2dff653564a568905160188fc4be308812c557
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 99735c9e18cb6e278c85254bcebbe514c2fbe0f3
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131460715"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131866556"
 ---
 # <a name="saas-fulfillment-apis-version-2-in-the-commercial-marketplace"></a>SaaS-Fulfillment-APIs (Version 2) im kommerziellen Marketplace
 
@@ -118,7 +118,10 @@ Dieser Status gibt an, dass die Zahlung eines Kunden für den SaaS-Dienst noch n
 
 Der Herausgeber kann auf Wunsch Änderungen am SaaS-Dienst auf Herausgeberseite vornehmen. Es wird empfohlen, dass der Herausgeber diese Informationen dem jeweiligen Kunden bereitstellt und den Zugriff des Kunden auf den SaaS-Dienst einschränkt oder blockiert. Es besteht die Möglichkeit, dass die Zahlung niemals eingeht.
 
-Microsoft gewährt dem Kunden eine Karenzzeit von 30 Tagen, bevor das Abonnement automatisch gekündigt wird. Wenn sich ein Abonnement im Status *Suspended* (Ausgesetzt) befindet, ist Folgendes gegeben:
+> [!NOTE]
+> Microsoft gewährt dem Kunden eine Karenzzeit von 30 Tagen, bevor das Abonnement automatisch gekündigt wird. Nach Ablauf der 30-tägigen Toleranzperiode erhält der Webhook eine [Kündigen](#cancel-a-subscription)-Aktion (Unsubscribe).
+
+Wenn sich ein Abonnement im Status *Suspended* (Ausgesetzt) befindet, ist Folgendes gegeben:
 
 * Der Partner oder ISV muss das SaaS-Konto in einem wiederherstellbaren Zustand halten, damit die vollständige Funktionalität ohne Verlust von Daten oder Einstellungen wiederhergestellt werden kann.
 * Der Partner oder ISV muss mit einer Anforderung zur Reaktivierung des Abonnements rechnen, wenn die Zahlung während der Toleranzperiode eingeht, oder mit einer Anforderung zur Aufhebung der Bereitstellung des Abonnements nach Ablauf der Toleranzperiode. Beide Anforderungen werden über den Webhookmechanismus gesendet.

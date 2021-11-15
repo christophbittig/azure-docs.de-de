@@ -1,6 +1,6 @@
 ---
 title: Angeben von Marketplace-Erwerbsplaninformationen mithilfe von Azure PowerShell
-description: Hier erfahren Sie, wie Sie Azure Marketplace-Erwerbsplaninformationen angeben, wenn Sie Images in einer Shared Image Gallery-Instanz erstellen.
+description: Erfahren Sie, wie Sie Azure Marketplace-Kaufplandetails angeben, wenn Sie Images in einer Azure Compute Gallery (früher als Shared Image Gallery bezeichnet) erstellen.
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: shared-image-gallery
@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 07/07/2020
 ms.author: cynthn
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 52f4152a8f3ec1d2f812de74ed0bd238fb323330
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: d50aa76f80205df1d34215a020691c51ca58d4b0
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123451833"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131474608"
 ---
 # <a name="supply-azure-marketplace-purchase-plan-information-when-creating-images"></a>Bereitstellen von Azure Marketplace-Erwerbsplaninformationen beim Erstellen von Images
 
@@ -37,7 +37,7 @@ $vm.Plan
 
 ## <a name="create-the-image-definition"></a>Erstellen der Imagedefinition
 
-Rufen Sie den Imagekatalog ab, in dem Sie das Image speichern möchten. Sie können zuerst aller Kataloge auflisten.
+Rufen Sie den Katalog ab, den Sie zum Speichern des Images verwenden möchten. Sie können zuerst aller Kataloge auflisten.
 
 ```azurepowershell-interactive
 Get-AzResource -ResourceType Microsoft.Compute/galleries | Format-Table

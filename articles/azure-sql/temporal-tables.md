@@ -10,13 +10,13 @@ ms.topic: how-to
 author: MladjoA
 ms.author: mlandzic
 ms.reviewer: mathoma
-ms.date: 06/26/2019
-ms.openlocfilehash: 43a2ca496ee9cb03ee76c293e3a980573a50753c
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.date: 10/18/2021
+ms.openlocfilehash: 945afcb2a4158ee4c80bd9d36a9697d6692d0d19
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110691343"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130250424"
 ---
 # <a name="getting-started-with-temporal-tables-in-azure-sql-database-and-azure-sql-managed-instance"></a>Erste Schritte mit temporalen Tabellen in Azure SQL-Datenbank und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -31,7 +31,7 @@ Das Datenbankmodell für dieses Szenario ist sehr einfach – die Metrik der Ben
 
 ![Schema](./media/temporal-tables/AzureTemporal1.png)
 
-Glücklicherweise erfordert die Verwaltung dieser Aktivitätsinformationen von Ihnen keinerlei Aufwand zur Bearbeitung Ihrer App. Bei temporalen Tabellen ist dieser Prozess automatisiert, sodass Sie beim Entwerfen der Website volle Flexibilität genießen und mehr Zeit haben, um sich auf die eigentliche Datenanalyse zu konzentrieren. Sie müssen einzig und allein sicherstellen, dass die Tabelle **WebSiteInfo** als [temporal mit Systemversionsverwaltung](/sql/relational-databases/tables/temporal-tables#what-is-a-system-versioned-temporal-table)konfiguriert ist. Nachfolgend werden die genauen Schritte zum Verwenden temporaler Tabellen in diesem Szenario beschrieben.
+Glücklicherweise erfordert die Verwaltung dieser Aktivitätsinformationen von Ihnen keinerlei Aufwand zur Bearbeitung Ihrer App. Bei temporalen Tabellen ist dieser Prozess automatisiert, sodass Sie beim Entwerfen der Website volle Flexibilität genießen und mehr Zeit haben, um sich auf die eigentliche Datenanalyse zu konzentrieren. Sie müssen einzig und allein sicherstellen, dass die Tabelle `WebSiteInfo` als [temporal mit Systemversionsverwaltung](/sql/relational-databases/tables/temporal-tables#what-is-a-system-versioned-temporal-table) konfiguriert ist. Nachfolgend werden die genauen Schritte zum Verwenden temporaler Tabellen in diesem Szenario beschrieben.
 
 ## <a name="step-1-configure-tables-as-temporal"></a>Schritt 1: Konfigurieren von Tabellen als temporal
 
@@ -42,7 +42,7 @@ Je nachdem, ob Sie eine neue Entwicklung beginnen oder eine vorhandene Anwendung
 
 ### <a name="create-new-table"></a>Erstellen einer neuen Tabelle
 
-Verwenden Sie das Kontextmenüelement „Neue Tabelle mit Systemversionsverwaltung“ im SSMS-Objekt-Explorer, um den Abfrage-Editor mit einem Vorlagenskript für eine temporale Tabelle zu öffnen, und füllen Sie die Vorlage dann mit „Werte für Vorlagenparameter angeben“ (STRG+UMSCHALT+M):
+Verwenden Sie das Kontextmenüelement „Neue Tabelle mit Systemversionsverwaltung“ im SSMS-Objekt-Explorer, um den Abfrage-Editor mit einem Vorlagenskript für eine temporale Tabelle zu öffnen, und füllen Sie die Vorlage dann mit „Werte für Vorlagenparameter angeben“ (STRG+UMSCHALT+M) auf:
 
 ![SSMSNewTable](./media/temporal-tables/AzureTemporal2.png)
 
@@ -117,7 +117,7 @@ UPDATE WebsiteUserInfo  SET [PagesVisited] = 5
 WHERE [UserID] = 1;
 ```
 
-Es ist wichtig, zu beachten, dass die Aktualisierungsabfrage nicht die genaue Zeit kennen muss, zu der der eigentliche Vorgang aufgetreten ist, noch wie die Verlaufsdaten zur späteren Analyse beibehalten werden. Beide Aspekte werden automatisch von Azure SQL-Datenbank und Azure SQL Managed Instance behandelt. Das folgende Diagramm veranschaulicht, wie Verlaufsdaten bei jedem Update generiert werden.
+Es ist wichtig zu beachten, dass die Aktualisierungsabfrage weder den genauen Zeitpunkt kennen muss, zu dem der eigentliche Vorgang auftrat, noch wie Verlaufsdaten für die zukünftige Analyse beibehalten werden. Beide Aspekte werden automatisch von Azure SQL-Datenbank und Azure SQL Managed Instance behandelt. Das folgende Diagramm veranschaulicht, wie Verlaufsdaten bei jedem Update generiert werden.
 
 ![TemporalArchitecture](./media/temporal-tables/AzureTemporal5.png)
 
@@ -201,4 +201,3 @@ Mit temporalen Tabellen mit Systemversionsverwaltung kann die Verlaufstabelle di
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zu temporalen Tabellen finden Sie unter [Temporale Tabellen](/sql/relational-databases/tables/temporal-tables).
-- Auf Channel 9 können Sie sich einen [Kundenerfahrungsbericht zur Temporal-Implementierung](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions) anhören und eine [Temporal-Live-Demo](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016) ansehen.

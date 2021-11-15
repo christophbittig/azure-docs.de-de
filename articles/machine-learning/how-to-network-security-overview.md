@@ -8,15 +8,15 @@ ms.subservice: enterprise-readiness
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 09/29/2021
+ms.date: 10/29/2021
 ms.topic: how-to
 ms.custom: devx-track-python, references_regions, contperf-fy21q1,contperf-fy21q4,FY21Q4-aml-seo-hack, security
-ms.openlocfilehash: ef84fea20ce59af11abf2f76de409f1363db94c9
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: b114077c9af72e9d57d80e783d26f54d0de91410
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131051076"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131429753"
 ---
 <!-- # Virtual network isolation and privacy overview -->
 # <a name="secure-azure-machine-learning-workspace-resources-using-virtual-networks-vnets"></a>Schützen von Azure Machine Learning-Arbeitsbereichsressourcen mit virtuellen Netzwerken (VNets)
@@ -88,6 +88,8 @@ Wenn Sie über das öffentliche Internet auf den Arbeitsbereich zugreifen und gl
     | __Azure Key Vault__| [Dienstendpunkt](../key-vault/general/overview-vnet-service-endpoints.md)</br>[Privater Endpunkt](../key-vault/general/private-link-service.md) | [Erlauben der Umgehung dieser Firewall für vertrauenswürdige Microsoft-Dienste](how-to-secure-workspace-vnet.md#secure-azure-key-vault) |
     | __Azure Storage-Konto__ | [Dienst und privater Endpunkt](how-to-secure-workspace-vnet.md?tabs=se#secure-azure-storage-accounts)</br>[Privater Endpunkt](how-to-secure-workspace-vnet.md?tabs=pe#secure-azure-storage-accounts) | [Gewähren von Zugriff für vertrauenswürdige Azure-Dienste](../storage/common/storage-network-security.md#grant-access-to-trusted-azure-services) |
     | __Azure Container Registry__ | [Privater Endpunkt](../container-registry/container-registry-private-link.md) | [Zulassen vertrauenswürdiger Dienste](../container-registry/allow-access-trusted-services.md) |
+
+1. Fügen Sie in den Eigenschaften der Azure Storage-Konten für Ihren Arbeitsbereich Ihre Client-IP-Adresse der Liste mit den zulässigen Adressen in den Firewalleinstellungen hinzu. Weitere Informationen finden Sie unter [Konfigurieren von Firewalls und virtuellen Netzwerken](/azure/storage/common/storage-network-security#configuring-access-from-on-premises-networks).
 
 ## <a name="secure-the-workspace-and-associated-resources"></a>Schützen des Arbeitsbereichs und zugehöriger Ressourcen
 

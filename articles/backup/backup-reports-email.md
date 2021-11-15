@@ -2,13 +2,13 @@
 title: Azure Backup-Berichte per E-Mail
 description: Erstellen automatisierter Aufgaben zum Empfangen regelmäßiger Berichte per E-Mail
 ms.topic: conceptual
-ms.date: 03/01/2021
-ms.openlocfilehash: d3ec76fa1a23657578979e65c0e54bb428722244
-ms.sourcegitcommit: 32e0fedb80b5a5ed0d2336cea18c3ec3b5015ca1
+ms.date: 10/19/2021
+ms.openlocfilehash: dd5e31663262463449df4377329edc6604ffb691
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "105561337"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130235979"
 ---
 # <a name="email-azure-backup-reports"></a>Azure Backup-Berichte per E-Mail
 
@@ -52,7 +52,7 @@ Führen Sie die folgenden Schritte aus, um die Autorisierung durchzuführen:
 
 ## <a name="contents-of-the-email"></a>Inhalte der E-Mail
 
-* Alle Diagramme und Graphen, die im Portal angezeigt werden, sind als Inlineinhalt in der E-Mail verfügbar.
+* Alle Diagramme und Graphen, die im Portal angezeigt werden, sind als Inlineinhalt in der E-Mail verfügbar. [Erfahren Sie mehr](configure-reports.md) über die in Sicherungsberichten enthaltenen Informationen.
 * Die im Portal angezeigten Raster sind als CSV-Anlagen in der E-Mail verfügbar.
 * Für alle in der E-Mail angezeigten Daten werden Filter auf Berichtsebene verwendet, die zum Zeitpunkt der Erstellung der E-Mail-Aufgabe vom Benutzer im Bericht ausgewählt wurden.
 * Filter auf Registerkartenebene wie **Name der Sicherungsinstanz**, **Richtlinienname** usw. werden nicht angewendet. Die einzige Ausnahme hierbei ist das Raster **Aufbewahrungsoptimierungen** auf der Registerkarte **Optimieren**, wo die Filter für die **Tägliche**, **Wöchentliche**, **Monatliche** und **Jährliche** RP-Aufbewahrung angewendet werden.

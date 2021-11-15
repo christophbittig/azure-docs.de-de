@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: automanage
 ms.workload: infrastructure
 ms.custom: mode-portal
-ms.openlocfilehash: f471ce5ca6ae4204dd3dce8ae80057b34379e52e
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ab9a6f5ff85fe0b5b2d1df4d2a3f64bb4cb21207
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131020899"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131465679"
 ---
 # <a name="quickstart-enable-azure-automanage-for-virtual-machines-in-the-azure-portal"></a>Schnellstart: Aktivieren der automatischen Azure-Verwaltung für virtuelle Computer im Azure-Portal
 
@@ -29,12 +29,12 @@ Wenn Sie kein Azure-Abonnement besitzen, [erstellen Sie ein Konto](https://azure
 > Mit kostenlosen Testkonten ist kein Zugriff auf die virtuellen Computer möglich, die in diesem Tutorial verwendet werden. Führen Sie ein Upgrade auf ein Abonnement mit nutzungsbasierter Zahlung durch.
 
 > [!IMPORTANT]
-> Sie müssen über die Rolle **Mitwirkender** für die Ressourcengruppe verfügen, die Ihre virtuellen Computer enthält, um Automanage mithilfe eines vorhandenen Automanage-Kontos zu aktivieren. Wenn Sie automatische Verwaltung mit einem neuen Konto für die automatische Verwaltung aktivieren, benötigen Sie die folgenden Berechtigungen: Rolle **Besitzer** oder **Mitwirkender** sowie Rollen vom Typ **Benutzerzugriffsadministrator** für Ihr Abonnement.
+> Sie müssen über die Rolle **Mitwirkender** für die Ressourcengruppe verfügen, die Ihre virtuellen Computer enthält, um Automanage zu aktivieren. Wenn Sie Automanage zum ersten Mal für ein Abonnement aktivieren, benötigen Sie die folgenden Berechtigungen: Rolle **Besitzer** oder **Mitwirkender** sowie Rollen vom Typ **Benutzerzugriffsadministrator** für Ihr Abonnement.
 
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
-Melden Sie sich beim [Azure-Portal](https://aka.ms/AutomanagePortal-Ignite21) an.
+Melden Sie sich beim [Azure-Portal](https://portal.azure.com)
 
 ## <a name="enable-automanage-on-existing-machines"></a>Aktivieren von Automanage auf vorhandenen Computern
 
@@ -44,7 +44,17 @@ Melden Sie sich beim [Azure-Portal](https://aka.ms/AutomanagePortal-Ignite21) an
 
     :::image type="content" source="media\quick-create-virtual-machine-portal\zero-vm-list-view.png" alt-text="Für vorhandene VM aktivieren":::
 
-3. Gehen Sie auf dem Blatt **Computer auswählen** wie folgt vor:
+4. Wählen Sie unter **Konfigurationsprofil** Ihren Profiltyp aus: **Azure Best Practices – Produktion**, **Azure Best Practices – Dev/Test** oder [**Benutzerdefiniertes Profil**](virtual-machines-custom-profile.md).
+
+    :::image type="content" source="media\quick-create-virtual-machine-portal\existing-vm-quick-create.png" alt-text="Auswählen der Umgebung":::
+
+   Klicken Sie auf **Azure Best Practices-Profile anzeigen**, um die Unterschiede zwischen den Umgebungen anzuzeigen.
+    1. Wählen Sie in der Dropdownliste eine Umgebung aus: *Dev/Test* für Tests oder *Produktion* für die Produktion.
+    1. Klicken Sie auf die Schaltfläche **OK** .
+
+    :::image type="content" source="media\quick-create-virtual-machine-portal\browse-production-profile.png" alt-text="Durchsuchen der Produktionsumgebung":::
+
+5. Gehen Sie auf dem Blatt **Computer auswählen** wie folgt vor:
     1. Filtern Sie die Liste nach Ihrem **Abonnement** und der **Ressourcengruppe**.
     1. Aktivieren Sie das Kontrollkästchen für jeden virtuellen Computer, den Sie integrieren möchten.
     1. Klicken Sie auf die Schaltfläche **Auswählen**.
@@ -53,39 +63,9 @@ Melden Sie sich beim [Azure-Portal](https://aka.ms/AutomanagePortal-Ignite21) an
 
     :::image type="content" source="media\quick-create-virtual-machine-portal\existing-vm-select-machine.png" alt-text="Auswählen eines vorhandenen virtuellen Computers aus der Liste verfügbarer virtueller Computer":::
 
-4. Wählen Sie unter **Umgebung** Ihren Umgebungstyp aus: **Dev/Test** oder **Produktion**.
-
-    :::image type="content" source="media\quick-create-virtual-machine-portal\existing-vm-quick-create.png" alt-text="Auswählen der Umgebung":::
-
-   Klicken Sie auf **Compare Environment Details** (Umgebungsdetails vergleichen), um die Unterschiede zwischen den Umgebungen anzuzeigen.
-    1. Wählen Sie in der Dropdownliste eine Umgebung aus: *Dev/Test* für Tests oder *Produktion* für die Produktion.
-    1. Klicken Sie auf die Schaltfläche **OK** .
-
-    :::image type="content" source="media\quick-create-virtual-machine-portal\browse-production-profile.png" alt-text="Durchsuchen der Produktionsumgebung":::
-
-5. Standardmäßig ist die Einstellung **Azure Best Practices** für die Konfigurationseinstellungen ausgewählt. Um dies zu ändern, erstellen Sie eine neue Voreinstellung, oder wählen Sie eine vorhandene aus.
-
-    :::image type="content" source="media\quick-create-virtual-machine-portal\create-preference.png" alt-text="Erstellen der Voreinstellung":::
 
 6. Klicken Sie auf die Schaltfläche **Aktivieren**.
 
-
-## <a name="enable-automanage-for-a-new-vm"></a>Aktivieren von Automanage für eine neue VM
-
-Melden Sie sich [hier](https://aka.ms/AzureAutomanagePreview) beim Azure-Portal an, um einen neuen virtuellen Computer zu erstellen und automatische Verwaltung zu aktivieren.
-
-1. Füllen Sie die Registerkarte **Grundlagen** mit Ihren VM-Details aus.
-
-> [!NOTE]
-> Überprüfen Sie die für Automanage [unterstützten Regionen](automanage-virtual-machines.md#supported-regions) sowie die für Automanage unterstützten [Linux-Distributionen](automanage-linux.md#supported-linux-distributions-and-versions) und [Windows Server-Versionen](automanage-windows-server.md#supported-windows-server-versions).
-
-2. Navigieren Sie zur Registerkarte **Verwaltung**, und wählen Sie Ihre **Automanage-Umgebung** aus.
-
-    :::image type="content" source="media\quick-create-virtual-machine-portal\vmcreate-managementtab.png" alt-text="„Automanage aktivieren“ auf der Registerkarte „Verwaltung“.":::
-
-3. Belassen Sie die übrigen Standardeinstellungen, und wählen Sie dann die Schaltfläche **Überprüfen + erstellen** am unteren Rand der Seite aus.
-
-4. Wenn eine Meldung über die erfolgreiche Validierung angezeigt wird, wählen Sie **Erstellen** aus.
 
 ## <a name="disable-automanage-for-vms"></a>Deaktivieren der automatischen Verwaltung für virtuelle Computer
 
@@ -114,7 +94,7 @@ Die automatische Azure-Verwaltung erstellt Standardressourcengruppen zum Speiche
 
 In dieser Schnellstartanleitung haben Sie die automatische Azure-Verwaltung für virtuelle Computer aktiviert.
 
-Erfahren Sie, wie Sie angepasste Einstellungen erstellen und anwenden können, wenn Sie die automatische Verwaltung auf virtuellen Computern aktivieren.
+Erfahren Sie, wie Sie angepasste Profile erstellen und anwenden können, wenn Sie Automanage auf virtuellen Computern aktivieren.
 
 > [!div class="nextstepaction"]
-> [Azure Automanage für VMs: benutzerdefinierte Konfigurationseinstellungen](virtual-machines-custom-preferences.md)
+> [Erstellen eines benutzerdefinierten Profils in Azure Automanage für virtuelle Computer](virtual-machines-custom-profile.md)

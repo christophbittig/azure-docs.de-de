@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 12/18/2020
+ms.date: 10/20/2021
 ms.author: jlian
-ms.openlocfilehash: 726e482f64f7d9c1513f5ce362c232e225b9ee27
-ms.sourcegitcommit: 5da0bf89a039290326033f2aff26249bcac1fe17
+ms.openlocfilehash: bd5a88bb8fc47e5f4815aea57544d6093281999b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2021
-ms.locfileid: "109712854"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130258843"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>IoT Hub-Unterstützung für virtuelle Netzwerke mit Private Link und verwalteter Identität
 
@@ -50,9 +50,9 @@ Vergewissern Sie sich, dass die folgenden Voraussetzungen erfüllt sind, bevor S
 
 Ein privater Endpunkt kann für IoT Hub-Geräte-APIs (z. B. D2C-Nachrichten) sowie Dienst-APIs (z. B. Erstellen und Aktualisieren von Geräten) verwendet werden.
 
-1. Wählen Sie im Azure-Portal **Netzwerk** und **Verbindungen mit privatem Endpunkt** aus, und klicken Sie auf **+ Privater Endpunkt**.
+1. Klicken Sie im Azure-Portal auf **Netzwerk**, dann auf **Privater Zugriff** und anschließend auf die Option **+ Privaten Endpunkt erstellen**.
 
-    :::image type="content" source="media/virtual-network-support/private-link.png" alt-text="Screenshot, der zeigt, wo ein privater Endpunkt für IoT Hub hinzugefügt wird":::
+    :::image type="content" source="media/virtual-network-support/private-link.png" alt-text="Screenshot, der zeigt, wo ein privater Endpunkt für IoT Hub hinzugefügt wird" border="true":::
 
 1. Geben Sie das Abonnement, die Ressourcengruppe, den Namen und die Region an, in der der neue private Endpunkt erstellt werden soll. Idealerweise sollte ein privater Endpunkt in der gleichen Region wie Ihr Hub erstellt werden.
 

@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie die Notfallwiederherstellung für lokale Hype
 ms.topic: tutorial
 ms.date: 03/19/2020
 ms.custom: MVC
-ms.openlocfilehash: c806f968bc6530879f64ddbf6fd4c7d45aa7a8d3
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: bc4e9066cb67617b52e9fa00a42ce95e31e0fe39
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "89442819"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131456968"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>Einrichten der Notfallwiederherstellung von lokalen Hyper-V-VMs in VMM-Clouds nach Azure
 
@@ -91,6 +91,30 @@ Konfigurieren Sie im Setup-Assistenten für den Microsoft Azure Recovery Service
 1. **Installation**: Wählen Sie nach Abschluss der Installation **Schließen** aus, um den Assistenten zu beenden.
 
    ![Agent installieren](./media/hyper-v-vmm-azure-tutorial/mars-install.png)
+
+### <a name="install-the-recovery-services-agent-on-windows-core-hyper-v-hosts"></a>Installieren des Recovery Services-Agents auf den Windows Core-Hyper-V-Hosts
+
+Installieren Sie den Agent auf jedem Windows Core-Hyper-V-Host, auf dem sich virtuelle Computer befinden, die Sie replizieren möchten.
+
+1. Erstellen Sie auf dem Windows Core-Hyper-V-Hosts ein Verzeichnis, indem Sie den folgenden Befehl ausführen:
+
+   ```powershell
+   New-Item -Path C:\ASR -ItemType Directory
+   ```
+
+2. Laden Sie das Installationsprogramm für den Microsoft Azure Recovery Services-Agent herunter.
+
+   ```powershell
+   Invoke-WebRequest -Uri <put the URI here> -OutFile .\ASR\MARSsoftware.exe
+   ```
+   
+3. Führen Sie das Installationsprogramm aus:
+
+   ```powershell
+   .\MARSsoftware.exe
+   ```
+
+4. Sobald die Installation des Microsoft Azure Recovery Services-Agents abgeschlossen ist, können Sie die Konsole des Assistenten schließen.
 
 ## <a name="set-up-the-target-environment"></a>Einrichten der Zielumgebung
 

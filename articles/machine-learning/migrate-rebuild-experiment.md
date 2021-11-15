@@ -7,13 +7,13 @@ ms.subservice: studio-classic
 ms.topic: how-to
 author: xiaoharper
 ms.author: zhanxia
-ms.date: 03/08/2021
-ms.openlocfilehash: 0a00ad012f38a142332a62846e78c2ae87460464
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.date: 10/21/2021
+ms.openlocfilehash: fd0bb1394ce2ce8b8cf8d58ece5834f08e538eaa
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "128659493"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131556196"
 ---
 # <a name="rebuild-a-studio-classic-experiment-in-azure-machine-learning"></a>Neuerstellen eines Studio (Classic)-Experiments in Azure Machine Learning
 
@@ -42,16 +42,16 @@ In Azure Machine Learning wird das visuelle Diagramm als **Pipelineentwurf** bez
 1. Wechseln Sie zu Azure Machine Learning Studio ([ml.azure.com](https://ml.azure.com)).
 1. Wählen Sie im linken Navigationsbereich die Optionen **Designer** > **Easy-to-use prebuilt modules** (Benutzerfreundliche vordefinierte Module) aus. ![Screenshot der Erstellung eines neuen Pipelineentwurfs](./media/tutorial-designer-automobile-price-train-score/launch-designer.png)
 
-1. Erstellen Sie das Experiment manuell mit Designer-Modulen neu.
+1. Erstellen Sie das Experiment manuell mit Designerkomponenten neu.
     
-    Suchen Sie in der [Modulzuordnungstabelle](migrate-overview.md#studio-classic-and-designer-module-mapping) nach Ersatzmodulen. Für viele der am häufigsten verwendeten Module von Studio (Classic) gibt es identische Versionen im Designer.
+    Suchen Sie in der [Modulzuordnungstabelle](migrate-overview.md#studio-classic-and-designer-component-mapping) nach Ersatzmodulen. Für viele der am häufigsten verwendeten Module von Studio (Classic) gibt es identische Versionen im Designer.
 
     > [!Important]
     > Wenn in Ihrem Experiment das Modul „R-Skript ausführen“ verwendet wird, müssen Sie für die Migration des Skripts zusätzliche Schritte ausführen. Weitere Informationen finden Sie unter [Migrieren von „R-Skript ausführen“-Modulen](migrate-execute-r-script.md).
 
 1. Passen Sie die Parameter an.
     
-    Wählen Sie jedes Modul aus, und passen Sie die Parameter im Bereich „Moduleinstellungen“ rechts an. Anhand der Parameter können Sie die Funktionen des Studio (Classic)-Experiments neu erstellen. Weitere Informationen zu den einzelnen Modulen finden Sie in der [Modulreferenz](./algorithm-module-reference/module-reference.md).
+    Wählen Sie jedes Modul aus, und passen Sie die Parameter im Bereich „Moduleinstellungen“ rechts an. Anhand der Parameter können Sie die Funktionen des Studio (Classic)-Experiments neu erstellen. Weitere Informationen zu den einzelnen Modulen finden Sie in der [Modulreferenz](./component-reference/component-reference.md).
 
 ## <a name="submit-a-run-and-check-results"></a>Übermitteln einer Ausführung und Überprüfen der Ergebnisse
 
@@ -86,7 +86,7 @@ Nach Abschluss der Ausführung können Sie die Ergebnisse der einzelnen Module �
     - **Protokoll anzeigen:** Treiber- und Systemprotokolle werden angezeigt. Öffnen Sie die Datei **70_driver_log**, um Informationen zum vom Benutzer übermittelten Skript anzuzeigen, z. B. Fehler und Ausnahmen.
 
 > [!IMPORTANT]
-> In Designer-Modulen werden Open-Source-Pakete in Python verwendet, in Studio (Classic) dagegen C#-Pakete. Daher kann die Modulausgabe im Designer von der in Studio (Classic) abweichen. 
+> In Designerkomponenten werden Open-Source-Pakete in Python verwendet, in Studio (Classic) dagegen C#-Pakete. Daher kann die Modulausgabe im Designer von der in Studio (Classic) abweichen. 
 
 
 ## <a name="next-steps"></a>Nächste Schritte

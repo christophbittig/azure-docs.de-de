@@ -1,14 +1,14 @@
 ---
 title: Mandantenübergreifende Verwaltungsmöglichkeiten
 description: Azure Lighthouse ermöglicht und verbessert mandantenübergreifende Funktionen in vielen Azure-Diensten.
-ms.date: 09/30/2021
+ms.date: 10/21/2021
 ms.topic: conceptual
-ms.openlocfilehash: 90ff0396a467f3137d6501ac34cf707577e43bdf
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 115f71148ddd2d18cd99be883bdef77b1c27ad1b
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129714789"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130249683"
 ---
 # <a name="cross-tenant-management-experiences"></a>Mandantenübergreifende Verwaltungsmöglichkeiten
 
@@ -103,6 +103,7 @@ Die meisten Aufgaben und Dienste können auf delegierten Ressourcen über verwal
 - Erstellen von Warnungen in Kundenmandanten, die eine Automatisierung auslösen, wie z. B. Azure Automation-Runbooks oder Azure Functions im verwaltenden Mandanten über Webhooks
 - Erstellen von [Diagnoseeinstellungen](../..//azure-monitor/essentials/diagnostic-settings.md) in Arbeitsbereichen in Kundenmandanten zum Senden von Ressourcenprotokollen an Arbeitsbereiche im verwaltenden Mandanten
 - Für SAP-Workloads sollten Sie [die Metriken von SAP-Lösungen mit einer aggregierten Sicht über Kundenmandanten hinweg überwachen](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/using-azure-lighthouse-and-azure-monitor-for-sap-solutions-to/ba-p/1537293).
+- Leiten Sie [Anmelde- und Überwachungsprotokolle](../../active-directory-b2c/azure-monitor.md) für Azure AD B2C an verschiedene Überwachungslösungen weiter.
 
 [Azure-Netzwerkoptionen](../../networking/fundamentals/networking-overview.md):
 

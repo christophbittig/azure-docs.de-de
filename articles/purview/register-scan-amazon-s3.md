@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 09/27/2021
 ms.custom: references_regions
-ms.openlocfilehash: 754f3671734125a47f633876e31e39f72dcbaa7d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 86f0296ced4846dce7ec4be0d5b503d343d060bc
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131076678"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131848114"
 ---
 # <a name="amazon-s3-multi-cloud-scanning-connector-for-azure-purview"></a>Amazon S3 Multi-Cloud Scanning Connector für Azure Purview
 
@@ -22,6 +22,14 @@ Mit dem Multi-Cloud Scanning Connector für Azure Purview können Sie Ihre Organ
 In diesem Artikel erfahren Sie, wie Sie Azure Purview verwenden, um Ihre derzeit in Amazon S3-Standardbuckets gespeicherten unstrukturierten Daten zu überprüfen, und zu ermitteln, welche Typen vertraulicher Informationen in Ihren Daten vorhanden sind. In diesem Leitfaden wird außerdem beschrieben, wie Sie die Amazon S3-Buckets identifizieren, in denen die Daten derzeit gespeichert sind, um Information Protection und Datencompliance zu vereinfachen.
 
 Verwenden Sie für diesen Dienst Purview, um ein Microsoft-Konto mit sicherem Zugriff auf AWS bereitzustellen, wo der Multi-Cloud Scanning Connector für Azure Purview ausgeführt wird. Der Multi-Cloud Scanning Connector für Azure Purview verwendet diesen Zugriff auf Ihre Amazon S3-Buckets, um Ihre Daten zu lesen, und meldet dann die Überprüfungsergebnisse, nur einschließlich der Metadaten und der Klassifizierung, zurück an Azure. Verwenden Sie die Purview-Klassifizierungs- und -Beschriftungsberichte, um die Ergebnisse Ihrer Datenüberprüfungen zu analysieren und zu prüfen.
+
+## <a name="supported-capabilities"></a>Unterstützte Funktionen
+
+|**Metadatenextrahierung**|  **Vollständige Überprüfung**  |**Inkrementelle Überprüfung**|**Bereichsbezogene Überprüfung**|**Klassifizierung**|**Zugriffsrichtlinie**|**Herkunft**|
+|---|---|---|---|---|---|---|
+| Ja | Ja | Ja | Ja | Ja | Nein | Eingeschränkt** |
+
+\** Herkunft wird unterstützt, wenn das Dataset als Quelle/Senke in der [Data Factory Copy-Aktivität](how-to-link-azure-data-factory.md) verwendet wird. 
 
 > [!IMPORTANT]
 > Der Multi-Cloud Scanning Connector für Azure Purview ist ein separates Add-On zu Azure Purview. Die Geschäftsbedingungen für den Multi-Cloud Scanning Connector für Azure Purview sind in der Vereinbarung enthalten, unter der Sie Microsoft Azure-Dienste erworben haben. Weitere Informationen finden Sie unter „Rechtliche Hinweise zu Microsoft Azure“ (https://azure.microsoft.com/support/legal/ ).

@@ -9,24 +9,24 @@ ms.topic: how-to
 ms.workload: infrastructure
 ms.date: 06/21/2021
 ms.author: cynthn
-ms.openlocfilehash: 908d4ae4a18ac75577ea567f6aba37c9ea2e49fe
-ms.sourcegitcommit: 43dbb8a39d0febdd4aea3e8bfb41fa4700df3409
+ms.openlocfilehash: 515d836e9b36a1fb20a712ab30a561ff68e3f715
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123450492"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131424664"
 ---
-# <a name="create-a-shared-image-gallery-using-the-portal"></a>Erstellen einer Shared Image Gallery-Instanz über das Portal
+# <a name="create-an-azure-compute-gallery-using-the-portal"></a>Erstellen einer Azure Compute Gallery-Instanz über das Portal
 
 **Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Flexible Skalierungsgruppen **Gilt für**: :heavy_check_mark: :heavy_check_mark: Einheitliche Skalierungsgruppen 
 
-Der [Katalog mit freigegebenen Images](../shared-image-galleries.md) vereinfacht das Freigeben benutzerdefinierter Images in Ihrer Organisation. Benutzerdefinierte Images sind wie Marketplace-Images, Sie erstellen sie jedoch selbst. Benutzerdefinierte Images können zum Laden von Bereitstellungsaufgaben verwendet werden, z.B. zum Vorabladen von Anwendungen sowie für Anwendungskonfigurationen und andere Betriebssystemkonfigurationen. 
+Eine [Azure Compute Gallery](../shared-image-galleries.md) vereinfacht das Freigeben benutzerdefinierter Images in Ihrer Organisation. Benutzerdefinierte Images sind wie Marketplace-Images, Sie erstellen sie jedoch selbst. Benutzerdefinierte Images können zum Laden von Bereitstellungsaufgaben verwendet werden, z.B. zum Vorabladen von Anwendungen sowie für Anwendungskonfigurationen und andere Betriebssystemkonfigurationen. 
 
-Shared Image Gallery gestattet es Ihnen, Ihre benutzerdefinierten VM-Images mit anderen Personen in Ihrer Organisation, innerhalb einer Region oder zwischen Regionen, innerhalb eines Azure AD-Mandanten zu teilen. Wählen Sie aus, welche Images Sie teilen möchten, in welchen Regionen Sie sie verfügbar machen möchten, und mit wem Sie sie teilen möchten. Sie können mehrere Kataloge erstellen, damit Sie geteilte Images logisch gruppieren können. 
+Mit der Azure Compute Gallery können Sie ihre benutzerdefinierten Images der virtuellen Computer für andere Personen in Ihrer Organisation, innerhalb eines Azure AD-Mandanten, innerhalb einer Region oder zwischen den Regionen freigeben. Wählen Sie aus, welche Images Sie teilen möchten, in welchen Regionen Sie sie verfügbar machen möchten, und mit wem Sie sie teilen möchten. Sie können mehrere Kataloge erstellen, damit Sie die Images logisch gruppieren können. 
 
 Der Katalog ist eine Ressource der obersten Ebene, die vollständige rollenbasierte Zugriffssteuerung in Azure (RBAC) bereitstellt. Images bieten Versionsverwaltung, und Sie können sich entschließen, jede Imageversion in eine andere Gruppe von Azure-Regionen zu replizieren. Der Katalog funktioniert nur mit verwalteten Images.
 
-Die Funktion „Katalog mit freigegebenen Images“ verfügt über mehrere Ressourcentypen. Wir werden diese in diesem Artikel verwenden oder erstellen:
+Die Funktion „Azure Compute Gallery“ verfügt über mehrere Ressourcentypen. Wir werden diese in diesem Artikel verwenden oder erstellen:
 
 
 [!INCLUDE [virtual-machines-shared-image-gallery-resources](../includes/virtual-machines-shared-image-gallery-resources.md)]
@@ -70,10 +70,10 @@ Wenn Sie einzelne Ressourcen löschen möchten, müssen Sie diese in umgekehrter
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie können auch mithilfe von Vorlagen eine Ressource im Katalog für freigegebene Images erstellen. Es stehen mehrere Azure-Schnellstartvorlagen zur Verfügung: 
+Sie können auch mithilfe von Vorlagen eine Ressource in der Azure Compute Gallery erstellen. Es stehen mehrere Azure-Schnellstartvorlagen zur Verfügung: 
 
-- [Erstellen eines Katalogs mit freigegebenen Images](https://azure.microsoft.com/resources/templates/sig-create/)
-- [Erstellen einer Imagedefinition in einem Katalog mit freigegebenen Images](https://azure.microsoft.com/resources/templates/sig-image-definition-create/)
-- [Erstellen einer Imageversion in einem Katalog mit freigegebenen Images](https://azure.microsoft.com/resources/templates/sig-image-version-create/)
+- [Erstellen einer Azure Compute Gallery](https://azure.microsoft.com/resources/templates/sig-create/)
+- [Erstellen einer Imagedefinition in einer Azure Compute Gallery](https://azure.microsoft.com/resources/templates/sig-image-definition-create/)
+- [Erstellen einer Imageversion in einer Azure Compute Gallery](https://azure.microsoft.com/resources/templates/sig-image-version-create/)
 
-Weitere Informationen zu Katalogen mit geteilten Images finden Sie in der [Übersicht](../shared-image-galleries.md). Sollten Probleme auftreten, sehen Sie unter [Problembehandlung für Kataloge mit freigegebenen Images](../troubleshooting-shared-images.md) nach.
+Weitere Informationen über Azure Compute Gallery-Kataloge finden Sie in der [Übersicht](../shared-image-galleries.md). Sollten Probleme auftreten, sehen Sie unter [Problembehandlung für Kataloge](../troubleshooting-shared-images.md) nach.

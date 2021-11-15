@@ -9,12 +9,12 @@ ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: mimckitt
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 1da552c76b1a76a4bc131b15e25021264c2d869f
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 1c0ba3a58906275d136a437f3b18d32e3fe70a24
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122692878"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131456782"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-azure-powershell"></a>Tutorial: Erstellen und Verwenden eines benutzerdefinierten Images für VM-Skalierungsgruppen mit Azure PowerShell
 
@@ -23,7 +23,7 @@ ms.locfileid: "122692878"
 Wenn Sie eine Skalierungsgruppe erstellen, geben Sie ein Image an, das beim Bereitstellen der VM-Instanzen verwendet wird. Sie können ein benutzerdefiniertes VM-Image verwenden, um die Anzahl von Aufgaben zu reduzieren, nachdem VM-Instanzen bereitgestellt wurden. Dieses benutzerdefinierte VM-Image enthält alle erforderlichen Anwendungsinstallationen oder -konfigurationen. Für alle VM-Instanzen, die in der Skalierungsgruppe erstellt werden, wird das benutzerdefinierte VM-Image verwendet, und die VM-Instanzen sind für die Bereitstellung Ihres Anwendungsdatenverkehrs bereit. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Erstellen einer Shared Image Gallery-Instanz
+> * Erstellen einer Azure Compute Gallery-Instanz
 > * Erstellen einer Imagedefinition
 > * Erstellen einer Imageversion
 > * Erstellen einer Skalierungsgruppe aus einem Image 
@@ -76,7 +76,7 @@ $gallery = New-AzGallery `
    -GalleryName 'myGallery' `
    -ResourceGroupName $resourceGroup.ResourceGroupName `
    -Location $resourceGroup.Location `
-   -Description 'Shared Image Gallery for my organization'  
+   -Description 'Azure Compute Gallery for my organization' 
 ```
 
 
@@ -264,7 +264,7 @@ Azure bietet darüber hinaus den auf Packer basierenden Dienst [Azure VM Image B
 In diesem Tutorial wurde beschrieben, wie Sie ein benutzerdefiniertes VM-Image für Ihre Skalierungsgruppen mit Azure PowerShell erstellen und verwenden:
 
 > [!div class="checklist"]
-> * Erstellen einer Shared Image Gallery-Instanz
+> * Erstellen einer Azure Compute Gallery-Instanz
 > * Erstellen einer Imagedefinition
 > * Erstellen einer Imageversion
 > * Erstellen einer Skalierungsgruppe aus einem Image 

@@ -3,17 +3,17 @@ title: Reservierte Azure EA-VM-Instanzen
 description: In diesem Artikel erfahren Sie, wie Azure-Reservierungen für reservierte VM-Instanzen zur Senkung der Kosten für Ihre Unternehmensregistrierung beitragen können.
 author: bandersmsft
 ms.author: banders
-ms.date: 05/17/2021
+ms.date: 10/22/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
-ms.reviewer: boalcsva
-ms.openlocfilehash: 0378e05d8d606d04b90ca20aa3e0399132e9f0ef
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.reviewer: sapnakeshari
+ms.openlocfilehash: feac3cf4e2418fc7d85ab3cdebbba1d08b112e95
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110095840"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130250063"
 ---
 # <a name="azure-ea-vm-reserved-instances"></a>Reservierte Azure EA-VM-Instanzen
 
@@ -28,6 +28,8 @@ Sie können eine Reservierung gegen eine andere Reservierung des gleichen Typs u
 Wir führen eine Teilrückerstattung durch, wenn von EA-Kunden Reservierungen zurückgegeben werden, die aufgrund einer Überschreitung und nicht basierend auf der Azure-Vorauszahlung (zuvor als „Mindestverbrauch“ bezeichnet) erworben wurden
 
 Die Rückerstattung wird im EA Portal als negative Anpassung im vorherigen Monat und positive Anpassung im aktuellen Monat angezeigt. Diese Anzeige ähnelt einem Austausch von Reservierungen. In der Gutschrift ist die Nummer der ursprünglichen Rechnung angegeben. Verwenden Sie beim Abstimmen des ursprünglichen Kaufs mit der Gutschrift daher diese ursprüngliche Rechnungsnummer.
+
+Direkte Enterprise-Kunden können die Rückerstattungsdetails im Azure-Portal anzeigen. Navigieren Sie zum Menü **Reservierungstransaktionen**, um die Reservierungserstattung anzuzeigen.
 
 ## <a name="reservation-costs-and-usage"></a>Reservierungskosten und Nutzung
 

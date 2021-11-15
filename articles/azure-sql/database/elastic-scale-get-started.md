@@ -10,13 +10,13 @@ ms.topic: how-to
 author: scoriani
 ms.author: scoriani
 ms.reviewer: mathoma
-ms.date: 01/25/2019
-ms.openlocfilehash: 316f1c6558cf033ac315f413f4e081b4f920343b
-ms.sourcegitcommit: 20acb9ad4700559ca0d98c7c622770a0499dd7ba
+ms.date: 10/18/2021
+ms.openlocfilehash: a27957a289f3ab94e0c55462715a668b9f85e215
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/29/2021
-ms.locfileid: "110705544"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130239506"
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Erste Schritte mit Tools für elastische Datenbanken
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -89,7 +89,7 @@ Gehen Sie folgendermaßen vor, um das Beispiel herunterzuladen und auszuführen:
 
 3. Legen Sie das Projekt *ElasticScaleStarterKit* als Startprojekt fest.
 
-4. Öffnen Sie im Projekt *ElasticScaleStarterKit* die Datei *App.config*. Folgen Sie dann den Anweisungen in der Datei, um den Namen Ihres Servers und Ihre Anmeldeinformationen (Benutzername und Kennwort) hinzuzufügen.
+4. Öffnen Sie im Projekt *ElasticScaleStarterKit* die Datei *App.config*. Befolgen Sie dann die Anweisungen in der Datei, um den Namen Ihres Servers und Ihre Anmeldeinformationen (Benutzername und Kennwort) hinzuzufügen.
 
 5. Erstellen Sie die Anwendung, und führen Sie sie aus. Wenn Sie dazu aufgefordert werden, lassen Sie die NuGet-Pakete der Projektmappe von Visual Studio wiederherstellen. Dadurch wird die aktuelle Version der Clientbibliothek für elastische Datenbanken von NuGet heruntergeladen.
 
@@ -135,7 +135,6 @@ Weitere Informationen zu den Tools für elastische Datenbanken finden Sie in den
   * [Tools für elastische Datenbanken für Azure SQL – Entity Framework-Integration](https://code.msdn.microsoft.com/Elastic-Scale-with-Azure-bae904ba?SRC=VSIDE)
   * [Shard-Elastizität im Script Center](https://gallery.technet.microsoft.com/scriptcenter/Elastic-Scale-Shard-c9530cbe)
 * Blog: [Ankündigung der elastischen Skalierung](https://azure.microsoft.com/blog/20../../introducing-elastic-scale-preview-for-azure-sql-database/) (in englischer Sprache)
-* Channel 9: [Übersichtsvideo zur elastischen Skalierung](https://channel9.msdn.com/Shows/Data-Exposed/Azure-SQL-Database-Elastic-Scale) (in englischer Sprache)
 * Diskussionsforum: [Microsoft F&A-Seite für Azure SQL-Datenbank](/answers/topics/azure-sql-database.html)
 * Messen der Leistung: [Leistungsindikatoren für den Shardzuordnungs-Manager](elastic-database-client-library.md)
 

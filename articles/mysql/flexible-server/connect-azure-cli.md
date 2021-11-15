@@ -7,19 +7,16 @@ ms.service: mysql
 ms.custom: mvc, devx-track-azurecli
 ms.topic: quickstart
 ms.date: 03/01/2021
-ms.openlocfilehash: b27fb9ec4ff24cd53906b304db1f32655380fc66
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 26c25afc997ee86f0fe23f944ae5afad34269e92
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "128595780"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131468117"
 ---
 # <a name="quickstart-connect-and-query-with-azure-cli--with-azure-database-for-mysql---flexible-server"></a>Schnellstart: Verbinden und Abfragen mit der Azure CLI mit Azure Database for MySQL Flexible Server
 
 [[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
-> [!IMPORTANT]
-> Azure Database for MySQL Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
 
 In dieser Schnellstartanleitung wird gezeigt, wie Sie sich mit der Azure CLI über ```az mysql flexible-server connect``` mit einer Instanz von Azure Database for MySQL Flexible Server verbinden und mit dem Befehl ```az mysql flexible-server execute``` eine einzelne Abfrage oder SQL-Datei ausführen. Mit diesem Befehl können Sie die Konnektivität mit dem Datenbankserver testen und Abfragen ausführen. Sie können mithilfe des interaktiven Modus auch mehrere Abfragen ausführen.
 
@@ -29,10 +26,10 @@ In dieser Schnellstartanleitung wird gezeigt, wie Sie sich mit der Azure CLI üb
 
     [!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
 - Installieren der aktuellen Version der [Azure CLI](/cli/azure/install-azure-cli) (mindestens 2.20.0)
-- Anmelden unter Verwendung der Azure CLI mit dem Befehl ```az login``` 
+- Anmelden unter Verwendung der Azure CLI mit dem Befehl ```az login```
 - Aktivieren der Parameterpersistenz mit ```az config param-persist on```. Mithilfe der Parameterpersistenz können Sie den lokalen Kontext verwenden, ohne zahlreiche Argumente wie Ressourcengruppe, Speicherort usw. wiederholen zu müssen.
 
-## <a name="create-an-mysql-flexible-server"></a>Erstellen einer MySQL Flexible Server-Instanz
+## <a name="create-a-mysql-flexible-server"></a>Erstellen einer MySQL Flexible Server-Instanz
 
 Das erste, was wir erstellen, ist ein verwalteter MySQL-Server. Führen Sie in [Azure Cloud Shell](https://shell.azure.com/) das folgende Skript aus, und notieren Sie sich den **Servernamen**, den **Benutzernamen** und das **Kennwort**, die mit diesem Befehl generiert werden.
 
@@ -50,7 +47,7 @@ az mysql flexible-server db create -d newdatabase
 ```
 
 ## <a name="view-all-the-arguments"></a>Anzeigen aller Argumente
-Sie können alle Argumente für diesen Befehl mit dem Argument ```--help``` anzeigen. 
+Sie können alle Argumente für diesen Befehl mit dem Argument ```--help``` anzeigen.
 
 ```azurecli
 az mysql flexible-server connect --help
@@ -164,7 +161,7 @@ Sie können eine SQL-Datei mit dem Befehl mit dem ```--file-path```-Argument ```
 az mysql flexible-server execute -n <server-name> -u <username> -p "<password>" -d <database-name> --file-path "<file-path>"
 ```
 
-**Beispiel:** 
+**Beispiel:**
 ```azurecli
 az mysql flexible-server execute -n mysqldemoserver -u dbuser -p "dbpassword" -d flexibleserverdb -f "./test.sql"
 ```

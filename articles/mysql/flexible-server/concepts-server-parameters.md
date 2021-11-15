@@ -6,23 +6,20 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/10/2020
-ms.openlocfilehash: 43f544cb2782fc80dd574a1d8c425283c51a0ed3
-ms.sourcegitcommit: 2eac9bd319fb8b3a1080518c73ee337123286fa2
+ms.openlocfilehash: 59bb5a6a2a544eb72d1438c38ad3040c2ac43476
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/31/2021
-ms.locfileid: "123256481"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131468364"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql---flexible-server"></a>Serverparameter in Azure Database for MySQL – Flexibler Server
 
-[[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
-
-> [!IMPORTANT]
-> Azure Database for MySQL Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
+[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 Dieser Artikel enthält Überlegungen und Richtlinien zur Konfiguration von Serverparametern in Azure Database for MySQL – Flexibler Server.
 
-## <a name="what-are-server-variables"></a>Was sind Servervariablen? 
+## <a name="what-are-server-variables"></a>Was sind Servervariablen?
 
 Die MySQL-Engine bietet viele verschiedene [Servervariablen/-parameter](https://dev.mysql.com/doc/refman/5.7/en/server-option-variable-reference.html), die zur Konfiguration und Optimierung des Engine-Verhaltens verwendet werden können. Einige der Parameter können dynamisch während der Laufzeit festgelegt werden, während andere „statisch“ sind und ihre Anwendung einen Neustart des Servers erfordert.
 
@@ -37,15 +34,15 @@ Die Liste der unterstützten Serverparameter wächst ständig. Sie können die v
 In den folgenden Abschnitten erfahren Sie mehr über die Grenzen der verschiedenen häufig aktualisierten Serverparameter. Die Grenzwerte werden durch den Computetarif und die Größe der virtuellen Kerne des Servers bestimmt.
 
 > [!NOTE]
-> Wenn Sie einen Serverparameter ändern möchten, der nicht änderbar ist, in Ihrer Umgebung aber möglichst geändert werden sollte, öffnen Sie einen [UserVoice](https://feedback.azure.com/forums/597982-azure-database-for-mysql)-Beitrag oder geben Ihre Stimme ab, wenn bereits Feedback gegeben wurde. So helfen Sie uns bei der Priorisierung.
+> Wenn Sie einen Serverparameter ändern möchten, der nicht änderbar ist, in Ihrer Umgebung aber möglichst geändert werden sollte, öffnen Sie einen [UserVoice](https://feedback.azure.com/d365community/forum/47b1e71d-ee24-ec11-b6e6-000d3a4f0da0)-Beitrag oder geben Ihre Stimme ab, wenn bereits Feedback gegeben wurde. So helfen Sie uns bei der Priorisierung.
 
 ### <a name="log_bin_trust_function_creators"></a>log_bin_trust_function_creators
 
-In Azure Database for MySQL – Flexibler Server sind binäre Protokolle immer aktiviert (d. h., `log_bin` ist auf ON festgelegt). log_bin_trust_function_creators ist in flexiblen Servern standardmäßig auf ON festgelegt. 
+In Azure Database for MySQL – Flexibler Server sind binäre Protokolle immer aktiviert (d. h., `log_bin` ist auf ON festgelegt). log_bin_trust_function_creators ist in flexiblen Servern standardmäßig auf ON festgelegt.
 
 Das Format für binäre Protokollierung ist immer **ROW** (Zeile), und für alle Verbindungen mit dem Server wird **IMMER** die zeilenbasierte binäre Protokollierung verwendet. Bei der zeilenbasierten binären Protokollierung gibt es keine Sicherheitsprobleme, und die binäre Protokollierung kann nicht unterbrochen werden, sodass [`log_bin_trust_function_creators`](https://dev.mysql.com/doc/refman/5.7/en/replication-options-binary-log.html#sysvar_log_bin_trust_function_creators) sicher auf **ON** bleiben kann.
 
-Wenn [`log_bin_trust_function_creators`] auf OFF gesetzt ist, und Sie versuchen, Trigger zu erstellen, erhalten Sie möglicherweise eine Fehlermeldung wie *Sie verfügen nicht über die SUPER-Berechtigung, und die binäre Protokollierung ist aktiviert (es kann ratsam sein, die weniger sichere Variable `log_bin_trust_function_creators` zu verwenden)* . 
+Wenn [`log_bin_trust_function_creators`] auf OFF gesetzt ist, und Sie versuchen, Trigger zu erstellen, erhalten Sie möglicherweise eine Fehlermeldung wie *Sie verfügen nicht über die SUPER-Berechtigung, und die binäre Protokollierung ist aktiviert (es kann ratsam sein, die weniger sichere Variable `log_bin_trust_function_creators` zu verwenden)* .
 
 ### <a name="innodb_buffer_pool_size"></a>innodb_buffer_pool_size
 
@@ -77,9 +74,18 @@ MySQL speichert die InnoDB-Tabelle in verschiedenen Tabellenbereichen, basierend
 
 Azure Database for MySQL – Flexibler Server unterstützt bis zu **4 TB** in einer einzelnen Datendatei. Wenn die Datenbankgröße 4 TB überschreitet, sollten Sie die Tabelle im Tabellenbereich [innodb_file_per_table](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_file_per_table) erstellen. Wenn eine einzelne Tabelle größer als 4 TB ist, sollten Sie die Partitionstabelle verwenden.
 
+### <a name="innodb_log_file_size"></a>innodb_log_file_size
+
+[innodb_log_file_size](https://dev.mysql.com/doc/refman/8.0/en/innodb-parameters.html#sysvar_innodb_log_file_size) ist die Größe in Bytes jeder [Protokolldatei](https://dev.mysql.com/doc/refman/8.0/en/glossary.html#glos_log_file) in einer [Protokollgruppe](https://dev.mysql.com/doc/refman/8.0/en/glossary.html#glos_log_group). Die kombinierte Größe der Protokolldateien [(innodb_log_file_size](https://dev.mysql.com/doc/refman/8.0/en/innodb-parameters.html#sysvar_innodb_log_file_size) * [innodb_log_files_in_group](https://dev.mysql.com/doc/refman/8.0/en/innodb-parameters.html#sysvar_innodb_log_files_in_group)) darf einen Maximalwert von etwas weniger als 512 GB nicht überschreiten. Eine größere Protokolldateigröße ist für die Leistung besser, hat jedoch den Nachteil, dass die Wiederherstellungszeit nach einem Absturz hoch ist. Sie müssen zwischen der Wiederherstellungszeit im seltenen Fall einer Absturzwiederherstellung und der Maximierung des Durchsatzes während Spitzenvorgängen abwägen. Dies kann auch zu längeren Neustartzeiten führen. Sie können „ innodb_log_size“ auf jeden dieser Werte konfigurieren: 256 MB, 512 MB, 1 GB oder 2 GB für Azure Database für MySQL – Flexibler Server. Der Parameter ist statisch und erfordert einen Neustart.
+
+> [!NOTE]
+> Wenn Sie den Parameter „innodb_log_file_size“ vom Standardwert geändert haben, überprüfen Sie, ob der Wert von „show global status like“ wie „innodb_buffer_pool_pages_dirty“ dreißig Sekunden lang auf 0 bleibt, um eine Verzögerung des Neustarts zu vermeiden.
+
+
+
 ### <a name="max_connections"></a>max_connections
 
-Der Wert von max_connections wird durch die Speichergröße des Servers bestimmt. 
+Der Wert von max_connections wird durch die Speichergröße des Servers bestimmt.
 
 |**Tarif**|**vCore(s)**|**Arbeitsspeichergröße (GiB)**|**Standardwert**|**Mindestwert**|**Höchstwert**|
 |---|---|---|---|---|---|
@@ -114,7 +120,7 @@ Das Erstellen neuer Clientverbindungen mit MySQL nimmt Zeit in Anspruch, und nac
 
 ### <a name="innodb_strict_mode"></a>innodb_strict_mode
 
-Wenn ein Fehler wie „Zeile zu groß (> 8126)“ angezeigt wird, sollten Sie den Parameter **innodb_strict_mode** auf OFF festlegen. Der Serverparameter **innodb_strict_mode** darf nicht global auf der Serverebene geändert werden, da die Daten bei Überschreitung einer Zeilendatengröße von 8.000 ohne Fehlermeldung gekürzt werden, was zu Datenverlusten führen kann. Es wird empfohlen, das Schema so zu ändern, dass es der Seitengrößenbeschränkung entspricht. 
+Wenn ein Fehler wie „Zeile zu groß (> 8126)“ angezeigt wird, sollten Sie den Parameter **innodb_strict_mode** auf OFF festlegen. Der Serverparameter **innodb_strict_mode** darf nicht global auf der Serverebene geändert werden, da die Daten bei Überschreitung einer Zeilendatengröße von 8.000 ohne Fehlermeldung gekürzt werden, was zu Datenverlusten führen kann. Es wird empfohlen, das Schema so zu ändern, dass es der Seitengrößenbeschränkung entspricht.
 
 Dieser Parameter kann mithilfe von `init_connect` auf Sitzungsebene festgelegt werden. Informationen zum Festlegen von **innodb_strict_mode** auf Sitzungsebene finden Sie [Nicht aufgeführte Einstellungsparameter](./how-to-configure-server-parameters-portal.md#setting-non-modifiable-server-parameters).
 

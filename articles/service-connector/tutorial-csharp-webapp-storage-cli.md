@@ -7,12 +7,12 @@ ms.service: serviceconnector
 ms.topic: tutorial
 ms.date: 10/28/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 11c04c9a513e454e8a9296c00b716a154b5bc541
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 6a1e887b9cbab6c8393dacf83a0e148ba257630d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131029620"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131452621"
 ---
 # <a name="tutorial-deploy-web-application-connected-to-azure-storage-blob-with-service-connector"></a>Tutorial: Bereitstellen einer Webanwendung, die mit Azure Storage Blob verbunden ist, mithilfe des Dienstconnectors
 
@@ -92,6 +92,8 @@ az webapp connection create storage-blob -g ServiceConnector-tutorial-rg -n <app
 - **Ersetzen** Sie *\<app-name>* durch den Namen Ihrer Web-App, die Sie in Schritt 3 verwendet haben.
 - **Ersetzen** Sie *\<storage-name>* durch den Namen Ihrer Speicher-App, die Sie in Schritt 4 verwendet haben.
 
+> [!NOTE]
+> Wird die Fehlermeldung „Das Abonnement ist nicht für die Verwendung des Ressourcenanbieters "{0}" registriert.“ angezeigt, führen Sie `az provider register -n Microsoft.ServiceLinker` aus, um den Dienstconnector-Ressourcenanbieter zu registrieren. Führen Sie anschließend erneut den Verbindungsbefehl aus. 
 
 ## <a name="6-run-sample-code"></a>6. Ausführen des Beispielcodes
 

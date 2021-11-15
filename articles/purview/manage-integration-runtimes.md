@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 10/22/2021
-ms.openlocfilehash: d939af34afba8a240b4edc2ee1a3b0ed145b62ff
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 446943d4632ab6f659480574b7b0eb3db2bc9dcf
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131503122"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131853090"
 ---
 # <a name="create-and-manage-a-self-hosted-integration-runtime"></a>Erstellen und Verwalten einer selbstgehosteten Integration Runtime
 
@@ -20,9 +20,6 @@ In diesem Artikel wird beschrieben, wie Sie eine selbstgehostete Integration Run
 
 > [!NOTE]
 > Die Purview-Integration Runtime kann nicht zusammen mit einer Azure Synapse Analytics- oder Azure Data Factory-Integration Runtime auf demselben Computer verwendet werden. Sie muss auf einem separaten Computer installiert werden.
-
-> [!IMPORTANT]
-> Wenn Sie Ihr Azure Purview-Konto nach dem 18. August 2021 erstellt haben, stellen Sie sicher, dass Sie die neueste Version der selbstgehosteten Integration Runtime aus dem [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=39717) herunterladen und installieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

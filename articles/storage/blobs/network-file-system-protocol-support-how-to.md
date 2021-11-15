@@ -9,12 +9,12 @@ ms.date: 06/21/2021
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 54d406303019ebfa967133c26bd5487c848575b2
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 6b22b99cdd883ed8dedb90f925a918fe9c25d9bb
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128664882"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131444874"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol"></a>Einbinden von Azure Blob Storage mithilfe des NFS 3.0-Protokolls (Network File System)
 
@@ -100,7 +100,7 @@ Erstellen Sie ein Verzeichnis auf Ihrem Linux-System, und binden Sie dann einen 
 |Fehler | Ursache/Lösung|
 |---|---|
 |`Access denied by server while mounting`|Stellen Sie sicher, dass der Client in einem unterstützten Subnetz ausgeführt wird. Siehe [Unterstützte Netzwerkadressen](network-file-system-protocol-support.md#supported-network-connections).|
-|`No such file or directory`| Sie müssen den Befehl zum Einbinden und die zugehörigen Parameter direkt im Terminal eingeben. Wenn Sie diesen Befehl oder einen Teil davon aus einer anderen Anwendung kopieren und in das Terminal einfügen, kann dies dazu führen, dass ausgeblendete Zeichen in den eingefügten Informationen diesen Fehler verursachen.|
+|`No such file or directory`| Sie müssen den Befehl zum Einbinden und die zugehörigen Parameter direkt im Terminal eingeben. Wenn Sie diesen Befehl oder einen Teil davon aus einer anderen Anwendung kopieren und in das Terminal einfügen, kann dies dazu führen, dass ausgeblendete Zeichen in den eingefügten Informationen diesen Fehler verursachen. Dieser Fehler kann auch auftreten, wenn das Konto nicht für NFS 3.0 aktiviert ist. |
 |`Permision denied`| Der Standardmodus eines neu erstellten NFS v3-Containers ist 0750. Nicht-Root-Benutzer haben keinen Zugriff auf das Volume. Wenn ein Zugriff von Nicht-Root-Benutzern erforderlich ist, muss der Root-Benutzer den Modus in 0755 ändern. Beispiel für einen Befehl: `sudo chmod 0755 /mnt/<newcontainer>`|
 |`EINVAL ("Invalid argument"`) |Dieser Fehler kann auftreten, wenn ein Client versucht, folgende Aktionen durchzuführen:<li>Schreiben in ein Blob, das von einem Blobendpunkt erstellt wurde.<li>Löschen eines Blobs, das über eine Momentaufnahme verfügt oder sich in einem Container befindet, der eine aktive WORM-Richtlinie (Write Once, Read Many) aufweist.|
 |`EROFS ("Read-only file system"`) |Dieser Fehler kann auftreten, wenn ein Client versucht, folgende Aktionen durchzuführen:<li>Schreiben in ein Blob oder Löschen ein Blobs, das über eine aktive Lease verfügt.<li>Schreiben in ein Blob oder Löschen eines Blobs in einem Container, der eine aktive WORM-Richtlinie (Write Once, Read Many) aufweist. |

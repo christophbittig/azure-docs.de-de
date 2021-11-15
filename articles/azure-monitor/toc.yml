@@ -12,39 +12,26 @@
       href: whats-new.md
     - name: Migrieren von Operations Manager
       href: azure-monitor-operations-manager.md
-- name: Schnellstarts
+- name: Lernprogramme
   items:
     - name: Überwachen einer Azure-Ressource
-      href: essentials/quick-monitor-azure-resource.md
-    - name: Senden eines Aktivitätsprotokolls an einen Arbeitsbereich
-      items:
-        - name: Azure-Portal
-          href: essentials/quick-collect-activity-log-portal.md
-        - name: ARM-Vorlage
-          displayName: Resource Manager
-          href: essentials/quick-collect-activity-log-arm.md
-    - name: Überwachen von Anwendungen
-      items:
-        - name: ASP.NET Core-Anwendung
-          href: app/dotnet-quickstart.md
-        - name: Node.js-Anwendung
-          href: app/nodejs-quick-start.md
-        - name: Mobile Anwendung
-          href: app/mobile-center-quickstart.md
-        - name: Webanwendung
-          href: app/website-monitoring.md
-- name: Tutorials
-  items:
-    - name: Erstellen eines Metrikdiagramms
-      href: essentials/tutorial-metrics-explorer.md
-    - name: Erfassen von Protokollen von Azure-Ressourcen
+      href: essentials/monitor-azure-resource.md
+    - name: Analysieren von Metrikdaten
+      href: essentials/tutorial-metrics.md
+    - name: Erstellen einer Metrikwarnung
+      href: alerts/tutorial-metric-alert.md
+    - name: Sammeln und Anzeigen von Ressourcenprotokollen
       href: essentials/tutorial-resource-logs.md
-    - name: Schreiben von Protokollabfragen
-      href: logs/get-started-queries.md
-    - name: Erstellen eines Dashboards aus einer Protokollabfrage
-      href: visualize/tutorial-logs-dashboards.md
-    - name: Automatische Skalierung von Leistung und Zeitplan
-      href: autoscale/tutorial-autoscale-performance-schedule.md
+    - name: Erstellen einer Protokollabfragewarnung
+      href: alerts/tutorial-log-alert.md
+    - name: Virtuelle Computer
+      items:
+        - name: Aktivieren der Überwachung
+          href: vm/tutorial-monitor-vm-enable.md
+        - name: Warnung bei ausgefallenem Computer
+          href: vm/tutorial-monitor-vm-alert.md
+        - name: Sammeln von Gastprotokollen und Metriken
+          href: vm/tutorial-monitor-vm-guest.md
     - name: Application Insights
       items:
         - name: Suchen von Laufzeitausnahmen für Anwendungen
@@ -57,6 +44,8 @@
           href: app/tutorial-users.md
         - name: Dashboard mit Anwendungsdaten
           href: app/tutorial-app-dashboards.md
+        - name: Überwachen einer mobilen Anwendung
+          href: app/mobile-center-quickstart.md
 - name: Beispiele
   items:
     - name: Resource Manager-Vorlagen
@@ -284,6 +273,9 @@
             - name: Übersicht
               displayname: 'log query, log queries, query, queries'
               href: logs/log-query-overview.md
+            - name: Erste Schritte
+              displayname: 'log query, log queries, query, queries'
+              href: logs/get-started-queries.md
             - name: KQL-Referenz
               href: /azure/data-explorer/kusto/query/
             - name: Beispielabfragen

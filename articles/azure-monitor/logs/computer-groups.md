@@ -4,13 +4,13 @@ description: Mit Computergruppen in Azure Monitor können Sie Protokollabfragen 
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 02/05/2019
-ms.openlocfilehash: d8702b498e08561175aa7ee975c7b6b46fdf1687
-ms.sourcegitcommit: 910a1a38711966cb171050db245fc3b22abc8c5f
+ms.date: 10/20/2021
+ms.openlocfilehash: dd724da3d200f26122ae780c740aa6fe4c84b08c
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102031088"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130244960"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Computergruppen in Azure Monitor-Protokollabfragen
 Mit Computergruppen in Azure Monitor können Sie [Protokollabfragen](./log-query-overview.md) auf eine bestimmte Gruppe von Computern eingrenzen.  Die einzelnen Gruppen werden über eine von Ihnen definierte Abfrage mit Computern aufgefüllt oder indem Sie Gruppen aus verschiedenen Quellen importieren.  Wenn die Gruppe in eine Protokollabfrage eingeschlossen wird, sind die Ergebnisse auf Datensätze beschränkt, die den Computern in der Gruppe entsprechen.
@@ -47,7 +47,7 @@ Gehen Sie zum Erstellen einer Computergruppe aus einer Protokollsuche im Azure-P
 
 Die folgende Tabelle beschreibt die Eigenschaften, durch die eine Computergruppe definiert wird.
 
-| Eigenschaft | BESCHREIBUNG |
+| Eigenschaft | Beschreibung |
 |:---|:---|
 | Name   | Name der Abfrage, die im Portal angezeigt werden soll |
 | Funktionsalias | ein eindeutiger Alias, mit dem die Computergruppe bei einer Abfrage identifiziert wird |
@@ -60,32 +60,20 @@ Wenn Sie Azure Monitor für das Importieren von Active Directory-Gruppenmitglied
 > [!NOTE]
 > Importierte Active Directory-Gruppen enthalten nur Windows-Computer.
 
-Sie können Azure Monitor zum Importieren von Active Directory-Sicherheitsgruppen über **Erweiterte Einstellungen** in Ihrem Log Analytics-Arbeitsbereich im Azure-Portal konfigurieren.  Wählen Sie hierzu **Computergruppen**, **Active Directory** und anschließend **Active Directory-Gruppenmitgliedschaften von Computern importieren** aus.  Es ist keine weitere Konfiguration erforderlich.
-
-![Computergruppen aus Active Directory](media/computer-groups/configure-activedirectory.png)
-
-Wenn Gruppen importiert wurden, werden im Menü die Anzahl der Computer, für die eine Gruppenmitgliedschaft erkannt wurde, und die Anzahl der importierten Gruppen aufgeführt.  Klicken Sie auf einen dieser Links, um die **ComputerGroup**-Datensätze mit diesen Informationen zurückzugeben.
+Sie konfigurieren Azure Monitor zum Importieren von Active Directory-Sicherheitsgruppen über das Menüelement **Computergruppen** in Ihrem Log Analytics-Arbeitsbereich im Azure-Portal.  Wählen Sie die Registerkarte **Active Directory** und anschließend **Active Directory-Gruppenmitgliedschaften von Computern importieren** aus.  Wenn Gruppen importiert wurden, werden im Menü die Anzahl der Computer, für die eine Gruppenmitgliedschaft erkannt wurde, und die Anzahl der importierten Gruppen aufgeführt.  Klicken Sie auf einen dieser Links, um die **ComputerGroup**-Datensätze mit diesen Informationen zurückzugeben.
 
 ### <a name="windows-server-update-service"></a>Windows Server Update Service
 Wenn Sie Azure Monitor für das Importieren von WSUS-Gruppenmitgliedschaften konfigurieren, werden dabei die Zielgruppenmitgliedschaften aller Computer mit dem Log Analytics-Agent analysiert.  Bei Verwendung clientseitiger Zielgruppen wird die Gruppenmitgliedschaft aller Computer, die mit Azure Monitor verbunden und Teil einer WSUS-Zielgruppe sind, in Azure Monitor importiert. Bei Verwendung serverseitiger Zielgruppen sollte der Log Analytics-Agent auf dem WSUS-Server installiert sein, damit die Informationen zur Gruppenmitgliedschaft in Azure Monitor importiert werden können.  Diese Mitgliedschaft wird kontinuierlich alle 4 Stunden aktualisiert. 
 
-Sie können Azure Monitor zum Importieren von WSUS-Gruppen über **Erweiterte Einstellungen** in Ihrem Log Analytics-Arbeitsbereich im Azure-Portal konfigurieren.  Wählen Sie hierzu **Computergruppen**, **WSUS** und anschließend **WSUS-Gruppenmitgliedschaften importieren** aus.  Es ist keine weitere Konfiguration erforderlich.
-
-![Computergruppen aus WSUS](media/computer-groups/configure-wsus.png)
-
-Wenn Gruppen importiert wurden, werden im Menü die Anzahl der Computer, für die eine Gruppenmitgliedschaft erkannt wurde, und die Anzahl der importierten Gruppen aufgeführt.  Klicken Sie auf einen dieser Links, um die **ComputerGroup**-Datensätze mit diesen Informationen zurückzugeben.
+Sie konfigurieren Azure Monitor zum Importieren von WSUS-Gruppen über das Menüelement **Computergruppen** in Ihrem Log Analytics-Arbeitsbereich im Azure-Portal.  Wählen Sie die Registerkarte **Windows Server Update Service** und anschließend **WSUS-Gruppenmitgliedschaften importieren** aus.  Wenn Gruppen importiert wurden, werden im Menü die Anzahl der Computer, für die eine Gruppenmitgliedschaft erkannt wurde, und die Anzahl der importierten Gruppen aufgeführt.  Klicken Sie auf einen dieser Links, um die **ComputerGroup**-Datensätze mit diesen Informationen zurückzugeben.
 
 ### <a name="configuration-manager"></a>Konfigurations-Manager
-Wenn Sie Azure Monitor für das Importieren von Configuration Manager-Sammlungsmitgliedschaften konfigurieren, wird eine Computergruppe für jede Sammlung erstellt.  Die Informationen zu Sammlungsmitgliedschaften werden alle drei Stunden abgerufen, um die Computergruppen zu aktualisieren. 
+Wenn Sie Azure Monitor für das Importieren von Configuration Manager-Sammlungsmitgliedschaften konfigurieren, wird eine Computergruppe für jede Sammlung erstellt.  Die Informationen zu Sammlungsmitgliedschaften werden alle drei Stunden abgerufen, um die Computergruppen zu aktualisieren. Bevor Sie Configuration Manager-Sammlungen importieren können, müssen Sie [zwischen Configuration Manager und Azure Monitor eine Verbindung herstellen](collect-sccm.md).  
 
-Bevor Sie Configuration Manager-Sammlungen importieren können, müssen Sie [zwischen Configuration Manager und Azure Monitor eine Verbindung herstellen](collect-sccm.md).  
-
-![Computergruppen aus SCCM](media/computer-groups/configure-sccm.png)
-
-Wenn Sammlungen importiert wurden, werden im Menü die Anzahl der Computer, für die eine Gruppenmitgliedschaft erkannt wurde, und die Anzahl der importierten Gruppen aufgeführt.  Klicken Sie auf einen dieser Links, um die **ComputerGroup**-Datensätze mit diesen Informationen zurückzugeben.
+Sie konfigurieren Azure Monitor zum Importieren von WSUS-Gruppen über das Menüelement **Computergruppen** in Ihrem Log Analytics-Arbeitsbereich im Azure-Portal.  Wählen Sie die Registerkarte **System Center Configuration Manager** und anschließend **Configuration Manager-Sammlungsmitgliedschaften importieren** aus. Wenn Sammlungen importiert wurden, werden im Menü die Anzahl der Computer, für die eine Gruppenmitgliedschaft erkannt wurde, und die Anzahl der importierten Gruppen aufgeführt.  Klicken Sie auf einen dieser Links, um die **ComputerGroup**-Datensätze mit diesen Informationen zurückzugeben.
 
 ## <a name="managing-computer-groups"></a>Verwalten von Computergruppen
-Sie können Computergruppen, die aus einer Protokollabfrage oder über die API für die Protokollsuche erstellt wurden, über **Erweiterte Einstellungen** in Ihrem Log Analytics-Arbeitsbereich im Azure-Portal aufrufen.  Wählen Sie hierzu **Computergruppen** und anschließend **Gespeicherte Gruppen** aus.  
+Sie können Computergruppen, die aus einer Protokollabfrage oder über die API für die Protokollsuche erstellt wurden, über das Menüelement **Computergruppen** in Ihrem Log Analytics-Arbeitsbereich im Azure-Portal aufrufen.  Wählen Sie die Registerkarte **Gespeicherte Gruppen** aus, um die Liste der Gruppen anzuzeigen.  
 
 Klicken Sie auf das **x** in der Spalte **Entfernen**, um die Computergruppe zu löschen.  Klicken Sie auf das Symbol **Mitglieder anzeigen** für eine Gruppe, um die Protokollsuche für die Gruppe ausführen, mit der die Elemente zurückgegeben werden.  Sie können eine Computergruppe nicht ändern, sondern nur löschen und dann mit den geänderten Einstellungen erneut erstellen.
 

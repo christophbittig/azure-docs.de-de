@@ -3,16 +3,16 @@ title: Azure Application Insights-Momentaufnahmedebugger für .NET-Apps
 description: Debugmomentaufnahmen werden automatisch beim Auslösen von Ausnahmen in .NET-Produktions-Apps erfasst.
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
-ms.date: 10/23/2019
+ms.date: 10/12/2021
 author: cweining
 ms.author: cweining
 ms.reviewer: cweining
-ms.openlocfilehash: c377f6b1ff84f04506badf581dc7c12d64e68e0d
-ms.sourcegitcommit: 1ee13b62c094a550961498b7a52d0d9f0ae6d9c0
+ms.openlocfilehash: e189967068fc55b61622b54539c1dc478f9ae370
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/12/2021
-ms.locfileid: "109839381"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130265187"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Debugmomentaufnahmen von Ausnahmen in .NET-Apps
 Wenn eine Ausnahme auftritt, können Sie automatisch eine Debugmomentaufnahme von Ihrer aktiven Webanwendung erfassen. Die Momentaufnahme zeigt den Status des Quellcodes und der Variablen in dem Moment, in dem die Ausnahme ausgelöst wurde. Der Momentaufnahmedebugger in [Azure Application Insights](./app-insights-overview.md) überwacht Ausnahmetelemetriedaten aus Ihrer Web-App. Er erfasst Momentaufnahmen Ihrer am häufigsten ausgelösten Ausnahmen, damit Sie die erforderlichen Informationen zur Diagnose von Problemen in der Produktion erhalten. Binden Sie das [NuGet-Paket des Momentaufnahmesammlers](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) in Ihre Anwendung ein, und konfigurieren Sie optional Parameter für die Datensammlung in [ApplicationInsights.config](./configuration-with-applicationinsights-config.md). Momentaufnahmen finden Sie im Application Insights-Portal unter [Ausnahmen](./asp-net-exceptions.md).
@@ -82,7 +82,7 @@ Momentaufnahmen enthalten möglicherweise vertrauliche Informationen und können
 ## <a name="view-snapshots-in-visual-studio-2017-enterprise-or-above"></a>Anzeigen von Momentaufnahmen in Visual Studio 2017 Enterprise oder höher
 1. Klicken Sie auf die Schaltfläche **Momentaufnahme herunterladen**, um eine Datei vom Typ `.diagsession` herunterzuladen, die von Visual Studio Enterprise geöffnet werden kann.
 
-2. Um die Datei `.diagsession` öffnen zu können, muss der Visual Studio-Momentaufnahmedebugger installiert sein. Der Momentaufnahmedebugger ist eine erforderliche Komponente der ASP.net-Workload in Visual Studio und kann im Visual Studio-Installer in der Liste mit den Einzelkomponenten ausgewählt werden. Bei Visual Studio-Versionen vor Visual Studio 2017 Version 15.5 muss die Erweiterung über den [Visual Studio Marketplace](https://aka.ms/snapshotdebugger) installiert werden.
+2. Um die Datei `.diagsession` öffnen zu können, muss der Visual Studio-Momentaufnahmedebugger installiert sein. Der Momentaufnahmedebugger ist eine erforderliche Komponente der ASP.NET-Workload in Visual Studio und kann im Visual Studio-Installer in der Liste mit den Einzelkomponenten ausgewählt werden. Bei Visual Studio-Versionen vor Visual Studio 2017 Version 15.5 muss die Erweiterung über den [Visual Studio Marketplace](https://aka.ms/snapshotdebugger) installiert werden.
 
 3. Nach dem Öffnen der Momentaufnahmedatei erscheint in Visual Studio die Minidump-Debugging-Seite. Klicken Sie auf **Debug Managed Code** (Verwalteten Code debuggen), um mit dem Debuggen der Momentaufnahme zu beginnen. Die Momentaufnahme wird bei der Codezeile geöffnet, in der die Ausnahme ausgelöst wurde, damit Sie den aktuellen Zustand des Prozesses debuggen können.
 
@@ -124,8 +124,7 @@ Die Version 15.2 (oder höher) von Visual Studio 2017 veröffentlicht Symbole f�
 Stellen Sie für Azure Compute und andere Typen sicher, dass die Symboldateien im selben Ordner wie die DLL-Datei der Hauptanwendung (in der Regel `wwwroot/bin`) liegen oder unter dem aktuellen Pfad verfügbar sind.
 
 > [!NOTE]
-> Weitere Informationen zu den verschiedenen verfügbaren Symboloptionen finden Sie in der [Visual Studio-Dokumentation](/visualstudio/ide/reference/advanced-build-settings-dialog-box-csharp?view=vs-2019&preserve-view=true#output
-). Für beste Ergebnisse empfehlen wir die Verwendung von „Full", „Portable" oder „Embedded".
+> Weitere Informationen zu den verschiedenen verfügbaren Symboloptionen finden Sie in der [Visual Studio-Dokumentation](/visualstudio/ide/reference/advanced-build-settings-dialog-box-csharp?view=vs-2019&preserve-view=true#output). Für beste Ergebnisse empfehlen wir die Verwendung von „Full", „Portable" oder „Embedded".
 
 ### <a name="optimized-builds"></a>Optimierte Builds
 In einigen Fällen können lokale Variablen aufgrund von Optimierungen, die durch den JIT-Compiler angewendet werden, nicht in Releasebuilds angezeigt werden.

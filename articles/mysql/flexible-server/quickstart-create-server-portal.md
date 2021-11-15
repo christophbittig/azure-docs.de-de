@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/22/2020
-ms.openlocfilehash: 1c134fa24914ffc1cc2d51389cf6840986a74c58
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: e1469c2d7cbc1be4aac2ec73a1f04138ef9d7fb1
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "128661560"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131429354"
 ---
 # <a name="quickstart-use-the-azure-portal-to-create-an-azure-database-for-mysql-flexible-server"></a>Schnellstart: Verwenden des Azure-Portals zum Erstellen einer Azure Database for MySQL Flexible Server-Instanz
 
@@ -21,12 +21,7 @@ ms.locfileid: "128661560"
 
 Azure Database for MySQL Flexible Server ist ein verwalteter Dienst, mit dem Sie hochverfügbare MySQL-Serverinstanzen in der Cloud ausführen, verwalten und skalieren können. In dieser Schnellstartanleitung erfahren Sie, wie Sie mit dem Azure-Portal eine Flexible Server-Instanz erstellen.
 
-> [!IMPORTANT]
-> Azure Database for MySQL Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
-
-
-[!INCLUDE [flexible-server-free-trial-note](../includes/flexible-server-free-trial-note.md)]
-
+Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 Öffnen Sie das [Azure-Portal](https://portal.azure.com/). Geben Sie Ihre Anmeldeinformationen ein, um sich beim Portal anzumelden. Die Standardansicht ist Ihr Dienstdashboard.
@@ -38,19 +33,19 @@ Eine Flexible Server-Instanz wird mit einer definierten Gruppe von [Compute- und
 Führen Sie die folgenden Schritte aus, um eine Flexible Server-Instanz zu erstellen:
 
 1. Suchen Sie im Portal nach **Azure Database for MySQL-Server**, und wählen Sie die Option aus:
-    
+
     > :::image type="content" source="./media/quickstart-create-server-portal/find-mysql-portal.png" alt-text="Screenshot: Suchen nach „Azure Database for MySQL-Server“":::
 
-2. Klicken Sie auf **Erstellen**. 
+2. Klicken Sie auf **Erstellen**.
 
 3. Wählen Sie auf der Seite **Option „Azure Database for MySQL-Bereitstellung“ auswählen** die Bereitstellungsoption **Flexibler Server** aus.
-     
-    > :::image type="content" source="./media/quickstart-create-server-portal/deployment-option.png" alt-text="Screenshot: Option „Flexibler Server“":::    
 
-4. Geben Sie auf der Registerkarte **Grundlegende Einstellungen** folgende Informationen ein: 
+    > :::image type="content" source="./media/quickstart-create-server-portal/deployment-option.png" alt-text="Screenshot: Option „Flexibler Server“":::
 
-    > :::image type="content" source="./media/quickstart-create-server-portal/create-form.png" alt-text="Screenshot: Registerkarte „Grundeinstellungen“ auf der Seite „Flexibler Server“"::: 
-                                    
+4. Geben Sie auf der Registerkarte **Grundlegende Einstellungen** folgende Informationen ein:
+
+    > :::image type="content" source="./media/quickstart-create-server-portal/create-form.png" alt-text="Screenshot: Registerkarte „Grundeinstellungen“ auf der Seite „Flexibler Server“":::
+
     |**Einstellung**|**Empfohlener Wert**|**Beschreibung**|
     |---|---|---|
     Subscription|Ihr Abonnementname|Das Azure-Abonnement, das Sie für Ihren Server verwenden möchten. Falls Sie über mehrere Abonnements verfügen, wählen Sie das Abonnement aus, über das die Ressource abgerechnet werden soll.|
@@ -64,27 +59,24 @@ Führen Sie die folgenden Schritte aus, um eine Flexible Server-Instanz zu erste
     MySQL-Version|**5.7**| Eine MySQL-Hauptversion|
     Administratorbenutzername |**mydemouser**| Ihr Anmeldekonto für die Verbindungsherstellung mit dem Server. Der Administratorbenutzername darf nicht **azure_superuser**, **admin**, **administrator**, **root**, **guest** oder **public** lauten.|
     Kennwort |Ihr Kennwort| Ein neues Kennwort für das Serveradministratorkonto. Es muss zwischen acht und 128 Zeichen lang sein. Darüber hinaus muss es Zeichen aus drei der folgenden Kategorien enthalten: Englische Großbuchstaben, englische Kleinbuchstaben, Zahlen (0 bis 9) und nicht alphanumerische Zeichen (!, $, #, % usw.).|
-    Compute und Speicher | **Burstfähig**, **Standard_B1ms**, **10 GiB**, **100 IOPS**, **7 Tage** | Die Compute-, Speicher-, IOPS- und Sicherungskonfigurationen für Ihren neuen Server. Wählen Sie **Server konfigurieren** aus. **Burstfähig**, **Standard_B1ms**, **10 GiB**, **100 IOPS** und **7 Tage** sind die Standardwerte für die **Computeebene**, die **Computegröße**, die **Speichergröße**, **IOPS** und den **Aufbewahrungszeitraum** für Sicherungen. Sie können diese Werte unverändert lassen oder anpassen. Zum schnelleren Laden von Daten während der Migration wird empfohlen, den Wert für IOPS auf die maximale Größe zu erhöhen, die von der Computegröße unterstützt wird, und Sie später wieder herunterzuskalieren, um Kosten zu sparen. Um die Compute- und Speicherauswahl zu speichern und die Konfiguration fortzusetzen, wählen Sie **Speichern** aus. Der folgende Screenshot zeigt die Compute- und Speicheroptionen:|
-
- 
-    > :::image type="content" source="./media/quickstart-create-server-portal/high-availability.png" alt-text="Screenshot: Optionen für Hochverfügbarkeit.":::
+    Compute und Speicher | **Burstfähig**, **Standard_B1ms**, **10 GiB**, **100 Tage** | Die Compute-, Speicher-, IOPS- und Sicherungskonfigurationen für Ihren neuen Server. Wählen Sie **Server konfigurieren** aus. **Burstfähig**, **Standard_B1ms**, **10 GiB**, **100 iops** und **7 Tage** sind die Standardwerte für die **Berechnungsebene**, die **Computegröße**, die **Speichergröße** und den **Aufbewahrungszeitraum** für Sicherungen. Sie können diese Werte unverändert lassen oder anpassen. Zum schnelleren Laden von Daten während der Migration wird empfohlen, den Wert für IOPS auf die maximale Größe zu erhöhen, die von der Computegröße unterstützt wird, und Sie später wieder herunterzuskalieren, um Kosten zu sparen. Um die Compute- und Speicherauswahl zu speichern und die Konfiguration fortzusetzen, wählen Sie **Speichern** aus. Der folgende Screenshot zeigt die Compute- und Speicheroptionen:|
 
     > :::image type="content" source="./media/quickstart-create-server-portal/compute-storage.png" alt-text="Screenshot: Compute- und Speicheroptionen":::
 
 5. Konfigurieren Sie Netzwerkoptionen.
 
-    Auf der Registerkarte **Netzwerk** können Sie auswählen, wie der Server erreichbar sein soll. Azure Database for MySQL Flexible Server bietet zwei Optionen zum Herstellen einer Verbindung mit Ihrem Server: 
+    Auf der Registerkarte **Netzwerk** können Sie auswählen, wie der Server erreichbar sein soll. Azure Database for MySQL Flexible Server bietet zwei Optionen zum Herstellen einer Verbindung mit Ihrem Server:
    - Öffentlicher Zugriff (zugelassene IP-Adressen)
-   - Privater Zugriff (VNET-Integration) 
-   
-   Bei öffentlichem Zugriff ist der Zugriff auf Ihren Server auf zugelassene IP-Adressen beschränkt, die einer Firewallregel hinzugefügt werden. Diese Methode verhindert, dass externe Anwendungen und Tools eine Verbindung mit der Serverinstanz oder mit Datenbanken auf dem Server herstellen – es sei denn, Sie erstellen eine Regel, um die Firewall für bestimmte IP-Adressen oder einen bestimmten IP-Adressbereich zu öffnen. Wenn Sie privaten Zugriff (VNET-Integration) verwenden, ist der Zugriff auf Ihren Server auf Ihr virtuelles Netzwerk beschränkt. Im Artikel zu [Konzepten](./concepts-networking.md) erfahren Sie mehr über Konnektivitätsmethoden.
-    
-     In dieser Schnellstartanleitung erfahren Sie, wie Sie den öffentlichen Zugriff aktivieren, um eine Verbindung mit dem Server herzustellen. Wählen Sie auf der Registerkarte **Netzwerk** als **Konnektivitätsmethode** die Option **Öffentlicher Zugriff** aus. Wählen Sie zum Konfigurieren von **Firewallregeln** die Option **Aktuelle Client-IP-Adresse hinzufügen** aus. 
+   - Privater Zugriff (VNET-Integration)
+
+    Bei öffentlichem Zugriff ist der Zugriff auf Ihren Server auf zugelassene IP-Adressen beschränkt, die einer Firewallregel hinzugefügt werden. Diese Methode verhindert, dass externe Anwendungen und Tools eine Verbindung mit dem Server oder mit Datenbanken auf dem Server herstellen – es sei denn, Sie erstellen eine Regel, um die Firewall für bestimmte IP-Adressen oder einen bestimmten IP-Adressbereich zu öffnen. Wenn Sie privaten Zugriff (VNet-Integration) verwenden, ist der Zugriff auf Ihren Server auf Ihr virtuelles Netzwerk beschränkt. Im Artikel zu [Konzepten](./concepts-networking.md) erfahren Sie mehr über Konnektivitätsmethoden.
+
+     In dieser Schnellstartanleitung erfahren Sie, wie Sie den öffentlichen Zugriff aktivieren, um eine Verbindung mit dem Server herzustellen. Wählen Sie auf der Registerkarte **Netzwerk** als **Konnektivitätsmethode** die Option **Öffentlicher Zugriff** aus. Wählen Sie zum Konfigurieren von **Firewallregeln** die Option **Aktuelle Client-IP-Adresse hinzufügen** aus.
 
     > [!NOTE]
     > Nach der Erstellung des Servers kann die Verbindungsmethode nicht mehr geändert werden. Wenn Sie während der Erstellung des Servers beispielsweise **Öffentlicher Zugriff (zugelassene IP-Adressen)** ausgewählt haben, können Sie nach der Erstellung nicht zu **Privater Zugriff (VNET-Integration)** wechseln. Es wird dringend empfohlen, den Server mit privatem Zugriff zu erstellen, um den Zugriff auf Ihren Server über die VNET-Integration zu schützen. Weitere Informationen zum privaten Zugriff finden Sie im Artikel zu [Konzepten](./concepts-networking.md).
 
-    > :::image type="content" source="./media/quickstart-create-server-portal/networking.png" alt-text="Screenshot: Registerkarte „Netzwerk“":::  
+    > :::image type="content" source="./media/quickstart-create-server-portal/networking.png" alt-text="Screenshot: Registerkarte „Netzwerk“":::
 
 6. Wählen Sie **Überprüfen + erstellen** aus, um Ihre Flexible Server-Konfiguration zu überprüfen.
 
@@ -95,7 +87,7 @@ Führen Sie die folgenden Schritte aus, um eine Flexible Server-Instanz zu erste
 Unter Ihrem Server werden standardmäßig folgende Datenbanken erstellt: „information_schema“, „mysql“, „performance_schema“ und „sys“.
 
 > [!NOTE]
-> Überprüfen Sie, ob Ihr Netzwerk ausgehenden Datenverkehr über Port 3306 zulässt, um Verbindungsprobleme zu vermeiden. Dieser Port wird von Azure Database for MySQL Flexible Server verwendet.  
+> Überprüfen Sie, ob Ihr Netzwerk ausgehenden Datenverkehr über Port 3306 zulässt, um Verbindungsprobleme zu vermeiden. Dieser Port wird von Azure Database for MySQL Flexible Server verwendet.
 
 ## <a name="connect-to-the-server-by-using-mysqlexe"></a>Herstellen einer Serverbindung über „mysql.exe“
 
@@ -122,7 +114,7 @@ Wenn Sie Azure Cloud Shell verwenden möchten, um eine Verbindung mit Ihrem flex
 > [!NOTE]
 > Das Kontrollkästchen **Öffentlichen Zugriff auf diesen Server über beliebigen Azure-Dienst in Azure gestatten** sollte nur zu Entwicklungs- und Testzwecken aktiviert werden. Durch diese Option wird die Firewall so konfiguriert, dass Verbindungen von IP-Adressen zugelassen werden, die einem beliebigen Azure-Dienst oder einer beliebigen Azure-Ressource zugeordnet sind. Dies schließt auch Verbindungen aus den Abonnements anderer Kunden mit ein.
 
-Klicken Sie auf **Jetzt testen**, um Azure Cloud Shell zu starten, und verwenden Sie die folgenden Befehle, um eine Verbindung mit Ihrem flexiblen Server herzustellen. Verwenden Sie im Befehl Ihren Servernamen, Benutzernamen und Ihr Kennwort. 
+Klicken Sie auf **Jetzt testen**, um Azure Cloud Shell zu starten, und verwenden Sie die folgenden Befehle, um eine Verbindung mit Ihrem flexiblen Server herzustellen. Verwenden Sie im Befehl Ihren Servernamen, Benutzernamen und Ihr Kennwort.
 
 ```azurecli-interactive
 wget --no-check-certificate https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem

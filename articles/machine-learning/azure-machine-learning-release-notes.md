@@ -1,23 +1,24 @@
 ---
-title: Neuerungen im Release
+title: Versionshinweise zum Python SDK
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie mehr über die neuesten Updates für Azure Machine Learning und Python SDKs für maschinelles Lernen und Datenaufbereitung.
+description: Erfahren Sie mehr über die neuesten Updates für das Azure Machine Learning SDK für Python.
+services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
 ms.author: larryfr
 author: BlackMist
-ms.date: 10/04/2021
-ms.openlocfilehash: 8807aa11ce8f9d4c96ae27656d9d29a4f5f7e7f1
-ms.sourcegitcommit: 611b35ce0f667913105ab82b23aab05a67e89fb7
+ms.date: 10/21/2021
+ms.openlocfilehash: 5c2594e38db7a57e2861241d37405a8ce03b8494
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2021
-ms.locfileid: "129994174"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131563167"
 ---
-# <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning: Anmerkungen zu dieser Version
+# <a name="azure-machine-learning-python-sdk-release-notes"></a>Versionshinweise zum Azure Machine Learning SDK für Python
 
-In diesem Artikel erhalten Sie Informationen zu Azure Machine Learning-Versionen.  Den vollständigen SDK-Referenzinhalt finden Sie auf der Hauptseite der Referenz zum [**Azure Machine Learning SDK für Python**](/python/api/overview/azure/ml/intro).
+In diesem Artikel erfahren Sie mehr über Releases des Azure Machine Learning SDK für Python.  Den vollständigen SDK-Referenzinhalt finden Sie auf der Hauptseite der Referenz zum [**Azure Machine Learning SDK für Python**](/python/api/overview/azure/ml/intro).
 
 __RSS-Feed__: Lassen Sie sich benachrichtigen, wenn diese Seite aktualisiert wird, indem Sie die folgende URL kopieren und in Ihren Feedreader einfügen: `https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
 
@@ -1912,7 +1913,7 @@ Greifen Sie von Studio aus auf die folgenden webbasierten Erstellungstools zu:
 ### <a name="azure-machine-learning-designer-enhancements"></a>Verbesserungen am Azure Machine Learning-Designer
 
 + Zuvor als grafische Benutzeroberfläche bezeichnet 
-+    11 neue [Module](algorithm-module-reference/module-reference.md) einschließlich Empfehlungs-, Klassifizierungs- und Trainings-Hilfsprogrammen für Funktionsentwicklung, Kreuzvalidierung, Datentransformation u. v. m.
++    11 neue [Module](component-reference/component-reference.md) einschließlich Empfehlungs-, Klassifizierungs- und Trainings-Hilfsprogrammen für Funktionsentwicklung, Kreuzvalidierung, Datentransformation u. v. m.
 
 ### <a name="r-sdk"></a>R SDK 
  

@@ -215,6 +215,9 @@ items:
           - name: Übersicht über Datenbankvorlagen
             href: database-designer/overview-database-templates.md
             displayName: overview
+          - name: Übersicht über Zuordnungsdaten
+            href: database-designer/overview-map-data.md
+            displayName: map data
       - name: Schnellstarts
         items:
           - name: Erstellen einer Lake-Datenbank

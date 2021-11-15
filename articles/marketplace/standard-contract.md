@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
-ms.date: 05/20/2020
-ms.openlocfilehash: 20a257bde6022249fd7b2ab875b94f356234b490
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.date: 10/29/2021
+ms.openlocfilehash: 6767ef2786ca57353690dde19bbe20235a7c80f6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94488875"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131429715"
 ---
 # <a name="standard-contract-for-microsoft-commercial-marketplace"></a>Standardvertrag für den kommerziellen Microsoft-Marketplace
 
@@ -36,7 +36,7 @@ Für kommerzielle Marketplace-Herausgeber stehen zwei Arten von Zusatzvereinbaru
 >[!Note]
 >Diese beiden Arten von Zusatzvereinbarungen sind übereinander angeordnet. Kunden, für die benutzerdefinierte Zusatzvereinbarungen gelten, erhalten beim Kauf auch die universellen Zusatzvereinbarung für den Standardvertrag. Zusatzvereinbarungen sind auf 4000 Zeichen (einschließlich Leerzeichen) beschränkt.
 
-Sie können den Standardvertrag für den kommerziellen Microsoft-Marketplace für die folgenden Angebotstypen nutzen:  Azure-Anwendungen (Lösungsvorlagen und verwaltete Anwendungen), virtuelle Computer und SaaS.
+Sie können den Standardvertrag für den kommerziellen Microsoft-Marketplace für die folgenden Angebotstypen nutzen: Azure-Anwendungen (Lösungsvorlagen und verwaltete Anwendungen), Azure-Container, Container-Apps, virtuelle Computer und SaaS.
 
 ## <a name="customer-experience"></a>Benutzerfreundlichkeit
 

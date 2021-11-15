@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 09/25/2019
 ms.author: abpati
 ms.custom: aaddev, devx-track-python, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 2201802ca0f4d10a65522dc45e2ecb9b2aa0ce96
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: f06fb86f87cc0eef2832b2c79edc74ef2eaee8b6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131040169"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131471305"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-a-python-web-app"></a>Schnellstart: Hinzufügen von „Mit Microsoft anmelden“ zu einer Python-Web-App
 
@@ -113,7 +113,7 @@ Eine Abbildung finden Sie unter [Funktionsweise des Beispiels](#how-the-sample-w
 > Hierbei gilt:
 >
 > - `Enter_the_Application_Id_here` ist die Anwendungs-ID für die von Ihnen registrierte Anwendung.
-> - `Enter_the_Client_Secret_Here` ist der **geheime Clientschlüssel**, den Sie in **Certificates & Secrets** (Zertifikate und Geheimnisse) für die registrierte Anwendung erstellt haben.
+> - `Enter_the_Client_Secret_Here` ist der **geheime Clientschlüssel**, den Sie unter **Certificates & Secrets** (Zertifikate und Geheimnisse) für die registrierte Anwendung erstellt haben.
 > - `Enter_the_Tenant_Name_Here` ist der Wert der **Verzeichnis-ID (Mandant)** der Anwendung, die Sie registriert haben.
 
 > [!div class="sxs-lookup" renderon="portal"]

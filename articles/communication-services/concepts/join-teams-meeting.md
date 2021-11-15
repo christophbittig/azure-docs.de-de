@@ -8,12 +8,12 @@ ms.date: 10/15/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 ms.subservice: teams-interop
-ms.openlocfilehash: c0713588eadebbd1d9376faec8e61cf5a88dfd1d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 6b6444ef42e0ada42f374ed5d1e69aefd332a983
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131068910"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131438871"
 ---
 # <a name="join-a-teams-meeting"></a>Teilnehmen an einer Teams-Besprechung
 
@@ -38,7 +38,7 @@ Benutzerdefinierte Anwendungen, die mit Azure Communication Services erstellt wu
 
 Genau wie beim anonymen Besprechungsbeitritt von Teams muss Ihre Anwendung über den Besprechungslink für den Beitritt verfügen. Dieser kann über die Graph-API oder aus dem Kalender in Microsoft Teams abgerufen werden. Die Namen von in Teams angezeigten BYOI-Benutzern können über das Anruf-SDK von Communication Services konfiguriert werden und sind als „extern“ gekennzeichnet, um Teams-Benutzern mitzuteilen, dass sie nicht über Azure Active Directory authentifiziert wurden.
 
-Während einer Besprechung können Communication Services-Benutzer grundlegende Audio-, Video-, Bildschirmfreigabe- und Chatfunktionen über Azure Communication Services SDKs verwenden. Sobald ein Communication Services-Benutzer die Besprechung verlässt oder die Besprechung beendet wird, kann er keine neuen Chatnachrichten mehr senden oder empfangen. Er kann jedoch weiterhin auf Nachrichten zugreifen, die während der Besprechung gesendet und empfangen wurden. Anonyme Communication Services-Benutzer können der Besprechung keine zusätzlichen Teilnehmer hinzufügen, und sie können für die Besprechung keine Aufzeichnung oder Transkription starten.
+Während einer Besprechung können Communication Services-Benutzer grundlegende Audio-, Video-, Bildschirmfreigabe- und Chatfunktionen über Azure Communication Services SDKs verwenden. Sobald ein Communication Services-Benutzer die Besprechung verlässt oder die Besprechung beendet wird, kann er keine neuen Chatnachrichten mehr senden oder empfangen. Er kann jedoch weiterhin auf Nachrichten zugreifen, die während der Besprechung gesendet und empfangen wurden. Anonyme Communication Services-Benutzer können der Besprechung keine zusätzlichen Teilnehmer hinzufügen oder sie aus ihr entfernen, und sie können für die Besprechung keine Aufzeichnung oder Transkription starten.
 
 Weitere Informationen zu erforderlichen Dataflows für den Beitritt zu Teams-Besprechungen finden Sie auf der Seite [Client- und Serverarchitektur](client-and-server-architecture.md). Das [Hero-Beispiel für Gruppenanrufe](../samples/calling-hero-sample.md) enthält Beispielcode für den Beitritt zu einer Teams-Besprechung über eine Webanwendung.
 

@@ -1,25 +1,25 @@
 ---
 title: Testen und erneutes Trainieren eines Modells – Custom Vision Service
 titleSuffix: Azure Cognitive Services
-description: In diesem Artikel erfahren Sie, wie Sie ein Bild testen und dann zum erneuten Trainieren des Modells im Maschinelles Sehen-Dienst verwenden.
+description: Hier erfahren Sie, wie Sie ein Image testen und dann verwenden, um Ihr Modell im Custom Vision-Dienst neu zu trainieren.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 03/21/2019
+ms.date: 10/27/2021
 ms.author: pafarley
-ms.openlocfilehash: 736d135323e2a2df38a13dc46189e2a243fbe381
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: b326a610d3ac946d8fd610b072e882df3a4b5281
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "100097533"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131450455"
 ---
 # <a name="test-and-retrain-a-model-with-custom-vision-service"></a>Testen und erneutes Trainieren eines Modells mit Custom Vision Service
 
-Nachdem Sie Ihr Modell trainiert haben, können Sie es schnell mithilfe eines lokal gespeicherten Bilds oder eines Onlinebilds testen. Der Test verwendet die zuletzt trainierte Iteration.
+Nachdem Sie Ihr Modell trainiert haben, können Sie es schnell mithilfe eines lokal gespeicherten Bilds oder eines Onlinebilds testen. Im Test wird die zuletzt trainierte Iteration Ihres Modells verwendet.
 
 ## <a name="test-your-model"></a>Testen des Modells
 

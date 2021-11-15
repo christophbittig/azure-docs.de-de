@@ -10,12 +10,12 @@ ms.date: 09/27/2018
 ms.author: cynthn
 ms.custom: legacy
 ms.collection: windows
-ms.openlocfilehash: 3fb298dc8e01c50b562e3891f02227b416596a04
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 95f57b01f2c9e6bffd0cfc1f1d563605e320d6ba
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122695253"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131437009"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Erstellen eines verwalteten Images eines generalisierten virtuellen Computers in Azure
 
@@ -24,7 +24,7 @@ ms.locfileid: "122695253"
 
 Eine verwaltete Imageressource kann aus einem generalisierten virtuellen Computer erstellt werden, der entweder als verwalteter Datenträger oder als nicht verwalteter Datenträger in einem Speicherkonto gespeichert ist. Mit diesem Image können dann mehrere virtuelle Computer erstellt werden. Weitere Informationen dazu, wie verwaltete Images abgerechnet werden, finden Sie unter [Verwaltete Datenträger – Preise](https://azure.microsoft.com/pricing/details/managed-disks/). 
 
-Ein verwaltetes Image unterstützt bis zu 20 Bereitstellungen gleichzeitig. Wenn Sie versuchen, mehr als 20 VMs gleichzeitig aus demselben verwalteten Image zu erstellen, kann dies aufgrund der Einschränkungen bei der Speicherleistung einer einzelnen VHD zu Timeouts bei der Bereitstellung führen. Wenn Sie mehr als 20 VMs gleichzeitig erstellen möchten, verwenden Sie ein Image für [Kataloge mit freigegebenen Images](../shared-image-galleries.md), das mit jeweils einem Replikat pro 20 gleichzeitige VM-Bereitstellungen konfiguriert wurde.
+Ein verwaltetes Image unterstützt bis zu 20 Bereitstellungen gleichzeitig. Wenn Sie versuchen, mehr als 20 VMs gleichzeitig aus demselben verwalteten Image zu erstellen, kann dies aufgrund der Einschränkungen bei der Speicherleistung einer einzelnen VHD zu Timeouts bei der Bereitstellung führen. Wenn Sie mehr als 20 virtuelle Computer gleichzeitig erstellen möchten, verwenden Sie ein Image für [Azure Compute Gallery](../shared-image-galleries.md) (früher Shared Image Gallery genannt), das mit jeweils einem Replikat pro 20 gleichzeitiger Bereitstellungen an virtuellen Computern konfiguriert wurde.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

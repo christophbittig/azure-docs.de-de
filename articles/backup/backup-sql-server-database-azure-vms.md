@@ -2,13 +2,16 @@
 title: Sichern mehrerer SQL Server-VMs über den Tresor
 description: In diesem Artikel erfahren Sie, wie Sie SQL Server-Datenbanken auf virtuellen Azure-Maschinen mit Azure Backup aus dem Recovery Services Tresor sichern können
 ms.topic: conceptual
-ms.date: 08/20/2021
-ms.openlocfilehash: 834737c9773b9efead12ef8033852d25ae706062
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.date: 11/02/2021
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: 970c352bcb7f04d04cddaaa24769eb4a26896605
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123099092"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131431795"
 ---
 # <a name="back-up-multiple-sql-server-vms-from-the-recovery-services-vault"></a>Sichern mehrerer SQL Server-VMs aus dem Recovery Services-Depot
 
@@ -35,7 +38,7 @@ Bevor Sie eine SQL Server-Datenbank sichern können, müssen folgende Kriterien 
 1. Vergewissern Sie sich, dass die SQL Server-Datenbanken die [Benennungsrichtlinien für Datenbanken für Azure Backup](#database-naming-guidelines-for-azure-backup) befolgen.
 1. Der Name des virtuellen SQL Server-Computers und der Ressourcengruppenname dürfen bei virtuellen Computer (Azure Resource Manager) zusammen maximal 84 Zeichen lang sein (bzw. 77 Zeichen bei klassischen virtuellen Computern). Diese Einschränkung ist darauf zurückzuführen, dass einige Zeichen vom Dienst reserviert werden.
 1. Stellen Sie sicher, dass keine anderen Sicherungslösungen für die Datenbank aktiviert sind. Deaktivieren Sie alle anderen SQL Server-Sicherungen, bevor Sie die Datenbank sichern.
-1. Wenn Sie SQL Server 2008 R2 oder SQL Server 2012 verwenden, kann es vorkommen, dass das Zeit Zonen Problem für die Sicherung wie [hier](https://support.microsoft.com/help/2697983/kb2697983-fix-an-incorrect-value-is-stored-in-the-time-zone-column-of) beschrieben auftritt. Stellen Sie sicher, dass Sie über die aktuellen kumulativen Updates verfügen, um das oben beschriebene Zeitzonen bezogene Problem zu vermeiden. Wenn das Anwenden der Updates auf die SQL Server Instanz auf der Azure-VM nicht möglich ist, deaktivieren Sie die Sommerzeit (DST) für die Zeitzone auf dem virtuellen Computer.
+1. Wenn Sie SQL Server 2008 R2 oder SQL Server 2012 verwenden, kann es vorkommen, dass das Zeit Zonen Problem für die Sicherung wie [hier](https://support.microsoft.com/help/2697983/kb2697983-fix-an-incorrect-value-is-stored-in-the-time-zone-column-of) beschrieben auftritt. Stellen Sie sicher, dass Sie über die aktuellen kumulativen Updates verfügen, um das oben beschriebene zeitzonenbezogene Problem zu vermeiden. Wenn das Anwenden der Updates auf die SQL Server Instanz auf der Azure-VM nicht möglich ist, deaktivieren Sie die Sommerzeit (DST) für die Zeitzone auf dem virtuellen Computer.
 
 > [!NOTE]
 > Sie können Azure Backup für eine Azure-VM und auch für eine auf der VM ausgeführte SQL Server-Datenbank ohne Konflikte aktivieren.
@@ -121,19 +124,13 @@ Wenn Sie eine SQL Server-Datenbank auf einem virtuellen Azure-Computer sichern, 
 
 Ermitteln von auf einer VM ausgeführten Datenbanken:
 
-1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) den Recovery Services-Tresor, mit dem Sie die Datenbank sichern.
+1. Wechseln Sie im [Azure-Portal](https://portal.azure.com) zu **Backup Center**, und klicken Sie auf **+ Sicherung**.
 
-2. Wählen Sie **Sichern** im Dashboard von **Recovery Services-Tresor** aus.
+1. Wählen Sie **SQL in Azure-VM** als Datenquellentyp und anschließend den von Ihnen erstellten Recovery Services-Tresor aus, und klicken Sie dann auf **Weiter**.
 
-   ![Auswählen von „Sichern“, um Menü „Sicherungsziel“ zu öffnen](./media/backup-azure-sql-database/open-backup-menu.png)
+   :::image type="content" source="./media/backup-azure-sql-database/configure-sql-backup.png" alt-text="Screenshot der Auswahl von „Sicherung“ zum Anzeigen der auf einer VM ausgeführten Datenbanken":::
 
-3. Legen Sie unter **Sicherungsziel** die Einstellung **Wo wird die Workload ausgeführt?** auf **Azure** fest.
-
-4. Wählen Sie unter **Was möchten Sie sichern?** die Option **SQL Server in Azure VM** aus.
-
-    ![Auswählen von „SQL Server in Azure-VM“ für die Sicherung](./media/backup-azure-sql-database/choose-sql-database-backup-goal.png)
-
-5. Wählen Sie in **Sicherungsziel** > **DBs in VMs ermitteln** die Option **Ermittlung starten** aus, um nach nicht geschützten virtuellen Computern im Abonnement zu suchen. Diese Suche kann je nach Anzahl ungeschützter VMs im Abonnement eine Weile dauern.
+1. Wählen Sie in **Sicherungsziel** > **DBs in VMs ermitteln** die Option **Ermittlung starten** aus, um nach nicht geschützten virtuellen Computern im Abonnement zu suchen. Diese Suche kann je nach Anzahl ungeschützter VMs im Abonnement eine Weile dauern.
 
    * Nicht geschützte virtuelle Computer sollten nach der Ermittlung sortiert nach Name und Ressourcengruppe in der Liste angezeigt werden.
    * Wenn eine VM nicht wie erwartet aufgeführt wird, prüfen Sie, ob sie bereits in einem Tresor gesichert wird.
@@ -141,13 +138,13 @@ Ermitteln von auf einer VM ausgeführten Datenbanken:
 
      ![Ausstehende Sicherung bei der Suche nach Datenbanken in VMs](./media/backup-azure-sql-database/discovering-sql-databases.png)
 
-6. Wählen Sie in der Liste der virtuellen Computer den virtuellen Computer mit der SQL Server-Datenbank und dann **Datenbankermittlung** aus.
+1. Wählen Sie in der Liste der virtuellen Computer den virtuellen Computer mit der SQL Server-Datenbank und dann **Datenbankermittlung** aus.
 
-7. Verfolgen Sie die Datenbankermittlung im Bereich **Benachrichtigungen**. Der Zeitaufwand für diese Aktion hängt von der Anzahl von Datenbanken auf VMs ab. Wenn die ausgewählten Datenbanken ermittelt wurden, wird eine Erfolgsmeldung angezeigt.
+1. Verfolgen Sie die Datenbankermittlung im Bereich **Benachrichtigungen**. Der Zeitaufwand für diese Aktion hängt von der Anzahl von Datenbanken auf VMs ab. Wenn die ausgewählten Datenbanken ermittelt wurden, wird eine Erfolgsmeldung angezeigt.
 
     ![Meldung über erfolgreiche Bereitstellung](./media/backup-azure-sql-database/notifications-db-discovered.png)
 
-8. Azure Backup ermittelt alle SQL Server-Datenbanken auf dem virtuellen Computer. Während der Ermittlung geschieht im Hintergrund Folgendes:
+1. Azure Backup ermittelt alle SQL Server-Datenbanken auf dem virtuellen Computer. Während der Ermittlung geschieht im Hintergrund Folgendes:
 
     * Azure Backup registriert die VM beim Tresor für die Sicherung der Workload. Alle Datenbanken auf der registrierten VM können nur in diesem Tresor gesichert werden.
     * Azure Backup installiert die Erweiterung AzureBackupWindowsWorkload auf der VM. In einer SQL Server-Datenbank ist kein Agent installiert.
@@ -208,21 +205,22 @@ Eine Sicherungsrichtlinie legt fest, wann Sicherungen erstellt und wie lange sie
 
 So erstellen Sie eine Sicherungsrichtlinie
 
-1. Klicken Sie im Tresor auf **Sicherungsrichtlinien** > **Hinzufügen**.
-1. Wählen Sie in **Hinzufügen** zum Definieren des Richtlinientyps **SQL Server in Azure-VM**  aus.
+1. Wechseln Sie zum **Backup Center**, und klicken Sie auf **+ Richtlinie**.
 
-   ![Auswählen eines Richtlinientyps für die neue Sicherungsrichtlinie](./media/backup-azure-sql-database/policy-type-details.png)
+1. Wählen Sie **SQL Server in Azure-VM** als Datenquellentyp und anschließend den Tresor aus, unter dem die Richtlinie erstellt werden soll, und klicken Sie dann auf **Weiter**.
+
+   :::image type="content" source="./media/backup-azure-sql-database/create-sql-policy.png" alt-text="Screenshot der Auswahl eines Richtlinientyps für die neue Sicherungsrichtlinie":::
 
 1. Geben Sie unter **Richtlinienname** einen Namen für die neue Richtlinie ein.
 
-    ![Eingeben des Richtliniennamens](./media/backup-azure-sql-database/policy-name.png)
+   :::image type="content" source="./media/backup-azure-sql-database/sql-policy-summary.png" alt-text="Screenshot der Eingabe des Richtliniennamens":::
 
 1. Wählen Sie den Link **Bearbeiten** für **Vollständige Sicherung**, um die Standardeinstellungen zu ändern.
 
    * Wählen Sie eine **Sicherungshäufigkeit** aus. Wählen Sie entweder **Täglich** oder **Wöchentlich**.
    * Wählen Sie für **Täglich** die Uhrzeit und die Zeitzone für den Beginn des Sicherungsauftrags aus. Sie können keine differenziellen Sicherungen für tägliche vollständige Sicherungen erstellen.
 
-     ![Neue Felder für Sicherungsrichtlinien](./media/backup-azure-sql-database/full-backup-policy.png)  
+   :::image type="content" source="./media/backup-azure-sql-database/sql-backup-schedule-inline.png" alt-text="Screenshot der Felder für neue Sicherungsrichtlinien" lightbox="./media/backup-azure-sql-database/sql-backup-schedule-expanded.png":::
 
 1. In **BEIBEHALTUNGSDAUER** sind standardmäßig alle Optionen aktiviert. Deaktivieren Sie alle Optionen für die Beibehaltungsdauer, die Sie nicht wünschen, und legen Sie dann die zu verwendenden Intervalle fest.
 
@@ -231,7 +229,7 @@ So erstellen Sie eine Sicherungsrichtlinie
     * Die Sicherung für einen bestimmten Tag wird auf Grundlage der wöchentlichen Beibehaltungsdauer und der wöchentlichen Beibehaltungseinstellung markiert und beibehalten.
     * Mit der monatlichen und jährlichen Beibehaltungsdauer verhält es sich ähnlich.
 
-       ![Intervalleinstellungen für Beibehaltungsdauer](./media/backup-azure-sql-database/retention-range-interval.png)
+    :::image type="content" source="./media/backup-azure-sql-database/sql-retention-range-inline.png" alt-text="Screenshot der Einstellungen für den Aufbewahrungszeitraum" lightbox="./media/backup-azure-sql-database/sql-retention-range-expanded.png":::
 
 1. Wählen Sie **OK** aus, um die Einstellung für vollständige Sicherungen zu akzeptieren.
 1. Wählen Sie den Link **Bearbeiten** für **Differenzielle Sicherung**, um die Standardeinstellungen zu ändern.
@@ -239,9 +237,10 @@ So erstellen Sie eine Sicherungsrichtlinie
     * Wählen Sie in **Richtlinie für differenzielle Sicherung** die Option **Aktivieren** aus, um die Einstellungen für Häufigkeit und Beibehaltung vorzunehmen.
     * Pro Tag können Sie nur eine differenzielle Sicherung auslösen. Eine differenzielle Sicherung kann nicht am selben Tag wie eine vollständige Sicherung ausgelöst werden.
     * Differenzielle Sicherungen können maximal 180 Tage aufbewahrt werden.
+    * Der Aufbewahrungszeitraum für differenzielle Sicherungen darf nicht größer als der für die vollständige Sicherung sein (da die differenziellen Sicherungen für die Wiederherstellung von den vollständigen Sicherungen abhängig sind).
     * Die differenzielle Sicherung wird für die Masterdatenbank nicht unterstützt.
 
-      ![Richtlinie für differenzielle Sicherung](./media/backup-azure-sql-database/differential-backup-policy.png)
+    :::image type="content" source="./media/backup-azure-sql-database/sql-differential-backup-inline.png" alt-text="Screenshot der Richtlinie für differenzielle Sicherungen" lightbox="./media/backup-azure-sql-database/sql-differential-backup-expanded.png":::
 
 1. Wählen Sie den Link **Bearbeiten** für **Protokollsicherung**, um die Standardeinstellungen zu ändern.
 
@@ -250,7 +249,7 @@ So erstellen Sie eine Sicherungsrichtlinie
     * Wenn für die Datenbank das [einfache Wiederherstellungsmodell](/sql/relational-databases/backup-restore/recovery-models-sql-server) verwendet wird, wird der Zeitplan der Protokollsicherung für diese Datenbank angehalten, sodass keine Protokollsicherungen ausgelöst werden.
     * Wenn sich das Wiederherstellungsmodell der Datenbank von **Vollständig** in **Einfach** ändert, wird die Durchführung von Protokollsicherungen innerhalb von 24 Stunden nach der Änderung des Wiederherstellungsmodells angehalten. Analog hierzu gilt Folgendes: Wenn das Wiederherstellungsmodell von **Einfach** in einen anderen Zustand geändert wird und Protokollsicherungen für die Datenbank unterstützt werden, werden die Zeitpläne für die Protokollsicherungen entsprechend innerhalb von 24 Stunden nach der Änderung des Wiederherstellungsmodells aktiviert.
 
-      ![Richtlinie für Protokollsicherung](./media/backup-azure-sql-database/log-backup-policy.png)
+    :::image type="content" source="./media/backup-azure-sql-database/sql-log-backup-inline.png" alt-text="Screenshot der Richtlinie für Protokollsicherungen" lightbox="./media/backup-azure-sql-database/sql-log-backup-expanded.png":::
 
 1. Legen Sie im Menü **Sicherungsrichtlinie** fest, ob die **SQL-Sicherungskomprimierung** aktiviert wird. Diese Option ist standardmäßig deaktiviert. Wenn sie aktiviert ist, sendet SQL Server einen komprimierten Sicherungsdatenstrom an die VDI. Von Azure Backup werden je nach Wert dieses Steuerelements die Standardwerte für Instanzebenen mit der Klausel „COMPRESSION/NO_COMPRESSION“ überschrieben.
 

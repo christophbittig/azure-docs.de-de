@@ -1,9 +1,9 @@
 ### YamlMime:Landing
 title: Dokumentation zur Anwendungsverwaltung
-summary: 'Azure Active Directory ist ein Identitäts- und Zugriffsverwaltungssystem (Identity and Access Management, IAM). Es stellt einen zentralen Ort zum Speichern von Informationen zu digitalen Identitäten bereit. Sie können Ihre Softwareanwendungen so konfigurieren, dass sie Azure AD als Speicherort für die Benutzerinformationen verwenden.'
+summary: Azure Active Directory ist ein Identitäts- und Zugriffsverwaltungssystem (Identity and Access Management, IAM). Es stellt einen zentralen Ort zum Speichern von Informationen zu digitalen Identitäten bereit. Sie können Ihre Softwareanwendungen so konfigurieren, dass sie Azure AD als Speicherort für die Benutzerinformationen verwenden.
 metadata:
   title: Dokumentation zur Anwendungsverwaltung
-  description: 'Azure AD ist ein Identitäts- und Zugriffsverwaltungsystem (Identity and Access Management, IAM). Es stellt einen zentralen Ort zum Speichern von Informationen zu digitalen Identitäten bereit. Sie können Ihre Softwareanwendungen so konfigurieren, dass sie Azure AD als Speicherort für die Benutzerinformationen verwenden.'
+  description: Azure AD ist ein Identitäts- und Zugriffsverwaltungsystem (Identity and Access Management, IAM). Es stellt einen zentralen Ort zum Speichern von Informationen zu digitalen Identitäten bereit. Sie können Ihre Softwareanwendungen so konfigurieren, dass sie Azure AD als Speicherort für die Benutzerinformationen verwenden.
   ms.service: active-directory
   ms.subservice: app-mgmt
   ms.workload: identity
@@ -11,140 +11,146 @@ metadata:
   ms.date: 07/08/2021
   author: CelesteDG
   ms.author: CelesteDG
+  ms.openlocfilehash: 4ce23b540b79bfc421a4ee44717bbc47d10cde9f
+  ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+  ms.translationtype: HT
+  ms.contentlocale: de-DE
+  ms.lasthandoff: 11/11/2021
+  ms.locfileid: "132314974"
 landingContent:
-  - title: Grundlagen
-    linkLists:
-      - linkListType: overview
-        links:
-          - text: Worum handelt es sich bei der Anwendungsverwaltung?
-            url: what-is-application-management.md
-      - linkListType: concept
-        links:
-          - text: Welche Art von Apps werden von Azure AD unterstützt?
-            url: ../develop/v2-app-types.md
-          - text: Worum handelt es sich beim einmaligen Anmelden?
-            url: what-is-single-sign-on.md
-  - title: Entwickeln einer App
-    linkLists:
-      - linkListType: concept
-        links:
-          - text: Authentifizierungs- und Autorisierungskonzepte
-            url: ../develop/authentication-vs-authorization.md
-      - linkListType: how-to-guide
-        links:
-          - text: Erstellen einer App mithilfe von Microsoft-Identitäten oder Social Media-Konten
-            url: ../develop/v2-overview.md
-  - title: Integrieren einer App in den Mandanten
-    linkLists:
-      - linkListType: how-to-guide
-        links:
-          - text: Erste Schritte bei der App-Integration
-            url: plan-an-application-integration.md
-          - text: Hinzufügen einer vorab integrierten Cloudanwendung
-            url: add-application-portal.md
-          - text: Registrieren der App
-            url: ../develop/quickstart-register-app.md
-          - text: Migrieren von AD FS-Apps zu Azure AD
-            url: migrate-adfs-apps-to-azure.md
-  - title: Konfigurieren einer App
-    linkLists:
-      - linkListType: how-to-guide
-        links:
-          - text: Konfigurieren von App-Eigenschaften
-            url: add-application-portal-configure.md
-          - text: Zuweisen von Benutzern und Gruppen
-            url: assign-user-or-group-access-portal.md
-          - text: Einmaliges Anmelden konfigurieren
-            url: plan-sso-deployment.md
-          - text: Bereitstellen einer App
-            url: ../governance/what-is-provisioning.md
-          - text: Konfigurieren von „Meine Apps“
-            url: my-apps-deployment-plan.md
-  - title: Schützen einer App
-    linkLists:
-      - linkListType: how-to-guide
-        links:
-          - text: Einrichten des bedingten Zugriffs
-            url: ../conditional-access/concept-conditional-access-cloud-apps.md
-          - text: Einrichten der Multi-Factor Authentication
-            url: ../authentication/howto-mfa-getstarted.md
-          - text: Verwalten von Zertifikaten
-            url: manage-certificates-for-federated-single-sign-on.md
-          - text: Einrichten von Mandanteneinschränkungen
-            url: tenant-restrictions.md
-          - text: Konfigurieren der Tokenverschlüsselung
-            url: howto-saml-token-encryption.md
-          - text: Verwenden von Cloud App Security
-            url: cloud-app-security.md
-          - text: Reagieren auf eine überprivilegierte und verdächtige App
-            url: manage-application-permissions.md
-  - title: Verwalten des App-Zugriffs
-    linkLists:
-      - linkListType: overview
-        links:
-          - text: Identitätsgovernance
-            url: ../governance/identity-governance-overview.md
-      - linkListType: how-to-guide
-        links:
-          - text: Zuweisen von Rollen
-            url: ../develop/howto-add-app-roles-in-azure-ad-apps.md
-          - text: Konfigurieren der Benutzereinwilligung
-            url: configure-user-consent.md
-          - text: Konfigurieren der Administratoreinwilligung
-            url: configure-admin-consent-workflow.md
-          - text: Konfigurieren der Berechtigungsklassifizierung
-            url: configure-permission-classifications.md
-          - text: Berechtigungen verwalten
-            url: ../governance/entitlement-management-scenarios.md
-  - title: Verwalten einer App
-    linkLists:
-      - linkListType: how-to-guide
-        links:
-          - text: 'Anzeigen, Suchen, Sortieren und Filtern einer Liste von Apps in einem Mandanten'
-            url: view-applications-portal.md
-          - text: Beheben von Anmeldefehlern
-            url: ../reports-monitoring/howto-troubleshoot-sign-in-errors.md
-          - text: Deaktivieren der Benutzeranmeldung für eine App
-            url: disable-user-sign-in-portal.md
-          - text: Entfernen des Benutzerzugriffs auf eine App
-            url: methods-for-removing-user-access.md
-          - text: Löschen einer App
-            url: delete-application-portal.md
-  - title: Überwachen einer App
-    linkLists:
-      - linkListType: concept
-        links:
-          - text: Anmeldeprotokolle
-            url: ../reports-monitoring/concept-sign-ins.md
-          - text: Nutzungs- und Erkenntnisbericht
-            url: ../reports-monitoring/concept-usage-insights-report.md
-          - text: Überwachungsprotokolle
-            url: ../reports-monitoring/concept-audit-logs.md
-          - text: Bereitstellungsprotokolle
-            url: ../reports-monitoring/concept-provisioning-logs.md
-      - linkListType: how-to-guide
-        links:
-          - text: Herunterladen von Protokollen
-            url: ../reports-monitoring/howto-download-logs.md
-          - text: Suchen eines Aktivitätsberichts
-            url: ../reports-monitoring/howto-find-activity-reports.md
-          - text: Einrichten von Zugriffsüberprüfungen
-            url: ../governance/deploy-access-reviews.md
-  - title: Remotezugriff auf lokale Apps
-    linkLists:
-      - linkListType: concept
-        links:
-          - text: Anwendungsproxy
-            url: ../app-proxy/application-proxy.md
-      - linkListType: how-to-guide
-        links:
-          - text: Bereitstellung eines Anwendungsproxys
-            url: ../app-proxy/application-proxy-deployment-plan.md
-          - text: Einrichten von Connectors
-            url: ../app-proxy/application-proxy-connectors.md
-          - text: Einmaliges Anmelden konfigurieren
-            url: ../app-proxy/application-proxy-config-sso-how-to.md
-          - text: Veröffentlichen nativer Clientanwendungen
-            url: ../app-proxy/application-proxy-configure-native-client-application.md
-          - text: 'Veröffentlichen von Anwendungen, die Ansprüche unterstützen'
-            url: ../app-proxy/application-proxy-configure-for-claims-aware-applications.md
+- title: Grundlagen
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Worum handelt es sich bei der Anwendungsverwaltung?
+      url: what-is-application-management.md
+  - linkListType: concept
+    links:
+    - text: Welche Art von Apps werden von Azure AD unterstützt?
+      url: ../develop/v2-app-types.md
+    - text: Worum handelt es sich beim einmaligen Anmelden?
+      url: what-is-single-sign-on.md
+- title: Entwickeln einer App
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Authentifizierungs- und Autorisierungskonzepte
+      url: ../develop/authentication-vs-authorization.md
+  - linkListType: how-to-guide
+    links:
+    - text: Erstellen einer App mithilfe von Microsoft-Identitäten oder Social Media-Konten
+      url: ../develop/v2-overview.md
+- title: Integrieren einer App in den Mandanten
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Erste Schritte bei der App-Integration
+      url: plan-an-application-integration.md
+    - text: Hinzufügen einer vorab integrierten Cloudanwendung
+      url: add-application-portal.md
+    - text: Registrieren der App
+      url: ../develop/quickstart-register-app.md
+    - text: Migrieren von AD FS-Apps zu Azure AD
+      url: migrate-adfs-apps-to-azure.md
+- title: Konfigurieren einer App
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Konfigurieren von App-Eigenschaften
+      url: add-application-portal-configure.md
+    - text: Zuweisen von Benutzern und Gruppen
+      url: assign-user-or-group-access-portal.md
+    - text: Einmaliges Anmelden konfigurieren
+      url: plan-sso-deployment.md
+    - text: Bereitstellen einer App
+      url: ../governance/what-is-provisioning.md
+    - text: Konfigurieren von „Meine Apps“
+      url: my-apps-deployment-plan.md
+- title: Schützen einer App
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Einrichten des bedingten Zugriffs
+      url: ../conditional-access/concept-conditional-access-cloud-apps.md
+    - text: Einrichten der Multi-Factor Authentication
+      url: ../authentication/howto-mfa-getstarted.md
+    - text: Verwalten von Zertifikaten
+      url: manage-certificates-for-federated-single-sign-on.md
+    - text: Einrichten von Mandanteneinschränkungen
+      url: tenant-restrictions.md
+    - text: Konfigurieren der Tokenverschlüsselung
+      url: howto-saml-token-encryption.md
+    - text: Verwenden von Defender for Cloud Apps
+      url: cloud-app-security.md
+    - text: Reagieren auf eine überprivilegierte und verdächtige App
+      url: manage-application-permissions.md
+- title: Verwalten des App-Zugriffs
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Identitätsgovernance
+      url: ../governance/identity-governance-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Zuweisen von Rollen
+      url: ../develop/howto-add-app-roles-in-azure-ad-apps.md
+    - text: Konfigurieren der Benutzereinwilligung
+      url: configure-user-consent.md
+    - text: Konfigurieren der Administratoreinwilligung
+      url: configure-admin-consent-workflow.md
+    - text: Konfigurieren der Berechtigungsklassifizierung
+      url: configure-permission-classifications.md
+    - text: Berechtigungen verwalten
+      url: ../governance/entitlement-management-scenarios.md
+- title: Verwalten einer App
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Anzeigen, Suchen, Sortieren und Filtern einer Liste von Apps in einem Mandanten
+      url: view-applications-portal.md
+    - text: Beheben von Anmeldefehlern
+      url: ../reports-monitoring/howto-troubleshoot-sign-in-errors.md
+    - text: Deaktivieren der Benutzeranmeldung für eine App
+      url: disable-user-sign-in-portal.md
+    - text: Entfernen des Benutzerzugriffs auf eine App
+      url: methods-for-removing-user-access.md
+    - text: Löschen einer App
+      url: delete-application-portal.md
+- title: Überwachen einer App
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Anmeldeprotokolle
+      url: ../reports-monitoring/concept-sign-ins.md
+    - text: Nutzungs- und Erkenntnisbericht
+      url: ../reports-monitoring/concept-usage-insights-report.md
+    - text: Überwachungsprotokolle
+      url: ../reports-monitoring/concept-audit-logs.md
+    - text: Bereitstellungsprotokolle
+      url: ../reports-monitoring/concept-provisioning-logs.md
+  - linkListType: how-to-guide
+    links:
+    - text: Herunterladen von Protokollen
+      url: ../reports-monitoring/howto-download-logs.md
+    - text: Suchen eines Aktivitätsberichts
+      url: ../reports-monitoring/howto-find-activity-reports.md
+    - text: Einrichten von Zugriffsüberprüfungen
+      url: ../governance/deploy-access-reviews.md
+- title: Remotezugriff auf lokale Apps
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Anwendungsproxy
+      url: ../app-proxy/application-proxy.md
+  - linkListType: how-to-guide
+    links:
+    - text: Bereitstellung eines Anwendungsproxys
+      url: ../app-proxy/application-proxy-deployment-plan.md
+    - text: Einrichten von Connectors
+      url: ../app-proxy/application-proxy-connectors.md
+    - text: Einmaliges Anmelden konfigurieren
+      url: ../app-proxy/application-proxy-config-sso-how-to.md
+    - text: Veröffentlichen nativer Clientanwendungen
+      url: ../app-proxy/application-proxy-configure-native-client-application.md
+    - text: Veröffentlichen von Anwendungen, die Ansprüche unterstützen
+      url: ../app-proxy/application-proxy-configure-for-claims-aware-applications.md
