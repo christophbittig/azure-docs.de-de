@@ -4,18 +4,19 @@ description: Erfahren Sie, wie Sie Ihre tägliche Azure-Nutzung und -Gebühren h
 keywords: Nutzungsabrechnung, Nutzungsgebühren, Nutzung herunterladen, Nutzung anzeigen, Azure-Rechnung, Azure-Nutzung
 author: bandersmsft
 ms.author: banders
+ms.reviewer: adwise
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
 ms.custom: devx-track-azurecli
-ms.date: 09/15/2021
-ms.openlocfilehash: 7b5a9f195d2ba8b682dd4458358cb9d85b7f16d0
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/22/2021
+ms.openlocfilehash: e7f4a5f12ec9e1be5c7129d12ed519bc4c781d61
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128644522"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130255402"
 ---
 # <a name="view-and-download-your-azure-usage-and-charges"></a>Anzeigen und Herunterladen der Azure-Nutzung und -Gebühren
 
@@ -48,6 +49,10 @@ Sie müssen Unternehmensadministrator, Kontobesitzer oder Abteilungsadministrato
 1. Wählen Sie **Verbrauch + Gebühren** aus.
 1. Wählen Sie für den Monat, den Sie herunterladen möchten, **Herunterladen** aus.  
     ![Screenshot der Seite „Kostenverwaltung + Abrechnung“ für E A-Kunden](./media/download-azure-daily-usage/download-usage-ea.png)
+1. Wählen Sie auf der Seite „Nutzung und Gebühren herunterladen“ in der Liste unter „Nutzungsdetails“ die Art der Gebühren aus, die Sie herunterladen möchten. Je nach Auswahl enthält die CSV-Datei alle Gebühren (Nutzung und Käufe) einschließlich der RI-Käufe (Reservierungen). Es können auch amortisierte Gebühren (Nutzung und Käufe) einschließlich der Reservierungskäufe angegeben werden. 
+    :::image type="content" source="./media/download-azure-daily-usage/select-usage-detail-charge-type.png" alt-text="Screenshot der Auswahl des Gebührentyps für Nutzungsdetails zum Herunterladen" :::
+1. Wählen Sie **Dokument vorbereiten** aus.
+1.  Je nach monatlicher Nutzung kann es eine Weile dauern, bis Azure das Dokument zum Herunterladen vorbereitet hat. Wenn es zum Herunterladen bereit ist, wählen Sie **CSV herunterladen** aus.
 
 ## <a name="download-usage-for-your-microsoft-customer-agreement"></a>Herunterladen der Nutzungsdaten für Ihre Microsoft-Kundenvereinbarung
 
@@ -89,16 +94,15 @@ Bereiten Sie zunächst Ihre Umgebung für die Azure-Befehlszeilenschnittstelle v
 Nachdem Sie sich angemeldet haben, verwenden Sie den Befehl [az costmanagement query](/cli/azure/costmanagement#az_costmanagement_query), um Nutzungsinformationen für Ihr Abonnement für den bisherigen Kalendermonat abzufragen:
 
 ```azurecli
-az costmanagement query --timeframe MonthToDate --type Usage \
+az costmanagement query --timeframe MonthToDate --type Usage --dataset-aggregation '{\"totalCost\":{\"name\":\"PreTaxCost\",\"function\":\"Sum\"}}' --dataset-grouping name="ResourceGroup" type="Dimension"
    --scope "subscriptions/00000000-0000-0000-0000-000000000000"
 ```
 
 Sie können die Abfrage auch mithilfe des Parameters **--dataset-filter** oder anderer Parameter eingrenzen:
 
 ```azurecli
-az costmanagement query --timeframe MonthToDate --type Usage \
-   --scope "subscriptions/00000000-0000-0000-0000-000000000000" \
-   --dataset-filter "{\"and\":[{\"or\":[{\"dimension\":{\"name\":\"ResourceLocation\",\"operator\":\"In\",\"values\":[\"East US\",\"West Europe\"]}},{\"tag\":{\"name\":\"Environment\",\"operator\":\"In\",\"values\":[\"UAT\",\"Prod\"]}}]},{\"dimension\":{\"name\":\"ResourceGroup\",\"operator\":\"In\",\"values\":[\"API\"]}}]}"
+'{\"totalCost\":{\"name\":\"PreTaxCost\",\"function\":\"Sum\"}}' --dataset-grouping name="ResourceGroup" type="Dimension"
+   --scope "subscriptions/00000000-0000-0000-0000-000000000000" --dataset-filter "{\"and\":[{\"or\":[{\"dimension\":{\"name\":\"ResourceLocation\",\"operator\":\"In\",\"values\":[\"East US\",\"West Europe\"]}},{\"tag\":{\"name\":\"Environment\",\"operator\":\"In\",\"values\":[\"UAT\",\"Prod\"]}}]},{\"dimension\":{\"name\":\"ResourceGroup\",\"operator\":\"In\",\"values\":[\"API\"]}}]}"
 ```
 
 Mit dem Parameter **--dataset-filter** wird eine JSON-Zeichenfolge oder `@json-file` übernommen.

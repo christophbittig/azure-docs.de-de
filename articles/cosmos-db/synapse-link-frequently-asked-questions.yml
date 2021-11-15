@@ -6,14 +6,14 @@ metadata:
   ms.author: rosouz
   ms.service: cosmos-db
   ms.topic: conceptual
-  ms.date: 11/30/2020
+  ms.date: 11/02/2021
   ms.custom: synapse-cosmos-db
-  ms.openlocfilehash: a03572b75d12535dfd81e1539e2d4d27b1ffc2df
-  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.openlocfilehash: 8dc71afd5e134e1822df027e9b5f51dc33ed3b76
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 11/02/2021
-  ms.locfileid: "131011406"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131425839"
 title: Häufig gestellte Fragen zu Azure Synapse Link für Azure Cosmos DB
 summary: >
   [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -108,8 +108,7 @@ sections:
       Wenn bestimmte Elemente in Ihrem Container gegen das [genau definierte Schema für Analysen](analytical-store-introduction.md#analytical-schema) verstoßen, werden sie nicht in den Analysespeicher aufgenommen. Wenn Sie Szenarien durch ein genau definiertes Schema für Analysen blockiert haben, wenden Sie sich per E-Mail an das [Azure Cosmos DB-Team](mailto:cosmosdbsynapselink@microsoft.com), um Hilfe zu erhalten.
   - question: >
       Kann ich die Daten im Analysespeicher anders partitionieren als im Transaktionsspeicher?
-    answer: >
-      Die Daten im Analysespeicher werden basierend auf der horizontalen Partitionierung von Datenbank-Shards im Transaktionsspeicher partitioniert. Derzeit ist es nicht möglich, eine andere Partitionierungsstrategie für den Analysespeicher auszuwählen.
+    answer: "Der Analysespeicher ist standardmäßig nicht partitioniert.Wenn Ihre analytischen Abfragen häufig Filter verwenden, können Sie basierend auf diesen Feldern partitionieren, um die Abfrageleistung zu verbessern. Weitere Informationen finden Sie in den Artikeln zur [Einführung in die benutzerdefinierte Partitionierung](custom-partitioning-analytical-store.md) und [Konfigurieren der benutzerdefinierten Partitionierung](configure-custom-partitioning.md).  \n"
   - question: >
       Kann ich die Art und Weise, wie Transaktionsdaten in das Spaltenformat im Analysespeicher transformiert werden, anpassen oder außer Kraft setzen?
     answer: >
@@ -154,7 +153,7 @@ sections:
   - question: >
       Ist es möglich, kundenseitig verwaltete Schlüssel mit Azure Synapse Link zu verwenden?
     answer: >
-      Ja, Azure Synapse Link unterstützt das Konfigurieren von kundenseitig verwalteten Schlüsseln mithilfe der verwalteten Identität Ihres Azure Cosmos DB-Kontos. Sie können Daten nahtlos im Transaktions- und Analysespeicher verschlüsseln und dabei die gleichen kundenseitig verwalteten Schlüssel automatisiert und transparent verwenden. Weitere Informationen finden Sie unter [Verwenden einer verwalteten Identität in der Azure Key Vault-Zugriffsrichtlinie](how-to-setup-cmk.md#using-managed-identity).
+      Ja, Azure Synapse Link unterstützt das Konfigurieren von kundenseitig verwalteten Schlüsseln mithilfe der verwalteten Identität Ihres Azure Cosmos DB-Kontos. Sie können Daten nahtlos im Transaktions- und Analysespeicher verschlüsseln und dabei die gleichen kundenseitig verwalteten Schlüssel automatisiert und transparent verwenden. Weitere Informationen finden Sie in dem Artikel [Konfigurieren von kundenseitig verwalteten Schlüsseln mithilfe verwalteter Identitäten eines Azure Cosmos DB-Kontos](how-to-setup-cmk.md#using-managed-identity).
   - question: >
       Bietet Azure Synapse Link eine Netzwerkisolation mit verwalteten virtuellen Azure Synapse-Netzwerken?
     answer: >

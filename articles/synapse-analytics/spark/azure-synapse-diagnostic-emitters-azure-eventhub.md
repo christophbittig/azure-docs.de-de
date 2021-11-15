@@ -1,5 +1,5 @@
 ---
-title: Sammeln Ihrer Apache Spark-Anwendungsprotokolle und -Metriken mithilfe von Azure Event Hubs (Vorschau)
+title: Sammeln Ihrer Apache Spark-Anwendungsprotokolle und -Metriken mithilfe von Azure Event Hubs
 description: In diesem Tutorial erfahren Sie, wie Sie die Diagnoseemittererweiterung von Synapse Apache Spark verwenden, um Protokolle, Ereignisprotokolle und Metriken von Apache Spark-Anwendungen an Ihre Azure Event Hubs-Instanz auszugeben.
 services: synapse-analytics
 author: hrasheed-msft
@@ -9,14 +9,14 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 08/31/2021
-ms.openlocfilehash: c3b8fbda0eaaa932f784540cc55d0a4e583927f0
-ms.sourcegitcommit: f2d0e1e91a6c345858d3c21b387b15e3b1fa8b4c
+ms.openlocfilehash: da6a02c12c9e24d4091c632fbf73a0cc97255afa
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/07/2021
-ms.locfileid: "123544587"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223099"
 ---
-# <a name="collect-your-apache-spark-applications-logs-and-metrics-using-azure-event-hubs-preview"></a>Sammeln Ihrer Apache Spark-Anwendungsprotokolle und -Metriken mithilfe von Azure Event Hubs (Vorschau)
+# <a name="collect-your-apache-spark-applications-logs-and-metrics-using-azure-event-hubs"></a>Sammeln Ihrer Apache Spark-Anwendungsprotokolle und -Metriken mithilfe von Azure Event Hubs 
 
 Die Diagnoseemittererweiterung von Synapse Apache Spark ist eine Bibliothek, die es der Apache Spark-Anwendung ermöglicht, Protokolle, Ereignisprotokolle und Metriken an ein einzelnes Ziel oder an mehrere Ziele wie Azure Log Analytics, Azure Storage und Azure Event Hubs auszugeben. 
 
@@ -29,7 +29,7 @@ In diesem Tutorial erfahren Sie, wie Sie die Diagnoseemittererweiterung von Syna
 Zum Sammeln von Diagnoseprotokollen und Metriken für Azure Event Hubs kann eine bereits vorhandene Azure Event Hubs-Instanz verwendet werden.
 Sollten Sie über keine verfügen, können Sie [einen Event Hub erstellen](../../event-hubs/event-hubs-create.md).
 
-### <a name="step-2-create-a-apache-spark-configuration-file"></a>Schritt 2: Erstellen einer Apache Spark-Konfigurationsdatei
+### <a name="step-2-create-an-apache-spark-configuration-file"></a>Schritt 2: Erstellen einer Apache Spark-Konfigurationsdatei
 
 Erstellen Sie eine Datei namens `diagnostic-emitter-azure-event-hub-conf.txt`, und kopieren Sie den folgenden Inhalt in die Datei. Alternativ können Sie eine [Beispielvorlagendatei](https://go.microsoft.com/fwlink/?linkid=2169375) für die Apache Spark-Poolkonfiguration herunterladen.
 

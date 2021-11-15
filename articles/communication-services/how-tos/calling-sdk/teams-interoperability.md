@@ -9,12 +9,12 @@ ms.subservice: teams-interop
 ms.topic: how-to
 ms.date: 08/10/2021
 ms.custom: template-how-to
-ms.openlocfilehash: a2581efd7d3de01451012badfbfb459002b5d9a8
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 0b2469def75cc54efc9efced2c25587b466f4cf0
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128635677"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132063625"
 ---
 # <a name="join-a-teams-meeting"></a>Teilnehmen an einer Teams-Besprechung
 
@@ -52,6 +52,14 @@ const locator = {
 }
 const call = callAgent.join(locator);
 ```
+
+Teilnehmen mithilfe der Besprechungs-ID (dies befindet sich derzeit in der eingeschränkten Vorschauphase):
+
+```js
+const locator = { meetingId: '<MEETING_ID>'}
+const call = callAgent.join(locator);
+```
+
 ## <a name="next-steps"></a>Nächste Schritte
 - [Informationen zum Verwalten von Anrufen](./manage-calls.md)
 - [Informationen zum Verwalten von Video](./manage-video.md)

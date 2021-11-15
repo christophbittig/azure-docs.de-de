@@ -11,12 +11,12 @@ author: emlisa
 ms.author: emlisa
 ms.reviewer: mathoma
 ms.date: 10/25/2021
-ms.openlocfilehash: 8977af3468ce861efb9a2e97048b681c2b41d76d
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 2d4aa937a29170ff1ebabc9b1e0bbe316b526189
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131069537"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131894125"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-geo-failover-of-multiple-databases"></a>Verwenden von Autofailover-Gruppen für ein transparentes und koordiniertes Geofailover mehrerer Datenbanken
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -172,7 +172,7 @@ Eine oder mehrere Failovergruppen können zwischen zwei Servern in verschiedenen
   
 ### <a name="use-the-read-write-listener-to-connect-to-primary"></a><a name="using-read-write-listener-for-oltp-workload"></a> Verwenden des Lese-/Schreiblisteners zum Herstellen einer Verbindung mit der primären Datenbank
 
-Verwenden Sie für Lese-/Schreibworkloads `<fog-name>.database.windows.net` als Servernamen in der Verbindungszeichenfolge. Verbindungen werden automatisch an die primäre Datenbank weitergeleitet. Dieser Name wird nach dem Failover nicht geändert. Beachten Sie, dass das Failover die Aktualisierung von DNS-Einträgen einschließt, damit die Clientverbindungen erst dann an die neue primäre Datenbank weitergeleitet werden, wenn der Client-DNS-Cache aktualisiert wurde.
+Verwenden Sie für Lese-/Schreibworkloads `<fog-name>.database.windows.net` als Servernamen in der Verbindungszeichenfolge. Verbindungen werden automatisch an die primäre Datenbank weitergeleitet. Dieser Name wird nach dem Failover nicht geändert. Beachten Sie, dass das Failover die Aktualisierung von DNS-Einträgen einschließt, damit die Clientverbindungen erst dann an die neue primäre Datenbank weitergeleitet werden, wenn der Client-DNS-Cache aktualisiert wurde. Die Gültigkeitsdauer (TTL) des DNS-Eintrags für den primären und sekundären Listener beträgt 30 Sekunden.
 
 ### <a name="use-the-read-only-listener-to-connect-to-geo-secondary"></a><a name="using-read-only-listener-for-read-only-workload"></a> Verwenden des schreibgeschützten Listeners zum Herstellen einer Verbindung mit der sekundären Geodatenbank
 

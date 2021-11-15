@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 10/18/2021
 ms.author: duau
-ms.openlocfilehash: afcb09356c10a68b66870cf9594dd5fe9c6a18cb
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: da3be1f9fbfc2872c31ed4f40d01a1d38ef300ef
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132058466"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131478745"
 ---
 # <a name="configure-custom-bgp-communities-for-azure-expressroute-private-peering-preview"></a>Konfigurieren benutzerdefinierter BGP-Communitys für Privates Azure ExpressRoute Peering (Vorschau)
 
@@ -85,7 +85,7 @@ BGP-Communitys sind Gruppierungen von IP-Präfixen, die mit einem Communitywert 
         Name = 'myVirtualNetwork'
         ResourceGroupName = 'myERRG'
     } 
-    $vnet = Get-AzVirtualNetwork @virtualnetwork
+    $vnet = Get-AzVirtualNewtork @virtualnetwork
     ```
 
 1. Aktualisieren Sie den `VirtualNetworkCommunity`-Wert für Ihr virtuelles Netzwerk.

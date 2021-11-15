@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: mlops
 ms.topic: how-to
-ms.custom: how-to, managed online endpoints, devplatv2
+ms.custom: how-to, managed online endpoints, devplatv2, studio
 ms.author: ssambare
 author: shivanissambare
-ms.reviewer: peterlu
-ms.date: 05/25/2021
-ms.openlocfilehash: d195ce6019f200b3cd3b264aacf09a8cbdb30c5f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.reviewer: laobri
+ms.date: 10/21/2021
+ms.openlocfilehash: fee2a8211b90c2b7dbc06a1e64f047e28031eaa6
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131057588"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131560378"
 ---
 # <a name="create-and-use-managed-online-endpoints-preview-in-the-studio"></a>Erstellen und Verwenden von verwalteten Onlineendpunkten (Vorschau) in Studio
 
@@ -27,17 +27,15 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 > [!div class="checklist"]
 > * Erstellen eines verwalteten Onlineendpunkts
 > * Anzeigen von verwalteten Onlineendpunkten
+> * Hinzufügen einer Bereitstellung zu einem verwalteten Onlineendpunkt
 > * Aktualisieren von verwalteten Onlineendpunkten
 > * Löschen von verwalteten Onlineendpunkten und Bereitstellungen
 
 [!INCLUDE [preview disclaimer](../../includes/machine-learning-preview-generic-disclaimer.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
-
 - Ein Azure Machine Learning-Arbeitsbereich. Weitere Informationen finden Sie unter [Erstellen eines Azure Machine Learning-Arbeitsbereichs](how-to-manage-workspace.md).
-- Ein [Modell, das für Ihren Arbeitsbereich registriert ist](how-to-deploy-and-where.md#registermodel).
-- Eine Bewertungsdatei für Ihr bereitgestelltes Modell. Ein Schritt-für-Schritt-Beispiel für die Registrierung eines Modells und die Erstellung einer Bewertungsdatei finden Sie unter [Tutorial: Bildklassifizierung](tutorial-train-models-with-aml.md).
-- Eine benutzerdefinierte Umgebung, die für Ihren Arbeitsbereich registriert ist, **oder** ein Docker-Containerregistrierungs-Image mit einer Python-Umgebung. Weitere Informationen zu Umgebungen finden Sie unter [Erstellen und Verwenden von Softwareumgebungen in Azure Machine Learning](how-to-use-environments.md).
+- Das Beispielrepository: Klonen Sie das [AzureML-Beispielrepository](https://github.com/Azure/azureml-examples). In diesem Artikel werden die Ressourcen in `/cli/endpoints/online` verwendet.
 
 ## <a name="create-a-managed-online-endpoint-preview"></a>Erstellen eines verwalteten Onlineendpunkts (Vorschau)
 
@@ -47,18 +45,23 @@ Verwenden Sie Studio, um direkt in Ihrem Browser einen verwalteten Onlineendpunk
 1. Wählen Sie in der linken Navigationsleiste die Seite **Endpunkte** aus.
 1. Wählen Sie **+ Erstellen (Vorschau)** aus.
 
-:::image type="content" source="media/how-to-create-managed-online-endpoint-studio/endpoint-create-managed-online-endpoint.png" alt-text="Erstellen eines verwalteten Onlineendpunkts über die Registerkarte „Endpunkte“":::
+:::image type="content" source="media/how-to-create-managed-online-endpoint-studio/endpoint-create-managed-online-endpoint.png" lightbox="media/how-to-create-managed-online-endpoint-studio/endpoint-create-managed-online-endpoint.png" alt-text="Screenshot: Erstellen eines verwalteten Onlineendpunkts über die Registerkarte „Endpunkte“":::
+
+:::image type="content" source="media/how-to-create-managed-online-endpoint-studio/online-endpoint-wizard.png" lightbox="media/how-to-create-managed-online-endpoint-studio/online-endpoint-wizard.png" alt-text="Screenshot: Assistent zum Erstellen eines verwalteten Onlineendpunkts":::
+
+### <a name="follow-the-setup-wizard-to-configure-your-managed-online-endpoint"></a>Befolgen Sie die Anweisungen des Setup-Assistenten, um Ihren verwalteten Onlineendpunkt zu konfigurieren.
+
+1. Unser [Beispielmodell](https://github.com/Azure/azureml-examples/tree/main/cli/endpoints/online/model-1/model) und [Bewertungsskript](https://github.com/Azure/azureml-examples/blob/main/cli/endpoints/online/model-1/onlinescoring/score.py) finden Sie unter [https://github.com/Azure/azureml-examples/tree/main/cli/endpoints/online/model-1](https://github.com/Azure/azureml-examples/tree/main/cli/endpoints/online/model-1) und können es dort verwenden.
+1. Im Schritt **Umgebung** können Sie die zusammengestellte Umgebung **AzureML-sklearn-0.24.1-ubuntu18.04-py37-cpu-inference** auswählen.
 
 Sie können einen verwalteten Onlineendpunkt in Studio auch über die Seite **Modelle** erstellen. Dies ist eine einfache Möglichkeit, um einer vorhandenen verwalteten Onlinebereitstellung ein Modell hinzuzufügen.
 
 1. Wechseln Sie zum [Azure Machine Learning-Studio](https://ml.azure.com).
 1. Wählen Sie auf der linken Navigationsleiste die Seite **Modelle** aus.
 1. Wählen Sie ein Modell aus, indem Sie im Kreis neben dem Modellnamen ein Häkchen einfügen.
-1. Wählen Sie **Deploy** > **Deploy to endpoint (preview)** (Bereitstellen > Auf Endpunkt bereitstellen (Vorschau)) aus.
+1. Wählen Sie **Bereitstellen** > **Auf Echtzeit-Endpunkt bereitstellen (Vorschau)** aus.
 
-Befolgen Sie die Anweisungen des Setup-Assistenten, um Ihren verwalteten Onlineendpunkt zu konfigurieren.
-
-:::image type="content" source="media/how-to-create-managed-online-endpoint-studio/models-page-deployment-latest.png" alt-text="Erstellen eines verwalteten Onlineendpunkts über die Registerkarte „Modelle“":::
+:::image type="content" source="media/how-to-create-managed-online-endpoint-studio/deploy-from-models-page.png" lightbox="media/how-to-create-managed-online-endpoint-studio/deploy-from-models-page.png" alt-text="Screenshot: Erstellen eines verwalteten Onlineendpunkts über die Benutzeroberfläche „Modelle“":::
 
 ## <a name="view-managed-online-endpoints-preview"></a>Anzeigen von verwalteten Onlineendpunkten (Vorschau)
 
@@ -67,6 +70,8 @@ Sie können Ihre verwalteten Onlineendpunkte (Vorschau) auf der Seite **Endpunkt
 1. Wählen Sie in der linken Navigationsleiste die Option **Endpunkte** aus.
 1. (Optional) Erstellen Sie unter **Computetyp** einen **Filter**, um nur die Computetypen für **Verwaltet** anzuzeigen.
 1. Wählen Sie einen Endpunktnamen aus, um die Seite mit den Endpunktdetails anzuzeigen.
+
+:::image type="content" source="media/how-to-create-managed-online-endpoint-studio/managed-endpoint-details-page.png" lightbox="media/how-to-create-managed-online-endpoint-studio/managed-endpoint-details-page.png" alt-text="Screenshot: Detailansicht des verwalteten Endpunkts":::
 
 ### <a name="test"></a>Test
 
@@ -77,7 +82,7 @@ Verwenden Sie auf der Seite mit den Endpunktdetails die Registerkarte **Test**, 
 1. Geben Sie eine Beispieleingabe ein.
 1. Klicken Sie auf **Test**.
 
-:::image type="content" source="media/how-to-create-managed-online-endpoint-studio/test-deployment.png" alt-text="Testen einer Bereitstellung durch das Angeben von Beispieldaten direkt in Ihrem Browser":::
+:::image type="content" source="media/how-to-create-managed-online-endpoint-studio/test-deployment.png" lightbox="media/how-to-create-managed-online-endpoint-studio/test-deployment.png" alt-text="Screenshot: Testen einer Bereitstellung durch das Angeben von Beispieldaten direkt in Ihrem Browser":::
 
 ### <a name="monitoring"></a>Überwachung
 
@@ -85,32 +90,38 @@ Verwenden Sie die Registerkarte **Überwachung**, um für Ihren verwalteten Onli
 
 Zur Verwendung der Registerkarte „Überwachung“ müssen Sie beim Erstellen des Endpunkts die Option **Enable Application Insight diagnostic and data collection** (Application Insights-Diagnose und Datenerfassung aktivieren) aktivieren.
 
-:::image type="content" source="media/how-to-create-managed-online-endpoint-studio/monitor-endpoint.png" alt-text="Überwachen von Metriken auf Endpunktebene in Studio":::
+:::image type="content" source="media/how-to-create-managed-online-endpoint-studio/monitor-endpoint.png" lightbox="media/how-to-create-managed-online-endpoint-studio/monitor-endpoint.png" alt-text="Screenshot: Überwachen von Metriken auf Endpunktebene in Studio":::
 
 Weitere Informationen zum Anzeigen von zusätzlichen Monitoren und Warnungen finden Sie unter [Überwachen verwalteter Onlineendpunkte](how-to-monitor-online-endpoints.md).
 
-## <a name="update-managed-online-endpoints-preview"></a>Aktualisieren von verwalteten Onlineendpunkten (Vorschau)
+## <a name="add-a-deployment-to-a-managed-online-endpoint"></a>Hinzufügen einer Bereitstellung zu einem verwalteten Onlineendpunkt
 
-Hier wird beschrieben, wie Sie Ihre verwalteten Onlineendpunkte (Vorschau) aktualisieren, um weitere Bereitstellungen hinzuzufügen und die Datenverkehrszuordnung anzupassen.
+Sie können zu Ihrem vorhandenen verwalteten Onlineendpunkt eine Bereitstellung hinzufügen.
 
-### <a name="add-a-managed-online-deployment"></a>Hinzufügen einer verwalteten Onlinebereitstellung
-
-Befolgen Sie die hier angegebene Anleitung, um einem vorhandenen verwalteten Onlineendpunkt eine Bereitstellung hinzuzufügen:
+Gehen Sie auf der **Seite mit den Endpunktdetails** wie folgt vor:
 
 1. Wählen Sie auf der [Seite mit den Endpunktdetails](#view-managed-online-endpoints-preview) die Schaltfläche **+ Bereitstellung hinzufügen** aus.
 2. Befolgen Sie die Anleitung, um die Bereitstellung abzuschließen.
+
+:::image type="content" source="media/how-to-create-managed-online-endpoint-studio/add-deploy-option-from-endpoint-page.png" lightbox="media/how-to-create-managed-online-endpoint-studio/add-deploy-option-from-endpoint-page.png" alt-text="Screenshot: Option „Bereitstellung hinzufügen“ auf der Seite „Endpunktdetails“":::
 
 Alternativ können Sie die Seite **Modelle** verwenden, um eine Bereitstellung hinzuzufügen:
 
 1. Wählen Sie auf der linken Navigationsleiste die Seite **Modelle** aus.
 1. Wählen Sie ein Modell aus, indem Sie im Kreis neben dem Modellnamen ein Häkchen einfügen.
-1. Wählen Sie **Deploy** > **Deploy to endpoint (preview)** (Bereitstellen > Auf Endpunkt bereitstellen (Vorschau)) aus.
+1. Wählen Sie **Bereitstellen** > **Auf Echtzeit-Endpunkt bereitstellen (Vorschau)** aus.
 1. Geben Sie an, dass Sie einen vorhandenen verwalteten Onlineendpunkt bereitstellen möchten.
+
+:::image type="content" source="media/how-to-create-managed-online-endpoint-studio/select-existing-managed-endpoints.png" lightbox="media/how-to-create-managed-online-endpoint-studio/select-existing-managed-endpoints.png" alt-text="Screenshot: Option „Bereitstellung hinzufügen“ auf der Seite „Modelle“":::
 
 > [!NOTE]
 > Sie können den Datenverkehrsausgleich zwischen Bereitstellungen auf einem Endpunkt anpassen, wenn Sie eine neue Bereitstellung hinzufügen.
 >
-> :::image type="content" source="media/how-to-create-managed-online-endpoint-studio/adjust-deployment-traffic.png" alt-text="Verwenden von Schiebereglern zum Steuern der Verteilung des Datenverkehrs auf mehrere Bereitstellungen":::
+> :::image type="content" source="media/how-to-create-managed-online-endpoint-studio/adjust-deployment-traffic.png" lightbox="media/how-to-create-managed-online-endpoint-studio/adjust-deployment-traffic.png" alt-text="Screenshot: Verwenden von Schiebereglern zum Steuern der Verteilung des Datenverkehrs auf mehrere Bereitstellungen":::
+
+## <a name="update-managed-online-endpoints-preview"></a>Aktualisieren von verwalteten Onlineendpunkten (Vorschau)
+
+Sie können den Prozentsatz des Bereitstellungsdatenverkehrs und die Anzahl der Instanzen über Azure Machine Learning Studio aktualisieren.
 
 ### <a name="update-deployment-traffic-allocation"></a>Aktualisieren der Datenverkehrszuordnung für Bereitstellungen
 
@@ -131,7 +142,6 @@ Befolgen Sie die unten angegebene Anleitung, um eine einzelne Bereitstellung hoc
 1. Aktualisieren Sie die Anzahl der Instanzen.
 1. Klicken Sie auf **Aktualisieren**.
 
-
 ## <a name="delete-managed-online-endpoints-and-deployments-preview"></a>Löschen von verwalteten Onlineendpunkten und Bereitstellungen (Vorschau)
 
 Hier wird beschrieben, wie Sie einen vollständigen verwalteten Onlineendpunkt (Vorschau) und die zugehörigen Bereitstellungen (Vorschau) löschen. Sie können auch eine einzelne Bereitstellung von einem verwalteten Onlineendpunkt löschen.
@@ -146,7 +156,6 @@ Beim Löschen eines verwalteten Onlineendpunkts werden auch alle zugehörigen Be
 1. Klicken Sie auf **Löschen**.
 
 Alternativ können Sie einen verwalteten Onlineendpunkt auch direkt auf der [Seite mit den Endpunktdetails](#view-managed-online-endpoints-preview) löschen. 
-
 
 ### <a name="delete-an-individual-deployment"></a>Löschen einer einzelnen Bereitstellung
 

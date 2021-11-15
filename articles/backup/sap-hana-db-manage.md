@@ -2,13 +2,16 @@
 title: Verwalten von gesicherten SAP HANA-Datenbanken für Azure-VMs
 description: In diesem Artikel erfahren Sie mehr über allgemeine Aufgaben zum Verwalten und Überwachen von SAP HANA-Datenbanken, die auf virtuellen Azure-Computern ausgeführt werden.
 ms.topic: conceptual
-ms.date: 11/12/2019
-ms.openlocfilehash: 2e793cddeb4e751c47ffa82786f24e65a0873faf
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.date: 11/02/2021
+author: v-amallick
+ms.service: backup
+ms.author: v-amallick
+ms.openlocfilehash: 03f7609b02461a89519ba19f3f70dd14e6922a2a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129231366"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131431333"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>Verwalten und Überwachen gesicherter SAP HANA-Datenbanken
 
@@ -18,13 +21,13 @@ Wenn Sie noch keine Sicherungen für Ihre SAP HANA-Datenbanken konfiguriert habe
 
 ## <a name="monitor-manual-backup-jobs-in-the-portal"></a>Überwachen manueller Sicherungsaufträge im Portal
 
-Azure Backup zeigt alle manuell ausgelösten Aufträge im Azure-Portal im Abschnitt **Sicherungsaufträge** an.
+Azure Backup zeigt alle manuell ausgelösten Aufträge im Azure-Portal im Abschnitt **Sicherungsaufträge** im **Backup Center** an.
 
-![Abschnitt „Sicherungsaufträge“](./media/sap-hana-db-manage/backup-jobs.png)
+:::image type="content" source="./media/sap-hana-db-manage/backup-center-jobs-list-inline.png" alt-text="Screenshot: Abschnitt „Sicherungsaufträge“" lightbox="./media/sap-hana-db-manage/backup-center-jobs-list-expanded.png":::
 
 Zu den Aufträgen, die in diesem Portal angezeigt werden, gehören Datenbankermittlung und -registrierung sowie Sicherungs- und Wiederherstellungsvorgänge. Geplante Aufträge (einschließlich Protokollsicherungen) werden in diesem Abschnitt nicht angezeigt. Manuell ausgelöste Sicherungen aus den nativen SAP HANA-Clients (Studio/Cockpit/DBA Cockpit) werden hier ebenfalls nicht angezeigt.
 
-![Liste „Sicherungsaufträge“](./media/sap-hana-db-manage/backup-jobs-list.png)
+:::image type="content" source="./media/sap-hana-db-manage/hana-view-jobs-inline.png" alt-text="Screenshot von der Liste „Sicherungsaufträge“" lightbox="./media/sap-hana-db-manage/hana-view-jobs-expanded.png":::
 
 Weitere Informationen zur Überwachung finden Sie unter [Überwachung im Azure-Portal](./backup-azure-monitoring-built-in-monitor.md) und [Überwachen im richtigen Maßstab mithilfe von Azure Monitor](./backup-azure-monitoring-use-azuremonitor.md).
 
@@ -61,10 +64,10 @@ Mit Azure Backup wird die Verwaltung einer gesicherten SAP HANA-Datenbank mit ei
 
 Sicherungen werden gemäß dem Richtlinienzeitplan ausgeführt. Eine bedarfsgesteuerte Sicherung können Sie wie folgt ausführen:
 
-1. Wählen Sie im Tresormenü die Option **Sicherungselemente** aus.
-2. Wählen Sie unter **Sicherungselemente** den virtuellen Computer aus, auf dem die SAP HANA-Datenbank ausgeführt wird, und wählen Sie dann **Jetzt sichern** aus.
+1. Wählen Sie im **Backup Center** im Menü die **Sicherungsinstanzen** aus.
+2. Wählen Sie **SAP HANA in Azure-VM** als Datenquellentyp und anschließend die VM aus, auf der die SAP HANA-Datenbank ausgeführt wird, und klicken Sie dann auf **Jetzt sichern**.
 3. Wählen Sie in **Jetzt sichern** den Sicherungstyp aus, den Sie durchführen möchten. Klicken Sie anschließend auf **OK**. Diese Sicherung wird gemäß der diesem Sicherungselement zugeordneten Richtlinie aufbewahrt.
-4. Überwachen Sie die Portalbenachrichtigungen. Sie können den Auftragsstatus im Dashboard des Tresors unter **Sicherungsaufträge** > **In Bearbeitung** überwachen. Je nach Größe Ihrer Datenbank kann das Erstellen der ersten Sicherung einige Zeit dauern.
+4. Überwachen Sie die Portalbenachrichtigungen. Um den Auftragsfortschritt zu überwachen, wechseln Sie zu **Backup Center** -> **Sicherungsaufträge**, und filtern Sie nach Aufträgen mit dem Status **In Bearbeitung**. Je nach Größe Ihrer Datenbank kann das Erstellen der ersten Sicherung einige Zeit dauern.
 
 Standardmäßig werden bedarfsgesteuerte Sicherungen 45 Tage lang aufbewahrt.
 
@@ -72,7 +75,7 @@ Standardmäßig werden bedarfsgesteuerte Sicherungen 45 Tage lang aufbewahrt.
 
 #### <a name="backup"></a>Backup
 
-Von einem der nativen HANA-Clients (an **Backint**) ausgelöste bedarfsgesteuerte Sicherungen werden auf der Seite **Sicherungselemente** in der Liste der Sicherungen angezeigt.
+Von einem der nativen HANA-Clients (an **Backint**) ausgelöste bedarfsgesteuerte Sicherungen werden auf der Seite **Sicherungsinstanzen** in der Liste der Sicherungen angezeigt.
 
 ![Zuletzt durchgeführte Sicherungen](./media/sap-hana-db-manage/last-backups.png)
 
@@ -96,14 +99,14 @@ Löschvorgänge von nativen HANA-Clients werden von Azure Backup **NICHT** unter
 Führen Sie die folgenden Schritte aus, wenn Sie (mit HANA Studio/Cockpit) eine lokale Sicherung einer Datenbank ausführen möchten, die mit Azure Backup gesichert wird:
 
 1. Warten Sie, bis alle vollständigen Sicherungen oder Protokollsicherungen für die Datenbank abgeschlossen sind. Überprüfen Sie den Status in SAP HANA Studio/Cockpit.
-2. für die relevante Datenbank.
+2. Für die entsprechende Datenbank:
     1. Heben Sie die Festlegung der backint-Parameter auf. Doppelklicken Sie hierzu auf **systemdb** > **Konfiguration** > **Datenbank auswählen** > **Filter (Protokoll)** .
         * enable_auto_log_backup: Nein
         * log_backup_using_backint: False
         * catalog_backup_using_backint:False
 3. Erstellen Sie eine bedarfsgesteuerte vollständige Sicherung der Datenbank.
 4. Kehren Sie dann die Schritte um. Aktivieren Sie für dieselbe relevante DB, die oben erwähnt wurde,
-    1. die backint-Parameter neu.
+    1. die backint-Parameter neu:
         1. catalog_backup_using_backint:True
         1. log_backup_using_backint: True
         1. enable_auto_log_backup: Ja
@@ -113,14 +116,14 @@ Führen Sie die folgenden Schritte aus, wenn Sie (mit HANA Studio/Cockpit) eine 
 Wenn Sie den Sicherungskatalog bearbeiten oder bereinigen möchten, gehen Sie folgendermaßen vor:
 
 1. Warten Sie, bis alle vollständigen Sicherungen oder Protokollsicherungen für die Datenbank abgeschlossen sind. Überprüfen Sie den Status in SAP HANA Studio/Cockpit.
-2. für die relevante Datenbank.
+2. Für die entsprechende Datenbank:
     1. Heben Sie die Festlegung der backint-Parameter auf. Doppelklicken Sie hierzu auf **systemdb** > **Konfiguration** > **Datenbank auswählen** > **Filter (Protokoll)** .
         * enable_auto_log_backup: Nein
         * log_backup_using_backint: False
         * catalog_backup_using_backint:False
 3. Bearbeiten Sie den Katalog, und entfernen Sie ältere Einträge.
 4. Kehren Sie dann die Schritte um. Aktivieren Sie für dieselbe relevante DB, die oben erwähnt wurde,
-    1. die backint-Parameter neu.
+    1. die backint-Parameter neu
         1. catalog_backup_using_backint:True
         1. log_backup_using_backint: True
         1. enable_auto_log_backup: Ja
@@ -129,13 +132,11 @@ Wenn Sie den Sicherungskatalog bearbeiten oder bereinigen möchten, gehen Sie fo
 
 Sie können die zugrunde liegende Richtlinie für ein SAP HANA-Sicherungselement ändern.
 
-* Navigieren Sie im Tresordashboard zur Option **Sicherungselemente**.
+Navigieren Sie im **Backup Center**-Dashboard zur Option **Sicherungsinstanzen**:
 
-  ![Sicherungselemente auswählen](./media/sap-hana-db-manage/backup-items.png)
+* Wählen Sie **SAP HANA in Azure-VM** als Datenquellentyp.
 
-* Auswählen von **SAP HANA in Azure-VM**
-
-  ![Auswählen von „SAP HANA in Azure-VM“](./media/sap-hana-db-manage/sap-hana-in-azure-vm.png)
+  :::image type="content" source="./media/sap-hana-db-manage/hana-backup-instances-inline.png" alt-text="Screenshot: Auswählen von SAP HANA auf einem virtuellen Azure-Computer" lightbox="./media/sap-hana-db-manage/hana-backup-instances-expanded.png":::
 
 * Wählen Sie das Sicherungselement aus, dessen zugrunde liegende Richtlinie Sie ändern möchten.
 * Wählen Sie die vorhandene Sicherungsrichtlinie aus.
@@ -146,7 +147,7 @@ Sie können die zugrunde liegende Richtlinie für ein SAP HANA-Sicherungselement
 
   ![Richtlinie aus der Dropdownliste auswählen](./media/sap-hana-db-manage/choose-backup-policy.png)
 
-* Speichern der Änderungen
+* Speichern Sie die Änderungen.
 
   ![Speichern der Änderungen](./media/sap-hana-db-manage/save-changes.png)
 
@@ -162,9 +163,9 @@ Bearbeiten Sie die Richtlinie, um Sicherungstypen, Sicherungshäufigkeit und Auf
 >[!NOTE]
 >Jede Änderung der Aufbewahrungsdauer wird nicht nur auf die neuen Wiederherstellungspunkte angewendet, sondern auch rückwirkend auf alle älteren.
 
-1. Navigieren Sie im Tresordashboard zu **Verwalten > Sicherungsrichtlinien**, und wählen Sie die Richtlinie aus, die Sie bearbeiten möchten.
+1. Navigieren Sie im **Backup Center**-Dashboard zu **Sicherungsrichtlinien**, und wählen Sie die Richtlinie aus, die Sie bearbeiten möchten.
 
-   ![Auswählen der Richtlinie, die bearbeitet werden soll](./media/sap-hana-db-manage/manage-backup-policies.png)
+   :::image type="content" source="./media/sap-hana-db-manage/backup-center-policies-inline.png" alt-text="Screenshot, der zeigt, wie die zu bearbeitende Richtlinie ausgewählt wird" lightbox="./media/sap-hana-db-manage/backup-center-policies-expanded.png":::
 
 1. Wählen Sie **Ändern** aus.
 
@@ -201,24 +202,22 @@ Wenn Sie die Wiederherstellungspunkte beibehalten, sollten Sie Folgendes beachte
 
 Gehen Sie wie folgt vor, um den Schutz für eine Datenbank zu beenden:
 
-* Wählen Sie auf dem Tresordashboard die Option **Sicherungselemente** aus.
-* Wählen Sie unter **Sicherungsverwaltungstyp** die Option **SAP HANA in Azure-VM** aus.
+1. Wählen Sie im **Backup Center**-Dashboard **Sicherungsinstanzen** aus.
+1. Wählen Sie **SAP HANA in Azure-VM** als Datenquellentyp.
 
-  ![Auswählen von „SAP HANA in Azure-VM“](./media/sap-hana-db-manage/sap-hana-azure-vm.png)
+   :::image type="content" source="./media/sap-hana-db-manage/hana-backup-instances-inline.png" alt-text="Screenshot: Auswählen von SAP HANA auf einem virtuellen Azure-Computer" lightbox="./media/sap-hana-db-manage/hana-backup-instances-expanded.png":::
 
-* Wählen Sie die Datenbank aus, für die Sie den Schutz beenden möchten:
+1. Wählen Sie die Datenbank aus, für die Sie den Schutz beenden möchten.
 
-  ![Auswählen der Datenbank zum Beenden des Schutzes](./media/sap-hana-db-manage/select-database.png)
+1. Wählen Sie im Datenbankmenü **Sicherung beenden** aus.
 
-* Wählen Sie im Datenbankmenü **Sicherung beenden** aus.
+   :::image type="content" source="./media/sap-hana-db-manage/stop-backup.png" alt-text="Screenshot: Auswählen von „Sicherung beenden“":::
 
-  ![Auswählen von „Sicherung beenden“](./media/sap-hana-db-manage/stop-backup.png)
+1. Wählen Sie im Menü **Sicherung beenden** aus, ob Daten beibehalten oder gelöscht werden sollen. Geben Sie bei Bedarf einen Grund und einen Kommentar ein.
 
-* Wählen Sie im Menü **Sicherung beenden** aus, ob Daten beibehalten oder gelöscht werden sollen. Geben Sie bei Bedarf einen Grund und einen Kommentar ein.
+   :::image type="content" source="./media/sap-hana-db-manage/retain-backup-data.png" alt-text="Screenshot: Auswählen von „Daten beibehalten“ oder „Daten löschen“":::
 
-  ![Auswählen der Beibehaltung oder Löschung von Daten](./media/sap-hana-db-manage/retain-backup-data.png)
-
-* Wählen Sie **Sicherung beenden** aus.
+1. Wählen Sie **Sicherung beenden** aus.
 
 ### <a name="resume-protection-for-an-sap-hana-database"></a>Fortsetzen des Schutzes für eine SAP HANA-Datenbank
 

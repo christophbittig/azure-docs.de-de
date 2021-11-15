@@ -5,12 +5,12 @@ author: kgremban
 ms.author: kgremban
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 74dfc438f1d1da5716933184fe1cc446fcb86c41
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 94b115654d50fcc7924d86afcc9b78ddab05688d
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131505864"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131845085"
 ---
 ## <a name="install-iot-edge"></a>Installieren von IoT Edge
 

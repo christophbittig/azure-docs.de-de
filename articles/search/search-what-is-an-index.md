@@ -1,5 +1,5 @@
 ---
-title: Erstellen eines Index
+title: Indexübersicht
 titleSuffix: Azure Cognitive Search
 description: Hier finden Sie eine Einführung in die Indizierungskonzepte und -tools in Azure Cognitive Search, einschließlich Schemadefinitionen und der physischen Datenstruktur.
 manager: nitinme
@@ -7,21 +7,23 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 03/05/2021
-ms.openlocfilehash: cdfadc895de3af0f79c30a067f3e5376bfa8873b
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.date: 11/08/2021
+ms.openlocfilehash: ab1106ef927829589934485c2022d353339d5089
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122769102"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132062812"
 ---
-# <a name="creating-search-indexes-in-azure-cognitive-search"></a>Erstellen von Suchindizes in Azure Cognitive Search
+# <a name="search-indexes-in-azure-cognitive-search"></a>Suchindizes in Azure Cognitive Search
 
 In Cognitive Search speichert ein *Suchindex* durchsuchbaren Inhalt, der für Volltext- und gefilterte Abfragen verwendet wird. Ein Index wird durch ein Schema definiert und im Dienst gespeichert. Der Datenimport erfolgt in einem zweiten Schritt. 
 
-Indizes enthalten *Suchdokumente*. Konzeptionell ist ein Dokument eine einzelne Einheit mit durchsuchbaren Daten im Index. Ein Einzelhändler verfügt beispielsweise über ein Dokument für jedes Produkt, eine Nachrichtenagentur über ein Dokument pro Zeitungsartikel usw. So lassen sich diese Konzepte vertrauteren Entsprechungen in der Datenbank zuordnen: Ein *Suchindex* entspricht einer *Tabelle*, und *Dokumente* entsprechen ungefähr den *Zeilen* einer Tabelle.
+Dieser Artikel enthält eine Einführung in Suchindizes. Möchten Sie lieber sofort starten? Lesen Sie [Erstellen von Suchindizes](search-how-to-create-search-index.md).
 
-## <a name="whats-an-index-schema"></a>Was ist ein Indexschema?
+## <a name="whats-a-search-index"></a>Was ist ein Suchindex?
+
+Indizes in Cognitive Search enthalten *Suchdokumente*. Konzeptionell ist ein Dokument eine einzelne Einheit mit durchsuchbaren Daten im Index. Ein Einzelhändler verfügt beispielsweise über ein Dokument für jedes Produkt, eine Nachrichtenagentur über ein Dokument pro Zeitungsartikel usw. So lassen sich diese Konzepte vertrauteren Entsprechungen in der Datenbank zuordnen: Ein *Suchindex* entspricht einer *Tabelle*, und *Dokumente* entsprechen ungefähr den *Zeilen* einer Tabelle.
 
 Die physische Struktur eines Index wird durch das Schema bestimmt. Die „Feldsammlung“ ist typischerweise der größte Teil eines Index, wobei jedes Feld benannt ist, einen [Datentyp](/rest/api/searchservice/Supported-data-types) erhält und mit zulässigen Verhaltensweisen versehen wird, die bestimmen, wie es verwendet wird.
 
@@ -59,56 +61,9 @@ Die physische Struktur eines Index wird durch das Schema bestimmt. Die „Feldsa
 
 Weitere Elemente sind aus Gründen der Übersicht reduziert, über die folgenden Links erhalten Sie jedoch weitere Informationen: [Vorschlagsfunktionen](index-add-suggesters.md), [Bewertungsprofile](index-add-scoring-profiles.md) und [Analysetools](search-analyzers.md), die zum Verarbeiten von Zeichenfolgen in Token gemäß den linguistischen Regeln oder anderen vom Analysetool unterstützten Merkmalen verwendet werden, sowie [CORS-Einstellungen (Cross-Origin Remote Scripting)](#corsoptions).
 
-## <a name="choose-a-client"></a>Auswählen eines Clients
+## <a name="field-definitions"></a>Felddefinitionen
 
-Es gibt mehrere Möglichkeiten, einen Suchindex zu erstellen. Für die anfängliche Entwicklung sowie für Proof of Concept-Tests empfiehlt sich die Verwendung des Microsoft Azure-Portals oder der SDKs.
-
-Planen Sie während der Entwicklung häufige Neuerstellungen ein. Da physische Strukturen im Dienst erstellt werden, ist das [Löschen und Neuerstellen von Indizes](search-howto-reindex.md) bei den meisten Änderungen an einer vorhandenen Felddefinition erforderlich. Sie sollten erwägen, mit einer Teilmenge Ihrer Daten zu arbeiten, damit Neuerstellungen schneller gehen.
-
-### <a name="permissions"></a>Berechtigungen
-
-Alle Vorgänge im Zusammenhang mit Suchindizes, einschließlich GET-Anforderungen für die Definitionen, erfordern einen [Admin-API-Schlüssel](search-security-api-keys.md) in der Anforderung.
-
-### <a name="limits"></a>Einschränkungen
-
-Die Anzahl von Objekten, die Sie erstellen können, sind bei allen Dienstebenen [begrenzt](search-limits-quotas-capacity.md#index-limits). Wenn Sie mit dem Free-Tarif experimentieren, können Sie jeweils nur drei Indizes haben.
-
-### <a name="use-azure-portal-to-create-a-search-index"></a>Erstellen eines Suchindex im Azure-Portal
-
-Im Portal stehen zwei Optionen für die Erstellung eines Suchindex zur Verfügung: [**Datenimport-Assistent**](search-import-data-portal.md) und **Index hinzufügen** mit Feldern zum Angeben eines Indexschemas. Der Assistent integriert zusätzliche Vorgänge, indem er außerdem einen Indexer und eine Datenquelle erstellt und Daten lädt. Wenn Sie diesen Umfang nicht benötigen, sollten Sie einfach **Index hinzufügen** oder einen anderen Ansatz verwenden.
-
-Der folgende Screenshot zeigt, wo Sie **Index hinzufügen** im Portal finden. **Daten importieren** ist direkt daneben zu finden.
-
-  :::image type="content" source="media/search-what-is-an-index/add-index.png" alt-text="Befehl „Index hinzufügen“" border="true":::
-
-> [!Tip]
-> Bei der Indexerstellung über das Portal werden Anforderungen und Schemaregeln für bestimmte Datentypen erzwungen, z. B. das Deaktivieren von Funktionen zur Volltextsuche bei numerischen Feldern. Wenn Sie über einen funktionierenden Index verfügen, können Sie den JSON-Code aus dem Portal kopieren und Ihrer Lösung hinzufügen.
-
-### <a name="use-a-rest-client"></a>Verwenden eines REST-Clients
-
-Sowohl Postman als auch Visual Studio Code (mit einer Erweiterung für Azure Cognitive Search) kann als Suchindexclient fungieren. Mit beiden Tools können Sie eine Verbindung mit Ihrem Suchdienst herstellen und die Anforderung [Index erstellen (REST)](/rest/api/searchservice/create-index) senden. Die Objekterstellung mithilfe von REST-Clients wird in zahlreichen Tutorials und Beispielen veranschaulicht. 
-
-Weitere Informationen zum jeweiligen Client finden Sie in den folgenden Artikeln:
-
-+ [Schnellstart: Erstellen eines Azure Cognitive Search-Index mithilfe von REST-APIs](search-get-started-rest.md)
-+ [Erste Schritte mit Visual Studio Code und Azure Cognitive Search](search-get-started-vs-code.md)
-
-Hilfreiche Informationen zum Formulieren von Indexanforderungen finden Sie unter [Indexvorgänge (REST)](/rest/api/searchservice/index-operations).
-
-### <a name="use-an-sdk"></a>Verwenden eines SDK
-
-Für Cognitive Search werden von den Azure-SDKs allgemein verfügbare Features implementiert. Daher kann jedes der SDKs für die Erstellung eines Suchindex verwendet werden. Alle bieten einen **SearchIndexClient**, der über Methoden zum Erstellen und Aktualisieren von Indizes verfügt.
-
-| Azure SDK | Client | Beispiele |
-|-----------|--------|----------|
-| .NET | [SearchIndexClient](/dotnet/api/azure.search.documents.indexes.searchindexclient) | [azure-search-dotnet-samples/quickstart/v11/](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/quickstart/v11) |
-| Java | [SearchIndexClient](/java/api/com.azure.search.documents.indexes.searchindexclient) | [CreateIndexExample.java](https://github.com/Azure/azure-sdk-for-java/blob/azure-search-documents_11.1.3/sdk/search/azure-search-documents/src/samples/java/com/azure/search/documents/indexes/CreateIndexExample.java) |
-| JavaScript | [SearchIndexClient](/javascript/api/@azure/search-documents/searchindexclient) | [Indizes](https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/search/search-documents/samples/v11/javascript) |
-| Python | [SearchIndexClient](/python/api/azure-search-documents/azure.search.documents.indexes.searchindexclient) | [sample_index_crud_operations.py](https://github.com/Azure/azure-sdk-for-python/blob/7cd31ac01fed9c790cec71de438af9c45cb45821/sdk/search/azure-search-documents/samples/sample_index_crud_operations.py) |
-
-## <a name="define-fields"></a>Definieren von Feldern
-
-Ein Suchdokument wird durch die `fields`-Sammlung definiert. Sie benötigen Felder für Abfragen und Schlüssel. Sie benötigen wahrscheinlich auch Felder, um Filter, Facets und Sortierungen zu unterstützen. Möglicherweise benötigen Sie auch Felder für Daten, die Benutzern niemals angezeigt werden. Sie können z. B. Felder für Gewinnmargen oder Marketingaktionen verwenden, mit denen Sie den Suchrang anpassen können.
+Ein Suchdokument wird durch die `fields`-Sammlung definiert. Sie benötigen Felder für die Dokumentidentifikation (Schlüssel), in denen durchsuchbarer Text gespeichert ist, und Felder zur Unterstützung von Filtern, Facetten und Sortierungen. Möglicherweise benötigen Sie auch Felder für Daten, die einem Benutzer nie angezeigt werden. Beispielsweise können Sie Felder für Gewinnspannen oder Marketingaktionen verwenden, mit denen Sie den Suchrang bearbeiten können.
 
 Ein Feld vom Typ „Edm.String“ muss als Dokumentschlüssel angegeben werden. Es wird für die eindeutige Identifizierung der einzelnen Suchdokumente verwendet und berücksichtigt Groß-/Kleinschreibung. Sie können ein Dokument anhand seines Schlüssels abrufen, um eine Detailseite aufzufüllen.
 
@@ -140,7 +95,7 @@ Obwohl Sie jederzeit neue Felder hinzufügen können, sind vorhandene Felddefini
 
 <a name="index-size"></a>
 
-## <a name="attributes-and-index-size-storage-implications"></a>Attribute und Indexgröße (Auswirkungen auf den Speicher)
+## <a name="storage-implications-of-field-attributes"></a>Speicherauswirkungen von Feldattributen
 
 Die Größe eines Indexes wird durch die Größe der von Ihnen hochgeladenen Dokumente sowie durch die Indexkonfiguration bestimmt, also beispielsweise dadurch, ob Sie Vorschlagsfunktionen einbeziehen und wie Sie Attribute für einzelne Felder festlegen. 
 
@@ -175,7 +130,9 @@ Die folgenden Optionen können für CORS festgelegt werden:
 
 Praktische Erfahrungen mit der Erstellung eines Index können Sie mit fast jedem Beispiel oder jeder exemplarischen Vorgehensweise für Cognitive Search sammeln. Als Einstieg können Sie einen der Schnellstarts im Inhaltsverzeichnis auswählen.
 
-Sie sollten sich aber auch mit Methoden zum Laden eines Index mit Daten vertraut machen. Strategien zur Indexdefinition und zum Datenimport werden zusammen definiert. Die folgenden Artikel bieten Informationen zum Laden eines Index.
+Sie sollten sich aber auch mit Methoden zum Laden eines Index mit Daten vertraut machen. Strategien zur Indexdefinition und zum Datenimport werden zusammen definiert. Die folgenden Artikel bieten Informationen zum Erstellen und Laden eines Index.
+
++ [Erstellen von Suchindizes in Azure Cognitive Search](search-how-to-create-search-index.md)
 
 + [Übersicht über den Datenimport](search-what-is-data-import.md)
 

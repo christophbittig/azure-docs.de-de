@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 02/22/2021
+ms.date: 10/25/2021
 ms.author: alkohli
-ms.openlocfilehash: d848d663121474085935c68e62b8aa38f195ba8d
-ms.sourcegitcommit: 867cb1b7a1f3a1f0b427282c648d411d0ca4f81f
+ms.openlocfilehash: c5ef771c007d41e2e81dad7773c17bb1f9d3bb6a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2021
-ms.locfileid: "102442178"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131469234"
 ---
 # <a name="kubernetes-storage-management-on-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes-Speicherverwaltung auf dem Azure Stack Edge Pro-GPU-Gerät
 
@@ -104,6 +104,8 @@ spec:
   volumeName: <nfs-or-smb-share-name-here> 
   storageClassName: ""
 ```
+
+Um den Wert des Felds `volumeName` zu erhalten, wählen Sie den lokalen Bereitstellungspunkt für Edgecomputingmodule aus, wenn Sie nach der Erstellung die SMB- oder NFS-Freigabe auswählen. Dieser ist identisch mit dem Freigabenamen. 
 
 Weitere Informationen finden Sie unter [Verwenden von kubectl zum Ausführen einer zustandsbehafteten Kubernetes-Anwendung mit PersistentVolume auf einem Azure Stack Edge Pro-Gerät](azure-stack-edge-gpu-deploy-stateful-application-static-provision-kubernetes.md).
 

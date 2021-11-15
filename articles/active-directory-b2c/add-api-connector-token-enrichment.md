@@ -1,6 +1,6 @@
 ---
 title: Tokenanreicherung – Azure Active Directory B2C
-description: Reichern Sie Token mit Ansprüchen aus externen Quellen unter Verwendung von APIs an.
+description: Anreichern von Token mit Ansprüchen aus externen Identitätsdatenquellen mithilfe von APIs oder ausgehenden Webhooks.
 services: active-directory-b2c
 author: kengaderdus
 manager: CelesteDG
@@ -11,18 +11,18 @@ ms.date: 08/29/2021
 ms.author: kengaderdus
 ms.subservice: B2C
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 8f5bf34424754106c6d86195c37d23c3c9060c1c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 2b27fcb43d815a6a2567ebb11c0ea768914582eb
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131008349"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131440961"
 ---
 # <a name="enrich-tokens-with-claims-from-external-sources-using-api-connectors"></a>Anreichern von Token mit Ansprüchen aus externen Quellen unter Verwendung von API-Connectors
 
 [!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
-Mit Azure Active Directory B2C (Azure AD B2C) können Identitätsentwickler unter Verwendung von [API-Connectors](api-connectors-overview.md) eine Interaktion mit einer RESTful-API in ihren Benutzerflow integrieren. Am Ende dieser exemplarischen Vorgehensweise können Sie einen Azure AD B2C-Benutzerflow erstellen, der mit APIs interagiert, um Token mit Informationen aus externen Quellen anzureichern.
+Mit Azure Active Directory B2C (Azure AD B2C) können Identitätsentwickler unter Verwendung von [API-Connectors](api-connectors-overview.md) eine Interaktion mit einer RESTful-API in ihren Benutzerflow integrieren. So können Entwickler dynamisch Daten aus externen Identitätsquellen abrufen. Am Ende dieser exemplarischen Vorgehensweise können Sie einen Azure AD B2C-Benutzerflow erstellen, der mit APIs interagiert, um Token mit Informationen aus externen Quellen anzureichern.
 
 ::: zone pivot="b2c-user-flow"
 

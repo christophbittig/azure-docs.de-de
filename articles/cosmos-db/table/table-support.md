@@ -4,16 +4,16 @@ description: Hier erfahren Sie, wie die Azure Cosmos DB-Tabellen-API und Azure S
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: how-to
-ms.date: 08/25/2021
+ms.date: 11/03/2021
 author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
-ms.openlocfilehash: f2d337f7154e2ae9412930aab9720a47bde4768e
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: d0039773cc1ddf50d3c34466d3480ecbe753cf0e
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124762035"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131555588"
 ---
 # <a name="developing-with-azure-cosmos-db-table-api-and-azure-table-storage"></a>Entwickeln mit der Azure Cosmos DB-Tabellen-API und Azure Table Storage
 [!INCLUDE[appliesto-table-api](../includes/appliesto-table-api.md)]
@@ -43,7 +43,7 @@ Die folgenden SDK-Pakete können sowohl für die Azure Cosmos-Tabellen-API als a
 
 Die folgenden SDK-Pakete können nur für die Azure Cosmos DB-Tabellen-API verwendet werden.
 
-* **.NET** - [Microsoft.Azure.Cosmos.Table](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table) verfügbar auf der NuGet-Website.  Diese Bibliothek kann nur mit der Cosmos DB-Tabellen-API verwendet werden.
+* **.NET** - [Azure.Data.Tables](https://www.nuget.org/packages/Azure.Data.Tables/) verfügbar auf der NuGet-Website.  Die Azure Tables-Clientbibliothek kann nahtlos auf Azure Table Storage oder Azure Cosmos DB-Tabellendienstendpunkte ohne Codeänderungen ausgerichtet werden.
 
 * **Python** - [azure-cosmosdb-table](https://pypi.org/project/azure-cosmosdb-table/) verfügbar auf der PyPi-Website. Dieses SDK stellt eine Verbindung mit Azure Table Storage sowie mit der Tabellen-API von Azure Cosmos DB her.
 

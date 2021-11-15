@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2021
-ms.openlocfilehash: b272d4cb11ab948043f6c47b5be12fc0488d070f
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: b06d7c573514e0fe0471e13df3476bf5b13f20e3
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122444186"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130252685"
 ---
 # <a name="monitor-virtual-machines-with-azure-monitor-alerts"></a>Überwachen von VMs mit Azure Monitor: Warnungen
 
@@ -48,7 +48,7 @@ Metrikregeln für VMs können die folgenden Daten verwenden:
 ### <a name="target-resource-and-impacted-resource"></a>Zielressource und betroffene Ressource
 
 > [!NOTE]
-> Ressourcenorientierte Protokollwarnungsregeln (derzeit in der öffentlichen Vorschauversion) vereinfachen Protokollabfragewarnungen für VMs und ersetzen die Funktionalität, die derzeit von Abfragen vom Typ „Metrische Maßeinheit“ bereitgestellt wird. Sie können den Computer als Ziel für die Regel verwenden, wodurch er besser als die betroffene Ressource identifiziert wird. Sie können auch eine einzelne Warnungsregel auf alle Computer in einer bestimmten Ressourcengruppe oder Beschreibung anwenden. Sobald die ressourcenorientierten Protokollabfragewarnungen allgemein verfügbar sind, wird die Anleitung in diesem Szenario aktualisiert.
+> Ressourcenorientierte Protokollwarnungsregeln (derzeit in der öffentlichen Vorschauversion) vereinfachen Protokollabfragewarnungen für VMs und ersetzen die Funktionalität, die derzeit von Abfragen vom Typ „Metrische Maßeinheit“ bereitgestellt wird. Sie können den Computer als Ziel für die Regel verwenden, wodurch er besser als die betroffene Ressource identifiziert wird. Sie können auch eine einzelne Warnungsregel auf alle Computer in einer bestimmten Ressourcengruppe oder einem bestimmten Abonnement anwenden. Sobald die ressourcenorientierten Protokollabfragewarnungen allgemein verfügbar sind, wird die Anleitung in diesem Szenario aktualisiert.
 > 
 Jede Warnung in Azure Monitor umfasst die Eigenschaft **Betroffene Ressource**, die durch das Ziel der Regel definiert wird. Bei Metrikwarnungsregeln ist die betroffene Ressource der Computer, sodass sie diese problemlos in der Standardwarnungsansicht identifizieren können. Protokollabfragewarnungen werden der Arbeitsbereichsressource und nicht dem Computer zugeordnet – selbst wenn Sie eine Warnung vom Typ „Metrische Maßeinheit“ verwenden, die eine Warnung für jeden Computer erstellt. Sie müssen die Details der Warnung anzeigen, um den betroffenen Computer anzuzeigen.
 
@@ -133,7 +133,7 @@ InsightsMetrics
  InsightsMetrics
  | where Origin == "vm.azm.ms"
  | where _ResourceId startswith "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" and (_ResourceId contains "/providers/Microsoft.Compute/virtualMachines/" or _ResourceId contains "/providers/Microsoft.Compute/virtualMachineScaleSets/") 
- | where Namespace == "Processor" and Name == "UtilizationPercentage"<br>\| summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m), _ResourceId
+ | where Namespace == "Processor" and Name == "UtilizationPercentage" | summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m), _ResourceId
 ```
 
 **CPU-Auslastung für alle Computeressourcen in einer Ressourcengruppe** 
@@ -142,7 +142,7 @@ InsightsMetrics
 InsightsMetrics
 | where Origin == "vm.azm.ms"
 | where _ResourceId startswith "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.Compute/virtualMachines/" or _ResourceId startswith "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.Compute/virtualMachineScaleSets/"
-| where Namespace == "Processor" and Name == "UtilizationPercentage"<br>\| summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m), _ResourceId 
+| where Namespace == "Processor" and Name == "UtilizationPercentage" | summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m), _ResourceId 
 ```
 
 ### <a name="memory-alerts"></a>Arbeitsspeicherwarnungen
@@ -171,7 +171,7 @@ InsightsMetrics
 InsightsMetrics
 | where Origin == "vm.azm.ms"
 | where Namespace == "Memory" and Name == "AvailableMB"
-| extend TotalMemory = toreal(todynamic(Tags)["vm.azm.ms/memorySizeMB"])<br>\| extend AvailableMemoryPercentage = (toreal(Val) / TotalMemory) * 100.0
+| extend TotalMemory = toreal(todynamic(Tags)["vm.azm.ms/memorySizeMB"]) | extend AvailableMemoryPercentage = (toreal(Val) / TotalMemory) * 100.0
 | summarize AggregatedValue = avg(AvailableMemoryPercentage) by bin(TimeGenerated, 15m), Computer  
 ``` 
 

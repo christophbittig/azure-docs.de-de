@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/25/2021
+ms.date: 11/01/2021
 ms.author: tamram
 ms.reviewer: fryu
 ms.custom: devx-track-azurepowershell
 ms.subservice: blobs
-ms.openlocfilehash: 4c8f1c2f769340cb36832b06bf5a76258b69cd9f
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0e24c058239d57cba1c66ebff06ba9d482bcb594
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131008807"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131433192"
 ---
 # <a name="rehydrate-an-archived-blob-to-an-online-tier"></a>Aktivieren eines archivierten Blobs auf einer Onlineebene
 
@@ -214,7 +214,7 @@ Gehen Sie folgendermaßen vor, um die Rehydrierungspriorität für einen aussteh
 
 #### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Um die Rehydrierungspriorität für einen ausstehenden Vorgang mit PowerShell zu ändern, rufen Sie zunächst die Eigenschaften des BLOBs vom Dienst ab. Dieser Schritt ist notwendig, um sicherzustellen, dass Sie ein Objekt mit den neuesten Eigenschaftseinstellungen haben. Verwenden Sie dann die Eigenschaft **BlobClient** des Blobs, um einen .NET-Verweis auf den Blob zurückzugeben, und rufen Sie dann die Methode **SetAccessTier** für diesen Verweis auf.
+Um die Rehydrierungspriorität für einen ausstehenden Vorgang mit PowerShell zu ändern, stellen Sie sicher, dass Sie das [Az.Storage](https://www.powershellgallery.com/packages/Az.Storage)-Modul, Version 3.12.0 oder höher, installiert haben. Dann rufen Sie die Eigenschaften des Blobs aus dem Dienst ab. Dieser Schritt ist notwendig, um sicherzustellen, dass Sie ein Objekt mit den neuesten Eigenschaftseinstellungen haben. Verwenden Sie anschließend die Eigenschaft **BlobClient** des Blobs, um einen .NET-Verweis auf den Blob zurückzugeben, und rufen Sie dann die Methode **SetAccessTier** für diesen Verweis auf.
 
 ```azurepowershell
 # Get the blob from the service.
@@ -224,7 +224,6 @@ $rehydratingBlob = Get-AzStorageBlob -Container $containerName -Blob $blobName -
 if ($rehydratingBlob.BlobProperties.RehydratePriority -eq "Standard")
 {
     # Change rehydration priority to High, using the same target tier.
-    
     if ($rehydratingBlob.BlobProperties.ArchiveStatus -eq "rehydrate-pending-to-hot")
     {
         $rehydratingBlob.BlobClient.SetAccessTier("Hot", $null, "High")
@@ -241,7 +240,9 @@ if ($rehydratingBlob.BlobProperties.RehydratePriority -eq "Standard")
 
 #### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-Um die Rehydrierungspriorität für einen anstehenden Vorgang mit Azure CLI zu ändern, rufen Sie den Befehl [az storage blob set-tier](/cli/azure/storage/blob#az_storage_blob_set_tier) auf, wobei der Parameter `--rehydrate-priority` auf *High* gesetzt ist. Die Zielebene (Heiß oder Kühl) muss dieselbe Ebene sein, die Sie ursprünglich für den Rehydrierungsvorgang angegeben haben. Denken Sie daran, Platzhalter in spitzen Klammern durch Ihre eigenen Werte zu ersetzen:
+Um die Rehydrierungspriorität für einen ausstehenden Vorgang mit der Azure CLI zu ändern, stellen Sie zunächst sicher, dass Sie die Azure CLI, Version 2.29.2 oder höher, installiert haben. Weitere Informationen zur Installation der Azure CLI finden Sie unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
+
+Rufen Sie als Nächstes den Befehl [az storage blob set-tier](/cli/azure/storage/blob#az_storage_blob_set_tier) auf, wobei der Parameter `--rehydrate-priority` auf *Hoch* festgelegt ist. Die Zielebene (Heiß oder Kühl) muss dieselbe Ebene sein, die Sie ursprünglich für den Rehydrierungsvorgang angegeben haben. Denken Sie daran, Platzhalter in spitzen Klammern durch Ihre eigenen Werte zu ersetzen:
 
 ```azurecli
 # Update the rehydration priority for a blob moving to the Hot tier.
@@ -335,7 +336,7 @@ Rufen Sie dann den Befehl [az storage blob set-tier](/cli/azure/storage/blob#az_
 
 ---
 
-## <a name="see-also"></a>Weitere Informationen
+## <a name="see-also"></a>Siehe auch
 
 - [Heiße, kühle und Archiv-Zugriffsebenen für Blobdaten](access-tiers-overview.md).
 - [Übersicht über die Rehydrierung von Klecksen aus der Archivebene](archive-rehydrate-overview.md)

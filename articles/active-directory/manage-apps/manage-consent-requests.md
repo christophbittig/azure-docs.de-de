@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 08/25/2021
 ms.author: davidmu
 ms.reviewer: phsignor
-ms.openlocfilehash: de4553fae64801ae029a01e218658e847d5acb03
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 039461797d9b451703959f43977234278e87827d
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131066936"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131424057"
 ---
 # <a name="manage-consent-to-applications-and-evaluate-consent-requests-in-azure-active-directory"></a>Verwalten der Einwilligung in Anwendungen und Auswerten von Einwilligungsanforderungen in Azure Active Directory
 
@@ -127,7 +127,7 @@ Wenn ein Nutzer die Zustimmung für sich selbst erteilt, geschieht Folgendes:
 
 1. Ein Dienstprinzipal für die Clientanwendung wird erstellt, wenn noch nicht vorhanden ist. Ein Dienstprinzipal ist die Instanz einer Anwendung oder eines Diensts in Ihrem Azure AD-Mandanten. Der Zugriff, der der App oder dem Dienst gewährt wird, ist diesem Dienstprinzipalobjekt zugeordnet.
 1. Für jede API, auf die die Anwendung einen Zugriff benötigt, wird eine delegierte Berechtigungserteilung für die Zugangsberechtigungen erstellt, die von der Anwendung für diese API für den Zugriff im Namen des Nutzers benötigt werden. Eine delegierte Berechtigungserteilung autorisiert eine Anwendung, im Namen eines Nutzers auf eine API zuzugreifen, wenn sich dieser Nutzer angemeldet hat.
-1. Dem Benutzer wird die Clientanwendung zugewiesen. Durch das Zuweisen der Anwendung auf den Nutzer wird sichergestellt, dass die Anwendung im Portal [Meine Apps](my-apps-deployment-plan.md) für diesen Nutzer aufgelistet wird, sodass er den Zugriff überprüfen und widerrufen kann, der einem seiner Nutzer gewährt wurde.
+1. Dem Benutzer wird die Clientanwendung zugewiesen. Durch das Zuweisen der Anwendung zum Benutzer wird sichergestellt, dass die Anwendung im Portal [Meine Apps](my-apps-deployment-plan.md) für diesen Benutzer aufgelistet wird, sodass er den gewährten Zugriff überprüfen und widerrufen kann.
 
 Um die Schritte manuell auszuführen, die dem Erteilen der Zustimmung für eine Anwendung im Namen eines Nutzers gleichkommen, benötigen Sie die folgenden Angaben:
 

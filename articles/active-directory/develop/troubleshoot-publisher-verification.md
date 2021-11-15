@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: troubleshooting
 ms.workload: identity
-ms.date: 01/28/2021
+ms.date: 10/21/2021
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: 46f8df4b48dcd887bf5500ba5189374c2331047c
-ms.sourcegitcommit: c385af80989f6555ef3dadc17117a78764f83963
+ms.openlocfilehash: cfbc4c469ca25247c6fb74246133a8dc972a68a9
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/04/2021
-ms.locfileid: "111408009"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130262772"
 ---
 # <a name="troubleshoot-publisher-verification"></a>Problembehandlung bei der Herausgeberüberprüfung
 Wenn Sie den Vorgang nicht ausführen können oder bei der [Herausgeberüberprüfung](publisher-verification-overview.md) unerwartetes Verhalten auftritt, sollten Sie zunächst die folgenden Schritte ausführen, wenn Sie Fehlermeldungen erhalten oder unerwartetes Verhalten feststellen: 
@@ -29,7 +29,7 @@ Wenn Sie den Vorgang nicht ausführen können oder bei der [Herausgeberüberprü
 
 1. Sehen Sie sich die Liste [häufiger Probleme](#common-issues) an.
 
-1. Reproduzieren Sie die Anforderung mit dem [Graph-Tester](#making-microsoft-graph-api-calls), um zusätzliche Informationen zu sammeln und Probleme auf der Benutzeroberfläche auszuschließen.
+1. Reproduzieren Sie die Anforderung mit dem [Graph-Tester](#making-microsoft-graph-api-calls), um weitere Informationen zu sammeln und Probleme auf der Benutzeroberfläche auszuschließen.
 
 ## <a name="common-issues"></a>Häufige Probleme
 Im Folgenden finden Sie einige häufige Probleme, die während des Vorgangs auftreten können. 
@@ -52,14 +52,14 @@ Im Folgenden finden Sie einige häufige Probleme, die während des Vorgangs auft
     1. Navigieren Sie zu Ihrem [Partnerprofil](https://partner.microsoft.com/pcv/accountsettings/connectedpartnerprofile), und stellen Sie Folgendes sicher: 
         - Dass die MPN-ID korrekt ist. 
         - Dass keine Fehler oder „ausstehenden Aktionen“ angezeigt werden und der Überprüfungsstatus unter „Rechtliches Geschäftsprofil“ und „Partnerinformationen“ jeweils „autorisiert“ oder „erfolgreich“ lauten.
-    1. Navigieren Sie zur [Seite für die MPN-Mandantenverwaltung](https://partner.microsoft.com/dashboard/account/v3/tenantmanagement), und vergewissern Sie sich, dass der Mandant, in dem die App registriert ist und von dem Sie sich mit einem Benutzerkonto anmelden, in der Liste der zugeordneten Mandanten aufgeführt ist. Befolgen Sie zum Hinzufügen eines weiteren Mandanten [diese Anweisungen](/partner-center/multi-tenant-account). Beachten Sie, dass alle globalen Administratoren jedes Mandanten, den Sie hinzufügen, globale Administratorrechte für Ihr Partner Center-Konto erhalten.
+    1. Navigieren Sie zur [Seite für die MPN-Mandantenverwaltung](https://partner.microsoft.com/dashboard/account/v3/tenantmanagement), und vergewissern Sie sich, dass der Mandant, in dem die App registriert ist und von dem Sie sich mit einem Benutzerkonto anmelden, in der Liste der zugeordneten Mandanten aufgeführt ist. Befolgen Sie zum Hinzufügen eines weiteren Mandanten [diese Anweisungen](/partner-center/multi-tenant-account). Beachten Sie, dass alle globalen Administratoren jedes Mandanten, den Sie hinzufügen, globale Administratorrechte für Ihr Partner Center-Konto erhalten.
     1. Navigieren Sie zur [Seite für die MPN-Benutzerverwaltung](https://partner.microsoft.com/pcv/users), und vergewissern Sie sich, dass der Benutzer, unter dem Sie sich anmelden, entweder „Globaler Administrator“, „MPN-Administrator“ oder „Kontoadministrator“ ist. Befolgen Sie beim Hinzufügen eines Benutzers zu einer Rolle in Partner Center [diese Anweisungen](/partner-center/create-user-accounts-and-set-permissions).
 
 - **Wenn ich mich beim Azure AD-Portal anmelde, werden mir keine registrierten Apps angezeigt. Warum?** 
     Möglicherweise wurden Ihre App-Registrierungen mit einem anderen Benutzerkonto in diesem Mandanten, oder in einem anderen Mandanten oder mit einem persönlichen/Endbenutzerkonto erstellt. Stellen Sie sicher, dass Sie mit dem richtigen Konto in dem Mandanten angemeldet sind, in dem Ihre App-Registrierungen erstellt wurden.
 
 - **Ich erhalte einen Fehler im Zusammenhang mit Multi-Factor Authentication. Wie soll ich vorgehen?** 
-    Stellen Sie sicher, dass [Multi-Factor Authentication](../fundamentals/concept-fundamentals-mfa-get-started.md) aktiviert und sowohl für den Benutzer, mit dem Sie sich anmelden, als auch für dieses Szenario **erforderlich** ist. Für MFA könnte es z. B. folgende Anforderungen geben:
+    Stellen Sie sicher, dass [Multi-Factor Authentication](../fundamentals/concept-fundamentals-mfa-get-started.md) aktiviert und sowohl für den Benutzer, als der Sie sich anmelden, als auch für dieses Szenario als **erforderlich** gekennzeichnet ist. Für MFA könnte es z. B. folgende Anforderungen geben:
     - Immer erforderlich für den Benutzer, mit dem Sie sich anmelden
     - [Erforderlich für die Azure-Verwaltung](../conditional-access/howto-conditional-access-policy-azure-management.md)
     - [Erforderlich für den Administratortyp](../conditional-access/howto-conditional-access-policy-admin-mfa.md), mit dem Sie sich anmelden
@@ -189,7 +189,7 @@ Der häufigste Grund ist, dass die falsche MPN-ID angegeben wurde.
 
 Die Zielanwendung (`AppId`) konnte nicht gefunden werden. Geben Sie eine gültige Anwendungs-ID an, und versuchen Sie es noch mal.
     
-Der häufigste Grund ist ein Fall, bei dem die Überprüfung über die Graph-API durchgeführt wird und die angegebene ID der Anwendung fehlerhaft ist. Beachten Sie, dass nicht die App-ID oder die Client-ID, sondern die ID der Anwendung angegeben werden muss.
+Der häufigste Grund ist eine fehlerhafte ID der Anwendung, die bei der Überprüfung über die Graph-API bereitgestellt wird. Beachten Sie, dass nicht die AppID oder ClientID, sondern die ID der Anwendung angegeben werden muss.
 
 ### <a name="b2ctenantnotallowed"></a>B2CTenantNotAllowed
 
@@ -227,17 +227,17 @@ Diese Funktion wird für Microsoft-Kundenkonten nicht unterstützt. Es werden nu
 
 ### <a name="interactionrequired"></a>InteractionRequired
 
-Tritt auf, wenn die mehrstufige Authentifizierung nicht durchgeführt wurde, bevor versucht wird, der App einen überprüften Herausgeber hinzuzufügen. Weitere Informationen finden Sie unter [Häufige Probleme](#common-issues). Hinweis: MFA muss in der gleichen Sitzung ausgeführt werden, wenn Sie versuchen, einen verifizierten Herausgeber hinzuzufügen. Wenn MFA aktiviert ist, aber nicht in der Sitzung ausgeführt werden muss, schlägt die Anforderung fehl. 
+Dieser Fehler tritt auf, wenn vor dem Versuch, der App einen verifizierten Herausgeber hinzuzufügen, keine mehrstufige Authentifizierung erfolgt ist. Weitere Informationen finden Sie unter [Häufige Probleme](#common-issues). Hinweis: MFA muss in der gleichen Sitzung ausgeführt werden, wenn Sie versuchen, einen verifizierten Herausgeber hinzuzufügen. Wenn MFA aktiviert ist, aber nicht in der Sitzung ausgeführt werden muss, schlägt die Anforderung fehl. 
 
-Die angezeigte Fehlermeldung lautet wie folgt: „Due to a configuration change made by your administrator, or because you moved to a new location, you must use multi-factor authentication to proceed.“ (Aufgrund einer Konfigurationsänderung Ihres Administrators oder aufgrund Ihres Wechsels an einen anderen Standort müssen Sie zum Fortsetzen des Vorgangs die mehrstufige Authentifizierung verwenden.)
+Die angezeigte Fehlermeldung lautet: „Aufgrund einer Konfigurationsänderung durch Ihren Administrator oder aufgrund Ihres Wechsels an einen anderen Standort müssen Sie zum Fortsetzen des Vorgangs die mehrstufige Authentifizierung verwenden“.
 
 ### <a name="unabletoaddpublisher"></a>UnableToAddPublisher
 
-Die angezeigte Fehlermeldung lautet wie folgt: „Ein überprüfter Herausgeber kann dieser Anwendung nicht hinzugefügt werden. Wenden Sie sich an Ihren Administrator, um Unterstützung zu erhalten.“
+Eine der folgenden Fehlermeldungen wird angezeigt: „Ein verifizierter Herausgeber kann dieser Anwendung nicht hinzugefügt werden. Wenden Sie sich zwecks Unterstützung an Ihren Administrator.“ oder „Sie können dieser Anwendung keinen verifizierten Herausgeber hinzufügen. Wenden Sie sich zwecks Unterstützung an Ihren Administrator.“
 
 Überprüfen Sie zunächst, ob Sie die [Anforderungen für die Herausgeberüberprüfung](publisher-verification-overview.md#requirements) erfüllt haben.
 
-Bei einer Anforderung zum Hinzufügen eines überprüften Herausgebers wird anhand einer Reihe von Signalen eine Sicherheitsrisikobewertung vorgenommen. Wird die Anforderung als riskant eingestuft, wird ein Fehler zurückgegeben. Aus Sicherheitsgründen gibt Microsoft nicht die speziellen Kriterien bekannt, anhand denen die Risikoeinstufung einer Anforderung vorgenommen wird.
+Bei einer Anforderung zum Hinzufügen eines verifizierten Herausgebers wird vieler Signale eine Sicherheitsrisikobewertung vorgenommen. Wird die Anforderung als riskant eingestuft, wird ein Fehler zurückgegeben. Aus Sicherheitsgründen gibt Microsoft nicht die speziellen Kriterien bekannt, anhand denen die Risikoeinstufung einer Anforderung vorgenommen wird. Wenn Sie diese Fehlermeldung erhalten haben und der Meinung sind, dass die Risikobewertung falsch ist, warten Sie einen Moment, und übermitteln Sie dann die Überprüfungsanforderung erneut. Einige Kunden waren nach mehreren Versuchen erfolgreich.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

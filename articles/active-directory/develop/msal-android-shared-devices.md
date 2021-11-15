@@ -13,12 +13,12 @@ ms.date: 09/30/2021
 ms.author: marsma
 ms.reviewer: brandwe
 ms.custom: aaddev, identitypla | Azuretformtop40
-ms.openlocfilehash: 3a1539f80556afa9a3dbeb73edcd4d38380db33a
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: fa55cf74ce8dc1de2782d748e770d7770057ab33
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129357657"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130227695"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>Modus für gemeinsam genutzte Geräte für Android-Geräte
 
@@ -93,6 +93,12 @@ Wenn Sie eine Anwendung schreiben, die nur von Mitarbeitern in Service und Produ
 
 Wenn die Anwendung im Modus für mehrere Konten ausgeführt wird und ein Administrator für das Gerät den Modus für gemeinsam genutzte Geräte festlegt, werden alle Konten auf dem Gerät aus der Anwendung gelöscht, und die Anwendung wechselt in den Modus für einzelne Konten.
 
+## <a name="microsoft-applications-that-support-shared-device-mode"></a>Microsoft-Anwendungen, die den Modus für gemeinsam genutzte Geräte unterstützen
+
+Folgende Microsoft-Anwendungen unterstützen den Modus für gemeinsam genutzte Geräte von Azure AD:
+
+* [Microsoft Teams](/microsoftteams/platform/)
+* [Microsoft Managed Home Screen](/mem/intune/apps/app-configuration-managed-home-screen-app)-App für Android Enterprise
 ## <a name="shared-device-sign-out-and-the-overall-app-lifecycle"></a>Abmeldung bei gemeinsam genutzten Geräten und der allgemeine App-Lebenszyklus
 
 Im Hinblick auf die Abmeldung von Benutzern müssen Maßnahmen zum Schutz der Privatsphäre und der Daten der Benutzer getroffen werden. Wenn Sie z. B. eine App für Patientendaten erstellen, müssen Sie sicherstellen, dass beim Abmelden des Benutzers die zuvor angezeigten Patientendaten entfernt werden. Die Anwendung muss auf Privacy- und Datenschutzgesetze vorbereitet werden und deren Einhaltung jedes Mal überprüfen, wenn sie im Vordergrund ausgeführt wird.

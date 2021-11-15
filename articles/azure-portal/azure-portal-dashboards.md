@@ -2,13 +2,13 @@
 title: Erstellen eines Dashboards im Azure-Portal
 description: In diesem Artikel wird beschrieben, wie Dashboards im Azure-Portal erstellt und angepasst werden.
 ms.topic: how-to
-ms.date: 08/19/2021
-ms.openlocfilehash: af26cc36f73088c9a4231e59f3414efaa828d452
-ms.sourcegitcommit: 5d605bb65ad2933e03b605e794cbf7cb3d1145f6
+ms.date: 10/19/2021
+ms.openlocfilehash: 57de040263fdc6ae7a3aaa366b7cabc4f98235b3
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2021
-ms.locfileid: "122597716"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130219847"
 ---
 # <a name="create-a-dashboard-in-the-azure-portal"></a>Erstellen eines Dashboards im Azure-Portal
 

@@ -1,19 +1,19 @@
 ---
 title: 'Tutorial: Bereitstellen einer Dapr-Anwendung in Azure Container Apps mithilfe einer ARM-Vorlage'
 description: Bereitstellen einer Dapr-Anwendung in Azure Container Apps mithilfe einer ARM-Vorlage
-services: app-service
+services: container-apps
 author: asw101
-ms.service: app-service
+ms.service: container-apps
 ms.topic: conceptual
 ms.date: 11/02/2021
 ms.author: aawislan
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 4f8678dfd6871aa56a649c882b7b8636640bd3d4
-ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
+ms.openlocfilehash: d38af387910551903d2781863deb3de3fcd36160
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131578271"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132026917"
 ---
 # <a name="tutorial-deploy-a-dapr-application-to-azure-container-apps-using-an-arm-template"></a>Tutorial: Bereitstellen einer Dapr-Anwendung in Azure Container Apps mithilfe einer ARM-Vorlage
 
@@ -135,7 +135,7 @@ az extension add `
 
 ---
 
-Nachdem die Erweiterung installiert wurde, registrieren Sie den `Microsoft.Web` Namespace.
+Die Erweiterung wurde installiert. Registrieren Sie nun den Namespace `Microsoft.Web`.
 
 # <a name="bash"></a>[Bash](#tab/bash)
 
@@ -145,7 +145,7 @@ az provider register --namespace Microsoft.Web
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```powershell
+```azurecli
 az provider register --namespace Microsoft.Web
 ```
 

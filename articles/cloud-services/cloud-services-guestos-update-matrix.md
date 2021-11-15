@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 10/8/2021
 ms.author: gunnarc
-ms.openlocfilehash: 986e3019be4273d2220abf1760fc48683b663c24
-ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
+ms.openlocfilehash: f2f1ac8e0ff654d3a3e9d2c3f516663530179548
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129728474"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131454806"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure-Gastbetriebssystemversionen und SDK-Kompatibilitätsmatrix
 Bietet Ihnen aktuelle Informationen zu den neuesten Azure-Gastbetriebssystemreleases für Cloud Services. Anhand dieser Informationen können Sie Ihren Upgradepfad planen, bevor ein Gastbetriebssystem abgekündigt wird. Wenn Sie die Rollen so konfigurieren, dass die *automatischen* Gast-BS-Updates, wie unter [Updateeinstellungen für Azure-Gast-BS][Azure Guest OS Update Settings]beschrieben, verwendet werden, müssen Sie diese Seite nicht unbedingt lesen.
@@ -42,6 +42,9 @@ Bietet Ihnen aktuelle Informationen zu den neuesten Azure-Gastbetriebssystemrele
 Sie wissen nicht genau, wie Sie Ihr Gastbetriebssystem aktualisieren sollen? Entsprechende Informationen finden Sie [hier][cloud updates].
 
 ## <a name="news-updates"></a>Neuigkeiten
+
+###### <a name="november-1-2021"></a>**1\. November 2021**
+Das Gastbetriebssystem für Oktober wurde veröffentlicht. 
 
 ###### <a name="october-8-2021"></a>**8. Oktober 2021**
 Das Gastbetriebssystem für September wurde veröffentlicht. 
@@ -172,8 +175,9 @@ Installierte .NET Framework-Versionen: 3.5, 4.7.2
 
 | Konfigurationszeichenfolge | Veröffentlichungsdatum | Deaktivierungsdatum |
 | --- | --- | --- |
+|  WA-GUEST-OS-6.36_202110-01 |  1\. November 2021  |  Nach 6.38  |
 |  WA-GUEST-OS-6.35_202109-01 |  8\. Oktober 2021  |  Nach 6.37  |
-|  WA-GUEST-OS-6.34_202108-01 |  27. August 2021  |  Nach 6.36  |
+|~~WA-GUEST-OS-6.34_202108-01~~|  27. August 2021  |  1\. November 2021  |
 |~~WA-GUEST-OS-6.33_202107-01~~|  13. August 2021  |  8\. Oktober 2021  |
 |~~WA-GUEST-OS-6.32_202106-01~~|  1\. Juli 2021  |  27. August 2021  |
 |~~WA-GUEST-OS-6.31_202105-0~~|  26. Mai 2021  |  13. August 2021  |  
@@ -181,7 +185,7 @@ Installierte .NET Framework-Versionen: 3.5, 4.7.2
 |~~WA-GUEST-OS-6.29_202103-01~~|  28. März 2021  |  26. Mai 2021  |  
 |~~WA-GUEST-OS-6.28_202102-01~~|  19. Februar 2021  |  30. April 2021  |  
 |~~WA-GUEST-OS-6.27_202101-01~~|  5\. Februar 2021  |  28. März 2021  |  
-|~~WA-GUEST-OS-6.26_202012-01~~|  15. Januar 2021  |  19. Februar 2021  |  
+|~~WA-GUEST-OS-6.26_202012-01~~|  15. Januar 2021  |  19. Februar 2021  |  
 |~~WA-GUEST-OS-6.25_202011-01~~|  19. Dezember 2020  |  5\. Februar 2021  |  
 |~~WA-GUEST-OS-6.24_202010-02~~|  17. November 2020  |  15. Januar 2021  |  
 |~~WA-GUEST-OS-6.23_202009-01~~|  10. Oktober 2020  |  19. Dezember 2020  |  
@@ -220,8 +224,9 @@ Installierte .NET Framework-Versionen: 3.5, 4.6.2
 
 | Konfigurationszeichenfolge | Veröffentlichungsdatum | Deaktivierungsdatum |
 | --- | --- | --- |
+|  WA-GUEST-OS-5.60_202110-01  |  1\. November 2021  |  Nach 5.62  | 
 |  WA-GUEST-OS-5.59_202109-01  |  8\. Oktober 2021  |  Nach 5.61  | 
-|  WA-GUEST-OS-5.58_202108-01  |  27. August 2021  |  Nach 5.60  | 
+|~~WA-GUEST-OS-5.58_202108-01~~|  27. August 2021  |  1\. November 2021  | 
 |~~WA-GUEST-OS-5.57_202107-01~~|  13. August 2021  |  8\. Oktober 2021  | 
 |~~WA-GUEST-OS-5.56_202106-01~~|  1\. Juli 2021  |  27. August 2021  | 
 |~~WA-GUEST-OS-5.55_202105-01~~|  26. Mai 2021  |  13. August 2021  | 
@@ -265,8 +270,9 @@ Installierte .NET Framework-Versionen: 3.5, 4.5.1, 4.5.2
 
 | Konfigurationszeichenfolge | Veröffentlichungsdatum | Deaktivierungsdatum |
 | --- | --- | --- |
+|  WA-GUEST-OS-4.95_202110-01 |  1\. November 2021  |  Nach 4.97  |
 |  WA-GUEST-OS-4.94_202109-01 |  8\. Oktober 2021  |  Nach 4.96  |
-|  WA-GUEST-OS-4.93_202108-01 |  27. August 2021  |  Nach 4.95  |
+|~~WA-GUEST-OS-4.93_202108-01~~|  27. August 2021  |  1\. November 2021  |
 |~~WA-GUEST-OS-4.92_202107-01~~|  13. August 2021  |  8\. Oktober 2021  |
 |~~WA-GUEST-OS-4.91_202106-01~~|  1\. Juli 2021  |  27. August 2021  | 
 |~~WA-GUEST-OS-4.90_202105-01~~|  26. Mai 2021  |  13. August 2021  | 
@@ -274,7 +280,7 @@ Installierte .NET Framework-Versionen: 3.5, 4.5.1, 4.5.2
 |~~WA-GUEST-OS-4.88_202103-01~~|  28. März 2021  |  26. Mai 2021  | 
 |~~WA-GUEST-OS-4.87_202102-01~~|  19. Februar 2021  |  30. April 2021  | 
 |~~WA-GUEST-OS-4.86_202101-01~~|  5\. Februar 2021  |  28. März 2021  | 
-|~~WA-GUEST-OS-4.85_202012-01~~|  15. Januar 2021  |  19. Februar 2021  | 
+|~~WA-GUEST-OS-4.85_202012-01~~|  15. Januar 2021  |  19. Februar 2021  | 
 |~~WA-GUEST-OS-4.84_202011-01~~|  19. Dezember 2020  |  5\. Februar 2021  | 
 |~~WA-GUEST-OS-4.83_202010-02~~|  17. November 2020  |  15. Januar 2021  | 
 |~~WA-GUEST-OS-4.82_202009-01~~|  10. Oktober 2020  |  19. Dezember 2020  | 
@@ -310,8 +316,9 @@ Installierte .NET Framework-Versionen: 3.5, 4.5
 
 | Konfigurationszeichenfolge | Veröffentlichungsdatum | Deaktivierungsdatum |
 | --- | --- | --- |
+|  WA-GUEST-OS-3.102_202110-01  |  1\. November 2021  |  Nach 3.104  |
 |  WA-GUEST-OS-3.101_202109-01  |  8\. Oktober 2021  |  Nach 3.103  |
-|  WA-GUEST-OS-3.100_202108-01  |  27. August 2021  |  Nach 3.102  |
+|~~WA-GUEST-OS-3.100_202108-01~~|  27. August 2021  |  1\. November 2021  |
 |~~WA-GUEST-OS-3.99_202107-01~~|  13. August 2021  |  8\. Oktober 2021  |
 |~~WA-GUEST-OS-3.98_202106-01~~|  1\. Juli 2021  |  27. August 2021  |
 |~~WA-GUEST-OS-3.97_202105-01~~|  26. Mai 2021  |  13. August 2021  |
@@ -355,8 +362,9 @@ Installierte .NET Framework-Versionen: 3.5 (einschließlich 2.0 und 3.0), 4.5
 
 | Konfigurationszeichenfolge | Veröffentlichungsdatum | Deaktivierungsdatum |
 | --- | --- | --- |
+|  WA-GUEST-OS-2.115_202110-01  |  1\. November 2021  |  Nach 2.117  |
 |  WA-GUEST-OS-2.114_202109-01  |  8\. Oktober 2021  |  Nach 2.116  |
-|  WA-GUEST-OS-2.113_202108-01  |  27. August 2021  |  Nach 2.115  |
+|~~WA-GUEST-OS-2.113_202108-01~~|  27. August 2021  |  1\. November 2021  |
 |~~WA-GUEST-OS-2.112_202107-01~~|  13. August 2021  |  8\. Oktober 2021  |
 |~~WA-GUEST-OS-2.111_202106-01~~|  1\. Juli 2021  |  27. August 2021  |
 |~~WA-GUEST-OS-2.110_202105-01~~|  26. Mai 2021  |  13. August 2021  |

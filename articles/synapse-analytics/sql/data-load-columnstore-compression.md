@@ -2,21 +2,21 @@
 title: Verbessern der Columnstore-Indexleistung
 description: Reduzieren Sie Arbeitsspeicheranforderungen, oder erhöhen Sie den verfügbaren Arbeitsspeicher, um die Anzahl von Zeilen zu maximieren, die ein Columnstore-Index in jede Zeilengruppe komprimieren kann.
 services: synapse-analytics
-author: julieMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
-ms.date: 04/15/2020
-ms.author: jrasnick
-ms.reviewer: igorstan
+ms.date: 10/18/2021
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: ''
 ms.custom: azure-synapse
-ms.openlocfilehash: 750fc421cd644ec41384d43705b41602df24719b
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: 95d3a7c44608cd44eaa95be44572b56c4231e57f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340369"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130237831"
 ---
 # <a name="maximize-rowgroup-quality-for-columnstore-index-performance"></a>Maximieren der Zeilengruppenqualität für die Columnstore-Indexleistung
 
@@ -42,13 +42,13 @@ Weitere Informationen zum Massenladen, finden Sie unter [Bulk load into a cluste
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>Überwachen der Zeilengruppenqualität
 
-Die DMV „sys.dm_pdw_nodes_db_column_store_row_group_physical_stats“ ([sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?view=azure-sqldw-latest&preserve-view=true) enthält die Ansichtsdefinition, die SQL DB entspricht), die nützliche Informationen wie die Anzahl der Zeilen in Zeilengruppen und ggf. den Grund für eine Kürzung verfügbar macht. Sie können die folgende Sicht als eine praktische Möglichkeit zum Abfragen dieser DMV erstellen, um Informationen zur Kürzung von Zeilengruppen abzurufen.
+Die dynamische Verwaltungssicht (Dynamic Management View, DMV) ([sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql?view=azure-sqldw-latest&preserve-view=true) enthält die Ansichtsdefinition, die SQL DB entspricht) macht nützliche Informationen wie die Anzahl der Zeilen in Zeilengruppen und ggf. den Grund für eine Kürzung verfügbar. Sie können die folgende Sicht als eine praktische Möglichkeit zum Abfragen dieser DMV erstellen, um Informationen zur Kürzung von Zeilengruppen abzurufen.
 
 ```sql
-create view dbo.vCS_rg_physical_stats
-as
-with cte
-as
+CREATE VIEW dbo.vCS_rg_physical_stats
+AS
+WITH cte
+AS
 (
 select   tb.[name]                    AS [logical_table_name]
 ,        rg.[row_group_id]            AS [row_group_id]
@@ -65,11 +65,11 @@ JOIN    sys.[dm_pdw_nodes_db_column_store_row_group_physical_stats] rg      ON  
                                                                             AND rg.[pdw_node_id]   = nt.[pdw_node_id]
                                         AND rg.[distribution_id]    = nt.[distribution_id]
 )
-select *
-from cte;
+SELECT *
+FROM cte;
 ```
 
-trim_reason_desc enthält Informationen darüber, ob die Zeilengruppe gekürzt wurde (trim_reason_desc = NO_TRIM bedeutet, dass keine Kürzung erfolgt ist und die Qualität der Zeilengruppe optimal ist). Die folgenden Begründungen für eine Kürzung geben eine vorzeitige Kürzung der Zeilengruppe an:
+Die Spalte `trim_reason_desc` gibt an, ob die Zeilengruppe gekürzt wurde (trim_reason_desc = NO_TRIM bedeutet, dass keine Kürzung erfolgt ist und die Qualität der Zeilengruppe optimal ist). Die folgenden Begründungen für eine Kürzung geben eine vorzeitige Kürzung der Zeilengruppe an:
 
 - BULKLOAD: Dieser Grund für eine Kürzung wird verwendet, wenn der eingehende Zeilenbatch für den Ladevorgang weniger als 1 Million Zeilen umfasst hat. Die Datenbank-Engine erstellt komprimierte Zeilengruppen, wenn mehr als 100.000 Zeilen eingefügt werden (statt sie im Deltaspeicher einzufügen), der Grund für die Kürzung wird jedoch auf BULKLOAD festgelegt. In diesem Szenario soll der Batchladevorgang so erhöht werden, dass mehr Zeilen einbezogen werden. Außerdem wird das Partitionsschema überprüft, um sicherzustellen, dass es nicht zu kleinteilig ist, da Zeilengruppen nicht über Partitionsgrenzen hinausgehen können.
 - MEMORY_LIMITATION: Zum Erstellen von Zeilengruppen mit 1 Million Zeilen ist für die Datenbank-Engine eine bestimmte Arbeitsspeichergröße erforderlich. Wenn der verfügbare Speicher für die Ladesitzung kleiner als der erforderliche Arbeitsspeicher ist, werden Zeilengruppen vorzeitig gekürzt. In den folgenden Abschnitten wird erläutert, wie Sie den erforderlichen Speicher schätzen und mehr Speicher zuweisen.
@@ -88,8 +88,6 @@ Der maximale erforderliche Arbeitsspeicher zum Komprimieren einer Zeilengruppe b
 > Wo kurze Zeichenfolgenspalten Zeichenfolgendatentypen mit <= 32 Bytes und lange Zeichenfolgenspalten Zeichenfolgendatentypen mit > 32 Bytes verwenden.
 
 Lange Zeichenfolgen werden mit einer Komprimierungsmethode komprimiert, die für das Komprimieren von Texten entwickelt wurde. Diese Komprimierungsmethode verwendet ein *Wörterbuch* zum Speichern von Textmustern. Die maximale Größe eines Wörterbuchs beträgt 16 MB. Es gibt nur ein Wörterbuch für jede lange Zeichenfolgenspalte in der Zeilengruppe.
-
-Eine ausführliche Diskussion der Columnstore-Arbeitsspeicheranforderungen finden Sie im Video [Synapse SQL scaling: configuration and guidance](https://channel9.msdn.com/Events/Ignite/2016/BRK3291) (Skalieren von Synapse SQL: Konfiguration und Anleitungen).
 
 ## <a name="ways-to-reduce-memory-requirements"></a>Verfahren zum Verringern der Arbeitsspeicheranforderungen
 

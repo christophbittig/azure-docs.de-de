@@ -7,18 +7,18 @@ ms.service: confidential-ledger
 ms.topic: overview
 ms.date: 04/15/2021
 ms.author: mbaldwin
-ms.openlocfilehash: 1baa1470bcaef8e447b19eb37580b21b94c02df6
-ms.sourcegitcommit: 58e5d3f4a6cb44607e946f6b931345b6fe237e0e
+ms.openlocfilehash: 2c5d6aab297fb357d94066a05dd7f6ff766b31df
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/25/2021
-ms.locfileid: "110385521"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131458112"
 ---
 # <a name="frequently-asked-questions-for-azure-confidential-ledger"></a>Häufig gestellte Fragen zu Azure Confidential Ledger
 
 ## <a name="how-can-i-tell-if-the-acc-ledger-service-would-be-useful-to-my-organization"></a>Wie kann ich feststellen, ob der ACC Ledger-Dienst für meine Organisation nützlich wäre?
 
-Confidential Ledger eignet sich ideal für Organisationen mit Datensätzen, die für einen motivierten Angreifer so wertvoll sind, dass er versucht, das zugrunde liegende Protokollierungs-/Speichersystem zu kompromittieren. Dazu zählen auch „Insider“-Szenarien, bei denen ein nicht autorisierter Mitarbeiter versuchen könnte, bestehende Datensätze zu fälschen, zu ändern oder zu entfernen.
+Azure Confidential Ledger eignet sich ideal für Organisationen mit Datensätzen, die für einen motivierten Angreifer so wertvoll sind, dass er versucht, das zugrunde liegende Protokollierungs-/Speichersystem zu kompromittieren. Dazu zählen auch Insiderszenarien, bei denen ein nicht autorisierter Mitarbeiter versuchen könnte, bestehende Datensätze zu fälschen, zu ändern oder zu entfernen.
 
 ## <a name="what-makes-acc-ledger-much-more-secure"></a>Was macht ACC Ledger wesentlich sicherer?
 

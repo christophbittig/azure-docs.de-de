@@ -3,15 +3,15 @@ title: Autorisieren von Anforderungen aus Azure-Anwendungen für Web PubSub-Ress
 description: Dieser Artikel enthält Informationen zum Autorisieren von Anforderungen von Azure-Anwendungen an Web PubSub-Ressourcen mit Azure AD.
 author: terencefan
 ms.author: tefa
-ms.date: 09/06/2021
+ms.date: 11/08/2021
 ms.service: azure-web-pubsub
 ms.topic: conceptual
-ms.openlocfilehash: 7bca3e4840cf78b497f5907e780a267221dd1b8b
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 9c6b0c520fbde3f028e933d7eec05d390cb209e8
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131478802"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131997645"
 ---
 # <a name="authorize-request-to-web-pubsub-resources-with-azure-ad-from-azure-applications"></a>Autorisieren von Anforderungen aus Azure-Anwendungen für Web PubSub-Ressourcen mit Azure AD
 
@@ -82,7 +82,7 @@ In diesem Beispiel wird gezeigt, wie Sie einem Dienstprinzipal (Anwendung) über
 
 1. Klicken Sie auf **Hinzufügen > Rollenzuweisung hinzufügen**.
 
-1. Wählen Sie auf der Registerkarte **Rollen** die Rolle `Web PubSub App Server` aus.
+1. Wählen Sie auf der Registerkarte **Rollen** die Option `Web PubSub App Server`.
 
 1. Klicken Sie auf **Weiter**.
 
@@ -104,7 +104,7 @@ In diesem Beispiel wird gezeigt, wie Sie einem Dienstprinzipal (Anwendung) über
 
 > [!IMPORTANT]
 > Die Verteilung von Azure-Rollenzuweisungen kann bis zu 30 Minuten dauern.
-Weitere Informationen zum Zuweisen und Verwalten von Azure-Rollenzuweisungen finden Sie in den folgenden Artikeln:
+Weitere Informationen über die Zuweisung und Verwaltung von Azure-Rollenzuweisungen finden Sie in diesen Artikeln:
 - [Zuweisen von Azure-Rollen über das Azure-Portal](../role-based-access-control/role-assignments-portal.md)
 - [Zuweisen von Azure-Rollen mithilfe der REST-API](../role-based-access-control/role-assignments-rest.md)
 - [Zuweisen von Azure-Rollen mithilfe von Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)

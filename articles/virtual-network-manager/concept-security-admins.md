@@ -7,12 +7,12 @@ ms.service: virtual-network-manager
 ms.topic: conceptual
 ms.date: 11/02/2021
 ms.custom: template-concept, ignite-fall-2021
-ms.openlocfilehash: c56df99e68dc40886f01a65fe101fa142a04c43e
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 2efc0fcdb566a71c096398f45a95c355cb1dc840
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095503"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131421606"
 ---
 # <a name="security-admin-rules-in-azure-virtual-network-manager-preview"></a>Sicherheitsverwaltungsregeln in Azure Virtual Network Manager (Vorschau)
 
@@ -28,7 +28,7 @@ Azure Virtual Network Manager bietet zwei verschiedene Arten von Konfigurationen
 Mit einer Sicherheitsverwaltungsregel können Sie Sicherheitsrichtlinienkriterien durchsetzen, die den festgelegten Bedingungen entsprechen. Sie können nur administrative Sicherheitsregeln für Ressourcen innerhalb des Bereichs der Azure Virtual Network Manager-Instanz definieren. Diese Sicherheitsregeln haben eine höhere Priorität als die Regeln der Network Security Group (NSG) und werden vor den NSG-Regeln ausgewertet. So kann ein Administrator beispielsweise alle risikoreichen Ports oder Protokolle aus dem Internet mit Security-Admin-Regeln sperren, und diese Regeln setzen zulässige NSG-Regeln außer Kraft, die auf VM- oder Subnet-Ebene erstellt wurden.
 
 > [!IMPORTANT]
-> Einige Dienste verfügen über Netzwerkrichtlinien, um sicherzustellen, dass der Netzwerkverkehr wie für ihre Dienste erforderlich funktioniert. Wenn Sie Sicherheitsverwaltungsregeln verwenden, könnten Sie die für diese Dienste erstellten Netzwerkrichtlinien verletzen. So kann zum Beispiel die Erstellung einer Deny-Admin-Regel einen Teil des Datenverkehrs blockieren, der vom Dienst *SQL Managed Instance* zugelassen ist, der durch die Netzwerkrichtlinie definiert ist. Stellen Sie sicher, dass Sie Ihre Umgebung überprüfen, bevor Sie eine Sicherheitsverwaltungskonfiguration anwenden. 
+> Einige Dienste verfügen über Netzwerkrichtlinien, um sicherzustellen, dass der Netzwerkverkehr wie für ihre Dienste erforderlich funktioniert. Wenn Sie Sicherheitsverwaltungsregeln verwenden, könnten Sie die für diese Dienste erstellten Netzwerkrichtlinien verletzen. So kann zum Beispiel die Erstellung einer Deny-Admin-Regel einen Teil des Datenverkehrs blockieren, der vom Dienst *SQL Managed Instance* zugelassen ist, der durch die Netzwerkrichtlinie definiert ist. Stellen Sie sicher, dass Sie Ihre Umgebung überprüfen, bevor Sie eine Sicherheitsverwaltungskonfiguration anwenden. Weitere Informationen finden Sie unter [Wie kann ich SQLMI-Datenverkehr explizit zulassen, bevor ich Regeln zum Verweigern eingerichtet habe?](faq.md#how-can-i-explicitly-allow-sqlmi-traffic-before-having-deny-rules).
 
 Die folgenden Felder können Sie in einer Sicherheitsverwaltungsregel definieren:
 

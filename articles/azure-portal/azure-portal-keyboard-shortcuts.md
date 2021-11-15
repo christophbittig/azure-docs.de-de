@@ -1,20 +1,19 @@
 ---
 title: Tastenkombinationen für das Azure-Portal
 description: Das Azure-Portal unterstützt globale Tastenkombinationen, die Sie beim Ausführen von Aktionen, Navigieren und Wechseln zu Positionen im Azure-Portal unterstützen.
-ms.assetid: d9f58c69-9163-458d-a339-ab0855e342c6
 ms.topic: conceptual
-ms.date: 12/20/2019
+ms.date: 11/02/2021
 ms.custom: accessibility
-ms.openlocfilehash: de107d88fc404ead889a08f775054ce999e3233f
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 0fcdf55f63e823b437107246cf83ede1decb0364
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "96745909"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131461834"
 ---
 # <a name="keyboard-shortcuts-in-the-azure-portal"></a>Tastenkombinationen im Azure-Portal
 
-In diesem Artikel sind die Tastenkombinationen aufgelistet, die im gesamten Azure-Portal verwendet werden können. Für einzelne Dienste gibt es möglicherweise eigene Tastenkombinationen.
+Dieser Artikel führt die Tastaturkombinationen auf, die im Azure-Portal verwendet werden können. Für einzelne Dienste gibt es möglicherweise eigene Tastenkombinationen.
 
 ## <a name="actions"></a>Aktionen
 
@@ -43,11 +42,13 @@ In diesem Artikel sind die Tastenkombinationen aufgelistet, die im gesamten Azur
 |Zu **Ressourcengruppen** wechseln|G+R |
 |Das Element auf der linken Seitenleiste an dieser Position öffnen |G+Zahl|
 
-## <a name="keyboard-shortcuts-for-specific-pages-in-the-azure-portal"></a>Tastaturkurzbefehle für bestimmte Seiten im Azure-Portal
+## <a name="examples-of-keyboard-shortcuts-for-specific-areas"></a>Beispiele für Tastenkombinationen für bestimmte Bereiche
 
 - [Azure Resource Graph-Explorer](../governance/resource-graph/reference/keyboard-shortcuts.md)
+- [Kusto-Explorer](/azure/data-explorer/kusto/tools/kusto-explorer-shortcuts)
+- [Zeichenmodul in Azure Maps](../azure-maps/drawing-tools-interactions-keyboard-shortcuts.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Aktivieren des hohen Kontrasts oder Ändern des Designs](set-preferences.md#choose-a-theme-or-enable-high-contrast)
-- [Unterstützte Browser und Geräte](azure-portal-supported-browsers-devices.md)
+- [Informationen zu unterstützten Browsern und Geräten](azure-portal-supported-browsers-devices.md)

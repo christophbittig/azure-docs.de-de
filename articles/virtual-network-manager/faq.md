@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/02/2021
 ms.author: duau
 ms.custom: references_regions, ignite-fall-2021
-ms.openlocfilehash: f25a2f21713684024dcacee18e5666dfbb33a1b2
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 921c829cefae8ab4ea96066d70c5d110fc9188f6
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096049"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131451937"
 ---
 # <a name="azure-virtual-network-manager-faq"></a>Azure Virtual Network Manager FAQ
 
@@ -89,15 +89,36 @@ Sie können die Einstellungen des Azure Virtual Network Manager unter **Netzwerk
 
 Ja, Sie können ein bereits erstelltes Peering überschreiben oder löschen.
 
+### <a name="how-can-i-explicitly-allow-sqlmi-traffic-before-having-deny-rules"></a>Wie kann ich SQLMI-Datenverkehr explizit zulassen, bevor ich Regeln zum Verweigern eingerichtet habe?
+
+Azure SQL Managed Instance weist einige Netzwerkanforderungen auf. Wenn Ihre Sicherheitsadministratorregeln die Netzwerkanforderungen blockieren können, können Sie die folgenden Beispielregeln verwenden, um SQLMI-Datenverkehr mit einer höheren Priorität als die der Regeln zum Verweigern zu ermöglichen, die den Datenverkehr von SQL Managed Instance blockieren können.
+
+#### <a name="inbound-rules"></a>Eingangsregeln
+
+| Port | Protocol | `Source` | Destination | Aktion |
+| ---- | -------- | ------ | ----------- | ------ |
+| 9000, 9003, 1438, 1440, 1452 | TCP | SqlManagement | **VirtualNetwork** | Allow |
+| 9000, 9003 | TCP | CorpnetSaw | **VirtualNetwork** | Allow |
+| 9000, 9003 | TCP | CorpnetPublic | **VirtualNetwork** | Allow |
+| Any | Any | **VirtualNetwork** | **VirtualNetwork** | Allow |
+| Any | Any | **AzureLoadBalancer** | **VirtualNetwork** | Zulassen |
+
+#### <a name="outbound-rules"></a>Ausgangsregeln
+
+| Port | Protocol | `Source` | Destination | Aktion |
+| ---- | -------- | ------ | ----------- | ------ |
+| 443, 12000 | TCP  | **VirtualNetwork** | AzureCloud | Allow |
+| Any | Any | **VirtualNetwork** | **VirtualNetwork** | Zulassen |
+
 ## <a name="limits"></a>Einschränkungen
 
 ### <a name="what-are-the-service-limitation-of-azure-virtual-network-manager"></a>Was sind die Serviceeinschränkungen von Azure Virtual Network Manager?
 
-* Ein Hub in einer Hub-and-Spoke-Topologie kann bis zu 500 Speichen haben. 
+* Ein Hub in einer Hub-and-Spoke-Topologie kann bis zu 250 Spokes aufweisen. 
+
+* Eine Meshtopologie kann bis zu 250 virtuelle Netzwerke aufweisen.
 
 * Die Subnetze in einem virtuellen Netzwerk können nicht miteinander kommunizieren, wenn sie in einer Mesh-Konfiguration denselben Adressraum haben. 
-
-* Azure Virtual Network Manager erlaubt nur 500 virtuelle Netzwerk-Peering-Verbindungen über alle Konnektivitätskonfigurationen für ein bestimmtes virtuelles Netzwerk. Sie können Legacy-Peering auch selbständig verwalten. 
 
 * Die maximale Anzahl der IP-Präfixe in allen Verwaltungsregeln zusammen beträgt 1000. 
 
@@ -105,7 +126,7 @@ Ja, Sie können ein bereits erstelltes Peering überschreiben oder löschen.
 
 * Azure Virtual Network Manager bietet in der öffentlichen Vorschau keine mandantenübergreifende Unterstützung.
 
-* Ein virtuelles Netzwerk kann Teil von bis zu fünf Mesh-Konfigurationen sein. 
+* Ein virtuelles Netzwerk kann Teil von bis zu zwei Meshkonfigurationen sein. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

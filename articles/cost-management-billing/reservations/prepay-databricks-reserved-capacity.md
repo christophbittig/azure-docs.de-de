@@ -2,18 +2,18 @@
 title: Verringern der Kosten für Azure Databricks durch Vorauszahlung
 description: Hier erfahren Sie, wie Sie für Azure Databricks-Gebühren mit reservierter Kapazität vorauszahlen und so Geld sparen können.
 author: bandersmsft
-ms.reviewer: primittal
+ms.reviewer: sapnakeshari
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: how-to
-ms.date: 09/20/2021
+ms.date: 10/19/2021
 ms.author: banders
-ms.openlocfilehash: 8047c57c929deeffcb69943ce17fa5fe81d31af1
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 72bb3403a49431d1dbc1cbd9d15ac37348818118
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128645054"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130243826"
 ---
 # <a name="optimize-azure-databricks-costs-with-a-pre-purchase"></a>Verringern der Kosten für Azure Databricks durch Vorauszahlung
 
@@ -42,8 +42,8 @@ Berechnen Sie vor dem Kauf die DBU-Gesamtmenge, die für unterschiedliche Worklo
 Sie können Databricks-Pläne im [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22Databricks%22%7D) erwerben. Zum Erwerben reservierter Kapazität müssen Sie über die Besitzerrolle für mindestens ein Enterprise-Abonnement verfügen.
 
 - Ihnen muss die Besitzerrolle für mindestens ein Enterprise-Abonnement zugeordnet sein (Angebotsnummern: MS-AZR-0017P oder MS-AZR-0148P) oder „Microsoft-Kundenvereinbarung“ oder ein einzelnes Abonnement mit Sätzen für nutzungsbasierte Bezahlung (Angebotsnummern: MS-AZR-0003P oder MS-AZR-0023P) sein.
-- Bei EA-Abonnements muss im EA-Portal die Option „Reservierte Instanzen hinzufügen“ aktiviert werden. Wenn diese Einstellung deaktiviert ist, müssen Sie ein EA-Administrator für das Abonnement sein.
-- Bei Enterprise-Abonnements muss im [EA-Portal](https://ea.azure.com/) die Option **Reservierte Instanzen hinzufügen** aktiviert werden. Wenn diese Einstellung deaktiviert ist, müssen Sie ein EA-Administrator des Abonnements sein.
+- Bei Enterprise-Abonnements muss im [EA-Portal](https://ea.azure.com/) die Option **Reservierte Instanzen hinzufügen** aktiviert werden. Wenn diese Einstellung deaktiviert ist, müssen Sie ein EA-Administrator des Abonnements sein, um sie zu aktivieren. Direkte EA-Kunden können nun die Einstellung **Reservierte Instanz** im [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_GTM/ModernBillingMenuBlade/AllBillingScopes) aktualisieren. Navigieren Sie zum Menü „Richtlinien“, um die Einstellungen zu ändern.
+
 
 **Vorgehensweise für den Erwerb:**
 

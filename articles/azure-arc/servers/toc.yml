@@ -85,9 +85,9 @@
       items:
         - name: Testen von Servern mit Arc-Unterstützung mithilfe eines virtuellen Azure-Computers
           href: plan-evaluate-on-azure-virtual-machine.md
-        - name: Durchführen des Onboardings in Azure Sentinel
+        - name: Durchführen des Onboardings in Microsoft Sentinel
           href: scenario-onboard-azure-sentinel.md
-        - name: Durchführen des Onboardings in Azure Security Center
+        - name: "Durchführen des Onboardings in Microsoft\_Defender für Cloud"
           href: ../../security-center/quickstart-onboard-machines.md
     - name: Problembehandlung
       items:

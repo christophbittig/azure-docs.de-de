@@ -2,22 +2,18 @@
 metadata:
   title: 'Azure Front Door: Häufig gestellte Fragen'
   description: Diese Seite enthält Antworten auf häufig gestellte Fragen zu Azure Front Door.
-  services: frontdoor
-  documentationcenter: ''
   author: duongau
+  ms.author: duau
   ms.service: frontdoor
-  ms.devlang: na
   ms.topic: article
-  ms.tgt_pltfrm: na
   ms.workload: infrastructure-services
   ms.date: 09/14/2021
-  ms.author: duau
-  ms.openlocfilehash: 43a4b39295b905f1a02eedfd61a6c13fca66319e
-  ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+  ms.openlocfilehash: e977459806fb6ec83f8f969d9011adc14f026744
+  ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/19/2021
-  ms.locfileid: "130167694"
+  ms.lasthandoff: 11/03/2021
+  ms.locfileid: "131442614"
 title: Häufig gestellte Fragen zu Azure Front Door
 summary: >
   In diesem Artikel werden häufige Fragen zu den Features und der Funktionalität von Azure Front Door beantwortet. Wenn Sie hier keine Antwort auf Ihre Frage finden, können Sie sich über die folgenden Kanäle an uns wenden (Eskalationsreihenfolge):
@@ -25,7 +21,9 @@ summary: >
 
   1. Im Abschnitt „Kommentare“ dieses Artikels.
 
-  2. [UserVoice zu Azure Front Door](https://feedback.azure.com/forums/217313-networking?category_id=345025).
+
+  2. [UserVoice zu Azure Front Door](https://feedback.azure.com/d365community/forum/8ae9bf04-8326-ec11-b6e6-000d3a4f0789?c=d47b0f41-8326-ec11-b6e6-000d3a4f0789).
+
 
   3. **Microsoft-Support:** Wählen Sie zum Erstellen einer neuen Supportanfrage im Azure-Portal auf der Registerkarte **Hilfe** die Schaltfläche **Hilfe und Support** und anschließend die Option **Neue Supportanfrage**.
 sections:
@@ -122,57 +120,7 @@ sections:
   questions:
   - question: >
       Welche TLS-Versionen werden vom Azure Front Door unterstützt?
-    answer: >
-      Alle Front Door-Profile, die nach September 2019 erstellt wurden, verwenden standardmäßig TLS 1.2 als Mindestvoraussetzung.
-
-
-      Front Door unterstützt die TLS-Versionen 1.0, 1.1 und 1.2. TLS 1.3 wird noch nicht unterstützt.
-  - question: >
-      Welche Zertifikate werden von Azure Front Door unterstützt?
-    answer: >
-      Um das HTTPS-Protokoll für die sichere Bereitstellung von Inhalten in einer benutzerdefinierten Front Door-Domäne zu aktivieren, können Sie ein von Azure Front Door verwaltetes oder Ihr eigenes Zertifikat verwenden.
-
-      Die von Front Door verwaltete Option stellt über Digicert ein TLS/SSL-Standardzertifikat zur Verfügung, das im Schlüsseltresor von Front Door gespeichert wird. Wenn Sie ein eigenes Zertifikat verwenden möchten, können Sie ein Zertifikat einer unterstützten Zertifizierungsstelle integrieren. Hierbei kann es sich um ein Standard-TLS-, ein erweitertes Validierungs- oder sogar um ein Platzhalterzertifikat handeln. Selbstsignierte Zertifikate werden nicht unterstützt. Weitere Informationen zu [Aktivieren von HTTPS für eine benutzerdefinierte Domäne](./front-door-custom-domain-https.md).
-  - question: >
-      Unterstützt Front Door die automatische Rotation von Zertifikaten?
-    answer: >
-      Bei der Option für verwaltete Zertifikate von Front Door werden die Zertifikate von Front Door automatisch rotiert. Wenn Sie ein verwaltetes Zertifikat von Front Door verwenden und feststellen, dass das Ablaufdatum des Zertifikats weniger als 60 Tage entfernt ist, erstellen Sie ein Supportticket.
-
-      </br>Legen Sie für Ihr eigenes benutzerdefiniertes TLS/SSL-Zertifikat die Geheimnisversion auf „Latest“ (Neuestes) fest, damit Azure Front Door automatisch zur neuesten Geheimnisversion rotiert, die in Ihren Key Vault hochgeladen wurde. Es kann bis zu 24 Stunden dauern, bis die neue Version des Zertifikats/Geheimnisses bereitgestellt wird. Wenn Sie die Geheimnisversion auf eine bestimmte Version konfigurieren, müssen Sie Front Door auf die richtige Zertifikatversion in Ihrem Key Vault verweisen. Vergewissern Sie sich, dass für den Dienstprinzipal für Front Door weiterhin Zugriff auf die Key Vault-Instanz besteht. Informationen finden Sie unter „[Gewähren des Zugriffs](standard-premium/how-to-configure-https-custom-domain.md#grant-azure-front-door-access-to-your-key-vault) auf Ihren Schlüsseltresor“. Der aktualisierte Zertifikatrolloutvorgang von Front Door verursacht keine Downtime in der Produktion, sofern sich der Antragstellername oder der alternative Antragstellername (SAN) für das Zertifikat nicht ändert.
-  - question: >
-      Welche Verschlüsselungssammlungen werden derzeit von Azure Front Door unterstützt?
-    answer: "Bei TLS1.2 werden folgende Verschlüsselungssammlungen unterstützt: \n\n- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384\n- TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256\n- TLS_DHE_RSA_WITH_AES_256_GCM_SHA384\n- TLS_DHE_RSA_WITH_AES_128_GCM_SHA256\n\n> [!NOTE]  \n> Für Windows 10 und höhere Versionen wird empfohlen, eine oder beide Suites mit ECDHE-Verschlüsselungsverfahren zu aktivieren, um die Sicherheit zu erhöhen. Windows 8.1, 8 und 7 sind nicht mit diesen Suites mit ECDHE-Verschlüsselungsverfahren kompatibel. Die Suites mit DHE-Verschlüsselungsverfahren wurden aus Gründen der Kompatibilität mit diesen Betriebssystemen bereitgestellt.\n\nWenn Sie benutzerdefinierte Domänen mit TLS1.0/1.1 verwenden, werden folgende Verschlüsselungssammlungen unterstützt:\n\n- TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256\n- TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384\n- TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256\n- TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384\n- TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256\n- TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384\n- TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256\n- TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384\n- TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA\n- TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA\n- TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA\n- TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA\n- TLS_RSA_WITH_AES_256_GCM_SHA384\n- TLS_RSA_WITH_AES_128_GCM_SHA256\n- TLS_RSA_WITH_AES_256_CBC_SHA256\n- TLS_RSA_WITH_AES_128_CBC_SHA256\n- TLS_RSA_WITH_AES_256_CBC_SHA\n- TLS_RSA_WITH_AES_128_CBC_SHA\n- TLS_DHE_RSA_WITH_AES_128_GCM_SHA256\n- TLS_DHE_RSA_WITH_AES_256_GCM_SHA384\n"
-  - question: >
-      Kann ich die TLS-Richtlinie konfigurieren, um die TLS-Protokollversionen zu steuern?
-    answer: >
-      Sie können eine minimale TLS-Version in Azure Front Door in den HTTPS-Einstellungen der benutzerdefinierten Domäne über das Azure-Portal oder die [Azure-REST-API](/rest/api/frontdoorservice/frontdoor/frontdoors/createorupdate#minimumtlsversion) konfigurieren. Derzeit können Sie zwischen 1.0 und 1.2 wählen.
-  - question: >
-      Kann ich Front Door so konfigurieren, dass nur bestimmte Verschlüsselungssammlungen unterstützt werden?
-    answer: "Nein. Die Konfiguration von Front Door für bestimmte Verschlüsselungssammlungen wird nicht unterstützt. Sie können jedoch Ihr eigenes benutzerdefiniertes TLS/SSL-Zertifikat von Ihrer Zertifizierungsstelle (z. B. Verisign, Entrust oder Digicert) erhalten und beim Generieren bestimmte Suites mit Verschlüsselungsverfahren auf dem Zertifikat markieren lassen. \n"
-  - question: >
-      Unterstützt Front Door OCSP-Anheftung?
-    answer: >
-      Ja, OCSP-Anheftung wird von Front Door standardmäßig unterstützt, und es ist keine Konfiguration erforderlich.
-  - question: >
-      Unterstützt Azure Front Door auch eine erneute Verschlüsselung des Datenverkehrs an das Back-End?
-    answer: >
-      Ja. Azure Front Door unterstützt TLS/SSL-Abladung sowie End-to-End-TLS, das den Datenverkehr an das Back-End erneut verschlüsselt. Da die Verbindungen zum Back-End über dessen öffentliche IP-Adresse erfolgen, empfehlen wir Ihnen, Front Door so zu konfigurieren, dass HTTPS als Weiterleitungsprotokoll verwendet wird.
-  - question: >
-      Werden von Front Door selbstsignierte Zertifikate auf dem Back-End für die HTTPS-Verbindung unterstützt?
-    answer: >
-      Nein, selbstsignierte Zertifikate werden von Front Door nicht unterstützt, und die Einschränkung gilt für beide:
-
-
-      - **Back-Ends**: Sie können keine selbstsignierten Zertifikate verwenden, wenn Sie den Datenverkehr als HTTPS oder HTTPS-Integritätstests weiterleiten oder den Cache vom Ursprungsbereich für die Routingregeln mit aktiviertem Zwischenspeichern auffüllen.
-
-      - **Front-End**: Sie können keine selbstsignierten Zertifikate verwenden, wenn Sie Ihr eigenes benutzerdefiniertes TLS/SSL-Zertifikat zum Aktivieren von HTTPS für Ihre benutzerdefinierte Domäne verwenden.
-  - question: >
-      Warum schlägt der HTTPS-Datenverkehr an das Back-End fehl?
-    answer: "Es kann zwei Gründe geben, warum der HTTPS-Datenverkehr für eine erfolgreiche HTTPS-Verbindung mit Ihrem Back-End – ob für Integritätstests oder Weiterleitungsanforderungen – fehlschlägt:\n\n- **Zertifikatantragsteller-Namenskonflikt**: Bei HTTPS-Verbindungen erwartet Front Door, dass Ihr Back-End ein Zertifikat von einer gültigen Zertifizierungsstelle vorlegt, und dass die Antragstellernamen mit dem Back-End-Hostnamen übereinstimmen. Wenn beispielsweise der Back-End-Hostname auf `myapp-centralus.contosonews.net` festgelegt ist und das Zertifikat, das Ihr Back-End während des TLS-Handshakes vorlegt, weder `myapp-centralus.contosonews.net` noch `*myapp-centralus*.contosonews.net` im Antragstellernamen aufweist, verweigert Front Door die Verbindung, und ein Fehler tritt auf. \n    - **Lösung**: Auch wenn es im Hinblick auf Compliance nicht empfohlen wird, können Sie diesen Fehler umgehen, indem Sie die Prüfung des Zertifikatantragsteller-Namens für Ihre Front Door-Instanz deaktivieren. Diese Option finden Sie unter „Einstellungen“ im Azure-Portal und unter „BackendPoolsSettings“ in der API.\n- **Back-End-Hostingzertifikat von einer ungültigen Zertifizierungsstelle**: In Front Door können nur Zertifikate von [gültigen Zertifizierungsstellen](https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT) auf dem Back-End verwendet werden. Zertifikate von internen Zertifizierungsstellen oder selbstsignierte Zertifikate sind nicht zulässig. Das Zertifikat muss über eine vollständige Zertifikatkette mit Blatt- und Zwischenzertifikaten verfügen, und die Stammzertifizierungsstelle muss in der [Microsoft-Liste der vertrauenswürdigen Zertifizierungsstellen](https://ccadb-public.secure.force.com/microsoft/IncludedCACertificateReportForMSFT) enthalten sein. \n"
-  - question: >
-      Kann ich bei Azure Front Door die Clientauthentizierung/gegenseitige Authentifizierung verwenden?
-    answer: >
-      Nein. Obwohl Azure Front Door TLS 1.2 unterstützt, bei dem die Clientauthentizierung/gegenseitige Authentifizierung in [RFC 5246](https://tools.ietf.org/html/rfc5246) eingeführt wurde, unterstützt Azure Front Door diese Authentifizierungsart zurzeit nicht.
+    answer: "Alle Front Door-Profile, die nach September 2019 erstellt wurden, verwenden standardmäßig TLS 1.2 als Mindestvoraussetzung.\n\nFront Door unterstützt die TLS-Versionen 1.0, 1.1 und 1.2. TLS 1.3 wird noch nicht unterstützt. Ausführlichere Informationen finden Sie unter [End-to-End-TLS mit Azure Front Door](concept-end-to-end-tls.md).\n        \n"
 - name: Abrechnung
   questions:
   - question: >

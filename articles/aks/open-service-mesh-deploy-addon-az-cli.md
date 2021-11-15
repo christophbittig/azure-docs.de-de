@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 8/26/2021
 ms.custom: mvc, devx-track-azurecli
 ms.author: pgibson
-ms.openlocfilehash: 7945df58db31ad7dbd9c162366596756f62b3475
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: cf89b21c3aceee55e121d918f21db4bcf7c51d42
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131066746"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131440486"
 ---
 # <a name="deploy-the-open-service-mesh-aks-add-on-using-azure-cli"></a>Bereitstellen des Open Service Mesh AKS-Add-Ons mittels Azure CLI
 
@@ -102,6 +102,14 @@ Die folgenden `kubectl` Befehle melden den Status des OSM-Controllers.
 kubectl get deployments -n kube-system --selector app=osm-controller
 kubectl get pods -n kube-system --selector app=osm-controller
 kubectl get services -n kube-system --selector app=osm-controller
+```
+
+### <a name="check-osm-add-on-version"></a>Überprüfen der OSM-Add-On-Version
+
+Die installierte OSM-Add-On-Version sollte v0.11.1 oder höher sein. Um dies zu überprüfen, können Sie den folgenden Befehl ausführen, um die Imageversion für den osm-controller zu überprüfen, der im Imagetag codiert ist: 
+
+```azurecli-interactive
+kubectl get deployment -n kube-system osm-controller -o=jsonpath='{$.spec.template.spec.containers[:1].image}'
 ```
 
 ## <a name="accessing-the-aks-osm-add-on-configuration"></a>Zugreifen auf die Konfiguration des AKS-OSM-Add-Ons

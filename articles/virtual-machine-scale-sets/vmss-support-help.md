@@ -7,12 +7,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: troubleshooting
 ms.date: 4/28/2021
 ms.custom: support-help-page
-ms.openlocfilehash: 56735c016b5496826b774d2f242ff03117a3a923
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 69d09cb0d2cbdef559670c34dcfb486edb41d0b5
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124754804"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130249227"
 ---
 # <a name="support-and-troubleshooting-for-azure-virtual-machine-scale-sets"></a>Support und Problembehandlung für Azure-VM-Skalierungsgruppen
 
@@ -25,7 +25,7 @@ Hier finden Sie Vorschläge dazu, wo Sie Hilfe bei der Entwicklung Ihrer Lösung
 
 In verschiedenen Artikeln wird erläutert, wie Sie Probleme, die bei der Verwendung von [Azure Virtual Machines](../virtual-machines/index.yml) und [VM-Skalierungsgruppen](overview.md) auftreten können, ermitteln, diagnostizieren und beheben.
 
--  [Dokumentation zur Problembehandlung für virtuelle Azure-Computer](/troubleshoot/azure/virtual-machines/welcome-virtual-machines) 
+-  [Dokumentation zur Problembehandlung für Azure-VM-Skalierungsgruppen](/troubleshoot/azure/virtual-machine-scale-sets/welcome-virtual-machine-scale-sets) 
 - [Häufig gestellte Fragen zu Azure-VM-Skalierungsgruppen](virtual-machine-scale-sets-faq.yml)
 
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: thwimmer
-ms.openlocfilehash: 9e8385faadc4c3c9d34471741cc238e964ed67a2
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 4999669aee35b9e0d7303ae1156f10318c775562
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128589165"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131989753"
 ---
 # <a name="tutorial-configure-ringcentral-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von RingCentral für die automatische Benutzerbereitstellung
 
@@ -38,6 +38,10 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 * Ein Benutzerkonto in Azure AD mit der [Berechtigung](../roles/permissions-reference.md) für die Konfiguration von Bereitstellungen (z.B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator). 
 * [Einen RingCentral-Mandanten](https://www.ringcentral.com/office/plansandpricing.html)
 * Ein Benutzerkonto in RingCentral mit Administratorrechten
+
+> [!NOTE]
+> Diese Integration kann auch über die Azure AD-Umgebung für die US Government-Cloud verwendet werden. Sie finden diese Anwendung im Azure AD-Katalog für US Government-Cloudanwendungen und konfigurieren sie auf die gleiche Weise wie in der öffentlichen Cloud.
+
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Schritt 1: Planen der Bereitstellung
 1. Erfahren Sie, [wie der Bereitstellungsdienst funktioniert](../app-provisioning/user-provisioning.md).
@@ -94,7 +98,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
    ![AAD](./media/ringcentral-provisioning-tutorial/admincredentials.png)
 
-   ![Zugriff](./media/ringcentral-provisioning-tutorial/authorize.png)
+   ![Access](./media/ringcentral-provisioning-tutorial/authorize.png)
 
    ![Authorize](./media/ringcentral-provisioning-tutorial/accessrequest.png)
 
@@ -152,6 +156,8 @@ Nachdem Sie die Bereitstellung konfiguriert haben, können Sie mit den folgenden
 
 * 10.9.2020: Unterstützung für die Attribute „displayName“ und „manager“ wurde entfernt.
 * 15.03.2021: Aktualisierung der Autorisierungsmethode von permanentem Bearertoken in OAuth-Autorisierungscodeflow
+* 28.10.2021: Standardzuordnung zu **mail-> emails[type eq “work”].value**
+* 28.10.2021: Die Ratenbegrenzung wurde für Lesevorgänge auf 300/Minute und für Schreibvorgänge auf 1.000/Minute aktualisiert.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

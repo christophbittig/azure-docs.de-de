@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: how-to
-ms.date: 08/03/2021
+ms.date: 10/22/2021
 ms.author: victorh
-ms.openlocfilehash: 62659116599a60d5a9407fea4d2b1f06594ef475
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: d421986ebeb308efb0e076b1a80f537d49082ec5
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124824452"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130242347"
 ---
 # <a name="monitor-azure-firewall-logs-and-metrics"></a>Überwachen von Azure Firewall-Protokollen und -Metriken
 
@@ -55,11 +55,15 @@ Die Aktivitätsprotokollierung ist automatisch für alle Resource Manager-Ressou
 
 Gehen Sie wie folgt vor, um die Diagnoseprotokollierung mithilfe von PowerShell zu aktivieren:
 
-1. Notieren Sie sich die Ressourcen-ID Ihres Log Analytics-Arbeitsbereichs, unter dem die Protokolldaten gespeichert werden. Dieser Wert hat das Format `/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/microsoft.operationalinsights/workspaces/<workspace name>`.
+1. Notieren Sie sich die Ressourcen-ID Ihres Log Analytics-Arbeitsbereichs, unter dem die Protokolldaten gespeichert werden. Dieser Wert hat das Format:
+
+   `/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/microsoft.operationalinsights/workspaces/<workspace name>`
 
    Sie können einen beliebigen Arbeitsbereich Ihres Abonnements verwenden. Sie können das Azure-Portal verwenden, um nach diesen Informationen zu suchen. Die Informationen befinden sich auf der Seite **Eigenschaften** der Ressource.
 
-2. Notieren Sie sich die Ressourcen-ID für die Firewall. Dieser Wert hat das Format `/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>`.
+2. Notieren Sie sich die Ressourcen-ID für die Firewall. Dieser Wert hat das Format:
+
+   `/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>`
 
    Sie können das Portal verwenden, um nach diesen Informationen zu suchen.
 
@@ -81,11 +85,15 @@ Die Aktivitätsprotokollierung ist automatisch für alle Resource Manager-Ressou
 
 Gehen Sie wie folgt vor, um die Diagnoseprotokollierung mithilfe der Azure-Befehlszeilenschnittstelle zu aktivieren:
 
-1. Notieren Sie sich die Ressourcen-ID Ihres Log Analytics-Arbeitsbereichs, unter dem die Protokolldaten gespeichert werden. Dieser Wert hat das Format `/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>`.
+1. Notieren Sie sich die Ressourcen-ID Ihres Log Analytics-Arbeitsbereichs, unter dem die Protokolldaten gespeichert werden. Dieser Wert hat das Format:
+
+   `/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/microsoft.operationalinsights/workspaces/<workspace name>`
 
    Sie können einen beliebigen Arbeitsbereich Ihres Abonnements verwenden. Sie können das Azure-Portal verwenden, um nach diesen Informationen zu suchen. Die Informationen befinden sich auf der Seite **Eigenschaften** der Ressource.
 
-2. Notieren Sie sich die Ressourcen-ID für die Firewall. Dieser Wert hat das Format `/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>`.
+2. Notieren Sie sich die Ressourcen-ID für die Firewall. Dieser Wert hat das Format:
+
+   `/subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/azureFirewalls/<Firewall name>`
 
    Sie können das Portal verwenden, um nach diesen Informationen zu suchen.
 

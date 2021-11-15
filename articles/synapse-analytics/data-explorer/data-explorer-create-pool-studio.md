@@ -10,12 +10,12 @@ services: synapse-analytics
 ms.service: synapse-analytics
 ms.subservice: data-explorer
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: c52df34a4dea88a6e43d8d6fdf2a292d05130dc4
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 59a22c976650ea0f7aed7ca3eb2da72702aef5bf
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131101241"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131424777"
 ---
 # <a name="quickstart-create-a-data-explorer-pool-using-synapse-studio-preview"></a>Schnellstart: Erstellen eines Data Explorer-Pools mit Synapse Studio (Vorschau)
 
@@ -122,4 +122,6 @@ Gehen Sie wie folgt vor, um den Data Explorer-Pool mithilfe von Synapse Studio a
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Schnellstart: Erstellen eines Data Explorer-Pools im Azure-Portal](data-explorer-create-pool-portal.md)
+- [Übersicht über die Datenerfassung](ingest-data/data-explorer-ingest-data-overview.md)
+- [Analysieren mit Data Explorer](../get-started-analyze-data-explorer.md)
+- [Überwachen von Data Explorer-Pools](data-explorer-monitor-pools.md)

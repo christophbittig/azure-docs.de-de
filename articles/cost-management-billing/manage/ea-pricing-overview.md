@@ -8,12 +8,12 @@ ms.subservice: enterprise
 ms.topic: conceptual
 ms.date: 10/11/2021
 ms.author: banders
-ms.openlocfilehash: a4e5342e73ea374cf54b7bce2e81f17bb2a2bb80
-ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
+ms.openlocfilehash: b613a917793f522a081a3460d28edf84a9c03d09
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129753516"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130255522"
 ---
 # <a name="azure-ea-pricing"></a>Azure EA-Preise
 
@@ -33,7 +33,9 @@ Microsoft kann den aktuellen Enterprise Agreement-Preis für einzelne Azure-Dien
 
 ### <a name="current-effective-pricing"></a>Aktuell gültige Preise
 
-Kunden und Channelpartner können Ihre aktuellen Preise für eine Registrierung anzeigen, indem sie sich beim [Azure Enterprise Portal](https://ea.azure.com/) anmelden und die Preisblattseite für diese Registrierung anzeigen. Wenn Sie Azure indirekt über einen unserer Channelpartner erwerben, müssen Sie Ihre Preisaktualisierungen von Ihrem Channelpartner abrufen, wenn die Anzeige von Preisaufschlägen für Ihre Registrierung nicht aktiviert wurde.
+Kunden und Channelpartner können Ihre aktuellen Preise für eine Registrierung anzeigen, indem sie sich beim [Azure Enterprise Portal](https://ea.azure.com/) anmelden und die Preisblattseite für diese Registrierung anzeigen. Direkte EA-Kund*innen können jetzt das **Preisblatt** im [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_GTM/ModernBillingMenuBlade/BillingAccounts) anzeigen und herunterladen. Weitere Informationen finden Sie unter [Anzeigen des Preisblatts](ea-pricing.md#download-pricing-for-an-enterprise-agreement).
+
+Wenn Sie Azure indirekt über einen unserer Channelpartner erwerben, müssen Sie Ihre Preisaktualisierungen von Ihrem Channelpartner abrufen, wenn die Anzeige von Preisaufschlägen für Ihre Registrierung nicht aktiviert wurde.
 
 ### <a name="introduction-of-new-azure-services"></a>Einführung neuer Azure-Dienste
 

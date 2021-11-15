@@ -5,12 +5,12 @@ ms.date: 07/27/2021
 ms.topic: how-to
 ms.devlang: Java
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java, mode-api
-ms.openlocfilehash: b0f62a9e2953fd7d088a2bed1d3cfa52f6a3b26a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 4cc0321c8d54e0ce354cc49406e4c35484f7f97a
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131083591"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132058504"
 ---
 # <a name="use-service-bus-topics-and-subscriptions-with-java-old-package"></a>Verwenden von Service Bus-Themen und -Abonnements mit Java (altes Paket)
 In diesem Artikel schreiben Sie Java-Code, um Nachrichten an ein Azure Service Bus-Thema zu senden, und empfangen dann Nachrichten von Abonnements dieses Themas. 
@@ -114,7 +114,7 @@ public class MyServiceBusTopicClient {
 }
 ```
 
-Service Bus-Themen unterstützen eine maximale Nachrichtengröße von 256 KB im [Standard-Tarif](service-bus-premium-messaging.md) und 1 MB im [Premium-Tarif](service-bus-premium-messaging.md). Der Header, der die standardmäßigen und benutzerdefinierten Anwendungseigenschaften enthält, kann eine maximale Größe von 64 KB haben. Es gibt keine Beschränkung für die Anzahl der Nachrichten, die ein Thema enthält. Es gibt jedoch eine Grenze für die Gesamtgröße der Nachrichten eines Themas. Die Themengröße wird bei der Erstellung definiert. Die Obergrenze beträgt 5 GB.
+Service Bus-Themen unterstützen eine maximale Nachrichtengröße von 256 KB im [Standard-Tarif](service-bus-premium-messaging.md) und 100 MB im [Premium-Tarif](service-bus-premium-messaging.md). Der Header, der die standardmäßigen und benutzerdefinierten Anwendungseigenschaften enthält, kann eine maximale Größe von 64 KB haben. Es gibt keine Beschränkung für die Anzahl der Nachrichten, die ein Thema enthält. Es gibt jedoch eine Grenze für die Gesamtgröße der Nachrichten eines Themas. Die Themengröße wird bei der Erstellung definiert. Die Obergrenze beträgt 5 GB.
 
 ## <a name="receive-messages-from-a-subscription"></a>Empfangen von Nachrichten aus einem Abonnement
 Aktualisieren Sie die **main**-Methode, um drei Objekte vom Typ **SubscriptionClient** für drei Abonnements zu erstellen, und rufen Sie eine Hilfsmethode auf, die asynchron Beispielnachrichten aus dem Service Bus-Thema empfängt. In dem Beispielcode wird davon ausgegangen, dass Sie ein Thema namens **BasicTopic** sowie drei Abonnements namens **Subscription1**, **Subscription2** und **Subscription3** erstellt haben. Sollten Sie andere Namen verwendet haben, muss der Code vor dem Testen entsprechend aktualisiert werden. 

@@ -11,12 +11,12 @@ ms.author: seramasu
 ms.date: 10/21/2021
 ms.reviewer: laobri
 ms.custom: devplatv2
-ms.openlocfilehash: 05622e6300dc19e28efaba114aded16fc1a26788
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 724c7a3108f1b0bb699c81444a76e34d795f1705
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131557355"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132056131"
 ---
 # <a name="deploy-models-with-rest-preview"></a>Bereitstellen von Modellen per REST (Vorschau)
 
@@ -61,11 +61,11 @@ In den folgenden REST-API-Aufrufen verwenden wir `SUBSCRIPTION_ID`, `RESOURCE_GR
 
 Für administrative REST-Anforderungen wird ein [Token für die Dienstprinzipalauthentifizierung](how-to-manage-rest.md#retrieve-a-service-principal-authentication-token) angefordert. Ersetzen Sie `TOKEN` durch Ihren eigenen Wert. Sie können dieses Token mit dem folgenden Befehl abrufen:
 
-:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/deploy-rest.sh" id="get_access_token":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/deploy-rest.sh" id="get_access_token":::
 
 Der Dienstanbieter verwendet das `api-version`-Argument, um Kompatibilität zu gewährleisten. Das `api-version`-Argument variiert von Dienst zu Dienst. Legen Sie die API-Version zur Vorbereitung für zukünftige Versionen als Variable fest:
 
-:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/deploy-rest.sh" id="api_version":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/deploy-rest.sh" id="api_version":::
 
 ### <a name="get-storage-account-details"></a>Abrufen von Speicherkontodetails
 

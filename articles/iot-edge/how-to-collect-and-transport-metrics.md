@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.reviewer: kgremban
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 60a01c9e3a3e8643ad7d993db34d299fdc5ef145
-ms.sourcegitcommit: 7f3ed8b29e63dbe7065afa8597347887a3b866b4
+ms.openlocfilehash: 5c7e7cc2434c9c55043ae6e504d868a103da35db
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122350012"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130226241"
 ---
 # <a name="collect-and-transport-metrics-preview"></a>Sammeln und Transportieren von Metriken (Vorschau)
 
@@ -219,7 +219,7 @@ Bezeichnungsbasierte Selektoren (`{quantile=0.5,otherLabel=~Re[ge]*|x}`).
   * `=` Abgleich von Bezeichnungen, die genau mit der angegebenen Zeichenfolge übereinstimmen (Groß- und Kleinschreibung wird beachtet).
   * `!=` Abgleich von Bezeichnungen, die nicht genau mit der angegebenen Zeichenfolge übereinstimmen.
   * `=~` Abgleich von Bezeichnungen mit einem bereitgestellten RegEx. Bsp.: `label=~CPU|Mem|[0-9]*`
-  * `!=` Abgleich von Bezeichnungen, die zu einem bereitgestellten RegEx nicht passen.
+  * `!~` Abgleich von Bezeichnungen, die zu einem bereitgestellten RegEx nicht passen.
   * RegEx ist vollständig verankert (A ^ und $ werden automatisch am Anfang und am Ende jedes RegEx hinzugefügt)
   * Diese Komponente ist bei einem Metrikselektor optional.
 
@@ -228,15 +228,15 @@ Endpunktselektor (`[http://VeryNoisyModule:9001/metrics]`).
 * Die URL sollte genau mit einer URL übereinstimmen, die in `MetricsEndpointsCSV` aufgelistet ist.
 * Diese Komponente ist bei einem Metrikselektor optional.
 
-Eine Metrik muss mit allen Teilen eines jeweiligen Selektors übereinstimmen, um ausgewählt zu werden. Sie muss mit dem Namen übereinstimmen *und* über dieselben Tags mit übereinstimmenden Werten verfügen *und* vom angegebenen Endpunkt stammen. So würde beispielsweise `mem{quantile=0.5,otherLabel=foobar}[http://VeryNoisyModule:9001/metrics]` mit dem Selektor `mem{quantile=0.5,otherLabel=~foo|bar}[http://VeryNoisyModule:9001/metrics]` nicht übereinstimmen. Es sollten mehrere Selektoren verwendet werden, damit die Auswahl nicht eingeschränkt (AND-Operatoren) sondern erweitert wird (OR-Operatoren).
+Eine Metrik muss mit allen Teilen eines jeweiligen Selektors übereinstimmen, um ausgewählt zu werden. Sie muss mit dem Namen übereinstimmen *und* über dieselben Bezeichnungen mit übereinstimmenden Werten verfügen *und* vom angegebenen Endpunkt stammen. So würde beispielsweise `mem{quantile=0.5,otherLabel=foobar}[http://VeryNoisyModule:9001/metrics]` mit dem Selektor `mem{quantile=0.5,otherLabel=~foo|bar}[http://VeryNoisyModule:9001/metrics]` nicht übereinstimmen. Es sollten mehrere Selektoren verwendet werden, damit die Auswahl nicht eingeschränkt (AND-Operatoren) sondern erweitert wird (OR-Operatoren).
 
-Um z. B. die Metrik `mem` aus einem Modul `module1` unabhängig von den zugehörigen Tags zuzulassen, aber die gleiche Metrik aus `module2` nur mit dem Tag `agg=p99` zuzulassen, kann der folgende Selektor zu `AllowedMetrics` hinzugefügt werden:
+Um z. B. die benutzerdefinierte Metrik `mem` mit einer Bezeichnung aus dem Modul `module1` zuzulassen, aber die gleiche Metrik aus `module2` nur mit der Bezeichnung `agg=p99` zuzulassen, kann `AllowedMetrics` der folgende Selektor hinzugefügt werden:
 
 ```query
 mem{}[http://module1:9001/metrics] mem{agg="p99"}[http://module2:9001/metrics]
 ```
 
-Oder fügen Sie Folgendes zu `AllowedMetrics` hinzu, um die Metriken `mem` und `cpu` unabhängig von den Tags oder Endpunkten zuzulassen:
+Oder fügen Sie `AllowedMetrics` Folgendes hinzu, um die benutzerdefinierten Metriken `mem` und `cpu` unabhängig von den Bezeichnungen oder Endpunkten zuzulassen:
 
 ```query
 mem cpu

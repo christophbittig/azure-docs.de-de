@@ -8,12 +8,12 @@ ms.date: 04/02/2021
 ms.topic: article
 ms.service: virtual-machines
 ms.subservice: image-builder
-ms.openlocfilehash: 9a248a5ad65e05db84a0d20f13225d3085b419af
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 3f20276c8cb1f3b777f3cbb1400559cfe85294bc
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124766329"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131428252"
 ---
 # <a name="configure-azure-image-builder-service-permissions-using-azure-cli"></a>Konfigurieren von Berechtigungen für den Azure VM Image Builder-Dienst mithilfe der Azure CLI
 
@@ -21,7 +21,7 @@ ms.locfileid: "124766329"
 
 Wenn Sie sich für die (AIB) registrieren, wird dem AIB-Dienst die Berechtigung zum Erstellen, Verwalten und Löschen einer Stagingressourcengruppe (IT_ *) und zum Hinzufügen von Ressourcen erteilt, die für die Imageerstellung erforderlich sind. Dies erfolgt dadurch, dass im Rahmen einer erfolgreichen Registrierung ein AIB-Dienstprinzipalname (Service Principal Name, SPN) in Ihrem Abonnement verfügbar gemacht wird.
 
-Damit Azure VM Image Builder Images an die verwalteten Images oder an eine Shared Image Gallery verteilen kann, müssen Sie eine benutzerseitig zugewiesene Azure-Identität erstellen, die über Berechtigungen zum Lesen und Schreiben von Images verfügt. Wenn Sie auf Azure Storage zugreifen, sind dafür Berechtigungen zum Lesen privater oder öffentlicher Container erforderlich.
+Damit Azure VM Image Builder Images an die verwalteten Images oder an eine Azure Compute Gallery (ehemals Shared Image Gallery) verteilen kann, müssen Sie eine benutzerseitig zugewiesene Azure-Identität erstellen, die über Berechtigungen zum Lesen und Schreiben von Images verfügt. Wenn Sie auf Azure Storage zugreifen, sind dafür Berechtigungen zum Lesen privater oder öffentlicher Container erforderlich.
 
 Vor dem Erstellen eines Images müssen Berechtigungen und Rechte eingerichtet werden. In den folgenden Abschnitten erfahren Sie, wie mögliche Szenarios mithilfe der Azure CLI konfiguriert werden.
 
@@ -54,7 +54,7 @@ Weitere Informationen zu in Azure benutzerseitig zugewiesenen Identitäten finde
 
 ## <a name="allow-image-builder-to-distribute-images"></a>Berechtigungen für den Azure VM Image Builder-Dienst zum Verteilen von Images
 
-Damit der Azure VM Image Builder-Dienst Images verteilen kann (Verwaltete Images/Shared Image Gallery), muss der Azure VM Image Builder-Dienst die Berechtigung haben, die Images in diese Ressourcengruppen einzufügen. Zum Gewähren der erforderlichen Berechtigungen müssen Sie eine benutzerseitig zugewiesene verwaltete Identität erstellen und ihr Rechte für die Ressourcengruppe erteilen, in der das Image erstellt wird. Der Azure VM Image Builder-Dienst hat **keine** Berechtigung, auf Ressourcen in anderen Ressourcengruppen des Abonnements zuzugreifen. Sie müssen explizite Aktionen ausführen, um den Zugriff zu gestatten, damit für Ihre Builds keine Fehler auftreten.
+Damit der Azure VM Image Builder-Dienst Images verteilen kann (Verwaltete Images/Azure Compute Gallery), muss er über die Berechtigung verfügen, die Images in diese Ressourcengruppen einzufügen. Zum Gewähren der erforderlichen Berechtigungen müssen Sie eine benutzerseitig zugewiesene verwaltete Identität erstellen und ihr Rechte für die Ressourcengruppe erteilen, in der das Image erstellt wird. Der Azure VM Image Builder-Dienst hat **keine** Berechtigung, auf Ressourcen in anderen Ressourcengruppen des Abonnements zuzugreifen. Sie müssen explizite Aktionen ausführen, um den Zugriff zu gestatten, damit für Ihre Builds keine Fehler auftreten.
 
 Sie müssen der benutzerseitig zugewiesenen verwalteten Identität keine Berechtigungen eines Mitwirkenden für die Ressourcengruppe zuweisen, damit Images verteilt werden können. Die benutzerseitig zugewiesene verwaltete Identität benötigt jedoch die folgenden `Actions`-Berechtigungen in Azure in der Verteilungsressourcengruppe:
 
@@ -64,7 +64,7 @@ Microsoft.Compute/images/read
 Microsoft.Compute/images/delete
 ```
 
-Für die Verteilung an eine Shared Image Gallery-Instanz benötigen Sie außerdem Folgendes:
+Bei der Verteilung an Azure Compute Gallery benötigen Sie außerdem Folgendes:
 
 ```Actions
 Microsoft.Compute/galleries/read
@@ -75,7 +75,7 @@ Microsoft.Compute/galleries/images/versions/write
 
 ## <a name="permission-to-customize-existing-images"></a>Berechtigung zum Anpassen vorhandener Images
 
-Damit der Azure VM Image Builder-Dienst Images aus benutzerdefinierten Quellimages erstellen kann (Verwaltete Images/Image Gallery), muss der Azure VM Image Builder-Dienst die Berechtigung haben, die Images in diesen Ressourcengruppen zu lesen. Zum Gewähren der erforderlichen Berechtigungen müssen Sie eine benutzerseitig zugewiesene verwaltete Identität erstellen und ihr Rechte für die Ressourcengruppe erteilen, in der sich das Image befindet.
+Damit der Azure VM Image Builder-Dienst Images aus benutzerdefinierten Quellimages erstellen kann (verwaltete Images/Azure Compute Gallery), muss er über die Berechtigung verfügen, die Images in diesen Ressourcengruppen zu lesen. Zum Gewähren der erforderlichen Berechtigungen müssen Sie eine benutzerseitig zugewiesene verwaltete Identität erstellen und ihr Rechte für die Ressourcengruppe erteilen, in der sich das Image befindet.
 
 So erstellen Sie ein Image aus einem vorhandenen benutzerdefinierten Image:
 
@@ -83,7 +83,7 @@ So erstellen Sie ein Image aus einem vorhandenen benutzerdefinierten Image:
 Microsoft.Compute/galleries/read
 ```
 
-So erstellen Sie ein Image aus einer vorhandenen Shared Image Gallery-Version:
+Erstellen aus einer vorhandenen Azure Compute Gallery-Version:
 
 ```Actions
 Microsoft.Compute/galleries/read
@@ -104,7 +104,7 @@ Microsoft.Network/virtualNetworks/subnets/join/action
 
 ## <a name="create-an-azure-role-definition"></a>Erstellen einer Rollendefinition in Azure
 
-Die folgenden Beispiele erstellen eine Rollendefinition in Azure auf Grundlage der Aktionen, die in den vorherigen Abschnitten beschrieben wurden. Diese Beispiele werden auf Ebene der Ressourcengruppe angewendet. Bewerten und testen Sie, ob die Granularität der Beispiele ausreichend für Ihre Anforderungen ist. Für Ihr Szenario ist möglicherweise eine genauere Abstimmung für eine bestimmte Shared Image Gallery-Instanz nötig.
+Die folgenden Beispiele erstellen eine Rollendefinition in Azure auf Grundlage der Aktionen, die in den vorherigen Abschnitten beschrieben wurden. Diese Beispiele werden auf Ebene der Ressourcengruppe angewendet. Bewerten und testen Sie, ob die Granularität der Beispiele ausreichend für Ihre Anforderungen ist. Für Ihr Szenario ist möglicherweise eine genauere Abstimmung für eine bestimmte Azure Compute Gallery-Instanz nötig.
 
 Die Aktionen für Images ermöglichen Lese- und Schreibvorgänge. Entscheiden Sie, was für Ihre Umgebung geeignet ist. Erstellen Sie beispielsweise eine Rolle, die es dem Azure VM Image Builder-Dienst ermöglicht, Images aus der Ressourcengruppe *example-rg-1* zu lesen und Images in die Ressourcengruppe *example-rg-2* zu schreiben.
 

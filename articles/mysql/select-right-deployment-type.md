@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: 3126eb9a2c3289f6fbc97a14fadf94300d1c2e84
-ms.sourcegitcommit: 216b6c593baa354b36b6f20a67b87956d2231c4c
+ms.openlocfilehash: facad7dbe4adf674438564b26c61a0f9aa9bceed
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129728777"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131429126"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>Auswählen der richtigen MySQL Server-Option in Azure
 
@@ -24,12 +24,12 @@ Berücksichtigen Sie bei der Entscheidung die beiden folgenden Optionen:
 - **Azure Database for MySQL**: Diese Option ist eine vollständig verwaltete MySQL-Datenbank-Engine, die auf der stabilen Version der MySQL Community Edition basiert. Diese relationale DBaaS-Lösung (Database-as-a-Service), die auf der Azure-Cloudplattform gehostet wird, fällt in die Branchenkategorie PaaS.
 
   Mit einer verwalteten Instanz von MySQL in Azure können Sie die integrierten Features, d. h. automatisiertes Patchen, Hochverfügbarkeit, automatisierte Sicherungen, elastische Skalierung, Sicherheit auf Unternehmensniveau, Compliance und Governance, Überwachung und Warnungen, nutzen, für die ansonsten eine umfassende Konfiguration erforderlich ist, wenn MySQL Server lokal oder auf einem virtuellen Azure-Computer ausgeführt wird. Wenn Sie mit MySQL als Dienst arbeiten, bezahlen Sie nur für das, was Sie nutzen. Darüber hinaus haben Sie dank Optionen zum Hoch- und Aufskalieren ohne Unterbrechung mehr Kontrolle.
-  
+
   [Azure Database for MySQL](overview.md), ein Dienst, der auf MySQL Community Edition basiert, ist in zwei Bereitstellungsmodi verfügbar:
 
   - Bei [Azure Database for MySQL Single Server](single-server-overview.md) handelt es sich um einen vollständig verwalteten Datenbankdienst mit minimalen Anforderungen für die Anpassung der Datenbank. Die Single Server-Plattform ist für die Verarbeitung der meisten Datenbankverwaltungsfunktionen (z. B. Patching, Sicherungen, Hochverfügbarkeit und Sicherheit) mit minimaler Benutzerkonfiguration und -steuerung konzipiert. Die Architektur ist für eine Verfügbarkeit von 99,99 Prozent in einer einzelnen Verfügbarkeitszone optimiert. Single Server-Instanzen eignen sich am besten für cloudnative Anwendungen, da sie für das automatisierte Patchen ohne genauen Patchzeitplan und ohne benutzerdefinierte MySQL-Konfigurationseinstellungen konzipiert sind.
 
-  - [Flexible Server (Vorschau)](flexible-server/overview.md) ist ein vollständig verwalteter Datenbankdienst, der eine differenziertere Steuerung und mehr Flexibilität in Bezug auf Datenbank-Verwaltungsfunktionen und -Konfigurationseinstellungen bietet. Im Allgemeinen bietet der Dienst im Vergleich zur Single Server-Bereitstellung basierend auf den Benutzeranforderungen mehr Flexibilität und Möglichkeiten zur Anpassung der Serverkonfigurationen. Mit der flexiblen Serverarchitektur können Benutzer Hochverfügbarkeit in einer einzelnen Verfügbarkeitszone sowie in mehreren Verfügbarkeitszonen auswählen. Flexible Server-Instanzen bieten außerdem bessere Steuerelemente für die Kostenoptimierung mit der Möglichkeit, den Server und burstfähige SKUs zu starten/anzuhalten. Dies eignet sich hervorragend für Workloads, die nicht durchgehend die gesamte Computekapazität benötigen.
+  - [Flexible Server](flexible-server/overview.md) ist ein vollständig verwalteter Datenbankdienst, der eine differenziertere Steuerung und mehr Flexibilität in Bezug auf Datenbank-Verwaltungsfunktionen und -Konfigurationseinstellungen bietet. Im Allgemeinen bietet der Dienst im Vergleich zur Single Server-Bereitstellung basierend auf den Benutzeranforderungen mehr Flexibilität und Möglichkeiten zur Anpassung der Serverkonfigurationen. Mit der flexiblen Serverarchitektur können Benutzer Hochverfügbarkeit in einer einzelnen Verfügbarkeitszone sowie in mehreren Verfügbarkeitszonen auswählen. Flexible Server-Instanzen bieten außerdem bessere Steuerelemente für die Kostenoptimierung mit der Möglichkeit, den Server und burstfähige SKUs zu starten/anzuhalten. Dies eignet sich hervorragend für Workloads, die nicht durchgehend die gesamte Computekapazität benötigen.
 
 Flexible Server-Instanzen eignen sich am besten für Folgendes:
 
@@ -154,7 +154,7 @@ Bei IaaS übernimmt Microsoft folgende Aufgaben:
 
 - Verwaltet die zugrunde liegende Infrastruktur
 - Automatisiertes Patchen der zugrunde liegenden Hardware und der Betriebssysteme
-  
+
 Bei PaaS übernimmt Microsoft folgende Aufgaben:
 
 - Verwaltet die zugrunde liegende Infrastruktur

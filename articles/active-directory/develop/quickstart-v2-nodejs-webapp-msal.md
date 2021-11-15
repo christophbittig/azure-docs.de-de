@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/22/2020
 ms.author: marsma
 ms.custom: aaddev, scenarios:getting-started, languages:js, devx-track-js
-ms.openlocfilehash: 3421c519c4ab059cda1d413db3906b3f1ed76ca0
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a593aef3ff99edb498e899b0d8db46c7b4636683
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128594686"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131427701"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-node-web-app-using-the-auth-code-flow"></a>Schnellstart: Anmelden von Benutzern und Abrufen eines Zugriffstokens in einer Node-Web-App mithilfe des Autorisierungscodeflows
 
@@ -46,7 +46,7 @@ In dieser Schnellstartanleitung wird die Microsoft-Authentifizierungsbibliothek 
 > 1. Legen Sie den Wert für **Umleitungs-URI** auf `http://localhost:3000/redirect` fest.
 > 1. Wählen Sie **Registrieren**.
 > 1. Notieren Sie sich für die spätere Verwendung auf der Seite **Übersicht** den Wert von **Anwendungs-ID (Client)** .
-> 1. Wählen Sie unter **Verwalten** Folgendes aus: **Zertifikate und Geheimnisse** > **Neuer geheimer Clientschlüssel**.  Lassen Sie die Beschreibung und den Standardablauf leer, und wählen Sie **Hinzufügen** aus.
+> 1. Wählen Sie unter **Verwalten** die Optionen **Zertifikate und Geheimnisse** > **Geheime Clientschlüssel** > **Neuer geheimer Clientschlüssel** aus.  Lassen Sie die Beschreibung und den Standardablauf leer, und wählen Sie **Hinzufügen** aus.
 > 1. Notieren Sie sich den Wert von **Geheimer Clientschlüssel** zur späteren Verwendung.
 
 > [!div class="sxs-lookup" renderon="portal"]

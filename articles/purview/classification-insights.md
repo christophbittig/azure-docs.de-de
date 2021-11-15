@@ -7,12 +7,12 @@ ms.service: purview
 ms.topic: how-to
 ms.date: 09/27/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 80929cb469d4d60c649786c955e8f92906794185
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: a27e468a13f95b45a56961b5bb1bfe50553bd841
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131011085"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131841845"
 ---
 # <a name="classification-insights-about-your-data-from-azure-purview"></a>Klassifizierungserkenntnisse zu Ihren Daten aus Azure Purview
 
@@ -21,7 +21,7 @@ In dieser Schrittanleitung wird beschrieben, wie Sie auf Purview-Klassifizierung
 > [!IMPORTANT]
 > Azure Purview-Erkenntnisse befinden sich derzeit in der VORSCHAU. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen für Azure-Features, die sich in der Beta- oder Vorschauphase befinden oder anderweitig noch nicht allgemein verfügbar sind.
 
-Zu den unterstützten Datenquellen gehören: Azure Blob Storage, Azure Data Lake Storage (ADLS) GEN 1, Azure Data Lake Storage (ADLS) GEN 2, Azure Cosmos DB (SQL API), Azure Synapse Analytics (früher SQL DW), Azure SQL Database, Azure SQL Managed Instance, SQL Server, Amazon S3 Buckets und Amazon RDS-Datenbanken (öffentliche Vorschau).
+Zu den unterstützten Datenquellen gehören: Azure Blob Storage, Azure Data Lake Storage (ADLS) GEN 1, Azure Data Lake Storage (ADLS) GEN 2, Azure Cosmos DB (SQL API), Azure Synapse Analytics (früher SQL DW), Azure SQL Database, Azure SQL Managed Instance, SQL Server, Amazon S3 Buckets und Amazon RDS-Datenbanken (öffentliche Vorschau), Power BI.
 
 In dieser Schrittanleitung lernen Sie Folgendes:
 

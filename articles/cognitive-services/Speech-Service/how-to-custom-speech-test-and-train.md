@@ -3,20 +3,20 @@ title: Vorbereiten von Daten für Custom Speech – Speech-Dienst
 titleSuffix: Azure Cognitive Services
 description: Wenn Sie die Genauigkeit der Spracherkennung von Microsoft testen oder Ihre benutzerdefinierten Modelle trainieren möchten, benötigen Sie Audio- und Textdaten. Auf dieser Seite werden die einzelnen Datentypen, ihre Verwendung und ihre Verwaltung beschrieben.
 services: cognitive-services
-author: PatrickFarley
+author: eric-urban
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/08/2021
-ms.author: pafarley
+ms.author: eur
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: d73f17d3e3eb8d5511dcb98c6a074a73120eaf06
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 645a45ed2ad16abc92b0dded9f1950a3e1ad47d6
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131080610"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131509910"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Vorbereiten von Daten für Custom Speech
 
@@ -52,7 +52,7 @@ Die folgende Tabelle enthält die zulässigen Datentypen, gibt an, wann der jewe
 | [Audio](#audio-data-for-testing) | Ja<br>Zur visuellen Prüfung verwendet | Mindestens 5 Audiodateien | Nein | – |
 | [Audio + menschenmarkierte Transkripte](#audio--human-labeled-transcript-data-for-trainingtesting) | Ja<br>Zur Bewertung der Genauigkeit verwendet | 0,5 – 5 Stunden Audio | Ja | 1–20 Stunden Audiodaten |
 | [Nur-Text](#plain-text-data-for-training) | Nein | Nicht zutreffend | Ja | 1 – 200 MB zugehöriger Text |
-| [Strukturierter Text](#structured-text-data-for-training-public-preview) (Öffentliche Vorschauversion) | Nein | Nicht zutreffend | Ja | Bis zu 20 Klassen mit bis zu 2.000 Elementen und bis zu 50.000 Trainingssätzen |
+| [Strukturierter Text](#structured-text-data-for-training-public-preview) (Öffentliche Vorschauversion) | Nein | Nicht zutreffend | Ja | Bis zu 10 Klassen mit bis zu 4.000 Elementen und bis zu 50.000 Trainingssätzen |
 | [Aussprache](#pronunciation-data-for-training) | Nein | Nicht zutreffend | Ja | 1 KB – 1 MB Aussprachetext |
 
 Dateien sollten nach Typ in einem Dataset gruppiert und als ZIP-Datei hochgeladen werden. Jedes Dataset darf nur einen einzelnen Datentyp enthalten.
@@ -192,14 +192,14 @@ Darüber hinaus sollten Sie die folgenden Einschränkungen beachten:
 
 ## <a name="structured-text-data-for-training-public-preview"></a>Strukturierte Textdaten für das Training (Öffentliche Vorschauversion)
 
-Häufig folgen die erwarteten Äußerungen einem bestimmten Muster. Ein gängiges Muster ist z. B., dass Äußerungen sich nur durch bestimmte Wörter oder Ausdrücke aus einer Liste unterscheiden. Beispiele hierfür sind: „Ich habe eine Frage zu `product`“, wobei `product` eine Liste möglicher Produkte ist. Oder: „Färbe das `object` `color`“, wobei `object` eine Liste mit geometrischen Formen und `color` eine Liste mit Farben ist. Um die Erstellung von Trainingsdaten zu vereinfachen und eine bessere Modellierung innerhalb des benutzerdefinierten Sprachmodells zu ermöglichen, können Sie einen strukturierten Text im Markdown-Format verwenden, um Listen mit Elementen zu definieren und diese dann in Ihren Trainings-Äußerungen zu referenzieren. Das Markdown-Format unterstützt darüber hinaus auch die Angabe der phonetischen Aussprache von Wörtern. Das Markdown-Format hat das gleiche Format wie das _.lu_-Markdown, das verwendet wird, um Language Understanding-Modelle, insbesondere Listenentitäten und Beispieläußerungen, zu trainieren. Weitere Informationen über das vollständige _.lu_-Markdown finden Sie in der Dokumentation zum <a href="https://docs.microsoft.com/azure/bot-service/file-format/bot-builder-lu-file-format?view=azure-bot-service-4.0" target="_blank">.lu-Dateiformat</a>. 
+Häufig folgen die erwarteten Äußerungen einem bestimmten Muster. Ein gängiges Muster ist z. B., dass Äußerungen sich nur durch bestimmte Wörter oder Ausdrücke aus einer Liste unterscheiden. Beispiele hierfür sind: „Ich habe eine Frage zu `product`“, wobei `product` eine Liste möglicher Produkte ist. Oder: „Färbe das `object` `color`“, wobei `object` eine Liste mit geometrischen Formen und `color` eine Liste mit Farben ist. Um die Erstellung von Trainingsdaten zu vereinfachen und eine bessere Modellierung innerhalb des benutzerdefinierten Sprachmodells zu ermöglichen, können Sie einen strukturierten Text im Markdown-Format verwenden, um Listen mit Elementen zu definieren und diese dann in Ihren Trainings-Äußerungen zu referenzieren. Das Markdown-Format unterstützt darüber hinaus auch die Angabe der phonetischen Aussprache von Wörtern. Das Markdown-Format hat das gleiche Format wie das `.lu`-Markdown, das verwendet wird, um Language Understanding-Modelle, insbesondere Listenentitäten und Beispieläußerungen, zu trainieren. Weitere Informationen zum vollständigen `.lu`-Markdown finden Sie unter dem <a href="/azure/bot-service/file-format/bot-builder-lu-file-format" target="_blank">`.lu`-Dateiformat</a>.
 
 Im Folgenden finden Sie ein Beispiel für das Markdown-Format:
 
 ```markdown
 // This is a comment
 
-// Here are three separate lists of items that can be referenced in an example sentence. You can have up to 20 of these
+// Here are three separate lists of items that can be referenced in an example sentence. You can have up to 10 of these
 @ list food =
 - pizza
 - burger

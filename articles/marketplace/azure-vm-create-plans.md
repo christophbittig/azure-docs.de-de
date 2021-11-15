@@ -7,12 +7,12 @@ ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/13/2021
-ms.openlocfilehash: 0a7ca14a797ef2680527cd6992ff9a7a1d6ea115
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 1e83714026ac0d2ac50a4b30d358e127b92e99b2
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131084898"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131433553"
 ---
 # <a name="create-plans-for-a-virtual-machine-offer"></a>Erstellen von Plänen für ein VM-Angebot
 
@@ -56,7 +56,7 @@ Ihr Plan muss in mindestens einer Azure-Region verfügbar gemacht werden.
 
 Wählen Sie **Azure Global** aus, um Ihren Plan für Kunden in allen globalen Azure-Regionen mit Integration des kommerziellen Marketplace verfügbar zu machen. Weitere Informationen finden Sie unter [Geografische Verfügbarkeit und Unterstützung von Währungen](marketplace-geo-availability-currencies.md).
 
-Wählen Sie **Azure Government** aus, um Ihren Plan in der [Azure Government](../azure-government/documentation-government-welcome.md)-Region verfügbar zu machen. Diese Region bietet kontrolliertem Zugriff für Kunden von US-Behörden auf Bundes-, Bundesstaats-, Gemeinde- oder Stammesgebietsebene sowie für Partner, die diese beliefern dürfen. Als Herausgeber sind Sie für alle Kompatibilitätskontrollen, Sicherheitsmaßnahmen und bewährten Methoden verantwortlich. Azure Government verwendet physisch isolierte Rechenzentren und Netzwerke (die sich ausschließlich in den USA befinden).
+Wählen Sie **Azure Government** aus, um Ihren Plan in der [Azure Government](../azure-government/documentation-government-welcome.md)-Region verfügbar zu machen. Diese Region bietet kontrollierten Zugriff für Kunden von US-Behörden auf Bundes-, Bundesstaats-, Gemeinde- oder Stammesgebietsebene sowie für Partner, die diese beliefern dürfen. Als Herausgeber sind Sie für alle Kompatibilitätskontrollen, Sicherheitsmaßnahmen und bewährten Methoden verantwortlich. Azure Government verwendet physisch isolierte Rechenzentren und Netzwerke (die sich ausschließlich in den USA befinden).
 
 Testen und validieren Sie Ihren Plan vor dem Veröffentlichen für [Azure Government](../azure-government/documentation-government-manage-marketplace-partners.md) in der Umgebung, da bestimmte Endpunkte möglicherweise abweichen. Fordern Sie für das Einrichten und Testen Ihres Plans auf der Seite [Microsoft Azure Government-Testversion](https://azure.microsoft.com/global-infrastructure/government/request/) ein Testkonto an.
 
@@ -126,7 +126,7 @@ Geben Sie einen **Preis pro Kern** ein, und wählen Sie dann **Preis pro Kerngr�
 
 ### <a name="free-trial"></a>Kostenlose Testversion
 
-Sie können Ihren Kunden für einen Monat, drei oder sechs Monate eine **kostenlose Testversion** anbieten.
+Sie können Ihren Kunden eine **kostenlose Testversion** für einen Monat, drei Monate oder sechs Monate anbieten.
 
 ### <a name="plan-visibility"></a>Sichtbarkeit des Plans
 
@@ -147,9 +147,9 @@ Private Angebote werden bei Azure-Abonnements, die über einen Handelspartner de
 
 Wenn Ihre VM bei Verweisen über eine andere Lösungsvorlage oder verwaltete Anwendung nur indirekt bereitgestellt werden soll, aktivieren Sie dieses Kontrollkästchen, um Ihre VM zu veröffentlichen, aber für Kunden bei einer direkten Suche auszublenden.
 
-Jeder Azure-Kunde kann das Angebot entweder mithilfe von PowerShell oder über die CLI bereitstellen.  Wenn Sie dieses Angebot für eine begrenzte Anzahl von Kunden verfügbar machen möchten, legen Sie den Plan auf **Privat** fest. 
+Jeder Azure-Kunde kann das Angebot entweder mithilfe von PowerShell oder über die CLI bereitstellen.  Wenn Sie dieses Angebot für eine begrenzte Anzahl von Kunden verfügbar machen möchten, legen Sie den Plan auf **Privat** fest.
 
-Ausgeblendete Pläne generieren keine Vorschaulinks. Sie können Sie jedoch testen, indem Sie [die folgenden Schritte](azure-vm-create-faq.yml#how-do-i-test-a-hidden-preview-image-)ausführen. 
+Ausgeblendete Pläne generieren keine Vorschaulinks. Sie können sie jedoch testen, indem Sie [die folgenden Schritte](azure-vm-create-faq.yml#how-do-i-test-a-hidden-preview-image-)ausführen.
 
 Wählen Sie **Entwurf speichern** aus, bevor Sie mit der nächsten Registerkarte im linken Planmenü (**Technische Konfiguration**) fortfahren.
 
@@ -159,7 +159,7 @@ Geben Sie die Images und andere technische Eigenschaften an, die diesem Plan zug
 
 ### <a name="reuse-technical-configuration"></a>Wiederverwenden der technischen Konfiguration
 
-Mit dieser Option können Sie die gleichen technischen Konfigurationseinstellungen planübergreifend innerhalb desselben Angebots verwenden und daher dieselben Images nutzen. Wenn Sie die Option „Technische Konfiguration wiederverwenden“ aktivieren, erbt Ihr Plan die gleichen technischen Konfigurationseinstellungen wie der ausgewählte Basisplan.  Wenn Sie den Basisplan ändern, werden die Änderungen auf dem Plan widergespiegelt, der die Konfiguration wiederverwendet.
+Mit dieser Option können Sie die gleichen technischen Konfigurationseinstellungen planübergreifend innerhalb desselben Angebots verwenden und daher dieselben Images nutzen. Wenn Sie die Option _Technische Konfiguration wiederverwenden_ aktivieren, erbt Ihr Plan die gleichen technischen Konfigurationseinstellungen wie der ausgewählte Basisplan.  Wenn Sie den Basisplan ändern, werden die Änderungen auf dem Plan widergespiegelt, der die Konfiguration wiederverwendet.
 
 Einige häufige Gründe für die erneute Verwendung der technischen Konfigurationseinstellungen aus einem anderen Plan sind die folgenden:
 
@@ -169,7 +169,7 @@ Einige häufige Gründe für die erneute Verwendung der technischen Konfiguratio
 
 Nutzen Sie [Azure Instance Metadata Service](../virtual-machines/windows/instance-metadata-service.md) (IMDS), um zu ermitteln, in welchem Plan Ihre Lösung bereitgestellt wird, um die Lizenz zu überprüfen oder geeignete Features zu aktivieren.
 
-Wenn Sie später verschiedene Änderungen zwischen Ihren Plänen veröffentlichen möchten, können Sie sie trennen. Trennen Sie den Plan, indem Sie die technische Konfiguration wiederverwendbar machen, indem Sie diese Option mit Ihrem Plan deaktivieren. Nach der Trennung hat Ihr Plan die gleichen technischen Konfigurationseinstellungen an der Stelle ihrer letzten Einstellung, und Ihre Pläne können in der Konfiguration abweichen. Ein Plan, der in der Vergangenheit unabhängig veröffentlicht wurde, kann später keine technische Konfiguration wiederverwenden. 
+Wenn Sie später verschiedene Änderungen zwischen Ihren Plänen veröffentlichen möchten, können Sie sie trennen. Trennen Sie den Plan, indem Sie die technische Konfiguration wiederverwendbar machen, indem Sie diese Option mit Ihrem Plan deaktivieren. Nach der Trennung hat Ihr Plan die gleichen technischen Konfigurationseinstellungen an der Stelle ihrer letzten Einstellung, und Ihre Pläne können in der Konfiguration abweichen. Ein Plan, der in der Vergangenheit unabhängig veröffentlicht wurde, kann später keine technische Konfiguration wiederverwenden.
 
 ### <a name="operating-system"></a>Betriebssystem
 

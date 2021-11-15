@@ -4,12 +4,12 @@ description: In diesem Artikel wird erläutert, wie Sie Azure Service Bus-Messag
 ms.topic: article
 ms.date: 09/28/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: e1f4681c49ea6114f2c0d2722a357464094720d2
-ms.sourcegitcommit: e8c34354266d00e85364cf07e1e39600f7eb71cd
+ms.openlocfilehash: f22e3bcfbd423541508faffdb7983d30ba3bbf3a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129218297"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131472065"
 ---
 # <a name="suspend-and-reactivate-messaging-entities-disable"></a>Anhalten und Reaktivieren von Messagingentitäten (deaktiviert)
 
@@ -68,7 +68,7 @@ Sie können den Abonnementstatus im Azure-Portal ändern. Wählen Sie den aktuel
 :::image type="content" source="./media/entity-suspend/subscription-state-change.png" alt-text="Ändern des Abonnementstatus":::
 
 Folgende Status können für ein **Abonnement** festgelegt werden:
-- **Aktiv:** Das Abonnement ist aktiv. Sie können Nachrichten aus dem Abonnement empfangen.
+- **Aktiv:** Das Abonnement ist aktiv. Sie können Nachrichten vom Abonnement empfangen.
 - **Disabled**: Das Abonnement wurde angehalten. Sie können keine Nachrichten aus dem Abonnement empfangen. 
 - **ReceiveDisabled**: Dieselbe Auswirkung wie **Deaktiviert**. Sie können keine Nachrichten aus dem Abonnement empfangen. Sie erhalten eine Ausnahme, wenn Sie versuchen, Nachrichten aus dem Abonnement zu empfangen.
 

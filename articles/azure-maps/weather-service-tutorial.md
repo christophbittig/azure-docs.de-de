@@ -1,19 +1,19 @@
 ---
 title: 'Tutorial: Verknüpfen von Sensordaten mit Wettervorhersagedaten unter Verwendung von Azure Notebooks (Python) mit Microsoft Azure Maps'
 description: Tutorial zum Verknüpfen von Sensordaten mit Wettervorhersagedaten der Microsoft Azure Maps-Wetterdienste unter Verwendung von Azure Notebooks (Python)
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 12/07/2020
+author: stevemunk
+ms.author: v-munksteve
+ms.date: 10/28/2021
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 ms.custom: mvc, devx-track-python
-ms.openlocfilehash: d961b7051fa469304b4e8cce3f53e09813a10c02
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 83cc80267e9e3b917e60bb2da5421f67fdfb4c7a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121743805"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131455300"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Tutorial: Verknüpfen von Sensordaten mit Wettervorhersagedaten unter Verwendung von Azure Notebooks (Python)
 
@@ -22,6 +22,7 @@ Windenergie ist eine alternative Energiequelle zu fossilen Brennstoffen im Kampf
 In diesem Lernprogramm lernen Sie Folgendes:
 
 > [!div class="checklist"]
+>
 > * Verwenden von Datendateien in [Azure Notebooks](https://notebooks.azure.com) in der Cloud
 > * Laden von Demodaten aus einer Datei
 > * Aufrufen von Azure Maps-REST-APIs in Python
@@ -29,14 +30,12 @@ In diesem Lernprogramm lernen Sie Folgendes:
 > * Anreichern der Demodaten mit Azure Maps-Wetterdaten vom Typ [Tägliche Vorhersage](/rest/api/maps/weather/getdailyforecast)
 > * Zeichnen von Vorhersagedaten in Diagrammen
 
-
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für dieses Tutorial sind folgende Vorbereitungen erforderlich:
 
 1. Gehen Sie wie unter [Erstellen eines Kontos und Abrufen Ihres Schlüssels](quick-demo-map-app.md#create-an-azure-maps-account) beschrieben vor, um ein Azure Maps-Kontoabonnement im Tarif S0 zu erstellen.
 2. Gehen Sie wie unter [Abrufen des Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account) beschrieben vor, um den primären Abonnementschlüssel für Ihr Konto abzurufen.
-
 
 Weitere Informationen zur Authentifizierung in Azure Maps finden Sie unter [Verwalten der Authentifizierung in Azure Maps](./how-to-manage-authentication.md).
 
@@ -88,7 +87,7 @@ for i in range(0, len(coords), 2):
     wind_direction.append([])
     
     query = str(coords[i])+', '+str(coords[i+1])
-    forecast_response = await(await session.get("https://atlas.microsoft.com/weather/forecast/daily/json?query={}&api-version=1.0&subscription-key={}&duration=15".format(query, subscription_key))).json()
+    forecast_response = await(await session.get("https://atlas.microsoft.com/weather/forecast/daily/json?query={}&api-version=1.0&subscription-key={Your-Azure-Maps-Primary-Subscription-key}&duration=15".format(query, subscription_key))).json()
     j+=1
     for day in range(len(forecast_response['forecasts'])):
             date = forecast_response['forecasts'][day]['date'][:10]
@@ -113,7 +112,7 @@ session = aiohttp.ClientSession()
 
 pins="default|la-25+60|ls12|lc003C62|co9B2F15||'Location A'{} {}|'Location B'{} {}|'Location C'{} {}|'Location D'{} {}".format(coords[1],coords[0],coords[3],coords[2],coords[5],coords[4], coords[7],coords[6])
 
-image_response = "https://atlas.microsoft.com/map/static/png?subscription-key={}&api-version=1.0&layer=basic&style=main&zoom=6&center={},{}&pins={}".format(subscription_key,coords[7],coords[6],pins)
+image_response = "https://atlas.microsoft.com/map/static/png?subscription-key={Your-Azure-Maps-Primary-Subscription-key}&api-version=1.0&layer=basic&style=main&zoom=6&center={},{}&pins={}".format(subscription_key,coords[7],coords[6],pins)
 
 static_map_response = await session.get(image_response)
 
@@ -125,7 +124,6 @@ display(Image(poi_range_map))
 ```
 
 ![Anlagenstandorte](./media/weather-service-tutorial/location-map.png)
-
 
 Wir gruppieren die Vorhersagedaten basierend auf der Stationskennung mit den Demodaten. Die Stationskennung gilt für das Wetterrechenzentrum. Mit dieser Gruppierung werden die Demodaten um die Vorhersagedaten erweitert.
 
@@ -149,9 +147,7 @@ Die folgende Tabelle enthält die kombinierten historischen und vorhergesagten D
 grouped_weather_data.get_group(station_ids[0]).reset_index()
 ```
 
-<center>
-
-![Gruppierte Daten](./media/weather-service-tutorial/grouped-data.png)</center>
+<center>![Gruppierte Daten](./media/weather-service-tutorial/grouped-data.png)</center>
 
 ## <a name="plot-forecast-data"></a>Zeichnen von Vorhersagedaten
 

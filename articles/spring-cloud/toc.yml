@@ -146,6 +146,8 @@
           href: how-to-appdynamics-java-agent-monitor.md
         - name: Überwachen von App-Lebenszyklusereignissen
           href: monitor-app-lifecycle-events.md
+        - name: Logback mit benutzerdefiniertem beständigem Speicher
+          href: how-to-write-log-to-custom-persistent-storage.md
     - name: Netzwerk
       items:
         - name: Bereitstellen von Azure Spring Cloud in einem virtuellen Netzwerk
@@ -153,7 +155,7 @@
         - name: Zugreifen auf eine Anwendung im privaten Netzwerk
           href: access-app-virtual-network.md
         - name: Verfügbarmachen von Anwendungen für das Internet
-          href: expose-apps-gateway-azure-firewall.md
+          href: expose-apps-gateway.md
         - name: Konfigurieren von Palo Alto
           href: how-to-configure-palo-alto.md
         - name: Kundenzuständigkeiten für die Ausführung von Azure Spring Cloud im VNET

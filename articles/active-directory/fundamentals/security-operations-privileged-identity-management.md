@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac4f2982166fabf7a49a92966ca783a260ca875a
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: bdca219a352527114123cdf0179a5eb7fc486852
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130038724"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131435890"
 ---
 # <a name="azure-active-directory-security-operations-for-privileged-identity-management-pim"></a>Azure Active Directory-Sicherheitsvorgänge für Privileged Identity Management (PIM)
 
@@ -26,7 +26,7 @@ Die Sicherheit der Geschäftsressourcen hängt von der Integrität der privilegi
 
 Bei Clouddiensten sind Cloud-Dienstanbieter und Kunde gemeinsam verantwortlich für Prävention und Reaktion. 
 
-Klassischerweise haben sich Unternehmen bezüglich der Sicherheit auf die Ein- und Ausstiegspunkte eines Netzwerks als Sicherheitsperimeter konzentriert. Mit SaaS-Apps und persönlichen Geräten hat dieser Ansatz jedoch an Wirksamkeit verloren. In Azure Active Directory (Azure AD) wird der Netzwerksicherheitsperimeter durch eine Authentifizierung in der Identitätsschicht Ihrer Organisation ersetzt. Da Benutzern privilegierte Administratorrollen erteilt werden, muss ihr Zugriff in lokalen, cloudbasierten und hybriden Umgebungen geschützt werden. 
+Klassischerweise haben sich Unternehmen bezüglich der Sicherheit auf die Ein- und Ausstiegspunkte eines Netzwerks als Sicherheitsperimeter konzentriert. Mit SaaS-Apps und persönlichen Geräten hat dieser Ansatz jedoch an Wirksamkeit verloren. In Azure Active Directory (Azure AD) wird der Netzwerksicherheitsperimeter durch eine Authentifizierung in der Identitätsschicht Ihrer Organisation ersetzt. Da Benutzern privilegierte Administratorrollen erteilt werden, muss ihr Zugriff in lokalen, cloudbasierten und hybriden Umgebungen geschützt werden.
 
 Sie sind für alle Sicherheitsebenen Ihrer lokalen IT-Umgebung verantwortlich. Wenn Sie Azure-Dienste verwenden, liegen die Vorbeugung und Reaktion in der gemeinsamen Verantwortung von Microsoft als Clouddienstanbieter und Ihnen als Kunde. 
 
@@ -68,7 +68,7 @@ Im Azure-Portal können Sie die Azure AD-Überwachungsprotokolle anzeigen und a
 
 * [**Azure Event Hubs**](../../event-hubs/event-hubs-about.md) **mit Integration mit einem SIEM-System:** - [ Azure AD-Protokolle können über die Azure Event Hubs-Integration in andere SIEM-Systeme](../reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) wie Splunk, ArcSight, QRadar und Sumo Logic integriert werden.
 
-* [**Microsoft Cloud App Security (MCAS)** ](/cloud-app-security/what-is-cloud-app-security): Ermöglicht das Entdecken und Verwalten von Apps, eine App- und ressourcenübergreifende Steuerung sowie Konformitätsprüfungen Ihrer Cloud-Apps. 
+* [**Microsoft Cloud App Security (MCAS)**](/cloud-app-security/what-is-cloud-app-security): Ermöglicht das Entdecken und Verwalten von Apps, eine App- und ressourcenübergreifende Steuerung sowie Konformitätsprüfungen Ihrer Cloud-Apps. 
 
 Der übrige Teil dieses Artikels enthält Empfehlungen zum Festlegen einer Baseline, die mithilfe eines Ebenenmodells organisiert ist und auf deren Grundlage die Überwachung und Warnungen erfolgen. Links zu vorgefertigten Lösungen sind im Anschluss an die Tabelle aufgeführt. Sie können Warnungen auch mithilfe der oben genannten Tools erstellen. Der Inhalt ist in die folgenden PIM-Themenbereiche unterteilt:
 

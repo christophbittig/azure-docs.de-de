@@ -10,12 +10,12 @@ ms.subservice: azure-arc-data
 ms.date: 11/03/2021
 ms.topic: conceptual
 ms.custom: references_regions
-ms.openlocfilehash: 45b4efa7ca5bcd6e225c61a328f0150ea1f1a935
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: ac5b33de1a95b413c7eba92d2bdeaa8cc05b3a05
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131562065"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132059562"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services"></a>Versionshinweise: Azure Arc-fähige Datendienste
 
@@ -69,31 +69,18 @@ Sie können die Umgebungsvariablen `AZDATA_USERNAME` und `AZDATA_PASSWORD` weite
 
 ##### <a name="region-availability"></a>Regionale Verfügbarkeit
 
-- Der direkte Verbindungsmodus ist für dieses Release nur in den folgenden Azure-Regionen verfügbar:
+Dieses Release führt die Verfügbarkeit des direkt verbundenen Modus in den folgenden Azure-Regionen ein:
 
-   - USA, Norden-Mitte*
-   - USA (Mitte)
-   - East US
-   - USA (Ost) 2
-   - USA, Westen *
-   - USA, Westen 2
-   - USA, Westen 3 *
-   - UK, Süden
-   - Europa, Westen
-   - Nordeuropa
-   - Australien (Osten)
-   - Asien, Südosten
-   - Korea, Mitte
-   - Frankreich, Mitte
+- USA Nord Mitte
+- USA (Westen)
+- USA, Westen 3
 
-    \* Neu hinzugefügt für November 2011
-
+Eine vollständige Liste finden Sie unter [Unterstützte Regionen](overview.md#supported-regions).
 
 #### <a name="azure-arc-enabled-sql-managed-instance"></a>SQL Managed Instance mit Azure Arc-Unterstützung
 
 - Direktes Upgrade von Instanzen von universeller SQL Managed Instance mit Azure Arc-Unterstützung
 - Die SQL-Binärdateien werden auf eine neue Version aktualisiert.
-- Azure Data Studio stellt Informationen zu voraussichtlichen Preisen bereit.
 - Bereitstellung im direkt verbundenen Modus von SQL Managed Instance mit Azure Arc-Unterstützung mithilfe von Azure CLI
 - Die Zeitpunktwiederherstellung (PITR) für SQL Managed Instance mit Azure Arc-Unterstützung wird mit diesem Release allgemein verfügbar gemacht. Derzeit wird die Zeitpunktwiederherstellung (PITR) nur für die universelle SQL Managed Instance unterstützt. Zeitpunktwiederherstellung (PITR) für unternehmenskritische SQL Managed Instance befindet sich noch in der Vorschauphase.
 - Neue `--dry-run`-Option für Zeitpunktwiederherstellung (PITR) bereitgestellt.

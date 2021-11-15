@@ -10,12 +10,12 @@ author: lostmygithubaccount
 ms.author: copeters
 ms.date: 10/21/2021
 ms.reviewer: laobri
-ms.openlocfilehash: ba8cdc3d4c74398f088c19ea80688e308ed4c551
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: eac97f87de7edafc45f0e434188579df19d99c36
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131566498"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132057609"
 ---
 # <a name="cli-v2-compute-cluster-amlcompute-yaml-schema"></a>CLI (v2) Computecluster (AmlCompute) YAML-Schema
 
@@ -38,18 +38,18 @@ Das JSON-Quellschema finden Sie unter https://azuremlschemas.azureedge.net/lates
 | `max_instances` | integer | Die maximale Anzahl von Knoten, die im Cluster verwendet werden. | | `1` |
 | `idle_time_before_scale_down` | integer | Die Leerlaufzeit des Knotens in Sekunden vor dem herunterskalieren des Clusters. | | `120` |
 | `ssh_public_access_enabled` | boolean | Gibt an, ob der öffentliche SSH-Zugriff auf die Knoten des Clusters aktiviert werden soll. | | `false` |
-| `ssh_settings` | Objekt | SSH-Einstellungen zum Herstellen einer Verbindung mit dem Cluster. | | |
+| `ssh_settings` | Objekt (object) | SSH-Einstellungen zum Herstellen einer Verbindung mit dem Cluster. | | |
 | `ssh_settings.admin_username` | Zeichenfolge | Der Name des Administratorbenutzerkontos, das für die SSH-Verbindung mit Knoten verwendet werden kann. | | |
 | `ssh_settings.admin_password` | Zeichenfolge | Das Kennwort des Administratorbenutzerkontos. **Entweder `admin_password` oder `ssh_key_value` ist erforderlich.** | | |
 | `ssh_settings.ssh_key_value` | Zeichenfolge | Der öffentliche SSH-Schlüssel des Administratorbenutzerkontos. **Entweder `admin_password` oder `ssh_key_value` ist erforderlich.** | | |
-| `network_settings` | Objekt | Einstellungen zur Netzwerksicherheit. | | |
+| `network_settings` | Objekt (object) | Einstellungen zur Netzwerksicherheit. | | |
 | `network_settings.vnet_name` | Zeichenfolge | Name des virtuellen Netzes (VNet) bei der Erstellung eines neuen Netzes oder beim Verweis auf ein bestehendes Netz. | | |
 | `network_settings.subnet` | Zeichenfolge | Entweder der Name des Subnetzes beim Erstellen eines neuen VNet oder das Verweisen auf ein vorhandenes VNet oder die vollqualifizierte Ressourcen-ID eines Subnetzes in einem bestehenden VNet. Geben Sie `network_settings.vnet_name` nicht an, wenn die Subnetz-ID angegeben ist. Die Subnetz-ID kann sich auf ein VNet/Subnetz in einer anderen Ressourcengruppe beziehen. | | |
-| `identity` | Objekt | Die Konfiguration der verwalteten Identität, die dem Compute zugewiesen werden soll. AmlCompute-Cluster unterstützen nur eine systemseitig zugewiesene Identität oder mehrere benutzerseitig zugewiesene Identitäten, nicht beides gleichzeitig. | | |
+| `identity` | Objekt (object) | Die Konfiguration der verwalteten Identität, die dem Compute zugewiesen werden soll. AmlCompute-Cluster unterstützen nur eine systemseitig zugewiesene Identität oder mehrere benutzerseitig zugewiesene Identitäten, nicht beides gleichzeitig. | | |
 | `identity.type` | Zeichenfolge | Der Typ der verwalteten Identität, die dem Compute zugewiesen werden soll. Wenn der Typ `user_assigned` ist, muss auch die Eigenschaft `identity.user_assigned_identities` angegeben werden. | `system_assigned`, `user_assigned` | |
 | `identity.user_assigned_identities` | array | Liste der vollqualifizierten Ressourcen-IDs der vom Benutzer zugewiesenen Identitäten. | | |
 
-## <a name="remarks"></a>Bemerkungen
+## <a name="remarks"></a>Hinweise
 
 Die Befehle `az ml compute` können zum Verwalten von Azure Machine Learning Computeclustern (AmlCompute) verwendet werden.
 
@@ -59,23 +59,23 @@ Beispiele sind im [GitHub-Repository Beispiele](https://github.com/Azure/azureml
 
 ## <a name="yaml-minimal"></a>YAML: minimal
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/resources/compute/cluster-minimal.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/resources/compute/cluster-minimal.yml":::
 
 ## <a name="yaml-basic"></a>YAML: grundlegend
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/resources/compute/cluster-basic.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/resources/compute/cluster-basic.yml":::
 
 ## <a name="yaml-custom-location"></a>YAML: benutzerdefinierter Standort
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/resources/compute/cluster-location.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/resources/compute/cluster-location.yml":::
 
 ## <a name="yaml-low-priority"></a>YAML: niedrige Priorität
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/resources/compute/cluster-low-priority.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/resources/compute/cluster-low-priority.yml":::
 
 ## <a name="yaml-ssh-username-and-password"></a>YAML: SSH-Benutzername und Kennwort
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/resources/compute/cluster-ssh-password.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/resources/compute/cluster-ssh-password.yml":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

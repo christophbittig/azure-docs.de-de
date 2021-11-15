@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie Protokolle für Funktionen nahezu in Echtzeit
 ms.date: 9/1/2020
 ms.topic: how-to
 ms.custom: contperf-fy21q2, devx-track-azurepowershell
-ms.openlocfilehash: 6abf93be2d63434996fa2de7f400c742f9962575
-ms.sourcegitcommit: d9a2b122a6fb7c406e19e2af30a47643122c04da
+ms.openlocfilehash: 6073654abbcd8a157f7552e21d1e74ee4f535684
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/24/2021
-ms.locfileid: "114668457"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130245074"
 ---
 # <a name="enable-streaming-execution-logs-in-azure-functions"></a>Aktivieren des Streamings von Ausführungsprotokollen in Azure Functions
 

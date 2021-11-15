@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/13/2021
 ms.author: mjbrown
-ms.openlocfilehash: c2b383a64699d6e4b497d8653e69f401886db21a
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 10e802c21fb4d1f3ba0f693dd663ab22330be696
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123115519"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131443374"
 ---
 # <a name="manage-azure-cosmos-core-sql-api-resources-using-azure-cli"></a>Verwalten von Ressourcen für die Core (SQL)-API von Azure Cosmos mit der Azure CLI
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -71,7 +71,7 @@ Erstellen Sie ein Azure Cosmos-Konto mit zwei Regionen, fügen Sie eine Region h
 > [!NOTE]
 > Mit diesem Befehl können Sie Regionen hinzufügen und entfernen, aber weder Failoverprioritäten anpassen noch ein manuelles Failover auslösen. Weitere Informationen finden Sie unter [Festlegen der Failoverpriorität](#set-failover-priority) und [Auslösen eines manuellen Failovers](#trigger-manual-failover).
 > [!TIP]
-> Wenn eine neue Region hinzugefügt wird, müssen alle Daten vollständig repliziert und in die neue Region committet werden, bevor die Region als verfügbar markiert wird. Wie lange dieser Vorgang dauert, hängt davon ab, wie viele Daten in dem Konto gespeichert werden.
+> Wenn eine neue Region hinzugefügt wird, müssen alle Daten vollständig repliziert und in die neue Region committet werden, bevor die Region als verfügbar markiert wird. Wie lange dieser Vorgang dauert, hängt davon ab, wie viele Daten in dem Konto gespeichert werden. Wenn ein [asynchroner Durchsatzskalierungsvorgang](../scaling-provisioned-throughput-best-practices.md#background-on-scaling-rus) ausgeführt wird, wird der Vorgang zum horizontalen Hochskalieren des Durchsatzes angehalten und automatisch fortgesetzt, sobald der Vorgang zum Hinzufügen/Entfernen von Regionen abgeschlossen ist. 
 
 ```azurecli-interactive
 resourceGroupName='myResourceGroup'
@@ -143,6 +143,9 @@ az cosmosdb update --ids $accountId --enable-automatic-failover true
 
 > [!CAUTION]
 > Wenn die Priorität einer Region in „0“ geändert wird, wird ein manuelles Failover für ein Azure Cosmos-Konto ausgelöst. Bei anderen Prioritätsänderungen wird kein Failover ausgelöst.
+
+> [!NOTE]
+> Wenn Sie einen manuellen Failovervorgang ausführen, während ein [asynchroner Durchsatzskalierungsvorgang](../scaling-provisioned-throughput-best-practices.md#background-on-scaling-rus) aktiv ist, wird der Vorgang zum horizontalen Hochskalieren des Durchsatzes angehalten. Er wird automatisch fortgesetzt, sobald der Failovervorgang abgeschlossen ist.
 
 ```azurecli-interactive
 # Assume region order is initially 'West US 2=0' 'East US 2=1' 'South Central US=2' for account

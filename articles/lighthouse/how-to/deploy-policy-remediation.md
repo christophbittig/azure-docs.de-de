@@ -1,14 +1,14 @@
 ---
 title: Bereitstellen einer Richtlinie, die gewartet werden kann
 description: Zum Bereitstellen von Richtlinien, die einen Wartungstask über Azure Lighthouse verwenden, müssen Sie eine verwaltete Identität im Mandanten des Kunden erstellen.
-ms.date: 09/30/2021
+ms.date: 11/05/2021
 ms.topic: how-to
-ms.openlocfilehash: 5783d753fabb7246914056139fb9a081b7684b9c
-ms.sourcegitcommit: 87de14fe9fdee75ea64f30ebb516cf7edad0cf87
+ms.openlocfilehash: 8255519f1c7229aaff1eee88d93c2b2ea73ae7ce
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2021
-ms.locfileid: "129362270"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131892227"
 ---
 # <a name="deploy-a-policy-that-can-be-remediated-within-a-delegated-subscription"></a>Bereitstellen einer Richtlinie, die innerhalb eines delegierten Abonnements gewartet werden kann
 
@@ -48,7 +48,7 @@ Nachdem Sie gemäß der obigen Beschreibung den Benutzer mit den erforderlichen 
 
 Nehmen wir beispielsweise an, Sie möchten Diagnosen für Azure Key Vault-Ressourcen im Kundenmandanten aktivieren, wie in [diesem Beispiel](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/policy-enforce-keyvault-monitoring) veranschaulicht. In diesem Fall würde ein Benutzer im Verwaltungsmandanten mit entsprechenden Berechtigungen (wie oben beschrieben) eine [Azure Resource Manager-Vorlage](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/policy-enforce-keyvault-monitoring/enforceAzureMonitoredKeyVault.json) bereitstellen.
 
-Hinweis: Die Richtlinienzuweisung zur Verwendung mit einem delegierten Abonnement muss aktuell über APIs erstellt werden (nicht über das Azure-Portal). Dabei muss die **apiVersion** auf **2020-10-01-preview** festgelegt werden, die die neue Eigenschaft **delegatedManagedIdentityResourceId** enthält. Diese Eigenschaft ermöglicht es Ihnen, eine verwaltete Identität einzufügen, die sich im Kundenmandanten befindet (in einem Abonnement oder in einer Ressourcengruppe, das bzw. die mittels Onboarding in Azure Lighthouse integriert wurde).
+Hinweis: Die Richtlinienzuweisung zur Verwendung mit einem delegierten Abonnement muss aktuell über APIs erstellt werden (nicht über das Azure-Portal). Dabei muss die **apiVersion** auf **2019-04-01-preview** oder höher festgelegt werden, die die neue Eigenschaft **delegatedManagedIdentityResourceId** enthält. Diese Eigenschaft ermöglicht es Ihnen, eine verwaltete Identität einzufügen, die sich im Kundenmandanten befindet (in einem Abonnement oder in einer Ressourcengruppe, das bzw. die mittels Onboarding in Azure Lighthouse integriert wurde).
 
 Das folgende Beispiel zeigt eine Rollenzuweisung mit **delegatedManagedIdentityResourceId**:
 

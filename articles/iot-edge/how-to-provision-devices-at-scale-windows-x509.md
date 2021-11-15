@@ -9,18 +9,25 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: contperf-fy21q2
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 71544ef2f49282986c976e5f66195ab21ed1f6bd
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 639feb61fad0c1e274b6b74950835d67fc1af937
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131505865"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131851969"
 ---
 # <a name="create-and-provision-iot-edge-devices-at-scale-on-windows-using-x509-certificates"></a>Erstellen und Bereitstellen von IoT Edge-Geräten im großen Stil unter Windows mit X.509-Zertifikaten
 
 [!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 Dieser Artikel enthält umfassende Anweisungen für die automatische Bereitstellung eines oder mehrerer IoT Edge-Geräte unter Windows mithilfe von X.509-Zertifikaten. Sie können Azure loT Edge-Geräte mit dem [Azure loT Hub-Gerätebereitstellungsdienst](../iot-dps/index.yml) (DPS) automatisch bereitstellen. Wenn Sie mit dem Prozess der automatischen Bereitstellung nicht vertraut sind, lesen Sie die [Übersicht zur Bereitstellung](../iot-dps/about-iot-dps.md#provisioning-process), bevor Sie den Vorgang fortsetzen.
+
+>[!NOTE]
+>Azure IoT Edge mit Windows-Containern wird ab Version 1.2 von Azure IoT Edge nicht mehr unterstützt.
+>
+>Ziehen Sie die neue Methode [Azure IoT Edge für Linux unter Windows](iot-edge-for-linux-on-windows.md) zum Ausführen von IoT Edge auf Windows-Geräten in Betracht.
+>
+>Wenn Sie Azure IoT Edge für Linux unter Windows verwenden möchten, können Sie die Schritte in der [entsprechenden Schrittanleitung](how-to-provision-devices-at-scale-linux-on-windows-x509.md) ausführen.
 
 Aufgaben:
 
@@ -87,13 +94,13 @@ Halten Sie die folgenden Informationen bereit:
 
 1. Der Befehl **Initialize-IoTEdge** konfiguriert die IoT Edge-Runtime auf Ihrem Computer. Der Befehl verwendet standardmäßig die manuelle Bereitstellung mit Windows-Containern. Verwenden Sie deshalb das Flag `-DpsX509` für die automatische Bereitstellung per Authentifizierung mit X.509-Zertifikat.
 
-   Ersetzen Sie die Platzhalterwerte für `{scope_id}`, `{identity cert chain path}` und `{identity key path}` durch die entsprechenden Werte aus Ihrer DPS-Instanz und die Dateipfade auf Ihrem Gerät.
+   Ersetzen Sie die Platzhalterwerte für `scope_id`, `identity cert chain path` und `identity key path` durch die entsprechenden Werte aus Ihrer DPS-Instanz und die Dateipfade auf Ihrem Gerät.
 
-   Fügen Sie den `-RegistrationId {registration_id}`-Parameter hinzu, wenn Sie die Geräte-ID als etwas anderes als den CN-Namen des Identitätszertifikats festlegen möchten.
+   Fügen Sie den `-RegistrationId paste_registration_id_here`-Parameter hinzu, wenn Sie die Geräte-ID als etwas anderes als den CN-Namen des Identitätszertifikats festlegen möchten.
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-   Initialize-IoTEdge -DpsX509 -ScopeId {scope ID} -X509IdentityCertificate {identity cert chain path} -X509IdentityPrivateKey {identity key path}
+   Initialize-IoTEdge -DpsX509 -ScopeId paste_scope_id_here -X509IdentityCertificate paste_identity_cert_chain_path_here -X509IdentityPrivateKey paste_identity_key_path_here
    ```
 
    >[!TIP]

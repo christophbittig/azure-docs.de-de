@@ -3,12 +3,12 @@ title: Vergleich von Azure Storage-Warteschlangen und Service Bus-Warteschlangen
 description: Analysiert die Unterschiede und Gemeinsamkeiten zwischen den beiden zurzeit von Azure angebotenen Warteschlangentypen.
 ms.topic: article
 ms.date: 06/15/2021
-ms.openlocfilehash: a93123ded873a5020e440c606fcd4f8278baa4aa
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: 0c660b1d57fda2550572f028a3ce271558bde115
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112120170"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132061342"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Storage-Warteschlangen und Service Bus-Warteschlangen – Vergleich und Gegenüberstellung
 In diesem Artikel werden die Unterschiede und Ähnlichkeiten zwischen den beiden Warteschlangentypen untersucht, die in Microsoft Azure angeboten werden: Storage-Warteschlangen und Service Bus-Warteschlangen. Anhand dieser Informationen können Sie eine fundierte Entscheidung darüber treffen, welche Lösung Ihre Anforderungen am besten erfüllt.
@@ -128,7 +128,7 @@ In diesem Abschnitt werden Storage-Warteschlangen und Service Bus-Warteschlangen
 | Vergleichskriterien | Storage-Warteschlangen | Service Bus-Warteschlangen |
 | --- | --- | --- |
 | Maximale Warteschlangengröße |**500 TB**<br/><br/>(beschränkt auf die Kapazität eines [einzelnen Speicherkontos](../storage/common/storage-introduction.md#queue-storage)) |**1 GB bis 80 GB**<br/><br/>(wird bei Erstellung einer Warteschlange und dem [Aktivieren von Partitionierung](service-bus-partitioning.md) definiert – weitere Informationen finden Sie im Abschnitt „Zusätzliche Informationen“) |
-| Maximale Nachrichtengröße |**64 KB**<br/><br/>(48 KB bei Verwendung der **Base64** Codierung)<br/><br/>Azure unterstützt große Nachrichten, indem Warteschlangen und Blobs kombiniert werden – in diesem Fall können bis zu 200 GB für ein einzelnes Element in der Warteschlange gespeichert werden. |**256 KB** oder **1 MB**<br/><br/>(Einschließlich Header und Text, maximale Headergröße: 64 KB.)<br/><br/>Hängt von der [Dienstebene](service-bus-premium-messaging.md) ab. |
+| Maximale Nachrichtengröße |**64 KB**<br/><br/>(48 KB bei Verwendung der **Base64** Codierung)<br/><br/>Azure unterstützt große Nachrichten, indem Warteschlangen und Blobs kombiniert werden – in diesem Fall können bis zu 200 GB für ein einzelnes Element in der Warteschlange gespeichert werden. |**256 KB** oder **100 MB**<br/><br/>(Einschließlich Header und Text, maximale Headergröße: 64 KB.)<br/><br/>Hängt von der [Dienstebene](service-bus-premium-messaging.md) ab. |
 | Maximaler TTL-Wert der Nachricht |**Unbegrenzt** (API-Version 2017-07-27 oder höher) |**TimeSpan.Max** |
 | Maximale Anzahl von Warteschlangen |**Unbegrenzt** |**10.000**<br/><br/>(pro Dienstnamespace) |
 | Maximale Anzahl gleichzeitiger Clients |**Unbegrenzt** |**5.000** |

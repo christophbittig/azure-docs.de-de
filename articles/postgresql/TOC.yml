@@ -146,7 +146,7 @@
             - name: Verbindungsarchitektur
               href: concepts-connectivity-architecture.md
               displayName: 'security, architecture'
-            - name: Bedrohungsschutz mit Azure Defender
+            - name: Bedrohungsschutz mit Microsoft Defender für Cloud
               href: ../security-center/defender-for-databases-usage.md?toc=/azure/postgresql/toc.json&bc=/azure/postgresql/breadcrumb/toc.json
               displayName: 'security, advanced threat protection'
             - name: Azure AD-Authentifizierung
@@ -658,7 +658,7 @@
               href: concepts-hyperscale-colocation.md
         - name: Datenzugriff und -sicherheit
           items:
-            - name: Überblick
+            - name: Übersicht
               href: concepts-hyperscale-security-overview.md
             - name: Öffentlicher Zugriff
               href: concepts-hyperscale-firewall-rules.md

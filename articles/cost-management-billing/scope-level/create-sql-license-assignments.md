@@ -8,16 +8,16 @@ ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: ahb
 ms.reviewer: chrisri
-ms.openlocfilehash: 48b68260e07d6e69e41daeacae631a9415f48a65
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: e97c4a51366dbfd2c9016de4684129a91df0cbe9
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129547313"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130218937"
 ---
 # <a name="create-sql-server-license-assignments-for-azure-hybrid-benefit"></a>Erstellen von SQL Server-Lizenzzuweisungen für Azure-Hybridvorteil
 
-Die neue Azure-Hybridvorteil-Benutzeroberfläche im Azure-Portal unterstützt SQL Server-Lizenzzuweisungen auf Kontoebene oder auf einer bestimmten Abonnementebene. Wenn die Zuweisung auf Kontoebene erstellt wird, werden Azure-Hybridvorteil-Rabatte automatisch auf SQL-Ressourcen in allen Abonnements des Kontos bis zur in der Zuweisung angegebenen Lizenzanzahl angewendet.
+Die neue zentrale Azure-Hybridvorteil-Benutzeroberfläche im Azure-Portal unterstützt SQL Server-Lizenzzuweisungen auf Kontoebene oder auf einer bestimmten Abonnementebene. Wenn die Zuweisung auf Kontoebene erstellt wird, werden Azure-Hybridvorteil-Rabatte automatisch auf SQL-Ressourcen in allen Abonnements des Kontos bis zur in der Zuweisung angegebenen Lizenzanzahl angewendet.
 
 Für jede Lizenzzuweisung wird ein Bereich ausgewählt. Diesem Bereich werden die Lizenzen zugewiesen. Jeder Bereich kann mehrere Lizenzeinträge enthalten.
 
@@ -42,7 +42,7 @@ Die erforderlichen Rollen unterscheiden sich je nach Vereinbarungstyp.
 | CSP/partnergeführte Kundenunternehmen | Nicht verfügbar | Keine |
 
 > [!NOTE]
-> Die Lizenzbenutzerfunktionen auf Bereichsebene sind für Sponsored-, MSDN Credit- und MPN-Abonnements nicht verfügbar. Die Nutzung von SQL-Software ist für Dev/Test-Abonnements (bei den Angebotstypen MS-AZR-0148P oder MS-AZR-0023P) kostenlos.
+> Das zentrale Zuweisen von Lizenzen zu Bereichen ist für Sponsored-, MSDN Credit- und MPN-Abonnements nicht verfügbar. Die Nutzung von SQL-Software ist für Dev/Test-Abonnements (bei den Angebotstypen MS-AZR-0148P oder MS-AZR-0023P) kostenlos.
 
 ## <a name="create-a-sql-license-assignment"></a>Erstellen einer SQL-Lizenzzuweisung
 
@@ -101,7 +101,7 @@ Nachdem Sie SQL-Lizenzzuweisungen erstellt haben, verändert sich Ihre Benutzero
 - Die Hybridvorteil-Option wird in Ihrer SQL-Ressourcenkonfiguration nicht auf die gleiche Weise angezeigt.
 - Anwendungen oder Skripts, die Hybridvorteil programmgesteuert konfigurieren, funktionieren weiterhin, aber die Einstellung hat keine Auswirkungen.
 - SQL-Softwarerabatte werden auf die SQL-Ressourcen in dem Bereich angewandt. Der Bereich basiert auf der Anzahl der Lizenzen in den Lizenzzuweisungen, die für das Abonnement oder das Konto erstellt werden, in dem die Ressource erstellt wurde.
-- Eine bestimmte Ressource, die für Hybridvorteil konfiguriert ist, kann den Rabatt möglicherweise nicht erhalten, wenn andere Ressourcen alle Lizenzen verbrauchen. Jedoch wird der maximale Rabatt basierend auf der Anzahl der Lizenzen auf den Bereich angewendet. Weitere Informationen zur Anwendung der Rabatte finden Sie unter [Worum handelt es sich bei der Verwaltung von Azure-Hybridvorteil auf Bereichsebene?](overview-azure-hybrid-benefit-scope.md).
+- Eine bestimmte Ressource, die für Hybridvorteil konfiguriert ist, kann den Rabatt möglicherweise nicht erhalten, wenn andere Ressourcen alle Lizenzen verbrauchen. Jedoch wird der maximale Rabatt basierend auf der Anzahl der Lizenzen auf den Bereich angewendet. Weitere Informationen zur Anwendung der Rabatte finden Sie unter [Was ist der zentral verwaltete Azure-Hybridvorteil?](overview-azure-hybrid-benefit-scope.md).
 
 ## <a name="cancel-a-license-assignment"></a>Kündigen einer Lizenzzuweisung
 
@@ -117,5 +117,5 @@ Nachdem Sie SQL-Lizenzzuweisungen erstellt haben, verändert sich Ihre Benutzero
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Lesen Sie die [häufig gestellten Fragen zur Verwaltung von Azure-Hybridvorteil auf Bereichsebene](faq-azure-hybrid-benefit-scope.yml).
-- Informationen zur Anwendung von Rabatten finden Sie unter [Worum handelt es sich bei der Verwaltung von Azure-Hybridvorteil auf Bereichsebene?](overview-azure-hybrid-benefit-scope.md).
+- Lesen Sie die [häufig gestellten Fragen zum zentral verwalteten Azure-Hybridvorteil](faq-azure-hybrid-benefit-scope.yml).
+- Informieren Sie sich über die Anwendung von Rabatten unter [Was ist der zentral verwaltete Azure-Hybridvorteil?](overview-azure-hybrid-benefit-scope.md).

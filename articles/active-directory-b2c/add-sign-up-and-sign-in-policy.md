@@ -3,22 +3,22 @@ title: Einrichten eines Registrierungs- und Anmeldeflows
 titleSuffix: Azure AD B2C
 description: Hier erfahren Sie, wie Sie einen Registrierungs- und Anmeldeflow in Azure Active Directory B2C einrichten.
 services: active-directory-b2c
-author: msmimart
-manager: celestedg
+author: kengaderdus
+manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 08/24/2021
-ms.author: mimart
+ms.date: 10/21/2021
+ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: b2c-support
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 9774eef558b02bef4ef9ec9ecacd6e5a132fd244
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 8b1607609bafabc210572717fd84bfcb25da8022
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128570308"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130231987"
 ---
 # <a name="set-up-a-sign-up-and-sign-in-flow-in-azure-active-directory-b2c"></a>Einrichten eines Registrierungs- und Anmeldeflows in Azure Active Directory B2C
 
@@ -81,6 +81,10 @@ Der Benutzerflow für Registrierung und Anmeldung verarbeitet die Benutzeroberfl
 
 1. Wählen Sie **Erstellen** aus, um den Benutzerflow hinzuzufügen. Dem Namen wird automatisch das Präfix *B2C_1* vorangestellt.
 1. Führen Sie die Schritte für die [Verarbeitung des Ablaufs für "Kennwort vergessen?"](add-password-reset-policy.md?pivots=b2c-user-flow.md#self-service-password-reset-recommended) in der Registrierungs- oder Anmelderichtlinie aus.
+
+
+### <a name="re-order-the-sign-up-form"></a>Neuanordnen des Registrierungsformulars
+Erfahren Sie, [wie Sie Eingabefelder im Benutzerflow für lokale Konten neu anordnen](customize-ui.md#re-order-input-fields-in-the-sign-up-form)
 
 ### <a name="test-the-user-flow"></a>Testen des Benutzerflows
 

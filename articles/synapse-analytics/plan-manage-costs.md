@@ -8,12 +8,12 @@ ms.service: synapse-analytics
 ms.subservice: overview
 ms.topic: how-to
 ms.date: 06/08/2021
-ms.openlocfilehash: 053ff6ec2a2b690ef612d9d6d2d188dfe5f6198a
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: bd1e55c216a314bfc6e132979d5a4999d4f363eb
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131460050"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131850620"
 ---
 # <a name="plan-and-manage-costs-for-azure-synapse-analytics"></a>Planen und Verwalten der Kosten für Azure Synapse Analytics
 
@@ -66,6 +66,10 @@ Nachdem Sie Azure Synapse-Ressourcen gelöscht haben, sind die folgenden Ressour
 ### <a name="using-azure-prepayment-credit-with-azure-synapse"></a>Verwenden der Azure-Vorauszahlungsgutschrift mit Azure Synapse 
 
 Sie können Azure Synapse-Gebühren mit der Azure-Vorauszahlungsgutschrift begleichen. Allerdings können Sie mit der Azure-Vorauszahlungsgutschrift keine Gebühren für Produkte und Dienste von Drittanbietern, einschließlich derjenigen aus dem Azure Marketplace, bezahlen.
+
+### <a name="pre-purchase-plan-for-azure-synapse"></a>Erwerbsplan mit Vorauszahlung für Azure Synapse
+
+Sie können Kosten für Azure Synapse Analytics sparen, indem Sie Azure Synapse-Commit-Einheiten (SCUs) für ein Jahr im Voraus erwerben. Sie können die vorab erworbenen SCUs jederzeit während der Laufzeit des Kaufs nutzen. Weitere Informationen finden Sie unter [Optimieren der Kosten für Azure Synapse Analytics mit einem Erwerbsplan mit Vorauszahlung](../cost-management-billing/reservations/synapse-analytics-pre-purchase-plan.md).
 
 
 ## <a name="review-estimated-costs-in-the-azure-portal"></a>Überprüfen von geschätzten Kosten im Azure-Portal

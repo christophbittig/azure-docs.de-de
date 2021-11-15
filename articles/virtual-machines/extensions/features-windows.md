@@ -9,12 +9,12 @@ ms.author: amjads
 ms.collection: windows
 ms.date: 03/30/2018
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 8ab6b3d00f748fb5b3935988522191c749fa4fd9
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 4eda8d1891081399c26a864e0976e6eee34a6b64
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129275276"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130258048"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Erweiterungen und Features für virtuelle Computer für Windows
 
@@ -121,7 +121,7 @@ Set-AzVMCustomScriptExtension -ResourceGroupName "myResourceGroup" `
     -Run "Create-File.ps1" -Location "West US"
 ```
 
-Im folgenden Beispiel wird die VM-Zugriffserweiterung verwendet, um das Administratorkennwort eines virtuellen Windows-Computers auf ein vorübergehendes zurückzusetzen. Weitere Informationen über die VM-Zugriffserweiterung finden Sie unter [Zurücksetzen des Remotedesktopdiensts oder seines Anmeldekennworts in einer Windows-VM](/troubleshoot/azure/virtual-machines/reset-rdp). Sobald Sie dies durchgeführt haben, sollten Sie bei der ersten Anmeldung das Kennwort zurücksetzen:
+Im folgenden Beispiel wird die VM-Zugriffserweiterung verwendet, um das Administratorkennwort eines virtuellen Windows-Computers auf ein vorübergehendes zurückzusetzen. Weitere Informationen über die VM-Zugriffserweiterung finden Sie unter [Zurücksetzen des Remotedesktopdiensts oder seines Anmeldekennworts in einer Windows-VM](/troubleshoot/azure/virtual-machines/reset-rdp). Nachdem Sie dies durchgeführt haben, sollten Sie das Kennwort bei der ersten Anmeldung zurücksetzen:
 
 ```powershell
 $cred=Get-Credential
@@ -252,9 +252,9 @@ Diese Zertifikate sichern die Kommunikation zwischen dem virtuellen Computer und
 
 ### <a name="how-do-agents-and-extensions-get-updated"></a>Wie werden Agents und Erweiterungen aktualisiert?
 
-Agents und Erweiterungen haben den gleichen Updatemechanismus. Einige Updates erfordern keine zusätzlichen Firewallregeln.
+Agents und Erweiterungen besitzen den gleichen Updatemechanismus.
 
-Wenn ein Update verfügbar ist, wird es nur auf der VM installiert, auf der es eine Änderung der Erweiterungen oder andere Änderungen des VM-Modells gab, z.B.:
+Wenn ein Update verfügbar ist und automatische Updates aktiviert sind, wird das Update erst auf der VM installiert, nachdem eine Änderung an einer Erweiterung oder andere VM-Modelländerungen vorgenommen wurden, z. B.:
 
 - Datenträger
 - Erweiterungen
@@ -263,7 +263,13 @@ Wenn ein Update verfügbar ist, wird es nur auf der VM installiert, auf der es e
 - Größe des virtuellen Computers
 - Netzwerkprofil
 
+> [!IMPORTANT]
+> Das Update wird erst installiert, nachdem eine Änderung am VM-Modell vorgenommen wurde.
+
 Herausgeber stellen Updates in verschiedenen Regionen zu verschiedenen Zeiten zur Verfügung, d.h., möglicherweise haben Ihre VMs in verschiedenen Regionen unterschiedliche Versionen.
+
+> [!NOTE]
+> Einige Updates erfordern eventuell zusätzliche Firewallregeln. Weitere Informationen finden Sie unter [Netzwerkzugriff](#network-access).
 
 #### <a name="listing-extensions-deployed-to-a-vm"></a>Auflisten von Erweiterungen, die einer VM bereitgestellt wurden
 
@@ -288,7 +294,10 @@ Informationen dazu, welche Version Sie ausführen, finden Sie unter [Detecting i
 
 #### <a name="extension-updates"></a>Updates für Erweiterungen
 
-Wenn ein Update für eine Erweiterung verfügbar ist, lädt der Windows-Gast-Agent dieses herunter und aktualisiert die Erweiterung. Automatische Updates für Erweiterungen sind entweder *kleinere Updates* oder *Hotifxupdates*. Sie können beim Bereitstellen der Erweiterung entscheiden, ob Sie *kleinere* Updates für Erweiterungen abonnieren wollen oder nicht. Im folgenden Beispiel sehen Sie, wie man Nebenversionen in einer Resource Manager-Vorlage automatisch mit *autoUpgradeMinorVersion": true,'* aktualisiert:
+
+Wenn ein Erweiterungsupdate verfügbar ist und automatische Updates aktiviert sind, lädt der Windows-Gast-Agent die Erweiterung herunter und upgradet sie, nachdem eine [Änderung am VM-Modell](#how-do-agents-and-extensions-get-updated) erfolgt ist.
+
+Automatische Updates für Erweiterungen sind entweder *kleinere Updates* oder *Hotifxupdates*. Sie können beim Bereitstellen der Erweiterung entscheiden, ob Sie *kleinere* Updates für Erweiterungen abonnieren wollen oder nicht. Im folgenden Beispiel sehen Sie, wie man Nebenversionen in einer Resource Manager-Vorlage automatisch mit *„autoUpgradeMinorVersion“: true,'* upgradet:
 
 ```json
     "properties": {
@@ -304,6 +313,8 @@ Wenn ein Update für eine Erweiterung verfügbar ist, lädt der Windows-Gast-Age
 ```
 
 Sie sollten in Ihren Bereitstellungen von Erweiterungen immer automatische Updates auswählen, um die neuesten Fehlerbehebungen für Nebenversionen zu erhalten. Das Abonnement für Hotfixupdates, die Sicherheitsfixes oder Hauptfehlerbehebungen enthalten, kann nicht gekündigt werden.
+
+Wenn Sie automatische Erweiterungsupdates deaktivieren oder eine Hauptversion upgraden müssen, verwenden Sie [Set-AzVMExtension](/powershell/module/az.compute/set-azvmextension), und geben Sie die Zielversion an.
 
 ### <a name="how-to-identify-extension-updates"></a>So identifizieren Sie Updates für Erweiterungen
 

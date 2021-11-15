@@ -6,21 +6,18 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/23/2020
-ms.openlocfilehash: 44b13211bd8a7f3b71f1357db0097500801c2a0c
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 2ae111660b2faa6f5bba17e9f94b17caa2b2c642
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122345855"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131438195"
 ---
-# <a name="connectivity-and-networking-concepts-for-azure-database-for-mysql---flexible-server-preview"></a>Konnektivitäts- und Netzwerkkonzepte für Azure Database for MySQL – Flexible Server (Vorschau)
+# <a name="connectivity-and-networking-concepts-for-azure-database-for-mysql---flexible-server"></a>Konnektivitäts- und Netzwerkkonzepte für Azure Database for MySQL – Flexible Server
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 In diesem Artikel werden die Konzepte zum Steuern der Konnektivität mit Ihrem flexiblen Azure MySQL-Server vorgestellt. Außerdem werden die Netzwerkkonzepte für den flexiblen Azure Database for MySQL-Server ausführlich erläutert, die für die sichere Erstellung eines Servers und den Zugriff darauf in Azure erforderlich sind.
-
-> [!IMPORTANT]
-> Azure Database for MySQL – Flexible Server befindet sich in der Vorschau.
 
 Azure Database for MySQL: Der flexible Server unterstützt zwei Möglichkeiten zum Konfigurieren von Konnektivität mit Ihren Servern:
 > [!NOTE]

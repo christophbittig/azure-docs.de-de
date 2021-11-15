@@ -10,12 +10,12 @@ author: mx-iao
 ms.author: minxia
 ms.date: 10/21/2021
 ms.reviewer: laobri
-ms.openlocfilehash: b0b82b36126e063c68c595736c1e0ea18260dd5f
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 5589bee0b5dbbff8561af4c6ba6efc3a691e79de
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131560167"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132062527"
 ---
 # <a name="cli-v2-sweep-job-yaml-schema"></a>YAML-Schema für Sweep-Aufträge in der Befehlszeilenschnittstelle (v2)
 
@@ -33,20 +33,20 @@ Das JSON-Quellschema finden Sie unter https://azuremlschemas.azureedge.net/lates
 | `display_name` | Zeichenfolge | Anzeigename des Auftrags auf der Studio-Benutzeroberfläche. Kann innerhalb des Arbeitsbereichs nicht eindeutig sein. Wenn kein Wert angegeben wird, generiert Azure ML automatisch einen für Menschen lesbaren Adjektiv-Nomen-Bezeichner für den Anzeigenamen. | | |
 | `experiment_name` | Zeichenfolge | Experimentname, unter dem der Auftrag organisiert werden soll. Die Ausführungsaufzeichnung jedes Auftrags wird in Studio unter dem entsprechenden Experiment auf der Registerkarte „Experimente“ organisiert. Ohne Angabe verwendet Azure ML standardmäßig den Namen des Arbeitsverzeichnisses verwendet, in dem der Auftrag erstellt wurde. | | |
 | `description` | Zeichenfolge | Beschreibung des Auftrags. | | |
-| `tags` | Objekt | Wörterbuch der Tags für den Auftrag. | | |
+| `tags` | Objekt (object) | Wörterbuch der Tags für den Auftrag. | | |
 | `sampling_algorithm` | Zeichenfolge | **Erforderlich.** Der Hyperparameter-Samplingalgorithmus, der über `search_space` verwendet werden soll. | `random`, `grid`, `bayesian` | |
-| `search_space` | Objekt | **Erforderlich.** Wörterbuch des Suchbereichs für Hyperparameter. Der Schlüssel ist der Name des Hyperparameters, und der Wert ist der Parameterausdruck. <br><br> Auf Hyperparameter kann im `trial.command` mit dem Ausdruck `${{ search_space.<hyperparameter> }}` verwiesen werden. | | |
-| `search_space.<hyperparameter>` | Objekt | Weitere Informationen zu den möglichen Ausdrücken finden Sie unter [Parameterausdrücke](#parameter-expressions). | | |
+| `search_space` | Objekt (object) | **Erforderlich.** Wörterbuch des Suchbereichs für Hyperparameter. Der Schlüssel ist der Name des Hyperparameters, und der Wert ist der Parameterausdruck. <br><br> Auf Hyperparameter kann im `trial.command` mit dem Ausdruck `${{ search_space.<hyperparameter> }}` verwiesen werden. | | |
+| `search_space.<hyperparameter>` | Objekt (object) | Weitere Informationen zu den möglichen Ausdrücken finden Sie unter [Parameterausdrücke](#parameter-expressions). | | |
 | `objective.primary_metric` | Zeichenfolge | **Erforderlich.** Der Name der primären Metrik, die von jedem Testauftrag gemeldet wird. Die Metrik muss im Trainingsskript des Benutzers mithilfe von `mlflow.log_metric()` mit dem gleichen entsprechenden Metriknamen protokolliert werden. | | |
 | `objective.goal` | Zeichenfolge | **Erforderlich.** Das Optimierungsziel von `objective.primary_metric`. | `maximize`, `minimize` | |
-| `early_termination` | Objekt | Die zu verwendende Richtlinie für vorzeitige Beendigung. Ein Testauftrag wird abgebrochen, wenn die Kriterien der angegebenen Richtlinie erfüllt sind. Wenn diese Einstellung nicht angegeben wird, erfolgt keine Anwendung der Richtlinie für die vorzeitige Beendigung. Eine von [BanditPolicy](#banditpolicy), [MedianStoppingPolicy](#medianstoppingpolicy) oder [TruncationSelectionPolicy](#truncationselectionpolicy). | | |
-| `limits` | Objekt | Grenzwerte für den Sweep-Auftrag. Siehe [Attribute des `limits`-Schlüssels](#attributes-of-the-limits-key). | | |
+| `early_termination` | Objekt (object) | Die zu verwendende Richtlinie für vorzeitige Beendigung. Ein Testauftrag wird abgebrochen, wenn die Kriterien der angegebenen Richtlinie erfüllt sind. Wenn diese Einstellung nicht angegeben wird, erfolgt keine Anwendung der Richtlinie für die vorzeitige Beendigung. Eine von [BanditPolicy](#banditpolicy), [MedianStoppingPolicy](#medianstoppingpolicy) oder [TruncationSelectionPolicy](#truncationselectionpolicy). | | |
+| `limits` | Objekt (object) | Grenzwerte für den Sweep-Auftrag. Siehe [Attribute des `limits`-Schlüssels](#attributes-of-the-limits-key). | | |
 | `compute` | Zeichenfolge | **Erforderlich.** Name des Computeziels, auf dem der Auftrag mithilfe der `azureml:<compute_name>`-Syntax ausgeführt werden soll. | | |
-| `trial` | Objekt | **Erforderlich.** Die Auftragsvorlage für die einzelnen Testversionen. Jeder Testauftrag wird mit einer anderen Kombination von Hyperparameterwerten bereitgestellt, die das System aus dem `search_space` als Stichproben entnimmt. Siehe [Attribute des `trial`-Schlüssels](#attributes-of-the-trial-key). | | |
-| `inputs` | Objekt | Wörterbuch der Eingaben für den Auftrag. Der Schlüssel ist ein Name für die Eingabe im Kontext des Auftrags, und der Wert ist der Eingabewert. <br><br> Auf Eingaben kann im `trial.command` mit dem Ausdruck `${{ inputs.<input_name> }}` verwiesen werden. | | |
+| `trial` | Objekt (object) | **Erforderlich.** Die Auftragsvorlage für die einzelnen Testversionen. Jeder Testauftrag wird mit einer anderen Kombination von Hyperparameterwerten bereitgestellt, die das System aus dem `search_space` als Stichproben entnimmt. Siehe [Attribute des `trial`-Schlüssels](#attributes-of-the-trial-key). | | |
+| `inputs` | Objekt (object) | Wörterbuch der Eingaben für den Auftrag. Der Schlüssel ist ein Name für die Eingabe im Kontext des Auftrags, und der Wert ist der Eingabewert. <br><br> Auf Eingaben kann im `trial.command` mit dem Ausdruck `${{ inputs.<input_name> }}` verwiesen werden. | | |
 | `inputs.<input_name>` | number, integer, boolean, string oder object | Einer eines Literalwerts (vom Typ number, integer, boolean oder string), [JobInputUri](#jobinputuri) oder [JobInputDataset](#jobinputdataset). | | |
-| `outputs` | Objekt | Wörterbuch der Ausgabekonfigurationen des Auftrags. Der Schlüssel ist ein Name für die Ausgabe im Kontext des Auftrags, und der Wert ist die Ausgabekonfiguration. <br><br> Auf Ausgaben kann im `trial.command` mit dem Ausdruck `${{ outputs.<output_name> }}` verwiesen werden. | |
-| `outputs.<output_name>` | Objekt | Sie können entweder einen optionalen `mode` angeben oder das Objekt leer lassen. Für jede im Wörterbuch (`outputs`) angegebene benannte Ausgabe generiert Azure ML automatisch eine standortbasierte Ausgabe. | |
+| `outputs` | Objekt (object) | Wörterbuch der Ausgabekonfigurationen des Auftrags. Der Schlüssel ist ein Name für die Ausgabe im Kontext des Auftrags, und der Wert ist die Ausgabekonfiguration. <br><br> Auf Ausgaben kann im `trial.command` mit dem Ausdruck `${{ outputs.<output_name> }}` verwiesen werden. | |
+| `outputs.<output_name>` | Objekt (object) | Sie können entweder einen optionalen `mode` angeben oder das Objekt leer lassen. Für jede im Wörterbuch (`outputs`) angegebene benannte Ausgabe generiert Azure ML automatisch eine standortbasierte Ausgabe. | |
 | `outputs.<output_name>.mode` | Zeichenfolge | Modus, wie Ausgabedateien an den Zielspeicher übermittelt werden. Für den Lese-/Schreib-Bereitstellungsmodus ist das Ausgabeverzeichnis ein bereitgestelltes Verzeichnis. Im Upload-Modus werden Dateien, die in das Ausgabeverzeichnis geschrieben werden, zum Auftragsende hochgeladen. | `rw_mount`, `upload` | `rw_mount` |
 
 ### <a name="early-termination-policies"></a>Richtlinien zum vorzeitigen Beenden
@@ -138,7 +138,7 @@ Das JSON-Quellschema finden Sie unter https://azuremlschemas.azureedge.net/lates
 
 ### <a name="attributes-of-the-limits-key"></a>Attribute des `limits`-Schlüssels
 
-| Key | type | BESCHREIBUNG | Standardwert |
+| Schlüssel | type | BESCHREIBUNG | Standardwert |
 | --- | ---- | ----------- | ------------- |
 | `max_total_trials` | integer | Die maximale Zeit in Sekunden, die der Auftrag ausgeführt werden darf. Sobald dieser Grenzwert erreicht ist, bricht das System den Auftrag ab. | `1000` |
 | `max_concurrent_trials` | integer | | Wird standardmäßig auf `max_total_trials` festgelegt. |
@@ -147,13 +147,13 @@ Das JSON-Quellschema finden Sie unter https://azuremlschemas.azureedge.net/lates
 
 ### <a name="attributes-of-the-trial-key"></a>Attribute des `trial`-Schlüssels
 
-| Key | type | BESCHREIBUNG | Standardwert |
+| Schlüssel | type | BESCHREIBUNG | Standardwert |
 | --- | ---- | ----------- | ------------- |
 | `command` | Zeichenfolge | **Erforderlich.** Den auszuführenden Befehl. | |
 | `code.local_path` | Zeichenfolge | Lokaler Pfad zum Quellcodeverzeichnis, das hochgeladen und für den Auftrag verwendet werden soll. | |
 | `environment` | Zeichenfolge oder Objekt | **Erforderlich.** Die Umgebung, die für den Auftrag verwendet werden soll. Dies kann entweder ein Verweis auf eine vorhandene Umgebung mit Versionsangabe im Arbeitsbereich oder eine Inline-Umgebungsspezifikation sein. <br> <br> Verwenden Sie die Syntax `azureml:<environment-name>:<environment-version>`, um auf eine vorhandene Umgebung zu verweisen. <br><br> Um eine Umgebung inline zu definieren, befolgen Sie das [Umgebungsschema](reference-yaml-environment.md#yaml-syntax). Schließen Sie die Eigenschaften `name` und `version` aus, da sie für Inlineumgebungen nicht unterstützt werden. | |
-| `environment_variables` | Objekt | Wörterbuch der Name-Wert-Paare von Umgebungsvariablen, die für den Prozess festgelegt werden, in dem der Befehl ausgeführt wird. | |
-| `distribution` | Objekt | Die Verteilungskonfiguration für verteilte Trainingsszenarien. Eine von [MpiConfiguration](#mpiconfiguration), [PyTorchConfiguration](#pytorchconfiguration)oder [TensorFlowConfiguration](#tensorflowconfiguration). | |
+| `environment_variables` | Objekt (object) | Wörterbuch der Name-Wert-Paare von Umgebungsvariablen, die für den Prozess festgelegt werden, in dem der Befehl ausgeführt wird. | |
+| `distribution` | Objekt (object) | Die Verteilungskonfiguration für verteilte Trainingsszenarien. Eine von [MpiConfiguration](#mpiconfiguration), [PyTorchConfiguration](#pytorchconfiguration)oder [TensorFlowConfiguration](#tensorflowconfiguration). | |
 | `resources.instance_count` | integer | Die Anzahl von Knoten, die für den Auftrag verwendet werden sollen. | `1` |
 
 #### <a name="distribution-configurations"></a>Verteilungskonfigurationen
@@ -203,15 +203,15 @@ Mit dem Befehl `az ml job` können Sie Azure Machine Learning-Aufträge verwalte
 
 ## <a name="examples"></a>Beispiele
 
-Beispiele sind im [GitHub-Beispielrepository](https://github.com/Azure/azureml-examples/tree/main/cli/jobs) verfügbar. Im Folgenden sind mehrere aufgeführt.
+Beispiele finden Sie im [GitHub-Beispielrepository](https://github.com/Azure/azureml-examples/tree/main/cli/jobs). Im Folgenden sind mehrere aufgeführt.
 
 ## <a name="yaml-hello-sweep"></a>YAML: Hello-Sweep
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/basics/hello-sweep.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/basics/hello-sweep.yml":::
 
 ## <a name="yaml-basic-python-model-hyperparameter-tuning"></a>YAML: Grundlegende Optimierung von Python-Modellen mit Hyperparametern
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/single-step/scikit-learn/iris/job-sweep.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/single-step/scikit-learn/iris/job-sweep.yml":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

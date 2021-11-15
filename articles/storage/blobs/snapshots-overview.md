@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 02/02/2021
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 437211ae50404443dee30e5a9c8141ea09d69244
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: 35fb71da46de695a91b06a72a101e81f59237175
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129278555"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131449258"
 ---
 # <a name="blob-snapshots"></a>Blobmomentaufnahmen
 

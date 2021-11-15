@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 11/02/2021
 ms.author: duau
 ms.custom: references_regions, ignite-fall-2021
-ms.openlocfilehash: 05c43d5e21c637fef321dc39cd341befedfba81e
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 81603472d4a5a254fe86f2a6866d8a7edcbbef88
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131029354"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131459632"
 ---
 # <a name="what-is-azure-virtual-network-manager-preview"></a>Was ist Azure Virtual Network Manager (Vorschau)?
 
@@ -28,7 +28,7 @@ Azure Virtual Network Manager ist ein Verwaltungsdienst, mit dem Sie virtuelle N
 
 :::image type="content" source="./media/overview/management-group.png" alt-text="Abbildung: Verwaltungsgruppe in Virtual Network Manager.":::
 
-Während des Erstellungsprozesses definieren Sie den Bereich, den Azure Virtual Network Manager verwaltet. Der Bereich kann auf Abonnement- oder [Verwaltungsgruppenebene](../governance/management-groups/overview.md) definiert werden. Nachdem Sie den Bereich definiert haben, aktivieren Sie Features wie *Konnektivität* und die *Rolle SecurityAdmin* für Virtual Network Manager.
+Während des Erstellungsprozesses definieren Sie den Bereich, den Azure Virtual Network Manager verwaltet. Zum Definieren eines Bereichs muss eine [Verwaltungsgruppe](../governance/management-groups/overview.md) erstellt werden. Nachdem Sie den Bereich definiert haben, aktivieren Sie Features wie *Konnektivität* und die *Rolle SecurityAdmin* für Virtual Network Manager.
 
 Nachdem Sie die Virtual Network Manager-Instanz bereitgestellt haben, erstellen Sie eine *Netzwerkgruppe*, indem Sie bedingte Anweisungen verwenden, um virtuelle Netzwerke nach Namen, Tags oder IDs (dynamische Mitgliedschaft) auszuwählen. Sie können auch bestimmte virtuelle Netzwerke (statische Mitgliedschaft) auswählen. Die definierten Netzwerkgruppenregeln werden in Azure Policy als benutzerdefinierte Initiativendefinition und entsprechende Zuweisung widergespiegelt, die die Regeln veranschaulichen, die Sie für die Mitgliedschaft virtueller Netzwerke definiert haben. Weitere Informationen zu Azure Policy-Initiativen finden Sie unter [Azure Policy-Initiativenstruktur](../governance/policy/concepts/initiative-definition-structure.md). Diese Richtlinien sind derzeit im schreibgeschützten Modus verfügbar. Weitere Informationen zum Erstellen, Aktualisieren und Löschen dieser Richtlinien finden Sie unter [Netzwerkgruppen und Azure Policy](concept-network-groups.md#network-group-and-azure-policy). Anschließend erstellen Sie Konnektivitäts- und/oder Sicherheitskonfigurationen, die basierend auf Ihrer Topologie und Ihren Sicherheitsanforderungen auf diese Netzwerkgruppen angewendet werden. 
 

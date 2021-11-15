@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Azure Service Bus-Themen 
 ms.devlang: PHP
 ms.topic: how-to
 ms.date: 07/27/2021
-ms.openlocfilehash: 0265b138b2f6f44961d085ca8492ba125b9a36b2
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 860666e21e1cabbe33dc27bc31fcab8393d0128e
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121725110"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132053101"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-php"></a>Verwenden von Service Bus-Themen und -Abonnements mit PHP
 
@@ -22,7 +22,7 @@ In diesem Artikel erfahren Sie, wie Sie Service Bus-Themen und -Abonnements verw
 - Löschen von Themen und Abonnements
 
 > [!IMPORTANT]
-> Seit Februar 2021 befindet sich das Azure SDK für PHP in der Deaktivierungsphase und wird von Microsoft nicht mehr offiziell unterstützt. Weitere Informationen dazu finden Sie in [dieser Ankündigung](https://github.com/Azure/azure-sdk-for-php#important-annoucement) auf GitHub. Dieser Artikel wird bald entfernt. 
+> Seit Februar 2021 befindet sich das Azure SDK für PHP in der Deaktivierungsphase und wird von Microsoft nicht mehr offiziell unterstützt. Weitere Informationen dazu, finden Sie in [dieser Ankündigung](https://github.com/Azure/azure-sdk-for-php#important-annoucement) auf GitHub. Dieser Artikel wird bald deaktiviert. 
  
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -260,7 +260,7 @@ for($i = 0; $i < 5; $i++){
 }
 ```
 
-Service Bus-Themen unterstützen eine maximale Nachrichtengröße von 256 KB im [Standard-Tarif](service-bus-premium-messaging.md) und 1 MB im [Premium-Tarif](service-bus-premium-messaging.md). Der Header, der die standardmäßigen und benutzerdefinierten Anwendungseigenschaften enthält, kann eine maximale Größe von 64 KB haben. Es gibt keine Beschränkung für die Anzahl der Nachrichten, die ein Thema enthält. Es gibt jedoch eine Obergrenze für die Gesamtgröße der Nachrichten eines Themas. Die Obergrenze für die Themengröße beträgt 5 GB. Weitere Informationen zu Kontingenten finden Sie unter [Service Bus-Kontingente][Service Bus quotas].
+Service Bus-Themen unterstützen eine maximale Nachrichtengröße von 256 KB im [Standard-Tarif](service-bus-premium-messaging.md) und 100 MB im [Premium-Tarif](service-bus-premium-messaging.md). Der Header, der die standardmäßigen und benutzerdefinierten Anwendungseigenschaften enthält, kann eine maximale Größe von 64 KB haben. Es gibt keine Beschränkung für die Anzahl der Nachrichten, die ein Thema enthält. Es gibt jedoch eine Obergrenze für die Gesamtgröße der Nachrichten eines Themas. Die Obergrenze für die Themengröße beträgt 5 GB. Weitere Informationen zu Kontingenten finden Sie unter [Service Bus-Kontingente][Service Bus quotas].
 
 ## <a name="receive-messages-from-a-subscription"></a>Empfangen von Nachrichten aus einem Abonnement
 Die beste Vorgehensweise zum Empfangen von Nachrichten aus einem Abonnement ist die Verwendung einer `ServiceBusRestProxy->receiveSubscriptionMessage`-Methode. Nachrichten können in zwei unterschiedlichen Modi empfangen werden: [*ReceiveAndDelete* und *PeekLock*](/dotnet/api/microsoft.servicebus.messaging.receivemode). **PeekLock** ist die Standardeinstellung.

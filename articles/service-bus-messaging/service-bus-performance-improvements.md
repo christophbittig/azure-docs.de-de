@@ -3,12 +3,12 @@ title: Bewährte Methoden zur Verbesserung der Leistung mit Azure Service Bus
 description: Beschreibt, wie Service Bus verwendet wird, um die Leistung beim Austausch von Brokernachrichten zu optimieren.
 ms.topic: article
 ms.date: 08/30/2021
-ms.openlocfilehash: 51b8005f9aa3b53bbcb8d78b83c4449992cf0210
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 246b9deedb9385b671bf89a27d666798c703a93a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128560714"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130232137"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Bewährte Methoden für Leistungsoptimierungen mithilfe von Service Bus Messaging
 
@@ -26,7 +26,7 @@ Service Bus bietet verschiedene Tarife. Es wird empfohlen, den geeigneten Tarif 
 
    * **Standard-Tarif:** Geeignet für Entwickler-/Testumgebungen oder Szenarien mit geringem Durchsatz, in denen Anwendungen **nicht negativ** auf Drosselung reagieren.
 
-   * **Premium-Tarif:** Geeignet für Produktionsumgebungen mit unterschiedlichen Durchsatzanforderungen, in denen vorhersagbare Latenz und vorhersagbarer Durchsatz erforderlich sind. Darüber hinaus können Service Bus Premium-Namespaces [automatisch skaliert](automate-update-messaging-units.md) werden, um Durchsatzspitzen zu bewältigen.
+   * **Premium-Tarif:** Geeignet für Produktionsumgebungen mit unterschiedlichen Durchsatzanforderungen, in denen vorhersagbare Latenz und vorhersagbarer Durchsatz erforderlich sind. Darüber hinaus können Service Bus Premium-Namespaces [automatisch skaliert](automate-update-messaging-units.md) und aktiviert werden, um Durchsatzspitzen zu bewältigen.
 
 > [!NOTE]
 > Wenn nicht der richtige Tarif ausgewählt wird, besteht die Gefahr, dass der Service Bus-Namespace überfordert wird, was zu [Drosselung](service-bus-throttling.md) führen kann.

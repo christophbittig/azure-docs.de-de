@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/15/2021
 ms.custom: devx-track-azurecli, ignite-fall-2021
-ms.openlocfilehash: ab1c521be2748c8f58fec4c2f0455e1f08c39bdc
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: a8ba281a1061643cc582e6de4fc75a8c43fae71c
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095539"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131447423"
 ---
 # <a name="dapr-extension-for-azure-kubernetes-service-aks-preview"></a>Dapr-Erweiterung für Azure Kubernetes Service (AKS) (Vorschau)
 
@@ -37,6 +37,10 @@ Sobald Dapr in Ihrem AKS-Cluster installiert ist, wird für Ihre Anwendungsdiens
 > [!WARNING]
 > Wenn Sie Dapr über die AKS-Erweiterung installieren, wird empfohlen, die Erweiterung weiterhin für die zukünftige Verwaltung von Dapr anstelle der Dapr-CLI zu verwenden. Das Kombinieren der beiden Tools kann Konflikte verursachen und zu unerwünschtem Verhalten führen.
 
+## <a name="supported-kubernetes-versions"></a>Unterstützte Kubernetes-Versionen
+
+Die Dapr-Erweiterung verwendet das gleiche Supportfenster wie AKS. Weitere Informationen finden Sie unter [Richtlinie zur Unterstützung der Kubernetes-Version][k8s-version-support-policy].
+
 ## <a name="prerequisites"></a>Voraussetzungen 
 
 - Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
@@ -44,16 +48,15 @@ Sobald Dapr in Ihrem AKS-Cluster installiert ist, wird für Ihre Anwendungsdiens
 - Wenn Sie keinen besitzen, müssen Sie einen solchen [AKS cluster][deploy-cluster] erstellen.
 
 
-### <a name="register-the-extensions-aks-extensionmanager-and-aks-dapr-preview-features"></a>Registrieren der `Extensions`-, `AKS-ExtensionManager`- und `AKS-Dapr`Vorschaufunktionen
+### <a name="register-the-aks-extensionmanager-and-aks-dapr-preview-features"></a>Registrieren der `AKS-ExtensionManager`- und `AKS-Dapr`-Previewfunktionen
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
-Sie müssen die Featureflags `Extensions`, `AKS-ExtensionManager` und `AKS-Dapr` in Ihrem Abonnement aktivieren, um einen AKS-Cluster zu erstellen, der eine hostbasierte Verschlüsselung verwendet.
+Sie müssen die Featureflags `AKS-ExtensionManager` und `AKS-Dapr` in Ihrem Abonnement aktivieren, um einen AKS-Cluster zu erstellen, der eine hostbasierte Verschlüsselung verwendet.
 
-Registrieren Sie die Featureflags `Extensions`, `AKS-ExtensionManager` und `AKS-Dapr`mit dem Befehl [az feature register][az-feature-register], wie im folgenden Beispiel gezeigt:
+Registrieren Sie die Featureflags `AKS-ExtensionManager` und `AKS-Dapr` mit dem Befehl [az feature register][az-feature-register], wie im folgenden Beispiel gezeigt:
 
 ```azurecli-interactive
-az feature register --namespace "Microsoft.KubernetesConfiguration" --name "Extensions"
 az feature register --namespace "Microsoft.ContainerService" --name "AKS-ExtensionManager"
 az feature register --namespace "Microsoft.ContainerService" --name "AKS-Dapr"
 ```
@@ -61,7 +64,6 @@ az feature register --namespace "Microsoft.ContainerService" --name "AKS-Dapr"
 Es dauert einige Minuten, bis der Status *Registered (Registriert)* angezeigt wird. Überprüfen Sie den Registrierungsstatus mithilfe des Befehls [az feature list][az-feature-list]:
 
 ```azurecli-interactive
-az feature list -o table --query "[?contains(name, 'Microsoft.KubernetesConfiguration/Extensions')].{Name:name,State:properties.state}"
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-ExtensionManager')].{Name:name,State:properties.state}"
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-Dapr')].{Name:name,State:properties.state}"
 ```
@@ -173,6 +175,11 @@ az k8s-extension show --cluster-type managedClusters \
 
 ## <a name="update-configuration-settings"></a>Konfigurationseinstellungen aktualisieren
 
+> [!IMPORTANT]
+> Einige Konfigurationsoptionen können nach der Erstellung nicht mehr geändert werden. Anpassungen an diesen Optionen erfordern das Löschen und die erneute Erstellung der Erweiterung. Dies gilt für die folgenden Einstellungen:
+> * `global.ha.*`
+> * `dapr_placement.*`
+
 > [!NOTE]
 > Hochverfügbarkeit (High Availability, HA) kann jederzeit aktiviert werden. Nach der Aktivierung muss die Erweiterung jedoch gelöscht und neu geschaltet werden. Wenn Sie nicht sicher sind, ob Hochverfügbarkeit für Ihren Anwendungsfall erforderlich ist, empfiehlt es sich, mit deaktiviert zu beginnen, um Unterbrechungen zu minimieren.
 
@@ -234,13 +241,15 @@ az k8s-extension delete --resource-group myResourceGroup --cluster-name myAKSClu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Nachdem Sie Dapr erfolgreich in Ihrem AKS-Cluster bereitgestellt haben, versuchen Sie, eine [Beispielanwendung][sample-application] bereitzustellen
+- Nachdem Sie Dapr erfolgreich in Ihrem AKS-Cluster bereitgestellt haben, versuchen Sie, eine [Beispielanwendung][sample-application] bereitzustellen.
 
 <!-- LINKS INTERNAL -->
 [deploy-cluster]: ./tutorial-kubernetes-deploy-cluster.md
 [az-feature-register]: /cli/azure/feature#az_feature_register
 [az-feature-list]: /cli/azure/feature#az_feature_list
 [az-provider-register]: /cli/azure/provider#az_provider_register
+[sample-application]: ./quickstart-dapr.md
+[k8s-version-support-policy]: ./supported-kubernetes-versions.md?tabs=azure-cli#kubernetes-version-support-policy
 
 <!-- LINKS EXTERNAL -->
 [kubernetes-production]: https://docs.dapr.io/operations/hosting/kubernetes/kubernetes-production

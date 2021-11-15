@@ -2,13 +2,13 @@
 title: Fehler vom Typ „Reservierter Ressourcenname“
 description: Hier wird beschrieben, wie Sie Fehler beheben, die auftreten, wenn der angegebene Ressourcenname ein reserviertes Wort enthält.
 ms.topic: troubleshooting
-ms.date: 11/08/2017
-ms.openlocfilehash: e76f4bf9bfee7de6e7523d69acf1388d2dd80e93
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/02/2021
+ms.openlocfilehash: 28376ed34e2007c3f6cfb7f57f08199e5a1ade8a
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095584"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131458834"
 ---
 # <a name="resolve-reserved-resource-name-errors"></a>Fehler vom Typ „Reservierter Ressourcenname“
 
@@ -30,6 +30,13 @@ Die Namen von Ressourcen mit einem öffentlichen Endpunkt dürfen keine reservie
 Die folgenden Wörter sind reserviert:
 
 * ACCESS
+* APP_CODE
+* APP_THEMES
+* APP_DATA
+* APP_GLOBALRESOURCES
+* APP_LOCALRESOURCES
+* APP_WEBREFERENCES
+* APP_BROWSERS
 * AZURE
 * BING
 * BIZSPARK
@@ -61,10 +68,8 @@ Die folgenden Wörter sind reserviert:
 
 Die folgenden Wörter dürfen weder als ganzes Wort noch als Teilzeichenfolge im Namen verwendet werden:
 
-* LOGIN
 * MICROSOFT
 * WINDOWS
-* XBOX
 
 ## <a name="solution"></a>Lösung
 

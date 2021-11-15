@@ -6,12 +6,12 @@ ms.author: chrhar
 ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 01/25/2021
-ms.openlocfilehash: a048937226f979db58996eb4bf996b9f254d9182
-ms.sourcegitcommit: 147910fb817d93e0e53a36bb8d476207a2dd9e5e
+ms.openlocfilehash: 4956bf409190b560824f57e2f79e94ae5360e99a
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2021
-ms.locfileid: "130132448"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130258067"
 ---
 # <a name="tutorial-access-data-in-cosmos-db-using-mongoose-with-azure-static-web-apps"></a>Tutorial: Zugreifen auf Daten in Cosmos DB per Mongoose mit Azure Static Web Apps
 
@@ -44,7 +44,7 @@ Erstellen Sie als Erstes ein Konto vom Typ [Cosmos DB serverlos](../cosmos-db/s
 3. Geben Sie im Suchfeld den Suchbegriff **Azure Cosmos DB** ein.
 4. Klicken Sie auf **Azure Cosmos DB**.
 5. Klicken Sie auf **Erstellen**
-6. Wählen Sie unter **Azure Cosmos DB-API für MongoDB** die Option **Erstellen** aus.
+6. Wählen Sie bei entsprechender Aufforderung unter **Azure Cosmos DB-API für MongoDB** die Option **Erstellen** aus.
 7. Konfigurieren Sie Ihr Azure Cosmos DB-Konto mit den folgenden Informationen:
     - Abonnement: Wählen Sie das gewünschte Abonnement aus.
     - Ressource: Klicken Sie auf **Neu erstellen**, und legen Sie den Namen auf **aswa-mongoose** fest.
@@ -53,8 +53,8 @@ Erstellen Sie als Erstes ein Konto vom Typ [Cosmos DB serverlos](../cosmos-db/s
     - Kapazitätsmodus: **Serverlos (Vorschau)**
     - Version: **4.0**
 :::image type="content" source="media/add-mongoose/cosmos-db.png" alt-text="Erstellen einer neuen Cosmos DB-Instanz":::
-7. Klicken Sie auf **Überprüfen und erstellen**.
-8. Klicken Sie auf **Erstellen**
+8. Klicken Sie auf **Überprüfen und erstellen**.
+9. Klicken Sie auf **Erstellen**
 
 Der Erstellungsvorgang dauert einige Minuten. In einem späteren Schritt kehren Sie noch einmal zur Datenbank zurück, um die Verbindungszeichenfolge zu erfassen.
 

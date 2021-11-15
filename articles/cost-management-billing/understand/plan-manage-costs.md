@@ -2,20 +2,20 @@
 title: Planen der Verwaltung von Azure-Kosten
 description: Hier erfahren Sie, wie Sie die Verwaltung der Azure-Kosten planen und Features zur Kostennachverfolgung und -verwaltung für Ihr Azure-Konto verwenden.
 author: bandersmsft
-ms.reviewer: amberb
+ms.reviewer: sapnakeshari
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: common
 ms.topic: conceptual
-ms.date: 10/07/2021
+ms.date: 10/20/2021
 ms.author: banders
 ms.custom: contperf-fy21q1
-ms.openlocfilehash: d1a76078db3acd79d1f59ce43852d538edac7964
-ms.sourcegitcommit: 860f6821bff59caefc71b50810949ceed1431510
+ms.openlocfilehash: 63542b241d26964d1f24fbe6744b4cbd6bccd6c1
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2021
-ms.locfileid: "129710897"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130215724"
 ---
 # <a name="plan-to-manage-azure-costs"></a>Planen der Verwaltung von Azure-Kosten
 
@@ -152,6 +152,7 @@ Enterprise-Kostenansichten sind derzeit als öffentliche Vorschau verfügbar. Fo
     - Sie sind Abteilungsadministrator, und der Registrierungsadministrator hat die Einstellung **Gebühren anzeigen** für Abteilungsadministratoren deaktiviert.  Wenden Sie sich an den Registrierungsadministrator, um Zugriff zu erhalten.
     - Sie haben Azure über einen Channelpartner gekauft, und der Partner hat die Preisinformationen nicht freigegeben.  
 - Wenn Sie im Enterprise Portal Einstellungen im Zusammenhang mit dem Kostenzugriff aktualisieren, werden die Änderungen erst nach einigen Minuten im Azure-Portal angezeigt.
+- Direkte EA-Kunden können kostenbezogene Einstellungen im [Azure-Portal](https://portal.azure.com/) aktualisieren. Navigieren Sie zum Menü „Richtlinien“, um die Einstellungen zu ändern.
 - Das Ausgabelimit und die Rechnungsanleitungen gelten nicht für EA-Abonnements.
 
 ### <a name="check-your-subscription-and-access"></a>Überprüfen von Abonnement und Zugriff

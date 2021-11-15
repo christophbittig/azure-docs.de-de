@@ -173,7 +173,7 @@
             - name: Überprüfen von Containerimages
               expanded: false
               items:
-                - name: Überprüfen mit Azure Defender
+                - name: Überprüfen mit Microsoft Defender für Cloud
                   href: scan-images-defender.md
                 - name: Überprüfen mit GitHub Actions
                   href: github-action-scan.md
@@ -287,7 +287,7 @@
 - name: Verweis
   expanded: false
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/acr
     - name: REST
       href: /rest/api/containerregistry

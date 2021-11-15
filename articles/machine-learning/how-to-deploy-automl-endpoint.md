@@ -11,12 +11,12 @@ author: shivanissambare
 ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: how-to, devplatv2
-ms.openlocfilehash: 2a2c04795b3cfcf38e3a2b84ccc36c0ee488f5f6
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: 5bc5208de912a6f11271681b754736bfafe17e8b
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132059391"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131566543"
 ---
 # <a name="how-to-deploy-an-automl-model-to-an-online-endpoint-preview"></a>Bereitstellen eines AutoML-Modells an einem Onlineendpunkt (Vorschau)
 
@@ -124,11 +124,11 @@ Zum Erstellen eines verwalteten Onlineendpunkts über die Befehlszeile müssen S
 
 __automl_endpoint.yml__
 
-::: code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/managed/sample/endpoint.yml" :::
+::: code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/online/managed/sample/endpoint.yml" :::
 
 __automl_deployment.yml__
 
-::: code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/managed/sample/blue-deployment.yml" :::
+::: code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/online/managed/sample/blue-deployment.yml" :::
 
 Sie müssen diese Datei ändern, um die Dateien zu verwenden, die Sie von der Seite für AutoML-Modelle heruntergeladen haben.
 

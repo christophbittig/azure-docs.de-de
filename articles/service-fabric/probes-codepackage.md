@@ -1,28 +1,43 @@
 ---
 title: Azure Service Fabric-Tests
-description: Informationen zum Modellieren eines Livetests in Azure Service Fabric mit Anwendungs- und Dienstmanifestdateien
+description: Informationen zum Modellieren eines Livetests und Bereitschaftstests in Azure Service Fabric mit Anwendungs- und Dienstmanifestdateien.
 ms.topic: conceptual
 author: tugup
 ms.author: tugup
 ms.date: 3/12/2020
-ms.openlocfilehash: 07a1b836ca7ea79244e303f54654dfcaa6e5fcb9
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 1f78499d6be8ee68011540abfba00a404b8c6ec5
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "82137585"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132059712"
 ---
-# <a name="liveness-probe"></a>Livetest
-Ab Version 7.1 unterstützt Azure Service Fabric einen Livetestmechanismus für [Containeranwendungen][containers-introduction-link]. Mit einem Livetest können Sie die Reaktionsfähigkeit einer Containeranwendung melden, die neu gestartet wird, wenn sie nicht schnell antwortet.
-Dieser Artikel bietet eine Übersicht über das Definieren eines Livetests über Manifestdateien.
+# <a name="service-fabric-probes"></a>Service Fabric-Tests
+Bevor Sie mit diesem Artikel fortfahren, sollten Sie sich mit dem [Service Fabric-Anwendungsmodell][application-model-link] und dem [Service Fabric-Hostingmodell][hosting-model-link] vertraut machen. Dieser Artikel bietet eine Übersicht über das Definieren eines Livetests und Bereitschaftstests über Manifestdateien.
 
-Bevor Sie mit diesem Artikel fortfahren, sollten Sie sich mit dem [Service Fabric-Anwendungsmodell][application-model-link] und dem [Service Fabric-Hostingmodell][hosting-model-link] vertraut machen.
+## <a name="liveness-probe"></a>Livetest
+Ab Version 7.1 unterstützt Azure Service Fabric einen Livetestmechanismus für containerisierte und nicht containerisierte Anwendungen. Mit einem Livetest können Sie die Reaktionsfähigkeit eines Codepakets melden, das neu gestartet wird, wenn es nicht schnell antwortet.
 
-> [!NOTE]
-> Der Livetest wird nur für Container im NAT-Netzwerkmodus unterstützt.
+## <a name="readiness-probe"></a>Bereitschaftstest
+Ab Version 8.2 wird auch der Bereitschaftstest unterstützt. Ein Bereitschaftstest wird verwendet, um zu entscheiden, ob ein Codepaket bereit ist, Datenverkehr zu akzeptieren. Wenn Ihr Container beispielsweise lange braucht, um eine Anforderung zu verarbeiten, oder wenn die Anforderungswarteschlange voll ist, kann Ihr Codepaket keinen weiteren Datenverkehr mehr akzeptieren, und daher werden die Endpunkte zum Erreichen des Codepakets entfernt. 
+
+Der Bereitschaftstest verhält sich folgendermaßen:
+1.  Die Container-/Codepaketinstanz wird gestartet.
+2.  Endpunkte werden sofort veröffentlicht.
+3.  Die Ausführung des Bereitschaftstests wird gestartet.
+4.  Der Bereitschaftstest erreicht schließlich den Fehlerschwellenwert, und der Endpunkt wird entfernt, sodass er nicht mehr verfügbar ist.
+5.  Die Instanz erreicht schließlich Bereitschaft.
+6.  Der Bereitschaftstest erkennt, dass die Instanz bereit ist und veröffentlicht den Endpunkt erneut.
+7.  Anforderungen werden erneut weitergeleitet und sind erfolgreich, da die Instanz zum Erfüllen von Anforderungen bereit war.
+
+> [!NOTE] 
+> Beim Bereitschaftstest wird das Codepaket nicht neu gestartet, nur die Veröffentlichung der Endpunkte wird aufgehoben, sodass das Replikat bzw. der festgelegte Partitionssatz nicht beeinträchtigt wird.
+>
 
 ## <a name="semantics"></a>Semantik
-Sie können nur einen Livetest pro Container angeben und dessen Verhalten mit den folgenden Feldern steuern:
+Sie können nur einen Livetest und einen Bereitschaftstest pro Codepaket angeben und das Verhalten mit den folgenden Feldern steuern:
+
+* `type`: Wird verwendet, um anzugeben, ob der Testtyp ein Livetest oder ein Bereitschaftstest ist. Unterstützte Werte sind **Liveness** (Livetest) und **Readiness** (Bereitschaftstest).
 
 * `initialDelaySeconds`: Anfängliche Verzögerung (in Sekunden) bis zum Starten der Ausführung des Tests, nachdem der Container gestartet wurde. Der unterstützte Wert ist **int**. Der Standardwert ist 0 und das Minimum ist 0.
 
@@ -46,7 +61,7 @@ Außerdem stellt Service Fabric die folgenden [Integritätsberichte][health-intr
     * Beim Test tritt ein Fehler auf und **failureCount** < **failureThreshold**. Dieser Integritätsbericht bleibt so lange bestehen, bis **failureCount** den in **failureThreshold** oder **successThreshold** festgelegten Wert erreicht.
     * Bei erfolgreicher Ausführung nach einem Fehler wird die Warnung beibehalten, jedoch mit aktualisierten aufeinanderfolgenden Erfolgen.
 
-## <a name="specifying-a-liveness-probe"></a>Angeben eines Livetests
+## <a name="specifying-a-probe"></a>Festlegen eines Tests
 
 Sie können den Test in der Datei „ApplicationManifest.xml“ unter **ServiceManifestImport** angeben.
 
@@ -60,7 +75,7 @@ Der Test kann für jede der folgenden Möglichkeiten erfolgen:
 
 Für den HTTP-Test sendet Service Fabric eine HTTP-Anforderung an den angegebenen Port und Pfad. Ein Rückgabecode, der größer oder gleich 200 und kleiner als 400 ist, zeigt einen Erfolg an.
 
-Hier ist ein Beispiel für das Angeben eines HTTP-Tests:
+Dies ist ein Beispiel für das Angeben eines HTTP-Livetests:
 
 ```xml
   <ServiceManifestImport>

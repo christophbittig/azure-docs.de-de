@@ -7,22 +7,22 @@ manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/06/2017
+ms.date: 11/02/2021
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: eae21e8f7305f307a343e44145f6ed435c8ffcd1
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: f01a8a51f467d9a090847aeea5da0426fe66e163
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130041384"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131424399"
 ---
-# <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C: Erweiterungs-App
+# <a name="azure-ad-b2c-extensions-app"></a>Azure AD B2C: Erweiterungs-App 
 
-Wenn ein Azure AD B2C-Verzeichnis erstellt wird, wird automatisch eine App namens `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` im neuen Verzeichnis erstellt. Diese als **b2c-extensions-app** bezeichnete App wird unter *App-Registrierungen* angezeigt. Sie wird vom Azure AD B2C-Dienst zum Speichern von Informationen zu Benutzern und benutzerdefinierten Attributen verwendet. Wenn die App gelöscht wird, funktioniert Azure AD B2C nicht ordnungsgemäß, und Ihre Produktionsumgebung ist beeinträchtigt.
+Wenn ein Azure AD B2C-Verzeichnis erstellt wird, wird automatisch eine App namens **b2c-extensions-app** im neuen Verzeichnis erstellt. Diese App ist in *App-Registrierungen* sichtbar. Sie wird vom Azure AD B2C-Dienst zum Speichern von Informationen zu Benutzern und benutzerdefinierten Attributen verwendet. Wenn die App gelöscht wird, funktioniert Azure AD B2C nicht ordnungsgemäß, und Ihre Produktionsumgebung ist beeinträchtigt.
 
 > [!IMPORTANT]
-> Löschen Sie die b2c-extensions-app nur, wenn Sie vorhaben, sofort Ihren Mandanten zu löschen. Wenn die App länger als 30 Tage gelöscht bleibt, gehen die Benutzerinformationen dauerhaft verloren.
+> Löschen Sie die **b2c-extensions-app** nur, wenn Sie vorhaben, sofort Ihren Mandanten zu löschen. Wenn die App länger als 30 Tage gelöscht bleibt, gehen die Benutzerinformationen dauerhaft verloren.
 
 ## <a name="verifying-that-the-extensions-app-is-present"></a>Überprüfen des Vorhandenseins der Erweiterungs-App
 

@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/19/2020
 ms.author: ramakoni
 ms.custom: security-recommendations,fasttrack-edit
-ms.openlocfilehash: fe746ed4fe8c24afa0667d8c2559d9c46fee5211
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.openlocfilehash: 1b85dd7bdab820cd66f1ac4f2421191f354a073c
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129660075"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130220375"
 ---
 # <a name="troubleshooting-intermittent-outbound-connection-errors-in-azure-app-service"></a>Beheben zeitweiliger Fehler bei ausgehenden Verbindungen in Azure App Service
 
@@ -47,7 +47,7 @@ Es gibt einige Lösungen, mit denen Sie SNAT-Port-Einschränkungen vermeiden kö
 
 Das Vermeiden des SNAT-Portproblems bedeutet, das wiederholte Erstellen neuer Verbindungen mit demselben Host und Port zu vermeiden. Verbindungspools zählen zu den offensichtlicheren Möglichkeiten, dieses Problem zu lösen.
 
-Wenn Ihr Ziel ein Azure-Dienst ist, der Dienstendpunkte unterstützt, können Sie Probleme durch eine Überlastung von SNAT-Ports vermeiden, indem Sie die [regionale VNET-Integration](./web-sites-integrate-with-vnet.md) und Dienstendpunkte oder private Endpunkte verwenden. Wenn Sie die regionale VNET-Integration verwenden und Endpunkte im Integrationssubnetz platzieren, gelten für den ausgehenden Datenverkehr Ihrer App an diese Dienste keine Einschränkungen für ausgehende SNAT-Ports. Ebenso treten keine Probleme bei ausgehenden SNAT-Ports an dieses Ziel auf, wenn Sie die regionale VNET-Integration und private Endpunkte verwenden. 
+Wenn Ihr Ziel ein Azure-Dienst ist, der Dienstendpunkte unterstützt, können Sie Probleme durch eine Überlastung von SNAT-Ports vermeiden, indem Sie die [regionale VNET-Integration](./overview-vnet-integration.md) und Dienstendpunkte oder private Endpunkte verwenden. Wenn Sie die regionale VNET-Integration verwenden und Endpunkte im Integrationssubnetz platzieren, gelten für den ausgehenden Datenverkehr Ihrer App an diese Dienste keine Einschränkungen für ausgehende SNAT-Ports. Ebenso treten keine Probleme bei ausgehenden SNAT-Ports an dieses Ziel auf, wenn Sie die regionale VNET-Integration und private Endpunkte verwenden. 
 
 Wenn Ihr Ziel ein externer Endpunkt außerhalb von Azure ist, erhalten Sie [mithilfe eines NAT Gateways](./networking/nat-gateway-integration.md) 64 KB ausgehende SNAT-Ports. Außerdem erhalten Sie eine dedizierte ausgehende Adresse, die Sie mit niemandem teilen. 
 
@@ -156,6 +156,7 @@ TCP-Verbindungen und SNAT-Ports stehen in keinem direkten Zusammenhang. Eine Aus
 * Ein SNAT-Port kann von verschiedenen Flows gemeinsam genutzt werden, wenn sich die Flows im Protokoll, bei der IP-Adresse oder dem Port unterscheiden. Die TCP-Verbindungenmetrik zählt jede TCP-Verbindung.
 * Das Limit für TCP-Verbindungen gilt auf Workerinstanzebene. Der ausgehende Lastenausgleich im Azure-Netzwerk verwendet die TCP-Verbindungenmetrik nicht für die SNAT-Portbegrenzung.
 * Sie finden die TCP-Verbindungslimits in [Numerische Limits für sandboxübergreifende VM: TCP-Verbindungen](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox#cross-vm-numerical-limits).
+* Vorhandene TCP-Sitzungen schlagen fehl, wenn neue TCP-Sitzungen vom Quellport in Azure App Service ausgehen. Sie können entweder eine einzelne IP-Adresse verwenden oder Back-End-Poolmitglieder neu konfigurieren, um Konflikte zu vermeiden.
 
 |Limitname|BESCHREIBUNG|Klein (A1)|Mittel (A2)|Groß (A3)|Dienstebene „Isoliert“ (ASE)|
 |---|---|---|---|---|---|

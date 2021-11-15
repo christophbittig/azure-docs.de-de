@@ -10,12 +10,12 @@ author: ynpandey
 ms.author: yogipandey
 ms.date: 10/21/2021
 ms.reviewer: laobri
-ms.openlocfilehash: 00eff3758d3a279d5ffb6d993196def46a7c4420
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: b92324d61316ba59f964cff97ebbb9869d01dafb
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132063532"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131557982"
 ---
 # <a name="cli-v2-dataset-yaml-schema"></a>YAML-Schema des Datasets der CLI (v2)
 
@@ -27,11 +27,11 @@ Das JSON-Quellschema finden Sie unter https://azuremlschemas.azureedge.net/lates
 
 | Schlüssel | type | BESCHREIBUNG | Zulässige Werte |
 | --- | ---- | ----------- | -------------- |
-| `$schema` | Zeichenfolge | Das YAML-Schema. Wenn Sie die Azure Machine Learning VS Code-Erweiterung verwenden, um die YAML-Datei zu erstellen, können Sie durch Einfügen von `$schema` am Anfang der Datei Schema- und Ressourcenvervollständigungen aufrufen. | |
+| `$schema` | Zeichenfolge | Das YAML-Schema. Wenn Sie die YAML-Datei mithilfe der VS Code-Erweiterung für Azure Machine Learning erstellen, können Sie durch Einfügen von `$schema` am Anfang der Datei Schema- und Ressourcenvervollständigungen aufrufen. | |
 | `name` | Zeichenfolge | **Erforderlich.** Name des Datasets. | |
 | `version` | Zeichenfolge | Version des Datasets. Wenn sie nicht angegeben wird, generiert Azure ML automatisch eine Version. | |
 | `description` | Zeichenfolge | Beschreibung des Datasets | |
-| `tags` | Objekt (object) | Wörterbuch der Tags für das Dataset | |
+| `tags` | Objekt | Wörterbuch der Tags für das Dataset | |
 | `local_path` | Zeichenfolge | Absoluter oder relativer Pfad einer einzelnen lokalen Datei oder eines Ordners, aus der bzw. dem das Dataset erstellt wird. **Entweder `local_path` oder `paths` ist erforderlich.** | |
 | `paths` | array | Eine Liste der URI-Quellen, aus denen das Dataset erstellt wird. Jeder Eintrag in der Liste sollte dem Schema entsprechen, das im [Quellpfad des Datasets](#dataset-source-path) definiert ist. Derzeit wird nur eine einzelne Quelle unterstützt.  **Entweder `local_path` oder `paths` ist erforderlich.** | |
 
@@ -42,45 +42,45 @@ Das JSON-Quellschema finden Sie unter https://azuremlschemas.azureedge.net/lates
 | `file` | Zeichenfolge | URI zu einer einzelnen Datei, die als Quelle für das Dataset verwendet wird. Unterstützte URI-Typen sind `azureml`, `https`, `wasbs`, `abfss` und `adl`. Weitere Informationen zur Verwendung des URI-Formats `azureml://` finden Sie unter [YAML-Kernsyntax](reference-yaml-core-syntax.md). **Entweder `file` oder `folder` ist erforderlich.** |
 | `folder` | Zeichenfolge | URI zu einem Ordner, der als Quelle für das Dataset verwendet wird. Unterstützte URI-Typen sind `azureml`, `https`, `wasbs`, `abfss` und `adl`. Weitere Informationen zur Verwendung des URI-Formats `azureml://` finden Sie unter [YAML-Kernsyntax](reference-yaml-core-syntax.md). **Entweder `file` oder `folder` ist erforderlich.** |
 
-## <a name="remarks"></a>Hinweise
+## <a name="remarks"></a>Bemerkungen
 
 Mit den Befehlen `az ml dataset` können Sie Azure Machine Learning-Datasets verwalten.
 
 ## <a name="examples"></a>Beispiele
 
-Beispiele sind im [GitHub-Repository Beispiele](https://github.com/Azure/azureml-examples/tree/main/cli/assets/dataset) verfügbar. Im Folgenden sind mehrere aufgeführt.
+Beispiele finden Sie im [GitHub-Beispielrepository](https://github.com/Azure/azureml-examples/tree/main/cli/assets/dataset). Im Folgenden sind mehrere aufgeführt.
 
 ## <a name="yaml-datastore-file"></a>YAML: Datenspeicherdatei
 
-:::code language="yaml" source="~/azureml-examples-main/cli/assets/dataset/cloud-file.yml":::
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/assets/dataset/cloud-file.yml":::
 
 ## <a name="yaml-datastore-folder"></a>YAML: Datenspeicherordner
 
-:::code language="yaml" source="~/azureml-examples-main/cli/assets/dataset/cloud-folder.yml":::
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/assets/dataset/cloud-folder.yml":::
 
 ## <a name="yaml-https-file"></a>YAML: HTTPS-Datei
 
-:::code language="yaml" source="~/azureml-examples-main/cli/assets/dataset/cloud-file-https.yml":::
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/assets/dataset/cloud-file-https.yml":::
 
 ## <a name="yaml-https-folder"></a>YAML: HTTPS-Ordner
 
-:::code language="yaml" source="~/azureml-examples-main/cli/assets/dataset/cloud-folder-https.yml":::
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/assets/dataset/cloud-folder-https.yml":::
 
 ## <a name="yaml-wasbs-file"></a>YAML: WASBS-Datei
 
-:::code language="yaml" source="~/azureml-examples-main/cli/assets/dataset/cloud-file-wasbs.yml":::
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/assets/dataset/cloud-file-wasbs.yml":::
 
 ## <a name="yaml-wasbs-folder"></a>YAML: WASBS-Ordner
 
-:::code language="yaml" source="~/azureml-examples-main/cli/assets/dataset/cloud-folder-wasbs.yml":::
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/assets/dataset/cloud-folder-wasbs.yml":::
 
 ## <a name="yaml-local-file"></a>YAML: lokale Datei
 
-:::code language="yaml" source="~/azureml-examples-main/cli/assets/dataset/local-file.yml":::
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/assets/dataset/local-file.yml":::
 
 ## <a name="yaml-local-folder"></a>YAML: lokaler Ordner
 
-:::code language="yaml" source="~/azureml-examples-main/cli/assets/dataset/local-folder.yml":::
+:::code language="yaml" source="~/azureml-examples-cli-preview/cli/assets/dataset/local-folder.yml":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

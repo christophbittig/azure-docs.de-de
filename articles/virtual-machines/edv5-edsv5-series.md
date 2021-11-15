@@ -2,19 +2,19 @@
 title: 'Edv5- und Edsv5-Serie: Azure Virtual Machines'
 description: Spezifikationen für die VMs der Edv5- und Edsv5-Serie.
 author: styli365
-ms.author: joelpell
+ms.author: sttsinar
 ms.reviewer: joelpell
 ms.custom: mimckitt
 ms.service: virtual-machines
 ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 10/20/2021
-ms.openlocfilehash: 8a2fac1ded1cd17d9e47500eda06e58ca21fc6e7
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 634ca32dfede00fc24fa28d68ef88d74b0c58971
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131850050"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131506769"
 ---
 # <a name="edv5-and-edsv5-series"></a>Edv5- und Edsv5-Serie
 
@@ -42,8 +42,8 @@ Virtuelle Computer der Edv5-Serie unterstützen SSD Standard- und HDD Standard-D
 | Standard_E2d_v5<sup>1,2</sup>  | 2   | 16  | 75   | 4  | 9\.000/125    | 2 | 12500 |
 | Standard_E4d_v5                | 4   | 32  | 150  | 8  | 19.000/250   | 2 | 12500 |
 | Standard_E8d_v5                | 8   | 64  | 300  | 16 | 38.000/500   | 4 | 12500 |
-| Standard_E16d_v5               | 16  | 128 | 600  | 32 | 75.000/1.000  | 8 | 12500 |
-| Standard_E20d_v5               | 20  | 160 | 750  | 32 | 94.000/1.250  | 8 | 12500  |
+| Standard_E16d_v5               | 16  | 128 | 600  | 32 | 75.000/1000  | 8 | 12500 |
+| Standard_E20d_v5               | 20  | 160 | 750  | 32 | 94.000/1250  | 8 | 12500  |
 | Standard_E32d_v5               | 32  | 256 | 1200 | 32 | 150.000/2.000 | 8 | 16000  |
 | Standard_E48d_v5               | 48  | 384 | 1800 | 32 | 225.000/3.000 | 8 | 24.000  |
 | Standard_E64d_v5               | 64  | 512 | 2400 | 32 | 300.000/4.000 | 8 | 30.000  |
@@ -60,7 +60,7 @@ Virtuelle Computer der Edv5-Serie unterstützen SSD Standard- und HDD Standard-D
 
 Virtuelle Computer der Edsv5-Serie werden auf dem Prozessor Intel® Xeon® Platinum 8370C (Ice Lake) der 3. Generation ausgeführt und erreichen eine Turbotaktgeschwindigkeit aller Kerne von bis zu 3,5 GHz.  Diese virtuellen Computer bieten bis zu 104 vCPU und 672 GiB RAM sowie schnellen lokalen SSD-Speicher mit bis zu 3.800 GiB. Virtuelle Computer der Edsv5-Serie eignen sich ideal für arbeitsspeicherintensive Unternehmensanwendungen und Anwendungen, die von lokalem Hochgeschwindigkeitsspeicher mit geringer Latenz profitieren.
 
-Virtuelle Computer der Edsv5-Serie unterstützen SSD Standard- und HDD Standard-Datenträgertypen. Sie können an diese virtuellen Computer SSD Standard-, HDD Standard- und SSDs Premium-Datenträger anfügen. Sie können auch Disk Ultra-Speicher basierend auf der regionalen Verfügbarkeit anfügen. Datenträgerspeicher wird separat von VMs abgerechnet. [Weitere Informationen finden Sie unter den Preisen für Datenträger](https://azure.microsoft.com/pricing/details/managed-disks/).
+Virtuelle Computer der Edsv5-Serie unterstützen SSD Standard- und HDD Standard-Datenträgertypen. Sie können an diese virtuellen Computer SSD Standard-, HDD Standard- und SSDs Premium-Datenträger anfügen. Sie können auch Disk Ultra-Speicher basierend auf der regionalen Verfügbarkeit anfügen. Datenträgerspeicher wird separat von virtuellen Computern abgerechnet. [Weitere Informationen finden Sie unter den Preisen für Datenträger](https://azure.microsoft.com/pricing/details/managed-disks/).
 
 [Storage Premium](premium-storage-performance.md): Unterstützt<br>
 [Storage Premium-Zwischenspeicherung:](premium-storage-performance.md) Unterstützt<br>

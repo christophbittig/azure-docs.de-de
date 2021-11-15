@@ -8,12 +8,12 @@ ms.date: 03/02/2021
 ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: image-builder
-ms.openlocfilehash: e6ea151e7f8449a8dc3e86944fff4bcf55932784
-ms.sourcegitcommit: 2da83b54b4adce2f9aeeed9f485bb3dbec6b8023
+ms.openlocfilehash: 5bee5e85fe7529ae783e99be02159bc8d62442b7
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/24/2021
-ms.locfileid: "122770401"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131437218"
 ---
 # <a name="use-azure-image-builder-for-linux-vms-allowing-access-to-an-existing-azure-vnet"></a>Verwenden von Azure Image Builder für Linux-VMs mit Zugriff auf ein vorhandenes Azure-VNET
 
@@ -153,7 +153,7 @@ sed -i -e "s/<vnetRgName>/$vnetRgName/g" aibRoleNetworking.json
 
 ## <a name="set-permissions-on-the-resource-group"></a>Festlegen von Berechtigungen für die Ressourcengruppe
 
-Image Builder verwendet die angegebene [Benutzeridentität](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity), um das Image in die Azure Shared Image Gallery (SIG) einzufügen. In diesem Beispiel erstellen Sie eine Azure-Rollendefinition, die über die präzisen Aktionen zur Verteilung des Images an die SIG verfügt. Die Rollendefinition wird dann der Benutzeridentität zugewiesen.
+Image Builder verwendet die bereitgestellte [Benutzeridentität](../../active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm.md#user-assigned-managed-identity), um das Image in die Azure Compute Gallery (ehemals Shared Image Gallery) einzuschleusen. In diesem Beispiel erstellen Sie eine Azure-Rollendefinition, die über die präzisen Aktionen zur Verteilung des Images an die SIG verfügt. Die Rollendefinition wird dann der Benutzeridentität zugewiesen.
 
 ```bash
 # create user assigned identity for image builder
@@ -266,7 +266,7 @@ Wenn Sie die Imageversion erneut anpassen möchten, um eine neue Version desselb
 
 Im folgenden Schritt werden das erstellte Image und dessen Ressourcendateien gelöscht. Achten Sie darauf, dass Sie mit dieser Bereitstellung fertig sind, bevor Sie die Ressourcen löschen.
 
-Wenn Sie die Imagekatalogressourcen löschen, müssen Sie alle Imageversionen löschen, bevor Sie die Imagedefinition löschen können, die für deren Erstellung verwendet wurde. Sie müssen zunächst alle Imagedefinitionen im Katalog löschen, um den Katalog löschen zu können.
+Beim Löschen von Katalogressourcen müssen Sie alle Imageversionen löschen, bevor Sie die Imagedefinition löschen können, mit der sie erstellt wurden. Sie müssen zunächst alle Imagedefinitionen im Katalog löschen, um den Katalog löschen zu können.
 
 Löschen Sie die Image Builder-Vorlage.
 
@@ -306,4 +306,4 @@ Wenn Sie für diese Schnellstartanleitung ein VNET erstellt haben, können Sie e
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über [Azure-Kataloge mit freigegebenen Images](../shared-image-galleries.md).
+Weitere Informationen zu [Azure Compute Galleries](../shared-image-galleries.md).

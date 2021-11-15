@@ -9,16 +9,16 @@ ms.topic: how-to
 ms.date: 11/01/2021
 ms.author: cherylmc
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 2e6b0caa3c5540a082bf20e3ed2a11389a4188e4
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 18c3165ceee5f76b1148adc59e4013f6de7bba1f
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131096133"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132062451"
 ---
 # <a name="connect-to-a-vm-using-bastion-and-the-native-client-on-your-windows-computer"></a>Verbinden einer VM mit Bastion und dem nativen Client auf Ihrem Windows Computer
 
-Azure Bastion bietet jetzt Unterstützung für das Herstellen einer Verbindung mit Ziel-VMs in Azure mithilfe eines nativen Clients auf einem lokalen Windows Computer. Mit dieser Funktion können Sie über Bastion mithilfe von Azure CLI eine Verbindung mit Ihren Ziel-VMs herstellen und Ihre Anmeldeoptionen erweitern um ein lokales SSH-Schlüsselpaar, lokale Benutzernamen/Kennwort und ein Azure Active Directory (Azure AD). In diesem Artikel wird beschrieben, wie Sie Bastion mit den erforderlichen Einstellungen konfigurieren und dann eine Verbindung mit einem VM im VNET herstellen. Weitere Informationen finden Sie unter [Was ist Azure Bastion?](bastion-overview.md).
+Azure Bastion bietet jetzt Unterstützung für das Herstellen einer Verbindung mit Ziel-VMs in Azure mithilfe eines nativen Clients auf Ihrer Windows-Arbeitsstation. Mit dieser Funktion können Sie über Bastion mithilfe von Azure CLI eine Verbindung mit Ihren Ziel-VMs herstellen und Ihre Anmeldeoptionen um ein lokales SSH-Schlüsselpaar und Azure Active Directory (Azure AD) erweitern. In diesem Artikel wird beschrieben, wie Sie Bastion mit den erforderlichen Einstellungen konfigurieren und dann eine Verbindung mit einem VM im VNET herstellen. Weitere Informationen finden Sie unter [Was ist Azure Bastion?](bastion-overview.md).
 
 > [!NOTE]
 > Diese Konfiguration erfordert die Standard-SKU für Azure Bastion.
@@ -27,6 +27,8 @@ Azure Bastion bietet jetzt Unterstützung für das Herstellen einer Verbindung m
 Derzeit gelten für diese Funktion folgende Einschränkungen:
 
 * Die Anmeldung bei Ihrer Ziel-VM mit einem benutzerdefinierten Port oder Protokoll ist mit nativem Client-Support noch nicht verfügbar. Wenn Sie einen benutzerdefinierten Port oder ein benutzerdefiniertes Protokoll zur Anmeldung bei Ihrer Ziel-VM verwenden möchten, verwenden Sie die Azure-Portallösung.
+
+* Die Anmeldung mit einem lokalen Benutzernamen und Kennwort bei Ihrer Ziel-VM wird noch nicht unterstützt. Wenn Sie einen lokalen Benutzernamen mit Kennwort als Anmeldeinformationen für die Anmeldung bei Ihrer Ziel-VM über Bastion verwenden möchten, verwenden Sie das Azure-Portal.
 
 * Die Anmeldung mit einem privaten SSH-Schlüssel, der in Azure Key Vault gespeichert ist, wird bei dieser Funktion nicht unterstützt. Laden Sie Ihren privaten Schlüssel in eine Datei auf Ihrem lokalen Computer herunter, bevor Sie sich mithilfe eines SSH-Schlüsselpaars bei Ihrer Linux-VM anmelden.
 
@@ -50,7 +52,6 @@ Wenn Sie Bastion bereits für Ihr VNet konfiguriert haben, ändern Sie die folge
 1. Aktivieren Sie das Kontrollkästchen **nativer Client-Support** und übernehmen Sie Ihre Änderungen.
 
     :::image type="content" source="./media/connect-native-client-windows/update-host.png" alt-text="Einstellungen zum Aktualisieren eines vorhandenen Hosts mit aktiviertem nativen Client-Support Kontrollkästchen." lightbox="./media/connect-native-client-windows/update-host-expand.png":::
-1. Installieren Sie die CLI-Befehle. Lesen Sie die [Voraussetzungen](#prereq) für die Schritte zum Installieren der neuesten Version der CLI-Befehle.
 
 ### <a name="to-configure-a-new-bastion-host"></a>So konfigurieren Sie einen neuen Bastion-Host
 
@@ -62,7 +63,6 @@ Wenn Sie noch keinen Bastion-Host konfiguriert haben, finden Sie weitere Informa
 1. Aktivieren Sie auf der Registerkarte **Erweitert** das Kontrollkästchen **Nativer Client-Support**.
 
    :::image type="content" source="./media/connect-native-client-windows/new-host.png" alt-text="Einstellungen für einen neuen Bastion-Host mit aktiviertem nativen Client-Support Kontrollkästchen." lightbox="./media/connect-native-client-windows/new-host-expand.png":::
-1. Installieren Sie die CLI-Befehle. Lesen Sie die [Voraussetzungen](#prereq) für die Schritte zum Installieren der neuesten Version der CLI-Befehle.
 
 ## <a name="verify-roles-and-ports"></a>Überprüfen Sie die Rollen und Ports
 
@@ -73,24 +73,23 @@ Stellen Sie sicher, dass die folgenden Rollen und Ports konfiguriert sind, um ei
 * Rolle „Leser“ für den virtuellen Computer
 * Rolle „Leser“ für den Netzwerkadapter mit privater IP-Adresse des virtuellen Computers
 * Rolle „Leser“ für die Azure Bastion-Ressource
+* Rolle „VM-Administratoranmeldung“ oder „VM-Benutzeranmeldung“, wenn Sie die Azure AD-Anmeldemethode verwenden.
 
 ### <a name="ports"></a>Ports
-
-Um eine Verbindung mit einer Windows-VM mit nativem Client-Support herzustellen, müssen auf Ihrer Windows-VM die folgenden Ports offen sein:
-
-* Eingehender Port: RDP (3389)
 
 Um eine Verbindung mit einer Linux-VM mit nativem Client-Support herzustellen, müssen auf Ihrer Linux-VM die folgenden Ports offen sein:
 
 * Eingehender Port: SSH (22)
+
+Um eine Verbindung mit einer Windows-VM mit nativem Client-Support herzustellen, müssen auf Ihrer Windows-VM die folgenden Ports offen sein:
+
+* Eingehender Port: RDP (3389)
 
 Wenn Sie einen benutzerdefinierten Port verwenden möchten, um eine Verbindung mit Ihrer Ziel-VM herzustellen, verwenden Sie stattdessen die Azure-Portal Anweisungen.
 
 ## <a name="connect-to-a-vm"></a><a name="connect"></a>Herstellen einer Verbindung mit einem virtuellen Computer
 
 In diesem Abschnitt wird beschrieben, wie Sie eine Verbindung mit Ihrem virtuellen Computer herstellen. Verwenden Sie die Schritte, die dem Typ der VM entsprechen, mit der Sie eine Verbindung herstellen möchten.
-
-### <a name="connect-to-a-linux-vm"></a>Herstellen einer Verbindung mit einem virtuellen Linux-Computer
 
 1. Melden Sie sich bei Ihrem Azure-Konto an und wählen Sie Ihr Abonnement aus, das Ihre Bastion-Ressource enthält.
 
@@ -100,21 +99,17 @@ In diesem Abschnitt wird beschrieben, wie Sie eine Verbindung mit Ihrem virtuell
    az account set --subscription "<subscription ID>"
    ```
 
+### <a name="connect-to-a-linux-vm"></a>Herstellen einer Verbindung mit einem virtuellen Linux-Computer
+
 1. Melden Sie sich bei Ihrer Linux-Ziel-VM mit einer der folgenden Optionen an:
 
-   * Wenn Sie sich bei einer in Azure AD verknüpften (AADJ) VM anmelden, verwenden Sie das folgende Beispiel. Weitere Informationen wie Sie sich mit Azure AD bei Ihren Azure Linux VMs anmelden, finden Sie unter [Azure Linux VMs und Azure AD](../active-directory/devices/howto-vm-sign-in-azure-ad-linux.md).
+   * Wenn Sie sich bei einem für die Azure AD-Anmeldung aktivierten virtuellen Computer anmelden, verwenden Sie den folgenden Befehl. Weitere Informationen wie Sie sich mit Azure AD bei Ihren Azure Linux VMs anmelden, finden Sie unter [Azure Linux VMs und Azure AD](../active-directory/devices/howto-vm-sign-in-azure-ad-linux.md).
 
      ```azurecli-interactive
      az network bastion ssh --name "<BastionName>" --resource-group "<ResourceGroupName>" --target-resource-id "<VMResourceId>" --auth-type  "AAD"
      ```
 
-   * Wenn Sie sich mit einem lokalen Benutzernamen und Kennwort anmelden, verwenden Sie das folgende Beispiel:
-
-      ```azurecli-interactive
-      az network bastion ssh "<BastionName>" --resource-group "<ResourceGroupName>" --target-resource-id "<VMResourceId>" --auth-type "password" --username "<Username>" --password "<Password>"
-      ```
-
-   * Wenn Sie sich mit einem SSH-Schlüsselpaar anmelden, verwenden Sie das folgende Beispiel.
+   * Wenn Sie sich mit einem SSH-Schlüsselpaar anmelden, verwenden Sie den folgenden Befehl.
 
       ```azurecli-interactive
       az network bastion ssh "<BastionName>" --resource-group "<ResourceGroupName>" --target-resource-id "<VMResourceId>" --auth-type "ssh-key" --username "<Username>" --ssh-key "<Filepath>"
@@ -122,28 +117,13 @@ In diesem Abschnitt wird beschrieben, wie Sie eine Verbindung mit Ihrem virtuell
 
 ### <a name="connect-to-a-windows-vm"></a>Herstellen einer Verbindung mit einem virtuellen Windows-Computer
 
-1. Melden Sie sich bei Ihrem Azure-Konto an und wählen Sie Ihr Abonnement aus, das Ihre Bastion-Ressource enthält.
-
-   ```azurecli-interactive
-   az login
-   az account list
-   az account set –subscription "<subscription ID>"
-
-1. Log into your target Windows VM using one of the following options:
-
-   * If you are logging into an Azure AD-joined (AADJ) VM, use the following command. To learn more about how to use Azure AD to log into your Azure Windows VMs, see [Azure Windows VMs and Azure AD](../active-directory/devices/howto-vm-sign-in-azure-ad-windows.md).
+1. Melden Sie sich mithilfe des folgenden Befehls mit der Azure AD-Anmeldung bei Ihrem virtuellen Windows-Zielcomputer an. Weitere Informationen, wie Sie sich mit Azure AD bei Ihren Azure Windows-VMs anmelden, finden Sie unter [Azure Windows-VMs und Azure AD](../active-directory/devices/howto-vm-sign-in-azure-ad-windows.md).
 
       ```azurecli-interactive
-      az network bastion rdp --name "<BastionName>" --resource-group "<ResourceGroupName>" --target-resource-id "<VMResourceId>" --auth-type "AAD"
+      az network bastion rdp --name "<BastionName>" --resource-group "<ResourceGroupName>" --target-resource-id "<VMResourceId>"
       ```
 
-   * Wenn Sie sich mit einem lokalen Benutzernamen und Kennwort anmelden:
-
-      ```azurecli-interactive
-      az network bastion rdp "<BastionName>" --resource-group "<ResourceGroupName>" --target-resource-id "<VMResourceId>" --auth-type "password" --username "<Username>" --password "<Password>" 
-      ```
-
-1. Nachdem Sie sich bei Ihrer Ziel-VM angemeldet haben, wird der native Client auf Ihrem lokalen Computer mit Ihrer VM-Sitzung geöffnet (**mstc** für RDP-Sitzungen und **az ssh** für SSH-Sitzungen).
+1. Nachdem Sie sich bei Ihrer Ziel-VM angemeldet haben, wird der native Client auf Ihrem lokalen Computer mit Ihrer VM-Sitzung geöffnet (**mstc** für RDP-Sitzungen und **ssh CLI-Erweiterung** für SSH-Sitzungen).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -6,15 +6,15 @@ ms.service: virtual-machines
 ms.subservice: oracle
 ms.collection: linux
 ms.topic: article
-ms.date: 12/17/2020
+ms.date: 10/15/2021
 ms.author: kegorman
 ms.reviewer: tigorman
-ms.openlocfilehash: f6f7312590b98474d5edab02ea8e73725aded229
-ms.sourcegitcommit: 58d82486531472268c5ff70b1e012fc008226753
+ms.openlocfilehash: 3a5b7d99c0995ae0e91056520945c0ed1a78d136
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122690077"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223042"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Entwerfen und Implementieren einer Oracle-Datenbank in Azure
 
@@ -200,12 +200,13 @@ Im Gegensatz zu einem Dateisystem oder einer Anwendung lautet die Empfehlung fü
 
 **Empfehlungen**
 
-Zur Maximierung des Durchsatzes empfehlen wir, nach Möglichkeit mit **ReadOnly** für die Hostzwischenspeicherung zu beginnen. Beachten Sie bei Storage Premium, dass Sie die „Barrieren“ deaktivieren müssen, wenn Sie das Dateisystem mit der Option **ReadOnly** bereitstellen. Aktualisieren Sie die Datei „/etc/fstab“ mit der UUID auf die Datenträger.
+Zur Maximierung des Durchsatzes empfehlen wir, nach Möglichkeit mit **ReadOnly** für die Hostzwischenspeicherung zu beginnen. Beachten Sie bei Storage Premium, dass Sie die „Barrieren“ deaktivieren müssen, wenn Sie das Dateisystem mit der Option **ReadOnly** bereitstellen. Aktualisieren Sie die Datei `/etc/fstab` mit der UUID der Datenträger.
 
 ![Screenshot: Seite der verwalteten Datenträger mit den Optionen „Schreibgeschützt“ und „Kein“](./media/oracle-design/premium_disk02.png)
 
-- Verwenden Sie für Betriebssystemdatenträger die Standardzwischenspeicherung **Lesen/Schreiben** und für Oracle-Workload-VMs SSD Premium-Datenträger.  Stellen Sie außerdem sicher, dass sich das für die Auslagerung genutzte Volume ebenfalls auf SSD Premium-Datenträgern befindet.
-- Verwenden Sie für alle DATAFILES zur Zwischenspeicherung **ReadOnly**. ReadOnly-Zwischenspeichern ist nur für verwaltete Premium-Datenträger, P30 und höher, verfügbar.  Es gilt eine Obergrenze von 4.095 GiB für ein Volume, das mit ReadOnly-Zwischenspeichern verwendet werden kann.  Bei jeder größeren Zuteilung wird die Hostzwischenspeicherung standardmäßig deaktiviert.
+- Verwenden Sie für **Betriebssystemdatenträger** **SSD Premium-Datenträger mit Hostzwischenspeicherung mit Lese-/Schreibzugriff**.
+- Verwenden Sie für **Datenträger**, die Oracle-Datendateien, temporäre Dateien, Steuerdateien, Nachverfolgungsdateien für Blockänderungen, BFILEs, Dateien für externe Tabellen und Flashbackprotokolle enthalten, **SSD Premium mit schreibgeschützter Hostzwischenspeicherung**.
+- Verwenden Sie für **Datenträger, die Oracle-Online-Wiederholungsprotokolldateien enthalten**, **SSD Premium oder Disk Ultra ohne Hostzwischenspeicherung (Keine)** . Archivierte Oracle-Wiederholungsprotokolldateien und RMAN-Sicherungssätze können sich auch in den Online-Wiederholungsprotokolldateien befinden. Beachten Sie, dass die Hostzwischenspeicherung auf 4.095 GiB beschränkt ist. Weisen Sie daher keine SSD Premium-Größe über P50 mit Hostzwischenspeicherung zu. Wenn Sie mehr als 4 TiB Speicher benötigen, erstellen Sie mittels RAID-0 und unter Verwendung von Linux LVM2 oder Oracle ASM ein Stripe mit mehrere SSD Premium-Datenträgern.
 
 Wenn die Workloads zwischen Tag und Nacht stark variieren und die E/A-Workload dies unterstützen kann, kann SSD Premium (P1-P20) mit Bursting die erforderliche Leistung bei nächtlichen Batchlasten oder begrenzten E/A-Anforderungen bieten.  
 

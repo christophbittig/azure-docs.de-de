@@ -9,14 +9,17 @@ ms.topic: troubleshooting
 ms.service: virtual-machines
 ms.subservice: image-builder
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 32de7c963a7b82c70f4225e35a4e9acb8d429717
-ms.sourcegitcommit: 8000045c09d3b091314b4a73db20e99ddc825d91
+ms.openlocfilehash: 4117926fe8de79a295fa3c0a52c1ca54816496ba
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/19/2021
-ms.locfileid: "122444538"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131427986"
 ---
 # <a name="troubleshoot-azure-image-builder-service"></a>Problembehandlung für den Azure Image Builder-Dienst
+
+**Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Flexible Skalierungsgruppen 
+
 Dieser Artikel hilft Ihnen, häufige Probleme zu beheben, die beim Verwenden des Azure Image Builder-Diensts auftreten können.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -88,8 +91,8 @@ In den meisten Fällen tritt der Fehler bei der Ressourcenbereitstellung aufgrun
 #### <a name="solution"></a>Lösung
 
 Abhängig von Ihrem Szenario benötigt der Azure Image Builder möglicherweise Berechtigungen für Folgendes:
-- Quellimage oder Shared Image Gallery-Ressourcengruppe
-- Verteilungsimage oder Shared Image Gallery-Ressource
+- Quellimage oder Azure Compute Gallery (früher als Shared Image Gallery bezeichnet)
+- Distributionsimage oder Azure Compute Gallery-Ressource
 - Das Speicherkonto, der Container oder das Blob, auf das die Dateianpassung zugreift. 
 
 Weitere Informationen zum Konfigurieren von Berechtigungen finden Sie unter [Konfigurieren von Berechtigungen für den Azure VM Image Builder-Dienst mithilfe der Azure CLI](image-builder-permissions-cli.md) oder [Konfigurieren von Berechtigungen für den Azure VM Image Builder-Dienst mithilfe von PowerShell](image-builder-permissions-powershell.md).
@@ -110,8 +113,8 @@ Fehlende Berechtigungen.
 #### <a name="solution"></a>Lösung
 
 Abhängig von Ihrem Szenario benötigt der Azure Image Builder möglicherweise Berechtigungen für Folgendes:
-* Quellimage oder Shared Image Gallery-Ressourcengruppe
-* Verteilungsimage oder Shared Image Gallery-Ressource
+* Quellimage oder Azure Compute Gallery-Ressourcengruppe
+* Distributionsimage oder Azure Compute Gallery-Ressource
 * Das Speicherkonto, der Container oder das Blob, auf das die Dateianpassung zugreift. 
 
 Weitere Informationen zum Konfigurieren von Berechtigungen finden Sie unter [Konfigurieren von Berechtigungen für den Azure VM Image Builder-Dienst mithilfe der Azure CLI](image-builder-permissions-cli.md) oder [Konfigurieren von Berechtigungen für den Azure VM Image Builder-Dienst mithilfe von PowerShell](image-builder-permissions-powershell.md).
@@ -173,7 +176,7 @@ Sie können das Anpassungsprotokoll „customization.log“ im Speicherkonto in 
 
 ### <a name="understanding-the-customization-log"></a>Grundlegendes zum Anpassungsprotokoll
 
-Das Protokoll ist sehr ausführlich. Es deckt die Imageerstellung einschließlich aller Probleme bei der Imageverteilung ab, wie z. B. die Shared Image Gallery-Replikation. Diese Fehler werden in der Fehlermeldung des Status der Imagevorlage angezeigt.
+Das Protokoll ist sehr ausführlich. Es deckt die Imageerstellung einschließlich aller Probleme bei der Imageverteilung ab, wie z. B. die Azure Compute Gallery-Replikation. Diese Fehler werden in der Fehlermeldung des Status der Imagevorlage angezeigt.
 
 Die Datei „customization.log“ umfasst die folgenden Stufen:
 
@@ -322,17 +325,17 @@ Für die Dateianpassung wird eine große Datei heruntergeladen.
 
 Die Dateianpassung ist nur für kleine Dateidownloads geeignet (< 20 MB). Verwenden Sie für größere Dateidownloads ein Skript oder einen Inlinebefehl. Unter Linux können Sie zum Beispiel `wget` oder `curl` verwenden. Unter Windows können Sie `Invoke-WebRequest` verwenden.
 
-### <a name="error-waiting-on-shared-image-gallery"></a>Fehler beim Warten auf Shared Image Gallery
+### <a name="error-waiting-on-azure-compute-gallery"></a>Fehler beim Warten auf Azure Compute Gallery
 
 #### <a name="error"></a>Fehler
 
 ```text
-Deployment failed. Correlation ID: XXXXXX-XXXX-XXXXXX-XXXX-XXXXXX. Failed in distributing 1 images out of total 1: {[Error 0] [Distribute 0] Error publishing MDI to shared image gallery:/subscriptions/<subId>/resourceGroups/xxxxxx/providers/Microsoft.Compute/galleries/xxxxx/images/xxxxxx, Location:eastus. Error: Error returned from SIG client while publishing MDI to shared image gallery for dstImageLocation: eastus, dstSubscription: <subId>, dstResourceGroupName: XXXXXX, dstGalleryName: XXXXXX, dstGalleryImageName: XXXXXX. Error: Error waiting on shared image gallery future for resource group: XXXXXX, gallery name: XXXXXX, gallery image name: XXXXXX.Error: Future#WaitForCompletion: context has been cancelled: StatusCode=200 -- Original Error: context deadline exceeded}
+Deployment failed. Correlation ID: XXXXXX-XXXX-XXXXXX-XXXX-XXXXXX. Failed in distributing 1 images out of total 1: {[Error 0] [Distribute 0] Error publishing MDI to Azure Compute Gallery:/subscriptions/<subId>/resourceGroups/xxxxxx/providers/Microsoft.Compute/galleries/xxxxx/images/xxxxxx, Location:eastus. Error: Error returned from SIG client while publishing MDI to Azure Compute Gallery for dstImageLocation: eastus, dstSubscription: <subId>, dstResourceGroupName: XXXXXX, dstGalleryName: XXXXXX, dstGalleryImageName: XXXXXX. Error: Error waiting on Azure Compute Gallery future for resource group: XXXXXX, gallery name: XXXXXX, gallery image name: XXXXXX.Error: Future#WaitForCompletion: context has been cancelled: StatusCode=200 -- Original Error: context deadline exceeded}
 ```
 
 #### <a name="cause"></a>Ursache
 
-Timeout von Image Builder beim Warten auf das Hinzufügen und Replizieren des Images in die Shared Image Gallery (SIG). Wenn das Image in die SIG eingefügt wird, kann davon ausgegangen werden, dass die Imageerstellung erfolgreich war. Der Gesamtprozess ist jedoch fehlgeschlagen, da Image Builder auf Shared Image Gallery wartete, um die Replikation abzuschließen. Obwohl der Build fehlgeschlagen ist, wird die Replikation fortgesetzt. Sie können die Eigenschaften der Imageversion abrufen, indem Sie die Distribution *runOutput* überprüfen.
+Timeout von Image Builder beim Warten auf das Hinzufügen und Replizieren des Images in die Azure Compute Gallery. Wenn das Image in die SIG eingefügt wird, kann davon ausgegangen werden, dass die Imageerstellung erfolgreich war. Der Gesamtprozess ist jedoch fehlgeschlagen, da Image Builder auf Azure Compute Gallery gewartet hat, um die Replikation abzuschließen. Obwohl der Build fehlgeschlagen ist, wird die Replikation fortgesetzt. Sie können die Eigenschaften der Imageversion abrufen, indem Sie die Distribution *runOutput* überprüfen.
 
 ```bash
 $runOutputName=<distributionRunOutput>
@@ -621,7 +624,7 @@ Weitere Informationen zu Azure DevOps-Funktionen und -Einschränkungen finden Si
  
 #### <a name="solution"></a>Lösung
 
-Sie können Ihre eigenen DevOps-Agents hosten oder die Buildzeit verkürzen. Wenn Sie z. B. an Shared Image Gallery verteilen, replizieren Sie in eine Region, für den Fall, dass Sie asynchron replizieren möchten. 
+Sie können Ihre eigenen DevOps-Agents hosten oder die Buildzeit verkürzen. Wenn Sie z. B. an Azure Compute Gallery verteilen, replizieren Sie in eine Region. für den Fall, dass Sie asynchron replizieren möchten. 
 
 ### <a name="slow-windows-logon-please-wait-for-the-windows-modules-installer"></a>Langsame Windows-Anmeldung: „Bitte warten Sie auf den Windows Modules Installer“
 

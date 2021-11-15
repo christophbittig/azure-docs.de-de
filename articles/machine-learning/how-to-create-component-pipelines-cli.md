@@ -10,12 +10,12 @@ author: lobrien
 ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: devplatv2
-ms.openlocfilehash: eec477aa664579bd1c22381eb0db587aebe42c3f
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 71e611855023becf474337b309f510244507bc96
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131566588"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131848456"
 ---
 # <a name="create-and-run-machine-learning-pipelines-using-components-with-the-azure-machine-learning-cli-preview"></a>Erstellen und Ausführen von Machine Learning-Pipelines mit Komponenten und der Azure Machine Learning-CLI (Vorschau)
 
@@ -86,7 +86,7 @@ Sie sollten ein JSON-Wörterbuch mit Informationen zum Pipelineauftrag erhalten,
 
 Öffnen Sie `ComponentA.yaml`, um zu sehen, wie die erste Komponente definiert ist: 
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/pipelines-with-components/basics/3a_basic_pipeline/componentA.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/pipelines-with-components/basics/3a_basic_pipeline/componentA.yml":::
 
 In der aktuellen Vorschauversion werden nur Komponenten vom Typ `command` unterstützt. `name` ist der eindeutige Bezeichner, der in Studio verwendet wird, um die Komponente zu beschreiben, und `display_name` dient als Anzeigename. Mit dem Schlüssel-Wert-Paar `version` können Sie Ihre Pipelinekomponenten weiterentwickeln und gleichzeitig die Reproduzierbarkeit mit älteren Versionen aufrechterhalten. 
 
@@ -105,7 +105,7 @@ Weitere Informationen zu Komponenten und ihrer Spezifikation finden Sie unter [W
 
 Im Beispielverzeichnis sieht die Datei `pipeline.yaml` wie der folgende Code aus:
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/pipelines-with-components/basics/3a_basic_pipeline/pipeline.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/pipelines-with-components/basics/3a_basic_pipeline/pipeline.yml":::
 
 Wenn Sie die URL des Auftrags in Studio öffnen (der Wert von `services.Studio.endpoint` aus dem Befehl `job create` beim Erstellen eines Auftrags oder `job show`, nachdem der Auftrag erstellt wurde), wird eine Graphdarstellung Ihrer Pipeline angezeigt:
 
@@ -172,11 +172,11 @@ Jede dieser Phasen kann mehrere Komponenten enthalten. Beispielsweise kann der D
 
 Die Datei `job.yml` beginnt mit dem obligatorischen Schlüssel-Wert-Paar `type: pipeline`. Anschließend werden die Ein- und Ausgaben wie folgt definiert:
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/pipelines-with-components/nyc_taxi_data_regression/job.yml" range="8-25":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/pipelines-with-components/nyc_taxi_data_regression/job.yml" range="5-22":::
 
 Wie bereits beschrieben, geben diese Einträge die Eingabedaten für die Pipeline (in diesem Fall das Dataset in `./data`) und die Zwischen- und Endausgaben der Pipeline an, die in separaten Pfaden gespeichert werden. Die Namen in diesen Ein- und Ausgabeeinträgen werden zu Werten in den Einträgen `inputs` und `outputs` der einzelnen Aufträge: 
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/jobs/pipelines-with-components/nyc_taxi_data_regression/job.yml" range="29-75":::
+:::code language="yaml" source="~/azureml-examples-main/cli/jobs/pipelines-with-components/nyc_taxi_data_regression/job.yml" range="26-72":::
 
 Beachten Sie, wie `jobs.train_job.outputs.model_output` als Eingabe für den Vorhersageauftrag und den Bewertungsauftrag verwendet wird, wie im folgenden Diagramm dargestellt: 
 

@@ -9,18 +9,25 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 monikerRange: =iotedge-2018-06
-ms.openlocfilehash: 0fea4aa2ac14e161e4fa2439e97e74f51eb5859d
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: a1abccf4a039a36f2969e6b32b8eca2478d07427
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131510105"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131845937"
 ---
 # <a name="create-and-provision-iot-edge-devices-at-scale-on-windows-using-symmetric-keys"></a>Erstellen und Bereitstellen von loT Edge-Geräten in großem Umfang unter Windows mit symmetrischen Schlüsseln
 
 [!INCLUDE [iot-edge-version-201806](../../includes/iot-edge-version-201806.md)]
 
 Dieser Artikel enthält eine durchgängige Anleitung für die automatische Bereitstellung eines oder mehrerer Windows loT Edge-Geräte mit symmetrischen Schlüsseln. Sie können Azure loT Edge-Geräte mit dem [Azure loT Hub Gerätebereitstellungsservice](../iot-dps/index.yml) (DPS - Device Provisioning Service ) automatisch bereitstellen. Wenn Sie mit dem Prozess der automatischen Bereitstellung nicht vertraut sind, lesen Sie die [Übersicht zur Bereitstellung](../iot-dps/about-iot-dps.md#provisioning-process), bevor Sie den Vorgang fortsetzen.
+
+>[!NOTE]
+>Azure IoT Edge mit Windows-Containern wird ab Version 1.2 von Azure IoT Edge nicht mehr unterstützt.
+>
+>Ziehen Sie die neue Methode [Azure IoT Edge für Linux unter Windows](iot-edge-for-linux-on-windows.md) zum Ausführen von IoT Edge auf Windows-Geräten in Betracht.
+>
+>Wenn Sie Azure IoT Edge für Linux unter Windows verwenden möchten, können Sie die Schritte in der [entsprechenden Schrittanleitung](how-to-provision-devices-at-scale-linux-on-windows-symmetric.md) ausführen.
 
 Aufgaben:
 
@@ -60,13 +67,11 @@ Halten Sie die folgenden Informationen bereit:
 
 1. Der Befehl **Initialize-IoTEdge** konfiguriert die IoT Edge-Runtime auf Ihrem Computer. Der Befehl verwendet standardmäßig die manuelle Bereitstellung mit Windows-Containern. Verwenden Sie deshalb das Flag `-DpsSymmetricKey` für die automatische Bereitstellung per Authentifizierung mit symmetrischem Schlüssel.
 
-   Ersetzen Sie die Platzhalterwerte für `{scope_id}`, `{registration_id}` und `{symmetric_key}` durch die Daten, die Sie zuvor gesammelt haben.
-
-   Fügen Sie Parameter `-RegistrationId {registration_id}` hinzu, wenn Sie die Geräte-ID als etwas anderes als den CN-Namen des Identitätszertifikats festlegen möchten.
+   Ersetzen Sie die Platzhalterwerte für `paste_scope_id_here`, `paste_registration_id_here` und `paste_symmetric_key_here` durch die Daten, die Sie zuvor gesammelt haben.
 
    ```powershell
    . {Invoke-WebRequest -useb https://aka.ms/iotedge-win} | Invoke-Expression; `
-   Initialize-IoTEdge -DpsSymmetricKey -ScopeId {scope ID} -RegistrationId {registration ID} -SymmetricKey {symmetric key}
+   Initialize-IoTEdge -DpsSymmetricKey -ScopeId paste_scope_id_here -RegistrationId paste_registration_id_here -SymmetricKey paste_symmetric key_here
    ```
 
 ## <a name="verify-successful-installation"></a>Bestätigen einer erfolgreichen Installation

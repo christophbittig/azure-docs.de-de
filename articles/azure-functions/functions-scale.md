@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 08/17/2020
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a2c760e4b1ca923496d11002f2e30b72672f32df
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 9deb2e40c081b776a8dfa5fc5fb96efcfc4c219f
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124778398"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130252937"
 ---
 # <a name="azure-functions-hosting-options"></a>Azure Functions-Hostingoptionen
 
@@ -48,16 +48,16 @@ In den verbleibenden Tabellen in diesem Artikel werden die verschiedenen Feature
 
 ## <a name="operating-systemruntime"></a>Betriebssystem/Runtime
 
-In der folgenden Tabelle werden die in den einzelnen Hostingplänen unterstützten Betriebssysteme und Runtimes von Programmiersprachen gezeigt.
+In der folgenden Tabelle werden die in den einzelnen Hostingplänen unterstützten Betriebssysteme und Programmiersprachen gezeigt.
 
 | | Linux<sup>1</sup><br/>Nur Code | Windows<sup>2</sup><br/>Nur Code | Linux<sup>1,3</sup><br/>Docker-Container |
 | --- | --- | --- | --- |
-| **[Verbrauchsplan](consumption-plan.md)** | .NET Core<br/>Node.js<br/>Java<br/>Python | .NET Core<br/>Node.js<br/>Java<br/>PowerShell Core | Keine Unterstützung  |
-| **[Premium-Plan](functions-premium-plan.md)** | .NET Core<br/>Node.js<br/>Java<br/>Python|.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python  | 
-| **[Dedizierter Plan](dedicated-plan.md)** | .NET Core<br/>Node.js<br/>Java<br/>Python|.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python |
-| **[ASE](dedicated-plan.md)** | .NET Core<br/>Node.js<br/>Java<br/>Python |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core  |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python | 
-| **[Kubernetes (direkt)](functions-kubernetes-keda.md)** | – | – |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python |
-| **[Azure Arc (Vorschauversion)](../app-service/overview-arc-integration.md)** | .NET Core<br/>Node.js<br/>Java<br/>Python | – |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python |
+| **[Verbrauchsplan](consumption-plan.md)** | .NET Core 3.1<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>Python<br/>TypeScript | .NET Core 3.1<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>PowerShell Core<br/>TypeScript | Keine Unterstützung  |
+| **[Premium-Plan](functions-premium-plan.md)** | .NET Core 3.1<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>Python<br/>TypeScript |.NET Core<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>PowerShell Core<br/>TypeScript |.NET Core<br/>Node.js<br/>Java<br/>PowerShell Core<br/>Python<br/>TypeScript  | 
+| **[Dedizierter Plan](dedicated-plan.md)** | .NET Core 3.1<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>Python<br/>TypeScript |.NET Core 3.1<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>PowerShell Core<br/>TypeScript |.NET Core 3.1<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>PowerShell Core<br/>Python<br/>TypeScript |
+| **[ASE](dedicated-plan.md)** | .NET Core 3.1<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>Python<br/>TypeScript |.NET Core 3.1<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>PowerShell Core<br/>TypeScript |.NET Core 3.1<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>PowerShell Core<br/>Python<br/>TypeScript | 
+| **[Kubernetes (direkt)](functions-kubernetes-keda.md)** | – | – |.NET Core 3.1<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>PowerShell Core<br/>Python<br/>TypeScript |
+| **[Azure Arc (Vorschauversion)](../app-service/overview-arc-integration.md)** | .NET Core 3.1<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>Python<br/>TypeScript | – |.NET Core 3.1<br/>.NET 5.0<br/>JavaScript<br/>Java<br/>PowerShell Core<br/>Python<br/>TypeScript |
 
 <sup>1</sup> Linux ist das einzige unterstützte Betriebssystem für den Python-Runtimestapel. <br/>
 <sup>2</sup> Windows ist das einzige unterstützte Betriebssystem für den PowerShell-Runtimestapel.<br/>

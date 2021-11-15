@@ -7,14 +7,14 @@ ms.service: mysql
 ms.custom: mvc, references_regions
 ms.topic: overview
 ms.date: 08/10/2021
-ms.openlocfilehash: 863281f85eac1d467e7935f47a90aacf1b3134dd
-ms.sourcegitcommit: df2a8281cfdec8e042959339ebe314a0714cdd5e
+ms.openlocfilehash: 6b46c4f3ed15632f2e394882a69eb4b7c737a219
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129153442"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131504909"
 ---
-# <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL-Server Flexible Server (Vorschau)
+# <a name="azure-database-for-mysql---flexible-server"></a>Azure Database for MySQL: Flexibler Server 
 
 [[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
@@ -22,13 +22,13 @@ ms.locfileid: "129153442"
 Azure Database for MySQL, ein Dienst, der auf MySQL Community Edition basiert, ist in zwei Bereitstellungsmodi verfügbar:
 
 - Einzelner Server
-- Flexible Server (Vorschau)
+- Flexible Server
 
 In diesem Artikel erhalten Sie eine Übersicht und Einführung in die grundlegenden Konzepte des Modells zur Bereitstellung einer Flexible Server-Instanz. Informationen dazu, wie Sie entscheiden, welche Bereitstellungsoption für Ihre Workload geeignet ist, finden Sie unter [Auswählen der richtigen MySQL Server-Option in Azure](./../select-right-deployment-type.md).
 
 ## <a name="overview"></a>Übersicht
 
-Azure Database for MySQL Flexible Server ist ein vollständig verwalteter Datenbankdienst, der eine differenziertere Steuerung und mehr Flexibilität bei den Verwaltungsfunktionen und Konfigurationseinstellungen der Datenbank bietet. Im Allgemeinen ermöglicht der Dienst mehr Flexibilität und die Anpassung der Serverkonfiguration an die Anforderungen der Benutzer. Mit der Flexible Server-Architektur können Benutzer Hochverfügbarkeit in einer einzelnen Verfügbarkeitszone sowie in mehreren Verfügbarkeitszonen auswählen. Flexible Server-Instanzen bieten außerdem bessere Steuerelemente für die Kostenoptimierung mit der Möglichkeit, den Server und burstfähige SKUs anzuhalten/zu starten. Dies eignet sich hervorragend für Workloads, die nicht durchgehend die gesamte Computekapazität benötigen. Der Dienst unterstützt derzeit die Community-Version von MySQL 5.7 und 8.0. Der Dienst ist derzeit in der Vorschauphase und in einer Vielzahl von [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/services/) verfügbar.
+Azure Database for MySQL Flexible Server ist ein vollständig verwalteter Datenbankdienst, der eine differenziertere Steuerung und mehr Flexibilität bei den Verwaltungsfunktionen und Konfigurationseinstellungen der Datenbank bietet. Im Allgemeinen ermöglicht der Dienst mehr Flexibilität und die Anpassung der Serverkonfiguration an die Anforderungen der Benutzer. Mit der Flexible Server-Architektur können Benutzer Hochverfügbarkeit in einer einzelnen Verfügbarkeitszone sowie in mehreren Verfügbarkeitszonen auswählen. Flexible Server-Instanzen bieten außerdem bessere Steuerelemente für die Kostenoptimierung mit der Möglichkeit, den Server und burstfähige SKUs anzuhalten/zu starten. Dies eignet sich hervorragend für Workloads, die nicht durchgehend die gesamte Computekapazität benötigen. Der Dienst unterstützt derzeit die Community-Version von MySQL 5.7 und 8.0. Der Dienst ist heute in zahlreichen [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/services/) verfügbar.
 
 Flexible Server-Instanzen eignen sich am besten für Folgendes:
 
@@ -50,7 +50,7 @@ Sie können dieses Angebot zum Entwickeln und Bereitstellen von Anwendungen nutz
 
 ## <a name="high-availability-within-and-across-availability-zones"></a>Hochverfügbarkeit in Verfügbarkeitszonen und verfügbarkeitszonenübergreifend
 
-In Azure Database for MySQL Flexible Server (Vorschau) können Sie Hochverfügbarkeit mit automatischem Failover konfigurieren. Die Hochverfügbarkeitslösung wurde entwickelt, um sicherzustellen, dass committete Daten aufgrund von Ausfällen nie verloren gehen, und um die allgemeine Betriebszeit für Ihre Anwendung zu verbessern.Wenn Hochverfügbarkeit konfiguriert wird, stellt Flexible Server ein Standbyreplikat automatisch bereit und verwaltet es. Es gibt zwei Architekturmodelle für Hochverfügbarkeit: 
+Azure Database for MySQL Flexible Server ermöglicht das Konfigurieren von Hochverfügbarkeit mit automatischem Failover. Die Hochverfügbarkeitslösung wurde entwickelt, um sicherzustellen, dass committete Daten aufgrund von Ausfällen nie verloren gehen, und um die allgemeine Betriebszeit für Ihre Anwendung zu verbessern.Wenn Hochverfügbarkeit konfiguriert wird, stellt Flexible Server ein Standbyreplikat automatisch bereit und verwaltet es. Es gibt zwei Architekturmodelle für Hochverfügbarkeit: 
 
 - **Zonenredundante Hochverfügbarkeit**: Diese Option wird für eine vollständige Isolierung und Redundanz der Infrastruktur über mehrere Verfügbarkeitszonen hinweg empfohlen. Sie bietet den höchsten Verfügbarkeitsgrad, erfordert aber eine zonenübergreifende Konfiguration der Anwendungsredundanz. Zonenredundante Hochverfügbarkeit wird bevorzugt, wenn bei jedem Infrastrukturausfall in der Verfügbarkeitszone die bestmögliche Verfügbarkeit erzielt werden soll und die Latenz in der Verfügbarkeitszone akzeptabel ist. Zonenredundante Hochverfügbarkeit gibt es nur in  [Azure-Regionen](overview.md#azure-regions) , die mehrere Verfügbarkeitszonen unterstützen und in denen zonenredundante Premium-Dateifreigaben zur Verfügung stehen. 
 
@@ -163,7 +163,7 @@ Ein Vorteil der Ausführung Ihrer Workload in Azure ist die globale Reichweite. 
 | --- | --- | --- | --- |
 | Australien (Osten) | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Australien, Südosten | :heavy_check_mark: | :heavy_check_mark: | :x: |
-| Brasilien Süd | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| Brasilien Süd | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Kanada, Mitte | :heavy_check_mark: | :heavy_check_mark: | :x: |
 | Kanada, Osten | :heavy_check_mark: | :x: | :x: |
 | Indien, Mitte | :heavy_check_mark: | :heavy_check_mark: | :x: |
@@ -177,19 +177,22 @@ Ein Vorteil der Ausführung Ihrer Workload in Azure ist die globale Reichweite. 
 | Japan, Westen | :heavy_check_mark: | :x: | :x: |
 | Korea, Mitte | :heavy_check_mark: | :heavy_check_mark: | :x: |
 | Korea, Süden | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| USA Nord Mitte | :heavy_check_mark: | :heavy_check_mark: | :x: |
 | Nordeuropa | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| USA Nord Mitte | :heavy_check_mark: | :heavy_check_mark: | :x: |
 | Norwegen, Osten | :heavy_check_mark: | :heavy_check_mark: | :x: |
-| Asien, Südosten | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| USA Süd Mitte | :heavy_check_mark: | :heavy_check_mark: | :x: |
 | Südafrika, Norden | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| USA Süd Mitte | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| Asien, Südosten | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | Schweiz, Norden | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| Vereinigte Arabische Emirate, Norden | :heavy_check_mark: | :heavy_check_mark: | :x: |
 | UK, Süden | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | UK, Westen | :heavy_check_mark: | :x: | :x: |
-| Vereinigte Arabische Emirate, Norden | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| USA, Westen-Mitte | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| Europa, Westen | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 | USA (Westen) | :heavy_check_mark: | :heavy_check_mark: | :x: |
 | USA, Westen 2 | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| Europa, Westen | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| USA, Westen-Mitte | :heavy_check_mark: | :heavy_check_mark: | :x: |
+| USA, Westen 3 | :heavy_check_mark: | :heavy_check_mark: | :x: |
 
 ## <a name="contacts"></a>Kontakte
 
@@ -199,7 +202,7 @@ Weitere Kontaktmöglichkeiten:
 
 - Wenn Sie den Azure-Support kontaktieren möchten, [fordern Sie im Azure-Portal ein Ticket an](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 - Um ein Problem mit Ihrem Konto zu beheben, richten Sie im Azure-Portal eine [Anfrage an den Support](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
-- Wenn Sie Feedback abgeben oder Vorschläge für neue Features einreichen möchten, erstellen Sie einen Eintrag über [UserVoice](https://feedback.azure.com/forums/597982-azure-database-for-mysql).
+- Wenn Sie Feedback abgeben oder Vorschläge für neue Features einreichen möchten, erstellen Sie einen Eintrag über [UserVoice](https://feedback.azure.com/d365community/forum/47b1e71d-ee24-ec11-b6e6-000d3a4f0da0).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

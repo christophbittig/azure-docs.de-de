@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 57d211a7a080cc07d30a5810c4e1660c575acff3
-ms.sourcegitcommit: 03f0db2e8d91219cf88852c1e500ae86552d8249
+ms.openlocfilehash: 9dabeaa9dd8e22e63b356768e34ebf828ac43632
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123078168"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131860752"
 ---
 In diesem Artikel werden die veröffentlichten Versionen und Features des Azure Active Directory Connect-Bereitstellungs-Agent aufgeführt. Das Azure AD-Team aktualisiert den Bereitstellungs-Agent regelmäßig mit neuen Features und Funktionen. 
 
@@ -12,6 +12,15 @@ Microsoft stellt direkte Unterstützung für die neueste Agent-Version und die u
 
 ## <a name="download-link"></a>Downloadlink
 Sie können die neueste Version des Agent über [diesen Link](https://download.msappproxy.net/Subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/Connector/provisioningAgentInstaller) herunterladen.
+
+## <a name="115870"></a>1.1.587.0
+
+2\. November 2021 – Für den Download veröffentlicht
+
+Neue Features und Verbesserungen
+
+- Cmdlet zum Konfigurieren des Kennwortrückschreibens
+
 
 ## <a name="115840"></a>1.1.584.0 
 

@@ -10,7 +10,7 @@ metadata:
   ms.topic: hub-page
   author: rolyon
   ms.author: rolyon
-  ms.date: 09/08/2021
+  ms.date: 11/07/2021
   featureFlags:
     - clicktale
 highlightedContent:
@@ -423,6 +423,12 @@ productDirectory:
         - compute
         - featured
       url: /azure/quantum/
+    - title: Azure Spot-VMs
+      summary: Bereitstellen ungenutzter Computekapazität zu hohen Rabatten zum Ausführen unterbrechbarer Workloads
+      imageSrc: 'https://static.docs.com/ui/media/product/azure/virtual-machine.svg'
+      azureCategories:
+        - compute
+      url: ./virtual-machines/spot-vms.md
     - title: Azure Spring Cloud
       summary: 'Vollständig verwalteter Spring Cloud-Dienst, der mit Pivotal erstellt und betrieben wird'
       imageSrc: 'https://static.docs.com/ui/media/product/azure/spring-cloud.svg'
@@ -512,6 +518,12 @@ productDirectory:
         - featured
         - compute
       url: ./virtual-machines/index.yml
+    - title: Azure Container Apps (Vorschau)
+      summary: Erstellen und Bereitstellen moderner Apps und Microservices mithilfe von serverlosen Containern
+      imageSrc: ./media/index/container-apps.svg
+      azureCategories:
+        - containers
+      url: container-apps/index.yml
     - title: Azure Dev Spaces
       summary: Testen und iteratives Entwickeln Ihrer Microservices-App in Azure AKS
       imageSrc: ./media/index/AzureDevSpaceController_50x.svg
@@ -728,7 +740,7 @@ productDirectory:
         - hybrid
         - networking
       url: expressroute/index.yml
-    - title: Azure Sentinel
+    - title: Microsoft Sentinel
       summary: Nutzen von cloudnativen SIEM- und intelligenten Sicherheitsanalysefunktionen als Schutz für Ihr Unternehmen
       imageSrc: 'https://static.docs.com/ui/media/product/azure/sentinel.svg'
       azureCategories:
@@ -759,13 +771,6 @@ productDirectory:
       azureCategories:
         - hybrid
       url: ./databox-online/index.yml
-    - title: Security Center
-      summary: Einheitliche Funktionen für Sicherheitsverwaltung und erweiterter Schutz vor Bedrohungen über hybride Cloudworkloads hinweg
-      imageSrc: 'https://static.docs.com/ui/media/product/azure/security-center.svg'
-      azureCategories:
-        - hybrid
-        - security
-      url: security-center/index.yml
     - title: Azure IoT Edge
       summary: Erweitern von Cloud Intelligence und Analytics auf Edgegeräte
       imageSrc: 'https://static.docs.com/ui/media/product/azure/iot-edge.svg'
@@ -1071,13 +1076,13 @@ productDirectory:
       azureCategories:
         - networking
       url: bastion/index.yml
-    - title: Azure Defender
-      summary: Schützen von Hybrid Cloud-Workloads
+    - title: Microsoft Defender für Cloud
+      summary: 'Verwaltung des Sicherheitsstatus und erweiterter Bedrohungsschutz für Azure-, Hybrid- und Multicloud-Workloads'
       imageSrc: ./media/index/defender.svg
       azureCategories:
         - security
-      url: security-center/azure-defender.md
-    - title: Azure Defender für IoT
+      url: defender-for-cloud/index.yml
+    - title: Microsoft Defender für IoT
       summary: Kontinuierliche Ressourcenverwaltung und Bedrohungserkennung für nicht verwaltete und verwaltete IoT-/OT-Geräte
       imageSrc: ./media/index/defender-iot.svg
       azureCategories:
@@ -1286,7 +1291,7 @@ tools:
     - title: Azure PowerShell
       imageSrc: 'https://docs.microsoft.com/media/logos/logo_powershell.svg'
       url: /powershell/azure/
-    - title: Azure-Befehlszeilenschnittstelle
+    - title: Azure CLI
       imageSrc: 'https://docs.microsoft.com/media/logos/logo_CLIgeneric.svg'
       url: /cli/azure/
     - title: ARM-Vorlagen

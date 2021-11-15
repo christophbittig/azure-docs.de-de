@@ -3,15 +3,15 @@ title: 'Azure Automation: Übersicht über Hybrid Runbook Worker'
 description: Dieser Artikel enthält eine Übersicht über Hybrid Runbook Worker, mit denen Sie Runbooks auf Computern in Ihrem lokalen Rechenzentrum oder beim Cloudanbieter ausführen können.
 services: automation
 ms.subservice: process-automation
-ms.date: 09/28/2021
+ms.date: 10/06/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: bcc115e2eb8e380217246b2a401cea93f922aa81
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: e5b6a6036514d1d6391c242563afbf9c185ba71e
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129272149"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130253113"
 ---
 # <a name="automation-hybrid-runbook-worker-overview"></a>Automation: Übersicht über Hybrid Runbook Worker
 
@@ -19,23 +19,24 @@ Runbooks in Azure Automation haben möglicherweise keinen Zugriff auf Ressourcen
 
 Azure Automation bietet eine native Integration der Hybrid Runbook Worker-Rolle über das Erweiterungsframework für Azure-VMs. Der Azure-VM-Agent ist für die Verwaltung der Erweiterung auf Azure-VMs mit Windows und Linux sowie auf Nicht-Azure-Computern über den Connected Machine-Agent mit Arc-fähigen Servern verantwortlich. Es gibt nun zwei Hybrid Runbook Worker-Installationsplattformen, die von Azure Automation unterstützt werden.
 
-| Plattform | BESCHREIBUNG |
+| Plattform | Beschreibung |
 |---|---|
 |Agent-basiert (V1)  |Die Installation erfolgt, nachdem der [Log Analytics-Agent](../azure-monitor/agents/log-analytics-agent.md) Meldungen an einen [Log Analytics-Arbeitsbereich](../azure-monitor/logs/design-logs-deployment.md) von Azure Monitor gesendet hat.|
 |Erweiterungsbasiert (V2)  |Die Installation erfolgt mithilfe der [Hybrid Runbook Worker-VM-Erweiterung](./extension-based-hybrid-runbook-worker-install.md). Sie ist nicht davon abhängig, ob der Log Analytics-Agent Berichte an einen Log Analytics-Arbeitsbereich in Azure Monitor übermittelt. Dies ist die empfohlene Plattform.|
 
 :::image type="content" source="./media/automation-hybrid-runbook-worker/hybrid-worker-group-platform.png" alt-text="Hybrid Worker-Gruppe mit Plattformfeld":::
 
-Im Folgenden finden Sie eine Liste der Vorteile der erweiterungsbasierten Hybrid Runbook Worker-Rolle: 
+Im Folgenden finden Sie eine Liste der Vorteile der erweiterungsbasierten Hybrid Runbook Worker-Rolle:
 
 | Vorteil | BESCHREIBUNG |
 |---|---|
 |Nahtloses Onboarding| Es ist keine Log Analytics-Lösung für das Onboarding von Hybrid Runbook Workern erforderlich. Dies ist ein mehrstufiger Prozess, der zeitaufwendig und fehleranfällig ist. |
 |Einheitliche Onboardingumgebung| Die Installation wird für Azure- und Nicht-Azure-Computer mit den gleichen unterstützten Methoden verwaltet. |
-|Einfache Verwaltbarkeit| Die ARM-Identität ist für Hybrid Worker nativ integriert und bietet die Flexibilität für Governance im großen Stil über Richtlinien und Vorlagen. |
+|Einfache Verwaltbarkeit| Die ARM-Identität ist für Hybrid Runbook Worker nativ integriert und bietet die Flexibilität für Governance im großen Stil über Richtlinien und Vorlagen. |
 |Azure AD-basierte Authentifizierung| Es werden die vom VM-System zugewiesenen Identitäten verwendet, die von Azure AD bereitgestellt werden. Damit wird die Steuerung und Verwaltung von Identitäten und Ressourcenanmeldeinformationen zentralisiert.|
 
 Bei Hybrid Runbook Worker-Vorgängen nach der Installation ist der Prozess der Ausführung von Runbooks auf Hybrid Runbook Workern identisch. Der erweiterungsbasierte Ansatz dient dazu, die Installation und Verwaltung der Hybrid Runbook Worker-Rolle zu vereinfachen und die Komplexität gegenüber der Arbeit mit der Agent-basierten Version zu verringern. Die neue erweiterungsbasierte Installation wirkt sich nicht auf die Installation oder Verwaltung einer Agent-basierten Hybrid Runbook Worker-Rolle aus. Beide Typen können auf demselben Computer gleichzeitig vorhanden sein.
+
 Erweiterungsbasierte Hybrid Runbook Worker unterstützen nur den benutzerbasierten Hybrid Runbook Worker-Typ und enthalten nicht den System-Hybrid Runbook Worker, der für die Updateverwaltung erforderlich ist. PowerShell wird für die Installation von erweiterungsbasierten Hybrid Runbook Workern derzeit nicht unterstützt.
 
 ## <a name="runbook-worker-types"></a>Runbook Worker-Typen
@@ -47,7 +48,7 @@ Es gibt zwei Arten von Runbook Workern – System und Benutzer. In der folgenden
 |**System** |Unterstützt einen Satz ausgeblendeter Runbooks, die von der Updateverwaltungsfunktion verwendet werden, die für die Installation von benutzerdefinierten Updates auf Windows- und Linux-Computern vorgesehen sind.<br> Dieser Typ von Hybrid Runbook Workern ist kein Mitglied einer Hybrid Runbook Worker-Gruppe und führt daher keine Runbooks aus, die auf eine Runbook Worker-Gruppe abzielen. |
 |**Benutzer** |Unterstützt benutzerdefinierte Runbooks, die direkt auf dem Windows- und Linux-Computer ausgeführt werden sollen, die Mitglieder einer oder mehrerer Runbook Worker-Gruppen sind. |
 
-Agent-basierte (V1) Hybrid Runbook Worker erfordern den [Log Analytics-Agent](../azure-monitor/agents/log-analytics-agent.md), der Meldungen an einen [Log Analytics-Arbeitsbereich](../azure-monitor/logs/design-logs-deployment.md) in Azure Monitor sendet. Der Arbeitsbereich kann nicht nur den Computer für das unterstützte Betriebssystem überwachen, sondern auch die Komponenten herunterladen, die für die Installation des Hybrid Runbook Workers benötigt werden.
+Agent-basierte (V1) Hybrid Runbook Worker erfordern den [Log Analytics-Agent](../azure-monitor/agents/log-analytics-agent.md), der Meldungen an einen [Log Analytics-Arbeitsbereich](../azure-monitor/logs/design-logs-deployment.md) in Azure Monitor sendet. Der Arbeitsbereich kann nicht nur Daten vom Computer überwachen, sondern auch die Komponenten herunterladen, die für die Installation des Hybrid Runbook Workers benötigt werden.
 
 Wenn die Azure Automation-[Updateverwaltung](./update-management/overview.md) aktiviert ist, werden alle mit dem Log Analytics-Arbeitsbereich verbundenen Computer automatisch als System-Hybrid Runbook Worker konfiguriert. Informationen zur Konfiguration als benutzerbasierter Windows-Hybrid Runbook Worker finden Sie unter [Bereitstellen eines Agent-basierten Windows-Hybrid Runbook Workers](automation-windows-hrw-install.md) und für Linux unter [Bereitstellen eines Agent-basierten Linux-Hybrid Runbook Workers](./automation-linux-hrw-install.md).
 
@@ -78,7 +79,7 @@ Der Vorgang zum Installieren eines Benutzer-Hybrid Runbook Workers ist vom Betri
 
 |Betriebssystem  |Bereitstellungstypen  |
 |---------|---------|
-|Windows | [Automatisiert](automation-windows-hrw-install.md#automated-deployment)<br>[Manuell](automation-windows-hrw-install.md#manual-deployment) |
+|Windows | [Automatisiert](automation-windows-hrw-install.md#automated-deployment)<br>[Manuell](automation-windows-hrw-install.md#manual-deployment). |
 |Linux   | [Manuell](automation-linux-hrw-install.md#install-a-linux-hybrid-runbook-worker) |
 |Sowohl als auch  | Informationen zu benutzerbasierten Hybrid Runbook Workern finden Sie unter [Bereitstellen von erweiterungsbasierten Windows- oder Linux-Hybrid Runbook Workern in Automation](./extension-based-hybrid-runbook-worker-install.md). Dies ist die empfohlene Methode. |
 

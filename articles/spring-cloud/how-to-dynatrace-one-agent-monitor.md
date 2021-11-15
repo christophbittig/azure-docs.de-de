@@ -1,22 +1,22 @@
 ---
-title: Überwachen von Azure Spring Cloud-Anwendungen mit Dynatrace Java OneAgent
-description: Verwenden von Dynatrace Java OneAgent zum Überwachen Azure Spring Cloud-Anwendungen
+title: Überwachen von Spring Boot-Apps mit Dynatrace Java OneAgent
+description: Verwenden von Dynatrace Java OneAgent zum Überwachen Spring Boot Anwendungen, die in Azure Spring Cloud laufen
 author: karlerickson
 ms.author: karler
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 08/31/2021
 ms.custom: devx-track-java
-ms.openlocfilehash: ea4ce0946239dd6355174674f443a1f29c2b9d06
-ms.sourcegitcommit: add71a1f7dd82303a1eb3b771af53172726f4144
+ms.openlocfilehash: 20625461d27108c201f44458eff3f96d77f81132
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/03/2021
-ms.locfileid: "123438874"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130225527"
 ---
-# <a name="how-to-monitor-azure-spring-cloud-applications-with-dynatrace-java-oneagent"></a>Überwachen von Azure Spring Cloud-Anwendungen mit Dynatrace Java OneAgent
+# <a name="how-to-monitor-spring-boot-apps-with-dynatrace-java-oneagent"></a>Überwachen von Spring Boot-Apps mit Dynatrace Java OneAgent
 
-In diesem Artikel wird erläutert, wie Sie Dynatrace OneAgent zum Überwachen von Azure Spring Cloud-Anwendungen verwenden.
+In diesem Artikel wird erklärt, wie Sie Dynatrace Java OneAgent zum Überwachen Spring Boot Anwendungen verwenden, die in Azure Spring Cloud laufen.
 
 Mit Dynatrace OneAgent können Sie die folgenden Aufgaben ausführen:
 
@@ -94,11 +94,11 @@ Um die Schlüssel-Wert-Paare mithilfe des Azure-Portals hinzuzufügen, führen S
 
    :::image type="content" source="media/dynatrace-oneagent/configuration-application.png" alt-text="Screenshot der Registerkarte „Umgebungsvariablen“ im Abschnitt „Konfiguration“ der Anwendung." lightbox="media/dynatrace-oneagent/configuration-application.png":::
 
-## <a name="automation"></a>Automation
+## <a name="automate-provisioning"></a>Automatisieren der Bereitstellung
 
 Mit Terraform oder einer Azure Resource Manager-Vorlage (ARM-Vorlage) können Sie auch eine Bereitstellungsautomatisierungspipeline ausführen. Mit dieser Pipeline können Sie alle neuen Anwendungen, die Sie erstellen und bereitstellen, ganz ohne Aufwand instrumentieren und überwachen.
 
-### <a name="terraform"></a>Terraform
+### <a name="automate-provisioning-using-terraform"></a>Automatisieren der Bereitstellung mit Terraform
 
 Um die Umgebungsvariablen in einer Terraform-Vorlage zu konfigurieren, fügen Sie der Vorlage den folgenden Code hinzu, und ersetzen Sie dabei die Platzhalter *\<...>* durch Ihre eigenen Werte. Weitere Informationen finden Sie unter [Verwalten einer aktiven Azure Spring Cloud-Bereitstellung](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/spring_cloud_active_deployment).
 
@@ -111,7 +111,7 @@ environment_variables = {
 }
 ```
 
-### <a name="arm-template"></a>ARM-Vorlage
+### <a name="automate-provisioning-using-an-arm-template"></a>Automatisieren der Bereitstellung mithilfe einer ARM-Vorlage
 
 Um die Umgebungsvariablen in einer ARM-Vorlage zu konfigurieren, fügen Sie der Vorlage den folgenden Code hinzu, und ersetzen Sie dabei die Platzhalter *\<...>* durch Ihre eigenen Werte. Weitere Informationen finden Sie unter [Microsoft.AppPlatform/Spring/apps/deployments/skus](/azure/templates/microsoft.appplatform/spring/apps/deployments?tabs=json).
 
@@ -167,7 +167,7 @@ Navigieren Sie nun zum Abschnitt **Databases** (Datenbanken).
 
 :::image type="content" source="media/dynatrace-oneagent/spring-cloud-dynatrace-database-backtrace.png" alt-text="Screenshot des Berichts „Backtrace“." lightbox="media/dynatrace-oneagent/spring-cloud-dynatrace-database-backtrace.png":::
 
-## <a name="dynatrace-oneagent-logging"></a>Dynatrace OneAgent-Protokollierung
+## <a name="view-dynatrace-oneagent-logs"></a>Anzeigen von Dynatrace OneAgent-Protokollen
 
 Standardmäßig gibt Azure Spring Cloud die Protokolle der *Infoebene* des Dynatrace OneAgent an `STDOUT` aus. Die Protokolle werden mit den Anwendungsprotokollen gemischt. Sie können die explizite Agent-Version aus den Anwendungsprotokollen abrufen.
 

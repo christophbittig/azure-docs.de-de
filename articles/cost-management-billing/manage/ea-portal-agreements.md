@@ -3,17 +3,17 @@ title: 'Azure EA: Vereinbarungen und Ergänzungen'
 description: In diesem Artikel wird erläutert, wie sich Azure EA-Vereinbarungen und -Zusatzvereinbarungen auf Ihre Azure EA-Portalnutzung auswirken.
 author: bandersmsft
 ms.author: banders
-ms.date: 01/19/2021
+ms.date: 10/22/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
-ms.reviewer: boalcsva
-ms.openlocfilehash: d03ae5062cc81b3e042ed3b714838e14929dbba2
-ms.sourcegitcommit: f611b3f57027a21f7b229edf8a5b4f4c75f76331
+ms.reviewer: sapnakeshari
+ms.openlocfilehash: 200b71b84bd4c09e40b7c19426b9f1e1d09bf943
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/22/2021
-ms.locfileid: "104778218"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130247419"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Azure EA: Vereinbarungen und Ergänzungen
 
@@ -33,7 +33,7 @@ Eine Registrierung weist einen der folgenden Statuswerte auf. Jeder Wert bestimm
 
 **Ausstehend**: Der Registrierungsadministrator muss sich beim Azure EA-Portal anmelden. Nach der Anmeldung wechselt die Registrierung in den Status **Aktiv**.
 
-**Aktiv**: Die Registrierung ist verfügbar und kann verwendet werden. Sie können Konten und Abonnements im Azure EA-Portal erstellen. Die Registrierung bleibt bis zum Enddatum des Enterprise Agreements aktiv.
+**Aktiv**: Die Registrierung ist verfügbar und kann verwendet werden. Sie können Konten und Abonnements im Azure EA-Portal erstellen. Direktkunden können Abteilungen, Konten und Abonnements im [Azure-Portal](https://portal.azure.com) erstellen. Die Registrierung bleibt bis zum Enddatum des Enterprise Agreements aktiv. 
 
 **Indefinite Extended Term** (Unbestimmte Laufzeitverlängerung): Dieser Status wird angezeigt, wenn das Enddatum des Enterprise Agreements erreicht wurde. Bevor die EA-Registrierung das Enterprise Agreement-Enddatum erreicht, sollte der Registrierungsadministrator einen der folgende Schritte ausführen:
 
@@ -168,6 +168,8 @@ Unternehmensadministratoren können Kontobesitzer im Enterprise Portal mithilfe 
 1. Klicken Sie in der oberen rechten Ecke auf das Symbol „Herunterladen“.
 1. Suchen Sie mit einem Filter in der Spalte „Enthaltene Menge“ nach entsprechenden Plan-SKU-Teilenummern, und wählen Sie Werte größer als 0 aus.
 
+Direktkunden können das Preisblatt im Azure-Portal anzeigen. Weitere Informationen finden Sie unter [Anzeigen des Preisblatts im Azure-Portal](ea-pricing.md#download-pricing-for-an-enterprise-agreement).
+
 ### <a name="existingnew-account-owners-to-create-new-subscriptions"></a>Vorhandene/neue Kontobesitzer zum Erstellen neuer Abonnements
 
 **Schritt 1: Anmelden beim Konto**
@@ -190,6 +192,8 @@ Aktualisieren Sie den Abonnementnamen und den Dienstadministrator, und aktiviere
 Es kann bis zu 24 Stunden dauern, bis neue Abonnements in die Liste der Abonnements übertragen werden.
 
 Nur Kontobesitzer können Abonnements anzeigen und verwalten.
+
+Direktkunden können ein Abonnement im Azure-Portal erstellen und bearbeiten. Weitere Informationen finden Sie unter [Verwalten von Abonnements im Azure-Portal](direct-ea-administration.md#create-a-subscription).
 
 ### <a name="troubleshooting"></a>Problembehandlung
 

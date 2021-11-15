@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 10/11/2021
 ms.author: bagol
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 8f9a02149cb7229a201f8dfb9c11381b19d8e8ec
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 9dddb8118cc0bd328e19d73f05d2dd0eb01ebd4f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131023327"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131452754"
 ---
 # <a name="find-your-azure-sentinel-data-connector"></a>Ermitteln des richtigen Azure Sentinel-Datenconnectors
 
@@ -653,14 +653,9 @@ Konfigurieren Sie eNcore für das Streamen von Daten über TCP an den Log Analyt
 
 
 
-## <a name="domain-name-server"></a>Domänennamenserver
+## <a name="dns-preview"></a>DNS (Vorschau)
 
-| Connectorattribut | BESCHREIBUNG |
-| --- | --- |
-| **Datenerfassungsmethode** | **Azure-Dienst-zu-Dienst-Integration:<br>[Auf dem Log Analytics-Agent basierende Verbindungen](connect-azure-windows-microsoft-services.md#log-analytics-agent-based-connections)** |
-| **Log Analytics-Tabellen** | DnsEvents<br>DnsInventory |
-| **Unterstützt von** | Microsoft |
-| | |
+**Siehe [Windows DNS Server (Vorschau)](#windows-dns-server-preview).**
 
 ## <a name="dynamics-365"></a>Dynamics 365
 
@@ -1396,14 +1391,17 @@ Wenn eine noch längere Timeoutdauer erforderlich ist, sollten Sie ein Upgrade a
 
 | Connectorattribut | BESCHREIBUNG |
 | --- | --- |
-| **Datenerfassungsmethode** | **Azure-Dienst-zu-Dienst-Integration: <br>[Herstellen von Verbindungen mit Windows-Servern zum Sammeln von Sicherheitsereignissen](connect-windows-security-events.md)** (wichtigster Artikel zum Connector) |
+| **Datenerfassungsmethode** | **Azure-Dienst-zu-Dienst-Integration:<br>[Auf dem Log Analytics-Agent basierende Verbindungen](connect-azure-windows-microsoft-services.md?tabs=LAA#windows-agent-based-connections)** |
 | **Log Analytics-Tabellen** | SecurityEvents |
 | **Unterstützt von** | Microsoft |
 | | |
 
+
 Weitere Informationen finden Sie unter [Einrichtung der Arbeitsmappe für unsichere Protokolle](./get-visibility.md#use-built-in-workbooks).
 
 Siehe auch: [**Windows-Sicherheitsereignisse über AMA**](#windows-security-events-via-ama)-Connector basierend auf Azure Monitor-Agent (AMA)
+
+[Konfigurieren des **Connectors für Sicherheitsereignisse/Windows-Sicherheitsereignisse** zur **Erkennung ungewöhnlicher RDP-Anmeldungen**](#configure-the-security-events--windows-security-events-connector-for-anomalous-rdp-login-detection)
 
 ## <a name="sentinelone-preview"></a>SentinelOne (Vorschau)
 
@@ -1631,11 +1629,35 @@ Befolgen Sie die Anweisungen zum Abrufen der Anmeldeinformationen.
 | | |
 
 
+## <a name="windows-dns-server-preview"></a>Windows DNS Server (Vorschau)
+
+| Connectorattribut | BESCHREIBUNG |
+| --- | --- |
+| **Datenerfassungsmethode** | **Azure-Dienst-zu-Dienst-Integration:<br>[Auf dem Log Analytics-Agent basierende Verbindungen](connect-azure-windows-microsoft-services.md?tabs=LAA#windows-agent-based-connections)** |
+| **Log Analytics-Tabellen** | DnsEvents<br>DnsInventory |
+| **Unterstützt von** | Microsoft |
+| | |
+
+## <a name="windows-forwarded-events-preview"></a>Weitergeleitete Windows-Ereignisse (Vorschau)
+
+| Connectorattribut | BESCHREIBUNG |
+| --- | --- |
+| **Datenerfassungsmethode** | **Azure-Dienst-zu-Dienst-Integration:<br>[Auf dem Azure Monitor Agent basierende Verbindungen](connect-azure-windows-microsoft-services.md?tabs=AMA#windows-agent-based-connections)**<br><br>[Zusätzliche Anweisungen zum Bereitstellen des Connectors für Windows Weitergeleitete Ereignisse](#additional-instructions-for-deploying-the-windows-forwarded-events-connector) |
+| **Voraussetzungen** | Sie müssen Windows Event Collection (WEC) aktiviert und ausgeführt haben.<br>Installieren Sie Azure Monitor-Agent auf dem WEC-Computer. |
+| **Präfix für xPath-Abfragen** | "ForwardedEvents!*" |
+| **Log Analytics-Tabellen** | WindowsEvents |
+| **Unterstützt von** | Microsoft |
+| | |
+
+### <a name="additional-instructions-for-deploying-the-windows-forwarded-events-connector"></a>Zusätzliche Anweisungen zum Bereitstellen des Connectors für Windows Weitergeleitete Ereignisse
+
+Es wird empfohlen, die [ASIM-Parser (Azure Sentinel Information Model)](normalization.md) zu installieren, um vollständige Unterstützung für die Datennormalisierung sicherzustellen. Stellen Sie die ASIM-Parser aus dem [Azure Sentinel-GitHub-Repository](https://github.com/Azure/Azure-Sentinel/tree/master/Parsers/ASim%20WindowsEvent) mit der Schaltfläche **In Azure bereitstellen** hier bereit.
+
 ## <a name="windows-firewall"></a>Windows-Firewall
 
 | Connectorattribut | BESCHREIBUNG |
 | --- | --- |
-| **Datenerfassungsmethode** | **Azure-Dienst-zu-Dienst-Integration:<br>[Auf dem Log Analytics-Agent basierende Verbindungen](connect-azure-windows-microsoft-services.md#log-analytics-agent-based-connections)** |
+| **Datenerfassungsmethode** | **Azure-Dienst-zu-Dienst-Integration:<br>[Auf dem Log Analytics-Agent basierende Verbindungen](connect-azure-windows-microsoft-services.md?tabs=LAA#windows-agent-based-connections)** |
 | **Log Analytics-Tabellen** | WindowsFirewall |
 | **Unterstützt von** | Microsoft |
 | | |
@@ -1644,12 +1666,38 @@ Befolgen Sie die Anweisungen zum Abrufen der Anmeldeinformationen.
 
 | Connectorattribut | BESCHREIBUNG |
 | --- | --- |
-| **Datenerfassungsmethode** | **Azure-Dienst-zu-Dienst-Integration: <br>[Herstellen von Verbindungen mit Windows-Servern zum Sammeln von Sicherheitsereignissen](connect-windows-security-events.md?tabs=AMA)** (wichtigster Artikel zum Connector) |
+| **Datenerfassungsmethode** | **Azure-Dienst-zu-Dienst-Integration:<br>[Auf dem Azure Monitor Agent basierende Verbindungen](connect-azure-windows-microsoft-services.md?tabs=AMA#windows-agent-based-connections)** |
+| **Präfix für xPath-Abfragen** | "Security!*" |
 | **Log Analytics-Tabellen** | SecurityEvents |
 | **Unterstützt von** | Microsoft |
 | | |
 
+
 Siehe auch: [**Sicherheitsereignisse über Agenten**](#security-events-via-legacy-agent-windows)-Connector einer Vorgängerversion.
+
+### <a name="configure-the-security-events--windows-security-events-connector-for-anomalous-rdp-login-detection"></a>Konfigurieren des Connectors für Sicherheitsereignisse/Windows-Sicherheitsereignisse zur Erkennung ungewöhnlicher RDP-Anmeldungen
+
+> [!IMPORTANT]
+> Die Erkennung ungewöhnlicher RDP-Anmeldungen befindet sich derzeit in der öffentlichen Vorschauphase.
+> Dieses Feature wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen.
+> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Azure Sentinel kann Machine Learning (ML) auf die Daten von sicherheitsrelevanten Ereignissen anwenden, um ungewöhnliche RDP-Anmeldeaktivitäten (Remotedesktopprotokoll) zu erkennen. Mögliche Szenarien:
+
+- **Ungewöhnliche IP-Adresse**: Die IP-Adresse ist in den letzten 30 Tagen nur selten oder gar nicht aufgetreten.
+
+- **Ungewöhnliche Geolocation**: IP-Adresse, Ort, Land und ASN sind in den letzten 30 Tagen nur selten oder gar nicht aufgetreten.
+
+- **Neuer Benutzer**: Ein neuer Benutzer meldet sich über eine IP-Adresse oder Geolocation an, mit deren Auftreten (einzeln oder gemeinsam) anhand der Daten der letzten 30 Tage nicht gerechnet wurde.
+
+**Konfigurationsanweisungen**
+
+1. Sie müssen RDP-Anmeldedaten (Ereignis-ID 4624) über den Datenconnector für **Sicherheitsereignisse** oder für **Windows-Sicherheitsereignisse** erfassen. Stellen Sie sicher, dass Sie neben „Keine“ einen [Ereignissatz](windows-security-event-id-reference.md) ausgewählt oder eine Datensammlungsregel erstellt haben, die diese Ereignis-ID umfasst, um in Azure Sentinel zu streamen.
+
+1. Wählen Sie im Azure Sentinel-Portal die Option **Analysen** und dann die Registerkarte **Regelvorlagen** aus. Wählen Sie die Regel **(Vorschau) Erkennung anomaler RDP-Anmeldungen** aus, und bewegen Sie den Schieberegler **Status** auf **Aktiviert**.
+
+    > [!NOTE]
+    > Da für den Machine Learning-Algorithmus zum Erstellen eines Basisprofils für das Benutzerverhalten die Daten von 30 Tagen benötigt werden, müssen Sie die Erfassung von Windows-Sicherheitsereignissen für 30 Tage zulassen, bevor Incidents erkannt werden können.
 
 ## <a name="workplace-from-facebook-preview"></a>Workplace from Facebook (Vorschau)
 

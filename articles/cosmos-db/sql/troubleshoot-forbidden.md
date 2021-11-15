@@ -8,12 +8,12 @@ ms.date: 10/06/2021
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: dcef0eccc6ca314c51b436025fb10c25dbbe04fa
-ms.sourcegitcommit: e82ce0be68dabf98aa33052afb12f205a203d12d
+ms.openlocfilehash: 9a5f1590e73388429f613a1c6b078f5c315397d6
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2021
-ms.locfileid: "129658232"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130238942"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-forbidden-exceptions"></a>Diagnostizieren und Behandeln von Azure Cosmos DB-Ausnahmen des Typs „Unzulässig“
 [!INCLUDE[appliesto-sql-api](../includes/appliesto-sql-api.md)]
@@ -21,19 +21,32 @@ ms.locfileid: "129658232"
 Der HTTP-Statuscode 403 bedeutet, dass die Anforderung unzulässig ist und nicht abgeschlossen werden kann.
 
 ## <a name="firewall-blocking-requests"></a>Durch Firewall blockierte Anforderungen
-Bei diesem Szenario tauchen häufig Fehler wie die folgenden auf:
 
-```
-Request originated from client IP {...} through public internet. This is blocked by your Cosmos DB account firewall settings.
-```
+Anforderungen auf Datenebene können über die folgenden drei Wege zu Cosmos DB gelangen:
 
-```
-Request is blocked. Please check your authorization token and Cosmos DB account firewall settings
-```
+- Öffentliches Internet (IPv4)
+- Dienstendpunkt
+- Privater Endpunkt
 
-### <a name="solution"></a>Lösung
-Vergewissern Sie sich, dass Ihre aktuellen [Firewalleinstellungen](../how-to-configure-firewall.md) ordnungsgemäß sind und die IP-Adressen oder Netzwerke einschließen, über die Sie versuchen, eine Verbindung herzustellen.
-Wenn Sie sie vor Kurzem aktualisiert haben, bedenken Sie, dass das Übernehmen von Änderungen **bis zu 15 Minuten** dauern kann.
+Wenn eine Anforderung auf Datenebene mit dem Fehler „403 Forbidden“ blockiert wird, gibt die Fehlermeldung an, über welchen der drei Pfade die Anforderung an Cosmos DB übermittelt wurde.
+
+- `Request originated from client IP {...} through public internet.`
+- `Request originated from client VNET through service endpoint.`
+- `Request originated from client VNET through private endpoint.`
+
+### <a name="solution"></a>Projektmappe
+
+Sie müssen verstehen, welcher Pfad **erwartungsgemäß** die Anforderung an Cosmos DB übermittelt.
+   - Wenn die Fehlermeldung zeigt, dass die Anforderung nicht über den erwarteten Pfad an Cosmos DB gesendet wurde, liegt das Problem wahrscheinlich bei der clientseitigen Einrichtung. Überprüfen Sie Ihre clientseitige Einrichtung mithilfe der folgenden Dokumentationen.
+      - Öffentliches Internet: [Konfigurieren der IP-Firewall in Azure Cosmos DB](../how-to-configure-firewall.md)
+      - Dienstendpunkt: [Konfigurieren des Zugriffs auf Azure Cosmos DB über virtuelle Netzwerke (VNet)](../how-to-configure-vnet-service-endpoint.md). Wenn Sie beispielsweise erwarten, einen Dienstendpunkt zu verwenden, aber die Anforderung über das öffentliche Internet an Cosmos DB übermittelt wurde, wurde vom Subnetz, das der Client ausgeführt hat, möglicherweise nicht der Dienstendpunkt für Cosmos DB aktiviert.
+      - Privater Endpunkt: [Konfigurieren von Azure Private Link für ein Azure Cosmos-Konto](../how-to-configure-private-endpoints.md). Wenn Sie beispielsweise erwarten, einen privaten Endpunkt zu verwenden, aber die Anforderung über das öffentliche Internet an Cosmos DB übermittelt wurde, wurde das DNS auf dem virtuellen Computer möglicherweise nicht für die Auflösung des Kontoendpunkts an die private IP-Adresse konfiguriert, sodass stattdessen die öffentliche IP-Adresse des Kontos verwendet wurde.
+   - Wenn die Anforderungen über den erwarteten Pfad an Cosmos DB übermittelt wurde, wurde sie blockiert, da die Quellnetzwerkidentität nicht für das Konto konfiguriert wurde. Überprüfen Sie die Einstellungen des Kontos abhängig vom Pfad, über den die Anforderung an Cosmos DB übermittelt wurde.
+      - Öffentliches Internet: Überprüfen Sie den [öffentlichen Netzwerkzugriff](../how-to-configure-private-endpoints.md#blocking-public-network-access-during-account-creation) des Kontos sowie die Konfigurationen für den IP-Adressbereichfilter.
+      - Dienstendpunkt: Überprüfen Sie den [öffentlichen Netzwerkzugriff](../how-to-configure-private-endpoints.md#blocking-public-network-access-during-account-creation) des Kontos sowie die Konfigurationen für den VNet-Filter.
+      - Privater Endpunkt: Überprüfen Sie die Konfiguration des privaten Kontoendpunkts und die private DNS-Konfiguration des Clients. Möglicherweise ist der Grund dafür, dass über einen privaten Endpunkt, der für ein anderes Konto eingerichtet ist, auf das Konto zugegriffen wird.
+
+Wenn Sie die Firewallkonfigurationen des Kontos vor Kurzem aktualisiert haben, bedenken Sie, dass es **bis zu 15 Minuten** dauern kann, bis die Änderungen übernommen werden.
 
 ## <a name="partition-key-exceeding-storage"></a>Partitionsschlüssel überschreitet Speicher
 Bei diesem Szenario tauchen häufig Fehler wie die folgenden auf:

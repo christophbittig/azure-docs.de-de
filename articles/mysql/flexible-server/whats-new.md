@@ -7,18 +7,18 @@ ms.author: jtoland
 ms.custom: mvc, references_regions
 ms.topic: conceptual
 ms.date: 10/12/2021
-ms.openlocfilehash: 8406f9b551d80959db983a3837b441dc9f965782
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 8711727d007eca452c67f7bb79913f3ab29efa77
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131005269"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131500144"
 ---
-# <a name="whats-new-in-azure-database-for-mysql---flexible-server-preview"></a>Neuerungen in Azure Database for MySQL Flexible Server (Vorschauversion)
+# <a name="whats-new-in-azure-database-for-mysql---flexible-server-"></a>Neuerungen in Azure Database for MySQL Flexible Server
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-[Azure Database for MySQL Flexible Server](./overview.md#azure-database-for-mysql---flexible-server-preview) ist ein Bereitstellungsmodus, der mehr Kontrolle und Flexibilität bei der Datenbankverwaltung und den Konfigurationseinstellungen als der Single Server-Bereitstellungsmodus bietet. Der Dienst unterstützt derzeit die Community-Version von MySQL 5.7 und 8.0.
+[Azure Database for MySQL Flexible Server](./overview.md) ist ein Bereitstellungsmodus, der mehr Kontrolle und Flexibilität bei der Datenbankverwaltung und den Konfigurationseinstellungen als der Single Server-Bereitstellungsmodus bietet. Der Dienst unterstützt derzeit die Community-Version von MySQL 5.7 und 8.0.
 
 In diesem Artikel werden neue Releases und Features in Azure Database for MySQL Flexible Server ab Januar 2021 zusammengefasst. Auflistungen werden in umgekehrter chronologischer Reihenfolge angezeigt, die neuesten Updates zuerst.
 
@@ -54,8 +54,20 @@ In diesem Artikel werden neue Releases und Features in Azure Database for MySQL 
     
     Terraform-Unterstützung für MySQL Flexible Server ist jetzt mit der [neuesten Version v2.81.0 von azurerm](https://github.com/hashicorp/terraform-provider-azurerm/blob/v2.81.0/CHANGELOG.md) verfügbar. Das detaillierte Referenzdokument für die Bereitstellung und Verwaltung eines MySQL Flexible Servers mit Terraform finden Sie [hier](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mysql_flexible_server). Alle Bugs oder bekannten Probleme können [hier](https://github.com/hashicorp/terraform-provider-azurerm/issues) gefunden oder gemeldet werden.
 
+- **Statischer Parameter „innodb_log_file_size“ ist jetzt konfigurierbar**
+
+    - [innodb_log_file_size](https://dev.mysql.com/doc/refman/8.0/en/innodb-parameters.html#sysvar_innodb_log_file_size) kann jetzt mit einem der folgenden Werte konfiguriert werden: 256 MB, 512 MB, 1 GB oder 2 GB. Da es sich um einen statischen Parameter handelt, ist ein Serverneustart erforderlich. Wenn Sie den Parameter „innodb_log_file_size“ vom Standardwert geändert haben, überprüfen Sie, ob der Wert von „show global status like 'innodb_buffer_pool_pages_dirty'“ (globalen Status wie „innodb_buffer_pool_pages_dirty“ anzeigen) 30 Sekunden lang auf 0 bleibt, um eine Verzögerung des Neustarts zu vermeiden. Weitere Informationen finden Sie unter [Serverparameter in Azure Database for MySQL](./concepts-server-parameters.md).
+
+- **Verfügbarkeit in zwei weiteren Azure-Regionen**
+
+   Azure Database for MySQL Flexible Server ist jetzt in den folgenden Azure-Regionen verfügbar:
+
+   - USA, Westen 3
+   - USA, Norden-Mitte [Weitere Informationen](overview.md#azure-regions).
+
 - **Bekannte Probleme**
-    - Wenn die primäre Region ausfällt, können keine georedundanten Server in der jeweiligen geografisch gekoppelten Region erstellt werden, da der Speicher nicht in der primären Region bereitgestellt werden kann. Sie müssen warten, bis die primäre Region verfügbar ist, um georedundante Server in der geografisch gekoppelten Region bereitstellen zu können. 
+    - Wenn die primäre Region ausfällt, können keine georedundanten Server in der jeweiligen geografisch gekoppelten Region erstellt werden, da der Speicher nicht in der primären Region bereitgestellt werden kann. Sie müssen warten, bis die primäre Region verfügbar ist, um georedundante Server in der geografisch gekoppelten Region bereitstellen zu können.
+    
 
 ## <a name="september-2021"></a>September 2021
 
@@ -214,7 +226,7 @@ Dieses Release von Azure Database for MySQL Flexible Server enthält die folgend
 
 - **Fixes für Bereitstellungsfehler bei der Servererstellung in virtuellen Netzwerken mit privatem Zugriff**
 
-  Alle Bereitstellungsfehler, die beim Erstellen von Server in virtuellen Netzwerken aufgetreten sind, wurden behoben. Mit diesem Release können Benutzer*innen stets erfolgreich flexible Server mit privatem Zugriff erstellen.  
+  Alle Bereitstellungsfehler, die beim Erstellen von Server in virtuellen Netzwerken aufgetreten sind, wurden behoben. Mit diesem Release können Benutzer*innen stets erfolgreich flexible Server mit privatem Zugriff erstellen.
 
 ## <a name="march-2021"></a>März 2021
 

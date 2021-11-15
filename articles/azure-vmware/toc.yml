@@ -58,7 +58,7 @@
       items:
         - name: 'Schützen, Überwachen und Verwalten virtueller Computer'
           href: integrate-azure-native-services.md
-        - name: Integrieren von Azure Security Center
+        - name: Integrieren von Microsoft Defender für Cloud
           href: azure-security-integration.md
         - name: Integrieren von Azure NetApp Files
           href: netapp-files-with-azure-vmware-solution.md

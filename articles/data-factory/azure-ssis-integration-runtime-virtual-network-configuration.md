@@ -4,16 +4,16 @@ description: Hier erfahren Sie, wie Sie ein virtuelles Netzwerk für die Injekti
 ms.service: data-factory
 ms.subservice: integration-services
 ms.topic: conceptual
-ms.date: 10/27/2021
+ms.date: 11/03/2021
 author: swinarko
 ms.author: sawinark
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 32930edc0aa02fa537380ceadffb04a1fd5729da
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: e3683011794e89acbac6bbbb985c7cb85ebd9ebd
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131068791"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131475982"
 ---
 # <a name="configure-a-virtual-network-for-injection-of-azure-ssis-integration-runtime"></a>Konfigurieren eines virtuellen Netzwerks für die Injektion von Azure-SSIS Integration Runtime
 
@@ -35,6 +35,8 @@ In dieser Tabelle werden die Unterschiede zwischen den Injektionsmethoden „Sta
 | **Ausgehender Datenverkehr** | Port *443* muss mit dem Diensttag *AzureCloud* als Ziel für TCP-Datenverkehr geöffnet sein. | Port *443* muss mit dem Diensttag *DataFactoryManagement* als Ziel für TCP-Datenverkehr geöffnet sein. | 
 | **Ressourcensperre** | Dies ist in der Ressourcengruppe nicht zulässig. | Dies ist im virtuellen Netzwerk nicht zulässig. | 
 | **Azure-SSIS-IRs pro virtuellem Netzwerk** | Unbegrenzt. | Nur eine Runtime. | 
+
+:::image type="content" source="media/join-azure-ssis-integration-runtime-virtual-network/standard-express-virtual-network-injection.png" alt-text="Screenshot der Injektionsmethoden „Standard“ und „Express“ für virtuelle Netzwerke" lightbox="media/join-azure-ssis-integration-runtime-virtual-network/standard-express-virtual-network-injection.png":::
 
 Ihr virtuelles Netzwerk muss basierend auf Ihrer Injektionsmethode anders konfiguriert werden. Wenn Sie die Methode „Express“ verwenden, finden Sie weitere Informationen im Artikel [Injektionsmethode „Express“ für virtuelle Netzwerke](azure-ssis-integration-runtime-express-virtual-network-injection.md). Falls dies nicht der Fall ist, finden Sie Details im Artikel [Injektionsmethode „Standard“ für virtuelle Netzwerke](azure-ssis-integration-runtime-standard-virtual-network-injection.md).
   
@@ -88,13 +90,13 @@ Mithilfe des Azure-Portals können Sie den Benutzer*innen, die Azure-SSIS IR ers
 
 - [Injektionsmethode „Express“ für virtuelle Netzwerke](azure-ssis-integration-runtime-express-virtual-network-injection.md)
 - [Injektionsmethode „Standard“ für virtuelle Netzwerke](azure-ssis-integration-runtime-standard-virtual-network-injection.md)
-- [Verknüpfen von Azure-SSIS Integration Runtime mit einem virtuellen Netzwerk mit einer Azure Data Factory Studio-Benutzeroberfläche](join-azure-ssis-integration-runtime-virtual-network-ui.md)
-- [Verknüpfen von Azure-SSIS Integration Runtime mit einem virtuellen Netzwerk mithilfe von Azure PowerShell](join-azure-ssis-integration-runtime-virtual-network-powershell.md)
+- [Verknüpfen einer Azure-SSIS IR mit einem virtuellen Netzwerk über die ADF-Benutzeroberfläche](join-azure-ssis-integration-runtime-virtual-network-ui.md)
+- [Verknüpfen von Azure-SSIS IR mit einem virtuellen Netzwerk über Azure PowerShell](join-azure-ssis-integration-runtime-virtual-network-powershell.md)
 
 Weitere Informationen zur Azure-SSIS IR finden Sie in den folgenden Artikeln: 
 
 - [Azure-SSIS IR](concepts-integration-runtime.md#azure-ssis-integration-runtime). Dieser Artikel enthält allgemeine konzeptionelle Informationen zu IRs, einschließlich der Azure-SSIS IR. 
-- [Tutorial: Bereitstellen von SSIS-Paketen in Azure](tutorial-deploy-ssis-packages-azure.md). Dieses Tutorial enthält ausführliche Anweisungen zum Erstellen einer Azure-SSIS IR. Dabei wird der Azure-SQL-Datenbank-Server zum Hosten von SSISDB verwendet. 
-- [Erstellen einer Azure-SSIS IR](create-azure-ssis-integration-runtime.md). Dieser Artikel baut auf dem Tutorial auf. Er enthält Anweisungen zur Verwendung des Azure-SQL-Datenbank-Servers, der mit einem VNET-Dienstendpunkt, einer IP-Firewallregel, einem privaten Endpunkt oder einer Azure SQL Managed Instance-Instanz konfiguriert wurde und einem virtuellen Netzwerk zum Hosten von SSISDB beitritt. Außerdem wird veranschaulicht, wie Sie Azure-SSIS IR mit einem virtuellen Netzwerk verknüpfen. 
+- [Tutorial: Bereitstellen von SSIS-Paketen in Azure](tutorial-deploy-ssis-packages-azure.md). Dieses Tutorial enthält ausführliche Anweisungen zum Erstellen einer Azure-SSIS IR. Es verwendet den Azure SQL-Datenbank-Server, um SSISDB zu hosten. 
+- [Erstellen einer Azure-SSIS IR](create-azure-ssis-integration-runtime.md). Dieser Artikel baut auf dem Tutorial auf. Er enthält Anweisungen zum Verwenden eines Azure SQL-Datenbank-Servers, der mit einem Endpunkt eines virtuellen Netzwerks/einer IP-Firewallregel/einem privaten Endpunkt oder einer Azure SQL Managed Instance-Instanz konfiguriert ist, die mit einem virtuellen Netzwerk zum Hosten von SSISDB verknüpft wird. Außerdem wird veranschaulicht, wie Sie Azure-SSIS IR mit einem virtuellen Netzwerk verknüpfen. 
 - [Überwachen einer Azure-SSIS-Integrationslaufzeit](monitor-integration-runtime.md#azure-ssis-integration-runtime): In diesem Artikel erfahren Sie, wie Sie Informationen zur Azure-SSIS IR abrufen und verstehen.
 - [Verwalten einer Azure-SSIS-Integrationslaufzeit](manage-azure-ssis-integration-runtime.md): In diesem Artikel wird beschrieben, wie Sie die Azure-SSIS IR beenden, starten oder löschen. Es wird zudem gezeigt, wie Sie Ihre Azure-SSIS Integration Runtime aufskalieren, indem Sie weitere Knoten hinzufügen.

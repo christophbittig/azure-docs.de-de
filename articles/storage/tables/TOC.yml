@@ -162,7 +162,7 @@
                   href: ../common/transport-layer-security-configure-minimum-version.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
                 - name: Konfigurieren der TLS-Version für eine Clientanwendung
                   href: ../common/transport-layer-security-configure-client-version.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-        - name: Konfigurieren von Azure Defender für Bedrohungsschutz
+        - name: Aktivieren des Bedrohungsschutzes mit Microsoft Defender für Speicher
           href: ../common/azure-defender-storage-configure.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
     - name: Verwalten der Datenredundanz
       items:
