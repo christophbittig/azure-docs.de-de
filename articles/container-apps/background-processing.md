@@ -1,19 +1,19 @@
 ---
 title: 'Tutorial: Bereitstellen einer Hintergrundverarbeitungsanwendung mit Azure Container Apps Preview'
 description: Hier erfahren Sie, wie Sie mit Azure Container Apps eine Anwendung erstellen, die kontinuierlich im Hintergrund ausgeführt wird.
-services: container-apps
+services: app-service
 author: jorgearteiro
-ms.service: container-apps
+ms.service: app-service
 ms.topic: conceptual
 ms.date: 11/02/2021
 ms.author: joarteir
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: ca9fa15259222651570c1909f6c4557c79a87298
-ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
+ms.openlocfilehash: 5c5cda6e2793ca70c1d53b8a4b4ce4235fa07efd
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "132028000"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131577667"
 ---
 # <a name="tutorial-deploy-a-background-processing-application-with-azure-container-apps-preview"></a>Tutorial: Bereitstellen einer Hintergrundverarbeitungsanwendung mit Azure Container Apps Preview
 
@@ -88,7 +88,7 @@ az login
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```azurecli
+```powershell
 az login
 ```
 
@@ -104,7 +104,7 @@ az upgrade
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```azurecli
+```powershell
 az upgrade
 ```
 
@@ -121,14 +121,14 @@ az extension add \
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```azurecli
+```powershell
 az extension add `
   --source https://workerappscliextension.blob.core.windows.net/azure-cli-extension/containerapp-0.2.0-py2.py3-none-any.whl
 ```
 
 ---
 
-Die Erweiterung wurde installiert. Registrieren Sie nun den Namespace `Microsoft.Web`.
+Nachdem die Erweiterung installiert wurde, registrieren Sie den `Microsoft.Web` Namespace.
 
 # <a name="bash"></a>[Bash](#tab/bash)
 
@@ -138,7 +138,7 @@ az provider register --namespace Microsoft.Web
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```azurecli
+```powershell
 az provider register --namespace Microsoft.Web
 ```
 
@@ -156,7 +156,7 @@ az group create \
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```azurecli
+```powershell
 az group create `
   --name $RESOURCE_GROUP `
   --location $LOCATION
@@ -184,7 +184,7 @@ az monitor log-analytics workspace create \
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```azurecli
+```powershell
 az monitor log-analytics workspace create `
   --resource-group $RESOURCE_GROUP `
   --workspace-name $LOG_ANALYTICS_WORKSPACE
@@ -231,7 +231,7 @@ az containerapp env create \
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```azurecli
+```powershell
 az containerapp env create `
   --name $CONTAINERAPPS_ENVIRONMENT `
   --resource-group $RESOURCE_GROUP `
@@ -259,7 +259,7 @@ az storage account create \
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```azurecli
+```powershell
 az storage account create `
   --name $STORAGE_ACCOUNT `
   --resource-group $RESOURCE_GROUP `
@@ -299,7 +299,7 @@ az storage queue create \
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```azurecli
+```powershell
 az storage queue create `
   --name "myqueue" `
   --account-name $STORAGE_ACCOUNT `
@@ -321,7 +321,7 @@ az storage message put \
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```azurecli
+```powershell
 az storage message put `
   --content "Hello Queue Reader App" `
   --queue-name "myqueue" `
@@ -428,7 +428,7 @@ az deployment group create --resource-group "$RESOURCE_GROUP" \
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```azurecli
+```powershell
 az deployment group create --resource-group "$RESOURCE_GROUP" `
   --template-file ./queue.json `
   --parameters `
@@ -485,7 +485,7 @@ az group delete \
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-```azurecli
+```powershell
 az group delete `
   --resource-group $RESOURCE_GROUP
 ```
