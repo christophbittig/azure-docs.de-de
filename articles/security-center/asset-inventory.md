@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 11/02/2021
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 795d54406230dbc7ea6e9666cfef51c8f96219fe
-ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
+ms.openlocfilehash: 548e622548f7b55259cb08a5937d45ab2766df3f
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131576185"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132061114"
 ---
 # <a name="use-asset-inventory-to-manage-your-resources-security-posture"></a>Verwenden Sie die Bestandsaufnahme zur Verwaltung der Sicherheitslage Ihrer Ressourcen
 
@@ -74,7 +74,7 @@ Sobald Sie Filter angewendet haben, werden die Zusammenfassungswerte aktualisier
 > [!TIP]
 > Die KQL-Dokumentation bietet eine Datenbank mit einigen Beispieldaten zusammen mit einigen einfachen Abfragen, um ein „Gefühl“ für die Sprache zu bekommen. [Weitere Informationen finden Sie in diesem KQL-Tutorial](/azure/data-explorer/kusto/query/tutorial?pivots=azuredataexplorer).
 
-**Ressourcenverwaltungsoptionen** Mit dem Ressourcenbestand können Sie komplexe Suchabfragen durchführen. Wenn Sie die Ressourcen gefunden haben, die Ihren Abfragen entsprechen, bietet der Ressourcenbestand Verknüpfungen für Vorgänge wie z. B.:
+**Ressourcenverwaltungsoptionen**: Wenn Sie die Ressourcen gefunden haben, die Ihren Abfragen entsprechen, bietet der Ressourcenbestand Verknüpfungen für Vorgänge wie z. B.:
 
 - Zuweisen von Tags zu den gefilterten Ressourcen: Aktivieren Sie die Kontrollkästchen neben den Ressourcen, die Sie mit einem Tag versehen möchten.
 - Durchführen des Onboardings für neue Server in Defender für Cloud: Verwenden Sie die Symbolleistenschaltfläche **Neue Azure-Server hinzufügen**.

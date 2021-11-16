@@ -8,22 +8,18 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 09/15/2021
-ms.openlocfilehash: 7f68da581378d9050ad0026930196f09b744371f
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 8ae33838b4dff052006f1124eea3dbec59cc7666
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128604640"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131844267"
 ---
-# <a name="azure-cli-samples-for-azure-database-for-mysql---flexible-server-preview"></a>Azure CLI-Beispiele für Azure Database for MySQL – Flexible Server (Vorschau) 
+# <a name="azure-cli-samples-for-azure-database-for-mysql---flexible-server"></a>Azure CLI-Beispiele für Azure Database for MySQL – Flexible Server
 
 [!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
 Die folgende Tabelle enthält Links zu Azure CLI-Beispielskripts für Azure Database for MySQL – Flexible Server.
-
-> [!IMPORTANT]
-> Azure Database for MySQL Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
-
 
 | Beispiellink | BESCHREIBUNG  |
 |---|---|

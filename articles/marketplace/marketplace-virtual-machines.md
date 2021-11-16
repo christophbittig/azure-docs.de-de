@@ -7,19 +7,22 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
-ms.date: 10/19/2020
-ms.openlocfilehash: 4278a3b0e022015a1e12542cac7699590150b5e4
-ms.sourcegitcommit: 3941df51ce4fca760797fa4e09216fcfb5d2d8f0
+ms.date: 10/26/2021
+ms.openlocfilehash: 2f8aa4612d386995f39fccceebdaee67e4afe9dd
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2021
-ms.locfileid: "114602576"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131848342"
 ---
 # <a name="plan-a-virtual-machine-offer"></a>Planen eines VM-Angebots
 
 In diesem Artikel werden die verschiedenen Möglichkeiten und Anforderungen für das Veröffentlichen eines VM-Angebots (Virtual Machine, virtueller Computer) im kommerziellen Marketplace erläutert. VM-Angebote sind transaktionsfähige Angebote, die über den Azure Marketplace bereitgestellt und abgerechnet werden.
 
 Erstellen Sie, bevor Sie beginnen, [ein Konto für den kommerziellen Marketplace in Partner Center](create-account.md), und stellen Sie sicher, dass Ihr Konto für das kommerzielle Marketplace-Programm registriert ist.
+
+> [!TIP]
+> Die Ansicht des Kunden für den Kauf im kommerziellen Marketplace finden Sie unter [Kauf im Azure Marketplace](/marketplace/azure-purchasing-invoicing).
 
 ### <a name="technical-fundamentals"></a>Technische Grundlagen
 

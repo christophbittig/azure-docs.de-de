@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 8e4bc76203ee84d71f4a9f201dac6e63d4728c34
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: a6a9f2c4e480efdbb025fb3edf98dc7e6f599081
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130238058"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132025948"
 ---
 # <a name="troubleshoot"></a>Problembehandlung
 
@@ -202,6 +202,10 @@ Ein weiterer Grund für instabile Hologramme (wabernde, verzerrte, zitternde ode
 Ein anderer Wert, der untersucht werden kann, ist `ServiceStatistics.LatencyPoseToReceiveAvg`. Er sollte konstant weniger als 100 ms betragen. Höhere Werte können darauf hinweisen, dass Sie mit einem zu weit entfernten Rechenzentrum verbunden sind.
 
 Eine Liste der möglichen Entschärfungen finden Sie in den [Richtlinien für die Netzwerkkonnektivität](../reference/network-requirements.md#guidelines-for-network-connectivity).
+
+## <a name="local-content-uis--on-hololens-2-renders-with-significantly-more-distortion-artifacts-than-without-arr"></a>Lokale Inhalte (Benutzeroberflächen, ...) in HoloLens 2 werden mit deutlich mehr Verzerrungsartefakten gerendert als ohne ARR
+
+Dies ist eine Standardeinstellung, bei der die Projektionsqualität lokaler Inhalte zugunsten der Leistung zur Laufzeit gemindert ist. Im Kapitel über die [Posenmodi für die Neuprojektion](../overview/features/late-stage-reprojection.md#reprojection-pose-modes) erfahren Sie, wie der Projektionsmodus geändert werden kann, sodass lokale Inhalte auf der gleichen Qualitätsstufe der Neuprojektion gerendert wird wie ohne ARR.
 
 ## <a name="z-fighting"></a>Z-Fighting
 

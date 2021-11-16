@@ -7,12 +7,12 @@ ms.service: serviceconnector
 ms.topic: quickstart
 ms.date: 10/29/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 8d8905d58d6a67609fc28bb5cf680a66a51c2797
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 3b269e9a8967c3a0134fbac78ac734c98e7c479b
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131456991"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131842547"
 ---
 # <a name="quickstart-create-a-service-connection-in-spring-cloud-with-the-azure-cli"></a>Schnellstart: Erstellen einer Dienstverbindung in Spring Cloud mit der Azure-Befehlszeilenschnittstelle
 
@@ -22,7 +22,7 @@ Die [Azure-Befehlszeilenschnittstelle (Azure CLI)](/cli/azure) setzt sich aus B
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-- Für diese Schnellstartanleitung ist mindestens Version 2.22.0 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
+- Für diese Schnellstartanleitung ist mindestens Version 2.30.0 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 - In diesem Schnellstart wird davon ausgegangen, dass Sie bereits über mindestens eine in Azure ausgeführte Spring Cloud-Anwendung verfügen. Wenn Sie nicht über eine Spring Cloud-Anwendung verfügen, [erstellen Sie eine](../spring-cloud/quickstart.md).
 
@@ -33,12 +33,14 @@ Sie verwenden den Azure CLI-Befehl [az spring-cloud connection](), um Dienstverb
 
 ```azurecli-interactive
 az provider register -n Microsoft.ServiceLinker
-az spring-cloud connection list-support-types
+az spring-cloud connection list-support-types --output table
 ```
 
 ## <a name="create-a-service-connection"></a>Erstellen einer Dienstverbindung
 
-Verwenden Sie den Azure CLI-Befehl [az spring-cloud connection](), um eine Dienstverbindung mit einem Blobspeicher zu erstellen, und geben Sie dabei die folgenden Informationen an:
+#### <a name="using-access-key"></a>[Verwenden eines Zugriffsschlüssels](#tab/Using-access-key)
+
+Verwenden Sie den Azure CLI-Befehl [az spring-cloud connection](), um eine Dienstverbindung mit einem Blobspeicher mit Zugriffsschlüssel zu erstellen, und geben Sie dabei die folgenden Informationen an:
 
 - **Spring Cloud-Ressourcengruppenname:** Ressourcengruppenname von Spring Cloud
 - **Spring Cloud Name:** Name Ihrer Spring Cloud-Instanz
@@ -47,11 +49,33 @@ Verwenden Sie den Azure CLI-Befehl [az spring-cloud connection](), um eine Diens
 - **Speicherkontoname:** Kontoname Ihres Blobspeichers.
 
 ```azurecli-interactive
-az spring-cloud connection create storage-blob -g <spring_cloud_resource_group> --service <spring_cloud_name> --app <app_name> --deployment default --tg <storage_resource_group> --account <storage_account_name> --system-identity
+az spring-cloud connection create storage-blob --secret
 ```
 
 > [!NOTE]
-> Wenn Sie nicht über einen Blobspeicher verfügen, können Sie `az spring-cloud connection create storage-blob -g <app_service_resource_group> -n <app_service_name> --tg <storage_resource_group> --account <storage_account_name> --system-identity --new` ausführen, um einen neuen zu erstellen und diesen direkt mit Ihrem App-Dienst zu verbinden.
+> Wenn Sie nicht über einen Blobspeicher verfügen, können Sie `az spring-cloud connection create storage-blob --new --secret` ausführen, um einen neuen zu erstellen und diesen direkt mit Ihrem App-Dienst zu verbinden.
+
+#### <a name="using-managed-identity"></a>[Verwenden einer verwalteten Identität](#tab/Using-Managed-Identity)
+
+> [!IMPORTANT]
+> Für die Verwendung einer verwalteten Identität müssen Sie über die Berechtigung für die [Azure AD-Rollenzuweisung](/active-directory/managed-identities-azure-resources/howto-assign-access-portal) verfügen. Wenn Sie nicht über die Berechtigung verfügen, ist die Verbindungserstellung nicht erfolgreich. Sie können Ihren Abonnementbesitzer nach der Berechtigung fragen oder den Zugriffsschlüssel verwenden, um die Verbindung zu erstellen.
+
+Verwenden Sie den Azure CLI-Befehl [az spring-cloud connection](), um eine Dienstverbindung mit einem Blobspeicher mit systemseitig zugewiesene verwaltete Identität zu erstellen, und geben Sie dabei die folgenden Informationen an:
+
+- **Spring Cloud-Ressourcengruppenname:** Ressourcengruppenname von Spring Cloud
+- **Spring Cloud Name:** Name Ihrer Spring Cloud-Instanz
+- **Spring Cloud-App-Name:** Name Ihrer Spring Cloud-App, die eine Verbindung mit dem Zieldienst herstellt
+- **Zieldienst-Ressourcengruppenname:** Ressourcengruppenname des Blobspeichers
+- **Speicherkontoname:** Kontoname Ihres Blobspeichers.
+
+```azurecli-interactive
+az spring-cloud connection create storage-blob --system-identity
+```
+
+> [!NOTE]
+> Wenn Sie nicht über einen Blobspeicher verfügen, können Sie `az spring-cloud connection create --system-identity --new --secret` ausführen, um einen neuen zu erstellen und diesen direkt mit Ihrem App-Dienst zu verbinden.
+
+---
 
 ## <a name="view-connections"></a>Anzeigen von Verbindungen
 

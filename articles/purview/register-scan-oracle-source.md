@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: 6387149cc9f2392d2dccf382280ca7559593a6cc
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 935fcf05624fd1849ae62109dbc22a97d4987676
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131441988"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131847278"
 ---
 # <a name="connect-to-and-manage-oracle-in-azure-purview"></a>Herstellen einer Verbindung mit und Verwalten von Oracle in Azure Purview
 
@@ -23,10 +23,11 @@ In diesem Artikel wird beschrieben, wie Sie Oracle in Azure Purview registrieren
 
 |**Metadatenextrahierung**|  **Vollständige Überprüfung**  |**Inkrementelle Überprüfung**|**Bereichsbezogene Überprüfung**|**Klassifizierung**|**Zugriffsrichtlinie**|**Herkunft**|
 |---|---|---|---|---|---|---|
-| [Ja](#register)| [Ja](#scan)| Nein | Nein | Nein | Nein| [Ja](how-to-lineage-oracle.md)|
+| [Ja](#register)| [Ja](#scan)| Nein | Nein | Nein | Nein| [Ja**](how-to-lineage-oracle.md)|
 
-> [!Important]
-> Unterstützte Oracle-Serverversionen: 6i bis 19c
+\** Herkunft wird unterstützt, wenn das Dataset als Quelle/Senke in der [Data Factory Copy-Aktivität](how-to-link-azure-data-factory.md) verwendet wird. 
+
+Unterstützt werden die Oracle-Serverversionen 6i bis 19c.
 
 Der Proxyserver wird beim Überprüfen der Oracle-Quelle nicht unterstützt.
 
@@ -36,7 +37,7 @@ Der Proxyserver wird beim Überprüfen der Oracle-Quelle nicht unterstützt.
 
 * Eine aktive [Purview-Ressource](create-catalog-portal.md)
 
-* Sie müssen ein Datenquellenadministrator und Datenleser sein, um eine Quelle zu registrieren und in Purview Studio zu verwalten. Weitere Informationen finden Sie auf der [Seite Azure Purview-Berechtigungen](catalog-permissions.md).
+* Sie müssen Datenquellenadministrator und Datenleser sein, um eine Quelle zu registrieren und in Purview Studio zu verwalten. Weitere Informationen finden Sie auf der [Seite Azure Purview-Berechtigungen](catalog-permissions.md).
 
 * Richten Sie die neueste [selbstgehostete Integration Runtime](https://www.microsoft.com/download/details.aspx?id=39717) ein. Weitere Informationen finden Sie im [Leitfaden zum Erstellen und Konfigurieren einer selbstgehosteten Integrationslaufzeit](../data-factory/create-self-hosted-integration-runtime.md).
 
@@ -107,9 +108,9 @@ Gehen Sie auf dem Bildschirm **Quellen registrieren (Oracle)** wie folgt vor:
 1. Geben Sie einen **Namen** ein, unter dem die Datenquelle im Katalog aufgeführt werden soll.
 
 1. Geben Sie unter **Host** den Hostnamen ein, mit dem eine Verbindung mit einer Oracle-Quelle hergestellt werden soll. Hierfür kommt infrage:
-    * Ein Hostname, der von JDBC verwendet wird, um eine Verbindung mit dem Datenbankserver herzustellen. Beispiel: MyDatabaseServer.com
-    * Eine IP-Adresse. Beispiel: 192.169.1.2
-    * Es ist eine vollqualifizierte JDBC-Verbindungszeichenfolge. Beispiel:
+    * Ein Hostname, der von JDBC verwendet wird, um eine Verbindung mit dem Datenbankserver herzustellen. Beispiel: `MyDatabaseServer.com`
+    * Eine IP-Adresse Beispiel: `192.169.1.2`
+    * Es ist eine vollqualifizierte JDBC-Verbindungszeichenfolge. Zum Beispiel:
 
          ```
         jdbc:oracle:thin:@(DESCRIPTION=(LOAD_BALANCE=on)(ADDRESS=(PROTOCOL=TCP)(HOST=oracleserver1)(PORT=1521))(ADDRESS=(PROTOCOL=TCP)(HOST=oracleserver2)(PORT=1521))(ADDRESS=(PROTOCOL=TCP)(HOST=oracleserver3)(PORT=1521))(CONNECT_DATA=(SERVICE_NAME=orcl)))
@@ -152,27 +153,27 @@ Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
         * Geben Sie im Eingabefeld „Benutzername“ den Benutzernamen an, der von JDBC zum Herstellen einer Verbindung mit dem Datenbankserver verwendet wird.
         * Speichern Sie das Benutzerkennwort, das von JDBC zum Herstellen einer Verbindung mit dem Datenbankserver im geheimen Schlüssel verwendet wird.
 
-    1. **Schema**: Eine durch Semikolons getrennte Liste mit einer Teilmenge von Schemas, die importiert werden sollen. Beispiel: Schema1; Schema2. Ist diese Liste leer, werden alle Benutzerschemas importiert. Alle Systemschemas (beispielsweise „SysAdmin“) und Objekte werden standardmäßig ignoriert. Wenn die Liste leer ist, werden alle verfügbaren Schemas importiert.
-        Zu den zulässigen Schemanamensmustern mit SQL-LIKE-Ausdruckssyntax zählt auch die Verwendung von „%“.
-        Beispiel: A%; %B; %C%; D
-           - beginnt mit „A“ oder
-           - endet mit „B“ oder
-           - enthält „C“ oder
-           - gleich „D“
+    1. **Schema**: Eine durch Semikolons getrennte Liste mit einer Teilmenge von Schemas, die importiert werden sollen. Beispielsweise `schema1; schema2`. Ist diese Liste leer, werden alle Benutzerschemas importiert. Alle Systemschemas (beispielsweise „SysAdmin“) und Objekte werden standardmäßig ignoriert. Wenn die Liste leer ist, werden alle verfügbaren Schemas importiert.
+
+        Zu den zulässigen Schemanamensmustern mit SQL-LIKE-Ausdruckssyntax zählt auch die Verwendung von „%“. Beispiel: `A%; %B; %C%; D`
+        * Starten mit A oder
+        * Endet mit „B“ oder
+        * Enthält „C“ oder
+        * Ist gleich „D“
 
         Die Verwendung von „NOT“ oder Sonderzeichen ist nicht zulässig.
 
-1. **Treiberspeicherort**: Geben Sie den Pfad zum Speicherort des JDBC-Treibers auf dem virtuellen Computer an, auf dem die selbstgehostete Integration Runtime ausgeführt wird. Dabei sollte es sich um den Pfad zu einem gültigen Speicherort eines JAR-Ordners handeln.
+    1. **Treiberspeicherort**: Geben Sie den Pfad zum Speicherort des JDBC-Treibers auf dem virtuellen Computer an, auf dem die selbstgehostete Integration Runtime ausgeführt wird. Dabei sollte es sich um den Pfad zu einem gültigen Speicherort eines JAR-Ordners handeln.
 
-    > [!Note]
-    > Der Treiber muss für alle Konten des virtuellen Computers zugänglich sein. Installieren Sie ihn nicht in einem Benutzerkonto.
+        > [!Note]
+        > Der Treiber muss für alle Konten des virtuellen Computers zugänglich sein. Installieren Sie ihn nicht in einem Benutzerkonto.
 
-1. **Maximal verfügbarer Arbeitsspeicher**: Maximaler Arbeitsspeicher (in GB), der auf dem virtuellen Computer des Kunden für Überprüfungsprozesse verfügbar ist. Abhängig von der Größe der zu überprüfenden SAP S/4HANA-Quelle.
+    1. **Maximal verfügbarer Arbeitsspeicher**: Maximaler Arbeitsspeicher (in GB), der auf dem virtuellen Computer des Kunden für Überprüfungsprozesse verfügbar ist. Dieser hängt von der Größe der zu überprüfenden Oracle-Quelle ab.
 
-    > [!Note]
-    > Faustregel: 1 GB Arbeitsspeicher pro 1000 Tabellen.
+        > [!Note]
+        > Faustregel: 1 GB Arbeitsspeicher pro 1000 Tabellen.
 
-    :::image type="content" source="media/register-scan-oracle-source/scan.png" alt-text="Oracle überprüfen" border="true":::
+        :::image type="content" source="media/register-scan-oracle-source/scan.png" alt-text="Oracle überprüfen" border="true":::
 
 1. Wählen Sie **Weiter**.
 
@@ -184,8 +185,8 @@ Gehen Sie zum Erstellen und Ausführen einer neuen Überprüfung wie folgt vor:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie Ihre Quelle registriert haben, halten Sie sich an die folgenden Anleitungen, um mehr über Purview und Ihre Daten zu erfahren.
+Nachdem Sie Ihre Quelle registriert haben, befolgen Sie die folgenden Anleitungen, um mehr über Purview und Ihre Daten zu erfahren.
 
-- [Dateneinblicke in Azure Purview](concept-insights.md)
+- [Datenerkenntnisse in Azure Purview](concept-insights.md)
 - [Datenherkunft in Azure Purview](catalog-lineage-user-guide.md)
 - [Data Catalog suchen](how-to-search-catalog.md)

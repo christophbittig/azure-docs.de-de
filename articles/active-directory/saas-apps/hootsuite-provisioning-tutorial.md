@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.author: thwimmer
-ms.openlocfilehash: 34d1d765dbb5f2267c4c56d4dd91daa31f8799a7
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: eabdbf7b427176d13046ebf7bf82f5a2979ed703
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128629857"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131989210"
 ---
 # <a name="tutorial-configure-hootsuite-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Hootsuitefür die automatische Benutzerbereitstellung
 
@@ -37,6 +37,9 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 * [Azure AD-Mandant](../develop/quickstart-create-new-tenant.md) 
 * Ein Benutzerkonto in Azure AD mit der [Berechtigung](../roles/permissions-reference.md) für die Konfiguration von Bereitstellungen (z. B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator). 
 * Ein Benutzerkonto bei [Hootsuite](http://www.hootsuite.com/) mit der Berechtigung **Manage Member** (Mitglied verwalten) für die Organisation.
+
+> [!NOTE]
+> Diese Integration kann auch über die Azure AD-Umgebung für die US Government-Cloud verwendet werden. Sie finden diese Anwendung im Azure AD-Katalog für US Government-Cloudanwendungen und konfigurieren sie auf die gleiche Weise wie in der öffentlichen Cloud.
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Schritt 1: Planen der Bereitstellung
 1. Erfahren Sie, [wie der Bereitstellungsdienst funktioniert](../app-provisioning/user-provisioning.md).
@@ -62,7 +65,7 @@ Mit dem Azure AD-Bereitstellungsdienst können Sie anhand der Zuweisung zur Anwe
 
 ## <a name="step-5-configure-automatic-user-provisioning-to-hootsuite"></a>Schritt 5: Konfigurieren der automatischen Benutzerbereitstellung in Hootsuite 
 
-In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitstellungsdiensts zum Erstellen, Aktualisieren und Deaktivieren von Benutzern bzw. Gruppen in ServiceNow auf der Grundlage von Benutzer- oder Gruppenzuweisungen in Azure AD erläutert.
+In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitstellungsdiensts zum Erstellen, Aktualisieren und Deaktivieren von Benutzern und Gruppen in TestApp auf der Grundlage von Benutzer- und/oder Gruppenzuweisungen in Azure AD erläutert.
 
 ### <a name="to-configure-automatic-user-provisioning-for-hootsuite-in-azure-ad"></a>So konfigurieren Sie die automatische Benutzerbereitstellung für Hootsuite in Azure AD
 
@@ -127,7 +130,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Aktivierter Bereitstellungsstatus](common/provisioning-toggle-on.png)
 
-14. Legen Sie die Benutzer und/oder Gruppen fest, die in Hootsuite bereitgestellt werden sollen. Wählen Sie dazu im Abschnitt **Einstellungen** unter **Bereich** die gewünschten Werte aus.
+14. Legen Sie die Benutzer und Gruppen fest, die in Hootsuite bereitgestellt werden sollen. Wählen Sie dazu im Abschnitt **Einstellungen** unter **Bereich** die gewünschten Werte aus.
 
     ![Bereitstellungsbereich](common/provisioning-scope.png)
 
@@ -135,7 +138,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Speichern der Bereitstellungskonfiguration](common/provisioning-configuration-save.png)
 
-Durch diesen Vorgang wird der erstmalige Synchronisierungszyklus für alle Benutzer und Gruppen gestartet, die im Abschnitt **Einstellungen** unter **Bereich** definiert wurden. Der erste Zyklus dauert länger als nachfolgende Zyklen, die ungefähr alle 40 Minuten erfolgen, solange der Azure AD-Bereitstellungsdienst ausgeführt wird. 
+Durch diesen Vorgang wird der erstmalige Synchronisierungszyklus für alle Benutzer und Gruppen gestartet, die im Abschnitt **Einstellungen** unter **Bereich** definiert wurden. Der erste Zyklus dauert länger als nachfolgende Zyklen, die ungefähr alle 40 Minuten erfolgen, solange der Azure AD-Bereitstellungsdienst ausgeführt wird. 
 
 ## <a name="step-6-monitor-your-deployment"></a>Schritt 6: Überwachen der Bereitstellung
 Nachdem Sie die Bereitstellung konfiguriert haben, können Sie mit den folgenden Ressourcen die Bereitstellung überwachen:
@@ -149,7 +152,7 @@ Nachdem Sie die Bereitstellung konfiguriert haben, können Sie mit den folgenden
 * 22.10.2020: Unterstützung der Benutzerattribute „name.givenName“ und „name.familyName“ wurde hinzugefügt. Die benutzerdefinierten Erweiterungsattribute „organizationIds“ und „teamIds“ wurden für Benutzer entfernt.
 Unterstützung der Gruppenattribute „displayName“, „members“ und „externalId“ wurde hinzugefügt.
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+## <a name="more-resources"></a>Weitere Ressourcen
 
 * [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)

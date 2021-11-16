@@ -7,16 +7,16 @@ ms.service: managed-instance-apache-cassandra
 ms.topic: overview
 ms.date: 11/02/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 5d704e9fc46918624014da84ccdae46dc25817ea
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 91af4ca87c2363220081fe5e4912a26a764e85d1
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131084878"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131844389"
 ---
 # <a name="what-is-azure-managed-instance-for-apache-cassandra"></a>Was ist Azure Managed Instance for Apache Cassandra?
 
-Der Dienst Azure Managed Instance for Apache Cassandra bietet automatisierte Bereitstellungs- und Skalierungsvorgänge für verwaltete Open-Source-basierte Apache Cassandra-Rechenzentren. Dieser Dienst unterstützt Sie dabei, Hybridszenarien zu beschleunigen und die laufende Wartung zu verringern. Bei der allgemeinen Veröffentlichung wird er umfassende Integrations- und Datenverschiebungsfunktionen mit der [Azure Cosmos DB-Cassandra-API](../cosmos-db/cassandra-introduction.md) bieten.
+Der Dienst Azure Managed Instance for Apache Cassandra bietet automatisierte Bereitstellungs- und Skalierungsvorgänge für verwaltete Open-Source-basierte Apache Cassandra-Rechenzentren. Dieser Dienst unterstützt Sie dabei, Hybridszenarien zu beschleunigen und die laufende Wartung zu verringern.
 
 :::image type="content" source="./media/introduction/icon.gif" alt-text="Azure Managed Instance for Apache Cassandra ist ein verwalteter Dienst für Apache Cassandra." border="false":::
 
@@ -24,10 +24,10 @@ Der Dienst Azure Managed Instance for Apache Cassandra bietet automatisierte Ber
 
 ### <a name="hybrid-deployments"></a>Hybridbereitstellungen
 
-Mit diesem Dienst können Sie problemlos verwaltete Instanzen von Apache Cassandra-Rechenzentren, die automatisch als VM-Skalierungsgruppen bereitgestellt werden, in einem neuen oder vorhandenen Azure-VNET platzieren. Diese Rechenzentren können Ihrem vorhandenen Apache Cassandra-Ring, der lokal über [Azure ExpressRoute](/azure/architecture/reference-architectures/hybrid-networking/expressroute) in Azure ausgeführt wird, oder einer anderen Cloudumgebung hinzugefügt werden.
+Mit diesem Dienst können Sie problemlos verwaltete Instanzen von Apache Cassandra-Rechenzentren, die automatisch als VM-Skalierungsgruppen bereitgestellt werden, in einem neuen oder vorhandenen Azure-VNET platzieren. Diese Rechenzentren können Ihrem vorhandenen Apache Cassandra-Ring, der lokal über [Azure ExpressRoute](/azure/architecture/reference-architectures/hybrid-networking/expressroute) in Azure ausgeführt wird, oder einer anderen Cloudumgebung hinzugefügt werden. Dies erfolgt über eine [Hybridkonfiguration](configure-hybrid-cluster.md).
 
 - **Vereinfachte Bereitstellung:** Nach Herstellen der Hybridkonnektivität ist die Bereitstellung über das Gossipprotokoll einfach.
-- **Gehostete Metriken:** Die Metriken werden in [Prometheus](https://prometheus.io/docs/introduction/overview/) gehostet, um Aktivitäten in Ihrem Cluster zu überwachen.
+- **Gehostete Metriken:** Die Metriken werden in [Prometheus](https://prometheus.io/docs/introduction/overview/) gehostet, um Aktivitäten in Ihrem Cluster zu überwachen. Der Dienst ist auch in [Azure Monitor zur Nutzung von Metriken und Diagnoseprotokollierung](monitor-clusters.md) integriert.
 
 ### <a name="simplified-scaling"></a>Vereinfachte Skalierung
 
@@ -41,11 +41,10 @@ Der Dienst stellt Verwaltungsvorgänge für die folgenden allgemeinen Apache Cas
 - Bereitstellen eines Rechenzentrums
 - Skalieren eines Rechenzentrums
 - Löschen eines Rechenzentrums
-- Starten einer Reparaturaktion für einen Keyspace
 - Ändern der Konfiguration eines Rechenzentrums
 - Einrichten von Sicherungen
 
-Das Preismodell ist flexibel, bedarfsgesteuert, instanzbasiert und frei von Lizenzierungsgebühren. Dieses Preismodell ermöglicht Ihnen die Anpassung an Ihre spezifischen Workloadanforderungen. Wählen Sie aus, wie viele Kerne, welche VM-SKU, Arbeitsspeichergröße und Datenträger-Speicherplatzgröße Sie benötigen.
+Das Preismodell ist flexibel, bedarfsgesteuert, instanzbasiert und frei von Lizenzierungsgebühren. Dieses Preismodell ermöglicht Ihnen die Anpassung an Ihre spezifischen Workloadanforderungen. Sie wählen die Anzahl von Kernen, die VM-SKU, die Arbeitsspeichergröße und die Anzahl von P30-Datenträgern pro Knoten aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

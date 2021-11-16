@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: karenhoran
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e33f2c7393a9c7b91dcd6fd9188bd9a89f190215
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: a4d902a3c5471455f6f2d6cc614544aeb4e0dc39
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131050710"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131892076"
 ---
 # <a name="conditional-access-session"></a>Bedingter Zugriff: Sitzung
 
@@ -76,10 +76,13 @@ Weitere Informationen finden Sie im Artikel [Konfigurieren der Verwaltung von Au
 
 [Die fortlaufende Zugriffsevaluierung](concept-continuous-access-evaluation.md) wird automatisch als Teil der Richtlinien für bedingten Zugriff einer Organisation aktiviert. Für Organisationen, die die fortlaufende Zugriffsauswertung deaktivieren oder strikt erzwingen möchten, ist diese Konfiguration jetzt eine Option innerhalb der Sitzungssteuerung im bedingten Zugriff. Richtlinien für die Fortlaufende Zugriffsauswertung können auf alle Benutzer oder bestimmte Benutzer und Gruppen aufgeteilt werden. Administratoren können beim Erstellen einer neuen Richtlinie oder beim Bearbeiten einer vorhandenen Richtlinie für bedingten Zugriff die folgende Auswahl treffen.
 
-- **Deaktivieren** wird erreicht, wenn **Alle Cloud-Apps** ausgewählt sind, keine Bedingungen ausgewählt sind und **Deaktivieren** unter **Sitzung** > **Auswertung des kontinuierlichen Zugriffs anpassen** in einer Richtlinie für bedingten Zugriff ausgewählt ist.
-- **Strenge Erzwingung** bedeutet, dass alle kritischen Ereignisse und Richtlinien in Echtzeit erzwungen werden. Alle CAE-fähigen Dienste erhalten immer CAE-Tokens, unabhängig davon, was der Kunde oder Benutzer beantragt oder tut. Es gibt zwei Szenarien, in denen CAE nicht ins Spiel kommt, wenn der strenge Erzwingungsmodus aktiviert ist:
-   - Nicht CAE-fähige Clients sollten kein reguläres Token für CAE-fähige Dienste erhalten.
-   - Ablehnen, wenn die vom Ressourcenanbieter verwendete IP-Adresse nicht im zulässigen Bereich liegt.
+- **Deaktivieren** funktioniert nur, wenn in einer Richtlinie für bedingten Zugriff **Alle Cloud-Apps** aktiviert, keine Bedingungen ausgewählt und unter **Sitzung** > **Fortlaufende Zugriffsevaluierung anpassen** die Option **Deaktivieren** ausgewählt sind. Sie können alle Benutzer oder bestimmte Benutzer und Gruppen deaktivieren.
+- **Strikte Erzwingung** kann verwendet werden, um die Sicherheitsvorteile von CAE weiter zu stärken. Sie sorgt dafür, dass alle kritischen Ereignisse und Richtlinien in Echtzeit erzwungen werden.  Es gibt zwei zusätzliche Szenarien, in denen CAE erzwungen wird, wenn der Modus „Strikte Erzwingung“ aktiviert ist:
+   - Nicht-CAE-fähige Clients dürfen nicht auf CAE-fähige Dienste zugreifen.
+   - Der Zugriff wird abgelehnt, wenn die IP-Adresse des Clients, die vom Ressourcenanbieter erkannt wird, nicht im zulässigen Bereich des bedingten Zugriffs liegt.
+
+> [!NOTE] 
+> Sie sollten „Strikte Erzwingung“ erst dann aktivieren, wenn Sie sichergestellt haben, dass alle Clientanwendungen CAE unterstützen und Sie alle IP-Adressen, die Azure AD und den Ressourcenanbietern wie Exchange Online und Azure Resource Manager angezeigt werden, in Ihre Standortrichtlinie für bedingten Zugriff aufgenommen haben. Andernfalls könnten Benutzer in Ihren Mandanten blockiert werden.
 
 :::image type="content" source="media/concept-conditional-access-session/continuous-access-evaluation-session-controls.png" alt-text="CAE-Einstellungen in einer neuen Richtlinie für bedingten Zugriff in der Azure-Portal." lightbox="media/concept-conditional-access-session/continuous-access-evaluation-session-controls.png":::
 

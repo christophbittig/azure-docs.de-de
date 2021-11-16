@@ -13,12 +13,12 @@ ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: fasttrack-edit, project-no-code
 zone_pivot_groups: b2c-policy-type
-ms.openlocfilehash: 81067c8c1b24897d88f3d8da4d21329b030cbd03
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: a63c89174103613c722d463e32085600019e9ea0
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131036445"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132026005"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>Einrichten der Anmeldung für eine bestimmte Azure Active Directory-Organisation in Azure Active Directory B2C
 
@@ -80,7 +80,7 @@ Wenn Sie die Ansprüche `family_name` und `given_name` von Azure AD erhalten m�
 1. Wählen Sie **Optionalen Anspruch hinzufügen** aus.
 1. Wählen Sie als **Tokentyp** die Option **ID** aus.
 1. Wählen Sie die hinzuzufügenden optionalen Ansprüche (`family_name` und `given_name`) aus.
-1. Klicken Sie auf **Hinzufügen**.
+1. Wählen Sie **Hinzufügen**. Wenn die Option **Microsoft Graph-E-Mail-Berechtigungen aktivieren (erforderlich zum Anzeigen von Ansprüchen in Token)** angezeigt wird, aktivieren Sie diese, und wählen Sie dann erneut **Hinzufügen** aus.
 
 ## <a name="optional-verify-your-app-authenticity"></a>[Optional] Überprüfen der Authentizität Ihrer App
 
@@ -101,8 +101,7 @@ Anhand der [Herausgeberüberprüfung](../active-directory/develop/publisher-veri
     https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration
     ```
 
-    Beispiel: `https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration`.
-    Beispiel: `https://login.microsoftonline.com/contoso.com/v2.0/.well-known/openid-configuration`.
+ Beispiel: `https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration`. Wenn Sie eine benutzerdefinierte Domäne verwenden, ersetzen Sie `contoso.com` in `https://login.microsoftonline.com/contoso.com/v2.0/.well-known/openid-configuration` durch Ihren benutzerdefinierten Domänennamen.
 
 1. Geben Sie für **Client-ID** die zuvor notierte Anwendungs-ID ein.
 1. Geben Sie im Feld **Geheimer Clientschlüssel** den zuvor notierten geheimen Clientschlüssel ein.
@@ -125,7 +124,8 @@ Der Azure AD-Identitätsanbieter wurde nun eingerichtet, er ist jedoch noch auf 
 
 1. Wählen Sie in Ihrem Azure AD B2C-Mandanten die Option **Benutzerflows** aus.
 1. Klicken Sie auf den Benutzerflow, dem Sie Azure AD als Identitätsanbieter hinzufügen möchten.
-1. Wählen Sie unter **Soziales Netzwerk als Identitätsanbieter** die Option **Contoso Azure AD** aus.
+1. Wählen Sie unter **Einstellungen** die Option **Identitätsanbieter** aus.
+1. Wählen Sie unter **Benutzerdefinierte Identitätsanbieter** die Option **Contoso Azure AD** aus.
 1. Wählen Sie **Speichern** aus.
 1. Um die Richtlinie zu testen, wählen Sie **Benutzerflow ausführen** aus.
 1. Wählen Sie für **Anwendung** eine Webanwendung aus, die Sie [zuvor registriert haben](tutorial-register-applications.md). Als **Antwort-URL** sollte `https://jwt.ms` angezeigt werden. 

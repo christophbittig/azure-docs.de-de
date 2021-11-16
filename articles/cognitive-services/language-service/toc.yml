@@ -501,6 +501,8 @@ items:
             href: question-answering/how-to/manage-knowledge-base.md
           - name: Netzwerkisolation und private Endpunkte
             href: question-answering/how-to/network-isolation.md
+          - name: Vordefinierte API
+            href: question-answering/how-to/prebuilt.md
           - name: Problembehandlung
             href: question-answering/how-to/troubleshooting.md
       - name: Konzepte
@@ -569,9 +571,9 @@ items:
       - name: Tutorials
         items:
           - name: Stimmungsanalyse für Streamingdaten mit Azure Databricks
-            href: /databricks/scenarios/databricks-sentiment-analysis-cognitive-services?context=/azure/cognitive-services/language-service/context/context
+            href: /azure/databricks/scenarios/databricks-sentiment-analysis-cognitive-services?context=/azure/cognitive-services/language-service/context/context
           - name: 'Übersetzen von Text, Analysieren der Stimmung und Synthetisieren von Sprache mithilfe von Flask'
-            href: /translator/tutorial-build-flask-app-translation-synthesis?context=/azure/cognitive-services/language-service/context/context
+            href: /azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis?context=/azure/cognitive-services/language-service/context/context
       - name: Verweis
         items:
           - name: REST-API

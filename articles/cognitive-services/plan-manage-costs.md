@@ -6,13 +6,13 @@ ms.author: pafarley
 ms.custom: subject-cost-optimization
 ms.service: cognitive-services
 ms.topic: how-to
-ms.date: 10/28/2021
-ms.openlocfilehash: 2fa5a5867bc64da126e24c65b1b6d0c5d618ae18
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.date: 11/03/2021
+ms.openlocfilehash: 2f436f971b151fb4043ca459bb36442a2d504491
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131446541"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132026024"
 ---
 # <a name="plan-and-manage-costs-for-azure-cognitive-services"></a>Planen und Verwalten von Kosten für Azure Cognitive Services
 
@@ -38,11 +38,13 @@ Weitere Informationen finden Sie unter [Azure Cognitive Services – Preise](ht
 
 Cognitive Services wird in einer Azure-Infrastruktur ausgeführt, für die [Kosten anfallen](https://azure.microsoft.com/pricing/details/cognitive-services/), wenn Sie die neue Ressource bereitstellen. Es ist wichtig zu verstehen, dass die zusätzliche Infrastruktur Kosten verursachen kann. Sie müssen diese Kosten verwalten, wenn Sie Änderungen an bereitgestellten Ressourcen vornehmen. 
 
-### <a name="how-youre-charged-for-cognitive-services"></a>Kosten für Cognitive Services
+Wenn Sie Cognitive Services-Ressourcen erstellen oder verwenden, werden Ihnen möglicherweise Gebühren für die von Ihnen verwendeten Dienste in Rechnung gestellt. Es stehen zwei Abrechnungsmodelle für Cognitive Services zur Verfügung: die nutzungsbasierte Bezahlung und die Mindestabnahme.
 
-Wenn Sie Cognitive Services-Ressourcen erstellen oder verwenden, werden Ihnen möglicherweise die folgenden Verbrauchseinheiten auf der Grundlage der von Ihnen verwendeten Dienste in Rechnung gestellt:
+## <a name="pay-as-you-go"></a>Nutzungsbasierte Bezahlung
 
-| Dienst | Verbrauchseinheit(en) | Abrechnungsinformationen | 
+Bei der nutzungsbasierten Bezahlung wird Ihnen das von Ihnen verwendete Cognitive Services-Angebot auf der Grundlage seiner Abrechnungsinformationen in Rechnung gestellt.
+
+| Dienst | Instanz(en) | Abrechnungsinformationen | 
 |---------|-------|---------------------|
 | **Bildanalyse** | | |
 | [Maschinelles Sehen](https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision/) | Free, Standard (S1) | Abrechnung nach der Anzahl der Transaktionen. Der Preis pro Transaktion variiert je nach Feature (Lesen, OCR, Räumliche Analyse). Ausführliche Informationen finden Sie unter [Preise](https://azure.microsoft.com/pricing/details/cognitive-services/computer-vision/). |
@@ -59,6 +61,17 @@ Wenn Sie Cognitive Services-Ressourcen erstellen oder verwenden, werden Ihnen m�
 | [Anomalieerkennung](https://azure.microsoft.com/pricing/details/cognitive-services/anomaly-detector/) | Free, Standard | Abrechnung nach der Anzahl der Transaktionen. | 
 | [Content Moderator](https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator/) | Free, Standard | Abrechnung nach der Anzahl der Transaktionen. |
 | [Personalisierung](https://azure.microsoft.com/pricing/details/cognitive-services/personalizer/) | Free, Standard (S0) | Abrechnung nach Transaktionen pro Monat. Es gibt Speicher- und Transaktionskontingente. Ausführliche Informationen finden Sie unter [Preise](https://azure.microsoft.com/pricing/details/cognitive-services/personalizer/). | 
+
+## <a name="commitment-tier"></a>Mindestabnahme
+
+Zusätzlich zum Modell mit nutzungsbasierter Bezahlung verfügt Cognitive Services über eine Mindestabnahme, mit der Sie mehrere Dienstfeatures gegen eine feste Gebühr verwenden können, sodass Sie die Gesamtkosten entsprechend den Anforderungen Ihrer Workload vorhersehen können.
+
+Bei der Preisgestaltung für die Mindestabnahme werden Sie entsprechend dem von Ihnen gewählten Plan abgerechnet. Informationen zu den verfügbaren Diensten, zur Anmeldung und zu den Überlegungen beim Kauf eines Plans finden Sie unter [Schnellstart: Mindestabnahme – Preise](commitment-tier.md).
+
+> [!NOTE]
+> Wenn Sie die Ressource über das im Bereitstellungsplan vorgesehene Kontingent hinaus verwenden, wird Ihnen die zusätzliche Nutzung entsprechend dem im Azure-Portal beim Erwerb eines Mindestabnahmeplans genannten Betrag für die Überschreitung in Rechnung gestellt. Weitere Informationen finden Sie unter [Azure Cognitive Services – Preise](https://azure.microsoft.com/pricing/details/cognitive-services/).
+
+
 
 
 ### <a name="costs-that-typically-accrue-with-cognitive-services"></a>Mit Cognitive Services üblicherweise anfallende Kosten

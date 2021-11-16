@@ -8,12 +8,12 @@ metadata:
   ms.date: 02/19/2020
   ms.author: helohr
   manager: femila
-  ms.openlocfilehash: e6633e117fc06e9d7e337d6bece2cc2f7c36193c
-  ms.sourcegitcommit: 05dd6452632e00645ec0716a5943c7ac6c9bec7c
+  ms.openlocfilehash: 0546f6186fbf725e14a105b0d735db0b7ecef2cc
+  ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 08/17/2021
-  ms.locfileid: "122253326"
+  ms.lasthandoff: 11/05/2021
+  ms.locfileid: "131841600"
 title: Häufig gestellte Fragen zu Windows 10 Enterprise mit mehreren Sitzungen
 summary: In diesem Artikel werden häufig gestellte Fragen beantwortet und bewährte Methoden für Windows 10 Enterprise mit mehreren Sitzungen behandelt.
 sections:
@@ -92,4 +92,6 @@ sections:
       5. Wählen Sie **Deaktiviert** und anschließend **OK** aus.
 
       6. Wählen Sie **Übernehmen**.
+  - question: Können Computer unter Windows 10 oder 11 Enterprise mit mehreren Sitzungen Featureupdates über Windows Server Update Services (WSUS) empfangen?
+    answer: "Derzeit kann WSUS keine Featureupdates für Computer unter Windows 10 oder 11 Enterprise mit mehreren Sitzungen bereitstellen.\n         \n"
 additionalContent: "\n## <a name=\"next-steps\"></a>Nächste Schritte\n   \nWeitere Informationen zu Azure Virtual Desktop und Windows 10 Enterprise (mehrere Sitzungen):\n        \n- Lesen Sie unsere [Dokumentation zu Azure Virtual Desktop](overview.md).\n- Besuchen Sie unsere [Azure Virtual Desktop TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop).\n- Richten Sie Ihre Azure Virtual Desktop-Bereitstellung ein, indem Sie die [Tutorials zu Azure Virtual Desktop](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md) verwenden.\n        \n"

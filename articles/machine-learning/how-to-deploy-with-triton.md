@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.author: ssambare
 author: shivanissambare
 ms.custom: deploy, devplatv2
-ms.openlocfilehash: c62a446aace060bf55606462b04b323cb44bf2cb
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: d4c65af505725f3f667dd2ad51902717352e4c42
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131553842"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132063663"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Bereitstellung mit hoher Leistung mit Triton Inference Server (Vorschau) 
 
@@ -52,6 +52,9 @@ Die Informationen in diesem Dokument basieren auf der Verwendung eines im ONNX-F
 
 In diesem Abschnitt wird gezeigt, wie Sie Triton mit der Azure CLI und der Machine Learning-Erweiterung (v2) auf verwalteten Online-Endpunkten einsetzen können.
 
+> [!IMPORTANT]
+> Für die Bereitstellung ohne Code in Triton wird das **[Testen über lokale Endpunkte](how-to-deploy-managed-online-endpoints.md#deploy-and-debug-locally-by-using-local-endpoints)** derzeit nicht unterstützt.
+
 1. Um zu vermeiden, dass Sie einen Pfad für mehrere Befehle eingeben müssen, verwenden Sie den folgenden Befehl, um eine `BASE_PATH`-Umgebungsvariable zu setzen. Diese Variable verweist auf das Verzeichnis, in dem sich das Modell und die zugehörigen YAML-Konfigurationsdateien befinden:
 
     ```azurecli
@@ -60,7 +63,7 @@ In diesem Abschnitt wird gezeigt, wie Sie Triton mit der Azure CLI und der Machi
 
 1. Verwenden Sie den folgenden Befehl, um den Namen des zu erstellenden Endpunkts festzulegen. In diesem Beispiel wird ein zufälliger Name für den Endpunkt erstellt:
 
-    :::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-triton-managed-online-endpoint.sh" ID="set_endpoint_name":::
+    :::code language="azurecli" source="~/azureml-examples-main/cli/deploy-triton-managed-online-endpoint.sh" ID="set_endpoint_name":::
 
 1. Installieren Sie die Python-Anforderungen mit den folgenden Befehlen:
 
@@ -75,11 +78,11 @@ In diesem Abschnitt wird gezeigt, wie Sie Triton mit der Azure CLI und der Machi
 
     __create-managed-endpoint.yaml__
 
-    :::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/online/triton/single-model/create-managed-endpoint.yaml":::
+    :::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/triton/single-model/create-managed-endpoint.yaml":::
 
 1. Um einen neuen Endpunkt unter Verwendung der YAML-Konfiguration zu erstellen, verwenden Sie den folgenden Befehl:
 
-    :::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-triton-managed-online-endpoint.sh" ID="create_endpoint":::
+    :::code language="azurecli" source="~/azureml-examples-main/cli/deploy-triton-managed-online-endpoint.sh" ID="create_endpoint":::
 
 1. Erstellen Sie eine YAML-Konfigurationsdatei für das Bereitstellen. Im folgenden Beispiel wird eine Bereitstellung mit dem Namen __blue__ für den im vorherigen Schritt erstellten Endpunkt konfiguriert. Der in den folgenden Befehlen verwendete Befehl befindet sich unter `/cli/endpoints/online/triton/single-model/create-managed-deployment.yml` im azureml-examples-Repository, das Sie zuvor geklont haben:
 
@@ -88,11 +91,11 @@ In diesem Abschnitt wird gezeigt, wie Sie Triton mit der Azure CLI und der Machi
     >
     > Diese Bereitstellung verwendet eine Standard_NC6s_v3-VM. Möglicherweise müssen Sie eine Quotenerhöhung für Ihr Abonnement beantragen, bevor Sie diese VM nutzen können. Weitere Informationen finden Sie unter [NCv3-series](/azure/virtual-machines/ncv3-series).
 
-    :::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/online/triton/single-model/create-managed-deployment.yaml":::
+    :::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/triton/single-model/create-managed-deployment.yaml":::
 
 1. Um die Bereitstellung mit der YAML-Konfiguration zu erstellen, verwenden Sie den folgenden Befehl:
 
-    :::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-triton-managed-online-endpoint.sh" ID="create_deployment":::
+    :::code language="azurecli" source="~/azureml-examples-main/cli/deploy-triton-managed-online-endpoint.sh" ID="create_deployment":::
 
 ### <a name="invoke-your-endpoint"></a>Rufen Sie Ihren Endpunkt auf
 
@@ -103,15 +106,15 @@ Sobald die Bereitstellung abgeschlossen ist, verwenden Sie den folgenden Befehl,
 
 1. Um die Endpunktbewertungsuri zu erhalten, verwenden Sie den folgenden Befehl:
 
-    :::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-triton-managed-online-endpoint.sh" ID="get_scoring_uri":::
+    :::code language="azurecli" source="~/azureml-examples-main/cli/deploy-triton-managed-online-endpoint.sh" ID="get_scoring_uri":::
 
 1. Um ein Authentifizierungs-Token zu erhalten, verwenden Sie den folgenden Befehl:
 
-    :::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-triton-managed-online-endpoint.sh" ID="get_token":::
+    :::code language="azurecli" source="~/azureml-examples-main/cli/deploy-triton-managed-online-endpoint.sh" ID="get_token":::
 
 1. Um Daten mit dem Endpunkt zu bewerten, verwenden Sie den folgenden Befehl. Er übermittelt das Bild eines Pfaus (https://aka.ms/peacock-pic) ) an den Endpunkt:
 
-    :::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-triton-managed-online-endpoint.sh" ID="check_scoring_of_model":::
+    :::code language="azurecli" source="~/azureml-examples-main/cli/deploy-triton-managed-online-endpoint.sh" ID="check_scoring_of_model":::
 
     Die Antwort des Skripts ähnelt dem folgenden Text:
 
@@ -126,7 +129,7 @@ Sobald die Bereitstellung abgeschlossen ist, verwenden Sie den folgenden Befehl,
 
 Wenn Sie mit dem Endpunkt fertig sind, verwenden Sie den folgenden Befehl, um ihn zu löschen:
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-triton-managed-online-endpoint.sh" ID="delete_endpoint":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-triton-managed-online-endpoint.sh" ID="delete_endpoint":::
 
 Verwenden Sie den folgenden Befehl, um Ihr Modell zu löschen:
 

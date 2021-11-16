@@ -3,15 +3,15 @@ title: Autorisieren des Zugriffs mit Azure Active Directory für Azure Web PubSu
 description: Dieser Artikel bietet Informationen zum Autorisieren des Zugriffs auf Azure Web PubSub-Dienstressourcen mit Azure Active Directory.
 author: terencefan
 ms.author: tefa
-ms.date: 09/06/2021
+ms.date: 11/08/2021
 ms.service: azure-web-pubsub
 ms.topic: conceptual
-ms.openlocfilehash: be8c2aa41f8680df9156d7b86dd8eb2bf24ca514
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 386ef4d27a8fc2fbe4d9c3f209d2016fa1911761
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131478805"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131997455"
 ---
 # <a name="authorize-access-to-web-pubsub-resources-using-azure-active-directory"></a>Autorisieren des Zugriffs auf Web PubSub-Ressourcen mit Azure Active Directory
 Der Azure Web PubSub-Dienst unterstützt die Verwendung von Azure Active Directory (Azure AD) zum Autorisieren von Anforderungen an Web PubSub-Ressourcen. Azure AD ermöglicht Ihnen die Verwendung der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC), um einem Sicherheitsprinzipal<sup>[<a href="#security-principal">1</a>]</sup> Berechtigungen zu erteilen. Der Sicherheitsprinzipal wird von Azure AD authentifiziert, und gibt seinerseits ein OAuth 2.0-Token zurück. Das Token kann anschließend zum Autorisieren einer Anforderung an die Web PubSub-Ressource verwendet werden.
@@ -46,19 +46,19 @@ Azure Active Directory (Azure AD) autorisiert die Berechtigungen für den Zugri
 
 ### <a name="resource-scope"></a>Ressourcenumfang
 
-Bevor Sie einem Sicherheitsprinzipal eine Azure RBAC-Rolle zuweisen, müssen Sie ggf. den Zugriffsbereich festlegen, den der Sicherheitsprinzipal haben soll. Es wird empfohlen, den kleinstmöglichen Bereich zu gewähren. Azure RBAC-Rollen, die in einem umfassenderen Bereich definiert sind, werden von den darunterliegenden Ressourcen geerbt.
+Bevor Sie einem Sicherheitsprinzipal eine Azure RBAC-Rolle zuweisen, müssen Sie möglicherweise den Umfang des Zugriffs festlegen, den der Sicherheitsprinzipal haben soll. Es wird empfohlen, nur den kleinstmöglichen Bereich zu gewähren. Azure RBAC-Rollen, die in einem umfassenderen Bereich definiert sind, werden von den darunterliegenden Ressourcen geerbt.
 
 Sie können den Zugriff auf Azure SignalR-Ressourcen auf den folgenden Ebenen einschränken, beginnend mit dem kleinstmöglichen Bereich:
 
-- **Eine Ressource:** 
+- **Eine individuelle Ressource.** 
 
   In diesem Bereich gilt eine Rollenzuweisung nur für die Zielressource.
 
-- **Eine Ressourcengruppe:** 
+- **Eine Ressourcengruppe.** 
 
   In diesem Bereich gilt eine Rollenzuweisung für alle Ressourcen in der Ressourcengruppe.
 
-- **Ein Abonnement:**
+- **Ein Abonnement.**
 
   In diesem Bereich gilt eine Rollenzuweisung für alle Ressourcen in allen Ressourcengruppen im Abonnement.
 

@@ -11,13 +11,13 @@ metadata:
   author: dimitri-furman
   ms.author: dfurman
   ms.reviewer: mathoma
-  ms.date: 09/10/2021
-  ms.openlocfilehash: 738d016c3ba341e3fb8e31a7b01847573e7a4178
-  ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+  ms.date: 11/4/2021
+  ms.openlocfilehash: 440cb18b41a37358fc170655783cc2f5c61bc01b
+  ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 09/26/2021
-  ms.locfileid: "129059547"
+  ms.lasthandoff: 11/05/2021
+  ms.locfileid: "131843149"
 title: Azure SQL-Datenbank Hyperscale – Häufig gestellte Fragen (FAQs)
 summary: >
   [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -339,6 +339,10 @@ sections:
       Beeinträchtigt die Bereitstellung zusätzlicher Computereplikate meinen Durchsatz?
     answer: >
       Weil der Speicher gemeinsam genutzt wird und es keine direkte physische Replikation zwischen primären und sekundären Computereplikaten gibt, wird der Durchsatz im primären Replikat durch das Hinzufügen von sekundären Replikaten nicht direkt beeinträchtigt. Allerdings können kontinuierliche intensiv schreibende Workloads auf dem primären Replikat gedrosselt werden, damit Protokolle auf sekundäre Replikate angewendet werden und Seitenserver mit der Verarbeitung aufholen können sowie eine schlechte Leseleistung in sekundären Replikaten verhindert werden kann.
+  - question: >
+      Eignet sich Hyperscale gut für ressourcen- und zeitintensive Abfragen und Transaktionen?
+    answer: >
+      Ja. Beachten Sie jedoch, dass Verbindungen sehr selten durch vorübergehende Fehler beendet werden können, die zeitintensive Abfragen abbrechen und ein Rollback für Transaktionen ausführen können. Eine Ursache für vorübergehende Fehler ist, wenn das System die Datenbank schnell auf einen anderen Serverknoten verlagert, um die kontinuierliche Verfügbarkeit von Compute- und Speicherressourcen sicherzustellen oder eine geplante Wartung durchzuführen. Die meisten dieser Neukonfigurationsereignisse sind in weniger als zehn Sekunden abgeschlossen. Anwendungen, die eine Verbindung mit Ihrer Datenbank herstellen, sollten so erstellt werden, dass diese seltenen vorübergehenden Fehler erwartet und toleriert werden, indem Wiederholungslogik implementiert wird. Konfigurieren Sie zudem ggf. ein [Wartungsfenster](maintenance-window.md), das Ihrem Workloadzeitplan entspricht, um vorübergehende Fehler aufgrund einer geplanten Wartung zu vermeiden.
   - question: >
       Wie diagnostiziere und behebe ich Leistungsprobleme in einer Hyperscale-Datenbank?
     answer: >

@@ -165,8 +165,6 @@
               href: best-practices-analysis.md
             - name: Warnungen und automatisierte Aktionen
               href: best-practices-alerts.md
-        - name: Überwachen einer Azure-Ressource
-          href: essentials/monitor-azure-resource.md
         - name: Überwachen virtueller Maschinen
           items:
             - name: Übersicht

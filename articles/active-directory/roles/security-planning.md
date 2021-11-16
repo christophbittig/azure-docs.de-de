@@ -4,9 +4,9 @@ description: Stellen Sie sicher, dass Administratorzugriff und Administratorkont
 services: active-directory
 keywords: ''
 author: rolyon
-manager: daveba
+manager: KarenH444
 ms.author: rolyon
-ms.date: 11/05/2020
+ms.date: 11/04/2021
 ms.topic: conceptual
 ms.service: active-directory
 ms.workload: identity
@@ -14,12 +14,12 @@ ms.subservice: roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eeba1c933d049e67e45204ad62d71a0eb52a930d
-ms.sourcegitcommit: c2f0d789f971e11205df9b4b4647816da6856f5b
+ms.openlocfilehash: da609d7952243c19a3cc6cc9417353965635f0de
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/23/2021
-ms.locfileid: "122662431"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131851304"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Schützen des privilegierten Zugriffs für hybride und Cloudbereitstellungen in Azure AD
 
@@ -178,7 +178,7 @@ Azure AD Identity Protection ist ein algorithmusbasiertes Überwachungs- und Be
 
 #### <a name="obtain-your-microsoft-365-secure-score-if-using-microsoft-365"></a>Abrufen Ihres Microsoft 365 Secure Score (bei Verwendung von Microsoft 365)
 
-Secure Score prüft Ihre Einstellungen und Aktivitäten für Microsoft 365-Dienste und vergleicht diese mit einer von Microsoft aufgestellten Baseline. Das Ergebnis sagt aus, in welchem Maß Sie bewährte Sicherheitsmethoden befolgen. Jeder Benutzer, der über Administratorberechtigungen für ein Microsoft 365 Business Standard- oder Enterprise-Abonnement verfügt, kann über `https://securescore.office.com` auf Secure Score zugreifen.
+Secure Score prüft Ihre Einstellungen und Aktivitäten für Microsoft 365-Dienste und vergleicht diese mit einer von Microsoft aufgestellten Baseline. Das Ergebnis sagt aus, in welchem Maß Sie bewährte Sicherheitsmethoden befolgen. Jeder Benutzer, der über Administratorberechtigungen für ein Microsoft 365 Business Standard- oder Enterprise-Abonnement verfügt, kann über `https://security.microsoft.com/securescore` auf Secure Score zugreifen.
 
 #### <a name="review-the-microsoft-365-security-and-compliance-guidance-if-using-microsoft-365"></a>Überprüfen der Microsoft 365-Sicherheit und -Konformität (bei Verwendung von Microsoft 365)
 

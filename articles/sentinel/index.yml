@@ -6,18 +6,18 @@ metadata:
   description: In diesem Artikel werden Anwendungsfälle und Szenarien für die ersten Schritte mit Microsoft Sentinel vorgestellt. Erkennen und stoppen Sie Bedrohungen, bevor sie Schaden anrichten – mit einer SIEM-Lösung, die für die moderne Welt neu erfunden wurde. Mit Microsoft Sentinel können Sie Ihr gesamtes Unternehmen sozusagen aus der Vogelperspektive beobachten. Erforderliche Anzahl; in den Suchergebnissen angezeigte Artikelbeschreibung < 160 Zeichen
   services: sentinel
   ms.service: sentinel
-  ms.subservice: azure-sentinel
+  ms.subservice: microsoft-sentinel
   ms.topic: landing-page
   ms.collection: collection
   author: yelevin
   ms.author: yelevin
   ms.date: 11/09/2021
-  ms.openlocfilehash: 646e4d8401da416a1113d7c42eb7e9198053efc6
-  ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
+  ms.openlocfilehash: d6a4d50dfeceb4769e377b46b35b949d7a890653
+  ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 11/11/2021
-  ms.locfileid: "132277674"
+  ms.lasthandoff: 11/16/2021
+  ms.locfileid: "132518468"
 landingContent:
 - title: Informationen zu Microsoft Sentinel
   linkLists:

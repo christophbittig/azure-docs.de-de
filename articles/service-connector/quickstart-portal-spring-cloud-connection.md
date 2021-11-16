@@ -7,12 +7,12 @@ ms.service: serviceconnector
 ms.topic: overview
 ms.date: 10/29/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: f242eb1557a1b44f3698e06f33dc2a943658af15
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 320cd5af7a6f64d6f74eb55ac9abfd7f07af18ce
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131029480"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131843136"
 ---
 # <a name="quickstart-create-a-service-connection-in-spring-cloud-from-azure-portal"></a>Schnellstart: Erstellen einer Dienstverbindung in Spring Cloud im Azure-Portal
 
@@ -31,18 +31,19 @@ Melden Sie sich unter [https://portal.azure.com/](https://portal.azure.com/) mit
 Sie verwenden den Dienstconnector, um eine neue Dienstverbindung in Spring Cloud zu erstellen.
 
 1. Wählen Sie im linken Bereich des Azure-Portals die Schaltfläche **Alle Ressourcen** aus. Geben Sie **Spring Cloud** im Filter ein, und klicken Sie in der Liste auf den Namen der Spring Cloud, die Sie verwenden möchten.
-1. Wählen Sie **Apps** und dann den Anwendungsnamen in der Liste aus. 
-1. Wählen Sie **Bereitstellungen** und den **Standard** in der Liste aus. Wählen Sie im linken Inhaltsverzeichnis **Dienstconnector (Vorschau)** aus. Klicken Sie anschließend auf **Erstellen**.
+1. Wählen Sie **Apps** und dann den Anwendungsnamen in der Liste aus.
+1. Wählen Sie im linken Inhaltsverzeichnis **Dienstconnector (Vorschau)** aus. Klicken Sie anschließend auf **Erstellen**.
 1. Wählen Sie die folgenden Einstellungen aus, oder geben Sie sie ein.
 
     | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG                                        |
     | ------------ |  ------- | -------------------------------------------------- |
     | **Abonnement** | Eines Ihrer Abonnements | Das Abonnement, in dem sich Ihr Zieldienst befindet (der Dienst, mit dem Sie eine Verbindung herstellen möchten). Der Standardwert ist das Abonnement, in dem sich dieser App Service befindet. |
-    | **Diensttyp** | Storage Blobcontainer | Zieldiensttyp. Wenn Sie über keinen Storage Blobcontainer verfügen, können Sie [einen erstellen](../storage/blobs/storage-quickstart-blobs-portal.md) oder einen anderen Diensttyp verwenden. |
+    | **Diensttyp** | Blob Storage | Zieldiensttyp. Wenn Sie über keinen Blobspeicher verfügen, können Sie [einen erstellen](../storage/blobs/storage-quickstart-blobs-portal.md) oder einen anderen Diensttyp verwenden. |
     | **Verbindungsname** | Generierter eindeutiger Name | Der Verbindungsname, der die Verbindung zwischen Ihrem App Service und dem Zieldienst identifiziert.  |
-    | **Speicherkonto** | Ihr Speicherserver | Der Zieldatenbankdienst, mit dem Sie eine Verbindung herstellen möchten. Wenn Sie einen anderen Diensttyp auswählen, müssen Sie die entsprechende Zieldienstinstanz auswählen. |
+    | **Speicherkonto** | Ihr Speicherkonto | Das Zielspeicherkonto, mit dem Sie eine Verbindung herstellen möchten. Wenn Sie einen anderen Diensttyp auswählen, müssen Sie die entsprechende Zieldienstinstanz auswählen. |
 
-4. Wählen Sie **Überprüfen und erstellen** aus, um die Verbindungseinstellungen zu überprüfen. Wählen Sie dann **Erstellen** aus, um mit der Erstellung der Dienstverbindung zu beginnen.
+1. Wählen Sie **Weiter: Authentifizierung** aus, um den Authentifizierungstyp auszuwählen. Wählen Sie dann **Verbindungszeichenfolge** aus, um den Zugriffsschlüssel zum Herstellen einer Verbindung mit Ihrem Blob-Speicherkonto zu verwenden.
+1. Wählen Sie dann **Weiter: Überprüfen und erstellen** aus, um die bereitgestellten Informationen zu überprüfen. Wählen Sie dann **Erstellen** aus, um die Dienstverbindung zu erstellen. Es kann eine Minute dauern, bis der Vorgang abgeschlossen ist.
 
 ## <a name="view-service-connections-in-spring-cloud"></a>Anzeigen von Dienstverbindungen in Spring Cloud
 

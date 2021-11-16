@@ -10,12 +10,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 07/30/2021
 ms.topic: overview
-ms.openlocfilehash: 5a2bd61c2e59e5933361cc5d64462ba50a12d836
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 642448cab1fa6511d9d12eb4a3de894f3e5c1251
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121737106"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132056756"
 ---
 # <a name="what-are-azure-arc-enabled-data-services"></a>Was sind Datendienste mit Azure Arc-Unterstützung?
 
@@ -26,7 +26,7 @@ Derzeit sind die folgenden Azure Arc-fähigen Datendienste verfügbar:
 - Verwaltete SQL-Instanz
 - PostgreSQL Hyperscale (Vorschau)
 
-Eine Einführung darin, wie Azure Arc-fähige Datendienste Ihre Hybridarbeitsumgebung unterstützen, finden Sie in diesem Einführungsvideo:
+Eine Einführung dazu, wie Azure Arc-fähige Datendienste Ihre Hybridarbeitsumgebung unterstützen, finden Sie in diesem Einführungsvideo:
 
 > [!VIDEO https://channel9.msdn.com/Shows//Inside-Azure-for-IT/Choose-the-right-data-solution-for-your-hybrid-environment/player?format=ny]
 
@@ -54,13 +54,16 @@ Viele Dienste wie die Self-Service-Bereitstellung, automatisierte Sicherungen/Wi
 
 ## <a name="supported-regions"></a>Unterstützte Regionen
 
-In der folgenden Tabelle werden die Szenarien beschrieben, die derzeit für Arc-fähige Datendienste unterstützt werden:
+In der folgenden Tabelle werden die Szenarien beschrieben, die derzeit für Azure Arc-fähige Datendienste unterstützt werden:
 
 |Azure-Regionen  |Direkter Konnektivitätsmodus  |Indirekter Konnektivitätsmodus  |
 |---------|---------|---------|
 |East US|Verfügbar|Verfügbar
 |USA (Ost) 2|Verfügbar|Verfügbar
+|USA (Westen)|Verfügbar|Verfügbar
 |USA, Westen 2|Verfügbar|Verfügbar
+|USA, Westen 3|Verfügbar|Verfügbar
+|USA Nord Mitte | Verfügbar | Verfügbar
 |USA (Mitte)|Nicht verfügbar|Verfügbar
 |USA Süd Mitte|Verfügbar|Verfügbar
 |UK, Süden|Verfügbar|Verfügbar

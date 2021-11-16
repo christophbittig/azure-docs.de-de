@@ -6,14 +6,14 @@ ms.author: jingwang
 ms.service: purview
 ms.subservice: purview-data-map
 ms.topic: how-to
-ms.date: 11/02/2021
+ms.date: 11/04/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: ce62eebd42812c4706e5fb7848a0a7bd4f6988ed
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: edc70416671e57624b5e36d90de37f0e9cefd74c
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131472426"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131850639"
 ---
 # <a name="connect-to-and-manage-sap-ecc-in-azure-purview"></a>Verbinden mit und Verwalten von SAP ECC in Azure Purview
 
@@ -23,7 +23,9 @@ In diesem Artikel wird beschrieben, wie Sie SAP ECC in Azure Purview registriere
 
 |**Metadatenextrahierung**|  **Vollständige Überprüfung**  |**Inkrementelle Überprüfung**|**Bereichsbezogene Überprüfung**|**Klassifizierung**|**Zugriffsrichtlinie**|**Herkunft**|
 |---|---|---|---|---|---|---|
-| [Ja](#register)| [Ja](#scan)| Nein | Nein | Nein | Nein| [Ja](how-to-lineage-sapecc.md)|
+| [Ja](#register)| [Ja](#scan)| Nein | Nein | Nein | Nein| [Ja**](how-to-lineage-sapecc.md)|
+
+\** Herkunft wird unterstützt, wenn das Dataset als Quelle/Senke in der [Data Factory-Copy-Aktivität](how-to-link-azure-data-factory.md) verwendet wird. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -31,13 +33,17 @@ In diesem Artikel wird beschrieben, wie Sie SAP ECC in Azure Purview registriere
 
 * Eine aktive [Purview-Ressource](create-catalog-portal.md)
 
-* Sie müssen ein Datenquellenadministrator und Datenleser sein, um eine Quelle zu registrieren und in Purview Studio zu verwalten. Weitere Informationen finden Sie auf der [Seite Azure Purview-Berechtigungen](catalog-permissions.md).
+* Sie müssen Datenquellenadministrator und Datenleser sein, um eine Quelle zu registrieren und in Purview Studio zu verwalten. Weitere Informationen finden Sie auf der [Seite Azure Purview-Berechtigungen](catalog-permissions.md).
 
 * Richten Sie die neueste [selbstgehostete Integration Runtime](https://www.microsoft.com/download/details.aspx?id=39717) ein. Weitere Informationen finden Sie im [Leitfaden zum Erstellen und Konfigurieren einer selbstgehosteten Integrationslaufzeit](../data-factory/create-self-hosted-integration-runtime.md).
 
 * Stellen Sie sicher, dass [JDK 11](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) auf dem virtuellen Computer installiert ist, auf dem auch die selbstgehostete Integration Runtime installiert ist.
 
 * Stellen Sie sicher, dass Visual C++ Redistributable für Visual Studio 2012 Update 4 auf dem Computer mit der selbstgehosteten Integration Runtime installiert ist. Wenn Sie dieses Update nicht installiert haben, [können Sie es hier herunterladen](https://www.microsoft.com/download/details.aspx?id=30679).
+
+* Laden Sie den [SAP Connector für Microsoft .NET 3.0](https://support.sap.com/en/product/connectors/msnet.html) (64 Bit) von der SAP-Website herunter, und installieren Sie ihn auf dem Computer mit der selbstgehosteten Integration Runtime. Während der Installation müssen Sie im Fenster **Optionale Einrichtungsschritte** die Option **Assemblys in GAC installieren** auswählen.
+
+    :::image type="content" source="media/register-scan-saps4hana-source/requirement.png" alt-text="Voraussetzung" border="true":::
 
 * Der Connector liest Metadaten aus SAP mithilfe der [SAP Java-Connector-API 3.0 (JCo)](https://support.sap.com/en/product/connectors/jco.html). Stellen Sie sicher, dass der Java-Connector auf dem virtuellen Computer verfügbar ist, auf dem auch die selbstgehostete Integration Runtime installiert ist. Stellen Sie sicher, dass Sie die richtige JCo-Verteilung für Ihre Umgebung verwenden. Stellen Sie z. B. auf einem Microsoft Windows-Computer sicher, dass die Dateien „sapjco3.jar“ und „sapjco3.dll“ verfügbar sind.
 
@@ -48,7 +54,7 @@ In diesem Artikel wird beschrieben, wie Sie SAP ECC in Azure Purview registriere
   * STFC_CONNECTION (Konnektivität überprüfen)
   * RFC_SYSTEM_INFO (Systeminformationen überprüfen)
 
-## <a name="register"></a>Registrieren
+## <a name="register"></a>Register
 
 In diesem Abschnitt wird beschrieben, wie Sie SAP ECC in Azure Purview mithilfe von [Purview Studio](https://web.purview.azure.com/) registrieren.
 
@@ -123,8 +129,8 @@ Führen Sie die folgenden Schritte aus, um SAP ECC zu überprüfen und automatis
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie Ihre Quelle registriert haben, halten Sie sich an die folgenden Anleitungen, um mehr über Purview und Ihre Daten zu erfahren.
+Nachdem Sie Ihre Quelle registriert haben, befolgen Sie die folgenden Anleitungen, um mehr über Purview und Ihre Daten zu erfahren.
 
-- [Dateneinblicke in Azure Purview](concept-insights.md)
+- [Datenerkenntnisse in Azure Purview](concept-insights.md)
 - [Datenherkunft in Azure Purview](catalog-lineage-user-guide.md)
 - [Data Catalog suchen](how-to-search-catalog.md)

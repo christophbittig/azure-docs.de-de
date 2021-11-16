@@ -9,12 +9,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 09/18/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 6e8ad07ac5a03e1ad4df9762dfc1fbb81d820dd2
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: a0232775be0bc87d4e69d78d855ecc0d268ad339
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128593551"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131841580"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>Verwalten von Speicherkontoschlüsseln mit Key Vault und der Azure-Befehlszeilenschnittstelle
 > [!IMPORTANT]
@@ -30,6 +30,9 @@ Wenn Sie das Feature für verwaltete Speicherkontoschlüssel verwenden, sollten 
 - Ihre Speicherkontoschlüssel sollten nur durch Key Vault verwaltet werden. Verwalten Sie die Schlüssel nicht selbst, und vermeiden Sie es, die Key Vault-Prozesse zu beeinträchtigen.
 - Speicherkontoschlüssel sollten nur von einem einzigen Key Vault-Objekt verwaltet werden. Lassen Sie es nicht zu, dass die Schlüssel aus mehreren Objekten verwaltet werden.
 - Generieren Sie Schlüssel nur mit Key Vault neu. Generieren Sie Ihre Speicherkontoschlüssel nicht manuell neu.
+
+> [!IMPORTANT]
+> Wird der Schlüssel direkt im Speicherkonto neu generiert, wird die Einrichtung des verwalteten Speicherkontos unterbrochen, und die verwendeten SAS-Tokens können ungültig werden und einen Ausfall verursachen.
 
 ## <a name="service-principal-application-id"></a>Dienstprinzipal-Anwendungs-ID
 

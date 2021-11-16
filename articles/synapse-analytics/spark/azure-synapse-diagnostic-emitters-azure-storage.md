@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 08/31/2021
-ms.openlocfilehash: 52d9c903cbd4aafe8799151663a37b09ed5676c2
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: de21862295e0a27937b8dc7e9552ce9530ec217d
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130241039"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131997873"
 ---
 # <a name="collect-your-apache-spark-applications-logs-and-metrics-using-azure-storage-account"></a>Erfassen von Apache Spark-Anwendungsprotokollen und -Metriken mithilfe eines Azure Storage-Kontos
 
@@ -69,6 +69,7 @@ Alle Protokolldateien liegen im JSON-Zeilenformat – auch „newline-delimited
 | `spark.synapse.diagnostic.emitter.<destination>.secret`                     | Optional. Der Inhalt des Geheimnisses: Zugriffsschlüssel (AccessKey) oder SAS. |
 | `spark.synapse.diagnostic.emitter.<destination>.secret.keyVault`            | Erforderlich, wenn `.secret` nicht angegeben wird. Der Name der [Azure Key Vault-Instanz](../../key-vault/general/overview.md), in der das Geheimnis (Zugriffsschlüssel oder SAS) gespeichert ist. |
 | `spark.synapse.diagnostic.emitter.<destination>.secret.keyVault.secretName` | Erforderlich, wenn `.secret.keyVault` angegeben wird. Der Name des Azure Key Vault-Geheimnisses, in dem das Geheimnis (Zugriffsschlüssel oder SAS) gespeichert ist. |
+| `spark.synapse.diagnostic.emitter.<destination>.secret.keyVault.linkedService` | Optional. Der Name des mit Azure Key Vault verknüpften Diensts. Bei Aktivierung in der Synapse-Pipeline ist dieser Name erforderlich, um das Geheimnis aus AKV abzurufen. (Stellen Sie sicher, dass MSI über Leseberechtigung für AKV verfügt.) |
 | `spark.synapse.diagnostic.emitter.<destination>.filter.eventName.match`     | Optional. Kommagetrennte Liste mit Spark-Ereignisnamen, um anzugeben, welche Ereignisse gesammelt werden sollen. Beispiel: `SparkListenerApplicationStart,SparkListenerApplicationEnd` |
 | `spark.synapse.diagnostic.emitter.<destination>.filter.loggerName.match`    | Optional. Kommagetrennte Liste mit log4j-Protokollierungsnamen, um anzugeben, welche Protokolle gesammelt werden sollen. Beispiel: `org.apache.spark.SparkContext,org.example.Logger` |
 | `spark.synapse.diagnostic.emitter.<destination>.filter.metricName.match`    | Optional. Kommagetrennte Liste mit Spark-Metriknamensuffixen, um anzugeben, welche Metriken gesammelt werden sollen. Beispiel: `jvm.heap.used` |

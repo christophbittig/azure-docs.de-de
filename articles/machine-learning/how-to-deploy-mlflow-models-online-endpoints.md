@@ -11,12 +11,12 @@ ms.date: 11/03/2021
 ms.topic: how-to
 ms.reviewer: larryfr
 ms.custom: deploy, mlflow, devplatv2, no-code-deployment
-ms.openlocfilehash: 14f9ccedf7962a6eab56f4c8081c9859ca905e19
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: d17db7c63d4e17009bffab948f335cedffb85e2e
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131566418"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132060071"
 ---
 # <a name="deploy-mlflow-models-to-managed-online-endpoint-preview"></a>Bereitstellen von MLflow-Modellen auf einem verwalteten Onlineendpunkt (Vorschau)
 
@@ -28,27 +28,30 @@ In diesem Artikel erfahren Sie, wie Sie Ihr [MLflow-Modell](https://www.mlflow.o
 
 [!INCLUDE [basic cli prereqs](../../includes/machine-learning-cli-prereqs.md)]
 
-* Sie müssen über ein MLflow-Modell verfügen. Die Beispiele in diesem Artikel basieren auf den Modellen aus [https://github.com/Azure/azureml-examples/cli/endpoints/online/mlflow](https://github.com/Azure/azureml-examples/cli/endpoints/online/mlflow).
+* Sie müssen über ein MLflow-Modell verfügen. Die Beispiele in diesem Artikel basieren auf den Modellen aus [https://github.com/Azure/azureml-examples/tree/cli-preview/cli/endpoints/online/mlflow](https://github.com/Azure/azureml-examples/tree/cli-preview/cli/endpoints/online/mlflow).
 
 [!INCLUDE [clone repo & set defaults](../../includes/machine-learning-cli-prepare.md)]
 
 In diesen Codeausschnitten, die in diesem Artikel verwendet werden, enthält die Umgebungsvariable `ENDPOINT_NAME` den Namen des zu erstellenden und zu verwendenden Endpunkts. Verwenden Sie zum Festlegen den folgenden Befehl der CLI. Ersetzen Sie `<YOUR_ENDPOINT_NAME>` durch den Namen Ihres Endpunkts.
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-mlflow.sh" ID="set_endpoint_name":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-mlflow.sh" ID="set_endpoint_name":::
 
 ## <a name="deploy-using-cli-v2"></a>Bereitstellung über CLI (v2)
 
 Dieses Beispiel zeigt, wie Sie ein MLflow-Modell mithilfe der CLI (v2) auf einem verwalteten Onlineendpunkt bereitstellen können.
 
+> [!IMPORTANT]
+> Für die Bereitstellung ohne Code in MLflow wird das **[Testen über lokale Endpunkte](how-to-deploy-managed-online-endpoints.md#deploy-and-debug-locally-by-using-local-endpoints)** derzeit nicht unterstützt.
+
 1. Erstellen Sie eine YAML-Konfigurationsdatei für Ihren Endpunkt. Im folgenden Beispiel werden der Name und der Authentifizierungsmodus des Endpunkts konfiguriert:
 
     __create-endpoint.yaml__
 
-    :::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/online/mlflow/create-endpoint.yaml":::
+    :::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/mlflow/create-endpoint.yaml":::
 
 1. Um einen neuen Endpunkt unter Verwendung der YAML-Konfiguration zu erstellen, verwenden Sie den folgenden Befehl:
 
-    :::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-mlflow.sh" ID="create_endpoint":::
+    :::code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-mlflow.sh" ID="create_endpoint":::
 
 1. Erstellen Sie eine YAML-Konfigurationsdatei für das Bereitstellen. Im folgenden Beispiel wird eine Bereitstellung des Modells `sklearn-diabetes` für den im vorherigen Schritt erstellten Endpunkt konfiguriert:
 
@@ -57,17 +60,17 @@ Dieses Beispiel zeigt, wie Sie ein MLflow-Modell mithilfe der CLI (v2) auf einem
 
     __sklearn-deployment.yaml__
 
-    :::code language="yaml" source="~/azureml-examples-cli-preview/cli/endpoints/online/mlflow/sklearn-deployment.yaml":::
+    :::code language="yaml" source="~/azureml-examples-main/cli/endpoints/online/mlflow/sklearn-deployment.yaml":::
 
 1. Um die Bereitstellung mit der YAML-Konfiguration zu erstellen, verwenden Sie den folgenden Befehl:
 
-    :::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-mlflow.sh" ID="create_sklearn_deployment":::
+    :::code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-mlflow.sh" ID="create_sklearn_deployment":::
 
 ### <a name="invoke-the-endpoint"></a>Aufrufen des Endpunkts
 
-Sobald die Bereitstellung abgeschlossen ist, verwenden Sie den folgenden Befehl, um eine Bewertungsanforderung an den bereitgestellten Endpunkt zu stellen. Die in diesem Befehl verwendete Datei [sample-request-sklearn.json](https://github.com/Azure/azureml-examples/blob/5e5d9264be15a157dd6635c2fffc341669c8cb31/cli/endpoints/online/mlflow/sample-request-sklearn.json) befindet sich im Verzeichnis `/cli/endpoints/online/mlflow` des „azure-examples“-Repositorys:
+Sobald die Bereitstellung abgeschlossen ist, verwenden Sie den folgenden Befehl, um eine Bewertungsanforderung an den bereitgestellten Endpunkt zu stellen. Die in diesem Befehl verwendete Datei [sample-request-sklearn.json](https://github.com/Azure/azureml-examples/blob/cli-preview/cli/endpoints/online/mlflow/sample-request-sklearn.json) befindet sich im Verzeichnis `/cli/endpoints/online/mlflow` des „azure-examples“-Repositorys:
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-mlflow.sh" ID="test_sklearn_deployment":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-mlflow.sh" ID="test_sklearn_deployment":::
 
 Die Antwort sieht in etwa wie folgender Text aus:
 
@@ -82,13 +85,13 @@ Die Antwort sieht in etwa wie folgender Text aus:
 
 Wenn Sie mit dem Endpunkt fertig sind, verwenden Sie den folgenden Befehl, um ihn zu löschen:
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-managed-online-endpoint-mlflow.sh" ID="delete_endpoint":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-managed-online-endpoint-mlflow.sh" ID="delete_endpoint":::
 
 ## <a name="deploy-using-azure-machine-learning-studio"></a>Bereitstellung mit Azure Machine Learning Studio
 
 Dieses Beispiel zeigt, wie Sie ein MLflow-Modell mithilfe von [Azure Machine Learning Studio](https://ml.azure.com) auf einem verwalteten Onlineendpunkt bereitstellen können.
 
-1. Registrieren Sie Ihr Modell im MLflow-Format mit dem folgenden YAML- und CLI-Befehl. Der YAML-Befehl verwendet ein scikit-learn MLflow-Modell von [https://github.com/Azure/azureml-examples/cli/endpoints/online/mlflow](https://github.com/Azure/azureml-examples/cli/endpoints/online/mlflow]).
+1. Registrieren Sie Ihr Modell im MLflow-Format mit dem folgenden YAML- und CLI-Befehl. Der YAML-Befehl verwendet ein scikit-learn MLflow-Modell von [https://github.com/Azure/azureml-examples/tree/cli-preview/cli/endpoints/online/mlflow](https://github.com/Azure/azureml-examples/tree/cli-preview/cli/endpoints/online/mlflow).
 
     __sample-create-mlflow-model.yaml__
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-custom-ner, references_regions, ignite-fall-2021
-ms.openlocfilehash: 16a6412c95bdb203d524959ef541f8b1488c8f5a
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: c7dfe80162ab406c6dde32ad54ff251e001f5416
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131095963"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132027677"
 ---
 # <a name="how-to-create-custom-ner-projects"></a>Erstellen benutzerdefinierter NER-Projekte
 
@@ -103,9 +103,9 @@ Falls Sie noch nicht über ein Konto verfügen, müssen Sie [ein Azure-Speicherk
 
 Als Nächstes müssen Sie die [richtigen Rollen](#roles-for-your-storage-account) für das Speicherkonto zuweisen, um es mit Ihrer Sprachressource zu verbinden. 
 
-## <a name="roles-for-your-azure-resource"></a>Rollen für Ihre Azure-Ressource
+## <a name="roles-for-your-azure-language-resource"></a>Rollen für Ihre Azure-Sprachressource
 
-Ihnen sollte die Rolle „Besitzer“ oder „Mitwirkender“ für Ihre Azure-Ressource zugewiesen sein.
+Ihnen sollte die Rolle **Besitzer** oder **Mitwirkender** für Ihre Azure-Sprachressource zugewiesen sein.
 
 ## <a name="enable-identity-management-for-your-resource"></a>Aktivieren der Identitätsverwaltung für Ihre Ressource
 

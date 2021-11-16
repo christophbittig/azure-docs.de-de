@@ -10,12 +10,12 @@ ms.custom: subject-armqs
 ms.workload: identity
 ms.date: 04/28/2021
 ms.author: rolyon
-ms.openlocfilehash: 48be24436e032f044e8f23238059e16b55d9cf5c
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 0fb96bedc12939c130b7fa4c7feee4c7967e0e77
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111886896"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132055679"
 ---
 # <a name="quickstart-assign-an-azure-role-using-an-arm-template"></a>Schnellstart: Zuweisen einer Azure-Rolle mithilfe einer ARM-Vorlage
 
@@ -37,7 +37,7 @@ Sie benötigen Folgendes, um Azure-Rollen zuzuweisen und Rollenzuweisungen zu en
 
 ## <a name="review-the-template"></a>Überprüfen der Vorlage
 
-Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/rbac-builtinrole-resourcegroup/). Die Vorlage hat drei Parameter und einen Ressourcenabschnitt. Beachten Sie im Abschnitt „Ressourcen“, dass er die drei Elemente einer Rollenzuweisung enthält: Sicherheitsprinzipal, Rollendefinition und Bereich.
+Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit den [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/rbac-builtinrole-resourcegroup/). Die Vorlage hat zwei Parameter und einen Ressourcenabschnitt. Beachten Sie im Abschnitt „Ressourcen“, dass er die drei Elemente einer Rollenzuweisung enthält: Sicherheitsprinzipal, Rollendefinition und Bereich.
 
 :::code language="json" source="~/quickstart-templates/quickstarts/microsoft.authorization/rbac-builtinrole-resourcegroup/azuredeploy.json":::
 
@@ -66,7 +66,7 @@ In der Vorlage ist die folgende Ressource definiert:
     $templateUri = "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.authorization/rbac-builtinrole-resourcegroup/azuredeploy.json"
 
     New-AzResourceGroup -Name $resourceGroupName -Location $location
-    New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -roleAssignmentName $roleAssignmentName -roleDefinitionID $roleDefinitionId -principalId $principalId
+    New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -roleDefinitionID $roleDefinitionId -principalId $principalId
     ```
 
 1. Geben Sie einen Ressourcengruppennamen wie „ExampleGrouprg“ ein.
@@ -96,7 +96,6 @@ In der Vorlage ist die folgende Ressource definiert:
     Parameters              :
                               Name                  Type                       Value
                               ====================  =========================  ==========
-                              roleAssignmentName    String                     {roleAssignmentName}
                               roleDefinitionID      String                     9980e02c-c2be-4d73-94e8-173b1dc7cf3c
                               principalId           String                     {principalId}
 

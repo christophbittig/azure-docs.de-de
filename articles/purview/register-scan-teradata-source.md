@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: 5e0d1de26a87cb4a0ac7ddf440b2ce529e02de34
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: ebaad16ff413b33f175815a1ddadb2fa1d5b63ae
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131441930"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131841921"
 ---
 # <a name="connect-to-and-manage-teradata-in-azure-purview"></a>Verbinden mit und Verwalten von Teradata in Azure Purview
 
@@ -23,10 +23,11 @@ In diesem Artikel wird beschrieben, wie Sie Teradata in Azure Purview registrier
 
 |**Metadatenextrahierung**|  **Vollständige Überprüfung**  |**Inkrementelle Überprüfung**|**Bereichsbezogene Überprüfung**|**Klassifizierung**|**Zugriffsrichtlinie**|**Herkunft**|
 |---|---|---|---|---|---|---|
-| [Ja](#register)| [Ja](#scan)| Nein | Nein | Nein | Nein| [Ja](how-to-lineage-teradata.md)|
+| [Ja](#register)| [Ja](#scan)| Nein | Nein | Nein | Nein| [Ja**](how-to-lineage-teradata.md)|
 
-> [!Important]
-> Die Teradata-Datenbankversionen 12.x bis 16.x werden unterstützt.
+\** Herkunft wird unterstützt, wenn das Dataset als Quelle/Senke in der [Data Factory-Copy-Aktivität](how-to-link-azure-data-factory.md) verwendet wird. 
+
+Die Teradata-Datenbankversionen 12.x bis 16.x werden unterstützt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -34,7 +35,7 @@ In diesem Artikel wird beschrieben, wie Sie Teradata in Azure Purview registrier
 
 * Eine aktive [Purview-Ressource](create-catalog-portal.md)
 
-* Sie müssen ein Datenquellenadministrator und Datenleser sein, um eine Quelle zu registrieren und in Purview Studio zu verwalten. Weitere Informationen finden Sie auf der [Seite Azure Purview-Berechtigungen](catalog-permissions.md).
+* Sie müssen Datenquellenadministrator und Datenleser sein, um eine Quelle zu registrieren und in Purview Studio zu verwalten. Weitere Informationen finden Sie auf der [Seite Azure Purview-Berechtigungen](catalog-permissions.md).
 
 * Richten Sie die neueste [selbstgehostete Integration Runtime](https://www.microsoft.com/download/details.aspx?id=39717) ein. Weitere Informationen finden Sie im [Leitfaden zum Erstellen und Konfigurieren einer selbstgehosteten Integrationslaufzeit](../data-factory/create-self-hosted-integration-runtime.md).
 
@@ -47,7 +48,7 @@ In diesem Artikel wird beschrieben, wie Sie Teradata in Azure Purview registrier
     > [!Note]
     > Der Treiber muss für alle Konten des virtuellen Computers zugänglich sein. Installieren Sie ihn nicht in einem Benutzerkonto.
 
-## <a name="register"></a>Registrieren
+## <a name="register"></a>Register
 
 In diesem Abschnitt wird beschrieben, wie Sie Teradata in Azure Purview mithilfe von [Purview Studio](https://web.purview.azure.com/) registrieren.
 
@@ -103,24 +104,24 @@ Führen Sie die folgenden Schritte aus, um Teradata zu überprüfen und automati
 
         Weitere Informationen zu Anmeldeinformationen finden Sie [hier](./manage-credentials.md).
 
-1. **Schema**: Eine durch Semikolons getrennte Liste mit einer Teilmenge von Schemas, die importiert werden sollen. Beispiel: Schema1; Schema2. Ist diese Liste leer, werden alle Benutzerschemas importiert. Alle Systemschemas (beispielsweise „SysAdmin“) und Objekte werden standardmäßig ignoriert. Wenn die Liste leer ist, werden alle verfügbaren Schemas importiert.
+    1. **Schema**: Eine durch Semikolons getrennte Liste mit einer Teilmenge von Schemas, die importiert werden sollen. Beispiel: `schema1; schema2`. Ist diese Liste leer, werden alle Benutzerschemas importiert. Alle Systemschemas (beispielsweise „SysAdmin“) und Objekte werden standardmäßig ignoriert. Wenn die Liste leer ist, werden alle verfügbaren Schemas importiert.
 
-    Zu den zulässigen Schemanamensmustern mit SQL-LIKE-Ausdruckssyntax zählt auch die Verwendung von „%“. Beispiel: A%; %B; %C%; D
-     * beginnt mit „A“ oder
-     * endet mit „B“ oder
-     * enthält „C“ oder
-     * gleich „D“
+        Zu den zulässigen Schemanamensmustern mit SQL-LIKE-Ausdruckssyntax zählt auch die Verwendung von „%“. Beispiel: `A%; %B; %C%; D`
+        * Starten mit A oder
+        * Endet mit „B“ oder
+        * Enthält „C“ oder
+        * Ist gleich „D“
 
-    Die Verwendung von „NOT“ oder Sonderzeichen ist nicht zulässig.
+        Die Verwendung von „NOT“ oder Sonderzeichen ist nicht zulässig.
 
-1. **Treiberspeicherort**: Geben Sie den Pfad zum Speicherort des JDBC-Treibers auf dem virtuellen Computer an, auf dem die selbstgehostete Integration Runtime ausgeführt wird. Dabei sollte es sich um den Pfad zu einem gültigen Speicherort eines JAR-Ordners handeln.
+    1. **Treiberspeicherort**: Geben Sie den Pfad zum Speicherort des JDBC-Treibers auf dem virtuellen Computer an, auf dem die selbstgehostete Integration Runtime ausgeführt wird. Dabei sollte es sich um den Pfad zu einem gültigen Speicherort eines JAR-Ordners handeln.
 
-1. **Maximal verfügbarer Arbeitsspeicher:** Maximaler Arbeitsspeicher (in GB), der auf dem virtuellen Computer des Kunden für Überprüfungsprozesse verfügbar ist. Abhängig von der Größe der zu überprüfenden Teradata-Quelle.
+    1. **Maximal verfügbarer Arbeitsspeicher:** Maximaler Arbeitsspeicher (in GB), der auf dem virtuellen Computer des Kunden für Überprüfungsprozesse verfügbar ist. Abhängig von der Größe der zu überprüfenden Teradata-Quelle.
 
-    > [!Note]
-    > Faustregel: 2 GB Arbeitsspeicher pro 1.000 Tabellen.
+        > [!Note]
+        > Faustregel: 2 GB Arbeitsspeicher pro 1.000 Tabellen.
 
-    :::image type="content" source="media/register-scan-teradata-source/setup-scan.png" alt-text="Einrichten der Überprüfung" border="true":::
+        :::image type="content" source="media/register-scan-teradata-source/setup-scan.png" alt-text="Einrichten der Überprüfung" border="true":::
 
 1. Wählen Sie **Weiter**.
 
@@ -132,8 +133,8 @@ Führen Sie die folgenden Schritte aus, um Teradata zu überprüfen und automati
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie Ihre Quelle registriert haben, halten Sie sich an die folgenden Anleitungen, um mehr über Purview und Ihre Daten zu erfahren.
+Nachdem Sie Ihre Quelle registriert haben, befolgen Sie die folgenden Anleitungen, um mehr über Purview und Ihre Daten zu erfahren.
 
-- [Dateneinblicke in Azure Purview](concept-insights.md)
+- [Datenerkenntnisse in Azure Purview](concept-insights.md)
 - [Datenherkunft in Azure Purview](catalog-lineage-user-guide.md)
 - [Data Catalog suchen](how-to-search-catalog.md)

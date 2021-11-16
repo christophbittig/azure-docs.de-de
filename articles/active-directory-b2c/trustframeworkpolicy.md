@@ -7,15 +7,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/15/2021
+ms.date: 11/09/2021
 ms.author: kengaderdus
 ms.subservice: B2C
-ms.openlocfilehash: 13ee73160eb2efe4cce9a76d7f7ee611a8fbcd0e
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 1eb877215137338e2522ae9e8b215cceb469f49b
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "131036179"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132055472"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -70,6 +70,7 @@ Das **TrustFrameworkPolicy**-Element enthält die folgenden Elemente:
 | [BuildingBlocks](buildingblocks.md) | 0:1 | Die Bausteine Ihrer Richtlinie |
 | [ClaimsProviders](claimsproviders.md) | 0:1 | Eine Sammlung von Anspruchsanbietern |
 | [UserJourneys](userjourneys.md) | 0:1 | Eine Sammlung von User Journeys |
+| [SubJourneys](subjourneys.md) | 0:1 | Eine Sammlung von untergeordneten Journeys. |
 | [RelyingParty](relyingparty.md) | 0:1 | Eine Definition einer Richtlinie der vertrauenden Seite. |
 
 Damit eine Richtlinie von einer anderen Richtlinie erben kann, muss ein **BasePolicy**-Element unter dem **TrustFrameworkPolicy**-Element der Richtliniendatei deklariert werden. Das **BasePolicy**-Element ist ein Verweis auf die Basisrichtlinie, von der diese Richtlinie abgeleitet ist.

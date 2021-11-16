@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: ca43e9d1e54566da374ccbae011e66ae54297af4
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 43b4fcdbd867a2aee95c6bf23d57e77e8fbbe08f
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131432565"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132026898"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Dienste, die verwaltete Identitäten für Azure-Ressourcen unterstützen
 
@@ -325,7 +325,7 @@ Informationen zum Konfigurieren der verwalteten Identität für Azure Service 
 | Vom Benutzer zugewiesen | Nicht verfügbar. | Nicht verfügbar. | Nicht verfügbar. | Nicht verfügbar. |
 
 
-Weitere Informationen finden Sie unter [Aktivieren einer systemseitig zugewiesenen verwalteten Identität für eine Azure Spring Cloud-Anwendung](../../spring-cloud/how-to-enable-system-assigned-managed-identity.md).
+Weitere Informationen finden Sie unter [Aktivieren einer systemseitig zugewiesenen verwalteten Identität für Anwendungen in Azure Spring Cloud](../../spring-cloud/how-to-enable-system-assigned-managed-identity.md).
 
 ### <a name="azure-stack-edge"></a>Azure Stack Edge
 

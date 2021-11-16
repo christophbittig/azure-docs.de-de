@@ -4,19 +4,22 @@ description: In diesem Artikel werden Überlegungen zur Preisgestaltung, Abrechn
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 08/06/2021
+ms.date: 10/26/2021
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 344b3aeba1c10e3a66d01458800d771ca31dd3a7
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 0e7166399dac6d28a5b7e0ed4cf5f4e5cd20e97c
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131056432"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132059032"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Transaktionsfunktionen im kommerziellen Marketplace
 
 In diesem Artikel werden Überlegungen zur Preisgestaltung, Abrechnung, Rechnungsstellung und Auszahlung für *transaktionsfähige* Angebote beschrieben, die über den kommerziellen Marketplace verkauft werden. Informationen zum Veröffentlichen nicht transaktionsfähiger Angebote (kostenlos oder BYOL) finden Sie unter [Einführung in Auflistungsoptionen](determine-your-listing-type.md).
+
+> [!TIP]
+> Die Ansicht des Kunden für den Kauf im kommerziellen Marketplace finden Sie unter [Kauf im Azure Marketplace](/marketplace/azure-purchasing-invoicing). Informationen zu SaaS-Angeboten finden Sie unter [Kaufen von SaaS-Apps in Microsoft AppSource](/marketplace/purchase-software-appsource).
 
 ## <a name="transactions-by-listing-option"></a>Transaktionen nach Auflistungsoption
 
@@ -195,7 +198,7 @@ Die Möglichkeit, Transaktionen über Microsoft abzuwickeln, steht nur für folg
 
 - **Virtueller Azure-Computer**: Wählen Sie ein kostenloses, BYOL-basiertes oder nutzungsbasierten Preismodell aus. Auf der Azure-Rechnung des Kunden weist Microsoft die Softwarelizenzgebühren des Herausgebers getrennt von den zugrunde liegenden Azure-Infrastrukturgebühren aus. Azure-Infrastrukturgebühren hängen von der Verwendung der Software des Herausgebers ab.
 
-- **SaaS-Anwendung**: Muss eine mehrinstanzenfähige Lösung sein, [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) für die Authentifizierung verwenden und mit den [SaaS-Fulfillment-APIs](partner-center-portal/pc-saas-fulfillment-api-v2.md) integriert sein. Die Nutzung der Azure-Infrastruktur wird verwaltet und direkt mit Ihnen (dem Herausgeber) abgerechnet. Nutzungsgebühren für die Azure-Infrastruktur sowie Softwarelizenzgebühren müssen daher von Ihnen als einzelner Posten abgerechnet werden. Ausführliche Informationen finden Sie unter [Pläne](plan-saas-offer.md#plans).
+- **SaaS-Anwendung**: Muss eine mehrinstanzenfähige Lösung sein, [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) für die Authentifizierung verwenden und mit den [SaaS-Fulfillment-APIs](partner-center-portal/pc-saas-fulfillment-apis.md) integriert sein. Die Nutzung der Azure-Infrastruktur wird verwaltet und direkt mit Ihnen (dem Herausgeber) abgerechnet. Nutzungsgebühren für die Azure-Infrastruktur sowie Softwarelizenzgebühren müssen daher von Ihnen als einzelner Posten abgerechnet werden. Ausführliche Informationen finden Sie unter [Pläne](plan-saas-offer.md#plans).
 
 ## <a name="private-plans"></a>Private Pläne
 

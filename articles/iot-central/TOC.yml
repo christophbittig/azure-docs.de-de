@@ -253,6 +253,8 @@
       href: /samples/browse/?expanded=azure&products=azure-iot-central
     - name: Support- und Hilfeoptionen
       href: ../iot-fundamentals/iot-support-help.md?toc=/azure/iot-central/toc.json&bc=/azure/iot-central/breadcrumb/toc.json
+    - name: Videoressourcen
+      href: 'https://www.youtube.com/playlist?list=PL1ljc761XCiYlm8Rx58jLsUp4gAspw1SG'
     - name: IoT-Glossar
       href: ../iot-fundamentals/iot-glossary.md?toc=/azure/iot-central/toc.json&bc=/azure/iot-central/breadcrumb/toc.json
     - name: Azure IoT-Dienste

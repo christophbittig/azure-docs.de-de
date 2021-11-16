@@ -8,19 +8,44 @@ ms.subservice: core
 ms.topic: reference
 ms.author: larryfr
 author: BlackMist
-ms.date: 10/21/2021
-ms.openlocfilehash: 5c2594e38db7a57e2861241d37405a8ce03b8494
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.date: 11/01/2021
+ms.openlocfilehash: 9f23037c5582b0e75107b3637f09a7b80c32a530
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131563167"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132028532"
 ---
 # <a name="azure-machine-learning-python-sdk-release-notes"></a>Versionshinweise zum Azure Machine Learning SDK für Python
 
 In diesem Artikel erfahren Sie mehr über Releases des Azure Machine Learning SDK für Python.  Den vollständigen SDK-Referenzinhalt finden Sie auf der Hauptseite der Referenz zum [**Azure Machine Learning SDK für Python**](/python/api/overview/azure/ml/intro).
 
 __RSS-Feed__: Lassen Sie sich benachrichtigen, wenn diese Seite aktualisiert wird, indem Sie die folgende URL kopieren und in Ihren Feedreader einfügen: `https://docs.microsoft.com/api/search/rss?search=%22Azure+machine+learning+release+notes%22&locale=en-us`
+## <a name="2021-11-08"></a>2021-11-08
+
+### <a name="azure-machine-learning-sdk-for-python-v1360"></a>Azure Machine Learning SDK für Python v1.36.0
+  + **azureml-automl-dnn-vision**
+    + Bei einigen Fehlermeldungen wurden geringfügige Tippfehler bereinigt.
+  + **azureml-contrib-reinforcementlearning**
+    + Das Übermitteln von Ausführungen für vertiefendes Lernen, die Simulatoren verwenden, wird nicht mehr unterstützt.
+  + **azureml-core**
+    + Die Unterstützung für partitionierte Premium-Blobs wurde hinzugefügt.
+    + Die Angabe von nicht öffentlichen Clouds für die Authentifizierung verwalteter Identitäten wird nicht länger unterstützt.
+    + Der Benutzer kann den AKS-Webdienst zu einem Onlineendpunkt und einer Bereitstellung migrieren, die über die CLI (v2) verwaltet wird.
+    + Der Instanztyp für Trainingsaufträge auf Kubernetes-Computezielen kann jetzt über eine RunConfiguration-Eigenschaft festgelegt werden: run_config.kubernetescompute.instance_type.
+  + **azureml-defaults**
+    + Redundante Abhängigkeiten wie Gunicorn und Werkzeug wurden entfernt.
+  + **azureml-interpret**
+    + Das azureml-interpret-Paket hat ein Update auf Version 0.21.* von interpret-community erhalten.
+  + **azureml-pipeline-steps**
+    + MpiStep wurde zugunsten von CommandStep zum Ausführen von ML-Training (einschließlich verteiltem Training) in Pipelines als veraltet markiert.
+  + **azureml-train-automl-rutime**
+    + Aktualisieren Sie die Dokumente zum Ausgabeformat der AutoML-Modelltestvorhersagen.
+    + Es wurden Docstring-Beschreibungen für die Naive-, SeasonalNaive-, Average- und SeasonalAverage-Vorhersagemodelle hinzugefügt.
+    + Die Zusammenfassung zur Featurisierung wird jetzt als Artefakt bei der Ausführung gespeichert (überprüfen Sie im Ordner „outputs“ nach einer Datei namens „featurization_summary.json“).
+    + Aktivieren Sie die Unterstützung kategorischer Indikatoren für Tabnet Learner.
+    + Fügen Sie den Parameter „downsample“ zu „automl_setup_model_explanations“ hinzu, damit Benutzer Erläuterungen zu allen Daten erhalten können, ohne ein Downsampling zu verwenden, indem Sie diesen Parameter auf „false“ festlegen.
+    
 
 ## <a name="2021-10-11"></a>2021-10-11
 

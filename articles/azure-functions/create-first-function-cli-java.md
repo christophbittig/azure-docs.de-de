@@ -11,12 +11,12 @@ adobe-target: true
 adobe-target-activity: DocsExp–386541–A/B–Enhanced-Readability-Quickstarts–2.19.2021
 adobe-target-experience: Experience B
 adobe-target-content: ./create-first-function-cli-java-uiex
-ms.openlocfilehash: f9b4d079b359524faac8b594c653b7aebcac2676
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c28d2d2fbdbe48b2f07ed85f8cc08b93d70e1edb
+ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121730524"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "132026961"
 ---
 # <a name="quickstart-create-a-java-function-in-azure-from-the-command-line"></a>Schnellstart: Erstellen einer Java-Funktion über die Befehlszeile in Azure
 
@@ -37,7 +37,7 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
 + Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-+ [Azure Functions Core Tools](functions-run-local.md#v2), Version 3.x.
++ [Azure Functions Core Tools](functions-run-local.md#v2), Version 4.x
 
 + [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli) ab Version 2.4
 
@@ -47,7 +47,7 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
 ### <a name="prerequisite-check"></a>Prüfen der Voraussetzungen
 
-+ Führen Sie in einem Terminal oder Befehlsfenster `func --version` aus, um zu überprüfen, ob mindestens Version 3.x der Azure Functions Core Tools verwendet wird.
++ Führen Sie in einem Terminal- oder Befehlsfenster `func --version` aus, um zu überprüfen, ob Version 4.x der Azure Functions Core Tools verwendet wird.
 
 + Führen Sie `az --version` aus, um zu überprüfen, ob die Version 2.4 oder höher der Azure CLI verwendet wird.
 

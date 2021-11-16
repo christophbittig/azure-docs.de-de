@@ -1,5 +1,5 @@
 ---
-title: 'CLI-Skript: Neustarten/Beenden/Starten einer Instanz von Azure Database for MySQL – Flexible Server (Vorschau)'
+title: 'CLI-Skript: Neustarten/Beenden/Starten einer Instanz von Azure Database for MySQL – Flexible Server'
 description: In diesem Azure CLI-Beispielskript wird veranschaulicht, wie Sie eine Instanz von Azure Database for MySQL – Flexible Server neu starten/beenden/starten.
 author: shreyaaithal
 ms.author: shaithal
@@ -8,14 +8,14 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 09/15/2021
-ms.openlocfilehash: 2c4d17b0bcbba1c231b06f6112ef8b43e9b4786a
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 12a375eb7195af9b95db85723efe7a52b53c5356
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128604649"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131844098"
 ---
-# <a name="restartstopstart-an-azure-database-for-mysql---flexible-server-preview-using-azure-cli"></a>Neustarten/Beenden/Starten einer Instanz von Azure Database for MySQL – Flexible Server (Vorschau) mithilfe der Azure CLI
+# <a name="restartstopstart-an-azure-database-for-mysql---flexible-server-using-azure-cli"></a>Neustarten/Beenden/Starten einer Instanz von Azure Database for MySQL – Flexible Server mithilfe der Azure CLI
 
 Dieses CLI-Beispielskript führt Vorgänge zum Neustarten, Starten und Beenden einer Instanz von Azure Database for MySQL – Flexible Server aus. 
 
@@ -62,5 +62,5 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Probieren Sie weitere Skripts aus: [Azure CLI-Beispiele für Azure Database for MySQL – Flexible Server (Vorschau)](../sample-scripts-azure-cli.md).
+- Probieren Sie weitere Skripts aus: [Azure CLI-Beispiele für Azure Database for MySQL – Flexible Server](../sample-scripts-azure-cli.md).
 - Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](/cli/azure).

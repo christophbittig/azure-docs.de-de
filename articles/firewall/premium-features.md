@@ -5,15 +5,15 @@ author: vhorne
 ms.service: firewall
 services: firewall
 ms.topic: conceptual
-ms.date: 10/11/2021
+ms.date: 11/04/2021
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: c6cc19bd688dd2c38210fae8d77a036f2ba5be7e
-ms.sourcegitcommit: af303268d0396c0887a21ec34c9f49106bb0c9c2
+ms.openlocfilehash: addbd908670741cd0ba8662bf73a1a6788487498
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2021
-ms.locfileid: "129754309"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131851456"
 ---
 # <a name="azure-firewall-premium-features"></a>Azure Firewall Premium-Features
 
@@ -51,8 +51,8 @@ Azure Firewall Premium bietet signaturbasiertes IDPS, um eine schnelle Erkennung
 
 Die Signaturen/Regelsätze in Azure Firewall bieten Folgendes:
 - Schwerpunkt auf der Erstellung von Fingerabdrücken von tatsächlicher Schadsoftware, Command-and-Control, Exploitkits und schädlichen Aktivitäten in der Praxis, die herkömmliche Präventionsmethoden übersehen
-- Über 55.000 Regeln in mehr als 50 Kategorien.
-    - Zu diesen Kategorien gehören unter anderem Schadsoftware, Command-and-Control, DoS-Angriffe, Botnets, Informationsereignisse, Exploits, Sicherheitsrisiken, SCADA-Netzwerkprotokolle und Exploitkitaktivitäten.
+- Über 58.000 Regeln in mehr als 50 Kategorien.
+    - Zu diesen Kategorien gehören unter anderem Schadsoftware, Command-and-Control, Phishing, Trojaner, Botnets, Informationsereignisse, Exploits, Sicherheitsrisiken, SCADA-Netzwerkprotokolle und Exploitkitaktivitäten.
 - Jeden Tag werden zwischen 20 und mehr als 40 neue Regeln veröffentlicht.
 - Niedrige False-Positive-Bewertung dank Verwendung einer modernen Sandbox für Schadsoftware und einer globalen Feedbackschleife für das Sensornetzwerk
 
@@ -87,6 +87,26 @@ Sie können Datenverkehr, der nach **Webkategorien** gefiltert wurde, in den Anw
 ### <a name="category-exceptions"></a>Kategorieausnahmen
 
 Sie können Ausnahmen für Ihre Webkategorisierungsregeln erstellen. Erstellen Sie innerhalb der Regelsammlungsgruppe eine separate Sammlung mit Zulassungs- oder Verweigerungsregeln mit einer höheren Priorität. Sie können beispielsweise eine Regelsammlung konfigurieren, die `www.linkedin.com` mit Priorität 100 zulässt, und eine Regelsammlung, die **Soziale Netzwerke** mit der Priorität 200 verweigert. Dadurch wird eine Ausnahme für die vordefinierte Webkategorie **Soziale Netzwerke** erstellt.
+
+### <a name="web-category-search"></a>Webkategoriesuche
+
+Sie können die Kategorie eines bestimmten FQDN oder einer URL mithilfe des Features **Webkategorieüberprüfung** ermitteln. Wählen Sie die Registerkarte **Webkategorien** unter **Firewallrichtlinien-Einstellungen** aus, um das Feature zu verwenden. Dies ist besonders nützlich, wenn Sie die Anwendungsregeln für den Zieldatenverkehr definieren.
+
+:::image type="content" source="media/premium-features/firewall-category-search.png" alt-text="Dialogfeld „Firewallkategoriesuche“":::
+
+### <a name="category-change"></a>Kategorieänderung
+
+In der Registerkarte **Webkategorien** unter **Firewallrichtlinien-Einstellungen** können Sie eine Kategorisierungsänderung anfordern, wenn Sie: 
+
+- Wenn sich ein FQDN oder eine URL in einer anderen Kategorie befinden sollte 
+
+   oder 
+
+- Wenn Sie über eine vorgeschlagene Kategorie für einen nicht kategorisierten FQDN bzw. nicht kategorisierte URL verfügen 
+
+ Nachdem Sie einen Bericht zur Kategorieänderung eingereicht haben, erhalten Sie ein Token in den Benachrichtigungen, das angibt, dass die Anforderung zur Verarbeitung eingegangen ist. Sie können überprüfen, ob die Anforderung in Bearbeitung ist, abgelehnt oder genehmigt wurde, indem Sie das Token in die Suchleiste eingeben.  Speichern Sie dazu Ihre Token-ID.
+
+:::image type="content" source="media/premium-features/firewall-category-change.png" alt-text="Dialogfeld „Firewallkategoriebericht“":::
 
  ## <a name="supported-regions"></a>Unterstützte Regionen
 

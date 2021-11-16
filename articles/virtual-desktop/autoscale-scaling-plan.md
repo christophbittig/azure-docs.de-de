@@ -7,12 +7,12 @@ ms.date: 10/19/2021
 ms.author: helohr
 manager: femila
 ms.custom: references_regions
-ms.openlocfilehash: 2636638bcab5577bee2f4c07bae3653cc4151248
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 88de9f363851d47fbefcdcf69060111d8fd64bbf
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131421689"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131842376"
 ---
 # <a name="autoscale-preview-for-azure-virtual-desktop-host-pools"></a>Automatische Skalierung (Vorschau) für Azure Virtual Desktop-Hostpools
 
@@ -28,7 +28,9 @@ Mit dem Feature für die automatische Skalierung (Vorschauversion) können Sie d
 
 >[!NOTE]
 > - Azure Virtual Desktop (klassisch) unterstützt das Feature „Automatische Skalierung“ nicht. 
+> - Die Autoskalierung unterstützt Azure Virtual Desktop für Azure Stack HCI nicht. 
 > - Die automatische Skalierung unterstützt keine Skalierung kurzlebiger Datenträger.
+
 
 Um optimale Ergebnisse zu erzielen, empfehlen wir die Verwendung der automatischen Skalierung mit virtuellen Computern, die Sie mit Azure Resource Manager-Vorlagen für Azure Virtual Desktop oder Erstherstellertools von Microsoft bereitgestellt haben.
 

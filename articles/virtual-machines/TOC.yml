@@ -946,7 +946,7 @@
         - name: Übersicht
           displayName: 'availability and scale, availability, scale, autoscale, availability zones, AV zones'
           href: ../availability-zones/az-overview.md?context=/azure/virtual-machines/context/context
-        - name: Befehlszeilenschnittstelle (CLI)
+        - name: CLI
           displayName: 'availability and scale, availability, scale, autoscale, availability zones, AV zones'
           href: ./linux/create-cli-availability-zone.md
         - name: PowerShell
@@ -960,7 +960,7 @@
         - name: Übersicht
           displayName: 'proximity placement groups, ppg'
           href: co-location.md
-        - name: Befehlszeilenschnittstelle (CLI)
+        - name: CLI
           displayName: 'proximity placement groups, ppg'
           href: ./linux/proximity-placement-groups.md
         - name: PowerShell
@@ -1003,7 +1003,7 @@
         - name: Übersicht
           displayName: 'availability and scale, availability, scale, autoscale, availability sets, AV sets'
           href: availability-set-overview.md
-        - name: Befehlszeilenschnittstelle (CLI)
+        - name: CLI
           displayName: 'availability and scale, availability, scale, autoscale, availability sets, AV sets'
           href: ./linux/tutorial-availability-sets.md
         - name: PowerShell
@@ -1493,6 +1493,7 @@
       href: ../security/fundamentals/virtual-machines-overview.md?context=/azure/virtual-machines/context/context
     - name: Microsoft Defender für Cloud
       href: ../security-center/security-center-introduction.md
+      maintainContext: true
     - name: Sicherheitsbaselines
       items:
         - name: Linux
@@ -1664,7 +1665,7 @@
             - name: Übersicht
               displayName: Maintenance control
               href: maintenance-control.md
-            - name: Befehlszeilenschnittstelle (CLI)
+            - name: CLI
               displayName: Maintenance control
               href: maintenance-control-cli.md
             - name: PowerShell

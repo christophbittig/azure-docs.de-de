@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
-ms.date: 10/29/2021
-ms.openlocfilehash: 6767ef2786ca57353690dde19bbe20235a7c80f6
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.date: 10/26/2021
+ms.openlocfilehash: 4313a9a6478c38ccb6611ea7c0008bd7fa9ebcbf
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131429715"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131848247"
 ---
 # <a name="standard-contract-for-microsoft-commercial-marketplace"></a>Standardvertrag für den kommerziellen Microsoft-Marketplace
 
@@ -22,6 +22,9 @@ Die Geschäftsbedingungen für ein Angebot werden bei dessen Erstellung im Partn
 
 >[!Note]
 >Nachdem Sie ein Angebot über den Standardvertrag für den kommerziellen Microsoft-Marketplace veröffentlicht haben, können Sie Ihre eigenen benutzerdefinierten Geschäftsbedingungen nicht mehr nutzen. Entweder bieten Sie Ihre Lösung im Rahmen des Standardvertrags *oder* Ihrer eigenen Geschäftsbedingungen an. Benutzerdefinierte Geschäftsbedingungen werden auf Angebotsebene definiert und gelten für alle Pläne. Schreiben Sie Ihre benutzerdefinierten Geschäftsbedingungen auf der Seite **Eigenschaften** Ihres Angebots im Partner Center. Wenn Sie die Bedingungen des Standardvertrags ändern möchten, können Sie dies über Zusatzvereinbarungen für den Standardvertrag erreichen.
+
+> [!TIP]
+> Informationen zur Ansicht der Verträge des Kunden im Azure Marketplace finden Sie unter [Verträge](/marketplace/legal-contracts).
 
 ## <a name="standard-contract-amendments"></a>Zusatzvereinbarungen für den Standardvertrag
 

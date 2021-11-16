@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 09/10/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 334eb66a6372272b7b5d467c5603e694b1ad8683
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: c57e93b68c6a9252fbb9a0551b3b987c44d759da
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128610938"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131841675"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>Verwalten von Speicherkontoschlüsseln mit Key Vault und Azure PowerShell
 > [!IMPORTANT]
@@ -30,6 +30,9 @@ Wenn Sie das Feature für verwaltete Speicherkontoschlüssel verwenden, sollten 
 - Ihre Speicherkontoschlüssel sollten nur durch Key Vault verwaltet werden. Verwalten Sie die Schlüssel nicht selbst, und vermeiden Sie es, die Key Vault-Prozesse zu beeinträchtigen.
 - Speicherkontoschlüssel sollten nur von einem einzigen Key Vault-Objekt verwaltet werden. Lassen Sie es nicht zu, dass die Schlüssel aus mehreren Objekten verwaltet werden.
 - Generieren Sie Schlüssel nur mit Key Vault neu. Generieren Sie Ihre Speicherkontoschlüssel nicht manuell neu.
+
+> [!IMPORTANT]
+> Wird der Schlüssel direkt im Speicherkonto neu generiert, wird die Einrichtung des verwalteten Speicherkontos unterbrochen, und die verwendeten SAS-Tokens können ungültig werden und einen Ausfall verursachen.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

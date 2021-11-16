@@ -7,12 +7,12 @@ ms.service: bastion
 ms.topic: conceptual
 ms.date: 09/07/2021
 ms.author: cherylmc
-ms.openlocfilehash: 251d1a034bafa3a9d77291be63fdc59145b2cc09
-ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
+ms.openlocfilehash: 30c96f2d7b679b0032a2b8c406cc6c210c143a11
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131575805"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132062168"
 ---
 # <a name="azure-bastion-faq"></a>Häufig gestellte Fragen zu Azure Bastion
 
@@ -71,7 +71,7 @@ Zum Herstellen einer Verbindung sind die folgenden Rollen erforderlich:
 * Rolle „Leser“ für den virtuellen Computer
 * Rolle „Leser“ für den Netzwerkadapter mit privater IP-Adresse des virtuellen Computers
 * Rolle „Leser“ für die Azure Bastion-Ressource
-* Rolle „Leser“ im virtuellen Netzwerk (nicht erforderlich, wenn kein mittels Peering verbundenes virtuelles Netzwerk vorhanden ist)
+* Rolle „Leser“ im virtuellen Netzwerk des virtuellen Zielcomputers (falls sich die Bastion-Instanz in einem virtuellen Netzwerk mit Peering befindet).
 
 ### <a name="does-azure-bastion-require-an-rds-cal-for-administrative-purposes-on-azure-hosted-vms"></a><a name="rdscal"></a>Erfordert Azure Bastion auf virtuellen Computern, die von Azure gehostet werden, eine RDS-CAL für administrative Aufgaben?
 
@@ -96,7 +96,7 @@ Azure Bastion unterstützt derzeit die folgenden Tastaturlayouts auf dem virtuel
 * sv-se-qwerty
 * tr-tr-qwerty
 
-Für die richtigen Schlüsselzuordnungen für Ihre Zielsprache müssen Sie entweder Ihre lokale Sprache auf Ihrem Computer oder Ihre Remotesprache auf der VM auf „en-us-qwerty“ festlegen. Dies bedeutet, dass die Sprache des lokalen Computers auf „Englisch (USA)“ festgelegt sein muss, während die Sprache der Remote-VM auf Ihre Zielsprache festgelegt ist (oder umgekehrt). Sie können Ihrem Computer in den Computereinstellungen die Sprache „Englisch (USA)“ hinzufügen.
+Um die richtigen Tastenzuordnungen für Ihre Zielsprache festzulegen, müssen Sie entweder die Sprache auf Ihrem lokalen Computer oder die Sprache innerhalb der Ziel-VM auf „Englisch (USA)“ einstellen. Dies bedeutet, dass die Sprache des lokalen Computers auf „Englisch (USA)“ festgelegt sein muss, während die Sprache der Ziel-VM auf Ihre Zielsprache festgelegt ist (oder umgekehrt). Sie können Ihrem Computer in den Computereinstellungen die Sprache „Englisch (USA)“ hinzufügen.
 
 ### <a name="does-azure-bastion-support-timezone-configuration-or-timezone-redirection-for-target-vms"></a><a name="timezone"></a>Unterstützt Azure Bastion die Zeitzonenkonfiguration oder Zeitzonenumleitung für virtuelle Zielcomputer?
 

@@ -4,14 +4,14 @@ description: Übersicht über die Einrichtung mehrerer Azure Web PubSub-Dienstin
 author: vicancy
 ms.service: azure-web-pubsub
 ms.topic: conceptual
-ms.date: 11/08/2021
+ms.date: 10/13/2021
 ms.author: lianwei
-ms.openlocfilehash: 368c354f36cd6a289daacf1766c73021c1f08a3f
-ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
+ms.openlocfilehash: 3c14294a2a7d2ff2cb2f1f362b0474353c86b7ca
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "131997966"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131431007"
 ---
 # <a name="resiliency-and-disaster-recovery-in-azure-web-pubsub-service"></a>Resilienz und Notfallwiederherstellung im Azure Web PubSub-Dienst
 

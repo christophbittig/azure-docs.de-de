@@ -5,12 +5,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 11/01/2021
-ms.openlocfilehash: 35ffbe3a329aae483b4da841ba4dfe34c1a07f9a
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 18019dbf4f6c3a6494b105362790dd41d4132595
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131435128"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132055848"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor – Übersicht
 
@@ -69,7 +69,7 @@ Aktivieren Sie die Überwachung für Ihre Anwendung mit [Application Insights](a
 Azure Monitor kann mithilfe der [Datensammler-API](logs/data-collector-api.md) Protokolldaten von jedem REST-Client erfassen. Dies erlaubt Ihnen das Erstellen von benutzerdefinierten Überwachungsszenarien und das Ausweiten der Überwachung auf Ressourcen, die Telemetriedaten nicht durch andere Quellen verfügbar machen.
 
 ## <a name="insights-and-curated-visualizations"></a>Erkenntnisse und zusammengestellte Visualisierungen
-Das Überwachen von Daten ist nur nützlich, wenn dadurch Ihre Einsicht in den Betrieb Ihrer Computerumgebung ausgeweitet wird. Einige Azure-Ressourcenanbieter verfügen über eine "zusammengestellte Visualisierung", die Ihnen eine an den Nutzer angepasste Überwachungspraxis für diesen bestimmten Dienst oder eine Reihe von Diensten bietet. Sie erfordern im Allgemeinen eine minimale Konfiguration. Größere skalierbare zusammengestellte Visualisierungen sind unter "Erkenntnisse" geläufig und in der Dokumentation und im Azure-Portal mit diesem Namen gekennzeichnet.  
+Das Überwachen von Daten ist nur nützlich, wenn dadurch Ihre Einsicht in den Betrieb Ihrer Computerumgebung ausgeweitet wird. Einige Azure-Ressourcenanbieter verfügen über eine "zusammengestellte Visualisierung", die Ihnen eine an den Nutzer angepasste Überwachungspraxis für diesen bestimmten Dienst oder eine Reihe von Diensten bietet. Sie erfordern im Allgemeinen eine minimale Konfiguration. Größere skalierbare zusammengestellte Visualisierungen sind unter „Erkenntnisse“ geläufig und in der Dokumentation und im Azure-Portal mit diesem Namen gekennzeichnet.  
 
 Weitere Informationen finden Sie unter [Liste der Erkenntnisse und zusammengestellten Visualisierungen mit Azure Monitor](monitor-reference.md#insights-and-curated-visualizations). Einige der größeren Erkenntnisse werden auch unten beschrieben.
 

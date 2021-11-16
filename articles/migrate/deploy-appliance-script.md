@@ -5,13 +5,13 @@ ms.topic: how-to
 author: Vikram1988
 ms.author: vibansa
 ms.manager: abhemraj
-ms.date: 03/18/2021
-ms.openlocfilehash: 04e89d4fa783159bec8869809f6db5a7e2f6950a
-ms.sourcegitcommit: 61e7a030463debf6ea614c7ad32f7f0a680f902d
+ms.date: 11/02/2021
+ms.openlocfilehash: 2c82b8c14f68ab11ad0585390e68de4864ee7169
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2021
-ms.locfileid: "129093571"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131500163"
 ---
 # <a name="set-up-an-appliance-with-a-script"></a>Einrichten einer Appliance mit einem Skript
 
@@ -61,7 +61,7 @@ Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist
 
     **Download** | **Hashwert**
     --- | ---
-    [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2116601) | BA84B58E88DDFE23E5D4CE73530227EBBC187B3634B66A3E0F0B3E5DF5F0A94F
+    [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2116601) | 3C00F9EB54CC6C55E127EDE47DFA28CCCF752697377EB1C9F3435E75DA5AA029
 
 > [!NOTE]
 > Dasselbe Skript kann verwendet werden, um die VMware-Appliance für die öffentliche Azure- oder Azure Government Cloud einzurichten.
@@ -122,7 +122,7 @@ Vergewissern Sie sich vor der Bereitstellung, dass die gezippte Datei sicher ist
 
     **Download** | **Hashwert**
     --- | ---
-    [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2116657) | BA84B58E88DDFE23E5D4CE73530227EBBC187B3634B66A3E0F0B3E5DF5F0A94F
+    [Aktuelle Version](https://go.microsoft.com/fwlink/?linkid=2116657) | 3C00F9EB54CC6C55E127EDE47DFA28CCCF752697377EB1C9F3435E75DA5AA029
 
 > [!NOTE]
 > Dasselbe Skript kann verwendet werden, um die Hyper-V-Appliance für die öffentliche Azure- oder Azure Government Cloud einzurichten.

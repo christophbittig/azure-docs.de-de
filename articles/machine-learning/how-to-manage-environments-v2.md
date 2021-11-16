@@ -11,12 +11,12 @@ ms.author: minxia
 ms.date: 10/21/2021
 ms.reviewer: laobri
 ms.custom: devx-track-azurecli, devplatv2
-ms.openlocfilehash: 351ef1c91ae665c170604543ac509562d2e2f0d0
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 2c88c8954e334b5c6ffc80a60b2bd85cd98bda7a
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131566585"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132055529"
 ---
 # <a name="manage-azure-machine-learning-environments-with-the-cli-v2-preview"></a>Verwalten von Azure Machine Learning-Umgebungen mit der Befehlszeilenschnittstelle (v2) (Vorschau)
 
@@ -38,7 +38,7 @@ In diesem Artikel erfahren Sie, wie Sie Azure Machine Learning-Umgebungen mithil
 
 Klonen Sie zum Ausführen der Trainingsbeispiele zunächst das Beispielerepository, und wechseln Sie in das `cli`-Verzeichnis:
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/misc.sh" id="git_clone":::
+:::code language="azurecli" source="~/azureml-examples-main/cli/misc.sh" id="git_clone":::
 
 Beachten Sie, dass `--depth 1` nur den letzten Commit in das Repository klont, wodurch die Zeit zum Abschließen des Vorgangs reduziert wird.
 
@@ -68,7 +68,7 @@ Um eine Umgebung aus einem Docker-Image zu definieren, geben Sie den Image-URI d
 
 Das folgende Beispiel ist eine YAML-Spezifikationsdatei für eine Umgebung, die aus einem Docker-Image definiert wurde. Ein Image aus dem offiziellen PyTorch-Repository auf Docker Hub wird über die `image`-Eigenschaft in der YAML-Datei angegeben.
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/assets/environment/docker-image.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/assets/environment/docker-image.yml":::
 
 So erstellen Sie die Umgebung
 
@@ -89,7 +89,7 @@ Das folgende Beispiel ist eine YAML-Spezifikationsdatei für eine Umgebung, die 
 
 In diesem Beispiel enthält der Buildkontext ein Dockerfile namens `Dockerfile` und die Datei `requirements.txt`, auf die im Dockerfile zum Installieren von Python-Paketen verwiesen wird.
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/assets/environment/docker-context.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/assets/environment/docker-context.yml":::
 
 So erstellen Sie die Umgebung
 
@@ -107,7 +107,7 @@ Sie müssen auch ein Docker-Basisimage für diese Umgebung angeben. Azure ML er
 
 Das folgende Beispiel ist eine YAML-Spezifikationsdatei für eine Umgebung, die aus einer Conda-Spezifikation definiert wurde. Hier wird der relative Pfad zur Conda-Datei in der YAML-Datei der Azure ML-Umgebung über die `conda_file`-Eigenschaft angegeben. Alternativ können Sie die Conda-Spezifikation auch inline mithilfe der `conda_file`-Eigenschaft definieren, anstatt sie in einer separaten Datei anzugeben.
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/assets/environment/docker-image-plus-conda.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/assets/environment/docker-image-plus-conda.yml":::
 
 So erstellen Sie die Umgebung
 

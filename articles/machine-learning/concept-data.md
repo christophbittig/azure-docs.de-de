@@ -11,12 +11,12 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 10/21/2021
 ms.custom: devx-track-python, data4ml
-ms.openlocfilehash: 537fe72423e7ab4052f2a4bad32784a541228296
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 5623567cb35f6222d660b9e02de5d2fa125dd826
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131553954"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131867150"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Sicherer Datenzugriff in Azure Machine Learning
 
@@ -67,7 +67,7 @@ Unterstützte cloudbasierte Speicherdienste in Azure, die als Datenspeicher regi
 + Azure Database for MySQL
 
 >[!TIP]
-> Die allgemein verfügbare Funktion zum Erstellen von Datenspeichern setzt eine auf Anmeldeinformationen basierende Authentifizierung für den Zugriff auf Speicherdienste voraus – beispielsweise einen Dienstprinzipal oder ein SAS-Token (Shared Access Signature). Auf diese Anmeldeinformationen können Benutzer zugreifen, die über *Lesezugriff* auf den Arbeitsbereich verfügen. <br><br>Sollte dies ein Problem darstellen, [erstellen Sie einen Datenspeicher mit identitätsbasiertem Datenzugriff auf Speicherdienste (Vorschau)](how-to-identity-based-data-access.md). Diese Funktion ist eine [experimentelle](/python/api/overview/azure/ml/#stable-vs-experimental) Previewfunktion und kann jederzeit geändert werden.
+> Die allgemein verfügbare Funktion zum Erstellen von Datenspeichern setzt eine auf Anmeldeinformationen basierende Authentifizierung für den Zugriff auf Speicherdienste voraus – beispielsweise einen Dienstprinzipal oder ein SAS-Token (Shared Access Signature). Auf diese Anmeldeinformationen können Benutzer zugreifen, die über *Lesezugriff* auf den Arbeitsbereich verfügen. <br><br>Sollte dies ein Problem darstellen, [erstellen Sie einen Datenspeicher mit identitätsbasiertem Datenzugriff auf Speicherdienste](how-to-identity-based-data-access.md).
 
 <a name="datasets"></a>
 ## <a name="reference-data-in-storage-with-datasets"></a>Verweisen auf Daten im Speicher mit Datasets

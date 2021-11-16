@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/28/2021
+ms.date: 11/05/2021
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb41fbaf1b1430cddb1ce5c44748edf35801405e
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: c8a0ab89e8437edec176e7033665b627df6cd493
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131427644"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131866485"
 ---
 # <a name="change-subdomain-authentication-type-in-azure-active-directory"></a>Ändern des Authentifizierungstyps der Unterdomäne in Azure Active Directory
 
@@ -39,7 +39,7 @@ Da Unterdomänen standardmäßig den Authentifizierungstyp der Stammdomäne erbe
    New-MsolDomain -Name "child.mydomain.com" -Authentication Federated
    ```
 
-1. Verwenden Sie [Azure AD Graph-Explorer](https://graphexplorer.azurewebsites.net), um die Domäne mit GET abzurufen. Da die Domäne keine Stammdomäne ist, erbt sie den Authentifizierungstyp der Stammdomäne. Der Befehl und die Ergebnisse können wie folgt aussehen, wobei Sie Ihre eigene Mandanten-ID verwenden:
+1. Verwenden Sie das folgende Beispiel, um GET für die Domäne auszuführen. Da die Domäne keine Stammdomäne ist, erbt sie den Authentifizierungstyp der Stammdomäne. Der Befehl und die Ergebnisse können wie folgt aussehen, wobei Sie Ihre eigene Mandanten-ID verwenden:
 
    ```http
    GET https://graph.windows.net/{tenant_id}/domains?api-version=1.6
@@ -63,7 +63,7 @@ Da Unterdomänen standardmäßig den Authentifizierungstyp der Stammdomäne erbe
      },
    ```
 
-### <a name="use-azure-ad-graph-explorer-api-to-make-this-a-root-domain"></a>Verwenden der Azure AD Graph-Explorer-API zum Festlegen als Stammdomäne
+### <a name="use-microsoft-graph-api-to-make-this-a-root-domain"></a>Verwenden der Microsoft Graph-API, um diese Domäne zu einer Stammdomäne zu machen
 
 Verwenden Sie den folgenden Befehl zum Höherstufen der Unterdomäne:
 
@@ -79,7 +79,7 @@ POST https://graph.windows.net/{tenant_id}/domains/child.mydomain.com/promote?ap
    Set-MsolDomainAuthentication -DomainName child.mydomain.com -Authentication Managed
    ```
 
-1. Überprüfen Sie in Azure AD Graph-Explorer mit GET, ob der Authentifizierungstyp der Unterdomäne jetzt verwaltet ist:
+1. Überprüfen Sie über die Microsoft Graph-API mit GET, ob der Authentifizierungstyp der Unterdomäne jetzt verwaltet ist:
 
    ```http
    GET https://graph.windows.net/{{tenant_id} }/domains?api-version=1.6

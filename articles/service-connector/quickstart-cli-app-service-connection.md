@@ -7,12 +7,12 @@ ms.service: serviceconnector
 ms.topic: quickstart
 ms.date: 10/29/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 595296bff928ff75f52a05a1fc5e54fb94a2ad67
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: a960bc3064b970fbfd463d0a7f1577354ca7adf1
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131475367"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131850278"
 ---
 # <a name="quickstart-create-a-service-connection-in-app-service-with-the-azure-cli"></a>Schnellstart: Erstellen einer Dienstverbindung in App Service mit der Azure-Befehlszeilenschnittstelle
 
@@ -22,22 +22,24 @@ Die [Azure-Befehlszeilenschnittstelle (Azure CLI)](/cli/azure) setzt sich aus B
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-- Für diese Schnellstartanleitung ist mindestens Version 2.22.0 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
+- Für diese Schnellstartanleitung ist mindestens Version 2.30.0 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 - In diesem Schnellstart wird davon ausgegangen, dass Sie bereits über mindestens einen in Azure ausgeführten App Service verfügen. [Erstellen Sie einen App Service](../app-service/quickstart-dotnetcore.md), wenn Sie über keinen App Service verfügen.
 
 ## <a name="view-supported-target-service-types"></a>Anzeigen der unterstützten Zieldiensttypen
 
-Sie verwenden den Azure CLI-Befehl [az webapp connection](), um Dienstverbindungen mit App Service zu erstellen und zu verwalten. 
+Sie verwenden den Azure CLI-Befehl [az webapp connection](/cli/azure/webapp/connection), um Dienstverbindungen mit App Service zu erstellen und zu verwalten. 
 
 ```azurecli-interactive
 az provider register -n Microsoft.ServiceLinker
-az webapp connection list-support-types
+az webapp connection list-support-types --output table
 ```
 
 ## <a name="create-a-service-connection"></a>Erstellen einer Dienstverbindung
 
-Verwenden Sie den Azure CLI-Befehl [az webapp connection](), um eine Dienstverbindung mit einem Blobspeicher zu erstellen, und geben Sie dabei die folgenden Informationen an:
+#### <a name="using-access-key"></a>[Verwenden eines Zugriffsschlüssels](#tab/Using-access-key)
+
+Verwenden Sie den Azure CLI-Befehl [az webapp connection](/cli/azure/webapp/connection), um eine Dienstverbindung mit einem Blobspeicher mit Zugriffsschlüssel zu erstellen, und geben Sie dabei die folgenden Informationen an:
 
 - **Ressourcengruppenname des Quell-Computediensts:** Der Ressourcengruppenname des App Service.
 - **App Service-Name:** Der Name Ihres App Services, der eine Verbindung mit dem Zieldienst herstellt.
@@ -45,15 +47,36 @@ Verwenden Sie den Azure CLI-Befehl [az webapp connection](), um eine Dienstverbi
 - **Speicherkontoname:** Kontoname Ihres Blobspeichers.
 
 ```azurecli-interactive
-az webapp connection create storage-blob -g <app_service_resource_group> -n <app_service_name> --tg <storage_resource_group> --account <storage_account_name> --system-identity
+az webapp connection create storage-blob --secret
 ```
 
 > [!NOTE]
-> Wenn Sie nicht über einen Blobspeicher verfügen, können Sie `az webapp connection create storage-blob -g <app_service_resource_group> -n <app_service_name> --tg <storage_resource_group> --account <storage_account_name> --system-identity --new` ausführen, um einen neuen zu erstellen und diesen direkt mit Ihrem App-Dienst zu verbinden.
+> Wenn Sie nicht über einen Blobspeicher verfügen, können Sie `az webapp connection create storage-blob --new --secret` ausführen, um einen neuen zu erstellen und diesen direkt mit Ihrem App-Dienst zu verbinden.
+
+#### <a name="using-managed-identity"></a>[Verwenden einer verwalteten Identität](#tab/Using-Managed-Identity)
+
+> [!IMPORTANT]
+> Für die Verwendung einer verwalteten Identität müssen Sie über die Berechtigung für die [Azure AD-Rollenzuweisung](/active-directory/managed-identities-azure-resources/howto-assign-access-portal) verfügen. Wenn Sie nicht über die Berechtigung verfügen, ist die Verbindungserstellung nicht erfolgreich. Sie können Ihren Abonnementbesitzer nach der Berechtigung fragen oder den Zugriffsschlüssel verwenden, um die Verbindung zu erstellen.
+
+Verwenden Sie den Azure CLI-Befehl [az webapp connection](/cli/azure/webapp/connection), um eine Dienstverbindung mit einem Blobspeicher mit systemseitig zugewiesene verwaltete Identität zu erstellen, und geben Sie dabei die folgenden Informationen an:
+
+- **Ressourcengruppenname des Quell-Computediensts:** Der Ressourcengruppenname des App Service.
+- **App Service-Name:** Der Name Ihres App Services, der eine Verbindung mit dem Zieldienst herstellt.
+- **Zieldienst-Ressourcengruppenname:** Ressourcengruppenname des Blobspeichers
+- **Speicherkontoname:** Kontoname Ihres Blobspeichers.
+
+```azurecli-interactive
+az webapp connection create storage-blob --system-identity
+```
+
+> [!NOTE]
+> Wenn Sie nicht über einen Blobspeicher verfügen, können Sie `az webapp connection create storage-blob --new --system-identity` ausführen, um einen neuen zu erstellen und diesen direkt mit Ihrem App-Dienst zu verbinden.
+
+---
 
 ## <a name="view-connections"></a>Anzeigen von Verbindungen
 
-Verwenden Sie den Azure CLI-Befehl [az webapp connection](), um die Verbindung mit Ihrem App Service aufzulisten, und geben Sie dabei die folgenden Informationen an:
+Verwenden Sie den Azure CLI-Befehl [az webapp connection](/cli/azure/webapp/connection), um die Verbindung mit Ihrem App Service aufzulisten, und geben Sie dabei die folgenden Informationen an:
 
 - **Ressourcengruppenname des Quell-Computediensts:** Der Ressourcengruppenname des App Service.
 - **App Service-Name:** Der Name Ihres App Services, der eine Verbindung mit dem Zieldienst herstellt.

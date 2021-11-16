@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: c3497b39699d66cc665ea2c217dea5e016ca42df
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: df8794f0b22fa5ae1cc457bd8dfebc12032a7961
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131472407"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131848873"
 ---
 # <a name="connect-to-and-manage-sap-s4hana-in-azure-purview"></a>Verbinden mit und Verwalten von SAP S/4HANA in Azure Purview
 
@@ -23,7 +23,9 @@ In diesem Artikel wird beschrieben, wie Sie SAP S/4HANA in Azure Purview registr
 
 |**Metadatenextrahierung**|  **Vollständige Überprüfung**  |**Inkrementelle Überprüfung**|**Bereichsbezogene Überprüfung**|**Klassifizierung**|**Zugriffsrichtlinie**|**Herkunft**|
 |---|---|---|---|---|---|---|
-| [Ja](#register)| [Ja](#scan)| Nein | Nein | Nein | Nein| [Ja](how-to-lineage-sapecc.md)|
+| [Ja](#register)| [Ja](#scan)| Nein | Nein | Nein | Nein| [Ja**](how-to-lineage-sapecc.md)|
+
+\** Herkunft wird unterstützt, wenn das Dataset als Quelle/Senke in der [Data Factory-Copy-Aktivität](how-to-link-azure-data-factory.md) verwendet wird. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -31,7 +33,7 @@ In diesem Artikel wird beschrieben, wie Sie SAP S/4HANA in Azure Purview registr
 
 * Eine aktive [Purview-Ressource](create-catalog-portal.md)
 
-* Sie müssen ein Datenquellenadministrator und Datenleser sein, um eine Quelle zu registrieren und in Purview Studio zu verwalten. Weitere Informationen finden Sie auf der [Seite Azure Purview-Berechtigungen](catalog-permissions.md).
+* Sie müssen Datenquellenadministrator und Datenleser sein, um eine Quelle zu registrieren und in Purview Studio zu verwalten. Weitere Informationen finden Sie auf der [Seite Azure Purview-Berechtigungen](catalog-permissions.md).
 
 * Richten Sie die neueste [selbstgehostete Integration Runtime](https://www.microsoft.com/download/details.aspx?id=39717) ein. Weitere Informationen finden Sie im [Leitfaden zum Erstellen und Konfigurieren einer selbstgehosteten Integrationslaufzeit](../data-factory/create-self-hosted-integration-runtime.md).
 
@@ -52,7 +54,7 @@ In diesem Artikel wird beschrieben, wie Sie SAP S/4HANA in Azure Purview registr
   * STFC_CONNECTION (Konnektivität überprüfen)
   * RFC_SYSTEM_INFO (Systeminformationen überprüfen)
 
-## <a name="register"></a>Registrieren
+## <a name="register"></a>Register
 
 In diesem Abschnitt wird beschrieben, wie Sie SAP S/4HANA in Azure Purview mithilfe von [Purview Studio](https://web.purview.azure.com/) registrieren.
 
@@ -130,8 +132,8 @@ Führen Sie die folgenden Schritte aus, um SAP S/4HANA zu überprüfen und autom
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie Ihre Quelle registriert haben, halten Sie sich an die folgenden Anleitungen, um mehr über Purview und Ihre Daten zu erfahren.
+Nachdem Sie Ihre Quelle registriert haben, befolgen Sie die folgenden Anleitungen, um mehr über Purview und Ihre Daten zu erfahren.
 
-- [Dateneinblicke in Azure Purview](concept-insights.md)
+- [Datenerkenntnisse in Azure Purview](concept-insights.md)
 - [Datenherkunft in Azure Purview](catalog-lineage-user-guide.md)
 - [Data Catalog suchen](how-to-search-catalog.md)

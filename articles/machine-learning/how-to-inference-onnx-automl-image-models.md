@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: automl
 ms.topic: how-to
 ms.date: 10/18/2021
-ms.openlocfilehash: 01839f2a6f16584148d4cab86e07f3da0eefee43
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: a8eded57142bf4682a0b555136c30462e9cf08ad
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131076545"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132060508"
 ---
 # <a name="make-predictions-with-onnx-on-computer-vision-models-from-automl"></a>Treffen von Vorhersagen mit ONNX für Modelle für maschinelles Sehen über AutoML 
 
@@ -227,6 +227,9 @@ Die Ausgabe ist eine Liste von Rahmen, Bezeichnungen und Scores. Für YOLO benö
 # <a name="instance-segmentation"></a>[Instanzsegmentierung](#tab/instance-segmentation)
 
 In diesem Beispiel für die Instanzsegmentierung verwenden Sie das Mask R-CNN-Modell, das mit dem [fridgeObjects-Dataset](https://cvbp-secondary.z19.web.core.windows.net/datasets/object_detection/odFridgeObjectsMask.zip) mit 128 Bilder und 4 Klassen bzw. Bezeichnungen trainiert wurde, um den ONNX-Modellrückschluss zu erklären. Weitere Informationen zum Training des Instanzsegmentierungsmodells finden Sie im [Notebook zur Instanzsegmentierung](https://github.com/Azure/azureml-examples/tree/81c7d33ed82f62f419472bc11f7e1bad448ff15b/python-sdk/tutorials/automl-with-azureml/image-instance-segmentation).
+
+>[!IMPORTANT]
+> Nur Mask R-CNN wird für Instanzsegmentierungsaufgaben unterstützt. Die Ein- und Ausgabeformate basieren nur auf Mask R-CNN.
 
 ### <a name="input-format"></a>Eingabeformat
 
@@ -488,7 +491,7 @@ img_data = preprocess(img, resize_size, crop_size_onnx)
 
 # <a name="object-detection-with-faster-r-cnn"></a>[Objekterkennung mit Faster R-CNN-Modellen](#tab/object-detect-cnn)
 
-Führen Sie für die Objekterkennung mit dem Faster R-CNN-Algorithmus die gleichen Vorverarbeitungsschritte wie bei der Bildklassifizierung aus, mit Ausnahme des Zuschneidens von Bildern. Sie können die Größe des Bilds mit der Höhe `600` und der Breite `800` ändern und die erwartete Eingabehöhe und -breite mit dem folgenden Code abrufen.
+Führen Sie für die Objekterkennung mit dem Faster R-CNN-Algorithmus die gleichen Vorverarbeitungsschritte wie bei der Bildklassifizierung aus, mit Ausnahme des Zuschneidens von Bildern. Sie können die Größe des Bilds mit der Höhe `600` und Breite `800` ändern. Sie können die erwartete Eingabehöhe und -breite mit dem folgenden Code erhalten.
 
 ```python
 batch, channel, height_onnx, width_onnx = session.get_inputs()[0].shape
@@ -556,6 +559,8 @@ img_data, pad = preprocess(test_image_path)
 ```
 
 # <a name="instance-segmentation"></a>[Instanzsegmentierung](#tab/instance-segmentation)
+>[!IMPORTANT]
+> Nur Mask R-CNN wird für Instanzsegmentierungsaufgaben unterstützt. Die Vorverarbeitungsschritte basieren nur auf Mask R-CNN.
 
 Führen Sie die folgenden Vorverarbeitungsschritte für den ONNX-Modellrückschluss aus:
 
@@ -613,6 +618,9 @@ img_data = preprocess(img, resize_height, resize_width)
 ## <a name="inference-with-onnx-runtime"></a>Rückschluss mit ONNX Runtime
 
 Die Rückschließen mit ONNX Runtime unterscheidet sich bei jeder Aufgabe für maschinelles Sehen.
+
+>[!WARNING]
+> Die Batchbewertung wird derzeit nicht für alle Aufgaben für maschinelles Sehen unterstützt. 
 
 # <a name="multi-class-image-classification"></a>[Bildklassifizierung mit mehreren Klassen](#tab/multi-class)
 

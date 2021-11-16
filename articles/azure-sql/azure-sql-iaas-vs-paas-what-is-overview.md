@@ -12,12 +12,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: ''
 ms.date: 07/27/2020
-ms.openlocfilehash: b8f55a720583713fad59fc07495dcab070d19fa7
-ms.sourcegitcommit: 351279883100285f935d3ca9562e9a99d3744cbd
+ms.openlocfilehash: 4029dbec06f7e09fee22cf0ea9b7497f47210528
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/19/2021
-ms.locfileid: "112378091"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132061095"
 ---
 # <a name="what-is-azure-sql"></a>Was ist Azure SQL? 
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -116,7 +116,7 @@ Im Allgemeinen lässt sich mit SQL-Datenbank und SQL Managed Instance die Anzahl
 | :--- | :--- | :--- |
 |Unterstützt die meisten lokalen Funktionen auf Datenbankebene. Es stehen die gängigsten SQL Server-Features zur Verfügung.<br/>99,995 % Verfügbarkeit garantiert.<br/>Integrierte Funktionen für Sicherungen, Patching und Wiederherstellung.<br/>Letzte stabile Datenbank-Engine-Version.<br/>Möglichkeit, einzelnen Datenbanken die erforderlichen Ressourcen (CPU/Speicher) zuzuweisen.<br/>Integrierte erweiterte Intelligenz- und Sicherheitsfeatures.<br/>Onlineänderung von Ressourcen (CPU/Speicher).| Unterstützt fast alle Funktionen auf Instanz- und Datenbankebene. Hohe Kompatibilität mit SQL Server.<br/>99,99 % Verfügbarkeit garantiert.<br/>Integrierte Funktionen für Sicherungen, Patching und Wiederherstellung.<br/>Letzte stabile Datenbank-Engine-Version.<br/>Einfache Migration von SQL Server.<br/>Private IP-Adresse im virtuellen Azure-Netzwerk.<br/>Integrierte erweiterte Intelligenz- und Sicherheitsfeatures.<br/>Onlineänderung von Ressourcen (CPU/Speicher).| Sie haben vollständige Kontrolle über die SQL Server-Engine. Unterstützt alle lokalen Funktionen.<br/>Verfügbarkeit von bis zu 99,99%.<br/>Vollständige Parität mit der entsprechenden lokalen SQL Server-Version.<br/>Festgelegte, bekannte Datenbank-Engine-Version.<br/>Einfache Migration von SQL Server.<br/>Private IP-Adresse im virtuellen Azure-Netzwerk.<br/>Sie können Anwendungen oder Dienste auf dem Host bereitstellen, auf dem sich SQL Server befindet.|
 |Eine von SQL Server ausgehende Migration kann schwierig sein.<br/>Einige SQL Server-Features stehen nicht zur Verfügung.<br/>Es gibt keine exakte garantierte Wartungszeit (sie ist jedoch nahezu transparent).<br/>Die Kompatibilität mit der SQL Server-Version kann nur über Datenbank-Kompatibilitätsgrade erreicht werden.<br/>Unterstützung für private IP-Adressen mit [Azure Private Link](database/private-endpoint-overview.md).|Es gibt immer noch eine geringe Anzahl von SQL Server-Features, die nicht verfügbar sind.<br/>Es gibt keine exakte garantierte Wartungszeit (sie ist jedoch nahezu transparent).<br/>Die Kompatibilität mit der SQL Server-Version kann nur über Datenbank-Kompatibilitätsgrade erreicht werden.|Sie müssen Ihre Sicherungen und Patches verwalten.<br>Sie müssen Ihre Hochverfügbarkeitslösung selbst implementieren.<br/>Während der Änderung von Ressourcen (CPU/Speicher) treten Ausfallzeiten auf.|
-| Datenbanken von bis zu 100 TB. | Bis zu 8 TB. | SQL Server-Instanzen mit bis zu 256 TB Speicherplatz. Die Instanz unterstützt beliebig viele Datenbanken. |
+| Datenbanken von bis zu 100 TB. | Bis zu 16 TB | SQL Server-Instanzen mit bis zu 256 TB Speicherplatz. Die Instanz unterstützt beliebig viele Datenbanken. |
 | Die lokale Anwendung kann auf Daten in der Azure SQL-Datenbank zugreifen. | [Native Implementierung von und Konnektivität mit virtuellen Netzwerken](managed-instance/vnet-existing-add-subnet.md) in der lokalen Umgebung unter Verwendung von Azure ExpressRoute oder VPN Gateway. | Mit virtuellen SQL-Computern können Sie Anwendungen betreiben, die teilweise in der Cloud und teilweise lokal ausgeführt werden. Beispielsweise können Sie Ihr lokales Netzwerk und Ihre Active Directory-Domäne mit [Azure Virtual Network](../virtual-network/virtual-networks-overview.md)in die Cloud ausdehnen. Weitere Informationen zu Hybrid Cloud-Lösungen finden Sie unter [Erweitern lokaler Datenlösungen auf die Cloud](/azure/architecture/data-guide/scenarios/hybrid-on-premises-and-cloud). |
 
 
@@ -177,5 +177,6 @@ Für **SQL Server auf Azure-VM** bietet Microsoft eine SLA mit einer Verfügbark
 - Informationen zu den ersten Schritten für SQL-Datenbank finden Sie unter [Erstellen einer ersten Azure SQL-Datenbank](database/single-database-create-quickstart.md).
 - Informationen zu den ersten Schritten mit Azure SQL Managed Instance finden Sie unter [Ihre erste Azure SQL Managed Instance](managed-instance/instance-create-quickstart.md). 
 - Informationen finden Sie unter [Preise für SQL-Datenbank](https://azure.microsoft.com/pricing/details/sql-database/).
+- Informationen finden Sie unter [Azure SQL Managed Instance – Preise](https://azure.microsoft.com/pricing/details/azure-sql-managed-instance/single/).
 - Informationen zu den ersten Schritten mit SQL Server auf virtuellen Azure-Computern finden Sie unter [Bereitstellen eines virtuellen Computers mit SQL Server in Azure](virtual-machines/windows/create-sql-vm-portal.md) .
 - [Bestimmen Sie die richtige SQL-Datenbank-SKU bzw. SQL Managed Instance-SKU für Ihre lokale Datenbank](/sql/dma/dma-sku-recommend-sql-db/).

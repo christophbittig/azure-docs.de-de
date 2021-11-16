@@ -6,17 +6,20 @@ ms.service: marketplace
 ms.topic: article
 author: navits09
 ms.author: navits
-ms.date: 10/14/2021
-ms.openlocfilehash: d04a031abced1bdc689feb078015737d20f40cfb
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.date: 10/26/2021
+ms.openlocfilehash: 22523b73847b21426eb1fa56af665274fc830b4b
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130047775"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131851000"
 ---
 # <a name="private-plans-in-the-microsoft-commercial-marketplace"></a>Private Pläne im kommerziellen Microsoft-Marketplace
 
 Herausgeber verwenden private Pläne, sodass sie nur für Zielkunden sichtbar sind. In diesem Artikel werden die Optionen und Vorteile von privaten Plänen erörtert.
+
+> [!TIP]
+> Die Ansicht privater Pläne für den Kunden im kommerziellen Marketplace finden Sie unter [Private Pläne im Azure Marketplace](/marketplace/private-plans) oder [Private Pläne in Microsoft AppSource](/marketplace/appsource-private-plans).
 
 ## <a name="unlock-enterprise-deals-with-private-plans"></a>Neue Chancen für Unternehmen durch private Pläne
 

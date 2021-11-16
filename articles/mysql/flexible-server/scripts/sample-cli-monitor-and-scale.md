@@ -1,5 +1,5 @@
 ---
-title: 'CLI-Skript: Überwachen und Skalieren einer Instanz von Azure Database for MySQL – Flexible Server (Vorschau)'
+title: 'CLI-Skript: Überwachen und Skalieren einer Instanz von Azure Database for MySQL – Flexible Server'
 description: Dieses Azure CLI-Beispielskript zeigt, wie Sie eine einzelne Instanz von Azure Database for MySQL – Flexible Server überwachen und hoch- und herunterskalieren, um wechselnde Leistungsanforderungen zu erfüllen.
 author: shreyaaithal
 ms.author: shaithal
@@ -8,14 +8,14 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc, devx-track-azurecli
 ms.date: 09/15/2021
-ms.openlocfilehash: 3ab338f1648753b89907180be78b3a687b370ded
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 82661e10c2434541be89df6dc0e0871618a1a6b5
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128604639"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131844186"
 ---
-# <a name="monitor-and-scale-an-azure-database-for-mysql---flexible-server-preview-using-azure-cli"></a>Überwachen und Skalieren einer Instanz von Azure Database for MySQL – Flexible Server (Vorschau) mithilfe der Azure CLI
+# <a name="monitor-and-scale-an-azure-database-for-mysql---flexible-server-using-azure-cli"></a>Überwachen und Skalieren einer Instanz von Azure Database for MySQL – Flexible Server mithilfe der Azure CLI
 
 Dieses CLI-Beispielskript skaliert Compute- und Speicherressourcen sowie IOPS für eine einzelne Instanz von Azure Database for MySQL – Flexible Server nach Abfragen der entsprechenden Metriken. Computeressourcen und IOPS können hoch- oder herunterskaliert werden, Speicher kann hingegen nur hochskaliert werden. 
 
@@ -53,5 +53,5 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Probieren Sie weitere Skripts aus: [Azure CLI-Beispiele für Azure Database for MySQL – Flexible Server (Vorschau)](../sample-scripts-azure-cli.md).
+- Probieren Sie weitere Skripts aus: [Azure CLI-Beispiele für Azure Database for MySQL – Flexible Server](../sample-scripts-azure-cli.md).
 - Weitere Informationen zur Azure CLI finden Sie in der [Azure CLI-Dokumentation](/cli/azure).

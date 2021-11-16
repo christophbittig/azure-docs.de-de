@@ -7,12 +7,12 @@ ms.service: mysql
 ms.custom: mvc, references_regions
 ms.topic: overview
 ms.date: 08/10/2021
-ms.openlocfilehash: 6b46c4f3ed15632f2e394882a69eb4b7c737a219
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 13d220dc0b168ade0bd6493025d858e01772a980
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131504909"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131893953"
 ---
 # <a name="azure-database-for-mysql---flexible-server"></a>Azure Database for MySQL: Flexibler Server 
 
@@ -21,20 +21,23 @@ ms.locfileid: "131504909"
 
 Azure Database for MySQL, ein Dienst, der auf MySQL Community Edition basiert, ist in zwei Bereitstellungsmodi verfügbar:
 
-- Einzelner Server
 - Flexible Server
+- Einzelner Server
 
 In diesem Artikel erhalten Sie eine Übersicht und Einführung in die grundlegenden Konzepte des Modells zur Bereitstellung einer Flexible Server-Instanz. Informationen dazu, wie Sie entscheiden, welche Bereitstellungsoption für Ihre Workload geeignet ist, finden Sie unter [Auswählen der richtigen MySQL Server-Option in Azure](./../select-right-deployment-type.md).
 
 ## <a name="overview"></a>Übersicht
 
-Azure Database for MySQL Flexible Server ist ein vollständig verwalteter Datenbankdienst, der eine differenziertere Steuerung und mehr Flexibilität bei den Verwaltungsfunktionen und Konfigurationseinstellungen der Datenbank bietet. Im Allgemeinen ermöglicht der Dienst mehr Flexibilität und die Anpassung der Serverkonfiguration an die Anforderungen der Benutzer. Mit der Flexible Server-Architektur können Benutzer Hochverfügbarkeit in einer einzelnen Verfügbarkeitszone sowie in mehreren Verfügbarkeitszonen auswählen. Flexible Server-Instanzen bieten außerdem bessere Steuerelemente für die Kostenoptimierung mit der Möglichkeit, den Server und burstfähige SKUs anzuhalten/zu starten. Dies eignet sich hervorragend für Workloads, die nicht durchgehend die gesamte Computekapazität benötigen. Der Dienst unterstützt derzeit die Community-Version von MySQL 5.7 und 8.0. Der Dienst ist heute in zahlreichen [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/services/) verfügbar.
+Azure Database for MySQL Flexible Server ist ein vollständig verwalteter produktionsbereiter Datenbankdienst, der eine differenziertere Steuerung und mehr Flexibilität bei den Verwaltungsfunktionen und Konfigurationseinstellungen der Datenbank ermöglichen soll. Mit der Flexible Server-Architektur können Benutzer Hochverfügbarkeit in einer einzelnen Verfügbarkeitszone sowie in mehreren Verfügbarkeitszonen auswählen. Flexible Server-Implementierungen bieten eine bessere Kostenoptimierung mit der Möglichkeit, den Server anzuhalten/zu starten, sowie einen burstfähigen Computetarif, der sich ideal für Workloads eignet, die nicht dauerhaft die volle Computekapazität benötigen. Flexible Server unterstützt außerdem reservierte Instanzen, sodass Sie bei den Kosten bis zu 63 Prozent sparen können. Dies ist ideal für Produktionsworkloads mit vorhersagbaren Computekapazitätsanforderungen. Der Dienst unterstützt die MySQL Community-Versionen 5.7 und 8.0. Der Dienst ist ab heute in vielen [Azure-Regionen](overview.md#azure-regions) allgemein verfügbar.
+
+Die Flexible Server-Bereitstellungsoption bietet drei Computeebenen: „Burstfähig“, „Universell“ und „Arbeitsspeicheroptimiert“. Jede Ebene bietet unterschiedliche Compute- und Arbeitsspeicherkapazität, um Ihre Datenbankworkloads zu unterstützen. Sie können Ihre erste App mit der Ebene „Burstfähig“ für wenige US-Dollar im Monat erstellen und die Skalierung dann so ändern, dass sie den Anforderungen Ihrer Lösung entspricht. Durch die dynamische Skalierung kann Ihre Datenbank transparent auf schnell wechselnde Ressourcenanforderungen reagieren. Sie bezahlen nur für die benötigten Ressourcen und auch nur dann, wenn Sie sie verwenden. Ausführliche Informationen finden Sie unter [Compute- und Speicheroptionen in Azure Database for MySQL: Flexible Server](concepts-compute-storage.md).
 
 Flexible Server-Instanzen eignen sich am besten für Folgendes:
-
-- Anwendungsentwicklungen, die bessere Steuerungs- und Anpassungsmöglichkeiten erfordern.
-- Zonenredundante Hochverfügbarkeit
-- Verwaltete Wartungsfenster
+- Einfache Bereitstellungen, vereinfachte Skalierung und geringer Aufwand für die Datenbankverwaltung bei Funktionen wie Sicherungen, Hochverfügbarkeit, Sicherheit und Überwachung
+- Anwendungsentwicklungen, die eine Communityversion von MySQL mit besseren Steuerungs- und Anpassungsmöglichkeiten erfordern
+- Produktionsworkloads mit Hochverfügbarkeit in der gleichen Zone, mit zonenredundanter Hochverfügbarkeit und mit verwalteten Wartungsfenstern
+- Vereinfachte Entwicklungsumgebung 
+- Sicherheit, Compliance und Datenschutz auf Unternehmensniveau
 
 Neueste Updates für Flexible Server finden Sie unter [Neuerungen in Azure Database for MySQL Flexible Server](whats-new.md).
 
@@ -70,7 +73,7 @@ Weitere Informationen finden Sie unter [Geplante Wartung](concepts-maintenance.m
 
 ## <a name="automatic-backups"></a>Automatische Sicherungen
 
-Für Azure Database for MySQL Flexible Server werden Sicherungen automatisch erstellt und in einem vom Benutzer konfigurierten lokal redundanten oder georedundanten Speicher gespeichert. Mithilfe von Sicherungen können Sie den Server zu einem beliebigen Zeitpunkt innerhalb des Aufbewahrungszeitraums der Sicherung wiederherstellen. Die Standardaufbewahrungsdauer für Sicherungen beträgt sieben Tage. Die Aufbewahrungsdauer kann optional auf bis zu 35 Tage festgelegt werden. Zur Verschlüsselung aller Sicherungen wird die AES-Verschlüsselung mit 256 Bit verwendet.
+Für Azure Database for MySQL Flexible Server werden Sicherungen automatisch erstellt und in einem vom Benutzer konfigurierten lokal redundanten oder georedundanten Speicher gespeichert. Mithilfe von Sicherungen können Sie den Server zu einem beliebigen Zeitpunkt innerhalb des Aufbewahrungszeitraums der Sicherung wiederherstellen. Die Standardaufbewahrungsdauer für Sicherungen beträgt sieben Tage. Für die Aufbewahrungsdauer kann optional ein Wert zwischen einem Tag und 35 Tagen konfiguriert werden. Zur Verschlüsselung aller Sicherungen wird die AES-Verschlüsselung mit 256 Bit verwendet.
 
 Weitere Informationen finden Sie unter [Sicherungskonzepten](concepts-backup-restore.md).
 
@@ -118,11 +121,11 @@ Weitere Informationen finden Sie unter [Datenreplikationskonzepte](concepts-data
 
 ## <a name="stopstart-server-to-optimize-cost"></a>Anhalten/Starten des Servers zum Optimieren der Kosten
 
-Der Flexible Server-Dienst ermöglicht Ihnen, Server bei Bedarf anzuhalten und zu starten, um Ihre Kosten zu optimieren. Die Abrechnung des Computetarifs wird sofort beendet, sobald der Server angehalten wird. Dies kann Ihnen erhebliche Kosteneinsparungen bei Entwicklung, Tests und zeitgebundenen, vorhersehbaren Produktionsworkloads ermöglichen. Der Server verbleibt sieben Tage im angehaltenen Zustand, es sei denn, er wird früher wieder gestartet.
+Der Flexible Server-Dienst ermöglicht Ihnen, Server bei Bedarf anzuhalten und zu starten, um Ihre Kosten zu optimieren. Die Abrechnung des Computetarifs wird sofort beendet, sobald der Server angehalten wird. Dies kann erhebliche Kosteneinsparungen bei Entwicklung, Tests und zeitgebundenen, vorhersehbaren Produktionsworkloads ermöglichen. Der Server verbleibt 30 Tage im angehaltenen Zustand, es sei denn, er wird früher wieder gestartet.
 
 Weitere Informationen finden Sie unter [Serverkonzepte](concept-servers.md).
 
-## <a name="enterprise-grade-security-and-privacy"></a>Sicherheit und Datenschutz auf Unternehmensniveau
+## <a name="enterprise-grade-security-compliance-and-privacy"></a>Sicherheit, Compliance und Datenschutz auf Unternehmensniveau
 
 Der flexible Serverdienst nutzt das FIPS 140-2-zertifizierte Kryptografiemodul für die Speicherverschlüsselung ruhender Daten. Daten wie Sicherungen und temporäre Dateien, die während der Ausführung von Abfragen erstellt wurden, werden verschlüsselt. Der Dienst verwendet das in der Azure Storage-Verschlüsselung enthaltene AES-256-Bit-Verschlüsselungsverfahren, wobei die Schlüssel (standardmäßig) vom System verwaltet werden.
 
@@ -136,7 +139,13 @@ Weitere Informationen finden Sie in den [Netzwerkkonzepten](concepts-networking.
 
 ## <a name="monitoring-and-alerting"></a>Überwachung und Warnung
 
-Der Flexible Server-Dienst verfügt über integrierte Funktionen für Leistungsüberwachung und Warnungen. Alle Azure-Metriken werden im Minutentakt erfasst, und für jede Metrik steht ein Verlauf von 30 Tagen zur Verfügung. Sie können Warnungen für die Metriken konfigurieren. Der Dienst macht Hostservermetriken verfügbar, um die Ressourcenauslastung zu überwachen, und ermöglicht die Konfiguration von Protokollen langsamer Abfragen. Mit diesen Tools können Sie Ihre Workloads schnell optimieren und Ihren Server für optimale Leistung konfigurieren. Darüber hinaus können Sie Community-Überwachungstools wie [Percona Monitoring and Management](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/monitor-azure-database-for-mysql-using-percona-monitoring-and/ba-p/2568545) nutzen und in Ihren MySQL Flexible Server integrieren. 
+Der Flexible Server-Dienst verfügt über integrierte Funktionen für Leistungsüberwachung und Warnungen. Alle Azure-Metriken werden im Minutentakt erfasst, und für jede Metrik steht ein Verlauf von 30 Tagen zur Verfügung. Sie können Warnungen für die Metriken konfigurieren. Der Dienst macht Hostservermetriken verfügbar, um die Ressourcenauslastung zu überwachen, und ermöglicht die Konfiguration von Protokollen für langsame Abfragen. Mit diesen Tools können Sie Ihre Workloads schnell optimieren und Ihren Server für optimale Leistung konfigurieren. Azure Database for MySQL Flexible Server ermöglicht mithilfe von Azure Monitor-Arbeitsmappen das Visualisieren der Daten für langsame Abfragen und Überwachungsprotokolle. Mit Arbeitsmappen erhalten Sie einen flexiblen Canvas zum Analysieren von Daten und Erstellen umfangreicher visueller Berichte innerhalb des Azure-Portals. Azure Database for MySQL Flexible Server bietet drei verfügbare Arbeitsmappenvorlagen, die sofort verfügbar sind: Serverübersicht, [Überwachung](tutorial-configure-audit.md) und [Query Performance Insights](tutorial-query-performance-insights.md). Die Arbeitsmappe [Query Performance Insight](tutorial-query-performance-insights.md) soll den Zeitaufwand für die Problembehandlung der Datenbankleistung reduzieren. Dazu stellt sie u. a. folgende Informationen bereit:
+
+* Erste N zeitintensive Abfragen und ihr Trend
+* Abfragedetails: Zeigen Sie den Abfragetext sowie den Ausführungsverlauf mit minimaler, maximaler und durchschnittlicher Abfragedauer sowie die Standardabweichung der Abfragedauer an.
+* Ressourcenverwendung (CPU, Arbeitsspeicher und Speicher)
+
+Darüber hinaus können Sie Community-Überwachungstools wie [Percona Monitoring and Management](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/monitor-azure-database-for-mysql-using-percona-monitoring-and/ba-p/2568545) nutzen und in Ihren MySQL Flexible Server integrieren. 
 
 Weitere Informationen finden Sie unter [Überwachungskonzepte](concepts-monitoring.md).
 
@@ -153,7 +162,7 @@ Verwenden Sie die Datenreplikation mit einer konsistenten Sicherung/Wiederherste
 
 Informationen zum Migrieren aus Azure Database for MySQL Single Server zu Flexible Server in 5 einfachen Schritten finden Sie in [diesem Blog](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/migrate-from-azure-database-for-mysql-single-server-to-flexible/ba-p/2674057).
 
-Weitere Informationen finden Sie im [Migrationshandbuch für Azure Database for MySQL](../../mysql/migrate/mysql-on-premises-azure-db/01-mysql-migration-guide-intro.md)
+Weitere Informationen finden Sie unter [Auswählen der geeigneten Tools für die Migration zu Azure Database for MySQL](../../mysql/how-to-decide-on-right-migration-tools.md).
 
 ## <a name="azure-regions"></a>Azure-Regionen
 

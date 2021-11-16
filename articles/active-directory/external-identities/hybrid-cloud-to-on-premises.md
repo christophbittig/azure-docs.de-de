@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: how-to
-ms.date: 10/30/2020
+ms.date: 11/05/2021
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 422a273f0bc5fbeccf61f3af1ddb4edc9b95e36b
-ms.sourcegitcommit: 1f29603291b885dc2812ef45aed026fbf9dedba0
+ms.openlocfilehash: 7ebaa3c9b6a931a01eb65a28cd48cf29e74c13b3
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129232475"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131892398"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Gewähren des Zugriffs auf lokale Anwendungen für B2B-Benutzer in Azure AD
 
@@ -46,10 +46,10 @@ Um B2B-Benutzern den Zugriff auf lokale Anwendungen zu ermöglichen, die durch d
    > [!NOTE]
    > Stellen Sie beim Konfigurieren des Azure AD-Anwendungsproxys sicher, dass **Delegierte Identität für Anmeldung** in der Konfiguration des einmaligen Anmeldens für die integrierte Windows-Authentifizierung (IWA) auf **Benutzerprinzipalname** (Standard) festgelegt ist.
 
-   Für das B2B-Benutzerszenario sind zwei Methoden verfügbar, die Sie zum Erstellen der für die Autorisierung erforderlichen Gastbenutzerobjekte im lokalen Verzeichnis verwenden können:
+   Für das B2B-Benutzerszenario gibt es zwei Methoden, die Sie zum Erstellen der für die Autorisierung im lokalen Verzeichnis erforderlichen Gastbenutzerobjekte verwenden können:
 
-   - Microsoft Identity Manager (MIM) und der MIM-Verwaltungs-Agent für Microsoft Graph. 
-   - [Ein PowerShell-Skript](#create-b2b-guest-user-objects-through-a-script-preview). Die Verwendung des Skripts ist die einfachere Lösung, bei der kein MIM benötigt wird. 
+   - Microsoft Identity Manager (MIM) und der MIM-Verwaltungs-Agent für Microsoft Graph.
+   - Ein PowerShell-Skript, das eine etwas einfachere Lösung darstellt, bei der kein MIM benötigt wird.
 
 Das folgende Diagramm bietet einen allgemeinen Überblick darüber, wie der Azure AD-Anwendungsproxy und die Generierung des B2B-Benutzerobjekts im lokalen Verzeichnis zusammenarbeiten, um B2B-Benutzern Zugriff auf Ihre lokalen IWA- und KCD-Apps zu gewähren. Die nummerierten Schritte werden unter dem Diagramm detailliert beschrieben.
 
@@ -74,20 +74,12 @@ Sie können die lokalen B2B-Benutzerobjekte mithilfe von Richtlinien für die Le
 
 Informationen zur Verwendung von MIM 2016 Service Pack 1 und des MIM-Verwaltungs-Agents für Microsoft Graph zum Erstellen von Gastbenutzerobjekten im lokalen Verzeichnis finden Sie unter [Azure AD-Business-to-Business-Kollaboration (B2B) mit Microsoft Identity Manager(MIM) 2016 SP1 mit Azure-Anwendungsproxy](/microsoft-identity-manager/microsoft-identity-manager-2016-graph-b2b-scenario).
 
-### <a name="create-b2b-guest-user-objects-through-a-script-preview"></a>Erstellen von B2B-Gastbenutzerobjekten über ein Skript (Vorschau)
-
-Es ist ein PowerShell-Beispielskript verfügbar, das Sie als Ausgangspunkt für die Erstellung von Gastbenutzerobjekten in Ihrem lokalen Active Directory-Verzeichnis verwenden können.
-
-Sie können das Skript und die Infodatei unter [Connectors für Microsoft Identity Manager 2016 und Forefront Identity Manager 2010 R2](https://www.microsoft.com/download/details.aspx?id=51495) herunterladen. Wählen Sie im Downloadpaket die Datei **Script and Readme to pull Azure AD B2B users on-prem.zip** aus.
-
-Lesen Sie vor der Verwendung des Skripts unbedingt die Voraussetzungen und wichtigen Hinweise in der zugehörigen Infodatei. Beachten Sie außerdem, dass das Skript nur als Beispiel zur Verfügung gestellt wird. Ihr Entwicklerteam oder ein Partner muss das Skript vor der Ausführung anpassen und überprüfen.
-
 ## <a name="license-considerations"></a>Hinweise zur Lizenz
 
 Stellen Sie sicher, dass Sie über die richtigen Clientzugriffslizenzen (Client Access License, CAL) für externe Gastbenutzer verfügen, die auf lokale Apps zugreifen. Weitere Informationen finden Sie im Abschnitt zu externen Connector-Lizenzen unter [Client Access-Lizenzen und Management-Lizenzen](https://www.microsoft.com/licensing/product-licensing/client-access-license.aspx). Wenden Sie sich bezüglich Ihrer spezifischen Lizenzierungsanforderungen an den für Sie zuständigen Microsoft-Kundendienstmitarbeiter oder Ihren Handelspartner vor Ort.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Azure Active Directory B2B-Zusammenarbeit für Hybridorganisationen](hybrid-organizations.md)
+- Weitere Informationen finden Sie unter [Azure Active Directory B2B-Zusammenarbeit für Hybridorganisationen](hybrid-organizations.md)
 
 - Eine Übersicht zu Azure AD Connect finden Sie unter [Integrieren Ihrer lokalen Verzeichnisse in Azure Active Directory](../hybrid/whatis-hybrid-identity.md).

@@ -6,17 +6,20 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: trkeya
 ms.author: trkeya
-ms.date: 09/27/2021
-ms.openlocfilehash: 320d1b309f49b748e48a7a019c43246e8e5ce7c7
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.date: 10/26/2021
+ms.openlocfilehash: 5fde0e1d9dc78c735ae9e889af5fbd889a588540
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129080305"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131851019"
 ---
 # <a name="detailed-configuration-for-hosted-test-drives"></a>Detaillierte Konfigurationsschritte für gehostete Testversionen
 
 In diesem Artikel wird beschrieben, wie Sie eine gehostete Testversion für Dynamics 365 for Customer Engagement und Power Apps oder Dynamics 365 for Operations konfigurieren.
+
+> [!TIP]
+> Die Ansicht der Testversion für den Kunden im kommerziellen Marketplace finden Sie unter [Was ist Azure Marketplace?](/marketplace/azure-marketplace-overview#take-action-on-a-listing) und [Was ist Microsoft AppSource?](/marketplace/appsource-overview).
 
 ## <a name="configure-for-dynamics-365-customer-engagement--power-apps"></a>Konfiguration für Dynamics 365 Customer Engagement und Power Apps
 
@@ -29,7 +32,7 @@ In diesem Artikel wird beschrieben, wie Sie eine gehostete Testversion für Dyna
 3. Suchen Sie ein bestehendes **Dynamics 365 for Customer Engagement & Power Apps**-Angebot, oder erstellen Sie ein neues **Dynamics 365 for Customer Engagement & Power Apps**-Angebot.
 4. Aktivieren Sie auf der Seite **Angebotseinrichtung** das Kontrollkästchen bei **Testversion aktivieren**, wählen Sie den **Typ der Testversion** aus (siehe folgender Punkt), und klicken Sie dann auf **Entwurf speichern**.
 
-    [ ![Aktivieren des Kontrollkästchens bei „Testversion aktivieren“](./media/test-drive/enable-test-drive-check-box-workspaces.png) ](./media/test-drive/enable-test-drive-check-box-workspaces.png#lightbox)
+    [![Aktivieren des Kontrollkästchens bei „Testversion aktivieren“](./media/test-drive/enable-test-drive-check-box-workspaces.png)](./media/test-drive/enable-test-drive-check-box-workspaces.png#lightbox)
 
     - **Typ der Testversion**: Wählen Sie die Option **Von Microsoft gehostet (Dynamics 365 for Customer Engagement & PowerApps)** aus. Dies weist darauf hin, dass Microsoft den Dienst hosten und warten wird, durch den die Benutzerbereitstellung für die Testversion ausgeführt und wieder aufgehoben wird.
 

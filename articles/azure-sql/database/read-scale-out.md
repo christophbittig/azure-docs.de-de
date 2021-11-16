@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: emlisa
 ms.author: emlisa
 ms.reviewer: mathoma
-ms.date: 09/23/2021
-ms.openlocfilehash: a501b564fcf8d9780c6398a5abd8bae49c10811f
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.date: 11/5/2021
+ms.openlocfilehash: ce039347c2fe06f061aecc4a01cd05e92c43ae74
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130163540"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131893176"
 ---
 # <a name="use-read-only-replicas-to-offload-read-only-query-workloads"></a>Verwenden von schreibgeschützten Replikaten zum Lesen schreibgeschützter Abfrageworkloads
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -25,7 +25,7 @@ Als Teil der [Hochverfügbarkeitsarchitektur](high-availability-sla.md#premium-a
 
 Die *horizontale Leseskalierung* ist auch auf der Dienstebene „Hyperscale“ verfügbar, wenn mindestens ein [sekundäres Replikat](service-tier-hyperscale-replicas.md) hinzugefügt wird. Sekundäre [benannte Hyperscale-Replikate](service-tier-hyperscale-replicas.md#named-replica-in-preview) bieten unabhängige Skalierung, Zugriffsisolation, Workloadisolation, umfassende horizontale Leseskalierung und weitere Vorteile. Mehrere sekundäre [Hochverfügbarkeitsreplikate](service-tier-hyperscale-replicas.md#high-availability-replica) können für einen Lastenausgleich schreibgeschützter Workloads verwendet werden, für die mehr Ressourcen erforderlich sind, als auf einem sekundären Hochverfügbarkeitsreplikat zur Verfügung stehen. 
 
-Die Hochverfügbarkeitsarchitektur der Dienstebenen „Basic“, „Standard“ und „Universell“ enthält keine Replikate. Die *horizontale Leseskalierung* ist auf diesen Dienstebenen nicht verfügbar.
+Die Hochverfügbarkeitsarchitektur der Dienstebenen „Basic“, „Standard“ und „Universell“ enthält keine Replikate. Die *horizontale Leseskalierung* ist auf diesen Dienstebenen nicht verfügbar. [Georeplikate](active-geo-replication-overview.md) können jedoch ähnliche Funktionen in diesen Dienstebenen bereitstellen.
 
 Im folgenden Diagramm wird die Funktion für Datenbanken und verwaltete Instanzen in den Tarifen „Premium“ und „Unternehmenskritisch“ veranschaulicht.
 
@@ -196,6 +196,13 @@ Auf diese Weise können durch die Erstellung eines Georeplikats mehrere zusätzl
 
 > [!NOTE]
 > Es gibt kein automatisches Roundrobin oder ein anderes Lastenausgleichsrouting zwischen den Replikaten einer georeplizierten sekundären Datenbank, mit Ausnahme eines Hyperscale-Georeplikats mit mehr als einem Hochverfügbarkeitsreplikat. In diesem Fall werden Sitzungen mit schreibgeschützter Absicht auf alle Hochverfügbarkeitsreplikate eines Georeplikats verteilt.
+
+## <a name="feature-support-on-read-only-replicas"></a>Featureunterstützung für schreibgeschützte Replikate
+
+Im Folgenden finden Sie eine Liste von Verhaltensweisen einiger Features für schreibgeschützte Replikate:
+* Die Überwachung von schreibgeschützten Replikaten wird automatisch aktiviert. Weitere Informationen zur Hierarchie der Speicherordner, zu Namenskonventionen und zum Protokollformat finden Sie unter [Format für SQL-Datenbank-Überwachungsprotokolle](audit-log-format.md).
+* [Query Performance Insight](query-performance-insight-use.md) basiert auf Daten aus dem [Abfragespeicher](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store), der derzeit keine Aktivitäten auf dem schreibgeschützten Replikat nachverfolgt. Von Query Performance Insight werden keine Abfragen gezeigt, die auf dem schreibgeschützten Replikat ausgeführt werden.
+* Die automatische Optimierung basiert auf dem Abfragespeicher, wie im Dokument [Automatische Optimierung](https://www.microsoft.com/en-us/research/uploads/prod/2019/02/autoindexing_azuredb.pdf) ausführlich angegeben. Die automatische Optimierung funktioniert nur für Workloads, die auf dem primären Replikat ausgeführt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

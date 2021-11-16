@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 10/8/2021
-ms.openlocfilehash: 2a4a48a66def1633aea5b85d9e51bdcf8bc1378e
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: c9f2c270f8794effccd8439edd57422db15b71b6
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131478857"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131989924"
 ---
 # <a name="dasv5-and-dadsv5-series"></a>Dasv5- und Dadsv5-Serie
 
@@ -23,7 +23,7 @@ Die Dasv5-Serie und die Dadsv5-Serie nutzen den AMD-Prozessor EPYC<sup>TM</sup>�
 
 ## <a name="dasv5-series"></a>Dasv5-Serie
 
-VMs der Dasv5-Serie nutzen die AMD-Prozessoren EPYC<sup>TM</sup> 7763v der 3. Generation, die mittels Bursting eine maximale Frequenz von 3,7 GHz erreichen können. Die Größen der Dasv5-Serie bieten eine Kombination aus vCPU und Arbeitsspeicher für die meisten Produktionsworkloads. Die neuen VMs ohne lokale Datenträger bieten ein besseres Wertversprechen für Workloads, die keinen lokalen temporären Datenträger erfordern.
+VMs der Dasv5-Serie nutzen die AMD-Prozessoren EPYC<sup>TM</sup> 7763v der 3. Generation, die mittels Bursting eine maximale Frequenz von 3,5 GHz erreichen können. Die Größen der Dasv5-Serie bieten eine Kombination aus vCPU und Arbeitsspeicher für die meisten Produktionsworkloads. Die neuen VMs ohne lokale Datenträger bieten ein besseres Wertversprechen für Workloads, die keinen lokalen temporären Datenträger erfordern.
 
 > [!NOTE]
 > Häufig gestellte Fragen finden Sie unter [Azure-VM-Größen ohne lokale temporäre Datenträger](azure-vms-no-temp-disk.yml).
@@ -55,7 +55,7 @@ VMs der Dasv5-Serie unterstützen die Datenträgertypen SSD Standard, HDD Standa
 
 ## <a name="dadsv5-series"></a>Dadsv5-Serie
 
-VMs der Dadsv5-Serie nutzen die AMD-Prozessoren EPYC<sup>TM</sup> 7763v der 3. Generation, die mittels Bursting eine maximale Frequenz von 3,7 GHz erreichen können. Die Größen der Dadsv5-Serie bieten eine Kombination aus vCPU, Arbeitsspeicher und temporärem Speicher, die für die meisten Produktionsworkloads geeignet ist. Diese neuen VM-Größen bieten 50 % mehr lokalen Speicher sowie bessere IOPS auf lokalen Datenträgern für Lese- und Schreibvorgänge im Vergleich zu den Größen [Dav4/Dasv4](dav4-dasv4-series.md) mit [Gen2](generation-2.md)-VMs.
+VMs der Dadsv5-Serie nutzen die AMD-Prozessoren EPYC<sup>TM</sup> 7763v der 3. Generation, die mittels Bursting eine maximale Frequenz von 3,5 GHz erreichen können. Die Größen der Dadsv5-Serie bieten eine Kombination aus vCPU, Arbeitsspeicher und temporärem Speicher, die für die meisten Produktionsworkloads geeignet ist. Diese neuen VM-Größen bieten 50 % mehr lokalen Speicher sowie bessere IOPS auf lokalen Datenträgern für Lese- und Schreibvorgänge im Vergleich zu den Größen [Dav4/Dasv4](dav4-dasv4-series.md) mit [Gen2](generation-2.md)-VMs.
 
 VMs der Dadsv5-Serie unterstützen die Datenträgertypen SSD Standard, HDD Standard und SSD Premium. Sie können je nach regionaler Verfügbarkeit auch Disk Ultra-Speicher anfügen. Datenträgerspeicher wird separat von VMs abgerechnet. [Weitere Informationen finden Sie unter den Preisen für Datenträger.](https://azure.microsoft.com/pricing/details/managed-disks/)
 

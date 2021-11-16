@@ -1,26 +1,26 @@
 ---
-title: Erklärbarkeit beim automatisierten maschinellen Lernen (Vorschau)
+title: Modellerklärbarkeit beim automatisierten maschinellen Lernen (Vorschau)
 titleSuffix: Azure Machine Learning
 description: Erfahren Sie, wie Ihr automatisiertes Machine Learning-Modell die Featurerelevanz ermittelt und beim Verwenden des Azure Machine Learning SDK Vorhersagen trifft.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: automl
 ms.topic: how-to
-ms.custom: automl, responsible-ml
+ms.custom: automl, responsible-ml, mktng-kw-nov2021
 ms.author: mithigpe
 author: minthigpen
 ms.date: 10/21/2021
-ms.openlocfilehash: 6538ebfbb7aae0a8e2b97c4b41a124568db858c7
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: f739da0dde7f2ef9935466ebbd4e4d4498355263
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131562311"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131852615"
 ---
-# <a name="interpretability-model-explanations-in-automated-machine-learning-preview"></a>Interpretierbarkeit: Modellerklärungen beim automatisierten maschinellen Lernen (Vorschau)
+# <a name="interpretability-model-explainability-in-automated-ml-preview"></a>Interpretierbarkeit: Modellerklärbarkeit beim automatisierten maschinellen Lernen (Vorschau)
 
 
-In diesem Artikel erfahren Sie, wie Sie in Azure Machine Learning Erklärungen für automatisiertes maschinelles Lernen (automatisierte ML) unter Verwendung von Python SDK erhalten können. Automatisiertes maschinelles Lernen hilft Ihnen dabei, die Featurerelevanz der generierten Modelle zu verstehen. 
+In diesem Artikel erfahren Sie, wie Sie in Azure Machine Learning Erklärungen für automatisierte Machine Learning-Modelle (automatisiertes ML) unter Verwendung des Python SDK erhalten können. Automatisiertes maschinelles Lernen hilft Ihnen dabei, die Featurerelevanz der generierten Modelle zu verstehen. 
 
 Alle SDK-Versionen nach 1.0.85 sind standardmäßig auf `model_explainability=True` festgelegt. In SDK Version 1.0.85 und in früheren Versionen müssen die Benutzer `model_explainability=True` im `AutoMLConfig`-Objekt festlegen, um die Interpretierbarkeit des Modells zu nutzen. 
 
@@ -323,4 +323,4 @@ Weitere Informationen zur Visualisierung von Erläuterungsdashboards und bestimm
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen dazu, wie Sie Modellerklärungen und Featurerelevanz in anderen Bereichen des Azure Machine Learning SDK als für automatisiertes Machine Learning aktivieren können, finden Sie im [Konzeptartikel zur Interpretierbarkeit](how-to-machine-learning-interpretability.md).
+Weitere Informationen dazu, wie Sie Modellerklärungen und Featurerelevanz in anderen Bereichen als dem automatisierten maschinellen Lernen aktivieren können, finden Sie unter [Weitere Techniken für die Interpretierbarkeit von Modellen](how-to-machine-learning-interpretability.md).

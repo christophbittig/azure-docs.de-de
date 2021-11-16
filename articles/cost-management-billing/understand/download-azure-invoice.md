@@ -10,12 +10,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 05/17/2021
 ms.author: banders
-ms.openlocfilehash: b98e9af17b20482a1c5c3178aa183198e936bef7
-ms.sourcegitcommit: 17345cc21e7b14e3e31cbf920f191875bf3c5914
+ms.openlocfilehash: c3e37fa2d4a24344c2d417bd54544bd786fc8e75
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/19/2021
-ms.locfileid: "110069200"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132054234"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>Anzeigen und Herunterladen der Microsoft Azure-Rechnung
 
@@ -247,7 +247,7 @@ Mehrere Gründe können dafür ausschlaggebend sein, dass Sie keine Rechnung seh
 
            ![Screenshot des Auswählens von „Verzeichnis wechseln“ im Portal](./media/download-azure-invoice/select-switch-directory.png)
 
-        3. Wählen Sie im Bereich **Alle Verzeichnisse** ein Verzeichnis aus.
+        3. Wählen Sie im Bereich **Alle Verzeichnisse** die Option **Wechseln** für ein Verzeichnis aus.
 
            ![Screenshot des Auswählens eines Verzeichnisses im Portal](./media/download-azure-invoice/select-directory.png)
 

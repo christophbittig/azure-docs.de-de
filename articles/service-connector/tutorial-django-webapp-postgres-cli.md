@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/28/2021
 zone_pivot_groups: postgres-server-options
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 24c6d2cee0748d342c0d8d797d4a07692f6da9db
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: f2a3307cfea56d18cbbe0186cd3c927fafdd4074
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131444912"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131853031"
 ---
 # <a name="tutorial-using-service-connector-preview-to-build-a-django-app-with-postgres-on-azure-app-service"></a>Tutorial: Verwenden des Dienstconnectors (Vorschauversion) zum Erstellen einer Django-App mit Postgres für Azure App Service
 
@@ -58,7 +58,7 @@ In diesem Tutorial wird die Azure CLI verwendet, um folgende Aufgaben auszufüh
 
 1. Sie benötigen ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 1. Installieren Sie <a href="https://www.python.org/downloads/" target="_blank">Python 3.6 oder höher</a>.
-1. Installieren Sie die <a href="/cli/azure/install-azure-cli" target="_blank">Azure CLI</a> 2.18.0 oder höher, mit der Sie Befehle in einer beliebigen Shell ausführen, um Azure-Ressourcen bereitzustellen und zu konfigurieren.
+1. Installieren Sie die <a href="/cli/azure/install-azure-cli" target="_blank">Azure CLI</a> 2.30.0 oder höher, mit der Sie Befehle in einer beliebigen Shell ausführen, um Azure-Ressourcen bereitzustellen und zu konfigurieren.
 
 Öffnen Sie ein Terminalfenster, und überprüfen Sie, ob mindestens die Python-Version 3.6 installiert ist:
 
@@ -82,13 +82,13 @@ py -3 --version
 
 ---
 
-Vergewissern Sie sich, dass Sie mindestens Version 2.18.0 der Azure CLI verwenden:
+Vergewissern Sie sich, dass Sie mindestens Version 2.30.0 der Azure CLI verwenden:
 
 ```azurecli
 az --version
 ```
 
-Wenn Sie ein Upgrade durchführen müssen, versuchen Sie es mit dem Befehl `az upgrade` (erfordert mindestens Version 2.11), oder lesen Sie die Informationen unter <a href="/cli/azure/install-azure-cli" target="_blank">Installieren der Azure CLI</a>.
+Wenn Sie ein Upgrade durchführen müssen, versuchen Sie es mit dem Befehl `az upgrade` (erfordert mindestens Version 2.30.0), oder lesen Sie die Informationen unter <a href="/cli/azure/install-azure-cli" target="_blank">Installieren der Azure CLI</a>.
 
 Melden Sie sich anschließend über die CLI bei Azure an:
 
