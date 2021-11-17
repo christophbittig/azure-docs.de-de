@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/8/2021
 ms.author: mimckitt
 ms.reviewer: cynthn
-ms.openlocfilehash: 38c43b168e4524529139dcb5c0807d8563e484eb
-ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
+ms.openlocfilehash: 7458a35b6227ca620f08a02aaadc5b95e8528141
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "132025815"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132134346"
 ---
 # <a name="states-and-billing-status-of-azure-virtual-machines"></a>Zustandswerte und Abrechnungsstatus von Azure Virtual Machines
 
@@ -93,7 +93,7 @@ Die Bereitstellungsstatus des Betriebssystems gelten nur für VMs, die mit einem
 
 ## <a name="troubleshooting-vm-states"></a>Problembehandlung von VM-Zuständen
 
-Informationen zur Behandlung bestimmter VM-Statusprobleme finden Sie unter [Problembehandlung von Windows-VM-Bereitstellungen](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-deployment-new-vm-windows) und [Problembehandlung von Linux-VM-Bereitstellungen](https://docs.microsoft.comtroubleshoot/azure/virtual-machines/troubleshoot-deployment-new-vm-linux).
+Informationen zur Behandlung bestimmter VM-Statusprobleme finden Sie unter [Problembehandlung von Windows-VM-Bereitstellungen](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-deployment-new-vm-windows) und [Problembehandlung von Linux-VM-Bereitstellungen](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/troubleshoot-deployment-new-vm-linux).
 
 Weitere Hilfe zur Problembehandlung finden Sie in der [Azure Virtual Machines-Dokumentation zur Problembehandlung](https://docs.microsoft.com/troubleshoot/azure/virtual-machines/welcome-virtual-machines).
 

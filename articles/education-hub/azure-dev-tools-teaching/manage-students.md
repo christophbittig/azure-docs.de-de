@@ -7,14 +7,15 @@ ms.topic: overview
 ms.service: azure-education
 ms.subservice: education-hub
 ms.date: 06/30/2020
-ms.openlocfilehash: 12dbd40731480a2fae294c7292112ecc5df5243b
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: efa55d8d2d9a77191afd47c957c3ba60ecb84f01
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "87101032"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132337583"
 ---
 # <a name="enrolling-students-in-azure-dev-tools-for-teaching"></a>Registrieren von Kursteilnehmern bei Azure Dev Tools für den Unterricht
+
 Nach dem Erwerb von Azure Dev Tools für den Unterricht erhalten alle Kursteilnehmer, die sich in der Domäne Ihrer Einrichtung befinden, automatisch Zugriff auf dieses Angebot. Während des Kaufvorgangs werden Sie aufgefordert, die E-Mail-Adresse des Abonnementadministrators einzugeben. Diese von der Universität überprüfte Domäne entsperrt Kursteilnehmer mit derselben E-Mail-Domäne und gewährt ihnen die Möglichkeit, sich anzumelden und ihre Softwaredownloadvorteile einzulösen. Wenn die Kursteilnehmer nicht bereits über ein Microsoft-Konto (MSA) verfügen oder Teil eines Active Directory der Universität sind, werden sie aufgefordert, ein Konto zu erstellen, das mit der E-Mail-Adresse ihrer Universität übereinstimmt. Wenn Kursteilnehmer Probleme beim Zugriff auf den Education Hub haben, können sie unseren Leitfaden zur Problembehandlung zu Rate ziehen oder sich unter [https://aka.ms/studentsupport](https://aka.ms/studentsupport) an uns wenden.
 
 ## <a name="managing-access-for-students"></a>Verwalten des Zugriffs für Kursteilnehmer
@@ -22,7 +23,7 @@ Sie können den Zugriff für Kursteilnehmer basierend auf der Domäne verwalten,
 
 :::image type="content" source="media/manage-students/manage-student-access.png" alt-text="Verwalten des Kursteilnehmerzugriffs." border="false":::
 
-## <a name="next-steps"></a>Nächste Schritte   
+## <a name="next-steps"></a>Nächste Schritte
 - [Informationen zum Beheben von Problemen bei der Anmeldung](troubleshoot-login.md)
 
 - [Supportoptionen](program-support.md)

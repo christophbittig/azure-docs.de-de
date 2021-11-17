@@ -1,7 +1,6 @@
 ---
 title: Behandeln von Problemen beim Abrufen von Attributen bei der Personalbereitstellung
 description: Hier erfahren Sie, wie Sie Probleme beim Abrufen von Attributen bei der Personalbereitstellung behandeln können.
-services: active-directory
 author: kenwith
 manager: karenh444
 ms.service: active-directory
@@ -11,12 +10,12 @@ ms.workload: identity
 ms.date: 10/27/2021
 ms.author: kenwith
 ms.reviewer: chmutali
-ms.openlocfilehash: f1c0cc4812a3a2770c4b4580d0755bf3766499dd
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: dd1d69bf170f8213aac052a51350265bec08c991
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131478737"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132283200"
 ---
 # <a name="troubleshoot-hr-attribute-retrieval-issues"></a>Behandeln von Problemen beim Abrufen von Personal-Attributen
 
@@ -25,7 +24,7 @@ ms.locfileid: "131478737"
 * Lokale Benutzerbereitstellung von Workday in Active Directory
 * Benutzerbereitstellung von Workday in Azure Active Directory
 
-| | |
+| Problembehandlung | Details |
 |-- | -- |
 | **Problem** | Sie haben soeben die Workday-App für eingehende Bereitstellungen eingerichtet und eine Verbindung mit der Workday-Mandanten-URL hergestellt. Sie haben eine Testsynchronisierung ausgeführt und festgestellt, dass die Bereitstellungs-App nicht alle Attribute aus Workday abruft. Nur einige Attribute werden gelesen und für das Ziel bereitgestellt. |
 | **Ursache** | Standardmäßig enthält die Workday-App für Bereitstellungen Attributzuordnungen und XPath-Definitionen, die mit Workday Web Services (WWS) der Version 21.1 funktionieren. Wenn Sie beim Konfigurieren der Konnektivität mit Workday in der Bereitstellungs-App explizit die WWS-API-Version angegeben haben (Beispiel: `https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v34.0`), dann kann dieses Problem aufgrund des Konflikts zwischen der WWS-API-Version und den XPath-Definitionen auftreten.  |
@@ -36,15 +35,13 @@ ms.locfileid: "131478737"
 * Lokale Benutzerbereitstellung von Workday in Active Directory
 * Benutzerbereitstellung von Workday in Azure Active Directory
 
-| | |
+| Problembehandlung | Details |
 |-- | -- |
 | **Problem** | Sie haben soeben die Workday-App für eingehende Bereitstellungen eingerichtet und eine Verbindung mit der Workday-Mandanten-URL hergestellt. Sie haben ein Integrationssystem in Workday konfiguriert, und Sie haben XPath-Instanzen konfiguriert, die auf Attribute im Workday-Integrationssystem verweisen. Die Azure AD-App für Bereitstellungen ruft jedoch keine Werte ab, die diesen Integrationssystemattributen oder berechneten Feldern zugeordnet sind. |
 | **Ursache** | Dies ist eine bekannte Einschränkung. Die Bereitstellungs-App für Workday unterstützt derzeit nicht das Abrufen von berechneten Feldern bzw. Integrationssystemattributen.  |
 | **Auflösung** | Es gibt keine Problemumgehung für diese Einschränkung. |
 
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Erfahren Sie mehr zu Integrationsszenarien und Webdienstaufrufen für Azure AD und Workday.](workday-integration-reference.md)
 * [Erfahren Sie, wie Sie Protokolle überprüfen und Berichte zu Bereitstellungsaktivitäten abrufen.](check-status-user-account-provisioning.md)
-

@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-custom-ner, ignite-fall-2021
-ms.openlocfilehash: cc7a7c478ada34aeea5815ec937b8442aa2bd98c
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 555269beeb5e8b36597998a8941e2b64120691b4
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131101190"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484154"
 ---
 # <a name="tutorial-enrich-a-cognitive-search-index-with-custom-entities-from-your-data"></a>Tutorial: Anreichern eines Cognitive Search-Index mit benutzerdefinierten Entitäten aus Ihren Daten
 
@@ -49,7 +49,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 4. Geben Sie die Informationen für Ihr Projekt ein:
 
-    | Schlüssel | BESCHREIBUNG |
+    | Schlüssel | Beschreibung |
     |--|--|
     | Name | Der Name des Projekts. Sie können Ihr Projekt nach der Erstellung nicht mehr umbenennen. |
     | BESCHREIBUNG | Eine Beschreibung Ihres Projekts |
@@ -115,7 +115,7 @@ In den folgenden Abschnitten verwenden Sie das [Cognitive Search-Integrationstoo
 
 ### <a name="prepare-configuration-file"></a>Vorbereitung der Konfigurationsdatei
 
-1. Suchen Sie in dem Ordner, den Sie gerade heruntergeladen haben, die [Beispielkonfigurationsdatei](https://github.com/microsoft/CognitiveServicesLanguageUtilities/blob/dev/CustomTextAnalytics.CognitiveSearch/Docs/Assets/configs.json). Öffnen Sie die Datei in einem Text-Editor. 
+1. Suchen Sie in dem Ordner, den Sie gerade heruntergeladen haben, die [Beispielkonfigurationsdatei](https://github.com/microsoft/CognitiveServicesLanguageUtilities/blob/dev/CustomTextAnalytics.CognitiveSearch/Samples/configs.json). Öffnen Sie die Datei in einem Text-Editor. 
 
 2. Rufen Sie die Verbindungszeichenfolge Ihres Speicherkontos wie folgt ab:
     1. Navigieren Sie im [Azure-Portal](https://ms.portal.azure.com/#home) zur Übersichtsseite Ihres Speicherkontos.
@@ -137,7 +137,7 @@ In den folgenden Abschnitten verwenden Sie das [Cognitive Search-Integrationstoo
 
 ### <a name="prepare-schema-file"></a>Vorbereiten der Schemadatei
 
-Suchen Sie in dem Ordner, den Sie zuvor heruntergeladen haben, die [Beispielschemadatei](https://github.com/microsoft/CognitiveServicesLanguageUtilities/blob/dev/CustomTextAnalytics.CognitiveSearch/Docs/Assets/app-schema.json). Öffnen Sie die Datei in einem Text-Editor. 
+Suchen Sie in dem Ordner, den Sie zuvor heruntergeladen haben, die [Beispielschemadatei](https://github.com/microsoft/CognitiveServicesLanguageUtilities/blob/dev/CustomTextAnalytics.CognitiveSearch/Samples/app-schema.json). Öffnen Sie die Datei in einem Text-Editor. 
 
 Die Einträge im Array `entityNames` sind die Entitätsnamen, die Sie beim Erstellen Ihres Projekts zugewiesen haben. Sie können sie kopieren und aus Ihrem Projekt in [Language Studio](https://aka.ms/custom-extraction) einfügen. Alternativ: 
 

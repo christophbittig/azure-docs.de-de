@@ -11,12 +11,12 @@ ms.author: amipatel
 ms.date: 10/21/2021
 ms.reviewer: laobri
 ms.custom: devx-track-azurecli, devplatv2
-ms.openlocfilehash: 1300a830fb3688c9ebc2b9f43b77e3b9214c731d
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: b849293d94b435fa74378d80d8989e6075f78d86
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132054313"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132493664"
 ---
 # <a name="train-models-with-the-cli-v2-preview"></a>Trainieren von Modellen mit der CLI (v2) (Vorschau)
 
@@ -350,7 +350,7 @@ Weitere Sweepoptionen finden Sie in der [YAML-Syntaxreferenz für den Sweepauftr
 
 Azure Machine Learning unterstützt PyTorch, TensorFlow und MPI-basiertes verteiltes Training. Weitere Informationen finden Sie im Abschnitt [Verteilt der YAML-Syntaxreferenz für den Befehlsauftrag](reference-yaml-job-command.md#distribution-configurations).
 
-Beispielsweise können Sie ein Convolutional Neural Network (CNN) für das CIFAR-10-Dataset mit verteiltem PyTorch trainieren. Das vollständige Skript ist [im Beispielrepository verfügbar](https://github.com/Azure/azureml-examples/tree/cli-preview/jobs/single-step/pytorch/cifar-distributed/).
+Beispielsweise können Sie ein Convolutional Neural Network (CNN) für das CIFAR-10-Dataset mit verteiltem PyTorch trainieren. Das vollständige Skript ist [im Beispielrepository verfügbar](https://github.com/Azure/azureml-examples/tree/main/cli/jobs/single-step/pytorch/cifar-distributed).
 
 Das CIFAR-10-Dataset in `torchvision` erwartet als Eingabe ein Verzeichnis, das das Verzeichnis `cifar-10-batches-py` enthält. Sie können die gezippte Quelle herunterladen und in ein lokales Verzeichnis extrahieren:
 

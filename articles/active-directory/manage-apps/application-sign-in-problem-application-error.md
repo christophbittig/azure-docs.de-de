@@ -13,14 +13,14 @@ ms.date: 07/11/2017
 ms.author: davidmu
 ms.reviewer: ergreenl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 499ce4c7875a1805b5845614221ffef0641816d6
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: 271ed6ed115cfca134dc6af7ced9d03bbbc61663
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129617775"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132549126"
 ---
-# <a name="an-app-page-shows-an-error-message-after-the-user-signs-in-azure-active-directory"></a>Auf einer App-Seite wird eine Fehlermeldung angezeigt, nachdem sich der Benutzer in Azure Active Directory angemeldet hat
+# <a name="an-app-page-shows-an-error-message-after-the-user-signs-in"></a>App-Seite, auf der eine Fehlermeldung angezeigt wird, nachdem sich ein Benutzer angemeldet hat
 
 Im folgenden Szenario wird ein Benutzer durch Azure Active Directory (Azure AD) angemeldet. Die Anwendung zeigt allerdings eine Fehlermeldung an, und der Benutzer kann den Anmeldevorgang nicht abschließen. Das Problem besteht darin, dass die App die von Azure AD zurückgegebene Antwort nicht akzeptiert.
 

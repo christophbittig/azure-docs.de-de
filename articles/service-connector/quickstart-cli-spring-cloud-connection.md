@@ -7,12 +7,12 @@ ms.service: serviceconnector
 ms.topic: quickstart
 ms.date: 10/29/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 3b269e9a8967c3a0134fbac78ac734c98e7c479b
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 13f2cf7abc24c2f84ea95f0d3779c015680ca01d
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131842547"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132554577"
 ---
 # <a name="quickstart-create-a-service-connection-in-spring-cloud-with-the-azure-cli"></a>Schnellstart: Erstellen einer Dienstverbindung in Spring Cloud mit der Azure-Befehlszeilenschnittstelle
 
@@ -58,7 +58,7 @@ az spring-cloud connection create storage-blob --secret
 #### <a name="using-managed-identity"></a>[Verwenden einer verwalteten Identität](#tab/Using-Managed-Identity)
 
 > [!IMPORTANT]
-> Für die Verwendung einer verwalteten Identität müssen Sie über die Berechtigung für die [Azure AD-Rollenzuweisung](/active-directory/managed-identities-azure-resources/howto-assign-access-portal) verfügen. Wenn Sie nicht über die Berechtigung verfügen, ist die Verbindungserstellung nicht erfolgreich. Sie können Ihren Abonnementbesitzer nach der Berechtigung fragen oder den Zugriffsschlüssel verwenden, um die Verbindung zu erstellen.
+> Für die Verwendung einer verwalteten Identität müssen Sie über die Berechtigung für die [Azure AD-Rollenzuweisung](/azure/active-directory/managed-identities-azure-resources/howto-assign-access-portal) verfügen. Wenn Sie nicht über die Berechtigung verfügen, ist die Verbindungserstellung nicht erfolgreich. Sie können Ihren Abonnementbesitzer nach der Berechtigung fragen oder den Zugriffsschlüssel verwenden, um die Verbindung zu erstellen.
 
 Verwenden Sie den Azure CLI-Befehl [az spring-cloud connection](), um eine Dienstverbindung mit einem Blobspeicher mit systemseitig zugewiesene verwaltete Identität zu erstellen, und geben Sie dabei die folgenden Informationen an:
 

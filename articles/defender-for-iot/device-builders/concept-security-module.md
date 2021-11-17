@@ -2,13 +2,13 @@
 title: IoT-Micro-Agent von Defender und Gerätezwillinge
 description: Hier erfahren Sie mehr über das Konzept von Zwillingen für den IoT-Micro-Agent von Defender und deren Verwendung in Azure Defender für IoT.
 ms.topic: conceptual
-ms.date: 05/25/2021
-ms.openlocfilehash: ca36ad03c8e21e1606b163940f8bc06c0b761dd5
-ms.sourcegitcommit: a038863c0a99dfda16133bcb08b172b6b4c86db8
+ms.date: 11/09/2021
+ms.openlocfilehash: f8a634eaa3947d08e6ab88b8f05e119fbcf54665
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2021
-ms.locfileid: "113016101"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132278928"
 ---
 # <a name="defender-iot-micro-agent"></a>IoT-Micro-Agent von Defender
 

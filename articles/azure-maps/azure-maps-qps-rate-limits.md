@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: azure-maps
 services: azure-maps
 manager: eriklind
-ms.openlocfilehash: 0015eeccd2ea4ed12eb0435cac72db8e86f9119a
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 8dd0c657ba645d1ed2bf0e8585149aec7b486536
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131846443"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132316012"
 ---
 # <a name="azure-maps-qps-rate-limits"></a>QPS-Ratenbegrenzung für Azure Maps
 

@@ -3,17 +3,16 @@ title: Erstellen eines Azure Automation-Kontos mithilfe einer Resource Manager-V
 titleSuffix: Azure Automation
 description: In diesem Artikel erfahren Sie, wie Sie ein Automation-Konto per Azure Resource Manager-Vorlage erstellen.
 services: automation
-ms.author: magoedte
 ms.date: 08/27/2021
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.custom: mvc, subject-armqs, mode-arm
-ms.openlocfilehash: db69e08db30a2b2ffcf7acc780619f23d8b41feb
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 66fb9a88761b47f0cc704fcf20dd29dd7768777a
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131031687"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132487884"
 ---
 # <a name="create-an-azure-automation-account-using-a-resource-manager-template"></a>Erstellen eines Azure Automation-Kontos mithilfe einer Resource Manager-Vorlage
 

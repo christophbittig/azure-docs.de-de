@@ -3,21 +3,19 @@ title: Asynchrone Unterhaltungstranskription – Speech-Dienst
 titleSuffix: Azure Cognitive Services
 description: Hier erfahren Sie, wie Sie die asynchrone Unterhaltungstranskription mit dem Speech-Dienst verwenden. Nur für Java und C# verfügbar.
 services: cognitive-services
-author: markamos
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.author: amishu
 ms.custom: devx-track-csharp
 zone_pivot_groups: programming-languages-set-twenty-one
-ms.openlocfilehash: 4b2dfa8d474f10d6b4ca1c46ac2b575e8d8407ff
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9dbee96d6b277ac76b07e3fd8b2b72b1c84b32f9
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/30/2021
-ms.locfileid: "88934639"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132546403"
 ---
 # <a name="asynchronous-conversation-transcription"></a>Asynchrone Unterhaltungstranskription
 

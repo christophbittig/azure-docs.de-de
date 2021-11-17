@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/22/2021
 ms.author: jeedes
-ms.openlocfilehash: a29b0479c39391256aa6838619eeaa410ae4f283
-ms.sourcegitcommit: 63f3fc5791f9393f8f242e2fb4cce9faf78f4f07
+ms.openlocfilehash: a11b61348d9f9e76d71ca545caeb019d3e123678
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2021
-ms.locfileid: "114688704"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132344729"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-citrix-cloud-saml-sso"></a>Tutorial: Integration des einmaligen Anmeldens (SSO) von Azure Active Directory mit Citrix Cloud SAML SSO
 
@@ -107,7 +107,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user&quot;></a>Erstellen eines Azure AD-Testbenutzers
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
 In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
 
@@ -122,7 +122,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
     > [!NOTE]
     > Dieser Benutzer muss von einem Active Directory synchronisiert werden. Damit das einmalige Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Citrix Cloud SAML SSO eingerichtet werden.
     
-### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Zuweisen des Azure AD-Testbenutzers
+### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie dem Benutzer den Zugriff auf Citrix Cloud SAML SSO gewähren.
 
@@ -134,13 +134,13 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-## <a name=&quot;configure-citrix-cloud-saml-sso&quot;></a>Konfigurieren von Citrix Cloud SAML SSO
+## <a name="configure-citrix-cloud-saml-sso"></a>Konfigurieren von Citrix Cloud SAML SSO
 
 1. Melden Sie sich bei der Citrix Cloud SAML SSO-Unternehmenswebsite als Administrator an.
 
 1. Navigieren Sie zu dem Menü „Citrix Cloud“ und wählen Sie **Identitäts- und Zugriffsverwaltung** aus.
 
-    ![Konto](./media/citrix-cloud-saml-sso-tutorial/menu.png &quot;Konto") 
+    ![Konto](./media/citrix-cloud-saml-sso-tutorial/menu.png "Konto") 
 
 1. Suchen Sie in dem Abschnitt **Authentifizierung** nach **SAML 2.0** und wählen Sie **Verbinden** aus dem Menü mit den Auslassungspunkten.
 
@@ -176,4 +176,4 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von Citrix Cloud SAML SSO können Sie die Sitzungssteuerung erzwingen, die Ihre vertraulichen Unternehmensdaten in Echtzeit vor der Exfiltration und Infiltration schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von Citrix Cloud SAML SSO können Sie die Sitzungssteuerung erzwingen, die Ihre vertraulichen Unternehmensdaten in Echtzeit vor der Exfiltration und Infiltration schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Defender for Cloud Apps erzwingen.](/cloud-app-security/proxy-deployment-aad)

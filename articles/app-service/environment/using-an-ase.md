@@ -1,18 +1,18 @@
 ---
 title: Verwenden und Verwalten einer Azure App Service-Umgebung
 description: Informationen zum Erstellen, Veröffentlichen und Skalieren von Apps in einer App Service-Umgebung. In diesem Artikel finden Sie alle gängigen Aufgaben.
-author: ccompy
+author: madsd
 ms.assetid: a22450c4-9b8b-41d4-9568-c4646f4cf66b
 ms.topic: article
 ms.date: 8/5/2021
-ms.author: ccompy
+ms.author: madsd
 ms.custom: seodec18
-ms.openlocfilehash: 379122c7446c9a0a2434905d794072f03dd3a10c
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: ab273ab277b91cf76962eff97e5cf3dd10a9b897
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130240583"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132520349"
 ---
 # <a name="use-an-app-service-environment"></a>Verwenden einer App Service-Umgebung
 > [!NOTE]

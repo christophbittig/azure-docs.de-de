@@ -11,19 +11,17 @@ ms.date: 09/27/2021
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: Gesichtserkennung, Gesichtserkennungssoftware, Gesichtsanalyse, Gesichtsabgleich, Gesichtserkennungs-App, Gesichtserkennungssuche nach Bild, Gesichtserkennungssuche
-ms.openlocfilehash: 25e79bb8ab2d37c5b32a6519158cd53d79c1d94b
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 370d6c17dfaf2d3544506e4e2ab4218f1a48d1fa
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131071418"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132370800"
 ---
 # <a name="what-is-the-azure-face-service"></a>Was ist der Azure-Gesichtserkennungsdienst?
 
 > [!WARNING]
 > Am 11. Juni 2020 kündigte Microsoft an, dass keine Technologie zur Gesichtserkennung mehr an die Polizeibehörden in den USA verkauft wird, bis es eine strenge, auf den Menschenrechten basierende Regelung gibt. Daher dürfen Kunden keine Gesichtserkennungsfeatures oder in Azure-Diensten enthaltenen Funktionen (wie Gesichtserkennung oder Video Indexer) verwenden, wenn es sich bei dem Kunden um eine Polizeibehörde in den USA handelt oder wenn der Kunde die Nutzung derartiger Dienste durch oder für eine Polizeibehörde zulässt. Wenn Sie eine neue Gesichtserkennungsressource erstellen, müssen Sie im Azure-Portal bestätigen und sich damit einverstanden erklären, dass Sie den Dienst nicht über oder für eine Polizeibehörde in den USA verwenden, und dass Sie die [RAI-Dokumentation (Responsible AI)](../cognitive-services-apis-create-account-cli.md#prerequisites) gelesen haben und diesen Dienst entsprechend verwenden.
-
-[!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
 Der Azure-Gesichtserkennungsdienst verfügt über KI-Algorithmen zum Ermitteln, Erkennen und Analysieren menschlicher Gesichter in Bildern. Gesichtserkennungssoftware ist in vielen verschiedenen Szenarien wichtig, z. B. Identitätsüberprüfung, berührungslose Zugangskontrolle und Gesichtsunschärfe aus Datenschutzgründen.
 

@@ -1,18 +1,18 @@
 ---
 title: Konfigurieren des Dateiuploads im Azure-Portal | Microsoft Docs
 description: Konfigurieren des IoT Hubs im Azure-Portal zum Aktivieren von Dateiuploads von verbundenen Geräten. Enthält Informationen zum Konfigurieren des Azure-Zielspeicherkontos.
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/20/2021
-ms.author: robinsh
-ms.openlocfilehash: 64d0c6120b5e74b1693f4d7965bb780c62583b53
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.author: lizross
+ms.openlocfilehash: 5871ffdc16fe7c3e66c6915c72198250823d817e
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131015262"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132555279"
 ---
 # <a name="configure-iot-hub-file-uploads-using-the-azure-portal"></a>Konfigurieren des Dateiuploads in IoT Hub im Azure-Portal
 

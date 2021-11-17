@@ -2,13 +2,13 @@
 title: Klassische Agent-basierte Sicherheitswarnungen
 description: Hier erhalten Sie Informationen zur klassischen Version der Sicherheitswarnungen von Defender für IoT sowie zu empfohlenen Abhilfemaßnahmen mithilfe von Features der Defender für IoT-Geräte und des Defender für IoT-Dienstes.
 ms.topic: conceptual
-ms.date: 09/27/2021
-ms.openlocfilehash: c62a0216a68f685244c1e9ef4e14c4487c9f8b3e
-ms.sourcegitcommit: 10029520c69258ad4be29146ffc139ae62ccddc7
+ms.date: 11/09/2021
+ms.openlocfilehash: 27e0cebd04ad2c8fbea6d9f42422840a695a184a
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2021
-ms.locfileid: "129081964"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132284149"
 ---
 # <a name="classic-defender-for-iot-devices-security-alerts"></a>Klassische Sicherheitswarnungen für Defender für IoT-Geräte
 

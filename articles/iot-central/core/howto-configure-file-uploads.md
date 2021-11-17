@@ -7,12 +7,12 @@ ms.author: dobett
 ms.date: 08/23/2021
 ms.topic: how-to
 ms.service: iot-central
-ms.openlocfilehash: 029571010d80aa6249d91f3d678e273cc5a44279
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: 57ee46a9ba0283def1e1c2d3e2fb71bdf44ec08c
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123468004"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132486354"
 ---
 # <a name="upload-files-from-your-devices-to-the-cloud"></a>Hochladen von Dateien von Geräten in die Cloud
 
@@ -52,7 +52,7 @@ Wenn Sie das Hochladen von Gerätedateien in Ihre IoT Central-Anwendung deaktivi
 
 ## <a name="upload-a-file-from-a-device"></a>Hochladen einer Datei von einem Gerät
 
-IoT Central verwendet die IoT Hub-Funktion zum Hochladen von Dateien, um das Hochladen von Dateien von Geräten zu ermöglichen. Beispielcode, der zeigt, wie Sie Dateien von einem Gerät hochladen können, finden Sie im [Beispiel für einen IoT Central-Dateiupload von einem Gerät](/samples/iot-for-all/iotc-file-upload-device/iotc-file-upload-device/).
+IoT Central verwendet die IoT Hub-Funktion zum Hochladen von Dateien, um das Hochladen von Dateien von Geräten zu ermöglichen. Beispielcode, der zeigt, wie Sie Dateien von einem Gerät hochladen können, finden Sie im [Beispiel für einen IoT Central-Dateiupload von einem Gerät](/samples/azure-samples/iot-central-file-upload-device/iotc-file-upload-device/).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

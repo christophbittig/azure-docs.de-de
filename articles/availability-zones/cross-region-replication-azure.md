@@ -8,12 +8,12 @@ ms.date: 10/21/2021
 ms.author: rarco
 ms.reviewer: cynthn
 ms.custom: references_regions
-ms.openlocfilehash: 31b1d0b7c4bcc498ba8490fd4edd5c6d13e76cfb
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: aa074d5f745f9a427fe3f4c197d0cd09de660a84
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131858570"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132325598"
 ---
 # <a name="cross-region-replication-in-azure-business-continuity-and-disaster-recovery"></a>Regionsübergreifende Replikation in Azure: Business Continuity & Disaster Recovery
 
@@ -42,7 +42,7 @@ Die Architektur der regionsübergreifenden Replikation für Ihre Dienste und Dat
 - **Reihenfolge der Regionswiederherstellung**: Bei einem geografischen Ausfall wird die Wiederherstellung einer Region aus jeder aktivierten Regionsgruppe priorisiert. Bei Anwendungen, die über aktivierte Regionsgruppen bereitgestellt werden, wird garantiert, dass eine der Regionen für die Wiederherstellung priorisiert wird. Wenn eine Anwendung regionsübergreifend bereitgestellt wird, von denen eine nicht für die regionsübergreifende Replikation aktiviert ist, kann die Wiederherstellung verzögert werden.
 - **Sequenzielle Aktualisierung**: Geplante Azure-Systemupdates für Ihre aktivierten Regionen werden chronologisch gestaffelt, um Downtime, Auswirkungen von Fehlern und logischen Fehlern im seltenen Fall eines fehlerhaften Updates zu minimieren.
 - **Physische Isolation**: Azure versucht, eine Mindestentfernung von 300 Meilen (483 Kilometer) zwischen Rechenzentren in aktivierten Regionen sicherzustellen, obwohl dies nicht über alle geografischen Regionen hinweg möglich ist. Die Trennung der Rechenzentren verringert die Wahrscheinlichkeit, dass Naturkatastrophen, politische Unruhen, Stromausfälle oder physische Netzwerkausfälle mehrere Regionen betreffen können. Die Isolation unterliegt den Einschränkungen innerhalb eines Gebiets, z. B. der Größe des Gebiets, der Verfügbarkeit von Energieversorgungs- oder Netzwerkinfrastrukturen und Vorschriften.
-- **Datenresidenz**: Regionen befinden sich innerhalb derselben Geografie wie ihre aktivierte Gruppe (mit Ausnahme von „Brasilien, Süden“ und „Singapur“), um die Anforderungen an die Datenresidenz für steuerliche und rechtliche Anforderungen zu erfüllen.
+- **Datenresidenz**: Regionen befinden sich innerhalb derselben Geografie wie ihre aktivierte Gruppe (mit Ausnahme von „Brasilien, Süden“ und „Singapur“), um die Anforderungen an die Datenresidenz für steuerliche und rechtliche Anforderungen zu erfüllen. 
 
 ## <a name="azure-cross-region-replication-pairings-for-all-geographies"></a>Regionsübergreifende Azure-Replikationspaare für alle geografischen Regionen
 
@@ -71,6 +71,7 @@ Die Regionen werden für die regionsübergreifende Replikation auf der Grundlage
 | Nordamerika |USA (Ost) 2 |USA (Mitte) |
 | Nordamerika |USA Nord Mitte |USA Süd Mitte |
 | Nordamerika |USA, Westen 2 |USA, Westen-Mitte |
+| Nordamerika |USA, Westen 3 |East US |
 | Norwegen | Norwegen, Osten | Norwegen, Westen\* |
 | Südafrika | Südafrika, Norden |Südafrika, Westen\* |
 | Schweiz | Schweiz, Norden |Schweiz, Westen\* |

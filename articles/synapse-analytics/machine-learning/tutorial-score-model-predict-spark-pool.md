@@ -10,12 +10,12 @@ ms.date: 11/02/2021
 author: AjAgr
 ms.author: ajagarw
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 1ab5933dfecd5143865423601d119d84d93700ee
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 45338fa4aed963d2172af25fec680e2017c98e88
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131030271"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132549886"
 ---
 # <a name="tutorial-score-machine-learning-models-with-predict-in-serverless-apache-spark-pools"></a>Tutorial: Bewerten von Machine Learning-Modellen mit PREDICT in serverlosen Apache Spark-Pools
 
@@ -56,7 +56,7 @@ Stellen Sie sicher, dass alle Voraussetzungen erfüllt sind, bevor Sie die folge
 
 1. **Importieren von Bibliotheken:** Importieren Sie die folgenden Bibliotheken, um PREDICT in einer Spark-Sitzung zu verwenden:
 
-   ```PYSPARK
+   ```python
       #Import libraries
       from pyspark.sql.functions import col, pandas_udf,udf,lit
       from azureml.core import Workspace
@@ -70,7 +70,7 @@ Stellen Sie sicher, dass alle Voraussetzungen erfüllt sind, bevor Sie die folge
    > [!NOTE]
    > Aktualisieren Sie dieses Skript vor der Ausführung mit dem URI für die ADLS Gen2-Datendatei sowie mit dem Rückgabedatentyp der Modellausgabe und dem ADLS-/AML-URI für die Modelldatei.
 
-   ```PYSPARK
+   ```python
       #Set input data path
       DATA_FILE = "abfss://<filesystemname>@<account name>.dfs.core.windows.net/<file path>"
    
@@ -95,7 +95,7 @@ Stellen Sie sicher, dass alle Voraussetzungen erfüllt sind, bevor Sie die folge
 
    - **Über den Dienstprinzipal:** Sie können die Client-ID und das Geheimnis des Dienstprinzipals direkt für die Authentifizierung beim AML-Arbeitsbereich verwenden. Der Dienstprinzipal muss über Zugriff vom Typ „Mitwirkender“ für den AML-Arbeitsbereich verfügen.
 
-      ```PYSPARK
+      ```python
          #AML workspace authentication using service principal
          AZURE_TENANT_ID = "<tenant_id>"
          AZURE_CLIENT_ID = "<client_id>"
@@ -121,7 +121,7 @@ Stellen Sie sicher, dass alle Voraussetzungen erfüllt sind, bevor Sie die folge
 
    - **Über den verknüpften Dienst:** Sie können den verknüpften Dienst für die Authentifizierung beim AML-Arbeitsbereich verwenden. Der verknüpfte Dienst kann für die Authentifizierung den Dienstprinzipal oder die verwaltete Dienstidentität (Managed Service Identity, MSI) des Synapse-Arbeitsbereichs verwenden. Der Dienstprinzipal bzw. die verwaltete Dienstidentität (Managed Service Identity, MSI) muss über Zugriff vom Typ „Mitwirkender“ für den AML-Arbeitsbereich verfügen.
 
-      ```PYSPARK
+      ```python
          #AML workspace authentication using linked service
          from notebookutils.mssparkutils import azureML
          ws = azureML.getWorkspace("<linked_service_name>") #   "<linked_service_name>" is the linked service name, not AML workspace name. Also, linked   service supports MSI and service principal both
@@ -129,7 +129,7 @@ Stellen Sie sicher, dass alle Voraussetzungen erfüllt sind, bevor Sie die folge
 
 4. **Aktivieren von PREDICT in einer Spark-Sitzung:** Legen Sie die Spark-Konfiguration `spark.synapse.ml.predict.enabled` auf `true` fest, um die Bibliothek zu aktivieren.
 
-   ```PYSPARK
+   ```python
       #Enable SynapseML predict
       spark.conf.set("spark.synapse.ml.predict.enabled","true")
    ```
@@ -139,7 +139,7 @@ Stellen Sie sicher, dass alle Voraussetzungen erfüllt sind, bevor Sie die folge
    > [!NOTE]
    > Aktualisieren Sie den Modellalias und den Modell-URI in diesem Skript, bevor Sie es ausführen.
 
-   ```PYSPARK
+   ```python
       #Bind model within Spark session
        model = pcontext.bind_model(
         return_types=RETURN_TYPES, 
@@ -155,7 +155,7 @@ Stellen Sie sicher, dass alle Voraussetzungen erfüllt sind, bevor Sie die folge
    > [!NOTE]
    > Aktualisieren Sie den Ansichtsnamen in diesem Skript, bevor Sie es ausführen.
 
-   ```PYSPARK
+   ```python
       #Read data from ADLS
       df = spark.read \
        .format("csv") \
@@ -170,7 +170,7 @@ Stellen Sie sicher, dass alle Voraussetzungen erfüllt sind, bevor Sie die folge
    > [!NOTE]
    > Aktualisieren Sie den Modellaliasnamen, den Ansichtsnamen und den Namen der kommagetrennten Modelleingabespalte in diesem Skript, bevor Sie es ausführen. Kommagetrennte Modelleingabespalten entsprechen den Spalten, die beim Trainieren des Modells verwendet werden.
 
-   ```PYSPARK
+   ```python
       #Call PREDICT using Spark SQL API
    
       predictions = spark.sql(
@@ -182,7 +182,7 @@ Stellen Sie sicher, dass alle Voraussetzungen erfüllt sind, bevor Sie die folge
                  ).show()
    ```
 
-   ```PYSPARK
+   ```python
       #Call PREDICT using user defined function (UDF)
    
       df = df[<comma_separated_model_input_column_name>] # for ex. df["empid","empname"]
@@ -190,7 +190,7 @@ Stellen Sie sicher, dass alle Voraussetzungen erfüllt sind, bevor Sie die folge
       df.withColumn("PREDICT",model.udf(lit("<random_alias_name>"),*df.columns)).show()
    ```
 
-   ```PYSPARK
+   ```python
       #Call PREDICT using Transformer API
       
       columns = [<comma_separated_model_input_column_name>] # for ex. df["empid","empname"]
@@ -204,7 +204,7 @@ Stellen Sie sicher, dass alle Voraussetzungen erfüllt sind, bevor Sie die folge
 
 1. Importieren Sie Bibliotheken, und lesen Sie das Trainingsdataset aus ADLS.
 
-   ```PYSPARK
+   ```python
       # Import libraries and read training dataset from ADLS
       
       import fsspec
@@ -222,7 +222,7 @@ Stellen Sie sicher, dass alle Voraussetzungen erfüllt sind, bevor Sie die folge
 
 1. Trainieren Sie das Modell, und generieren Sie MLflow-Artefakte.
 
-   ```PYSPARK
+   ```python
       # Train model and generate mlflow artifacts
    
       import os
@@ -314,7 +314,7 @@ Stellen Sie sicher, dass alle Voraussetzungen erfüllt sind, bevor Sie die folge
 
 1. Speichern Sie MLflow-Artefakte in ADLS, oder registrieren Sie sie in AML.
 
-   ```PYSPARK
+   ```python
       # Store model MLFLOW artifacts in ADLS
       
       STORAGE_PATH = 'abfs[s]://<container>/<path-to-store-folder>'
@@ -333,7 +333,7 @@ Stellen Sie sicher, dass alle Voraussetzungen erfüllt sind, bevor Sie die folge
           recursive=True, overwrite=True)
    ```
 
-   ```PYSPARK
+   ```python
       # Register model MLFLOW artifacts in AML
       
       from azureml.core import Workspace, Model
@@ -369,7 +369,7 @@ Stellen Sie sicher, dass alle Voraussetzungen erfüllt sind, bevor Sie die folge
 
 1. Legen Sie erforderliche Parameter mithilfe von Variablen fest.
 
-   ```PYSPARK
+   ```python
       # If using ADLS uploaded model
    
       import pandas as pd
@@ -384,7 +384,7 @@ Stellen Sie sicher, dass alle Voraussetzungen erfüllt sind, bevor Sie die folge
       RUNTIME = "mlflow"
    ```
 
-   ```PYSPARK
+   ```python
       # If using AML registered model
    
       from pyspark.sql.functions import col, pandas_udf,udf,lit
@@ -401,13 +401,13 @@ Stellen Sie sicher, dass alle Voraussetzungen erfüllt sind, bevor Sie die folge
 
 1. Aktivieren Sie die SynapseML-PREDICT-Funktion in der Spark-Sitzung.
 
-   ```PYSPARK
+   ```python
       spark.conf.set("spark.synapse.ml.predict.enabled","true")
    ```
 
 1. Binden Sie das Modell in der Spark-Sitzung.
 
-   ```PYSPARK
+   ```python
       # If using ADLS uploaded model
    
       model = pcontext.bind_model(
@@ -418,7 +418,7 @@ Stellen Sie sicher, dass alle Voraussetzungen erfüllt sind, bevor Sie die folge
        ).register()
    ```
 
-   ```PYSPARK
+   ```python
       # If using AML registered model
    
       model = pcontext.bind_model(
@@ -432,7 +432,7 @@ Stellen Sie sicher, dass alle Voraussetzungen erfüllt sind, bevor Sie die folge
 
 1. Laden Sie Testdaten aus ADLS.
 
-   ```PYSPARK
+   ```python
       # Load data from ADLS
    
       df = spark.read \
@@ -447,7 +447,7 @@ Stellen Sie sicher, dass alle Voraussetzungen erfüllt sind, bevor Sie die folge
 
 1. Rufen Sie PREDICT auf, um die Bewertung zu generieren.
 
-   ```PYSPARK
+   ```python
       # Call PREDICT
       
       predictions = spark.sql(

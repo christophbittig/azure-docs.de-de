@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 11/02/2021
 ms.author: aahi
 ms.custom: language-service-key-phrase, ignite-fall-2021
-ms.openlocfilehash: efa3506540a769c691d8a6d86a4bf2adbfe52dbc
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ae7ac89fd1607d49c61421b97586a85d9d7ec945
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131100300"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132488242"
 ---
 # <a name="what-is-key-phrase-extraction-in-azure-cognitive-service-for-language"></a>Was ist die Schlüsselbegriffserkennung in Azure Cognitive Service für Sprache?
 
@@ -35,7 +35,7 @@ Verwenden Sie den verfügbaren Docker-Container, um [dieses Feature lokal bereit
 
 ## <a name="responsible-ai"></a>Verantwortungsbewusste künstliche Intelligenz 
 
-Ein KI-System umfasst nicht nur die Technologie, sondern auch die Personen, die das System verwenden, die davon betroffenen Personen, und die Umgebung, in der es bereitgestellt wird. Weitere Informationen zur verantwortungsbewussten Verwendung und Bereitstellung von KI in Ihren Systemen finden Sie im [Transparenzhinweis für die Schlüsselbegriffserkennung](/legal/cognitive-services/language-service/transparency-note-key-phrase-detection?context=/azure/cognitive-services/language-service/context/context). Weitere Informationen finden Sie auch in den folgenden Artikeln:
+Ein KI-System umfasst nicht nur die Technologie, sondern auch die Personen, die das System verwenden, die davon betroffenen Personen, und die Umgebung, in der es bereitgestellt wird. Weitere Informationen zur verantwortungsbewussten Verwendung und Bereitstellung von KI in Ihren Systemen finden Sie im [Transparenzhinweis für die Schlüsselbegriffserkennung](/legal/cognitive-services/language-service/transparency-note-key-phrase-extraction?context=/azure/cognitive-services/language-service/context/context). Weitere Informationen finden Sie auch in den folgenden Artikeln:
 
 [!INCLUDE [Responsible AI links](../includes/overview-responsible-ai-links.md)]
 

@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/02/2021
-ms.openlocfilehash: 6d6e5ca910bfd24a8d10952d92441fcc7fe6fcfa
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: c5b4f6611dc5ad5a514eaf1affd0517c14fcd353
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122339969"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132337110"
 ---
 # <a name="comparison-chart---azure-database-for-postgresql-single-server-and-flexible-server"></a>Vergleichsdiagramm: Azure Database for PostgreSQL – Einzelserver und Flexibler Server
 
@@ -110,7 +110,7 @@ In der folgenden Tabelle werden allgemeine Features und Funktionen von Einzelser
 | **Weitere Features** | | |
 | Kundenseitig verwalteter Schlüssel (BYOK) | Ja | Nein |
 | Alerts | Ja | Ja |
-| Azure Defender | Ja | Nein |
+| Microsoft Defender für Cloud | Ja | Nein |
 | Ressourcenintegrität | Ja | Nein |
 | Dienstintegrität | Ja | Ja |
 | Einblicke in die Leistung (iPerf) | Ja | Ja (Vorschau) |

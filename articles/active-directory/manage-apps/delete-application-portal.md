@@ -12,14 +12,14 @@ ms.workload: identity
 ms.date: 09/22/2021
 ms.author: davidmu
 ms.reviewer: ergleenl
-ms.openlocfilehash: 16bc055ed2b47ee5c212fa26387599a8d4ada7a8
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: c2ee107815186ac7877056ac8cec4954d30de747
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129058196"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132547524"
 ---
-# <a name="quickstart-delete-an-enterprise-application-in-azure-active-directory"></a>Schnellstart: Löschen einer Unternehmensanwendung in Azure Active Directory
+# <a name="quickstart-delete-an-enterprise-application"></a>Schnellstart: Löschen einer Unternehmensanwendung
 
 In diesem Schnellstart verwenden Sie Azure Active Directory Admin Center, um eine Unternehmensanwendung zu löschen, die Ihrem Azure Active Directory-Mandanten (Azure AD) hinzugefügt wurde.
 

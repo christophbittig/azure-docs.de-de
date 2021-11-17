@@ -1,18 +1,18 @@
 ---
 title: Konfigurieren des Dateiuploads in IoT Hub mit der Azure CLI | Microsoft Docs
 description: Erfahren Sie, wie Sie Dateiuploads in Azure IoT Hub mithilfe der plattformübergreifenden Azure CLI konfigurieren.
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/20/2021
-ms.author: robinsh
-ms.openlocfilehash: ecaae482a0a577efd480610f25d0186502dbeb15
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.author: lizross
+ms.openlocfilehash: c3aa2d496151d8c9d9f6ef5acfea6dee55548b2b
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355289"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132555601"
 ---
 # <a name="configure-iot-hub-file-uploads-using-azure-cli"></a>Konfigurieren von IoT Hub-Dateiuploads mit der Azure CLI
 

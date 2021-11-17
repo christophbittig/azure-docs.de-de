@@ -1,20 +1,20 @@
 ---
 title: Erstellen mit SGX-Enclaves - Virtuelle Maschinen in Azure
 description: Hier erfahren Sie mehr über Intel SGX-Hardware zur Ermöglichung Ihrer Confidential Computing-Workloads.
-author: JenCook
+author: stempesta
 ms.service: virtual-machines
 ms.subservice: workloads
 ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 11/01/2021
-ms.author: JenCook
+ms.author: stempesta
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 0870c0cc762078ec38e978c8dab4815ff37741a4
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 3ac8c9ddced2fd37c829277c925b8953e7c71151
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131067601"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132310013"
 ---
 # <a name="build-with-sgx-enclaves"></a>Erstellen mit SGX-Enclaves 
 

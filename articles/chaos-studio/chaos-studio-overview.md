@@ -4,20 +4,22 @@ description: Hier finden Sie grundlegende Informationen zu Azure Chaos Studio. D
 services: chaos-studio
 author: johnkemnetz
 ms.topic: overview
-ms.date: 11/01/2021
+ms.date: 11/11/2021
 ms.author: johnkem
 ms.service: chaos-studio
 ms.custom: template-overview,ignite-fall-2021
-ms.openlocfilehash: 3612a72b13ded7eace24c56f70c722e6cf2270d7
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 4df530e20733e5f24db930e88bb30894293416a7
+ms.sourcegitcommit: e1037fa0082931f3f0039b9a2761861b632e986d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131030284"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132399331"
 ---
 # <a name="what-is-azure-chaos-studio-preview"></a>Was ist Azure Chaos Studio (Vorschauversion)?
 
 Azure Chaos Studio ist ein verwalteter Dienst zur Verbesserung der Resilienz durch Einschleusung von Fehlern in Ihre Azure-Anwendungen. Die Durchführung kontrollierter Fehlereinschleusungsexperimente (sogenanntes Chaos Engineering) trägt dazu bei, die Resilienz für reale Vorfälle wie etwa Regionsausfälle oder Anwendungsfehler, die auf einem virtuellen Computer eine hohe CPU-Auslastung verursachen, zu messen, nachzuvollziehen und zu verbessern.
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Videos/Azure-Chaos-Studio-Curious-to-control-chaos/player]
 
 ## <a name="why-should-i-use-chaos-studio"></a>Gründe für die Verwendung von Chaos Studio
 
@@ -52,6 +54,6 @@ Wenn Sie ein Chaos-Experiment erstellen, definieren Sie einen einzelnen Schritt 
 Ein Chaos-Experiment ist eine Azure-Ressource, die sich in einem Abonnement und in einer Ressourcengruppe befindet. Sie können das Azure-Portal oder die Chaos Studio-REST-API verwenden, um ein Experiment zu erstellen, zu aktualisieren, zu starten, abzubrechen und dessen Status anzuzeigen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Nutzen Sie die folgenden Links, um mit der Erstellung und Ausführung von Chaos-Experimenten zu beginnen und die Anwendungsresilienz mit Chaos Studio zu verbessern:
-- [Erstellen und Ausführen des ersten Experiments](chaos-studio-tutorial-service-direct.md)
+Nutzen Sie die folgenden Links, um mit der Erstellung und Ausführung von Chaos-Experimenten zu beginnen und die Anwendungsresilienz mit Chaos Studio zu verbessern.
+- [Erstellen und Ausführen des ersten Experiments](chaos-studio-tutorial-service-direct-portal.md)
 - [Grundlegendes zu Chaos Engineering und Resilienz](chaos-studio-chaos-engineering-overview.md)

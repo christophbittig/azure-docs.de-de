@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 07/10/2020
 author: manishmsfte
 ms.author: mansha
-ms.openlocfilehash: 0fc2b11f924a5ae50cf1f6ae96f0ed82ab1813ad
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 41dfcdf3a30084eafebcda70a4385508a432a3c0
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131041069"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132279517"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Schnellstart: Erstellen, Abfragen und Durchlaufen einer Azure Cosmos DB-Graphdatenbank mithilfe der Gremlin-Konsole
 [!INCLUDE[appliesto-gremlin-api](../includes/appliesto-gremlin-api.md)]
@@ -77,7 +77,7 @@ Außerdem müssen Sie die [Gremlin-Konsole](https://tinkerpop.apache.org/downloa
    ```yaml
    hosts: [your_database_server.gremlin.cosmos.azure.com] 
    port: 443
-   username: /dbs/your_database_account/colls/your_collection
+   username: /dbs/your_database/colls/your_collection
    password: your_primary_key
    connectionPool: {
      enableSsl: true
@@ -103,7 +103,7 @@ Prima. Damit ist die Einrichtung abgeschlossen. Jetzt können Sie mit dem Ausfü
 
 Probieren Sie einen einfachen count()-Befehl aus. Geben Sie an der Eingabeaufforderung in der Konsole Folgendes ein:
 
-```java
+```console
 g.V().count()
 ```
 
@@ -113,7 +113,7 @@ Fügen Sie zunächst fünf Scheitelpunkte für Personen hinzu: *Thomas*, *Mary K
 
 Eingabe (Thomas):
 
-```java
+```console
 g.addV('person').property('firstName', 'Thomas').property('lastName', 'Andersen').property('age', 44).property('userid', 1).property('pk', 'pk')
 ```
 
@@ -125,7 +125,7 @@ Ausgabe:
 
 Eingabe (Mary Kay):
 
-```java
+```console 
 g.addV('person').property('firstName', 'Mary Kay').property('lastName', 'Andersen').property('age', 39).property('userid', 2).property('pk', 'pk')
 
 ```
@@ -139,7 +139,7 @@ Ausgabe:
 
 Eingabe (Robin):
 
-```java
+```console 
 g.addV('person').property('firstName', 'Robin').property('lastName', 'Wakefield').property('userid', 3).property('pk', 'pk')
 ```
 
@@ -151,7 +151,7 @@ Ausgabe:
 
 Eingabe (Ben):
 
-```java
+```console 
 g.addV('person').property('firstName', 'Ben').property('lastName', 'Miller').property('userid', 4).property('pk', 'pk')
 
 ```
@@ -164,7 +164,7 @@ Ausgabe:
 
 Eingabe (Jack):
 
-```java
+```console
 g.addV('person').property('firstName', 'Jack').property('lastName', 'Connor').property('userid', 5).property('pk', 'pk')
 ```
 
@@ -179,7 +179,7 @@ Fügen Sie als Nächstes Kanten für die Personenbeziehungen hinzu.
 
 Eingabe (Thomas -> Mary Kay):
 
-```java
+```console
 g.V().hasLabel('person').has('firstName', 'Thomas').addE('knows').to(g.V().hasLabel('person').has('firstName', 'Mary Kay'))
 ```
 
@@ -191,7 +191,7 @@ Ausgabe:
 
 Eingabe (Thomas -> Robin):
 
-```java
+```console
 g.V().hasLabel('person').has('firstName', 'Thomas').addE('knows').to(g.V().hasLabel('person').has('firstName', 'Robin'))
 ```
 
@@ -203,7 +203,7 @@ Ausgabe:
 
 Eingabe (Robin -> Ben):
 
-```java
+```console
 g.V().hasLabel('person').has('firstName', 'Robin').addE('knows').to(g.V().hasLabel('person').has('firstName', 'Ben'))
 ```
 
@@ -218,7 +218,7 @@ Ausgabe:
 Aktualisieren Sie den Scheitelpunkt *Thomas* mit dem neuen Alter *45*.
 
 Eingabe:
-```java
+```console
 g.V().hasLabel('person').has('firstName', 'Thomas').property('age', 45)
 ```
 Ausgabe:
@@ -235,7 +235,7 @@ Führen Sie zunächst eine Abfrage mit einem Filter durch, um nur Personen zurü
 
 Eingabe (Filterabfrage):
 
-```java
+```console
 g.V().hasLabel('person').has('age', gt(40))
 ```
 
@@ -249,7 +249,7 @@ Projizieren Sie als Nächstes die Vornamen aller Personen, die älter als 40 sin
 
 Eingabe (Filter + Abfrage zur Projektion):
 
-```java
+```console 
 g.V().hasLabel('person').has('age', gt(40)).values('firstName')
 ```
 
@@ -265,7 +265,7 @@ Traversieren Sie den Graph, um alle Freunde von Thomas zurückzugeben.
 
 Eingabe (Freunde von Thomas):
 
-```java
+```console
 g.V().hasLabel('person').has('firstName', 'Thomas').outE('knows').inV().hasLabel('person')
 ```
 
@@ -280,7 +280,7 @@ Gehen Sie dann zur nächsten Scheitelpunktebene über. Traversieren Sie den Grap
 
 Eingabe (Freunde von Freunden von Thomas):
 
-```java
+```console
 g.V().hasLabel('person').has('firstName', 'Thomas').outE('knows').inV().hasLabel('person').outE('knows').inV().hasLabel('person')
 ```
 Ausgabe:
@@ -295,7 +295,7 @@ Löschen Sie jetzt einen Scheitelpunkt aus der Graphdatenbank.
 
 Eingabe (Löschen des Scheitelpunkts „Jack“):
 
-```java
+```console 
 g.V().hasLabel('person').has('firstName', 'Jack').drop()
 ```
 
@@ -305,7 +305,7 @@ Löschen Sie zum Schluss alle Scheitelpunkte und Kanten aus der Datenbank.
 
 Eingabe:
 
-```java
+```console
 g.E().drop()
 g.V().drop()
 ```

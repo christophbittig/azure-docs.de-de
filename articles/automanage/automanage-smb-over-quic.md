@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 11/1/2021
 ms.author: jol
-ms.openlocfilehash: 6445f26494394e551795390f29d16b59fca877d7
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 2246b54b6831d0e88581c80aedc4e39388c6f377
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131511390"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132327384"
 ---
 # <a name="smb-over-quic-with-automanage-machine-best-practices"></a>SMB über QUIC mit Azure Automanage bewährten Methoden für Computer
 
@@ -24,7 +24,7 @@ Darüber hinaus ist SMB über QUIC mit Automanage bewährten Methoden für Compu
 ## <a name="how-to-get-started"></a>Erste Schritte
 
 > [!NOTE]
-> Informationen zu den Voraussetzungen für die Verwendung der Automanage bewährten Methoden für Computer finden Sie unter [Aktivieren auf virtuellen Computern im Azure-Portal](quick-create-virtual-machines-portal.md). 
+> Informationen zu den Voraussetzungen für die Verwendung der Automanage bewährten Methoden für Computer finden Sie unter [Aktivieren auf virtuellen Computern im Azure-Portal](quick-create-virtual-machines-portal.md).
 
 > [!NOTE]
 > Während der Vorschauphase können Sie über [diesen Link](https://aka.ms/automanage-ws-portal-preview) im Azure-Portal beginnen.
@@ -34,10 +34,12 @@ Darüber hinaus ist SMB über QUIC mit Automanage bewährten Methoden für Compu
 Führen Sie die folgenden Schritte aus, um die Automanage bewährten Methoden für SMB über QUIC auf einem virtuellen Computer zu aktivieren:
 
 1. Melden Sie sich beim Azure-Portal über den obigen Vorschaulink an.
+
 2. Erstellen Sie einen Azure-Virtuellen Computer mit dem _Windows Server 2022 Datacenter: Azure Edition_ Bild, um die Automanage für Windows Server-Funktionen einschließlich SMB über QUIC zu erhalten.
+
 3. Wählen Sie auf der Registerkarte **Verwaltung** für die Azure Automanage Umgebung entweder **Dev/Test** oder **Produktion** aus, um die Automanage bewährten Methoden für Computer zu aktivieren.
 
-:::image type="content" source="media\automanage-smb-over-quic\create-vm-automanage-setting.png" alt-text="Aktivieren Sie Automanage beim Erstellen eines virtuellen Computers.":::
+    :::image type="content" source="media\automanage-smb-over-quic\create-vm-automanage-setting.png" alt-text="Aktivieren Sie Automanage beim Erstellen eines virtuellen Computers.":::
 
 4. Konfigurieren Sie alle zusätzlichen Einstellungen nach Bedarf, und erstellen Sie den virtuellen Computer.
 
@@ -48,7 +50,7 @@ Sie können die Automanage bewährten Methoden auch für einen virtuellen Comput
 1. Navigieren Sie zu dem virtuellen Computer, den Sie zuvor erstellt haben.
 2. Wählen Sie das Automanage Menü aus, dann wählen Sie entweder die Umgebung  **Dev/Test** oder **Produktion** aus, und klicken Sie dann **auf Aktivieren**.
 
-:::image type="content" source="media\automanage-smb-over-quic\vm-enable-automanage.png" alt-text="Aktivieren von Automanage einen vorhandenen virtuellen Computer.":::
+    :::image type="content" source="media\automanage-smb-over-quic\vm-enable-automanage.png" alt-text="Aktivieren von Automanage einen vorhandenen virtuellen Computer.":::
 
 ## <a name="viewing-automanage-best-practice-compliance"></a>Anzeigen der Konformität von Automanage bewährten Methoden
 

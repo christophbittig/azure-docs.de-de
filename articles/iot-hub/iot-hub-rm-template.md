@@ -1,20 +1,20 @@
 ---
 title: Erstellen einer Azure IoT Hub-Instanz mithilfe einer Vorlage (.NET) | Microsoft Docs
 description: Erfahren Sie, wie Sie mithilfe einer Azure Resource Manager-Vorlage und einem C#-Programm eine IoT Hub-Instanz erstellen.
-author: robinsh
-ms.author: robinsh
+author: eross-msft
+ms.author: lizross
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2b54ba1314cbb95b2bc56c47ae39a92ff7252a79
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: d7766dc41a47a4cb21fb76c1552c6689d84ee3ea
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122349592"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132549381"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-net"></a>Erstellen einer IoT Hub-Instanz mithilfe einer Azure Resource Manager-Vorlage (.NET)
 

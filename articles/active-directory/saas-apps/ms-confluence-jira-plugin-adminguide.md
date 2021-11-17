@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2018
 ms.author: jeedes
-ms.openlocfilehash: 8e73ea3650e631bed277ab95092b714eef7596d4
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: 9716b9d7fc89ba789ef44f44bafbd64340256da1
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "94359156"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132300335"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Atlassian Jira und Confluence – Administratorhandbuch für Azure Active Directory
 
@@ -159,7 +159,7 @@ Die folgende Abbildung zeigt den Konfigurationsbildschirm in JIRA und Confluence
 
 * **„App nicht gefunden“-Fehlermeldung in Azure AD**: Stellen Sie fest, ob die entsprechende URL in Azure AD der App zugeordnet ist.
 
-* **Benötigen Sie Support?** : Wenden Sie sich an das [Azure AD-SSO-Integrationsteam](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). Das Team antwortet innerhalb von 24 bis 48 Geschäftsstunden.
+* **Benötigen Sie Support?** : Wenden Sie sich an das [Azure AD-SSO-Integrationsteam](mailto:SaaSApplicationIntegrations@service.microsoft.com). Das Team antwortet innerhalb von 24 bis 48 Geschäftsstunden.
 
   Sie können auch bei Microsoft ein Supportticket über den Azure-Portalkanal erstellen.
 
@@ -211,7 +211,7 @@ Es ist kein Neustart erforderlich. Sie können das Plug-In sofort benutzen.
 
 ### <a name="how-do-i-get-support-for-the-plug-in"></a>Wie erhalte ich Support für das Plug-In?
 
-Setzen Sie sich mit dem [Azure AD-SSO-Integrationsteam](<mailto:SaaSApplicationIntegrations@service.microsoft.com>) in Verbindung, um Support für dieses Plug-In zu erhalten. Das Team antwortet innerhalb von 24 bis 48 Geschäftsstunden.
+Setzen Sie sich mit dem [Azure AD-SSO-Integrationsteam](mailto:SaaSApplicationIntegrations@service.microsoft.com) in Verbindung, um Support für dieses Plug-In zu erhalten. Das Team antwortet innerhalb von 24 bis 48 Geschäftsstunden.
 
 Sie können auch bei Microsoft ein Supportticket über den Azure-Portalkanal erstellen.
 

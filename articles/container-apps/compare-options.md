@@ -8,20 +8,20 @@ ms.topic: quickstart
 ms.date: 11/03/2021
 ms.author: jehollan
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 416acf3e22613f0bffdd0a0e63cad156a2dd891d
-ms.sourcegitcommit: 4cd97e7c960f34cb3f248a0f384956174cdaf19f
+ms.openlocfilehash: 0ac05794b42e91060e604a9d6921547150eb6706
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "132028494"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132309994"
 ---
 # <a name="comparing-container-apps-with-other-azure-container-options"></a>Vergleich von Container-Apps mit anderen Azure-Containeroptionen
 
 Es stehen zahlreiche Optionen für Teams zur Verfügung, um cloudnative und containerisierte Anwendungen in Azure zu entwickeln und bereitzustellen. Dieser Artikel hilft Ihnen zu verstehen, welche Szenarien und Anwendungsfälle sich am besten für Azure Container Apps eignen und wie sie im Vergleich zu anderen Containeroptionen in Azure abschneiden, darunter:  
-- [Azure Container Instances](#azure-container-instances)
 - [Azure App Service](#azure-app-service)
-- [Azure-Funktionen](#azure-functions)
+- [Azure Container Instances](#azure-container-instances)
 - [Azure Kubernetes Service](#azure-kubernetes-service)
+- [Azure-Funktionen](#azure-functions)
 - [Azure Spring Cloud](#azure-spring-cloud)
 
 Es gibt keine perfekte Lösung für jeden Anwendungsfall und jedes Team. Die folgenden Erläuterungen bieten allgemeine Hinweise und Empfehlungen als Ausgangspunkt, um die beste Lösung für Ihr Team und Ihre Anforderungen zu finden.
@@ -40,7 +40,6 @@ Mit Azure Container Apps können Sie serverlose Microservices basierend auf Cont
 * Unterstützung für Apps im Kubernetes-Stil und Microservices mit Features wie [Dienstermittlung](connect-apps.md) und [Datenverkehrstrennung](revisions.md)
 * Ermöglicht ereignisgesteuerte Anwendungsarchitekturen durch Unterstützung einer Skalierung auf Grundlage des Datenverkehrs und des Abrufs von [Ereignisquellen wie z. B. Warteschlangen](scale-app.md), einschließlich [Skalierung auf 0](scale-app.md)
 * Unterstützung von zeitintensiven Prozessen und Fähigkeit zur Ausführung von [Hintergrundaufgaben](background-processing.md)
-* Alle Container Apps-Instanzen sind Kubernetes-kompatibel
 
 Azure Container Apps bietet keinen direkten Zugriff auf die zugrunde liegenden Kubernetes-APIs. Wenn Sie Zugriff auf die Kubernetes-APIs und die Steuerungsebene benötigen, sollten Sie [Azure Kubernetes Service](../aks/intro-kubernetes.md) verwenden. Wenn Sie jedoch Anwendungen im Kubernetes-Stil erstellen möchten und keinen direkten Zugriff auf sämtliche nativen Kubernetes-APIs und die Clusterverwaltung benötigen, bietet Container Apps eine vollständig verwaltete Benutzeroberfläche basierend auf Best Practices. Aus diesen Gründen ziehen es viele Teams vor, containerbasierte Microservices mit Azure Container Apps zu entwickeln.
 

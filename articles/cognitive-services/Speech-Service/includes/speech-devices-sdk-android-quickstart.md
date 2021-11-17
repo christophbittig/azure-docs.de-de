@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: eur
-ms.openlocfilehash: a0abd4162e92564bf35eb65da89dfa1758f160bb
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 1de2eef939fcb4e6de7915275c293c2f60665bb7
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131509759"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132252423"
 ---
 In dieser Schnellstartanleitung erfahren Sie, wie Sie das Speech Devices SDK für Android verwenden, um ein sprachaktiviertes Produkt zu erstellen oder es als Gerät für die [Unterhaltungstranskription](../conversation-transcription.md) zu verwenden.
 
@@ -96,7 +96,7 @@ Erstellen und installieren Sie zum Überprüfen des Setups Ihres Development Kit
     Aktualisieren Sie **build.gradle(Module:app)** , indem Sie dem Abschnitt „dependencies“ die folgende Zeile hinzufügen: 
     
     ```xml
-    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.17.0'
+    implementation'com.microsoft.cognitiveservices.speech:client-sdk:1.19.0'
     ```
     
 1. Fügen Sie dem Quellcode den Abonnementschlüssel für Ihre Spracherkennung hinzu. Wenn Sie die Absichtserkennung ausprobieren möchten, fügen Sie auch Ihren Abonnementschlüssel für den [Language Understanding Intelligent Service (LUIS)](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/) und die Anwendungs-ID hinzu.

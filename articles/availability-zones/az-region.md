@@ -8,12 +8,12 @@ ms.date: 10/01/2021
 ms.author: rarco
 ms.reviewer: cynthn
 ms.custom: references_regions
-ms.openlocfilehash: 58d483c56f27dd346c672f2ec2013dce934993ee
-ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
+ms.openlocfilehash: 2c039bb9cabdd1d4786d4f0d76d591887781e2b5
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131866523"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132302119"
 ---
 # <a name="azure-services-that-support-availability-zones"></a>Azure-Dienste, die Verfügbarkeitszonen unterstützen
 
@@ -180,7 +180,7 @@ Im Produktkatalog werden ständig verfügbare Dienste als "nicht regionale" Dien
 | Azure Blueprint  | ![Ein Symbol, das anzeigt, dass dieser Dienst immer verfügbar ist.](media/icon-always-available.svg) |
 | Azure Bot Services  | ![Ein Symbol, das anzeigt, dass dieser Dienst immer verfügbar ist.](media/icon-always-available.svg) |
 | Azure Front Door  | ![Ein Symbol, das anzeigt, dass dieser Dienst immer verfügbar ist.](media/icon-always-available.svg) |
-| Azure Defender für IoT  | ![Ein Symbol, das anzeigt, dass dieser Dienst immer verfügbar ist.](media/icon-always-available.svg) |
+| Microsoft Defender für IoT  | ![Ein Symbol, das anzeigt, dass dieser Dienst immer verfügbar ist.](media/icon-always-available.svg) |
 | Azure Front Door  | ![Ein Symbol, das anzeigt, dass dieser Dienst immer verfügbar ist.](media/icon-always-available.svg) |
 | Azure Information Protection  | ![Ein Symbol, das anzeigt, dass dieser Dienst immer verfügbar ist.](media/icon-always-available.svg) |
 | Azure Lighthouse  | ![Ein Symbol, das anzeigt, dass dieser Dienst immer verfügbar ist.](media/icon-always-available.svg) |
@@ -189,7 +189,7 @@ Im Produktkatalog werden ständig verfügbare Dienste als "nicht regionale" Dien
 | Azure Performance Diagnostics  | ![Ein Symbol, das anzeigt, dass dieser Dienst immer verfügbar ist.](media/icon-always-available.svg) |
 | Azure Policy  | ![Ein Symbol, das anzeigt, dass dieser Dienst immer verfügbar ist.](media/icon-always-available.svg) |
 | Azure Resource Graph  | ![Ein Symbol, das anzeigt, dass dieser Dienst immer verfügbar ist.](media/icon-always-available.svg) |
-| Azure Sentinel  | ![Ein Symbol, das anzeigt, dass dieser Dienst immer verfügbar ist.](media/icon-always-available.svg) |
+| Microsoft Sentinel  | ![Ein Symbol, das anzeigt, dass dieser Dienst immer verfügbar ist.](media/icon-always-available.svg) |
 | Azure Stack  | ![Ein Symbol, das anzeigt, dass dieser Dienst immer verfügbar ist.](media/icon-always-available.svg) |
 | Azure Stack Edge  | ![Ein Symbol, das anzeigt, dass dieser Dienst immer verfügbar ist.](media/icon-always-available.svg) |
 | Azure Cloud Shell  | ![Ein Symbol, das anzeigt, dass dieser Dienst immer verfügbar ist.](media/icon-always-available.svg) |
@@ -199,9 +199,9 @@ Im Produktkatalog werden ständig verfügbare Dienste als "nicht regionale" Dien
 | Microsoft Intune  | ![Ein Symbol, das anzeigt, dass dieser Dienst immer verfügbar ist.](media/icon-always-available.svg) |
 | Azure Peering Service  | ![Ein Symbol, das anzeigt, dass dieser Dienst immer verfügbar ist.](media/icon-always-available.svg) |
 | Azure-Portal  | ![Ein Symbol, das anzeigt, dass dieser Dienst immer verfügbar ist.](media/icon-always-available.svg) |
-| Microsoft Cloud App Security  | ![Ein Symbol, das anzeigt, dass dieser Dienst immer verfügbar ist.](media/icon-always-available.svg) |
+| Microsoft Defender für Cloud-Apps  | ![Ein Symbol, das anzeigt, dass dieser Dienst immer verfügbar ist.](media/icon-always-available.svg) |
 | Microsoft Graph  | ![Ein Symbol, das anzeigt, dass dieser Dienst immer verfügbar ist.](media/icon-always-available.svg) |
-| Azure Security Center  | ![Ein Symbol, das anzeigt, dass dieser Dienst immer verfügbar ist.](media/icon-always-available.svg) |
+| Microsoft Defender für Cloud  | ![Ein Symbol, das anzeigt, dass dieser Dienst immer verfügbar ist.](media/icon-always-available.svg) |
 | Azure Traffic Manager  | ![Ein Symbol, das anzeigt, dass dieser Dienst immer verfügbar ist.](media/icon-always-available.svg) |
 
 Eine Liste der Azure-Dienste, die Verfügbarkeitszonen nach Azure-Regionen unterstützen, finden Sie in der Dokumentation [Verfügbarkeitszonen](az-overview.md).

@@ -4,14 +4,14 @@ description: Übersicht über die Einrichtung mehrerer Azure Web PubSub-Dienstin
 author: vicancy
 ms.service: azure-web-pubsub
 ms.topic: conceptual
-ms.date: 10/13/2021
+ms.date: 11/08/2021
 ms.author: lianwei
-ms.openlocfilehash: 3c14294a2a7d2ff2cb2f1f362b0474353c86b7ca
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 14a6661196f7bfa16d3611137d1517c41f21b00d
+ms.sourcegitcommit: 512e6048e9c5a8c9648be6cffe1f3482d6895f24
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131431007"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132156526"
 ---
 # <a name="resiliency-and-disaster-recovery-in-azure-web-pubsub-service"></a>Resilienz und Notfallwiederherstellung im Azure Web PubSub-Dienst
 
@@ -29,7 +29,7 @@ In jedem Paar befinden sich App-Server und Web PubSub-Dienst in derselben Region
 
 Zur besseren Veranschaulichung der Architektur wird der Web PubSub-Dienst als **primärer** Dienst für den App-Server im gleichen Paar bezeichnet. Web PubSub-Dienste in anderen Paaren werden als **sekundäre** Dienste für den App-Server bezeichnet.
 
-Der Anwendungsserver kann die [API für die Überprüfung der Dienstintegrität](/rest/api/webpubsub/health-api/get-service-status) verwenden, um zu ermitteln, ob die **primären** und **sekundären** Dienste fehlerfrei sind oder nicht. Für einen Web PubSub-Dienst mit dem Namen `demo` gibt der Endpunkt `https://demo.webpubsub.azure.com/api/health` beispielsweise den Wert 200 zurück, wenn der Dienst fehlerfrei ist. Der App-Server kann die Endpunkte in regelmäßigen Abständen oder bei Bedarf aufrufen, um zu überprüfen, ob die Endpunkte fehlerfrei sind. WebSocket-Clients **verknüpfen** sich in der Regel zuerst mit ihrem Anwendungsserver, um die URL abzurufen, die eine Verbindung mit dem Web PubSub-Dienst herstellt. Die Anwendung verwendet diesen Schritt des **Verknüpfens**, um ein Failover der Clients auf andere fehlerfreie **sekundäre** Dienste auszuführen. Hier finden Sie die ausführlichen Schritte:
+Der Anwendungsserver kann die [API für die Überprüfung der Dienstintegrität](/rest/api/webpubsub/dataplane/health-api/get-service-status) verwenden, um zu ermitteln, ob die **primären** und **sekundären** Dienste fehlerfrei sind oder nicht. Für einen Web PubSub-Dienst mit dem Namen `demo` gibt der Endpunkt `https://demo.webpubsub.azure.com/api/health` beispielsweise den Wert 200 zurück, wenn der Dienst fehlerfrei ist. Der App-Server kann die Endpunkte in regelmäßigen Abständen oder bei Bedarf aufrufen, um zu überprüfen, ob die Endpunkte fehlerfrei sind. WebSocket-Clients **verknüpfen** sich in der Regel zuerst mit ihrem Anwendungsserver, um die URL abzurufen, die eine Verbindung mit dem Web PubSub-Dienst herstellt. Die Anwendung verwendet diesen Schritt des **Verknüpfens**, um ein Failover der Clients auf andere fehlerfreie **sekundäre** Dienste auszuführen. Hier finden Sie die ausführlichen Schritte:
 
 1. Beim **Aushandeln** zwischen einem Client und dem App-Server SOLLTE der App-Server nur primäre Web PubSub-Dienstendpunkte zurückgeben, sodass Clients im Normalfall nur eine Verbindung mit primären Endpunkten herstellen.
 1. Wenn die primäre Instanz nicht erreichbar ist, SOLLTE beim **Aushandeln** ein fehlerfreier sekundärer Endpunkt zurückgegeben werden, damit der Client weiterhin Verbindungen herstellen kann, und der Client stellt eine Verbindung mit dem sekundären Endpunkt her.
@@ -42,7 +42,7 @@ In dieser Topologie können Nachrichten von einem Server weiterhin an alle Clien
 Wir haben die Strategie noch nicht in das SDK integriert, daher muss die Anwendung diese Strategie vorerst selbst implementieren. 
 
 Zusammenfassend gilt: Die Anwendungsseite muss Folgendes implementieren:
-1. Integritätsprüfung Die Anwendung kann entweder überprüfen, ob der Dienst fehlerfrei ist, indem sie die [API für die Überprüfung der Dienstintegrität](/rest/api/webpubsub/health-api/get-service-status) in regelmäßigen Abständen im Hintergrund oder bei Bedarf für jeden **Verknüpfungsaufruf** verwendet.
+1. Integritätsprüfung Die Anwendung kann entweder überprüfen, ob der Dienst fehlerfrei ist, indem sie die [API für die Überprüfung der Dienstintegrität](/rest/api/webpubsub/dataplane/health-api/get-service-status) in regelmäßigen Abständen im Hintergrund oder bei Bedarf für jeden **Verknüpfungsaufruf** verwendet.
 1. Verknüpfungslogik Die Anwendung gibt standardmäßig einen fehlerfreien **primären** Endpunkt zurück. Wenn der **primäre** Endpunkt nicht verfügbar ist, gibt die Anwendung einen fehlerfreien **sekundären** Endpunkt zurück.
 1. Übertragungslogik Wenn Nachrichten an mehrere Clients gesendet werden, muss die Anwendung sicherstellen, dass Nachrichten an alle **fehlerfreien** Endpunkte übertragen werden.
 

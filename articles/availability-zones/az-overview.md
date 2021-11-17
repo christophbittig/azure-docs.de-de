@@ -8,16 +8,16 @@ ms.date: 10/01/2021
 ms.author: rarco
 ms.reviewer: cynthn
 ms.custom: references_regions
-ms.openlocfilehash: 48cb14166a229e6bcaf3337f0be92b7d07acb3d6
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: a980cd71f86086a0a0b07354295d12251305bb4f
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131843117"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132369700"
 ---
 # <a name="regions-and-availability-zones"></a>Regionen und Verfügbarkeitszonen
 
-Azure-Regionen und -Verfügbarkeitszonen sind so konzipiert, dass Sie damit Resilienz und Zuverlässigkeit für Ihre unternehmenskritischen Workloads erreichen können. Azure verwaltet mehrere Geografien. Diese separaten Abgrenzungen definieren Grenzen für Notfallwiederherstellung und Datenresidenz in einer oder mehreren Azure-Regionen. Durch die Verwaltung vieler Regionen wird sichergestellt, dass Kunden auf der ganzen Welt unterstützt werden. 
+Azure-Regionen und -Verfügbarkeitszonen sind so konzipiert, dass Sie damit Resilienz und Zuverlässigkeit für Ihre unternehmenskritischen Workloads erreichen können. Azure verwaltet mehrere Geografien. Diese separaten Abgrenzungen definieren Grenzen für Notfallwiederherstellung und Datenresidenz in einer oder mehreren Azure-Regionen. Durch die Verwaltung vieler Regionen wird sichergestellt, dass Kunden auf der ganzen Welt unterstützt werden.
 
 ## <a name="regions"></a>Regions
 
@@ -25,7 +25,7 @@ Jede Azure-Region verfügt über Rechenzentren, die in einem durch die Latenz de
 
 ## <a name="availability-zones"></a>Verfügbarkeitszonen
 
-Azure-*Verfügbarkeitszonen* sind physisch getrennte Standorte innerhalb der einzelnen Azure-Regionen, die Fehlertoleranz bei lokalen Ausfällen bieten. Ausfälle können von Software- und Hardwareausfällen bis hin zu Ereignissen wie Erdbeben, Überflutungen und Bränden reichen. Fehlertoleranz wird durch Redundanz und logische Isolierung von Azure-Diensten erreicht. Um Resilienz sicherzustellen, liegen in allen Regionen, die Verfügbarkeitszonen unterstützen, mindestens drei separate Verfügbarkeitszonen vor. 
+Azure-*Verfügbarkeitszonen* sind physisch getrennte Standorte innerhalb der einzelnen Azure-Regionen, die Fehlertoleranz bei lokalen Ausfällen bieten. Ausfälle können von Software- und Hardwareausfällen bis hin zu Ereignissen wie Erdbeben, Überflutungen und Bränden reichen. Fehlertoleranz wird durch Redundanz und logische Isolierung von Azure-Diensten erreicht. Um Resilienz sicherzustellen, liegen in allen Regionen, die Verfügbarkeitszonen unterstützen, mindestens drei separate Verfügbarkeitszonen vor.
 
 Azure-Verfügbarkeitszonen sind über ein Hochleistungsnetzwerk mit einer Roundtriplatenz von weniger als 2 ms verbunden. Sie tragen dazu bei, dass Ihre Daten synchronisiert und zugänglich bleiben, wenn etwas schiefgeht. Jede Zone besteht aus mindestens einem Rechenzentrum, dessen Stromversorgung, Kühlung und Netzwerkinfrastruktur unabhängig funktionieren. Verfügbarkeitszonen sind so konzipiert, dass regionale Dienste, Kapazität und Hochverfügbarkeit von den verbleibenden beiden Zonen unterstützt werden, wenn eine Zone betroffen ist.
 
@@ -44,6 +44,7 @@ Einige Organisationen benötigen hochverfügbare Verfügbarkeitszonen und Schutz
 ![Abbildung: Verfügbarkeitszonen, die Schutz vor lokalen Notfällen und anhand einer anderen Region vor regionalen oder großräumigen Notfällen bieten.](media/availability-zones-region-geography.png)
 
 ## <a name="azure-regions-with-availability-zones"></a>Azure-Regionen mit Verfügbarkeitszonen
+
 Azure ist umfassender vertreten als jeder andere Cloudanbieter, und es werden in schneller Folge weitere Regionen und Verfügbarkeitszonen eröffnet.
 
 | Amerika | Europa | Afrika | Asien-Pazifik |

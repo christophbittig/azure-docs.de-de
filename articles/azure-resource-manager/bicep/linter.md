@@ -3,12 +3,12 @@ title: Verwenden des Bicep-Linters
 description: Erfahren Sie, wie Sie den Bicep-Linter verwenden.
 ms.topic: conceptual
 ms.date: 10/12/2021
-ms.openlocfilehash: 45d077245e2efb677348d3355ff10d8ff3668b2f
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: 5edf5fbb9553233455e7b24dd482a18d3c7e1c42
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130161633"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132548100"
 ---
 # <a name="use-bicep-linter"></a>Verwenden des Bicep-Linters
 
@@ -30,7 +30,7 @@ Der Standardsatz von Linterregeln ist minimal und stammt aus den [„arm-ttk“-
 - [secure-parameter-default](./linter-rule-secure-parameter-default.md)
 - [simplify-interpolation](./linter-rule-simplify-interpolation.md)
 
-Sie können anpassen, wie die Linterregeln angewendet werden. Um die Standardeinstellungen zu überschreiben, fügen Sie eine **bicepconfig.json**-Datei hinzu, und wenden Sie benutzerdefinierte Einstellungen an. Weitere Informationen zum Anwenden dieser Einstellungen finden Sie unter [Hinzufügen benutzerdefinierter Einstellungen in der Bicep-Konfigurationsdatei](bicep-config.md).
+Sie können anpassen, wie die Linterregeln angewendet werden. Um die Standardeinstellungen zu überschreiben, fügen Sie eine **bicepconfig.json**-Datei hinzu, und wenden Sie benutzerdefinierte Einstellungen an. Weitere Informationen zum Anwenden dieser Einstellungen finden Sie unter [Hinzufügen benutzerdefinierter Einstellungen in der Bicep-Konfigurationsdatei](bicep-config-linter.md).
 
 ## <a name="use-in-visual-studio-code"></a>Verwenden in Visual Studio Code
 
@@ -60,5 +60,5 @@ Sie können diese Überprüfungen in Ihre CI/CD-Pipelines integrieren. Außerdem
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zum Anpassen der Linterregeln finden Sie unter [Hinzufügen benutzerdefinierter Einstellungen in der Bicep-Konfigurationsdatei](bicep-config.md).
+* Weitere Informationen zum Anpassen der Linterregeln finden Sie unter [Hinzufügen benutzerdefinierter Einstellungen in der Bicep-Konfigurationsdatei](bicep-config-linter.md).
 * Weitere Informationen zur Verwendung von Visual Studio Code und der BICEP-Erweiterung finden Sie unter [Schnellstart: Erstellen von BICEP-Dateien mit Visual Studio Code](./quickstart-create-bicep-use-visual-studio-code.md).

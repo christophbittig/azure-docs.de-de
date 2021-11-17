@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/02/2021
 ms.author: jeedes
-ms.openlocfilehash: d66b09aac2d03fe81cc38ffb53ac1bb29dae6f8f
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: fa342712aa07b05570fa119acab1fc30a855ff0b
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124813626"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132285944"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-eccentex-appbase-for-azure"></a>Tutorial: Integrieren von Eccentex AppBase for Azure in das einmalige Anmelden (Single Sign-On, SSO) von Azure Active Directory
 
@@ -102,7 +102,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user&quot;></a>Erstellen eines Azure AD-Testbenutzers
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
 In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Namen B. Simon.
 
@@ -114,7 +114,7 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
    1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
    1. Klicken Sie auf **Erstellen**.
 
-### <a name=&quot;assign-the-azure-ad-test-user&quot;></a>Zuweisen des Azure AD-Testbenutzers
+### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Eccentex AppBase for Azure gewähren.
 
@@ -126,13 +126,13 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Wenn den Benutzern eine Rolle zugewiesen werden soll, können Sie sie im Dropdownmenü **Rolle auswählen** auswählen. Wurde für diese App keine Rolle eingerichtet, ist die Rolle „Standardzugriff“ ausgewählt.
 1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-## <a name=&quot;configure-eccentex-appbase-for-azure-sso&quot;></a>Konfigurieren des einmaligen Anmeldens für Eccentex AppBase for Azure
+## <a name="configure-eccentex-appbase-for-azure-sso"></a>Konfigurieren des einmaligen Anmeldens für Eccentex AppBase for Azure
 
 1. Melden Sie sich als Administrator bei der Eccentex AppBase for Azure-Unternehmenswebsite an.
 
 1. Klicken Sie auf das **Zahnradsymbol**, und klicken Sie dann auf **Benutzer verwalten**.
 
-    ![Screenshot: Einstellungen des SAML-Kontos.](./media/eccentex-appbase-for-azure-tutorial/settings.png &quot;Konto")
+    ![Screenshot: Einstellungen des SAML-Kontos.](./media/eccentex-appbase-for-azure-tutorial/settings.png "Konto")
 
 1. Navigieren Sie zu **Benutzerverwaltung** > **Authentifizierungskonfigurationen**, und klicken Sie auf die Schaltfläche **SAML hinzufügen**.
 
@@ -203,4 +203,4 @@ In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmel
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von Eccentex AppBase for Azure können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von Eccentex AppBase for Azure können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Defender for Cloud Apps erzwingen.](/cloud-app-security/proxy-deployment-aad)

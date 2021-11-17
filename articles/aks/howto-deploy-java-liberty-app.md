@@ -1,5 +1,6 @@
 ---
 title: Bereitstellen einer Java-Anwendung mit Open Liberty oder WebSphere Liberty in einem Azure Kubernetes Service (AKS)-Cluster
+recommendations: false
 description: Stellen Sie eine Java-Anwendung mit Open Liberty oder WebSphere Liberty in einem Azure Kubernetes Service (AKS)-Cluster bereit.
 author: majguo
 ms.author: jiangma
@@ -8,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/01/2021
 keywords: java, jakartaee, javaee, microprofile, open-liberty, websphere-liberty, aks, kubernetes
 ms.custom: devx-track-java, devx-track-javaee, devx-track-javaee-liberty, devx-track-javaee-liberty-aks
-ms.openlocfilehash: 1093ea35d77cac4396d983544cf2def0a5138dd2
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: f43f0a6038c9bd362f948722534c27e0906261c7
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131045823"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132551423"
 ---
 # <a name="deploy-a-java-application-with-open-liberty-or-websphere-liberty-on-an-azure-kubernetes-service-aks-cluster"></a>Bereitstellen einer Java-Anwendung mit Open Liberty oder WebSphere Liberty in einem Azure Kubernetes Service (AKS)-Cluster
 

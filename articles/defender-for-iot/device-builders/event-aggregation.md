@@ -2,13 +2,13 @@
 title: Klassische Ereignisaggregation für den Defender-IoT-Micro-Agent
 description: Weitere Informationen zur Ereignisaggregation in Defender für IoT.
 ms.topic: conceptual
-ms.date: 06/20/2021
-ms.openlocfilehash: 105c889102ed6880719abfa5315c7030f18c71f0
-ms.sourcegitcommit: 8942cdce0108372d6fc5819c71f7f3cf2f02dc60
+ms.date: 11/09/2021
+ms.openlocfilehash: 2e7ad46dd7e94c955b722e0d7a3f06237828c9b4
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/01/2021
-ms.locfileid: "113135930"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132306300"
 ---
 # <a name="defender-iot-micro-agent-classic-event-aggregation"></a>Klassische Ereignisaggregation für den Defender-IoT-Micro-Agent
 

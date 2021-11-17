@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.service: azure-education
 ms.subservice: education-hub
 ms.date: 06/30/2020
-ms.openlocfilehash: 5f6320b0af23dbb74f9ced7e0a9fe683861d6e96
-ms.sourcegitcommit: 34feb2a5bdba1351d9fc375c46e62aa40bbd5a1f
+ms.openlocfilehash: 937a321a0edb51f0bab9168706977d9b798429e8
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/10/2021
-ms.locfileid: "111894972"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132339685"
 ---
 # <a name="troubleshooting-student-login-issues"></a>Behandeln von Problemen bei der Kursteilnehmeranmeldung
 Für den Zugriff auf Azure Dev Tools für den Unterricht muss ein Benutzer über ein Microsoft-Konto (MSA) verfügen. Kursteilnehmer werden automatisch angewiesen, ein Microsoft-Konto zu erstellen, wenn Ihr Konto nicht bereits ein MSA ist oder mit einem MSA verknüpft ist. Wenn Ihre Domäne Active Directory zugeordnet ist, gelten alle Konten unter dieser Domäne bereits als MSA.

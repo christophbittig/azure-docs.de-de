@@ -3,12 +3,12 @@ title: Konfigurieren Ihres verwalteten Service Fabric-Clusters
 description: Erfahren Sie, wie Sie Ihren verwalteten Service Fabric-Cluster für automatische Betriebssystemupgrades, NSG-Regeln und mehr konfigurieren.
 ms.topic: how-to
 ms.date: 10/25/2021
-ms.openlocfilehash: 808b7e96778821c695ed5fca08648e95f4290959
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: aad982def0a1dd2e4b6f847a72e270337abcd460
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131060628"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132286030"
 ---
 # <a name="service-fabric-managed-cluster-configuration-options"></a>Konfigurationsoptionen für verwaltete Service Fabric-Cluster
 
@@ -19,7 +19,7 @@ Zusätzlich zur Auswahl der [SKUs für verwaltete Service Fabric-Cluster](overvi
 * Konfigurieren der [Netzwerkeinstellungen](how-to-managed-cluster-networking.md) für Cluster
 * Konfigurieren eines Knotentyps für [große VM-Skalierungsgruppen](how-to-managed-cluster-large-virtual-machine-scale-sets.md)
 * Konfigurieren der [verwalteten Identität](how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md) für Clusterknotentypen
-* Aktivieren der [Betriebssystem- und Datenträgerverschlüsselung](how-to-enable-managed-cluster-disk-encryption.md) für Clusterknoten
+* Aktivieren der [Betriebssystem- und Datenträgerverschlüsselung](how-to-managed-cluster-enable-disk-encryption.md) für Clusterknoten
 * Konfigurieren der [automatischen Skalierung](how-to-managed-cluster-autoscale.md) für einen sekundären Knotentyp
 * [Manuelles Skalieren eines Knotentyps](how-to-managed-cluster-modify-node-type.md#scale-a-node-type-manually-with-portal)
 * Aktivieren [automatischer Betriebssystemupgrades](how-to-managed-cluster-modify-node-type.md#enable-automatic-os-image-upgrades) für Clusterknotentypen

@@ -1,19 +1,19 @@
 ---
 title: Tutorial – Verwenden von Azure IoT Hub-Nachrichtenanreicherungen
 description: Ein Tutorial, in dem gezeigt wird, wie Nachrichtenanreicherungen für Azure IoT Hub-Nachrichten verwendet werden
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: tutorial
 ms.date: 12/20/2019
-ms.author: robinsh
+ms.author: lizross
 ms.custom: mqtt, devx-track-azurecli, devx-track-csharp
-ms.openlocfilehash: 764f0b8f8e78e41f20558f0a825d37cc8f118f6c
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 21d377a0e6e4972dd14d492a09f3636b4a65a00b
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131446093"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132551537"
 ---
 # <a name="tutorial-use-azure-iot-hub-message-enrichments"></a>Tutorial: Verwenden von Azure IoT Hub-Nachrichtenanreicherungen
 

@@ -2,19 +2,19 @@
 title: Gängige Szenarien und Anwendungsfälle für Azure Confidential Computing
 description: Hier erfahren Sie, wie Sie Confidential Computing in Ihrem Szenario verwenden.
 services: virtual-machines
-author: JBCook
+author: stempesta
 ms.service: virtual-machines
 ms.subservice: confidential-computing
 ms.topic: overview
 ms.date: 11/04/2021
-ms.author: jencook
+ms.author: stempesta
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 408f619f34942839bedcc75c6ab66044b4f90323
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 2fd30934f71df8a84bf718445972ab9d0ff2d469
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131852705"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132347820"
 ---
 # <a name="use-cases-and-scenarios"></a>Anwendungsfälle und -szenarien
 Confidential Computing gilt für verschiedene Anwendungsfälle zum Schutz von Daten in regulierten Branchen wie Behörden und Finanzdienstleistungen sowie im Gesundheitswesen. Wenn Sie beispielsweise den Zugriff auf vertrauliche Daten verhindern, wird die digitale Identität der Bürger*innen vor allen beteiligten Parteien geschützt, einschließlich des Cloudanbieters, der sie speichert. Diese vertraulichen Daten können biometrische Daten enthalten, die zum Auffinden und Entfernen bekannter Bilder mit Kindermissbrauch, zur Verhinderung von Menschenhandel und zur Unterstützung digitaler forensischer Untersuchungen verwendet werden.

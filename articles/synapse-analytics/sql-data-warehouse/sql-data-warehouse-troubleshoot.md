@@ -11,12 +11,12 @@ author: WilliamDAssafMSFT
 ms.author: wiassaf
 ms.reviewer: ''
 ms.custom: azure-synapse
-ms.openlocfilehash: 4829489cbb3229cdbe4c3d95c0eb44cc2047c585
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: df8bb8b6e15a442c932147d61cd61c2b7727e480
+ms.sourcegitcommit: 2ed2d9d6227cf5e7ba9ecf52bf518dff63457a59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131504054"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132521090"
 ---
 # <a name="troubleshoot-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Problembehandlung bei einem dedizierten SQL-Pool (vormals SQL DW) in Azure Synapse Analytics
 
@@ -76,7 +76,6 @@ Dieser Artikel enthält allgemeine Informationen zur Problembehandlung bei einem
 | Nicht unterstützte SQL-Datenbank-Datentypen   | Siehe [Nicht unterstützte Datentypen](sql-data-warehouse-tables-data-types.md#identify-unsupported-data-types).        |
 | Einschränkungen für gespeicherte Prozeduren          | In „Gespeicherte Prozeduren in SQL Data Warehouse“ werden unter [Einschränkungen](sql-data-warehouse-develop-stored-procedures.md#limitations) einige Einschränkungen für gespeicherte Prozeduren beschrieben. |
 | UDFs unterstützen keine SELECT-Anweisungen | Dies ist eine aktuelle Beschränkung unserer benutzerdefinierten Funktionen (User-Defined Functions, UDFs).  Informationen zur unterstützten Syntax finden Sie unter [CREATE FUNCTION](/sql/t-sql/statements/create-function-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) . |
-| `sp_rename` (Preview) für Spalten funktioniert nicht für Schemas außerhalb von `dbo` | Dies ist eine aktuelle Einschränkung im Zusammenhang mit [„sp_rename“ (Vorschau) für Spalten](/sql/relational-databases/system-stored-procedures/sp-rename-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest&preserve-view=true) von Synapse.  Spalten in Objekten, die nicht zum Schema `dbo` gehören, können mit CTAS in eine neue Tabelle mit einem anderen Namen verschoben werden. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

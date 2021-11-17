@@ -1,22 +1,22 @@
 ---
 title: Azure IoT Hub und Event Grid | Microsoft-Dokumentation
 description: Lösen Sie mit Azure Event Grid Prozesse auf der Basis von Aktionen aus, die in IoT Hub auftreten.
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 02/20/2019
-ms.author: robinsh
+ms.author: lizross
 ms.custom:
 - amqp
 - mqtt
 - 'Role: Cloud Development'
-ms.openlocfilehash: f8d1d3cf8553c768bb2bee015be2f5995214fe62
-ms.sourcegitcommit: e8b229b3ef22068c5e7cd294785532e144b7a45a
+ms.openlocfilehash: da56bb4818d46f9d68e1cb8beecf16d5e771b72e
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2021
-ms.locfileid: "123478714"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132554653"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Reagieren auf IoT Hub-Ereignisse mithilfe von Event Grid zum Auslösen von Aktionen
 
@@ -34,7 +34,7 @@ Die Event Grid-Integration ist für IoT-Hubs verfügbar, die sich in den Regione
 
 IoT Hub veröffentlicht die folgenden Ereignistypen:
 
-| Ereignistyp | Beschreibung |
+| Ereignistyp | BESCHREIBUNG |
 | ---------- | ----------- |
 | Microsoft.Devices.DeviceCreated | Wird ausgelöst, wenn ein Gerät bei einem IoT Hub registriert wird. |
 | Microsoft.Devices.DeviceDeleted | Wird ausgelöst, wenn ein Gerät aus einem IoT Hub gelöscht wird. |

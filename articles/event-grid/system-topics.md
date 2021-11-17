@@ -3,12 +3,12 @@ title: Systemthemen in Azure Event Grid
 description: Hier werden die Systemthemen in Azure Event Grid beschrieben.
 ms.topic: conceptual
 ms.date: 07/19/2021
-ms.openlocfilehash: 2c0bf2879ce2b137faf33f1ec00d456ab884ccf8
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: 7e0354ec2b9aa5c8644998d618db9db693979b62
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130035104"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550000"
 ---
 # <a name="system-topics-in-azure-event-grid"></a>Systemthemen in Azure Event Grid
 Ein Systemthema in Event Grid stellt ein oder mehrere Ereignisse dar, die von Azure-Diensten wie Azure Storage und Azure Event Hubs veröffentlicht wurden. Beispielsweise kann ein Systemthema **alle Blobereignisse** oder nur für ein **bestimmtes Speicherkonto** veröffentlichte **Bloberstellungs-** und **Bloblöschungsereignisse** darstellen. Wenn in diesem Beispiel ein Blob in das Speicherkonto hochgeladen wird, veröffentlicht der Dienst Azure Storage ein **Bloberstellungsereignis** im Systemthema in Event Grid. Event Grid leitet dieses Ereignis dann an die [Abonnenten](event-handlers.md) des Themas weiter, die es empfangen und verarbeiten. 
@@ -44,7 +44,7 @@ Früher waren Systemthemen implizit und wurden der Einfachheit halber nicht verf
 
 - [Anzeigen von Systemthemen im Azure-Portal](create-view-manage-system-topics.md#view-all-system-topics)
 - Exportieren von Resource Manager-Vorlagen für Systemthemen und Ereignisabonnements im Azure-Portal
-- [Einrichten von Diagnoseprotokollen für Systemthemen](enable-diagnostic-logs-topic.md#enable-diagnostic-logs-for-a-system-topic)
+- [Einrichten von Diagnoseprotokollen für Systemthemen](enable-diagnostic-logs-topic.md#enable-diagnostic-logs-for-event-grid-system-topics)
 - Einrichten von Warnungen bei Veröffentlichungs- und Zustellungsfehlern 
 
 ## <a name="lifecycle-of-system-topics"></a>Lebenszyklus von Systemthemen

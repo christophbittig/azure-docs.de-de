@@ -4,18 +4,18 @@ titleSuffix: Azure Machine Learning
 description: Referenzdokumentation für das YAML-Schema des Azure Data Lake Gen2-Datenspeichers der CLI (V2).
 services: machine-learning
 ms.service: machine-learning
-ms.subservice: core
+ms.subservice: mldata
 ms.topic: reference
 author: ynpandey
 ms.author: yogipandey
 ms.date: 10/21/2021
 ms.reviewer: laobri
-ms.openlocfilehash: a72738215c83aaef0e1260058f87a1bf06911774
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: 156b2de4794a40df8ddbe3aaa9ff143756d9dd03
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132059467"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132135083"
 ---
 # <a name="cli-v2-azure-data-lake-gen2-yaml-schema"></a>CLI (V2) YAML-Schema für Azure Data Lake Gen2
 
@@ -27,14 +27,14 @@ Das JSON-Quellschema finden Sie unter https://azuremlschemas.azureedge.net/lates
 
 | Schlüssel | type | BESCHREIBUNG | Zulässige Werte | Standardwert |
 | --- | ---- | ----------- | -------------- | ------- |
-| `$schema` | Zeichenfolge | Das YAML-Schema. Wenn Sie die Azure Machine Learning VS Code-Erweiterung verwenden, um die YAML-Datei zu erstellen, können Sie durch Einfügen von `$schema` am Anfang der Datei Schema- und Ressourcenvervollständigungen aufrufen. | | |
-| `type` | Zeichenfolge | **Erforderlich.** Der Typ des Datenspeichers. | `azure_data_lake_gen2` | |
+| `$schema` | Zeichenfolge | Das YAML-Schema Wenn Sie die VS Code-Erweiterung für Azure Machine Learning zum Erstellen einer YAML-Datei verwenden, können Sie durch das Einfügen von `$schema` am Anfang der Datei Schema- und Ressourcenvervollständigungen aufrufen. | | |
+| `type` | Zeichenfolge | **Erforderlich.** Der Typ des Datenspeichers | `azure_data_lake_gen2` | |
 | `name` | Zeichenfolge | **Erforderlich.** Der Name des Datenspeichers | | |
-| `description` | Zeichenfolge | Beschreibung des Datenspeichers | | |
-| `tags` | Objekt (object) | Wörterbuch der Tags für den Datenspeicher. | | |
-| `account_name` | Zeichenfolge | **Erforderlich.** Name des Azure-Speicherkontos. | | |
+| `description` | Zeichenfolge | Die Beschreibung des Datenspeichers | | |
+| `tags` | Objekt (object) | Wörterbuch der Tags für den Datenspeicher | | |
+| `account_name` | Zeichenfolge | **Erforderlich.** Der Name des Azure-Speicherkontos | | |
 | `filesystem` | Zeichenfolge | **Erforderlich.** Name des Dateisystems. Das übergeordnete Verzeichnis, das die Dateien und Ordner enthält. Dies entspricht einem Container in Azure Blob Storage. | | |
-| `endpoint` | Zeichenfolge | Endpunktsuffix des Speicherdienstes, das zur Erstellung der Endpunkt-URL des Speicherkontos verwendet wird, indem der Name des Speicherkontos und `endpoint` kombiniert werden. Beispiel für die URL eines Speicherkontos: `https://<storage-account-name>.dfs.core.windows.net`. | | `core.windows.net` |
+| `endpoint` | Zeichenfolge | Endpunktsuffix des Speicherdiensts, der zum Erstellen der Endpunkt-URL des Speicherkontos verwendet wird, indem der Speicherkontoname und `endpoint` kombiniert werden. Beispiel für die URL eines Speicherkontos: `https://<storage-account-name>.dfs.core.windows.net`. | | `core.windows.net` |
 | `protocol` | Zeichenfolge | Protokoll, das für die Verbindung zum Dateisystem verwendet werden soll. | `https`, `abfss` | `https` |
 | `credentials` | Objekt (object) | Anmeldeinformationen des Dienstherrn für die Verbindung mit dem Azure-Speicherkonto. Die geheimen Zugangsdaten werden im Schlüsseltresor des Arbeitsbereichs gespeichert. | | |
 | `credentials.tenant_id` | Zeichenfolge | Die Mieter-ID des Dienstherrn. **Erforderlich, wenn `credentials` angegeben ist.** | | |
@@ -49,7 +49,7 @@ Mit dem Befehl `az ml datastore` können Sie Azure Machine Learning-Datenspeiche
 
 ## <a name="examples"></a>Beispiele
 
-Beispiele sind im [Beispiele GitHub-Repository](https://github.com/Azure/azureml-examples/tree/main/cli/resources/datastore) verfügbar. Einige davon sind unten aufgeführt.
+Beispiele finden Sie im [GitHub-Beispielrepository](https://github.com/Azure/azureml-examples/tree/main/cli/resources/datastore). Im Folgenden sind mehrere aufgeführt.
 
 ## <a name="yaml-identity-based-access"></a>YAML: Identitätsbasierter Zugriff
 

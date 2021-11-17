@@ -3,17 +3,17 @@ title: Verwaltetes Datenträgerbursting
 description: Erfahren Sie mehr über Datenträgerbursting für Azure-Datenträger und virtuelle Azure-Computer.
 author: roygara
 ms.author: rogarana
-ms.date: 11/03/2021
+ms.date: 11/09/2021
 ms.topic: conceptual
 ms.service: storage
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: bd9cc8e9a9e60655d7d1805c1ceae4168353ec20
-ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
+ms.openlocfilehash: 1ff0997686b69cb2b688eec0829e0b39915a53e1
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131506320"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132134896"
 ---
 # <a name="managed-disk-bursting"></a>Verwaltetes Datenträgerbursting
 

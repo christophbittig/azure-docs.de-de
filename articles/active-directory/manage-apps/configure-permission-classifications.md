@@ -13,14 +13,14 @@ ms.date: 10/23/2021
 ms.author: davidmu
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperf-fy21q2
-ms.openlocfilehash: c061dcbbf21c67e0b14768f5918e76f8bcb43e0d
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 7981bdf26d3bafe301667e02af3fecdf53931021
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131471229"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132548442"
 ---
-# <a name="configure-permission-classifications-in-azure-active-directory"></a>Konfigurieren von Berechtigungsklassifizierungen in Azure Active Directory
+# <a name="configure-permission-classifications"></a>Konfigurieren von Berechtigungsklassifizierungen
 
 In diesem Artikel erfahren Sie, wie Sie Berechtigungsklassifizierungen in Azure Active Directory (Azure AD) konfigurieren. Mit Berechtigungsklassifizierungen können Sie die Auswirkung ermitteln, die unterschiedliche Berechtigungen gemäß den Richtlinien Ihres Unternehmens und den Risikobewertungen haben. Beispielsweise können Sie Berechtigungsklassifizierungen in Einwilligungsrichtlinien verwenden, um den Berechtigungssatz zu identifizieren, dem Benutzer zustimmen dürfen.
 

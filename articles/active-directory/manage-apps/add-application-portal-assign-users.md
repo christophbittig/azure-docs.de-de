@@ -12,14 +12,14 @@ ms.workload: identity
 ms.date: 09/22/2021
 ms.author: davidmu
 ms.reviewer: alamaral
-ms.openlocfilehash: 28f5cfe158c13928d9443df22551bcfd6e7d8e85
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 38be83db1c585a3660882ebdcca70a239a620f03
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129058392"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132549145"
 ---
-# <a name="quickstart-create-and-assign-a-user-account-in-azure-active-directory"></a>Schnellstart: Erstellen und Zuweisen eines Benutzerkontos in Azure Active Directory
+# <a name="quickstart-create-and-assign-a-user-account"></a>Schnellstart: Erstellen und Zuweisen eines Benutzerkontos
 
 In dieser Schnellstartanleitung verwenden Sie Azure Active Directory Admin Center, um ein Benutzerkonto in Ihrem Azure AD-Mandanten (Azure Active Directory) zu erstellen. Nach dem Erstellen des Kontos können Sie es der Unternehmensanwendung zuweisen, die Sie Ihrem Mandanten hinzugefügt haben.
 

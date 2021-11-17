@@ -2,20 +2,16 @@
 title: Integrieren von Azure Automation State Configuration in Azure Monitor-Protokolle
 description: Dieser Artikel beschreibt, wie Desired State Configuration-Berichtsdaten von Azure Automation State Configuration an Azure Monitor-Protokolle gesendet werden.
 services: automation
-ms.service: automation
 ms.subservice: dsc
-author: mgoedtel
-ms.author: magoedte
 ms.date: 08/16/2021
 ms.topic: conceptual
 ms.custom: devx-track-azurepowershell
-manager: carmonm
-ms.openlocfilehash: fb968d527bea4b9daeed4e12f0fdea16158d90c4
-ms.sourcegitcommit: 5f659d2a9abb92f178103146b38257c864bc8c31
+ms.openlocfilehash: 51404418080176792fc7dfce6cbc6b144dcdde41
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2021
-ms.locfileid: "122343586"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132494190"
 ---
 # <a name="integrate-azure-automation-state-configuration-with-azure-monitor-logs"></a>Integrieren von Azure Automation State Configuration in Azure Monitor-Protokolle
 

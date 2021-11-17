@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/16/2021
 ms.author: jeedes
-ms.openlocfilehash: 104815a21755f604ea1562eafaef43f8a32ca916
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: 07d888bbc76446aed2146552eb21a0893a73fede
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "124816742"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132330355"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-contrast-security"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Contrast Security
 
@@ -156,4 +156,4 @@ Sie können auch den Microsoft-Bereich „Meine Apps“ verwenden, um die Anwend
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von Contrast Security können Sie die Sitzungssteuerung erzwingen, die Echtzeitschutz vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten bietet. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von Contrast Security können Sie die Sitzungssteuerung erzwingen, die Echtzeitschutz vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten bietet. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Defender for Cloud Apps erzwingen.](/cloud-app-security/proxy-deployment-aad)

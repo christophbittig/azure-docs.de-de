@@ -1,8 +1,8 @@
 ---
 title: 'Schnellstart: Steuern eines Geräts über Azure IoT Hub | Microsoft-Dokumentation'
 description: In diesem Schnellstart führen Sie zwei Beispielanwendungen aus. Eine dieser Anwendungen ist eine Dienstanwendung, die mit Ihrem Hub verbundene Geräte remote steuern kann. Die andere Anwendung simuliert ein Gerät, das mit Ihrem Hub verbunden ist und remote gesteuert werden kann.
-author: robinsh
-ms.author: robinsh
+author: eross-msft
+ms.author: lizross
 ms.service: iot-hub
 services: iot-hub
 ms.topic: quickstart
@@ -13,12 +13,12 @@ ms.custom:
 - devx-track-azurecli
 ms.date: 07/26/2021
 zone_pivot_groups: iot-hub-set1
-ms.openlocfilehash: b89e13a6cf1a9dd6b30a9acc489969bb388ab3d1
-ms.sourcegitcommit: 6c6b8ba688a7cc699b68615c92adb550fbd0610f
+ms.openlocfilehash: cae4b2c1b23acc56468d3c7ebe30cf8316842003
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "121860945"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550247"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub"></a>Schnellstart: Steuern eines mit einer IoT Hub-Instanz verbundenen Geräts
 

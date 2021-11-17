@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 10/29/2021
+ms.date: 11/16/2021
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 95cce7e79ea8eaf3a542b52ac5c04b954ed56e0e
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: c3dd0d64542dd9d25643fb811accde5d882af870
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131469101"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132556567"
 ---
 ::: zone target="docs"
 
@@ -75,7 +75,7 @@ Die nächsten Schritte hängen davon ab, wo Sie das Gerät zurückgeben.
 
 Vergewissern Sie sich, dass die Daten vollständig auf das Gerät kopiert wurden, und dass die **Versandvorbereitung** erfolgreich war. 
 
-Die Vorgehensweise ist abhängig von der Region, in der das Gerät versendet wird. In vielen Ländern/Regionen können Sie den von Microsoft verwalteten Versand oder den selbstverwalteten Versand verwenden.
+Die Vorgehensweise ist abhängig von der Region, in der das Gerät versendet wird. In vielen Ländern/Regionen können Sie den von [Microsoft verwalteten Versand](#microsoft-managed-shipping) oder den [selbstverwalteten Versand](#self-managed-shipping) verwenden.
 
 ### <a name="microsoft-managed-shipping"></a>Von Microsoft verwalteter Versand
 
@@ -89,7 +89,7 @@ Befolgen Sie die Richtlinien für die Region, aus der Sie versenden, wenn Sie de
 
 [!INCLUDE [data-box-shipping-in-eu](../../includes/data-box-shipping-in-eu.md)]
 
-**Bei Rücksendung an Azure-Rechenzentren in Deutschland oder der Schweiz** können Sie auch den [selbst verwalteten Versand](#self-managed-shipping) nutzen.
+**Bei der Rücksendung an Azure-Rechenzentren in Deutschland oder der Schweiz** können Sie auch den [selbst verwalteten Versand](#self-managed-shipping) nutzen.
 
 ## <a name="uk"></a>[UK](#tab/in-uk)
 
@@ -123,11 +123,11 @@ Befolgen Sie die Richtlinien für die Region, aus der Sie versenden, wenn Sie de
 
 [!INCLUDE [data-box-shipping-in-uae](../../includes/data-box-shipping-in-uae.md)]
 
+---
+
 ### <a name="self-managed-shipping"></a>Selbst verwalteter Versand
 
 [!INCLUDE [data-box-shipping-self-managed](../../includes/data-box-shipping-self-managed.md)]
-
----
 
 ::: zone target="chromeless"
 

@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: 2afdf621b2d5a7ba0b5b08669a892ed11f90826d
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 180cb275b2b4a08dc9463eef4432006c5c0ee714
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131562806"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132290607"
 ---
 # <a name="supported-versions-of-postgres-with-azure-arc-enabled-postgresql-hyperscale"></a>Unterstützte Postgres-Versionen mit Azure Arc-fähigem PostgreSQL Hyperscale
 Die Liste der unterstützten Versionen wird im Laufe der Zeit erweitert, während wir die Parität mit den verwalteten Postgres-Diensten in Azure PaaS sicherstellen. Aktuell werden die folgenden Hauptversionen unterstützt:

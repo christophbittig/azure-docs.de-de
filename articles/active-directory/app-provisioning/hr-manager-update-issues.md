@@ -1,7 +1,6 @@
 ---
 title: Behandeln von Problemen bei der Änderung von Vorgesetzten in der Personalbereitstellung
 description: Erfahren Sie, wie Sie Probleme bei der Änderung von Vorgesetzten in der Personalbereitstellung behandeln.
-services: active-directory
 author: kenwith
 manager: karenh444
 ms.service: active-directory
@@ -11,19 +10,19 @@ ms.workload: identity
 ms.date: 10/27/2021
 ms.author: kenwith
 ms.reviewer: chmutali
-ms.openlocfilehash: 21635b7c7df6639745916aecd207780e6ae5df52
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: d67e528420b9907949202c1f597f933a74f7c801
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131478909"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132324553"
 ---
 # <a name="troubleshoot-hr-manager-update-issues"></a>Problembehandlung bei Personaländerungen für Vorgesetzte
 
 **Anwendungsbereich:**
 * Lokale Benutzerbereitstellung von Workday in Active Directory
 * Benutzerbereitstellung von Workday in Azure Active Directory
-* Lokale Benutzerbereitstellung von SAP SuccessFactors in Active Directory
+* SAP SuccessFactors zur Benutzerbereitstellung in lokalem Active Directory
 * Benutzerbereitstellung von SAP SuccessFactors in Azure Active Directory
 
 ## <a name="understanding-how-manager-reference-resolution-works"></a>Grundlegendes zur Funktionsweise der Hierarchieauflösung
@@ -55,14 +54,14 @@ Damit die *Hierarchieauflösung* erfolgreich funktioniert, sollten die folgenden
 * Die Bereitstellungs-App sollte den Vorgesetztendatensatz vor der Verarbeitung des Benutzerdatensatzes verarbeitet haben. 
 
 ## <a name="provision-on-demand-does-not-update-manager-attribute"></a>Bei einer bedarfsgesteuerten Bereitstellung wird das manager-Attribut nicht aktualisiert.
-| | |
+| Problembehandlung | Details |
 |--|--|
 | **Problem** | Sie haben die App für die eingehende Bereitstellung erfolgreich konfiguriert. Sie testen die Synchronisierung mit der bedarfsgesteuerten Bereitstellung. Das manager-Attribut wird nicht aktualisiert, und Sie erhalten die Fehlermeldung *„Ungültiger Wert“* .  |
 | **Ursache** | Ihr Bereitstellungsauftrag erfüllt keine der [Voraussetzungen für eine erfolgreiche Aktualisierung von Vorgesetzten](#prerequisites-for-successful-manager-update).  |
 | **Auflösung** | * Wenn Sie die Zuordnung für das manager-Attribut geändert haben, stellen Sie die Standardzuordnung wieder her. <br> * Stellen Sie sicher, dass sich der Vorgesetztendatensatz im Bereich befindet und der manager-API-Ausdruck in einen gültigen Wert aufgelöst wird. <br> * Führen Sie zuerst die bedarfsgesteuerte Bereitstellung für den Vorgesetztendatensatz und erst danach die bedarfsgesteuerte Bereitstellung für den Benutzerdatensatz aus.  |
 
 ## <a name="full-sync-does-not-update-manager-attribute"></a>Bei der vollständigen Synchronisierung wird das manager-Attribut nicht aktualisiert.
-| | |
+| Problembehandlung | Details |
 |--|--|
 | **Problem** | Sie haben die App für die eingehende Bereitstellung erfolgreich konfiguriert. Sie verwenden einen Bereichsfilter, um nur bestimmte Personaldatensätze zu verarbeiten. Sie stellen fest, dass für einige Benutzer*innen keine Hierarchieauflösung erfolgt.  |
 | **Ursache** | Wenn Sie Bereichsfilter verwenden, liegt der Vorgesetztendatensatz höchstwahrscheinlich nicht im Bereich.  |

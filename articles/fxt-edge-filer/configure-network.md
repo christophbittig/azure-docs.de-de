@@ -6,12 +6,12 @@ ms.author: femila
 ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 10/07/2021
-ms.openlocfilehash: 2af1e6308cd572115c43d3dfd27b25499ae590ed
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: a51f6654c8e82a46c1a31f2dd030cd2d5af754cd
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131086035"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132347302"
 ---
 # <a name="tutorial-configure-the-clusters-network-settings"></a>Tutorial: Konfigurieren der Netzwerkeinstellungen des Clusters
 
@@ -151,7 +151,7 @@ Geben Sie auf der Einstellungsseite **Cluster** (Cluster) > **Administrative Net
 * DNS-Domänenname
 * DNS-Suchdomänen
 
-Ausführlichere Informationen finden Sie in der Anleitung zur Clusterkonfiguration unter [DNS Settings](<https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_admin_network.html#gui-dns>) (DNS-Einstellungen).
+Ausführlichere Informationen finden Sie in der Anleitung zur Clusterkonfiguration unter [DNS Settings](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/gui_admin_network.html#gui-dns) (DNS-Einstellungen).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

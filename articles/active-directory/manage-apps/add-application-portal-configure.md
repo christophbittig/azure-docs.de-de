@@ -12,14 +12,14 @@ ms.workload: identity
 ms.date: 09/22/2021
 ms.author: davidmu
 ms.reviewer: ergreenl
-ms.openlocfilehash: f6325dfceaa0ee6cedc60e5555b177e1f7a25d6c
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: 6179330f62f1966d099cfca93fc3885895af5e40
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129058262"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132550796"
 ---
-# <a name="quickstart-configure-enterprise-application-properties-in-azure-active-directory"></a>Schnellstart: Konfigurieren von Eigenschaften für eine Unternehmensanwendung in Azure Active Directory
+# <a name="quickstart-configure-enterprise-application-properties"></a>Schnellstart: Konfigurieren von Eigenschaften für eine Unternehmensanwendung
 
 In diesem Schnellstart verwenden Sie Azure Active Directory Admin Center, um die Eigenschaften einer Unternehmensanwendung zu konfigurieren, die Sie ihrem Azure Active Directory-Mandanten (Azure AD) zuvor hinzugefügt haben.
 
@@ -48,7 +48,7 @@ Anwendungseigenschaften steuern, wie die Anwendung dargestellt wird und wie auf 
 So bearbeiten Sie die Anwendungseigenschaften:
 
 1. Navigieren Sie zu [Azure Active Directory Admin Center](https://aad.portal.azure.com), und melden Sie sich mit einer der in den Voraussetzungen aufgeführten Rollen an.
-1. Wählen Sie im Menü auf der linken Seite die Option **Unternehmensanwendungen** aus. Der Bereich **Alle Anwendungen** wird geöffnet und zeigt eine Liste von Anwendungen in Ihrem Azure AD-Mandanten an. Suchen Sie nach der gewünschten Anwendung, und wählen Sie diese aus. Beispiel: **Azure AD SAML Toolkit 1**.
+1. Wählen Sie im Menü auf der linken Seite die Option **Unternehmensanwendungen** aus. Der Bereich **Alle Anwendungen** wird geöffnet und zeigt eine Liste der Anwendungen in Ihrem Azure AD-Mandanten an. Suchen Sie nach der gewünschten Anwendung, und wählen Sie diese aus. Beispiel: **Azure AD SAML Toolkit 1**.
 1. Wählen Sie im Abschnitt **Verwalten** die Option **Eigenschaften** aus, um den Bereich **Eigenschaften** zur Bearbeitung zu öffnen.
 1. Wählen Sie **Ja** oder **Nein** aus, um zu entscheiden, ob die Anwendung für Benutzeranmeldung aktiviert ist.
 1. Wählen **Sie Ja** oder **Nein** aus, um zu entscheiden, ob sich nur Benutzerkonten anmelden können, die der Anwendung zugewiesen wurden.
@@ -79,7 +79,7 @@ So geben Sie Hinweise für die Anwendung ein:
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie den nächsten Schnellstart durcharbeiten möchten, behalten Sie die von Ihnen erstellte Unternehmensanwendung bei. Andernfalls können Sie sie löschen, um Ihren Mandanten zu bereinigen. Weitere Informationen finden Sie unter [Löschen einer Anwendung](delete-application-portal.md).
+Wenn Sie den nächsten Schnellstart durcharbeiten möchten, behalten Sie die von Ihnen erstellte Unternehmensanwendung. Andernfalls können Sie sie löschen, um Ihren Mandanten zu bereinigen. Weitere Informationen finden Sie unter [Löschen einer Anwendung](delete-application-portal.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

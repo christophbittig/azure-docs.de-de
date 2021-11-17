@@ -12,14 +12,14 @@ ms.workload: identity
 ms.date: 09/22/2021
 ms.author: davidmu
 ms.reviewer: ergleenl
-ms.openlocfilehash: 66de4e18f8a6c88ae3c1504197eb6f39632c6425
-ms.sourcegitcommit: 48500a6a9002b48ed94c65e9598f049f3d6db60c
+ms.openlocfilehash: f3d9cd36b821b1dca5311c266b84e259eab005c0
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/26/2021
-ms.locfileid: "129058157"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132546954"
 ---
-# <a name="quickstart-add-an-enterprise-application-in-azure-active-directory"></a>Schnellstart: Hinzufügen einer Unternehmensanwendung in Azure Active Directory
+# <a name="quickstart-add-an-enterprise-application"></a>Schnellstart: Hinzufügen einer Unternehmensanwendung
 
 In diesem Schnellstart verwenden Sie Azure Active Directory Admin Center, um Ihrem Azure Active Directory-Mandanten (Azure AD) eine Unternehmensanwendung hinzuzufügen. Azure AD enthält einen Katalog mit Tausenden von vorab integrierten Unternehmensanwendungen. Viele der von Ihrer Organisation verwendeten Anwendungen sind wahrscheinlich bereits im Katalog enthalten. Dieser Quickstart verwendet die Anwendung **Azure AD SAML Toolkit** als Beispiel, aber die Konzepte gelten für die meisten [Unternehmensanwendungen Katalog](../saas-apps/tutorial-list.md).
 
@@ -37,7 +37,7 @@ Sie benötigen Folgendes, um Ihrem Azure AD-Mandanten eine Unternehmensanwendun
 So fügen Sie Ihrem Azure AD-Mandanten eine Unternehmensanwendung hinzu:
 
 1. Navigieren Sie zu [Azure Active Directory Admin Center](https://aad.portal.azure.com), und melden Sie sich mit einer der in den Voraussetzungen aufgeführten Rollen an.
-1. Wählen Sie im Menü auf der linken Seite die Option **Unternehmensanwendungen** aus. Der Bereich **Alle Anwendungen** wird geöffnet und zeigt eine Liste von Anwendungen in Ihrem Azure AD-Mandanten an.
+1. Wählen Sie im Menü auf der linken Seite die Option **Unternehmensanwendungen** aus. Der Bereich **Alle Anwendungen** wird geöffnet und zeigt eine Liste der Anwendungen in Ihrem Azure AD-Mandanten an.
 1. Wählen Sie im Bereich **Unternehmensanwendungen** die Option **Neue Anwendung** aus.
 1. Der Bereich **Azure AD-Katalog durchsuchen** wird mit Kacheln für Cloudplattformen, lokale Anwendungen und ausgewählten Anwendungen geöffnet. Für die im Abschnitt **Ausgewählte Anwendungen** aufgeführten Anwendungen wird mithilfe von Symbolen angegeben, ob sie die einmalige Verbundanmeldung und -bereitstellung unterstützen. Suchen Sie nach der Anwendung, und wählen Sie diese aus. In diesem Schnellstart wird **Azure AD SAML Toolkit** verwendet.
 
@@ -50,7 +50,7 @@ Wenn Sie eine Anwendung installieren möchten, die auf OpenID Connect basierende
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie den nächsten Schnellstart durcharbeiten möchten, behalten Sie die von Ihnen erstellte Unternehmensanwendung bei. Andernfalls können Sie sie löschen, um Ihren Mandanten zu bereinigen. Weitere Informationen finden Sie unter [Löschen einer Anwendung](delete-application-portal.md).
+Wenn Sie den nächsten Schnellstart durcharbeiten möchten, behalten Sie die von Ihnen erstellte Unternehmensanwendung. Andernfalls können Sie sie löschen, um Ihren Mandanten zu bereinigen. Weitere Informationen finden Sie unter [Löschen einer Anwendung](delete-application-portal.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

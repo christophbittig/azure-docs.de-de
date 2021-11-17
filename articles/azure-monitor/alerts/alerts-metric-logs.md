@@ -6,12 +6,12 @@ ms.author: harelbr
 ms.topic: conceptual
 ms.date: 06/15/2021
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 265973fc71cde7ea2d06959c9857a8ff30260d38
-ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+ms.openlocfilehash: 3b90e6d5ef6cbd089b451e7eb5fe2c92baf5ff3a
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/15/2021
-ms.locfileid: "112122330"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132488492"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Erstellen von Metrikwarnungen für Protokolle in Azure Monitor
 
@@ -67,10 +67,10 @@ Schritt-für-Schritt-Anleitungen und Beispiele finden Sie unter [Erstellen und V
 - Das für die Metrikwarnung für den ausgewählten *Log Analytics-Arbeitsbereich* gewählte Signal besitzt den Typ **Metrik**.
 - Filter für bestimmte Bedingungen oder Ressourcen unter Verwendung von Dimensionsfiltern; Metriken für Protokolle sind mehrdimensional.
 - Bei der Konfiguration der *Signallogik* kann eine einzelne Warnung erstellt werden, um mehrere Werte der Dimension (z.B. Computer) zu erfassen.
-- Wenn **nicht** das Azure-Portal zum Erstellen einer Metrikwarnung für den ausgewählten *Log Analytics-Arbeitsbereich* verwendet wird, dann muss der Benutzer zunächst manuell eine explizite Regel zum Konvertieren von Protokolldaten in eine Metrik mit [Azure Monitor – Geplante Abfrageregeln](/rest/api/monitor/scheduledqueryrules) erstellen.
+- Wenn **nicht** das Azure-Portal zum Erstellen einer Metrikwarnung für den ausgewählten *Log Analytics-Arbeitsbereich* verwendet wird, dann muss der Benutzer zunächst manuell eine explizite Regel zum Konvertieren von Protokolldaten in eine Metrik mit [Azure Monitor – Geplante Abfrageregeln](/rest/api/monitor/scheduledqueryrule-2018-04-16/scheduled-query-rules) erstellen.
 
 > [!NOTE]
-> Bei der Erstellung einer Metrikwarnung für Protokolle über das Azure-Portal wird im Hintergrund automatisch eine entsprechende Regel für die Konvertierung von Protokolldaten in Metrik über [Azure Monitor – Geplante Abfrageregeln](/rest/api/monitor/scheduledqueryrules) erstellt, *ohne dass ein Benutzereingriff oder eine Aktion erforderlich ist*. Bei Metrikwarnungen für Protokolle, die nicht über das Azure-Portal erstellt wurden, finden Sie im Abschnitt [Ressourcenvorlage für Metrikwarnungen für Protokolle](#resource-template-for-metric-alerts-for-logs) Beispiele für Methoden zum Erstellen eines auf „ScheduledQueryRule“ basierenden Protokolls für die Metrikkonvertierungsregel vor der Erstellung von Metrikwarnungen. Andernfalls sind für die Metrikwarnung keine Daten zu erstellten Protokollen vorhanden.
+> Bei der Erstellung einer Metrikwarnung für Protokolle über das Azure-Portal wird im Hintergrund automatisch eine entsprechende Regel für die Konvertierung von Protokolldaten in Metrik über [Azure Monitor – Geplante Abfrageregeln](/rest/api/monitor/scheduledqueryrule-2018-04-16/scheduled-query-rules) erstellt, *ohne dass ein Benutzereingriff oder eine Aktion erforderlich ist*. Bei Metrikwarnungen für Protokolle, die nicht über das Azure-Portal erstellt wurden, finden Sie im Abschnitt [Ressourcenvorlage für Metrikwarnungen für Protokolle](#resource-template-for-metric-alerts-for-logs) Beispiele für Methoden zum Erstellen eines auf „ScheduledQueryRule“ basierenden Protokolls für die Metrikkonvertierungsregel vor der Erstellung von Metrikwarnungen. Andernfalls sind für die Metrikwarnung keine Daten zu erstellten Protokollen vorhanden.
 
 ## <a name="resource-template-for-metric-alerts-for-logs"></a>Ressourcenvorlage für Metrikwarnungen für Protokolle
 

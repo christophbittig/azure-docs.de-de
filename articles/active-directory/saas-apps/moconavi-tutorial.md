@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/28/2021
 ms.author: jeedes
-ms.openlocfilehash: 2a5ddfeea3f001669e9f4498bb60e38cb34d027b
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 9254c7117affd66fe2e46aa943b70e701aa11cc9
+ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131427493"
+ms.lasthandoff: 11/11/2021
+ms.locfileid: "132294605"
 ---
 # <a name="tutorial-azure-ad-sso-integration-with-moconavi"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure AD mit moconavi
 
@@ -158,4 +158,4 @@ In diesem Abschnitt erstellen Sie in moconavi eine Benutzerin namens Britta Simo
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von moconavi können Sie die Sitzungssteuerung erzwingen, die Echtzeitschutz vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten bietet. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von moconavi können Sie die Sitzungssteuerung erzwingen, die Echtzeitschutz vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten bietet. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Defender for Cloud Apps erzwingen.](/cloud-app-security/proxy-deployment-aad)

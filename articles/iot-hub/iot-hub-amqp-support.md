@@ -1,21 +1,21 @@
 ---
 title: Grundlegendes zur Azure IoT Hub AMQP-Unterstützung | Microsoft-Dokumentation
 description: 'Entwicklerhandbuch: Unterstützung für Geräte, die unter Verwendung des Protokolls AMQP eine Verbindung mit einem geräte- und dienstseitigen IoT Hub-Endpunkt herstellen. Enthält Informationen zur integrierten AMQP-Unterstützung der Azure IoT-Geräte-SDKs.'
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 04/30/2019
-ms.author: robinsh
+ms.author: lizross
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: f0aaa996d6520a69f5546976d89c7cc4aa802d38
-ms.sourcegitcommit: 1fbd591a67e6422edb6de8fc901ac7063172f49e
+ms.openlocfilehash: ccdf206c9ccd9d91b125af658bf03d3ec40c4b02
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2021
-ms.locfileid: "109481353"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132549981"
 ---
 # <a name="communicate-with-your-iot-hub-by-using-the-amqp-protocol"></a>Kommunikation mit Ihrem IoT-Hub mithilfe des Protokolls AMQP
 

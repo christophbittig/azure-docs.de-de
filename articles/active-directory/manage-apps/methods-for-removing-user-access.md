@@ -12,14 +12,14 @@ ms.topic: how-to
 ms.date: 11/02/2020
 ms.author: davidmu
 ms.reviewer: phsignor
-ms.openlocfilehash: 9b0334c3766a789af7ed8c29fac3e76aaae25476
-ms.sourcegitcommit: 1d56a3ff255f1f72c6315a0588422842dbcbe502
+ms.openlocfilehash: b0b3e1074df0a1067736900dbce7d7521414c1bc
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2021
-ms.locfileid: "129613793"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132549753"
 ---
-# <a name="how-to-remove-a-users-access-to-an-application-in-azure-active-directory"></a>Entfernen des Zugriffs eines Benutzers auf eine Anwendung in Azure Active Directory
+# <a name="how-to-remove-a-users-access-to-an-application"></a>Aufheben des Zugriffs eines Benutzers auf eine Anwendung
 
 In diesem Artikel erhalten Sie Informationen zum Entfernen des Zugriffs eines Benutzers auf eine Anwendung.
 

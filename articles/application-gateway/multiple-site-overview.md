@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.date: 08/31/2021
 ms.author: azhussai
 ms.topic: conceptual
-ms.openlocfilehash: 5feb112a9d1c9b7eb229c65f8bcce3845a3f23ad
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 5687c4af0321e26d20906932fd9ac3b06b983651
+ms.sourcegitcommit: 901ea2c2e12c5ed009f642ae8021e27d64d6741e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131844979"
+ms.lasthandoff: 11/12/2021
+ms.locfileid: "132373078"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Anwendungsgateways – Hosten mehrerer Websites
 
-Das Hosten mehrerer Websites ermöglicht es Ihnen, mithilfe von öffentlichen Listenern mehrere Webanwendungen am selben Port eines Anwendungsgateways zu konfigurieren. Sie können eine effizientere Topologie für Ihre Bereitstellungen konfigurieren, indem Sie bis zu hundert Websites zu einem einzigen Anwendungsgateway hinzufügen. Jede Website kann an ihren eigenen Back-End-Pool weitergeleitet werden. Beispielsweise können die drei Domänen „contoso.com“, „fabrikam.com“ und „adatum.com“ auf die IP-Adresse des Anwendungsgateways verweisen. Sie erstellen drei Listener vom Typ „Mehrere Websites“ und konfigurieren jeden Listener für den jeweiligen Port und die jeweilige Protokolleinstellung. 
+Das Hosten mehrerer Websites ermöglicht es Ihnen, mithilfe von öffentlichen Listenern mehrere Webanwendungen am selben Port eines Anwendungsgateways zu konfigurieren. Sie können eine effizientere Topologie für Ihre Bereitstellungen konfigurieren, indem Sie bis zu hundert Websites zu einem einzigen Anwendungsgateway hinzufügen. Jede Website kann an ihren eigenen Back-End-Pool weitergeleitet werden. Beispielsweise können die drei Domänen „contoso.com“, „fabrikam.com“ und „adatum.com“ auf die IP-Adresse des Anwendungsgateways verweisen. Sie erstellen drei Listener vom Typ „Mehrere Websites“ und konfigurieren jeden Listener für den jeweiligen Port und die jeweilige Protokolleinstellung.
 
 Sie können auch Hostnamen mit Platzhaltern in einem Listener für mehrere Standorte und bis zu fünf Hostnamen pro Listener definieren. Weitere Informationen finden Sie unter [Hostnamen mit Platzhaltern in Listenern](#wildcard-host-names-in-listener-preview).
 
@@ -71,6 +71,8 @@ Im Azure-Portal müssen Sie unter dem Listener für mehrere Standorte den Hostty
 * `*`: kann für mehrere zulässige Zeichen stehen
 * `?`: kann für ein einzelnes zulässiges Zeichen stehen
 
+<!-- docutune:disable -->
+
 ### <a name="conditions-for-using-wildcard-characters-and-multiple-host-names-in-a-listener"></a>Bedingungen für die Verwendung von Platzhalterzeichen und von mehreren Hostnamen in einem Listener
 
 * In einem einzelnen Listener können nur bis zu fünf Hostnamen verwendet werden.
@@ -78,6 +80,8 @@ Im Azure-Portal müssen Sie unter dem Listener für mehrere Standorte den Hostty
 * In einem Hostnamen dürfen maximal zwei Sternchen (`*`) verwendet werden. Beispiel: `*.contoso.*` ist gültig, `*.contoso.*.*.com` ist ungültig.
 * Ein Hostname darf maximal vier Platzhalterzeichen enthalten. Beispiel: `????.contoso.com` und `w??.contoso*.edu.*` sind gültig, `????.contoso.*` ist ungültig.
 * Das Sternchen (`*`) und das Fragezeichen (`?`) dürfen in einer Komponente eines Hostnamens nicht zusammen verwendet werden (`*?`, `?*` oder `**`). Beispiel: `*?.contoso.com` und `**.contoso.com` sind ungültig.
+
+<!-- docutune:enable -->
 
 ### <a name="considerations-and-limitations-of-using-wildcard-or-multiple-host-names-in-a-listener"></a>Überlegungen und Einschränkungen bei der Verwendung von Platzhaltern oder mehreren Hostnamen in einem Listener
 

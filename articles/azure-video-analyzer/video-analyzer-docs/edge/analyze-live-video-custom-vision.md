@@ -5,12 +5,12 @@ ms.topic: tutorial
 ms.date: 06/01/2021
 zone_pivot_groups: video-analyzer-programming-languages
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: f6999b30816f0750657d8c5990291892d3148cbd
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: e87b1f70df4864a82f13b9e30cf93c2c5ca9eb14
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131101108"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132484267"
 ---
 # <a name="tutorial-analyze-live-video-with-azure-video-analyzer-on-iot-edge-and-azure-custom-vision"></a>Tutorial: Analysieren von Livevideos mit Azure Video Analyzer in IoT Edge und Azure Custom Vision
 
@@ -65,7 +65,7 @@ Lesen Sie die folgenden Artikel, bevor Sie beginnen:
 
 ## <a name="review-the-sample-video"></a>Überprüfen des Beispielvideos
 
-In diesem Tutorial wird mit einer [Spielzeugauto-Rückschlussvideodatei](https://lvamedia.blob.core.windows.net/public/t2.mkv) ein Livestream simuliert. Sie können das Video z. B. in der Anwendung [VLC Media Player](https://www.videolan.org/vlc/) überprüfen. Wählen Sie **STRG+N** aus, und fügen Sie dann einen Link zum [Spielzeugauto-Rückschlussvideo](https://lvamedia.blob.core.windows.net/public/t2.mkv) ein, um die Wiedergabe zu starten. Beachten Sie während der Wiedergabe des Videos, dass am 36-Sekunden-Marker ein Spielzeug-LKW im Video erscheint. Das benutzerdefinierte Modell wurde zum Erkennen dieses speziellen Spielzeug-LKW trainiert.
+In diesem Tutorial wird mit einer [Spielzeugauto-Rückschlussvideodatei](https://avamedia.blob.core.windows.net/public/t2.mkv) ein Livestream simuliert. Sie können das Video z. B. in der Anwendung [VLC Media Player](https://www.videolan.org/vlc/) überprüfen. Wählen Sie **STRG+N** aus, und fügen Sie dann einen Link zum [Spielzeugauto-Rückschlussvideo](https://avamedia.blob.core.windows.net/public/t2.mkv) ein, um die Wiedergabe zu starten. Beachten Sie während der Wiedergabe des Videos, dass am 36-Sekunden-Marker ein Spielzeug-LKW im Video erscheint. Das benutzerdefinierte Modell wurde zum Erkennen dieses speziellen Spielzeug-LKW trainiert.
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4LPwK]
 
@@ -90,7 +90,7 @@ Zum Erstellen einer Erkennung für Spielzeug-LKW befolgen Sie die Schritte in [S
 
 Weitere Hinweise:
 
-- Verwenden Sie für dieses Tutorial nicht die Beispielbilder, die im [Abschnitt „Voraussetzungen“](../../../cognitive-services/custom-vision-service/get-started-build-detector.md#prerequisites) des Schnellstartartikels angegeben werden. Stattdessen haben wir einen bestimmten Satz Bilder verwendet, um ein Custom Vision Modell für die Spielzeugerkennung zu erstellen. Verwenden Sie [diese Bilder](https://lvamedia.blob.core.windows.net/public/ToyCarTrainingImages.zip), wenn Sie in der [Schnellstartanleitung](../../../cognitive-services/custom-vision-service/get-started-build-detector.md) aufgefordert werden, Ihre [Trainingsbilder](../../../cognitive-services/custom-vision-service/get-started-build-detector.md#choose-training-images) auszuwählen.
+- Verwenden Sie für dieses Tutorial nicht die Beispielbilder, die im [Abschnitt „Voraussetzungen“](../../../cognitive-services/custom-vision-service/get-started-build-detector.md#prerequisites) des Schnellstartartikels angegeben werden. Stattdessen haben wir einen bestimmten Satz Bilder verwendet, um ein Custom Vision Modell für die Spielzeugerkennung zu erstellen. Verwenden Sie [diese Bilder](https://avamedia.blob.core.windows.net/public/ToyCarTrainingImages.zip), wenn Sie in der [Schnellstartanleitung](../../../cognitive-services/custom-vision-service/get-started-build-detector.md) aufgefordert werden, Ihre [Trainingsbilder](../../../cognitive-services/custom-vision-service/get-started-build-detector.md#choose-training-images) auszuwählen.
 - Stellen Sie im Schnellstartartikel im Abschnitt zum Kennzeichnen von Bildern sicher, dass Sie den Spielzeug-LKW im Bild mit dem Tag „delivery truck“ versehen.
 - Sicherstellen der Auswahl von „Allgemein (kompakt)“ als Option für „Domänen“ beim Erstellen des Custom Vision-Projekts
 

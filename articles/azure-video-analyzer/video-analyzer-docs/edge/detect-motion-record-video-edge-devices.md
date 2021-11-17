@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 06/01/2021
 zone_pivot_groups: video-analyzer-programming-languages
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: 305bd0f21e9143df5b28998689992a03351b5a8e
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 84dbe38e69b9dea259c570ef229927b75aefbe23
+ms.sourcegitcommit: 362359c2a00a6827353395416aae9db492005613
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131030070"
+ms.lasthandoff: 11/15/2021
+ms.locfileid: "132493418"
 ---
 # <a name="quickstart-detect-motion-and-record-video-on-edge-devices"></a>Schnellstart: Erkennen von Bewegung und Aufzeichnen von Videos auf Edgegeräten
 
@@ -32,7 +32,7 @@ In dieser Schnellstartanleitung wird beschrieben, wie Sie mit Azure Video Analyz
 
 Beim Einrichten der Azure-Ressourcen für diese Schnellstartanleitung wird ein kurzes Video eines Parkplatzes auf die Linux-VM in Azure kopiert, die als IoT Edge-Gerät verwendet wird. Diese Videodatei wird zum Simulieren eines Livestreams für dieses Tutorial verwendet.
 
-Öffnen Sie eine Anwendung wie beispielsweise den [VLC Media Player](https://www.videolan.org/vlc/), drücken Sie STRG+N, und fügen Sie [diesen Link](https://lvamedia.blob.core.windows.net/public/lots_015.mkv) zum Video des Parkplatzes ein, um die Wiedergabe zu starten. Etwa bei der 5-Sekunden-Marke fährt ein weißes Fahrzeug über den Parkplatz.
+Öffnen Sie eine Anwendung wie beispielsweise den [VLC Media Player](https://www.videolan.org/vlc/), drücken Sie STRG+N, und fügen Sie [diesen Link](https://avamedia.blob.core.windows.net/public/lots_015.mkv) zum Video des Parkplatzes ein, um die Wiedergabe zu starten. Etwa bei der 5-Sekunden-Marke fährt ein weißes Fahrzeug über den Parkplatz.
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4LUbN]
 

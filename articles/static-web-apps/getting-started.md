@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: quickstart
 ms.date: 06/16/2021
 ms.author: cshoe
-ms.openlocfilehash: 167d6a2fbe6ec782a83c8dc3cb7f3ea57832a594
-ms.sourcegitcommit: 613789059b275cfae44f2a983906cca06a8706ad
+ms.openlocfilehash: a7b7504a99be6784e2767abe0daf9ba64066d0c1
+ms.sourcegitcommit: 838413a8fc8cd53581973472b7832d87c58e3d5f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/29/2021
-ms.locfileid: "129275903"
+ms.lasthandoff: 11/10/2021
+ms.locfileid: "132134592"
 ---
 # <a name="quickstart-building-your-first-static-site-with-azure-static-web-apps"></a>Schnellstart: Erstellen Ihrer ersten statischen Website mit Azure Static Web Apps
 
@@ -79,9 +79,7 @@ Falls Sie noch nicht über ein Azure-Abonnement verfügen, können Sie ein [kost
 
     # <a name="angular"></a>[Angular](#tab/angular)
 
-    Es gibt zwar eine Angular-Voreinstellung, Sie sollten aber die Option **Benutzerdefiniert** auswählen, damit Sie einen geeigneten Ausgabespeicherort für diese Anwendung angeben können.
-
-    :::image type="content" source="media/getting-started/extension-presets-no-framework.png" alt-text="Anwendungsvoreinstellungen: Angular":::
+    :::image type="content" source="media/getting-started/extension-presets-angular.png" alt-text="Anwendungsvoreinstellungen: Angular":::
 
     Geben Sie **/** als Speicherort für die Anwendungsdateien ein.
 

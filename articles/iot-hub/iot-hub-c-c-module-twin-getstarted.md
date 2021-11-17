@@ -1,22 +1,22 @@
 ---
 title: Erste Schritte mit der Modulidentität und dem Modulzwilling von Azure IoT Hub (C)
 description: Erfahren Sie, wie Sie mit IoT SDKs für C eine Modulidentität erstellen und den Modulzwilling aktualisieren.
-author: robinsh
+author: eross-msft
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: c
 ms.topic: conceptual
 ms.date: 06/25/2018
-ms.author: robinsh
+ms.author: lizross
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 3df461a298e3f4b750ee0e29a6fe7aee8283e953
-ms.sourcegitcommit: f2eb1bc583962ea0b616577f47b325d548fd0efa
+ms.openlocfilehash: c71b7f4180df2037a606584fccfb0e0ddcbd3027
+ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/28/2021
-ms.locfileid: "114729846"
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "132547835"
 ---
 # <a name="get-started-with-iot-hub-module-identity-and-module-twin-c"></a>Erste Schritte mit der Modulidentität und dem Modulzwilling von IoT Hub (C)
 
