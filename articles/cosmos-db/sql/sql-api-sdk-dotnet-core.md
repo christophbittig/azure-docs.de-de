@@ -52,8 +52,6 @@ ms.locfileid: "123115250"
 
 Die 2.x.x-Version umfasst die folgenden .NET SDK-Unterversionen:
 
-[!INCLUDE[Release notes](~/samples-cosmosdb-dotnet-v2/changelog.md)]
-
 ## <a name="see-also"></a>Weitere Informationen
 
 Weitere Informationen zu Cosmos DB finden Sie auf der Seite zum Dienst [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).
