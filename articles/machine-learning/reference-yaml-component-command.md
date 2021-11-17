@@ -10,12 +10,12 @@ author: lostmygithubaccount
 ms.author: copeters
 ms.date: 10/21/2021
 ms.reviewer: laobri
-ms.openlocfilehash: 2a512226a507d890963ee9e407c7eb8330e33fc5
-ms.sourcegitcommit: 05c8e50a5df87707b6c687c6d4a2133dc1af6583
+ms.openlocfilehash: 53b64b804b07f60741be1a72e671e8ade4710e15
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "132552316"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132055092"
 ---
 # <a name="cli-v2-command-component-yaml-schema"></a>YAML-Schema der CLI-Befehlskomponente (v2)
 
@@ -95,7 +95,7 @@ Mit den Befehlen `az ml component` können Sie Azure Machine Learning-Komponente
 
 Beispiele für Befehlskomponenten finden Sie im GitHub-Beispielrepository. Ausgewählte Beispiele sind unten dargestellt.
 
-Beispiele finden Sie im [GitHub-Beispielrepository](https://github.com/Azure/azureml-examples/tree/main/cli/jobs/pipelines-with-components). Im Folgenden sind mehrere aufgeführt.
+Beispiele finden Sie im [GitHub-Beispielrepository](https://github.com/Azure/azureml-examples/tree/main/cli/jobs/pipeline-with-components). Im Folgenden sind mehrere aufgeführt.
 
 ## <a name="hello-world-command-component"></a>Hello World-Befehlskomponente
 

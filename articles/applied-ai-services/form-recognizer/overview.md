@@ -12,18 +12,18 @@ ms.author: lajanuar
 recommendations: false
 keywords: automatisierte Datenverarbeitung, Dokumentverarbeitung, automatisierte Dateneingabe, Formularverarbeitung
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: a3df07d7313243660270300127bb74b55fe95857
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: f9c22bef6236008c772c39a9fea4f4673923b070
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131021598"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131843098"
 ---
 <!-- markdownlint-disable MD033 -->
 <!-- markdownlint-disable MD024 -->
 # <a name="what-is-azure-form-recognizer"></a>Was ist die Azure-Formularerkennung?
 
-Die Azure-Formularerkennung ist ein Clouddienst vom Typ [Azure Applied AI](../../applied-ai-services/index.yml), bei dem Machine Learning-Modelle verwendet werden, um Formularfelder, Text und Tabellen aus Ihren Dokumenten zu extrahieren und zu analysieren. Die Formularerkennung analysiert Ihre Formulare und Dokumente, extrahiert Text und Daten, ordnet Feldbeziehungen als Schlüssel-Wert-Paare zu und gibt eine strukturierte JSON-Ausgabe zurück. Sie können schnell präzise und auf Ihre spezifischen Inhalte zugeschnittene Ergebnisse erzielen, ohne dass komplizierte manuelle Eingriffe oder umfangreiche Data Science-Kenntnisse erforderlich sind. Verwenden Sie die Formularerkennung, um Ihre Datenverarbeitung in Anwendungen und Workflows zu automatisieren, datengesteuerte Strategien zu verbessern und die Suchfunktionen für Dokumente zu erweitern.
+Die Azure-Formularerkennung ist ein cloudbasierter [Azure Applied AI-Dienst](../../applied-ai-services/index.yml), der Machine Learning-Modelle verwendet, um Formularfelder, Text und Tabellen aus Ihren Dokumenten zu extrahieren und zu analysieren. Die Formularerkennung analysiert Ihre Formulare und Dokumente, extrahiert Text und Daten, ordnet Feldbeziehungen als Schlüssel-Wert-Paare zu und gibt eine strukturierte JSON-Ausgabe zurück. Sie können schnell präzise und auf Ihre spezifischen Inhalte zugeschnittene Ergebnisse erzielen, ohne dass komplizierte manuelle Eingriffe oder umfangreiche Data Science-Kenntnisse erforderlich sind. Verwenden Sie die Formularerkennung, um Ihre Datenverarbeitung in Anwendungen und Workflows zu automatisieren, datengesteuerte Strategien zu verbessern und die Suchfunktionen für Dokumente zu erweitern.
 
 Die Formularerkennung kann folgende Dokumentdaten leicht identifizieren, extrahieren und analysieren:
 
@@ -71,9 +71,9 @@ Anhand der Informationen in diesem Abschnitt können Sie entscheiden, welches Fe
 
 | Welche Art von Dokument möchten Sie analysieren?| Wie ist das Dokument formatiert? | Für Sie am besten geeignete Lösung |
 | -----------------|-------------------| ----------|
-|<ul><li>**Rechnung**</li><li>**Rechnung**</li><li>**Visitenkarte**</li></ul>| Ist der Text Ihrer Rechnung, Quittung oder Visitenkarte englisch? | <ul><li>Verwenden Sie bei **Ja** das Modell [**Rechnung**](concept-invoice.md), [**Beleg**](concept-receipt.md), oder [**Visitenkarte**](concept-business-card.md).</li><li>Verwenden Sie bei **Nein** das Modell [**Layout**](concept-layout.md) oder [**Allgemeines Dokument (Vorschau)** ](concept-general-document.md).</li></ul>|
-|<ul><li>**ID-Dokument**</li></ul>| Ist Ihr ID-Dokument ein US-Führerschein oder ein internationaler Pass?| <ul><li>Verwenden Sie bei **Ja** das Modell [**Ausweisdokument**](concept-id-document.md).</li><li>Verwenden Sie bei **Nein** das Modell [**Layout**](concept-layout.md) oder [**Allgemeines Dokument (Vorschau)** ](concept-general-document.md).</li></ul>|
- |<ul><li>**Formular** oder **Dokument**</li></ul>| Ist Ihr Formular oder Dokument ein Branchenstandardformat, das häufig in Ihrem Unternehmen oder Ihrer Branche verwendet wird?| <ul><li>Verwenden Sie bei **Ja** das Modell [**Layout**](concept-layout.md) oder [**Allgemeines Dokument (Vorschau)** ](concept-general-document.md).</li><li>Bei **Nein** können Sie mit [**Trainieren und Erstellen eines benutzerdefinierten Modells**](quickstarts/try-sample-label-tool.md#train-a-custom-form-model) fortfahren.
+|<ul><li>**Rechnung**</li><li>**Rechnung**</li><li>**Visitenkarte**</li></ul>| Ist der Text Ihrer Rechnung, Quittung oder Visitenkarte englisch? | <ul><li>Verwenden Sie bei **Ja** das Modell [**Rechnung**](concept-invoice.md), [**Beleg**](concept-receipt.md), oder [**Visitenkarte**](concept-business-card.md).</li><li>Verwenden Sie bei **Nein** das Modell [**Layout**](concept-layout.md) oder [**Allgemeines Dokument (Vorschau)**](concept-general-document.md).</li></ul>|
+|<ul><li>**ID-Dokument**</li></ul>| Ist Ihr ID-Dokument ein US-Führerschein oder ein internationaler Pass?| <ul><li>Verwenden Sie bei **Ja** das Modell [**Ausweisdokument**](concept-id-document.md).</li><li>Verwenden Sie bei **Nein** das Modell [**Layout**](concept-layout.md) oder [**Allgemeines Dokument (Vorschau)**](concept-general-document.md).</li></ul>|
+ |<ul><li>**Formular** oder **Dokument**</li></ul>| Ist Ihr Formular oder Dokument ein Branchenstandardformat, das häufig in Ihrem Unternehmen oder Ihrer Branche verwendet wird?| <ul><li>Verwenden Sie bei **Ja** das Modell [**Layout**](concept-layout.md) oder [**Allgemeines Dokument (Vorschau)**](concept-general-document.md).</li><li>Bei **Nein** können Sie mit [**Trainieren und Erstellen eines benutzerdefinierten Modells**](quickstarts/try-sample-label-tool.md#train-a-custom-form-model) fortfahren.
 
 ## <a name="how-to-use-form-recognizer-documentation"></a>Verwenden der Dokumentation zur Azure-Formularerkennung
 

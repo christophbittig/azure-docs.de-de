@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.subservice: concepts
 ms.topic: overview
 ms.date: 07/14/2021
-ms.openlocfilehash: 23c4da30e149f10971c4cdec7b99b63e02c45808
-ms.sourcegitcommit: 01dcf169b71589228d615e3cb49ae284e3e058cc
+ms.openlocfilehash: fdec259dc93e52a8bc1271de8af90f4b864afd49
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2021
-ms.locfileid: "130164720"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131842053"
 ---
 # <a name="whats-new-in-azure-data-factory"></a>Neues in Azure Data Factory
 
@@ -61,7 +61,7 @@ Besuchen Sie regelmäßig diese Seite. Diese wird monatlich aktualisiert.
 <tr><td><b>Datenverschiebung</b></td><td>Erstellen von metadatengesteuerten Datenerfassungspipelines im ADF-Tool zum Kopieren von Daten in nur 10 Minuten (Public Preview)</td><td>Mit dem metadatengesteuerten Ansatz des Tools zum Kopieren von Daten (Public Preview) können Sie innerhalb von 10 Minuten umfangreiche Datenkopierpipelines erstellen.<br><a href="https://techcommunity.microsoft.com/t5/azure-data-factory/get-metadata-driven-data-ingestion-pipelines-on-adf-within-10/ba-p/2528219">Weitere Informationen</a></td></tr>
 <tr><td><b>Datenfluss</b></td><td>Neue Zuordnungsfunktionen in Transformationsfunktionen für Datenflüsse</td><td>Es wurde eine neue Gruppe von Transformationsfunktionen für Datenflüsse hinzugefügt, die technischen Fachkräften für Daten das einfache Generieren, Lesen und Aktualisieren von Zuordnungsdatentypen und komplexen Zuordnungsstrukturen ermöglichen.<br><a href="data-flow-expression-functions.md#map-functions">Weitere Informationen</a></td></tr>
 <tr><td><b>Integration Runtime</b></td><td>Fünf neue Regionen im verwalteten virtuellen Netzwerk (VNET) in Azure Data Factory (Public Preview) verfügbar</td><td>Die folgenden fünf neuen Regionen sind im verwalteten virtuellen Netzwerk in Azure Data Factory (Public Preview) verfügbar: „China, Osten 2“, „China, Norden 2“, „US Gov Arizona“, „US Gov Texas“ und „US Gov Virginia“.<br><a href="managed-virtual-network-private-endpoint.md#azure-data-factory-managed-virtual-network-is-available-in-the-following-azure-regions">Weitere Informationen</a></td></tr>
-<tr><td rowspan=2><b>Entwicklerproduktivität</b></td><td>ADF-Startseite mit neuen Sitzungen umgestaltet</td><td>Die Data Factory-Startseite wurde mit besseren Kontrast- und Umbruchfunktionen umgestaltet. Darüber hinaus wurden einige Abschnitte auf der Startseite eingeführt, mit denen Sie die Produktivität bei Ihrer Datenintegrations-Journey verbessern können.<br><a href="https://techcommunity.microsoft.com/t5/azure-data-factory/the-new-and-refreshing-data-factory-home-page/ba-p/2515076">Weitere Informationen</a></td></tr>
+<tr><td rowspan=2><b>Entwicklerproduktivität</b></td><td>Verbesserungen an der ADF-Startseite</td><td>Die Data Factory-Startseite wurde mit besseren Kontrast- und Umbruchfunktionen umgestaltet. Darüber hinaus wurden einige Abschnitte auf der Startseite eingeführt, mit denen Sie die Produktivität bei Ihrer Datenintegrations-Journey verbessern können.<br><a href="https://techcommunity.microsoft.com/t5/azure-data-factory/the-new-and-refreshing-data-factory-home-page/ba-p/2515076">Weitere Informationen</a></td></tr>
 <tr><td>Neue Landing Page für Azure Data Factory Studio</td><td>Die Landing Page für das Blatt „Data Factory“ im Azure-Portal wurde überarbeitet.<br><a href="https://techcommunity.microsoft.com/t5/azure-data-factory/the-new-and-refreshing-data-factory-home-page/ba-p/2515076">Weitere Informationen</a></td></tr>
 </table>
 
