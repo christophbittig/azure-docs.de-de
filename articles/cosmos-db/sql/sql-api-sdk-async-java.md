@@ -60,7 +60,7 @@ Das Async Java SDK für die SQL-API unterscheidet sich vom Java SDK für die SQL
 | **Leistungstipps**| [GitHub-Infodatei](https://github.com/Azure/azure-cosmosdb-java#guide-for-prod)| 
 | **Unterstützte Mindestlaufzeit**|[JDK 8](/java/azure/jdk/) | 
 
-[!INCLUDE [Release notes](~/azure-cosmosdb-java-v2/changelog/README.md)]
+
 ## <a name="faq"></a>Häufig gestellte Fragen
 [!INCLUDE [cosmos-db-sdk-faq](../includes/cosmos-db-sdk-faq.md)]
 
