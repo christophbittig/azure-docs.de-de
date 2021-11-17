@@ -7,104 +7,44 @@ ms.subservice: azure-arc-data
 author: twright-msft
 ms.author: twright
 ms.reviewer: mikeray
-ms.date: 07/30/2021
+ms.date: 11/03/2021
 ms.topic: how-to
-ms.openlocfilehash: 2c4e25aebf46ea13b69b8ca24d1336c4ba5521ad
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: b54d77c5abb5e8043368ad1e8bce3d3865e68fd7
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122340290"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131558760"
 ---
 # <a name="upload-billing-data-to-azure-and-view-it-in-the-azure-portal"></a>Hochladen von Abrechnungsdaten in Azure und Anzeigen im Azure-Portal
 
-> [!IMPORTANT] 
->  Während des Vorschauzeitraums fallen keine Kosten für die Nutzung von Azure Arc-fähigen Datendiensten an. Obwohl das Abrechnungssystem end-to-end funktioniert, ist die Verbrauchseinheit für die Abrechnung auf 0 USD festgelegt.  Wenn Sie diesem Szenario folgen, sehen Sie in Ihrer Abrechnung Einträge für einen Dienst mit dem Namen **hybrid data services** und für Ressourcen eines Typs mit dem Namen **Microsoft.AzureArcData/`<resource type>`** . Es wird ein Datensatz für jeden Datendienst in Azure Arc angezeigt, den Sie erstellen. Jeder Datensatz wird jedoch mit 0 USD berechnet.
+
 
 
 ## <a name="connectivity-modes---implications-for-billing-data"></a>Konnektivitätsmodi: Auswirkungen auf Abrechnungsdaten
 
-In Zukunft gibt es zwei Modi, in denen Sie Ihre Azure Arc-fähigen Datendienste ausführen können:
+Es gibt zwei Modi, in denen Sie Ihre Azure Arc-fähigen Datendienste bereitstellen können:
 
 - **Indirekt verbunden**: Es gibt keine direkte Verbindung mit Azure. Daten werden nur über einen Export-/Uploadprozess an Azure gesendet.
-- **Direkt verbunden:** In diesem Modus besteht eine Abhängigkeit vom Azure Arc-fähigen Kubernetes-Dienst, um eine direkte Verbindung zwischen Azure und dem Kubernetes-Cluster bereitzustellen, in dem die Azure Arc-fähigen Datendienste ausgeführt werden. Dies ermöglicht mehr Funktionen und erlaubt es Ihnen auch, das Azure-Portal und die Azure CLI zu nutzen, um Ihre Azure Arc-fähigen Datendienste so zu verwalten, wie Sie Ihre Datendienste in Azure PaaS verwalten.  Dieser Konnektivitätsmodus ist in der Vorschau noch nicht verfügbar, wird jedoch in Kürze bereitgestellt werden.
+- **Direkt verbunden:** In diesem Modus besteht eine Abhängigkeit vom Azure Arc-fähigen Kubernetes-Dienst, um eine direkte Verbindung zwischen Azure und dem Kubernetes-Cluster bereitzustellen, in dem die Azure Arc-fähigen Datendienste bereitgestellt werden. Dies ermöglicht mehr Funktionen von Azure und erlaubt Ihnen auch, das Azure-Portal zu nutzen, um Ihre Azure Arc-fähigen Datendienste so zu verwalten, wie Sie Ihre Datendienste in Azure PaaS verwalten.  
 
 Sie können mehr über den Unterschied zwischen den [Verbindungsmodi](./connectivity.md) erfahren.
 
 Im indirekt verbundenen Modus werden Abrechnungsdaten regelmäßig aus dem Azure Arc-Datencontroller in eine sichere Datei exportiert und dann in Azure hochgeladen und verarbeitet.  Im zukünftigen direkt verbundenen Modus werden die Abrechnungsdaten ungefähr ein Mal pro Stunde automatisch an Azure gesendet, um einen Einblick in die Kosten Ihrer Dienste nahezu in Echtzeit zu ermöglichen. Der Prozess des Exports und Uploads der Daten im indirekt verbundenen Modus kann auch mit Hilfe von Skripts automatisiert werden, oder wir erstellen einen Dienst, der dies für Sie erledigt.
 
-## <a name="upload-billing-data-to-azure"></a>Hochladen von Abrechnungsdaten in Azure
+## <a name="upload-billing-data-to-azure---indirectly-connected-mode"></a>Hochladen von Abrechnungsdaten in Azure: indirekt verbundener Modus
+
+> [!NOTE]
+> Das Hochladen von Nutzungsdaten (für die Abrechnung) erfolgt im direkt verbundenen Modus automatisch. Die folgenden Anweisungen gelten nur für den indirekt verbundenen Modus. 
 
 Um Abrechnungsdaten in Azure hochzuladen, sollte zunächst Folgendes geschehen:
 
 1. Erstellen Sie bei Bedarf einen Azure Arc-fähigen Datendienst. Erstellen Sie beispielsweise Folgendes:
    - [Erstellen einer verwalteten Azure SQL-Instanz in Azure Arc](create-sql-managed-instance.md)
    - [Erstellen einer Azure Arc-fähigen PostgreSQL Hyperscale-Servergruppe](create-postgresql-hyperscale-server-group.md)
-1. [Laden Sie Ressourcenbestandsdaten, Nutzungsdaten, Metriken und Protokolle in Azure Monitor hoch](upload-metrics-and-logs-to-azure-monitor.md), falls dies noch nicht geschehen ist.
-1. Warten Sie nach der Erstellung des Datendiensts mindestens zwei Stunden, damit der Abrechnungstelemetrie-Erfassungsprozess einige Abrechnungsdaten erfassen kann.
+2. Warten Sie nach der Erstellung des Datendiensts mindestens zwei Stunden, damit der Abrechnungstelemetrie-Erfassungsprozess einige Abrechnungsdaten erfassen kann.
+3. Führen Sie die unter [Hochladen von Ressourceninventardaten, Nutzungsdaten, Metriken und Protokollen in Azure Monitor](upload-metrics-and-logs-to-azure-monitor.md) beschriebenen Schritte aus, um die Voraussetzungen für das Hochladen von Verbrauchs-/Abrechnungs-/Protokolldaten zu erfüllen, und fahren Sie dann mit den [Hochladen von Nutzungsdaten in Azure](upload-usage-data.md) fort. 
 
-Führen Sie den folgenden Befehl aus, um die Abrechnungsdaten zu exportieren:
-
-```azurecli
-az arcdata dc export -t usage -p usage.json --k8s-namespace <namespace> --use-k8s
-```
-
-Vorerst ist die Datei nicht verschlüsselt, sodass der Inhalt angezeigt werden kann. Sie können sie in einem Text-Editor öffnen, um den Inhalt anzuzeigen.
-
-Sie werden feststellen, dass es zwei Datensätze gibt: `resources` und `data`. Die `resources` sind der Datencontroller, die PostgreSQL Hyperscale-Servergruppen und SQL Managed Instances. Die `resources`-Datensätze in den Daten erfassen die relevanten Ereignisse im Verlauf einer Ressource: wann sie erstellt, aktualisiert und gelöscht wurde. Mit den `data`-Datensätzen wird erfasst, wie viele Kerne für eine bestimmte Instanz pro Stunde verfügbar waren.
-
-Beispiel für einen `resource`-Eintrag:
-
-```console
-    {
-        "customObjectName": "<resource type>-2020-29-5-23-13-17-164711",
-        "uid": "4bc3dc6b-9148-4c7a-b7dc-01afc1ef5373",
-        "instanceName": "sqlInstance001",
-        "instanceNamespace": "arc",
-        "instanceType": "<resource>",
-        "location": "eastus",
-        "resourceGroupName": "production-resources",
-        "subscriptionId": "482c901a-129a-4f5d-86e3-cc6b294590b2",
-        "isDeleted": false,
-        "externalEndpoint": "32.191.39.83:1433",
-        "vCores": "2",
-        "createTimestamp": "05/29/2020 23:13:17",
-        "updateTimestamp": "05/29/2020 23:13:17"
-    }
-```
-
-Beispiel für einen `data`-Eintrag:
-
-```console
-        {
-          "requestType": "usageUpload",
-          "clusterId": "4b0917dd-e003-480e-ae74-1a8bb5e36b5d",
-          "name": "DataControllerTestName",
-          "subscriptionId": "482c901a-129a-4f5d-86e3-cc6b294590b2",
-          "resourceGroup": "production-resources",
-          "location": "eastus",
-          "uploadRequest": {
-            "exportType": "usages",
-            "dataTimestamp": "2020-06-17T22:32:24Z",
-            "data": "[{\"name\":\"sqlInstance001\",
-                       \"namespace\":\"arc\",
-                       \"type\":\"<resource type>\",
-                       \"eventSequence\":1, 
-                       \"eventId\":\"50DF90E8-FC2C-4BBF-B245-CB20DC97FF24\",
-                       \"startTime\":\"2020-06-17T19:11:47.7533333\",
-                       \"endTime\":\"2020-06-17T19:59:00\",
-                       \"quantity\":1,
-                       \"id\":\"4BC3DC6B-9148-4C7A-B7DC-01AFC1EF5373\"}]",
-           "signature":"MIIE7gYJKoZIhvcNAQ...2xXqkK"
-          }
-        }
-```
-
-Führen Sie den folgenden Befehl aus, um die Datei „usage.json“ in Azure hochzuladen.
-
-```azurecli
-az arcdata dc upload -p usage.json
-```
 
 ## <a name="view-billing-data-in-azure-portal"></a>Anzeigen von Abrechnungsdaten im Azure-Portal
 

@@ -11,12 +11,12 @@ ms.author: tracych
 ms.date: 10/21/2021
 ms.reviewer: laobri
 ms.custom: devplatv2
-ms.openlocfilehash: ad4c69509430fc448e5432237a3d9c6af6fd5c18
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: 351855c870f3f3658488c66c401cef1c3c4b17c4
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131566424"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132059807"
 ---
 # <a name="deploy-models-with-rest-preview-for-batch-scoring"></a>Bereitstellen von Modellen mit REST (Vorschau) für die Batchbewertung 
 
@@ -52,7 +52,7 @@ In diesem Artikel wird beschrieben, wie Sie die neuen REST-APIs für folgende Zw
 > [!NOTE]
 > Batchendpunktnamen müssen auf Azure-Regionsebene eindeutig sein. Beispielsweise kann es nur einen Batchendpunkt mit dem Namen „mybatchendpoint“ in westus2 geben.
 
-:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/batch-score-rest.sh" id="set_endpoint_name":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/batch-score-rest.sh" id="set_endpoint_name":::
 
 ## <a name="azure-machine-learning-batch-endpoints"></a>Batchendpunkte in Azure Machine Learning
 
@@ -68,18 +68,18 @@ In den folgenden REST-API-Aufrufen verwenden wir `SUBSCRIPTION_ID`, `RESOURCE_GR
 
 Für administrative REST-Anforderungen wird ein [Token für die Dienstprinzipalauthentifizierung](how-to-manage-rest.md#retrieve-a-service-principal-authentication-token) angefordert. Ersetzen Sie `TOKEN` durch Ihren eigenen Wert. Sie können dieses Token mit dem folgenden Befehl abrufen:
 
-:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/batch-score-rest.sh" range="13":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/batch-score-rest.sh" range="13":::
 
 Der Dienstanbieter verwendet das `api-version`-Argument, um Kompatibilität zu gewährleisten. Das `api-version`-Argument variiert von Dienst zu Dienst. Legen Sie die API-Version zur Vorbereitung für zukünftige Versionen als Variable fest:
 
-:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/batch-score-rest.sh" range="11":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/batch-score-rest.sh" range="11":::
 
 ### <a name="create-compute"></a>Erstellen von Computeressourcen
 Die Batchbewertung wird nicht lokal, sondern nur auf Cloud Computing-Ressourcen ausgeführt. Die Cloud Computing-Ressource ist ein wiederverwendbarer, virtueller Computecluster, in dem Sie Batchbewertungsworkflows ausführen können.
 
 So erstellen Sie ein Computecluster:
 
-:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/batch-score-rest.sh" id="create_compute":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/batch-score-rest.sh" id="create_compute":::
 
 > [!TIP]
 > Wenn Sie stattdessen einen vorhandenen Computecluster verwenden möchten, müssen Sie beim [Erstellen der Batchbereitstellung](#create-batch-deployment) die vollständige Azure Resource Manager-ID angeben. Die vollständige ID verwendet das Format `/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP/providers/Microsoft.MachineLearningServices/workspaces/$WORKSPACE/computes/<your-compute-name>`.
@@ -90,41 +90,41 @@ Um das Modell und den Code zu registrieren, müssen sie zuerst in ein Speicherko
 
 Sie können das Tool [jq](https://stedolan.github.io/jq/) verwenden, um das JSON-Ergebnis zu analysieren und die erforderlichen Werte zu ermitteln. Sie können diese Informationen auch über das Azure-Portal ermitteln:
 
-:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/batch-score-rest.sh" id="get_storage_details":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/batch-score-rest.sh" id="get_storage_details":::
 
 ### <a name="upload--register-code"></a>Hochladen und Registrieren des Codes
 
 Nachdem Sie über den Datenspeicher verfügen, können Sie das Bewertungsskript hochladen. Verwenden Sie die Azure Storage-CLI, um ein Blob in Ihren Standardcontainer hochzuladen:
 
-:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/batch-score-rest.sh" id="upload_code":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/batch-score-rest.sh" id="upload_code":::
 
 > [!TIP]
 > Sie können auch andere Uploadmethoden verwenden, z. B. das Azure-Portal oder [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/).
 
 Nachdem Sie Ihren Code hochgeladen haben, können Sie Ihren Code mit einer PUT-Anforderung angeben:
 
-:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/batch-score-rest.sh" id="create_code":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/batch-score-rest.sh" id="create_code":::
 
 ### <a name="upload-and-register-model"></a>Hochladen und Registrieren des Modells
 
 Laden Sie die Modelldateien ähnlich wie den Code hoch:
 
-:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/batch-score-rest.sh" id="upload_model":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/batch-score-rest.sh" id="upload_model":::
 
 Registrieren Sie jetzt das Modell:
 
-:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/batch-score-rest.sh" id="create_model":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/batch-score-rest.sh" id="create_model":::
 
 ### <a name="create-environment"></a>Erstellen der Umgebung
 Die Bereitstellung muss in einer Umgebung ausgeführt werden, die über die erforderlichen Abhängigkeiten verfügt. Erstellen Sie die Umgebung mit einer PUT-Anforderung. Verwenden Sie ein Docker-Image aus Microsoft Container Registry. Sie können das Docker-Image mit `image` konfigurieren und Conda-Abhängigkeiten mit `condaFile` hinzufügen.
 
 Führen Sie den folgenden Code aus, um die im JSON-Format definierte `condaFile` zu lesen. Die Quelldatei befindet sich unter `/cli/endpoints/batch/mnist/environment/conda.json` im Beispielrepository:
 
-:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/batch-score-rest.sh" id="read_condafile":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/batch-score-rest.sh" id="read_condafile":::
 
 Führen Sie nun den folgenden Codeausschnitt aus, um eine Umgebung zu erstellen:
 
-:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/batch-score-rest.sh" id="create_environment":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/batch-score-rest.sh" id="create_environment":::
 
 ## <a name="deploy-with-batch-endpoints"></a>Bereitstellen mit Batchendpunkten
 
@@ -134,19 +134,19 @@ Erstellen Sie als Nächstes den Batchendpunkt, eine Bereitstellung, und legen Si
 
 So erstellen Sie den Batchendpunkt:
 
-:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/batch-score-rest.sh" id="create_endpoint":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/batch-score-rest.sh" id="create_endpoint":::
 
 ### <a name="create-batch-deployment"></a>Erstellen einer Batchbereitstellung
 
 So erstellen Sie eine Batchbereitstellung unter dem Endpunkt:
 
-:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/batch-score-rest.sh" id="create_deployment":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/batch-score-rest.sh" id="create_deployment":::
 
 ### <a name="set-the-default-batch-deployment-under-the-endpoint"></a>Festlegen der Standardbatchbereitstellung unter dem Endpunkt
 
 Es gibt nur eine Standardbatchbereitstellung unter einem Endpunkt, die beim Aufrufen zum Ausführen eines Batchbewertungsauftrags verwendet wird.
 
-:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/batch-score-rest.sh" id="set_endpoint_defaults":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/batch-score-rest.sh" id="set_endpoint_defaults":::
 
 ## <a name="run-batch-scoring"></a>Ausführen der Batchbewertung
 
@@ -156,23 +156,23 @@ Das Aufrufen eines Batchendpunkts löst einen Batchbewertungsauftrag aus. Eine A
 
 Rufen Sie den Bewertungs-URI und das Zugriffstoken zum Aufrufen des Batchendpunkts ab. Rufen Sie zunächst den Bewertungs-URI ab:
 
-:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/batch-score-rest.sh" id="get_endpoint":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/batch-score-rest.sh" id="get_endpoint":::
 
 So rufen Sie das Zugriffstoken des Batchendpunkts ab:
 
-:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/batch-score-rest.sh" id="get_access_token":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/batch-score-rest.sh" id="get_access_token":::
 
 Rufen Sie nun den Batchendpunkt auf, um einen Batchbewertungsauftrag zu starten. Im folgenden Beispiel werden Daten bewertet, die öffentlich in der Cloud verfügbar sind:
 
-:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/batch-score-rest.sh" id="score_endpoint_with_data_in_cloud":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/batch-score-rest.sh" id="score_endpoint_with_data_in_cloud":::
 
 Wenn Ihre Daten in einem registrierten Azure Machine Learning-Datenspeicher gespeichert sind, können Sie den Batchendpunkt mit einem Dataset aufrufen. Mit dem folgenden Code wird ein neues Dataset erstellt:
 
-:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/batch-score-rest.sh" id="create_dataset":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/batch-score-rest.sh" id="create_dataset":::
 
 Verweisen Sie anschließend beim Aufrufen des Batchendpunkts auf das Dataset:
 
-:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/batch-score-rest.sh" id="score_endpoint_with_dataset":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/batch-score-rest.sh" id="score_endpoint_with_dataset":::
 
 Im vorherigen Codeausschnitt wird mithilfe von `datastoreId`, `path` und `outputFileName` ein benutzerdefinierter Ausgabespeicherort bereitgestellt. Mit diesen Einstellungen können Sie konfigurieren, wo die Ergebnisse der Batchbewertung gespeichert werden.
 
@@ -181,7 +181,7 @@ Im vorherigen Codeausschnitt wird mithilfe von `datastoreId`, `path` und `output
 
 In diesem Beispiel wird die Ausgabe im Standardblobspeicher für den Arbeitsbereich gespeichert. Der Ordnername ist identisch mit dem Endpunktnamen, und der Dateiname wird nach dem Zufallsprinzip durch den folgenden Code generiert:
 
-:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/batch-score-rest.sh" ID="unique_output" :::
+:::code language="azurecli" source="~/azureml-examples-main/cli/batch-score-rest.sh" ID="unique_output" :::
 
 ### <a name="check-the-batch-scoring-job"></a>Überprüfen des Batchbewertungsauftrags
 
@@ -190,7 +190,7 @@ Bei Batchbewertungsaufträgen dauert es in der Regel etwas, bis sämtliche Einga
 > [!TIP]
 > Im Beispiel wird die Standardbereitstellung des Batchendpunkts aufgerufen. Um eine nicht standardmäßige Bereitstellung aufzurufen, verwenden Sie den `azureml-model-deployment`-HTTP-Header, und legen Sie den Wert auf den Bereitstellungsnamen fest. Beispiel: Verwenden eines Parameters von `--header "azureml-model-deployment: $DEPLOYMENT_NAME"` mit cURL
 
-:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/batch-score-rest.sh" id="check_job":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/batch-score-rest.sh" id="check_job":::
 
 ### <a name="check-batch-scoring-results"></a>Überprüfen der Ergebnisse der Batchbewertung
 
@@ -200,7 +200,7 @@ Informationen zum Überprüfen der Ergebnisse finden Sie unter [Überprüfung vo
 
 Wenn Sie den Batchendpunkt nicht verwenden, sollten Sie ihn mit dem folgenden Befehl löschen (der Endpunkt und alle zugrunde liegenden Bereitstellungen werden gelöscht):
 
-:::code language="rest-api" source="~/azureml-examples-cli-preview/cli/batch-score-rest.sh" id="delete_endpoint":::
+:::code language="rest-api" source="~/azureml-examples-main/cli/batch-score-rest.sh" id="delete_endpoint":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

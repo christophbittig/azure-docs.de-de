@@ -7,16 +7,16 @@ manager: CelesteDG
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/01/2021
+ms.date: 10/22/2021
 ms.author: kengaderdus
 ms.subservice: B2C
 ms.custom: b2c-support
-ms.openlocfilehash: 0e5b8daff5c3e13524d5193e97588a7ecc1bff65
-ms.sourcegitcommit: 91915e57ee9b42a76659f6ab78916ccba517e0a5
+ms.openlocfilehash: fe6b7e334352630eb3797cb96b33422a84721813
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2021
-ms.locfileid: "130043812"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130266104"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Übersicht über Benutzerkonten in Azure Active Directory B2C
 
@@ -25,7 +25,7 @@ In Azure Active Directory B2C (Azure AD B2C) gibt es mehrere Kontoarten, die ers
 Die folgenden Arten von Konten sind verfügbar:
 
 - **Geschäftskonto**: Ein Geschäftskonto kann auf Ressourcen in einem Mandanten zugreifen und mit einer Administratorrolle Mandanten verwalten.
-- **Gastkonto:** Ein Gastkonto kann nur ein Microsoft-Konto oder ein Azure AD-Benutzerkonto sein, das für den Zugriff auf Anwendungen oder die Verwaltung von Mandanten verwendet werden kann.
+- **Gastkonto:** Ein Gastkonto kann nur ein Microsoft-Konto oder ein Azure AD-Benutzerkonto sein, das für die Freigabe von Verwaltungsaufgaben wie das [Verwalten eines Mandanten](tenant-management.md) verwendet werden kann.
 - **Consumerkonto**: Ein Consumerkonto wird von einem Benutzer der Anwendungen verwendet, die Sie bei Azure AD B2C registriert haben. Consumerkonten können wie folgt erstellt werden:
   - Durch den Benutzer, der einen Benutzeranmeldeflow in einer Azure AD B2C-Anwendung durchläuft
   - Mithilfe der Microsoft Graph-API

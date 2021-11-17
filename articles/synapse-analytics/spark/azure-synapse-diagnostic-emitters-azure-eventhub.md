@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 08/31/2021
-ms.openlocfilehash: da6a02c12c9e24d4091c632fbf73a0cc97255afa
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 2370e3895cc70a4303c9d91d300b47b32913ac7a
+ms.sourcegitcommit: 27ddccfa351f574431fb4775e5cd486eb21080e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130223099"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131996317"
 ---
 # <a name="collect-your-apache-spark-applications-logs-and-metrics-using-azure-event-hubs"></a>Sammeln Ihrer Apache Spark-Anwendungsprotokolle und -Metriken mithilfe von Azure Event Hubs 
 
@@ -59,6 +59,7 @@ Eine ausführlichere Beschreibung der Parameter finden Sie unter [Azure EventHu
 | `spark.synapse.diagnostic.emitter.<destination>.secret`                     | Optional. Die Verbindungszeichenfolge der Azure Eventhub-Instanz. Dieses Feld muss dem folgenden Muster entsprechen: `Endpoint=sb://<FQDN>/;SharedAccessKeyName=<KeyName>;SharedAccessKey=<KeyValue>;EntityPath=<PathName>`. |
 | `spark.synapse.diagnostic.emitter.<destination>.secret.keyVault`            | Erforderlich, wenn `.secret` nicht angegeben wird. Der Name der [Azure Key Vault-Instanz](../../key-vault/general/overview.md), in der das Geheimnis (Verbindungszeichenfolge) gespeichert ist.                                                                  |
 | `spark.synapse.diagnostic.emitter.<destination>.secret.keyVault.secretName` | Erforderlich, wenn `.secret.keyVault` angegeben wird. Der Name des Azure Key Vault-Geheimnisses, in dem das Geheimnis (Verbindungszeichenfolge) gespeichert ist.                                                                         |
+| `spark.synapse.diagnostic.emitter.<destination>.secret.keyVault.linkedService` | Optional. Der Name des mit Azure Key Vault verknüpften Diensts. Bei Aktivierung in der Synapse-Pipeline ist dieser Name erforderlich, um das Geheimnis aus AKV abzurufen. (Stellen Sie sicher, dass MSI über Leseberechtigung für AKV verfügt.) |
 | `spark.synapse.diagnostic.emitter.<destination>.filter.eventName.match`     | Optional. Kommagetrennte Liste mit Spark-Ereignisnamen, um anzugeben, welche Ereignisse gesammelt werden sollen. Beispiel: `SparkListenerApplicationStart,SparkListenerApplicationEnd` |
 | `spark.synapse.diagnostic.emitter.<destination>.filter.loggerName.match`    | Optional. Kommagetrennte Liste mit log4j-Protokollierungsnamen, um anzugeben, welche Protokolle gesammelt werden sollen. Beispiel: `org.apache.spark.SparkContext,org.example.Logger` |
 | `spark.synapse.diagnostic.emitter.<destination>.filter.metricName.match`    | Optional. Kommagetrennte Liste mit Spark-Metriknamensuffixen, um anzugeben, welche Metriken gesammelt werden sollen. Beispiel: `jvm.heap.used` |

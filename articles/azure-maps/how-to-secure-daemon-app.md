@@ -2,20 +2,20 @@
 title: Schützen einer Daemonanwendung in Microsoft Azure Maps
 titleSuffix: Azure Maps
 description: In diesem Artikel wird beschrieben, wie Sie Daemonanwendungen wie Hintergrundprozesse, Timer und Aufträge in einer vertrauenswürdigen und sicheren Umgebung in Microsoft Azure Maps hosten.
-author: anastasia-ms
-ms.author: v-stharr
-ms.date: 06/21/2021
+author: stevemunk
+ms.author: v-munksteve
+ms.date: 10/28/2021
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
-manager: philema
+manager: eriklind
 custom.ms: subject-rbac-steps
-ms.openlocfilehash: b888dccbd7ce5cbf948b2da5494dd554b2d80649
-ms.sourcegitcommit: 5fabdc2ee2eb0bd5b588411f922ec58bc0d45962
+ms.openlocfilehash: e64645f7bdcbfb40cbee0fd29d1df2464a5d4f3e
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2021
-ms.locfileid: "112541768"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131450854"
 ---
 # <a name="secure-a-daemon-application"></a>Schützen einer Daemon-Anwendung
 
@@ -202,7 +202,7 @@ So fordern Sie das Zugriffstoken an:
 
 4. Wählen Sie Ihre Anwendung aus.
 
-5. Daraufhin sollte die Übersicht angezeigt werden. Kopieren Sie die Anwendungs-ID (Client-ID) und die Verzeichnis-ID (Mandant).
+5. Daraufhin sollte die Übersicht angezeigt werden. Kopieren Sie die Anwendungs-ID (Client) und die Verzeichnis-ID (Mandant).
 
       :::image type="content" border="true" source="./media/how-to-manage-authentication/get-token-params.png" alt-text="Kopieren von Tokenparametern":::
 
@@ -216,10 +216,10 @@ Hier wird die Anwendung [Postman](https://www.postman.com/) für die Tokenanford
 
 4. Wählen Sie als HTTP-Methode **POST** aus.
 
-5. Geben Sie die folgende URL in die Adressleiste ein (ersetzen Sie `<Tenant ID>` durch die Verzeichnis-ID (Mandant), `<Client ID>` durch die Anwendungs-ID (Client) und `<Client Secret>` durch Ihren geheimen Clientschlüssel):
+5. Geben Sie die folgende URL in die Adressleiste ein (ersetzen Sie `{Tenant-ID}` durch die Verzeichnis-ID (Mandant), `{Client-ID}` durch die Anwendungs-ID (Client) und `{Client-Secret}` durch Ihren geheimen Clientschlüssel):
 
     ```http
-    https://login.microsoftonline.com/<Tenant ID>/oauth2/v2.0/token?response_type=token&grant_type=client_credentials&client_id=<Client ID>&client_secret=<Client Secret>%3D&scope=api%3A%2F%2Fazmaps.fundamentals%2F.default
+    https://login.microsoftonline.com/{Tenant-ID}/oauth2/v2.0/token?response_type=token&grant_type=client_credentials&client_id={Client-ID}&client_secret={Client-Secret}%3D&scope=api%3A%2F%2Fazmaps.fundamentals%2F.default
     ```
 
 6. Wählen Sie **Senden** aus.

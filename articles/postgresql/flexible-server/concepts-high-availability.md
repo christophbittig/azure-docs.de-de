@@ -5,13 +5,13 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 07/30/2021
-ms.openlocfilehash: c8108540f77d323c46cc88caa628764b40c59e74
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.date: 10/26/2021
+ms.openlocfilehash: 80b0d18eec8bbc37eda407d07873786f4155f4be
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128597985"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131422613"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-postgresql---flexible-server"></a>Hochverfügbarkeitskonzepte für Azure Database for PostgreSQL – Flexible Server
 
@@ -92,7 +92,9 @@ Der flexible Server bietet zwei Methoden, um ein bedarfsgesteuertes Failover auf
 
 Mit diesem Feature können Sie das Szenario eines ungeplanten Ausfalls simulieren, während Ihr Workload in der Produktion läuft, und die Ausfallzeiten Ihrer Anwendung beobachten. Für den seltenen Fall, dass Ihr primärer Server aus irgendeinem Grund nicht mehr reagiert, können Sie dieses Feature auch verwenden. 
 
-Mit diesem Feature wird der primäre Server heruntergefahren und der Failoverworkflow eingeleitet, in dem das Höherstufen des Standbyservers erfolgt. Sobald der Standbyserver den Wiederherstellungsvorgang bis zu den letzten Commitdaten abgeschlossen hat, wird er zum primären Server höher gestuft. DNS-Einträge werden aktualisiert, und Ihre Anwendung kann eine Verbindung mit dem höher gestuften primären Server herstellen. Ihre Anwendung kann weiterhin Daten auf den primären Server schreiben, während im Hintergrund ein neuer Standbyserver eingerichtet wird. Die folgenden Schritte werden ausgeführt:
+Mit diesem Feature wird der primäre Server heruntergefahren und der Failoverworkflow eingeleitet, in dem das Höherstufen des Standbyservers erfolgt. Sobald der Standbyserver den Wiederherstellungsvorgang bis zu den letzten Commitdaten abgeschlossen hat, wird er zum primären Server höher gestuft. DNS-Einträge werden aktualisiert, und Ihre Anwendung kann eine Verbindung mit dem höher gestuften primären Server herstellen. Ihre Anwendung kann weiterhin Daten auf den primären Server schreiben, während im Hintergrund ein neuer Standbyserver eingerichtet wird. Dies wirkt sich nicht auf die Betriebszeit aus. 
+
+Während des erzwungenen Failovers werden die folgenden Schritte ausgeführt:
 
   | **Schritt** | **Beschreibung** | **Sind Ausfallzeiten für Apps zu erwarten?** |
   | ------- | ------ | ----- |
@@ -109,6 +111,9 @@ Mit diesem Feature wird der primäre Server heruntergefahren und der Failoverwor
   | 11 | Der erzwungene Failoverprozess ist abgeschlossen. | Nein |
 
 Es wird erwartet, dass die Ausfallzeit der Anwendung nach Schritt 1 beginnt und bis zum Abschluss von Schritt 6 anhält. Die übrigen Schritte erfolgen im Hintergrund, ohne die Schreib- und Commitvorgänge der Anwendung zu beeinträchtigen.
+
+>[!Important]
+>Der End-to-End-Failoverprozess umfasst (a) das Failover auf den Standbyserver nach dem Ausfall des primären Servers und (b) das Einrichten eines neuen Standbyservers in einem stabilen Zustand. Da für Ihre Anwendung nur so lange Ausfallzeiten auftreten, bis das Failover auf den Standbyserver abgeschlossen ist, **messen Sie die Ausfallzeit aus Anwendungs-/Clientperspektive** anstelle des gesamten End-to-End-Failoverprozesses. 
 
 ### <a name="planned-failover"></a>Geplantes Failover
 
@@ -178,7 +183,8 @@ Bei mit Hochverfügbarkeit konfigurierten flexiblen Servern werden Protokolldate
 
 * Standbyreplikate können nicht für Leseabfragen verwendet werden.
 
-* Je nach Workload und Aktivität auf dem primären Server kann der Failoverprozess aufgrund der Wiederherstellung im Standbyreplikat länger als 120 Sekunden dauern, bevor es höher gestuft werden kann.
+* Je nach Workload und Aktivität auf dem primären Server kann der Failoverprozess aufgrund der Wiederherstellung im Standbyreplikat länger als 120 Sekunden dauern, bevor es höher gestuft werden kann. 
+* Der Standbyserver stellt WAL-Dateien in der Regel mit einer Geschwindigkeit von 40 MB/s wieder her. Wenn Ihre Workload diesen Grenzwert überschreitet, kann die Wiederherstellung entweder während des Failovers oder nach dem Einrichten eines neuen Standbyservers länger dauern. 
 
 * Ein Neustart des primären Datenbankservers führt auch zu einem Neustart des Standbyreplikats. 
 

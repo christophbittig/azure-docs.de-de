@@ -2,22 +2,22 @@
 title: Temporäre Tabellen
 description: Wichtige Anleitungen zur Verwendung von temporären Tabellen in einem dedizierten SQL-Pool mit besonderem Fokus auf den Grundsätzen von temporären Tabellen auf Sitzungsebene.
 services: synapse-analytics
-author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 04/01/2019
-ms.author: xiaoyul
-ms.reviewer: igorstan
-ms.openlocfilehash: 9898bc94aa79b374174f80592dc250e660f7f8c3
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.date: 11/02/2021
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: ''
+ms.openlocfilehash: b63b6f017771325dd752905502bd8feb6479f5c4
+ms.sourcegitcommit: 2cc9695ae394adae60161bc0e6e0e166440a0730
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122355269"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131500714"
 ---
-# <a name="temporary-tables-in-dedicated-sql-pool"></a>Temporäre Tabellen im dedizierten SQL-Pool
+# <a name="temporary-tables-in-dedicated-sql-pool-in-azure-synapse-analytics"></a>Temporäre Tabellen in einem dedizierten SQL-Pool in Azure Synapse Analytics
 
 Dieser Artikel enthält wichtige Anleitungen zur Verwendung von temporären Tabellen. Zudem werden die Grundsätze von temporären Tabellen auf Sitzungsebene behandelt. 
 
@@ -27,7 +27,7 @@ Mit den Informationen in diesem Artikel können Sie Ihren Code modularisieren un
 
 Temporäre Tabellen sind nützlich bei der Verarbeitung von Daten – vor allem bei Transformationen, bei denen die Zwischenergebnisse vorübergehend sind. In einem dedizierten SQL-Pool befinden sich temporäre Tabellen auf Sitzungsebene.  
 
-Temporäre Tabellen sind nur für die Sitzung sichtbar, in der sie erstellt wurden, und sie werden automatisch verworfen, wenn die Sitzung abgemeldet wird.  
+Temporäre Tabellen sind nur für die Sitzung sichtbar, in der sie erstellt wurden, und sie werden automatisch verworfen, wenn die Sitzung geschlossen wird.  
 
 Temporäre Tabellen verfügen über einen Leistungsvorteil, da ihre Ergebnisse nicht in den Remotespeicher geschrieben werden, sondern in den lokalen Speicher.
 
@@ -99,10 +99,8 @@ GROUP BY
 
 > [!NOTE]
 > `CTAS` ist ein leistungsfähiger Befehl und bietet den zusätzlichen Vorteil, dass er den Speicherplatz für das Transaktionsprotokoll effizient verwendet. 
-> 
-> 
 
-## <a name="dropping-temporary-tables"></a>Löschen von temporären Tabellen
+## <a name="drop-temporary-tables"></a>Löschen temporärer Tabellen
 Beim Erstellen einer neuen Sitzung sollten keine temporären Tabellen vorhanden sein.  
 
 Wenn Sie dieselbe gespeicherte Prozedur aufrufen, die eine temporäre Tabelle mit dem gleichen Namen erstellt, können Sie mit einer einfachen Überprüfung auf das Vorhandensein per `DROP` sicherstellen, dass Ihre `CREATE TABLE`-Anweisungen erfolgreich sind. Dies wird im folgenden Beispiel veranschaulicht:
@@ -122,7 +120,7 @@ Bei der Entwicklung gespeicherter Prozeduren ist es üblich, die Befehle zum Lö
 DROP TABLE #stats_ddl
 ```
 
-## <a name="modularizing-code"></a>Modularisieren von Code
+## <a name="modularize-code"></a>Modularisieren von Code
 Da temporäre Tabellen in einer Benutzersitzung an einer beliebigen Stelle angezeigt werden können, kann diese Funktion zur Modularisierung des Anwendungscodes genutzt werden.  
 
 Die folgende gespeicherte Prozedur generiert z. B. DDL-Code, um alle Statistiken in der Datenbank nach Statistiknamen zu aktualisieren:
@@ -199,9 +197,9 @@ FROM    #stats_ddl
 GO
 ```
 
-In dieser Phase ist die einzige Aktion, die durchgeführt wurde, die Erstellung einer gespeicherten Prozedur. Dabei wird die temporäre Tabelle „#stats_ddl“ mit DDL-Anweisungen generiert.  
+In dieser Phase ist die einzige Aktion, die durchgeführt wurde, die Erstellung einer gespeicherten Prozedur. Dabei wird die temporäre Tabelle `#stats_ddl` mit DDL-Anweisungen generiert.  
 
-Diese gespeicherte Prozedur verwirft eine vorhandene #stats_ddl, um sicherzustellen, dass kein Fehler auftritt, wenn sie innerhalb einer Sitzung mehrmals ausgeführt wird.  
+Diese gespeicherte Prozedur verwirft eine vorhandene `#stats_ddl`, um sicherzustellen, dass kein Fehler auftritt, wenn sie innerhalb einer Sitzung mehrmals ausgeführt wird.  
 
 Da am Ende der gespeicherten Prozedur keine `DROP TABLE`-Anweisung vorhanden ist, wird die erstellte Tabelle nach Abschluss der gespeicherten Prozedur beibehalten, damit sie außerhalb der gespeicherten Prozedur gelesen werden kann.  
 

@@ -6,16 +6,16 @@ author: Rodrigossz
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: synapse-link
-ms.date: 09/15/2020
+ms.date: 11/02/2021
 ms.author: rosouz
 ms.reviewer: jrasnick
 ms.custom: cosmos-db
-ms.openlocfilehash: 9ea9d5d34d69b950e3fa80c350c43f12615660ba
-ms.sourcegitcommit: dcf1defb393104f8afc6b707fc748e0ff4c81830
+ms.openlocfilehash: 83f6c3a7e88cf42cbb2a2d36ff07ac79e7eb5894
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2021
-ms.locfileid: "123112554"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131452203"
 ---
 # <a name="interact-with-azure-cosmos-db-using-apache-spark-2-in-azure-synapse-link"></a>Interagieren mit Azure Cosmos DB mithilfe von Apache Spark 2 in Azure Synapse Link
 
@@ -48,6 +48,8 @@ Im Fall des **Ladens für einen Datenrahmen in Spark** werden die abgerufenen Me
 Andererseits werden die Metadaten des Analysespeichers im Fall des **Erstellens einer Spark-Tabelle** nicht in Spark zwischengespeichert und für jede SparkSQL-Abfrageausführung für die Spark-Tabelle neu geladen.
 
 Folglich können Sie entscheiden, ob für den Datenrahmen in Spark geladen werden soll oder ob eine Spark-Tabelle erstellt werden soll. Dies basiert darauf, ob Sie Ihre Spark-Analyse jeweils für eine festgelegte Momentaufnahme des Analysespeichers oder für eine aktuelle Momentaufnahme des Analysespeichers bewerten möchten.
+
+Wenn Ihre analytischen Abfragen häufig verwendete Filter enthalten, können Sie basierend auf diesen Feldern partitionieren, um die Abfrageleistung zu verbessern. Sie können in regelmäßigen Abständen einen Partitionierungsauftrag über ein Azure Synapse Spark-Notebook ausführen, um die Partitionierung für einen Analysespeicher auszulösen. Der partitionierte Speicher verweist auf das primäre ADLS Gen2-Speicherkonto, das mit Ihrem Azure Synapse-Arbeitsbereich verknüpft ist. Weitere Informationen finden Sie in den Artikeln [Benutzerdefinierte Partitionierung in Azure Synapse Link für Azure Cosmos DB (Vorschauversion)](../../cosmos-db/custom-partitioning-analytical-store.md) und [Konfigurieren der benutzerdefinierten Partitionierung zum Partitionieren von Analysespeicherdaten (Vorschau)](../../cosmos-db/configure-custom-partitioning.md).
 
 > [!NOTE]
 > Wenn Sie die Azure Cosmos DB-API von Mongo DB-Konten abfragen möchten, finden Sie [hier](../../cosmos-db/analytical-store-introduction.md#analytical-schema) weitere Informationen zur Schemadarstellung mit vollständiger Genauigkeit im Analysespeicher und den dabei zu verwendenden Namen für erweiterte Eigenschaften.

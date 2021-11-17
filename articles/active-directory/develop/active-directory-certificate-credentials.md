@@ -13,12 +13,12 @@ ms.date: 10/18/2021
 ms.author: hirsin
 ms.reviewer: nacanuma, jmprieur
 ms.custom: contperf-fy21q4, aaddev
-ms.openlocfilehash: b4d0dcee8791ad43c0b216ffb289bf4de1b819d6
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 94abf8e362dabea48c0fa20c488d7b1ca3c70093
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131067316"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131451785"
 ---
 # <a name="microsoft-identity-platform-application-authentication-certificate-credentials"></a>Microsoft Identity Platform-Zertifikatanmeldeinformationen für die Anwendungsauthentifizierung
 
@@ -96,7 +96,7 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 ### <a name="uploading-the-certificate-file"></a>Hochladen der Zertifikatdatei
 
 In der Azure-App-Registrierung für die Clientanwendung:
-1. Wählen Sie **Zertifikate & Geheimnisse** aus.
+1. Wählen Sie **Zertifikate und Geheimnisse** > **Zertifikate** aus.
 2. Klicken Sie auf **Zertifikat hochladen**, und wählen Sie die Zertifikatdatei zum Hochladen aus.
 3. Klicken Sie auf **Hinzufügen**.
   Nachdem das Zertifikat hochgeladen wurde, werden der Fingerabdruck, das Startdatum und der Ablaufzeitpunkt angezeigt.

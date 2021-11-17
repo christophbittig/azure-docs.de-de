@@ -9,12 +9,12 @@ author: emlisa
 ms.author: emlisa
 ms.reviewer: mathoma
 ms.date: 10/25/2021
-ms.openlocfilehash: 7738c6748c2f5a90d0e4aacbccf47f32484b5cf0
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ca958a3e7a43864caa673cd31736b1e661e7f608
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131072216"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131465362"
 ---
 # <a name="active-geo-replication"></a>Aktive Georeplikation
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -204,6 +204,8 @@ Um ein geo-sekundäres Abonnement in einem anderen Abonnement als dem des primä
 > [!NOTE]
 > Abonnementübergreifende Geo-Replikationsvorgänge, einschließlich Einrichtung und Geo-Failover, werden nur über T-SQL-Befehle unterstützt.
 > 
+> Das Hinzufügen einer Geo-Sekundärstation mithilfe von T-SQL wird nicht unterstützt, wenn für die primären und/oder sekundären Server ein [privater Endpunkt](private-endpoint-overview.md) konfiguriert ist und der [Zugriff über das öffentliche Netzwerk verweigert wird](connectivity-settings.md#deny-public-network-access). Wenn ein privater Endpunkt konfiguriert wurde, aber der Zugriff über das öffentliche Netzwerk zulässig ist, kann nach der Verbindungsherstellung mit dem primären Server über eine öffentliche IP-Adresse erfolgreich eine Geo-Sekundärstation hinzugefügt werden. Sobald eine Geo-Sekundärstation hinzugefügt wurde, kann der öffentliche Zugriff verweigert werden.
+> 
 > Das Erstellen eines geo-sekundären Servers auf einem logischen Server in einem anderen Azure-Tenant wird nicht unterstützt, wenn [nur Azure Active Directory](https://techcommunity.microsoft.com/t5/azure-sql/azure-active-directory-only-authentication-for-azure-sql/ba-p/2417673)-Authentifizierung für Azure SQL entweder auf dem primären oder sekundären logischen Server aktiv (aktiviert) ist.
 
 ## <a name="keep-credentials-and-firewall-rules-in-sync"></a><a name="keeping-credentials-and-firewall-rules-in-sync"></a> Anmeldeinformationen und Firewall-Regeln auf dem neuesten Stand halten
@@ -225,10 +227,10 @@ Sie können die primäre Datenbank auf eine andere Rechengröße vergrößern od
 
 ## <a name="prevent-loss-of-critical-data"></a><a name="preventing-the-loss-of-critical-data"></a> Verhinderung des Verlusts kritischer Daten
 
-Aufgrund der hohen Latenzzeit von Weitverkehrsnetzen verwendet die Georeplikation einen asynchronen Replikationsmechanismus. Bei der asynchronen Replikation ist die Möglichkeit eines Datenverlusts unvermeidlich, wenn die Primärdatei ausfällt. Um kritische Transaktionen vor Datenverlust zu schützen, kann ein Anwendungsentwickler die gespeicherte Prozedur [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) unmittelbar nach dem Commit der Transaktion aufrufen. Der Aufruf von `sp_wait_for_database_copy_sync` blockiert den aufrufenden Thread, bis die letzte festgeschriebene Transaktion übertragen und im Transaktionsprotokoll der sekundären Datenbank gehärtet wurde. Er wartet jedoch nicht darauf, dass die übertragenen Transaktionen auf dem sekundären Rechner erneut abgespielt (wiederholt) werden. `sp_wait_for_database_copy_sync` ist auf eine bestimmte Georeplikationsverbindung beschränkt. Jeder Benutzer mit den Rechten zum Herstellen der Verbindung mit der primären Datenbank kann diese Prozedur aufrufen.
+Aufgrund der hohen Latenzzeit von WANs verwendet die Georeplikation einen asynchronen Replikationsmechanismus. Bei der asynchronen Replikation ist die Möglichkeit eines Datenverlusts unvermeidbar, wenn die primäre Datenbank ausfällt. Zum Schutz kritischer Transaktionen vor Datenverlust, kann ein Anwendungsentwickler die gespeicherte Prozedur [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) unmittelbar nach dem Commit der Transaktion aufrufen. Der Aufruf von `sp_wait_for_database_copy_sync` blockiert den aufrufenden Thread, bis die letzte committete Transaktion übertragen und im Transaktionsprotokoll der sekundären Datenbank gehärtet wurde. Er wartet jedoch nicht darauf, dass die übertragenen Transaktionen in der sekundären Datenbank wiedergegeben (wiederholt) werden. `sp_wait_for_database_copy_sync` ist auf eine bestimmte Georeplikationslink beschränkt. Jeder Benutzer mit den Rechten zum Herstellen der Verbindung mit der primären Datenbank kann diese Prozedur aufrufen.
 
 > [!NOTE]
-> `sp_wait_for_database_copy_sync` verhindert Datenverluste nach einem Geo-Failover für bestimmte Transaktionen, garantiert aber keine vollständige Synchronisierung für Lesezugriffe. Die durch einen `sp_wait_for_database_copy_sync`-Prozeduraufruf verursachte Verzögerung kann beträchtlich sein und hängt von der Größe des noch nicht übertragenen Transaktionsprotokolls auf der Primärseite zum Zeitpunkt des Aufrufs ab.
+> `sp_wait_for_database_copy_sync` verhindert Datenverluste nach einem Geofailover für bestimmte Transaktionen, garantiert aber keine vollständige Synchronisierung für Lesezugriffe. Die durch einen `sp_wait_for_database_copy_sync`-Prozeduraufruf verursachte Verzögerung kann beträchtlich sein und hängt von der Größe des noch nicht übertragenen Transaktionsprotokolls auf der Primärseite zum Zeitpunkt des Aufrufs ab.
 
 ## <a name="monitor-geo-replication-lag"></a><a name="monitoring-geo-replication-lag"></a> Verzögerung bei der Georeplikation überwachen
 

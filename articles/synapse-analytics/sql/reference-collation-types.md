@@ -8,12 +8,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9a83646556838732a3b79f93771c762f00ed5afc
-ms.sourcegitcommit: 4a54c268400b4158b78bb1d37235b79409cb5816
+ms.openlocfilehash: 2ea3022b0138e290891e1ee3bc78975648aae06c
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2021
-ms.locfileid: "108144293"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131847886"
 ---
 # <a name="database-collation-support-for-synapse-sql-in-azure-synapse-analytics"></a>In Azure Synapse Analytics unterstützte Typen für die Datenbanksortierung für Synapse SQL 
 
@@ -22,6 +22,9 @@ Sortierungen geben das Gebietsschema, die Codepage, die Sortierreihenfolge und R
 Sie können die standardmäßige Datenbanksortierung im Azure-Portal ändern, wenn Sie eine neue dedizierte SQL-Pool-Datenbank erstellen. Diese Funktion macht das Erstellen einer neuen Datenbank mit einer der 3.800 unterstützten Datenbanksortierungen noch einfacher.
 
 Mit der CREATE DATABASE-Anweisung können Sie die standardmäßige Datenbanksortierung im serverlosen SQL-Pool zur Erstellungszeit angeben.
+
+> [!NOTE]
+> In Azure Synapse Analytics wird Abfragetext (einschließlich Variablen, Konstanten usw.) immer mithilfe der Sortierung auf Datenbankebene und nicht mit der Sortierung auf Serverebene wie bei anderen SQL Server-Angeboten verarbeitet.
 
 ## <a name="change-collation"></a>Ändern der Sortierung
 Aktualisieren Sie zum Ändern der Standardsortierung für die dedizierte SQL-Pooldatenbank das Feld „Sortierung“ auf der Bereitstellungsoberfläche. Beispiel: Wenn Sie die Standardsortierung so ändern möchten, dass die Groß-/Kleinschreibung beachtet wird, ändern Sie den Namen „SQL_Latin1_General_CP1_CI_AS“ der Sortierung in „SQL_Latin1_General_CP1_CS_AS“. 

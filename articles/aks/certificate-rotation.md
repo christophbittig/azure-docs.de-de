@@ -3,13 +3,13 @@ title: Rotieren von Zertifikaten in Azure Kubernetes Service (AKS)
 description: Erfahren Sie, wie Sie Ihre Zertifikate in einem Azure Kubernetes Service-Cluster (AKS) rotieren.
 services: container-service
 ms.topic: article
-ms.date: 7/13/2021
-ms.openlocfilehash: ea488e281e52949eeb53fdeffb1dc26afb5a9b5e
-ms.sourcegitcommit: e7d500f8cef40ab3409736acd0893cad02e24fc0
+ms.date: 11/03/2021
+ms.openlocfilehash: 7651af1bc1b3229fa206dbb507a918d611b2eafc
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122350103"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131575767"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Rotieren von Zertifikaten in Azure Kubernetes Service (AKS)
 
@@ -54,6 +54,28 @@ az vm run-command invoke -g MC_rg_myAKSCluster_region -n vm-name --command-id Ru
 ```console
 az vmss run-command invoke -g MC_rg_myAKSCluster_region -n vmss-name --instance-id 0 --command-id RunShellScript --query 'value[0].message' -otsv --scripts "openssl x509 -in /etc/kubernetes/certs/apiserver.crt -noout -enddate"
 ```
+
+## <a name="certificate-auto-rotation"></a>Automatische Zertifikatrotation
+
+Azure Kubernetes Service rotiert automatisch und ohne Ausfallzeiten Zertifikate, die nicht von einer Zertifizierungsstelle stammen, sowohl auf der Steuerungsebene als auch auf Agent-Knoten, bevor sie ablaufen.
+
+Damit AKS Zertifikate, die nicht von Zertifizierungsstellen stammen, automatisch rotieren kann, muss der Cluster [TLS-Bootstrapping](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet-tls-bootstrapping/) bieten. TLS-Bootstrapping ist derzeit in den folgenden Regionen verfügbar:
+
+* eastus2euap
+* centraluseuap
+* westcentralus
+* uksouth
+* eastus
+* australiacentral
+* australiaest
+
+> [!IMPORTANT]
+>Nachdem eine Region konfiguriert wurde, erstellen Sie entweder einen neuen Cluster oder aktualisieren mit „az aks upgrade -g $RESSOURCEN_GRUPPEN_NAME -n $CLUSTER_NAME“ einen vorhandenen Cluster, um die automatische Zertifikatrotation für diesen Cluster zu konfigurieren. 
+
+### <a name="limititation"></a>Einschränkung
+
+Die automatische Zertifikatrotation wird in einem Cluster ohne RBAC nicht aktiviert.
+
 
 ## <a name="rotate-your-cluster-certificates"></a>Rotieren Ihrer Clusterzertifikate
 

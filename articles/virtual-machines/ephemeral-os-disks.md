@@ -9,12 +9,12 @@ ms.date: 07/23/2020
 ms.author: aarthiv
 ms.subservice: disks
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 7318baacb8765a6009c0cd502a5eafe1ad7ba20e
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: 6ab8c0d7d1e547d564ddc3329858ddc49d51185b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131082669"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131448973"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Kurzlebige Betriebssystemdatenträger für virtuelle Azure-Computer
 
@@ -24,7 +24,7 @@ Kurzlebige Betriebssystem-Datenträger werden auf dem lokalen Speicher des virtu
  
 Die wichtigsten Features von kurzlebigen Datenträgern sind: 
 - Ideal für zustandslose Anwendungen geeignet.
-- Wird von Marketplace, benutzerdefinierten Images und von [Shared Image Gallery](./shared-image-galleries.md) unterstützt.
+- Wird von Marketplace, benutzerdefinierten Images und von [Azure Compute Gallery](./shared-image-galleries.md) (früher als „Shared Image Gallery“ bezeichnet) unterstützt.
 - Möglichkeit, VMs und Skalierungsgruppeninstanzen schnell zurückzusetzen oder in den ursprünglichen Startzustand zu versetzen.  
 - Geringere Latenz ähnlich wie bei einem temporären Datenträger. 
 - Kurzlebige Betriebssystem-Datenträger sind kostenlos, es fallen keine Speicherkosten für den Betriebssystem-Datenträger an.

@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: danimir
 ms.author: danil
 ms.reviewer: mathoma, danil
-ms.date: 11/02/2021
-ms.openlocfilehash: 0d2a02510a70f35a9744370da8675636a7f296c5
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.date: 11/05/2021
+ms.openlocfilehash: 19851f1ff3bef1ab57d23013ada78bec5665b7c5
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131465262"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131989799"
 ---
 # <a name="link-feature-for-azure-sql-managed-instance-limited-preview"></a>Linkfeature für Azure SQL Managed Instance (eingeschränkte Vorschauversion)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -85,7 +85,7 @@ Für das Linkfeature benötigen Sie Folgendes:
 - Zwischen SQL Server und verwalteter Instanz ist Netzwerkkonnektivität erforderlich. Wenn Ihre SQL Server-Instanz lokal ausgeführt wird, verwenden Sie eine VPN-Verbindung oder ExpressRoute. Wenn Ihre SQL Server-Instanz auf einer Azure-VM ausgeführt wird, stellen Sie Ihre VM entweder im selben Subnetz wie Ihre verwaltete Instanz bereit, oder verwenden Sie globales VNet-Peering, um zwei separate Subnetze zu verbinden. 
 - Auf einer beliebigen Dienstebene bereitgestellte Azure SQL Managed Instance.
 
-Über den folgenden Link können Sie sich für die eingeschränkte Vorschauversion des Linkfeatures registrieren. Das Onboarding von Kunden erfolgt turnusmäßig, da derzeit nur eine begrenzte Anzahl von Teilnehmern möglich ist. Sie kommen bei der ersten sich bietenden Gelegenheit zum Zug. Verwaltete Instanzen, die ab dem 02.11.2021 bereitgestellt werden, haben Priorität. Obwohl verwaltete Instanzen, die vor diesem Datum bereitgestellt wurden, unterstützt werden, kann das Onboarding länger dauern. 
+Über den folgenden Link können Sie sich für die eingeschränkte Vorschauversion des Linkfeatures registrieren. 
 
 > [!div class="nextstepaction"]
 > [Registrieren für die Vorschauversion des Linkfeatures](https://aka.ms/mi-link-signup)

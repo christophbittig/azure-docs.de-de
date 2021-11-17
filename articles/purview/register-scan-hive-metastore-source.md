@@ -8,12 +8,12 @@ ms.subservice: purview-data-map
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: 074a2cbef5a19185f2e817f9cedd4ea509a3d966
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 2e40125d65dd2b4b701d5b1049444a52e6cb7dc4
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131457276"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131850658"
 ---
 # <a name="connect-to-and-manage-hive-metastore-databases-in-azure-purview"></a>Verbinden und Verwalten von Hive-Metastore-Datenbanken in Azure Purview
 
@@ -23,7 +23,9 @@ In diesem Artikel wird beschrieben, wie Sie Hive Metastore-Datenbanken registrie
 
 |**Metadatenextrahierung**|  **Vollständige Überprüfung**  |**Inkrementelle Überprüfung**|**Bereichsbezogene Überprüfung**|**Klassifizierung**|**Zugriffsrichtlinie**|**Herkunft**|
 |---|---|---|---|---|---|---|
-| [Ja](#register)| [Ja](#scan)| Nein | Nein | Nein | Nein| Ja |
+| [Ja](#register)| [Ja](#scan)| Nein | Nein | Nein | Nein| Ja** |
+
+\** Herkunft wird unterstützt, wenn das Dataset als Quelle/Senke in der [Data Factory-Copy-Aktivität](how-to-link-azure-data-factory.md) verwendet wird. 
 
 > [!Important]
 > Die unterstützten Plattformen sind Apache Hadoop, Cloudera, Hortonworks und Databricks.
@@ -35,7 +37,7 @@ In diesem Artikel wird beschrieben, wie Sie Hive Metastore-Datenbanken registrie
 
 * Eine aktive [Purview-Ressource](create-catalog-portal.md)
 
-* Sie müssen ein Datenquellenadministrator und Datenleser sein, um eine Quelle zu registrieren und in Purview Studio zu verwalten. Weitere Informationen finden Sie auf der [Seite Azure Purview-Berechtigungen](catalog-permissions.md).
+* Sie müssen Datenquellenadministrator und Datenleser sein, um eine Quelle zu registrieren und in Purview Studio zu verwalten. Weitere Informationen finden Sie auf der [Seite Azure Purview-Berechtigungen](catalog-permissions.md).
 
 * Richten Sie die neueste [selbstgehostete Integration Runtime](https://www.microsoft.com/download/details.aspx?id=39717) ein. Weitere Informationen finden Sie im [Leitfaden zum Erstellen und Konfigurieren einer selbstgehosteten Integrationslaufzeit](../data-factory/create-self-hosted-integration-runtime.md).
 
@@ -181,8 +183,8 @@ Führen Sie die folgenden Schritte aus, um Hive Metastore Datenbanken zu überpr
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie Ihre Quelle registriert haben, halten Sie sich an die folgenden Anleitungen, um mehr über Purview und Ihre Daten zu erfahren.
+Nachdem Sie Ihre Quelle registriert haben, befolgen Sie die folgenden Anleitungen, um mehr über Purview und Ihre Daten zu erfahren.
 
-- [Dateneinblicke in Azure Purview](concept-insights.md)
+- [Datenerkenntnisse in Azure Purview](concept-insights.md)
 - [Datenherkunft in Azure Purview](catalog-lineage-user-guide.md)
 - [Data Catalog suchen](how-to-search-catalog.md)

@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: jhirono
 author: jhirono
-ms.date: 07/13/2021
+ms.date: 11/01/2021
 ms.custom: contperf-fy20q4, tracking-python, security
-ms.openlocfilehash: 6a10384757552108aefc3dd828bf0fd7ddce2f82
-ms.sourcegitcommit: f29615c9b16e46f5c7fdcd498c7f1b22f626c985
+ms.openlocfilehash: c978e214e9a3c7e7bef5afc60f11263c1e9efe12
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2021
-ms.locfileid: "129427493"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131562483"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Verwenden von Azure Machine Learning Studio in einem virtuellen Netzwerk
 
@@ -76,6 +76,13 @@ Es gibt ein bekanntes Problem, bei dem der Standarddateispeicher nicht automatis
 Sie haben zwei Möglichkeiten, dieses Problem zu vermeiden: 1.) Verwenden Sie den Standarddateispeicher, der bei der Erstellung des Arbeitsbereichs automatisch erstellt wird. 2.) Wenn Sie einen eigenen Dateispeicher verwenden möchten, stellen Sie sicher, dass sich dieser während der Erstellung des Arbeitsbereichs außerhalb des VNet befindet. Nachdem der Arbeitsbereich erstellt wurde, fügen Sie das Speicherkonto dem virtuellen Netzwerk hinzu.
 
 Um dieses Problem zu beheben, entfernen Sie das Dateispeicherkonto aus dem virtuellen Netzwerk und fügen es dann dem virtuellen Netzwerk wieder hinzu.
+
+### <a name="designer-sample-pipeline"></a>Beispielpipeline für den Designer
+
+Es gibt ein bekanntes Problem, bei dem der Benutzer keine Beispielpipeline auf der Designer-Homepage ausführen kann. Das in der Beispielpipeline verwendeten Beispieldataset ist ein Azure Gloabal-Dataset, das nicht für alle virtuellen Netzwerkumgebungen geeignet ist.
+
+Um dieses Problem zu beheben, können Sie einen öffentlichen Arbeitsbereich verwenden, um eine Beispielpipeline auszuführen. Dadurch können Sie erfahren, wie der Designer verwendet werden soll und dann das Beispieldataset durch Ihr eigenes Dataset im virtuellen Netzwerk "Workspace" ersetzen.
+
 ## <a name="datastore-azure-storage-account"></a>Datenspeicher: Azure Storage-Konto
 
 Führen Sie die folgenden Schritte aus, um den Zugriff auf die gespeicherten Daten in Azure-Blob- und -Dateispeicher zu ermöglichen:
@@ -101,7 +108,7 @@ Führen Sie die folgenden Schritte aus, um den Zugriff auf die gespeicherten Dat
 
     In der folgenden Tabelle ist beschrieben, warum die Authentifizierung mit verwalteten Identitäten für die Standardspeicherkonten Ihres Arbeitsbereichs genutzt wird.
 
-    |Speicherkonto  | Hinweise  |
+    |Speicherkonto  | Notizen  |
     |---------|---------|
     |Standardblobspeicher für den Arbeitsbereich| Speichert Modellressourcen vom Designer. Aktivieren Sie die Authentifizierung mit verwalteten Identitäten für dieses Speicherkonto, um Modelle im Designer bereitzustellen. <br> <br> Sie können eine Designer-Pipeline visualisieren und ausführen, wenn sie nicht den Standarddatenspeicher verwendet, sondern einen, der für die Verwendung der verwalteten Identität konfiguriert wurde. Wenn Sie jedoch versuchen, ein trainiertes Modell ohne aktivierte verwaltete Identität im Standarddatenspeicher bereitzustellen, tritt dabei ein Fehler auf, unabhängig davon, welche anderen Datenspeicher verwendet werden.|
     |Standarddateispeicher für den Arbeitsbereich| Speichert Experimentressourcen für automatisiertes maschinelles Lernen. Aktivieren Sie die Authentifizierung mit verwalteten Identitäten für dieses Speicherkonto, um Experimente für automatisiertes maschinelles Lernen zu übermitteln. |
@@ -140,13 +147,13 @@ Wenn Sie mit einer verwalteten Identität auf Daten zugreifen möchten, die in e
 
 Nachdem Sie einen eigenständigen SQL-Benutzer erstellt haben, erteilen Sie mithilfe des [GRANT T-SQL-Befehls](/sql/t-sql/statements/grant-object-permissions-transact-sql) Berechtigungen.
 
-## <a name="intermediate-module-output"></a>Ausgabe des Zwischenmoduls
+## <a name="intermediate-component-output"></a>Ausgabe der Zwischenkomponente
 
-Wenn Sie die Ausgabe des Zwischenmoduls des Azure Machine Learning-Designers nutzen, können Sie den Ausgabespeicherort für alle Module im Designer angeben. Damit können Sie zwischengeschaltete Datasets zu Sicherheits-, Protokollierungs- oder Überwachungszwecken an einem separaten Ort speichern. Führen Sie die folgenden Schritte aus, um die Ausgabe anzugeben:
+Wenn Sie die Ausgabe der Zwischenkomponente des Azure Machine Learning-Designers nutzen, können Sie den Ausgabespeicherort für jede Komponente im Designer angeben. Damit können Sie zwischengeschaltete Datasets zu Sicherheits-, Protokollierungs- oder Überwachungszwecken an einem separaten Ort speichern. Führen Sie die folgenden Schritte aus, um die Ausgabe anzugeben:
 
-1. Wählen Sie das Modul aus, für das Sie die Ausgabe angeben möchten.
-1. Wählen Sie im Bereich der Moduleinstellungen auf der rechten Seite die Option **Ausgabeeinstellungen** aus.
-1. Geben Sie den Datenspeicher an, den Sie für die einzelnen Modulausgaben verwenden möchten.
+1. Wählen Sie die Komponente aus, für die Sie die Ausgabe angeben möchten.
+1. Wählen Sie im Bereich der Komponenteneinstellungen auf der rechten Seite die Option **Ausgabeeinstellungen** aus.
+1. Geben Sie den Datenspeicher an, den Sie für die einzelnen Komponentenausgaben verwenden möchten.
 
 Stellen Sie sicher, dass Sie auf die zwischengeschalteten Speicherkonten in Ihrem virtuellen Netzwerk Zugriff haben. Andernfalls verursacht die Pipeline einen Fehler.
 

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 09/09/2021
 ms.author: lajanuar
-ms.openlocfilehash: 4b27e60776c459ed74bcf33c79a819f90722a0d0
-ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
+ms.openlocfilehash: 777ee0bcbf139c9edc9e4715133faec3318f692b
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2021
-ms.locfileid: "130238999"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131434501"
 ---
 # <a name="translator-v30"></a>Translator v3.0
 
@@ -31,22 +31,16 @@ Version 3 von Translator umfasst eine moderne JSON-basierte Web-API. Sie ermögl
 
 ## <a name="base-urls"></a>Basis-URLs
 
-Der Microsoft Translator wird aus mehreren Rechenzentren unterstützt. Momentan befinden sie sich in 10 [Azure-Geografien](https://azure.microsoft.com/global-infrastructure/regions):
+Anforderungen an Translator werden in den meisten Fällen von dem Rechenzentrum bearbeitet, das dem Ursprungsort der Anforderung am nächsten liegt. Wenn bei Verwendung des globalen Endpunkts ein Rechenzentrumsausfall vorliegt, wird die Anforderung möglicherweise außerhalb der geografischen Region weitergeleitet.
 
-* **Amerika**: „USA, Osten“, „USA, Süden-Mitte“, „USA, Westen-Mitte“ und „USA, Westen 2“
-* **Asien-Pazifik:** „Südkorea, Süden“, „Japan, Osten“, „Asien, Südosten“ und „Australien, Osten“
-* **Europa:** „Europa, Norden“, „Europa, Westen“
+Wenn Sie erzwingen möchten, dass die Anforderung innerhalb einer bestimmten geografischen Region verarbeitet wird, verwenden Sie den gewünschten geografischen Endpunkt. Alle Anforderungen werden zwischen den Rechenzentren innerhalb der geografischen Region verarbeitet. 
 
-Anforderungen an Microsoft Translator werden in den meisten Fällen von dem Rechenzentrum bearbeitet, das dem Ursprungsort der Anforderung am nächsten liegt. Bei einem Rechenzentrumsausfall kann die Anforderung an einen Standort außerhalb des Gebiets weitergeleitet werden.
-
-Um zu erzwingen, dass die Anforderung von einem bestimmten Gebiet bearbeitet wird, ändern Sie den globalen Endpunkt in der API-Anforderung auf den gewünschten geografischen Endpunkt:
-
-|Gebiet|Basis-URL (geografischer Endpunkt)|
-|:--|:--|
-|Global (nicht regional)|    api.cognitive.microsofttranslator.com|
-|USA|    api-nam.cognitive.microsofttranslator.com|
-|Europa|    api-eur.cognitive.microsofttranslator.com|
-|Asien-Pazifik|    api-apc.cognitive.microsofttranslator.com|
+|Gebiet|Basis-URL (geografischer Endpunkt)|Rechenzentren|
+|:--|:--|:--|
+|Global (nicht regional)|    api.cognitive.microsofttranslator.com|Nächstgelegenes verfügbares Rechenzentrum|
+|Asien-Pazifik|    api-apc.cognitive.microsofttranslator.com|„Südkorea, Süden“, „Japan, Osten“, „Asien, Südosten“ und „Australien, Osten“|
+|Europa|    api-eur.cognitive.microsofttranslator.com|„Europa, Norden“, „Europa, Westen“|
+|USA|    api-nam.cognitive.microsofttranslator.com|„USA, Osten“, „USA, Süden-Mitte“, „USA, Westen-Mitte“ und „USA, Westen 2“|
 
 <sup>1</sup> Kunden mit einer Ressource in „Schweiz, Norden“ oder „Schweiz, Westen“ können sicherstellen, dass ihre Text-API-Anforderungen innerhalb der Schweiz verarbeitet werden. Um sicherzustellen, dass Anforderungen in der Schweiz verarbeitet werden, muss die Textübersetzungsressource in der Ressourcenregion „Schweiz, Norden“ oder „Schweiz, Westen“ erstellt und anschließend in den API-Anforderungen der benutzerdefinierte Endpunkt der Ressource verwendet werden. Beispiel: Wenn Sie im Azure-Portal eine Textübersetzungsressource mit der Ressourcenregion „Schweiz, Norden“ erstellen und Ihre Ressource den Namen „my-ch-n“ aufweist, lautet der benutzerdefinierte Endpunkt „https://my-ch-n.cognitiveservices.azure.com“. Eine Beispielanforderung für die Übersetzung wäre etwa:
 ```curl

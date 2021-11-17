@@ -3,14 +3,14 @@ title: Erste Schritte mit Azure Video Analyzer-Livepipelines – Azure-Portal
 description: In diesem Schnellstart werden die Schritte zum Erfassen und Aufzeichnen von Videos von einer RTSP-Kamera mithilfe von Livepipelines im Azure Video Analyzer-Dienst beschrieben.
 ms.service: azure-video-analyzer
 ms.topic: quickstart
-ms.date: 10/16/2021
+ms.date: 11/04/2021
 ms.custom: ignite-fall-2021
-ms.openlocfilehash: f032eea5c54ac4c0d0200d9063b7f499838f2465
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ed1c4e979d9b593cc701c294c95eda96b27db415
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131100372"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131554410"
 ---
 # <a name="quickstart-get-started-with-video-analyzer-live-pipelines-in-the-azure-portal"></a>Schnellstart: Erste Schritte mit Video Analyzer-Livepipelines im Azure-Portal
 
@@ -64,10 +64,10 @@ In diesem Abschnitt erfahren Sie, wie Sie einen RTSP-Kamerasimulator auf einer A
     cd localmedia
     wget https://lvamedia.blob.core.windows.net/public/camera-1800s.mkv
     ```
-1. Starten Sie den RTSP-Server im Stammverzeichnis auf der VM mithilfe des vordefinierten Containerimages wie folgt:
+1. Starten Sie wie folgt den RTSP-Server auf der VM mithilfe des vordefinierten Containerimages:
 
     ```    
-    sudo docker run -d -p 554:554 -v ${PWD}/localmedia:/live/mediaServer/media mcr.microsoft.com/ava-utilities/rtspsim-live555:1.2
+    sudo docker run -d -p 554:554 -v ${PWD}:/live/mediaServer/media mcr.microsoft.com/ava-utilities/rtspsim-live555:1.2
     ```
 1. Sobald der RTSP-Server ausgeführt wird, können Clients über eine RTSP-URL eine Verbindung mit ihm herstellen:
 
@@ -103,13 +103,13 @@ Nachdem das Video Analyzer-Konto erstellt wurde, können Sie mit den nächsten S
 
     - Der **Assistent zum Erstellen einer Pipelinetopologie** wird im Portal angezeigt.
     - Wählen Sie **Beispieltopologien ausprobieren**, anschließend die Topologie **Liveaufnahme, Aufzeichnung und Streamen von der RTSP-Kamera** und dann im Dialogfeld **Beispieltopologie laden** die Option „Fortfahren“ aus.
-    - Der Assistent zum Bearbeiten der Livepipelinetopologie „RTSP source to Video sink“ (RTSP-Quelle zu Videosenke) wird angezeigt.
+    - Der Assistent zum Erstellen der Livepipelinetopologie wird angezeigt. Darin ist der RTSP-Quellknoten zu sehen, der mit einem Knoten der Videosenke verbunden ist.
     - Füllen Sie die erforderlichen Felder aus, um die Topologie zu erstellen: 
     
         - **Topologiename:** Geben Sie den Namen für die Topologie ein. 
         - **Beschreibung** (optional): Geben Sie eine Kurzbeschreibung der Topologie an. 
         - **Typ** (vorausgefüllt mit „Live“)
-        - **RTSP-Quellknoten:** Legen Sie den Wert der **Transport**-Eigenschaft auf „TCP“ fest.
+        - Wählen Sie den Knoten **RTSP-Quelle** aus, und legen Sie dann „TCP“ für den Eigenschaftswert **Transport** fest.
         - Wählen Sie **Speichern** aus, um für die restlichen Eigenschaften die Standardkonfiguration anzuwenden.
 1. Der nächste Schritt besteht im Erstellen einer Livepipeline mithilfe der Topologie, die im vorherigen Schritt erstellt wurde. 
 
@@ -123,7 +123,7 @@ Nachdem das Video Analyzer-Konto erstellt wurde, können Sie mit den nächsten S
         - **videoNameParameter:** Geben Sie einen eindeutigen Namen für die Videozielressource ein, die aufgezeichnet werden soll. Hinweis: Verwenden Sie für jede Kamera (oder MKV-Datei) eine eindeutige Videoressource.
     - Wählen Sie **Erstellen** aus. Daraufhin wird im Pipelineraster im Portal eine Pipeline erstellt.
     - Wählen Sie die erstellte Livepipeline im Raster aus, und wählen Sie rechts neben dem Bereich die Option **Aktivieren** aus, um die Livepipeline zu aktivieren. Dadurch wird Ihre Livepipeline gestartet und mit der Aufzeichnung des Videos begonnen.
-1. Nun können Sie die Videoressource im Portal unter dem Video Analyzer-Konto im Bereich **Videos** anzeigen. Der Status lautet **In Verwendung**, da die Pipeline aktiv ist und aufzeichnet.
+1. Nun können Sie die Videoressource im Portal unter dem Video Analyzer-Konto im Bereich **Videos** anzeigen. Der Status lautet **Aufzeichnung**, da die Pipeline aktiv ist und den Livevideostream aufzeichnet.
 1. Warten Sie einige Sekunden, und wählen Sie dann das Video aus. Sie können den [Stream mit niedriger Latenz anzeigen](../playback-recordings-how-to.md).
 
     > [!div class="mx-imgBorder"]
@@ -131,9 +131,9 @@ Nachdem das Video Analyzer-Konto erstellt wurde, können Sie mit den nächsten S
 
     > [!NOTE]
     > Wenn Sie einen RTSP-Kamerasimulator verwenden, ist es nicht möglich, die End-to-End-Latenz genau zu bestimmen. Außerdem wird der RTSP-Kamerasimulator beendet, wenn er das Ende der MKV-Datei erreicht. Die Livepipeline versucht nach einer Weile, die Verbindung wiederherzustellen, und der Simulator startet den Stream am Anfang der Datei neu. Wenn Sie diese Livepipeline viele Stunden lang laufen lassen, enthält die Videoaufzeichnung Lücken an den Stellen, an denen der Simulator beendet und neu gestartet wurde.
-* Bei Bedarf können Sie im Aktivitätsprotokoll Ihre Bereitstellungsvorgänge schnell überprüfen. Informationen zur Überwachung und zu Ereignisprotokollen finden Sie [hier](./monitor-log-cloud.md).
-* Um die Pipelineaufzeichnung zu deaktivieren, wechseln Sie zu Ihrem Video Analyzer-Konto. Wählen Sie im linken Bereich **Live**-> **Pipelines** und anschließend die zu deaktivierende Pipeline aus. Wählen Sie dann Im Pipelineraster **Deaktivieren** aus, um die Aufzeichnung zu beenden. 
-* Sie können auch die Pipeline und die Topologie löschen, wenn sie nicht benötigt werden.
+1. Bei Bedarf können Sie im Aktivitätsprotokoll Ihre Bereitstellungsvorgänge schnell überprüfen. Informationen zur Überwachung und zu Ereignisprotokollen finden Sie [hier](./monitor-log-cloud.md).
+1. Um die Pipelineaufzeichnung zu deaktivieren, wechseln Sie zu Ihrem Video Analyzer-Konto. Wählen Sie im linken Bereich **Live**-> **Pipelines** und anschließend die zu deaktivierende Pipeline aus. Wählen Sie dann Im Pipelineraster **Deaktivieren** aus, um die Aufzeichnung zu beenden. 
+1. Sie können auch die Pipeline und die Topologie löschen, wenn sie nicht benötigt werden.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

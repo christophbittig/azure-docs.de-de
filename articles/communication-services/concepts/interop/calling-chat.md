@@ -8,12 +8,12 @@ ms.date: 10/15/2021
 ms.topic: conceptual
 ms.service: azure-communication-services
 ms.subservice: teams-interop
-ms.openlocfilehash: 10435eba4127fbb58d939bfac0710aa90e2c7b32
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 4bb4cf91aed5ae4784511416d3f30dd9d6a20986
+ms.sourcegitcommit: 96deccc7988fca3218378a92b3ab685a5123fb73
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131846252"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131579253"
 ---
 # <a name="teams-interoperability-calling-and-chat"></a>Teams Interoperabilität: Anrufe und Chats
 
@@ -33,10 +33,10 @@ Um Anrufe und Chats zwischen Ihren Communication Services-Benutzern und Ihrem Te
 
 Benutzerdefinierte Anwendungen, die mit Azure Communication Services erstellt wurden, um sich mit Teams-Benutzern zu verbinden und mit ihnen zu kommunizieren, können von Endbenutzern oder Bots verwendet werden, und es gibt keinen Unterschied in der Darstellung für Teams-Benutzer, es sei denn, der Entwickler der Anwendung hat dies ausdrücklich angegeben.
 
-Um einen Anruf oder einen Chat mit einem Teams-Benutzer zu starten, ist die Azure Active Directory (Azure AD) Objekt-ID des Benutzers erforderlich. Diese kann über [Microsoft Graph-API](/graph/api/resources/users) oder von Ihrem lokalen Verzeichnis bezogen werden, wenn Sie [Azure AD Connect](../../../active-directory/hybrid/how-to-connect-sync-whatis.md) (oder einen anderen Mechanismus) zur Synchronisierung zwischen Ihrem lokalen Verzeichnis und Azure AD verwenden.
+Um einen Anruf oder einen Chat mit einem Teams-Benutzer zu starten, ist die Azure Active Directory (AAD) Objekt-ID des Benutzers erforderlich. Diese kann über [Microsoft Graph API](/graph/api/resources/users) oder von Ihrem lokalen Verzeichnis bezogen werden, wenn Sie [Azure AD Connect](../../../active-directory/hybrid/how-to-connect-sync-whatis.md) (oder einen anderen Mechanismus) zur Synchronisierung zwischen Ihrem lokalen Verzeichnis und AAD verwenden.
 
 ## <a name="calling"></a>Aufrufen
-Mit dem Calling SDK kann ein Communication Services-Benutzer oder -Endpunkt einen 1:1-Anruf mit Teams-Benutzern starten, die durch ihre Azure Active Directory (Azure AD) Objekt-ID identifiziert werden. Sie können eine bestehende Anwendung, die andere Benutzer der Kommunikationsdienste anruft, leicht ändern und stattdessen einen Teams-Benutzer anrufen.
+Mit dem Calling SDK kann ein Communication Services-Benutzer oder -Endpunkt einen 1:1-Anruf mit Teams-Benutzern starten, die durch ihre Azure Active Directory (AAD) Objekt-ID identifiziert werden. Sie können eine bestehende Anwendung, die andere Benutzer der Kommunikationsdienste anruft, leicht ändern und stattdessen einen Teams-Benutzer anrufen.
  
 [Anrufe verwalten - Eine Anleitung zu Azure Communication Services | Microsoft Docs](../../how-tos/calling-sdk/manage-calls.md?pivots=platform-web)
 
@@ -48,7 +48,7 @@ const call = callAgent.startCall([acsCallee]);
 
 Aufrufen eines Teams-Benutzers mit [microsoftTeamsUserId](/javascript/api/@azure/communication-common/microsoftteamsuseridentifier?view=azure-node-latest#microsoftTeamsUserId):
 ```js
-const teamsCallee = { microsoftTeamsUserId: '<Teams User AAD Object ID>' }
+const teamsCallee = { microsoftTeamsUserId: '8:orgid:<Teams User AAD Object ID>' }
 const call = callAgent.startCall([teamsCallee]);
 ```
  
@@ -62,7 +62,9 @@ const call = callAgent.startCall([teamsCallee]);
 - [Drittanbietergeräte für Teams](/MicrosoftTeams/devices/teams-ip-phones) und [Skype IP-Telefone](/skypeforbusiness/certification/devices-ip-phones) werden nicht unterstützt.
 
 ## <a name="chat"></a>Chat
-Mit dem Chat SDK können Communication Services-Benutzer oder -Endpunkte Gruppenchats mit Teams-Benutzern starten, die durch ihre Azure Active Directory (AAD) Objekt-ID identifiziert werden. Sie können eine bestehende Anwendung, die Chats mit anderen Communication Services-Benutzern erstellt, leicht ändern, um stattdessen Chats mit Nutzern von Teams zu erstellen. Unten finden Sie ein Beispiel für die Verwendung des Chat SDK, um Teams-Benutzer als Teilnehmer hinzuzufügen. Informationen zur Verwendung des Chat-SDK zum Senden einer Nachricht, zum Verwalten von Teilnehmern und mehr finden Sie in unserer [Schnellstartanleitung](../../quickstarts/chat/get-started.md?pivots=programming-language-javascript).
+Mit dem Chat SDK können Communication Services-Benutzer oder -Endpunkte einen 1:n-Chat mit Teams-Benutzern starten, die durch ihre Azure Active Directory (AAD) Objekt-ID identifiziert werden. Sie können eine bestehende Anwendung, die Chats mit anderen Nutzern von Kommunikationsdiensten erstellt, leicht ändern, um stattdessen Chats mit Nutzern von Teams zu erstellen:
+                                            
+[Schnellstart: Hinzufügen von Chatfunktionen zu Ihrer App](../../quickstarts/chat/get-started.md?pivots=programming-language-javascript)
 
 Erstellen eines Chats mit einem Teams-Benutzer:
 ```js
@@ -70,7 +72,7 @@ async function createChatThread() {
 const createChatThreadRequest = {  topic: "Hello, World!"  }; 
 const createChatThreadOptions = {
     participants: [ { 
-        id: { microsoftTeamsUserId: '<Teams User AAD Object ID>' }, 
+        id: { microsoftTeamsUserId: '<TEAMS_USER_ID>' }, 
         displayName: '<USER_DISPLAY_NAME>' }
     ] }; 
 const createChatThreadResult = await chatClient.createChatThread( 
@@ -78,16 +80,26 @@ createChatThreadRequest, createChatThreadOptions );
 const threadId = createChatThreadResult.chatThread.id; return threadId; }
 ```                                         
 
-Damit Ihnen das Testen leichter fällt, haben wir [hier](https://github.com/Azure-Samples/communication-services-web-chat-hero/tree/teams-interop-chat-adhoc) eine Beispiel-App veröffentlicht. Aktualisieren Sie die App mit Ihrer Communication Services-Ressource und interoperablen Teams-Mandanten, um zu beginnen. 
+**Unterstützte Funktionen**
+-   Senden/Empfangen von Nachrichten (Typ: Text, Rich Text, Emoticons) 
+-   Benutzer der Kommunikationsdienste können gesendete Nachrichten bearbeiten
+-   Gesendete Nachrichten löschen
+-   Empfang von Echtzeit-Benachrichtigungen (Thread- und Nachrichten-bezogene Ereignisse werden derzeit von ACS unterstützt)
+-   Senden und empfangen Tippen von Indikatoren
+-   Senden und Empfangen von Lesebestätigungen
+-   Teilnehmer hinzufügen und Nachrichtenverlauf teilen: Teams-Benutzer können nur Teams-Benutzer hinzufügen. Benutzer der Kommunikationsdienste können Teams und Benutzer der Kommunikationsdienste hinzufügen.
+-   Vorhandenen Teilnehmer aus dem Chat entfernen
+-   Chat verlassen
+-   Chat-Thema aktualisieren
+-   Der Benutzer der Kommunikationsdienste kann den Chat löschen.
 
-**Einschränkungen und bekannte Probleme** </br>
-In der privaten Vorschauversion kann ein Communication Services-Benutzer verschiedene Aktionen mit dem Communication Services Chat SDK ausführen, z. B. Senden und Empfangen von Nur-Text-Nachrichten und Rich-Text-Nachrichten, Eingeben von Indikatoren, Lesebelege, Echtzeitbenachrichtigungen und vieles mehr. Die meisten Chatfunktionen von Teams werden jedoch nicht unterstützt. Hier sind einige wichtige Verhaltensweisen und bekannte Probleme:
--   Chats können nur von Communication Services-Benutzern eingeleitet werden. 
--   Communication Services-Benutzer können keine GIF-Dateien, Bilder oder Dateien senden oder empfangen. Links zu Dateien und Bildern können geteilt werden.
--   Communication Services-Benutzer können den Chat löschen. Dadurch wird der Teams-Benutzer aus dem Chatthread entfernt und der Nachrichtenverlauf auf dem Teams-Client ausgeblendet.
-- Bekanntes Problem: Communication Services-Benutzer werden in der Teilnehmerliste nicht ordnungsgemäß angezeigt. Sie werden derzeit als extern angezeigt, aber ihre Personenkarte ist möglicherweise inkonsistent. 
-- Bekanntes Problem: Ein Chat kann nicht aus der Teams-App zu einem Anruf hochgestuft werden. 
-- Bekanntes Problem: Das Bearbeiten von Nachrichten durch den Teams-Benutzer wird nicht unterstützt. 
+
+**Einschränkungen und bekannte Probleme**
+- Die Bearbeitung von Nachrichten durch den Teams-Benutzer schlägt fehl.
+- Durch das Löschen eines Threads durch den Benutzer der Kommunikationsdienste wird der Nachrichtenverlauf für den Teams-Benutzer gelöscht und der Teams-Benutzer wird aus dem Thread entfernt.
+- Die Teams-Client-Benutzeroberfläche für externe Benutzer ist inkonsistent.
+- Mit dem Teams-Client kann kein Gespräch mit den Chat-Teilnehmern geführt werden
+
 
 ## <a name="privacy"></a>Datenschutz
 Die Interoperabilität zwischen Azure Communication Services und Microsoft Teams ermöglicht Ihren Anwendungen und Benutzern, an Teams-Anrufen, -Besprechungen und -Chats teilzunehmen. Sie sind dafür verantwortlich, dass die Benutzer Ihrer Anwendung benachrichtigt werden, wenn die Aufzeichnung oder Transkription in einem Teams-Anruf oder einer Teams-Besprechung aktiviert ist.

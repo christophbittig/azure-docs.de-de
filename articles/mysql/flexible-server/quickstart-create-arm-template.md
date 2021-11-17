@@ -7,21 +7,18 @@ ms.topic: quickstart
 ms.custom: subject-armqs, devx-track-azurepowershell
 ms.author: sumuth
 ms.date: 10/23/2020
-ms.openlocfilehash: 310e3e4b4b4b00a4b3255cfd581b155c28ed7705
-ms.sourcegitcommit: 0770a7d91278043a83ccc597af25934854605e8b
+ms.openlocfilehash: a53c532d4f95edfea9aaa4ae96a9d0a92d9c9b10
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/13/2021
-ms.locfileid: "128609363"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131425385"
 ---
-# <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql---flexible-server-preview"></a>Schnellstart: Verwenden einer Resource Manager-Vorlage zum Erstellen einer Azure Database for MySQL Flexible Server-Instanz (Vorschau)
+# <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql---flexible-server"></a>Schnellstart: Verwenden einer ARM-Vorlage zum Erstellen einer Azure Database for MySQL Flexible Server-Instanz
 
 [[!INCLUDE[applies-to-mysql-flexible-server](../includes/applies-to-mysql-flexible-server.md)]
 
-> [!IMPORTANT]
-> Azure Database for MySQL Flexible Server befindet sich aktuell in der öffentlichen Vorschau.
-
-Azure Database for MySQL Flexible Server (Vorschau) ist ein verwalteter Dienst, mit dem Sie hochverfügbare MySQL-Datenbanken in der Cloud ausführen, verwalten und skalieren können. Mithilfe einer Azure Resource Manager-Vorlage (ARM-Vorlage) können Sie eine Flexible Server-Instanz bereitstellen, um mehrere Server oder mehrere Datenbanken auf einem Server bereitzustellen.
+Azure Database for MySQL – Flexible Server ist ein verwalteter Dienst, mit dem Sie hochverfügbare MySQL-Datenbanken in der Cloud ausführen, verwalten und skalieren können. Mithilfe einer Azure Resource Manager-Vorlage (ARM-Vorlage) können Sie eine Flexible Server-Instanz bereitstellen, um mehrere Server oder mehrere Datenbanken auf einem Server bereitzustellen.
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -87,7 +84,7 @@ Erstellen Sie eine _mysql-flexible-server-template.json_-Datei, und kopieren Sie
     }
   },
   "variables": {
-    "api": "2020-07-01-preview",
+    "api": "2021-05-01",
     "firewallRules": "[parameters('firewallRules').rules]",
     "publicNetworkAccess": "[if(empty(parameters('vnetData')), 'Enabled', 'Disabled')]",
     "vnetDataSet": "[if(empty(parameters('vnetData')), json('{ \"subnetArmResourceId\": \"\" }'), parameters('vnetData'))]",

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 04/11/2020
-ms.openlocfilehash: 9d0f1fbe81c8d221b1dd83b1f15b3ea099769043
-ms.sourcegitcommit: 0046757af1da267fc2f0e88617c633524883795f
+ms.openlocfilehash: 4f73ced1dba5482c3c230c96163464c064523bd4
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/13/2021
-ms.locfileid: "122638493"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130218239"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-portal"></a>Tutorial: Onlinemigration von PostgreSQL zu Azure Database for PostgreSQL mit Database Migration Service über das Azure-Portal
 
@@ -43,9 +43,9 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-* Laden Sie [PostgreSQL Community Edition](https://www.postgresql.org/download/) 9.4, 9.5, 9.6 oder 10 herunter, und installieren Sie die Edition. Die PostgreSQL-Version des Quellservers muss 9.4, 9.5, 9.6, 10, 11 oder 12 sein. Weitere Informationen finden Sie im Artikel [Unterstützte PostgreSQL-Datenbankversionen](../postgresql/concepts-supported-versions.md).
+* Laden Sie [PostgreSQL Community Edition](https://www.postgresql.org/download/) 9.4, 9.5, 9.6 oder 10 herunter, und installieren Sie die Edition. Die PostgreSQL-Version des Quellservers muss 9.4, 9.5, 9.6, 10, 11, 12 oder 13 sein. Weitere Informationen finden Sie unter [Unterstützte PostgreSQL-Datenbankversionen](../postgresql/concepts-supported-versions.md).
 
-    Beachten Sie außerdem, dass die Azure Database for PostgreSQL-Zielversion höher als die lokale PostgreSQL-Version sein oder dieser entsprechen muss. Beispiel: PostgreSQL 9.6 kann zu Azure Database for PostgreSQL 9.6, 10 oder 11 migriert werden, nicht aber zu Azure Database for PostgreSQL 9.5. Migrationen zu einer PostgreSQL-Version 13 und höher werden derzeit nicht unterstützt. 
+    Beachten Sie außerdem, dass die Azure Database for PostgreSQL-Zielversion höher als die lokale PostgreSQL-Version sein oder dieser entsprechen muss. Beispiel: PostgreSQL 9.6 kann zu Azure Database for PostgreSQL 9.6, 10 oder 11 migriert werden, nicht aber zu Azure Database for PostgreSQL 9.5. 
 
 * [Erstellen Sie einen Azure Database for PostgreSQL-Server](../postgresql/quickstart-create-server-database-portal.md), oder [erstellen Sie einen Azure Database for PostgreSQL-Server: Hyperscale (Citus)](../postgresql/quickstart-create-hyperscale-portal.md).
 * Erstellen Sie ein virtuelles Microsoft Azure-Netzwerk für Azure Database Migration Service mithilfe des Azure Resource Manager-Bereitstellungsmodells, das Site-to-Site-Konnektivität für Ihre lokalen Quellserver über [ExpressRoute](../expressroute/expressroute-introduction.md) oder über [VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) bereitstellt. Weitere Informationen zum Erstellen eines virtuellen Netzwerks finden Sie in der [Dokumentation zu Virtual Network](../virtual-network/index.yml) und insbesondere in den Schnellstartartikeln mit Schritt-für-Schritt-Anleitungen.

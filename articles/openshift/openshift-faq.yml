@@ -7,12 +7,12 @@ metadata:
   ms.service: azure-redhat-openshift
   ms.topic: conceptual
   ms.date: 07/31/2020
-  ms.openlocfilehash: e7f38ea054214d4133f9b63a849b5be070e20dca
-  ms.sourcegitcommit: 8b38eff08c8743a095635a1765c9c44358340aa8
+  ms.openlocfilehash: dbde5144fe44a9b92b06cbb8f226d04b4fe74489
+  ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 06/30/2021
-  ms.locfileid: "113094857"
+  ms.lasthandoff: 10/22/2021
+  ms.locfileid: "130225565"
 title: Häufig gestellte Fragen zu Azure Red Hat OpenShift
 summary: Dieser Artikel beantwortet häufig gestellte Fragen zu Microsoft Azure Red Hat OpenShift.
 sections:
@@ -35,7 +35,7 @@ sections:
       Die tatsächliche Anzahl der unterstützten Pods hängt von den Arbeitsspeicher-, CPU- und Speicheranforderungen einer Anwendung ab.
 
 
-      Azure Red Hat OpenShift 4.x hat ein Limit von 250 Pods pro Knoten und ist auf 100 Computeknoten begrenzt. Damit wird die maximale Anzahl der in einem Cluster unterstützten Pods auf 250&times;100 = 25.000 begrenzt.
+      Für Azure Red Hat OpenShift 4.x gilt ein Grenzwert von 250 Pods pro Knoten und 60 Computeknoten. Damit wird die maximale Anzahl der in einem Cluster unterstützten Pods auf 250&times;60 = 15.000 begrenzt.
 
 
       Azure Red Hat OpenShift 3.11 hat ein Limit von 50 Pods pro Knoten und ist auf 20 Computeknoten begrenzt. Damit wird die maximale Anzahl der in einem Cluster unterstützten Pods auf 50&times;20 = 1.000 begrenzt.

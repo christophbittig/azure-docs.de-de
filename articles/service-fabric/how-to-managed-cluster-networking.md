@@ -3,12 +3,12 @@ title: Konfigurieren von Netzwerkeinstellungen für verwaltete Service Fabric-Cl
 description: Erfahren Sie, wie Sie Ihre verwalteten Service Fabric-Cluster für NSG-Regeln, RDP-Portzugriff, Lastenausgleichsregeln und vieles mehr konfigurieren.
 ms.topic: how-to
 ms.date: 8/23/2021
-ms.openlocfilehash: 432246ca0550e4fab678a3a190221de88ce04478
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 3482f414029c79ceea9c0ee8bcc258ed2fc495e1
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128638420"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131558875"
 ---
 # <a name="configure-network-settings-for-service-fabric-managed-clusters"></a>Konfigurieren von Netzwerkeinstellungen für verwaltete Service Fabric-Cluster
 
@@ -38,62 +38,62 @@ Verwaltete Service Fabric-Cluster ermöglichen Ihnen die Zuweisung von NSG-Regel
 Verwenden Sie die Eigenschaft [networkSecurityRules](/azure/templates/microsoft.servicefabric/managedclusters#managedclusterproperties-object) Ihrer *Microsoft.ServiceFabric/managedclusters*-Ressource (Version `2021-05-01` oder höher), um NSG-Regeln zuzuweisen. Beispiel:
 
 ```json
-            "apiVersion": "2021-05-01",
-            "type": "Microsoft.ServiceFabric/managedclusters",
-            ...
-            "properties": {
-                ...
-                "networkSecurityRules" : [
-                    {
-                        "name": "AllowCustomers",
-                        "protocol": "*",
-                        "sourcePortRange": "*",
-                        "sourceAddressPrefix": "Internet",
-                        "destinationAddressPrefix": "*",
-                        "destinationPortRange": "33000-33499",
-                        "access": "Allow",
-                        "priority": 2001,
-                        "direction": "Inbound"
-                    },
-                    {
-                        "name": "AllowARM",
-                        "protocol": "*",
-                        "sourcePortRange": "*",
-                        "sourceAddressPrefix": "AzureResourceManager",
-                        "destinationAddressPrefix": "*",
-                        "destinationPortRange": "33500-33699",
-                        "access": "Allow",
-                        "priority": 2002,
-                        "direction": "Inbound"
-                    },
-                    {
-                        "name": "DenyCustomers",
-                        "protocol": "*",
-                        "sourcePortRange": "*",
-                        "sourceAddressPrefix": "Internet",
-                        "destinationAddressPrefix": "*",
-                        "destinationPortRange": "33700-33799",
-                        "access": "Deny",
-                        "priority": 2003,
-                        "direction": "Outbound"
-                    },
-                    {
-                        "name": "DenyRDP",
-                        "protocol": "*",
-                        "sourcePortRange": "*",
-                        "sourceAddressPrefix": "*",
-                        "destinationAddressPrefix": "VirtualNetwork",
-                        "destinationPortRange": "3389",
-                        "access": "Deny",
-                        "priority": 2004,
-                        "direction": "Inbound",
-                        "description": "Override for optional SFMC_AllowRdpPort rule. This is required in tests to avoid Sev2 incident for security policy violation."
-                    }
-                ],
-                "fabricSettings": [
-                ...
-                ]
-            }
+{
+  "apiVersion": "2021-05-01",
+  "type": "Microsoft.ServiceFabric/managedclusters",
+  "properties": {
+    "networkSecurityRules": [
+      {
+        "name": "AllowCustomers",
+        "protocol": "*",
+        "sourcePortRange": "*",
+        "sourceAddressPrefix": "Internet",
+        "destinationAddressPrefix": "*",
+        "destinationPortRange": "33000-33499",
+        "access": "Allow",
+        "priority": 2001,
+        "direction": "Inbound"
+      },
+      {
+        "name": "AllowARM",
+        "protocol": "*",
+        "sourcePortRange": "*",
+        "sourceAddressPrefix": "AzureResourceManager",
+        "destinationAddressPrefix": "*",
+        "destinationPortRange": "33500-33699",
+        "access": "Allow",
+        "priority": 2002,
+        "direction": "Inbound"
+      },
+      {
+        "name": "DenyCustomers",
+        "protocol": "*",
+        "sourcePortRange": "*",
+        "sourceAddressPrefix": "Internet",
+        "destinationAddressPrefix": "*",
+        "destinationPortRange": "33700-33799",
+        "access": "Deny",
+        "priority": 2003,
+        "direction": "Outbound"
+      },
+      {
+        "name": "DenyRDP",
+        "protocol": "*",
+        "sourcePortRange": "*",
+        "sourceAddressPrefix": "*",
+        "destinationAddressPrefix": "VirtualNetwork",
+        "destinationPortRange": "3389",
+        "access": "Deny",
+        "priority": 2004,
+        "direction": "Inbound",
+        "description": "Override for optional SFMC_AllowRdpPort rule. This is required in tests to avoid Sev2 incident for security policy violation."
+      }
+    ],
+    "fabricSettings": [
+      "..."
+    ]
+  }
+}
 ```
 
 ## <a name="clientconnection-and-httpgatewayconnection-default-and-optional-rules"></a>ClientConnection- und HttpGatewayConnection-Standardregeln und optionale Regeln
@@ -331,7 +331,11 @@ Verwaltete Cluster aktivieren IPv6 nicht standardmäßig. Dieses Feature ermögl
 Mit diesem Feature können Kunden ein vorhandenes virtuelles Netzwerk verwenden, indem sie ein dediziertes Subnetz angeben, in dem der verwaltete Cluster seine Ressourcen bereitstellt. Dies kann nützlich sein, wenn Sie bereits über ein konfiguriertes VNet und Subnetz mit zugehörigen Sicherheitsrichtlinien und Datenverkehrsrouting verfügen, die Sie verwenden möchten. Sobald die Bereitstellung an ein vorhandenes virtuelles Netzwerk durch Sie erfolgt ist, ist es einfach, andere Netzwerkfeatures wie Azure ExpressRoute, Azure-VPN-Gateway, eine Netzwerksicherheitsgruppe und Peering virtueller Netzwerke zu integrieren. Darüber hinaus können Sie bei Bedarf [Ihren eigenen Azure-Lastenausgleich verwenden](#byolb).
 
 > [!NOTE]
+> Bei Verwendung von BYOVNET werden verwaltete Clusterressourcen in einem Subnetz bereitgestellt. 
+
+> [!NOTE]
 > Diese Einstellung kann nicht mehr geändert werden, nachdem der Cluster erstellt wurde, und der verwaltete Cluster weist dem bereitgestellten Subnetz eine NSG zu. Setzen Sie die NSG-Zuweisung nicht außer Kraft, da der Datenverkehr möglicherweise unterbrochen wird.
+
 
 **Verwendung eines eigenen virtuellen Netzwerks:**
 
@@ -443,6 +447,9 @@ Verwaltete Cluster erstellen einen Azure Load Balancer und einen vollqualifizier
 * Eventuell vorhandene Richtlinien und Kontrollen verwalten.
 
 > [!NOTE]
+> Bei Verwendung von BYOVNET werden verwaltete Clusterressourcen unabhängig von zusätzlichen konfigurierten Lastenausgleichsressourcen in einem Subnetz mit einer NSG bereitgestellt.
+
+> [!NOTE]
 > Sie können nach der Clusterbereitstellung für einen Knotentyp nicht von „Standard“ zu „Benutzerdefiniert“ wechseln, aber Sie können die Konfiguration des benutzerdefinierten Lastenausgleichs nach der Bereitstellung ändern.
 
 **Funktionsanforderungen**
@@ -488,7 +495,7 @@ So konfigurieren Sie die Verwendung eines eigenen Lastenausgleichs:
 
 2. Fügen Sie der Service Fabric-Ressourcenanbieteranwendung eine Rollenzuweisung hinzu. Das Hinzufügen einer Rollenzuweisung ist eine einmalige Aktion. Sie fügen die Rolle hinzu, indem Sie die folgenden PowerShell-Befehle ausführen oder wie unten beschrieben eine ARM-Vorlage (Azure Resource Manager-Vorlage) konfigurieren.
 
-   In den folgenden Schritten beginnen wir mit einem vorhandenen Lastenausgleich mit dem Namen Existing-LoadBalancer1 in der Ressourcengruppe Existing-RG. Das Subnetz ist standardmäßig benannt.
+   In den folgenden Schritten beginnen wir mit einem vorhandenen Lastenausgleich mit dem Namen Existing-LoadBalancer1 in der Ressourcengruppe Existing-RG.
 
    Rufen Sie die erforderlichen `Id`-Eigenschaftsinformationen aus dem vorhandenen Azure Load Balancer ab. Sie führen diese Schritte aus: 
 
@@ -510,7 +517,7 @@ So konfigurieren Sie die Verwendung eines eigenen Lastenausgleichs:
    New-AzRoleAssignment -PrincipalId 00000000-0000-0000-0000-000000000000 -RoleDefinitionName "Network Contributor" -Scope "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Network/loadBalancers/<LoadBalancerName>"
    ```
 
-   Sie können die Rollenzuweisung auch mithilfe einer ARM-Vorlage (Azure Resource Manager-Vorlage) hinzufügen, die mit den richtigen Werten für `principalId`, `roleDefinitionId`, `vnetName` und `subnetName` konfiguriert ist:
+   Sie können die Rollenzuweisung auch mithilfe einer ARM-Vorlage (Azure Resource Manager) hinzufügen, die mit den richtigen Werten für `principalId` konfiguriert ist, die in Schritt 1 abgerufen wurden (`loadBalancerRoleAssignmentID` und `roleDefinitionId`):
 
    ```JSON
       "type": "Microsoft.Authorization/roleAssignments",

@@ -1,5 +1,5 @@
 ---
-title: Ausführen einer Fail-Aktivität in Azure Data Factory und Synapse Analytics (Vorschau)
+title: Ausführen einer Fail-Aktivität in Azure Data Factory und Synapse Analytics
 titleSuffix: Azure Data Factory & Azure Synapse
 description: Dieser Artikel behandelt die Fail-Aktivität in Azure Data Factory und Synapse Analytics löst absichtlich einen Fehler in einer Pipeline aus.
 author: chez-charlie
@@ -9,14 +9,14 @@ ms.subservice: orchestration
 ms.custom: synapse
 ms.topic: conceptual
 ms.date: 09/22/2021
-ms.openlocfilehash: 2b8b012617633a7569c951e842d35b05a3b2740e
-ms.sourcegitcommit: c27f71f890ecba96b42d58604c556505897a34f3
+ms.openlocfilehash: 07891ea9f4f25827c80ac56a2731d4a5393f3b38
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129535860"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131438719"
 ---
-# <a name="execute-a-fail-activity-in-azure-data-factory-and-synapse-analytics-preview"></a>Ausführen einer Fail-Aktivität in Azure Data Factory und Synapse Analytics (Vorschau)
+# <a name="execute-a-fail-activity-in-azure-data-factory-and-synapse-analytics"></a>Ausführen einer Fail-Aktivität in Azure Data Factory und Synapse Analytics
 
 Sie sollten von Zeit zu Zeit gelegentlich einen Fehler in einer Pipeline auslösen. Eine [Lookup-Aktivität](control-flow-lookup-activity.md) gibt möglicherweise keine übereinstimmenden Daten zurück, oder eine [Benutzerdefinierte Aktivität](transform-data-using-dotnet-custom-activity.md) beendet möglicherweise mit einem internen Fehler. Unabhängig vom Grund können Sie die Fail-Aktivität jetzt in einer Pipeline verwenden und sowohl deren Fehlermeldung als auch dessen Fehlercode anpassen.
 

@@ -2,14 +2,13 @@
 title: Neuerungen in Azure Defender für IoT
 description: In diesem Artikel wird beschrieben, welche Neuerungen das aktuelle Release von Defender für IoT enthält.
 ms.topic: overview
-ms.date: 10/20/2021
-ms.custom: ignite-fall-2021
-ms.openlocfilehash: a4a39ef6d48ecd2466c6642fcaa91611d2f44da6
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.date: 11/07/2021
+ms.openlocfilehash: ca588aed8a461e48cf85a01e97d5f8ddd4a42e24
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131073071"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131988273"
 ---
 # <a name="whats-new-in-azure-defender-for-iot"></a>Neuerungen in Azure Defender für IoT  
 
@@ -77,17 +76,29 @@ Wenn der Schlüsselzustand als „Programm“ oder der Ausführungszustand als �
 
 ### <a name="pcap-api"></a>PCAP-API
 
-Mit der neuen PCAP-API kann der Benutzer über die lokale Verwaltungskonsole PCAP-Dateien des Sensors mit und ohne direkten Zugriff auf den Sensor abrufen. Hierzu wird die Verwaltungskonsole als Proxy verwendet.
+Mit der neuen PCAP-API kann der Benutzer über die lokale Verwaltungskonsole PCAP-Dateien des Sensors mit und ohne direkten Zugriff auf den Sensor abrufen.
 
 ### <a name="on-premises-management-console-audit"></a>Überwachung der lokalen Verwaltungskonsole
 
-Überwachungsprotokolle für die Bereitstellung Ihres Sensors sind jetzt über die lokale Verwaltungskonsole verfügbar.
+Überwachungsprotokolle für die lokale Verwaltungskonsole können nun exportiert werden, um Untersuchungen dazu zu ermöglichen, welche Änderungen von wem vorgenommen wurden.
 
 ### <a name="webhook-extended"></a>Webhook erweitert
 
-Der erweiterte Webhook kann verwendet werden, um alle Informationen in der Webhookwarnung sowie zusätzliche Daten an den Endpunkt zu senden.
+Erweiterte Webhooks können zum Senden von zusätzlichen Daten an den Endpunkt verwendet werden. Das erweiterte Feature enthält alle Informationen in der Webhookwarnung und fügt dem Bericht die folgenden Informationen hinzu:
 
-### <a name="unicode-support-for-certificate-passphrases"></a>Unicode-Unterstützung für Zertifikatpassphrasen 
+- sensorID
+- sensorName
+- zoneID
+- zoneName
+- siteID
+- siteName
+- sourceDeviceAddress
+- destinationDeviceAddress
+- remediationSteps
+- handled (verarbeitet)
+- additionalInformation
+
+### <a name="unicode-support-for-certificate-passphrases"></a>Unicode-Unterstützung für Zertifikatpassphrasen
 
 Bei Passphrasen für Sensorzertifikate werden jetzt Unicode-Zeichen unterstützt. Weitere Informationen finden Sie unter [Informationen zu Zertifikaten](how-to-deploy-certificates.md#about-certificates).
 
@@ -126,7 +137,7 @@ Für Benutzer, die Warnungs-APIs verwenden, sind neue Felder verfügbar.
 - Quell- und Zieladresse
 - Schritte zur Bereinigung
 - Der vom Benutzer definierte Name des Sensors
-- Der Name der Zone, die dem Sensor zugeordnet ist 
+- Der Name der Zone, die dem Sensor zugeordnet ist
 - Der Name des Standorts, der dem Sensor zugeordnet ist
 
 **Sensor**
@@ -171,6 +182,7 @@ Dieses Feature ist in der lokalen Verwaltungskonsole mit Veröffentlichung von V
 - [Onboarding](#onboarding)
 - [Benutzerfreundlichkeit](#usability)
 - [Andere Updates](#other-updates)
+
 ### <a name="security"></a>Sicherheit
 
 Für dieses Release wurden Verbesserungen bei der Wiederherstellung von Zertifikaten und Kennwörtern vorgenommen.

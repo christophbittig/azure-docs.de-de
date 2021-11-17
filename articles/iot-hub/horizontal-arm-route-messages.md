@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 08/24/2020
 ms.author: robinsh
 ms.custom: mvc, subject-armqs
-ms.openlocfilehash: 366aa1737f0e72a1f250fc1d25ea77636955d674
-ms.sourcegitcommit: c05e595b9f2dbe78e657fed2eb75c8fe511610e7
+ms.openlocfilehash: e40b714709aedbb643b2b2d65878a73618a7682f
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2021
-ms.locfileid: "112034299"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131445866"
 ---
 # <a name="quickstart-deploy-an-azure-iot-hub-and-a-storage-account-using-an-arm-template"></a>Schnellstart: Bereitstellen einer Azure IoT Hub-Instanz und eines Speicherkontos mithilfe einer ARM-Vorlage
 
@@ -63,8 +63,6 @@ In diesem Abschnitt erfahren Sie, wie Sie die Vorlage bereitstellen, ein virtuel
 
 1. Sie benötigen den **Namen des Hubs**. Wählen Sie den Hub in der Ressourcenliste aus. Kopieren Sie am oberen Rand des IoT Hub-Abschnitts den Namen des Hubs in die Windows-Zwischenablage.
 
-   ![Kopieren des Hubnamens](./media/horizontal-arm-route-messages/03-copy-hub-name.png)
-
     Fügen Sie den Namen des Hubs im folgenden Befehl an der angegebenen Stelle ein, und führen Sie den Befehl im Befehlsfenster aus:
 
     ```cmd
@@ -77,11 +75,11 @@ In diesem Abschnitt erfahren Sie, wie Sie die Vorlage bereitstellen, ein virtuel
    SET IOT_HUB_URI=ContosoTestHubdlxlud5h.azure-devices-net;
    ```
 
-1. Die nächste Umgebungsvariable ist der IoT-Geräteschlüssel. Fügen Sie dem Hub ein neues Gerät hinzu, indem Sie im IoT Hub-Menü für den Hub die Option **IoT-Geräte** auswählen.
+1. Die nächste Umgebungsvariable ist der IoT-Geräteschlüssel. Fügen Sie dem Hub ein neues Gerät hinzu, indem Sie im IoT Hub-Menü für den Hub die Option **Geräte** auswählen.
 
-   ![Auswählen von IoT-Geräten](./media/horizontal-arm-route-messages/04-select-iot-devices.png)
+   :::image type="content" source="./media/horizontal-arm-route-messages/04-select-iot-devices.png" alt-text="Screenshot: „Geräte“ im linken Bereich" border="true":::
 
-1. Wählen Sie auf der rechten Seite des Bildschirms die Option **+ NEU** aus, um ein neues Gerät hinzuzufügen.
+1. Wählen Sie auf der rechten Seite des Bildschirms die Option **+ Gerät hinzufügen** aus, um ein neues Gerät hinzuzufügen.
 
    Geben Sie den Namen des neuen Geräts an. In dieser Schnellstartanleitung wird ein Name verwendet, der mit **Contoso-Test-Device** beginnt. Speichern Sie das Gerät, und öffnen Sie den Bildschirm anschließend erneut, um den Geräteschlüssel abzurufen. (Der Schlüssel wird generiert, wenn Sie den Bereich schließen.) Wählen Sie entweder den primären oder den sekundären Schlüssel aus, und kopieren Sie ihn in die Windows-Zwischenablage. Legen Sie im Befehlsfenster den auszuführenden Befehl fest, und drücken Sie anschließend die **EINGABETASTE**. Der Befehl sollte wie folgt aussehen (allerdings mit eingefügtem Geräteschlüssel):
 

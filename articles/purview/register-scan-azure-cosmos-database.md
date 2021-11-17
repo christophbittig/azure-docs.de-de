@@ -7,12 +7,12 @@ ms.service: purview
 ms.topic: how-to
 ms.date: 11/02/2021
 ms.custom: template-how-to, ignite-fall-2021
-ms.openlocfilehash: 7d5556fcd040eaefe1078cddaf084089e471d496
-ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+ms.openlocfilehash: ba4c12c51ad744e6c68d63c1aaad17f32fbec15e
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2021
-ms.locfileid: "131076794"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131841978"
 ---
 # <a name="connect-to-azure-cosmos-database-sql-api-in-azure-purview"></a>Herstellen einer Verbindung mit Azure Cosmos-Datenbank (SQL-API) in Azure Purview
 
@@ -22,7 +22,9 @@ In diesem Artikel wird der Prozess zum Registrieren einer Azure Cosmos Datenbank
 
 |**Metadatenextrahierung**|  **Vollständige Überprüfung**  |**Inkrementelle Überprüfung**|**Bereichsbezogene Überprüfung**|**Klassifizierung**|**Zugriffsrichtlinie**|**Herkunft**|
 |---|---|---|---|---|---|---|
-| [Ja](#register) | [Ja](#scan)|[Ja](#scan) | [Ja](#scan)|[Ja](#scan)|Nein|Nein|
+| [Ja](#register) | [Ja](#scan)|[Ja](#scan) | [Ja](#scan)|[Ja](#scan)|Nein|nein** |
+
+\** Herkunft wird unterstützt, wenn das Dataset als Quelle/Senke in der [Data Factory Copy-Aktivität](how-to-link-azure-data-factory.md) verwendet wird. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -30,7 +32,7 @@ In diesem Artikel wird der Prozess zum Registrieren einer Azure Cosmos Datenbank
 
 * Eine aktive [Purview-Ressource](create-catalog-portal.md)
 
-* Sie müssen ein Datenquellenadministrator und Datenleser sein, um eine Quelle zu registrieren und in Purview Studio zu verwalten. Weitere Informationen finden Sie auf der [Seite Azure Purview-Berechtigungen](catalog-permissions.md).
+* Sie müssen Datenquellenadministrator und Datenleser sein, um eine Quelle zu registrieren und in Purview Studio zu verwalten. Weitere Informationen finden Sie auf der [Seite Azure Purview-Berechtigungen](catalog-permissions.md).
 
 ## <a name="register"></a>Register
 
@@ -145,6 +147,7 @@ Sie müssen Ihren Zugriffsschlüssel erhalten und im Schlüsseltresor speichern:
 
     :::image type="content" source="media/register-scan-azure-cosmos-database/register-cosmos-db-classification.png" alt-text="Überprüfen von Klassifizierungsregeln":::
 
+
     :::image type="content" source="media/register-scan-azure-cosmos-database/register-cosmos-db-select-scan-rule-set.png" alt-text="Überprüfen der Regelauswahl":::
 
 1. Wählen Sie den Auslöser für die Überprüfung. Sie können einen Zeitplan einrichten oder die Überprüfung einmalig ausführen.
@@ -189,8 +192,8 @@ Sie müssen Ihren Zugriffsschlüssel erhalten und im Schlüsseltresor speichern:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie Ihre Quelle registriert haben, halten Sie sich an die folgenden Anleitungen, um mehr über Purview und Ihre Daten zu erfahren.
+Nachdem Sie Ihre Quelle registriert haben, befolgen Sie die folgenden Anleitungen, um mehr über Purview und Ihre Daten zu erfahren.
 
-- [Dateneinblicke in Azure Purview](concept-insights.md)
+- [Datenerkenntnisse in Azure Purview](concept-insights.md)
 - [Datenherkunft in Azure Purview](catalog-lineage-user-guide.md)
 - [Data Catalog suchen](how-to-search-catalog.md)

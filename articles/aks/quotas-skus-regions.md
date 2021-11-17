@@ -5,12 +5,12 @@ description: Erfahren Sie mehr über Standardkontingente, eingeschränkte SKU-Gr
 services: container-service
 ms.topic: conceptual
 ms.date: 03/25/2021
-ms.openlocfilehash: fb0cf8fc6c3f8cdc2b68d26ca81ca6e240b65a2a
-ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
+ms.openlocfilehash: 257598f1a1ea8bbc578fe44c40b8e2dafef36837
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2021
-ms.locfileid: "131843839"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130266047"
 ---
 # <a name="quotas-virtual-machine-size-restrictions-and-region-availability-in-azure-kubernetes-service-aks"></a>Kontingente, Größeneinschränkungen für virtuelle Computer und regionale Verfügbarkeit in Azure Kubernetes Service (AKS)
 

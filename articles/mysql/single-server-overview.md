@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 6/19/2021
-ms.openlocfilehash: cf23b4111bc50b9276ffdc99704b750c8c7d5b3b
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: dfeea2cfde2f8122891b6fada2eba1e546ed2342
+ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131429107"
+ms.lasthandoff: 11/06/2021
+ms.locfileid: "131894220"
 ---
 # <a name="azure-database-for-mysql-single-server"></a>Azure Database for MySQL Single Server
 
@@ -20,16 +20,15 @@ ms.locfileid: "131429107"
 
 [Azure Database for MySQL](overview.md), ein Dienst, der auf MySQL Community Edition basiert, ist in zwei Bereitstellungsmodi verfügbar:
 
+- Flexible Server 
 - Einzelner Server
-- Flexible Server (Vorschau)
 
 In diesem Artikel erhalten Sie eine Übersicht und eine Einführung in die grundlegenden Konzepte des Bereitstellungsmodells „Single Server“. Weitere Informationen zum Bereitstellungsmodus Flexible Server finden Sie in der Übersicht zu [Flexible Server](flexible-server/index.yml). Informationen dazu, wie Sie entscheiden, welche Bereitstellungsoption für Ihre Workload geeignet ist, finden Sie unter [Auswählen der richtigen MySQL Server-Option in Azure](select-right-deployment-type.md).
 
 ## <a name="overview"></a>Übersicht
+Azure Database for MySQL Single Server ist ein vollständig verwalteter Datenbankdienst, der auf minimale Anpassungen ausgelegt ist. Die Single Server-Plattform kann die meisten Funktionen zur Datenbankverwaltung bereitstellen, z. B. Patching, Sicherungen, Hochverfügbarkeit sowie Sicherheit mit minimaler Benutzerkonfiguration und -steuerung. Die Architektur ist für integrierte Hochverfügbarkeit mit einer Verfügbarkeit von 99,99 % bei einer einzelnen Verfügbarkeitszone optimiert. Sie unterstützt die MySQL Community-Versionen 5.6 (eingestellt), 5.7 und 8.0. Der Dienst ist ab heute in vielen [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/services/) allgemein verfügbar.
 
-Bei Single Server handelt es sich um einen vollständig verwalteten Datenbankdienst mit minimalen Anforderungen für die Anpassung der Datenbank. Die Single Server-Plattform kann die meisten Funktionen zur Datenbankverwaltung bereitstellen, z. B. Patching, Sicherungen, Hochverfügbarkeit sowie Sicherheit mit minimaler Benutzerkonfiguration und -steuerung. Die Architektur ist für eine Verfügbarkeit von 99,99 Prozent in einer einzelnen Verfügbarkeitszone optimiert. Sie unterstützt die MySQL Community-Versionen 5.6, 5.7 und 8.0. Der Dienst ist ab heute in vielen [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/services/) allgemein verfügbar. 
-
-Single Server-Instanzen eignen sich am besten für cloudnative Anwendungen, da sie für das automatisierte Patchen ohne genauen Patchzeitplan und ohne benutzerdefinierte MySQL-Konfigurationseinstellungen konzipiert sind. 
+Single Server-Instanzen eignen sich am besten **nur für vorhandene Anwendungen, die bereits Einzelserver nutzen**. Für alle neuen Entwicklungen oder Migrationen ist Flexible Server die empfohlene Bereitstellungsoption. Informationen zu den Unterschieden zwischen den Bereitstellungsoptionen für Flexible Server und Single Server finden Sie unter [Auswählen der richtigen MySQL Server-Option in Azure](select-right-deployment-type.md).
 
 ## <a name="high-availability"></a>Hochverfügbarkeit
 

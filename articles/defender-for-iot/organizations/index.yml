@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: Dokumentation zu Azure Defender für IoT für Organisationen
-summary: 'Azure Defender für IoT bietet umfassende Bedrohungserkennung für IoT-/OT-Umgebungen mit mehreren Bereitstellungsoptionen, u. a. für vollständig lokale Bereitstellung, Bereitstellung mit Cloudverbindung oder Hybridbereitstellung. HINWEIS: Azure Defender für IoT wird in Microsoft Defender für IoT umbenannt. Die Dokumentation wird in Kürze aktualisiert.'
+title: Dokumentation zu Microsoft Defender für IoT für Organisationen
+summary: 'Microsoft Defender für IoT bietet umfassende Bedrohungserkennung für IoT-/OT-Umgebungen mit mehreren Bereitstellungsoptionen, u. a. für vollständig lokale Bereitstellung, Bereitstellung mit Cloudverbindung oder Hybridbereitstellung. HINWEIS: Azure Defender für IoT wird in Microsoft Defender für IoT umbenannt. Die Dokumentation wird in Kürze aktualisiert.'
 metadata:
-  title: Dokumentation zu Azure Defender für IoT für Organisationen
-  description: Azure Defender für IoT bietet umfassende Bedrohungserkennung für IoT-/OT-Umgebungen mit mehreren Bereitstellungsoptionen, u. a. für vollständig lokale Bereitstellung, Bereitstellung mit Cloudverbindung oder Hybridbereitstellung.
+  title: Dokumentation zu Microsoft Defender für IoT für Organisationen
+  description: Microsoft Defender für IoT bietet umfassende Bedrohungserkennung für IoT-/OT-Umgebungen mit mehreren Bereitstellungsoptionen, u. a. für vollständig lokale Bereitstellung, Bereitstellung mit Cloudverbindung oder Hybridbereitstellung.
   services: service
   ms.service: defender-for-iot
   ms.topic: landing-page
@@ -11,19 +11,19 @@ metadata:
   author: elazark
   ms.author: v-ekrieg
   manager: raynew
-  ms.date: 06/17/2021
-  ms.openlocfilehash: d1cffb5041cf1ecc32c180df5a81425506574e75
-  ms.sourcegitcommit: 106f5c9fa5c6d3498dd1cfe63181a7ed4125ae6d
+  ms.date: 11/09/2021
+  ms.openlocfilehash: 1a797256f0ac7cbdb084aee6dd9380df7fdffe45
+  ms.sourcegitcommit: 677e8acc9a2e8b842e4aef4472599f9264e989e7
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 11/02/2021
-  ms.locfileid: "131011312"
+  ms.lasthandoff: 11/11/2021
+  ms.locfileid: "132331374"
 landingContent:
-- title: Informationen zu Azure Defender für IoT für Organisationen
+- title: Informationen zu Microsoft Defender für IoT für Organisationen
   linkLists:
   - linkListType: overview
     links:
-    - text: Was ist Azure Defender für IoT für Organisationen?
+    - text: Was ist Microsoft Defender für IoT für Organisationen?
       url: overview.md
     - text: Architektur der Lösung ohne Agent für Organisationen
       url: architecture.md
@@ -39,7 +39,7 @@ landingContent:
   linkLists:
   - linkListType: how-to-guide
     links:
-    - text: 'Azure Defender für IoT: Netzwerkeinrichtung'
+    - text: Informationen zur Netzwerkeinrichtung von Microsoft Defender für IoT
       url: how-to-set-up-your-network.md
     - text: Aktivieren und Einrichten der lokalen Verwaltungskonsole
       url: how-to-activate-and-set-up-your-on-premises-management-console.md

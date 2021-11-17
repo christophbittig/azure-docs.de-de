@@ -1,24 +1,24 @@
 ---
-title: 'Schnellstart: Microsoft Azure Confidential Ledger Python-Clientbibliothek'
-description: Erfahren Sie, wie Sie die Microsoft Azure Confidential Ledger-Clientbibliothek für Python verwenden
+title: 'Schnellstart: Microsoft Azure Confidential Ledger-Python-Clientbibliothek'
+description: Hier erfahren Sie, wie Sie die Microsoft Azure Confidential Ledger-Clientbibliothek für Python verwenden.
 author: msmbaldwin
 ms.author: mbaldwin
 ms.date: 04/27/2021
 ms.service: confidential-ledger
 ms.topic: quickstart
 ms.custom: devx-track-python, devx-track-azurepowershell
-ms.openlocfilehash: 1fd69155a6131565b81ba9684e5c2c077a5420d9
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 292c298f3af1b693574ecf9e053de14373d4d597
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128671524"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131476317"
 ---
-# <a name="quickstart-microsoft-azure-confidential-ledger-client-library-for-python"></a>Schnellstart: Microsoft Azure Confidential Ledger Clientbibliothek für Python
+# <a name="quickstart-microsoft-azure-confidential-ledger-client-library-for-python"></a>Schnellstart: Microsoft Azure Confidential Ledger-Clientbibliothek für Python
 
-Erste Schritte mit der Microsoft Azure Confidential Ledger-Clientbibliothek für Python. Führen Sie die weiter unten beschriebenen Schritte aus, um das Paket zu installieren und den Beispielcode für grundlegende Aufgaben auszuprobieren.
+Führen Sie erste Schritte mit der Microsoft Azure Confidential Ledger-Clientbibliothek für Python aus. Führen Sie die weiter unten beschriebenen Schritte aus, um das Paket zu installieren und den Beispielcode für grundlegende Aufgaben auszuprobieren.
 
-Microsoft Azure Confidential Ledger ist ein neuer und äußerst sicherer Dienst für die Verwaltung vertraulicher Datensätze. Basierend auf einem berechtigungsbasierten Block Chain-Modell bietet Confidential Ledger einzigartige Vorteile bei der Datenintegrität, z. B. Unveränderlichkeit (nur Ledger-Anfügeberechtigung) und Manipulation (um sicherzustellen, dass alle Datensätze intakt bleiben).
+Microsoft Azure Confidential Ledger ist ein neuer und äußerst sicherer Dienst für die Verwaltung vertraulicher Datensätze. Basierend auf einem berechtigungsbasierten Block Chain-Modell bietet Azure Confidential Ledger einzigartige Vorteile bei der Datenintegrität, z. B. Unveränderlichkeit (der Ledger unterstützt nur Anfügevorgänge) und Manipulationsschutz (um sicherzustellen, dass alle Datensätze intakt bleiben).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -48,13 +48,13 @@ Installieren der Azure Active Directory-Identitätsbibliothek:
 pip install azure-identity
 ```
 
-Installieren der Confidential Ledger-Steuerungsebene-Clientbibliothek.
+Installieren Sie die Azure Confidential Ledger-Clientbibliothek für die Steuerungsebene:
 
 ```terminal
 pip install azure.mgmt.confidentialledger
 ```
 
-Installieren der Confidential Ledger-Datenebene-Clientbibliothek.
+Installieren Sie die Azure Confidential Ledger-Clientbibliothek für die Datenebene:
 
 ```terminal
 pip install azure.confidentialledger 
@@ -161,7 +161,7 @@ print (f"- ID: {myledger.id}")
 
 Nachdem wir nun über einen Ledger verfügen, interagieren wir mit der Datenebene-Clientbibliothek (azure.confidentialledger). 
 
-Zunächst generieren und speichern wir ein Confidential Ledger-Zertifikat.  
+Zunächst generieren und speichern Sie ein Confidential Ledger-Zertifikat:  
 
 ```python
 identity_client = ConfidentialLedgerIdentityServiceClient(identity_url)
@@ -174,7 +174,7 @@ with open(ledger_tls_cert_file_name, "w") as cert_file:
     cert_file.write(network_identity.ledger_tls_certificate)
 ```
 
-Jetzt können wir das Netzwerkzertifikat zusammen mit der Ledger-URL und unseren Anmeldeinformationen verwenden, um einen Confidential Ledger-Client zu erstellen.
+Jetzt können Sie das Netzwerkzertifikat zusammen mit der Ledger-URL und den Anmeldeinformationen verwenden, um einen Confidential Ledger-Client zu erstellen:
 
 ```python
 ledger_client = ConfidentialLedgerClient(
@@ -297,7 +297,7 @@ print(entry.contents)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Weitere Artikel zu Microsoft Azure Confidential Ledger können auf dieser Schnellstartanleitung aufbauen. Falls Sie mit weiteren Schnellstartanleitungen und Tutorials fortfahren möchten, sollten Sie die Ressourcen nicht bereinigen.
+Weitere Artikel zu Azure Confidential Ledger können auf dieser Schnellstartanleitung aufbauen. Falls Sie mit weiteren Schnellstartanleitungen und Tutorials fortfahren möchten, sollten Sie die Ressourcen nicht bereinigen.
 
 Andernfalls, wenn Sie mit den in diesem Artikel erstellten Ressourcen fertig sind, verwenden Sie den Azure CLI-Befehl [az group delete](/cli/azure/group?#az_group_delete), um die Ressourcengruppe und alle darin enthaltenen Ressourcen zu löschen:
 

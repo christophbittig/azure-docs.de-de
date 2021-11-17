@@ -6,15 +6,15 @@ ms.reviewer: amberb
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: troubleshooting
-ms.date: 09/15/2021
+ms.date: 10/22/2021
 ms.author: banders
-ms.custom: seodec18
-ms.openlocfilehash: c2a89f4905cda375b9e7565631a0ffd28e6dfa16
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.custom: sapnakeshari
+ms.openlocfilehash: 02507604c1194d726014453bde6cd03c2c21aa31
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128561457"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130255424"
 ---
 # <a name="troubleshoot-enterprise-cost-views"></a>Problembehandlung bei Unternehmenskostenansichten
 
@@ -31,9 +31,12 @@ Hierfür kann es einen der folgenden Gründe geben:
 2. Wenn Sie ein EA-Direktkunde sind, haben Sie mehrere Möglichkeiten:
     * Sie sind Kontobesitzer, und der Registrierungsadministrator hat die Einstellung **Gebühren anzeigen** für Kontobesitzer deaktiviert.  
     * Sie sind Abteilungsadministrator, und der Registrierungsadministrator hat die Einstellung **Gebühren anzeigen** für Abteilungsadministratoren deaktiviert.
-    * Wenden Sie sich an den Registrierungsadministrator, um Zugriff zu erhalten. Der Registrierungsadministrator kann die Einstellungen im [Enterprise Portal](https://ea.azure.com/manage/enrollment) aktualisieren.
+    * Wenden Sie sich an den Registrierungsadministrator, um Zugriff zu erhalten. Der Registrierungsadministrator kann die Einstellungen im [Azure-Portal](https://portal.azure.com/) aktualisieren. Navigieren Sie zum Menü **Richtlinien**, um die Einstellungen zu ändern. 
+    * Der Registrierungsadministrator kann die Einstellungen im [Enterprise Portal](https://ea.azure.com/manage/enrollment) aktualisieren.
 
       ![Screenshot mit den Enterprise Portal-Einstellungen für das Anzeigen von Gebühren.](./media/enterprise-mgmt-grp-troubleshoot-cost-view/ea-portal-settings.png)
+    
+ 
 
 ## <a name="asset-is-unavailable"></a>Asset ist nicht verfügbar
 

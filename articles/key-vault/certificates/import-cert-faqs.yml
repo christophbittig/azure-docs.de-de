@@ -10,12 +10,12 @@ metadata:
   ms.topic: how-to
   ms.date: 07/20/2020
   ms.author: sebansal
-  ms.openlocfilehash: 7341cad11d049217d282eb1e2c5c80aea0271ff2
-  ms.sourcegitcommit: 0af634af87404d6970d82fcf1e75598c8da7a044
+  ms.openlocfilehash: 6b7893e84dce9b5fa7bf7993dfa5f145363811f1
+  ms.sourcegitcommit: 591ffa464618b8bb3c6caec49a0aa9c91aa5e882
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 06/15/2021
-  ms.locfileid: "112124722"
+  ms.lasthandoff: 11/06/2021
+  ms.locfileid: "131893099"
 title: 'Importieren von Azure Key Vault-Zertifikaten: Häufig gestellte Fragen'
 summary: Dieser Artikel enthält Antworten auf häufig gestellte Fragen zum Import von Azure Key Vault-Zertifikaten.
 sections:
@@ -72,4 +72,7 @@ sections:
   - question: "Warum kann ich das App Service-Zertifikat nicht sehen, dass ich in Key Vault importiert habe? \n"
     answer: >
       Wenn der Import des Zertifikats erfolgreich war, sollten Sie dies im Bereich **Geheimnisse** bestätigen können.
+  - question: "Wie kombiniere ich Zertifikate in einer einzigen PEM-oder PFX-Datei, damit das gesamte Zertifikatpaket in Key Vault importiert wird? \n"
+    answer: >
+      Zertifizierungsstellen können Ihnen die Option zum einzelnen Herunterladen des Zertifikats (Stamm, Zwischen, Blatt (root, intermediate, leaf)) oder zum Herunterladen aller Zertifikate in einer einzelnen Datei bereitstellen. Beim Importieren eines Zertifikats in Key Vault gestattet es Ihnen, ein einzelnes Zertifikat oder die ganze Kette zu importieren. Dies ist Ihre Entscheidung.
 additionalContent: "\n## <a name=\"next-steps\"></a>Nächste Schritte\n\n- [Azure Key Vault-Zertifikate](./about-certificates.md)"

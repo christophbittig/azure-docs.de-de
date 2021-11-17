@@ -8,14 +8,14 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.date: 04/21/2021
 ms.topic: how-to
-ms.custom: devx-track-python, deploy, devx-track-azurecli, contperf-fy21q2, contperf-fy21q4
+ms.custom: devx-track-python, deploy, devx-track-azurecli, contperf-fy21q2, contperf-fy21q4, mktng-kw-nov2021
 adobe-target: true
-ms.openlocfilehash: b5514df10228a9e5638712976a0602fc33c8a990
-ms.sourcegitcommit: f6e2ea5571e35b9ed3a79a22485eba4d20ae36cc
+ms.openlocfilehash: 78abc8d3dba3090198f8856d71f91a9087237641
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2021
-ms.locfileid: "128604358"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131853318"
 ---
 # <a name="deploy-machine-learning-models-to-azure"></a>Bereitstellen von Machine Learning-Modellen für Azure 
 
@@ -24,14 +24,16 @@ Es wird beschrieben, wie Sie Ihr Machine Learning- oder Deep Learning-Modell als
 > [!TIP]
 > Verwaltete Onlineendpunkte (Vorschau) bieten eine Möglichkeit zur Bereitstellung Ihres trainierten Modells, ohne dass Sie die zugrunde liegende Infrastruktur erstellen und verwalten müssen. Weitere Informationen finden Sie unter [Bereitstellen und Bewerten eines Machine Learning-Modells mit einem verwalteten Onlineendpunkt (Vorschau)](how-to-deploy-managed-online-endpoints.md).
 
+## <a name="workflow-for-deploying-a-model"></a>Workflow zum Bereitstellen eines Modells
+
 Der Workflow ist unabhängig vom Bereitstellungsort Ihres Modells sehr ähnlich:
 
-1. Registrieren des Modells
-1. Vorbereiten eines Einstiegsskripts
-1. Vorbereiten einer Rückschlusskonfiguration
-1. Lokales Bereitstellen des Modells, um sicherzustellen, dass alles funktioniert
+1. Registrieren des Modells.
+1. Vorbereiten eines Einstiegsskripts.
+1. Vorbereiten einer Rückschlusskonfiguration.
+1. Lokales Bereitstellen des Modells, um sicherzustellen, dass alles funktioniert.
 1. Auswählen eines Computeziels
-1. Erneutes Bereitstellen des Modells in der Cloud
+1. Erneutes Bereitstellen des Modells in der Cloud.
 1. Testen des resultierenden Webdiensts
 
 Weitere Informationen zu den Konzepten, die für den Workflow zur Bereitstellung von Machine Learning-Modellen gelten, finden Sie unter [Verwalten, Bereitstellen und Überwachen von Modellen mit Azure Machine Learning](concept-model-management-and-deployment.md).
@@ -83,7 +85,7 @@ Weitere Informationen zur Verwendung des SDKs, um eine Verbindung mit einem Arbe
 
 ---
 
-## <a name="register-your-model"></a><a id="registermodel"></a> Registrieren Ihres Modells
+## <a name="register-the-model"></a><a id="registermodel"></a> Registrieren des Modells
 
 Eine typische Situation für einen bereitgestellten Machine Learning-Dienst ist, dass Sie die folgenden Komponenten benötigen:
     

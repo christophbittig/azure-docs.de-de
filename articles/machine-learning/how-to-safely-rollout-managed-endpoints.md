@@ -11,12 +11,12 @@ author: rsethur
 ms.date: 10/21/2021
 ms.topic: how-to
 ms.custom: how-to, devplatv2
-ms.openlocfilehash: 813ef955a202f5645d8e4881efb3b2d083fa4d63
-ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
+ms.openlocfilehash: 7f82c65a2aba8057ab3f7cbc6729b83ed597e12b
+ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2021
-ms.locfileid: "132063587"
+ms.lasthandoff: 11/04/2021
+ms.locfileid: "131564801"
 ---
 # <a name="safe-rollout-for-online-endpoints-preview"></a>Sicherer Rollout für Onlineendpunkte (Vorschau)
 
@@ -56,7 +56,7 @@ In diesem Artikel lernen Sie Folgendes:
 
 * Wenn Sie die Umgebungsvariable noch nicht auf „$ENDPOINT_NAME“ festgelegt haben, tun Sie dies jetzt:
 
-   :::code language="azurecli" source="~/azureml-examples-main/cli/deploy-safe-rollout-online-endpoints.sh" ID="set_endpoint_name":::
+   :::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-safe-rollout-online-endpoints.sh" ID="set_endpoint_name":::
 
 * (Empfohlen) Klonen Sie das Beispielrepository, und wechseln Sie zum Verzeichnis `cli/` des Repositorys: 
 
@@ -83,7 +83,7 @@ Es sollten der Endpunkt mit `$ENDPOINT_NAME` und eine Bereitstellung mit dem Nam
 
 In der Bereitstellung, die unter [Bereitstellen und Bewerten eines Machine Learning-Modells mit einem verwalteten Onlineendpunkt (Vorschau)](how-to-deploy-managed-online-endpoints.md) beschrieben ist, legen Sie den `instance_count` in der YAML-Bereitstellungsdatei auf den Wert `1` fest. Sie können mit dem `update`-Befehl aufskalieren:
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-safe-rollout-online-endpoints.sh" ID="scale_blue" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-safe-rollout-online-endpoints.sh" ID="scale_blue" :::
 
 > [!Note]
 > Beachten Sie, dass im oben genannten Befehl `--set` verwendet wird, um die Bereitstellungskonfiguration zu überschreiben. Alternativ können Sie die YAML-Datei aktualisieren und mithilfe der Eingabe `--file` als Eingabe an den Befehl `update` übergeben.
@@ -92,27 +92,27 @@ In der Bereitstellung, die unter [Bereitstellen und Bewerten eines Machine Learn
 
 Erstellen Sie eine neue Bereitstellung mit dem Namen `green`: 
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-safe-rollout-online-endpoints.sh" ID="create_green" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-safe-rollout-online-endpoints.sh" ID="create_green" :::
 
 Da „green“ kein Datenverkehr explizit zugeordnet wurde, wird ihr kein Datenverkehr zugeordnet. Sie können dies mithilfe dieses Befehls überprüfen:
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-safe-rollout-online-endpoints.sh" ID="get_traffic" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-safe-rollout-online-endpoints.sh" ID="get_traffic" :::
 
 ### <a name="test-the-new-deployment"></a>Testen der neuen Bereitstellung
 
 Obwohl `green` 0% des Datenverkehrs zugeordnet ist, können Sie sie direkt aufrufen, indem Sie den `--deployment`-Namen angeben:
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-safe-rollout-online-endpoints.sh" ID="test_green" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-safe-rollout-online-endpoints.sh" ID="test_green" :::
 
 Falls Sie einen REST-Client verwenden möchten, um die Bereitstellung ohne Verwendung von Datenverkehrsregeln direkt aufzurufen, müssen Sie den folgenden HTTP-Header festlegen: `azureml-model-deployment: <deployment-name>`. Der folgende Codeausschnitt verwendet `curl`, um die Bereitstellung direkt aufzurufen. Der Codeausschnitt sollte in UNIX/WSL-Umgebungen funktionieren:
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-safe-rollout-online-endpoints.sh" ID="test_green_using_curl" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-safe-rollout-online-endpoints.sh" ID="test_green_using_curl" :::
 
 ## <a name="test-the-new-deployment-with-a-small-percentage-of-live-traffic"></a>Testen der neuen Bereitstellung mit einem geringen Prozentsatz des Livedatenverkehrs
 
 Nachdem Sie Ihre `green`-Bereitstellung getestet haben, weisen Sie ihr einen kleinen Prozentsatz des Datenverkehrs zu:
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-safe-rollout-online-endpoints.sh" ID="green_10pct_traffic" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-safe-rollout-online-endpoints.sh" ID="green_10pct_traffic" :::
 
 Nun erhält Ihre Bereitstellung `green` 10 % der Anforderungen. 
 
@@ -120,17 +120,17 @@ Nun erhält Ihre Bereitstellung `green` 10 % der Anforderungen.
 
 Wenn Sie mit der Bereitstellung `green` zufrieden sind, können Sie den gesamten Datenverkehr entsprechend umstellen.
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-safe-rollout-online-endpoints.sh" ID="green_100pct_traffic" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-safe-rollout-online-endpoints.sh" ID="green_100pct_traffic" :::
 
 ## <a name="remove-the-old-deployment"></a>Entfernen der alten Bereitstellung
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-safe-rollout-online-endpoints.sh" ID="delete_blue" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-safe-rollout-online-endpoints.sh" ID="delete_blue" :::
 
 ## <a name="delete-the-endpoint-and-deployment"></a>Löschen des Endpunkts und der Bereitstellung
 
 Wenn Sie die Bereitstellung nicht verwenden, sollten Sie sie auf die folgende Art löschen:
 
-:::code language="azurecli" source="~/azureml-examples-main/cli/deploy-safe-rollout-online-endpoints.sh" ID="delete_endpoint" :::
+:::code language="azurecli" source="~/azureml-examples-cli-preview/cli/deploy-safe-rollout-online-endpoints.sh" ID="delete_endpoint" :::
 
 
 ## <a name="next-steps"></a>Nächste Schritte

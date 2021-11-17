@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: thwimmer
-ms.openlocfilehash: 4999669aee35b9e0d7303ae1156f10318c775562
-ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
+ms.openlocfilehash: b7e10c4606c26f9d340437305a49e1ae236eecb9
+ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2021
-ms.locfileid: "131989753"
+ms.lasthandoff: 11/03/2021
+ms.locfileid: "131456079"
 ---
 # <a name="tutorial-configure-ringcentral-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von RingCentral für die automatische Benutzerbereitstellung
 
@@ -38,10 +38,6 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 * Ein Benutzerkonto in Azure AD mit der [Berechtigung](../roles/permissions-reference.md) für die Konfiguration von Bereitstellungen (z.B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator). 
 * [Einen RingCentral-Mandanten](https://www.ringcentral.com/office/plansandpricing.html)
 * Ein Benutzerkonto in RingCentral mit Administratorrechten
-
-> [!NOTE]
-> Diese Integration kann auch über die Azure AD-Umgebung für die US Government-Cloud verwendet werden. Sie finden diese Anwendung im Azure AD-Katalog für US Government-Cloudanwendungen und konfigurieren sie auf die gleiche Weise wie in der öffentlichen Cloud.
-
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Schritt 1: Planen der Bereitstellung
 1. Erfahren Sie, [wie der Bereitstellungsdienst funktioniert](../app-provisioning/user-provisioning.md).

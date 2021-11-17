@@ -6,6 +6,8 @@
       href: devtest-lab-overview.md
 - name: Schnellstart
   items:
+    - name: 'Erstellen eines Labs: Portal'
+      href: devtest-lab-create-lab.md
     - name: 'Erstellen eines Labs: Resource Manager-Vorlage'
       displayName: Resource Manager
       href: create-lab-windows-vm-template.md
@@ -36,7 +38,7 @@
           href: scripts/set-allowed-vm-sizes-in-lab.md
     - name: 'Azure PowerShell: Modul „Az.DevTestLabs2“'
       href: 'https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Modules/Library'
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: samples-cli.md
       items:
         - name: Erstellen und Überprüfen der Verfügbarkeit eines virtuellen Computers
@@ -73,8 +75,6 @@
   items:
     - name: Konfigurieren eines Labs
       items:
-        - name: Erstellen eines Labs
-          href: devtest-lab-create-lab.md
         - name: Erstellen eines netzwerkisolierten Labs
           href: network-isolation.md
         - name: Erstellen oder Ändern von Labs mithilfe einer Resource Manager-Vorlage
@@ -135,7 +135,7 @@
               href: devtest-lab-add-vm.md
             - name: Azure PowerShell
               href: devtest-lab-vm-powershell.md
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: devtest-lab-vmcli.md
             - name: Resource Manager-Vorlage
               href: devtest-lab-use-resource-manager-template.md

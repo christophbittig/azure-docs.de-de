@@ -10,12 +10,12 @@ author: lostmygithubaccount
 ms.author: copeters
 ms.date: 10/21/2021
 ms.reviewer: laobri
-ms.openlocfilehash: e14e46d2301f8a87ca59ab09f4d4deb29d8c16a6
-ms.sourcegitcommit: e41827d894a4aa12cbff62c51393dfc236297e10
+ms.openlocfilehash: ea641b24b43c7ad1d22e497f9d2558ccb163e81b
+ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2021
-ms.locfileid: "131561326"
+ms.lasthandoff: 11/09/2021
+ms.locfileid: "132060016"
 ---
 # <a name="cli-v2-workspace-yaml-schema"></a>CLI-Arbeitsbereich (v2): YAML-Schema
 
@@ -27,11 +27,11 @@ Das JSON-Quellschema finden Sie unter https://azuremlschemas.azureedge.net/lates
 
 | Schlüssel | type | BESCHREIBUNG | Zulässige Werte | Standardwert |
 | --- | ---- | ----------- | -------------- | ------- |
-| `$schema` | Zeichenfolge | Das YAML-Schema. Wenn Sie die YAML-Datei mithilfe der VS Code-Erweiterung für Azure Machine Learning erstellen, können Sie durch Einfügen von `$schema` am Anfang der Datei Schema- und Ressourcenvervollständigungen aufrufen. | | |
+| `$schema` | Zeichenfolge | Das YAML-Schema. Wenn Sie die Azure Machine Learning VS Code-Erweiterung verwenden, um die YAML-Datei zu erstellen, können Sie durch Einfügen von `$schema` am Anfang der Datei Schema- und Ressourcenvervollständigungen aufrufen. | | |
 | `name` | Zeichenfolge | **Erforderlich.** Name des Arbeitsbereichs | | |
 | `display_name` | Zeichenfolge | Anzeigename des Arbeitsbereichs auf der Studio-Benutzeroberfläche. Kann innerhalb der Ressourcengruppe uneindeutig sein. | | |
 | `description` | Zeichenfolge | Beschreibung des Arbeitsbereichs | | |
-| `tags` | Objekt | Wörterbuch der Tags für den Arbeitsbereich | | |
+| `tags` | Objekt (object) | Wörterbuch der Tags für den Arbeitsbereich | | |
 | `location` | Zeichenfolge | Standort des Arbeitsbereichs. Wenn keine Angabe erfolgt, wird standardmäßig der Standort der Ressourcengruppe verwendet. | | |
 | `resource_group` | Zeichenfolge | **Erforderlich.** Die Ressourcengruppe mit dem Arbeitsbereich. Wenn die Ressourcengruppe nicht vorhanden ist, wird eine neue erstellt. | | |
 | `hbi_workspace` | boolean | Gibt an, ob die Kundendaten erhebliche Geschäftsauswirkungen (High Business Impact, HBI) haben und vertrauliche Geschäftsinformationen enthalten. Weitere Informationen finden Sie unter [Datenverschlüsselung ruhender Daten](concept-data-encryption.md#encryption-at-rest). | | `false` |
@@ -39,7 +39,7 @@ Das JSON-Quellschema finden Sie unter https://azuremlschemas.azureedge.net/lates
 | `container_registry` | Zeichenfolge | Die vollqualifizierte Ressourcen-ID einer vorhandenen Azure-Containerregistrierung, die als Standardcontainerregistrierung für den Arbeitsbereich verwendet werden soll. Azure ML verwendet Azure Container Registry (ACR) zum Verwalten von Containerimages, die für Training und Bereitstellung verwendet werden. Wenn keine Angabe erfolgt, wird eine neue Containerregistrierung erstellt. Da die Erstellung verzögert geladen wird, wird die Containerregistrierung erst erstellt, wenn sie zum ersten Mal für einen Trainings- oder Bereitstellungsvorgang benötigt wird. | | |
 | `key_vault` | Zeichenfolge | Die vollqualifizierte Ressourcen-ID eines vorhandenen Azure-Schlüsseltresors, der als Standardschlüsseltresor für den Arbeitsbereich verwendet werden soll. Wenn keine Angabe erfolgt, wird ein neuer Schlüsseltresor erstellt. | | |
 | `application_insights` | Zeichenfolge | Die vollqualifizierte Ressourcen-ID einer vorhandenen Azure Application Insights-Instanz, die als Standardinstanz für den Arbeitsbereich verwendet werden soll. Wenn keine Angabe erfolgt, wird eine neue Application Insights-Instanz erstellt. | | |
-| `customer_managed_key` | Objekt | Azure Machine Learning speichert Metadaten in einer Azure Cosmos DB-Instanz. Standardmäßig werden ruhende Daten mit von Microsoft verwalteten Schlüsseln verschlüsselt. Wenn Sie Ihren eigenen kundenseitig verwalteten Schlüssel für die Verschlüsselung verwenden möchten, geben Sie in diesem Abschnitt die Informationen zum kundenseitig verwalteten Schlüssel an. Weitere Informationen finden Sie unter [Datenverschlüsselung für Azure Cosmos DB](concept-data-encryption.md#azure-cosmos-db). | | |
+| `customer_managed_key` | Objekt (object) | Azure Machine Learning speichert Metadaten in einer Azure Cosmos DB-Instanz. Standardmäßig werden ruhende Daten mit von Microsoft verwalteten Schlüsseln verschlüsselt. Wenn Sie Ihren eigenen kundenseitig verwalteten Schlüssel für die Verschlüsselung verwenden möchten, geben Sie in diesem Abschnitt die Informationen zum kundenseitig verwalteten Schlüssel an. Weitere Informationen finden Sie unter [Datenverschlüsselung für Azure Cosmos DB](concept-data-encryption.md#azure-cosmos-db). | | |
 | `customer_managed_key.key_vault` | Zeichenfolge | Die vollqualifizierte Ressourcen-ID des Schlüsseltresors mit dem kundenseitig verwalteten Schlüssel. Dieser Schlüsseltresor kann sich von dem in `key_vault` angegebenen Standardschlüsseltresor für den Arbeitsbereich unterscheiden.| | |
 | `customer_managed_key.key_uri` | Zeichenfolge | Der Schlüssel-URI des kundenseitig verwalteten Schlüssels zum Verschlüsseln ruhender Daten. Das URI-Format lautet `https://<keyvault-dns-name>/keys/<key-name>/<key-version>`. | | |
 | `image_build_compute` | Zeichenfolge | Der Name des Computeziels, das zum Erstellen von Docker-Umgebungsimages verwendet werden soll, wenn sich die Containerregistrierung hinter einem VNet befindet. Weitere Informationen finden Sie unter [Schützen von Arbeitsbereichsressourcen hinter VNets](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr). | | |
@@ -51,27 +51,27 @@ Mit dem Befehl `az ml workspace` können Sie Azure Machine Learning-Arbeitsberei
 
 ## <a name="examples"></a>Beispiele
 
-Beispiele finden Sie im [GitHub-Beispielrepository](https://github.com/Azure/azureml-examples/tree/main/cli/resources/workspace). Im Folgenden sind mehrere aufgeführt.
+Beispiele sind im [GitHub-Repository Beispiele](https://github.com/Azure/azureml-examples/tree/main/cli/resources/workspace) verfügbar. Im Folgenden sind mehrere aufgeführt.
 
 ## <a name="yaml-basic"></a>YAML: Basic
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/resources/workspace/basic.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/resources/workspace/basic.yml":::
 
 ## <a name="yaml-with-existing-resources"></a>YAML: mit vorhandenen Ressourcen
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/resources/workspace/with-existing-resources.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/resources/workspace/with-existing-resources.yml":::
 
 ## <a name="yaml-customer-managed-key"></a>YAML: kundenseitig verwalteter Schlüssel
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/resources/workspace/cmk.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/resources/workspace/cmk.yml":::
 
 ## <a name="yaml-private-link"></a>YAML: Private Link
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/resources/workspace/privatelink.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/resources/workspace/privatelink.yml":::
 
 ## <a name="yaml-high-business-impact"></a>YAML: erhebliche Geschäftsauswirkungen
 
-:::code language="yaml" source="~/azureml-examples-cli-preview/cli/resources/workspace/hbi.yml":::
+:::code language="yaml" source="~/azureml-examples-main/cli/resources/workspace/hbi.yml":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

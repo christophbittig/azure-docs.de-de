@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 547d96a9591b99318a74977106e99511c9c80507
-ms.sourcegitcommit: f28ebb95ae9aaaff3f87d8388a09b41e0b3445b5
+ms.openlocfilehash: a32935bbba2c9d8d3a3c8183b81b14f4ac40f1fd
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/29/2021
-ms.locfileid: "101687106"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131989126"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-fiori"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit SAP Fiori
 
@@ -83,7 +83,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
         login/create_sso2_ticket = 2
         login/accept_sso2_ticket = 1
         login/ticketcache_entries_max = 1000
-        login/ticketcache_off = 0  login/ticket_only_by_https = 0 
+        login/ticketcache_off = 0  login/ticket_only_by_https = 0
         icf/set_HTTPonly_flag_on_cookies = 3
         icf/user_recheck = 0  http/security_session_timeout = 1800
         http/security_context_cache_size = 2500
@@ -138,24 +138,24 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie über eine **Dienstanbieter-Metadatendatei** verfügen:
 
-    a. Klicken Sie auf **Metadatendatei hochladen**.
+    1. Klicken Sie auf **Metadatendatei hochladen**.
 
-    ![Metadatendatei hochladen](common/upload-metadata.png)
+        ![Metadatendatei hochladen](common/upload-metadata.png)
 
-    b. Klicken Sie auf das **Ordnerlogo**, wählen Sie die Metadatendatei aus, und klicken Sie auf **Hochladen**.
+    1. Klicken Sie auf das **Ordnerlogo**, wählen Sie die Metadatendatei aus, und klicken Sie auf **Hochladen**.
 
-    ![Metadatendatei auswählen](common/browse-upload-metadata.png)
+        ![Metadatendatei auswählen](common/browse-upload-metadata.png)
 
-    c. Nach dem erfolgreichen Upload der Metadatendatei werden die Werte unter **Bezeichner** und **Antwort-URL** im Bereich **Grundlegende SAML-Konfiguration** automatisch eingefügt. Geben Sie im Feld **Anmelde-URL** eine URL im folgenden Format ein: `https://<your company instance of SAP Fiori>`.
+    1. Nach dem erfolgreichen Upload der Metadatendatei werden die Werte unter **Bezeichner** und **Antwort-URL** im Bereich **Grundlegende SAML-Konfiguration** automatisch eingefügt. Geben Sie im Feld **Anmelde-URL** eine URL im folgenden Format ein: `https://<your company instance of SAP Fiori>`.
 
-    > [!NOTE]
-    > Einige Kunden berichten von Fehlern aufgrund falsch konfigurierter Werte unter **Antwort-URL**. Wenn Sie diesen Fehler erhalten, können Sie das folgende PowerShell-Skript verwenden, um die richtige Antwort-URL für Ihre Instanz festzulegen:
-    >
-    > ```
-    > Set-AzureADServicePrincipal -ObjectId $ServicePrincipalObjectId -ReplyUrls "<Your Correct Reply URL(s)>"
-    > ``` 
-    > 
-    > Sie können die `ServicePrincipal`-Objekt-ID selbst festlegen, bevor Sie das Skript ausführen, oder Sie können diese hier übergeben.
+        > [!NOTE]
+        > Einige Kunden berichten von Fehlern aufgrund falsch konfigurierter Werte unter **Antwort-URL**. Wenn Sie diesen Fehler erhalten, können Sie das folgende PowerShell-Skript verwenden, um die richtige Antwort-URL für Ihre Instanz festzulegen:
+        >
+        > ```powershell
+        > Set-AzureADServicePrincipal -ObjectId $ServicePrincipalObjectId -ReplyUrls "<Your Correct Reply URL(s)>"
+        > ```
+        >
+        > Sie können die `ServicePrincipal`-Objekt-ID selbst festlegen, bevor Sie das Skript ausführen, oder Sie können diese hier übergeben.
 
 1. Die SAP Fiori-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Wählen Sie zum Verwalten dieser Attributwerte im Bereich **Einmaliges Anmelden (SSO) mit SAML einrichten** die Option **Bearbeiten** aus.
 
@@ -171,10 +171,10 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     1. Wählen Sie **Speichern** aus.
 
-       ![Bereich „Benutzeransprüche verwalten“](./media/sapfiori-tutorial/nameidattribute.png)
+        ![Bereich „Benutzeransprüche verwalten“](./media/sapfiori-tutorial/nameidattribute.png)
 
-       ![Abschnitt „Transformation“ im Bereich „Benutzeransprüche verwalten“](./media/sapfiori-tutorial/nameidattribute1.png)
-    
+        ![Abschnitt „Transformation“ im Bereich „Benutzeransprüche verwalten“](./media/sapfiori-tutorial/nameidattribute1.png)
+
 1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zu **Verbundmetadaten-XML**, und wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen und auf Ihrem Computer zu speichern.
 
     ![Downloadlink für das Zertifikat](common/metadataxml.png)
@@ -273,13 +273,13 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     **Szenario 2**: Auswählen der SAP-Benutzer-ID basierend auf der konfigurierten E-Mail-Adresse in SU01 In diesem Fall sollte die E-Mail-ID in SU01 für jeden Benutzer konfiguriert werden, der SSO benötigt.
 
-    1.  Notieren Sie sich in SAP die Details unter **Details of NameID Format „Unspecified“** (Details des NameID-Formats „Nicht angegeben“):
+    1. Notieren Sie sich in SAP die Details unter **Details of NameID Format „Unspecified“** (Details des NameID-Formats „Nicht angegeben“):
 
         ![Dialogfeld „Details of NameID Format ‚Unspecified‘“ (Details des NameID-Formats „Nicht angegeben“) in SAP](./media/sapfiori-tutorial/tutorial-sapnetweaver-nameiddetails1.png)
 
     1. Notieren Sie sich im Azure-Portal unter **Benutzerattribute und Ansprüche** die erforderlichen Ansprüche in Azure AD.
 
-       ![Dialogfeld „Benutzerattribute und Ansprüche“ im Azure-Portal](./media/sapfiori-tutorial/claimsaad2.png)
+        ![Dialogfeld „Benutzerattribute und Ansprüche“ im Azure-Portal](./media/sapfiori-tutorial/claimsaad2.png)
 
 1. Wählen Sie **Save** (Speichern) und dann **Enable** (Aktivieren) aus, um den Identitätsanbieter zu aktivieren.
 
@@ -297,18 +297,20 @@ In diesem Abschnitt erstellen Sie in SAP Fiori eine Benutzerin namens Britta Si
 
 1. Nachdem der Identitätsanbieter Azure AD in SAP Fiori aktiviert wurde, versuchen Sie, auf eine der folgenden URLs zuzugreifen, um das einmalige Anmelden zu testen (es sollte kein Benutzername und Kennwort angefordert werden):
 
-    * https:\//\<sapurl\>/sap/bc/bsp/sap/it00/default.htm
-    * https:\//\<sapurl\>/sap/bc/bsp/sap/it00/default.htm
+    * `https://<sap-url>/sap/bc/bsp/sap/it00/default.htm`
+    * `https://<sap-url>/sap/bc/bsp/sap/it00/default.htm`
 
     > [!NOTE]
-    > Ersetzen Sie *sapurl* durch den tatsächlichen SAP-Hostnamen.
+    > Ersetzen Sie `<sap-url>` durch den tatsächlichen SAP-Hostnamen.
 
 1. Über die Test-URL sollte die folgende Test-Anwendungsseite in SAP aufgerufen werden. Wenn die Seite geöffnet wird, wurde das einmalige Anmelden von Azure AD erfolgreich eingerichtet.
 
     ![Standardmäßige Test-Anwendungsseite in SAP](./media/sapfiori-tutorial/testingsso.png)
 
-1. Wenn ein Benutzername und ein Kennwort angefordert werden, aktivieren Sie die Ablaufverfolgung, um die Problemdiagnose zu unterstützen. Verwenden Sie für die Ablaufverfolgung folgende URL: https:\//\<sapurl\>/sap/bc/webdynpro/sap/sec_diag_tool?sap-client=122&sap-language=EN#.
+1. Wenn ein Benutzername und ein Kennwort angefordert werden, aktivieren Sie die Ablaufverfolgung, um die Problemdiagnose zu unterstützen. Verwenden Sie die folgende URL für die Ablaufverfolgung:
+
+    `https://<sap-url>/sap/bc/webdynpro/sap/sec_diag_tool?sap-client=122&sap-language=EN#`.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von SAP Fiori können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-any-app) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
+Nach dem Konfigurieren von SAP Fiori können Sie die Sitzungssteuerung erzwingen, die in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten schützt. Die Sitzungssteuerung basiert auf bedingtem Zugriff. [Erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Defender for Cloud Apps erzwingen.](/cloud-app-security/proxy-deployment-any-app)

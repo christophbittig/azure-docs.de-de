@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: vm-sizes-memory
 ms.topic: conceptual
 ms.date: 10/8/2021
-ms.openlocfilehash: 4628f6c6d368f5d62a8c7e5a2dd07adab9d0a3b5
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 3642323efddfab0c791273169e2c0fb0ec76f0b9
+ms.sourcegitcommit: 5af89a2a7b38b266cc3adc389d3a9606420215a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131478818"
+ms.lasthandoff: 11/08/2021
+ms.locfileid: "131989905"
 ---
 # <a name="easv5-and-eadsv5-series"></a>Easv5- und Eadsv5-Serie
 
@@ -23,12 +23,12 @@ Die Easv5-Serie und die Eadsv5-Serie nutzen den EPYC<sup>TM</sup> 7763v-Prozesso
 
 ## <a name="easv5-series"></a>Easv5-Serie
 
-Die Easv5-Serie nutzt die EPYC<sup>TM</sup> 7763v-Prozessoren der 3. Generation von AMD, die mittels Bursting eine maximale Frequenz von 3,7 GHz erreichen können. Die Größen der Easv5-Serie bieten eine Kombination aus vCPU und Arbeitsspeicher, die sich ideal für speicherintensive Unternehmensanwendungen eignet. Die neuen VMs ohne lokale Datenträger bieten ein besseres Wertversprechen für Workloads, die keinen lokalen temporären Datenträger erfordern.
+VMs der Easv5-Serie nutzen die AMD-Prozessoren EPYC<sup>TM</sup> 7763v der 3. Generation, die mittels Bursting eine maximale Frequenz von 3,5 GHz erreichen können. Die Größen der Easv5-Serie bieten eine Kombination aus vCPU und Arbeitsspeicher, die sich ideal für speicherintensive Unternehmensanwendungen eignet. Die neuen VMs ohne lokale Datenträger bieten ein besseres Wertversprechen für Workloads, die keinen lokalen temporären Datenträger erfordern.
 
 > [!NOTE]
 > Häufig gestellte Fragen finden Sie unter [Azure-VM-Größen ohne lokale temporäre Datenträger](azure-vms-no-temp-disk.yml).
 
-VMs der Easv5-Serie unterstützen die Datenträgertypen SSD Standard, HDD Standard und SSD Premium. Sie können auch basierend auf der regionalen Verfügbarkeit Disk Storage Ultra anfügen. Datenträgerspeicher wird separat von VMs abgerechnet. [Weitere Informationen finden Sie bei den Preisen für Datenträger](https://azure.microsoft.com/pricing/details/managed-disks/).
+VMs der Easv5-Serie unterstützen die Datenträgertypen SSD Standard, HDD Standard und SSD Premium. Sie können auch basierend auf der regionalen Verfügbarkeit Disk Storage Ultra anfügen. Der Datenträgerspeicher wird separat von den virtuellen Computern in Rechnung gestellt. [Weitere Informationen finden Sie bei den Preisen für Datenträger](https://azure.microsoft.com/pricing/details/managed-disks/).
 
 [Storage Premium](premium-storage-performance.md): Unterstützt <br>
 [Storage Premium-Zwischenspeicherung:](premium-storage-performance.md) Unterstützt <br>
@@ -57,9 +57,9 @@ VMs der Easv5-Serie unterstützen die Datenträgertypen SSD Standard, HDD Standa
 
 ## <a name="eadsv5-series"></a>Eadsv5-Serie
 
-VMs der Eadsv5-Serie nutzen die EPYC<sup>TM</sup> 7763v-Prozessoren der 3. Generation von AMD, die mittels Bursting eine maximale Frequenz von 3,7 GHz erreichen können. Die Größen der Eadsv5-Serie bieten eine Kombination aus vCPU und Zwischenspeicher, die sich ideal für speicherintensive Unternehmensanwendungen eignet. Die neuen VM bieten einen 50 % größeren lokalen Speicher sowie bessere IOPS auf lokalen Datenträgern für Lese- und Schreibvorgänge im Vergleich zu den [Eav4/Easv4](eav4-easv4-series.md)-Größen mit [Gen2](generation-2.md)-VMs.
+VMs der Eadsv5-Serie nutzen die AMD-Prozessoren EPYC<sup>TM</sup> 7763v der 3. Generation, die mittels Bursting eine maximale Frequenz von 3,5 GHz erreichen können. Die Größen der Eadsv5-Serie bieten eine Kombination aus vCPU und Zwischenspeicher, die sich ideal für speicherintensive Unternehmensanwendungen eignet. Die neuen VM bieten einen 50 % größeren lokalen Speicher sowie bessere IOPS auf lokalen Datenträgern für Lese- und Schreibvorgänge im Vergleich zu den [Eav4/Easv4](eav4-easv4-series.md)-Größen mit [Gen2](generation-2.md)-VMs.
 
-VMs der Eadsv5-Serie unterstützen die Datenträgertypen SSD Standard, HDD Standard und SSD Premium. Sie können auch basierend auf der regionalen Verfügbarkeit Disk Storage Ultra anfügen. Datenträgerspeicher wird separat von VMs abgerechnet. [Weitere Informationen finden Sie bei den Preisen für Datenträger](https://azure.microsoft.com/pricing/details/managed-disks/).
+VMs der Eadsv5-Serie unterstützen die Datenträgertypen SSD Standard, HDD Standard und SSD Premium. Sie können auch basierend auf der regionalen Verfügbarkeit Disk Storage Ultra anfügen. Der Datenträgerspeicher wird separat von den virtuellen Computern in Rechnung gestellt. [Weitere Informationen finden Sie bei den Preisen für Datenträger](https://azure.microsoft.com/pricing/details/managed-disks/).
 
 [Storage Premium](premium-storage-performance.md): Unterstützt <br>
 [Storage Premium-Zwischenspeicherung:](premium-storage-performance.md) Unterstützt <br>

@@ -7,15 +7,15 @@ metadata:
   ms.service: databox
   ms.subservice: pod
   ms.topic: article
-  ms.date: 07/21/2021
+  ms.date: 08/31/2021
   ms.author: alkohli
   ms.custom: references_regions
-  ms.openlocfilehash: 47d941b1c6e6ce7b0f383e977f227db65fa86871
-  ms.sourcegitcommit: 6f21017b63520da0c9d67ca90896b8a84217d3d3
+  ms.openlocfilehash: b2aed039a735ff9124fe19c61992ec184879c0b7
+  ms.sourcegitcommit: 61f87d27e05547f3c22044c6aa42be8f23673256
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 07/23/2021
-  ms.locfileid: "114653425"
+  ms.lasthandoff: 11/09/2021
+  ms.locfileid: "132059285"
 title: 'Azure Data Box: Häufig gestellte Fragen'
 summary: >
   Mit der Hybridlösung Microsoft Azure Data Box und einem Versandgerät können Sie Daten in Terabyte-Größe schnell, kostengünstig und zuverlässig in Azure übertragen. In diesem Artikel finden Sie Antworten auf Fragen, die bei Verwenden von Data Box im Azure-Portal ggf. aufkommen.
@@ -43,7 +43,7 @@ sections:
   - question: >
       In welchen Regionen kann ich Daten mit Data Box speichern?
     answer: >
-      Data Box wird in allen Regionen in den USA, Europa, Westen, Europa, Norden, Frankreich, GB, Japan, Australien und Kanada unterstützt. Weitere Informationen finden Sie unter [Regionale Verfügbarkeit](data-box-overview.md#region-availability).
+      Data Box wird für alle Regionen in den USA, Kanada, der EU, dem Vereinigten Königreich, der Schweiz, Australien, Singapur, Hongkong, Japan, Korea, Indien, Brasilien, Südafrika und den VAE unterstützt. Weitere Informationen finden Sie unter [Regionale Verfügbarkeit](data-box-overview.md#region-availability).
   - question: >
       Wie kann ich Quelldaten an meinem Speicherort in einem bestimmten Land in einer Azure-Region in einem anderen Land/einer anderen Region importieren oder Daten aus einer Azure-Region in einem Land in ein anderes Land/eine andere Region exportieren?
     answer: >
@@ -111,7 +111,8 @@ sections:
       Sie können Ihren vorherigen Auftrag klonen. Beim Klonen wird derselbe Auftrag noch einmal erstellt, und Sie müssen nur noch die Auftragsdetails angeben, ohne Adresse, Kontaktinformationen und Benachrichtigungsdetails erneut eingeben zu müssen. Klonen ist nur bei Importaufträgen zulässig.
 - name: Konfigurieren und Verbinden
   questions:
-  - question: "Wie entsperre ich die Data Box? \n"
+  - question: >
+      Wie entsperre ich die Data Box?
     answer: >
       Navigieren Sie im Azure-Portal zu Ihrem Data Box-Auftrag und dann zu **Gerätedetails**. Kopieren Sie das Kennwort zum Entsperren. Melden Sie sich mit diesem Kennwort auf der lokalen Webbenutzeroberfläche bei Ihrer Data Box an. Weitere Informationen finden Sie unter [Tutorial: Verkabeln und Herstellen einer Verbindung mit der Azure Data Box](data-box-deploy-set-up.md).
   - question: >
@@ -162,6 +163,9 @@ sections:
       Wird die Portkanalkonfiguration in Data Box unterstützt? Wie sieht es mit Multipfad-E/A aus?
     answer: >
       Wir unterstützen nicht die Portkanalkonfiguration, die Konfiguration von Multipfad-E/A (Multipath IO, MPIO) und die vLAN-Konfiguration in Data Box.
+  - question: >
+      Wann laufen die automatisch generierten selbstsignierten Zertifikate auf meinem Gerät ab?
+    answer: "[!INCLUDE [return-data-box-before-certificates-expire](../../includes/data-box-certificate-expiration.md)] Weitere Informationen finden Sie unter [Verwenden eigener Zertifikate mit Data Box- und Data Box Heavy-Geräten](data-box-bring-your-own-certificates.md).     \n"
 - name: Nachverfolgen des Status
   questions:
   - question: "Wie kann ich für die Data Box den Status ab der Erteilung des Auftrags bis zur Rücksendung des Geräts nachverfolgen? \n"

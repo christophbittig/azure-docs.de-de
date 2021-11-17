@@ -2,18 +2,20 @@
 title: Tastenkombinationen für das Azure-Portal
 description: Das Azure-Portal unterstützt globale Tastenkombinationen, die Sie beim Ausführen von Aktionen, Navigieren und Wechseln zu Positionen im Azure-Portal unterstützen.
 ms.topic: conceptual
-ms.date: 11/02/2021
+ms.date: 11/04/2021
 ms.custom: accessibility
-ms.openlocfilehash: 0fcdf55f63e823b437107246cf83ede1decb0364
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 34d099c8e0c6e0fbab3a40d08382f0275496506c
+ms.sourcegitcommit: 8946cfadd89ce8830ebfe358145fd37c0dc4d10e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131461834"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131847639"
 ---
 # <a name="keyboard-shortcuts-in-the-azure-portal"></a>Tastenkombinationen im Azure-Portal
 
-Dieser Artikel führt die Tastaturkombinationen auf, die im Azure-Portal verwendet werden können. Für einzelne Dienste gibt es möglicherweise eigene Tastenkombinationen.
+Dieser Artikel führt die Tastaturkombinationen auf, die im Azure-Portal verwendet werden können. Für einzelne Dienste gibt es möglicherweise eigene zusätzliche Tastenkombinationen.
+
+Die unten angezeigten Buchstaben stellen Buchstabentasten auf Ihrer Tastatur dar. Wenn Sie z. B. **G+N** verwenden möchten, halten Sie die Taste **G** gedrückt, und drücken Sie dann **N**.
 
 ## <a name="actions"></a>Aktionen
 
@@ -42,7 +44,7 @@ Dieser Artikel führt die Tastaturkombinationen auf, die im Azure-Portal verwend
 |Zu **Ressourcengruppen** wechseln|G+R |
 |Das Element auf der linken Seitenleiste an dieser Position öffnen |G+Zahl|
 
-## <a name="examples-of-keyboard-shortcuts-for-specific-areas"></a>Beispiele für Tastenkombinationen für bestimmte Bereiche
+## <a name="examples-of-additional-keyboard-shortcuts-for-specific-areas"></a>Beispiele für zusätzliche Tastenkombinationen für bestimmte Bereiche
 
 - [Azure Resource Graph-Explorer](../governance/resource-graph/reference/keyboard-shortcuts.md)
 - [Kusto-Explorer](/azure/data-explorer/kusto/tools/kusto-explorer-shortcuts)

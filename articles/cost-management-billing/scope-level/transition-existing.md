@@ -1,6 +1,6 @@
 ---
-title: Übergang zur Verwaltung von Azure-Hybridvorteil auf Umfangsebene
-description: In diesem Artikel werden die Änderungen und mehrere Übergangsszenarien beschrieben, um den Übergang zur Verwaltung von Azure-Hybridvorteil auf Umfangsebene zu veranschaulichen.
+title: Übergang zum zentral verwalteten Azure-Hybridvorteil
+description: In diesem Artikel werden die Änderungen und mehrere Übergangsszenarien beschrieben, um den Übergang zum zentral verwalteten Azure-Hybridvorteil zu veranschaulichen.
 keywords: ''
 author: bandersmsft
 ms.author: banders
@@ -8,16 +8,16 @@ ms.date: 09/30/2021
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: ahb
-ms.openlocfilehash: a813a8934ff66b10e0f3c7adce65887acebba6f8
-ms.sourcegitcommit: 57b7356981803f933cbf75e2d5285db73383947f
+ms.openlocfilehash: be701e090a7fd993f476cd45194b73368c589dc5
+ms.sourcegitcommit: 692382974e1ac868a2672b67af2d33e593c91d60
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2021
-ms.locfileid: "129547315"
+ms.lasthandoff: 10/22/2021
+ms.locfileid: "130223990"
 ---
-# <a name="transition-to-scope-level-management-of-azure-hybrid-benefit"></a>Übergang zur Verwaltung von Azure-Hybridvorteil auf Umfangsebene
+# <a name="transition-to-centrally-managed-azure-hybrid-benefit"></a>Übergang zum zentral verwalteten Azure-Hybridvorteil
 
-Wenn Sie zur Verwaltung von Azure-Hybridvorteil auf Umfangsebene übergehen, entfällt die Notwendigkeit, den Vorteil auf Ressourcenebene zu konfigurieren. Dieser Artikel beschreibt die Änderungen und mehrere Übergangsszenarien, um das Ergebnis zu veranschaulichen. Für ein besseres Verständnis, wie die neue Lizenzverwaltung auf Umfangsebene Lizenzen und Rabatte auf Ihre Ressourcen anwendet, siehe: [Was ist die Verwaltung von Azure-Hybridvorteil auf Umfangsebene?](overview-azure-hybrid-benefit-scope.md)
+Wenn Sie zum zentral verwalteten Azure-Hybridvorteil übergehen, entfällt die Notwendigkeit, den Vorteil auf Ressourcenebene zu konfigurieren. Dieser Artikel beschreibt die Änderungen und mehrere Übergangsszenarien, um das Ergebnis zu veranschaulichen. Zum besseren Verständnis, wie mit der neuen Lizenzverwaltung auf Umfangsebene Lizenzen und Rabatte auf Ihre Ressourcen angewendet werden, lesen Sie den Artikel [Was ist der zentral verwaltete Azure-Hybridvorteil?](overview-azure-hybrid-benefit-scope.md)
 
 ## <a name="changes-to-individual-resource-configuration"></a>Änderungen an der individuellen Ressourcenkonfiguration
 
@@ -37,7 +37,7 @@ Wenn Sie sich für die Verwaltung von Azure-Hybridvorteil-Erfahrung auf Umfangse
 
 ## <a name="hadr-benefit-for-sql-server-vms"></a>HADR-Vorteil für SQL Server-VMs
 
-Das neue Azure-Portal unterstützt die Vorteile der Hochverfügbarkeit und Disaster Recovery (HADR) für SQL Server-VMs vollständig. Wenn Ihre SQL Server-VM als HADR-Replikat konfiguriert ist, sind keine weiteren Aktionen erforderlich. Weitere Informationen zur Funktionsweise des SQL SERVER VM HADR-Vorteils finden Sie unter [SQL Server HADR und Azure-Hybridvorteil Koexistenz auf Umfangsebene](sql-server-hadr-licenses.md).
+Das neue Azure-Portal unterstützt die Vorteile der Hochverfügbarkeit und Disaster Recovery (HADR) für SQL Server-VMs vollständig. Wenn Ihre SQL Server-VM als HADR-Replikat konfiguriert ist, sind keine weiteren Aktionen erforderlich. Weitere Informationen zur Funktionsweise des SQL SERVER VM HADR-Vorteils finden Sie unter [Koexistenz von SQL Server HADR und zentral verwaltetem Azure-Hybridvorteil](sql-server-hadr-licenses.md).
 
 ## <a name="transition-scenario-examples"></a>Beispiele für Übergangsszenarios
 
@@ -54,7 +54,7 @@ Lesen Sie die folgenden Beispiele für Übergangsszenarien, die am ehesten Ihrer
 > [!NOTE] 
 > Mit dem Azure-Hybridvorteil können die Azure zugewiesenen Lizenzen bis zu 180 Tage lang auch lokal genutzt werden, während die Workloads migriert, getestet und bereitgestellt werden.
 
-### <a name="simplify-license-management-by-transitioning-to-scope-level-management-of-azure-hybrid-benefit"></a>Vereinfachen Sie das Verwalten von Abonnements, indem Sie auf die Verwaltung von Azure-Hybridvorteil auf Umfangsebene umsteigen
+### <a name="simplify-license-management-by-transitioning-to-centralized-scope-level-management-of-azure-hybrid-benefit"></a>Vereinfachen der Lizenzverwaltung durch Übergang zur zentralen Verwaltung des Azure-Hybridvorteils auf Umfangsebene
 
 - **SQL Server-Ressourcen laufen –**  Ein 64-Core Azure SQL Database Business Critical läuft, wobei Azure-Hybridvorteil ausgewählt ist.
 - **Verfügbare Lizenzen, die Azure zugewiesen werden können -** Ihr Beschaffungsteam bestätigt, dass es mehr als 64 SQL Server Enterprise Edition Core-Lizenzen mit Software Assurance gibt, die lokal nicht im Gebrauch sind.
@@ -70,13 +70,13 @@ Lesen Sie die folgenden Beispiele für Übergangsszenarien, die am ehesten Ihrer
 
 ### <a name="restore-compliance-when-excessive-azure-hybrid-benefit-usage-is-found"></a>Stellen Sie Compliance wieder her, wenn eine übermäßige Nutzung von Azure-Hybridvorteilen festgestellt wird
 
-- **SQL Server-Ressourcen laufen -** Es laufen drei universellen 8-Core-SQL-Datenbanken und eine 16-Core-SQL Server-VM für Unternehmen, wobei Azure-Hybridvorteil für alle ausgewählt ist. Die Anzahl der Azure-Hybridvorteil-Lizenzen, die dies erfordert, beträgt 24 Standard-Edition-Kerne + 16 SQL Server Enterprise-Kerne. Oder: 88 SQL Server Standard Edition (+ 0 SQL Server Enterprise Edition) - oder 22 SQL Server Enterprise (+ 0 SQL Server Standard Edition) könnten es auch abdecken. Das liegt daran, dass eine SQL Server Enterprise Edition Core-Lizenz und vier SQL Server Standard Edition Core-Lizenzen die gleiche Azure-Hybridvorteil-Nutzung für alle Azure SQL-Ressourcentypen abdecken können. Lesen Sie die Azure-Hybridvorteil-Regeln im Artikel [Was ist die Verwaltung von Azure-Hybridvorteil auf Umfangsebene?](overview-azure-hybrid-benefit-scope.md), um mehr über diese Flexibilität zu lernen.
+- **SQL Server-Ressourcen laufen -** Es laufen drei universellen 8-Core-SQL-Datenbanken und eine 16-Core-SQL Server-VM für Unternehmen, wobei Azure-Hybridvorteil für alle ausgewählt ist. Die Anzahl der Azure-Hybridvorteil-Lizenzen, die dies erfordert, beträgt 24 Standard-Edition-Kerne + 16 SQL Server Enterprise-Kerne. Oder: 88 SQL Server Standard Edition (+ 0 SQL Server Enterprise Edition) - oder 22 SQL Server Enterprise (+ 0 SQL Server Standard Edition) könnten es auch abdecken. Das liegt daran, dass eine SQL Server Enterprise Edition Core-Lizenz und vier SQL Server Standard Edition Core-Lizenzen die gleiche Azure-Hybridvorteil-Nutzung für alle Azure SQL-Ressourcentypen abdecken können. Lesen Sie die Regeln für den Azure-Hybridvorteil im Artikel [Was ist der zentral verwaltete Azure-Hybridvorteil?](overview-azure-hybrid-benefit-scope.md), um mehr über diese Flexibilität zu erfahren.
 - **Verfügbare Lizenzen für die Zuweisung zu Azure -** Laut Ihrem Beschaffungsteam sind 64 SQL Server Standard Edition Core-Lizenzen mit Software Assurance weder lokal noch in Azure in Gebrauch. Das ist weniger als die erforderliche Anzahl von 22 SQL Server Enterprise- oder 88 SQL Server Standard-Edition-Core-Lizenzen.
 - **Empfohlene Aktion -** Um Compliance wiederherzustellen, identifizieren Sie 6 SQL Server Enterprise- oder 24 SQL Server Standard-Edition-Core-Lizenzen mit Software Assurance und weisen Sie diese sowie die bereits bestätigten 64 SQL Server Standard-Core-Lizenzen Azure zu, indem Sie Management auf Umfangsebene von Azure-Hybridvorteil nutzen.
 - **Ergebnis -** Nicht-Einhaltung wird eliminiert und Azure-Hybridvorteil wird optimal genutzt, um die Kosten zu minimieren.
 - **Alternative Maßnahme -** Weisen Sie Azure nur die verfügbaren 64 SQL Server Standard Edition Core-Lizenzen zu. Sie sind zwar konform, aber da diese Lizenzen nicht ausreichen, um die gesamte Azure-SQL-Nutzung abzudecken, werden Ihnen einige Nutzungsbasierte Gebühren berechnet.
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Folgen Sie dem Tutorial [Verwalten und Optimieren des Azure-Hybridvorteils für SQL Server](tutorial-azure-hybrid-benefits-sql.md).
+- Arbeiten Sie das Tutorial [Optimieren des zentral verwalteten Azure-Hybridvorteils für SQL Server](tutorial-azure-hybrid-benefits-sql.md) durch.
 - Gehen Sie zur Verwaltung von Lizenzen auf Umfangsebene über, indem Sie [SQL Server-Lizenzzuweisungen erstellen](create-sql-license-assignments.md).
-- Lesen Sie das [FAQ zu Verwaltung von Azure-Hybridvorteil auf Umfangsebene](faq-azure-hybrid-benefit-scope.yml).
+- Lesen Sie die [häufig gestellten Fragen zum zentral verwalteten Azure-Hybridvorteil](faq-azure-hybrid-benefit-scope.yml).

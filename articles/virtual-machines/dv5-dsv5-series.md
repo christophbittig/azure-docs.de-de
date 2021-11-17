@@ -2,28 +2,29 @@
 title: 'Dv5- und Dsv5-Serie: Azure Virtual Machines'
 description: Hier finden Sie Spezifikationen für die VMs der Dv5- und Dsv5-Serie.
 author: styli365
-ms.author: sttsinar
+ms.author: joelpell
 ms.reviewer: joelpell
 ms.custom: mimckitt
 ms.service: virtual-machines
 ms.subservice: vm-sizes-general
 ms.topic: conceptual
 ms.date: 10/20/2021
-ms.openlocfilehash: e8297681a102455134bff09ef30afb91acf920fa
-ms.sourcegitcommit: 702df701fff4ec6cc39134aa607d023c766adec3
+ms.openlocfilehash: 0bdd2c517a6bfef059ad89d7c3cbf1a825aba526
+ms.sourcegitcommit: 1a0fe16ad7befc51c6a8dc5ea1fe9987f33611a1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2021
-ms.locfileid: "131478761"
+ms.lasthandoff: 11/05/2021
+ms.locfileid: "131866778"
 ---
 # <a name="dv5-and-dsv5-series"></a>Dv5- und Dsv5-Serie
 
 **Gilt für**: :heavy_check_mark: Linux-VMs :heavy_check_mark: Windows-VMs :heavy_check_mark: Flexible Skalierungsgruppen :heavy_check_mark: Einheitliche Skalierungsgruppen
 
-Die virtuellen Computer der Dv5- und Dsv5-Serie werden auf dem Prozessor Intel&reg; Xeon&reg; Platinum 8370C (Ice Lake) der 3. Generation in einer [Hyperthreadkonfiguration](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) ausgeführt, die ein besseres Preis-Leistungs-Verhältnis für die meisten Allzweckworkloads bereitstellt. Dieser neue Prozessor verfügt über eine Turbo-Taktfrequenz von 3,5 GHz für alle Kerne mit [Intel&reg; Turbo Boost Technology](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel&reg; Advanced-Vector Extensions 512 (Intel&reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html) und [Intel&reg; Deep Learning Boost](https://software.intel.com/content/www/us/en/develop/topics/ai/deep-learning-boost.html). Diese VMs bieten eine Kombination aus vCPUs und Arbeitsspeicher, um die Anforderungen der meisten Unternehmensworkloads zu erfüllen, z. B. kleine bis mittlere Datenbanken, Webserver mit geringem bis mittlerem Datenverkehr, Anwendungsserver und vieles mehr. Die Dv5- und Dsv5-Serie bietet ein besseres Wertversprechen für Workloads, die keinen lokalen temporären Datenträger erfordern. .
+Die virtuellen Computer der Dv5- und Dsv5-Serie werden auf dem Prozessor Intel&reg; Xeon&reg; Platinum 8370C (Ice Lake) der 3. Generation in einer [Hyperthreadkonfiguration](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) ausgeführt, die ein besseres Preis-Leistungs-Verhältnis für die meisten Allzweckworkloads bereitstellt. Dieser neue Prozessor verfügt über eine Turbo-Taktfrequenz von 3,5 GHz für alle Kerne mit [Intel&reg; Turbo Boost Technology](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [Intel&reg; Advanced-Vector Extensions 512 (Intel&reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html) und [Intel&reg; Deep Learning Boost](https://software.intel.com/content/www/us/en/develop/topics/ai/deep-learning-boost.html). Diese VMs bieten eine Kombination aus vCPUs und Arbeitsspeicher, um die Anforderungen der meisten Unternehmensworkloads zu erfüllen, z. B. kleine bis mittlere Datenbanken, Webserver mit geringem bis mittlerem Datenverkehr, Anwendungsserver und vieles mehr. Die Dv5- und Dsv5-Serie bietet ein besseres Wertversprechen für Workloads, die keinen lokalen temporären Datenträger erfordern. Informationen zu ähnlichen virtuellen Computern mit lokalem Datenträger finden Sie unter [VMs der Ddv5- und Ddsv5-Serie](ddv5-ddsv5-series.md).
 
 > [!NOTE]
 > Häufig gestellte Fragen finden Sie unter [Azure-VM-Größen ohne lokale temporäre Datenträger](azure-vms-no-temp-disk.yml).
+
 ## <a name="dv5-series"></a>Dv5-Serie
 
 VMs der Dv5-Serie werden auf dem Prozessor Intel® Xeon® Platinum 8370C (Ice Lake) der 3. Generation ausgeführt und erreichen eine Turbotaktgeschwindigkeit aller Kerne von bis zu 3,5 GHz.  Diese VMs bieten bis zu 96 vCPU und 384 GiB RAM.  VMs der Dv5-Serie bieten ein besseres Wertversprechen für die meisten allgemeinen Workloads im Vergleich zur vorherigen Generation (z. B. höhere Skalierbarkeit und eine aktualisierte CPU-Klasse).
